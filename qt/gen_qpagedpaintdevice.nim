@@ -34,144 +34,140 @@ const cflags = gorge("pkg-config -cflags Qt5Widgets")
 {.compile("gen_qpagedpaintdevice.cpp", cflags).}
 
 
-type QPagedPaintDevicePageSize* = cint
-const
-  QPagedPaintDeviceA4* = 0
-  QPagedPaintDeviceB5* = 1
-  QPagedPaintDeviceLetter* = 2
-  QPagedPaintDeviceLegal* = 3
-  QPagedPaintDeviceExecutive* = 4
-  QPagedPaintDeviceA0* = 5
-  QPagedPaintDeviceA1* = 6
-  QPagedPaintDeviceA2* = 7
-  QPagedPaintDeviceA3* = 8
-  QPagedPaintDeviceA5* = 9
-  QPagedPaintDeviceA6* = 10
-  QPagedPaintDeviceA7* = 11
-  QPagedPaintDeviceA8* = 12
-  QPagedPaintDeviceA9* = 13
-  QPagedPaintDeviceB0* = 14
-  QPagedPaintDeviceB1* = 15
-  QPagedPaintDeviceB10* = 16
-  QPagedPaintDeviceB2* = 17
-  QPagedPaintDeviceB3* = 18
-  QPagedPaintDeviceB4* = 19
-  QPagedPaintDeviceB6* = 20
-  QPagedPaintDeviceB7* = 21
-  QPagedPaintDeviceB8* = 22
-  QPagedPaintDeviceB9* = 23
-  QPagedPaintDeviceC5E* = 24
-  QPagedPaintDeviceComm10E* = 25
-  QPagedPaintDeviceDLE* = 26
-  QPagedPaintDeviceFolio* = 27
-  QPagedPaintDeviceLedger* = 28
-  QPagedPaintDeviceTabloid* = 29
-  QPagedPaintDeviceCustom* = 30
-  QPagedPaintDeviceA10* = 31
-  QPagedPaintDeviceA3Extra* = 32
-  QPagedPaintDeviceA4Extra* = 33
-  QPagedPaintDeviceA4Plus* = 34
-  QPagedPaintDeviceA4Small* = 35
-  QPagedPaintDeviceA5Extra* = 36
-  QPagedPaintDeviceB5Extra* = 37
-  QPagedPaintDeviceJisB0* = 38
-  QPagedPaintDeviceJisB1* = 39
-  QPagedPaintDeviceJisB2* = 40
-  QPagedPaintDeviceJisB3* = 41
-  QPagedPaintDeviceJisB4* = 42
-  QPagedPaintDeviceJisB5* = 43
-  QPagedPaintDeviceJisB6* = 44
-  QPagedPaintDeviceJisB7* = 45
-  QPagedPaintDeviceJisB8* = 46
-  QPagedPaintDeviceJisB9* = 47
-  QPagedPaintDeviceJisB10* = 48
-  QPagedPaintDeviceAnsiC* = 49
-  QPagedPaintDeviceAnsiD* = 50
-  QPagedPaintDeviceAnsiE* = 51
-  QPagedPaintDeviceLegalExtra* = 52
-  QPagedPaintDeviceLetterExtra* = 53
-  QPagedPaintDeviceLetterPlus* = 54
-  QPagedPaintDeviceLetterSmall* = 55
-  QPagedPaintDeviceTabloidExtra* = 56
-  QPagedPaintDeviceArchA* = 57
-  QPagedPaintDeviceArchB* = 58
-  QPagedPaintDeviceArchC* = 59
-  QPagedPaintDeviceArchD* = 60
-  QPagedPaintDeviceArchE* = 61
-  QPagedPaintDeviceImperial7x9* = 62
-  QPagedPaintDeviceImperial8x10* = 63
-  QPagedPaintDeviceImperial9x11* = 64
-  QPagedPaintDeviceImperial9x12* = 65
-  QPagedPaintDeviceImperial10x11* = 66
-  QPagedPaintDeviceImperial10x13* = 67
-  QPagedPaintDeviceImperial10x14* = 68
-  QPagedPaintDeviceImperial12x11* = 69
-  QPagedPaintDeviceImperial15x11* = 70
-  QPagedPaintDeviceExecutiveStandard* = 71
-  QPagedPaintDeviceNote* = 72
-  QPagedPaintDeviceQuarto* = 73
-  QPagedPaintDeviceStatement* = 74
-  QPagedPaintDeviceSuperA* = 75
-  QPagedPaintDeviceSuperB* = 76
-  QPagedPaintDevicePostcard* = 77
-  QPagedPaintDeviceDoublePostcard* = 78
-  QPagedPaintDevicePrc16K* = 79
-  QPagedPaintDevicePrc32K* = 80
-  QPagedPaintDevicePrc32KBig* = 81
-  QPagedPaintDeviceFanFoldUS* = 82
-  QPagedPaintDeviceFanFoldGerman* = 83
-  QPagedPaintDeviceFanFoldGermanLegal* = 84
-  QPagedPaintDeviceEnvelopeB4* = 85
-  QPagedPaintDeviceEnvelopeB5* = 86
-  QPagedPaintDeviceEnvelopeB6* = 87
-  QPagedPaintDeviceEnvelopeC0* = 88
-  QPagedPaintDeviceEnvelopeC1* = 89
-  QPagedPaintDeviceEnvelopeC2* = 90
-  QPagedPaintDeviceEnvelopeC3* = 91
-  QPagedPaintDeviceEnvelopeC4* = 92
-  QPagedPaintDeviceEnvelopeC6* = 93
-  QPagedPaintDeviceEnvelopeC65* = 94
-  QPagedPaintDeviceEnvelopeC7* = 95
-  QPagedPaintDeviceEnvelope9* = 96
-  QPagedPaintDeviceEnvelope11* = 97
-  QPagedPaintDeviceEnvelope12* = 98
-  QPagedPaintDeviceEnvelope14* = 99
-  QPagedPaintDeviceEnvelopeMonarch* = 100
-  QPagedPaintDeviceEnvelopePersonal* = 101
-  QPagedPaintDeviceEnvelopeChou3* = 102
-  QPagedPaintDeviceEnvelopeChou4* = 103
-  QPagedPaintDeviceEnvelopeInvite* = 104
-  QPagedPaintDeviceEnvelopeItalian* = 105
-  QPagedPaintDeviceEnvelopeKaku2* = 106
-  QPagedPaintDeviceEnvelopeKaku3* = 107
-  QPagedPaintDeviceEnvelopePrc1* = 108
-  QPagedPaintDeviceEnvelopePrc2* = 109
-  QPagedPaintDeviceEnvelopePrc3* = 110
-  QPagedPaintDeviceEnvelopePrc4* = 111
-  QPagedPaintDeviceEnvelopePrc5* = 112
-  QPagedPaintDeviceEnvelopePrc6* = 113
-  QPagedPaintDeviceEnvelopePrc7* = 114
-  QPagedPaintDeviceEnvelopePrc8* = 115
-  QPagedPaintDeviceEnvelopePrc9* = 116
-  QPagedPaintDeviceEnvelopePrc10* = 117
-  QPagedPaintDeviceEnvelopeYou4* = 118
-  QPagedPaintDeviceLastPageSize* = 118
-  QPagedPaintDeviceNPageSize* = 118
-  QPagedPaintDeviceNPaperSize* = 118
-  QPagedPaintDeviceAnsiA* = 2
-  QPagedPaintDeviceAnsiB* = 28
-  QPagedPaintDeviceEnvelopeC5* = 24
-  QPagedPaintDeviceEnvelopeDL* = 26
-  QPagedPaintDeviceEnvelope10* = 25
+type QPagedPaintDevicePageSizeEnum* = distinct cint
+template A4*(_: type QPagedPaintDevicePageSizeEnum): untyped = 0
+template B5*(_: type QPagedPaintDevicePageSizeEnum): untyped = 1
+template Letter*(_: type QPagedPaintDevicePageSizeEnum): untyped = 2
+template Legal*(_: type QPagedPaintDevicePageSizeEnum): untyped = 3
+template Executive*(_: type QPagedPaintDevicePageSizeEnum): untyped = 4
+template A0*(_: type QPagedPaintDevicePageSizeEnum): untyped = 5
+template A1*(_: type QPagedPaintDevicePageSizeEnum): untyped = 6
+template A2*(_: type QPagedPaintDevicePageSizeEnum): untyped = 7
+template A3*(_: type QPagedPaintDevicePageSizeEnum): untyped = 8
+template A5*(_: type QPagedPaintDevicePageSizeEnum): untyped = 9
+template A6*(_: type QPagedPaintDevicePageSizeEnum): untyped = 10
+template A7*(_: type QPagedPaintDevicePageSizeEnum): untyped = 11
+template A8*(_: type QPagedPaintDevicePageSizeEnum): untyped = 12
+template A9*(_: type QPagedPaintDevicePageSizeEnum): untyped = 13
+template B0*(_: type QPagedPaintDevicePageSizeEnum): untyped = 14
+template B1*(_: type QPagedPaintDevicePageSizeEnum): untyped = 15
+template B10*(_: type QPagedPaintDevicePageSizeEnum): untyped = 16
+template B2*(_: type QPagedPaintDevicePageSizeEnum): untyped = 17
+template B3*(_: type QPagedPaintDevicePageSizeEnum): untyped = 18
+template B4*(_: type QPagedPaintDevicePageSizeEnum): untyped = 19
+template B6*(_: type QPagedPaintDevicePageSizeEnum): untyped = 20
+template B7*(_: type QPagedPaintDevicePageSizeEnum): untyped = 21
+template B8*(_: type QPagedPaintDevicePageSizeEnum): untyped = 22
+template B9*(_: type QPagedPaintDevicePageSizeEnum): untyped = 23
+template C5E*(_: type QPagedPaintDevicePageSizeEnum): untyped = 24
+template Comm10E*(_: type QPagedPaintDevicePageSizeEnum): untyped = 25
+template DLE*(_: type QPagedPaintDevicePageSizeEnum): untyped = 26
+template Folio*(_: type QPagedPaintDevicePageSizeEnum): untyped = 27
+template Ledger*(_: type QPagedPaintDevicePageSizeEnum): untyped = 28
+template Tabloid*(_: type QPagedPaintDevicePageSizeEnum): untyped = 29
+template Custom*(_: type QPagedPaintDevicePageSizeEnum): untyped = 30
+template A10*(_: type QPagedPaintDevicePageSizeEnum): untyped = 31
+template A3Extra*(_: type QPagedPaintDevicePageSizeEnum): untyped = 32
+template A4Extra*(_: type QPagedPaintDevicePageSizeEnum): untyped = 33
+template A4Plus*(_: type QPagedPaintDevicePageSizeEnum): untyped = 34
+template A4Small*(_: type QPagedPaintDevicePageSizeEnum): untyped = 35
+template A5Extra*(_: type QPagedPaintDevicePageSizeEnum): untyped = 36
+template B5Extra*(_: type QPagedPaintDevicePageSizeEnum): untyped = 37
+template JisB0*(_: type QPagedPaintDevicePageSizeEnum): untyped = 38
+template JisB1*(_: type QPagedPaintDevicePageSizeEnum): untyped = 39
+template JisB2*(_: type QPagedPaintDevicePageSizeEnum): untyped = 40
+template JisB3*(_: type QPagedPaintDevicePageSizeEnum): untyped = 41
+template JisB4*(_: type QPagedPaintDevicePageSizeEnum): untyped = 42
+template JisB5*(_: type QPagedPaintDevicePageSizeEnum): untyped = 43
+template JisB6*(_: type QPagedPaintDevicePageSizeEnum): untyped = 44
+template JisB7*(_: type QPagedPaintDevicePageSizeEnum): untyped = 45
+template JisB8*(_: type QPagedPaintDevicePageSizeEnum): untyped = 46
+template JisB9*(_: type QPagedPaintDevicePageSizeEnum): untyped = 47
+template JisB10*(_: type QPagedPaintDevicePageSizeEnum): untyped = 48
+template AnsiC*(_: type QPagedPaintDevicePageSizeEnum): untyped = 49
+template AnsiD*(_: type QPagedPaintDevicePageSizeEnum): untyped = 50
+template AnsiE*(_: type QPagedPaintDevicePageSizeEnum): untyped = 51
+template LegalExtra*(_: type QPagedPaintDevicePageSizeEnum): untyped = 52
+template LetterExtra*(_: type QPagedPaintDevicePageSizeEnum): untyped = 53
+template LetterPlus*(_: type QPagedPaintDevicePageSizeEnum): untyped = 54
+template LetterSmall*(_: type QPagedPaintDevicePageSizeEnum): untyped = 55
+template TabloidExtra*(_: type QPagedPaintDevicePageSizeEnum): untyped = 56
+template ArchA*(_: type QPagedPaintDevicePageSizeEnum): untyped = 57
+template ArchB*(_: type QPagedPaintDevicePageSizeEnum): untyped = 58
+template ArchC*(_: type QPagedPaintDevicePageSizeEnum): untyped = 59
+template ArchD*(_: type QPagedPaintDevicePageSizeEnum): untyped = 60
+template ArchE*(_: type QPagedPaintDevicePageSizeEnum): untyped = 61
+template Imperial7x9*(_: type QPagedPaintDevicePageSizeEnum): untyped = 62
+template Imperial8x10*(_: type QPagedPaintDevicePageSizeEnum): untyped = 63
+template Imperial9x11*(_: type QPagedPaintDevicePageSizeEnum): untyped = 64
+template Imperial9x12*(_: type QPagedPaintDevicePageSizeEnum): untyped = 65
+template Imperial10x11*(_: type QPagedPaintDevicePageSizeEnum): untyped = 66
+template Imperial10x13*(_: type QPagedPaintDevicePageSizeEnum): untyped = 67
+template Imperial10x14*(_: type QPagedPaintDevicePageSizeEnum): untyped = 68
+template Imperial12x11*(_: type QPagedPaintDevicePageSizeEnum): untyped = 69
+template Imperial15x11*(_: type QPagedPaintDevicePageSizeEnum): untyped = 70
+template ExecutiveStandard*(_: type QPagedPaintDevicePageSizeEnum): untyped = 71
+template Note*(_: type QPagedPaintDevicePageSizeEnum): untyped = 72
+template Quarto*(_: type QPagedPaintDevicePageSizeEnum): untyped = 73
+template Statement*(_: type QPagedPaintDevicePageSizeEnum): untyped = 74
+template SuperA*(_: type QPagedPaintDevicePageSizeEnum): untyped = 75
+template SuperB*(_: type QPagedPaintDevicePageSizeEnum): untyped = 76
+template Postcard*(_: type QPagedPaintDevicePageSizeEnum): untyped = 77
+template DoublePostcard*(_: type QPagedPaintDevicePageSizeEnum): untyped = 78
+template Prc16K*(_: type QPagedPaintDevicePageSizeEnum): untyped = 79
+template Prc32K*(_: type QPagedPaintDevicePageSizeEnum): untyped = 80
+template Prc32KBig*(_: type QPagedPaintDevicePageSizeEnum): untyped = 81
+template FanFoldUS*(_: type QPagedPaintDevicePageSizeEnum): untyped = 82
+template FanFoldGerman*(_: type QPagedPaintDevicePageSizeEnum): untyped = 83
+template FanFoldGermanLegal*(_: type QPagedPaintDevicePageSizeEnum): untyped = 84
+template EnvelopeB4*(_: type QPagedPaintDevicePageSizeEnum): untyped = 85
+template EnvelopeB5*(_: type QPagedPaintDevicePageSizeEnum): untyped = 86
+template EnvelopeB6*(_: type QPagedPaintDevicePageSizeEnum): untyped = 87
+template EnvelopeC0*(_: type QPagedPaintDevicePageSizeEnum): untyped = 88
+template EnvelopeC1*(_: type QPagedPaintDevicePageSizeEnum): untyped = 89
+template EnvelopeC2*(_: type QPagedPaintDevicePageSizeEnum): untyped = 90
+template EnvelopeC3*(_: type QPagedPaintDevicePageSizeEnum): untyped = 91
+template EnvelopeC4*(_: type QPagedPaintDevicePageSizeEnum): untyped = 92
+template EnvelopeC6*(_: type QPagedPaintDevicePageSizeEnum): untyped = 93
+template EnvelopeC65*(_: type QPagedPaintDevicePageSizeEnum): untyped = 94
+template EnvelopeC7*(_: type QPagedPaintDevicePageSizeEnum): untyped = 95
+template Envelope9*(_: type QPagedPaintDevicePageSizeEnum): untyped = 96
+template Envelope11*(_: type QPagedPaintDevicePageSizeEnum): untyped = 97
+template Envelope12*(_: type QPagedPaintDevicePageSizeEnum): untyped = 98
+template Envelope14*(_: type QPagedPaintDevicePageSizeEnum): untyped = 99
+template EnvelopeMonarch*(_: type QPagedPaintDevicePageSizeEnum): untyped = 100
+template EnvelopePersonal*(_: type QPagedPaintDevicePageSizeEnum): untyped = 101
+template EnvelopeChou3*(_: type QPagedPaintDevicePageSizeEnum): untyped = 102
+template EnvelopeChou4*(_: type QPagedPaintDevicePageSizeEnum): untyped = 103
+template EnvelopeInvite*(_: type QPagedPaintDevicePageSizeEnum): untyped = 104
+template EnvelopeItalian*(_: type QPagedPaintDevicePageSizeEnum): untyped = 105
+template EnvelopeKaku2*(_: type QPagedPaintDevicePageSizeEnum): untyped = 106
+template EnvelopeKaku3*(_: type QPagedPaintDevicePageSizeEnum): untyped = 107
+template EnvelopePrc1*(_: type QPagedPaintDevicePageSizeEnum): untyped = 108
+template EnvelopePrc2*(_: type QPagedPaintDevicePageSizeEnum): untyped = 109
+template EnvelopePrc3*(_: type QPagedPaintDevicePageSizeEnum): untyped = 110
+template EnvelopePrc4*(_: type QPagedPaintDevicePageSizeEnum): untyped = 111
+template EnvelopePrc5*(_: type QPagedPaintDevicePageSizeEnum): untyped = 112
+template EnvelopePrc6*(_: type QPagedPaintDevicePageSizeEnum): untyped = 113
+template EnvelopePrc7*(_: type QPagedPaintDevicePageSizeEnum): untyped = 114
+template EnvelopePrc8*(_: type QPagedPaintDevicePageSizeEnum): untyped = 115
+template EnvelopePrc9*(_: type QPagedPaintDevicePageSizeEnum): untyped = 116
+template EnvelopePrc10*(_: type QPagedPaintDevicePageSizeEnum): untyped = 117
+template EnvelopeYou4*(_: type QPagedPaintDevicePageSizeEnum): untyped = 118
+template LastPageSize*(_: type QPagedPaintDevicePageSizeEnum): untyped = 118
+template NPageSize*(_: type QPagedPaintDevicePageSizeEnum): untyped = 118
+template NPaperSize*(_: type QPagedPaintDevicePageSizeEnum): untyped = 118
+template AnsiA*(_: type QPagedPaintDevicePageSizeEnum): untyped = 2
+template AnsiB*(_: type QPagedPaintDevicePageSizeEnum): untyped = 28
+template EnvelopeC5*(_: type QPagedPaintDevicePageSizeEnum): untyped = 24
+template EnvelopeDL*(_: type QPagedPaintDevicePageSizeEnum): untyped = 26
+template Envelope10*(_: type QPagedPaintDevicePageSizeEnum): untyped = 25
 
 
-
-type QPagedPaintDevicePdfVersion* = cint
-const
-  QPagedPaintDevicePdfVersion_1_4* = 0
-  QPagedPaintDevicePdfVersion_A1b* = 1
-  QPagedPaintDevicePdfVersion_1_6* = 2
-
+type QPagedPaintDevicePdfVersionEnum* = distinct cint
+template PdfVersion_1_4*(_: type QPagedPaintDevicePdfVersionEnum): untyped = 0
+template PdfVersion_A1b*(_: type QPagedPaintDevicePdfVersionEnum): untyped = 1
+template PdfVersion_1_6*(_: type QPagedPaintDevicePdfVersionEnum): untyped = 2
 
 
 import gen_qpagedpaintdevice_types
@@ -235,287 +231,243 @@ proc fcQPagedPaintDevice_delete(self: pointer) {.importc: "QPagedPaintDevice_del
 proc fcQPagedPaintDeviceMargins_delete(self: pointer) {.importc: "QPagedPaintDevice__Margins_delete".}
 
 
-func init*(T: type QPagedPaintDevice, h: ptr cQPagedPaintDevice): QPagedPaintDevice =
+func init*(T: type gen_qpagedpaintdevice_types.QPagedPaintDevice, h: ptr cQPagedPaintDevice): gen_qpagedpaintdevice_types.QPagedPaintDevice =
   T(h: h)
-proc create*(T: type QPagedPaintDevice, ): QPagedPaintDevice =
+proc create*(T: type gen_qpagedpaintdevice_types.QPagedPaintDevice, ): gen_qpagedpaintdevice_types.QPagedPaintDevice =
 
-  QPagedPaintDevice.init(fcQPagedPaintDevice_new())
-proc newPage*(self: QPagedPaintDevice, ): bool =
+  gen_qpagedpaintdevice_types.QPagedPaintDevice.init(fcQPagedPaintDevice_new())
+proc newPage*(self: gen_qpagedpaintdevice_types.QPagedPaintDevice, ): bool =
 
   fcQPagedPaintDevice_newPage(self.h)
 
-proc setPageLayout*(self: QPagedPaintDevice, pageLayout: gen_qpagelayout.QPageLayout): bool =
+proc setPageLayout*(self: gen_qpagedpaintdevice_types.QPagedPaintDevice, pageLayout: gen_qpagelayout.QPageLayout): bool =
 
   fcQPagedPaintDevice_setPageLayout(self.h, pageLayout.h)
 
-proc setPageSize*(self: QPagedPaintDevice, pageSize: gen_qpagesize.QPageSize): bool =
+proc setPageSize*(self: gen_qpagedpaintdevice_types.QPagedPaintDevice, pageSize: gen_qpagesize.QPageSize): bool =
 
   fcQPagedPaintDevice_setPageSize(self.h, pageSize.h)
 
-proc setPageOrientation*(self: QPagedPaintDevice, orientation: gen_qpagelayout.QPageLayoutOrientation): bool =
+proc setPageOrientation*(self: gen_qpagedpaintdevice_types.QPagedPaintDevice, orientation: cint): bool =
 
   fcQPagedPaintDevice_setPageOrientation(self.h, cint(orientation))
 
-proc setPageMargins*(self: QPagedPaintDevice, margins: gen_qmargins.QMarginsF): bool =
+proc setPageMargins*(self: gen_qpagedpaintdevice_types.QPagedPaintDevice, margins: gen_qmargins.QMarginsF): bool =
 
   fcQPagedPaintDevice_setPageMargins(self.h, margins.h)
 
-proc setPageMargins2*(self: QPagedPaintDevice, margins: gen_qmargins.QMarginsF, units: gen_qpagelayout.QPageLayoutUnit): bool =
+proc setPageMargins2*(self: gen_qpagedpaintdevice_types.QPagedPaintDevice, margins: gen_qmargins.QMarginsF, units: cint): bool =
 
   fcQPagedPaintDevice_setPageMargins2(self.h, margins.h, cint(units))
 
-proc pageLayout*(self: QPagedPaintDevice, ): gen_qpagelayout.QPageLayout =
+proc pageLayout*(self: gen_qpagedpaintdevice_types.QPagedPaintDevice, ): gen_qpagelayout.QPageLayout =
 
   gen_qpagelayout.QPageLayout(h: fcQPagedPaintDevice_pageLayout(self.h))
 
-proc setPageSizeWithSize*(self: QPagedPaintDevice, size: QPagedPaintDevicePageSize): void =
+proc setPageSizeWithSize*(self: gen_qpagedpaintdevice_types.QPagedPaintDevice, size: cint): void =
 
   fcQPagedPaintDevice_setPageSizeWithSize(self.h, cint(size))
 
-proc pageSize*(self: QPagedPaintDevice, ): QPagedPaintDevicePageSize =
+proc pageSize*(self: gen_qpagedpaintdevice_types.QPagedPaintDevice, ): cint =
 
-  QPagedPaintDevicePageSize(fcQPagedPaintDevice_pageSize(self.h))
+  cint(fcQPagedPaintDevice_pageSize(self.h))
 
-proc setPageSizeMM*(self: QPagedPaintDevice, size: gen_qsize.QSizeF): void =
+proc setPageSizeMM*(self: gen_qpagedpaintdevice_types.QPagedPaintDevice, size: gen_qsize.QSizeF): void =
 
   fcQPagedPaintDevice_setPageSizeMM(self.h, size.h)
 
-proc pageSizeMM*(self: QPagedPaintDevice, ): gen_qsize.QSizeF =
+proc pageSizeMM*(self: gen_qpagedpaintdevice_types.QPagedPaintDevice, ): gen_qsize.QSizeF =
 
   gen_qsize.QSizeF(h: fcQPagedPaintDevice_pageSizeMM(self.h))
 
-proc setMargins*(self: QPagedPaintDevice, margins: QPagedPaintDeviceMargins): void =
+proc setMargins*(self: gen_qpagedpaintdevice_types.QPagedPaintDevice, margins: gen_qpagedpaintdevice_types.QPagedPaintDeviceMargins): void =
 
   fcQPagedPaintDevice_setMargins(self.h, margins.h)
 
-proc margins*(self: QPagedPaintDevice, ): QPagedPaintDeviceMargins =
+proc margins*(self: gen_qpagedpaintdevice_types.QPagedPaintDevice, ): gen_qpagedpaintdevice_types.QPagedPaintDeviceMargins =
 
-  QPagedPaintDeviceMargins(h: fcQPagedPaintDevice_margins(self.h))
+  gen_qpagedpaintdevice_types.QPagedPaintDeviceMargins(h: fcQPagedPaintDevice_margins(self.h))
 
-type QPagedPaintDevicenewPageBase* = proc(): bool
-proc onnewPage*(self: QPagedPaintDevice, slot: proc(): bool) =
+type QPagedPaintDevicenewPageProc* = proc(): bool
+proc onnewPage*(self: gen_qpagedpaintdevice_types.QPagedPaintDevice, slot: QPagedPaintDevicenewPageProc) =
   # TODO check subclass
-  type Cb = proc(): bool
-  var tmp = new Cb
+  var tmp = new QPagedPaintDevicenewPageProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPagedPaintDevice_override_virtual_newPage(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPagedPaintDevice_newPage(self: ptr cQPagedPaintDevice, slot: int): bool {.exportc: "miqt_exec_callback_QPagedPaintDevice_newPage ".} =
-  type Cb = proc(): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QPagedPaintDevicenewPageProc](cast[pointer](slot))
 
   let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setPageSizeWithSize(self: QPagedPaintDevice, size: QPagedPaintDevicePageSize): void =
-
+proc QPagedPaintDevicesetPageSizeWithSize*(self: gen_qpagedpaintdevice_types.QPagedPaintDevice, size: cint): void =
 
   fQPagedPaintDevice_virtualbase_setPageSizeWithSize(self.h, cint(size))
 
-type QPagedPaintDevicesetPageSizeWithSizeBase* = proc(size: QPagedPaintDevicePageSize): void
-proc onsetPageSizeWithSize*(self: QPagedPaintDevice, slot: proc(super: QPagedPaintDevicesetPageSizeWithSizeBase, size: QPagedPaintDevicePageSize): void) =
+type QPagedPaintDevicesetPageSizeWithSizeProc* = proc(size: cint): void
+proc onsetPageSizeWithSize*(self: gen_qpagedpaintdevice_types.QPagedPaintDevice, slot: QPagedPaintDevicesetPageSizeWithSizeProc) =
   # TODO check subclass
-  type Cb = proc(super: QPagedPaintDevicesetPageSizeWithSizeBase, size: QPagedPaintDevicePageSize): void
-  var tmp = new Cb
+  var tmp = new QPagedPaintDevicesetPageSizeWithSizeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPagedPaintDevice_override_virtual_setPageSizeWithSize(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPagedPaintDevice_setPageSizeWithSize(self: ptr cQPagedPaintDevice, slot: int, size: cint): void {.exportc: "miqt_exec_callback_QPagedPaintDevice_setPageSizeWithSize ".} =
-  type Cb = proc(super: QPagedPaintDevicesetPageSizeWithSizeBase, size: QPagedPaintDevicePageSize): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(size: QPagedPaintDevicePageSize): auto =
-    callVirtualBase_setPageSizeWithSize(QPagedPaintDevice(h: self), size)
-  let slotval1 = QPagedPaintDevicePageSize(size)
+  var nimfunc = cast[ptr QPagedPaintDevicesetPageSizeWithSizeProc](cast[pointer](slot))
+  let slotval1 = cint(size)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_setPageSizeMM(self: QPagedPaintDevice, size: gen_qsize.QSizeF): void =
-
+  nimfunc[](slotval1)
+proc QPagedPaintDevicesetPageSizeMM*(self: gen_qpagedpaintdevice_types.QPagedPaintDevice, size: gen_qsize.QSizeF): void =
 
   fQPagedPaintDevice_virtualbase_setPageSizeMM(self.h, size.h)
 
-type QPagedPaintDevicesetPageSizeMMBase* = proc(size: gen_qsize.QSizeF): void
-proc onsetPageSizeMM*(self: QPagedPaintDevice, slot: proc(super: QPagedPaintDevicesetPageSizeMMBase, size: gen_qsize.QSizeF): void) =
+type QPagedPaintDevicesetPageSizeMMProc* = proc(size: gen_qsize.QSizeF): void
+proc onsetPageSizeMM*(self: gen_qpagedpaintdevice_types.QPagedPaintDevice, slot: QPagedPaintDevicesetPageSizeMMProc) =
   # TODO check subclass
-  type Cb = proc(super: QPagedPaintDevicesetPageSizeMMBase, size: gen_qsize.QSizeF): void
-  var tmp = new Cb
+  var tmp = new QPagedPaintDevicesetPageSizeMMProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPagedPaintDevice_override_virtual_setPageSizeMM(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPagedPaintDevice_setPageSizeMM(self: ptr cQPagedPaintDevice, slot: int, size: pointer): void {.exportc: "miqt_exec_callback_QPagedPaintDevice_setPageSizeMM ".} =
-  type Cb = proc(super: QPagedPaintDevicesetPageSizeMMBase, size: gen_qsize.QSizeF): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(size: gen_qsize.QSizeF): auto =
-    callVirtualBase_setPageSizeMM(QPagedPaintDevice(h: self), size)
+  var nimfunc = cast[ptr QPagedPaintDevicesetPageSizeMMProc](cast[pointer](slot))
   let slotval1 = gen_qsize.QSizeF(h: size)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_setMargins(self: QPagedPaintDevice, margins: QPagedPaintDeviceMargins): void =
-
+  nimfunc[](slotval1)
+proc QPagedPaintDevicesetMargins*(self: gen_qpagedpaintdevice_types.QPagedPaintDevice, margins: gen_qpagedpaintdevice_types.QPagedPaintDeviceMargins): void =
 
   fQPagedPaintDevice_virtualbase_setMargins(self.h, margins.h)
 
-type QPagedPaintDevicesetMarginsBase* = proc(margins: QPagedPaintDeviceMargins): void
-proc onsetMargins*(self: QPagedPaintDevice, slot: proc(super: QPagedPaintDevicesetMarginsBase, margins: QPagedPaintDeviceMargins): void) =
+type QPagedPaintDevicesetMarginsProc* = proc(margins: gen_qpagedpaintdevice_types.QPagedPaintDeviceMargins): void
+proc onsetMargins*(self: gen_qpagedpaintdevice_types.QPagedPaintDevice, slot: QPagedPaintDevicesetMarginsProc) =
   # TODO check subclass
-  type Cb = proc(super: QPagedPaintDevicesetMarginsBase, margins: QPagedPaintDeviceMargins): void
-  var tmp = new Cb
+  var tmp = new QPagedPaintDevicesetMarginsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPagedPaintDevice_override_virtual_setMargins(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPagedPaintDevice_setMargins(self: ptr cQPagedPaintDevice, slot: int, margins: pointer): void {.exportc: "miqt_exec_callback_QPagedPaintDevice_setMargins ".} =
-  type Cb = proc(super: QPagedPaintDevicesetMarginsBase, margins: QPagedPaintDeviceMargins): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(margins: QPagedPaintDeviceMargins): auto =
-    callVirtualBase_setMargins(QPagedPaintDevice(h: self), margins)
-  let slotval1 = QPagedPaintDeviceMargins(h: margins)
+  var nimfunc = cast[ptr QPagedPaintDevicesetMarginsProc](cast[pointer](slot))
+  let slotval1 = gen_qpagedpaintdevice_types.QPagedPaintDeviceMargins(h: margins)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_devType(self: QPagedPaintDevice, ): cint =
-
+  nimfunc[](slotval1)
+proc QPagedPaintDevicedevType*(self: gen_qpagedpaintdevice_types.QPagedPaintDevice, ): cint =
 
   fQPagedPaintDevice_virtualbase_devType(self.h)
 
-type QPagedPaintDevicedevTypeBase* = proc(): cint
-proc ondevType*(self: QPagedPaintDevice, slot: proc(super: QPagedPaintDevicedevTypeBase): cint) =
+type QPagedPaintDevicedevTypeProc* = proc(): cint
+proc ondevType*(self: gen_qpagedpaintdevice_types.QPagedPaintDevice, slot: QPagedPaintDevicedevTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: QPagedPaintDevicedevTypeBase): cint
-  var tmp = new Cb
+  var tmp = new QPagedPaintDevicedevTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPagedPaintDevice_override_virtual_devType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPagedPaintDevice_devType(self: ptr cQPagedPaintDevice, slot: int): cint {.exportc: "miqt_exec_callback_QPagedPaintDevice_devType ".} =
-  type Cb = proc(super: QPagedPaintDevicedevTypeBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_devType(QPagedPaintDevice(h: self), )
+  var nimfunc = cast[ptr QPagedPaintDevicedevTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-type QPagedPaintDevicepaintEngineBase* = proc(): gen_qpaintengine.QPaintEngine
-proc onpaintEngine*(self: QPagedPaintDevice, slot: proc(): gen_qpaintengine.QPaintEngine) =
+type QPagedPaintDevicepaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
+proc onpaintEngine*(self: gen_qpagedpaintdevice_types.QPagedPaintDevice, slot: QPagedPaintDevicepaintEngineProc) =
   # TODO check subclass
-  type Cb = proc(): gen_qpaintengine.QPaintEngine
-  var tmp = new Cb
+  var tmp = new QPagedPaintDevicepaintEngineProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPagedPaintDevice_override_virtual_paintEngine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPagedPaintDevice_paintEngine(self: ptr cQPagedPaintDevice, slot: int): pointer {.exportc: "miqt_exec_callback_QPagedPaintDevice_paintEngine ".} =
-  type Cb = proc(): gen_qpaintengine.QPaintEngine
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QPagedPaintDevicepaintEngineProc](cast[pointer](slot))
 
   let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metric(self: QPagedPaintDevice, metric: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint =
-
+proc QPagedPaintDevicemetric*(self: gen_qpagedpaintdevice_types.QPagedPaintDevice, metric: cint): cint =
 
   fQPagedPaintDevice_virtualbase_metric(self.h, cint(metric))
 
-type QPagedPaintDevicemetricBase* = proc(metric: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-proc onmetric*(self: QPagedPaintDevice, slot: proc(super: QPagedPaintDevicemetricBase, metric: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint) =
+type QPagedPaintDevicemetricProc* = proc(metric: cint): cint
+proc onmetric*(self: gen_qpagedpaintdevice_types.QPagedPaintDevice, slot: QPagedPaintDevicemetricProc) =
   # TODO check subclass
-  type Cb = proc(super: QPagedPaintDevicemetricBase, metric: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var tmp = new Cb
+  var tmp = new QPagedPaintDevicemetricProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPagedPaintDevice_override_virtual_metric(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPagedPaintDevice_metric(self: ptr cQPagedPaintDevice, slot: int, metric: cint): cint {.exportc: "miqt_exec_callback_QPagedPaintDevice_metric ".} =
-  type Cb = proc(super: QPagedPaintDevicemetricBase, metric: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(metric: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): auto =
-    callVirtualBase_metric(QPagedPaintDevice(h: self), metric)
-  let slotval1 = gen_qpaintdevice.QPaintDevicePaintDeviceMetric(metric)
+  var nimfunc = cast[ptr QPagedPaintDevicemetricProc](cast[pointer](slot))
+  let slotval1 = cint(metric)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_initPainter(self: QPagedPaintDevice, painter: gen_qpainter.QPainter): void =
-
+proc QPagedPaintDeviceinitPainter*(self: gen_qpagedpaintdevice_types.QPagedPaintDevice, painter: gen_qpainter.QPainter): void =
 
   fQPagedPaintDevice_virtualbase_initPainter(self.h, painter.h)
 
-type QPagedPaintDeviceinitPainterBase* = proc(painter: gen_qpainter.QPainter): void
-proc oninitPainter*(self: QPagedPaintDevice, slot: proc(super: QPagedPaintDeviceinitPainterBase, painter: gen_qpainter.QPainter): void) =
+type QPagedPaintDeviceinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
+proc oninitPainter*(self: gen_qpagedpaintdevice_types.QPagedPaintDevice, slot: QPagedPaintDeviceinitPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QPagedPaintDeviceinitPainterBase, painter: gen_qpainter.QPainter): void
-  var tmp = new Cb
+  var tmp = new QPagedPaintDeviceinitPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPagedPaintDevice_override_virtual_initPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPagedPaintDevice_initPainter(self: ptr cQPagedPaintDevice, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_QPagedPaintDevice_initPainter ".} =
-  type Cb = proc(super: QPagedPaintDeviceinitPainterBase, painter: gen_qpainter.QPainter): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter): auto =
-    callVirtualBase_initPainter(QPagedPaintDevice(h: self), painter)
+  var nimfunc = cast[ptr QPagedPaintDeviceinitPainterProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_redirected(self: QPagedPaintDevice, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
+  nimfunc[](slotval1)
+proc QPagedPaintDeviceredirected*(self: gen_qpagedpaintdevice_types.QPagedPaintDevice, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
 
   gen_qpaintdevice.QPaintDevice(h: fQPagedPaintDevice_virtualbase_redirected(self.h, offset.h))
 
-type QPagedPaintDeviceredirectedBase* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-proc onredirected*(self: QPagedPaintDevice, slot: proc(super: QPagedPaintDeviceredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice) =
+type QPagedPaintDeviceredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
+proc onredirected*(self: gen_qpagedpaintdevice_types.QPagedPaintDevice, slot: QPagedPaintDeviceredirectedProc) =
   # TODO check subclass
-  type Cb = proc(super: QPagedPaintDeviceredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var tmp = new Cb
+  var tmp = new QPagedPaintDeviceredirectedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPagedPaintDevice_override_virtual_redirected(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPagedPaintDevice_redirected(self: ptr cQPagedPaintDevice, slot: int, offset: pointer): pointer {.exportc: "miqt_exec_callback_QPagedPaintDevice_redirected ".} =
-  type Cb = proc(super: QPagedPaintDeviceredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(offset: gen_qpoint.QPoint): auto =
-    callVirtualBase_redirected(QPagedPaintDevice(h: self), offset)
+  var nimfunc = cast[ptr QPagedPaintDeviceredirectedProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: offset)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_sharedPainter(self: QPagedPaintDevice, ): gen_qpainter.QPainter =
-
+proc QPagedPaintDevicesharedPainter*(self: gen_qpagedpaintdevice_types.QPagedPaintDevice, ): gen_qpainter.QPainter =
 
   gen_qpainter.QPainter(h: fQPagedPaintDevice_virtualbase_sharedPainter(self.h))
 
-type QPagedPaintDevicesharedPainterBase* = proc(): gen_qpainter.QPainter
-proc onsharedPainter*(self: QPagedPaintDevice, slot: proc(super: QPagedPaintDevicesharedPainterBase): gen_qpainter.QPainter) =
+type QPagedPaintDevicesharedPainterProc* = proc(): gen_qpainter.QPainter
+proc onsharedPainter*(self: gen_qpagedpaintdevice_types.QPagedPaintDevice, slot: QPagedPaintDevicesharedPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QPagedPaintDevicesharedPainterBase): gen_qpainter.QPainter
-  var tmp = new Cb
+  var tmp = new QPagedPaintDevicesharedPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPagedPaintDevice_override_virtual_sharedPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPagedPaintDevice_sharedPainter(self: ptr cQPagedPaintDevice, slot: int): pointer {.exportc: "miqt_exec_callback_QPagedPaintDevice_sharedPainter ".} =
-  type Cb = proc(super: QPagedPaintDevicesharedPainterBase): gen_qpainter.QPainter
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sharedPainter(QPagedPaintDevice(h: self), )
+  var nimfunc = cast[ptr QPagedPaintDevicesharedPainterProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc delete*(self: QPagedPaintDevice) =
+proc delete*(self: gen_qpagedpaintdevice_types.QPagedPaintDevice) =
   fcQPagedPaintDevice_delete(self.h)
 
-func init*(T: type QPagedPaintDeviceMargins, h: ptr cQPagedPaintDeviceMargins): QPagedPaintDeviceMargins =
+func init*(T: type gen_qpagedpaintdevice_types.QPagedPaintDeviceMargins, h: ptr cQPagedPaintDeviceMargins): gen_qpagedpaintdevice_types.QPagedPaintDeviceMargins =
   T(h: h)
-proc delete*(self: QPagedPaintDeviceMargins) =
+proc delete*(self: gen_qpagedpaintdevice_types.QPagedPaintDeviceMargins) =
   fcQPagedPaintDeviceMargins_delete(self.h)

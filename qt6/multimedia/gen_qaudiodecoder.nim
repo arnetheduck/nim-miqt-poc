@@ -34,14 +34,12 @@ const cflags = gorge("pkg-config -cflags Qt6MultimediaWidgets")
 {.compile("gen_qaudiodecoder.cpp", cflags).}
 
 
-type QAudioDecoderError* = cint
-const
-  QAudioDecoderNoError* = 0
-  QAudioDecoderResourceError* = 1
-  QAudioDecoderFormatError* = 2
-  QAudioDecoderAccessDeniedError* = 3
-  QAudioDecoderNotSupportedError* = 4
-
+type QAudioDecoderErrorEnum* = distinct cint
+template NoError*(_: type QAudioDecoderErrorEnum): untyped = 0
+template ResourceError*(_: type QAudioDecoderErrorEnum): untyped = 1
+template FormatError*(_: type QAudioDecoderErrorEnum): untyped = 2
+template AccessDeniedError*(_: type QAudioDecoderErrorEnum): untyped = 3
+template NotSupportedError*(_: type QAudioDecoderErrorEnum): untyped = 4
 
 
 import gen_qaudiodecoder_types
@@ -134,101 +132,101 @@ proc fcQAudioDecoder_staticMetaObject(): pointer {.importc: "QAudioDecoder_stati
 proc fcQAudioDecoder_delete(self: pointer) {.importc: "QAudioDecoder_delete".}
 
 
-func init*(T: type QAudioDecoder, h: ptr cQAudioDecoder): QAudioDecoder =
+func init*(T: type gen_qaudiodecoder_types.QAudioDecoder, h: ptr cQAudioDecoder): gen_qaudiodecoder_types.QAudioDecoder =
   T(h: h)
-proc create*(T: type QAudioDecoder, ): QAudioDecoder =
+proc create*(T: type gen_qaudiodecoder_types.QAudioDecoder, ): gen_qaudiodecoder_types.QAudioDecoder =
 
-  QAudioDecoder.init(fcQAudioDecoder_new())
-proc create*(T: type QAudioDecoder, parent: gen_qobject.QObject): QAudioDecoder =
+  gen_qaudiodecoder_types.QAudioDecoder.init(fcQAudioDecoder_new())
+proc create*(T: type gen_qaudiodecoder_types.QAudioDecoder, parent: gen_qobject.QObject): gen_qaudiodecoder_types.QAudioDecoder =
 
-  QAudioDecoder.init(fcQAudioDecoder_new2(parent.h))
-proc metaObject*(self: QAudioDecoder, ): gen_qobjectdefs.QMetaObject =
+  gen_qaudiodecoder_types.QAudioDecoder.init(fcQAudioDecoder_new2(parent.h))
+proc metaObject*(self: gen_qaudiodecoder_types.QAudioDecoder, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQAudioDecoder_metaObject(self.h))
 
-proc metacast*(self: QAudioDecoder, param1: cstring): pointer =
+proc metacast*(self: gen_qaudiodecoder_types.QAudioDecoder, param1: cstring): pointer =
 
   fcQAudioDecoder_metacast(self.h, param1)
 
-proc metacall*(self: QAudioDecoder, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qaudiodecoder_types.QAudioDecoder, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQAudioDecoder_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QAudioDecoder, s: cstring): string =
+proc tr*(_: type gen_qaudiodecoder_types.QAudioDecoder, s: cstring): string =
 
   let v_ms = fcQAudioDecoder_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc isSupported*(self: QAudioDecoder, ): bool =
+proc isSupported*(self: gen_qaudiodecoder_types.QAudioDecoder, ): bool =
 
   fcQAudioDecoder_isSupported(self.h)
 
-proc isDecoding*(self: QAudioDecoder, ): bool =
+proc isDecoding*(self: gen_qaudiodecoder_types.QAudioDecoder, ): bool =
 
   fcQAudioDecoder_isDecoding(self.h)
 
-proc source*(self: QAudioDecoder, ): gen_qurl.QUrl =
+proc source*(self: gen_qaudiodecoder_types.QAudioDecoder, ): gen_qurl.QUrl =
 
   gen_qurl.QUrl(h: fcQAudioDecoder_source(self.h))
 
-proc setSource*(self: QAudioDecoder, fileName: gen_qurl.QUrl): void =
+proc setSource*(self: gen_qaudiodecoder_types.QAudioDecoder, fileName: gen_qurl.QUrl): void =
 
   fcQAudioDecoder_setSource(self.h, fileName.h)
 
-proc sourceDevice*(self: QAudioDecoder, ): gen_qiodevice.QIODevice =
+proc sourceDevice*(self: gen_qaudiodecoder_types.QAudioDecoder, ): gen_qiodevice.QIODevice =
 
   gen_qiodevice.QIODevice(h: fcQAudioDecoder_sourceDevice(self.h))
 
-proc setSourceDevice*(self: QAudioDecoder, device: gen_qiodevice.QIODevice): void =
+proc setSourceDevice*(self: gen_qaudiodecoder_types.QAudioDecoder, device: gen_qiodevice.QIODevice): void =
 
   fcQAudioDecoder_setSourceDevice(self.h, device.h)
 
-proc audioFormat*(self: QAudioDecoder, ): gen_qaudioformat.QAudioFormat =
+proc audioFormat*(self: gen_qaudiodecoder_types.QAudioDecoder, ): gen_qaudioformat.QAudioFormat =
 
   gen_qaudioformat.QAudioFormat(h: fcQAudioDecoder_audioFormat(self.h))
 
-proc setAudioFormat*(self: QAudioDecoder, format: gen_qaudioformat.QAudioFormat): void =
+proc setAudioFormat*(self: gen_qaudiodecoder_types.QAudioDecoder, format: gen_qaudioformat.QAudioFormat): void =
 
   fcQAudioDecoder_setAudioFormat(self.h, format.h)
 
-proc error*(self: QAudioDecoder, ): QAudioDecoderError =
+proc error*(self: gen_qaudiodecoder_types.QAudioDecoder, ): cint =
 
-  QAudioDecoderError(fcQAudioDecoder_error(self.h))
+  cint(fcQAudioDecoder_error(self.h))
 
-proc errorString*(self: QAudioDecoder, ): string =
+proc errorString*(self: gen_qaudiodecoder_types.QAudioDecoder, ): string =
 
   let v_ms = fcQAudioDecoder_errorString(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc read*(self: QAudioDecoder, ): gen_qaudiobuffer.QAudioBuffer =
+proc read*(self: gen_qaudiodecoder_types.QAudioDecoder, ): gen_qaudiobuffer.QAudioBuffer =
 
   gen_qaudiobuffer.QAudioBuffer(h: fcQAudioDecoder_read(self.h))
 
-proc bufferAvailable*(self: QAudioDecoder, ): bool =
+proc bufferAvailable*(self: gen_qaudiodecoder_types.QAudioDecoder, ): bool =
 
   fcQAudioDecoder_bufferAvailable(self.h)
 
-proc position*(self: QAudioDecoder, ): clonglong =
+proc position*(self: gen_qaudiodecoder_types.QAudioDecoder, ): clonglong =
 
   fcQAudioDecoder_position(self.h)
 
-proc duration*(self: QAudioDecoder, ): clonglong =
+proc duration*(self: gen_qaudiodecoder_types.QAudioDecoder, ): clonglong =
 
   fcQAudioDecoder_duration(self.h)
 
-proc start*(self: QAudioDecoder, ): void =
+proc start*(self: gen_qaudiodecoder_types.QAudioDecoder, ): void =
 
   fcQAudioDecoder_start(self.h)
 
-proc stop*(self: QAudioDecoder, ): void =
+proc stop*(self: gen_qaudiodecoder_types.QAudioDecoder, ): void =
 
   fcQAudioDecoder_stop(self.h)
 
-proc bufferAvailableChanged*(self: QAudioDecoder, param1: bool): void =
+proc bufferAvailableChanged*(self: gen_qaudiodecoder_types.QAudioDecoder, param1: bool): void =
 
   fcQAudioDecoder_bufferAvailableChanged(self.h, param1)
 
@@ -240,13 +238,13 @@ proc miqt_exec_callback_QAudioDecoder_bufferAvailableChanged(slot: int, param1: 
 
   nimfunc[](slotval1)
 
-proc onbufferAvailableChanged*(self: QAudioDecoder, slot: proc(param1: bool)) =
+proc onbufferAvailableChanged*(self: gen_qaudiodecoder_types.QAudioDecoder, slot: proc(param1: bool)) =
   type Cb = proc(param1: bool)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQAudioDecoder_connect_bufferAvailableChanged(self.h, cast[int](addr tmp[]))
-proc bufferReady*(self: QAudioDecoder, ): void =
+proc bufferReady*(self: gen_qaudiodecoder_types.QAudioDecoder, ): void =
 
   fcQAudioDecoder_bufferReady(self.h)
 
@@ -256,13 +254,13 @@ proc miqt_exec_callback_QAudioDecoder_bufferReady(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onbufferReady*(self: QAudioDecoder, slot: proc()) =
+proc onbufferReady*(self: gen_qaudiodecoder_types.QAudioDecoder, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQAudioDecoder_connect_bufferReady(self.h, cast[int](addr tmp[]))
-proc finished*(self: QAudioDecoder, ): void =
+proc finished*(self: gen_qaudiodecoder_types.QAudioDecoder, ): void =
 
   fcQAudioDecoder_finished(self.h)
 
@@ -272,13 +270,13 @@ proc miqt_exec_callback_QAudioDecoder_finished(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onfinished*(self: QAudioDecoder, slot: proc()) =
+proc onfinished*(self: gen_qaudiodecoder_types.QAudioDecoder, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQAudioDecoder_connect_finished(self.h, cast[int](addr tmp[]))
-proc isDecodingChanged*(self: QAudioDecoder, param1: bool): void =
+proc isDecodingChanged*(self: gen_qaudiodecoder_types.QAudioDecoder, param1: bool): void =
 
   fcQAudioDecoder_isDecodingChanged(self.h, param1)
 
@@ -290,13 +288,13 @@ proc miqt_exec_callback_QAudioDecoder_isDecodingChanged(slot: int, param1: bool)
 
   nimfunc[](slotval1)
 
-proc onisDecodingChanged*(self: QAudioDecoder, slot: proc(param1: bool)) =
+proc onisDecodingChanged*(self: gen_qaudiodecoder_types.QAudioDecoder, slot: proc(param1: bool)) =
   type Cb = proc(param1: bool)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQAudioDecoder_connect_isDecodingChanged(self.h, cast[int](addr tmp[]))
-proc formatChanged*(self: QAudioDecoder, format: gen_qaudioformat.QAudioFormat): void =
+proc formatChanged*(self: gen_qaudiodecoder_types.QAudioDecoder, format: gen_qaudioformat.QAudioFormat): void =
 
   fcQAudioDecoder_formatChanged(self.h, format.h)
 
@@ -308,31 +306,31 @@ proc miqt_exec_callback_QAudioDecoder_formatChanged(slot: int, format: pointer) 
 
   nimfunc[](slotval1)
 
-proc onformatChanged*(self: QAudioDecoder, slot: proc(format: gen_qaudioformat.QAudioFormat)) =
+proc onformatChanged*(self: gen_qaudiodecoder_types.QAudioDecoder, slot: proc(format: gen_qaudioformat.QAudioFormat)) =
   type Cb = proc(format: gen_qaudioformat.QAudioFormat)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQAudioDecoder_connect_formatChanged(self.h, cast[int](addr tmp[]))
-proc errorWithError*(self: QAudioDecoder, error: QAudioDecoderError): void =
+proc errorWithError*(self: gen_qaudiodecoder_types.QAudioDecoder, error: cint): void =
 
   fcQAudioDecoder_errorWithError(self.h, cint(error))
 
 proc miqt_exec_callback_QAudioDecoder_errorWithError(slot: int, error: cint) {.exportc.} =
-  type Cb = proc(error: QAudioDecoderError)
+  type Cb = proc(error: cint)
   let nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = QAudioDecoderError(error)
+  let slotval1 = cint(error)
 
 
   nimfunc[](slotval1)
 
-proc onerrorWithError*(self: QAudioDecoder, slot: proc(error: QAudioDecoderError)) =
-  type Cb = proc(error: QAudioDecoderError)
+proc onerrorWithError*(self: gen_qaudiodecoder_types.QAudioDecoder, slot: proc(error: cint)) =
+  type Cb = proc(error: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQAudioDecoder_connect_errorWithError(self.h, cast[int](addr tmp[]))
-proc sourceChanged*(self: QAudioDecoder, ): void =
+proc sourceChanged*(self: gen_qaudiodecoder_types.QAudioDecoder, ): void =
 
   fcQAudioDecoder_sourceChanged(self.h)
 
@@ -342,13 +340,13 @@ proc miqt_exec_callback_QAudioDecoder_sourceChanged(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onsourceChanged*(self: QAudioDecoder, slot: proc()) =
+proc onsourceChanged*(self: gen_qaudiodecoder_types.QAudioDecoder, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQAudioDecoder_connect_sourceChanged(self.h, cast[int](addr tmp[]))
-proc positionChanged*(self: QAudioDecoder, position: clonglong): void =
+proc positionChanged*(self: gen_qaudiodecoder_types.QAudioDecoder, position: clonglong): void =
 
   fcQAudioDecoder_positionChanged(self.h, position)
 
@@ -360,13 +358,13 @@ proc miqt_exec_callback_QAudioDecoder_positionChanged(slot: int, position: clong
 
   nimfunc[](slotval1)
 
-proc onpositionChanged*(self: QAudioDecoder, slot: proc(position: clonglong)) =
+proc onpositionChanged*(self: gen_qaudiodecoder_types.QAudioDecoder, slot: proc(position: clonglong)) =
   type Cb = proc(position: clonglong)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQAudioDecoder_connect_positionChanged(self.h, cast[int](addr tmp[]))
-proc durationChanged*(self: QAudioDecoder, duration: clonglong): void =
+proc durationChanged*(self: gen_qaudiodecoder_types.QAudioDecoder, duration: clonglong): void =
 
   fcQAudioDecoder_durationChanged(self.h, duration)
 
@@ -378,271 +376,221 @@ proc miqt_exec_callback_QAudioDecoder_durationChanged(slot: int, duration: clong
 
   nimfunc[](slotval1)
 
-proc ondurationChanged*(self: QAudioDecoder, slot: proc(duration: clonglong)) =
+proc ondurationChanged*(self: gen_qaudiodecoder_types.QAudioDecoder, slot: proc(duration: clonglong)) =
   type Cb = proc(duration: clonglong)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQAudioDecoder_connect_durationChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QAudioDecoder, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qaudiodecoder_types.QAudioDecoder, s: cstring, c: cstring): string =
 
   let v_ms = fcQAudioDecoder_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QAudioDecoder, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qaudiodecoder_types.QAudioDecoder, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQAudioDecoder_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QAudioDecoder, ): gen_qobjectdefs.QMetaObject =
-
+proc QAudioDecodermetaObject*(self: gen_qaudiodecoder_types.QAudioDecoder, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQAudioDecoder_virtualbase_metaObject(self.h))
 
-type QAudioDecodermetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QAudioDecoder, slot: proc(super: QAudioDecodermetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QAudioDecodermetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qaudiodecoder_types.QAudioDecoder, slot: QAudioDecodermetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QAudioDecodermetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QAudioDecodermetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAudioDecoder_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAudioDecoder_metaObject(self: ptr cQAudioDecoder, slot: int): pointer {.exportc: "miqt_exec_callback_QAudioDecoder_metaObject ".} =
-  type Cb = proc(super: QAudioDecodermetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QAudioDecoder(h: self), )
+  var nimfunc = cast[ptr QAudioDecodermetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QAudioDecoder, param1: cstring): pointer =
-
+proc QAudioDecodermetacast*(self: gen_qaudiodecoder_types.QAudioDecoder, param1: cstring): pointer =
 
   fQAudioDecoder_virtualbase_metacast(self.h, param1)
 
-type QAudioDecodermetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QAudioDecoder, slot: proc(super: QAudioDecodermetacastBase, param1: cstring): pointer) =
+type QAudioDecodermetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qaudiodecoder_types.QAudioDecoder, slot: QAudioDecodermetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QAudioDecodermetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QAudioDecodermetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAudioDecoder_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAudioDecoder_metacast(self: ptr cQAudioDecoder, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QAudioDecoder_metacast ".} =
-  type Cb = proc(super: QAudioDecodermetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QAudioDecoder(h: self), param1)
+  var nimfunc = cast[ptr QAudioDecodermetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QAudioDecoder, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QAudioDecodermetacall*(self: gen_qaudiodecoder_types.QAudioDecoder, param1: cint, param2: cint, param3: pointer): cint =
 
   fQAudioDecoder_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QAudioDecodermetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QAudioDecoder, slot: proc(super: QAudioDecodermetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QAudioDecodermetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qaudiodecoder_types.QAudioDecoder, slot: QAudioDecodermetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QAudioDecodermetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QAudioDecodermetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAudioDecoder_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAudioDecoder_metacall(self: ptr cQAudioDecoder, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QAudioDecoder_metacall ".} =
-  type Cb = proc(super: QAudioDecodermetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QAudioDecoder(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QAudioDecodermetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_event(self: QAudioDecoder, event: gen_qcoreevent.QEvent): bool =
-
+proc QAudioDecoderevent*(self: gen_qaudiodecoder_types.QAudioDecoder, event: gen_qcoreevent.QEvent): bool =
 
   fQAudioDecoder_virtualbase_event(self.h, event.h)
 
-type QAudioDecodereventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QAudioDecoder, slot: proc(super: QAudioDecodereventBase, event: gen_qcoreevent.QEvent): bool) =
+type QAudioDecodereventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qaudiodecoder_types.QAudioDecoder, slot: QAudioDecodereventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAudioDecodereventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QAudioDecodereventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAudioDecoder_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAudioDecoder_event(self: ptr cQAudioDecoder, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QAudioDecoder_event ".} =
-  type Cb = proc(super: QAudioDecodereventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QAudioDecoder(h: self), event)
+  var nimfunc = cast[ptr QAudioDecodereventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QAudioDecoder, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QAudioDecodereventFilter*(self: gen_qaudiodecoder_types.QAudioDecoder, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQAudioDecoder_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QAudioDecodereventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QAudioDecoder, slot: proc(super: QAudioDecodereventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QAudioDecodereventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qaudiodecoder_types.QAudioDecoder, slot: QAudioDecodereventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QAudioDecodereventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QAudioDecodereventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAudioDecoder_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAudioDecoder_eventFilter(self: ptr cQAudioDecoder, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QAudioDecoder_eventFilter ".} =
-  type Cb = proc(super: QAudioDecodereventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QAudioDecoder(h: self), watched, event)
+  var nimfunc = cast[ptr QAudioDecodereventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QAudioDecoder, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QAudioDecodertimerEvent*(self: gen_qaudiodecoder_types.QAudioDecoder, event: gen_qcoreevent.QTimerEvent): void =
 
   fQAudioDecoder_virtualbase_timerEvent(self.h, event.h)
 
-type QAudioDecodertimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QAudioDecoder, slot: proc(super: QAudioDecodertimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QAudioDecodertimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qaudiodecoder_types.QAudioDecoder, slot: QAudioDecodertimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAudioDecodertimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QAudioDecodertimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAudioDecoder_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAudioDecoder_timerEvent(self: ptr cQAudioDecoder, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAudioDecoder_timerEvent ".} =
-  type Cb = proc(super: QAudioDecodertimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QAudioDecoder(h: self), event)
+  var nimfunc = cast[ptr QAudioDecodertimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QAudioDecoder, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QAudioDecoderchildEvent*(self: gen_qaudiodecoder_types.QAudioDecoder, event: gen_qcoreevent.QChildEvent): void =
 
   fQAudioDecoder_virtualbase_childEvent(self.h, event.h)
 
-type QAudioDecoderchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QAudioDecoder, slot: proc(super: QAudioDecoderchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QAudioDecoderchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qaudiodecoder_types.QAudioDecoder, slot: QAudioDecoderchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAudioDecoderchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QAudioDecoderchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAudioDecoder_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAudioDecoder_childEvent(self: ptr cQAudioDecoder, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAudioDecoder_childEvent ".} =
-  type Cb = proc(super: QAudioDecoderchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QAudioDecoder(h: self), event)
+  var nimfunc = cast[ptr QAudioDecoderchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QAudioDecoder, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QAudioDecodercustomEvent*(self: gen_qaudiodecoder_types.QAudioDecoder, event: gen_qcoreevent.QEvent): void =
 
   fQAudioDecoder_virtualbase_customEvent(self.h, event.h)
 
-type QAudioDecodercustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QAudioDecoder, slot: proc(super: QAudioDecodercustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QAudioDecodercustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qaudiodecoder_types.QAudioDecoder, slot: QAudioDecodercustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAudioDecodercustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QAudioDecodercustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAudioDecoder_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAudioDecoder_customEvent(self: ptr cQAudioDecoder, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAudioDecoder_customEvent ".} =
-  type Cb = proc(super: QAudioDecodercustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QAudioDecoder(h: self), event)
+  var nimfunc = cast[ptr QAudioDecodercustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QAudioDecoder, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QAudioDecoderconnectNotify*(self: gen_qaudiodecoder_types.QAudioDecoder, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQAudioDecoder_virtualbase_connectNotify(self.h, signal.h)
 
-type QAudioDecoderconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QAudioDecoder, slot: proc(super: QAudioDecoderconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QAudioDecoderconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qaudiodecoder_types.QAudioDecoder, slot: QAudioDecoderconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QAudioDecoderconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QAudioDecoderconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAudioDecoder_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAudioDecoder_connectNotify(self: ptr cQAudioDecoder, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QAudioDecoder_connectNotify ".} =
-  type Cb = proc(super: QAudioDecoderconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QAudioDecoder(h: self), signal)
+  var nimfunc = cast[ptr QAudioDecoderconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QAudioDecoder, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QAudioDecoderdisconnectNotify*(self: gen_qaudiodecoder_types.QAudioDecoder, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQAudioDecoder_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QAudioDecoderdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QAudioDecoder, slot: proc(super: QAudioDecoderdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QAudioDecoderdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qaudiodecoder_types.QAudioDecoder, slot: QAudioDecoderdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QAudioDecoderdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QAudioDecoderdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAudioDecoder_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAudioDecoder_disconnectNotify(self: ptr cQAudioDecoder, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QAudioDecoder_disconnectNotify ".} =
-  type Cb = proc(super: QAudioDecoderdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QAudioDecoder(h: self), signal)
+  var nimfunc = cast[ptr QAudioDecoderdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QAudioDecoder): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qaudiodecoder_types.QAudioDecoder): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQAudioDecoder_staticMetaObject())
-proc delete*(self: QAudioDecoder) =
+proc delete*(self: gen_qaudiodecoder_types.QAudioDecoder) =
   fcQAudioDecoder_delete(self.h)

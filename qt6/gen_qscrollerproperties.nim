@@ -34,47 +34,41 @@ const cflags = gorge("pkg-config -cflags Qt6Widgets")
 {.compile("gen_qscrollerproperties.cpp", cflags).}
 
 
-type QScrollerPropertiesOvershootPolicy* = cint
-const
-  QScrollerPropertiesOvershootWhenScrollable* = 0
-  QScrollerPropertiesOvershootAlwaysOff* = 1
-  QScrollerPropertiesOvershootAlwaysOn* = 2
+type QScrollerPropertiesOvershootPolicyEnum* = distinct cint
+template OvershootWhenScrollable*(_: type QScrollerPropertiesOvershootPolicyEnum): untyped = 0
+template OvershootAlwaysOff*(_: type QScrollerPropertiesOvershootPolicyEnum): untyped = 1
+template OvershootAlwaysOn*(_: type QScrollerPropertiesOvershootPolicyEnum): untyped = 2
 
 
-
-type QScrollerPropertiesFrameRates* = cint
-const
-  QScrollerPropertiesStandard* = 0
-  QScrollerPropertiesFps60* = 1
-  QScrollerPropertiesFps30* = 2
-  QScrollerPropertiesFps20* = 3
+type QScrollerPropertiesFrameRatesEnum* = distinct cint
+template Standard*(_: type QScrollerPropertiesFrameRatesEnum): untyped = 0
+template Fps60*(_: type QScrollerPropertiesFrameRatesEnum): untyped = 1
+template Fps30*(_: type QScrollerPropertiesFrameRatesEnum): untyped = 2
+template Fps20*(_: type QScrollerPropertiesFrameRatesEnum): untyped = 3
 
 
-
-type QScrollerPropertiesScrollMetric* = cint
-const
-  QScrollerPropertiesMousePressEventDelay* = 0
-  QScrollerPropertiesDragStartDistance* = 1
-  QScrollerPropertiesDragVelocitySmoothingFactor* = 2
-  QScrollerPropertiesAxisLockThreshold* = 3
-  QScrollerPropertiesScrollingCurve* = 4
-  QScrollerPropertiesDecelerationFactor* = 5
-  QScrollerPropertiesMinimumVelocity* = 6
-  QScrollerPropertiesMaximumVelocity* = 7
-  QScrollerPropertiesMaximumClickThroughVelocity* = 8
-  QScrollerPropertiesAcceleratingFlickMaximumTime* = 9
-  QScrollerPropertiesAcceleratingFlickSpeedupFactor* = 10
-  QScrollerPropertiesSnapPositionRatio* = 11
-  QScrollerPropertiesSnapTime* = 12
-  QScrollerPropertiesOvershootDragResistanceFactor* = 13
-  QScrollerPropertiesOvershootDragDistanceFactor* = 14
-  QScrollerPropertiesOvershootScrollDistanceFactor* = 15
-  QScrollerPropertiesOvershootScrollTime* = 16
-  QScrollerPropertiesHorizontalOvershootPolicy* = 17
-  QScrollerPropertiesVerticalOvershootPolicy* = 18
-  QScrollerPropertiesFrameRate* = 19
-  QScrollerPropertiesScrollMetricCount* = 20
-
+type QScrollerPropertiesScrollMetricEnum* = distinct cint
+template MousePressEventDelay*(_: type QScrollerPropertiesScrollMetricEnum): untyped = 0
+template DragStartDistance*(_: type QScrollerPropertiesScrollMetricEnum): untyped = 1
+template DragVelocitySmoothingFactor*(_: type QScrollerPropertiesScrollMetricEnum): untyped = 2
+template AxisLockThreshold*(_: type QScrollerPropertiesScrollMetricEnum): untyped = 3
+template ScrollingCurve*(_: type QScrollerPropertiesScrollMetricEnum): untyped = 4
+template DecelerationFactor*(_: type QScrollerPropertiesScrollMetricEnum): untyped = 5
+template MinimumVelocity*(_: type QScrollerPropertiesScrollMetricEnum): untyped = 6
+template MaximumVelocity*(_: type QScrollerPropertiesScrollMetricEnum): untyped = 7
+template MaximumClickThroughVelocity*(_: type QScrollerPropertiesScrollMetricEnum): untyped = 8
+template AcceleratingFlickMaximumTime*(_: type QScrollerPropertiesScrollMetricEnum): untyped = 9
+template AcceleratingFlickSpeedupFactor*(_: type QScrollerPropertiesScrollMetricEnum): untyped = 10
+template SnapPositionRatio*(_: type QScrollerPropertiesScrollMetricEnum): untyped = 11
+template SnapTime*(_: type QScrollerPropertiesScrollMetricEnum): untyped = 12
+template OvershootDragResistanceFactor*(_: type QScrollerPropertiesScrollMetricEnum): untyped = 13
+template OvershootDragDistanceFactor*(_: type QScrollerPropertiesScrollMetricEnum): untyped = 14
+template OvershootScrollDistanceFactor*(_: type QScrollerPropertiesScrollMetricEnum): untyped = 15
+template OvershootScrollTime*(_: type QScrollerPropertiesScrollMetricEnum): untyped = 16
+template HorizontalOvershootPolicy*(_: type QScrollerPropertiesScrollMetricEnum): untyped = 17
+template VerticalOvershootPolicy*(_: type QScrollerPropertiesScrollMetricEnum): untyped = 18
+template FrameRate*(_: type QScrollerPropertiesScrollMetricEnum): untyped = 19
+template ScrollMetricCount*(_: type QScrollerPropertiesScrollMetricEnum): untyped = 20
 
 
 import gen_qscrollerproperties_types
@@ -99,41 +93,41 @@ proc fcQScrollerProperties_setScrollMetric(self: pointer, metric: cint, value: p
 proc fcQScrollerProperties_delete(self: pointer) {.importc: "QScrollerProperties_delete".}
 
 
-func init*(T: type QScrollerProperties, h: ptr cQScrollerProperties): QScrollerProperties =
+func init*(T: type gen_qscrollerproperties_types.QScrollerProperties, h: ptr cQScrollerProperties): gen_qscrollerproperties_types.QScrollerProperties =
   T(h: h)
-proc create*(T: type QScrollerProperties, ): QScrollerProperties =
+proc create*(T: type gen_qscrollerproperties_types.QScrollerProperties, ): gen_qscrollerproperties_types.QScrollerProperties =
 
-  QScrollerProperties.init(fcQScrollerProperties_new())
-proc create*(T: type QScrollerProperties, sp: QScrollerProperties): QScrollerProperties =
+  gen_qscrollerproperties_types.QScrollerProperties.init(fcQScrollerProperties_new())
+proc create*(T: type gen_qscrollerproperties_types.QScrollerProperties, sp: gen_qscrollerproperties_types.QScrollerProperties): gen_qscrollerproperties_types.QScrollerProperties =
 
-  QScrollerProperties.init(fcQScrollerProperties_new2(sp.h))
-proc operatorAssign*(self: QScrollerProperties, sp: QScrollerProperties): void =
+  gen_qscrollerproperties_types.QScrollerProperties.init(fcQScrollerProperties_new2(sp.h))
+proc operatorAssign*(self: gen_qscrollerproperties_types.QScrollerProperties, sp: gen_qscrollerproperties_types.QScrollerProperties): void =
 
   fcQScrollerProperties_operatorAssign(self.h, sp.h)
 
-proc operatorEqual*(self: QScrollerProperties, sp: QScrollerProperties): bool =
+proc operatorEqual*(self: gen_qscrollerproperties_types.QScrollerProperties, sp: gen_qscrollerproperties_types.QScrollerProperties): bool =
 
   fcQScrollerProperties_operatorEqual(self.h, sp.h)
 
-proc operatorNotEqual*(self: QScrollerProperties, sp: QScrollerProperties): bool =
+proc operatorNotEqual*(self: gen_qscrollerproperties_types.QScrollerProperties, sp: gen_qscrollerproperties_types.QScrollerProperties): bool =
 
   fcQScrollerProperties_operatorNotEqual(self.h, sp.h)
 
-proc setDefaultScrollerProperties*(_: type QScrollerProperties, sp: QScrollerProperties): void =
+proc setDefaultScrollerProperties*(_: type gen_qscrollerproperties_types.QScrollerProperties, sp: gen_qscrollerproperties_types.QScrollerProperties): void =
 
   fcQScrollerProperties_setDefaultScrollerProperties(sp.h)
 
-proc unsetDefaultScrollerProperties*(_: type QScrollerProperties, ): void =
+proc unsetDefaultScrollerProperties*(_: type gen_qscrollerproperties_types.QScrollerProperties, ): void =
 
   fcQScrollerProperties_unsetDefaultScrollerProperties()
 
-proc scrollMetric*(self: QScrollerProperties, metric: QScrollerPropertiesScrollMetric): gen_qvariant.QVariant =
+proc scrollMetric*(self: gen_qscrollerproperties_types.QScrollerProperties, metric: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fcQScrollerProperties_scrollMetric(self.h, cint(metric)))
 
-proc setScrollMetric*(self: QScrollerProperties, metric: QScrollerPropertiesScrollMetric, value: gen_qvariant.QVariant): void =
+proc setScrollMetric*(self: gen_qscrollerproperties_types.QScrollerProperties, metric: cint, value: gen_qvariant.QVariant): void =
 
   fcQScrollerProperties_setScrollMetric(self.h, cint(metric), value.h)
 
-proc delete*(self: QScrollerProperties) =
+proc delete*(self: gen_qscrollerproperties_types.QScrollerProperties) =
   fcQScrollerProperties_delete(self.h)

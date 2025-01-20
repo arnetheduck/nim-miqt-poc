@@ -67,58 +67,58 @@ proc fcQStringDecoder_decoderForHtml(data: pointer): pointer {.importc: "QString
 proc fcQStringDecoder_delete(self: pointer) {.importc: "QStringDecoder_delete".}
 
 
-func init*(T: type QStringEncoder, h: ptr cQStringEncoder): QStringEncoder =
+func init*(T: type gen_qstringconverter_types.QStringEncoder, h: ptr cQStringEncoder): gen_qstringconverter_types.QStringEncoder =
   T(h: h)
-proc create*(T: type QStringEncoder, ): QStringEncoder =
+proc create*(T: type gen_qstringconverter_types.QStringEncoder, ): gen_qstringconverter_types.QStringEncoder =
 
-  QStringEncoder.init(fcQStringEncoder_new())
-proc create*(T: type QStringEncoder, encoding: gen_qstringconverter_base.QStringConverterEncoding): QStringEncoder =
+  gen_qstringconverter_types.QStringEncoder.init(fcQStringEncoder_new())
+proc create*(T: type gen_qstringconverter_types.QStringEncoder, encoding: cint): gen_qstringconverter_types.QStringEncoder =
 
-  QStringEncoder.init(fcQStringEncoder_new2(cint(encoding)))
-proc create*(T: type QStringEncoder, name: cstring): QStringEncoder =
+  gen_qstringconverter_types.QStringEncoder.init(fcQStringEncoder_new2(cint(encoding)))
+proc create*(T: type gen_qstringconverter_types.QStringEncoder, name: cstring): gen_qstringconverter_types.QStringEncoder =
 
-  QStringEncoder.init(fcQStringEncoder_new3(name))
-proc create*(T: type QStringEncoder, encoding: gen_qstringconverter_base.QStringConverterEncoding, flags: gen_qstringconverter_base.QStringConverterBaseFlag): QStringEncoder =
+  gen_qstringconverter_types.QStringEncoder.init(fcQStringEncoder_new3(name))
+proc create*(T: type gen_qstringconverter_types.QStringEncoder, encoding: cint, flags: cint): gen_qstringconverter_types.QStringEncoder =
 
-  QStringEncoder.init(fcQStringEncoder_new4(cint(encoding), cint(flags)))
-proc create*(T: type QStringEncoder, name: cstring, flags: gen_qstringconverter_base.QStringConverterBaseFlag): QStringEncoder =
+  gen_qstringconverter_types.QStringEncoder.init(fcQStringEncoder_new4(cint(encoding), cint(flags)))
+proc create*(T: type gen_qstringconverter_types.QStringEncoder, name: cstring, flags: cint): gen_qstringconverter_types.QStringEncoder =
 
-  QStringEncoder.init(fcQStringEncoder_new5(name, cint(flags)))
-proc requiredSpace*(self: QStringEncoder, inputLength: int64): int64 =
+  gen_qstringconverter_types.QStringEncoder.init(fcQStringEncoder_new5(name, cint(flags)))
+proc requiredSpace*(self: gen_qstringconverter_types.QStringEncoder, inputLength: int64): int64 =
 
   fcQStringEncoder_requiredSpace(self.h, inputLength)
 
-proc delete*(self: QStringEncoder) =
+proc delete*(self: gen_qstringconverter_types.QStringEncoder) =
   fcQStringEncoder_delete(self.h)
 
-func init*(T: type QStringDecoder, h: ptr cQStringDecoder): QStringDecoder =
+func init*(T: type gen_qstringconverter_types.QStringDecoder, h: ptr cQStringDecoder): gen_qstringconverter_types.QStringDecoder =
   T(h: h)
-proc create*(T: type QStringDecoder, encoding: gen_qstringconverter_base.QStringConverterEncoding): QStringDecoder =
+proc create*(T: type gen_qstringconverter_types.QStringDecoder, encoding: cint): gen_qstringconverter_types.QStringDecoder =
 
-  QStringDecoder.init(fcQStringDecoder_new(cint(encoding)))
-proc create*(T: type QStringDecoder, ): QStringDecoder =
+  gen_qstringconverter_types.QStringDecoder.init(fcQStringDecoder_new(cint(encoding)))
+proc create*(T: type gen_qstringconverter_types.QStringDecoder, ): gen_qstringconverter_types.QStringDecoder =
 
-  QStringDecoder.init(fcQStringDecoder_new2())
-proc create*(T: type QStringDecoder, name: cstring): QStringDecoder =
+  gen_qstringconverter_types.QStringDecoder.init(fcQStringDecoder_new2())
+proc create*(T: type gen_qstringconverter_types.QStringDecoder, name: cstring): gen_qstringconverter_types.QStringDecoder =
 
-  QStringDecoder.init(fcQStringDecoder_new3(name))
-proc create*(T: type QStringDecoder, encoding: gen_qstringconverter_base.QStringConverterEncoding, flags: gen_qstringconverter_base.QStringConverterBaseFlag): QStringDecoder =
+  gen_qstringconverter_types.QStringDecoder.init(fcQStringDecoder_new3(name))
+proc create*(T: type gen_qstringconverter_types.QStringDecoder, encoding: cint, flags: cint): gen_qstringconverter_types.QStringDecoder =
 
-  QStringDecoder.init(fcQStringDecoder_new4(cint(encoding), cint(flags)))
-proc create*(T: type QStringDecoder, name: cstring, f: gen_qstringconverter_base.QStringConverterBaseFlag): QStringDecoder =
+  gen_qstringconverter_types.QStringDecoder.init(fcQStringDecoder_new4(cint(encoding), cint(flags)))
+proc create*(T: type gen_qstringconverter_types.QStringDecoder, name: cstring, f: cint): gen_qstringconverter_types.QStringDecoder =
 
-  QStringDecoder.init(fcQStringDecoder_new5(name, cint(f)))
-proc requiredSpace*(self: QStringDecoder, inputLength: int64): int64 =
+  gen_qstringconverter_types.QStringDecoder.init(fcQStringDecoder_new5(name, cint(f)))
+proc requiredSpace*(self: gen_qstringconverter_types.QStringDecoder, inputLength: int64): int64 =
 
   fcQStringDecoder_requiredSpace(self.h, inputLength)
 
-proc appendToBuffer*(self: QStringDecoder, outVal: gen_qchar.QChar, ba: gen_qbytearrayview.QByteArrayView): gen_qchar.QChar =
+proc appendToBuffer*(self: gen_qstringconverter_types.QStringDecoder, outVal: gen_qchar.QChar, ba: gen_qbytearrayview.QByteArrayView): gen_qchar.QChar =
 
   gen_qchar.QChar(h: fcQStringDecoder_appendToBuffer(self.h, outVal.h, ba.h))
 
-proc decoderForHtml*(_: type QStringDecoder, data: gen_qbytearrayview.QByteArrayView): QStringDecoder =
+proc decoderForHtml*(_: type gen_qstringconverter_types.QStringDecoder, data: gen_qbytearrayview.QByteArrayView): gen_qstringconverter_types.QStringDecoder =
 
-  QStringDecoder(h: fcQStringDecoder_decoderForHtml(data.h))
+  gen_qstringconverter_types.QStringDecoder(h: fcQStringDecoder_decoderForHtml(data.h))
 
-proc delete*(self: QStringDecoder) =
+proc delete*(self: gen_qstringconverter_types.QStringDecoder) =
   fcQStringDecoder_delete(self.h)

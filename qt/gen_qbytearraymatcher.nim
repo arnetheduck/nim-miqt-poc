@@ -56,55 +56,55 @@ proc fcQByteArrayMatcher_delete(self: pointer) {.importc: "QByteArrayMatcher_del
 proc fcQStaticByteArrayMatcherBase_delete(self: pointer) {.importc: "QStaticByteArrayMatcherBase_delete".}
 
 
-func init*(T: type QByteArrayMatcher, h: ptr cQByteArrayMatcher): QByteArrayMatcher =
+func init*(T: type gen_qbytearraymatcher_types.QByteArrayMatcher, h: ptr cQByteArrayMatcher): gen_qbytearraymatcher_types.QByteArrayMatcher =
   T(h: h)
-proc create*(T: type QByteArrayMatcher, ): QByteArrayMatcher =
+proc create*(T: type gen_qbytearraymatcher_types.QByteArrayMatcher, ): gen_qbytearraymatcher_types.QByteArrayMatcher =
 
-  QByteArrayMatcher.init(fcQByteArrayMatcher_new())
-proc create*(T: type QByteArrayMatcher, pattern: seq[byte]): QByteArrayMatcher =
+  gen_qbytearraymatcher_types.QByteArrayMatcher.init(fcQByteArrayMatcher_new())
+proc create*(T: type gen_qbytearraymatcher_types.QByteArrayMatcher, pattern: seq[byte]): gen_qbytearraymatcher_types.QByteArrayMatcher =
 
-  QByteArrayMatcher.init(fcQByteArrayMatcher_new2(struct_miqt_string(data: cast[cstring](if len(pattern) == 0: nil else: unsafeAddr pattern[0]), len: csize_t(len(pattern)))))
-proc create*(T: type QByteArrayMatcher, pattern: cstring, length: cint): QByteArrayMatcher =
+  gen_qbytearraymatcher_types.QByteArrayMatcher.init(fcQByteArrayMatcher_new2(struct_miqt_string(data: cast[cstring](if len(pattern) == 0: nil else: unsafeAddr pattern[0]), len: csize_t(len(pattern)))))
+proc create*(T: type gen_qbytearraymatcher_types.QByteArrayMatcher, pattern: cstring, length: cint): gen_qbytearraymatcher_types.QByteArrayMatcher =
 
-  QByteArrayMatcher.init(fcQByteArrayMatcher_new3(pattern, length))
-proc create*(T: type QByteArrayMatcher, other: QByteArrayMatcher): QByteArrayMatcher =
+  gen_qbytearraymatcher_types.QByteArrayMatcher.init(fcQByteArrayMatcher_new3(pattern, length))
+proc create*(T: type gen_qbytearraymatcher_types.QByteArrayMatcher, other: gen_qbytearraymatcher_types.QByteArrayMatcher): gen_qbytearraymatcher_types.QByteArrayMatcher =
 
-  QByteArrayMatcher.init(fcQByteArrayMatcher_new4(other.h))
-proc operatorAssign*(self: QByteArrayMatcher, other: QByteArrayMatcher): void =
+  gen_qbytearraymatcher_types.QByteArrayMatcher.init(fcQByteArrayMatcher_new4(other.h))
+proc operatorAssign*(self: gen_qbytearraymatcher_types.QByteArrayMatcher, other: gen_qbytearraymatcher_types.QByteArrayMatcher): void =
 
   fcQByteArrayMatcher_operatorAssign(self.h, other.h)
 
-proc setPattern*(self: QByteArrayMatcher, pattern: seq[byte]): void =
+proc setPattern*(self: gen_qbytearraymatcher_types.QByteArrayMatcher, pattern: seq[byte]): void =
 
   fcQByteArrayMatcher_setPattern(self.h, struct_miqt_string(data: cast[cstring](if len(pattern) == 0: nil else: unsafeAddr pattern[0]), len: csize_t(len(pattern))))
 
-proc indexIn*(self: QByteArrayMatcher, ba: seq[byte]): cint =
+proc indexIn*(self: gen_qbytearraymatcher_types.QByteArrayMatcher, ba: seq[byte]): cint =
 
   fcQByteArrayMatcher_indexIn(self.h, struct_miqt_string(data: cast[cstring](if len(ba) == 0: nil else: unsafeAddr ba[0]), len: csize_t(len(ba))))
 
-proc indexIn2*(self: QByteArrayMatcher, str: cstring, len: cint): cint =
+proc indexIn2*(self: gen_qbytearraymatcher_types.QByteArrayMatcher, str: cstring, len: cint): cint =
 
   fcQByteArrayMatcher_indexIn2(self.h, str, len)
 
-proc pattern*(self: QByteArrayMatcher, ): seq[byte] =
+proc pattern*(self: gen_qbytearraymatcher_types.QByteArrayMatcher, ): seq[byte] =
 
   var v_bytearray = fcQByteArrayMatcher_pattern(self.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc indexIn22*(self: QByteArrayMatcher, ba: seq[byte], fromVal: cint): cint =
+proc indexIn22*(self: gen_qbytearraymatcher_types.QByteArrayMatcher, ba: seq[byte], fromVal: cint): cint =
 
   fcQByteArrayMatcher_indexIn22(self.h, struct_miqt_string(data: cast[cstring](if len(ba) == 0: nil else: unsafeAddr ba[0]), len: csize_t(len(ba))), fromVal)
 
-proc indexIn3*(self: QByteArrayMatcher, str: cstring, len: cint, fromVal: cint): cint =
+proc indexIn3*(self: gen_qbytearraymatcher_types.QByteArrayMatcher, str: cstring, len: cint, fromVal: cint): cint =
 
   fcQByteArrayMatcher_indexIn3(self.h, str, len, fromVal)
 
-proc delete*(self: QByteArrayMatcher) =
+proc delete*(self: gen_qbytearraymatcher_types.QByteArrayMatcher) =
   fcQByteArrayMatcher_delete(self.h)
 
-func init*(T: type QStaticByteArrayMatcherBase, h: ptr cQStaticByteArrayMatcherBase): QStaticByteArrayMatcherBase =
+func init*(T: type gen_qbytearraymatcher_types.QStaticByteArrayMatcherBase, h: ptr cQStaticByteArrayMatcherBase): gen_qbytearraymatcher_types.QStaticByteArrayMatcherBase =
   T(h: h)
-proc delete*(self: QStaticByteArrayMatcherBase) =
+proc delete*(self: gen_qbytearraymatcher_types.QStaticByteArrayMatcherBase) =
   fcQStaticByteArrayMatcherBase_delete(self.h)

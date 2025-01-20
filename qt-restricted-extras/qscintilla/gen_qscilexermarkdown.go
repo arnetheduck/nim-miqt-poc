@@ -206,7 +206,7 @@ func (this *QsciLexerMarkdown) callVirtualBase_MetaObject() *qt.QMetaObject {
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QsciLexerMarkdown_virtualbase_metaObject(unsafe.Pointer(this.h))))
 
 }
-func (this *QsciLexerMarkdown) OnmetaObject(slot func(super func() *qt.QMetaObject) *qt.QMetaObject) {
+func (this *QsciLexerMarkdown) OnMetaObject(slot func(super func() *qt.QMetaObject) *qt.QMetaObject) {
 	ok := C.QsciLexerMarkdown_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -233,7 +233,7 @@ func (this *QsciLexerMarkdown) callVirtualBase_Metacast(param1 string) unsafe.Po
 	return (unsafe.Pointer)(C.QsciLexerMarkdown_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QsciLexerMarkdown) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QsciLexerMarkdown) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QsciLexerMarkdown_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

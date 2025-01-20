@@ -34,122 +34,118 @@ const cflags = gorge("pkg-config -cflags Qt6Widgets")
 {.compile("gen_qmetatype.cpp", cflags).}
 
 
-type QCborSimpleType* = uint8
+type QCborSimpleTypeEnum* = distinct uint8
 
-type QMetaTypeType* = cint
-const
-  QMetaTypeBool* = 1
-  QMetaTypeInt* = 2
-  QMetaTypeUInt* = 3
-  QMetaTypeLongLong* = 4
-  QMetaTypeULongLong* = 5
-  QMetaTypeDouble* = 6
-  QMetaTypeLong* = 32
-  QMetaTypeShort* = 33
-  QMetaTypeChar* = 34
-  QMetaTypeChar16* = 56
-  QMetaTypeChar32* = 57
-  QMetaTypeULong* = 35
-  QMetaTypeUShort* = 36
-  QMetaTypeUChar* = 37
-  QMetaTypeFloat* = 38
-  QMetaTypeSChar* = 40
-  QMetaTypeNullptr* = 51
-  QMetaTypeQCborSimpleType* = 52
-  QMetaTypeVoid* = 43
-  QMetaTypeVoidStar* = 31
-  QMetaTypeQChar* = 7
-  QMetaTypeQString* = 10
-  QMetaTypeQByteArray* = 12
-  QMetaTypeQBitArray* = 13
-  QMetaTypeQDate* = 14
-  QMetaTypeQTime* = 15
-  QMetaTypeQDateTime* = 16
-  QMetaTypeQUrl* = 17
-  QMetaTypeQLocale* = 18
-  QMetaTypeQRect* = 19
-  QMetaTypeQRectF* = 20
-  QMetaTypeQSize* = 21
-  QMetaTypeQSizeF* = 22
-  QMetaTypeQLine* = 23
-  QMetaTypeQLineF* = 24
-  QMetaTypeQPoint* = 25
-  QMetaTypeQPointF* = 26
-  QMetaTypeQEasingCurve* = 29
-  QMetaTypeQUuid* = 30
-  QMetaTypeQVariant* = 41
-  QMetaTypeQRegularExpression* = 44
-  QMetaTypeQJsonValue* = 45
-  QMetaTypeQJsonObject* = 46
-  QMetaTypeQJsonArray* = 47
-  QMetaTypeQJsonDocument* = 48
-  QMetaTypeQCborValue* = 53
-  QMetaTypeQCborArray* = 54
-  QMetaTypeQCborMap* = 55
-  QMetaTypeQModelIndex* = 42
-  QMetaTypeQPersistentModelIndex* = 50
-  QMetaTypeQObjectStar* = 39
-  QMetaTypeQVariantMap* = 8
-  QMetaTypeQVariantList* = 9
-  QMetaTypeQVariantHash* = 28
-  QMetaTypeQVariantPair* = 58
-  QMetaTypeQByteArrayList* = 49
-  QMetaTypeQStringList* = 11
-  QMetaTypeQFont* = 4096
-  QMetaTypeQPixmap* = 4097
-  QMetaTypeQBrush* = 4098
-  QMetaTypeQColor* = 4099
-  QMetaTypeQPalette* = 4100
-  QMetaTypeQIcon* = 4101
-  QMetaTypeQImage* = 4102
-  QMetaTypeQPolygon* = 4103
-  QMetaTypeQRegion* = 4104
-  QMetaTypeQBitmap* = 4105
-  QMetaTypeQCursor* = 4106
-  QMetaTypeQKeySequence* = 4107
-  QMetaTypeQPen* = 4108
-  QMetaTypeQTextLength* = 4109
-  QMetaTypeQTextFormat* = 4110
-  QMetaTypeQTransform* = 4112
-  QMetaTypeQMatrix4x4* = 4113
-  QMetaTypeQVector2D* = 4114
-  QMetaTypeQVector3D* = 4115
-  QMetaTypeQVector4D* = 4116
-  QMetaTypeQQuaternion* = 4117
-  QMetaTypeQPolygonF* = 4118
-  QMetaTypeQColorSpace* = 4119
-  QMetaTypeQSizePolicy* = 8192
-  QMetaTypeFirstCoreType* = 1
-  QMetaTypeLastCoreType* = 58
-  QMetaTypeFirstGuiType* = 4096
-  QMetaTypeLastGuiType* = 4119
-  QMetaTypeFirstWidgetsType* = 8192
-  QMetaTypeLastWidgetsType* = 8192
-  QMetaTypeHighestInternalId* = 8192
-  QMetaTypeQReal* = 6
-  QMetaTypeUnknownType* = 0
-  QMetaTypeUser* = 65536
-
+type QMetaTypeTypeEnum* = distinct cint
+template Bool*(_: type QMetaTypeTypeEnum): untyped = 1
+template Int*(_: type QMetaTypeTypeEnum): untyped = 2
+template UInt*(_: type QMetaTypeTypeEnum): untyped = 3
+template LongLong*(_: type QMetaTypeTypeEnum): untyped = 4
+template ULongLong*(_: type QMetaTypeTypeEnum): untyped = 5
+template Double*(_: type QMetaTypeTypeEnum): untyped = 6
+template Long*(_: type QMetaTypeTypeEnum): untyped = 32
+template Short*(_: type QMetaTypeTypeEnum): untyped = 33
+template Char*(_: type QMetaTypeTypeEnum): untyped = 34
+template Char16*(_: type QMetaTypeTypeEnum): untyped = 56
+template Char32*(_: type QMetaTypeTypeEnum): untyped = 57
+template ULong*(_: type QMetaTypeTypeEnum): untyped = 35
+template UShort*(_: type QMetaTypeTypeEnum): untyped = 36
+template UChar*(_: type QMetaTypeTypeEnum): untyped = 37
+template Float*(_: type QMetaTypeTypeEnum): untyped = 38
+template SChar*(_: type QMetaTypeTypeEnum): untyped = 40
+template Nullptr*(_: type QMetaTypeTypeEnum): untyped = 51
+template QCborSimpleType*(_: type QMetaTypeTypeEnum): untyped = 52
+template Void*(_: type QMetaTypeTypeEnum): untyped = 43
+template VoidStar*(_: type QMetaTypeTypeEnum): untyped = 31
+template QChar2*(_: type QMetaTypeTypeEnum): untyped = 7
+template QString*(_: type QMetaTypeTypeEnum): untyped = 10
+template QByteArray*(_: type QMetaTypeTypeEnum): untyped = 12
+template QBitArray2*(_: type QMetaTypeTypeEnum): untyped = 13
+template QDate2*(_: type QMetaTypeTypeEnum): untyped = 14
+template QTime2*(_: type QMetaTypeTypeEnum): untyped = 15
+template QDateTime2*(_: type QMetaTypeTypeEnum): untyped = 16
+template QUrl2*(_: type QMetaTypeTypeEnum): untyped = 17
+template QLocale2*(_: type QMetaTypeTypeEnum): untyped = 18
+template QRect2*(_: type QMetaTypeTypeEnum): untyped = 19
+template QRectF2*(_: type QMetaTypeTypeEnum): untyped = 20
+template QSize2*(_: type QMetaTypeTypeEnum): untyped = 21
+template QSizeF2*(_: type QMetaTypeTypeEnum): untyped = 22
+template QLine2*(_: type QMetaTypeTypeEnum): untyped = 23
+template QLineF2*(_: type QMetaTypeTypeEnum): untyped = 24
+template QPoint2*(_: type QMetaTypeTypeEnum): untyped = 25
+template QPointF2*(_: type QMetaTypeTypeEnum): untyped = 26
+template QEasingCurve2*(_: type QMetaTypeTypeEnum): untyped = 29
+template QUuid2*(_: type QMetaTypeTypeEnum): untyped = 30
+template QVariant2*(_: type QMetaTypeTypeEnum): untyped = 41
+template QRegularExpression2*(_: type QMetaTypeTypeEnum): untyped = 44
+template QJsonValue2*(_: type QMetaTypeTypeEnum): untyped = 45
+template QJsonObject2*(_: type QMetaTypeTypeEnum): untyped = 46
+template QJsonArray2*(_: type QMetaTypeTypeEnum): untyped = 47
+template QJsonDocument2*(_: type QMetaTypeTypeEnum): untyped = 48
+template QCborValue*(_: type QMetaTypeTypeEnum): untyped = 53
+template QCborArray*(_: type QMetaTypeTypeEnum): untyped = 54
+template QCborMap*(_: type QMetaTypeTypeEnum): untyped = 55
+template QModelIndex2*(_: type QMetaTypeTypeEnum): untyped = 42
+template QPersistentModelIndex2*(_: type QMetaTypeTypeEnum): untyped = 50
+template QObjectStar*(_: type QMetaTypeTypeEnum): untyped = 39
+template QVariantMap*(_: type QMetaTypeTypeEnum): untyped = 8
+template QVariantList*(_: type QMetaTypeTypeEnum): untyped = 9
+template QVariantHash*(_: type QMetaTypeTypeEnum): untyped = 28
+template QVariantPair*(_: type QMetaTypeTypeEnum): untyped = 58
+template QByteArrayList*(_: type QMetaTypeTypeEnum): untyped = 49
+template QStringList*(_: type QMetaTypeTypeEnum): untyped = 11
+template QFont2*(_: type QMetaTypeTypeEnum): untyped = 4096
+template QPixmap2*(_: type QMetaTypeTypeEnum): untyped = 4097
+template QBrush2*(_: type QMetaTypeTypeEnum): untyped = 4098
+template QColor2*(_: type QMetaTypeTypeEnum): untyped = 4099
+template QPalette2*(_: type QMetaTypeTypeEnum): untyped = 4100
+template QIcon2*(_: type QMetaTypeTypeEnum): untyped = 4101
+template QImage2*(_: type QMetaTypeTypeEnum): untyped = 4102
+template QPolygon2*(_: type QMetaTypeTypeEnum): untyped = 4103
+template QRegion2*(_: type QMetaTypeTypeEnum): untyped = 4104
+template QBitmap2*(_: type QMetaTypeTypeEnum): untyped = 4105
+template QCursor2*(_: type QMetaTypeTypeEnum): untyped = 4106
+template QKeySequence2*(_: type QMetaTypeTypeEnum): untyped = 4107
+template QPen2*(_: type QMetaTypeTypeEnum): untyped = 4108
+template QTextLength2*(_: type QMetaTypeTypeEnum): untyped = 4109
+template QTextFormat2*(_: type QMetaTypeTypeEnum): untyped = 4110
+template QTransform2*(_: type QMetaTypeTypeEnum): untyped = 4112
+template QMatrix4x42*(_: type QMetaTypeTypeEnum): untyped = 4113
+template QVector2D2*(_: type QMetaTypeTypeEnum): untyped = 4114
+template QVector3D2*(_: type QMetaTypeTypeEnum): untyped = 4115
+template QVector4D2*(_: type QMetaTypeTypeEnum): untyped = 4116
+template QQuaternion2*(_: type QMetaTypeTypeEnum): untyped = 4117
+template QPolygonF2*(_: type QMetaTypeTypeEnum): untyped = 4118
+template QColorSpace2*(_: type QMetaTypeTypeEnum): untyped = 4119
+template QSizePolicy2*(_: type QMetaTypeTypeEnum): untyped = 8192
+template FirstCoreType*(_: type QMetaTypeTypeEnum): untyped = 1
+template LastCoreType*(_: type QMetaTypeTypeEnum): untyped = 58
+template FirstGuiType*(_: type QMetaTypeTypeEnum): untyped = 4096
+template LastGuiType*(_: type QMetaTypeTypeEnum): untyped = 4119
+template FirstWidgetsType*(_: type QMetaTypeTypeEnum): untyped = 8192
+template LastWidgetsType*(_: type QMetaTypeTypeEnum): untyped = 8192
+template HighestInternalId*(_: type QMetaTypeTypeEnum): untyped = 8192
+template QReal*(_: type QMetaTypeTypeEnum): untyped = 6
+template UnknownType*(_: type QMetaTypeTypeEnum): untyped = 0
+template User*(_: type QMetaTypeTypeEnum): untyped = 65536
 
 
-type QMetaTypeTypeFlag* = cint
-const
-  QMetaTypeNeedsConstruction* = 1
-  QMetaTypeNeedsDestruction* = 2
-  QMetaTypeRelocatableType* = 4
-  QMetaTypeMovableType* = 4
-  QMetaTypePointerToQObject* = 8
-  QMetaTypeIsEnumeration* = 16
-  QMetaTypeSharedPointerToQObject* = 32
-  QMetaTypeWeakPointerToQObject* = 64
-  QMetaTypeTrackingPointerToQObject* = 128
-  QMetaTypeIsUnsignedEnumeration* = 256
-  QMetaTypeIsGadget* = 512
-  QMetaTypePointerToGadget* = 1024
-  QMetaTypeIsPointer* = 2048
-  QMetaTypeIsQmlList* = 4096
-  QMetaTypeIsConst* = 8192
-
+type QMetaTypeTypeFlagEnum* = distinct cint
+template NeedsConstruction*(_: type QMetaTypeTypeFlagEnum): untyped = 1
+template NeedsDestruction*(_: type QMetaTypeTypeFlagEnum): untyped = 2
+template RelocatableType*(_: type QMetaTypeTypeFlagEnum): untyped = 4
+template MovableType*(_: type QMetaTypeTypeFlagEnum): untyped = 4
+template PointerToQObject*(_: type QMetaTypeTypeFlagEnum): untyped = 8
+template IsEnumeration*(_: type QMetaTypeTypeFlagEnum): untyped = 16
+template SharedPointerToQObject*(_: type QMetaTypeTypeFlagEnum): untyped = 32
+template WeakPointerToQObject*(_: type QMetaTypeTypeFlagEnum): untyped = 64
+template TrackingPointerToQObject*(_: type QMetaTypeTypeFlagEnum): untyped = 128
+template IsUnsignedEnumeration*(_: type QMetaTypeTypeFlagEnum): untyped = 256
+template IsGadget*(_: type QMetaTypeTypeFlagEnum): untyped = 512
+template PointerToGadget*(_: type QMetaTypeTypeFlagEnum): untyped = 1024
+template IsPointer*(_: type QMetaTypeTypeFlagEnum): untyped = 2048
+template IsQmlList*(_: type QMetaTypeTypeFlagEnum): untyped = 4096
+template IsConst*(_: type QMetaTypeTypeFlagEnum): untyped = 8192
 
 
 import gen_qmetatype_types
@@ -230,232 +226,232 @@ proc fcQMetaType_construct2(self: pointer, where: pointer, copy: pointer): point
 proc fcQMetaType_delete(self: pointer) {.importc: "QMetaType_delete".}
 
 
-func init*(T: type QMetaType, h: ptr cQMetaType): QMetaType =
+func init*(T: type gen_qmetatype_types.QMetaType, h: ptr cQMetaType): gen_qmetatype_types.QMetaType =
   T(h: h)
-proc create*(T: type QMetaType, typeVal: cint): QMetaType =
+proc create*(T: type gen_qmetatype_types.QMetaType, typeVal: cint): gen_qmetatype_types.QMetaType =
 
-  QMetaType.init(fcQMetaType_new(typeVal))
-proc create*(T: type QMetaType, ): QMetaType =
+  gen_qmetatype_types.QMetaType.init(fcQMetaType_new(typeVal))
+proc create*(T: type gen_qmetatype_types.QMetaType, ): gen_qmetatype_types.QMetaType =
 
-  QMetaType.init(fcQMetaType_new2())
-proc create*(T: type QMetaType, param1: QMetaType): QMetaType =
+  gen_qmetatype_types.QMetaType.init(fcQMetaType_new2())
+proc create*(T: type gen_qmetatype_types.QMetaType, param1: gen_qmetatype_types.QMetaType): gen_qmetatype_types.QMetaType =
 
-  QMetaType.init(fcQMetaType_new3(param1.h))
-proc registerNormalizedTypedef*(_: type QMetaType, normalizedTypeName: seq[byte], typeVal: QMetaType): void =
+  gen_qmetatype_types.QMetaType.init(fcQMetaType_new3(param1.h))
+proc registerNormalizedTypedef*(_: type gen_qmetatype_types.QMetaType, normalizedTypeName: seq[byte], typeVal: gen_qmetatype_types.QMetaType): void =
 
   fcQMetaType_registerNormalizedTypedef(struct_miqt_string(data: cast[cstring](if len(normalizedTypeName) == 0: nil else: unsafeAddr normalizedTypeName[0]), len: csize_t(len(normalizedTypeName))), typeVal.h)
 
-proc typeX*(_: type QMetaType, typeName: cstring): cint =
+proc typeX*(_: type gen_qmetatype_types.QMetaType, typeName: cstring): cint =
 
   fcQMetaType_typeX(typeName)
 
-proc typeWithTypeName*(_: type QMetaType, typeName: seq[byte]): cint =
+proc typeWithTypeName*(_: type gen_qmetatype_types.QMetaType, typeName: seq[byte]): cint =
 
   fcQMetaType_typeWithTypeName(struct_miqt_string(data: cast[cstring](if len(typeName) == 0: nil else: unsafeAddr typeName[0]), len: csize_t(len(typeName))))
 
-proc typeName*(_: type QMetaType, typeVal: cint): cstring =
+proc typeName*(_: type gen_qmetatype_types.QMetaType, typeVal: cint): cstring =
 
   (fcQMetaType_typeName(typeVal))
 
-proc sizeOf*(_: type QMetaType, typeVal: cint): cint =
+proc sizeOf*(_: type gen_qmetatype_types.QMetaType, typeVal: cint): cint =
 
   fcQMetaType_sizeOf(typeVal)
 
-proc typeFlags*(_: type QMetaType, typeVal: cint): QMetaTypeTypeFlag =
+proc typeFlags*(_: type gen_qmetatype_types.QMetaType, typeVal: cint): cint =
 
-  QMetaTypeTypeFlag(fcQMetaType_typeFlags(typeVal))
+  cint(fcQMetaType_typeFlags(typeVal))
 
-proc metaObjectForType*(_: type QMetaType, typeVal: cint): gen_qobjectdefs.QMetaObject =
+proc metaObjectForType*(_: type gen_qmetatype_types.QMetaType, typeVal: cint): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQMetaType_metaObjectForType(typeVal))
 
-proc create*(_: type QMetaType, typeVal: cint): pointer =
+proc create*(_: type gen_qmetatype_types.QMetaType, typeVal: cint): pointer =
 
   fcQMetaType_create(typeVal)
 
-proc destroy*(_: type QMetaType, typeVal: cint, data: pointer): void =
+proc destroy*(_: type gen_qmetatype_types.QMetaType, typeVal: cint, data: pointer): void =
 
   fcQMetaType_destroy(typeVal, data)
 
-proc construct*(_: type QMetaType, typeVal: cint, where: pointer, copy: pointer): pointer =
+proc construct*(_: type gen_qmetatype_types.QMetaType, typeVal: cint, where: pointer, copy: pointer): pointer =
 
   fcQMetaType_construct(typeVal, where, copy)
 
-proc destruct*(_: type QMetaType, typeVal: cint, where: pointer): void =
+proc destruct*(_: type gen_qmetatype_types.QMetaType, typeVal: cint, where: pointer): void =
 
   fcQMetaType_destruct(typeVal, where)
 
-proc isRegistered*(_: type QMetaType, typeVal: cint): bool =
+proc isRegistered*(_: type gen_qmetatype_types.QMetaType, typeVal: cint): bool =
 
   fcQMetaType_isRegistered(typeVal)
 
-proc isValid*(self: QMetaType, ): bool =
+proc isValid*(self: gen_qmetatype_types.QMetaType, ): bool =
 
   fcQMetaType_isValid(self.h)
 
-proc isRegistered2*(self: QMetaType, ): bool =
+proc isRegistered2*(self: gen_qmetatype_types.QMetaType, ): bool =
 
   fcQMetaType_isRegistered2(self.h)
 
-proc id*(self: QMetaType, ): cint =
+proc id*(self: gen_qmetatype_types.QMetaType, ): cint =
 
   fcQMetaType_id(self.h)
 
-proc sizeOf2*(self: QMetaType, ): int64 =
+proc sizeOf2*(self: gen_qmetatype_types.QMetaType, ): int64 =
 
   fcQMetaType_sizeOf2(self.h)
 
-proc alignOf*(self: QMetaType, ): int64 =
+proc alignOf*(self: gen_qmetatype_types.QMetaType, ): int64 =
 
   fcQMetaType_alignOf(self.h)
 
-proc flags*(self: QMetaType, ): QMetaTypeTypeFlag =
+proc flags*(self: gen_qmetatype_types.QMetaType, ): cint =
 
-  QMetaTypeTypeFlag(fcQMetaType_flags(self.h))
+  cint(fcQMetaType_flags(self.h))
 
-proc metaObject*(self: QMetaType, ): gen_qobjectdefs.QMetaObject =
+proc metaObject*(self: gen_qmetatype_types.QMetaType, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQMetaType_metaObject(self.h))
 
-proc name*(self: QMetaType, ): cstring =
+proc name*(self: gen_qmetatype_types.QMetaType, ): cstring =
 
   (fcQMetaType_name(self.h))
 
-proc create2*(self: QMetaType, ): pointer =
+proc create2*(self: gen_qmetatype_types.QMetaType, ): pointer =
 
   fcQMetaType_create2(self.h)
 
-proc destroyWithData*(self: QMetaType, data: pointer): void =
+proc destroyWithData*(self: gen_qmetatype_types.QMetaType, data: pointer): void =
 
   fcQMetaType_destroyWithData(self.h, data)
 
-proc constructWithWhere*(self: QMetaType, where: pointer): pointer =
+proc constructWithWhere*(self: gen_qmetatype_types.QMetaType, where: pointer): pointer =
 
   fcQMetaType_constructWithWhere(self.h, where)
 
-proc destructWithData*(self: QMetaType, data: pointer): void =
+proc destructWithData*(self: gen_qmetatype_types.QMetaType, data: pointer): void =
 
   fcQMetaType_destructWithData(self.h, data)
 
-proc compare*(self: QMetaType, lhs: pointer, rhs: pointer): gen_qcompare.QPartialOrdering =
+proc compare*(self: gen_qmetatype_types.QMetaType, lhs: pointer, rhs: pointer): gen_qcompare.QPartialOrdering =
 
   gen_qcompare.QPartialOrdering(h: fcQMetaType_compare(self.h, lhs, rhs))
 
-proc equals*(self: QMetaType, lhs: pointer, rhs: pointer): bool =
+proc equals*(self: gen_qmetatype_types.QMetaType, lhs: pointer, rhs: pointer): bool =
 
   fcQMetaType_equals(self.h, lhs, rhs)
 
-proc isEqualityComparable*(self: QMetaType, ): bool =
+proc isEqualityComparable*(self: gen_qmetatype_types.QMetaType, ): bool =
 
   fcQMetaType_isEqualityComparable(self.h)
 
-proc isOrdered*(self: QMetaType, ): bool =
+proc isOrdered*(self: gen_qmetatype_types.QMetaType, ): bool =
 
   fcQMetaType_isOrdered(self.h)
 
-proc save*(self: QMetaType, stream: gen_qdatastream.QDataStream, data: pointer): bool =
+proc save*(self: gen_qmetatype_types.QMetaType, stream: gen_qdatastream.QDataStream, data: pointer): bool =
 
   fcQMetaType_save(self.h, stream.h, data)
 
-proc load*(self: QMetaType, stream: gen_qdatastream.QDataStream, data: pointer): bool =
+proc load*(self: gen_qmetatype_types.QMetaType, stream: gen_qdatastream.QDataStream, data: pointer): bool =
 
   fcQMetaType_load(self.h, stream.h, data)
 
-proc hasRegisteredDataStreamOperators*(self: QMetaType, ): bool =
+proc hasRegisteredDataStreamOperators*(self: gen_qmetatype_types.QMetaType, ): bool =
 
   fcQMetaType_hasRegisteredDataStreamOperators(self.h)
 
-proc save2*(_: type QMetaType, stream: gen_qdatastream.QDataStream, typeVal: cint, data: pointer): bool =
+proc save2*(_: type gen_qmetatype_types.QMetaType, stream: gen_qdatastream.QDataStream, typeVal: cint, data: pointer): bool =
 
   fcQMetaType_save2(stream.h, typeVal, data)
 
-proc load2*(_: type QMetaType, stream: gen_qdatastream.QDataStream, typeVal: cint, data: pointer): bool =
+proc load2*(_: type gen_qmetatype_types.QMetaType, stream: gen_qdatastream.QDataStream, typeVal: cint, data: pointer): bool =
 
   fcQMetaType_load2(stream.h, typeVal, data)
 
-proc fromName*(_: type QMetaType, name: gen_qbytearrayview.QByteArrayView): QMetaType =
+proc fromName*(_: type gen_qmetatype_types.QMetaType, name: gen_qbytearrayview.QByteArrayView): gen_qmetatype_types.QMetaType =
 
-  QMetaType(h: fcQMetaType_fromName(name.h))
+  gen_qmetatype_types.QMetaType(h: fcQMetaType_fromName(name.h))
 
-proc debugStream*(self: QMetaType, dbg: gen_qdebug.QDebug, rhs: pointer): bool =
+proc debugStream*(self: gen_qmetatype_types.QMetaType, dbg: gen_qdebug.QDebug, rhs: pointer): bool =
 
   fcQMetaType_debugStream(self.h, dbg.h, rhs)
 
-proc hasRegisteredDebugStreamOperator*(self: QMetaType, ): bool =
+proc hasRegisteredDebugStreamOperator*(self: gen_qmetatype_types.QMetaType, ): bool =
 
   fcQMetaType_hasRegisteredDebugStreamOperator(self.h)
 
-proc debugStream2*(_: type QMetaType, dbg: gen_qdebug.QDebug, rhs: pointer, typeId: cint): bool =
+proc debugStream2*(_: type gen_qmetatype_types.QMetaType, dbg: gen_qdebug.QDebug, rhs: pointer, typeId: cint): bool =
 
   fcQMetaType_debugStream2(dbg.h, rhs, typeId)
 
-proc hasRegisteredDebugStreamOperatorWithTypeId*(_: type QMetaType, typeId: cint): bool =
+proc hasRegisteredDebugStreamOperatorWithTypeId*(_: type gen_qmetatype_types.QMetaType, typeId: cint): bool =
 
   fcQMetaType_hasRegisteredDebugStreamOperatorWithTypeId(typeId)
 
-proc convert*(_: type QMetaType, fromType: QMetaType, fromVal: pointer, toType: QMetaType, to: pointer): bool =
+proc convert*(_: type gen_qmetatype_types.QMetaType, fromType: gen_qmetatype_types.QMetaType, fromVal: pointer, toType: gen_qmetatype_types.QMetaType, to: pointer): bool =
 
   fcQMetaType_convert(fromType.h, fromVal, toType.h, to)
 
-proc canConvert*(_: type QMetaType, fromType: QMetaType, toType: QMetaType): bool =
+proc canConvert*(_: type gen_qmetatype_types.QMetaType, fromType: gen_qmetatype_types.QMetaType, toType: gen_qmetatype_types.QMetaType): bool =
 
   fcQMetaType_canConvert(fromType.h, toType.h)
 
-proc view*(_: type QMetaType, fromType: QMetaType, fromVal: pointer, toType: QMetaType, to: pointer): bool =
+proc view*(_: type gen_qmetatype_types.QMetaType, fromType: gen_qmetatype_types.QMetaType, fromVal: pointer, toType: gen_qmetatype_types.QMetaType, to: pointer): bool =
 
   fcQMetaType_view(fromType.h, fromVal, toType.h, to)
 
-proc canView*(_: type QMetaType, fromType: QMetaType, toType: QMetaType): bool =
+proc canView*(_: type gen_qmetatype_types.QMetaType, fromType: gen_qmetatype_types.QMetaType, toType: gen_qmetatype_types.QMetaType): bool =
 
   fcQMetaType_canView(fromType.h, toType.h)
 
-proc convert2*(_: type QMetaType, fromVal: pointer, fromTypeId: cint, to: pointer, toTypeId: cint): bool =
+proc convert2*(_: type gen_qmetatype_types.QMetaType, fromVal: pointer, fromTypeId: cint, to: pointer, toTypeId: cint): bool =
 
   fcQMetaType_convert2(fromVal, fromTypeId, to, toTypeId)
 
-proc compare2*(_: type QMetaType, lhs: pointer, rhs: pointer, typeId: cint, resultVal: ptr cint): bool =
+proc compare2*(_: type gen_qmetatype_types.QMetaType, lhs: pointer, rhs: pointer, typeId: cint, resultVal: ptr cint): bool =
 
   fcQMetaType_compare2(lhs, rhs, typeId, resultVal)
 
-proc equals2*(_: type QMetaType, lhs: pointer, rhs: pointer, typeId: cint, resultVal: ptr cint): bool =
+proc equals2*(_: type gen_qmetatype_types.QMetaType, lhs: pointer, rhs: pointer, typeId: cint, resultVal: ptr cint): bool =
 
   fcQMetaType_equals2(lhs, rhs, typeId, resultVal)
 
-proc hasRegisteredConverterFunction*(_: type QMetaType, fromType: QMetaType, toType: QMetaType): bool =
+proc hasRegisteredConverterFunction*(_: type gen_qmetatype_types.QMetaType, fromType: gen_qmetatype_types.QMetaType, toType: gen_qmetatype_types.QMetaType): bool =
 
   fcQMetaType_hasRegisteredConverterFunction(fromType.h, toType.h)
 
-proc hasRegisteredMutableViewFunction*(_: type QMetaType, fromType: QMetaType, toType: QMetaType): bool =
+proc hasRegisteredMutableViewFunction*(_: type gen_qmetatype_types.QMetaType, fromType: gen_qmetatype_types.QMetaType, toType: gen_qmetatype_types.QMetaType): bool =
 
   fcQMetaType_hasRegisteredMutableViewFunction(fromType.h, toType.h)
 
-proc unregisterConverterFunction*(_: type QMetaType, fromVal: QMetaType, to: QMetaType): void =
+proc unregisterConverterFunction*(_: type gen_qmetatype_types.QMetaType, fromVal: gen_qmetatype_types.QMetaType, to: gen_qmetatype_types.QMetaType): void =
 
   fcQMetaType_unregisterConverterFunction(fromVal.h, to.h)
 
-proc unregisterMutableViewFunction*(_: type QMetaType, fromVal: QMetaType, to: QMetaType): void =
+proc unregisterMutableViewFunction*(_: type gen_qmetatype_types.QMetaType, fromVal: gen_qmetatype_types.QMetaType, to: gen_qmetatype_types.QMetaType): void =
 
   fcQMetaType_unregisterMutableViewFunction(fromVal.h, to.h)
 
-proc unregisterMetaType*(_: type QMetaType, typeVal: QMetaType): void =
+proc unregisterMetaType*(_: type gen_qmetatype_types.QMetaType, typeVal: gen_qmetatype_types.QMetaType): void =
 
   fcQMetaType_unregisterMetaType(typeVal.h)
 
-proc create22*(_: type QMetaType, typeVal: cint, copy: pointer): pointer =
+proc create22*(_: type gen_qmetatype_types.QMetaType, typeVal: cint, copy: pointer): pointer =
 
   fcQMetaType_create22(typeVal, copy)
 
-proc id1*(self: QMetaType, param1: cint): cint =
+proc id1*(self: gen_qmetatype_types.QMetaType, param1: cint): cint =
 
   fcQMetaType_id1(self.h, param1)
 
-proc create1*(self: QMetaType, copy: pointer): pointer =
+proc create1*(self: gen_qmetatype_types.QMetaType, copy: pointer): pointer =
 
   fcQMetaType_create1(self.h, copy)
 
-proc construct2*(self: QMetaType, where: pointer, copy: pointer): pointer =
+proc construct2*(self: gen_qmetatype_types.QMetaType, where: pointer, copy: pointer): pointer =
 
   fcQMetaType_construct2(self.h, where, copy)
 
-proc delete*(self: QMetaType) =
+proc delete*(self: gen_qmetatype_types.QMetaType) =
   fcQMetaType_delete(self.h)

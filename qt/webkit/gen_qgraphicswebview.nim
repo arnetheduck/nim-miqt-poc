@@ -46,8 +46,6 @@ import
   gen_qgraphicswidget,
   gen_qicon,
   gen_qmetaobject,
-  gen_qnamespace,
-  gen_qnetworkaccessmanager,
   gen_qnetworkrequest,
   gen_qobject,
   gen_qobjectdefs,
@@ -72,8 +70,6 @@ export
   gen_qgraphicswidget,
   gen_qicon,
   gen_qmetaobject,
-  gen_qnamespace,
-  gen_qnetworkaccessmanager,
   gen_qnetworkrequest,
   gen_qobject,
   gen_qobjectdefs,
@@ -299,188 +295,188 @@ proc fcQGraphicsWebView_staticMetaObject(): pointer {.importc: "QGraphicsWebView
 proc fcQGraphicsWebView_delete(self: pointer) {.importc: "QGraphicsWebView_delete".}
 
 
-func init*(T: type QGraphicsWebView, h: ptr cQGraphicsWebView): QGraphicsWebView =
+func init*(T: type gen_qgraphicswebview_types.QGraphicsWebView, h: ptr cQGraphicsWebView): gen_qgraphicswebview_types.QGraphicsWebView =
   T(h: h)
-proc create*(T: type QGraphicsWebView, ): QGraphicsWebView =
+proc create*(T: type gen_qgraphicswebview_types.QGraphicsWebView, ): gen_qgraphicswebview_types.QGraphicsWebView =
 
-  QGraphicsWebView.init(fcQGraphicsWebView_new())
-proc create*(T: type QGraphicsWebView, parent: gen_qgraphicsitem.QGraphicsItem): QGraphicsWebView =
+  gen_qgraphicswebview_types.QGraphicsWebView.init(fcQGraphicsWebView_new())
+proc create*(T: type gen_qgraphicswebview_types.QGraphicsWebView, parent: gen_qgraphicsitem.QGraphicsItem): gen_qgraphicswebview_types.QGraphicsWebView =
 
-  QGraphicsWebView.init(fcQGraphicsWebView_new2(parent.h))
-proc metaObject*(self: QGraphicsWebView, ): gen_qobjectdefs.QMetaObject =
+  gen_qgraphicswebview_types.QGraphicsWebView.init(fcQGraphicsWebView_new2(parent.h))
+proc metaObject*(self: gen_qgraphicswebview_types.QGraphicsWebView, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQGraphicsWebView_metaObject(self.h))
 
-proc metacast*(self: QGraphicsWebView, param1: cstring): pointer =
+proc metacast*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: cstring): pointer =
 
   fcQGraphicsWebView_metacast(self.h, param1)
 
-proc metacall*(self: QGraphicsWebView, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQGraphicsWebView_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QGraphicsWebView, s: cstring): string =
+proc tr*(_: type gen_qgraphicswebview_types.QGraphicsWebView, s: cstring): string =
 
   let v_ms = fcQGraphicsWebView_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QGraphicsWebView, s: cstring): string =
+proc trUtf8*(_: type gen_qgraphicswebview_types.QGraphicsWebView, s: cstring): string =
 
   let v_ms = fcQGraphicsWebView_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc page*(self: QGraphicsWebView, ): gen_qwebpage.QWebPage =
+proc page*(self: gen_qgraphicswebview_types.QGraphicsWebView, ): gen_qwebpage.QWebPage =
 
   gen_qwebpage.QWebPage(h: fcQGraphicsWebView_page(self.h))
 
-proc setPage*(self: QGraphicsWebView, page: gen_qwebpage.QWebPage): void =
+proc setPage*(self: gen_qgraphicswebview_types.QGraphicsWebView, page: gen_qwebpage.QWebPage): void =
 
   fcQGraphicsWebView_setPage(self.h, page.h)
 
-proc url*(self: QGraphicsWebView, ): gen_qurl.QUrl =
+proc url*(self: gen_qgraphicswebview_types.QGraphicsWebView, ): gen_qurl.QUrl =
 
   gen_qurl.QUrl(h: fcQGraphicsWebView_url(self.h))
 
-proc setUrl*(self: QGraphicsWebView, url: gen_qurl.QUrl): void =
+proc setUrl*(self: gen_qgraphicswebview_types.QGraphicsWebView, url: gen_qurl.QUrl): void =
 
   fcQGraphicsWebView_setUrl(self.h, url.h)
 
-proc title*(self: QGraphicsWebView, ): string =
+proc title*(self: gen_qgraphicswebview_types.QGraphicsWebView, ): string =
 
   let v_ms = fcQGraphicsWebView_title(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc icon*(self: QGraphicsWebView, ): gen_qicon.QIcon =
+proc icon*(self: gen_qgraphicswebview_types.QGraphicsWebView, ): gen_qicon.QIcon =
 
   gen_qicon.QIcon(h: fcQGraphicsWebView_icon(self.h))
 
-proc zoomFactor*(self: QGraphicsWebView, ): float64 =
+proc zoomFactor*(self: gen_qgraphicswebview_types.QGraphicsWebView, ): float64 =
 
   fcQGraphicsWebView_zoomFactor(self.h)
 
-proc setZoomFactor*(self: QGraphicsWebView, zoomFactor: float64): void =
+proc setZoomFactor*(self: gen_qgraphicswebview_types.QGraphicsWebView, zoomFactor: float64): void =
 
   fcQGraphicsWebView_setZoomFactor(self.h, zoomFactor)
 
-proc isModified*(self: QGraphicsWebView, ): bool =
+proc isModified*(self: gen_qgraphicswebview_types.QGraphicsWebView, ): bool =
 
   fcQGraphicsWebView_isModified(self.h)
 
-proc load*(self: QGraphicsWebView, url: gen_qurl.QUrl): void =
+proc load*(self: gen_qgraphicswebview_types.QGraphicsWebView, url: gen_qurl.QUrl): void =
 
   fcQGraphicsWebView_load(self.h, url.h)
 
-proc loadWithRequest*(self: QGraphicsWebView, request: gen_qnetworkrequest.QNetworkRequest): void =
+proc loadWithRequest*(self: gen_qgraphicswebview_types.QGraphicsWebView, request: gen_qnetworkrequest.QNetworkRequest): void =
 
   fcQGraphicsWebView_loadWithRequest(self.h, request.h)
 
-proc setHtml*(self: QGraphicsWebView, html: string): void =
+proc setHtml*(self: gen_qgraphicswebview_types.QGraphicsWebView, html: string): void =
 
   fcQGraphicsWebView_setHtml(self.h, struct_miqt_string(data: html, len: csize_t(len(html))))
 
-proc setContent*(self: QGraphicsWebView, data: seq[byte]): void =
+proc setContent*(self: gen_qgraphicswebview_types.QGraphicsWebView, data: seq[byte]): void =
 
   fcQGraphicsWebView_setContent(self.h, struct_miqt_string(data: cast[cstring](if len(data) == 0: nil else: unsafeAddr data[0]), len: csize_t(len(data))))
 
-proc history*(self: QGraphicsWebView, ): gen_qwebhistory.QWebHistory =
+proc history*(self: gen_qgraphicswebview_types.QGraphicsWebView, ): gen_qwebhistory.QWebHistory =
 
   gen_qwebhistory.QWebHistory(h: fcQGraphicsWebView_history(self.h))
 
-proc settings*(self: QGraphicsWebView, ): gen_qwebsettings.QWebSettings =
+proc settings*(self: gen_qgraphicswebview_types.QGraphicsWebView, ): gen_qwebsettings.QWebSettings =
 
   gen_qwebsettings.QWebSettings(h: fcQGraphicsWebView_settings(self.h))
 
-proc pageAction*(self: QGraphicsWebView, action: gen_qwebpage.QWebPageWebAction): gen_qaction.QAction =
+proc pageAction*(self: gen_qgraphicswebview_types.QGraphicsWebView, action: cint): gen_qaction.QAction =
 
   gen_qaction.QAction(h: fcQGraphicsWebView_pageAction(self.h, cint(action)))
 
-proc triggerPageAction*(self: QGraphicsWebView, action: gen_qwebpage.QWebPageWebAction): void =
+proc triggerPageAction*(self: gen_qgraphicswebview_types.QGraphicsWebView, action: cint): void =
 
   fcQGraphicsWebView_triggerPageAction(self.h, cint(action))
 
-proc findText*(self: QGraphicsWebView, subString: string): bool =
+proc findText*(self: gen_qgraphicswebview_types.QGraphicsWebView, subString: string): bool =
 
   fcQGraphicsWebView_findText(self.h, struct_miqt_string(data: subString, len: csize_t(len(subString))))
 
-proc resizesToContents*(self: QGraphicsWebView, ): bool =
+proc resizesToContents*(self: gen_qgraphicswebview_types.QGraphicsWebView, ): bool =
 
   fcQGraphicsWebView_resizesToContents(self.h)
 
-proc setResizesToContents*(self: QGraphicsWebView, enabled: bool): void =
+proc setResizesToContents*(self: gen_qgraphicswebview_types.QGraphicsWebView, enabled: bool): void =
 
   fcQGraphicsWebView_setResizesToContents(self.h, enabled)
 
-proc isTiledBackingStoreFrozen*(self: QGraphicsWebView, ): bool =
+proc isTiledBackingStoreFrozen*(self: gen_qgraphicswebview_types.QGraphicsWebView, ): bool =
 
   fcQGraphicsWebView_isTiledBackingStoreFrozen(self.h)
 
-proc setTiledBackingStoreFrozen*(self: QGraphicsWebView, frozen: bool): void =
+proc setTiledBackingStoreFrozen*(self: gen_qgraphicswebview_types.QGraphicsWebView, frozen: bool): void =
 
   fcQGraphicsWebView_setTiledBackingStoreFrozen(self.h, frozen)
 
-proc setGeometry*(self: QGraphicsWebView, rect: gen_qrect.QRectF): void =
+proc setGeometry*(self: gen_qgraphicswebview_types.QGraphicsWebView, rect: gen_qrect.QRectF): void =
 
   fcQGraphicsWebView_setGeometry(self.h, rect.h)
 
-proc updateGeometry*(self: QGraphicsWebView, ): void =
+proc updateGeometry*(self: gen_qgraphicswebview_types.QGraphicsWebView, ): void =
 
   fcQGraphicsWebView_updateGeometry(self.h)
 
-proc paint*(self: QGraphicsWebView, param1: gen_qpainter.QPainter, options: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): void =
+proc paint*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: gen_qpainter.QPainter, options: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): void =
 
   fcQGraphicsWebView_paint(self.h, param1.h, options.h, widget.h)
 
-proc itemChange*(self: QGraphicsWebView, change: gen_qgraphicsitem.QGraphicsItemGraphicsItemChange, value: gen_qvariant.QVariant): gen_qvariant.QVariant =
+proc itemChange*(self: gen_qgraphicswebview_types.QGraphicsWebView, change: cint, value: gen_qvariant.QVariant): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fcQGraphicsWebView_itemChange(self.h, cint(change), value.h))
 
-proc event*(self: QGraphicsWebView, param1: gen_qcoreevent.QEvent): bool =
+proc event*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: gen_qcoreevent.QEvent): bool =
 
   fcQGraphicsWebView_event(self.h, param1.h)
 
-proc sizeHint*(self: QGraphicsWebView, which: gen_qnamespace.SizeHint, constraint: gen_qsize.QSizeF): gen_qsize.QSizeF =
+proc sizeHint*(self: gen_qgraphicswebview_types.QGraphicsWebView, which: cint, constraint: gen_qsize.QSizeF): gen_qsize.QSizeF =
 
   gen_qsize.QSizeF(h: fcQGraphicsWebView_sizeHint(self.h, cint(which), constraint.h))
 
-proc inputMethodQuery*(self: QGraphicsWebView, query: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant =
+proc inputMethodQuery*(self: gen_qgraphicswebview_types.QGraphicsWebView, query: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fcQGraphicsWebView_inputMethodQuery(self.h, cint(query)))
 
-proc renderHints*(self: QGraphicsWebView, ): gen_qpainter.QPainterRenderHint =
+proc renderHints*(self: gen_qgraphicswebview_types.QGraphicsWebView, ): cint =
 
-  gen_qpainter.QPainterRenderHint(fcQGraphicsWebView_renderHints(self.h))
+  cint(fcQGraphicsWebView_renderHints(self.h))
 
-proc setRenderHints*(self: QGraphicsWebView, renderHints: gen_qpainter.QPainterRenderHint): void =
+proc setRenderHints*(self: gen_qgraphicswebview_types.QGraphicsWebView, renderHints: cint): void =
 
   fcQGraphicsWebView_setRenderHints(self.h, cint(renderHints))
 
-proc setRenderHint*(self: QGraphicsWebView, param1: gen_qpainter.QPainterRenderHint): void =
+proc setRenderHint*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: cint): void =
 
   fcQGraphicsWebView_setRenderHint(self.h, cint(param1))
 
-proc stop*(self: QGraphicsWebView, ): void =
+proc stop*(self: gen_qgraphicswebview_types.QGraphicsWebView, ): void =
 
   fcQGraphicsWebView_stop(self.h)
 
-proc back*(self: QGraphicsWebView, ): void =
+proc back*(self: gen_qgraphicswebview_types.QGraphicsWebView, ): void =
 
   fcQGraphicsWebView_back(self.h)
 
-proc forward*(self: QGraphicsWebView, ): void =
+proc forward*(self: gen_qgraphicswebview_types.QGraphicsWebView, ): void =
 
   fcQGraphicsWebView_forward(self.h)
 
-proc reload*(self: QGraphicsWebView, ): void =
+proc reload*(self: gen_qgraphicswebview_types.QGraphicsWebView, ): void =
 
   fcQGraphicsWebView_reload(self.h)
 
-proc loadStarted*(self: QGraphicsWebView, ): void =
+proc loadStarted*(self: gen_qgraphicswebview_types.QGraphicsWebView, ): void =
 
   fcQGraphicsWebView_loadStarted(self.h)
 
@@ -490,13 +486,13 @@ proc miqt_exec_callback_QGraphicsWebView_loadStarted(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onloadStarted*(self: QGraphicsWebView, slot: proc()) =
+proc onloadStarted*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQGraphicsWebView_connect_loadStarted(self.h, cast[int](addr tmp[]))
-proc loadFinished*(self: QGraphicsWebView, param1: bool): void =
+proc loadFinished*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: bool): void =
 
   fcQGraphicsWebView_loadFinished(self.h, param1)
 
@@ -508,13 +504,13 @@ proc miqt_exec_callback_QGraphicsWebView_loadFinished(slot: int, param1: bool) {
 
   nimfunc[](slotval1)
 
-proc onloadFinished*(self: QGraphicsWebView, slot: proc(param1: bool)) =
+proc onloadFinished*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: proc(param1: bool)) =
   type Cb = proc(param1: bool)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQGraphicsWebView_connect_loadFinished(self.h, cast[int](addr tmp[]))
-proc loadProgress*(self: QGraphicsWebView, progress: cint): void =
+proc loadProgress*(self: gen_qgraphicswebview_types.QGraphicsWebView, progress: cint): void =
 
   fcQGraphicsWebView_loadProgress(self.h, progress)
 
@@ -526,13 +522,13 @@ proc miqt_exec_callback_QGraphicsWebView_loadProgress(slot: int, progress: cint)
 
   nimfunc[](slotval1)
 
-proc onloadProgress*(self: QGraphicsWebView, slot: proc(progress: cint)) =
+proc onloadProgress*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: proc(progress: cint)) =
   type Cb = proc(progress: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQGraphicsWebView_connect_loadProgress(self.h, cast[int](addr tmp[]))
-proc urlChanged*(self: QGraphicsWebView, param1: gen_qurl.QUrl): void =
+proc urlChanged*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: gen_qurl.QUrl): void =
 
   fcQGraphicsWebView_urlChanged(self.h, param1.h)
 
@@ -544,13 +540,13 @@ proc miqt_exec_callback_QGraphicsWebView_urlChanged(slot: int, param1: pointer) 
 
   nimfunc[](slotval1)
 
-proc onurlChanged*(self: QGraphicsWebView, slot: proc(param1: gen_qurl.QUrl)) =
+proc onurlChanged*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: proc(param1: gen_qurl.QUrl)) =
   type Cb = proc(param1: gen_qurl.QUrl)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQGraphicsWebView_connect_urlChanged(self.h, cast[int](addr tmp[]))
-proc titleChanged*(self: QGraphicsWebView, param1: string): void =
+proc titleChanged*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: string): void =
 
   fcQGraphicsWebView_titleChanged(self.h, struct_miqt_string(data: param1, len: csize_t(len(param1))))
 
@@ -565,13 +561,13 @@ proc miqt_exec_callback_QGraphicsWebView_titleChanged(slot: int, param1: struct_
 
   nimfunc[](slotval1)
 
-proc ontitleChanged*(self: QGraphicsWebView, slot: proc(param1: string)) =
+proc ontitleChanged*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: proc(param1: string)) =
   type Cb = proc(param1: string)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQGraphicsWebView_connect_titleChanged(self.h, cast[int](addr tmp[]))
-proc iconChanged*(self: QGraphicsWebView, ): void =
+proc iconChanged*(self: gen_qgraphicswebview_types.QGraphicsWebView, ): void =
 
   fcQGraphicsWebView_iconChanged(self.h)
 
@@ -581,13 +577,13 @@ proc miqt_exec_callback_QGraphicsWebView_iconChanged(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc oniconChanged*(self: QGraphicsWebView, slot: proc()) =
+proc oniconChanged*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQGraphicsWebView_connect_iconChanged(self.h, cast[int](addr tmp[]))
-proc statusBarMessage*(self: QGraphicsWebView, message: string): void =
+proc statusBarMessage*(self: gen_qgraphicswebview_types.QGraphicsWebView, message: string): void =
 
   fcQGraphicsWebView_statusBarMessage(self.h, struct_miqt_string(data: message, len: csize_t(len(message))))
 
@@ -602,13 +598,13 @@ proc miqt_exec_callback_QGraphicsWebView_statusBarMessage(slot: int, message: st
 
   nimfunc[](slotval1)
 
-proc onstatusBarMessage*(self: QGraphicsWebView, slot: proc(message: string)) =
+proc onstatusBarMessage*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: proc(message: string)) =
   type Cb = proc(message: string)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQGraphicsWebView_connect_statusBarMessage(self.h, cast[int](addr tmp[]))
-proc linkClicked*(self: QGraphicsWebView, param1: gen_qurl.QUrl): void =
+proc linkClicked*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: gen_qurl.QUrl): void =
 
   fcQGraphicsWebView_linkClicked(self.h, param1.h)
 
@@ -620,212 +616,182 @@ proc miqt_exec_callback_QGraphicsWebView_linkClicked(slot: int, param1: pointer)
 
   nimfunc[](slotval1)
 
-proc onlinkClicked*(self: QGraphicsWebView, slot: proc(param1: gen_qurl.QUrl)) =
+proc onlinkClicked*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: proc(param1: gen_qurl.QUrl)) =
   type Cb = proc(param1: gen_qurl.QUrl)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQGraphicsWebView_connect_linkClicked(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QGraphicsWebView, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qgraphicswebview_types.QGraphicsWebView, s: cstring, c: cstring): string =
 
   let v_ms = fcQGraphicsWebView_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QGraphicsWebView, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qgraphicswebview_types.QGraphicsWebView, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQGraphicsWebView_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QGraphicsWebView, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qgraphicswebview_types.QGraphicsWebView, s: cstring, c: cstring): string =
 
   let v_ms = fcQGraphicsWebView_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QGraphicsWebView, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qgraphicswebview_types.QGraphicsWebView, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQGraphicsWebView_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc load2*(self: QGraphicsWebView, request: gen_qnetworkrequest.QNetworkRequest, operation: gen_qnetworkaccessmanager.QNetworkAccessManagerOperation): void =
+proc load2*(self: gen_qgraphicswebview_types.QGraphicsWebView, request: gen_qnetworkrequest.QNetworkRequest, operation: cint): void =
 
   fcQGraphicsWebView_load2(self.h, request.h, cint(operation))
 
-proc load3*(self: QGraphicsWebView, request: gen_qnetworkrequest.QNetworkRequest, operation: gen_qnetworkaccessmanager.QNetworkAccessManagerOperation, body: seq[byte]): void =
+proc load3*(self: gen_qgraphicswebview_types.QGraphicsWebView, request: gen_qnetworkrequest.QNetworkRequest, operation: cint, body: seq[byte]): void =
 
   fcQGraphicsWebView_load3(self.h, request.h, cint(operation), struct_miqt_string(data: cast[cstring](if len(body) == 0: nil else: unsafeAddr body[0]), len: csize_t(len(body))))
 
-proc setHtml2*(self: QGraphicsWebView, html: string, baseUrl: gen_qurl.QUrl): void =
+proc setHtml2*(self: gen_qgraphicswebview_types.QGraphicsWebView, html: string, baseUrl: gen_qurl.QUrl): void =
 
   fcQGraphicsWebView_setHtml2(self.h, struct_miqt_string(data: html, len: csize_t(len(html))), baseUrl.h)
 
-proc setContent2*(self: QGraphicsWebView, data: seq[byte], mimeType: string): void =
+proc setContent2*(self: gen_qgraphicswebview_types.QGraphicsWebView, data: seq[byte], mimeType: string): void =
 
   fcQGraphicsWebView_setContent2(self.h, struct_miqt_string(data: cast[cstring](if len(data) == 0: nil else: unsafeAddr data[0]), len: csize_t(len(data))), struct_miqt_string(data: mimeType, len: csize_t(len(mimeType))))
 
-proc setContent3*(self: QGraphicsWebView, data: seq[byte], mimeType: string, baseUrl: gen_qurl.QUrl): void =
+proc setContent3*(self: gen_qgraphicswebview_types.QGraphicsWebView, data: seq[byte], mimeType: string, baseUrl: gen_qurl.QUrl): void =
 
   fcQGraphicsWebView_setContent3(self.h, struct_miqt_string(data: cast[cstring](if len(data) == 0: nil else: unsafeAddr data[0]), len: csize_t(len(data))), struct_miqt_string(data: mimeType, len: csize_t(len(mimeType))), baseUrl.h)
 
-proc triggerPageAction2*(self: QGraphicsWebView, action: gen_qwebpage.QWebPageWebAction, checked: bool): void =
+proc triggerPageAction2*(self: gen_qgraphicswebview_types.QGraphicsWebView, action: cint, checked: bool): void =
 
   fcQGraphicsWebView_triggerPageAction2(self.h, cint(action), checked)
 
-proc findText2*(self: QGraphicsWebView, subString: string, options: gen_qwebpage.QWebPageFindFlag): bool =
+proc findText2*(self: gen_qgraphicswebview_types.QGraphicsWebView, subString: string, options: cint): bool =
 
   fcQGraphicsWebView_findText2(self.h, struct_miqt_string(data: subString, len: csize_t(len(subString))), cint(options))
 
-proc setRenderHint2*(self: QGraphicsWebView, param1: gen_qpainter.QPainterRenderHint, enabled: bool): void =
+proc setRenderHint2*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: cint, enabled: bool): void =
 
   fcQGraphicsWebView_setRenderHint2(self.h, cint(param1), enabled)
 
-proc callVirtualBase_metaObject(self: QGraphicsWebView, ): gen_qobjectdefs.QMetaObject =
-
+proc QGraphicsWebViewmetaObject*(self: gen_qgraphicswebview_types.QGraphicsWebView, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQGraphicsWebView_virtualbase_metaObject(self.h))
 
-type QGraphicsWebViewmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QGraphicsWebViewmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_metaObject(self: ptr cQGraphicsWebView, slot: int): pointer {.exportc: "miqt_exec_callback_QGraphicsWebView_metaObject ".} =
-  type Cb = proc(super: QGraphicsWebViewmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QGraphicsWebView(h: self), )
+  var nimfunc = cast[ptr QGraphicsWebViewmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QGraphicsWebView, param1: cstring): pointer =
-
+proc QGraphicsWebViewmetacast*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: cstring): pointer =
 
   fQGraphicsWebView_virtualbase_metacast(self.h, param1)
 
-type QGraphicsWebViewmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewmetacastBase, param1: cstring): pointer) =
+type QGraphicsWebViewmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_metacast(self: ptr cQGraphicsWebView, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QGraphicsWebView_metacast ".} =
-  type Cb = proc(super: QGraphicsWebViewmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QGraphicsWebView(h: self), param1)
+  var nimfunc = cast[ptr QGraphicsWebViewmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QGraphicsWebView, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QGraphicsWebViewmetacall*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: cint, param2: cint, param3: pointer): cint =
 
   fQGraphicsWebView_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QGraphicsWebViewmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QGraphicsWebViewmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_metacall(self: ptr cQGraphicsWebView, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QGraphicsWebView_metacall ".} =
-  type Cb = proc(super: QGraphicsWebViewmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QGraphicsWebView(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QGraphicsWebViewmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_setGeometry(self: QGraphicsWebView, rect: gen_qrect.QRectF): void =
-
+proc QGraphicsWebViewsetGeometry*(self: gen_qgraphicswebview_types.QGraphicsWebView, rect: gen_qrect.QRectF): void =
 
   fQGraphicsWebView_virtualbase_setGeometry(self.h, rect.h)
 
-type QGraphicsWebViewsetGeometryBase* = proc(rect: gen_qrect.QRectF): void
-proc onsetGeometry*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewsetGeometryBase, rect: gen_qrect.QRectF): void) =
+type QGraphicsWebViewsetGeometryProc* = proc(rect: gen_qrect.QRectF): void
+proc onsetGeometry*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewsetGeometryProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewsetGeometryBase, rect: gen_qrect.QRectF): void
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewsetGeometryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_setGeometry(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_setGeometry(self: ptr cQGraphicsWebView, slot: int, rect: pointer): void {.exportc: "miqt_exec_callback_QGraphicsWebView_setGeometry ".} =
-  type Cb = proc(super: QGraphicsWebViewsetGeometryBase, rect: gen_qrect.QRectF): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(rect: gen_qrect.QRectF): auto =
-    callVirtualBase_setGeometry(QGraphicsWebView(h: self), rect)
+  var nimfunc = cast[ptr QGraphicsWebViewsetGeometryProc](cast[pointer](slot))
   let slotval1 = gen_qrect.QRectF(h: rect)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_updateGeometry(self: QGraphicsWebView, ): void =
-
+  nimfunc[](slotval1)
+proc QGraphicsWebViewupdateGeometry*(self: gen_qgraphicswebview_types.QGraphicsWebView, ): void =
 
   fQGraphicsWebView_virtualbase_updateGeometry(self.h)
 
-type QGraphicsWebViewupdateGeometryBase* = proc(): void
-proc onupdateGeometry*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewupdateGeometryBase): void) =
+type QGraphicsWebViewupdateGeometryProc* = proc(): void
+proc onupdateGeometry*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewupdateGeometryProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewupdateGeometryBase): void
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewupdateGeometryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_updateGeometry(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_updateGeometry(self: ptr cQGraphicsWebView, slot: int): void {.exportc: "miqt_exec_callback_QGraphicsWebView_updateGeometry ".} =
-  type Cb = proc(super: QGraphicsWebViewupdateGeometryBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_updateGeometry(QGraphicsWebView(h: self), )
+  var nimfunc = cast[ptr QGraphicsWebViewupdateGeometryProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_paint(self: QGraphicsWebView, param1: gen_qpainter.QPainter, options: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): void =
-
+  nimfunc[]()
+proc QGraphicsWebViewpaint*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: gen_qpainter.QPainter, options: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): void =
 
   fQGraphicsWebView_virtualbase_paint(self.h, param1.h, options.h, widget.h)
 
-type QGraphicsWebViewpaintBase* = proc(param1: gen_qpainter.QPainter, options: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): void
-proc onpaint*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewpaintBase, param1: gen_qpainter.QPainter, options: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): void) =
+type QGraphicsWebViewpaintProc* = proc(param1: gen_qpainter.QPainter, options: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): void
+proc onpaint*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewpaintProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewpaintBase, param1: gen_qpainter.QPainter, options: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): void
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewpaintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_paint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_paint(self: ptr cQGraphicsWebView, slot: int, param1: pointer, options: pointer, widget: pointer): void {.exportc: "miqt_exec_callback_QGraphicsWebView_paint ".} =
-  type Cb = proc(super: QGraphicsWebViewpaintBase, param1: gen_qpainter.QPainter, options: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qpainter.QPainter, options: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): auto =
-    callVirtualBase_paint(QGraphicsWebView(h: self), param1, options, widget)
+  var nimfunc = cast[ptr QGraphicsWebViewpaintProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: param1)
 
   let slotval2 = gen_qstyleoption.QStyleOptionGraphicsItem(h: options)
@@ -833,571 +799,451 @@ proc miqt_exec_callback_QGraphicsWebView_paint(self: ptr cQGraphicsWebView, slot
   let slotval3 = gen_qwidget.QWidget(h: widget)
 
 
-  nimfunc[](superCall, slotval1, slotval2, slotval3)
-proc callVirtualBase_itemChange(self: QGraphicsWebView, change: gen_qgraphicsitem.QGraphicsItemGraphicsItemChange, value: gen_qvariant.QVariant): gen_qvariant.QVariant =
-
+  nimfunc[](slotval1, slotval2, slotval3)
+proc QGraphicsWebViewitemChange*(self: gen_qgraphicswebview_types.QGraphicsWebView, change: cint, value: gen_qvariant.QVariant): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQGraphicsWebView_virtualbase_itemChange(self.h, cint(change), value.h))
 
-type QGraphicsWebViewitemChangeBase* = proc(change: gen_qgraphicsitem.QGraphicsItemGraphicsItemChange, value: gen_qvariant.QVariant): gen_qvariant.QVariant
-proc onitemChange*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewitemChangeBase, change: gen_qgraphicsitem.QGraphicsItemGraphicsItemChange, value: gen_qvariant.QVariant): gen_qvariant.QVariant) =
+type QGraphicsWebViewitemChangeProc* = proc(change: cint, value: gen_qvariant.QVariant): gen_qvariant.QVariant
+proc onitemChange*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewitemChangeProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewitemChangeBase, change: gen_qgraphicsitem.QGraphicsItemGraphicsItemChange, value: gen_qvariant.QVariant): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewitemChangeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_itemChange(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_itemChange(self: ptr cQGraphicsWebView, slot: int, change: cint, value: pointer): pointer {.exportc: "miqt_exec_callback_QGraphicsWebView_itemChange ".} =
-  type Cb = proc(super: QGraphicsWebViewitemChangeBase, change: gen_qgraphicsitem.QGraphicsItemGraphicsItemChange, value: gen_qvariant.QVariant): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(change: gen_qgraphicsitem.QGraphicsItemGraphicsItemChange, value: gen_qvariant.QVariant): auto =
-    callVirtualBase_itemChange(QGraphicsWebView(h: self), change, value)
-  let slotval1 = gen_qgraphicsitem.QGraphicsItemGraphicsItemChange(change)
+  var nimfunc = cast[ptr QGraphicsWebViewitemChangeProc](cast[pointer](slot))
+  let slotval1 = cint(change)
 
   let slotval2 = gen_qvariant.QVariant(h: value)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn.h
-proc callVirtualBase_event(self: QGraphicsWebView, param1: gen_qcoreevent.QEvent): bool =
-
+proc QGraphicsWebViewevent*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: gen_qcoreevent.QEvent): bool =
 
   fQGraphicsWebView_virtualbase_event(self.h, param1.h)
 
-type QGraphicsWebVieweventBase* = proc(param1: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebVieweventBase, param1: gen_qcoreevent.QEvent): bool) =
+type QGraphicsWebVieweventProc* = proc(param1: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebVieweventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebVieweventBase, param1: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QGraphicsWebVieweventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_event(self: ptr cQGraphicsWebView, slot: int, param1: pointer): bool {.exportc: "miqt_exec_callback_QGraphicsWebView_event ".} =
-  type Cb = proc(super: QGraphicsWebVieweventBase, param1: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QGraphicsWebView(h: self), param1)
+  var nimfunc = cast[ptr QGraphicsWebVieweventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_sizeHint(self: QGraphicsWebView, which: gen_qnamespace.SizeHint, constraint: gen_qsize.QSizeF): gen_qsize.QSizeF =
-
+proc QGraphicsWebViewsizeHint*(self: gen_qgraphicswebview_types.QGraphicsWebView, which: cint, constraint: gen_qsize.QSizeF): gen_qsize.QSizeF =
 
   gen_qsize.QSizeF(h: fQGraphicsWebView_virtualbase_sizeHint(self.h, cint(which), constraint.h))
 
-type QGraphicsWebViewsizeHintBase* = proc(which: gen_qnamespace.SizeHint, constraint: gen_qsize.QSizeF): gen_qsize.QSizeF
-proc onsizeHint*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewsizeHintBase, which: gen_qnamespace.SizeHint, constraint: gen_qsize.QSizeF): gen_qsize.QSizeF) =
+type QGraphicsWebViewsizeHintProc* = proc(which: cint, constraint: gen_qsize.QSizeF): gen_qsize.QSizeF
+proc onsizeHint*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewsizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewsizeHintBase, which: gen_qnamespace.SizeHint, constraint: gen_qsize.QSizeF): gen_qsize.QSizeF
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewsizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_sizeHint(self: ptr cQGraphicsWebView, slot: int, which: cint, constraint: pointer): pointer {.exportc: "miqt_exec_callback_QGraphicsWebView_sizeHint ".} =
-  type Cb = proc(super: QGraphicsWebViewsizeHintBase, which: gen_qnamespace.SizeHint, constraint: gen_qsize.QSizeF): gen_qsize.QSizeF
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(which: gen_qnamespace.SizeHint, constraint: gen_qsize.QSizeF): auto =
-    callVirtualBase_sizeHint(QGraphicsWebView(h: self), which, constraint)
-  let slotval1 = gen_qnamespace.SizeHint(which)
+  var nimfunc = cast[ptr QGraphicsWebViewsizeHintProc](cast[pointer](slot))
+  let slotval1 = cint(which)
 
   let slotval2 = gen_qsize.QSizeF(h: constraint)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn.h
-proc callVirtualBase_inputMethodQuery(self: QGraphicsWebView, query: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant =
-
+proc QGraphicsWebViewinputMethodQuery*(self: gen_qgraphicswebview_types.QGraphicsWebView, query: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQGraphicsWebView_virtualbase_inputMethodQuery(self.h, cint(query)))
 
-type QGraphicsWebViewinputMethodQueryBase* = proc(query: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-proc oninputMethodQuery*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewinputMethodQueryBase, query: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant) =
+type QGraphicsWebViewinputMethodQueryProc* = proc(query: cint): gen_qvariant.QVariant
+proc oninputMethodQuery*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewinputMethodQueryProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewinputMethodQueryBase, query: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewinputMethodQueryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_inputMethodQuery(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_inputMethodQuery(self: ptr cQGraphicsWebView, slot: int, query: cint): pointer {.exportc: "miqt_exec_callback_QGraphicsWebView_inputMethodQuery ".} =
-  type Cb = proc(super: QGraphicsWebViewinputMethodQueryBase, query: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(query: gen_qnamespace.InputMethodQuery): auto =
-    callVirtualBase_inputMethodQuery(QGraphicsWebView(h: self), query)
-  let slotval1 = gen_qnamespace.InputMethodQuery(query)
+  var nimfunc = cast[ptr QGraphicsWebViewinputMethodQueryProc](cast[pointer](slot))
+  let slotval1 = cint(query)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_mousePressEvent(self: QGraphicsWebView, param1: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
+proc QGraphicsWebViewmousePressEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
 
   fQGraphicsWebView_virtualbase_mousePressEvent(self.h, param1.h)
 
-type QGraphicsWebViewmousePressEventBase* = proc(param1: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
-proc onmousePressEvent*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewmousePressEventBase, param1: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void) =
+type QGraphicsWebViewmousePressEventProc* = proc(param1: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
+proc onmousePressEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewmousePressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewmousePressEventBase, param1: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewmousePressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_mousePressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_mousePressEvent(self: ptr cQGraphicsWebView, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QGraphicsWebView_mousePressEvent ".} =
-  type Cb = proc(super: QGraphicsWebViewmousePressEventBase, param1: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): auto =
-    callVirtualBase_mousePressEvent(QGraphicsWebView(h: self), param1)
+  var nimfunc = cast[ptr QGraphicsWebViewmousePressEventProc](cast[pointer](slot))
   let slotval1 = gen_qgraphicssceneevent.QGraphicsSceneMouseEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseDoubleClickEvent(self: QGraphicsWebView, param1: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QGraphicsWebViewmouseDoubleClickEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
 
   fQGraphicsWebView_virtualbase_mouseDoubleClickEvent(self.h, param1.h)
 
-type QGraphicsWebViewmouseDoubleClickEventBase* = proc(param1: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
-proc onmouseDoubleClickEvent*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewmouseDoubleClickEventBase, param1: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void) =
+type QGraphicsWebViewmouseDoubleClickEventProc* = proc(param1: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
+proc onmouseDoubleClickEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewmouseDoubleClickEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewmouseDoubleClickEventBase, param1: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewmouseDoubleClickEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_mouseDoubleClickEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_mouseDoubleClickEvent(self: ptr cQGraphicsWebView, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QGraphicsWebView_mouseDoubleClickEvent ".} =
-  type Cb = proc(super: QGraphicsWebViewmouseDoubleClickEventBase, param1: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): auto =
-    callVirtualBase_mouseDoubleClickEvent(QGraphicsWebView(h: self), param1)
+  var nimfunc = cast[ptr QGraphicsWebViewmouseDoubleClickEventProc](cast[pointer](slot))
   let slotval1 = gen_qgraphicssceneevent.QGraphicsSceneMouseEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseReleaseEvent(self: QGraphicsWebView, param1: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QGraphicsWebViewmouseReleaseEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
 
   fQGraphicsWebView_virtualbase_mouseReleaseEvent(self.h, param1.h)
 
-type QGraphicsWebViewmouseReleaseEventBase* = proc(param1: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
-proc onmouseReleaseEvent*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewmouseReleaseEventBase, param1: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void) =
+type QGraphicsWebViewmouseReleaseEventProc* = proc(param1: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
+proc onmouseReleaseEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewmouseReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewmouseReleaseEventBase, param1: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewmouseReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_mouseReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_mouseReleaseEvent(self: ptr cQGraphicsWebView, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QGraphicsWebView_mouseReleaseEvent ".} =
-  type Cb = proc(super: QGraphicsWebViewmouseReleaseEventBase, param1: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): auto =
-    callVirtualBase_mouseReleaseEvent(QGraphicsWebView(h: self), param1)
+  var nimfunc = cast[ptr QGraphicsWebViewmouseReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qgraphicssceneevent.QGraphicsSceneMouseEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseMoveEvent(self: QGraphicsWebView, param1: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QGraphicsWebViewmouseMoveEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
 
   fQGraphicsWebView_virtualbase_mouseMoveEvent(self.h, param1.h)
 
-type QGraphicsWebViewmouseMoveEventBase* = proc(param1: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
-proc onmouseMoveEvent*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewmouseMoveEventBase, param1: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void) =
+type QGraphicsWebViewmouseMoveEventProc* = proc(param1: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
+proc onmouseMoveEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewmouseMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewmouseMoveEventBase, param1: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewmouseMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_mouseMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_mouseMoveEvent(self: ptr cQGraphicsWebView, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QGraphicsWebView_mouseMoveEvent ".} =
-  type Cb = proc(super: QGraphicsWebViewmouseMoveEventBase, param1: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): auto =
-    callVirtualBase_mouseMoveEvent(QGraphicsWebView(h: self), param1)
+  var nimfunc = cast[ptr QGraphicsWebViewmouseMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qgraphicssceneevent.QGraphicsSceneMouseEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hoverMoveEvent(self: QGraphicsWebView, param1: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void =
-
+  nimfunc[](slotval1)
+proc QGraphicsWebViewhoverMoveEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void =
 
   fQGraphicsWebView_virtualbase_hoverMoveEvent(self.h, param1.h)
 
-type QGraphicsWebViewhoverMoveEventBase* = proc(param1: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
-proc onhoverMoveEvent*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewhoverMoveEventBase, param1: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void) =
+type QGraphicsWebViewhoverMoveEventProc* = proc(param1: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
+proc onhoverMoveEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewhoverMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewhoverMoveEventBase, param1: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewhoverMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_hoverMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_hoverMoveEvent(self: ptr cQGraphicsWebView, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QGraphicsWebView_hoverMoveEvent ".} =
-  type Cb = proc(super: QGraphicsWebViewhoverMoveEventBase, param1: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): auto =
-    callVirtualBase_hoverMoveEvent(QGraphicsWebView(h: self), param1)
+  var nimfunc = cast[ptr QGraphicsWebViewhoverMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qgraphicssceneevent.QGraphicsSceneHoverEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hoverLeaveEvent(self: QGraphicsWebView, param1: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void =
-
+  nimfunc[](slotval1)
+proc QGraphicsWebViewhoverLeaveEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void =
 
   fQGraphicsWebView_virtualbase_hoverLeaveEvent(self.h, param1.h)
 
-type QGraphicsWebViewhoverLeaveEventBase* = proc(param1: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
-proc onhoverLeaveEvent*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewhoverLeaveEventBase, param1: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void) =
+type QGraphicsWebViewhoverLeaveEventProc* = proc(param1: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
+proc onhoverLeaveEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewhoverLeaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewhoverLeaveEventBase, param1: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewhoverLeaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_hoverLeaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_hoverLeaveEvent(self: ptr cQGraphicsWebView, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QGraphicsWebView_hoverLeaveEvent ".} =
-  type Cb = proc(super: QGraphicsWebViewhoverLeaveEventBase, param1: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): auto =
-    callVirtualBase_hoverLeaveEvent(QGraphicsWebView(h: self), param1)
+  var nimfunc = cast[ptr QGraphicsWebViewhoverLeaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qgraphicssceneevent.QGraphicsSceneHoverEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_wheelEvent(self: QGraphicsWebView, param1: gen_qgraphicssceneevent.QGraphicsSceneWheelEvent): void =
-
+  nimfunc[](slotval1)
+proc QGraphicsWebViewwheelEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: gen_qgraphicssceneevent.QGraphicsSceneWheelEvent): void =
 
   fQGraphicsWebView_virtualbase_wheelEvent(self.h, param1.h)
 
-type QGraphicsWebViewwheelEventBase* = proc(param1: gen_qgraphicssceneevent.QGraphicsSceneWheelEvent): void
-proc onwheelEvent*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewwheelEventBase, param1: gen_qgraphicssceneevent.QGraphicsSceneWheelEvent): void) =
+type QGraphicsWebViewwheelEventProc* = proc(param1: gen_qgraphicssceneevent.QGraphicsSceneWheelEvent): void
+proc onwheelEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewwheelEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewwheelEventBase, param1: gen_qgraphicssceneevent.QGraphicsSceneWheelEvent): void
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewwheelEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_wheelEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_wheelEvent(self: ptr cQGraphicsWebView, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QGraphicsWebView_wheelEvent ".} =
-  type Cb = proc(super: QGraphicsWebViewwheelEventBase, param1: gen_qgraphicssceneevent.QGraphicsSceneWheelEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qgraphicssceneevent.QGraphicsSceneWheelEvent): auto =
-    callVirtualBase_wheelEvent(QGraphicsWebView(h: self), param1)
+  var nimfunc = cast[ptr QGraphicsWebViewwheelEventProc](cast[pointer](slot))
   let slotval1 = gen_qgraphicssceneevent.QGraphicsSceneWheelEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyPressEvent(self: QGraphicsWebView, param1: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QGraphicsWebViewkeyPressEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: gen_qevent.QKeyEvent): void =
 
   fQGraphicsWebView_virtualbase_keyPressEvent(self.h, param1.h)
 
-type QGraphicsWebViewkeyPressEventBase* = proc(param1: gen_qevent.QKeyEvent): void
-proc onkeyPressEvent*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewkeyPressEventBase, param1: gen_qevent.QKeyEvent): void) =
+type QGraphicsWebViewkeyPressEventProc* = proc(param1: gen_qevent.QKeyEvent): void
+proc onkeyPressEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewkeyPressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewkeyPressEventBase, param1: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewkeyPressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_keyPressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_keyPressEvent(self: ptr cQGraphicsWebView, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QGraphicsWebView_keyPressEvent ".} =
-  type Cb = proc(super: QGraphicsWebViewkeyPressEventBase, param1: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyPressEvent(QGraphicsWebView(h: self), param1)
+  var nimfunc = cast[ptr QGraphicsWebViewkeyPressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyReleaseEvent(self: QGraphicsWebView, param1: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QGraphicsWebViewkeyReleaseEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: gen_qevent.QKeyEvent): void =
 
   fQGraphicsWebView_virtualbase_keyReleaseEvent(self.h, param1.h)
 
-type QGraphicsWebViewkeyReleaseEventBase* = proc(param1: gen_qevent.QKeyEvent): void
-proc onkeyReleaseEvent*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewkeyReleaseEventBase, param1: gen_qevent.QKeyEvent): void) =
+type QGraphicsWebViewkeyReleaseEventProc* = proc(param1: gen_qevent.QKeyEvent): void
+proc onkeyReleaseEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewkeyReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewkeyReleaseEventBase, param1: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewkeyReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_keyReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_keyReleaseEvent(self: ptr cQGraphicsWebView, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QGraphicsWebView_keyReleaseEvent ".} =
-  type Cb = proc(super: QGraphicsWebViewkeyReleaseEventBase, param1: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyReleaseEvent(QGraphicsWebView(h: self), param1)
+  var nimfunc = cast[ptr QGraphicsWebViewkeyReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_contextMenuEvent(self: QGraphicsWebView, param1: gen_qgraphicssceneevent.QGraphicsSceneContextMenuEvent): void =
-
+  nimfunc[](slotval1)
+proc QGraphicsWebViewcontextMenuEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: gen_qgraphicssceneevent.QGraphicsSceneContextMenuEvent): void =
 
   fQGraphicsWebView_virtualbase_contextMenuEvent(self.h, param1.h)
 
-type QGraphicsWebViewcontextMenuEventBase* = proc(param1: gen_qgraphicssceneevent.QGraphicsSceneContextMenuEvent): void
-proc oncontextMenuEvent*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewcontextMenuEventBase, param1: gen_qgraphicssceneevent.QGraphicsSceneContextMenuEvent): void) =
+type QGraphicsWebViewcontextMenuEventProc* = proc(param1: gen_qgraphicssceneevent.QGraphicsSceneContextMenuEvent): void
+proc oncontextMenuEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewcontextMenuEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewcontextMenuEventBase, param1: gen_qgraphicssceneevent.QGraphicsSceneContextMenuEvent): void
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewcontextMenuEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_contextMenuEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_contextMenuEvent(self: ptr cQGraphicsWebView, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QGraphicsWebView_contextMenuEvent ".} =
-  type Cb = proc(super: QGraphicsWebViewcontextMenuEventBase, param1: gen_qgraphicssceneevent.QGraphicsSceneContextMenuEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qgraphicssceneevent.QGraphicsSceneContextMenuEvent): auto =
-    callVirtualBase_contextMenuEvent(QGraphicsWebView(h: self), param1)
+  var nimfunc = cast[ptr QGraphicsWebViewcontextMenuEventProc](cast[pointer](slot))
   let slotval1 = gen_qgraphicssceneevent.QGraphicsSceneContextMenuEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragEnterEvent(self: QGraphicsWebView, param1: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
+  nimfunc[](slotval1)
+proc QGraphicsWebViewdragEnterEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
 
   fQGraphicsWebView_virtualbase_dragEnterEvent(self.h, param1.h)
 
-type QGraphicsWebViewdragEnterEventBase* = proc(param1: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
-proc ondragEnterEvent*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewdragEnterEventBase, param1: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void) =
+type QGraphicsWebViewdragEnterEventProc* = proc(param1: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
+proc ondragEnterEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewdragEnterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewdragEnterEventBase, param1: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewdragEnterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_dragEnterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_dragEnterEvent(self: ptr cQGraphicsWebView, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QGraphicsWebView_dragEnterEvent ".} =
-  type Cb = proc(super: QGraphicsWebViewdragEnterEventBase, param1: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): auto =
-    callVirtualBase_dragEnterEvent(QGraphicsWebView(h: self), param1)
+  var nimfunc = cast[ptr QGraphicsWebViewdragEnterEventProc](cast[pointer](slot))
   let slotval1 = gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragLeaveEvent(self: QGraphicsWebView, param1: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
+  nimfunc[](slotval1)
+proc QGraphicsWebViewdragLeaveEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
 
   fQGraphicsWebView_virtualbase_dragLeaveEvent(self.h, param1.h)
 
-type QGraphicsWebViewdragLeaveEventBase* = proc(param1: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
-proc ondragLeaveEvent*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewdragLeaveEventBase, param1: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void) =
+type QGraphicsWebViewdragLeaveEventProc* = proc(param1: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
+proc ondragLeaveEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewdragLeaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewdragLeaveEventBase, param1: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewdragLeaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_dragLeaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_dragLeaveEvent(self: ptr cQGraphicsWebView, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QGraphicsWebView_dragLeaveEvent ".} =
-  type Cb = proc(super: QGraphicsWebViewdragLeaveEventBase, param1: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): auto =
-    callVirtualBase_dragLeaveEvent(QGraphicsWebView(h: self), param1)
+  var nimfunc = cast[ptr QGraphicsWebViewdragLeaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragMoveEvent(self: QGraphicsWebView, param1: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
+  nimfunc[](slotval1)
+proc QGraphicsWebViewdragMoveEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
 
   fQGraphicsWebView_virtualbase_dragMoveEvent(self.h, param1.h)
 
-type QGraphicsWebViewdragMoveEventBase* = proc(param1: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
-proc ondragMoveEvent*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewdragMoveEventBase, param1: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void) =
+type QGraphicsWebViewdragMoveEventProc* = proc(param1: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
+proc ondragMoveEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewdragMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewdragMoveEventBase, param1: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewdragMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_dragMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_dragMoveEvent(self: ptr cQGraphicsWebView, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QGraphicsWebView_dragMoveEvent ".} =
-  type Cb = proc(super: QGraphicsWebViewdragMoveEventBase, param1: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): auto =
-    callVirtualBase_dragMoveEvent(QGraphicsWebView(h: self), param1)
+  var nimfunc = cast[ptr QGraphicsWebViewdragMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dropEvent(self: QGraphicsWebView, param1: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
+  nimfunc[](slotval1)
+proc QGraphicsWebViewdropEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
 
   fQGraphicsWebView_virtualbase_dropEvent(self.h, param1.h)
 
-type QGraphicsWebViewdropEventBase* = proc(param1: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
-proc ondropEvent*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewdropEventBase, param1: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void) =
+type QGraphicsWebViewdropEventProc* = proc(param1: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
+proc ondropEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewdropEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewdropEventBase, param1: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewdropEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_dropEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_dropEvent(self: ptr cQGraphicsWebView, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QGraphicsWebView_dropEvent ".} =
-  type Cb = proc(super: QGraphicsWebViewdropEventBase, param1: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): auto =
-    callVirtualBase_dropEvent(QGraphicsWebView(h: self), param1)
+  var nimfunc = cast[ptr QGraphicsWebViewdropEventProc](cast[pointer](slot))
   let slotval1 = gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusInEvent(self: QGraphicsWebView, param1: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QGraphicsWebViewfocusInEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: gen_qevent.QFocusEvent): void =
 
   fQGraphicsWebView_virtualbase_focusInEvent(self.h, param1.h)
 
-type QGraphicsWebViewfocusInEventBase* = proc(param1: gen_qevent.QFocusEvent): void
-proc onfocusInEvent*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewfocusInEventBase, param1: gen_qevent.QFocusEvent): void) =
+type QGraphicsWebViewfocusInEventProc* = proc(param1: gen_qevent.QFocusEvent): void
+proc onfocusInEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewfocusInEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewfocusInEventBase, param1: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewfocusInEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_focusInEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_focusInEvent(self: ptr cQGraphicsWebView, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QGraphicsWebView_focusInEvent ".} =
-  type Cb = proc(super: QGraphicsWebViewfocusInEventBase, param1: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusInEvent(QGraphicsWebView(h: self), param1)
+  var nimfunc = cast[ptr QGraphicsWebViewfocusInEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusOutEvent(self: QGraphicsWebView, param1: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QGraphicsWebViewfocusOutEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: gen_qevent.QFocusEvent): void =
 
   fQGraphicsWebView_virtualbase_focusOutEvent(self.h, param1.h)
 
-type QGraphicsWebViewfocusOutEventBase* = proc(param1: gen_qevent.QFocusEvent): void
-proc onfocusOutEvent*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewfocusOutEventBase, param1: gen_qevent.QFocusEvent): void) =
+type QGraphicsWebViewfocusOutEventProc* = proc(param1: gen_qevent.QFocusEvent): void
+proc onfocusOutEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewfocusOutEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewfocusOutEventBase, param1: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewfocusOutEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_focusOutEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_focusOutEvent(self: ptr cQGraphicsWebView, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QGraphicsWebView_focusOutEvent ".} =
-  type Cb = proc(super: QGraphicsWebViewfocusOutEventBase, param1: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusOutEvent(QGraphicsWebView(h: self), param1)
+  var nimfunc = cast[ptr QGraphicsWebViewfocusOutEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_inputMethodEvent(self: QGraphicsWebView, param1: gen_qevent.QInputMethodEvent): void =
-
+  nimfunc[](slotval1)
+proc QGraphicsWebViewinputMethodEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: gen_qevent.QInputMethodEvent): void =
 
   fQGraphicsWebView_virtualbase_inputMethodEvent(self.h, param1.h)
 
-type QGraphicsWebViewinputMethodEventBase* = proc(param1: gen_qevent.QInputMethodEvent): void
-proc oninputMethodEvent*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void) =
+type QGraphicsWebViewinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
+proc oninputMethodEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewinputMethodEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewinputMethodEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_inputMethodEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_inputMethodEvent(self: ptr cQGraphicsWebView, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QGraphicsWebView_inputMethodEvent ".} =
-  type Cb = proc(super: QGraphicsWebViewinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QInputMethodEvent): auto =
-    callVirtualBase_inputMethodEvent(QGraphicsWebView(h: self), param1)
+  var nimfunc = cast[ptr QGraphicsWebViewinputMethodEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QInputMethodEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusNextPrevChild(self: QGraphicsWebView, next: bool): bool =
-
+  nimfunc[](slotval1)
+proc QGraphicsWebViewfocusNextPrevChild*(self: gen_qgraphicswebview_types.QGraphicsWebView, next: bool): bool =
 
   fQGraphicsWebView_virtualbase_focusNextPrevChild(self.h, next)
 
-type QGraphicsWebViewfocusNextPrevChildBase* = proc(next: bool): bool
-proc onfocusNextPrevChild*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewfocusNextPrevChildBase, next: bool): bool) =
+type QGraphicsWebViewfocusNextPrevChildProc* = proc(next: bool): bool
+proc onfocusNextPrevChild*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewfocusNextPrevChildProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewfocusNextPrevChildBase, next: bool): bool
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewfocusNextPrevChildProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_focusNextPrevChild(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_focusNextPrevChild(self: ptr cQGraphicsWebView, slot: int, next: bool): bool {.exportc: "miqt_exec_callback_QGraphicsWebView_focusNextPrevChild ".} =
-  type Cb = proc(super: QGraphicsWebViewfocusNextPrevChildBase, next: bool): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(next: bool): auto =
-    callVirtualBase_focusNextPrevChild(QGraphicsWebView(h: self), next)
+  var nimfunc = cast[ptr QGraphicsWebViewfocusNextPrevChildProc](cast[pointer](slot))
   let slotval1 = next
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_sceneEvent(self: QGraphicsWebView, param1: gen_qcoreevent.QEvent): bool =
-
+proc QGraphicsWebViewsceneEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: gen_qcoreevent.QEvent): bool =
 
   fQGraphicsWebView_virtualbase_sceneEvent(self.h, param1.h)
 
-type QGraphicsWebViewsceneEventBase* = proc(param1: gen_qcoreevent.QEvent): bool
-proc onsceneEvent*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewsceneEventBase, param1: gen_qcoreevent.QEvent): bool) =
+type QGraphicsWebViewsceneEventProc* = proc(param1: gen_qcoreevent.QEvent): bool
+proc onsceneEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewsceneEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewsceneEventBase, param1: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewsceneEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_sceneEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_sceneEvent(self: ptr cQGraphicsWebView, slot: int, param1: pointer): bool {.exportc: "miqt_exec_callback_QGraphicsWebView_sceneEvent ".} =
-  type Cb = proc(super: QGraphicsWebViewsceneEventBase, param1: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_sceneEvent(QGraphicsWebView(h: self), param1)
+  var nimfunc = cast[ptr QGraphicsWebViewsceneEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_getContentsMargins(self: QGraphicsWebView, left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): void =
-
+proc QGraphicsWebViewgetContentsMargins*(self: gen_qgraphicswebview_types.QGraphicsWebView, left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): void =
 
   fQGraphicsWebView_virtualbase_getContentsMargins(self.h, left, top, right, bottom)
 
-type QGraphicsWebViewgetContentsMarginsBase* = proc(left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): void
-proc ongetContentsMargins*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewgetContentsMarginsBase, left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): void) =
+type QGraphicsWebViewgetContentsMarginsProc* = proc(left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): void
+proc ongetContentsMargins*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewgetContentsMarginsProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewgetContentsMarginsBase, left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): void
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewgetContentsMarginsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_getContentsMargins(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_getContentsMargins(self: ptr cQGraphicsWebView, slot: int, left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): void {.exportc: "miqt_exec_callback_QGraphicsWebView_getContentsMargins ".} =
-  type Cb = proc(super: QGraphicsWebViewgetContentsMarginsBase, left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): auto =
-    callVirtualBase_getContentsMargins(QGraphicsWebView(h: self), left, top, right, bottom)
+  var nimfunc = cast[ptr QGraphicsWebViewgetContentsMarginsProc](cast[pointer](slot))
   let slotval1 = left
 
   let slotval2 = top
@@ -1407,49 +1253,39 @@ proc miqt_exec_callback_QGraphicsWebView_getContentsMargins(self: ptr cQGraphics
   let slotval4 = bottom
 
 
-  nimfunc[](superCall, slotval1, slotval2, slotval3, slotval4)
-proc callVirtualBase_typeX(self: QGraphicsWebView, ): cint =
-
+  nimfunc[](slotval1, slotval2, slotval3, slotval4)
+proc QGraphicsWebViewtypeX*(self: gen_qgraphicswebview_types.QGraphicsWebView, ): cint =
 
   fQGraphicsWebView_virtualbase_type(self.h)
 
-type QGraphicsWebViewtypeXBase* = proc(): cint
-proc ontypeX*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewtypeXBase): cint) =
+type QGraphicsWebViewtypeXProc* = proc(): cint
+proc ontypeX*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewtypeXProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewtypeXBase): cint
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewtypeXProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_typeX(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_type(self: ptr cQGraphicsWebView, slot: int): cint {.exportc: "miqt_exec_callback_QGraphicsWebView_type ".} =
-  type Cb = proc(super: QGraphicsWebViewtypeXBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_typeX(QGraphicsWebView(h: self), )
+  var nimfunc = cast[ptr QGraphicsWebViewtypeXProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_paintWindowFrame(self: QGraphicsWebView, painter: gen_qpainter.QPainter, option: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): void =
-
+proc QGraphicsWebViewpaintWindowFrame*(self: gen_qgraphicswebview_types.QGraphicsWebView, painter: gen_qpainter.QPainter, option: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): void =
 
   fQGraphicsWebView_virtualbase_paintWindowFrame(self.h, painter.h, option.h, widget.h)
 
-type QGraphicsWebViewpaintWindowFrameBase* = proc(painter: gen_qpainter.QPainter, option: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): void
-proc onpaintWindowFrame*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewpaintWindowFrameBase, painter: gen_qpainter.QPainter, option: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): void) =
+type QGraphicsWebViewpaintWindowFrameProc* = proc(painter: gen_qpainter.QPainter, option: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): void
+proc onpaintWindowFrame*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewpaintWindowFrameProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewpaintWindowFrameBase, painter: gen_qpainter.QPainter, option: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): void
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewpaintWindowFrameProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_paintWindowFrame(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_paintWindowFrame(self: ptr cQGraphicsWebView, slot: int, painter: pointer, option: pointer, widget: pointer): void {.exportc: "miqt_exec_callback_QGraphicsWebView_paintWindowFrame ".} =
-  type Cb = proc(super: QGraphicsWebViewpaintWindowFrameBase, painter: gen_qpainter.QPainter, option: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter, option: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): auto =
-    callVirtualBase_paintWindowFrame(QGraphicsWebView(h: self), painter, option, widget)
+  var nimfunc = cast[ptr QGraphicsWebViewpaintWindowFrameProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
   let slotval2 = gen_qstyleoption.QStyleOptionGraphicsItem(h: option)
@@ -1457,95 +1293,75 @@ proc miqt_exec_callback_QGraphicsWebView_paintWindowFrame(self: ptr cQGraphicsWe
   let slotval3 = gen_qwidget.QWidget(h: widget)
 
 
-  nimfunc[](superCall, slotval1, slotval2, slotval3)
-proc callVirtualBase_boundingRect(self: QGraphicsWebView, ): gen_qrect.QRectF =
-
+  nimfunc[](slotval1, slotval2, slotval3)
+proc QGraphicsWebViewboundingRect*(self: gen_qgraphicswebview_types.QGraphicsWebView, ): gen_qrect.QRectF =
 
   gen_qrect.QRectF(h: fQGraphicsWebView_virtualbase_boundingRect(self.h))
 
-type QGraphicsWebViewboundingRectBase* = proc(): gen_qrect.QRectF
-proc onboundingRect*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewboundingRectBase): gen_qrect.QRectF) =
+type QGraphicsWebViewboundingRectProc* = proc(): gen_qrect.QRectF
+proc onboundingRect*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewboundingRectProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewboundingRectBase): gen_qrect.QRectF
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewboundingRectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_boundingRect(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_boundingRect(self: ptr cQGraphicsWebView, slot: int): pointer {.exportc: "miqt_exec_callback_QGraphicsWebView_boundingRect ".} =
-  type Cb = proc(super: QGraphicsWebViewboundingRectBase): gen_qrect.QRectF
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_boundingRect(QGraphicsWebView(h: self), )
+  var nimfunc = cast[ptr QGraphicsWebViewboundingRectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_shape(self: QGraphicsWebView, ): gen_qpainterpath.QPainterPath =
-
+proc QGraphicsWebViewshape*(self: gen_qgraphicswebview_types.QGraphicsWebView, ): gen_qpainterpath.QPainterPath =
 
   gen_qpainterpath.QPainterPath(h: fQGraphicsWebView_virtualbase_shape(self.h))
 
-type QGraphicsWebViewshapeBase* = proc(): gen_qpainterpath.QPainterPath
-proc onshape*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewshapeBase): gen_qpainterpath.QPainterPath) =
+type QGraphicsWebViewshapeProc* = proc(): gen_qpainterpath.QPainterPath
+proc onshape*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewshapeProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewshapeBase): gen_qpainterpath.QPainterPath
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewshapeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_shape(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_shape(self: ptr cQGraphicsWebView, slot: int): pointer {.exportc: "miqt_exec_callback_QGraphicsWebView_shape ".} =
-  type Cb = proc(super: QGraphicsWebViewshapeBase): gen_qpainterpath.QPainterPath
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_shape(QGraphicsWebView(h: self), )
+  var nimfunc = cast[ptr QGraphicsWebViewshapeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_initStyleOption(self: QGraphicsWebView, option: gen_qstyleoption.QStyleOption): void =
-
+proc QGraphicsWebViewinitStyleOption*(self: gen_qgraphicswebview_types.QGraphicsWebView, option: gen_qstyleoption.QStyleOption): void =
 
   fQGraphicsWebView_virtualbase_initStyleOption(self.h, option.h)
 
-type QGraphicsWebViewinitStyleOptionBase* = proc(option: gen_qstyleoption.QStyleOption): void
-proc oninitStyleOption*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewinitStyleOptionBase, option: gen_qstyleoption.QStyleOption): void) =
+type QGraphicsWebViewinitStyleOptionProc* = proc(option: gen_qstyleoption.QStyleOption): void
+proc oninitStyleOption*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewinitStyleOptionProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewinitStyleOptionBase, option: gen_qstyleoption.QStyleOption): void
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewinitStyleOptionProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_initStyleOption(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_initStyleOption(self: ptr cQGraphicsWebView, slot: int, option: pointer): void {.exportc: "miqt_exec_callback_QGraphicsWebView_initStyleOption ".} =
-  type Cb = proc(super: QGraphicsWebViewinitStyleOptionBase, option: gen_qstyleoption.QStyleOption): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(option: gen_qstyleoption.QStyleOption): auto =
-    callVirtualBase_initStyleOption(QGraphicsWebView(h: self), option)
+  var nimfunc = cast[ptr QGraphicsWebViewinitStyleOptionProc](cast[pointer](slot))
   let slotval1 = gen_qstyleoption.QStyleOption(h: option)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_propertyChange(self: QGraphicsWebView, propertyName: string, value: gen_qvariant.QVariant): gen_qvariant.QVariant =
-
+  nimfunc[](slotval1)
+proc QGraphicsWebViewpropertyChange*(self: gen_qgraphicswebview_types.QGraphicsWebView, propertyName: string, value: gen_qvariant.QVariant): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQGraphicsWebView_virtualbase_propertyChange(self.h, struct_miqt_string(data: propertyName, len: csize_t(len(propertyName))), value.h))
 
-type QGraphicsWebViewpropertyChangeBase* = proc(propertyName: string, value: gen_qvariant.QVariant): gen_qvariant.QVariant
-proc onpropertyChange*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewpropertyChangeBase, propertyName: string, value: gen_qvariant.QVariant): gen_qvariant.QVariant) =
+type QGraphicsWebViewpropertyChangeProc* = proc(propertyName: string, value: gen_qvariant.QVariant): gen_qvariant.QVariant
+proc onpropertyChange*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewpropertyChangeProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewpropertyChangeBase, propertyName: string, value: gen_qvariant.QVariant): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewpropertyChangeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_propertyChange(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_propertyChange(self: ptr cQGraphicsWebView, slot: int, propertyName: struct_miqt_string, value: pointer): pointer {.exportc: "miqt_exec_callback_QGraphicsWebView_propertyChange ".} =
-  type Cb = proc(super: QGraphicsWebViewpropertyChangeBase, propertyName: string, value: gen_qvariant.QVariant): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(propertyName: string, value: gen_qvariant.QVariant): auto =
-    callVirtualBase_propertyChange(QGraphicsWebView(h: self), propertyName, value)
+  var nimfunc = cast[ptr QGraphicsWebViewpropertyChangeProc](cast[pointer](slot))
   let vpropertyName_ms = propertyName
   let vpropertyNamex_ret = string.fromBytes(toOpenArrayByte(vpropertyName_ms.data, 0, int(vpropertyName_ms.len)-1))
   c_free(vpropertyName_ms.data)
@@ -1554,728 +1370,578 @@ proc miqt_exec_callback_QGraphicsWebView_propertyChange(self: ptr cQGraphicsWebV
   let slotval2 = gen_qvariant.QVariant(h: value)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn.h
-proc callVirtualBase_windowFrameEvent(self: QGraphicsWebView, e: gen_qcoreevent.QEvent): bool =
-
+proc QGraphicsWebViewwindowFrameEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, e: gen_qcoreevent.QEvent): bool =
 
   fQGraphicsWebView_virtualbase_windowFrameEvent(self.h, e.h)
 
-type QGraphicsWebViewwindowFrameEventBase* = proc(e: gen_qcoreevent.QEvent): bool
-proc onwindowFrameEvent*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewwindowFrameEventBase, e: gen_qcoreevent.QEvent): bool) =
+type QGraphicsWebViewwindowFrameEventProc* = proc(e: gen_qcoreevent.QEvent): bool
+proc onwindowFrameEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewwindowFrameEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewwindowFrameEventBase, e: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewwindowFrameEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_windowFrameEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_windowFrameEvent(self: ptr cQGraphicsWebView, slot: int, e: pointer): bool {.exportc: "miqt_exec_callback_QGraphicsWebView_windowFrameEvent ".} =
-  type Cb = proc(super: QGraphicsWebViewwindowFrameEventBase, e: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_windowFrameEvent(QGraphicsWebView(h: self), e)
+  var nimfunc = cast[ptr QGraphicsWebViewwindowFrameEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: e)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_windowFrameSectionAt(self: QGraphicsWebView, pos: gen_qpoint.QPointF): gen_qnamespace.WindowFrameSection =
+proc QGraphicsWebViewwindowFrameSectionAt*(self: gen_qgraphicswebview_types.QGraphicsWebView, pos: gen_qpoint.QPointF): cint =
 
+  cint(fQGraphicsWebView_virtualbase_windowFrameSectionAt(self.h, pos.h))
 
-  gen_qnamespace.WindowFrameSection(fQGraphicsWebView_virtualbase_windowFrameSectionAt(self.h, pos.h))
-
-type QGraphicsWebViewwindowFrameSectionAtBase* = proc(pos: gen_qpoint.QPointF): gen_qnamespace.WindowFrameSection
-proc onwindowFrameSectionAt*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewwindowFrameSectionAtBase, pos: gen_qpoint.QPointF): gen_qnamespace.WindowFrameSection) =
+type QGraphicsWebViewwindowFrameSectionAtProc* = proc(pos: gen_qpoint.QPointF): cint
+proc onwindowFrameSectionAt*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewwindowFrameSectionAtProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewwindowFrameSectionAtBase, pos: gen_qpoint.QPointF): gen_qnamespace.WindowFrameSection
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewwindowFrameSectionAtProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_windowFrameSectionAt(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_windowFrameSectionAt(self: ptr cQGraphicsWebView, slot: int, pos: pointer): cint {.exportc: "miqt_exec_callback_QGraphicsWebView_windowFrameSectionAt ".} =
-  type Cb = proc(super: QGraphicsWebViewwindowFrameSectionAtBase, pos: gen_qpoint.QPointF): gen_qnamespace.WindowFrameSection
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(pos: gen_qpoint.QPointF): auto =
-    callVirtualBase_windowFrameSectionAt(QGraphicsWebView(h: self), pos)
+  var nimfunc = cast[ptr QGraphicsWebViewwindowFrameSectionAtProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPointF(h: pos)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   cint(virtualReturn)
-proc callVirtualBase_changeEvent(self: QGraphicsWebView, event: gen_qcoreevent.QEvent): void =
-
+proc QGraphicsWebViewchangeEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, event: gen_qcoreevent.QEvent): void =
 
   fQGraphicsWebView_virtualbase_changeEvent(self.h, event.h)
 
-type QGraphicsWebViewchangeEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onchangeEvent*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewchangeEventBase, event: gen_qcoreevent.QEvent): void) =
+type QGraphicsWebViewchangeEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onchangeEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewchangeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewchangeEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewchangeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_changeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_changeEvent(self: ptr cQGraphicsWebView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGraphicsWebView_changeEvent ".} =
-  type Cb = proc(super: QGraphicsWebViewchangeEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_changeEvent(QGraphicsWebView(h: self), event)
+  var nimfunc = cast[ptr QGraphicsWebViewchangeEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_closeEvent(self: QGraphicsWebView, event: gen_qevent.QCloseEvent): void =
-
+  nimfunc[](slotval1)
+proc QGraphicsWebViewcloseEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, event: gen_qevent.QCloseEvent): void =
 
   fQGraphicsWebView_virtualbase_closeEvent(self.h, event.h)
 
-type QGraphicsWebViewcloseEventBase* = proc(event: gen_qevent.QCloseEvent): void
-proc oncloseEvent*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewcloseEventBase, event: gen_qevent.QCloseEvent): void) =
+type QGraphicsWebViewcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
+proc oncloseEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewcloseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewcloseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_closeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_closeEvent(self: ptr cQGraphicsWebView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGraphicsWebView_closeEvent ".} =
-  type Cb = proc(super: QGraphicsWebViewcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QCloseEvent): auto =
-    callVirtualBase_closeEvent(QGraphicsWebView(h: self), event)
+  var nimfunc = cast[ptr QGraphicsWebViewcloseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QCloseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hideEvent(self: QGraphicsWebView, event: gen_qevent.QHideEvent): void =
-
+  nimfunc[](slotval1)
+proc QGraphicsWebViewhideEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, event: gen_qevent.QHideEvent): void =
 
   fQGraphicsWebView_virtualbase_hideEvent(self.h, event.h)
 
-type QGraphicsWebViewhideEventBase* = proc(event: gen_qevent.QHideEvent): void
-proc onhideEvent*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewhideEventBase, event: gen_qevent.QHideEvent): void) =
+type QGraphicsWebViewhideEventProc* = proc(event: gen_qevent.QHideEvent): void
+proc onhideEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewhideEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewhideEventBase, event: gen_qevent.QHideEvent): void
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewhideEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_hideEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_hideEvent(self: ptr cQGraphicsWebView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGraphicsWebView_hideEvent ".} =
-  type Cb = proc(super: QGraphicsWebViewhideEventBase, event: gen_qevent.QHideEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QHideEvent): auto =
-    callVirtualBase_hideEvent(QGraphicsWebView(h: self), event)
+  var nimfunc = cast[ptr QGraphicsWebViewhideEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QHideEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_moveEvent(self: QGraphicsWebView, event: gen_qgraphicssceneevent.QGraphicsSceneMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QGraphicsWebViewmoveEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, event: gen_qgraphicssceneevent.QGraphicsSceneMoveEvent): void =
 
   fQGraphicsWebView_virtualbase_moveEvent(self.h, event.h)
 
-type QGraphicsWebViewmoveEventBase* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMoveEvent): void
-proc onmoveEvent*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewmoveEventBase, event: gen_qgraphicssceneevent.QGraphicsSceneMoveEvent): void) =
+type QGraphicsWebViewmoveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMoveEvent): void
+proc onmoveEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewmoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewmoveEventBase, event: gen_qgraphicssceneevent.QGraphicsSceneMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewmoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_moveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_moveEvent(self: ptr cQGraphicsWebView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGraphicsWebView_moveEvent ".} =
-  type Cb = proc(super: QGraphicsWebViewmoveEventBase, event: gen_qgraphicssceneevent.QGraphicsSceneMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qgraphicssceneevent.QGraphicsSceneMoveEvent): auto =
-    callVirtualBase_moveEvent(QGraphicsWebView(h: self), event)
+  var nimfunc = cast[ptr QGraphicsWebViewmoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qgraphicssceneevent.QGraphicsSceneMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_polishEvent(self: QGraphicsWebView, ): void =
-
+  nimfunc[](slotval1)
+proc QGraphicsWebViewpolishEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, ): void =
 
   fQGraphicsWebView_virtualbase_polishEvent(self.h)
 
-type QGraphicsWebViewpolishEventBase* = proc(): void
-proc onpolishEvent*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewpolishEventBase): void) =
+type QGraphicsWebViewpolishEventProc* = proc(): void
+proc onpolishEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewpolishEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewpolishEventBase): void
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewpolishEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_polishEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_polishEvent(self: ptr cQGraphicsWebView, slot: int): void {.exportc: "miqt_exec_callback_QGraphicsWebView_polishEvent ".} =
-  type Cb = proc(super: QGraphicsWebViewpolishEventBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_polishEvent(QGraphicsWebView(h: self), )
+  var nimfunc = cast[ptr QGraphicsWebViewpolishEventProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_resizeEvent(self: QGraphicsWebView, event: gen_qgraphicssceneevent.QGraphicsSceneResizeEvent): void =
-
+  nimfunc[]()
+proc QGraphicsWebViewresizeEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, event: gen_qgraphicssceneevent.QGraphicsSceneResizeEvent): void =
 
   fQGraphicsWebView_virtualbase_resizeEvent(self.h, event.h)
 
-type QGraphicsWebViewresizeEventBase* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneResizeEvent): void
-proc onresizeEvent*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewresizeEventBase, event: gen_qgraphicssceneevent.QGraphicsSceneResizeEvent): void) =
+type QGraphicsWebViewresizeEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneResizeEvent): void
+proc onresizeEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewresizeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewresizeEventBase, event: gen_qgraphicssceneevent.QGraphicsSceneResizeEvent): void
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewresizeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_resizeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_resizeEvent(self: ptr cQGraphicsWebView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGraphicsWebView_resizeEvent ".} =
-  type Cb = proc(super: QGraphicsWebViewresizeEventBase, event: gen_qgraphicssceneevent.QGraphicsSceneResizeEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qgraphicssceneevent.QGraphicsSceneResizeEvent): auto =
-    callVirtualBase_resizeEvent(QGraphicsWebView(h: self), event)
+  var nimfunc = cast[ptr QGraphicsWebViewresizeEventProc](cast[pointer](slot))
   let slotval1 = gen_qgraphicssceneevent.QGraphicsSceneResizeEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_showEvent(self: QGraphicsWebView, event: gen_qevent.QShowEvent): void =
-
+  nimfunc[](slotval1)
+proc QGraphicsWebViewshowEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, event: gen_qevent.QShowEvent): void =
 
   fQGraphicsWebView_virtualbase_showEvent(self.h, event.h)
 
-type QGraphicsWebViewshowEventBase* = proc(event: gen_qevent.QShowEvent): void
-proc onshowEvent*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewshowEventBase, event: gen_qevent.QShowEvent): void) =
+type QGraphicsWebViewshowEventProc* = proc(event: gen_qevent.QShowEvent): void
+proc onshowEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewshowEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewshowEventBase, event: gen_qevent.QShowEvent): void
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewshowEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_showEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_showEvent(self: ptr cQGraphicsWebView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGraphicsWebView_showEvent ".} =
-  type Cb = proc(super: QGraphicsWebViewshowEventBase, event: gen_qevent.QShowEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QShowEvent): auto =
-    callVirtualBase_showEvent(QGraphicsWebView(h: self), event)
+  var nimfunc = cast[ptr QGraphicsWebViewshowEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QShowEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_grabMouseEvent(self: QGraphicsWebView, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QGraphicsWebViewgrabMouseEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, event: gen_qcoreevent.QEvent): void =
 
   fQGraphicsWebView_virtualbase_grabMouseEvent(self.h, event.h)
 
-type QGraphicsWebViewgrabMouseEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc ongrabMouseEvent*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewgrabMouseEventBase, event: gen_qcoreevent.QEvent): void) =
+type QGraphicsWebViewgrabMouseEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc ongrabMouseEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewgrabMouseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewgrabMouseEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewgrabMouseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_grabMouseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_grabMouseEvent(self: ptr cQGraphicsWebView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGraphicsWebView_grabMouseEvent ".} =
-  type Cb = proc(super: QGraphicsWebViewgrabMouseEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_grabMouseEvent(QGraphicsWebView(h: self), event)
+  var nimfunc = cast[ptr QGraphicsWebViewgrabMouseEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_ungrabMouseEvent(self: QGraphicsWebView, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QGraphicsWebViewungrabMouseEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, event: gen_qcoreevent.QEvent): void =
 
   fQGraphicsWebView_virtualbase_ungrabMouseEvent(self.h, event.h)
 
-type QGraphicsWebViewungrabMouseEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onungrabMouseEvent*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewungrabMouseEventBase, event: gen_qcoreevent.QEvent): void) =
+type QGraphicsWebViewungrabMouseEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onungrabMouseEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewungrabMouseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewungrabMouseEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewungrabMouseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_ungrabMouseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_ungrabMouseEvent(self: ptr cQGraphicsWebView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGraphicsWebView_ungrabMouseEvent ".} =
-  type Cb = proc(super: QGraphicsWebViewungrabMouseEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_ungrabMouseEvent(QGraphicsWebView(h: self), event)
+  var nimfunc = cast[ptr QGraphicsWebViewungrabMouseEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_grabKeyboardEvent(self: QGraphicsWebView, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QGraphicsWebViewgrabKeyboardEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, event: gen_qcoreevent.QEvent): void =
 
   fQGraphicsWebView_virtualbase_grabKeyboardEvent(self.h, event.h)
 
-type QGraphicsWebViewgrabKeyboardEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc ongrabKeyboardEvent*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewgrabKeyboardEventBase, event: gen_qcoreevent.QEvent): void) =
+type QGraphicsWebViewgrabKeyboardEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc ongrabKeyboardEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewgrabKeyboardEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewgrabKeyboardEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewgrabKeyboardEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_grabKeyboardEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_grabKeyboardEvent(self: ptr cQGraphicsWebView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGraphicsWebView_grabKeyboardEvent ".} =
-  type Cb = proc(super: QGraphicsWebViewgrabKeyboardEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_grabKeyboardEvent(QGraphicsWebView(h: self), event)
+  var nimfunc = cast[ptr QGraphicsWebViewgrabKeyboardEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_ungrabKeyboardEvent(self: QGraphicsWebView, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QGraphicsWebViewungrabKeyboardEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, event: gen_qcoreevent.QEvent): void =
 
   fQGraphicsWebView_virtualbase_ungrabKeyboardEvent(self.h, event.h)
 
-type QGraphicsWebViewungrabKeyboardEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onungrabKeyboardEvent*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewungrabKeyboardEventBase, event: gen_qcoreevent.QEvent): void) =
+type QGraphicsWebViewungrabKeyboardEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onungrabKeyboardEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewungrabKeyboardEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewungrabKeyboardEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewungrabKeyboardEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_ungrabKeyboardEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_ungrabKeyboardEvent(self: ptr cQGraphicsWebView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGraphicsWebView_ungrabKeyboardEvent ".} =
-  type Cb = proc(super: QGraphicsWebViewungrabKeyboardEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_ungrabKeyboardEvent(QGraphicsWebView(h: self), event)
+  var nimfunc = cast[ptr QGraphicsWebViewungrabKeyboardEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_eventFilter(self: QGraphicsWebView, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[](slotval1)
+proc QGraphicsWebVieweventFilter*(self: gen_qgraphicswebview_types.QGraphicsWebView, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQGraphicsWebView_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QGraphicsWebVieweventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebVieweventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QGraphicsWebVieweventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebVieweventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebVieweventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QGraphicsWebVieweventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_eventFilter(self: ptr cQGraphicsWebView, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QGraphicsWebView_eventFilter ".} =
-  type Cb = proc(super: QGraphicsWebVieweventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QGraphicsWebView(h: self), watched, event)
+  var nimfunc = cast[ptr QGraphicsWebVieweventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QGraphicsWebView, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QGraphicsWebViewtimerEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, event: gen_qcoreevent.QTimerEvent): void =
 
   fQGraphicsWebView_virtualbase_timerEvent(self.h, event.h)
 
-type QGraphicsWebViewtimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewtimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QGraphicsWebViewtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewtimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewtimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewtimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_timerEvent(self: ptr cQGraphicsWebView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGraphicsWebView_timerEvent ".} =
-  type Cb = proc(super: QGraphicsWebViewtimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QGraphicsWebView(h: self), event)
+  var nimfunc = cast[ptr QGraphicsWebViewtimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QGraphicsWebView, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QGraphicsWebViewchildEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, event: gen_qcoreevent.QChildEvent): void =
 
   fQGraphicsWebView_virtualbase_childEvent(self.h, event.h)
 
-type QGraphicsWebViewchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QGraphicsWebViewchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_childEvent(self: ptr cQGraphicsWebView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGraphicsWebView_childEvent ".} =
-  type Cb = proc(super: QGraphicsWebViewchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QGraphicsWebView(h: self), event)
+  var nimfunc = cast[ptr QGraphicsWebViewchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QGraphicsWebView, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QGraphicsWebViewcustomEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, event: gen_qcoreevent.QEvent): void =
 
   fQGraphicsWebView_virtualbase_customEvent(self.h, event.h)
 
-type QGraphicsWebViewcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QGraphicsWebViewcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_customEvent(self: ptr cQGraphicsWebView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGraphicsWebView_customEvent ".} =
-  type Cb = proc(super: QGraphicsWebViewcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QGraphicsWebView(h: self), event)
+  var nimfunc = cast[ptr QGraphicsWebViewcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QGraphicsWebView, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QGraphicsWebViewconnectNotify*(self: gen_qgraphicswebview_types.QGraphicsWebView, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQGraphicsWebView_virtualbase_connectNotify(self.h, signal.h)
 
-type QGraphicsWebViewconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QGraphicsWebViewconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_connectNotify(self: ptr cQGraphicsWebView, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QGraphicsWebView_connectNotify ".} =
-  type Cb = proc(super: QGraphicsWebViewconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QGraphicsWebView(h: self), signal)
+  var nimfunc = cast[ptr QGraphicsWebViewconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QGraphicsWebView, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QGraphicsWebViewdisconnectNotify*(self: gen_qgraphicswebview_types.QGraphicsWebView, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQGraphicsWebView_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QGraphicsWebViewdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QGraphicsWebViewdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_disconnectNotify(self: ptr cQGraphicsWebView, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QGraphicsWebView_disconnectNotify ".} =
-  type Cb = proc(super: QGraphicsWebViewdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QGraphicsWebView(h: self), signal)
+  var nimfunc = cast[ptr QGraphicsWebViewdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_advance(self: QGraphicsWebView, phase: cint): void =
-
+  nimfunc[](slotval1)
+proc QGraphicsWebViewadvance*(self: gen_qgraphicswebview_types.QGraphicsWebView, phase: cint): void =
 
   fQGraphicsWebView_virtualbase_advance(self.h, phase)
 
-type QGraphicsWebViewadvanceBase* = proc(phase: cint): void
-proc onadvance*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewadvanceBase, phase: cint): void) =
+type QGraphicsWebViewadvanceProc* = proc(phase: cint): void
+proc onadvance*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewadvanceProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewadvanceBase, phase: cint): void
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewadvanceProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_advance(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_advance(self: ptr cQGraphicsWebView, slot: int, phase: cint): void {.exportc: "miqt_exec_callback_QGraphicsWebView_advance ".} =
-  type Cb = proc(super: QGraphicsWebViewadvanceBase, phase: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(phase: cint): auto =
-    callVirtualBase_advance(QGraphicsWebView(h: self), phase)
+  var nimfunc = cast[ptr QGraphicsWebViewadvanceProc](cast[pointer](slot))
   let slotval1 = phase
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_contains(self: QGraphicsWebView, point: gen_qpoint.QPointF): bool =
-
+  nimfunc[](slotval1)
+proc QGraphicsWebViewcontains*(self: gen_qgraphicswebview_types.QGraphicsWebView, point: gen_qpoint.QPointF): bool =
 
   fQGraphicsWebView_virtualbase_contains(self.h, point.h)
 
-type QGraphicsWebViewcontainsBase* = proc(point: gen_qpoint.QPointF): bool
-proc oncontains*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewcontainsBase, point: gen_qpoint.QPointF): bool) =
+type QGraphicsWebViewcontainsProc* = proc(point: gen_qpoint.QPointF): bool
+proc oncontains*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewcontainsProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewcontainsBase, point: gen_qpoint.QPointF): bool
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewcontainsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_contains(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_contains(self: ptr cQGraphicsWebView, slot: int, point: pointer): bool {.exportc: "miqt_exec_callback_QGraphicsWebView_contains ".} =
-  type Cb = proc(super: QGraphicsWebViewcontainsBase, point: gen_qpoint.QPointF): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(point: gen_qpoint.QPointF): auto =
-    callVirtualBase_contains(QGraphicsWebView(h: self), point)
+  var nimfunc = cast[ptr QGraphicsWebViewcontainsProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPointF(h: point)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_collidesWithItem(self: QGraphicsWebView, other: gen_qgraphicsitem.QGraphicsItem, mode: gen_qnamespace.ItemSelectionMode): bool =
-
+proc QGraphicsWebViewcollidesWithItem*(self: gen_qgraphicswebview_types.QGraphicsWebView, other: gen_qgraphicsitem.QGraphicsItem, mode: cint): bool =
 
   fQGraphicsWebView_virtualbase_collidesWithItem(self.h, other.h, cint(mode))
 
-type QGraphicsWebViewcollidesWithItemBase* = proc(other: gen_qgraphicsitem.QGraphicsItem, mode: gen_qnamespace.ItemSelectionMode): bool
-proc oncollidesWithItem*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewcollidesWithItemBase, other: gen_qgraphicsitem.QGraphicsItem, mode: gen_qnamespace.ItemSelectionMode): bool) =
+type QGraphicsWebViewcollidesWithItemProc* = proc(other: gen_qgraphicsitem.QGraphicsItem, mode: cint): bool
+proc oncollidesWithItem*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewcollidesWithItemProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewcollidesWithItemBase, other: gen_qgraphicsitem.QGraphicsItem, mode: gen_qnamespace.ItemSelectionMode): bool
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewcollidesWithItemProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_collidesWithItem(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_collidesWithItem(self: ptr cQGraphicsWebView, slot: int, other: pointer, mode: cint): bool {.exportc: "miqt_exec_callback_QGraphicsWebView_collidesWithItem ".} =
-  type Cb = proc(super: QGraphicsWebViewcollidesWithItemBase, other: gen_qgraphicsitem.QGraphicsItem, mode: gen_qnamespace.ItemSelectionMode): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(other: gen_qgraphicsitem.QGraphicsItem, mode: gen_qnamespace.ItemSelectionMode): auto =
-    callVirtualBase_collidesWithItem(QGraphicsWebView(h: self), other, mode)
+  var nimfunc = cast[ptr QGraphicsWebViewcollidesWithItemProc](cast[pointer](slot))
   let slotval1 = gen_qgraphicsitem.QGraphicsItem(h: other)
 
-  let slotval2 = gen_qnamespace.ItemSelectionMode(mode)
+  let slotval2 = cint(mode)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_collidesWithPath(self: QGraphicsWebView, path: gen_qpainterpath.QPainterPath, mode: gen_qnamespace.ItemSelectionMode): bool =
-
+proc QGraphicsWebViewcollidesWithPath*(self: gen_qgraphicswebview_types.QGraphicsWebView, path: gen_qpainterpath.QPainterPath, mode: cint): bool =
 
   fQGraphicsWebView_virtualbase_collidesWithPath(self.h, path.h, cint(mode))
 
-type QGraphicsWebViewcollidesWithPathBase* = proc(path: gen_qpainterpath.QPainterPath, mode: gen_qnamespace.ItemSelectionMode): bool
-proc oncollidesWithPath*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewcollidesWithPathBase, path: gen_qpainterpath.QPainterPath, mode: gen_qnamespace.ItemSelectionMode): bool) =
+type QGraphicsWebViewcollidesWithPathProc* = proc(path: gen_qpainterpath.QPainterPath, mode: cint): bool
+proc oncollidesWithPath*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewcollidesWithPathProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewcollidesWithPathBase, path: gen_qpainterpath.QPainterPath, mode: gen_qnamespace.ItemSelectionMode): bool
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewcollidesWithPathProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_collidesWithPath(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_collidesWithPath(self: ptr cQGraphicsWebView, slot: int, path: pointer, mode: cint): bool {.exportc: "miqt_exec_callback_QGraphicsWebView_collidesWithPath ".} =
-  type Cb = proc(super: QGraphicsWebViewcollidesWithPathBase, path: gen_qpainterpath.QPainterPath, mode: gen_qnamespace.ItemSelectionMode): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(path: gen_qpainterpath.QPainterPath, mode: gen_qnamespace.ItemSelectionMode): auto =
-    callVirtualBase_collidesWithPath(QGraphicsWebView(h: self), path, mode)
+  var nimfunc = cast[ptr QGraphicsWebViewcollidesWithPathProc](cast[pointer](slot))
   let slotval1 = gen_qpainterpath.QPainterPath(h: path)
 
-  let slotval2 = gen_qnamespace.ItemSelectionMode(mode)
+  let slotval2 = cint(mode)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_isObscuredBy(self: QGraphicsWebView, item: gen_qgraphicsitem.QGraphicsItem): bool =
-
+proc QGraphicsWebViewisObscuredBy*(self: gen_qgraphicswebview_types.QGraphicsWebView, item: gen_qgraphicsitem.QGraphicsItem): bool =
 
   fQGraphicsWebView_virtualbase_isObscuredBy(self.h, item.h)
 
-type QGraphicsWebViewisObscuredByBase* = proc(item: gen_qgraphicsitem.QGraphicsItem): bool
-proc onisObscuredBy*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewisObscuredByBase, item: gen_qgraphicsitem.QGraphicsItem): bool) =
+type QGraphicsWebViewisObscuredByProc* = proc(item: gen_qgraphicsitem.QGraphicsItem): bool
+proc onisObscuredBy*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewisObscuredByProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewisObscuredByBase, item: gen_qgraphicsitem.QGraphicsItem): bool
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewisObscuredByProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_isObscuredBy(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_isObscuredBy(self: ptr cQGraphicsWebView, slot: int, item: pointer): bool {.exportc: "miqt_exec_callback_QGraphicsWebView_isObscuredBy ".} =
-  type Cb = proc(super: QGraphicsWebViewisObscuredByBase, item: gen_qgraphicsitem.QGraphicsItem): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(item: gen_qgraphicsitem.QGraphicsItem): auto =
-    callVirtualBase_isObscuredBy(QGraphicsWebView(h: self), item)
+  var nimfunc = cast[ptr QGraphicsWebViewisObscuredByProc](cast[pointer](slot))
   let slotval1 = gen_qgraphicsitem.QGraphicsItem(h: item)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_opaqueArea(self: QGraphicsWebView, ): gen_qpainterpath.QPainterPath =
-
+proc QGraphicsWebViewopaqueArea*(self: gen_qgraphicswebview_types.QGraphicsWebView, ): gen_qpainterpath.QPainterPath =
 
   gen_qpainterpath.QPainterPath(h: fQGraphicsWebView_virtualbase_opaqueArea(self.h))
 
-type QGraphicsWebViewopaqueAreaBase* = proc(): gen_qpainterpath.QPainterPath
-proc onopaqueArea*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewopaqueAreaBase): gen_qpainterpath.QPainterPath) =
+type QGraphicsWebViewopaqueAreaProc* = proc(): gen_qpainterpath.QPainterPath
+proc onopaqueArea*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewopaqueAreaProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewopaqueAreaBase): gen_qpainterpath.QPainterPath
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewopaqueAreaProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_opaqueArea(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_opaqueArea(self: ptr cQGraphicsWebView, slot: int): pointer {.exportc: "miqt_exec_callback_QGraphicsWebView_opaqueArea ".} =
-  type Cb = proc(super: QGraphicsWebViewopaqueAreaBase): gen_qpainterpath.QPainterPath
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_opaqueArea(QGraphicsWebView(h: self), )
+  var nimfunc = cast[ptr QGraphicsWebViewopaqueAreaProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_sceneEventFilter(self: QGraphicsWebView, watched: gen_qgraphicsitem.QGraphicsItem, event: gen_qcoreevent.QEvent): bool =
-
+proc QGraphicsWebViewsceneEventFilter*(self: gen_qgraphicswebview_types.QGraphicsWebView, watched: gen_qgraphicsitem.QGraphicsItem, event: gen_qcoreevent.QEvent): bool =
 
   fQGraphicsWebView_virtualbase_sceneEventFilter(self.h, watched.h, event.h)
 
-type QGraphicsWebViewsceneEventFilterBase* = proc(watched: gen_qgraphicsitem.QGraphicsItem, event: gen_qcoreevent.QEvent): bool
-proc onsceneEventFilter*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewsceneEventFilterBase, watched: gen_qgraphicsitem.QGraphicsItem, event: gen_qcoreevent.QEvent): bool) =
+type QGraphicsWebViewsceneEventFilterProc* = proc(watched: gen_qgraphicsitem.QGraphicsItem, event: gen_qcoreevent.QEvent): bool
+proc onsceneEventFilter*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewsceneEventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewsceneEventFilterBase, watched: gen_qgraphicsitem.QGraphicsItem, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewsceneEventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_sceneEventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_sceneEventFilter(self: ptr cQGraphicsWebView, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QGraphicsWebView_sceneEventFilter ".} =
-  type Cb = proc(super: QGraphicsWebViewsceneEventFilterBase, watched: gen_qgraphicsitem.QGraphicsItem, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qgraphicsitem.QGraphicsItem, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_sceneEventFilter(QGraphicsWebView(h: self), watched, event)
+  var nimfunc = cast[ptr QGraphicsWebViewsceneEventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qgraphicsitem.QGraphicsItem(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_hoverEnterEvent(self: QGraphicsWebView, event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void =
-
+proc QGraphicsWebViewhoverEnterEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void =
 
   fQGraphicsWebView_virtualbase_hoverEnterEvent(self.h, event.h)
 
-type QGraphicsWebViewhoverEnterEventBase* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
-proc onhoverEnterEvent*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewhoverEnterEventBase, event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void) =
+type QGraphicsWebViewhoverEnterEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
+proc onhoverEnterEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewhoverEnterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewhoverEnterEventBase, event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewhoverEnterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_hoverEnterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_hoverEnterEvent(self: ptr cQGraphicsWebView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGraphicsWebView_hoverEnterEvent ".} =
-  type Cb = proc(super: QGraphicsWebViewhoverEnterEventBase, event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): auto =
-    callVirtualBase_hoverEnterEvent(QGraphicsWebView(h: self), event)
+  var nimfunc = cast[ptr QGraphicsWebViewhoverEnterEventProc](cast[pointer](slot))
   let slotval1 = gen_qgraphicssceneevent.QGraphicsSceneHoverEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_supportsExtension(self: QGraphicsWebView, extension: gen_qgraphicsitem.QGraphicsItemExtension): bool =
-
+  nimfunc[](slotval1)
+proc QGraphicsWebViewsupportsExtension*(self: gen_qgraphicswebview_types.QGraphicsWebView, extension: cint): bool =
 
   fQGraphicsWebView_virtualbase_supportsExtension(self.h, cint(extension))
 
-type QGraphicsWebViewsupportsExtensionBase* = proc(extension: gen_qgraphicsitem.QGraphicsItemExtension): bool
-proc onsupportsExtension*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewsupportsExtensionBase, extension: gen_qgraphicsitem.QGraphicsItemExtension): bool) =
+type QGraphicsWebViewsupportsExtensionProc* = proc(extension: cint): bool
+proc onsupportsExtension*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewsupportsExtensionProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewsupportsExtensionBase, extension: gen_qgraphicsitem.QGraphicsItemExtension): bool
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewsupportsExtensionProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_supportsExtension(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_supportsExtension(self: ptr cQGraphicsWebView, slot: int, extension: cint): bool {.exportc: "miqt_exec_callback_QGraphicsWebView_supportsExtension ".} =
-  type Cb = proc(super: QGraphicsWebViewsupportsExtensionBase, extension: gen_qgraphicsitem.QGraphicsItemExtension): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(extension: gen_qgraphicsitem.QGraphicsItemExtension): auto =
-    callVirtualBase_supportsExtension(QGraphicsWebView(h: self), extension)
-  let slotval1 = gen_qgraphicsitem.QGraphicsItemExtension(extension)
+  var nimfunc = cast[ptr QGraphicsWebViewsupportsExtensionProc](cast[pointer](slot))
+  let slotval1 = cint(extension)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_setExtension(self: QGraphicsWebView, extension: gen_qgraphicsitem.QGraphicsItemExtension, variant: gen_qvariant.QVariant): void =
-
+proc QGraphicsWebViewsetExtension*(self: gen_qgraphicswebview_types.QGraphicsWebView, extension: cint, variant: gen_qvariant.QVariant): void =
 
   fQGraphicsWebView_virtualbase_setExtension(self.h, cint(extension), variant.h)
 
-type QGraphicsWebViewsetExtensionBase* = proc(extension: gen_qgraphicsitem.QGraphicsItemExtension, variant: gen_qvariant.QVariant): void
-proc onsetExtension*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewsetExtensionBase, extension: gen_qgraphicsitem.QGraphicsItemExtension, variant: gen_qvariant.QVariant): void) =
+type QGraphicsWebViewsetExtensionProc* = proc(extension: cint, variant: gen_qvariant.QVariant): void
+proc onsetExtension*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewsetExtensionProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewsetExtensionBase, extension: gen_qgraphicsitem.QGraphicsItemExtension, variant: gen_qvariant.QVariant): void
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewsetExtensionProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_setExtension(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_setExtension(self: ptr cQGraphicsWebView, slot: int, extension: cint, variant: pointer): void {.exportc: "miqt_exec_callback_QGraphicsWebView_setExtension ".} =
-  type Cb = proc(super: QGraphicsWebViewsetExtensionBase, extension: gen_qgraphicsitem.QGraphicsItemExtension, variant: gen_qvariant.QVariant): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(extension: gen_qgraphicsitem.QGraphicsItemExtension, variant: gen_qvariant.QVariant): auto =
-    callVirtualBase_setExtension(QGraphicsWebView(h: self), extension, variant)
-  let slotval1 = gen_qgraphicsitem.QGraphicsItemExtension(extension)
+  var nimfunc = cast[ptr QGraphicsWebViewsetExtensionProc](cast[pointer](slot))
+  let slotval1 = cint(extension)
 
   let slotval2 = gen_qvariant.QVariant(h: variant)
 
 
-  nimfunc[](superCall, slotval1, slotval2)
-proc callVirtualBase_extension(self: QGraphicsWebView, variant: gen_qvariant.QVariant): gen_qvariant.QVariant =
-
+  nimfunc[](slotval1, slotval2)
+proc QGraphicsWebViewextension*(self: gen_qgraphicswebview_types.QGraphicsWebView, variant: gen_qvariant.QVariant): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQGraphicsWebView_virtualbase_extension(self.h, variant.h))
 
-type QGraphicsWebViewextensionBase* = proc(variant: gen_qvariant.QVariant): gen_qvariant.QVariant
-proc onextension*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewextensionBase, variant: gen_qvariant.QVariant): gen_qvariant.QVariant) =
+type QGraphicsWebViewextensionProc* = proc(variant: gen_qvariant.QVariant): gen_qvariant.QVariant
+proc onextension*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewextensionProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsWebViewextensionBase, variant: gen_qvariant.QVariant): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QGraphicsWebViewextensionProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsWebView_override_virtual_extension(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsWebView_extension(self: ptr cQGraphicsWebView, slot: int, variant: pointer): pointer {.exportc: "miqt_exec_callback_QGraphicsWebView_extension ".} =
-  type Cb = proc(super: QGraphicsWebViewextensionBase, variant: gen_qvariant.QVariant): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(variant: gen_qvariant.QVariant): auto =
-    callVirtualBase_extension(QGraphicsWebView(h: self), variant)
+  var nimfunc = cast[ptr QGraphicsWebViewextensionProc](cast[pointer](slot))
   let slotval1 = gen_qvariant.QVariant(h: variant)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc staticMetaObject*(_: type QGraphicsWebView): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qgraphicswebview_types.QGraphicsWebView): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQGraphicsWebView_staticMetaObject())
-proc delete*(self: QGraphicsWebView) =
+proc delete*(self: gen_qgraphicswebview_types.QGraphicsWebView) =
   fcQGraphicsWebView_delete(self.h)

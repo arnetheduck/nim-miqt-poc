@@ -34,17 +34,15 @@ const cflags = gorge("pkg-config -cflags Qt6Widgets")
 {.compile("gen_qeventloop.cpp", cflags).}
 
 
-type QEventLoopProcessEventsFlag* = cint
-const
-  QEventLoopAllEvents* = 0
-  QEventLoopExcludeUserInputEvents* = 1
-  QEventLoopExcludeSocketNotifiers* = 2
-  QEventLoopWaitForMoreEvents* = 4
-  QEventLoopX11ExcludeTimers* = 8
-  QEventLoopEventLoopExec* = 32
-  QEventLoopDialogExec* = 64
-  QEventLoopApplicationExec* = 128
-
+type QEventLoopProcessEventsFlagEnum* = distinct cint
+template AllEvents*(_: type QEventLoopProcessEventsFlagEnum): untyped = 0
+template ExcludeUserInputEvents*(_: type QEventLoopProcessEventsFlagEnum): untyped = 1
+template ExcludeSocketNotifiers*(_: type QEventLoopProcessEventsFlagEnum): untyped = 2
+template WaitForMoreEvents*(_: type QEventLoopProcessEventsFlagEnum): untyped = 4
+template X11ExcludeTimers*(_: type QEventLoopProcessEventsFlagEnum): untyped = 8
+template EventLoopExec*(_: type QEventLoopProcessEventsFlagEnum): untyped = 32
+template DialogExec*(_: type QEventLoopProcessEventsFlagEnum): untyped = 64
+template ApplicationExec*(_: type QEventLoopProcessEventsFlagEnum): untyped = 128
 
 
 import gen_qeventloop_types
@@ -113,350 +111,300 @@ proc fcQEventLoopLocker_new3(thread: pointer): ptr cQEventLoopLocker {.importc: 
 proc fcQEventLoopLocker_delete(self: pointer) {.importc: "QEventLoopLocker_delete".}
 
 
-func init*(T: type QEventLoop, h: ptr cQEventLoop): QEventLoop =
+func init*(T: type gen_qeventloop_types.QEventLoop, h: ptr cQEventLoop): gen_qeventloop_types.QEventLoop =
   T(h: h)
-proc create*(T: type QEventLoop, ): QEventLoop =
+proc create*(T: type gen_qeventloop_types.QEventLoop, ): gen_qeventloop_types.QEventLoop =
 
-  QEventLoop.init(fcQEventLoop_new())
-proc create*(T: type QEventLoop, parent: gen_qobject.QObject): QEventLoop =
+  gen_qeventloop_types.QEventLoop.init(fcQEventLoop_new())
+proc create*(T: type gen_qeventloop_types.QEventLoop, parent: gen_qobject.QObject): gen_qeventloop_types.QEventLoop =
 
-  QEventLoop.init(fcQEventLoop_new2(parent.h))
-proc metaObject*(self: QEventLoop, ): gen_qobjectdefs.QMetaObject =
+  gen_qeventloop_types.QEventLoop.init(fcQEventLoop_new2(parent.h))
+proc metaObject*(self: gen_qeventloop_types.QEventLoop, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQEventLoop_metaObject(self.h))
 
-proc metacast*(self: QEventLoop, param1: cstring): pointer =
+proc metacast*(self: gen_qeventloop_types.QEventLoop, param1: cstring): pointer =
 
   fcQEventLoop_metacast(self.h, param1)
 
-proc metacall*(self: QEventLoop, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qeventloop_types.QEventLoop, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQEventLoop_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QEventLoop, s: cstring): string =
+proc tr*(_: type gen_qeventloop_types.QEventLoop, s: cstring): string =
 
   let v_ms = fcQEventLoop_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc processEvents*(self: QEventLoop, ): bool =
+proc processEvents*(self: gen_qeventloop_types.QEventLoop, ): bool =
 
   fcQEventLoop_processEvents(self.h)
 
-proc processEvents2*(self: QEventLoop, flags: QEventLoopProcessEventsFlag, maximumTime: cint): void =
+proc processEvents2*(self: gen_qeventloop_types.QEventLoop, flags: cint, maximumTime: cint): void =
 
   fcQEventLoop_processEvents2(self.h, cint(flags), maximumTime)
 
-proc exec*(self: QEventLoop, ): cint =
+proc exec*(self: gen_qeventloop_types.QEventLoop, ): cint =
 
   fcQEventLoop_exec(self.h)
 
-proc isRunning*(self: QEventLoop, ): bool =
+proc isRunning*(self: gen_qeventloop_types.QEventLoop, ): bool =
 
   fcQEventLoop_isRunning(self.h)
 
-proc wakeUp*(self: QEventLoop, ): void =
+proc wakeUp*(self: gen_qeventloop_types.QEventLoop, ): void =
 
   fcQEventLoop_wakeUp(self.h)
 
-proc event*(self: QEventLoop, event: gen_qcoreevent.QEvent): bool =
+proc event*(self: gen_qeventloop_types.QEventLoop, event: gen_qcoreevent.QEvent): bool =
 
   fcQEventLoop_event(self.h, event.h)
 
-proc exit*(self: QEventLoop, ): void =
+proc exit*(self: gen_qeventloop_types.QEventLoop, ): void =
 
   fcQEventLoop_exit(self.h)
 
-proc quit*(self: QEventLoop, ): void =
+proc quit*(self: gen_qeventloop_types.QEventLoop, ): void =
 
   fcQEventLoop_quit(self.h)
 
-proc tr2*(_: type QEventLoop, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qeventloop_types.QEventLoop, s: cstring, c: cstring): string =
 
   let v_ms = fcQEventLoop_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QEventLoop, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qeventloop_types.QEventLoop, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQEventLoop_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc processEvents1*(self: QEventLoop, flags: QEventLoopProcessEventsFlag): bool =
+proc processEvents1*(self: gen_qeventloop_types.QEventLoop, flags: cint): bool =
 
   fcQEventLoop_processEvents1(self.h, cint(flags))
 
-proc exec1*(self: QEventLoop, flags: QEventLoopProcessEventsFlag): cint =
+proc exec1*(self: gen_qeventloop_types.QEventLoop, flags: cint): cint =
 
   fcQEventLoop_exec1(self.h, cint(flags))
 
-proc exit1*(self: QEventLoop, returnCode: cint): void =
+proc exit1*(self: gen_qeventloop_types.QEventLoop, returnCode: cint): void =
 
   fcQEventLoop_exit1(self.h, returnCode)
 
-proc callVirtualBase_metaObject(self: QEventLoop, ): gen_qobjectdefs.QMetaObject =
-
+proc QEventLoopmetaObject*(self: gen_qeventloop_types.QEventLoop, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQEventLoop_virtualbase_metaObject(self.h))
 
-type QEventLoopmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QEventLoop, slot: proc(super: QEventLoopmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QEventLoopmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qeventloop_types.QEventLoop, slot: QEventLoopmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QEventLoopmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QEventLoopmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQEventLoop_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QEventLoop_metaObject(self: ptr cQEventLoop, slot: int): pointer {.exportc: "miqt_exec_callback_QEventLoop_metaObject ".} =
-  type Cb = proc(super: QEventLoopmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QEventLoop(h: self), )
+  var nimfunc = cast[ptr QEventLoopmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QEventLoop, param1: cstring): pointer =
-
+proc QEventLoopmetacast*(self: gen_qeventloop_types.QEventLoop, param1: cstring): pointer =
 
   fQEventLoop_virtualbase_metacast(self.h, param1)
 
-type QEventLoopmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QEventLoop, slot: proc(super: QEventLoopmetacastBase, param1: cstring): pointer) =
+type QEventLoopmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qeventloop_types.QEventLoop, slot: QEventLoopmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QEventLoopmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QEventLoopmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQEventLoop_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QEventLoop_metacast(self: ptr cQEventLoop, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QEventLoop_metacast ".} =
-  type Cb = proc(super: QEventLoopmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QEventLoop(h: self), param1)
+  var nimfunc = cast[ptr QEventLoopmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QEventLoop, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QEventLoopmetacall*(self: gen_qeventloop_types.QEventLoop, param1: cint, param2: cint, param3: pointer): cint =
 
   fQEventLoop_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QEventLoopmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QEventLoop, slot: proc(super: QEventLoopmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QEventLoopmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qeventloop_types.QEventLoop, slot: QEventLoopmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QEventLoopmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QEventLoopmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQEventLoop_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QEventLoop_metacall(self: ptr cQEventLoop, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QEventLoop_metacall ".} =
-  type Cb = proc(super: QEventLoopmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QEventLoop(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QEventLoopmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_event(self: QEventLoop, event: gen_qcoreevent.QEvent): bool =
-
+proc QEventLoopevent*(self: gen_qeventloop_types.QEventLoop, event: gen_qcoreevent.QEvent): bool =
 
   fQEventLoop_virtualbase_event(self.h, event.h)
 
-type QEventLoopeventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QEventLoop, slot: proc(super: QEventLoopeventBase, event: gen_qcoreevent.QEvent): bool) =
+type QEventLoopeventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qeventloop_types.QEventLoop, slot: QEventLoopeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QEventLoopeventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QEventLoopeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQEventLoop_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QEventLoop_event(self: ptr cQEventLoop, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QEventLoop_event ".} =
-  type Cb = proc(super: QEventLoopeventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QEventLoop(h: self), event)
+  var nimfunc = cast[ptr QEventLoopeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QEventLoop, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QEventLoopeventFilter*(self: gen_qeventloop_types.QEventLoop, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQEventLoop_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QEventLoopeventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QEventLoop, slot: proc(super: QEventLoopeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QEventLoopeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qeventloop_types.QEventLoop, slot: QEventLoopeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QEventLoopeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QEventLoopeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQEventLoop_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QEventLoop_eventFilter(self: ptr cQEventLoop, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QEventLoop_eventFilter ".} =
-  type Cb = proc(super: QEventLoopeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QEventLoop(h: self), watched, event)
+  var nimfunc = cast[ptr QEventLoopeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QEventLoop, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QEventLooptimerEvent*(self: gen_qeventloop_types.QEventLoop, event: gen_qcoreevent.QTimerEvent): void =
 
   fQEventLoop_virtualbase_timerEvent(self.h, event.h)
 
-type QEventLooptimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QEventLoop, slot: proc(super: QEventLooptimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QEventLooptimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qeventloop_types.QEventLoop, slot: QEventLooptimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QEventLooptimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QEventLooptimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQEventLoop_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QEventLoop_timerEvent(self: ptr cQEventLoop, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QEventLoop_timerEvent ".} =
-  type Cb = proc(super: QEventLooptimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QEventLoop(h: self), event)
+  var nimfunc = cast[ptr QEventLooptimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QEventLoop, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QEventLoopchildEvent*(self: gen_qeventloop_types.QEventLoop, event: gen_qcoreevent.QChildEvent): void =
 
   fQEventLoop_virtualbase_childEvent(self.h, event.h)
 
-type QEventLoopchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QEventLoop, slot: proc(super: QEventLoopchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QEventLoopchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qeventloop_types.QEventLoop, slot: QEventLoopchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QEventLoopchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QEventLoopchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQEventLoop_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QEventLoop_childEvent(self: ptr cQEventLoop, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QEventLoop_childEvent ".} =
-  type Cb = proc(super: QEventLoopchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QEventLoop(h: self), event)
+  var nimfunc = cast[ptr QEventLoopchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QEventLoop, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QEventLoopcustomEvent*(self: gen_qeventloop_types.QEventLoop, event: gen_qcoreevent.QEvent): void =
 
   fQEventLoop_virtualbase_customEvent(self.h, event.h)
 
-type QEventLoopcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QEventLoop, slot: proc(super: QEventLoopcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QEventLoopcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qeventloop_types.QEventLoop, slot: QEventLoopcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QEventLoopcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QEventLoopcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQEventLoop_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QEventLoop_customEvent(self: ptr cQEventLoop, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QEventLoop_customEvent ".} =
-  type Cb = proc(super: QEventLoopcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QEventLoop(h: self), event)
+  var nimfunc = cast[ptr QEventLoopcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QEventLoop, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QEventLoopconnectNotify*(self: gen_qeventloop_types.QEventLoop, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQEventLoop_virtualbase_connectNotify(self.h, signal.h)
 
-type QEventLoopconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QEventLoop, slot: proc(super: QEventLoopconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QEventLoopconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qeventloop_types.QEventLoop, slot: QEventLoopconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QEventLoopconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QEventLoopconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQEventLoop_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QEventLoop_connectNotify(self: ptr cQEventLoop, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QEventLoop_connectNotify ".} =
-  type Cb = proc(super: QEventLoopconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QEventLoop(h: self), signal)
+  var nimfunc = cast[ptr QEventLoopconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QEventLoop, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QEventLoopdisconnectNotify*(self: gen_qeventloop_types.QEventLoop, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQEventLoop_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QEventLoopdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QEventLoop, slot: proc(super: QEventLoopdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QEventLoopdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qeventloop_types.QEventLoop, slot: QEventLoopdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QEventLoopdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QEventLoopdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQEventLoop_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QEventLoop_disconnectNotify(self: ptr cQEventLoop, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QEventLoop_disconnectNotify ".} =
-  type Cb = proc(super: QEventLoopdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QEventLoop(h: self), signal)
+  var nimfunc = cast[ptr QEventLoopdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QEventLoop): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qeventloop_types.QEventLoop): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQEventLoop_staticMetaObject())
-proc delete*(self: QEventLoop) =
+proc delete*(self: gen_qeventloop_types.QEventLoop) =
   fcQEventLoop_delete(self.h)
 
-func init*(T: type QEventLoopLocker, h: ptr cQEventLoopLocker): QEventLoopLocker =
+func init*(T: type gen_qeventloop_types.QEventLoopLocker, h: ptr cQEventLoopLocker): gen_qeventloop_types.QEventLoopLocker =
   T(h: h)
-proc create*(T: type QEventLoopLocker, ): QEventLoopLocker =
+proc create*(T: type gen_qeventloop_types.QEventLoopLocker, ): gen_qeventloop_types.QEventLoopLocker =
 
-  QEventLoopLocker.init(fcQEventLoopLocker_new())
-proc create*(T: type QEventLoopLocker, loop: QEventLoop): QEventLoopLocker =
+  gen_qeventloop_types.QEventLoopLocker.init(fcQEventLoopLocker_new())
+proc create*(T: type gen_qeventloop_types.QEventLoopLocker, loop: gen_qeventloop_types.QEventLoop): gen_qeventloop_types.QEventLoopLocker =
 
-  QEventLoopLocker.init(fcQEventLoopLocker_new2(loop.h))
-proc create2*(T: type QEventLoopLocker, thread: gen_qthread.QThread): QEventLoopLocker =
+  gen_qeventloop_types.QEventLoopLocker.init(fcQEventLoopLocker_new2(loop.h))
+proc create2*(T: type gen_qeventloop_types.QEventLoopLocker, thread: gen_qthread.QThread): gen_qeventloop_types.QEventLoopLocker =
 
-  QEventLoopLocker.init(fcQEventLoopLocker_new3(thread.h))
-proc delete*(self: QEventLoopLocker) =
+  gen_qeventloop_types.QEventLoopLocker.init(fcQEventLoopLocker_new3(thread.h))
+proc delete*(self: gen_qeventloop_types.QEventLoopLocker) =
   fcQEventLoopLocker_delete(self.h)

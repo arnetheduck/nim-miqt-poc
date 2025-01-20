@@ -38,7 +38,6 @@ import gen_qaudiosink_types
 export gen_qaudiosink_types
 
 import
-  gen_qaudio,
   gen_qaudiodevice,
   gen_qaudioformat,
   gen_qcoreevent,
@@ -47,7 +46,6 @@ import
   gen_qobject,
   gen_qobjectdefs
 export
-  gen_qaudio,
   gen_qaudiodevice,
   gen_qaudioformat,
   gen_qcoreevent,
@@ -113,390 +111,340 @@ proc fcQAudioSink_staticMetaObject(): pointer {.importc: "QAudioSink_staticMetaO
 proc fcQAudioSink_delete(self: pointer) {.importc: "QAudioSink_delete".}
 
 
-func init*(T: type QAudioSink, h: ptr cQAudioSink): QAudioSink =
+func init*(T: type gen_qaudiosink_types.QAudioSink, h: ptr cQAudioSink): gen_qaudiosink_types.QAudioSink =
   T(h: h)
-proc create*(T: type QAudioSink, ): QAudioSink =
+proc create*(T: type gen_qaudiosink_types.QAudioSink, ): gen_qaudiosink_types.QAudioSink =
 
-  QAudioSink.init(fcQAudioSink_new())
-proc create*(T: type QAudioSink, audioDeviceInfo: gen_qaudiodevice.QAudioDevice): QAudioSink =
+  gen_qaudiosink_types.QAudioSink.init(fcQAudioSink_new())
+proc create*(T: type gen_qaudiosink_types.QAudioSink, audioDeviceInfo: gen_qaudiodevice.QAudioDevice): gen_qaudiosink_types.QAudioSink =
 
-  QAudioSink.init(fcQAudioSink_new2(audioDeviceInfo.h))
-proc create2*(T: type QAudioSink, format: gen_qaudioformat.QAudioFormat): QAudioSink =
+  gen_qaudiosink_types.QAudioSink.init(fcQAudioSink_new2(audioDeviceInfo.h))
+proc create2*(T: type gen_qaudiosink_types.QAudioSink, format: gen_qaudioformat.QAudioFormat): gen_qaudiosink_types.QAudioSink =
 
-  QAudioSink.init(fcQAudioSink_new3(format.h))
-proc create*(T: type QAudioSink, format: gen_qaudioformat.QAudioFormat, parent: gen_qobject.QObject): QAudioSink =
+  gen_qaudiosink_types.QAudioSink.init(fcQAudioSink_new3(format.h))
+proc create*(T: type gen_qaudiosink_types.QAudioSink, format: gen_qaudioformat.QAudioFormat, parent: gen_qobject.QObject): gen_qaudiosink_types.QAudioSink =
 
-  QAudioSink.init(fcQAudioSink_new4(format.h, parent.h))
-proc create2*(T: type QAudioSink, audioDeviceInfo: gen_qaudiodevice.QAudioDevice, format: gen_qaudioformat.QAudioFormat): QAudioSink =
+  gen_qaudiosink_types.QAudioSink.init(fcQAudioSink_new4(format.h, parent.h))
+proc create2*(T: type gen_qaudiosink_types.QAudioSink, audioDeviceInfo: gen_qaudiodevice.QAudioDevice, format: gen_qaudioformat.QAudioFormat): gen_qaudiosink_types.QAudioSink =
 
-  QAudioSink.init(fcQAudioSink_new5(audioDeviceInfo.h, format.h))
-proc create*(T: type QAudioSink, audioDeviceInfo: gen_qaudiodevice.QAudioDevice, format: gen_qaudioformat.QAudioFormat, parent: gen_qobject.QObject): QAudioSink =
+  gen_qaudiosink_types.QAudioSink.init(fcQAudioSink_new5(audioDeviceInfo.h, format.h))
+proc create*(T: type gen_qaudiosink_types.QAudioSink, audioDeviceInfo: gen_qaudiodevice.QAudioDevice, format: gen_qaudioformat.QAudioFormat, parent: gen_qobject.QObject): gen_qaudiosink_types.QAudioSink =
 
-  QAudioSink.init(fcQAudioSink_new6(audioDeviceInfo.h, format.h, parent.h))
-proc metaObject*(self: QAudioSink, ): gen_qobjectdefs.QMetaObject =
+  gen_qaudiosink_types.QAudioSink.init(fcQAudioSink_new6(audioDeviceInfo.h, format.h, parent.h))
+proc metaObject*(self: gen_qaudiosink_types.QAudioSink, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQAudioSink_metaObject(self.h))
 
-proc metacast*(self: QAudioSink, param1: cstring): pointer =
+proc metacast*(self: gen_qaudiosink_types.QAudioSink, param1: cstring): pointer =
 
   fcQAudioSink_metacast(self.h, param1)
 
-proc metacall*(self: QAudioSink, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qaudiosink_types.QAudioSink, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQAudioSink_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QAudioSink, s: cstring): string =
+proc tr*(_: type gen_qaudiosink_types.QAudioSink, s: cstring): string =
 
   let v_ms = fcQAudioSink_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc isNull*(self: QAudioSink, ): bool =
+proc isNull*(self: gen_qaudiosink_types.QAudioSink, ): bool =
 
   fcQAudioSink_isNull(self.h)
 
-proc format*(self: QAudioSink, ): gen_qaudioformat.QAudioFormat =
+proc format*(self: gen_qaudiosink_types.QAudioSink, ): gen_qaudioformat.QAudioFormat =
 
   gen_qaudioformat.QAudioFormat(h: fcQAudioSink_format(self.h))
 
-proc start*(self: QAudioSink, device: gen_qiodevice.QIODevice): void =
+proc start*(self: gen_qaudiosink_types.QAudioSink, device: gen_qiodevice.QIODevice): void =
 
   fcQAudioSink_start(self.h, device.h)
 
-proc start2*(self: QAudioSink, ): gen_qiodevice.QIODevice =
+proc start2*(self: gen_qaudiosink_types.QAudioSink, ): gen_qiodevice.QIODevice =
 
   gen_qiodevice.QIODevice(h: fcQAudioSink_start2(self.h))
 
-proc stop*(self: QAudioSink, ): void =
+proc stop*(self: gen_qaudiosink_types.QAudioSink, ): void =
 
   fcQAudioSink_stop(self.h)
 
-proc reset*(self: QAudioSink, ): void =
+proc reset*(self: gen_qaudiosink_types.QAudioSink, ): void =
 
   fcQAudioSink_reset(self.h)
 
-proc suspend*(self: QAudioSink, ): void =
+proc suspend*(self: gen_qaudiosink_types.QAudioSink, ): void =
 
   fcQAudioSink_suspend(self.h)
 
-proc resume*(self: QAudioSink, ): void =
+proc resume*(self: gen_qaudiosink_types.QAudioSink, ): void =
 
   fcQAudioSink_resume(self.h)
 
-proc setBufferSize*(self: QAudioSink, bytes: int64): void =
+proc setBufferSize*(self: gen_qaudiosink_types.QAudioSink, bytes: int64): void =
 
   fcQAudioSink_setBufferSize(self.h, bytes)
 
-proc bufferSize*(self: QAudioSink, ): int64 =
+proc bufferSize*(self: gen_qaudiosink_types.QAudioSink, ): int64 =
 
   fcQAudioSink_bufferSize(self.h)
 
-proc bytesFree*(self: QAudioSink, ): int64 =
+proc bytesFree*(self: gen_qaudiosink_types.QAudioSink, ): int64 =
 
   fcQAudioSink_bytesFree(self.h)
 
-proc processedUSecs*(self: QAudioSink, ): clonglong =
+proc processedUSecs*(self: gen_qaudiosink_types.QAudioSink, ): clonglong =
 
   fcQAudioSink_processedUSecs(self.h)
 
-proc elapsedUSecs*(self: QAudioSink, ): clonglong =
+proc elapsedUSecs*(self: gen_qaudiosink_types.QAudioSink, ): clonglong =
 
   fcQAudioSink_elapsedUSecs(self.h)
 
-proc error*(self: QAudioSink, ): gen_qaudio.QAudioError =
+proc error*(self: gen_qaudiosink_types.QAudioSink, ): cint =
 
-  gen_qaudio.QAudioError(fcQAudioSink_error(self.h))
+  cint(fcQAudioSink_error(self.h))
 
-proc state*(self: QAudioSink, ): gen_qaudio.QAudioState =
+proc state*(self: gen_qaudiosink_types.QAudioSink, ): cint =
 
-  gen_qaudio.QAudioState(fcQAudioSink_state(self.h))
+  cint(fcQAudioSink_state(self.h))
 
-proc setVolume*(self: QAudioSink, volume: float64): void =
+proc setVolume*(self: gen_qaudiosink_types.QAudioSink, volume: float64): void =
 
   fcQAudioSink_setVolume(self.h, volume)
 
-proc volume*(self: QAudioSink, ): float64 =
+proc volume*(self: gen_qaudiosink_types.QAudioSink, ): float64 =
 
   fcQAudioSink_volume(self.h)
 
-proc stateChanged*(self: QAudioSink, state: gen_qaudio.QAudioState): void =
+proc stateChanged*(self: gen_qaudiosink_types.QAudioSink, state: cint): void =
 
   fcQAudioSink_stateChanged(self.h, cint(state))
 
 proc miqt_exec_callback_QAudioSink_stateChanged(slot: int, state: cint) {.exportc.} =
-  type Cb = proc(state: gen_qaudio.QAudioState)
+  type Cb = proc(state: cint)
   let nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = gen_qaudio.QAudioState(state)
+  let slotval1 = cint(state)
 
 
   nimfunc[](slotval1)
 
-proc onstateChanged*(self: QAudioSink, slot: proc(state: gen_qaudio.QAudioState)) =
-  type Cb = proc(state: gen_qaudio.QAudioState)
+proc onstateChanged*(self: gen_qaudiosink_types.QAudioSink, slot: proc(state: cint)) =
+  type Cb = proc(state: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQAudioSink_connect_stateChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QAudioSink, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qaudiosink_types.QAudioSink, s: cstring, c: cstring): string =
 
   let v_ms = fcQAudioSink_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QAudioSink, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qaudiosink_types.QAudioSink, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQAudioSink_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QAudioSink, ): gen_qobjectdefs.QMetaObject =
-
+proc QAudioSinkmetaObject*(self: gen_qaudiosink_types.QAudioSink, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQAudioSink_virtualbase_metaObject(self.h))
 
-type QAudioSinkmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QAudioSink, slot: proc(super: QAudioSinkmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QAudioSinkmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qaudiosink_types.QAudioSink, slot: QAudioSinkmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QAudioSinkmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QAudioSinkmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAudioSink_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAudioSink_metaObject(self: ptr cQAudioSink, slot: int): pointer {.exportc: "miqt_exec_callback_QAudioSink_metaObject ".} =
-  type Cb = proc(super: QAudioSinkmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QAudioSink(h: self), )
+  var nimfunc = cast[ptr QAudioSinkmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QAudioSink, param1: cstring): pointer =
-
+proc QAudioSinkmetacast*(self: gen_qaudiosink_types.QAudioSink, param1: cstring): pointer =
 
   fQAudioSink_virtualbase_metacast(self.h, param1)
 
-type QAudioSinkmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QAudioSink, slot: proc(super: QAudioSinkmetacastBase, param1: cstring): pointer) =
+type QAudioSinkmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qaudiosink_types.QAudioSink, slot: QAudioSinkmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QAudioSinkmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QAudioSinkmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAudioSink_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAudioSink_metacast(self: ptr cQAudioSink, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QAudioSink_metacast ".} =
-  type Cb = proc(super: QAudioSinkmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QAudioSink(h: self), param1)
+  var nimfunc = cast[ptr QAudioSinkmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QAudioSink, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QAudioSinkmetacall*(self: gen_qaudiosink_types.QAudioSink, param1: cint, param2: cint, param3: pointer): cint =
 
   fQAudioSink_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QAudioSinkmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QAudioSink, slot: proc(super: QAudioSinkmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QAudioSinkmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qaudiosink_types.QAudioSink, slot: QAudioSinkmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QAudioSinkmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QAudioSinkmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAudioSink_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAudioSink_metacall(self: ptr cQAudioSink, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QAudioSink_metacall ".} =
-  type Cb = proc(super: QAudioSinkmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QAudioSink(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QAudioSinkmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_event(self: QAudioSink, event: gen_qcoreevent.QEvent): bool =
-
+proc QAudioSinkevent*(self: gen_qaudiosink_types.QAudioSink, event: gen_qcoreevent.QEvent): bool =
 
   fQAudioSink_virtualbase_event(self.h, event.h)
 
-type QAudioSinkeventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QAudioSink, slot: proc(super: QAudioSinkeventBase, event: gen_qcoreevent.QEvent): bool) =
+type QAudioSinkeventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qaudiosink_types.QAudioSink, slot: QAudioSinkeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAudioSinkeventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QAudioSinkeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAudioSink_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAudioSink_event(self: ptr cQAudioSink, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QAudioSink_event ".} =
-  type Cb = proc(super: QAudioSinkeventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QAudioSink(h: self), event)
+  var nimfunc = cast[ptr QAudioSinkeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QAudioSink, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QAudioSinkeventFilter*(self: gen_qaudiosink_types.QAudioSink, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQAudioSink_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QAudioSinkeventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QAudioSink, slot: proc(super: QAudioSinkeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QAudioSinkeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qaudiosink_types.QAudioSink, slot: QAudioSinkeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QAudioSinkeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QAudioSinkeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAudioSink_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAudioSink_eventFilter(self: ptr cQAudioSink, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QAudioSink_eventFilter ".} =
-  type Cb = proc(super: QAudioSinkeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QAudioSink(h: self), watched, event)
+  var nimfunc = cast[ptr QAudioSinkeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QAudioSink, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QAudioSinktimerEvent*(self: gen_qaudiosink_types.QAudioSink, event: gen_qcoreevent.QTimerEvent): void =
 
   fQAudioSink_virtualbase_timerEvent(self.h, event.h)
 
-type QAudioSinktimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QAudioSink, slot: proc(super: QAudioSinktimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QAudioSinktimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qaudiosink_types.QAudioSink, slot: QAudioSinktimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAudioSinktimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QAudioSinktimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAudioSink_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAudioSink_timerEvent(self: ptr cQAudioSink, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAudioSink_timerEvent ".} =
-  type Cb = proc(super: QAudioSinktimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QAudioSink(h: self), event)
+  var nimfunc = cast[ptr QAudioSinktimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QAudioSink, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QAudioSinkchildEvent*(self: gen_qaudiosink_types.QAudioSink, event: gen_qcoreevent.QChildEvent): void =
 
   fQAudioSink_virtualbase_childEvent(self.h, event.h)
 
-type QAudioSinkchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QAudioSink, slot: proc(super: QAudioSinkchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QAudioSinkchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qaudiosink_types.QAudioSink, slot: QAudioSinkchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAudioSinkchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QAudioSinkchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAudioSink_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAudioSink_childEvent(self: ptr cQAudioSink, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAudioSink_childEvent ".} =
-  type Cb = proc(super: QAudioSinkchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QAudioSink(h: self), event)
+  var nimfunc = cast[ptr QAudioSinkchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QAudioSink, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QAudioSinkcustomEvent*(self: gen_qaudiosink_types.QAudioSink, event: gen_qcoreevent.QEvent): void =
 
   fQAudioSink_virtualbase_customEvent(self.h, event.h)
 
-type QAudioSinkcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QAudioSink, slot: proc(super: QAudioSinkcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QAudioSinkcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qaudiosink_types.QAudioSink, slot: QAudioSinkcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAudioSinkcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QAudioSinkcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAudioSink_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAudioSink_customEvent(self: ptr cQAudioSink, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAudioSink_customEvent ".} =
-  type Cb = proc(super: QAudioSinkcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QAudioSink(h: self), event)
+  var nimfunc = cast[ptr QAudioSinkcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QAudioSink, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QAudioSinkconnectNotify*(self: gen_qaudiosink_types.QAudioSink, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQAudioSink_virtualbase_connectNotify(self.h, signal.h)
 
-type QAudioSinkconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QAudioSink, slot: proc(super: QAudioSinkconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QAudioSinkconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qaudiosink_types.QAudioSink, slot: QAudioSinkconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QAudioSinkconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QAudioSinkconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAudioSink_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAudioSink_connectNotify(self: ptr cQAudioSink, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QAudioSink_connectNotify ".} =
-  type Cb = proc(super: QAudioSinkconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QAudioSink(h: self), signal)
+  var nimfunc = cast[ptr QAudioSinkconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QAudioSink, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QAudioSinkdisconnectNotify*(self: gen_qaudiosink_types.QAudioSink, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQAudioSink_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QAudioSinkdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QAudioSink, slot: proc(super: QAudioSinkdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QAudioSinkdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qaudiosink_types.QAudioSink, slot: QAudioSinkdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QAudioSinkdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QAudioSinkdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAudioSink_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAudioSink_disconnectNotify(self: ptr cQAudioSink, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QAudioSink_disconnectNotify ".} =
-  type Cb = proc(super: QAudioSinkdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QAudioSink(h: self), signal)
+  var nimfunc = cast[ptr QAudioSinkdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QAudioSink): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qaudiosink_types.QAudioSink): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQAudioSink_staticMetaObject())
-proc delete*(self: QAudioSink) =
+proc delete*(self: gen_qaudiosink_types.QAudioSink) =
   fcQAudioSink_delete(self.h)

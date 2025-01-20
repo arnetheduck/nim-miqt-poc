@@ -40,14 +40,12 @@ export gen_qsavefile_types
 import
   gen_qcoreevent,
   gen_qfiledevice,
-  gen_qiodevicebase,
   gen_qmetaobject,
   gen_qobject,
   gen_qobjectdefs
 export
   gen_qcoreevent,
   gen_qfiledevice,
-  gen_qiodevicebase,
   gen_qmetaobject,
   gen_qobject,
   gen_qobjectdefs
@@ -135,818 +133,668 @@ proc fcQSaveFile_staticMetaObject(): pointer {.importc: "QSaveFile_staticMetaObj
 proc fcQSaveFile_delete(self: pointer) {.importc: "QSaveFile_delete".}
 
 
-func init*(T: type QSaveFile, h: ptr cQSaveFile): QSaveFile =
+func init*(T: type gen_qsavefile_types.QSaveFile, h: ptr cQSaveFile): gen_qsavefile_types.QSaveFile =
   T(h: h)
-proc create*(T: type QSaveFile, name: string): QSaveFile =
+proc create*(T: type gen_qsavefile_types.QSaveFile, name: string): gen_qsavefile_types.QSaveFile =
 
-  QSaveFile.init(fcQSaveFile_new(struct_miqt_string(data: name, len: csize_t(len(name)))))
-proc create*(T: type QSaveFile, ): QSaveFile =
+  gen_qsavefile_types.QSaveFile.init(fcQSaveFile_new(struct_miqt_string(data: name, len: csize_t(len(name)))))
+proc create*(T: type gen_qsavefile_types.QSaveFile, ): gen_qsavefile_types.QSaveFile =
 
-  QSaveFile.init(fcQSaveFile_new2())
-proc create*(T: type QSaveFile, name: string, parent: gen_qobject.QObject): QSaveFile =
+  gen_qsavefile_types.QSaveFile.init(fcQSaveFile_new2())
+proc create*(T: type gen_qsavefile_types.QSaveFile, name: string, parent: gen_qobject.QObject): gen_qsavefile_types.QSaveFile =
 
-  QSaveFile.init(fcQSaveFile_new3(struct_miqt_string(data: name, len: csize_t(len(name))), parent.h))
-proc create*(T: type QSaveFile, parent: gen_qobject.QObject): QSaveFile =
+  gen_qsavefile_types.QSaveFile.init(fcQSaveFile_new3(struct_miqt_string(data: name, len: csize_t(len(name))), parent.h))
+proc create*(T: type gen_qsavefile_types.QSaveFile, parent: gen_qobject.QObject): gen_qsavefile_types.QSaveFile =
 
-  QSaveFile.init(fcQSaveFile_new4(parent.h))
-proc metaObject*(self: QSaveFile, ): gen_qobjectdefs.QMetaObject =
+  gen_qsavefile_types.QSaveFile.init(fcQSaveFile_new4(parent.h))
+proc metaObject*(self: gen_qsavefile_types.QSaveFile, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQSaveFile_metaObject(self.h))
 
-proc metacast*(self: QSaveFile, param1: cstring): pointer =
+proc metacast*(self: gen_qsavefile_types.QSaveFile, param1: cstring): pointer =
 
   fcQSaveFile_metacast(self.h, param1)
 
-proc metacall*(self: QSaveFile, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qsavefile_types.QSaveFile, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQSaveFile_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QSaveFile, s: cstring): string =
+proc tr*(_: type gen_qsavefile_types.QSaveFile, s: cstring): string =
 
   let v_ms = fcQSaveFile_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc fileName*(self: QSaveFile, ): string =
+proc fileName*(self: gen_qsavefile_types.QSaveFile, ): string =
 
   let v_ms = fcQSaveFile_fileName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setFileName*(self: QSaveFile, name: string): void =
+proc setFileName*(self: gen_qsavefile_types.QSaveFile, name: string): void =
 
   fcQSaveFile_setFileName(self.h, struct_miqt_string(data: name, len: csize_t(len(name))))
 
-proc open*(self: QSaveFile, flags: gen_qiodevicebase.QIODeviceBaseOpenModeFlag): bool =
+proc open*(self: gen_qsavefile_types.QSaveFile, flags: cint): bool =
 
   fcQSaveFile_open(self.h, cint(flags))
 
-proc commit*(self: QSaveFile, ): bool =
+proc commit*(self: gen_qsavefile_types.QSaveFile, ): bool =
 
   fcQSaveFile_commit(self.h)
 
-proc cancelWriting*(self: QSaveFile, ): void =
+proc cancelWriting*(self: gen_qsavefile_types.QSaveFile, ): void =
 
   fcQSaveFile_cancelWriting(self.h)
 
-proc setDirectWriteFallback*(self: QSaveFile, enabled: bool): void =
+proc setDirectWriteFallback*(self: gen_qsavefile_types.QSaveFile, enabled: bool): void =
 
   fcQSaveFile_setDirectWriteFallback(self.h, enabled)
 
-proc directWriteFallback*(self: QSaveFile, ): bool =
+proc directWriteFallback*(self: gen_qsavefile_types.QSaveFile, ): bool =
 
   fcQSaveFile_directWriteFallback(self.h)
 
-proc tr2*(_: type QSaveFile, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qsavefile_types.QSaveFile, s: cstring, c: cstring): string =
 
   let v_ms = fcQSaveFile_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QSaveFile, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qsavefile_types.QSaveFile, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQSaveFile_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QSaveFile, ): gen_qobjectdefs.QMetaObject =
-
+proc QSaveFilemetaObject*(self: gen_qsavefile_types.QSaveFile, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQSaveFile_virtualbase_metaObject(self.h))
 
-type QSaveFilemetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QSaveFile, slot: proc(super: QSaveFilemetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QSaveFilemetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qsavefile_types.QSaveFile, slot: QSaveFilemetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QSaveFilemetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QSaveFilemetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSaveFile_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSaveFile_metaObject(self: ptr cQSaveFile, slot: int): pointer {.exportc: "miqt_exec_callback_QSaveFile_metaObject ".} =
-  type Cb = proc(super: QSaveFilemetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QSaveFile(h: self), )
+  var nimfunc = cast[ptr QSaveFilemetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QSaveFile, param1: cstring): pointer =
-
+proc QSaveFilemetacast*(self: gen_qsavefile_types.QSaveFile, param1: cstring): pointer =
 
   fQSaveFile_virtualbase_metacast(self.h, param1)
 
-type QSaveFilemetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QSaveFile, slot: proc(super: QSaveFilemetacastBase, param1: cstring): pointer) =
+type QSaveFilemetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qsavefile_types.QSaveFile, slot: QSaveFilemetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QSaveFilemetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QSaveFilemetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSaveFile_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSaveFile_metacast(self: ptr cQSaveFile, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QSaveFile_metacast ".} =
-  type Cb = proc(super: QSaveFilemetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QSaveFile(h: self), param1)
+  var nimfunc = cast[ptr QSaveFilemetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QSaveFile, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QSaveFilemetacall*(self: gen_qsavefile_types.QSaveFile, param1: cint, param2: cint, param3: pointer): cint =
 
   fQSaveFile_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QSaveFilemetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QSaveFile, slot: proc(super: QSaveFilemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QSaveFilemetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qsavefile_types.QSaveFile, slot: QSaveFilemetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QSaveFilemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QSaveFilemetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSaveFile_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSaveFile_metacall(self: ptr cQSaveFile, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QSaveFile_metacall ".} =
-  type Cb = proc(super: QSaveFilemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QSaveFile(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QSaveFilemetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_fileName(self: QSaveFile, ): string =
-
+proc QSaveFilefileName*(self: gen_qsavefile_types.QSaveFile, ): string =
 
   let v_ms = fQSaveFile_virtualbase_fileName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-type QSaveFilefileNameBase* = proc(): string
-proc onfileName*(self: QSaveFile, slot: proc(super: QSaveFilefileNameBase): string) =
+type QSaveFilefileNameProc* = proc(): string
+proc onfileName*(self: gen_qsavefile_types.QSaveFile, slot: QSaveFilefileNameProc) =
   # TODO check subclass
-  type Cb = proc(super: QSaveFilefileNameBase): string
-  var tmp = new Cb
+  var tmp = new QSaveFilefileNameProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSaveFile_override_virtual_fileName(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSaveFile_fileName(self: ptr cQSaveFile, slot: int): struct_miqt_string {.exportc: "miqt_exec_callback_QSaveFile_fileName ".} =
-  type Cb = proc(super: QSaveFilefileNameBase): string
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_fileName(QSaveFile(h: self), )
+  var nimfunc = cast[ptr QSaveFilefileNameProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
-proc callVirtualBase_open(self: QSaveFile, flags: gen_qiodevicebase.QIODeviceBaseOpenModeFlag): bool =
-
+proc QSaveFileopen*(self: gen_qsavefile_types.QSaveFile, flags: cint): bool =
 
   fQSaveFile_virtualbase_open(self.h, cint(flags))
 
-type QSaveFileopenBase* = proc(flags: gen_qiodevicebase.QIODeviceBaseOpenModeFlag): bool
-proc onopen*(self: QSaveFile, slot: proc(super: QSaveFileopenBase, flags: gen_qiodevicebase.QIODeviceBaseOpenModeFlag): bool) =
+type QSaveFileopenProc* = proc(flags: cint): bool
+proc onopen*(self: gen_qsavefile_types.QSaveFile, slot: QSaveFileopenProc) =
   # TODO check subclass
-  type Cb = proc(super: QSaveFileopenBase, flags: gen_qiodevicebase.QIODeviceBaseOpenModeFlag): bool
-  var tmp = new Cb
+  var tmp = new QSaveFileopenProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSaveFile_override_virtual_open(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSaveFile_open(self: ptr cQSaveFile, slot: int, flags: cint): bool {.exportc: "miqt_exec_callback_QSaveFile_open ".} =
-  type Cb = proc(super: QSaveFileopenBase, flags: gen_qiodevicebase.QIODeviceBaseOpenModeFlag): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(flags: gen_qiodevicebase.QIODeviceBaseOpenModeFlag): auto =
-    callVirtualBase_open(QSaveFile(h: self), flags)
-  let slotval1 = gen_qiodevicebase.QIODeviceBaseOpenModeFlag(flags)
+  var nimfunc = cast[ptr QSaveFileopenProc](cast[pointer](slot))
+  let slotval1 = cint(flags)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_writeData(self: QSaveFile, data: cstring, len: clonglong): clonglong =
-
+proc QSaveFilewriteData*(self: gen_qsavefile_types.QSaveFile, data: cstring, len: clonglong): clonglong =
 
   fQSaveFile_virtualbase_writeData(self.h, data, len)
 
-type QSaveFilewriteDataBase* = proc(data: cstring, len: clonglong): clonglong
-proc onwriteData*(self: QSaveFile, slot: proc(super: QSaveFilewriteDataBase, data: cstring, len: clonglong): clonglong) =
+type QSaveFilewriteDataProc* = proc(data: cstring, len: clonglong): clonglong
+proc onwriteData*(self: gen_qsavefile_types.QSaveFile, slot: QSaveFilewriteDataProc) =
   # TODO check subclass
-  type Cb = proc(super: QSaveFilewriteDataBase, data: cstring, len: clonglong): clonglong
-  var tmp = new Cb
+  var tmp = new QSaveFilewriteDataProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSaveFile_override_virtual_writeData(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSaveFile_writeData(self: ptr cQSaveFile, slot: int, data: cstring, len: clonglong): clonglong {.exportc: "miqt_exec_callback_QSaveFile_writeData ".} =
-  type Cb = proc(super: QSaveFilewriteDataBase, data: cstring, len: clonglong): clonglong
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(data: cstring, len: clonglong): auto =
-    callVirtualBase_writeData(QSaveFile(h: self), data, len)
+  var nimfunc = cast[ptr QSaveFilewriteDataProc](cast[pointer](slot))
   let slotval1 = (data)
 
   let slotval2 = len
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_isSequential(self: QSaveFile, ): bool =
-
+proc QSaveFileisSequential*(self: gen_qsavefile_types.QSaveFile, ): bool =
 
   fQSaveFile_virtualbase_isSequential(self.h)
 
-type QSaveFileisSequentialBase* = proc(): bool
-proc onisSequential*(self: QSaveFile, slot: proc(super: QSaveFileisSequentialBase): bool) =
+type QSaveFileisSequentialProc* = proc(): bool
+proc onisSequential*(self: gen_qsavefile_types.QSaveFile, slot: QSaveFileisSequentialProc) =
   # TODO check subclass
-  type Cb = proc(super: QSaveFileisSequentialBase): bool
-  var tmp = new Cb
+  var tmp = new QSaveFileisSequentialProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSaveFile_override_virtual_isSequential(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSaveFile_isSequential(self: ptr cQSaveFile, slot: int): bool {.exportc: "miqt_exec_callback_QSaveFile_isSequential ".} =
-  type Cb = proc(super: QSaveFileisSequentialBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_isSequential(QSaveFile(h: self), )
+  var nimfunc = cast[ptr QSaveFileisSequentialProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_pos(self: QSaveFile, ): clonglong =
-
+proc QSaveFilepos*(self: gen_qsavefile_types.QSaveFile, ): clonglong =
 
   fQSaveFile_virtualbase_pos(self.h)
 
-type QSaveFileposBase* = proc(): clonglong
-proc onpos*(self: QSaveFile, slot: proc(super: QSaveFileposBase): clonglong) =
+type QSaveFileposProc* = proc(): clonglong
+proc onpos*(self: gen_qsavefile_types.QSaveFile, slot: QSaveFileposProc) =
   # TODO check subclass
-  type Cb = proc(super: QSaveFileposBase): clonglong
-  var tmp = new Cb
+  var tmp = new QSaveFileposProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSaveFile_override_virtual_pos(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSaveFile_pos(self: ptr cQSaveFile, slot: int): clonglong {.exportc: "miqt_exec_callback_QSaveFile_pos ".} =
-  type Cb = proc(super: QSaveFileposBase): clonglong
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_pos(QSaveFile(h: self), )
+  var nimfunc = cast[ptr QSaveFileposProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_seek(self: QSaveFile, offset: clonglong): bool =
-
+proc QSaveFileseek*(self: gen_qsavefile_types.QSaveFile, offset: clonglong): bool =
 
   fQSaveFile_virtualbase_seek(self.h, offset)
 
-type QSaveFileseekBase* = proc(offset: clonglong): bool
-proc onseek*(self: QSaveFile, slot: proc(super: QSaveFileseekBase, offset: clonglong): bool) =
+type QSaveFileseekProc* = proc(offset: clonglong): bool
+proc onseek*(self: gen_qsavefile_types.QSaveFile, slot: QSaveFileseekProc) =
   # TODO check subclass
-  type Cb = proc(super: QSaveFileseekBase, offset: clonglong): bool
-  var tmp = new Cb
+  var tmp = new QSaveFileseekProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSaveFile_override_virtual_seek(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSaveFile_seek(self: ptr cQSaveFile, slot: int, offset: clonglong): bool {.exportc: "miqt_exec_callback_QSaveFile_seek ".} =
-  type Cb = proc(super: QSaveFileseekBase, offset: clonglong): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(offset: clonglong): auto =
-    callVirtualBase_seek(QSaveFile(h: self), offset)
+  var nimfunc = cast[ptr QSaveFileseekProc](cast[pointer](slot))
   let slotval1 = offset
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_atEnd(self: QSaveFile, ): bool =
-
+proc QSaveFileatEnd*(self: gen_qsavefile_types.QSaveFile, ): bool =
 
   fQSaveFile_virtualbase_atEnd(self.h)
 
-type QSaveFileatEndBase* = proc(): bool
-proc onatEnd*(self: QSaveFile, slot: proc(super: QSaveFileatEndBase): bool) =
+type QSaveFileatEndProc* = proc(): bool
+proc onatEnd*(self: gen_qsavefile_types.QSaveFile, slot: QSaveFileatEndProc) =
   # TODO check subclass
-  type Cb = proc(super: QSaveFileatEndBase): bool
-  var tmp = new Cb
+  var tmp = new QSaveFileatEndProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSaveFile_override_virtual_atEnd(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSaveFile_atEnd(self: ptr cQSaveFile, slot: int): bool {.exportc: "miqt_exec_callback_QSaveFile_atEnd ".} =
-  type Cb = proc(super: QSaveFileatEndBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_atEnd(QSaveFile(h: self), )
+  var nimfunc = cast[ptr QSaveFileatEndProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_size(self: QSaveFile, ): clonglong =
-
+proc QSaveFilesize*(self: gen_qsavefile_types.QSaveFile, ): clonglong =
 
   fQSaveFile_virtualbase_size(self.h)
 
-type QSaveFilesizeBase* = proc(): clonglong
-proc onsize*(self: QSaveFile, slot: proc(super: QSaveFilesizeBase): clonglong) =
+type QSaveFilesizeProc* = proc(): clonglong
+proc onsize*(self: gen_qsavefile_types.QSaveFile, slot: QSaveFilesizeProc) =
   # TODO check subclass
-  type Cb = proc(super: QSaveFilesizeBase): clonglong
-  var tmp = new Cb
+  var tmp = new QSaveFilesizeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSaveFile_override_virtual_size(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSaveFile_size(self: ptr cQSaveFile, slot: int): clonglong {.exportc: "miqt_exec_callback_QSaveFile_size ".} =
-  type Cb = proc(super: QSaveFilesizeBase): clonglong
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_size(QSaveFile(h: self), )
+  var nimfunc = cast[ptr QSaveFilesizeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_resize(self: QSaveFile, sz: clonglong): bool =
-
+proc QSaveFileresize*(self: gen_qsavefile_types.QSaveFile, sz: clonglong): bool =
 
   fQSaveFile_virtualbase_resize(self.h, sz)
 
-type QSaveFileresizeBase* = proc(sz: clonglong): bool
-proc onresize*(self: QSaveFile, slot: proc(super: QSaveFileresizeBase, sz: clonglong): bool) =
+type QSaveFileresizeProc* = proc(sz: clonglong): bool
+proc onresize*(self: gen_qsavefile_types.QSaveFile, slot: QSaveFileresizeProc) =
   # TODO check subclass
-  type Cb = proc(super: QSaveFileresizeBase, sz: clonglong): bool
-  var tmp = new Cb
+  var tmp = new QSaveFileresizeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSaveFile_override_virtual_resize(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSaveFile_resize(self: ptr cQSaveFile, slot: int, sz: clonglong): bool {.exportc: "miqt_exec_callback_QSaveFile_resize ".} =
-  type Cb = proc(super: QSaveFileresizeBase, sz: clonglong): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(sz: clonglong): auto =
-    callVirtualBase_resize(QSaveFile(h: self), sz)
+  var nimfunc = cast[ptr QSaveFileresizeProc](cast[pointer](slot))
   let slotval1 = sz
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_permissions(self: QSaveFile, ): gen_qfiledevice.QFileDevicePermission =
+proc QSaveFilepermissions*(self: gen_qsavefile_types.QSaveFile, ): cint =
 
+  cint(fQSaveFile_virtualbase_permissions(self.h))
 
-  gen_qfiledevice.QFileDevicePermission(fQSaveFile_virtualbase_permissions(self.h))
-
-type QSaveFilepermissionsBase* = proc(): gen_qfiledevice.QFileDevicePermission
-proc onpermissions*(self: QSaveFile, slot: proc(super: QSaveFilepermissionsBase): gen_qfiledevice.QFileDevicePermission) =
+type QSaveFilepermissionsProc* = proc(): cint
+proc onpermissions*(self: gen_qsavefile_types.QSaveFile, slot: QSaveFilepermissionsProc) =
   # TODO check subclass
-  type Cb = proc(super: QSaveFilepermissionsBase): gen_qfiledevice.QFileDevicePermission
-  var tmp = new Cb
+  var tmp = new QSaveFilepermissionsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSaveFile_override_virtual_permissions(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSaveFile_permissions(self: ptr cQSaveFile, slot: int): cint {.exportc: "miqt_exec_callback_QSaveFile_permissions ".} =
-  type Cb = proc(super: QSaveFilepermissionsBase): gen_qfiledevice.QFileDevicePermission
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_permissions(QSaveFile(h: self), )
+  var nimfunc = cast[ptr QSaveFilepermissionsProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   cint(virtualReturn)
-proc callVirtualBase_setPermissions(self: QSaveFile, permissionSpec: gen_qfiledevice.QFileDevicePermission): bool =
-
+proc QSaveFilesetPermissions*(self: gen_qsavefile_types.QSaveFile, permissionSpec: cint): bool =
 
   fQSaveFile_virtualbase_setPermissions(self.h, cint(permissionSpec))
 
-type QSaveFilesetPermissionsBase* = proc(permissionSpec: gen_qfiledevice.QFileDevicePermission): bool
-proc onsetPermissions*(self: QSaveFile, slot: proc(super: QSaveFilesetPermissionsBase, permissionSpec: gen_qfiledevice.QFileDevicePermission): bool) =
+type QSaveFilesetPermissionsProc* = proc(permissionSpec: cint): bool
+proc onsetPermissions*(self: gen_qsavefile_types.QSaveFile, slot: QSaveFilesetPermissionsProc) =
   # TODO check subclass
-  type Cb = proc(super: QSaveFilesetPermissionsBase, permissionSpec: gen_qfiledevice.QFileDevicePermission): bool
-  var tmp = new Cb
+  var tmp = new QSaveFilesetPermissionsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSaveFile_override_virtual_setPermissions(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSaveFile_setPermissions(self: ptr cQSaveFile, slot: int, permissionSpec: cint): bool {.exportc: "miqt_exec_callback_QSaveFile_setPermissions ".} =
-  type Cb = proc(super: QSaveFilesetPermissionsBase, permissionSpec: gen_qfiledevice.QFileDevicePermission): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(permissionSpec: gen_qfiledevice.QFileDevicePermission): auto =
-    callVirtualBase_setPermissions(QSaveFile(h: self), permissionSpec)
-  let slotval1 = gen_qfiledevice.QFileDevicePermission(permissionSpec)
+  var nimfunc = cast[ptr QSaveFilesetPermissionsProc](cast[pointer](slot))
+  let slotval1 = cint(permissionSpec)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_readData(self: QSaveFile, data: cstring, maxlen: clonglong): clonglong =
-
+proc QSaveFilereadData*(self: gen_qsavefile_types.QSaveFile, data: cstring, maxlen: clonglong): clonglong =
 
   fQSaveFile_virtualbase_readData(self.h, data, maxlen)
 
-type QSaveFilereadDataBase* = proc(data: cstring, maxlen: clonglong): clonglong
-proc onreadData*(self: QSaveFile, slot: proc(super: QSaveFilereadDataBase, data: cstring, maxlen: clonglong): clonglong) =
+type QSaveFilereadDataProc* = proc(data: cstring, maxlen: clonglong): clonglong
+proc onreadData*(self: gen_qsavefile_types.QSaveFile, slot: QSaveFilereadDataProc) =
   # TODO check subclass
-  type Cb = proc(super: QSaveFilereadDataBase, data: cstring, maxlen: clonglong): clonglong
-  var tmp = new Cb
+  var tmp = new QSaveFilereadDataProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSaveFile_override_virtual_readData(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSaveFile_readData(self: ptr cQSaveFile, slot: int, data: cstring, maxlen: clonglong): clonglong {.exportc: "miqt_exec_callback_QSaveFile_readData ".} =
-  type Cb = proc(super: QSaveFilereadDataBase, data: cstring, maxlen: clonglong): clonglong
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(data: cstring, maxlen: clonglong): auto =
-    callVirtualBase_readData(QSaveFile(h: self), data, maxlen)
+  var nimfunc = cast[ptr QSaveFilereadDataProc](cast[pointer](slot))
   let slotval1 = (data)
 
   let slotval2 = maxlen
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_readLineData(self: QSaveFile, data: cstring, maxlen: clonglong): clonglong =
-
+proc QSaveFilereadLineData*(self: gen_qsavefile_types.QSaveFile, data: cstring, maxlen: clonglong): clonglong =
 
   fQSaveFile_virtualbase_readLineData(self.h, data, maxlen)
 
-type QSaveFilereadLineDataBase* = proc(data: cstring, maxlen: clonglong): clonglong
-proc onreadLineData*(self: QSaveFile, slot: proc(super: QSaveFilereadLineDataBase, data: cstring, maxlen: clonglong): clonglong) =
+type QSaveFilereadLineDataProc* = proc(data: cstring, maxlen: clonglong): clonglong
+proc onreadLineData*(self: gen_qsavefile_types.QSaveFile, slot: QSaveFilereadLineDataProc) =
   # TODO check subclass
-  type Cb = proc(super: QSaveFilereadLineDataBase, data: cstring, maxlen: clonglong): clonglong
-  var tmp = new Cb
+  var tmp = new QSaveFilereadLineDataProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSaveFile_override_virtual_readLineData(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSaveFile_readLineData(self: ptr cQSaveFile, slot: int, data: cstring, maxlen: clonglong): clonglong {.exportc: "miqt_exec_callback_QSaveFile_readLineData ".} =
-  type Cb = proc(super: QSaveFilereadLineDataBase, data: cstring, maxlen: clonglong): clonglong
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(data: cstring, maxlen: clonglong): auto =
-    callVirtualBase_readLineData(QSaveFile(h: self), data, maxlen)
+  var nimfunc = cast[ptr QSaveFilereadLineDataProc](cast[pointer](slot))
   let slotval1 = (data)
 
   let slotval2 = maxlen
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_reset(self: QSaveFile, ): bool =
-
+proc QSaveFilereset*(self: gen_qsavefile_types.QSaveFile, ): bool =
 
   fQSaveFile_virtualbase_reset(self.h)
 
-type QSaveFileresetBase* = proc(): bool
-proc onreset*(self: QSaveFile, slot: proc(super: QSaveFileresetBase): bool) =
+type QSaveFileresetProc* = proc(): bool
+proc onreset*(self: gen_qsavefile_types.QSaveFile, slot: QSaveFileresetProc) =
   # TODO check subclass
-  type Cb = proc(super: QSaveFileresetBase): bool
-  var tmp = new Cb
+  var tmp = new QSaveFileresetProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSaveFile_override_virtual_reset(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSaveFile_reset(self: ptr cQSaveFile, slot: int): bool {.exportc: "miqt_exec_callback_QSaveFile_reset ".} =
-  type Cb = proc(super: QSaveFileresetBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_reset(QSaveFile(h: self), )
+  var nimfunc = cast[ptr QSaveFileresetProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_bytesAvailable(self: QSaveFile, ): clonglong =
-
+proc QSaveFilebytesAvailable*(self: gen_qsavefile_types.QSaveFile, ): clonglong =
 
   fQSaveFile_virtualbase_bytesAvailable(self.h)
 
-type QSaveFilebytesAvailableBase* = proc(): clonglong
-proc onbytesAvailable*(self: QSaveFile, slot: proc(super: QSaveFilebytesAvailableBase): clonglong) =
+type QSaveFilebytesAvailableProc* = proc(): clonglong
+proc onbytesAvailable*(self: gen_qsavefile_types.QSaveFile, slot: QSaveFilebytesAvailableProc) =
   # TODO check subclass
-  type Cb = proc(super: QSaveFilebytesAvailableBase): clonglong
-  var tmp = new Cb
+  var tmp = new QSaveFilebytesAvailableProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSaveFile_override_virtual_bytesAvailable(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSaveFile_bytesAvailable(self: ptr cQSaveFile, slot: int): clonglong {.exportc: "miqt_exec_callback_QSaveFile_bytesAvailable ".} =
-  type Cb = proc(super: QSaveFilebytesAvailableBase): clonglong
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_bytesAvailable(QSaveFile(h: self), )
+  var nimfunc = cast[ptr QSaveFilebytesAvailableProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_bytesToWrite(self: QSaveFile, ): clonglong =
-
+proc QSaveFilebytesToWrite*(self: gen_qsavefile_types.QSaveFile, ): clonglong =
 
   fQSaveFile_virtualbase_bytesToWrite(self.h)
 
-type QSaveFilebytesToWriteBase* = proc(): clonglong
-proc onbytesToWrite*(self: QSaveFile, slot: proc(super: QSaveFilebytesToWriteBase): clonglong) =
+type QSaveFilebytesToWriteProc* = proc(): clonglong
+proc onbytesToWrite*(self: gen_qsavefile_types.QSaveFile, slot: QSaveFilebytesToWriteProc) =
   # TODO check subclass
-  type Cb = proc(super: QSaveFilebytesToWriteBase): clonglong
-  var tmp = new Cb
+  var tmp = new QSaveFilebytesToWriteProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSaveFile_override_virtual_bytesToWrite(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSaveFile_bytesToWrite(self: ptr cQSaveFile, slot: int): clonglong {.exportc: "miqt_exec_callback_QSaveFile_bytesToWrite ".} =
-  type Cb = proc(super: QSaveFilebytesToWriteBase): clonglong
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_bytesToWrite(QSaveFile(h: self), )
+  var nimfunc = cast[ptr QSaveFilebytesToWriteProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_canReadLine(self: QSaveFile, ): bool =
-
+proc QSaveFilecanReadLine*(self: gen_qsavefile_types.QSaveFile, ): bool =
 
   fQSaveFile_virtualbase_canReadLine(self.h)
 
-type QSaveFilecanReadLineBase* = proc(): bool
-proc oncanReadLine*(self: QSaveFile, slot: proc(super: QSaveFilecanReadLineBase): bool) =
+type QSaveFilecanReadLineProc* = proc(): bool
+proc oncanReadLine*(self: gen_qsavefile_types.QSaveFile, slot: QSaveFilecanReadLineProc) =
   # TODO check subclass
-  type Cb = proc(super: QSaveFilecanReadLineBase): bool
-  var tmp = new Cb
+  var tmp = new QSaveFilecanReadLineProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSaveFile_override_virtual_canReadLine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSaveFile_canReadLine(self: ptr cQSaveFile, slot: int): bool {.exportc: "miqt_exec_callback_QSaveFile_canReadLine ".} =
-  type Cb = proc(super: QSaveFilecanReadLineBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_canReadLine(QSaveFile(h: self), )
+  var nimfunc = cast[ptr QSaveFilecanReadLineProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_waitForReadyRead(self: QSaveFile, msecs: cint): bool =
-
+proc QSaveFilewaitForReadyRead*(self: gen_qsavefile_types.QSaveFile, msecs: cint): bool =
 
   fQSaveFile_virtualbase_waitForReadyRead(self.h, msecs)
 
-type QSaveFilewaitForReadyReadBase* = proc(msecs: cint): bool
-proc onwaitForReadyRead*(self: QSaveFile, slot: proc(super: QSaveFilewaitForReadyReadBase, msecs: cint): bool) =
+type QSaveFilewaitForReadyReadProc* = proc(msecs: cint): bool
+proc onwaitForReadyRead*(self: gen_qsavefile_types.QSaveFile, slot: QSaveFilewaitForReadyReadProc) =
   # TODO check subclass
-  type Cb = proc(super: QSaveFilewaitForReadyReadBase, msecs: cint): bool
-  var tmp = new Cb
+  var tmp = new QSaveFilewaitForReadyReadProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSaveFile_override_virtual_waitForReadyRead(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSaveFile_waitForReadyRead(self: ptr cQSaveFile, slot: int, msecs: cint): bool {.exportc: "miqt_exec_callback_QSaveFile_waitForReadyRead ".} =
-  type Cb = proc(super: QSaveFilewaitForReadyReadBase, msecs: cint): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(msecs: cint): auto =
-    callVirtualBase_waitForReadyRead(QSaveFile(h: self), msecs)
+  var nimfunc = cast[ptr QSaveFilewaitForReadyReadProc](cast[pointer](slot))
   let slotval1 = msecs
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_waitForBytesWritten(self: QSaveFile, msecs: cint): bool =
-
+proc QSaveFilewaitForBytesWritten*(self: gen_qsavefile_types.QSaveFile, msecs: cint): bool =
 
   fQSaveFile_virtualbase_waitForBytesWritten(self.h, msecs)
 
-type QSaveFilewaitForBytesWrittenBase* = proc(msecs: cint): bool
-proc onwaitForBytesWritten*(self: QSaveFile, slot: proc(super: QSaveFilewaitForBytesWrittenBase, msecs: cint): bool) =
+type QSaveFilewaitForBytesWrittenProc* = proc(msecs: cint): bool
+proc onwaitForBytesWritten*(self: gen_qsavefile_types.QSaveFile, slot: QSaveFilewaitForBytesWrittenProc) =
   # TODO check subclass
-  type Cb = proc(super: QSaveFilewaitForBytesWrittenBase, msecs: cint): bool
-  var tmp = new Cb
+  var tmp = new QSaveFilewaitForBytesWrittenProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSaveFile_override_virtual_waitForBytesWritten(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSaveFile_waitForBytesWritten(self: ptr cQSaveFile, slot: int, msecs: cint): bool {.exportc: "miqt_exec_callback_QSaveFile_waitForBytesWritten ".} =
-  type Cb = proc(super: QSaveFilewaitForBytesWrittenBase, msecs: cint): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(msecs: cint): auto =
-    callVirtualBase_waitForBytesWritten(QSaveFile(h: self), msecs)
+  var nimfunc = cast[ptr QSaveFilewaitForBytesWrittenProc](cast[pointer](slot))
   let slotval1 = msecs
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_skipData(self: QSaveFile, maxSize: clonglong): clonglong =
-
+proc QSaveFileskipData*(self: gen_qsavefile_types.QSaveFile, maxSize: clonglong): clonglong =
 
   fQSaveFile_virtualbase_skipData(self.h, maxSize)
 
-type QSaveFileskipDataBase* = proc(maxSize: clonglong): clonglong
-proc onskipData*(self: QSaveFile, slot: proc(super: QSaveFileskipDataBase, maxSize: clonglong): clonglong) =
+type QSaveFileskipDataProc* = proc(maxSize: clonglong): clonglong
+proc onskipData*(self: gen_qsavefile_types.QSaveFile, slot: QSaveFileskipDataProc) =
   # TODO check subclass
-  type Cb = proc(super: QSaveFileskipDataBase, maxSize: clonglong): clonglong
-  var tmp = new Cb
+  var tmp = new QSaveFileskipDataProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSaveFile_override_virtual_skipData(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSaveFile_skipData(self: ptr cQSaveFile, slot: int, maxSize: clonglong): clonglong {.exportc: "miqt_exec_callback_QSaveFile_skipData ".} =
-  type Cb = proc(super: QSaveFileskipDataBase, maxSize: clonglong): clonglong
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(maxSize: clonglong): auto =
-    callVirtualBase_skipData(QSaveFile(h: self), maxSize)
+  var nimfunc = cast[ptr QSaveFileskipDataProc](cast[pointer](slot))
   let slotval1 = maxSize
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_event(self: QSaveFile, event: gen_qcoreevent.QEvent): bool =
-
+proc QSaveFileevent*(self: gen_qsavefile_types.QSaveFile, event: gen_qcoreevent.QEvent): bool =
 
   fQSaveFile_virtualbase_event(self.h, event.h)
 
-type QSaveFileeventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QSaveFile, slot: proc(super: QSaveFileeventBase, event: gen_qcoreevent.QEvent): bool) =
+type QSaveFileeventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qsavefile_types.QSaveFile, slot: QSaveFileeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSaveFileeventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QSaveFileeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSaveFile_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSaveFile_event(self: ptr cQSaveFile, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QSaveFile_event ".} =
-  type Cb = proc(super: QSaveFileeventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QSaveFile(h: self), event)
+  var nimfunc = cast[ptr QSaveFileeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QSaveFile, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QSaveFileeventFilter*(self: gen_qsavefile_types.QSaveFile, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQSaveFile_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QSaveFileeventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QSaveFile, slot: proc(super: QSaveFileeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QSaveFileeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qsavefile_types.QSaveFile, slot: QSaveFileeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QSaveFileeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QSaveFileeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSaveFile_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSaveFile_eventFilter(self: ptr cQSaveFile, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QSaveFile_eventFilter ".} =
-  type Cb = proc(super: QSaveFileeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QSaveFile(h: self), watched, event)
+  var nimfunc = cast[ptr QSaveFileeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QSaveFile, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QSaveFiletimerEvent*(self: gen_qsavefile_types.QSaveFile, event: gen_qcoreevent.QTimerEvent): void =
 
   fQSaveFile_virtualbase_timerEvent(self.h, event.h)
 
-type QSaveFiletimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QSaveFile, slot: proc(super: QSaveFiletimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QSaveFiletimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qsavefile_types.QSaveFile, slot: QSaveFiletimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSaveFiletimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QSaveFiletimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSaveFile_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSaveFile_timerEvent(self: ptr cQSaveFile, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSaveFile_timerEvent ".} =
-  type Cb = proc(super: QSaveFiletimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QSaveFile(h: self), event)
+  var nimfunc = cast[ptr QSaveFiletimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QSaveFile, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QSaveFilechildEvent*(self: gen_qsavefile_types.QSaveFile, event: gen_qcoreevent.QChildEvent): void =
 
   fQSaveFile_virtualbase_childEvent(self.h, event.h)
 
-type QSaveFilechildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QSaveFile, slot: proc(super: QSaveFilechildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QSaveFilechildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qsavefile_types.QSaveFile, slot: QSaveFilechildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSaveFilechildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QSaveFilechildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSaveFile_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSaveFile_childEvent(self: ptr cQSaveFile, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSaveFile_childEvent ".} =
-  type Cb = proc(super: QSaveFilechildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QSaveFile(h: self), event)
+  var nimfunc = cast[ptr QSaveFilechildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QSaveFile, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QSaveFilecustomEvent*(self: gen_qsavefile_types.QSaveFile, event: gen_qcoreevent.QEvent): void =
 
   fQSaveFile_virtualbase_customEvent(self.h, event.h)
 
-type QSaveFilecustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QSaveFile, slot: proc(super: QSaveFilecustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QSaveFilecustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qsavefile_types.QSaveFile, slot: QSaveFilecustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSaveFilecustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QSaveFilecustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSaveFile_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSaveFile_customEvent(self: ptr cQSaveFile, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSaveFile_customEvent ".} =
-  type Cb = proc(super: QSaveFilecustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QSaveFile(h: self), event)
+  var nimfunc = cast[ptr QSaveFilecustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QSaveFile, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QSaveFileconnectNotify*(self: gen_qsavefile_types.QSaveFile, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQSaveFile_virtualbase_connectNotify(self.h, signal.h)
 
-type QSaveFileconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QSaveFile, slot: proc(super: QSaveFileconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QSaveFileconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qsavefile_types.QSaveFile, slot: QSaveFileconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QSaveFileconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QSaveFileconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSaveFile_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSaveFile_connectNotify(self: ptr cQSaveFile, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QSaveFile_connectNotify ".} =
-  type Cb = proc(super: QSaveFileconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QSaveFile(h: self), signal)
+  var nimfunc = cast[ptr QSaveFileconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QSaveFile, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QSaveFiledisconnectNotify*(self: gen_qsavefile_types.QSaveFile, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQSaveFile_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QSaveFiledisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QSaveFile, slot: proc(super: QSaveFiledisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QSaveFiledisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qsavefile_types.QSaveFile, slot: QSaveFiledisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QSaveFiledisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QSaveFiledisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSaveFile_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSaveFile_disconnectNotify(self: ptr cQSaveFile, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QSaveFile_disconnectNotify ".} =
-  type Cb = proc(super: QSaveFiledisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QSaveFile(h: self), signal)
+  var nimfunc = cast[ptr QSaveFiledisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QSaveFile): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qsavefile_types.QSaveFile): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQSaveFile_staticMetaObject())
-proc delete*(self: QSaveFile) =
+proc delete*(self: gen_qsavefile_types.QSaveFile) =
   fcQSaveFile_delete(self.h)

@@ -34,18 +34,14 @@ const cflags = gorge("pkg-config -cflags Qt5Widgets")
 {.compile("gen_qcommandlineparser.cpp", cflags).}
 
 
-type QCommandLineParserSingleDashWordOptionMode* = cint
-const
-  QCommandLineParserParseAsCompactedShortOptions* = 0
-  QCommandLineParserParseAsLongOptions* = 1
+type QCommandLineParserSingleDashWordOptionModeEnum* = distinct cint
+template ParseAsCompactedShortOptions*(_: type QCommandLineParserSingleDashWordOptionModeEnum): untyped = 0
+template ParseAsLongOptions*(_: type QCommandLineParserSingleDashWordOptionModeEnum): untyped = 1
 
 
-
-type QCommandLineParserOptionsAfterPositionalArgumentsMode* = cint
-const
-  QCommandLineParserParseAsOptions* = 0
-  QCommandLineParserParseAsPositionalArguments* = 1
-
+type QCommandLineParserOptionsAfterPositionalArgumentsModeEnum* = distinct cint
+template ParseAsOptions*(_: type QCommandLineParserOptionsAfterPositionalArgumentsModeEnum): untyped = 0
+template ParseAsPositionalArguments*(_: type QCommandLineParserOptionsAfterPositionalArgumentsModeEnum): untyped = 1
 
 
 import gen_qcommandlineparser_types
@@ -95,38 +91,38 @@ proc fcQCommandLineParser_addPositionalArgument3(self: pointer, name: struct_miq
 proc fcQCommandLineParser_delete(self: pointer) {.importc: "QCommandLineParser_delete".}
 
 
-func init*(T: type QCommandLineParser, h: ptr cQCommandLineParser): QCommandLineParser =
+func init*(T: type gen_qcommandlineparser_types.QCommandLineParser, h: ptr cQCommandLineParser): gen_qcommandlineparser_types.QCommandLineParser =
   T(h: h)
-proc create*(T: type QCommandLineParser, ): QCommandLineParser =
+proc create*(T: type gen_qcommandlineparser_types.QCommandLineParser, ): gen_qcommandlineparser_types.QCommandLineParser =
 
-  QCommandLineParser.init(fcQCommandLineParser_new())
-proc tr*(_: type QCommandLineParser, sourceText: cstring): string =
+  gen_qcommandlineparser_types.QCommandLineParser.init(fcQCommandLineParser_new())
+proc tr*(_: type gen_qcommandlineparser_types.QCommandLineParser, sourceText: cstring): string =
 
   let v_ms = fcQCommandLineParser_tr(sourceText)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QCommandLineParser, sourceText: cstring): string =
+proc trUtf8*(_: type gen_qcommandlineparser_types.QCommandLineParser, sourceText: cstring): string =
 
   let v_ms = fcQCommandLineParser_trUtf8(sourceText)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setSingleDashWordOptionMode*(self: QCommandLineParser, parsingMode: QCommandLineParserSingleDashWordOptionMode): void =
+proc setSingleDashWordOptionMode*(self: gen_qcommandlineparser_types.QCommandLineParser, parsingMode: cint): void =
 
   fcQCommandLineParser_setSingleDashWordOptionMode(self.h, cint(parsingMode))
 
-proc setOptionsAfterPositionalArgumentsMode*(self: QCommandLineParser, mode: QCommandLineParserOptionsAfterPositionalArgumentsMode): void =
+proc setOptionsAfterPositionalArgumentsMode*(self: gen_qcommandlineparser_types.QCommandLineParser, mode: cint): void =
 
   fcQCommandLineParser_setOptionsAfterPositionalArgumentsMode(self.h, cint(mode))
 
-proc addOption*(self: QCommandLineParser, commandLineOption: gen_qcommandlineoption.QCommandLineOption): bool =
+proc addOption*(self: gen_qcommandlineparser_types.QCommandLineParser, commandLineOption: gen_qcommandlineoption.QCommandLineOption): bool =
 
   fcQCommandLineParser_addOption(self.h, commandLineOption.h)
 
-proc addOptions*(self: QCommandLineParser, options: seq[gen_qcommandlineoption.QCommandLineOption]): bool =
+proc addOptions*(self: gen_qcommandlineparser_types.QCommandLineParser, options: seq[gen_qcommandlineoption.QCommandLineOption]): bool =
 
   var options_CArray = newSeq[pointer](len(options))
   for i in 0..<len(options):
@@ -134,34 +130,34 @@ proc addOptions*(self: QCommandLineParser, options: seq[gen_qcommandlineoption.Q
 
   fcQCommandLineParser_addOptions(self.h, struct_miqt_array(len: csize_t(len(options)), data: if len(options) == 0: nil else: addr(options_CArray[0])))
 
-proc addVersionOption*(self: QCommandLineParser, ): gen_qcommandlineoption.QCommandLineOption =
+proc addVersionOption*(self: gen_qcommandlineparser_types.QCommandLineParser, ): gen_qcommandlineoption.QCommandLineOption =
 
   gen_qcommandlineoption.QCommandLineOption(h: fcQCommandLineParser_addVersionOption(self.h))
 
-proc addHelpOption*(self: QCommandLineParser, ): gen_qcommandlineoption.QCommandLineOption =
+proc addHelpOption*(self: gen_qcommandlineparser_types.QCommandLineParser, ): gen_qcommandlineoption.QCommandLineOption =
 
   gen_qcommandlineoption.QCommandLineOption(h: fcQCommandLineParser_addHelpOption(self.h))
 
-proc setApplicationDescription*(self: QCommandLineParser, description: string): void =
+proc setApplicationDescription*(self: gen_qcommandlineparser_types.QCommandLineParser, description: string): void =
 
   fcQCommandLineParser_setApplicationDescription(self.h, struct_miqt_string(data: description, len: csize_t(len(description))))
 
-proc applicationDescription*(self: QCommandLineParser, ): string =
+proc applicationDescription*(self: gen_qcommandlineparser_types.QCommandLineParser, ): string =
 
   let v_ms = fcQCommandLineParser_applicationDescription(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc addPositionalArgument*(self: QCommandLineParser, name: string, description: string): void =
+proc addPositionalArgument*(self: gen_qcommandlineparser_types.QCommandLineParser, name: string, description: string): void =
 
   fcQCommandLineParser_addPositionalArgument(self.h, struct_miqt_string(data: name, len: csize_t(len(name))), struct_miqt_string(data: description, len: csize_t(len(description))))
 
-proc clearPositionalArguments*(self: QCommandLineParser, ): void =
+proc clearPositionalArguments*(self: gen_qcommandlineparser_types.QCommandLineParser, ): void =
 
   fcQCommandLineParser_clearPositionalArguments(self.h)
 
-proc process*(self: QCommandLineParser, arguments: seq[string]): void =
+proc process*(self: gen_qcommandlineparser_types.QCommandLineParser, arguments: seq[string]): void =
 
   var arguments_CArray = newSeq[struct_miqt_string](len(arguments))
   for i in 0..<len(arguments):
@@ -169,11 +165,11 @@ proc process*(self: QCommandLineParser, arguments: seq[string]): void =
 
   fcQCommandLineParser_process(self.h, struct_miqt_array(len: csize_t(len(arguments)), data: if len(arguments) == 0: nil else: addr(arguments_CArray[0])))
 
-proc processWithApp*(self: QCommandLineParser, app: gen_qcoreapplication.QCoreApplication): void =
+proc processWithApp*(self: gen_qcommandlineparser_types.QCommandLineParser, app: gen_qcoreapplication.QCoreApplication): void =
 
   fcQCommandLineParser_processWithApp(self.h, app.h)
 
-proc parse*(self: QCommandLineParser, arguments: seq[string]): bool =
+proc parse*(self: gen_qcommandlineparser_types.QCommandLineParser, arguments: seq[string]): bool =
 
   var arguments_CArray = newSeq[struct_miqt_string](len(arguments))
   for i in 0..<len(arguments):
@@ -181,25 +177,25 @@ proc parse*(self: QCommandLineParser, arguments: seq[string]): bool =
 
   fcQCommandLineParser_parse(self.h, struct_miqt_array(len: csize_t(len(arguments)), data: if len(arguments) == 0: nil else: addr(arguments_CArray[0])))
 
-proc errorText*(self: QCommandLineParser, ): string =
+proc errorText*(self: gen_qcommandlineparser_types.QCommandLineParser, ): string =
 
   let v_ms = fcQCommandLineParser_errorText(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc isSet*(self: QCommandLineParser, name: string): bool =
+proc isSet*(self: gen_qcommandlineparser_types.QCommandLineParser, name: string): bool =
 
   fcQCommandLineParser_isSet(self.h, struct_miqt_string(data: name, len: csize_t(len(name))))
 
-proc value*(self: QCommandLineParser, name: string): string =
+proc value*(self: gen_qcommandlineparser_types.QCommandLineParser, name: string): string =
 
   let v_ms = fcQCommandLineParser_value(self.h, struct_miqt_string(data: name, len: csize_t(len(name))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc values*(self: QCommandLineParser, name: string): seq[string] =
+proc values*(self: gen_qcommandlineparser_types.QCommandLineParser, name: string): seq[string] =
 
   var v_ma = fcQCommandLineParser_values(self.h, struct_miqt_string(data: name, len: csize_t(len(name))))
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -211,18 +207,18 @@ proc values*(self: QCommandLineParser, name: string): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc isSetWithOption*(self: QCommandLineParser, option: gen_qcommandlineoption.QCommandLineOption): bool =
+proc isSetWithOption*(self: gen_qcommandlineparser_types.QCommandLineParser, option: gen_qcommandlineoption.QCommandLineOption): bool =
 
   fcQCommandLineParser_isSetWithOption(self.h, option.h)
 
-proc valueWithOption*(self: QCommandLineParser, option: gen_qcommandlineoption.QCommandLineOption): string =
+proc valueWithOption*(self: gen_qcommandlineparser_types.QCommandLineParser, option: gen_qcommandlineoption.QCommandLineOption): string =
 
   let v_ms = fcQCommandLineParser_valueWithOption(self.h, option.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc valuesWithOption*(self: QCommandLineParser, option: gen_qcommandlineoption.QCommandLineOption): seq[string] =
+proc valuesWithOption*(self: gen_qcommandlineparser_types.QCommandLineParser, option: gen_qcommandlineoption.QCommandLineOption): seq[string] =
 
   var v_ma = fcQCommandLineParser_valuesWithOption(self.h, option.h)
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -234,7 +230,7 @@ proc valuesWithOption*(self: QCommandLineParser, option: gen_qcommandlineoption.
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc positionalArguments*(self: QCommandLineParser, ): seq[string] =
+proc positionalArguments*(self: gen_qcommandlineparser_types.QCommandLineParser, ): seq[string] =
 
   var v_ma = fcQCommandLineParser_positionalArguments(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -246,7 +242,7 @@ proc positionalArguments*(self: QCommandLineParser, ): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc optionNames*(self: QCommandLineParser, ): seq[string] =
+proc optionNames*(self: gen_qcommandlineparser_types.QCommandLineParser, ): seq[string] =
 
   var v_ma = fcQCommandLineParser_optionNames(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -258,7 +254,7 @@ proc optionNames*(self: QCommandLineParser, ): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc unknownOptionNames*(self: QCommandLineParser, ): seq[string] =
+proc unknownOptionNames*(self: gen_qcommandlineparser_types.QCommandLineParser, ): seq[string] =
 
   var v_ma = fcQCommandLineParser_unknownOptionNames(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -270,44 +266,44 @@ proc unknownOptionNames*(self: QCommandLineParser, ): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc helpText*(self: QCommandLineParser, ): string =
+proc helpText*(self: gen_qcommandlineparser_types.QCommandLineParser, ): string =
 
   let v_ms = fcQCommandLineParser_helpText(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr2*(_: type QCommandLineParser, sourceText: cstring, disambiguation: cstring): string =
+proc tr2*(_: type gen_qcommandlineparser_types.QCommandLineParser, sourceText: cstring, disambiguation: cstring): string =
 
   let v_ms = fcQCommandLineParser_tr2(sourceText, disambiguation)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QCommandLineParser, sourceText: cstring, disambiguation: cstring, n: cint): string =
+proc tr3*(_: type gen_qcommandlineparser_types.QCommandLineParser, sourceText: cstring, disambiguation: cstring, n: cint): string =
 
   let v_ms = fcQCommandLineParser_tr3(sourceText, disambiguation, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QCommandLineParser, sourceText: cstring, disambiguation: cstring): string =
+proc trUtf82*(_: type gen_qcommandlineparser_types.QCommandLineParser, sourceText: cstring, disambiguation: cstring): string =
 
   let v_ms = fcQCommandLineParser_trUtf82(sourceText, disambiguation)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QCommandLineParser, sourceText: cstring, disambiguation: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qcommandlineparser_types.QCommandLineParser, sourceText: cstring, disambiguation: cstring, n: cint): string =
 
   let v_ms = fcQCommandLineParser_trUtf83(sourceText, disambiguation, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc addPositionalArgument3*(self: QCommandLineParser, name: string, description: string, syntax: string): void =
+proc addPositionalArgument3*(self: gen_qcommandlineparser_types.QCommandLineParser, name: string, description: string, syntax: string): void =
 
   fcQCommandLineParser_addPositionalArgument3(self.h, struct_miqt_string(data: name, len: csize_t(len(name))), struct_miqt_string(data: description, len: csize_t(len(description))), struct_miqt_string(data: syntax, len: csize_t(len(syntax))))
 
-proc delete*(self: QCommandLineParser) =
+proc delete*(self: gen_qcommandlineparser_types.QCommandLineParser) =
   fcQCommandLineParser_delete(self.h)

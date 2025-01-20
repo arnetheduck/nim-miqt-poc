@@ -59,47 +59,47 @@ proc fcQScriptClassPropertyIterator_flags(self: pointer, ): cint {.importc: "QSc
 proc fcQScriptClassPropertyIterator_delete(self: pointer) {.importc: "QScriptClassPropertyIterator_delete".}
 
 
-func init*(T: type QScriptClassPropertyIterator, h: ptr cQScriptClassPropertyIterator): QScriptClassPropertyIterator =
+func init*(T: type gen_qscriptclasspropertyiterator_types.QScriptClassPropertyIterator, h: ptr cQScriptClassPropertyIterator): gen_qscriptclasspropertyiterator_types.QScriptClassPropertyIterator =
   T(h: h)
-proc objectX*(self: QScriptClassPropertyIterator, ): gen_qscriptvalue.QScriptValue =
+proc objectX*(self: gen_qscriptclasspropertyiterator_types.QScriptClassPropertyIterator, ): gen_qscriptvalue.QScriptValue =
 
   gen_qscriptvalue.QScriptValue(h: fcQScriptClassPropertyIterator_objectX(self.h))
 
-proc hasNext*(self: QScriptClassPropertyIterator, ): bool =
+proc hasNext*(self: gen_qscriptclasspropertyiterator_types.QScriptClassPropertyIterator, ): bool =
 
   fcQScriptClassPropertyIterator_hasNext(self.h)
 
-proc next*(self: QScriptClassPropertyIterator, ): void =
+proc next*(self: gen_qscriptclasspropertyiterator_types.QScriptClassPropertyIterator, ): void =
 
   fcQScriptClassPropertyIterator_next(self.h)
 
-proc hasPrevious*(self: QScriptClassPropertyIterator, ): bool =
+proc hasPrevious*(self: gen_qscriptclasspropertyiterator_types.QScriptClassPropertyIterator, ): bool =
 
   fcQScriptClassPropertyIterator_hasPrevious(self.h)
 
-proc previous*(self: QScriptClassPropertyIterator, ): void =
+proc previous*(self: gen_qscriptclasspropertyiterator_types.QScriptClassPropertyIterator, ): void =
 
   fcQScriptClassPropertyIterator_previous(self.h)
 
-proc toFront*(self: QScriptClassPropertyIterator, ): void =
+proc toFront*(self: gen_qscriptclasspropertyiterator_types.QScriptClassPropertyIterator, ): void =
 
   fcQScriptClassPropertyIterator_toFront(self.h)
 
-proc toBack*(self: QScriptClassPropertyIterator, ): void =
+proc toBack*(self: gen_qscriptclasspropertyiterator_types.QScriptClassPropertyIterator, ): void =
 
   fcQScriptClassPropertyIterator_toBack(self.h)
 
-proc name*(self: QScriptClassPropertyIterator, ): gen_qscriptstring.QScriptString =
+proc name*(self: gen_qscriptclasspropertyiterator_types.QScriptClassPropertyIterator, ): gen_qscriptstring.QScriptString =
 
   gen_qscriptstring.QScriptString(h: fcQScriptClassPropertyIterator_name(self.h))
 
-proc id*(self: QScriptClassPropertyIterator, ): cuint =
+proc id*(self: gen_qscriptclasspropertyiterator_types.QScriptClassPropertyIterator, ): cuint =
 
   fcQScriptClassPropertyIterator_id(self.h)
 
-proc flags*(self: QScriptClassPropertyIterator, ): gen_qscriptvalue.QScriptValuePropertyFlag =
+proc flags*(self: gen_qscriptclasspropertyiterator_types.QScriptClassPropertyIterator, ): cint =
 
-  gen_qscriptvalue.QScriptValuePropertyFlag(fcQScriptClassPropertyIterator_flags(self.h))
+  cint(fcQScriptClassPropertyIterator_flags(self.h))
 
-proc delete*(self: QScriptClassPropertyIterator) =
+proc delete*(self: gen_qscriptclasspropertyiterator_types.QScriptClassPropertyIterator) =
   fcQScriptClassPropertyIterator_delete(self.h)

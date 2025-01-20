@@ -34,13 +34,11 @@ const cflags = gorge("pkg-config -cflags Qt5Script")
 {.compile("gen_qscriptcontextinfo.cpp", cflags).}
 
 
-type QScriptContextInfoFunctionType* = cint
-const
-  QScriptContextInfoScriptFunction* = 0
-  QScriptContextInfoQtFunction* = 1
-  QScriptContextInfoQtPropertyFunction* = 2
-  QScriptContextInfoNativeFunction* = 3
-
+type QScriptContextInfoFunctionTypeEnum* = distinct cint
+template ScriptFunction*(_: type QScriptContextInfoFunctionTypeEnum): untyped = 0
+template QtFunction*(_: type QScriptContextInfoFunctionTypeEnum): untyped = 1
+template QtPropertyFunction*(_: type QScriptContextInfoFunctionTypeEnum): untyped = 2
+template NativeFunction*(_: type QScriptContextInfoFunctionTypeEnum): untyped = 3
 
 
 import gen_qscriptcontextinfo_types
@@ -73,56 +71,56 @@ proc fcQScriptContextInfo_operatorNotEqual(self: pointer, other: pointer): bool 
 proc fcQScriptContextInfo_delete(self: pointer) {.importc: "QScriptContextInfo_delete".}
 
 
-func init*(T: type QScriptContextInfo, h: ptr cQScriptContextInfo): QScriptContextInfo =
+func init*(T: type gen_qscriptcontextinfo_types.QScriptContextInfo, h: ptr cQScriptContextInfo): gen_qscriptcontextinfo_types.QScriptContextInfo =
   T(h: h)
-proc create*(T: type QScriptContextInfo, context: gen_qscriptcontext.QScriptContext): QScriptContextInfo =
+proc create*(T: type gen_qscriptcontextinfo_types.QScriptContextInfo, context: gen_qscriptcontext.QScriptContext): gen_qscriptcontextinfo_types.QScriptContextInfo =
 
-  QScriptContextInfo.init(fcQScriptContextInfo_new(context.h))
-proc create2*(T: type QScriptContextInfo, other: QScriptContextInfo): QScriptContextInfo =
+  gen_qscriptcontextinfo_types.QScriptContextInfo.init(fcQScriptContextInfo_new(context.h))
+proc create2*(T: type gen_qscriptcontextinfo_types.QScriptContextInfo, other: gen_qscriptcontextinfo_types.QScriptContextInfo): gen_qscriptcontextinfo_types.QScriptContextInfo =
 
-  QScriptContextInfo.init(fcQScriptContextInfo_new2(other.h))
-proc create*(T: type QScriptContextInfo, ): QScriptContextInfo =
+  gen_qscriptcontextinfo_types.QScriptContextInfo.init(fcQScriptContextInfo_new2(other.h))
+proc create*(T: type gen_qscriptcontextinfo_types.QScriptContextInfo, ): gen_qscriptcontextinfo_types.QScriptContextInfo =
 
-  QScriptContextInfo.init(fcQScriptContextInfo_new3())
-proc operatorAssign*(self: QScriptContextInfo, other: QScriptContextInfo): void =
+  gen_qscriptcontextinfo_types.QScriptContextInfo.init(fcQScriptContextInfo_new3())
+proc operatorAssign*(self: gen_qscriptcontextinfo_types.QScriptContextInfo, other: gen_qscriptcontextinfo_types.QScriptContextInfo): void =
 
   fcQScriptContextInfo_operatorAssign(self.h, other.h)
 
-proc isNull*(self: QScriptContextInfo, ): bool =
+proc isNull*(self: gen_qscriptcontextinfo_types.QScriptContextInfo, ): bool =
 
   fcQScriptContextInfo_isNull(self.h)
 
-proc scriptId*(self: QScriptContextInfo, ): clonglong =
+proc scriptId*(self: gen_qscriptcontextinfo_types.QScriptContextInfo, ): clonglong =
 
   fcQScriptContextInfo_scriptId(self.h)
 
-proc fileName*(self: QScriptContextInfo, ): string =
+proc fileName*(self: gen_qscriptcontextinfo_types.QScriptContextInfo, ): string =
 
   let v_ms = fcQScriptContextInfo_fileName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc lineNumber*(self: QScriptContextInfo, ): cint =
+proc lineNumber*(self: gen_qscriptcontextinfo_types.QScriptContextInfo, ): cint =
 
   fcQScriptContextInfo_lineNumber(self.h)
 
-proc columnNumber*(self: QScriptContextInfo, ): cint =
+proc columnNumber*(self: gen_qscriptcontextinfo_types.QScriptContextInfo, ): cint =
 
   fcQScriptContextInfo_columnNumber(self.h)
 
-proc functionName*(self: QScriptContextInfo, ): string =
+proc functionName*(self: gen_qscriptcontextinfo_types.QScriptContextInfo, ): string =
 
   let v_ms = fcQScriptContextInfo_functionName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc functionType*(self: QScriptContextInfo, ): QScriptContextInfoFunctionType =
+proc functionType*(self: gen_qscriptcontextinfo_types.QScriptContextInfo, ): cint =
 
-  QScriptContextInfoFunctionType(fcQScriptContextInfo_functionType(self.h))
+  cint(fcQScriptContextInfo_functionType(self.h))
 
-proc functionParameterNames*(self: QScriptContextInfo, ): seq[string] =
+proc functionParameterNames*(self: gen_qscriptcontextinfo_types.QScriptContextInfo, ): seq[string] =
 
   var v_ma = fcQScriptContextInfo_functionParameterNames(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -134,25 +132,25 @@ proc functionParameterNames*(self: QScriptContextInfo, ): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc functionStartLineNumber*(self: QScriptContextInfo, ): cint =
+proc functionStartLineNumber*(self: gen_qscriptcontextinfo_types.QScriptContextInfo, ): cint =
 
   fcQScriptContextInfo_functionStartLineNumber(self.h)
 
-proc functionEndLineNumber*(self: QScriptContextInfo, ): cint =
+proc functionEndLineNumber*(self: gen_qscriptcontextinfo_types.QScriptContextInfo, ): cint =
 
   fcQScriptContextInfo_functionEndLineNumber(self.h)
 
-proc functionMetaIndex*(self: QScriptContextInfo, ): cint =
+proc functionMetaIndex*(self: gen_qscriptcontextinfo_types.QScriptContextInfo, ): cint =
 
   fcQScriptContextInfo_functionMetaIndex(self.h)
 
-proc operatorEqual*(self: QScriptContextInfo, other: QScriptContextInfo): bool =
+proc operatorEqual*(self: gen_qscriptcontextinfo_types.QScriptContextInfo, other: gen_qscriptcontextinfo_types.QScriptContextInfo): bool =
 
   fcQScriptContextInfo_operatorEqual(self.h, other.h)
 
-proc operatorNotEqual*(self: QScriptContextInfo, other: QScriptContextInfo): bool =
+proc operatorNotEqual*(self: gen_qscriptcontextinfo_types.QScriptContextInfo, other: gen_qscriptcontextinfo_types.QScriptContextInfo): bool =
 
   fcQScriptContextInfo_operatorNotEqual(self.h, other.h)
 
-proc delete*(self: QScriptContextInfo) =
+proc delete*(self: gen_qscriptcontextinfo_types.QScriptContextInfo) =
   fcQScriptContextInfo_delete(self.h)

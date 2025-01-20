@@ -42,7 +42,6 @@ import
   gen_qcoreevent,
   gen_qevent,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -57,7 +56,6 @@ export
   gen_qcoreevent,
   gen_qevent,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -196,1009 +194,814 @@ proc fcQDial_staticMetaObject(): pointer {.importc: "QDial_staticMetaObject".}
 proc fcQDial_delete(self: pointer) {.importc: "QDial_delete".}
 
 
-func init*(T: type QDial, h: ptr cQDial): QDial =
+func init*(T: type gen_qdial_types.QDial, h: ptr cQDial): gen_qdial_types.QDial =
   T(h: h)
-proc create*(T: type QDial, parent: gen_qwidget.QWidget): QDial =
+proc create*(T: type gen_qdial_types.QDial, parent: gen_qwidget.QWidget): gen_qdial_types.QDial =
 
-  QDial.init(fcQDial_new(parent.h))
-proc create*(T: type QDial, ): QDial =
+  gen_qdial_types.QDial.init(fcQDial_new(parent.h))
+proc create*(T: type gen_qdial_types.QDial, ): gen_qdial_types.QDial =
 
-  QDial.init(fcQDial_new2())
-proc metaObject*(self: QDial, ): gen_qobjectdefs.QMetaObject =
+  gen_qdial_types.QDial.init(fcQDial_new2())
+proc metaObject*(self: gen_qdial_types.QDial, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQDial_metaObject(self.h))
 
-proc metacast*(self: QDial, param1: cstring): pointer =
+proc metacast*(self: gen_qdial_types.QDial, param1: cstring): pointer =
 
   fcQDial_metacast(self.h, param1)
 
-proc metacall*(self: QDial, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qdial_types.QDial, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQDial_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QDial, s: cstring): string =
+proc tr*(_: type gen_qdial_types.QDial, s: cstring): string =
 
   let v_ms = fcQDial_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QDial, s: cstring): string =
+proc trUtf8*(_: type gen_qdial_types.QDial, s: cstring): string =
 
   let v_ms = fcQDial_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc wrapping*(self: QDial, ): bool =
+proc wrapping*(self: gen_qdial_types.QDial, ): bool =
 
   fcQDial_wrapping(self.h)
 
-proc notchSize*(self: QDial, ): cint =
+proc notchSize*(self: gen_qdial_types.QDial, ): cint =
 
   fcQDial_notchSize(self.h)
 
-proc setNotchTarget*(self: QDial, target: float64): void =
+proc setNotchTarget*(self: gen_qdial_types.QDial, target: float64): void =
 
   fcQDial_setNotchTarget(self.h, target)
 
-proc notchTarget*(self: QDial, ): float64 =
+proc notchTarget*(self: gen_qdial_types.QDial, ): float64 =
 
   fcQDial_notchTarget(self.h)
 
-proc notchesVisible*(self: QDial, ): bool =
+proc notchesVisible*(self: gen_qdial_types.QDial, ): bool =
 
   fcQDial_notchesVisible(self.h)
 
-proc sizeHint*(self: QDial, ): gen_qsize.QSize =
+proc sizeHint*(self: gen_qdial_types.QDial, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQDial_sizeHint(self.h))
 
-proc minimumSizeHint*(self: QDial, ): gen_qsize.QSize =
+proc minimumSizeHint*(self: gen_qdial_types.QDial, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQDial_minimumSizeHint(self.h))
 
-proc setNotchesVisible*(self: QDial, visible: bool): void =
+proc setNotchesVisible*(self: gen_qdial_types.QDial, visible: bool): void =
 
   fcQDial_setNotchesVisible(self.h, visible)
 
-proc setWrapping*(self: QDial, on: bool): void =
+proc setWrapping*(self: gen_qdial_types.QDial, on: bool): void =
 
   fcQDial_setWrapping(self.h, on)
 
-proc tr2*(_: type QDial, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qdial_types.QDial, s: cstring, c: cstring): string =
 
   let v_ms = fcQDial_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QDial, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qdial_types.QDial, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQDial_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QDial, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qdial_types.QDial, s: cstring, c: cstring): string =
 
   let v_ms = fcQDial_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QDial, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qdial_types.QDial, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQDial_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QDial, ): gen_qobjectdefs.QMetaObject =
-
+proc QDialmetaObject*(self: gen_qdial_types.QDial, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQDial_virtualbase_metaObject(self.h))
 
-type QDialmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QDial, slot: proc(super: QDialmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QDialmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qdial_types.QDial, slot: QDialmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QDialmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDial_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDial_metaObject(self: ptr cQDial, slot: int): pointer {.exportc: "miqt_exec_callback_QDial_metaObject ".} =
-  type Cb = proc(super: QDialmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QDial(h: self), )
+  var nimfunc = cast[ptr QDialmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QDial, param1: cstring): pointer =
-
+proc QDialmetacast*(self: gen_qdial_types.QDial, param1: cstring): pointer =
 
   fQDial_virtualbase_metacast(self.h, param1)
 
-type QDialmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QDial, slot: proc(super: QDialmetacastBase, param1: cstring): pointer) =
+type QDialmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qdial_types.QDial, slot: QDialmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QDialmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDial_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDial_metacast(self: ptr cQDial, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QDial_metacast ".} =
-  type Cb = proc(super: QDialmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QDial(h: self), param1)
+  var nimfunc = cast[ptr QDialmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QDial, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QDialmetacall*(self: gen_qdial_types.QDial, param1: cint, param2: cint, param3: pointer): cint =
 
   fQDial_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QDialmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QDial, slot: proc(super: QDialmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QDialmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qdial_types.QDial, slot: QDialmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QDialmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDial_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDial_metacall(self: ptr cQDial, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QDial_metacall ".} =
-  type Cb = proc(super: QDialmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QDial(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QDialmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_sizeHint(self: QDial, ): gen_qsize.QSize =
-
+proc QDialsizeHint*(self: gen_qdial_types.QDial, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQDial_virtualbase_sizeHint(self.h))
 
-type QDialsizeHintBase* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: QDial, slot: proc(super: QDialsizeHintBase): gen_qsize.QSize) =
+type QDialsizeHintProc* = proc(): gen_qsize.QSize
+proc onsizeHint*(self: gen_qdial_types.QDial, slot: QDialsizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialsizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QDialsizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDial_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDial_sizeHint(self: ptr cQDial, slot: int): pointer {.exportc: "miqt_exec_callback_QDial_sizeHint ".} =
-  type Cb = proc(super: QDialsizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sizeHint(QDial(h: self), )
+  var nimfunc = cast[ptr QDialsizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_minimumSizeHint(self: QDial, ): gen_qsize.QSize =
-
+proc QDialminimumSizeHint*(self: gen_qdial_types.QDial, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQDial_virtualbase_minimumSizeHint(self.h))
 
-type QDialminimumSizeHintBase* = proc(): gen_qsize.QSize
-proc onminimumSizeHint*(self: QDial, slot: proc(super: QDialminimumSizeHintBase): gen_qsize.QSize) =
+type QDialminimumSizeHintProc* = proc(): gen_qsize.QSize
+proc onminimumSizeHint*(self: gen_qdial_types.QDial, slot: QDialminimumSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialminimumSizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QDialminimumSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDial_override_virtual_minimumSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDial_minimumSizeHint(self: ptr cQDial, slot: int): pointer {.exportc: "miqt_exec_callback_QDial_minimumSizeHint ".} =
-  type Cb = proc(super: QDialminimumSizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_minimumSizeHint(QDial(h: self), )
+  var nimfunc = cast[ptr QDialminimumSizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_event(self: QDial, e: gen_qcoreevent.QEvent): bool =
-
+proc QDialevent*(self: gen_qdial_types.QDial, e: gen_qcoreevent.QEvent): bool =
 
   fQDial_virtualbase_event(self.h, e.h)
 
-type QDialeventBase* = proc(e: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QDial, slot: proc(super: QDialeventBase, e: gen_qcoreevent.QEvent): bool) =
+type QDialeventProc* = proc(e: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qdial_types.QDial, slot: QDialeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialeventBase, e: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QDialeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDial_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDial_event(self: ptr cQDial, slot: int, e: pointer): bool {.exportc: "miqt_exec_callback_QDial_event ".} =
-  type Cb = proc(super: QDialeventBase, e: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QDial(h: self), e)
+  var nimfunc = cast[ptr QDialeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: e)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_resizeEvent(self: QDial, re: gen_qevent.QResizeEvent): void =
-
+proc QDialresizeEvent*(self: gen_qdial_types.QDial, re: gen_qevent.QResizeEvent): void =
 
   fQDial_virtualbase_resizeEvent(self.h, re.h)
 
-type QDialresizeEventBase* = proc(re: gen_qevent.QResizeEvent): void
-proc onresizeEvent*(self: QDial, slot: proc(super: QDialresizeEventBase, re: gen_qevent.QResizeEvent): void) =
+type QDialresizeEventProc* = proc(re: gen_qevent.QResizeEvent): void
+proc onresizeEvent*(self: gen_qdial_types.QDial, slot: QDialresizeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialresizeEventBase, re: gen_qevent.QResizeEvent): void
-  var tmp = new Cb
+  var tmp = new QDialresizeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDial_override_virtual_resizeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDial_resizeEvent(self: ptr cQDial, slot: int, re: pointer): void {.exportc: "miqt_exec_callback_QDial_resizeEvent ".} =
-  type Cb = proc(super: QDialresizeEventBase, re: gen_qevent.QResizeEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(re: gen_qevent.QResizeEvent): auto =
-    callVirtualBase_resizeEvent(QDial(h: self), re)
+  var nimfunc = cast[ptr QDialresizeEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QResizeEvent(h: re)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_paintEvent(self: QDial, pe: gen_qevent.QPaintEvent): void =
-
+  nimfunc[](slotval1)
+proc QDialpaintEvent*(self: gen_qdial_types.QDial, pe: gen_qevent.QPaintEvent): void =
 
   fQDial_virtualbase_paintEvent(self.h, pe.h)
 
-type QDialpaintEventBase* = proc(pe: gen_qevent.QPaintEvent): void
-proc onpaintEvent*(self: QDial, slot: proc(super: QDialpaintEventBase, pe: gen_qevent.QPaintEvent): void) =
+type QDialpaintEventProc* = proc(pe: gen_qevent.QPaintEvent): void
+proc onpaintEvent*(self: gen_qdial_types.QDial, slot: QDialpaintEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialpaintEventBase, pe: gen_qevent.QPaintEvent): void
-  var tmp = new Cb
+  var tmp = new QDialpaintEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDial_override_virtual_paintEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDial_paintEvent(self: ptr cQDial, slot: int, pe: pointer): void {.exportc: "miqt_exec_callback_QDial_paintEvent ".} =
-  type Cb = proc(super: QDialpaintEventBase, pe: gen_qevent.QPaintEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(pe: gen_qevent.QPaintEvent): auto =
-    callVirtualBase_paintEvent(QDial(h: self), pe)
+  var nimfunc = cast[ptr QDialpaintEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QPaintEvent(h: pe)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mousePressEvent(self: QDial, me: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QDialmousePressEvent*(self: gen_qdial_types.QDial, me: gen_qevent.QMouseEvent): void =
 
   fQDial_virtualbase_mousePressEvent(self.h, me.h)
 
-type QDialmousePressEventBase* = proc(me: gen_qevent.QMouseEvent): void
-proc onmousePressEvent*(self: QDial, slot: proc(super: QDialmousePressEventBase, me: gen_qevent.QMouseEvent): void) =
+type QDialmousePressEventProc* = proc(me: gen_qevent.QMouseEvent): void
+proc onmousePressEvent*(self: gen_qdial_types.QDial, slot: QDialmousePressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialmousePressEventBase, me: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QDialmousePressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDial_override_virtual_mousePressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDial_mousePressEvent(self: ptr cQDial, slot: int, me: pointer): void {.exportc: "miqt_exec_callback_QDial_mousePressEvent ".} =
-  type Cb = proc(super: QDialmousePressEventBase, me: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(me: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mousePressEvent(QDial(h: self), me)
+  var nimfunc = cast[ptr QDialmousePressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: me)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseReleaseEvent(self: QDial, me: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QDialmouseReleaseEvent*(self: gen_qdial_types.QDial, me: gen_qevent.QMouseEvent): void =
 
   fQDial_virtualbase_mouseReleaseEvent(self.h, me.h)
 
-type QDialmouseReleaseEventBase* = proc(me: gen_qevent.QMouseEvent): void
-proc onmouseReleaseEvent*(self: QDial, slot: proc(super: QDialmouseReleaseEventBase, me: gen_qevent.QMouseEvent): void) =
+type QDialmouseReleaseEventProc* = proc(me: gen_qevent.QMouseEvent): void
+proc onmouseReleaseEvent*(self: gen_qdial_types.QDial, slot: QDialmouseReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialmouseReleaseEventBase, me: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QDialmouseReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDial_override_virtual_mouseReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDial_mouseReleaseEvent(self: ptr cQDial, slot: int, me: pointer): void {.exportc: "miqt_exec_callback_QDial_mouseReleaseEvent ".} =
-  type Cb = proc(super: QDialmouseReleaseEventBase, me: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(me: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseReleaseEvent(QDial(h: self), me)
+  var nimfunc = cast[ptr QDialmouseReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: me)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseMoveEvent(self: QDial, me: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QDialmouseMoveEvent*(self: gen_qdial_types.QDial, me: gen_qevent.QMouseEvent): void =
 
   fQDial_virtualbase_mouseMoveEvent(self.h, me.h)
 
-type QDialmouseMoveEventBase* = proc(me: gen_qevent.QMouseEvent): void
-proc onmouseMoveEvent*(self: QDial, slot: proc(super: QDialmouseMoveEventBase, me: gen_qevent.QMouseEvent): void) =
+type QDialmouseMoveEventProc* = proc(me: gen_qevent.QMouseEvent): void
+proc onmouseMoveEvent*(self: gen_qdial_types.QDial, slot: QDialmouseMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialmouseMoveEventBase, me: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QDialmouseMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDial_override_virtual_mouseMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDial_mouseMoveEvent(self: ptr cQDial, slot: int, me: pointer): void {.exportc: "miqt_exec_callback_QDial_mouseMoveEvent ".} =
-  type Cb = proc(super: QDialmouseMoveEventBase, me: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(me: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseMoveEvent(QDial(h: self), me)
+  var nimfunc = cast[ptr QDialmouseMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: me)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_sliderChange(self: QDial, change: gen_qabstractslider.QAbstractSliderSliderChange): void =
-
+  nimfunc[](slotval1)
+proc QDialsliderChange*(self: gen_qdial_types.QDial, change: cint): void =
 
   fQDial_virtualbase_sliderChange(self.h, cint(change))
 
-type QDialsliderChangeBase* = proc(change: gen_qabstractslider.QAbstractSliderSliderChange): void
-proc onsliderChange*(self: QDial, slot: proc(super: QDialsliderChangeBase, change: gen_qabstractslider.QAbstractSliderSliderChange): void) =
+type QDialsliderChangeProc* = proc(change: cint): void
+proc onsliderChange*(self: gen_qdial_types.QDial, slot: QDialsliderChangeProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialsliderChangeBase, change: gen_qabstractslider.QAbstractSliderSliderChange): void
-  var tmp = new Cb
+  var tmp = new QDialsliderChangeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDial_override_virtual_sliderChange(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDial_sliderChange(self: ptr cQDial, slot: int, change: cint): void {.exportc: "miqt_exec_callback_QDial_sliderChange ".} =
-  type Cb = proc(super: QDialsliderChangeBase, change: gen_qabstractslider.QAbstractSliderSliderChange): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(change: gen_qabstractslider.QAbstractSliderSliderChange): auto =
-    callVirtualBase_sliderChange(QDial(h: self), change)
-  let slotval1 = gen_qabstractslider.QAbstractSliderSliderChange(change)
+  var nimfunc = cast[ptr QDialsliderChangeProc](cast[pointer](slot))
+  let slotval1 = cint(change)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyPressEvent(self: QDial, ev: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QDialkeyPressEvent*(self: gen_qdial_types.QDial, ev: gen_qevent.QKeyEvent): void =
 
   fQDial_virtualbase_keyPressEvent(self.h, ev.h)
 
-type QDialkeyPressEventBase* = proc(ev: gen_qevent.QKeyEvent): void
-proc onkeyPressEvent*(self: QDial, slot: proc(super: QDialkeyPressEventBase, ev: gen_qevent.QKeyEvent): void) =
+type QDialkeyPressEventProc* = proc(ev: gen_qevent.QKeyEvent): void
+proc onkeyPressEvent*(self: gen_qdial_types.QDial, slot: QDialkeyPressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialkeyPressEventBase, ev: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QDialkeyPressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDial_override_virtual_keyPressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDial_keyPressEvent(self: ptr cQDial, slot: int, ev: pointer): void {.exportc: "miqt_exec_callback_QDial_keyPressEvent ".} =
-  type Cb = proc(super: QDialkeyPressEventBase, ev: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(ev: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyPressEvent(QDial(h: self), ev)
+  var nimfunc = cast[ptr QDialkeyPressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: ev)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_timerEvent(self: QDial, param1: gen_qcoreevent.QTimerEvent): void =
-
+  nimfunc[](slotval1)
+proc QDialtimerEvent*(self: gen_qdial_types.QDial, param1: gen_qcoreevent.QTimerEvent): void =
 
   fQDial_virtualbase_timerEvent(self.h, param1.h)
 
-type QDialtimerEventBase* = proc(param1: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QDial, slot: proc(super: QDialtimerEventBase, param1: gen_qcoreevent.QTimerEvent): void) =
+type QDialtimerEventProc* = proc(param1: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qdial_types.QDial, slot: QDialtimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialtimerEventBase, param1: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QDialtimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDial_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDial_timerEvent(self: ptr cQDial, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QDial_timerEvent ".} =
-  type Cb = proc(super: QDialtimerEventBase, param1: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QDial(h: self), param1)
+  var nimfunc = cast[ptr QDialtimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_wheelEvent(self: QDial, e: gen_qevent.QWheelEvent): void =
-
+  nimfunc[](slotval1)
+proc QDialwheelEvent*(self: gen_qdial_types.QDial, e: gen_qevent.QWheelEvent): void =
 
   fQDial_virtualbase_wheelEvent(self.h, e.h)
 
-type QDialwheelEventBase* = proc(e: gen_qevent.QWheelEvent): void
-proc onwheelEvent*(self: QDial, slot: proc(super: QDialwheelEventBase, e: gen_qevent.QWheelEvent): void) =
+type QDialwheelEventProc* = proc(e: gen_qevent.QWheelEvent): void
+proc onwheelEvent*(self: gen_qdial_types.QDial, slot: QDialwheelEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialwheelEventBase, e: gen_qevent.QWheelEvent): void
-  var tmp = new Cb
+  var tmp = new QDialwheelEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDial_override_virtual_wheelEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDial_wheelEvent(self: ptr cQDial, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QDial_wheelEvent ".} =
-  type Cb = proc(super: QDialwheelEventBase, e: gen_qevent.QWheelEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qevent.QWheelEvent): auto =
-    callVirtualBase_wheelEvent(QDial(h: self), e)
+  var nimfunc = cast[ptr QDialwheelEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QWheelEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_changeEvent(self: QDial, e: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QDialchangeEvent*(self: gen_qdial_types.QDial, e: gen_qcoreevent.QEvent): void =
 
   fQDial_virtualbase_changeEvent(self.h, e.h)
 
-type QDialchangeEventBase* = proc(e: gen_qcoreevent.QEvent): void
-proc onchangeEvent*(self: QDial, slot: proc(super: QDialchangeEventBase, e: gen_qcoreevent.QEvent): void) =
+type QDialchangeEventProc* = proc(e: gen_qcoreevent.QEvent): void
+proc onchangeEvent*(self: gen_qdial_types.QDial, slot: QDialchangeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialchangeEventBase, e: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QDialchangeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDial_override_virtual_changeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDial_changeEvent(self: ptr cQDial, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QDial_changeEvent ".} =
-  type Cb = proc(super: QDialchangeEventBase, e: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_changeEvent(QDial(h: self), e)
+  var nimfunc = cast[ptr QDialchangeEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_devType(self: QDial, ): cint =
-
+  nimfunc[](slotval1)
+proc QDialdevType*(self: gen_qdial_types.QDial, ): cint =
 
   fQDial_virtualbase_devType(self.h)
 
-type QDialdevTypeBase* = proc(): cint
-proc ondevType*(self: QDial, slot: proc(super: QDialdevTypeBase): cint) =
+type QDialdevTypeProc* = proc(): cint
+proc ondevType*(self: gen_qdial_types.QDial, slot: QDialdevTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialdevTypeBase): cint
-  var tmp = new Cb
+  var tmp = new QDialdevTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDial_override_virtual_devType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDial_devType(self: ptr cQDial, slot: int): cint {.exportc: "miqt_exec_callback_QDial_devType ".} =
-  type Cb = proc(super: QDialdevTypeBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_devType(QDial(h: self), )
+  var nimfunc = cast[ptr QDialdevTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setVisible(self: QDial, visible: bool): void =
-
+proc QDialsetVisible*(self: gen_qdial_types.QDial, visible: bool): void =
 
   fQDial_virtualbase_setVisible(self.h, visible)
 
-type QDialsetVisibleBase* = proc(visible: bool): void
-proc onsetVisible*(self: QDial, slot: proc(super: QDialsetVisibleBase, visible: bool): void) =
+type QDialsetVisibleProc* = proc(visible: bool): void
+proc onsetVisible*(self: gen_qdial_types.QDial, slot: QDialsetVisibleProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialsetVisibleBase, visible: bool): void
-  var tmp = new Cb
+  var tmp = new QDialsetVisibleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDial_override_virtual_setVisible(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDial_setVisible(self: ptr cQDial, slot: int, visible: bool): void {.exportc: "miqt_exec_callback_QDial_setVisible ".} =
-  type Cb = proc(super: QDialsetVisibleBase, visible: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(visible: bool): auto =
-    callVirtualBase_setVisible(QDial(h: self), visible)
+  var nimfunc = cast[ptr QDialsetVisibleProc](cast[pointer](slot))
   let slotval1 = visible
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_heightForWidth(self: QDial, param1: cint): cint =
-
+  nimfunc[](slotval1)
+proc QDialheightForWidth*(self: gen_qdial_types.QDial, param1: cint): cint =
 
   fQDial_virtualbase_heightForWidth(self.h, param1)
 
-type QDialheightForWidthBase* = proc(param1: cint): cint
-proc onheightForWidth*(self: QDial, slot: proc(super: QDialheightForWidthBase, param1: cint): cint) =
+type QDialheightForWidthProc* = proc(param1: cint): cint
+proc onheightForWidth*(self: gen_qdial_types.QDial, slot: QDialheightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialheightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QDialheightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDial_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDial_heightForWidth(self: ptr cQDial, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QDial_heightForWidth ".} =
-  type Cb = proc(super: QDialheightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_heightForWidth(QDial(h: self), param1)
+  var nimfunc = cast[ptr QDialheightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_hasHeightForWidth(self: QDial, ): bool =
-
+proc QDialhasHeightForWidth*(self: gen_qdial_types.QDial, ): bool =
 
   fQDial_virtualbase_hasHeightForWidth(self.h)
 
-type QDialhasHeightForWidthBase* = proc(): bool
-proc onhasHeightForWidth*(self: QDial, slot: proc(super: QDialhasHeightForWidthBase): bool) =
+type QDialhasHeightForWidthProc* = proc(): bool
+proc onhasHeightForWidth*(self: gen_qdial_types.QDial, slot: QDialhasHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialhasHeightForWidthBase): bool
-  var tmp = new Cb
+  var tmp = new QDialhasHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDial_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDial_hasHeightForWidth(self: ptr cQDial, slot: int): bool {.exportc: "miqt_exec_callback_QDial_hasHeightForWidth ".} =
-  type Cb = proc(super: QDialhasHeightForWidthBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasHeightForWidth(QDial(h: self), )
+  var nimfunc = cast[ptr QDialhasHeightForWidthProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_paintEngine(self: QDial, ): gen_qpaintengine.QPaintEngine =
-
+proc QDialpaintEngine*(self: gen_qdial_types.QDial, ): gen_qpaintengine.QPaintEngine =
 
   gen_qpaintengine.QPaintEngine(h: fQDial_virtualbase_paintEngine(self.h))
 
-type QDialpaintEngineBase* = proc(): gen_qpaintengine.QPaintEngine
-proc onpaintEngine*(self: QDial, slot: proc(super: QDialpaintEngineBase): gen_qpaintengine.QPaintEngine) =
+type QDialpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
+proc onpaintEngine*(self: gen_qdial_types.QDial, slot: QDialpaintEngineProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var tmp = new Cb
+  var tmp = new QDialpaintEngineProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDial_override_virtual_paintEngine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDial_paintEngine(self: ptr cQDial, slot: int): pointer {.exportc: "miqt_exec_callback_QDial_paintEngine ".} =
-  type Cb = proc(super: QDialpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_paintEngine(QDial(h: self), )
+  var nimfunc = cast[ptr QDialpaintEngineProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_mouseDoubleClickEvent(self: QDial, event: gen_qevent.QMouseEvent): void =
-
+proc QDialmouseDoubleClickEvent*(self: gen_qdial_types.QDial, event: gen_qevent.QMouseEvent): void =
 
   fQDial_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
-type QDialmouseDoubleClickEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseDoubleClickEvent*(self: QDial, slot: proc(super: QDialmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void) =
+type QDialmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseDoubleClickEvent*(self: gen_qdial_types.QDial, slot: QDialmouseDoubleClickEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QDialmouseDoubleClickEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDial_override_virtual_mouseDoubleClickEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDial_mouseDoubleClickEvent(self: ptr cQDial, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDial_mouseDoubleClickEvent ".} =
-  type Cb = proc(super: QDialmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseDoubleClickEvent(QDial(h: self), event)
+  var nimfunc = cast[ptr QDialmouseDoubleClickEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyReleaseEvent(self: QDial, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QDialkeyReleaseEvent*(self: gen_qdial_types.QDial, event: gen_qevent.QKeyEvent): void =
 
   fQDial_virtualbase_keyReleaseEvent(self.h, event.h)
 
-type QDialkeyReleaseEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyReleaseEvent*(self: QDial, slot: proc(super: QDialkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void) =
+type QDialkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyReleaseEvent*(self: gen_qdial_types.QDial, slot: QDialkeyReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QDialkeyReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDial_override_virtual_keyReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDial_keyReleaseEvent(self: ptr cQDial, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDial_keyReleaseEvent ".} =
-  type Cb = proc(super: QDialkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyReleaseEvent(QDial(h: self), event)
+  var nimfunc = cast[ptr QDialkeyReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusInEvent(self: QDial, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QDialfocusInEvent*(self: gen_qdial_types.QDial, event: gen_qevent.QFocusEvent): void =
 
   fQDial_virtualbase_focusInEvent(self.h, event.h)
 
-type QDialfocusInEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusInEvent*(self: QDial, slot: proc(super: QDialfocusInEventBase, event: gen_qevent.QFocusEvent): void) =
+type QDialfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusInEvent*(self: gen_qdial_types.QDial, slot: QDialfocusInEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QDialfocusInEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDial_override_virtual_focusInEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDial_focusInEvent(self: ptr cQDial, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDial_focusInEvent ".} =
-  type Cb = proc(super: QDialfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusInEvent(QDial(h: self), event)
+  var nimfunc = cast[ptr QDialfocusInEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusOutEvent(self: QDial, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QDialfocusOutEvent*(self: gen_qdial_types.QDial, event: gen_qevent.QFocusEvent): void =
 
   fQDial_virtualbase_focusOutEvent(self.h, event.h)
 
-type QDialfocusOutEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusOutEvent*(self: QDial, slot: proc(super: QDialfocusOutEventBase, event: gen_qevent.QFocusEvent): void) =
+type QDialfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusOutEvent*(self: gen_qdial_types.QDial, slot: QDialfocusOutEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QDialfocusOutEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDial_override_virtual_focusOutEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDial_focusOutEvent(self: ptr cQDial, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDial_focusOutEvent ".} =
-  type Cb = proc(super: QDialfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusOutEvent(QDial(h: self), event)
+  var nimfunc = cast[ptr QDialfocusOutEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_enterEvent(self: QDial, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QDialenterEvent*(self: gen_qdial_types.QDial, event: gen_qcoreevent.QEvent): void =
 
   fQDial_virtualbase_enterEvent(self.h, event.h)
 
-type QDialenterEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onenterEvent*(self: QDial, slot: proc(super: QDialenterEventBase, event: gen_qcoreevent.QEvent): void) =
+type QDialenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onenterEvent*(self: gen_qdial_types.QDial, slot: QDialenterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialenterEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QDialenterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDial_override_virtual_enterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDial_enterEvent(self: ptr cQDial, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDial_enterEvent ".} =
-  type Cb = proc(super: QDialenterEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_enterEvent(QDial(h: self), event)
+  var nimfunc = cast[ptr QDialenterEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_leaveEvent(self: QDial, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QDialleaveEvent*(self: gen_qdial_types.QDial, event: gen_qcoreevent.QEvent): void =
 
   fQDial_virtualbase_leaveEvent(self.h, event.h)
 
-type QDialleaveEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onleaveEvent*(self: QDial, slot: proc(super: QDialleaveEventBase, event: gen_qcoreevent.QEvent): void) =
+type QDialleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onleaveEvent*(self: gen_qdial_types.QDial, slot: QDialleaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QDialleaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDial_override_virtual_leaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDial_leaveEvent(self: ptr cQDial, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDial_leaveEvent ".} =
-  type Cb = proc(super: QDialleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_leaveEvent(QDial(h: self), event)
+  var nimfunc = cast[ptr QDialleaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_moveEvent(self: QDial, event: gen_qevent.QMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QDialmoveEvent*(self: gen_qdial_types.QDial, event: gen_qevent.QMoveEvent): void =
 
   fQDial_virtualbase_moveEvent(self.h, event.h)
 
-type QDialmoveEventBase* = proc(event: gen_qevent.QMoveEvent): void
-proc onmoveEvent*(self: QDial, slot: proc(super: QDialmoveEventBase, event: gen_qevent.QMoveEvent): void) =
+type QDialmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
+proc onmoveEvent*(self: gen_qdial_types.QDial, slot: QDialmoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QDialmoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDial_override_virtual_moveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDial_moveEvent(self: ptr cQDial, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDial_moveEvent ".} =
-  type Cb = proc(super: QDialmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMoveEvent): auto =
-    callVirtualBase_moveEvent(QDial(h: self), event)
+  var nimfunc = cast[ptr QDialmoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_closeEvent(self: QDial, event: gen_qevent.QCloseEvent): void =
-
+  nimfunc[](slotval1)
+proc QDialcloseEvent*(self: gen_qdial_types.QDial, event: gen_qevent.QCloseEvent): void =
 
   fQDial_virtualbase_closeEvent(self.h, event.h)
 
-type QDialcloseEventBase* = proc(event: gen_qevent.QCloseEvent): void
-proc oncloseEvent*(self: QDial, slot: proc(super: QDialcloseEventBase, event: gen_qevent.QCloseEvent): void) =
+type QDialcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
+proc oncloseEvent*(self: gen_qdial_types.QDial, slot: QDialcloseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var tmp = new Cb
+  var tmp = new QDialcloseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDial_override_virtual_closeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDial_closeEvent(self: ptr cQDial, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDial_closeEvent ".} =
-  type Cb = proc(super: QDialcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QCloseEvent): auto =
-    callVirtualBase_closeEvent(QDial(h: self), event)
+  var nimfunc = cast[ptr QDialcloseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QCloseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_contextMenuEvent(self: QDial, event: gen_qevent.QContextMenuEvent): void =
-
+  nimfunc[](slotval1)
+proc QDialcontextMenuEvent*(self: gen_qdial_types.QDial, event: gen_qevent.QContextMenuEvent): void =
 
   fQDial_virtualbase_contextMenuEvent(self.h, event.h)
 
-type QDialcontextMenuEventBase* = proc(event: gen_qevent.QContextMenuEvent): void
-proc oncontextMenuEvent*(self: QDial, slot: proc(super: QDialcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void) =
+type QDialcontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
+proc oncontextMenuEvent*(self: gen_qdial_types.QDial, slot: QDialcontextMenuEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var tmp = new Cb
+  var tmp = new QDialcontextMenuEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDial_override_virtual_contextMenuEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDial_contextMenuEvent(self: ptr cQDial, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDial_contextMenuEvent ".} =
-  type Cb = proc(super: QDialcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QContextMenuEvent): auto =
-    callVirtualBase_contextMenuEvent(QDial(h: self), event)
+  var nimfunc = cast[ptr QDialcontextMenuEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QContextMenuEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_tabletEvent(self: QDial, event: gen_qevent.QTabletEvent): void =
-
+  nimfunc[](slotval1)
+proc QDialtabletEvent*(self: gen_qdial_types.QDial, event: gen_qevent.QTabletEvent): void =
 
   fQDial_virtualbase_tabletEvent(self.h, event.h)
 
-type QDialtabletEventBase* = proc(event: gen_qevent.QTabletEvent): void
-proc ontabletEvent*(self: QDial, slot: proc(super: QDialtabletEventBase, event: gen_qevent.QTabletEvent): void) =
+type QDialtabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
+proc ontabletEvent*(self: gen_qdial_types.QDial, slot: QDialtabletEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialtabletEventBase, event: gen_qevent.QTabletEvent): void
-  var tmp = new Cb
+  var tmp = new QDialtabletEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDial_override_virtual_tabletEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDial_tabletEvent(self: ptr cQDial, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDial_tabletEvent ".} =
-  type Cb = proc(super: QDialtabletEventBase, event: gen_qevent.QTabletEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QTabletEvent): auto =
-    callVirtualBase_tabletEvent(QDial(h: self), event)
+  var nimfunc = cast[ptr QDialtabletEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QTabletEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_actionEvent(self: QDial, event: gen_qevent.QActionEvent): void =
-
+  nimfunc[](slotval1)
+proc QDialactionEvent*(self: gen_qdial_types.QDial, event: gen_qevent.QActionEvent): void =
 
   fQDial_virtualbase_actionEvent(self.h, event.h)
 
-type QDialactionEventBase* = proc(event: gen_qevent.QActionEvent): void
-proc onactionEvent*(self: QDial, slot: proc(super: QDialactionEventBase, event: gen_qevent.QActionEvent): void) =
+type QDialactionEventProc* = proc(event: gen_qevent.QActionEvent): void
+proc onactionEvent*(self: gen_qdial_types.QDial, slot: QDialactionEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialactionEventBase, event: gen_qevent.QActionEvent): void
-  var tmp = new Cb
+  var tmp = new QDialactionEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDial_override_virtual_actionEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDial_actionEvent(self: ptr cQDial, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDial_actionEvent ".} =
-  type Cb = proc(super: QDialactionEventBase, event: gen_qevent.QActionEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QActionEvent): auto =
-    callVirtualBase_actionEvent(QDial(h: self), event)
+  var nimfunc = cast[ptr QDialactionEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QActionEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragEnterEvent(self: QDial, event: gen_qevent.QDragEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QDialdragEnterEvent*(self: gen_qdial_types.QDial, event: gen_qevent.QDragEnterEvent): void =
 
   fQDial_virtualbase_dragEnterEvent(self.h, event.h)
 
-type QDialdragEnterEventBase* = proc(event: gen_qevent.QDragEnterEvent): void
-proc ondragEnterEvent*(self: QDial, slot: proc(super: QDialdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void) =
+type QDialdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
+proc ondragEnterEvent*(self: gen_qdial_types.QDial, slot: QDialdragEnterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QDialdragEnterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDial_override_virtual_dragEnterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDial_dragEnterEvent(self: ptr cQDial, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDial_dragEnterEvent ".} =
-  type Cb = proc(super: QDialdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragEnterEvent): auto =
-    callVirtualBase_dragEnterEvent(QDial(h: self), event)
+  var nimfunc = cast[ptr QDialdragEnterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragMoveEvent(self: QDial, event: gen_qevent.QDragMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QDialdragMoveEvent*(self: gen_qdial_types.QDial, event: gen_qevent.QDragMoveEvent): void =
 
   fQDial_virtualbase_dragMoveEvent(self.h, event.h)
 
-type QDialdragMoveEventBase* = proc(event: gen_qevent.QDragMoveEvent): void
-proc ondragMoveEvent*(self: QDial, slot: proc(super: QDialdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void) =
+type QDialdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
+proc ondragMoveEvent*(self: gen_qdial_types.QDial, slot: QDialdragMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QDialdragMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDial_override_virtual_dragMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDial_dragMoveEvent(self: ptr cQDial, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDial_dragMoveEvent ".} =
-  type Cb = proc(super: QDialdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragMoveEvent): auto =
-    callVirtualBase_dragMoveEvent(QDial(h: self), event)
+  var nimfunc = cast[ptr QDialdragMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragLeaveEvent(self: QDial, event: gen_qevent.QDragLeaveEvent): void =
-
+  nimfunc[](slotval1)
+proc QDialdragLeaveEvent*(self: gen_qdial_types.QDial, event: gen_qevent.QDragLeaveEvent): void =
 
   fQDial_virtualbase_dragLeaveEvent(self.h, event.h)
 
-type QDialdragLeaveEventBase* = proc(event: gen_qevent.QDragLeaveEvent): void
-proc ondragLeaveEvent*(self: QDial, slot: proc(super: QDialdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void) =
+type QDialdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
+proc ondragLeaveEvent*(self: gen_qdial_types.QDial, slot: QDialdragLeaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var tmp = new Cb
+  var tmp = new QDialdragLeaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDial_override_virtual_dragLeaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDial_dragLeaveEvent(self: ptr cQDial, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDial_dragLeaveEvent ".} =
-  type Cb = proc(super: QDialdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragLeaveEvent): auto =
-    callVirtualBase_dragLeaveEvent(QDial(h: self), event)
+  var nimfunc = cast[ptr QDialdragLeaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragLeaveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dropEvent(self: QDial, event: gen_qevent.QDropEvent): void =
-
+  nimfunc[](slotval1)
+proc QDialdropEvent*(self: gen_qdial_types.QDial, event: gen_qevent.QDropEvent): void =
 
   fQDial_virtualbase_dropEvent(self.h, event.h)
 
-type QDialdropEventBase* = proc(event: gen_qevent.QDropEvent): void
-proc ondropEvent*(self: QDial, slot: proc(super: QDialdropEventBase, event: gen_qevent.QDropEvent): void) =
+type QDialdropEventProc* = proc(event: gen_qevent.QDropEvent): void
+proc ondropEvent*(self: gen_qdial_types.QDial, slot: QDialdropEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialdropEventBase, event: gen_qevent.QDropEvent): void
-  var tmp = new Cb
+  var tmp = new QDialdropEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDial_override_virtual_dropEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDial_dropEvent(self: ptr cQDial, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDial_dropEvent ".} =
-  type Cb = proc(super: QDialdropEventBase, event: gen_qevent.QDropEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDropEvent): auto =
-    callVirtualBase_dropEvent(QDial(h: self), event)
+  var nimfunc = cast[ptr QDialdropEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDropEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_showEvent(self: QDial, event: gen_qevent.QShowEvent): void =
-
+  nimfunc[](slotval1)
+proc QDialshowEvent*(self: gen_qdial_types.QDial, event: gen_qevent.QShowEvent): void =
 
   fQDial_virtualbase_showEvent(self.h, event.h)
 
-type QDialshowEventBase* = proc(event: gen_qevent.QShowEvent): void
-proc onshowEvent*(self: QDial, slot: proc(super: QDialshowEventBase, event: gen_qevent.QShowEvent): void) =
+type QDialshowEventProc* = proc(event: gen_qevent.QShowEvent): void
+proc onshowEvent*(self: gen_qdial_types.QDial, slot: QDialshowEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialshowEventBase, event: gen_qevent.QShowEvent): void
-  var tmp = new Cb
+  var tmp = new QDialshowEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDial_override_virtual_showEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDial_showEvent(self: ptr cQDial, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDial_showEvent ".} =
-  type Cb = proc(super: QDialshowEventBase, event: gen_qevent.QShowEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QShowEvent): auto =
-    callVirtualBase_showEvent(QDial(h: self), event)
+  var nimfunc = cast[ptr QDialshowEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QShowEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hideEvent(self: QDial, event: gen_qevent.QHideEvent): void =
-
+  nimfunc[](slotval1)
+proc QDialhideEvent*(self: gen_qdial_types.QDial, event: gen_qevent.QHideEvent): void =
 
   fQDial_virtualbase_hideEvent(self.h, event.h)
 
-type QDialhideEventBase* = proc(event: gen_qevent.QHideEvent): void
-proc onhideEvent*(self: QDial, slot: proc(super: QDialhideEventBase, event: gen_qevent.QHideEvent): void) =
+type QDialhideEventProc* = proc(event: gen_qevent.QHideEvent): void
+proc onhideEvent*(self: gen_qdial_types.QDial, slot: QDialhideEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialhideEventBase, event: gen_qevent.QHideEvent): void
-  var tmp = new Cb
+  var tmp = new QDialhideEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDial_override_virtual_hideEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDial_hideEvent(self: ptr cQDial, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDial_hideEvent ".} =
-  type Cb = proc(super: QDialhideEventBase, event: gen_qevent.QHideEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QHideEvent): auto =
-    callVirtualBase_hideEvent(QDial(h: self), event)
+  var nimfunc = cast[ptr QDialhideEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QHideEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_nativeEvent(self: QDial, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
+  nimfunc[](slotval1)
+proc QDialnativeEvent*(self: gen_qdial_types.QDial, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
 
   fQDial_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
-type QDialnativeEventBase* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-proc onnativeEvent*(self: QDial, slot: proc(super: QDialnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool) =
+type QDialnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
+proc onnativeEvent*(self: gen_qdial_types.QDial, slot: QDialnativeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-  var tmp = new Cb
+  var tmp = new QDialnativeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDial_override_virtual_nativeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDial_nativeEvent(self: ptr cQDial, slot: int, eventType: struct_miqt_string, message: pointer, resultVal: ptr clong): bool {.exportc: "miqt_exec_callback_QDial_nativeEvent ".} =
-  type Cb = proc(super: QDialnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(eventType: seq[byte], message: pointer, resultVal: ptr clong): auto =
-    callVirtualBase_nativeEvent(QDial(h: self), eventType, message, resultVal)
+  var nimfunc = cast[ptr QDialnativeEventProc](cast[pointer](slot))
   var veventType_bytearray = eventType
   var veventTypex_ret = @(toOpenArrayByte(veventType_bytearray.data, 0, int(veventType_bytearray.len)-1))
   c_free(veventType_bytearray.data)
@@ -1209,298 +1012,238 @@ proc miqt_exec_callback_QDial_nativeEvent(self: ptr cQDial, slot: int, eventType
   let slotval3 = resultVal
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_metric(self: QDial, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint =
-
+proc QDialmetric*(self: gen_qdial_types.QDial, param1: cint): cint =
 
   fQDial_virtualbase_metric(self.h, cint(param1))
 
-type QDialmetricBase* = proc(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-proc onmetric*(self: QDial, slot: proc(super: QDialmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint) =
+type QDialmetricProc* = proc(param1: cint): cint
+proc onmetric*(self: gen_qdial_types.QDial, slot: QDialmetricProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var tmp = new Cb
+  var tmp = new QDialmetricProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDial_override_virtual_metric(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDial_metric(self: ptr cQDial, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QDial_metric ".} =
-  type Cb = proc(super: QDialmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): auto =
-    callVirtualBase_metric(QDial(h: self), param1)
-  let slotval1 = gen_qpaintdevice.QPaintDevicePaintDeviceMetric(param1)
+  var nimfunc = cast[ptr QDialmetricProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_initPainter(self: QDial, painter: gen_qpainter.QPainter): void =
-
+proc QDialinitPainter*(self: gen_qdial_types.QDial, painter: gen_qpainter.QPainter): void =
 
   fQDial_virtualbase_initPainter(self.h, painter.h)
 
-type QDialinitPainterBase* = proc(painter: gen_qpainter.QPainter): void
-proc oninitPainter*(self: QDial, slot: proc(super: QDialinitPainterBase, painter: gen_qpainter.QPainter): void) =
+type QDialinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
+proc oninitPainter*(self: gen_qdial_types.QDial, slot: QDialinitPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialinitPainterBase, painter: gen_qpainter.QPainter): void
-  var tmp = new Cb
+  var tmp = new QDialinitPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDial_override_virtual_initPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDial_initPainter(self: ptr cQDial, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_QDial_initPainter ".} =
-  type Cb = proc(super: QDialinitPainterBase, painter: gen_qpainter.QPainter): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter): auto =
-    callVirtualBase_initPainter(QDial(h: self), painter)
+  var nimfunc = cast[ptr QDialinitPainterProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_redirected(self: QDial, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
+  nimfunc[](slotval1)
+proc QDialredirected*(self: gen_qdial_types.QDial, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
 
   gen_qpaintdevice.QPaintDevice(h: fQDial_virtualbase_redirected(self.h, offset.h))
 
-type QDialredirectedBase* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-proc onredirected*(self: QDial, slot: proc(super: QDialredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice) =
+type QDialredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
+proc onredirected*(self: gen_qdial_types.QDial, slot: QDialredirectedProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var tmp = new Cb
+  var tmp = new QDialredirectedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDial_override_virtual_redirected(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDial_redirected(self: ptr cQDial, slot: int, offset: pointer): pointer {.exportc: "miqt_exec_callback_QDial_redirected ".} =
-  type Cb = proc(super: QDialredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(offset: gen_qpoint.QPoint): auto =
-    callVirtualBase_redirected(QDial(h: self), offset)
+  var nimfunc = cast[ptr QDialredirectedProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: offset)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_sharedPainter(self: QDial, ): gen_qpainter.QPainter =
-
+proc QDialsharedPainter*(self: gen_qdial_types.QDial, ): gen_qpainter.QPainter =
 
   gen_qpainter.QPainter(h: fQDial_virtualbase_sharedPainter(self.h))
 
-type QDialsharedPainterBase* = proc(): gen_qpainter.QPainter
-proc onsharedPainter*(self: QDial, slot: proc(super: QDialsharedPainterBase): gen_qpainter.QPainter) =
+type QDialsharedPainterProc* = proc(): gen_qpainter.QPainter
+proc onsharedPainter*(self: gen_qdial_types.QDial, slot: QDialsharedPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialsharedPainterBase): gen_qpainter.QPainter
-  var tmp = new Cb
+  var tmp = new QDialsharedPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDial_override_virtual_sharedPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDial_sharedPainter(self: ptr cQDial, slot: int): pointer {.exportc: "miqt_exec_callback_QDial_sharedPainter ".} =
-  type Cb = proc(super: QDialsharedPainterBase): gen_qpainter.QPainter
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sharedPainter(QDial(h: self), )
+  var nimfunc = cast[ptr QDialsharedPainterProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_inputMethodEvent(self: QDial, param1: gen_qevent.QInputMethodEvent): void =
-
+proc QDialinputMethodEvent*(self: gen_qdial_types.QDial, param1: gen_qevent.QInputMethodEvent): void =
 
   fQDial_virtualbase_inputMethodEvent(self.h, param1.h)
 
-type QDialinputMethodEventBase* = proc(param1: gen_qevent.QInputMethodEvent): void
-proc oninputMethodEvent*(self: QDial, slot: proc(super: QDialinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void) =
+type QDialinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
+proc oninputMethodEvent*(self: gen_qdial_types.QDial, slot: QDialinputMethodEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var tmp = new Cb
+  var tmp = new QDialinputMethodEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDial_override_virtual_inputMethodEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDial_inputMethodEvent(self: ptr cQDial, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QDial_inputMethodEvent ".} =
-  type Cb = proc(super: QDialinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QInputMethodEvent): auto =
-    callVirtualBase_inputMethodEvent(QDial(h: self), param1)
+  var nimfunc = cast[ptr QDialinputMethodEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QInputMethodEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_inputMethodQuery(self: QDial, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant =
-
+  nimfunc[](slotval1)
+proc QDialinputMethodQuery*(self: gen_qdial_types.QDial, param1: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQDial_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
-type QDialinputMethodQueryBase* = proc(param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-proc oninputMethodQuery*(self: QDial, slot: proc(super: QDialinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant) =
+type QDialinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
+proc oninputMethodQuery*(self: gen_qdial_types.QDial, slot: QDialinputMethodQueryProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QDialinputMethodQueryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDial_override_virtual_inputMethodQuery(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDial_inputMethodQuery(self: ptr cQDial, slot: int, param1: cint): pointer {.exportc: "miqt_exec_callback_QDial_inputMethodQuery ".} =
-  type Cb = proc(super: QDialinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qnamespace.InputMethodQuery): auto =
-    callVirtualBase_inputMethodQuery(QDial(h: self), param1)
-  let slotval1 = gen_qnamespace.InputMethodQuery(param1)
+  var nimfunc = cast[ptr QDialinputMethodQueryProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_focusNextPrevChild(self: QDial, next: bool): bool =
-
+proc QDialfocusNextPrevChild*(self: gen_qdial_types.QDial, next: bool): bool =
 
   fQDial_virtualbase_focusNextPrevChild(self.h, next)
 
-type QDialfocusNextPrevChildBase* = proc(next: bool): bool
-proc onfocusNextPrevChild*(self: QDial, slot: proc(super: QDialfocusNextPrevChildBase, next: bool): bool) =
+type QDialfocusNextPrevChildProc* = proc(next: bool): bool
+proc onfocusNextPrevChild*(self: gen_qdial_types.QDial, slot: QDialfocusNextPrevChildProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialfocusNextPrevChildBase, next: bool): bool
-  var tmp = new Cb
+  var tmp = new QDialfocusNextPrevChildProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDial_override_virtual_focusNextPrevChild(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDial_focusNextPrevChild(self: ptr cQDial, slot: int, next: bool): bool {.exportc: "miqt_exec_callback_QDial_focusNextPrevChild ".} =
-  type Cb = proc(super: QDialfocusNextPrevChildBase, next: bool): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(next: bool): auto =
-    callVirtualBase_focusNextPrevChild(QDial(h: self), next)
+  var nimfunc = cast[ptr QDialfocusNextPrevChildProc](cast[pointer](slot))
   let slotval1 = next
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QDial, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QDialeventFilter*(self: gen_qdial_types.QDial, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQDial_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QDialeventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QDial, slot: proc(super: QDialeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QDialeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qdial_types.QDial, slot: QDialeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QDialeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDial_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDial_eventFilter(self: ptr cQDial, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QDial_eventFilter ".} =
-  type Cb = proc(super: QDialeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QDial(h: self), watched, event)
+  var nimfunc = cast[ptr QDialeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_childEvent(self: QDial, event: gen_qcoreevent.QChildEvent): void =
-
+proc QDialchildEvent*(self: gen_qdial_types.QDial, event: gen_qcoreevent.QChildEvent): void =
 
   fQDial_virtualbase_childEvent(self.h, event.h)
 
-type QDialchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QDial, slot: proc(super: QDialchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QDialchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qdial_types.QDial, slot: QDialchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QDialchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDial_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDial_childEvent(self: ptr cQDial, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDial_childEvent ".} =
-  type Cb = proc(super: QDialchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QDial(h: self), event)
+  var nimfunc = cast[ptr QDialchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QDial, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QDialcustomEvent*(self: gen_qdial_types.QDial, event: gen_qcoreevent.QEvent): void =
 
   fQDial_virtualbase_customEvent(self.h, event.h)
 
-type QDialcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QDial, slot: proc(super: QDialcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QDialcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qdial_types.QDial, slot: QDialcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QDialcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDial_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDial_customEvent(self: ptr cQDial, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDial_customEvent ".} =
-  type Cb = proc(super: QDialcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QDial(h: self), event)
+  var nimfunc = cast[ptr QDialcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QDial, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QDialconnectNotify*(self: gen_qdial_types.QDial, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQDial_virtualbase_connectNotify(self.h, signal.h)
 
-type QDialconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QDial, slot: proc(super: QDialconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QDialconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qdial_types.QDial, slot: QDialconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QDialconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDial_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDial_connectNotify(self: ptr cQDial, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QDial_connectNotify ".} =
-  type Cb = proc(super: QDialconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QDial(h: self), signal)
+  var nimfunc = cast[ptr QDialconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QDial, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QDialdisconnectNotify*(self: gen_qdial_types.QDial, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQDial_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QDialdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QDial, slot: proc(super: QDialdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QDialdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qdial_types.QDial, slot: QDialdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QDialdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDial_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDial_disconnectNotify(self: ptr cQDial, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QDial_disconnectNotify ".} =
-  type Cb = proc(super: QDialdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QDial(h: self), signal)
+  var nimfunc = cast[ptr QDialdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QDial): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qdial_types.QDial): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQDial_staticMetaObject())
-proc delete*(self: QDial) =
+proc delete*(self: gen_qdial_types.QDial) =
   fcQDial_delete(self.h)

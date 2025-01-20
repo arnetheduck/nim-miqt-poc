@@ -450,7 +450,7 @@ func (this *QCalendarWidget) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QCalendarWidget_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QCalendarWidget) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QCalendarWidget) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QCalendarWidget_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -477,7 +477,7 @@ func (this *QCalendarWidget) callVirtualBase_Metacast(param1 string) unsafe.Poin
 	return (unsafe.Pointer)(C.QCalendarWidget_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QCalendarWidget) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QCalendarWidget) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QCalendarWidget_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

@@ -220,7 +220,7 @@ func (this *QFontComboBox) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QFontComboBox_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QFontComboBox) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QFontComboBox) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QFontComboBox_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -247,7 +247,7 @@ func (this *QFontComboBox) callVirtualBase_Metacast(param1 string) unsafe.Pointe
 	return (unsafe.Pointer)(C.QFontComboBox_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QFontComboBox) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QFontComboBox) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QFontComboBox_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

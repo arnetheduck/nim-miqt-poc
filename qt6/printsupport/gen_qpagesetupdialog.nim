@@ -42,7 +42,6 @@ import
   gen_qdialog,
   gen_qevent,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -58,7 +57,6 @@ export
   gen_qdialog,
   gen_qevent,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -199,1037 +197,827 @@ proc fcQPageSetupDialog_staticMetaObject(): pointer {.importc: "QPageSetupDialog
 proc fcQPageSetupDialog_delete(self: pointer) {.importc: "QPageSetupDialog_delete".}
 
 
-func init*(T: type QPageSetupDialog, h: ptr cQPageSetupDialog): QPageSetupDialog =
+func init*(T: type gen_qpagesetupdialog_types.QPageSetupDialog, h: ptr cQPageSetupDialog): gen_qpagesetupdialog_types.QPageSetupDialog =
   T(h: h)
-proc create*(T: type QPageSetupDialog, parent: gen_qwidget.QWidget): QPageSetupDialog =
+proc create*(T: type gen_qpagesetupdialog_types.QPageSetupDialog, parent: gen_qwidget.QWidget): gen_qpagesetupdialog_types.QPageSetupDialog =
 
-  QPageSetupDialog.init(fcQPageSetupDialog_new(parent.h))
-proc create2*(T: type QPageSetupDialog, printer: gen_qprinter.QPrinter): QPageSetupDialog =
+  gen_qpagesetupdialog_types.QPageSetupDialog.init(fcQPageSetupDialog_new(parent.h))
+proc create2*(T: type gen_qpagesetupdialog_types.QPageSetupDialog, printer: gen_qprinter.QPrinter): gen_qpagesetupdialog_types.QPageSetupDialog =
 
-  QPageSetupDialog.init(fcQPageSetupDialog_new2(printer.h))
-proc create*(T: type QPageSetupDialog, ): QPageSetupDialog =
+  gen_qpagesetupdialog_types.QPageSetupDialog.init(fcQPageSetupDialog_new2(printer.h))
+proc create*(T: type gen_qpagesetupdialog_types.QPageSetupDialog, ): gen_qpagesetupdialog_types.QPageSetupDialog =
 
-  QPageSetupDialog.init(fcQPageSetupDialog_new3())
-proc create*(T: type QPageSetupDialog, printer: gen_qprinter.QPrinter, parent: gen_qwidget.QWidget): QPageSetupDialog =
+  gen_qpagesetupdialog_types.QPageSetupDialog.init(fcQPageSetupDialog_new3())
+proc create*(T: type gen_qpagesetupdialog_types.QPageSetupDialog, printer: gen_qprinter.QPrinter, parent: gen_qwidget.QWidget): gen_qpagesetupdialog_types.QPageSetupDialog =
 
-  QPageSetupDialog.init(fcQPageSetupDialog_new4(printer.h, parent.h))
-proc metaObject*(self: QPageSetupDialog, ): gen_qobjectdefs.QMetaObject =
+  gen_qpagesetupdialog_types.QPageSetupDialog.init(fcQPageSetupDialog_new4(printer.h, parent.h))
+proc metaObject*(self: gen_qpagesetupdialog_types.QPageSetupDialog, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQPageSetupDialog_metaObject(self.h))
 
-proc metacast*(self: QPageSetupDialog, param1: cstring): pointer =
+proc metacast*(self: gen_qpagesetupdialog_types.QPageSetupDialog, param1: cstring): pointer =
 
   fcQPageSetupDialog_metacast(self.h, param1)
 
-proc metacall*(self: QPageSetupDialog, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qpagesetupdialog_types.QPageSetupDialog, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQPageSetupDialog_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QPageSetupDialog, s: cstring): string =
+proc tr*(_: type gen_qpagesetupdialog_types.QPageSetupDialog, s: cstring): string =
 
   let v_ms = fcQPageSetupDialog_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc exec*(self: QPageSetupDialog, ): cint =
+proc exec*(self: gen_qpagesetupdialog_types.QPageSetupDialog, ): cint =
 
   fcQPageSetupDialog_exec(self.h)
 
-proc done*(self: QPageSetupDialog, resultVal: cint): void =
+proc done*(self: gen_qpagesetupdialog_types.QPageSetupDialog, resultVal: cint): void =
 
   fcQPageSetupDialog_done(self.h, resultVal)
 
-proc printer*(self: QPageSetupDialog, ): gen_qprinter.QPrinter =
+proc printer*(self: gen_qpagesetupdialog_types.QPageSetupDialog, ): gen_qprinter.QPrinter =
 
   gen_qprinter.QPrinter(h: fcQPageSetupDialog_printer(self.h))
 
-proc tr2*(_: type QPageSetupDialog, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qpagesetupdialog_types.QPageSetupDialog, s: cstring, c: cstring): string =
 
   let v_ms = fcQPageSetupDialog_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QPageSetupDialog, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qpagesetupdialog_types.QPageSetupDialog, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQPageSetupDialog_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QPageSetupDialog, ): gen_qobjectdefs.QMetaObject =
-
+proc QPageSetupDialogmetaObject*(self: gen_qpagesetupdialog_types.QPageSetupDialog, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQPageSetupDialog_virtualbase_metaObject(self.h))
 
-type QPageSetupDialogmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QPageSetupDialog, slot: proc(super: QPageSetupDialogmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QPageSetupDialogmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qpagesetupdialog_types.QPageSetupDialog, slot: QPageSetupDialogmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QPageSetupDialogmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QPageSetupDialogmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPageSetupDialog_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPageSetupDialog_metaObject(self: ptr cQPageSetupDialog, slot: int): pointer {.exportc: "miqt_exec_callback_QPageSetupDialog_metaObject ".} =
-  type Cb = proc(super: QPageSetupDialogmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QPageSetupDialog(h: self), )
+  var nimfunc = cast[ptr QPageSetupDialogmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QPageSetupDialog, param1: cstring): pointer =
-
+proc QPageSetupDialogmetacast*(self: gen_qpagesetupdialog_types.QPageSetupDialog, param1: cstring): pointer =
 
   fQPageSetupDialog_virtualbase_metacast(self.h, param1)
 
-type QPageSetupDialogmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QPageSetupDialog, slot: proc(super: QPageSetupDialogmetacastBase, param1: cstring): pointer) =
+type QPageSetupDialogmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qpagesetupdialog_types.QPageSetupDialog, slot: QPageSetupDialogmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QPageSetupDialogmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QPageSetupDialogmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPageSetupDialog_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPageSetupDialog_metacast(self: ptr cQPageSetupDialog, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QPageSetupDialog_metacast ".} =
-  type Cb = proc(super: QPageSetupDialogmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QPageSetupDialog(h: self), param1)
+  var nimfunc = cast[ptr QPageSetupDialogmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QPageSetupDialog, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QPageSetupDialogmetacall*(self: gen_qpagesetupdialog_types.QPageSetupDialog, param1: cint, param2: cint, param3: pointer): cint =
 
   fQPageSetupDialog_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QPageSetupDialogmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QPageSetupDialog, slot: proc(super: QPageSetupDialogmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QPageSetupDialogmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qpagesetupdialog_types.QPageSetupDialog, slot: QPageSetupDialogmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QPageSetupDialogmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QPageSetupDialogmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPageSetupDialog_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPageSetupDialog_metacall(self: ptr cQPageSetupDialog, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QPageSetupDialog_metacall ".} =
-  type Cb = proc(super: QPageSetupDialogmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QPageSetupDialog(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QPageSetupDialogmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_exec(self: QPageSetupDialog, ): cint =
-
+proc QPageSetupDialogexec*(self: gen_qpagesetupdialog_types.QPageSetupDialog, ): cint =
 
   fQPageSetupDialog_virtualbase_exec(self.h)
 
-type QPageSetupDialogexecBase* = proc(): cint
-proc onexec*(self: QPageSetupDialog, slot: proc(super: QPageSetupDialogexecBase): cint) =
+type QPageSetupDialogexecProc* = proc(): cint
+proc onexec*(self: gen_qpagesetupdialog_types.QPageSetupDialog, slot: QPageSetupDialogexecProc) =
   # TODO check subclass
-  type Cb = proc(super: QPageSetupDialogexecBase): cint
-  var tmp = new Cb
+  var tmp = new QPageSetupDialogexecProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPageSetupDialog_override_virtual_exec(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPageSetupDialog_exec(self: ptr cQPageSetupDialog, slot: int): cint {.exportc: "miqt_exec_callback_QPageSetupDialog_exec ".} =
-  type Cb = proc(super: QPageSetupDialogexecBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_exec(QPageSetupDialog(h: self), )
+  var nimfunc = cast[ptr QPageSetupDialogexecProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_done(self: QPageSetupDialog, resultVal: cint): void =
-
+proc QPageSetupDialogdone*(self: gen_qpagesetupdialog_types.QPageSetupDialog, resultVal: cint): void =
 
   fQPageSetupDialog_virtualbase_done(self.h, resultVal)
 
-type QPageSetupDialogdoneBase* = proc(resultVal: cint): void
-proc ondone*(self: QPageSetupDialog, slot: proc(super: QPageSetupDialogdoneBase, resultVal: cint): void) =
+type QPageSetupDialogdoneProc* = proc(resultVal: cint): void
+proc ondone*(self: gen_qpagesetupdialog_types.QPageSetupDialog, slot: QPageSetupDialogdoneProc) =
   # TODO check subclass
-  type Cb = proc(super: QPageSetupDialogdoneBase, resultVal: cint): void
-  var tmp = new Cb
+  var tmp = new QPageSetupDialogdoneProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPageSetupDialog_override_virtual_done(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPageSetupDialog_done(self: ptr cQPageSetupDialog, slot: int, resultVal: cint): void {.exportc: "miqt_exec_callback_QPageSetupDialog_done ".} =
-  type Cb = proc(super: QPageSetupDialogdoneBase, resultVal: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(resultVal: cint): auto =
-    callVirtualBase_done(QPageSetupDialog(h: self), resultVal)
+  var nimfunc = cast[ptr QPageSetupDialogdoneProc](cast[pointer](slot))
   let slotval1 = resultVal
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_setVisible(self: QPageSetupDialog, visible: bool): void =
-
+  nimfunc[](slotval1)
+proc QPageSetupDialogsetVisible*(self: gen_qpagesetupdialog_types.QPageSetupDialog, visible: bool): void =
 
   fQPageSetupDialog_virtualbase_setVisible(self.h, visible)
 
-type QPageSetupDialogsetVisibleBase* = proc(visible: bool): void
-proc onsetVisible*(self: QPageSetupDialog, slot: proc(super: QPageSetupDialogsetVisibleBase, visible: bool): void) =
+type QPageSetupDialogsetVisibleProc* = proc(visible: bool): void
+proc onsetVisible*(self: gen_qpagesetupdialog_types.QPageSetupDialog, slot: QPageSetupDialogsetVisibleProc) =
   # TODO check subclass
-  type Cb = proc(super: QPageSetupDialogsetVisibleBase, visible: bool): void
-  var tmp = new Cb
+  var tmp = new QPageSetupDialogsetVisibleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPageSetupDialog_override_virtual_setVisible(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPageSetupDialog_setVisible(self: ptr cQPageSetupDialog, slot: int, visible: bool): void {.exportc: "miqt_exec_callback_QPageSetupDialog_setVisible ".} =
-  type Cb = proc(super: QPageSetupDialogsetVisibleBase, visible: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(visible: bool): auto =
-    callVirtualBase_setVisible(QPageSetupDialog(h: self), visible)
+  var nimfunc = cast[ptr QPageSetupDialogsetVisibleProc](cast[pointer](slot))
   let slotval1 = visible
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_sizeHint(self: QPageSetupDialog, ): gen_qsize.QSize =
-
+  nimfunc[](slotval1)
+proc QPageSetupDialogsizeHint*(self: gen_qpagesetupdialog_types.QPageSetupDialog, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQPageSetupDialog_virtualbase_sizeHint(self.h))
 
-type QPageSetupDialogsizeHintBase* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: QPageSetupDialog, slot: proc(super: QPageSetupDialogsizeHintBase): gen_qsize.QSize) =
+type QPageSetupDialogsizeHintProc* = proc(): gen_qsize.QSize
+proc onsizeHint*(self: gen_qpagesetupdialog_types.QPageSetupDialog, slot: QPageSetupDialogsizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QPageSetupDialogsizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QPageSetupDialogsizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPageSetupDialog_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPageSetupDialog_sizeHint(self: ptr cQPageSetupDialog, slot: int): pointer {.exportc: "miqt_exec_callback_QPageSetupDialog_sizeHint ".} =
-  type Cb = proc(super: QPageSetupDialogsizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sizeHint(QPageSetupDialog(h: self), )
+  var nimfunc = cast[ptr QPageSetupDialogsizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_minimumSizeHint(self: QPageSetupDialog, ): gen_qsize.QSize =
-
+proc QPageSetupDialogminimumSizeHint*(self: gen_qpagesetupdialog_types.QPageSetupDialog, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQPageSetupDialog_virtualbase_minimumSizeHint(self.h))
 
-type QPageSetupDialogminimumSizeHintBase* = proc(): gen_qsize.QSize
-proc onminimumSizeHint*(self: QPageSetupDialog, slot: proc(super: QPageSetupDialogminimumSizeHintBase): gen_qsize.QSize) =
+type QPageSetupDialogminimumSizeHintProc* = proc(): gen_qsize.QSize
+proc onminimumSizeHint*(self: gen_qpagesetupdialog_types.QPageSetupDialog, slot: QPageSetupDialogminimumSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QPageSetupDialogminimumSizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QPageSetupDialogminimumSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPageSetupDialog_override_virtual_minimumSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPageSetupDialog_minimumSizeHint(self: ptr cQPageSetupDialog, slot: int): pointer {.exportc: "miqt_exec_callback_QPageSetupDialog_minimumSizeHint ".} =
-  type Cb = proc(super: QPageSetupDialogminimumSizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_minimumSizeHint(QPageSetupDialog(h: self), )
+  var nimfunc = cast[ptr QPageSetupDialogminimumSizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_open(self: QPageSetupDialog, ): void =
-
+proc QPageSetupDialogopen*(self: gen_qpagesetupdialog_types.QPageSetupDialog, ): void =
 
   fQPageSetupDialog_virtualbase_open(self.h)
 
-type QPageSetupDialogopenBase* = proc(): void
-proc onopen*(self: QPageSetupDialog, slot: proc(super: QPageSetupDialogopenBase): void) =
+type QPageSetupDialogopenProc* = proc(): void
+proc onopen*(self: gen_qpagesetupdialog_types.QPageSetupDialog, slot: QPageSetupDialogopenProc) =
   # TODO check subclass
-  type Cb = proc(super: QPageSetupDialogopenBase): void
-  var tmp = new Cb
+  var tmp = new QPageSetupDialogopenProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPageSetupDialog_override_virtual_open(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPageSetupDialog_open(self: ptr cQPageSetupDialog, slot: int): void {.exportc: "miqt_exec_callback_QPageSetupDialog_open ".} =
-  type Cb = proc(super: QPageSetupDialogopenBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_open(QPageSetupDialog(h: self), )
+  var nimfunc = cast[ptr QPageSetupDialogopenProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_accept(self: QPageSetupDialog, ): void =
-
+  nimfunc[]()
+proc QPageSetupDialogaccept*(self: gen_qpagesetupdialog_types.QPageSetupDialog, ): void =
 
   fQPageSetupDialog_virtualbase_accept(self.h)
 
-type QPageSetupDialogacceptBase* = proc(): void
-proc onaccept*(self: QPageSetupDialog, slot: proc(super: QPageSetupDialogacceptBase): void) =
+type QPageSetupDialogacceptProc* = proc(): void
+proc onaccept*(self: gen_qpagesetupdialog_types.QPageSetupDialog, slot: QPageSetupDialogacceptProc) =
   # TODO check subclass
-  type Cb = proc(super: QPageSetupDialogacceptBase): void
-  var tmp = new Cb
+  var tmp = new QPageSetupDialogacceptProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPageSetupDialog_override_virtual_accept(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPageSetupDialog_accept(self: ptr cQPageSetupDialog, slot: int): void {.exportc: "miqt_exec_callback_QPageSetupDialog_accept ".} =
-  type Cb = proc(super: QPageSetupDialogacceptBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_accept(QPageSetupDialog(h: self), )
+  var nimfunc = cast[ptr QPageSetupDialogacceptProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_reject(self: QPageSetupDialog, ): void =
-
+  nimfunc[]()
+proc QPageSetupDialogreject*(self: gen_qpagesetupdialog_types.QPageSetupDialog, ): void =
 
   fQPageSetupDialog_virtualbase_reject(self.h)
 
-type QPageSetupDialogrejectBase* = proc(): void
-proc onreject*(self: QPageSetupDialog, slot: proc(super: QPageSetupDialogrejectBase): void) =
+type QPageSetupDialogrejectProc* = proc(): void
+proc onreject*(self: gen_qpagesetupdialog_types.QPageSetupDialog, slot: QPageSetupDialogrejectProc) =
   # TODO check subclass
-  type Cb = proc(super: QPageSetupDialogrejectBase): void
-  var tmp = new Cb
+  var tmp = new QPageSetupDialogrejectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPageSetupDialog_override_virtual_reject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPageSetupDialog_reject(self: ptr cQPageSetupDialog, slot: int): void {.exportc: "miqt_exec_callback_QPageSetupDialog_reject ".} =
-  type Cb = proc(super: QPageSetupDialogrejectBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_reject(QPageSetupDialog(h: self), )
+  var nimfunc = cast[ptr QPageSetupDialogrejectProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_keyPressEvent(self: QPageSetupDialog, param1: gen_qevent.QKeyEvent): void =
-
+  nimfunc[]()
+proc QPageSetupDialogkeyPressEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, param1: gen_qevent.QKeyEvent): void =
 
   fQPageSetupDialog_virtualbase_keyPressEvent(self.h, param1.h)
 
-type QPageSetupDialogkeyPressEventBase* = proc(param1: gen_qevent.QKeyEvent): void
-proc onkeyPressEvent*(self: QPageSetupDialog, slot: proc(super: QPageSetupDialogkeyPressEventBase, param1: gen_qevent.QKeyEvent): void) =
+type QPageSetupDialogkeyPressEventProc* = proc(param1: gen_qevent.QKeyEvent): void
+proc onkeyPressEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, slot: QPageSetupDialogkeyPressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPageSetupDialogkeyPressEventBase, param1: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QPageSetupDialogkeyPressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPageSetupDialog_override_virtual_keyPressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPageSetupDialog_keyPressEvent(self: ptr cQPageSetupDialog, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QPageSetupDialog_keyPressEvent ".} =
-  type Cb = proc(super: QPageSetupDialogkeyPressEventBase, param1: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyPressEvent(QPageSetupDialog(h: self), param1)
+  var nimfunc = cast[ptr QPageSetupDialogkeyPressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_closeEvent(self: QPageSetupDialog, param1: gen_qevent.QCloseEvent): void =
-
+  nimfunc[](slotval1)
+proc QPageSetupDialogcloseEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, param1: gen_qevent.QCloseEvent): void =
 
   fQPageSetupDialog_virtualbase_closeEvent(self.h, param1.h)
 
-type QPageSetupDialogcloseEventBase* = proc(param1: gen_qevent.QCloseEvent): void
-proc oncloseEvent*(self: QPageSetupDialog, slot: proc(super: QPageSetupDialogcloseEventBase, param1: gen_qevent.QCloseEvent): void) =
+type QPageSetupDialogcloseEventProc* = proc(param1: gen_qevent.QCloseEvent): void
+proc oncloseEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, slot: QPageSetupDialogcloseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPageSetupDialogcloseEventBase, param1: gen_qevent.QCloseEvent): void
-  var tmp = new Cb
+  var tmp = new QPageSetupDialogcloseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPageSetupDialog_override_virtual_closeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPageSetupDialog_closeEvent(self: ptr cQPageSetupDialog, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QPageSetupDialog_closeEvent ".} =
-  type Cb = proc(super: QPageSetupDialogcloseEventBase, param1: gen_qevent.QCloseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QCloseEvent): auto =
-    callVirtualBase_closeEvent(QPageSetupDialog(h: self), param1)
+  var nimfunc = cast[ptr QPageSetupDialogcloseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QCloseEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_showEvent(self: QPageSetupDialog, param1: gen_qevent.QShowEvent): void =
-
+  nimfunc[](slotval1)
+proc QPageSetupDialogshowEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, param1: gen_qevent.QShowEvent): void =
 
   fQPageSetupDialog_virtualbase_showEvent(self.h, param1.h)
 
-type QPageSetupDialogshowEventBase* = proc(param1: gen_qevent.QShowEvent): void
-proc onshowEvent*(self: QPageSetupDialog, slot: proc(super: QPageSetupDialogshowEventBase, param1: gen_qevent.QShowEvent): void) =
+type QPageSetupDialogshowEventProc* = proc(param1: gen_qevent.QShowEvent): void
+proc onshowEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, slot: QPageSetupDialogshowEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPageSetupDialogshowEventBase, param1: gen_qevent.QShowEvent): void
-  var tmp = new Cb
+  var tmp = new QPageSetupDialogshowEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPageSetupDialog_override_virtual_showEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPageSetupDialog_showEvent(self: ptr cQPageSetupDialog, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QPageSetupDialog_showEvent ".} =
-  type Cb = proc(super: QPageSetupDialogshowEventBase, param1: gen_qevent.QShowEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QShowEvent): auto =
-    callVirtualBase_showEvent(QPageSetupDialog(h: self), param1)
+  var nimfunc = cast[ptr QPageSetupDialogshowEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QShowEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_resizeEvent(self: QPageSetupDialog, param1: gen_qevent.QResizeEvent): void =
-
+  nimfunc[](slotval1)
+proc QPageSetupDialogresizeEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, param1: gen_qevent.QResizeEvent): void =
 
   fQPageSetupDialog_virtualbase_resizeEvent(self.h, param1.h)
 
-type QPageSetupDialogresizeEventBase* = proc(param1: gen_qevent.QResizeEvent): void
-proc onresizeEvent*(self: QPageSetupDialog, slot: proc(super: QPageSetupDialogresizeEventBase, param1: gen_qevent.QResizeEvent): void) =
+type QPageSetupDialogresizeEventProc* = proc(param1: gen_qevent.QResizeEvent): void
+proc onresizeEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, slot: QPageSetupDialogresizeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPageSetupDialogresizeEventBase, param1: gen_qevent.QResizeEvent): void
-  var tmp = new Cb
+  var tmp = new QPageSetupDialogresizeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPageSetupDialog_override_virtual_resizeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPageSetupDialog_resizeEvent(self: ptr cQPageSetupDialog, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QPageSetupDialog_resizeEvent ".} =
-  type Cb = proc(super: QPageSetupDialogresizeEventBase, param1: gen_qevent.QResizeEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QResizeEvent): auto =
-    callVirtualBase_resizeEvent(QPageSetupDialog(h: self), param1)
+  var nimfunc = cast[ptr QPageSetupDialogresizeEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QResizeEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_contextMenuEvent(self: QPageSetupDialog, param1: gen_qevent.QContextMenuEvent): void =
-
+  nimfunc[](slotval1)
+proc QPageSetupDialogcontextMenuEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, param1: gen_qevent.QContextMenuEvent): void =
 
   fQPageSetupDialog_virtualbase_contextMenuEvent(self.h, param1.h)
 
-type QPageSetupDialogcontextMenuEventBase* = proc(param1: gen_qevent.QContextMenuEvent): void
-proc oncontextMenuEvent*(self: QPageSetupDialog, slot: proc(super: QPageSetupDialogcontextMenuEventBase, param1: gen_qevent.QContextMenuEvent): void) =
+type QPageSetupDialogcontextMenuEventProc* = proc(param1: gen_qevent.QContextMenuEvent): void
+proc oncontextMenuEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, slot: QPageSetupDialogcontextMenuEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPageSetupDialogcontextMenuEventBase, param1: gen_qevent.QContextMenuEvent): void
-  var tmp = new Cb
+  var tmp = new QPageSetupDialogcontextMenuEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPageSetupDialog_override_virtual_contextMenuEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPageSetupDialog_contextMenuEvent(self: ptr cQPageSetupDialog, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QPageSetupDialog_contextMenuEvent ".} =
-  type Cb = proc(super: QPageSetupDialogcontextMenuEventBase, param1: gen_qevent.QContextMenuEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QContextMenuEvent): auto =
-    callVirtualBase_contextMenuEvent(QPageSetupDialog(h: self), param1)
+  var nimfunc = cast[ptr QPageSetupDialogcontextMenuEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QContextMenuEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_eventFilter(self: QPageSetupDialog, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[](slotval1)
+proc QPageSetupDialogeventFilter*(self: gen_qpagesetupdialog_types.QPageSetupDialog, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool =
 
   fQPageSetupDialog_virtualbase_eventFilter(self.h, param1.h, param2.h)
 
-type QPageSetupDialogeventFilterBase* = proc(param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QPageSetupDialog, slot: proc(super: QPageSetupDialogeventFilterBase, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool) =
+type QPageSetupDialogeventFilterProc* = proc(param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qpagesetupdialog_types.QPageSetupDialog, slot: QPageSetupDialogeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QPageSetupDialogeventFilterBase, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QPageSetupDialogeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPageSetupDialog_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPageSetupDialog_eventFilter(self: ptr cQPageSetupDialog, slot: int, param1: pointer, param2: pointer): bool {.exportc: "miqt_exec_callback_QPageSetupDialog_eventFilter ".} =
-  type Cb = proc(super: QPageSetupDialogeventFilterBase, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QPageSetupDialog(h: self), param1, param2)
+  var nimfunc = cast[ptr QPageSetupDialogeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: param1)
 
   let slotval2 = gen_qcoreevent.QEvent(h: param2)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_devType(self: QPageSetupDialog, ): cint =
-
+proc QPageSetupDialogdevType*(self: gen_qpagesetupdialog_types.QPageSetupDialog, ): cint =
 
   fQPageSetupDialog_virtualbase_devType(self.h)
 
-type QPageSetupDialogdevTypeBase* = proc(): cint
-proc ondevType*(self: QPageSetupDialog, slot: proc(super: QPageSetupDialogdevTypeBase): cint) =
+type QPageSetupDialogdevTypeProc* = proc(): cint
+proc ondevType*(self: gen_qpagesetupdialog_types.QPageSetupDialog, slot: QPageSetupDialogdevTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: QPageSetupDialogdevTypeBase): cint
-  var tmp = new Cb
+  var tmp = new QPageSetupDialogdevTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPageSetupDialog_override_virtual_devType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPageSetupDialog_devType(self: ptr cQPageSetupDialog, slot: int): cint {.exportc: "miqt_exec_callback_QPageSetupDialog_devType ".} =
-  type Cb = proc(super: QPageSetupDialogdevTypeBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_devType(QPageSetupDialog(h: self), )
+  var nimfunc = cast[ptr QPageSetupDialogdevTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_heightForWidth(self: QPageSetupDialog, param1: cint): cint =
-
+proc QPageSetupDialogheightForWidth*(self: gen_qpagesetupdialog_types.QPageSetupDialog, param1: cint): cint =
 
   fQPageSetupDialog_virtualbase_heightForWidth(self.h, param1)
 
-type QPageSetupDialogheightForWidthBase* = proc(param1: cint): cint
-proc onheightForWidth*(self: QPageSetupDialog, slot: proc(super: QPageSetupDialogheightForWidthBase, param1: cint): cint) =
+type QPageSetupDialogheightForWidthProc* = proc(param1: cint): cint
+proc onheightForWidth*(self: gen_qpagesetupdialog_types.QPageSetupDialog, slot: QPageSetupDialogheightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QPageSetupDialogheightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QPageSetupDialogheightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPageSetupDialog_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPageSetupDialog_heightForWidth(self: ptr cQPageSetupDialog, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QPageSetupDialog_heightForWidth ".} =
-  type Cb = proc(super: QPageSetupDialogheightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_heightForWidth(QPageSetupDialog(h: self), param1)
+  var nimfunc = cast[ptr QPageSetupDialogheightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_hasHeightForWidth(self: QPageSetupDialog, ): bool =
-
+proc QPageSetupDialoghasHeightForWidth*(self: gen_qpagesetupdialog_types.QPageSetupDialog, ): bool =
 
   fQPageSetupDialog_virtualbase_hasHeightForWidth(self.h)
 
-type QPageSetupDialoghasHeightForWidthBase* = proc(): bool
-proc onhasHeightForWidth*(self: QPageSetupDialog, slot: proc(super: QPageSetupDialoghasHeightForWidthBase): bool) =
+type QPageSetupDialoghasHeightForWidthProc* = proc(): bool
+proc onhasHeightForWidth*(self: gen_qpagesetupdialog_types.QPageSetupDialog, slot: QPageSetupDialoghasHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QPageSetupDialoghasHeightForWidthBase): bool
-  var tmp = new Cb
+  var tmp = new QPageSetupDialoghasHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPageSetupDialog_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPageSetupDialog_hasHeightForWidth(self: ptr cQPageSetupDialog, slot: int): bool {.exportc: "miqt_exec_callback_QPageSetupDialog_hasHeightForWidth ".} =
-  type Cb = proc(super: QPageSetupDialoghasHeightForWidthBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasHeightForWidth(QPageSetupDialog(h: self), )
+  var nimfunc = cast[ptr QPageSetupDialoghasHeightForWidthProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_paintEngine(self: QPageSetupDialog, ): gen_qpaintengine.QPaintEngine =
-
+proc QPageSetupDialogpaintEngine*(self: gen_qpagesetupdialog_types.QPageSetupDialog, ): gen_qpaintengine.QPaintEngine =
 
   gen_qpaintengine.QPaintEngine(h: fQPageSetupDialog_virtualbase_paintEngine(self.h))
 
-type QPageSetupDialogpaintEngineBase* = proc(): gen_qpaintengine.QPaintEngine
-proc onpaintEngine*(self: QPageSetupDialog, slot: proc(super: QPageSetupDialogpaintEngineBase): gen_qpaintengine.QPaintEngine) =
+type QPageSetupDialogpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
+proc onpaintEngine*(self: gen_qpagesetupdialog_types.QPageSetupDialog, slot: QPageSetupDialogpaintEngineProc) =
   # TODO check subclass
-  type Cb = proc(super: QPageSetupDialogpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var tmp = new Cb
+  var tmp = new QPageSetupDialogpaintEngineProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPageSetupDialog_override_virtual_paintEngine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPageSetupDialog_paintEngine(self: ptr cQPageSetupDialog, slot: int): pointer {.exportc: "miqt_exec_callback_QPageSetupDialog_paintEngine ".} =
-  type Cb = proc(super: QPageSetupDialogpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_paintEngine(QPageSetupDialog(h: self), )
+  var nimfunc = cast[ptr QPageSetupDialogpaintEngineProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_event(self: QPageSetupDialog, event: gen_qcoreevent.QEvent): bool =
-
+proc QPageSetupDialogevent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, event: gen_qcoreevent.QEvent): bool =
 
   fQPageSetupDialog_virtualbase_event(self.h, event.h)
 
-type QPageSetupDialogeventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QPageSetupDialog, slot: proc(super: QPageSetupDialogeventBase, event: gen_qcoreevent.QEvent): bool) =
+type QPageSetupDialogeventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, slot: QPageSetupDialogeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPageSetupDialogeventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QPageSetupDialogeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPageSetupDialog_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPageSetupDialog_event(self: ptr cQPageSetupDialog, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QPageSetupDialog_event ".} =
-  type Cb = proc(super: QPageSetupDialogeventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QPageSetupDialog(h: self), event)
+  var nimfunc = cast[ptr QPageSetupDialogeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_mousePressEvent(self: QPageSetupDialog, event: gen_qevent.QMouseEvent): void =
-
+proc QPageSetupDialogmousePressEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, event: gen_qevent.QMouseEvent): void =
 
   fQPageSetupDialog_virtualbase_mousePressEvent(self.h, event.h)
 
-type QPageSetupDialogmousePressEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmousePressEvent*(self: QPageSetupDialog, slot: proc(super: QPageSetupDialogmousePressEventBase, event: gen_qevent.QMouseEvent): void) =
+type QPageSetupDialogmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmousePressEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, slot: QPageSetupDialogmousePressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPageSetupDialogmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QPageSetupDialogmousePressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPageSetupDialog_override_virtual_mousePressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPageSetupDialog_mousePressEvent(self: ptr cQPageSetupDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPageSetupDialog_mousePressEvent ".} =
-  type Cb = proc(super: QPageSetupDialogmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mousePressEvent(QPageSetupDialog(h: self), event)
+  var nimfunc = cast[ptr QPageSetupDialogmousePressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseReleaseEvent(self: QPageSetupDialog, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QPageSetupDialogmouseReleaseEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, event: gen_qevent.QMouseEvent): void =
 
   fQPageSetupDialog_virtualbase_mouseReleaseEvent(self.h, event.h)
 
-type QPageSetupDialogmouseReleaseEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseReleaseEvent*(self: QPageSetupDialog, slot: proc(super: QPageSetupDialogmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void) =
+type QPageSetupDialogmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseReleaseEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, slot: QPageSetupDialogmouseReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPageSetupDialogmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QPageSetupDialogmouseReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPageSetupDialog_override_virtual_mouseReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPageSetupDialog_mouseReleaseEvent(self: ptr cQPageSetupDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPageSetupDialog_mouseReleaseEvent ".} =
-  type Cb = proc(super: QPageSetupDialogmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseReleaseEvent(QPageSetupDialog(h: self), event)
+  var nimfunc = cast[ptr QPageSetupDialogmouseReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseDoubleClickEvent(self: QPageSetupDialog, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QPageSetupDialogmouseDoubleClickEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, event: gen_qevent.QMouseEvent): void =
 
   fQPageSetupDialog_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
-type QPageSetupDialogmouseDoubleClickEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseDoubleClickEvent*(self: QPageSetupDialog, slot: proc(super: QPageSetupDialogmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void) =
+type QPageSetupDialogmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseDoubleClickEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, slot: QPageSetupDialogmouseDoubleClickEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPageSetupDialogmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QPageSetupDialogmouseDoubleClickEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPageSetupDialog_override_virtual_mouseDoubleClickEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPageSetupDialog_mouseDoubleClickEvent(self: ptr cQPageSetupDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPageSetupDialog_mouseDoubleClickEvent ".} =
-  type Cb = proc(super: QPageSetupDialogmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseDoubleClickEvent(QPageSetupDialog(h: self), event)
+  var nimfunc = cast[ptr QPageSetupDialogmouseDoubleClickEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseMoveEvent(self: QPageSetupDialog, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QPageSetupDialogmouseMoveEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, event: gen_qevent.QMouseEvent): void =
 
   fQPageSetupDialog_virtualbase_mouseMoveEvent(self.h, event.h)
 
-type QPageSetupDialogmouseMoveEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseMoveEvent*(self: QPageSetupDialog, slot: proc(super: QPageSetupDialogmouseMoveEventBase, event: gen_qevent.QMouseEvent): void) =
+type QPageSetupDialogmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseMoveEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, slot: QPageSetupDialogmouseMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPageSetupDialogmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QPageSetupDialogmouseMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPageSetupDialog_override_virtual_mouseMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPageSetupDialog_mouseMoveEvent(self: ptr cQPageSetupDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPageSetupDialog_mouseMoveEvent ".} =
-  type Cb = proc(super: QPageSetupDialogmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseMoveEvent(QPageSetupDialog(h: self), event)
+  var nimfunc = cast[ptr QPageSetupDialogmouseMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_wheelEvent(self: QPageSetupDialog, event: gen_qevent.QWheelEvent): void =
-
+  nimfunc[](slotval1)
+proc QPageSetupDialogwheelEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, event: gen_qevent.QWheelEvent): void =
 
   fQPageSetupDialog_virtualbase_wheelEvent(self.h, event.h)
 
-type QPageSetupDialogwheelEventBase* = proc(event: gen_qevent.QWheelEvent): void
-proc onwheelEvent*(self: QPageSetupDialog, slot: proc(super: QPageSetupDialogwheelEventBase, event: gen_qevent.QWheelEvent): void) =
+type QPageSetupDialogwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
+proc onwheelEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, slot: QPageSetupDialogwheelEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPageSetupDialogwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var tmp = new Cb
+  var tmp = new QPageSetupDialogwheelEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPageSetupDialog_override_virtual_wheelEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPageSetupDialog_wheelEvent(self: ptr cQPageSetupDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPageSetupDialog_wheelEvent ".} =
-  type Cb = proc(super: QPageSetupDialogwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QWheelEvent): auto =
-    callVirtualBase_wheelEvent(QPageSetupDialog(h: self), event)
+  var nimfunc = cast[ptr QPageSetupDialogwheelEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QWheelEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyReleaseEvent(self: QPageSetupDialog, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QPageSetupDialogkeyReleaseEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, event: gen_qevent.QKeyEvent): void =
 
   fQPageSetupDialog_virtualbase_keyReleaseEvent(self.h, event.h)
 
-type QPageSetupDialogkeyReleaseEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyReleaseEvent*(self: QPageSetupDialog, slot: proc(super: QPageSetupDialogkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void) =
+type QPageSetupDialogkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyReleaseEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, slot: QPageSetupDialogkeyReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPageSetupDialogkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QPageSetupDialogkeyReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPageSetupDialog_override_virtual_keyReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPageSetupDialog_keyReleaseEvent(self: ptr cQPageSetupDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPageSetupDialog_keyReleaseEvent ".} =
-  type Cb = proc(super: QPageSetupDialogkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyReleaseEvent(QPageSetupDialog(h: self), event)
+  var nimfunc = cast[ptr QPageSetupDialogkeyReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusInEvent(self: QPageSetupDialog, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QPageSetupDialogfocusInEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, event: gen_qevent.QFocusEvent): void =
 
   fQPageSetupDialog_virtualbase_focusInEvent(self.h, event.h)
 
-type QPageSetupDialogfocusInEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusInEvent*(self: QPageSetupDialog, slot: proc(super: QPageSetupDialogfocusInEventBase, event: gen_qevent.QFocusEvent): void) =
+type QPageSetupDialogfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusInEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, slot: QPageSetupDialogfocusInEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPageSetupDialogfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QPageSetupDialogfocusInEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPageSetupDialog_override_virtual_focusInEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPageSetupDialog_focusInEvent(self: ptr cQPageSetupDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPageSetupDialog_focusInEvent ".} =
-  type Cb = proc(super: QPageSetupDialogfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusInEvent(QPageSetupDialog(h: self), event)
+  var nimfunc = cast[ptr QPageSetupDialogfocusInEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusOutEvent(self: QPageSetupDialog, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QPageSetupDialogfocusOutEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, event: gen_qevent.QFocusEvent): void =
 
   fQPageSetupDialog_virtualbase_focusOutEvent(self.h, event.h)
 
-type QPageSetupDialogfocusOutEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusOutEvent*(self: QPageSetupDialog, slot: proc(super: QPageSetupDialogfocusOutEventBase, event: gen_qevent.QFocusEvent): void) =
+type QPageSetupDialogfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusOutEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, slot: QPageSetupDialogfocusOutEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPageSetupDialogfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QPageSetupDialogfocusOutEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPageSetupDialog_override_virtual_focusOutEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPageSetupDialog_focusOutEvent(self: ptr cQPageSetupDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPageSetupDialog_focusOutEvent ".} =
-  type Cb = proc(super: QPageSetupDialogfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusOutEvent(QPageSetupDialog(h: self), event)
+  var nimfunc = cast[ptr QPageSetupDialogfocusOutEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_enterEvent(self: QPageSetupDialog, event: gen_qevent.QEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QPageSetupDialogenterEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, event: gen_qevent.QEnterEvent): void =
 
   fQPageSetupDialog_virtualbase_enterEvent(self.h, event.h)
 
-type QPageSetupDialogenterEventBase* = proc(event: gen_qevent.QEnterEvent): void
-proc onenterEvent*(self: QPageSetupDialog, slot: proc(super: QPageSetupDialogenterEventBase, event: gen_qevent.QEnterEvent): void) =
+type QPageSetupDialogenterEventProc* = proc(event: gen_qevent.QEnterEvent): void
+proc onenterEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, slot: QPageSetupDialogenterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPageSetupDialogenterEventBase, event: gen_qevent.QEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QPageSetupDialogenterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPageSetupDialog_override_virtual_enterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPageSetupDialog_enterEvent(self: ptr cQPageSetupDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPageSetupDialog_enterEvent ".} =
-  type Cb = proc(super: QPageSetupDialogenterEventBase, event: gen_qevent.QEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QEnterEvent): auto =
-    callVirtualBase_enterEvent(QPageSetupDialog(h: self), event)
+  var nimfunc = cast[ptr QPageSetupDialogenterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_leaveEvent(self: QPageSetupDialog, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QPageSetupDialogleaveEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, event: gen_qcoreevent.QEvent): void =
 
   fQPageSetupDialog_virtualbase_leaveEvent(self.h, event.h)
 
-type QPageSetupDialogleaveEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onleaveEvent*(self: QPageSetupDialog, slot: proc(super: QPageSetupDialogleaveEventBase, event: gen_qcoreevent.QEvent): void) =
+type QPageSetupDialogleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onleaveEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, slot: QPageSetupDialogleaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPageSetupDialogleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QPageSetupDialogleaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPageSetupDialog_override_virtual_leaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPageSetupDialog_leaveEvent(self: ptr cQPageSetupDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPageSetupDialog_leaveEvent ".} =
-  type Cb = proc(super: QPageSetupDialogleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_leaveEvent(QPageSetupDialog(h: self), event)
+  var nimfunc = cast[ptr QPageSetupDialogleaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_paintEvent(self: QPageSetupDialog, event: gen_qevent.QPaintEvent): void =
-
+  nimfunc[](slotval1)
+proc QPageSetupDialogpaintEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, event: gen_qevent.QPaintEvent): void =
 
   fQPageSetupDialog_virtualbase_paintEvent(self.h, event.h)
 
-type QPageSetupDialogpaintEventBase* = proc(event: gen_qevent.QPaintEvent): void
-proc onpaintEvent*(self: QPageSetupDialog, slot: proc(super: QPageSetupDialogpaintEventBase, event: gen_qevent.QPaintEvent): void) =
+type QPageSetupDialogpaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
+proc onpaintEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, slot: QPageSetupDialogpaintEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPageSetupDialogpaintEventBase, event: gen_qevent.QPaintEvent): void
-  var tmp = new Cb
+  var tmp = new QPageSetupDialogpaintEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPageSetupDialog_override_virtual_paintEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPageSetupDialog_paintEvent(self: ptr cQPageSetupDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPageSetupDialog_paintEvent ".} =
-  type Cb = proc(super: QPageSetupDialogpaintEventBase, event: gen_qevent.QPaintEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QPaintEvent): auto =
-    callVirtualBase_paintEvent(QPageSetupDialog(h: self), event)
+  var nimfunc = cast[ptr QPageSetupDialogpaintEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QPaintEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_moveEvent(self: QPageSetupDialog, event: gen_qevent.QMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QPageSetupDialogmoveEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, event: gen_qevent.QMoveEvent): void =
 
   fQPageSetupDialog_virtualbase_moveEvent(self.h, event.h)
 
-type QPageSetupDialogmoveEventBase* = proc(event: gen_qevent.QMoveEvent): void
-proc onmoveEvent*(self: QPageSetupDialog, slot: proc(super: QPageSetupDialogmoveEventBase, event: gen_qevent.QMoveEvent): void) =
+type QPageSetupDialogmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
+proc onmoveEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, slot: QPageSetupDialogmoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPageSetupDialogmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QPageSetupDialogmoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPageSetupDialog_override_virtual_moveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPageSetupDialog_moveEvent(self: ptr cQPageSetupDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPageSetupDialog_moveEvent ".} =
-  type Cb = proc(super: QPageSetupDialogmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMoveEvent): auto =
-    callVirtualBase_moveEvent(QPageSetupDialog(h: self), event)
+  var nimfunc = cast[ptr QPageSetupDialogmoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_tabletEvent(self: QPageSetupDialog, event: gen_qevent.QTabletEvent): void =
-
+  nimfunc[](slotval1)
+proc QPageSetupDialogtabletEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, event: gen_qevent.QTabletEvent): void =
 
   fQPageSetupDialog_virtualbase_tabletEvent(self.h, event.h)
 
-type QPageSetupDialogtabletEventBase* = proc(event: gen_qevent.QTabletEvent): void
-proc ontabletEvent*(self: QPageSetupDialog, slot: proc(super: QPageSetupDialogtabletEventBase, event: gen_qevent.QTabletEvent): void) =
+type QPageSetupDialogtabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
+proc ontabletEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, slot: QPageSetupDialogtabletEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPageSetupDialogtabletEventBase, event: gen_qevent.QTabletEvent): void
-  var tmp = new Cb
+  var tmp = new QPageSetupDialogtabletEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPageSetupDialog_override_virtual_tabletEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPageSetupDialog_tabletEvent(self: ptr cQPageSetupDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPageSetupDialog_tabletEvent ".} =
-  type Cb = proc(super: QPageSetupDialogtabletEventBase, event: gen_qevent.QTabletEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QTabletEvent): auto =
-    callVirtualBase_tabletEvent(QPageSetupDialog(h: self), event)
+  var nimfunc = cast[ptr QPageSetupDialogtabletEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QTabletEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_actionEvent(self: QPageSetupDialog, event: gen_qevent.QActionEvent): void =
-
+  nimfunc[](slotval1)
+proc QPageSetupDialogactionEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, event: gen_qevent.QActionEvent): void =
 
   fQPageSetupDialog_virtualbase_actionEvent(self.h, event.h)
 
-type QPageSetupDialogactionEventBase* = proc(event: gen_qevent.QActionEvent): void
-proc onactionEvent*(self: QPageSetupDialog, slot: proc(super: QPageSetupDialogactionEventBase, event: gen_qevent.QActionEvent): void) =
+type QPageSetupDialogactionEventProc* = proc(event: gen_qevent.QActionEvent): void
+proc onactionEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, slot: QPageSetupDialogactionEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPageSetupDialogactionEventBase, event: gen_qevent.QActionEvent): void
-  var tmp = new Cb
+  var tmp = new QPageSetupDialogactionEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPageSetupDialog_override_virtual_actionEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPageSetupDialog_actionEvent(self: ptr cQPageSetupDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPageSetupDialog_actionEvent ".} =
-  type Cb = proc(super: QPageSetupDialogactionEventBase, event: gen_qevent.QActionEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QActionEvent): auto =
-    callVirtualBase_actionEvent(QPageSetupDialog(h: self), event)
+  var nimfunc = cast[ptr QPageSetupDialogactionEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QActionEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragEnterEvent(self: QPageSetupDialog, event: gen_qevent.QDragEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QPageSetupDialogdragEnterEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, event: gen_qevent.QDragEnterEvent): void =
 
   fQPageSetupDialog_virtualbase_dragEnterEvent(self.h, event.h)
 
-type QPageSetupDialogdragEnterEventBase* = proc(event: gen_qevent.QDragEnterEvent): void
-proc ondragEnterEvent*(self: QPageSetupDialog, slot: proc(super: QPageSetupDialogdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void) =
+type QPageSetupDialogdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
+proc ondragEnterEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, slot: QPageSetupDialogdragEnterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPageSetupDialogdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QPageSetupDialogdragEnterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPageSetupDialog_override_virtual_dragEnterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPageSetupDialog_dragEnterEvent(self: ptr cQPageSetupDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPageSetupDialog_dragEnterEvent ".} =
-  type Cb = proc(super: QPageSetupDialogdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragEnterEvent): auto =
-    callVirtualBase_dragEnterEvent(QPageSetupDialog(h: self), event)
+  var nimfunc = cast[ptr QPageSetupDialogdragEnterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragMoveEvent(self: QPageSetupDialog, event: gen_qevent.QDragMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QPageSetupDialogdragMoveEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, event: gen_qevent.QDragMoveEvent): void =
 
   fQPageSetupDialog_virtualbase_dragMoveEvent(self.h, event.h)
 
-type QPageSetupDialogdragMoveEventBase* = proc(event: gen_qevent.QDragMoveEvent): void
-proc ondragMoveEvent*(self: QPageSetupDialog, slot: proc(super: QPageSetupDialogdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void) =
+type QPageSetupDialogdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
+proc ondragMoveEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, slot: QPageSetupDialogdragMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPageSetupDialogdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QPageSetupDialogdragMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPageSetupDialog_override_virtual_dragMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPageSetupDialog_dragMoveEvent(self: ptr cQPageSetupDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPageSetupDialog_dragMoveEvent ".} =
-  type Cb = proc(super: QPageSetupDialogdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragMoveEvent): auto =
-    callVirtualBase_dragMoveEvent(QPageSetupDialog(h: self), event)
+  var nimfunc = cast[ptr QPageSetupDialogdragMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragLeaveEvent(self: QPageSetupDialog, event: gen_qevent.QDragLeaveEvent): void =
-
+  nimfunc[](slotval1)
+proc QPageSetupDialogdragLeaveEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, event: gen_qevent.QDragLeaveEvent): void =
 
   fQPageSetupDialog_virtualbase_dragLeaveEvent(self.h, event.h)
 
-type QPageSetupDialogdragLeaveEventBase* = proc(event: gen_qevent.QDragLeaveEvent): void
-proc ondragLeaveEvent*(self: QPageSetupDialog, slot: proc(super: QPageSetupDialogdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void) =
+type QPageSetupDialogdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
+proc ondragLeaveEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, slot: QPageSetupDialogdragLeaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPageSetupDialogdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var tmp = new Cb
+  var tmp = new QPageSetupDialogdragLeaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPageSetupDialog_override_virtual_dragLeaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPageSetupDialog_dragLeaveEvent(self: ptr cQPageSetupDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPageSetupDialog_dragLeaveEvent ".} =
-  type Cb = proc(super: QPageSetupDialogdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragLeaveEvent): auto =
-    callVirtualBase_dragLeaveEvent(QPageSetupDialog(h: self), event)
+  var nimfunc = cast[ptr QPageSetupDialogdragLeaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragLeaveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dropEvent(self: QPageSetupDialog, event: gen_qevent.QDropEvent): void =
-
+  nimfunc[](slotval1)
+proc QPageSetupDialogdropEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, event: gen_qevent.QDropEvent): void =
 
   fQPageSetupDialog_virtualbase_dropEvent(self.h, event.h)
 
-type QPageSetupDialogdropEventBase* = proc(event: gen_qevent.QDropEvent): void
-proc ondropEvent*(self: QPageSetupDialog, slot: proc(super: QPageSetupDialogdropEventBase, event: gen_qevent.QDropEvent): void) =
+type QPageSetupDialogdropEventProc* = proc(event: gen_qevent.QDropEvent): void
+proc ondropEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, slot: QPageSetupDialogdropEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPageSetupDialogdropEventBase, event: gen_qevent.QDropEvent): void
-  var tmp = new Cb
+  var tmp = new QPageSetupDialogdropEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPageSetupDialog_override_virtual_dropEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPageSetupDialog_dropEvent(self: ptr cQPageSetupDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPageSetupDialog_dropEvent ".} =
-  type Cb = proc(super: QPageSetupDialogdropEventBase, event: gen_qevent.QDropEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDropEvent): auto =
-    callVirtualBase_dropEvent(QPageSetupDialog(h: self), event)
+  var nimfunc = cast[ptr QPageSetupDialogdropEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDropEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hideEvent(self: QPageSetupDialog, event: gen_qevent.QHideEvent): void =
-
+  nimfunc[](slotval1)
+proc QPageSetupDialoghideEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, event: gen_qevent.QHideEvent): void =
 
   fQPageSetupDialog_virtualbase_hideEvent(self.h, event.h)
 
-type QPageSetupDialoghideEventBase* = proc(event: gen_qevent.QHideEvent): void
-proc onhideEvent*(self: QPageSetupDialog, slot: proc(super: QPageSetupDialoghideEventBase, event: gen_qevent.QHideEvent): void) =
+type QPageSetupDialoghideEventProc* = proc(event: gen_qevent.QHideEvent): void
+proc onhideEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, slot: QPageSetupDialoghideEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPageSetupDialoghideEventBase, event: gen_qevent.QHideEvent): void
-  var tmp = new Cb
+  var tmp = new QPageSetupDialoghideEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPageSetupDialog_override_virtual_hideEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPageSetupDialog_hideEvent(self: ptr cQPageSetupDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPageSetupDialog_hideEvent ".} =
-  type Cb = proc(super: QPageSetupDialoghideEventBase, event: gen_qevent.QHideEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QHideEvent): auto =
-    callVirtualBase_hideEvent(QPageSetupDialog(h: self), event)
+  var nimfunc = cast[ptr QPageSetupDialoghideEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QHideEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_nativeEvent(self: QPageSetupDialog, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
-
+  nimfunc[](slotval1)
+proc QPageSetupDialognativeEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
 
   fQPageSetupDialog_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
-type QPageSetupDialognativeEventBase* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-proc onnativeEvent*(self: QPageSetupDialog, slot: proc(super: QPageSetupDialognativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool) =
+type QPageSetupDialognativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
+proc onnativeEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, slot: QPageSetupDialognativeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPageSetupDialognativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-  var tmp = new Cb
+  var tmp = new QPageSetupDialognativeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPageSetupDialog_override_virtual_nativeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPageSetupDialog_nativeEvent(self: ptr cQPageSetupDialog, slot: int, eventType: struct_miqt_string, message: pointer, resultVal: ptr uint): bool {.exportc: "miqt_exec_callback_QPageSetupDialog_nativeEvent ".} =
-  type Cb = proc(super: QPageSetupDialognativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(eventType: seq[byte], message: pointer, resultVal: ptr uint): auto =
-    callVirtualBase_nativeEvent(QPageSetupDialog(h: self), eventType, message, resultVal)
+  var nimfunc = cast[ptr QPageSetupDialognativeEventProc](cast[pointer](slot))
   var veventType_bytearray = eventType
   var veventTypex_ret = @(toOpenArrayByte(veventType_bytearray.data, 0, int(veventType_bytearray.len)-1))
   c_free(veventType_bytearray.data)
@@ -1240,317 +1028,252 @@ proc miqt_exec_callback_QPageSetupDialog_nativeEvent(self: ptr cQPageSetupDialog
   let slotval3 = resultVal
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_changeEvent(self: QPageSetupDialog, param1: gen_qcoreevent.QEvent): void =
-
+proc QPageSetupDialogchangeEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, param1: gen_qcoreevent.QEvent): void =
 
   fQPageSetupDialog_virtualbase_changeEvent(self.h, param1.h)
 
-type QPageSetupDialogchangeEventBase* = proc(param1: gen_qcoreevent.QEvent): void
-proc onchangeEvent*(self: QPageSetupDialog, slot: proc(super: QPageSetupDialogchangeEventBase, param1: gen_qcoreevent.QEvent): void) =
+type QPageSetupDialogchangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
+proc onchangeEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, slot: QPageSetupDialogchangeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPageSetupDialogchangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QPageSetupDialogchangeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPageSetupDialog_override_virtual_changeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPageSetupDialog_changeEvent(self: ptr cQPageSetupDialog, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QPageSetupDialog_changeEvent ".} =
-  type Cb = proc(super: QPageSetupDialogchangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_changeEvent(QPageSetupDialog(h: self), param1)
+  var nimfunc = cast[ptr QPageSetupDialogchangeEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_metric(self: QPageSetupDialog, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint =
-
+  nimfunc[](slotval1)
+proc QPageSetupDialogmetric*(self: gen_qpagesetupdialog_types.QPageSetupDialog, param1: cint): cint =
 
   fQPageSetupDialog_virtualbase_metric(self.h, cint(param1))
 
-type QPageSetupDialogmetricBase* = proc(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-proc onmetric*(self: QPageSetupDialog, slot: proc(super: QPageSetupDialogmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint) =
+type QPageSetupDialogmetricProc* = proc(param1: cint): cint
+proc onmetric*(self: gen_qpagesetupdialog_types.QPageSetupDialog, slot: QPageSetupDialogmetricProc) =
   # TODO check subclass
-  type Cb = proc(super: QPageSetupDialogmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var tmp = new Cb
+  var tmp = new QPageSetupDialogmetricProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPageSetupDialog_override_virtual_metric(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPageSetupDialog_metric(self: ptr cQPageSetupDialog, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QPageSetupDialog_metric ".} =
-  type Cb = proc(super: QPageSetupDialogmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): auto =
-    callVirtualBase_metric(QPageSetupDialog(h: self), param1)
-  let slotval1 = gen_qpaintdevice.QPaintDevicePaintDeviceMetric(param1)
+  var nimfunc = cast[ptr QPageSetupDialogmetricProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_initPainter(self: QPageSetupDialog, painter: gen_qpainter.QPainter): void =
-
+proc QPageSetupDialoginitPainter*(self: gen_qpagesetupdialog_types.QPageSetupDialog, painter: gen_qpainter.QPainter): void =
 
   fQPageSetupDialog_virtualbase_initPainter(self.h, painter.h)
 
-type QPageSetupDialoginitPainterBase* = proc(painter: gen_qpainter.QPainter): void
-proc oninitPainter*(self: QPageSetupDialog, slot: proc(super: QPageSetupDialoginitPainterBase, painter: gen_qpainter.QPainter): void) =
+type QPageSetupDialoginitPainterProc* = proc(painter: gen_qpainter.QPainter): void
+proc oninitPainter*(self: gen_qpagesetupdialog_types.QPageSetupDialog, slot: QPageSetupDialoginitPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QPageSetupDialoginitPainterBase, painter: gen_qpainter.QPainter): void
-  var tmp = new Cb
+  var tmp = new QPageSetupDialoginitPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPageSetupDialog_override_virtual_initPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPageSetupDialog_initPainter(self: ptr cQPageSetupDialog, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_QPageSetupDialog_initPainter ".} =
-  type Cb = proc(super: QPageSetupDialoginitPainterBase, painter: gen_qpainter.QPainter): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter): auto =
-    callVirtualBase_initPainter(QPageSetupDialog(h: self), painter)
+  var nimfunc = cast[ptr QPageSetupDialoginitPainterProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_redirected(self: QPageSetupDialog, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
+  nimfunc[](slotval1)
+proc QPageSetupDialogredirected*(self: gen_qpagesetupdialog_types.QPageSetupDialog, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
 
   gen_qpaintdevice.QPaintDevice(h: fQPageSetupDialog_virtualbase_redirected(self.h, offset.h))
 
-type QPageSetupDialogredirectedBase* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-proc onredirected*(self: QPageSetupDialog, slot: proc(super: QPageSetupDialogredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice) =
+type QPageSetupDialogredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
+proc onredirected*(self: gen_qpagesetupdialog_types.QPageSetupDialog, slot: QPageSetupDialogredirectedProc) =
   # TODO check subclass
-  type Cb = proc(super: QPageSetupDialogredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var tmp = new Cb
+  var tmp = new QPageSetupDialogredirectedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPageSetupDialog_override_virtual_redirected(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPageSetupDialog_redirected(self: ptr cQPageSetupDialog, slot: int, offset: pointer): pointer {.exportc: "miqt_exec_callback_QPageSetupDialog_redirected ".} =
-  type Cb = proc(super: QPageSetupDialogredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(offset: gen_qpoint.QPoint): auto =
-    callVirtualBase_redirected(QPageSetupDialog(h: self), offset)
+  var nimfunc = cast[ptr QPageSetupDialogredirectedProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: offset)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_sharedPainter(self: QPageSetupDialog, ): gen_qpainter.QPainter =
-
+proc QPageSetupDialogsharedPainter*(self: gen_qpagesetupdialog_types.QPageSetupDialog, ): gen_qpainter.QPainter =
 
   gen_qpainter.QPainter(h: fQPageSetupDialog_virtualbase_sharedPainter(self.h))
 
-type QPageSetupDialogsharedPainterBase* = proc(): gen_qpainter.QPainter
-proc onsharedPainter*(self: QPageSetupDialog, slot: proc(super: QPageSetupDialogsharedPainterBase): gen_qpainter.QPainter) =
+type QPageSetupDialogsharedPainterProc* = proc(): gen_qpainter.QPainter
+proc onsharedPainter*(self: gen_qpagesetupdialog_types.QPageSetupDialog, slot: QPageSetupDialogsharedPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QPageSetupDialogsharedPainterBase): gen_qpainter.QPainter
-  var tmp = new Cb
+  var tmp = new QPageSetupDialogsharedPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPageSetupDialog_override_virtual_sharedPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPageSetupDialog_sharedPainter(self: ptr cQPageSetupDialog, slot: int): pointer {.exportc: "miqt_exec_callback_QPageSetupDialog_sharedPainter ".} =
-  type Cb = proc(super: QPageSetupDialogsharedPainterBase): gen_qpainter.QPainter
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sharedPainter(QPageSetupDialog(h: self), )
+  var nimfunc = cast[ptr QPageSetupDialogsharedPainterProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_inputMethodEvent(self: QPageSetupDialog, param1: gen_qevent.QInputMethodEvent): void =
-
+proc QPageSetupDialoginputMethodEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, param1: gen_qevent.QInputMethodEvent): void =
 
   fQPageSetupDialog_virtualbase_inputMethodEvent(self.h, param1.h)
 
-type QPageSetupDialoginputMethodEventBase* = proc(param1: gen_qevent.QInputMethodEvent): void
-proc oninputMethodEvent*(self: QPageSetupDialog, slot: proc(super: QPageSetupDialoginputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void) =
+type QPageSetupDialoginputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
+proc oninputMethodEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, slot: QPageSetupDialoginputMethodEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPageSetupDialoginputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var tmp = new Cb
+  var tmp = new QPageSetupDialoginputMethodEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPageSetupDialog_override_virtual_inputMethodEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPageSetupDialog_inputMethodEvent(self: ptr cQPageSetupDialog, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QPageSetupDialog_inputMethodEvent ".} =
-  type Cb = proc(super: QPageSetupDialoginputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QInputMethodEvent): auto =
-    callVirtualBase_inputMethodEvent(QPageSetupDialog(h: self), param1)
+  var nimfunc = cast[ptr QPageSetupDialoginputMethodEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QInputMethodEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_inputMethodQuery(self: QPageSetupDialog, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant =
-
+  nimfunc[](slotval1)
+proc QPageSetupDialoginputMethodQuery*(self: gen_qpagesetupdialog_types.QPageSetupDialog, param1: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQPageSetupDialog_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
-type QPageSetupDialoginputMethodQueryBase* = proc(param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-proc oninputMethodQuery*(self: QPageSetupDialog, slot: proc(super: QPageSetupDialoginputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant) =
+type QPageSetupDialoginputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
+proc oninputMethodQuery*(self: gen_qpagesetupdialog_types.QPageSetupDialog, slot: QPageSetupDialoginputMethodQueryProc) =
   # TODO check subclass
-  type Cb = proc(super: QPageSetupDialoginputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QPageSetupDialoginputMethodQueryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPageSetupDialog_override_virtual_inputMethodQuery(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPageSetupDialog_inputMethodQuery(self: ptr cQPageSetupDialog, slot: int, param1: cint): pointer {.exportc: "miqt_exec_callback_QPageSetupDialog_inputMethodQuery ".} =
-  type Cb = proc(super: QPageSetupDialoginputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qnamespace.InputMethodQuery): auto =
-    callVirtualBase_inputMethodQuery(QPageSetupDialog(h: self), param1)
-  let slotval1 = gen_qnamespace.InputMethodQuery(param1)
+  var nimfunc = cast[ptr QPageSetupDialoginputMethodQueryProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_focusNextPrevChild(self: QPageSetupDialog, next: bool): bool =
-
+proc QPageSetupDialogfocusNextPrevChild*(self: gen_qpagesetupdialog_types.QPageSetupDialog, next: bool): bool =
 
   fQPageSetupDialog_virtualbase_focusNextPrevChild(self.h, next)
 
-type QPageSetupDialogfocusNextPrevChildBase* = proc(next: bool): bool
-proc onfocusNextPrevChild*(self: QPageSetupDialog, slot: proc(super: QPageSetupDialogfocusNextPrevChildBase, next: bool): bool) =
+type QPageSetupDialogfocusNextPrevChildProc* = proc(next: bool): bool
+proc onfocusNextPrevChild*(self: gen_qpagesetupdialog_types.QPageSetupDialog, slot: QPageSetupDialogfocusNextPrevChildProc) =
   # TODO check subclass
-  type Cb = proc(super: QPageSetupDialogfocusNextPrevChildBase, next: bool): bool
-  var tmp = new Cb
+  var tmp = new QPageSetupDialogfocusNextPrevChildProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPageSetupDialog_override_virtual_focusNextPrevChild(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPageSetupDialog_focusNextPrevChild(self: ptr cQPageSetupDialog, slot: int, next: bool): bool {.exportc: "miqt_exec_callback_QPageSetupDialog_focusNextPrevChild ".} =
-  type Cb = proc(super: QPageSetupDialogfocusNextPrevChildBase, next: bool): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(next: bool): auto =
-    callVirtualBase_focusNextPrevChild(QPageSetupDialog(h: self), next)
+  var nimfunc = cast[ptr QPageSetupDialogfocusNextPrevChildProc](cast[pointer](slot))
   let slotval1 = next
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QPageSetupDialog, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QPageSetupDialogtimerEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, event: gen_qcoreevent.QTimerEvent): void =
 
   fQPageSetupDialog_virtualbase_timerEvent(self.h, event.h)
 
-type QPageSetupDialogtimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QPageSetupDialog, slot: proc(super: QPageSetupDialogtimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QPageSetupDialogtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, slot: QPageSetupDialogtimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPageSetupDialogtimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QPageSetupDialogtimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPageSetupDialog_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPageSetupDialog_timerEvent(self: ptr cQPageSetupDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPageSetupDialog_timerEvent ".} =
-  type Cb = proc(super: QPageSetupDialogtimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QPageSetupDialog(h: self), event)
+  var nimfunc = cast[ptr QPageSetupDialogtimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QPageSetupDialog, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QPageSetupDialogchildEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, event: gen_qcoreevent.QChildEvent): void =
 
   fQPageSetupDialog_virtualbase_childEvent(self.h, event.h)
 
-type QPageSetupDialogchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QPageSetupDialog, slot: proc(super: QPageSetupDialogchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QPageSetupDialogchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, slot: QPageSetupDialogchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPageSetupDialogchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QPageSetupDialogchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPageSetupDialog_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPageSetupDialog_childEvent(self: ptr cQPageSetupDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPageSetupDialog_childEvent ".} =
-  type Cb = proc(super: QPageSetupDialogchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QPageSetupDialog(h: self), event)
+  var nimfunc = cast[ptr QPageSetupDialogchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QPageSetupDialog, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QPageSetupDialogcustomEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, event: gen_qcoreevent.QEvent): void =
 
   fQPageSetupDialog_virtualbase_customEvent(self.h, event.h)
 
-type QPageSetupDialogcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QPageSetupDialog, slot: proc(super: QPageSetupDialogcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QPageSetupDialogcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, slot: QPageSetupDialogcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPageSetupDialogcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QPageSetupDialogcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPageSetupDialog_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPageSetupDialog_customEvent(self: ptr cQPageSetupDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPageSetupDialog_customEvent ".} =
-  type Cb = proc(super: QPageSetupDialogcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QPageSetupDialog(h: self), event)
+  var nimfunc = cast[ptr QPageSetupDialogcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QPageSetupDialog, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QPageSetupDialogconnectNotify*(self: gen_qpagesetupdialog_types.QPageSetupDialog, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQPageSetupDialog_virtualbase_connectNotify(self.h, signal.h)
 
-type QPageSetupDialogconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QPageSetupDialog, slot: proc(super: QPageSetupDialogconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QPageSetupDialogconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qpagesetupdialog_types.QPageSetupDialog, slot: QPageSetupDialogconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QPageSetupDialogconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QPageSetupDialogconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPageSetupDialog_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPageSetupDialog_connectNotify(self: ptr cQPageSetupDialog, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QPageSetupDialog_connectNotify ".} =
-  type Cb = proc(super: QPageSetupDialogconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QPageSetupDialog(h: self), signal)
+  var nimfunc = cast[ptr QPageSetupDialogconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QPageSetupDialog, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QPageSetupDialogdisconnectNotify*(self: gen_qpagesetupdialog_types.QPageSetupDialog, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQPageSetupDialog_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QPageSetupDialogdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QPageSetupDialog, slot: proc(super: QPageSetupDialogdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QPageSetupDialogdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qpagesetupdialog_types.QPageSetupDialog, slot: QPageSetupDialogdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QPageSetupDialogdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QPageSetupDialogdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPageSetupDialog_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPageSetupDialog_disconnectNotify(self: ptr cQPageSetupDialog, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QPageSetupDialog_disconnectNotify ".} =
-  type Cb = proc(super: QPageSetupDialogdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QPageSetupDialog(h: self), signal)
+  var nimfunc = cast[ptr QPageSetupDialogdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QPageSetupDialog): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qpagesetupdialog_types.QPageSetupDialog): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQPageSetupDialog_staticMetaObject())
-proc delete*(self: QPageSetupDialog) =
+proc delete*(self: gen_qpagesetupdialog_types.QPageSetupDialog) =
   fcQPageSetupDialog_delete(self.h)

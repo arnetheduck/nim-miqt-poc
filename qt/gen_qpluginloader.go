@@ -237,7 +237,7 @@ func (this *QPluginLoader) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QPluginLoader_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QPluginLoader) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QPluginLoader) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QPluginLoader_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -264,7 +264,7 @@ func (this *QPluginLoader) callVirtualBase_Metacast(param1 string) unsafe.Pointe
 	return (unsafe.Pointer)(C.QPluginLoader_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QPluginLoader) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QPluginLoader) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QPluginLoader_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

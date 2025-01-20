@@ -34,46 +34,36 @@ const cflags = gorge("pkg-config -cflags Qt5Widgets")
 {.compile("gen_qsurfaceformat.cpp", cflags).}
 
 
-type QSurfaceFormatFormatOption* = cint
-const
-  QSurfaceFormatStereoBuffers* = 1
-  QSurfaceFormatDebugContext* = 2
-  QSurfaceFormatDeprecatedFunctions* = 4
-  QSurfaceFormatResetNotification* = 8
+type QSurfaceFormatFormatOptionEnum* = distinct cint
+template StereoBuffers*(_: type QSurfaceFormatFormatOptionEnum): untyped = 1
+template DebugContext*(_: type QSurfaceFormatFormatOptionEnum): untyped = 2
+template DeprecatedFunctions*(_: type QSurfaceFormatFormatOptionEnum): untyped = 4
+template ResetNotification*(_: type QSurfaceFormatFormatOptionEnum): untyped = 8
 
 
-
-type QSurfaceFormatSwapBehavior* = cint
-const
-  QSurfaceFormatDefaultSwapBehavior* = 0
-  QSurfaceFormatSingleBuffer* = 1
-  QSurfaceFormatDoubleBuffer* = 2
-  QSurfaceFormatTripleBuffer* = 3
+type QSurfaceFormatSwapBehaviorEnum* = distinct cint
+template DefaultSwapBehavior*(_: type QSurfaceFormatSwapBehaviorEnum): untyped = 0
+template SingleBuffer*(_: type QSurfaceFormatSwapBehaviorEnum): untyped = 1
+template DoubleBuffer*(_: type QSurfaceFormatSwapBehaviorEnum): untyped = 2
+template TripleBuffer*(_: type QSurfaceFormatSwapBehaviorEnum): untyped = 3
 
 
-
-type QSurfaceFormatRenderableType* = cint
-const
-  QSurfaceFormatDefaultRenderableType* = 0
-  QSurfaceFormatOpenGL* = 1
-  QSurfaceFormatOpenGLES* = 2
-  QSurfaceFormatOpenVG* = 4
+type QSurfaceFormatRenderableTypeEnum* = distinct cint
+template DefaultRenderableType*(_: type QSurfaceFormatRenderableTypeEnum): untyped = 0
+template OpenGL*(_: type QSurfaceFormatRenderableTypeEnum): untyped = 1
+template OpenGLES*(_: type QSurfaceFormatRenderableTypeEnum): untyped = 2
+template OpenVG*(_: type QSurfaceFormatRenderableTypeEnum): untyped = 4
 
 
-
-type QSurfaceFormatOpenGLContextProfile* = cint
-const
-  QSurfaceFormatNoProfile* = 0
-  QSurfaceFormatCoreProfile* = 1
-  QSurfaceFormatCompatibilityProfile* = 2
+type QSurfaceFormatOpenGLContextProfileEnum* = distinct cint
+template NoProfile*(_: type QSurfaceFormatOpenGLContextProfileEnum): untyped = 0
+template CoreProfile*(_: type QSurfaceFormatOpenGLContextProfileEnum): untyped = 1
+template CompatibilityProfile*(_: type QSurfaceFormatOpenGLContextProfileEnum): untyped = 2
 
 
-
-type QSurfaceFormatColorSpace* = cint
-const
-  QSurfaceFormatDefaultColorSpace* = 0
-  QSurfaceFormatsRGBColorSpace* = 1
-
+type QSurfaceFormatColorSpaceEnum* = distinct cint
+template DefaultColorSpace*(_: type QSurfaceFormatColorSpaceEnum): untyped = 0
+template sRGBColorSpace*(_: type QSurfaceFormatColorSpaceEnum): untyped = 1
 
 
 import gen_qsurfaceformat_types
@@ -136,122 +126,122 @@ proc fcQSurfaceFormat_staticMetaObject(): pointer {.importc: "QSurfaceFormat_sta
 proc fcQSurfaceFormat_delete(self: pointer) {.importc: "QSurfaceFormat_delete".}
 
 
-func init*(T: type QSurfaceFormat, h: ptr cQSurfaceFormat): QSurfaceFormat =
+func init*(T: type gen_qsurfaceformat_types.QSurfaceFormat, h: ptr cQSurfaceFormat): gen_qsurfaceformat_types.QSurfaceFormat =
   T(h: h)
-proc create*(T: type QSurfaceFormat, ): QSurfaceFormat =
+proc create*(T: type gen_qsurfaceformat_types.QSurfaceFormat, ): gen_qsurfaceformat_types.QSurfaceFormat =
 
-  QSurfaceFormat.init(fcQSurfaceFormat_new())
-proc create*(T: type QSurfaceFormat, options: QSurfaceFormatFormatOption): QSurfaceFormat =
+  gen_qsurfaceformat_types.QSurfaceFormat.init(fcQSurfaceFormat_new())
+proc create*(T: type gen_qsurfaceformat_types.QSurfaceFormat, options: cint): gen_qsurfaceformat_types.QSurfaceFormat =
 
-  QSurfaceFormat.init(fcQSurfaceFormat_new2(cint(options)))
-proc create*(T: type QSurfaceFormat, other: QSurfaceFormat): QSurfaceFormat =
+  gen_qsurfaceformat_types.QSurfaceFormat.init(fcQSurfaceFormat_new2(cint(options)))
+proc create*(T: type gen_qsurfaceformat_types.QSurfaceFormat, other: gen_qsurfaceformat_types.QSurfaceFormat): gen_qsurfaceformat_types.QSurfaceFormat =
 
-  QSurfaceFormat.init(fcQSurfaceFormat_new3(other.h))
-proc operatorAssign*(self: QSurfaceFormat, other: QSurfaceFormat): void =
+  gen_qsurfaceformat_types.QSurfaceFormat.init(fcQSurfaceFormat_new3(other.h))
+proc operatorAssign*(self: gen_qsurfaceformat_types.QSurfaceFormat, other: gen_qsurfaceformat_types.QSurfaceFormat): void =
 
   fcQSurfaceFormat_operatorAssign(self.h, other.h)
 
-proc setDepthBufferSize*(self: QSurfaceFormat, size: cint): void =
+proc setDepthBufferSize*(self: gen_qsurfaceformat_types.QSurfaceFormat, size: cint): void =
 
   fcQSurfaceFormat_setDepthBufferSize(self.h, size)
 
-proc depthBufferSize*(self: QSurfaceFormat, ): cint =
+proc depthBufferSize*(self: gen_qsurfaceformat_types.QSurfaceFormat, ): cint =
 
   fcQSurfaceFormat_depthBufferSize(self.h)
 
-proc setStencilBufferSize*(self: QSurfaceFormat, size: cint): void =
+proc setStencilBufferSize*(self: gen_qsurfaceformat_types.QSurfaceFormat, size: cint): void =
 
   fcQSurfaceFormat_setStencilBufferSize(self.h, size)
 
-proc stencilBufferSize*(self: QSurfaceFormat, ): cint =
+proc stencilBufferSize*(self: gen_qsurfaceformat_types.QSurfaceFormat, ): cint =
 
   fcQSurfaceFormat_stencilBufferSize(self.h)
 
-proc setRedBufferSize*(self: QSurfaceFormat, size: cint): void =
+proc setRedBufferSize*(self: gen_qsurfaceformat_types.QSurfaceFormat, size: cint): void =
 
   fcQSurfaceFormat_setRedBufferSize(self.h, size)
 
-proc redBufferSize*(self: QSurfaceFormat, ): cint =
+proc redBufferSize*(self: gen_qsurfaceformat_types.QSurfaceFormat, ): cint =
 
   fcQSurfaceFormat_redBufferSize(self.h)
 
-proc setGreenBufferSize*(self: QSurfaceFormat, size: cint): void =
+proc setGreenBufferSize*(self: gen_qsurfaceformat_types.QSurfaceFormat, size: cint): void =
 
   fcQSurfaceFormat_setGreenBufferSize(self.h, size)
 
-proc greenBufferSize*(self: QSurfaceFormat, ): cint =
+proc greenBufferSize*(self: gen_qsurfaceformat_types.QSurfaceFormat, ): cint =
 
   fcQSurfaceFormat_greenBufferSize(self.h)
 
-proc setBlueBufferSize*(self: QSurfaceFormat, size: cint): void =
+proc setBlueBufferSize*(self: gen_qsurfaceformat_types.QSurfaceFormat, size: cint): void =
 
   fcQSurfaceFormat_setBlueBufferSize(self.h, size)
 
-proc blueBufferSize*(self: QSurfaceFormat, ): cint =
+proc blueBufferSize*(self: gen_qsurfaceformat_types.QSurfaceFormat, ): cint =
 
   fcQSurfaceFormat_blueBufferSize(self.h)
 
-proc setAlphaBufferSize*(self: QSurfaceFormat, size: cint): void =
+proc setAlphaBufferSize*(self: gen_qsurfaceformat_types.QSurfaceFormat, size: cint): void =
 
   fcQSurfaceFormat_setAlphaBufferSize(self.h, size)
 
-proc alphaBufferSize*(self: QSurfaceFormat, ): cint =
+proc alphaBufferSize*(self: gen_qsurfaceformat_types.QSurfaceFormat, ): cint =
 
   fcQSurfaceFormat_alphaBufferSize(self.h)
 
-proc setSamples*(self: QSurfaceFormat, numSamples: cint): void =
+proc setSamples*(self: gen_qsurfaceformat_types.QSurfaceFormat, numSamples: cint): void =
 
   fcQSurfaceFormat_setSamples(self.h, numSamples)
 
-proc samples*(self: QSurfaceFormat, ): cint =
+proc samples*(self: gen_qsurfaceformat_types.QSurfaceFormat, ): cint =
 
   fcQSurfaceFormat_samples(self.h)
 
-proc setSwapBehavior*(self: QSurfaceFormat, behavior: QSurfaceFormatSwapBehavior): void =
+proc setSwapBehavior*(self: gen_qsurfaceformat_types.QSurfaceFormat, behavior: cint): void =
 
   fcQSurfaceFormat_setSwapBehavior(self.h, cint(behavior))
 
-proc swapBehavior*(self: QSurfaceFormat, ): QSurfaceFormatSwapBehavior =
+proc swapBehavior*(self: gen_qsurfaceformat_types.QSurfaceFormat, ): cint =
 
-  QSurfaceFormatSwapBehavior(fcQSurfaceFormat_swapBehavior(self.h))
+  cint(fcQSurfaceFormat_swapBehavior(self.h))
 
-proc hasAlpha*(self: QSurfaceFormat, ): bool =
+proc hasAlpha*(self: gen_qsurfaceformat_types.QSurfaceFormat, ): bool =
 
   fcQSurfaceFormat_hasAlpha(self.h)
 
-proc setProfile*(self: QSurfaceFormat, profile: QSurfaceFormatOpenGLContextProfile): void =
+proc setProfile*(self: gen_qsurfaceformat_types.QSurfaceFormat, profile: cint): void =
 
   fcQSurfaceFormat_setProfile(self.h, cint(profile))
 
-proc profile*(self: QSurfaceFormat, ): QSurfaceFormatOpenGLContextProfile =
+proc profile*(self: gen_qsurfaceformat_types.QSurfaceFormat, ): cint =
 
-  QSurfaceFormatOpenGLContextProfile(fcQSurfaceFormat_profile(self.h))
+  cint(fcQSurfaceFormat_profile(self.h))
 
-proc setRenderableType*(self: QSurfaceFormat, typeVal: QSurfaceFormatRenderableType): void =
+proc setRenderableType*(self: gen_qsurfaceformat_types.QSurfaceFormat, typeVal: cint): void =
 
   fcQSurfaceFormat_setRenderableType(self.h, cint(typeVal))
 
-proc renderableType*(self: QSurfaceFormat, ): QSurfaceFormatRenderableType =
+proc renderableType*(self: gen_qsurfaceformat_types.QSurfaceFormat, ): cint =
 
-  QSurfaceFormatRenderableType(fcQSurfaceFormat_renderableType(self.h))
+  cint(fcQSurfaceFormat_renderableType(self.h))
 
-proc setMajorVersion*(self: QSurfaceFormat, majorVersion: cint): void =
+proc setMajorVersion*(self: gen_qsurfaceformat_types.QSurfaceFormat, majorVersion: cint): void =
 
   fcQSurfaceFormat_setMajorVersion(self.h, majorVersion)
 
-proc majorVersion*(self: QSurfaceFormat, ): cint =
+proc majorVersion*(self: gen_qsurfaceformat_types.QSurfaceFormat, ): cint =
 
   fcQSurfaceFormat_majorVersion(self.h)
 
-proc setMinorVersion*(self: QSurfaceFormat, minorVersion: cint): void =
+proc setMinorVersion*(self: gen_qsurfaceformat_types.QSurfaceFormat, minorVersion: cint): void =
 
   fcQSurfaceFormat_setMinorVersion(self.h, minorVersion)
 
-proc minorVersion*(self: QSurfaceFormat, ): cint =
+proc minorVersion*(self: gen_qsurfaceformat_types.QSurfaceFormat, ): cint =
 
   fcQSurfaceFormat_minorVersion(self.h)
 
-proc version*(self: QSurfaceFormat, ): tuple[first: cint, second: cint] =
+proc version*(self: gen_qsurfaceformat_types.QSurfaceFormat, ): tuple[first: cint, second: cint] =
 
   var v_mm = fcQSurfaceFormat_version(self.h)
   var v_First_CArray = cast[ptr UncheckedArray[cint]](v_mm.keys)
@@ -262,71 +252,71 @@ proc version*(self: QSurfaceFormat, ): tuple[first: cint, second: cint] =
 
   (first: v_entry_First , second: v_entry_Second )
 
-proc setVersion*(self: QSurfaceFormat, major: cint, minor: cint): void =
+proc setVersion*(self: gen_qsurfaceformat_types.QSurfaceFormat, major: cint, minor: cint): void =
 
   fcQSurfaceFormat_setVersion(self.h, major, minor)
 
-proc stereo*(self: QSurfaceFormat, ): bool =
+proc stereo*(self: gen_qsurfaceformat_types.QSurfaceFormat, ): bool =
 
   fcQSurfaceFormat_stereo(self.h)
 
-proc setStereo*(self: QSurfaceFormat, enable: bool): void =
+proc setStereo*(self: gen_qsurfaceformat_types.QSurfaceFormat, enable: bool): void =
 
   fcQSurfaceFormat_setStereo(self.h, enable)
 
-proc setOption*(self: QSurfaceFormat, opt: QSurfaceFormatFormatOption): void =
+proc setOption*(self: gen_qsurfaceformat_types.QSurfaceFormat, opt: cint): void =
 
   fcQSurfaceFormat_setOption(self.h, cint(opt))
 
-proc testOption*(self: QSurfaceFormat, opt: QSurfaceFormatFormatOption): bool =
+proc testOption*(self: gen_qsurfaceformat_types.QSurfaceFormat, opt: cint): bool =
 
   fcQSurfaceFormat_testOption(self.h, cint(opt))
 
-proc setOptions*(self: QSurfaceFormat, options: QSurfaceFormatFormatOption): void =
+proc setOptions*(self: gen_qsurfaceformat_types.QSurfaceFormat, options: cint): void =
 
   fcQSurfaceFormat_setOptions(self.h, cint(options))
 
-proc setOptionWithOption*(self: QSurfaceFormat, option: QSurfaceFormatFormatOption): void =
+proc setOptionWithOption*(self: gen_qsurfaceformat_types.QSurfaceFormat, option: cint): void =
 
   fcQSurfaceFormat_setOptionWithOption(self.h, cint(option))
 
-proc testOptionWithOption*(self: QSurfaceFormat, option: QSurfaceFormatFormatOption): bool =
+proc testOptionWithOption*(self: gen_qsurfaceformat_types.QSurfaceFormat, option: cint): bool =
 
   fcQSurfaceFormat_testOptionWithOption(self.h, cint(option))
 
-proc options*(self: QSurfaceFormat, ): QSurfaceFormatFormatOption =
+proc options*(self: gen_qsurfaceformat_types.QSurfaceFormat, ): cint =
 
-  QSurfaceFormatFormatOption(fcQSurfaceFormat_options(self.h))
+  cint(fcQSurfaceFormat_options(self.h))
 
-proc swapInterval*(self: QSurfaceFormat, ): cint =
+proc swapInterval*(self: gen_qsurfaceformat_types.QSurfaceFormat, ): cint =
 
   fcQSurfaceFormat_swapInterval(self.h)
 
-proc setSwapInterval*(self: QSurfaceFormat, interval: cint): void =
+proc setSwapInterval*(self: gen_qsurfaceformat_types.QSurfaceFormat, interval: cint): void =
 
   fcQSurfaceFormat_setSwapInterval(self.h, interval)
 
-proc colorSpace*(self: QSurfaceFormat, ): QSurfaceFormatColorSpace =
+proc colorSpace*(self: gen_qsurfaceformat_types.QSurfaceFormat, ): cint =
 
-  QSurfaceFormatColorSpace(fcQSurfaceFormat_colorSpace(self.h))
+  cint(fcQSurfaceFormat_colorSpace(self.h))
 
-proc setColorSpace*(self: QSurfaceFormat, colorSpace: QSurfaceFormatColorSpace): void =
+proc setColorSpace*(self: gen_qsurfaceformat_types.QSurfaceFormat, colorSpace: cint): void =
 
   fcQSurfaceFormat_setColorSpace(self.h, cint(colorSpace))
 
-proc setDefaultFormat*(_: type QSurfaceFormat, format: QSurfaceFormat): void =
+proc setDefaultFormat*(_: type gen_qsurfaceformat_types.QSurfaceFormat, format: gen_qsurfaceformat_types.QSurfaceFormat): void =
 
   fcQSurfaceFormat_setDefaultFormat(format.h)
 
-proc defaultFormat*(_: type QSurfaceFormat, ): QSurfaceFormat =
+proc defaultFormat*(_: type gen_qsurfaceformat_types.QSurfaceFormat, ): gen_qsurfaceformat_types.QSurfaceFormat =
 
-  QSurfaceFormat(h: fcQSurfaceFormat_defaultFormat())
+  gen_qsurfaceformat_types.QSurfaceFormat(h: fcQSurfaceFormat_defaultFormat())
 
-proc setOption2*(self: QSurfaceFormat, option: QSurfaceFormatFormatOption, on: bool): void =
+proc setOption2*(self: gen_qsurfaceformat_types.QSurfaceFormat, option: cint, on: bool): void =
 
   fcQSurfaceFormat_setOption2(self.h, cint(option), on)
 
-proc staticMetaObject*(_: type QSurfaceFormat): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qsurfaceformat_types.QSurfaceFormat): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQSurfaceFormat_staticMetaObject())
-proc delete*(self: QSurfaceFormat) =
+proc delete*(self: gen_qsurfaceformat_types.QSurfaceFormat) =
   fcQSurfaceFormat_delete(self.h)

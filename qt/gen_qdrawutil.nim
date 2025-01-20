@@ -34,31 +34,25 @@ const cflags = gorge("pkg-config -cflags Qt5Widgets")
 {.compile("gen_qdrawutil.cpp", cflags).}
 
 
-type QDrawBorderPixmapDrawingHint* = cint
-const
-  QDrawBorderPixmapOpaqueTopLeft* = 1
-  QDrawBorderPixmapOpaqueTop* = 2
-  QDrawBorderPixmapOpaqueTopRight* = 4
-  QDrawBorderPixmapOpaqueLeft* = 8
-  QDrawBorderPixmapOpaqueCenter* = 16
-  QDrawBorderPixmapOpaqueRight* = 32
-  QDrawBorderPixmapOpaqueBottomLeft* = 64
-  QDrawBorderPixmapOpaqueBottom* = 128
-  QDrawBorderPixmapOpaqueBottomRight* = 256
-  QDrawBorderPixmapOpaqueCorners* = 325
-  QDrawBorderPixmapOpaqueEdges* = 170
-  QDrawBorderPixmapOpaqueFrame* = 495
-  QDrawBorderPixmapOpaqueAll* = 511
-
+type QDrawBorderPixmapDrawingHintEnum* = distinct cint
+template OpaqueTopLeft*(_: type QDrawBorderPixmapDrawingHintEnum): untyped = 1
+template OpaqueTop*(_: type QDrawBorderPixmapDrawingHintEnum): untyped = 2
+template OpaqueTopRight*(_: type QDrawBorderPixmapDrawingHintEnum): untyped = 4
+template OpaqueLeft*(_: type QDrawBorderPixmapDrawingHintEnum): untyped = 8
+template OpaqueCenter*(_: type QDrawBorderPixmapDrawingHintEnum): untyped = 16
+template OpaqueRight*(_: type QDrawBorderPixmapDrawingHintEnum): untyped = 32
+template OpaqueBottomLeft*(_: type QDrawBorderPixmapDrawingHintEnum): untyped = 64
+template OpaqueBottom*(_: type QDrawBorderPixmapDrawingHintEnum): untyped = 128
+template OpaqueBottomRight*(_: type QDrawBorderPixmapDrawingHintEnum): untyped = 256
+template OpaqueCorners*(_: type QDrawBorderPixmapDrawingHintEnum): untyped = 325
+template OpaqueEdges*(_: type QDrawBorderPixmapDrawingHintEnum): untyped = 170
+template OpaqueFrame*(_: type QDrawBorderPixmapDrawingHintEnum): untyped = 495
+template OpaqueAll*(_: type QDrawBorderPixmapDrawingHintEnum): untyped = 511
 
 
 import gen_qdrawutil_types
 export gen_qdrawutil_types
 
-import
-  gen_qnamespace
-export
-  gen_qnamespace
 
 type cQTileRules*{.exportc: "QTileRules", incompleteStruct.} = object
 
@@ -69,19 +63,19 @@ proc fcQTileRules_new4(rule: cint): ptr cQTileRules {.importc: "QTileRules_new4"
 proc fcQTileRules_delete(self: pointer) {.importc: "QTileRules_delete".}
 
 
-func init*(T: type QTileRules, h: ptr cQTileRules): QTileRules =
+func init*(T: type gen_qdrawutil_types.QTileRules, h: ptr cQTileRules): gen_qdrawutil_types.QTileRules =
   T(h: h)
-proc create*(T: type QTileRules, horizontalRule: gen_qnamespace.TileRule, verticalRule: gen_qnamespace.TileRule): QTileRules =
+proc create*(T: type gen_qdrawutil_types.QTileRules, horizontalRule: cint, verticalRule: cint): gen_qdrawutil_types.QTileRules =
 
-  QTileRules.init(fcQTileRules_new(cint(horizontalRule), cint(verticalRule)))
-proc create*(T: type QTileRules, ): QTileRules =
+  gen_qdrawutil_types.QTileRules.init(fcQTileRules_new(cint(horizontalRule), cint(verticalRule)))
+proc create*(T: type gen_qdrawutil_types.QTileRules, ): gen_qdrawutil_types.QTileRules =
 
-  QTileRules.init(fcQTileRules_new2())
-proc create*(T: type QTileRules, param1: QTileRules): QTileRules =
+  gen_qdrawutil_types.QTileRules.init(fcQTileRules_new2())
+proc create*(T: type gen_qdrawutil_types.QTileRules, param1: gen_qdrawutil_types.QTileRules): gen_qdrawutil_types.QTileRules =
 
-  QTileRules.init(fcQTileRules_new3(param1.h))
-proc create*(T: type QTileRules, rule: gen_qnamespace.TileRule): QTileRules =
+  gen_qdrawutil_types.QTileRules.init(fcQTileRules_new3(param1.h))
+proc create*(T: type gen_qdrawutil_types.QTileRules, rule: cint): gen_qdrawutil_types.QTileRules =
 
-  QTileRules.init(fcQTileRules_new4(cint(rule)))
-proc delete*(self: QTileRules) =
+  gen_qdrawutil_types.QTileRules.init(fcQTileRules_new4(cint(rule)))
+proc delete*(self: gen_qdrawutil_types.QTileRules) =
   fcQTileRules_delete(self.h)

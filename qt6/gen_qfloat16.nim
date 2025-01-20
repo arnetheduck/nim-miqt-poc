@@ -37,10 +37,6 @@ const cflags = gorge("pkg-config -cflags Qt6Widgets")
 import gen_qfloat16_types
 export gen_qfloat16_types
 
-import
-  gen_qnamespace
-export
-  gen_qnamespace
 
 type cqfloat16*{.exportc: "qfloat16", incompleteStruct.} = object
 
@@ -55,36 +51,36 @@ proc fcqfloat16_isNormal(self: pointer, ): bool {.importc: "qfloat16_isNormal".}
 proc fcqfloat16_delete(self: pointer) {.importc: "qfloat16_delete".}
 
 
-func init*(T: type qfloat16, h: ptr cqfloat16): qfloat16 =
+func init*(T: type gen_qfloat16_types.qfloat16, h: ptr cqfloat16): gen_qfloat16_types.qfloat16 =
   T(h: h)
-proc create*(T: type qfloat16, ): qfloat16 =
+proc create*(T: type gen_qfloat16_types.qfloat16, ): gen_qfloat16_types.qfloat16 =
 
-  qfloat16.init(fcqfloat16_new())
-proc create*(T: type qfloat16, param1: gen_qnamespace.Initialization): qfloat16 =
+  gen_qfloat16_types.qfloat16.init(fcqfloat16_new())
+proc create*(T: type gen_qfloat16_types.qfloat16, param1: cint): gen_qfloat16_types.qfloat16 =
 
-  qfloat16.init(fcqfloat16_new2(cint(param1)))
-proc create*(T: type qfloat16, f: float32): qfloat16 =
+  gen_qfloat16_types.qfloat16.init(fcqfloat16_new2(cint(param1)))
+proc create*(T: type gen_qfloat16_types.qfloat16, f: float32): gen_qfloat16_types.qfloat16 =
 
-  qfloat16.init(fcqfloat16_new3(f))
-proc isInf*(self: qfloat16, ): bool =
+  gen_qfloat16_types.qfloat16.init(fcqfloat16_new3(f))
+proc isInf*(self: gen_qfloat16_types.qfloat16, ): bool =
 
   fcqfloat16_isInf(self.h)
 
-proc isNaN*(self: qfloat16, ): bool =
+proc isNaN*(self: gen_qfloat16_types.qfloat16, ): bool =
 
   fcqfloat16_isNaN(self.h)
 
-proc isFinite*(self: qfloat16, ): bool =
+proc isFinite*(self: gen_qfloat16_types.qfloat16, ): bool =
 
   fcqfloat16_isFinite(self.h)
 
-proc fpClassify*(self: qfloat16, ): cint =
+proc fpClassify*(self: gen_qfloat16_types.qfloat16, ): cint =
 
   fcqfloat16_fpClassify(self.h)
 
-proc isNormal*(self: qfloat16, ): bool =
+proc isNormal*(self: gen_qfloat16_types.qfloat16, ): bool =
 
   fcqfloat16_isNormal(self.h)
 
-proc delete*(self: qfloat16) =
+proc delete*(self: gen_qfloat16_types.qfloat16) =
   fcqfloat16_delete(self.h)

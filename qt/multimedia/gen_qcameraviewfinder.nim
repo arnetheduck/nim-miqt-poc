@@ -42,7 +42,6 @@ import
   gen_qevent,
   gen_qmediaobject,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -58,7 +57,6 @@ export
   gen_qevent,
   gen_qmediaobject,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -192,956 +190,766 @@ proc fcQCameraViewfinder_staticMetaObject(): pointer {.importc: "QCameraViewfind
 proc fcQCameraViewfinder_delete(self: pointer) {.importc: "QCameraViewfinder_delete".}
 
 
-func init*(T: type QCameraViewfinder, h: ptr cQCameraViewfinder): QCameraViewfinder =
+func init*(T: type gen_qcameraviewfinder_types.QCameraViewfinder, h: ptr cQCameraViewfinder): gen_qcameraviewfinder_types.QCameraViewfinder =
   T(h: h)
-proc create*(T: type QCameraViewfinder, parent: gen_qwidget.QWidget): QCameraViewfinder =
+proc create*(T: type gen_qcameraviewfinder_types.QCameraViewfinder, parent: gen_qwidget.QWidget): gen_qcameraviewfinder_types.QCameraViewfinder =
 
-  QCameraViewfinder.init(fcQCameraViewfinder_new(parent.h))
-proc create*(T: type QCameraViewfinder, ): QCameraViewfinder =
+  gen_qcameraviewfinder_types.QCameraViewfinder.init(fcQCameraViewfinder_new(parent.h))
+proc create*(T: type gen_qcameraviewfinder_types.QCameraViewfinder, ): gen_qcameraviewfinder_types.QCameraViewfinder =
 
-  QCameraViewfinder.init(fcQCameraViewfinder_new2())
-proc metaObject*(self: QCameraViewfinder, ): gen_qobjectdefs.QMetaObject =
+  gen_qcameraviewfinder_types.QCameraViewfinder.init(fcQCameraViewfinder_new2())
+proc metaObject*(self: gen_qcameraviewfinder_types.QCameraViewfinder, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQCameraViewfinder_metaObject(self.h))
 
-proc metacast*(self: QCameraViewfinder, param1: cstring): pointer =
+proc metacast*(self: gen_qcameraviewfinder_types.QCameraViewfinder, param1: cstring): pointer =
 
   fcQCameraViewfinder_metacast(self.h, param1)
 
-proc metacall*(self: QCameraViewfinder, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qcameraviewfinder_types.QCameraViewfinder, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQCameraViewfinder_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QCameraViewfinder, s: cstring): string =
+proc tr*(_: type gen_qcameraviewfinder_types.QCameraViewfinder, s: cstring): string =
 
   let v_ms = fcQCameraViewfinder_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QCameraViewfinder, s: cstring): string =
+proc trUtf8*(_: type gen_qcameraviewfinder_types.QCameraViewfinder, s: cstring): string =
 
   let v_ms = fcQCameraViewfinder_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc mediaObject*(self: QCameraViewfinder, ): gen_qmediaobject.QMediaObject =
+proc mediaObject*(self: gen_qcameraviewfinder_types.QCameraViewfinder, ): gen_qmediaobject.QMediaObject =
 
   gen_qmediaobject.QMediaObject(h: fcQCameraViewfinder_mediaObject(self.h))
 
-proc tr2*(_: type QCameraViewfinder, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qcameraviewfinder_types.QCameraViewfinder, s: cstring, c: cstring): string =
 
   let v_ms = fcQCameraViewfinder_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QCameraViewfinder, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qcameraviewfinder_types.QCameraViewfinder, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQCameraViewfinder_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QCameraViewfinder, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qcameraviewfinder_types.QCameraViewfinder, s: cstring, c: cstring): string =
 
   let v_ms = fcQCameraViewfinder_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QCameraViewfinder, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qcameraviewfinder_types.QCameraViewfinder, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQCameraViewfinder_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QCameraViewfinder, ): gen_qobjectdefs.QMetaObject =
-
+proc QCameraViewfindermetaObject*(self: gen_qcameraviewfinder_types.QCameraViewfinder, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQCameraViewfinder_virtualbase_metaObject(self.h))
 
-type QCameraViewfindermetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QCameraViewfinder, slot: proc(super: QCameraViewfindermetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QCameraViewfindermetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qcameraviewfinder_types.QCameraViewfinder, slot: QCameraViewfindermetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QCameraViewfindermetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QCameraViewfindermetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCameraViewfinder_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCameraViewfinder_metaObject(self: ptr cQCameraViewfinder, slot: int): pointer {.exportc: "miqt_exec_callback_QCameraViewfinder_metaObject ".} =
-  type Cb = proc(super: QCameraViewfindermetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QCameraViewfinder(h: self), )
+  var nimfunc = cast[ptr QCameraViewfindermetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QCameraViewfinder, param1: cstring): pointer =
-
+proc QCameraViewfindermetacast*(self: gen_qcameraviewfinder_types.QCameraViewfinder, param1: cstring): pointer =
 
   fQCameraViewfinder_virtualbase_metacast(self.h, param1)
 
-type QCameraViewfindermetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QCameraViewfinder, slot: proc(super: QCameraViewfindermetacastBase, param1: cstring): pointer) =
+type QCameraViewfindermetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qcameraviewfinder_types.QCameraViewfinder, slot: QCameraViewfindermetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QCameraViewfindermetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QCameraViewfindermetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCameraViewfinder_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCameraViewfinder_metacast(self: ptr cQCameraViewfinder, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QCameraViewfinder_metacast ".} =
-  type Cb = proc(super: QCameraViewfindermetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QCameraViewfinder(h: self), param1)
+  var nimfunc = cast[ptr QCameraViewfindermetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QCameraViewfinder, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QCameraViewfindermetacall*(self: gen_qcameraviewfinder_types.QCameraViewfinder, param1: cint, param2: cint, param3: pointer): cint =
 
   fQCameraViewfinder_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QCameraViewfindermetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QCameraViewfinder, slot: proc(super: QCameraViewfindermetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QCameraViewfindermetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qcameraviewfinder_types.QCameraViewfinder, slot: QCameraViewfindermetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QCameraViewfindermetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QCameraViewfindermetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCameraViewfinder_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCameraViewfinder_metacall(self: ptr cQCameraViewfinder, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QCameraViewfinder_metacall ".} =
-  type Cb = proc(super: QCameraViewfindermetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QCameraViewfinder(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QCameraViewfindermetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_mediaObject(self: QCameraViewfinder, ): gen_qmediaobject.QMediaObject =
-
+proc QCameraViewfindermediaObject*(self: gen_qcameraviewfinder_types.QCameraViewfinder, ): gen_qmediaobject.QMediaObject =
 
   gen_qmediaobject.QMediaObject(h: fQCameraViewfinder_virtualbase_mediaObject(self.h))
 
-type QCameraViewfindermediaObjectBase* = proc(): gen_qmediaobject.QMediaObject
-proc onmediaObject*(self: QCameraViewfinder, slot: proc(super: QCameraViewfindermediaObjectBase): gen_qmediaobject.QMediaObject) =
+type QCameraViewfindermediaObjectProc* = proc(): gen_qmediaobject.QMediaObject
+proc onmediaObject*(self: gen_qcameraviewfinder_types.QCameraViewfinder, slot: QCameraViewfindermediaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QCameraViewfindermediaObjectBase): gen_qmediaobject.QMediaObject
-  var tmp = new Cb
+  var tmp = new QCameraViewfindermediaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCameraViewfinder_override_virtual_mediaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCameraViewfinder_mediaObject(self: ptr cQCameraViewfinder, slot: int): pointer {.exportc: "miqt_exec_callback_QCameraViewfinder_mediaObject ".} =
-  type Cb = proc(super: QCameraViewfindermediaObjectBase): gen_qmediaobject.QMediaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_mediaObject(QCameraViewfinder(h: self), )
+  var nimfunc = cast[ptr QCameraViewfindermediaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_setMediaObject(self: QCameraViewfinder, objectVal: gen_qmediaobject.QMediaObject): bool =
-
+proc QCameraViewfindersetMediaObject*(self: gen_qcameraviewfinder_types.QCameraViewfinder, objectVal: gen_qmediaobject.QMediaObject): bool =
 
   fQCameraViewfinder_virtualbase_setMediaObject(self.h, objectVal.h)
 
-type QCameraViewfindersetMediaObjectBase* = proc(objectVal: gen_qmediaobject.QMediaObject): bool
-proc onsetMediaObject*(self: QCameraViewfinder, slot: proc(super: QCameraViewfindersetMediaObjectBase, objectVal: gen_qmediaobject.QMediaObject): bool) =
+type QCameraViewfindersetMediaObjectProc* = proc(objectVal: gen_qmediaobject.QMediaObject): bool
+proc onsetMediaObject*(self: gen_qcameraviewfinder_types.QCameraViewfinder, slot: QCameraViewfindersetMediaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QCameraViewfindersetMediaObjectBase, objectVal: gen_qmediaobject.QMediaObject): bool
-  var tmp = new Cb
+  var tmp = new QCameraViewfindersetMediaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCameraViewfinder_override_virtual_setMediaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCameraViewfinder_setMediaObject(self: ptr cQCameraViewfinder, slot: int, objectVal: pointer): bool {.exportc: "miqt_exec_callback_QCameraViewfinder_setMediaObject ".} =
-  type Cb = proc(super: QCameraViewfindersetMediaObjectBase, objectVal: gen_qmediaobject.QMediaObject): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(objectVal: gen_qmediaobject.QMediaObject): auto =
-    callVirtualBase_setMediaObject(QCameraViewfinder(h: self), objectVal)
+  var nimfunc = cast[ptr QCameraViewfindersetMediaObjectProc](cast[pointer](slot))
   let slotval1 = gen_qmediaobject.QMediaObject(h: objectVal)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_sizeHint(self: QCameraViewfinder, ): gen_qsize.QSize =
-
+proc QCameraViewfindersizeHint*(self: gen_qcameraviewfinder_types.QCameraViewfinder, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQCameraViewfinder_virtualbase_sizeHint(self.h))
 
-type QCameraViewfindersizeHintBase* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: QCameraViewfinder, slot: proc(super: QCameraViewfindersizeHintBase): gen_qsize.QSize) =
+type QCameraViewfindersizeHintProc* = proc(): gen_qsize.QSize
+proc onsizeHint*(self: gen_qcameraviewfinder_types.QCameraViewfinder, slot: QCameraViewfindersizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QCameraViewfindersizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QCameraViewfindersizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCameraViewfinder_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCameraViewfinder_sizeHint(self: ptr cQCameraViewfinder, slot: int): pointer {.exportc: "miqt_exec_callback_QCameraViewfinder_sizeHint ".} =
-  type Cb = proc(super: QCameraViewfindersizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sizeHint(QCameraViewfinder(h: self), )
+  var nimfunc = cast[ptr QCameraViewfindersizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_event(self: QCameraViewfinder, event: gen_qcoreevent.QEvent): bool =
-
+proc QCameraViewfinderevent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qcoreevent.QEvent): bool =
 
   fQCameraViewfinder_virtualbase_event(self.h, event.h)
 
-type QCameraViewfindereventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QCameraViewfinder, slot: proc(super: QCameraViewfindereventBase, event: gen_qcoreevent.QEvent): bool) =
+type QCameraViewfindereventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, slot: QCameraViewfindereventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCameraViewfindereventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QCameraViewfindereventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCameraViewfinder_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCameraViewfinder_event(self: ptr cQCameraViewfinder, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QCameraViewfinder_event ".} =
-  type Cb = proc(super: QCameraViewfindereventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QCameraViewfinder(h: self), event)
+  var nimfunc = cast[ptr QCameraViewfindereventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_showEvent(self: QCameraViewfinder, event: gen_qevent.QShowEvent): void =
-
+proc QCameraViewfindershowEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qevent.QShowEvent): void =
 
   fQCameraViewfinder_virtualbase_showEvent(self.h, event.h)
 
-type QCameraViewfindershowEventBase* = proc(event: gen_qevent.QShowEvent): void
-proc onshowEvent*(self: QCameraViewfinder, slot: proc(super: QCameraViewfindershowEventBase, event: gen_qevent.QShowEvent): void) =
+type QCameraViewfindershowEventProc* = proc(event: gen_qevent.QShowEvent): void
+proc onshowEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, slot: QCameraViewfindershowEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCameraViewfindershowEventBase, event: gen_qevent.QShowEvent): void
-  var tmp = new Cb
+  var tmp = new QCameraViewfindershowEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCameraViewfinder_override_virtual_showEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCameraViewfinder_showEvent(self: ptr cQCameraViewfinder, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QCameraViewfinder_showEvent ".} =
-  type Cb = proc(super: QCameraViewfindershowEventBase, event: gen_qevent.QShowEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QShowEvent): auto =
-    callVirtualBase_showEvent(QCameraViewfinder(h: self), event)
+  var nimfunc = cast[ptr QCameraViewfindershowEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QShowEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hideEvent(self: QCameraViewfinder, event: gen_qevent.QHideEvent): void =
-
+  nimfunc[](slotval1)
+proc QCameraViewfinderhideEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qevent.QHideEvent): void =
 
   fQCameraViewfinder_virtualbase_hideEvent(self.h, event.h)
 
-type QCameraViewfinderhideEventBase* = proc(event: gen_qevent.QHideEvent): void
-proc onhideEvent*(self: QCameraViewfinder, slot: proc(super: QCameraViewfinderhideEventBase, event: gen_qevent.QHideEvent): void) =
+type QCameraViewfinderhideEventProc* = proc(event: gen_qevent.QHideEvent): void
+proc onhideEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, slot: QCameraViewfinderhideEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCameraViewfinderhideEventBase, event: gen_qevent.QHideEvent): void
-  var tmp = new Cb
+  var tmp = new QCameraViewfinderhideEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCameraViewfinder_override_virtual_hideEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCameraViewfinder_hideEvent(self: ptr cQCameraViewfinder, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QCameraViewfinder_hideEvent ".} =
-  type Cb = proc(super: QCameraViewfinderhideEventBase, event: gen_qevent.QHideEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QHideEvent): auto =
-    callVirtualBase_hideEvent(QCameraViewfinder(h: self), event)
+  var nimfunc = cast[ptr QCameraViewfinderhideEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QHideEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_resizeEvent(self: QCameraViewfinder, event: gen_qevent.QResizeEvent): void =
-
+  nimfunc[](slotval1)
+proc QCameraViewfinderresizeEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qevent.QResizeEvent): void =
 
   fQCameraViewfinder_virtualbase_resizeEvent(self.h, event.h)
 
-type QCameraViewfinderresizeEventBase* = proc(event: gen_qevent.QResizeEvent): void
-proc onresizeEvent*(self: QCameraViewfinder, slot: proc(super: QCameraViewfinderresizeEventBase, event: gen_qevent.QResizeEvent): void) =
+type QCameraViewfinderresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
+proc onresizeEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, slot: QCameraViewfinderresizeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCameraViewfinderresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var tmp = new Cb
+  var tmp = new QCameraViewfinderresizeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCameraViewfinder_override_virtual_resizeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCameraViewfinder_resizeEvent(self: ptr cQCameraViewfinder, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QCameraViewfinder_resizeEvent ".} =
-  type Cb = proc(super: QCameraViewfinderresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QResizeEvent): auto =
-    callVirtualBase_resizeEvent(QCameraViewfinder(h: self), event)
+  var nimfunc = cast[ptr QCameraViewfinderresizeEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QResizeEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_moveEvent(self: QCameraViewfinder, event: gen_qevent.QMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QCameraViewfindermoveEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qevent.QMoveEvent): void =
 
   fQCameraViewfinder_virtualbase_moveEvent(self.h, event.h)
 
-type QCameraViewfindermoveEventBase* = proc(event: gen_qevent.QMoveEvent): void
-proc onmoveEvent*(self: QCameraViewfinder, slot: proc(super: QCameraViewfindermoveEventBase, event: gen_qevent.QMoveEvent): void) =
+type QCameraViewfindermoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
+proc onmoveEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, slot: QCameraViewfindermoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCameraViewfindermoveEventBase, event: gen_qevent.QMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QCameraViewfindermoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCameraViewfinder_override_virtual_moveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCameraViewfinder_moveEvent(self: ptr cQCameraViewfinder, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QCameraViewfinder_moveEvent ".} =
-  type Cb = proc(super: QCameraViewfindermoveEventBase, event: gen_qevent.QMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMoveEvent): auto =
-    callVirtualBase_moveEvent(QCameraViewfinder(h: self), event)
+  var nimfunc = cast[ptr QCameraViewfindermoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_paintEvent(self: QCameraViewfinder, event: gen_qevent.QPaintEvent): void =
-
+  nimfunc[](slotval1)
+proc QCameraViewfinderpaintEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qevent.QPaintEvent): void =
 
   fQCameraViewfinder_virtualbase_paintEvent(self.h, event.h)
 
-type QCameraViewfinderpaintEventBase* = proc(event: gen_qevent.QPaintEvent): void
-proc onpaintEvent*(self: QCameraViewfinder, slot: proc(super: QCameraViewfinderpaintEventBase, event: gen_qevent.QPaintEvent): void) =
+type QCameraViewfinderpaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
+proc onpaintEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, slot: QCameraViewfinderpaintEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCameraViewfinderpaintEventBase, event: gen_qevent.QPaintEvent): void
-  var tmp = new Cb
+  var tmp = new QCameraViewfinderpaintEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCameraViewfinder_override_virtual_paintEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCameraViewfinder_paintEvent(self: ptr cQCameraViewfinder, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QCameraViewfinder_paintEvent ".} =
-  type Cb = proc(super: QCameraViewfinderpaintEventBase, event: gen_qevent.QPaintEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QPaintEvent): auto =
-    callVirtualBase_paintEvent(QCameraViewfinder(h: self), event)
+  var nimfunc = cast[ptr QCameraViewfinderpaintEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QPaintEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_devType(self: QCameraViewfinder, ): cint =
-
+  nimfunc[](slotval1)
+proc QCameraViewfinderdevType*(self: gen_qcameraviewfinder_types.QCameraViewfinder, ): cint =
 
   fQCameraViewfinder_virtualbase_devType(self.h)
 
-type QCameraViewfinderdevTypeBase* = proc(): cint
-proc ondevType*(self: QCameraViewfinder, slot: proc(super: QCameraViewfinderdevTypeBase): cint) =
+type QCameraViewfinderdevTypeProc* = proc(): cint
+proc ondevType*(self: gen_qcameraviewfinder_types.QCameraViewfinder, slot: QCameraViewfinderdevTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: QCameraViewfinderdevTypeBase): cint
-  var tmp = new Cb
+  var tmp = new QCameraViewfinderdevTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCameraViewfinder_override_virtual_devType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCameraViewfinder_devType(self: ptr cQCameraViewfinder, slot: int): cint {.exportc: "miqt_exec_callback_QCameraViewfinder_devType ".} =
-  type Cb = proc(super: QCameraViewfinderdevTypeBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_devType(QCameraViewfinder(h: self), )
+  var nimfunc = cast[ptr QCameraViewfinderdevTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setVisible(self: QCameraViewfinder, visible: bool): void =
-
+proc QCameraViewfindersetVisible*(self: gen_qcameraviewfinder_types.QCameraViewfinder, visible: bool): void =
 
   fQCameraViewfinder_virtualbase_setVisible(self.h, visible)
 
-type QCameraViewfindersetVisibleBase* = proc(visible: bool): void
-proc onsetVisible*(self: QCameraViewfinder, slot: proc(super: QCameraViewfindersetVisibleBase, visible: bool): void) =
+type QCameraViewfindersetVisibleProc* = proc(visible: bool): void
+proc onsetVisible*(self: gen_qcameraviewfinder_types.QCameraViewfinder, slot: QCameraViewfindersetVisibleProc) =
   # TODO check subclass
-  type Cb = proc(super: QCameraViewfindersetVisibleBase, visible: bool): void
-  var tmp = new Cb
+  var tmp = new QCameraViewfindersetVisibleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCameraViewfinder_override_virtual_setVisible(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCameraViewfinder_setVisible(self: ptr cQCameraViewfinder, slot: int, visible: bool): void {.exportc: "miqt_exec_callback_QCameraViewfinder_setVisible ".} =
-  type Cb = proc(super: QCameraViewfindersetVisibleBase, visible: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(visible: bool): auto =
-    callVirtualBase_setVisible(QCameraViewfinder(h: self), visible)
+  var nimfunc = cast[ptr QCameraViewfindersetVisibleProc](cast[pointer](slot))
   let slotval1 = visible
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_minimumSizeHint(self: QCameraViewfinder, ): gen_qsize.QSize =
-
+  nimfunc[](slotval1)
+proc QCameraViewfinderminimumSizeHint*(self: gen_qcameraviewfinder_types.QCameraViewfinder, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQCameraViewfinder_virtualbase_minimumSizeHint(self.h))
 
-type QCameraViewfinderminimumSizeHintBase* = proc(): gen_qsize.QSize
-proc onminimumSizeHint*(self: QCameraViewfinder, slot: proc(super: QCameraViewfinderminimumSizeHintBase): gen_qsize.QSize) =
+type QCameraViewfinderminimumSizeHintProc* = proc(): gen_qsize.QSize
+proc onminimumSizeHint*(self: gen_qcameraviewfinder_types.QCameraViewfinder, slot: QCameraViewfinderminimumSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QCameraViewfinderminimumSizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QCameraViewfinderminimumSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCameraViewfinder_override_virtual_minimumSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCameraViewfinder_minimumSizeHint(self: ptr cQCameraViewfinder, slot: int): pointer {.exportc: "miqt_exec_callback_QCameraViewfinder_minimumSizeHint ".} =
-  type Cb = proc(super: QCameraViewfinderminimumSizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_minimumSizeHint(QCameraViewfinder(h: self), )
+  var nimfunc = cast[ptr QCameraViewfinderminimumSizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_heightForWidth(self: QCameraViewfinder, param1: cint): cint =
-
+proc QCameraViewfinderheightForWidth*(self: gen_qcameraviewfinder_types.QCameraViewfinder, param1: cint): cint =
 
   fQCameraViewfinder_virtualbase_heightForWidth(self.h, param1)
 
-type QCameraViewfinderheightForWidthBase* = proc(param1: cint): cint
-proc onheightForWidth*(self: QCameraViewfinder, slot: proc(super: QCameraViewfinderheightForWidthBase, param1: cint): cint) =
+type QCameraViewfinderheightForWidthProc* = proc(param1: cint): cint
+proc onheightForWidth*(self: gen_qcameraviewfinder_types.QCameraViewfinder, slot: QCameraViewfinderheightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QCameraViewfinderheightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QCameraViewfinderheightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCameraViewfinder_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCameraViewfinder_heightForWidth(self: ptr cQCameraViewfinder, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QCameraViewfinder_heightForWidth ".} =
-  type Cb = proc(super: QCameraViewfinderheightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_heightForWidth(QCameraViewfinder(h: self), param1)
+  var nimfunc = cast[ptr QCameraViewfinderheightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_hasHeightForWidth(self: QCameraViewfinder, ): bool =
-
+proc QCameraViewfinderhasHeightForWidth*(self: gen_qcameraviewfinder_types.QCameraViewfinder, ): bool =
 
   fQCameraViewfinder_virtualbase_hasHeightForWidth(self.h)
 
-type QCameraViewfinderhasHeightForWidthBase* = proc(): bool
-proc onhasHeightForWidth*(self: QCameraViewfinder, slot: proc(super: QCameraViewfinderhasHeightForWidthBase): bool) =
+type QCameraViewfinderhasHeightForWidthProc* = proc(): bool
+proc onhasHeightForWidth*(self: gen_qcameraviewfinder_types.QCameraViewfinder, slot: QCameraViewfinderhasHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QCameraViewfinderhasHeightForWidthBase): bool
-  var tmp = new Cb
+  var tmp = new QCameraViewfinderhasHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCameraViewfinder_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCameraViewfinder_hasHeightForWidth(self: ptr cQCameraViewfinder, slot: int): bool {.exportc: "miqt_exec_callback_QCameraViewfinder_hasHeightForWidth ".} =
-  type Cb = proc(super: QCameraViewfinderhasHeightForWidthBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasHeightForWidth(QCameraViewfinder(h: self), )
+  var nimfunc = cast[ptr QCameraViewfinderhasHeightForWidthProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_paintEngine(self: QCameraViewfinder, ): gen_qpaintengine.QPaintEngine =
-
+proc QCameraViewfinderpaintEngine*(self: gen_qcameraviewfinder_types.QCameraViewfinder, ): gen_qpaintengine.QPaintEngine =
 
   gen_qpaintengine.QPaintEngine(h: fQCameraViewfinder_virtualbase_paintEngine(self.h))
 
-type QCameraViewfinderpaintEngineBase* = proc(): gen_qpaintengine.QPaintEngine
-proc onpaintEngine*(self: QCameraViewfinder, slot: proc(super: QCameraViewfinderpaintEngineBase): gen_qpaintengine.QPaintEngine) =
+type QCameraViewfinderpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
+proc onpaintEngine*(self: gen_qcameraviewfinder_types.QCameraViewfinder, slot: QCameraViewfinderpaintEngineProc) =
   # TODO check subclass
-  type Cb = proc(super: QCameraViewfinderpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var tmp = new Cb
+  var tmp = new QCameraViewfinderpaintEngineProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCameraViewfinder_override_virtual_paintEngine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCameraViewfinder_paintEngine(self: ptr cQCameraViewfinder, slot: int): pointer {.exportc: "miqt_exec_callback_QCameraViewfinder_paintEngine ".} =
-  type Cb = proc(super: QCameraViewfinderpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_paintEngine(QCameraViewfinder(h: self), )
+  var nimfunc = cast[ptr QCameraViewfinderpaintEngineProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_mousePressEvent(self: QCameraViewfinder, event: gen_qevent.QMouseEvent): void =
-
+proc QCameraViewfindermousePressEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qevent.QMouseEvent): void =
 
   fQCameraViewfinder_virtualbase_mousePressEvent(self.h, event.h)
 
-type QCameraViewfindermousePressEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmousePressEvent*(self: QCameraViewfinder, slot: proc(super: QCameraViewfindermousePressEventBase, event: gen_qevent.QMouseEvent): void) =
+type QCameraViewfindermousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmousePressEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, slot: QCameraViewfindermousePressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCameraViewfindermousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QCameraViewfindermousePressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCameraViewfinder_override_virtual_mousePressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCameraViewfinder_mousePressEvent(self: ptr cQCameraViewfinder, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QCameraViewfinder_mousePressEvent ".} =
-  type Cb = proc(super: QCameraViewfindermousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mousePressEvent(QCameraViewfinder(h: self), event)
+  var nimfunc = cast[ptr QCameraViewfindermousePressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseReleaseEvent(self: QCameraViewfinder, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QCameraViewfindermouseReleaseEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qevent.QMouseEvent): void =
 
   fQCameraViewfinder_virtualbase_mouseReleaseEvent(self.h, event.h)
 
-type QCameraViewfindermouseReleaseEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseReleaseEvent*(self: QCameraViewfinder, slot: proc(super: QCameraViewfindermouseReleaseEventBase, event: gen_qevent.QMouseEvent): void) =
+type QCameraViewfindermouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseReleaseEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, slot: QCameraViewfindermouseReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCameraViewfindermouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QCameraViewfindermouseReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCameraViewfinder_override_virtual_mouseReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCameraViewfinder_mouseReleaseEvent(self: ptr cQCameraViewfinder, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QCameraViewfinder_mouseReleaseEvent ".} =
-  type Cb = proc(super: QCameraViewfindermouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseReleaseEvent(QCameraViewfinder(h: self), event)
+  var nimfunc = cast[ptr QCameraViewfindermouseReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseDoubleClickEvent(self: QCameraViewfinder, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QCameraViewfindermouseDoubleClickEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qevent.QMouseEvent): void =
 
   fQCameraViewfinder_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
-type QCameraViewfindermouseDoubleClickEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseDoubleClickEvent*(self: QCameraViewfinder, slot: proc(super: QCameraViewfindermouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void) =
+type QCameraViewfindermouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseDoubleClickEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, slot: QCameraViewfindermouseDoubleClickEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCameraViewfindermouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QCameraViewfindermouseDoubleClickEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCameraViewfinder_override_virtual_mouseDoubleClickEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCameraViewfinder_mouseDoubleClickEvent(self: ptr cQCameraViewfinder, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QCameraViewfinder_mouseDoubleClickEvent ".} =
-  type Cb = proc(super: QCameraViewfindermouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseDoubleClickEvent(QCameraViewfinder(h: self), event)
+  var nimfunc = cast[ptr QCameraViewfindermouseDoubleClickEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseMoveEvent(self: QCameraViewfinder, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QCameraViewfindermouseMoveEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qevent.QMouseEvent): void =
 
   fQCameraViewfinder_virtualbase_mouseMoveEvent(self.h, event.h)
 
-type QCameraViewfindermouseMoveEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseMoveEvent*(self: QCameraViewfinder, slot: proc(super: QCameraViewfindermouseMoveEventBase, event: gen_qevent.QMouseEvent): void) =
+type QCameraViewfindermouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseMoveEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, slot: QCameraViewfindermouseMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCameraViewfindermouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QCameraViewfindermouseMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCameraViewfinder_override_virtual_mouseMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCameraViewfinder_mouseMoveEvent(self: ptr cQCameraViewfinder, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QCameraViewfinder_mouseMoveEvent ".} =
-  type Cb = proc(super: QCameraViewfindermouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseMoveEvent(QCameraViewfinder(h: self), event)
+  var nimfunc = cast[ptr QCameraViewfindermouseMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_wheelEvent(self: QCameraViewfinder, event: gen_qevent.QWheelEvent): void =
-
+  nimfunc[](slotval1)
+proc QCameraViewfinderwheelEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qevent.QWheelEvent): void =
 
   fQCameraViewfinder_virtualbase_wheelEvent(self.h, event.h)
 
-type QCameraViewfinderwheelEventBase* = proc(event: gen_qevent.QWheelEvent): void
-proc onwheelEvent*(self: QCameraViewfinder, slot: proc(super: QCameraViewfinderwheelEventBase, event: gen_qevent.QWheelEvent): void) =
+type QCameraViewfinderwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
+proc onwheelEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, slot: QCameraViewfinderwheelEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCameraViewfinderwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var tmp = new Cb
+  var tmp = new QCameraViewfinderwheelEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCameraViewfinder_override_virtual_wheelEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCameraViewfinder_wheelEvent(self: ptr cQCameraViewfinder, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QCameraViewfinder_wheelEvent ".} =
-  type Cb = proc(super: QCameraViewfinderwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QWheelEvent): auto =
-    callVirtualBase_wheelEvent(QCameraViewfinder(h: self), event)
+  var nimfunc = cast[ptr QCameraViewfinderwheelEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QWheelEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyPressEvent(self: QCameraViewfinder, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QCameraViewfinderkeyPressEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qevent.QKeyEvent): void =
 
   fQCameraViewfinder_virtualbase_keyPressEvent(self.h, event.h)
 
-type QCameraViewfinderkeyPressEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyPressEvent*(self: QCameraViewfinder, slot: proc(super: QCameraViewfinderkeyPressEventBase, event: gen_qevent.QKeyEvent): void) =
+type QCameraViewfinderkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyPressEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, slot: QCameraViewfinderkeyPressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCameraViewfinderkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QCameraViewfinderkeyPressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCameraViewfinder_override_virtual_keyPressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCameraViewfinder_keyPressEvent(self: ptr cQCameraViewfinder, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QCameraViewfinder_keyPressEvent ".} =
-  type Cb = proc(super: QCameraViewfinderkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyPressEvent(QCameraViewfinder(h: self), event)
+  var nimfunc = cast[ptr QCameraViewfinderkeyPressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyReleaseEvent(self: QCameraViewfinder, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QCameraViewfinderkeyReleaseEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qevent.QKeyEvent): void =
 
   fQCameraViewfinder_virtualbase_keyReleaseEvent(self.h, event.h)
 
-type QCameraViewfinderkeyReleaseEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyReleaseEvent*(self: QCameraViewfinder, slot: proc(super: QCameraViewfinderkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void) =
+type QCameraViewfinderkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyReleaseEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, slot: QCameraViewfinderkeyReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCameraViewfinderkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QCameraViewfinderkeyReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCameraViewfinder_override_virtual_keyReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCameraViewfinder_keyReleaseEvent(self: ptr cQCameraViewfinder, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QCameraViewfinder_keyReleaseEvent ".} =
-  type Cb = proc(super: QCameraViewfinderkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyReleaseEvent(QCameraViewfinder(h: self), event)
+  var nimfunc = cast[ptr QCameraViewfinderkeyReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusInEvent(self: QCameraViewfinder, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QCameraViewfinderfocusInEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qevent.QFocusEvent): void =
 
   fQCameraViewfinder_virtualbase_focusInEvent(self.h, event.h)
 
-type QCameraViewfinderfocusInEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusInEvent*(self: QCameraViewfinder, slot: proc(super: QCameraViewfinderfocusInEventBase, event: gen_qevent.QFocusEvent): void) =
+type QCameraViewfinderfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusInEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, slot: QCameraViewfinderfocusInEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCameraViewfinderfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QCameraViewfinderfocusInEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCameraViewfinder_override_virtual_focusInEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCameraViewfinder_focusInEvent(self: ptr cQCameraViewfinder, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QCameraViewfinder_focusInEvent ".} =
-  type Cb = proc(super: QCameraViewfinderfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusInEvent(QCameraViewfinder(h: self), event)
+  var nimfunc = cast[ptr QCameraViewfinderfocusInEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusOutEvent(self: QCameraViewfinder, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QCameraViewfinderfocusOutEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qevent.QFocusEvent): void =
 
   fQCameraViewfinder_virtualbase_focusOutEvent(self.h, event.h)
 
-type QCameraViewfinderfocusOutEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusOutEvent*(self: QCameraViewfinder, slot: proc(super: QCameraViewfinderfocusOutEventBase, event: gen_qevent.QFocusEvent): void) =
+type QCameraViewfinderfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusOutEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, slot: QCameraViewfinderfocusOutEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCameraViewfinderfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QCameraViewfinderfocusOutEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCameraViewfinder_override_virtual_focusOutEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCameraViewfinder_focusOutEvent(self: ptr cQCameraViewfinder, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QCameraViewfinder_focusOutEvent ".} =
-  type Cb = proc(super: QCameraViewfinderfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusOutEvent(QCameraViewfinder(h: self), event)
+  var nimfunc = cast[ptr QCameraViewfinderfocusOutEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_enterEvent(self: QCameraViewfinder, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QCameraViewfinderenterEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qcoreevent.QEvent): void =
 
   fQCameraViewfinder_virtualbase_enterEvent(self.h, event.h)
 
-type QCameraViewfinderenterEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onenterEvent*(self: QCameraViewfinder, slot: proc(super: QCameraViewfinderenterEventBase, event: gen_qcoreevent.QEvent): void) =
+type QCameraViewfinderenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onenterEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, slot: QCameraViewfinderenterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCameraViewfinderenterEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QCameraViewfinderenterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCameraViewfinder_override_virtual_enterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCameraViewfinder_enterEvent(self: ptr cQCameraViewfinder, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QCameraViewfinder_enterEvent ".} =
-  type Cb = proc(super: QCameraViewfinderenterEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_enterEvent(QCameraViewfinder(h: self), event)
+  var nimfunc = cast[ptr QCameraViewfinderenterEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_leaveEvent(self: QCameraViewfinder, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QCameraViewfinderleaveEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qcoreevent.QEvent): void =
 
   fQCameraViewfinder_virtualbase_leaveEvent(self.h, event.h)
 
-type QCameraViewfinderleaveEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onleaveEvent*(self: QCameraViewfinder, slot: proc(super: QCameraViewfinderleaveEventBase, event: gen_qcoreevent.QEvent): void) =
+type QCameraViewfinderleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onleaveEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, slot: QCameraViewfinderleaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCameraViewfinderleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QCameraViewfinderleaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCameraViewfinder_override_virtual_leaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCameraViewfinder_leaveEvent(self: ptr cQCameraViewfinder, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QCameraViewfinder_leaveEvent ".} =
-  type Cb = proc(super: QCameraViewfinderleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_leaveEvent(QCameraViewfinder(h: self), event)
+  var nimfunc = cast[ptr QCameraViewfinderleaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_closeEvent(self: QCameraViewfinder, event: gen_qevent.QCloseEvent): void =
-
+  nimfunc[](slotval1)
+proc QCameraViewfindercloseEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qevent.QCloseEvent): void =
 
   fQCameraViewfinder_virtualbase_closeEvent(self.h, event.h)
 
-type QCameraViewfindercloseEventBase* = proc(event: gen_qevent.QCloseEvent): void
-proc oncloseEvent*(self: QCameraViewfinder, slot: proc(super: QCameraViewfindercloseEventBase, event: gen_qevent.QCloseEvent): void) =
+type QCameraViewfindercloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
+proc oncloseEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, slot: QCameraViewfindercloseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCameraViewfindercloseEventBase, event: gen_qevent.QCloseEvent): void
-  var tmp = new Cb
+  var tmp = new QCameraViewfindercloseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCameraViewfinder_override_virtual_closeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCameraViewfinder_closeEvent(self: ptr cQCameraViewfinder, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QCameraViewfinder_closeEvent ".} =
-  type Cb = proc(super: QCameraViewfindercloseEventBase, event: gen_qevent.QCloseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QCloseEvent): auto =
-    callVirtualBase_closeEvent(QCameraViewfinder(h: self), event)
+  var nimfunc = cast[ptr QCameraViewfindercloseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QCloseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_contextMenuEvent(self: QCameraViewfinder, event: gen_qevent.QContextMenuEvent): void =
-
+  nimfunc[](slotval1)
+proc QCameraViewfindercontextMenuEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qevent.QContextMenuEvent): void =
 
   fQCameraViewfinder_virtualbase_contextMenuEvent(self.h, event.h)
 
-type QCameraViewfindercontextMenuEventBase* = proc(event: gen_qevent.QContextMenuEvent): void
-proc oncontextMenuEvent*(self: QCameraViewfinder, slot: proc(super: QCameraViewfindercontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void) =
+type QCameraViewfindercontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
+proc oncontextMenuEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, slot: QCameraViewfindercontextMenuEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCameraViewfindercontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var tmp = new Cb
+  var tmp = new QCameraViewfindercontextMenuEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCameraViewfinder_override_virtual_contextMenuEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCameraViewfinder_contextMenuEvent(self: ptr cQCameraViewfinder, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QCameraViewfinder_contextMenuEvent ".} =
-  type Cb = proc(super: QCameraViewfindercontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QContextMenuEvent): auto =
-    callVirtualBase_contextMenuEvent(QCameraViewfinder(h: self), event)
+  var nimfunc = cast[ptr QCameraViewfindercontextMenuEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QContextMenuEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_tabletEvent(self: QCameraViewfinder, event: gen_qevent.QTabletEvent): void =
-
+  nimfunc[](slotval1)
+proc QCameraViewfindertabletEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qevent.QTabletEvent): void =
 
   fQCameraViewfinder_virtualbase_tabletEvent(self.h, event.h)
 
-type QCameraViewfindertabletEventBase* = proc(event: gen_qevent.QTabletEvent): void
-proc ontabletEvent*(self: QCameraViewfinder, slot: proc(super: QCameraViewfindertabletEventBase, event: gen_qevent.QTabletEvent): void) =
+type QCameraViewfindertabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
+proc ontabletEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, slot: QCameraViewfindertabletEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCameraViewfindertabletEventBase, event: gen_qevent.QTabletEvent): void
-  var tmp = new Cb
+  var tmp = new QCameraViewfindertabletEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCameraViewfinder_override_virtual_tabletEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCameraViewfinder_tabletEvent(self: ptr cQCameraViewfinder, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QCameraViewfinder_tabletEvent ".} =
-  type Cb = proc(super: QCameraViewfindertabletEventBase, event: gen_qevent.QTabletEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QTabletEvent): auto =
-    callVirtualBase_tabletEvent(QCameraViewfinder(h: self), event)
+  var nimfunc = cast[ptr QCameraViewfindertabletEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QTabletEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_actionEvent(self: QCameraViewfinder, event: gen_qevent.QActionEvent): void =
-
+  nimfunc[](slotval1)
+proc QCameraViewfinderactionEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qevent.QActionEvent): void =
 
   fQCameraViewfinder_virtualbase_actionEvent(self.h, event.h)
 
-type QCameraViewfinderactionEventBase* = proc(event: gen_qevent.QActionEvent): void
-proc onactionEvent*(self: QCameraViewfinder, slot: proc(super: QCameraViewfinderactionEventBase, event: gen_qevent.QActionEvent): void) =
+type QCameraViewfinderactionEventProc* = proc(event: gen_qevent.QActionEvent): void
+proc onactionEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, slot: QCameraViewfinderactionEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCameraViewfinderactionEventBase, event: gen_qevent.QActionEvent): void
-  var tmp = new Cb
+  var tmp = new QCameraViewfinderactionEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCameraViewfinder_override_virtual_actionEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCameraViewfinder_actionEvent(self: ptr cQCameraViewfinder, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QCameraViewfinder_actionEvent ".} =
-  type Cb = proc(super: QCameraViewfinderactionEventBase, event: gen_qevent.QActionEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QActionEvent): auto =
-    callVirtualBase_actionEvent(QCameraViewfinder(h: self), event)
+  var nimfunc = cast[ptr QCameraViewfinderactionEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QActionEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragEnterEvent(self: QCameraViewfinder, event: gen_qevent.QDragEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QCameraViewfinderdragEnterEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qevent.QDragEnterEvent): void =
 
   fQCameraViewfinder_virtualbase_dragEnterEvent(self.h, event.h)
 
-type QCameraViewfinderdragEnterEventBase* = proc(event: gen_qevent.QDragEnterEvent): void
-proc ondragEnterEvent*(self: QCameraViewfinder, slot: proc(super: QCameraViewfinderdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void) =
+type QCameraViewfinderdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
+proc ondragEnterEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, slot: QCameraViewfinderdragEnterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCameraViewfinderdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QCameraViewfinderdragEnterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCameraViewfinder_override_virtual_dragEnterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCameraViewfinder_dragEnterEvent(self: ptr cQCameraViewfinder, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QCameraViewfinder_dragEnterEvent ".} =
-  type Cb = proc(super: QCameraViewfinderdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragEnterEvent): auto =
-    callVirtualBase_dragEnterEvent(QCameraViewfinder(h: self), event)
+  var nimfunc = cast[ptr QCameraViewfinderdragEnterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragMoveEvent(self: QCameraViewfinder, event: gen_qevent.QDragMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QCameraViewfinderdragMoveEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qevent.QDragMoveEvent): void =
 
   fQCameraViewfinder_virtualbase_dragMoveEvent(self.h, event.h)
 
-type QCameraViewfinderdragMoveEventBase* = proc(event: gen_qevent.QDragMoveEvent): void
-proc ondragMoveEvent*(self: QCameraViewfinder, slot: proc(super: QCameraViewfinderdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void) =
+type QCameraViewfinderdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
+proc ondragMoveEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, slot: QCameraViewfinderdragMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCameraViewfinderdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QCameraViewfinderdragMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCameraViewfinder_override_virtual_dragMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCameraViewfinder_dragMoveEvent(self: ptr cQCameraViewfinder, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QCameraViewfinder_dragMoveEvent ".} =
-  type Cb = proc(super: QCameraViewfinderdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragMoveEvent): auto =
-    callVirtualBase_dragMoveEvent(QCameraViewfinder(h: self), event)
+  var nimfunc = cast[ptr QCameraViewfinderdragMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragLeaveEvent(self: QCameraViewfinder, event: gen_qevent.QDragLeaveEvent): void =
-
+  nimfunc[](slotval1)
+proc QCameraViewfinderdragLeaveEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qevent.QDragLeaveEvent): void =
 
   fQCameraViewfinder_virtualbase_dragLeaveEvent(self.h, event.h)
 
-type QCameraViewfinderdragLeaveEventBase* = proc(event: gen_qevent.QDragLeaveEvent): void
-proc ondragLeaveEvent*(self: QCameraViewfinder, slot: proc(super: QCameraViewfinderdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void) =
+type QCameraViewfinderdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
+proc ondragLeaveEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, slot: QCameraViewfinderdragLeaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCameraViewfinderdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var tmp = new Cb
+  var tmp = new QCameraViewfinderdragLeaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCameraViewfinder_override_virtual_dragLeaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCameraViewfinder_dragLeaveEvent(self: ptr cQCameraViewfinder, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QCameraViewfinder_dragLeaveEvent ".} =
-  type Cb = proc(super: QCameraViewfinderdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragLeaveEvent): auto =
-    callVirtualBase_dragLeaveEvent(QCameraViewfinder(h: self), event)
+  var nimfunc = cast[ptr QCameraViewfinderdragLeaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragLeaveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dropEvent(self: QCameraViewfinder, event: gen_qevent.QDropEvent): void =
-
+  nimfunc[](slotval1)
+proc QCameraViewfinderdropEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qevent.QDropEvent): void =
 
   fQCameraViewfinder_virtualbase_dropEvent(self.h, event.h)
 
-type QCameraViewfinderdropEventBase* = proc(event: gen_qevent.QDropEvent): void
-proc ondropEvent*(self: QCameraViewfinder, slot: proc(super: QCameraViewfinderdropEventBase, event: gen_qevent.QDropEvent): void) =
+type QCameraViewfinderdropEventProc* = proc(event: gen_qevent.QDropEvent): void
+proc ondropEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, slot: QCameraViewfinderdropEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCameraViewfinderdropEventBase, event: gen_qevent.QDropEvent): void
-  var tmp = new Cb
+  var tmp = new QCameraViewfinderdropEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCameraViewfinder_override_virtual_dropEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCameraViewfinder_dropEvent(self: ptr cQCameraViewfinder, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QCameraViewfinder_dropEvent ".} =
-  type Cb = proc(super: QCameraViewfinderdropEventBase, event: gen_qevent.QDropEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDropEvent): auto =
-    callVirtualBase_dropEvent(QCameraViewfinder(h: self), event)
+  var nimfunc = cast[ptr QCameraViewfinderdropEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDropEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_nativeEvent(self: QCameraViewfinder, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
+  nimfunc[](slotval1)
+proc QCameraViewfindernativeEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
 
   fQCameraViewfinder_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
-type QCameraViewfindernativeEventBase* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-proc onnativeEvent*(self: QCameraViewfinder, slot: proc(super: QCameraViewfindernativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool) =
+type QCameraViewfindernativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
+proc onnativeEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, slot: QCameraViewfindernativeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCameraViewfindernativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-  var tmp = new Cb
+  var tmp = new QCameraViewfindernativeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCameraViewfinder_override_virtual_nativeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCameraViewfinder_nativeEvent(self: ptr cQCameraViewfinder, slot: int, eventType: struct_miqt_string, message: pointer, resultVal: ptr clong): bool {.exportc: "miqt_exec_callback_QCameraViewfinder_nativeEvent ".} =
-  type Cb = proc(super: QCameraViewfindernativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(eventType: seq[byte], message: pointer, resultVal: ptr clong): auto =
-    callVirtualBase_nativeEvent(QCameraViewfinder(h: self), eventType, message, resultVal)
+  var nimfunc = cast[ptr QCameraViewfindernativeEventProc](cast[pointer](slot))
   var veventType_bytearray = eventType
   var veventTypex_ret = @(toOpenArrayByte(veventType_bytearray.data, 0, int(veventType_bytearray.len)-1))
   c_free(veventType_bytearray.data)
@@ -1152,344 +960,274 @@ proc miqt_exec_callback_QCameraViewfinder_nativeEvent(self: ptr cQCameraViewfind
   let slotval3 = resultVal
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_changeEvent(self: QCameraViewfinder, param1: gen_qcoreevent.QEvent): void =
-
+proc QCameraViewfinderchangeEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, param1: gen_qcoreevent.QEvent): void =
 
   fQCameraViewfinder_virtualbase_changeEvent(self.h, param1.h)
 
-type QCameraViewfinderchangeEventBase* = proc(param1: gen_qcoreevent.QEvent): void
-proc onchangeEvent*(self: QCameraViewfinder, slot: proc(super: QCameraViewfinderchangeEventBase, param1: gen_qcoreevent.QEvent): void) =
+type QCameraViewfinderchangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
+proc onchangeEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, slot: QCameraViewfinderchangeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCameraViewfinderchangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QCameraViewfinderchangeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCameraViewfinder_override_virtual_changeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCameraViewfinder_changeEvent(self: ptr cQCameraViewfinder, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QCameraViewfinder_changeEvent ".} =
-  type Cb = proc(super: QCameraViewfinderchangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_changeEvent(QCameraViewfinder(h: self), param1)
+  var nimfunc = cast[ptr QCameraViewfinderchangeEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_metric(self: QCameraViewfinder, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint =
-
+  nimfunc[](slotval1)
+proc QCameraViewfindermetric*(self: gen_qcameraviewfinder_types.QCameraViewfinder, param1: cint): cint =
 
   fQCameraViewfinder_virtualbase_metric(self.h, cint(param1))
 
-type QCameraViewfindermetricBase* = proc(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-proc onmetric*(self: QCameraViewfinder, slot: proc(super: QCameraViewfindermetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint) =
+type QCameraViewfindermetricProc* = proc(param1: cint): cint
+proc onmetric*(self: gen_qcameraviewfinder_types.QCameraViewfinder, slot: QCameraViewfindermetricProc) =
   # TODO check subclass
-  type Cb = proc(super: QCameraViewfindermetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var tmp = new Cb
+  var tmp = new QCameraViewfindermetricProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCameraViewfinder_override_virtual_metric(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCameraViewfinder_metric(self: ptr cQCameraViewfinder, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QCameraViewfinder_metric ".} =
-  type Cb = proc(super: QCameraViewfindermetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): auto =
-    callVirtualBase_metric(QCameraViewfinder(h: self), param1)
-  let slotval1 = gen_qpaintdevice.QPaintDevicePaintDeviceMetric(param1)
+  var nimfunc = cast[ptr QCameraViewfindermetricProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_initPainter(self: QCameraViewfinder, painter: gen_qpainter.QPainter): void =
-
+proc QCameraViewfinderinitPainter*(self: gen_qcameraviewfinder_types.QCameraViewfinder, painter: gen_qpainter.QPainter): void =
 
   fQCameraViewfinder_virtualbase_initPainter(self.h, painter.h)
 
-type QCameraViewfinderinitPainterBase* = proc(painter: gen_qpainter.QPainter): void
-proc oninitPainter*(self: QCameraViewfinder, slot: proc(super: QCameraViewfinderinitPainterBase, painter: gen_qpainter.QPainter): void) =
+type QCameraViewfinderinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
+proc oninitPainter*(self: gen_qcameraviewfinder_types.QCameraViewfinder, slot: QCameraViewfinderinitPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QCameraViewfinderinitPainterBase, painter: gen_qpainter.QPainter): void
-  var tmp = new Cb
+  var tmp = new QCameraViewfinderinitPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCameraViewfinder_override_virtual_initPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCameraViewfinder_initPainter(self: ptr cQCameraViewfinder, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_QCameraViewfinder_initPainter ".} =
-  type Cb = proc(super: QCameraViewfinderinitPainterBase, painter: gen_qpainter.QPainter): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter): auto =
-    callVirtualBase_initPainter(QCameraViewfinder(h: self), painter)
+  var nimfunc = cast[ptr QCameraViewfinderinitPainterProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_redirected(self: QCameraViewfinder, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
+  nimfunc[](slotval1)
+proc QCameraViewfinderredirected*(self: gen_qcameraviewfinder_types.QCameraViewfinder, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
 
   gen_qpaintdevice.QPaintDevice(h: fQCameraViewfinder_virtualbase_redirected(self.h, offset.h))
 
-type QCameraViewfinderredirectedBase* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-proc onredirected*(self: QCameraViewfinder, slot: proc(super: QCameraViewfinderredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice) =
+type QCameraViewfinderredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
+proc onredirected*(self: gen_qcameraviewfinder_types.QCameraViewfinder, slot: QCameraViewfinderredirectedProc) =
   # TODO check subclass
-  type Cb = proc(super: QCameraViewfinderredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var tmp = new Cb
+  var tmp = new QCameraViewfinderredirectedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCameraViewfinder_override_virtual_redirected(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCameraViewfinder_redirected(self: ptr cQCameraViewfinder, slot: int, offset: pointer): pointer {.exportc: "miqt_exec_callback_QCameraViewfinder_redirected ".} =
-  type Cb = proc(super: QCameraViewfinderredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(offset: gen_qpoint.QPoint): auto =
-    callVirtualBase_redirected(QCameraViewfinder(h: self), offset)
+  var nimfunc = cast[ptr QCameraViewfinderredirectedProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: offset)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_sharedPainter(self: QCameraViewfinder, ): gen_qpainter.QPainter =
-
+proc QCameraViewfindersharedPainter*(self: gen_qcameraviewfinder_types.QCameraViewfinder, ): gen_qpainter.QPainter =
 
   gen_qpainter.QPainter(h: fQCameraViewfinder_virtualbase_sharedPainter(self.h))
 
-type QCameraViewfindersharedPainterBase* = proc(): gen_qpainter.QPainter
-proc onsharedPainter*(self: QCameraViewfinder, slot: proc(super: QCameraViewfindersharedPainterBase): gen_qpainter.QPainter) =
+type QCameraViewfindersharedPainterProc* = proc(): gen_qpainter.QPainter
+proc onsharedPainter*(self: gen_qcameraviewfinder_types.QCameraViewfinder, slot: QCameraViewfindersharedPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QCameraViewfindersharedPainterBase): gen_qpainter.QPainter
-  var tmp = new Cb
+  var tmp = new QCameraViewfindersharedPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCameraViewfinder_override_virtual_sharedPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCameraViewfinder_sharedPainter(self: ptr cQCameraViewfinder, slot: int): pointer {.exportc: "miqt_exec_callback_QCameraViewfinder_sharedPainter ".} =
-  type Cb = proc(super: QCameraViewfindersharedPainterBase): gen_qpainter.QPainter
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sharedPainter(QCameraViewfinder(h: self), )
+  var nimfunc = cast[ptr QCameraViewfindersharedPainterProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_inputMethodEvent(self: QCameraViewfinder, param1: gen_qevent.QInputMethodEvent): void =
-
+proc QCameraViewfinderinputMethodEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, param1: gen_qevent.QInputMethodEvent): void =
 
   fQCameraViewfinder_virtualbase_inputMethodEvent(self.h, param1.h)
 
-type QCameraViewfinderinputMethodEventBase* = proc(param1: gen_qevent.QInputMethodEvent): void
-proc oninputMethodEvent*(self: QCameraViewfinder, slot: proc(super: QCameraViewfinderinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void) =
+type QCameraViewfinderinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
+proc oninputMethodEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, slot: QCameraViewfinderinputMethodEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCameraViewfinderinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var tmp = new Cb
+  var tmp = new QCameraViewfinderinputMethodEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCameraViewfinder_override_virtual_inputMethodEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCameraViewfinder_inputMethodEvent(self: ptr cQCameraViewfinder, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QCameraViewfinder_inputMethodEvent ".} =
-  type Cb = proc(super: QCameraViewfinderinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QInputMethodEvent): auto =
-    callVirtualBase_inputMethodEvent(QCameraViewfinder(h: self), param1)
+  var nimfunc = cast[ptr QCameraViewfinderinputMethodEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QInputMethodEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_inputMethodQuery(self: QCameraViewfinder, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant =
-
+  nimfunc[](slotval1)
+proc QCameraViewfinderinputMethodQuery*(self: gen_qcameraviewfinder_types.QCameraViewfinder, param1: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQCameraViewfinder_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
-type QCameraViewfinderinputMethodQueryBase* = proc(param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-proc oninputMethodQuery*(self: QCameraViewfinder, slot: proc(super: QCameraViewfinderinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant) =
+type QCameraViewfinderinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
+proc oninputMethodQuery*(self: gen_qcameraviewfinder_types.QCameraViewfinder, slot: QCameraViewfinderinputMethodQueryProc) =
   # TODO check subclass
-  type Cb = proc(super: QCameraViewfinderinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QCameraViewfinderinputMethodQueryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCameraViewfinder_override_virtual_inputMethodQuery(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCameraViewfinder_inputMethodQuery(self: ptr cQCameraViewfinder, slot: int, param1: cint): pointer {.exportc: "miqt_exec_callback_QCameraViewfinder_inputMethodQuery ".} =
-  type Cb = proc(super: QCameraViewfinderinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qnamespace.InputMethodQuery): auto =
-    callVirtualBase_inputMethodQuery(QCameraViewfinder(h: self), param1)
-  let slotval1 = gen_qnamespace.InputMethodQuery(param1)
+  var nimfunc = cast[ptr QCameraViewfinderinputMethodQueryProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_focusNextPrevChild(self: QCameraViewfinder, next: bool): bool =
-
+proc QCameraViewfinderfocusNextPrevChild*(self: gen_qcameraviewfinder_types.QCameraViewfinder, next: bool): bool =
 
   fQCameraViewfinder_virtualbase_focusNextPrevChild(self.h, next)
 
-type QCameraViewfinderfocusNextPrevChildBase* = proc(next: bool): bool
-proc onfocusNextPrevChild*(self: QCameraViewfinder, slot: proc(super: QCameraViewfinderfocusNextPrevChildBase, next: bool): bool) =
+type QCameraViewfinderfocusNextPrevChildProc* = proc(next: bool): bool
+proc onfocusNextPrevChild*(self: gen_qcameraviewfinder_types.QCameraViewfinder, slot: QCameraViewfinderfocusNextPrevChildProc) =
   # TODO check subclass
-  type Cb = proc(super: QCameraViewfinderfocusNextPrevChildBase, next: bool): bool
-  var tmp = new Cb
+  var tmp = new QCameraViewfinderfocusNextPrevChildProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCameraViewfinder_override_virtual_focusNextPrevChild(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCameraViewfinder_focusNextPrevChild(self: ptr cQCameraViewfinder, slot: int, next: bool): bool {.exportc: "miqt_exec_callback_QCameraViewfinder_focusNextPrevChild ".} =
-  type Cb = proc(super: QCameraViewfinderfocusNextPrevChildBase, next: bool): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(next: bool): auto =
-    callVirtualBase_focusNextPrevChild(QCameraViewfinder(h: self), next)
+  var nimfunc = cast[ptr QCameraViewfinderfocusNextPrevChildProc](cast[pointer](slot))
   let slotval1 = next
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QCameraViewfinder, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QCameraViewfindereventFilter*(self: gen_qcameraviewfinder_types.QCameraViewfinder, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQCameraViewfinder_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QCameraViewfindereventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QCameraViewfinder, slot: proc(super: QCameraViewfindereventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QCameraViewfindereventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qcameraviewfinder_types.QCameraViewfinder, slot: QCameraViewfindereventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QCameraViewfindereventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QCameraViewfindereventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCameraViewfinder_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCameraViewfinder_eventFilter(self: ptr cQCameraViewfinder, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QCameraViewfinder_eventFilter ".} =
-  type Cb = proc(super: QCameraViewfindereventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QCameraViewfinder(h: self), watched, event)
+  var nimfunc = cast[ptr QCameraViewfindereventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QCameraViewfinder, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QCameraViewfindertimerEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qcoreevent.QTimerEvent): void =
 
   fQCameraViewfinder_virtualbase_timerEvent(self.h, event.h)
 
-type QCameraViewfindertimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QCameraViewfinder, slot: proc(super: QCameraViewfindertimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QCameraViewfindertimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, slot: QCameraViewfindertimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCameraViewfindertimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QCameraViewfindertimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCameraViewfinder_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCameraViewfinder_timerEvent(self: ptr cQCameraViewfinder, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QCameraViewfinder_timerEvent ".} =
-  type Cb = proc(super: QCameraViewfindertimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QCameraViewfinder(h: self), event)
+  var nimfunc = cast[ptr QCameraViewfindertimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QCameraViewfinder, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QCameraViewfinderchildEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qcoreevent.QChildEvent): void =
 
   fQCameraViewfinder_virtualbase_childEvent(self.h, event.h)
 
-type QCameraViewfinderchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QCameraViewfinder, slot: proc(super: QCameraViewfinderchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QCameraViewfinderchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, slot: QCameraViewfinderchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCameraViewfinderchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QCameraViewfinderchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCameraViewfinder_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCameraViewfinder_childEvent(self: ptr cQCameraViewfinder, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QCameraViewfinder_childEvent ".} =
-  type Cb = proc(super: QCameraViewfinderchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QCameraViewfinder(h: self), event)
+  var nimfunc = cast[ptr QCameraViewfinderchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QCameraViewfinder, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QCameraViewfindercustomEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qcoreevent.QEvent): void =
 
   fQCameraViewfinder_virtualbase_customEvent(self.h, event.h)
 
-type QCameraViewfindercustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QCameraViewfinder, slot: proc(super: QCameraViewfindercustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QCameraViewfindercustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, slot: QCameraViewfindercustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCameraViewfindercustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QCameraViewfindercustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCameraViewfinder_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCameraViewfinder_customEvent(self: ptr cQCameraViewfinder, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QCameraViewfinder_customEvent ".} =
-  type Cb = proc(super: QCameraViewfindercustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QCameraViewfinder(h: self), event)
+  var nimfunc = cast[ptr QCameraViewfindercustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QCameraViewfinder, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QCameraViewfinderconnectNotify*(self: gen_qcameraviewfinder_types.QCameraViewfinder, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQCameraViewfinder_virtualbase_connectNotify(self.h, signal.h)
 
-type QCameraViewfinderconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QCameraViewfinder, slot: proc(super: QCameraViewfinderconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QCameraViewfinderconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qcameraviewfinder_types.QCameraViewfinder, slot: QCameraViewfinderconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QCameraViewfinderconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QCameraViewfinderconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCameraViewfinder_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCameraViewfinder_connectNotify(self: ptr cQCameraViewfinder, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QCameraViewfinder_connectNotify ".} =
-  type Cb = proc(super: QCameraViewfinderconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QCameraViewfinder(h: self), signal)
+  var nimfunc = cast[ptr QCameraViewfinderconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QCameraViewfinder, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QCameraViewfinderdisconnectNotify*(self: gen_qcameraviewfinder_types.QCameraViewfinder, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQCameraViewfinder_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QCameraViewfinderdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QCameraViewfinder, slot: proc(super: QCameraViewfinderdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QCameraViewfinderdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qcameraviewfinder_types.QCameraViewfinder, slot: QCameraViewfinderdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QCameraViewfinderdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QCameraViewfinderdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCameraViewfinder_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCameraViewfinder_disconnectNotify(self: ptr cQCameraViewfinder, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QCameraViewfinder_disconnectNotify ".} =
-  type Cb = proc(super: QCameraViewfinderdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QCameraViewfinder(h: self), signal)
+  var nimfunc = cast[ptr QCameraViewfinderdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QCameraViewfinder): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qcameraviewfinder_types.QCameraViewfinder): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQCameraViewfinder_staticMetaObject())
-proc delete*(self: QCameraViewfinder) =
+proc delete*(self: gen_qcameraviewfinder_types.QCameraViewfinder) =
   fcQCameraViewfinder_delete(self.h)

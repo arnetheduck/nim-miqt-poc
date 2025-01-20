@@ -34,56 +34,50 @@ const cflags = gorge("pkg-config -cflags Qt6Widgets")
 {.compile("gen_qdialogbuttonbox.cpp", cflags).}
 
 
-type QDialogButtonBoxButtonRole* = cint
-const
-  QDialogButtonBoxInvalidRole* = -1
-  QDialogButtonBoxAcceptRole* = 0
-  QDialogButtonBoxRejectRole* = 1
-  QDialogButtonBoxDestructiveRole* = 2
-  QDialogButtonBoxActionRole* = 3
-  QDialogButtonBoxHelpRole* = 4
-  QDialogButtonBoxYesRole* = 5
-  QDialogButtonBoxNoRole* = 6
-  QDialogButtonBoxResetRole* = 7
-  QDialogButtonBoxApplyRole* = 8
-  QDialogButtonBoxNRoles* = 9
+type QDialogButtonBoxButtonRoleEnum* = distinct cint
+template InvalidRole*(_: type QDialogButtonBoxButtonRoleEnum): untyped = -1
+template AcceptRole*(_: type QDialogButtonBoxButtonRoleEnum): untyped = 0
+template RejectRole*(_: type QDialogButtonBoxButtonRoleEnum): untyped = 1
+template DestructiveRole*(_: type QDialogButtonBoxButtonRoleEnum): untyped = 2
+template ActionRole*(_: type QDialogButtonBoxButtonRoleEnum): untyped = 3
+template HelpRole*(_: type QDialogButtonBoxButtonRoleEnum): untyped = 4
+template YesRole*(_: type QDialogButtonBoxButtonRoleEnum): untyped = 5
+template NoRole*(_: type QDialogButtonBoxButtonRoleEnum): untyped = 6
+template ResetRole*(_: type QDialogButtonBoxButtonRoleEnum): untyped = 7
+template ApplyRole*(_: type QDialogButtonBoxButtonRoleEnum): untyped = 8
+template NRoles*(_: type QDialogButtonBoxButtonRoleEnum): untyped = 9
 
 
-
-type QDialogButtonBoxStandardButton* = cint
-const
-  QDialogButtonBoxNoButton* = 0
-  QDialogButtonBoxOk* = 1024
-  QDialogButtonBoxSave* = 2048
-  QDialogButtonBoxSaveAll* = 4096
-  QDialogButtonBoxOpen* = 8192
-  QDialogButtonBoxYes* = 16384
-  QDialogButtonBoxYesToAll* = 32768
-  QDialogButtonBoxNo* = 65536
-  QDialogButtonBoxNoToAll* = 131072
-  QDialogButtonBoxAbort* = 262144
-  QDialogButtonBoxRetry* = 524288
-  QDialogButtonBoxIgnore* = 1048576
-  QDialogButtonBoxClose* = 2097152
-  QDialogButtonBoxCancel* = 4194304
-  QDialogButtonBoxDiscard* = 8388608
-  QDialogButtonBoxHelp* = 16777216
-  QDialogButtonBoxApply* = 33554432
-  QDialogButtonBoxReset* = 67108864
-  QDialogButtonBoxRestoreDefaults* = 134217728
-  QDialogButtonBoxFirstButton* = 1024
-  QDialogButtonBoxLastButton* = 134217728
+type QDialogButtonBoxStandardButtonEnum* = distinct cint
+template NoButton*(_: type QDialogButtonBoxStandardButtonEnum): untyped = 0
+template Ok*(_: type QDialogButtonBoxStandardButtonEnum): untyped = 1024
+template Save*(_: type QDialogButtonBoxStandardButtonEnum): untyped = 2048
+template SaveAll*(_: type QDialogButtonBoxStandardButtonEnum): untyped = 4096
+template Open*(_: type QDialogButtonBoxStandardButtonEnum): untyped = 8192
+template Yes*(_: type QDialogButtonBoxStandardButtonEnum): untyped = 16384
+template YesToAll*(_: type QDialogButtonBoxStandardButtonEnum): untyped = 32768
+template No*(_: type QDialogButtonBoxStandardButtonEnum): untyped = 65536
+template NoToAll*(_: type QDialogButtonBoxStandardButtonEnum): untyped = 131072
+template Abort*(_: type QDialogButtonBoxStandardButtonEnum): untyped = 262144
+template Retry*(_: type QDialogButtonBoxStandardButtonEnum): untyped = 524288
+template Ignore*(_: type QDialogButtonBoxStandardButtonEnum): untyped = 1048576
+template Close*(_: type QDialogButtonBoxStandardButtonEnum): untyped = 2097152
+template Cancel*(_: type QDialogButtonBoxStandardButtonEnum): untyped = 4194304
+template Discard*(_: type QDialogButtonBoxStandardButtonEnum): untyped = 8388608
+template Help*(_: type QDialogButtonBoxStandardButtonEnum): untyped = 16777216
+template Apply*(_: type QDialogButtonBoxStandardButtonEnum): untyped = 33554432
+template Reset*(_: type QDialogButtonBoxStandardButtonEnum): untyped = 67108864
+template RestoreDefaults*(_: type QDialogButtonBoxStandardButtonEnum): untyped = 134217728
+template FirstButton*(_: type QDialogButtonBoxStandardButtonEnum): untyped = 1024
+template LastButton*(_: type QDialogButtonBoxStandardButtonEnum): untyped = 134217728
 
 
-
-type QDialogButtonBoxButtonLayout* = cint
-const
-  QDialogButtonBoxWinLayout* = 0
-  QDialogButtonBoxMacLayout* = 1
-  QDialogButtonBoxKdeLayout* = 2
-  QDialogButtonBoxGnomeLayout* = 3
-  QDialogButtonBoxAndroidLayout* = 4
-
+type QDialogButtonBoxButtonLayoutEnum* = distinct cint
+template WinLayout*(_: type QDialogButtonBoxButtonLayoutEnum): untyped = 0
+template MacLayout*(_: type QDialogButtonBoxButtonLayoutEnum): untyped = 1
+template KdeLayout*(_: type QDialogButtonBoxButtonLayoutEnum): untyped = 2
+template GnomeLayout*(_: type QDialogButtonBoxButtonLayoutEnum): untyped = 3
+template AndroidLayout*(_: type QDialogButtonBoxButtonLayoutEnum): untyped = 4
 
 
 import gen_qdialogbuttonbox_types
@@ -94,7 +88,6 @@ import
   gen_qcoreevent,
   gen_qevent,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -110,7 +103,6 @@ export
   gen_qcoreevent,
   gen_qevent,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -265,80 +257,80 @@ proc fcQDialogButtonBox_staticMetaObject(): pointer {.importc: "QDialogButtonBox
 proc fcQDialogButtonBox_delete(self: pointer) {.importc: "QDialogButtonBox_delete".}
 
 
-func init*(T: type QDialogButtonBox, h: ptr cQDialogButtonBox): QDialogButtonBox =
+func init*(T: type gen_qdialogbuttonbox_types.QDialogButtonBox, h: ptr cQDialogButtonBox): gen_qdialogbuttonbox_types.QDialogButtonBox =
   T(h: h)
-proc create*(T: type QDialogButtonBox, parent: gen_qwidget.QWidget): QDialogButtonBox =
+proc create*(T: type gen_qdialogbuttonbox_types.QDialogButtonBox, parent: gen_qwidget.QWidget): gen_qdialogbuttonbox_types.QDialogButtonBox =
 
-  QDialogButtonBox.init(fcQDialogButtonBox_new(parent.h))
-proc create*(T: type QDialogButtonBox, ): QDialogButtonBox =
+  gen_qdialogbuttonbox_types.QDialogButtonBox.init(fcQDialogButtonBox_new(parent.h))
+proc create*(T: type gen_qdialogbuttonbox_types.QDialogButtonBox, ): gen_qdialogbuttonbox_types.QDialogButtonBox =
 
-  QDialogButtonBox.init(fcQDialogButtonBox_new2())
-proc create*(T: type QDialogButtonBox, orientation: gen_qnamespace.Orientation): QDialogButtonBox =
+  gen_qdialogbuttonbox_types.QDialogButtonBox.init(fcQDialogButtonBox_new2())
+proc create*(T: type gen_qdialogbuttonbox_types.QDialogButtonBox, orientation: cint): gen_qdialogbuttonbox_types.QDialogButtonBox =
 
-  QDialogButtonBox.init(fcQDialogButtonBox_new3(cint(orientation)))
-proc create2*(T: type QDialogButtonBox, buttons: QDialogButtonBoxStandardButton): QDialogButtonBox =
+  gen_qdialogbuttonbox_types.QDialogButtonBox.init(fcQDialogButtonBox_new3(cint(orientation)))
+proc create2*(T: type gen_qdialogbuttonbox_types.QDialogButtonBox, buttons: cint): gen_qdialogbuttonbox_types.QDialogButtonBox =
 
-  QDialogButtonBox.init(fcQDialogButtonBox_new4(cint(buttons)))
-proc create*(T: type QDialogButtonBox, buttons: QDialogButtonBoxStandardButton, orientation: gen_qnamespace.Orientation): QDialogButtonBox =
+  gen_qdialogbuttonbox_types.QDialogButtonBox.init(fcQDialogButtonBox_new4(cint(buttons)))
+proc create*(T: type gen_qdialogbuttonbox_types.QDialogButtonBox, buttons: cint, orientation: cint): gen_qdialogbuttonbox_types.QDialogButtonBox =
 
-  QDialogButtonBox.init(fcQDialogButtonBox_new5(cint(buttons), cint(orientation)))
-proc create*(T: type QDialogButtonBox, orientation: gen_qnamespace.Orientation, parent: gen_qwidget.QWidget): QDialogButtonBox =
+  gen_qdialogbuttonbox_types.QDialogButtonBox.init(fcQDialogButtonBox_new5(cint(buttons), cint(orientation)))
+proc create*(T: type gen_qdialogbuttonbox_types.QDialogButtonBox, orientation: cint, parent: gen_qwidget.QWidget): gen_qdialogbuttonbox_types.QDialogButtonBox =
 
-  QDialogButtonBox.init(fcQDialogButtonBox_new6(cint(orientation), parent.h))
-proc create2*(T: type QDialogButtonBox, buttons: QDialogButtonBoxStandardButton, parent: gen_qwidget.QWidget): QDialogButtonBox =
+  gen_qdialogbuttonbox_types.QDialogButtonBox.init(fcQDialogButtonBox_new6(cint(orientation), parent.h))
+proc create2*(T: type gen_qdialogbuttonbox_types.QDialogButtonBox, buttons: cint, parent: gen_qwidget.QWidget): gen_qdialogbuttonbox_types.QDialogButtonBox =
 
-  QDialogButtonBox.init(fcQDialogButtonBox_new7(cint(buttons), parent.h))
-proc create*(T: type QDialogButtonBox, buttons: QDialogButtonBoxStandardButton, orientation: gen_qnamespace.Orientation, parent: gen_qwidget.QWidget): QDialogButtonBox =
+  gen_qdialogbuttonbox_types.QDialogButtonBox.init(fcQDialogButtonBox_new7(cint(buttons), parent.h))
+proc create*(T: type gen_qdialogbuttonbox_types.QDialogButtonBox, buttons: cint, orientation: cint, parent: gen_qwidget.QWidget): gen_qdialogbuttonbox_types.QDialogButtonBox =
 
-  QDialogButtonBox.init(fcQDialogButtonBox_new8(cint(buttons), cint(orientation), parent.h))
-proc metaObject*(self: QDialogButtonBox, ): gen_qobjectdefs.QMetaObject =
+  gen_qdialogbuttonbox_types.QDialogButtonBox.init(fcQDialogButtonBox_new8(cint(buttons), cint(orientation), parent.h))
+proc metaObject*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQDialogButtonBox_metaObject(self.h))
 
-proc metacast*(self: QDialogButtonBox, param1: cstring): pointer =
+proc metacast*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, param1: cstring): pointer =
 
   fcQDialogButtonBox_metacast(self.h, param1)
 
-proc metacall*(self: QDialogButtonBox, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQDialogButtonBox_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QDialogButtonBox, s: cstring): string =
+proc tr*(_: type gen_qdialogbuttonbox_types.QDialogButtonBox, s: cstring): string =
 
   let v_ms = fcQDialogButtonBox_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setOrientation*(self: QDialogButtonBox, orientation: gen_qnamespace.Orientation): void =
+proc setOrientation*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, orientation: cint): void =
 
   fcQDialogButtonBox_setOrientation(self.h, cint(orientation))
 
-proc orientation*(self: QDialogButtonBox, ): gen_qnamespace.Orientation =
+proc orientation*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, ): cint =
 
-  gen_qnamespace.Orientation(fcQDialogButtonBox_orientation(self.h))
+  cint(fcQDialogButtonBox_orientation(self.h))
 
-proc addButton*(self: QDialogButtonBox, button: gen_qabstractbutton.QAbstractButton, role: QDialogButtonBoxButtonRole): void =
+proc addButton*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, button: gen_qabstractbutton.QAbstractButton, role: cint): void =
 
   fcQDialogButtonBox_addButton(self.h, button.h, cint(role))
 
-proc addButton2*(self: QDialogButtonBox, text: string, role: QDialogButtonBoxButtonRole): gen_qpushbutton.QPushButton =
+proc addButton2*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, text: string, role: cint): gen_qpushbutton.QPushButton =
 
   gen_qpushbutton.QPushButton(h: fcQDialogButtonBox_addButton2(self.h, struct_miqt_string(data: text, len: csize_t(len(text))), cint(role)))
 
-proc addButtonWithButton*(self: QDialogButtonBox, button: QDialogButtonBoxStandardButton): gen_qpushbutton.QPushButton =
+proc addButtonWithButton*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, button: cint): gen_qpushbutton.QPushButton =
 
   gen_qpushbutton.QPushButton(h: fcQDialogButtonBox_addButtonWithButton(self.h, cint(button)))
 
-proc removeButton*(self: QDialogButtonBox, button: gen_qabstractbutton.QAbstractButton): void =
+proc removeButton*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, button: gen_qabstractbutton.QAbstractButton): void =
 
   fcQDialogButtonBox_removeButton(self.h, button.h)
 
-proc clear*(self: QDialogButtonBox, ): void =
+proc clear*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, ): void =
 
   fcQDialogButtonBox_clear(self.h)
 
-proc buttons*(self: QDialogButtonBox, ): seq[gen_qabstractbutton.QAbstractButton] =
+proc buttons*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, ): seq[gen_qabstractbutton.QAbstractButton] =
 
   var v_ma = fcQDialogButtonBox_buttons(self.h)
   var vx_ret = newSeq[gen_qabstractbutton.QAbstractButton](int(v_ma.len))
@@ -347,35 +339,35 @@ proc buttons*(self: QDialogButtonBox, ): seq[gen_qabstractbutton.QAbstractButton
     vx_ret[i] = gen_qabstractbutton.QAbstractButton(h: v_outCast[i])
   vx_ret
 
-proc buttonRole*(self: QDialogButtonBox, button: gen_qabstractbutton.QAbstractButton): QDialogButtonBoxButtonRole =
+proc buttonRole*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, button: gen_qabstractbutton.QAbstractButton): cint =
 
-  QDialogButtonBoxButtonRole(fcQDialogButtonBox_buttonRole(self.h, button.h))
+  cint(fcQDialogButtonBox_buttonRole(self.h, button.h))
 
-proc setStandardButtons*(self: QDialogButtonBox, buttons: QDialogButtonBoxStandardButton): void =
+proc setStandardButtons*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, buttons: cint): void =
 
   fcQDialogButtonBox_setStandardButtons(self.h, cint(buttons))
 
-proc standardButtons*(self: QDialogButtonBox, ): QDialogButtonBoxStandardButton =
+proc standardButtons*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, ): cint =
 
-  QDialogButtonBoxStandardButton(fcQDialogButtonBox_standardButtons(self.h))
+  cint(fcQDialogButtonBox_standardButtons(self.h))
 
-proc standardButton*(self: QDialogButtonBox, button: gen_qabstractbutton.QAbstractButton): QDialogButtonBoxStandardButton =
+proc standardButton*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, button: gen_qabstractbutton.QAbstractButton): cint =
 
-  QDialogButtonBoxStandardButton(fcQDialogButtonBox_standardButton(self.h, button.h))
+  cint(fcQDialogButtonBox_standardButton(self.h, button.h))
 
-proc button*(self: QDialogButtonBox, which: QDialogButtonBoxStandardButton): gen_qpushbutton.QPushButton =
+proc button*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, which: cint): gen_qpushbutton.QPushButton =
 
   gen_qpushbutton.QPushButton(h: fcQDialogButtonBox_button(self.h, cint(which)))
 
-proc setCenterButtons*(self: QDialogButtonBox, center: bool): void =
+proc setCenterButtons*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, center: bool): void =
 
   fcQDialogButtonBox_setCenterButtons(self.h, center)
 
-proc centerButtons*(self: QDialogButtonBox, ): bool =
+proc centerButtons*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, ): bool =
 
   fcQDialogButtonBox_centerButtons(self.h)
 
-proc clicked*(self: QDialogButtonBox, button: gen_qabstractbutton.QAbstractButton): void =
+proc clicked*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, button: gen_qabstractbutton.QAbstractButton): void =
 
   fcQDialogButtonBox_clicked(self.h, button.h)
 
@@ -387,13 +379,13 @@ proc miqt_exec_callback_QDialogButtonBox_clicked(slot: int, button: pointer) {.e
 
   nimfunc[](slotval1)
 
-proc onclicked*(self: QDialogButtonBox, slot: proc(button: gen_qabstractbutton.QAbstractButton)) =
+proc onclicked*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: proc(button: gen_qabstractbutton.QAbstractButton)) =
   type Cb = proc(button: gen_qabstractbutton.QAbstractButton)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQDialogButtonBox_connect_clicked(self.h, cast[int](addr tmp[]))
-proc accepted*(self: QDialogButtonBox, ): void =
+proc accepted*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, ): void =
 
   fcQDialogButtonBox_accepted(self.h)
 
@@ -403,13 +395,13 @@ proc miqt_exec_callback_QDialogButtonBox_accepted(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onaccepted*(self: QDialogButtonBox, slot: proc()) =
+proc onaccepted*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQDialogButtonBox_connect_accepted(self.h, cast[int](addr tmp[]))
-proc helpRequested*(self: QDialogButtonBox, ): void =
+proc helpRequested*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, ): void =
 
   fcQDialogButtonBox_helpRequested(self.h)
 
@@ -419,13 +411,13 @@ proc miqt_exec_callback_QDialogButtonBox_helpRequested(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onhelpRequested*(self: QDialogButtonBox, slot: proc()) =
+proc onhelpRequested*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQDialogButtonBox_connect_helpRequested(self.h, cast[int](addr tmp[]))
-proc rejected*(self: QDialogButtonBox, ): void =
+proc rejected*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, ): void =
 
   fcQDialogButtonBox_rejected(self.h)
 
@@ -435,885 +427,700 @@ proc miqt_exec_callback_QDialogButtonBox_rejected(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onrejected*(self: QDialogButtonBox, slot: proc()) =
+proc onrejected*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQDialogButtonBox_connect_rejected(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QDialogButtonBox, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qdialogbuttonbox_types.QDialogButtonBox, s: cstring, c: cstring): string =
 
   let v_ms = fcQDialogButtonBox_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QDialogButtonBox, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qdialogbuttonbox_types.QDialogButtonBox, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQDialogButtonBox_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QDialogButtonBox, ): gen_qobjectdefs.QMetaObject =
-
+proc QDialogButtonBoxmetaObject*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQDialogButtonBox_virtualbase_metaObject(self.h))
 
-type QDialogButtonBoxmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QDialogButtonBox, slot: proc(super: QDialogButtonBoxmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QDialogButtonBoxmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialogButtonBoxmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QDialogButtonBoxmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDialogButtonBox_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDialogButtonBox_metaObject(self: ptr cQDialogButtonBox, slot: int): pointer {.exportc: "miqt_exec_callback_QDialogButtonBox_metaObject ".} =
-  type Cb = proc(super: QDialogButtonBoxmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QDialogButtonBox(h: self), )
+  var nimfunc = cast[ptr QDialogButtonBoxmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QDialogButtonBox, param1: cstring): pointer =
-
+proc QDialogButtonBoxmetacast*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, param1: cstring): pointer =
 
   fQDialogButtonBox_virtualbase_metacast(self.h, param1)
 
-type QDialogButtonBoxmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QDialogButtonBox, slot: proc(super: QDialogButtonBoxmetacastBase, param1: cstring): pointer) =
+type QDialogButtonBoxmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialogButtonBoxmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QDialogButtonBoxmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDialogButtonBox_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDialogButtonBox_metacast(self: ptr cQDialogButtonBox, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QDialogButtonBox_metacast ".} =
-  type Cb = proc(super: QDialogButtonBoxmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QDialogButtonBox(h: self), param1)
+  var nimfunc = cast[ptr QDialogButtonBoxmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QDialogButtonBox, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QDialogButtonBoxmetacall*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, param1: cint, param2: cint, param3: pointer): cint =
 
   fQDialogButtonBox_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QDialogButtonBoxmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QDialogButtonBox, slot: proc(super: QDialogButtonBoxmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QDialogButtonBoxmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialogButtonBoxmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QDialogButtonBoxmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDialogButtonBox_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDialogButtonBox_metacall(self: ptr cQDialogButtonBox, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QDialogButtonBox_metacall ".} =
-  type Cb = proc(super: QDialogButtonBoxmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QDialogButtonBox(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QDialogButtonBoxmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_changeEvent(self: QDialogButtonBox, event: gen_qcoreevent.QEvent): void =
-
+proc QDialogButtonBoxchangeEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qcoreevent.QEvent): void =
 
   fQDialogButtonBox_virtualbase_changeEvent(self.h, event.h)
 
-type QDialogButtonBoxchangeEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onchangeEvent*(self: QDialogButtonBox, slot: proc(super: QDialogButtonBoxchangeEventBase, event: gen_qcoreevent.QEvent): void) =
+type QDialogButtonBoxchangeEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onchangeEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxchangeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialogButtonBoxchangeEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QDialogButtonBoxchangeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDialogButtonBox_override_virtual_changeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDialogButtonBox_changeEvent(self: ptr cQDialogButtonBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDialogButtonBox_changeEvent ".} =
-  type Cb = proc(super: QDialogButtonBoxchangeEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_changeEvent(QDialogButtonBox(h: self), event)
+  var nimfunc = cast[ptr QDialogButtonBoxchangeEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_event(self: QDialogButtonBox, event: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[](slotval1)
+proc QDialogButtonBoxevent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qcoreevent.QEvent): bool =
 
   fQDialogButtonBox_virtualbase_event(self.h, event.h)
 
-type QDialogButtonBoxeventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QDialogButtonBox, slot: proc(super: QDialogButtonBoxeventBase, event: gen_qcoreevent.QEvent): bool) =
+type QDialogButtonBoxeventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialogButtonBoxeventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QDialogButtonBoxeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDialogButtonBox_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDialogButtonBox_event(self: ptr cQDialogButtonBox, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QDialogButtonBox_event ".} =
-  type Cb = proc(super: QDialogButtonBoxeventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QDialogButtonBox(h: self), event)
+  var nimfunc = cast[ptr QDialogButtonBoxeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_devType(self: QDialogButtonBox, ): cint =
-
+proc QDialogButtonBoxdevType*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, ): cint =
 
   fQDialogButtonBox_virtualbase_devType(self.h)
 
-type QDialogButtonBoxdevTypeBase* = proc(): cint
-proc ondevType*(self: QDialogButtonBox, slot: proc(super: QDialogButtonBoxdevTypeBase): cint) =
+type QDialogButtonBoxdevTypeProc* = proc(): cint
+proc ondevType*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxdevTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialogButtonBoxdevTypeBase): cint
-  var tmp = new Cb
+  var tmp = new QDialogButtonBoxdevTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDialogButtonBox_override_virtual_devType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDialogButtonBox_devType(self: ptr cQDialogButtonBox, slot: int): cint {.exportc: "miqt_exec_callback_QDialogButtonBox_devType ".} =
-  type Cb = proc(super: QDialogButtonBoxdevTypeBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_devType(QDialogButtonBox(h: self), )
+  var nimfunc = cast[ptr QDialogButtonBoxdevTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setVisible(self: QDialogButtonBox, visible: bool): void =
-
+proc QDialogButtonBoxsetVisible*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, visible: bool): void =
 
   fQDialogButtonBox_virtualbase_setVisible(self.h, visible)
 
-type QDialogButtonBoxsetVisibleBase* = proc(visible: bool): void
-proc onsetVisible*(self: QDialogButtonBox, slot: proc(super: QDialogButtonBoxsetVisibleBase, visible: bool): void) =
+type QDialogButtonBoxsetVisibleProc* = proc(visible: bool): void
+proc onsetVisible*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxsetVisibleProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialogButtonBoxsetVisibleBase, visible: bool): void
-  var tmp = new Cb
+  var tmp = new QDialogButtonBoxsetVisibleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDialogButtonBox_override_virtual_setVisible(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDialogButtonBox_setVisible(self: ptr cQDialogButtonBox, slot: int, visible: bool): void {.exportc: "miqt_exec_callback_QDialogButtonBox_setVisible ".} =
-  type Cb = proc(super: QDialogButtonBoxsetVisibleBase, visible: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(visible: bool): auto =
-    callVirtualBase_setVisible(QDialogButtonBox(h: self), visible)
+  var nimfunc = cast[ptr QDialogButtonBoxsetVisibleProc](cast[pointer](slot))
   let slotval1 = visible
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_sizeHint(self: QDialogButtonBox, ): gen_qsize.QSize =
-
+  nimfunc[](slotval1)
+proc QDialogButtonBoxsizeHint*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQDialogButtonBox_virtualbase_sizeHint(self.h))
 
-type QDialogButtonBoxsizeHintBase* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: QDialogButtonBox, slot: proc(super: QDialogButtonBoxsizeHintBase): gen_qsize.QSize) =
+type QDialogButtonBoxsizeHintProc* = proc(): gen_qsize.QSize
+proc onsizeHint*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxsizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialogButtonBoxsizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QDialogButtonBoxsizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDialogButtonBox_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDialogButtonBox_sizeHint(self: ptr cQDialogButtonBox, slot: int): pointer {.exportc: "miqt_exec_callback_QDialogButtonBox_sizeHint ".} =
-  type Cb = proc(super: QDialogButtonBoxsizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sizeHint(QDialogButtonBox(h: self), )
+  var nimfunc = cast[ptr QDialogButtonBoxsizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_minimumSizeHint(self: QDialogButtonBox, ): gen_qsize.QSize =
-
+proc QDialogButtonBoxminimumSizeHint*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQDialogButtonBox_virtualbase_minimumSizeHint(self.h))
 
-type QDialogButtonBoxminimumSizeHintBase* = proc(): gen_qsize.QSize
-proc onminimumSizeHint*(self: QDialogButtonBox, slot: proc(super: QDialogButtonBoxminimumSizeHintBase): gen_qsize.QSize) =
+type QDialogButtonBoxminimumSizeHintProc* = proc(): gen_qsize.QSize
+proc onminimumSizeHint*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxminimumSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialogButtonBoxminimumSizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QDialogButtonBoxminimumSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDialogButtonBox_override_virtual_minimumSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDialogButtonBox_minimumSizeHint(self: ptr cQDialogButtonBox, slot: int): pointer {.exportc: "miqt_exec_callback_QDialogButtonBox_minimumSizeHint ".} =
-  type Cb = proc(super: QDialogButtonBoxminimumSizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_minimumSizeHint(QDialogButtonBox(h: self), )
+  var nimfunc = cast[ptr QDialogButtonBoxminimumSizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_heightForWidth(self: QDialogButtonBox, param1: cint): cint =
-
+proc QDialogButtonBoxheightForWidth*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, param1: cint): cint =
 
   fQDialogButtonBox_virtualbase_heightForWidth(self.h, param1)
 
-type QDialogButtonBoxheightForWidthBase* = proc(param1: cint): cint
-proc onheightForWidth*(self: QDialogButtonBox, slot: proc(super: QDialogButtonBoxheightForWidthBase, param1: cint): cint) =
+type QDialogButtonBoxheightForWidthProc* = proc(param1: cint): cint
+proc onheightForWidth*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxheightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialogButtonBoxheightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QDialogButtonBoxheightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDialogButtonBox_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDialogButtonBox_heightForWidth(self: ptr cQDialogButtonBox, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QDialogButtonBox_heightForWidth ".} =
-  type Cb = proc(super: QDialogButtonBoxheightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_heightForWidth(QDialogButtonBox(h: self), param1)
+  var nimfunc = cast[ptr QDialogButtonBoxheightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_hasHeightForWidth(self: QDialogButtonBox, ): bool =
-
+proc QDialogButtonBoxhasHeightForWidth*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, ): bool =
 
   fQDialogButtonBox_virtualbase_hasHeightForWidth(self.h)
 
-type QDialogButtonBoxhasHeightForWidthBase* = proc(): bool
-proc onhasHeightForWidth*(self: QDialogButtonBox, slot: proc(super: QDialogButtonBoxhasHeightForWidthBase): bool) =
+type QDialogButtonBoxhasHeightForWidthProc* = proc(): bool
+proc onhasHeightForWidth*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxhasHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialogButtonBoxhasHeightForWidthBase): bool
-  var tmp = new Cb
+  var tmp = new QDialogButtonBoxhasHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDialogButtonBox_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDialogButtonBox_hasHeightForWidth(self: ptr cQDialogButtonBox, slot: int): bool {.exportc: "miqt_exec_callback_QDialogButtonBox_hasHeightForWidth ".} =
-  type Cb = proc(super: QDialogButtonBoxhasHeightForWidthBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasHeightForWidth(QDialogButtonBox(h: self), )
+  var nimfunc = cast[ptr QDialogButtonBoxhasHeightForWidthProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_paintEngine(self: QDialogButtonBox, ): gen_qpaintengine.QPaintEngine =
-
+proc QDialogButtonBoxpaintEngine*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, ): gen_qpaintengine.QPaintEngine =
 
   gen_qpaintengine.QPaintEngine(h: fQDialogButtonBox_virtualbase_paintEngine(self.h))
 
-type QDialogButtonBoxpaintEngineBase* = proc(): gen_qpaintengine.QPaintEngine
-proc onpaintEngine*(self: QDialogButtonBox, slot: proc(super: QDialogButtonBoxpaintEngineBase): gen_qpaintengine.QPaintEngine) =
+type QDialogButtonBoxpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
+proc onpaintEngine*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxpaintEngineProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialogButtonBoxpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var tmp = new Cb
+  var tmp = new QDialogButtonBoxpaintEngineProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDialogButtonBox_override_virtual_paintEngine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDialogButtonBox_paintEngine(self: ptr cQDialogButtonBox, slot: int): pointer {.exportc: "miqt_exec_callback_QDialogButtonBox_paintEngine ".} =
-  type Cb = proc(super: QDialogButtonBoxpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_paintEngine(QDialogButtonBox(h: self), )
+  var nimfunc = cast[ptr QDialogButtonBoxpaintEngineProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_mousePressEvent(self: QDialogButtonBox, event: gen_qevent.QMouseEvent): void =
-
+proc QDialogButtonBoxmousePressEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qevent.QMouseEvent): void =
 
   fQDialogButtonBox_virtualbase_mousePressEvent(self.h, event.h)
 
-type QDialogButtonBoxmousePressEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmousePressEvent*(self: QDialogButtonBox, slot: proc(super: QDialogButtonBoxmousePressEventBase, event: gen_qevent.QMouseEvent): void) =
+type QDialogButtonBoxmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmousePressEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxmousePressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialogButtonBoxmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QDialogButtonBoxmousePressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDialogButtonBox_override_virtual_mousePressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDialogButtonBox_mousePressEvent(self: ptr cQDialogButtonBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDialogButtonBox_mousePressEvent ".} =
-  type Cb = proc(super: QDialogButtonBoxmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mousePressEvent(QDialogButtonBox(h: self), event)
+  var nimfunc = cast[ptr QDialogButtonBoxmousePressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseReleaseEvent(self: QDialogButtonBox, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QDialogButtonBoxmouseReleaseEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qevent.QMouseEvent): void =
 
   fQDialogButtonBox_virtualbase_mouseReleaseEvent(self.h, event.h)
 
-type QDialogButtonBoxmouseReleaseEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseReleaseEvent*(self: QDialogButtonBox, slot: proc(super: QDialogButtonBoxmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void) =
+type QDialogButtonBoxmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseReleaseEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxmouseReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialogButtonBoxmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QDialogButtonBoxmouseReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDialogButtonBox_override_virtual_mouseReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDialogButtonBox_mouseReleaseEvent(self: ptr cQDialogButtonBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDialogButtonBox_mouseReleaseEvent ".} =
-  type Cb = proc(super: QDialogButtonBoxmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseReleaseEvent(QDialogButtonBox(h: self), event)
+  var nimfunc = cast[ptr QDialogButtonBoxmouseReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseDoubleClickEvent(self: QDialogButtonBox, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QDialogButtonBoxmouseDoubleClickEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qevent.QMouseEvent): void =
 
   fQDialogButtonBox_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
-type QDialogButtonBoxmouseDoubleClickEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseDoubleClickEvent*(self: QDialogButtonBox, slot: proc(super: QDialogButtonBoxmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void) =
+type QDialogButtonBoxmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseDoubleClickEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxmouseDoubleClickEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialogButtonBoxmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QDialogButtonBoxmouseDoubleClickEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDialogButtonBox_override_virtual_mouseDoubleClickEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDialogButtonBox_mouseDoubleClickEvent(self: ptr cQDialogButtonBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDialogButtonBox_mouseDoubleClickEvent ".} =
-  type Cb = proc(super: QDialogButtonBoxmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseDoubleClickEvent(QDialogButtonBox(h: self), event)
+  var nimfunc = cast[ptr QDialogButtonBoxmouseDoubleClickEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseMoveEvent(self: QDialogButtonBox, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QDialogButtonBoxmouseMoveEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qevent.QMouseEvent): void =
 
   fQDialogButtonBox_virtualbase_mouseMoveEvent(self.h, event.h)
 
-type QDialogButtonBoxmouseMoveEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseMoveEvent*(self: QDialogButtonBox, slot: proc(super: QDialogButtonBoxmouseMoveEventBase, event: gen_qevent.QMouseEvent): void) =
+type QDialogButtonBoxmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseMoveEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxmouseMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialogButtonBoxmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QDialogButtonBoxmouseMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDialogButtonBox_override_virtual_mouseMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDialogButtonBox_mouseMoveEvent(self: ptr cQDialogButtonBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDialogButtonBox_mouseMoveEvent ".} =
-  type Cb = proc(super: QDialogButtonBoxmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseMoveEvent(QDialogButtonBox(h: self), event)
+  var nimfunc = cast[ptr QDialogButtonBoxmouseMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_wheelEvent(self: QDialogButtonBox, event: gen_qevent.QWheelEvent): void =
-
+  nimfunc[](slotval1)
+proc QDialogButtonBoxwheelEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qevent.QWheelEvent): void =
 
   fQDialogButtonBox_virtualbase_wheelEvent(self.h, event.h)
 
-type QDialogButtonBoxwheelEventBase* = proc(event: gen_qevent.QWheelEvent): void
-proc onwheelEvent*(self: QDialogButtonBox, slot: proc(super: QDialogButtonBoxwheelEventBase, event: gen_qevent.QWheelEvent): void) =
+type QDialogButtonBoxwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
+proc onwheelEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxwheelEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialogButtonBoxwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var tmp = new Cb
+  var tmp = new QDialogButtonBoxwheelEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDialogButtonBox_override_virtual_wheelEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDialogButtonBox_wheelEvent(self: ptr cQDialogButtonBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDialogButtonBox_wheelEvent ".} =
-  type Cb = proc(super: QDialogButtonBoxwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QWheelEvent): auto =
-    callVirtualBase_wheelEvent(QDialogButtonBox(h: self), event)
+  var nimfunc = cast[ptr QDialogButtonBoxwheelEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QWheelEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyPressEvent(self: QDialogButtonBox, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QDialogButtonBoxkeyPressEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qevent.QKeyEvent): void =
 
   fQDialogButtonBox_virtualbase_keyPressEvent(self.h, event.h)
 
-type QDialogButtonBoxkeyPressEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyPressEvent*(self: QDialogButtonBox, slot: proc(super: QDialogButtonBoxkeyPressEventBase, event: gen_qevent.QKeyEvent): void) =
+type QDialogButtonBoxkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyPressEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxkeyPressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialogButtonBoxkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QDialogButtonBoxkeyPressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDialogButtonBox_override_virtual_keyPressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDialogButtonBox_keyPressEvent(self: ptr cQDialogButtonBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDialogButtonBox_keyPressEvent ".} =
-  type Cb = proc(super: QDialogButtonBoxkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyPressEvent(QDialogButtonBox(h: self), event)
+  var nimfunc = cast[ptr QDialogButtonBoxkeyPressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyReleaseEvent(self: QDialogButtonBox, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QDialogButtonBoxkeyReleaseEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qevent.QKeyEvent): void =
 
   fQDialogButtonBox_virtualbase_keyReleaseEvent(self.h, event.h)
 
-type QDialogButtonBoxkeyReleaseEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyReleaseEvent*(self: QDialogButtonBox, slot: proc(super: QDialogButtonBoxkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void) =
+type QDialogButtonBoxkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyReleaseEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxkeyReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialogButtonBoxkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QDialogButtonBoxkeyReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDialogButtonBox_override_virtual_keyReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDialogButtonBox_keyReleaseEvent(self: ptr cQDialogButtonBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDialogButtonBox_keyReleaseEvent ".} =
-  type Cb = proc(super: QDialogButtonBoxkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyReleaseEvent(QDialogButtonBox(h: self), event)
+  var nimfunc = cast[ptr QDialogButtonBoxkeyReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusInEvent(self: QDialogButtonBox, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QDialogButtonBoxfocusInEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qevent.QFocusEvent): void =
 
   fQDialogButtonBox_virtualbase_focusInEvent(self.h, event.h)
 
-type QDialogButtonBoxfocusInEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusInEvent*(self: QDialogButtonBox, slot: proc(super: QDialogButtonBoxfocusInEventBase, event: gen_qevent.QFocusEvent): void) =
+type QDialogButtonBoxfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusInEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxfocusInEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialogButtonBoxfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QDialogButtonBoxfocusInEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDialogButtonBox_override_virtual_focusInEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDialogButtonBox_focusInEvent(self: ptr cQDialogButtonBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDialogButtonBox_focusInEvent ".} =
-  type Cb = proc(super: QDialogButtonBoxfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusInEvent(QDialogButtonBox(h: self), event)
+  var nimfunc = cast[ptr QDialogButtonBoxfocusInEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusOutEvent(self: QDialogButtonBox, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QDialogButtonBoxfocusOutEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qevent.QFocusEvent): void =
 
   fQDialogButtonBox_virtualbase_focusOutEvent(self.h, event.h)
 
-type QDialogButtonBoxfocusOutEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusOutEvent*(self: QDialogButtonBox, slot: proc(super: QDialogButtonBoxfocusOutEventBase, event: gen_qevent.QFocusEvent): void) =
+type QDialogButtonBoxfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusOutEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxfocusOutEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialogButtonBoxfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QDialogButtonBoxfocusOutEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDialogButtonBox_override_virtual_focusOutEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDialogButtonBox_focusOutEvent(self: ptr cQDialogButtonBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDialogButtonBox_focusOutEvent ".} =
-  type Cb = proc(super: QDialogButtonBoxfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusOutEvent(QDialogButtonBox(h: self), event)
+  var nimfunc = cast[ptr QDialogButtonBoxfocusOutEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_enterEvent(self: QDialogButtonBox, event: gen_qevent.QEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QDialogButtonBoxenterEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qevent.QEnterEvent): void =
 
   fQDialogButtonBox_virtualbase_enterEvent(self.h, event.h)
 
-type QDialogButtonBoxenterEventBase* = proc(event: gen_qevent.QEnterEvent): void
-proc onenterEvent*(self: QDialogButtonBox, slot: proc(super: QDialogButtonBoxenterEventBase, event: gen_qevent.QEnterEvent): void) =
+type QDialogButtonBoxenterEventProc* = proc(event: gen_qevent.QEnterEvent): void
+proc onenterEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxenterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialogButtonBoxenterEventBase, event: gen_qevent.QEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QDialogButtonBoxenterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDialogButtonBox_override_virtual_enterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDialogButtonBox_enterEvent(self: ptr cQDialogButtonBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDialogButtonBox_enterEvent ".} =
-  type Cb = proc(super: QDialogButtonBoxenterEventBase, event: gen_qevent.QEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QEnterEvent): auto =
-    callVirtualBase_enterEvent(QDialogButtonBox(h: self), event)
+  var nimfunc = cast[ptr QDialogButtonBoxenterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_leaveEvent(self: QDialogButtonBox, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QDialogButtonBoxleaveEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qcoreevent.QEvent): void =
 
   fQDialogButtonBox_virtualbase_leaveEvent(self.h, event.h)
 
-type QDialogButtonBoxleaveEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onleaveEvent*(self: QDialogButtonBox, slot: proc(super: QDialogButtonBoxleaveEventBase, event: gen_qcoreevent.QEvent): void) =
+type QDialogButtonBoxleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onleaveEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxleaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialogButtonBoxleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QDialogButtonBoxleaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDialogButtonBox_override_virtual_leaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDialogButtonBox_leaveEvent(self: ptr cQDialogButtonBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDialogButtonBox_leaveEvent ".} =
-  type Cb = proc(super: QDialogButtonBoxleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_leaveEvent(QDialogButtonBox(h: self), event)
+  var nimfunc = cast[ptr QDialogButtonBoxleaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_paintEvent(self: QDialogButtonBox, event: gen_qevent.QPaintEvent): void =
-
+  nimfunc[](slotval1)
+proc QDialogButtonBoxpaintEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qevent.QPaintEvent): void =
 
   fQDialogButtonBox_virtualbase_paintEvent(self.h, event.h)
 
-type QDialogButtonBoxpaintEventBase* = proc(event: gen_qevent.QPaintEvent): void
-proc onpaintEvent*(self: QDialogButtonBox, slot: proc(super: QDialogButtonBoxpaintEventBase, event: gen_qevent.QPaintEvent): void) =
+type QDialogButtonBoxpaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
+proc onpaintEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxpaintEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialogButtonBoxpaintEventBase, event: gen_qevent.QPaintEvent): void
-  var tmp = new Cb
+  var tmp = new QDialogButtonBoxpaintEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDialogButtonBox_override_virtual_paintEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDialogButtonBox_paintEvent(self: ptr cQDialogButtonBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDialogButtonBox_paintEvent ".} =
-  type Cb = proc(super: QDialogButtonBoxpaintEventBase, event: gen_qevent.QPaintEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QPaintEvent): auto =
-    callVirtualBase_paintEvent(QDialogButtonBox(h: self), event)
+  var nimfunc = cast[ptr QDialogButtonBoxpaintEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QPaintEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_moveEvent(self: QDialogButtonBox, event: gen_qevent.QMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QDialogButtonBoxmoveEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qevent.QMoveEvent): void =
 
   fQDialogButtonBox_virtualbase_moveEvent(self.h, event.h)
 
-type QDialogButtonBoxmoveEventBase* = proc(event: gen_qevent.QMoveEvent): void
-proc onmoveEvent*(self: QDialogButtonBox, slot: proc(super: QDialogButtonBoxmoveEventBase, event: gen_qevent.QMoveEvent): void) =
+type QDialogButtonBoxmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
+proc onmoveEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxmoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialogButtonBoxmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QDialogButtonBoxmoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDialogButtonBox_override_virtual_moveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDialogButtonBox_moveEvent(self: ptr cQDialogButtonBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDialogButtonBox_moveEvent ".} =
-  type Cb = proc(super: QDialogButtonBoxmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMoveEvent): auto =
-    callVirtualBase_moveEvent(QDialogButtonBox(h: self), event)
+  var nimfunc = cast[ptr QDialogButtonBoxmoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_resizeEvent(self: QDialogButtonBox, event: gen_qevent.QResizeEvent): void =
-
+  nimfunc[](slotval1)
+proc QDialogButtonBoxresizeEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qevent.QResizeEvent): void =
 
   fQDialogButtonBox_virtualbase_resizeEvent(self.h, event.h)
 
-type QDialogButtonBoxresizeEventBase* = proc(event: gen_qevent.QResizeEvent): void
-proc onresizeEvent*(self: QDialogButtonBox, slot: proc(super: QDialogButtonBoxresizeEventBase, event: gen_qevent.QResizeEvent): void) =
+type QDialogButtonBoxresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
+proc onresizeEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxresizeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialogButtonBoxresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var tmp = new Cb
+  var tmp = new QDialogButtonBoxresizeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDialogButtonBox_override_virtual_resizeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDialogButtonBox_resizeEvent(self: ptr cQDialogButtonBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDialogButtonBox_resizeEvent ".} =
-  type Cb = proc(super: QDialogButtonBoxresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QResizeEvent): auto =
-    callVirtualBase_resizeEvent(QDialogButtonBox(h: self), event)
+  var nimfunc = cast[ptr QDialogButtonBoxresizeEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QResizeEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_closeEvent(self: QDialogButtonBox, event: gen_qevent.QCloseEvent): void =
-
+  nimfunc[](slotval1)
+proc QDialogButtonBoxcloseEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qevent.QCloseEvent): void =
 
   fQDialogButtonBox_virtualbase_closeEvent(self.h, event.h)
 
-type QDialogButtonBoxcloseEventBase* = proc(event: gen_qevent.QCloseEvent): void
-proc oncloseEvent*(self: QDialogButtonBox, slot: proc(super: QDialogButtonBoxcloseEventBase, event: gen_qevent.QCloseEvent): void) =
+type QDialogButtonBoxcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
+proc oncloseEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxcloseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialogButtonBoxcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var tmp = new Cb
+  var tmp = new QDialogButtonBoxcloseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDialogButtonBox_override_virtual_closeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDialogButtonBox_closeEvent(self: ptr cQDialogButtonBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDialogButtonBox_closeEvent ".} =
-  type Cb = proc(super: QDialogButtonBoxcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QCloseEvent): auto =
-    callVirtualBase_closeEvent(QDialogButtonBox(h: self), event)
+  var nimfunc = cast[ptr QDialogButtonBoxcloseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QCloseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_contextMenuEvent(self: QDialogButtonBox, event: gen_qevent.QContextMenuEvent): void =
-
+  nimfunc[](slotval1)
+proc QDialogButtonBoxcontextMenuEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qevent.QContextMenuEvent): void =
 
   fQDialogButtonBox_virtualbase_contextMenuEvent(self.h, event.h)
 
-type QDialogButtonBoxcontextMenuEventBase* = proc(event: gen_qevent.QContextMenuEvent): void
-proc oncontextMenuEvent*(self: QDialogButtonBox, slot: proc(super: QDialogButtonBoxcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void) =
+type QDialogButtonBoxcontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
+proc oncontextMenuEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxcontextMenuEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialogButtonBoxcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var tmp = new Cb
+  var tmp = new QDialogButtonBoxcontextMenuEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDialogButtonBox_override_virtual_contextMenuEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDialogButtonBox_contextMenuEvent(self: ptr cQDialogButtonBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDialogButtonBox_contextMenuEvent ".} =
-  type Cb = proc(super: QDialogButtonBoxcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QContextMenuEvent): auto =
-    callVirtualBase_contextMenuEvent(QDialogButtonBox(h: self), event)
+  var nimfunc = cast[ptr QDialogButtonBoxcontextMenuEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QContextMenuEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_tabletEvent(self: QDialogButtonBox, event: gen_qevent.QTabletEvent): void =
-
+  nimfunc[](slotval1)
+proc QDialogButtonBoxtabletEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qevent.QTabletEvent): void =
 
   fQDialogButtonBox_virtualbase_tabletEvent(self.h, event.h)
 
-type QDialogButtonBoxtabletEventBase* = proc(event: gen_qevent.QTabletEvent): void
-proc ontabletEvent*(self: QDialogButtonBox, slot: proc(super: QDialogButtonBoxtabletEventBase, event: gen_qevent.QTabletEvent): void) =
+type QDialogButtonBoxtabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
+proc ontabletEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxtabletEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialogButtonBoxtabletEventBase, event: gen_qevent.QTabletEvent): void
-  var tmp = new Cb
+  var tmp = new QDialogButtonBoxtabletEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDialogButtonBox_override_virtual_tabletEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDialogButtonBox_tabletEvent(self: ptr cQDialogButtonBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDialogButtonBox_tabletEvent ".} =
-  type Cb = proc(super: QDialogButtonBoxtabletEventBase, event: gen_qevent.QTabletEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QTabletEvent): auto =
-    callVirtualBase_tabletEvent(QDialogButtonBox(h: self), event)
+  var nimfunc = cast[ptr QDialogButtonBoxtabletEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QTabletEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_actionEvent(self: QDialogButtonBox, event: gen_qevent.QActionEvent): void =
-
+  nimfunc[](slotval1)
+proc QDialogButtonBoxactionEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qevent.QActionEvent): void =
 
   fQDialogButtonBox_virtualbase_actionEvent(self.h, event.h)
 
-type QDialogButtonBoxactionEventBase* = proc(event: gen_qevent.QActionEvent): void
-proc onactionEvent*(self: QDialogButtonBox, slot: proc(super: QDialogButtonBoxactionEventBase, event: gen_qevent.QActionEvent): void) =
+type QDialogButtonBoxactionEventProc* = proc(event: gen_qevent.QActionEvent): void
+proc onactionEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxactionEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialogButtonBoxactionEventBase, event: gen_qevent.QActionEvent): void
-  var tmp = new Cb
+  var tmp = new QDialogButtonBoxactionEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDialogButtonBox_override_virtual_actionEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDialogButtonBox_actionEvent(self: ptr cQDialogButtonBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDialogButtonBox_actionEvent ".} =
-  type Cb = proc(super: QDialogButtonBoxactionEventBase, event: gen_qevent.QActionEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QActionEvent): auto =
-    callVirtualBase_actionEvent(QDialogButtonBox(h: self), event)
+  var nimfunc = cast[ptr QDialogButtonBoxactionEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QActionEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragEnterEvent(self: QDialogButtonBox, event: gen_qevent.QDragEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QDialogButtonBoxdragEnterEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qevent.QDragEnterEvent): void =
 
   fQDialogButtonBox_virtualbase_dragEnterEvent(self.h, event.h)
 
-type QDialogButtonBoxdragEnterEventBase* = proc(event: gen_qevent.QDragEnterEvent): void
-proc ondragEnterEvent*(self: QDialogButtonBox, slot: proc(super: QDialogButtonBoxdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void) =
+type QDialogButtonBoxdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
+proc ondragEnterEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxdragEnterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialogButtonBoxdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QDialogButtonBoxdragEnterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDialogButtonBox_override_virtual_dragEnterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDialogButtonBox_dragEnterEvent(self: ptr cQDialogButtonBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDialogButtonBox_dragEnterEvent ".} =
-  type Cb = proc(super: QDialogButtonBoxdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragEnterEvent): auto =
-    callVirtualBase_dragEnterEvent(QDialogButtonBox(h: self), event)
+  var nimfunc = cast[ptr QDialogButtonBoxdragEnterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragMoveEvent(self: QDialogButtonBox, event: gen_qevent.QDragMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QDialogButtonBoxdragMoveEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qevent.QDragMoveEvent): void =
 
   fQDialogButtonBox_virtualbase_dragMoveEvent(self.h, event.h)
 
-type QDialogButtonBoxdragMoveEventBase* = proc(event: gen_qevent.QDragMoveEvent): void
-proc ondragMoveEvent*(self: QDialogButtonBox, slot: proc(super: QDialogButtonBoxdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void) =
+type QDialogButtonBoxdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
+proc ondragMoveEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxdragMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialogButtonBoxdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QDialogButtonBoxdragMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDialogButtonBox_override_virtual_dragMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDialogButtonBox_dragMoveEvent(self: ptr cQDialogButtonBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDialogButtonBox_dragMoveEvent ".} =
-  type Cb = proc(super: QDialogButtonBoxdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragMoveEvent): auto =
-    callVirtualBase_dragMoveEvent(QDialogButtonBox(h: self), event)
+  var nimfunc = cast[ptr QDialogButtonBoxdragMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragLeaveEvent(self: QDialogButtonBox, event: gen_qevent.QDragLeaveEvent): void =
-
+  nimfunc[](slotval1)
+proc QDialogButtonBoxdragLeaveEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qevent.QDragLeaveEvent): void =
 
   fQDialogButtonBox_virtualbase_dragLeaveEvent(self.h, event.h)
 
-type QDialogButtonBoxdragLeaveEventBase* = proc(event: gen_qevent.QDragLeaveEvent): void
-proc ondragLeaveEvent*(self: QDialogButtonBox, slot: proc(super: QDialogButtonBoxdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void) =
+type QDialogButtonBoxdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
+proc ondragLeaveEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxdragLeaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialogButtonBoxdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var tmp = new Cb
+  var tmp = new QDialogButtonBoxdragLeaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDialogButtonBox_override_virtual_dragLeaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDialogButtonBox_dragLeaveEvent(self: ptr cQDialogButtonBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDialogButtonBox_dragLeaveEvent ".} =
-  type Cb = proc(super: QDialogButtonBoxdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragLeaveEvent): auto =
-    callVirtualBase_dragLeaveEvent(QDialogButtonBox(h: self), event)
+  var nimfunc = cast[ptr QDialogButtonBoxdragLeaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragLeaveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dropEvent(self: QDialogButtonBox, event: gen_qevent.QDropEvent): void =
-
+  nimfunc[](slotval1)
+proc QDialogButtonBoxdropEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qevent.QDropEvent): void =
 
   fQDialogButtonBox_virtualbase_dropEvent(self.h, event.h)
 
-type QDialogButtonBoxdropEventBase* = proc(event: gen_qevent.QDropEvent): void
-proc ondropEvent*(self: QDialogButtonBox, slot: proc(super: QDialogButtonBoxdropEventBase, event: gen_qevent.QDropEvent): void) =
+type QDialogButtonBoxdropEventProc* = proc(event: gen_qevent.QDropEvent): void
+proc ondropEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxdropEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialogButtonBoxdropEventBase, event: gen_qevent.QDropEvent): void
-  var tmp = new Cb
+  var tmp = new QDialogButtonBoxdropEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDialogButtonBox_override_virtual_dropEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDialogButtonBox_dropEvent(self: ptr cQDialogButtonBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDialogButtonBox_dropEvent ".} =
-  type Cb = proc(super: QDialogButtonBoxdropEventBase, event: gen_qevent.QDropEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDropEvent): auto =
-    callVirtualBase_dropEvent(QDialogButtonBox(h: self), event)
+  var nimfunc = cast[ptr QDialogButtonBoxdropEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDropEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_showEvent(self: QDialogButtonBox, event: gen_qevent.QShowEvent): void =
-
+  nimfunc[](slotval1)
+proc QDialogButtonBoxshowEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qevent.QShowEvent): void =
 
   fQDialogButtonBox_virtualbase_showEvent(self.h, event.h)
 
-type QDialogButtonBoxshowEventBase* = proc(event: gen_qevent.QShowEvent): void
-proc onshowEvent*(self: QDialogButtonBox, slot: proc(super: QDialogButtonBoxshowEventBase, event: gen_qevent.QShowEvent): void) =
+type QDialogButtonBoxshowEventProc* = proc(event: gen_qevent.QShowEvent): void
+proc onshowEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxshowEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialogButtonBoxshowEventBase, event: gen_qevent.QShowEvent): void
-  var tmp = new Cb
+  var tmp = new QDialogButtonBoxshowEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDialogButtonBox_override_virtual_showEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDialogButtonBox_showEvent(self: ptr cQDialogButtonBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDialogButtonBox_showEvent ".} =
-  type Cb = proc(super: QDialogButtonBoxshowEventBase, event: gen_qevent.QShowEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QShowEvent): auto =
-    callVirtualBase_showEvent(QDialogButtonBox(h: self), event)
+  var nimfunc = cast[ptr QDialogButtonBoxshowEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QShowEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hideEvent(self: QDialogButtonBox, event: gen_qevent.QHideEvent): void =
-
+  nimfunc[](slotval1)
+proc QDialogButtonBoxhideEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qevent.QHideEvent): void =
 
   fQDialogButtonBox_virtualbase_hideEvent(self.h, event.h)
 
-type QDialogButtonBoxhideEventBase* = proc(event: gen_qevent.QHideEvent): void
-proc onhideEvent*(self: QDialogButtonBox, slot: proc(super: QDialogButtonBoxhideEventBase, event: gen_qevent.QHideEvent): void) =
+type QDialogButtonBoxhideEventProc* = proc(event: gen_qevent.QHideEvent): void
+proc onhideEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxhideEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialogButtonBoxhideEventBase, event: gen_qevent.QHideEvent): void
-  var tmp = new Cb
+  var tmp = new QDialogButtonBoxhideEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDialogButtonBox_override_virtual_hideEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDialogButtonBox_hideEvent(self: ptr cQDialogButtonBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDialogButtonBox_hideEvent ".} =
-  type Cb = proc(super: QDialogButtonBoxhideEventBase, event: gen_qevent.QHideEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QHideEvent): auto =
-    callVirtualBase_hideEvent(QDialogButtonBox(h: self), event)
+  var nimfunc = cast[ptr QDialogButtonBoxhideEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QHideEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_nativeEvent(self: QDialogButtonBox, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
-
+  nimfunc[](slotval1)
+proc QDialogButtonBoxnativeEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
 
   fQDialogButtonBox_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
-type QDialogButtonBoxnativeEventBase* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-proc onnativeEvent*(self: QDialogButtonBox, slot: proc(super: QDialogButtonBoxnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool) =
+type QDialogButtonBoxnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
+proc onnativeEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxnativeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialogButtonBoxnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-  var tmp = new Cb
+  var tmp = new QDialogButtonBoxnativeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDialogButtonBox_override_virtual_nativeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDialogButtonBox_nativeEvent(self: ptr cQDialogButtonBox, slot: int, eventType: struct_miqt_string, message: pointer, resultVal: ptr uint): bool {.exportc: "miqt_exec_callback_QDialogButtonBox_nativeEvent ".} =
-  type Cb = proc(super: QDialogButtonBoxnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(eventType: seq[byte], message: pointer, resultVal: ptr uint): auto =
-    callVirtualBase_nativeEvent(QDialogButtonBox(h: self), eventType, message, resultVal)
+  var nimfunc = cast[ptr QDialogButtonBoxnativeEventProc](cast[pointer](slot))
   var veventType_bytearray = eventType
   var veventTypex_ret = @(toOpenArrayByte(veventType_bytearray.data, 0, int(veventType_bytearray.len)-1))
   c_free(veventType_bytearray.data)
@@ -1324,321 +1131,256 @@ proc miqt_exec_callback_QDialogButtonBox_nativeEvent(self: ptr cQDialogButtonBox
   let slotval3 = resultVal
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_metric(self: QDialogButtonBox, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint =
-
+proc QDialogButtonBoxmetric*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, param1: cint): cint =
 
   fQDialogButtonBox_virtualbase_metric(self.h, cint(param1))
 
-type QDialogButtonBoxmetricBase* = proc(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-proc onmetric*(self: QDialogButtonBox, slot: proc(super: QDialogButtonBoxmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint) =
+type QDialogButtonBoxmetricProc* = proc(param1: cint): cint
+proc onmetric*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxmetricProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialogButtonBoxmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var tmp = new Cb
+  var tmp = new QDialogButtonBoxmetricProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDialogButtonBox_override_virtual_metric(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDialogButtonBox_metric(self: ptr cQDialogButtonBox, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QDialogButtonBox_metric ".} =
-  type Cb = proc(super: QDialogButtonBoxmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): auto =
-    callVirtualBase_metric(QDialogButtonBox(h: self), param1)
-  let slotval1 = gen_qpaintdevice.QPaintDevicePaintDeviceMetric(param1)
+  var nimfunc = cast[ptr QDialogButtonBoxmetricProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_initPainter(self: QDialogButtonBox, painter: gen_qpainter.QPainter): void =
-
+proc QDialogButtonBoxinitPainter*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, painter: gen_qpainter.QPainter): void =
 
   fQDialogButtonBox_virtualbase_initPainter(self.h, painter.h)
 
-type QDialogButtonBoxinitPainterBase* = proc(painter: gen_qpainter.QPainter): void
-proc oninitPainter*(self: QDialogButtonBox, slot: proc(super: QDialogButtonBoxinitPainterBase, painter: gen_qpainter.QPainter): void) =
+type QDialogButtonBoxinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
+proc oninitPainter*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxinitPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialogButtonBoxinitPainterBase, painter: gen_qpainter.QPainter): void
-  var tmp = new Cb
+  var tmp = new QDialogButtonBoxinitPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDialogButtonBox_override_virtual_initPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDialogButtonBox_initPainter(self: ptr cQDialogButtonBox, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_QDialogButtonBox_initPainter ".} =
-  type Cb = proc(super: QDialogButtonBoxinitPainterBase, painter: gen_qpainter.QPainter): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter): auto =
-    callVirtualBase_initPainter(QDialogButtonBox(h: self), painter)
+  var nimfunc = cast[ptr QDialogButtonBoxinitPainterProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_redirected(self: QDialogButtonBox, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
+  nimfunc[](slotval1)
+proc QDialogButtonBoxredirected*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
 
   gen_qpaintdevice.QPaintDevice(h: fQDialogButtonBox_virtualbase_redirected(self.h, offset.h))
 
-type QDialogButtonBoxredirectedBase* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-proc onredirected*(self: QDialogButtonBox, slot: proc(super: QDialogButtonBoxredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice) =
+type QDialogButtonBoxredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
+proc onredirected*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxredirectedProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialogButtonBoxredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var tmp = new Cb
+  var tmp = new QDialogButtonBoxredirectedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDialogButtonBox_override_virtual_redirected(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDialogButtonBox_redirected(self: ptr cQDialogButtonBox, slot: int, offset: pointer): pointer {.exportc: "miqt_exec_callback_QDialogButtonBox_redirected ".} =
-  type Cb = proc(super: QDialogButtonBoxredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(offset: gen_qpoint.QPoint): auto =
-    callVirtualBase_redirected(QDialogButtonBox(h: self), offset)
+  var nimfunc = cast[ptr QDialogButtonBoxredirectedProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: offset)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_sharedPainter(self: QDialogButtonBox, ): gen_qpainter.QPainter =
-
+proc QDialogButtonBoxsharedPainter*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, ): gen_qpainter.QPainter =
 
   gen_qpainter.QPainter(h: fQDialogButtonBox_virtualbase_sharedPainter(self.h))
 
-type QDialogButtonBoxsharedPainterBase* = proc(): gen_qpainter.QPainter
-proc onsharedPainter*(self: QDialogButtonBox, slot: proc(super: QDialogButtonBoxsharedPainterBase): gen_qpainter.QPainter) =
+type QDialogButtonBoxsharedPainterProc* = proc(): gen_qpainter.QPainter
+proc onsharedPainter*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxsharedPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialogButtonBoxsharedPainterBase): gen_qpainter.QPainter
-  var tmp = new Cb
+  var tmp = new QDialogButtonBoxsharedPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDialogButtonBox_override_virtual_sharedPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDialogButtonBox_sharedPainter(self: ptr cQDialogButtonBox, slot: int): pointer {.exportc: "miqt_exec_callback_QDialogButtonBox_sharedPainter ".} =
-  type Cb = proc(super: QDialogButtonBoxsharedPainterBase): gen_qpainter.QPainter
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sharedPainter(QDialogButtonBox(h: self), )
+  var nimfunc = cast[ptr QDialogButtonBoxsharedPainterProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_inputMethodEvent(self: QDialogButtonBox, param1: gen_qevent.QInputMethodEvent): void =
-
+proc QDialogButtonBoxinputMethodEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, param1: gen_qevent.QInputMethodEvent): void =
 
   fQDialogButtonBox_virtualbase_inputMethodEvent(self.h, param1.h)
 
-type QDialogButtonBoxinputMethodEventBase* = proc(param1: gen_qevent.QInputMethodEvent): void
-proc oninputMethodEvent*(self: QDialogButtonBox, slot: proc(super: QDialogButtonBoxinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void) =
+type QDialogButtonBoxinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
+proc oninputMethodEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxinputMethodEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialogButtonBoxinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var tmp = new Cb
+  var tmp = new QDialogButtonBoxinputMethodEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDialogButtonBox_override_virtual_inputMethodEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDialogButtonBox_inputMethodEvent(self: ptr cQDialogButtonBox, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QDialogButtonBox_inputMethodEvent ".} =
-  type Cb = proc(super: QDialogButtonBoxinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QInputMethodEvent): auto =
-    callVirtualBase_inputMethodEvent(QDialogButtonBox(h: self), param1)
+  var nimfunc = cast[ptr QDialogButtonBoxinputMethodEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QInputMethodEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_inputMethodQuery(self: QDialogButtonBox, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant =
-
+  nimfunc[](slotval1)
+proc QDialogButtonBoxinputMethodQuery*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, param1: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQDialogButtonBox_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
-type QDialogButtonBoxinputMethodQueryBase* = proc(param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-proc oninputMethodQuery*(self: QDialogButtonBox, slot: proc(super: QDialogButtonBoxinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant) =
+type QDialogButtonBoxinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
+proc oninputMethodQuery*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxinputMethodQueryProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialogButtonBoxinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QDialogButtonBoxinputMethodQueryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDialogButtonBox_override_virtual_inputMethodQuery(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDialogButtonBox_inputMethodQuery(self: ptr cQDialogButtonBox, slot: int, param1: cint): pointer {.exportc: "miqt_exec_callback_QDialogButtonBox_inputMethodQuery ".} =
-  type Cb = proc(super: QDialogButtonBoxinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qnamespace.InputMethodQuery): auto =
-    callVirtualBase_inputMethodQuery(QDialogButtonBox(h: self), param1)
-  let slotval1 = gen_qnamespace.InputMethodQuery(param1)
+  var nimfunc = cast[ptr QDialogButtonBoxinputMethodQueryProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_focusNextPrevChild(self: QDialogButtonBox, next: bool): bool =
-
+proc QDialogButtonBoxfocusNextPrevChild*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, next: bool): bool =
 
   fQDialogButtonBox_virtualbase_focusNextPrevChild(self.h, next)
 
-type QDialogButtonBoxfocusNextPrevChildBase* = proc(next: bool): bool
-proc onfocusNextPrevChild*(self: QDialogButtonBox, slot: proc(super: QDialogButtonBoxfocusNextPrevChildBase, next: bool): bool) =
+type QDialogButtonBoxfocusNextPrevChildProc* = proc(next: bool): bool
+proc onfocusNextPrevChild*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxfocusNextPrevChildProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialogButtonBoxfocusNextPrevChildBase, next: bool): bool
-  var tmp = new Cb
+  var tmp = new QDialogButtonBoxfocusNextPrevChildProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDialogButtonBox_override_virtual_focusNextPrevChild(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDialogButtonBox_focusNextPrevChild(self: ptr cQDialogButtonBox, slot: int, next: bool): bool {.exportc: "miqt_exec_callback_QDialogButtonBox_focusNextPrevChild ".} =
-  type Cb = proc(super: QDialogButtonBoxfocusNextPrevChildBase, next: bool): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(next: bool): auto =
-    callVirtualBase_focusNextPrevChild(QDialogButtonBox(h: self), next)
+  var nimfunc = cast[ptr QDialogButtonBoxfocusNextPrevChildProc](cast[pointer](slot))
   let slotval1 = next
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QDialogButtonBox, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QDialogButtonBoxeventFilter*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQDialogButtonBox_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QDialogButtonBoxeventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QDialogButtonBox, slot: proc(super: QDialogButtonBoxeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QDialogButtonBoxeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialogButtonBoxeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QDialogButtonBoxeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDialogButtonBox_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDialogButtonBox_eventFilter(self: ptr cQDialogButtonBox, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QDialogButtonBox_eventFilter ".} =
-  type Cb = proc(super: QDialogButtonBoxeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QDialogButtonBox(h: self), watched, event)
+  var nimfunc = cast[ptr QDialogButtonBoxeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QDialogButtonBox, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QDialogButtonBoxtimerEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qcoreevent.QTimerEvent): void =
 
   fQDialogButtonBox_virtualbase_timerEvent(self.h, event.h)
 
-type QDialogButtonBoxtimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QDialogButtonBox, slot: proc(super: QDialogButtonBoxtimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QDialogButtonBoxtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxtimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialogButtonBoxtimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QDialogButtonBoxtimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDialogButtonBox_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDialogButtonBox_timerEvent(self: ptr cQDialogButtonBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDialogButtonBox_timerEvent ".} =
-  type Cb = proc(super: QDialogButtonBoxtimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QDialogButtonBox(h: self), event)
+  var nimfunc = cast[ptr QDialogButtonBoxtimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QDialogButtonBox, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QDialogButtonBoxchildEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qcoreevent.QChildEvent): void =
 
   fQDialogButtonBox_virtualbase_childEvent(self.h, event.h)
 
-type QDialogButtonBoxchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QDialogButtonBox, slot: proc(super: QDialogButtonBoxchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QDialogButtonBoxchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialogButtonBoxchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QDialogButtonBoxchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDialogButtonBox_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDialogButtonBox_childEvent(self: ptr cQDialogButtonBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDialogButtonBox_childEvent ".} =
-  type Cb = proc(super: QDialogButtonBoxchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QDialogButtonBox(h: self), event)
+  var nimfunc = cast[ptr QDialogButtonBoxchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QDialogButtonBox, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QDialogButtonBoxcustomEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qcoreevent.QEvent): void =
 
   fQDialogButtonBox_virtualbase_customEvent(self.h, event.h)
 
-type QDialogButtonBoxcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QDialogButtonBox, slot: proc(super: QDialogButtonBoxcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QDialogButtonBoxcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialogButtonBoxcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QDialogButtonBoxcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDialogButtonBox_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDialogButtonBox_customEvent(self: ptr cQDialogButtonBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDialogButtonBox_customEvent ".} =
-  type Cb = proc(super: QDialogButtonBoxcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QDialogButtonBox(h: self), event)
+  var nimfunc = cast[ptr QDialogButtonBoxcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QDialogButtonBox, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QDialogButtonBoxconnectNotify*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQDialogButtonBox_virtualbase_connectNotify(self.h, signal.h)
 
-type QDialogButtonBoxconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QDialogButtonBox, slot: proc(super: QDialogButtonBoxconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QDialogButtonBoxconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialogButtonBoxconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QDialogButtonBoxconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDialogButtonBox_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDialogButtonBox_connectNotify(self: ptr cQDialogButtonBox, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QDialogButtonBox_connectNotify ".} =
-  type Cb = proc(super: QDialogButtonBoxconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QDialogButtonBox(h: self), signal)
+  var nimfunc = cast[ptr QDialogButtonBoxconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QDialogButtonBox, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QDialogButtonBoxdisconnectNotify*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQDialogButtonBox_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QDialogButtonBoxdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QDialogButtonBox, slot: proc(super: QDialogButtonBoxdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QDialogButtonBoxdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QDialogButtonBoxdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QDialogButtonBoxdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDialogButtonBox_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDialogButtonBox_disconnectNotify(self: ptr cQDialogButtonBox, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QDialogButtonBox_disconnectNotify ".} =
-  type Cb = proc(super: QDialogButtonBoxdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QDialogButtonBox(h: self), signal)
+  var nimfunc = cast[ptr QDialogButtonBoxdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QDialogButtonBox): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qdialogbuttonbox_types.QDialogButtonBox): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQDialogButtonBox_staticMetaObject())
-proc delete*(self: QDialogButtonBox) =
+proc delete*(self: gen_qdialogbuttonbox_types.QDialogButtonBox) =
   fcQDialogButtonBox_delete(self.h)

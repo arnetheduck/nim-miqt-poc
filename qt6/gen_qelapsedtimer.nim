@@ -34,13 +34,11 @@ const cflags = gorge("pkg-config -cflags Qt6Widgets")
 {.compile("gen_qelapsedtimer.cpp", cflags).}
 
 
-type QElapsedTimerClockType* = cint
-const
-  QElapsedTimerSystemTime* = 0
-  QElapsedTimerMonotonicClock* = 1
-  QElapsedTimerMachAbsoluteTime* = 2
-  QElapsedTimerPerformanceCounter* = 3
-
+type QElapsedTimerClockTypeEnum* = distinct cint
+template SystemTime*(_: type QElapsedTimerClockTypeEnum): untyped = 0
+template MonotonicClock*(_: type QElapsedTimerClockTypeEnum): untyped = 1
+template MachAbsoluteTime*(_: type QElapsedTimerClockTypeEnum): untyped = 2
+template PerformanceCounter*(_: type QElapsedTimerClockTypeEnum): untyped = 3
 
 
 import gen_qelapsedtimer_types
@@ -65,58 +63,58 @@ proc fcQElapsedTimer_secsTo(self: pointer, other: pointer): clonglong {.importc:
 proc fcQElapsedTimer_delete(self: pointer) {.importc: "QElapsedTimer_delete".}
 
 
-func init*(T: type QElapsedTimer, h: ptr cQElapsedTimer): QElapsedTimer =
+func init*(T: type gen_qelapsedtimer_types.QElapsedTimer, h: ptr cQElapsedTimer): gen_qelapsedtimer_types.QElapsedTimer =
   T(h: h)
-proc create*(T: type QElapsedTimer, ): QElapsedTimer =
+proc create*(T: type gen_qelapsedtimer_types.QElapsedTimer, ): gen_qelapsedtimer_types.QElapsedTimer =
 
-  QElapsedTimer.init(fcQElapsedTimer_new())
-proc clockType*(_: type QElapsedTimer, ): QElapsedTimerClockType =
+  gen_qelapsedtimer_types.QElapsedTimer.init(fcQElapsedTimer_new())
+proc clockType*(_: type gen_qelapsedtimer_types.QElapsedTimer, ): cint =
 
-  QElapsedTimerClockType(fcQElapsedTimer_clockType())
+  cint(fcQElapsedTimer_clockType())
 
-proc isMonotonic*(_: type QElapsedTimer, ): bool =
+proc isMonotonic*(_: type gen_qelapsedtimer_types.QElapsedTimer, ): bool =
 
   fcQElapsedTimer_isMonotonic()
 
-proc start*(self: QElapsedTimer, ): void =
+proc start*(self: gen_qelapsedtimer_types.QElapsedTimer, ): void =
 
   fcQElapsedTimer_start(self.h)
 
-proc restart*(self: QElapsedTimer, ): clonglong =
+proc restart*(self: gen_qelapsedtimer_types.QElapsedTimer, ): clonglong =
 
   fcQElapsedTimer_restart(self.h)
 
-proc invalidate*(self: QElapsedTimer, ): void =
+proc invalidate*(self: gen_qelapsedtimer_types.QElapsedTimer, ): void =
 
   fcQElapsedTimer_invalidate(self.h)
 
-proc isValid*(self: QElapsedTimer, ): bool =
+proc isValid*(self: gen_qelapsedtimer_types.QElapsedTimer, ): bool =
 
   fcQElapsedTimer_isValid(self.h)
 
-proc nsecsElapsed*(self: QElapsedTimer, ): clonglong =
+proc nsecsElapsed*(self: gen_qelapsedtimer_types.QElapsedTimer, ): clonglong =
 
   fcQElapsedTimer_nsecsElapsed(self.h)
 
-proc elapsed*(self: QElapsedTimer, ): clonglong =
+proc elapsed*(self: gen_qelapsedtimer_types.QElapsedTimer, ): clonglong =
 
   fcQElapsedTimer_elapsed(self.h)
 
-proc hasExpired*(self: QElapsedTimer, timeout: clonglong): bool =
+proc hasExpired*(self: gen_qelapsedtimer_types.QElapsedTimer, timeout: clonglong): bool =
 
   fcQElapsedTimer_hasExpired(self.h, timeout)
 
-proc msecsSinceReference*(self: QElapsedTimer, ): clonglong =
+proc msecsSinceReference*(self: gen_qelapsedtimer_types.QElapsedTimer, ): clonglong =
 
   fcQElapsedTimer_msecsSinceReference(self.h)
 
-proc msecsTo*(self: QElapsedTimer, other: QElapsedTimer): clonglong =
+proc msecsTo*(self: gen_qelapsedtimer_types.QElapsedTimer, other: gen_qelapsedtimer_types.QElapsedTimer): clonglong =
 
   fcQElapsedTimer_msecsTo(self.h, other.h)
 
-proc secsTo*(self: QElapsedTimer, other: QElapsedTimer): clonglong =
+proc secsTo*(self: gen_qelapsedtimer_types.QElapsedTimer, other: gen_qelapsedtimer_types.QElapsedTimer): clonglong =
 
   fcQElapsedTimer_secsTo(self.h, other.h)
 
-proc delete*(self: QElapsedTimer) =
+proc delete*(self: gen_qelapsedtimer_types.QElapsedTimer) =
   fcQElapsedTimer_delete(self.h)

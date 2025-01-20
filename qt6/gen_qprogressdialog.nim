@@ -43,7 +43,6 @@ import
   gen_qevent,
   gen_qlabel,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -61,7 +60,6 @@ export
   gen_qevent,
   gen_qlabel,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -227,141 +225,141 @@ proc fcQProgressDialog_staticMetaObject(): pointer {.importc: "QProgressDialog_s
 proc fcQProgressDialog_delete(self: pointer) {.importc: "QProgressDialog_delete".}
 
 
-func init*(T: type QProgressDialog, h: ptr cQProgressDialog): QProgressDialog =
+func init*(T: type gen_qprogressdialog_types.QProgressDialog, h: ptr cQProgressDialog): gen_qprogressdialog_types.QProgressDialog =
   T(h: h)
-proc create*(T: type QProgressDialog, parent: gen_qwidget.QWidget): QProgressDialog =
+proc create*(T: type gen_qprogressdialog_types.QProgressDialog, parent: gen_qwidget.QWidget): gen_qprogressdialog_types.QProgressDialog =
 
-  QProgressDialog.init(fcQProgressDialog_new(parent.h))
-proc create*(T: type QProgressDialog, ): QProgressDialog =
+  gen_qprogressdialog_types.QProgressDialog.init(fcQProgressDialog_new(parent.h))
+proc create*(T: type gen_qprogressdialog_types.QProgressDialog, ): gen_qprogressdialog_types.QProgressDialog =
 
-  QProgressDialog.init(fcQProgressDialog_new2())
-proc create*(T: type QProgressDialog, labelText: string, cancelButtonText: string, minimum: cint, maximum: cint): QProgressDialog =
+  gen_qprogressdialog_types.QProgressDialog.init(fcQProgressDialog_new2())
+proc create*(T: type gen_qprogressdialog_types.QProgressDialog, labelText: string, cancelButtonText: string, minimum: cint, maximum: cint): gen_qprogressdialog_types.QProgressDialog =
 
-  QProgressDialog.init(fcQProgressDialog_new3(struct_miqt_string(data: labelText, len: csize_t(len(labelText))), struct_miqt_string(data: cancelButtonText, len: csize_t(len(cancelButtonText))), minimum, maximum))
-proc create*(T: type QProgressDialog, parent: gen_qwidget.QWidget, flags: gen_qnamespace.WindowType): QProgressDialog =
+  gen_qprogressdialog_types.QProgressDialog.init(fcQProgressDialog_new3(struct_miqt_string(data: labelText, len: csize_t(len(labelText))), struct_miqt_string(data: cancelButtonText, len: csize_t(len(cancelButtonText))), minimum, maximum))
+proc create*(T: type gen_qprogressdialog_types.QProgressDialog, parent: gen_qwidget.QWidget, flags: cint): gen_qprogressdialog_types.QProgressDialog =
 
-  QProgressDialog.init(fcQProgressDialog_new4(parent.h, cint(flags)))
-proc create*(T: type QProgressDialog, labelText: string, cancelButtonText: string, minimum: cint, maximum: cint, parent: gen_qwidget.QWidget): QProgressDialog =
+  gen_qprogressdialog_types.QProgressDialog.init(fcQProgressDialog_new4(parent.h, cint(flags)))
+proc create*(T: type gen_qprogressdialog_types.QProgressDialog, labelText: string, cancelButtonText: string, minimum: cint, maximum: cint, parent: gen_qwidget.QWidget): gen_qprogressdialog_types.QProgressDialog =
 
-  QProgressDialog.init(fcQProgressDialog_new5(struct_miqt_string(data: labelText, len: csize_t(len(labelText))), struct_miqt_string(data: cancelButtonText, len: csize_t(len(cancelButtonText))), minimum, maximum, parent.h))
-proc create*(T: type QProgressDialog, labelText: string, cancelButtonText: string, minimum: cint, maximum: cint, parent: gen_qwidget.QWidget, flags: gen_qnamespace.WindowType): QProgressDialog =
+  gen_qprogressdialog_types.QProgressDialog.init(fcQProgressDialog_new5(struct_miqt_string(data: labelText, len: csize_t(len(labelText))), struct_miqt_string(data: cancelButtonText, len: csize_t(len(cancelButtonText))), minimum, maximum, parent.h))
+proc create*(T: type gen_qprogressdialog_types.QProgressDialog, labelText: string, cancelButtonText: string, minimum: cint, maximum: cint, parent: gen_qwidget.QWidget, flags: cint): gen_qprogressdialog_types.QProgressDialog =
 
-  QProgressDialog.init(fcQProgressDialog_new6(struct_miqt_string(data: labelText, len: csize_t(len(labelText))), struct_miqt_string(data: cancelButtonText, len: csize_t(len(cancelButtonText))), minimum, maximum, parent.h, cint(flags)))
-proc metaObject*(self: QProgressDialog, ): gen_qobjectdefs.QMetaObject =
+  gen_qprogressdialog_types.QProgressDialog.init(fcQProgressDialog_new6(struct_miqt_string(data: labelText, len: csize_t(len(labelText))), struct_miqt_string(data: cancelButtonText, len: csize_t(len(cancelButtonText))), minimum, maximum, parent.h, cint(flags)))
+proc metaObject*(self: gen_qprogressdialog_types.QProgressDialog, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQProgressDialog_metaObject(self.h))
 
-proc metacast*(self: QProgressDialog, param1: cstring): pointer =
+proc metacast*(self: gen_qprogressdialog_types.QProgressDialog, param1: cstring): pointer =
 
   fcQProgressDialog_metacast(self.h, param1)
 
-proc metacall*(self: QProgressDialog, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qprogressdialog_types.QProgressDialog, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQProgressDialog_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QProgressDialog, s: cstring): string =
+proc tr*(_: type gen_qprogressdialog_types.QProgressDialog, s: cstring): string =
 
   let v_ms = fcQProgressDialog_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setLabel*(self: QProgressDialog, label: gen_qlabel.QLabel): void =
+proc setLabel*(self: gen_qprogressdialog_types.QProgressDialog, label: gen_qlabel.QLabel): void =
 
   fcQProgressDialog_setLabel(self.h, label.h)
 
-proc setCancelButton*(self: QProgressDialog, button: gen_qpushbutton.QPushButton): void =
+proc setCancelButton*(self: gen_qprogressdialog_types.QProgressDialog, button: gen_qpushbutton.QPushButton): void =
 
   fcQProgressDialog_setCancelButton(self.h, button.h)
 
-proc setBar*(self: QProgressDialog, bar: gen_qprogressbar.QProgressBar): void =
+proc setBar*(self: gen_qprogressdialog_types.QProgressDialog, bar: gen_qprogressbar.QProgressBar): void =
 
   fcQProgressDialog_setBar(self.h, bar.h)
 
-proc wasCanceled*(self: QProgressDialog, ): bool =
+proc wasCanceled*(self: gen_qprogressdialog_types.QProgressDialog, ): bool =
 
   fcQProgressDialog_wasCanceled(self.h)
 
-proc minimum*(self: QProgressDialog, ): cint =
+proc minimum*(self: gen_qprogressdialog_types.QProgressDialog, ): cint =
 
   fcQProgressDialog_minimum(self.h)
 
-proc maximum*(self: QProgressDialog, ): cint =
+proc maximum*(self: gen_qprogressdialog_types.QProgressDialog, ): cint =
 
   fcQProgressDialog_maximum(self.h)
 
-proc value*(self: QProgressDialog, ): cint =
+proc value*(self: gen_qprogressdialog_types.QProgressDialog, ): cint =
 
   fcQProgressDialog_value(self.h)
 
-proc sizeHint*(self: QProgressDialog, ): gen_qsize.QSize =
+proc sizeHint*(self: gen_qprogressdialog_types.QProgressDialog, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQProgressDialog_sizeHint(self.h))
 
-proc labelText*(self: QProgressDialog, ): string =
+proc labelText*(self: gen_qprogressdialog_types.QProgressDialog, ): string =
 
   let v_ms = fcQProgressDialog_labelText(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc minimumDuration*(self: QProgressDialog, ): cint =
+proc minimumDuration*(self: gen_qprogressdialog_types.QProgressDialog, ): cint =
 
   fcQProgressDialog_minimumDuration(self.h)
 
-proc setAutoReset*(self: QProgressDialog, reset: bool): void =
+proc setAutoReset*(self: gen_qprogressdialog_types.QProgressDialog, reset: bool): void =
 
   fcQProgressDialog_setAutoReset(self.h, reset)
 
-proc autoReset*(self: QProgressDialog, ): bool =
+proc autoReset*(self: gen_qprogressdialog_types.QProgressDialog, ): bool =
 
   fcQProgressDialog_autoReset(self.h)
 
-proc setAutoClose*(self: QProgressDialog, close: bool): void =
+proc setAutoClose*(self: gen_qprogressdialog_types.QProgressDialog, close: bool): void =
 
   fcQProgressDialog_setAutoClose(self.h, close)
 
-proc autoClose*(self: QProgressDialog, ): bool =
+proc autoClose*(self: gen_qprogressdialog_types.QProgressDialog, ): bool =
 
   fcQProgressDialog_autoClose(self.h)
 
-proc cancel*(self: QProgressDialog, ): void =
+proc cancel*(self: gen_qprogressdialog_types.QProgressDialog, ): void =
 
   fcQProgressDialog_cancel(self.h)
 
-proc reset*(self: QProgressDialog, ): void =
+proc reset*(self: gen_qprogressdialog_types.QProgressDialog, ): void =
 
   fcQProgressDialog_reset(self.h)
 
-proc setMaximum*(self: QProgressDialog, maximum: cint): void =
+proc setMaximum*(self: gen_qprogressdialog_types.QProgressDialog, maximum: cint): void =
 
   fcQProgressDialog_setMaximum(self.h, maximum)
 
-proc setMinimum*(self: QProgressDialog, minimum: cint): void =
+proc setMinimum*(self: gen_qprogressdialog_types.QProgressDialog, minimum: cint): void =
 
   fcQProgressDialog_setMinimum(self.h, minimum)
 
-proc setRange*(self: QProgressDialog, minimum: cint, maximum: cint): void =
+proc setRange*(self: gen_qprogressdialog_types.QProgressDialog, minimum: cint, maximum: cint): void =
 
   fcQProgressDialog_setRange(self.h, minimum, maximum)
 
-proc setValue*(self: QProgressDialog, progress: cint): void =
+proc setValue*(self: gen_qprogressdialog_types.QProgressDialog, progress: cint): void =
 
   fcQProgressDialog_setValue(self.h, progress)
 
-proc setLabelText*(self: QProgressDialog, text: string): void =
+proc setLabelText*(self: gen_qprogressdialog_types.QProgressDialog, text: string): void =
 
   fcQProgressDialog_setLabelText(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
-proc setCancelButtonText*(self: QProgressDialog, text: string): void =
+proc setCancelButtonText*(self: gen_qprogressdialog_types.QProgressDialog, text: string): void =
 
   fcQProgressDialog_setCancelButtonText(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
-proc setMinimumDuration*(self: QProgressDialog, ms: cint): void =
+proc setMinimumDuration*(self: gen_qprogressdialog_types.QProgressDialog, ms: cint): void =
 
   fcQProgressDialog_setMinimumDuration(self.h, ms)
 
-proc canceled*(self: QProgressDialog, ): void =
+proc canceled*(self: gen_qprogressdialog_types.QProgressDialog, ): void =
 
   fcQProgressDialog_canceled(self.h)
 
@@ -371,1021 +369,806 @@ proc miqt_exec_callback_QProgressDialog_canceled(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc oncanceled*(self: QProgressDialog, slot: proc()) =
+proc oncanceled*(self: gen_qprogressdialog_types.QProgressDialog, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQProgressDialog_connect_canceled(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QProgressDialog, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qprogressdialog_types.QProgressDialog, s: cstring, c: cstring): string =
 
   let v_ms = fcQProgressDialog_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QProgressDialog, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qprogressdialog_types.QProgressDialog, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQProgressDialog_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QProgressDialog, ): gen_qobjectdefs.QMetaObject =
-
+proc QProgressDialogmetaObject*(self: gen_qprogressdialog_types.QProgressDialog, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQProgressDialog_virtualbase_metaObject(self.h))
 
-type QProgressDialogmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QProgressDialog, slot: proc(super: QProgressDialogmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QProgressDialogmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialogmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressDialogmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QProgressDialogmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressDialog_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressDialog_metaObject(self: ptr cQProgressDialog, slot: int): pointer {.exportc: "miqt_exec_callback_QProgressDialog_metaObject ".} =
-  type Cb = proc(super: QProgressDialogmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QProgressDialog(h: self), )
+  var nimfunc = cast[ptr QProgressDialogmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QProgressDialog, param1: cstring): pointer =
-
+proc QProgressDialogmetacast*(self: gen_qprogressdialog_types.QProgressDialog, param1: cstring): pointer =
 
   fQProgressDialog_virtualbase_metacast(self.h, param1)
 
-type QProgressDialogmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QProgressDialog, slot: proc(super: QProgressDialogmetacastBase, param1: cstring): pointer) =
+type QProgressDialogmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialogmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressDialogmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QProgressDialogmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressDialog_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressDialog_metacast(self: ptr cQProgressDialog, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QProgressDialog_metacast ".} =
-  type Cb = proc(super: QProgressDialogmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QProgressDialog(h: self), param1)
+  var nimfunc = cast[ptr QProgressDialogmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QProgressDialog, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QProgressDialogmetacall*(self: gen_qprogressdialog_types.QProgressDialog, param1: cint, param2: cint, param3: pointer): cint =
 
   fQProgressDialog_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QProgressDialogmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QProgressDialog, slot: proc(super: QProgressDialogmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QProgressDialogmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialogmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressDialogmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QProgressDialogmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressDialog_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressDialog_metacall(self: ptr cQProgressDialog, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QProgressDialog_metacall ".} =
-  type Cb = proc(super: QProgressDialogmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QProgressDialog(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QProgressDialogmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_sizeHint(self: QProgressDialog, ): gen_qsize.QSize =
-
+proc QProgressDialogsizeHint*(self: gen_qprogressdialog_types.QProgressDialog, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQProgressDialog_virtualbase_sizeHint(self.h))
 
-type QProgressDialogsizeHintBase* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: QProgressDialog, slot: proc(super: QProgressDialogsizeHintBase): gen_qsize.QSize) =
+type QProgressDialogsizeHintProc* = proc(): gen_qsize.QSize
+proc onsizeHint*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialogsizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressDialogsizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QProgressDialogsizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressDialog_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressDialog_sizeHint(self: ptr cQProgressDialog, slot: int): pointer {.exportc: "miqt_exec_callback_QProgressDialog_sizeHint ".} =
-  type Cb = proc(super: QProgressDialogsizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sizeHint(QProgressDialog(h: self), )
+  var nimfunc = cast[ptr QProgressDialogsizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_resizeEvent(self: QProgressDialog, event: gen_qevent.QResizeEvent): void =
-
+proc QProgressDialogresizeEvent*(self: gen_qprogressdialog_types.QProgressDialog, event: gen_qevent.QResizeEvent): void =
 
   fQProgressDialog_virtualbase_resizeEvent(self.h, event.h)
 
-type QProgressDialogresizeEventBase* = proc(event: gen_qevent.QResizeEvent): void
-proc onresizeEvent*(self: QProgressDialog, slot: proc(super: QProgressDialogresizeEventBase, event: gen_qevent.QResizeEvent): void) =
+type QProgressDialogresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
+proc onresizeEvent*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialogresizeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressDialogresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressDialogresizeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressDialog_override_virtual_resizeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressDialog_resizeEvent(self: ptr cQProgressDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QProgressDialog_resizeEvent ".} =
-  type Cb = proc(super: QProgressDialogresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QResizeEvent): auto =
-    callVirtualBase_resizeEvent(QProgressDialog(h: self), event)
+  var nimfunc = cast[ptr QProgressDialogresizeEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QResizeEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_closeEvent(self: QProgressDialog, event: gen_qevent.QCloseEvent): void =
-
+  nimfunc[](slotval1)
+proc QProgressDialogcloseEvent*(self: gen_qprogressdialog_types.QProgressDialog, event: gen_qevent.QCloseEvent): void =
 
   fQProgressDialog_virtualbase_closeEvent(self.h, event.h)
 
-type QProgressDialogcloseEventBase* = proc(event: gen_qevent.QCloseEvent): void
-proc oncloseEvent*(self: QProgressDialog, slot: proc(super: QProgressDialogcloseEventBase, event: gen_qevent.QCloseEvent): void) =
+type QProgressDialogcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
+proc oncloseEvent*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialogcloseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressDialogcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressDialogcloseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressDialog_override_virtual_closeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressDialog_closeEvent(self: ptr cQProgressDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QProgressDialog_closeEvent ".} =
-  type Cb = proc(super: QProgressDialogcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QCloseEvent): auto =
-    callVirtualBase_closeEvent(QProgressDialog(h: self), event)
+  var nimfunc = cast[ptr QProgressDialogcloseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QCloseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_changeEvent(self: QProgressDialog, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QProgressDialogchangeEvent*(self: gen_qprogressdialog_types.QProgressDialog, event: gen_qcoreevent.QEvent): void =
 
   fQProgressDialog_virtualbase_changeEvent(self.h, event.h)
 
-type QProgressDialogchangeEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onchangeEvent*(self: QProgressDialog, slot: proc(super: QProgressDialogchangeEventBase, event: gen_qcoreevent.QEvent): void) =
+type QProgressDialogchangeEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onchangeEvent*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialogchangeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressDialogchangeEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressDialogchangeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressDialog_override_virtual_changeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressDialog_changeEvent(self: ptr cQProgressDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QProgressDialog_changeEvent ".} =
-  type Cb = proc(super: QProgressDialogchangeEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_changeEvent(QProgressDialog(h: self), event)
+  var nimfunc = cast[ptr QProgressDialogchangeEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_showEvent(self: QProgressDialog, event: gen_qevent.QShowEvent): void =
-
+  nimfunc[](slotval1)
+proc QProgressDialogshowEvent*(self: gen_qprogressdialog_types.QProgressDialog, event: gen_qevent.QShowEvent): void =
 
   fQProgressDialog_virtualbase_showEvent(self.h, event.h)
 
-type QProgressDialogshowEventBase* = proc(event: gen_qevent.QShowEvent): void
-proc onshowEvent*(self: QProgressDialog, slot: proc(super: QProgressDialogshowEventBase, event: gen_qevent.QShowEvent): void) =
+type QProgressDialogshowEventProc* = proc(event: gen_qevent.QShowEvent): void
+proc onshowEvent*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialogshowEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressDialogshowEventBase, event: gen_qevent.QShowEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressDialogshowEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressDialog_override_virtual_showEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressDialog_showEvent(self: ptr cQProgressDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QProgressDialog_showEvent ".} =
-  type Cb = proc(super: QProgressDialogshowEventBase, event: gen_qevent.QShowEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QShowEvent): auto =
-    callVirtualBase_showEvent(QProgressDialog(h: self), event)
+  var nimfunc = cast[ptr QProgressDialogshowEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QShowEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_setVisible(self: QProgressDialog, visible: bool): void =
-
+  nimfunc[](slotval1)
+proc QProgressDialogsetVisible*(self: gen_qprogressdialog_types.QProgressDialog, visible: bool): void =
 
   fQProgressDialog_virtualbase_setVisible(self.h, visible)
 
-type QProgressDialogsetVisibleBase* = proc(visible: bool): void
-proc onsetVisible*(self: QProgressDialog, slot: proc(super: QProgressDialogsetVisibleBase, visible: bool): void) =
+type QProgressDialogsetVisibleProc* = proc(visible: bool): void
+proc onsetVisible*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialogsetVisibleProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressDialogsetVisibleBase, visible: bool): void
-  var tmp = new Cb
+  var tmp = new QProgressDialogsetVisibleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressDialog_override_virtual_setVisible(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressDialog_setVisible(self: ptr cQProgressDialog, slot: int, visible: bool): void {.exportc: "miqt_exec_callback_QProgressDialog_setVisible ".} =
-  type Cb = proc(super: QProgressDialogsetVisibleBase, visible: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(visible: bool): auto =
-    callVirtualBase_setVisible(QProgressDialog(h: self), visible)
+  var nimfunc = cast[ptr QProgressDialogsetVisibleProc](cast[pointer](slot))
   let slotval1 = visible
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_minimumSizeHint(self: QProgressDialog, ): gen_qsize.QSize =
-
+  nimfunc[](slotval1)
+proc QProgressDialogminimumSizeHint*(self: gen_qprogressdialog_types.QProgressDialog, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQProgressDialog_virtualbase_minimumSizeHint(self.h))
 
-type QProgressDialogminimumSizeHintBase* = proc(): gen_qsize.QSize
-proc onminimumSizeHint*(self: QProgressDialog, slot: proc(super: QProgressDialogminimumSizeHintBase): gen_qsize.QSize) =
+type QProgressDialogminimumSizeHintProc* = proc(): gen_qsize.QSize
+proc onminimumSizeHint*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialogminimumSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressDialogminimumSizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QProgressDialogminimumSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressDialog_override_virtual_minimumSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressDialog_minimumSizeHint(self: ptr cQProgressDialog, slot: int): pointer {.exportc: "miqt_exec_callback_QProgressDialog_minimumSizeHint ".} =
-  type Cb = proc(super: QProgressDialogminimumSizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_minimumSizeHint(QProgressDialog(h: self), )
+  var nimfunc = cast[ptr QProgressDialogminimumSizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_open(self: QProgressDialog, ): void =
-
+proc QProgressDialogopen*(self: gen_qprogressdialog_types.QProgressDialog, ): void =
 
   fQProgressDialog_virtualbase_open(self.h)
 
-type QProgressDialogopenBase* = proc(): void
-proc onopen*(self: QProgressDialog, slot: proc(super: QProgressDialogopenBase): void) =
+type QProgressDialogopenProc* = proc(): void
+proc onopen*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialogopenProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressDialogopenBase): void
-  var tmp = new Cb
+  var tmp = new QProgressDialogopenProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressDialog_override_virtual_open(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressDialog_open(self: ptr cQProgressDialog, slot: int): void {.exportc: "miqt_exec_callback_QProgressDialog_open ".} =
-  type Cb = proc(super: QProgressDialogopenBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_open(QProgressDialog(h: self), )
+  var nimfunc = cast[ptr QProgressDialogopenProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_exec(self: QProgressDialog, ): cint =
-
+  nimfunc[]()
+proc QProgressDialogexec*(self: gen_qprogressdialog_types.QProgressDialog, ): cint =
 
   fQProgressDialog_virtualbase_exec(self.h)
 
-type QProgressDialogexecBase* = proc(): cint
-proc onexec*(self: QProgressDialog, slot: proc(super: QProgressDialogexecBase): cint) =
+type QProgressDialogexecProc* = proc(): cint
+proc onexec*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialogexecProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressDialogexecBase): cint
-  var tmp = new Cb
+  var tmp = new QProgressDialogexecProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressDialog_override_virtual_exec(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressDialog_exec(self: ptr cQProgressDialog, slot: int): cint {.exportc: "miqt_exec_callback_QProgressDialog_exec ".} =
-  type Cb = proc(super: QProgressDialogexecBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_exec(QProgressDialog(h: self), )
+  var nimfunc = cast[ptr QProgressDialogexecProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_done(self: QProgressDialog, param1: cint): void =
-
+proc QProgressDialogdone*(self: gen_qprogressdialog_types.QProgressDialog, param1: cint): void =
 
   fQProgressDialog_virtualbase_done(self.h, param1)
 
-type QProgressDialogdoneBase* = proc(param1: cint): void
-proc ondone*(self: QProgressDialog, slot: proc(super: QProgressDialogdoneBase, param1: cint): void) =
+type QProgressDialogdoneProc* = proc(param1: cint): void
+proc ondone*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialogdoneProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressDialogdoneBase, param1: cint): void
-  var tmp = new Cb
+  var tmp = new QProgressDialogdoneProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressDialog_override_virtual_done(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressDialog_done(self: ptr cQProgressDialog, slot: int, param1: cint): void {.exportc: "miqt_exec_callback_QProgressDialog_done ".} =
-  type Cb = proc(super: QProgressDialogdoneBase, param1: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_done(QProgressDialog(h: self), param1)
+  var nimfunc = cast[ptr QProgressDialogdoneProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_accept(self: QProgressDialog, ): void =
-
+  nimfunc[](slotval1)
+proc QProgressDialogaccept*(self: gen_qprogressdialog_types.QProgressDialog, ): void =
 
   fQProgressDialog_virtualbase_accept(self.h)
 
-type QProgressDialogacceptBase* = proc(): void
-proc onaccept*(self: QProgressDialog, slot: proc(super: QProgressDialogacceptBase): void) =
+type QProgressDialogacceptProc* = proc(): void
+proc onaccept*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialogacceptProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressDialogacceptBase): void
-  var tmp = new Cb
+  var tmp = new QProgressDialogacceptProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressDialog_override_virtual_accept(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressDialog_accept(self: ptr cQProgressDialog, slot: int): void {.exportc: "miqt_exec_callback_QProgressDialog_accept ".} =
-  type Cb = proc(super: QProgressDialogacceptBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_accept(QProgressDialog(h: self), )
+  var nimfunc = cast[ptr QProgressDialogacceptProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_reject(self: QProgressDialog, ): void =
-
+  nimfunc[]()
+proc QProgressDialogreject*(self: gen_qprogressdialog_types.QProgressDialog, ): void =
 
   fQProgressDialog_virtualbase_reject(self.h)
 
-type QProgressDialogrejectBase* = proc(): void
-proc onreject*(self: QProgressDialog, slot: proc(super: QProgressDialogrejectBase): void) =
+type QProgressDialogrejectProc* = proc(): void
+proc onreject*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialogrejectProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressDialogrejectBase): void
-  var tmp = new Cb
+  var tmp = new QProgressDialogrejectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressDialog_override_virtual_reject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressDialog_reject(self: ptr cQProgressDialog, slot: int): void {.exportc: "miqt_exec_callback_QProgressDialog_reject ".} =
-  type Cb = proc(super: QProgressDialogrejectBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_reject(QProgressDialog(h: self), )
+  var nimfunc = cast[ptr QProgressDialogrejectProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_keyPressEvent(self: QProgressDialog, param1: gen_qevent.QKeyEvent): void =
-
+  nimfunc[]()
+proc QProgressDialogkeyPressEvent*(self: gen_qprogressdialog_types.QProgressDialog, param1: gen_qevent.QKeyEvent): void =
 
   fQProgressDialog_virtualbase_keyPressEvent(self.h, param1.h)
 
-type QProgressDialogkeyPressEventBase* = proc(param1: gen_qevent.QKeyEvent): void
-proc onkeyPressEvent*(self: QProgressDialog, slot: proc(super: QProgressDialogkeyPressEventBase, param1: gen_qevent.QKeyEvent): void) =
+type QProgressDialogkeyPressEventProc* = proc(param1: gen_qevent.QKeyEvent): void
+proc onkeyPressEvent*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialogkeyPressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressDialogkeyPressEventBase, param1: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressDialogkeyPressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressDialog_override_virtual_keyPressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressDialog_keyPressEvent(self: ptr cQProgressDialog, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QProgressDialog_keyPressEvent ".} =
-  type Cb = proc(super: QProgressDialogkeyPressEventBase, param1: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyPressEvent(QProgressDialog(h: self), param1)
+  var nimfunc = cast[ptr QProgressDialogkeyPressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_contextMenuEvent(self: QProgressDialog, param1: gen_qevent.QContextMenuEvent): void =
-
+  nimfunc[](slotval1)
+proc QProgressDialogcontextMenuEvent*(self: gen_qprogressdialog_types.QProgressDialog, param1: gen_qevent.QContextMenuEvent): void =
 
   fQProgressDialog_virtualbase_contextMenuEvent(self.h, param1.h)
 
-type QProgressDialogcontextMenuEventBase* = proc(param1: gen_qevent.QContextMenuEvent): void
-proc oncontextMenuEvent*(self: QProgressDialog, slot: proc(super: QProgressDialogcontextMenuEventBase, param1: gen_qevent.QContextMenuEvent): void) =
+type QProgressDialogcontextMenuEventProc* = proc(param1: gen_qevent.QContextMenuEvent): void
+proc oncontextMenuEvent*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialogcontextMenuEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressDialogcontextMenuEventBase, param1: gen_qevent.QContextMenuEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressDialogcontextMenuEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressDialog_override_virtual_contextMenuEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressDialog_contextMenuEvent(self: ptr cQProgressDialog, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QProgressDialog_contextMenuEvent ".} =
-  type Cb = proc(super: QProgressDialogcontextMenuEventBase, param1: gen_qevent.QContextMenuEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QContextMenuEvent): auto =
-    callVirtualBase_contextMenuEvent(QProgressDialog(h: self), param1)
+  var nimfunc = cast[ptr QProgressDialogcontextMenuEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QContextMenuEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_eventFilter(self: QProgressDialog, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[](slotval1)
+proc QProgressDialogeventFilter*(self: gen_qprogressdialog_types.QProgressDialog, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool =
 
   fQProgressDialog_virtualbase_eventFilter(self.h, param1.h, param2.h)
 
-type QProgressDialogeventFilterBase* = proc(param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QProgressDialog, slot: proc(super: QProgressDialogeventFilterBase, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool) =
+type QProgressDialogeventFilterProc* = proc(param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialogeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressDialogeventFilterBase, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QProgressDialogeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressDialog_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressDialog_eventFilter(self: ptr cQProgressDialog, slot: int, param1: pointer, param2: pointer): bool {.exportc: "miqt_exec_callback_QProgressDialog_eventFilter ".} =
-  type Cb = proc(super: QProgressDialogeventFilterBase, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QProgressDialog(h: self), param1, param2)
+  var nimfunc = cast[ptr QProgressDialogeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: param1)
 
   let slotval2 = gen_qcoreevent.QEvent(h: param2)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_devType(self: QProgressDialog, ): cint =
-
+proc QProgressDialogdevType*(self: gen_qprogressdialog_types.QProgressDialog, ): cint =
 
   fQProgressDialog_virtualbase_devType(self.h)
 
-type QProgressDialogdevTypeBase* = proc(): cint
-proc ondevType*(self: QProgressDialog, slot: proc(super: QProgressDialogdevTypeBase): cint) =
+type QProgressDialogdevTypeProc* = proc(): cint
+proc ondevType*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialogdevTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressDialogdevTypeBase): cint
-  var tmp = new Cb
+  var tmp = new QProgressDialogdevTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressDialog_override_virtual_devType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressDialog_devType(self: ptr cQProgressDialog, slot: int): cint {.exportc: "miqt_exec_callback_QProgressDialog_devType ".} =
-  type Cb = proc(super: QProgressDialogdevTypeBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_devType(QProgressDialog(h: self), )
+  var nimfunc = cast[ptr QProgressDialogdevTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_heightForWidth(self: QProgressDialog, param1: cint): cint =
-
+proc QProgressDialogheightForWidth*(self: gen_qprogressdialog_types.QProgressDialog, param1: cint): cint =
 
   fQProgressDialog_virtualbase_heightForWidth(self.h, param1)
 
-type QProgressDialogheightForWidthBase* = proc(param1: cint): cint
-proc onheightForWidth*(self: QProgressDialog, slot: proc(super: QProgressDialogheightForWidthBase, param1: cint): cint) =
+type QProgressDialogheightForWidthProc* = proc(param1: cint): cint
+proc onheightForWidth*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialogheightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressDialogheightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QProgressDialogheightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressDialog_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressDialog_heightForWidth(self: ptr cQProgressDialog, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QProgressDialog_heightForWidth ".} =
-  type Cb = proc(super: QProgressDialogheightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_heightForWidth(QProgressDialog(h: self), param1)
+  var nimfunc = cast[ptr QProgressDialogheightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_hasHeightForWidth(self: QProgressDialog, ): bool =
-
+proc QProgressDialoghasHeightForWidth*(self: gen_qprogressdialog_types.QProgressDialog, ): bool =
 
   fQProgressDialog_virtualbase_hasHeightForWidth(self.h)
 
-type QProgressDialoghasHeightForWidthBase* = proc(): bool
-proc onhasHeightForWidth*(self: QProgressDialog, slot: proc(super: QProgressDialoghasHeightForWidthBase): bool) =
+type QProgressDialoghasHeightForWidthProc* = proc(): bool
+proc onhasHeightForWidth*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialoghasHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressDialoghasHeightForWidthBase): bool
-  var tmp = new Cb
+  var tmp = new QProgressDialoghasHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressDialog_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressDialog_hasHeightForWidth(self: ptr cQProgressDialog, slot: int): bool {.exportc: "miqt_exec_callback_QProgressDialog_hasHeightForWidth ".} =
-  type Cb = proc(super: QProgressDialoghasHeightForWidthBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasHeightForWidth(QProgressDialog(h: self), )
+  var nimfunc = cast[ptr QProgressDialoghasHeightForWidthProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_paintEngine(self: QProgressDialog, ): gen_qpaintengine.QPaintEngine =
-
+proc QProgressDialogpaintEngine*(self: gen_qprogressdialog_types.QProgressDialog, ): gen_qpaintengine.QPaintEngine =
 
   gen_qpaintengine.QPaintEngine(h: fQProgressDialog_virtualbase_paintEngine(self.h))
 
-type QProgressDialogpaintEngineBase* = proc(): gen_qpaintengine.QPaintEngine
-proc onpaintEngine*(self: QProgressDialog, slot: proc(super: QProgressDialogpaintEngineBase): gen_qpaintengine.QPaintEngine) =
+type QProgressDialogpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
+proc onpaintEngine*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialogpaintEngineProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressDialogpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var tmp = new Cb
+  var tmp = new QProgressDialogpaintEngineProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressDialog_override_virtual_paintEngine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressDialog_paintEngine(self: ptr cQProgressDialog, slot: int): pointer {.exportc: "miqt_exec_callback_QProgressDialog_paintEngine ".} =
-  type Cb = proc(super: QProgressDialogpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_paintEngine(QProgressDialog(h: self), )
+  var nimfunc = cast[ptr QProgressDialogpaintEngineProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_event(self: QProgressDialog, event: gen_qcoreevent.QEvent): bool =
-
+proc QProgressDialogevent*(self: gen_qprogressdialog_types.QProgressDialog, event: gen_qcoreevent.QEvent): bool =
 
   fQProgressDialog_virtualbase_event(self.h, event.h)
 
-type QProgressDialogeventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QProgressDialog, slot: proc(super: QProgressDialogeventBase, event: gen_qcoreevent.QEvent): bool) =
+type QProgressDialogeventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialogeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressDialogeventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QProgressDialogeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressDialog_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressDialog_event(self: ptr cQProgressDialog, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QProgressDialog_event ".} =
-  type Cb = proc(super: QProgressDialogeventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QProgressDialog(h: self), event)
+  var nimfunc = cast[ptr QProgressDialogeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_mousePressEvent(self: QProgressDialog, event: gen_qevent.QMouseEvent): void =
-
+proc QProgressDialogmousePressEvent*(self: gen_qprogressdialog_types.QProgressDialog, event: gen_qevent.QMouseEvent): void =
 
   fQProgressDialog_virtualbase_mousePressEvent(self.h, event.h)
 
-type QProgressDialogmousePressEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmousePressEvent*(self: QProgressDialog, slot: proc(super: QProgressDialogmousePressEventBase, event: gen_qevent.QMouseEvent): void) =
+type QProgressDialogmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmousePressEvent*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialogmousePressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressDialogmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressDialogmousePressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressDialog_override_virtual_mousePressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressDialog_mousePressEvent(self: ptr cQProgressDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QProgressDialog_mousePressEvent ".} =
-  type Cb = proc(super: QProgressDialogmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mousePressEvent(QProgressDialog(h: self), event)
+  var nimfunc = cast[ptr QProgressDialogmousePressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseReleaseEvent(self: QProgressDialog, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QProgressDialogmouseReleaseEvent*(self: gen_qprogressdialog_types.QProgressDialog, event: gen_qevent.QMouseEvent): void =
 
   fQProgressDialog_virtualbase_mouseReleaseEvent(self.h, event.h)
 
-type QProgressDialogmouseReleaseEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseReleaseEvent*(self: QProgressDialog, slot: proc(super: QProgressDialogmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void) =
+type QProgressDialogmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseReleaseEvent*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialogmouseReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressDialogmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressDialogmouseReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressDialog_override_virtual_mouseReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressDialog_mouseReleaseEvent(self: ptr cQProgressDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QProgressDialog_mouseReleaseEvent ".} =
-  type Cb = proc(super: QProgressDialogmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseReleaseEvent(QProgressDialog(h: self), event)
+  var nimfunc = cast[ptr QProgressDialogmouseReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseDoubleClickEvent(self: QProgressDialog, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QProgressDialogmouseDoubleClickEvent*(self: gen_qprogressdialog_types.QProgressDialog, event: gen_qevent.QMouseEvent): void =
 
   fQProgressDialog_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
-type QProgressDialogmouseDoubleClickEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseDoubleClickEvent*(self: QProgressDialog, slot: proc(super: QProgressDialogmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void) =
+type QProgressDialogmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseDoubleClickEvent*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialogmouseDoubleClickEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressDialogmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressDialogmouseDoubleClickEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressDialog_override_virtual_mouseDoubleClickEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressDialog_mouseDoubleClickEvent(self: ptr cQProgressDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QProgressDialog_mouseDoubleClickEvent ".} =
-  type Cb = proc(super: QProgressDialogmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseDoubleClickEvent(QProgressDialog(h: self), event)
+  var nimfunc = cast[ptr QProgressDialogmouseDoubleClickEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseMoveEvent(self: QProgressDialog, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QProgressDialogmouseMoveEvent*(self: gen_qprogressdialog_types.QProgressDialog, event: gen_qevent.QMouseEvent): void =
 
   fQProgressDialog_virtualbase_mouseMoveEvent(self.h, event.h)
 
-type QProgressDialogmouseMoveEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseMoveEvent*(self: QProgressDialog, slot: proc(super: QProgressDialogmouseMoveEventBase, event: gen_qevent.QMouseEvent): void) =
+type QProgressDialogmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseMoveEvent*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialogmouseMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressDialogmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressDialogmouseMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressDialog_override_virtual_mouseMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressDialog_mouseMoveEvent(self: ptr cQProgressDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QProgressDialog_mouseMoveEvent ".} =
-  type Cb = proc(super: QProgressDialogmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseMoveEvent(QProgressDialog(h: self), event)
+  var nimfunc = cast[ptr QProgressDialogmouseMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_wheelEvent(self: QProgressDialog, event: gen_qevent.QWheelEvent): void =
-
+  nimfunc[](slotval1)
+proc QProgressDialogwheelEvent*(self: gen_qprogressdialog_types.QProgressDialog, event: gen_qevent.QWheelEvent): void =
 
   fQProgressDialog_virtualbase_wheelEvent(self.h, event.h)
 
-type QProgressDialogwheelEventBase* = proc(event: gen_qevent.QWheelEvent): void
-proc onwheelEvent*(self: QProgressDialog, slot: proc(super: QProgressDialogwheelEventBase, event: gen_qevent.QWheelEvent): void) =
+type QProgressDialogwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
+proc onwheelEvent*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialogwheelEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressDialogwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressDialogwheelEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressDialog_override_virtual_wheelEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressDialog_wheelEvent(self: ptr cQProgressDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QProgressDialog_wheelEvent ".} =
-  type Cb = proc(super: QProgressDialogwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QWheelEvent): auto =
-    callVirtualBase_wheelEvent(QProgressDialog(h: self), event)
+  var nimfunc = cast[ptr QProgressDialogwheelEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QWheelEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyReleaseEvent(self: QProgressDialog, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QProgressDialogkeyReleaseEvent*(self: gen_qprogressdialog_types.QProgressDialog, event: gen_qevent.QKeyEvent): void =
 
   fQProgressDialog_virtualbase_keyReleaseEvent(self.h, event.h)
 
-type QProgressDialogkeyReleaseEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyReleaseEvent*(self: QProgressDialog, slot: proc(super: QProgressDialogkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void) =
+type QProgressDialogkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyReleaseEvent*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialogkeyReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressDialogkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressDialogkeyReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressDialog_override_virtual_keyReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressDialog_keyReleaseEvent(self: ptr cQProgressDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QProgressDialog_keyReleaseEvent ".} =
-  type Cb = proc(super: QProgressDialogkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyReleaseEvent(QProgressDialog(h: self), event)
+  var nimfunc = cast[ptr QProgressDialogkeyReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusInEvent(self: QProgressDialog, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QProgressDialogfocusInEvent*(self: gen_qprogressdialog_types.QProgressDialog, event: gen_qevent.QFocusEvent): void =
 
   fQProgressDialog_virtualbase_focusInEvent(self.h, event.h)
 
-type QProgressDialogfocusInEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusInEvent*(self: QProgressDialog, slot: proc(super: QProgressDialogfocusInEventBase, event: gen_qevent.QFocusEvent): void) =
+type QProgressDialogfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusInEvent*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialogfocusInEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressDialogfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressDialogfocusInEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressDialog_override_virtual_focusInEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressDialog_focusInEvent(self: ptr cQProgressDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QProgressDialog_focusInEvent ".} =
-  type Cb = proc(super: QProgressDialogfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusInEvent(QProgressDialog(h: self), event)
+  var nimfunc = cast[ptr QProgressDialogfocusInEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusOutEvent(self: QProgressDialog, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QProgressDialogfocusOutEvent*(self: gen_qprogressdialog_types.QProgressDialog, event: gen_qevent.QFocusEvent): void =
 
   fQProgressDialog_virtualbase_focusOutEvent(self.h, event.h)
 
-type QProgressDialogfocusOutEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusOutEvent*(self: QProgressDialog, slot: proc(super: QProgressDialogfocusOutEventBase, event: gen_qevent.QFocusEvent): void) =
+type QProgressDialogfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusOutEvent*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialogfocusOutEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressDialogfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressDialogfocusOutEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressDialog_override_virtual_focusOutEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressDialog_focusOutEvent(self: ptr cQProgressDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QProgressDialog_focusOutEvent ".} =
-  type Cb = proc(super: QProgressDialogfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusOutEvent(QProgressDialog(h: self), event)
+  var nimfunc = cast[ptr QProgressDialogfocusOutEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_enterEvent(self: QProgressDialog, event: gen_qevent.QEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QProgressDialogenterEvent*(self: gen_qprogressdialog_types.QProgressDialog, event: gen_qevent.QEnterEvent): void =
 
   fQProgressDialog_virtualbase_enterEvent(self.h, event.h)
 
-type QProgressDialogenterEventBase* = proc(event: gen_qevent.QEnterEvent): void
-proc onenterEvent*(self: QProgressDialog, slot: proc(super: QProgressDialogenterEventBase, event: gen_qevent.QEnterEvent): void) =
+type QProgressDialogenterEventProc* = proc(event: gen_qevent.QEnterEvent): void
+proc onenterEvent*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialogenterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressDialogenterEventBase, event: gen_qevent.QEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressDialogenterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressDialog_override_virtual_enterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressDialog_enterEvent(self: ptr cQProgressDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QProgressDialog_enterEvent ".} =
-  type Cb = proc(super: QProgressDialogenterEventBase, event: gen_qevent.QEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QEnterEvent): auto =
-    callVirtualBase_enterEvent(QProgressDialog(h: self), event)
+  var nimfunc = cast[ptr QProgressDialogenterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_leaveEvent(self: QProgressDialog, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QProgressDialogleaveEvent*(self: gen_qprogressdialog_types.QProgressDialog, event: gen_qcoreevent.QEvent): void =
 
   fQProgressDialog_virtualbase_leaveEvent(self.h, event.h)
 
-type QProgressDialogleaveEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onleaveEvent*(self: QProgressDialog, slot: proc(super: QProgressDialogleaveEventBase, event: gen_qcoreevent.QEvent): void) =
+type QProgressDialogleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onleaveEvent*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialogleaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressDialogleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressDialogleaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressDialog_override_virtual_leaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressDialog_leaveEvent(self: ptr cQProgressDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QProgressDialog_leaveEvent ".} =
-  type Cb = proc(super: QProgressDialogleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_leaveEvent(QProgressDialog(h: self), event)
+  var nimfunc = cast[ptr QProgressDialogleaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_paintEvent(self: QProgressDialog, event: gen_qevent.QPaintEvent): void =
-
+  nimfunc[](slotval1)
+proc QProgressDialogpaintEvent*(self: gen_qprogressdialog_types.QProgressDialog, event: gen_qevent.QPaintEvent): void =
 
   fQProgressDialog_virtualbase_paintEvent(self.h, event.h)
 
-type QProgressDialogpaintEventBase* = proc(event: gen_qevent.QPaintEvent): void
-proc onpaintEvent*(self: QProgressDialog, slot: proc(super: QProgressDialogpaintEventBase, event: gen_qevent.QPaintEvent): void) =
+type QProgressDialogpaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
+proc onpaintEvent*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialogpaintEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressDialogpaintEventBase, event: gen_qevent.QPaintEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressDialogpaintEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressDialog_override_virtual_paintEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressDialog_paintEvent(self: ptr cQProgressDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QProgressDialog_paintEvent ".} =
-  type Cb = proc(super: QProgressDialogpaintEventBase, event: gen_qevent.QPaintEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QPaintEvent): auto =
-    callVirtualBase_paintEvent(QProgressDialog(h: self), event)
+  var nimfunc = cast[ptr QProgressDialogpaintEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QPaintEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_moveEvent(self: QProgressDialog, event: gen_qevent.QMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QProgressDialogmoveEvent*(self: gen_qprogressdialog_types.QProgressDialog, event: gen_qevent.QMoveEvent): void =
 
   fQProgressDialog_virtualbase_moveEvent(self.h, event.h)
 
-type QProgressDialogmoveEventBase* = proc(event: gen_qevent.QMoveEvent): void
-proc onmoveEvent*(self: QProgressDialog, slot: proc(super: QProgressDialogmoveEventBase, event: gen_qevent.QMoveEvent): void) =
+type QProgressDialogmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
+proc onmoveEvent*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialogmoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressDialogmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressDialogmoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressDialog_override_virtual_moveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressDialog_moveEvent(self: ptr cQProgressDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QProgressDialog_moveEvent ".} =
-  type Cb = proc(super: QProgressDialogmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMoveEvent): auto =
-    callVirtualBase_moveEvent(QProgressDialog(h: self), event)
+  var nimfunc = cast[ptr QProgressDialogmoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_tabletEvent(self: QProgressDialog, event: gen_qevent.QTabletEvent): void =
-
+  nimfunc[](slotval1)
+proc QProgressDialogtabletEvent*(self: gen_qprogressdialog_types.QProgressDialog, event: gen_qevent.QTabletEvent): void =
 
   fQProgressDialog_virtualbase_tabletEvent(self.h, event.h)
 
-type QProgressDialogtabletEventBase* = proc(event: gen_qevent.QTabletEvent): void
-proc ontabletEvent*(self: QProgressDialog, slot: proc(super: QProgressDialogtabletEventBase, event: gen_qevent.QTabletEvent): void) =
+type QProgressDialogtabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
+proc ontabletEvent*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialogtabletEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressDialogtabletEventBase, event: gen_qevent.QTabletEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressDialogtabletEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressDialog_override_virtual_tabletEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressDialog_tabletEvent(self: ptr cQProgressDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QProgressDialog_tabletEvent ".} =
-  type Cb = proc(super: QProgressDialogtabletEventBase, event: gen_qevent.QTabletEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QTabletEvent): auto =
-    callVirtualBase_tabletEvent(QProgressDialog(h: self), event)
+  var nimfunc = cast[ptr QProgressDialogtabletEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QTabletEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_actionEvent(self: QProgressDialog, event: gen_qevent.QActionEvent): void =
-
+  nimfunc[](slotval1)
+proc QProgressDialogactionEvent*(self: gen_qprogressdialog_types.QProgressDialog, event: gen_qevent.QActionEvent): void =
 
   fQProgressDialog_virtualbase_actionEvent(self.h, event.h)
 
-type QProgressDialogactionEventBase* = proc(event: gen_qevent.QActionEvent): void
-proc onactionEvent*(self: QProgressDialog, slot: proc(super: QProgressDialogactionEventBase, event: gen_qevent.QActionEvent): void) =
+type QProgressDialogactionEventProc* = proc(event: gen_qevent.QActionEvent): void
+proc onactionEvent*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialogactionEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressDialogactionEventBase, event: gen_qevent.QActionEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressDialogactionEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressDialog_override_virtual_actionEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressDialog_actionEvent(self: ptr cQProgressDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QProgressDialog_actionEvent ".} =
-  type Cb = proc(super: QProgressDialogactionEventBase, event: gen_qevent.QActionEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QActionEvent): auto =
-    callVirtualBase_actionEvent(QProgressDialog(h: self), event)
+  var nimfunc = cast[ptr QProgressDialogactionEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QActionEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragEnterEvent(self: QProgressDialog, event: gen_qevent.QDragEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QProgressDialogdragEnterEvent*(self: gen_qprogressdialog_types.QProgressDialog, event: gen_qevent.QDragEnterEvent): void =
 
   fQProgressDialog_virtualbase_dragEnterEvent(self.h, event.h)
 
-type QProgressDialogdragEnterEventBase* = proc(event: gen_qevent.QDragEnterEvent): void
-proc ondragEnterEvent*(self: QProgressDialog, slot: proc(super: QProgressDialogdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void) =
+type QProgressDialogdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
+proc ondragEnterEvent*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialogdragEnterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressDialogdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressDialogdragEnterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressDialog_override_virtual_dragEnterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressDialog_dragEnterEvent(self: ptr cQProgressDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QProgressDialog_dragEnterEvent ".} =
-  type Cb = proc(super: QProgressDialogdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragEnterEvent): auto =
-    callVirtualBase_dragEnterEvent(QProgressDialog(h: self), event)
+  var nimfunc = cast[ptr QProgressDialogdragEnterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragMoveEvent(self: QProgressDialog, event: gen_qevent.QDragMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QProgressDialogdragMoveEvent*(self: gen_qprogressdialog_types.QProgressDialog, event: gen_qevent.QDragMoveEvent): void =
 
   fQProgressDialog_virtualbase_dragMoveEvent(self.h, event.h)
 
-type QProgressDialogdragMoveEventBase* = proc(event: gen_qevent.QDragMoveEvent): void
-proc ondragMoveEvent*(self: QProgressDialog, slot: proc(super: QProgressDialogdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void) =
+type QProgressDialogdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
+proc ondragMoveEvent*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialogdragMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressDialogdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressDialogdragMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressDialog_override_virtual_dragMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressDialog_dragMoveEvent(self: ptr cQProgressDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QProgressDialog_dragMoveEvent ".} =
-  type Cb = proc(super: QProgressDialogdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragMoveEvent): auto =
-    callVirtualBase_dragMoveEvent(QProgressDialog(h: self), event)
+  var nimfunc = cast[ptr QProgressDialogdragMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragLeaveEvent(self: QProgressDialog, event: gen_qevent.QDragLeaveEvent): void =
-
+  nimfunc[](slotval1)
+proc QProgressDialogdragLeaveEvent*(self: gen_qprogressdialog_types.QProgressDialog, event: gen_qevent.QDragLeaveEvent): void =
 
   fQProgressDialog_virtualbase_dragLeaveEvent(self.h, event.h)
 
-type QProgressDialogdragLeaveEventBase* = proc(event: gen_qevent.QDragLeaveEvent): void
-proc ondragLeaveEvent*(self: QProgressDialog, slot: proc(super: QProgressDialogdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void) =
+type QProgressDialogdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
+proc ondragLeaveEvent*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialogdragLeaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressDialogdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressDialogdragLeaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressDialog_override_virtual_dragLeaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressDialog_dragLeaveEvent(self: ptr cQProgressDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QProgressDialog_dragLeaveEvent ".} =
-  type Cb = proc(super: QProgressDialogdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragLeaveEvent): auto =
-    callVirtualBase_dragLeaveEvent(QProgressDialog(h: self), event)
+  var nimfunc = cast[ptr QProgressDialogdragLeaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragLeaveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dropEvent(self: QProgressDialog, event: gen_qevent.QDropEvent): void =
-
+  nimfunc[](slotval1)
+proc QProgressDialogdropEvent*(self: gen_qprogressdialog_types.QProgressDialog, event: gen_qevent.QDropEvent): void =
 
   fQProgressDialog_virtualbase_dropEvent(self.h, event.h)
 
-type QProgressDialogdropEventBase* = proc(event: gen_qevent.QDropEvent): void
-proc ondropEvent*(self: QProgressDialog, slot: proc(super: QProgressDialogdropEventBase, event: gen_qevent.QDropEvent): void) =
+type QProgressDialogdropEventProc* = proc(event: gen_qevent.QDropEvent): void
+proc ondropEvent*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialogdropEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressDialogdropEventBase, event: gen_qevent.QDropEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressDialogdropEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressDialog_override_virtual_dropEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressDialog_dropEvent(self: ptr cQProgressDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QProgressDialog_dropEvent ".} =
-  type Cb = proc(super: QProgressDialogdropEventBase, event: gen_qevent.QDropEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDropEvent): auto =
-    callVirtualBase_dropEvent(QProgressDialog(h: self), event)
+  var nimfunc = cast[ptr QProgressDialogdropEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDropEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hideEvent(self: QProgressDialog, event: gen_qevent.QHideEvent): void =
-
+  nimfunc[](slotval1)
+proc QProgressDialoghideEvent*(self: gen_qprogressdialog_types.QProgressDialog, event: gen_qevent.QHideEvent): void =
 
   fQProgressDialog_virtualbase_hideEvent(self.h, event.h)
 
-type QProgressDialoghideEventBase* = proc(event: gen_qevent.QHideEvent): void
-proc onhideEvent*(self: QProgressDialog, slot: proc(super: QProgressDialoghideEventBase, event: gen_qevent.QHideEvent): void) =
+type QProgressDialoghideEventProc* = proc(event: gen_qevent.QHideEvent): void
+proc onhideEvent*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialoghideEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressDialoghideEventBase, event: gen_qevent.QHideEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressDialoghideEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressDialog_override_virtual_hideEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressDialog_hideEvent(self: ptr cQProgressDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QProgressDialog_hideEvent ".} =
-  type Cb = proc(super: QProgressDialoghideEventBase, event: gen_qevent.QHideEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QHideEvent): auto =
-    callVirtualBase_hideEvent(QProgressDialog(h: self), event)
+  var nimfunc = cast[ptr QProgressDialoghideEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QHideEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_nativeEvent(self: QProgressDialog, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
-
+  nimfunc[](slotval1)
+proc QProgressDialognativeEvent*(self: gen_qprogressdialog_types.QProgressDialog, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
 
   fQProgressDialog_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
-type QProgressDialognativeEventBase* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-proc onnativeEvent*(self: QProgressDialog, slot: proc(super: QProgressDialognativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool) =
+type QProgressDialognativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
+proc onnativeEvent*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialognativeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressDialognativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-  var tmp = new Cb
+  var tmp = new QProgressDialognativeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressDialog_override_virtual_nativeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressDialog_nativeEvent(self: ptr cQProgressDialog, slot: int, eventType: struct_miqt_string, message: pointer, resultVal: ptr uint): bool {.exportc: "miqt_exec_callback_QProgressDialog_nativeEvent ".} =
-  type Cb = proc(super: QProgressDialognativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(eventType: seq[byte], message: pointer, resultVal: ptr uint): auto =
-    callVirtualBase_nativeEvent(QProgressDialog(h: self), eventType, message, resultVal)
+  var nimfunc = cast[ptr QProgressDialognativeEventProc](cast[pointer](slot))
   var veventType_bytearray = eventType
   var veventTypex_ret = @(toOpenArrayByte(veventType_bytearray.data, 0, int(veventType_bytearray.len)-1))
   c_free(veventType_bytearray.data)
@@ -1396,294 +1179,234 @@ proc miqt_exec_callback_QProgressDialog_nativeEvent(self: ptr cQProgressDialog, 
   let slotval3 = resultVal
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_metric(self: QProgressDialog, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint =
-
+proc QProgressDialogmetric*(self: gen_qprogressdialog_types.QProgressDialog, param1: cint): cint =
 
   fQProgressDialog_virtualbase_metric(self.h, cint(param1))
 
-type QProgressDialogmetricBase* = proc(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-proc onmetric*(self: QProgressDialog, slot: proc(super: QProgressDialogmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint) =
+type QProgressDialogmetricProc* = proc(param1: cint): cint
+proc onmetric*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialogmetricProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressDialogmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var tmp = new Cb
+  var tmp = new QProgressDialogmetricProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressDialog_override_virtual_metric(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressDialog_metric(self: ptr cQProgressDialog, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QProgressDialog_metric ".} =
-  type Cb = proc(super: QProgressDialogmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): auto =
-    callVirtualBase_metric(QProgressDialog(h: self), param1)
-  let slotval1 = gen_qpaintdevice.QPaintDevicePaintDeviceMetric(param1)
+  var nimfunc = cast[ptr QProgressDialogmetricProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_initPainter(self: QProgressDialog, painter: gen_qpainter.QPainter): void =
-
+proc QProgressDialoginitPainter*(self: gen_qprogressdialog_types.QProgressDialog, painter: gen_qpainter.QPainter): void =
 
   fQProgressDialog_virtualbase_initPainter(self.h, painter.h)
 
-type QProgressDialoginitPainterBase* = proc(painter: gen_qpainter.QPainter): void
-proc oninitPainter*(self: QProgressDialog, slot: proc(super: QProgressDialoginitPainterBase, painter: gen_qpainter.QPainter): void) =
+type QProgressDialoginitPainterProc* = proc(painter: gen_qpainter.QPainter): void
+proc oninitPainter*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialoginitPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressDialoginitPainterBase, painter: gen_qpainter.QPainter): void
-  var tmp = new Cb
+  var tmp = new QProgressDialoginitPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressDialog_override_virtual_initPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressDialog_initPainter(self: ptr cQProgressDialog, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_QProgressDialog_initPainter ".} =
-  type Cb = proc(super: QProgressDialoginitPainterBase, painter: gen_qpainter.QPainter): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter): auto =
-    callVirtualBase_initPainter(QProgressDialog(h: self), painter)
+  var nimfunc = cast[ptr QProgressDialoginitPainterProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_redirected(self: QProgressDialog, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
+  nimfunc[](slotval1)
+proc QProgressDialogredirected*(self: gen_qprogressdialog_types.QProgressDialog, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
 
   gen_qpaintdevice.QPaintDevice(h: fQProgressDialog_virtualbase_redirected(self.h, offset.h))
 
-type QProgressDialogredirectedBase* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-proc onredirected*(self: QProgressDialog, slot: proc(super: QProgressDialogredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice) =
+type QProgressDialogredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
+proc onredirected*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialogredirectedProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressDialogredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var tmp = new Cb
+  var tmp = new QProgressDialogredirectedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressDialog_override_virtual_redirected(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressDialog_redirected(self: ptr cQProgressDialog, slot: int, offset: pointer): pointer {.exportc: "miqt_exec_callback_QProgressDialog_redirected ".} =
-  type Cb = proc(super: QProgressDialogredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(offset: gen_qpoint.QPoint): auto =
-    callVirtualBase_redirected(QProgressDialog(h: self), offset)
+  var nimfunc = cast[ptr QProgressDialogredirectedProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: offset)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_sharedPainter(self: QProgressDialog, ): gen_qpainter.QPainter =
-
+proc QProgressDialogsharedPainter*(self: gen_qprogressdialog_types.QProgressDialog, ): gen_qpainter.QPainter =
 
   gen_qpainter.QPainter(h: fQProgressDialog_virtualbase_sharedPainter(self.h))
 
-type QProgressDialogsharedPainterBase* = proc(): gen_qpainter.QPainter
-proc onsharedPainter*(self: QProgressDialog, slot: proc(super: QProgressDialogsharedPainterBase): gen_qpainter.QPainter) =
+type QProgressDialogsharedPainterProc* = proc(): gen_qpainter.QPainter
+proc onsharedPainter*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialogsharedPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressDialogsharedPainterBase): gen_qpainter.QPainter
-  var tmp = new Cb
+  var tmp = new QProgressDialogsharedPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressDialog_override_virtual_sharedPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressDialog_sharedPainter(self: ptr cQProgressDialog, slot: int): pointer {.exportc: "miqt_exec_callback_QProgressDialog_sharedPainter ".} =
-  type Cb = proc(super: QProgressDialogsharedPainterBase): gen_qpainter.QPainter
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sharedPainter(QProgressDialog(h: self), )
+  var nimfunc = cast[ptr QProgressDialogsharedPainterProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_inputMethodEvent(self: QProgressDialog, param1: gen_qevent.QInputMethodEvent): void =
-
+proc QProgressDialoginputMethodEvent*(self: gen_qprogressdialog_types.QProgressDialog, param1: gen_qevent.QInputMethodEvent): void =
 
   fQProgressDialog_virtualbase_inputMethodEvent(self.h, param1.h)
 
-type QProgressDialoginputMethodEventBase* = proc(param1: gen_qevent.QInputMethodEvent): void
-proc oninputMethodEvent*(self: QProgressDialog, slot: proc(super: QProgressDialoginputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void) =
+type QProgressDialoginputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
+proc oninputMethodEvent*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialoginputMethodEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressDialoginputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressDialoginputMethodEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressDialog_override_virtual_inputMethodEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressDialog_inputMethodEvent(self: ptr cQProgressDialog, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QProgressDialog_inputMethodEvent ".} =
-  type Cb = proc(super: QProgressDialoginputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QInputMethodEvent): auto =
-    callVirtualBase_inputMethodEvent(QProgressDialog(h: self), param1)
+  var nimfunc = cast[ptr QProgressDialoginputMethodEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QInputMethodEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_inputMethodQuery(self: QProgressDialog, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant =
-
+  nimfunc[](slotval1)
+proc QProgressDialoginputMethodQuery*(self: gen_qprogressdialog_types.QProgressDialog, param1: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQProgressDialog_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
-type QProgressDialoginputMethodQueryBase* = proc(param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-proc oninputMethodQuery*(self: QProgressDialog, slot: proc(super: QProgressDialoginputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant) =
+type QProgressDialoginputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
+proc oninputMethodQuery*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialoginputMethodQueryProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressDialoginputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QProgressDialoginputMethodQueryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressDialog_override_virtual_inputMethodQuery(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressDialog_inputMethodQuery(self: ptr cQProgressDialog, slot: int, param1: cint): pointer {.exportc: "miqt_exec_callback_QProgressDialog_inputMethodQuery ".} =
-  type Cb = proc(super: QProgressDialoginputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qnamespace.InputMethodQuery): auto =
-    callVirtualBase_inputMethodQuery(QProgressDialog(h: self), param1)
-  let slotval1 = gen_qnamespace.InputMethodQuery(param1)
+  var nimfunc = cast[ptr QProgressDialoginputMethodQueryProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_focusNextPrevChild(self: QProgressDialog, next: bool): bool =
-
+proc QProgressDialogfocusNextPrevChild*(self: gen_qprogressdialog_types.QProgressDialog, next: bool): bool =
 
   fQProgressDialog_virtualbase_focusNextPrevChild(self.h, next)
 
-type QProgressDialogfocusNextPrevChildBase* = proc(next: bool): bool
-proc onfocusNextPrevChild*(self: QProgressDialog, slot: proc(super: QProgressDialogfocusNextPrevChildBase, next: bool): bool) =
+type QProgressDialogfocusNextPrevChildProc* = proc(next: bool): bool
+proc onfocusNextPrevChild*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialogfocusNextPrevChildProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressDialogfocusNextPrevChildBase, next: bool): bool
-  var tmp = new Cb
+  var tmp = new QProgressDialogfocusNextPrevChildProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressDialog_override_virtual_focusNextPrevChild(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressDialog_focusNextPrevChild(self: ptr cQProgressDialog, slot: int, next: bool): bool {.exportc: "miqt_exec_callback_QProgressDialog_focusNextPrevChild ".} =
-  type Cb = proc(super: QProgressDialogfocusNextPrevChildBase, next: bool): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(next: bool): auto =
-    callVirtualBase_focusNextPrevChild(QProgressDialog(h: self), next)
+  var nimfunc = cast[ptr QProgressDialogfocusNextPrevChildProc](cast[pointer](slot))
   let slotval1 = next
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QProgressDialog, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QProgressDialogtimerEvent*(self: gen_qprogressdialog_types.QProgressDialog, event: gen_qcoreevent.QTimerEvent): void =
 
   fQProgressDialog_virtualbase_timerEvent(self.h, event.h)
 
-type QProgressDialogtimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QProgressDialog, slot: proc(super: QProgressDialogtimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QProgressDialogtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialogtimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressDialogtimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressDialogtimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressDialog_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressDialog_timerEvent(self: ptr cQProgressDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QProgressDialog_timerEvent ".} =
-  type Cb = proc(super: QProgressDialogtimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QProgressDialog(h: self), event)
+  var nimfunc = cast[ptr QProgressDialogtimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QProgressDialog, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QProgressDialogchildEvent*(self: gen_qprogressdialog_types.QProgressDialog, event: gen_qcoreevent.QChildEvent): void =
 
   fQProgressDialog_virtualbase_childEvent(self.h, event.h)
 
-type QProgressDialogchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QProgressDialog, slot: proc(super: QProgressDialogchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QProgressDialogchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialogchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressDialogchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressDialogchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressDialog_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressDialog_childEvent(self: ptr cQProgressDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QProgressDialog_childEvent ".} =
-  type Cb = proc(super: QProgressDialogchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QProgressDialog(h: self), event)
+  var nimfunc = cast[ptr QProgressDialogchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QProgressDialog, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QProgressDialogcustomEvent*(self: gen_qprogressdialog_types.QProgressDialog, event: gen_qcoreevent.QEvent): void =
 
   fQProgressDialog_virtualbase_customEvent(self.h, event.h)
 
-type QProgressDialogcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QProgressDialog, slot: proc(super: QProgressDialogcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QProgressDialogcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialogcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressDialogcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressDialogcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressDialog_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressDialog_customEvent(self: ptr cQProgressDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QProgressDialog_customEvent ".} =
-  type Cb = proc(super: QProgressDialogcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QProgressDialog(h: self), event)
+  var nimfunc = cast[ptr QProgressDialogcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QProgressDialog, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QProgressDialogconnectNotify*(self: gen_qprogressdialog_types.QProgressDialog, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQProgressDialog_virtualbase_connectNotify(self.h, signal.h)
 
-type QProgressDialogconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QProgressDialog, slot: proc(super: QProgressDialogconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QProgressDialogconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialogconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressDialogconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QProgressDialogconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressDialog_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressDialog_connectNotify(self: ptr cQProgressDialog, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QProgressDialog_connectNotify ".} =
-  type Cb = proc(super: QProgressDialogconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QProgressDialog(h: self), signal)
+  var nimfunc = cast[ptr QProgressDialogconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QProgressDialog, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QProgressDialogdisconnectNotify*(self: gen_qprogressdialog_types.QProgressDialog, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQProgressDialog_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QProgressDialogdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QProgressDialog, slot: proc(super: QProgressDialogdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QProgressDialogdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialogdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressDialogdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QProgressDialogdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressDialog_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressDialog_disconnectNotify(self: ptr cQProgressDialog, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QProgressDialog_disconnectNotify ".} =
-  type Cb = proc(super: QProgressDialogdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QProgressDialog(h: self), signal)
+  var nimfunc = cast[ptr QProgressDialogdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QProgressDialog): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qprogressdialog_types.QProgressDialog): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQProgressDialog_staticMetaObject())
-proc delete*(self: QProgressDialog) =
+proc delete*(self: gen_qprogressdialog_types.QProgressDialog) =
   fcQProgressDialog_delete(self.h)

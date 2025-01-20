@@ -72,72 +72,72 @@ proc fcQMediaContent_playlist(self: pointer, ): pointer {.importc: "QMediaConten
 proc fcQMediaContent_delete(self: pointer) {.importc: "QMediaContent_delete".}
 
 
-func init*(T: type QMediaContent, h: ptr cQMediaContent): QMediaContent =
+func init*(T: type gen_qmediacontent_types.QMediaContent, h: ptr cQMediaContent): gen_qmediacontent_types.QMediaContent =
   T(h: h)
-proc create*(T: type QMediaContent, ): QMediaContent =
+proc create*(T: type gen_qmediacontent_types.QMediaContent, ): gen_qmediacontent_types.QMediaContent =
 
-  QMediaContent.init(fcQMediaContent_new())
-proc create*(T: type QMediaContent, contentUrl: gen_qurl.QUrl): QMediaContent =
+  gen_qmediacontent_types.QMediaContent.init(fcQMediaContent_new())
+proc create*(T: type gen_qmediacontent_types.QMediaContent, contentUrl: gen_qurl.QUrl): gen_qmediacontent_types.QMediaContent =
 
-  QMediaContent.init(fcQMediaContent_new2(contentUrl.h))
-proc create2*(T: type QMediaContent, contentRequest: gen_qnetworkrequest.QNetworkRequest): QMediaContent =
+  gen_qmediacontent_types.QMediaContent.init(fcQMediaContent_new2(contentUrl.h))
+proc create2*(T: type gen_qmediacontent_types.QMediaContent, contentRequest: gen_qnetworkrequest.QNetworkRequest): gen_qmediacontent_types.QMediaContent =
 
-  QMediaContent.init(fcQMediaContent_new3(contentRequest.h))
-proc create2*(T: type QMediaContent, contentResource: gen_qmediaresource.QMediaResource): QMediaContent =
+  gen_qmediacontent_types.QMediaContent.init(fcQMediaContent_new3(contentRequest.h))
+proc create2*(T: type gen_qmediacontent_types.QMediaContent, contentResource: gen_qmediaresource.QMediaResource): gen_qmediacontent_types.QMediaContent =
 
-  QMediaContent.init(fcQMediaContent_new4(contentResource.h))
-proc create*(T: type QMediaContent, resources: seq[gen_qmediaresource.QMediaResource]): QMediaContent =
+  gen_qmediacontent_types.QMediaContent.init(fcQMediaContent_new4(contentResource.h))
+proc create*(T: type gen_qmediacontent_types.QMediaContent, resources: seq[gen_qmediaresource.QMediaResource]): gen_qmediacontent_types.QMediaContent =
 
   var resources_CArray = newSeq[pointer](len(resources))
   for i in 0..<len(resources):
     resources_CArray[i] = resources[i].h
 
-  QMediaContent.init(fcQMediaContent_new5(struct_miqt_array(len: csize_t(len(resources)), data: if len(resources) == 0: nil else: addr(resources_CArray[0]))))
-proc create2*(T: type QMediaContent, other: QMediaContent): QMediaContent =
+  gen_qmediacontent_types.QMediaContent.init(fcQMediaContent_new5(struct_miqt_array(len: csize_t(len(resources)), data: if len(resources) == 0: nil else: addr(resources_CArray[0]))))
+proc create2*(T: type gen_qmediacontent_types.QMediaContent, other: gen_qmediacontent_types.QMediaContent): gen_qmediacontent_types.QMediaContent =
 
-  QMediaContent.init(fcQMediaContent_new6(other.h))
-proc create2*(T: type QMediaContent, playlist: gen_qmediaplaylist.QMediaPlaylist): QMediaContent =
+  gen_qmediacontent_types.QMediaContent.init(fcQMediaContent_new6(other.h))
+proc create2*(T: type gen_qmediacontent_types.QMediaContent, playlist: gen_qmediaplaylist.QMediaPlaylist): gen_qmediacontent_types.QMediaContent =
 
-  QMediaContent.init(fcQMediaContent_new7(playlist.h))
-proc create*(T: type QMediaContent, playlist: gen_qmediaplaylist.QMediaPlaylist, contentUrl: gen_qurl.QUrl): QMediaContent =
+  gen_qmediacontent_types.QMediaContent.init(fcQMediaContent_new7(playlist.h))
+proc create*(T: type gen_qmediacontent_types.QMediaContent, playlist: gen_qmediaplaylist.QMediaPlaylist, contentUrl: gen_qurl.QUrl): gen_qmediacontent_types.QMediaContent =
 
-  QMediaContent.init(fcQMediaContent_new8(playlist.h, contentUrl.h))
-proc create*(T: type QMediaContent, playlist: gen_qmediaplaylist.QMediaPlaylist, contentUrl: gen_qurl.QUrl, takeOwnership: bool): QMediaContent =
+  gen_qmediacontent_types.QMediaContent.init(fcQMediaContent_new8(playlist.h, contentUrl.h))
+proc create*(T: type gen_qmediacontent_types.QMediaContent, playlist: gen_qmediaplaylist.QMediaPlaylist, contentUrl: gen_qurl.QUrl, takeOwnership: bool): gen_qmediacontent_types.QMediaContent =
 
-  QMediaContent.init(fcQMediaContent_new9(playlist.h, contentUrl.h, takeOwnership))
-proc operatorAssign*(self: QMediaContent, other: QMediaContent): void =
+  gen_qmediacontent_types.QMediaContent.init(fcQMediaContent_new9(playlist.h, contentUrl.h, takeOwnership))
+proc operatorAssign*(self: gen_qmediacontent_types.QMediaContent, other: gen_qmediacontent_types.QMediaContent): void =
 
   fcQMediaContent_operatorAssign(self.h, other.h)
 
-proc operatorEqual*(self: QMediaContent, other: QMediaContent): bool =
+proc operatorEqual*(self: gen_qmediacontent_types.QMediaContent, other: gen_qmediacontent_types.QMediaContent): bool =
 
   fcQMediaContent_operatorEqual(self.h, other.h)
 
-proc operatorNotEqual*(self: QMediaContent, other: QMediaContent): bool =
+proc operatorNotEqual*(self: gen_qmediacontent_types.QMediaContent, other: gen_qmediacontent_types.QMediaContent): bool =
 
   fcQMediaContent_operatorNotEqual(self.h, other.h)
 
-proc isNull*(self: QMediaContent, ): bool =
+proc isNull*(self: gen_qmediacontent_types.QMediaContent, ): bool =
 
   fcQMediaContent_isNull(self.h)
 
-proc request*(self: QMediaContent, ): gen_qnetworkrequest.QNetworkRequest =
+proc request*(self: gen_qmediacontent_types.QMediaContent, ): gen_qnetworkrequest.QNetworkRequest =
 
   gen_qnetworkrequest.QNetworkRequest(h: fcQMediaContent_request(self.h))
 
-proc canonicalUrl*(self: QMediaContent, ): gen_qurl.QUrl =
+proc canonicalUrl*(self: gen_qmediacontent_types.QMediaContent, ): gen_qurl.QUrl =
 
   gen_qurl.QUrl(h: fcQMediaContent_canonicalUrl(self.h))
 
-proc canonicalRequest*(self: QMediaContent, ): gen_qnetworkrequest.QNetworkRequest =
+proc canonicalRequest*(self: gen_qmediacontent_types.QMediaContent, ): gen_qnetworkrequest.QNetworkRequest =
 
   gen_qnetworkrequest.QNetworkRequest(h: fcQMediaContent_canonicalRequest(self.h))
 
-proc canonicalResource*(self: QMediaContent, ): gen_qmediaresource.QMediaResource =
+proc canonicalResource*(self: gen_qmediacontent_types.QMediaContent, ): gen_qmediaresource.QMediaResource =
 
   gen_qmediaresource.QMediaResource(h: fcQMediaContent_canonicalResource(self.h))
 
-proc resources*(self: QMediaContent, ): seq[gen_qmediaresource.QMediaResource] =
+proc resources*(self: gen_qmediacontent_types.QMediaContent, ): seq[gen_qmediaresource.QMediaResource] =
 
   var v_ma = fcQMediaContent_resources(self.h)
   var vx_ret = newSeq[gen_qmediaresource.QMediaResource](int(v_ma.len))
@@ -146,9 +146,9 @@ proc resources*(self: QMediaContent, ): seq[gen_qmediaresource.QMediaResource] =
     vx_ret[i] = gen_qmediaresource.QMediaResource(h: v_outCast[i])
   vx_ret
 
-proc playlist*(self: QMediaContent, ): gen_qmediaplaylist.QMediaPlaylist =
+proc playlist*(self: gen_qmediacontent_types.QMediaContent, ): gen_qmediaplaylist.QMediaPlaylist =
 
   gen_qmediaplaylist.QMediaPlaylist(h: fcQMediaContent_playlist(self.h))
 
-proc delete*(self: QMediaContent) =
+proc delete*(self: gen_qmediacontent_types.QMediaContent) =
   fcQMediaContent_delete(self.h)

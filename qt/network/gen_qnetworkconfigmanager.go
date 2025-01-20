@@ -305,7 +305,7 @@ func (this *QNetworkConfigurationManager) callVirtualBase_MetaObject() *qt.QMeta
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QNetworkConfigurationManager_virtualbase_metaObject(unsafe.Pointer(this.h))))
 
 }
-func (this *QNetworkConfigurationManager) OnmetaObject(slot func(super func() *qt.QMetaObject) *qt.QMetaObject) {
+func (this *QNetworkConfigurationManager) OnMetaObject(slot func(super func() *qt.QMetaObject) *qt.QMetaObject) {
 	ok := C.QNetworkConfigurationManager_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -332,7 +332,7 @@ func (this *QNetworkConfigurationManager) callVirtualBase_Metacast(param1 string
 	return (unsafe.Pointer)(C.QNetworkConfigurationManager_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QNetworkConfigurationManager) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QNetworkConfigurationManager) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QNetworkConfigurationManager_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

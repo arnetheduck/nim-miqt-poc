@@ -34,21 +34,17 @@ const cflags = gorge("pkg-config -cflags Qt5Widgets")
 {.compile("gen_qlcdnumber.cpp", cflags).}
 
 
-type QLCDNumberMode* = cint
-const
-  QLCDNumberHex* = 0
-  QLCDNumberDec* = 1
-  QLCDNumberOct* = 2
-  QLCDNumberBin* = 3
+type QLCDNumberModeEnum* = distinct cint
+template Hex*(_: type QLCDNumberModeEnum): untyped = 0
+template Dec*(_: type QLCDNumberModeEnum): untyped = 1
+template Oct*(_: type QLCDNumberModeEnum): untyped = 2
+template Bin*(_: type QLCDNumberModeEnum): untyped = 3
 
 
-
-type QLCDNumberSegmentStyle* = cint
-const
-  QLCDNumberOutline* = 0
-  QLCDNumberFilled* = 1
-  QLCDNumberFlat* = 2
-
+type QLCDNumberSegmentStyleEnum* = distinct cint
+template Outline*(_: type QLCDNumberSegmentStyleEnum): untyped = 0
+template Filled*(_: type QLCDNumberSegmentStyleEnum): untyped = 1
+template Flat*(_: type QLCDNumberSegmentStyleEnum): untyped = 2
 
 
 import gen_qlcdnumber_types
@@ -59,7 +55,6 @@ import
   gen_qevent,
   gen_qframe,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -74,7 +69,6 @@ export
   gen_qevent,
   gen_qframe,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -226,127 +220,127 @@ proc fcQLCDNumber_staticMetaObject(): pointer {.importc: "QLCDNumber_staticMetaO
 proc fcQLCDNumber_delete(self: pointer) {.importc: "QLCDNumber_delete".}
 
 
-func init*(T: type QLCDNumber, h: ptr cQLCDNumber): QLCDNumber =
+func init*(T: type gen_qlcdnumber_types.QLCDNumber, h: ptr cQLCDNumber): gen_qlcdnumber_types.QLCDNumber =
   T(h: h)
-proc create*(T: type QLCDNumber, parent: gen_qwidget.QWidget): QLCDNumber =
+proc create*(T: type gen_qlcdnumber_types.QLCDNumber, parent: gen_qwidget.QWidget): gen_qlcdnumber_types.QLCDNumber =
 
-  QLCDNumber.init(fcQLCDNumber_new(parent.h))
-proc create*(T: type QLCDNumber, ): QLCDNumber =
+  gen_qlcdnumber_types.QLCDNumber.init(fcQLCDNumber_new(parent.h))
+proc create*(T: type gen_qlcdnumber_types.QLCDNumber, ): gen_qlcdnumber_types.QLCDNumber =
 
-  QLCDNumber.init(fcQLCDNumber_new2())
-proc create*(T: type QLCDNumber, numDigits: cuint): QLCDNumber =
+  gen_qlcdnumber_types.QLCDNumber.init(fcQLCDNumber_new2())
+proc create*(T: type gen_qlcdnumber_types.QLCDNumber, numDigits: cuint): gen_qlcdnumber_types.QLCDNumber =
 
-  QLCDNumber.init(fcQLCDNumber_new3(numDigits))
-proc create*(T: type QLCDNumber, numDigits: cuint, parent: gen_qwidget.QWidget): QLCDNumber =
+  gen_qlcdnumber_types.QLCDNumber.init(fcQLCDNumber_new3(numDigits))
+proc create*(T: type gen_qlcdnumber_types.QLCDNumber, numDigits: cuint, parent: gen_qwidget.QWidget): gen_qlcdnumber_types.QLCDNumber =
 
-  QLCDNumber.init(fcQLCDNumber_new4(numDigits, parent.h))
-proc metaObject*(self: QLCDNumber, ): gen_qobjectdefs.QMetaObject =
+  gen_qlcdnumber_types.QLCDNumber.init(fcQLCDNumber_new4(numDigits, parent.h))
+proc metaObject*(self: gen_qlcdnumber_types.QLCDNumber, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQLCDNumber_metaObject(self.h))
 
-proc metacast*(self: QLCDNumber, param1: cstring): pointer =
+proc metacast*(self: gen_qlcdnumber_types.QLCDNumber, param1: cstring): pointer =
 
   fcQLCDNumber_metacast(self.h, param1)
 
-proc metacall*(self: QLCDNumber, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qlcdnumber_types.QLCDNumber, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQLCDNumber_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QLCDNumber, s: cstring): string =
+proc tr*(_: type gen_qlcdnumber_types.QLCDNumber, s: cstring): string =
 
   let v_ms = fcQLCDNumber_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QLCDNumber, s: cstring): string =
+proc trUtf8*(_: type gen_qlcdnumber_types.QLCDNumber, s: cstring): string =
 
   let v_ms = fcQLCDNumber_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc smallDecimalPoint*(self: QLCDNumber, ): bool =
+proc smallDecimalPoint*(self: gen_qlcdnumber_types.QLCDNumber, ): bool =
 
   fcQLCDNumber_smallDecimalPoint(self.h)
 
-proc digitCount*(self: QLCDNumber, ): cint =
+proc digitCount*(self: gen_qlcdnumber_types.QLCDNumber, ): cint =
 
   fcQLCDNumber_digitCount(self.h)
 
-proc setDigitCount*(self: QLCDNumber, nDigits: cint): void =
+proc setDigitCount*(self: gen_qlcdnumber_types.QLCDNumber, nDigits: cint): void =
 
   fcQLCDNumber_setDigitCount(self.h, nDigits)
 
-proc checkOverflow*(self: QLCDNumber, num: float64): bool =
+proc checkOverflow*(self: gen_qlcdnumber_types.QLCDNumber, num: float64): bool =
 
   fcQLCDNumber_checkOverflow(self.h, num)
 
-proc checkOverflowWithNum*(self: QLCDNumber, num: cint): bool =
+proc checkOverflowWithNum*(self: gen_qlcdnumber_types.QLCDNumber, num: cint): bool =
 
   fcQLCDNumber_checkOverflowWithNum(self.h, num)
 
-proc mode*(self: QLCDNumber, ): QLCDNumberMode =
+proc mode*(self: gen_qlcdnumber_types.QLCDNumber, ): cint =
 
-  QLCDNumberMode(fcQLCDNumber_mode(self.h))
+  cint(fcQLCDNumber_mode(self.h))
 
-proc setMode*(self: QLCDNumber, mode: QLCDNumberMode): void =
+proc setMode*(self: gen_qlcdnumber_types.QLCDNumber, mode: cint): void =
 
   fcQLCDNumber_setMode(self.h, cint(mode))
 
-proc segmentStyle*(self: QLCDNumber, ): QLCDNumberSegmentStyle =
+proc segmentStyle*(self: gen_qlcdnumber_types.QLCDNumber, ): cint =
 
-  QLCDNumberSegmentStyle(fcQLCDNumber_segmentStyle(self.h))
+  cint(fcQLCDNumber_segmentStyle(self.h))
 
-proc setSegmentStyle*(self: QLCDNumber, segmentStyle: QLCDNumberSegmentStyle): void =
+proc setSegmentStyle*(self: gen_qlcdnumber_types.QLCDNumber, segmentStyle: cint): void =
 
   fcQLCDNumber_setSegmentStyle(self.h, cint(segmentStyle))
 
-proc value*(self: QLCDNumber, ): float64 =
+proc value*(self: gen_qlcdnumber_types.QLCDNumber, ): float64 =
 
   fcQLCDNumber_value(self.h)
 
-proc intValue*(self: QLCDNumber, ): cint =
+proc intValue*(self: gen_qlcdnumber_types.QLCDNumber, ): cint =
 
   fcQLCDNumber_intValue(self.h)
 
-proc sizeHint*(self: QLCDNumber, ): gen_qsize.QSize =
+proc sizeHint*(self: gen_qlcdnumber_types.QLCDNumber, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQLCDNumber_sizeHint(self.h))
 
-proc display*(self: QLCDNumber, str: string): void =
+proc display*(self: gen_qlcdnumber_types.QLCDNumber, str: string): void =
 
   fcQLCDNumber_display(self.h, struct_miqt_string(data: str, len: csize_t(len(str))))
 
-proc displayWithNum*(self: QLCDNumber, num: cint): void =
+proc displayWithNum*(self: gen_qlcdnumber_types.QLCDNumber, num: cint): void =
 
   fcQLCDNumber_displayWithNum(self.h, num)
 
-proc display2*(self: QLCDNumber, num: float64): void =
+proc display2*(self: gen_qlcdnumber_types.QLCDNumber, num: float64): void =
 
   fcQLCDNumber_display2(self.h, num)
 
-proc setHexMode*(self: QLCDNumber, ): void =
+proc setHexMode*(self: gen_qlcdnumber_types.QLCDNumber, ): void =
 
   fcQLCDNumber_setHexMode(self.h)
 
-proc setDecMode*(self: QLCDNumber, ): void =
+proc setDecMode*(self: gen_qlcdnumber_types.QLCDNumber, ): void =
 
   fcQLCDNumber_setDecMode(self.h)
 
-proc setOctMode*(self: QLCDNumber, ): void =
+proc setOctMode*(self: gen_qlcdnumber_types.QLCDNumber, ): void =
 
   fcQLCDNumber_setOctMode(self.h)
 
-proc setBinMode*(self: QLCDNumber, ): void =
+proc setBinMode*(self: gen_qlcdnumber_types.QLCDNumber, ): void =
 
   fcQLCDNumber_setBinMode(self.h)
 
-proc setSmallDecimalPoint*(self: QLCDNumber, smallDecimalPoint: bool): void =
+proc setSmallDecimalPoint*(self: gen_qlcdnumber_types.QLCDNumber, smallDecimalPoint: bool): void =
 
   fcQLCDNumber_setSmallDecimalPoint(self.h, smallDecimalPoint)
 
-proc overflow*(self: QLCDNumber, ): void =
+proc overflow*(self: gen_qlcdnumber_types.QLCDNumber, ): void =
 
   fcQLCDNumber_overflow(self.h)
 
@@ -356,899 +350,714 @@ proc miqt_exec_callback_QLCDNumber_overflow(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onoverflow*(self: QLCDNumber, slot: proc()) =
+proc onoverflow*(self: gen_qlcdnumber_types.QLCDNumber, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQLCDNumber_connect_overflow(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QLCDNumber, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qlcdnumber_types.QLCDNumber, s: cstring, c: cstring): string =
 
   let v_ms = fcQLCDNumber_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QLCDNumber, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qlcdnumber_types.QLCDNumber, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQLCDNumber_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QLCDNumber, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qlcdnumber_types.QLCDNumber, s: cstring, c: cstring): string =
 
   let v_ms = fcQLCDNumber_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QLCDNumber, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qlcdnumber_types.QLCDNumber, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQLCDNumber_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QLCDNumber, ): gen_qobjectdefs.QMetaObject =
-
+proc QLCDNumbermetaObject*(self: gen_qlcdnumber_types.QLCDNumber, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQLCDNumber_virtualbase_metaObject(self.h))
 
-type QLCDNumbermetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QLCDNumber, slot: proc(super: QLCDNumbermetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QLCDNumbermetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qlcdnumber_types.QLCDNumber, slot: QLCDNumbermetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QLCDNumbermetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QLCDNumbermetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLCDNumber_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLCDNumber_metaObject(self: ptr cQLCDNumber, slot: int): pointer {.exportc: "miqt_exec_callback_QLCDNumber_metaObject ".} =
-  type Cb = proc(super: QLCDNumbermetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QLCDNumber(h: self), )
+  var nimfunc = cast[ptr QLCDNumbermetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QLCDNumber, param1: cstring): pointer =
-
+proc QLCDNumbermetacast*(self: gen_qlcdnumber_types.QLCDNumber, param1: cstring): pointer =
 
   fQLCDNumber_virtualbase_metacast(self.h, param1)
 
-type QLCDNumbermetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QLCDNumber, slot: proc(super: QLCDNumbermetacastBase, param1: cstring): pointer) =
+type QLCDNumbermetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qlcdnumber_types.QLCDNumber, slot: QLCDNumbermetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QLCDNumbermetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QLCDNumbermetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLCDNumber_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLCDNumber_metacast(self: ptr cQLCDNumber, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QLCDNumber_metacast ".} =
-  type Cb = proc(super: QLCDNumbermetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QLCDNumber(h: self), param1)
+  var nimfunc = cast[ptr QLCDNumbermetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QLCDNumber, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QLCDNumbermetacall*(self: gen_qlcdnumber_types.QLCDNumber, param1: cint, param2: cint, param3: pointer): cint =
 
   fQLCDNumber_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QLCDNumbermetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QLCDNumber, slot: proc(super: QLCDNumbermetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QLCDNumbermetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qlcdnumber_types.QLCDNumber, slot: QLCDNumbermetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QLCDNumbermetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QLCDNumbermetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLCDNumber_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLCDNumber_metacall(self: ptr cQLCDNumber, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QLCDNumber_metacall ".} =
-  type Cb = proc(super: QLCDNumbermetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QLCDNumber(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QLCDNumbermetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_sizeHint(self: QLCDNumber, ): gen_qsize.QSize =
-
+proc QLCDNumbersizeHint*(self: gen_qlcdnumber_types.QLCDNumber, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQLCDNumber_virtualbase_sizeHint(self.h))
 
-type QLCDNumbersizeHintBase* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: QLCDNumber, slot: proc(super: QLCDNumbersizeHintBase): gen_qsize.QSize) =
+type QLCDNumbersizeHintProc* = proc(): gen_qsize.QSize
+proc onsizeHint*(self: gen_qlcdnumber_types.QLCDNumber, slot: QLCDNumbersizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QLCDNumbersizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QLCDNumbersizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLCDNumber_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLCDNumber_sizeHint(self: ptr cQLCDNumber, slot: int): pointer {.exportc: "miqt_exec_callback_QLCDNumber_sizeHint ".} =
-  type Cb = proc(super: QLCDNumbersizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sizeHint(QLCDNumber(h: self), )
+  var nimfunc = cast[ptr QLCDNumbersizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_event(self: QLCDNumber, e: gen_qcoreevent.QEvent): bool =
-
+proc QLCDNumberevent*(self: gen_qlcdnumber_types.QLCDNumber, e: gen_qcoreevent.QEvent): bool =
 
   fQLCDNumber_virtualbase_event(self.h, e.h)
 
-type QLCDNumbereventBase* = proc(e: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QLCDNumber, slot: proc(super: QLCDNumbereventBase, e: gen_qcoreevent.QEvent): bool) =
+type QLCDNumbereventProc* = proc(e: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qlcdnumber_types.QLCDNumber, slot: QLCDNumbereventProc) =
   # TODO check subclass
-  type Cb = proc(super: QLCDNumbereventBase, e: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QLCDNumbereventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLCDNumber_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLCDNumber_event(self: ptr cQLCDNumber, slot: int, e: pointer): bool {.exportc: "miqt_exec_callback_QLCDNumber_event ".} =
-  type Cb = proc(super: QLCDNumbereventBase, e: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QLCDNumber(h: self), e)
+  var nimfunc = cast[ptr QLCDNumbereventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: e)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_paintEvent(self: QLCDNumber, param1: gen_qevent.QPaintEvent): void =
-
+proc QLCDNumberpaintEvent*(self: gen_qlcdnumber_types.QLCDNumber, param1: gen_qevent.QPaintEvent): void =
 
   fQLCDNumber_virtualbase_paintEvent(self.h, param1.h)
 
-type QLCDNumberpaintEventBase* = proc(param1: gen_qevent.QPaintEvent): void
-proc onpaintEvent*(self: QLCDNumber, slot: proc(super: QLCDNumberpaintEventBase, param1: gen_qevent.QPaintEvent): void) =
+type QLCDNumberpaintEventProc* = proc(param1: gen_qevent.QPaintEvent): void
+proc onpaintEvent*(self: gen_qlcdnumber_types.QLCDNumber, slot: QLCDNumberpaintEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QLCDNumberpaintEventBase, param1: gen_qevent.QPaintEvent): void
-  var tmp = new Cb
+  var tmp = new QLCDNumberpaintEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLCDNumber_override_virtual_paintEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLCDNumber_paintEvent(self: ptr cQLCDNumber, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QLCDNumber_paintEvent ".} =
-  type Cb = proc(super: QLCDNumberpaintEventBase, param1: gen_qevent.QPaintEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QPaintEvent): auto =
-    callVirtualBase_paintEvent(QLCDNumber(h: self), param1)
+  var nimfunc = cast[ptr QLCDNumberpaintEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QPaintEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_changeEvent(self: QLCDNumber, param1: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QLCDNumberchangeEvent*(self: gen_qlcdnumber_types.QLCDNumber, param1: gen_qcoreevent.QEvent): void =
 
   fQLCDNumber_virtualbase_changeEvent(self.h, param1.h)
 
-type QLCDNumberchangeEventBase* = proc(param1: gen_qcoreevent.QEvent): void
-proc onchangeEvent*(self: QLCDNumber, slot: proc(super: QLCDNumberchangeEventBase, param1: gen_qcoreevent.QEvent): void) =
+type QLCDNumberchangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
+proc onchangeEvent*(self: gen_qlcdnumber_types.QLCDNumber, slot: QLCDNumberchangeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QLCDNumberchangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QLCDNumberchangeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLCDNumber_override_virtual_changeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLCDNumber_changeEvent(self: ptr cQLCDNumber, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QLCDNumber_changeEvent ".} =
-  type Cb = proc(super: QLCDNumberchangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_changeEvent(QLCDNumber(h: self), param1)
+  var nimfunc = cast[ptr QLCDNumberchangeEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_devType(self: QLCDNumber, ): cint =
-
+  nimfunc[](slotval1)
+proc QLCDNumberdevType*(self: gen_qlcdnumber_types.QLCDNumber, ): cint =
 
   fQLCDNumber_virtualbase_devType(self.h)
 
-type QLCDNumberdevTypeBase* = proc(): cint
-proc ondevType*(self: QLCDNumber, slot: proc(super: QLCDNumberdevTypeBase): cint) =
+type QLCDNumberdevTypeProc* = proc(): cint
+proc ondevType*(self: gen_qlcdnumber_types.QLCDNumber, slot: QLCDNumberdevTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: QLCDNumberdevTypeBase): cint
-  var tmp = new Cb
+  var tmp = new QLCDNumberdevTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLCDNumber_override_virtual_devType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLCDNumber_devType(self: ptr cQLCDNumber, slot: int): cint {.exportc: "miqt_exec_callback_QLCDNumber_devType ".} =
-  type Cb = proc(super: QLCDNumberdevTypeBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_devType(QLCDNumber(h: self), )
+  var nimfunc = cast[ptr QLCDNumberdevTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setVisible(self: QLCDNumber, visible: bool): void =
-
+proc QLCDNumbersetVisible*(self: gen_qlcdnumber_types.QLCDNumber, visible: bool): void =
 
   fQLCDNumber_virtualbase_setVisible(self.h, visible)
 
-type QLCDNumbersetVisibleBase* = proc(visible: bool): void
-proc onsetVisible*(self: QLCDNumber, slot: proc(super: QLCDNumbersetVisibleBase, visible: bool): void) =
+type QLCDNumbersetVisibleProc* = proc(visible: bool): void
+proc onsetVisible*(self: gen_qlcdnumber_types.QLCDNumber, slot: QLCDNumbersetVisibleProc) =
   # TODO check subclass
-  type Cb = proc(super: QLCDNumbersetVisibleBase, visible: bool): void
-  var tmp = new Cb
+  var tmp = new QLCDNumbersetVisibleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLCDNumber_override_virtual_setVisible(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLCDNumber_setVisible(self: ptr cQLCDNumber, slot: int, visible: bool): void {.exportc: "miqt_exec_callback_QLCDNumber_setVisible ".} =
-  type Cb = proc(super: QLCDNumbersetVisibleBase, visible: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(visible: bool): auto =
-    callVirtualBase_setVisible(QLCDNumber(h: self), visible)
+  var nimfunc = cast[ptr QLCDNumbersetVisibleProc](cast[pointer](slot))
   let slotval1 = visible
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_minimumSizeHint(self: QLCDNumber, ): gen_qsize.QSize =
-
+  nimfunc[](slotval1)
+proc QLCDNumberminimumSizeHint*(self: gen_qlcdnumber_types.QLCDNumber, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQLCDNumber_virtualbase_minimumSizeHint(self.h))
 
-type QLCDNumberminimumSizeHintBase* = proc(): gen_qsize.QSize
-proc onminimumSizeHint*(self: QLCDNumber, slot: proc(super: QLCDNumberminimumSizeHintBase): gen_qsize.QSize) =
+type QLCDNumberminimumSizeHintProc* = proc(): gen_qsize.QSize
+proc onminimumSizeHint*(self: gen_qlcdnumber_types.QLCDNumber, slot: QLCDNumberminimumSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QLCDNumberminimumSizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QLCDNumberminimumSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLCDNumber_override_virtual_minimumSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLCDNumber_minimumSizeHint(self: ptr cQLCDNumber, slot: int): pointer {.exportc: "miqt_exec_callback_QLCDNumber_minimumSizeHint ".} =
-  type Cb = proc(super: QLCDNumberminimumSizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_minimumSizeHint(QLCDNumber(h: self), )
+  var nimfunc = cast[ptr QLCDNumberminimumSizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_heightForWidth(self: QLCDNumber, param1: cint): cint =
-
+proc QLCDNumberheightForWidth*(self: gen_qlcdnumber_types.QLCDNumber, param1: cint): cint =
 
   fQLCDNumber_virtualbase_heightForWidth(self.h, param1)
 
-type QLCDNumberheightForWidthBase* = proc(param1: cint): cint
-proc onheightForWidth*(self: QLCDNumber, slot: proc(super: QLCDNumberheightForWidthBase, param1: cint): cint) =
+type QLCDNumberheightForWidthProc* = proc(param1: cint): cint
+proc onheightForWidth*(self: gen_qlcdnumber_types.QLCDNumber, slot: QLCDNumberheightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QLCDNumberheightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QLCDNumberheightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLCDNumber_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLCDNumber_heightForWidth(self: ptr cQLCDNumber, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QLCDNumber_heightForWidth ".} =
-  type Cb = proc(super: QLCDNumberheightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_heightForWidth(QLCDNumber(h: self), param1)
+  var nimfunc = cast[ptr QLCDNumberheightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_hasHeightForWidth(self: QLCDNumber, ): bool =
-
+proc QLCDNumberhasHeightForWidth*(self: gen_qlcdnumber_types.QLCDNumber, ): bool =
 
   fQLCDNumber_virtualbase_hasHeightForWidth(self.h)
 
-type QLCDNumberhasHeightForWidthBase* = proc(): bool
-proc onhasHeightForWidth*(self: QLCDNumber, slot: proc(super: QLCDNumberhasHeightForWidthBase): bool) =
+type QLCDNumberhasHeightForWidthProc* = proc(): bool
+proc onhasHeightForWidth*(self: gen_qlcdnumber_types.QLCDNumber, slot: QLCDNumberhasHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QLCDNumberhasHeightForWidthBase): bool
-  var tmp = new Cb
+  var tmp = new QLCDNumberhasHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLCDNumber_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLCDNumber_hasHeightForWidth(self: ptr cQLCDNumber, slot: int): bool {.exportc: "miqt_exec_callback_QLCDNumber_hasHeightForWidth ".} =
-  type Cb = proc(super: QLCDNumberhasHeightForWidthBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasHeightForWidth(QLCDNumber(h: self), )
+  var nimfunc = cast[ptr QLCDNumberhasHeightForWidthProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_paintEngine(self: QLCDNumber, ): gen_qpaintengine.QPaintEngine =
-
+proc QLCDNumberpaintEngine*(self: gen_qlcdnumber_types.QLCDNumber, ): gen_qpaintengine.QPaintEngine =
 
   gen_qpaintengine.QPaintEngine(h: fQLCDNumber_virtualbase_paintEngine(self.h))
 
-type QLCDNumberpaintEngineBase* = proc(): gen_qpaintengine.QPaintEngine
-proc onpaintEngine*(self: QLCDNumber, slot: proc(super: QLCDNumberpaintEngineBase): gen_qpaintengine.QPaintEngine) =
+type QLCDNumberpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
+proc onpaintEngine*(self: gen_qlcdnumber_types.QLCDNumber, slot: QLCDNumberpaintEngineProc) =
   # TODO check subclass
-  type Cb = proc(super: QLCDNumberpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var tmp = new Cb
+  var tmp = new QLCDNumberpaintEngineProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLCDNumber_override_virtual_paintEngine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLCDNumber_paintEngine(self: ptr cQLCDNumber, slot: int): pointer {.exportc: "miqt_exec_callback_QLCDNumber_paintEngine ".} =
-  type Cb = proc(super: QLCDNumberpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_paintEngine(QLCDNumber(h: self), )
+  var nimfunc = cast[ptr QLCDNumberpaintEngineProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_mousePressEvent(self: QLCDNumber, event: gen_qevent.QMouseEvent): void =
-
+proc QLCDNumbermousePressEvent*(self: gen_qlcdnumber_types.QLCDNumber, event: gen_qevent.QMouseEvent): void =
 
   fQLCDNumber_virtualbase_mousePressEvent(self.h, event.h)
 
-type QLCDNumbermousePressEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmousePressEvent*(self: QLCDNumber, slot: proc(super: QLCDNumbermousePressEventBase, event: gen_qevent.QMouseEvent): void) =
+type QLCDNumbermousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmousePressEvent*(self: gen_qlcdnumber_types.QLCDNumber, slot: QLCDNumbermousePressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QLCDNumbermousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QLCDNumbermousePressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLCDNumber_override_virtual_mousePressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLCDNumber_mousePressEvent(self: ptr cQLCDNumber, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QLCDNumber_mousePressEvent ".} =
-  type Cb = proc(super: QLCDNumbermousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mousePressEvent(QLCDNumber(h: self), event)
+  var nimfunc = cast[ptr QLCDNumbermousePressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseReleaseEvent(self: QLCDNumber, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QLCDNumbermouseReleaseEvent*(self: gen_qlcdnumber_types.QLCDNumber, event: gen_qevent.QMouseEvent): void =
 
   fQLCDNumber_virtualbase_mouseReleaseEvent(self.h, event.h)
 
-type QLCDNumbermouseReleaseEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseReleaseEvent*(self: QLCDNumber, slot: proc(super: QLCDNumbermouseReleaseEventBase, event: gen_qevent.QMouseEvent): void) =
+type QLCDNumbermouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseReleaseEvent*(self: gen_qlcdnumber_types.QLCDNumber, slot: QLCDNumbermouseReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QLCDNumbermouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QLCDNumbermouseReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLCDNumber_override_virtual_mouseReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLCDNumber_mouseReleaseEvent(self: ptr cQLCDNumber, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QLCDNumber_mouseReleaseEvent ".} =
-  type Cb = proc(super: QLCDNumbermouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseReleaseEvent(QLCDNumber(h: self), event)
+  var nimfunc = cast[ptr QLCDNumbermouseReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseDoubleClickEvent(self: QLCDNumber, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QLCDNumbermouseDoubleClickEvent*(self: gen_qlcdnumber_types.QLCDNumber, event: gen_qevent.QMouseEvent): void =
 
   fQLCDNumber_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
-type QLCDNumbermouseDoubleClickEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseDoubleClickEvent*(self: QLCDNumber, slot: proc(super: QLCDNumbermouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void) =
+type QLCDNumbermouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseDoubleClickEvent*(self: gen_qlcdnumber_types.QLCDNumber, slot: QLCDNumbermouseDoubleClickEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QLCDNumbermouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QLCDNumbermouseDoubleClickEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLCDNumber_override_virtual_mouseDoubleClickEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLCDNumber_mouseDoubleClickEvent(self: ptr cQLCDNumber, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QLCDNumber_mouseDoubleClickEvent ".} =
-  type Cb = proc(super: QLCDNumbermouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseDoubleClickEvent(QLCDNumber(h: self), event)
+  var nimfunc = cast[ptr QLCDNumbermouseDoubleClickEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseMoveEvent(self: QLCDNumber, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QLCDNumbermouseMoveEvent*(self: gen_qlcdnumber_types.QLCDNumber, event: gen_qevent.QMouseEvent): void =
 
   fQLCDNumber_virtualbase_mouseMoveEvent(self.h, event.h)
 
-type QLCDNumbermouseMoveEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseMoveEvent*(self: QLCDNumber, slot: proc(super: QLCDNumbermouseMoveEventBase, event: gen_qevent.QMouseEvent): void) =
+type QLCDNumbermouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseMoveEvent*(self: gen_qlcdnumber_types.QLCDNumber, slot: QLCDNumbermouseMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QLCDNumbermouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QLCDNumbermouseMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLCDNumber_override_virtual_mouseMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLCDNumber_mouseMoveEvent(self: ptr cQLCDNumber, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QLCDNumber_mouseMoveEvent ".} =
-  type Cb = proc(super: QLCDNumbermouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseMoveEvent(QLCDNumber(h: self), event)
+  var nimfunc = cast[ptr QLCDNumbermouseMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_wheelEvent(self: QLCDNumber, event: gen_qevent.QWheelEvent): void =
-
+  nimfunc[](slotval1)
+proc QLCDNumberwheelEvent*(self: gen_qlcdnumber_types.QLCDNumber, event: gen_qevent.QWheelEvent): void =
 
   fQLCDNumber_virtualbase_wheelEvent(self.h, event.h)
 
-type QLCDNumberwheelEventBase* = proc(event: gen_qevent.QWheelEvent): void
-proc onwheelEvent*(self: QLCDNumber, slot: proc(super: QLCDNumberwheelEventBase, event: gen_qevent.QWheelEvent): void) =
+type QLCDNumberwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
+proc onwheelEvent*(self: gen_qlcdnumber_types.QLCDNumber, slot: QLCDNumberwheelEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QLCDNumberwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var tmp = new Cb
+  var tmp = new QLCDNumberwheelEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLCDNumber_override_virtual_wheelEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLCDNumber_wheelEvent(self: ptr cQLCDNumber, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QLCDNumber_wheelEvent ".} =
-  type Cb = proc(super: QLCDNumberwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QWheelEvent): auto =
-    callVirtualBase_wheelEvent(QLCDNumber(h: self), event)
+  var nimfunc = cast[ptr QLCDNumberwheelEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QWheelEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyPressEvent(self: QLCDNumber, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QLCDNumberkeyPressEvent*(self: gen_qlcdnumber_types.QLCDNumber, event: gen_qevent.QKeyEvent): void =
 
   fQLCDNumber_virtualbase_keyPressEvent(self.h, event.h)
 
-type QLCDNumberkeyPressEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyPressEvent*(self: QLCDNumber, slot: proc(super: QLCDNumberkeyPressEventBase, event: gen_qevent.QKeyEvent): void) =
+type QLCDNumberkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyPressEvent*(self: gen_qlcdnumber_types.QLCDNumber, slot: QLCDNumberkeyPressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QLCDNumberkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QLCDNumberkeyPressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLCDNumber_override_virtual_keyPressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLCDNumber_keyPressEvent(self: ptr cQLCDNumber, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QLCDNumber_keyPressEvent ".} =
-  type Cb = proc(super: QLCDNumberkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyPressEvent(QLCDNumber(h: self), event)
+  var nimfunc = cast[ptr QLCDNumberkeyPressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyReleaseEvent(self: QLCDNumber, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QLCDNumberkeyReleaseEvent*(self: gen_qlcdnumber_types.QLCDNumber, event: gen_qevent.QKeyEvent): void =
 
   fQLCDNumber_virtualbase_keyReleaseEvent(self.h, event.h)
 
-type QLCDNumberkeyReleaseEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyReleaseEvent*(self: QLCDNumber, slot: proc(super: QLCDNumberkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void) =
+type QLCDNumberkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyReleaseEvent*(self: gen_qlcdnumber_types.QLCDNumber, slot: QLCDNumberkeyReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QLCDNumberkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QLCDNumberkeyReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLCDNumber_override_virtual_keyReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLCDNumber_keyReleaseEvent(self: ptr cQLCDNumber, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QLCDNumber_keyReleaseEvent ".} =
-  type Cb = proc(super: QLCDNumberkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyReleaseEvent(QLCDNumber(h: self), event)
+  var nimfunc = cast[ptr QLCDNumberkeyReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusInEvent(self: QLCDNumber, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QLCDNumberfocusInEvent*(self: gen_qlcdnumber_types.QLCDNumber, event: gen_qevent.QFocusEvent): void =
 
   fQLCDNumber_virtualbase_focusInEvent(self.h, event.h)
 
-type QLCDNumberfocusInEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusInEvent*(self: QLCDNumber, slot: proc(super: QLCDNumberfocusInEventBase, event: gen_qevent.QFocusEvent): void) =
+type QLCDNumberfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusInEvent*(self: gen_qlcdnumber_types.QLCDNumber, slot: QLCDNumberfocusInEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QLCDNumberfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QLCDNumberfocusInEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLCDNumber_override_virtual_focusInEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLCDNumber_focusInEvent(self: ptr cQLCDNumber, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QLCDNumber_focusInEvent ".} =
-  type Cb = proc(super: QLCDNumberfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusInEvent(QLCDNumber(h: self), event)
+  var nimfunc = cast[ptr QLCDNumberfocusInEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusOutEvent(self: QLCDNumber, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QLCDNumberfocusOutEvent*(self: gen_qlcdnumber_types.QLCDNumber, event: gen_qevent.QFocusEvent): void =
 
   fQLCDNumber_virtualbase_focusOutEvent(self.h, event.h)
 
-type QLCDNumberfocusOutEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusOutEvent*(self: QLCDNumber, slot: proc(super: QLCDNumberfocusOutEventBase, event: gen_qevent.QFocusEvent): void) =
+type QLCDNumberfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusOutEvent*(self: gen_qlcdnumber_types.QLCDNumber, slot: QLCDNumberfocusOutEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QLCDNumberfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QLCDNumberfocusOutEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLCDNumber_override_virtual_focusOutEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLCDNumber_focusOutEvent(self: ptr cQLCDNumber, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QLCDNumber_focusOutEvent ".} =
-  type Cb = proc(super: QLCDNumberfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusOutEvent(QLCDNumber(h: self), event)
+  var nimfunc = cast[ptr QLCDNumberfocusOutEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_enterEvent(self: QLCDNumber, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QLCDNumberenterEvent*(self: gen_qlcdnumber_types.QLCDNumber, event: gen_qcoreevent.QEvent): void =
 
   fQLCDNumber_virtualbase_enterEvent(self.h, event.h)
 
-type QLCDNumberenterEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onenterEvent*(self: QLCDNumber, slot: proc(super: QLCDNumberenterEventBase, event: gen_qcoreevent.QEvent): void) =
+type QLCDNumberenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onenterEvent*(self: gen_qlcdnumber_types.QLCDNumber, slot: QLCDNumberenterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QLCDNumberenterEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QLCDNumberenterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLCDNumber_override_virtual_enterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLCDNumber_enterEvent(self: ptr cQLCDNumber, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QLCDNumber_enterEvent ".} =
-  type Cb = proc(super: QLCDNumberenterEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_enterEvent(QLCDNumber(h: self), event)
+  var nimfunc = cast[ptr QLCDNumberenterEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_leaveEvent(self: QLCDNumber, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QLCDNumberleaveEvent*(self: gen_qlcdnumber_types.QLCDNumber, event: gen_qcoreevent.QEvent): void =
 
   fQLCDNumber_virtualbase_leaveEvent(self.h, event.h)
 
-type QLCDNumberleaveEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onleaveEvent*(self: QLCDNumber, slot: proc(super: QLCDNumberleaveEventBase, event: gen_qcoreevent.QEvent): void) =
+type QLCDNumberleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onleaveEvent*(self: gen_qlcdnumber_types.QLCDNumber, slot: QLCDNumberleaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QLCDNumberleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QLCDNumberleaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLCDNumber_override_virtual_leaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLCDNumber_leaveEvent(self: ptr cQLCDNumber, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QLCDNumber_leaveEvent ".} =
-  type Cb = proc(super: QLCDNumberleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_leaveEvent(QLCDNumber(h: self), event)
+  var nimfunc = cast[ptr QLCDNumberleaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_moveEvent(self: QLCDNumber, event: gen_qevent.QMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QLCDNumbermoveEvent*(self: gen_qlcdnumber_types.QLCDNumber, event: gen_qevent.QMoveEvent): void =
 
   fQLCDNumber_virtualbase_moveEvent(self.h, event.h)
 
-type QLCDNumbermoveEventBase* = proc(event: gen_qevent.QMoveEvent): void
-proc onmoveEvent*(self: QLCDNumber, slot: proc(super: QLCDNumbermoveEventBase, event: gen_qevent.QMoveEvent): void) =
+type QLCDNumbermoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
+proc onmoveEvent*(self: gen_qlcdnumber_types.QLCDNumber, slot: QLCDNumbermoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QLCDNumbermoveEventBase, event: gen_qevent.QMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QLCDNumbermoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLCDNumber_override_virtual_moveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLCDNumber_moveEvent(self: ptr cQLCDNumber, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QLCDNumber_moveEvent ".} =
-  type Cb = proc(super: QLCDNumbermoveEventBase, event: gen_qevent.QMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMoveEvent): auto =
-    callVirtualBase_moveEvent(QLCDNumber(h: self), event)
+  var nimfunc = cast[ptr QLCDNumbermoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_resizeEvent(self: QLCDNumber, event: gen_qevent.QResizeEvent): void =
-
+  nimfunc[](slotval1)
+proc QLCDNumberresizeEvent*(self: gen_qlcdnumber_types.QLCDNumber, event: gen_qevent.QResizeEvent): void =
 
   fQLCDNumber_virtualbase_resizeEvent(self.h, event.h)
 
-type QLCDNumberresizeEventBase* = proc(event: gen_qevent.QResizeEvent): void
-proc onresizeEvent*(self: QLCDNumber, slot: proc(super: QLCDNumberresizeEventBase, event: gen_qevent.QResizeEvent): void) =
+type QLCDNumberresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
+proc onresizeEvent*(self: gen_qlcdnumber_types.QLCDNumber, slot: QLCDNumberresizeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QLCDNumberresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var tmp = new Cb
+  var tmp = new QLCDNumberresizeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLCDNumber_override_virtual_resizeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLCDNumber_resizeEvent(self: ptr cQLCDNumber, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QLCDNumber_resizeEvent ".} =
-  type Cb = proc(super: QLCDNumberresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QResizeEvent): auto =
-    callVirtualBase_resizeEvent(QLCDNumber(h: self), event)
+  var nimfunc = cast[ptr QLCDNumberresizeEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QResizeEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_closeEvent(self: QLCDNumber, event: gen_qevent.QCloseEvent): void =
-
+  nimfunc[](slotval1)
+proc QLCDNumbercloseEvent*(self: gen_qlcdnumber_types.QLCDNumber, event: gen_qevent.QCloseEvent): void =
 
   fQLCDNumber_virtualbase_closeEvent(self.h, event.h)
 
-type QLCDNumbercloseEventBase* = proc(event: gen_qevent.QCloseEvent): void
-proc oncloseEvent*(self: QLCDNumber, slot: proc(super: QLCDNumbercloseEventBase, event: gen_qevent.QCloseEvent): void) =
+type QLCDNumbercloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
+proc oncloseEvent*(self: gen_qlcdnumber_types.QLCDNumber, slot: QLCDNumbercloseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QLCDNumbercloseEventBase, event: gen_qevent.QCloseEvent): void
-  var tmp = new Cb
+  var tmp = new QLCDNumbercloseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLCDNumber_override_virtual_closeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLCDNumber_closeEvent(self: ptr cQLCDNumber, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QLCDNumber_closeEvent ".} =
-  type Cb = proc(super: QLCDNumbercloseEventBase, event: gen_qevent.QCloseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QCloseEvent): auto =
-    callVirtualBase_closeEvent(QLCDNumber(h: self), event)
+  var nimfunc = cast[ptr QLCDNumbercloseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QCloseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_contextMenuEvent(self: QLCDNumber, event: gen_qevent.QContextMenuEvent): void =
-
+  nimfunc[](slotval1)
+proc QLCDNumbercontextMenuEvent*(self: gen_qlcdnumber_types.QLCDNumber, event: gen_qevent.QContextMenuEvent): void =
 
   fQLCDNumber_virtualbase_contextMenuEvent(self.h, event.h)
 
-type QLCDNumbercontextMenuEventBase* = proc(event: gen_qevent.QContextMenuEvent): void
-proc oncontextMenuEvent*(self: QLCDNumber, slot: proc(super: QLCDNumbercontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void) =
+type QLCDNumbercontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
+proc oncontextMenuEvent*(self: gen_qlcdnumber_types.QLCDNumber, slot: QLCDNumbercontextMenuEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QLCDNumbercontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var tmp = new Cb
+  var tmp = new QLCDNumbercontextMenuEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLCDNumber_override_virtual_contextMenuEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLCDNumber_contextMenuEvent(self: ptr cQLCDNumber, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QLCDNumber_contextMenuEvent ".} =
-  type Cb = proc(super: QLCDNumbercontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QContextMenuEvent): auto =
-    callVirtualBase_contextMenuEvent(QLCDNumber(h: self), event)
+  var nimfunc = cast[ptr QLCDNumbercontextMenuEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QContextMenuEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_tabletEvent(self: QLCDNumber, event: gen_qevent.QTabletEvent): void =
-
+  nimfunc[](slotval1)
+proc QLCDNumbertabletEvent*(self: gen_qlcdnumber_types.QLCDNumber, event: gen_qevent.QTabletEvent): void =
 
   fQLCDNumber_virtualbase_tabletEvent(self.h, event.h)
 
-type QLCDNumbertabletEventBase* = proc(event: gen_qevent.QTabletEvent): void
-proc ontabletEvent*(self: QLCDNumber, slot: proc(super: QLCDNumbertabletEventBase, event: gen_qevent.QTabletEvent): void) =
+type QLCDNumbertabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
+proc ontabletEvent*(self: gen_qlcdnumber_types.QLCDNumber, slot: QLCDNumbertabletEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QLCDNumbertabletEventBase, event: gen_qevent.QTabletEvent): void
-  var tmp = new Cb
+  var tmp = new QLCDNumbertabletEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLCDNumber_override_virtual_tabletEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLCDNumber_tabletEvent(self: ptr cQLCDNumber, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QLCDNumber_tabletEvent ".} =
-  type Cb = proc(super: QLCDNumbertabletEventBase, event: gen_qevent.QTabletEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QTabletEvent): auto =
-    callVirtualBase_tabletEvent(QLCDNumber(h: self), event)
+  var nimfunc = cast[ptr QLCDNumbertabletEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QTabletEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_actionEvent(self: QLCDNumber, event: gen_qevent.QActionEvent): void =
-
+  nimfunc[](slotval1)
+proc QLCDNumberactionEvent*(self: gen_qlcdnumber_types.QLCDNumber, event: gen_qevent.QActionEvent): void =
 
   fQLCDNumber_virtualbase_actionEvent(self.h, event.h)
 
-type QLCDNumberactionEventBase* = proc(event: gen_qevent.QActionEvent): void
-proc onactionEvent*(self: QLCDNumber, slot: proc(super: QLCDNumberactionEventBase, event: gen_qevent.QActionEvent): void) =
+type QLCDNumberactionEventProc* = proc(event: gen_qevent.QActionEvent): void
+proc onactionEvent*(self: gen_qlcdnumber_types.QLCDNumber, slot: QLCDNumberactionEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QLCDNumberactionEventBase, event: gen_qevent.QActionEvent): void
-  var tmp = new Cb
+  var tmp = new QLCDNumberactionEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLCDNumber_override_virtual_actionEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLCDNumber_actionEvent(self: ptr cQLCDNumber, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QLCDNumber_actionEvent ".} =
-  type Cb = proc(super: QLCDNumberactionEventBase, event: gen_qevent.QActionEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QActionEvent): auto =
-    callVirtualBase_actionEvent(QLCDNumber(h: self), event)
+  var nimfunc = cast[ptr QLCDNumberactionEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QActionEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragEnterEvent(self: QLCDNumber, event: gen_qevent.QDragEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QLCDNumberdragEnterEvent*(self: gen_qlcdnumber_types.QLCDNumber, event: gen_qevent.QDragEnterEvent): void =
 
   fQLCDNumber_virtualbase_dragEnterEvent(self.h, event.h)
 
-type QLCDNumberdragEnterEventBase* = proc(event: gen_qevent.QDragEnterEvent): void
-proc ondragEnterEvent*(self: QLCDNumber, slot: proc(super: QLCDNumberdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void) =
+type QLCDNumberdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
+proc ondragEnterEvent*(self: gen_qlcdnumber_types.QLCDNumber, slot: QLCDNumberdragEnterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QLCDNumberdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QLCDNumberdragEnterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLCDNumber_override_virtual_dragEnterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLCDNumber_dragEnterEvent(self: ptr cQLCDNumber, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QLCDNumber_dragEnterEvent ".} =
-  type Cb = proc(super: QLCDNumberdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragEnterEvent): auto =
-    callVirtualBase_dragEnterEvent(QLCDNumber(h: self), event)
+  var nimfunc = cast[ptr QLCDNumberdragEnterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragMoveEvent(self: QLCDNumber, event: gen_qevent.QDragMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QLCDNumberdragMoveEvent*(self: gen_qlcdnumber_types.QLCDNumber, event: gen_qevent.QDragMoveEvent): void =
 
   fQLCDNumber_virtualbase_dragMoveEvent(self.h, event.h)
 
-type QLCDNumberdragMoveEventBase* = proc(event: gen_qevent.QDragMoveEvent): void
-proc ondragMoveEvent*(self: QLCDNumber, slot: proc(super: QLCDNumberdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void) =
+type QLCDNumberdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
+proc ondragMoveEvent*(self: gen_qlcdnumber_types.QLCDNumber, slot: QLCDNumberdragMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QLCDNumberdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QLCDNumberdragMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLCDNumber_override_virtual_dragMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLCDNumber_dragMoveEvent(self: ptr cQLCDNumber, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QLCDNumber_dragMoveEvent ".} =
-  type Cb = proc(super: QLCDNumberdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragMoveEvent): auto =
-    callVirtualBase_dragMoveEvent(QLCDNumber(h: self), event)
+  var nimfunc = cast[ptr QLCDNumberdragMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragLeaveEvent(self: QLCDNumber, event: gen_qevent.QDragLeaveEvent): void =
-
+  nimfunc[](slotval1)
+proc QLCDNumberdragLeaveEvent*(self: gen_qlcdnumber_types.QLCDNumber, event: gen_qevent.QDragLeaveEvent): void =
 
   fQLCDNumber_virtualbase_dragLeaveEvent(self.h, event.h)
 
-type QLCDNumberdragLeaveEventBase* = proc(event: gen_qevent.QDragLeaveEvent): void
-proc ondragLeaveEvent*(self: QLCDNumber, slot: proc(super: QLCDNumberdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void) =
+type QLCDNumberdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
+proc ondragLeaveEvent*(self: gen_qlcdnumber_types.QLCDNumber, slot: QLCDNumberdragLeaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QLCDNumberdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var tmp = new Cb
+  var tmp = new QLCDNumberdragLeaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLCDNumber_override_virtual_dragLeaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLCDNumber_dragLeaveEvent(self: ptr cQLCDNumber, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QLCDNumber_dragLeaveEvent ".} =
-  type Cb = proc(super: QLCDNumberdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragLeaveEvent): auto =
-    callVirtualBase_dragLeaveEvent(QLCDNumber(h: self), event)
+  var nimfunc = cast[ptr QLCDNumberdragLeaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragLeaveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dropEvent(self: QLCDNumber, event: gen_qevent.QDropEvent): void =
-
+  nimfunc[](slotval1)
+proc QLCDNumberdropEvent*(self: gen_qlcdnumber_types.QLCDNumber, event: gen_qevent.QDropEvent): void =
 
   fQLCDNumber_virtualbase_dropEvent(self.h, event.h)
 
-type QLCDNumberdropEventBase* = proc(event: gen_qevent.QDropEvent): void
-proc ondropEvent*(self: QLCDNumber, slot: proc(super: QLCDNumberdropEventBase, event: gen_qevent.QDropEvent): void) =
+type QLCDNumberdropEventProc* = proc(event: gen_qevent.QDropEvent): void
+proc ondropEvent*(self: gen_qlcdnumber_types.QLCDNumber, slot: QLCDNumberdropEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QLCDNumberdropEventBase, event: gen_qevent.QDropEvent): void
-  var tmp = new Cb
+  var tmp = new QLCDNumberdropEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLCDNumber_override_virtual_dropEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLCDNumber_dropEvent(self: ptr cQLCDNumber, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QLCDNumber_dropEvent ".} =
-  type Cb = proc(super: QLCDNumberdropEventBase, event: gen_qevent.QDropEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDropEvent): auto =
-    callVirtualBase_dropEvent(QLCDNumber(h: self), event)
+  var nimfunc = cast[ptr QLCDNumberdropEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDropEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_showEvent(self: QLCDNumber, event: gen_qevent.QShowEvent): void =
-
+  nimfunc[](slotval1)
+proc QLCDNumbershowEvent*(self: gen_qlcdnumber_types.QLCDNumber, event: gen_qevent.QShowEvent): void =
 
   fQLCDNumber_virtualbase_showEvent(self.h, event.h)
 
-type QLCDNumbershowEventBase* = proc(event: gen_qevent.QShowEvent): void
-proc onshowEvent*(self: QLCDNumber, slot: proc(super: QLCDNumbershowEventBase, event: gen_qevent.QShowEvent): void) =
+type QLCDNumbershowEventProc* = proc(event: gen_qevent.QShowEvent): void
+proc onshowEvent*(self: gen_qlcdnumber_types.QLCDNumber, slot: QLCDNumbershowEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QLCDNumbershowEventBase, event: gen_qevent.QShowEvent): void
-  var tmp = new Cb
+  var tmp = new QLCDNumbershowEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLCDNumber_override_virtual_showEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLCDNumber_showEvent(self: ptr cQLCDNumber, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QLCDNumber_showEvent ".} =
-  type Cb = proc(super: QLCDNumbershowEventBase, event: gen_qevent.QShowEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QShowEvent): auto =
-    callVirtualBase_showEvent(QLCDNumber(h: self), event)
+  var nimfunc = cast[ptr QLCDNumbershowEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QShowEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hideEvent(self: QLCDNumber, event: gen_qevent.QHideEvent): void =
-
+  nimfunc[](slotval1)
+proc QLCDNumberhideEvent*(self: gen_qlcdnumber_types.QLCDNumber, event: gen_qevent.QHideEvent): void =
 
   fQLCDNumber_virtualbase_hideEvent(self.h, event.h)
 
-type QLCDNumberhideEventBase* = proc(event: gen_qevent.QHideEvent): void
-proc onhideEvent*(self: QLCDNumber, slot: proc(super: QLCDNumberhideEventBase, event: gen_qevent.QHideEvent): void) =
+type QLCDNumberhideEventProc* = proc(event: gen_qevent.QHideEvent): void
+proc onhideEvent*(self: gen_qlcdnumber_types.QLCDNumber, slot: QLCDNumberhideEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QLCDNumberhideEventBase, event: gen_qevent.QHideEvent): void
-  var tmp = new Cb
+  var tmp = new QLCDNumberhideEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLCDNumber_override_virtual_hideEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLCDNumber_hideEvent(self: ptr cQLCDNumber, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QLCDNumber_hideEvent ".} =
-  type Cb = proc(super: QLCDNumberhideEventBase, event: gen_qevent.QHideEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QHideEvent): auto =
-    callVirtualBase_hideEvent(QLCDNumber(h: self), event)
+  var nimfunc = cast[ptr QLCDNumberhideEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QHideEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_nativeEvent(self: QLCDNumber, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
+  nimfunc[](slotval1)
+proc QLCDNumbernativeEvent*(self: gen_qlcdnumber_types.QLCDNumber, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
 
   fQLCDNumber_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
-type QLCDNumbernativeEventBase* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-proc onnativeEvent*(self: QLCDNumber, slot: proc(super: QLCDNumbernativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool) =
+type QLCDNumbernativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
+proc onnativeEvent*(self: gen_qlcdnumber_types.QLCDNumber, slot: QLCDNumbernativeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QLCDNumbernativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-  var tmp = new Cb
+  var tmp = new QLCDNumbernativeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLCDNumber_override_virtual_nativeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLCDNumber_nativeEvent(self: ptr cQLCDNumber, slot: int, eventType: struct_miqt_string, message: pointer, resultVal: ptr clong): bool {.exportc: "miqt_exec_callback_QLCDNumber_nativeEvent ".} =
-  type Cb = proc(super: QLCDNumbernativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(eventType: seq[byte], message: pointer, resultVal: ptr clong): auto =
-    callVirtualBase_nativeEvent(QLCDNumber(h: self), eventType, message, resultVal)
+  var nimfunc = cast[ptr QLCDNumbernativeEventProc](cast[pointer](slot))
   var veventType_bytearray = eventType
   var veventTypex_ret = @(toOpenArrayByte(veventType_bytearray.data, 0, int(veventType_bytearray.len)-1))
   c_free(veventType_bytearray.data)
@@ -1259,321 +1068,256 @@ proc miqt_exec_callback_QLCDNumber_nativeEvent(self: ptr cQLCDNumber, slot: int,
   let slotval3 = resultVal
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_metric(self: QLCDNumber, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint =
-
+proc QLCDNumbermetric*(self: gen_qlcdnumber_types.QLCDNumber, param1: cint): cint =
 
   fQLCDNumber_virtualbase_metric(self.h, cint(param1))
 
-type QLCDNumbermetricBase* = proc(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-proc onmetric*(self: QLCDNumber, slot: proc(super: QLCDNumbermetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint) =
+type QLCDNumbermetricProc* = proc(param1: cint): cint
+proc onmetric*(self: gen_qlcdnumber_types.QLCDNumber, slot: QLCDNumbermetricProc) =
   # TODO check subclass
-  type Cb = proc(super: QLCDNumbermetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var tmp = new Cb
+  var tmp = new QLCDNumbermetricProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLCDNumber_override_virtual_metric(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLCDNumber_metric(self: ptr cQLCDNumber, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QLCDNumber_metric ".} =
-  type Cb = proc(super: QLCDNumbermetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): auto =
-    callVirtualBase_metric(QLCDNumber(h: self), param1)
-  let slotval1 = gen_qpaintdevice.QPaintDevicePaintDeviceMetric(param1)
+  var nimfunc = cast[ptr QLCDNumbermetricProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_initPainter(self: QLCDNumber, painter: gen_qpainter.QPainter): void =
-
+proc QLCDNumberinitPainter*(self: gen_qlcdnumber_types.QLCDNumber, painter: gen_qpainter.QPainter): void =
 
   fQLCDNumber_virtualbase_initPainter(self.h, painter.h)
 
-type QLCDNumberinitPainterBase* = proc(painter: gen_qpainter.QPainter): void
-proc oninitPainter*(self: QLCDNumber, slot: proc(super: QLCDNumberinitPainterBase, painter: gen_qpainter.QPainter): void) =
+type QLCDNumberinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
+proc oninitPainter*(self: gen_qlcdnumber_types.QLCDNumber, slot: QLCDNumberinitPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QLCDNumberinitPainterBase, painter: gen_qpainter.QPainter): void
-  var tmp = new Cb
+  var tmp = new QLCDNumberinitPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLCDNumber_override_virtual_initPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLCDNumber_initPainter(self: ptr cQLCDNumber, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_QLCDNumber_initPainter ".} =
-  type Cb = proc(super: QLCDNumberinitPainterBase, painter: gen_qpainter.QPainter): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter): auto =
-    callVirtualBase_initPainter(QLCDNumber(h: self), painter)
+  var nimfunc = cast[ptr QLCDNumberinitPainterProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_redirected(self: QLCDNumber, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
+  nimfunc[](slotval1)
+proc QLCDNumberredirected*(self: gen_qlcdnumber_types.QLCDNumber, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
 
   gen_qpaintdevice.QPaintDevice(h: fQLCDNumber_virtualbase_redirected(self.h, offset.h))
 
-type QLCDNumberredirectedBase* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-proc onredirected*(self: QLCDNumber, slot: proc(super: QLCDNumberredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice) =
+type QLCDNumberredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
+proc onredirected*(self: gen_qlcdnumber_types.QLCDNumber, slot: QLCDNumberredirectedProc) =
   # TODO check subclass
-  type Cb = proc(super: QLCDNumberredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var tmp = new Cb
+  var tmp = new QLCDNumberredirectedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLCDNumber_override_virtual_redirected(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLCDNumber_redirected(self: ptr cQLCDNumber, slot: int, offset: pointer): pointer {.exportc: "miqt_exec_callback_QLCDNumber_redirected ".} =
-  type Cb = proc(super: QLCDNumberredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(offset: gen_qpoint.QPoint): auto =
-    callVirtualBase_redirected(QLCDNumber(h: self), offset)
+  var nimfunc = cast[ptr QLCDNumberredirectedProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: offset)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_sharedPainter(self: QLCDNumber, ): gen_qpainter.QPainter =
-
+proc QLCDNumbersharedPainter*(self: gen_qlcdnumber_types.QLCDNumber, ): gen_qpainter.QPainter =
 
   gen_qpainter.QPainter(h: fQLCDNumber_virtualbase_sharedPainter(self.h))
 
-type QLCDNumbersharedPainterBase* = proc(): gen_qpainter.QPainter
-proc onsharedPainter*(self: QLCDNumber, slot: proc(super: QLCDNumbersharedPainterBase): gen_qpainter.QPainter) =
+type QLCDNumbersharedPainterProc* = proc(): gen_qpainter.QPainter
+proc onsharedPainter*(self: gen_qlcdnumber_types.QLCDNumber, slot: QLCDNumbersharedPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QLCDNumbersharedPainterBase): gen_qpainter.QPainter
-  var tmp = new Cb
+  var tmp = new QLCDNumbersharedPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLCDNumber_override_virtual_sharedPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLCDNumber_sharedPainter(self: ptr cQLCDNumber, slot: int): pointer {.exportc: "miqt_exec_callback_QLCDNumber_sharedPainter ".} =
-  type Cb = proc(super: QLCDNumbersharedPainterBase): gen_qpainter.QPainter
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sharedPainter(QLCDNumber(h: self), )
+  var nimfunc = cast[ptr QLCDNumbersharedPainterProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_inputMethodEvent(self: QLCDNumber, param1: gen_qevent.QInputMethodEvent): void =
-
+proc QLCDNumberinputMethodEvent*(self: gen_qlcdnumber_types.QLCDNumber, param1: gen_qevent.QInputMethodEvent): void =
 
   fQLCDNumber_virtualbase_inputMethodEvent(self.h, param1.h)
 
-type QLCDNumberinputMethodEventBase* = proc(param1: gen_qevent.QInputMethodEvent): void
-proc oninputMethodEvent*(self: QLCDNumber, slot: proc(super: QLCDNumberinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void) =
+type QLCDNumberinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
+proc oninputMethodEvent*(self: gen_qlcdnumber_types.QLCDNumber, slot: QLCDNumberinputMethodEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QLCDNumberinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var tmp = new Cb
+  var tmp = new QLCDNumberinputMethodEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLCDNumber_override_virtual_inputMethodEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLCDNumber_inputMethodEvent(self: ptr cQLCDNumber, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QLCDNumber_inputMethodEvent ".} =
-  type Cb = proc(super: QLCDNumberinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QInputMethodEvent): auto =
-    callVirtualBase_inputMethodEvent(QLCDNumber(h: self), param1)
+  var nimfunc = cast[ptr QLCDNumberinputMethodEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QInputMethodEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_inputMethodQuery(self: QLCDNumber, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant =
-
+  nimfunc[](slotval1)
+proc QLCDNumberinputMethodQuery*(self: gen_qlcdnumber_types.QLCDNumber, param1: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQLCDNumber_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
-type QLCDNumberinputMethodQueryBase* = proc(param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-proc oninputMethodQuery*(self: QLCDNumber, slot: proc(super: QLCDNumberinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant) =
+type QLCDNumberinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
+proc oninputMethodQuery*(self: gen_qlcdnumber_types.QLCDNumber, slot: QLCDNumberinputMethodQueryProc) =
   # TODO check subclass
-  type Cb = proc(super: QLCDNumberinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QLCDNumberinputMethodQueryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLCDNumber_override_virtual_inputMethodQuery(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLCDNumber_inputMethodQuery(self: ptr cQLCDNumber, slot: int, param1: cint): pointer {.exportc: "miqt_exec_callback_QLCDNumber_inputMethodQuery ".} =
-  type Cb = proc(super: QLCDNumberinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qnamespace.InputMethodQuery): auto =
-    callVirtualBase_inputMethodQuery(QLCDNumber(h: self), param1)
-  let slotval1 = gen_qnamespace.InputMethodQuery(param1)
+  var nimfunc = cast[ptr QLCDNumberinputMethodQueryProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_focusNextPrevChild(self: QLCDNumber, next: bool): bool =
-
+proc QLCDNumberfocusNextPrevChild*(self: gen_qlcdnumber_types.QLCDNumber, next: bool): bool =
 
   fQLCDNumber_virtualbase_focusNextPrevChild(self.h, next)
 
-type QLCDNumberfocusNextPrevChildBase* = proc(next: bool): bool
-proc onfocusNextPrevChild*(self: QLCDNumber, slot: proc(super: QLCDNumberfocusNextPrevChildBase, next: bool): bool) =
+type QLCDNumberfocusNextPrevChildProc* = proc(next: bool): bool
+proc onfocusNextPrevChild*(self: gen_qlcdnumber_types.QLCDNumber, slot: QLCDNumberfocusNextPrevChildProc) =
   # TODO check subclass
-  type Cb = proc(super: QLCDNumberfocusNextPrevChildBase, next: bool): bool
-  var tmp = new Cb
+  var tmp = new QLCDNumberfocusNextPrevChildProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLCDNumber_override_virtual_focusNextPrevChild(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLCDNumber_focusNextPrevChild(self: ptr cQLCDNumber, slot: int, next: bool): bool {.exportc: "miqt_exec_callback_QLCDNumber_focusNextPrevChild ".} =
-  type Cb = proc(super: QLCDNumberfocusNextPrevChildBase, next: bool): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(next: bool): auto =
-    callVirtualBase_focusNextPrevChild(QLCDNumber(h: self), next)
+  var nimfunc = cast[ptr QLCDNumberfocusNextPrevChildProc](cast[pointer](slot))
   let slotval1 = next
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QLCDNumber, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QLCDNumbereventFilter*(self: gen_qlcdnumber_types.QLCDNumber, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQLCDNumber_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QLCDNumbereventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QLCDNumber, slot: proc(super: QLCDNumbereventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QLCDNumbereventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qlcdnumber_types.QLCDNumber, slot: QLCDNumbereventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QLCDNumbereventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QLCDNumbereventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLCDNumber_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLCDNumber_eventFilter(self: ptr cQLCDNumber, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QLCDNumber_eventFilter ".} =
-  type Cb = proc(super: QLCDNumbereventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QLCDNumber(h: self), watched, event)
+  var nimfunc = cast[ptr QLCDNumbereventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QLCDNumber, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QLCDNumbertimerEvent*(self: gen_qlcdnumber_types.QLCDNumber, event: gen_qcoreevent.QTimerEvent): void =
 
   fQLCDNumber_virtualbase_timerEvent(self.h, event.h)
 
-type QLCDNumbertimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QLCDNumber, slot: proc(super: QLCDNumbertimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QLCDNumbertimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qlcdnumber_types.QLCDNumber, slot: QLCDNumbertimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QLCDNumbertimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QLCDNumbertimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLCDNumber_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLCDNumber_timerEvent(self: ptr cQLCDNumber, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QLCDNumber_timerEvent ".} =
-  type Cb = proc(super: QLCDNumbertimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QLCDNumber(h: self), event)
+  var nimfunc = cast[ptr QLCDNumbertimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QLCDNumber, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QLCDNumberchildEvent*(self: gen_qlcdnumber_types.QLCDNumber, event: gen_qcoreevent.QChildEvent): void =
 
   fQLCDNumber_virtualbase_childEvent(self.h, event.h)
 
-type QLCDNumberchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QLCDNumber, slot: proc(super: QLCDNumberchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QLCDNumberchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qlcdnumber_types.QLCDNumber, slot: QLCDNumberchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QLCDNumberchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QLCDNumberchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLCDNumber_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLCDNumber_childEvent(self: ptr cQLCDNumber, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QLCDNumber_childEvent ".} =
-  type Cb = proc(super: QLCDNumberchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QLCDNumber(h: self), event)
+  var nimfunc = cast[ptr QLCDNumberchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QLCDNumber, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QLCDNumbercustomEvent*(self: gen_qlcdnumber_types.QLCDNumber, event: gen_qcoreevent.QEvent): void =
 
   fQLCDNumber_virtualbase_customEvent(self.h, event.h)
 
-type QLCDNumbercustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QLCDNumber, slot: proc(super: QLCDNumbercustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QLCDNumbercustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qlcdnumber_types.QLCDNumber, slot: QLCDNumbercustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QLCDNumbercustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QLCDNumbercustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLCDNumber_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLCDNumber_customEvent(self: ptr cQLCDNumber, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QLCDNumber_customEvent ".} =
-  type Cb = proc(super: QLCDNumbercustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QLCDNumber(h: self), event)
+  var nimfunc = cast[ptr QLCDNumbercustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QLCDNumber, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QLCDNumberconnectNotify*(self: gen_qlcdnumber_types.QLCDNumber, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQLCDNumber_virtualbase_connectNotify(self.h, signal.h)
 
-type QLCDNumberconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QLCDNumber, slot: proc(super: QLCDNumberconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QLCDNumberconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qlcdnumber_types.QLCDNumber, slot: QLCDNumberconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QLCDNumberconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QLCDNumberconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLCDNumber_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLCDNumber_connectNotify(self: ptr cQLCDNumber, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QLCDNumber_connectNotify ".} =
-  type Cb = proc(super: QLCDNumberconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QLCDNumber(h: self), signal)
+  var nimfunc = cast[ptr QLCDNumberconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QLCDNumber, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QLCDNumberdisconnectNotify*(self: gen_qlcdnumber_types.QLCDNumber, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQLCDNumber_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QLCDNumberdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QLCDNumber, slot: proc(super: QLCDNumberdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QLCDNumberdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qlcdnumber_types.QLCDNumber, slot: QLCDNumberdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QLCDNumberdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QLCDNumberdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLCDNumber_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLCDNumber_disconnectNotify(self: ptr cQLCDNumber, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QLCDNumber_disconnectNotify ".} =
-  type Cb = proc(super: QLCDNumberdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QLCDNumber(h: self), signal)
+  var nimfunc = cast[ptr QLCDNumberdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QLCDNumber): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qlcdnumber_types.QLCDNumber): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQLCDNumber_staticMetaObject())
-proc delete*(self: QLCDNumber) =
+proc delete*(self: gen_qlcdnumber_types.QLCDNumber) =
   fcQLCDNumber_delete(self.h)

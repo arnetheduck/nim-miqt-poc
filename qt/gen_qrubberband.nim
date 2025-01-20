@@ -34,11 +34,9 @@ const cflags = gorge("pkg-config -cflags Qt5Widgets")
 {.compile("gen_qrubberband.cpp", cflags).}
 
 
-type QRubberBandShape* = cint
-const
-  QRubberBandLine* = 0
-  QRubberBandRectangle* = 1
-
+type QRubberBandShapeEnum* = distinct cint
+template Line*(_: type QRubberBandShapeEnum): untyped = 0
+template Rectangle*(_: type QRubberBandShapeEnum): untyped = 1
 
 
 import gen_qrubberband_types
@@ -48,7 +46,6 @@ import
   gen_qcoreevent,
   gen_qevent,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -63,7 +60,6 @@ export
   gen_qcoreevent,
   gen_qevent,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -199,955 +195,770 @@ proc fcQRubberBand_staticMetaObject(): pointer {.importc: "QRubberBand_staticMet
 proc fcQRubberBand_delete(self: pointer) {.importc: "QRubberBand_delete".}
 
 
-func init*(T: type QRubberBand, h: ptr cQRubberBand): QRubberBand =
+func init*(T: type gen_qrubberband_types.QRubberBand, h: ptr cQRubberBand): gen_qrubberband_types.QRubberBand =
   T(h: h)
-proc create*(T: type QRubberBand, param1: QRubberBandShape): QRubberBand =
+proc create*(T: type gen_qrubberband_types.QRubberBand, param1: cint): gen_qrubberband_types.QRubberBand =
 
-  QRubberBand.init(fcQRubberBand_new(cint(param1)))
-proc create*(T: type QRubberBand, param1: QRubberBandShape, param2: gen_qwidget.QWidget): QRubberBand =
+  gen_qrubberband_types.QRubberBand.init(fcQRubberBand_new(cint(param1)))
+proc create*(T: type gen_qrubberband_types.QRubberBand, param1: cint, param2: gen_qwidget.QWidget): gen_qrubberband_types.QRubberBand =
 
-  QRubberBand.init(fcQRubberBand_new2(cint(param1), param2.h))
-proc metaObject*(self: QRubberBand, ): gen_qobjectdefs.QMetaObject =
+  gen_qrubberband_types.QRubberBand.init(fcQRubberBand_new2(cint(param1), param2.h))
+proc metaObject*(self: gen_qrubberband_types.QRubberBand, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQRubberBand_metaObject(self.h))
 
-proc metacast*(self: QRubberBand, param1: cstring): pointer =
+proc metacast*(self: gen_qrubberband_types.QRubberBand, param1: cstring): pointer =
 
   fcQRubberBand_metacast(self.h, param1)
 
-proc metacall*(self: QRubberBand, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qrubberband_types.QRubberBand, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQRubberBand_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QRubberBand, s: cstring): string =
+proc tr*(_: type gen_qrubberband_types.QRubberBand, s: cstring): string =
 
   let v_ms = fcQRubberBand_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QRubberBand, s: cstring): string =
+proc trUtf8*(_: type gen_qrubberband_types.QRubberBand, s: cstring): string =
 
   let v_ms = fcQRubberBand_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc shape*(self: QRubberBand, ): QRubberBandShape =
+proc shape*(self: gen_qrubberband_types.QRubberBand, ): cint =
 
-  QRubberBandShape(fcQRubberBand_shape(self.h))
+  cint(fcQRubberBand_shape(self.h))
 
-proc setGeometry*(self: QRubberBand, r: gen_qrect.QRect): void =
+proc setGeometry*(self: gen_qrubberband_types.QRubberBand, r: gen_qrect.QRect): void =
 
   fcQRubberBand_setGeometry(self.h, r.h)
 
-proc setGeometry2*(self: QRubberBand, x: cint, y: cint, w: cint, h: cint): void =
+proc setGeometry2*(self: gen_qrubberband_types.QRubberBand, x: cint, y: cint, w: cint, h: cint): void =
 
   fcQRubberBand_setGeometry2(self.h, x, y, w, h)
 
-proc move*(self: QRubberBand, x: cint, y: cint): void =
+proc move*(self: gen_qrubberband_types.QRubberBand, x: cint, y: cint): void =
 
   fcQRubberBand_move(self.h, x, y)
 
-proc moveWithQPoint*(self: QRubberBand, p: gen_qpoint.QPoint): void =
+proc moveWithQPoint*(self: gen_qrubberband_types.QRubberBand, p: gen_qpoint.QPoint): void =
 
   fcQRubberBand_moveWithQPoint(self.h, p.h)
 
-proc resize*(self: QRubberBand, w: cint, h: cint): void =
+proc resize*(self: gen_qrubberband_types.QRubberBand, w: cint, h: cint): void =
 
   fcQRubberBand_resize(self.h, w, h)
 
-proc resizeWithQSize*(self: QRubberBand, s: gen_qsize.QSize): void =
+proc resizeWithQSize*(self: gen_qrubberband_types.QRubberBand, s: gen_qsize.QSize): void =
 
   fcQRubberBand_resizeWithQSize(self.h, s.h)
 
-proc tr2*(_: type QRubberBand, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qrubberband_types.QRubberBand, s: cstring, c: cstring): string =
 
   let v_ms = fcQRubberBand_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QRubberBand, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qrubberband_types.QRubberBand, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQRubberBand_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QRubberBand, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qrubberband_types.QRubberBand, s: cstring, c: cstring): string =
 
   let v_ms = fcQRubberBand_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QRubberBand, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qrubberband_types.QRubberBand, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQRubberBand_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QRubberBand, ): gen_qobjectdefs.QMetaObject =
-
+proc QRubberBandmetaObject*(self: gen_qrubberband_types.QRubberBand, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQRubberBand_virtualbase_metaObject(self.h))
 
-type QRubberBandmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QRubberBand, slot: proc(super: QRubberBandmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QRubberBandmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qrubberband_types.QRubberBand, slot: QRubberBandmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QRubberBandmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QRubberBandmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRubberBand_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRubberBand_metaObject(self: ptr cQRubberBand, slot: int): pointer {.exportc: "miqt_exec_callback_QRubberBand_metaObject ".} =
-  type Cb = proc(super: QRubberBandmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QRubberBand(h: self), )
+  var nimfunc = cast[ptr QRubberBandmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QRubberBand, param1: cstring): pointer =
-
+proc QRubberBandmetacast*(self: gen_qrubberband_types.QRubberBand, param1: cstring): pointer =
 
   fQRubberBand_virtualbase_metacast(self.h, param1)
 
-type QRubberBandmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QRubberBand, slot: proc(super: QRubberBandmetacastBase, param1: cstring): pointer) =
+type QRubberBandmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qrubberband_types.QRubberBand, slot: QRubberBandmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QRubberBandmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QRubberBandmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRubberBand_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRubberBand_metacast(self: ptr cQRubberBand, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QRubberBand_metacast ".} =
-  type Cb = proc(super: QRubberBandmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QRubberBand(h: self), param1)
+  var nimfunc = cast[ptr QRubberBandmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QRubberBand, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QRubberBandmetacall*(self: gen_qrubberband_types.QRubberBand, param1: cint, param2: cint, param3: pointer): cint =
 
   fQRubberBand_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QRubberBandmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QRubberBand, slot: proc(super: QRubberBandmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QRubberBandmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qrubberband_types.QRubberBand, slot: QRubberBandmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QRubberBandmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QRubberBandmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRubberBand_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRubberBand_metacall(self: ptr cQRubberBand, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QRubberBand_metacall ".} =
-  type Cb = proc(super: QRubberBandmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QRubberBand(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QRubberBandmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_event(self: QRubberBand, e: gen_qcoreevent.QEvent): bool =
-
+proc QRubberBandevent*(self: gen_qrubberband_types.QRubberBand, e: gen_qcoreevent.QEvent): bool =
 
   fQRubberBand_virtualbase_event(self.h, e.h)
 
-type QRubberBandeventBase* = proc(e: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QRubberBand, slot: proc(super: QRubberBandeventBase, e: gen_qcoreevent.QEvent): bool) =
+type QRubberBandeventProc* = proc(e: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qrubberband_types.QRubberBand, slot: QRubberBandeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRubberBandeventBase, e: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QRubberBandeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRubberBand_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRubberBand_event(self: ptr cQRubberBand, slot: int, e: pointer): bool {.exportc: "miqt_exec_callback_QRubberBand_event ".} =
-  type Cb = proc(super: QRubberBandeventBase, e: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QRubberBand(h: self), e)
+  var nimfunc = cast[ptr QRubberBandeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: e)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_paintEvent(self: QRubberBand, param1: gen_qevent.QPaintEvent): void =
-
+proc QRubberBandpaintEvent*(self: gen_qrubberband_types.QRubberBand, param1: gen_qevent.QPaintEvent): void =
 
   fQRubberBand_virtualbase_paintEvent(self.h, param1.h)
 
-type QRubberBandpaintEventBase* = proc(param1: gen_qevent.QPaintEvent): void
-proc onpaintEvent*(self: QRubberBand, slot: proc(super: QRubberBandpaintEventBase, param1: gen_qevent.QPaintEvent): void) =
+type QRubberBandpaintEventProc* = proc(param1: gen_qevent.QPaintEvent): void
+proc onpaintEvent*(self: gen_qrubberband_types.QRubberBand, slot: QRubberBandpaintEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRubberBandpaintEventBase, param1: gen_qevent.QPaintEvent): void
-  var tmp = new Cb
+  var tmp = new QRubberBandpaintEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRubberBand_override_virtual_paintEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRubberBand_paintEvent(self: ptr cQRubberBand, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QRubberBand_paintEvent ".} =
-  type Cb = proc(super: QRubberBandpaintEventBase, param1: gen_qevent.QPaintEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QPaintEvent): auto =
-    callVirtualBase_paintEvent(QRubberBand(h: self), param1)
+  var nimfunc = cast[ptr QRubberBandpaintEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QPaintEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_changeEvent(self: QRubberBand, param1: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QRubberBandchangeEvent*(self: gen_qrubberband_types.QRubberBand, param1: gen_qcoreevent.QEvent): void =
 
   fQRubberBand_virtualbase_changeEvent(self.h, param1.h)
 
-type QRubberBandchangeEventBase* = proc(param1: gen_qcoreevent.QEvent): void
-proc onchangeEvent*(self: QRubberBand, slot: proc(super: QRubberBandchangeEventBase, param1: gen_qcoreevent.QEvent): void) =
+type QRubberBandchangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
+proc onchangeEvent*(self: gen_qrubberband_types.QRubberBand, slot: QRubberBandchangeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRubberBandchangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QRubberBandchangeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRubberBand_override_virtual_changeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRubberBand_changeEvent(self: ptr cQRubberBand, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QRubberBand_changeEvent ".} =
-  type Cb = proc(super: QRubberBandchangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_changeEvent(QRubberBand(h: self), param1)
+  var nimfunc = cast[ptr QRubberBandchangeEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_showEvent(self: QRubberBand, param1: gen_qevent.QShowEvent): void =
-
+  nimfunc[](slotval1)
+proc QRubberBandshowEvent*(self: gen_qrubberband_types.QRubberBand, param1: gen_qevent.QShowEvent): void =
 
   fQRubberBand_virtualbase_showEvent(self.h, param1.h)
 
-type QRubberBandshowEventBase* = proc(param1: gen_qevent.QShowEvent): void
-proc onshowEvent*(self: QRubberBand, slot: proc(super: QRubberBandshowEventBase, param1: gen_qevent.QShowEvent): void) =
+type QRubberBandshowEventProc* = proc(param1: gen_qevent.QShowEvent): void
+proc onshowEvent*(self: gen_qrubberband_types.QRubberBand, slot: QRubberBandshowEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRubberBandshowEventBase, param1: gen_qevent.QShowEvent): void
-  var tmp = new Cb
+  var tmp = new QRubberBandshowEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRubberBand_override_virtual_showEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRubberBand_showEvent(self: ptr cQRubberBand, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QRubberBand_showEvent ".} =
-  type Cb = proc(super: QRubberBandshowEventBase, param1: gen_qevent.QShowEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QShowEvent): auto =
-    callVirtualBase_showEvent(QRubberBand(h: self), param1)
+  var nimfunc = cast[ptr QRubberBandshowEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QShowEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_resizeEvent(self: QRubberBand, param1: gen_qevent.QResizeEvent): void =
-
+  nimfunc[](slotval1)
+proc QRubberBandresizeEvent*(self: gen_qrubberband_types.QRubberBand, param1: gen_qevent.QResizeEvent): void =
 
   fQRubberBand_virtualbase_resizeEvent(self.h, param1.h)
 
-type QRubberBandresizeEventBase* = proc(param1: gen_qevent.QResizeEvent): void
-proc onresizeEvent*(self: QRubberBand, slot: proc(super: QRubberBandresizeEventBase, param1: gen_qevent.QResizeEvent): void) =
+type QRubberBandresizeEventProc* = proc(param1: gen_qevent.QResizeEvent): void
+proc onresizeEvent*(self: gen_qrubberband_types.QRubberBand, slot: QRubberBandresizeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRubberBandresizeEventBase, param1: gen_qevent.QResizeEvent): void
-  var tmp = new Cb
+  var tmp = new QRubberBandresizeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRubberBand_override_virtual_resizeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRubberBand_resizeEvent(self: ptr cQRubberBand, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QRubberBand_resizeEvent ".} =
-  type Cb = proc(super: QRubberBandresizeEventBase, param1: gen_qevent.QResizeEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QResizeEvent): auto =
-    callVirtualBase_resizeEvent(QRubberBand(h: self), param1)
+  var nimfunc = cast[ptr QRubberBandresizeEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QResizeEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_moveEvent(self: QRubberBand, param1: gen_qevent.QMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QRubberBandmoveEvent*(self: gen_qrubberband_types.QRubberBand, param1: gen_qevent.QMoveEvent): void =
 
   fQRubberBand_virtualbase_moveEvent(self.h, param1.h)
 
-type QRubberBandmoveEventBase* = proc(param1: gen_qevent.QMoveEvent): void
-proc onmoveEvent*(self: QRubberBand, slot: proc(super: QRubberBandmoveEventBase, param1: gen_qevent.QMoveEvent): void) =
+type QRubberBandmoveEventProc* = proc(param1: gen_qevent.QMoveEvent): void
+proc onmoveEvent*(self: gen_qrubberband_types.QRubberBand, slot: QRubberBandmoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRubberBandmoveEventBase, param1: gen_qevent.QMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QRubberBandmoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRubberBand_override_virtual_moveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRubberBand_moveEvent(self: ptr cQRubberBand, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QRubberBand_moveEvent ".} =
-  type Cb = proc(super: QRubberBandmoveEventBase, param1: gen_qevent.QMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QMoveEvent): auto =
-    callVirtualBase_moveEvent(QRubberBand(h: self), param1)
+  var nimfunc = cast[ptr QRubberBandmoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMoveEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_devType(self: QRubberBand, ): cint =
-
+  nimfunc[](slotval1)
+proc QRubberBanddevType*(self: gen_qrubberband_types.QRubberBand, ): cint =
 
   fQRubberBand_virtualbase_devType(self.h)
 
-type QRubberBanddevTypeBase* = proc(): cint
-proc ondevType*(self: QRubberBand, slot: proc(super: QRubberBanddevTypeBase): cint) =
+type QRubberBanddevTypeProc* = proc(): cint
+proc ondevType*(self: gen_qrubberband_types.QRubberBand, slot: QRubberBanddevTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: QRubberBanddevTypeBase): cint
-  var tmp = new Cb
+  var tmp = new QRubberBanddevTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRubberBand_override_virtual_devType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRubberBand_devType(self: ptr cQRubberBand, slot: int): cint {.exportc: "miqt_exec_callback_QRubberBand_devType ".} =
-  type Cb = proc(super: QRubberBanddevTypeBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_devType(QRubberBand(h: self), )
+  var nimfunc = cast[ptr QRubberBanddevTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setVisible(self: QRubberBand, visible: bool): void =
-
+proc QRubberBandsetVisible*(self: gen_qrubberband_types.QRubberBand, visible: bool): void =
 
   fQRubberBand_virtualbase_setVisible(self.h, visible)
 
-type QRubberBandsetVisibleBase* = proc(visible: bool): void
-proc onsetVisible*(self: QRubberBand, slot: proc(super: QRubberBandsetVisibleBase, visible: bool): void) =
+type QRubberBandsetVisibleProc* = proc(visible: bool): void
+proc onsetVisible*(self: gen_qrubberband_types.QRubberBand, slot: QRubberBandsetVisibleProc) =
   # TODO check subclass
-  type Cb = proc(super: QRubberBandsetVisibleBase, visible: bool): void
-  var tmp = new Cb
+  var tmp = new QRubberBandsetVisibleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRubberBand_override_virtual_setVisible(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRubberBand_setVisible(self: ptr cQRubberBand, slot: int, visible: bool): void {.exportc: "miqt_exec_callback_QRubberBand_setVisible ".} =
-  type Cb = proc(super: QRubberBandsetVisibleBase, visible: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(visible: bool): auto =
-    callVirtualBase_setVisible(QRubberBand(h: self), visible)
+  var nimfunc = cast[ptr QRubberBandsetVisibleProc](cast[pointer](slot))
   let slotval1 = visible
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_sizeHint(self: QRubberBand, ): gen_qsize.QSize =
-
+  nimfunc[](slotval1)
+proc QRubberBandsizeHint*(self: gen_qrubberband_types.QRubberBand, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQRubberBand_virtualbase_sizeHint(self.h))
 
-type QRubberBandsizeHintBase* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: QRubberBand, slot: proc(super: QRubberBandsizeHintBase): gen_qsize.QSize) =
+type QRubberBandsizeHintProc* = proc(): gen_qsize.QSize
+proc onsizeHint*(self: gen_qrubberband_types.QRubberBand, slot: QRubberBandsizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QRubberBandsizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QRubberBandsizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRubberBand_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRubberBand_sizeHint(self: ptr cQRubberBand, slot: int): pointer {.exportc: "miqt_exec_callback_QRubberBand_sizeHint ".} =
-  type Cb = proc(super: QRubberBandsizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sizeHint(QRubberBand(h: self), )
+  var nimfunc = cast[ptr QRubberBandsizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_minimumSizeHint(self: QRubberBand, ): gen_qsize.QSize =
-
+proc QRubberBandminimumSizeHint*(self: gen_qrubberband_types.QRubberBand, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQRubberBand_virtualbase_minimumSizeHint(self.h))
 
-type QRubberBandminimumSizeHintBase* = proc(): gen_qsize.QSize
-proc onminimumSizeHint*(self: QRubberBand, slot: proc(super: QRubberBandminimumSizeHintBase): gen_qsize.QSize) =
+type QRubberBandminimumSizeHintProc* = proc(): gen_qsize.QSize
+proc onminimumSizeHint*(self: gen_qrubberband_types.QRubberBand, slot: QRubberBandminimumSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QRubberBandminimumSizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QRubberBandminimumSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRubberBand_override_virtual_minimumSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRubberBand_minimumSizeHint(self: ptr cQRubberBand, slot: int): pointer {.exportc: "miqt_exec_callback_QRubberBand_minimumSizeHint ".} =
-  type Cb = proc(super: QRubberBandminimumSizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_minimumSizeHint(QRubberBand(h: self), )
+  var nimfunc = cast[ptr QRubberBandminimumSizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_heightForWidth(self: QRubberBand, param1: cint): cint =
-
+proc QRubberBandheightForWidth*(self: gen_qrubberband_types.QRubberBand, param1: cint): cint =
 
   fQRubberBand_virtualbase_heightForWidth(self.h, param1)
 
-type QRubberBandheightForWidthBase* = proc(param1: cint): cint
-proc onheightForWidth*(self: QRubberBand, slot: proc(super: QRubberBandheightForWidthBase, param1: cint): cint) =
+type QRubberBandheightForWidthProc* = proc(param1: cint): cint
+proc onheightForWidth*(self: gen_qrubberband_types.QRubberBand, slot: QRubberBandheightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QRubberBandheightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QRubberBandheightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRubberBand_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRubberBand_heightForWidth(self: ptr cQRubberBand, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QRubberBand_heightForWidth ".} =
-  type Cb = proc(super: QRubberBandheightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_heightForWidth(QRubberBand(h: self), param1)
+  var nimfunc = cast[ptr QRubberBandheightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_hasHeightForWidth(self: QRubberBand, ): bool =
-
+proc QRubberBandhasHeightForWidth*(self: gen_qrubberband_types.QRubberBand, ): bool =
 
   fQRubberBand_virtualbase_hasHeightForWidth(self.h)
 
-type QRubberBandhasHeightForWidthBase* = proc(): bool
-proc onhasHeightForWidth*(self: QRubberBand, slot: proc(super: QRubberBandhasHeightForWidthBase): bool) =
+type QRubberBandhasHeightForWidthProc* = proc(): bool
+proc onhasHeightForWidth*(self: gen_qrubberband_types.QRubberBand, slot: QRubberBandhasHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QRubberBandhasHeightForWidthBase): bool
-  var tmp = new Cb
+  var tmp = new QRubberBandhasHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRubberBand_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRubberBand_hasHeightForWidth(self: ptr cQRubberBand, slot: int): bool {.exportc: "miqt_exec_callback_QRubberBand_hasHeightForWidth ".} =
-  type Cb = proc(super: QRubberBandhasHeightForWidthBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasHeightForWidth(QRubberBand(h: self), )
+  var nimfunc = cast[ptr QRubberBandhasHeightForWidthProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_paintEngine(self: QRubberBand, ): gen_qpaintengine.QPaintEngine =
-
+proc QRubberBandpaintEngine*(self: gen_qrubberband_types.QRubberBand, ): gen_qpaintengine.QPaintEngine =
 
   gen_qpaintengine.QPaintEngine(h: fQRubberBand_virtualbase_paintEngine(self.h))
 
-type QRubberBandpaintEngineBase* = proc(): gen_qpaintengine.QPaintEngine
-proc onpaintEngine*(self: QRubberBand, slot: proc(super: QRubberBandpaintEngineBase): gen_qpaintengine.QPaintEngine) =
+type QRubberBandpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
+proc onpaintEngine*(self: gen_qrubberband_types.QRubberBand, slot: QRubberBandpaintEngineProc) =
   # TODO check subclass
-  type Cb = proc(super: QRubberBandpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var tmp = new Cb
+  var tmp = new QRubberBandpaintEngineProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRubberBand_override_virtual_paintEngine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRubberBand_paintEngine(self: ptr cQRubberBand, slot: int): pointer {.exportc: "miqt_exec_callback_QRubberBand_paintEngine ".} =
-  type Cb = proc(super: QRubberBandpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_paintEngine(QRubberBand(h: self), )
+  var nimfunc = cast[ptr QRubberBandpaintEngineProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_mousePressEvent(self: QRubberBand, event: gen_qevent.QMouseEvent): void =
-
+proc QRubberBandmousePressEvent*(self: gen_qrubberband_types.QRubberBand, event: gen_qevent.QMouseEvent): void =
 
   fQRubberBand_virtualbase_mousePressEvent(self.h, event.h)
 
-type QRubberBandmousePressEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmousePressEvent*(self: QRubberBand, slot: proc(super: QRubberBandmousePressEventBase, event: gen_qevent.QMouseEvent): void) =
+type QRubberBandmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmousePressEvent*(self: gen_qrubberband_types.QRubberBand, slot: QRubberBandmousePressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRubberBandmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QRubberBandmousePressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRubberBand_override_virtual_mousePressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRubberBand_mousePressEvent(self: ptr cQRubberBand, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QRubberBand_mousePressEvent ".} =
-  type Cb = proc(super: QRubberBandmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mousePressEvent(QRubberBand(h: self), event)
+  var nimfunc = cast[ptr QRubberBandmousePressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseReleaseEvent(self: QRubberBand, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QRubberBandmouseReleaseEvent*(self: gen_qrubberband_types.QRubberBand, event: gen_qevent.QMouseEvent): void =
 
   fQRubberBand_virtualbase_mouseReleaseEvent(self.h, event.h)
 
-type QRubberBandmouseReleaseEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseReleaseEvent*(self: QRubberBand, slot: proc(super: QRubberBandmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void) =
+type QRubberBandmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseReleaseEvent*(self: gen_qrubberband_types.QRubberBand, slot: QRubberBandmouseReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRubberBandmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QRubberBandmouseReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRubberBand_override_virtual_mouseReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRubberBand_mouseReleaseEvent(self: ptr cQRubberBand, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QRubberBand_mouseReleaseEvent ".} =
-  type Cb = proc(super: QRubberBandmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseReleaseEvent(QRubberBand(h: self), event)
+  var nimfunc = cast[ptr QRubberBandmouseReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseDoubleClickEvent(self: QRubberBand, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QRubberBandmouseDoubleClickEvent*(self: gen_qrubberband_types.QRubberBand, event: gen_qevent.QMouseEvent): void =
 
   fQRubberBand_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
-type QRubberBandmouseDoubleClickEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseDoubleClickEvent*(self: QRubberBand, slot: proc(super: QRubberBandmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void) =
+type QRubberBandmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseDoubleClickEvent*(self: gen_qrubberband_types.QRubberBand, slot: QRubberBandmouseDoubleClickEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRubberBandmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QRubberBandmouseDoubleClickEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRubberBand_override_virtual_mouseDoubleClickEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRubberBand_mouseDoubleClickEvent(self: ptr cQRubberBand, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QRubberBand_mouseDoubleClickEvent ".} =
-  type Cb = proc(super: QRubberBandmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseDoubleClickEvent(QRubberBand(h: self), event)
+  var nimfunc = cast[ptr QRubberBandmouseDoubleClickEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseMoveEvent(self: QRubberBand, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QRubberBandmouseMoveEvent*(self: gen_qrubberband_types.QRubberBand, event: gen_qevent.QMouseEvent): void =
 
   fQRubberBand_virtualbase_mouseMoveEvent(self.h, event.h)
 
-type QRubberBandmouseMoveEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseMoveEvent*(self: QRubberBand, slot: proc(super: QRubberBandmouseMoveEventBase, event: gen_qevent.QMouseEvent): void) =
+type QRubberBandmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseMoveEvent*(self: gen_qrubberband_types.QRubberBand, slot: QRubberBandmouseMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRubberBandmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QRubberBandmouseMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRubberBand_override_virtual_mouseMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRubberBand_mouseMoveEvent(self: ptr cQRubberBand, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QRubberBand_mouseMoveEvent ".} =
-  type Cb = proc(super: QRubberBandmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseMoveEvent(QRubberBand(h: self), event)
+  var nimfunc = cast[ptr QRubberBandmouseMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_wheelEvent(self: QRubberBand, event: gen_qevent.QWheelEvent): void =
-
+  nimfunc[](slotval1)
+proc QRubberBandwheelEvent*(self: gen_qrubberband_types.QRubberBand, event: gen_qevent.QWheelEvent): void =
 
   fQRubberBand_virtualbase_wheelEvent(self.h, event.h)
 
-type QRubberBandwheelEventBase* = proc(event: gen_qevent.QWheelEvent): void
-proc onwheelEvent*(self: QRubberBand, slot: proc(super: QRubberBandwheelEventBase, event: gen_qevent.QWheelEvent): void) =
+type QRubberBandwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
+proc onwheelEvent*(self: gen_qrubberband_types.QRubberBand, slot: QRubberBandwheelEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRubberBandwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var tmp = new Cb
+  var tmp = new QRubberBandwheelEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRubberBand_override_virtual_wheelEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRubberBand_wheelEvent(self: ptr cQRubberBand, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QRubberBand_wheelEvent ".} =
-  type Cb = proc(super: QRubberBandwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QWheelEvent): auto =
-    callVirtualBase_wheelEvent(QRubberBand(h: self), event)
+  var nimfunc = cast[ptr QRubberBandwheelEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QWheelEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyPressEvent(self: QRubberBand, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QRubberBandkeyPressEvent*(self: gen_qrubberband_types.QRubberBand, event: gen_qevent.QKeyEvent): void =
 
   fQRubberBand_virtualbase_keyPressEvent(self.h, event.h)
 
-type QRubberBandkeyPressEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyPressEvent*(self: QRubberBand, slot: proc(super: QRubberBandkeyPressEventBase, event: gen_qevent.QKeyEvent): void) =
+type QRubberBandkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyPressEvent*(self: gen_qrubberband_types.QRubberBand, slot: QRubberBandkeyPressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRubberBandkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QRubberBandkeyPressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRubberBand_override_virtual_keyPressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRubberBand_keyPressEvent(self: ptr cQRubberBand, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QRubberBand_keyPressEvent ".} =
-  type Cb = proc(super: QRubberBandkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyPressEvent(QRubberBand(h: self), event)
+  var nimfunc = cast[ptr QRubberBandkeyPressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyReleaseEvent(self: QRubberBand, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QRubberBandkeyReleaseEvent*(self: gen_qrubberband_types.QRubberBand, event: gen_qevent.QKeyEvent): void =
 
   fQRubberBand_virtualbase_keyReleaseEvent(self.h, event.h)
 
-type QRubberBandkeyReleaseEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyReleaseEvent*(self: QRubberBand, slot: proc(super: QRubberBandkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void) =
+type QRubberBandkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyReleaseEvent*(self: gen_qrubberband_types.QRubberBand, slot: QRubberBandkeyReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRubberBandkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QRubberBandkeyReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRubberBand_override_virtual_keyReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRubberBand_keyReleaseEvent(self: ptr cQRubberBand, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QRubberBand_keyReleaseEvent ".} =
-  type Cb = proc(super: QRubberBandkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyReleaseEvent(QRubberBand(h: self), event)
+  var nimfunc = cast[ptr QRubberBandkeyReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusInEvent(self: QRubberBand, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QRubberBandfocusInEvent*(self: gen_qrubberband_types.QRubberBand, event: gen_qevent.QFocusEvent): void =
 
   fQRubberBand_virtualbase_focusInEvent(self.h, event.h)
 
-type QRubberBandfocusInEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusInEvent*(self: QRubberBand, slot: proc(super: QRubberBandfocusInEventBase, event: gen_qevent.QFocusEvent): void) =
+type QRubberBandfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusInEvent*(self: gen_qrubberband_types.QRubberBand, slot: QRubberBandfocusInEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRubberBandfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QRubberBandfocusInEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRubberBand_override_virtual_focusInEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRubberBand_focusInEvent(self: ptr cQRubberBand, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QRubberBand_focusInEvent ".} =
-  type Cb = proc(super: QRubberBandfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusInEvent(QRubberBand(h: self), event)
+  var nimfunc = cast[ptr QRubberBandfocusInEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusOutEvent(self: QRubberBand, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QRubberBandfocusOutEvent*(self: gen_qrubberband_types.QRubberBand, event: gen_qevent.QFocusEvent): void =
 
   fQRubberBand_virtualbase_focusOutEvent(self.h, event.h)
 
-type QRubberBandfocusOutEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusOutEvent*(self: QRubberBand, slot: proc(super: QRubberBandfocusOutEventBase, event: gen_qevent.QFocusEvent): void) =
+type QRubberBandfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusOutEvent*(self: gen_qrubberband_types.QRubberBand, slot: QRubberBandfocusOutEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRubberBandfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QRubberBandfocusOutEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRubberBand_override_virtual_focusOutEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRubberBand_focusOutEvent(self: ptr cQRubberBand, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QRubberBand_focusOutEvent ".} =
-  type Cb = proc(super: QRubberBandfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusOutEvent(QRubberBand(h: self), event)
+  var nimfunc = cast[ptr QRubberBandfocusOutEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_enterEvent(self: QRubberBand, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QRubberBandenterEvent*(self: gen_qrubberband_types.QRubberBand, event: gen_qcoreevent.QEvent): void =
 
   fQRubberBand_virtualbase_enterEvent(self.h, event.h)
 
-type QRubberBandenterEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onenterEvent*(self: QRubberBand, slot: proc(super: QRubberBandenterEventBase, event: gen_qcoreevent.QEvent): void) =
+type QRubberBandenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onenterEvent*(self: gen_qrubberband_types.QRubberBand, slot: QRubberBandenterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRubberBandenterEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QRubberBandenterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRubberBand_override_virtual_enterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRubberBand_enterEvent(self: ptr cQRubberBand, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QRubberBand_enterEvent ".} =
-  type Cb = proc(super: QRubberBandenterEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_enterEvent(QRubberBand(h: self), event)
+  var nimfunc = cast[ptr QRubberBandenterEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_leaveEvent(self: QRubberBand, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QRubberBandleaveEvent*(self: gen_qrubberband_types.QRubberBand, event: gen_qcoreevent.QEvent): void =
 
   fQRubberBand_virtualbase_leaveEvent(self.h, event.h)
 
-type QRubberBandleaveEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onleaveEvent*(self: QRubberBand, slot: proc(super: QRubberBandleaveEventBase, event: gen_qcoreevent.QEvent): void) =
+type QRubberBandleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onleaveEvent*(self: gen_qrubberband_types.QRubberBand, slot: QRubberBandleaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRubberBandleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QRubberBandleaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRubberBand_override_virtual_leaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRubberBand_leaveEvent(self: ptr cQRubberBand, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QRubberBand_leaveEvent ".} =
-  type Cb = proc(super: QRubberBandleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_leaveEvent(QRubberBand(h: self), event)
+  var nimfunc = cast[ptr QRubberBandleaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_closeEvent(self: QRubberBand, event: gen_qevent.QCloseEvent): void =
-
+  nimfunc[](slotval1)
+proc QRubberBandcloseEvent*(self: gen_qrubberband_types.QRubberBand, event: gen_qevent.QCloseEvent): void =
 
   fQRubberBand_virtualbase_closeEvent(self.h, event.h)
 
-type QRubberBandcloseEventBase* = proc(event: gen_qevent.QCloseEvent): void
-proc oncloseEvent*(self: QRubberBand, slot: proc(super: QRubberBandcloseEventBase, event: gen_qevent.QCloseEvent): void) =
+type QRubberBandcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
+proc oncloseEvent*(self: gen_qrubberband_types.QRubberBand, slot: QRubberBandcloseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRubberBandcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var tmp = new Cb
+  var tmp = new QRubberBandcloseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRubberBand_override_virtual_closeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRubberBand_closeEvent(self: ptr cQRubberBand, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QRubberBand_closeEvent ".} =
-  type Cb = proc(super: QRubberBandcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QCloseEvent): auto =
-    callVirtualBase_closeEvent(QRubberBand(h: self), event)
+  var nimfunc = cast[ptr QRubberBandcloseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QCloseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_contextMenuEvent(self: QRubberBand, event: gen_qevent.QContextMenuEvent): void =
-
+  nimfunc[](slotval1)
+proc QRubberBandcontextMenuEvent*(self: gen_qrubberband_types.QRubberBand, event: gen_qevent.QContextMenuEvent): void =
 
   fQRubberBand_virtualbase_contextMenuEvent(self.h, event.h)
 
-type QRubberBandcontextMenuEventBase* = proc(event: gen_qevent.QContextMenuEvent): void
-proc oncontextMenuEvent*(self: QRubberBand, slot: proc(super: QRubberBandcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void) =
+type QRubberBandcontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
+proc oncontextMenuEvent*(self: gen_qrubberband_types.QRubberBand, slot: QRubberBandcontextMenuEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRubberBandcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var tmp = new Cb
+  var tmp = new QRubberBandcontextMenuEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRubberBand_override_virtual_contextMenuEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRubberBand_contextMenuEvent(self: ptr cQRubberBand, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QRubberBand_contextMenuEvent ".} =
-  type Cb = proc(super: QRubberBandcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QContextMenuEvent): auto =
-    callVirtualBase_contextMenuEvent(QRubberBand(h: self), event)
+  var nimfunc = cast[ptr QRubberBandcontextMenuEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QContextMenuEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_tabletEvent(self: QRubberBand, event: gen_qevent.QTabletEvent): void =
-
+  nimfunc[](slotval1)
+proc QRubberBandtabletEvent*(self: gen_qrubberband_types.QRubberBand, event: gen_qevent.QTabletEvent): void =
 
   fQRubberBand_virtualbase_tabletEvent(self.h, event.h)
 
-type QRubberBandtabletEventBase* = proc(event: gen_qevent.QTabletEvent): void
-proc ontabletEvent*(self: QRubberBand, slot: proc(super: QRubberBandtabletEventBase, event: gen_qevent.QTabletEvent): void) =
+type QRubberBandtabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
+proc ontabletEvent*(self: gen_qrubberband_types.QRubberBand, slot: QRubberBandtabletEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRubberBandtabletEventBase, event: gen_qevent.QTabletEvent): void
-  var tmp = new Cb
+  var tmp = new QRubberBandtabletEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRubberBand_override_virtual_tabletEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRubberBand_tabletEvent(self: ptr cQRubberBand, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QRubberBand_tabletEvent ".} =
-  type Cb = proc(super: QRubberBandtabletEventBase, event: gen_qevent.QTabletEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QTabletEvent): auto =
-    callVirtualBase_tabletEvent(QRubberBand(h: self), event)
+  var nimfunc = cast[ptr QRubberBandtabletEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QTabletEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_actionEvent(self: QRubberBand, event: gen_qevent.QActionEvent): void =
-
+  nimfunc[](slotval1)
+proc QRubberBandactionEvent*(self: gen_qrubberband_types.QRubberBand, event: gen_qevent.QActionEvent): void =
 
   fQRubberBand_virtualbase_actionEvent(self.h, event.h)
 
-type QRubberBandactionEventBase* = proc(event: gen_qevent.QActionEvent): void
-proc onactionEvent*(self: QRubberBand, slot: proc(super: QRubberBandactionEventBase, event: gen_qevent.QActionEvent): void) =
+type QRubberBandactionEventProc* = proc(event: gen_qevent.QActionEvent): void
+proc onactionEvent*(self: gen_qrubberband_types.QRubberBand, slot: QRubberBandactionEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRubberBandactionEventBase, event: gen_qevent.QActionEvent): void
-  var tmp = new Cb
+  var tmp = new QRubberBandactionEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRubberBand_override_virtual_actionEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRubberBand_actionEvent(self: ptr cQRubberBand, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QRubberBand_actionEvent ".} =
-  type Cb = proc(super: QRubberBandactionEventBase, event: gen_qevent.QActionEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QActionEvent): auto =
-    callVirtualBase_actionEvent(QRubberBand(h: self), event)
+  var nimfunc = cast[ptr QRubberBandactionEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QActionEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragEnterEvent(self: QRubberBand, event: gen_qevent.QDragEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QRubberBanddragEnterEvent*(self: gen_qrubberband_types.QRubberBand, event: gen_qevent.QDragEnterEvent): void =
 
   fQRubberBand_virtualbase_dragEnterEvent(self.h, event.h)
 
-type QRubberBanddragEnterEventBase* = proc(event: gen_qevent.QDragEnterEvent): void
-proc ondragEnterEvent*(self: QRubberBand, slot: proc(super: QRubberBanddragEnterEventBase, event: gen_qevent.QDragEnterEvent): void) =
+type QRubberBanddragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
+proc ondragEnterEvent*(self: gen_qrubberband_types.QRubberBand, slot: QRubberBanddragEnterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRubberBanddragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QRubberBanddragEnterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRubberBand_override_virtual_dragEnterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRubberBand_dragEnterEvent(self: ptr cQRubberBand, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QRubberBand_dragEnterEvent ".} =
-  type Cb = proc(super: QRubberBanddragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragEnterEvent): auto =
-    callVirtualBase_dragEnterEvent(QRubberBand(h: self), event)
+  var nimfunc = cast[ptr QRubberBanddragEnterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragMoveEvent(self: QRubberBand, event: gen_qevent.QDragMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QRubberBanddragMoveEvent*(self: gen_qrubberband_types.QRubberBand, event: gen_qevent.QDragMoveEvent): void =
 
   fQRubberBand_virtualbase_dragMoveEvent(self.h, event.h)
 
-type QRubberBanddragMoveEventBase* = proc(event: gen_qevent.QDragMoveEvent): void
-proc ondragMoveEvent*(self: QRubberBand, slot: proc(super: QRubberBanddragMoveEventBase, event: gen_qevent.QDragMoveEvent): void) =
+type QRubberBanddragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
+proc ondragMoveEvent*(self: gen_qrubberband_types.QRubberBand, slot: QRubberBanddragMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRubberBanddragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QRubberBanddragMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRubberBand_override_virtual_dragMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRubberBand_dragMoveEvent(self: ptr cQRubberBand, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QRubberBand_dragMoveEvent ".} =
-  type Cb = proc(super: QRubberBanddragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragMoveEvent): auto =
-    callVirtualBase_dragMoveEvent(QRubberBand(h: self), event)
+  var nimfunc = cast[ptr QRubberBanddragMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragLeaveEvent(self: QRubberBand, event: gen_qevent.QDragLeaveEvent): void =
-
+  nimfunc[](slotval1)
+proc QRubberBanddragLeaveEvent*(self: gen_qrubberband_types.QRubberBand, event: gen_qevent.QDragLeaveEvent): void =
 
   fQRubberBand_virtualbase_dragLeaveEvent(self.h, event.h)
 
-type QRubberBanddragLeaveEventBase* = proc(event: gen_qevent.QDragLeaveEvent): void
-proc ondragLeaveEvent*(self: QRubberBand, slot: proc(super: QRubberBanddragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void) =
+type QRubberBanddragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
+proc ondragLeaveEvent*(self: gen_qrubberband_types.QRubberBand, slot: QRubberBanddragLeaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRubberBanddragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var tmp = new Cb
+  var tmp = new QRubberBanddragLeaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRubberBand_override_virtual_dragLeaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRubberBand_dragLeaveEvent(self: ptr cQRubberBand, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QRubberBand_dragLeaveEvent ".} =
-  type Cb = proc(super: QRubberBanddragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragLeaveEvent): auto =
-    callVirtualBase_dragLeaveEvent(QRubberBand(h: self), event)
+  var nimfunc = cast[ptr QRubberBanddragLeaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragLeaveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dropEvent(self: QRubberBand, event: gen_qevent.QDropEvent): void =
-
+  nimfunc[](slotval1)
+proc QRubberBanddropEvent*(self: gen_qrubberband_types.QRubberBand, event: gen_qevent.QDropEvent): void =
 
   fQRubberBand_virtualbase_dropEvent(self.h, event.h)
 
-type QRubberBanddropEventBase* = proc(event: gen_qevent.QDropEvent): void
-proc ondropEvent*(self: QRubberBand, slot: proc(super: QRubberBanddropEventBase, event: gen_qevent.QDropEvent): void) =
+type QRubberBanddropEventProc* = proc(event: gen_qevent.QDropEvent): void
+proc ondropEvent*(self: gen_qrubberband_types.QRubberBand, slot: QRubberBanddropEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRubberBanddropEventBase, event: gen_qevent.QDropEvent): void
-  var tmp = new Cb
+  var tmp = new QRubberBanddropEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRubberBand_override_virtual_dropEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRubberBand_dropEvent(self: ptr cQRubberBand, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QRubberBand_dropEvent ".} =
-  type Cb = proc(super: QRubberBanddropEventBase, event: gen_qevent.QDropEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDropEvent): auto =
-    callVirtualBase_dropEvent(QRubberBand(h: self), event)
+  var nimfunc = cast[ptr QRubberBanddropEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDropEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hideEvent(self: QRubberBand, event: gen_qevent.QHideEvent): void =
-
+  nimfunc[](slotval1)
+proc QRubberBandhideEvent*(self: gen_qrubberband_types.QRubberBand, event: gen_qevent.QHideEvent): void =
 
   fQRubberBand_virtualbase_hideEvent(self.h, event.h)
 
-type QRubberBandhideEventBase* = proc(event: gen_qevent.QHideEvent): void
-proc onhideEvent*(self: QRubberBand, slot: proc(super: QRubberBandhideEventBase, event: gen_qevent.QHideEvent): void) =
+type QRubberBandhideEventProc* = proc(event: gen_qevent.QHideEvent): void
+proc onhideEvent*(self: gen_qrubberband_types.QRubberBand, slot: QRubberBandhideEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRubberBandhideEventBase, event: gen_qevent.QHideEvent): void
-  var tmp = new Cb
+  var tmp = new QRubberBandhideEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRubberBand_override_virtual_hideEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRubberBand_hideEvent(self: ptr cQRubberBand, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QRubberBand_hideEvent ".} =
-  type Cb = proc(super: QRubberBandhideEventBase, event: gen_qevent.QHideEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QHideEvent): auto =
-    callVirtualBase_hideEvent(QRubberBand(h: self), event)
+  var nimfunc = cast[ptr QRubberBandhideEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QHideEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_nativeEvent(self: QRubberBand, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
+  nimfunc[](slotval1)
+proc QRubberBandnativeEvent*(self: gen_qrubberband_types.QRubberBand, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
 
   fQRubberBand_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
-type QRubberBandnativeEventBase* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-proc onnativeEvent*(self: QRubberBand, slot: proc(super: QRubberBandnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool) =
+type QRubberBandnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
+proc onnativeEvent*(self: gen_qrubberband_types.QRubberBand, slot: QRubberBandnativeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRubberBandnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-  var tmp = new Cb
+  var tmp = new QRubberBandnativeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRubberBand_override_virtual_nativeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRubberBand_nativeEvent(self: ptr cQRubberBand, slot: int, eventType: struct_miqt_string, message: pointer, resultVal: ptr clong): bool {.exportc: "miqt_exec_callback_QRubberBand_nativeEvent ".} =
-  type Cb = proc(super: QRubberBandnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(eventType: seq[byte], message: pointer, resultVal: ptr clong): auto =
-    callVirtualBase_nativeEvent(QRubberBand(h: self), eventType, message, resultVal)
+  var nimfunc = cast[ptr QRubberBandnativeEventProc](cast[pointer](slot))
   var veventType_bytearray = eventType
   var veventTypex_ret = @(toOpenArrayByte(veventType_bytearray.data, 0, int(veventType_bytearray.len)-1))
   c_free(veventType_bytearray.data)
@@ -1158,321 +969,256 @@ proc miqt_exec_callback_QRubberBand_nativeEvent(self: ptr cQRubberBand, slot: in
   let slotval3 = resultVal
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_metric(self: QRubberBand, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint =
-
+proc QRubberBandmetric*(self: gen_qrubberband_types.QRubberBand, param1: cint): cint =
 
   fQRubberBand_virtualbase_metric(self.h, cint(param1))
 
-type QRubberBandmetricBase* = proc(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-proc onmetric*(self: QRubberBand, slot: proc(super: QRubberBandmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint) =
+type QRubberBandmetricProc* = proc(param1: cint): cint
+proc onmetric*(self: gen_qrubberband_types.QRubberBand, slot: QRubberBandmetricProc) =
   # TODO check subclass
-  type Cb = proc(super: QRubberBandmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var tmp = new Cb
+  var tmp = new QRubberBandmetricProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRubberBand_override_virtual_metric(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRubberBand_metric(self: ptr cQRubberBand, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QRubberBand_metric ".} =
-  type Cb = proc(super: QRubberBandmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): auto =
-    callVirtualBase_metric(QRubberBand(h: self), param1)
-  let slotval1 = gen_qpaintdevice.QPaintDevicePaintDeviceMetric(param1)
+  var nimfunc = cast[ptr QRubberBandmetricProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_initPainter(self: QRubberBand, painter: gen_qpainter.QPainter): void =
-
+proc QRubberBandinitPainter*(self: gen_qrubberband_types.QRubberBand, painter: gen_qpainter.QPainter): void =
 
   fQRubberBand_virtualbase_initPainter(self.h, painter.h)
 
-type QRubberBandinitPainterBase* = proc(painter: gen_qpainter.QPainter): void
-proc oninitPainter*(self: QRubberBand, slot: proc(super: QRubberBandinitPainterBase, painter: gen_qpainter.QPainter): void) =
+type QRubberBandinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
+proc oninitPainter*(self: gen_qrubberband_types.QRubberBand, slot: QRubberBandinitPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QRubberBandinitPainterBase, painter: gen_qpainter.QPainter): void
-  var tmp = new Cb
+  var tmp = new QRubberBandinitPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRubberBand_override_virtual_initPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRubberBand_initPainter(self: ptr cQRubberBand, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_QRubberBand_initPainter ".} =
-  type Cb = proc(super: QRubberBandinitPainterBase, painter: gen_qpainter.QPainter): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter): auto =
-    callVirtualBase_initPainter(QRubberBand(h: self), painter)
+  var nimfunc = cast[ptr QRubberBandinitPainterProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_redirected(self: QRubberBand, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
+  nimfunc[](slotval1)
+proc QRubberBandredirected*(self: gen_qrubberband_types.QRubberBand, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
 
   gen_qpaintdevice.QPaintDevice(h: fQRubberBand_virtualbase_redirected(self.h, offset.h))
 
-type QRubberBandredirectedBase* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-proc onredirected*(self: QRubberBand, slot: proc(super: QRubberBandredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice) =
+type QRubberBandredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
+proc onredirected*(self: gen_qrubberband_types.QRubberBand, slot: QRubberBandredirectedProc) =
   # TODO check subclass
-  type Cb = proc(super: QRubberBandredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var tmp = new Cb
+  var tmp = new QRubberBandredirectedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRubberBand_override_virtual_redirected(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRubberBand_redirected(self: ptr cQRubberBand, slot: int, offset: pointer): pointer {.exportc: "miqt_exec_callback_QRubberBand_redirected ".} =
-  type Cb = proc(super: QRubberBandredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(offset: gen_qpoint.QPoint): auto =
-    callVirtualBase_redirected(QRubberBand(h: self), offset)
+  var nimfunc = cast[ptr QRubberBandredirectedProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: offset)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_sharedPainter(self: QRubberBand, ): gen_qpainter.QPainter =
-
+proc QRubberBandsharedPainter*(self: gen_qrubberband_types.QRubberBand, ): gen_qpainter.QPainter =
 
   gen_qpainter.QPainter(h: fQRubberBand_virtualbase_sharedPainter(self.h))
 
-type QRubberBandsharedPainterBase* = proc(): gen_qpainter.QPainter
-proc onsharedPainter*(self: QRubberBand, slot: proc(super: QRubberBandsharedPainterBase): gen_qpainter.QPainter) =
+type QRubberBandsharedPainterProc* = proc(): gen_qpainter.QPainter
+proc onsharedPainter*(self: gen_qrubberband_types.QRubberBand, slot: QRubberBandsharedPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QRubberBandsharedPainterBase): gen_qpainter.QPainter
-  var tmp = new Cb
+  var tmp = new QRubberBandsharedPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRubberBand_override_virtual_sharedPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRubberBand_sharedPainter(self: ptr cQRubberBand, slot: int): pointer {.exportc: "miqt_exec_callback_QRubberBand_sharedPainter ".} =
-  type Cb = proc(super: QRubberBandsharedPainterBase): gen_qpainter.QPainter
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sharedPainter(QRubberBand(h: self), )
+  var nimfunc = cast[ptr QRubberBandsharedPainterProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_inputMethodEvent(self: QRubberBand, param1: gen_qevent.QInputMethodEvent): void =
-
+proc QRubberBandinputMethodEvent*(self: gen_qrubberband_types.QRubberBand, param1: gen_qevent.QInputMethodEvent): void =
 
   fQRubberBand_virtualbase_inputMethodEvent(self.h, param1.h)
 
-type QRubberBandinputMethodEventBase* = proc(param1: gen_qevent.QInputMethodEvent): void
-proc oninputMethodEvent*(self: QRubberBand, slot: proc(super: QRubberBandinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void) =
+type QRubberBandinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
+proc oninputMethodEvent*(self: gen_qrubberband_types.QRubberBand, slot: QRubberBandinputMethodEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRubberBandinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var tmp = new Cb
+  var tmp = new QRubberBandinputMethodEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRubberBand_override_virtual_inputMethodEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRubberBand_inputMethodEvent(self: ptr cQRubberBand, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QRubberBand_inputMethodEvent ".} =
-  type Cb = proc(super: QRubberBandinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QInputMethodEvent): auto =
-    callVirtualBase_inputMethodEvent(QRubberBand(h: self), param1)
+  var nimfunc = cast[ptr QRubberBandinputMethodEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QInputMethodEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_inputMethodQuery(self: QRubberBand, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant =
-
+  nimfunc[](slotval1)
+proc QRubberBandinputMethodQuery*(self: gen_qrubberband_types.QRubberBand, param1: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQRubberBand_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
-type QRubberBandinputMethodQueryBase* = proc(param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-proc oninputMethodQuery*(self: QRubberBand, slot: proc(super: QRubberBandinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant) =
+type QRubberBandinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
+proc oninputMethodQuery*(self: gen_qrubberband_types.QRubberBand, slot: QRubberBandinputMethodQueryProc) =
   # TODO check subclass
-  type Cb = proc(super: QRubberBandinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QRubberBandinputMethodQueryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRubberBand_override_virtual_inputMethodQuery(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRubberBand_inputMethodQuery(self: ptr cQRubberBand, slot: int, param1: cint): pointer {.exportc: "miqt_exec_callback_QRubberBand_inputMethodQuery ".} =
-  type Cb = proc(super: QRubberBandinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qnamespace.InputMethodQuery): auto =
-    callVirtualBase_inputMethodQuery(QRubberBand(h: self), param1)
-  let slotval1 = gen_qnamespace.InputMethodQuery(param1)
+  var nimfunc = cast[ptr QRubberBandinputMethodQueryProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_focusNextPrevChild(self: QRubberBand, next: bool): bool =
-
+proc QRubberBandfocusNextPrevChild*(self: gen_qrubberband_types.QRubberBand, next: bool): bool =
 
   fQRubberBand_virtualbase_focusNextPrevChild(self.h, next)
 
-type QRubberBandfocusNextPrevChildBase* = proc(next: bool): bool
-proc onfocusNextPrevChild*(self: QRubberBand, slot: proc(super: QRubberBandfocusNextPrevChildBase, next: bool): bool) =
+type QRubberBandfocusNextPrevChildProc* = proc(next: bool): bool
+proc onfocusNextPrevChild*(self: gen_qrubberband_types.QRubberBand, slot: QRubberBandfocusNextPrevChildProc) =
   # TODO check subclass
-  type Cb = proc(super: QRubberBandfocusNextPrevChildBase, next: bool): bool
-  var tmp = new Cb
+  var tmp = new QRubberBandfocusNextPrevChildProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRubberBand_override_virtual_focusNextPrevChild(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRubberBand_focusNextPrevChild(self: ptr cQRubberBand, slot: int, next: bool): bool {.exportc: "miqt_exec_callback_QRubberBand_focusNextPrevChild ".} =
-  type Cb = proc(super: QRubberBandfocusNextPrevChildBase, next: bool): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(next: bool): auto =
-    callVirtualBase_focusNextPrevChild(QRubberBand(h: self), next)
+  var nimfunc = cast[ptr QRubberBandfocusNextPrevChildProc](cast[pointer](slot))
   let slotval1 = next
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QRubberBand, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QRubberBandeventFilter*(self: gen_qrubberband_types.QRubberBand, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQRubberBand_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QRubberBandeventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QRubberBand, slot: proc(super: QRubberBandeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QRubberBandeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qrubberband_types.QRubberBand, slot: QRubberBandeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QRubberBandeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QRubberBandeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRubberBand_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRubberBand_eventFilter(self: ptr cQRubberBand, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QRubberBand_eventFilter ".} =
-  type Cb = proc(super: QRubberBandeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QRubberBand(h: self), watched, event)
+  var nimfunc = cast[ptr QRubberBandeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QRubberBand, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QRubberBandtimerEvent*(self: gen_qrubberband_types.QRubberBand, event: gen_qcoreevent.QTimerEvent): void =
 
   fQRubberBand_virtualbase_timerEvent(self.h, event.h)
 
-type QRubberBandtimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QRubberBand, slot: proc(super: QRubberBandtimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QRubberBandtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qrubberband_types.QRubberBand, slot: QRubberBandtimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRubberBandtimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QRubberBandtimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRubberBand_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRubberBand_timerEvent(self: ptr cQRubberBand, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QRubberBand_timerEvent ".} =
-  type Cb = proc(super: QRubberBandtimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QRubberBand(h: self), event)
+  var nimfunc = cast[ptr QRubberBandtimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QRubberBand, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QRubberBandchildEvent*(self: gen_qrubberband_types.QRubberBand, event: gen_qcoreevent.QChildEvent): void =
 
   fQRubberBand_virtualbase_childEvent(self.h, event.h)
 
-type QRubberBandchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QRubberBand, slot: proc(super: QRubberBandchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QRubberBandchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qrubberband_types.QRubberBand, slot: QRubberBandchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRubberBandchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QRubberBandchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRubberBand_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRubberBand_childEvent(self: ptr cQRubberBand, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QRubberBand_childEvent ".} =
-  type Cb = proc(super: QRubberBandchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QRubberBand(h: self), event)
+  var nimfunc = cast[ptr QRubberBandchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QRubberBand, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QRubberBandcustomEvent*(self: gen_qrubberband_types.QRubberBand, event: gen_qcoreevent.QEvent): void =
 
   fQRubberBand_virtualbase_customEvent(self.h, event.h)
 
-type QRubberBandcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QRubberBand, slot: proc(super: QRubberBandcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QRubberBandcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qrubberband_types.QRubberBand, slot: QRubberBandcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRubberBandcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QRubberBandcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRubberBand_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRubberBand_customEvent(self: ptr cQRubberBand, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QRubberBand_customEvent ".} =
-  type Cb = proc(super: QRubberBandcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QRubberBand(h: self), event)
+  var nimfunc = cast[ptr QRubberBandcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QRubberBand, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QRubberBandconnectNotify*(self: gen_qrubberband_types.QRubberBand, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQRubberBand_virtualbase_connectNotify(self.h, signal.h)
 
-type QRubberBandconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QRubberBand, slot: proc(super: QRubberBandconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QRubberBandconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qrubberband_types.QRubberBand, slot: QRubberBandconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QRubberBandconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QRubberBandconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRubberBand_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRubberBand_connectNotify(self: ptr cQRubberBand, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QRubberBand_connectNotify ".} =
-  type Cb = proc(super: QRubberBandconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QRubberBand(h: self), signal)
+  var nimfunc = cast[ptr QRubberBandconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QRubberBand, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QRubberBanddisconnectNotify*(self: gen_qrubberband_types.QRubberBand, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQRubberBand_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QRubberBanddisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QRubberBand, slot: proc(super: QRubberBanddisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QRubberBanddisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qrubberband_types.QRubberBand, slot: QRubberBanddisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QRubberBanddisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QRubberBanddisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRubberBand_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRubberBand_disconnectNotify(self: ptr cQRubberBand, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QRubberBand_disconnectNotify ".} =
-  type Cb = proc(super: QRubberBanddisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QRubberBand(h: self), signal)
+  var nimfunc = cast[ptr QRubberBanddisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QRubberBand): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qrubberband_types.QRubberBand): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQRubberBand_staticMetaObject())
-proc delete*(self: QRubberBand) =
+proc delete*(self: gen_qrubberband_types.QRubberBand) =
   fcQRubberBand_delete(self.h)

@@ -40,14 +40,12 @@ export gen_qundoview_types
 import
   gen_qabstractitemdelegate,
   gen_qabstractitemmodel,
-  gen_qabstractitemview,
   gen_qcoreevent,
   gen_qevent,
   gen_qicon,
   gen_qitemselectionmodel,
   gen_qlistview,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -65,14 +63,12 @@ import
 export
   gen_qabstractitemdelegate,
   gen_qabstractitemmodel,
-  gen_qabstractitemview,
   gen_qcoreevent,
   gen_qevent,
   gen_qicon,
   gen_qitemselectionmodel,
   gen_qlistview,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -302,384 +298,324 @@ proc fcQUndoView_staticMetaObject(): pointer {.importc: "QUndoView_staticMetaObj
 proc fcQUndoView_delete(self: pointer) {.importc: "QUndoView_delete".}
 
 
-func init*(T: type QUndoView, h: ptr cQUndoView): QUndoView =
+func init*(T: type gen_qundoview_types.QUndoView, h: ptr cQUndoView): gen_qundoview_types.QUndoView =
   T(h: h)
-proc create*(T: type QUndoView, parent: gen_qwidget.QWidget): QUndoView =
+proc create*(T: type gen_qundoview_types.QUndoView, parent: gen_qwidget.QWidget): gen_qundoview_types.QUndoView =
 
-  QUndoView.init(fcQUndoView_new(parent.h))
-proc create*(T: type QUndoView, ): QUndoView =
+  gen_qundoview_types.QUndoView.init(fcQUndoView_new(parent.h))
+proc create*(T: type gen_qundoview_types.QUndoView, ): gen_qundoview_types.QUndoView =
 
-  QUndoView.init(fcQUndoView_new2())
-proc create2*(T: type QUndoView, stack: gen_qundostack.QUndoStack): QUndoView =
+  gen_qundoview_types.QUndoView.init(fcQUndoView_new2())
+proc create2*(T: type gen_qundoview_types.QUndoView, stack: gen_qundostack.QUndoStack): gen_qundoview_types.QUndoView =
 
-  QUndoView.init(fcQUndoView_new3(stack.h))
-proc create2*(T: type QUndoView, group: gen_qundogroup.QUndoGroup): QUndoView =
+  gen_qundoview_types.QUndoView.init(fcQUndoView_new3(stack.h))
+proc create2*(T: type gen_qundoview_types.QUndoView, group: gen_qundogroup.QUndoGroup): gen_qundoview_types.QUndoView =
 
-  QUndoView.init(fcQUndoView_new4(group.h))
-proc create*(T: type QUndoView, stack: gen_qundostack.QUndoStack, parent: gen_qwidget.QWidget): QUndoView =
+  gen_qundoview_types.QUndoView.init(fcQUndoView_new4(group.h))
+proc create*(T: type gen_qundoview_types.QUndoView, stack: gen_qundostack.QUndoStack, parent: gen_qwidget.QWidget): gen_qundoview_types.QUndoView =
 
-  QUndoView.init(fcQUndoView_new5(stack.h, parent.h))
-proc create2*(T: type QUndoView, group: gen_qundogroup.QUndoGroup, parent: gen_qwidget.QWidget): QUndoView =
+  gen_qundoview_types.QUndoView.init(fcQUndoView_new5(stack.h, parent.h))
+proc create2*(T: type gen_qundoview_types.QUndoView, group: gen_qundogroup.QUndoGroup, parent: gen_qwidget.QWidget): gen_qundoview_types.QUndoView =
 
-  QUndoView.init(fcQUndoView_new6(group.h, parent.h))
-proc metaObject*(self: QUndoView, ): gen_qobjectdefs.QMetaObject =
+  gen_qundoview_types.QUndoView.init(fcQUndoView_new6(group.h, parent.h))
+proc metaObject*(self: gen_qundoview_types.QUndoView, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQUndoView_metaObject(self.h))
 
-proc metacast*(self: QUndoView, param1: cstring): pointer =
+proc metacast*(self: gen_qundoview_types.QUndoView, param1: cstring): pointer =
 
   fcQUndoView_metacast(self.h, param1)
 
-proc metacall*(self: QUndoView, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qundoview_types.QUndoView, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQUndoView_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QUndoView, s: cstring): string =
+proc tr*(_: type gen_qundoview_types.QUndoView, s: cstring): string =
 
   let v_ms = fcQUndoView_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc stack*(self: QUndoView, ): gen_qundostack.QUndoStack =
+proc stack*(self: gen_qundoview_types.QUndoView, ): gen_qundostack.QUndoStack =
 
   gen_qundostack.QUndoStack(h: fcQUndoView_stack(self.h))
 
-proc group*(self: QUndoView, ): gen_qundogroup.QUndoGroup =
+proc group*(self: gen_qundoview_types.QUndoView, ): gen_qundogroup.QUndoGroup =
 
   gen_qundogroup.QUndoGroup(h: fcQUndoView_group(self.h))
 
-proc setEmptyLabel*(self: QUndoView, label: string): void =
+proc setEmptyLabel*(self: gen_qundoview_types.QUndoView, label: string): void =
 
   fcQUndoView_setEmptyLabel(self.h, struct_miqt_string(data: label, len: csize_t(len(label))))
 
-proc emptyLabel*(self: QUndoView, ): string =
+proc emptyLabel*(self: gen_qundoview_types.QUndoView, ): string =
 
   let v_ms = fcQUndoView_emptyLabel(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setCleanIcon*(self: QUndoView, icon: gen_qicon.QIcon): void =
+proc setCleanIcon*(self: gen_qundoview_types.QUndoView, icon: gen_qicon.QIcon): void =
 
   fcQUndoView_setCleanIcon(self.h, icon.h)
 
-proc cleanIcon*(self: QUndoView, ): gen_qicon.QIcon =
+proc cleanIcon*(self: gen_qundoview_types.QUndoView, ): gen_qicon.QIcon =
 
   gen_qicon.QIcon(h: fcQUndoView_cleanIcon(self.h))
 
-proc setStack*(self: QUndoView, stack: gen_qundostack.QUndoStack): void =
+proc setStack*(self: gen_qundoview_types.QUndoView, stack: gen_qundostack.QUndoStack): void =
 
   fcQUndoView_setStack(self.h, stack.h)
 
-proc setGroup*(self: QUndoView, group: gen_qundogroup.QUndoGroup): void =
+proc setGroup*(self: gen_qundoview_types.QUndoView, group: gen_qundogroup.QUndoGroup): void =
 
   fcQUndoView_setGroup(self.h, group.h)
 
-proc tr2*(_: type QUndoView, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qundoview_types.QUndoView, s: cstring, c: cstring): string =
 
   let v_ms = fcQUndoView_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QUndoView, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qundoview_types.QUndoView, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQUndoView_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QUndoView, ): gen_qobjectdefs.QMetaObject =
-
+proc QUndoViewmetaObject*(self: gen_qundoview_types.QUndoView, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQUndoView_virtualbase_metaObject(self.h))
 
-type QUndoViewmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QUndoView, slot: proc(super: QUndoViewmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QUndoViewmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qundoview_types.QUndoView, slot: QUndoViewmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QUndoViewmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_metaObject(self: ptr cQUndoView, slot: int): pointer {.exportc: "miqt_exec_callback_QUndoView_metaObject ".} =
-  type Cb = proc(super: QUndoViewmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QUndoView(h: self), )
+  var nimfunc = cast[ptr QUndoViewmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QUndoView, param1: cstring): pointer =
-
+proc QUndoViewmetacast*(self: gen_qundoview_types.QUndoView, param1: cstring): pointer =
 
   fQUndoView_virtualbase_metacast(self.h, param1)
 
-type QUndoViewmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QUndoView, slot: proc(super: QUndoViewmetacastBase, param1: cstring): pointer) =
+type QUndoViewmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qundoview_types.QUndoView, slot: QUndoViewmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QUndoViewmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_metacast(self: ptr cQUndoView, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QUndoView_metacast ".} =
-  type Cb = proc(super: QUndoViewmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QUndoView(h: self), param1)
+  var nimfunc = cast[ptr QUndoViewmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QUndoView, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QUndoViewmetacall*(self: gen_qundoview_types.QUndoView, param1: cint, param2: cint, param3: pointer): cint =
 
   fQUndoView_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QUndoViewmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QUndoView, slot: proc(super: QUndoViewmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QUndoViewmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qundoview_types.QUndoView, slot: QUndoViewmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QUndoViewmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_metacall(self: ptr cQUndoView, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QUndoView_metacall ".} =
-  type Cb = proc(super: QUndoViewmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QUndoView(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QUndoViewmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_visualRect(self: QUndoView, index: gen_qabstractitemmodel.QModelIndex): gen_qrect.QRect =
-
+proc QUndoViewvisualRect*(self: gen_qundoview_types.QUndoView, index: gen_qabstractitemmodel.QModelIndex): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fQUndoView_virtualbase_visualRect(self.h, index.h))
 
-type QUndoViewvisualRectBase* = proc(index: gen_qabstractitemmodel.QModelIndex): gen_qrect.QRect
-proc onvisualRect*(self: QUndoView, slot: proc(super: QUndoViewvisualRectBase, index: gen_qabstractitemmodel.QModelIndex): gen_qrect.QRect) =
+type QUndoViewvisualRectProc* = proc(index: gen_qabstractitemmodel.QModelIndex): gen_qrect.QRect
+proc onvisualRect*(self: gen_qundoview_types.QUndoView, slot: QUndoViewvisualRectProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewvisualRectBase, index: gen_qabstractitemmodel.QModelIndex): gen_qrect.QRect
-  var tmp = new Cb
+  var tmp = new QUndoViewvisualRectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_visualRect(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_visualRect(self: ptr cQUndoView, slot: int, index: pointer): pointer {.exportc: "miqt_exec_callback_QUndoView_visualRect ".} =
-  type Cb = proc(super: QUndoViewvisualRectBase, index: gen_qabstractitemmodel.QModelIndex): gen_qrect.QRect
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(index: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_visualRect(QUndoView(h: self), index)
+  var nimfunc = cast[ptr QUndoViewvisualRectProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: index)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_scrollTo(self: QUndoView, index: gen_qabstractitemmodel.QModelIndex, hint: gen_qabstractitemview.QAbstractItemViewScrollHint): void =
-
+proc QUndoViewscrollTo*(self: gen_qundoview_types.QUndoView, index: gen_qabstractitemmodel.QModelIndex, hint: cint): void =
 
   fQUndoView_virtualbase_scrollTo(self.h, index.h, cint(hint))
 
-type QUndoViewscrollToBase* = proc(index: gen_qabstractitemmodel.QModelIndex, hint: gen_qabstractitemview.QAbstractItemViewScrollHint): void
-proc onscrollTo*(self: QUndoView, slot: proc(super: QUndoViewscrollToBase, index: gen_qabstractitemmodel.QModelIndex, hint: gen_qabstractitemview.QAbstractItemViewScrollHint): void) =
+type QUndoViewscrollToProc* = proc(index: gen_qabstractitemmodel.QModelIndex, hint: cint): void
+proc onscrollTo*(self: gen_qundoview_types.QUndoView, slot: QUndoViewscrollToProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewscrollToBase, index: gen_qabstractitemmodel.QModelIndex, hint: gen_qabstractitemview.QAbstractItemViewScrollHint): void
-  var tmp = new Cb
+  var tmp = new QUndoViewscrollToProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_scrollTo(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_scrollTo(self: ptr cQUndoView, slot: int, index: pointer, hint: cint): void {.exportc: "miqt_exec_callback_QUndoView_scrollTo ".} =
-  type Cb = proc(super: QUndoViewscrollToBase, index: gen_qabstractitemmodel.QModelIndex, hint: gen_qabstractitemview.QAbstractItemViewScrollHint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(index: gen_qabstractitemmodel.QModelIndex, hint: gen_qabstractitemview.QAbstractItemViewScrollHint): auto =
-    callVirtualBase_scrollTo(QUndoView(h: self), index, hint)
+  var nimfunc = cast[ptr QUndoViewscrollToProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: index)
 
-  let slotval2 = gen_qabstractitemview.QAbstractItemViewScrollHint(hint)
+  let slotval2 = cint(hint)
 
 
-  nimfunc[](superCall, slotval1, slotval2)
-proc callVirtualBase_indexAt(self: QUndoView, p: gen_qpoint.QPoint): gen_qabstractitemmodel.QModelIndex =
-
+  nimfunc[](slotval1, slotval2)
+proc QUndoViewindexAt*(self: gen_qundoview_types.QUndoView, p: gen_qpoint.QPoint): gen_qabstractitemmodel.QModelIndex =
 
   gen_qabstractitemmodel.QModelIndex(h: fQUndoView_virtualbase_indexAt(self.h, p.h))
 
-type QUndoViewindexAtBase* = proc(p: gen_qpoint.QPoint): gen_qabstractitemmodel.QModelIndex
-proc onindexAt*(self: QUndoView, slot: proc(super: QUndoViewindexAtBase, p: gen_qpoint.QPoint): gen_qabstractitemmodel.QModelIndex) =
+type QUndoViewindexAtProc* = proc(p: gen_qpoint.QPoint): gen_qabstractitemmodel.QModelIndex
+proc onindexAt*(self: gen_qundoview_types.QUndoView, slot: QUndoViewindexAtProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewindexAtBase, p: gen_qpoint.QPoint): gen_qabstractitemmodel.QModelIndex
-  var tmp = new Cb
+  var tmp = new QUndoViewindexAtProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_indexAt(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_indexAt(self: ptr cQUndoView, slot: int, p: pointer): pointer {.exportc: "miqt_exec_callback_QUndoView_indexAt ".} =
-  type Cb = proc(super: QUndoViewindexAtBase, p: gen_qpoint.QPoint): gen_qabstractitemmodel.QModelIndex
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(p: gen_qpoint.QPoint): auto =
-    callVirtualBase_indexAt(QUndoView(h: self), p)
+  var nimfunc = cast[ptr QUndoViewindexAtProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: p)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_doItemsLayout(self: QUndoView, ): void =
-
+proc QUndoViewdoItemsLayout*(self: gen_qundoview_types.QUndoView, ): void =
 
   fQUndoView_virtualbase_doItemsLayout(self.h)
 
-type QUndoViewdoItemsLayoutBase* = proc(): void
-proc ondoItemsLayout*(self: QUndoView, slot: proc(super: QUndoViewdoItemsLayoutBase): void) =
+type QUndoViewdoItemsLayoutProc* = proc(): void
+proc ondoItemsLayout*(self: gen_qundoview_types.QUndoView, slot: QUndoViewdoItemsLayoutProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewdoItemsLayoutBase): void
-  var tmp = new Cb
+  var tmp = new QUndoViewdoItemsLayoutProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_doItemsLayout(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_doItemsLayout(self: ptr cQUndoView, slot: int): void {.exportc: "miqt_exec_callback_QUndoView_doItemsLayout ".} =
-  type Cb = proc(super: QUndoViewdoItemsLayoutBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_doItemsLayout(QUndoView(h: self), )
+  var nimfunc = cast[ptr QUndoViewdoItemsLayoutProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_reset(self: QUndoView, ): void =
-
+  nimfunc[]()
+proc QUndoViewreset*(self: gen_qundoview_types.QUndoView, ): void =
 
   fQUndoView_virtualbase_reset(self.h)
 
-type QUndoViewresetBase* = proc(): void
-proc onreset*(self: QUndoView, slot: proc(super: QUndoViewresetBase): void) =
+type QUndoViewresetProc* = proc(): void
+proc onreset*(self: gen_qundoview_types.QUndoView, slot: QUndoViewresetProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewresetBase): void
-  var tmp = new Cb
+  var tmp = new QUndoViewresetProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_reset(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_reset(self: ptr cQUndoView, slot: int): void {.exportc: "miqt_exec_callback_QUndoView_reset ".} =
-  type Cb = proc(super: QUndoViewresetBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_reset(QUndoView(h: self), )
+  var nimfunc = cast[ptr QUndoViewresetProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_setRootIndex(self: QUndoView, index: gen_qabstractitemmodel.QModelIndex): void =
-
+  nimfunc[]()
+proc QUndoViewsetRootIndex*(self: gen_qundoview_types.QUndoView, index: gen_qabstractitemmodel.QModelIndex): void =
 
   fQUndoView_virtualbase_setRootIndex(self.h, index.h)
 
-type QUndoViewsetRootIndexBase* = proc(index: gen_qabstractitemmodel.QModelIndex): void
-proc onsetRootIndex*(self: QUndoView, slot: proc(super: QUndoViewsetRootIndexBase, index: gen_qabstractitemmodel.QModelIndex): void) =
+type QUndoViewsetRootIndexProc* = proc(index: gen_qabstractitemmodel.QModelIndex): void
+proc onsetRootIndex*(self: gen_qundoview_types.QUndoView, slot: QUndoViewsetRootIndexProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewsetRootIndexBase, index: gen_qabstractitemmodel.QModelIndex): void
-  var tmp = new Cb
+  var tmp = new QUndoViewsetRootIndexProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_setRootIndex(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_setRootIndex(self: ptr cQUndoView, slot: int, index: pointer): void {.exportc: "miqt_exec_callback_QUndoView_setRootIndex ".} =
-  type Cb = proc(super: QUndoViewsetRootIndexBase, index: gen_qabstractitemmodel.QModelIndex): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(index: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_setRootIndex(QUndoView(h: self), index)
+  var nimfunc = cast[ptr QUndoViewsetRootIndexProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: index)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_event(self: QUndoView, e: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[](slotval1)
+proc QUndoViewevent*(self: gen_qundoview_types.QUndoView, e: gen_qcoreevent.QEvent): bool =
 
   fQUndoView_virtualbase_event(self.h, e.h)
 
-type QUndoVieweventBase* = proc(e: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QUndoView, slot: proc(super: QUndoVieweventBase, e: gen_qcoreevent.QEvent): bool) =
+type QUndoVieweventProc* = proc(e: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qundoview_types.QUndoView, slot: QUndoVieweventProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoVieweventBase, e: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QUndoVieweventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_event(self: ptr cQUndoView, slot: int, e: pointer): bool {.exportc: "miqt_exec_callback_QUndoView_event ".} =
-  type Cb = proc(super: QUndoVieweventBase, e: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QUndoView(h: self), e)
+  var nimfunc = cast[ptr QUndoVieweventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: e)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_scrollContentsBy(self: QUndoView, dx: cint, dy: cint): void =
-
+proc QUndoViewscrollContentsBy*(self: gen_qundoview_types.QUndoView, dx: cint, dy: cint): void =
 
   fQUndoView_virtualbase_scrollContentsBy(self.h, dx, dy)
 
-type QUndoViewscrollContentsByBase* = proc(dx: cint, dy: cint): void
-proc onscrollContentsBy*(self: QUndoView, slot: proc(super: QUndoViewscrollContentsByBase, dx: cint, dy: cint): void) =
+type QUndoViewscrollContentsByProc* = proc(dx: cint, dy: cint): void
+proc onscrollContentsBy*(self: gen_qundoview_types.QUndoView, slot: QUndoViewscrollContentsByProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewscrollContentsByBase, dx: cint, dy: cint): void
-  var tmp = new Cb
+  var tmp = new QUndoViewscrollContentsByProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_scrollContentsBy(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_scrollContentsBy(self: ptr cQUndoView, slot: int, dx: cint, dy: cint): void {.exportc: "miqt_exec_callback_QUndoView_scrollContentsBy ".} =
-  type Cb = proc(super: QUndoViewscrollContentsByBase, dx: cint, dy: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(dx: cint, dy: cint): auto =
-    callVirtualBase_scrollContentsBy(QUndoView(h: self), dx, dy)
+  var nimfunc = cast[ptr QUndoViewscrollContentsByProc](cast[pointer](slot))
   let slotval1 = dx
 
   let slotval2 = dy
 
 
-  nimfunc[](superCall, slotval1, slotval2)
-proc callVirtualBase_dataChanged(self: QUndoView, topLeft: gen_qabstractitemmodel.QModelIndex, bottomRight: gen_qabstractitemmodel.QModelIndex, roles: seq[cint]): void =
+  nimfunc[](slotval1, slotval2)
+proc QUndoViewdataChanged*(self: gen_qundoview_types.QUndoView, topLeft: gen_qabstractitemmodel.QModelIndex, bottomRight: gen_qabstractitemmodel.QModelIndex, roles: seq[cint]): void =
 
   var roles_CArray = newSeq[cint](len(roles))
   for i in 0..<len(roles):
     roles_CArray[i] = roles[i]
 
-
   fQUndoView_virtualbase_dataChanged(self.h, topLeft.h, bottomRight.h, struct_miqt_array(len: csize_t(len(roles)), data: if len(roles) == 0: nil else: addr(roles_CArray[0])))
 
-type QUndoViewdataChangedBase* = proc(topLeft: gen_qabstractitemmodel.QModelIndex, bottomRight: gen_qabstractitemmodel.QModelIndex, roles: seq[cint]): void
-proc ondataChanged*(self: QUndoView, slot: proc(super: QUndoViewdataChangedBase, topLeft: gen_qabstractitemmodel.QModelIndex, bottomRight: gen_qabstractitemmodel.QModelIndex, roles: seq[cint]): void) =
+type QUndoViewdataChangedProc* = proc(topLeft: gen_qabstractitemmodel.QModelIndex, bottomRight: gen_qabstractitemmodel.QModelIndex, roles: seq[cint]): void
+proc ondataChanged*(self: gen_qundoview_types.QUndoView, slot: QUndoViewdataChangedProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewdataChangedBase, topLeft: gen_qabstractitemmodel.QModelIndex, bottomRight: gen_qabstractitemmodel.QModelIndex, roles: seq[cint]): void
-  var tmp = new Cb
+  var tmp = new QUndoViewdataChangedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_dataChanged(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_dataChanged(self: ptr cQUndoView, slot: int, topLeft: pointer, bottomRight: pointer, roles: struct_miqt_array): void {.exportc: "miqt_exec_callback_QUndoView_dataChanged ".} =
-  type Cb = proc(super: QUndoViewdataChangedBase, topLeft: gen_qabstractitemmodel.QModelIndex, bottomRight: gen_qabstractitemmodel.QModelIndex, roles: seq[cint]): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(topLeft: gen_qabstractitemmodel.QModelIndex, bottomRight: gen_qabstractitemmodel.QModelIndex, roles: seq[cint]): auto =
-    callVirtualBase_dataChanged(QUndoView(h: self), topLeft, bottomRight, roles)
+  var nimfunc = cast[ptr QUndoViewdataChangedProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: topLeft)
 
   let slotval2 = gen_qabstractitemmodel.QModelIndex(h: bottomRight)
@@ -692,26 +628,21 @@ proc miqt_exec_callback_QUndoView_dataChanged(self: ptr cQUndoView, slot: int, t
   let slotval3 = vrolesx_ret
 
 
-  nimfunc[](superCall, slotval1, slotval2, slotval3)
-proc callVirtualBase_rowsInserted(self: QUndoView, parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void =
-
+  nimfunc[](slotval1, slotval2, slotval3)
+proc QUndoViewrowsInserted*(self: gen_qundoview_types.QUndoView, parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void =
 
   fQUndoView_virtualbase_rowsInserted(self.h, parent.h, start, endVal)
 
-type QUndoViewrowsInsertedBase* = proc(parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void
-proc onrowsInserted*(self: QUndoView, slot: proc(super: QUndoViewrowsInsertedBase, parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void) =
+type QUndoViewrowsInsertedProc* = proc(parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void
+proc onrowsInserted*(self: gen_qundoview_types.QUndoView, slot: QUndoViewrowsInsertedProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewrowsInsertedBase, parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void
-  var tmp = new Cb
+  var tmp = new QUndoViewrowsInsertedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_rowsInserted(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_rowsInserted(self: ptr cQUndoView, slot: int, parent: pointer, start: cint, endVal: cint): void {.exportc: "miqt_exec_callback_QUndoView_rowsInserted ".} =
-  type Cb = proc(super: QUndoViewrowsInsertedBase, parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): auto =
-    callVirtualBase_rowsInserted(QUndoView(h: self), parent, start, endVal)
+  var nimfunc = cast[ptr QUndoViewrowsInsertedProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: parent)
 
   let slotval2 = start
@@ -719,26 +650,21 @@ proc miqt_exec_callback_QUndoView_rowsInserted(self: ptr cQUndoView, slot: int, 
   let slotval3 = endVal
 
 
-  nimfunc[](superCall, slotval1, slotval2, slotval3)
-proc callVirtualBase_rowsAboutToBeRemoved(self: QUndoView, parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void =
-
+  nimfunc[](slotval1, slotval2, slotval3)
+proc QUndoViewrowsAboutToBeRemoved*(self: gen_qundoview_types.QUndoView, parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void =
 
   fQUndoView_virtualbase_rowsAboutToBeRemoved(self.h, parent.h, start, endVal)
 
-type QUndoViewrowsAboutToBeRemovedBase* = proc(parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void
-proc onrowsAboutToBeRemoved*(self: QUndoView, slot: proc(super: QUndoViewrowsAboutToBeRemovedBase, parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void) =
+type QUndoViewrowsAboutToBeRemovedProc* = proc(parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void
+proc onrowsAboutToBeRemoved*(self: gen_qundoview_types.QUndoView, slot: QUndoViewrowsAboutToBeRemovedProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewrowsAboutToBeRemovedBase, parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void
-  var tmp = new Cb
+  var tmp = new QUndoViewrowsAboutToBeRemovedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_rowsAboutToBeRemoved(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_rowsAboutToBeRemoved(self: ptr cQUndoView, slot: int, parent: pointer, start: cint, endVal: cint): void {.exportc: "miqt_exec_callback_QUndoView_rowsAboutToBeRemoved ".} =
-  type Cb = proc(super: QUndoViewrowsAboutToBeRemovedBase, parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): auto =
-    callVirtualBase_rowsAboutToBeRemoved(QUndoView(h: self), parent, start, endVal)
+  var nimfunc = cast[ptr QUndoViewrowsAboutToBeRemovedProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: parent)
 
   let slotval2 = start
@@ -746,385 +672,304 @@ proc miqt_exec_callback_QUndoView_rowsAboutToBeRemoved(self: ptr cQUndoView, slo
   let slotval3 = endVal
 
 
-  nimfunc[](superCall, slotval1, slotval2, slotval3)
-proc callVirtualBase_mouseMoveEvent(self: QUndoView, e: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1, slotval2, slotval3)
+proc QUndoViewmouseMoveEvent*(self: gen_qundoview_types.QUndoView, e: gen_qevent.QMouseEvent): void =
 
   fQUndoView_virtualbase_mouseMoveEvent(self.h, e.h)
 
-type QUndoViewmouseMoveEventBase* = proc(e: gen_qevent.QMouseEvent): void
-proc onmouseMoveEvent*(self: QUndoView, slot: proc(super: QUndoViewmouseMoveEventBase, e: gen_qevent.QMouseEvent): void) =
+type QUndoViewmouseMoveEventProc* = proc(e: gen_qevent.QMouseEvent): void
+proc onmouseMoveEvent*(self: gen_qundoview_types.QUndoView, slot: QUndoViewmouseMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewmouseMoveEventBase, e: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QUndoViewmouseMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_mouseMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_mouseMoveEvent(self: ptr cQUndoView, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QUndoView_mouseMoveEvent ".} =
-  type Cb = proc(super: QUndoViewmouseMoveEventBase, e: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseMoveEvent(QUndoView(h: self), e)
+  var nimfunc = cast[ptr QUndoViewmouseMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseReleaseEvent(self: QUndoView, e: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QUndoViewmouseReleaseEvent*(self: gen_qundoview_types.QUndoView, e: gen_qevent.QMouseEvent): void =
 
   fQUndoView_virtualbase_mouseReleaseEvent(self.h, e.h)
 
-type QUndoViewmouseReleaseEventBase* = proc(e: gen_qevent.QMouseEvent): void
-proc onmouseReleaseEvent*(self: QUndoView, slot: proc(super: QUndoViewmouseReleaseEventBase, e: gen_qevent.QMouseEvent): void) =
+type QUndoViewmouseReleaseEventProc* = proc(e: gen_qevent.QMouseEvent): void
+proc onmouseReleaseEvent*(self: gen_qundoview_types.QUndoView, slot: QUndoViewmouseReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewmouseReleaseEventBase, e: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QUndoViewmouseReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_mouseReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_mouseReleaseEvent(self: ptr cQUndoView, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QUndoView_mouseReleaseEvent ".} =
-  type Cb = proc(super: QUndoViewmouseReleaseEventBase, e: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseReleaseEvent(QUndoView(h: self), e)
+  var nimfunc = cast[ptr QUndoViewmouseReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_wheelEvent(self: QUndoView, e: gen_qevent.QWheelEvent): void =
-
+  nimfunc[](slotval1)
+proc QUndoViewwheelEvent*(self: gen_qundoview_types.QUndoView, e: gen_qevent.QWheelEvent): void =
 
   fQUndoView_virtualbase_wheelEvent(self.h, e.h)
 
-type QUndoViewwheelEventBase* = proc(e: gen_qevent.QWheelEvent): void
-proc onwheelEvent*(self: QUndoView, slot: proc(super: QUndoViewwheelEventBase, e: gen_qevent.QWheelEvent): void) =
+type QUndoViewwheelEventProc* = proc(e: gen_qevent.QWheelEvent): void
+proc onwheelEvent*(self: gen_qundoview_types.QUndoView, slot: QUndoViewwheelEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewwheelEventBase, e: gen_qevent.QWheelEvent): void
-  var tmp = new Cb
+  var tmp = new QUndoViewwheelEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_wheelEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_wheelEvent(self: ptr cQUndoView, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QUndoView_wheelEvent ".} =
-  type Cb = proc(super: QUndoViewwheelEventBase, e: gen_qevent.QWheelEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qevent.QWheelEvent): auto =
-    callVirtualBase_wheelEvent(QUndoView(h: self), e)
+  var nimfunc = cast[ptr QUndoViewwheelEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QWheelEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_timerEvent(self: QUndoView, e: gen_qcoreevent.QTimerEvent): void =
-
+  nimfunc[](slotval1)
+proc QUndoViewtimerEvent*(self: gen_qundoview_types.QUndoView, e: gen_qcoreevent.QTimerEvent): void =
 
   fQUndoView_virtualbase_timerEvent(self.h, e.h)
 
-type QUndoViewtimerEventBase* = proc(e: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QUndoView, slot: proc(super: QUndoViewtimerEventBase, e: gen_qcoreevent.QTimerEvent): void) =
+type QUndoViewtimerEventProc* = proc(e: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qundoview_types.QUndoView, slot: QUndoViewtimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewtimerEventBase, e: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QUndoViewtimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_timerEvent(self: ptr cQUndoView, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QUndoView_timerEvent ".} =
-  type Cb = proc(super: QUndoViewtimerEventBase, e: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QUndoView(h: self), e)
+  var nimfunc = cast[ptr QUndoViewtimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_resizeEvent(self: QUndoView, e: gen_qevent.QResizeEvent): void =
-
+  nimfunc[](slotval1)
+proc QUndoViewresizeEvent*(self: gen_qundoview_types.QUndoView, e: gen_qevent.QResizeEvent): void =
 
   fQUndoView_virtualbase_resizeEvent(self.h, e.h)
 
-type QUndoViewresizeEventBase* = proc(e: gen_qevent.QResizeEvent): void
-proc onresizeEvent*(self: QUndoView, slot: proc(super: QUndoViewresizeEventBase, e: gen_qevent.QResizeEvent): void) =
+type QUndoViewresizeEventProc* = proc(e: gen_qevent.QResizeEvent): void
+proc onresizeEvent*(self: gen_qundoview_types.QUndoView, slot: QUndoViewresizeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewresizeEventBase, e: gen_qevent.QResizeEvent): void
-  var tmp = new Cb
+  var tmp = new QUndoViewresizeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_resizeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_resizeEvent(self: ptr cQUndoView, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QUndoView_resizeEvent ".} =
-  type Cb = proc(super: QUndoViewresizeEventBase, e: gen_qevent.QResizeEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qevent.QResizeEvent): auto =
-    callVirtualBase_resizeEvent(QUndoView(h: self), e)
+  var nimfunc = cast[ptr QUndoViewresizeEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QResizeEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragMoveEvent(self: QUndoView, e: gen_qevent.QDragMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QUndoViewdragMoveEvent*(self: gen_qundoview_types.QUndoView, e: gen_qevent.QDragMoveEvent): void =
 
   fQUndoView_virtualbase_dragMoveEvent(self.h, e.h)
 
-type QUndoViewdragMoveEventBase* = proc(e: gen_qevent.QDragMoveEvent): void
-proc ondragMoveEvent*(self: QUndoView, slot: proc(super: QUndoViewdragMoveEventBase, e: gen_qevent.QDragMoveEvent): void) =
+type QUndoViewdragMoveEventProc* = proc(e: gen_qevent.QDragMoveEvent): void
+proc ondragMoveEvent*(self: gen_qundoview_types.QUndoView, slot: QUndoViewdragMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewdragMoveEventBase, e: gen_qevent.QDragMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QUndoViewdragMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_dragMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_dragMoveEvent(self: ptr cQUndoView, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QUndoView_dragMoveEvent ".} =
-  type Cb = proc(super: QUndoViewdragMoveEventBase, e: gen_qevent.QDragMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qevent.QDragMoveEvent): auto =
-    callVirtualBase_dragMoveEvent(QUndoView(h: self), e)
+  var nimfunc = cast[ptr QUndoViewdragMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragMoveEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragLeaveEvent(self: QUndoView, e: gen_qevent.QDragLeaveEvent): void =
-
+  nimfunc[](slotval1)
+proc QUndoViewdragLeaveEvent*(self: gen_qundoview_types.QUndoView, e: gen_qevent.QDragLeaveEvent): void =
 
   fQUndoView_virtualbase_dragLeaveEvent(self.h, e.h)
 
-type QUndoViewdragLeaveEventBase* = proc(e: gen_qevent.QDragLeaveEvent): void
-proc ondragLeaveEvent*(self: QUndoView, slot: proc(super: QUndoViewdragLeaveEventBase, e: gen_qevent.QDragLeaveEvent): void) =
+type QUndoViewdragLeaveEventProc* = proc(e: gen_qevent.QDragLeaveEvent): void
+proc ondragLeaveEvent*(self: gen_qundoview_types.QUndoView, slot: QUndoViewdragLeaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewdragLeaveEventBase, e: gen_qevent.QDragLeaveEvent): void
-  var tmp = new Cb
+  var tmp = new QUndoViewdragLeaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_dragLeaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_dragLeaveEvent(self: ptr cQUndoView, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QUndoView_dragLeaveEvent ".} =
-  type Cb = proc(super: QUndoViewdragLeaveEventBase, e: gen_qevent.QDragLeaveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qevent.QDragLeaveEvent): auto =
-    callVirtualBase_dragLeaveEvent(QUndoView(h: self), e)
+  var nimfunc = cast[ptr QUndoViewdragLeaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragLeaveEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dropEvent(self: QUndoView, e: gen_qevent.QDropEvent): void =
-
+  nimfunc[](slotval1)
+proc QUndoViewdropEvent*(self: gen_qundoview_types.QUndoView, e: gen_qevent.QDropEvent): void =
 
   fQUndoView_virtualbase_dropEvent(self.h, e.h)
 
-type QUndoViewdropEventBase* = proc(e: gen_qevent.QDropEvent): void
-proc ondropEvent*(self: QUndoView, slot: proc(super: QUndoViewdropEventBase, e: gen_qevent.QDropEvent): void) =
+type QUndoViewdropEventProc* = proc(e: gen_qevent.QDropEvent): void
+proc ondropEvent*(self: gen_qundoview_types.QUndoView, slot: QUndoViewdropEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewdropEventBase, e: gen_qevent.QDropEvent): void
-  var tmp = new Cb
+  var tmp = new QUndoViewdropEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_dropEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_dropEvent(self: ptr cQUndoView, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QUndoView_dropEvent ".} =
-  type Cb = proc(super: QUndoViewdropEventBase, e: gen_qevent.QDropEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qevent.QDropEvent): auto =
-    callVirtualBase_dropEvent(QUndoView(h: self), e)
+  var nimfunc = cast[ptr QUndoViewdropEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDropEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_startDrag(self: QUndoView, supportedActions: gen_qnamespace.DropAction): void =
-
+  nimfunc[](slotval1)
+proc QUndoViewstartDrag*(self: gen_qundoview_types.QUndoView, supportedActions: cint): void =
 
   fQUndoView_virtualbase_startDrag(self.h, cint(supportedActions))
 
-type QUndoViewstartDragBase* = proc(supportedActions: gen_qnamespace.DropAction): void
-proc onstartDrag*(self: QUndoView, slot: proc(super: QUndoViewstartDragBase, supportedActions: gen_qnamespace.DropAction): void) =
+type QUndoViewstartDragProc* = proc(supportedActions: cint): void
+proc onstartDrag*(self: gen_qundoview_types.QUndoView, slot: QUndoViewstartDragProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewstartDragBase, supportedActions: gen_qnamespace.DropAction): void
-  var tmp = new Cb
+  var tmp = new QUndoViewstartDragProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_startDrag(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_startDrag(self: ptr cQUndoView, slot: int, supportedActions: cint): void {.exportc: "miqt_exec_callback_QUndoView_startDrag ".} =
-  type Cb = proc(super: QUndoViewstartDragBase, supportedActions: gen_qnamespace.DropAction): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(supportedActions: gen_qnamespace.DropAction): auto =
-    callVirtualBase_startDrag(QUndoView(h: self), supportedActions)
-  let slotval1 = gen_qnamespace.DropAction(supportedActions)
+  var nimfunc = cast[ptr QUndoViewstartDragProc](cast[pointer](slot))
+  let slotval1 = cint(supportedActions)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_initViewItemOption(self: QUndoView, option: gen_qstyleoption.QStyleOptionViewItem): void =
-
+  nimfunc[](slotval1)
+proc QUndoViewinitViewItemOption*(self: gen_qundoview_types.QUndoView, option: gen_qstyleoption.QStyleOptionViewItem): void =
 
   fQUndoView_virtualbase_initViewItemOption(self.h, option.h)
 
-type QUndoViewinitViewItemOptionBase* = proc(option: gen_qstyleoption.QStyleOptionViewItem): void
-proc oninitViewItemOption*(self: QUndoView, slot: proc(super: QUndoViewinitViewItemOptionBase, option: gen_qstyleoption.QStyleOptionViewItem): void) =
+type QUndoViewinitViewItemOptionProc* = proc(option: gen_qstyleoption.QStyleOptionViewItem): void
+proc oninitViewItemOption*(self: gen_qundoview_types.QUndoView, slot: QUndoViewinitViewItemOptionProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewinitViewItemOptionBase, option: gen_qstyleoption.QStyleOptionViewItem): void
-  var tmp = new Cb
+  var tmp = new QUndoViewinitViewItemOptionProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_initViewItemOption(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_initViewItemOption(self: ptr cQUndoView, slot: int, option: pointer): void {.exportc: "miqt_exec_callback_QUndoView_initViewItemOption ".} =
-  type Cb = proc(super: QUndoViewinitViewItemOptionBase, option: gen_qstyleoption.QStyleOptionViewItem): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(option: gen_qstyleoption.QStyleOptionViewItem): auto =
-    callVirtualBase_initViewItemOption(QUndoView(h: self), option)
+  var nimfunc = cast[ptr QUndoViewinitViewItemOptionProc](cast[pointer](slot))
   let slotval1 = gen_qstyleoption.QStyleOptionViewItem(h: option)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_paintEvent(self: QUndoView, e: gen_qevent.QPaintEvent): void =
-
+  nimfunc[](slotval1)
+proc QUndoViewpaintEvent*(self: gen_qundoview_types.QUndoView, e: gen_qevent.QPaintEvent): void =
 
   fQUndoView_virtualbase_paintEvent(self.h, e.h)
 
-type QUndoViewpaintEventBase* = proc(e: gen_qevent.QPaintEvent): void
-proc onpaintEvent*(self: QUndoView, slot: proc(super: QUndoViewpaintEventBase, e: gen_qevent.QPaintEvent): void) =
+type QUndoViewpaintEventProc* = proc(e: gen_qevent.QPaintEvent): void
+proc onpaintEvent*(self: gen_qundoview_types.QUndoView, slot: QUndoViewpaintEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewpaintEventBase, e: gen_qevent.QPaintEvent): void
-  var tmp = new Cb
+  var tmp = new QUndoViewpaintEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_paintEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_paintEvent(self: ptr cQUndoView, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QUndoView_paintEvent ".} =
-  type Cb = proc(super: QUndoViewpaintEventBase, e: gen_qevent.QPaintEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qevent.QPaintEvent): auto =
-    callVirtualBase_paintEvent(QUndoView(h: self), e)
+  var nimfunc = cast[ptr QUndoViewpaintEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QPaintEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_horizontalOffset(self: QUndoView, ): cint =
-
+  nimfunc[](slotval1)
+proc QUndoViewhorizontalOffset*(self: gen_qundoview_types.QUndoView, ): cint =
 
   fQUndoView_virtualbase_horizontalOffset(self.h)
 
-type QUndoViewhorizontalOffsetBase* = proc(): cint
-proc onhorizontalOffset*(self: QUndoView, slot: proc(super: QUndoViewhorizontalOffsetBase): cint) =
+type QUndoViewhorizontalOffsetProc* = proc(): cint
+proc onhorizontalOffset*(self: gen_qundoview_types.QUndoView, slot: QUndoViewhorizontalOffsetProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewhorizontalOffsetBase): cint
-  var tmp = new Cb
+  var tmp = new QUndoViewhorizontalOffsetProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_horizontalOffset(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_horizontalOffset(self: ptr cQUndoView, slot: int): cint {.exportc: "miqt_exec_callback_QUndoView_horizontalOffset ".} =
-  type Cb = proc(super: QUndoViewhorizontalOffsetBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_horizontalOffset(QUndoView(h: self), )
+  var nimfunc = cast[ptr QUndoViewhorizontalOffsetProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_verticalOffset(self: QUndoView, ): cint =
-
+proc QUndoViewverticalOffset*(self: gen_qundoview_types.QUndoView, ): cint =
 
   fQUndoView_virtualbase_verticalOffset(self.h)
 
-type QUndoViewverticalOffsetBase* = proc(): cint
-proc onverticalOffset*(self: QUndoView, slot: proc(super: QUndoViewverticalOffsetBase): cint) =
+type QUndoViewverticalOffsetProc* = proc(): cint
+proc onverticalOffset*(self: gen_qundoview_types.QUndoView, slot: QUndoViewverticalOffsetProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewverticalOffsetBase): cint
-  var tmp = new Cb
+  var tmp = new QUndoViewverticalOffsetProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_verticalOffset(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_verticalOffset(self: ptr cQUndoView, slot: int): cint {.exportc: "miqt_exec_callback_QUndoView_verticalOffset ".} =
-  type Cb = proc(super: QUndoViewverticalOffsetBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_verticalOffset(QUndoView(h: self), )
+  var nimfunc = cast[ptr QUndoViewverticalOffsetProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_moveCursor(self: QUndoView, cursorAction: gen_qabstractitemview.QAbstractItemViewCursorAction, modifiers: gen_qnamespace.KeyboardModifier): gen_qabstractitemmodel.QModelIndex =
-
+proc QUndoViewmoveCursor*(self: gen_qundoview_types.QUndoView, cursorAction: cint, modifiers: cint): gen_qabstractitemmodel.QModelIndex =
 
   gen_qabstractitemmodel.QModelIndex(h: fQUndoView_virtualbase_moveCursor(self.h, cint(cursorAction), cint(modifiers)))
 
-type QUndoViewmoveCursorBase* = proc(cursorAction: gen_qabstractitemview.QAbstractItemViewCursorAction, modifiers: gen_qnamespace.KeyboardModifier): gen_qabstractitemmodel.QModelIndex
-proc onmoveCursor*(self: QUndoView, slot: proc(super: QUndoViewmoveCursorBase, cursorAction: gen_qabstractitemview.QAbstractItemViewCursorAction, modifiers: gen_qnamespace.KeyboardModifier): gen_qabstractitemmodel.QModelIndex) =
+type QUndoViewmoveCursorProc* = proc(cursorAction: cint, modifiers: cint): gen_qabstractitemmodel.QModelIndex
+proc onmoveCursor*(self: gen_qundoview_types.QUndoView, slot: QUndoViewmoveCursorProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewmoveCursorBase, cursorAction: gen_qabstractitemview.QAbstractItemViewCursorAction, modifiers: gen_qnamespace.KeyboardModifier): gen_qabstractitemmodel.QModelIndex
-  var tmp = new Cb
+  var tmp = new QUndoViewmoveCursorProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_moveCursor(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_moveCursor(self: ptr cQUndoView, slot: int, cursorAction: cint, modifiers: cint): pointer {.exportc: "miqt_exec_callback_QUndoView_moveCursor ".} =
-  type Cb = proc(super: QUndoViewmoveCursorBase, cursorAction: gen_qabstractitemview.QAbstractItemViewCursorAction, modifiers: gen_qnamespace.KeyboardModifier): gen_qabstractitemmodel.QModelIndex
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(cursorAction: gen_qabstractitemview.QAbstractItemViewCursorAction, modifiers: gen_qnamespace.KeyboardModifier): auto =
-    callVirtualBase_moveCursor(QUndoView(h: self), cursorAction, modifiers)
-  let slotval1 = gen_qabstractitemview.QAbstractItemViewCursorAction(cursorAction)
+  var nimfunc = cast[ptr QUndoViewmoveCursorProc](cast[pointer](slot))
+  let slotval1 = cint(cursorAction)
 
-  let slotval2 = gen_qnamespace.KeyboardModifier(modifiers)
+  let slotval2 = cint(modifiers)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn.h
-proc callVirtualBase_setSelection(self: QUndoView, rect: gen_qrect.QRect, command: gen_qitemselectionmodel.QItemSelectionModelSelectionFlag): void =
-
+proc QUndoViewsetSelection*(self: gen_qundoview_types.QUndoView, rect: gen_qrect.QRect, command: cint): void =
 
   fQUndoView_virtualbase_setSelection(self.h, rect.h, cint(command))
 
-type QUndoViewsetSelectionBase* = proc(rect: gen_qrect.QRect, command: gen_qitemselectionmodel.QItemSelectionModelSelectionFlag): void
-proc onsetSelection*(self: QUndoView, slot: proc(super: QUndoViewsetSelectionBase, rect: gen_qrect.QRect, command: gen_qitemselectionmodel.QItemSelectionModelSelectionFlag): void) =
+type QUndoViewsetSelectionProc* = proc(rect: gen_qrect.QRect, command: cint): void
+proc onsetSelection*(self: gen_qundoview_types.QUndoView, slot: QUndoViewsetSelectionProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewsetSelectionBase, rect: gen_qrect.QRect, command: gen_qitemselectionmodel.QItemSelectionModelSelectionFlag): void
-  var tmp = new Cb
+  var tmp = new QUndoViewsetSelectionProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_setSelection(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_setSelection(self: ptr cQUndoView, slot: int, rect: pointer, command: cint): void {.exportc: "miqt_exec_callback_QUndoView_setSelection ".} =
-  type Cb = proc(super: QUndoViewsetSelectionBase, rect: gen_qrect.QRect, command: gen_qitemselectionmodel.QItemSelectionModelSelectionFlag): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(rect: gen_qrect.QRect, command: gen_qitemselectionmodel.QItemSelectionModelSelectionFlag): auto =
-    callVirtualBase_setSelection(QUndoView(h: self), rect, command)
+  var nimfunc = cast[ptr QUndoViewsetSelectionProc](cast[pointer](slot))
   let slotval1 = gen_qrect.QRect(h: rect)
 
-  let slotval2 = gen_qitemselectionmodel.QItemSelectionModelSelectionFlag(command)
+  let slotval2 = cint(command)
 
 
-  nimfunc[](superCall, slotval1, slotval2)
-proc callVirtualBase_visualRegionForSelection(self: QUndoView, selection: gen_qitemselectionmodel.QItemSelection): gen_qregion.QRegion =
-
+  nimfunc[](slotval1, slotval2)
+proc QUndoViewvisualRegionForSelection*(self: gen_qundoview_types.QUndoView, selection: gen_qitemselectionmodel.QItemSelection): gen_qregion.QRegion =
 
   gen_qregion.QRegion(h: fQUndoView_virtualbase_visualRegionForSelection(self.h, selection.h))
 
-type QUndoViewvisualRegionForSelectionBase* = proc(selection: gen_qitemselectionmodel.QItemSelection): gen_qregion.QRegion
-proc onvisualRegionForSelection*(self: QUndoView, slot: proc(super: QUndoViewvisualRegionForSelectionBase, selection: gen_qitemselectionmodel.QItemSelection): gen_qregion.QRegion) =
+type QUndoViewvisualRegionForSelectionProc* = proc(selection: gen_qitemselectionmodel.QItemSelection): gen_qregion.QRegion
+proc onvisualRegionForSelection*(self: gen_qundoview_types.QUndoView, slot: QUndoViewvisualRegionForSelectionProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewvisualRegionForSelectionBase, selection: gen_qitemselectionmodel.QItemSelection): gen_qregion.QRegion
-  var tmp = new Cb
+  var tmp = new QUndoViewvisualRegionForSelectionProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_visualRegionForSelection(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_visualRegionForSelection(self: ptr cQUndoView, slot: int, selection: pointer): pointer {.exportc: "miqt_exec_callback_QUndoView_visualRegionForSelection ".} =
-  type Cb = proc(super: QUndoViewvisualRegionForSelectionBase, selection: gen_qitemselectionmodel.QItemSelection): gen_qregion.QRegion
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(selection: gen_qitemselectionmodel.QItemSelection): auto =
-    callVirtualBase_visualRegionForSelection(QUndoView(h: self), selection)
+  var nimfunc = cast[ptr QUndoViewvisualRegionForSelectionProc](cast[pointer](slot))
   let slotval1 = gen_qitemselectionmodel.QItemSelection(h: selection)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_selectedIndexes(self: QUndoView, ): seq[gen_qabstractitemmodel.QModelIndex] =
-
+proc QUndoViewselectedIndexes*(self: gen_qundoview_types.QUndoView, ): seq[gen_qabstractitemmodel.QModelIndex] =
 
   var v_ma = fQUndoView_virtualbase_selectedIndexes(self.h)
   var vx_ret = newSeq[gen_qabstractitemmodel.QModelIndex](int(v_ma.len))
@@ -1133,1320 +978,1041 @@ proc callVirtualBase_selectedIndexes(self: QUndoView, ): seq[gen_qabstractitemmo
     vx_ret[i] = gen_qabstractitemmodel.QModelIndex(h: v_outCast[i])
   vx_ret
 
-type QUndoViewselectedIndexesBase* = proc(): seq[gen_qabstractitemmodel.QModelIndex]
-proc onselectedIndexes*(self: QUndoView, slot: proc(super: QUndoViewselectedIndexesBase): seq[gen_qabstractitemmodel.QModelIndex]) =
+type QUndoViewselectedIndexesProc* = proc(): seq[gen_qabstractitemmodel.QModelIndex]
+proc onselectedIndexes*(self: gen_qundoview_types.QUndoView, slot: QUndoViewselectedIndexesProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewselectedIndexesBase): seq[gen_qabstractitemmodel.QModelIndex]
-  var tmp = new Cb
+  var tmp = new QUndoViewselectedIndexesProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_selectedIndexes(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_selectedIndexes(self: ptr cQUndoView, slot: int): struct_miqt_array {.exportc: "miqt_exec_callback_QUndoView_selectedIndexes ".} =
-  type Cb = proc(super: QUndoViewselectedIndexesBase): seq[gen_qabstractitemmodel.QModelIndex]
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_selectedIndexes(QUndoView(h: self), )
+  var nimfunc = cast[ptr QUndoViewselectedIndexesProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
   var virtualReturn_CArray = newSeq[pointer](len(virtualReturn))
   for i in 0..<len(virtualReturn):
     virtualReturn_CArray[i] = virtualReturn[i].h
 
 
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
-proc callVirtualBase_updateGeometries(self: QUndoView, ): void =
-
+proc QUndoViewupdateGeometries*(self: gen_qundoview_types.QUndoView, ): void =
 
   fQUndoView_virtualbase_updateGeometries(self.h)
 
-type QUndoViewupdateGeometriesBase* = proc(): void
-proc onupdateGeometries*(self: QUndoView, slot: proc(super: QUndoViewupdateGeometriesBase): void) =
+type QUndoViewupdateGeometriesProc* = proc(): void
+proc onupdateGeometries*(self: gen_qundoview_types.QUndoView, slot: QUndoViewupdateGeometriesProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewupdateGeometriesBase): void
-  var tmp = new Cb
+  var tmp = new QUndoViewupdateGeometriesProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_updateGeometries(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_updateGeometries(self: ptr cQUndoView, slot: int): void {.exportc: "miqt_exec_callback_QUndoView_updateGeometries ".} =
-  type Cb = proc(super: QUndoViewupdateGeometriesBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_updateGeometries(QUndoView(h: self), )
+  var nimfunc = cast[ptr QUndoViewupdateGeometriesProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_isIndexHidden(self: QUndoView, index: gen_qabstractitemmodel.QModelIndex): bool =
-
+  nimfunc[]()
+proc QUndoViewisIndexHidden*(self: gen_qundoview_types.QUndoView, index: gen_qabstractitemmodel.QModelIndex): bool =
 
   fQUndoView_virtualbase_isIndexHidden(self.h, index.h)
 
-type QUndoViewisIndexHiddenBase* = proc(index: gen_qabstractitemmodel.QModelIndex): bool
-proc onisIndexHidden*(self: QUndoView, slot: proc(super: QUndoViewisIndexHiddenBase, index: gen_qabstractitemmodel.QModelIndex): bool) =
+type QUndoViewisIndexHiddenProc* = proc(index: gen_qabstractitemmodel.QModelIndex): bool
+proc onisIndexHidden*(self: gen_qundoview_types.QUndoView, slot: QUndoViewisIndexHiddenProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewisIndexHiddenBase, index: gen_qabstractitemmodel.QModelIndex): bool
-  var tmp = new Cb
+  var tmp = new QUndoViewisIndexHiddenProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_isIndexHidden(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_isIndexHidden(self: ptr cQUndoView, slot: int, index: pointer): bool {.exportc: "miqt_exec_callback_QUndoView_isIndexHidden ".} =
-  type Cb = proc(super: QUndoViewisIndexHiddenBase, index: gen_qabstractitemmodel.QModelIndex): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(index: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_isIndexHidden(QUndoView(h: self), index)
+  var nimfunc = cast[ptr QUndoViewisIndexHiddenProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: index)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_selectionChanged(self: QUndoView, selected: gen_qitemselectionmodel.QItemSelection, deselected: gen_qitemselectionmodel.QItemSelection): void =
-
+proc QUndoViewselectionChanged*(self: gen_qundoview_types.QUndoView, selected: gen_qitemselectionmodel.QItemSelection, deselected: gen_qitemselectionmodel.QItemSelection): void =
 
   fQUndoView_virtualbase_selectionChanged(self.h, selected.h, deselected.h)
 
-type QUndoViewselectionChangedBase* = proc(selected: gen_qitemselectionmodel.QItemSelection, deselected: gen_qitemselectionmodel.QItemSelection): void
-proc onselectionChanged*(self: QUndoView, slot: proc(super: QUndoViewselectionChangedBase, selected: gen_qitemselectionmodel.QItemSelection, deselected: gen_qitemselectionmodel.QItemSelection): void) =
+type QUndoViewselectionChangedProc* = proc(selected: gen_qitemselectionmodel.QItemSelection, deselected: gen_qitemselectionmodel.QItemSelection): void
+proc onselectionChanged*(self: gen_qundoview_types.QUndoView, slot: QUndoViewselectionChangedProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewselectionChangedBase, selected: gen_qitemselectionmodel.QItemSelection, deselected: gen_qitemselectionmodel.QItemSelection): void
-  var tmp = new Cb
+  var tmp = new QUndoViewselectionChangedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_selectionChanged(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_selectionChanged(self: ptr cQUndoView, slot: int, selected: pointer, deselected: pointer): void {.exportc: "miqt_exec_callback_QUndoView_selectionChanged ".} =
-  type Cb = proc(super: QUndoViewselectionChangedBase, selected: gen_qitemselectionmodel.QItemSelection, deselected: gen_qitemselectionmodel.QItemSelection): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(selected: gen_qitemselectionmodel.QItemSelection, deselected: gen_qitemselectionmodel.QItemSelection): auto =
-    callVirtualBase_selectionChanged(QUndoView(h: self), selected, deselected)
+  var nimfunc = cast[ptr QUndoViewselectionChangedProc](cast[pointer](slot))
   let slotval1 = gen_qitemselectionmodel.QItemSelection(h: selected)
 
   let slotval2 = gen_qitemselectionmodel.QItemSelection(h: deselected)
 
 
-  nimfunc[](superCall, slotval1, slotval2)
-proc callVirtualBase_currentChanged(self: QUndoView, current: gen_qabstractitemmodel.QModelIndex, previous: gen_qabstractitemmodel.QModelIndex): void =
-
+  nimfunc[](slotval1, slotval2)
+proc QUndoViewcurrentChanged*(self: gen_qundoview_types.QUndoView, current: gen_qabstractitemmodel.QModelIndex, previous: gen_qabstractitemmodel.QModelIndex): void =
 
   fQUndoView_virtualbase_currentChanged(self.h, current.h, previous.h)
 
-type QUndoViewcurrentChangedBase* = proc(current: gen_qabstractitemmodel.QModelIndex, previous: gen_qabstractitemmodel.QModelIndex): void
-proc oncurrentChanged*(self: QUndoView, slot: proc(super: QUndoViewcurrentChangedBase, current: gen_qabstractitemmodel.QModelIndex, previous: gen_qabstractitemmodel.QModelIndex): void) =
+type QUndoViewcurrentChangedProc* = proc(current: gen_qabstractitemmodel.QModelIndex, previous: gen_qabstractitemmodel.QModelIndex): void
+proc oncurrentChanged*(self: gen_qundoview_types.QUndoView, slot: QUndoViewcurrentChangedProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewcurrentChangedBase, current: gen_qabstractitemmodel.QModelIndex, previous: gen_qabstractitemmodel.QModelIndex): void
-  var tmp = new Cb
+  var tmp = new QUndoViewcurrentChangedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_currentChanged(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_currentChanged(self: ptr cQUndoView, slot: int, current: pointer, previous: pointer): void {.exportc: "miqt_exec_callback_QUndoView_currentChanged ".} =
-  type Cb = proc(super: QUndoViewcurrentChangedBase, current: gen_qabstractitemmodel.QModelIndex, previous: gen_qabstractitemmodel.QModelIndex): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(current: gen_qabstractitemmodel.QModelIndex, previous: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_currentChanged(QUndoView(h: self), current, previous)
+  var nimfunc = cast[ptr QUndoViewcurrentChangedProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: current)
 
   let slotval2 = gen_qabstractitemmodel.QModelIndex(h: previous)
 
 
-  nimfunc[](superCall, slotval1, slotval2)
-proc callVirtualBase_viewportSizeHint(self: QUndoView, ): gen_qsize.QSize =
-
+  nimfunc[](slotval1, slotval2)
+proc QUndoViewviewportSizeHint*(self: gen_qundoview_types.QUndoView, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQUndoView_virtualbase_viewportSizeHint(self.h))
 
-type QUndoViewviewportSizeHintBase* = proc(): gen_qsize.QSize
-proc onviewportSizeHint*(self: QUndoView, slot: proc(super: QUndoViewviewportSizeHintBase): gen_qsize.QSize) =
+type QUndoViewviewportSizeHintProc* = proc(): gen_qsize.QSize
+proc onviewportSizeHint*(self: gen_qundoview_types.QUndoView, slot: QUndoViewviewportSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewviewportSizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QUndoViewviewportSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_viewportSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_viewportSizeHint(self: ptr cQUndoView, slot: int): pointer {.exportc: "miqt_exec_callback_QUndoView_viewportSizeHint ".} =
-  type Cb = proc(super: QUndoViewviewportSizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_viewportSizeHint(QUndoView(h: self), )
+  var nimfunc = cast[ptr QUndoViewviewportSizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_setModel(self: QUndoView, model: gen_qabstractitemmodel.QAbstractItemModel): void =
-
+proc QUndoViewsetModel*(self: gen_qundoview_types.QUndoView, model: gen_qabstractitemmodel.QAbstractItemModel): void =
 
   fQUndoView_virtualbase_setModel(self.h, model.h)
 
-type QUndoViewsetModelBase* = proc(model: gen_qabstractitemmodel.QAbstractItemModel): void
-proc onsetModel*(self: QUndoView, slot: proc(super: QUndoViewsetModelBase, model: gen_qabstractitemmodel.QAbstractItemModel): void) =
+type QUndoViewsetModelProc* = proc(model: gen_qabstractitemmodel.QAbstractItemModel): void
+proc onsetModel*(self: gen_qundoview_types.QUndoView, slot: QUndoViewsetModelProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewsetModelBase, model: gen_qabstractitemmodel.QAbstractItemModel): void
-  var tmp = new Cb
+  var tmp = new QUndoViewsetModelProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_setModel(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_setModel(self: ptr cQUndoView, slot: int, model: pointer): void {.exportc: "miqt_exec_callback_QUndoView_setModel ".} =
-  type Cb = proc(super: QUndoViewsetModelBase, model: gen_qabstractitemmodel.QAbstractItemModel): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(model: gen_qabstractitemmodel.QAbstractItemModel): auto =
-    callVirtualBase_setModel(QUndoView(h: self), model)
+  var nimfunc = cast[ptr QUndoViewsetModelProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QAbstractItemModel(h: model)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_setSelectionModel(self: QUndoView, selectionModel: gen_qitemselectionmodel.QItemSelectionModel): void =
-
+  nimfunc[](slotval1)
+proc QUndoViewsetSelectionModel*(self: gen_qundoview_types.QUndoView, selectionModel: gen_qitemselectionmodel.QItemSelectionModel): void =
 
   fQUndoView_virtualbase_setSelectionModel(self.h, selectionModel.h)
 
-type QUndoViewsetSelectionModelBase* = proc(selectionModel: gen_qitemselectionmodel.QItemSelectionModel): void
-proc onsetSelectionModel*(self: QUndoView, slot: proc(super: QUndoViewsetSelectionModelBase, selectionModel: gen_qitemselectionmodel.QItemSelectionModel): void) =
+type QUndoViewsetSelectionModelProc* = proc(selectionModel: gen_qitemselectionmodel.QItemSelectionModel): void
+proc onsetSelectionModel*(self: gen_qundoview_types.QUndoView, slot: QUndoViewsetSelectionModelProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewsetSelectionModelBase, selectionModel: gen_qitemselectionmodel.QItemSelectionModel): void
-  var tmp = new Cb
+  var tmp = new QUndoViewsetSelectionModelProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_setSelectionModel(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_setSelectionModel(self: ptr cQUndoView, slot: int, selectionModel: pointer): void {.exportc: "miqt_exec_callback_QUndoView_setSelectionModel ".} =
-  type Cb = proc(super: QUndoViewsetSelectionModelBase, selectionModel: gen_qitemselectionmodel.QItemSelectionModel): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(selectionModel: gen_qitemselectionmodel.QItemSelectionModel): auto =
-    callVirtualBase_setSelectionModel(QUndoView(h: self), selectionModel)
+  var nimfunc = cast[ptr QUndoViewsetSelectionModelProc](cast[pointer](slot))
   let slotval1 = gen_qitemselectionmodel.QItemSelectionModel(h: selectionModel)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyboardSearch(self: QUndoView, search: string): void =
-
+  nimfunc[](slotval1)
+proc QUndoViewkeyboardSearch*(self: gen_qundoview_types.QUndoView, search: string): void =
 
   fQUndoView_virtualbase_keyboardSearch(self.h, struct_miqt_string(data: search, len: csize_t(len(search))))
 
-type QUndoViewkeyboardSearchBase* = proc(search: string): void
-proc onkeyboardSearch*(self: QUndoView, slot: proc(super: QUndoViewkeyboardSearchBase, search: string): void) =
+type QUndoViewkeyboardSearchProc* = proc(search: string): void
+proc onkeyboardSearch*(self: gen_qundoview_types.QUndoView, slot: QUndoViewkeyboardSearchProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewkeyboardSearchBase, search: string): void
-  var tmp = new Cb
+  var tmp = new QUndoViewkeyboardSearchProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_keyboardSearch(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_keyboardSearch(self: ptr cQUndoView, slot: int, search: struct_miqt_string): void {.exportc: "miqt_exec_callback_QUndoView_keyboardSearch ".} =
-  type Cb = proc(super: QUndoViewkeyboardSearchBase, search: string): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(search: string): auto =
-    callVirtualBase_keyboardSearch(QUndoView(h: self), search)
+  var nimfunc = cast[ptr QUndoViewkeyboardSearchProc](cast[pointer](slot))
   let vsearch_ms = search
   let vsearchx_ret = string.fromBytes(toOpenArrayByte(vsearch_ms.data, 0, int(vsearch_ms.len)-1))
   c_free(vsearch_ms.data)
   let slotval1 = vsearchx_ret
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_sizeHintForRow(self: QUndoView, row: cint): cint =
-
+  nimfunc[](slotval1)
+proc QUndoViewsizeHintForRow*(self: gen_qundoview_types.QUndoView, row: cint): cint =
 
   fQUndoView_virtualbase_sizeHintForRow(self.h, row)
 
-type QUndoViewsizeHintForRowBase* = proc(row: cint): cint
-proc onsizeHintForRow*(self: QUndoView, slot: proc(super: QUndoViewsizeHintForRowBase, row: cint): cint) =
+type QUndoViewsizeHintForRowProc* = proc(row: cint): cint
+proc onsizeHintForRow*(self: gen_qundoview_types.QUndoView, slot: QUndoViewsizeHintForRowProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewsizeHintForRowBase, row: cint): cint
-  var tmp = new Cb
+  var tmp = new QUndoViewsizeHintForRowProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_sizeHintForRow(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_sizeHintForRow(self: ptr cQUndoView, slot: int, row: cint): cint {.exportc: "miqt_exec_callback_QUndoView_sizeHintForRow ".} =
-  type Cb = proc(super: QUndoViewsizeHintForRowBase, row: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(row: cint): auto =
-    callVirtualBase_sizeHintForRow(QUndoView(h: self), row)
+  var nimfunc = cast[ptr QUndoViewsizeHintForRowProc](cast[pointer](slot))
   let slotval1 = row
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_sizeHintForColumn(self: QUndoView, column: cint): cint =
-
+proc QUndoViewsizeHintForColumn*(self: gen_qundoview_types.QUndoView, column: cint): cint =
 
   fQUndoView_virtualbase_sizeHintForColumn(self.h, column)
 
-type QUndoViewsizeHintForColumnBase* = proc(column: cint): cint
-proc onsizeHintForColumn*(self: QUndoView, slot: proc(super: QUndoViewsizeHintForColumnBase, column: cint): cint) =
+type QUndoViewsizeHintForColumnProc* = proc(column: cint): cint
+proc onsizeHintForColumn*(self: gen_qundoview_types.QUndoView, slot: QUndoViewsizeHintForColumnProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewsizeHintForColumnBase, column: cint): cint
-  var tmp = new Cb
+  var tmp = new QUndoViewsizeHintForColumnProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_sizeHintForColumn(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_sizeHintForColumn(self: ptr cQUndoView, slot: int, column: cint): cint {.exportc: "miqt_exec_callback_QUndoView_sizeHintForColumn ".} =
-  type Cb = proc(super: QUndoViewsizeHintForColumnBase, column: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(column: cint): auto =
-    callVirtualBase_sizeHintForColumn(QUndoView(h: self), column)
+  var nimfunc = cast[ptr QUndoViewsizeHintForColumnProc](cast[pointer](slot))
   let slotval1 = column
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_itemDelegateForIndex(self: QUndoView, index: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemdelegate.QAbstractItemDelegate =
-
+proc QUndoViewitemDelegateForIndex*(self: gen_qundoview_types.QUndoView, index: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemdelegate.QAbstractItemDelegate =
 
   gen_qabstractitemdelegate.QAbstractItemDelegate(h: fQUndoView_virtualbase_itemDelegateForIndex(self.h, index.h))
 
-type QUndoViewitemDelegateForIndexBase* = proc(index: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemdelegate.QAbstractItemDelegate
-proc onitemDelegateForIndex*(self: QUndoView, slot: proc(super: QUndoViewitemDelegateForIndexBase, index: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemdelegate.QAbstractItemDelegate) =
+type QUndoViewitemDelegateForIndexProc* = proc(index: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemdelegate.QAbstractItemDelegate
+proc onitemDelegateForIndex*(self: gen_qundoview_types.QUndoView, slot: QUndoViewitemDelegateForIndexProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewitemDelegateForIndexBase, index: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemdelegate.QAbstractItemDelegate
-  var tmp = new Cb
+  var tmp = new QUndoViewitemDelegateForIndexProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_itemDelegateForIndex(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_itemDelegateForIndex(self: ptr cQUndoView, slot: int, index: pointer): pointer {.exportc: "miqt_exec_callback_QUndoView_itemDelegateForIndex ".} =
-  type Cb = proc(super: QUndoViewitemDelegateForIndexBase, index: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemdelegate.QAbstractItemDelegate
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(index: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_itemDelegateForIndex(QUndoView(h: self), index)
+  var nimfunc = cast[ptr QUndoViewitemDelegateForIndexProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: index)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_inputMethodQuery(self: QUndoView, query: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant =
-
+proc QUndoViewinputMethodQuery*(self: gen_qundoview_types.QUndoView, query: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQUndoView_virtualbase_inputMethodQuery(self.h, cint(query)))
 
-type QUndoViewinputMethodQueryBase* = proc(query: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-proc oninputMethodQuery*(self: QUndoView, slot: proc(super: QUndoViewinputMethodQueryBase, query: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant) =
+type QUndoViewinputMethodQueryProc* = proc(query: cint): gen_qvariant.QVariant
+proc oninputMethodQuery*(self: gen_qundoview_types.QUndoView, slot: QUndoViewinputMethodQueryProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewinputMethodQueryBase, query: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QUndoViewinputMethodQueryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_inputMethodQuery(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_inputMethodQuery(self: ptr cQUndoView, slot: int, query: cint): pointer {.exportc: "miqt_exec_callback_QUndoView_inputMethodQuery ".} =
-  type Cb = proc(super: QUndoViewinputMethodQueryBase, query: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(query: gen_qnamespace.InputMethodQuery): auto =
-    callVirtualBase_inputMethodQuery(QUndoView(h: self), query)
-  let slotval1 = gen_qnamespace.InputMethodQuery(query)
+  var nimfunc = cast[ptr QUndoViewinputMethodQueryProc](cast[pointer](slot))
+  let slotval1 = cint(query)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_selectAll(self: QUndoView, ): void =
-
+proc QUndoViewselectAll*(self: gen_qundoview_types.QUndoView, ): void =
 
   fQUndoView_virtualbase_selectAll(self.h)
 
-type QUndoViewselectAllBase* = proc(): void
-proc onselectAll*(self: QUndoView, slot: proc(super: QUndoViewselectAllBase): void) =
+type QUndoViewselectAllProc* = proc(): void
+proc onselectAll*(self: gen_qundoview_types.QUndoView, slot: QUndoViewselectAllProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewselectAllBase): void
-  var tmp = new Cb
+  var tmp = new QUndoViewselectAllProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_selectAll(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_selectAll(self: ptr cQUndoView, slot: int): void {.exportc: "miqt_exec_callback_QUndoView_selectAll ".} =
-  type Cb = proc(super: QUndoViewselectAllBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_selectAll(QUndoView(h: self), )
+  var nimfunc = cast[ptr QUndoViewselectAllProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_updateEditorData(self: QUndoView, ): void =
-
+  nimfunc[]()
+proc QUndoViewupdateEditorData*(self: gen_qundoview_types.QUndoView, ): void =
 
   fQUndoView_virtualbase_updateEditorData(self.h)
 
-type QUndoViewupdateEditorDataBase* = proc(): void
-proc onupdateEditorData*(self: QUndoView, slot: proc(super: QUndoViewupdateEditorDataBase): void) =
+type QUndoViewupdateEditorDataProc* = proc(): void
+proc onupdateEditorData*(self: gen_qundoview_types.QUndoView, slot: QUndoViewupdateEditorDataProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewupdateEditorDataBase): void
-  var tmp = new Cb
+  var tmp = new QUndoViewupdateEditorDataProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_updateEditorData(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_updateEditorData(self: ptr cQUndoView, slot: int): void {.exportc: "miqt_exec_callback_QUndoView_updateEditorData ".} =
-  type Cb = proc(super: QUndoViewupdateEditorDataBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_updateEditorData(QUndoView(h: self), )
+  var nimfunc = cast[ptr QUndoViewupdateEditorDataProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_updateEditorGeometries(self: QUndoView, ): void =
-
+  nimfunc[]()
+proc QUndoViewupdateEditorGeometries*(self: gen_qundoview_types.QUndoView, ): void =
 
   fQUndoView_virtualbase_updateEditorGeometries(self.h)
 
-type QUndoViewupdateEditorGeometriesBase* = proc(): void
-proc onupdateEditorGeometries*(self: QUndoView, slot: proc(super: QUndoViewupdateEditorGeometriesBase): void) =
+type QUndoViewupdateEditorGeometriesProc* = proc(): void
+proc onupdateEditorGeometries*(self: gen_qundoview_types.QUndoView, slot: QUndoViewupdateEditorGeometriesProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewupdateEditorGeometriesBase): void
-  var tmp = new Cb
+  var tmp = new QUndoViewupdateEditorGeometriesProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_updateEditorGeometries(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_updateEditorGeometries(self: ptr cQUndoView, slot: int): void {.exportc: "miqt_exec_callback_QUndoView_updateEditorGeometries ".} =
-  type Cb = proc(super: QUndoViewupdateEditorGeometriesBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_updateEditorGeometries(QUndoView(h: self), )
+  var nimfunc = cast[ptr QUndoViewupdateEditorGeometriesProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_verticalScrollbarAction(self: QUndoView, action: cint): void =
-
+  nimfunc[]()
+proc QUndoViewverticalScrollbarAction*(self: gen_qundoview_types.QUndoView, action: cint): void =
 
   fQUndoView_virtualbase_verticalScrollbarAction(self.h, action)
 
-type QUndoViewverticalScrollbarActionBase* = proc(action: cint): void
-proc onverticalScrollbarAction*(self: QUndoView, slot: proc(super: QUndoViewverticalScrollbarActionBase, action: cint): void) =
+type QUndoViewverticalScrollbarActionProc* = proc(action: cint): void
+proc onverticalScrollbarAction*(self: gen_qundoview_types.QUndoView, slot: QUndoViewverticalScrollbarActionProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewverticalScrollbarActionBase, action: cint): void
-  var tmp = new Cb
+  var tmp = new QUndoViewverticalScrollbarActionProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_verticalScrollbarAction(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_verticalScrollbarAction(self: ptr cQUndoView, slot: int, action: cint): void {.exportc: "miqt_exec_callback_QUndoView_verticalScrollbarAction ".} =
-  type Cb = proc(super: QUndoViewverticalScrollbarActionBase, action: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(action: cint): auto =
-    callVirtualBase_verticalScrollbarAction(QUndoView(h: self), action)
+  var nimfunc = cast[ptr QUndoViewverticalScrollbarActionProc](cast[pointer](slot))
   let slotval1 = action
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_horizontalScrollbarAction(self: QUndoView, action: cint): void =
-
+  nimfunc[](slotval1)
+proc QUndoViewhorizontalScrollbarAction*(self: gen_qundoview_types.QUndoView, action: cint): void =
 
   fQUndoView_virtualbase_horizontalScrollbarAction(self.h, action)
 
-type QUndoViewhorizontalScrollbarActionBase* = proc(action: cint): void
-proc onhorizontalScrollbarAction*(self: QUndoView, slot: proc(super: QUndoViewhorizontalScrollbarActionBase, action: cint): void) =
+type QUndoViewhorizontalScrollbarActionProc* = proc(action: cint): void
+proc onhorizontalScrollbarAction*(self: gen_qundoview_types.QUndoView, slot: QUndoViewhorizontalScrollbarActionProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewhorizontalScrollbarActionBase, action: cint): void
-  var tmp = new Cb
+  var tmp = new QUndoViewhorizontalScrollbarActionProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_horizontalScrollbarAction(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_horizontalScrollbarAction(self: ptr cQUndoView, slot: int, action: cint): void {.exportc: "miqt_exec_callback_QUndoView_horizontalScrollbarAction ".} =
-  type Cb = proc(super: QUndoViewhorizontalScrollbarActionBase, action: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(action: cint): auto =
-    callVirtualBase_horizontalScrollbarAction(QUndoView(h: self), action)
+  var nimfunc = cast[ptr QUndoViewhorizontalScrollbarActionProc](cast[pointer](slot))
   let slotval1 = action
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_verticalScrollbarValueChanged(self: QUndoView, value: cint): void =
-
+  nimfunc[](slotval1)
+proc QUndoViewverticalScrollbarValueChanged*(self: gen_qundoview_types.QUndoView, value: cint): void =
 
   fQUndoView_virtualbase_verticalScrollbarValueChanged(self.h, value)
 
-type QUndoViewverticalScrollbarValueChangedBase* = proc(value: cint): void
-proc onverticalScrollbarValueChanged*(self: QUndoView, slot: proc(super: QUndoViewverticalScrollbarValueChangedBase, value: cint): void) =
+type QUndoViewverticalScrollbarValueChangedProc* = proc(value: cint): void
+proc onverticalScrollbarValueChanged*(self: gen_qundoview_types.QUndoView, slot: QUndoViewverticalScrollbarValueChangedProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewverticalScrollbarValueChangedBase, value: cint): void
-  var tmp = new Cb
+  var tmp = new QUndoViewverticalScrollbarValueChangedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_verticalScrollbarValueChanged(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_verticalScrollbarValueChanged(self: ptr cQUndoView, slot: int, value: cint): void {.exportc: "miqt_exec_callback_QUndoView_verticalScrollbarValueChanged ".} =
-  type Cb = proc(super: QUndoViewverticalScrollbarValueChangedBase, value: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(value: cint): auto =
-    callVirtualBase_verticalScrollbarValueChanged(QUndoView(h: self), value)
+  var nimfunc = cast[ptr QUndoViewverticalScrollbarValueChangedProc](cast[pointer](slot))
   let slotval1 = value
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_horizontalScrollbarValueChanged(self: QUndoView, value: cint): void =
-
+  nimfunc[](slotval1)
+proc QUndoViewhorizontalScrollbarValueChanged*(self: gen_qundoview_types.QUndoView, value: cint): void =
 
   fQUndoView_virtualbase_horizontalScrollbarValueChanged(self.h, value)
 
-type QUndoViewhorizontalScrollbarValueChangedBase* = proc(value: cint): void
-proc onhorizontalScrollbarValueChanged*(self: QUndoView, slot: proc(super: QUndoViewhorizontalScrollbarValueChangedBase, value: cint): void) =
+type QUndoViewhorizontalScrollbarValueChangedProc* = proc(value: cint): void
+proc onhorizontalScrollbarValueChanged*(self: gen_qundoview_types.QUndoView, slot: QUndoViewhorizontalScrollbarValueChangedProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewhorizontalScrollbarValueChangedBase, value: cint): void
-  var tmp = new Cb
+  var tmp = new QUndoViewhorizontalScrollbarValueChangedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_horizontalScrollbarValueChanged(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_horizontalScrollbarValueChanged(self: ptr cQUndoView, slot: int, value: cint): void {.exportc: "miqt_exec_callback_QUndoView_horizontalScrollbarValueChanged ".} =
-  type Cb = proc(super: QUndoViewhorizontalScrollbarValueChangedBase, value: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(value: cint): auto =
-    callVirtualBase_horizontalScrollbarValueChanged(QUndoView(h: self), value)
+  var nimfunc = cast[ptr QUndoViewhorizontalScrollbarValueChangedProc](cast[pointer](slot))
   let slotval1 = value
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_closeEditor(self: QUndoView, editor: gen_qwidget.QWidget, hint: gen_qabstractitemdelegate.QAbstractItemDelegateEndEditHint): void =
-
+  nimfunc[](slotval1)
+proc QUndoViewcloseEditor*(self: gen_qundoview_types.QUndoView, editor: gen_qwidget.QWidget, hint: cint): void =
 
   fQUndoView_virtualbase_closeEditor(self.h, editor.h, cint(hint))
 
-type QUndoViewcloseEditorBase* = proc(editor: gen_qwidget.QWidget, hint: gen_qabstractitemdelegate.QAbstractItemDelegateEndEditHint): void
-proc oncloseEditor*(self: QUndoView, slot: proc(super: QUndoViewcloseEditorBase, editor: gen_qwidget.QWidget, hint: gen_qabstractitemdelegate.QAbstractItemDelegateEndEditHint): void) =
+type QUndoViewcloseEditorProc* = proc(editor: gen_qwidget.QWidget, hint: cint): void
+proc oncloseEditor*(self: gen_qundoview_types.QUndoView, slot: QUndoViewcloseEditorProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewcloseEditorBase, editor: gen_qwidget.QWidget, hint: gen_qabstractitemdelegate.QAbstractItemDelegateEndEditHint): void
-  var tmp = new Cb
+  var tmp = new QUndoViewcloseEditorProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_closeEditor(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_closeEditor(self: ptr cQUndoView, slot: int, editor: pointer, hint: cint): void {.exportc: "miqt_exec_callback_QUndoView_closeEditor ".} =
-  type Cb = proc(super: QUndoViewcloseEditorBase, editor: gen_qwidget.QWidget, hint: gen_qabstractitemdelegate.QAbstractItemDelegateEndEditHint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(editor: gen_qwidget.QWidget, hint: gen_qabstractitemdelegate.QAbstractItemDelegateEndEditHint): auto =
-    callVirtualBase_closeEditor(QUndoView(h: self), editor, hint)
+  var nimfunc = cast[ptr QUndoViewcloseEditorProc](cast[pointer](slot))
   let slotval1 = gen_qwidget.QWidget(h: editor)
 
-  let slotval2 = gen_qabstractitemdelegate.QAbstractItemDelegateEndEditHint(hint)
+  let slotval2 = cint(hint)
 
 
-  nimfunc[](superCall, slotval1, slotval2)
-proc callVirtualBase_commitData(self: QUndoView, editor: gen_qwidget.QWidget): void =
-
+  nimfunc[](slotval1, slotval2)
+proc QUndoViewcommitData*(self: gen_qundoview_types.QUndoView, editor: gen_qwidget.QWidget): void =
 
   fQUndoView_virtualbase_commitData(self.h, editor.h)
 
-type QUndoViewcommitDataBase* = proc(editor: gen_qwidget.QWidget): void
-proc oncommitData*(self: QUndoView, slot: proc(super: QUndoViewcommitDataBase, editor: gen_qwidget.QWidget): void) =
+type QUndoViewcommitDataProc* = proc(editor: gen_qwidget.QWidget): void
+proc oncommitData*(self: gen_qundoview_types.QUndoView, slot: QUndoViewcommitDataProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewcommitDataBase, editor: gen_qwidget.QWidget): void
-  var tmp = new Cb
+  var tmp = new QUndoViewcommitDataProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_commitData(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_commitData(self: ptr cQUndoView, slot: int, editor: pointer): void {.exportc: "miqt_exec_callback_QUndoView_commitData ".} =
-  type Cb = proc(super: QUndoViewcommitDataBase, editor: gen_qwidget.QWidget): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(editor: gen_qwidget.QWidget): auto =
-    callVirtualBase_commitData(QUndoView(h: self), editor)
+  var nimfunc = cast[ptr QUndoViewcommitDataProc](cast[pointer](slot))
   let slotval1 = gen_qwidget.QWidget(h: editor)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_editorDestroyed(self: QUndoView, editor: gen_qobject.QObject): void =
-
+  nimfunc[](slotval1)
+proc QUndoVieweditorDestroyed*(self: gen_qundoview_types.QUndoView, editor: gen_qobject.QObject): void =
 
   fQUndoView_virtualbase_editorDestroyed(self.h, editor.h)
 
-type QUndoVieweditorDestroyedBase* = proc(editor: gen_qobject.QObject): void
-proc oneditorDestroyed*(self: QUndoView, slot: proc(super: QUndoVieweditorDestroyedBase, editor: gen_qobject.QObject): void) =
+type QUndoVieweditorDestroyedProc* = proc(editor: gen_qobject.QObject): void
+proc oneditorDestroyed*(self: gen_qundoview_types.QUndoView, slot: QUndoVieweditorDestroyedProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoVieweditorDestroyedBase, editor: gen_qobject.QObject): void
-  var tmp = new Cb
+  var tmp = new QUndoVieweditorDestroyedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_editorDestroyed(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_editorDestroyed(self: ptr cQUndoView, slot: int, editor: pointer): void {.exportc: "miqt_exec_callback_QUndoView_editorDestroyed ".} =
-  type Cb = proc(super: QUndoVieweditorDestroyedBase, editor: gen_qobject.QObject): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(editor: gen_qobject.QObject): auto =
-    callVirtualBase_editorDestroyed(QUndoView(h: self), editor)
+  var nimfunc = cast[ptr QUndoVieweditorDestroyedProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: editor)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_edit2(self: QUndoView, index: gen_qabstractitemmodel.QModelIndex, trigger: gen_qabstractitemview.QAbstractItemViewEditTrigger, event: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[](slotval1)
+proc QUndoViewedit2*(self: gen_qundoview_types.QUndoView, index: gen_qabstractitemmodel.QModelIndex, trigger: cint, event: gen_qcoreevent.QEvent): bool =
 
   fQUndoView_virtualbase_edit2(self.h, index.h, cint(trigger), event.h)
 
-type QUndoViewedit2Base* = proc(index: gen_qabstractitemmodel.QModelIndex, trigger: gen_qabstractitemview.QAbstractItemViewEditTrigger, event: gen_qcoreevent.QEvent): bool
-proc onedit2*(self: QUndoView, slot: proc(super: QUndoViewedit2Base, index: gen_qabstractitemmodel.QModelIndex, trigger: gen_qabstractitemview.QAbstractItemViewEditTrigger, event: gen_qcoreevent.QEvent): bool) =
+type QUndoViewedit2Proc* = proc(index: gen_qabstractitemmodel.QModelIndex, trigger: cint, event: gen_qcoreevent.QEvent): bool
+proc onedit2*(self: gen_qundoview_types.QUndoView, slot: QUndoViewedit2Proc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewedit2Base, index: gen_qabstractitemmodel.QModelIndex, trigger: gen_qabstractitemview.QAbstractItemViewEditTrigger, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QUndoViewedit2Proc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_edit2(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_edit2(self: ptr cQUndoView, slot: int, index: pointer, trigger: cint, event: pointer): bool {.exportc: "miqt_exec_callback_QUndoView_edit2 ".} =
-  type Cb = proc(super: QUndoViewedit2Base, index: gen_qabstractitemmodel.QModelIndex, trigger: gen_qabstractitemview.QAbstractItemViewEditTrigger, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(index: gen_qabstractitemmodel.QModelIndex, trigger: gen_qabstractitemview.QAbstractItemViewEditTrigger, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_edit2(QUndoView(h: self), index, trigger, event)
+  var nimfunc = cast[ptr QUndoViewedit2Proc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: index)
 
-  let slotval2 = gen_qabstractitemview.QAbstractItemViewEditTrigger(trigger)
+  let slotval2 = cint(trigger)
 
   let slotval3 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_selectionCommand(self: QUndoView, index: gen_qabstractitemmodel.QModelIndex, event: gen_qcoreevent.QEvent): gen_qitemselectionmodel.QItemSelectionModelSelectionFlag =
+proc QUndoViewselectionCommand*(self: gen_qundoview_types.QUndoView, index: gen_qabstractitemmodel.QModelIndex, event: gen_qcoreevent.QEvent): cint =
 
+  cint(fQUndoView_virtualbase_selectionCommand(self.h, index.h, event.h))
 
-  gen_qitemselectionmodel.QItemSelectionModelSelectionFlag(fQUndoView_virtualbase_selectionCommand(self.h, index.h, event.h))
-
-type QUndoViewselectionCommandBase* = proc(index: gen_qabstractitemmodel.QModelIndex, event: gen_qcoreevent.QEvent): gen_qitemselectionmodel.QItemSelectionModelSelectionFlag
-proc onselectionCommand*(self: QUndoView, slot: proc(super: QUndoViewselectionCommandBase, index: gen_qabstractitemmodel.QModelIndex, event: gen_qcoreevent.QEvent): gen_qitemselectionmodel.QItemSelectionModelSelectionFlag) =
+type QUndoViewselectionCommandProc* = proc(index: gen_qabstractitemmodel.QModelIndex, event: gen_qcoreevent.QEvent): cint
+proc onselectionCommand*(self: gen_qundoview_types.QUndoView, slot: QUndoViewselectionCommandProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewselectionCommandBase, index: gen_qabstractitemmodel.QModelIndex, event: gen_qcoreevent.QEvent): gen_qitemselectionmodel.QItemSelectionModelSelectionFlag
-  var tmp = new Cb
+  var tmp = new QUndoViewselectionCommandProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_selectionCommand(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_selectionCommand(self: ptr cQUndoView, slot: int, index: pointer, event: pointer): cint {.exportc: "miqt_exec_callback_QUndoView_selectionCommand ".} =
-  type Cb = proc(super: QUndoViewselectionCommandBase, index: gen_qabstractitemmodel.QModelIndex, event: gen_qcoreevent.QEvent): gen_qitemselectionmodel.QItemSelectionModelSelectionFlag
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(index: gen_qabstractitemmodel.QModelIndex, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_selectionCommand(QUndoView(h: self), index, event)
+  var nimfunc = cast[ptr QUndoViewselectionCommandProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: index)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   cint(virtualReturn)
-proc callVirtualBase_focusNextPrevChild(self: QUndoView, next: bool): bool =
-
+proc QUndoViewfocusNextPrevChild*(self: gen_qundoview_types.QUndoView, next: bool): bool =
 
   fQUndoView_virtualbase_focusNextPrevChild(self.h, next)
 
-type QUndoViewfocusNextPrevChildBase* = proc(next: bool): bool
-proc onfocusNextPrevChild*(self: QUndoView, slot: proc(super: QUndoViewfocusNextPrevChildBase, next: bool): bool) =
+type QUndoViewfocusNextPrevChildProc* = proc(next: bool): bool
+proc onfocusNextPrevChild*(self: gen_qundoview_types.QUndoView, slot: QUndoViewfocusNextPrevChildProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewfocusNextPrevChildBase, next: bool): bool
-  var tmp = new Cb
+  var tmp = new QUndoViewfocusNextPrevChildProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_focusNextPrevChild(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_focusNextPrevChild(self: ptr cQUndoView, slot: int, next: bool): bool {.exportc: "miqt_exec_callback_QUndoView_focusNextPrevChild ".} =
-  type Cb = proc(super: QUndoViewfocusNextPrevChildBase, next: bool): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(next: bool): auto =
-    callVirtualBase_focusNextPrevChild(QUndoView(h: self), next)
+  var nimfunc = cast[ptr QUndoViewfocusNextPrevChildProc](cast[pointer](slot))
   let slotval1 = next
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_viewportEvent(self: QUndoView, event: gen_qcoreevent.QEvent): bool =
-
+proc QUndoViewviewportEvent*(self: gen_qundoview_types.QUndoView, event: gen_qcoreevent.QEvent): bool =
 
   fQUndoView_virtualbase_viewportEvent(self.h, event.h)
 
-type QUndoViewviewportEventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onviewportEvent*(self: QUndoView, slot: proc(super: QUndoViewviewportEventBase, event: gen_qcoreevent.QEvent): bool) =
+type QUndoViewviewportEventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onviewportEvent*(self: gen_qundoview_types.QUndoView, slot: QUndoViewviewportEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewviewportEventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QUndoViewviewportEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_viewportEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_viewportEvent(self: ptr cQUndoView, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QUndoView_viewportEvent ".} =
-  type Cb = proc(super: QUndoViewviewportEventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_viewportEvent(QUndoView(h: self), event)
+  var nimfunc = cast[ptr QUndoViewviewportEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_mousePressEvent(self: QUndoView, event: gen_qevent.QMouseEvent): void =
-
+proc QUndoViewmousePressEvent*(self: gen_qundoview_types.QUndoView, event: gen_qevent.QMouseEvent): void =
 
   fQUndoView_virtualbase_mousePressEvent(self.h, event.h)
 
-type QUndoViewmousePressEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmousePressEvent*(self: QUndoView, slot: proc(super: QUndoViewmousePressEventBase, event: gen_qevent.QMouseEvent): void) =
+type QUndoViewmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmousePressEvent*(self: gen_qundoview_types.QUndoView, slot: QUndoViewmousePressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QUndoViewmousePressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_mousePressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_mousePressEvent(self: ptr cQUndoView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QUndoView_mousePressEvent ".} =
-  type Cb = proc(super: QUndoViewmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mousePressEvent(QUndoView(h: self), event)
+  var nimfunc = cast[ptr QUndoViewmousePressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseDoubleClickEvent(self: QUndoView, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QUndoViewmouseDoubleClickEvent*(self: gen_qundoview_types.QUndoView, event: gen_qevent.QMouseEvent): void =
 
   fQUndoView_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
-type QUndoViewmouseDoubleClickEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseDoubleClickEvent*(self: QUndoView, slot: proc(super: QUndoViewmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void) =
+type QUndoViewmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseDoubleClickEvent*(self: gen_qundoview_types.QUndoView, slot: QUndoViewmouseDoubleClickEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QUndoViewmouseDoubleClickEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_mouseDoubleClickEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_mouseDoubleClickEvent(self: ptr cQUndoView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QUndoView_mouseDoubleClickEvent ".} =
-  type Cb = proc(super: QUndoViewmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseDoubleClickEvent(QUndoView(h: self), event)
+  var nimfunc = cast[ptr QUndoViewmouseDoubleClickEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragEnterEvent(self: QUndoView, event: gen_qevent.QDragEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QUndoViewdragEnterEvent*(self: gen_qundoview_types.QUndoView, event: gen_qevent.QDragEnterEvent): void =
 
   fQUndoView_virtualbase_dragEnterEvent(self.h, event.h)
 
-type QUndoViewdragEnterEventBase* = proc(event: gen_qevent.QDragEnterEvent): void
-proc ondragEnterEvent*(self: QUndoView, slot: proc(super: QUndoViewdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void) =
+type QUndoViewdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
+proc ondragEnterEvent*(self: gen_qundoview_types.QUndoView, slot: QUndoViewdragEnterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QUndoViewdragEnterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_dragEnterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_dragEnterEvent(self: ptr cQUndoView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QUndoView_dragEnterEvent ".} =
-  type Cb = proc(super: QUndoViewdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragEnterEvent): auto =
-    callVirtualBase_dragEnterEvent(QUndoView(h: self), event)
+  var nimfunc = cast[ptr QUndoViewdragEnterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusInEvent(self: QUndoView, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QUndoViewfocusInEvent*(self: gen_qundoview_types.QUndoView, event: gen_qevent.QFocusEvent): void =
 
   fQUndoView_virtualbase_focusInEvent(self.h, event.h)
 
-type QUndoViewfocusInEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusInEvent*(self: QUndoView, slot: proc(super: QUndoViewfocusInEventBase, event: gen_qevent.QFocusEvent): void) =
+type QUndoViewfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusInEvent*(self: gen_qundoview_types.QUndoView, slot: QUndoViewfocusInEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QUndoViewfocusInEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_focusInEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_focusInEvent(self: ptr cQUndoView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QUndoView_focusInEvent ".} =
-  type Cb = proc(super: QUndoViewfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusInEvent(QUndoView(h: self), event)
+  var nimfunc = cast[ptr QUndoViewfocusInEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusOutEvent(self: QUndoView, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QUndoViewfocusOutEvent*(self: gen_qundoview_types.QUndoView, event: gen_qevent.QFocusEvent): void =
 
   fQUndoView_virtualbase_focusOutEvent(self.h, event.h)
 
-type QUndoViewfocusOutEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusOutEvent*(self: QUndoView, slot: proc(super: QUndoViewfocusOutEventBase, event: gen_qevent.QFocusEvent): void) =
+type QUndoViewfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusOutEvent*(self: gen_qundoview_types.QUndoView, slot: QUndoViewfocusOutEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QUndoViewfocusOutEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_focusOutEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_focusOutEvent(self: ptr cQUndoView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QUndoView_focusOutEvent ".} =
-  type Cb = proc(super: QUndoViewfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusOutEvent(QUndoView(h: self), event)
+  var nimfunc = cast[ptr QUndoViewfocusOutEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyPressEvent(self: QUndoView, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QUndoViewkeyPressEvent*(self: gen_qundoview_types.QUndoView, event: gen_qevent.QKeyEvent): void =
 
   fQUndoView_virtualbase_keyPressEvent(self.h, event.h)
 
-type QUndoViewkeyPressEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyPressEvent*(self: QUndoView, slot: proc(super: QUndoViewkeyPressEventBase, event: gen_qevent.QKeyEvent): void) =
+type QUndoViewkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyPressEvent*(self: gen_qundoview_types.QUndoView, slot: QUndoViewkeyPressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QUndoViewkeyPressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_keyPressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_keyPressEvent(self: ptr cQUndoView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QUndoView_keyPressEvent ".} =
-  type Cb = proc(super: QUndoViewkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyPressEvent(QUndoView(h: self), event)
+  var nimfunc = cast[ptr QUndoViewkeyPressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_inputMethodEvent(self: QUndoView, event: gen_qevent.QInputMethodEvent): void =
-
+  nimfunc[](slotval1)
+proc QUndoViewinputMethodEvent*(self: gen_qundoview_types.QUndoView, event: gen_qevent.QInputMethodEvent): void =
 
   fQUndoView_virtualbase_inputMethodEvent(self.h, event.h)
 
-type QUndoViewinputMethodEventBase* = proc(event: gen_qevent.QInputMethodEvent): void
-proc oninputMethodEvent*(self: QUndoView, slot: proc(super: QUndoViewinputMethodEventBase, event: gen_qevent.QInputMethodEvent): void) =
+type QUndoViewinputMethodEventProc* = proc(event: gen_qevent.QInputMethodEvent): void
+proc oninputMethodEvent*(self: gen_qundoview_types.QUndoView, slot: QUndoViewinputMethodEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewinputMethodEventBase, event: gen_qevent.QInputMethodEvent): void
-  var tmp = new Cb
+  var tmp = new QUndoViewinputMethodEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_inputMethodEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_inputMethodEvent(self: ptr cQUndoView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QUndoView_inputMethodEvent ".} =
-  type Cb = proc(super: QUndoViewinputMethodEventBase, event: gen_qevent.QInputMethodEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QInputMethodEvent): auto =
-    callVirtualBase_inputMethodEvent(QUndoView(h: self), event)
+  var nimfunc = cast[ptr QUndoViewinputMethodEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QInputMethodEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_eventFilter(self: QUndoView, objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[](slotval1)
+proc QUndoVieweventFilter*(self: gen_qundoview_types.QUndoView, objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQUndoView_virtualbase_eventFilter(self.h, objectVal.h, event.h)
 
-type QUndoVieweventFilterBase* = proc(objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QUndoView, slot: proc(super: QUndoVieweventFilterBase, objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QUndoVieweventFilterProc* = proc(objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qundoview_types.QUndoView, slot: QUndoVieweventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoVieweventFilterBase, objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QUndoVieweventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_eventFilter(self: ptr cQUndoView, slot: int, objectVal: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QUndoView_eventFilter ".} =
-  type Cb = proc(super: QUndoVieweventFilterBase, objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QUndoView(h: self), objectVal, event)
+  var nimfunc = cast[ptr QUndoVieweventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: objectVal)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_minimumSizeHint(self: QUndoView, ): gen_qsize.QSize =
-
+proc QUndoViewminimumSizeHint*(self: gen_qundoview_types.QUndoView, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQUndoView_virtualbase_minimumSizeHint(self.h))
 
-type QUndoViewminimumSizeHintBase* = proc(): gen_qsize.QSize
-proc onminimumSizeHint*(self: QUndoView, slot: proc(super: QUndoViewminimumSizeHintBase): gen_qsize.QSize) =
+type QUndoViewminimumSizeHintProc* = proc(): gen_qsize.QSize
+proc onminimumSizeHint*(self: gen_qundoview_types.QUndoView, slot: QUndoViewminimumSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewminimumSizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QUndoViewminimumSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_minimumSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_minimumSizeHint(self: ptr cQUndoView, slot: int): pointer {.exportc: "miqt_exec_callback_QUndoView_minimumSizeHint ".} =
-  type Cb = proc(super: QUndoViewminimumSizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_minimumSizeHint(QUndoView(h: self), )
+  var nimfunc = cast[ptr QUndoViewminimumSizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_sizeHint(self: QUndoView, ): gen_qsize.QSize =
-
+proc QUndoViewsizeHint*(self: gen_qundoview_types.QUndoView, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQUndoView_virtualbase_sizeHint(self.h))
 
-type QUndoViewsizeHintBase* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: QUndoView, slot: proc(super: QUndoViewsizeHintBase): gen_qsize.QSize) =
+type QUndoViewsizeHintProc* = proc(): gen_qsize.QSize
+proc onsizeHint*(self: gen_qundoview_types.QUndoView, slot: QUndoViewsizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewsizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QUndoViewsizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_sizeHint(self: ptr cQUndoView, slot: int): pointer {.exportc: "miqt_exec_callback_QUndoView_sizeHint ".} =
-  type Cb = proc(super: QUndoViewsizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sizeHint(QUndoView(h: self), )
+  var nimfunc = cast[ptr QUndoViewsizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_setupViewport(self: QUndoView, viewport: gen_qwidget.QWidget): void =
-
+proc QUndoViewsetupViewport*(self: gen_qundoview_types.QUndoView, viewport: gen_qwidget.QWidget): void =
 
   fQUndoView_virtualbase_setupViewport(self.h, viewport.h)
 
-type QUndoViewsetupViewportBase* = proc(viewport: gen_qwidget.QWidget): void
-proc onsetupViewport*(self: QUndoView, slot: proc(super: QUndoViewsetupViewportBase, viewport: gen_qwidget.QWidget): void) =
+type QUndoViewsetupViewportProc* = proc(viewport: gen_qwidget.QWidget): void
+proc onsetupViewport*(self: gen_qundoview_types.QUndoView, slot: QUndoViewsetupViewportProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewsetupViewportBase, viewport: gen_qwidget.QWidget): void
-  var tmp = new Cb
+  var tmp = new QUndoViewsetupViewportProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_setupViewport(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_setupViewport(self: ptr cQUndoView, slot: int, viewport: pointer): void {.exportc: "miqt_exec_callback_QUndoView_setupViewport ".} =
-  type Cb = proc(super: QUndoViewsetupViewportBase, viewport: gen_qwidget.QWidget): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(viewport: gen_qwidget.QWidget): auto =
-    callVirtualBase_setupViewport(QUndoView(h: self), viewport)
+  var nimfunc = cast[ptr QUndoViewsetupViewportProc](cast[pointer](slot))
   let slotval1 = gen_qwidget.QWidget(h: viewport)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_contextMenuEvent(self: QUndoView, param1: gen_qevent.QContextMenuEvent): void =
-
+  nimfunc[](slotval1)
+proc QUndoViewcontextMenuEvent*(self: gen_qundoview_types.QUndoView, param1: gen_qevent.QContextMenuEvent): void =
 
   fQUndoView_virtualbase_contextMenuEvent(self.h, param1.h)
 
-type QUndoViewcontextMenuEventBase* = proc(param1: gen_qevent.QContextMenuEvent): void
-proc oncontextMenuEvent*(self: QUndoView, slot: proc(super: QUndoViewcontextMenuEventBase, param1: gen_qevent.QContextMenuEvent): void) =
+type QUndoViewcontextMenuEventProc* = proc(param1: gen_qevent.QContextMenuEvent): void
+proc oncontextMenuEvent*(self: gen_qundoview_types.QUndoView, slot: QUndoViewcontextMenuEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewcontextMenuEventBase, param1: gen_qevent.QContextMenuEvent): void
-  var tmp = new Cb
+  var tmp = new QUndoViewcontextMenuEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_contextMenuEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_contextMenuEvent(self: ptr cQUndoView, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QUndoView_contextMenuEvent ".} =
-  type Cb = proc(super: QUndoViewcontextMenuEventBase, param1: gen_qevent.QContextMenuEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QContextMenuEvent): auto =
-    callVirtualBase_contextMenuEvent(QUndoView(h: self), param1)
+  var nimfunc = cast[ptr QUndoViewcontextMenuEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QContextMenuEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_changeEvent(self: QUndoView, param1: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QUndoViewchangeEvent*(self: gen_qundoview_types.QUndoView, param1: gen_qcoreevent.QEvent): void =
 
   fQUndoView_virtualbase_changeEvent(self.h, param1.h)
 
-type QUndoViewchangeEventBase* = proc(param1: gen_qcoreevent.QEvent): void
-proc onchangeEvent*(self: QUndoView, slot: proc(super: QUndoViewchangeEventBase, param1: gen_qcoreevent.QEvent): void) =
+type QUndoViewchangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
+proc onchangeEvent*(self: gen_qundoview_types.QUndoView, slot: QUndoViewchangeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewchangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QUndoViewchangeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_changeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_changeEvent(self: ptr cQUndoView, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QUndoView_changeEvent ".} =
-  type Cb = proc(super: QUndoViewchangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_changeEvent(QUndoView(h: self), param1)
+  var nimfunc = cast[ptr QUndoViewchangeEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_initStyleOption(self: QUndoView, option: gen_qstyleoption.QStyleOptionFrame): void =
-
+  nimfunc[](slotval1)
+proc QUndoViewinitStyleOption*(self: gen_qundoview_types.QUndoView, option: gen_qstyleoption.QStyleOptionFrame): void =
 
   fQUndoView_virtualbase_initStyleOption(self.h, option.h)
 
-type QUndoViewinitStyleOptionBase* = proc(option: gen_qstyleoption.QStyleOptionFrame): void
-proc oninitStyleOption*(self: QUndoView, slot: proc(super: QUndoViewinitStyleOptionBase, option: gen_qstyleoption.QStyleOptionFrame): void) =
+type QUndoViewinitStyleOptionProc* = proc(option: gen_qstyleoption.QStyleOptionFrame): void
+proc oninitStyleOption*(self: gen_qundoview_types.QUndoView, slot: QUndoViewinitStyleOptionProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewinitStyleOptionBase, option: gen_qstyleoption.QStyleOptionFrame): void
-  var tmp = new Cb
+  var tmp = new QUndoViewinitStyleOptionProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_initStyleOption(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_initStyleOption(self: ptr cQUndoView, slot: int, option: pointer): void {.exportc: "miqt_exec_callback_QUndoView_initStyleOption ".} =
-  type Cb = proc(super: QUndoViewinitStyleOptionBase, option: gen_qstyleoption.QStyleOptionFrame): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(option: gen_qstyleoption.QStyleOptionFrame): auto =
-    callVirtualBase_initStyleOption(QUndoView(h: self), option)
+  var nimfunc = cast[ptr QUndoViewinitStyleOptionProc](cast[pointer](slot))
   let slotval1 = gen_qstyleoption.QStyleOptionFrame(h: option)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_devType(self: QUndoView, ): cint =
-
+  nimfunc[](slotval1)
+proc QUndoViewdevType*(self: gen_qundoview_types.QUndoView, ): cint =
 
   fQUndoView_virtualbase_devType(self.h)
 
-type QUndoViewdevTypeBase* = proc(): cint
-proc ondevType*(self: QUndoView, slot: proc(super: QUndoViewdevTypeBase): cint) =
+type QUndoViewdevTypeProc* = proc(): cint
+proc ondevType*(self: gen_qundoview_types.QUndoView, slot: QUndoViewdevTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewdevTypeBase): cint
-  var tmp = new Cb
+  var tmp = new QUndoViewdevTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_devType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_devType(self: ptr cQUndoView, slot: int): cint {.exportc: "miqt_exec_callback_QUndoView_devType ".} =
-  type Cb = proc(super: QUndoViewdevTypeBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_devType(QUndoView(h: self), )
+  var nimfunc = cast[ptr QUndoViewdevTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setVisible(self: QUndoView, visible: bool): void =
-
+proc QUndoViewsetVisible*(self: gen_qundoview_types.QUndoView, visible: bool): void =
 
   fQUndoView_virtualbase_setVisible(self.h, visible)
 
-type QUndoViewsetVisibleBase* = proc(visible: bool): void
-proc onsetVisible*(self: QUndoView, slot: proc(super: QUndoViewsetVisibleBase, visible: bool): void) =
+type QUndoViewsetVisibleProc* = proc(visible: bool): void
+proc onsetVisible*(self: gen_qundoview_types.QUndoView, slot: QUndoViewsetVisibleProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewsetVisibleBase, visible: bool): void
-  var tmp = new Cb
+  var tmp = new QUndoViewsetVisibleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_setVisible(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_setVisible(self: ptr cQUndoView, slot: int, visible: bool): void {.exportc: "miqt_exec_callback_QUndoView_setVisible ".} =
-  type Cb = proc(super: QUndoViewsetVisibleBase, visible: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(visible: bool): auto =
-    callVirtualBase_setVisible(QUndoView(h: self), visible)
+  var nimfunc = cast[ptr QUndoViewsetVisibleProc](cast[pointer](slot))
   let slotval1 = visible
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_heightForWidth(self: QUndoView, param1: cint): cint =
-
+  nimfunc[](slotval1)
+proc QUndoViewheightForWidth*(self: gen_qundoview_types.QUndoView, param1: cint): cint =
 
   fQUndoView_virtualbase_heightForWidth(self.h, param1)
 
-type QUndoViewheightForWidthBase* = proc(param1: cint): cint
-proc onheightForWidth*(self: QUndoView, slot: proc(super: QUndoViewheightForWidthBase, param1: cint): cint) =
+type QUndoViewheightForWidthProc* = proc(param1: cint): cint
+proc onheightForWidth*(self: gen_qundoview_types.QUndoView, slot: QUndoViewheightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewheightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QUndoViewheightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_heightForWidth(self: ptr cQUndoView, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QUndoView_heightForWidth ".} =
-  type Cb = proc(super: QUndoViewheightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_heightForWidth(QUndoView(h: self), param1)
+  var nimfunc = cast[ptr QUndoViewheightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_hasHeightForWidth(self: QUndoView, ): bool =
-
+proc QUndoViewhasHeightForWidth*(self: gen_qundoview_types.QUndoView, ): bool =
 
   fQUndoView_virtualbase_hasHeightForWidth(self.h)
 
-type QUndoViewhasHeightForWidthBase* = proc(): bool
-proc onhasHeightForWidth*(self: QUndoView, slot: proc(super: QUndoViewhasHeightForWidthBase): bool) =
+type QUndoViewhasHeightForWidthProc* = proc(): bool
+proc onhasHeightForWidth*(self: gen_qundoview_types.QUndoView, slot: QUndoViewhasHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewhasHeightForWidthBase): bool
-  var tmp = new Cb
+  var tmp = new QUndoViewhasHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_hasHeightForWidth(self: ptr cQUndoView, slot: int): bool {.exportc: "miqt_exec_callback_QUndoView_hasHeightForWidth ".} =
-  type Cb = proc(super: QUndoViewhasHeightForWidthBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasHeightForWidth(QUndoView(h: self), )
+  var nimfunc = cast[ptr QUndoViewhasHeightForWidthProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_paintEngine(self: QUndoView, ): gen_qpaintengine.QPaintEngine =
-
+proc QUndoViewpaintEngine*(self: gen_qundoview_types.QUndoView, ): gen_qpaintengine.QPaintEngine =
 
   gen_qpaintengine.QPaintEngine(h: fQUndoView_virtualbase_paintEngine(self.h))
 
-type QUndoViewpaintEngineBase* = proc(): gen_qpaintengine.QPaintEngine
-proc onpaintEngine*(self: QUndoView, slot: proc(super: QUndoViewpaintEngineBase): gen_qpaintengine.QPaintEngine) =
+type QUndoViewpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
+proc onpaintEngine*(self: gen_qundoview_types.QUndoView, slot: QUndoViewpaintEngineProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var tmp = new Cb
+  var tmp = new QUndoViewpaintEngineProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_paintEngine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_paintEngine(self: ptr cQUndoView, slot: int): pointer {.exportc: "miqt_exec_callback_QUndoView_paintEngine ".} =
-  type Cb = proc(super: QUndoViewpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_paintEngine(QUndoView(h: self), )
+  var nimfunc = cast[ptr QUndoViewpaintEngineProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_keyReleaseEvent(self: QUndoView, event: gen_qevent.QKeyEvent): void =
-
+proc QUndoViewkeyReleaseEvent*(self: gen_qundoview_types.QUndoView, event: gen_qevent.QKeyEvent): void =
 
   fQUndoView_virtualbase_keyReleaseEvent(self.h, event.h)
 
-type QUndoViewkeyReleaseEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyReleaseEvent*(self: QUndoView, slot: proc(super: QUndoViewkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void) =
+type QUndoViewkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyReleaseEvent*(self: gen_qundoview_types.QUndoView, slot: QUndoViewkeyReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QUndoViewkeyReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_keyReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_keyReleaseEvent(self: ptr cQUndoView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QUndoView_keyReleaseEvent ".} =
-  type Cb = proc(super: QUndoViewkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyReleaseEvent(QUndoView(h: self), event)
+  var nimfunc = cast[ptr QUndoViewkeyReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_enterEvent(self: QUndoView, event: gen_qevent.QEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QUndoViewenterEvent*(self: gen_qundoview_types.QUndoView, event: gen_qevent.QEnterEvent): void =
 
   fQUndoView_virtualbase_enterEvent(self.h, event.h)
 
-type QUndoViewenterEventBase* = proc(event: gen_qevent.QEnterEvent): void
-proc onenterEvent*(self: QUndoView, slot: proc(super: QUndoViewenterEventBase, event: gen_qevent.QEnterEvent): void) =
+type QUndoViewenterEventProc* = proc(event: gen_qevent.QEnterEvent): void
+proc onenterEvent*(self: gen_qundoview_types.QUndoView, slot: QUndoViewenterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewenterEventBase, event: gen_qevent.QEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QUndoViewenterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_enterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_enterEvent(self: ptr cQUndoView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QUndoView_enterEvent ".} =
-  type Cb = proc(super: QUndoViewenterEventBase, event: gen_qevent.QEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QEnterEvent): auto =
-    callVirtualBase_enterEvent(QUndoView(h: self), event)
+  var nimfunc = cast[ptr QUndoViewenterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_leaveEvent(self: QUndoView, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QUndoViewleaveEvent*(self: gen_qundoview_types.QUndoView, event: gen_qcoreevent.QEvent): void =
 
   fQUndoView_virtualbase_leaveEvent(self.h, event.h)
 
-type QUndoViewleaveEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onleaveEvent*(self: QUndoView, slot: proc(super: QUndoViewleaveEventBase, event: gen_qcoreevent.QEvent): void) =
+type QUndoViewleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onleaveEvent*(self: gen_qundoview_types.QUndoView, slot: QUndoViewleaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QUndoViewleaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_leaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_leaveEvent(self: ptr cQUndoView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QUndoView_leaveEvent ".} =
-  type Cb = proc(super: QUndoViewleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_leaveEvent(QUndoView(h: self), event)
+  var nimfunc = cast[ptr QUndoViewleaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_moveEvent(self: QUndoView, event: gen_qevent.QMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QUndoViewmoveEvent*(self: gen_qundoview_types.QUndoView, event: gen_qevent.QMoveEvent): void =
 
   fQUndoView_virtualbase_moveEvent(self.h, event.h)
 
-type QUndoViewmoveEventBase* = proc(event: gen_qevent.QMoveEvent): void
-proc onmoveEvent*(self: QUndoView, slot: proc(super: QUndoViewmoveEventBase, event: gen_qevent.QMoveEvent): void) =
+type QUndoViewmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
+proc onmoveEvent*(self: gen_qundoview_types.QUndoView, slot: QUndoViewmoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QUndoViewmoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_moveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_moveEvent(self: ptr cQUndoView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QUndoView_moveEvent ".} =
-  type Cb = proc(super: QUndoViewmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMoveEvent): auto =
-    callVirtualBase_moveEvent(QUndoView(h: self), event)
+  var nimfunc = cast[ptr QUndoViewmoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_closeEvent(self: QUndoView, event: gen_qevent.QCloseEvent): void =
-
+  nimfunc[](slotval1)
+proc QUndoViewcloseEvent*(self: gen_qundoview_types.QUndoView, event: gen_qevent.QCloseEvent): void =
 
   fQUndoView_virtualbase_closeEvent(self.h, event.h)
 
-type QUndoViewcloseEventBase* = proc(event: gen_qevent.QCloseEvent): void
-proc oncloseEvent*(self: QUndoView, slot: proc(super: QUndoViewcloseEventBase, event: gen_qevent.QCloseEvent): void) =
+type QUndoViewcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
+proc oncloseEvent*(self: gen_qundoview_types.QUndoView, slot: QUndoViewcloseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var tmp = new Cb
+  var tmp = new QUndoViewcloseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_closeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_closeEvent(self: ptr cQUndoView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QUndoView_closeEvent ".} =
-  type Cb = proc(super: QUndoViewcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QCloseEvent): auto =
-    callVirtualBase_closeEvent(QUndoView(h: self), event)
+  var nimfunc = cast[ptr QUndoViewcloseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QCloseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_tabletEvent(self: QUndoView, event: gen_qevent.QTabletEvent): void =
-
+  nimfunc[](slotval1)
+proc QUndoViewtabletEvent*(self: gen_qundoview_types.QUndoView, event: gen_qevent.QTabletEvent): void =
 
   fQUndoView_virtualbase_tabletEvent(self.h, event.h)
 
-type QUndoViewtabletEventBase* = proc(event: gen_qevent.QTabletEvent): void
-proc ontabletEvent*(self: QUndoView, slot: proc(super: QUndoViewtabletEventBase, event: gen_qevent.QTabletEvent): void) =
+type QUndoViewtabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
+proc ontabletEvent*(self: gen_qundoview_types.QUndoView, slot: QUndoViewtabletEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewtabletEventBase, event: gen_qevent.QTabletEvent): void
-  var tmp = new Cb
+  var tmp = new QUndoViewtabletEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_tabletEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_tabletEvent(self: ptr cQUndoView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QUndoView_tabletEvent ".} =
-  type Cb = proc(super: QUndoViewtabletEventBase, event: gen_qevent.QTabletEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QTabletEvent): auto =
-    callVirtualBase_tabletEvent(QUndoView(h: self), event)
+  var nimfunc = cast[ptr QUndoViewtabletEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QTabletEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_actionEvent(self: QUndoView, event: gen_qevent.QActionEvent): void =
-
+  nimfunc[](slotval1)
+proc QUndoViewactionEvent*(self: gen_qundoview_types.QUndoView, event: gen_qevent.QActionEvent): void =
 
   fQUndoView_virtualbase_actionEvent(self.h, event.h)
 
-type QUndoViewactionEventBase* = proc(event: gen_qevent.QActionEvent): void
-proc onactionEvent*(self: QUndoView, slot: proc(super: QUndoViewactionEventBase, event: gen_qevent.QActionEvent): void) =
+type QUndoViewactionEventProc* = proc(event: gen_qevent.QActionEvent): void
+proc onactionEvent*(self: gen_qundoview_types.QUndoView, slot: QUndoViewactionEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewactionEventBase, event: gen_qevent.QActionEvent): void
-  var tmp = new Cb
+  var tmp = new QUndoViewactionEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_actionEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_actionEvent(self: ptr cQUndoView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QUndoView_actionEvent ".} =
-  type Cb = proc(super: QUndoViewactionEventBase, event: gen_qevent.QActionEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QActionEvent): auto =
-    callVirtualBase_actionEvent(QUndoView(h: self), event)
+  var nimfunc = cast[ptr QUndoViewactionEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QActionEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_showEvent(self: QUndoView, event: gen_qevent.QShowEvent): void =
-
+  nimfunc[](slotval1)
+proc QUndoViewshowEvent*(self: gen_qundoview_types.QUndoView, event: gen_qevent.QShowEvent): void =
 
   fQUndoView_virtualbase_showEvent(self.h, event.h)
 
-type QUndoViewshowEventBase* = proc(event: gen_qevent.QShowEvent): void
-proc onshowEvent*(self: QUndoView, slot: proc(super: QUndoViewshowEventBase, event: gen_qevent.QShowEvent): void) =
+type QUndoViewshowEventProc* = proc(event: gen_qevent.QShowEvent): void
+proc onshowEvent*(self: gen_qundoview_types.QUndoView, slot: QUndoViewshowEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewshowEventBase, event: gen_qevent.QShowEvent): void
-  var tmp = new Cb
+  var tmp = new QUndoViewshowEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_showEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_showEvent(self: ptr cQUndoView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QUndoView_showEvent ".} =
-  type Cb = proc(super: QUndoViewshowEventBase, event: gen_qevent.QShowEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QShowEvent): auto =
-    callVirtualBase_showEvent(QUndoView(h: self), event)
+  var nimfunc = cast[ptr QUndoViewshowEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QShowEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hideEvent(self: QUndoView, event: gen_qevent.QHideEvent): void =
-
+  nimfunc[](slotval1)
+proc QUndoViewhideEvent*(self: gen_qundoview_types.QUndoView, event: gen_qevent.QHideEvent): void =
 
   fQUndoView_virtualbase_hideEvent(self.h, event.h)
 
-type QUndoViewhideEventBase* = proc(event: gen_qevent.QHideEvent): void
-proc onhideEvent*(self: QUndoView, slot: proc(super: QUndoViewhideEventBase, event: gen_qevent.QHideEvent): void) =
+type QUndoViewhideEventProc* = proc(event: gen_qevent.QHideEvent): void
+proc onhideEvent*(self: gen_qundoview_types.QUndoView, slot: QUndoViewhideEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewhideEventBase, event: gen_qevent.QHideEvent): void
-  var tmp = new Cb
+  var tmp = new QUndoViewhideEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_hideEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_hideEvent(self: ptr cQUndoView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QUndoView_hideEvent ".} =
-  type Cb = proc(super: QUndoViewhideEventBase, event: gen_qevent.QHideEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QHideEvent): auto =
-    callVirtualBase_hideEvent(QUndoView(h: self), event)
+  var nimfunc = cast[ptr QUndoViewhideEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QHideEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_nativeEvent(self: QUndoView, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
-
+  nimfunc[](slotval1)
+proc QUndoViewnativeEvent*(self: gen_qundoview_types.QUndoView, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
 
   fQUndoView_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
-type QUndoViewnativeEventBase* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-proc onnativeEvent*(self: QUndoView, slot: proc(super: QUndoViewnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool) =
+type QUndoViewnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
+proc onnativeEvent*(self: gen_qundoview_types.QUndoView, slot: QUndoViewnativeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-  var tmp = new Cb
+  var tmp = new QUndoViewnativeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_nativeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_nativeEvent(self: ptr cQUndoView, slot: int, eventType: struct_miqt_string, message: pointer, resultVal: ptr uint): bool {.exportc: "miqt_exec_callback_QUndoView_nativeEvent ".} =
-  type Cb = proc(super: QUndoViewnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(eventType: seq[byte], message: pointer, resultVal: ptr uint): auto =
-    callVirtualBase_nativeEvent(QUndoView(h: self), eventType, message, resultVal)
+  var nimfunc = cast[ptr QUndoViewnativeEventProc](cast[pointer](slot))
   var veventType_bytearray = eventType
   var veventTypex_ret = @(toOpenArrayByte(veventType_bytearray.data, 0, int(veventType_bytearray.len)-1))
   c_free(veventType_bytearray.data)
@@ -2457,198 +2023,158 @@ proc miqt_exec_callback_QUndoView_nativeEvent(self: ptr cQUndoView, slot: int, e
   let slotval3 = resultVal
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_metric(self: QUndoView, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint =
-
+proc QUndoViewmetric*(self: gen_qundoview_types.QUndoView, param1: cint): cint =
 
   fQUndoView_virtualbase_metric(self.h, cint(param1))
 
-type QUndoViewmetricBase* = proc(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-proc onmetric*(self: QUndoView, slot: proc(super: QUndoViewmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint) =
+type QUndoViewmetricProc* = proc(param1: cint): cint
+proc onmetric*(self: gen_qundoview_types.QUndoView, slot: QUndoViewmetricProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var tmp = new Cb
+  var tmp = new QUndoViewmetricProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_metric(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_metric(self: ptr cQUndoView, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QUndoView_metric ".} =
-  type Cb = proc(super: QUndoViewmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): auto =
-    callVirtualBase_metric(QUndoView(h: self), param1)
-  let slotval1 = gen_qpaintdevice.QPaintDevicePaintDeviceMetric(param1)
+  var nimfunc = cast[ptr QUndoViewmetricProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_initPainter(self: QUndoView, painter: gen_qpainter.QPainter): void =
-
+proc QUndoViewinitPainter*(self: gen_qundoview_types.QUndoView, painter: gen_qpainter.QPainter): void =
 
   fQUndoView_virtualbase_initPainter(self.h, painter.h)
 
-type QUndoViewinitPainterBase* = proc(painter: gen_qpainter.QPainter): void
-proc oninitPainter*(self: QUndoView, slot: proc(super: QUndoViewinitPainterBase, painter: gen_qpainter.QPainter): void) =
+type QUndoViewinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
+proc oninitPainter*(self: gen_qundoview_types.QUndoView, slot: QUndoViewinitPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewinitPainterBase, painter: gen_qpainter.QPainter): void
-  var tmp = new Cb
+  var tmp = new QUndoViewinitPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_initPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_initPainter(self: ptr cQUndoView, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_QUndoView_initPainter ".} =
-  type Cb = proc(super: QUndoViewinitPainterBase, painter: gen_qpainter.QPainter): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter): auto =
-    callVirtualBase_initPainter(QUndoView(h: self), painter)
+  var nimfunc = cast[ptr QUndoViewinitPainterProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_redirected(self: QUndoView, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
+  nimfunc[](slotval1)
+proc QUndoViewredirected*(self: gen_qundoview_types.QUndoView, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
 
   gen_qpaintdevice.QPaintDevice(h: fQUndoView_virtualbase_redirected(self.h, offset.h))
 
-type QUndoViewredirectedBase* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-proc onredirected*(self: QUndoView, slot: proc(super: QUndoViewredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice) =
+type QUndoViewredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
+proc onredirected*(self: gen_qundoview_types.QUndoView, slot: QUndoViewredirectedProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var tmp = new Cb
+  var tmp = new QUndoViewredirectedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_redirected(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_redirected(self: ptr cQUndoView, slot: int, offset: pointer): pointer {.exportc: "miqt_exec_callback_QUndoView_redirected ".} =
-  type Cb = proc(super: QUndoViewredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(offset: gen_qpoint.QPoint): auto =
-    callVirtualBase_redirected(QUndoView(h: self), offset)
+  var nimfunc = cast[ptr QUndoViewredirectedProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: offset)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_sharedPainter(self: QUndoView, ): gen_qpainter.QPainter =
-
+proc QUndoViewsharedPainter*(self: gen_qundoview_types.QUndoView, ): gen_qpainter.QPainter =
 
   gen_qpainter.QPainter(h: fQUndoView_virtualbase_sharedPainter(self.h))
 
-type QUndoViewsharedPainterBase* = proc(): gen_qpainter.QPainter
-proc onsharedPainter*(self: QUndoView, slot: proc(super: QUndoViewsharedPainterBase): gen_qpainter.QPainter) =
+type QUndoViewsharedPainterProc* = proc(): gen_qpainter.QPainter
+proc onsharedPainter*(self: gen_qundoview_types.QUndoView, slot: QUndoViewsharedPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewsharedPainterBase): gen_qpainter.QPainter
-  var tmp = new Cb
+  var tmp = new QUndoViewsharedPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_sharedPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_sharedPainter(self: ptr cQUndoView, slot: int): pointer {.exportc: "miqt_exec_callback_QUndoView_sharedPainter ".} =
-  type Cb = proc(super: QUndoViewsharedPainterBase): gen_qpainter.QPainter
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sharedPainter(QUndoView(h: self), )
+  var nimfunc = cast[ptr QUndoViewsharedPainterProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_childEvent(self: QUndoView, event: gen_qcoreevent.QChildEvent): void =
-
+proc QUndoViewchildEvent*(self: gen_qundoview_types.QUndoView, event: gen_qcoreevent.QChildEvent): void =
 
   fQUndoView_virtualbase_childEvent(self.h, event.h)
 
-type QUndoViewchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QUndoView, slot: proc(super: QUndoViewchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QUndoViewchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qundoview_types.QUndoView, slot: QUndoViewchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QUndoViewchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_childEvent(self: ptr cQUndoView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QUndoView_childEvent ".} =
-  type Cb = proc(super: QUndoViewchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QUndoView(h: self), event)
+  var nimfunc = cast[ptr QUndoViewchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QUndoView, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QUndoViewcustomEvent*(self: gen_qundoview_types.QUndoView, event: gen_qcoreevent.QEvent): void =
 
   fQUndoView_virtualbase_customEvent(self.h, event.h)
 
-type QUndoViewcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QUndoView, slot: proc(super: QUndoViewcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QUndoViewcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qundoview_types.QUndoView, slot: QUndoViewcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QUndoViewcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_customEvent(self: ptr cQUndoView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QUndoView_customEvent ".} =
-  type Cb = proc(super: QUndoViewcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QUndoView(h: self), event)
+  var nimfunc = cast[ptr QUndoViewcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QUndoView, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QUndoViewconnectNotify*(self: gen_qundoview_types.QUndoView, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQUndoView_virtualbase_connectNotify(self.h, signal.h)
 
-type QUndoViewconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QUndoView, slot: proc(super: QUndoViewconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QUndoViewconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qundoview_types.QUndoView, slot: QUndoViewconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QUndoViewconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_connectNotify(self: ptr cQUndoView, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QUndoView_connectNotify ".} =
-  type Cb = proc(super: QUndoViewconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QUndoView(h: self), signal)
+  var nimfunc = cast[ptr QUndoViewconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QUndoView, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QUndoViewdisconnectNotify*(self: gen_qundoview_types.QUndoView, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQUndoView_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QUndoViewdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QUndoView, slot: proc(super: QUndoViewdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QUndoViewdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qundoview_types.QUndoView, slot: QUndoViewdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoViewdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QUndoViewdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoView_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoView_disconnectNotify(self: ptr cQUndoView, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QUndoView_disconnectNotify ".} =
-  type Cb = proc(super: QUndoViewdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QUndoView(h: self), signal)
+  var nimfunc = cast[ptr QUndoViewdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QUndoView): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qundoview_types.QUndoView): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQUndoView_staticMetaObject())
-proc delete*(self: QUndoView) =
+proc delete*(self: gen_qundoview_types.QUndoView) =
   fcQUndoView_delete(self.h)

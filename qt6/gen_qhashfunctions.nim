@@ -48,25 +48,25 @@ proc fcQHashSeed_resetRandomGlobalSeed(): void {.importc: "QHashSeed_resetRandom
 proc fcQHashSeed_delete(self: pointer) {.importc: "QHashSeed_delete".}
 
 
-func init*(T: type QHashSeed, h: ptr cQHashSeed): QHashSeed =
+func init*(T: type gen_qhashfunctions_types.QHashSeed, h: ptr cQHashSeed): gen_qhashfunctions_types.QHashSeed =
   T(h: h)
-proc create*(T: type QHashSeed, ): QHashSeed =
+proc create*(T: type gen_qhashfunctions_types.QHashSeed, ): gen_qhashfunctions_types.QHashSeed =
 
-  QHashSeed.init(fcQHashSeed_new())
-proc create*(T: type QHashSeed, d: csize_t): QHashSeed =
+  gen_qhashfunctions_types.QHashSeed.init(fcQHashSeed_new())
+proc create*(T: type gen_qhashfunctions_types.QHashSeed, d: csize_t): gen_qhashfunctions_types.QHashSeed =
 
-  QHashSeed.init(fcQHashSeed_new2(d))
-proc globalSeed*(_: type QHashSeed, ): QHashSeed =
+  gen_qhashfunctions_types.QHashSeed.init(fcQHashSeed_new2(d))
+proc globalSeed*(_: type gen_qhashfunctions_types.QHashSeed, ): gen_qhashfunctions_types.QHashSeed =
 
-  QHashSeed(h: fcQHashSeed_globalSeed())
+  gen_qhashfunctions_types.QHashSeed(h: fcQHashSeed_globalSeed())
 
-proc setDeterministicGlobalSeed*(_: type QHashSeed, ): void =
+proc setDeterministicGlobalSeed*(_: type gen_qhashfunctions_types.QHashSeed, ): void =
 
   fcQHashSeed_setDeterministicGlobalSeed()
 
-proc resetRandomGlobalSeed*(_: type QHashSeed, ): void =
+proc resetRandomGlobalSeed*(_: type gen_qhashfunctions_types.QHashSeed, ): void =
 
   fcQHashSeed_resetRandomGlobalSeed()
 
-proc delete*(self: QHashSeed) =
+proc delete*(self: gen_qhashfunctions_types.QHashSeed) =
   fcQHashSeed_delete(self.h)

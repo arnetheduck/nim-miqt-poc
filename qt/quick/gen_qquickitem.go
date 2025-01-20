@@ -196,7 +196,7 @@ func (this *QQuickTransform) callVirtualBase_MetaObject() *qt.QMetaObject {
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QQuickTransform_virtualbase_metaObject(unsafe.Pointer(this.h))))
 
 }
-func (this *QQuickTransform) OnmetaObject(slot func(super func() *qt.QMetaObject) *qt.QMetaObject) {
+func (this *QQuickTransform) OnMetaObject(slot func(super func() *qt.QMetaObject) *qt.QMetaObject) {
 	ok := C.QQuickTransform_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -223,7 +223,7 @@ func (this *QQuickTransform) callVirtualBase_Metacast(param1 string) unsafe.Poin
 	return (unsafe.Pointer)(C.QQuickTransform_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QQuickTransform) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QQuickTransform) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QQuickTransform_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1644,7 +1644,7 @@ func (this *QQuickItem) callVirtualBase_MetaObject() *qt.QMetaObject {
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QQuickItem_virtualbase_metaObject(unsafe.Pointer(this.h))))
 
 }
-func (this *QQuickItem) OnmetaObject(slot func(super func() *qt.QMetaObject) *qt.QMetaObject) {
+func (this *QQuickItem) OnMetaObject(slot func(super func() *qt.QMetaObject) *qt.QMetaObject) {
 	ok := C.QQuickItem_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1671,7 +1671,7 @@ func (this *QQuickItem) callVirtualBase_Metacast(param1 string) unsafe.Pointer {
 	return (unsafe.Pointer)(C.QQuickItem_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QQuickItem) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QQuickItem) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QQuickItem_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

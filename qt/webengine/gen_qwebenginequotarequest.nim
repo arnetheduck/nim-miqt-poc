@@ -58,39 +58,39 @@ proc fcQWebEngineQuotaRequest_staticMetaObject(): pointer {.importc: "QWebEngine
 proc fcQWebEngineQuotaRequest_delete(self: pointer) {.importc: "QWebEngineQuotaRequest_delete".}
 
 
-func init*(T: type QWebEngineQuotaRequest, h: ptr cQWebEngineQuotaRequest): QWebEngineQuotaRequest =
+func init*(T: type gen_qwebenginequotarequest_types.QWebEngineQuotaRequest, h: ptr cQWebEngineQuotaRequest): gen_qwebenginequotarequest_types.QWebEngineQuotaRequest =
   T(h: h)
-proc create*(T: type QWebEngineQuotaRequest, ): QWebEngineQuotaRequest =
+proc create*(T: type gen_qwebenginequotarequest_types.QWebEngineQuotaRequest, ): gen_qwebenginequotarequest_types.QWebEngineQuotaRequest =
 
-  QWebEngineQuotaRequest.init(fcQWebEngineQuotaRequest_new())
-proc create*(T: type QWebEngineQuotaRequest, param1: QWebEngineQuotaRequest): QWebEngineQuotaRequest =
+  gen_qwebenginequotarequest_types.QWebEngineQuotaRequest.init(fcQWebEngineQuotaRequest_new())
+proc create*(T: type gen_qwebenginequotarequest_types.QWebEngineQuotaRequest, param1: gen_qwebenginequotarequest_types.QWebEngineQuotaRequest): gen_qwebenginequotarequest_types.QWebEngineQuotaRequest =
 
-  QWebEngineQuotaRequest.init(fcQWebEngineQuotaRequest_new2(param1.h))
-proc accept*(self: QWebEngineQuotaRequest, ): void =
+  gen_qwebenginequotarequest_types.QWebEngineQuotaRequest.init(fcQWebEngineQuotaRequest_new2(param1.h))
+proc accept*(self: gen_qwebenginequotarequest_types.QWebEngineQuotaRequest, ): void =
 
   fcQWebEngineQuotaRequest_accept(self.h)
 
-proc reject*(self: QWebEngineQuotaRequest, ): void =
+proc reject*(self: gen_qwebenginequotarequest_types.QWebEngineQuotaRequest, ): void =
 
   fcQWebEngineQuotaRequest_reject(self.h)
 
-proc origin*(self: QWebEngineQuotaRequest, ): gen_qurl.QUrl =
+proc origin*(self: gen_qwebenginequotarequest_types.QWebEngineQuotaRequest, ): gen_qurl.QUrl =
 
   gen_qurl.QUrl(h: fcQWebEngineQuotaRequest_origin(self.h))
 
-proc requestedSize*(self: QWebEngineQuotaRequest, ): clonglong =
+proc requestedSize*(self: gen_qwebenginequotarequest_types.QWebEngineQuotaRequest, ): clonglong =
 
   fcQWebEngineQuotaRequest_requestedSize(self.h)
 
-proc operatorEqual*(self: QWebEngineQuotaRequest, that: QWebEngineQuotaRequest): bool =
+proc operatorEqual*(self: gen_qwebenginequotarequest_types.QWebEngineQuotaRequest, that: gen_qwebenginequotarequest_types.QWebEngineQuotaRequest): bool =
 
   fcQWebEngineQuotaRequest_operatorEqual(self.h, that.h)
 
-proc operatorNotEqual*(self: QWebEngineQuotaRequest, that: QWebEngineQuotaRequest): bool =
+proc operatorNotEqual*(self: gen_qwebenginequotarequest_types.QWebEngineQuotaRequest, that: gen_qwebenginequotarequest_types.QWebEngineQuotaRequest): bool =
 
   fcQWebEngineQuotaRequest_operatorNotEqual(self.h, that.h)
 
-proc staticMetaObject*(_: type QWebEngineQuotaRequest): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qwebenginequotarequest_types.QWebEngineQuotaRequest): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQWebEngineQuotaRequest_staticMetaObject())
-proc delete*(self: QWebEngineQuotaRequest) =
+proc delete*(self: gen_qwebenginequotarequest_types.QWebEngineQuotaRequest) =
   fcQWebEngineQuotaRequest_delete(self.h)

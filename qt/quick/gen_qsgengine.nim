@@ -34,13 +34,11 @@ const cflags = gorge("pkg-config -cflags Qt5Quick")
 {.compile("gen_qsgengine.cpp", cflags).}
 
 
-type QSGEngineCreateTextureOption* = cint
-const
-  QSGEngineTextureHasAlphaChannel* = 1
-  QSGEngineTextureOwnsGLTexture* = 4
-  QSGEngineTextureCanUseAtlas* = 8
-  QSGEngineTextureIsOpaque* = 16
-
+type QSGEngineCreateTextureOptionEnum* = distinct cint
+template TextureHasAlphaChannel*(_: type QSGEngineCreateTextureOptionEnum): untyped = 1
+template TextureOwnsGLTexture*(_: type QSGEngineCreateTextureOptionEnum): untyped = 4
+template TextureCanUseAtlas*(_: type QSGEngineCreateTextureOptionEnum): untyped = 8
+template TextureIsOpaque*(_: type QSGEngineCreateTextureOptionEnum): untyped = 16
 
 
 import gen_qsgengine_types
@@ -120,353 +118,303 @@ proc fcQSGEngine_staticMetaObject(): pointer {.importc: "QSGEngine_staticMetaObj
 proc fcQSGEngine_delete(self: pointer) {.importc: "QSGEngine_delete".}
 
 
-func init*(T: type QSGEngine, h: ptr cQSGEngine): QSGEngine =
+func init*(T: type gen_qsgengine_types.QSGEngine, h: ptr cQSGEngine): gen_qsgengine_types.QSGEngine =
   T(h: h)
-proc create*(T: type QSGEngine, ): QSGEngine =
+proc create*(T: type gen_qsgengine_types.QSGEngine, ): gen_qsgengine_types.QSGEngine =
 
-  QSGEngine.init(fcQSGEngine_new())
-proc create*(T: type QSGEngine, parent: gen_qobject.QObject): QSGEngine =
+  gen_qsgengine_types.QSGEngine.init(fcQSGEngine_new())
+proc create*(T: type gen_qsgengine_types.QSGEngine, parent: gen_qobject.QObject): gen_qsgengine_types.QSGEngine =
 
-  QSGEngine.init(fcQSGEngine_new2(parent.h))
-proc metaObject*(self: QSGEngine, ): gen_qobjectdefs.QMetaObject =
+  gen_qsgengine_types.QSGEngine.init(fcQSGEngine_new2(parent.h))
+proc metaObject*(self: gen_qsgengine_types.QSGEngine, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQSGEngine_metaObject(self.h))
 
-proc metacast*(self: QSGEngine, param1: cstring): pointer =
+proc metacast*(self: gen_qsgengine_types.QSGEngine, param1: cstring): pointer =
 
   fcQSGEngine_metacast(self.h, param1)
 
-proc metacall*(self: QSGEngine, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qsgengine_types.QSGEngine, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQSGEngine_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QSGEngine, s: cstring): string =
+proc tr*(_: type gen_qsgengine_types.QSGEngine, s: cstring): string =
 
   let v_ms = fcQSGEngine_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QSGEngine, s: cstring): string =
+proc trUtf8*(_: type gen_qsgengine_types.QSGEngine, s: cstring): string =
 
   let v_ms = fcQSGEngine_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc invalidate*(self: QSGEngine, ): void =
+proc invalidate*(self: gen_qsgengine_types.QSGEngine, ): void =
 
   fcQSGEngine_invalidate(self.h)
 
-proc createRenderer*(self: QSGEngine, ): gen_qsgabstractrenderer.QSGAbstractRenderer =
+proc createRenderer*(self: gen_qsgengine_types.QSGEngine, ): gen_qsgabstractrenderer.QSGAbstractRenderer =
 
   gen_qsgabstractrenderer.QSGAbstractRenderer(h: fcQSGEngine_createRenderer(self.h))
 
-proc createTextureFromImage*(self: QSGEngine, image: gen_qimage.QImage): gen_qsgtexture.QSGTexture =
+proc createTextureFromImage*(self: gen_qsgengine_types.QSGEngine, image: gen_qimage.QImage): gen_qsgtexture.QSGTexture =
 
   gen_qsgtexture.QSGTexture(h: fcQSGEngine_createTextureFromImage(self.h, image.h))
 
-proc createTextureFromId*(self: QSGEngine, id: cuint, size: gen_qsize.QSize): gen_qsgtexture.QSGTexture =
+proc createTextureFromId*(self: gen_qsgengine_types.QSGEngine, id: cuint, size: gen_qsize.QSize): gen_qsgtexture.QSGTexture =
 
   gen_qsgtexture.QSGTexture(h: fcQSGEngine_createTextureFromId(self.h, id, size.h))
 
-proc rendererInterface*(self: QSGEngine, ): gen_qsgrendererinterface.QSGRendererInterface =
+proc rendererInterface*(self: gen_qsgengine_types.QSGEngine, ): gen_qsgrendererinterface.QSGRendererInterface =
 
   gen_qsgrendererinterface.QSGRendererInterface(h: fcQSGEngine_rendererInterface(self.h))
 
-proc createRectangleNode*(self: QSGEngine, ): gen_qsgrectanglenode.QSGRectangleNode =
+proc createRectangleNode*(self: gen_qsgengine_types.QSGEngine, ): gen_qsgrectanglenode.QSGRectangleNode =
 
   gen_qsgrectanglenode.QSGRectangleNode(h: fcQSGEngine_createRectangleNode(self.h))
 
-proc createImageNode*(self: QSGEngine, ): gen_qsgimagenode.QSGImageNode =
+proc createImageNode*(self: gen_qsgengine_types.QSGEngine, ): gen_qsgimagenode.QSGImageNode =
 
   gen_qsgimagenode.QSGImageNode(h: fcQSGEngine_createImageNode(self.h))
 
-proc createNinePatchNode*(self: QSGEngine, ): gen_qsgninepatchnode.QSGNinePatchNode =
+proc createNinePatchNode*(self: gen_qsgengine_types.QSGEngine, ): gen_qsgninepatchnode.QSGNinePatchNode =
 
   gen_qsgninepatchnode.QSGNinePatchNode(h: fcQSGEngine_createNinePatchNode(self.h))
 
-proc tr2*(_: type QSGEngine, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qsgengine_types.QSGEngine, s: cstring, c: cstring): string =
 
   let v_ms = fcQSGEngine_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QSGEngine, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qsgengine_types.QSGEngine, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQSGEngine_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QSGEngine, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qsgengine_types.QSGEngine, s: cstring, c: cstring): string =
 
   let v_ms = fcQSGEngine_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QSGEngine, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qsgengine_types.QSGEngine, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQSGEngine_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc createTextureFromImage2*(self: QSGEngine, image: gen_qimage.QImage, options: QSGEngineCreateTextureOption): gen_qsgtexture.QSGTexture =
+proc createTextureFromImage2*(self: gen_qsgengine_types.QSGEngine, image: gen_qimage.QImage, options: cint): gen_qsgtexture.QSGTexture =
 
   gen_qsgtexture.QSGTexture(h: fcQSGEngine_createTextureFromImage2(self.h, image.h, cint(options)))
 
-proc createTextureFromId3*(self: QSGEngine, id: cuint, size: gen_qsize.QSize, options: QSGEngineCreateTextureOption): gen_qsgtexture.QSGTexture =
+proc createTextureFromId3*(self: gen_qsgengine_types.QSGEngine, id: cuint, size: gen_qsize.QSize, options: cint): gen_qsgtexture.QSGTexture =
 
   gen_qsgtexture.QSGTexture(h: fcQSGEngine_createTextureFromId3(self.h, id, size.h, cint(options)))
 
-proc callVirtualBase_metaObject(self: QSGEngine, ): gen_qobjectdefs.QMetaObject =
-
+proc QSGEnginemetaObject*(self: gen_qsgengine_types.QSGEngine, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQSGEngine_virtualbase_metaObject(self.h))
 
-type QSGEnginemetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QSGEngine, slot: proc(super: QSGEnginemetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QSGEnginemetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qsgengine_types.QSGEngine, slot: QSGEnginemetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QSGEnginemetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QSGEnginemetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSGEngine_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSGEngine_metaObject(self: ptr cQSGEngine, slot: int): pointer {.exportc: "miqt_exec_callback_QSGEngine_metaObject ".} =
-  type Cb = proc(super: QSGEnginemetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QSGEngine(h: self), )
+  var nimfunc = cast[ptr QSGEnginemetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QSGEngine, param1: cstring): pointer =
-
+proc QSGEnginemetacast*(self: gen_qsgengine_types.QSGEngine, param1: cstring): pointer =
 
   fQSGEngine_virtualbase_metacast(self.h, param1)
 
-type QSGEnginemetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QSGEngine, slot: proc(super: QSGEnginemetacastBase, param1: cstring): pointer) =
+type QSGEnginemetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qsgengine_types.QSGEngine, slot: QSGEnginemetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QSGEnginemetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QSGEnginemetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSGEngine_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSGEngine_metacast(self: ptr cQSGEngine, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QSGEngine_metacast ".} =
-  type Cb = proc(super: QSGEnginemetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QSGEngine(h: self), param1)
+  var nimfunc = cast[ptr QSGEnginemetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QSGEngine, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QSGEnginemetacall*(self: gen_qsgengine_types.QSGEngine, param1: cint, param2: cint, param3: pointer): cint =
 
   fQSGEngine_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QSGEnginemetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QSGEngine, slot: proc(super: QSGEnginemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QSGEnginemetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qsgengine_types.QSGEngine, slot: QSGEnginemetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QSGEnginemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QSGEnginemetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSGEngine_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSGEngine_metacall(self: ptr cQSGEngine, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QSGEngine_metacall ".} =
-  type Cb = proc(super: QSGEnginemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QSGEngine(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QSGEnginemetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_event(self: QSGEngine, event: gen_qcoreevent.QEvent): bool =
-
+proc QSGEngineevent*(self: gen_qsgengine_types.QSGEngine, event: gen_qcoreevent.QEvent): bool =
 
   fQSGEngine_virtualbase_event(self.h, event.h)
 
-type QSGEngineeventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QSGEngine, slot: proc(super: QSGEngineeventBase, event: gen_qcoreevent.QEvent): bool) =
+type QSGEngineeventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qsgengine_types.QSGEngine, slot: QSGEngineeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSGEngineeventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QSGEngineeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSGEngine_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSGEngine_event(self: ptr cQSGEngine, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QSGEngine_event ".} =
-  type Cb = proc(super: QSGEngineeventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QSGEngine(h: self), event)
+  var nimfunc = cast[ptr QSGEngineeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QSGEngine, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QSGEngineeventFilter*(self: gen_qsgengine_types.QSGEngine, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQSGEngine_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QSGEngineeventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QSGEngine, slot: proc(super: QSGEngineeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QSGEngineeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qsgengine_types.QSGEngine, slot: QSGEngineeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QSGEngineeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QSGEngineeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSGEngine_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSGEngine_eventFilter(self: ptr cQSGEngine, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QSGEngine_eventFilter ".} =
-  type Cb = proc(super: QSGEngineeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QSGEngine(h: self), watched, event)
+  var nimfunc = cast[ptr QSGEngineeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QSGEngine, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QSGEnginetimerEvent*(self: gen_qsgengine_types.QSGEngine, event: gen_qcoreevent.QTimerEvent): void =
 
   fQSGEngine_virtualbase_timerEvent(self.h, event.h)
 
-type QSGEnginetimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QSGEngine, slot: proc(super: QSGEnginetimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QSGEnginetimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qsgengine_types.QSGEngine, slot: QSGEnginetimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSGEnginetimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QSGEnginetimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSGEngine_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSGEngine_timerEvent(self: ptr cQSGEngine, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSGEngine_timerEvent ".} =
-  type Cb = proc(super: QSGEnginetimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QSGEngine(h: self), event)
+  var nimfunc = cast[ptr QSGEnginetimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QSGEngine, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QSGEnginechildEvent*(self: gen_qsgengine_types.QSGEngine, event: gen_qcoreevent.QChildEvent): void =
 
   fQSGEngine_virtualbase_childEvent(self.h, event.h)
 
-type QSGEnginechildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QSGEngine, slot: proc(super: QSGEnginechildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QSGEnginechildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qsgengine_types.QSGEngine, slot: QSGEnginechildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSGEnginechildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QSGEnginechildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSGEngine_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSGEngine_childEvent(self: ptr cQSGEngine, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSGEngine_childEvent ".} =
-  type Cb = proc(super: QSGEnginechildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QSGEngine(h: self), event)
+  var nimfunc = cast[ptr QSGEnginechildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QSGEngine, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QSGEnginecustomEvent*(self: gen_qsgengine_types.QSGEngine, event: gen_qcoreevent.QEvent): void =
 
   fQSGEngine_virtualbase_customEvent(self.h, event.h)
 
-type QSGEnginecustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QSGEngine, slot: proc(super: QSGEnginecustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QSGEnginecustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qsgengine_types.QSGEngine, slot: QSGEnginecustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSGEnginecustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QSGEnginecustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSGEngine_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSGEngine_customEvent(self: ptr cQSGEngine, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSGEngine_customEvent ".} =
-  type Cb = proc(super: QSGEnginecustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QSGEngine(h: self), event)
+  var nimfunc = cast[ptr QSGEnginecustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QSGEngine, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QSGEngineconnectNotify*(self: gen_qsgengine_types.QSGEngine, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQSGEngine_virtualbase_connectNotify(self.h, signal.h)
 
-type QSGEngineconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QSGEngine, slot: proc(super: QSGEngineconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QSGEngineconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qsgengine_types.QSGEngine, slot: QSGEngineconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QSGEngineconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QSGEngineconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSGEngine_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSGEngine_connectNotify(self: ptr cQSGEngine, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QSGEngine_connectNotify ".} =
-  type Cb = proc(super: QSGEngineconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QSGEngine(h: self), signal)
+  var nimfunc = cast[ptr QSGEngineconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QSGEngine, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QSGEnginedisconnectNotify*(self: gen_qsgengine_types.QSGEngine, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQSGEngine_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QSGEnginedisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QSGEngine, slot: proc(super: QSGEnginedisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QSGEnginedisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qsgengine_types.QSGEngine, slot: QSGEnginedisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QSGEnginedisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QSGEnginedisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSGEngine_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSGEngine_disconnectNotify(self: ptr cQSGEngine, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QSGEngine_disconnectNotify ".} =
-  type Cb = proc(super: QSGEnginedisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QSGEngine(h: self), signal)
+  var nimfunc = cast[ptr QSGEnginedisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QSGEngine): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qsgengine_types.QSGEngine): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQSGEngine_staticMetaObject())
-proc delete*(self: QSGEngine) =
+proc delete*(self: gen_qsgengine_types.QSGEngine) =
   fcQSGEngine_delete(self.h)

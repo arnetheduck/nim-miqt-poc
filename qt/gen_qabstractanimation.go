@@ -316,7 +316,7 @@ func (this *QAbstractAnimation) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QAbstractAnimation_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QAbstractAnimation) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QAbstractAnimation) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QAbstractAnimation_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -343,7 +343,7 @@ func (this *QAbstractAnimation) callVirtualBase_Metacast(param1 string) unsafe.P
 	return (unsafe.Pointer)(C.QAbstractAnimation_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QAbstractAnimation) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QAbstractAnimation) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QAbstractAnimation_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -885,7 +885,7 @@ func (this *QAnimationDriver) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QAnimationDriver_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QAnimationDriver) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QAnimationDriver) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QAnimationDriver_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -912,7 +912,7 @@ func (this *QAnimationDriver) callVirtualBase_Metacast(param1 string) unsafe.Poi
 	return (unsafe.Pointer)(C.QAnimationDriver_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QAnimationDriver) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QAnimationDriver) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QAnimationDriver_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

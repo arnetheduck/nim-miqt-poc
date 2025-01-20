@@ -34,24 +34,20 @@ const cflags = gorge("pkg-config -cflags Qt5Quick")
 {.compile("gen_qjsvalue.cpp", cflags).}
 
 
-type QJSValueSpecialValue* = cint
-const
-  QJSValueNullValue* = 0
-  QJSValueUndefinedValue* = 1
+type QJSValueSpecialValueEnum* = distinct cint
+template NullValue*(_: type QJSValueSpecialValueEnum): untyped = 0
+template UndefinedValue*(_: type QJSValueSpecialValueEnum): untyped = 1
 
 
-
-type QJSValueErrorType* = cint
-const
-  QJSValueNoError* = 0
-  QJSValueGenericError* = 1
-  QJSValueEvalError* = 2
-  QJSValueRangeError* = 3
-  QJSValueReferenceError* = 4
-  QJSValueSyntaxError* = 5
-  QJSValueTypeError* = 6
-  QJSValueURIError* = 7
-
+type QJSValueErrorTypeEnum* = distinct cint
+template NoError*(_: type QJSValueErrorTypeEnum): untyped = 0
+template GenericError*(_: type QJSValueErrorTypeEnum): untyped = 1
+template EvalError*(_: type QJSValueErrorTypeEnum): untyped = 2
+template RangeError*(_: type QJSValueErrorTypeEnum): untyped = 3
+template ReferenceError*(_: type QJSValueErrorTypeEnum): untyped = 4
+template SyntaxError*(_: type QJSValueErrorTypeEnum): untyped = 5
+template TypeError*(_: type QJSValueErrorTypeEnum): untyped = 6
+template URIError*(_: type QJSValueErrorTypeEnum): untyped = 7
 
 
 import gen_qjsvalue_types
@@ -127,221 +123,221 @@ proc fcQJSValue_callAsConstructor1(self: pointer, args: struct_miqt_array): poin
 proc fcQJSValue_delete(self: pointer) {.importc: "QJSValue_delete".}
 
 
-func init*(T: type QJSValue, h: ptr cQJSValue): QJSValue =
+func init*(T: type gen_qjsvalue_types.QJSValue, h: ptr cQJSValue): gen_qjsvalue_types.QJSValue =
   T(h: h)
-proc create*(T: type QJSValue, ): QJSValue =
+proc create*(T: type gen_qjsvalue_types.QJSValue, ): gen_qjsvalue_types.QJSValue =
 
-  QJSValue.init(fcQJSValue_new())
-proc create*(T: type QJSValue, other: QJSValue): QJSValue =
+  gen_qjsvalue_types.QJSValue.init(fcQJSValue_new())
+proc create*(T: type gen_qjsvalue_types.QJSValue, other: gen_qjsvalue_types.QJSValue): gen_qjsvalue_types.QJSValue =
 
-  QJSValue.init(fcQJSValue_new2(other.h))
-proc create*(T: type QJSValue, value: bool): QJSValue =
+  gen_qjsvalue_types.QJSValue.init(fcQJSValue_new2(other.h))
+proc create*(T: type gen_qjsvalue_types.QJSValue, value: bool): gen_qjsvalue_types.QJSValue =
 
-  QJSValue.init(fcQJSValue_new3(value))
-proc create*(T: type QJSValue, value: cint): QJSValue =
+  gen_qjsvalue_types.QJSValue.init(fcQJSValue_new3(value))
+proc create*(T: type gen_qjsvalue_types.QJSValue, value: cint): gen_qjsvalue_types.QJSValue =
 
-  QJSValue.init(fcQJSValue_new4(value))
-proc create*(T: type QJSValue, value: cuint): QJSValue =
+  gen_qjsvalue_types.QJSValue.init(fcQJSValue_new4(value))
+proc create*(T: type gen_qjsvalue_types.QJSValue, value: cuint): gen_qjsvalue_types.QJSValue =
 
-  QJSValue.init(fcQJSValue_new5(value))
-proc create*(T: type QJSValue, value: float64): QJSValue =
+  gen_qjsvalue_types.QJSValue.init(fcQJSValue_new5(value))
+proc create*(T: type gen_qjsvalue_types.QJSValue, value: float64): gen_qjsvalue_types.QJSValue =
 
-  QJSValue.init(fcQJSValue_new6(value))
-proc create*(T: type QJSValue, value: string): QJSValue =
+  gen_qjsvalue_types.QJSValue.init(fcQJSValue_new6(value))
+proc create*(T: type gen_qjsvalue_types.QJSValue, value: string): gen_qjsvalue_types.QJSValue =
 
-  QJSValue.init(fcQJSValue_new7(struct_miqt_string(data: value, len: csize_t(len(value)))))
-proc create*(T: type QJSValue, str: cstring): QJSValue =
+  gen_qjsvalue_types.QJSValue.init(fcQJSValue_new7(struct_miqt_string(data: value, len: csize_t(len(value)))))
+proc create*(T: type gen_qjsvalue_types.QJSValue, str: cstring): gen_qjsvalue_types.QJSValue =
 
-  QJSValue.init(fcQJSValue_new8(str))
-proc create2*(T: type QJSValue, value: QJSValueSpecialValue): QJSValue =
+  gen_qjsvalue_types.QJSValue.init(fcQJSValue_new8(str))
+proc create2*(T: type gen_qjsvalue_types.QJSValue, value: cint): gen_qjsvalue_types.QJSValue =
 
-  QJSValue.init(fcQJSValue_new9(cint(value)))
-proc operatorAssign*(self: QJSValue, other: QJSValue): void =
+  gen_qjsvalue_types.QJSValue.init(fcQJSValue_new9(cint(value)))
+proc operatorAssign*(self: gen_qjsvalue_types.QJSValue, other: gen_qjsvalue_types.QJSValue): void =
 
   fcQJSValue_operatorAssign(self.h, other.h)
 
-proc isBool*(self: QJSValue, ): bool =
+proc isBool*(self: gen_qjsvalue_types.QJSValue, ): bool =
 
   fcQJSValue_isBool(self.h)
 
-proc isNumber*(self: QJSValue, ): bool =
+proc isNumber*(self: gen_qjsvalue_types.QJSValue, ): bool =
 
   fcQJSValue_isNumber(self.h)
 
-proc isNull*(self: QJSValue, ): bool =
+proc isNull*(self: gen_qjsvalue_types.QJSValue, ): bool =
 
   fcQJSValue_isNull(self.h)
 
-proc isString*(self: QJSValue, ): bool =
+proc isString*(self: gen_qjsvalue_types.QJSValue, ): bool =
 
   fcQJSValue_isString(self.h)
 
-proc isUndefined*(self: QJSValue, ): bool =
+proc isUndefined*(self: gen_qjsvalue_types.QJSValue, ): bool =
 
   fcQJSValue_isUndefined(self.h)
 
-proc isVariant*(self: QJSValue, ): bool =
+proc isVariant*(self: gen_qjsvalue_types.QJSValue, ): bool =
 
   fcQJSValue_isVariant(self.h)
 
-proc isQObject*(self: QJSValue, ): bool =
+proc isQObject*(self: gen_qjsvalue_types.QJSValue, ): bool =
 
   fcQJSValue_isQObject(self.h)
 
-proc isQMetaObject*(self: QJSValue, ): bool =
+proc isQMetaObject*(self: gen_qjsvalue_types.QJSValue, ): bool =
 
   fcQJSValue_isQMetaObject(self.h)
 
-proc isObject*(self: QJSValue, ): bool =
+proc isObject*(self: gen_qjsvalue_types.QJSValue, ): bool =
 
   fcQJSValue_isObject(self.h)
 
-proc isDate*(self: QJSValue, ): bool =
+proc isDate*(self: gen_qjsvalue_types.QJSValue, ): bool =
 
   fcQJSValue_isDate(self.h)
 
-proc isRegExp*(self: QJSValue, ): bool =
+proc isRegExp*(self: gen_qjsvalue_types.QJSValue, ): bool =
 
   fcQJSValue_isRegExp(self.h)
 
-proc isArray*(self: QJSValue, ): bool =
+proc isArray*(self: gen_qjsvalue_types.QJSValue, ): bool =
 
   fcQJSValue_isArray(self.h)
 
-proc isError*(self: QJSValue, ): bool =
+proc isError*(self: gen_qjsvalue_types.QJSValue, ): bool =
 
   fcQJSValue_isError(self.h)
 
-proc toString*(self: QJSValue, ): string =
+proc toString*(self: gen_qjsvalue_types.QJSValue, ): string =
 
   let v_ms = fcQJSValue_toString(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc toNumber*(self: QJSValue, ): float64 =
+proc toNumber*(self: gen_qjsvalue_types.QJSValue, ): float64 =
 
   fcQJSValue_toNumber(self.h)
 
-proc toInt*(self: QJSValue, ): cint =
+proc toInt*(self: gen_qjsvalue_types.QJSValue, ): cint =
 
   fcQJSValue_toInt(self.h)
 
-proc toUInt*(self: QJSValue, ): cuint =
+proc toUInt*(self: gen_qjsvalue_types.QJSValue, ): cuint =
 
   fcQJSValue_toUInt(self.h)
 
-proc toBool*(self: QJSValue, ): bool =
+proc toBool*(self: gen_qjsvalue_types.QJSValue, ): bool =
 
   fcQJSValue_toBool(self.h)
 
-proc toVariant*(self: QJSValue, ): gen_qvariant.QVariant =
+proc toVariant*(self: gen_qjsvalue_types.QJSValue, ): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fcQJSValue_toVariant(self.h))
 
-proc toQObject*(self: QJSValue, ): gen_qobject.QObject =
+proc toQObject*(self: gen_qjsvalue_types.QJSValue, ): gen_qobject.QObject =
 
   gen_qobject.QObject(h: fcQJSValue_toQObject(self.h))
 
-proc toQMetaObject*(self: QJSValue, ): gen_qobjectdefs.QMetaObject =
+proc toQMetaObject*(self: gen_qjsvalue_types.QJSValue, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQJSValue_toQMetaObject(self.h))
 
-proc toDateTime*(self: QJSValue, ): gen_qdatetime.QDateTime =
+proc toDateTime*(self: gen_qjsvalue_types.QJSValue, ): gen_qdatetime.QDateTime =
 
   gen_qdatetime.QDateTime(h: fcQJSValue_toDateTime(self.h))
 
-proc equals*(self: QJSValue, other: QJSValue): bool =
+proc equals*(self: gen_qjsvalue_types.QJSValue, other: gen_qjsvalue_types.QJSValue): bool =
 
   fcQJSValue_equals(self.h, other.h)
 
-proc strictlyEquals*(self: QJSValue, other: QJSValue): bool =
+proc strictlyEquals*(self: gen_qjsvalue_types.QJSValue, other: gen_qjsvalue_types.QJSValue): bool =
 
   fcQJSValue_strictlyEquals(self.h, other.h)
 
-proc prototype*(self: QJSValue, ): QJSValue =
+proc prototype*(self: gen_qjsvalue_types.QJSValue, ): gen_qjsvalue_types.QJSValue =
 
-  QJSValue(h: fcQJSValue_prototype(self.h))
+  gen_qjsvalue_types.QJSValue(h: fcQJSValue_prototype(self.h))
 
-proc setPrototype*(self: QJSValue, prototype: QJSValue): void =
+proc setPrototype*(self: gen_qjsvalue_types.QJSValue, prototype: gen_qjsvalue_types.QJSValue): void =
 
   fcQJSValue_setPrototype(self.h, prototype.h)
 
-proc property*(self: QJSValue, name: string): QJSValue =
+proc property*(self: gen_qjsvalue_types.QJSValue, name: string): gen_qjsvalue_types.QJSValue =
 
-  QJSValue(h: fcQJSValue_property(self.h, struct_miqt_string(data: name, len: csize_t(len(name)))))
+  gen_qjsvalue_types.QJSValue(h: fcQJSValue_property(self.h, struct_miqt_string(data: name, len: csize_t(len(name)))))
 
-proc setProperty*(self: QJSValue, name: string, value: QJSValue): void =
+proc setProperty*(self: gen_qjsvalue_types.QJSValue, name: string, value: gen_qjsvalue_types.QJSValue): void =
 
   fcQJSValue_setProperty(self.h, struct_miqt_string(data: name, len: csize_t(len(name))), value.h)
 
-proc hasProperty*(self: QJSValue, name: string): bool =
+proc hasProperty*(self: gen_qjsvalue_types.QJSValue, name: string): bool =
 
   fcQJSValue_hasProperty(self.h, struct_miqt_string(data: name, len: csize_t(len(name))))
 
-proc hasOwnProperty*(self: QJSValue, name: string): bool =
+proc hasOwnProperty*(self: gen_qjsvalue_types.QJSValue, name: string): bool =
 
   fcQJSValue_hasOwnProperty(self.h, struct_miqt_string(data: name, len: csize_t(len(name))))
 
-proc propertyWithArrayIndex*(self: QJSValue, arrayIndex: cuint): QJSValue =
+proc propertyWithArrayIndex*(self: gen_qjsvalue_types.QJSValue, arrayIndex: cuint): gen_qjsvalue_types.QJSValue =
 
-  QJSValue(h: fcQJSValue_propertyWithArrayIndex(self.h, arrayIndex))
+  gen_qjsvalue_types.QJSValue(h: fcQJSValue_propertyWithArrayIndex(self.h, arrayIndex))
 
-proc setProperty2*(self: QJSValue, arrayIndex: cuint, value: QJSValue): void =
+proc setProperty2*(self: gen_qjsvalue_types.QJSValue, arrayIndex: cuint, value: gen_qjsvalue_types.QJSValue): void =
 
   fcQJSValue_setProperty2(self.h, arrayIndex, value.h)
 
-proc deleteProperty*(self: QJSValue, name: string): bool =
+proc deleteProperty*(self: gen_qjsvalue_types.QJSValue, name: string): bool =
 
   fcQJSValue_deleteProperty(self.h, struct_miqt_string(data: name, len: csize_t(len(name))))
 
-proc isCallable*(self: QJSValue, ): bool =
+proc isCallable*(self: gen_qjsvalue_types.QJSValue, ): bool =
 
   fcQJSValue_isCallable(self.h)
 
-proc call*(self: QJSValue, ): QJSValue =
+proc call*(self: gen_qjsvalue_types.QJSValue, ): gen_qjsvalue_types.QJSValue =
 
-  QJSValue(h: fcQJSValue_call(self.h))
+  gen_qjsvalue_types.QJSValue(h: fcQJSValue_call(self.h))
 
-proc callWithInstance*(self: QJSValue, instance: QJSValue): QJSValue =
+proc callWithInstance*(self: gen_qjsvalue_types.QJSValue, instance: gen_qjsvalue_types.QJSValue): gen_qjsvalue_types.QJSValue =
 
-  QJSValue(h: fcQJSValue_callWithInstance(self.h, instance.h))
+  gen_qjsvalue_types.QJSValue(h: fcQJSValue_callWithInstance(self.h, instance.h))
 
-proc callAsConstructor*(self: QJSValue, ): QJSValue =
+proc callAsConstructor*(self: gen_qjsvalue_types.QJSValue, ): gen_qjsvalue_types.QJSValue =
 
-  QJSValue(h: fcQJSValue_callAsConstructor(self.h))
+  gen_qjsvalue_types.QJSValue(h: fcQJSValue_callAsConstructor(self.h))
 
-proc errorType*(self: QJSValue, ): QJSValueErrorType =
+proc errorType*(self: gen_qjsvalue_types.QJSValue, ): cint =
 
-  QJSValueErrorType(fcQJSValue_errorType(self.h))
+  cint(fcQJSValue_errorType(self.h))
 
-proc engine*(self: QJSValue, ): gen_qjsengine.QJSEngine =
+proc engine*(self: gen_qjsvalue_types.QJSValue, ): gen_qjsengine.QJSEngine =
 
   gen_qjsengine.QJSEngine(h: fcQJSValue_engine(self.h))
 
-proc call1*(self: QJSValue, args: seq[QJSValue]): QJSValue =
+proc call1*(self: gen_qjsvalue_types.QJSValue, args: seq[gen_qjsvalue_types.QJSValue]): gen_qjsvalue_types.QJSValue =
 
   var args_CArray = newSeq[pointer](len(args))
   for i in 0..<len(args):
     args_CArray[i] = args[i].h
 
-  QJSValue(h: fcQJSValue_call1(self.h, struct_miqt_array(len: csize_t(len(args)), data: if len(args) == 0: nil else: addr(args_CArray[0]))))
+  gen_qjsvalue_types.QJSValue(h: fcQJSValue_call1(self.h, struct_miqt_array(len: csize_t(len(args)), data: if len(args) == 0: nil else: addr(args_CArray[0]))))
 
-proc callWithInstance2*(self: QJSValue, instance: QJSValue, args: seq[QJSValue]): QJSValue =
-
-  var args_CArray = newSeq[pointer](len(args))
-  for i in 0..<len(args):
-    args_CArray[i] = args[i].h
-
-  QJSValue(h: fcQJSValue_callWithInstance2(self.h, instance.h, struct_miqt_array(len: csize_t(len(args)), data: if len(args) == 0: nil else: addr(args_CArray[0]))))
-
-proc callAsConstructor1*(self: QJSValue, args: seq[QJSValue]): QJSValue =
+proc callWithInstance2*(self: gen_qjsvalue_types.QJSValue, instance: gen_qjsvalue_types.QJSValue, args: seq[gen_qjsvalue_types.QJSValue]): gen_qjsvalue_types.QJSValue =
 
   var args_CArray = newSeq[pointer](len(args))
   for i in 0..<len(args):
     args_CArray[i] = args[i].h
 
-  QJSValue(h: fcQJSValue_callAsConstructor1(self.h, struct_miqt_array(len: csize_t(len(args)), data: if len(args) == 0: nil else: addr(args_CArray[0]))))
+  gen_qjsvalue_types.QJSValue(h: fcQJSValue_callWithInstance2(self.h, instance.h, struct_miqt_array(len: csize_t(len(args)), data: if len(args) == 0: nil else: addr(args_CArray[0]))))
 
-proc delete*(self: QJSValue) =
+proc callAsConstructor1*(self: gen_qjsvalue_types.QJSValue, args: seq[gen_qjsvalue_types.QJSValue]): gen_qjsvalue_types.QJSValue =
+
+  var args_CArray = newSeq[pointer](len(args))
+  for i in 0..<len(args):
+    args_CArray[i] = args[i].h
+
+  gen_qjsvalue_types.QJSValue(h: fcQJSValue_callAsConstructor1(self.h, struct_miqt_array(len: csize_t(len(args)), data: if len(args) == 0: nil else: addr(args_CArray[0]))))
+
+proc delete*(self: gen_qjsvalue_types.QJSValue) =
   fcQJSValue_delete(self.h)

@@ -56,47 +56,47 @@ proc fcQSslCertificateExtension_isSupported(self: pointer, ): bool {.importc: "Q
 proc fcQSslCertificateExtension_delete(self: pointer) {.importc: "QSslCertificateExtension_delete".}
 
 
-func init*(T: type QSslCertificateExtension, h: ptr cQSslCertificateExtension): QSslCertificateExtension =
+func init*(T: type gen_qsslcertificateextension_types.QSslCertificateExtension, h: ptr cQSslCertificateExtension): gen_qsslcertificateextension_types.QSslCertificateExtension =
   T(h: h)
-proc create*(T: type QSslCertificateExtension, ): QSslCertificateExtension =
+proc create*(T: type gen_qsslcertificateextension_types.QSslCertificateExtension, ): gen_qsslcertificateextension_types.QSslCertificateExtension =
 
-  QSslCertificateExtension.init(fcQSslCertificateExtension_new())
-proc create*(T: type QSslCertificateExtension, other: QSslCertificateExtension): QSslCertificateExtension =
+  gen_qsslcertificateextension_types.QSslCertificateExtension.init(fcQSslCertificateExtension_new())
+proc create*(T: type gen_qsslcertificateextension_types.QSslCertificateExtension, other: gen_qsslcertificateextension_types.QSslCertificateExtension): gen_qsslcertificateextension_types.QSslCertificateExtension =
 
-  QSslCertificateExtension.init(fcQSslCertificateExtension_new2(other.h))
-proc operatorAssign*(self: QSslCertificateExtension, other: QSslCertificateExtension): void =
+  gen_qsslcertificateextension_types.QSslCertificateExtension.init(fcQSslCertificateExtension_new2(other.h))
+proc operatorAssign*(self: gen_qsslcertificateextension_types.QSslCertificateExtension, other: gen_qsslcertificateextension_types.QSslCertificateExtension): void =
 
   fcQSslCertificateExtension_operatorAssign(self.h, other.h)
 
-proc swap*(self: QSslCertificateExtension, other: QSslCertificateExtension): void =
+proc swap*(self: gen_qsslcertificateextension_types.QSslCertificateExtension, other: gen_qsslcertificateextension_types.QSslCertificateExtension): void =
 
   fcQSslCertificateExtension_swap(self.h, other.h)
 
-proc oid*(self: QSslCertificateExtension, ): string =
+proc oid*(self: gen_qsslcertificateextension_types.QSslCertificateExtension, ): string =
 
   let v_ms = fcQSslCertificateExtension_oid(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc name*(self: QSslCertificateExtension, ): string =
+proc name*(self: gen_qsslcertificateextension_types.QSslCertificateExtension, ): string =
 
   let v_ms = fcQSslCertificateExtension_name(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc value*(self: QSslCertificateExtension, ): gen_qvariant.QVariant =
+proc value*(self: gen_qsslcertificateextension_types.QSslCertificateExtension, ): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fcQSslCertificateExtension_value(self.h))
 
-proc isCritical*(self: QSslCertificateExtension, ): bool =
+proc isCritical*(self: gen_qsslcertificateextension_types.QSslCertificateExtension, ): bool =
 
   fcQSslCertificateExtension_isCritical(self.h)
 
-proc isSupported*(self: QSslCertificateExtension, ): bool =
+proc isSupported*(self: gen_qsslcertificateextension_types.QSslCertificateExtension, ): bool =
 
   fcQSslCertificateExtension_isSupported(self.h)
 
-proc delete*(self: QSslCertificateExtension) =
+proc delete*(self: gen_qsslcertificateextension_types.QSslCertificateExtension) =
   fcQSslCertificateExtension_delete(self.h)

@@ -34,34 +34,28 @@ const cflags = gorge("pkg-config -cflags Qt6Widgets")
 {.compile("gen_quuid.cpp", cflags).}
 
 
-type QUuidVariant* = cint
-const
-  QUuidVarUnknown* = -1
-  QUuidNCS* = 0
-  QUuidDCE* = 2
-  QUuidMicrosoft* = 6
-  QUuidReserved* = 7
+type QUuidVariantEnum* = distinct cint
+template VarUnknown*(_: type QUuidVariantEnum): untyped = -1
+template NCS*(_: type QUuidVariantEnum): untyped = 0
+template DCE*(_: type QUuidVariantEnum): untyped = 2
+template Microsoft*(_: type QUuidVariantEnum): untyped = 6
+template Reserved*(_: type QUuidVariantEnum): untyped = 7
 
 
-
-type QUuidVersion* = cint
-const
-  QUuidVerUnknown* = -1
-  QUuidTime* = 1
-  QUuidEmbeddedPOSIX* = 2
-  QUuidMd5* = 3
-  QUuidName* = 3
-  QUuidRandom* = 4
-  QUuidSha1* = 5
+type QUuidVersionEnum* = distinct cint
+template VerUnknown*(_: type QUuidVersionEnum): untyped = -1
+template Time*(_: type QUuidVersionEnum): untyped = 1
+template EmbeddedPOSIX*(_: type QUuidVersionEnum): untyped = 2
+template Md5*(_: type QUuidVersionEnum): untyped = 3
+template Name*(_: type QUuidVersionEnum): untyped = 3
+template Random*(_: type QUuidVersionEnum): untyped = 4
+template Sha1*(_: type QUuidVersionEnum): untyped = 5
 
 
-
-type QUuidStringFormat* = cint
-const
-  QUuidWithBraces* = 0
-  QUuidWithoutBraces* = 1
-  QUuidId128* = 3
-
+type QUuidStringFormatEnum* = distinct cint
+template WithBraces*(_: type QUuidStringFormatEnum): untyped = 0
+template WithoutBraces*(_: type QUuidStringFormatEnum): untyped = 1
+template Id128*(_: type QUuidStringFormatEnum): untyped = 3
 
 
 import gen_quuid_types
@@ -102,110 +96,110 @@ proc fcQUuid_toByteArray1(self: pointer, mode: cint): struct_miqt_string {.impor
 proc fcQUuid_delete(self: pointer) {.importc: "QUuid_delete".}
 
 
-func init*(T: type QUuid, h: ptr cQUuid): QUuid =
+func init*(T: type gen_quuid_types.QUuid, h: ptr cQUuid): gen_quuid_types.QUuid =
   T(h: h)
-proc create*(T: type QUuid, ): QUuid =
+proc create*(T: type gen_quuid_types.QUuid, ): gen_quuid_types.QUuid =
 
-  QUuid.init(fcQUuid_new())
-proc create*(T: type QUuid, l: cuint, w1: cushort, w2: cushort, b1: uint8, b2: uint8, b3: uint8, b4: uint8, b5: uint8, b6: uint8, b7: uint8, b8: uint8): QUuid =
+  gen_quuid_types.QUuid.init(fcQUuid_new())
+proc create*(T: type gen_quuid_types.QUuid, l: cuint, w1: cushort, w2: cushort, b1: uint8, b2: uint8, b3: uint8, b4: uint8, b5: uint8, b6: uint8, b7: uint8, b8: uint8): gen_quuid_types.QUuid =
 
-  QUuid.init(fcQUuid_new2(l, w1, w2, b1, b2, b3, b4, b5, b6, b7, b8))
-proc create*(T: type QUuid, string: gen_qanystringview.QAnyStringView): QUuid =
+  gen_quuid_types.QUuid.init(fcQUuid_new2(l, w1, w2, b1, b2, b3, b4, b5, b6, b7, b8))
+proc create*(T: type gen_quuid_types.QUuid, string: gen_qanystringview.QAnyStringView): gen_quuid_types.QUuid =
 
-  QUuid.init(fcQUuid_new3(string.h))
-proc create2*(T: type QUuid, param1: QUuid): QUuid =
+  gen_quuid_types.QUuid.init(fcQUuid_new3(string.h))
+proc create2*(T: type gen_quuid_types.QUuid, param1: gen_quuid_types.QUuid): gen_quuid_types.QUuid =
 
-  QUuid.init(fcQUuid_new4(param1.h))
-proc fromString*(_: type QUuid, string: gen_qanystringview.QAnyStringView): QUuid =
+  gen_quuid_types.QUuid.init(fcQUuid_new4(param1.h))
+proc fromString*(_: type gen_quuid_types.QUuid, string: gen_qanystringview.QAnyStringView): gen_quuid_types.QUuid =
 
-  QUuid(h: fcQUuid_fromString(string.h))
+  gen_quuid_types.QUuid(h: fcQUuid_fromString(string.h))
 
-proc toString*(self: QUuid, ): string =
+proc toString*(self: gen_quuid_types.QUuid, ): string =
 
   let v_ms = fcQUuid_toString(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc toByteArray*(self: QUuid, ): seq[byte] =
+proc toByteArray*(self: gen_quuid_types.QUuid, ): seq[byte] =
 
   var v_bytearray = fcQUuid_toByteArray(self.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc toRfc4122*(self: QUuid, ): seq[byte] =
+proc toRfc4122*(self: gen_quuid_types.QUuid, ): seq[byte] =
 
   var v_bytearray = fcQUuid_toRfc4122(self.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc fromRfc4122*(_: type QUuid, param1: gen_qbytearrayview.QByteArrayView): QUuid =
+proc fromRfc4122*(_: type gen_quuid_types.QUuid, param1: gen_qbytearrayview.QByteArrayView): gen_quuid_types.QUuid =
 
-  QUuid(h: fcQUuid_fromRfc4122(param1.h))
+  gen_quuid_types.QUuid(h: fcQUuid_fromRfc4122(param1.h))
 
-proc isNull*(self: QUuid, ): bool =
+proc isNull*(self: gen_quuid_types.QUuid, ): bool =
 
   fcQUuid_isNull(self.h)
 
-proc operatorEqual*(self: QUuid, orig: QUuid): bool =
+proc operatorEqual*(self: gen_quuid_types.QUuid, orig: gen_quuid_types.QUuid): bool =
 
   fcQUuid_operatorEqual(self.h, orig.h)
 
-proc operatorNotEqual*(self: QUuid, orig: QUuid): bool =
+proc operatorNotEqual*(self: gen_quuid_types.QUuid, orig: gen_quuid_types.QUuid): bool =
 
   fcQUuid_operatorNotEqual(self.h, orig.h)
 
-proc operatorLesser*(self: QUuid, other: QUuid): bool =
+proc operatorLesser*(self: gen_quuid_types.QUuid, other: gen_quuid_types.QUuid): bool =
 
   fcQUuid_operatorLesser(self.h, other.h)
 
-proc operatorGreater*(self: QUuid, other: QUuid): bool =
+proc operatorGreater*(self: gen_quuid_types.QUuid, other: gen_quuid_types.QUuid): bool =
 
   fcQUuid_operatorGreater(self.h, other.h)
 
-proc createUuid*(_: type QUuid, ): QUuid =
+proc createUuid*(_: type gen_quuid_types.QUuid, ): gen_quuid_types.QUuid =
 
-  QUuid(h: fcQUuid_createUuid())
+  gen_quuid_types.QUuid(h: fcQUuid_createUuid())
 
-proc createUuidV3*(_: type QUuid, ns: QUuid, baseData: seq[byte]): QUuid =
+proc createUuidV3*(_: type gen_quuid_types.QUuid, ns: gen_quuid_types.QUuid, baseData: seq[byte]): gen_quuid_types.QUuid =
 
-  QUuid(h: fcQUuid_createUuidV3(ns.h, struct_miqt_string(data: cast[cstring](if len(baseData) == 0: nil else: unsafeAddr baseData[0]), len: csize_t(len(baseData)))))
+  gen_quuid_types.QUuid(h: fcQUuid_createUuidV3(ns.h, struct_miqt_string(data: cast[cstring](if len(baseData) == 0: nil else: unsafeAddr baseData[0]), len: csize_t(len(baseData)))))
 
-proc createUuidV5*(_: type QUuid, ns: QUuid, baseData: seq[byte]): QUuid =
+proc createUuidV5*(_: type gen_quuid_types.QUuid, ns: gen_quuid_types.QUuid, baseData: seq[byte]): gen_quuid_types.QUuid =
 
-  QUuid(h: fcQUuid_createUuidV5(ns.h, struct_miqt_string(data: cast[cstring](if len(baseData) == 0: nil else: unsafeAddr baseData[0]), len: csize_t(len(baseData)))))
+  gen_quuid_types.QUuid(h: fcQUuid_createUuidV5(ns.h, struct_miqt_string(data: cast[cstring](if len(baseData) == 0: nil else: unsafeAddr baseData[0]), len: csize_t(len(baseData)))))
 
-proc createUuidV32*(_: type QUuid, ns: QUuid, baseData: string): QUuid =
+proc createUuidV32*(_: type gen_quuid_types.QUuid, ns: gen_quuid_types.QUuid, baseData: string): gen_quuid_types.QUuid =
 
-  QUuid(h: fcQUuid_createUuidV32(ns.h, struct_miqt_string(data: baseData, len: csize_t(len(baseData)))))
+  gen_quuid_types.QUuid(h: fcQUuid_createUuidV32(ns.h, struct_miqt_string(data: baseData, len: csize_t(len(baseData)))))
 
-proc createUuidV52*(_: type QUuid, ns: QUuid, baseData: string): QUuid =
+proc createUuidV52*(_: type gen_quuid_types.QUuid, ns: gen_quuid_types.QUuid, baseData: string): gen_quuid_types.QUuid =
 
-  QUuid(h: fcQUuid_createUuidV52(ns.h, struct_miqt_string(data: baseData, len: csize_t(len(baseData)))))
+  gen_quuid_types.QUuid(h: fcQUuid_createUuidV52(ns.h, struct_miqt_string(data: baseData, len: csize_t(len(baseData)))))
 
-proc variant*(self: QUuid, ): QUuidVariant =
+proc variant*(self: gen_quuid_types.QUuid, ): cint =
 
-  QUuidVariant(fcQUuid_variant(self.h))
+  cint(fcQUuid_variant(self.h))
 
-proc version*(self: QUuid, ): QUuidVersion =
+proc version*(self: gen_quuid_types.QUuid, ): cint =
 
-  QUuidVersion(fcQUuid_version(self.h))
+  cint(fcQUuid_version(self.h))
 
-proc toString1*(self: QUuid, mode: QUuidStringFormat): string =
+proc toString1*(self: gen_quuid_types.QUuid, mode: cint): string =
 
   let v_ms = fcQUuid_toString1(self.h, cint(mode))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc toByteArray1*(self: QUuid, mode: QUuidStringFormat): seq[byte] =
+proc toByteArray1*(self: gen_quuid_types.QUuid, mode: cint): seq[byte] =
 
   var v_bytearray = fcQUuid_toByteArray1(self.h, cint(mode))
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc delete*(self: QUuid) =
+proc delete*(self: gen_quuid_types.QUuid) =
   fcQUuid_delete(self.h)

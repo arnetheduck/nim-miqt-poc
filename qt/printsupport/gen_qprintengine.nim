@@ -34,53 +34,47 @@ const cflags = gorge("pkg-config -cflags Qt5PrintSupport")
 {.compile("gen_qprintengine.cpp", cflags).}
 
 
-type QPrintEnginePrintEnginePropertyKey* = cint
-const
-  QPrintEnginePPK_CollateCopies* = 0
-  QPrintEnginePPK_ColorMode* = 1
-  QPrintEnginePPK_Creator* = 2
-  QPrintEnginePPK_DocumentName* = 3
-  QPrintEnginePPK_FullPage* = 4
-  QPrintEnginePPK_NumberOfCopies* = 5
-  QPrintEnginePPK_Orientation* = 6
-  QPrintEnginePPK_OutputFileName* = 7
-  QPrintEnginePPK_PageOrder* = 8
-  QPrintEnginePPK_PageRect* = 9
-  QPrintEnginePPK_PageSize* = 10
-  QPrintEnginePPK_PaperRect* = 11
-  QPrintEnginePPK_PaperSource* = 12
-  QPrintEnginePPK_PrinterName* = 13
-  QPrintEnginePPK_PrinterProgram* = 14
-  QPrintEnginePPK_Resolution* = 15
-  QPrintEnginePPK_SelectionOption* = 16
-  QPrintEnginePPK_SupportedResolutions* = 17
-  QPrintEnginePPK_WindowsPageSize* = 18
-  QPrintEnginePPK_FontEmbedding* = 19
-  QPrintEnginePPK_Duplex* = 20
-  QPrintEnginePPK_PaperSources* = 21
-  QPrintEnginePPK_CustomPaperSize* = 22
-  QPrintEnginePPK_PageMargins* = 23
-  QPrintEnginePPK_CopyCount* = 24
-  QPrintEnginePPK_SupportsMultipleCopies* = 25
-  QPrintEnginePPK_PaperName* = 26
-  QPrintEnginePPK_QPageSize* = 27
-  QPrintEnginePPK_QPageMargins* = 28
-  QPrintEnginePPK_QPageLayout* = 29
-  QPrintEnginePPK_PaperSize* = 10
-  QPrintEnginePPK_CustomBase* = 65280
-
+type QPrintEnginePrintEnginePropertyKeyEnum* = distinct cint
+template PPK_CollateCopies*(_: type QPrintEnginePrintEnginePropertyKeyEnum): untyped = 0
+template PPK_ColorMode*(_: type QPrintEnginePrintEnginePropertyKeyEnum): untyped = 1
+template PPK_Creator*(_: type QPrintEnginePrintEnginePropertyKeyEnum): untyped = 2
+template PPK_DocumentName*(_: type QPrintEnginePrintEnginePropertyKeyEnum): untyped = 3
+template PPK_FullPage*(_: type QPrintEnginePrintEnginePropertyKeyEnum): untyped = 4
+template PPK_NumberOfCopies*(_: type QPrintEnginePrintEnginePropertyKeyEnum): untyped = 5
+template PPK_Orientation*(_: type QPrintEnginePrintEnginePropertyKeyEnum): untyped = 6
+template PPK_OutputFileName*(_: type QPrintEnginePrintEnginePropertyKeyEnum): untyped = 7
+template PPK_PageOrder*(_: type QPrintEnginePrintEnginePropertyKeyEnum): untyped = 8
+template PPK_PageRect*(_: type QPrintEnginePrintEnginePropertyKeyEnum): untyped = 9
+template PPK_PageSize*(_: type QPrintEnginePrintEnginePropertyKeyEnum): untyped = 10
+template PPK_PaperRect*(_: type QPrintEnginePrintEnginePropertyKeyEnum): untyped = 11
+template PPK_PaperSource*(_: type QPrintEnginePrintEnginePropertyKeyEnum): untyped = 12
+template PPK_PrinterName*(_: type QPrintEnginePrintEnginePropertyKeyEnum): untyped = 13
+template PPK_PrinterProgram*(_: type QPrintEnginePrintEnginePropertyKeyEnum): untyped = 14
+template PPK_Resolution*(_: type QPrintEnginePrintEnginePropertyKeyEnum): untyped = 15
+template PPK_SelectionOption*(_: type QPrintEnginePrintEnginePropertyKeyEnum): untyped = 16
+template PPK_SupportedResolutions*(_: type QPrintEnginePrintEnginePropertyKeyEnum): untyped = 17
+template PPK_WindowsPageSize*(_: type QPrintEnginePrintEnginePropertyKeyEnum): untyped = 18
+template PPK_FontEmbedding*(_: type QPrintEnginePrintEnginePropertyKeyEnum): untyped = 19
+template PPK_Duplex*(_: type QPrintEnginePrintEnginePropertyKeyEnum): untyped = 20
+template PPK_PaperSources*(_: type QPrintEnginePrintEnginePropertyKeyEnum): untyped = 21
+template PPK_CustomPaperSize*(_: type QPrintEnginePrintEnginePropertyKeyEnum): untyped = 22
+template PPK_PageMargins*(_: type QPrintEnginePrintEnginePropertyKeyEnum): untyped = 23
+template PPK_CopyCount*(_: type QPrintEnginePrintEnginePropertyKeyEnum): untyped = 24
+template PPK_SupportsMultipleCopies*(_: type QPrintEnginePrintEnginePropertyKeyEnum): untyped = 25
+template PPK_PaperName*(_: type QPrintEnginePrintEnginePropertyKeyEnum): untyped = 26
+template PPK_QPageSize*(_: type QPrintEnginePrintEnginePropertyKeyEnum): untyped = 27
+template PPK_QPageMargins*(_: type QPrintEnginePrintEnginePropertyKeyEnum): untyped = 28
+template PPK_QPageLayout*(_: type QPrintEnginePrintEnginePropertyKeyEnum): untyped = 29
+template PPK_PaperSize*(_: type QPrintEnginePrintEnginePropertyKeyEnum): untyped = 10
+template PPK_CustomBase*(_: type QPrintEnginePrintEnginePropertyKeyEnum): untyped = 65280
 
 
 import gen_qprintengine_types
 export gen_qprintengine_types
 
 import
-  gen_qpaintdevice,
-  gen_qprinter,
   gen_qvariant
 export
-  gen_qpaintdevice,
-  gen_qprinter,
   gen_qvariant
 
 type cQPrintEngine*{.exportc: "QPrintEngine", incompleteStruct.} = object
@@ -95,35 +89,35 @@ proc fcQPrintEngine_operatorAssign(self: pointer, param1: pointer): void {.impor
 proc fcQPrintEngine_delete(self: pointer) {.importc: "QPrintEngine_delete".}
 
 
-func init*(T: type QPrintEngine, h: ptr cQPrintEngine): QPrintEngine =
+func init*(T: type gen_qprintengine_types.QPrintEngine, h: ptr cQPrintEngine): gen_qprintengine_types.QPrintEngine =
   T(h: h)
-proc setProperty*(self: QPrintEngine, key: QPrintEnginePrintEnginePropertyKey, value: gen_qvariant.QVariant): void =
+proc setProperty*(self: gen_qprintengine_types.QPrintEngine, key: cint, value: gen_qvariant.QVariant): void =
 
   fcQPrintEngine_setProperty(self.h, cint(key), value.h)
 
-proc property*(self: QPrintEngine, key: QPrintEnginePrintEnginePropertyKey): gen_qvariant.QVariant =
+proc property*(self: gen_qprintengine_types.QPrintEngine, key: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fcQPrintEngine_property(self.h, cint(key)))
 
-proc newPage*(self: QPrintEngine, ): bool =
+proc newPage*(self: gen_qprintengine_types.QPrintEngine, ): bool =
 
   fcQPrintEngine_newPage(self.h)
 
-proc abort*(self: QPrintEngine, ): bool =
+proc abort*(self: gen_qprintengine_types.QPrintEngine, ): bool =
 
   fcQPrintEngine_abort(self.h)
 
-proc metric*(self: QPrintEngine, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint =
+proc metric*(self: gen_qprintengine_types.QPrintEngine, param1: cint): cint =
 
   fcQPrintEngine_metric(self.h, cint(param1))
 
-proc printerState*(self: QPrintEngine, ): gen_qprinter.QPrinterPrinterState =
+proc printerState*(self: gen_qprintengine_types.QPrintEngine, ): cint =
 
-  gen_qprinter.QPrinterPrinterState(fcQPrintEngine_printerState(self.h))
+  cint(fcQPrintEngine_printerState(self.h))
 
-proc operatorAssign*(self: QPrintEngine, param1: QPrintEngine): void =
+proc operatorAssign*(self: gen_qprintengine_types.QPrintEngine, param1: gen_qprintengine_types.QPrintEngine): void =
 
   fcQPrintEngine_operatorAssign(self.h, param1.h)
 
-proc delete*(self: QPrintEngine) =
+proc delete*(self: gen_qprintengine_types.QPrintEngine) =
   fcQPrintEngine_delete(self.h)

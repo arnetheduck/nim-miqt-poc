@@ -175,7 +175,7 @@ func (this *QPictureFormatPlugin) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QPictureFormatPlugin_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QPictureFormatPlugin) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QPictureFormatPlugin) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QPictureFormatPlugin_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -202,7 +202,7 @@ func (this *QPictureFormatPlugin) callVirtualBase_Metacast(param1 string) unsafe
 	return (unsafe.Pointer)(C.QPictureFormatPlugin_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QPictureFormatPlugin) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QPictureFormatPlugin) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QPictureFormatPlugin_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

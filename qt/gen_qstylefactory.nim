@@ -49,9 +49,9 @@ proc fcQStyleFactory_create(param1: struct_miqt_string): pointer {.importc: "QSt
 proc fcQStyleFactory_delete(self: pointer) {.importc: "QStyleFactory_delete".}
 
 
-func init*(T: type QStyleFactory, h: ptr cQStyleFactory): QStyleFactory =
+func init*(T: type gen_qstylefactory_types.QStyleFactory, h: ptr cQStyleFactory): gen_qstylefactory_types.QStyleFactory =
   T(h: h)
-proc keys*(_: type QStyleFactory, ): seq[string] =
+proc keys*(_: type gen_qstylefactory_types.QStyleFactory, ): seq[string] =
 
   var v_ma = fcQStyleFactory_keys()
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -63,9 +63,9 @@ proc keys*(_: type QStyleFactory, ): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc create*(_: type QStyleFactory, param1: string): gen_qstyle.QStyle =
+proc create*(_: type gen_qstylefactory_types.QStyleFactory, param1: string): gen_qstyle.QStyle =
 
   gen_qstyle.QStyle(h: fcQStyleFactory_create(struct_miqt_string(data: param1, len: csize_t(len(param1)))))
 
-proc delete*(self: QStyleFactory) =
+proc delete*(self: gen_qstylefactory_types.QStyleFactory) =
   fcQStyleFactory_delete(self.h)

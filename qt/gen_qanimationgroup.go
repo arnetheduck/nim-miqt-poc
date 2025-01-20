@@ -175,7 +175,7 @@ func (this *QAnimationGroup) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QAnimationGroup_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QAnimationGroup) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QAnimationGroup) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QAnimationGroup_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -202,7 +202,7 @@ func (this *QAnimationGroup) callVirtualBase_Metacast(param1 string) unsafe.Poin
 	return (unsafe.Pointer)(C.QAnimationGroup_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QAnimationGroup) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QAnimationGroup) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QAnimationGroup_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

@@ -137,7 +137,7 @@ func (this *QPageSetupDialog) callVirtualBase_MetaObject() *qt6.QMetaObject {
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QPageSetupDialog_virtualbase_metaObject(unsafe.Pointer(this.h))))
 
 }
-func (this *QPageSetupDialog) OnmetaObject(slot func(super func() *qt6.QMetaObject) *qt6.QMetaObject) {
+func (this *QPageSetupDialog) OnMetaObject(slot func(super func() *qt6.QMetaObject) *qt6.QMetaObject) {
 	ok := C.QPageSetupDialog_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -164,7 +164,7 @@ func (this *QPageSetupDialog) callVirtualBase_Metacast(param1 string) unsafe.Poi
 	return (unsafe.Pointer)(C.QPageSetupDialog_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QPageSetupDialog) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QPageSetupDialog) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QPageSetupDialog_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

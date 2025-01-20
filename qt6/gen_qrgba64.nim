@@ -69,109 +69,109 @@ proc fcQRgba64_operatorAssign(self: pointer, x_rgba: culonglong): void {.importc
 proc fcQRgba64_delete(self: pointer) {.importc: "QRgba64_delete".}
 
 
-func init*(T: type QRgba64, h: ptr cQRgba64): QRgba64 =
+func init*(T: type gen_qrgba64_types.QRgba64, h: ptr cQRgba64): gen_qrgba64_types.QRgba64 =
   T(h: h)
-proc create*(T: type QRgba64, ): QRgba64 =
+proc create*(T: type gen_qrgba64_types.QRgba64, ): gen_qrgba64_types.QRgba64 =
 
-  QRgba64.init(fcQRgba64_new())
-proc create*(T: type QRgba64, param1: QRgba64): QRgba64 =
+  gen_qrgba64_types.QRgba64.init(fcQRgba64_new())
+proc create*(T: type gen_qrgba64_types.QRgba64, param1: gen_qrgba64_types.QRgba64): gen_qrgba64_types.QRgba64 =
 
-  QRgba64.init(fcQRgba64_new2(param1.h))
-proc fromRgba64*(_: type QRgba64, c: culonglong): QRgba64 =
+  gen_qrgba64_types.QRgba64.init(fcQRgba64_new2(param1.h))
+proc fromRgba64*(_: type gen_qrgba64_types.QRgba64, c: culonglong): gen_qrgba64_types.QRgba64 =
 
-  QRgba64(h: fcQRgba64_fromRgba64(c))
+  gen_qrgba64_types.QRgba64(h: fcQRgba64_fromRgba64(c))
 
-proc fromRgba642*(_: type QRgba64, red: cushort, green: cushort, blue: cushort, alpha: cushort): QRgba64 =
+proc fromRgba642*(_: type gen_qrgba64_types.QRgba64, red: cushort, green: cushort, blue: cushort, alpha: cushort): gen_qrgba64_types.QRgba64 =
 
-  QRgba64(h: fcQRgba64_fromRgba642(red, green, blue, alpha))
+  gen_qrgba64_types.QRgba64(h: fcQRgba64_fromRgba642(red, green, blue, alpha))
 
-proc fromRgba*(_: type QRgba64, red: uint8, green: uint8, blue: uint8, alpha: uint8): QRgba64 =
+proc fromRgba*(_: type gen_qrgba64_types.QRgba64, red: uint8, green: uint8, blue: uint8, alpha: uint8): gen_qrgba64_types.QRgba64 =
 
-  QRgba64(h: fcQRgba64_fromRgba(red, green, blue, alpha))
+  gen_qrgba64_types.QRgba64(h: fcQRgba64_fromRgba(red, green, blue, alpha))
 
-proc fromArgb32*(_: type QRgba64, rgb: cuint): QRgba64 =
+proc fromArgb32*(_: type gen_qrgba64_types.QRgba64, rgb: cuint): gen_qrgba64_types.QRgba64 =
 
-  QRgba64(h: fcQRgba64_fromArgb32(rgb))
+  gen_qrgba64_types.QRgba64(h: fcQRgba64_fromArgb32(rgb))
 
-proc isOpaque*(self: QRgba64, ): bool =
+proc isOpaque*(self: gen_qrgba64_types.QRgba64, ): bool =
 
   fcQRgba64_isOpaque(self.h)
 
-proc isTransparent*(self: QRgba64, ): bool =
+proc isTransparent*(self: gen_qrgba64_types.QRgba64, ): bool =
 
   fcQRgba64_isTransparent(self.h)
 
-proc red*(self: QRgba64, ): cushort =
+proc red*(self: gen_qrgba64_types.QRgba64, ): cushort =
 
   fcQRgba64_red(self.h)
 
-proc green*(self: QRgba64, ): cushort =
+proc green*(self: gen_qrgba64_types.QRgba64, ): cushort =
 
   fcQRgba64_green(self.h)
 
-proc blue*(self: QRgba64, ): cushort =
+proc blue*(self: gen_qrgba64_types.QRgba64, ): cushort =
 
   fcQRgba64_blue(self.h)
 
-proc alpha*(self: QRgba64, ): cushort =
+proc alpha*(self: gen_qrgba64_types.QRgba64, ): cushort =
 
   fcQRgba64_alpha(self.h)
 
-proc setRed*(self: QRgba64, x_red: cushort): void =
+proc setRed*(self: gen_qrgba64_types.QRgba64, x_red: cushort): void =
 
   fcQRgba64_setRed(self.h, x_red)
 
-proc setGreen*(self: QRgba64, x_green: cushort): void =
+proc setGreen*(self: gen_qrgba64_types.QRgba64, x_green: cushort): void =
 
   fcQRgba64_setGreen(self.h, x_green)
 
-proc setBlue*(self: QRgba64, x_blue: cushort): void =
+proc setBlue*(self: gen_qrgba64_types.QRgba64, x_blue: cushort): void =
 
   fcQRgba64_setBlue(self.h, x_blue)
 
-proc setAlpha*(self: QRgba64, x_alpha: cushort): void =
+proc setAlpha*(self: gen_qrgba64_types.QRgba64, x_alpha: cushort): void =
 
   fcQRgba64_setAlpha(self.h, x_alpha)
 
-proc red8*(self: QRgba64, ): uint8 =
+proc red8*(self: gen_qrgba64_types.QRgba64, ): uint8 =
 
   fcQRgba64_red8(self.h)
 
-proc green8*(self: QRgba64, ): uint8 =
+proc green8*(self: gen_qrgba64_types.QRgba64, ): uint8 =
 
   fcQRgba64_green8(self.h)
 
-proc blue8*(self: QRgba64, ): uint8 =
+proc blue8*(self: gen_qrgba64_types.QRgba64, ): uint8 =
 
   fcQRgba64_blue8(self.h)
 
-proc alpha8*(self: QRgba64, ): uint8 =
+proc alpha8*(self: gen_qrgba64_types.QRgba64, ): uint8 =
 
   fcQRgba64_alpha8(self.h)
 
-proc toArgb32*(self: QRgba64, ): cuint =
+proc toArgb32*(self: gen_qrgba64_types.QRgba64, ): cuint =
 
   fcQRgba64_toArgb32(self.h)
 
-proc toRgb16*(self: QRgba64, ): cushort =
+proc toRgb16*(self: gen_qrgba64_types.QRgba64, ): cushort =
 
   fcQRgba64_toRgb16(self.h)
 
-proc premultiplied*(self: QRgba64, ): QRgba64 =
+proc premultiplied*(self: gen_qrgba64_types.QRgba64, ): gen_qrgba64_types.QRgba64 =
 
-  QRgba64(h: fcQRgba64_premultiplied(self.h))
+  gen_qrgba64_types.QRgba64(h: fcQRgba64_premultiplied(self.h))
 
-proc unpremultiplied*(self: QRgba64, ): QRgba64 =
+proc unpremultiplied*(self: gen_qrgba64_types.QRgba64, ): gen_qrgba64_types.QRgba64 =
 
-  QRgba64(h: fcQRgba64_unpremultiplied(self.h))
+  gen_qrgba64_types.QRgba64(h: fcQRgba64_unpremultiplied(self.h))
 
-proc ToUnsignedLongLong*(self: QRgba64, ): culonglong =
+proc ToUnsignedLongLong*(self: gen_qrgba64_types.QRgba64, ): culonglong =
 
   fcQRgba64_ToUnsignedLongLong(self.h)
 
-proc operatorAssign*(self: QRgba64, x_rgba: culonglong): void =
+proc operatorAssign*(self: gen_qrgba64_types.QRgba64, x_rgba: culonglong): void =
 
   fcQRgba64_operatorAssign(self.h, x_rgba)
 
-proc delete*(self: QRgba64) =
+proc delete*(self: gen_qrgba64_types.QRgba64) =
   fcQRgba64_delete(self.h)

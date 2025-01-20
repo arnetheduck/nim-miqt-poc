@@ -34,20 +34,16 @@ const cflags = gorge("pkg-config -cflags Qt6WebEngineWidgets")
 {.compile("gen_qwebengineprofile.cpp", cflags).}
 
 
-type QWebEngineProfileHttpCacheType* = cint
-const
-  QWebEngineProfileMemoryHttpCache* = 0
-  QWebEngineProfileDiskHttpCache* = 1
-  QWebEngineProfileNoCache* = 2
+type QWebEngineProfileHttpCacheTypeEnum* = distinct cint
+template MemoryHttpCache*(_: type QWebEngineProfileHttpCacheTypeEnum): untyped = 0
+template DiskHttpCache*(_: type QWebEngineProfileHttpCacheTypeEnum): untyped = 1
+template NoCache*(_: type QWebEngineProfileHttpCacheTypeEnum): untyped = 2
 
 
-
-type QWebEngineProfilePersistentCookiesPolicy* = cint
-const
-  QWebEngineProfileNoPersistentCookies* = 0
-  QWebEngineProfileAllowPersistentCookies* = 1
-  QWebEngineProfileForcePersistentCookies* = 2
-
+type QWebEngineProfilePersistentCookiesPolicyEnum* = distinct cint
+template NoPersistentCookies*(_: type QWebEngineProfilePersistentCookiesPolicyEnum): untyped = 0
+template AllowPersistentCookies*(_: type QWebEngineProfilePersistentCookiesPolicyEnum): untyped = 1
+template ForcePersistentCookies*(_: type QWebEngineProfilePersistentCookiesPolicyEnum): untyped = 2
 
 
 import gen_qwebengineprofile_types
@@ -155,131 +151,131 @@ proc fcQWebEngineProfile_staticMetaObject(): pointer {.importc: "QWebEngineProfi
 proc fcQWebEngineProfile_delete(self: pointer) {.importc: "QWebEngineProfile_delete".}
 
 
-func init*(T: type QWebEngineProfile, h: ptr cQWebEngineProfile): QWebEngineProfile =
+func init*(T: type gen_qwebengineprofile_types.QWebEngineProfile, h: ptr cQWebEngineProfile): gen_qwebengineprofile_types.QWebEngineProfile =
   T(h: h)
-proc create*(T: type QWebEngineProfile, ): QWebEngineProfile =
+proc create*(T: type gen_qwebengineprofile_types.QWebEngineProfile, ): gen_qwebengineprofile_types.QWebEngineProfile =
 
-  QWebEngineProfile.init(fcQWebEngineProfile_new())
-proc create*(T: type QWebEngineProfile, name: string): QWebEngineProfile =
+  gen_qwebengineprofile_types.QWebEngineProfile.init(fcQWebEngineProfile_new())
+proc create*(T: type gen_qwebengineprofile_types.QWebEngineProfile, name: string): gen_qwebengineprofile_types.QWebEngineProfile =
 
-  QWebEngineProfile.init(fcQWebEngineProfile_new2(struct_miqt_string(data: name, len: csize_t(len(name)))))
-proc create*(T: type QWebEngineProfile, parent: gen_qobject.QObject): QWebEngineProfile =
+  gen_qwebengineprofile_types.QWebEngineProfile.init(fcQWebEngineProfile_new2(struct_miqt_string(data: name, len: csize_t(len(name)))))
+proc create*(T: type gen_qwebengineprofile_types.QWebEngineProfile, parent: gen_qobject.QObject): gen_qwebengineprofile_types.QWebEngineProfile =
 
-  QWebEngineProfile.init(fcQWebEngineProfile_new3(parent.h))
-proc create*(T: type QWebEngineProfile, name: string, parent: gen_qobject.QObject): QWebEngineProfile =
+  gen_qwebengineprofile_types.QWebEngineProfile.init(fcQWebEngineProfile_new3(parent.h))
+proc create*(T: type gen_qwebengineprofile_types.QWebEngineProfile, name: string, parent: gen_qobject.QObject): gen_qwebengineprofile_types.QWebEngineProfile =
 
-  QWebEngineProfile.init(fcQWebEngineProfile_new4(struct_miqt_string(data: name, len: csize_t(len(name))), parent.h))
-proc metaObject*(self: QWebEngineProfile, ): gen_qobjectdefs.QMetaObject =
+  gen_qwebengineprofile_types.QWebEngineProfile.init(fcQWebEngineProfile_new4(struct_miqt_string(data: name, len: csize_t(len(name))), parent.h))
+proc metaObject*(self: gen_qwebengineprofile_types.QWebEngineProfile, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQWebEngineProfile_metaObject(self.h))
 
-proc metacast*(self: QWebEngineProfile, param1: cstring): pointer =
+proc metacast*(self: gen_qwebengineprofile_types.QWebEngineProfile, param1: cstring): pointer =
 
   fcQWebEngineProfile_metacast(self.h, param1)
 
-proc metacall*(self: QWebEngineProfile, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qwebengineprofile_types.QWebEngineProfile, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQWebEngineProfile_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QWebEngineProfile, s: cstring): string =
+proc tr*(_: type gen_qwebengineprofile_types.QWebEngineProfile, s: cstring): string =
 
   let v_ms = fcQWebEngineProfile_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc storageName*(self: QWebEngineProfile, ): string =
+proc storageName*(self: gen_qwebengineprofile_types.QWebEngineProfile, ): string =
 
   let v_ms = fcQWebEngineProfile_storageName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc isOffTheRecord*(self: QWebEngineProfile, ): bool =
+proc isOffTheRecord*(self: gen_qwebengineprofile_types.QWebEngineProfile, ): bool =
 
   fcQWebEngineProfile_isOffTheRecord(self.h)
 
-proc persistentStoragePath*(self: QWebEngineProfile, ): string =
+proc persistentStoragePath*(self: gen_qwebengineprofile_types.QWebEngineProfile, ): string =
 
   let v_ms = fcQWebEngineProfile_persistentStoragePath(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setPersistentStoragePath*(self: QWebEngineProfile, path: string): void =
+proc setPersistentStoragePath*(self: gen_qwebengineprofile_types.QWebEngineProfile, path: string): void =
 
   fcQWebEngineProfile_setPersistentStoragePath(self.h, struct_miqt_string(data: path, len: csize_t(len(path))))
 
-proc cachePath*(self: QWebEngineProfile, ): string =
+proc cachePath*(self: gen_qwebengineprofile_types.QWebEngineProfile, ): string =
 
   let v_ms = fcQWebEngineProfile_cachePath(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setCachePath*(self: QWebEngineProfile, path: string): void =
+proc setCachePath*(self: gen_qwebengineprofile_types.QWebEngineProfile, path: string): void =
 
   fcQWebEngineProfile_setCachePath(self.h, struct_miqt_string(data: path, len: csize_t(len(path))))
 
-proc httpUserAgent*(self: QWebEngineProfile, ): string =
+proc httpUserAgent*(self: gen_qwebengineprofile_types.QWebEngineProfile, ): string =
 
   let v_ms = fcQWebEngineProfile_httpUserAgent(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setHttpUserAgent*(self: QWebEngineProfile, userAgent: string): void =
+proc setHttpUserAgent*(self: gen_qwebengineprofile_types.QWebEngineProfile, userAgent: string): void =
 
   fcQWebEngineProfile_setHttpUserAgent(self.h, struct_miqt_string(data: userAgent, len: csize_t(len(userAgent))))
 
-proc httpCacheType*(self: QWebEngineProfile, ): QWebEngineProfileHttpCacheType =
+proc httpCacheType*(self: gen_qwebengineprofile_types.QWebEngineProfile, ): cint =
 
-  QWebEngineProfileHttpCacheType(fcQWebEngineProfile_httpCacheType(self.h))
+  cint(fcQWebEngineProfile_httpCacheType(self.h))
 
-proc setHttpCacheType*(self: QWebEngineProfile, httpCacheType: QWebEngineProfileHttpCacheType): void =
+proc setHttpCacheType*(self: gen_qwebengineprofile_types.QWebEngineProfile, httpCacheType: cint): void =
 
   fcQWebEngineProfile_setHttpCacheType(self.h, cint(httpCacheType))
 
-proc setHttpAcceptLanguage*(self: QWebEngineProfile, httpAcceptLanguage: string): void =
+proc setHttpAcceptLanguage*(self: gen_qwebengineprofile_types.QWebEngineProfile, httpAcceptLanguage: string): void =
 
   fcQWebEngineProfile_setHttpAcceptLanguage(self.h, struct_miqt_string(data: httpAcceptLanguage, len: csize_t(len(httpAcceptLanguage))))
 
-proc httpAcceptLanguage*(self: QWebEngineProfile, ): string =
+proc httpAcceptLanguage*(self: gen_qwebengineprofile_types.QWebEngineProfile, ): string =
 
   let v_ms = fcQWebEngineProfile_httpAcceptLanguage(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc persistentCookiesPolicy*(self: QWebEngineProfile, ): QWebEngineProfilePersistentCookiesPolicy =
+proc persistentCookiesPolicy*(self: gen_qwebengineprofile_types.QWebEngineProfile, ): cint =
 
-  QWebEngineProfilePersistentCookiesPolicy(fcQWebEngineProfile_persistentCookiesPolicy(self.h))
+  cint(fcQWebEngineProfile_persistentCookiesPolicy(self.h))
 
-proc setPersistentCookiesPolicy*(self: QWebEngineProfile, persistentCookiesPolicy: QWebEngineProfilePersistentCookiesPolicy): void =
+proc setPersistentCookiesPolicy*(self: gen_qwebengineprofile_types.QWebEngineProfile, persistentCookiesPolicy: cint): void =
 
   fcQWebEngineProfile_setPersistentCookiesPolicy(self.h, cint(persistentCookiesPolicy))
 
-proc httpCacheMaximumSize*(self: QWebEngineProfile, ): cint =
+proc httpCacheMaximumSize*(self: gen_qwebengineprofile_types.QWebEngineProfile, ): cint =
 
   fcQWebEngineProfile_httpCacheMaximumSize(self.h)
 
-proc setHttpCacheMaximumSize*(self: QWebEngineProfile, maxSize: cint): void =
+proc setHttpCacheMaximumSize*(self: gen_qwebengineprofile_types.QWebEngineProfile, maxSize: cint): void =
 
   fcQWebEngineProfile_setHttpCacheMaximumSize(self.h, maxSize)
 
-proc cookieStore*(self: QWebEngineProfile, ): gen_qwebenginecookiestore.QWebEngineCookieStore =
+proc cookieStore*(self: gen_qwebengineprofile_types.QWebEngineProfile, ): gen_qwebenginecookiestore.QWebEngineCookieStore =
 
   gen_qwebenginecookiestore.QWebEngineCookieStore(h: fcQWebEngineProfile_cookieStore(self.h))
 
-proc setUrlRequestInterceptor*(self: QWebEngineProfile, interceptor: gen_qwebengineurlrequestinterceptor.QWebEngineUrlRequestInterceptor): void =
+proc setUrlRequestInterceptor*(self: gen_qwebengineprofile_types.QWebEngineProfile, interceptor: gen_qwebengineurlrequestinterceptor.QWebEngineUrlRequestInterceptor): void =
 
   fcQWebEngineProfile_setUrlRequestInterceptor(self.h, interceptor.h)
 
-proc clearAllVisitedLinks*(self: QWebEngineProfile, ): void =
+proc clearAllVisitedLinks*(self: gen_qwebengineprofile_types.QWebEngineProfile, ): void =
 
   fcQWebEngineProfile_clearAllVisitedLinks(self.h)
 
-proc clearVisitedLinks*(self: QWebEngineProfile, urls: seq[gen_qurl.QUrl]): void =
+proc clearVisitedLinks*(self: gen_qwebengineprofile_types.QWebEngineProfile, urls: seq[gen_qurl.QUrl]): void =
 
   var urls_CArray = newSeq[pointer](len(urls))
   for i in 0..<len(urls):
@@ -287,43 +283,43 @@ proc clearVisitedLinks*(self: QWebEngineProfile, urls: seq[gen_qurl.QUrl]): void
 
   fcQWebEngineProfile_clearVisitedLinks(self.h, struct_miqt_array(len: csize_t(len(urls)), data: if len(urls) == 0: nil else: addr(urls_CArray[0])))
 
-proc visitedLinksContainsUrl*(self: QWebEngineProfile, url: gen_qurl.QUrl): bool =
+proc visitedLinksContainsUrl*(self: gen_qwebengineprofile_types.QWebEngineProfile, url: gen_qurl.QUrl): bool =
 
   fcQWebEngineProfile_visitedLinksContainsUrl(self.h, url.h)
 
-proc settings*(self: QWebEngineProfile, ): gen_qwebenginesettings.QWebEngineSettings =
+proc settings*(self: gen_qwebengineprofile_types.QWebEngineProfile, ): gen_qwebenginesettings.QWebEngineSettings =
 
   gen_qwebenginesettings.QWebEngineSettings(h: fcQWebEngineProfile_settings(self.h))
 
-proc scripts*(self: QWebEngineProfile, ): gen_qwebenginescriptcollection.QWebEngineScriptCollection =
+proc scripts*(self: gen_qwebengineprofile_types.QWebEngineProfile, ): gen_qwebenginescriptcollection.QWebEngineScriptCollection =
 
   gen_qwebenginescriptcollection.QWebEngineScriptCollection(h: fcQWebEngineProfile_scripts(self.h))
 
-proc urlSchemeHandler*(self: QWebEngineProfile, param1: seq[byte]): gen_qwebengineurlschemehandler.QWebEngineUrlSchemeHandler =
+proc urlSchemeHandler*(self: gen_qwebengineprofile_types.QWebEngineProfile, param1: seq[byte]): gen_qwebengineurlschemehandler.QWebEngineUrlSchemeHandler =
 
   gen_qwebengineurlschemehandler.QWebEngineUrlSchemeHandler(h: fcQWebEngineProfile_urlSchemeHandler(self.h, struct_miqt_string(data: cast[cstring](if len(param1) == 0: nil else: unsafeAddr param1[0]), len: csize_t(len(param1)))))
 
-proc installUrlSchemeHandler*(self: QWebEngineProfile, scheme: seq[byte], param2: gen_qwebengineurlschemehandler.QWebEngineUrlSchemeHandler): void =
+proc installUrlSchemeHandler*(self: gen_qwebengineprofile_types.QWebEngineProfile, scheme: seq[byte], param2: gen_qwebengineurlschemehandler.QWebEngineUrlSchemeHandler): void =
 
   fcQWebEngineProfile_installUrlSchemeHandler(self.h, struct_miqt_string(data: cast[cstring](if len(scheme) == 0: nil else: unsafeAddr scheme[0]), len: csize_t(len(scheme))), param2.h)
 
-proc removeUrlScheme*(self: QWebEngineProfile, scheme: seq[byte]): void =
+proc removeUrlScheme*(self: gen_qwebengineprofile_types.QWebEngineProfile, scheme: seq[byte]): void =
 
   fcQWebEngineProfile_removeUrlScheme(self.h, struct_miqt_string(data: cast[cstring](if len(scheme) == 0: nil else: unsafeAddr scheme[0]), len: csize_t(len(scheme))))
 
-proc removeUrlSchemeHandler*(self: QWebEngineProfile, param1: gen_qwebengineurlschemehandler.QWebEngineUrlSchemeHandler): void =
+proc removeUrlSchemeHandler*(self: gen_qwebengineprofile_types.QWebEngineProfile, param1: gen_qwebengineurlschemehandler.QWebEngineUrlSchemeHandler): void =
 
   fcQWebEngineProfile_removeUrlSchemeHandler(self.h, param1.h)
 
-proc removeAllUrlSchemeHandlers*(self: QWebEngineProfile, ): void =
+proc removeAllUrlSchemeHandlers*(self: gen_qwebengineprofile_types.QWebEngineProfile, ): void =
 
   fcQWebEngineProfile_removeAllUrlSchemeHandlers(self.h)
 
-proc clearHttpCache*(self: QWebEngineProfile, ): void =
+proc clearHttpCache*(self: gen_qwebengineprofile_types.QWebEngineProfile, ): void =
 
   fcQWebEngineProfile_clearHttpCache(self.h)
 
-proc setSpellCheckLanguages*(self: QWebEngineProfile, languages: seq[string]): void =
+proc setSpellCheckLanguages*(self: gen_qwebengineprofile_types.QWebEngineProfile, languages: seq[string]): void =
 
   var languages_CArray = newSeq[struct_miqt_string](len(languages))
   for i in 0..<len(languages):
@@ -331,7 +327,7 @@ proc setSpellCheckLanguages*(self: QWebEngineProfile, languages: seq[string]): v
 
   fcQWebEngineProfile_setSpellCheckLanguages(self.h, struct_miqt_array(len: csize_t(len(languages)), data: if len(languages) == 0: nil else: addr(languages_CArray[0])))
 
-proc spellCheckLanguages*(self: QWebEngineProfile, ): seq[string] =
+proc spellCheckLanguages*(self: gen_qwebengineprofile_types.QWebEngineProfile, ): seq[string] =
 
   var v_ma = fcQWebEngineProfile_spellCheckLanguages(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -343,34 +339,34 @@ proc spellCheckLanguages*(self: QWebEngineProfile, ): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc setSpellCheckEnabled*(self: QWebEngineProfile, enabled: bool): void =
+proc setSpellCheckEnabled*(self: gen_qwebengineprofile_types.QWebEngineProfile, enabled: bool): void =
 
   fcQWebEngineProfile_setSpellCheckEnabled(self.h, enabled)
 
-proc isSpellCheckEnabled*(self: QWebEngineProfile, ): bool =
+proc isSpellCheckEnabled*(self: gen_qwebengineprofile_types.QWebEngineProfile, ): bool =
 
   fcQWebEngineProfile_isSpellCheckEnabled(self.h)
 
-proc downloadPath*(self: QWebEngineProfile, ): string =
+proc downloadPath*(self: gen_qwebengineprofile_types.QWebEngineProfile, ): string =
 
   let v_ms = fcQWebEngineProfile_downloadPath(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setDownloadPath*(self: QWebEngineProfile, path: string): void =
+proc setDownloadPath*(self: gen_qwebengineprofile_types.QWebEngineProfile, path: string): void =
 
   fcQWebEngineProfile_setDownloadPath(self.h, struct_miqt_string(data: path, len: csize_t(len(path))))
 
-proc clientCertificateStore*(self: QWebEngineProfile, ): gen_qwebengineclientcertificatestore.QWebEngineClientCertificateStore =
+proc clientCertificateStore*(self: gen_qwebengineprofile_types.QWebEngineProfile, ): gen_qwebengineclientcertificatestore.QWebEngineClientCertificateStore =
 
   gen_qwebengineclientcertificatestore.QWebEngineClientCertificateStore(h: fcQWebEngineProfile_clientCertificateStore(self.h))
 
-proc defaultProfile*(_: type QWebEngineProfile, ): QWebEngineProfile =
+proc defaultProfile*(_: type gen_qwebengineprofile_types.QWebEngineProfile, ): gen_qwebengineprofile_types.QWebEngineProfile =
 
-  QWebEngineProfile(h: fcQWebEngineProfile_defaultProfile())
+  gen_qwebengineprofile_types.QWebEngineProfile(h: fcQWebEngineProfile_defaultProfile())
 
-proc downloadRequested*(self: QWebEngineProfile, download: gen_qwebenginedownloadrequest.QWebEngineDownloadRequest): void =
+proc downloadRequested*(self: gen_qwebengineprofile_types.QWebEngineProfile, download: gen_qwebenginedownloadrequest.QWebEngineDownloadRequest): void =
 
   fcQWebEngineProfile_downloadRequested(self.h, download.h)
 
@@ -382,271 +378,221 @@ proc miqt_exec_callback_QWebEngineProfile_downloadRequested(slot: int, download:
 
   nimfunc[](slotval1)
 
-proc ondownloadRequested*(self: QWebEngineProfile, slot: proc(download: gen_qwebenginedownloadrequest.QWebEngineDownloadRequest)) =
+proc ondownloadRequested*(self: gen_qwebengineprofile_types.QWebEngineProfile, slot: proc(download: gen_qwebenginedownloadrequest.QWebEngineDownloadRequest)) =
   type Cb = proc(download: gen_qwebenginedownloadrequest.QWebEngineDownloadRequest)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQWebEngineProfile_connect_downloadRequested(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QWebEngineProfile, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qwebengineprofile_types.QWebEngineProfile, s: cstring, c: cstring): string =
 
   let v_ms = fcQWebEngineProfile_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QWebEngineProfile, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qwebengineprofile_types.QWebEngineProfile, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQWebEngineProfile_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QWebEngineProfile, ): gen_qobjectdefs.QMetaObject =
-
+proc QWebEngineProfilemetaObject*(self: gen_qwebengineprofile_types.QWebEngineProfile, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQWebEngineProfile_virtualbase_metaObject(self.h))
 
-type QWebEngineProfilemetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QWebEngineProfile, slot: proc(super: QWebEngineProfilemetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QWebEngineProfilemetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qwebengineprofile_types.QWebEngineProfile, slot: QWebEngineProfilemetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineProfilemetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QWebEngineProfilemetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineProfile_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineProfile_metaObject(self: ptr cQWebEngineProfile, slot: int): pointer {.exportc: "miqt_exec_callback_QWebEngineProfile_metaObject ".} =
-  type Cb = proc(super: QWebEngineProfilemetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QWebEngineProfile(h: self), )
+  var nimfunc = cast[ptr QWebEngineProfilemetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QWebEngineProfile, param1: cstring): pointer =
-
+proc QWebEngineProfilemetacast*(self: gen_qwebengineprofile_types.QWebEngineProfile, param1: cstring): pointer =
 
   fQWebEngineProfile_virtualbase_metacast(self.h, param1)
 
-type QWebEngineProfilemetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QWebEngineProfile, slot: proc(super: QWebEngineProfilemetacastBase, param1: cstring): pointer) =
+type QWebEngineProfilemetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qwebengineprofile_types.QWebEngineProfile, slot: QWebEngineProfilemetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineProfilemetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QWebEngineProfilemetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineProfile_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineProfile_metacast(self: ptr cQWebEngineProfile, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QWebEngineProfile_metacast ".} =
-  type Cb = proc(super: QWebEngineProfilemetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QWebEngineProfile(h: self), param1)
+  var nimfunc = cast[ptr QWebEngineProfilemetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QWebEngineProfile, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QWebEngineProfilemetacall*(self: gen_qwebengineprofile_types.QWebEngineProfile, param1: cint, param2: cint, param3: pointer): cint =
 
   fQWebEngineProfile_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QWebEngineProfilemetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QWebEngineProfile, slot: proc(super: QWebEngineProfilemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QWebEngineProfilemetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qwebengineprofile_types.QWebEngineProfile, slot: QWebEngineProfilemetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineProfilemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QWebEngineProfilemetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineProfile_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineProfile_metacall(self: ptr cQWebEngineProfile, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QWebEngineProfile_metacall ".} =
-  type Cb = proc(super: QWebEngineProfilemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QWebEngineProfile(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QWebEngineProfilemetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_event(self: QWebEngineProfile, event: gen_qcoreevent.QEvent): bool =
-
+proc QWebEngineProfileevent*(self: gen_qwebengineprofile_types.QWebEngineProfile, event: gen_qcoreevent.QEvent): bool =
 
   fQWebEngineProfile_virtualbase_event(self.h, event.h)
 
-type QWebEngineProfileeventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QWebEngineProfile, slot: proc(super: QWebEngineProfileeventBase, event: gen_qcoreevent.QEvent): bool) =
+type QWebEngineProfileeventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qwebengineprofile_types.QWebEngineProfile, slot: QWebEngineProfileeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineProfileeventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QWebEngineProfileeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineProfile_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineProfile_event(self: ptr cQWebEngineProfile, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QWebEngineProfile_event ".} =
-  type Cb = proc(super: QWebEngineProfileeventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QWebEngineProfile(h: self), event)
+  var nimfunc = cast[ptr QWebEngineProfileeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QWebEngineProfile, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QWebEngineProfileeventFilter*(self: gen_qwebengineprofile_types.QWebEngineProfile, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQWebEngineProfile_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QWebEngineProfileeventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QWebEngineProfile, slot: proc(super: QWebEngineProfileeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QWebEngineProfileeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qwebengineprofile_types.QWebEngineProfile, slot: QWebEngineProfileeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineProfileeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QWebEngineProfileeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineProfile_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineProfile_eventFilter(self: ptr cQWebEngineProfile, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QWebEngineProfile_eventFilter ".} =
-  type Cb = proc(super: QWebEngineProfileeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QWebEngineProfile(h: self), watched, event)
+  var nimfunc = cast[ptr QWebEngineProfileeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QWebEngineProfile, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QWebEngineProfiletimerEvent*(self: gen_qwebengineprofile_types.QWebEngineProfile, event: gen_qcoreevent.QTimerEvent): void =
 
   fQWebEngineProfile_virtualbase_timerEvent(self.h, event.h)
 
-type QWebEngineProfiletimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QWebEngineProfile, slot: proc(super: QWebEngineProfiletimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QWebEngineProfiletimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qwebengineprofile_types.QWebEngineProfile, slot: QWebEngineProfiletimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineProfiletimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QWebEngineProfiletimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineProfile_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineProfile_timerEvent(self: ptr cQWebEngineProfile, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebEngineProfile_timerEvent ".} =
-  type Cb = proc(super: QWebEngineProfiletimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QWebEngineProfile(h: self), event)
+  var nimfunc = cast[ptr QWebEngineProfiletimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QWebEngineProfile, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebEngineProfilechildEvent*(self: gen_qwebengineprofile_types.QWebEngineProfile, event: gen_qcoreevent.QChildEvent): void =
 
   fQWebEngineProfile_virtualbase_childEvent(self.h, event.h)
 
-type QWebEngineProfilechildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QWebEngineProfile, slot: proc(super: QWebEngineProfilechildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QWebEngineProfilechildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qwebengineprofile_types.QWebEngineProfile, slot: QWebEngineProfilechildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineProfilechildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QWebEngineProfilechildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineProfile_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineProfile_childEvent(self: ptr cQWebEngineProfile, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebEngineProfile_childEvent ".} =
-  type Cb = proc(super: QWebEngineProfilechildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QWebEngineProfile(h: self), event)
+  var nimfunc = cast[ptr QWebEngineProfilechildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QWebEngineProfile, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebEngineProfilecustomEvent*(self: gen_qwebengineprofile_types.QWebEngineProfile, event: gen_qcoreevent.QEvent): void =
 
   fQWebEngineProfile_virtualbase_customEvent(self.h, event.h)
 
-type QWebEngineProfilecustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QWebEngineProfile, slot: proc(super: QWebEngineProfilecustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QWebEngineProfilecustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qwebengineprofile_types.QWebEngineProfile, slot: QWebEngineProfilecustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineProfilecustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QWebEngineProfilecustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineProfile_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineProfile_customEvent(self: ptr cQWebEngineProfile, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebEngineProfile_customEvent ".} =
-  type Cb = proc(super: QWebEngineProfilecustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QWebEngineProfile(h: self), event)
+  var nimfunc = cast[ptr QWebEngineProfilecustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QWebEngineProfile, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QWebEngineProfileconnectNotify*(self: gen_qwebengineprofile_types.QWebEngineProfile, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQWebEngineProfile_virtualbase_connectNotify(self.h, signal.h)
 
-type QWebEngineProfileconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QWebEngineProfile, slot: proc(super: QWebEngineProfileconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QWebEngineProfileconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qwebengineprofile_types.QWebEngineProfile, slot: QWebEngineProfileconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineProfileconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QWebEngineProfileconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineProfile_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineProfile_connectNotify(self: ptr cQWebEngineProfile, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QWebEngineProfile_connectNotify ".} =
-  type Cb = proc(super: QWebEngineProfileconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QWebEngineProfile(h: self), signal)
+  var nimfunc = cast[ptr QWebEngineProfileconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QWebEngineProfile, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QWebEngineProfiledisconnectNotify*(self: gen_qwebengineprofile_types.QWebEngineProfile, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQWebEngineProfile_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QWebEngineProfiledisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QWebEngineProfile, slot: proc(super: QWebEngineProfiledisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QWebEngineProfiledisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qwebengineprofile_types.QWebEngineProfile, slot: QWebEngineProfiledisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineProfiledisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QWebEngineProfiledisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineProfile_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineProfile_disconnectNotify(self: ptr cQWebEngineProfile, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QWebEngineProfile_disconnectNotify ".} =
-  type Cb = proc(super: QWebEngineProfiledisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QWebEngineProfile(h: self), signal)
+  var nimfunc = cast[ptr QWebEngineProfiledisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QWebEngineProfile): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qwebengineprofile_types.QWebEngineProfile): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQWebEngineProfile_staticMetaObject())
-proc delete*(self: QWebEngineProfile) =
+proc delete*(self: gen_qwebengineprofile_types.QWebEngineProfile) =
   fcQWebEngineProfile_delete(self.h)

@@ -34,1695 +34,1535 @@ const cflags = gorge("pkg-config -cflags ScintillaEdit")
 {.compile("gen_ScintillaEdit.cpp", cflags).}
 
 
-type stdpointer_safety* = cint
-const
-  Stdrelaxed* = 0
-  Stdpreferred* = 1
-  Stdstrict* = 2
-
-
-
-type ScintillaInternalEdge* = cint
-const
-  ScintillaInternalleft* = 0
-  ScintillaInternaltop* = 1
-  ScintillaInternalbottom* = 2
-  ScintillaInternalright* = 3
-
-
-
-type ScintillaWhiteSpace* = cint
-const
-  ScintillaWhiteSpaceInvisible* = 0
-  ScintillaWhiteSpaceVisibleAlways* = 1
-  ScintillaWhiteSpaceVisibleAfterIndent* = 2
-  ScintillaWhiteSpaceVisibleOnlyInIndent* = 3
-
-
-
-type ScintillaTabDrawMode* = cint
-const
-  ScintillaLongArrow* = 0
-  ScintillaStrikeOut* = 1
-
-
-
-type ScintillaEndOfLine* = cint
-const
-  ScintillaCrLf* = 0
-  ScintillaCr* = 1
-  ScintillaLf* = 2
-
-
-
-type ScintillaIMEInteraction* = cint
-const
-  ScintillaWindowed* = 0
-  ScintillaInline* = 1
-
-
-
-type ScintillaAlpha* = cint
-const
-  ScintillaTransparent* = 0
-  ScintillaOpaque* = 255
-  ScintillaNoAlpha* = 256
-
-
-
-type ScintillaCursorShape* = cint
-const
-  ScintillaCursorShapeNormal* = -1
-  ScintillaCursorShapeArrow* = 2
-  ScintillaCursorShapeWait* = 4
-  ScintillaCursorShapeReverseArrow* = 7
-
-
-
-type ScintillaMarkerSymbol* = cint
-const
-  ScintillaMarkerSymbolCircle* = 0
-  ScintillaMarkerSymbolRoundRect* = 1
-  ScintillaMarkerSymbolArrow* = 2
-  ScintillaMarkerSymbolSmallRect* = 3
-  ScintillaMarkerSymbolShortArrow* = 4
-  ScintillaMarkerSymbolEmpty* = 5
-  ScintillaMarkerSymbolArrowDown* = 6
-  ScintillaMarkerSymbolMinus* = 7
-  ScintillaMarkerSymbolPlus* = 8
-  ScintillaMarkerSymbolVLine* = 9
-  ScintillaMarkerSymbolLCorner* = 10
-  ScintillaMarkerSymbolTCorner* = 11
-  ScintillaMarkerSymbolBoxPlus* = 12
-  ScintillaMarkerSymbolBoxPlusConnected* = 13
-  ScintillaMarkerSymbolBoxMinus* = 14
-  ScintillaMarkerSymbolBoxMinusConnected* = 15
-  ScintillaMarkerSymbolLCornerCurve* = 16
-  ScintillaMarkerSymbolTCornerCurve* = 17
-  ScintillaMarkerSymbolCirclePlus* = 18
-  ScintillaMarkerSymbolCirclePlusConnected* = 19
-  ScintillaMarkerSymbolCircleMinus* = 20
-  ScintillaMarkerSymbolCircleMinusConnected* = 21
-  ScintillaMarkerSymbolBackground* = 22
-  ScintillaMarkerSymbolDotDotDot* = 23
-  ScintillaMarkerSymbolArrows* = 24
-  ScintillaMarkerSymbolPixmap* = 25
-  ScintillaMarkerSymbolFullRect* = 26
-  ScintillaMarkerSymbolLeftRect* = 27
-  ScintillaMarkerSymbolAvailable* = 28
-  ScintillaMarkerSymbolUnderline* = 29
-  ScintillaMarkerSymbolRgbaImage* = 30
-  ScintillaMarkerSymbolBookmark* = 31
-  ScintillaMarkerSymbolVerticalBookmark* = 32
-  ScintillaMarkerSymbolBar* = 33
-  ScintillaMarkerSymbolCharacter* = 10000
-
-
-
-type ScintillaMarkerOutline* = cint
-const
-  ScintillaHistoryRevertedToOrigin* = 21
-  ScintillaHistorySaved* = 22
-  ScintillaHistoryModified* = 23
-  ScintillaHistoryRevertedToModified* = 24
-  ScintillaFolderEnd* = 25
-  ScintillaFolderOpenMid* = 26
-  ScintillaFolderMidTail* = 27
-  ScintillaFolderTail* = 28
-  ScintillaFolderSub* = 29
-  ScintillaFolder* = 30
-  ScintillaFolderOpen* = 31
-
-
-
-type ScintillaMarginType* = cint
-const
-  ScintillaMarginTypeSymbol* = 0
-  ScintillaMarginTypeNumber* = 1
-  ScintillaMarginTypeBack* = 2
-  ScintillaMarginTypeFore* = 3
-  ScintillaMarginTypeText* = 4
-  ScintillaMarginTypeRText* = 5
-  ScintillaMarginTypeColour* = 6
-
-
-
-type ScintillaStylesCommon* = cint
-const
-  ScintillaStylesCommonDefault* = 32
-  ScintillaStylesCommonLineNumber* = 33
-  ScintillaStylesCommonBraceLight* = 34
-  ScintillaStylesCommonBraceBad* = 35
-  ScintillaStylesCommonControlChar* = 36
-  ScintillaStylesCommonIndentGuide* = 37
-  ScintillaStylesCommonCallTip* = 38
-  ScintillaStylesCommonFoldDisplayText* = 39
-  ScintillaStylesCommonLastPredefined* = 39
-  ScintillaStylesCommonMax* = 255
-
-
-
-type ScintillaCharacterSet* = cint
-const
-  ScintillaCharacterSetAnsi* = 0
-  ScintillaCharacterSetDefault* = 1
-  ScintillaCharacterSetBaltic* = 186
-  ScintillaCharacterSetChineseBig5* = 136
-  ScintillaCharacterSetEastEurope* = 238
-  ScintillaCharacterSetGB2312* = 134
-  ScintillaCharacterSetGreek* = 161
-  ScintillaCharacterSetHangul* = 129
-  ScintillaCharacterSetMac* = 77
-  ScintillaCharacterSetOem* = 255
-  ScintillaCharacterSetRussian* = 204
-  ScintillaCharacterSetOem866* = 866
-  ScintillaCharacterSetCyrillic* = 1251
-  ScintillaCharacterSetShiftJis* = 128
-  ScintillaCharacterSetSymbol* = 2
-  ScintillaCharacterSetTurkish* = 162
-  ScintillaCharacterSetJohab* = 130
-  ScintillaCharacterSetHebrew* = 177
-  ScintillaCharacterSetArabic* = 178
-  ScintillaCharacterSetVietnamese* = 163
-  ScintillaCharacterSetThai* = 222
-  ScintillaCharacterSetIso8859_15* = 1000
-
-
-
-type ScintillaCaseVisible* = cint
-const
-  ScintillaMixed* = 0
-  ScintillaUpper* = 1
-  ScintillaLower* = 2
-  ScintillaCamel* = 3
-
-
-
-type ScintillaFontWeight* = cint
-const
-  ScintillaFontWeightNormal* = 400
-  ScintillaFontWeightSemiBold* = 600
-  ScintillaFontWeightBold* = 700
-
-
-
-type ScintillaFontStretch* = cint
-const
-  ScintillaFontStretchUltraCondensed* = 1
-  ScintillaFontStretchExtraCondensed* = 2
-  ScintillaFontStretchCondensed* = 3
-  ScintillaFontStretchSemiCondensed* = 4
-  ScintillaFontStretchNormal* = 5
-  ScintillaFontStretchSemiExpanded* = 6
-  ScintillaFontStretchExpanded* = 7
-  ScintillaFontStretchExtraExpanded* = 8
-  ScintillaFontStretchUltraExpanded* = 9
-
-
-
-type ScintillaElement* = cint
-const
-  ScintillaElementList* = 0
-  ScintillaElementListBack* = 1
-  ScintillaElementListSelected* = 2
-  ScintillaElementListSelectedBack* = 3
-  ScintillaElementSelectionText* = 10
-  ScintillaElementSelectionBack* = 11
-  ScintillaElementSelectionAdditionalText* = 12
-  ScintillaElementSelectionAdditionalBack* = 13
-  ScintillaElementSelectionSecondaryText* = 14
-  ScintillaElementSelectionSecondaryBack* = 15
-  ScintillaElementSelectionInactiveText* = 16
-  ScintillaElementSelectionInactiveBack* = 17
-  ScintillaElementSelectionInactiveAdditionalText* = 18
-  ScintillaElementSelectionInactiveAdditionalBack* = 19
-  ScintillaElementCaret* = 40
-  ScintillaElementCaretAdditional* = 41
-  ScintillaElementCaretLineBack* = 50
-  ScintillaElementWhiteSpace* = 60
-  ScintillaElementWhiteSpaceBack* = 61
-  ScintillaElementHotSpotActive* = 70
-  ScintillaElementHotSpotActiveBack* = 71
-  ScintillaElementFoldLine* = 80
-  ScintillaElementHiddenLine* = 81
-
-
-
-type ScintillaLayer* = cint
-const
-  ScintillaBase* = 0
-  ScintillaUnderText* = 1
-  ScintillaOverText* = 2
-
-
-
-type ScintillaIndicatorStyle* = cint
-const
-  ScintillaIndicatorStylePlain* = 0
-  ScintillaIndicatorStyleSquiggle* = 1
-  ScintillaIndicatorStyleTT* = 2
-  ScintillaIndicatorStyleDiagonal* = 3
-  ScintillaIndicatorStyleStrike* = 4
-  ScintillaIndicatorStyleHidden* = 5
-  ScintillaIndicatorStyleBox* = 6
-  ScintillaIndicatorStyleRoundBox* = 7
-  ScintillaIndicatorStyleStraightBox* = 8
-  ScintillaIndicatorStyleDash* = 9
-  ScintillaIndicatorStyleDots* = 10
-  ScintillaIndicatorStyleSquiggleLow* = 11
-  ScintillaIndicatorStyleDotBox* = 12
-  ScintillaIndicatorStyleSquigglePixmap* = 13
-  ScintillaIndicatorStyleCompositionThick* = 14
-  ScintillaIndicatorStyleCompositionThin* = 15
-  ScintillaIndicatorStyleFullBox* = 16
-  ScintillaIndicatorStyleTextFore* = 17
-  ScintillaIndicatorStylePoint* = 18
-  ScintillaIndicatorStylePointCharacter* = 19
-  ScintillaIndicatorStyleGradient* = 20
-  ScintillaIndicatorStyleGradientCentre* = 21
-  ScintillaIndicatorStylePointTop* = 22
-
-
-
-type ScintillaIndicatorNumbers* = cint
-const
-  ScintillaIndicatorNumbersContainer* = 8
-  ScintillaIndicatorNumbersIme* = 32
-  ScintillaIndicatorNumbersImeMax* = 35
-  ScintillaIndicatorNumbersHistoryRevertedToOriginInsertion* = 36
-  ScintillaIndicatorNumbersHistoryRevertedToOriginDeletion* = 37
-  ScintillaIndicatorNumbersHistorySavedInsertion* = 38
-  ScintillaIndicatorNumbersHistorySavedDeletion* = 39
-  ScintillaIndicatorNumbersHistoryModifiedInsertion* = 40
-  ScintillaIndicatorNumbersHistoryModifiedDeletion* = 41
-  ScintillaIndicatorNumbersHistoryRevertedToModifiedInsertion* = 42
-  ScintillaIndicatorNumbersHistoryRevertedToModifiedDeletion* = 43
-  ScintillaIndicatorNumbersMax* = 43
-
-
-
-type ScintillaIndicValue* = cint
-const
-  ScintillaBit* = 16777216
-  ScintillaMask* = 16777215
-
-
-
-type ScintillaIndicFlag* = cint
-const
-  ScintillaIndicFlagNone* = 0
-  ScintillaIndicFlagValueFore* = 1
-
-
-
-type ScintillaAutoCompleteOption* = cint
-const
-  ScintillaAutoCompleteOptionNormal* = 0
-  ScintillaAutoCompleteOptionFixedSize* = 1
-  ScintillaAutoCompleteOptionSelectFirstItem* = 2
-
-
-
-type ScintillaIndentView* = cint
-const
-  ScintillaIndentViewNone* = 0
-  ScintillaIndentViewReal* = 1
-  ScintillaIndentViewLookForward* = 2
-  ScintillaIndentViewLookBoth* = 3
-
-
-
-type ScintillaPrintOption* = cint
-const
-  ScintillaPrintOptionNormal* = 0
-  ScintillaPrintOptionInvertLight* = 1
-  ScintillaPrintOptionBlackOnWhite* = 2
-  ScintillaPrintOptionColourOnWhite* = 3
-  ScintillaPrintOptionColourOnWhiteDefaultBG* = 4
-  ScintillaPrintOptionScreenColours* = 5
-
-
-
-type ScintillaFindOption* = cint
-const
-  ScintillaFindOptionNone* = 0
-  ScintillaFindOptionWholeWord* = 2
-  ScintillaFindOptionMatchCase* = 4
-  ScintillaFindOptionWordStart* = 1048576
-  ScintillaFindOptionRegExp* = 2097152
-  ScintillaFindOptionPosix* = 4194304
-  ScintillaFindOptionCxx11RegEx* = 8388608
-
-
-
-type ScintillaChangeHistoryOption* = cint
-const
-  ScintillaChangeHistoryOptionDisabled* = 0
-  ScintillaChangeHistoryOptionEnabled* = 1
-  ScintillaChangeHistoryOptionMarkers* = 2
-  ScintillaChangeHistoryOptionIndicators* = 4
-
-
-
-type ScintillaFoldLevel* = cint
-const
-  ScintillaFoldLevelNone* = 0
-  ScintillaFoldLevelBase* = 1024
-  ScintillaFoldLevelWhiteFlag* = 4096
-  ScintillaFoldLevelHeaderFlag* = 8192
-  ScintillaFoldLevelNumberMask* = 4095
-
-
-
-type ScintillaFoldDisplayTextStyle* = cint
-const
-  ScintillaFoldDisplayTextStyleHidden* = 0
-  ScintillaFoldDisplayTextStyleStandard* = 1
-  ScintillaFoldDisplayTextStyleBoxed* = 2
-
-
-
-type ScintillaFoldAction* = cint
-const
-  ScintillaContract* = 0
-  ScintillaExpand* = 1
-  ScintillaToggle* = 2
-  ScintillaContractEveryLevel* = 4
-
-
-
-type ScintillaAutomaticFold* = cint
-const
-  ScintillaAutomaticFoldNone* = 0
-  ScintillaAutomaticFoldShow* = 1
-  ScintillaAutomaticFoldClick* = 2
-  ScintillaAutomaticFoldChange* = 4
-
-
-
-type ScintillaFoldFlag* = cint
-const
-  ScintillaFoldFlagNone* = 0
-  ScintillaFoldFlagLineBeforeExpanded* = 2
-  ScintillaFoldFlagLineBeforeContracted* = 4
-  ScintillaFoldFlagLineAfterExpanded* = 8
-  ScintillaFoldFlagLineAfterContracted* = 16
-  ScintillaFoldFlagLevelNumbers* = 64
-  ScintillaFoldFlagLineState* = 128
-
-
-
-type ScintillaIdleStyling* = cint
-const
-  ScintillaIdleStylingNone* = 0
-  ScintillaIdleStylingToVisible* = 1
-  ScintillaIdleStylingAfterVisible* = 2
-  ScintillaIdleStylingAll* = 3
-
-
-
-type ScintillaWrap* = cint
-const
-  ScintillaWrapNone* = 0
-  ScintillaWrapWord* = 1
-  ScintillaWrapChar* = 2
-  ScintillaWrapWhiteSpace* = 3
-
-
-
-type ScintillaWrapVisualFlag* = cint
-const
-  ScintillaWrapVisualFlagNone* = 0
-  ScintillaWrapVisualFlagEnd* = 1
-  ScintillaWrapVisualFlagStart* = 2
-  ScintillaWrapVisualFlagMargin* = 4
-
-
-
-type ScintillaWrapVisualLocation* = cint
-const
-  ScintillaWrapVisualLocationDefault* = 0
-  ScintillaWrapVisualLocationEndByText* = 1
-  ScintillaWrapVisualLocationStartByText* = 2
-
-
-
-type ScintillaWrapIndentMode* = cint
-const
-  ScintillaFixed* = 0
-  ScintillaSame* = 1
-  ScintillaIndent* = 2
-  ScintillaDeepIndent* = 3
-
-
-
-type ScintillaLineCache* = cint
-const
-  ScintillaLineCacheNone* = 0
-  ScintillaLineCacheCaret* = 1
-  ScintillaLineCachePage* = 2
-  ScintillaLineCacheDocument* = 3
-
-
-
-type ScintillaPhasesDraw* = cint
-const
-  ScintillaOne* = 0
-  ScintillaTwo* = 1
-  ScintillaMultiple* = 2
-
-
-
-type ScintillaFontQuality* = cint
-const
-  ScintillaQualityMask* = 15
-  ScintillaQualityDefault* = 0
-  ScintillaQualityNonAntialiased* = 1
-  ScintillaQualityAntialiased* = 2
-  ScintillaQualityLcdOptimized* = 3
-
-
-
-type ScintillaMultiPaste* = cint
-const
-  ScintillaMultiPasteOnce* = 0
-  ScintillaMultiPasteEach* = 1
-
-
-
-type ScintillaAccessibility* = cint
-const
-  ScintillaAccessibilityDisabled* = 0
-  ScintillaAccessibilityEnabled* = 1
-
-
-
-type ScintillaEdgeVisualStyle* = cint
-const
-  ScintillaEdgeVisualStyleNone* = 0
-  ScintillaEdgeVisualStyleLine* = 1
-  ScintillaEdgeVisualStyleBackground* = 2
-  ScintillaEdgeVisualStyleMultiLine* = 3
-
-
-
-type ScintillaPopUp* = cint
-const
-  ScintillaPopUpNever* = 0
-  ScintillaPopUpAll* = 1
-  ScintillaPopUpText* = 2
-
-
-
-type ScintillaDocumentOption* = cint
-const
-  ScintillaDocumentOptionDefault* = 0
-  ScintillaDocumentOptionStylesNone* = 1
-  ScintillaDocumentOptionTextLarge* = 256
-
-
-
-type ScintillaStatus* = cint
-const
-  ScintillaOk* = 0
-  ScintillaFailure* = 1
-  ScintillaBadAlloc* = 2
-  ScintillaWarnStart* = 1000
-  ScintillaRegEx* = 1001
-
-
-
-type ScintillaVisiblePolicy* = cint
-const
-  ScintillaVisiblePolicySlop* = 1
-  ScintillaVisiblePolicyStrict* = 4
-
-
-
-type ScintillaCaretPolicy* = cint
-const
-  ScintillaCaretPolicySlop* = 1
-  ScintillaCaretPolicyStrict* = 4
-  ScintillaCaretPolicyJumps* = 16
-  ScintillaCaretPolicyEven* = 8
-
-
-
-type ScintillaSelectionMode* = cint
-const
-  ScintillaSelectionModeStream* = 0
-  ScintillaSelectionModeRectangle* = 1
-  ScintillaSelectionModeLines* = 2
-  ScintillaSelectionModeThin* = 3
-
-
-
-type ScintillaCaseInsensitiveBehaviour* = cint
-const
-  ScintillaRespectCase* = 0
-  ScintillaIgnoreCase* = 1
-
-
-
-type ScintillaMultiAutoComplete* = cint
-const
-  ScintillaMultiAutoCompleteOnce* = 0
-  ScintillaMultiAutoCompleteEach* = 1
-
-
-
-type ScintillaOrdering* = cint
-const
-  ScintillaPreSorted* = 0
-  ScintillaPerformSort* = 1
-  ScintillaCustom* = 2
-
-
-
-type ScintillaCaretSticky* = cint
-const
-  ScintillaCaretStickyOff* = 0
-  ScintillaCaretStickyOn* = 1
-  ScintillaCaretStickyWhiteSpace* = 2
-
-
-
-type ScintillaCaretStyle* = cint
-const
-  ScintillaCaretStyleInvisible* = 0
-  ScintillaCaretStyleLine* = 1
-  ScintillaCaretStyleBlock* = 2
-  ScintillaCaretStyleOverstrikeBar* = 0
-  ScintillaCaretStyleOverstrikeBlock* = 16
-  ScintillaCaretStyleCurses* = 32
-  ScintillaCaretStyleInsMask* = 15
-  ScintillaCaretStyleBlockAfter* = 256
-
-
-
-type ScintillaMarginOption* = cint
-const
-  ScintillaMarginOptionNone* = 0
-  ScintillaMarginOptionSubLineSelect* = 1
-
-
-
-type ScintillaAnnotationVisible* = cint
-const
-  ScintillaAnnotationVisibleHidden* = 0
-  ScintillaAnnotationVisibleStandard* = 1
-  ScintillaAnnotationVisibleBoxed* = 2
-  ScintillaAnnotationVisibleIndented* = 3
-
-
-
-type ScintillaUndoFlags* = cint
-const
-  ScintillaUndoFlagsNone* = 0
-  ScintillaUndoFlagsMayCoalesce* = 1
-
-
-
-type ScintillaVirtualSpace* = cint
-const
-  ScintillaVirtualSpaceNone* = 0
-  ScintillaVirtualSpaceRectangularSelection* = 1
-  ScintillaVirtualSpaceUserAccessible* = 2
-  ScintillaVirtualSpaceNoWrapLineStart* = 4
-
-
-
-type ScintillaTechnology* = cint
-const
-  ScintillaTechnologyDefault* = 0
-  ScintillaTechnologyDirectWrite* = 1
-  ScintillaTechnologyDirectWriteRetain* = 2
-  ScintillaTechnologyDirectWriteDC* = 3
-
-
-
-type ScintillaLineEndType* = cint
-const
-  ScintillaLineEndTypeDefault* = 0
-  ScintillaLineEndTypeUnicode* = 1
-
-
-
-type ScintillaRepresentationAppearance* = cint
-const
-  ScintillaRepresentationAppearancePlain* = 0
-  ScintillaRepresentationAppearanceBlob* = 1
-  ScintillaRepresentationAppearanceColour* = 16
-
-
-
-type ScintillaEOLAnnotationVisible* = cint
-const
-  ScintillaEOLAnnotationVisibleHidden* = 0
-  ScintillaEOLAnnotationVisibleStandard* = 1
-  ScintillaEOLAnnotationVisibleBoxed* = 2
-  ScintillaEOLAnnotationVisibleStadium* = 256
-  ScintillaEOLAnnotationVisibleFlatCircle* = 257
-  ScintillaEOLAnnotationVisibleAngleCircle* = 258
-  ScintillaEOLAnnotationVisibleCircleFlat* = 272
-  ScintillaEOLAnnotationVisibleFlats* = 273
-  ScintillaEOLAnnotationVisibleAngleFlat* = 274
-  ScintillaEOLAnnotationVisibleCircleAngle* = 288
-  ScintillaEOLAnnotationVisibleFlatAngle* = 289
-  ScintillaEOLAnnotationVisibleAngles* = 290
-
-
-
-type ScintillaSupports* = cint
-const
-  ScintillaLineDrawsFinal* = 0
-  ScintillaPixelDivisions* = 1
-  ScintillaFractionalStrokeWidth* = 2
-  ScintillaTranslucentStroke* = 3
-  ScintillaPixelModification* = 4
-  ScintillaThreadSafeMeasureWidths* = 5
-
-
-
-type ScintillaLineCharacterIndexType* = cint
-const
-  ScintillaLineCharacterIndexTypeNone* = 0
-  ScintillaLineCharacterIndexTypeUtf32* = 1
-  ScintillaLineCharacterIndexTypeUtf16* = 2
-
-
-
-type ScintillaTypeProperty* = cint
-const
-  ScintillaBoolean* = 0
-  ScintillaInteger* = 1
-  ScintillaString* = 2
-
-
-
-type ScintillaModificationFlags* = cint
-const
-  ScintillaModificationFlagsNone* = 0
-  ScintillaModificationFlagsInsertText* = 1
-  ScintillaModificationFlagsDeleteText* = 2
-  ScintillaModificationFlagsChangeStyle* = 4
-  ScintillaModificationFlagsChangeFold* = 8
-  ScintillaModificationFlagsUser* = 16
-  ScintillaModificationFlagsUndo* = 32
-  ScintillaModificationFlagsRedo* = 64
-  ScintillaModificationFlagsMultiStepUndoRedo* = 128
-  ScintillaModificationFlagsLastStepInUndoRedo* = 256
-  ScintillaModificationFlagsChangeMarker* = 512
-  ScintillaModificationFlagsBeforeInsert* = 1024
-  ScintillaModificationFlagsBeforeDelete* = 2048
-  ScintillaModificationFlagsMultilineUndoRedo* = 4096
-  ScintillaModificationFlagsStartAction* = 8192
-  ScintillaModificationFlagsChangeIndicator* = 16384
-  ScintillaModificationFlagsChangeLineState* = 32768
-  ScintillaModificationFlagsChangeMargin* = 65536
-  ScintillaModificationFlagsChangeAnnotation* = 131072
-  ScintillaModificationFlagsContainer* = 262144
-  ScintillaModificationFlagsLexerState* = 524288
-  ScintillaModificationFlagsInsertCheck* = 1048576
-  ScintillaModificationFlagsChangeTabStops* = 2097152
-  ScintillaModificationFlagsChangeEOLAnnotation* = 4194304
-  ScintillaModificationFlagsEventMaskAll* = 8388607
-
-
-
-type ScintillaUpdate* = cint
-const
-  ScintillaUpdateNone* = 0
-  ScintillaUpdateContent* = 1
-  ScintillaUpdateSelection* = 2
-  ScintillaUpdateVScroll* = 4
-  ScintillaUpdateHScroll* = 8
-
-
-
-type ScintillaFocusChange* = cint
-const
-  ScintillaChange* = 768
-  ScintillaSetfocus* = 512
-  ScintillaKillfocus* = 256
-
-
-
-type ScintillaKeys* = cint
-const
-  ScintillaKeysDown* = 300
-  ScintillaKeysUp* = 301
-  ScintillaKeysLeft* = 302
-  ScintillaKeysRight* = 303
-  ScintillaKeysHome* = 304
-  ScintillaKeysEnd* = 305
-  ScintillaKeysPrior* = 306
-  ScintillaKeysNext* = 307
-  ScintillaKeysDelete* = 308
-  ScintillaKeysInsert* = 309
-  ScintillaKeysEscape* = 7
-  ScintillaKeysBack* = 8
-  ScintillaKeysTab* = 9
-  ScintillaKeysReturn* = 13
-  ScintillaKeysAdd* = 310
-  ScintillaKeysSubtract* = 311
-  ScintillaKeysDivide* = 312
-  ScintillaKeysWin* = 313
-  ScintillaKeysRWin* = 314
-  ScintillaKeysMenu* = 315
-
-
-
-type ScintillaKeyMod* = cint
-const
-  ScintillaNorm* = 0
-  ScintillaShift* = 1
-  ScintillaCtrl* = 2
-  ScintillaAlt* = 4
-  ScintillaSuper* = 8
-  ScintillaMeta* = 16
-
-
-
-type ScintillaCompletionMethods* = cint
-const
-  ScintillaCompletionMethodsFillUp* = 1
-  ScintillaCompletionMethodsDoubleClick* = 2
-  ScintillaCompletionMethodsTab* = 3
-  ScintillaCompletionMethodsNewline* = 4
-  ScintillaCompletionMethodsCommand* = 5
-  ScintillaCompletionMethodsSingleChoice* = 6
-
-
-
-type ScintillaCharacterSource* = cint
-const
-  ScintillaDirectInput* = 0
-  ScintillaTentativeInput* = 1
-  ScintillaImeResult* = 2
-
-
-
-type ScintillaBidirectional* = cint
-const
-  ScintillaBidirectionalDisabled* = 0
-  ScintillaBidirectionalL2R* = 1
-  ScintillaBidirectionalR2L* = 2
-
-
-
-type ScintillaNotification* = cint
-const
-  ScintillaNotificationStyleNeeded* = 2000
-  ScintillaNotificationCharAdded* = 2001
-  ScintillaNotificationSavePointReached* = 2002
-  ScintillaNotificationSavePointLeft* = 2003
-  ScintillaNotificationModifyAttemptRO* = 2004
-  ScintillaNotificationKey* = 2005
-  ScintillaNotificationDoubleClick* = 2006
-  ScintillaNotificationUpdateUI* = 2007
-  ScintillaNotificationModified* = 2008
-  ScintillaNotificationMacroRecord* = 2009
-  ScintillaNotificationMarginClick* = 2010
-  ScintillaNotificationNeedShown* = 2011
-  ScintillaNotificationPainted* = 2013
-  ScintillaNotificationUserListSelection* = 2014
-  ScintillaNotificationURIDropped* = 2015
-  ScintillaNotificationDwellStart* = 2016
-  ScintillaNotificationDwellEnd* = 2017
-  ScintillaNotificationZoom* = 2018
-  ScintillaNotificationHotSpotClick* = 2019
-  ScintillaNotificationHotSpotDoubleClick* = 2020
-  ScintillaNotificationCallTipClick* = 2021
-  ScintillaNotificationAutoCSelection* = 2022
-  ScintillaNotificationIndicatorClick* = 2023
-  ScintillaNotificationIndicatorRelease* = 2024
-  ScintillaNotificationAutoCCancelled* = 2025
-  ScintillaNotificationAutoCCharDeleted* = 2026
-  ScintillaNotificationHotSpotReleaseClick* = 2027
-  ScintillaNotificationFocusIn* = 2028
-  ScintillaNotificationFocusOut* = 2029
-  ScintillaNotificationAutoCCompleted* = 2030
-  ScintillaNotificationMarginRightClick* = 2031
-  ScintillaNotificationAutoCSelectionChange* = 2032
-
-
-
-type ScintillaMessage* = cint
-const
-  ScintillaMessageAddText* = 2001
-  ScintillaMessageAddStyledText* = 2002
-  ScintillaMessageInsertText* = 2003
-  ScintillaMessageChangeInsertion* = 2672
-  ScintillaMessageClearAll* = 2004
-  ScintillaMessageDeleteRange* = 2645
-  ScintillaMessageClearDocumentStyle* = 2005
-  ScintillaMessageGetLength* = 2006
-  ScintillaMessageGetCharAt* = 2007
-  ScintillaMessageGetCurrentPos* = 2008
-  ScintillaMessageGetAnchor* = 2009
-  ScintillaMessageGetStyleAt* = 2010
-  ScintillaMessageGetStyleIndexAt* = 2038
-  ScintillaMessageRedo* = 2011
-  ScintillaMessageSetUndoCollection* = 2012
-  ScintillaMessageSelectAll* = 2013
-  ScintillaMessageSetSavePoint* = 2014
-  ScintillaMessageGetStyledText* = 2015
-  ScintillaMessageGetStyledTextFull* = 2778
-  ScintillaMessageCanRedo* = 2016
-  ScintillaMessageMarkerLineFromHandle* = 2017
-  ScintillaMessageMarkerDeleteHandle* = 2018
-  ScintillaMessageMarkerHandleFromLine* = 2732
-  ScintillaMessageMarkerNumberFromLine* = 2733
-  ScintillaMessageGetUndoCollection* = 2019
-  ScintillaMessageGetViewWS* = 2020
-  ScintillaMessageSetViewWS* = 2021
-  ScintillaMessageGetTabDrawMode* = 2698
-  ScintillaMessageSetTabDrawMode* = 2699
-  ScintillaMessagePositionFromPoint* = 2022
-  ScintillaMessagePositionFromPointClose* = 2023
-  ScintillaMessageGotoLine* = 2024
-  ScintillaMessageGotoPos* = 2025
-  ScintillaMessageSetAnchor* = 2026
-  ScintillaMessageGetCurLine* = 2027
-  ScintillaMessageGetEndStyled* = 2028
-  ScintillaMessageConvertEOLs* = 2029
-  ScintillaMessageGetEOLMode* = 2030
-  ScintillaMessageSetEOLMode* = 2031
-  ScintillaMessageStartStyling* = 2032
-  ScintillaMessageSetStyling* = 2033
-  ScintillaMessageGetBufferedDraw* = 2034
-  ScintillaMessageSetBufferedDraw* = 2035
-  ScintillaMessageSetTabWidth* = 2036
-  ScintillaMessageGetTabWidth* = 2121
-  ScintillaMessageSetTabMinimumWidth* = 2724
-  ScintillaMessageGetTabMinimumWidth* = 2725
-  ScintillaMessageClearTabStops* = 2675
-  ScintillaMessageAddTabStop* = 2676
-  ScintillaMessageGetNextTabStop* = 2677
-  ScintillaMessageSetCodePage* = 2037
-  ScintillaMessageSetFontLocale* = 2760
-  ScintillaMessageGetFontLocale* = 2761
-  ScintillaMessageGetIMEInteraction* = 2678
-  ScintillaMessageSetIMEInteraction* = 2679
-  ScintillaMessageMarkerDefine* = 2040
-  ScintillaMessageMarkerSetFore* = 2041
-  ScintillaMessageMarkerSetBack* = 2042
-  ScintillaMessageMarkerSetBackSelected* = 2292
-  ScintillaMessageMarkerSetForeTranslucent* = 2294
-  ScintillaMessageMarkerSetBackTranslucent* = 2295
-  ScintillaMessageMarkerSetBackSelectedTranslucent* = 2296
-  ScintillaMessageMarkerSetStrokeWidth* = 2297
-  ScintillaMessageMarkerEnableHighlight* = 2293
-  ScintillaMessageMarkerAdd* = 2043
-  ScintillaMessageMarkerDelete* = 2044
-  ScintillaMessageMarkerDeleteAll* = 2045
-  ScintillaMessageMarkerGet* = 2046
-  ScintillaMessageMarkerNext* = 2047
-  ScintillaMessageMarkerPrevious* = 2048
-  ScintillaMessageMarkerDefinePixmap* = 2049
-  ScintillaMessageMarkerAddSet* = 2466
-  ScintillaMessageMarkerSetAlpha* = 2476
-  ScintillaMessageMarkerGetLayer* = 2734
-  ScintillaMessageMarkerSetLayer* = 2735
-  ScintillaMessageSetMarginTypeN* = 2240
-  ScintillaMessageGetMarginTypeN* = 2241
-  ScintillaMessageSetMarginWidthN* = 2242
-  ScintillaMessageGetMarginWidthN* = 2243
-  ScintillaMessageSetMarginMaskN* = 2244
-  ScintillaMessageGetMarginMaskN* = 2245
-  ScintillaMessageSetMarginSensitiveN* = 2246
-  ScintillaMessageGetMarginSensitiveN* = 2247
-  ScintillaMessageSetMarginCursorN* = 2248
-  ScintillaMessageGetMarginCursorN* = 2249
-  ScintillaMessageSetMarginBackN* = 2250
-  ScintillaMessageGetMarginBackN* = 2251
-  ScintillaMessageSetMargins* = 2252
-  ScintillaMessageGetMargins* = 2253
-  ScintillaMessageStyleClearAll* = 2050
-  ScintillaMessageStyleSetFore* = 2051
-  ScintillaMessageStyleSetBack* = 2052
-  ScintillaMessageStyleSetBold* = 2053
-  ScintillaMessageStyleSetItalic* = 2054
-  ScintillaMessageStyleSetSize* = 2055
-  ScintillaMessageStyleSetFont* = 2056
-  ScintillaMessageStyleSetEOLFilled* = 2057
-  ScintillaMessageStyleResetDefault* = 2058
-  ScintillaMessageStyleSetUnderline* = 2059
-  ScintillaMessageStyleGetFore* = 2481
-  ScintillaMessageStyleGetBack* = 2482
-  ScintillaMessageStyleGetBold* = 2483
-  ScintillaMessageStyleGetItalic* = 2484
-  ScintillaMessageStyleGetSize* = 2485
-  ScintillaMessageStyleGetFont* = 2486
-  ScintillaMessageStyleGetEOLFilled* = 2487
-  ScintillaMessageStyleGetUnderline* = 2488
-  ScintillaMessageStyleGetCase* = 2489
-  ScintillaMessageStyleGetCharacterSet* = 2490
-  ScintillaMessageStyleGetVisible* = 2491
-  ScintillaMessageStyleGetChangeable* = 2492
-  ScintillaMessageStyleGetHotSpot* = 2493
-  ScintillaMessageStyleSetCase* = 2060
-  ScintillaMessageStyleSetSizeFractional* = 2061
-  ScintillaMessageStyleGetSizeFractional* = 2062
-  ScintillaMessageStyleSetWeight* = 2063
-  ScintillaMessageStyleGetWeight* = 2064
-  ScintillaMessageStyleSetCharacterSet* = 2066
-  ScintillaMessageStyleSetHotSpot* = 2409
-  ScintillaMessageStyleSetCheckMonospaced* = 2254
-  ScintillaMessageStyleGetCheckMonospaced* = 2255
-  ScintillaMessageStyleSetStretch* = 2258
-  ScintillaMessageStyleGetStretch* = 2259
-  ScintillaMessageStyleSetInvisibleRepresentation* = 2256
-  ScintillaMessageStyleGetInvisibleRepresentation* = 2257
-  ScintillaMessageSetElementColour* = 2753
-  ScintillaMessageGetElementColour* = 2754
-  ScintillaMessageResetElementColour* = 2755
-  ScintillaMessageGetElementIsSet* = 2756
-  ScintillaMessageGetElementAllowsTranslucent* = 2757
-  ScintillaMessageGetElementBaseColour* = 2758
-  ScintillaMessageSetSelFore* = 2067
-  ScintillaMessageSetSelBack* = 2068
-  ScintillaMessageGetSelAlpha* = 2477
-  ScintillaMessageSetSelAlpha* = 2478
-  ScintillaMessageGetSelEOLFilled* = 2479
-  ScintillaMessageSetSelEOLFilled* = 2480
-  ScintillaMessageGetSelectionLayer* = 2762
-  ScintillaMessageSetSelectionLayer* = 2763
-  ScintillaMessageGetCaretLineLayer* = 2764
-  ScintillaMessageSetCaretLineLayer* = 2765
-  ScintillaMessageGetCaretLineHighlightSubLine* = 2773
-  ScintillaMessageSetCaretLineHighlightSubLine* = 2774
-  ScintillaMessageSetCaretFore* = 2069
-  ScintillaMessageAssignCmdKey* = 2070
-  ScintillaMessageClearCmdKey* = 2071
-  ScintillaMessageClearAllCmdKeys* = 2072
-  ScintillaMessageSetStylingEx* = 2073
-  ScintillaMessageStyleSetVisible* = 2074
-  ScintillaMessageGetCaretPeriod* = 2075
-  ScintillaMessageSetCaretPeriod* = 2076
-  ScintillaMessageSetWordChars* = 2077
-  ScintillaMessageGetWordChars* = 2646
-  ScintillaMessageSetCharacterCategoryOptimization* = 2720
-  ScintillaMessageGetCharacterCategoryOptimization* = 2721
-  ScintillaMessageBeginUndoAction* = 2078
-  ScintillaMessageEndUndoAction* = 2079
-  ScintillaMessageGetUndoSequence* = 2799
-  ScintillaMessageGetUndoActions* = 2790
-  ScintillaMessageSetUndoSavePoint* = 2791
-  ScintillaMessageGetUndoSavePoint* = 2792
-  ScintillaMessageSetUndoDetach* = 2793
-  ScintillaMessageGetUndoDetach* = 2794
-  ScintillaMessageSetUndoTentative* = 2795
-  ScintillaMessageGetUndoTentative* = 2796
-  ScintillaMessageSetUndoCurrent* = 2797
-  ScintillaMessageGetUndoCurrent* = 2798
-  ScintillaMessagePushUndoActionType* = 2800
-  ScintillaMessageChangeLastUndoActionText* = 2801
-  ScintillaMessageGetUndoActionType* = 2802
-  ScintillaMessageGetUndoActionPosition* = 2803
-  ScintillaMessageGetUndoActionText* = 2804
-  ScintillaMessageIndicSetStyle* = 2080
-  ScintillaMessageIndicGetStyle* = 2081
-  ScintillaMessageIndicSetFore* = 2082
-  ScintillaMessageIndicGetFore* = 2083
-  ScintillaMessageIndicSetUnder* = 2510
-  ScintillaMessageIndicGetUnder* = 2511
-  ScintillaMessageIndicSetHoverStyle* = 2680
-  ScintillaMessageIndicGetHoverStyle* = 2681
-  ScintillaMessageIndicSetHoverFore* = 2682
-  ScintillaMessageIndicGetHoverFore* = 2683
-  ScintillaMessageIndicSetFlags* = 2684
-  ScintillaMessageIndicGetFlags* = 2685
-  ScintillaMessageIndicSetStrokeWidth* = 2751
-  ScintillaMessageIndicGetStrokeWidth* = 2752
-  ScintillaMessageSetWhitespaceFore* = 2084
-  ScintillaMessageSetWhitespaceBack* = 2085
-  ScintillaMessageSetWhitespaceSize* = 2086
-  ScintillaMessageGetWhitespaceSize* = 2087
-  ScintillaMessageSetLineState* = 2092
-  ScintillaMessageGetLineState* = 2093
-  ScintillaMessageGetMaxLineState* = 2094
-  ScintillaMessageGetCaretLineVisible* = 2095
-  ScintillaMessageSetCaretLineVisible* = 2096
-  ScintillaMessageGetCaretLineBack* = 2097
-  ScintillaMessageSetCaretLineBack* = 2098
-  ScintillaMessageGetCaretLineFrame* = 2704
-  ScintillaMessageSetCaretLineFrame* = 2705
-  ScintillaMessageStyleSetChangeable* = 2099
-  ScintillaMessageAutoCShow* = 2100
-  ScintillaMessageAutoCCancel* = 2101
-  ScintillaMessageAutoCActive* = 2102
-  ScintillaMessageAutoCPosStart* = 2103
-  ScintillaMessageAutoCComplete* = 2104
-  ScintillaMessageAutoCStops* = 2105
-  ScintillaMessageAutoCSetSeparator* = 2106
-  ScintillaMessageAutoCGetSeparator* = 2107
-  ScintillaMessageAutoCSelect* = 2108
-  ScintillaMessageAutoCSetCancelAtStart* = 2110
-  ScintillaMessageAutoCGetCancelAtStart* = 2111
-  ScintillaMessageAutoCSetFillUps* = 2112
-  ScintillaMessageAutoCSetChooseSingle* = 2113
-  ScintillaMessageAutoCGetChooseSingle* = 2114
-  ScintillaMessageAutoCSetIgnoreCase* = 2115
-  ScintillaMessageAutoCGetIgnoreCase* = 2116
-  ScintillaMessageUserListShow* = 2117
-  ScintillaMessageAutoCSetAutoHide* = 2118
-  ScintillaMessageAutoCGetAutoHide* = 2119
-  ScintillaMessageAutoCSetOptions* = 2638
-  ScintillaMessageAutoCGetOptions* = 2639
-  ScintillaMessageAutoCSetDropRestOfWord* = 2270
-  ScintillaMessageAutoCGetDropRestOfWord* = 2271
-  ScintillaMessageRegisterImage* = 2405
-  ScintillaMessageClearRegisteredImages* = 2408
-  ScintillaMessageAutoCGetTypeSeparator* = 2285
-  ScintillaMessageAutoCSetTypeSeparator* = 2286
-  ScintillaMessageAutoCSetMaxWidth* = 2208
-  ScintillaMessageAutoCGetMaxWidth* = 2209
-  ScintillaMessageAutoCSetMaxHeight* = 2210
-  ScintillaMessageAutoCGetMaxHeight* = 2211
-  ScintillaMessageAutoCSetStyle* = 2109
-  ScintillaMessageAutoCGetStyle* = 2120
-  ScintillaMessageSetIndent* = 2122
-  ScintillaMessageGetIndent* = 2123
-  ScintillaMessageSetUseTabs* = 2124
-  ScintillaMessageGetUseTabs* = 2125
-  ScintillaMessageSetLineIndentation* = 2126
-  ScintillaMessageGetLineIndentation* = 2127
-  ScintillaMessageGetLineIndentPosition* = 2128
-  ScintillaMessageGetColumn* = 2129
-  ScintillaMessageCountCharacters* = 2633
-  ScintillaMessageCountCodeUnits* = 2715
-  ScintillaMessageSetHScrollBar* = 2130
-  ScintillaMessageGetHScrollBar* = 2131
-  ScintillaMessageSetIndentationGuides* = 2132
-  ScintillaMessageGetIndentationGuides* = 2133
-  ScintillaMessageSetHighlightGuide* = 2134
-  ScintillaMessageGetHighlightGuide* = 2135
-  ScintillaMessageGetLineEndPosition* = 2136
-  ScintillaMessageGetCodePage* = 2137
-  ScintillaMessageGetCaretFore* = 2138
-  ScintillaMessageGetReadOnly* = 2140
-  ScintillaMessageSetCurrentPos* = 2141
-  ScintillaMessageSetSelectionStart* = 2142
-  ScintillaMessageGetSelectionStart* = 2143
-  ScintillaMessageSetSelectionEnd* = 2144
-  ScintillaMessageGetSelectionEnd* = 2145
-  ScintillaMessageSetEmptySelection* = 2556
-  ScintillaMessageSetPrintMagnification* = 2146
-  ScintillaMessageGetPrintMagnification* = 2147
-  ScintillaMessageSetPrintColourMode* = 2148
-  ScintillaMessageGetPrintColourMode* = 2149
-  ScintillaMessageFindText* = 2150
-  ScintillaMessageFindTextFull* = 2196
-  ScintillaMessageFormatRange* = 2151
-  ScintillaMessageFormatRangeFull* = 2777
-  ScintillaMessageSetChangeHistory* = 2780
-  ScintillaMessageGetChangeHistory* = 2781
-  ScintillaMessageGetFirstVisibleLine* = 2152
-  ScintillaMessageGetLine* = 2153
-  ScintillaMessageGetLineCount* = 2154
-  ScintillaMessageAllocateLines* = 2089
-  ScintillaMessageSetMarginLeft* = 2155
-  ScintillaMessageGetMarginLeft* = 2156
-  ScintillaMessageSetMarginRight* = 2157
-  ScintillaMessageGetMarginRight* = 2158
-  ScintillaMessageGetModify* = 2159
-  ScintillaMessageSetSel* = 2160
-  ScintillaMessageGetSelText* = 2161
-  ScintillaMessageGetTextRange* = 2162
-  ScintillaMessageGetTextRangeFull* = 2039
-  ScintillaMessageHideSelection* = 2163
-  ScintillaMessageGetSelectionHidden* = 2088
-  ScintillaMessagePointXFromPosition* = 2164
-  ScintillaMessagePointYFromPosition* = 2165
-  ScintillaMessageLineFromPosition* = 2166
-  ScintillaMessagePositionFromLine* = 2167
-  ScintillaMessageLineScroll* = 2168
-  ScintillaMessageScrollCaret* = 2169
-  ScintillaMessageScrollRange* = 2569
-  ScintillaMessageReplaceSel* = 2170
-  ScintillaMessageSetReadOnly* = 2171
-  ScintillaMessageNull* = 2172
-  ScintillaMessageCanPaste* = 2173
-  ScintillaMessageCanUndo* = 2174
-  ScintillaMessageEmptyUndoBuffer* = 2175
-  ScintillaMessageUndo* = 2176
-  ScintillaMessageCut* = 2177
-  ScintillaMessageCopy* = 2178
-  ScintillaMessagePaste* = 2179
-  ScintillaMessageClear* = 2180
-  ScintillaMessageSetText* = 2181
-  ScintillaMessageGetText* = 2182
-  ScintillaMessageGetTextLength* = 2183
-  ScintillaMessageGetDirectFunction* = 2184
-  ScintillaMessageGetDirectStatusFunction* = 2772
-  ScintillaMessageGetDirectPointer* = 2185
-  ScintillaMessageSetOvertype* = 2186
-  ScintillaMessageGetOvertype* = 2187
-  ScintillaMessageSetCaretWidth* = 2188
-  ScintillaMessageGetCaretWidth* = 2189
-  ScintillaMessageSetTargetStart* = 2190
-  ScintillaMessageGetTargetStart* = 2191
-  ScintillaMessageSetTargetStartVirtualSpace* = 2728
-  ScintillaMessageGetTargetStartVirtualSpace* = 2729
-  ScintillaMessageSetTargetEnd* = 2192
-  ScintillaMessageGetTargetEnd* = 2193
-  ScintillaMessageSetTargetEndVirtualSpace* = 2730
-  ScintillaMessageGetTargetEndVirtualSpace* = 2731
-  ScintillaMessageSetTargetRange* = 2686
-  ScintillaMessageGetTargetText* = 2687
-  ScintillaMessageTargetFromSelection* = 2287
-  ScintillaMessageTargetWholeDocument* = 2690
-  ScintillaMessageReplaceTarget* = 2194
-  ScintillaMessageReplaceTargetRE* = 2195
-  ScintillaMessageReplaceTargetMinimal* = 2779
-  ScintillaMessageSearchInTarget* = 2197
-  ScintillaMessageSetSearchFlags* = 2198
-  ScintillaMessageGetSearchFlags* = 2199
-  ScintillaMessageCallTipShow* = 2200
-  ScintillaMessageCallTipCancel* = 2201
-  ScintillaMessageCallTipActive* = 2202
-  ScintillaMessageCallTipPosStart* = 2203
-  ScintillaMessageCallTipSetPosStart* = 2214
-  ScintillaMessageCallTipSetHlt* = 2204
-  ScintillaMessageCallTipSetBack* = 2205
-  ScintillaMessageCallTipSetFore* = 2206
-  ScintillaMessageCallTipSetForeHlt* = 2207
-  ScintillaMessageCallTipUseStyle* = 2212
-  ScintillaMessageCallTipSetPosition* = 2213
-  ScintillaMessageVisibleFromDocLine* = 2220
-  ScintillaMessageDocLineFromVisible* = 2221
-  ScintillaMessageWrapCount* = 2235
-  ScintillaMessageSetFoldLevel* = 2222
-  ScintillaMessageGetFoldLevel* = 2223
-  ScintillaMessageGetLastChild* = 2224
-  ScintillaMessageGetFoldParent* = 2225
-  ScintillaMessageShowLines* = 2226
-  ScintillaMessageHideLines* = 2227
-  ScintillaMessageGetLineVisible* = 2228
-  ScintillaMessageGetAllLinesVisible* = 2236
-  ScintillaMessageSetFoldExpanded* = 2229
-  ScintillaMessageGetFoldExpanded* = 2230
-  ScintillaMessageToggleFold* = 2231
-  ScintillaMessageToggleFoldShowText* = 2700
-  ScintillaMessageFoldDisplayTextSetStyle* = 2701
-  ScintillaMessageFoldDisplayTextGetStyle* = 2707
-  ScintillaMessageSetDefaultFoldDisplayText* = 2722
-  ScintillaMessageGetDefaultFoldDisplayText* = 2723
-  ScintillaMessageFoldLine* = 2237
-  ScintillaMessageFoldChildren* = 2238
-  ScintillaMessageExpandChildren* = 2239
-  ScintillaMessageFoldAll* = 2662
-  ScintillaMessageEnsureVisible* = 2232
-  ScintillaMessageSetAutomaticFold* = 2663
-  ScintillaMessageGetAutomaticFold* = 2664
-  ScintillaMessageSetFoldFlags* = 2233
-  ScintillaMessageEnsureVisibleEnforcePolicy* = 2234
-  ScintillaMessageSetTabIndents* = 2260
-  ScintillaMessageGetTabIndents* = 2261
-  ScintillaMessageSetBackSpaceUnIndents* = 2262
-  ScintillaMessageGetBackSpaceUnIndents* = 2263
-  ScintillaMessageSetMouseDwellTime* = 2264
-  ScintillaMessageGetMouseDwellTime* = 2265
-  ScintillaMessageWordStartPosition* = 2266
-  ScintillaMessageWordEndPosition* = 2267
-  ScintillaMessageIsRangeWord* = 2691
-  ScintillaMessageSetIdleStyling* = 2692
-  ScintillaMessageGetIdleStyling* = 2693
-  ScintillaMessageSetWrapMode* = 2268
-  ScintillaMessageGetWrapMode* = 2269
-  ScintillaMessageSetWrapVisualFlags* = 2460
-  ScintillaMessageGetWrapVisualFlags* = 2461
-  ScintillaMessageSetWrapVisualFlagsLocation* = 2462
-  ScintillaMessageGetWrapVisualFlagsLocation* = 2463
-  ScintillaMessageSetWrapStartIndent* = 2464
-  ScintillaMessageGetWrapStartIndent* = 2465
-  ScintillaMessageSetWrapIndentMode* = 2472
-  ScintillaMessageGetWrapIndentMode* = 2473
-  ScintillaMessageSetLayoutCache* = 2272
-  ScintillaMessageGetLayoutCache* = 2273
-  ScintillaMessageSetScrollWidth* = 2274
-  ScintillaMessageGetScrollWidth* = 2275
-  ScintillaMessageSetScrollWidthTracking* = 2516
-  ScintillaMessageGetScrollWidthTracking* = 2517
-  ScintillaMessageTextWidth* = 2276
-  ScintillaMessageSetEndAtLastLine* = 2277
-  ScintillaMessageGetEndAtLastLine* = 2278
-  ScintillaMessageTextHeight* = 2279
-  ScintillaMessageSetVScrollBar* = 2280
-  ScintillaMessageGetVScrollBar* = 2281
-  ScintillaMessageAppendText* = 2282
-  ScintillaMessageGetPhasesDraw* = 2673
-  ScintillaMessageSetPhasesDraw* = 2674
-  ScintillaMessageSetFontQuality* = 2611
-  ScintillaMessageGetFontQuality* = 2612
-  ScintillaMessageSetFirstVisibleLine* = 2613
-  ScintillaMessageSetMultiPaste* = 2614
-  ScintillaMessageGetMultiPaste* = 2615
-  ScintillaMessageGetTag* = 2616
-  ScintillaMessageLinesJoin* = 2288
-  ScintillaMessageLinesSplit* = 2289
-  ScintillaMessageSetFoldMarginColour* = 2290
-  ScintillaMessageSetFoldMarginHiColour* = 2291
-  ScintillaMessageSetAccessibility* = 2702
-  ScintillaMessageGetAccessibility* = 2703
-  ScintillaMessageLineDown* = 2300
-  ScintillaMessageLineDownExtend* = 2301
-  ScintillaMessageLineUp* = 2302
-  ScintillaMessageLineUpExtend* = 2303
-  ScintillaMessageCharLeft* = 2304
-  ScintillaMessageCharLeftExtend* = 2305
-  ScintillaMessageCharRight* = 2306
-  ScintillaMessageCharRightExtend* = 2307
-  ScintillaMessageWordLeft* = 2308
-  ScintillaMessageWordLeftExtend* = 2309
-  ScintillaMessageWordRight* = 2310
-  ScintillaMessageWordRightExtend* = 2311
-  ScintillaMessageHome* = 2312
-  ScintillaMessageHomeExtend* = 2313
-  ScintillaMessageLineEnd* = 2314
-  ScintillaMessageLineEndExtend* = 2315
-  ScintillaMessageDocumentStart* = 2316
-  ScintillaMessageDocumentStartExtend* = 2317
-  ScintillaMessageDocumentEnd* = 2318
-  ScintillaMessageDocumentEndExtend* = 2319
-  ScintillaMessagePageUp* = 2320
-  ScintillaMessagePageUpExtend* = 2321
-  ScintillaMessagePageDown* = 2322
-  ScintillaMessagePageDownExtend* = 2323
-  ScintillaMessageEditToggleOvertype* = 2324
-  ScintillaMessageCancel* = 2325
-  ScintillaMessageDeleteBack* = 2326
-  ScintillaMessageTab* = 2327
-  ScintillaMessageLineIndent* = 2813
-  ScintillaMessageBackTab* = 2328
-  ScintillaMessageLineDedent* = 2814
-  ScintillaMessageNewLine* = 2329
-  ScintillaMessageFormFeed* = 2330
-  ScintillaMessageVCHome* = 2331
-  ScintillaMessageVCHomeExtend* = 2332
-  ScintillaMessageZoomIn* = 2333
-  ScintillaMessageZoomOut* = 2334
-  ScintillaMessageDelWordLeft* = 2335
-  ScintillaMessageDelWordRight* = 2336
-  ScintillaMessageDelWordRightEnd* = 2518
-  ScintillaMessageLineCut* = 2337
-  ScintillaMessageLineDelete* = 2338
-  ScintillaMessageLineTranspose* = 2339
-  ScintillaMessageLineReverse* = 2354
-  ScintillaMessageLineDuplicate* = 2404
-  ScintillaMessageLowerCase* = 2340
-  ScintillaMessageUpperCase* = 2341
-  ScintillaMessageLineScrollDown* = 2342
-  ScintillaMessageLineScrollUp* = 2343
-  ScintillaMessageDeleteBackNotLine* = 2344
-  ScintillaMessageHomeDisplay* = 2345
-  ScintillaMessageHomeDisplayExtend* = 2346
-  ScintillaMessageLineEndDisplay* = 2347
-  ScintillaMessageLineEndDisplayExtend* = 2348
-  ScintillaMessageHomeWrap* = 2349
-  ScintillaMessageHomeWrapExtend* = 2450
-  ScintillaMessageLineEndWrap* = 2451
-  ScintillaMessageLineEndWrapExtend* = 2452
-  ScintillaMessageVCHomeWrap* = 2453
-  ScintillaMessageVCHomeWrapExtend* = 2454
-  ScintillaMessageLineCopy* = 2455
-  ScintillaMessageMoveCaretInsideView* = 2401
-  ScintillaMessageLineLength* = 2350
-  ScintillaMessageBraceHighlight* = 2351
-  ScintillaMessageBraceHighlightIndicator* = 2498
-  ScintillaMessageBraceBadLight* = 2352
-  ScintillaMessageBraceBadLightIndicator* = 2499
-  ScintillaMessageBraceMatch* = 2353
-  ScintillaMessageBraceMatchNext* = 2369
-  ScintillaMessageGetViewEOL* = 2355
-  ScintillaMessageSetViewEOL* = 2356
-  ScintillaMessageGetDocPointer* = 2357
-  ScintillaMessageSetDocPointer* = 2358
-  ScintillaMessageSetModEventMask* = 2359
-  ScintillaMessageGetEdgeColumn* = 2360
-  ScintillaMessageSetEdgeColumn* = 2361
-  ScintillaMessageGetEdgeMode* = 2362
-  ScintillaMessageSetEdgeMode* = 2363
-  ScintillaMessageGetEdgeColour* = 2364
-  ScintillaMessageSetEdgeColour* = 2365
-  ScintillaMessageMultiEdgeAddLine* = 2694
-  ScintillaMessageMultiEdgeClearAll* = 2695
-  ScintillaMessageGetMultiEdgeColumn* = 2749
-  ScintillaMessageSearchAnchor* = 2366
-  ScintillaMessageSearchNext* = 2367
-  ScintillaMessageSearchPrev* = 2368
-  ScintillaMessageLinesOnScreen* = 2370
-  ScintillaMessageUsePopUp* = 2371
-  ScintillaMessageSelectionIsRectangle* = 2372
-  ScintillaMessageSetZoom* = 2373
-  ScintillaMessageGetZoom* = 2374
-  ScintillaMessageCreateDocument* = 2375
-  ScintillaMessageAddRefDocument* = 2376
-  ScintillaMessageReleaseDocument* = 2377
-  ScintillaMessageGetDocumentOptions* = 2379
-  ScintillaMessageGetModEventMask* = 2378
-  ScintillaMessageSetCommandEvents* = 2717
-  ScintillaMessageGetCommandEvents* = 2718
-  ScintillaMessageSetFocus* = 2380
-  ScintillaMessageGetFocus* = 2381
-  ScintillaMessageSetStatus* = 2382
-  ScintillaMessageGetStatus* = 2383
-  ScintillaMessageSetMouseDownCaptures* = 2384
-  ScintillaMessageGetMouseDownCaptures* = 2385
-  ScintillaMessageSetMouseWheelCaptures* = 2696
-  ScintillaMessageGetMouseWheelCaptures* = 2697
-  ScintillaMessageSetCursor* = 2386
-  ScintillaMessageGetCursor* = 2387
-  ScintillaMessageSetControlCharSymbol* = 2388
-  ScintillaMessageGetControlCharSymbol* = 2389
-  ScintillaMessageWordPartLeft* = 2390
-  ScintillaMessageWordPartLeftExtend* = 2391
-  ScintillaMessageWordPartRight* = 2392
-  ScintillaMessageWordPartRightExtend* = 2393
-  ScintillaMessageSetVisiblePolicy* = 2394
-  ScintillaMessageDelLineLeft* = 2395
-  ScintillaMessageDelLineRight* = 2396
-  ScintillaMessageSetXOffset* = 2397
-  ScintillaMessageGetXOffset* = 2398
-  ScintillaMessageChooseCaretX* = 2399
-  ScintillaMessageGrabFocus* = 2400
-  ScintillaMessageSetXCaretPolicy* = 2402
-  ScintillaMessageSetYCaretPolicy* = 2403
-  ScintillaMessageSetPrintWrapMode* = 2406
-  ScintillaMessageGetPrintWrapMode* = 2407
-  ScintillaMessageSetHotspotActiveFore* = 2410
-  ScintillaMessageGetHotspotActiveFore* = 2494
-  ScintillaMessageSetHotspotActiveBack* = 2411
-  ScintillaMessageGetHotspotActiveBack* = 2495
-  ScintillaMessageSetHotspotActiveUnderline* = 2412
-  ScintillaMessageGetHotspotActiveUnderline* = 2496
-  ScintillaMessageSetHotspotSingleLine* = 2421
-  ScintillaMessageGetHotspotSingleLine* = 2497
-  ScintillaMessageParaDown* = 2413
-  ScintillaMessageParaDownExtend* = 2414
-  ScintillaMessageParaUp* = 2415
-  ScintillaMessageParaUpExtend* = 2416
-  ScintillaMessagePositionBefore* = 2417
-  ScintillaMessagePositionAfter* = 2418
-  ScintillaMessagePositionRelative* = 2670
-  ScintillaMessagePositionRelativeCodeUnits* = 2716
-  ScintillaMessageCopyRange* = 2419
-  ScintillaMessageCopyText* = 2420
-  ScintillaMessageSetSelectionMode* = 2422
-  ScintillaMessageChangeSelectionMode* = 2659
-  ScintillaMessageGetSelectionMode* = 2423
-  ScintillaMessageSetMoveExtendsSelection* = 2719
-  ScintillaMessageGetMoveExtendsSelection* = 2706
-  ScintillaMessageGetLineSelStartPosition* = 2424
-  ScintillaMessageGetLineSelEndPosition* = 2425
-  ScintillaMessageLineDownRectExtend* = 2426
-  ScintillaMessageLineUpRectExtend* = 2427
-  ScintillaMessageCharLeftRectExtend* = 2428
-  ScintillaMessageCharRightRectExtend* = 2429
-  ScintillaMessageHomeRectExtend* = 2430
-  ScintillaMessageVCHomeRectExtend* = 2431
-  ScintillaMessageLineEndRectExtend* = 2432
-  ScintillaMessagePageUpRectExtend* = 2433
-  ScintillaMessagePageDownRectExtend* = 2434
-  ScintillaMessageStutteredPageUp* = 2435
-  ScintillaMessageStutteredPageUpExtend* = 2436
-  ScintillaMessageStutteredPageDown* = 2437
-  ScintillaMessageStutteredPageDownExtend* = 2438
-  ScintillaMessageWordLeftEnd* = 2439
-  ScintillaMessageWordLeftEndExtend* = 2440
-  ScintillaMessageWordRightEnd* = 2441
-  ScintillaMessageWordRightEndExtend* = 2442
-  ScintillaMessageSetWhitespaceChars* = 2443
-  ScintillaMessageGetWhitespaceChars* = 2647
-  ScintillaMessageSetPunctuationChars* = 2648
-  ScintillaMessageGetPunctuationChars* = 2649
-  ScintillaMessageSetCharsDefault* = 2444
-  ScintillaMessageAutoCGetCurrent* = 2445
-  ScintillaMessageAutoCGetCurrentText* = 2610
-  ScintillaMessageAutoCSetCaseInsensitiveBehaviour* = 2634
-  ScintillaMessageAutoCGetCaseInsensitiveBehaviour* = 2635
-  ScintillaMessageAutoCSetMulti* = 2636
-  ScintillaMessageAutoCGetMulti* = 2637
-  ScintillaMessageAutoCSetOrder* = 2660
-  ScintillaMessageAutoCGetOrder* = 2661
-  ScintillaMessageAllocate* = 2446
-  ScintillaMessageTargetAsUTF8* = 2447
-  ScintillaMessageSetLengthForEncode* = 2448
-  ScintillaMessageEncodedFromUTF8* = 2449
-  ScintillaMessageFindColumn* = 2456
-  ScintillaMessageGetCaretSticky* = 2457
-  ScintillaMessageSetCaretSticky* = 2458
-  ScintillaMessageToggleCaretSticky* = 2459
-  ScintillaMessageSetPasteConvertEndings* = 2467
-  ScintillaMessageGetPasteConvertEndings* = 2468
-  ScintillaMessageReplaceRectangular* = 2771
-  ScintillaMessageSelectionDuplicate* = 2469
-  ScintillaMessageSetCaretLineBackAlpha* = 2470
-  ScintillaMessageGetCaretLineBackAlpha* = 2471
-  ScintillaMessageSetCaretStyle* = 2512
-  ScintillaMessageGetCaretStyle* = 2513
-  ScintillaMessageSetIndicatorCurrent* = 2500
-  ScintillaMessageGetIndicatorCurrent* = 2501
-  ScintillaMessageSetIndicatorValue* = 2502
-  ScintillaMessageGetIndicatorValue* = 2503
-  ScintillaMessageIndicatorFillRange* = 2504
-  ScintillaMessageIndicatorClearRange* = 2505
-  ScintillaMessageIndicatorAllOnFor* = 2506
-  ScintillaMessageIndicatorValueAt* = 2507
-  ScintillaMessageIndicatorStart* = 2508
-  ScintillaMessageIndicatorEnd* = 2509
-  ScintillaMessageSetPositionCache* = 2514
-  ScintillaMessageGetPositionCache* = 2515
-  ScintillaMessageSetLayoutThreads* = 2775
-  ScintillaMessageGetLayoutThreads* = 2776
-  ScintillaMessageCopyAllowLine* = 2519
-  ScintillaMessageCutAllowLine* = 2810
-  ScintillaMessageSetCopySeparator* = 2811
-  ScintillaMessageGetCopySeparator* = 2812
-  ScintillaMessageGetCharacterPointer* = 2520
-  ScintillaMessageGetRangePointer* = 2643
-  ScintillaMessageGetGapPosition* = 2644
-  ScintillaMessageIndicSetAlpha* = 2523
-  ScintillaMessageIndicGetAlpha* = 2524
-  ScintillaMessageIndicSetOutlineAlpha* = 2558
-  ScintillaMessageIndicGetOutlineAlpha* = 2559
-  ScintillaMessageSetExtraAscent* = 2525
-  ScintillaMessageGetExtraAscent* = 2526
-  ScintillaMessageSetExtraDescent* = 2527
-  ScintillaMessageGetExtraDescent* = 2528
-  ScintillaMessageMarkerSymbolDefined* = 2529
-  ScintillaMessageMarginSetText* = 2530
-  ScintillaMessageMarginGetText* = 2531
-  ScintillaMessageMarginSetStyle* = 2532
-  ScintillaMessageMarginGetStyle* = 2533
-  ScintillaMessageMarginSetStyles* = 2534
-  ScintillaMessageMarginGetStyles* = 2535
-  ScintillaMessageMarginTextClearAll* = 2536
-  ScintillaMessageMarginSetStyleOffset* = 2537
-  ScintillaMessageMarginGetStyleOffset* = 2538
-  ScintillaMessageSetMarginOptions* = 2539
-  ScintillaMessageGetMarginOptions* = 2557
-  ScintillaMessageAnnotationSetText* = 2540
-  ScintillaMessageAnnotationGetText* = 2541
-  ScintillaMessageAnnotationSetStyle* = 2542
-  ScintillaMessageAnnotationGetStyle* = 2543
-  ScintillaMessageAnnotationSetStyles* = 2544
-  ScintillaMessageAnnotationGetStyles* = 2545
-  ScintillaMessageAnnotationGetLines* = 2546
-  ScintillaMessageAnnotationClearAll* = 2547
-  ScintillaMessageAnnotationSetVisible* = 2548
-  ScintillaMessageAnnotationGetVisible* = 2549
-  ScintillaMessageAnnotationSetStyleOffset* = 2550
-  ScintillaMessageAnnotationGetStyleOffset* = 2551
-  ScintillaMessageReleaseAllExtendedStyles* = 2552
-  ScintillaMessageAllocateExtendedStyles* = 2553
-  ScintillaMessageAddUndoAction* = 2560
-  ScintillaMessageCharPositionFromPoint* = 2561
-  ScintillaMessageCharPositionFromPointClose* = 2562
-  ScintillaMessageSetMouseSelectionRectangularSwitch* = 2668
-  ScintillaMessageGetMouseSelectionRectangularSwitch* = 2669
-  ScintillaMessageSetMultipleSelection* = 2563
-  ScintillaMessageGetMultipleSelection* = 2564
-  ScintillaMessageSetAdditionalSelectionTyping* = 2565
-  ScintillaMessageGetAdditionalSelectionTyping* = 2566
-  ScintillaMessageSetAdditionalCaretsBlink* = 2567
-  ScintillaMessageGetAdditionalCaretsBlink* = 2568
-  ScintillaMessageSetAdditionalCaretsVisible* = 2608
-  ScintillaMessageGetAdditionalCaretsVisible* = 2609
-  ScintillaMessageGetSelections* = 2570
-  ScintillaMessageGetSelectionEmpty* = 2650
-  ScintillaMessageClearSelections* = 2571
-  ScintillaMessageSetSelection* = 2572
-  ScintillaMessageAddSelection* = 2573
-  ScintillaMessageSelectionFromPoint* = 2474
-  ScintillaMessageDropSelectionN* = 2671
-  ScintillaMessageSetMainSelection* = 2574
-  ScintillaMessageGetMainSelection* = 2575
-  ScintillaMessageSetSelectionNCaret* = 2576
-  ScintillaMessageGetSelectionNCaret* = 2577
-  ScintillaMessageSetSelectionNAnchor* = 2578
-  ScintillaMessageGetSelectionNAnchor* = 2579
-  ScintillaMessageSetSelectionNCaretVirtualSpace* = 2580
-  ScintillaMessageGetSelectionNCaretVirtualSpace* = 2581
-  ScintillaMessageSetSelectionNAnchorVirtualSpace* = 2582
-  ScintillaMessageGetSelectionNAnchorVirtualSpace* = 2583
-  ScintillaMessageSetSelectionNStart* = 2584
-  ScintillaMessageGetSelectionNStart* = 2585
-  ScintillaMessageGetSelectionNStartVirtualSpace* = 2726
-  ScintillaMessageSetSelectionNEnd* = 2586
-  ScintillaMessageGetSelectionNEndVirtualSpace* = 2727
-  ScintillaMessageGetSelectionNEnd* = 2587
-  ScintillaMessageSetRectangularSelectionCaret* = 2588
-  ScintillaMessageGetRectangularSelectionCaret* = 2589
-  ScintillaMessageSetRectangularSelectionAnchor* = 2590
-  ScintillaMessageGetRectangularSelectionAnchor* = 2591
-  ScintillaMessageSetRectangularSelectionCaretVirtualSpace* = 2592
-  ScintillaMessageGetRectangularSelectionCaretVirtualSpace* = 2593
-  ScintillaMessageSetRectangularSelectionAnchorVirtualSpace* = 2594
-  ScintillaMessageGetRectangularSelectionAnchorVirtualSpace* = 2595
-  ScintillaMessageSetVirtualSpaceOptions* = 2596
-  ScintillaMessageGetVirtualSpaceOptions* = 2597
-  ScintillaMessageSetRectangularSelectionModifier* = 2598
-  ScintillaMessageGetRectangularSelectionModifier* = 2599
-  ScintillaMessageSetAdditionalSelFore* = 2600
-  ScintillaMessageSetAdditionalSelBack* = 2601
-  ScintillaMessageSetAdditionalSelAlpha* = 2602
-  ScintillaMessageGetAdditionalSelAlpha* = 2603
-  ScintillaMessageSetAdditionalCaretFore* = 2604
-  ScintillaMessageGetAdditionalCaretFore* = 2605
-  ScintillaMessageRotateSelection* = 2606
-  ScintillaMessageSwapMainAnchorCaret* = 2607
-  ScintillaMessageMultipleSelectAddNext* = 2688
-  ScintillaMessageMultipleSelectAddEach* = 2689
-  ScintillaMessageChangeLexerState* = 2617
-  ScintillaMessageContractedFoldNext* = 2618
-  ScintillaMessageVerticalCentreCaret* = 2619
-  ScintillaMessageMoveSelectedLinesUp* = 2620
-  ScintillaMessageMoveSelectedLinesDown* = 2621
-  ScintillaMessageSetIdentifier* = 2622
-  ScintillaMessageGetIdentifier* = 2623
-  ScintillaMessageRGBAImageSetWidth* = 2624
-  ScintillaMessageRGBAImageSetHeight* = 2625
-  ScintillaMessageRGBAImageSetScale* = 2651
-  ScintillaMessageMarkerDefineRGBAImage* = 2626
-  ScintillaMessageRegisterRGBAImage* = 2627
-  ScintillaMessageScrollToStart* = 2628
-  ScintillaMessageScrollToEnd* = 2629
-  ScintillaMessageSetTechnology* = 2630
-  ScintillaMessageGetTechnology* = 2631
-  ScintillaMessageCreateLoader* = 2632
-  ScintillaMessageFindIndicatorShow* = 2640
-  ScintillaMessageFindIndicatorFlash* = 2641
-  ScintillaMessageFindIndicatorHide* = 2642
-  ScintillaMessageVCHomeDisplay* = 2652
-  ScintillaMessageVCHomeDisplayExtend* = 2653
-  ScintillaMessageGetCaretLineVisibleAlways* = 2654
-  ScintillaMessageSetCaretLineVisibleAlways* = 2655
-  ScintillaMessageSetLineEndTypesAllowed* = 2656
-  ScintillaMessageGetLineEndTypesAllowed* = 2657
-  ScintillaMessageGetLineEndTypesActive* = 2658
-  ScintillaMessageSetRepresentation* = 2665
-  ScintillaMessageGetRepresentation* = 2666
-  ScintillaMessageClearRepresentation* = 2667
-  ScintillaMessageClearAllRepresentations* = 2770
-  ScintillaMessageSetRepresentationAppearance* = 2766
-  ScintillaMessageGetRepresentationAppearance* = 2767
-  ScintillaMessageSetRepresentationColour* = 2768
-  ScintillaMessageGetRepresentationColour* = 2769
-  ScintillaMessageEOLAnnotationSetText* = 2740
-  ScintillaMessageEOLAnnotationGetText* = 2741
-  ScintillaMessageEOLAnnotationSetStyle* = 2742
-  ScintillaMessageEOLAnnotationGetStyle* = 2743
-  ScintillaMessageEOLAnnotationClearAll* = 2744
-  ScintillaMessageEOLAnnotationSetVisible* = 2745
-  ScintillaMessageEOLAnnotationGetVisible* = 2746
-  ScintillaMessageEOLAnnotationSetStyleOffset* = 2747
-  ScintillaMessageEOLAnnotationGetStyleOffset* = 2748
-  ScintillaMessageSupportsFeature* = 2750
-  ScintillaMessageGetLineCharacterIndex* = 2710
-  ScintillaMessageAllocateLineCharacterIndex* = 2711
-  ScintillaMessageReleaseLineCharacterIndex* = 2712
-  ScintillaMessageLineFromIndexPosition* = 2713
-  ScintillaMessageIndexPositionFromLine* = 2714
-  ScintillaMessageStartRecord* = 3001
-  ScintillaMessageStopRecord* = 3002
-  ScintillaMessageGetLexer* = 4002
-  ScintillaMessageColourise* = 4003
-  ScintillaMessageSetProperty* = 4004
-  ScintillaMessageSetKeyWords* = 4005
-  ScintillaMessageGetProperty* = 4008
-  ScintillaMessageGetPropertyExpanded* = 4009
-  ScintillaMessageGetPropertyInt* = 4010
-  ScintillaMessageGetLexerLanguage* = 4012
-  ScintillaMessagePrivateLexerCall* = 4013
-  ScintillaMessagePropertyNames* = 4014
-  ScintillaMessagePropertyType* = 4015
-  ScintillaMessageDescribeProperty* = 4016
-  ScintillaMessageDescribeKeyWordSets* = 4017
-  ScintillaMessageGetLineEndTypesSupported* = 4018
-  ScintillaMessageAllocateSubStyles* = 4020
-  ScintillaMessageGetSubStylesStart* = 4021
-  ScintillaMessageGetSubStylesLength* = 4022
-  ScintillaMessageGetStyleFromSubStyle* = 4027
-  ScintillaMessageGetPrimaryStyleFromStyle* = 4028
-  ScintillaMessageFreeSubStyles* = 4023
-  ScintillaMessageSetIdentifiers* = 4024
-  ScintillaMessageDistanceToSecondaryStyles* = 4025
-  ScintillaMessageGetSubStyleBases* = 4026
-  ScintillaMessageGetNamedStyles* = 4029
-  ScintillaMessageNameOfStyle* = 4030
-  ScintillaMessageTagsOfStyle* = 4031
-  ScintillaMessageDescriptionOfStyle* = 4032
-  ScintillaMessageSetILexer* = 4033
-  ScintillaMessageGetBidirectional* = 2708
-  ScintillaMessageSetBidirectional* = 2709
-
-
-
-type stdnullopt_t_Construct* = cint
-const
-  Stdnullopt_t_Token* = 0
-
-
-
-type ScintillaInternalSurfaceEnds* = cint
-const
-  ScintillaInternalSurfacesemiCircles* = 0
-  ScintillaInternalSurfaceleftFlat* = 1
-  ScintillaInternalSurfaceleftAngle* = 2
-  ScintillaInternalSurfacerightFlat* = 16
-  ScintillaInternalSurfacerightAngle* = 32
-
-
-
-type ScintillaInternalSurfaceGradientOptions* = cint
-const
-  ScintillaInternalSurfaceleftToRight* = 0
-  ScintillaInternalSurfacetopToBottom* = 1
-
-
-
-type ScintillaInternalWindowCursor* = cint
-const
-  ScintillaInternalWindowinvalid* = 0
-  ScintillaInternalWindowtext* = 1
-  ScintillaInternalWindowarrow* = 2
-  ScintillaInternalWindowup* = 3
-  ScintillaInternalWindowwait* = 4
-  ScintillaInternalWindowhorizontal* = 5
-  ScintillaInternalWindowvertical* = 6
-  ScintillaInternalWindowreverseArrow* = 7
-  ScintillaInternalWindowhand* = 8
-
-
-
-type ScintillaInternalListBoxEventEventType* = cint
-const
-  ScintillaInternalListBoxEventselectionChange* = 0
-  ScintillaInternalListBoxEventdoubleClick* = 1
-
+type stdpointer_safetyEnum* = distinct cint
+template relaxed*(_: type stdpointer_safetyEnum): untyped = 0
+template preferred*(_: type stdpointer_safetyEnum): untyped = 1
+template strict*(_: type stdpointer_safetyEnum): untyped = 2
+
+
+type ScintillaInternalEdgeEnum* = distinct cint
+template left*(_: type ScintillaInternalEdgeEnum): untyped = 0
+template top*(_: type ScintillaInternalEdgeEnum): untyped = 1
+template bottom*(_: type ScintillaInternalEdgeEnum): untyped = 2
+template right*(_: type ScintillaInternalEdgeEnum): untyped = 3
+
+
+type ScintillaWhiteSpaceEnum* = distinct cint
+template Invisible*(_: type ScintillaWhiteSpaceEnum): untyped = 0
+template VisibleAlways*(_: type ScintillaWhiteSpaceEnum): untyped = 1
+template VisibleAfterIndent*(_: type ScintillaWhiteSpaceEnum): untyped = 2
+template VisibleOnlyInIndent*(_: type ScintillaWhiteSpaceEnum): untyped = 3
+
+
+type ScintillaTabDrawModeEnum* = distinct cint
+template LongArrow*(_: type ScintillaTabDrawModeEnum): untyped = 0
+template StrikeOut*(_: type ScintillaTabDrawModeEnum): untyped = 1
+
+
+type ScintillaEndOfLineEnum* = distinct cint
+template CrLf*(_: type ScintillaEndOfLineEnum): untyped = 0
+template Cr*(_: type ScintillaEndOfLineEnum): untyped = 1
+template Lf*(_: type ScintillaEndOfLineEnum): untyped = 2
+
+
+type ScintillaIMEInteractionEnum* = distinct cint
+template Windowed*(_: type ScintillaIMEInteractionEnum): untyped = 0
+template Inline*(_: type ScintillaIMEInteractionEnum): untyped = 1
+
+
+type ScintillaAlphaEnum* = distinct cint
+template Transparent*(_: type ScintillaAlphaEnum): untyped = 0
+template Opaque*(_: type ScintillaAlphaEnum): untyped = 255
+template NoAlpha*(_: type ScintillaAlphaEnum): untyped = 256
+
+
+type ScintillaCursorShapeEnum* = distinct cint
+template Normal*(_: type ScintillaCursorShapeEnum): untyped = -1
+template Arrow*(_: type ScintillaCursorShapeEnum): untyped = 2
+template Wait*(_: type ScintillaCursorShapeEnum): untyped = 4
+template ReverseArrow*(_: type ScintillaCursorShapeEnum): untyped = 7
+
+
+type ScintillaMarkerSymbolEnum* = distinct cint
+template Circle*(_: type ScintillaMarkerSymbolEnum): untyped = 0
+template RoundRect*(_: type ScintillaMarkerSymbolEnum): untyped = 1
+template Arrow*(_: type ScintillaMarkerSymbolEnum): untyped = 2
+template SmallRect*(_: type ScintillaMarkerSymbolEnum): untyped = 3
+template ShortArrow*(_: type ScintillaMarkerSymbolEnum): untyped = 4
+template Empty*(_: type ScintillaMarkerSymbolEnum): untyped = 5
+template ArrowDown*(_: type ScintillaMarkerSymbolEnum): untyped = 6
+template Minus*(_: type ScintillaMarkerSymbolEnum): untyped = 7
+template Plus*(_: type ScintillaMarkerSymbolEnum): untyped = 8
+template VLine*(_: type ScintillaMarkerSymbolEnum): untyped = 9
+template LCorner*(_: type ScintillaMarkerSymbolEnum): untyped = 10
+template TCorner*(_: type ScintillaMarkerSymbolEnum): untyped = 11
+template BoxPlus*(_: type ScintillaMarkerSymbolEnum): untyped = 12
+template BoxPlusConnected*(_: type ScintillaMarkerSymbolEnum): untyped = 13
+template BoxMinus*(_: type ScintillaMarkerSymbolEnum): untyped = 14
+template BoxMinusConnected*(_: type ScintillaMarkerSymbolEnum): untyped = 15
+template LCornerCurve*(_: type ScintillaMarkerSymbolEnum): untyped = 16
+template TCornerCurve*(_: type ScintillaMarkerSymbolEnum): untyped = 17
+template CirclePlus*(_: type ScintillaMarkerSymbolEnum): untyped = 18
+template CirclePlusConnected*(_: type ScintillaMarkerSymbolEnum): untyped = 19
+template CircleMinus*(_: type ScintillaMarkerSymbolEnum): untyped = 20
+template CircleMinusConnected*(_: type ScintillaMarkerSymbolEnum): untyped = 21
+template Background*(_: type ScintillaMarkerSymbolEnum): untyped = 22
+template DotDotDot*(_: type ScintillaMarkerSymbolEnum): untyped = 23
+template Arrows*(_: type ScintillaMarkerSymbolEnum): untyped = 24
+template Pixmap*(_: type ScintillaMarkerSymbolEnum): untyped = 25
+template FullRect*(_: type ScintillaMarkerSymbolEnum): untyped = 26
+template LeftRect*(_: type ScintillaMarkerSymbolEnum): untyped = 27
+template Available*(_: type ScintillaMarkerSymbolEnum): untyped = 28
+template Underline*(_: type ScintillaMarkerSymbolEnum): untyped = 29
+template RgbaImage*(_: type ScintillaMarkerSymbolEnum): untyped = 30
+template Bookmark*(_: type ScintillaMarkerSymbolEnum): untyped = 31
+template VerticalBookmark*(_: type ScintillaMarkerSymbolEnum): untyped = 32
+template Bar*(_: type ScintillaMarkerSymbolEnum): untyped = 33
+template Character*(_: type ScintillaMarkerSymbolEnum): untyped = 10000
+
+
+type ScintillaMarkerOutlineEnum* = distinct cint
+template HistoryRevertedToOrigin*(_: type ScintillaMarkerOutlineEnum): untyped = 21
+template HistorySaved*(_: type ScintillaMarkerOutlineEnum): untyped = 22
+template HistoryModified*(_: type ScintillaMarkerOutlineEnum): untyped = 23
+template HistoryRevertedToModified*(_: type ScintillaMarkerOutlineEnum): untyped = 24
+template FolderEnd*(_: type ScintillaMarkerOutlineEnum): untyped = 25
+template FolderOpenMid*(_: type ScintillaMarkerOutlineEnum): untyped = 26
+template FolderMidTail*(_: type ScintillaMarkerOutlineEnum): untyped = 27
+template FolderTail*(_: type ScintillaMarkerOutlineEnum): untyped = 28
+template FolderSub*(_: type ScintillaMarkerOutlineEnum): untyped = 29
+template Folder*(_: type ScintillaMarkerOutlineEnum): untyped = 30
+template FolderOpen*(_: type ScintillaMarkerOutlineEnum): untyped = 31
+
+
+type ScintillaMarginTypeEnum* = distinct cint
+template Symbol*(_: type ScintillaMarginTypeEnum): untyped = 0
+template Number*(_: type ScintillaMarginTypeEnum): untyped = 1
+template Back*(_: type ScintillaMarginTypeEnum): untyped = 2
+template Fore*(_: type ScintillaMarginTypeEnum): untyped = 3
+template Text*(_: type ScintillaMarginTypeEnum): untyped = 4
+template RText*(_: type ScintillaMarginTypeEnum): untyped = 5
+template Colour*(_: type ScintillaMarginTypeEnum): untyped = 6
+
+
+type ScintillaStylesCommonEnum* = distinct cint
+template Default*(_: type ScintillaStylesCommonEnum): untyped = 32
+template LineNumber*(_: type ScintillaStylesCommonEnum): untyped = 33
+template BraceLight*(_: type ScintillaStylesCommonEnum): untyped = 34
+template BraceBad*(_: type ScintillaStylesCommonEnum): untyped = 35
+template ControlChar*(_: type ScintillaStylesCommonEnum): untyped = 36
+template IndentGuide*(_: type ScintillaStylesCommonEnum): untyped = 37
+template CallTip*(_: type ScintillaStylesCommonEnum): untyped = 38
+template FoldDisplayText*(_: type ScintillaStylesCommonEnum): untyped = 39
+template LastPredefined*(_: type ScintillaStylesCommonEnum): untyped = 39
+template Max*(_: type ScintillaStylesCommonEnum): untyped = 255
+
+
+type ScintillaCharacterSetEnum* = distinct cint
+template Ansi*(_: type ScintillaCharacterSetEnum): untyped = 0
+template Default*(_: type ScintillaCharacterSetEnum): untyped = 1
+template Baltic*(_: type ScintillaCharacterSetEnum): untyped = 186
+template ChineseBig5*(_: type ScintillaCharacterSetEnum): untyped = 136
+template EastEurope*(_: type ScintillaCharacterSetEnum): untyped = 238
+template GB2312*(_: type ScintillaCharacterSetEnum): untyped = 134
+template Greek*(_: type ScintillaCharacterSetEnum): untyped = 161
+template Hangul*(_: type ScintillaCharacterSetEnum): untyped = 129
+template Mac*(_: type ScintillaCharacterSetEnum): untyped = 77
+template Oem*(_: type ScintillaCharacterSetEnum): untyped = 255
+template Russian*(_: type ScintillaCharacterSetEnum): untyped = 204
+template Oem866*(_: type ScintillaCharacterSetEnum): untyped = 866
+template Cyrillic*(_: type ScintillaCharacterSetEnum): untyped = 1251
+template ShiftJis*(_: type ScintillaCharacterSetEnum): untyped = 128
+template Symbol*(_: type ScintillaCharacterSetEnum): untyped = 2
+template Turkish*(_: type ScintillaCharacterSetEnum): untyped = 162
+template Johab*(_: type ScintillaCharacterSetEnum): untyped = 130
+template Hebrew*(_: type ScintillaCharacterSetEnum): untyped = 177
+template Arabic*(_: type ScintillaCharacterSetEnum): untyped = 178
+template Vietnamese*(_: type ScintillaCharacterSetEnum): untyped = 163
+template Thai*(_: type ScintillaCharacterSetEnum): untyped = 222
+template Iso8859_15*(_: type ScintillaCharacterSetEnum): untyped = 1000
+
+
+type ScintillaCaseVisibleEnum* = distinct cint
+template Mixed*(_: type ScintillaCaseVisibleEnum): untyped = 0
+template Upper*(_: type ScintillaCaseVisibleEnum): untyped = 1
+template Lower*(_: type ScintillaCaseVisibleEnum): untyped = 2
+template Camel*(_: type ScintillaCaseVisibleEnum): untyped = 3
+
+
+type ScintillaFontWeightEnum* = distinct cint
+template Normal*(_: type ScintillaFontWeightEnum): untyped = 400
+template SemiBold*(_: type ScintillaFontWeightEnum): untyped = 600
+template Bold*(_: type ScintillaFontWeightEnum): untyped = 700
+
+
+type ScintillaFontStretchEnum* = distinct cint
+template UltraCondensed*(_: type ScintillaFontStretchEnum): untyped = 1
+template ExtraCondensed*(_: type ScintillaFontStretchEnum): untyped = 2
+template Condensed*(_: type ScintillaFontStretchEnum): untyped = 3
+template SemiCondensed*(_: type ScintillaFontStretchEnum): untyped = 4
+template Normal*(_: type ScintillaFontStretchEnum): untyped = 5
+template SemiExpanded*(_: type ScintillaFontStretchEnum): untyped = 6
+template Expanded*(_: type ScintillaFontStretchEnum): untyped = 7
+template ExtraExpanded*(_: type ScintillaFontStretchEnum): untyped = 8
+template UltraExpanded*(_: type ScintillaFontStretchEnum): untyped = 9
+
+
+type ScintillaElementEnum* = distinct cint
+template List*(_: type ScintillaElementEnum): untyped = 0
+template ListBack*(_: type ScintillaElementEnum): untyped = 1
+template ListSelected*(_: type ScintillaElementEnum): untyped = 2
+template ListSelectedBack*(_: type ScintillaElementEnum): untyped = 3
+template SelectionText*(_: type ScintillaElementEnum): untyped = 10
+template SelectionBack*(_: type ScintillaElementEnum): untyped = 11
+template SelectionAdditionalText*(_: type ScintillaElementEnum): untyped = 12
+template SelectionAdditionalBack*(_: type ScintillaElementEnum): untyped = 13
+template SelectionSecondaryText*(_: type ScintillaElementEnum): untyped = 14
+template SelectionSecondaryBack*(_: type ScintillaElementEnum): untyped = 15
+template SelectionInactiveText*(_: type ScintillaElementEnum): untyped = 16
+template SelectionInactiveBack*(_: type ScintillaElementEnum): untyped = 17
+template SelectionInactiveAdditionalText*(_: type ScintillaElementEnum): untyped = 18
+template SelectionInactiveAdditionalBack*(_: type ScintillaElementEnum): untyped = 19
+template Caret*(_: type ScintillaElementEnum): untyped = 40
+template CaretAdditional*(_: type ScintillaElementEnum): untyped = 41
+template CaretLineBack*(_: type ScintillaElementEnum): untyped = 50
+template WhiteSpace*(_: type ScintillaElementEnum): untyped = 60
+template WhiteSpaceBack*(_: type ScintillaElementEnum): untyped = 61
+template HotSpotActive*(_: type ScintillaElementEnum): untyped = 70
+template HotSpotActiveBack*(_: type ScintillaElementEnum): untyped = 71
+template FoldLine*(_: type ScintillaElementEnum): untyped = 80
+template HiddenLine*(_: type ScintillaElementEnum): untyped = 81
+
+
+type ScintillaLayerEnum* = distinct cint
+template Base*(_: type ScintillaLayerEnum): untyped = 0
+template UnderText*(_: type ScintillaLayerEnum): untyped = 1
+template OverText*(_: type ScintillaLayerEnum): untyped = 2
+
+
+type ScintillaIndicatorStyleEnum* = distinct cint
+template Plain*(_: type ScintillaIndicatorStyleEnum): untyped = 0
+template Squiggle*(_: type ScintillaIndicatorStyleEnum): untyped = 1
+template TT*(_: type ScintillaIndicatorStyleEnum): untyped = 2
+template Diagonal*(_: type ScintillaIndicatorStyleEnum): untyped = 3
+template Strike*(_: type ScintillaIndicatorStyleEnum): untyped = 4
+template Hidden*(_: type ScintillaIndicatorStyleEnum): untyped = 5
+template Box*(_: type ScintillaIndicatorStyleEnum): untyped = 6
+template RoundBox*(_: type ScintillaIndicatorStyleEnum): untyped = 7
+template StraightBox*(_: type ScintillaIndicatorStyleEnum): untyped = 8
+template Dash*(_: type ScintillaIndicatorStyleEnum): untyped = 9
+template Dots*(_: type ScintillaIndicatorStyleEnum): untyped = 10
+template SquiggleLow*(_: type ScintillaIndicatorStyleEnum): untyped = 11
+template DotBox*(_: type ScintillaIndicatorStyleEnum): untyped = 12
+template SquigglePixmap*(_: type ScintillaIndicatorStyleEnum): untyped = 13
+template CompositionThick*(_: type ScintillaIndicatorStyleEnum): untyped = 14
+template CompositionThin*(_: type ScintillaIndicatorStyleEnum): untyped = 15
+template FullBox*(_: type ScintillaIndicatorStyleEnum): untyped = 16
+template TextFore*(_: type ScintillaIndicatorStyleEnum): untyped = 17
+template Point*(_: type ScintillaIndicatorStyleEnum): untyped = 18
+template PointCharacter*(_: type ScintillaIndicatorStyleEnum): untyped = 19
+template Gradient*(_: type ScintillaIndicatorStyleEnum): untyped = 20
+template GradientCentre*(_: type ScintillaIndicatorStyleEnum): untyped = 21
+template PointTop*(_: type ScintillaIndicatorStyleEnum): untyped = 22
+
+
+type ScintillaIndicatorNumbersEnum* = distinct cint
+template Container*(_: type ScintillaIndicatorNumbersEnum): untyped = 8
+template Ime*(_: type ScintillaIndicatorNumbersEnum): untyped = 32
+template ImeMax*(_: type ScintillaIndicatorNumbersEnum): untyped = 35
+template HistoryRevertedToOriginInsertion*(_: type ScintillaIndicatorNumbersEnum): untyped = 36
+template HistoryRevertedToOriginDeletion*(_: type ScintillaIndicatorNumbersEnum): untyped = 37
+template HistorySavedInsertion*(_: type ScintillaIndicatorNumbersEnum): untyped = 38
+template HistorySavedDeletion*(_: type ScintillaIndicatorNumbersEnum): untyped = 39
+template HistoryModifiedInsertion*(_: type ScintillaIndicatorNumbersEnum): untyped = 40
+template HistoryModifiedDeletion*(_: type ScintillaIndicatorNumbersEnum): untyped = 41
+template HistoryRevertedToModifiedInsertion*(_: type ScintillaIndicatorNumbersEnum): untyped = 42
+template HistoryRevertedToModifiedDeletion*(_: type ScintillaIndicatorNumbersEnum): untyped = 43
+template Max*(_: type ScintillaIndicatorNumbersEnum): untyped = 43
+
+
+type ScintillaIndicValueEnum* = distinct cint
+template Bit*(_: type ScintillaIndicValueEnum): untyped = 16777216
+template Mask*(_: type ScintillaIndicValueEnum): untyped = 16777215
+
+
+type ScintillaIndicFlagEnum* = distinct cint
+template None*(_: type ScintillaIndicFlagEnum): untyped = 0
+template ValueFore*(_: type ScintillaIndicFlagEnum): untyped = 1
+
+
+type ScintillaAutoCompleteOptionEnum* = distinct cint
+template Normal*(_: type ScintillaAutoCompleteOptionEnum): untyped = 0
+template FixedSize*(_: type ScintillaAutoCompleteOptionEnum): untyped = 1
+template SelectFirstItem*(_: type ScintillaAutoCompleteOptionEnum): untyped = 2
+
+
+type ScintillaIndentViewEnum* = distinct cint
+template None*(_: type ScintillaIndentViewEnum): untyped = 0
+template Real*(_: type ScintillaIndentViewEnum): untyped = 1
+template LookForward*(_: type ScintillaIndentViewEnum): untyped = 2
+template LookBoth*(_: type ScintillaIndentViewEnum): untyped = 3
+
+
+type ScintillaPrintOptionEnum* = distinct cint
+template Normal*(_: type ScintillaPrintOptionEnum): untyped = 0
+template InvertLight*(_: type ScintillaPrintOptionEnum): untyped = 1
+template BlackOnWhite*(_: type ScintillaPrintOptionEnum): untyped = 2
+template ColourOnWhite*(_: type ScintillaPrintOptionEnum): untyped = 3
+template ColourOnWhiteDefaultBG*(_: type ScintillaPrintOptionEnum): untyped = 4
+template ScreenColours*(_: type ScintillaPrintOptionEnum): untyped = 5
+
+
+type ScintillaFindOptionEnum* = distinct cint
+template None*(_: type ScintillaFindOptionEnum): untyped = 0
+template WholeWord*(_: type ScintillaFindOptionEnum): untyped = 2
+template MatchCase*(_: type ScintillaFindOptionEnum): untyped = 4
+template WordStart*(_: type ScintillaFindOptionEnum): untyped = 1048576
+template RegExp*(_: type ScintillaFindOptionEnum): untyped = 2097152
+template Posix*(_: type ScintillaFindOptionEnum): untyped = 4194304
+template Cxx11RegEx*(_: type ScintillaFindOptionEnum): untyped = 8388608
+
+
+type ScintillaChangeHistoryOptionEnum* = distinct cint
+template Disabled*(_: type ScintillaChangeHistoryOptionEnum): untyped = 0
+template Enabled*(_: type ScintillaChangeHistoryOptionEnum): untyped = 1
+template Markers*(_: type ScintillaChangeHistoryOptionEnum): untyped = 2
+template Indicators*(_: type ScintillaChangeHistoryOptionEnum): untyped = 4
+
+
+type ScintillaFoldLevelEnum* = distinct cint
+template None*(_: type ScintillaFoldLevelEnum): untyped = 0
+template Base*(_: type ScintillaFoldLevelEnum): untyped = 1024
+template WhiteFlag*(_: type ScintillaFoldLevelEnum): untyped = 4096
+template HeaderFlag*(_: type ScintillaFoldLevelEnum): untyped = 8192
+template NumberMask*(_: type ScintillaFoldLevelEnum): untyped = 4095
+
+
+type ScintillaFoldDisplayTextStyleEnum* = distinct cint
+template Hidden*(_: type ScintillaFoldDisplayTextStyleEnum): untyped = 0
+template Standard*(_: type ScintillaFoldDisplayTextStyleEnum): untyped = 1
+template Boxed*(_: type ScintillaFoldDisplayTextStyleEnum): untyped = 2
+
+
+type ScintillaFoldActionEnum* = distinct cint
+template Contract*(_: type ScintillaFoldActionEnum): untyped = 0
+template Expand*(_: type ScintillaFoldActionEnum): untyped = 1
+template Toggle*(_: type ScintillaFoldActionEnum): untyped = 2
+template ContractEveryLevel*(_: type ScintillaFoldActionEnum): untyped = 4
+
+
+type ScintillaAutomaticFoldEnum* = distinct cint
+template None*(_: type ScintillaAutomaticFoldEnum): untyped = 0
+template Show*(_: type ScintillaAutomaticFoldEnum): untyped = 1
+template Click*(_: type ScintillaAutomaticFoldEnum): untyped = 2
+template Change*(_: type ScintillaAutomaticFoldEnum): untyped = 4
+
+
+type ScintillaFoldFlagEnum* = distinct cint
+template None*(_: type ScintillaFoldFlagEnum): untyped = 0
+template LineBeforeExpanded*(_: type ScintillaFoldFlagEnum): untyped = 2
+template LineBeforeContracted*(_: type ScintillaFoldFlagEnum): untyped = 4
+template LineAfterExpanded*(_: type ScintillaFoldFlagEnum): untyped = 8
+template LineAfterContracted*(_: type ScintillaFoldFlagEnum): untyped = 16
+template LevelNumbers*(_: type ScintillaFoldFlagEnum): untyped = 64
+template LineState*(_: type ScintillaFoldFlagEnum): untyped = 128
+
+
+type ScintillaIdleStylingEnum* = distinct cint
+template None*(_: type ScintillaIdleStylingEnum): untyped = 0
+template ToVisible*(_: type ScintillaIdleStylingEnum): untyped = 1
+template AfterVisible*(_: type ScintillaIdleStylingEnum): untyped = 2
+template All*(_: type ScintillaIdleStylingEnum): untyped = 3
+
+
+type ScintillaWrapEnum* = distinct cint
+template None*(_: type ScintillaWrapEnum): untyped = 0
+template Word*(_: type ScintillaWrapEnum): untyped = 1
+template Char*(_: type ScintillaWrapEnum): untyped = 2
+template WhiteSpace*(_: type ScintillaWrapEnum): untyped = 3
+
+
+type ScintillaWrapVisualFlagEnum* = distinct cint
+template None*(_: type ScintillaWrapVisualFlagEnum): untyped = 0
+template End*(_: type ScintillaWrapVisualFlagEnum): untyped = 1
+template Start*(_: type ScintillaWrapVisualFlagEnum): untyped = 2
+template Margin*(_: type ScintillaWrapVisualFlagEnum): untyped = 4
+
+
+type ScintillaWrapVisualLocationEnum* = distinct cint
+template Default*(_: type ScintillaWrapVisualLocationEnum): untyped = 0
+template EndByText*(_: type ScintillaWrapVisualLocationEnum): untyped = 1
+template StartByText*(_: type ScintillaWrapVisualLocationEnum): untyped = 2
+
+
+type ScintillaWrapIndentModeEnum* = distinct cint
+template Fixed*(_: type ScintillaWrapIndentModeEnum): untyped = 0
+template Same*(_: type ScintillaWrapIndentModeEnum): untyped = 1
+template Indent*(_: type ScintillaWrapIndentModeEnum): untyped = 2
+template DeepIndent*(_: type ScintillaWrapIndentModeEnum): untyped = 3
+
+
+type ScintillaLineCacheEnum* = distinct cint
+template None*(_: type ScintillaLineCacheEnum): untyped = 0
+template Caret*(_: type ScintillaLineCacheEnum): untyped = 1
+template Page*(_: type ScintillaLineCacheEnum): untyped = 2
+template Document*(_: type ScintillaLineCacheEnum): untyped = 3
+
+
+type ScintillaPhasesDrawEnum* = distinct cint
+template One*(_: type ScintillaPhasesDrawEnum): untyped = 0
+template Two*(_: type ScintillaPhasesDrawEnum): untyped = 1
+template Multiple*(_: type ScintillaPhasesDrawEnum): untyped = 2
+
+
+type ScintillaFontQualityEnum* = distinct cint
+template QualityMask*(_: type ScintillaFontQualityEnum): untyped = 15
+template QualityDefault*(_: type ScintillaFontQualityEnum): untyped = 0
+template QualityNonAntialiased*(_: type ScintillaFontQualityEnum): untyped = 1
+template QualityAntialiased*(_: type ScintillaFontQualityEnum): untyped = 2
+template QualityLcdOptimized*(_: type ScintillaFontQualityEnum): untyped = 3
+
+
+type ScintillaMultiPasteEnum* = distinct cint
+template Once*(_: type ScintillaMultiPasteEnum): untyped = 0
+template Each*(_: type ScintillaMultiPasteEnum): untyped = 1
+
+
+type ScintillaAccessibilityEnum* = distinct cint
+template Disabled*(_: type ScintillaAccessibilityEnum): untyped = 0
+template Enabled*(_: type ScintillaAccessibilityEnum): untyped = 1
+
+
+type ScintillaEdgeVisualStyleEnum* = distinct cint
+template None*(_: type ScintillaEdgeVisualStyleEnum): untyped = 0
+template Line*(_: type ScintillaEdgeVisualStyleEnum): untyped = 1
+template Background*(_: type ScintillaEdgeVisualStyleEnum): untyped = 2
+template MultiLine*(_: type ScintillaEdgeVisualStyleEnum): untyped = 3
+
+
+type ScintillaPopUpEnum* = distinct cint
+template Never*(_: type ScintillaPopUpEnum): untyped = 0
+template All*(_: type ScintillaPopUpEnum): untyped = 1
+template Text*(_: type ScintillaPopUpEnum): untyped = 2
+
+
+type ScintillaDocumentOptionEnum* = distinct cint
+template Default*(_: type ScintillaDocumentOptionEnum): untyped = 0
+template StylesNone*(_: type ScintillaDocumentOptionEnum): untyped = 1
+template TextLarge*(_: type ScintillaDocumentOptionEnum): untyped = 256
+
+
+type ScintillaStatusEnum* = distinct cint
+template Ok*(_: type ScintillaStatusEnum): untyped = 0
+template Failure*(_: type ScintillaStatusEnum): untyped = 1
+template BadAlloc*(_: type ScintillaStatusEnum): untyped = 2
+template WarnStart*(_: type ScintillaStatusEnum): untyped = 1000
+template RegEx*(_: type ScintillaStatusEnum): untyped = 1001
+
+
+type ScintillaVisiblePolicyEnum* = distinct cint
+template Slop*(_: type ScintillaVisiblePolicyEnum): untyped = 1
+template Strict*(_: type ScintillaVisiblePolicyEnum): untyped = 4
+
+
+type ScintillaCaretPolicyEnum* = distinct cint
+template Slop*(_: type ScintillaCaretPolicyEnum): untyped = 1
+template Strict*(_: type ScintillaCaretPolicyEnum): untyped = 4
+template Jumps*(_: type ScintillaCaretPolicyEnum): untyped = 16
+template Even*(_: type ScintillaCaretPolicyEnum): untyped = 8
+
+
+type ScintillaSelectionModeEnum* = distinct cint
+template Stream*(_: type ScintillaSelectionModeEnum): untyped = 0
+template Rectangle*(_: type ScintillaSelectionModeEnum): untyped = 1
+template Lines*(_: type ScintillaSelectionModeEnum): untyped = 2
+template Thin*(_: type ScintillaSelectionModeEnum): untyped = 3
+
+
+type ScintillaCaseInsensitiveBehaviourEnum* = distinct cint
+template RespectCase*(_: type ScintillaCaseInsensitiveBehaviourEnum): untyped = 0
+template IgnoreCase*(_: type ScintillaCaseInsensitiveBehaviourEnum): untyped = 1
+
+
+type ScintillaMultiAutoCompleteEnum* = distinct cint
+template Once*(_: type ScintillaMultiAutoCompleteEnum): untyped = 0
+template Each*(_: type ScintillaMultiAutoCompleteEnum): untyped = 1
+
+
+type ScintillaOrderingEnum* = distinct cint
+template PreSorted*(_: type ScintillaOrderingEnum): untyped = 0
+template PerformSort*(_: type ScintillaOrderingEnum): untyped = 1
+template Custom*(_: type ScintillaOrderingEnum): untyped = 2
+
+
+type ScintillaCaretStickyEnum* = distinct cint
+template Off*(_: type ScintillaCaretStickyEnum): untyped = 0
+template On*(_: type ScintillaCaretStickyEnum): untyped = 1
+template WhiteSpace*(_: type ScintillaCaretStickyEnum): untyped = 2
+
+
+type ScintillaCaretStyleEnum* = distinct cint
+template Invisible*(_: type ScintillaCaretStyleEnum): untyped = 0
+template Line*(_: type ScintillaCaretStyleEnum): untyped = 1
+template Block*(_: type ScintillaCaretStyleEnum): untyped = 2
+template OverstrikeBar*(_: type ScintillaCaretStyleEnum): untyped = 0
+template OverstrikeBlock*(_: type ScintillaCaretStyleEnum): untyped = 16
+template Curses*(_: type ScintillaCaretStyleEnum): untyped = 32
+template InsMask*(_: type ScintillaCaretStyleEnum): untyped = 15
+template BlockAfter*(_: type ScintillaCaretStyleEnum): untyped = 256
+
+
+type ScintillaMarginOptionEnum* = distinct cint
+template None*(_: type ScintillaMarginOptionEnum): untyped = 0
+template SubLineSelect*(_: type ScintillaMarginOptionEnum): untyped = 1
+
+
+type ScintillaAnnotationVisibleEnum* = distinct cint
+template Hidden*(_: type ScintillaAnnotationVisibleEnum): untyped = 0
+template Standard*(_: type ScintillaAnnotationVisibleEnum): untyped = 1
+template Boxed*(_: type ScintillaAnnotationVisibleEnum): untyped = 2
+template Indented*(_: type ScintillaAnnotationVisibleEnum): untyped = 3
+
+
+type ScintillaUndoFlagsEnum* = distinct cint
+template None*(_: type ScintillaUndoFlagsEnum): untyped = 0
+template MayCoalesce*(_: type ScintillaUndoFlagsEnum): untyped = 1
+
+
+type ScintillaVirtualSpaceEnum* = distinct cint
+template None*(_: type ScintillaVirtualSpaceEnum): untyped = 0
+template RectangularSelection*(_: type ScintillaVirtualSpaceEnum): untyped = 1
+template UserAccessible*(_: type ScintillaVirtualSpaceEnum): untyped = 2
+template NoWrapLineStart*(_: type ScintillaVirtualSpaceEnum): untyped = 4
+
+
+type ScintillaTechnologyEnum* = distinct cint
+template Default*(_: type ScintillaTechnologyEnum): untyped = 0
+template DirectWrite*(_: type ScintillaTechnologyEnum): untyped = 1
+template DirectWriteRetain*(_: type ScintillaTechnologyEnum): untyped = 2
+template DirectWriteDC*(_: type ScintillaTechnologyEnum): untyped = 3
+
+
+type ScintillaLineEndTypeEnum* = distinct cint
+template Default*(_: type ScintillaLineEndTypeEnum): untyped = 0
+template Unicode*(_: type ScintillaLineEndTypeEnum): untyped = 1
+
+
+type ScintillaRepresentationAppearanceEnum* = distinct cint
+template Plain*(_: type ScintillaRepresentationAppearanceEnum): untyped = 0
+template Blob*(_: type ScintillaRepresentationAppearanceEnum): untyped = 1
+template Colour*(_: type ScintillaRepresentationAppearanceEnum): untyped = 16
+
+
+type ScintillaEOLAnnotationVisibleEnum* = distinct cint
+template Hidden*(_: type ScintillaEOLAnnotationVisibleEnum): untyped = 0
+template Standard*(_: type ScintillaEOLAnnotationVisibleEnum): untyped = 1
+template Boxed*(_: type ScintillaEOLAnnotationVisibleEnum): untyped = 2
+template Stadium*(_: type ScintillaEOLAnnotationVisibleEnum): untyped = 256
+template FlatCircle*(_: type ScintillaEOLAnnotationVisibleEnum): untyped = 257
+template AngleCircle*(_: type ScintillaEOLAnnotationVisibleEnum): untyped = 258
+template CircleFlat*(_: type ScintillaEOLAnnotationVisibleEnum): untyped = 272
+template Flats*(_: type ScintillaEOLAnnotationVisibleEnum): untyped = 273
+template AngleFlat*(_: type ScintillaEOLAnnotationVisibleEnum): untyped = 274
+template CircleAngle*(_: type ScintillaEOLAnnotationVisibleEnum): untyped = 288
+template FlatAngle*(_: type ScintillaEOLAnnotationVisibleEnum): untyped = 289
+template Angles*(_: type ScintillaEOLAnnotationVisibleEnum): untyped = 290
+
+
+type ScintillaSupportsEnum* = distinct cint
+template LineDrawsFinal*(_: type ScintillaSupportsEnum): untyped = 0
+template PixelDivisions*(_: type ScintillaSupportsEnum): untyped = 1
+template FractionalStrokeWidth*(_: type ScintillaSupportsEnum): untyped = 2
+template TranslucentStroke*(_: type ScintillaSupportsEnum): untyped = 3
+template PixelModification*(_: type ScintillaSupportsEnum): untyped = 4
+template ThreadSafeMeasureWidths*(_: type ScintillaSupportsEnum): untyped = 5
+
+
+type ScintillaLineCharacterIndexTypeEnum* = distinct cint
+template None*(_: type ScintillaLineCharacterIndexTypeEnum): untyped = 0
+template Utf32*(_: type ScintillaLineCharacterIndexTypeEnum): untyped = 1
+template Utf16*(_: type ScintillaLineCharacterIndexTypeEnum): untyped = 2
+
+
+type ScintillaTypePropertyEnum* = distinct cint
+template Boolean*(_: type ScintillaTypePropertyEnum): untyped = 0
+template Integer*(_: type ScintillaTypePropertyEnum): untyped = 1
+template String*(_: type ScintillaTypePropertyEnum): untyped = 2
+
+
+type ScintillaModificationFlagsEnum* = distinct cint
+template None*(_: type ScintillaModificationFlagsEnum): untyped = 0
+template InsertText*(_: type ScintillaModificationFlagsEnum): untyped = 1
+template DeleteText*(_: type ScintillaModificationFlagsEnum): untyped = 2
+template ChangeStyle*(_: type ScintillaModificationFlagsEnum): untyped = 4
+template ChangeFold*(_: type ScintillaModificationFlagsEnum): untyped = 8
+template User*(_: type ScintillaModificationFlagsEnum): untyped = 16
+template Undo*(_: type ScintillaModificationFlagsEnum): untyped = 32
+template Redo*(_: type ScintillaModificationFlagsEnum): untyped = 64
+template MultiStepUndoRedo*(_: type ScintillaModificationFlagsEnum): untyped = 128
+template LastStepInUndoRedo*(_: type ScintillaModificationFlagsEnum): untyped = 256
+template ChangeMarker*(_: type ScintillaModificationFlagsEnum): untyped = 512
+template BeforeInsert*(_: type ScintillaModificationFlagsEnum): untyped = 1024
+template BeforeDelete*(_: type ScintillaModificationFlagsEnum): untyped = 2048
+template MultilineUndoRedo*(_: type ScintillaModificationFlagsEnum): untyped = 4096
+template StartAction*(_: type ScintillaModificationFlagsEnum): untyped = 8192
+template ChangeIndicator*(_: type ScintillaModificationFlagsEnum): untyped = 16384
+template ChangeLineState*(_: type ScintillaModificationFlagsEnum): untyped = 32768
+template ChangeMargin*(_: type ScintillaModificationFlagsEnum): untyped = 65536
+template ChangeAnnotation*(_: type ScintillaModificationFlagsEnum): untyped = 131072
+template Container*(_: type ScintillaModificationFlagsEnum): untyped = 262144
+template LexerState*(_: type ScintillaModificationFlagsEnum): untyped = 524288
+template InsertCheck*(_: type ScintillaModificationFlagsEnum): untyped = 1048576
+template ChangeTabStops*(_: type ScintillaModificationFlagsEnum): untyped = 2097152
+template ChangeEOLAnnotation*(_: type ScintillaModificationFlagsEnum): untyped = 4194304
+template EventMaskAll*(_: type ScintillaModificationFlagsEnum): untyped = 8388607
+
+
+type ScintillaUpdateEnum* = distinct cint
+template None*(_: type ScintillaUpdateEnum): untyped = 0
+template Content*(_: type ScintillaUpdateEnum): untyped = 1
+template Selection*(_: type ScintillaUpdateEnum): untyped = 2
+template VScroll*(_: type ScintillaUpdateEnum): untyped = 4
+template HScroll*(_: type ScintillaUpdateEnum): untyped = 8
+
+
+type ScintillaFocusChangeEnum* = distinct cint
+template Change*(_: type ScintillaFocusChangeEnum): untyped = 768
+template Setfocus*(_: type ScintillaFocusChangeEnum): untyped = 512
+template Killfocus*(_: type ScintillaFocusChangeEnum): untyped = 256
+
+
+type ScintillaKeysEnum* = distinct cint
+template Down*(_: type ScintillaKeysEnum): untyped = 300
+template Up*(_: type ScintillaKeysEnum): untyped = 301
+template Left*(_: type ScintillaKeysEnum): untyped = 302
+template Right*(_: type ScintillaKeysEnum): untyped = 303
+template Home*(_: type ScintillaKeysEnum): untyped = 304
+template End*(_: type ScintillaKeysEnum): untyped = 305
+template Prior*(_: type ScintillaKeysEnum): untyped = 306
+template Next*(_: type ScintillaKeysEnum): untyped = 307
+template Delete*(_: type ScintillaKeysEnum): untyped = 308
+template Insert*(_: type ScintillaKeysEnum): untyped = 309
+template Escape*(_: type ScintillaKeysEnum): untyped = 7
+template Back*(_: type ScintillaKeysEnum): untyped = 8
+template Tab*(_: type ScintillaKeysEnum): untyped = 9
+template Return*(_: type ScintillaKeysEnum): untyped = 13
+template Add*(_: type ScintillaKeysEnum): untyped = 310
+template Subtract*(_: type ScintillaKeysEnum): untyped = 311
+template Divide*(_: type ScintillaKeysEnum): untyped = 312
+template Win*(_: type ScintillaKeysEnum): untyped = 313
+template RWin*(_: type ScintillaKeysEnum): untyped = 314
+template Menu*(_: type ScintillaKeysEnum): untyped = 315
+
+
+type ScintillaKeyModEnum* = distinct cint
+template Norm*(_: type ScintillaKeyModEnum): untyped = 0
+template Shift*(_: type ScintillaKeyModEnum): untyped = 1
+template Ctrl*(_: type ScintillaKeyModEnum): untyped = 2
+template Alt*(_: type ScintillaKeyModEnum): untyped = 4
+template Super*(_: type ScintillaKeyModEnum): untyped = 8
+template Meta*(_: type ScintillaKeyModEnum): untyped = 16
+
+
+type ScintillaCompletionMethodsEnum* = distinct cint
+template FillUp*(_: type ScintillaCompletionMethodsEnum): untyped = 1
+template DoubleClick*(_: type ScintillaCompletionMethodsEnum): untyped = 2
+template Tab*(_: type ScintillaCompletionMethodsEnum): untyped = 3
+template Newline*(_: type ScintillaCompletionMethodsEnum): untyped = 4
+template Command*(_: type ScintillaCompletionMethodsEnum): untyped = 5
+template SingleChoice*(_: type ScintillaCompletionMethodsEnum): untyped = 6
+
+
+type ScintillaCharacterSourceEnum* = distinct cint
+template DirectInput*(_: type ScintillaCharacterSourceEnum): untyped = 0
+template TentativeInput*(_: type ScintillaCharacterSourceEnum): untyped = 1
+template ImeResult*(_: type ScintillaCharacterSourceEnum): untyped = 2
+
+
+type ScintillaBidirectionalEnum* = distinct cint
+template Disabled*(_: type ScintillaBidirectionalEnum): untyped = 0
+template L2R*(_: type ScintillaBidirectionalEnum): untyped = 1
+template R2L*(_: type ScintillaBidirectionalEnum): untyped = 2
+
+
+type ScintillaNotificationEnum* = distinct cint
+template StyleNeeded*(_: type ScintillaNotificationEnum): untyped = 2000
+template CharAdded*(_: type ScintillaNotificationEnum): untyped = 2001
+template SavePointReached*(_: type ScintillaNotificationEnum): untyped = 2002
+template SavePointLeft*(_: type ScintillaNotificationEnum): untyped = 2003
+template ModifyAttemptRO*(_: type ScintillaNotificationEnum): untyped = 2004
+template Key*(_: type ScintillaNotificationEnum): untyped = 2005
+template DoubleClick*(_: type ScintillaNotificationEnum): untyped = 2006
+template UpdateUI*(_: type ScintillaNotificationEnum): untyped = 2007
+template Modified*(_: type ScintillaNotificationEnum): untyped = 2008
+template MacroRecord*(_: type ScintillaNotificationEnum): untyped = 2009
+template MarginClick*(_: type ScintillaNotificationEnum): untyped = 2010
+template NeedShown*(_: type ScintillaNotificationEnum): untyped = 2011
+template Painted*(_: type ScintillaNotificationEnum): untyped = 2013
+template UserListSelection*(_: type ScintillaNotificationEnum): untyped = 2014
+template URIDropped*(_: type ScintillaNotificationEnum): untyped = 2015
+template DwellStart*(_: type ScintillaNotificationEnum): untyped = 2016
+template DwellEnd*(_: type ScintillaNotificationEnum): untyped = 2017
+template Zoom*(_: type ScintillaNotificationEnum): untyped = 2018
+template HotSpotClick*(_: type ScintillaNotificationEnum): untyped = 2019
+template HotSpotDoubleClick*(_: type ScintillaNotificationEnum): untyped = 2020
+template CallTipClick*(_: type ScintillaNotificationEnum): untyped = 2021
+template AutoCSelection*(_: type ScintillaNotificationEnum): untyped = 2022
+template IndicatorClick*(_: type ScintillaNotificationEnum): untyped = 2023
+template IndicatorRelease*(_: type ScintillaNotificationEnum): untyped = 2024
+template AutoCCancelled*(_: type ScintillaNotificationEnum): untyped = 2025
+template AutoCCharDeleted*(_: type ScintillaNotificationEnum): untyped = 2026
+template HotSpotReleaseClick*(_: type ScintillaNotificationEnum): untyped = 2027
+template FocusIn*(_: type ScintillaNotificationEnum): untyped = 2028
+template FocusOut*(_: type ScintillaNotificationEnum): untyped = 2029
+template AutoCCompleted*(_: type ScintillaNotificationEnum): untyped = 2030
+template MarginRightClick*(_: type ScintillaNotificationEnum): untyped = 2031
+template AutoCSelectionChange*(_: type ScintillaNotificationEnum): untyped = 2032
+
+
+type ScintillaMessageEnum* = distinct cint
+template AddText*(_: type ScintillaMessageEnum): untyped = 2001
+template AddStyledText*(_: type ScintillaMessageEnum): untyped = 2002
+template InsertText*(_: type ScintillaMessageEnum): untyped = 2003
+template ChangeInsertion*(_: type ScintillaMessageEnum): untyped = 2672
+template ClearAll*(_: type ScintillaMessageEnum): untyped = 2004
+template DeleteRange*(_: type ScintillaMessageEnum): untyped = 2645
+template ClearDocumentStyle*(_: type ScintillaMessageEnum): untyped = 2005
+template GetLength*(_: type ScintillaMessageEnum): untyped = 2006
+template GetCharAt*(_: type ScintillaMessageEnum): untyped = 2007
+template GetCurrentPos*(_: type ScintillaMessageEnum): untyped = 2008
+template GetAnchor*(_: type ScintillaMessageEnum): untyped = 2009
+template GetStyleAt*(_: type ScintillaMessageEnum): untyped = 2010
+template GetStyleIndexAt*(_: type ScintillaMessageEnum): untyped = 2038
+template Redo*(_: type ScintillaMessageEnum): untyped = 2011
+template SetUndoCollection*(_: type ScintillaMessageEnum): untyped = 2012
+template SelectAll*(_: type ScintillaMessageEnum): untyped = 2013
+template SetSavePoint*(_: type ScintillaMessageEnum): untyped = 2014
+template GetStyledText*(_: type ScintillaMessageEnum): untyped = 2015
+template GetStyledTextFull*(_: type ScintillaMessageEnum): untyped = 2778
+template CanRedo*(_: type ScintillaMessageEnum): untyped = 2016
+template MarkerLineFromHandle*(_: type ScintillaMessageEnum): untyped = 2017
+template MarkerDeleteHandle*(_: type ScintillaMessageEnum): untyped = 2018
+template MarkerHandleFromLine*(_: type ScintillaMessageEnum): untyped = 2732
+template MarkerNumberFromLine*(_: type ScintillaMessageEnum): untyped = 2733
+template GetUndoCollection*(_: type ScintillaMessageEnum): untyped = 2019
+template GetViewWS*(_: type ScintillaMessageEnum): untyped = 2020
+template SetViewWS*(_: type ScintillaMessageEnum): untyped = 2021
+template GetTabDrawMode*(_: type ScintillaMessageEnum): untyped = 2698
+template SetTabDrawMode*(_: type ScintillaMessageEnum): untyped = 2699
+template PositionFromPoint*(_: type ScintillaMessageEnum): untyped = 2022
+template PositionFromPointClose*(_: type ScintillaMessageEnum): untyped = 2023
+template GotoLine*(_: type ScintillaMessageEnum): untyped = 2024
+template GotoPos*(_: type ScintillaMessageEnum): untyped = 2025
+template SetAnchor*(_: type ScintillaMessageEnum): untyped = 2026
+template GetCurLine*(_: type ScintillaMessageEnum): untyped = 2027
+template GetEndStyled*(_: type ScintillaMessageEnum): untyped = 2028
+template ConvertEOLs*(_: type ScintillaMessageEnum): untyped = 2029
+template GetEOLMode*(_: type ScintillaMessageEnum): untyped = 2030
+template SetEOLMode*(_: type ScintillaMessageEnum): untyped = 2031
+template StartStyling*(_: type ScintillaMessageEnum): untyped = 2032
+template SetStyling*(_: type ScintillaMessageEnum): untyped = 2033
+template GetBufferedDraw*(_: type ScintillaMessageEnum): untyped = 2034
+template SetBufferedDraw*(_: type ScintillaMessageEnum): untyped = 2035
+template SetTabWidth*(_: type ScintillaMessageEnum): untyped = 2036
+template GetTabWidth*(_: type ScintillaMessageEnum): untyped = 2121
+template SetTabMinimumWidth*(_: type ScintillaMessageEnum): untyped = 2724
+template GetTabMinimumWidth*(_: type ScintillaMessageEnum): untyped = 2725
+template ClearTabStops*(_: type ScintillaMessageEnum): untyped = 2675
+template AddTabStop*(_: type ScintillaMessageEnum): untyped = 2676
+template GetNextTabStop*(_: type ScintillaMessageEnum): untyped = 2677
+template SetCodePage*(_: type ScintillaMessageEnum): untyped = 2037
+template SetFontLocale*(_: type ScintillaMessageEnum): untyped = 2760
+template GetFontLocale*(_: type ScintillaMessageEnum): untyped = 2761
+template GetIMEInteraction*(_: type ScintillaMessageEnum): untyped = 2678
+template SetIMEInteraction*(_: type ScintillaMessageEnum): untyped = 2679
+template MarkerDefine*(_: type ScintillaMessageEnum): untyped = 2040
+template MarkerSetFore*(_: type ScintillaMessageEnum): untyped = 2041
+template MarkerSetBack*(_: type ScintillaMessageEnum): untyped = 2042
+template MarkerSetBackSelected*(_: type ScintillaMessageEnum): untyped = 2292
+template MarkerSetForeTranslucent*(_: type ScintillaMessageEnum): untyped = 2294
+template MarkerSetBackTranslucent*(_: type ScintillaMessageEnum): untyped = 2295
+template MarkerSetBackSelectedTranslucent*(_: type ScintillaMessageEnum): untyped = 2296
+template MarkerSetStrokeWidth*(_: type ScintillaMessageEnum): untyped = 2297
+template MarkerEnableHighlight*(_: type ScintillaMessageEnum): untyped = 2293
+template MarkerAdd*(_: type ScintillaMessageEnum): untyped = 2043
+template MarkerDelete*(_: type ScintillaMessageEnum): untyped = 2044
+template MarkerDeleteAll*(_: type ScintillaMessageEnum): untyped = 2045
+template MarkerGet*(_: type ScintillaMessageEnum): untyped = 2046
+template MarkerNext*(_: type ScintillaMessageEnum): untyped = 2047
+template MarkerPrevious*(_: type ScintillaMessageEnum): untyped = 2048
+template MarkerDefinePixmap*(_: type ScintillaMessageEnum): untyped = 2049
+template MarkerAddSet*(_: type ScintillaMessageEnum): untyped = 2466
+template MarkerSetAlpha*(_: type ScintillaMessageEnum): untyped = 2476
+template MarkerGetLayer*(_: type ScintillaMessageEnum): untyped = 2734
+template MarkerSetLayer*(_: type ScintillaMessageEnum): untyped = 2735
+template SetMarginTypeN*(_: type ScintillaMessageEnum): untyped = 2240
+template GetMarginTypeN*(_: type ScintillaMessageEnum): untyped = 2241
+template SetMarginWidthN*(_: type ScintillaMessageEnum): untyped = 2242
+template GetMarginWidthN*(_: type ScintillaMessageEnum): untyped = 2243
+template SetMarginMaskN*(_: type ScintillaMessageEnum): untyped = 2244
+template GetMarginMaskN*(_: type ScintillaMessageEnum): untyped = 2245
+template SetMarginSensitiveN*(_: type ScintillaMessageEnum): untyped = 2246
+template GetMarginSensitiveN*(_: type ScintillaMessageEnum): untyped = 2247
+template SetMarginCursorN*(_: type ScintillaMessageEnum): untyped = 2248
+template GetMarginCursorN*(_: type ScintillaMessageEnum): untyped = 2249
+template SetMarginBackN*(_: type ScintillaMessageEnum): untyped = 2250
+template GetMarginBackN*(_: type ScintillaMessageEnum): untyped = 2251
+template SetMargins*(_: type ScintillaMessageEnum): untyped = 2252
+template GetMargins*(_: type ScintillaMessageEnum): untyped = 2253
+template StyleClearAll*(_: type ScintillaMessageEnum): untyped = 2050
+template StyleSetFore*(_: type ScintillaMessageEnum): untyped = 2051
+template StyleSetBack*(_: type ScintillaMessageEnum): untyped = 2052
+template StyleSetBold*(_: type ScintillaMessageEnum): untyped = 2053
+template StyleSetItalic*(_: type ScintillaMessageEnum): untyped = 2054
+template StyleSetSize*(_: type ScintillaMessageEnum): untyped = 2055
+template StyleSetFont*(_: type ScintillaMessageEnum): untyped = 2056
+template StyleSetEOLFilled*(_: type ScintillaMessageEnum): untyped = 2057
+template StyleResetDefault*(_: type ScintillaMessageEnum): untyped = 2058
+template StyleSetUnderline*(_: type ScintillaMessageEnum): untyped = 2059
+template StyleGetFore*(_: type ScintillaMessageEnum): untyped = 2481
+template StyleGetBack*(_: type ScintillaMessageEnum): untyped = 2482
+template StyleGetBold*(_: type ScintillaMessageEnum): untyped = 2483
+template StyleGetItalic*(_: type ScintillaMessageEnum): untyped = 2484
+template StyleGetSize*(_: type ScintillaMessageEnum): untyped = 2485
+template StyleGetFont*(_: type ScintillaMessageEnum): untyped = 2486
+template StyleGetEOLFilled*(_: type ScintillaMessageEnum): untyped = 2487
+template StyleGetUnderline*(_: type ScintillaMessageEnum): untyped = 2488
+template StyleGetCase*(_: type ScintillaMessageEnum): untyped = 2489
+template StyleGetCharacterSet*(_: type ScintillaMessageEnum): untyped = 2490
+template StyleGetVisible*(_: type ScintillaMessageEnum): untyped = 2491
+template StyleGetChangeable*(_: type ScintillaMessageEnum): untyped = 2492
+template StyleGetHotSpot*(_: type ScintillaMessageEnum): untyped = 2493
+template StyleSetCase*(_: type ScintillaMessageEnum): untyped = 2060
+template StyleSetSizeFractional*(_: type ScintillaMessageEnum): untyped = 2061
+template StyleGetSizeFractional*(_: type ScintillaMessageEnum): untyped = 2062
+template StyleSetWeight*(_: type ScintillaMessageEnum): untyped = 2063
+template StyleGetWeight*(_: type ScintillaMessageEnum): untyped = 2064
+template StyleSetCharacterSet*(_: type ScintillaMessageEnum): untyped = 2066
+template StyleSetHotSpot*(_: type ScintillaMessageEnum): untyped = 2409
+template StyleSetCheckMonospaced*(_: type ScintillaMessageEnum): untyped = 2254
+template StyleGetCheckMonospaced*(_: type ScintillaMessageEnum): untyped = 2255
+template StyleSetStretch*(_: type ScintillaMessageEnum): untyped = 2258
+template StyleGetStretch*(_: type ScintillaMessageEnum): untyped = 2259
+template StyleSetInvisibleRepresentation*(_: type ScintillaMessageEnum): untyped = 2256
+template StyleGetInvisibleRepresentation*(_: type ScintillaMessageEnum): untyped = 2257
+template SetElementColour*(_: type ScintillaMessageEnum): untyped = 2753
+template GetElementColour*(_: type ScintillaMessageEnum): untyped = 2754
+template ResetElementColour*(_: type ScintillaMessageEnum): untyped = 2755
+template GetElementIsSet*(_: type ScintillaMessageEnum): untyped = 2756
+template GetElementAllowsTranslucent*(_: type ScintillaMessageEnum): untyped = 2757
+template GetElementBaseColour*(_: type ScintillaMessageEnum): untyped = 2758
+template SetSelFore*(_: type ScintillaMessageEnum): untyped = 2067
+template SetSelBack*(_: type ScintillaMessageEnum): untyped = 2068
+template GetSelAlpha*(_: type ScintillaMessageEnum): untyped = 2477
+template SetSelAlpha*(_: type ScintillaMessageEnum): untyped = 2478
+template GetSelEOLFilled*(_: type ScintillaMessageEnum): untyped = 2479
+template SetSelEOLFilled*(_: type ScintillaMessageEnum): untyped = 2480
+template GetSelectionLayer*(_: type ScintillaMessageEnum): untyped = 2762
+template SetSelectionLayer*(_: type ScintillaMessageEnum): untyped = 2763
+template GetCaretLineLayer*(_: type ScintillaMessageEnum): untyped = 2764
+template SetCaretLineLayer*(_: type ScintillaMessageEnum): untyped = 2765
+template GetCaretLineHighlightSubLine*(_: type ScintillaMessageEnum): untyped = 2773
+template SetCaretLineHighlightSubLine*(_: type ScintillaMessageEnum): untyped = 2774
+template SetCaretFore*(_: type ScintillaMessageEnum): untyped = 2069
+template AssignCmdKey*(_: type ScintillaMessageEnum): untyped = 2070
+template ClearCmdKey*(_: type ScintillaMessageEnum): untyped = 2071
+template ClearAllCmdKeys*(_: type ScintillaMessageEnum): untyped = 2072
+template SetStylingEx*(_: type ScintillaMessageEnum): untyped = 2073
+template StyleSetVisible*(_: type ScintillaMessageEnum): untyped = 2074
+template GetCaretPeriod*(_: type ScintillaMessageEnum): untyped = 2075
+template SetCaretPeriod*(_: type ScintillaMessageEnum): untyped = 2076
+template SetWordChars*(_: type ScintillaMessageEnum): untyped = 2077
+template GetWordChars*(_: type ScintillaMessageEnum): untyped = 2646
+template SetCharacterCategoryOptimization*(_: type ScintillaMessageEnum): untyped = 2720
+template GetCharacterCategoryOptimization*(_: type ScintillaMessageEnum): untyped = 2721
+template BeginUndoAction*(_: type ScintillaMessageEnum): untyped = 2078
+template EndUndoAction*(_: type ScintillaMessageEnum): untyped = 2079
+template GetUndoSequence*(_: type ScintillaMessageEnum): untyped = 2799
+template GetUndoActions*(_: type ScintillaMessageEnum): untyped = 2790
+template SetUndoSavePoint*(_: type ScintillaMessageEnum): untyped = 2791
+template GetUndoSavePoint*(_: type ScintillaMessageEnum): untyped = 2792
+template SetUndoDetach*(_: type ScintillaMessageEnum): untyped = 2793
+template GetUndoDetach*(_: type ScintillaMessageEnum): untyped = 2794
+template SetUndoTentative*(_: type ScintillaMessageEnum): untyped = 2795
+template GetUndoTentative*(_: type ScintillaMessageEnum): untyped = 2796
+template SetUndoCurrent*(_: type ScintillaMessageEnum): untyped = 2797
+template GetUndoCurrent*(_: type ScintillaMessageEnum): untyped = 2798
+template PushUndoActionType*(_: type ScintillaMessageEnum): untyped = 2800
+template ChangeLastUndoActionText*(_: type ScintillaMessageEnum): untyped = 2801
+template GetUndoActionType*(_: type ScintillaMessageEnum): untyped = 2802
+template GetUndoActionPosition*(_: type ScintillaMessageEnum): untyped = 2803
+template GetUndoActionText*(_: type ScintillaMessageEnum): untyped = 2804
+template IndicSetStyle*(_: type ScintillaMessageEnum): untyped = 2080
+template IndicGetStyle*(_: type ScintillaMessageEnum): untyped = 2081
+template IndicSetFore*(_: type ScintillaMessageEnum): untyped = 2082
+template IndicGetFore*(_: type ScintillaMessageEnum): untyped = 2083
+template IndicSetUnder*(_: type ScintillaMessageEnum): untyped = 2510
+template IndicGetUnder*(_: type ScintillaMessageEnum): untyped = 2511
+template IndicSetHoverStyle*(_: type ScintillaMessageEnum): untyped = 2680
+template IndicGetHoverStyle*(_: type ScintillaMessageEnum): untyped = 2681
+template IndicSetHoverFore*(_: type ScintillaMessageEnum): untyped = 2682
+template IndicGetHoverFore*(_: type ScintillaMessageEnum): untyped = 2683
+template IndicSetFlags*(_: type ScintillaMessageEnum): untyped = 2684
+template IndicGetFlags*(_: type ScintillaMessageEnum): untyped = 2685
+template IndicSetStrokeWidth*(_: type ScintillaMessageEnum): untyped = 2751
+template IndicGetStrokeWidth*(_: type ScintillaMessageEnum): untyped = 2752
+template SetWhitespaceFore*(_: type ScintillaMessageEnum): untyped = 2084
+template SetWhitespaceBack*(_: type ScintillaMessageEnum): untyped = 2085
+template SetWhitespaceSize*(_: type ScintillaMessageEnum): untyped = 2086
+template GetWhitespaceSize*(_: type ScintillaMessageEnum): untyped = 2087
+template SetLineState*(_: type ScintillaMessageEnum): untyped = 2092
+template GetLineState*(_: type ScintillaMessageEnum): untyped = 2093
+template GetMaxLineState*(_: type ScintillaMessageEnum): untyped = 2094
+template GetCaretLineVisible*(_: type ScintillaMessageEnum): untyped = 2095
+template SetCaretLineVisible*(_: type ScintillaMessageEnum): untyped = 2096
+template GetCaretLineBack*(_: type ScintillaMessageEnum): untyped = 2097
+template SetCaretLineBack*(_: type ScintillaMessageEnum): untyped = 2098
+template GetCaretLineFrame*(_: type ScintillaMessageEnum): untyped = 2704
+template SetCaretLineFrame*(_: type ScintillaMessageEnum): untyped = 2705
+template StyleSetChangeable*(_: type ScintillaMessageEnum): untyped = 2099
+template AutoCShow*(_: type ScintillaMessageEnum): untyped = 2100
+template AutoCCancel*(_: type ScintillaMessageEnum): untyped = 2101
+template AutoCActive*(_: type ScintillaMessageEnum): untyped = 2102
+template AutoCPosStart*(_: type ScintillaMessageEnum): untyped = 2103
+template AutoCComplete*(_: type ScintillaMessageEnum): untyped = 2104
+template AutoCStops*(_: type ScintillaMessageEnum): untyped = 2105
+template AutoCSetSeparator*(_: type ScintillaMessageEnum): untyped = 2106
+template AutoCGetSeparator*(_: type ScintillaMessageEnum): untyped = 2107
+template AutoCSelect*(_: type ScintillaMessageEnum): untyped = 2108
+template AutoCSetCancelAtStart*(_: type ScintillaMessageEnum): untyped = 2110
+template AutoCGetCancelAtStart*(_: type ScintillaMessageEnum): untyped = 2111
+template AutoCSetFillUps*(_: type ScintillaMessageEnum): untyped = 2112
+template AutoCSetChooseSingle*(_: type ScintillaMessageEnum): untyped = 2113
+template AutoCGetChooseSingle*(_: type ScintillaMessageEnum): untyped = 2114
+template AutoCSetIgnoreCase*(_: type ScintillaMessageEnum): untyped = 2115
+template AutoCGetIgnoreCase*(_: type ScintillaMessageEnum): untyped = 2116
+template UserListShow*(_: type ScintillaMessageEnum): untyped = 2117
+template AutoCSetAutoHide*(_: type ScintillaMessageEnum): untyped = 2118
+template AutoCGetAutoHide*(_: type ScintillaMessageEnum): untyped = 2119
+template AutoCSetOptions*(_: type ScintillaMessageEnum): untyped = 2638
+template AutoCGetOptions*(_: type ScintillaMessageEnum): untyped = 2639
+template AutoCSetDropRestOfWord*(_: type ScintillaMessageEnum): untyped = 2270
+template AutoCGetDropRestOfWord*(_: type ScintillaMessageEnum): untyped = 2271
+template RegisterImage*(_: type ScintillaMessageEnum): untyped = 2405
+template ClearRegisteredImages*(_: type ScintillaMessageEnum): untyped = 2408
+template AutoCGetTypeSeparator*(_: type ScintillaMessageEnum): untyped = 2285
+template AutoCSetTypeSeparator*(_: type ScintillaMessageEnum): untyped = 2286
+template AutoCSetMaxWidth*(_: type ScintillaMessageEnum): untyped = 2208
+template AutoCGetMaxWidth*(_: type ScintillaMessageEnum): untyped = 2209
+template AutoCSetMaxHeight*(_: type ScintillaMessageEnum): untyped = 2210
+template AutoCGetMaxHeight*(_: type ScintillaMessageEnum): untyped = 2211
+template AutoCSetStyle*(_: type ScintillaMessageEnum): untyped = 2109
+template AutoCGetStyle*(_: type ScintillaMessageEnum): untyped = 2120
+template SetIndent*(_: type ScintillaMessageEnum): untyped = 2122
+template GetIndent*(_: type ScintillaMessageEnum): untyped = 2123
+template SetUseTabs*(_: type ScintillaMessageEnum): untyped = 2124
+template GetUseTabs*(_: type ScintillaMessageEnum): untyped = 2125
+template SetLineIndentation*(_: type ScintillaMessageEnum): untyped = 2126
+template GetLineIndentation*(_: type ScintillaMessageEnum): untyped = 2127
+template GetLineIndentPosition*(_: type ScintillaMessageEnum): untyped = 2128
+template GetColumn*(_: type ScintillaMessageEnum): untyped = 2129
+template CountCharacters*(_: type ScintillaMessageEnum): untyped = 2633
+template CountCodeUnits*(_: type ScintillaMessageEnum): untyped = 2715
+template SetHScrollBar*(_: type ScintillaMessageEnum): untyped = 2130
+template GetHScrollBar*(_: type ScintillaMessageEnum): untyped = 2131
+template SetIndentationGuides*(_: type ScintillaMessageEnum): untyped = 2132
+template GetIndentationGuides*(_: type ScintillaMessageEnum): untyped = 2133
+template SetHighlightGuide*(_: type ScintillaMessageEnum): untyped = 2134
+template GetHighlightGuide*(_: type ScintillaMessageEnum): untyped = 2135
+template GetLineEndPosition*(_: type ScintillaMessageEnum): untyped = 2136
+template GetCodePage*(_: type ScintillaMessageEnum): untyped = 2137
+template GetCaretFore*(_: type ScintillaMessageEnum): untyped = 2138
+template GetReadOnly*(_: type ScintillaMessageEnum): untyped = 2140
+template SetCurrentPos*(_: type ScintillaMessageEnum): untyped = 2141
+template SetSelectionStart*(_: type ScintillaMessageEnum): untyped = 2142
+template GetSelectionStart*(_: type ScintillaMessageEnum): untyped = 2143
+template SetSelectionEnd*(_: type ScintillaMessageEnum): untyped = 2144
+template GetSelectionEnd*(_: type ScintillaMessageEnum): untyped = 2145
+template SetEmptySelection*(_: type ScintillaMessageEnum): untyped = 2556
+template SetPrintMagnification*(_: type ScintillaMessageEnum): untyped = 2146
+template GetPrintMagnification*(_: type ScintillaMessageEnum): untyped = 2147
+template SetPrintColourMode*(_: type ScintillaMessageEnum): untyped = 2148
+template GetPrintColourMode*(_: type ScintillaMessageEnum): untyped = 2149
+template FindText*(_: type ScintillaMessageEnum): untyped = 2150
+template FindTextFull*(_: type ScintillaMessageEnum): untyped = 2196
+template FormatRange*(_: type ScintillaMessageEnum): untyped = 2151
+template FormatRangeFull*(_: type ScintillaMessageEnum): untyped = 2777
+template SetChangeHistory*(_: type ScintillaMessageEnum): untyped = 2780
+template GetChangeHistory*(_: type ScintillaMessageEnum): untyped = 2781
+template GetFirstVisibleLine*(_: type ScintillaMessageEnum): untyped = 2152
+template GetLine*(_: type ScintillaMessageEnum): untyped = 2153
+template GetLineCount*(_: type ScintillaMessageEnum): untyped = 2154
+template AllocateLines*(_: type ScintillaMessageEnum): untyped = 2089
+template SetMarginLeft*(_: type ScintillaMessageEnum): untyped = 2155
+template GetMarginLeft*(_: type ScintillaMessageEnum): untyped = 2156
+template SetMarginRight*(_: type ScintillaMessageEnum): untyped = 2157
+template GetMarginRight*(_: type ScintillaMessageEnum): untyped = 2158
+template GetModify*(_: type ScintillaMessageEnum): untyped = 2159
+template SetSel*(_: type ScintillaMessageEnum): untyped = 2160
+template GetSelText*(_: type ScintillaMessageEnum): untyped = 2161
+template GetTextRange*(_: type ScintillaMessageEnum): untyped = 2162
+template GetTextRangeFull*(_: type ScintillaMessageEnum): untyped = 2039
+template HideSelection*(_: type ScintillaMessageEnum): untyped = 2163
+template GetSelectionHidden*(_: type ScintillaMessageEnum): untyped = 2088
+template PointXFromPosition*(_: type ScintillaMessageEnum): untyped = 2164
+template PointYFromPosition*(_: type ScintillaMessageEnum): untyped = 2165
+template LineFromPosition*(_: type ScintillaMessageEnum): untyped = 2166
+template PositionFromLine*(_: type ScintillaMessageEnum): untyped = 2167
+template LineScroll*(_: type ScintillaMessageEnum): untyped = 2168
+template ScrollCaret*(_: type ScintillaMessageEnum): untyped = 2169
+template ScrollRange*(_: type ScintillaMessageEnum): untyped = 2569
+template ReplaceSel*(_: type ScintillaMessageEnum): untyped = 2170
+template SetReadOnly*(_: type ScintillaMessageEnum): untyped = 2171
+template Null*(_: type ScintillaMessageEnum): untyped = 2172
+template CanPaste*(_: type ScintillaMessageEnum): untyped = 2173
+template CanUndo*(_: type ScintillaMessageEnum): untyped = 2174
+template EmptyUndoBuffer*(_: type ScintillaMessageEnum): untyped = 2175
+template Undo*(_: type ScintillaMessageEnum): untyped = 2176
+template Cut*(_: type ScintillaMessageEnum): untyped = 2177
+template Copy*(_: type ScintillaMessageEnum): untyped = 2178
+template Paste*(_: type ScintillaMessageEnum): untyped = 2179
+template Clear*(_: type ScintillaMessageEnum): untyped = 2180
+template SetText*(_: type ScintillaMessageEnum): untyped = 2181
+template GetText*(_: type ScintillaMessageEnum): untyped = 2182
+template GetTextLength*(_: type ScintillaMessageEnum): untyped = 2183
+template GetDirectFunction*(_: type ScintillaMessageEnum): untyped = 2184
+template GetDirectStatusFunction*(_: type ScintillaMessageEnum): untyped = 2772
+template GetDirectPointer*(_: type ScintillaMessageEnum): untyped = 2185
+template SetOvertype*(_: type ScintillaMessageEnum): untyped = 2186
+template GetOvertype*(_: type ScintillaMessageEnum): untyped = 2187
+template SetCaretWidth*(_: type ScintillaMessageEnum): untyped = 2188
+template GetCaretWidth*(_: type ScintillaMessageEnum): untyped = 2189
+template SetTargetStart*(_: type ScintillaMessageEnum): untyped = 2190
+template GetTargetStart*(_: type ScintillaMessageEnum): untyped = 2191
+template SetTargetStartVirtualSpace*(_: type ScintillaMessageEnum): untyped = 2728
+template GetTargetStartVirtualSpace*(_: type ScintillaMessageEnum): untyped = 2729
+template SetTargetEnd*(_: type ScintillaMessageEnum): untyped = 2192
+template GetTargetEnd*(_: type ScintillaMessageEnum): untyped = 2193
+template SetTargetEndVirtualSpace*(_: type ScintillaMessageEnum): untyped = 2730
+template GetTargetEndVirtualSpace*(_: type ScintillaMessageEnum): untyped = 2731
+template SetTargetRange*(_: type ScintillaMessageEnum): untyped = 2686
+template GetTargetText*(_: type ScintillaMessageEnum): untyped = 2687
+template TargetFromSelection*(_: type ScintillaMessageEnum): untyped = 2287
+template TargetWholeDocument*(_: type ScintillaMessageEnum): untyped = 2690
+template ReplaceTarget*(_: type ScintillaMessageEnum): untyped = 2194
+template ReplaceTargetRE*(_: type ScintillaMessageEnum): untyped = 2195
+template ReplaceTargetMinimal*(_: type ScintillaMessageEnum): untyped = 2779
+template SearchInTarget*(_: type ScintillaMessageEnum): untyped = 2197
+template SetSearchFlags*(_: type ScintillaMessageEnum): untyped = 2198
+template GetSearchFlags*(_: type ScintillaMessageEnum): untyped = 2199
+template CallTipShow*(_: type ScintillaMessageEnum): untyped = 2200
+template CallTipCancel*(_: type ScintillaMessageEnum): untyped = 2201
+template CallTipActive*(_: type ScintillaMessageEnum): untyped = 2202
+template CallTipPosStart*(_: type ScintillaMessageEnum): untyped = 2203
+template CallTipSetPosStart*(_: type ScintillaMessageEnum): untyped = 2214
+template CallTipSetHlt*(_: type ScintillaMessageEnum): untyped = 2204
+template CallTipSetBack*(_: type ScintillaMessageEnum): untyped = 2205
+template CallTipSetFore*(_: type ScintillaMessageEnum): untyped = 2206
+template CallTipSetForeHlt*(_: type ScintillaMessageEnum): untyped = 2207
+template CallTipUseStyle*(_: type ScintillaMessageEnum): untyped = 2212
+template CallTipSetPosition*(_: type ScintillaMessageEnum): untyped = 2213
+template VisibleFromDocLine*(_: type ScintillaMessageEnum): untyped = 2220
+template DocLineFromVisible*(_: type ScintillaMessageEnum): untyped = 2221
+template WrapCount*(_: type ScintillaMessageEnum): untyped = 2235
+template SetFoldLevel*(_: type ScintillaMessageEnum): untyped = 2222
+template GetFoldLevel*(_: type ScintillaMessageEnum): untyped = 2223
+template GetLastChild*(_: type ScintillaMessageEnum): untyped = 2224
+template GetFoldParent*(_: type ScintillaMessageEnum): untyped = 2225
+template ShowLines*(_: type ScintillaMessageEnum): untyped = 2226
+template HideLines*(_: type ScintillaMessageEnum): untyped = 2227
+template GetLineVisible*(_: type ScintillaMessageEnum): untyped = 2228
+template GetAllLinesVisible*(_: type ScintillaMessageEnum): untyped = 2236
+template SetFoldExpanded*(_: type ScintillaMessageEnum): untyped = 2229
+template GetFoldExpanded*(_: type ScintillaMessageEnum): untyped = 2230
+template ToggleFold*(_: type ScintillaMessageEnum): untyped = 2231
+template ToggleFoldShowText*(_: type ScintillaMessageEnum): untyped = 2700
+template FoldDisplayTextSetStyle*(_: type ScintillaMessageEnum): untyped = 2701
+template FoldDisplayTextGetStyle*(_: type ScintillaMessageEnum): untyped = 2707
+template SetDefaultFoldDisplayText*(_: type ScintillaMessageEnum): untyped = 2722
+template GetDefaultFoldDisplayText*(_: type ScintillaMessageEnum): untyped = 2723
+template FoldLine*(_: type ScintillaMessageEnum): untyped = 2237
+template FoldChildren*(_: type ScintillaMessageEnum): untyped = 2238
+template ExpandChildren*(_: type ScintillaMessageEnum): untyped = 2239
+template FoldAll*(_: type ScintillaMessageEnum): untyped = 2662
+template EnsureVisible*(_: type ScintillaMessageEnum): untyped = 2232
+template SetAutomaticFold*(_: type ScintillaMessageEnum): untyped = 2663
+template GetAutomaticFold*(_: type ScintillaMessageEnum): untyped = 2664
+template SetFoldFlags*(_: type ScintillaMessageEnum): untyped = 2233
+template EnsureVisibleEnforcePolicy*(_: type ScintillaMessageEnum): untyped = 2234
+template SetTabIndents*(_: type ScintillaMessageEnum): untyped = 2260
+template GetTabIndents*(_: type ScintillaMessageEnum): untyped = 2261
+template SetBackSpaceUnIndents*(_: type ScintillaMessageEnum): untyped = 2262
+template GetBackSpaceUnIndents*(_: type ScintillaMessageEnum): untyped = 2263
+template SetMouseDwellTime*(_: type ScintillaMessageEnum): untyped = 2264
+template GetMouseDwellTime*(_: type ScintillaMessageEnum): untyped = 2265
+template WordStartPosition*(_: type ScintillaMessageEnum): untyped = 2266
+template WordEndPosition*(_: type ScintillaMessageEnum): untyped = 2267
+template IsRangeWord*(_: type ScintillaMessageEnum): untyped = 2691
+template SetIdleStyling*(_: type ScintillaMessageEnum): untyped = 2692
+template GetIdleStyling*(_: type ScintillaMessageEnum): untyped = 2693
+template SetWrapMode*(_: type ScintillaMessageEnum): untyped = 2268
+template GetWrapMode*(_: type ScintillaMessageEnum): untyped = 2269
+template SetWrapVisualFlags*(_: type ScintillaMessageEnum): untyped = 2460
+template GetWrapVisualFlags*(_: type ScintillaMessageEnum): untyped = 2461
+template SetWrapVisualFlagsLocation*(_: type ScintillaMessageEnum): untyped = 2462
+template GetWrapVisualFlagsLocation*(_: type ScintillaMessageEnum): untyped = 2463
+template SetWrapStartIndent*(_: type ScintillaMessageEnum): untyped = 2464
+template GetWrapStartIndent*(_: type ScintillaMessageEnum): untyped = 2465
+template SetWrapIndentMode*(_: type ScintillaMessageEnum): untyped = 2472
+template GetWrapIndentMode*(_: type ScintillaMessageEnum): untyped = 2473
+template SetLayoutCache*(_: type ScintillaMessageEnum): untyped = 2272
+template GetLayoutCache*(_: type ScintillaMessageEnum): untyped = 2273
+template SetScrollWidth*(_: type ScintillaMessageEnum): untyped = 2274
+template GetScrollWidth*(_: type ScintillaMessageEnum): untyped = 2275
+template SetScrollWidthTracking*(_: type ScintillaMessageEnum): untyped = 2516
+template GetScrollWidthTracking*(_: type ScintillaMessageEnum): untyped = 2517
+template TextWidth*(_: type ScintillaMessageEnum): untyped = 2276
+template SetEndAtLastLine*(_: type ScintillaMessageEnum): untyped = 2277
+template GetEndAtLastLine*(_: type ScintillaMessageEnum): untyped = 2278
+template TextHeight*(_: type ScintillaMessageEnum): untyped = 2279
+template SetVScrollBar*(_: type ScintillaMessageEnum): untyped = 2280
+template GetVScrollBar*(_: type ScintillaMessageEnum): untyped = 2281
+template AppendText*(_: type ScintillaMessageEnum): untyped = 2282
+template GetPhasesDraw*(_: type ScintillaMessageEnum): untyped = 2673
+template SetPhasesDraw*(_: type ScintillaMessageEnum): untyped = 2674
+template SetFontQuality*(_: type ScintillaMessageEnum): untyped = 2611
+template GetFontQuality*(_: type ScintillaMessageEnum): untyped = 2612
+template SetFirstVisibleLine*(_: type ScintillaMessageEnum): untyped = 2613
+template SetMultiPaste*(_: type ScintillaMessageEnum): untyped = 2614
+template GetMultiPaste*(_: type ScintillaMessageEnum): untyped = 2615
+template GetTag*(_: type ScintillaMessageEnum): untyped = 2616
+template LinesJoin*(_: type ScintillaMessageEnum): untyped = 2288
+template LinesSplit*(_: type ScintillaMessageEnum): untyped = 2289
+template SetFoldMarginColour*(_: type ScintillaMessageEnum): untyped = 2290
+template SetFoldMarginHiColour*(_: type ScintillaMessageEnum): untyped = 2291
+template SetAccessibility*(_: type ScintillaMessageEnum): untyped = 2702
+template GetAccessibility*(_: type ScintillaMessageEnum): untyped = 2703
+template LineDown*(_: type ScintillaMessageEnum): untyped = 2300
+template LineDownExtend*(_: type ScintillaMessageEnum): untyped = 2301
+template LineUp*(_: type ScintillaMessageEnum): untyped = 2302
+template LineUpExtend*(_: type ScintillaMessageEnum): untyped = 2303
+template CharLeft*(_: type ScintillaMessageEnum): untyped = 2304
+template CharLeftExtend*(_: type ScintillaMessageEnum): untyped = 2305
+template CharRight*(_: type ScintillaMessageEnum): untyped = 2306
+template CharRightExtend*(_: type ScintillaMessageEnum): untyped = 2307
+template WordLeft*(_: type ScintillaMessageEnum): untyped = 2308
+template WordLeftExtend*(_: type ScintillaMessageEnum): untyped = 2309
+template WordRight*(_: type ScintillaMessageEnum): untyped = 2310
+template WordRightExtend*(_: type ScintillaMessageEnum): untyped = 2311
+template Home*(_: type ScintillaMessageEnum): untyped = 2312
+template HomeExtend*(_: type ScintillaMessageEnum): untyped = 2313
+template LineEnd*(_: type ScintillaMessageEnum): untyped = 2314
+template LineEndExtend*(_: type ScintillaMessageEnum): untyped = 2315
+template DocumentStart*(_: type ScintillaMessageEnum): untyped = 2316
+template DocumentStartExtend*(_: type ScintillaMessageEnum): untyped = 2317
+template DocumentEnd*(_: type ScintillaMessageEnum): untyped = 2318
+template DocumentEndExtend*(_: type ScintillaMessageEnum): untyped = 2319
+template PageUp*(_: type ScintillaMessageEnum): untyped = 2320
+template PageUpExtend*(_: type ScintillaMessageEnum): untyped = 2321
+template PageDown*(_: type ScintillaMessageEnum): untyped = 2322
+template PageDownExtend*(_: type ScintillaMessageEnum): untyped = 2323
+template EditToggleOvertype*(_: type ScintillaMessageEnum): untyped = 2324
+template Cancel*(_: type ScintillaMessageEnum): untyped = 2325
+template DeleteBack*(_: type ScintillaMessageEnum): untyped = 2326
+template Tab*(_: type ScintillaMessageEnum): untyped = 2327
+template LineIndent*(_: type ScintillaMessageEnum): untyped = 2813
+template BackTab*(_: type ScintillaMessageEnum): untyped = 2328
+template LineDedent*(_: type ScintillaMessageEnum): untyped = 2814
+template NewLine*(_: type ScintillaMessageEnum): untyped = 2329
+template FormFeed*(_: type ScintillaMessageEnum): untyped = 2330
+template VCHome*(_: type ScintillaMessageEnum): untyped = 2331
+template VCHomeExtend*(_: type ScintillaMessageEnum): untyped = 2332
+template ZoomIn*(_: type ScintillaMessageEnum): untyped = 2333
+template ZoomOut*(_: type ScintillaMessageEnum): untyped = 2334
+template DelWordLeft*(_: type ScintillaMessageEnum): untyped = 2335
+template DelWordRight*(_: type ScintillaMessageEnum): untyped = 2336
+template DelWordRightEnd*(_: type ScintillaMessageEnum): untyped = 2518
+template LineCut*(_: type ScintillaMessageEnum): untyped = 2337
+template LineDelete*(_: type ScintillaMessageEnum): untyped = 2338
+template LineTranspose*(_: type ScintillaMessageEnum): untyped = 2339
+template LineReverse*(_: type ScintillaMessageEnum): untyped = 2354
+template LineDuplicate*(_: type ScintillaMessageEnum): untyped = 2404
+template LowerCase*(_: type ScintillaMessageEnum): untyped = 2340
+template UpperCase*(_: type ScintillaMessageEnum): untyped = 2341
+template LineScrollDown*(_: type ScintillaMessageEnum): untyped = 2342
+template LineScrollUp*(_: type ScintillaMessageEnum): untyped = 2343
+template DeleteBackNotLine*(_: type ScintillaMessageEnum): untyped = 2344
+template HomeDisplay*(_: type ScintillaMessageEnum): untyped = 2345
+template HomeDisplayExtend*(_: type ScintillaMessageEnum): untyped = 2346
+template LineEndDisplay*(_: type ScintillaMessageEnum): untyped = 2347
+template LineEndDisplayExtend*(_: type ScintillaMessageEnum): untyped = 2348
+template HomeWrap*(_: type ScintillaMessageEnum): untyped = 2349
+template HomeWrapExtend*(_: type ScintillaMessageEnum): untyped = 2450
+template LineEndWrap*(_: type ScintillaMessageEnum): untyped = 2451
+template LineEndWrapExtend*(_: type ScintillaMessageEnum): untyped = 2452
+template VCHomeWrap*(_: type ScintillaMessageEnum): untyped = 2453
+template VCHomeWrapExtend*(_: type ScintillaMessageEnum): untyped = 2454
+template LineCopy*(_: type ScintillaMessageEnum): untyped = 2455
+template MoveCaretInsideView*(_: type ScintillaMessageEnum): untyped = 2401
+template LineLength*(_: type ScintillaMessageEnum): untyped = 2350
+template BraceHighlight*(_: type ScintillaMessageEnum): untyped = 2351
+template BraceHighlightIndicator*(_: type ScintillaMessageEnum): untyped = 2498
+template BraceBadLight*(_: type ScintillaMessageEnum): untyped = 2352
+template BraceBadLightIndicator*(_: type ScintillaMessageEnum): untyped = 2499
+template BraceMatch*(_: type ScintillaMessageEnum): untyped = 2353
+template BraceMatchNext*(_: type ScintillaMessageEnum): untyped = 2369
+template GetViewEOL*(_: type ScintillaMessageEnum): untyped = 2355
+template SetViewEOL*(_: type ScintillaMessageEnum): untyped = 2356
+template GetDocPointer*(_: type ScintillaMessageEnum): untyped = 2357
+template SetDocPointer*(_: type ScintillaMessageEnum): untyped = 2358
+template SetModEventMask*(_: type ScintillaMessageEnum): untyped = 2359
+template GetEdgeColumn*(_: type ScintillaMessageEnum): untyped = 2360
+template SetEdgeColumn*(_: type ScintillaMessageEnum): untyped = 2361
+template GetEdgeMode*(_: type ScintillaMessageEnum): untyped = 2362
+template SetEdgeMode*(_: type ScintillaMessageEnum): untyped = 2363
+template GetEdgeColour*(_: type ScintillaMessageEnum): untyped = 2364
+template SetEdgeColour*(_: type ScintillaMessageEnum): untyped = 2365
+template MultiEdgeAddLine*(_: type ScintillaMessageEnum): untyped = 2694
+template MultiEdgeClearAll*(_: type ScintillaMessageEnum): untyped = 2695
+template GetMultiEdgeColumn*(_: type ScintillaMessageEnum): untyped = 2749
+template SearchAnchor*(_: type ScintillaMessageEnum): untyped = 2366
+template SearchNext*(_: type ScintillaMessageEnum): untyped = 2367
+template SearchPrev*(_: type ScintillaMessageEnum): untyped = 2368
+template LinesOnScreen*(_: type ScintillaMessageEnum): untyped = 2370
+template UsePopUp*(_: type ScintillaMessageEnum): untyped = 2371
+template SelectionIsRectangle*(_: type ScintillaMessageEnum): untyped = 2372
+template SetZoom*(_: type ScintillaMessageEnum): untyped = 2373
+template GetZoom*(_: type ScintillaMessageEnum): untyped = 2374
+template CreateDocument*(_: type ScintillaMessageEnum): untyped = 2375
+template AddRefDocument*(_: type ScintillaMessageEnum): untyped = 2376
+template ReleaseDocument*(_: type ScintillaMessageEnum): untyped = 2377
+template GetDocumentOptions*(_: type ScintillaMessageEnum): untyped = 2379
+template GetModEventMask*(_: type ScintillaMessageEnum): untyped = 2378
+template SetCommandEvents*(_: type ScintillaMessageEnum): untyped = 2717
+template GetCommandEvents*(_: type ScintillaMessageEnum): untyped = 2718
+template SetFocus*(_: type ScintillaMessageEnum): untyped = 2380
+template GetFocus*(_: type ScintillaMessageEnum): untyped = 2381
+template SetStatus*(_: type ScintillaMessageEnum): untyped = 2382
+template GetStatus*(_: type ScintillaMessageEnum): untyped = 2383
+template SetMouseDownCaptures*(_: type ScintillaMessageEnum): untyped = 2384
+template GetMouseDownCaptures*(_: type ScintillaMessageEnum): untyped = 2385
+template SetMouseWheelCaptures*(_: type ScintillaMessageEnum): untyped = 2696
+template GetMouseWheelCaptures*(_: type ScintillaMessageEnum): untyped = 2697
+template SetCursor*(_: type ScintillaMessageEnum): untyped = 2386
+template GetCursor*(_: type ScintillaMessageEnum): untyped = 2387
+template SetControlCharSymbol*(_: type ScintillaMessageEnum): untyped = 2388
+template GetControlCharSymbol*(_: type ScintillaMessageEnum): untyped = 2389
+template WordPartLeft*(_: type ScintillaMessageEnum): untyped = 2390
+template WordPartLeftExtend*(_: type ScintillaMessageEnum): untyped = 2391
+template WordPartRight*(_: type ScintillaMessageEnum): untyped = 2392
+template WordPartRightExtend*(_: type ScintillaMessageEnum): untyped = 2393
+template SetVisiblePolicy*(_: type ScintillaMessageEnum): untyped = 2394
+template DelLineLeft*(_: type ScintillaMessageEnum): untyped = 2395
+template DelLineRight*(_: type ScintillaMessageEnum): untyped = 2396
+template SetXOffset*(_: type ScintillaMessageEnum): untyped = 2397
+template GetXOffset*(_: type ScintillaMessageEnum): untyped = 2398
+template ChooseCaretX*(_: type ScintillaMessageEnum): untyped = 2399
+template GrabFocus*(_: type ScintillaMessageEnum): untyped = 2400
+template SetXCaretPolicy*(_: type ScintillaMessageEnum): untyped = 2402
+template SetYCaretPolicy*(_: type ScintillaMessageEnum): untyped = 2403
+template SetPrintWrapMode*(_: type ScintillaMessageEnum): untyped = 2406
+template GetPrintWrapMode*(_: type ScintillaMessageEnum): untyped = 2407
+template SetHotspotActiveFore*(_: type ScintillaMessageEnum): untyped = 2410
+template GetHotspotActiveFore*(_: type ScintillaMessageEnum): untyped = 2494
+template SetHotspotActiveBack*(_: type ScintillaMessageEnum): untyped = 2411
+template GetHotspotActiveBack*(_: type ScintillaMessageEnum): untyped = 2495
+template SetHotspotActiveUnderline*(_: type ScintillaMessageEnum): untyped = 2412
+template GetHotspotActiveUnderline*(_: type ScintillaMessageEnum): untyped = 2496
+template SetHotspotSingleLine*(_: type ScintillaMessageEnum): untyped = 2421
+template GetHotspotSingleLine*(_: type ScintillaMessageEnum): untyped = 2497
+template ParaDown*(_: type ScintillaMessageEnum): untyped = 2413
+template ParaDownExtend*(_: type ScintillaMessageEnum): untyped = 2414
+template ParaUp*(_: type ScintillaMessageEnum): untyped = 2415
+template ParaUpExtend*(_: type ScintillaMessageEnum): untyped = 2416
+template PositionBefore*(_: type ScintillaMessageEnum): untyped = 2417
+template PositionAfter*(_: type ScintillaMessageEnum): untyped = 2418
+template PositionRelative*(_: type ScintillaMessageEnum): untyped = 2670
+template PositionRelativeCodeUnits*(_: type ScintillaMessageEnum): untyped = 2716
+template CopyRange*(_: type ScintillaMessageEnum): untyped = 2419
+template CopyText*(_: type ScintillaMessageEnum): untyped = 2420
+template SetSelectionMode*(_: type ScintillaMessageEnum): untyped = 2422
+template ChangeSelectionMode*(_: type ScintillaMessageEnum): untyped = 2659
+template GetSelectionMode*(_: type ScintillaMessageEnum): untyped = 2423
+template SetMoveExtendsSelection*(_: type ScintillaMessageEnum): untyped = 2719
+template GetMoveExtendsSelection*(_: type ScintillaMessageEnum): untyped = 2706
+template GetLineSelStartPosition*(_: type ScintillaMessageEnum): untyped = 2424
+template GetLineSelEndPosition*(_: type ScintillaMessageEnum): untyped = 2425
+template LineDownRectExtend*(_: type ScintillaMessageEnum): untyped = 2426
+template LineUpRectExtend*(_: type ScintillaMessageEnum): untyped = 2427
+template CharLeftRectExtend*(_: type ScintillaMessageEnum): untyped = 2428
+template CharRightRectExtend*(_: type ScintillaMessageEnum): untyped = 2429
+template HomeRectExtend*(_: type ScintillaMessageEnum): untyped = 2430
+template VCHomeRectExtend*(_: type ScintillaMessageEnum): untyped = 2431
+template LineEndRectExtend*(_: type ScintillaMessageEnum): untyped = 2432
+template PageUpRectExtend*(_: type ScintillaMessageEnum): untyped = 2433
+template PageDownRectExtend*(_: type ScintillaMessageEnum): untyped = 2434
+template StutteredPageUp*(_: type ScintillaMessageEnum): untyped = 2435
+template StutteredPageUpExtend*(_: type ScintillaMessageEnum): untyped = 2436
+template StutteredPageDown*(_: type ScintillaMessageEnum): untyped = 2437
+template StutteredPageDownExtend*(_: type ScintillaMessageEnum): untyped = 2438
+template WordLeftEnd*(_: type ScintillaMessageEnum): untyped = 2439
+template WordLeftEndExtend*(_: type ScintillaMessageEnum): untyped = 2440
+template WordRightEnd*(_: type ScintillaMessageEnum): untyped = 2441
+template WordRightEndExtend*(_: type ScintillaMessageEnum): untyped = 2442
+template SetWhitespaceChars*(_: type ScintillaMessageEnum): untyped = 2443
+template GetWhitespaceChars*(_: type ScintillaMessageEnum): untyped = 2647
+template SetPunctuationChars*(_: type ScintillaMessageEnum): untyped = 2648
+template GetPunctuationChars*(_: type ScintillaMessageEnum): untyped = 2649
+template SetCharsDefault*(_: type ScintillaMessageEnum): untyped = 2444
+template AutoCGetCurrent*(_: type ScintillaMessageEnum): untyped = 2445
+template AutoCGetCurrentText*(_: type ScintillaMessageEnum): untyped = 2610
+template AutoCSetCaseInsensitiveBehaviour*(_: type ScintillaMessageEnum): untyped = 2634
+template AutoCGetCaseInsensitiveBehaviour*(_: type ScintillaMessageEnum): untyped = 2635
+template AutoCSetMulti*(_: type ScintillaMessageEnum): untyped = 2636
+template AutoCGetMulti*(_: type ScintillaMessageEnum): untyped = 2637
+template AutoCSetOrder*(_: type ScintillaMessageEnum): untyped = 2660
+template AutoCGetOrder*(_: type ScintillaMessageEnum): untyped = 2661
+template Allocate*(_: type ScintillaMessageEnum): untyped = 2446
+template TargetAsUTF8*(_: type ScintillaMessageEnum): untyped = 2447
+template SetLengthForEncode*(_: type ScintillaMessageEnum): untyped = 2448
+template EncodedFromUTF8*(_: type ScintillaMessageEnum): untyped = 2449
+template FindColumn*(_: type ScintillaMessageEnum): untyped = 2456
+template GetCaretSticky*(_: type ScintillaMessageEnum): untyped = 2457
+template SetCaretSticky*(_: type ScintillaMessageEnum): untyped = 2458
+template ToggleCaretSticky*(_: type ScintillaMessageEnum): untyped = 2459
+template SetPasteConvertEndings*(_: type ScintillaMessageEnum): untyped = 2467
+template GetPasteConvertEndings*(_: type ScintillaMessageEnum): untyped = 2468
+template ReplaceRectangular*(_: type ScintillaMessageEnum): untyped = 2771
+template SelectionDuplicate*(_: type ScintillaMessageEnum): untyped = 2469
+template SetCaretLineBackAlpha*(_: type ScintillaMessageEnum): untyped = 2470
+template GetCaretLineBackAlpha*(_: type ScintillaMessageEnum): untyped = 2471
+template SetCaretStyle*(_: type ScintillaMessageEnum): untyped = 2512
+template GetCaretStyle*(_: type ScintillaMessageEnum): untyped = 2513
+template SetIndicatorCurrent*(_: type ScintillaMessageEnum): untyped = 2500
+template GetIndicatorCurrent*(_: type ScintillaMessageEnum): untyped = 2501
+template SetIndicatorValue*(_: type ScintillaMessageEnum): untyped = 2502
+template GetIndicatorValue*(_: type ScintillaMessageEnum): untyped = 2503
+template IndicatorFillRange*(_: type ScintillaMessageEnum): untyped = 2504
+template IndicatorClearRange*(_: type ScintillaMessageEnum): untyped = 2505
+template IndicatorAllOnFor*(_: type ScintillaMessageEnum): untyped = 2506
+template IndicatorValueAt*(_: type ScintillaMessageEnum): untyped = 2507
+template IndicatorStart*(_: type ScintillaMessageEnum): untyped = 2508
+template IndicatorEnd*(_: type ScintillaMessageEnum): untyped = 2509
+template SetPositionCache*(_: type ScintillaMessageEnum): untyped = 2514
+template GetPositionCache*(_: type ScintillaMessageEnum): untyped = 2515
+template SetLayoutThreads*(_: type ScintillaMessageEnum): untyped = 2775
+template GetLayoutThreads*(_: type ScintillaMessageEnum): untyped = 2776
+template CopyAllowLine*(_: type ScintillaMessageEnum): untyped = 2519
+template CutAllowLine*(_: type ScintillaMessageEnum): untyped = 2810
+template SetCopySeparator*(_: type ScintillaMessageEnum): untyped = 2811
+template GetCopySeparator*(_: type ScintillaMessageEnum): untyped = 2812
+template GetCharacterPointer*(_: type ScintillaMessageEnum): untyped = 2520
+template GetRangePointer*(_: type ScintillaMessageEnum): untyped = 2643
+template GetGapPosition*(_: type ScintillaMessageEnum): untyped = 2644
+template IndicSetAlpha*(_: type ScintillaMessageEnum): untyped = 2523
+template IndicGetAlpha*(_: type ScintillaMessageEnum): untyped = 2524
+template IndicSetOutlineAlpha*(_: type ScintillaMessageEnum): untyped = 2558
+template IndicGetOutlineAlpha*(_: type ScintillaMessageEnum): untyped = 2559
+template SetExtraAscent*(_: type ScintillaMessageEnum): untyped = 2525
+template GetExtraAscent*(_: type ScintillaMessageEnum): untyped = 2526
+template SetExtraDescent*(_: type ScintillaMessageEnum): untyped = 2527
+template GetExtraDescent*(_: type ScintillaMessageEnum): untyped = 2528
+template MarkerSymbolDefined*(_: type ScintillaMessageEnum): untyped = 2529
+template MarginSetText*(_: type ScintillaMessageEnum): untyped = 2530
+template MarginGetText*(_: type ScintillaMessageEnum): untyped = 2531
+template MarginSetStyle*(_: type ScintillaMessageEnum): untyped = 2532
+template MarginGetStyle*(_: type ScintillaMessageEnum): untyped = 2533
+template MarginSetStyles*(_: type ScintillaMessageEnum): untyped = 2534
+template MarginGetStyles*(_: type ScintillaMessageEnum): untyped = 2535
+template MarginTextClearAll*(_: type ScintillaMessageEnum): untyped = 2536
+template MarginSetStyleOffset*(_: type ScintillaMessageEnum): untyped = 2537
+template MarginGetStyleOffset*(_: type ScintillaMessageEnum): untyped = 2538
+template SetMarginOptions*(_: type ScintillaMessageEnum): untyped = 2539
+template GetMarginOptions*(_: type ScintillaMessageEnum): untyped = 2557
+template AnnotationSetText*(_: type ScintillaMessageEnum): untyped = 2540
+template AnnotationGetText*(_: type ScintillaMessageEnum): untyped = 2541
+template AnnotationSetStyle*(_: type ScintillaMessageEnum): untyped = 2542
+template AnnotationGetStyle*(_: type ScintillaMessageEnum): untyped = 2543
+template AnnotationSetStyles*(_: type ScintillaMessageEnum): untyped = 2544
+template AnnotationGetStyles*(_: type ScintillaMessageEnum): untyped = 2545
+template AnnotationGetLines*(_: type ScintillaMessageEnum): untyped = 2546
+template AnnotationClearAll*(_: type ScintillaMessageEnum): untyped = 2547
+template AnnotationSetVisible*(_: type ScintillaMessageEnum): untyped = 2548
+template AnnotationGetVisible*(_: type ScintillaMessageEnum): untyped = 2549
+template AnnotationSetStyleOffset*(_: type ScintillaMessageEnum): untyped = 2550
+template AnnotationGetStyleOffset*(_: type ScintillaMessageEnum): untyped = 2551
+template ReleaseAllExtendedStyles*(_: type ScintillaMessageEnum): untyped = 2552
+template AllocateExtendedStyles*(_: type ScintillaMessageEnum): untyped = 2553
+template AddUndoAction*(_: type ScintillaMessageEnum): untyped = 2560
+template CharPositionFromPoint*(_: type ScintillaMessageEnum): untyped = 2561
+template CharPositionFromPointClose*(_: type ScintillaMessageEnum): untyped = 2562
+template SetMouseSelectionRectangularSwitch*(_: type ScintillaMessageEnum): untyped = 2668
+template GetMouseSelectionRectangularSwitch*(_: type ScintillaMessageEnum): untyped = 2669
+template SetMultipleSelection*(_: type ScintillaMessageEnum): untyped = 2563
+template GetMultipleSelection*(_: type ScintillaMessageEnum): untyped = 2564
+template SetAdditionalSelectionTyping*(_: type ScintillaMessageEnum): untyped = 2565
+template GetAdditionalSelectionTyping*(_: type ScintillaMessageEnum): untyped = 2566
+template SetAdditionalCaretsBlink*(_: type ScintillaMessageEnum): untyped = 2567
+template GetAdditionalCaretsBlink*(_: type ScintillaMessageEnum): untyped = 2568
+template SetAdditionalCaretsVisible*(_: type ScintillaMessageEnum): untyped = 2608
+template GetAdditionalCaretsVisible*(_: type ScintillaMessageEnum): untyped = 2609
+template GetSelections*(_: type ScintillaMessageEnum): untyped = 2570
+template GetSelectionEmpty*(_: type ScintillaMessageEnum): untyped = 2650
+template ClearSelections*(_: type ScintillaMessageEnum): untyped = 2571
+template SetSelection*(_: type ScintillaMessageEnum): untyped = 2572
+template AddSelection*(_: type ScintillaMessageEnum): untyped = 2573
+template SelectionFromPoint*(_: type ScintillaMessageEnum): untyped = 2474
+template DropSelectionN*(_: type ScintillaMessageEnum): untyped = 2671
+template SetMainSelection*(_: type ScintillaMessageEnum): untyped = 2574
+template GetMainSelection*(_: type ScintillaMessageEnum): untyped = 2575
+template SetSelectionNCaret*(_: type ScintillaMessageEnum): untyped = 2576
+template GetSelectionNCaret*(_: type ScintillaMessageEnum): untyped = 2577
+template SetSelectionNAnchor*(_: type ScintillaMessageEnum): untyped = 2578
+template GetSelectionNAnchor*(_: type ScintillaMessageEnum): untyped = 2579
+template SetSelectionNCaretVirtualSpace*(_: type ScintillaMessageEnum): untyped = 2580
+template GetSelectionNCaretVirtualSpace*(_: type ScintillaMessageEnum): untyped = 2581
+template SetSelectionNAnchorVirtualSpace*(_: type ScintillaMessageEnum): untyped = 2582
+template GetSelectionNAnchorVirtualSpace*(_: type ScintillaMessageEnum): untyped = 2583
+template SetSelectionNStart*(_: type ScintillaMessageEnum): untyped = 2584
+template GetSelectionNStart*(_: type ScintillaMessageEnum): untyped = 2585
+template GetSelectionNStartVirtualSpace*(_: type ScintillaMessageEnum): untyped = 2726
+template SetSelectionNEnd*(_: type ScintillaMessageEnum): untyped = 2586
+template GetSelectionNEndVirtualSpace*(_: type ScintillaMessageEnum): untyped = 2727
+template GetSelectionNEnd*(_: type ScintillaMessageEnum): untyped = 2587
+template SetRectangularSelectionCaret*(_: type ScintillaMessageEnum): untyped = 2588
+template GetRectangularSelectionCaret*(_: type ScintillaMessageEnum): untyped = 2589
+template SetRectangularSelectionAnchor*(_: type ScintillaMessageEnum): untyped = 2590
+template GetRectangularSelectionAnchor*(_: type ScintillaMessageEnum): untyped = 2591
+template SetRectangularSelectionCaretVirtualSpace*(_: type ScintillaMessageEnum): untyped = 2592
+template GetRectangularSelectionCaretVirtualSpace*(_: type ScintillaMessageEnum): untyped = 2593
+template SetRectangularSelectionAnchorVirtualSpace*(_: type ScintillaMessageEnum): untyped = 2594
+template GetRectangularSelectionAnchorVirtualSpace*(_: type ScintillaMessageEnum): untyped = 2595
+template SetVirtualSpaceOptions*(_: type ScintillaMessageEnum): untyped = 2596
+template GetVirtualSpaceOptions*(_: type ScintillaMessageEnum): untyped = 2597
+template SetRectangularSelectionModifier*(_: type ScintillaMessageEnum): untyped = 2598
+template GetRectangularSelectionModifier*(_: type ScintillaMessageEnum): untyped = 2599
+template SetAdditionalSelFore*(_: type ScintillaMessageEnum): untyped = 2600
+template SetAdditionalSelBack*(_: type ScintillaMessageEnum): untyped = 2601
+template SetAdditionalSelAlpha*(_: type ScintillaMessageEnum): untyped = 2602
+template GetAdditionalSelAlpha*(_: type ScintillaMessageEnum): untyped = 2603
+template SetAdditionalCaretFore*(_: type ScintillaMessageEnum): untyped = 2604
+template GetAdditionalCaretFore*(_: type ScintillaMessageEnum): untyped = 2605
+template RotateSelection*(_: type ScintillaMessageEnum): untyped = 2606
+template SwapMainAnchorCaret*(_: type ScintillaMessageEnum): untyped = 2607
+template MultipleSelectAddNext*(_: type ScintillaMessageEnum): untyped = 2688
+template MultipleSelectAddEach*(_: type ScintillaMessageEnum): untyped = 2689
+template ChangeLexerState*(_: type ScintillaMessageEnum): untyped = 2617
+template ContractedFoldNext*(_: type ScintillaMessageEnum): untyped = 2618
+template VerticalCentreCaret*(_: type ScintillaMessageEnum): untyped = 2619
+template MoveSelectedLinesUp*(_: type ScintillaMessageEnum): untyped = 2620
+template MoveSelectedLinesDown*(_: type ScintillaMessageEnum): untyped = 2621
+template SetIdentifier*(_: type ScintillaMessageEnum): untyped = 2622
+template GetIdentifier*(_: type ScintillaMessageEnum): untyped = 2623
+template RGBAImageSetWidth*(_: type ScintillaMessageEnum): untyped = 2624
+template RGBAImageSetHeight*(_: type ScintillaMessageEnum): untyped = 2625
+template RGBAImageSetScale*(_: type ScintillaMessageEnum): untyped = 2651
+template MarkerDefineRGBAImage*(_: type ScintillaMessageEnum): untyped = 2626
+template RegisterRGBAImage*(_: type ScintillaMessageEnum): untyped = 2627
+template ScrollToStart*(_: type ScintillaMessageEnum): untyped = 2628
+template ScrollToEnd*(_: type ScintillaMessageEnum): untyped = 2629
+template SetTechnology*(_: type ScintillaMessageEnum): untyped = 2630
+template GetTechnology*(_: type ScintillaMessageEnum): untyped = 2631
+template CreateLoader*(_: type ScintillaMessageEnum): untyped = 2632
+template FindIndicatorShow*(_: type ScintillaMessageEnum): untyped = 2640
+template FindIndicatorFlash*(_: type ScintillaMessageEnum): untyped = 2641
+template FindIndicatorHide*(_: type ScintillaMessageEnum): untyped = 2642
+template VCHomeDisplay*(_: type ScintillaMessageEnum): untyped = 2652
+template VCHomeDisplayExtend*(_: type ScintillaMessageEnum): untyped = 2653
+template GetCaretLineVisibleAlways*(_: type ScintillaMessageEnum): untyped = 2654
+template SetCaretLineVisibleAlways*(_: type ScintillaMessageEnum): untyped = 2655
+template SetLineEndTypesAllowed*(_: type ScintillaMessageEnum): untyped = 2656
+template GetLineEndTypesAllowed*(_: type ScintillaMessageEnum): untyped = 2657
+template GetLineEndTypesActive*(_: type ScintillaMessageEnum): untyped = 2658
+template SetRepresentation*(_: type ScintillaMessageEnum): untyped = 2665
+template GetRepresentation*(_: type ScintillaMessageEnum): untyped = 2666
+template ClearRepresentation*(_: type ScintillaMessageEnum): untyped = 2667
+template ClearAllRepresentations*(_: type ScintillaMessageEnum): untyped = 2770
+template SetRepresentationAppearance*(_: type ScintillaMessageEnum): untyped = 2766
+template GetRepresentationAppearance*(_: type ScintillaMessageEnum): untyped = 2767
+template SetRepresentationColour*(_: type ScintillaMessageEnum): untyped = 2768
+template GetRepresentationColour*(_: type ScintillaMessageEnum): untyped = 2769
+template EOLAnnotationSetText*(_: type ScintillaMessageEnum): untyped = 2740
+template EOLAnnotationGetText*(_: type ScintillaMessageEnum): untyped = 2741
+template EOLAnnotationSetStyle*(_: type ScintillaMessageEnum): untyped = 2742
+template EOLAnnotationGetStyle*(_: type ScintillaMessageEnum): untyped = 2743
+template EOLAnnotationClearAll*(_: type ScintillaMessageEnum): untyped = 2744
+template EOLAnnotationSetVisible*(_: type ScintillaMessageEnum): untyped = 2745
+template EOLAnnotationGetVisible*(_: type ScintillaMessageEnum): untyped = 2746
+template EOLAnnotationSetStyleOffset*(_: type ScintillaMessageEnum): untyped = 2747
+template EOLAnnotationGetStyleOffset*(_: type ScintillaMessageEnum): untyped = 2748
+template SupportsFeature*(_: type ScintillaMessageEnum): untyped = 2750
+template GetLineCharacterIndex*(_: type ScintillaMessageEnum): untyped = 2710
+template AllocateLineCharacterIndex*(_: type ScintillaMessageEnum): untyped = 2711
+template ReleaseLineCharacterIndex*(_: type ScintillaMessageEnum): untyped = 2712
+template LineFromIndexPosition*(_: type ScintillaMessageEnum): untyped = 2713
+template IndexPositionFromLine*(_: type ScintillaMessageEnum): untyped = 2714
+template StartRecord*(_: type ScintillaMessageEnum): untyped = 3001
+template StopRecord*(_: type ScintillaMessageEnum): untyped = 3002
+template GetLexer*(_: type ScintillaMessageEnum): untyped = 4002
+template Colourise*(_: type ScintillaMessageEnum): untyped = 4003
+template SetProperty*(_: type ScintillaMessageEnum): untyped = 4004
+template SetKeyWords*(_: type ScintillaMessageEnum): untyped = 4005
+template GetProperty*(_: type ScintillaMessageEnum): untyped = 4008
+template GetPropertyExpanded*(_: type ScintillaMessageEnum): untyped = 4009
+template GetPropertyInt*(_: type ScintillaMessageEnum): untyped = 4010
+template GetLexerLanguage*(_: type ScintillaMessageEnum): untyped = 4012
+template PrivateLexerCall*(_: type ScintillaMessageEnum): untyped = 4013
+template PropertyNames*(_: type ScintillaMessageEnum): untyped = 4014
+template PropertyType*(_: type ScintillaMessageEnum): untyped = 4015
+template DescribeProperty*(_: type ScintillaMessageEnum): untyped = 4016
+template DescribeKeyWordSets*(_: type ScintillaMessageEnum): untyped = 4017
+template GetLineEndTypesSupported*(_: type ScintillaMessageEnum): untyped = 4018
+template AllocateSubStyles*(_: type ScintillaMessageEnum): untyped = 4020
+template GetSubStylesStart*(_: type ScintillaMessageEnum): untyped = 4021
+template GetSubStylesLength*(_: type ScintillaMessageEnum): untyped = 4022
+template GetStyleFromSubStyle*(_: type ScintillaMessageEnum): untyped = 4027
+template GetPrimaryStyleFromStyle*(_: type ScintillaMessageEnum): untyped = 4028
+template FreeSubStyles*(_: type ScintillaMessageEnum): untyped = 4023
+template SetIdentifiers*(_: type ScintillaMessageEnum): untyped = 4024
+template DistanceToSecondaryStyles*(_: type ScintillaMessageEnum): untyped = 4025
+template GetSubStyleBases*(_: type ScintillaMessageEnum): untyped = 4026
+template GetNamedStyles*(_: type ScintillaMessageEnum): untyped = 4029
+template NameOfStyle*(_: type ScintillaMessageEnum): untyped = 4030
+template TagsOfStyle*(_: type ScintillaMessageEnum): untyped = 4031
+template DescriptionOfStyle*(_: type ScintillaMessageEnum): untyped = 4032
+template SetILexer*(_: type ScintillaMessageEnum): untyped = 4033
+template GetBidirectional*(_: type ScintillaMessageEnum): untyped = 2708
+template SetBidirectional*(_: type ScintillaMessageEnum): untyped = 2709
+
+
+type stdnullopt_t_ConstructEnum* = distinct cint
+template _Token*(_: type stdnullopt_t_ConstructEnum): untyped = 0
+
+
+type ScintillaInternalSurfaceEndsEnum* = distinct cint
+template semiCircles*(_: type ScintillaInternalSurfaceEndsEnum): untyped = 0
+template leftFlat*(_: type ScintillaInternalSurfaceEndsEnum): untyped = 1
+template leftAngle*(_: type ScintillaInternalSurfaceEndsEnum): untyped = 2
+template rightFlat*(_: type ScintillaInternalSurfaceEndsEnum): untyped = 16
+template rightAngle*(_: type ScintillaInternalSurfaceEndsEnum): untyped = 32
+
+
+type ScintillaInternalSurfaceGradientOptionsEnum* = distinct cint
+template leftToRight*(_: type ScintillaInternalSurfaceGradientOptionsEnum): untyped = 0
+template topToBottom*(_: type ScintillaInternalSurfaceGradientOptionsEnum): untyped = 1
+
+
+type ScintillaInternalWindowCursorEnum* = distinct cint
+template invalid*(_: type ScintillaInternalWindowCursorEnum): untyped = 0
+template text*(_: type ScintillaInternalWindowCursorEnum): untyped = 1
+template arrow*(_: type ScintillaInternalWindowCursorEnum): untyped = 2
+template up*(_: type ScintillaInternalWindowCursorEnum): untyped = 3
+template wait*(_: type ScintillaInternalWindowCursorEnum): untyped = 4
+template horizontal*(_: type ScintillaInternalWindowCursorEnum): untyped = 5
+template vertical*(_: type ScintillaInternalWindowCursorEnum): untyped = 6
+template reverseArrow*(_: type ScintillaInternalWindowCursorEnum): untyped = 7
+template hand*(_: type ScintillaInternalWindowCursorEnum): untyped = 8
+
+
+type ScintillaInternalListBoxEventEventTypeEnum* = distinct cint
+template selectionChange*(_: type ScintillaInternalListBoxEventEventTypeEnum): untyped = 0
+template doubleClick*(_: type ScintillaInternalListBoxEventEventTypeEnum): untyped = 1
 
 
 import gen_ScintillaEdit_types
@@ -1734,7 +1574,6 @@ import
   gen_qevent,
   gen_qmetaobject,
   gen_qmimedata,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -1751,7 +1590,6 @@ export
   gen_qevent,
   gen_qmetaobject,
   gen_qmimedata,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -3302,962 +3140,922 @@ proc fcScintillaEdit_staticMetaObject(): pointer {.importc: "ScintillaEdit_stati
 proc fcScintillaEdit_delete(self: pointer) {.importc: "ScintillaEdit_delete".}
 
 
-func init*(T: type ScintillaInternalPoint, h: ptr cScintillaInternalPoint): ScintillaInternalPoint =
+func init*(T: type gen_ScintillaEdit_types.ScintillaInternalPoint, h: ptr cScintillaInternalPoint): gen_ScintillaEdit_types.ScintillaInternalPoint =
   T(h: h)
-proc create*(T: type ScintillaInternalPoint, ): ScintillaInternalPoint =
+proc create*(T: type gen_ScintillaEdit_types.ScintillaInternalPoint, ): gen_ScintillaEdit_types.ScintillaInternalPoint =
 
-  ScintillaInternalPoint.init(fcScintillaInternalPoint_new())
-proc create*(T: type ScintillaInternalPoint, param1: ScintillaInternalPoint): ScintillaInternalPoint =
+  gen_ScintillaEdit_types.ScintillaInternalPoint.init(fcScintillaInternalPoint_new())
+proc create*(T: type gen_ScintillaEdit_types.ScintillaInternalPoint, param1: gen_ScintillaEdit_types.ScintillaInternalPoint): gen_ScintillaEdit_types.ScintillaInternalPoint =
 
-  ScintillaInternalPoint.init(fcScintillaInternalPoint_new2(param1.h))
-proc create*(T: type ScintillaInternalPoint, x_x: float64): ScintillaInternalPoint =
+  gen_ScintillaEdit_types.ScintillaInternalPoint.init(fcScintillaInternalPoint_new2(param1.h))
+proc create*(T: type gen_ScintillaEdit_types.ScintillaInternalPoint, x_x: float64): gen_ScintillaEdit_types.ScintillaInternalPoint =
 
-  ScintillaInternalPoint.init(fcScintillaInternalPoint_new3(x_x))
-proc create*(T: type ScintillaInternalPoint, x_x: float64, y_x: float64): ScintillaInternalPoint =
+  gen_ScintillaEdit_types.ScintillaInternalPoint.init(fcScintillaInternalPoint_new3(x_x))
+proc create*(T: type gen_ScintillaEdit_types.ScintillaInternalPoint, x_x: float64, y_x: float64): gen_ScintillaEdit_types.ScintillaInternalPoint =
 
-  ScintillaInternalPoint.init(fcScintillaInternalPoint_new4(x_x, y_x))
-proc FromInts*(_: type ScintillaInternalPoint, x_x: cint, y_x: cint): ScintillaInternalPoint =
+  gen_ScintillaEdit_types.ScintillaInternalPoint.init(fcScintillaInternalPoint_new4(x_x, y_x))
+proc FromInts*(_: type gen_ScintillaEdit_types.ScintillaInternalPoint, x_x: cint, y_x: cint): gen_ScintillaEdit_types.ScintillaInternalPoint =
 
-  ScintillaInternalPoint(h: fcScintillaInternalPoint_FromInts(x_x, y_x))
+  gen_ScintillaEdit_types.ScintillaInternalPoint(h: fcScintillaInternalPoint_FromInts(x_x, y_x))
 
-proc operatorEqual*(self: ScintillaInternalPoint, other: ScintillaInternalPoint): bool =
+proc operatorEqual*(self: gen_ScintillaEdit_types.ScintillaInternalPoint, other: gen_ScintillaEdit_types.ScintillaInternalPoint): bool =
 
   fcScintillaInternalPoint_operatorEqual(self.h, other.h)
 
-proc operatorNotEqual*(self: ScintillaInternalPoint, other: ScintillaInternalPoint): bool =
+proc operatorNotEqual*(self: gen_ScintillaEdit_types.ScintillaInternalPoint, other: gen_ScintillaEdit_types.ScintillaInternalPoint): bool =
 
   fcScintillaInternalPoint_operatorNotEqual(self.h, other.h)
 
-proc operatorPlus*(self: ScintillaInternalPoint, other: ScintillaInternalPoint): ScintillaInternalPoint =
+proc operatorPlus*(self: gen_ScintillaEdit_types.ScintillaInternalPoint, other: gen_ScintillaEdit_types.ScintillaInternalPoint): gen_ScintillaEdit_types.ScintillaInternalPoint =
 
-  ScintillaInternalPoint(h: fcScintillaInternalPoint_operatorPlus(self.h, other.h))
+  gen_ScintillaEdit_types.ScintillaInternalPoint(h: fcScintillaInternalPoint_operatorPlus(self.h, other.h))
 
-proc operatorMinus*(self: ScintillaInternalPoint, other: ScintillaInternalPoint): ScintillaInternalPoint =
+proc operatorMinus*(self: gen_ScintillaEdit_types.ScintillaInternalPoint, other: gen_ScintillaEdit_types.ScintillaInternalPoint): gen_ScintillaEdit_types.ScintillaInternalPoint =
 
-  ScintillaInternalPoint(h: fcScintillaInternalPoint_operatorMinus(self.h, other.h))
+  gen_ScintillaEdit_types.ScintillaInternalPoint(h: fcScintillaInternalPoint_operatorMinus(self.h, other.h))
 
-proc delete*(self: ScintillaInternalPoint) =
+proc delete*(self: gen_ScintillaEdit_types.ScintillaInternalPoint) =
   fcScintillaInternalPoint_delete(self.h)
 
-func init*(T: type ScintillaInternalInterval, h: ptr cScintillaInternalInterval): ScintillaInternalInterval =
+func init*(T: type gen_ScintillaEdit_types.ScintillaInternalInterval, h: ptr cScintillaInternalInterval): gen_ScintillaEdit_types.ScintillaInternalInterval =
   T(h: h)
-proc operatorEqual*(self: ScintillaInternalInterval, other: ScintillaInternalInterval): bool =
+proc operatorEqual*(self: gen_ScintillaEdit_types.ScintillaInternalInterval, other: gen_ScintillaEdit_types.ScintillaInternalInterval): bool =
 
   fcScintillaInternalInterval_operatorEqual(self.h, other.h)
 
-proc Width*(self: ScintillaInternalInterval, ): float64 =
+proc Width*(self: gen_ScintillaEdit_types.ScintillaInternalInterval, ): float64 =
 
   fcScintillaInternalInterval_Width(self.h)
 
-proc Empty*(self: ScintillaInternalInterval, ): bool =
+proc Empty*(self: gen_ScintillaEdit_types.ScintillaInternalInterval, ): bool =
 
   fcScintillaInternalInterval_Empty(self.h)
 
-proc Intersects*(self: ScintillaInternalInterval, other: ScintillaInternalInterval): bool =
+proc Intersects*(self: gen_ScintillaEdit_types.ScintillaInternalInterval, other: gen_ScintillaEdit_types.ScintillaInternalInterval): bool =
 
   fcScintillaInternalInterval_Intersects(self.h, other.h)
 
-proc Offset*(self: ScintillaInternalInterval, offset: float64): ScintillaInternalInterval =
+proc Offset*(self: gen_ScintillaEdit_types.ScintillaInternalInterval, offset: float64): gen_ScintillaEdit_types.ScintillaInternalInterval =
 
-  ScintillaInternalInterval(h: fcScintillaInternalInterval_Offset(self.h, offset))
+  gen_ScintillaEdit_types.ScintillaInternalInterval(h: fcScintillaInternalInterval_Offset(self.h, offset))
 
-proc delete*(self: ScintillaInternalInterval) =
+proc delete*(self: gen_ScintillaEdit_types.ScintillaInternalInterval) =
   fcScintillaInternalInterval_delete(self.h)
 
-func init*(T: type ScintillaInternalPRectangle, h: ptr cScintillaInternalPRectangle): ScintillaInternalPRectangle =
+func init*(T: type gen_ScintillaEdit_types.ScintillaInternalPRectangle, h: ptr cScintillaInternalPRectangle): gen_ScintillaEdit_types.ScintillaInternalPRectangle =
   T(h: h)
-proc create*(T: type ScintillaInternalPRectangle, ): ScintillaInternalPRectangle =
+proc create*(T: type gen_ScintillaEdit_types.ScintillaInternalPRectangle, ): gen_ScintillaEdit_types.ScintillaInternalPRectangle =
 
-  ScintillaInternalPRectangle.init(fcScintillaInternalPRectangle_new())
-proc create*(T: type ScintillaInternalPRectangle, param1: ScintillaInternalPRectangle): ScintillaInternalPRectangle =
+  gen_ScintillaEdit_types.ScintillaInternalPRectangle.init(fcScintillaInternalPRectangle_new())
+proc create*(T: type gen_ScintillaEdit_types.ScintillaInternalPRectangle, param1: gen_ScintillaEdit_types.ScintillaInternalPRectangle): gen_ScintillaEdit_types.ScintillaInternalPRectangle =
 
-  ScintillaInternalPRectangle.init(fcScintillaInternalPRectangle_new2(param1.h))
-proc create*(T: type ScintillaInternalPRectangle, left_x: float64): ScintillaInternalPRectangle =
+  gen_ScintillaEdit_types.ScintillaInternalPRectangle.init(fcScintillaInternalPRectangle_new2(param1.h))
+proc create*(T: type gen_ScintillaEdit_types.ScintillaInternalPRectangle, left_x: float64): gen_ScintillaEdit_types.ScintillaInternalPRectangle =
 
-  ScintillaInternalPRectangle.init(fcScintillaInternalPRectangle_new3(left_x))
-proc create*(T: type ScintillaInternalPRectangle, left_x: float64, top_x: float64): ScintillaInternalPRectangle =
+  gen_ScintillaEdit_types.ScintillaInternalPRectangle.init(fcScintillaInternalPRectangle_new3(left_x))
+proc create*(T: type gen_ScintillaEdit_types.ScintillaInternalPRectangle, left_x: float64, top_x: float64): gen_ScintillaEdit_types.ScintillaInternalPRectangle =
 
-  ScintillaInternalPRectangle.init(fcScintillaInternalPRectangle_new4(left_x, top_x))
-proc create*(T: type ScintillaInternalPRectangle, left_x: float64, top_x: float64, right_x: float64): ScintillaInternalPRectangle =
+  gen_ScintillaEdit_types.ScintillaInternalPRectangle.init(fcScintillaInternalPRectangle_new4(left_x, top_x))
+proc create*(T: type gen_ScintillaEdit_types.ScintillaInternalPRectangle, left_x: float64, top_x: float64, right_x: float64): gen_ScintillaEdit_types.ScintillaInternalPRectangle =
 
-  ScintillaInternalPRectangle.init(fcScintillaInternalPRectangle_new5(left_x, top_x, right_x))
-proc create*(T: type ScintillaInternalPRectangle, left_x: float64, top_x: float64, right_x: float64, bottom_x: float64): ScintillaInternalPRectangle =
+  gen_ScintillaEdit_types.ScintillaInternalPRectangle.init(fcScintillaInternalPRectangle_new5(left_x, top_x, right_x))
+proc create*(T: type gen_ScintillaEdit_types.ScintillaInternalPRectangle, left_x: float64, top_x: float64, right_x: float64, bottom_x: float64): gen_ScintillaEdit_types.ScintillaInternalPRectangle =
 
-  ScintillaInternalPRectangle.init(fcScintillaInternalPRectangle_new6(left_x, top_x, right_x, bottom_x))
-proc FromInts*(_: type ScintillaInternalPRectangle, left_x: cint, top_x: cint, right_x: cint, bottom_x: cint): ScintillaInternalPRectangle =
+  gen_ScintillaEdit_types.ScintillaInternalPRectangle.init(fcScintillaInternalPRectangle_new6(left_x, top_x, right_x, bottom_x))
+proc FromInts*(_: type gen_ScintillaEdit_types.ScintillaInternalPRectangle, left_x: cint, top_x: cint, right_x: cint, bottom_x: cint): gen_ScintillaEdit_types.ScintillaInternalPRectangle =
 
-  ScintillaInternalPRectangle(h: fcScintillaInternalPRectangle_FromInts(left_x, top_x, right_x, bottom_x))
+  gen_ScintillaEdit_types.ScintillaInternalPRectangle(h: fcScintillaInternalPRectangle_FromInts(left_x, top_x, right_x, bottom_x))
 
-proc operatorEqual*(self: ScintillaInternalPRectangle, rc: ScintillaInternalPRectangle): bool =
+proc operatorEqual*(self: gen_ScintillaEdit_types.ScintillaInternalPRectangle, rc: gen_ScintillaEdit_types.ScintillaInternalPRectangle): bool =
 
   fcScintillaInternalPRectangle_operatorEqual(self.h, rc.h)
 
-proc Contains*(self: ScintillaInternalPRectangle, pt: ScintillaInternalPoint): bool =
+proc Contains*(self: gen_ScintillaEdit_types.ScintillaInternalPRectangle, pt: gen_ScintillaEdit_types.ScintillaInternalPoint): bool =
 
   fcScintillaInternalPRectangle_Contains(self.h, pt.h)
 
-proc ContainsWholePixel*(self: ScintillaInternalPRectangle, pt: ScintillaInternalPoint): bool =
+proc ContainsWholePixel*(self: gen_ScintillaEdit_types.ScintillaInternalPRectangle, pt: gen_ScintillaEdit_types.ScintillaInternalPoint): bool =
 
   fcScintillaInternalPRectangle_ContainsWholePixel(self.h, pt.h)
 
-proc ContainsWithRc*(self: ScintillaInternalPRectangle, rc: ScintillaInternalPRectangle): bool =
+proc ContainsWithRc*(self: gen_ScintillaEdit_types.ScintillaInternalPRectangle, rc: gen_ScintillaEdit_types.ScintillaInternalPRectangle): bool =
 
   fcScintillaInternalPRectangle_ContainsWithRc(self.h, rc.h)
 
-proc Intersects*(self: ScintillaInternalPRectangle, other: ScintillaInternalPRectangle): bool =
+proc Intersects*(self: gen_ScintillaEdit_types.ScintillaInternalPRectangle, other: gen_ScintillaEdit_types.ScintillaInternalPRectangle): bool =
 
   fcScintillaInternalPRectangle_Intersects(self.h, other.h)
 
-proc IntersectsWithHorizontalBounds*(self: ScintillaInternalPRectangle, horizontalBounds: ScintillaInternalInterval): bool =
+proc IntersectsWithHorizontalBounds*(self: gen_ScintillaEdit_types.ScintillaInternalPRectangle, horizontalBounds: gen_ScintillaEdit_types.ScintillaInternalInterval): bool =
 
   fcScintillaInternalPRectangle_IntersectsWithHorizontalBounds(self.h, horizontalBounds.h)
 
-proc Move*(self: ScintillaInternalPRectangle, xDelta: float64, yDelta: float64): void =
+proc Move*(self: gen_ScintillaEdit_types.ScintillaInternalPRectangle, xDelta: float64, yDelta: float64): void =
 
   fcScintillaInternalPRectangle_Move(self.h, xDelta, yDelta)
 
-proc WithHorizontalBounds*(self: ScintillaInternalPRectangle, horizontal: ScintillaInternalInterval): ScintillaInternalPRectangle =
+proc WithHorizontalBounds*(self: gen_ScintillaEdit_types.ScintillaInternalPRectangle, horizontal: gen_ScintillaEdit_types.ScintillaInternalInterval): gen_ScintillaEdit_types.ScintillaInternalPRectangle =
 
-  ScintillaInternalPRectangle(h: fcScintillaInternalPRectangle_WithHorizontalBounds(self.h, horizontal.h))
+  gen_ScintillaEdit_types.ScintillaInternalPRectangle(h: fcScintillaInternalPRectangle_WithHorizontalBounds(self.h, horizontal.h))
 
-proc Inset*(self: ScintillaInternalPRectangle, delta: float64): ScintillaInternalPRectangle =
+proc Inset*(self: gen_ScintillaEdit_types.ScintillaInternalPRectangle, delta: float64): gen_ScintillaEdit_types.ScintillaInternalPRectangle =
 
-  ScintillaInternalPRectangle(h: fcScintillaInternalPRectangle_Inset(self.h, delta))
+  gen_ScintillaEdit_types.ScintillaInternalPRectangle(h: fcScintillaInternalPRectangle_Inset(self.h, delta))
 
-proc InsetWithDelta*(self: ScintillaInternalPRectangle, delta: ScintillaInternalPoint): ScintillaInternalPRectangle =
+proc InsetWithDelta*(self: gen_ScintillaEdit_types.ScintillaInternalPRectangle, delta: gen_ScintillaEdit_types.ScintillaInternalPoint): gen_ScintillaEdit_types.ScintillaInternalPRectangle =
 
-  ScintillaInternalPRectangle(h: fcScintillaInternalPRectangle_InsetWithDelta(self.h, delta.h))
+  gen_ScintillaEdit_types.ScintillaInternalPRectangle(h: fcScintillaInternalPRectangle_InsetWithDelta(self.h, delta.h))
 
-proc Centre*(self: ScintillaInternalPRectangle, ): ScintillaInternalPoint =
+proc Centre*(self: gen_ScintillaEdit_types.ScintillaInternalPRectangle, ): gen_ScintillaEdit_types.ScintillaInternalPoint =
 
-  ScintillaInternalPoint(h: fcScintillaInternalPRectangle_Centre(self.h))
+  gen_ScintillaEdit_types.ScintillaInternalPoint(h: fcScintillaInternalPRectangle_Centre(self.h))
 
-proc Width*(self: ScintillaInternalPRectangle, ): float64 =
+proc Width*(self: gen_ScintillaEdit_types.ScintillaInternalPRectangle, ): float64 =
 
   fcScintillaInternalPRectangle_Width(self.h)
 
-proc Height*(self: ScintillaInternalPRectangle, ): float64 =
+proc Height*(self: gen_ScintillaEdit_types.ScintillaInternalPRectangle, ): float64 =
 
   fcScintillaInternalPRectangle_Height(self.h)
 
-proc Empty*(self: ScintillaInternalPRectangle, ): bool =
+proc Empty*(self: gen_ScintillaEdit_types.ScintillaInternalPRectangle, ): bool =
 
   fcScintillaInternalPRectangle_Empty(self.h)
 
-proc delete*(self: ScintillaInternalPRectangle) =
+proc delete*(self: gen_ScintillaEdit_types.ScintillaInternalPRectangle) =
   fcScintillaInternalPRectangle_delete(self.h)
 
-func init*(T: type ScintillaInternalColourRGBA, h: ptr cScintillaInternalColourRGBA): ScintillaInternalColourRGBA =
+func init*(T: type gen_ScintillaEdit_types.ScintillaInternalColourRGBA, h: ptr cScintillaInternalColourRGBA): gen_ScintillaEdit_types.ScintillaInternalColourRGBA =
   T(h: h)
-proc create*(T: type ScintillaInternalColourRGBA, ): ScintillaInternalColourRGBA =
+proc create*(T: type gen_ScintillaEdit_types.ScintillaInternalColourRGBA, ): gen_ScintillaEdit_types.ScintillaInternalColourRGBA =
 
-  ScintillaInternalColourRGBA.init(fcScintillaInternalColourRGBA_new())
-proc create*(T: type ScintillaInternalColourRGBA, red: cuint, green: cuint, blue: cuint): ScintillaInternalColourRGBA =
+  gen_ScintillaEdit_types.ScintillaInternalColourRGBA.init(fcScintillaInternalColourRGBA_new())
+proc create*(T: type gen_ScintillaEdit_types.ScintillaInternalColourRGBA, red: cuint, green: cuint, blue: cuint): gen_ScintillaEdit_types.ScintillaInternalColourRGBA =
 
-  ScintillaInternalColourRGBA.init(fcScintillaInternalColourRGBA_new2(red, green, blue))
-proc create*(T: type ScintillaInternalColourRGBA, cd: ScintillaInternalColourRGBA, alpha: cuint): ScintillaInternalColourRGBA =
+  gen_ScintillaEdit_types.ScintillaInternalColourRGBA.init(fcScintillaInternalColourRGBA_new2(red, green, blue))
+proc create*(T: type gen_ScintillaEdit_types.ScintillaInternalColourRGBA, cd: gen_ScintillaEdit_types.ScintillaInternalColourRGBA, alpha: cuint): gen_ScintillaEdit_types.ScintillaInternalColourRGBA =
 
-  ScintillaInternalColourRGBA.init(fcScintillaInternalColourRGBA_new3(cd.h, alpha))
-proc create*(T: type ScintillaInternalColourRGBA, param1: ScintillaInternalColourRGBA): ScintillaInternalColourRGBA =
+  gen_ScintillaEdit_types.ScintillaInternalColourRGBA.init(fcScintillaInternalColourRGBA_new3(cd.h, alpha))
+proc create*(T: type gen_ScintillaEdit_types.ScintillaInternalColourRGBA, param1: gen_ScintillaEdit_types.ScintillaInternalColourRGBA): gen_ScintillaEdit_types.ScintillaInternalColourRGBA =
 
-  ScintillaInternalColourRGBA.init(fcScintillaInternalColourRGBA_new4(param1.h))
-proc create*(T: type ScintillaInternalColourRGBA, co_x: cint): ScintillaInternalColourRGBA =
+  gen_ScintillaEdit_types.ScintillaInternalColourRGBA.init(fcScintillaInternalColourRGBA_new4(param1.h))
+proc create*(T: type gen_ScintillaEdit_types.ScintillaInternalColourRGBA, co_x: cint): gen_ScintillaEdit_types.ScintillaInternalColourRGBA =
 
-  ScintillaInternalColourRGBA.init(fcScintillaInternalColourRGBA_new5(co_x))
-proc create*(T: type ScintillaInternalColourRGBA, red: cuint, green: cuint, blue: cuint, alpha: cuint): ScintillaInternalColourRGBA =
+  gen_ScintillaEdit_types.ScintillaInternalColourRGBA.init(fcScintillaInternalColourRGBA_new5(co_x))
+proc create*(T: type gen_ScintillaEdit_types.ScintillaInternalColourRGBA, red: cuint, green: cuint, blue: cuint, alpha: cuint): gen_ScintillaEdit_types.ScintillaInternalColourRGBA =
 
-  ScintillaInternalColourRGBA.init(fcScintillaInternalColourRGBA_new6(red, green, blue, alpha))
-proc FromRGB*(_: type ScintillaInternalColourRGBA, co_x: cint): ScintillaInternalColourRGBA =
+  gen_ScintillaEdit_types.ScintillaInternalColourRGBA.init(fcScintillaInternalColourRGBA_new6(red, green, blue, alpha))
+proc FromRGB*(_: type gen_ScintillaEdit_types.ScintillaInternalColourRGBA, co_x: cint): gen_ScintillaEdit_types.ScintillaInternalColourRGBA =
 
-  ScintillaInternalColourRGBA(h: fcScintillaInternalColourRGBA_FromRGB(co_x))
+  gen_ScintillaEdit_types.ScintillaInternalColourRGBA(h: fcScintillaInternalColourRGBA_FromRGB(co_x))
 
-proc Grey*(_: type ScintillaInternalColourRGBA, grey: cuint): ScintillaInternalColourRGBA =
+proc Grey*(_: type gen_ScintillaEdit_types.ScintillaInternalColourRGBA, grey: cuint): gen_ScintillaEdit_types.ScintillaInternalColourRGBA =
 
-  ScintillaInternalColourRGBA(h: fcScintillaInternalColourRGBA_Grey(grey))
+  gen_ScintillaEdit_types.ScintillaInternalColourRGBA(h: fcScintillaInternalColourRGBA_Grey(grey))
 
-proc FromIpRGB*(_: type ScintillaInternalColourRGBA, co_x: miqt_intptr_t): ScintillaInternalColourRGBA =
+proc FromIpRGB*(_: type gen_ScintillaEdit_types.ScintillaInternalColourRGBA, co_x: miqt_intptr_t): gen_ScintillaEdit_types.ScintillaInternalColourRGBA =
 
-  ScintillaInternalColourRGBA(h: fcScintillaInternalColourRGBA_FromIpRGB(co_x))
+  gen_ScintillaEdit_types.ScintillaInternalColourRGBA(h: fcScintillaInternalColourRGBA_FromIpRGB(co_x))
 
-proc WithoutAlpha*(self: ScintillaInternalColourRGBA, ): ScintillaInternalColourRGBA =
+proc WithoutAlpha*(self: gen_ScintillaEdit_types.ScintillaInternalColourRGBA, ): gen_ScintillaEdit_types.ScintillaInternalColourRGBA =
 
-  ScintillaInternalColourRGBA(h: fcScintillaInternalColourRGBA_WithoutAlpha(self.h))
+  gen_ScintillaEdit_types.ScintillaInternalColourRGBA(h: fcScintillaInternalColourRGBA_WithoutAlpha(self.h))
 
-proc Opaque*(self: ScintillaInternalColourRGBA, ): ScintillaInternalColourRGBA =
+proc Opaque*(self: gen_ScintillaEdit_types.ScintillaInternalColourRGBA, ): gen_ScintillaEdit_types.ScintillaInternalColourRGBA =
 
-  ScintillaInternalColourRGBA(h: fcScintillaInternalColourRGBA_Opaque(self.h))
+  gen_ScintillaEdit_types.ScintillaInternalColourRGBA(h: fcScintillaInternalColourRGBA_Opaque(self.h))
 
-proc AsInteger*(self: ScintillaInternalColourRGBA, ): cint =
+proc AsInteger*(self: gen_ScintillaEdit_types.ScintillaInternalColourRGBA, ): cint =
 
   fcScintillaInternalColourRGBA_AsInteger(self.h)
 
-proc OpaqueRGB*(self: ScintillaInternalColourRGBA, ): cint =
+proc OpaqueRGB*(self: gen_ScintillaEdit_types.ScintillaInternalColourRGBA, ): cint =
 
   fcScintillaInternalColourRGBA_OpaqueRGB(self.h)
 
-proc GetRed*(self: ScintillaInternalColourRGBA, ): uint8 =
+proc GetRed*(self: gen_ScintillaEdit_types.ScintillaInternalColourRGBA, ): uint8 =
 
   fcScintillaInternalColourRGBA_GetRed(self.h)
 
-proc GetGreen*(self: ScintillaInternalColourRGBA, ): uint8 =
+proc GetGreen*(self: gen_ScintillaEdit_types.ScintillaInternalColourRGBA, ): uint8 =
 
   fcScintillaInternalColourRGBA_GetGreen(self.h)
 
-proc GetBlue*(self: ScintillaInternalColourRGBA, ): uint8 =
+proc GetBlue*(self: gen_ScintillaEdit_types.ScintillaInternalColourRGBA, ): uint8 =
 
   fcScintillaInternalColourRGBA_GetBlue(self.h)
 
-proc GetAlpha*(self: ScintillaInternalColourRGBA, ): uint8 =
+proc GetAlpha*(self: gen_ScintillaEdit_types.ScintillaInternalColourRGBA, ): uint8 =
 
   fcScintillaInternalColourRGBA_GetAlpha(self.h)
 
-proc GetRedComponent*(self: ScintillaInternalColourRGBA, ): float32 =
+proc GetRedComponent*(self: gen_ScintillaEdit_types.ScintillaInternalColourRGBA, ): float32 =
 
   fcScintillaInternalColourRGBA_GetRedComponent(self.h)
 
-proc GetGreenComponent*(self: ScintillaInternalColourRGBA, ): float32 =
+proc GetGreenComponent*(self: gen_ScintillaEdit_types.ScintillaInternalColourRGBA, ): float32 =
 
   fcScintillaInternalColourRGBA_GetGreenComponent(self.h)
 
-proc GetBlueComponent*(self: ScintillaInternalColourRGBA, ): float32 =
+proc GetBlueComponent*(self: gen_ScintillaEdit_types.ScintillaInternalColourRGBA, ): float32 =
 
   fcScintillaInternalColourRGBA_GetBlueComponent(self.h)
 
-proc GetAlphaComponent*(self: ScintillaInternalColourRGBA, ): float32 =
+proc GetAlphaComponent*(self: gen_ScintillaEdit_types.ScintillaInternalColourRGBA, ): float32 =
 
   fcScintillaInternalColourRGBA_GetAlphaComponent(self.h)
 
-proc operatorEqual*(self: ScintillaInternalColourRGBA, other: ScintillaInternalColourRGBA): bool =
+proc operatorEqual*(self: gen_ScintillaEdit_types.ScintillaInternalColourRGBA, other: gen_ScintillaEdit_types.ScintillaInternalColourRGBA): bool =
 
   fcScintillaInternalColourRGBA_operatorEqual(self.h, other.h)
 
-proc IsOpaque*(self: ScintillaInternalColourRGBA, ): bool =
+proc IsOpaque*(self: gen_ScintillaEdit_types.ScintillaInternalColourRGBA, ): bool =
 
   fcScintillaInternalColourRGBA_IsOpaque(self.h)
 
-proc MixedWith*(self: ScintillaInternalColourRGBA, other: ScintillaInternalColourRGBA): ScintillaInternalColourRGBA =
+proc MixedWith*(self: gen_ScintillaEdit_types.ScintillaInternalColourRGBA, other: gen_ScintillaEdit_types.ScintillaInternalColourRGBA): gen_ScintillaEdit_types.ScintillaInternalColourRGBA =
 
-  ScintillaInternalColourRGBA(h: fcScintillaInternalColourRGBA_MixedWith(self.h, other.h))
+  gen_ScintillaEdit_types.ScintillaInternalColourRGBA(h: fcScintillaInternalColourRGBA_MixedWith(self.h, other.h))
 
-proc MixedWith2*(self: ScintillaInternalColourRGBA, other: ScintillaInternalColourRGBA, proportion: float64): ScintillaInternalColourRGBA =
+proc MixedWith2*(self: gen_ScintillaEdit_types.ScintillaInternalColourRGBA, other: gen_ScintillaEdit_types.ScintillaInternalColourRGBA, proportion: float64): gen_ScintillaEdit_types.ScintillaInternalColourRGBA =
 
-  ScintillaInternalColourRGBA(h: fcScintillaInternalColourRGBA_MixedWith2(self.h, other.h, proportion))
+  gen_ScintillaEdit_types.ScintillaInternalColourRGBA(h: fcScintillaInternalColourRGBA_MixedWith2(self.h, other.h, proportion))
 
-proc operatorAssign*(self: ScintillaInternalColourRGBA, param1: ScintillaInternalColourRGBA): void =
+proc operatorAssign*(self: gen_ScintillaEdit_types.ScintillaInternalColourRGBA, param1: gen_ScintillaEdit_types.ScintillaInternalColourRGBA): void =
 
   fcScintillaInternalColourRGBA_operatorAssign(self.h, param1.h)
 
-proc Grey2*(_: type ScintillaInternalColourRGBA, grey: cuint, alpha: cuint): ScintillaInternalColourRGBA =
+proc Grey2*(_: type gen_ScintillaEdit_types.ScintillaInternalColourRGBA, grey: cuint, alpha: cuint): gen_ScintillaEdit_types.ScintillaInternalColourRGBA =
 
-  ScintillaInternalColourRGBA(h: fcScintillaInternalColourRGBA_Grey2(grey, alpha))
+  gen_ScintillaEdit_types.ScintillaInternalColourRGBA(h: fcScintillaInternalColourRGBA_Grey2(grey, alpha))
 
-proc delete*(self: ScintillaInternalColourRGBA) =
+proc delete*(self: gen_ScintillaEdit_types.ScintillaInternalColourRGBA) =
   fcScintillaInternalColourRGBA_delete(self.h)
 
-func init*(T: type ScintillaInternalStroke, h: ptr cScintillaInternalStroke): ScintillaInternalStroke =
+func init*(T: type gen_ScintillaEdit_types.ScintillaInternalStroke, h: ptr cScintillaInternalStroke): gen_ScintillaEdit_types.ScintillaInternalStroke =
   T(h: h)
-proc create*(T: type ScintillaInternalStroke, colour_x: ScintillaInternalColourRGBA): ScintillaInternalStroke =
+proc create*(T: type gen_ScintillaEdit_types.ScintillaInternalStroke, colour_x: gen_ScintillaEdit_types.ScintillaInternalColourRGBA): gen_ScintillaEdit_types.ScintillaInternalStroke =
 
-  ScintillaInternalStroke.init(fcScintillaInternalStroke_new(colour_x.h))
-proc create2*(T: type ScintillaInternalStroke, param1: ScintillaInternalStroke): ScintillaInternalStroke =
+  gen_ScintillaEdit_types.ScintillaInternalStroke.init(fcScintillaInternalStroke_new(colour_x.h))
+proc create2*(T: type gen_ScintillaEdit_types.ScintillaInternalStroke, param1: gen_ScintillaEdit_types.ScintillaInternalStroke): gen_ScintillaEdit_types.ScintillaInternalStroke =
 
-  ScintillaInternalStroke.init(fcScintillaInternalStroke_new2(param1.h))
-proc create*(T: type ScintillaInternalStroke, colour_x: ScintillaInternalColourRGBA, width_x: float64): ScintillaInternalStroke =
+  gen_ScintillaEdit_types.ScintillaInternalStroke.init(fcScintillaInternalStroke_new2(param1.h))
+proc create*(T: type gen_ScintillaEdit_types.ScintillaInternalStroke, colour_x: gen_ScintillaEdit_types.ScintillaInternalColourRGBA, width_x: float64): gen_ScintillaEdit_types.ScintillaInternalStroke =
 
-  ScintillaInternalStroke.init(fcScintillaInternalStroke_new3(colour_x.h, width_x))
-proc WidthF*(self: ScintillaInternalStroke, ): float32 =
+  gen_ScintillaEdit_types.ScintillaInternalStroke.init(fcScintillaInternalStroke_new3(colour_x.h, width_x))
+proc WidthF*(self: gen_ScintillaEdit_types.ScintillaInternalStroke, ): float32 =
 
   fcScintillaInternalStroke_WidthF(self.h)
 
-proc delete*(self: ScintillaInternalStroke) =
+proc delete*(self: gen_ScintillaEdit_types.ScintillaInternalStroke) =
   fcScintillaInternalStroke_delete(self.h)
 
-func init*(T: type ScintillaInternalFill, h: ptr cScintillaInternalFill): ScintillaInternalFill =
+func init*(T: type gen_ScintillaEdit_types.ScintillaInternalFill, h: ptr cScintillaInternalFill): gen_ScintillaEdit_types.ScintillaInternalFill =
   T(h: h)
-proc create*(T: type ScintillaInternalFill, colour_x: ScintillaInternalColourRGBA): ScintillaInternalFill =
+proc create*(T: type gen_ScintillaEdit_types.ScintillaInternalFill, colour_x: gen_ScintillaEdit_types.ScintillaInternalColourRGBA): gen_ScintillaEdit_types.ScintillaInternalFill =
 
-  ScintillaInternalFill.init(fcScintillaInternalFill_new(colour_x.h))
-proc create2*(T: type ScintillaInternalFill, param1: ScintillaInternalFill): ScintillaInternalFill =
+  gen_ScintillaEdit_types.ScintillaInternalFill.init(fcScintillaInternalFill_new(colour_x.h))
+proc create2*(T: type gen_ScintillaEdit_types.ScintillaInternalFill, param1: gen_ScintillaEdit_types.ScintillaInternalFill): gen_ScintillaEdit_types.ScintillaInternalFill =
 
-  ScintillaInternalFill.init(fcScintillaInternalFill_new2(param1.h))
-proc delete*(self: ScintillaInternalFill) =
+  gen_ScintillaEdit_types.ScintillaInternalFill.init(fcScintillaInternalFill_new2(param1.h))
+proc delete*(self: gen_ScintillaEdit_types.ScintillaInternalFill) =
   fcScintillaInternalFill_delete(self.h)
 
-func init*(T: type ScintillaInternalFillStroke, h: ptr cScintillaInternalFillStroke): ScintillaInternalFillStroke =
+func init*(T: type gen_ScintillaEdit_types.ScintillaInternalFillStroke, h: ptr cScintillaInternalFillStroke): gen_ScintillaEdit_types.ScintillaInternalFillStroke =
   T(h: h)
-proc create*(T: type ScintillaInternalFillStroke, colourFill_x: ScintillaInternalColourRGBA, colourStroke_x: ScintillaInternalColourRGBA): ScintillaInternalFillStroke =
+proc create*(T: type gen_ScintillaEdit_types.ScintillaInternalFillStroke, colourFill_x: gen_ScintillaEdit_types.ScintillaInternalColourRGBA, colourStroke_x: gen_ScintillaEdit_types.ScintillaInternalColourRGBA): gen_ScintillaEdit_types.ScintillaInternalFillStroke =
 
-  ScintillaInternalFillStroke.init(fcScintillaInternalFillStroke_new(colourFill_x.h, colourStroke_x.h))
-proc create*(T: type ScintillaInternalFillStroke, colourBoth: ScintillaInternalColourRGBA): ScintillaInternalFillStroke =
+  gen_ScintillaEdit_types.ScintillaInternalFillStroke.init(fcScintillaInternalFillStroke_new(colourFill_x.h, colourStroke_x.h))
+proc create*(T: type gen_ScintillaEdit_types.ScintillaInternalFillStroke, colourBoth: gen_ScintillaEdit_types.ScintillaInternalColourRGBA): gen_ScintillaEdit_types.ScintillaInternalFillStroke =
 
-  ScintillaInternalFillStroke.init(fcScintillaInternalFillStroke_new2(colourBoth.h))
-proc create*(T: type ScintillaInternalFillStroke, colourFill_x: ScintillaInternalColourRGBA, colourStroke_x: ScintillaInternalColourRGBA, widthStroke_x: float64): ScintillaInternalFillStroke =
+  gen_ScintillaEdit_types.ScintillaInternalFillStroke.init(fcScintillaInternalFillStroke_new2(colourBoth.h))
+proc create*(T: type gen_ScintillaEdit_types.ScintillaInternalFillStroke, colourFill_x: gen_ScintillaEdit_types.ScintillaInternalColourRGBA, colourStroke_x: gen_ScintillaEdit_types.ScintillaInternalColourRGBA, widthStroke_x: float64): gen_ScintillaEdit_types.ScintillaInternalFillStroke =
 
-  ScintillaInternalFillStroke.init(fcScintillaInternalFillStroke_new3(colourFill_x.h, colourStroke_x.h, widthStroke_x))
-proc create*(T: type ScintillaInternalFillStroke, colourBoth: ScintillaInternalColourRGBA, widthStroke_x: float64): ScintillaInternalFillStroke =
+  gen_ScintillaEdit_types.ScintillaInternalFillStroke.init(fcScintillaInternalFillStroke_new3(colourFill_x.h, colourStroke_x.h, widthStroke_x))
+proc create*(T: type gen_ScintillaEdit_types.ScintillaInternalFillStroke, colourBoth: gen_ScintillaEdit_types.ScintillaInternalColourRGBA, widthStroke_x: float64): gen_ScintillaEdit_types.ScintillaInternalFillStroke =
 
-  ScintillaInternalFillStroke.init(fcScintillaInternalFillStroke_new4(colourBoth.h, widthStroke_x))
-proc delete*(self: ScintillaInternalFillStroke) =
+  gen_ScintillaEdit_types.ScintillaInternalFillStroke.init(fcScintillaInternalFillStroke_new4(colourBoth.h, widthStroke_x))
+proc delete*(self: gen_ScintillaEdit_types.ScintillaInternalFillStroke) =
   fcScintillaInternalFillStroke_delete(self.h)
 
-func init*(T: type ScintillaInternalColourStop, h: ptr cScintillaInternalColourStop): ScintillaInternalColourStop =
+func init*(T: type gen_ScintillaEdit_types.ScintillaInternalColourStop, h: ptr cScintillaInternalColourStop): gen_ScintillaEdit_types.ScintillaInternalColourStop =
   T(h: h)
-proc create*(T: type ScintillaInternalColourStop, position_x: float64, colour_x: ScintillaInternalColourRGBA): ScintillaInternalColourStop =
+proc create*(T: type gen_ScintillaEdit_types.ScintillaInternalColourStop, position_x: float64, colour_x: gen_ScintillaEdit_types.ScintillaInternalColourRGBA): gen_ScintillaEdit_types.ScintillaInternalColourStop =
 
-  ScintillaInternalColourStop.init(fcScintillaInternalColourStop_new(position_x, colour_x.h))
-proc delete*(self: ScintillaInternalColourStop) =
+  gen_ScintillaEdit_types.ScintillaInternalColourStop.init(fcScintillaInternalColourStop_new(position_x, colour_x.h))
+proc delete*(self: gen_ScintillaEdit_types.ScintillaInternalColourStop) =
   fcScintillaInternalColourStop_delete(self.h)
 
-func init*(T: type ScintillaCharacterRange, h: ptr cScintillaCharacterRange): ScintillaCharacterRange =
+func init*(T: type gen_ScintillaEdit_types.ScintillaCharacterRange, h: ptr cScintillaCharacterRange): gen_ScintillaEdit_types.ScintillaCharacterRange =
   T(h: h)
-proc delete*(self: ScintillaCharacterRange) =
+proc delete*(self: gen_ScintillaEdit_types.ScintillaCharacterRange) =
   fcScintillaCharacterRange_delete(self.h)
 
-func init*(T: type ScintillaCharacterRangeFull, h: ptr cScintillaCharacterRangeFull): ScintillaCharacterRangeFull =
+func init*(T: type gen_ScintillaEdit_types.ScintillaCharacterRangeFull, h: ptr cScintillaCharacterRangeFull): gen_ScintillaEdit_types.ScintillaCharacterRangeFull =
   T(h: h)
-proc delete*(self: ScintillaCharacterRangeFull) =
+proc delete*(self: gen_ScintillaEdit_types.ScintillaCharacterRangeFull) =
   fcScintillaCharacterRangeFull_delete(self.h)
 
-func init*(T: type ScintillaTextRange, h: ptr cScintillaTextRange): ScintillaTextRange =
+func init*(T: type gen_ScintillaEdit_types.ScintillaTextRange, h: ptr cScintillaTextRange): gen_ScintillaEdit_types.ScintillaTextRange =
   T(h: h)
-proc delete*(self: ScintillaTextRange) =
+proc delete*(self: gen_ScintillaEdit_types.ScintillaTextRange) =
   fcScintillaTextRange_delete(self.h)
 
-func init*(T: type ScintillaTextRangeFull, h: ptr cScintillaTextRangeFull): ScintillaTextRangeFull =
+func init*(T: type gen_ScintillaEdit_types.ScintillaTextRangeFull, h: ptr cScintillaTextRangeFull): gen_ScintillaEdit_types.ScintillaTextRangeFull =
   T(h: h)
-proc delete*(self: ScintillaTextRangeFull) =
+proc delete*(self: gen_ScintillaEdit_types.ScintillaTextRangeFull) =
   fcScintillaTextRangeFull_delete(self.h)
 
-func init*(T: type ScintillaTextToFind, h: ptr cScintillaTextToFind): ScintillaTextToFind =
+func init*(T: type gen_ScintillaEdit_types.ScintillaTextToFind, h: ptr cScintillaTextToFind): gen_ScintillaEdit_types.ScintillaTextToFind =
   T(h: h)
-proc delete*(self: ScintillaTextToFind) =
+proc delete*(self: gen_ScintillaEdit_types.ScintillaTextToFind) =
   fcScintillaTextToFind_delete(self.h)
 
-func init*(T: type ScintillaTextToFindFull, h: ptr cScintillaTextToFindFull): ScintillaTextToFindFull =
+func init*(T: type gen_ScintillaEdit_types.ScintillaTextToFindFull, h: ptr cScintillaTextToFindFull): gen_ScintillaEdit_types.ScintillaTextToFindFull =
   T(h: h)
-proc delete*(self: ScintillaTextToFindFull) =
+proc delete*(self: gen_ScintillaEdit_types.ScintillaTextToFindFull) =
   fcScintillaTextToFindFull_delete(self.h)
 
-func init*(T: type ScintillaRectangle, h: ptr cScintillaRectangle): ScintillaRectangle =
+func init*(T: type gen_ScintillaEdit_types.ScintillaRectangle, h: ptr cScintillaRectangle): gen_ScintillaEdit_types.ScintillaRectangle =
   T(h: h)
-proc delete*(self: ScintillaRectangle) =
+proc delete*(self: gen_ScintillaEdit_types.ScintillaRectangle) =
   fcScintillaRectangle_delete(self.h)
 
-func init*(T: type ScintillaRangeToFormat, h: ptr cScintillaRangeToFormat): ScintillaRangeToFormat =
+func init*(T: type gen_ScintillaEdit_types.ScintillaRangeToFormat, h: ptr cScintillaRangeToFormat): gen_ScintillaEdit_types.ScintillaRangeToFormat =
   T(h: h)
-proc delete*(self: ScintillaRangeToFormat) =
+proc delete*(self: gen_ScintillaEdit_types.ScintillaRangeToFormat) =
   fcScintillaRangeToFormat_delete(self.h)
 
-func init*(T: type ScintillaRangeToFormatFull, h: ptr cScintillaRangeToFormatFull): ScintillaRangeToFormatFull =
+func init*(T: type gen_ScintillaEdit_types.ScintillaRangeToFormatFull, h: ptr cScintillaRangeToFormatFull): gen_ScintillaEdit_types.ScintillaRangeToFormatFull =
   T(h: h)
-proc delete*(self: ScintillaRangeToFormatFull) =
+proc delete*(self: gen_ScintillaEdit_types.ScintillaRangeToFormatFull) =
   fcScintillaRangeToFormatFull_delete(self.h)
 
-func init*(T: type ScintillaNotifyHeader, h: ptr cScintillaNotifyHeader): ScintillaNotifyHeader =
+func init*(T: type gen_ScintillaEdit_types.ScintillaNotifyHeader, h: ptr cScintillaNotifyHeader): gen_ScintillaEdit_types.ScintillaNotifyHeader =
   T(h: h)
-proc delete*(self: ScintillaNotifyHeader) =
+proc delete*(self: gen_ScintillaEdit_types.ScintillaNotifyHeader) =
   fcScintillaNotifyHeader_delete(self.h)
 
-func init*(T: type ScintillaNotificationData, h: ptr cScintillaNotificationData): ScintillaNotificationData =
+func init*(T: type gen_ScintillaEdit_types.ScintillaNotificationData, h: ptr cScintillaNotificationData): gen_ScintillaEdit_types.ScintillaNotificationData =
   T(h: h)
-proc delete*(self: ScintillaNotificationData) =
+proc delete*(self: gen_ScintillaEdit_types.ScintillaNotificationData) =
   fcScintillaNotificationData_delete(self.h)
 
-func init*(T: type ScintillaInternalFontParameters, h: ptr cScintillaInternalFontParameters): ScintillaInternalFontParameters =
+func init*(T: type gen_ScintillaEdit_types.ScintillaInternalFontParameters, h: ptr cScintillaInternalFontParameters): gen_ScintillaEdit_types.ScintillaInternalFontParameters =
   T(h: h)
-proc create*(T: type ScintillaInternalFontParameters, faceName_x: cstring): ScintillaInternalFontParameters =
+proc create*(T: type gen_ScintillaEdit_types.ScintillaInternalFontParameters, faceName_x: cstring): gen_ScintillaEdit_types.ScintillaInternalFontParameters =
 
-  ScintillaInternalFontParameters.init(fcScintillaInternalFontParameters_new(faceName_x))
-proc create*(T: type ScintillaInternalFontParameters, faceName_x: cstring, size_x: float64): ScintillaInternalFontParameters =
+  gen_ScintillaEdit_types.ScintillaInternalFontParameters.init(fcScintillaInternalFontParameters_new(faceName_x))
+proc create*(T: type gen_ScintillaEdit_types.ScintillaInternalFontParameters, faceName_x: cstring, size_x: float64): gen_ScintillaEdit_types.ScintillaInternalFontParameters =
 
-  ScintillaInternalFontParameters.init(fcScintillaInternalFontParameters_new2(faceName_x, size_x))
-proc create*(T: type ScintillaInternalFontParameters, faceName_x: cstring, size_x: float64, weight_x: ScintillaFontWeight): ScintillaInternalFontParameters =
+  gen_ScintillaEdit_types.ScintillaInternalFontParameters.init(fcScintillaInternalFontParameters_new2(faceName_x, size_x))
+proc create*(T: type gen_ScintillaEdit_types.ScintillaInternalFontParameters, faceName_x: cstring, size_x: float64, weight_x: cint): gen_ScintillaEdit_types.ScintillaInternalFontParameters =
 
-  ScintillaInternalFontParameters.init(fcScintillaInternalFontParameters_new3(faceName_x, size_x, cint(weight_x)))
-proc create*(T: type ScintillaInternalFontParameters, faceName_x: cstring, size_x: float64, weight_x: ScintillaFontWeight, italic_x: bool): ScintillaInternalFontParameters =
+  gen_ScintillaEdit_types.ScintillaInternalFontParameters.init(fcScintillaInternalFontParameters_new3(faceName_x, size_x, cint(weight_x)))
+proc create*(T: type gen_ScintillaEdit_types.ScintillaInternalFontParameters, faceName_x: cstring, size_x: float64, weight_x: cint, italic_x: bool): gen_ScintillaEdit_types.ScintillaInternalFontParameters =
 
-  ScintillaInternalFontParameters.init(fcScintillaInternalFontParameters_new4(faceName_x, size_x, cint(weight_x), italic_x))
-proc create*(T: type ScintillaInternalFontParameters, faceName_x: cstring, size_x: float64, weight_x: ScintillaFontWeight, italic_x: bool, extraFontFlag_x: ScintillaFontQuality): ScintillaInternalFontParameters =
+  gen_ScintillaEdit_types.ScintillaInternalFontParameters.init(fcScintillaInternalFontParameters_new4(faceName_x, size_x, cint(weight_x), italic_x))
+proc create*(T: type gen_ScintillaEdit_types.ScintillaInternalFontParameters, faceName_x: cstring, size_x: float64, weight_x: cint, italic_x: bool, extraFontFlag_x: cint): gen_ScintillaEdit_types.ScintillaInternalFontParameters =
 
-  ScintillaInternalFontParameters.init(fcScintillaInternalFontParameters_new5(faceName_x, size_x, cint(weight_x), italic_x, cint(extraFontFlag_x)))
-proc create*(T: type ScintillaInternalFontParameters, faceName_x: cstring, size_x: float64, weight_x: ScintillaFontWeight, italic_x: bool, extraFontFlag_x: ScintillaFontQuality, technology_x: ScintillaTechnology): ScintillaInternalFontParameters =
+  gen_ScintillaEdit_types.ScintillaInternalFontParameters.init(fcScintillaInternalFontParameters_new5(faceName_x, size_x, cint(weight_x), italic_x, cint(extraFontFlag_x)))
+proc create*(T: type gen_ScintillaEdit_types.ScintillaInternalFontParameters, faceName_x: cstring, size_x: float64, weight_x: cint, italic_x: bool, extraFontFlag_x: cint, technology_x: cint): gen_ScintillaEdit_types.ScintillaInternalFontParameters =
 
-  ScintillaInternalFontParameters.init(fcScintillaInternalFontParameters_new6(faceName_x, size_x, cint(weight_x), italic_x, cint(extraFontFlag_x), cint(technology_x)))
-proc create*(T: type ScintillaInternalFontParameters, faceName_x: cstring, size_x: float64, weight_x: ScintillaFontWeight, italic_x: bool, extraFontFlag_x: ScintillaFontQuality, technology_x: ScintillaTechnology, characterSet_x: ScintillaCharacterSet): ScintillaInternalFontParameters =
+  gen_ScintillaEdit_types.ScintillaInternalFontParameters.init(fcScintillaInternalFontParameters_new6(faceName_x, size_x, cint(weight_x), italic_x, cint(extraFontFlag_x), cint(technology_x)))
+proc create*(T: type gen_ScintillaEdit_types.ScintillaInternalFontParameters, faceName_x: cstring, size_x: float64, weight_x: cint, italic_x: bool, extraFontFlag_x: cint, technology_x: cint, characterSet_x: cint): gen_ScintillaEdit_types.ScintillaInternalFontParameters =
 
-  ScintillaInternalFontParameters.init(fcScintillaInternalFontParameters_new7(faceName_x, size_x, cint(weight_x), italic_x, cint(extraFontFlag_x), cint(technology_x), cint(characterSet_x)))
-proc create*(T: type ScintillaInternalFontParameters, faceName_x: cstring, size_x: float64, weight_x: ScintillaFontWeight, italic_x: bool, extraFontFlag_x: ScintillaFontQuality, technology_x: ScintillaTechnology, characterSet_x: ScintillaCharacterSet, localeName_x: cstring): ScintillaInternalFontParameters =
+  gen_ScintillaEdit_types.ScintillaInternalFontParameters.init(fcScintillaInternalFontParameters_new7(faceName_x, size_x, cint(weight_x), italic_x, cint(extraFontFlag_x), cint(technology_x), cint(characterSet_x)))
+proc create*(T: type gen_ScintillaEdit_types.ScintillaInternalFontParameters, faceName_x: cstring, size_x: float64, weight_x: cint, italic_x: bool, extraFontFlag_x: cint, technology_x: cint, characterSet_x: cint, localeName_x: cstring): gen_ScintillaEdit_types.ScintillaInternalFontParameters =
 
-  ScintillaInternalFontParameters.init(fcScintillaInternalFontParameters_new8(faceName_x, size_x, cint(weight_x), italic_x, cint(extraFontFlag_x), cint(technology_x), cint(characterSet_x), localeName_x))
-proc create*(T: type ScintillaInternalFontParameters, faceName_x: cstring, size_x: float64, weight_x: ScintillaFontWeight, italic_x: bool, extraFontFlag_x: ScintillaFontQuality, technology_x: ScintillaTechnology, characterSet_x: ScintillaCharacterSet, localeName_x: cstring, stretch_x: ScintillaFontStretch): ScintillaInternalFontParameters =
+  gen_ScintillaEdit_types.ScintillaInternalFontParameters.init(fcScintillaInternalFontParameters_new8(faceName_x, size_x, cint(weight_x), italic_x, cint(extraFontFlag_x), cint(technology_x), cint(characterSet_x), localeName_x))
+proc create*(T: type gen_ScintillaEdit_types.ScintillaInternalFontParameters, faceName_x: cstring, size_x: float64, weight_x: cint, italic_x: bool, extraFontFlag_x: cint, technology_x: cint, characterSet_x: cint, localeName_x: cstring, stretch_x: cint): gen_ScintillaEdit_types.ScintillaInternalFontParameters =
 
-  ScintillaInternalFontParameters.init(fcScintillaInternalFontParameters_new9(faceName_x, size_x, cint(weight_x), italic_x, cint(extraFontFlag_x), cint(technology_x), cint(characterSet_x), localeName_x, cint(stretch_x)))
-proc delete*(self: ScintillaInternalFontParameters) =
+  gen_ScintillaEdit_types.ScintillaInternalFontParameters.init(fcScintillaInternalFontParameters_new9(faceName_x, size_x, cint(weight_x), italic_x, cint(extraFontFlag_x), cint(technology_x), cint(characterSet_x), localeName_x, cint(stretch_x)))
+proc delete*(self: gen_ScintillaEdit_types.ScintillaInternalFontParameters) =
   fcScintillaInternalFontParameters_delete(self.h)
 
-func init*(T: type ScintillaInternalFont, h: ptr cScintillaInternalFont): ScintillaInternalFont =
+func init*(T: type gen_ScintillaEdit_types.ScintillaInternalFont, h: ptr cScintillaInternalFont): gen_ScintillaEdit_types.ScintillaInternalFont =
   T(h: h)
-proc create*(T: type ScintillaInternalFont, ): ScintillaInternalFont =
+proc create*(T: type gen_ScintillaEdit_types.ScintillaInternalFont, ): gen_ScintillaEdit_types.ScintillaInternalFont =
 
-  ScintillaInternalFont.init(fcScintillaInternalFont_new())
-proc delete*(self: ScintillaInternalFont) =
+  gen_ScintillaEdit_types.ScintillaInternalFont.init(fcScintillaInternalFont_new())
+proc delete*(self: gen_ScintillaEdit_types.ScintillaInternalFont) =
   fcScintillaInternalFont_delete(self.h)
 
-func init*(T: type ScintillaInternalIScreenLine, h: ptr cScintillaInternalIScreenLine): ScintillaInternalIScreenLine =
+func init*(T: type gen_ScintillaEdit_types.ScintillaInternalIScreenLine, h: ptr cScintillaInternalIScreenLine): gen_ScintillaEdit_types.ScintillaInternalIScreenLine =
   T(h: h)
-proc Length*(self: ScintillaInternalIScreenLine, ): csize_t =
+proc Length*(self: gen_ScintillaEdit_types.ScintillaInternalIScreenLine, ): csize_t =
 
   fcScintillaInternalIScreenLine_Length(self.h)
 
-proc RepresentationCount*(self: ScintillaInternalIScreenLine, ): csize_t =
+proc RepresentationCount*(self: gen_ScintillaEdit_types.ScintillaInternalIScreenLine, ): csize_t =
 
   fcScintillaInternalIScreenLine_RepresentationCount(self.h)
 
-proc Width*(self: ScintillaInternalIScreenLine, ): float64 =
+proc Width*(self: gen_ScintillaEdit_types.ScintillaInternalIScreenLine, ): float64 =
 
   fcScintillaInternalIScreenLine_Width(self.h)
 
-proc Height*(self: ScintillaInternalIScreenLine, ): float64 =
+proc Height*(self: gen_ScintillaEdit_types.ScintillaInternalIScreenLine, ): float64 =
 
   fcScintillaInternalIScreenLine_Height(self.h)
 
-proc TabWidth*(self: ScintillaInternalIScreenLine, ): float64 =
+proc TabWidth*(self: gen_ScintillaEdit_types.ScintillaInternalIScreenLine, ): float64 =
 
   fcScintillaInternalIScreenLine_TabWidth(self.h)
 
-proc TabWidthMinimumPixels*(self: ScintillaInternalIScreenLine, ): float64 =
+proc TabWidthMinimumPixels*(self: gen_ScintillaEdit_types.ScintillaInternalIScreenLine, ): float64 =
 
   fcScintillaInternalIScreenLine_TabWidthMinimumPixels(self.h)
 
-proc FontOfPosition*(self: ScintillaInternalIScreenLine, position: csize_t): ScintillaInternalFont =
+proc FontOfPosition*(self: gen_ScintillaEdit_types.ScintillaInternalIScreenLine, position: csize_t): gen_ScintillaEdit_types.ScintillaInternalFont =
 
-  ScintillaInternalFont(h: fcScintillaInternalIScreenLine_FontOfPosition(self.h, position))
+  gen_ScintillaEdit_types.ScintillaInternalFont(h: fcScintillaInternalIScreenLine_FontOfPosition(self.h, position))
 
-proc RepresentationWidth*(self: ScintillaInternalIScreenLine, position: csize_t): float64 =
+proc RepresentationWidth*(self: gen_ScintillaEdit_types.ScintillaInternalIScreenLine, position: csize_t): float64 =
 
   fcScintillaInternalIScreenLine_RepresentationWidth(self.h, position)
 
-proc TabPositionAfter*(self: ScintillaInternalIScreenLine, xPosition: float64): float64 =
+proc TabPositionAfter*(self: gen_ScintillaEdit_types.ScintillaInternalIScreenLine, xPosition: float64): float64 =
 
   fcScintillaInternalIScreenLine_TabPositionAfter(self.h, xPosition)
 
-proc operatorAssign*(self: ScintillaInternalIScreenLine, param1: ScintillaInternalIScreenLine): void =
+proc operatorAssign*(self: gen_ScintillaEdit_types.ScintillaInternalIScreenLine, param1: gen_ScintillaEdit_types.ScintillaInternalIScreenLine): void =
 
   fcScintillaInternalIScreenLine_operatorAssign(self.h, param1.h)
 
-proc delete*(self: ScintillaInternalIScreenLine) =
+proc delete*(self: gen_ScintillaEdit_types.ScintillaInternalIScreenLine) =
   fcScintillaInternalIScreenLine_delete(self.h)
 
-func init*(T: type ScintillaInternalIScreenLineLayout, h: ptr cScintillaInternalIScreenLineLayout): ScintillaInternalIScreenLineLayout =
+func init*(T: type gen_ScintillaEdit_types.ScintillaInternalIScreenLineLayout, h: ptr cScintillaInternalIScreenLineLayout): gen_ScintillaEdit_types.ScintillaInternalIScreenLineLayout =
   T(h: h)
-proc PositionFromX*(self: ScintillaInternalIScreenLineLayout, xDistance: float64, charPosition: bool): csize_t =
+proc PositionFromX*(self: gen_ScintillaEdit_types.ScintillaInternalIScreenLineLayout, xDistance: float64, charPosition: bool): csize_t =
 
   fcScintillaInternalIScreenLineLayout_PositionFromX(self.h, xDistance, charPosition)
 
-proc XFromPosition*(self: ScintillaInternalIScreenLineLayout, caretPosition: csize_t): float64 =
+proc XFromPosition*(self: gen_ScintillaEdit_types.ScintillaInternalIScreenLineLayout, caretPosition: csize_t): float64 =
 
   fcScintillaInternalIScreenLineLayout_XFromPosition(self.h, caretPosition)
 
-proc operatorAssign*(self: ScintillaInternalIScreenLineLayout, param1: ScintillaInternalIScreenLineLayout): void =
+proc operatorAssign*(self: gen_ScintillaEdit_types.ScintillaInternalIScreenLineLayout, param1: gen_ScintillaEdit_types.ScintillaInternalIScreenLineLayout): void =
 
   fcScintillaInternalIScreenLineLayout_operatorAssign(self.h, param1.h)
 
-proc delete*(self: ScintillaInternalIScreenLineLayout) =
+proc delete*(self: gen_ScintillaEdit_types.ScintillaInternalIScreenLineLayout) =
   fcScintillaInternalIScreenLineLayout_delete(self.h)
 
-func init*(T: type ScintillaInternalSurfaceMode, h: ptr cScintillaInternalSurfaceMode): ScintillaInternalSurfaceMode =
+func init*(T: type gen_ScintillaEdit_types.ScintillaInternalSurfaceMode, h: ptr cScintillaInternalSurfaceMode): gen_ScintillaEdit_types.ScintillaInternalSurfaceMode =
   T(h: h)
-proc create*(T: type ScintillaInternalSurfaceMode, ): ScintillaInternalSurfaceMode =
+proc create*(T: type gen_ScintillaEdit_types.ScintillaInternalSurfaceMode, ): gen_ScintillaEdit_types.ScintillaInternalSurfaceMode =
 
-  ScintillaInternalSurfaceMode.init(fcScintillaInternalSurfaceMode_new())
-proc create*(T: type ScintillaInternalSurfaceMode, codePage_x: cint, bidiR2L_x: bool): ScintillaInternalSurfaceMode =
+  gen_ScintillaEdit_types.ScintillaInternalSurfaceMode.init(fcScintillaInternalSurfaceMode_new())
+proc create*(T: type gen_ScintillaEdit_types.ScintillaInternalSurfaceMode, codePage_x: cint, bidiR2L_x: bool): gen_ScintillaEdit_types.ScintillaInternalSurfaceMode =
 
-  ScintillaInternalSurfaceMode.init(fcScintillaInternalSurfaceMode_new2(codePage_x, bidiR2L_x))
-proc delete*(self: ScintillaInternalSurfaceMode) =
+  gen_ScintillaEdit_types.ScintillaInternalSurfaceMode.init(fcScintillaInternalSurfaceMode_new2(codePage_x, bidiR2L_x))
+proc delete*(self: gen_ScintillaEdit_types.ScintillaInternalSurfaceMode) =
   fcScintillaInternalSurfaceMode_delete(self.h)
 
-func init*(T: type ScintillaInternalSurface, h: ptr cScintillaInternalSurface): ScintillaInternalSurface =
+func init*(T: type gen_ScintillaEdit_types.ScintillaInternalSurface, h: ptr cScintillaInternalSurface): gen_ScintillaEdit_types.ScintillaInternalSurface =
   T(h: h)
-proc create*(T: type ScintillaInternalSurface, ): ScintillaInternalSurface =
+proc create*(T: type gen_ScintillaEdit_types.ScintillaInternalSurface, ): gen_ScintillaEdit_types.ScintillaInternalSurface =
 
-  ScintillaInternalSurface.init(fcScintillaInternalSurface_new())
-proc Init*(self: ScintillaInternalSurface, wid: pointer): void =
+  gen_ScintillaEdit_types.ScintillaInternalSurface.init(fcScintillaInternalSurface_new())
+proc Init*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, wid: pointer): void =
 
   fcScintillaInternalSurface_Init(self.h, wid)
 
-proc Init2*(self: ScintillaInternalSurface, sid: pointer, wid: pointer): void =
+proc Init2*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, sid: pointer, wid: pointer): void =
 
   fcScintillaInternalSurface_Init2(self.h, sid, wid)
 
-proc SetMode*(self: ScintillaInternalSurface, mode: ScintillaInternalSurfaceMode): void =
+proc SetMode*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, mode: gen_ScintillaEdit_types.ScintillaInternalSurfaceMode): void =
 
   fcScintillaInternalSurface_SetMode(self.h, mode.h)
 
-proc Release*(self: ScintillaInternalSurface, ): void =
+proc Release*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, ): void =
 
   fcScintillaInternalSurface_Release(self.h)
 
-proc SupportsFeature*(self: ScintillaInternalSurface, feature: ScintillaSupports): cint =
+proc SupportsFeature*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, feature: cint): cint =
 
   fcScintillaInternalSurface_SupportsFeature(self.h, cint(feature))
 
-proc Initialised*(self: ScintillaInternalSurface, ): bool =
+proc Initialised*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, ): bool =
 
   fcScintillaInternalSurface_Initialised(self.h)
 
-proc LogPixelsY*(self: ScintillaInternalSurface, ): cint =
+proc LogPixelsY*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, ): cint =
 
   fcScintillaInternalSurface_LogPixelsY(self.h)
 
-proc PixelDivisions*(self: ScintillaInternalSurface, ): cint =
+proc PixelDivisions*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, ): cint =
 
   fcScintillaInternalSurface_PixelDivisions(self.h)
 
-proc DeviceHeightFont*(self: ScintillaInternalSurface, points: cint): cint =
+proc DeviceHeightFont*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, points: cint): cint =
 
   fcScintillaInternalSurface_DeviceHeightFont(self.h, points)
 
-proc LineDraw*(self: ScintillaInternalSurface, start: ScintillaInternalPoint, endVal: ScintillaInternalPoint, stroke: ScintillaInternalStroke): void =
+proc LineDraw*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, start: gen_ScintillaEdit_types.ScintillaInternalPoint, endVal: gen_ScintillaEdit_types.ScintillaInternalPoint, stroke: gen_ScintillaEdit_types.ScintillaInternalStroke): void =
 
   fcScintillaInternalSurface_LineDraw(self.h, start.h, endVal.h, stroke.h)
 
-proc PolyLine*(self: ScintillaInternalSurface, pts: ScintillaInternalPoint, npts: csize_t, stroke: ScintillaInternalStroke): void =
+proc PolyLine*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, pts: gen_ScintillaEdit_types.ScintillaInternalPoint, npts: csize_t, stroke: gen_ScintillaEdit_types.ScintillaInternalStroke): void =
 
   fcScintillaInternalSurface_PolyLine(self.h, pts.h, npts, stroke.h)
 
-proc Polygon*(self: ScintillaInternalSurface, pts: ScintillaInternalPoint, npts: csize_t, fillStroke: ScintillaInternalFillStroke): void =
+proc Polygon*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, pts: gen_ScintillaEdit_types.ScintillaInternalPoint, npts: csize_t, fillStroke: gen_ScintillaEdit_types.ScintillaInternalFillStroke): void =
 
   fcScintillaInternalSurface_Polygon(self.h, pts.h, npts, fillStroke.h)
 
-proc RectangleDraw*(self: ScintillaInternalSurface, rc: ScintillaInternalPRectangle, fillStroke: ScintillaInternalFillStroke): void =
+proc RectangleDraw*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, rc: gen_ScintillaEdit_types.ScintillaInternalPRectangle, fillStroke: gen_ScintillaEdit_types.ScintillaInternalFillStroke): void =
 
   fcScintillaInternalSurface_RectangleDraw(self.h, rc.h, fillStroke.h)
 
-proc RectangleFrame*(self: ScintillaInternalSurface, rc: ScintillaInternalPRectangle, stroke: ScintillaInternalStroke): void =
+proc RectangleFrame*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, rc: gen_ScintillaEdit_types.ScintillaInternalPRectangle, stroke: gen_ScintillaEdit_types.ScintillaInternalStroke): void =
 
   fcScintillaInternalSurface_RectangleFrame(self.h, rc.h, stroke.h)
 
-proc FillRectangle*(self: ScintillaInternalSurface, rc: ScintillaInternalPRectangle, fill: ScintillaInternalFill): void =
+proc FillRectangle*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, rc: gen_ScintillaEdit_types.ScintillaInternalPRectangle, fill: gen_ScintillaEdit_types.ScintillaInternalFill): void =
 
   fcScintillaInternalSurface_FillRectangle(self.h, rc.h, fill.h)
 
-proc FillRectangleAligned*(self: ScintillaInternalSurface, rc: ScintillaInternalPRectangle, fill: ScintillaInternalFill): void =
+proc FillRectangleAligned*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, rc: gen_ScintillaEdit_types.ScintillaInternalPRectangle, fill: gen_ScintillaEdit_types.ScintillaInternalFill): void =
 
   fcScintillaInternalSurface_FillRectangleAligned(self.h, rc.h, fill.h)
 
-proc FillRectangle2*(self: ScintillaInternalSurface, rc: ScintillaInternalPRectangle, surfacePattern: ScintillaInternalSurface): void =
+proc FillRectangle2*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, rc: gen_ScintillaEdit_types.ScintillaInternalPRectangle, surfacePattern: gen_ScintillaEdit_types.ScintillaInternalSurface): void =
 
   fcScintillaInternalSurface_FillRectangle2(self.h, rc.h, surfacePattern.h)
 
-proc RoundedRectangle*(self: ScintillaInternalSurface, rc: ScintillaInternalPRectangle, fillStroke: ScintillaInternalFillStroke): void =
+proc RoundedRectangle*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, rc: gen_ScintillaEdit_types.ScintillaInternalPRectangle, fillStroke: gen_ScintillaEdit_types.ScintillaInternalFillStroke): void =
 
   fcScintillaInternalSurface_RoundedRectangle(self.h, rc.h, fillStroke.h)
 
-proc AlphaRectangle*(self: ScintillaInternalSurface, rc: ScintillaInternalPRectangle, cornerSize: float64, fillStroke: ScintillaInternalFillStroke): void =
+proc AlphaRectangle*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, rc: gen_ScintillaEdit_types.ScintillaInternalPRectangle, cornerSize: float64, fillStroke: gen_ScintillaEdit_types.ScintillaInternalFillStroke): void =
 
   fcScintillaInternalSurface_AlphaRectangle(self.h, rc.h, cornerSize, fillStroke.h)
 
-proc DrawRGBAImage*(self: ScintillaInternalSurface, rc: ScintillaInternalPRectangle, width: cint, height: cint, pixelsImage: ptr uint8): void =
+proc DrawRGBAImage*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, rc: gen_ScintillaEdit_types.ScintillaInternalPRectangle, width: cint, height: cint, pixelsImage: ptr uint8): void =
 
   fcScintillaInternalSurface_DrawRGBAImage(self.h, rc.h, width, height, pixelsImage)
 
-proc Ellipse*(self: ScintillaInternalSurface, rc: ScintillaInternalPRectangle, fillStroke: ScintillaInternalFillStroke): void =
+proc Ellipse*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, rc: gen_ScintillaEdit_types.ScintillaInternalPRectangle, fillStroke: gen_ScintillaEdit_types.ScintillaInternalFillStroke): void =
 
   fcScintillaInternalSurface_Ellipse(self.h, rc.h, fillStroke.h)
 
-proc Stadium*(self: ScintillaInternalSurface, rc: ScintillaInternalPRectangle, fillStroke: ScintillaInternalFillStroke, ends: ScintillaInternalSurfaceEnds): void =
+proc Stadium*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, rc: gen_ScintillaEdit_types.ScintillaInternalPRectangle, fillStroke: gen_ScintillaEdit_types.ScintillaInternalFillStroke, ends: cint): void =
 
   fcScintillaInternalSurface_Stadium(self.h, rc.h, fillStroke.h, cint(ends))
 
-proc Copy*(self: ScintillaInternalSurface, rc: ScintillaInternalPRectangle, fromVal: ScintillaInternalPoint, surfaceSource: ScintillaInternalSurface): void =
+proc Copy*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, rc: gen_ScintillaEdit_types.ScintillaInternalPRectangle, fromVal: gen_ScintillaEdit_types.ScintillaInternalPoint, surfaceSource: gen_ScintillaEdit_types.ScintillaInternalSurface): void =
 
   fcScintillaInternalSurface_Copy(self.h, rc.h, fromVal.h, surfaceSource.h)
 
-proc Ascent*(self: ScintillaInternalSurface, font_x: ScintillaInternalFont): float64 =
+proc Ascent*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, font_x: gen_ScintillaEdit_types.ScintillaInternalFont): float64 =
 
   fcScintillaInternalSurface_Ascent(self.h, font_x.h)
 
-proc Descent*(self: ScintillaInternalSurface, font_x: ScintillaInternalFont): float64 =
+proc Descent*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, font_x: gen_ScintillaEdit_types.ScintillaInternalFont): float64 =
 
   fcScintillaInternalSurface_Descent(self.h, font_x.h)
 
-proc InternalLeading*(self: ScintillaInternalSurface, font_x: ScintillaInternalFont): float64 =
+proc InternalLeading*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, font_x: gen_ScintillaEdit_types.ScintillaInternalFont): float64 =
 
   fcScintillaInternalSurface_InternalLeading(self.h, font_x.h)
 
-proc Height*(self: ScintillaInternalSurface, font_x: ScintillaInternalFont): float64 =
+proc Height*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, font_x: gen_ScintillaEdit_types.ScintillaInternalFont): float64 =
 
   fcScintillaInternalSurface_Height(self.h, font_x.h)
 
-proc AverageCharWidth*(self: ScintillaInternalSurface, font_x: ScintillaInternalFont): float64 =
+proc AverageCharWidth*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, font_x: gen_ScintillaEdit_types.ScintillaInternalFont): float64 =
 
   fcScintillaInternalSurface_AverageCharWidth(self.h, font_x.h)
 
-proc SetClip*(self: ScintillaInternalSurface, rc: ScintillaInternalPRectangle): void =
+proc SetClip*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, rc: gen_ScintillaEdit_types.ScintillaInternalPRectangle): void =
 
   fcScintillaInternalSurface_SetClip(self.h, rc.h)
 
-proc PopClip*(self: ScintillaInternalSurface, ): void =
+proc PopClip*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, ): void =
 
   fcScintillaInternalSurface_PopClip(self.h)
 
-proc FlushCachedState*(self: ScintillaInternalSurface, ): void =
+proc FlushCachedState*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, ): void =
 
   fcScintillaInternalSurface_FlushCachedState(self.h)
 
-proc FlushDrawing*(self: ScintillaInternalSurface, ): void =
+proc FlushDrawing*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, ): void =
 
   fcScintillaInternalSurface_FlushDrawing(self.h)
 
-type ScintillaInternalSurfaceInitBase* = proc(wid: pointer): void
-proc onInit*(self: ScintillaInternalSurface, slot: proc(wid: pointer): void) =
+type ScintillaInternalSurfaceInitProc* = proc(wid: pointer): void
+proc onInit*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, slot: ScintillaInternalSurfaceInitProc) =
   # TODO check subclass
-  type Cb = proc(wid: pointer): void
-  var tmp = new Cb
+  var tmp = new ScintillaInternalSurfaceInitProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaInternalSurface_override_virtual_Init(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_Scintilla__Internal__Surface_Init(self: ptr cScintillaInternalSurface, slot: int, wid: pointer): void {.exportc: "miqt_exec_callback_Scintilla__Internal__Surface_Init ".} =
-  type Cb = proc(wid: pointer): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr ScintillaInternalSurfaceInitProc](cast[pointer](slot))
   let slotval1 = wid
 
 
   nimfunc[](slotval1)
-type ScintillaInternalSurfaceInit2Base* = proc(sid: pointer, wid: pointer): void
-proc onInit2*(self: ScintillaInternalSurface, slot: proc(sid: pointer, wid: pointer): void) =
+type ScintillaInternalSurfaceInit2Proc* = proc(sid: pointer, wid: pointer): void
+proc onInit2*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, slot: ScintillaInternalSurfaceInit2Proc) =
   # TODO check subclass
-  type Cb = proc(sid: pointer, wid: pointer): void
-  var tmp = new Cb
+  var tmp = new ScintillaInternalSurfaceInit2Proc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaInternalSurface_override_virtual_Init2(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_Scintilla__Internal__Surface_Init2(self: ptr cScintillaInternalSurface, slot: int, sid: pointer, wid: pointer): void {.exportc: "miqt_exec_callback_Scintilla__Internal__Surface_Init2 ".} =
-  type Cb = proc(sid: pointer, wid: pointer): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr ScintillaInternalSurfaceInit2Proc](cast[pointer](slot))
   let slotval1 = sid
 
   let slotval2 = wid
 
 
   nimfunc[](slotval1, slotval2)
-type ScintillaInternalSurfaceSetModeBase* = proc(mode: ScintillaInternalSurfaceMode): void
-proc onSetMode*(self: ScintillaInternalSurface, slot: proc(mode: ScintillaInternalSurfaceMode): void) =
+type ScintillaInternalSurfaceSetModeProc* = proc(mode: gen_ScintillaEdit_types.ScintillaInternalSurfaceMode): void
+proc onSetMode*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, slot: ScintillaInternalSurfaceSetModeProc) =
   # TODO check subclass
-  type Cb = proc(mode: ScintillaInternalSurfaceMode): void
-  var tmp = new Cb
+  var tmp = new ScintillaInternalSurfaceSetModeProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaInternalSurface_override_virtual_SetMode(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_Scintilla__Internal__Surface_SetMode(self: ptr cScintillaInternalSurface, slot: int, mode: pointer): void {.exportc: "miqt_exec_callback_Scintilla__Internal__Surface_SetMode ".} =
-  type Cb = proc(mode: ScintillaInternalSurfaceMode): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = ScintillaInternalSurfaceMode(h: mode)
+  var nimfunc = cast[ptr ScintillaInternalSurfaceSetModeProc](cast[pointer](slot))
+  let slotval1 = gen_ScintillaEdit_types.ScintillaInternalSurfaceMode(h: mode)
 
 
   nimfunc[](slotval1)
-type ScintillaInternalSurfaceReleaseBase* = proc(): void
-proc onRelease*(self: ScintillaInternalSurface, slot: proc(): void) =
+type ScintillaInternalSurfaceReleaseProc* = proc(): void
+proc onRelease*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, slot: ScintillaInternalSurfaceReleaseProc) =
   # TODO check subclass
-  type Cb = proc(): void
-  var tmp = new Cb
+  var tmp = new ScintillaInternalSurfaceReleaseProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaInternalSurface_override_virtual_Release(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_Scintilla__Internal__Surface_Release(self: ptr cScintillaInternalSurface, slot: int): void {.exportc: "miqt_exec_callback_Scintilla__Internal__Surface_Release ".} =
-  type Cb = proc(): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr ScintillaInternalSurfaceReleaseProc](cast[pointer](slot))
 
   nimfunc[]()
-type ScintillaInternalSurfaceSupportsFeatureBase* = proc(feature: ScintillaSupports): cint
-proc onSupportsFeature*(self: ScintillaInternalSurface, slot: proc(feature: ScintillaSupports): cint) =
+type ScintillaInternalSurfaceSupportsFeatureProc* = proc(feature: cint): cint
+proc onSupportsFeature*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, slot: ScintillaInternalSurfaceSupportsFeatureProc) =
   # TODO check subclass
-  type Cb = proc(feature: ScintillaSupports): cint
-  var tmp = new Cb
+  var tmp = new ScintillaInternalSurfaceSupportsFeatureProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaInternalSurface_override_virtual_SupportsFeature(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_Scintilla__Internal__Surface_SupportsFeature(self: ptr cScintillaInternalSurface, slot: int, feature: cint): cint {.exportc: "miqt_exec_callback_Scintilla__Internal__Surface_SupportsFeature ".} =
-  type Cb = proc(feature: ScintillaSupports): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = ScintillaSupports(feature)
+  var nimfunc = cast[ptr ScintillaInternalSurfaceSupportsFeatureProc](cast[pointer](slot))
+  let slotval1 = cint(feature)
 
 
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-type ScintillaInternalSurfaceInitialisedBase* = proc(): bool
-proc onInitialised*(self: ScintillaInternalSurface, slot: proc(): bool) =
+type ScintillaInternalSurfaceInitialisedProc* = proc(): bool
+proc onInitialised*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, slot: ScintillaInternalSurfaceInitialisedProc) =
   # TODO check subclass
-  type Cb = proc(): bool
-  var tmp = new Cb
+  var tmp = new ScintillaInternalSurfaceInitialisedProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaInternalSurface_override_virtual_Initialised(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_Scintilla__Internal__Surface_Initialised(self: ptr cScintillaInternalSurface, slot: int): bool {.exportc: "miqt_exec_callback_Scintilla__Internal__Surface_Initialised ".} =
-  type Cb = proc(): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr ScintillaInternalSurfaceInitialisedProc](cast[pointer](slot))
 
   let virtualReturn = nimfunc[]( )
 
   virtualReturn
-type ScintillaInternalSurfaceLogPixelsYBase* = proc(): cint
-proc onLogPixelsY*(self: ScintillaInternalSurface, slot: proc(): cint) =
+type ScintillaInternalSurfaceLogPixelsYProc* = proc(): cint
+proc onLogPixelsY*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, slot: ScintillaInternalSurfaceLogPixelsYProc) =
   # TODO check subclass
-  type Cb = proc(): cint
-  var tmp = new Cb
+  var tmp = new ScintillaInternalSurfaceLogPixelsYProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaInternalSurface_override_virtual_LogPixelsY(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_Scintilla__Internal__Surface_LogPixelsY(self: ptr cScintillaInternalSurface, slot: int): cint {.exportc: "miqt_exec_callback_Scintilla__Internal__Surface_LogPixelsY ".} =
-  type Cb = proc(): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr ScintillaInternalSurfaceLogPixelsYProc](cast[pointer](slot))
 
   let virtualReturn = nimfunc[]( )
 
   virtualReturn
-type ScintillaInternalSurfacePixelDivisionsBase* = proc(): cint
-proc onPixelDivisions*(self: ScintillaInternalSurface, slot: proc(): cint) =
+type ScintillaInternalSurfacePixelDivisionsProc* = proc(): cint
+proc onPixelDivisions*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, slot: ScintillaInternalSurfacePixelDivisionsProc) =
   # TODO check subclass
-  type Cb = proc(): cint
-  var tmp = new Cb
+  var tmp = new ScintillaInternalSurfacePixelDivisionsProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaInternalSurface_override_virtual_PixelDivisions(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_Scintilla__Internal__Surface_PixelDivisions(self: ptr cScintillaInternalSurface, slot: int): cint {.exportc: "miqt_exec_callback_Scintilla__Internal__Surface_PixelDivisions ".} =
-  type Cb = proc(): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr ScintillaInternalSurfacePixelDivisionsProc](cast[pointer](slot))
 
   let virtualReturn = nimfunc[]( )
 
   virtualReturn
-type ScintillaInternalSurfaceDeviceHeightFontBase* = proc(points: cint): cint
-proc onDeviceHeightFont*(self: ScintillaInternalSurface, slot: proc(points: cint): cint) =
+type ScintillaInternalSurfaceDeviceHeightFontProc* = proc(points: cint): cint
+proc onDeviceHeightFont*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, slot: ScintillaInternalSurfaceDeviceHeightFontProc) =
   # TODO check subclass
-  type Cb = proc(points: cint): cint
-  var tmp = new Cb
+  var tmp = new ScintillaInternalSurfaceDeviceHeightFontProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaInternalSurface_override_virtual_DeviceHeightFont(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_Scintilla__Internal__Surface_DeviceHeightFont(self: ptr cScintillaInternalSurface, slot: int, points: cint): cint {.exportc: "miqt_exec_callback_Scintilla__Internal__Surface_DeviceHeightFont ".} =
-  type Cb = proc(points: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr ScintillaInternalSurfaceDeviceHeightFontProc](cast[pointer](slot))
   let slotval1 = points
 
 
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-type ScintillaInternalSurfaceLineDrawBase* = proc(start: ScintillaInternalPoint, endVal: ScintillaInternalPoint, stroke: ScintillaInternalStroke): void
-proc onLineDraw*(self: ScintillaInternalSurface, slot: proc(start: ScintillaInternalPoint, endVal: ScintillaInternalPoint, stroke: ScintillaInternalStroke): void) =
+type ScintillaInternalSurfaceLineDrawProc* = proc(start: gen_ScintillaEdit_types.ScintillaInternalPoint, endVal: gen_ScintillaEdit_types.ScintillaInternalPoint, stroke: gen_ScintillaEdit_types.ScintillaInternalStroke): void
+proc onLineDraw*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, slot: ScintillaInternalSurfaceLineDrawProc) =
   # TODO check subclass
-  type Cb = proc(start: ScintillaInternalPoint, endVal: ScintillaInternalPoint, stroke: ScintillaInternalStroke): void
-  var tmp = new Cb
+  var tmp = new ScintillaInternalSurfaceLineDrawProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaInternalSurface_override_virtual_LineDraw(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_Scintilla__Internal__Surface_LineDraw(self: ptr cScintillaInternalSurface, slot: int, start: pointer, endVal: pointer, stroke: pointer): void {.exportc: "miqt_exec_callback_Scintilla__Internal__Surface_LineDraw ".} =
-  type Cb = proc(start: ScintillaInternalPoint, endVal: ScintillaInternalPoint, stroke: ScintillaInternalStroke): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = ScintillaInternalPoint(h: start)
+  var nimfunc = cast[ptr ScintillaInternalSurfaceLineDrawProc](cast[pointer](slot))
+  let slotval1 = gen_ScintillaEdit_types.ScintillaInternalPoint(h: start)
 
-  let slotval2 = ScintillaInternalPoint(h: endVal)
+  let slotval2 = gen_ScintillaEdit_types.ScintillaInternalPoint(h: endVal)
 
-  let slotval3 = ScintillaInternalStroke(h: stroke)
+  let slotval3 = gen_ScintillaEdit_types.ScintillaInternalStroke(h: stroke)
 
 
   nimfunc[](slotval1, slotval2, slotval3)
-type ScintillaInternalSurfacePolyLineBase* = proc(pts: ScintillaInternalPoint, npts: csize_t, stroke: ScintillaInternalStroke): void
-proc onPolyLine*(self: ScintillaInternalSurface, slot: proc(pts: ScintillaInternalPoint, npts: csize_t, stroke: ScintillaInternalStroke): void) =
+type ScintillaInternalSurfacePolyLineProc* = proc(pts: gen_ScintillaEdit_types.ScintillaInternalPoint, npts: csize_t, stroke: gen_ScintillaEdit_types.ScintillaInternalStroke): void
+proc onPolyLine*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, slot: ScintillaInternalSurfacePolyLineProc) =
   # TODO check subclass
-  type Cb = proc(pts: ScintillaInternalPoint, npts: csize_t, stroke: ScintillaInternalStroke): void
-  var tmp = new Cb
+  var tmp = new ScintillaInternalSurfacePolyLineProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaInternalSurface_override_virtual_PolyLine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_Scintilla__Internal__Surface_PolyLine(self: ptr cScintillaInternalSurface, slot: int, pts: pointer, npts: csize_t, stroke: pointer): void {.exportc: "miqt_exec_callback_Scintilla__Internal__Surface_PolyLine ".} =
-  type Cb = proc(pts: ScintillaInternalPoint, npts: csize_t, stroke: ScintillaInternalStroke): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = ScintillaInternalPoint(h: pts)
+  var nimfunc = cast[ptr ScintillaInternalSurfacePolyLineProc](cast[pointer](slot))
+  let slotval1 = gen_ScintillaEdit_types.ScintillaInternalPoint(h: pts)
 
   let slotval2 = npts
 
-  let slotval3 = ScintillaInternalStroke(h: stroke)
+  let slotval3 = gen_ScintillaEdit_types.ScintillaInternalStroke(h: stroke)
 
 
   nimfunc[](slotval1, slotval2, slotval3)
-type ScintillaInternalSurfacePolygonBase* = proc(pts: ScintillaInternalPoint, npts: csize_t, fillStroke: ScintillaInternalFillStroke): void
-proc onPolygon*(self: ScintillaInternalSurface, slot: proc(pts: ScintillaInternalPoint, npts: csize_t, fillStroke: ScintillaInternalFillStroke): void) =
+type ScintillaInternalSurfacePolygonProc* = proc(pts: gen_ScintillaEdit_types.ScintillaInternalPoint, npts: csize_t, fillStroke: gen_ScintillaEdit_types.ScintillaInternalFillStroke): void
+proc onPolygon*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, slot: ScintillaInternalSurfacePolygonProc) =
   # TODO check subclass
-  type Cb = proc(pts: ScintillaInternalPoint, npts: csize_t, fillStroke: ScintillaInternalFillStroke): void
-  var tmp = new Cb
+  var tmp = new ScintillaInternalSurfacePolygonProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaInternalSurface_override_virtual_Polygon(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_Scintilla__Internal__Surface_Polygon(self: ptr cScintillaInternalSurface, slot: int, pts: pointer, npts: csize_t, fillStroke: pointer): void {.exportc: "miqt_exec_callback_Scintilla__Internal__Surface_Polygon ".} =
-  type Cb = proc(pts: ScintillaInternalPoint, npts: csize_t, fillStroke: ScintillaInternalFillStroke): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = ScintillaInternalPoint(h: pts)
+  var nimfunc = cast[ptr ScintillaInternalSurfacePolygonProc](cast[pointer](slot))
+  let slotval1 = gen_ScintillaEdit_types.ScintillaInternalPoint(h: pts)
 
   let slotval2 = npts
 
-  let slotval3 = ScintillaInternalFillStroke(h: fillStroke)
+  let slotval3 = gen_ScintillaEdit_types.ScintillaInternalFillStroke(h: fillStroke)
 
 
   nimfunc[](slotval1, slotval2, slotval3)
-type ScintillaInternalSurfaceRectangleDrawBase* = proc(rc: ScintillaInternalPRectangle, fillStroke: ScintillaInternalFillStroke): void
-proc onRectangleDraw*(self: ScintillaInternalSurface, slot: proc(rc: ScintillaInternalPRectangle, fillStroke: ScintillaInternalFillStroke): void) =
+type ScintillaInternalSurfaceRectangleDrawProc* = proc(rc: gen_ScintillaEdit_types.ScintillaInternalPRectangle, fillStroke: gen_ScintillaEdit_types.ScintillaInternalFillStroke): void
+proc onRectangleDraw*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, slot: ScintillaInternalSurfaceRectangleDrawProc) =
   # TODO check subclass
-  type Cb = proc(rc: ScintillaInternalPRectangle, fillStroke: ScintillaInternalFillStroke): void
-  var tmp = new Cb
+  var tmp = new ScintillaInternalSurfaceRectangleDrawProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaInternalSurface_override_virtual_RectangleDraw(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_Scintilla__Internal__Surface_RectangleDraw(self: ptr cScintillaInternalSurface, slot: int, rc: pointer, fillStroke: pointer): void {.exportc: "miqt_exec_callback_Scintilla__Internal__Surface_RectangleDraw ".} =
-  type Cb = proc(rc: ScintillaInternalPRectangle, fillStroke: ScintillaInternalFillStroke): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = ScintillaInternalPRectangle(h: rc)
+  var nimfunc = cast[ptr ScintillaInternalSurfaceRectangleDrawProc](cast[pointer](slot))
+  let slotval1 = gen_ScintillaEdit_types.ScintillaInternalPRectangle(h: rc)
 
-  let slotval2 = ScintillaInternalFillStroke(h: fillStroke)
+  let slotval2 = gen_ScintillaEdit_types.ScintillaInternalFillStroke(h: fillStroke)
 
 
   nimfunc[](slotval1, slotval2)
-type ScintillaInternalSurfaceRectangleFrameBase* = proc(rc: ScintillaInternalPRectangle, stroke: ScintillaInternalStroke): void
-proc onRectangleFrame*(self: ScintillaInternalSurface, slot: proc(rc: ScintillaInternalPRectangle, stroke: ScintillaInternalStroke): void) =
+type ScintillaInternalSurfaceRectangleFrameProc* = proc(rc: gen_ScintillaEdit_types.ScintillaInternalPRectangle, stroke: gen_ScintillaEdit_types.ScintillaInternalStroke): void
+proc onRectangleFrame*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, slot: ScintillaInternalSurfaceRectangleFrameProc) =
   # TODO check subclass
-  type Cb = proc(rc: ScintillaInternalPRectangle, stroke: ScintillaInternalStroke): void
-  var tmp = new Cb
+  var tmp = new ScintillaInternalSurfaceRectangleFrameProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaInternalSurface_override_virtual_RectangleFrame(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_Scintilla__Internal__Surface_RectangleFrame(self: ptr cScintillaInternalSurface, slot: int, rc: pointer, stroke: pointer): void {.exportc: "miqt_exec_callback_Scintilla__Internal__Surface_RectangleFrame ".} =
-  type Cb = proc(rc: ScintillaInternalPRectangle, stroke: ScintillaInternalStroke): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = ScintillaInternalPRectangle(h: rc)
+  var nimfunc = cast[ptr ScintillaInternalSurfaceRectangleFrameProc](cast[pointer](slot))
+  let slotval1 = gen_ScintillaEdit_types.ScintillaInternalPRectangle(h: rc)
 
-  let slotval2 = ScintillaInternalStroke(h: stroke)
+  let slotval2 = gen_ScintillaEdit_types.ScintillaInternalStroke(h: stroke)
 
 
   nimfunc[](slotval1, slotval2)
-type ScintillaInternalSurfaceFillRectangleBase* = proc(rc: ScintillaInternalPRectangle, fill: ScintillaInternalFill): void
-proc onFillRectangle*(self: ScintillaInternalSurface, slot: proc(rc: ScintillaInternalPRectangle, fill: ScintillaInternalFill): void) =
+type ScintillaInternalSurfaceFillRectangleProc* = proc(rc: gen_ScintillaEdit_types.ScintillaInternalPRectangle, fill: gen_ScintillaEdit_types.ScintillaInternalFill): void
+proc onFillRectangle*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, slot: ScintillaInternalSurfaceFillRectangleProc) =
   # TODO check subclass
-  type Cb = proc(rc: ScintillaInternalPRectangle, fill: ScintillaInternalFill): void
-  var tmp = new Cb
+  var tmp = new ScintillaInternalSurfaceFillRectangleProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaInternalSurface_override_virtual_FillRectangle(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_Scintilla__Internal__Surface_FillRectangle(self: ptr cScintillaInternalSurface, slot: int, rc: pointer, fill: pointer): void {.exportc: "miqt_exec_callback_Scintilla__Internal__Surface_FillRectangle ".} =
-  type Cb = proc(rc: ScintillaInternalPRectangle, fill: ScintillaInternalFill): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = ScintillaInternalPRectangle(h: rc)
+  var nimfunc = cast[ptr ScintillaInternalSurfaceFillRectangleProc](cast[pointer](slot))
+  let slotval1 = gen_ScintillaEdit_types.ScintillaInternalPRectangle(h: rc)
 
-  let slotval2 = ScintillaInternalFill(h: fill)
+  let slotval2 = gen_ScintillaEdit_types.ScintillaInternalFill(h: fill)
 
 
   nimfunc[](slotval1, slotval2)
-type ScintillaInternalSurfaceFillRectangleAlignedBase* = proc(rc: ScintillaInternalPRectangle, fill: ScintillaInternalFill): void
-proc onFillRectangleAligned*(self: ScintillaInternalSurface, slot: proc(rc: ScintillaInternalPRectangle, fill: ScintillaInternalFill): void) =
+type ScintillaInternalSurfaceFillRectangleAlignedProc* = proc(rc: gen_ScintillaEdit_types.ScintillaInternalPRectangle, fill: gen_ScintillaEdit_types.ScintillaInternalFill): void
+proc onFillRectangleAligned*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, slot: ScintillaInternalSurfaceFillRectangleAlignedProc) =
   # TODO check subclass
-  type Cb = proc(rc: ScintillaInternalPRectangle, fill: ScintillaInternalFill): void
-  var tmp = new Cb
+  var tmp = new ScintillaInternalSurfaceFillRectangleAlignedProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaInternalSurface_override_virtual_FillRectangleAligned(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_Scintilla__Internal__Surface_FillRectangleAligned(self: ptr cScintillaInternalSurface, slot: int, rc: pointer, fill: pointer): void {.exportc: "miqt_exec_callback_Scintilla__Internal__Surface_FillRectangleAligned ".} =
-  type Cb = proc(rc: ScintillaInternalPRectangle, fill: ScintillaInternalFill): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = ScintillaInternalPRectangle(h: rc)
+  var nimfunc = cast[ptr ScintillaInternalSurfaceFillRectangleAlignedProc](cast[pointer](slot))
+  let slotval1 = gen_ScintillaEdit_types.ScintillaInternalPRectangle(h: rc)
 
-  let slotval2 = ScintillaInternalFill(h: fill)
+  let slotval2 = gen_ScintillaEdit_types.ScintillaInternalFill(h: fill)
 
 
   nimfunc[](slotval1, slotval2)
-type ScintillaInternalSurfaceFillRectangle2Base* = proc(rc: ScintillaInternalPRectangle, surfacePattern: ScintillaInternalSurface): void
-proc onFillRectangle2*(self: ScintillaInternalSurface, slot: proc(rc: ScintillaInternalPRectangle, surfacePattern: ScintillaInternalSurface): void) =
+type ScintillaInternalSurfaceFillRectangle2Proc* = proc(rc: gen_ScintillaEdit_types.ScintillaInternalPRectangle, surfacePattern: gen_ScintillaEdit_types.ScintillaInternalSurface): void
+proc onFillRectangle2*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, slot: ScintillaInternalSurfaceFillRectangle2Proc) =
   # TODO check subclass
-  type Cb = proc(rc: ScintillaInternalPRectangle, surfacePattern: ScintillaInternalSurface): void
-  var tmp = new Cb
+  var tmp = new ScintillaInternalSurfaceFillRectangle2Proc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaInternalSurface_override_virtual_FillRectangle2(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_Scintilla__Internal__Surface_FillRectangle2(self: ptr cScintillaInternalSurface, slot: int, rc: pointer, surfacePattern: pointer): void {.exportc: "miqt_exec_callback_Scintilla__Internal__Surface_FillRectangle2 ".} =
-  type Cb = proc(rc: ScintillaInternalPRectangle, surfacePattern: ScintillaInternalSurface): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = ScintillaInternalPRectangle(h: rc)
+  var nimfunc = cast[ptr ScintillaInternalSurfaceFillRectangle2Proc](cast[pointer](slot))
+  let slotval1 = gen_ScintillaEdit_types.ScintillaInternalPRectangle(h: rc)
 
-  let slotval2 = ScintillaInternalSurface(h: surfacePattern)
+  let slotval2 = gen_ScintillaEdit_types.ScintillaInternalSurface(h: surfacePattern)
 
 
   nimfunc[](slotval1, slotval2)
-type ScintillaInternalSurfaceRoundedRectangleBase* = proc(rc: ScintillaInternalPRectangle, fillStroke: ScintillaInternalFillStroke): void
-proc onRoundedRectangle*(self: ScintillaInternalSurface, slot: proc(rc: ScintillaInternalPRectangle, fillStroke: ScintillaInternalFillStroke): void) =
+type ScintillaInternalSurfaceRoundedRectangleProc* = proc(rc: gen_ScintillaEdit_types.ScintillaInternalPRectangle, fillStroke: gen_ScintillaEdit_types.ScintillaInternalFillStroke): void
+proc onRoundedRectangle*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, slot: ScintillaInternalSurfaceRoundedRectangleProc) =
   # TODO check subclass
-  type Cb = proc(rc: ScintillaInternalPRectangle, fillStroke: ScintillaInternalFillStroke): void
-  var tmp = new Cb
+  var tmp = new ScintillaInternalSurfaceRoundedRectangleProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaInternalSurface_override_virtual_RoundedRectangle(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_Scintilla__Internal__Surface_RoundedRectangle(self: ptr cScintillaInternalSurface, slot: int, rc: pointer, fillStroke: pointer): void {.exportc: "miqt_exec_callback_Scintilla__Internal__Surface_RoundedRectangle ".} =
-  type Cb = proc(rc: ScintillaInternalPRectangle, fillStroke: ScintillaInternalFillStroke): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = ScintillaInternalPRectangle(h: rc)
+  var nimfunc = cast[ptr ScintillaInternalSurfaceRoundedRectangleProc](cast[pointer](slot))
+  let slotval1 = gen_ScintillaEdit_types.ScintillaInternalPRectangle(h: rc)
 
-  let slotval2 = ScintillaInternalFillStroke(h: fillStroke)
+  let slotval2 = gen_ScintillaEdit_types.ScintillaInternalFillStroke(h: fillStroke)
 
 
   nimfunc[](slotval1, slotval2)
-type ScintillaInternalSurfaceAlphaRectangleBase* = proc(rc: ScintillaInternalPRectangle, cornerSize: float64, fillStroke: ScintillaInternalFillStroke): void
-proc onAlphaRectangle*(self: ScintillaInternalSurface, slot: proc(rc: ScintillaInternalPRectangle, cornerSize: float64, fillStroke: ScintillaInternalFillStroke): void) =
+type ScintillaInternalSurfaceAlphaRectangleProc* = proc(rc: gen_ScintillaEdit_types.ScintillaInternalPRectangle, cornerSize: float64, fillStroke: gen_ScintillaEdit_types.ScintillaInternalFillStroke): void
+proc onAlphaRectangle*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, slot: ScintillaInternalSurfaceAlphaRectangleProc) =
   # TODO check subclass
-  type Cb = proc(rc: ScintillaInternalPRectangle, cornerSize: float64, fillStroke: ScintillaInternalFillStroke): void
-  var tmp = new Cb
+  var tmp = new ScintillaInternalSurfaceAlphaRectangleProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaInternalSurface_override_virtual_AlphaRectangle(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_Scintilla__Internal__Surface_AlphaRectangle(self: ptr cScintillaInternalSurface, slot: int, rc: pointer, cornerSize: float64, fillStroke: pointer): void {.exportc: "miqt_exec_callback_Scintilla__Internal__Surface_AlphaRectangle ".} =
-  type Cb = proc(rc: ScintillaInternalPRectangle, cornerSize: float64, fillStroke: ScintillaInternalFillStroke): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = ScintillaInternalPRectangle(h: rc)
+  var nimfunc = cast[ptr ScintillaInternalSurfaceAlphaRectangleProc](cast[pointer](slot))
+  let slotval1 = gen_ScintillaEdit_types.ScintillaInternalPRectangle(h: rc)
 
   let slotval2 = cornerSize
 
-  let slotval3 = ScintillaInternalFillStroke(h: fillStroke)
+  let slotval3 = gen_ScintillaEdit_types.ScintillaInternalFillStroke(h: fillStroke)
 
 
   nimfunc[](slotval1, slotval2, slotval3)
-type ScintillaInternalSurfaceDrawRGBAImageBase* = proc(rc: ScintillaInternalPRectangle, width: cint, height: cint, pixelsImage: ptr uint8): void
-proc onDrawRGBAImage*(self: ScintillaInternalSurface, slot: proc(rc: ScintillaInternalPRectangle, width: cint, height: cint, pixelsImage: ptr uint8): void) =
+type ScintillaInternalSurfaceDrawRGBAImageProc* = proc(rc: gen_ScintillaEdit_types.ScintillaInternalPRectangle, width: cint, height: cint, pixelsImage: ptr uint8): void
+proc onDrawRGBAImage*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, slot: ScintillaInternalSurfaceDrawRGBAImageProc) =
   # TODO check subclass
-  type Cb = proc(rc: ScintillaInternalPRectangle, width: cint, height: cint, pixelsImage: ptr uint8): void
-  var tmp = new Cb
+  var tmp = new ScintillaInternalSurfaceDrawRGBAImageProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaInternalSurface_override_virtual_DrawRGBAImage(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_Scintilla__Internal__Surface_DrawRGBAImage(self: ptr cScintillaInternalSurface, slot: int, rc: pointer, width: cint, height: cint, pixelsImage: ptr uint8): void {.exportc: "miqt_exec_callback_Scintilla__Internal__Surface_DrawRGBAImage ".} =
-  type Cb = proc(rc: ScintillaInternalPRectangle, width: cint, height: cint, pixelsImage: ptr uint8): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = ScintillaInternalPRectangle(h: rc)
+  var nimfunc = cast[ptr ScintillaInternalSurfaceDrawRGBAImageProc](cast[pointer](slot))
+  let slotval1 = gen_ScintillaEdit_types.ScintillaInternalPRectangle(h: rc)
 
   let slotval2 = width
 
@@ -4267,636 +4065,582 @@ proc miqt_exec_callback_Scintilla__Internal__Surface_DrawRGBAImage(self: ptr cSc
 
 
   nimfunc[](slotval1, slotval2, slotval3, slotval4)
-type ScintillaInternalSurfaceEllipseBase* = proc(rc: ScintillaInternalPRectangle, fillStroke: ScintillaInternalFillStroke): void
-proc onEllipse*(self: ScintillaInternalSurface, slot: proc(rc: ScintillaInternalPRectangle, fillStroke: ScintillaInternalFillStroke): void) =
+type ScintillaInternalSurfaceEllipseProc* = proc(rc: gen_ScintillaEdit_types.ScintillaInternalPRectangle, fillStroke: gen_ScintillaEdit_types.ScintillaInternalFillStroke): void
+proc onEllipse*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, slot: ScintillaInternalSurfaceEllipseProc) =
   # TODO check subclass
-  type Cb = proc(rc: ScintillaInternalPRectangle, fillStroke: ScintillaInternalFillStroke): void
-  var tmp = new Cb
+  var tmp = new ScintillaInternalSurfaceEllipseProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaInternalSurface_override_virtual_Ellipse(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_Scintilla__Internal__Surface_Ellipse(self: ptr cScintillaInternalSurface, slot: int, rc: pointer, fillStroke: pointer): void {.exportc: "miqt_exec_callback_Scintilla__Internal__Surface_Ellipse ".} =
-  type Cb = proc(rc: ScintillaInternalPRectangle, fillStroke: ScintillaInternalFillStroke): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = ScintillaInternalPRectangle(h: rc)
+  var nimfunc = cast[ptr ScintillaInternalSurfaceEllipseProc](cast[pointer](slot))
+  let slotval1 = gen_ScintillaEdit_types.ScintillaInternalPRectangle(h: rc)
 
-  let slotval2 = ScintillaInternalFillStroke(h: fillStroke)
+  let slotval2 = gen_ScintillaEdit_types.ScintillaInternalFillStroke(h: fillStroke)
 
 
   nimfunc[](slotval1, slotval2)
-type ScintillaInternalSurfaceStadiumBase* = proc(rc: ScintillaInternalPRectangle, fillStroke: ScintillaInternalFillStroke, ends: ScintillaInternalSurfaceEnds): void
-proc onStadium*(self: ScintillaInternalSurface, slot: proc(rc: ScintillaInternalPRectangle, fillStroke: ScintillaInternalFillStroke, ends: ScintillaInternalSurfaceEnds): void) =
+type ScintillaInternalSurfaceStadiumProc* = proc(rc: gen_ScintillaEdit_types.ScintillaInternalPRectangle, fillStroke: gen_ScintillaEdit_types.ScintillaInternalFillStroke, ends: cint): void
+proc onStadium*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, slot: ScintillaInternalSurfaceStadiumProc) =
   # TODO check subclass
-  type Cb = proc(rc: ScintillaInternalPRectangle, fillStroke: ScintillaInternalFillStroke, ends: ScintillaInternalSurfaceEnds): void
-  var tmp = new Cb
+  var tmp = new ScintillaInternalSurfaceStadiumProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaInternalSurface_override_virtual_Stadium(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_Scintilla__Internal__Surface_Stadium(self: ptr cScintillaInternalSurface, slot: int, rc: pointer, fillStroke: pointer, ends: cint): void {.exportc: "miqt_exec_callback_Scintilla__Internal__Surface_Stadium ".} =
-  type Cb = proc(rc: ScintillaInternalPRectangle, fillStroke: ScintillaInternalFillStroke, ends: ScintillaInternalSurfaceEnds): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = ScintillaInternalPRectangle(h: rc)
+  var nimfunc = cast[ptr ScintillaInternalSurfaceStadiumProc](cast[pointer](slot))
+  let slotval1 = gen_ScintillaEdit_types.ScintillaInternalPRectangle(h: rc)
 
-  let slotval2 = ScintillaInternalFillStroke(h: fillStroke)
+  let slotval2 = gen_ScintillaEdit_types.ScintillaInternalFillStroke(h: fillStroke)
 
-  let slotval3 = ScintillaInternalSurfaceEnds(ends)
+  let slotval3 = cint(ends)
 
 
   nimfunc[](slotval1, slotval2, slotval3)
-type ScintillaInternalSurfaceCopyBase* = proc(rc: ScintillaInternalPRectangle, fromVal: ScintillaInternalPoint, surfaceSource: ScintillaInternalSurface): void
-proc onCopy*(self: ScintillaInternalSurface, slot: proc(rc: ScintillaInternalPRectangle, fromVal: ScintillaInternalPoint, surfaceSource: ScintillaInternalSurface): void) =
+type ScintillaInternalSurfaceCopyProc* = proc(rc: gen_ScintillaEdit_types.ScintillaInternalPRectangle, fromVal: gen_ScintillaEdit_types.ScintillaInternalPoint, surfaceSource: gen_ScintillaEdit_types.ScintillaInternalSurface): void
+proc onCopy*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, slot: ScintillaInternalSurfaceCopyProc) =
   # TODO check subclass
-  type Cb = proc(rc: ScintillaInternalPRectangle, fromVal: ScintillaInternalPoint, surfaceSource: ScintillaInternalSurface): void
-  var tmp = new Cb
+  var tmp = new ScintillaInternalSurfaceCopyProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaInternalSurface_override_virtual_Copy(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_Scintilla__Internal__Surface_Copy(self: ptr cScintillaInternalSurface, slot: int, rc: pointer, fromVal: pointer, surfaceSource: pointer): void {.exportc: "miqt_exec_callback_Scintilla__Internal__Surface_Copy ".} =
-  type Cb = proc(rc: ScintillaInternalPRectangle, fromVal: ScintillaInternalPoint, surfaceSource: ScintillaInternalSurface): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = ScintillaInternalPRectangle(h: rc)
+  var nimfunc = cast[ptr ScintillaInternalSurfaceCopyProc](cast[pointer](slot))
+  let slotval1 = gen_ScintillaEdit_types.ScintillaInternalPRectangle(h: rc)
 
-  let slotval2 = ScintillaInternalPoint(h: fromVal)
+  let slotval2 = gen_ScintillaEdit_types.ScintillaInternalPoint(h: fromVal)
 
-  let slotval3 = ScintillaInternalSurface(h: surfaceSource)
+  let slotval3 = gen_ScintillaEdit_types.ScintillaInternalSurface(h: surfaceSource)
 
 
   nimfunc[](slotval1, slotval2, slotval3)
-type ScintillaInternalSurfaceAscentBase* = proc(font_x: ScintillaInternalFont): float64
-proc onAscent*(self: ScintillaInternalSurface, slot: proc(font_x: ScintillaInternalFont): float64) =
+type ScintillaInternalSurfaceAscentProc* = proc(font_x: gen_ScintillaEdit_types.ScintillaInternalFont): float64
+proc onAscent*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, slot: ScintillaInternalSurfaceAscentProc) =
   # TODO check subclass
-  type Cb = proc(font_x: ScintillaInternalFont): float64
-  var tmp = new Cb
+  var tmp = new ScintillaInternalSurfaceAscentProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaInternalSurface_override_virtual_Ascent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_Scintilla__Internal__Surface_Ascent(self: ptr cScintillaInternalSurface, slot: int, font_x: pointer): float64 {.exportc: "miqt_exec_callback_Scintilla__Internal__Surface_Ascent ".} =
-  type Cb = proc(font_x: ScintillaInternalFont): float64
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = ScintillaInternalFont(h: font_x)
+  var nimfunc = cast[ptr ScintillaInternalSurfaceAscentProc](cast[pointer](slot))
+  let slotval1 = gen_ScintillaEdit_types.ScintillaInternalFont(h: font_x)
 
 
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-type ScintillaInternalSurfaceDescentBase* = proc(font_x: ScintillaInternalFont): float64
-proc onDescent*(self: ScintillaInternalSurface, slot: proc(font_x: ScintillaInternalFont): float64) =
+type ScintillaInternalSurfaceDescentProc* = proc(font_x: gen_ScintillaEdit_types.ScintillaInternalFont): float64
+proc onDescent*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, slot: ScintillaInternalSurfaceDescentProc) =
   # TODO check subclass
-  type Cb = proc(font_x: ScintillaInternalFont): float64
-  var tmp = new Cb
+  var tmp = new ScintillaInternalSurfaceDescentProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaInternalSurface_override_virtual_Descent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_Scintilla__Internal__Surface_Descent(self: ptr cScintillaInternalSurface, slot: int, font_x: pointer): float64 {.exportc: "miqt_exec_callback_Scintilla__Internal__Surface_Descent ".} =
-  type Cb = proc(font_x: ScintillaInternalFont): float64
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = ScintillaInternalFont(h: font_x)
+  var nimfunc = cast[ptr ScintillaInternalSurfaceDescentProc](cast[pointer](slot))
+  let slotval1 = gen_ScintillaEdit_types.ScintillaInternalFont(h: font_x)
 
 
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-type ScintillaInternalSurfaceInternalLeadingBase* = proc(font_x: ScintillaInternalFont): float64
-proc onInternalLeading*(self: ScintillaInternalSurface, slot: proc(font_x: ScintillaInternalFont): float64) =
+type ScintillaInternalSurfaceInternalLeadingProc* = proc(font_x: gen_ScintillaEdit_types.ScintillaInternalFont): float64
+proc onInternalLeading*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, slot: ScintillaInternalSurfaceInternalLeadingProc) =
   # TODO check subclass
-  type Cb = proc(font_x: ScintillaInternalFont): float64
-  var tmp = new Cb
+  var tmp = new ScintillaInternalSurfaceInternalLeadingProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaInternalSurface_override_virtual_InternalLeading(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_Scintilla__Internal__Surface_InternalLeading(self: ptr cScintillaInternalSurface, slot: int, font_x: pointer): float64 {.exportc: "miqt_exec_callback_Scintilla__Internal__Surface_InternalLeading ".} =
-  type Cb = proc(font_x: ScintillaInternalFont): float64
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = ScintillaInternalFont(h: font_x)
+  var nimfunc = cast[ptr ScintillaInternalSurfaceInternalLeadingProc](cast[pointer](slot))
+  let slotval1 = gen_ScintillaEdit_types.ScintillaInternalFont(h: font_x)
 
 
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-type ScintillaInternalSurfaceHeightBase* = proc(font_x: ScintillaInternalFont): float64
-proc onHeight*(self: ScintillaInternalSurface, slot: proc(font_x: ScintillaInternalFont): float64) =
+type ScintillaInternalSurfaceHeightProc* = proc(font_x: gen_ScintillaEdit_types.ScintillaInternalFont): float64
+proc onHeight*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, slot: ScintillaInternalSurfaceHeightProc) =
   # TODO check subclass
-  type Cb = proc(font_x: ScintillaInternalFont): float64
-  var tmp = new Cb
+  var tmp = new ScintillaInternalSurfaceHeightProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaInternalSurface_override_virtual_Height(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_Scintilla__Internal__Surface_Height(self: ptr cScintillaInternalSurface, slot: int, font_x: pointer): float64 {.exportc: "miqt_exec_callback_Scintilla__Internal__Surface_Height ".} =
-  type Cb = proc(font_x: ScintillaInternalFont): float64
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = ScintillaInternalFont(h: font_x)
+  var nimfunc = cast[ptr ScintillaInternalSurfaceHeightProc](cast[pointer](slot))
+  let slotval1 = gen_ScintillaEdit_types.ScintillaInternalFont(h: font_x)
 
 
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-type ScintillaInternalSurfaceAverageCharWidthBase* = proc(font_x: ScintillaInternalFont): float64
-proc onAverageCharWidth*(self: ScintillaInternalSurface, slot: proc(font_x: ScintillaInternalFont): float64) =
+type ScintillaInternalSurfaceAverageCharWidthProc* = proc(font_x: gen_ScintillaEdit_types.ScintillaInternalFont): float64
+proc onAverageCharWidth*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, slot: ScintillaInternalSurfaceAverageCharWidthProc) =
   # TODO check subclass
-  type Cb = proc(font_x: ScintillaInternalFont): float64
-  var tmp = new Cb
+  var tmp = new ScintillaInternalSurfaceAverageCharWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaInternalSurface_override_virtual_AverageCharWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_Scintilla__Internal__Surface_AverageCharWidth(self: ptr cScintillaInternalSurface, slot: int, font_x: pointer): float64 {.exportc: "miqt_exec_callback_Scintilla__Internal__Surface_AverageCharWidth ".} =
-  type Cb = proc(font_x: ScintillaInternalFont): float64
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = ScintillaInternalFont(h: font_x)
+  var nimfunc = cast[ptr ScintillaInternalSurfaceAverageCharWidthProc](cast[pointer](slot))
+  let slotval1 = gen_ScintillaEdit_types.ScintillaInternalFont(h: font_x)
 
 
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-type ScintillaInternalSurfaceSetClipBase* = proc(rc: ScintillaInternalPRectangle): void
-proc onSetClip*(self: ScintillaInternalSurface, slot: proc(rc: ScintillaInternalPRectangle): void) =
+type ScintillaInternalSurfaceSetClipProc* = proc(rc: gen_ScintillaEdit_types.ScintillaInternalPRectangle): void
+proc onSetClip*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, slot: ScintillaInternalSurfaceSetClipProc) =
   # TODO check subclass
-  type Cb = proc(rc: ScintillaInternalPRectangle): void
-  var tmp = new Cb
+  var tmp = new ScintillaInternalSurfaceSetClipProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaInternalSurface_override_virtual_SetClip(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_Scintilla__Internal__Surface_SetClip(self: ptr cScintillaInternalSurface, slot: int, rc: pointer): void {.exportc: "miqt_exec_callback_Scintilla__Internal__Surface_SetClip ".} =
-  type Cb = proc(rc: ScintillaInternalPRectangle): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = ScintillaInternalPRectangle(h: rc)
+  var nimfunc = cast[ptr ScintillaInternalSurfaceSetClipProc](cast[pointer](slot))
+  let slotval1 = gen_ScintillaEdit_types.ScintillaInternalPRectangle(h: rc)
 
 
   nimfunc[](slotval1)
-type ScintillaInternalSurfacePopClipBase* = proc(): void
-proc onPopClip*(self: ScintillaInternalSurface, slot: proc(): void) =
+type ScintillaInternalSurfacePopClipProc* = proc(): void
+proc onPopClip*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, slot: ScintillaInternalSurfacePopClipProc) =
   # TODO check subclass
-  type Cb = proc(): void
-  var tmp = new Cb
+  var tmp = new ScintillaInternalSurfacePopClipProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaInternalSurface_override_virtual_PopClip(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_Scintilla__Internal__Surface_PopClip(self: ptr cScintillaInternalSurface, slot: int): void {.exportc: "miqt_exec_callback_Scintilla__Internal__Surface_PopClip ".} =
-  type Cb = proc(): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr ScintillaInternalSurfacePopClipProc](cast[pointer](slot))
 
   nimfunc[]()
-type ScintillaInternalSurfaceFlushCachedStateBase* = proc(): void
-proc onFlushCachedState*(self: ScintillaInternalSurface, slot: proc(): void) =
+type ScintillaInternalSurfaceFlushCachedStateProc* = proc(): void
+proc onFlushCachedState*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, slot: ScintillaInternalSurfaceFlushCachedStateProc) =
   # TODO check subclass
-  type Cb = proc(): void
-  var tmp = new Cb
+  var tmp = new ScintillaInternalSurfaceFlushCachedStateProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaInternalSurface_override_virtual_FlushCachedState(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_Scintilla__Internal__Surface_FlushCachedState(self: ptr cScintillaInternalSurface, slot: int): void {.exportc: "miqt_exec_callback_Scintilla__Internal__Surface_FlushCachedState ".} =
-  type Cb = proc(): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr ScintillaInternalSurfaceFlushCachedStateProc](cast[pointer](slot))
 
   nimfunc[]()
-type ScintillaInternalSurfaceFlushDrawingBase* = proc(): void
-proc onFlushDrawing*(self: ScintillaInternalSurface, slot: proc(): void) =
+type ScintillaInternalSurfaceFlushDrawingProc* = proc(): void
+proc onFlushDrawing*(self: gen_ScintillaEdit_types.ScintillaInternalSurface, slot: ScintillaInternalSurfaceFlushDrawingProc) =
   # TODO check subclass
-  type Cb = proc(): void
-  var tmp = new Cb
+  var tmp = new ScintillaInternalSurfaceFlushDrawingProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaInternalSurface_override_virtual_FlushDrawing(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_Scintilla__Internal__Surface_FlushDrawing(self: ptr cScintillaInternalSurface, slot: int): void {.exportc: "miqt_exec_callback_Scintilla__Internal__Surface_FlushDrawing ".} =
-  type Cb = proc(): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr ScintillaInternalSurfaceFlushDrawingProc](cast[pointer](slot))
 
   nimfunc[]()
-proc delete*(self: ScintillaInternalSurface) =
+proc delete*(self: gen_ScintillaEdit_types.ScintillaInternalSurface) =
   fcScintillaInternalSurface_delete(self.h)
 
-func init*(T: type ScintillaInternalWindow, h: ptr cScintillaInternalWindow): ScintillaInternalWindow =
+func init*(T: type gen_ScintillaEdit_types.ScintillaInternalWindow, h: ptr cScintillaInternalWindow): gen_ScintillaEdit_types.ScintillaInternalWindow =
   T(h: h)
-proc create*(T: type ScintillaInternalWindow, ): ScintillaInternalWindow =
+proc create*(T: type gen_ScintillaEdit_types.ScintillaInternalWindow, ): gen_ScintillaEdit_types.ScintillaInternalWindow =
 
-  ScintillaInternalWindow.init(fcScintillaInternalWindow_new())
-proc operatorAssign*(self: ScintillaInternalWindow, wid_x: pointer): void =
+  gen_ScintillaEdit_types.ScintillaInternalWindow.init(fcScintillaInternalWindow_new())
+proc operatorAssign*(self: gen_ScintillaEdit_types.ScintillaInternalWindow, wid_x: pointer): void =
 
   fcScintillaInternalWindow_operatorAssign(self.h, wid_x)
 
-proc GetID*(self: ScintillaInternalWindow, ): pointer =
+proc GetID*(self: gen_ScintillaEdit_types.ScintillaInternalWindow, ): pointer =
 
   fcScintillaInternalWindow_GetID(self.h)
 
-proc Created*(self: ScintillaInternalWindow, ): bool =
+proc Created*(self: gen_ScintillaEdit_types.ScintillaInternalWindow, ): bool =
 
   fcScintillaInternalWindow_Created(self.h)
 
-proc Destroy*(self: ScintillaInternalWindow, ): void =
+proc Destroy*(self: gen_ScintillaEdit_types.ScintillaInternalWindow, ): void =
 
   fcScintillaInternalWindow_Destroy(self.h)
 
-proc GetPosition*(self: ScintillaInternalWindow, ): ScintillaInternalPRectangle =
+proc GetPosition*(self: gen_ScintillaEdit_types.ScintillaInternalWindow, ): gen_ScintillaEdit_types.ScintillaInternalPRectangle =
 
-  ScintillaInternalPRectangle(h: fcScintillaInternalWindow_GetPosition(self.h))
+  gen_ScintillaEdit_types.ScintillaInternalPRectangle(h: fcScintillaInternalWindow_GetPosition(self.h))
 
-proc SetPosition*(self: ScintillaInternalWindow, rc: ScintillaInternalPRectangle): void =
+proc SetPosition*(self: gen_ScintillaEdit_types.ScintillaInternalWindow, rc: gen_ScintillaEdit_types.ScintillaInternalPRectangle): void =
 
   fcScintillaInternalWindow_SetPosition(self.h, rc.h)
 
-proc SetPositionRelative*(self: ScintillaInternalWindow, rc: ScintillaInternalPRectangle, relativeTo: ScintillaInternalWindow): void =
+proc SetPositionRelative*(self: gen_ScintillaEdit_types.ScintillaInternalWindow, rc: gen_ScintillaEdit_types.ScintillaInternalPRectangle, relativeTo: gen_ScintillaEdit_types.ScintillaInternalWindow): void =
 
   fcScintillaInternalWindow_SetPositionRelative(self.h, rc.h, relativeTo.h)
 
-proc GetClientPosition*(self: ScintillaInternalWindow, ): ScintillaInternalPRectangle =
+proc GetClientPosition*(self: gen_ScintillaEdit_types.ScintillaInternalWindow, ): gen_ScintillaEdit_types.ScintillaInternalPRectangle =
 
-  ScintillaInternalPRectangle(h: fcScintillaInternalWindow_GetClientPosition(self.h))
+  gen_ScintillaEdit_types.ScintillaInternalPRectangle(h: fcScintillaInternalWindow_GetClientPosition(self.h))
 
-proc Show*(self: ScintillaInternalWindow, ): void =
+proc Show*(self: gen_ScintillaEdit_types.ScintillaInternalWindow, ): void =
 
   fcScintillaInternalWindow_Show(self.h)
 
-proc InvalidateAll*(self: ScintillaInternalWindow, ): void =
+proc InvalidateAll*(self: gen_ScintillaEdit_types.ScintillaInternalWindow, ): void =
 
   fcScintillaInternalWindow_InvalidateAll(self.h)
 
-proc InvalidateRectangle*(self: ScintillaInternalWindow, rc: ScintillaInternalPRectangle): void =
+proc InvalidateRectangle*(self: gen_ScintillaEdit_types.ScintillaInternalWindow, rc: gen_ScintillaEdit_types.ScintillaInternalPRectangle): void =
 
   fcScintillaInternalWindow_InvalidateRectangle(self.h, rc.h)
 
-proc SetCursor*(self: ScintillaInternalWindow, curs: ScintillaInternalWindowCursor): void =
+proc SetCursor*(self: gen_ScintillaEdit_types.ScintillaInternalWindow, curs: cint): void =
 
   fcScintillaInternalWindow_SetCursor(self.h, cint(curs))
 
-proc GetMonitorRect*(self: ScintillaInternalWindow, pt: ScintillaInternalPoint): ScintillaInternalPRectangle =
+proc GetMonitorRect*(self: gen_ScintillaEdit_types.ScintillaInternalWindow, pt: gen_ScintillaEdit_types.ScintillaInternalPoint): gen_ScintillaEdit_types.ScintillaInternalPRectangle =
 
-  ScintillaInternalPRectangle(h: fcScintillaInternalWindow_GetMonitorRect(self.h, pt.h))
+  gen_ScintillaEdit_types.ScintillaInternalPRectangle(h: fcScintillaInternalWindow_GetMonitorRect(self.h, pt.h))
 
-proc Show1*(self: ScintillaInternalWindow, show: bool): void =
+proc Show1*(self: gen_ScintillaEdit_types.ScintillaInternalWindow, show: bool): void =
 
   fcScintillaInternalWindow_Show1(self.h, show)
 
-proc delete*(self: ScintillaInternalWindow) =
+proc delete*(self: gen_ScintillaEdit_types.ScintillaInternalWindow) =
   fcScintillaInternalWindow_delete(self.h)
 
-func init*(T: type ScintillaInternalListBoxEvent, h: ptr cScintillaInternalListBoxEvent): ScintillaInternalListBoxEvent =
+func init*(T: type gen_ScintillaEdit_types.ScintillaInternalListBoxEvent, h: ptr cScintillaInternalListBoxEvent): gen_ScintillaEdit_types.ScintillaInternalListBoxEvent =
   T(h: h)
-proc create*(T: type ScintillaInternalListBoxEvent, event_x: ScintillaInternalListBoxEventEventType): ScintillaInternalListBoxEvent =
+proc create*(T: type gen_ScintillaEdit_types.ScintillaInternalListBoxEvent, event_x: cint): gen_ScintillaEdit_types.ScintillaInternalListBoxEvent =
 
-  ScintillaInternalListBoxEvent.init(fcScintillaInternalListBoxEvent_new(cint(event_x)))
-proc delete*(self: ScintillaInternalListBoxEvent) =
+  gen_ScintillaEdit_types.ScintillaInternalListBoxEvent.init(fcScintillaInternalListBoxEvent_new(cint(event_x)))
+proc delete*(self: gen_ScintillaEdit_types.ScintillaInternalListBoxEvent) =
   fcScintillaInternalListBoxEvent_delete(self.h)
 
-func init*(T: type ScintillaInternalIListBoxDelegate, h: ptr cScintillaInternalIListBoxDelegate): ScintillaInternalIListBoxDelegate =
+func init*(T: type gen_ScintillaEdit_types.ScintillaInternalIListBoxDelegate, h: ptr cScintillaInternalIListBoxDelegate): gen_ScintillaEdit_types.ScintillaInternalIListBoxDelegate =
   T(h: h)
-proc ListNotify*(self: ScintillaInternalIListBoxDelegate, plbe: ScintillaInternalListBoxEvent): void =
+proc ListNotify*(self: gen_ScintillaEdit_types.ScintillaInternalIListBoxDelegate, plbe: gen_ScintillaEdit_types.ScintillaInternalListBoxEvent): void =
 
   fcScintillaInternalIListBoxDelegate_ListNotify(self.h, plbe.h)
 
-proc operatorAssign*(self: ScintillaInternalIListBoxDelegate, param1: ScintillaInternalIListBoxDelegate): void =
+proc operatorAssign*(self: gen_ScintillaEdit_types.ScintillaInternalIListBoxDelegate, param1: gen_ScintillaEdit_types.ScintillaInternalIListBoxDelegate): void =
 
   fcScintillaInternalIListBoxDelegate_operatorAssign(self.h, param1.h)
 
-proc delete*(self: ScintillaInternalIListBoxDelegate) =
+proc delete*(self: gen_ScintillaEdit_types.ScintillaInternalIListBoxDelegate) =
   fcScintillaInternalIListBoxDelegate_delete(self.h)
 
-func init*(T: type ScintillaInternalListOptions, h: ptr cScintillaInternalListOptions): ScintillaInternalListOptions =
+func init*(T: type gen_ScintillaEdit_types.ScintillaInternalListOptions, h: ptr cScintillaInternalListOptions): gen_ScintillaEdit_types.ScintillaInternalListOptions =
   T(h: h)
-proc delete*(self: ScintillaInternalListOptions) =
+proc delete*(self: gen_ScintillaEdit_types.ScintillaInternalListOptions) =
   fcScintillaInternalListOptions_delete(self.h)
 
-func init*(T: type ScintillaInternalListBox, h: ptr cScintillaInternalListBox): ScintillaInternalListBox =
+func init*(T: type gen_ScintillaEdit_types.ScintillaInternalListBox, h: ptr cScintillaInternalListBox): gen_ScintillaEdit_types.ScintillaInternalListBox =
   T(h: h)
-proc create*(T: type ScintillaInternalListBox, ): ScintillaInternalListBox =
+proc create*(T: type gen_ScintillaEdit_types.ScintillaInternalListBox, ): gen_ScintillaEdit_types.ScintillaInternalListBox =
 
-  ScintillaInternalListBox.init(fcScintillaInternalListBox_new())
-proc SetFont*(self: ScintillaInternalListBox, font: ScintillaInternalFont): void =
+  gen_ScintillaEdit_types.ScintillaInternalListBox.init(fcScintillaInternalListBox_new())
+proc SetFont*(self: gen_ScintillaEdit_types.ScintillaInternalListBox, font: gen_ScintillaEdit_types.ScintillaInternalFont): void =
 
   fcScintillaInternalListBox_SetFont(self.h, font.h)
 
-proc Create*(self: ScintillaInternalListBox, parent: ScintillaInternalWindow, ctrlID: cint, location: ScintillaInternalPoint, lineHeight_x: cint, unicodeMode_x: bool, technology_x: ScintillaTechnology): void =
+proc Create*(self: gen_ScintillaEdit_types.ScintillaInternalListBox, parent: gen_ScintillaEdit_types.ScintillaInternalWindow, ctrlID: cint, location: gen_ScintillaEdit_types.ScintillaInternalPoint, lineHeight_x: cint, unicodeMode_x: bool, technology_x: cint): void =
 
   fcScintillaInternalListBox_Create(self.h, parent.h, ctrlID, location.h, lineHeight_x, unicodeMode_x, cint(technology_x))
 
-proc SetAverageCharWidth*(self: ScintillaInternalListBox, width: cint): void =
+proc SetAverageCharWidth*(self: gen_ScintillaEdit_types.ScintillaInternalListBox, width: cint): void =
 
   fcScintillaInternalListBox_SetAverageCharWidth(self.h, width)
 
-proc SetVisibleRows*(self: ScintillaInternalListBox, rows: cint): void =
+proc SetVisibleRows*(self: gen_ScintillaEdit_types.ScintillaInternalListBox, rows: cint): void =
 
   fcScintillaInternalListBox_SetVisibleRows(self.h, rows)
 
-proc GetVisibleRows*(self: ScintillaInternalListBox, ): cint =
+proc GetVisibleRows*(self: gen_ScintillaEdit_types.ScintillaInternalListBox, ): cint =
 
   fcScintillaInternalListBox_GetVisibleRows(self.h)
 
-proc GetDesiredRect*(self: ScintillaInternalListBox, ): ScintillaInternalPRectangle =
+proc GetDesiredRect*(self: gen_ScintillaEdit_types.ScintillaInternalListBox, ): gen_ScintillaEdit_types.ScintillaInternalPRectangle =
 
-  ScintillaInternalPRectangle(h: fcScintillaInternalListBox_GetDesiredRect(self.h))
+  gen_ScintillaEdit_types.ScintillaInternalPRectangle(h: fcScintillaInternalListBox_GetDesiredRect(self.h))
 
-proc CaretFromEdge*(self: ScintillaInternalListBox, ): cint =
+proc CaretFromEdge*(self: gen_ScintillaEdit_types.ScintillaInternalListBox, ): cint =
 
   fcScintillaInternalListBox_CaretFromEdge(self.h)
 
-proc Clear*(self: ScintillaInternalListBox, ): void =
+proc Clear*(self: gen_ScintillaEdit_types.ScintillaInternalListBox, ): void =
 
   fcScintillaInternalListBox_Clear(self.h)
 
-proc Append*(self: ScintillaInternalListBox, s: cstring, typeVal: cint): void =
+proc Append*(self: gen_ScintillaEdit_types.ScintillaInternalListBox, s: cstring, typeVal: cint): void =
 
   fcScintillaInternalListBox_Append(self.h, s, typeVal)
 
-proc Length*(self: ScintillaInternalListBox, ): cint =
+proc Length*(self: gen_ScintillaEdit_types.ScintillaInternalListBox, ): cint =
 
   fcScintillaInternalListBox_Length(self.h)
 
-proc Select*(self: ScintillaInternalListBox, n: cint): void =
+proc Select*(self: gen_ScintillaEdit_types.ScintillaInternalListBox, n: cint): void =
 
   fcScintillaInternalListBox_Select(self.h, n)
 
-proc GetSelection*(self: ScintillaInternalListBox, ): cint =
+proc GetSelection*(self: gen_ScintillaEdit_types.ScintillaInternalListBox, ): cint =
 
   fcScintillaInternalListBox_GetSelection(self.h)
 
-proc Find*(self: ScintillaInternalListBox, prefix: cstring): cint =
+proc Find*(self: gen_ScintillaEdit_types.ScintillaInternalListBox, prefix: cstring): cint =
 
   fcScintillaInternalListBox_Find(self.h, prefix)
 
-proc RegisterImage*(self: ScintillaInternalListBox, typeVal: cint, xpm_data: cstring): void =
+proc RegisterImage*(self: gen_ScintillaEdit_types.ScintillaInternalListBox, typeVal: cint, xpm_data: cstring): void =
 
   fcScintillaInternalListBox_RegisterImage(self.h, typeVal, xpm_data)
 
-proc RegisterRGBAImage*(self: ScintillaInternalListBox, typeVal: cint, width: cint, height: cint, pixelsImage: ptr uint8): void =
+proc RegisterRGBAImage*(self: gen_ScintillaEdit_types.ScintillaInternalListBox, typeVal: cint, width: cint, height: cint, pixelsImage: ptr uint8): void =
 
   fcScintillaInternalListBox_RegisterRGBAImage(self.h, typeVal, width, height, pixelsImage)
 
-proc ClearRegisteredImages*(self: ScintillaInternalListBox, ): void =
+proc ClearRegisteredImages*(self: gen_ScintillaEdit_types.ScintillaInternalListBox, ): void =
 
   fcScintillaInternalListBox_ClearRegisteredImages(self.h)
 
-proc SetDelegate*(self: ScintillaInternalListBox, lbDelegate: ScintillaInternalIListBoxDelegate): void =
+proc SetDelegate*(self: gen_ScintillaEdit_types.ScintillaInternalListBox, lbDelegate: gen_ScintillaEdit_types.ScintillaInternalIListBoxDelegate): void =
 
   fcScintillaInternalListBox_SetDelegate(self.h, lbDelegate.h)
 
-proc SetList*(self: ScintillaInternalListBox, list: cstring, separator: cchar, typesep: cchar): void =
+proc SetList*(self: gen_ScintillaEdit_types.ScintillaInternalListBox, list: cstring, separator: cchar, typesep: cchar): void =
 
   fcScintillaInternalListBox_SetList(self.h, list, separator, typesep)
 
-proc SetOptions*(self: ScintillaInternalListBox, options_x: ScintillaInternalListOptions): void =
+proc SetOptions*(self: gen_ScintillaEdit_types.ScintillaInternalListBox, options_x: gen_ScintillaEdit_types.ScintillaInternalListOptions): void =
 
   fcScintillaInternalListBox_SetOptions(self.h, options_x.h)
 
-type ScintillaInternalListBoxSetFontBase* = proc(font: ScintillaInternalFont): void
-proc onSetFont*(self: ScintillaInternalListBox, slot: proc(font: ScintillaInternalFont): void) =
+type ScintillaInternalListBoxSetFontProc* = proc(font: gen_ScintillaEdit_types.ScintillaInternalFont): void
+proc onSetFont*(self: gen_ScintillaEdit_types.ScintillaInternalListBox, slot: ScintillaInternalListBoxSetFontProc) =
   # TODO check subclass
-  type Cb = proc(font: ScintillaInternalFont): void
-  var tmp = new Cb
+  var tmp = new ScintillaInternalListBoxSetFontProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaInternalListBox_override_virtual_SetFont(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_Scintilla__Internal__ListBox_SetFont(self: ptr cScintillaInternalListBox, slot: int, font: pointer): void {.exportc: "miqt_exec_callback_Scintilla__Internal__ListBox_SetFont ".} =
-  type Cb = proc(font: ScintillaInternalFont): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = ScintillaInternalFont(h: font)
+  var nimfunc = cast[ptr ScintillaInternalListBoxSetFontProc](cast[pointer](slot))
+  let slotval1 = gen_ScintillaEdit_types.ScintillaInternalFont(h: font)
 
 
   nimfunc[](slotval1)
-type ScintillaInternalListBoxCreateBase* = proc(parent: ScintillaInternalWindow, ctrlID: cint, location: ScintillaInternalPoint, lineHeight_x: cint, unicodeMode_x: bool, technology_x: ScintillaTechnology): void
-proc onCreate*(self: ScintillaInternalListBox, slot: proc(parent: ScintillaInternalWindow, ctrlID: cint, location: ScintillaInternalPoint, lineHeight_x: cint, unicodeMode_x: bool, technology_x: ScintillaTechnology): void) =
+type ScintillaInternalListBoxCreateProc* = proc(parent: gen_ScintillaEdit_types.ScintillaInternalWindow, ctrlID: cint, location: gen_ScintillaEdit_types.ScintillaInternalPoint, lineHeight_x: cint, unicodeMode_x: bool, technology_x: cint): void
+proc onCreate*(self: gen_ScintillaEdit_types.ScintillaInternalListBox, slot: ScintillaInternalListBoxCreateProc) =
   # TODO check subclass
-  type Cb = proc(parent: ScintillaInternalWindow, ctrlID: cint, location: ScintillaInternalPoint, lineHeight_x: cint, unicodeMode_x: bool, technology_x: ScintillaTechnology): void
-  var tmp = new Cb
+  var tmp = new ScintillaInternalListBoxCreateProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaInternalListBox_override_virtual_Create(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_Scintilla__Internal__ListBox_Create(self: ptr cScintillaInternalListBox, slot: int, parent: pointer, ctrlID: cint, location: pointer, lineHeight_x: cint, unicodeMode_x: bool, technology_x: cint): void {.exportc: "miqt_exec_callback_Scintilla__Internal__ListBox_Create ".} =
-  type Cb = proc(parent: ScintillaInternalWindow, ctrlID: cint, location: ScintillaInternalPoint, lineHeight_x: cint, unicodeMode_x: bool, technology_x: ScintillaTechnology): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = ScintillaInternalWindow(h: parent)
+  var nimfunc = cast[ptr ScintillaInternalListBoxCreateProc](cast[pointer](slot))
+  let slotval1 = gen_ScintillaEdit_types.ScintillaInternalWindow(h: parent)
 
   let slotval2 = ctrlID
 
-  let slotval3 = ScintillaInternalPoint(h: location)
+  let slotval3 = gen_ScintillaEdit_types.ScintillaInternalPoint(h: location)
 
   let slotval4 = lineHeight_x
 
   let slotval5 = unicodeMode_x
 
-  let slotval6 = ScintillaTechnology(technology_x)
+  let slotval6 = cint(technology_x)
 
 
   nimfunc[](slotval1, slotval2, slotval3, slotval4, slotval5, slotval6)
-type ScintillaInternalListBoxSetAverageCharWidthBase* = proc(width: cint): void
-proc onSetAverageCharWidth*(self: ScintillaInternalListBox, slot: proc(width: cint): void) =
+type ScintillaInternalListBoxSetAverageCharWidthProc* = proc(width: cint): void
+proc onSetAverageCharWidth*(self: gen_ScintillaEdit_types.ScintillaInternalListBox, slot: ScintillaInternalListBoxSetAverageCharWidthProc) =
   # TODO check subclass
-  type Cb = proc(width: cint): void
-  var tmp = new Cb
+  var tmp = new ScintillaInternalListBoxSetAverageCharWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaInternalListBox_override_virtual_SetAverageCharWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_Scintilla__Internal__ListBox_SetAverageCharWidth(self: ptr cScintillaInternalListBox, slot: int, width: cint): void {.exportc: "miqt_exec_callback_Scintilla__Internal__ListBox_SetAverageCharWidth ".} =
-  type Cb = proc(width: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr ScintillaInternalListBoxSetAverageCharWidthProc](cast[pointer](slot))
   let slotval1 = width
 
 
   nimfunc[](slotval1)
-type ScintillaInternalListBoxSetVisibleRowsBase* = proc(rows: cint): void
-proc onSetVisibleRows*(self: ScintillaInternalListBox, slot: proc(rows: cint): void) =
+type ScintillaInternalListBoxSetVisibleRowsProc* = proc(rows: cint): void
+proc onSetVisibleRows*(self: gen_ScintillaEdit_types.ScintillaInternalListBox, slot: ScintillaInternalListBoxSetVisibleRowsProc) =
   # TODO check subclass
-  type Cb = proc(rows: cint): void
-  var tmp = new Cb
+  var tmp = new ScintillaInternalListBoxSetVisibleRowsProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaInternalListBox_override_virtual_SetVisibleRows(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_Scintilla__Internal__ListBox_SetVisibleRows(self: ptr cScintillaInternalListBox, slot: int, rows: cint): void {.exportc: "miqt_exec_callback_Scintilla__Internal__ListBox_SetVisibleRows ".} =
-  type Cb = proc(rows: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr ScintillaInternalListBoxSetVisibleRowsProc](cast[pointer](slot))
   let slotval1 = rows
 
 
   nimfunc[](slotval1)
-type ScintillaInternalListBoxGetVisibleRowsBase* = proc(): cint
-proc onGetVisibleRows*(self: ScintillaInternalListBox, slot: proc(): cint) =
+type ScintillaInternalListBoxGetVisibleRowsProc* = proc(): cint
+proc onGetVisibleRows*(self: gen_ScintillaEdit_types.ScintillaInternalListBox, slot: ScintillaInternalListBoxGetVisibleRowsProc) =
   # TODO check subclass
-  type Cb = proc(): cint
-  var tmp = new Cb
+  var tmp = new ScintillaInternalListBoxGetVisibleRowsProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaInternalListBox_override_virtual_GetVisibleRows(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_Scintilla__Internal__ListBox_GetVisibleRows(self: ptr cScintillaInternalListBox, slot: int): cint {.exportc: "miqt_exec_callback_Scintilla__Internal__ListBox_GetVisibleRows ".} =
-  type Cb = proc(): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr ScintillaInternalListBoxGetVisibleRowsProc](cast[pointer](slot))
 
   let virtualReturn = nimfunc[]( )
 
   virtualReturn
-type ScintillaInternalListBoxGetDesiredRectBase* = proc(): ScintillaInternalPRectangle
-proc onGetDesiredRect*(self: ScintillaInternalListBox, slot: proc(): ScintillaInternalPRectangle) =
+type ScintillaInternalListBoxGetDesiredRectProc* = proc(): gen_ScintillaEdit_types.ScintillaInternalPRectangle
+proc onGetDesiredRect*(self: gen_ScintillaEdit_types.ScintillaInternalListBox, slot: ScintillaInternalListBoxGetDesiredRectProc) =
   # TODO check subclass
-  type Cb = proc(): ScintillaInternalPRectangle
-  var tmp = new Cb
+  var tmp = new ScintillaInternalListBoxGetDesiredRectProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaInternalListBox_override_virtual_GetDesiredRect(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_Scintilla__Internal__ListBox_GetDesiredRect(self: ptr cScintillaInternalListBox, slot: int): pointer {.exportc: "miqt_exec_callback_Scintilla__Internal__ListBox_GetDesiredRect ".} =
-  type Cb = proc(): ScintillaInternalPRectangle
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr ScintillaInternalListBoxGetDesiredRectProc](cast[pointer](slot))
 
   let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-type ScintillaInternalListBoxCaretFromEdgeBase* = proc(): cint
-proc onCaretFromEdge*(self: ScintillaInternalListBox, slot: proc(): cint) =
+type ScintillaInternalListBoxCaretFromEdgeProc* = proc(): cint
+proc onCaretFromEdge*(self: gen_ScintillaEdit_types.ScintillaInternalListBox, slot: ScintillaInternalListBoxCaretFromEdgeProc) =
   # TODO check subclass
-  type Cb = proc(): cint
-  var tmp = new Cb
+  var tmp = new ScintillaInternalListBoxCaretFromEdgeProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaInternalListBox_override_virtual_CaretFromEdge(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_Scintilla__Internal__ListBox_CaretFromEdge(self: ptr cScintillaInternalListBox, slot: int): cint {.exportc: "miqt_exec_callback_Scintilla__Internal__ListBox_CaretFromEdge ".} =
-  type Cb = proc(): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr ScintillaInternalListBoxCaretFromEdgeProc](cast[pointer](slot))
 
   let virtualReturn = nimfunc[]( )
 
   virtualReturn
-type ScintillaInternalListBoxClearBase* = proc(): void
-proc onClear*(self: ScintillaInternalListBox, slot: proc(): void) =
+type ScintillaInternalListBoxClearProc* = proc(): void
+proc onClear*(self: gen_ScintillaEdit_types.ScintillaInternalListBox, slot: ScintillaInternalListBoxClearProc) =
   # TODO check subclass
-  type Cb = proc(): void
-  var tmp = new Cb
+  var tmp = new ScintillaInternalListBoxClearProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaInternalListBox_override_virtual_Clear(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_Scintilla__Internal__ListBox_Clear(self: ptr cScintillaInternalListBox, slot: int): void {.exportc: "miqt_exec_callback_Scintilla__Internal__ListBox_Clear ".} =
-  type Cb = proc(): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr ScintillaInternalListBoxClearProc](cast[pointer](slot))
 
   nimfunc[]()
-type ScintillaInternalListBoxAppendBase* = proc(s: cstring, typeVal: cint): void
-proc onAppend*(self: ScintillaInternalListBox, slot: proc(s: cstring, typeVal: cint): void) =
+type ScintillaInternalListBoxAppendProc* = proc(s: cstring, typeVal: cint): void
+proc onAppend*(self: gen_ScintillaEdit_types.ScintillaInternalListBox, slot: ScintillaInternalListBoxAppendProc) =
   # TODO check subclass
-  type Cb = proc(s: cstring, typeVal: cint): void
-  var tmp = new Cb
+  var tmp = new ScintillaInternalListBoxAppendProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaInternalListBox_override_virtual_Append(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_Scintilla__Internal__ListBox_Append(self: ptr cScintillaInternalListBox, slot: int, s: cstring, typeVal: cint): void {.exportc: "miqt_exec_callback_Scintilla__Internal__ListBox_Append ".} =
-  type Cb = proc(s: cstring, typeVal: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr ScintillaInternalListBoxAppendProc](cast[pointer](slot))
   let slotval1 = (s)
 
   let slotval2 = typeVal
 
 
   nimfunc[](slotval1, slotval2)
-type ScintillaInternalListBoxLengthBase* = proc(): cint
-proc onLength*(self: ScintillaInternalListBox, slot: proc(): cint) =
+type ScintillaInternalListBoxLengthProc* = proc(): cint
+proc onLength*(self: gen_ScintillaEdit_types.ScintillaInternalListBox, slot: ScintillaInternalListBoxLengthProc) =
   # TODO check subclass
-  type Cb = proc(): cint
-  var tmp = new Cb
+  var tmp = new ScintillaInternalListBoxLengthProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaInternalListBox_override_virtual_Length(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_Scintilla__Internal__ListBox_Length(self: ptr cScintillaInternalListBox, slot: int): cint {.exportc: "miqt_exec_callback_Scintilla__Internal__ListBox_Length ".} =
-  type Cb = proc(): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr ScintillaInternalListBoxLengthProc](cast[pointer](slot))
 
   let virtualReturn = nimfunc[]( )
 
   virtualReturn
-type ScintillaInternalListBoxSelectBase* = proc(n: cint): void
-proc onSelect*(self: ScintillaInternalListBox, slot: proc(n: cint): void) =
+type ScintillaInternalListBoxSelectProc* = proc(n: cint): void
+proc onSelect*(self: gen_ScintillaEdit_types.ScintillaInternalListBox, slot: ScintillaInternalListBoxSelectProc) =
   # TODO check subclass
-  type Cb = proc(n: cint): void
-  var tmp = new Cb
+  var tmp = new ScintillaInternalListBoxSelectProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaInternalListBox_override_virtual_Select(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_Scintilla__Internal__ListBox_Select(self: ptr cScintillaInternalListBox, slot: int, n: cint): void {.exportc: "miqt_exec_callback_Scintilla__Internal__ListBox_Select ".} =
-  type Cb = proc(n: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr ScintillaInternalListBoxSelectProc](cast[pointer](slot))
   let slotval1 = n
 
 
   nimfunc[](slotval1)
-type ScintillaInternalListBoxGetSelectionBase* = proc(): cint
-proc onGetSelection*(self: ScintillaInternalListBox, slot: proc(): cint) =
+type ScintillaInternalListBoxGetSelectionProc* = proc(): cint
+proc onGetSelection*(self: gen_ScintillaEdit_types.ScintillaInternalListBox, slot: ScintillaInternalListBoxGetSelectionProc) =
   # TODO check subclass
-  type Cb = proc(): cint
-  var tmp = new Cb
+  var tmp = new ScintillaInternalListBoxGetSelectionProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaInternalListBox_override_virtual_GetSelection(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_Scintilla__Internal__ListBox_GetSelection(self: ptr cScintillaInternalListBox, slot: int): cint {.exportc: "miqt_exec_callback_Scintilla__Internal__ListBox_GetSelection ".} =
-  type Cb = proc(): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr ScintillaInternalListBoxGetSelectionProc](cast[pointer](slot))
 
   let virtualReturn = nimfunc[]( )
 
   virtualReturn
-type ScintillaInternalListBoxFindBase* = proc(prefix: cstring): cint
-proc onFind*(self: ScintillaInternalListBox, slot: proc(prefix: cstring): cint) =
+type ScintillaInternalListBoxFindProc* = proc(prefix: cstring): cint
+proc onFind*(self: gen_ScintillaEdit_types.ScintillaInternalListBox, slot: ScintillaInternalListBoxFindProc) =
   # TODO check subclass
-  type Cb = proc(prefix: cstring): cint
-  var tmp = new Cb
+  var tmp = new ScintillaInternalListBoxFindProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaInternalListBox_override_virtual_Find(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_Scintilla__Internal__ListBox_Find(self: ptr cScintillaInternalListBox, slot: int, prefix: cstring): cint {.exportc: "miqt_exec_callback_Scintilla__Internal__ListBox_Find ".} =
-  type Cb = proc(prefix: cstring): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr ScintillaInternalListBoxFindProc](cast[pointer](slot))
   let slotval1 = (prefix)
 
 
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-type ScintillaInternalListBoxRegisterImageBase* = proc(typeVal: cint, xpm_data: cstring): void
-proc onRegisterImage*(self: ScintillaInternalListBox, slot: proc(typeVal: cint, xpm_data: cstring): void) =
+type ScintillaInternalListBoxRegisterImageProc* = proc(typeVal: cint, xpm_data: cstring): void
+proc onRegisterImage*(self: gen_ScintillaEdit_types.ScintillaInternalListBox, slot: ScintillaInternalListBoxRegisterImageProc) =
   # TODO check subclass
-  type Cb = proc(typeVal: cint, xpm_data: cstring): void
-  var tmp = new Cb
+  var tmp = new ScintillaInternalListBoxRegisterImageProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaInternalListBox_override_virtual_RegisterImage(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_Scintilla__Internal__ListBox_RegisterImage(self: ptr cScintillaInternalListBox, slot: int, typeVal: cint, xpm_data: cstring): void {.exportc: "miqt_exec_callback_Scintilla__Internal__ListBox_RegisterImage ".} =
-  type Cb = proc(typeVal: cint, xpm_data: cstring): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr ScintillaInternalListBoxRegisterImageProc](cast[pointer](slot))
   let slotval1 = typeVal
 
   let slotval2 = (xpm_data)
 
 
   nimfunc[](slotval1, slotval2)
-type ScintillaInternalListBoxRegisterRGBAImageBase* = proc(typeVal: cint, width: cint, height: cint, pixelsImage: ptr uint8): void
-proc onRegisterRGBAImage*(self: ScintillaInternalListBox, slot: proc(typeVal: cint, width: cint, height: cint, pixelsImage: ptr uint8): void) =
+type ScintillaInternalListBoxRegisterRGBAImageProc* = proc(typeVal: cint, width: cint, height: cint, pixelsImage: ptr uint8): void
+proc onRegisterRGBAImage*(self: gen_ScintillaEdit_types.ScintillaInternalListBox, slot: ScintillaInternalListBoxRegisterRGBAImageProc) =
   # TODO check subclass
-  type Cb = proc(typeVal: cint, width: cint, height: cint, pixelsImage: ptr uint8): void
-  var tmp = new Cb
+  var tmp = new ScintillaInternalListBoxRegisterRGBAImageProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaInternalListBox_override_virtual_RegisterRGBAImage(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_Scintilla__Internal__ListBox_RegisterRGBAImage(self: ptr cScintillaInternalListBox, slot: int, typeVal: cint, width: cint, height: cint, pixelsImage: ptr uint8): void {.exportc: "miqt_exec_callback_Scintilla__Internal__ListBox_RegisterRGBAImage ".} =
-  type Cb = proc(typeVal: cint, width: cint, height: cint, pixelsImage: ptr uint8): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr ScintillaInternalListBoxRegisterRGBAImageProc](cast[pointer](slot))
   let slotval1 = typeVal
 
   let slotval2 = width
@@ -4907,48 +4651,42 @@ proc miqt_exec_callback_Scintilla__Internal__ListBox_RegisterRGBAImage(self: ptr
 
 
   nimfunc[](slotval1, slotval2, slotval3, slotval4)
-type ScintillaInternalListBoxClearRegisteredImagesBase* = proc(): void
-proc onClearRegisteredImages*(self: ScintillaInternalListBox, slot: proc(): void) =
+type ScintillaInternalListBoxClearRegisteredImagesProc* = proc(): void
+proc onClearRegisteredImages*(self: gen_ScintillaEdit_types.ScintillaInternalListBox, slot: ScintillaInternalListBoxClearRegisteredImagesProc) =
   # TODO check subclass
-  type Cb = proc(): void
-  var tmp = new Cb
+  var tmp = new ScintillaInternalListBoxClearRegisteredImagesProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaInternalListBox_override_virtual_ClearRegisteredImages(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_Scintilla__Internal__ListBox_ClearRegisteredImages(self: ptr cScintillaInternalListBox, slot: int): void {.exportc: "miqt_exec_callback_Scintilla__Internal__ListBox_ClearRegisteredImages ".} =
-  type Cb = proc(): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr ScintillaInternalListBoxClearRegisteredImagesProc](cast[pointer](slot))
 
   nimfunc[]()
-type ScintillaInternalListBoxSetDelegateBase* = proc(lbDelegate: ScintillaInternalIListBoxDelegate): void
-proc onSetDelegate*(self: ScintillaInternalListBox, slot: proc(lbDelegate: ScintillaInternalIListBoxDelegate): void) =
+type ScintillaInternalListBoxSetDelegateProc* = proc(lbDelegate: gen_ScintillaEdit_types.ScintillaInternalIListBoxDelegate): void
+proc onSetDelegate*(self: gen_ScintillaEdit_types.ScintillaInternalListBox, slot: ScintillaInternalListBoxSetDelegateProc) =
   # TODO check subclass
-  type Cb = proc(lbDelegate: ScintillaInternalIListBoxDelegate): void
-  var tmp = new Cb
+  var tmp = new ScintillaInternalListBoxSetDelegateProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaInternalListBox_override_virtual_SetDelegate(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_Scintilla__Internal__ListBox_SetDelegate(self: ptr cScintillaInternalListBox, slot: int, lbDelegate: pointer): void {.exportc: "miqt_exec_callback_Scintilla__Internal__ListBox_SetDelegate ".} =
-  type Cb = proc(lbDelegate: ScintillaInternalIListBoxDelegate): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = ScintillaInternalIListBoxDelegate(h: lbDelegate)
+  var nimfunc = cast[ptr ScintillaInternalListBoxSetDelegateProc](cast[pointer](slot))
+  let slotval1 = gen_ScintillaEdit_types.ScintillaInternalIListBoxDelegate(h: lbDelegate)
 
 
   nimfunc[](slotval1)
-type ScintillaInternalListBoxSetListBase* = proc(list: cstring, separator: cchar, typesep: cchar): void
-proc onSetList*(self: ScintillaInternalListBox, slot: proc(list: cstring, separator: cchar, typesep: cchar): void) =
+type ScintillaInternalListBoxSetListProc* = proc(list: cstring, separator: cchar, typesep: cchar): void
+proc onSetList*(self: gen_ScintillaEdit_types.ScintillaInternalListBox, slot: ScintillaInternalListBoxSetListProc) =
   # TODO check subclass
-  type Cb = proc(list: cstring, separator: cchar, typesep: cchar): void
-  var tmp = new Cb
+  var tmp = new ScintillaInternalListBoxSetListProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaInternalListBox_override_virtual_SetList(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_Scintilla__Internal__ListBox_SetList(self: ptr cScintillaInternalListBox, slot: int, list: cstring, separator: cchar, typesep: cchar): void {.exportc: "miqt_exec_callback_Scintilla__Internal__ListBox_SetList ".} =
-  type Cb = proc(list: cstring, separator: cchar, typesep: cchar): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr ScintillaInternalListBoxSetListProc](cast[pointer](slot))
   let slotval1 = (list)
 
   let slotval2 = separator
@@ -4957,163 +4695,161 @@ proc miqt_exec_callback_Scintilla__Internal__ListBox_SetList(self: ptr cScintill
 
 
   nimfunc[](slotval1, slotval2, slotval3)
-type ScintillaInternalListBoxSetOptionsBase* = proc(options_x: ScintillaInternalListOptions): void
-proc onSetOptions*(self: ScintillaInternalListBox, slot: proc(options_x: ScintillaInternalListOptions): void) =
+type ScintillaInternalListBoxSetOptionsProc* = proc(options_x: gen_ScintillaEdit_types.ScintillaInternalListOptions): void
+proc onSetOptions*(self: gen_ScintillaEdit_types.ScintillaInternalListBox, slot: ScintillaInternalListBoxSetOptionsProc) =
   # TODO check subclass
-  type Cb = proc(options_x: ScintillaInternalListOptions): void
-  var tmp = new Cb
+  var tmp = new ScintillaInternalListBoxSetOptionsProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaInternalListBox_override_virtual_SetOptions(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_Scintilla__Internal__ListBox_SetOptions(self: ptr cScintillaInternalListBox, slot: int, options_x: pointer): void {.exportc: "miqt_exec_callback_Scintilla__Internal__ListBox_SetOptions ".} =
-  type Cb = proc(options_x: ScintillaInternalListOptions): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = ScintillaInternalListOptions(h: options_x)
+  var nimfunc = cast[ptr ScintillaInternalListBoxSetOptionsProc](cast[pointer](slot))
+  let slotval1 = gen_ScintillaEdit_types.ScintillaInternalListOptions(h: options_x)
 
 
   nimfunc[](slotval1)
-proc delete*(self: ScintillaInternalListBox) =
+proc delete*(self: gen_ScintillaEdit_types.ScintillaInternalListBox) =
   fcScintillaInternalListBox_delete(self.h)
 
-func init*(T: type ScintillaInternalMenu, h: ptr cScintillaInternalMenu): ScintillaInternalMenu =
+func init*(T: type gen_ScintillaEdit_types.ScintillaInternalMenu, h: ptr cScintillaInternalMenu): gen_ScintillaEdit_types.ScintillaInternalMenu =
   T(h: h)
-proc create*(T: type ScintillaInternalMenu, ): ScintillaInternalMenu =
+proc create*(T: type gen_ScintillaEdit_types.ScintillaInternalMenu, ): gen_ScintillaEdit_types.ScintillaInternalMenu =
 
-  ScintillaInternalMenu.init(fcScintillaInternalMenu_new())
-proc GetID*(self: ScintillaInternalMenu, ): pointer =
+  gen_ScintillaEdit_types.ScintillaInternalMenu.init(fcScintillaInternalMenu_new())
+proc GetID*(self: gen_ScintillaEdit_types.ScintillaInternalMenu, ): pointer =
 
   fcScintillaInternalMenu_GetID(self.h)
 
-proc CreatePopUp*(self: ScintillaInternalMenu, ): void =
+proc CreatePopUp*(self: gen_ScintillaEdit_types.ScintillaInternalMenu, ): void =
 
   fcScintillaInternalMenu_CreatePopUp(self.h)
 
-proc Destroy*(self: ScintillaInternalMenu, ): void =
+proc Destroy*(self: gen_ScintillaEdit_types.ScintillaInternalMenu, ): void =
 
   fcScintillaInternalMenu_Destroy(self.h)
 
-proc Show*(self: ScintillaInternalMenu, pt: ScintillaInternalPoint, w: ScintillaInternalWindow): void =
+proc Show*(self: gen_ScintillaEdit_types.ScintillaInternalMenu, pt: gen_ScintillaEdit_types.ScintillaInternalPoint, w: gen_ScintillaEdit_types.ScintillaInternalWindow): void =
 
   fcScintillaInternalMenu_Show(self.h, pt.h, w.h)
 
-proc delete*(self: ScintillaInternalMenu) =
+proc delete*(self: gen_ScintillaEdit_types.ScintillaInternalMenu) =
   fcScintillaInternalMenu_delete(self.h)
 
-func init*(T: type Sci_CharacterRange, h: ptr cSci_CharacterRange): Sci_CharacterRange =
+func init*(T: type gen_ScintillaEdit_types.Sci_CharacterRange, h: ptr cSci_CharacterRange): gen_ScintillaEdit_types.Sci_CharacterRange =
   T(h: h)
-proc delete*(self: Sci_CharacterRange) =
+proc delete*(self: gen_ScintillaEdit_types.Sci_CharacterRange) =
   fcSci_CharacterRange_delete(self.h)
 
-func init*(T: type Sci_CharacterRangeFull, h: ptr cSci_CharacterRangeFull): Sci_CharacterRangeFull =
+func init*(T: type gen_ScintillaEdit_types.Sci_CharacterRangeFull, h: ptr cSci_CharacterRangeFull): gen_ScintillaEdit_types.Sci_CharacterRangeFull =
   T(h: h)
-proc delete*(self: Sci_CharacterRangeFull) =
+proc delete*(self: gen_ScintillaEdit_types.Sci_CharacterRangeFull) =
   fcSci_CharacterRangeFull_delete(self.h)
 
-func init*(T: type Sci_TextRange, h: ptr cSci_TextRange): Sci_TextRange =
+func init*(T: type gen_ScintillaEdit_types.Sci_TextRange, h: ptr cSci_TextRange): gen_ScintillaEdit_types.Sci_TextRange =
   T(h: h)
-proc delete*(self: Sci_TextRange) =
+proc delete*(self: gen_ScintillaEdit_types.Sci_TextRange) =
   fcSci_TextRange_delete(self.h)
 
-func init*(T: type Sci_TextRangeFull, h: ptr cSci_TextRangeFull): Sci_TextRangeFull =
+func init*(T: type gen_ScintillaEdit_types.Sci_TextRangeFull, h: ptr cSci_TextRangeFull): gen_ScintillaEdit_types.Sci_TextRangeFull =
   T(h: h)
-proc delete*(self: Sci_TextRangeFull) =
+proc delete*(self: gen_ScintillaEdit_types.Sci_TextRangeFull) =
   fcSci_TextRangeFull_delete(self.h)
 
-func init*(T: type Sci_TextToFind, h: ptr cSci_TextToFind): Sci_TextToFind =
+func init*(T: type gen_ScintillaEdit_types.Sci_TextToFind, h: ptr cSci_TextToFind): gen_ScintillaEdit_types.Sci_TextToFind =
   T(h: h)
-proc delete*(self: Sci_TextToFind) =
+proc delete*(self: gen_ScintillaEdit_types.Sci_TextToFind) =
   fcSci_TextToFind_delete(self.h)
 
-func init*(T: type Sci_TextToFindFull, h: ptr cSci_TextToFindFull): Sci_TextToFindFull =
+func init*(T: type gen_ScintillaEdit_types.Sci_TextToFindFull, h: ptr cSci_TextToFindFull): gen_ScintillaEdit_types.Sci_TextToFindFull =
   T(h: h)
-proc delete*(self: Sci_TextToFindFull) =
+proc delete*(self: gen_ScintillaEdit_types.Sci_TextToFindFull) =
   fcSci_TextToFindFull_delete(self.h)
 
-func init*(T: type Sci_Rectangle, h: ptr cSci_Rectangle): Sci_Rectangle =
+func init*(T: type gen_ScintillaEdit_types.Sci_Rectangle, h: ptr cSci_Rectangle): gen_ScintillaEdit_types.Sci_Rectangle =
   T(h: h)
-proc delete*(self: Sci_Rectangle) =
+proc delete*(self: gen_ScintillaEdit_types.Sci_Rectangle) =
   fcSci_Rectangle_delete(self.h)
 
-func init*(T: type Sci_RangeToFormat, h: ptr cSci_RangeToFormat): Sci_RangeToFormat =
+func init*(T: type gen_ScintillaEdit_types.Sci_RangeToFormat, h: ptr cSci_RangeToFormat): gen_ScintillaEdit_types.Sci_RangeToFormat =
   T(h: h)
-proc delete*(self: Sci_RangeToFormat) =
+proc delete*(self: gen_ScintillaEdit_types.Sci_RangeToFormat) =
   fcSci_RangeToFormat_delete(self.h)
 
-func init*(T: type Sci_RangeToFormatFull, h: ptr cSci_RangeToFormatFull): Sci_RangeToFormatFull =
+func init*(T: type gen_ScintillaEdit_types.Sci_RangeToFormatFull, h: ptr cSci_RangeToFormatFull): gen_ScintillaEdit_types.Sci_RangeToFormatFull =
   T(h: h)
-proc delete*(self: Sci_RangeToFormatFull) =
+proc delete*(self: gen_ScintillaEdit_types.Sci_RangeToFormatFull) =
   fcSci_RangeToFormatFull_delete(self.h)
 
-func init*(T: type Sci_NotifyHeader, h: ptr cSci_NotifyHeader): Sci_NotifyHeader =
+func init*(T: type gen_ScintillaEdit_types.Sci_NotifyHeader, h: ptr cSci_NotifyHeader): gen_ScintillaEdit_types.Sci_NotifyHeader =
   T(h: h)
-proc delete*(self: Sci_NotifyHeader) =
+proc delete*(self: gen_ScintillaEdit_types.Sci_NotifyHeader) =
   fcSci_NotifyHeader_delete(self.h)
 
-func init*(T: type SCNotification, h: ptr cSCNotification): SCNotification =
+func init*(T: type gen_ScintillaEdit_types.SCNotification, h: ptr cSCNotification): gen_ScintillaEdit_types.SCNotification =
   T(h: h)
-proc delete*(self: SCNotification) =
+proc delete*(self: gen_ScintillaEdit_types.SCNotification) =
   fcSCNotification_delete(self.h)
 
-func init*(T: type ScintillaEditBase, h: ptr cScintillaEditBase): ScintillaEditBase =
+func init*(T: type gen_ScintillaEdit_types.ScintillaEditBase, h: ptr cScintillaEditBase): gen_ScintillaEdit_types.ScintillaEditBase =
   T(h: h)
-proc create*(T: type ScintillaEditBase, parent: gen_qwidget.QWidget): ScintillaEditBase =
+proc create*(T: type gen_ScintillaEdit_types.ScintillaEditBase, parent: gen_qwidget.QWidget): gen_ScintillaEdit_types.ScintillaEditBase =
 
-  ScintillaEditBase.init(fcScintillaEditBase_new(parent.h))
-proc create*(T: type ScintillaEditBase, ): ScintillaEditBase =
+  gen_ScintillaEdit_types.ScintillaEditBase.init(fcScintillaEditBase_new(parent.h))
+proc create*(T: type gen_ScintillaEdit_types.ScintillaEditBase, ): gen_ScintillaEdit_types.ScintillaEditBase =
 
-  ScintillaEditBase.init(fcScintillaEditBase_new2())
-proc metaObject*(self: ScintillaEditBase, ): gen_qobjectdefs.QMetaObject =
+  gen_ScintillaEdit_types.ScintillaEditBase.init(fcScintillaEditBase_new2())
+proc metaObject*(self: gen_ScintillaEdit_types.ScintillaEditBase, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcScintillaEditBase_metaObject(self.h))
 
-proc metacast*(self: ScintillaEditBase, param1: cstring): pointer =
+proc metacast*(self: gen_ScintillaEdit_types.ScintillaEditBase, param1: cstring): pointer =
 
   fcScintillaEditBase_metacast(self.h, param1)
 
-proc metacall*(self: ScintillaEditBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_ScintillaEdit_types.ScintillaEditBase, param1: cint, param2: cint, param3: pointer): cint =
 
   fcScintillaEditBase_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type ScintillaEditBase, s: cstring): string =
+proc tr*(_: type gen_ScintillaEdit_types.ScintillaEditBase, s: cstring): string =
 
   let v_ms = fcScintillaEditBase_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type ScintillaEditBase, s: cstring): string =
+proc trUtf8*(_: type gen_ScintillaEdit_types.ScintillaEditBase, s: cstring): string =
 
   let v_ms = fcScintillaEditBase_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc send*(self: ScintillaEditBase, iMessage: cuint, wParam: miqt_uintptr_t, lParam: miqt_intptr_t): miqt_intptr_t =
+proc send*(self: gen_ScintillaEdit_types.ScintillaEditBase, iMessage: cuint, wParam: miqt_uintptr_t, lParam: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEditBase_send(self.h, iMessage, wParam, lParam)
 
-proc sends*(self: ScintillaEditBase, iMessage: cuint, wParam: miqt_uintptr_t, s: cstring): miqt_intptr_t =
+proc sends*(self: gen_ScintillaEdit_types.ScintillaEditBase, iMessage: cuint, wParam: miqt_uintptr_t, s: cstring): miqt_intptr_t =
 
   fcScintillaEditBase_sends(self.h, iMessage, wParam, s)
 
-proc scrollHorizontal*(self: ScintillaEditBase, value: cint): void =
+proc scrollHorizontal*(self: gen_ScintillaEdit_types.ScintillaEditBase, value: cint): void =
 
   fcScintillaEditBase_scrollHorizontal(self.h, value)
 
-proc scrollVertical*(self: ScintillaEditBase, value: cint): void =
+proc scrollVertical*(self: gen_ScintillaEdit_types.ScintillaEditBase, value: cint): void =
 
   fcScintillaEditBase_scrollVertical(self.h, value)
 
-proc notifyParent*(self: ScintillaEditBase, scn: ScintillaNotificationData): void =
+proc notifyParent*(self: gen_ScintillaEdit_types.ScintillaEditBase, scn: gen_ScintillaEdit_types.ScintillaNotificationData): void =
 
   fcScintillaEditBase_notifyParent(self.h, scn.h)
 
-proc eventCommand*(self: ScintillaEditBase, wParam: miqt_uintptr_t, lParam: miqt_intptr_t): void =
+proc eventCommand*(self: gen_ScintillaEdit_types.ScintillaEditBase, wParam: miqt_uintptr_t, lParam: miqt_intptr_t): void =
 
   fcScintillaEditBase_eventCommand(self.h, wParam, lParam)
 
-proc horizontalScrolled*(self: ScintillaEditBase, value: cint): void =
+proc horizontalScrolled*(self: gen_ScintillaEdit_types.ScintillaEditBase, value: cint): void =
 
   fcScintillaEditBase_horizontalScrolled(self.h, value)
 
@@ -5125,13 +4861,13 @@ proc miqt_exec_callback_ScintillaEditBase_horizontalScrolled(slot: int, value: c
 
   nimfunc[](slotval1)
 
-proc onhorizontalScrolled*(self: ScintillaEditBase, slot: proc(value: cint)) =
+proc onhorizontalScrolled*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: proc(value: cint)) =
   type Cb = proc(value: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fScintillaEditBase_connect_horizontalScrolled(self.h, cast[int](addr tmp[]))
-proc verticalScrolled*(self: ScintillaEditBase, value: cint): void =
+proc verticalScrolled*(self: gen_ScintillaEdit_types.ScintillaEditBase, value: cint): void =
 
   fcScintillaEditBase_verticalScrolled(self.h, value)
 
@@ -5143,13 +4879,13 @@ proc miqt_exec_callback_ScintillaEditBase_verticalScrolled(slot: int, value: cin
 
   nimfunc[](slotval1)
 
-proc onverticalScrolled*(self: ScintillaEditBase, slot: proc(value: cint)) =
+proc onverticalScrolled*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: proc(value: cint)) =
   type Cb = proc(value: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fScintillaEditBase_connect_verticalScrolled(self.h, cast[int](addr tmp[]))
-proc horizontalRangeChanged*(self: ScintillaEditBase, max: cint, page: cint): void =
+proc horizontalRangeChanged*(self: gen_ScintillaEdit_types.ScintillaEditBase, max: cint, page: cint): void =
 
   fcScintillaEditBase_horizontalRangeChanged(self.h, max, page)
 
@@ -5163,13 +4899,13 @@ proc miqt_exec_callback_ScintillaEditBase_horizontalRangeChanged(slot: int, max:
 
   nimfunc[](slotval1, slotval2)
 
-proc onhorizontalRangeChanged*(self: ScintillaEditBase, slot: proc(max: cint, page: cint)) =
+proc onhorizontalRangeChanged*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: proc(max: cint, page: cint)) =
   type Cb = proc(max: cint, page: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fScintillaEditBase_connect_horizontalRangeChanged(self.h, cast[int](addr tmp[]))
-proc verticalRangeChanged*(self: ScintillaEditBase, max: cint, page: cint): void =
+proc verticalRangeChanged*(self: gen_ScintillaEdit_types.ScintillaEditBase, max: cint, page: cint): void =
 
   fcScintillaEditBase_verticalRangeChanged(self.h, max, page)
 
@@ -5183,13 +4919,13 @@ proc miqt_exec_callback_ScintillaEditBase_verticalRangeChanged(slot: int, max: c
 
   nimfunc[](slotval1, slotval2)
 
-proc onverticalRangeChanged*(self: ScintillaEditBase, slot: proc(max: cint, page: cint)) =
+proc onverticalRangeChanged*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: proc(max: cint, page: cint)) =
   type Cb = proc(max: cint, page: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fScintillaEditBase_connect_verticalRangeChanged(self.h, cast[int](addr tmp[]))
-proc notifyChange*(self: ScintillaEditBase, ): void =
+proc notifyChange*(self: gen_ScintillaEdit_types.ScintillaEditBase, ): void =
 
   fcScintillaEditBase_notifyChange(self.h)
 
@@ -5199,13 +4935,13 @@ proc miqt_exec_callback_ScintillaEditBase_notifyChange(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onnotifyChange*(self: ScintillaEditBase, slot: proc()) =
+proc onnotifyChange*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fScintillaEditBase_connect_notifyChange(self.h, cast[int](addr tmp[]))
-proc linesAdded*(self: ScintillaEditBase, linesAdded: miqt_intptr_t): void =
+proc linesAdded*(self: gen_ScintillaEdit_types.ScintillaEditBase, linesAdded: miqt_intptr_t): void =
 
   fcScintillaEditBase_linesAdded(self.h, linesAdded)
 
@@ -5217,13 +4953,13 @@ proc miqt_exec_callback_ScintillaEditBase_linesAdded(slot: int, linesAdded: miqt
 
   nimfunc[](slotval1)
 
-proc onlinesAdded*(self: ScintillaEditBase, slot: proc(linesAdded: miqt_intptr_t)) =
+proc onlinesAdded*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: proc(linesAdded: miqt_intptr_t)) =
   type Cb = proc(linesAdded: miqt_intptr_t)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fScintillaEditBase_connect_linesAdded(self.h, cast[int](addr tmp[]))
-proc aboutToCopy*(self: ScintillaEditBase, data: gen_qmimedata.QMimeData): void =
+proc aboutToCopy*(self: gen_ScintillaEdit_types.ScintillaEditBase, data: gen_qmimedata.QMimeData): void =
 
   fcScintillaEditBase_aboutToCopy(self.h, data.h)
 
@@ -5235,13 +4971,13 @@ proc miqt_exec_callback_ScintillaEditBase_aboutToCopy(slot: int, data: pointer) 
 
   nimfunc[](slotval1)
 
-proc onaboutToCopy*(self: ScintillaEditBase, slot: proc(data: gen_qmimedata.QMimeData)) =
+proc onaboutToCopy*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: proc(data: gen_qmimedata.QMimeData)) =
   type Cb = proc(data: gen_qmimedata.QMimeData)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fScintillaEditBase_connect_aboutToCopy(self.h, cast[int](addr tmp[]))
-proc styleNeeded*(self: ScintillaEditBase, position: miqt_intptr_t): void =
+proc styleNeeded*(self: gen_ScintillaEdit_types.ScintillaEditBase, position: miqt_intptr_t): void =
 
   fcScintillaEditBase_styleNeeded(self.h, position)
 
@@ -5253,13 +4989,13 @@ proc miqt_exec_callback_ScintillaEditBase_styleNeeded(slot: int, position: miqt_
 
   nimfunc[](slotval1)
 
-proc onstyleNeeded*(self: ScintillaEditBase, slot: proc(position: miqt_intptr_t)) =
+proc onstyleNeeded*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: proc(position: miqt_intptr_t)) =
   type Cb = proc(position: miqt_intptr_t)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fScintillaEditBase_connect_styleNeeded(self.h, cast[int](addr tmp[]))
-proc charAdded*(self: ScintillaEditBase, ch: cint): void =
+proc charAdded*(self: gen_ScintillaEdit_types.ScintillaEditBase, ch: cint): void =
 
   fcScintillaEditBase_charAdded(self.h, ch)
 
@@ -5271,13 +5007,13 @@ proc miqt_exec_callback_ScintillaEditBase_charAdded(slot: int, ch: cint) {.expor
 
   nimfunc[](slotval1)
 
-proc oncharAdded*(self: ScintillaEditBase, slot: proc(ch: cint)) =
+proc oncharAdded*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: proc(ch: cint)) =
   type Cb = proc(ch: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fScintillaEditBase_connect_charAdded(self.h, cast[int](addr tmp[]))
-proc savePointChanged*(self: ScintillaEditBase, dirty: bool): void =
+proc savePointChanged*(self: gen_ScintillaEdit_types.ScintillaEditBase, dirty: bool): void =
 
   fcScintillaEditBase_savePointChanged(self.h, dirty)
 
@@ -5289,13 +5025,13 @@ proc miqt_exec_callback_ScintillaEditBase_savePointChanged(slot: int, dirty: boo
 
   nimfunc[](slotval1)
 
-proc onsavePointChanged*(self: ScintillaEditBase, slot: proc(dirty: bool)) =
+proc onsavePointChanged*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: proc(dirty: bool)) =
   type Cb = proc(dirty: bool)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fScintillaEditBase_connect_savePointChanged(self.h, cast[int](addr tmp[]))
-proc modifyAttemptReadOnly*(self: ScintillaEditBase, ): void =
+proc modifyAttemptReadOnly*(self: gen_ScintillaEdit_types.ScintillaEditBase, ): void =
 
   fcScintillaEditBase_modifyAttemptReadOnly(self.h)
 
@@ -5305,13 +5041,13 @@ proc miqt_exec_callback_ScintillaEditBase_modifyAttemptReadOnly(slot: int) {.exp
 
   nimfunc[]()
 
-proc onmodifyAttemptReadOnly*(self: ScintillaEditBase, slot: proc()) =
+proc onmodifyAttemptReadOnly*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fScintillaEditBase_connect_modifyAttemptReadOnly(self.h, cast[int](addr tmp[]))
-proc key*(self: ScintillaEditBase, key: cint): void =
+proc key*(self: gen_ScintillaEdit_types.ScintillaEditBase, key: cint): void =
 
   fcScintillaEditBase_key(self.h, key)
 
@@ -5323,13 +5059,13 @@ proc miqt_exec_callback_ScintillaEditBase_key(slot: int, key: cint) {.exportc.} 
 
   nimfunc[](slotval1)
 
-proc onkey*(self: ScintillaEditBase, slot: proc(key: cint)) =
+proc onkey*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: proc(key: cint)) =
   type Cb = proc(key: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fScintillaEditBase_connect_key(self.h, cast[int](addr tmp[]))
-proc doubleClick*(self: ScintillaEditBase, position: miqt_intptr_t, line: miqt_intptr_t): void =
+proc doubleClick*(self: gen_ScintillaEdit_types.ScintillaEditBase, position: miqt_intptr_t, line: miqt_intptr_t): void =
 
   fcScintillaEditBase_doubleClick(self.h, position, line)
 
@@ -5343,38 +5079,38 @@ proc miqt_exec_callback_ScintillaEditBase_doubleClick(slot: int, position: miqt_
 
   nimfunc[](slotval1, slotval2)
 
-proc ondoubleClick*(self: ScintillaEditBase, slot: proc(position: miqt_intptr_t, line: miqt_intptr_t)) =
+proc ondoubleClick*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: proc(position: miqt_intptr_t, line: miqt_intptr_t)) =
   type Cb = proc(position: miqt_intptr_t, line: miqt_intptr_t)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fScintillaEditBase_connect_doubleClick(self.h, cast[int](addr tmp[]))
-proc updateUi*(self: ScintillaEditBase, updated: ScintillaUpdate): void =
+proc updateUi*(self: gen_ScintillaEdit_types.ScintillaEditBase, updated: cint): void =
 
   fcScintillaEditBase_updateUi(self.h, cint(updated))
 
 proc miqt_exec_callback_ScintillaEditBase_updateUi(slot: int, updated: cint) {.exportc.} =
-  type Cb = proc(updated: ScintillaUpdate)
+  type Cb = proc(updated: cint)
   let nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = ScintillaUpdate(updated)
+  let slotval1 = cint(updated)
 
 
   nimfunc[](slotval1)
 
-proc onupdateUi*(self: ScintillaEditBase, slot: proc(updated: ScintillaUpdate)) =
-  type Cb = proc(updated: ScintillaUpdate)
+proc onupdateUi*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: proc(updated: cint)) =
+  type Cb = proc(updated: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fScintillaEditBase_connect_updateUi(self.h, cast[int](addr tmp[]))
-proc modified*(self: ScintillaEditBase, typeVal: ScintillaModificationFlags, position: miqt_intptr_t, length: miqt_intptr_t, linesAdded: miqt_intptr_t, text: seq[byte], line: miqt_intptr_t, foldNow: ScintillaFoldLevel, foldPrev: ScintillaFoldLevel): void =
+proc modified*(self: gen_ScintillaEdit_types.ScintillaEditBase, typeVal: cint, position: miqt_intptr_t, length: miqt_intptr_t, linesAdded: miqt_intptr_t, text: seq[byte], line: miqt_intptr_t, foldNow: cint, foldPrev: cint): void =
 
   fcScintillaEditBase_modified(self.h, cint(typeVal), position, length, linesAdded, struct_miqt_string(data: cast[cstring](if len(text) == 0: nil else: unsafeAddr text[0]), len: csize_t(len(text))), line, cint(foldNow), cint(foldPrev))
 
 proc miqt_exec_callback_ScintillaEditBase_modified(slot: int, typeVal: cint, position: miqt_intptr_t, length: miqt_intptr_t, linesAdded: miqt_intptr_t, text: struct_miqt_string, line: miqt_intptr_t, foldNow: cint, foldPrev: cint) {.exportc.} =
-  type Cb = proc(typeVal: ScintillaModificationFlags, position: miqt_intptr_t, length: miqt_intptr_t, linesAdded: miqt_intptr_t, text: seq[byte], line: miqt_intptr_t, foldNow: ScintillaFoldLevel, foldPrev: ScintillaFoldLevel)
+  type Cb = proc(typeVal: cint, position: miqt_intptr_t, length: miqt_intptr_t, linesAdded: miqt_intptr_t, text: seq[byte], line: miqt_intptr_t, foldNow: cint, foldPrev: cint)
   let nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = ScintillaModificationFlags(typeVal)
+  let slotval1 = cint(typeVal)
 
   let slotval2 = position
 
@@ -5389,27 +5125,27 @@ proc miqt_exec_callback_ScintillaEditBase_modified(slot: int, typeVal: cint, pos
 
   let slotval6 = line
 
-  let slotval7 = ScintillaFoldLevel(foldNow)
+  let slotval7 = cint(foldNow)
 
-  let slotval8 = ScintillaFoldLevel(foldPrev)
+  let slotval8 = cint(foldPrev)
 
 
   nimfunc[](slotval1, slotval2, slotval3, slotval4, slotval5, slotval6, slotval7, slotval8)
 
-proc onmodified*(self: ScintillaEditBase, slot: proc(typeVal: ScintillaModificationFlags, position: miqt_intptr_t, length: miqt_intptr_t, linesAdded: miqt_intptr_t, text: seq[byte], line: miqt_intptr_t, foldNow: ScintillaFoldLevel, foldPrev: ScintillaFoldLevel)) =
-  type Cb = proc(typeVal: ScintillaModificationFlags, position: miqt_intptr_t, length: miqt_intptr_t, linesAdded: miqt_intptr_t, text: seq[byte], line: miqt_intptr_t, foldNow: ScintillaFoldLevel, foldPrev: ScintillaFoldLevel)
+proc onmodified*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: proc(typeVal: cint, position: miqt_intptr_t, length: miqt_intptr_t, linesAdded: miqt_intptr_t, text: seq[byte], line: miqt_intptr_t, foldNow: cint, foldPrev: cint)) =
+  type Cb = proc(typeVal: cint, position: miqt_intptr_t, length: miqt_intptr_t, linesAdded: miqt_intptr_t, text: seq[byte], line: miqt_intptr_t, foldNow: cint, foldPrev: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fScintillaEditBase_connect_modified(self.h, cast[int](addr tmp[]))
-proc macroRecord*(self: ScintillaEditBase, message: ScintillaMessage, wParam: miqt_uintptr_t, lParam: miqt_intptr_t): void =
+proc macroRecord*(self: gen_ScintillaEdit_types.ScintillaEditBase, message: cint, wParam: miqt_uintptr_t, lParam: miqt_intptr_t): void =
 
   fcScintillaEditBase_macroRecord(self.h, cint(message), wParam, lParam)
 
 proc miqt_exec_callback_ScintillaEditBase_macroRecord(slot: int, message: cint, wParam: miqt_uintptr_t, lParam: miqt_intptr_t) {.exportc.} =
-  type Cb = proc(message: ScintillaMessage, wParam: miqt_uintptr_t, lParam: miqt_intptr_t)
+  type Cb = proc(message: cint, wParam: miqt_uintptr_t, lParam: miqt_intptr_t)
   let nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = ScintillaMessage(message)
+  let slotval1 = cint(message)
 
   let slotval2 = wParam
 
@@ -5418,35 +5154,35 @@ proc miqt_exec_callback_ScintillaEditBase_macroRecord(slot: int, message: cint, 
 
   nimfunc[](slotval1, slotval2, slotval3)
 
-proc onmacroRecord*(self: ScintillaEditBase, slot: proc(message: ScintillaMessage, wParam: miqt_uintptr_t, lParam: miqt_intptr_t)) =
-  type Cb = proc(message: ScintillaMessage, wParam: miqt_uintptr_t, lParam: miqt_intptr_t)
+proc onmacroRecord*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: proc(message: cint, wParam: miqt_uintptr_t, lParam: miqt_intptr_t)) =
+  type Cb = proc(message: cint, wParam: miqt_uintptr_t, lParam: miqt_intptr_t)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fScintillaEditBase_connect_macroRecord(self.h, cast[int](addr tmp[]))
-proc marginClicked*(self: ScintillaEditBase, position: miqt_intptr_t, modifiers: ScintillaKeyMod, margin: cint): void =
+proc marginClicked*(self: gen_ScintillaEdit_types.ScintillaEditBase, position: miqt_intptr_t, modifiers: cint, margin: cint): void =
 
   fcScintillaEditBase_marginClicked(self.h, position, cint(modifiers), margin)
 
 proc miqt_exec_callback_ScintillaEditBase_marginClicked(slot: int, position: miqt_intptr_t, modifiers: cint, margin: cint) {.exportc.} =
-  type Cb = proc(position: miqt_intptr_t, modifiers: ScintillaKeyMod, margin: cint)
+  type Cb = proc(position: miqt_intptr_t, modifiers: cint, margin: cint)
   let nimfunc = cast[ptr Cb](cast[pointer](slot))
   let slotval1 = position
 
-  let slotval2 = ScintillaKeyMod(modifiers)
+  let slotval2 = cint(modifiers)
 
   let slotval3 = margin
 
 
   nimfunc[](slotval1, slotval2, slotval3)
 
-proc onmarginClicked*(self: ScintillaEditBase, slot: proc(position: miqt_intptr_t, modifiers: ScintillaKeyMod, margin: cint)) =
-  type Cb = proc(position: miqt_intptr_t, modifiers: ScintillaKeyMod, margin: cint)
+proc onmarginClicked*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: proc(position: miqt_intptr_t, modifiers: cint, margin: cint)) =
+  type Cb = proc(position: miqt_intptr_t, modifiers: cint, margin: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fScintillaEditBase_connect_marginClicked(self.h, cast[int](addr tmp[]))
-proc textAreaClicked*(self: ScintillaEditBase, line: miqt_intptr_t, modifiers: cint): void =
+proc textAreaClicked*(self: gen_ScintillaEdit_types.ScintillaEditBase, line: miqt_intptr_t, modifiers: cint): void =
 
   fcScintillaEditBase_textAreaClicked(self.h, line, modifiers)
 
@@ -5460,13 +5196,13 @@ proc miqt_exec_callback_ScintillaEditBase_textAreaClicked(slot: int, line: miqt_
 
   nimfunc[](slotval1, slotval2)
 
-proc ontextAreaClicked*(self: ScintillaEditBase, slot: proc(line: miqt_intptr_t, modifiers: cint)) =
+proc ontextAreaClicked*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: proc(line: miqt_intptr_t, modifiers: cint)) =
   type Cb = proc(line: miqt_intptr_t, modifiers: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fScintillaEditBase_connect_textAreaClicked(self.h, cast[int](addr tmp[]))
-proc needShown*(self: ScintillaEditBase, position: miqt_intptr_t, length: miqt_intptr_t): void =
+proc needShown*(self: gen_ScintillaEdit_types.ScintillaEditBase, position: miqt_intptr_t, length: miqt_intptr_t): void =
 
   fcScintillaEditBase_needShown(self.h, position, length)
 
@@ -5480,13 +5216,13 @@ proc miqt_exec_callback_ScintillaEditBase_needShown(slot: int, position: miqt_in
 
   nimfunc[](slotval1, slotval2)
 
-proc onneedShown*(self: ScintillaEditBase, slot: proc(position: miqt_intptr_t, length: miqt_intptr_t)) =
+proc onneedShown*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: proc(position: miqt_intptr_t, length: miqt_intptr_t)) =
   type Cb = proc(position: miqt_intptr_t, length: miqt_intptr_t)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fScintillaEditBase_connect_needShown(self.h, cast[int](addr tmp[]))
-proc painted*(self: ScintillaEditBase, ): void =
+proc painted*(self: gen_ScintillaEdit_types.ScintillaEditBase, ): void =
 
   fcScintillaEditBase_painted(self.h)
 
@@ -5496,13 +5232,13 @@ proc miqt_exec_callback_ScintillaEditBase_painted(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onpainted*(self: ScintillaEditBase, slot: proc()) =
+proc onpainted*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fScintillaEditBase_connect_painted(self.h, cast[int](addr tmp[]))
-proc userListSelection*(self: ScintillaEditBase, ): void =
+proc userListSelection*(self: gen_ScintillaEdit_types.ScintillaEditBase, ): void =
 
   fcScintillaEditBase_userListSelection(self.h)
 
@@ -5512,13 +5248,13 @@ proc miqt_exec_callback_ScintillaEditBase_userListSelection(slot: int) {.exportc
 
   nimfunc[]()
 
-proc onuserListSelection*(self: ScintillaEditBase, slot: proc()) =
+proc onuserListSelection*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fScintillaEditBase_connect_userListSelection(self.h, cast[int](addr tmp[]))
-proc uriDropped*(self: ScintillaEditBase, uri: string): void =
+proc uriDropped*(self: gen_ScintillaEdit_types.ScintillaEditBase, uri: string): void =
 
   fcScintillaEditBase_uriDropped(self.h, struct_miqt_string(data: uri, len: csize_t(len(uri))))
 
@@ -5533,13 +5269,13 @@ proc miqt_exec_callback_ScintillaEditBase_uriDropped(slot: int, uri: struct_miqt
 
   nimfunc[](slotval1)
 
-proc onuriDropped*(self: ScintillaEditBase, slot: proc(uri: string)) =
+proc onuriDropped*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: proc(uri: string)) =
   type Cb = proc(uri: string)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fScintillaEditBase_connect_uriDropped(self.h, cast[int](addr tmp[]))
-proc dwellStart*(self: ScintillaEditBase, x: cint, y: cint): void =
+proc dwellStart*(self: gen_ScintillaEdit_types.ScintillaEditBase, x: cint, y: cint): void =
 
   fcScintillaEditBase_dwellStart(self.h, x, y)
 
@@ -5553,13 +5289,13 @@ proc miqt_exec_callback_ScintillaEditBase_dwellStart(slot: int, x: cint, y: cint
 
   nimfunc[](slotval1, slotval2)
 
-proc ondwellStart*(self: ScintillaEditBase, slot: proc(x: cint, y: cint)) =
+proc ondwellStart*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: proc(x: cint, y: cint)) =
   type Cb = proc(x: cint, y: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fScintillaEditBase_connect_dwellStart(self.h, cast[int](addr tmp[]))
-proc dwellEnd*(self: ScintillaEditBase, x: cint, y: cint): void =
+proc dwellEnd*(self: gen_ScintillaEdit_types.ScintillaEditBase, x: cint, y: cint): void =
 
   fcScintillaEditBase_dwellEnd(self.h, x, y)
 
@@ -5573,13 +5309,13 @@ proc miqt_exec_callback_ScintillaEditBase_dwellEnd(slot: int, x: cint, y: cint) 
 
   nimfunc[](slotval1, slotval2)
 
-proc ondwellEnd*(self: ScintillaEditBase, slot: proc(x: cint, y: cint)) =
+proc ondwellEnd*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: proc(x: cint, y: cint)) =
   type Cb = proc(x: cint, y: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fScintillaEditBase_connect_dwellEnd(self.h, cast[int](addr tmp[]))
-proc zoom*(self: ScintillaEditBase, zoom: cint): void =
+proc zoom*(self: gen_ScintillaEdit_types.ScintillaEditBase, zoom: cint): void =
 
   fcScintillaEditBase_zoom(self.h, zoom)
 
@@ -5591,53 +5327,53 @@ proc miqt_exec_callback_ScintillaEditBase_zoom(slot: int, zoom: cint) {.exportc.
 
   nimfunc[](slotval1)
 
-proc onzoom*(self: ScintillaEditBase, slot: proc(zoom: cint)) =
+proc onzoom*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: proc(zoom: cint)) =
   type Cb = proc(zoom: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fScintillaEditBase_connect_zoom(self.h, cast[int](addr tmp[]))
-proc hotSpotClick*(self: ScintillaEditBase, position: miqt_intptr_t, modifiers: ScintillaKeyMod): void =
+proc hotSpotClick*(self: gen_ScintillaEdit_types.ScintillaEditBase, position: miqt_intptr_t, modifiers: cint): void =
 
   fcScintillaEditBase_hotSpotClick(self.h, position, cint(modifiers))
 
 proc miqt_exec_callback_ScintillaEditBase_hotSpotClick(slot: int, position: miqt_intptr_t, modifiers: cint) {.exportc.} =
-  type Cb = proc(position: miqt_intptr_t, modifiers: ScintillaKeyMod)
+  type Cb = proc(position: miqt_intptr_t, modifiers: cint)
   let nimfunc = cast[ptr Cb](cast[pointer](slot))
   let slotval1 = position
 
-  let slotval2 = ScintillaKeyMod(modifiers)
+  let slotval2 = cint(modifiers)
 
 
   nimfunc[](slotval1, slotval2)
 
-proc onhotSpotClick*(self: ScintillaEditBase, slot: proc(position: miqt_intptr_t, modifiers: ScintillaKeyMod)) =
-  type Cb = proc(position: miqt_intptr_t, modifiers: ScintillaKeyMod)
+proc onhotSpotClick*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: proc(position: miqt_intptr_t, modifiers: cint)) =
+  type Cb = proc(position: miqt_intptr_t, modifiers: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fScintillaEditBase_connect_hotSpotClick(self.h, cast[int](addr tmp[]))
-proc hotSpotDoubleClick*(self: ScintillaEditBase, position: miqt_intptr_t, modifiers: ScintillaKeyMod): void =
+proc hotSpotDoubleClick*(self: gen_ScintillaEdit_types.ScintillaEditBase, position: miqt_intptr_t, modifiers: cint): void =
 
   fcScintillaEditBase_hotSpotDoubleClick(self.h, position, cint(modifiers))
 
 proc miqt_exec_callback_ScintillaEditBase_hotSpotDoubleClick(slot: int, position: miqt_intptr_t, modifiers: cint) {.exportc.} =
-  type Cb = proc(position: miqt_intptr_t, modifiers: ScintillaKeyMod)
+  type Cb = proc(position: miqt_intptr_t, modifiers: cint)
   let nimfunc = cast[ptr Cb](cast[pointer](slot))
   let slotval1 = position
 
-  let slotval2 = ScintillaKeyMod(modifiers)
+  let slotval2 = cint(modifiers)
 
 
   nimfunc[](slotval1, slotval2)
 
-proc onhotSpotDoubleClick*(self: ScintillaEditBase, slot: proc(position: miqt_intptr_t, modifiers: ScintillaKeyMod)) =
-  type Cb = proc(position: miqt_intptr_t, modifiers: ScintillaKeyMod)
+proc onhotSpotDoubleClick*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: proc(position: miqt_intptr_t, modifiers: cint)) =
+  type Cb = proc(position: miqt_intptr_t, modifiers: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fScintillaEditBase_connect_hotSpotDoubleClick(self.h, cast[int](addr tmp[]))
-proc callTipClick*(self: ScintillaEditBase, ): void =
+proc callTipClick*(self: gen_ScintillaEdit_types.ScintillaEditBase, ): void =
 
   fcScintillaEditBase_callTipClick(self.h)
 
@@ -5647,13 +5383,13 @@ proc miqt_exec_callback_ScintillaEditBase_callTipClick(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc oncallTipClick*(self: ScintillaEditBase, slot: proc()) =
+proc oncallTipClick*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fScintillaEditBase_connect_callTipClick(self.h, cast[int](addr tmp[]))
-proc autoCompleteSelection*(self: ScintillaEditBase, position: miqt_intptr_t, text: string): void =
+proc autoCompleteSelection*(self: gen_ScintillaEdit_types.ScintillaEditBase, position: miqt_intptr_t, text: string): void =
 
   fcScintillaEditBase_autoCompleteSelection(self.h, position, struct_miqt_string(data: text, len: csize_t(len(text))))
 
@@ -5670,13 +5406,13 @@ proc miqt_exec_callback_ScintillaEditBase_autoCompleteSelection(slot: int, posit
 
   nimfunc[](slotval1, slotval2)
 
-proc onautoCompleteSelection*(self: ScintillaEditBase, slot: proc(position: miqt_intptr_t, text: string)) =
+proc onautoCompleteSelection*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: proc(position: miqt_intptr_t, text: string)) =
   type Cb = proc(position: miqt_intptr_t, text: string)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fScintillaEditBase_connect_autoCompleteSelection(self.h, cast[int](addr tmp[]))
-proc autoCompleteCancelled*(self: ScintillaEditBase, ): void =
+proc autoCompleteCancelled*(self: gen_ScintillaEdit_types.ScintillaEditBase, ): void =
 
   fcScintillaEditBase_autoCompleteCancelled(self.h)
 
@@ -5686,13 +5422,13 @@ proc miqt_exec_callback_ScintillaEditBase_autoCompleteCancelled(slot: int) {.exp
 
   nimfunc[]()
 
-proc onautoCompleteCancelled*(self: ScintillaEditBase, slot: proc()) =
+proc onautoCompleteCancelled*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fScintillaEditBase_connect_autoCompleteCancelled(self.h, cast[int](addr tmp[]))
-proc focusChanged*(self: ScintillaEditBase, focused: bool): void =
+proc focusChanged*(self: gen_ScintillaEdit_types.ScintillaEditBase, focused: bool): void =
 
   fcScintillaEditBase_focusChanged(self.h, focused)
 
@@ -5704,31 +5440,31 @@ proc miqt_exec_callback_ScintillaEditBase_focusChanged(slot: int, focused: bool)
 
   nimfunc[](slotval1)
 
-proc onfocusChanged*(self: ScintillaEditBase, slot: proc(focused: bool)) =
+proc onfocusChanged*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: proc(focused: bool)) =
   type Cb = proc(focused: bool)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fScintillaEditBase_connect_focusChanged(self.h, cast[int](addr tmp[]))
-proc notify*(self: ScintillaEditBase, pscn: ScintillaNotificationData): void =
+proc notify*(self: gen_ScintillaEdit_types.ScintillaEditBase, pscn: gen_ScintillaEdit_types.ScintillaNotificationData): void =
 
   fcScintillaEditBase_notify(self.h, pscn.h)
 
 proc miqt_exec_callback_ScintillaEditBase_notify(slot: int, pscn: pointer) {.exportc.} =
-  type Cb = proc(pscn: ScintillaNotificationData)
+  type Cb = proc(pscn: gen_ScintillaEdit_types.ScintillaNotificationData)
   let nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = ScintillaNotificationData(h: pscn)
+  let slotval1 = gen_ScintillaEdit_types.ScintillaNotificationData(h: pscn)
 
 
   nimfunc[](slotval1)
 
-proc onnotify*(self: ScintillaEditBase, slot: proc(pscn: ScintillaNotificationData)) =
-  type Cb = proc(pscn: ScintillaNotificationData)
+proc onnotify*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: proc(pscn: gen_ScintillaEdit_types.ScintillaNotificationData)) =
+  type Cb = proc(pscn: gen_ScintillaEdit_types.ScintillaNotificationData)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fScintillaEditBase_connect_notify(self.h, cast[int](addr tmp[]))
-proc command*(self: ScintillaEditBase, wParam: miqt_uintptr_t, lParam: miqt_intptr_t): void =
+proc command*(self: gen_ScintillaEdit_types.ScintillaEditBase, wParam: miqt_uintptr_t, lParam: miqt_intptr_t): void =
 
   fcScintillaEditBase_command(self.h, wParam, lParam)
 
@@ -5742,13 +5478,13 @@ proc miqt_exec_callback_ScintillaEditBase_command(slot: int, wParam: miqt_uintpt
 
   nimfunc[](slotval1, slotval2)
 
-proc oncommand*(self: ScintillaEditBase, slot: proc(wParam: miqt_uintptr_t, lParam: miqt_intptr_t)) =
+proc oncommand*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: proc(wParam: miqt_uintptr_t, lParam: miqt_intptr_t)) =
   type Cb = proc(wParam: miqt_uintptr_t, lParam: miqt_intptr_t)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fScintillaEditBase_connect_command(self.h, cast[int](addr tmp[]))
-proc buttonPressed*(self: ScintillaEditBase, event: gen_qevent.QMouseEvent): void =
+proc buttonPressed*(self: gen_ScintillaEdit_types.ScintillaEditBase, event: gen_qevent.QMouseEvent): void =
 
   fcScintillaEditBase_buttonPressed(self.h, event.h)
 
@@ -5760,13 +5496,13 @@ proc miqt_exec_callback_ScintillaEditBase_buttonPressed(slot: int, event: pointe
 
   nimfunc[](slotval1)
 
-proc onbuttonPressed*(self: ScintillaEditBase, slot: proc(event: gen_qevent.QMouseEvent)) =
+proc onbuttonPressed*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: proc(event: gen_qevent.QMouseEvent)) =
   type Cb = proc(event: gen_qevent.QMouseEvent)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fScintillaEditBase_connect_buttonPressed(self.h, cast[int](addr tmp[]))
-proc buttonReleased*(self: ScintillaEditBase, event: gen_qevent.QMouseEvent): void =
+proc buttonReleased*(self: gen_ScintillaEdit_types.ScintillaEditBase, event: gen_qevent.QMouseEvent): void =
 
   fcScintillaEditBase_buttonReleased(self.h, event.h)
 
@@ -5778,13 +5514,13 @@ proc miqt_exec_callback_ScintillaEditBase_buttonReleased(slot: int, event: point
 
   nimfunc[](slotval1)
 
-proc onbuttonReleased*(self: ScintillaEditBase, slot: proc(event: gen_qevent.QMouseEvent)) =
+proc onbuttonReleased*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: proc(event: gen_qevent.QMouseEvent)) =
   type Cb = proc(event: gen_qevent.QMouseEvent)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fScintillaEditBase_connect_buttonReleased(self.h, cast[int](addr tmp[]))
-proc keyPressed*(self: ScintillaEditBase, event: gen_qevent.QKeyEvent): void =
+proc keyPressed*(self: gen_ScintillaEdit_types.ScintillaEditBase, event: gen_qevent.QKeyEvent): void =
 
   fcScintillaEditBase_keyPressed(self.h, event.h)
 
@@ -5796,13 +5532,13 @@ proc miqt_exec_callback_ScintillaEditBase_keyPressed(slot: int, event: pointer) 
 
   nimfunc[](slotval1)
 
-proc onkeyPressed*(self: ScintillaEditBase, slot: proc(event: gen_qevent.QKeyEvent)) =
+proc onkeyPressed*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: proc(event: gen_qevent.QKeyEvent)) =
   type Cb = proc(event: gen_qevent.QKeyEvent)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fScintillaEditBase_connect_keyPressed(self.h, cast[int](addr tmp[]))
-proc resized*(self: ScintillaEditBase, ): void =
+proc resized*(self: gen_ScintillaEdit_types.ScintillaEditBase, ): void =
 
   fcScintillaEditBase_resized(self.h)
 
@@ -5812,136 +5548,116 @@ proc miqt_exec_callback_ScintillaEditBase_resized(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onresized*(self: ScintillaEditBase, slot: proc()) =
+proc onresized*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fScintillaEditBase_connect_resized(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type ScintillaEditBase, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_ScintillaEdit_types.ScintillaEditBase, s: cstring, c: cstring): string =
 
   let v_ms = fcScintillaEditBase_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type ScintillaEditBase, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_ScintillaEdit_types.ScintillaEditBase, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcScintillaEditBase_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type ScintillaEditBase, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_ScintillaEdit_types.ScintillaEditBase, s: cstring, c: cstring): string =
 
   let v_ms = fcScintillaEditBase_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type ScintillaEditBase, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_ScintillaEdit_types.ScintillaEditBase, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcScintillaEditBase_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: ScintillaEditBase, ): gen_qobjectdefs.QMetaObject =
-
+proc ScintillaEditBasemetaObject*(self: gen_ScintillaEdit_types.ScintillaEditBase, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fScintillaEditBase_virtualbase_metaObject(self.h))
 
-type ScintillaEditBasemetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBasemetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type ScintillaEditBasemetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasemetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBasemetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new ScintillaEditBasemetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_metaObject(self: ptr cScintillaEditBase, slot: int): pointer {.exportc: "miqt_exec_callback_ScintillaEditBase_metaObject ".} =
-  type Cb = proc(super: ScintillaEditBasemetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(ScintillaEditBase(h: self), )
+  var nimfunc = cast[ptr ScintillaEditBasemetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: ScintillaEditBase, param1: cstring): pointer =
-
+proc ScintillaEditBasemetacast*(self: gen_ScintillaEdit_types.ScintillaEditBase, param1: cstring): pointer =
 
   fScintillaEditBase_virtualbase_metacast(self.h, param1)
 
-type ScintillaEditBasemetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBasemetacastBase, param1: cstring): pointer) =
+type ScintillaEditBasemetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasemetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBasemetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new ScintillaEditBasemetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_metacast(self: ptr cScintillaEditBase, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_ScintillaEditBase_metacast ".} =
-  type Cb = proc(super: ScintillaEditBasemetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(ScintillaEditBase(h: self), param1)
+  var nimfunc = cast[ptr ScintillaEditBasemetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: ScintillaEditBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc ScintillaEditBasemetacall*(self: gen_ScintillaEdit_types.ScintillaEditBase, param1: cint, param2: cint, param3: pointer): cint =
 
   fScintillaEditBase_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type ScintillaEditBasemetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBasemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type ScintillaEditBasemetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasemetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBasemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new ScintillaEditBasemetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_metacall(self: ptr cScintillaEditBase, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_ScintillaEditBase_metacall ".} =
-  type Cb = proc(super: ScintillaEditBasemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(ScintillaEditBase(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr ScintillaEditBasemetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_send(self: ScintillaEditBase, iMessage: cuint, wParam: miqt_uintptr_t, lParam: miqt_intptr_t): miqt_intptr_t =
-
+proc ScintillaEditBasesend*(self: gen_ScintillaEdit_types.ScintillaEditBase, iMessage: cuint, wParam: miqt_uintptr_t, lParam: miqt_intptr_t): miqt_intptr_t =
 
   fScintillaEditBase_virtualbase_send(self.h, iMessage, wParam, lParam)
 
-type ScintillaEditBasesendBase* = proc(iMessage: cuint, wParam: miqt_uintptr_t, lParam: miqt_intptr_t): miqt_intptr_t
-proc onsend*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBasesendBase, iMessage: cuint, wParam: miqt_uintptr_t, lParam: miqt_intptr_t): miqt_intptr_t) =
+type ScintillaEditBasesendProc* = proc(iMessage: cuint, wParam: miqt_uintptr_t, lParam: miqt_intptr_t): miqt_intptr_t
+proc onsend*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasesendProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBasesendBase, iMessage: cuint, wParam: miqt_uintptr_t, lParam: miqt_intptr_t): miqt_intptr_t
-  var tmp = new Cb
+  var tmp = new ScintillaEditBasesendProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_send(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_send(self: ptr cScintillaEditBase, slot: int, iMessage: cuint, wParam: miqt_uintptr_t, lParam: miqt_intptr_t): miqt_intptr_t {.exportc: "miqt_exec_callback_ScintillaEditBase_send ".} =
-  type Cb = proc(super: ScintillaEditBasesendBase, iMessage: cuint, wParam: miqt_uintptr_t, lParam: miqt_intptr_t): miqt_intptr_t
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(iMessage: cuint, wParam: miqt_uintptr_t, lParam: miqt_intptr_t): auto =
-    callVirtualBase_send(ScintillaEditBase(h: self), iMessage, wParam, lParam)
+  var nimfunc = cast[ptr ScintillaEditBasesendProc](cast[pointer](slot))
   let slotval1 = iMessage
 
   let slotval2 = wParam
@@ -5949,28 +5665,23 @@ proc miqt_exec_callback_ScintillaEditBase_send(self: ptr cScintillaEditBase, slo
   let slotval3 = lParam
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_sends(self: ScintillaEditBase, iMessage: cuint, wParam: miqt_uintptr_t, s: cstring): miqt_intptr_t =
-
+proc ScintillaEditBasesends*(self: gen_ScintillaEdit_types.ScintillaEditBase, iMessage: cuint, wParam: miqt_uintptr_t, s: cstring): miqt_intptr_t =
 
   fScintillaEditBase_virtualbase_sends(self.h, iMessage, wParam, s)
 
-type ScintillaEditBasesendsBase* = proc(iMessage: cuint, wParam: miqt_uintptr_t, s: cstring): miqt_intptr_t
-proc onsends*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBasesendsBase, iMessage: cuint, wParam: miqt_uintptr_t, s: cstring): miqt_intptr_t) =
+type ScintillaEditBasesendsProc* = proc(iMessage: cuint, wParam: miqt_uintptr_t, s: cstring): miqt_intptr_t
+proc onsends*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasesendsProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBasesendsBase, iMessage: cuint, wParam: miqt_uintptr_t, s: cstring): miqt_intptr_t
-  var tmp = new Cb
+  var tmp = new ScintillaEditBasesendsProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_sends(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_sends(self: ptr cScintillaEditBase, slot: int, iMessage: cuint, wParam: miqt_uintptr_t, s: cstring): miqt_intptr_t {.exportc: "miqt_exec_callback_ScintillaEditBase_sends ".} =
-  type Cb = proc(super: ScintillaEditBasesendsBase, iMessage: cuint, wParam: miqt_uintptr_t, s: cstring): miqt_intptr_t
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(iMessage: cuint, wParam: miqt_uintptr_t, s: cstring): auto =
-    callVirtualBase_sends(ScintillaEditBase(h: self), iMessage, wParam, s)
+  var nimfunc = cast[ptr ScintillaEditBasesendsProc](cast[pointer](slot))
   let slotval1 = iMessage
 
   let slotval2 = wParam
@@ -5978,962 +5689,757 @@ proc miqt_exec_callback_ScintillaEditBase_sends(self: ptr cScintillaEditBase, sl
   let slotval3 = (s)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_event(self: ScintillaEditBase, event: gen_qcoreevent.QEvent): bool =
-
+proc ScintillaEditBaseevent*(self: gen_ScintillaEdit_types.ScintillaEditBase, event: gen_qcoreevent.QEvent): bool =
 
   fScintillaEditBase_virtualbase_event(self.h, event.h)
 
-type ScintillaEditBaseeventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBaseeventBase, event: gen_qcoreevent.QEvent): bool) =
+type ScintillaEditBaseeventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBaseeventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBaseeventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new ScintillaEditBaseeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_event(self: ptr cScintillaEditBase, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_ScintillaEditBase_event ".} =
-  type Cb = proc(super: ScintillaEditBaseeventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(ScintillaEditBase(h: self), event)
+  var nimfunc = cast[ptr ScintillaEditBaseeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_paintEvent(self: ScintillaEditBase, event: gen_qevent.QPaintEvent): void =
-
+proc ScintillaEditBasepaintEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, event: gen_qevent.QPaintEvent): void =
 
   fScintillaEditBase_virtualbase_paintEvent(self.h, event.h)
 
-type ScintillaEditBasepaintEventBase* = proc(event: gen_qevent.QPaintEvent): void
-proc onpaintEvent*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBasepaintEventBase, event: gen_qevent.QPaintEvent): void) =
+type ScintillaEditBasepaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
+proc onpaintEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasepaintEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBasepaintEventBase, event: gen_qevent.QPaintEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditBasepaintEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_paintEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_paintEvent(self: ptr cScintillaEditBase, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEditBase_paintEvent ".} =
-  type Cb = proc(super: ScintillaEditBasepaintEventBase, event: gen_qevent.QPaintEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QPaintEvent): auto =
-    callVirtualBase_paintEvent(ScintillaEditBase(h: self), event)
+  var nimfunc = cast[ptr ScintillaEditBasepaintEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QPaintEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_wheelEvent(self: ScintillaEditBase, event: gen_qevent.QWheelEvent): void =
-
+  nimfunc[](slotval1)
+proc ScintillaEditBasewheelEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, event: gen_qevent.QWheelEvent): void =
 
   fScintillaEditBase_virtualbase_wheelEvent(self.h, event.h)
 
-type ScintillaEditBasewheelEventBase* = proc(event: gen_qevent.QWheelEvent): void
-proc onwheelEvent*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBasewheelEventBase, event: gen_qevent.QWheelEvent): void) =
+type ScintillaEditBasewheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
+proc onwheelEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasewheelEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBasewheelEventBase, event: gen_qevent.QWheelEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditBasewheelEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_wheelEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_wheelEvent(self: ptr cScintillaEditBase, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEditBase_wheelEvent ".} =
-  type Cb = proc(super: ScintillaEditBasewheelEventBase, event: gen_qevent.QWheelEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QWheelEvent): auto =
-    callVirtualBase_wheelEvent(ScintillaEditBase(h: self), event)
+  var nimfunc = cast[ptr ScintillaEditBasewheelEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QWheelEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusInEvent(self: ScintillaEditBase, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc ScintillaEditBasefocusInEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, event: gen_qevent.QFocusEvent): void =
 
   fScintillaEditBase_virtualbase_focusInEvent(self.h, event.h)
 
-type ScintillaEditBasefocusInEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusInEvent*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBasefocusInEventBase, event: gen_qevent.QFocusEvent): void) =
+type ScintillaEditBasefocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusInEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasefocusInEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBasefocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditBasefocusInEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_focusInEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_focusInEvent(self: ptr cScintillaEditBase, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEditBase_focusInEvent ".} =
-  type Cb = proc(super: ScintillaEditBasefocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusInEvent(ScintillaEditBase(h: self), event)
+  var nimfunc = cast[ptr ScintillaEditBasefocusInEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusOutEvent(self: ScintillaEditBase, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc ScintillaEditBasefocusOutEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, event: gen_qevent.QFocusEvent): void =
 
   fScintillaEditBase_virtualbase_focusOutEvent(self.h, event.h)
 
-type ScintillaEditBasefocusOutEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusOutEvent*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBasefocusOutEventBase, event: gen_qevent.QFocusEvent): void) =
+type ScintillaEditBasefocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusOutEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasefocusOutEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBasefocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditBasefocusOutEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_focusOutEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_focusOutEvent(self: ptr cScintillaEditBase, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEditBase_focusOutEvent ".} =
-  type Cb = proc(super: ScintillaEditBasefocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusOutEvent(ScintillaEditBase(h: self), event)
+  var nimfunc = cast[ptr ScintillaEditBasefocusOutEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_resizeEvent(self: ScintillaEditBase, event: gen_qevent.QResizeEvent): void =
-
+  nimfunc[](slotval1)
+proc ScintillaEditBaseresizeEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, event: gen_qevent.QResizeEvent): void =
 
   fScintillaEditBase_virtualbase_resizeEvent(self.h, event.h)
 
-type ScintillaEditBaseresizeEventBase* = proc(event: gen_qevent.QResizeEvent): void
-proc onresizeEvent*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBaseresizeEventBase, event: gen_qevent.QResizeEvent): void) =
+type ScintillaEditBaseresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
+proc onresizeEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBaseresizeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBaseresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditBaseresizeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_resizeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_resizeEvent(self: ptr cScintillaEditBase, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEditBase_resizeEvent ".} =
-  type Cb = proc(super: ScintillaEditBaseresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QResizeEvent): auto =
-    callVirtualBase_resizeEvent(ScintillaEditBase(h: self), event)
+  var nimfunc = cast[ptr ScintillaEditBaseresizeEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QResizeEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyPressEvent(self: ScintillaEditBase, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc ScintillaEditBasekeyPressEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, event: gen_qevent.QKeyEvent): void =
 
   fScintillaEditBase_virtualbase_keyPressEvent(self.h, event.h)
 
-type ScintillaEditBasekeyPressEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyPressEvent*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBasekeyPressEventBase, event: gen_qevent.QKeyEvent): void) =
+type ScintillaEditBasekeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyPressEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasekeyPressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBasekeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditBasekeyPressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_keyPressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_keyPressEvent(self: ptr cScintillaEditBase, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEditBase_keyPressEvent ".} =
-  type Cb = proc(super: ScintillaEditBasekeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyPressEvent(ScintillaEditBase(h: self), event)
+  var nimfunc = cast[ptr ScintillaEditBasekeyPressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mousePressEvent(self: ScintillaEditBase, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc ScintillaEditBasemousePressEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, event: gen_qevent.QMouseEvent): void =
 
   fScintillaEditBase_virtualbase_mousePressEvent(self.h, event.h)
 
-type ScintillaEditBasemousePressEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmousePressEvent*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBasemousePressEventBase, event: gen_qevent.QMouseEvent): void) =
+type ScintillaEditBasemousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmousePressEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasemousePressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBasemousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditBasemousePressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_mousePressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_mousePressEvent(self: ptr cScintillaEditBase, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEditBase_mousePressEvent ".} =
-  type Cb = proc(super: ScintillaEditBasemousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mousePressEvent(ScintillaEditBase(h: self), event)
+  var nimfunc = cast[ptr ScintillaEditBasemousePressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseReleaseEvent(self: ScintillaEditBase, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc ScintillaEditBasemouseReleaseEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, event: gen_qevent.QMouseEvent): void =
 
   fScintillaEditBase_virtualbase_mouseReleaseEvent(self.h, event.h)
 
-type ScintillaEditBasemouseReleaseEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseReleaseEvent*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBasemouseReleaseEventBase, event: gen_qevent.QMouseEvent): void) =
+type ScintillaEditBasemouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseReleaseEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasemouseReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBasemouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditBasemouseReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_mouseReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_mouseReleaseEvent(self: ptr cScintillaEditBase, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEditBase_mouseReleaseEvent ".} =
-  type Cb = proc(super: ScintillaEditBasemouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseReleaseEvent(ScintillaEditBase(h: self), event)
+  var nimfunc = cast[ptr ScintillaEditBasemouseReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseDoubleClickEvent(self: ScintillaEditBase, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc ScintillaEditBasemouseDoubleClickEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, event: gen_qevent.QMouseEvent): void =
 
   fScintillaEditBase_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
-type ScintillaEditBasemouseDoubleClickEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseDoubleClickEvent*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBasemouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void) =
+type ScintillaEditBasemouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseDoubleClickEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasemouseDoubleClickEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBasemouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditBasemouseDoubleClickEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_mouseDoubleClickEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_mouseDoubleClickEvent(self: ptr cScintillaEditBase, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEditBase_mouseDoubleClickEvent ".} =
-  type Cb = proc(super: ScintillaEditBasemouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseDoubleClickEvent(ScintillaEditBase(h: self), event)
+  var nimfunc = cast[ptr ScintillaEditBasemouseDoubleClickEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseMoveEvent(self: ScintillaEditBase, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc ScintillaEditBasemouseMoveEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, event: gen_qevent.QMouseEvent): void =
 
   fScintillaEditBase_virtualbase_mouseMoveEvent(self.h, event.h)
 
-type ScintillaEditBasemouseMoveEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseMoveEvent*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBasemouseMoveEventBase, event: gen_qevent.QMouseEvent): void) =
+type ScintillaEditBasemouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseMoveEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasemouseMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBasemouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditBasemouseMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_mouseMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_mouseMoveEvent(self: ptr cScintillaEditBase, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEditBase_mouseMoveEvent ".} =
-  type Cb = proc(super: ScintillaEditBasemouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseMoveEvent(ScintillaEditBase(h: self), event)
+  var nimfunc = cast[ptr ScintillaEditBasemouseMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_contextMenuEvent(self: ScintillaEditBase, event: gen_qevent.QContextMenuEvent): void =
-
+  nimfunc[](slotval1)
+proc ScintillaEditBasecontextMenuEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, event: gen_qevent.QContextMenuEvent): void =
 
   fScintillaEditBase_virtualbase_contextMenuEvent(self.h, event.h)
 
-type ScintillaEditBasecontextMenuEventBase* = proc(event: gen_qevent.QContextMenuEvent): void
-proc oncontextMenuEvent*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBasecontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void) =
+type ScintillaEditBasecontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
+proc oncontextMenuEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasecontextMenuEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBasecontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditBasecontextMenuEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_contextMenuEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_contextMenuEvent(self: ptr cScintillaEditBase, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEditBase_contextMenuEvent ".} =
-  type Cb = proc(super: ScintillaEditBasecontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QContextMenuEvent): auto =
-    callVirtualBase_contextMenuEvent(ScintillaEditBase(h: self), event)
+  var nimfunc = cast[ptr ScintillaEditBasecontextMenuEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QContextMenuEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragEnterEvent(self: ScintillaEditBase, event: gen_qevent.QDragEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc ScintillaEditBasedragEnterEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, event: gen_qevent.QDragEnterEvent): void =
 
   fScintillaEditBase_virtualbase_dragEnterEvent(self.h, event.h)
 
-type ScintillaEditBasedragEnterEventBase* = proc(event: gen_qevent.QDragEnterEvent): void
-proc ondragEnterEvent*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBasedragEnterEventBase, event: gen_qevent.QDragEnterEvent): void) =
+type ScintillaEditBasedragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
+proc ondragEnterEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasedragEnterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBasedragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditBasedragEnterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_dragEnterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_dragEnterEvent(self: ptr cScintillaEditBase, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEditBase_dragEnterEvent ".} =
-  type Cb = proc(super: ScintillaEditBasedragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragEnterEvent): auto =
-    callVirtualBase_dragEnterEvent(ScintillaEditBase(h: self), event)
+  var nimfunc = cast[ptr ScintillaEditBasedragEnterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragLeaveEvent(self: ScintillaEditBase, event: gen_qevent.QDragLeaveEvent): void =
-
+  nimfunc[](slotval1)
+proc ScintillaEditBasedragLeaveEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, event: gen_qevent.QDragLeaveEvent): void =
 
   fScintillaEditBase_virtualbase_dragLeaveEvent(self.h, event.h)
 
-type ScintillaEditBasedragLeaveEventBase* = proc(event: gen_qevent.QDragLeaveEvent): void
-proc ondragLeaveEvent*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBasedragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void) =
+type ScintillaEditBasedragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
+proc ondragLeaveEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasedragLeaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBasedragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditBasedragLeaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_dragLeaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_dragLeaveEvent(self: ptr cScintillaEditBase, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEditBase_dragLeaveEvent ".} =
-  type Cb = proc(super: ScintillaEditBasedragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragLeaveEvent): auto =
-    callVirtualBase_dragLeaveEvent(ScintillaEditBase(h: self), event)
+  var nimfunc = cast[ptr ScintillaEditBasedragLeaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragLeaveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragMoveEvent(self: ScintillaEditBase, event: gen_qevent.QDragMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc ScintillaEditBasedragMoveEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, event: gen_qevent.QDragMoveEvent): void =
 
   fScintillaEditBase_virtualbase_dragMoveEvent(self.h, event.h)
 
-type ScintillaEditBasedragMoveEventBase* = proc(event: gen_qevent.QDragMoveEvent): void
-proc ondragMoveEvent*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBasedragMoveEventBase, event: gen_qevent.QDragMoveEvent): void) =
+type ScintillaEditBasedragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
+proc ondragMoveEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasedragMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBasedragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditBasedragMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_dragMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_dragMoveEvent(self: ptr cScintillaEditBase, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEditBase_dragMoveEvent ".} =
-  type Cb = proc(super: ScintillaEditBasedragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragMoveEvent): auto =
-    callVirtualBase_dragMoveEvent(ScintillaEditBase(h: self), event)
+  var nimfunc = cast[ptr ScintillaEditBasedragMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dropEvent(self: ScintillaEditBase, event: gen_qevent.QDropEvent): void =
-
+  nimfunc[](slotval1)
+proc ScintillaEditBasedropEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, event: gen_qevent.QDropEvent): void =
 
   fScintillaEditBase_virtualbase_dropEvent(self.h, event.h)
 
-type ScintillaEditBasedropEventBase* = proc(event: gen_qevent.QDropEvent): void
-proc ondropEvent*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBasedropEventBase, event: gen_qevent.QDropEvent): void) =
+type ScintillaEditBasedropEventProc* = proc(event: gen_qevent.QDropEvent): void
+proc ondropEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasedropEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBasedropEventBase, event: gen_qevent.QDropEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditBasedropEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_dropEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_dropEvent(self: ptr cScintillaEditBase, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEditBase_dropEvent ".} =
-  type Cb = proc(super: ScintillaEditBasedropEventBase, event: gen_qevent.QDropEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDropEvent): auto =
-    callVirtualBase_dropEvent(ScintillaEditBase(h: self), event)
+  var nimfunc = cast[ptr ScintillaEditBasedropEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDropEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_inputMethodEvent(self: ScintillaEditBase, event: gen_qevent.QInputMethodEvent): void =
-
+  nimfunc[](slotval1)
+proc ScintillaEditBaseinputMethodEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, event: gen_qevent.QInputMethodEvent): void =
 
   fScintillaEditBase_virtualbase_inputMethodEvent(self.h, event.h)
 
-type ScintillaEditBaseinputMethodEventBase* = proc(event: gen_qevent.QInputMethodEvent): void
-proc oninputMethodEvent*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBaseinputMethodEventBase, event: gen_qevent.QInputMethodEvent): void) =
+type ScintillaEditBaseinputMethodEventProc* = proc(event: gen_qevent.QInputMethodEvent): void
+proc oninputMethodEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBaseinputMethodEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBaseinputMethodEventBase, event: gen_qevent.QInputMethodEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditBaseinputMethodEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_inputMethodEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_inputMethodEvent(self: ptr cScintillaEditBase, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEditBase_inputMethodEvent ".} =
-  type Cb = proc(super: ScintillaEditBaseinputMethodEventBase, event: gen_qevent.QInputMethodEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QInputMethodEvent): auto =
-    callVirtualBase_inputMethodEvent(ScintillaEditBase(h: self), event)
+  var nimfunc = cast[ptr ScintillaEditBaseinputMethodEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QInputMethodEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_inputMethodQuery(self: ScintillaEditBase, query: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant =
-
+  nimfunc[](slotval1)
+proc ScintillaEditBaseinputMethodQuery*(self: gen_ScintillaEdit_types.ScintillaEditBase, query: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fScintillaEditBase_virtualbase_inputMethodQuery(self.h, cint(query)))
 
-type ScintillaEditBaseinputMethodQueryBase* = proc(query: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-proc oninputMethodQuery*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBaseinputMethodQueryBase, query: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant) =
+type ScintillaEditBaseinputMethodQueryProc* = proc(query: cint): gen_qvariant.QVariant
+proc oninputMethodQuery*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBaseinputMethodQueryProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBaseinputMethodQueryBase, query: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new ScintillaEditBaseinputMethodQueryProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_inputMethodQuery(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_inputMethodQuery(self: ptr cScintillaEditBase, slot: int, query: cint): pointer {.exportc: "miqt_exec_callback_ScintillaEditBase_inputMethodQuery ".} =
-  type Cb = proc(super: ScintillaEditBaseinputMethodQueryBase, query: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(query: gen_qnamespace.InputMethodQuery): auto =
-    callVirtualBase_inputMethodQuery(ScintillaEditBase(h: self), query)
-  let slotval1 = gen_qnamespace.InputMethodQuery(query)
+  var nimfunc = cast[ptr ScintillaEditBaseinputMethodQueryProc](cast[pointer](slot))
+  let slotval1 = cint(query)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_scrollContentsBy(self: ScintillaEditBase, param1: cint, param2: cint): void =
-
+proc ScintillaEditBasescrollContentsBy*(self: gen_ScintillaEdit_types.ScintillaEditBase, param1: cint, param2: cint): void =
 
   fScintillaEditBase_virtualbase_scrollContentsBy(self.h, param1, param2)
 
-type ScintillaEditBasescrollContentsByBase* = proc(param1: cint, param2: cint): void
-proc onscrollContentsBy*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBasescrollContentsByBase, param1: cint, param2: cint): void) =
+type ScintillaEditBasescrollContentsByProc* = proc(param1: cint, param2: cint): void
+proc onscrollContentsBy*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasescrollContentsByProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBasescrollContentsByBase, param1: cint, param2: cint): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditBasescrollContentsByProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_scrollContentsBy(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_scrollContentsBy(self: ptr cScintillaEditBase, slot: int, param1: cint, param2: cint): void {.exportc: "miqt_exec_callback_ScintillaEditBase_scrollContentsBy ".} =
-  type Cb = proc(super: ScintillaEditBasescrollContentsByBase, param1: cint, param2: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint, param2: cint): auto =
-    callVirtualBase_scrollContentsBy(ScintillaEditBase(h: self), param1, param2)
+  var nimfunc = cast[ptr ScintillaEditBasescrollContentsByProc](cast[pointer](slot))
   let slotval1 = param1
 
   let slotval2 = param2
 
 
-  nimfunc[](superCall, slotval1, slotval2)
-proc callVirtualBase_minimumSizeHint(self: ScintillaEditBase, ): gen_qsize.QSize =
-
+  nimfunc[](slotval1, slotval2)
+proc ScintillaEditBaseminimumSizeHint*(self: gen_ScintillaEdit_types.ScintillaEditBase, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fScintillaEditBase_virtualbase_minimumSizeHint(self.h))
 
-type ScintillaEditBaseminimumSizeHintBase* = proc(): gen_qsize.QSize
-proc onminimumSizeHint*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBaseminimumSizeHintBase): gen_qsize.QSize) =
+type ScintillaEditBaseminimumSizeHintProc* = proc(): gen_qsize.QSize
+proc onminimumSizeHint*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBaseminimumSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBaseminimumSizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new ScintillaEditBaseminimumSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_minimumSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_minimumSizeHint(self: ptr cScintillaEditBase, slot: int): pointer {.exportc: "miqt_exec_callback_ScintillaEditBase_minimumSizeHint ".} =
-  type Cb = proc(super: ScintillaEditBaseminimumSizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_minimumSizeHint(ScintillaEditBase(h: self), )
+  var nimfunc = cast[ptr ScintillaEditBaseminimumSizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_sizeHint(self: ScintillaEditBase, ): gen_qsize.QSize =
-
+proc ScintillaEditBasesizeHint*(self: gen_ScintillaEdit_types.ScintillaEditBase, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fScintillaEditBase_virtualbase_sizeHint(self.h))
 
-type ScintillaEditBasesizeHintBase* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBasesizeHintBase): gen_qsize.QSize) =
+type ScintillaEditBasesizeHintProc* = proc(): gen_qsize.QSize
+proc onsizeHint*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasesizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBasesizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new ScintillaEditBasesizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_sizeHint(self: ptr cScintillaEditBase, slot: int): pointer {.exportc: "miqt_exec_callback_ScintillaEditBase_sizeHint ".} =
-  type Cb = proc(super: ScintillaEditBasesizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sizeHint(ScintillaEditBase(h: self), )
+  var nimfunc = cast[ptr ScintillaEditBasesizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_setupViewport(self: ScintillaEditBase, viewport: gen_qwidget.QWidget): void =
-
+proc ScintillaEditBasesetupViewport*(self: gen_ScintillaEdit_types.ScintillaEditBase, viewport: gen_qwidget.QWidget): void =
 
   fScintillaEditBase_virtualbase_setupViewport(self.h, viewport.h)
 
-type ScintillaEditBasesetupViewportBase* = proc(viewport: gen_qwidget.QWidget): void
-proc onsetupViewport*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBasesetupViewportBase, viewport: gen_qwidget.QWidget): void) =
+type ScintillaEditBasesetupViewportProc* = proc(viewport: gen_qwidget.QWidget): void
+proc onsetupViewport*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasesetupViewportProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBasesetupViewportBase, viewport: gen_qwidget.QWidget): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditBasesetupViewportProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_setupViewport(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_setupViewport(self: ptr cScintillaEditBase, slot: int, viewport: pointer): void {.exportc: "miqt_exec_callback_ScintillaEditBase_setupViewport ".} =
-  type Cb = proc(super: ScintillaEditBasesetupViewportBase, viewport: gen_qwidget.QWidget): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(viewport: gen_qwidget.QWidget): auto =
-    callVirtualBase_setupViewport(ScintillaEditBase(h: self), viewport)
+  var nimfunc = cast[ptr ScintillaEditBasesetupViewportProc](cast[pointer](slot))
   let slotval1 = gen_qwidget.QWidget(h: viewport)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_eventFilter(self: ScintillaEditBase, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[](slotval1)
+proc ScintillaEditBaseeventFilter*(self: gen_ScintillaEdit_types.ScintillaEditBase, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool =
 
   fScintillaEditBase_virtualbase_eventFilter(self.h, param1.h, param2.h)
 
-type ScintillaEditBaseeventFilterBase* = proc(param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBaseeventFilterBase, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool) =
+type ScintillaEditBaseeventFilterProc* = proc(param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBaseeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBaseeventFilterBase, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new ScintillaEditBaseeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_eventFilter(self: ptr cScintillaEditBase, slot: int, param1: pointer, param2: pointer): bool {.exportc: "miqt_exec_callback_ScintillaEditBase_eventFilter ".} =
-  type Cb = proc(super: ScintillaEditBaseeventFilterBase, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(ScintillaEditBase(h: self), param1, param2)
+  var nimfunc = cast[ptr ScintillaEditBaseeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: param1)
 
   let slotval2 = gen_qcoreevent.QEvent(h: param2)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_viewportEvent(self: ScintillaEditBase, param1: gen_qcoreevent.QEvent): bool =
-
+proc ScintillaEditBaseviewportEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, param1: gen_qcoreevent.QEvent): bool =
 
   fScintillaEditBase_virtualbase_viewportEvent(self.h, param1.h)
 
-type ScintillaEditBaseviewportEventBase* = proc(param1: gen_qcoreevent.QEvent): bool
-proc onviewportEvent*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBaseviewportEventBase, param1: gen_qcoreevent.QEvent): bool) =
+type ScintillaEditBaseviewportEventProc* = proc(param1: gen_qcoreevent.QEvent): bool
+proc onviewportEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBaseviewportEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBaseviewportEventBase, param1: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new ScintillaEditBaseviewportEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_viewportEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_viewportEvent(self: ptr cScintillaEditBase, slot: int, param1: pointer): bool {.exportc: "miqt_exec_callback_ScintillaEditBase_viewportEvent ".} =
-  type Cb = proc(super: ScintillaEditBaseviewportEventBase, param1: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_viewportEvent(ScintillaEditBase(h: self), param1)
+  var nimfunc = cast[ptr ScintillaEditBaseviewportEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_viewportSizeHint(self: ScintillaEditBase, ): gen_qsize.QSize =
-
+proc ScintillaEditBaseviewportSizeHint*(self: gen_ScintillaEdit_types.ScintillaEditBase, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fScintillaEditBase_virtualbase_viewportSizeHint(self.h))
 
-type ScintillaEditBaseviewportSizeHintBase* = proc(): gen_qsize.QSize
-proc onviewportSizeHint*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBaseviewportSizeHintBase): gen_qsize.QSize) =
+type ScintillaEditBaseviewportSizeHintProc* = proc(): gen_qsize.QSize
+proc onviewportSizeHint*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBaseviewportSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBaseviewportSizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new ScintillaEditBaseviewportSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_viewportSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_viewportSizeHint(self: ptr cScintillaEditBase, slot: int): pointer {.exportc: "miqt_exec_callback_ScintillaEditBase_viewportSizeHint ".} =
-  type Cb = proc(super: ScintillaEditBaseviewportSizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_viewportSizeHint(ScintillaEditBase(h: self), )
+  var nimfunc = cast[ptr ScintillaEditBaseviewportSizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_changeEvent(self: ScintillaEditBase, param1: gen_qcoreevent.QEvent): void =
-
+proc ScintillaEditBasechangeEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, param1: gen_qcoreevent.QEvent): void =
 
   fScintillaEditBase_virtualbase_changeEvent(self.h, param1.h)
 
-type ScintillaEditBasechangeEventBase* = proc(param1: gen_qcoreevent.QEvent): void
-proc onchangeEvent*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBasechangeEventBase, param1: gen_qcoreevent.QEvent): void) =
+type ScintillaEditBasechangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
+proc onchangeEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasechangeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBasechangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditBasechangeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_changeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_changeEvent(self: ptr cScintillaEditBase, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_ScintillaEditBase_changeEvent ".} =
-  type Cb = proc(super: ScintillaEditBasechangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_changeEvent(ScintillaEditBase(h: self), param1)
+  var nimfunc = cast[ptr ScintillaEditBasechangeEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_devType(self: ScintillaEditBase, ): cint =
-
+  nimfunc[](slotval1)
+proc ScintillaEditBasedevType*(self: gen_ScintillaEdit_types.ScintillaEditBase, ): cint =
 
   fScintillaEditBase_virtualbase_devType(self.h)
 
-type ScintillaEditBasedevTypeBase* = proc(): cint
-proc ondevType*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBasedevTypeBase): cint) =
+type ScintillaEditBasedevTypeProc* = proc(): cint
+proc ondevType*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasedevTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBasedevTypeBase): cint
-  var tmp = new Cb
+  var tmp = new ScintillaEditBasedevTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_devType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_devType(self: ptr cScintillaEditBase, slot: int): cint {.exportc: "miqt_exec_callback_ScintillaEditBase_devType ".} =
-  type Cb = proc(super: ScintillaEditBasedevTypeBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_devType(ScintillaEditBase(h: self), )
+  var nimfunc = cast[ptr ScintillaEditBasedevTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setVisible(self: ScintillaEditBase, visible: bool): void =
-
+proc ScintillaEditBasesetVisible*(self: gen_ScintillaEdit_types.ScintillaEditBase, visible: bool): void =
 
   fScintillaEditBase_virtualbase_setVisible(self.h, visible)
 
-type ScintillaEditBasesetVisibleBase* = proc(visible: bool): void
-proc onsetVisible*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBasesetVisibleBase, visible: bool): void) =
+type ScintillaEditBasesetVisibleProc* = proc(visible: bool): void
+proc onsetVisible*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasesetVisibleProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBasesetVisibleBase, visible: bool): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditBasesetVisibleProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_setVisible(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_setVisible(self: ptr cScintillaEditBase, slot: int, visible: bool): void {.exportc: "miqt_exec_callback_ScintillaEditBase_setVisible ".} =
-  type Cb = proc(super: ScintillaEditBasesetVisibleBase, visible: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(visible: bool): auto =
-    callVirtualBase_setVisible(ScintillaEditBase(h: self), visible)
+  var nimfunc = cast[ptr ScintillaEditBasesetVisibleProc](cast[pointer](slot))
   let slotval1 = visible
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_heightForWidth(self: ScintillaEditBase, param1: cint): cint =
-
+  nimfunc[](slotval1)
+proc ScintillaEditBaseheightForWidth*(self: gen_ScintillaEdit_types.ScintillaEditBase, param1: cint): cint =
 
   fScintillaEditBase_virtualbase_heightForWidth(self.h, param1)
 
-type ScintillaEditBaseheightForWidthBase* = proc(param1: cint): cint
-proc onheightForWidth*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBaseheightForWidthBase, param1: cint): cint) =
+type ScintillaEditBaseheightForWidthProc* = proc(param1: cint): cint
+proc onheightForWidth*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBaseheightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBaseheightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new ScintillaEditBaseheightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_heightForWidth(self: ptr cScintillaEditBase, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_ScintillaEditBase_heightForWidth ".} =
-  type Cb = proc(super: ScintillaEditBaseheightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_heightForWidth(ScintillaEditBase(h: self), param1)
+  var nimfunc = cast[ptr ScintillaEditBaseheightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_hasHeightForWidth(self: ScintillaEditBase, ): bool =
-
+proc ScintillaEditBasehasHeightForWidth*(self: gen_ScintillaEdit_types.ScintillaEditBase, ): bool =
 
   fScintillaEditBase_virtualbase_hasHeightForWidth(self.h)
 
-type ScintillaEditBasehasHeightForWidthBase* = proc(): bool
-proc onhasHeightForWidth*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBasehasHeightForWidthBase): bool) =
+type ScintillaEditBasehasHeightForWidthProc* = proc(): bool
+proc onhasHeightForWidth*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasehasHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBasehasHeightForWidthBase): bool
-  var tmp = new Cb
+  var tmp = new ScintillaEditBasehasHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_hasHeightForWidth(self: ptr cScintillaEditBase, slot: int): bool {.exportc: "miqt_exec_callback_ScintillaEditBase_hasHeightForWidth ".} =
-  type Cb = proc(super: ScintillaEditBasehasHeightForWidthBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasHeightForWidth(ScintillaEditBase(h: self), )
+  var nimfunc = cast[ptr ScintillaEditBasehasHeightForWidthProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_paintEngine(self: ScintillaEditBase, ): gen_qpaintengine.QPaintEngine =
-
+proc ScintillaEditBasepaintEngine*(self: gen_ScintillaEdit_types.ScintillaEditBase, ): gen_qpaintengine.QPaintEngine =
 
   gen_qpaintengine.QPaintEngine(h: fScintillaEditBase_virtualbase_paintEngine(self.h))
 
-type ScintillaEditBasepaintEngineBase* = proc(): gen_qpaintengine.QPaintEngine
-proc onpaintEngine*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBasepaintEngineBase): gen_qpaintengine.QPaintEngine) =
+type ScintillaEditBasepaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
+proc onpaintEngine*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasepaintEngineProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBasepaintEngineBase): gen_qpaintengine.QPaintEngine
-  var tmp = new Cb
+  var tmp = new ScintillaEditBasepaintEngineProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_paintEngine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_paintEngine(self: ptr cScintillaEditBase, slot: int): pointer {.exportc: "miqt_exec_callback_ScintillaEditBase_paintEngine ".} =
-  type Cb = proc(super: ScintillaEditBasepaintEngineBase): gen_qpaintengine.QPaintEngine
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_paintEngine(ScintillaEditBase(h: self), )
+  var nimfunc = cast[ptr ScintillaEditBasepaintEngineProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_keyReleaseEvent(self: ScintillaEditBase, event: gen_qevent.QKeyEvent): void =
-
+proc ScintillaEditBasekeyReleaseEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, event: gen_qevent.QKeyEvent): void =
 
   fScintillaEditBase_virtualbase_keyReleaseEvent(self.h, event.h)
 
-type ScintillaEditBasekeyReleaseEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyReleaseEvent*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBasekeyReleaseEventBase, event: gen_qevent.QKeyEvent): void) =
+type ScintillaEditBasekeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyReleaseEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasekeyReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBasekeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditBasekeyReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_keyReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_keyReleaseEvent(self: ptr cScintillaEditBase, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEditBase_keyReleaseEvent ".} =
-  type Cb = proc(super: ScintillaEditBasekeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyReleaseEvent(ScintillaEditBase(h: self), event)
+  var nimfunc = cast[ptr ScintillaEditBasekeyReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_enterEvent(self: ScintillaEditBase, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc ScintillaEditBaseenterEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, event: gen_qcoreevent.QEvent): void =
 
   fScintillaEditBase_virtualbase_enterEvent(self.h, event.h)
 
-type ScintillaEditBaseenterEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onenterEvent*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBaseenterEventBase, event: gen_qcoreevent.QEvent): void) =
+type ScintillaEditBaseenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onenterEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBaseenterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBaseenterEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditBaseenterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_enterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_enterEvent(self: ptr cScintillaEditBase, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEditBase_enterEvent ".} =
-  type Cb = proc(super: ScintillaEditBaseenterEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_enterEvent(ScintillaEditBase(h: self), event)
+  var nimfunc = cast[ptr ScintillaEditBaseenterEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_leaveEvent(self: ScintillaEditBase, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc ScintillaEditBaseleaveEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, event: gen_qcoreevent.QEvent): void =
 
   fScintillaEditBase_virtualbase_leaveEvent(self.h, event.h)
 
-type ScintillaEditBaseleaveEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onleaveEvent*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBaseleaveEventBase, event: gen_qcoreevent.QEvent): void) =
+type ScintillaEditBaseleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onleaveEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBaseleaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBaseleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditBaseleaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_leaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_leaveEvent(self: ptr cScintillaEditBase, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEditBase_leaveEvent ".} =
-  type Cb = proc(super: ScintillaEditBaseleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_leaveEvent(ScintillaEditBase(h: self), event)
+  var nimfunc = cast[ptr ScintillaEditBaseleaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_moveEvent(self: ScintillaEditBase, event: gen_qevent.QMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc ScintillaEditBasemoveEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, event: gen_qevent.QMoveEvent): void =
 
   fScintillaEditBase_virtualbase_moveEvent(self.h, event.h)
 
-type ScintillaEditBasemoveEventBase* = proc(event: gen_qevent.QMoveEvent): void
-proc onmoveEvent*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBasemoveEventBase, event: gen_qevent.QMoveEvent): void) =
+type ScintillaEditBasemoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
+proc onmoveEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasemoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBasemoveEventBase, event: gen_qevent.QMoveEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditBasemoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_moveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_moveEvent(self: ptr cScintillaEditBase, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEditBase_moveEvent ".} =
-  type Cb = proc(super: ScintillaEditBasemoveEventBase, event: gen_qevent.QMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMoveEvent): auto =
-    callVirtualBase_moveEvent(ScintillaEditBase(h: self), event)
+  var nimfunc = cast[ptr ScintillaEditBasemoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_closeEvent(self: ScintillaEditBase, event: gen_qevent.QCloseEvent): void =
-
+  nimfunc[](slotval1)
+proc ScintillaEditBasecloseEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, event: gen_qevent.QCloseEvent): void =
 
   fScintillaEditBase_virtualbase_closeEvent(self.h, event.h)
 
-type ScintillaEditBasecloseEventBase* = proc(event: gen_qevent.QCloseEvent): void
-proc oncloseEvent*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBasecloseEventBase, event: gen_qevent.QCloseEvent): void) =
+type ScintillaEditBasecloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
+proc oncloseEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasecloseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBasecloseEventBase, event: gen_qevent.QCloseEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditBasecloseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_closeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_closeEvent(self: ptr cScintillaEditBase, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEditBase_closeEvent ".} =
-  type Cb = proc(super: ScintillaEditBasecloseEventBase, event: gen_qevent.QCloseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QCloseEvent): auto =
-    callVirtualBase_closeEvent(ScintillaEditBase(h: self), event)
+  var nimfunc = cast[ptr ScintillaEditBasecloseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QCloseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_tabletEvent(self: ScintillaEditBase, event: gen_qevent.QTabletEvent): void =
-
+  nimfunc[](slotval1)
+proc ScintillaEditBasetabletEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, event: gen_qevent.QTabletEvent): void =
 
   fScintillaEditBase_virtualbase_tabletEvent(self.h, event.h)
 
-type ScintillaEditBasetabletEventBase* = proc(event: gen_qevent.QTabletEvent): void
-proc ontabletEvent*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBasetabletEventBase, event: gen_qevent.QTabletEvent): void) =
+type ScintillaEditBasetabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
+proc ontabletEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasetabletEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBasetabletEventBase, event: gen_qevent.QTabletEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditBasetabletEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_tabletEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_tabletEvent(self: ptr cScintillaEditBase, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEditBase_tabletEvent ".} =
-  type Cb = proc(super: ScintillaEditBasetabletEventBase, event: gen_qevent.QTabletEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QTabletEvent): auto =
-    callVirtualBase_tabletEvent(ScintillaEditBase(h: self), event)
+  var nimfunc = cast[ptr ScintillaEditBasetabletEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QTabletEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_actionEvent(self: ScintillaEditBase, event: gen_qevent.QActionEvent): void =
-
+  nimfunc[](slotval1)
+proc ScintillaEditBaseactionEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, event: gen_qevent.QActionEvent): void =
 
   fScintillaEditBase_virtualbase_actionEvent(self.h, event.h)
 
-type ScintillaEditBaseactionEventBase* = proc(event: gen_qevent.QActionEvent): void
-proc onactionEvent*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBaseactionEventBase, event: gen_qevent.QActionEvent): void) =
+type ScintillaEditBaseactionEventProc* = proc(event: gen_qevent.QActionEvent): void
+proc onactionEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBaseactionEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBaseactionEventBase, event: gen_qevent.QActionEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditBaseactionEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_actionEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_actionEvent(self: ptr cScintillaEditBase, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEditBase_actionEvent ".} =
-  type Cb = proc(super: ScintillaEditBaseactionEventBase, event: gen_qevent.QActionEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QActionEvent): auto =
-    callVirtualBase_actionEvent(ScintillaEditBase(h: self), event)
+  var nimfunc = cast[ptr ScintillaEditBaseactionEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QActionEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_showEvent(self: ScintillaEditBase, event: gen_qevent.QShowEvent): void =
-
+  nimfunc[](slotval1)
+proc ScintillaEditBaseshowEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, event: gen_qevent.QShowEvent): void =
 
   fScintillaEditBase_virtualbase_showEvent(self.h, event.h)
 
-type ScintillaEditBaseshowEventBase* = proc(event: gen_qevent.QShowEvent): void
-proc onshowEvent*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBaseshowEventBase, event: gen_qevent.QShowEvent): void) =
+type ScintillaEditBaseshowEventProc* = proc(event: gen_qevent.QShowEvent): void
+proc onshowEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBaseshowEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBaseshowEventBase, event: gen_qevent.QShowEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditBaseshowEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_showEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_showEvent(self: ptr cScintillaEditBase, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEditBase_showEvent ".} =
-  type Cb = proc(super: ScintillaEditBaseshowEventBase, event: gen_qevent.QShowEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QShowEvent): auto =
-    callVirtualBase_showEvent(ScintillaEditBase(h: self), event)
+  var nimfunc = cast[ptr ScintillaEditBaseshowEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QShowEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hideEvent(self: ScintillaEditBase, event: gen_qevent.QHideEvent): void =
-
+  nimfunc[](slotval1)
+proc ScintillaEditBasehideEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, event: gen_qevent.QHideEvent): void =
 
   fScintillaEditBase_virtualbase_hideEvent(self.h, event.h)
 
-type ScintillaEditBasehideEventBase* = proc(event: gen_qevent.QHideEvent): void
-proc onhideEvent*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBasehideEventBase, event: gen_qevent.QHideEvent): void) =
+type ScintillaEditBasehideEventProc* = proc(event: gen_qevent.QHideEvent): void
+proc onhideEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasehideEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBasehideEventBase, event: gen_qevent.QHideEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditBasehideEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_hideEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_hideEvent(self: ptr cScintillaEditBase, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEditBase_hideEvent ".} =
-  type Cb = proc(super: ScintillaEditBasehideEventBase, event: gen_qevent.QHideEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QHideEvent): auto =
-    callVirtualBase_hideEvent(ScintillaEditBase(h: self), event)
+  var nimfunc = cast[ptr ScintillaEditBasehideEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QHideEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_nativeEvent(self: ScintillaEditBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
+  nimfunc[](slotval1)
+proc ScintillaEditBasenativeEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
 
   fScintillaEditBase_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
-type ScintillaEditBasenativeEventBase* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-proc onnativeEvent*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBasenativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool) =
+type ScintillaEditBasenativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
+proc onnativeEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasenativeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBasenativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-  var tmp = new Cb
+  var tmp = new ScintillaEditBasenativeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_nativeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_nativeEvent(self: ptr cScintillaEditBase, slot: int, eventType: struct_miqt_string, message: pointer, resultVal: ptr clong): bool {.exportc: "miqt_exec_callback_ScintillaEditBase_nativeEvent ".} =
-  type Cb = proc(super: ScintillaEditBasenativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(eventType: seq[byte], message: pointer, resultVal: ptr clong): auto =
-    callVirtualBase_nativeEvent(ScintillaEditBase(h: self), eventType, message, resultVal)
+  var nimfunc = cast[ptr ScintillaEditBasenativeEventProc](cast[pointer](slot))
   var veventType_bytearray = eventType
   var veventTypex_ret = @(toOpenArrayByte(veventType_bytearray.data, 0, int(veventType_bytearray.len)-1))
   c_free(veventType_bytearray.data)
@@ -6944,451 +6450,401 @@ proc miqt_exec_callback_ScintillaEditBase_nativeEvent(self: ptr cScintillaEditBa
   let slotval3 = resultVal
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_metric(self: ScintillaEditBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint =
-
+proc ScintillaEditBasemetric*(self: gen_ScintillaEdit_types.ScintillaEditBase, param1: cint): cint =
 
   fScintillaEditBase_virtualbase_metric(self.h, cint(param1))
 
-type ScintillaEditBasemetricBase* = proc(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-proc onmetric*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBasemetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint) =
+type ScintillaEditBasemetricProc* = proc(param1: cint): cint
+proc onmetric*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasemetricProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBasemetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var tmp = new Cb
+  var tmp = new ScintillaEditBasemetricProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_metric(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_metric(self: ptr cScintillaEditBase, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_ScintillaEditBase_metric ".} =
-  type Cb = proc(super: ScintillaEditBasemetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): auto =
-    callVirtualBase_metric(ScintillaEditBase(h: self), param1)
-  let slotval1 = gen_qpaintdevice.QPaintDevicePaintDeviceMetric(param1)
+  var nimfunc = cast[ptr ScintillaEditBasemetricProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_initPainter(self: ScintillaEditBase, painter: gen_qpainter.QPainter): void =
-
+proc ScintillaEditBaseinitPainter*(self: gen_ScintillaEdit_types.ScintillaEditBase, painter: gen_qpainter.QPainter): void =
 
   fScintillaEditBase_virtualbase_initPainter(self.h, painter.h)
 
-type ScintillaEditBaseinitPainterBase* = proc(painter: gen_qpainter.QPainter): void
-proc oninitPainter*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBaseinitPainterBase, painter: gen_qpainter.QPainter): void) =
+type ScintillaEditBaseinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
+proc oninitPainter*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBaseinitPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBaseinitPainterBase, painter: gen_qpainter.QPainter): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditBaseinitPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_initPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_initPainter(self: ptr cScintillaEditBase, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_ScintillaEditBase_initPainter ".} =
-  type Cb = proc(super: ScintillaEditBaseinitPainterBase, painter: gen_qpainter.QPainter): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter): auto =
-    callVirtualBase_initPainter(ScintillaEditBase(h: self), painter)
+  var nimfunc = cast[ptr ScintillaEditBaseinitPainterProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_redirected(self: ScintillaEditBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
+  nimfunc[](slotval1)
+proc ScintillaEditBaseredirected*(self: gen_ScintillaEdit_types.ScintillaEditBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
 
   gen_qpaintdevice.QPaintDevice(h: fScintillaEditBase_virtualbase_redirected(self.h, offset.h))
 
-type ScintillaEditBaseredirectedBase* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-proc onredirected*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBaseredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice) =
+type ScintillaEditBaseredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
+proc onredirected*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBaseredirectedProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBaseredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var tmp = new Cb
+  var tmp = new ScintillaEditBaseredirectedProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_redirected(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_redirected(self: ptr cScintillaEditBase, slot: int, offset: pointer): pointer {.exportc: "miqt_exec_callback_ScintillaEditBase_redirected ".} =
-  type Cb = proc(super: ScintillaEditBaseredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(offset: gen_qpoint.QPoint): auto =
-    callVirtualBase_redirected(ScintillaEditBase(h: self), offset)
+  var nimfunc = cast[ptr ScintillaEditBaseredirectedProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: offset)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_sharedPainter(self: ScintillaEditBase, ): gen_qpainter.QPainter =
-
+proc ScintillaEditBasesharedPainter*(self: gen_ScintillaEdit_types.ScintillaEditBase, ): gen_qpainter.QPainter =
 
   gen_qpainter.QPainter(h: fScintillaEditBase_virtualbase_sharedPainter(self.h))
 
-type ScintillaEditBasesharedPainterBase* = proc(): gen_qpainter.QPainter
-proc onsharedPainter*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBasesharedPainterBase): gen_qpainter.QPainter) =
+type ScintillaEditBasesharedPainterProc* = proc(): gen_qpainter.QPainter
+proc onsharedPainter*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasesharedPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBasesharedPainterBase): gen_qpainter.QPainter
-  var tmp = new Cb
+  var tmp = new ScintillaEditBasesharedPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_sharedPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_sharedPainter(self: ptr cScintillaEditBase, slot: int): pointer {.exportc: "miqt_exec_callback_ScintillaEditBase_sharedPainter ".} =
-  type Cb = proc(super: ScintillaEditBasesharedPainterBase): gen_qpainter.QPainter
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sharedPainter(ScintillaEditBase(h: self), )
+  var nimfunc = cast[ptr ScintillaEditBasesharedPainterProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_focusNextPrevChild(self: ScintillaEditBase, next: bool): bool =
-
+proc ScintillaEditBasefocusNextPrevChild*(self: gen_ScintillaEdit_types.ScintillaEditBase, next: bool): bool =
 
   fScintillaEditBase_virtualbase_focusNextPrevChild(self.h, next)
 
-type ScintillaEditBasefocusNextPrevChildBase* = proc(next: bool): bool
-proc onfocusNextPrevChild*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBasefocusNextPrevChildBase, next: bool): bool) =
+type ScintillaEditBasefocusNextPrevChildProc* = proc(next: bool): bool
+proc onfocusNextPrevChild*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasefocusNextPrevChildProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBasefocusNextPrevChildBase, next: bool): bool
-  var tmp = new Cb
+  var tmp = new ScintillaEditBasefocusNextPrevChildProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_focusNextPrevChild(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_focusNextPrevChild(self: ptr cScintillaEditBase, slot: int, next: bool): bool {.exportc: "miqt_exec_callback_ScintillaEditBase_focusNextPrevChild ".} =
-  type Cb = proc(super: ScintillaEditBasefocusNextPrevChildBase, next: bool): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(next: bool): auto =
-    callVirtualBase_focusNextPrevChild(ScintillaEditBase(h: self), next)
+  var nimfunc = cast[ptr ScintillaEditBasefocusNextPrevChildProc](cast[pointer](slot))
   let slotval1 = next
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: ScintillaEditBase, event: gen_qcoreevent.QTimerEvent): void =
-
+proc ScintillaEditBasetimerEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, event: gen_qcoreevent.QTimerEvent): void =
 
   fScintillaEditBase_virtualbase_timerEvent(self.h, event.h)
 
-type ScintillaEditBasetimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBasetimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type ScintillaEditBasetimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasetimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBasetimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditBasetimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_timerEvent(self: ptr cScintillaEditBase, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEditBase_timerEvent ".} =
-  type Cb = proc(super: ScintillaEditBasetimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(ScintillaEditBase(h: self), event)
+  var nimfunc = cast[ptr ScintillaEditBasetimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: ScintillaEditBase, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc ScintillaEditBasechildEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, event: gen_qcoreevent.QChildEvent): void =
 
   fScintillaEditBase_virtualbase_childEvent(self.h, event.h)
 
-type ScintillaEditBasechildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBasechildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type ScintillaEditBasechildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasechildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBasechildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditBasechildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_childEvent(self: ptr cScintillaEditBase, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEditBase_childEvent ".} =
-  type Cb = proc(super: ScintillaEditBasechildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(ScintillaEditBase(h: self), event)
+  var nimfunc = cast[ptr ScintillaEditBasechildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: ScintillaEditBase, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc ScintillaEditBasecustomEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, event: gen_qcoreevent.QEvent): void =
 
   fScintillaEditBase_virtualbase_customEvent(self.h, event.h)
 
-type ScintillaEditBasecustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBasecustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type ScintillaEditBasecustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasecustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBasecustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditBasecustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_customEvent(self: ptr cScintillaEditBase, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEditBase_customEvent ".} =
-  type Cb = proc(super: ScintillaEditBasecustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(ScintillaEditBase(h: self), event)
+  var nimfunc = cast[ptr ScintillaEditBasecustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: ScintillaEditBase, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc ScintillaEditBaseconnectNotify*(self: gen_ScintillaEdit_types.ScintillaEditBase, signal: gen_qmetaobject.QMetaMethod): void =
 
   fScintillaEditBase_virtualbase_connectNotify(self.h, signal.h)
 
-type ScintillaEditBaseconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBaseconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type ScintillaEditBaseconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBaseconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBaseconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditBaseconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_connectNotify(self: ptr cScintillaEditBase, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_ScintillaEditBase_connectNotify ".} =
-  type Cb = proc(super: ScintillaEditBaseconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(ScintillaEditBase(h: self), signal)
+  var nimfunc = cast[ptr ScintillaEditBaseconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: ScintillaEditBase, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc ScintillaEditBasedisconnectNotify*(self: gen_ScintillaEdit_types.ScintillaEditBase, signal: gen_qmetaobject.QMetaMethod): void =
 
   fScintillaEditBase_virtualbase_disconnectNotify(self.h, signal.h)
 
-type ScintillaEditBasedisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBasedisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type ScintillaEditBasedisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_ScintillaEdit_types.ScintillaEditBase, slot: ScintillaEditBasedisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditBasedisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditBasedisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEditBase_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEditBase_disconnectNotify(self: ptr cScintillaEditBase, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_ScintillaEditBase_disconnectNotify ".} =
-  type Cb = proc(super: ScintillaEditBasedisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(ScintillaEditBase(h: self), signal)
+  var nimfunc = cast[ptr ScintillaEditBasedisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type ScintillaEditBase): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_ScintillaEdit_types.ScintillaEditBase): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcScintillaEditBase_staticMetaObject())
-proc delete*(self: ScintillaEditBase) =
+proc delete*(self: gen_ScintillaEdit_types.ScintillaEditBase) =
   fcScintillaEditBase_delete(self.h)
 
-func init*(T: type ScintillaDocument, h: ptr cScintillaDocument): ScintillaDocument =
+func init*(T: type gen_ScintillaEdit_types.ScintillaDocument, h: ptr cScintillaDocument): gen_ScintillaEdit_types.ScintillaDocument =
   T(h: h)
-proc create*(T: type ScintillaDocument, ): ScintillaDocument =
+proc create*(T: type gen_ScintillaEdit_types.ScintillaDocument, ): gen_ScintillaEdit_types.ScintillaDocument =
 
-  ScintillaDocument.init(fcScintillaDocument_new())
-proc create*(T: type ScintillaDocument, parent: gen_qobject.QObject): ScintillaDocument =
+  gen_ScintillaEdit_types.ScintillaDocument.init(fcScintillaDocument_new())
+proc create*(T: type gen_ScintillaEdit_types.ScintillaDocument, parent: gen_qobject.QObject): gen_ScintillaEdit_types.ScintillaDocument =
 
-  ScintillaDocument.init(fcScintillaDocument_new2(parent.h))
-proc create*(T: type ScintillaDocument, parent: gen_qobject.QObject, pdoc_x: pointer): ScintillaDocument =
+  gen_ScintillaEdit_types.ScintillaDocument.init(fcScintillaDocument_new2(parent.h))
+proc create*(T: type gen_ScintillaEdit_types.ScintillaDocument, parent: gen_qobject.QObject, pdoc_x: pointer): gen_ScintillaEdit_types.ScintillaDocument =
 
-  ScintillaDocument.init(fcScintillaDocument_new3(parent.h, pdoc_x))
-proc metaObject*(self: ScintillaDocument, ): gen_qobjectdefs.QMetaObject =
+  gen_ScintillaEdit_types.ScintillaDocument.init(fcScintillaDocument_new3(parent.h, pdoc_x))
+proc metaObject*(self: gen_ScintillaEdit_types.ScintillaDocument, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcScintillaDocument_metaObject(self.h))
 
-proc metacast*(self: ScintillaDocument, param1: cstring): pointer =
+proc metacast*(self: gen_ScintillaEdit_types.ScintillaDocument, param1: cstring): pointer =
 
   fcScintillaDocument_metacast(self.h, param1)
 
-proc metacall*(self: ScintillaDocument, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_ScintillaEdit_types.ScintillaDocument, param1: cint, param2: cint, param3: pointer): cint =
 
   fcScintillaDocument_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type ScintillaDocument, s: cstring): string =
+proc tr*(_: type gen_ScintillaEdit_types.ScintillaDocument, s: cstring): string =
 
   let v_ms = fcScintillaDocument_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type ScintillaDocument, s: cstring): string =
+proc trUtf8*(_: type gen_ScintillaEdit_types.ScintillaDocument, s: cstring): string =
 
   let v_ms = fcScintillaDocument_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc pointer*(self: ScintillaDocument, ): pointer =
+proc pointer*(self: gen_ScintillaEdit_types.ScintillaDocument, ): pointer =
 
   fcScintillaDocument_pointer(self.h)
 
-proc lineFromPosition*(self: ScintillaDocument, pos: cint): cint =
+proc lineFromPosition*(self: gen_ScintillaEdit_types.ScintillaDocument, pos: cint): cint =
 
   fcScintillaDocument_lineFromPosition(self.h, pos)
 
-proc isCrLf*(self: ScintillaDocument, pos: cint): bool =
+proc isCrLf*(self: gen_ScintillaEdit_types.ScintillaDocument, pos: cint): bool =
 
   fcScintillaDocument_isCrLf(self.h, pos)
 
-proc deleteChars*(self: ScintillaDocument, pos: cint, len: cint): bool =
+proc deleteChars*(self: gen_ScintillaEdit_types.ScintillaDocument, pos: cint, len: cint): bool =
 
   fcScintillaDocument_deleteChars(self.h, pos, len)
 
-proc undo*(self: ScintillaDocument, ): cint =
+proc undo*(self: gen_ScintillaEdit_types.ScintillaDocument, ): cint =
 
   fcScintillaDocument_undo(self.h)
 
-proc redo*(self: ScintillaDocument, ): cint =
+proc redo*(self: gen_ScintillaEdit_types.ScintillaDocument, ): cint =
 
   fcScintillaDocument_redo(self.h)
 
-proc canUndo*(self: ScintillaDocument, ): bool =
+proc canUndo*(self: gen_ScintillaEdit_types.ScintillaDocument, ): bool =
 
   fcScintillaDocument_canUndo(self.h)
 
-proc canRedo*(self: ScintillaDocument, ): bool =
+proc canRedo*(self: gen_ScintillaEdit_types.ScintillaDocument, ): bool =
 
   fcScintillaDocument_canRedo(self.h)
 
-proc deleteUndoHistory*(self: ScintillaDocument, ): void =
+proc deleteUndoHistory*(self: gen_ScintillaEdit_types.ScintillaDocument, ): void =
 
   fcScintillaDocument_deleteUndoHistory(self.h)
 
-proc setUndoCollection*(self: ScintillaDocument, collect_undo: bool): bool =
+proc setUndoCollection*(self: gen_ScintillaEdit_types.ScintillaDocument, collect_undo: bool): bool =
 
   fcScintillaDocument_setUndoCollection(self.h, collect_undo)
 
-proc isCollectingUndo*(self: ScintillaDocument, ): bool =
+proc isCollectingUndo*(self: gen_ScintillaEdit_types.ScintillaDocument, ): bool =
 
   fcScintillaDocument_isCollectingUndo(self.h)
 
-proc beginUndoAction*(self: ScintillaDocument, ): void =
+proc beginUndoAction*(self: gen_ScintillaEdit_types.ScintillaDocument, ): void =
 
   fcScintillaDocument_beginUndoAction(self.h)
 
-proc endUndoAction*(self: ScintillaDocument, ): void =
+proc endUndoAction*(self: gen_ScintillaEdit_types.ScintillaDocument, ): void =
 
   fcScintillaDocument_endUndoAction(self.h)
 
-proc setSavePoint*(self: ScintillaDocument, ): void =
+proc setSavePoint*(self: gen_ScintillaEdit_types.ScintillaDocument, ): void =
 
   fcScintillaDocument_setSavePoint(self.h)
 
-proc isSavePoint*(self: ScintillaDocument, ): bool =
+proc isSavePoint*(self: gen_ScintillaEdit_types.ScintillaDocument, ): bool =
 
   fcScintillaDocument_isSavePoint(self.h)
 
-proc setReadOnly*(self: ScintillaDocument, read_only: bool): void =
+proc setReadOnly*(self: gen_ScintillaEdit_types.ScintillaDocument, read_only: bool): void =
 
   fcScintillaDocument_setReadOnly(self.h, read_only)
 
-proc isReadOnly*(self: ScintillaDocument, ): bool =
+proc isReadOnly*(self: gen_ScintillaEdit_types.ScintillaDocument, ): bool =
 
   fcScintillaDocument_isReadOnly(self.h)
 
-proc insertString*(self: ScintillaDocument, position: cint, str: seq[byte]): void =
+proc insertString*(self: gen_ScintillaEdit_types.ScintillaDocument, position: cint, str: seq[byte]): void =
 
   fcScintillaDocument_insertString(self.h, position, struct_miqt_string(data: cast[cstring](if len(str) == 0: nil else: unsafeAddr str[0]), len: csize_t(len(str))))
 
-proc getCharRange*(self: ScintillaDocument, position: cint, length: cint): seq[byte] =
+proc getCharRange*(self: gen_ScintillaEdit_types.ScintillaDocument, position: cint, length: cint): seq[byte] =
 
   var v_bytearray = fcScintillaDocument_getCharRange(self.h, position, length)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc styleAt*(self: ScintillaDocument, position: cint): cchar =
+proc styleAt*(self: gen_ScintillaEdit_types.ScintillaDocument, position: cint): cchar =
 
   fcScintillaDocument_styleAt(self.h, position)
 
-proc lineStart*(self: ScintillaDocument, lineno: cint): cint =
+proc lineStart*(self: gen_ScintillaEdit_types.ScintillaDocument, lineno: cint): cint =
 
   fcScintillaDocument_lineStart(self.h, lineno)
 
-proc lineEnd*(self: ScintillaDocument, lineno: cint): cint =
+proc lineEnd*(self: gen_ScintillaEdit_types.ScintillaDocument, lineno: cint): cint =
 
   fcScintillaDocument_lineEnd(self.h, lineno)
 
-proc lineEndPosition*(self: ScintillaDocument, pos: cint): cint =
+proc lineEndPosition*(self: gen_ScintillaEdit_types.ScintillaDocument, pos: cint): cint =
 
   fcScintillaDocument_lineEndPosition(self.h, pos)
 
-proc length*(self: ScintillaDocument, ): cint =
+proc length*(self: gen_ScintillaEdit_types.ScintillaDocument, ): cint =
 
   fcScintillaDocument_length(self.h)
 
-proc linesTotal*(self: ScintillaDocument, ): cint =
+proc linesTotal*(self: gen_ScintillaEdit_types.ScintillaDocument, ): cint =
 
   fcScintillaDocument_linesTotal(self.h)
 
-proc startStyling*(self: ScintillaDocument, position: cint): void =
+proc startStyling*(self: gen_ScintillaEdit_types.ScintillaDocument, position: cint): void =
 
   fcScintillaDocument_startStyling(self.h, position)
 
-proc setStyleFor*(self: ScintillaDocument, length: cint, style: cchar): bool =
+proc setStyleFor*(self: gen_ScintillaEdit_types.ScintillaDocument, length: cint, style: cchar): bool =
 
   fcScintillaDocument_setStyleFor(self.h, length, style)
 
-proc getEndStyled*(self: ScintillaDocument, ): cint =
+proc getEndStyled*(self: gen_ScintillaEdit_types.ScintillaDocument, ): cint =
 
   fcScintillaDocument_getEndStyled(self.h)
 
-proc ensureStyledTo*(self: ScintillaDocument, position: cint): void =
+proc ensureStyledTo*(self: gen_ScintillaEdit_types.ScintillaDocument, position: cint): void =
 
   fcScintillaDocument_ensureStyledTo(self.h, position)
 
-proc setCurrentIndicator*(self: ScintillaDocument, indic: cint): void =
+proc setCurrentIndicator*(self: gen_ScintillaEdit_types.ScintillaDocument, indic: cint): void =
 
   fcScintillaDocument_setCurrentIndicator(self.h, indic)
 
-proc decorationFillRange*(self: ScintillaDocument, position: cint, value: cint, fillLength: cint): void =
+proc decorationFillRange*(self: gen_ScintillaEdit_types.ScintillaDocument, position: cint, value: cint, fillLength: cint): void =
 
   fcScintillaDocument_decorationFillRange(self.h, position, value, fillLength)
 
-proc decorationsValueAt*(self: ScintillaDocument, indic: cint, position: cint): cint =
+proc decorationsValueAt*(self: gen_ScintillaEdit_types.ScintillaDocument, indic: cint, position: cint): cint =
 
   fcScintillaDocument_decorationsValueAt(self.h, indic, position)
 
-proc decorationsStart*(self: ScintillaDocument, indic: cint, position: cint): cint =
+proc decorationsStart*(self: gen_ScintillaEdit_types.ScintillaDocument, indic: cint, position: cint): cint =
 
   fcScintillaDocument_decorationsStart(self.h, indic, position)
 
-proc decorationsEnd*(self: ScintillaDocument, indic: cint, position: cint): cint =
+proc decorationsEnd*(self: gen_ScintillaEdit_types.ScintillaDocument, indic: cint, position: cint): cint =
 
   fcScintillaDocument_decorationsEnd(self.h, indic, position)
 
-proc getCodePage*(self: ScintillaDocument, ): cint =
+proc getCodePage*(self: gen_ScintillaEdit_types.ScintillaDocument, ): cint =
 
   fcScintillaDocument_getCodePage(self.h)
 
-proc setCodePage*(self: ScintillaDocument, code_page: cint): void =
+proc setCodePage*(self: gen_ScintillaEdit_types.ScintillaDocument, code_page: cint): void =
 
   fcScintillaDocument_setCodePage(self.h, code_page)
 
-proc getEolMode*(self: ScintillaDocument, ): cint =
+proc getEolMode*(self: gen_ScintillaEdit_types.ScintillaDocument, ): cint =
 
   fcScintillaDocument_getEolMode(self.h)
 
-proc setEolMode*(self: ScintillaDocument, eol_mode: cint): void =
+proc setEolMode*(self: gen_ScintillaEdit_types.ScintillaDocument, eol_mode: cint): void =
 
   fcScintillaDocument_setEolMode(self.h, eol_mode)
 
-proc movePositionOutsideChar*(self: ScintillaDocument, pos: cint, move_dir: cint, check_line_end: bool): cint =
+proc movePositionOutsideChar*(self: gen_ScintillaEdit_types.ScintillaDocument, pos: cint, move_dir: cint, check_line_end: bool): cint =
 
   fcScintillaDocument_movePositionOutsideChar(self.h, pos, move_dir, check_line_end)
 
-proc getCharacter*(self: ScintillaDocument, pos: cint): cint =
+proc getCharacter*(self: gen_ScintillaEdit_types.ScintillaDocument, pos: cint): cint =
 
   fcScintillaDocument_getCharacter(self.h, pos)
 
-proc modifyAttempt*(self: ScintillaDocument, ): void =
+proc modifyAttempt*(self: gen_ScintillaEdit_types.ScintillaDocument, ): void =
 
   fcScintillaDocument_modifyAttempt(self.h)
 
@@ -7398,13 +6854,13 @@ proc miqt_exec_callback_ScintillaDocument_modifyAttempt(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onmodifyAttempt*(self: ScintillaDocument, slot: proc()) =
+proc onmodifyAttempt*(self: gen_ScintillaEdit_types.ScintillaDocument, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fScintillaDocument_connect_modifyAttempt(self.h, cast[int](addr tmp[]))
-proc savePoint*(self: ScintillaDocument, atSavePoint: bool): void =
+proc savePoint*(self: gen_ScintillaEdit_types.ScintillaDocument, atSavePoint: bool): void =
 
   fcScintillaDocument_savePoint(self.h, atSavePoint)
 
@@ -7416,13 +6872,13 @@ proc miqt_exec_callback_ScintillaDocument_savePoint(slot: int, atSavePoint: bool
 
   nimfunc[](slotval1)
 
-proc onsavePoint*(self: ScintillaDocument, slot: proc(atSavePoint: bool)) =
+proc onsavePoint*(self: gen_ScintillaEdit_types.ScintillaDocument, slot: proc(atSavePoint: bool)) =
   type Cb = proc(atSavePoint: bool)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fScintillaDocument_connect_savePoint(self.h, cast[int](addr tmp[]))
-proc modified*(self: ScintillaDocument, position: cint, modification_type: cint, text: seq[byte], length: cint, linesAdded: cint, line: cint, foldLevelNow: cint, foldLevelPrev: cint): void =
+proc modified*(self: gen_ScintillaEdit_types.ScintillaDocument, position: cint, modification_type: cint, text: seq[byte], length: cint, linesAdded: cint, line: cint, foldLevelNow: cint, foldLevelPrev: cint): void =
 
   fcScintillaDocument_modified(self.h, position, modification_type, struct_miqt_string(data: cast[cstring](if len(text) == 0: nil else: unsafeAddr text[0]), len: csize_t(len(text))), length, linesAdded, line, foldLevelNow, foldLevelPrev)
 
@@ -7451,13 +6907,13 @@ proc miqt_exec_callback_ScintillaDocument_modified(slot: int, position: cint, mo
 
   nimfunc[](slotval1, slotval2, slotval3, slotval4, slotval5, slotval6, slotval7, slotval8)
 
-proc onmodified*(self: ScintillaDocument, slot: proc(position: cint, modification_type: cint, text: seq[byte], length: cint, linesAdded: cint, line: cint, foldLevelNow: cint, foldLevelPrev: cint)) =
+proc onmodified*(self: gen_ScintillaEdit_types.ScintillaDocument, slot: proc(position: cint, modification_type: cint, text: seq[byte], length: cint, linesAdded: cint, line: cint, foldLevelNow: cint, foldLevelPrev: cint)) =
   type Cb = proc(position: cint, modification_type: cint, text: seq[byte], length: cint, linesAdded: cint, line: cint, foldLevelNow: cint, foldLevelPrev: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fScintillaDocument_connect_modified(self.h, cast[int](addr tmp[]))
-proc styleNeeded*(self: ScintillaDocument, pos: cint): void =
+proc styleNeeded*(self: gen_ScintillaEdit_types.ScintillaDocument, pos: cint): void =
 
   fcScintillaDocument_styleNeeded(self.h, pos)
 
@@ -7469,13 +6925,13 @@ proc miqt_exec_callback_ScintillaDocument_styleNeeded(slot: int, pos: cint) {.ex
 
   nimfunc[](slotval1)
 
-proc onstyleNeeded*(self: ScintillaDocument, slot: proc(pos: cint)) =
+proc onstyleNeeded*(self: gen_ScintillaEdit_types.ScintillaDocument, slot: proc(pos: cint)) =
   type Cb = proc(pos: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fScintillaDocument_connect_styleNeeded(self.h, cast[int](addr tmp[]))
-proc errorOccurred*(self: ScintillaDocument, status: cint): void =
+proc errorOccurred*(self: gen_ScintillaEdit_types.ScintillaDocument, status: cint): void =
 
   fcScintillaDocument_errorOccurred(self.h, status)
 
@@ -7487,335 +6943,285 @@ proc miqt_exec_callback_ScintillaDocument_errorOccurred(slot: int, status: cint)
 
   nimfunc[](slotval1)
 
-proc onerrorOccurred*(self: ScintillaDocument, slot: proc(status: cint)) =
+proc onerrorOccurred*(self: gen_ScintillaEdit_types.ScintillaDocument, slot: proc(status: cint)) =
   type Cb = proc(status: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fScintillaDocument_connect_errorOccurred(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type ScintillaDocument, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_ScintillaEdit_types.ScintillaDocument, s: cstring, c: cstring): string =
 
   let v_ms = fcScintillaDocument_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type ScintillaDocument, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_ScintillaEdit_types.ScintillaDocument, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcScintillaDocument_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type ScintillaDocument, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_ScintillaEdit_types.ScintillaDocument, s: cstring, c: cstring): string =
 
   let v_ms = fcScintillaDocument_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type ScintillaDocument, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_ScintillaEdit_types.ScintillaDocument, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcScintillaDocument_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc beginUndoAction1*(self: ScintillaDocument, coalesceWithPrior: bool): void =
+proc beginUndoAction1*(self: gen_ScintillaEdit_types.ScintillaDocument, coalesceWithPrior: bool): void =
 
   fcScintillaDocument_beginUndoAction1(self.h, coalesceWithPrior)
 
-proc callVirtualBase_metaObject(self: ScintillaDocument, ): gen_qobjectdefs.QMetaObject =
-
+proc ScintillaDocumentmetaObject*(self: gen_ScintillaEdit_types.ScintillaDocument, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fScintillaDocument_virtualbase_metaObject(self.h))
 
-type ScintillaDocumentmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: ScintillaDocument, slot: proc(super: ScintillaDocumentmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type ScintillaDocumentmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_ScintillaEdit_types.ScintillaDocument, slot: ScintillaDocumentmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaDocumentmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new ScintillaDocumentmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaDocument_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaDocument_metaObject(self: ptr cScintillaDocument, slot: int): pointer {.exportc: "miqt_exec_callback_ScintillaDocument_metaObject ".} =
-  type Cb = proc(super: ScintillaDocumentmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(ScintillaDocument(h: self), )
+  var nimfunc = cast[ptr ScintillaDocumentmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: ScintillaDocument, param1: cstring): pointer =
-
+proc ScintillaDocumentmetacast*(self: gen_ScintillaEdit_types.ScintillaDocument, param1: cstring): pointer =
 
   fScintillaDocument_virtualbase_metacast(self.h, param1)
 
-type ScintillaDocumentmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: ScintillaDocument, slot: proc(super: ScintillaDocumentmetacastBase, param1: cstring): pointer) =
+type ScintillaDocumentmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_ScintillaEdit_types.ScintillaDocument, slot: ScintillaDocumentmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaDocumentmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new ScintillaDocumentmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaDocument_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaDocument_metacast(self: ptr cScintillaDocument, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_ScintillaDocument_metacast ".} =
-  type Cb = proc(super: ScintillaDocumentmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(ScintillaDocument(h: self), param1)
+  var nimfunc = cast[ptr ScintillaDocumentmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: ScintillaDocument, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc ScintillaDocumentmetacall*(self: gen_ScintillaEdit_types.ScintillaDocument, param1: cint, param2: cint, param3: pointer): cint =
 
   fScintillaDocument_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type ScintillaDocumentmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: ScintillaDocument, slot: proc(super: ScintillaDocumentmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type ScintillaDocumentmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_ScintillaEdit_types.ScintillaDocument, slot: ScintillaDocumentmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaDocumentmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new ScintillaDocumentmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaDocument_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaDocument_metacall(self: ptr cScintillaDocument, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_ScintillaDocument_metacall ".} =
-  type Cb = proc(super: ScintillaDocumentmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(ScintillaDocument(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr ScintillaDocumentmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_event(self: ScintillaDocument, event: gen_qcoreevent.QEvent): bool =
-
+proc ScintillaDocumentevent*(self: gen_ScintillaEdit_types.ScintillaDocument, event: gen_qcoreevent.QEvent): bool =
 
   fScintillaDocument_virtualbase_event(self.h, event.h)
 
-type ScintillaDocumenteventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: ScintillaDocument, slot: proc(super: ScintillaDocumenteventBase, event: gen_qcoreevent.QEvent): bool) =
+type ScintillaDocumenteventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_ScintillaEdit_types.ScintillaDocument, slot: ScintillaDocumenteventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaDocumenteventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new ScintillaDocumenteventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaDocument_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaDocument_event(self: ptr cScintillaDocument, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_ScintillaDocument_event ".} =
-  type Cb = proc(super: ScintillaDocumenteventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(ScintillaDocument(h: self), event)
+  var nimfunc = cast[ptr ScintillaDocumenteventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: ScintillaDocument, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc ScintillaDocumenteventFilter*(self: gen_ScintillaEdit_types.ScintillaDocument, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fScintillaDocument_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type ScintillaDocumenteventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: ScintillaDocument, slot: proc(super: ScintillaDocumenteventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type ScintillaDocumenteventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_ScintillaEdit_types.ScintillaDocument, slot: ScintillaDocumenteventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaDocumenteventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new ScintillaDocumenteventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaDocument_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaDocument_eventFilter(self: ptr cScintillaDocument, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_ScintillaDocument_eventFilter ".} =
-  type Cb = proc(super: ScintillaDocumenteventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(ScintillaDocument(h: self), watched, event)
+  var nimfunc = cast[ptr ScintillaDocumenteventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: ScintillaDocument, event: gen_qcoreevent.QTimerEvent): void =
-
+proc ScintillaDocumenttimerEvent*(self: gen_ScintillaEdit_types.ScintillaDocument, event: gen_qcoreevent.QTimerEvent): void =
 
   fScintillaDocument_virtualbase_timerEvent(self.h, event.h)
 
-type ScintillaDocumenttimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: ScintillaDocument, slot: proc(super: ScintillaDocumenttimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type ScintillaDocumenttimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_ScintillaEdit_types.ScintillaDocument, slot: ScintillaDocumenttimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaDocumenttimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaDocumenttimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaDocument_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaDocument_timerEvent(self: ptr cScintillaDocument, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaDocument_timerEvent ".} =
-  type Cb = proc(super: ScintillaDocumenttimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(ScintillaDocument(h: self), event)
+  var nimfunc = cast[ptr ScintillaDocumenttimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: ScintillaDocument, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc ScintillaDocumentchildEvent*(self: gen_ScintillaEdit_types.ScintillaDocument, event: gen_qcoreevent.QChildEvent): void =
 
   fScintillaDocument_virtualbase_childEvent(self.h, event.h)
 
-type ScintillaDocumentchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: ScintillaDocument, slot: proc(super: ScintillaDocumentchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type ScintillaDocumentchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_ScintillaEdit_types.ScintillaDocument, slot: ScintillaDocumentchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaDocumentchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaDocumentchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaDocument_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaDocument_childEvent(self: ptr cScintillaDocument, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaDocument_childEvent ".} =
-  type Cb = proc(super: ScintillaDocumentchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(ScintillaDocument(h: self), event)
+  var nimfunc = cast[ptr ScintillaDocumentchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: ScintillaDocument, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc ScintillaDocumentcustomEvent*(self: gen_ScintillaEdit_types.ScintillaDocument, event: gen_qcoreevent.QEvent): void =
 
   fScintillaDocument_virtualbase_customEvent(self.h, event.h)
 
-type ScintillaDocumentcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: ScintillaDocument, slot: proc(super: ScintillaDocumentcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type ScintillaDocumentcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_ScintillaEdit_types.ScintillaDocument, slot: ScintillaDocumentcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaDocumentcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaDocumentcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaDocument_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaDocument_customEvent(self: ptr cScintillaDocument, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaDocument_customEvent ".} =
-  type Cb = proc(super: ScintillaDocumentcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(ScintillaDocument(h: self), event)
+  var nimfunc = cast[ptr ScintillaDocumentcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: ScintillaDocument, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc ScintillaDocumentconnectNotify*(self: gen_ScintillaEdit_types.ScintillaDocument, signal: gen_qmetaobject.QMetaMethod): void =
 
   fScintillaDocument_virtualbase_connectNotify(self.h, signal.h)
 
-type ScintillaDocumentconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: ScintillaDocument, slot: proc(super: ScintillaDocumentconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type ScintillaDocumentconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_ScintillaEdit_types.ScintillaDocument, slot: ScintillaDocumentconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaDocumentconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new ScintillaDocumentconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaDocument_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaDocument_connectNotify(self: ptr cScintillaDocument, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_ScintillaDocument_connectNotify ".} =
-  type Cb = proc(super: ScintillaDocumentconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(ScintillaDocument(h: self), signal)
+  var nimfunc = cast[ptr ScintillaDocumentconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: ScintillaDocument, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc ScintillaDocumentdisconnectNotify*(self: gen_ScintillaEdit_types.ScintillaDocument, signal: gen_qmetaobject.QMetaMethod): void =
 
   fScintillaDocument_virtualbase_disconnectNotify(self.h, signal.h)
 
-type ScintillaDocumentdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: ScintillaDocument, slot: proc(super: ScintillaDocumentdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type ScintillaDocumentdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_ScintillaEdit_types.ScintillaDocument, slot: ScintillaDocumentdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaDocumentdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new ScintillaDocumentdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaDocument_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaDocument_disconnectNotify(self: ptr cScintillaDocument, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_ScintillaDocument_disconnectNotify ".} =
-  type Cb = proc(super: ScintillaDocumentdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(ScintillaDocument(h: self), signal)
+  var nimfunc = cast[ptr ScintillaDocumentdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type ScintillaDocument): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_ScintillaEdit_types.ScintillaDocument): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcScintillaDocument_staticMetaObject())
-proc delete*(self: ScintillaDocument) =
+proc delete*(self: gen_ScintillaEdit_types.ScintillaDocument) =
   fcScintillaDocument_delete(self.h)
 
-func init*(T: type ScintillaEdit, h: ptr cScintillaEdit): ScintillaEdit =
+func init*(T: type gen_ScintillaEdit_types.ScintillaEdit, h: ptr cScintillaEdit): gen_ScintillaEdit_types.ScintillaEdit =
   T(h: h)
-proc create*(T: type ScintillaEdit, parent: gen_qwidget.QWidget): ScintillaEdit =
+proc create*(T: type gen_ScintillaEdit_types.ScintillaEdit, parent: gen_qwidget.QWidget): gen_ScintillaEdit_types.ScintillaEdit =
 
-  ScintillaEdit.init(fcScintillaEdit_new(parent.h))
-proc create*(T: type ScintillaEdit, ): ScintillaEdit =
+  gen_ScintillaEdit_types.ScintillaEdit.init(fcScintillaEdit_new(parent.h))
+proc create*(T: type gen_ScintillaEdit_types.ScintillaEdit, ): gen_ScintillaEdit_types.ScintillaEdit =
 
-  ScintillaEdit.init(fcScintillaEdit_new2())
-proc metaObject*(self: ScintillaEdit, ): gen_qobjectdefs.QMetaObject =
+  gen_ScintillaEdit_types.ScintillaEdit.init(fcScintillaEdit_new2())
+proc metaObject*(self: gen_ScintillaEdit_types.ScintillaEdit, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcScintillaEdit_metaObject(self.h))
 
-proc metacast*(self: ScintillaEdit, param1: cstring): pointer =
+proc metacast*(self: gen_ScintillaEdit_types.ScintillaEdit, param1: cstring): pointer =
 
   fcScintillaEdit_metacast(self.h, param1)
 
-proc metacall*(self: ScintillaEdit, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_ScintillaEdit_types.ScintillaEdit, param1: cint, param2: cint, param3: pointer): cint =
 
   fcScintillaEdit_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type ScintillaEdit, s: cstring): string =
+proc tr*(_: type gen_ScintillaEdit_types.ScintillaEdit, s: cstring): string =
 
   let v_ms = fcScintillaEdit_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type ScintillaEdit, s: cstring): string =
+proc trUtf8*(_: type gen_ScintillaEdit_types.ScintillaEdit, s: cstring): string =
 
   let v_ms = fcScintillaEdit_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc TextReturner*(self: ScintillaEdit, message: cint, wParam: miqt_uintptr_t): seq[byte] =
+proc TextReturner*(self: gen_ScintillaEdit_types.ScintillaEdit, message: cint, wParam: miqt_uintptr_t): seq[byte] =
 
   var v_bytearray = fcScintillaEdit_TextReturner(self.h, message, wParam)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc findText*(self: ScintillaEdit, flags: cint, text: cstring, cpMin: cint, cpMax: cint): tuple[first: cint, second: cint] =
+proc findText*(self: gen_ScintillaEdit_types.ScintillaEdit, flags: cint, text: cstring, cpMin: cint, cpMax: cint): tuple[first: cint, second: cint] =
 
   var v_mm = fcScintillaEdit_findText(self.h, flags, text, cpMin, cpMax)
   var v_First_CArray = cast[ptr UncheckedArray[cint]](v_mm.keys)
@@ -7826,22 +7232,22 @@ proc findText*(self: ScintillaEdit, flags: cint, text: cstring, cpMin: cint, cpM
 
   (first: v_entry_First , second: v_entry_Second )
 
-proc getTextRange*(self: ScintillaEdit, start: cint, endVal: cint): seq[byte] =
+proc getTextRange*(self: gen_ScintillaEdit_types.ScintillaEdit, start: cint, endVal: cint): seq[byte] =
 
   var v_bytearray = fcScintillaEdit_getTextRange(self.h, start, endVal)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc getDoc*(self: ScintillaEdit, ): ScintillaDocument =
+proc getDoc*(self: gen_ScintillaEdit_types.ScintillaEdit, ): gen_ScintillaEdit_types.ScintillaDocument =
 
-  ScintillaDocument(h: fcScintillaEdit_getDoc(self.h))
+  gen_ScintillaEdit_types.ScintillaDocument(h: fcScintillaEdit_getDoc(self.h))
 
-proc setDoc*(self: ScintillaEdit, pdoc_x: ScintillaDocument): void =
+proc setDoc*(self: gen_ScintillaEdit_types.ScintillaEdit, pdoc_x: gen_ScintillaEdit_types.ScintillaDocument): void =
 
   fcScintillaEdit_setDoc(self.h, pdoc_x.h)
 
-proc findText2*(self: ScintillaEdit, flags: cint, text: cstring, cpMin: cint, cpMax: cint): tuple[first: cint, second: cint] =
+proc findText2*(self: gen_ScintillaEdit_types.ScintillaEdit, flags: cint, text: cstring, cpMin: cint, cpMax: cint): tuple[first: cint, second: cint] =
 
   var v_mm = fcScintillaEdit_findText2(self.h, flags, text, cpMin, cpMax)
   var v_First_CArray = cast[ptr UncheckedArray[cint]](v_mm.keys)
@@ -7852,3447 +7258,3427 @@ proc findText2*(self: ScintillaEdit, flags: cint, text: cstring, cpMin: cint, cp
 
   (first: v_entry_First , second: v_entry_Second )
 
-proc textRange*(self: ScintillaEdit, start: cint, endVal: cint): seq[byte] =
+proc textRange*(self: gen_ScintillaEdit_types.ScintillaEdit, start: cint, endVal: cint): seq[byte] =
 
   var v_bytearray = fcScintillaEdit_textRange(self.h, start, endVal)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc formatRange*(self: ScintillaEdit, draw: bool, target: gen_qpaintdevice.QPaintDevice, measure: gen_qpaintdevice.QPaintDevice, print_rect: gen_qrect.QRect, page_rect: gen_qrect.QRect, range_start: clong, range_end: clong): clong =
+proc formatRange*(self: gen_ScintillaEdit_types.ScintillaEdit, draw: bool, target: gen_qpaintdevice.QPaintDevice, measure: gen_qpaintdevice.QPaintDevice, print_rect: gen_qrect.QRect, page_rect: gen_qrect.QRect, range_start: clong, range_end: clong): clong =
 
   fcScintillaEdit_formatRange(self.h, draw, target.h, measure.h, print_rect.h, page_rect.h, range_start, range_end)
 
-proc formatRange2*(self: ScintillaEdit, draw: bool, target: gen_qpaintdevice.QPaintDevice, measure: gen_qpaintdevice.QPaintDevice, print_rect: gen_qrect.QRect, page_rect: gen_qrect.QRect, range_start: clong, range_end: clong): clong =
+proc formatRange2*(self: gen_ScintillaEdit_types.ScintillaEdit, draw: bool, target: gen_qpaintdevice.QPaintDevice, measure: gen_qpaintdevice.QPaintDevice, print_rect: gen_qrect.QRect, page_rect: gen_qrect.QRect, range_start: clong, range_end: clong): clong =
 
   fcScintillaEdit_formatRange2(self.h, draw, target.h, measure.h, print_rect.h, page_rect.h, range_start, range_end)
 
-proc addText*(self: ScintillaEdit, length: miqt_intptr_t, text: cstring): void =
+proc addText*(self: gen_ScintillaEdit_types.ScintillaEdit, length: miqt_intptr_t, text: cstring): void =
 
   fcScintillaEdit_addText(self.h, length, text)
 
-proc addStyledText*(self: ScintillaEdit, length: miqt_intptr_t, c: cstring): void =
+proc addStyledText*(self: gen_ScintillaEdit_types.ScintillaEdit, length: miqt_intptr_t, c: cstring): void =
 
   fcScintillaEdit_addStyledText(self.h, length, c)
 
-proc insertText*(self: ScintillaEdit, pos: miqt_intptr_t, text: cstring): void =
+proc insertText*(self: gen_ScintillaEdit_types.ScintillaEdit, pos: miqt_intptr_t, text: cstring): void =
 
   fcScintillaEdit_insertText(self.h, pos, text)
 
-proc changeInsertion*(self: ScintillaEdit, length: miqt_intptr_t, text: cstring): void =
+proc changeInsertion*(self: gen_ScintillaEdit_types.ScintillaEdit, length: miqt_intptr_t, text: cstring): void =
 
   fcScintillaEdit_changeInsertion(self.h, length, text)
 
-proc clearAll*(self: ScintillaEdit, ): void =
+proc clearAll*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_clearAll(self.h)
 
-proc deleteRange*(self: ScintillaEdit, start: miqt_intptr_t, lengthDelete: miqt_intptr_t): void =
+proc deleteRange*(self: gen_ScintillaEdit_types.ScintillaEdit, start: miqt_intptr_t, lengthDelete: miqt_intptr_t): void =
 
   fcScintillaEdit_deleteRange(self.h, start, lengthDelete)
 
-proc clearDocumentStyle*(self: ScintillaEdit, ): void =
+proc clearDocumentStyle*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_clearDocumentStyle(self.h)
 
-proc length*(self: ScintillaEdit, ): miqt_intptr_t =
+proc length*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_length(self.h)
 
-proc charAt*(self: ScintillaEdit, pos: miqt_intptr_t): miqt_intptr_t =
+proc charAt*(self: gen_ScintillaEdit_types.ScintillaEdit, pos: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_charAt(self.h, pos)
 
-proc currentPos*(self: ScintillaEdit, ): miqt_intptr_t =
+proc currentPos*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_currentPos(self.h)
 
-proc anchor*(self: ScintillaEdit, ): miqt_intptr_t =
+proc anchor*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_anchor(self.h)
 
-proc styleAt*(self: ScintillaEdit, pos: miqt_intptr_t): miqt_intptr_t =
+proc styleAt*(self: gen_ScintillaEdit_types.ScintillaEdit, pos: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_styleAt(self.h, pos)
 
-proc styleIndexAt*(self: ScintillaEdit, pos: miqt_intptr_t): miqt_intptr_t =
+proc styleIndexAt*(self: gen_ScintillaEdit_types.ScintillaEdit, pos: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_styleIndexAt(self.h, pos)
 
-proc redo*(self: ScintillaEdit, ): void =
+proc redo*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_redo(self.h)
 
-proc setUndoCollection*(self: ScintillaEdit, collectUndo: bool): void =
+proc setUndoCollection*(self: gen_ScintillaEdit_types.ScintillaEdit, collectUndo: bool): void =
 
   fcScintillaEdit_setUndoCollection(self.h, collectUndo)
 
-proc selectAll*(self: ScintillaEdit, ): void =
+proc selectAll*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_selectAll(self.h)
 
-proc setSavePoint*(self: ScintillaEdit, ): void =
+proc setSavePoint*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_setSavePoint(self.h)
 
-proc canRedo*(self: ScintillaEdit, ): bool =
+proc canRedo*(self: gen_ScintillaEdit_types.ScintillaEdit, ): bool =
 
   fcScintillaEdit_canRedo(self.h)
 
-proc markerLineFromHandle*(self: ScintillaEdit, markerHandle: miqt_intptr_t): miqt_intptr_t =
+proc markerLineFromHandle*(self: gen_ScintillaEdit_types.ScintillaEdit, markerHandle: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_markerLineFromHandle(self.h, markerHandle)
 
-proc markerDeleteHandle*(self: ScintillaEdit, markerHandle: miqt_intptr_t): void =
+proc markerDeleteHandle*(self: gen_ScintillaEdit_types.ScintillaEdit, markerHandle: miqt_intptr_t): void =
 
   fcScintillaEdit_markerDeleteHandle(self.h, markerHandle)
 
-proc markerHandleFromLine*(self: ScintillaEdit, line: miqt_intptr_t, which: miqt_intptr_t): miqt_intptr_t =
+proc markerHandleFromLine*(self: gen_ScintillaEdit_types.ScintillaEdit, line: miqt_intptr_t, which: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_markerHandleFromLine(self.h, line, which)
 
-proc markerNumberFromLine*(self: ScintillaEdit, line: miqt_intptr_t, which: miqt_intptr_t): miqt_intptr_t =
+proc markerNumberFromLine*(self: gen_ScintillaEdit_types.ScintillaEdit, line: miqt_intptr_t, which: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_markerNumberFromLine(self.h, line, which)
 
-proc undoCollection*(self: ScintillaEdit, ): bool =
+proc undoCollection*(self: gen_ScintillaEdit_types.ScintillaEdit, ): bool =
 
   fcScintillaEdit_undoCollection(self.h)
 
-proc viewWS*(self: ScintillaEdit, ): miqt_intptr_t =
+proc viewWS*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_viewWS(self.h)
 
-proc setViewWS*(self: ScintillaEdit, viewWS: miqt_intptr_t): void =
+proc setViewWS*(self: gen_ScintillaEdit_types.ScintillaEdit, viewWS: miqt_intptr_t): void =
 
   fcScintillaEdit_setViewWS(self.h, viewWS)
 
-proc tabDrawMode*(self: ScintillaEdit, ): miqt_intptr_t =
+proc tabDrawMode*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_tabDrawMode(self.h)
 
-proc setTabDrawMode*(self: ScintillaEdit, tabDrawMode: miqt_intptr_t): void =
+proc setTabDrawMode*(self: gen_ScintillaEdit_types.ScintillaEdit, tabDrawMode: miqt_intptr_t): void =
 
   fcScintillaEdit_setTabDrawMode(self.h, tabDrawMode)
 
-proc positionFromPoint*(self: ScintillaEdit, x: miqt_intptr_t, y: miqt_intptr_t): miqt_intptr_t =
+proc positionFromPoint*(self: gen_ScintillaEdit_types.ScintillaEdit, x: miqt_intptr_t, y: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_positionFromPoint(self.h, x, y)
 
-proc positionFromPointClose*(self: ScintillaEdit, x: miqt_intptr_t, y: miqt_intptr_t): miqt_intptr_t =
+proc positionFromPointClose*(self: gen_ScintillaEdit_types.ScintillaEdit, x: miqt_intptr_t, y: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_positionFromPointClose(self.h, x, y)
 
-proc gotoLine*(self: ScintillaEdit, line: miqt_intptr_t): void =
+proc gotoLine*(self: gen_ScintillaEdit_types.ScintillaEdit, line: miqt_intptr_t): void =
 
   fcScintillaEdit_gotoLine(self.h, line)
 
-proc gotoPos*(self: ScintillaEdit, caret: miqt_intptr_t): void =
+proc gotoPos*(self: gen_ScintillaEdit_types.ScintillaEdit, caret: miqt_intptr_t): void =
 
   fcScintillaEdit_gotoPos(self.h, caret)
 
-proc setAnchor*(self: ScintillaEdit, anchor: miqt_intptr_t): void =
+proc setAnchor*(self: gen_ScintillaEdit_types.ScintillaEdit, anchor: miqt_intptr_t): void =
 
   fcScintillaEdit_setAnchor(self.h, anchor)
 
-proc getCurLine*(self: ScintillaEdit, length: miqt_intptr_t): seq[byte] =
+proc getCurLine*(self: gen_ScintillaEdit_types.ScintillaEdit, length: miqt_intptr_t): seq[byte] =
 
   var v_bytearray = fcScintillaEdit_getCurLine(self.h, length)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc endStyled*(self: ScintillaEdit, ): miqt_intptr_t =
+proc endStyled*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_endStyled(self.h)
 
-proc convertEOLs*(self: ScintillaEdit, eolMode: miqt_intptr_t): void =
+proc convertEOLs*(self: gen_ScintillaEdit_types.ScintillaEdit, eolMode: miqt_intptr_t): void =
 
   fcScintillaEdit_convertEOLs(self.h, eolMode)
 
-proc eOLMode*(self: ScintillaEdit, ): miqt_intptr_t =
+proc eOLMode*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_eOLMode(self.h)
 
-proc setEOLMode*(self: ScintillaEdit, eolMode: miqt_intptr_t): void =
+proc setEOLMode*(self: gen_ScintillaEdit_types.ScintillaEdit, eolMode: miqt_intptr_t): void =
 
   fcScintillaEdit_setEOLMode(self.h, eolMode)
 
-proc startStyling*(self: ScintillaEdit, start: miqt_intptr_t, unused: miqt_intptr_t): void =
+proc startStyling*(self: gen_ScintillaEdit_types.ScintillaEdit, start: miqt_intptr_t, unused: miqt_intptr_t): void =
 
   fcScintillaEdit_startStyling(self.h, start, unused)
 
-proc setStyling*(self: ScintillaEdit, length: miqt_intptr_t, style: miqt_intptr_t): void =
+proc setStyling*(self: gen_ScintillaEdit_types.ScintillaEdit, length: miqt_intptr_t, style: miqt_intptr_t): void =
 
   fcScintillaEdit_setStyling(self.h, length, style)
 
-proc bufferedDraw*(self: ScintillaEdit, ): bool =
+proc bufferedDraw*(self: gen_ScintillaEdit_types.ScintillaEdit, ): bool =
 
   fcScintillaEdit_bufferedDraw(self.h)
 
-proc setBufferedDraw*(self: ScintillaEdit, buffered: bool): void =
+proc setBufferedDraw*(self: gen_ScintillaEdit_types.ScintillaEdit, buffered: bool): void =
 
   fcScintillaEdit_setBufferedDraw(self.h, buffered)
 
-proc setTabWidth*(self: ScintillaEdit, tabWidth: miqt_intptr_t): void =
+proc setTabWidth*(self: gen_ScintillaEdit_types.ScintillaEdit, tabWidth: miqt_intptr_t): void =
 
   fcScintillaEdit_setTabWidth(self.h, tabWidth)
 
-proc tabWidth*(self: ScintillaEdit, ): miqt_intptr_t =
+proc tabWidth*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_tabWidth(self.h)
 
-proc setTabMinimumWidth*(self: ScintillaEdit, pixels: miqt_intptr_t): void =
+proc setTabMinimumWidth*(self: gen_ScintillaEdit_types.ScintillaEdit, pixels: miqt_intptr_t): void =
 
   fcScintillaEdit_setTabMinimumWidth(self.h, pixels)
 
-proc tabMinimumWidth*(self: ScintillaEdit, ): miqt_intptr_t =
+proc tabMinimumWidth*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_tabMinimumWidth(self.h)
 
-proc clearTabStops*(self: ScintillaEdit, line: miqt_intptr_t): void =
+proc clearTabStops*(self: gen_ScintillaEdit_types.ScintillaEdit, line: miqt_intptr_t): void =
 
   fcScintillaEdit_clearTabStops(self.h, line)
 
-proc addTabStop*(self: ScintillaEdit, line: miqt_intptr_t, x: miqt_intptr_t): void =
+proc addTabStop*(self: gen_ScintillaEdit_types.ScintillaEdit, line: miqt_intptr_t, x: miqt_intptr_t): void =
 
   fcScintillaEdit_addTabStop(self.h, line, x)
 
-proc getNextTabStop*(self: ScintillaEdit, line: miqt_intptr_t, x: miqt_intptr_t): miqt_intptr_t =
+proc getNextTabStop*(self: gen_ScintillaEdit_types.ScintillaEdit, line: miqt_intptr_t, x: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_getNextTabStop(self.h, line, x)
 
-proc setCodePage*(self: ScintillaEdit, codePage: miqt_intptr_t): void =
+proc setCodePage*(self: gen_ScintillaEdit_types.ScintillaEdit, codePage: miqt_intptr_t): void =
 
   fcScintillaEdit_setCodePage(self.h, codePage)
 
-proc setFontLocale*(self: ScintillaEdit, localeName: cstring): void =
+proc setFontLocale*(self: gen_ScintillaEdit_types.ScintillaEdit, localeName: cstring): void =
 
   fcScintillaEdit_setFontLocale(self.h, localeName)
 
-proc fontLocale*(self: ScintillaEdit, ): seq[byte] =
+proc fontLocale*(self: gen_ScintillaEdit_types.ScintillaEdit, ): seq[byte] =
 
   var v_bytearray = fcScintillaEdit_fontLocale(self.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc iMEInteraction*(self: ScintillaEdit, ): miqt_intptr_t =
+proc iMEInteraction*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_iMEInteraction(self.h)
 
-proc setIMEInteraction*(self: ScintillaEdit, imeInteraction: miqt_intptr_t): void =
+proc setIMEInteraction*(self: gen_ScintillaEdit_types.ScintillaEdit, imeInteraction: miqt_intptr_t): void =
 
   fcScintillaEdit_setIMEInteraction(self.h, imeInteraction)
 
-proc markerDefine*(self: ScintillaEdit, markerNumber: miqt_intptr_t, markerSymbol: miqt_intptr_t): void =
+proc markerDefine*(self: gen_ScintillaEdit_types.ScintillaEdit, markerNumber: miqt_intptr_t, markerSymbol: miqt_intptr_t): void =
 
   fcScintillaEdit_markerDefine(self.h, markerNumber, markerSymbol)
 
-proc markerSetFore*(self: ScintillaEdit, markerNumber: miqt_intptr_t, fore: miqt_intptr_t): void =
+proc markerSetFore*(self: gen_ScintillaEdit_types.ScintillaEdit, markerNumber: miqt_intptr_t, fore: miqt_intptr_t): void =
 
   fcScintillaEdit_markerSetFore(self.h, markerNumber, fore)
 
-proc markerSetBack*(self: ScintillaEdit, markerNumber: miqt_intptr_t, back: miqt_intptr_t): void =
+proc markerSetBack*(self: gen_ScintillaEdit_types.ScintillaEdit, markerNumber: miqt_intptr_t, back: miqt_intptr_t): void =
 
   fcScintillaEdit_markerSetBack(self.h, markerNumber, back)
 
-proc markerSetBackSelected*(self: ScintillaEdit, markerNumber: miqt_intptr_t, back: miqt_intptr_t): void =
+proc markerSetBackSelected*(self: gen_ScintillaEdit_types.ScintillaEdit, markerNumber: miqt_intptr_t, back: miqt_intptr_t): void =
 
   fcScintillaEdit_markerSetBackSelected(self.h, markerNumber, back)
 
-proc markerSetForeTranslucent*(self: ScintillaEdit, markerNumber: miqt_intptr_t, fore: miqt_intptr_t): void =
+proc markerSetForeTranslucent*(self: gen_ScintillaEdit_types.ScintillaEdit, markerNumber: miqt_intptr_t, fore: miqt_intptr_t): void =
 
   fcScintillaEdit_markerSetForeTranslucent(self.h, markerNumber, fore)
 
-proc markerSetBackTranslucent*(self: ScintillaEdit, markerNumber: miqt_intptr_t, back: miqt_intptr_t): void =
+proc markerSetBackTranslucent*(self: gen_ScintillaEdit_types.ScintillaEdit, markerNumber: miqt_intptr_t, back: miqt_intptr_t): void =
 
   fcScintillaEdit_markerSetBackTranslucent(self.h, markerNumber, back)
 
-proc markerSetBackSelectedTranslucent*(self: ScintillaEdit, markerNumber: miqt_intptr_t, back: miqt_intptr_t): void =
+proc markerSetBackSelectedTranslucent*(self: gen_ScintillaEdit_types.ScintillaEdit, markerNumber: miqt_intptr_t, back: miqt_intptr_t): void =
 
   fcScintillaEdit_markerSetBackSelectedTranslucent(self.h, markerNumber, back)
 
-proc markerSetStrokeWidth*(self: ScintillaEdit, markerNumber: miqt_intptr_t, hundredths: miqt_intptr_t): void =
+proc markerSetStrokeWidth*(self: gen_ScintillaEdit_types.ScintillaEdit, markerNumber: miqt_intptr_t, hundredths: miqt_intptr_t): void =
 
   fcScintillaEdit_markerSetStrokeWidth(self.h, markerNumber, hundredths)
 
-proc markerEnableHighlight*(self: ScintillaEdit, enabled: bool): void =
+proc markerEnableHighlight*(self: gen_ScintillaEdit_types.ScintillaEdit, enabled: bool): void =
 
   fcScintillaEdit_markerEnableHighlight(self.h, enabled)
 
-proc markerAdd*(self: ScintillaEdit, line: miqt_intptr_t, markerNumber: miqt_intptr_t): miqt_intptr_t =
+proc markerAdd*(self: gen_ScintillaEdit_types.ScintillaEdit, line: miqt_intptr_t, markerNumber: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_markerAdd(self.h, line, markerNumber)
 
-proc markerDelete*(self: ScintillaEdit, line: miqt_intptr_t, markerNumber: miqt_intptr_t): void =
+proc markerDelete*(self: gen_ScintillaEdit_types.ScintillaEdit, line: miqt_intptr_t, markerNumber: miqt_intptr_t): void =
 
   fcScintillaEdit_markerDelete(self.h, line, markerNumber)
 
-proc markerDeleteAll*(self: ScintillaEdit, markerNumber: miqt_intptr_t): void =
+proc markerDeleteAll*(self: gen_ScintillaEdit_types.ScintillaEdit, markerNumber: miqt_intptr_t): void =
 
   fcScintillaEdit_markerDeleteAll(self.h, markerNumber)
 
-proc markerGet*(self: ScintillaEdit, line: miqt_intptr_t): miqt_intptr_t =
+proc markerGet*(self: gen_ScintillaEdit_types.ScintillaEdit, line: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_markerGet(self.h, line)
 
-proc markerNext*(self: ScintillaEdit, lineStart: miqt_intptr_t, markerMask: miqt_intptr_t): miqt_intptr_t =
+proc markerNext*(self: gen_ScintillaEdit_types.ScintillaEdit, lineStart: miqt_intptr_t, markerMask: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_markerNext(self.h, lineStart, markerMask)
 
-proc markerPrevious*(self: ScintillaEdit, lineStart: miqt_intptr_t, markerMask: miqt_intptr_t): miqt_intptr_t =
+proc markerPrevious*(self: gen_ScintillaEdit_types.ScintillaEdit, lineStart: miqt_intptr_t, markerMask: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_markerPrevious(self.h, lineStart, markerMask)
 
-proc markerDefinePixmap*(self: ScintillaEdit, markerNumber: miqt_intptr_t, pixmap: cstring): void =
+proc markerDefinePixmap*(self: gen_ScintillaEdit_types.ScintillaEdit, markerNumber: miqt_intptr_t, pixmap: cstring): void =
 
   fcScintillaEdit_markerDefinePixmap(self.h, markerNumber, pixmap)
 
-proc markerAddSet*(self: ScintillaEdit, line: miqt_intptr_t, markerSet: miqt_intptr_t): void =
+proc markerAddSet*(self: gen_ScintillaEdit_types.ScintillaEdit, line: miqt_intptr_t, markerSet: miqt_intptr_t): void =
 
   fcScintillaEdit_markerAddSet(self.h, line, markerSet)
 
-proc markerSetAlpha*(self: ScintillaEdit, markerNumber: miqt_intptr_t, alpha: miqt_intptr_t): void =
+proc markerSetAlpha*(self: gen_ScintillaEdit_types.ScintillaEdit, markerNumber: miqt_intptr_t, alpha: miqt_intptr_t): void =
 
   fcScintillaEdit_markerSetAlpha(self.h, markerNumber, alpha)
 
-proc markerLayer*(self: ScintillaEdit, markerNumber: miqt_intptr_t): miqt_intptr_t =
+proc markerLayer*(self: gen_ScintillaEdit_types.ScintillaEdit, markerNumber: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_markerLayer(self.h, markerNumber)
 
-proc markerSetLayer*(self: ScintillaEdit, markerNumber: miqt_intptr_t, layer: miqt_intptr_t): void =
+proc markerSetLayer*(self: gen_ScintillaEdit_types.ScintillaEdit, markerNumber: miqt_intptr_t, layer: miqt_intptr_t): void =
 
   fcScintillaEdit_markerSetLayer(self.h, markerNumber, layer)
 
-proc setMarginTypeN*(self: ScintillaEdit, margin: miqt_intptr_t, marginType: miqt_intptr_t): void =
+proc setMarginTypeN*(self: gen_ScintillaEdit_types.ScintillaEdit, margin: miqt_intptr_t, marginType: miqt_intptr_t): void =
 
   fcScintillaEdit_setMarginTypeN(self.h, margin, marginType)
 
-proc marginTypeN*(self: ScintillaEdit, margin: miqt_intptr_t): miqt_intptr_t =
+proc marginTypeN*(self: gen_ScintillaEdit_types.ScintillaEdit, margin: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_marginTypeN(self.h, margin)
 
-proc setMarginWidthN*(self: ScintillaEdit, margin: miqt_intptr_t, pixelWidth: miqt_intptr_t): void =
+proc setMarginWidthN*(self: gen_ScintillaEdit_types.ScintillaEdit, margin: miqt_intptr_t, pixelWidth: miqt_intptr_t): void =
 
   fcScintillaEdit_setMarginWidthN(self.h, margin, pixelWidth)
 
-proc marginWidthN*(self: ScintillaEdit, margin: miqt_intptr_t): miqt_intptr_t =
+proc marginWidthN*(self: gen_ScintillaEdit_types.ScintillaEdit, margin: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_marginWidthN(self.h, margin)
 
-proc setMarginMaskN*(self: ScintillaEdit, margin: miqt_intptr_t, mask: miqt_intptr_t): void =
+proc setMarginMaskN*(self: gen_ScintillaEdit_types.ScintillaEdit, margin: miqt_intptr_t, mask: miqt_intptr_t): void =
 
   fcScintillaEdit_setMarginMaskN(self.h, margin, mask)
 
-proc marginMaskN*(self: ScintillaEdit, margin: miqt_intptr_t): miqt_intptr_t =
+proc marginMaskN*(self: gen_ScintillaEdit_types.ScintillaEdit, margin: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_marginMaskN(self.h, margin)
 
-proc setMarginSensitiveN*(self: ScintillaEdit, margin: miqt_intptr_t, sensitive: bool): void =
+proc setMarginSensitiveN*(self: gen_ScintillaEdit_types.ScintillaEdit, margin: miqt_intptr_t, sensitive: bool): void =
 
   fcScintillaEdit_setMarginSensitiveN(self.h, margin, sensitive)
 
-proc marginSensitiveN*(self: ScintillaEdit, margin: miqt_intptr_t): bool =
+proc marginSensitiveN*(self: gen_ScintillaEdit_types.ScintillaEdit, margin: miqt_intptr_t): bool =
 
   fcScintillaEdit_marginSensitiveN(self.h, margin)
 
-proc setMarginCursorN*(self: ScintillaEdit, margin: miqt_intptr_t, cursor: miqt_intptr_t): void =
+proc setMarginCursorN*(self: gen_ScintillaEdit_types.ScintillaEdit, margin: miqt_intptr_t, cursor: miqt_intptr_t): void =
 
   fcScintillaEdit_setMarginCursorN(self.h, margin, cursor)
 
-proc marginCursorN*(self: ScintillaEdit, margin: miqt_intptr_t): miqt_intptr_t =
+proc marginCursorN*(self: gen_ScintillaEdit_types.ScintillaEdit, margin: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_marginCursorN(self.h, margin)
 
-proc setMarginBackN*(self: ScintillaEdit, margin: miqt_intptr_t, back: miqt_intptr_t): void =
+proc setMarginBackN*(self: gen_ScintillaEdit_types.ScintillaEdit, margin: miqt_intptr_t, back: miqt_intptr_t): void =
 
   fcScintillaEdit_setMarginBackN(self.h, margin, back)
 
-proc marginBackN*(self: ScintillaEdit, margin: miqt_intptr_t): miqt_intptr_t =
+proc marginBackN*(self: gen_ScintillaEdit_types.ScintillaEdit, margin: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_marginBackN(self.h, margin)
 
-proc setMargins*(self: ScintillaEdit, margins: miqt_intptr_t): void =
+proc setMargins*(self: gen_ScintillaEdit_types.ScintillaEdit, margins: miqt_intptr_t): void =
 
   fcScintillaEdit_setMargins(self.h, margins)
 
-proc margins*(self: ScintillaEdit, ): miqt_intptr_t =
+proc margins*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_margins(self.h)
 
-proc styleClearAll*(self: ScintillaEdit, ): void =
+proc styleClearAll*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_styleClearAll(self.h)
 
-proc styleSetFore*(self: ScintillaEdit, style: miqt_intptr_t, fore: miqt_intptr_t): void =
+proc styleSetFore*(self: gen_ScintillaEdit_types.ScintillaEdit, style: miqt_intptr_t, fore: miqt_intptr_t): void =
 
   fcScintillaEdit_styleSetFore(self.h, style, fore)
 
-proc styleSetBack*(self: ScintillaEdit, style: miqt_intptr_t, back: miqt_intptr_t): void =
+proc styleSetBack*(self: gen_ScintillaEdit_types.ScintillaEdit, style: miqt_intptr_t, back: miqt_intptr_t): void =
 
   fcScintillaEdit_styleSetBack(self.h, style, back)
 
-proc styleSetBold*(self: ScintillaEdit, style: miqt_intptr_t, bold: bool): void =
+proc styleSetBold*(self: gen_ScintillaEdit_types.ScintillaEdit, style: miqt_intptr_t, bold: bool): void =
 
   fcScintillaEdit_styleSetBold(self.h, style, bold)
 
-proc styleSetItalic*(self: ScintillaEdit, style: miqt_intptr_t, italic: bool): void =
+proc styleSetItalic*(self: gen_ScintillaEdit_types.ScintillaEdit, style: miqt_intptr_t, italic: bool): void =
 
   fcScintillaEdit_styleSetItalic(self.h, style, italic)
 
-proc styleSetSize*(self: ScintillaEdit, style: miqt_intptr_t, sizePoints: miqt_intptr_t): void =
+proc styleSetSize*(self: gen_ScintillaEdit_types.ScintillaEdit, style: miqt_intptr_t, sizePoints: miqt_intptr_t): void =
 
   fcScintillaEdit_styleSetSize(self.h, style, sizePoints)
 
-proc styleSetFont*(self: ScintillaEdit, style: miqt_intptr_t, fontName: cstring): void =
+proc styleSetFont*(self: gen_ScintillaEdit_types.ScintillaEdit, style: miqt_intptr_t, fontName: cstring): void =
 
   fcScintillaEdit_styleSetFont(self.h, style, fontName)
 
-proc styleSetEOLFilled*(self: ScintillaEdit, style: miqt_intptr_t, eolFilled: bool): void =
+proc styleSetEOLFilled*(self: gen_ScintillaEdit_types.ScintillaEdit, style: miqt_intptr_t, eolFilled: bool): void =
 
   fcScintillaEdit_styleSetEOLFilled(self.h, style, eolFilled)
 
-proc styleResetDefault*(self: ScintillaEdit, ): void =
+proc styleResetDefault*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_styleResetDefault(self.h)
 
-proc styleSetUnderline*(self: ScintillaEdit, style: miqt_intptr_t, underline: bool): void =
+proc styleSetUnderline*(self: gen_ScintillaEdit_types.ScintillaEdit, style: miqt_intptr_t, underline: bool): void =
 
   fcScintillaEdit_styleSetUnderline(self.h, style, underline)
 
-proc styleFore*(self: ScintillaEdit, style: miqt_intptr_t): miqt_intptr_t =
+proc styleFore*(self: gen_ScintillaEdit_types.ScintillaEdit, style: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_styleFore(self.h, style)
 
-proc styleBack*(self: ScintillaEdit, style: miqt_intptr_t): miqt_intptr_t =
+proc styleBack*(self: gen_ScintillaEdit_types.ScintillaEdit, style: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_styleBack(self.h, style)
 
-proc styleBold*(self: ScintillaEdit, style: miqt_intptr_t): bool =
+proc styleBold*(self: gen_ScintillaEdit_types.ScintillaEdit, style: miqt_intptr_t): bool =
 
   fcScintillaEdit_styleBold(self.h, style)
 
-proc styleItalic*(self: ScintillaEdit, style: miqt_intptr_t): bool =
+proc styleItalic*(self: gen_ScintillaEdit_types.ScintillaEdit, style: miqt_intptr_t): bool =
 
   fcScintillaEdit_styleItalic(self.h, style)
 
-proc styleSize*(self: ScintillaEdit, style: miqt_intptr_t): miqt_intptr_t =
+proc styleSize*(self: gen_ScintillaEdit_types.ScintillaEdit, style: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_styleSize(self.h, style)
 
-proc styleFont*(self: ScintillaEdit, style: miqt_intptr_t): seq[byte] =
+proc styleFont*(self: gen_ScintillaEdit_types.ScintillaEdit, style: miqt_intptr_t): seq[byte] =
 
   var v_bytearray = fcScintillaEdit_styleFont(self.h, style)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc styleEOLFilled*(self: ScintillaEdit, style: miqt_intptr_t): bool =
+proc styleEOLFilled*(self: gen_ScintillaEdit_types.ScintillaEdit, style: miqt_intptr_t): bool =
 
   fcScintillaEdit_styleEOLFilled(self.h, style)
 
-proc styleUnderline*(self: ScintillaEdit, style: miqt_intptr_t): bool =
+proc styleUnderline*(self: gen_ScintillaEdit_types.ScintillaEdit, style: miqt_intptr_t): bool =
 
   fcScintillaEdit_styleUnderline(self.h, style)
 
-proc styleCase*(self: ScintillaEdit, style: miqt_intptr_t): miqt_intptr_t =
+proc styleCase*(self: gen_ScintillaEdit_types.ScintillaEdit, style: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_styleCase(self.h, style)
 
-proc styleCharacterSet*(self: ScintillaEdit, style: miqt_intptr_t): miqt_intptr_t =
+proc styleCharacterSet*(self: gen_ScintillaEdit_types.ScintillaEdit, style: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_styleCharacterSet(self.h, style)
 
-proc styleVisible*(self: ScintillaEdit, style: miqt_intptr_t): bool =
+proc styleVisible*(self: gen_ScintillaEdit_types.ScintillaEdit, style: miqt_intptr_t): bool =
 
   fcScintillaEdit_styleVisible(self.h, style)
 
-proc styleChangeable*(self: ScintillaEdit, style: miqt_intptr_t): bool =
+proc styleChangeable*(self: gen_ScintillaEdit_types.ScintillaEdit, style: miqt_intptr_t): bool =
 
   fcScintillaEdit_styleChangeable(self.h, style)
 
-proc styleHotSpot*(self: ScintillaEdit, style: miqt_intptr_t): bool =
+proc styleHotSpot*(self: gen_ScintillaEdit_types.ScintillaEdit, style: miqt_intptr_t): bool =
 
   fcScintillaEdit_styleHotSpot(self.h, style)
 
-proc styleSetCase*(self: ScintillaEdit, style: miqt_intptr_t, caseVisible: miqt_intptr_t): void =
+proc styleSetCase*(self: gen_ScintillaEdit_types.ScintillaEdit, style: miqt_intptr_t, caseVisible: miqt_intptr_t): void =
 
   fcScintillaEdit_styleSetCase(self.h, style, caseVisible)
 
-proc styleSetSizeFractional*(self: ScintillaEdit, style: miqt_intptr_t, sizeHundredthPoints: miqt_intptr_t): void =
+proc styleSetSizeFractional*(self: gen_ScintillaEdit_types.ScintillaEdit, style: miqt_intptr_t, sizeHundredthPoints: miqt_intptr_t): void =
 
   fcScintillaEdit_styleSetSizeFractional(self.h, style, sizeHundredthPoints)
 
-proc styleSizeFractional*(self: ScintillaEdit, style: miqt_intptr_t): miqt_intptr_t =
+proc styleSizeFractional*(self: gen_ScintillaEdit_types.ScintillaEdit, style: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_styleSizeFractional(self.h, style)
 
-proc styleSetWeight*(self: ScintillaEdit, style: miqt_intptr_t, weight: miqt_intptr_t): void =
+proc styleSetWeight*(self: gen_ScintillaEdit_types.ScintillaEdit, style: miqt_intptr_t, weight: miqt_intptr_t): void =
 
   fcScintillaEdit_styleSetWeight(self.h, style, weight)
 
-proc styleWeight*(self: ScintillaEdit, style: miqt_intptr_t): miqt_intptr_t =
+proc styleWeight*(self: gen_ScintillaEdit_types.ScintillaEdit, style: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_styleWeight(self.h, style)
 
-proc styleSetCharacterSet*(self: ScintillaEdit, style: miqt_intptr_t, characterSet: miqt_intptr_t): void =
+proc styleSetCharacterSet*(self: gen_ScintillaEdit_types.ScintillaEdit, style: miqt_intptr_t, characterSet: miqt_intptr_t): void =
 
   fcScintillaEdit_styleSetCharacterSet(self.h, style, characterSet)
 
-proc styleSetHotSpot*(self: ScintillaEdit, style: miqt_intptr_t, hotspot: bool): void =
+proc styleSetHotSpot*(self: gen_ScintillaEdit_types.ScintillaEdit, style: miqt_intptr_t, hotspot: bool): void =
 
   fcScintillaEdit_styleSetHotSpot(self.h, style, hotspot)
 
-proc styleSetCheckMonospaced*(self: ScintillaEdit, style: miqt_intptr_t, checkMonospaced: bool): void =
+proc styleSetCheckMonospaced*(self: gen_ScintillaEdit_types.ScintillaEdit, style: miqt_intptr_t, checkMonospaced: bool): void =
 
   fcScintillaEdit_styleSetCheckMonospaced(self.h, style, checkMonospaced)
 
-proc styleCheckMonospaced*(self: ScintillaEdit, style: miqt_intptr_t): bool =
+proc styleCheckMonospaced*(self: gen_ScintillaEdit_types.ScintillaEdit, style: miqt_intptr_t): bool =
 
   fcScintillaEdit_styleCheckMonospaced(self.h, style)
 
-proc styleSetStretch*(self: ScintillaEdit, style: miqt_intptr_t, stretch: miqt_intptr_t): void =
+proc styleSetStretch*(self: gen_ScintillaEdit_types.ScintillaEdit, style: miqt_intptr_t, stretch: miqt_intptr_t): void =
 
   fcScintillaEdit_styleSetStretch(self.h, style, stretch)
 
-proc styleStretch*(self: ScintillaEdit, style: miqt_intptr_t): miqt_intptr_t =
+proc styleStretch*(self: gen_ScintillaEdit_types.ScintillaEdit, style: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_styleStretch(self.h, style)
 
-proc styleSetInvisibleRepresentation*(self: ScintillaEdit, style: miqt_intptr_t, representation: cstring): void =
+proc styleSetInvisibleRepresentation*(self: gen_ScintillaEdit_types.ScintillaEdit, style: miqt_intptr_t, representation: cstring): void =
 
   fcScintillaEdit_styleSetInvisibleRepresentation(self.h, style, representation)
 
-proc styleInvisibleRepresentation*(self: ScintillaEdit, style: miqt_intptr_t): seq[byte] =
+proc styleInvisibleRepresentation*(self: gen_ScintillaEdit_types.ScintillaEdit, style: miqt_intptr_t): seq[byte] =
 
   var v_bytearray = fcScintillaEdit_styleInvisibleRepresentation(self.h, style)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc setElementColour*(self: ScintillaEdit, element: miqt_intptr_t, colourElement: miqt_intptr_t): void =
+proc setElementColour*(self: gen_ScintillaEdit_types.ScintillaEdit, element: miqt_intptr_t, colourElement: miqt_intptr_t): void =
 
   fcScintillaEdit_setElementColour(self.h, element, colourElement)
 
-proc elementColour*(self: ScintillaEdit, element: miqt_intptr_t): miqt_intptr_t =
+proc elementColour*(self: gen_ScintillaEdit_types.ScintillaEdit, element: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_elementColour(self.h, element)
 
-proc resetElementColour*(self: ScintillaEdit, element: miqt_intptr_t): void =
+proc resetElementColour*(self: gen_ScintillaEdit_types.ScintillaEdit, element: miqt_intptr_t): void =
 
   fcScintillaEdit_resetElementColour(self.h, element)
 
-proc elementIsSet*(self: ScintillaEdit, element: miqt_intptr_t): bool =
+proc elementIsSet*(self: gen_ScintillaEdit_types.ScintillaEdit, element: miqt_intptr_t): bool =
 
   fcScintillaEdit_elementIsSet(self.h, element)
 
-proc elementAllowsTranslucent*(self: ScintillaEdit, element: miqt_intptr_t): bool =
+proc elementAllowsTranslucent*(self: gen_ScintillaEdit_types.ScintillaEdit, element: miqt_intptr_t): bool =
 
   fcScintillaEdit_elementAllowsTranslucent(self.h, element)
 
-proc elementBaseColour*(self: ScintillaEdit, element: miqt_intptr_t): miqt_intptr_t =
+proc elementBaseColour*(self: gen_ScintillaEdit_types.ScintillaEdit, element: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_elementBaseColour(self.h, element)
 
-proc setSelFore*(self: ScintillaEdit, useSetting: bool, fore: miqt_intptr_t): void =
+proc setSelFore*(self: gen_ScintillaEdit_types.ScintillaEdit, useSetting: bool, fore: miqt_intptr_t): void =
 
   fcScintillaEdit_setSelFore(self.h, useSetting, fore)
 
-proc setSelBack*(self: ScintillaEdit, useSetting: bool, back: miqt_intptr_t): void =
+proc setSelBack*(self: gen_ScintillaEdit_types.ScintillaEdit, useSetting: bool, back: miqt_intptr_t): void =
 
   fcScintillaEdit_setSelBack(self.h, useSetting, back)
 
-proc selAlpha*(self: ScintillaEdit, ): miqt_intptr_t =
+proc selAlpha*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_selAlpha(self.h)
 
-proc setSelAlpha*(self: ScintillaEdit, alpha: miqt_intptr_t): void =
+proc setSelAlpha*(self: gen_ScintillaEdit_types.ScintillaEdit, alpha: miqt_intptr_t): void =
 
   fcScintillaEdit_setSelAlpha(self.h, alpha)
 
-proc selEOLFilled*(self: ScintillaEdit, ): bool =
+proc selEOLFilled*(self: gen_ScintillaEdit_types.ScintillaEdit, ): bool =
 
   fcScintillaEdit_selEOLFilled(self.h)
 
-proc setSelEOLFilled*(self: ScintillaEdit, filled: bool): void =
+proc setSelEOLFilled*(self: gen_ScintillaEdit_types.ScintillaEdit, filled: bool): void =
 
   fcScintillaEdit_setSelEOLFilled(self.h, filled)
 
-proc selectionLayer*(self: ScintillaEdit, ): miqt_intptr_t =
+proc selectionLayer*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_selectionLayer(self.h)
 
-proc setSelectionLayer*(self: ScintillaEdit, layer: miqt_intptr_t): void =
+proc setSelectionLayer*(self: gen_ScintillaEdit_types.ScintillaEdit, layer: miqt_intptr_t): void =
 
   fcScintillaEdit_setSelectionLayer(self.h, layer)
 
-proc caretLineLayer*(self: ScintillaEdit, ): miqt_intptr_t =
+proc caretLineLayer*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_caretLineLayer(self.h)
 
-proc setCaretLineLayer*(self: ScintillaEdit, layer: miqt_intptr_t): void =
+proc setCaretLineLayer*(self: gen_ScintillaEdit_types.ScintillaEdit, layer: miqt_intptr_t): void =
 
   fcScintillaEdit_setCaretLineLayer(self.h, layer)
 
-proc caretLineHighlightSubLine*(self: ScintillaEdit, ): bool =
+proc caretLineHighlightSubLine*(self: gen_ScintillaEdit_types.ScintillaEdit, ): bool =
 
   fcScintillaEdit_caretLineHighlightSubLine(self.h)
 
-proc setCaretLineHighlightSubLine*(self: ScintillaEdit, subLine: bool): void =
+proc setCaretLineHighlightSubLine*(self: gen_ScintillaEdit_types.ScintillaEdit, subLine: bool): void =
 
   fcScintillaEdit_setCaretLineHighlightSubLine(self.h, subLine)
 
-proc setCaretFore*(self: ScintillaEdit, fore: miqt_intptr_t): void =
+proc setCaretFore*(self: gen_ScintillaEdit_types.ScintillaEdit, fore: miqt_intptr_t): void =
 
   fcScintillaEdit_setCaretFore(self.h, fore)
 
-proc assignCmdKey*(self: ScintillaEdit, keyDefinition: miqt_intptr_t, sciCommand: miqt_intptr_t): void =
+proc assignCmdKey*(self: gen_ScintillaEdit_types.ScintillaEdit, keyDefinition: miqt_intptr_t, sciCommand: miqt_intptr_t): void =
 
   fcScintillaEdit_assignCmdKey(self.h, keyDefinition, sciCommand)
 
-proc clearCmdKey*(self: ScintillaEdit, keyDefinition: miqt_intptr_t): void =
+proc clearCmdKey*(self: gen_ScintillaEdit_types.ScintillaEdit, keyDefinition: miqt_intptr_t): void =
 
   fcScintillaEdit_clearCmdKey(self.h, keyDefinition)
 
-proc clearAllCmdKeys*(self: ScintillaEdit, ): void =
+proc clearAllCmdKeys*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_clearAllCmdKeys(self.h)
 
-proc setStylingEx*(self: ScintillaEdit, length: miqt_intptr_t, styles: cstring): void =
+proc setStylingEx*(self: gen_ScintillaEdit_types.ScintillaEdit, length: miqt_intptr_t, styles: cstring): void =
 
   fcScintillaEdit_setStylingEx(self.h, length, styles)
 
-proc styleSetVisible*(self: ScintillaEdit, style: miqt_intptr_t, visible: bool): void =
+proc styleSetVisible*(self: gen_ScintillaEdit_types.ScintillaEdit, style: miqt_intptr_t, visible: bool): void =
 
   fcScintillaEdit_styleSetVisible(self.h, style, visible)
 
-proc caretPeriod*(self: ScintillaEdit, ): miqt_intptr_t =
+proc caretPeriod*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_caretPeriod(self.h)
 
-proc setCaretPeriod*(self: ScintillaEdit, periodMilliseconds: miqt_intptr_t): void =
+proc setCaretPeriod*(self: gen_ScintillaEdit_types.ScintillaEdit, periodMilliseconds: miqt_intptr_t): void =
 
   fcScintillaEdit_setCaretPeriod(self.h, periodMilliseconds)
 
-proc setWordChars*(self: ScintillaEdit, characters: cstring): void =
+proc setWordChars*(self: gen_ScintillaEdit_types.ScintillaEdit, characters: cstring): void =
 
   fcScintillaEdit_setWordChars(self.h, characters)
 
-proc wordChars*(self: ScintillaEdit, ): seq[byte] =
+proc wordChars*(self: gen_ScintillaEdit_types.ScintillaEdit, ): seq[byte] =
 
   var v_bytearray = fcScintillaEdit_wordChars(self.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc setCharacterCategoryOptimization*(self: ScintillaEdit, countCharacters: miqt_intptr_t): void =
+proc setCharacterCategoryOptimization*(self: gen_ScintillaEdit_types.ScintillaEdit, countCharacters: miqt_intptr_t): void =
 
   fcScintillaEdit_setCharacterCategoryOptimization(self.h, countCharacters)
 
-proc characterCategoryOptimization*(self: ScintillaEdit, ): miqt_intptr_t =
+proc characterCategoryOptimization*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_characterCategoryOptimization(self.h)
 
-proc beginUndoAction*(self: ScintillaEdit, ): void =
+proc beginUndoAction*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_beginUndoAction(self.h)
 
-proc endUndoAction*(self: ScintillaEdit, ): void =
+proc endUndoAction*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_endUndoAction(self.h)
 
-proc undoSequence*(self: ScintillaEdit, ): miqt_intptr_t =
+proc undoSequence*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_undoSequence(self.h)
 
-proc undoActions*(self: ScintillaEdit, ): miqt_intptr_t =
+proc undoActions*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_undoActions(self.h)
 
-proc setUndoSavePoint*(self: ScintillaEdit, action: miqt_intptr_t): void =
+proc setUndoSavePoint*(self: gen_ScintillaEdit_types.ScintillaEdit, action: miqt_intptr_t): void =
 
   fcScintillaEdit_setUndoSavePoint(self.h, action)
 
-proc undoSavePoint*(self: ScintillaEdit, ): miqt_intptr_t =
+proc undoSavePoint*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_undoSavePoint(self.h)
 
-proc setUndoDetach*(self: ScintillaEdit, action: miqt_intptr_t): void =
+proc setUndoDetach*(self: gen_ScintillaEdit_types.ScintillaEdit, action: miqt_intptr_t): void =
 
   fcScintillaEdit_setUndoDetach(self.h, action)
 
-proc undoDetach*(self: ScintillaEdit, ): miqt_intptr_t =
+proc undoDetach*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_undoDetach(self.h)
 
-proc setUndoTentative*(self: ScintillaEdit, action: miqt_intptr_t): void =
+proc setUndoTentative*(self: gen_ScintillaEdit_types.ScintillaEdit, action: miqt_intptr_t): void =
 
   fcScintillaEdit_setUndoTentative(self.h, action)
 
-proc undoTentative*(self: ScintillaEdit, ): miqt_intptr_t =
+proc undoTentative*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_undoTentative(self.h)
 
-proc setUndoCurrent*(self: ScintillaEdit, action: miqt_intptr_t): void =
+proc setUndoCurrent*(self: gen_ScintillaEdit_types.ScintillaEdit, action: miqt_intptr_t): void =
 
   fcScintillaEdit_setUndoCurrent(self.h, action)
 
-proc undoCurrent*(self: ScintillaEdit, ): miqt_intptr_t =
+proc undoCurrent*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_undoCurrent(self.h)
 
-proc pushUndoActionType*(self: ScintillaEdit, typeVal: miqt_intptr_t, pos: miqt_intptr_t): void =
+proc pushUndoActionType*(self: gen_ScintillaEdit_types.ScintillaEdit, typeVal: miqt_intptr_t, pos: miqt_intptr_t): void =
 
   fcScintillaEdit_pushUndoActionType(self.h, typeVal, pos)
 
-proc changeLastUndoActionText*(self: ScintillaEdit, length: miqt_intptr_t, text: cstring): void =
+proc changeLastUndoActionText*(self: gen_ScintillaEdit_types.ScintillaEdit, length: miqt_intptr_t, text: cstring): void =
 
   fcScintillaEdit_changeLastUndoActionText(self.h, length, text)
 
-proc undoActionType*(self: ScintillaEdit, action: miqt_intptr_t): miqt_intptr_t =
+proc undoActionType*(self: gen_ScintillaEdit_types.ScintillaEdit, action: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_undoActionType(self.h, action)
 
-proc undoActionPosition*(self: ScintillaEdit, action: miqt_intptr_t): miqt_intptr_t =
+proc undoActionPosition*(self: gen_ScintillaEdit_types.ScintillaEdit, action: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_undoActionPosition(self.h, action)
 
-proc undoActionText*(self: ScintillaEdit, action: miqt_intptr_t): seq[byte] =
+proc undoActionText*(self: gen_ScintillaEdit_types.ScintillaEdit, action: miqt_intptr_t): seq[byte] =
 
   var v_bytearray = fcScintillaEdit_undoActionText(self.h, action)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc indicSetStyle*(self: ScintillaEdit, indicator: miqt_intptr_t, indicatorStyle: miqt_intptr_t): void =
+proc indicSetStyle*(self: gen_ScintillaEdit_types.ScintillaEdit, indicator: miqt_intptr_t, indicatorStyle: miqt_intptr_t): void =
 
   fcScintillaEdit_indicSetStyle(self.h, indicator, indicatorStyle)
 
-proc indicStyle*(self: ScintillaEdit, indicator: miqt_intptr_t): miqt_intptr_t =
+proc indicStyle*(self: gen_ScintillaEdit_types.ScintillaEdit, indicator: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_indicStyle(self.h, indicator)
 
-proc indicSetFore*(self: ScintillaEdit, indicator: miqt_intptr_t, fore: miqt_intptr_t): void =
+proc indicSetFore*(self: gen_ScintillaEdit_types.ScintillaEdit, indicator: miqt_intptr_t, fore: miqt_intptr_t): void =
 
   fcScintillaEdit_indicSetFore(self.h, indicator, fore)
 
-proc indicFore*(self: ScintillaEdit, indicator: miqt_intptr_t): miqt_intptr_t =
+proc indicFore*(self: gen_ScintillaEdit_types.ScintillaEdit, indicator: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_indicFore(self.h, indicator)
 
-proc indicSetUnder*(self: ScintillaEdit, indicator: miqt_intptr_t, under: bool): void =
+proc indicSetUnder*(self: gen_ScintillaEdit_types.ScintillaEdit, indicator: miqt_intptr_t, under: bool): void =
 
   fcScintillaEdit_indicSetUnder(self.h, indicator, under)
 
-proc indicUnder*(self: ScintillaEdit, indicator: miqt_intptr_t): bool =
+proc indicUnder*(self: gen_ScintillaEdit_types.ScintillaEdit, indicator: miqt_intptr_t): bool =
 
   fcScintillaEdit_indicUnder(self.h, indicator)
 
-proc indicSetHoverStyle*(self: ScintillaEdit, indicator: miqt_intptr_t, indicatorStyle: miqt_intptr_t): void =
+proc indicSetHoverStyle*(self: gen_ScintillaEdit_types.ScintillaEdit, indicator: miqt_intptr_t, indicatorStyle: miqt_intptr_t): void =
 
   fcScintillaEdit_indicSetHoverStyle(self.h, indicator, indicatorStyle)
 
-proc indicHoverStyle*(self: ScintillaEdit, indicator: miqt_intptr_t): miqt_intptr_t =
+proc indicHoverStyle*(self: gen_ScintillaEdit_types.ScintillaEdit, indicator: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_indicHoverStyle(self.h, indicator)
 
-proc indicSetHoverFore*(self: ScintillaEdit, indicator: miqt_intptr_t, fore: miqt_intptr_t): void =
+proc indicSetHoverFore*(self: gen_ScintillaEdit_types.ScintillaEdit, indicator: miqt_intptr_t, fore: miqt_intptr_t): void =
 
   fcScintillaEdit_indicSetHoverFore(self.h, indicator, fore)
 
-proc indicHoverFore*(self: ScintillaEdit, indicator: miqt_intptr_t): miqt_intptr_t =
+proc indicHoverFore*(self: gen_ScintillaEdit_types.ScintillaEdit, indicator: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_indicHoverFore(self.h, indicator)
 
-proc indicSetFlags*(self: ScintillaEdit, indicator: miqt_intptr_t, flags: miqt_intptr_t): void =
+proc indicSetFlags*(self: gen_ScintillaEdit_types.ScintillaEdit, indicator: miqt_intptr_t, flags: miqt_intptr_t): void =
 
   fcScintillaEdit_indicSetFlags(self.h, indicator, flags)
 
-proc indicFlags*(self: ScintillaEdit, indicator: miqt_intptr_t): miqt_intptr_t =
+proc indicFlags*(self: gen_ScintillaEdit_types.ScintillaEdit, indicator: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_indicFlags(self.h, indicator)
 
-proc indicSetStrokeWidth*(self: ScintillaEdit, indicator: miqt_intptr_t, hundredths: miqt_intptr_t): void =
+proc indicSetStrokeWidth*(self: gen_ScintillaEdit_types.ScintillaEdit, indicator: miqt_intptr_t, hundredths: miqt_intptr_t): void =
 
   fcScintillaEdit_indicSetStrokeWidth(self.h, indicator, hundredths)
 
-proc indicStrokeWidth*(self: ScintillaEdit, indicator: miqt_intptr_t): miqt_intptr_t =
+proc indicStrokeWidth*(self: gen_ScintillaEdit_types.ScintillaEdit, indicator: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_indicStrokeWidth(self.h, indicator)
 
-proc setWhitespaceFore*(self: ScintillaEdit, useSetting: bool, fore: miqt_intptr_t): void =
+proc setWhitespaceFore*(self: gen_ScintillaEdit_types.ScintillaEdit, useSetting: bool, fore: miqt_intptr_t): void =
 
   fcScintillaEdit_setWhitespaceFore(self.h, useSetting, fore)
 
-proc setWhitespaceBack*(self: ScintillaEdit, useSetting: bool, back: miqt_intptr_t): void =
+proc setWhitespaceBack*(self: gen_ScintillaEdit_types.ScintillaEdit, useSetting: bool, back: miqt_intptr_t): void =
 
   fcScintillaEdit_setWhitespaceBack(self.h, useSetting, back)
 
-proc setWhitespaceSize*(self: ScintillaEdit, size: miqt_intptr_t): void =
+proc setWhitespaceSize*(self: gen_ScintillaEdit_types.ScintillaEdit, size: miqt_intptr_t): void =
 
   fcScintillaEdit_setWhitespaceSize(self.h, size)
 
-proc whitespaceSize*(self: ScintillaEdit, ): miqt_intptr_t =
+proc whitespaceSize*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_whitespaceSize(self.h)
 
-proc setLineState*(self: ScintillaEdit, line: miqt_intptr_t, state: miqt_intptr_t): void =
+proc setLineState*(self: gen_ScintillaEdit_types.ScintillaEdit, line: miqt_intptr_t, state: miqt_intptr_t): void =
 
   fcScintillaEdit_setLineState(self.h, line, state)
 
-proc lineState*(self: ScintillaEdit, line: miqt_intptr_t): miqt_intptr_t =
+proc lineState*(self: gen_ScintillaEdit_types.ScintillaEdit, line: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_lineState(self.h, line)
 
-proc maxLineState*(self: ScintillaEdit, ): miqt_intptr_t =
+proc maxLineState*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_maxLineState(self.h)
 
-proc caretLineVisible*(self: ScintillaEdit, ): bool =
+proc caretLineVisible*(self: gen_ScintillaEdit_types.ScintillaEdit, ): bool =
 
   fcScintillaEdit_caretLineVisible(self.h)
 
-proc setCaretLineVisible*(self: ScintillaEdit, show: bool): void =
+proc setCaretLineVisible*(self: gen_ScintillaEdit_types.ScintillaEdit, show: bool): void =
 
   fcScintillaEdit_setCaretLineVisible(self.h, show)
 
-proc caretLineBack*(self: ScintillaEdit, ): miqt_intptr_t =
+proc caretLineBack*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_caretLineBack(self.h)
 
-proc setCaretLineBack*(self: ScintillaEdit, back: miqt_intptr_t): void =
+proc setCaretLineBack*(self: gen_ScintillaEdit_types.ScintillaEdit, back: miqt_intptr_t): void =
 
   fcScintillaEdit_setCaretLineBack(self.h, back)
 
-proc caretLineFrame*(self: ScintillaEdit, ): miqt_intptr_t =
+proc caretLineFrame*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_caretLineFrame(self.h)
 
-proc setCaretLineFrame*(self: ScintillaEdit, width: miqt_intptr_t): void =
+proc setCaretLineFrame*(self: gen_ScintillaEdit_types.ScintillaEdit, width: miqt_intptr_t): void =
 
   fcScintillaEdit_setCaretLineFrame(self.h, width)
 
-proc styleSetChangeable*(self: ScintillaEdit, style: miqt_intptr_t, changeable: bool): void =
+proc styleSetChangeable*(self: gen_ScintillaEdit_types.ScintillaEdit, style: miqt_intptr_t, changeable: bool): void =
 
   fcScintillaEdit_styleSetChangeable(self.h, style, changeable)
 
-proc autoCShow*(self: ScintillaEdit, lengthEntered: miqt_intptr_t, itemList: cstring): void =
+proc autoCShow*(self: gen_ScintillaEdit_types.ScintillaEdit, lengthEntered: miqt_intptr_t, itemList: cstring): void =
 
   fcScintillaEdit_autoCShow(self.h, lengthEntered, itemList)
 
-proc autoCCancel*(self: ScintillaEdit, ): void =
+proc autoCCancel*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_autoCCancel(self.h)
 
-proc autoCActive*(self: ScintillaEdit, ): bool =
+proc autoCActive*(self: gen_ScintillaEdit_types.ScintillaEdit, ): bool =
 
   fcScintillaEdit_autoCActive(self.h)
 
-proc autoCPosStart*(self: ScintillaEdit, ): miqt_intptr_t =
+proc autoCPosStart*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_autoCPosStart(self.h)
 
-proc autoCComplete*(self: ScintillaEdit, ): void =
+proc autoCComplete*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_autoCComplete(self.h)
 
-proc autoCStops*(self: ScintillaEdit, characterSet: cstring): void =
+proc autoCStops*(self: gen_ScintillaEdit_types.ScintillaEdit, characterSet: cstring): void =
 
   fcScintillaEdit_autoCStops(self.h, characterSet)
 
-proc autoCSetSeparator*(self: ScintillaEdit, separatorCharacter: miqt_intptr_t): void =
+proc autoCSetSeparator*(self: gen_ScintillaEdit_types.ScintillaEdit, separatorCharacter: miqt_intptr_t): void =
 
   fcScintillaEdit_autoCSetSeparator(self.h, separatorCharacter)
 
-proc autoCSeparator*(self: ScintillaEdit, ): miqt_intptr_t =
+proc autoCSeparator*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_autoCSeparator(self.h)
 
-proc autoCSelect*(self: ScintillaEdit, select: cstring): void =
+proc autoCSelect*(self: gen_ScintillaEdit_types.ScintillaEdit, select: cstring): void =
 
   fcScintillaEdit_autoCSelect(self.h, select)
 
-proc autoCSetCancelAtStart*(self: ScintillaEdit, cancel: bool): void =
+proc autoCSetCancelAtStart*(self: gen_ScintillaEdit_types.ScintillaEdit, cancel: bool): void =
 
   fcScintillaEdit_autoCSetCancelAtStart(self.h, cancel)
 
-proc autoCCancelAtStart*(self: ScintillaEdit, ): bool =
+proc autoCCancelAtStart*(self: gen_ScintillaEdit_types.ScintillaEdit, ): bool =
 
   fcScintillaEdit_autoCCancelAtStart(self.h)
 
-proc autoCSetFillUps*(self: ScintillaEdit, characterSet: cstring): void =
+proc autoCSetFillUps*(self: gen_ScintillaEdit_types.ScintillaEdit, characterSet: cstring): void =
 
   fcScintillaEdit_autoCSetFillUps(self.h, characterSet)
 
-proc autoCSetChooseSingle*(self: ScintillaEdit, chooseSingle: bool): void =
+proc autoCSetChooseSingle*(self: gen_ScintillaEdit_types.ScintillaEdit, chooseSingle: bool): void =
 
   fcScintillaEdit_autoCSetChooseSingle(self.h, chooseSingle)
 
-proc autoCChooseSingle*(self: ScintillaEdit, ): bool =
+proc autoCChooseSingle*(self: gen_ScintillaEdit_types.ScintillaEdit, ): bool =
 
   fcScintillaEdit_autoCChooseSingle(self.h)
 
-proc autoCSetIgnoreCase*(self: ScintillaEdit, ignoreCase: bool): void =
+proc autoCSetIgnoreCase*(self: gen_ScintillaEdit_types.ScintillaEdit, ignoreCase: bool): void =
 
   fcScintillaEdit_autoCSetIgnoreCase(self.h, ignoreCase)
 
-proc autoCIgnoreCase*(self: ScintillaEdit, ): bool =
+proc autoCIgnoreCase*(self: gen_ScintillaEdit_types.ScintillaEdit, ): bool =
 
   fcScintillaEdit_autoCIgnoreCase(self.h)
 
-proc userListShow*(self: ScintillaEdit, listType: miqt_intptr_t, itemList: cstring): void =
+proc userListShow*(self: gen_ScintillaEdit_types.ScintillaEdit, listType: miqt_intptr_t, itemList: cstring): void =
 
   fcScintillaEdit_userListShow(self.h, listType, itemList)
 
-proc autoCSetAutoHide*(self: ScintillaEdit, autoHide: bool): void =
+proc autoCSetAutoHide*(self: gen_ScintillaEdit_types.ScintillaEdit, autoHide: bool): void =
 
   fcScintillaEdit_autoCSetAutoHide(self.h, autoHide)
 
-proc autoCAutoHide*(self: ScintillaEdit, ): bool =
+proc autoCAutoHide*(self: gen_ScintillaEdit_types.ScintillaEdit, ): bool =
 
   fcScintillaEdit_autoCAutoHide(self.h)
 
-proc autoCSetOptions*(self: ScintillaEdit, options: miqt_intptr_t): void =
+proc autoCSetOptions*(self: gen_ScintillaEdit_types.ScintillaEdit, options: miqt_intptr_t): void =
 
   fcScintillaEdit_autoCSetOptions(self.h, options)
 
-proc autoCOptions*(self: ScintillaEdit, ): miqt_intptr_t =
+proc autoCOptions*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_autoCOptions(self.h)
 
-proc autoCSetDropRestOfWord*(self: ScintillaEdit, dropRestOfWord: bool): void =
+proc autoCSetDropRestOfWord*(self: gen_ScintillaEdit_types.ScintillaEdit, dropRestOfWord: bool): void =
 
   fcScintillaEdit_autoCSetDropRestOfWord(self.h, dropRestOfWord)
 
-proc autoCDropRestOfWord*(self: ScintillaEdit, ): bool =
+proc autoCDropRestOfWord*(self: gen_ScintillaEdit_types.ScintillaEdit, ): bool =
 
   fcScintillaEdit_autoCDropRestOfWord(self.h)
 
-proc registerImage*(self: ScintillaEdit, typeVal: miqt_intptr_t, xpmData: cstring): void =
+proc registerImage*(self: gen_ScintillaEdit_types.ScintillaEdit, typeVal: miqt_intptr_t, xpmData: cstring): void =
 
   fcScintillaEdit_registerImage(self.h, typeVal, xpmData)
 
-proc clearRegisteredImages*(self: ScintillaEdit, ): void =
+proc clearRegisteredImages*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_clearRegisteredImages(self.h)
 
-proc autoCTypeSeparator*(self: ScintillaEdit, ): miqt_intptr_t =
+proc autoCTypeSeparator*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_autoCTypeSeparator(self.h)
 
-proc autoCSetTypeSeparator*(self: ScintillaEdit, separatorCharacter: miqt_intptr_t): void =
+proc autoCSetTypeSeparator*(self: gen_ScintillaEdit_types.ScintillaEdit, separatorCharacter: miqt_intptr_t): void =
 
   fcScintillaEdit_autoCSetTypeSeparator(self.h, separatorCharacter)
 
-proc autoCSetMaxWidth*(self: ScintillaEdit, characterCount: miqt_intptr_t): void =
+proc autoCSetMaxWidth*(self: gen_ScintillaEdit_types.ScintillaEdit, characterCount: miqt_intptr_t): void =
 
   fcScintillaEdit_autoCSetMaxWidth(self.h, characterCount)
 
-proc autoCMaxWidth*(self: ScintillaEdit, ): miqt_intptr_t =
+proc autoCMaxWidth*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_autoCMaxWidth(self.h)
 
-proc autoCSetMaxHeight*(self: ScintillaEdit, rowCount: miqt_intptr_t): void =
+proc autoCSetMaxHeight*(self: gen_ScintillaEdit_types.ScintillaEdit, rowCount: miqt_intptr_t): void =
 
   fcScintillaEdit_autoCSetMaxHeight(self.h, rowCount)
 
-proc autoCMaxHeight*(self: ScintillaEdit, ): miqt_intptr_t =
+proc autoCMaxHeight*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_autoCMaxHeight(self.h)
 
-proc autoCSetStyle*(self: ScintillaEdit, style: miqt_intptr_t): void =
+proc autoCSetStyle*(self: gen_ScintillaEdit_types.ScintillaEdit, style: miqt_intptr_t): void =
 
   fcScintillaEdit_autoCSetStyle(self.h, style)
 
-proc autoCStyle*(self: ScintillaEdit, ): miqt_intptr_t =
+proc autoCStyle*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_autoCStyle(self.h)
 
-proc setIndent*(self: ScintillaEdit, indentSize: miqt_intptr_t): void =
+proc setIndent*(self: gen_ScintillaEdit_types.ScintillaEdit, indentSize: miqt_intptr_t): void =
 
   fcScintillaEdit_setIndent(self.h, indentSize)
 
-proc indent*(self: ScintillaEdit, ): miqt_intptr_t =
+proc indent*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_indent(self.h)
 
-proc setUseTabs*(self: ScintillaEdit, useTabs: bool): void =
+proc setUseTabs*(self: gen_ScintillaEdit_types.ScintillaEdit, useTabs: bool): void =
 
   fcScintillaEdit_setUseTabs(self.h, useTabs)
 
-proc useTabs*(self: ScintillaEdit, ): bool =
+proc useTabs*(self: gen_ScintillaEdit_types.ScintillaEdit, ): bool =
 
   fcScintillaEdit_useTabs(self.h)
 
-proc setLineIndentation*(self: ScintillaEdit, line: miqt_intptr_t, indentation: miqt_intptr_t): void =
+proc setLineIndentation*(self: gen_ScintillaEdit_types.ScintillaEdit, line: miqt_intptr_t, indentation: miqt_intptr_t): void =
 
   fcScintillaEdit_setLineIndentation(self.h, line, indentation)
 
-proc lineIndentation*(self: ScintillaEdit, line: miqt_intptr_t): miqt_intptr_t =
+proc lineIndentation*(self: gen_ScintillaEdit_types.ScintillaEdit, line: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_lineIndentation(self.h, line)
 
-proc lineIndentPosition*(self: ScintillaEdit, line: miqt_intptr_t): miqt_intptr_t =
+proc lineIndentPosition*(self: gen_ScintillaEdit_types.ScintillaEdit, line: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_lineIndentPosition(self.h, line)
 
-proc column*(self: ScintillaEdit, pos: miqt_intptr_t): miqt_intptr_t =
+proc column*(self: gen_ScintillaEdit_types.ScintillaEdit, pos: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_column(self.h, pos)
 
-proc countCharacters*(self: ScintillaEdit, start: miqt_intptr_t, endVal: miqt_intptr_t): miqt_intptr_t =
+proc countCharacters*(self: gen_ScintillaEdit_types.ScintillaEdit, start: miqt_intptr_t, endVal: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_countCharacters(self.h, start, endVal)
 
-proc countCodeUnits*(self: ScintillaEdit, start: miqt_intptr_t, endVal: miqt_intptr_t): miqt_intptr_t =
+proc countCodeUnits*(self: gen_ScintillaEdit_types.ScintillaEdit, start: miqt_intptr_t, endVal: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_countCodeUnits(self.h, start, endVal)
 
-proc setHScrollBar*(self: ScintillaEdit, visible: bool): void =
+proc setHScrollBar*(self: gen_ScintillaEdit_types.ScintillaEdit, visible: bool): void =
 
   fcScintillaEdit_setHScrollBar(self.h, visible)
 
-proc hScrollBar*(self: ScintillaEdit, ): bool =
+proc hScrollBar*(self: gen_ScintillaEdit_types.ScintillaEdit, ): bool =
 
   fcScintillaEdit_hScrollBar(self.h)
 
-proc setIndentationGuides*(self: ScintillaEdit, indentView: miqt_intptr_t): void =
+proc setIndentationGuides*(self: gen_ScintillaEdit_types.ScintillaEdit, indentView: miqt_intptr_t): void =
 
   fcScintillaEdit_setIndentationGuides(self.h, indentView)
 
-proc indentationGuides*(self: ScintillaEdit, ): miqt_intptr_t =
+proc indentationGuides*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_indentationGuides(self.h)
 
-proc setHighlightGuide*(self: ScintillaEdit, column: miqt_intptr_t): void =
+proc setHighlightGuide*(self: gen_ScintillaEdit_types.ScintillaEdit, column: miqt_intptr_t): void =
 
   fcScintillaEdit_setHighlightGuide(self.h, column)
 
-proc highlightGuide*(self: ScintillaEdit, ): miqt_intptr_t =
+proc highlightGuide*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_highlightGuide(self.h)
 
-proc lineEndPosition*(self: ScintillaEdit, line: miqt_intptr_t): miqt_intptr_t =
+proc lineEndPosition*(self: gen_ScintillaEdit_types.ScintillaEdit, line: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_lineEndPosition(self.h, line)
 
-proc codePage*(self: ScintillaEdit, ): miqt_intptr_t =
+proc codePage*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_codePage(self.h)
 
-proc caretFore*(self: ScintillaEdit, ): miqt_intptr_t =
+proc caretFore*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_caretFore(self.h)
 
-proc readOnly*(self: ScintillaEdit, ): bool =
+proc readOnly*(self: gen_ScintillaEdit_types.ScintillaEdit, ): bool =
 
   fcScintillaEdit_readOnly(self.h)
 
-proc setCurrentPos*(self: ScintillaEdit, caret: miqt_intptr_t): void =
+proc setCurrentPos*(self: gen_ScintillaEdit_types.ScintillaEdit, caret: miqt_intptr_t): void =
 
   fcScintillaEdit_setCurrentPos(self.h, caret)
 
-proc setSelectionStart*(self: ScintillaEdit, anchor: miqt_intptr_t): void =
+proc setSelectionStart*(self: gen_ScintillaEdit_types.ScintillaEdit, anchor: miqt_intptr_t): void =
 
   fcScintillaEdit_setSelectionStart(self.h, anchor)
 
-proc selectionStart*(self: ScintillaEdit, ): miqt_intptr_t =
+proc selectionStart*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_selectionStart(self.h)
 
-proc setSelectionEnd*(self: ScintillaEdit, caret: miqt_intptr_t): void =
+proc setSelectionEnd*(self: gen_ScintillaEdit_types.ScintillaEdit, caret: miqt_intptr_t): void =
 
   fcScintillaEdit_setSelectionEnd(self.h, caret)
 
-proc selectionEnd*(self: ScintillaEdit, ): miqt_intptr_t =
+proc selectionEnd*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_selectionEnd(self.h)
 
-proc setEmptySelection*(self: ScintillaEdit, caret: miqt_intptr_t): void =
+proc setEmptySelection*(self: gen_ScintillaEdit_types.ScintillaEdit, caret: miqt_intptr_t): void =
 
   fcScintillaEdit_setEmptySelection(self.h, caret)
 
-proc setPrintMagnification*(self: ScintillaEdit, magnification: miqt_intptr_t): void =
+proc setPrintMagnification*(self: gen_ScintillaEdit_types.ScintillaEdit, magnification: miqt_intptr_t): void =
 
   fcScintillaEdit_setPrintMagnification(self.h, magnification)
 
-proc printMagnification*(self: ScintillaEdit, ): miqt_intptr_t =
+proc printMagnification*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_printMagnification(self.h)
 
-proc setPrintColourMode*(self: ScintillaEdit, mode: miqt_intptr_t): void =
+proc setPrintColourMode*(self: gen_ScintillaEdit_types.ScintillaEdit, mode: miqt_intptr_t): void =
 
   fcScintillaEdit_setPrintColourMode(self.h, mode)
 
-proc printColourMode*(self: ScintillaEdit, ): miqt_intptr_t =
+proc printColourMode*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_printColourMode(self.h)
 
-proc setChangeHistory*(self: ScintillaEdit, changeHistory: miqt_intptr_t): void =
+proc setChangeHistory*(self: gen_ScintillaEdit_types.ScintillaEdit, changeHistory: miqt_intptr_t): void =
 
   fcScintillaEdit_setChangeHistory(self.h, changeHistory)
 
-proc changeHistory*(self: ScintillaEdit, ): miqt_intptr_t =
+proc changeHistory*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_changeHistory(self.h)
 
-proc firstVisibleLine*(self: ScintillaEdit, ): miqt_intptr_t =
+proc firstVisibleLine*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_firstVisibleLine(self.h)
 
-proc getLine*(self: ScintillaEdit, line: miqt_intptr_t): seq[byte] =
+proc getLine*(self: gen_ScintillaEdit_types.ScintillaEdit, line: miqt_intptr_t): seq[byte] =
 
   var v_bytearray = fcScintillaEdit_getLine(self.h, line)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc lineCount*(self: ScintillaEdit, ): miqt_intptr_t =
+proc lineCount*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_lineCount(self.h)
 
-proc allocateLines*(self: ScintillaEdit, lines: miqt_intptr_t): void =
+proc allocateLines*(self: gen_ScintillaEdit_types.ScintillaEdit, lines: miqt_intptr_t): void =
 
   fcScintillaEdit_allocateLines(self.h, lines)
 
-proc setMarginLeft*(self: ScintillaEdit, pixelWidth: miqt_intptr_t): void =
+proc setMarginLeft*(self: gen_ScintillaEdit_types.ScintillaEdit, pixelWidth: miqt_intptr_t): void =
 
   fcScintillaEdit_setMarginLeft(self.h, pixelWidth)
 
-proc marginLeft*(self: ScintillaEdit, ): miqt_intptr_t =
+proc marginLeft*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_marginLeft(self.h)
 
-proc setMarginRight*(self: ScintillaEdit, pixelWidth: miqt_intptr_t): void =
+proc setMarginRight*(self: gen_ScintillaEdit_types.ScintillaEdit, pixelWidth: miqt_intptr_t): void =
 
   fcScintillaEdit_setMarginRight(self.h, pixelWidth)
 
-proc marginRight*(self: ScintillaEdit, ): miqt_intptr_t =
+proc marginRight*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_marginRight(self.h)
 
-proc modify*(self: ScintillaEdit, ): bool =
+proc modify*(self: gen_ScintillaEdit_types.ScintillaEdit, ): bool =
 
   fcScintillaEdit_modify(self.h)
 
-proc setSel*(self: ScintillaEdit, anchor: miqt_intptr_t, caret: miqt_intptr_t): void =
+proc setSel*(self: gen_ScintillaEdit_types.ScintillaEdit, anchor: miqt_intptr_t, caret: miqt_intptr_t): void =
 
   fcScintillaEdit_setSel(self.h, anchor, caret)
 
-proc getSelText*(self: ScintillaEdit, ): seq[byte] =
+proc getSelText*(self: gen_ScintillaEdit_types.ScintillaEdit, ): seq[byte] =
 
   var v_bytearray = fcScintillaEdit_getSelText(self.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc hideSelection*(self: ScintillaEdit, hide: bool): void =
+proc hideSelection*(self: gen_ScintillaEdit_types.ScintillaEdit, hide: bool): void =
 
   fcScintillaEdit_hideSelection(self.h, hide)
 
-proc selectionHidden*(self: ScintillaEdit, ): bool =
+proc selectionHidden*(self: gen_ScintillaEdit_types.ScintillaEdit, ): bool =
 
   fcScintillaEdit_selectionHidden(self.h)
 
-proc pointXFromPosition*(self: ScintillaEdit, pos: miqt_intptr_t): miqt_intptr_t =
+proc pointXFromPosition*(self: gen_ScintillaEdit_types.ScintillaEdit, pos: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_pointXFromPosition(self.h, pos)
 
-proc pointYFromPosition*(self: ScintillaEdit, pos: miqt_intptr_t): miqt_intptr_t =
+proc pointYFromPosition*(self: gen_ScintillaEdit_types.ScintillaEdit, pos: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_pointYFromPosition(self.h, pos)
 
-proc lineFromPosition*(self: ScintillaEdit, pos: miqt_intptr_t): miqt_intptr_t =
+proc lineFromPosition*(self: gen_ScintillaEdit_types.ScintillaEdit, pos: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_lineFromPosition(self.h, pos)
 
-proc positionFromLine*(self: ScintillaEdit, line: miqt_intptr_t): miqt_intptr_t =
+proc positionFromLine*(self: gen_ScintillaEdit_types.ScintillaEdit, line: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_positionFromLine(self.h, line)
 
-proc lineScroll*(self: ScintillaEdit, columns: miqt_intptr_t, lines: miqt_intptr_t): void =
+proc lineScroll*(self: gen_ScintillaEdit_types.ScintillaEdit, columns: miqt_intptr_t, lines: miqt_intptr_t): void =
 
   fcScintillaEdit_lineScroll(self.h, columns, lines)
 
-proc scrollCaret*(self: ScintillaEdit, ): void =
+proc scrollCaret*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_scrollCaret(self.h)
 
-proc scrollRange*(self: ScintillaEdit, secondary: miqt_intptr_t, primary: miqt_intptr_t): void =
+proc scrollRange*(self: gen_ScintillaEdit_types.ScintillaEdit, secondary: miqt_intptr_t, primary: miqt_intptr_t): void =
 
   fcScintillaEdit_scrollRange(self.h, secondary, primary)
 
-proc replaceSel*(self: ScintillaEdit, text: cstring): void =
+proc replaceSel*(self: gen_ScintillaEdit_types.ScintillaEdit, text: cstring): void =
 
   fcScintillaEdit_replaceSel(self.h, text)
 
-proc setReadOnly*(self: ScintillaEdit, readOnly: bool): void =
+proc setReadOnly*(self: gen_ScintillaEdit_types.ScintillaEdit, readOnly: bool): void =
 
   fcScintillaEdit_setReadOnly(self.h, readOnly)
 
-proc null*(self: ScintillaEdit, ): void =
+proc null*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_null(self.h)
 
-proc canPaste*(self: ScintillaEdit, ): bool =
+proc canPaste*(self: gen_ScintillaEdit_types.ScintillaEdit, ): bool =
 
   fcScintillaEdit_canPaste(self.h)
 
-proc canUndo*(self: ScintillaEdit, ): bool =
+proc canUndo*(self: gen_ScintillaEdit_types.ScintillaEdit, ): bool =
 
   fcScintillaEdit_canUndo(self.h)
 
-proc emptyUndoBuffer*(self: ScintillaEdit, ): void =
+proc emptyUndoBuffer*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_emptyUndoBuffer(self.h)
 
-proc undo*(self: ScintillaEdit, ): void =
+proc undo*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_undo(self.h)
 
-proc cut*(self: ScintillaEdit, ): void =
+proc cut*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_cut(self.h)
 
-proc copy*(self: ScintillaEdit, ): void =
+proc copy*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_copy(self.h)
 
-proc paste*(self: ScintillaEdit, ): void =
+proc paste*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_paste(self.h)
 
-proc clear*(self: ScintillaEdit, ): void =
+proc clear*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_clear(self.h)
 
-proc setText*(self: ScintillaEdit, text: cstring): void =
+proc setText*(self: gen_ScintillaEdit_types.ScintillaEdit, text: cstring): void =
 
   fcScintillaEdit_setText(self.h, text)
 
-proc getText*(self: ScintillaEdit, length: miqt_intptr_t): seq[byte] =
+proc getText*(self: gen_ScintillaEdit_types.ScintillaEdit, length: miqt_intptr_t): seq[byte] =
 
   var v_bytearray = fcScintillaEdit_getText(self.h, length)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc textLength*(self: ScintillaEdit, ): miqt_intptr_t =
+proc textLength*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_textLength(self.h)
 
-proc directFunction*(self: ScintillaEdit, ): miqt_intptr_t =
+proc directFunction*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_directFunction(self.h)
 
-proc directStatusFunction*(self: ScintillaEdit, ): miqt_intptr_t =
+proc directStatusFunction*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_directStatusFunction(self.h)
 
-proc directPointer*(self: ScintillaEdit, ): miqt_intptr_t =
+proc directPointer*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_directPointer(self.h)
 
-proc setOvertype*(self: ScintillaEdit, overType: bool): void =
+proc setOvertype*(self: gen_ScintillaEdit_types.ScintillaEdit, overType: bool): void =
 
   fcScintillaEdit_setOvertype(self.h, overType)
 
-proc overtype*(self: ScintillaEdit, ): bool =
+proc overtype*(self: gen_ScintillaEdit_types.ScintillaEdit, ): bool =
 
   fcScintillaEdit_overtype(self.h)
 
-proc setCaretWidth*(self: ScintillaEdit, pixelWidth: miqt_intptr_t): void =
+proc setCaretWidth*(self: gen_ScintillaEdit_types.ScintillaEdit, pixelWidth: miqt_intptr_t): void =
 
   fcScintillaEdit_setCaretWidth(self.h, pixelWidth)
 
-proc caretWidth*(self: ScintillaEdit, ): miqt_intptr_t =
+proc caretWidth*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_caretWidth(self.h)
 
-proc setTargetStart*(self: ScintillaEdit, start: miqt_intptr_t): void =
+proc setTargetStart*(self: gen_ScintillaEdit_types.ScintillaEdit, start: miqt_intptr_t): void =
 
   fcScintillaEdit_setTargetStart(self.h, start)
 
-proc targetStart*(self: ScintillaEdit, ): miqt_intptr_t =
+proc targetStart*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_targetStart(self.h)
 
-proc setTargetStartVirtualSpace*(self: ScintillaEdit, space: miqt_intptr_t): void =
+proc setTargetStartVirtualSpace*(self: gen_ScintillaEdit_types.ScintillaEdit, space: miqt_intptr_t): void =
 
   fcScintillaEdit_setTargetStartVirtualSpace(self.h, space)
 
-proc targetStartVirtualSpace*(self: ScintillaEdit, ): miqt_intptr_t =
+proc targetStartVirtualSpace*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_targetStartVirtualSpace(self.h)
 
-proc setTargetEnd*(self: ScintillaEdit, endVal: miqt_intptr_t): void =
+proc setTargetEnd*(self: gen_ScintillaEdit_types.ScintillaEdit, endVal: miqt_intptr_t): void =
 
   fcScintillaEdit_setTargetEnd(self.h, endVal)
 
-proc targetEnd*(self: ScintillaEdit, ): miqt_intptr_t =
+proc targetEnd*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_targetEnd(self.h)
 
-proc setTargetEndVirtualSpace*(self: ScintillaEdit, space: miqt_intptr_t): void =
+proc setTargetEndVirtualSpace*(self: gen_ScintillaEdit_types.ScintillaEdit, space: miqt_intptr_t): void =
 
   fcScintillaEdit_setTargetEndVirtualSpace(self.h, space)
 
-proc targetEndVirtualSpace*(self: ScintillaEdit, ): miqt_intptr_t =
+proc targetEndVirtualSpace*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_targetEndVirtualSpace(self.h)
 
-proc setTargetRange*(self: ScintillaEdit, start: miqt_intptr_t, endVal: miqt_intptr_t): void =
+proc setTargetRange*(self: gen_ScintillaEdit_types.ScintillaEdit, start: miqt_intptr_t, endVal: miqt_intptr_t): void =
 
   fcScintillaEdit_setTargetRange(self.h, start, endVal)
 
-proc targetText*(self: ScintillaEdit, ): seq[byte] =
+proc targetText*(self: gen_ScintillaEdit_types.ScintillaEdit, ): seq[byte] =
 
   var v_bytearray = fcScintillaEdit_targetText(self.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc targetFromSelection*(self: ScintillaEdit, ): void =
+proc targetFromSelection*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_targetFromSelection(self.h)
 
-proc targetWholeDocument*(self: ScintillaEdit, ): void =
+proc targetWholeDocument*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_targetWholeDocument(self.h)
 
-proc replaceTarget*(self: ScintillaEdit, length: miqt_intptr_t, text: cstring): miqt_intptr_t =
+proc replaceTarget*(self: gen_ScintillaEdit_types.ScintillaEdit, length: miqt_intptr_t, text: cstring): miqt_intptr_t =
 
   fcScintillaEdit_replaceTarget(self.h, length, text)
 
-proc replaceTargetRE*(self: ScintillaEdit, length: miqt_intptr_t, text: cstring): miqt_intptr_t =
+proc replaceTargetRE*(self: gen_ScintillaEdit_types.ScintillaEdit, length: miqt_intptr_t, text: cstring): miqt_intptr_t =
 
   fcScintillaEdit_replaceTargetRE(self.h, length, text)
 
-proc replaceTargetMinimal*(self: ScintillaEdit, length: miqt_intptr_t, text: cstring): miqt_intptr_t =
+proc replaceTargetMinimal*(self: gen_ScintillaEdit_types.ScintillaEdit, length: miqt_intptr_t, text: cstring): miqt_intptr_t =
 
   fcScintillaEdit_replaceTargetMinimal(self.h, length, text)
 
-proc searchInTarget*(self: ScintillaEdit, length: miqt_intptr_t, text: cstring): miqt_intptr_t =
+proc searchInTarget*(self: gen_ScintillaEdit_types.ScintillaEdit, length: miqt_intptr_t, text: cstring): miqt_intptr_t =
 
   fcScintillaEdit_searchInTarget(self.h, length, text)
 
-proc setSearchFlags*(self: ScintillaEdit, searchFlags: miqt_intptr_t): void =
+proc setSearchFlags*(self: gen_ScintillaEdit_types.ScintillaEdit, searchFlags: miqt_intptr_t): void =
 
   fcScintillaEdit_setSearchFlags(self.h, searchFlags)
 
-proc searchFlags*(self: ScintillaEdit, ): miqt_intptr_t =
+proc searchFlags*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_searchFlags(self.h)
 
-proc callTipShow*(self: ScintillaEdit, pos: miqt_intptr_t, definition: cstring): void =
+proc callTipShow*(self: gen_ScintillaEdit_types.ScintillaEdit, pos: miqt_intptr_t, definition: cstring): void =
 
   fcScintillaEdit_callTipShow(self.h, pos, definition)
 
-proc callTipCancel*(self: ScintillaEdit, ): void =
+proc callTipCancel*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_callTipCancel(self.h)
 
-proc callTipActive*(self: ScintillaEdit, ): bool =
+proc callTipActive*(self: gen_ScintillaEdit_types.ScintillaEdit, ): bool =
 
   fcScintillaEdit_callTipActive(self.h)
 
-proc callTipPosStart*(self: ScintillaEdit, ): miqt_intptr_t =
+proc callTipPosStart*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_callTipPosStart(self.h)
 
-proc callTipSetPosStart*(self: ScintillaEdit, posStart: miqt_intptr_t): void =
+proc callTipSetPosStart*(self: gen_ScintillaEdit_types.ScintillaEdit, posStart: miqt_intptr_t): void =
 
   fcScintillaEdit_callTipSetPosStart(self.h, posStart)
 
-proc callTipSetHlt*(self: ScintillaEdit, highlightStart: miqt_intptr_t, highlightEnd: miqt_intptr_t): void =
+proc callTipSetHlt*(self: gen_ScintillaEdit_types.ScintillaEdit, highlightStart: miqt_intptr_t, highlightEnd: miqt_intptr_t): void =
 
   fcScintillaEdit_callTipSetHlt(self.h, highlightStart, highlightEnd)
 
-proc callTipSetBack*(self: ScintillaEdit, back: miqt_intptr_t): void =
+proc callTipSetBack*(self: gen_ScintillaEdit_types.ScintillaEdit, back: miqt_intptr_t): void =
 
   fcScintillaEdit_callTipSetBack(self.h, back)
 
-proc callTipSetFore*(self: ScintillaEdit, fore: miqt_intptr_t): void =
+proc callTipSetFore*(self: gen_ScintillaEdit_types.ScintillaEdit, fore: miqt_intptr_t): void =
 
   fcScintillaEdit_callTipSetFore(self.h, fore)
 
-proc callTipSetForeHlt*(self: ScintillaEdit, fore: miqt_intptr_t): void =
+proc callTipSetForeHlt*(self: gen_ScintillaEdit_types.ScintillaEdit, fore: miqt_intptr_t): void =
 
   fcScintillaEdit_callTipSetForeHlt(self.h, fore)
 
-proc callTipUseStyle*(self: ScintillaEdit, tabSize: miqt_intptr_t): void =
+proc callTipUseStyle*(self: gen_ScintillaEdit_types.ScintillaEdit, tabSize: miqt_intptr_t): void =
 
   fcScintillaEdit_callTipUseStyle(self.h, tabSize)
 
-proc callTipSetPosition*(self: ScintillaEdit, above: bool): void =
+proc callTipSetPosition*(self: gen_ScintillaEdit_types.ScintillaEdit, above: bool): void =
 
   fcScintillaEdit_callTipSetPosition(self.h, above)
 
-proc visibleFromDocLine*(self: ScintillaEdit, docLine: miqt_intptr_t): miqt_intptr_t =
+proc visibleFromDocLine*(self: gen_ScintillaEdit_types.ScintillaEdit, docLine: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_visibleFromDocLine(self.h, docLine)
 
-proc docLineFromVisible*(self: ScintillaEdit, displayLine: miqt_intptr_t): miqt_intptr_t =
+proc docLineFromVisible*(self: gen_ScintillaEdit_types.ScintillaEdit, displayLine: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_docLineFromVisible(self.h, displayLine)
 
-proc wrapCount*(self: ScintillaEdit, docLine: miqt_intptr_t): miqt_intptr_t =
+proc wrapCount*(self: gen_ScintillaEdit_types.ScintillaEdit, docLine: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_wrapCount(self.h, docLine)
 
-proc setFoldLevel*(self: ScintillaEdit, line: miqt_intptr_t, level: miqt_intptr_t): void =
+proc setFoldLevel*(self: gen_ScintillaEdit_types.ScintillaEdit, line: miqt_intptr_t, level: miqt_intptr_t): void =
 
   fcScintillaEdit_setFoldLevel(self.h, line, level)
 
-proc foldLevel*(self: ScintillaEdit, line: miqt_intptr_t): miqt_intptr_t =
+proc foldLevel*(self: gen_ScintillaEdit_types.ScintillaEdit, line: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_foldLevel(self.h, line)
 
-proc lastChild*(self: ScintillaEdit, line: miqt_intptr_t, level: miqt_intptr_t): miqt_intptr_t =
+proc lastChild*(self: gen_ScintillaEdit_types.ScintillaEdit, line: miqt_intptr_t, level: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_lastChild(self.h, line, level)
 
-proc foldParent*(self: ScintillaEdit, line: miqt_intptr_t): miqt_intptr_t =
+proc foldParent*(self: gen_ScintillaEdit_types.ScintillaEdit, line: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_foldParent(self.h, line)
 
-proc showLines*(self: ScintillaEdit, lineStart: miqt_intptr_t, lineEnd: miqt_intptr_t): void =
+proc showLines*(self: gen_ScintillaEdit_types.ScintillaEdit, lineStart: miqt_intptr_t, lineEnd: miqt_intptr_t): void =
 
   fcScintillaEdit_showLines(self.h, lineStart, lineEnd)
 
-proc hideLines*(self: ScintillaEdit, lineStart: miqt_intptr_t, lineEnd: miqt_intptr_t): void =
+proc hideLines*(self: gen_ScintillaEdit_types.ScintillaEdit, lineStart: miqt_intptr_t, lineEnd: miqt_intptr_t): void =
 
   fcScintillaEdit_hideLines(self.h, lineStart, lineEnd)
 
-proc lineVisible*(self: ScintillaEdit, line: miqt_intptr_t): bool =
+proc lineVisible*(self: gen_ScintillaEdit_types.ScintillaEdit, line: miqt_intptr_t): bool =
 
   fcScintillaEdit_lineVisible(self.h, line)
 
-proc allLinesVisible*(self: ScintillaEdit, ): bool =
+proc allLinesVisible*(self: gen_ScintillaEdit_types.ScintillaEdit, ): bool =
 
   fcScintillaEdit_allLinesVisible(self.h)
 
-proc setFoldExpanded*(self: ScintillaEdit, line: miqt_intptr_t, expanded: bool): void =
+proc setFoldExpanded*(self: gen_ScintillaEdit_types.ScintillaEdit, line: miqt_intptr_t, expanded: bool): void =
 
   fcScintillaEdit_setFoldExpanded(self.h, line, expanded)
 
-proc foldExpanded*(self: ScintillaEdit, line: miqt_intptr_t): bool =
+proc foldExpanded*(self: gen_ScintillaEdit_types.ScintillaEdit, line: miqt_intptr_t): bool =
 
   fcScintillaEdit_foldExpanded(self.h, line)
 
-proc toggleFold*(self: ScintillaEdit, line: miqt_intptr_t): void =
+proc toggleFold*(self: gen_ScintillaEdit_types.ScintillaEdit, line: miqt_intptr_t): void =
 
   fcScintillaEdit_toggleFold(self.h, line)
 
-proc toggleFoldShowText*(self: ScintillaEdit, line: miqt_intptr_t, text: cstring): void =
+proc toggleFoldShowText*(self: gen_ScintillaEdit_types.ScintillaEdit, line: miqt_intptr_t, text: cstring): void =
 
   fcScintillaEdit_toggleFoldShowText(self.h, line, text)
 
-proc foldDisplayTextSetStyle*(self: ScintillaEdit, style: miqt_intptr_t): void =
+proc foldDisplayTextSetStyle*(self: gen_ScintillaEdit_types.ScintillaEdit, style: miqt_intptr_t): void =
 
   fcScintillaEdit_foldDisplayTextSetStyle(self.h, style)
 
-proc foldDisplayTextStyle*(self: ScintillaEdit, ): miqt_intptr_t =
+proc foldDisplayTextStyle*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_foldDisplayTextStyle(self.h)
 
-proc setDefaultFoldDisplayText*(self: ScintillaEdit, text: cstring): void =
+proc setDefaultFoldDisplayText*(self: gen_ScintillaEdit_types.ScintillaEdit, text: cstring): void =
 
   fcScintillaEdit_setDefaultFoldDisplayText(self.h, text)
 
-proc getDefaultFoldDisplayText*(self: ScintillaEdit, ): seq[byte] =
+proc getDefaultFoldDisplayText*(self: gen_ScintillaEdit_types.ScintillaEdit, ): seq[byte] =
 
   var v_bytearray = fcScintillaEdit_getDefaultFoldDisplayText(self.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc foldLine*(self: ScintillaEdit, line: miqt_intptr_t, action: miqt_intptr_t): void =
+proc foldLine*(self: gen_ScintillaEdit_types.ScintillaEdit, line: miqt_intptr_t, action: miqt_intptr_t): void =
 
   fcScintillaEdit_foldLine(self.h, line, action)
 
-proc foldChildren*(self: ScintillaEdit, line: miqt_intptr_t, action: miqt_intptr_t): void =
+proc foldChildren*(self: gen_ScintillaEdit_types.ScintillaEdit, line: miqt_intptr_t, action: miqt_intptr_t): void =
 
   fcScintillaEdit_foldChildren(self.h, line, action)
 
-proc expandChildren*(self: ScintillaEdit, line: miqt_intptr_t, level: miqt_intptr_t): void =
+proc expandChildren*(self: gen_ScintillaEdit_types.ScintillaEdit, line: miqt_intptr_t, level: miqt_intptr_t): void =
 
   fcScintillaEdit_expandChildren(self.h, line, level)
 
-proc foldAll*(self: ScintillaEdit, action: miqt_intptr_t): void =
+proc foldAll*(self: gen_ScintillaEdit_types.ScintillaEdit, action: miqt_intptr_t): void =
 
   fcScintillaEdit_foldAll(self.h, action)
 
-proc ensureVisible*(self: ScintillaEdit, line: miqt_intptr_t): void =
+proc ensureVisible*(self: gen_ScintillaEdit_types.ScintillaEdit, line: miqt_intptr_t): void =
 
   fcScintillaEdit_ensureVisible(self.h, line)
 
-proc setAutomaticFold*(self: ScintillaEdit, automaticFold: miqt_intptr_t): void =
+proc setAutomaticFold*(self: gen_ScintillaEdit_types.ScintillaEdit, automaticFold: miqt_intptr_t): void =
 
   fcScintillaEdit_setAutomaticFold(self.h, automaticFold)
 
-proc automaticFold*(self: ScintillaEdit, ): miqt_intptr_t =
+proc automaticFold*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_automaticFold(self.h)
 
-proc setFoldFlags*(self: ScintillaEdit, flags: miqt_intptr_t): void =
+proc setFoldFlags*(self: gen_ScintillaEdit_types.ScintillaEdit, flags: miqt_intptr_t): void =
 
   fcScintillaEdit_setFoldFlags(self.h, flags)
 
-proc ensureVisibleEnforcePolicy*(self: ScintillaEdit, line: miqt_intptr_t): void =
+proc ensureVisibleEnforcePolicy*(self: gen_ScintillaEdit_types.ScintillaEdit, line: miqt_intptr_t): void =
 
   fcScintillaEdit_ensureVisibleEnforcePolicy(self.h, line)
 
-proc setTabIndents*(self: ScintillaEdit, tabIndents: bool): void =
+proc setTabIndents*(self: gen_ScintillaEdit_types.ScintillaEdit, tabIndents: bool): void =
 
   fcScintillaEdit_setTabIndents(self.h, tabIndents)
 
-proc tabIndents*(self: ScintillaEdit, ): bool =
+proc tabIndents*(self: gen_ScintillaEdit_types.ScintillaEdit, ): bool =
 
   fcScintillaEdit_tabIndents(self.h)
 
-proc setBackSpaceUnIndents*(self: ScintillaEdit, bsUnIndents: bool): void =
+proc setBackSpaceUnIndents*(self: gen_ScintillaEdit_types.ScintillaEdit, bsUnIndents: bool): void =
 
   fcScintillaEdit_setBackSpaceUnIndents(self.h, bsUnIndents)
 
-proc backSpaceUnIndents*(self: ScintillaEdit, ): bool =
+proc backSpaceUnIndents*(self: gen_ScintillaEdit_types.ScintillaEdit, ): bool =
 
   fcScintillaEdit_backSpaceUnIndents(self.h)
 
-proc setMouseDwellTime*(self: ScintillaEdit, periodMilliseconds: miqt_intptr_t): void =
+proc setMouseDwellTime*(self: gen_ScintillaEdit_types.ScintillaEdit, periodMilliseconds: miqt_intptr_t): void =
 
   fcScintillaEdit_setMouseDwellTime(self.h, periodMilliseconds)
 
-proc mouseDwellTime*(self: ScintillaEdit, ): miqt_intptr_t =
+proc mouseDwellTime*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_mouseDwellTime(self.h)
 
-proc wordStartPosition*(self: ScintillaEdit, pos: miqt_intptr_t, onlyWordCharacters: bool): miqt_intptr_t =
+proc wordStartPosition*(self: gen_ScintillaEdit_types.ScintillaEdit, pos: miqt_intptr_t, onlyWordCharacters: bool): miqt_intptr_t =
 
   fcScintillaEdit_wordStartPosition(self.h, pos, onlyWordCharacters)
 
-proc wordEndPosition*(self: ScintillaEdit, pos: miqt_intptr_t, onlyWordCharacters: bool): miqt_intptr_t =
+proc wordEndPosition*(self: gen_ScintillaEdit_types.ScintillaEdit, pos: miqt_intptr_t, onlyWordCharacters: bool): miqt_intptr_t =
 
   fcScintillaEdit_wordEndPosition(self.h, pos, onlyWordCharacters)
 
-proc isRangeWord*(self: ScintillaEdit, start: miqt_intptr_t, endVal: miqt_intptr_t): bool =
+proc isRangeWord*(self: gen_ScintillaEdit_types.ScintillaEdit, start: miqt_intptr_t, endVal: miqt_intptr_t): bool =
 
   fcScintillaEdit_isRangeWord(self.h, start, endVal)
 
-proc setIdleStyling*(self: ScintillaEdit, idleStyling: miqt_intptr_t): void =
+proc setIdleStyling*(self: gen_ScintillaEdit_types.ScintillaEdit, idleStyling: miqt_intptr_t): void =
 
   fcScintillaEdit_setIdleStyling(self.h, idleStyling)
 
-proc idleStyling*(self: ScintillaEdit, ): miqt_intptr_t =
+proc idleStyling*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_idleStyling(self.h)
 
-proc setWrapMode*(self: ScintillaEdit, wrapMode: miqt_intptr_t): void =
+proc setWrapMode*(self: gen_ScintillaEdit_types.ScintillaEdit, wrapMode: miqt_intptr_t): void =
 
   fcScintillaEdit_setWrapMode(self.h, wrapMode)
 
-proc wrapMode*(self: ScintillaEdit, ): miqt_intptr_t =
+proc wrapMode*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_wrapMode(self.h)
 
-proc setWrapVisualFlags*(self: ScintillaEdit, wrapVisualFlags: miqt_intptr_t): void =
+proc setWrapVisualFlags*(self: gen_ScintillaEdit_types.ScintillaEdit, wrapVisualFlags: miqt_intptr_t): void =
 
   fcScintillaEdit_setWrapVisualFlags(self.h, wrapVisualFlags)
 
-proc wrapVisualFlags*(self: ScintillaEdit, ): miqt_intptr_t =
+proc wrapVisualFlags*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_wrapVisualFlags(self.h)
 
-proc setWrapVisualFlagsLocation*(self: ScintillaEdit, wrapVisualFlagsLocation: miqt_intptr_t): void =
+proc setWrapVisualFlagsLocation*(self: gen_ScintillaEdit_types.ScintillaEdit, wrapVisualFlagsLocation: miqt_intptr_t): void =
 
   fcScintillaEdit_setWrapVisualFlagsLocation(self.h, wrapVisualFlagsLocation)
 
-proc wrapVisualFlagsLocation*(self: ScintillaEdit, ): miqt_intptr_t =
+proc wrapVisualFlagsLocation*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_wrapVisualFlagsLocation(self.h)
 
-proc setWrapStartIndent*(self: ScintillaEdit, indent: miqt_intptr_t): void =
+proc setWrapStartIndent*(self: gen_ScintillaEdit_types.ScintillaEdit, indent: miqt_intptr_t): void =
 
   fcScintillaEdit_setWrapStartIndent(self.h, indent)
 
-proc wrapStartIndent*(self: ScintillaEdit, ): miqt_intptr_t =
+proc wrapStartIndent*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_wrapStartIndent(self.h)
 
-proc setWrapIndentMode*(self: ScintillaEdit, wrapIndentMode: miqt_intptr_t): void =
+proc setWrapIndentMode*(self: gen_ScintillaEdit_types.ScintillaEdit, wrapIndentMode: miqt_intptr_t): void =
 
   fcScintillaEdit_setWrapIndentMode(self.h, wrapIndentMode)
 
-proc wrapIndentMode*(self: ScintillaEdit, ): miqt_intptr_t =
+proc wrapIndentMode*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_wrapIndentMode(self.h)
 
-proc setLayoutCache*(self: ScintillaEdit, cacheMode: miqt_intptr_t): void =
+proc setLayoutCache*(self: gen_ScintillaEdit_types.ScintillaEdit, cacheMode: miqt_intptr_t): void =
 
   fcScintillaEdit_setLayoutCache(self.h, cacheMode)
 
-proc layoutCache*(self: ScintillaEdit, ): miqt_intptr_t =
+proc layoutCache*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_layoutCache(self.h)
 
-proc setScrollWidth*(self: ScintillaEdit, pixelWidth: miqt_intptr_t): void =
+proc setScrollWidth*(self: gen_ScintillaEdit_types.ScintillaEdit, pixelWidth: miqt_intptr_t): void =
 
   fcScintillaEdit_setScrollWidth(self.h, pixelWidth)
 
-proc scrollWidth*(self: ScintillaEdit, ): miqt_intptr_t =
+proc scrollWidth*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_scrollWidth(self.h)
 
-proc setScrollWidthTracking*(self: ScintillaEdit, tracking: bool): void =
+proc setScrollWidthTracking*(self: gen_ScintillaEdit_types.ScintillaEdit, tracking: bool): void =
 
   fcScintillaEdit_setScrollWidthTracking(self.h, tracking)
 
-proc scrollWidthTracking*(self: ScintillaEdit, ): bool =
+proc scrollWidthTracking*(self: gen_ScintillaEdit_types.ScintillaEdit, ): bool =
 
   fcScintillaEdit_scrollWidthTracking(self.h)
 
-proc textWidth*(self: ScintillaEdit, style: miqt_intptr_t, text: cstring): miqt_intptr_t =
+proc textWidth*(self: gen_ScintillaEdit_types.ScintillaEdit, style: miqt_intptr_t, text: cstring): miqt_intptr_t =
 
   fcScintillaEdit_textWidth(self.h, style, text)
 
-proc setEndAtLastLine*(self: ScintillaEdit, endAtLastLine: bool): void =
+proc setEndAtLastLine*(self: gen_ScintillaEdit_types.ScintillaEdit, endAtLastLine: bool): void =
 
   fcScintillaEdit_setEndAtLastLine(self.h, endAtLastLine)
 
-proc endAtLastLine*(self: ScintillaEdit, ): bool =
+proc endAtLastLine*(self: gen_ScintillaEdit_types.ScintillaEdit, ): bool =
 
   fcScintillaEdit_endAtLastLine(self.h)
 
-proc textHeight*(self: ScintillaEdit, line: miqt_intptr_t): miqt_intptr_t =
+proc textHeight*(self: gen_ScintillaEdit_types.ScintillaEdit, line: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_textHeight(self.h, line)
 
-proc setVScrollBar*(self: ScintillaEdit, visible: bool): void =
+proc setVScrollBar*(self: gen_ScintillaEdit_types.ScintillaEdit, visible: bool): void =
 
   fcScintillaEdit_setVScrollBar(self.h, visible)
 
-proc vScrollBar*(self: ScintillaEdit, ): bool =
+proc vScrollBar*(self: gen_ScintillaEdit_types.ScintillaEdit, ): bool =
 
   fcScintillaEdit_vScrollBar(self.h)
 
-proc appendText*(self: ScintillaEdit, length: miqt_intptr_t, text: cstring): void =
+proc appendText*(self: gen_ScintillaEdit_types.ScintillaEdit, length: miqt_intptr_t, text: cstring): void =
 
   fcScintillaEdit_appendText(self.h, length, text)
 
-proc phasesDraw*(self: ScintillaEdit, ): miqt_intptr_t =
+proc phasesDraw*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_phasesDraw(self.h)
 
-proc setPhasesDraw*(self: ScintillaEdit, phases: miqt_intptr_t): void =
+proc setPhasesDraw*(self: gen_ScintillaEdit_types.ScintillaEdit, phases: miqt_intptr_t): void =
 
   fcScintillaEdit_setPhasesDraw(self.h, phases)
 
-proc setFontQuality*(self: ScintillaEdit, fontQuality: miqt_intptr_t): void =
+proc setFontQuality*(self: gen_ScintillaEdit_types.ScintillaEdit, fontQuality: miqt_intptr_t): void =
 
   fcScintillaEdit_setFontQuality(self.h, fontQuality)
 
-proc fontQuality*(self: ScintillaEdit, ): miqt_intptr_t =
+proc fontQuality*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_fontQuality(self.h)
 
-proc setFirstVisibleLine*(self: ScintillaEdit, displayLine: miqt_intptr_t): void =
+proc setFirstVisibleLine*(self: gen_ScintillaEdit_types.ScintillaEdit, displayLine: miqt_intptr_t): void =
 
   fcScintillaEdit_setFirstVisibleLine(self.h, displayLine)
 
-proc setMultiPaste*(self: ScintillaEdit, multiPaste: miqt_intptr_t): void =
+proc setMultiPaste*(self: gen_ScintillaEdit_types.ScintillaEdit, multiPaste: miqt_intptr_t): void =
 
   fcScintillaEdit_setMultiPaste(self.h, multiPaste)
 
-proc multiPaste*(self: ScintillaEdit, ): miqt_intptr_t =
+proc multiPaste*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_multiPaste(self.h)
 
-proc tag*(self: ScintillaEdit, tagNumber: miqt_intptr_t): seq[byte] =
+proc tag*(self: gen_ScintillaEdit_types.ScintillaEdit, tagNumber: miqt_intptr_t): seq[byte] =
 
   var v_bytearray = fcScintillaEdit_tag(self.h, tagNumber)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc linesJoin*(self: ScintillaEdit, ): void =
+proc linesJoin*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_linesJoin(self.h)
 
-proc linesSplit*(self: ScintillaEdit, pixelWidth: miqt_intptr_t): void =
+proc linesSplit*(self: gen_ScintillaEdit_types.ScintillaEdit, pixelWidth: miqt_intptr_t): void =
 
   fcScintillaEdit_linesSplit(self.h, pixelWidth)
 
-proc setFoldMarginColour*(self: ScintillaEdit, useSetting: bool, back: miqt_intptr_t): void =
+proc setFoldMarginColour*(self: gen_ScintillaEdit_types.ScintillaEdit, useSetting: bool, back: miqt_intptr_t): void =
 
   fcScintillaEdit_setFoldMarginColour(self.h, useSetting, back)
 
-proc setFoldMarginHiColour*(self: ScintillaEdit, useSetting: bool, fore: miqt_intptr_t): void =
+proc setFoldMarginHiColour*(self: gen_ScintillaEdit_types.ScintillaEdit, useSetting: bool, fore: miqt_intptr_t): void =
 
   fcScintillaEdit_setFoldMarginHiColour(self.h, useSetting, fore)
 
-proc setAccessibility*(self: ScintillaEdit, accessibility: miqt_intptr_t): void =
+proc setAccessibility*(self: gen_ScintillaEdit_types.ScintillaEdit, accessibility: miqt_intptr_t): void =
 
   fcScintillaEdit_setAccessibility(self.h, accessibility)
 
-proc accessibility*(self: ScintillaEdit, ): miqt_intptr_t =
+proc accessibility*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_accessibility(self.h)
 
-proc lineDown*(self: ScintillaEdit, ): void =
+proc lineDown*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_lineDown(self.h)
 
-proc lineDownExtend*(self: ScintillaEdit, ): void =
+proc lineDownExtend*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_lineDownExtend(self.h)
 
-proc lineUp*(self: ScintillaEdit, ): void =
+proc lineUp*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_lineUp(self.h)
 
-proc lineUpExtend*(self: ScintillaEdit, ): void =
+proc lineUpExtend*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_lineUpExtend(self.h)
 
-proc charLeft*(self: ScintillaEdit, ): void =
+proc charLeft*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_charLeft(self.h)
 
-proc charLeftExtend*(self: ScintillaEdit, ): void =
+proc charLeftExtend*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_charLeftExtend(self.h)
 
-proc charRight*(self: ScintillaEdit, ): void =
+proc charRight*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_charRight(self.h)
 
-proc charRightExtend*(self: ScintillaEdit, ): void =
+proc charRightExtend*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_charRightExtend(self.h)
 
-proc wordLeft*(self: ScintillaEdit, ): void =
+proc wordLeft*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_wordLeft(self.h)
 
-proc wordLeftExtend*(self: ScintillaEdit, ): void =
+proc wordLeftExtend*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_wordLeftExtend(self.h)
 
-proc wordRight*(self: ScintillaEdit, ): void =
+proc wordRight*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_wordRight(self.h)
 
-proc wordRightExtend*(self: ScintillaEdit, ): void =
+proc wordRightExtend*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_wordRightExtend(self.h)
 
-proc home*(self: ScintillaEdit, ): void =
+proc home*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_home(self.h)
 
-proc homeExtend*(self: ScintillaEdit, ): void =
+proc homeExtend*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_homeExtend(self.h)
 
-proc lineEnd*(self: ScintillaEdit, ): void =
+proc lineEnd*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_lineEnd(self.h)
 
-proc lineEndExtend*(self: ScintillaEdit, ): void =
+proc lineEndExtend*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_lineEndExtend(self.h)
 
-proc documentStart*(self: ScintillaEdit, ): void =
+proc documentStart*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_documentStart(self.h)
 
-proc documentStartExtend*(self: ScintillaEdit, ): void =
+proc documentStartExtend*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_documentStartExtend(self.h)
 
-proc documentEnd*(self: ScintillaEdit, ): void =
+proc documentEnd*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_documentEnd(self.h)
 
-proc documentEndExtend*(self: ScintillaEdit, ): void =
+proc documentEndExtend*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_documentEndExtend(self.h)
 
-proc pageUp*(self: ScintillaEdit, ): void =
+proc pageUp*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_pageUp(self.h)
 
-proc pageUpExtend*(self: ScintillaEdit, ): void =
+proc pageUpExtend*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_pageUpExtend(self.h)
 
-proc pageDown*(self: ScintillaEdit, ): void =
+proc pageDown*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_pageDown(self.h)
 
-proc pageDownExtend*(self: ScintillaEdit, ): void =
+proc pageDownExtend*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_pageDownExtend(self.h)
 
-proc editToggleOvertype*(self: ScintillaEdit, ): void =
+proc editToggleOvertype*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_editToggleOvertype(self.h)
 
-proc cancel*(self: ScintillaEdit, ): void =
+proc cancel*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_cancel(self.h)
 
-proc deleteBack*(self: ScintillaEdit, ): void =
+proc deleteBack*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_deleteBack(self.h)
 
-proc tab*(self: ScintillaEdit, ): void =
+proc tab*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_tab(self.h)
 
-proc lineIndent*(self: ScintillaEdit, ): void =
+proc lineIndent*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_lineIndent(self.h)
 
-proc backTab*(self: ScintillaEdit, ): void =
+proc backTab*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_backTab(self.h)
 
-proc lineDedent*(self: ScintillaEdit, ): void =
+proc lineDedent*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_lineDedent(self.h)
 
-proc newLine*(self: ScintillaEdit, ): void =
+proc newLine*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_newLine(self.h)
 
-proc formFeed*(self: ScintillaEdit, ): void =
+proc formFeed*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_formFeed(self.h)
 
-proc vCHome*(self: ScintillaEdit, ): void =
+proc vCHome*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_vCHome(self.h)
 
-proc vCHomeExtend*(self: ScintillaEdit, ): void =
+proc vCHomeExtend*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_vCHomeExtend(self.h)
 
-proc zoomIn*(self: ScintillaEdit, ): void =
+proc zoomIn*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_zoomIn(self.h)
 
-proc zoomOut*(self: ScintillaEdit, ): void =
+proc zoomOut*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_zoomOut(self.h)
 
-proc delWordLeft*(self: ScintillaEdit, ): void =
+proc delWordLeft*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_delWordLeft(self.h)
 
-proc delWordRight*(self: ScintillaEdit, ): void =
+proc delWordRight*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_delWordRight(self.h)
 
-proc delWordRightEnd*(self: ScintillaEdit, ): void =
+proc delWordRightEnd*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_delWordRightEnd(self.h)
 
-proc lineCut*(self: ScintillaEdit, ): void =
+proc lineCut*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_lineCut(self.h)
 
-proc lineDelete*(self: ScintillaEdit, ): void =
+proc lineDelete*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_lineDelete(self.h)
 
-proc lineTranspose*(self: ScintillaEdit, ): void =
+proc lineTranspose*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_lineTranspose(self.h)
 
-proc lineReverse*(self: ScintillaEdit, ): void =
+proc lineReverse*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_lineReverse(self.h)
 
-proc lineDuplicate*(self: ScintillaEdit, ): void =
+proc lineDuplicate*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_lineDuplicate(self.h)
 
-proc lowerCase*(self: ScintillaEdit, ): void =
+proc lowerCase*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_lowerCase(self.h)
 
-proc upperCase*(self: ScintillaEdit, ): void =
+proc upperCase*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_upperCase(self.h)
 
-proc lineScrollDown*(self: ScintillaEdit, ): void =
+proc lineScrollDown*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_lineScrollDown(self.h)
 
-proc lineScrollUp*(self: ScintillaEdit, ): void =
+proc lineScrollUp*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_lineScrollUp(self.h)
 
-proc deleteBackNotLine*(self: ScintillaEdit, ): void =
+proc deleteBackNotLine*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_deleteBackNotLine(self.h)
 
-proc homeDisplay*(self: ScintillaEdit, ): void =
+proc homeDisplay*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_homeDisplay(self.h)
 
-proc homeDisplayExtend*(self: ScintillaEdit, ): void =
+proc homeDisplayExtend*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_homeDisplayExtend(self.h)
 
-proc lineEndDisplay*(self: ScintillaEdit, ): void =
+proc lineEndDisplay*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_lineEndDisplay(self.h)
 
-proc lineEndDisplayExtend*(self: ScintillaEdit, ): void =
+proc lineEndDisplayExtend*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_lineEndDisplayExtend(self.h)
 
-proc homeWrap*(self: ScintillaEdit, ): void =
+proc homeWrap*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_homeWrap(self.h)
 
-proc homeWrapExtend*(self: ScintillaEdit, ): void =
+proc homeWrapExtend*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_homeWrapExtend(self.h)
 
-proc lineEndWrap*(self: ScintillaEdit, ): void =
+proc lineEndWrap*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_lineEndWrap(self.h)
 
-proc lineEndWrapExtend*(self: ScintillaEdit, ): void =
+proc lineEndWrapExtend*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_lineEndWrapExtend(self.h)
 
-proc vCHomeWrap*(self: ScintillaEdit, ): void =
+proc vCHomeWrap*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_vCHomeWrap(self.h)
 
-proc vCHomeWrapExtend*(self: ScintillaEdit, ): void =
+proc vCHomeWrapExtend*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_vCHomeWrapExtend(self.h)
 
-proc lineCopy*(self: ScintillaEdit, ): void =
+proc lineCopy*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_lineCopy(self.h)
 
-proc moveCaretInsideView*(self: ScintillaEdit, ): void =
+proc moveCaretInsideView*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_moveCaretInsideView(self.h)
 
-proc lineLength*(self: ScintillaEdit, line: miqt_intptr_t): miqt_intptr_t =
+proc lineLength*(self: gen_ScintillaEdit_types.ScintillaEdit, line: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_lineLength(self.h, line)
 
-proc braceHighlight*(self: ScintillaEdit, posA: miqt_intptr_t, posB: miqt_intptr_t): void =
+proc braceHighlight*(self: gen_ScintillaEdit_types.ScintillaEdit, posA: miqt_intptr_t, posB: miqt_intptr_t): void =
 
   fcScintillaEdit_braceHighlight(self.h, posA, posB)
 
-proc braceHighlightIndicator*(self: ScintillaEdit, useSetting: bool, indicator: miqt_intptr_t): void =
+proc braceHighlightIndicator*(self: gen_ScintillaEdit_types.ScintillaEdit, useSetting: bool, indicator: miqt_intptr_t): void =
 
   fcScintillaEdit_braceHighlightIndicator(self.h, useSetting, indicator)
 
-proc braceBadLight*(self: ScintillaEdit, pos: miqt_intptr_t): void =
+proc braceBadLight*(self: gen_ScintillaEdit_types.ScintillaEdit, pos: miqt_intptr_t): void =
 
   fcScintillaEdit_braceBadLight(self.h, pos)
 
-proc braceBadLightIndicator*(self: ScintillaEdit, useSetting: bool, indicator: miqt_intptr_t): void =
+proc braceBadLightIndicator*(self: gen_ScintillaEdit_types.ScintillaEdit, useSetting: bool, indicator: miqt_intptr_t): void =
 
   fcScintillaEdit_braceBadLightIndicator(self.h, useSetting, indicator)
 
-proc braceMatch*(self: ScintillaEdit, pos: miqt_intptr_t, maxReStyle: miqt_intptr_t): miqt_intptr_t =
+proc braceMatch*(self: gen_ScintillaEdit_types.ScintillaEdit, pos: miqt_intptr_t, maxReStyle: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_braceMatch(self.h, pos, maxReStyle)
 
-proc braceMatchNext*(self: ScintillaEdit, pos: miqt_intptr_t, startPos: miqt_intptr_t): miqt_intptr_t =
+proc braceMatchNext*(self: gen_ScintillaEdit_types.ScintillaEdit, pos: miqt_intptr_t, startPos: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_braceMatchNext(self.h, pos, startPos)
 
-proc viewEOL*(self: ScintillaEdit, ): bool =
+proc viewEOL*(self: gen_ScintillaEdit_types.ScintillaEdit, ): bool =
 
   fcScintillaEdit_viewEOL(self.h)
 
-proc setViewEOL*(self: ScintillaEdit, visible: bool): void =
+proc setViewEOL*(self: gen_ScintillaEdit_types.ScintillaEdit, visible: bool): void =
 
   fcScintillaEdit_setViewEOL(self.h, visible)
 
-proc docPointer*(self: ScintillaEdit, ): miqt_intptr_t =
+proc docPointer*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_docPointer(self.h)
 
-proc setDocPointer*(self: ScintillaEdit, doc: miqt_intptr_t): void =
+proc setDocPointer*(self: gen_ScintillaEdit_types.ScintillaEdit, doc: miqt_intptr_t): void =
 
   fcScintillaEdit_setDocPointer(self.h, doc)
 
-proc setModEventMask*(self: ScintillaEdit, eventMask: miqt_intptr_t): void =
+proc setModEventMask*(self: gen_ScintillaEdit_types.ScintillaEdit, eventMask: miqt_intptr_t): void =
 
   fcScintillaEdit_setModEventMask(self.h, eventMask)
 
-proc edgeColumn*(self: ScintillaEdit, ): miqt_intptr_t =
+proc edgeColumn*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_edgeColumn(self.h)
 
-proc setEdgeColumn*(self: ScintillaEdit, column: miqt_intptr_t): void =
+proc setEdgeColumn*(self: gen_ScintillaEdit_types.ScintillaEdit, column: miqt_intptr_t): void =
 
   fcScintillaEdit_setEdgeColumn(self.h, column)
 
-proc edgeMode*(self: ScintillaEdit, ): miqt_intptr_t =
+proc edgeMode*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_edgeMode(self.h)
 
-proc setEdgeMode*(self: ScintillaEdit, edgeMode: miqt_intptr_t): void =
+proc setEdgeMode*(self: gen_ScintillaEdit_types.ScintillaEdit, edgeMode: miqt_intptr_t): void =
 
   fcScintillaEdit_setEdgeMode(self.h, edgeMode)
 
-proc edgeColour*(self: ScintillaEdit, ): miqt_intptr_t =
+proc edgeColour*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_edgeColour(self.h)
 
-proc setEdgeColour*(self: ScintillaEdit, edgeColour: miqt_intptr_t): void =
+proc setEdgeColour*(self: gen_ScintillaEdit_types.ScintillaEdit, edgeColour: miqt_intptr_t): void =
 
   fcScintillaEdit_setEdgeColour(self.h, edgeColour)
 
-proc multiEdgeAddLine*(self: ScintillaEdit, column: miqt_intptr_t, edgeColour: miqt_intptr_t): void =
+proc multiEdgeAddLine*(self: gen_ScintillaEdit_types.ScintillaEdit, column: miqt_intptr_t, edgeColour: miqt_intptr_t): void =
 
   fcScintillaEdit_multiEdgeAddLine(self.h, column, edgeColour)
 
-proc multiEdgeClearAll*(self: ScintillaEdit, ): void =
+proc multiEdgeClearAll*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_multiEdgeClearAll(self.h)
 
-proc multiEdgeColumn*(self: ScintillaEdit, which: miqt_intptr_t): miqt_intptr_t =
+proc multiEdgeColumn*(self: gen_ScintillaEdit_types.ScintillaEdit, which: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_multiEdgeColumn(self.h, which)
 
-proc searchAnchor*(self: ScintillaEdit, ): void =
+proc searchAnchor*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_searchAnchor(self.h)
 
-proc searchNext*(self: ScintillaEdit, searchFlags: miqt_intptr_t, text: cstring): miqt_intptr_t =
+proc searchNext*(self: gen_ScintillaEdit_types.ScintillaEdit, searchFlags: miqt_intptr_t, text: cstring): miqt_intptr_t =
 
   fcScintillaEdit_searchNext(self.h, searchFlags, text)
 
-proc searchPrev*(self: ScintillaEdit, searchFlags: miqt_intptr_t, text: cstring): miqt_intptr_t =
+proc searchPrev*(self: gen_ScintillaEdit_types.ScintillaEdit, searchFlags: miqt_intptr_t, text: cstring): miqt_intptr_t =
 
   fcScintillaEdit_searchPrev(self.h, searchFlags, text)
 
-proc linesOnScreen*(self: ScintillaEdit, ): miqt_intptr_t =
+proc linesOnScreen*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_linesOnScreen(self.h)
 
-proc usePopUp*(self: ScintillaEdit, popUpMode: miqt_intptr_t): void =
+proc usePopUp*(self: gen_ScintillaEdit_types.ScintillaEdit, popUpMode: miqt_intptr_t): void =
 
   fcScintillaEdit_usePopUp(self.h, popUpMode)
 
-proc selectionIsRectangle*(self: ScintillaEdit, ): bool =
+proc selectionIsRectangle*(self: gen_ScintillaEdit_types.ScintillaEdit, ): bool =
 
   fcScintillaEdit_selectionIsRectangle(self.h)
 
-proc setZoom*(self: ScintillaEdit, zoomInPoints: miqt_intptr_t): void =
+proc setZoom*(self: gen_ScintillaEdit_types.ScintillaEdit, zoomInPoints: miqt_intptr_t): void =
 
   fcScintillaEdit_setZoom(self.h, zoomInPoints)
 
-proc zoom*(self: ScintillaEdit, ): miqt_intptr_t =
+proc zoom*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_zoom(self.h)
 
-proc createDocument*(self: ScintillaEdit, bytes: miqt_intptr_t, documentOptions: miqt_intptr_t): miqt_intptr_t =
+proc createDocument*(self: gen_ScintillaEdit_types.ScintillaEdit, bytes: miqt_intptr_t, documentOptions: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_createDocument(self.h, bytes, documentOptions)
 
-proc addRefDocument*(self: ScintillaEdit, doc: miqt_intptr_t): void =
+proc addRefDocument*(self: gen_ScintillaEdit_types.ScintillaEdit, doc: miqt_intptr_t): void =
 
   fcScintillaEdit_addRefDocument(self.h, doc)
 
-proc releaseDocument*(self: ScintillaEdit, doc: miqt_intptr_t): void =
+proc releaseDocument*(self: gen_ScintillaEdit_types.ScintillaEdit, doc: miqt_intptr_t): void =
 
   fcScintillaEdit_releaseDocument(self.h, doc)
 
-proc documentOptions*(self: ScintillaEdit, ): miqt_intptr_t =
+proc documentOptions*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_documentOptions(self.h)
 
-proc modEventMask*(self: ScintillaEdit, ): miqt_intptr_t =
+proc modEventMask*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_modEventMask(self.h)
 
-proc setCommandEvents*(self: ScintillaEdit, commandEvents: bool): void =
+proc setCommandEvents*(self: gen_ScintillaEdit_types.ScintillaEdit, commandEvents: bool): void =
 
   fcScintillaEdit_setCommandEvents(self.h, commandEvents)
 
-proc commandEvents*(self: ScintillaEdit, ): bool =
+proc commandEvents*(self: gen_ScintillaEdit_types.ScintillaEdit, ): bool =
 
   fcScintillaEdit_commandEvents(self.h)
 
-proc setFocus*(self: ScintillaEdit, focus: bool): void =
+proc setFocus*(self: gen_ScintillaEdit_types.ScintillaEdit, focus: bool): void =
 
   fcScintillaEdit_setFocus(self.h, focus)
 
-proc focus*(self: ScintillaEdit, ): bool =
+proc focus*(self: gen_ScintillaEdit_types.ScintillaEdit, ): bool =
 
   fcScintillaEdit_focus(self.h)
 
-proc setStatus*(self: ScintillaEdit, status: miqt_intptr_t): void =
+proc setStatus*(self: gen_ScintillaEdit_types.ScintillaEdit, status: miqt_intptr_t): void =
 
   fcScintillaEdit_setStatus(self.h, status)
 
-proc status*(self: ScintillaEdit, ): miqt_intptr_t =
+proc status*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_status(self.h)
 
-proc setMouseDownCaptures*(self: ScintillaEdit, captures: bool): void =
+proc setMouseDownCaptures*(self: gen_ScintillaEdit_types.ScintillaEdit, captures: bool): void =
 
   fcScintillaEdit_setMouseDownCaptures(self.h, captures)
 
-proc mouseDownCaptures*(self: ScintillaEdit, ): bool =
+proc mouseDownCaptures*(self: gen_ScintillaEdit_types.ScintillaEdit, ): bool =
 
   fcScintillaEdit_mouseDownCaptures(self.h)
 
-proc setMouseWheelCaptures*(self: ScintillaEdit, captures: bool): void =
+proc setMouseWheelCaptures*(self: gen_ScintillaEdit_types.ScintillaEdit, captures: bool): void =
 
   fcScintillaEdit_setMouseWheelCaptures(self.h, captures)
 
-proc mouseWheelCaptures*(self: ScintillaEdit, ): bool =
+proc mouseWheelCaptures*(self: gen_ScintillaEdit_types.ScintillaEdit, ): bool =
 
   fcScintillaEdit_mouseWheelCaptures(self.h)
 
-proc setCursor*(self: ScintillaEdit, cursorType: miqt_intptr_t): void =
+proc setCursor*(self: gen_ScintillaEdit_types.ScintillaEdit, cursorType: miqt_intptr_t): void =
 
   fcScintillaEdit_setCursor(self.h, cursorType)
 
-proc cursor*(self: ScintillaEdit, ): miqt_intptr_t =
+proc cursor*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_cursor(self.h)
 
-proc setControlCharSymbol*(self: ScintillaEdit, symbol: miqt_intptr_t): void =
+proc setControlCharSymbol*(self: gen_ScintillaEdit_types.ScintillaEdit, symbol: miqt_intptr_t): void =
 
   fcScintillaEdit_setControlCharSymbol(self.h, symbol)
 
-proc controlCharSymbol*(self: ScintillaEdit, ): miqt_intptr_t =
+proc controlCharSymbol*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_controlCharSymbol(self.h)
 
-proc wordPartLeft*(self: ScintillaEdit, ): void =
+proc wordPartLeft*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_wordPartLeft(self.h)
 
-proc wordPartLeftExtend*(self: ScintillaEdit, ): void =
+proc wordPartLeftExtend*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_wordPartLeftExtend(self.h)
 
-proc wordPartRight*(self: ScintillaEdit, ): void =
+proc wordPartRight*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_wordPartRight(self.h)
 
-proc wordPartRightExtend*(self: ScintillaEdit, ): void =
+proc wordPartRightExtend*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_wordPartRightExtend(self.h)
 
-proc setVisiblePolicy*(self: ScintillaEdit, visiblePolicy: miqt_intptr_t, visibleSlop: miqt_intptr_t): void =
+proc setVisiblePolicy*(self: gen_ScintillaEdit_types.ScintillaEdit, visiblePolicy: miqt_intptr_t, visibleSlop: miqt_intptr_t): void =
 
   fcScintillaEdit_setVisiblePolicy(self.h, visiblePolicy, visibleSlop)
 
-proc delLineLeft*(self: ScintillaEdit, ): void =
+proc delLineLeft*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_delLineLeft(self.h)
 
-proc delLineRight*(self: ScintillaEdit, ): void =
+proc delLineRight*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_delLineRight(self.h)
 
-proc setXOffset*(self: ScintillaEdit, xOffset: miqt_intptr_t): void =
+proc setXOffset*(self: gen_ScintillaEdit_types.ScintillaEdit, xOffset: miqt_intptr_t): void =
 
   fcScintillaEdit_setXOffset(self.h, xOffset)
 
-proc xOffset*(self: ScintillaEdit, ): miqt_intptr_t =
+proc xOffset*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_xOffset(self.h)
 
-proc chooseCaretX*(self: ScintillaEdit, ): void =
+proc chooseCaretX*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_chooseCaretX(self.h)
 
-proc grabFocus*(self: ScintillaEdit, ): void =
+proc grabFocus*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_grabFocus(self.h)
 
-proc setXCaretPolicy*(self: ScintillaEdit, caretPolicy: miqt_intptr_t, caretSlop: miqt_intptr_t): void =
+proc setXCaretPolicy*(self: gen_ScintillaEdit_types.ScintillaEdit, caretPolicy: miqt_intptr_t, caretSlop: miqt_intptr_t): void =
 
   fcScintillaEdit_setXCaretPolicy(self.h, caretPolicy, caretSlop)
 
-proc setYCaretPolicy*(self: ScintillaEdit, caretPolicy: miqt_intptr_t, caretSlop: miqt_intptr_t): void =
+proc setYCaretPolicy*(self: gen_ScintillaEdit_types.ScintillaEdit, caretPolicy: miqt_intptr_t, caretSlop: miqt_intptr_t): void =
 
   fcScintillaEdit_setYCaretPolicy(self.h, caretPolicy, caretSlop)
 
-proc setPrintWrapMode*(self: ScintillaEdit, wrapMode: miqt_intptr_t): void =
+proc setPrintWrapMode*(self: gen_ScintillaEdit_types.ScintillaEdit, wrapMode: miqt_intptr_t): void =
 
   fcScintillaEdit_setPrintWrapMode(self.h, wrapMode)
 
-proc printWrapMode*(self: ScintillaEdit, ): miqt_intptr_t =
+proc printWrapMode*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_printWrapMode(self.h)
 
-proc setHotspotActiveFore*(self: ScintillaEdit, useSetting: bool, fore: miqt_intptr_t): void =
+proc setHotspotActiveFore*(self: gen_ScintillaEdit_types.ScintillaEdit, useSetting: bool, fore: miqt_intptr_t): void =
 
   fcScintillaEdit_setHotspotActiveFore(self.h, useSetting, fore)
 
-proc hotspotActiveFore*(self: ScintillaEdit, ): miqt_intptr_t =
+proc hotspotActiveFore*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_hotspotActiveFore(self.h)
 
-proc setHotspotActiveBack*(self: ScintillaEdit, useSetting: bool, back: miqt_intptr_t): void =
+proc setHotspotActiveBack*(self: gen_ScintillaEdit_types.ScintillaEdit, useSetting: bool, back: miqt_intptr_t): void =
 
   fcScintillaEdit_setHotspotActiveBack(self.h, useSetting, back)
 
-proc hotspotActiveBack*(self: ScintillaEdit, ): miqt_intptr_t =
+proc hotspotActiveBack*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_hotspotActiveBack(self.h)
 
-proc setHotspotActiveUnderline*(self: ScintillaEdit, underline: bool): void =
+proc setHotspotActiveUnderline*(self: gen_ScintillaEdit_types.ScintillaEdit, underline: bool): void =
 
   fcScintillaEdit_setHotspotActiveUnderline(self.h, underline)
 
-proc hotspotActiveUnderline*(self: ScintillaEdit, ): bool =
+proc hotspotActiveUnderline*(self: gen_ScintillaEdit_types.ScintillaEdit, ): bool =
 
   fcScintillaEdit_hotspotActiveUnderline(self.h)
 
-proc setHotspotSingleLine*(self: ScintillaEdit, singleLine: bool): void =
+proc setHotspotSingleLine*(self: gen_ScintillaEdit_types.ScintillaEdit, singleLine: bool): void =
 
   fcScintillaEdit_setHotspotSingleLine(self.h, singleLine)
 
-proc hotspotSingleLine*(self: ScintillaEdit, ): bool =
+proc hotspotSingleLine*(self: gen_ScintillaEdit_types.ScintillaEdit, ): bool =
 
   fcScintillaEdit_hotspotSingleLine(self.h)
 
-proc paraDown*(self: ScintillaEdit, ): void =
+proc paraDown*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_paraDown(self.h)
 
-proc paraDownExtend*(self: ScintillaEdit, ): void =
+proc paraDownExtend*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_paraDownExtend(self.h)
 
-proc paraUp*(self: ScintillaEdit, ): void =
+proc paraUp*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_paraUp(self.h)
 
-proc paraUpExtend*(self: ScintillaEdit, ): void =
+proc paraUpExtend*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_paraUpExtend(self.h)
 
-proc positionBefore*(self: ScintillaEdit, pos: miqt_intptr_t): miqt_intptr_t =
+proc positionBefore*(self: gen_ScintillaEdit_types.ScintillaEdit, pos: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_positionBefore(self.h, pos)
 
-proc positionAfter*(self: ScintillaEdit, pos: miqt_intptr_t): miqt_intptr_t =
+proc positionAfter*(self: gen_ScintillaEdit_types.ScintillaEdit, pos: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_positionAfter(self.h, pos)
 
-proc positionRelative*(self: ScintillaEdit, pos: miqt_intptr_t, relative: miqt_intptr_t): miqt_intptr_t =
+proc positionRelative*(self: gen_ScintillaEdit_types.ScintillaEdit, pos: miqt_intptr_t, relative: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_positionRelative(self.h, pos, relative)
 
-proc positionRelativeCodeUnits*(self: ScintillaEdit, pos: miqt_intptr_t, relative: miqt_intptr_t): miqt_intptr_t =
+proc positionRelativeCodeUnits*(self: gen_ScintillaEdit_types.ScintillaEdit, pos: miqt_intptr_t, relative: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_positionRelativeCodeUnits(self.h, pos, relative)
 
-proc copyRange*(self: ScintillaEdit, start: miqt_intptr_t, endVal: miqt_intptr_t): void =
+proc copyRange*(self: gen_ScintillaEdit_types.ScintillaEdit, start: miqt_intptr_t, endVal: miqt_intptr_t): void =
 
   fcScintillaEdit_copyRange(self.h, start, endVal)
 
-proc copyText*(self: ScintillaEdit, length: miqt_intptr_t, text: cstring): void =
+proc copyText*(self: gen_ScintillaEdit_types.ScintillaEdit, length: miqt_intptr_t, text: cstring): void =
 
   fcScintillaEdit_copyText(self.h, length, text)
 
-proc setSelectionMode*(self: ScintillaEdit, selectionMode: miqt_intptr_t): void =
+proc setSelectionMode*(self: gen_ScintillaEdit_types.ScintillaEdit, selectionMode: miqt_intptr_t): void =
 
   fcScintillaEdit_setSelectionMode(self.h, selectionMode)
 
-proc changeSelectionMode*(self: ScintillaEdit, selectionMode: miqt_intptr_t): void =
+proc changeSelectionMode*(self: gen_ScintillaEdit_types.ScintillaEdit, selectionMode: miqt_intptr_t): void =
 
   fcScintillaEdit_changeSelectionMode(self.h, selectionMode)
 
-proc selectionMode*(self: ScintillaEdit, ): miqt_intptr_t =
+proc selectionMode*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_selectionMode(self.h)
 
-proc setMoveExtendsSelection*(self: ScintillaEdit, moveExtendsSelection: bool): void =
+proc setMoveExtendsSelection*(self: gen_ScintillaEdit_types.ScintillaEdit, moveExtendsSelection: bool): void =
 
   fcScintillaEdit_setMoveExtendsSelection(self.h, moveExtendsSelection)
 
-proc moveExtendsSelection*(self: ScintillaEdit, ): bool =
+proc moveExtendsSelection*(self: gen_ScintillaEdit_types.ScintillaEdit, ): bool =
 
   fcScintillaEdit_moveExtendsSelection(self.h)
 
-proc getLineSelStartPosition*(self: ScintillaEdit, line: miqt_intptr_t): miqt_intptr_t =
+proc getLineSelStartPosition*(self: gen_ScintillaEdit_types.ScintillaEdit, line: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_getLineSelStartPosition(self.h, line)
 
-proc getLineSelEndPosition*(self: ScintillaEdit, line: miqt_intptr_t): miqt_intptr_t =
+proc getLineSelEndPosition*(self: gen_ScintillaEdit_types.ScintillaEdit, line: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_getLineSelEndPosition(self.h, line)
 
-proc lineDownRectExtend*(self: ScintillaEdit, ): void =
+proc lineDownRectExtend*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_lineDownRectExtend(self.h)
 
-proc lineUpRectExtend*(self: ScintillaEdit, ): void =
+proc lineUpRectExtend*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_lineUpRectExtend(self.h)
 
-proc charLeftRectExtend*(self: ScintillaEdit, ): void =
+proc charLeftRectExtend*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_charLeftRectExtend(self.h)
 
-proc charRightRectExtend*(self: ScintillaEdit, ): void =
+proc charRightRectExtend*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_charRightRectExtend(self.h)
 
-proc homeRectExtend*(self: ScintillaEdit, ): void =
+proc homeRectExtend*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_homeRectExtend(self.h)
 
-proc vCHomeRectExtend*(self: ScintillaEdit, ): void =
+proc vCHomeRectExtend*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_vCHomeRectExtend(self.h)
 
-proc lineEndRectExtend*(self: ScintillaEdit, ): void =
+proc lineEndRectExtend*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_lineEndRectExtend(self.h)
 
-proc pageUpRectExtend*(self: ScintillaEdit, ): void =
+proc pageUpRectExtend*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_pageUpRectExtend(self.h)
 
-proc pageDownRectExtend*(self: ScintillaEdit, ): void =
+proc pageDownRectExtend*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_pageDownRectExtend(self.h)
 
-proc stutteredPageUp*(self: ScintillaEdit, ): void =
+proc stutteredPageUp*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_stutteredPageUp(self.h)
 
-proc stutteredPageUpExtend*(self: ScintillaEdit, ): void =
+proc stutteredPageUpExtend*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_stutteredPageUpExtend(self.h)
 
-proc stutteredPageDown*(self: ScintillaEdit, ): void =
+proc stutteredPageDown*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_stutteredPageDown(self.h)
 
-proc stutteredPageDownExtend*(self: ScintillaEdit, ): void =
+proc stutteredPageDownExtend*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_stutteredPageDownExtend(self.h)
 
-proc wordLeftEnd*(self: ScintillaEdit, ): void =
+proc wordLeftEnd*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_wordLeftEnd(self.h)
 
-proc wordLeftEndExtend*(self: ScintillaEdit, ): void =
+proc wordLeftEndExtend*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_wordLeftEndExtend(self.h)
 
-proc wordRightEnd*(self: ScintillaEdit, ): void =
+proc wordRightEnd*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_wordRightEnd(self.h)
 
-proc wordRightEndExtend*(self: ScintillaEdit, ): void =
+proc wordRightEndExtend*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_wordRightEndExtend(self.h)
 
-proc setWhitespaceChars*(self: ScintillaEdit, characters: cstring): void =
+proc setWhitespaceChars*(self: gen_ScintillaEdit_types.ScintillaEdit, characters: cstring): void =
 
   fcScintillaEdit_setWhitespaceChars(self.h, characters)
 
-proc whitespaceChars*(self: ScintillaEdit, ): seq[byte] =
+proc whitespaceChars*(self: gen_ScintillaEdit_types.ScintillaEdit, ): seq[byte] =
 
   var v_bytearray = fcScintillaEdit_whitespaceChars(self.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc setPunctuationChars*(self: ScintillaEdit, characters: cstring): void =
+proc setPunctuationChars*(self: gen_ScintillaEdit_types.ScintillaEdit, characters: cstring): void =
 
   fcScintillaEdit_setPunctuationChars(self.h, characters)
 
-proc punctuationChars*(self: ScintillaEdit, ): seq[byte] =
+proc punctuationChars*(self: gen_ScintillaEdit_types.ScintillaEdit, ): seq[byte] =
 
   var v_bytearray = fcScintillaEdit_punctuationChars(self.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc setCharsDefault*(self: ScintillaEdit, ): void =
+proc setCharsDefault*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_setCharsDefault(self.h)
 
-proc autoCCurrent*(self: ScintillaEdit, ): miqt_intptr_t =
+proc autoCCurrent*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_autoCCurrent(self.h)
 
-proc autoCCurrentText*(self: ScintillaEdit, ): seq[byte] =
+proc autoCCurrentText*(self: gen_ScintillaEdit_types.ScintillaEdit, ): seq[byte] =
 
   var v_bytearray = fcScintillaEdit_autoCCurrentText(self.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc autoCSetCaseInsensitiveBehaviour*(self: ScintillaEdit, behaviour: miqt_intptr_t): void =
+proc autoCSetCaseInsensitiveBehaviour*(self: gen_ScintillaEdit_types.ScintillaEdit, behaviour: miqt_intptr_t): void =
 
   fcScintillaEdit_autoCSetCaseInsensitiveBehaviour(self.h, behaviour)
 
-proc autoCCaseInsensitiveBehaviour*(self: ScintillaEdit, ): miqt_intptr_t =
+proc autoCCaseInsensitiveBehaviour*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_autoCCaseInsensitiveBehaviour(self.h)
 
-proc autoCSetMulti*(self: ScintillaEdit, multi: miqt_intptr_t): void =
+proc autoCSetMulti*(self: gen_ScintillaEdit_types.ScintillaEdit, multi: miqt_intptr_t): void =
 
   fcScintillaEdit_autoCSetMulti(self.h, multi)
 
-proc autoCMulti*(self: ScintillaEdit, ): miqt_intptr_t =
+proc autoCMulti*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_autoCMulti(self.h)
 
-proc autoCSetOrder*(self: ScintillaEdit, order: miqt_intptr_t): void =
+proc autoCSetOrder*(self: gen_ScintillaEdit_types.ScintillaEdit, order: miqt_intptr_t): void =
 
   fcScintillaEdit_autoCSetOrder(self.h, order)
 
-proc autoCOrder*(self: ScintillaEdit, ): miqt_intptr_t =
+proc autoCOrder*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_autoCOrder(self.h)
 
-proc allocate*(self: ScintillaEdit, bytes: miqt_intptr_t): void =
+proc allocate*(self: gen_ScintillaEdit_types.ScintillaEdit, bytes: miqt_intptr_t): void =
 
   fcScintillaEdit_allocate(self.h, bytes)
 
-proc targetAsUTF8*(self: ScintillaEdit, ): seq[byte] =
+proc targetAsUTF8*(self: gen_ScintillaEdit_types.ScintillaEdit, ): seq[byte] =
 
   var v_bytearray = fcScintillaEdit_targetAsUTF8(self.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc setLengthForEncode*(self: ScintillaEdit, bytes: miqt_intptr_t): void =
+proc setLengthForEncode*(self: gen_ScintillaEdit_types.ScintillaEdit, bytes: miqt_intptr_t): void =
 
   fcScintillaEdit_setLengthForEncode(self.h, bytes)
 
-proc encodedFromUTF8*(self: ScintillaEdit, utf8: cstring): seq[byte] =
+proc encodedFromUTF8*(self: gen_ScintillaEdit_types.ScintillaEdit, utf8: cstring): seq[byte] =
 
   var v_bytearray = fcScintillaEdit_encodedFromUTF8(self.h, utf8)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc findColumn*(self: ScintillaEdit, line: miqt_intptr_t, column: miqt_intptr_t): miqt_intptr_t =
+proc findColumn*(self: gen_ScintillaEdit_types.ScintillaEdit, line: miqt_intptr_t, column: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_findColumn(self.h, line, column)
 
-proc caretSticky*(self: ScintillaEdit, ): miqt_intptr_t =
+proc caretSticky*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_caretSticky(self.h)
 
-proc setCaretSticky*(self: ScintillaEdit, useCaretStickyBehaviour: miqt_intptr_t): void =
+proc setCaretSticky*(self: gen_ScintillaEdit_types.ScintillaEdit, useCaretStickyBehaviour: miqt_intptr_t): void =
 
   fcScintillaEdit_setCaretSticky(self.h, useCaretStickyBehaviour)
 
-proc toggleCaretSticky*(self: ScintillaEdit, ): void =
+proc toggleCaretSticky*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_toggleCaretSticky(self.h)
 
-proc setPasteConvertEndings*(self: ScintillaEdit, convert: bool): void =
+proc setPasteConvertEndings*(self: gen_ScintillaEdit_types.ScintillaEdit, convert: bool): void =
 
   fcScintillaEdit_setPasteConvertEndings(self.h, convert)
 
-proc pasteConvertEndings*(self: ScintillaEdit, ): bool =
+proc pasteConvertEndings*(self: gen_ScintillaEdit_types.ScintillaEdit, ): bool =
 
   fcScintillaEdit_pasteConvertEndings(self.h)
 
-proc replaceRectangular*(self: ScintillaEdit, length: miqt_intptr_t, text: cstring): void =
+proc replaceRectangular*(self: gen_ScintillaEdit_types.ScintillaEdit, length: miqt_intptr_t, text: cstring): void =
 
   fcScintillaEdit_replaceRectangular(self.h, length, text)
 
-proc selectionDuplicate*(self: ScintillaEdit, ): void =
+proc selectionDuplicate*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_selectionDuplicate(self.h)
 
-proc setCaretLineBackAlpha*(self: ScintillaEdit, alpha: miqt_intptr_t): void =
+proc setCaretLineBackAlpha*(self: gen_ScintillaEdit_types.ScintillaEdit, alpha: miqt_intptr_t): void =
 
   fcScintillaEdit_setCaretLineBackAlpha(self.h, alpha)
 
-proc caretLineBackAlpha*(self: ScintillaEdit, ): miqt_intptr_t =
+proc caretLineBackAlpha*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_caretLineBackAlpha(self.h)
 
-proc setCaretStyle*(self: ScintillaEdit, caretStyle: miqt_intptr_t): void =
+proc setCaretStyle*(self: gen_ScintillaEdit_types.ScintillaEdit, caretStyle: miqt_intptr_t): void =
 
   fcScintillaEdit_setCaretStyle(self.h, caretStyle)
 
-proc caretStyle*(self: ScintillaEdit, ): miqt_intptr_t =
+proc caretStyle*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_caretStyle(self.h)
 
-proc setIndicatorCurrent*(self: ScintillaEdit, indicator: miqt_intptr_t): void =
+proc setIndicatorCurrent*(self: gen_ScintillaEdit_types.ScintillaEdit, indicator: miqt_intptr_t): void =
 
   fcScintillaEdit_setIndicatorCurrent(self.h, indicator)
 
-proc indicatorCurrent*(self: ScintillaEdit, ): miqt_intptr_t =
+proc indicatorCurrent*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_indicatorCurrent(self.h)
 
-proc setIndicatorValue*(self: ScintillaEdit, value: miqt_intptr_t): void =
+proc setIndicatorValue*(self: gen_ScintillaEdit_types.ScintillaEdit, value: miqt_intptr_t): void =
 
   fcScintillaEdit_setIndicatorValue(self.h, value)
 
-proc indicatorValue*(self: ScintillaEdit, ): miqt_intptr_t =
+proc indicatorValue*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_indicatorValue(self.h)
 
-proc indicatorFillRange*(self: ScintillaEdit, start: miqt_intptr_t, lengthFill: miqt_intptr_t): void =
+proc indicatorFillRange*(self: gen_ScintillaEdit_types.ScintillaEdit, start: miqt_intptr_t, lengthFill: miqt_intptr_t): void =
 
   fcScintillaEdit_indicatorFillRange(self.h, start, lengthFill)
 
-proc indicatorClearRange*(self: ScintillaEdit, start: miqt_intptr_t, lengthClear: miqt_intptr_t): void =
+proc indicatorClearRange*(self: gen_ScintillaEdit_types.ScintillaEdit, start: miqt_intptr_t, lengthClear: miqt_intptr_t): void =
 
   fcScintillaEdit_indicatorClearRange(self.h, start, lengthClear)
 
-proc indicatorAllOnFor*(self: ScintillaEdit, pos: miqt_intptr_t): miqt_intptr_t =
+proc indicatorAllOnFor*(self: gen_ScintillaEdit_types.ScintillaEdit, pos: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_indicatorAllOnFor(self.h, pos)
 
-proc indicatorValueAt*(self: ScintillaEdit, indicator: miqt_intptr_t, pos: miqt_intptr_t): miqt_intptr_t =
+proc indicatorValueAt*(self: gen_ScintillaEdit_types.ScintillaEdit, indicator: miqt_intptr_t, pos: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_indicatorValueAt(self.h, indicator, pos)
 
-proc indicatorStart*(self: ScintillaEdit, indicator: miqt_intptr_t, pos: miqt_intptr_t): miqt_intptr_t =
+proc indicatorStart*(self: gen_ScintillaEdit_types.ScintillaEdit, indicator: miqt_intptr_t, pos: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_indicatorStart(self.h, indicator, pos)
 
-proc indicatorEnd*(self: ScintillaEdit, indicator: miqt_intptr_t, pos: miqt_intptr_t): miqt_intptr_t =
+proc indicatorEnd*(self: gen_ScintillaEdit_types.ScintillaEdit, indicator: miqt_intptr_t, pos: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_indicatorEnd(self.h, indicator, pos)
 
-proc setPositionCache*(self: ScintillaEdit, size: miqt_intptr_t): void =
+proc setPositionCache*(self: gen_ScintillaEdit_types.ScintillaEdit, size: miqt_intptr_t): void =
 
   fcScintillaEdit_setPositionCache(self.h, size)
 
-proc positionCache*(self: ScintillaEdit, ): miqt_intptr_t =
+proc positionCache*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_positionCache(self.h)
 
-proc setLayoutThreads*(self: ScintillaEdit, threads: miqt_intptr_t): void =
+proc setLayoutThreads*(self: gen_ScintillaEdit_types.ScintillaEdit, threads: miqt_intptr_t): void =
 
   fcScintillaEdit_setLayoutThreads(self.h, threads)
 
-proc layoutThreads*(self: ScintillaEdit, ): miqt_intptr_t =
+proc layoutThreads*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_layoutThreads(self.h)
 
-proc copyAllowLine*(self: ScintillaEdit, ): void =
+proc copyAllowLine*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_copyAllowLine(self.h)
 
-proc cutAllowLine*(self: ScintillaEdit, ): void =
+proc cutAllowLine*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_cutAllowLine(self.h)
 
-proc setCopySeparator*(self: ScintillaEdit, separator: cstring): void =
+proc setCopySeparator*(self: gen_ScintillaEdit_types.ScintillaEdit, separator: cstring): void =
 
   fcScintillaEdit_setCopySeparator(self.h, separator)
 
-proc copySeparator*(self: ScintillaEdit, ): seq[byte] =
+proc copySeparator*(self: gen_ScintillaEdit_types.ScintillaEdit, ): seq[byte] =
 
   var v_bytearray = fcScintillaEdit_copySeparator(self.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc characterPointer*(self: ScintillaEdit, ): miqt_intptr_t =
+proc characterPointer*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_characterPointer(self.h)
 
-proc rangePointer*(self: ScintillaEdit, start: miqt_intptr_t, lengthRange: miqt_intptr_t): miqt_intptr_t =
+proc rangePointer*(self: gen_ScintillaEdit_types.ScintillaEdit, start: miqt_intptr_t, lengthRange: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_rangePointer(self.h, start, lengthRange)
 
-proc gapPosition*(self: ScintillaEdit, ): miqt_intptr_t =
+proc gapPosition*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_gapPosition(self.h)
 
-proc indicSetAlpha*(self: ScintillaEdit, indicator: miqt_intptr_t, alpha: miqt_intptr_t): void =
+proc indicSetAlpha*(self: gen_ScintillaEdit_types.ScintillaEdit, indicator: miqt_intptr_t, alpha: miqt_intptr_t): void =
 
   fcScintillaEdit_indicSetAlpha(self.h, indicator, alpha)
 
-proc indicAlpha*(self: ScintillaEdit, indicator: miqt_intptr_t): miqt_intptr_t =
+proc indicAlpha*(self: gen_ScintillaEdit_types.ScintillaEdit, indicator: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_indicAlpha(self.h, indicator)
 
-proc indicSetOutlineAlpha*(self: ScintillaEdit, indicator: miqt_intptr_t, alpha: miqt_intptr_t): void =
+proc indicSetOutlineAlpha*(self: gen_ScintillaEdit_types.ScintillaEdit, indicator: miqt_intptr_t, alpha: miqt_intptr_t): void =
 
   fcScintillaEdit_indicSetOutlineAlpha(self.h, indicator, alpha)
 
-proc indicOutlineAlpha*(self: ScintillaEdit, indicator: miqt_intptr_t): miqt_intptr_t =
+proc indicOutlineAlpha*(self: gen_ScintillaEdit_types.ScintillaEdit, indicator: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_indicOutlineAlpha(self.h, indicator)
 
-proc setExtraAscent*(self: ScintillaEdit, extraAscent: miqt_intptr_t): void =
+proc setExtraAscent*(self: gen_ScintillaEdit_types.ScintillaEdit, extraAscent: miqt_intptr_t): void =
 
   fcScintillaEdit_setExtraAscent(self.h, extraAscent)
 
-proc extraAscent*(self: ScintillaEdit, ): miqt_intptr_t =
+proc extraAscent*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_extraAscent(self.h)
 
-proc setExtraDescent*(self: ScintillaEdit, extraDescent: miqt_intptr_t): void =
+proc setExtraDescent*(self: gen_ScintillaEdit_types.ScintillaEdit, extraDescent: miqt_intptr_t): void =
 
   fcScintillaEdit_setExtraDescent(self.h, extraDescent)
 
-proc extraDescent*(self: ScintillaEdit, ): miqt_intptr_t =
+proc extraDescent*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_extraDescent(self.h)
 
-proc markerSymbolDefined*(self: ScintillaEdit, markerNumber: miqt_intptr_t): miqt_intptr_t =
+proc markerSymbolDefined*(self: gen_ScintillaEdit_types.ScintillaEdit, markerNumber: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_markerSymbolDefined(self.h, markerNumber)
 
-proc marginSetText*(self: ScintillaEdit, line: miqt_intptr_t, text: cstring): void =
+proc marginSetText*(self: gen_ScintillaEdit_types.ScintillaEdit, line: miqt_intptr_t, text: cstring): void =
 
   fcScintillaEdit_marginSetText(self.h, line, text)
 
-proc marginText*(self: ScintillaEdit, line: miqt_intptr_t): seq[byte] =
+proc marginText*(self: gen_ScintillaEdit_types.ScintillaEdit, line: miqt_intptr_t): seq[byte] =
 
   var v_bytearray = fcScintillaEdit_marginText(self.h, line)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc marginSetStyle*(self: ScintillaEdit, line: miqt_intptr_t, style: miqt_intptr_t): void =
+proc marginSetStyle*(self: gen_ScintillaEdit_types.ScintillaEdit, line: miqt_intptr_t, style: miqt_intptr_t): void =
 
   fcScintillaEdit_marginSetStyle(self.h, line, style)
 
-proc marginStyle*(self: ScintillaEdit, line: miqt_intptr_t): miqt_intptr_t =
+proc marginStyle*(self: gen_ScintillaEdit_types.ScintillaEdit, line: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_marginStyle(self.h, line)
 
-proc marginSetStyles*(self: ScintillaEdit, line: miqt_intptr_t, styles: cstring): void =
+proc marginSetStyles*(self: gen_ScintillaEdit_types.ScintillaEdit, line: miqt_intptr_t, styles: cstring): void =
 
   fcScintillaEdit_marginSetStyles(self.h, line, styles)
 
-proc marginStyles*(self: ScintillaEdit, line: miqt_intptr_t): seq[byte] =
+proc marginStyles*(self: gen_ScintillaEdit_types.ScintillaEdit, line: miqt_intptr_t): seq[byte] =
 
   var v_bytearray = fcScintillaEdit_marginStyles(self.h, line)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc marginTextClearAll*(self: ScintillaEdit, ): void =
+proc marginTextClearAll*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_marginTextClearAll(self.h)
 
-proc marginSetStyleOffset*(self: ScintillaEdit, style: miqt_intptr_t): void =
+proc marginSetStyleOffset*(self: gen_ScintillaEdit_types.ScintillaEdit, style: miqt_intptr_t): void =
 
   fcScintillaEdit_marginSetStyleOffset(self.h, style)
 
-proc marginStyleOffset*(self: ScintillaEdit, ): miqt_intptr_t =
+proc marginStyleOffset*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_marginStyleOffset(self.h)
 
-proc setMarginOptions*(self: ScintillaEdit, marginOptions: miqt_intptr_t): void =
+proc setMarginOptions*(self: gen_ScintillaEdit_types.ScintillaEdit, marginOptions: miqt_intptr_t): void =
 
   fcScintillaEdit_setMarginOptions(self.h, marginOptions)
 
-proc marginOptions*(self: ScintillaEdit, ): miqt_intptr_t =
+proc marginOptions*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_marginOptions(self.h)
 
-proc annotationSetText*(self: ScintillaEdit, line: miqt_intptr_t, text: cstring): void =
+proc annotationSetText*(self: gen_ScintillaEdit_types.ScintillaEdit, line: miqt_intptr_t, text: cstring): void =
 
   fcScintillaEdit_annotationSetText(self.h, line, text)
 
-proc annotationText*(self: ScintillaEdit, line: miqt_intptr_t): seq[byte] =
+proc annotationText*(self: gen_ScintillaEdit_types.ScintillaEdit, line: miqt_intptr_t): seq[byte] =
 
   var v_bytearray = fcScintillaEdit_annotationText(self.h, line)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc annotationSetStyle*(self: ScintillaEdit, line: miqt_intptr_t, style: miqt_intptr_t): void =
+proc annotationSetStyle*(self: gen_ScintillaEdit_types.ScintillaEdit, line: miqt_intptr_t, style: miqt_intptr_t): void =
 
   fcScintillaEdit_annotationSetStyle(self.h, line, style)
 
-proc annotationStyle*(self: ScintillaEdit, line: miqt_intptr_t): miqt_intptr_t =
+proc annotationStyle*(self: gen_ScintillaEdit_types.ScintillaEdit, line: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_annotationStyle(self.h, line)
 
-proc annotationSetStyles*(self: ScintillaEdit, line: miqt_intptr_t, styles: cstring): void =
+proc annotationSetStyles*(self: gen_ScintillaEdit_types.ScintillaEdit, line: miqt_intptr_t, styles: cstring): void =
 
   fcScintillaEdit_annotationSetStyles(self.h, line, styles)
 
-proc annotationStyles*(self: ScintillaEdit, line: miqt_intptr_t): seq[byte] =
+proc annotationStyles*(self: gen_ScintillaEdit_types.ScintillaEdit, line: miqt_intptr_t): seq[byte] =
 
   var v_bytearray = fcScintillaEdit_annotationStyles(self.h, line)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc annotationLines*(self: ScintillaEdit, line: miqt_intptr_t): miqt_intptr_t =
+proc annotationLines*(self: gen_ScintillaEdit_types.ScintillaEdit, line: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_annotationLines(self.h, line)
 
-proc annotationClearAll*(self: ScintillaEdit, ): void =
+proc annotationClearAll*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_annotationClearAll(self.h)
 
-proc annotationSetVisible*(self: ScintillaEdit, visible: miqt_intptr_t): void =
+proc annotationSetVisible*(self: gen_ScintillaEdit_types.ScintillaEdit, visible: miqt_intptr_t): void =
 
   fcScintillaEdit_annotationSetVisible(self.h, visible)
 
-proc annotationVisible*(self: ScintillaEdit, ): miqt_intptr_t =
+proc annotationVisible*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_annotationVisible(self.h)
 
-proc annotationSetStyleOffset*(self: ScintillaEdit, style: miqt_intptr_t): void =
+proc annotationSetStyleOffset*(self: gen_ScintillaEdit_types.ScintillaEdit, style: miqt_intptr_t): void =
 
   fcScintillaEdit_annotationSetStyleOffset(self.h, style)
 
-proc annotationStyleOffset*(self: ScintillaEdit, ): miqt_intptr_t =
+proc annotationStyleOffset*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_annotationStyleOffset(self.h)
 
-proc releaseAllExtendedStyles*(self: ScintillaEdit, ): void =
+proc releaseAllExtendedStyles*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_releaseAllExtendedStyles(self.h)
 
-proc allocateExtendedStyles*(self: ScintillaEdit, numberStyles: miqt_intptr_t): miqt_intptr_t =
+proc allocateExtendedStyles*(self: gen_ScintillaEdit_types.ScintillaEdit, numberStyles: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_allocateExtendedStyles(self.h, numberStyles)
 
-proc addUndoAction*(self: ScintillaEdit, token: miqt_intptr_t, flags: miqt_intptr_t): void =
+proc addUndoAction*(self: gen_ScintillaEdit_types.ScintillaEdit, token: miqt_intptr_t, flags: miqt_intptr_t): void =
 
   fcScintillaEdit_addUndoAction(self.h, token, flags)
 
-proc charPositionFromPoint*(self: ScintillaEdit, x: miqt_intptr_t, y: miqt_intptr_t): miqt_intptr_t =
+proc charPositionFromPoint*(self: gen_ScintillaEdit_types.ScintillaEdit, x: miqt_intptr_t, y: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_charPositionFromPoint(self.h, x, y)
 
-proc charPositionFromPointClose*(self: ScintillaEdit, x: miqt_intptr_t, y: miqt_intptr_t): miqt_intptr_t =
+proc charPositionFromPointClose*(self: gen_ScintillaEdit_types.ScintillaEdit, x: miqt_intptr_t, y: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_charPositionFromPointClose(self.h, x, y)
 
-proc setMouseSelectionRectangularSwitch*(self: ScintillaEdit, mouseSelectionRectangularSwitch: bool): void =
+proc setMouseSelectionRectangularSwitch*(self: gen_ScintillaEdit_types.ScintillaEdit, mouseSelectionRectangularSwitch: bool): void =
 
   fcScintillaEdit_setMouseSelectionRectangularSwitch(self.h, mouseSelectionRectangularSwitch)
 
-proc mouseSelectionRectangularSwitch*(self: ScintillaEdit, ): bool =
+proc mouseSelectionRectangularSwitch*(self: gen_ScintillaEdit_types.ScintillaEdit, ): bool =
 
   fcScintillaEdit_mouseSelectionRectangularSwitch(self.h)
 
-proc setMultipleSelection*(self: ScintillaEdit, multipleSelection: bool): void =
+proc setMultipleSelection*(self: gen_ScintillaEdit_types.ScintillaEdit, multipleSelection: bool): void =
 
   fcScintillaEdit_setMultipleSelection(self.h, multipleSelection)
 
-proc multipleSelection*(self: ScintillaEdit, ): bool =
+proc multipleSelection*(self: gen_ScintillaEdit_types.ScintillaEdit, ): bool =
 
   fcScintillaEdit_multipleSelection(self.h)
 
-proc setAdditionalSelectionTyping*(self: ScintillaEdit, additionalSelectionTyping: bool): void =
+proc setAdditionalSelectionTyping*(self: gen_ScintillaEdit_types.ScintillaEdit, additionalSelectionTyping: bool): void =
 
   fcScintillaEdit_setAdditionalSelectionTyping(self.h, additionalSelectionTyping)
 
-proc additionalSelectionTyping*(self: ScintillaEdit, ): bool =
+proc additionalSelectionTyping*(self: gen_ScintillaEdit_types.ScintillaEdit, ): bool =
 
   fcScintillaEdit_additionalSelectionTyping(self.h)
 
-proc setAdditionalCaretsBlink*(self: ScintillaEdit, additionalCaretsBlink: bool): void =
+proc setAdditionalCaretsBlink*(self: gen_ScintillaEdit_types.ScintillaEdit, additionalCaretsBlink: bool): void =
 
   fcScintillaEdit_setAdditionalCaretsBlink(self.h, additionalCaretsBlink)
 
-proc additionalCaretsBlink*(self: ScintillaEdit, ): bool =
+proc additionalCaretsBlink*(self: gen_ScintillaEdit_types.ScintillaEdit, ): bool =
 
   fcScintillaEdit_additionalCaretsBlink(self.h)
 
-proc setAdditionalCaretsVisible*(self: ScintillaEdit, additionalCaretsVisible: bool): void =
+proc setAdditionalCaretsVisible*(self: gen_ScintillaEdit_types.ScintillaEdit, additionalCaretsVisible: bool): void =
 
   fcScintillaEdit_setAdditionalCaretsVisible(self.h, additionalCaretsVisible)
 
-proc additionalCaretsVisible*(self: ScintillaEdit, ): bool =
+proc additionalCaretsVisible*(self: gen_ScintillaEdit_types.ScintillaEdit, ): bool =
 
   fcScintillaEdit_additionalCaretsVisible(self.h)
 
-proc selections*(self: ScintillaEdit, ): miqt_intptr_t =
+proc selections*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_selections(self.h)
 
-proc selectionEmpty*(self: ScintillaEdit, ): bool =
+proc selectionEmpty*(self: gen_ScintillaEdit_types.ScintillaEdit, ): bool =
 
   fcScintillaEdit_selectionEmpty(self.h)
 
-proc clearSelections*(self: ScintillaEdit, ): void =
+proc clearSelections*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_clearSelections(self.h)
 
-proc setSelection*(self: ScintillaEdit, caret: miqt_intptr_t, anchor: miqt_intptr_t): void =
+proc setSelection*(self: gen_ScintillaEdit_types.ScintillaEdit, caret: miqt_intptr_t, anchor: miqt_intptr_t): void =
 
   fcScintillaEdit_setSelection(self.h, caret, anchor)
 
-proc addSelection*(self: ScintillaEdit, caret: miqt_intptr_t, anchor: miqt_intptr_t): void =
+proc addSelection*(self: gen_ScintillaEdit_types.ScintillaEdit, caret: miqt_intptr_t, anchor: miqt_intptr_t): void =
 
   fcScintillaEdit_addSelection(self.h, caret, anchor)
 
-proc selectionFromPoint*(self: ScintillaEdit, x: miqt_intptr_t, y: miqt_intptr_t): miqt_intptr_t =
+proc selectionFromPoint*(self: gen_ScintillaEdit_types.ScintillaEdit, x: miqt_intptr_t, y: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_selectionFromPoint(self.h, x, y)
 
-proc dropSelectionN*(self: ScintillaEdit, selection: miqt_intptr_t): void =
+proc dropSelectionN*(self: gen_ScintillaEdit_types.ScintillaEdit, selection: miqt_intptr_t): void =
 
   fcScintillaEdit_dropSelectionN(self.h, selection)
 
-proc setMainSelection*(self: ScintillaEdit, selection: miqt_intptr_t): void =
+proc setMainSelection*(self: gen_ScintillaEdit_types.ScintillaEdit, selection: miqt_intptr_t): void =
 
   fcScintillaEdit_setMainSelection(self.h, selection)
 
-proc mainSelection*(self: ScintillaEdit, ): miqt_intptr_t =
+proc mainSelection*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_mainSelection(self.h)
 
-proc setSelectionNCaret*(self: ScintillaEdit, selection: miqt_intptr_t, caret: miqt_intptr_t): void =
+proc setSelectionNCaret*(self: gen_ScintillaEdit_types.ScintillaEdit, selection: miqt_intptr_t, caret: miqt_intptr_t): void =
 
   fcScintillaEdit_setSelectionNCaret(self.h, selection, caret)
 
-proc selectionNCaret*(self: ScintillaEdit, selection: miqt_intptr_t): miqt_intptr_t =
+proc selectionNCaret*(self: gen_ScintillaEdit_types.ScintillaEdit, selection: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_selectionNCaret(self.h, selection)
 
-proc setSelectionNAnchor*(self: ScintillaEdit, selection: miqt_intptr_t, anchor: miqt_intptr_t): void =
+proc setSelectionNAnchor*(self: gen_ScintillaEdit_types.ScintillaEdit, selection: miqt_intptr_t, anchor: miqt_intptr_t): void =
 
   fcScintillaEdit_setSelectionNAnchor(self.h, selection, anchor)
 
-proc selectionNAnchor*(self: ScintillaEdit, selection: miqt_intptr_t): miqt_intptr_t =
+proc selectionNAnchor*(self: gen_ScintillaEdit_types.ScintillaEdit, selection: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_selectionNAnchor(self.h, selection)
 
-proc setSelectionNCaretVirtualSpace*(self: ScintillaEdit, selection: miqt_intptr_t, space: miqt_intptr_t): void =
+proc setSelectionNCaretVirtualSpace*(self: gen_ScintillaEdit_types.ScintillaEdit, selection: miqt_intptr_t, space: miqt_intptr_t): void =
 
   fcScintillaEdit_setSelectionNCaretVirtualSpace(self.h, selection, space)
 
-proc selectionNCaretVirtualSpace*(self: ScintillaEdit, selection: miqt_intptr_t): miqt_intptr_t =
+proc selectionNCaretVirtualSpace*(self: gen_ScintillaEdit_types.ScintillaEdit, selection: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_selectionNCaretVirtualSpace(self.h, selection)
 
-proc setSelectionNAnchorVirtualSpace*(self: ScintillaEdit, selection: miqt_intptr_t, space: miqt_intptr_t): void =
+proc setSelectionNAnchorVirtualSpace*(self: gen_ScintillaEdit_types.ScintillaEdit, selection: miqt_intptr_t, space: miqt_intptr_t): void =
 
   fcScintillaEdit_setSelectionNAnchorVirtualSpace(self.h, selection, space)
 
-proc selectionNAnchorVirtualSpace*(self: ScintillaEdit, selection: miqt_intptr_t): miqt_intptr_t =
+proc selectionNAnchorVirtualSpace*(self: gen_ScintillaEdit_types.ScintillaEdit, selection: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_selectionNAnchorVirtualSpace(self.h, selection)
 
-proc setSelectionNStart*(self: ScintillaEdit, selection: miqt_intptr_t, anchor: miqt_intptr_t): void =
+proc setSelectionNStart*(self: gen_ScintillaEdit_types.ScintillaEdit, selection: miqt_intptr_t, anchor: miqt_intptr_t): void =
 
   fcScintillaEdit_setSelectionNStart(self.h, selection, anchor)
 
-proc selectionNStart*(self: ScintillaEdit, selection: miqt_intptr_t): miqt_intptr_t =
+proc selectionNStart*(self: gen_ScintillaEdit_types.ScintillaEdit, selection: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_selectionNStart(self.h, selection)
 
-proc selectionNStartVirtualSpace*(self: ScintillaEdit, selection: miqt_intptr_t): miqt_intptr_t =
+proc selectionNStartVirtualSpace*(self: gen_ScintillaEdit_types.ScintillaEdit, selection: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_selectionNStartVirtualSpace(self.h, selection)
 
-proc setSelectionNEnd*(self: ScintillaEdit, selection: miqt_intptr_t, caret: miqt_intptr_t): void =
+proc setSelectionNEnd*(self: gen_ScintillaEdit_types.ScintillaEdit, selection: miqt_intptr_t, caret: miqt_intptr_t): void =
 
   fcScintillaEdit_setSelectionNEnd(self.h, selection, caret)
 
-proc selectionNEndVirtualSpace*(self: ScintillaEdit, selection: miqt_intptr_t): miqt_intptr_t =
+proc selectionNEndVirtualSpace*(self: gen_ScintillaEdit_types.ScintillaEdit, selection: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_selectionNEndVirtualSpace(self.h, selection)
 
-proc selectionNEnd*(self: ScintillaEdit, selection: miqt_intptr_t): miqt_intptr_t =
+proc selectionNEnd*(self: gen_ScintillaEdit_types.ScintillaEdit, selection: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_selectionNEnd(self.h, selection)
 
-proc setRectangularSelectionCaret*(self: ScintillaEdit, caret: miqt_intptr_t): void =
+proc setRectangularSelectionCaret*(self: gen_ScintillaEdit_types.ScintillaEdit, caret: miqt_intptr_t): void =
 
   fcScintillaEdit_setRectangularSelectionCaret(self.h, caret)
 
-proc rectangularSelectionCaret*(self: ScintillaEdit, ): miqt_intptr_t =
+proc rectangularSelectionCaret*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_rectangularSelectionCaret(self.h)
 
-proc setRectangularSelectionAnchor*(self: ScintillaEdit, anchor: miqt_intptr_t): void =
+proc setRectangularSelectionAnchor*(self: gen_ScintillaEdit_types.ScintillaEdit, anchor: miqt_intptr_t): void =
 
   fcScintillaEdit_setRectangularSelectionAnchor(self.h, anchor)
 
-proc rectangularSelectionAnchor*(self: ScintillaEdit, ): miqt_intptr_t =
+proc rectangularSelectionAnchor*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_rectangularSelectionAnchor(self.h)
 
-proc setRectangularSelectionCaretVirtualSpace*(self: ScintillaEdit, space: miqt_intptr_t): void =
+proc setRectangularSelectionCaretVirtualSpace*(self: gen_ScintillaEdit_types.ScintillaEdit, space: miqt_intptr_t): void =
 
   fcScintillaEdit_setRectangularSelectionCaretVirtualSpace(self.h, space)
 
-proc rectangularSelectionCaretVirtualSpace*(self: ScintillaEdit, ): miqt_intptr_t =
+proc rectangularSelectionCaretVirtualSpace*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_rectangularSelectionCaretVirtualSpace(self.h)
 
-proc setRectangularSelectionAnchorVirtualSpace*(self: ScintillaEdit, space: miqt_intptr_t): void =
+proc setRectangularSelectionAnchorVirtualSpace*(self: gen_ScintillaEdit_types.ScintillaEdit, space: miqt_intptr_t): void =
 
   fcScintillaEdit_setRectangularSelectionAnchorVirtualSpace(self.h, space)
 
-proc rectangularSelectionAnchorVirtualSpace*(self: ScintillaEdit, ): miqt_intptr_t =
+proc rectangularSelectionAnchorVirtualSpace*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_rectangularSelectionAnchorVirtualSpace(self.h)
 
-proc setVirtualSpaceOptions*(self: ScintillaEdit, virtualSpaceOptions: miqt_intptr_t): void =
+proc setVirtualSpaceOptions*(self: gen_ScintillaEdit_types.ScintillaEdit, virtualSpaceOptions: miqt_intptr_t): void =
 
   fcScintillaEdit_setVirtualSpaceOptions(self.h, virtualSpaceOptions)
 
-proc virtualSpaceOptions*(self: ScintillaEdit, ): miqt_intptr_t =
+proc virtualSpaceOptions*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_virtualSpaceOptions(self.h)
 
-proc setRectangularSelectionModifier*(self: ScintillaEdit, modifier: miqt_intptr_t): void =
+proc setRectangularSelectionModifier*(self: gen_ScintillaEdit_types.ScintillaEdit, modifier: miqt_intptr_t): void =
 
   fcScintillaEdit_setRectangularSelectionModifier(self.h, modifier)
 
-proc rectangularSelectionModifier*(self: ScintillaEdit, ): miqt_intptr_t =
+proc rectangularSelectionModifier*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_rectangularSelectionModifier(self.h)
 
-proc setAdditionalSelFore*(self: ScintillaEdit, fore: miqt_intptr_t): void =
+proc setAdditionalSelFore*(self: gen_ScintillaEdit_types.ScintillaEdit, fore: miqt_intptr_t): void =
 
   fcScintillaEdit_setAdditionalSelFore(self.h, fore)
 
-proc setAdditionalSelBack*(self: ScintillaEdit, back: miqt_intptr_t): void =
+proc setAdditionalSelBack*(self: gen_ScintillaEdit_types.ScintillaEdit, back: miqt_intptr_t): void =
 
   fcScintillaEdit_setAdditionalSelBack(self.h, back)
 
-proc setAdditionalSelAlpha*(self: ScintillaEdit, alpha: miqt_intptr_t): void =
+proc setAdditionalSelAlpha*(self: gen_ScintillaEdit_types.ScintillaEdit, alpha: miqt_intptr_t): void =
 
   fcScintillaEdit_setAdditionalSelAlpha(self.h, alpha)
 
-proc additionalSelAlpha*(self: ScintillaEdit, ): miqt_intptr_t =
+proc additionalSelAlpha*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_additionalSelAlpha(self.h)
 
-proc setAdditionalCaretFore*(self: ScintillaEdit, fore: miqt_intptr_t): void =
+proc setAdditionalCaretFore*(self: gen_ScintillaEdit_types.ScintillaEdit, fore: miqt_intptr_t): void =
 
   fcScintillaEdit_setAdditionalCaretFore(self.h, fore)
 
-proc additionalCaretFore*(self: ScintillaEdit, ): miqt_intptr_t =
+proc additionalCaretFore*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_additionalCaretFore(self.h)
 
-proc rotateSelection*(self: ScintillaEdit, ): void =
+proc rotateSelection*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_rotateSelection(self.h)
 
-proc swapMainAnchorCaret*(self: ScintillaEdit, ): void =
+proc swapMainAnchorCaret*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_swapMainAnchorCaret(self.h)
 
-proc multipleSelectAddNext*(self: ScintillaEdit, ): void =
+proc multipleSelectAddNext*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_multipleSelectAddNext(self.h)
 
-proc multipleSelectAddEach*(self: ScintillaEdit, ): void =
+proc multipleSelectAddEach*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_multipleSelectAddEach(self.h)
 
-proc changeLexerState*(self: ScintillaEdit, start: miqt_intptr_t, endVal: miqt_intptr_t): miqt_intptr_t =
+proc changeLexerState*(self: gen_ScintillaEdit_types.ScintillaEdit, start: miqt_intptr_t, endVal: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_changeLexerState(self.h, start, endVal)
 
-proc contractedFoldNext*(self: ScintillaEdit, lineStart: miqt_intptr_t): miqt_intptr_t =
+proc contractedFoldNext*(self: gen_ScintillaEdit_types.ScintillaEdit, lineStart: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_contractedFoldNext(self.h, lineStart)
 
-proc verticalCentreCaret*(self: ScintillaEdit, ): void =
+proc verticalCentreCaret*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_verticalCentreCaret(self.h)
 
-proc moveSelectedLinesUp*(self: ScintillaEdit, ): void =
+proc moveSelectedLinesUp*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_moveSelectedLinesUp(self.h)
 
-proc moveSelectedLinesDown*(self: ScintillaEdit, ): void =
+proc moveSelectedLinesDown*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_moveSelectedLinesDown(self.h)
 
-proc setIdentifier*(self: ScintillaEdit, identifier: miqt_intptr_t): void =
+proc setIdentifier*(self: gen_ScintillaEdit_types.ScintillaEdit, identifier: miqt_intptr_t): void =
 
   fcScintillaEdit_setIdentifier(self.h, identifier)
 
-proc identifier*(self: ScintillaEdit, ): miqt_intptr_t =
+proc identifier*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_identifier(self.h)
 
-proc rGBAImageSetWidth*(self: ScintillaEdit, width: miqt_intptr_t): void =
+proc rGBAImageSetWidth*(self: gen_ScintillaEdit_types.ScintillaEdit, width: miqt_intptr_t): void =
 
   fcScintillaEdit_rGBAImageSetWidth(self.h, width)
 
-proc rGBAImageSetHeight*(self: ScintillaEdit, height: miqt_intptr_t): void =
+proc rGBAImageSetHeight*(self: gen_ScintillaEdit_types.ScintillaEdit, height: miqt_intptr_t): void =
 
   fcScintillaEdit_rGBAImageSetHeight(self.h, height)
 
-proc rGBAImageSetScale*(self: ScintillaEdit, scalePercent: miqt_intptr_t): void =
+proc rGBAImageSetScale*(self: gen_ScintillaEdit_types.ScintillaEdit, scalePercent: miqt_intptr_t): void =
 
   fcScintillaEdit_rGBAImageSetScale(self.h, scalePercent)
 
-proc markerDefineRGBAImage*(self: ScintillaEdit, markerNumber: miqt_intptr_t, pixels: cstring): void =
+proc markerDefineRGBAImage*(self: gen_ScintillaEdit_types.ScintillaEdit, markerNumber: miqt_intptr_t, pixels: cstring): void =
 
   fcScintillaEdit_markerDefineRGBAImage(self.h, markerNumber, pixels)
 
-proc registerRGBAImage*(self: ScintillaEdit, typeVal: miqt_intptr_t, pixels: cstring): void =
+proc registerRGBAImage*(self: gen_ScintillaEdit_types.ScintillaEdit, typeVal: miqt_intptr_t, pixels: cstring): void =
 
   fcScintillaEdit_registerRGBAImage(self.h, typeVal, pixels)
 
-proc scrollToStart*(self: ScintillaEdit, ): void =
+proc scrollToStart*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_scrollToStart(self.h)
 
-proc scrollToEnd*(self: ScintillaEdit, ): void =
+proc scrollToEnd*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_scrollToEnd(self.h)
 
-proc setTechnology*(self: ScintillaEdit, technology: miqt_intptr_t): void =
+proc setTechnology*(self: gen_ScintillaEdit_types.ScintillaEdit, technology: miqt_intptr_t): void =
 
   fcScintillaEdit_setTechnology(self.h, technology)
 
-proc technology*(self: ScintillaEdit, ): miqt_intptr_t =
+proc technology*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_technology(self.h)
 
-proc createLoader*(self: ScintillaEdit, bytes: miqt_intptr_t, documentOptions: miqt_intptr_t): miqt_intptr_t =
+proc createLoader*(self: gen_ScintillaEdit_types.ScintillaEdit, bytes: miqt_intptr_t, documentOptions: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_createLoader(self.h, bytes, documentOptions)
 
-proc findIndicatorShow*(self: ScintillaEdit, start: miqt_intptr_t, endVal: miqt_intptr_t): void =
+proc findIndicatorShow*(self: gen_ScintillaEdit_types.ScintillaEdit, start: miqt_intptr_t, endVal: miqt_intptr_t): void =
 
   fcScintillaEdit_findIndicatorShow(self.h, start, endVal)
 
-proc findIndicatorFlash*(self: ScintillaEdit, start: miqt_intptr_t, endVal: miqt_intptr_t): void =
+proc findIndicatorFlash*(self: gen_ScintillaEdit_types.ScintillaEdit, start: miqt_intptr_t, endVal: miqt_intptr_t): void =
 
   fcScintillaEdit_findIndicatorFlash(self.h, start, endVal)
 
-proc findIndicatorHide*(self: ScintillaEdit, ): void =
+proc findIndicatorHide*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_findIndicatorHide(self.h)
 
-proc vCHomeDisplay*(self: ScintillaEdit, ): void =
+proc vCHomeDisplay*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_vCHomeDisplay(self.h)
 
-proc vCHomeDisplayExtend*(self: ScintillaEdit, ): void =
+proc vCHomeDisplayExtend*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_vCHomeDisplayExtend(self.h)
 
-proc caretLineVisibleAlways*(self: ScintillaEdit, ): bool =
+proc caretLineVisibleAlways*(self: gen_ScintillaEdit_types.ScintillaEdit, ): bool =
 
   fcScintillaEdit_caretLineVisibleAlways(self.h)
 
-proc setCaretLineVisibleAlways*(self: ScintillaEdit, alwaysVisible: bool): void =
+proc setCaretLineVisibleAlways*(self: gen_ScintillaEdit_types.ScintillaEdit, alwaysVisible: bool): void =
 
   fcScintillaEdit_setCaretLineVisibleAlways(self.h, alwaysVisible)
 
-proc setLineEndTypesAllowed*(self: ScintillaEdit, lineEndBitSet: miqt_intptr_t): void =
+proc setLineEndTypesAllowed*(self: gen_ScintillaEdit_types.ScintillaEdit, lineEndBitSet: miqt_intptr_t): void =
 
   fcScintillaEdit_setLineEndTypesAllowed(self.h, lineEndBitSet)
 
-proc lineEndTypesAllowed*(self: ScintillaEdit, ): miqt_intptr_t =
+proc lineEndTypesAllowed*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_lineEndTypesAllowed(self.h)
 
-proc lineEndTypesActive*(self: ScintillaEdit, ): miqt_intptr_t =
+proc lineEndTypesActive*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_lineEndTypesActive(self.h)
 
-proc setRepresentation*(self: ScintillaEdit, encodedCharacter: cstring, representation: cstring): void =
+proc setRepresentation*(self: gen_ScintillaEdit_types.ScintillaEdit, encodedCharacter: cstring, representation: cstring): void =
 
   fcScintillaEdit_setRepresentation(self.h, encodedCharacter, representation)
 
-proc representation*(self: ScintillaEdit, encodedCharacter: cstring): seq[byte] =
+proc representation*(self: gen_ScintillaEdit_types.ScintillaEdit, encodedCharacter: cstring): seq[byte] =
 
   var v_bytearray = fcScintillaEdit_representation(self.h, encodedCharacter)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc clearRepresentation*(self: ScintillaEdit, encodedCharacter: cstring): void =
+proc clearRepresentation*(self: gen_ScintillaEdit_types.ScintillaEdit, encodedCharacter: cstring): void =
 
   fcScintillaEdit_clearRepresentation(self.h, encodedCharacter)
 
-proc clearAllRepresentations*(self: ScintillaEdit, ): void =
+proc clearAllRepresentations*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_clearAllRepresentations(self.h)
 
-proc setRepresentationAppearance*(self: ScintillaEdit, encodedCharacter: cstring, appearance: miqt_intptr_t): void =
+proc setRepresentationAppearance*(self: gen_ScintillaEdit_types.ScintillaEdit, encodedCharacter: cstring, appearance: miqt_intptr_t): void =
 
   fcScintillaEdit_setRepresentationAppearance(self.h, encodedCharacter, appearance)
 
-proc representationAppearance*(self: ScintillaEdit, encodedCharacter: cstring): miqt_intptr_t =
+proc representationAppearance*(self: gen_ScintillaEdit_types.ScintillaEdit, encodedCharacter: cstring): miqt_intptr_t =
 
   fcScintillaEdit_representationAppearance(self.h, encodedCharacter)
 
-proc setRepresentationColour*(self: ScintillaEdit, encodedCharacter: cstring, colour: miqt_intptr_t): void =
+proc setRepresentationColour*(self: gen_ScintillaEdit_types.ScintillaEdit, encodedCharacter: cstring, colour: miqt_intptr_t): void =
 
   fcScintillaEdit_setRepresentationColour(self.h, encodedCharacter, colour)
 
-proc representationColour*(self: ScintillaEdit, encodedCharacter: cstring): miqt_intptr_t =
+proc representationColour*(self: gen_ScintillaEdit_types.ScintillaEdit, encodedCharacter: cstring): miqt_intptr_t =
 
   fcScintillaEdit_representationColour(self.h, encodedCharacter)
 
-proc eOLAnnotationSetText*(self: ScintillaEdit, line: miqt_intptr_t, text: cstring): void =
+proc eOLAnnotationSetText*(self: gen_ScintillaEdit_types.ScintillaEdit, line: miqt_intptr_t, text: cstring): void =
 
   fcScintillaEdit_eOLAnnotationSetText(self.h, line, text)
 
-proc eOLAnnotationText*(self: ScintillaEdit, line: miqt_intptr_t): seq[byte] =
+proc eOLAnnotationText*(self: gen_ScintillaEdit_types.ScintillaEdit, line: miqt_intptr_t): seq[byte] =
 
   var v_bytearray = fcScintillaEdit_eOLAnnotationText(self.h, line)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc eOLAnnotationSetStyle*(self: ScintillaEdit, line: miqt_intptr_t, style: miqt_intptr_t): void =
+proc eOLAnnotationSetStyle*(self: gen_ScintillaEdit_types.ScintillaEdit, line: miqt_intptr_t, style: miqt_intptr_t): void =
 
   fcScintillaEdit_eOLAnnotationSetStyle(self.h, line, style)
 
-proc eOLAnnotationStyle*(self: ScintillaEdit, line: miqt_intptr_t): miqt_intptr_t =
+proc eOLAnnotationStyle*(self: gen_ScintillaEdit_types.ScintillaEdit, line: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_eOLAnnotationStyle(self.h, line)
 
-proc eOLAnnotationClearAll*(self: ScintillaEdit, ): void =
+proc eOLAnnotationClearAll*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_eOLAnnotationClearAll(self.h)
 
-proc eOLAnnotationSetVisible*(self: ScintillaEdit, visible: miqt_intptr_t): void =
+proc eOLAnnotationSetVisible*(self: gen_ScintillaEdit_types.ScintillaEdit, visible: miqt_intptr_t): void =
 
   fcScintillaEdit_eOLAnnotationSetVisible(self.h, visible)
 
-proc eOLAnnotationVisible*(self: ScintillaEdit, ): miqt_intptr_t =
+proc eOLAnnotationVisible*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_eOLAnnotationVisible(self.h)
 
-proc eOLAnnotationSetStyleOffset*(self: ScintillaEdit, style: miqt_intptr_t): void =
+proc eOLAnnotationSetStyleOffset*(self: gen_ScintillaEdit_types.ScintillaEdit, style: miqt_intptr_t): void =
 
   fcScintillaEdit_eOLAnnotationSetStyleOffset(self.h, style)
 
-proc eOLAnnotationStyleOffset*(self: ScintillaEdit, ): miqt_intptr_t =
+proc eOLAnnotationStyleOffset*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_eOLAnnotationStyleOffset(self.h)
 
-proc supportsFeature*(self: ScintillaEdit, feature: miqt_intptr_t): bool =
+proc supportsFeature*(self: gen_ScintillaEdit_types.ScintillaEdit, feature: miqt_intptr_t): bool =
 
   fcScintillaEdit_supportsFeature(self.h, feature)
 
-proc lineCharacterIndex*(self: ScintillaEdit, ): miqt_intptr_t =
+proc lineCharacterIndex*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_lineCharacterIndex(self.h)
 
-proc allocateLineCharacterIndex*(self: ScintillaEdit, lineCharacterIndex: miqt_intptr_t): void =
+proc allocateLineCharacterIndex*(self: gen_ScintillaEdit_types.ScintillaEdit, lineCharacterIndex: miqt_intptr_t): void =
 
   fcScintillaEdit_allocateLineCharacterIndex(self.h, lineCharacterIndex)
 
-proc releaseLineCharacterIndex*(self: ScintillaEdit, lineCharacterIndex: miqt_intptr_t): void =
+proc releaseLineCharacterIndex*(self: gen_ScintillaEdit_types.ScintillaEdit, lineCharacterIndex: miqt_intptr_t): void =
 
   fcScintillaEdit_releaseLineCharacterIndex(self.h, lineCharacterIndex)
 
-proc lineFromIndexPosition*(self: ScintillaEdit, pos: miqt_intptr_t, lineCharacterIndex: miqt_intptr_t): miqt_intptr_t =
+proc lineFromIndexPosition*(self: gen_ScintillaEdit_types.ScintillaEdit, pos: miqt_intptr_t, lineCharacterIndex: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_lineFromIndexPosition(self.h, pos, lineCharacterIndex)
 
-proc indexPositionFromLine*(self: ScintillaEdit, line: miqt_intptr_t, lineCharacterIndex: miqt_intptr_t): miqt_intptr_t =
+proc indexPositionFromLine*(self: gen_ScintillaEdit_types.ScintillaEdit, line: miqt_intptr_t, lineCharacterIndex: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_indexPositionFromLine(self.h, line, lineCharacterIndex)
 
-proc startRecord*(self: ScintillaEdit, ): void =
+proc startRecord*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_startRecord(self.h)
 
-proc stopRecord*(self: ScintillaEdit, ): void =
+proc stopRecord*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_stopRecord(self.h)
 
-proc lexer*(self: ScintillaEdit, ): miqt_intptr_t =
+proc lexer*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_lexer(self.h)
 
-proc colourise*(self: ScintillaEdit, start: miqt_intptr_t, endVal: miqt_intptr_t): void =
+proc colourise*(self: gen_ScintillaEdit_types.ScintillaEdit, start: miqt_intptr_t, endVal: miqt_intptr_t): void =
 
   fcScintillaEdit_colourise(self.h, start, endVal)
 
-proc setProperty*(self: ScintillaEdit, key: cstring, value: cstring): void =
+proc setProperty*(self: gen_ScintillaEdit_types.ScintillaEdit, key: cstring, value: cstring): void =
 
   fcScintillaEdit_setProperty(self.h, key, value)
 
-proc setKeyWords*(self: ScintillaEdit, keyWordSet: miqt_intptr_t, keyWords: cstring): void =
+proc setKeyWords*(self: gen_ScintillaEdit_types.ScintillaEdit, keyWordSet: miqt_intptr_t, keyWords: cstring): void =
 
   fcScintillaEdit_setKeyWords(self.h, keyWordSet, keyWords)
 
-proc property*(self: ScintillaEdit, key: cstring): seq[byte] =
+proc property*(self: gen_ScintillaEdit_types.ScintillaEdit, key: cstring): seq[byte] =
 
   var v_bytearray = fcScintillaEdit_property(self.h, key)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc propertyExpanded*(self: ScintillaEdit, key: cstring): seq[byte] =
+proc propertyExpanded*(self: gen_ScintillaEdit_types.ScintillaEdit, key: cstring): seq[byte] =
 
   var v_bytearray = fcScintillaEdit_propertyExpanded(self.h, key)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc propertyInt*(self: ScintillaEdit, key: cstring, defaultValue: miqt_intptr_t): miqt_intptr_t =
+proc propertyInt*(self: gen_ScintillaEdit_types.ScintillaEdit, key: cstring, defaultValue: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_propertyInt(self.h, key, defaultValue)
 
-proc lexerLanguage*(self: ScintillaEdit, ): seq[byte] =
+proc lexerLanguage*(self: gen_ScintillaEdit_types.ScintillaEdit, ): seq[byte] =
 
   var v_bytearray = fcScintillaEdit_lexerLanguage(self.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc privateLexerCall*(self: ScintillaEdit, operation: miqt_intptr_t, pointer: miqt_intptr_t): miqt_intptr_t =
+proc privateLexerCall*(self: gen_ScintillaEdit_types.ScintillaEdit, operation: miqt_intptr_t, pointer: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_privateLexerCall(self.h, operation, pointer)
 
-proc propertyNames*(self: ScintillaEdit, ): seq[byte] =
+proc propertyNames*(self: gen_ScintillaEdit_types.ScintillaEdit, ): seq[byte] =
 
   var v_bytearray = fcScintillaEdit_propertyNames(self.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc propertyType*(self: ScintillaEdit, name: cstring): miqt_intptr_t =
+proc propertyType*(self: gen_ScintillaEdit_types.ScintillaEdit, name: cstring): miqt_intptr_t =
 
   fcScintillaEdit_propertyType(self.h, name)
 
-proc describeProperty*(self: ScintillaEdit, name: cstring): seq[byte] =
+proc describeProperty*(self: gen_ScintillaEdit_types.ScintillaEdit, name: cstring): seq[byte] =
 
   var v_bytearray = fcScintillaEdit_describeProperty(self.h, name)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc describeKeyWordSets*(self: ScintillaEdit, ): seq[byte] =
+proc describeKeyWordSets*(self: gen_ScintillaEdit_types.ScintillaEdit, ): seq[byte] =
 
   var v_bytearray = fcScintillaEdit_describeKeyWordSets(self.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc lineEndTypesSupported*(self: ScintillaEdit, ): miqt_intptr_t =
+proc lineEndTypesSupported*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_lineEndTypesSupported(self.h)
 
-proc allocateSubStyles*(self: ScintillaEdit, styleBase: miqt_intptr_t, numberStyles: miqt_intptr_t): miqt_intptr_t =
+proc allocateSubStyles*(self: gen_ScintillaEdit_types.ScintillaEdit, styleBase: miqt_intptr_t, numberStyles: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_allocateSubStyles(self.h, styleBase, numberStyles)
 
-proc subStylesStart*(self: ScintillaEdit, styleBase: miqt_intptr_t): miqt_intptr_t =
+proc subStylesStart*(self: gen_ScintillaEdit_types.ScintillaEdit, styleBase: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_subStylesStart(self.h, styleBase)
 
-proc subStylesLength*(self: ScintillaEdit, styleBase: miqt_intptr_t): miqt_intptr_t =
+proc subStylesLength*(self: gen_ScintillaEdit_types.ScintillaEdit, styleBase: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_subStylesLength(self.h, styleBase)
 
-proc styleFromSubStyle*(self: ScintillaEdit, subStyle: miqt_intptr_t): miqt_intptr_t =
+proc styleFromSubStyle*(self: gen_ScintillaEdit_types.ScintillaEdit, subStyle: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_styleFromSubStyle(self.h, subStyle)
 
-proc primaryStyleFromStyle*(self: ScintillaEdit, style: miqt_intptr_t): miqt_intptr_t =
+proc primaryStyleFromStyle*(self: gen_ScintillaEdit_types.ScintillaEdit, style: miqt_intptr_t): miqt_intptr_t =
 
   fcScintillaEdit_primaryStyleFromStyle(self.h, style)
 
-proc freeSubStyles*(self: ScintillaEdit, ): void =
+proc freeSubStyles*(self: gen_ScintillaEdit_types.ScintillaEdit, ): void =
 
   fcScintillaEdit_freeSubStyles(self.h)
 
-proc setIdentifiers*(self: ScintillaEdit, style: miqt_intptr_t, identifiers: cstring): void =
+proc setIdentifiers*(self: gen_ScintillaEdit_types.ScintillaEdit, style: miqt_intptr_t, identifiers: cstring): void =
 
   fcScintillaEdit_setIdentifiers(self.h, style, identifiers)
 
-proc distanceToSecondaryStyles*(self: ScintillaEdit, ): miqt_intptr_t =
+proc distanceToSecondaryStyles*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_distanceToSecondaryStyles(self.h)
 
-proc subStyleBases*(self: ScintillaEdit, ): seq[byte] =
+proc subStyleBases*(self: gen_ScintillaEdit_types.ScintillaEdit, ): seq[byte] =
 
   var v_bytearray = fcScintillaEdit_subStyleBases(self.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc namedStyles*(self: ScintillaEdit, ): miqt_intptr_t =
+proc namedStyles*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_namedStyles(self.h)
 
-proc nameOfStyle*(self: ScintillaEdit, style: miqt_intptr_t): seq[byte] =
+proc nameOfStyle*(self: gen_ScintillaEdit_types.ScintillaEdit, style: miqt_intptr_t): seq[byte] =
 
   var v_bytearray = fcScintillaEdit_nameOfStyle(self.h, style)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc tagsOfStyle*(self: ScintillaEdit, style: miqt_intptr_t): seq[byte] =
+proc tagsOfStyle*(self: gen_ScintillaEdit_types.ScintillaEdit, style: miqt_intptr_t): seq[byte] =
 
   var v_bytearray = fcScintillaEdit_tagsOfStyle(self.h, style)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc descriptionOfStyle*(self: ScintillaEdit, style: miqt_intptr_t): seq[byte] =
+proc descriptionOfStyle*(self: gen_ScintillaEdit_types.ScintillaEdit, style: miqt_intptr_t): seq[byte] =
 
   var v_bytearray = fcScintillaEdit_descriptionOfStyle(self.h, style)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc setILexer*(self: ScintillaEdit, ilexer: miqt_intptr_t): void =
+proc setILexer*(self: gen_ScintillaEdit_types.ScintillaEdit, ilexer: miqt_intptr_t): void =
 
   fcScintillaEdit_setILexer(self.h, ilexer)
 
-proc bidirectional*(self: ScintillaEdit, ): miqt_intptr_t =
+proc bidirectional*(self: gen_ScintillaEdit_types.ScintillaEdit, ): miqt_intptr_t =
 
   fcScintillaEdit_bidirectional(self.h)
 
-proc setBidirectional*(self: ScintillaEdit, bidirectional: miqt_intptr_t): void =
+proc setBidirectional*(self: gen_ScintillaEdit_types.ScintillaEdit, bidirectional: miqt_intptr_t): void =
 
   fcScintillaEdit_setBidirectional(self.h, bidirectional)
 
-proc tr2*(_: type ScintillaEdit, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_ScintillaEdit_types.ScintillaEdit, s: cstring, c: cstring): string =
 
   let v_ms = fcScintillaEdit_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type ScintillaEdit, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_ScintillaEdit_types.ScintillaEdit, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcScintillaEdit_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type ScintillaEdit, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_ScintillaEdit_types.ScintillaEdit, s: cstring, c: cstring): string =
 
   let v_ms = fcScintillaEdit_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type ScintillaEdit, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_ScintillaEdit_types.ScintillaEdit, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcScintillaEdit_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: ScintillaEdit, ): gen_qobjectdefs.QMetaObject =
-
+proc ScintillaEditmetaObject*(self: gen_ScintillaEdit_types.ScintillaEdit, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fScintillaEdit_virtualbase_metaObject(self.h))
 
-type ScintillaEditmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: ScintillaEdit, slot: proc(super: ScintillaEditmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type ScintillaEditmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEditmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new ScintillaEditmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_metaObject(self: ptr cScintillaEdit, slot: int): pointer {.exportc: "miqt_exec_callback_ScintillaEdit_metaObject ".} =
-  type Cb = proc(super: ScintillaEditmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(ScintillaEdit(h: self), )
+  var nimfunc = cast[ptr ScintillaEditmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: ScintillaEdit, param1: cstring): pointer =
-
+proc ScintillaEditmetacast*(self: gen_ScintillaEdit_types.ScintillaEdit, param1: cstring): pointer =
 
   fScintillaEdit_virtualbase_metacast(self.h, param1)
 
-type ScintillaEditmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: ScintillaEdit, slot: proc(super: ScintillaEditmetacastBase, param1: cstring): pointer) =
+type ScintillaEditmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEditmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new ScintillaEditmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_metacast(self: ptr cScintillaEdit, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_ScintillaEdit_metacast ".} =
-  type Cb = proc(super: ScintillaEditmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(ScintillaEdit(h: self), param1)
+  var nimfunc = cast[ptr ScintillaEditmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: ScintillaEdit, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc ScintillaEditmetacall*(self: gen_ScintillaEdit_types.ScintillaEdit, param1: cint, param2: cint, param3: pointer): cint =
 
   fScintillaEdit_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type ScintillaEditmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: ScintillaEdit, slot: proc(super: ScintillaEditmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type ScintillaEditmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEditmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new ScintillaEditmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_metacall(self: ptr cScintillaEdit, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_ScintillaEdit_metacall ".} =
-  type Cb = proc(super: ScintillaEditmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(ScintillaEdit(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr ScintillaEditmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_send(self: ScintillaEdit, iMessage: cuint, wParam: miqt_uintptr_t, lParam: miqt_intptr_t): miqt_intptr_t =
-
+proc ScintillaEditsend*(self: gen_ScintillaEdit_types.ScintillaEdit, iMessage: cuint, wParam: miqt_uintptr_t, lParam: miqt_intptr_t): miqt_intptr_t =
 
   fScintillaEdit_virtualbase_send(self.h, iMessage, wParam, lParam)
 
-type ScintillaEditsendBase* = proc(iMessage: cuint, wParam: miqt_uintptr_t, lParam: miqt_intptr_t): miqt_intptr_t
-proc onsend*(self: ScintillaEdit, slot: proc(super: ScintillaEditsendBase, iMessage: cuint, wParam: miqt_uintptr_t, lParam: miqt_intptr_t): miqt_intptr_t) =
+type ScintillaEditsendProc* = proc(iMessage: cuint, wParam: miqt_uintptr_t, lParam: miqt_intptr_t): miqt_intptr_t
+proc onsend*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEditsendProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditsendBase, iMessage: cuint, wParam: miqt_uintptr_t, lParam: miqt_intptr_t): miqt_intptr_t
-  var tmp = new Cb
+  var tmp = new ScintillaEditsendProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_send(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_send(self: ptr cScintillaEdit, slot: int, iMessage: cuint, wParam: miqt_uintptr_t, lParam: miqt_intptr_t): miqt_intptr_t {.exportc: "miqt_exec_callback_ScintillaEdit_send ".} =
-  type Cb = proc(super: ScintillaEditsendBase, iMessage: cuint, wParam: miqt_uintptr_t, lParam: miqt_intptr_t): miqt_intptr_t
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(iMessage: cuint, wParam: miqt_uintptr_t, lParam: miqt_intptr_t): auto =
-    callVirtualBase_send(ScintillaEdit(h: self), iMessage, wParam, lParam)
+  var nimfunc = cast[ptr ScintillaEditsendProc](cast[pointer](slot))
   let slotval1 = iMessage
 
   let slotval2 = wParam
@@ -11300,28 +10686,23 @@ proc miqt_exec_callback_ScintillaEdit_send(self: ptr cScintillaEdit, slot: int, 
   let slotval3 = lParam
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_sends(self: ScintillaEdit, iMessage: cuint, wParam: miqt_uintptr_t, s: cstring): miqt_intptr_t =
-
+proc ScintillaEditsends*(self: gen_ScintillaEdit_types.ScintillaEdit, iMessage: cuint, wParam: miqt_uintptr_t, s: cstring): miqt_intptr_t =
 
   fScintillaEdit_virtualbase_sends(self.h, iMessage, wParam, s)
 
-type ScintillaEditsendsBase* = proc(iMessage: cuint, wParam: miqt_uintptr_t, s: cstring): miqt_intptr_t
-proc onsends*(self: ScintillaEdit, slot: proc(super: ScintillaEditsendsBase, iMessage: cuint, wParam: miqt_uintptr_t, s: cstring): miqt_intptr_t) =
+type ScintillaEditsendsProc* = proc(iMessage: cuint, wParam: miqt_uintptr_t, s: cstring): miqt_intptr_t
+proc onsends*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEditsendsProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditsendsBase, iMessage: cuint, wParam: miqt_uintptr_t, s: cstring): miqt_intptr_t
-  var tmp = new Cb
+  var tmp = new ScintillaEditsendsProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_sends(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_sends(self: ptr cScintillaEdit, slot: int, iMessage: cuint, wParam: miqt_uintptr_t, s: cstring): miqt_intptr_t {.exportc: "miqt_exec_callback_ScintillaEdit_sends ".} =
-  type Cb = proc(super: ScintillaEditsendsBase, iMessage: cuint, wParam: miqt_uintptr_t, s: cstring): miqt_intptr_t
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(iMessage: cuint, wParam: miqt_uintptr_t, s: cstring): auto =
-    callVirtualBase_sends(ScintillaEdit(h: self), iMessage, wParam, s)
+  var nimfunc = cast[ptr ScintillaEditsendsProc](cast[pointer](slot))
   let slotval1 = iMessage
 
   let slotval2 = wParam
@@ -11329,962 +10710,757 @@ proc miqt_exec_callback_ScintillaEdit_sends(self: ptr cScintillaEdit, slot: int,
   let slotval3 = (s)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_event(self: ScintillaEdit, event: gen_qcoreevent.QEvent): bool =
-
+proc ScintillaEditevent*(self: gen_ScintillaEdit_types.ScintillaEdit, event: gen_qcoreevent.QEvent): bool =
 
   fScintillaEdit_virtualbase_event(self.h, event.h)
 
-type ScintillaEditeventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: ScintillaEdit, slot: proc(super: ScintillaEditeventBase, event: gen_qcoreevent.QEvent): bool) =
+type ScintillaEditeventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEditeventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditeventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new ScintillaEditeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_event(self: ptr cScintillaEdit, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_ScintillaEdit_event ".} =
-  type Cb = proc(super: ScintillaEditeventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(ScintillaEdit(h: self), event)
+  var nimfunc = cast[ptr ScintillaEditeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_paintEvent(self: ScintillaEdit, event: gen_qevent.QPaintEvent): void =
-
+proc ScintillaEditpaintEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, event: gen_qevent.QPaintEvent): void =
 
   fScintillaEdit_virtualbase_paintEvent(self.h, event.h)
 
-type ScintillaEditpaintEventBase* = proc(event: gen_qevent.QPaintEvent): void
-proc onpaintEvent*(self: ScintillaEdit, slot: proc(super: ScintillaEditpaintEventBase, event: gen_qevent.QPaintEvent): void) =
+type ScintillaEditpaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
+proc onpaintEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEditpaintEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditpaintEventBase, event: gen_qevent.QPaintEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditpaintEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_paintEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_paintEvent(self: ptr cScintillaEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEdit_paintEvent ".} =
-  type Cb = proc(super: ScintillaEditpaintEventBase, event: gen_qevent.QPaintEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QPaintEvent): auto =
-    callVirtualBase_paintEvent(ScintillaEdit(h: self), event)
+  var nimfunc = cast[ptr ScintillaEditpaintEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QPaintEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_wheelEvent(self: ScintillaEdit, event: gen_qevent.QWheelEvent): void =
-
+  nimfunc[](slotval1)
+proc ScintillaEditwheelEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, event: gen_qevent.QWheelEvent): void =
 
   fScintillaEdit_virtualbase_wheelEvent(self.h, event.h)
 
-type ScintillaEditwheelEventBase* = proc(event: gen_qevent.QWheelEvent): void
-proc onwheelEvent*(self: ScintillaEdit, slot: proc(super: ScintillaEditwheelEventBase, event: gen_qevent.QWheelEvent): void) =
+type ScintillaEditwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
+proc onwheelEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEditwheelEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditwheelEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_wheelEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_wheelEvent(self: ptr cScintillaEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEdit_wheelEvent ".} =
-  type Cb = proc(super: ScintillaEditwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QWheelEvent): auto =
-    callVirtualBase_wheelEvent(ScintillaEdit(h: self), event)
+  var nimfunc = cast[ptr ScintillaEditwheelEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QWheelEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusInEvent(self: ScintillaEdit, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc ScintillaEditfocusInEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, event: gen_qevent.QFocusEvent): void =
 
   fScintillaEdit_virtualbase_focusInEvent(self.h, event.h)
 
-type ScintillaEditfocusInEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusInEvent*(self: ScintillaEdit, slot: proc(super: ScintillaEditfocusInEventBase, event: gen_qevent.QFocusEvent): void) =
+type ScintillaEditfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusInEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEditfocusInEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditfocusInEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_focusInEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_focusInEvent(self: ptr cScintillaEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEdit_focusInEvent ".} =
-  type Cb = proc(super: ScintillaEditfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusInEvent(ScintillaEdit(h: self), event)
+  var nimfunc = cast[ptr ScintillaEditfocusInEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusOutEvent(self: ScintillaEdit, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc ScintillaEditfocusOutEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, event: gen_qevent.QFocusEvent): void =
 
   fScintillaEdit_virtualbase_focusOutEvent(self.h, event.h)
 
-type ScintillaEditfocusOutEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusOutEvent*(self: ScintillaEdit, slot: proc(super: ScintillaEditfocusOutEventBase, event: gen_qevent.QFocusEvent): void) =
+type ScintillaEditfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusOutEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEditfocusOutEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditfocusOutEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_focusOutEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_focusOutEvent(self: ptr cScintillaEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEdit_focusOutEvent ".} =
-  type Cb = proc(super: ScintillaEditfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusOutEvent(ScintillaEdit(h: self), event)
+  var nimfunc = cast[ptr ScintillaEditfocusOutEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_resizeEvent(self: ScintillaEdit, event: gen_qevent.QResizeEvent): void =
-
+  nimfunc[](slotval1)
+proc ScintillaEditresizeEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, event: gen_qevent.QResizeEvent): void =
 
   fScintillaEdit_virtualbase_resizeEvent(self.h, event.h)
 
-type ScintillaEditresizeEventBase* = proc(event: gen_qevent.QResizeEvent): void
-proc onresizeEvent*(self: ScintillaEdit, slot: proc(super: ScintillaEditresizeEventBase, event: gen_qevent.QResizeEvent): void) =
+type ScintillaEditresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
+proc onresizeEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEditresizeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditresizeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_resizeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_resizeEvent(self: ptr cScintillaEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEdit_resizeEvent ".} =
-  type Cb = proc(super: ScintillaEditresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QResizeEvent): auto =
-    callVirtualBase_resizeEvent(ScintillaEdit(h: self), event)
+  var nimfunc = cast[ptr ScintillaEditresizeEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QResizeEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyPressEvent(self: ScintillaEdit, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc ScintillaEditkeyPressEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, event: gen_qevent.QKeyEvent): void =
 
   fScintillaEdit_virtualbase_keyPressEvent(self.h, event.h)
 
-type ScintillaEditkeyPressEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyPressEvent*(self: ScintillaEdit, slot: proc(super: ScintillaEditkeyPressEventBase, event: gen_qevent.QKeyEvent): void) =
+type ScintillaEditkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyPressEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEditkeyPressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditkeyPressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_keyPressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_keyPressEvent(self: ptr cScintillaEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEdit_keyPressEvent ".} =
-  type Cb = proc(super: ScintillaEditkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyPressEvent(ScintillaEdit(h: self), event)
+  var nimfunc = cast[ptr ScintillaEditkeyPressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mousePressEvent(self: ScintillaEdit, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc ScintillaEditmousePressEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, event: gen_qevent.QMouseEvent): void =
 
   fScintillaEdit_virtualbase_mousePressEvent(self.h, event.h)
 
-type ScintillaEditmousePressEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmousePressEvent*(self: ScintillaEdit, slot: proc(super: ScintillaEditmousePressEventBase, event: gen_qevent.QMouseEvent): void) =
+type ScintillaEditmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmousePressEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEditmousePressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditmousePressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_mousePressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_mousePressEvent(self: ptr cScintillaEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEdit_mousePressEvent ".} =
-  type Cb = proc(super: ScintillaEditmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mousePressEvent(ScintillaEdit(h: self), event)
+  var nimfunc = cast[ptr ScintillaEditmousePressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseReleaseEvent(self: ScintillaEdit, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc ScintillaEditmouseReleaseEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, event: gen_qevent.QMouseEvent): void =
 
   fScintillaEdit_virtualbase_mouseReleaseEvent(self.h, event.h)
 
-type ScintillaEditmouseReleaseEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseReleaseEvent*(self: ScintillaEdit, slot: proc(super: ScintillaEditmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void) =
+type ScintillaEditmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseReleaseEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEditmouseReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditmouseReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_mouseReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_mouseReleaseEvent(self: ptr cScintillaEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEdit_mouseReleaseEvent ".} =
-  type Cb = proc(super: ScintillaEditmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseReleaseEvent(ScintillaEdit(h: self), event)
+  var nimfunc = cast[ptr ScintillaEditmouseReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseDoubleClickEvent(self: ScintillaEdit, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc ScintillaEditmouseDoubleClickEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, event: gen_qevent.QMouseEvent): void =
 
   fScintillaEdit_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
-type ScintillaEditmouseDoubleClickEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseDoubleClickEvent*(self: ScintillaEdit, slot: proc(super: ScintillaEditmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void) =
+type ScintillaEditmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseDoubleClickEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEditmouseDoubleClickEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditmouseDoubleClickEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_mouseDoubleClickEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_mouseDoubleClickEvent(self: ptr cScintillaEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEdit_mouseDoubleClickEvent ".} =
-  type Cb = proc(super: ScintillaEditmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseDoubleClickEvent(ScintillaEdit(h: self), event)
+  var nimfunc = cast[ptr ScintillaEditmouseDoubleClickEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseMoveEvent(self: ScintillaEdit, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc ScintillaEditmouseMoveEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, event: gen_qevent.QMouseEvent): void =
 
   fScintillaEdit_virtualbase_mouseMoveEvent(self.h, event.h)
 
-type ScintillaEditmouseMoveEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseMoveEvent*(self: ScintillaEdit, slot: proc(super: ScintillaEditmouseMoveEventBase, event: gen_qevent.QMouseEvent): void) =
+type ScintillaEditmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseMoveEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEditmouseMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditmouseMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_mouseMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_mouseMoveEvent(self: ptr cScintillaEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEdit_mouseMoveEvent ".} =
-  type Cb = proc(super: ScintillaEditmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseMoveEvent(ScintillaEdit(h: self), event)
+  var nimfunc = cast[ptr ScintillaEditmouseMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_contextMenuEvent(self: ScintillaEdit, event: gen_qevent.QContextMenuEvent): void =
-
+  nimfunc[](slotval1)
+proc ScintillaEditcontextMenuEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, event: gen_qevent.QContextMenuEvent): void =
 
   fScintillaEdit_virtualbase_contextMenuEvent(self.h, event.h)
 
-type ScintillaEditcontextMenuEventBase* = proc(event: gen_qevent.QContextMenuEvent): void
-proc oncontextMenuEvent*(self: ScintillaEdit, slot: proc(super: ScintillaEditcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void) =
+type ScintillaEditcontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
+proc oncontextMenuEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEditcontextMenuEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditcontextMenuEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_contextMenuEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_contextMenuEvent(self: ptr cScintillaEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEdit_contextMenuEvent ".} =
-  type Cb = proc(super: ScintillaEditcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QContextMenuEvent): auto =
-    callVirtualBase_contextMenuEvent(ScintillaEdit(h: self), event)
+  var nimfunc = cast[ptr ScintillaEditcontextMenuEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QContextMenuEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragEnterEvent(self: ScintillaEdit, event: gen_qevent.QDragEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc ScintillaEditdragEnterEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, event: gen_qevent.QDragEnterEvent): void =
 
   fScintillaEdit_virtualbase_dragEnterEvent(self.h, event.h)
 
-type ScintillaEditdragEnterEventBase* = proc(event: gen_qevent.QDragEnterEvent): void
-proc ondragEnterEvent*(self: ScintillaEdit, slot: proc(super: ScintillaEditdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void) =
+type ScintillaEditdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
+proc ondragEnterEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEditdragEnterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditdragEnterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_dragEnterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_dragEnterEvent(self: ptr cScintillaEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEdit_dragEnterEvent ".} =
-  type Cb = proc(super: ScintillaEditdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragEnterEvent): auto =
-    callVirtualBase_dragEnterEvent(ScintillaEdit(h: self), event)
+  var nimfunc = cast[ptr ScintillaEditdragEnterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragLeaveEvent(self: ScintillaEdit, event: gen_qevent.QDragLeaveEvent): void =
-
+  nimfunc[](slotval1)
+proc ScintillaEditdragLeaveEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, event: gen_qevent.QDragLeaveEvent): void =
 
   fScintillaEdit_virtualbase_dragLeaveEvent(self.h, event.h)
 
-type ScintillaEditdragLeaveEventBase* = proc(event: gen_qevent.QDragLeaveEvent): void
-proc ondragLeaveEvent*(self: ScintillaEdit, slot: proc(super: ScintillaEditdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void) =
+type ScintillaEditdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
+proc ondragLeaveEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEditdragLeaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditdragLeaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_dragLeaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_dragLeaveEvent(self: ptr cScintillaEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEdit_dragLeaveEvent ".} =
-  type Cb = proc(super: ScintillaEditdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragLeaveEvent): auto =
-    callVirtualBase_dragLeaveEvent(ScintillaEdit(h: self), event)
+  var nimfunc = cast[ptr ScintillaEditdragLeaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragLeaveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragMoveEvent(self: ScintillaEdit, event: gen_qevent.QDragMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc ScintillaEditdragMoveEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, event: gen_qevent.QDragMoveEvent): void =
 
   fScintillaEdit_virtualbase_dragMoveEvent(self.h, event.h)
 
-type ScintillaEditdragMoveEventBase* = proc(event: gen_qevent.QDragMoveEvent): void
-proc ondragMoveEvent*(self: ScintillaEdit, slot: proc(super: ScintillaEditdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void) =
+type ScintillaEditdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
+proc ondragMoveEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEditdragMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditdragMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_dragMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_dragMoveEvent(self: ptr cScintillaEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEdit_dragMoveEvent ".} =
-  type Cb = proc(super: ScintillaEditdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragMoveEvent): auto =
-    callVirtualBase_dragMoveEvent(ScintillaEdit(h: self), event)
+  var nimfunc = cast[ptr ScintillaEditdragMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dropEvent(self: ScintillaEdit, event: gen_qevent.QDropEvent): void =
-
+  nimfunc[](slotval1)
+proc ScintillaEditdropEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, event: gen_qevent.QDropEvent): void =
 
   fScintillaEdit_virtualbase_dropEvent(self.h, event.h)
 
-type ScintillaEditdropEventBase* = proc(event: gen_qevent.QDropEvent): void
-proc ondropEvent*(self: ScintillaEdit, slot: proc(super: ScintillaEditdropEventBase, event: gen_qevent.QDropEvent): void) =
+type ScintillaEditdropEventProc* = proc(event: gen_qevent.QDropEvent): void
+proc ondropEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEditdropEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditdropEventBase, event: gen_qevent.QDropEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditdropEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_dropEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_dropEvent(self: ptr cScintillaEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEdit_dropEvent ".} =
-  type Cb = proc(super: ScintillaEditdropEventBase, event: gen_qevent.QDropEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDropEvent): auto =
-    callVirtualBase_dropEvent(ScintillaEdit(h: self), event)
+  var nimfunc = cast[ptr ScintillaEditdropEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDropEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_inputMethodEvent(self: ScintillaEdit, event: gen_qevent.QInputMethodEvent): void =
-
+  nimfunc[](slotval1)
+proc ScintillaEditinputMethodEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, event: gen_qevent.QInputMethodEvent): void =
 
   fScintillaEdit_virtualbase_inputMethodEvent(self.h, event.h)
 
-type ScintillaEditinputMethodEventBase* = proc(event: gen_qevent.QInputMethodEvent): void
-proc oninputMethodEvent*(self: ScintillaEdit, slot: proc(super: ScintillaEditinputMethodEventBase, event: gen_qevent.QInputMethodEvent): void) =
+type ScintillaEditinputMethodEventProc* = proc(event: gen_qevent.QInputMethodEvent): void
+proc oninputMethodEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEditinputMethodEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditinputMethodEventBase, event: gen_qevent.QInputMethodEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditinputMethodEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_inputMethodEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_inputMethodEvent(self: ptr cScintillaEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEdit_inputMethodEvent ".} =
-  type Cb = proc(super: ScintillaEditinputMethodEventBase, event: gen_qevent.QInputMethodEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QInputMethodEvent): auto =
-    callVirtualBase_inputMethodEvent(ScintillaEdit(h: self), event)
+  var nimfunc = cast[ptr ScintillaEditinputMethodEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QInputMethodEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_inputMethodQuery(self: ScintillaEdit, query: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant =
-
+  nimfunc[](slotval1)
+proc ScintillaEditinputMethodQuery*(self: gen_ScintillaEdit_types.ScintillaEdit, query: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fScintillaEdit_virtualbase_inputMethodQuery(self.h, cint(query)))
 
-type ScintillaEditinputMethodQueryBase* = proc(query: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-proc oninputMethodQuery*(self: ScintillaEdit, slot: proc(super: ScintillaEditinputMethodQueryBase, query: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant) =
+type ScintillaEditinputMethodQueryProc* = proc(query: cint): gen_qvariant.QVariant
+proc oninputMethodQuery*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEditinputMethodQueryProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditinputMethodQueryBase, query: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new ScintillaEditinputMethodQueryProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_inputMethodQuery(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_inputMethodQuery(self: ptr cScintillaEdit, slot: int, query: cint): pointer {.exportc: "miqt_exec_callback_ScintillaEdit_inputMethodQuery ".} =
-  type Cb = proc(super: ScintillaEditinputMethodQueryBase, query: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(query: gen_qnamespace.InputMethodQuery): auto =
-    callVirtualBase_inputMethodQuery(ScintillaEdit(h: self), query)
-  let slotval1 = gen_qnamespace.InputMethodQuery(query)
+  var nimfunc = cast[ptr ScintillaEditinputMethodQueryProc](cast[pointer](slot))
+  let slotval1 = cint(query)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_scrollContentsBy(self: ScintillaEdit, param1: cint, param2: cint): void =
-
+proc ScintillaEditscrollContentsBy*(self: gen_ScintillaEdit_types.ScintillaEdit, param1: cint, param2: cint): void =
 
   fScintillaEdit_virtualbase_scrollContentsBy(self.h, param1, param2)
 
-type ScintillaEditscrollContentsByBase* = proc(param1: cint, param2: cint): void
-proc onscrollContentsBy*(self: ScintillaEdit, slot: proc(super: ScintillaEditscrollContentsByBase, param1: cint, param2: cint): void) =
+type ScintillaEditscrollContentsByProc* = proc(param1: cint, param2: cint): void
+proc onscrollContentsBy*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEditscrollContentsByProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditscrollContentsByBase, param1: cint, param2: cint): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditscrollContentsByProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_scrollContentsBy(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_scrollContentsBy(self: ptr cScintillaEdit, slot: int, param1: cint, param2: cint): void {.exportc: "miqt_exec_callback_ScintillaEdit_scrollContentsBy ".} =
-  type Cb = proc(super: ScintillaEditscrollContentsByBase, param1: cint, param2: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint, param2: cint): auto =
-    callVirtualBase_scrollContentsBy(ScintillaEdit(h: self), param1, param2)
+  var nimfunc = cast[ptr ScintillaEditscrollContentsByProc](cast[pointer](slot))
   let slotval1 = param1
 
   let slotval2 = param2
 
 
-  nimfunc[](superCall, slotval1, slotval2)
-proc callVirtualBase_minimumSizeHint(self: ScintillaEdit, ): gen_qsize.QSize =
-
+  nimfunc[](slotval1, slotval2)
+proc ScintillaEditminimumSizeHint*(self: gen_ScintillaEdit_types.ScintillaEdit, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fScintillaEdit_virtualbase_minimumSizeHint(self.h))
 
-type ScintillaEditminimumSizeHintBase* = proc(): gen_qsize.QSize
-proc onminimumSizeHint*(self: ScintillaEdit, slot: proc(super: ScintillaEditminimumSizeHintBase): gen_qsize.QSize) =
+type ScintillaEditminimumSizeHintProc* = proc(): gen_qsize.QSize
+proc onminimumSizeHint*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEditminimumSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditminimumSizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new ScintillaEditminimumSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_minimumSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_minimumSizeHint(self: ptr cScintillaEdit, slot: int): pointer {.exportc: "miqt_exec_callback_ScintillaEdit_minimumSizeHint ".} =
-  type Cb = proc(super: ScintillaEditminimumSizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_minimumSizeHint(ScintillaEdit(h: self), )
+  var nimfunc = cast[ptr ScintillaEditminimumSizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_sizeHint(self: ScintillaEdit, ): gen_qsize.QSize =
-
+proc ScintillaEditsizeHint*(self: gen_ScintillaEdit_types.ScintillaEdit, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fScintillaEdit_virtualbase_sizeHint(self.h))
 
-type ScintillaEditsizeHintBase* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: ScintillaEdit, slot: proc(super: ScintillaEditsizeHintBase): gen_qsize.QSize) =
+type ScintillaEditsizeHintProc* = proc(): gen_qsize.QSize
+proc onsizeHint*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEditsizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditsizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new ScintillaEditsizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_sizeHint(self: ptr cScintillaEdit, slot: int): pointer {.exportc: "miqt_exec_callback_ScintillaEdit_sizeHint ".} =
-  type Cb = proc(super: ScintillaEditsizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sizeHint(ScintillaEdit(h: self), )
+  var nimfunc = cast[ptr ScintillaEditsizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_setupViewport(self: ScintillaEdit, viewport: gen_qwidget.QWidget): void =
-
+proc ScintillaEditsetupViewport*(self: gen_ScintillaEdit_types.ScintillaEdit, viewport: gen_qwidget.QWidget): void =
 
   fScintillaEdit_virtualbase_setupViewport(self.h, viewport.h)
 
-type ScintillaEditsetupViewportBase* = proc(viewport: gen_qwidget.QWidget): void
-proc onsetupViewport*(self: ScintillaEdit, slot: proc(super: ScintillaEditsetupViewportBase, viewport: gen_qwidget.QWidget): void) =
+type ScintillaEditsetupViewportProc* = proc(viewport: gen_qwidget.QWidget): void
+proc onsetupViewport*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEditsetupViewportProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditsetupViewportBase, viewport: gen_qwidget.QWidget): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditsetupViewportProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_setupViewport(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_setupViewport(self: ptr cScintillaEdit, slot: int, viewport: pointer): void {.exportc: "miqt_exec_callback_ScintillaEdit_setupViewport ".} =
-  type Cb = proc(super: ScintillaEditsetupViewportBase, viewport: gen_qwidget.QWidget): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(viewport: gen_qwidget.QWidget): auto =
-    callVirtualBase_setupViewport(ScintillaEdit(h: self), viewport)
+  var nimfunc = cast[ptr ScintillaEditsetupViewportProc](cast[pointer](slot))
   let slotval1 = gen_qwidget.QWidget(h: viewport)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_eventFilter(self: ScintillaEdit, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[](slotval1)
+proc ScintillaEditeventFilter*(self: gen_ScintillaEdit_types.ScintillaEdit, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool =
 
   fScintillaEdit_virtualbase_eventFilter(self.h, param1.h, param2.h)
 
-type ScintillaEditeventFilterBase* = proc(param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: ScintillaEdit, slot: proc(super: ScintillaEditeventFilterBase, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool) =
+type ScintillaEditeventFilterProc* = proc(param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEditeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditeventFilterBase, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new ScintillaEditeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_eventFilter(self: ptr cScintillaEdit, slot: int, param1: pointer, param2: pointer): bool {.exportc: "miqt_exec_callback_ScintillaEdit_eventFilter ".} =
-  type Cb = proc(super: ScintillaEditeventFilterBase, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(ScintillaEdit(h: self), param1, param2)
+  var nimfunc = cast[ptr ScintillaEditeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: param1)
 
   let slotval2 = gen_qcoreevent.QEvent(h: param2)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_viewportEvent(self: ScintillaEdit, param1: gen_qcoreevent.QEvent): bool =
-
+proc ScintillaEditviewportEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, param1: gen_qcoreevent.QEvent): bool =
 
   fScintillaEdit_virtualbase_viewportEvent(self.h, param1.h)
 
-type ScintillaEditviewportEventBase* = proc(param1: gen_qcoreevent.QEvent): bool
-proc onviewportEvent*(self: ScintillaEdit, slot: proc(super: ScintillaEditviewportEventBase, param1: gen_qcoreevent.QEvent): bool) =
+type ScintillaEditviewportEventProc* = proc(param1: gen_qcoreevent.QEvent): bool
+proc onviewportEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEditviewportEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditviewportEventBase, param1: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new ScintillaEditviewportEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_viewportEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_viewportEvent(self: ptr cScintillaEdit, slot: int, param1: pointer): bool {.exportc: "miqt_exec_callback_ScintillaEdit_viewportEvent ".} =
-  type Cb = proc(super: ScintillaEditviewportEventBase, param1: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_viewportEvent(ScintillaEdit(h: self), param1)
+  var nimfunc = cast[ptr ScintillaEditviewportEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_viewportSizeHint(self: ScintillaEdit, ): gen_qsize.QSize =
-
+proc ScintillaEditviewportSizeHint*(self: gen_ScintillaEdit_types.ScintillaEdit, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fScintillaEdit_virtualbase_viewportSizeHint(self.h))
 
-type ScintillaEditviewportSizeHintBase* = proc(): gen_qsize.QSize
-proc onviewportSizeHint*(self: ScintillaEdit, slot: proc(super: ScintillaEditviewportSizeHintBase): gen_qsize.QSize) =
+type ScintillaEditviewportSizeHintProc* = proc(): gen_qsize.QSize
+proc onviewportSizeHint*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEditviewportSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditviewportSizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new ScintillaEditviewportSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_viewportSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_viewportSizeHint(self: ptr cScintillaEdit, slot: int): pointer {.exportc: "miqt_exec_callback_ScintillaEdit_viewportSizeHint ".} =
-  type Cb = proc(super: ScintillaEditviewportSizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_viewportSizeHint(ScintillaEdit(h: self), )
+  var nimfunc = cast[ptr ScintillaEditviewportSizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_changeEvent(self: ScintillaEdit, param1: gen_qcoreevent.QEvent): void =
-
+proc ScintillaEditchangeEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, param1: gen_qcoreevent.QEvent): void =
 
   fScintillaEdit_virtualbase_changeEvent(self.h, param1.h)
 
-type ScintillaEditchangeEventBase* = proc(param1: gen_qcoreevent.QEvent): void
-proc onchangeEvent*(self: ScintillaEdit, slot: proc(super: ScintillaEditchangeEventBase, param1: gen_qcoreevent.QEvent): void) =
+type ScintillaEditchangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
+proc onchangeEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEditchangeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditchangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditchangeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_changeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_changeEvent(self: ptr cScintillaEdit, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_ScintillaEdit_changeEvent ".} =
-  type Cb = proc(super: ScintillaEditchangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_changeEvent(ScintillaEdit(h: self), param1)
+  var nimfunc = cast[ptr ScintillaEditchangeEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_devType(self: ScintillaEdit, ): cint =
-
+  nimfunc[](slotval1)
+proc ScintillaEditdevType*(self: gen_ScintillaEdit_types.ScintillaEdit, ): cint =
 
   fScintillaEdit_virtualbase_devType(self.h)
 
-type ScintillaEditdevTypeBase* = proc(): cint
-proc ondevType*(self: ScintillaEdit, slot: proc(super: ScintillaEditdevTypeBase): cint) =
+type ScintillaEditdevTypeProc* = proc(): cint
+proc ondevType*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEditdevTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditdevTypeBase): cint
-  var tmp = new Cb
+  var tmp = new ScintillaEditdevTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_devType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_devType(self: ptr cScintillaEdit, slot: int): cint {.exportc: "miqt_exec_callback_ScintillaEdit_devType ".} =
-  type Cb = proc(super: ScintillaEditdevTypeBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_devType(ScintillaEdit(h: self), )
+  var nimfunc = cast[ptr ScintillaEditdevTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setVisible(self: ScintillaEdit, visible: bool): void =
-
+proc ScintillaEditsetVisible*(self: gen_ScintillaEdit_types.ScintillaEdit, visible: bool): void =
 
   fScintillaEdit_virtualbase_setVisible(self.h, visible)
 
-type ScintillaEditsetVisibleBase* = proc(visible: bool): void
-proc onsetVisible*(self: ScintillaEdit, slot: proc(super: ScintillaEditsetVisibleBase, visible: bool): void) =
+type ScintillaEditsetVisibleProc* = proc(visible: bool): void
+proc onsetVisible*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEditsetVisibleProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditsetVisibleBase, visible: bool): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditsetVisibleProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_setVisible(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_setVisible(self: ptr cScintillaEdit, slot: int, visible: bool): void {.exportc: "miqt_exec_callback_ScintillaEdit_setVisible ".} =
-  type Cb = proc(super: ScintillaEditsetVisibleBase, visible: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(visible: bool): auto =
-    callVirtualBase_setVisible(ScintillaEdit(h: self), visible)
+  var nimfunc = cast[ptr ScintillaEditsetVisibleProc](cast[pointer](slot))
   let slotval1 = visible
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_heightForWidth(self: ScintillaEdit, param1: cint): cint =
-
+  nimfunc[](slotval1)
+proc ScintillaEditheightForWidth*(self: gen_ScintillaEdit_types.ScintillaEdit, param1: cint): cint =
 
   fScintillaEdit_virtualbase_heightForWidth(self.h, param1)
 
-type ScintillaEditheightForWidthBase* = proc(param1: cint): cint
-proc onheightForWidth*(self: ScintillaEdit, slot: proc(super: ScintillaEditheightForWidthBase, param1: cint): cint) =
+type ScintillaEditheightForWidthProc* = proc(param1: cint): cint
+proc onheightForWidth*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEditheightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditheightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new ScintillaEditheightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_heightForWidth(self: ptr cScintillaEdit, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_ScintillaEdit_heightForWidth ".} =
-  type Cb = proc(super: ScintillaEditheightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_heightForWidth(ScintillaEdit(h: self), param1)
+  var nimfunc = cast[ptr ScintillaEditheightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_hasHeightForWidth(self: ScintillaEdit, ): bool =
-
+proc ScintillaEdithasHeightForWidth*(self: gen_ScintillaEdit_types.ScintillaEdit, ): bool =
 
   fScintillaEdit_virtualbase_hasHeightForWidth(self.h)
 
-type ScintillaEdithasHeightForWidthBase* = proc(): bool
-proc onhasHeightForWidth*(self: ScintillaEdit, slot: proc(super: ScintillaEdithasHeightForWidthBase): bool) =
+type ScintillaEdithasHeightForWidthProc* = proc(): bool
+proc onhasHeightForWidth*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEdithasHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEdithasHeightForWidthBase): bool
-  var tmp = new Cb
+  var tmp = new ScintillaEdithasHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_hasHeightForWidth(self: ptr cScintillaEdit, slot: int): bool {.exportc: "miqt_exec_callback_ScintillaEdit_hasHeightForWidth ".} =
-  type Cb = proc(super: ScintillaEdithasHeightForWidthBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasHeightForWidth(ScintillaEdit(h: self), )
+  var nimfunc = cast[ptr ScintillaEdithasHeightForWidthProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_paintEngine(self: ScintillaEdit, ): gen_qpaintengine.QPaintEngine =
-
+proc ScintillaEditpaintEngine*(self: gen_ScintillaEdit_types.ScintillaEdit, ): gen_qpaintengine.QPaintEngine =
 
   gen_qpaintengine.QPaintEngine(h: fScintillaEdit_virtualbase_paintEngine(self.h))
 
-type ScintillaEditpaintEngineBase* = proc(): gen_qpaintengine.QPaintEngine
-proc onpaintEngine*(self: ScintillaEdit, slot: proc(super: ScintillaEditpaintEngineBase): gen_qpaintengine.QPaintEngine) =
+type ScintillaEditpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
+proc onpaintEngine*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEditpaintEngineProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var tmp = new Cb
+  var tmp = new ScintillaEditpaintEngineProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_paintEngine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_paintEngine(self: ptr cScintillaEdit, slot: int): pointer {.exportc: "miqt_exec_callback_ScintillaEdit_paintEngine ".} =
-  type Cb = proc(super: ScintillaEditpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_paintEngine(ScintillaEdit(h: self), )
+  var nimfunc = cast[ptr ScintillaEditpaintEngineProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_keyReleaseEvent(self: ScintillaEdit, event: gen_qevent.QKeyEvent): void =
-
+proc ScintillaEditkeyReleaseEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, event: gen_qevent.QKeyEvent): void =
 
   fScintillaEdit_virtualbase_keyReleaseEvent(self.h, event.h)
 
-type ScintillaEditkeyReleaseEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyReleaseEvent*(self: ScintillaEdit, slot: proc(super: ScintillaEditkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void) =
+type ScintillaEditkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyReleaseEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEditkeyReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditkeyReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_keyReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_keyReleaseEvent(self: ptr cScintillaEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEdit_keyReleaseEvent ".} =
-  type Cb = proc(super: ScintillaEditkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyReleaseEvent(ScintillaEdit(h: self), event)
+  var nimfunc = cast[ptr ScintillaEditkeyReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_enterEvent(self: ScintillaEdit, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc ScintillaEditenterEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, event: gen_qcoreevent.QEvent): void =
 
   fScintillaEdit_virtualbase_enterEvent(self.h, event.h)
 
-type ScintillaEditenterEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onenterEvent*(self: ScintillaEdit, slot: proc(super: ScintillaEditenterEventBase, event: gen_qcoreevent.QEvent): void) =
+type ScintillaEditenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onenterEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEditenterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditenterEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditenterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_enterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_enterEvent(self: ptr cScintillaEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEdit_enterEvent ".} =
-  type Cb = proc(super: ScintillaEditenterEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_enterEvent(ScintillaEdit(h: self), event)
+  var nimfunc = cast[ptr ScintillaEditenterEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_leaveEvent(self: ScintillaEdit, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc ScintillaEditleaveEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, event: gen_qcoreevent.QEvent): void =
 
   fScintillaEdit_virtualbase_leaveEvent(self.h, event.h)
 
-type ScintillaEditleaveEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onleaveEvent*(self: ScintillaEdit, slot: proc(super: ScintillaEditleaveEventBase, event: gen_qcoreevent.QEvent): void) =
+type ScintillaEditleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onleaveEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEditleaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditleaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_leaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_leaveEvent(self: ptr cScintillaEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEdit_leaveEvent ".} =
-  type Cb = proc(super: ScintillaEditleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_leaveEvent(ScintillaEdit(h: self), event)
+  var nimfunc = cast[ptr ScintillaEditleaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_moveEvent(self: ScintillaEdit, event: gen_qevent.QMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc ScintillaEditmoveEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, event: gen_qevent.QMoveEvent): void =
 
   fScintillaEdit_virtualbase_moveEvent(self.h, event.h)
 
-type ScintillaEditmoveEventBase* = proc(event: gen_qevent.QMoveEvent): void
-proc onmoveEvent*(self: ScintillaEdit, slot: proc(super: ScintillaEditmoveEventBase, event: gen_qevent.QMoveEvent): void) =
+type ScintillaEditmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
+proc onmoveEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEditmoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditmoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_moveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_moveEvent(self: ptr cScintillaEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEdit_moveEvent ".} =
-  type Cb = proc(super: ScintillaEditmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMoveEvent): auto =
-    callVirtualBase_moveEvent(ScintillaEdit(h: self), event)
+  var nimfunc = cast[ptr ScintillaEditmoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_closeEvent(self: ScintillaEdit, event: gen_qevent.QCloseEvent): void =
-
+  nimfunc[](slotval1)
+proc ScintillaEditcloseEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, event: gen_qevent.QCloseEvent): void =
 
   fScintillaEdit_virtualbase_closeEvent(self.h, event.h)
 
-type ScintillaEditcloseEventBase* = proc(event: gen_qevent.QCloseEvent): void
-proc oncloseEvent*(self: ScintillaEdit, slot: proc(super: ScintillaEditcloseEventBase, event: gen_qevent.QCloseEvent): void) =
+type ScintillaEditcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
+proc oncloseEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEditcloseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditcloseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_closeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_closeEvent(self: ptr cScintillaEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEdit_closeEvent ".} =
-  type Cb = proc(super: ScintillaEditcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QCloseEvent): auto =
-    callVirtualBase_closeEvent(ScintillaEdit(h: self), event)
+  var nimfunc = cast[ptr ScintillaEditcloseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QCloseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_tabletEvent(self: ScintillaEdit, event: gen_qevent.QTabletEvent): void =
-
+  nimfunc[](slotval1)
+proc ScintillaEdittabletEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, event: gen_qevent.QTabletEvent): void =
 
   fScintillaEdit_virtualbase_tabletEvent(self.h, event.h)
 
-type ScintillaEdittabletEventBase* = proc(event: gen_qevent.QTabletEvent): void
-proc ontabletEvent*(self: ScintillaEdit, slot: proc(super: ScintillaEdittabletEventBase, event: gen_qevent.QTabletEvent): void) =
+type ScintillaEdittabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
+proc ontabletEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEdittabletEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEdittabletEventBase, event: gen_qevent.QTabletEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEdittabletEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_tabletEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_tabletEvent(self: ptr cScintillaEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEdit_tabletEvent ".} =
-  type Cb = proc(super: ScintillaEdittabletEventBase, event: gen_qevent.QTabletEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QTabletEvent): auto =
-    callVirtualBase_tabletEvent(ScintillaEdit(h: self), event)
+  var nimfunc = cast[ptr ScintillaEdittabletEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QTabletEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_actionEvent(self: ScintillaEdit, event: gen_qevent.QActionEvent): void =
-
+  nimfunc[](slotval1)
+proc ScintillaEditactionEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, event: gen_qevent.QActionEvent): void =
 
   fScintillaEdit_virtualbase_actionEvent(self.h, event.h)
 
-type ScintillaEditactionEventBase* = proc(event: gen_qevent.QActionEvent): void
-proc onactionEvent*(self: ScintillaEdit, slot: proc(super: ScintillaEditactionEventBase, event: gen_qevent.QActionEvent): void) =
+type ScintillaEditactionEventProc* = proc(event: gen_qevent.QActionEvent): void
+proc onactionEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEditactionEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditactionEventBase, event: gen_qevent.QActionEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditactionEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_actionEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_actionEvent(self: ptr cScintillaEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEdit_actionEvent ".} =
-  type Cb = proc(super: ScintillaEditactionEventBase, event: gen_qevent.QActionEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QActionEvent): auto =
-    callVirtualBase_actionEvent(ScintillaEdit(h: self), event)
+  var nimfunc = cast[ptr ScintillaEditactionEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QActionEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_showEvent(self: ScintillaEdit, event: gen_qevent.QShowEvent): void =
-
+  nimfunc[](slotval1)
+proc ScintillaEditshowEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, event: gen_qevent.QShowEvent): void =
 
   fScintillaEdit_virtualbase_showEvent(self.h, event.h)
 
-type ScintillaEditshowEventBase* = proc(event: gen_qevent.QShowEvent): void
-proc onshowEvent*(self: ScintillaEdit, slot: proc(super: ScintillaEditshowEventBase, event: gen_qevent.QShowEvent): void) =
+type ScintillaEditshowEventProc* = proc(event: gen_qevent.QShowEvent): void
+proc onshowEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEditshowEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditshowEventBase, event: gen_qevent.QShowEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditshowEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_showEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_showEvent(self: ptr cScintillaEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEdit_showEvent ".} =
-  type Cb = proc(super: ScintillaEditshowEventBase, event: gen_qevent.QShowEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QShowEvent): auto =
-    callVirtualBase_showEvent(ScintillaEdit(h: self), event)
+  var nimfunc = cast[ptr ScintillaEditshowEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QShowEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hideEvent(self: ScintillaEdit, event: gen_qevent.QHideEvent): void =
-
+  nimfunc[](slotval1)
+proc ScintillaEdithideEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, event: gen_qevent.QHideEvent): void =
 
   fScintillaEdit_virtualbase_hideEvent(self.h, event.h)
 
-type ScintillaEdithideEventBase* = proc(event: gen_qevent.QHideEvent): void
-proc onhideEvent*(self: ScintillaEdit, slot: proc(super: ScintillaEdithideEventBase, event: gen_qevent.QHideEvent): void) =
+type ScintillaEdithideEventProc* = proc(event: gen_qevent.QHideEvent): void
+proc onhideEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEdithideEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEdithideEventBase, event: gen_qevent.QHideEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEdithideEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_hideEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_hideEvent(self: ptr cScintillaEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEdit_hideEvent ".} =
-  type Cb = proc(super: ScintillaEdithideEventBase, event: gen_qevent.QHideEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QHideEvent): auto =
-    callVirtualBase_hideEvent(ScintillaEdit(h: self), event)
+  var nimfunc = cast[ptr ScintillaEdithideEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QHideEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_nativeEvent(self: ScintillaEdit, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
+  nimfunc[](slotval1)
+proc ScintillaEditnativeEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
 
   fScintillaEdit_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
-type ScintillaEditnativeEventBase* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-proc onnativeEvent*(self: ScintillaEdit, slot: proc(super: ScintillaEditnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool) =
+type ScintillaEditnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
+proc onnativeEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEditnativeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-  var tmp = new Cb
+  var tmp = new ScintillaEditnativeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_nativeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_nativeEvent(self: ptr cScintillaEdit, slot: int, eventType: struct_miqt_string, message: pointer, resultVal: ptr clong): bool {.exportc: "miqt_exec_callback_ScintillaEdit_nativeEvent ".} =
-  type Cb = proc(super: ScintillaEditnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(eventType: seq[byte], message: pointer, resultVal: ptr clong): auto =
-    callVirtualBase_nativeEvent(ScintillaEdit(h: self), eventType, message, resultVal)
+  var nimfunc = cast[ptr ScintillaEditnativeEventProc](cast[pointer](slot))
   var veventType_bytearray = eventType
   var veventTypex_ret = @(toOpenArrayByte(veventType_bytearray.data, 0, int(veventType_bytearray.len)-1))
   c_free(veventType_bytearray.data)
@@ -12295,246 +11471,196 @@ proc miqt_exec_callback_ScintillaEdit_nativeEvent(self: ptr cScintillaEdit, slot
   let slotval3 = resultVal
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_metric(self: ScintillaEdit, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint =
-
+proc ScintillaEditmetric*(self: gen_ScintillaEdit_types.ScintillaEdit, param1: cint): cint =
 
   fScintillaEdit_virtualbase_metric(self.h, cint(param1))
 
-type ScintillaEditmetricBase* = proc(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-proc onmetric*(self: ScintillaEdit, slot: proc(super: ScintillaEditmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint) =
+type ScintillaEditmetricProc* = proc(param1: cint): cint
+proc onmetric*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEditmetricProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var tmp = new Cb
+  var tmp = new ScintillaEditmetricProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_metric(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_metric(self: ptr cScintillaEdit, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_ScintillaEdit_metric ".} =
-  type Cb = proc(super: ScintillaEditmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): auto =
-    callVirtualBase_metric(ScintillaEdit(h: self), param1)
-  let slotval1 = gen_qpaintdevice.QPaintDevicePaintDeviceMetric(param1)
+  var nimfunc = cast[ptr ScintillaEditmetricProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_initPainter(self: ScintillaEdit, painter: gen_qpainter.QPainter): void =
-
+proc ScintillaEditinitPainter*(self: gen_ScintillaEdit_types.ScintillaEdit, painter: gen_qpainter.QPainter): void =
 
   fScintillaEdit_virtualbase_initPainter(self.h, painter.h)
 
-type ScintillaEditinitPainterBase* = proc(painter: gen_qpainter.QPainter): void
-proc oninitPainter*(self: ScintillaEdit, slot: proc(super: ScintillaEditinitPainterBase, painter: gen_qpainter.QPainter): void) =
+type ScintillaEditinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
+proc oninitPainter*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEditinitPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditinitPainterBase, painter: gen_qpainter.QPainter): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditinitPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_initPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_initPainter(self: ptr cScintillaEdit, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_ScintillaEdit_initPainter ".} =
-  type Cb = proc(super: ScintillaEditinitPainterBase, painter: gen_qpainter.QPainter): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter): auto =
-    callVirtualBase_initPainter(ScintillaEdit(h: self), painter)
+  var nimfunc = cast[ptr ScintillaEditinitPainterProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_redirected(self: ScintillaEdit, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
+  nimfunc[](slotval1)
+proc ScintillaEditredirected*(self: gen_ScintillaEdit_types.ScintillaEdit, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
 
   gen_qpaintdevice.QPaintDevice(h: fScintillaEdit_virtualbase_redirected(self.h, offset.h))
 
-type ScintillaEditredirectedBase* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-proc onredirected*(self: ScintillaEdit, slot: proc(super: ScintillaEditredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice) =
+type ScintillaEditredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
+proc onredirected*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEditredirectedProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var tmp = new Cb
+  var tmp = new ScintillaEditredirectedProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_redirected(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_redirected(self: ptr cScintillaEdit, slot: int, offset: pointer): pointer {.exportc: "miqt_exec_callback_ScintillaEdit_redirected ".} =
-  type Cb = proc(super: ScintillaEditredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(offset: gen_qpoint.QPoint): auto =
-    callVirtualBase_redirected(ScintillaEdit(h: self), offset)
+  var nimfunc = cast[ptr ScintillaEditredirectedProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: offset)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_sharedPainter(self: ScintillaEdit, ): gen_qpainter.QPainter =
-
+proc ScintillaEditsharedPainter*(self: gen_ScintillaEdit_types.ScintillaEdit, ): gen_qpainter.QPainter =
 
   gen_qpainter.QPainter(h: fScintillaEdit_virtualbase_sharedPainter(self.h))
 
-type ScintillaEditsharedPainterBase* = proc(): gen_qpainter.QPainter
-proc onsharedPainter*(self: ScintillaEdit, slot: proc(super: ScintillaEditsharedPainterBase): gen_qpainter.QPainter) =
+type ScintillaEditsharedPainterProc* = proc(): gen_qpainter.QPainter
+proc onsharedPainter*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEditsharedPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditsharedPainterBase): gen_qpainter.QPainter
-  var tmp = new Cb
+  var tmp = new ScintillaEditsharedPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_sharedPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_sharedPainter(self: ptr cScintillaEdit, slot: int): pointer {.exportc: "miqt_exec_callback_ScintillaEdit_sharedPainter ".} =
-  type Cb = proc(super: ScintillaEditsharedPainterBase): gen_qpainter.QPainter
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sharedPainter(ScintillaEdit(h: self), )
+  var nimfunc = cast[ptr ScintillaEditsharedPainterProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_focusNextPrevChild(self: ScintillaEdit, next: bool): bool =
-
+proc ScintillaEditfocusNextPrevChild*(self: gen_ScintillaEdit_types.ScintillaEdit, next: bool): bool =
 
   fScintillaEdit_virtualbase_focusNextPrevChild(self.h, next)
 
-type ScintillaEditfocusNextPrevChildBase* = proc(next: bool): bool
-proc onfocusNextPrevChild*(self: ScintillaEdit, slot: proc(super: ScintillaEditfocusNextPrevChildBase, next: bool): bool) =
+type ScintillaEditfocusNextPrevChildProc* = proc(next: bool): bool
+proc onfocusNextPrevChild*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEditfocusNextPrevChildProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditfocusNextPrevChildBase, next: bool): bool
-  var tmp = new Cb
+  var tmp = new ScintillaEditfocusNextPrevChildProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_focusNextPrevChild(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_focusNextPrevChild(self: ptr cScintillaEdit, slot: int, next: bool): bool {.exportc: "miqt_exec_callback_ScintillaEdit_focusNextPrevChild ".} =
-  type Cb = proc(super: ScintillaEditfocusNextPrevChildBase, next: bool): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(next: bool): auto =
-    callVirtualBase_focusNextPrevChild(ScintillaEdit(h: self), next)
+  var nimfunc = cast[ptr ScintillaEditfocusNextPrevChildProc](cast[pointer](slot))
   let slotval1 = next
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: ScintillaEdit, event: gen_qcoreevent.QTimerEvent): void =
-
+proc ScintillaEdittimerEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, event: gen_qcoreevent.QTimerEvent): void =
 
   fScintillaEdit_virtualbase_timerEvent(self.h, event.h)
 
-type ScintillaEdittimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: ScintillaEdit, slot: proc(super: ScintillaEdittimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type ScintillaEdittimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEdittimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEdittimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEdittimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_timerEvent(self: ptr cScintillaEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEdit_timerEvent ".} =
-  type Cb = proc(super: ScintillaEdittimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(ScintillaEdit(h: self), event)
+  var nimfunc = cast[ptr ScintillaEdittimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: ScintillaEdit, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc ScintillaEditchildEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, event: gen_qcoreevent.QChildEvent): void =
 
   fScintillaEdit_virtualbase_childEvent(self.h, event.h)
 
-type ScintillaEditchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: ScintillaEdit, slot: proc(super: ScintillaEditchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type ScintillaEditchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEditchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_childEvent(self: ptr cScintillaEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEdit_childEvent ".} =
-  type Cb = proc(super: ScintillaEditchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(ScintillaEdit(h: self), event)
+  var nimfunc = cast[ptr ScintillaEditchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: ScintillaEdit, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc ScintillaEditcustomEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, event: gen_qcoreevent.QEvent): void =
 
   fScintillaEdit_virtualbase_customEvent(self.h, event.h)
 
-type ScintillaEditcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: ScintillaEdit, slot: proc(super: ScintillaEditcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type ScintillaEditcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEditcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_customEvent(self: ptr cScintillaEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_ScintillaEdit_customEvent ".} =
-  type Cb = proc(super: ScintillaEditcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(ScintillaEdit(h: self), event)
+  var nimfunc = cast[ptr ScintillaEditcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: ScintillaEdit, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc ScintillaEditconnectNotify*(self: gen_ScintillaEdit_types.ScintillaEdit, signal: gen_qmetaobject.QMetaMethod): void =
 
   fScintillaEdit_virtualbase_connectNotify(self.h, signal.h)
 
-type ScintillaEditconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: ScintillaEdit, slot: proc(super: ScintillaEditconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type ScintillaEditconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEditconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_connectNotify(self: ptr cScintillaEdit, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_ScintillaEdit_connectNotify ".} =
-  type Cb = proc(super: ScintillaEditconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(ScintillaEdit(h: self), signal)
+  var nimfunc = cast[ptr ScintillaEditconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: ScintillaEdit, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc ScintillaEditdisconnectNotify*(self: gen_ScintillaEdit_types.ScintillaEdit, signal: gen_qmetaobject.QMetaMethod): void =
 
   fScintillaEdit_virtualbase_disconnectNotify(self.h, signal.h)
 
-type ScintillaEditdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: ScintillaEdit, slot: proc(super: ScintillaEditdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type ScintillaEditdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_ScintillaEdit_types.ScintillaEdit, slot: ScintillaEditdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: ScintillaEditdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new ScintillaEditdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcScintillaEdit_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_ScintillaEdit_disconnectNotify(self: ptr cScintillaEdit, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_ScintillaEdit_disconnectNotify ".} =
-  type Cb = proc(super: ScintillaEditdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(ScintillaEdit(h: self), signal)
+  var nimfunc = cast[ptr ScintillaEditdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type ScintillaEdit): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_ScintillaEdit_types.ScintillaEdit): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcScintillaEdit_staticMetaObject())
-proc delete*(self: ScintillaEdit) =
+proc delete*(self: gen_ScintillaEdit_types.ScintillaEdit) =
   fcScintillaEdit_delete(self.h)

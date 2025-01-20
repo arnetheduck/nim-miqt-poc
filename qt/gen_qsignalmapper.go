@@ -369,7 +369,7 @@ func (this *QSignalMapper) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QSignalMapper_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QSignalMapper) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QSignalMapper) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QSignalMapper_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -396,7 +396,7 @@ func (this *QSignalMapper) callVirtualBase_Metacast(param1 string) unsafe.Pointe
 	return (unsafe.Pointer)(C.QSignalMapper_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QSignalMapper) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QSignalMapper) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QSignalMapper_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

@@ -34,62 +34,56 @@ const cflags = gorge("pkg-config -cflags Qt5Widgets")
 {.compile("gen_qmessagebox.cpp", cflags).}
 
 
-type QMessageBoxIcon* = cint
-const
-  QMessageBoxNoIcon* = 0
-  QMessageBoxInformation* = 1
-  QMessageBoxWarning* = 2
-  QMessageBoxCritical* = 3
-  QMessageBoxQuestion* = 4
+type QMessageBoxIconEnum* = distinct cint
+template NoIcon*(_: type QMessageBoxIconEnum): untyped = 0
+template Information*(_: type QMessageBoxIconEnum): untyped = 1
+template Warning*(_: type QMessageBoxIconEnum): untyped = 2
+template Critical*(_: type QMessageBoxIconEnum): untyped = 3
+template Question*(_: type QMessageBoxIconEnum): untyped = 4
 
 
-
-type QMessageBoxButtonRole* = cint
-const
-  QMessageBoxInvalidRole* = -1
-  QMessageBoxAcceptRole* = 0
-  QMessageBoxRejectRole* = 1
-  QMessageBoxDestructiveRole* = 2
-  QMessageBoxActionRole* = 3
-  QMessageBoxHelpRole* = 4
-  QMessageBoxYesRole* = 5
-  QMessageBoxNoRole* = 6
-  QMessageBoxResetRole* = 7
-  QMessageBoxApplyRole* = 8
-  QMessageBoxNRoles* = 9
+type QMessageBoxButtonRoleEnum* = distinct cint
+template InvalidRole*(_: type QMessageBoxButtonRoleEnum): untyped = -1
+template AcceptRole*(_: type QMessageBoxButtonRoleEnum): untyped = 0
+template RejectRole*(_: type QMessageBoxButtonRoleEnum): untyped = 1
+template DestructiveRole*(_: type QMessageBoxButtonRoleEnum): untyped = 2
+template ActionRole*(_: type QMessageBoxButtonRoleEnum): untyped = 3
+template HelpRole*(_: type QMessageBoxButtonRoleEnum): untyped = 4
+template YesRole*(_: type QMessageBoxButtonRoleEnum): untyped = 5
+template NoRole*(_: type QMessageBoxButtonRoleEnum): untyped = 6
+template ResetRole*(_: type QMessageBoxButtonRoleEnum): untyped = 7
+template ApplyRole*(_: type QMessageBoxButtonRoleEnum): untyped = 8
+template NRoles*(_: type QMessageBoxButtonRoleEnum): untyped = 9
 
 
-
-type QMessageBoxStandardButton* = cint
-const
-  QMessageBoxNoButton* = 0
-  QMessageBoxOk* = 1024
-  QMessageBoxSave* = 2048
-  QMessageBoxSaveAll* = 4096
-  QMessageBoxOpen* = 8192
-  QMessageBoxYes* = 16384
-  QMessageBoxYesToAll* = 32768
-  QMessageBoxNo* = 65536
-  QMessageBoxNoToAll* = 131072
-  QMessageBoxAbort* = 262144
-  QMessageBoxRetry* = 524288
-  QMessageBoxIgnore* = 1048576
-  QMessageBoxClose* = 2097152
-  QMessageBoxCancel* = 4194304
-  QMessageBoxDiscard* = 8388608
-  QMessageBoxHelp* = 16777216
-  QMessageBoxApply* = 33554432
-  QMessageBoxReset* = 67108864
-  QMessageBoxRestoreDefaults* = 134217728
-  QMessageBoxFirstButton* = 1024
-  QMessageBoxLastButton* = 134217728
-  QMessageBoxYesAll* = 32768
-  QMessageBoxNoAll* = 131072
-  QMessageBoxDefault* = 256
-  QMessageBoxEscape* = 512
-  QMessageBoxFlagMask* = 768
-  QMessageBoxButtonMask* = -769
-
+type QMessageBoxStandardButtonEnum* = distinct cint
+template NoButton*(_: type QMessageBoxStandardButtonEnum): untyped = 0
+template Ok*(_: type QMessageBoxStandardButtonEnum): untyped = 1024
+template Save*(_: type QMessageBoxStandardButtonEnum): untyped = 2048
+template SaveAll*(_: type QMessageBoxStandardButtonEnum): untyped = 4096
+template Open*(_: type QMessageBoxStandardButtonEnum): untyped = 8192
+template Yes*(_: type QMessageBoxStandardButtonEnum): untyped = 16384
+template YesToAll*(_: type QMessageBoxStandardButtonEnum): untyped = 32768
+template No*(_: type QMessageBoxStandardButtonEnum): untyped = 65536
+template NoToAll*(_: type QMessageBoxStandardButtonEnum): untyped = 131072
+template Abort*(_: type QMessageBoxStandardButtonEnum): untyped = 262144
+template Retry*(_: type QMessageBoxStandardButtonEnum): untyped = 524288
+template Ignore*(_: type QMessageBoxStandardButtonEnum): untyped = 1048576
+template Close*(_: type QMessageBoxStandardButtonEnum): untyped = 2097152
+template Cancel*(_: type QMessageBoxStandardButtonEnum): untyped = 4194304
+template Discard*(_: type QMessageBoxStandardButtonEnum): untyped = 8388608
+template Help*(_: type QMessageBoxStandardButtonEnum): untyped = 16777216
+template Apply*(_: type QMessageBoxStandardButtonEnum): untyped = 33554432
+template Reset*(_: type QMessageBoxStandardButtonEnum): untyped = 67108864
+template RestoreDefaults*(_: type QMessageBoxStandardButtonEnum): untyped = 134217728
+template FirstButton*(_: type QMessageBoxStandardButtonEnum): untyped = 1024
+template LastButton*(_: type QMessageBoxStandardButtonEnum): untyped = 134217728
+template YesAll*(_: type QMessageBoxStandardButtonEnum): untyped = 32768
+template NoAll*(_: type QMessageBoxStandardButtonEnum): untyped = 131072
+template Default*(_: type QMessageBoxStandardButtonEnum): untyped = 256
+template Escape*(_: type QMessageBoxStandardButtonEnum): untyped = 512
+template FlagMask*(_: type QMessageBoxStandardButtonEnum): untyped = 768
+template ButtonMask*(_: type QMessageBoxStandardButtonEnum): untyped = -769
 
 
 import gen_qmessagebox_types
@@ -102,7 +96,6 @@ import
   gen_qdialog,
   gen_qevent,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -121,7 +114,6 @@ export
   gen_qdialog,
   gen_qevent,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -358,78 +350,78 @@ proc fcQMessageBox_staticMetaObject(): pointer {.importc: "QMessageBox_staticMet
 proc fcQMessageBox_delete(self: pointer) {.importc: "QMessageBox_delete".}
 
 
-func init*(T: type QMessageBox, h: ptr cQMessageBox): QMessageBox =
+func init*(T: type gen_qmessagebox_types.QMessageBox, h: ptr cQMessageBox): gen_qmessagebox_types.QMessageBox =
   T(h: h)
-proc create*(T: type QMessageBox, parent: gen_qwidget.QWidget): QMessageBox =
+proc create*(T: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget): gen_qmessagebox_types.QMessageBox =
 
-  QMessageBox.init(fcQMessageBox_new(parent.h))
-proc create*(T: type QMessageBox, ): QMessageBox =
+  gen_qmessagebox_types.QMessageBox.init(fcQMessageBox_new(parent.h))
+proc create*(T: type gen_qmessagebox_types.QMessageBox, ): gen_qmessagebox_types.QMessageBox =
 
-  QMessageBox.init(fcQMessageBox_new2())
-proc create*(T: type QMessageBox, icon: QMessageBoxIcon, title: string, text: string): QMessageBox =
+  gen_qmessagebox_types.QMessageBox.init(fcQMessageBox_new2())
+proc create*(T: type gen_qmessagebox_types.QMessageBox, icon: cint, title: string, text: string): gen_qmessagebox_types.QMessageBox =
 
-  QMessageBox.init(fcQMessageBox_new3(cint(icon), struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text)))))
-proc create*(T: type QMessageBox, title: string, text: string, icon: QMessageBoxIcon, button0: cint, button1: cint, button2: cint): QMessageBox =
+  gen_qmessagebox_types.QMessageBox.init(fcQMessageBox_new3(cint(icon), struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text)))))
+proc create*(T: type gen_qmessagebox_types.QMessageBox, title: string, text: string, icon: cint, button0: cint, button1: cint, button2: cint): gen_qmessagebox_types.QMessageBox =
 
-  QMessageBox.init(fcQMessageBox_new4(struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), cint(icon), button0, button1, button2))
-proc create*(T: type QMessageBox, icon: QMessageBoxIcon, title: string, text: string, buttons: QMessageBoxStandardButton): QMessageBox =
+  gen_qmessagebox_types.QMessageBox.init(fcQMessageBox_new4(struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), cint(icon), button0, button1, button2))
+proc create*(T: type gen_qmessagebox_types.QMessageBox, icon: cint, title: string, text: string, buttons: cint): gen_qmessagebox_types.QMessageBox =
 
-  QMessageBox.init(fcQMessageBox_new5(cint(icon), struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), cint(buttons)))
-proc create*(T: type QMessageBox, icon: QMessageBoxIcon, title: string, text: string, buttons: QMessageBoxStandardButton, parent: gen_qwidget.QWidget): QMessageBox =
+  gen_qmessagebox_types.QMessageBox.init(fcQMessageBox_new5(cint(icon), struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), cint(buttons)))
+proc create*(T: type gen_qmessagebox_types.QMessageBox, icon: cint, title: string, text: string, buttons: cint, parent: gen_qwidget.QWidget): gen_qmessagebox_types.QMessageBox =
 
-  QMessageBox.init(fcQMessageBox_new6(cint(icon), struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), cint(buttons), parent.h))
-proc create*(T: type QMessageBox, icon: QMessageBoxIcon, title: string, text: string, buttons: QMessageBoxStandardButton, parent: gen_qwidget.QWidget, flags: gen_qnamespace.WindowType): QMessageBox =
+  gen_qmessagebox_types.QMessageBox.init(fcQMessageBox_new6(cint(icon), struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), cint(buttons), parent.h))
+proc create*(T: type gen_qmessagebox_types.QMessageBox, icon: cint, title: string, text: string, buttons: cint, parent: gen_qwidget.QWidget, flags: cint): gen_qmessagebox_types.QMessageBox =
 
-  QMessageBox.init(fcQMessageBox_new7(cint(icon), struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), cint(buttons), parent.h, cint(flags)))
-proc create*(T: type QMessageBox, title: string, text: string, icon: QMessageBoxIcon, button0: cint, button1: cint, button2: cint, parent: gen_qwidget.QWidget): QMessageBox =
+  gen_qmessagebox_types.QMessageBox.init(fcQMessageBox_new7(cint(icon), struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), cint(buttons), parent.h, cint(flags)))
+proc create*(T: type gen_qmessagebox_types.QMessageBox, title: string, text: string, icon: cint, button0: cint, button1: cint, button2: cint, parent: gen_qwidget.QWidget): gen_qmessagebox_types.QMessageBox =
 
-  QMessageBox.init(fcQMessageBox_new8(struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), cint(icon), button0, button1, button2, parent.h))
-proc create*(T: type QMessageBox, title: string, text: string, icon: QMessageBoxIcon, button0: cint, button1: cint, button2: cint, parent: gen_qwidget.QWidget, f: gen_qnamespace.WindowType): QMessageBox =
+  gen_qmessagebox_types.QMessageBox.init(fcQMessageBox_new8(struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), cint(icon), button0, button1, button2, parent.h))
+proc create*(T: type gen_qmessagebox_types.QMessageBox, title: string, text: string, icon: cint, button0: cint, button1: cint, button2: cint, parent: gen_qwidget.QWidget, f: cint): gen_qmessagebox_types.QMessageBox =
 
-  QMessageBox.init(fcQMessageBox_new9(struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), cint(icon), button0, button1, button2, parent.h, cint(f)))
-proc metaObject*(self: QMessageBox, ): gen_qobjectdefs.QMetaObject =
+  gen_qmessagebox_types.QMessageBox.init(fcQMessageBox_new9(struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), cint(icon), button0, button1, button2, parent.h, cint(f)))
+proc metaObject*(self: gen_qmessagebox_types.QMessageBox, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQMessageBox_metaObject(self.h))
 
-proc metacast*(self: QMessageBox, param1: cstring): pointer =
+proc metacast*(self: gen_qmessagebox_types.QMessageBox, param1: cstring): pointer =
 
   fcQMessageBox_metacast(self.h, param1)
 
-proc metacall*(self: QMessageBox, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qmessagebox_types.QMessageBox, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQMessageBox_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QMessageBox, s: cstring): string =
+proc tr*(_: type gen_qmessagebox_types.QMessageBox, s: cstring): string =
 
   let v_ms = fcQMessageBox_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QMessageBox, s: cstring): string =
+proc trUtf8*(_: type gen_qmessagebox_types.QMessageBox, s: cstring): string =
 
   let v_ms = fcQMessageBox_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc addButton*(self: QMessageBox, button: gen_qabstractbutton.QAbstractButton, role: QMessageBoxButtonRole): void =
+proc addButton*(self: gen_qmessagebox_types.QMessageBox, button: gen_qabstractbutton.QAbstractButton, role: cint): void =
 
   fcQMessageBox_addButton(self.h, button.h, cint(role))
 
-proc addButton2*(self: QMessageBox, text: string, role: QMessageBoxButtonRole): gen_qpushbutton.QPushButton =
+proc addButton2*(self: gen_qmessagebox_types.QMessageBox, text: string, role: cint): gen_qpushbutton.QPushButton =
 
   gen_qpushbutton.QPushButton(h: fcQMessageBox_addButton2(self.h, struct_miqt_string(data: text, len: csize_t(len(text))), cint(role)))
 
-proc addButtonWithButton*(self: QMessageBox, button: QMessageBoxStandardButton): gen_qpushbutton.QPushButton =
+proc addButtonWithButton*(self: gen_qmessagebox_types.QMessageBox, button: cint): gen_qpushbutton.QPushButton =
 
   gen_qpushbutton.QPushButton(h: fcQMessageBox_addButtonWithButton(self.h, cint(button)))
 
-proc removeButton*(self: QMessageBox, button: gen_qabstractbutton.QAbstractButton): void =
+proc removeButton*(self: gen_qmessagebox_types.QMessageBox, button: gen_qabstractbutton.QAbstractButton): void =
 
   fcQMessageBox_removeButton(self.h, button.h)
 
-proc buttons*(self: QMessageBox, ): seq[gen_qabstractbutton.QAbstractButton] =
+proc buttons*(self: gen_qmessagebox_types.QMessageBox, ): seq[gen_qabstractbutton.QAbstractButton] =
 
   var v_ma = fcQMessageBox_buttons(self.h)
   var vx_ret = newSeq[gen_qabstractbutton.QAbstractButton](int(v_ma.len))
@@ -438,223 +430,223 @@ proc buttons*(self: QMessageBox, ): seq[gen_qabstractbutton.QAbstractButton] =
     vx_ret[i] = gen_qabstractbutton.QAbstractButton(h: v_outCast[i])
   vx_ret
 
-proc buttonRole*(self: QMessageBox, button: gen_qabstractbutton.QAbstractButton): QMessageBoxButtonRole =
+proc buttonRole*(self: gen_qmessagebox_types.QMessageBox, button: gen_qabstractbutton.QAbstractButton): cint =
 
-  QMessageBoxButtonRole(fcQMessageBox_buttonRole(self.h, button.h))
+  cint(fcQMessageBox_buttonRole(self.h, button.h))
 
-proc setStandardButtons*(self: QMessageBox, buttons: QMessageBoxStandardButton): void =
+proc setStandardButtons*(self: gen_qmessagebox_types.QMessageBox, buttons: cint): void =
 
   fcQMessageBox_setStandardButtons(self.h, cint(buttons))
 
-proc standardButtons*(self: QMessageBox, ): QMessageBoxStandardButton =
+proc standardButtons*(self: gen_qmessagebox_types.QMessageBox, ): cint =
 
-  QMessageBoxStandardButton(fcQMessageBox_standardButtons(self.h))
+  cint(fcQMessageBox_standardButtons(self.h))
 
-proc standardButton*(self: QMessageBox, button: gen_qabstractbutton.QAbstractButton): QMessageBoxStandardButton =
+proc standardButton*(self: gen_qmessagebox_types.QMessageBox, button: gen_qabstractbutton.QAbstractButton): cint =
 
-  QMessageBoxStandardButton(fcQMessageBox_standardButton(self.h, button.h))
+  cint(fcQMessageBox_standardButton(self.h, button.h))
 
-proc button*(self: QMessageBox, which: QMessageBoxStandardButton): gen_qabstractbutton.QAbstractButton =
+proc button*(self: gen_qmessagebox_types.QMessageBox, which: cint): gen_qabstractbutton.QAbstractButton =
 
   gen_qabstractbutton.QAbstractButton(h: fcQMessageBox_button(self.h, cint(which)))
 
-proc defaultButton*(self: QMessageBox, ): gen_qpushbutton.QPushButton =
+proc defaultButton*(self: gen_qmessagebox_types.QMessageBox, ): gen_qpushbutton.QPushButton =
 
   gen_qpushbutton.QPushButton(h: fcQMessageBox_defaultButton(self.h))
 
-proc setDefaultButton*(self: QMessageBox, button: gen_qpushbutton.QPushButton): void =
+proc setDefaultButton*(self: gen_qmessagebox_types.QMessageBox, button: gen_qpushbutton.QPushButton): void =
 
   fcQMessageBox_setDefaultButton(self.h, button.h)
 
-proc setDefaultButtonWithButton*(self: QMessageBox, button: QMessageBoxStandardButton): void =
+proc setDefaultButtonWithButton*(self: gen_qmessagebox_types.QMessageBox, button: cint): void =
 
   fcQMessageBox_setDefaultButtonWithButton(self.h, cint(button))
 
-proc escapeButton*(self: QMessageBox, ): gen_qabstractbutton.QAbstractButton =
+proc escapeButton*(self: gen_qmessagebox_types.QMessageBox, ): gen_qabstractbutton.QAbstractButton =
 
   gen_qabstractbutton.QAbstractButton(h: fcQMessageBox_escapeButton(self.h))
 
-proc setEscapeButton*(self: QMessageBox, button: gen_qabstractbutton.QAbstractButton): void =
+proc setEscapeButton*(self: gen_qmessagebox_types.QMessageBox, button: gen_qabstractbutton.QAbstractButton): void =
 
   fcQMessageBox_setEscapeButton(self.h, button.h)
 
-proc setEscapeButtonWithButton*(self: QMessageBox, button: QMessageBoxStandardButton): void =
+proc setEscapeButtonWithButton*(self: gen_qmessagebox_types.QMessageBox, button: cint): void =
 
   fcQMessageBox_setEscapeButtonWithButton(self.h, cint(button))
 
-proc clickedButton*(self: QMessageBox, ): gen_qabstractbutton.QAbstractButton =
+proc clickedButton*(self: gen_qmessagebox_types.QMessageBox, ): gen_qabstractbutton.QAbstractButton =
 
   gen_qabstractbutton.QAbstractButton(h: fcQMessageBox_clickedButton(self.h))
 
-proc text*(self: QMessageBox, ): string =
+proc text*(self: gen_qmessagebox_types.QMessageBox, ): string =
 
   let v_ms = fcQMessageBox_text(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setText*(self: QMessageBox, text: string): void =
+proc setText*(self: gen_qmessagebox_types.QMessageBox, text: string): void =
 
   fcQMessageBox_setText(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
-proc icon*(self: QMessageBox, ): QMessageBoxIcon =
+proc icon*(self: gen_qmessagebox_types.QMessageBox, ): cint =
 
-  QMessageBoxIcon(fcQMessageBox_icon(self.h))
+  cint(fcQMessageBox_icon(self.h))
 
-proc setIcon*(self: QMessageBox, icon: QMessageBoxIcon): void =
+proc setIcon*(self: gen_qmessagebox_types.QMessageBox, icon: cint): void =
 
   fcQMessageBox_setIcon(self.h, cint(icon))
 
-proc iconPixmap*(self: QMessageBox, ): gen_qpixmap.QPixmap =
+proc iconPixmap*(self: gen_qmessagebox_types.QMessageBox, ): gen_qpixmap.QPixmap =
 
   gen_qpixmap.QPixmap(h: fcQMessageBox_iconPixmap(self.h))
 
-proc setIconPixmap*(self: QMessageBox, pixmap: gen_qpixmap.QPixmap): void =
+proc setIconPixmap*(self: gen_qmessagebox_types.QMessageBox, pixmap: gen_qpixmap.QPixmap): void =
 
   fcQMessageBox_setIconPixmap(self.h, pixmap.h)
 
-proc textFormat*(self: QMessageBox, ): gen_qnamespace.TextFormat =
+proc textFormat*(self: gen_qmessagebox_types.QMessageBox, ): cint =
 
-  gen_qnamespace.TextFormat(fcQMessageBox_textFormat(self.h))
+  cint(fcQMessageBox_textFormat(self.h))
 
-proc setTextFormat*(self: QMessageBox, format: gen_qnamespace.TextFormat): void =
+proc setTextFormat*(self: gen_qmessagebox_types.QMessageBox, format: cint): void =
 
   fcQMessageBox_setTextFormat(self.h, cint(format))
 
-proc setTextInteractionFlags*(self: QMessageBox, flags: gen_qnamespace.TextInteractionFlag): void =
+proc setTextInteractionFlags*(self: gen_qmessagebox_types.QMessageBox, flags: cint): void =
 
   fcQMessageBox_setTextInteractionFlags(self.h, cint(flags))
 
-proc textInteractionFlags*(self: QMessageBox, ): gen_qnamespace.TextInteractionFlag =
+proc textInteractionFlags*(self: gen_qmessagebox_types.QMessageBox, ): cint =
 
-  gen_qnamespace.TextInteractionFlag(fcQMessageBox_textInteractionFlags(self.h))
+  cint(fcQMessageBox_textInteractionFlags(self.h))
 
-proc setCheckBox*(self: QMessageBox, cb: gen_qcheckbox.QCheckBox): void =
+proc setCheckBox*(self: gen_qmessagebox_types.QMessageBox, cb: gen_qcheckbox.QCheckBox): void =
 
   fcQMessageBox_setCheckBox(self.h, cb.h)
 
-proc checkBox*(self: QMessageBox, ): gen_qcheckbox.QCheckBox =
+proc checkBox*(self: gen_qmessagebox_types.QMessageBox, ): gen_qcheckbox.QCheckBox =
 
   gen_qcheckbox.QCheckBox(h: fcQMessageBox_checkBox(self.h))
 
-proc information*(_: type QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string): QMessageBoxStandardButton =
+proc information*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string): cint =
 
-  QMessageBoxStandardButton(fcQMessageBox_information(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text)))))
+  cint(fcQMessageBox_information(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text)))))
 
-proc question*(_: type QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string): QMessageBoxStandardButton =
+proc question*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string): cint =
 
-  QMessageBoxStandardButton(fcQMessageBox_question(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text)))))
+  cint(fcQMessageBox_question(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text)))))
 
-proc warning*(_: type QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string): QMessageBoxStandardButton =
+proc warning*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string): cint =
 
-  QMessageBoxStandardButton(fcQMessageBox_warning(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text)))))
+  cint(fcQMessageBox_warning(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text)))))
 
-proc critical*(_: type QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string): QMessageBoxStandardButton =
+proc critical*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string): cint =
 
-  QMessageBoxStandardButton(fcQMessageBox_critical(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text)))))
+  cint(fcQMessageBox_critical(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text)))))
 
-proc about*(_: type QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string): void =
+proc about*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string): void =
 
   fcQMessageBox_about(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))))
 
-proc aboutQt*(_: type QMessageBox, parent: gen_qwidget.QWidget): void =
+proc aboutQt*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget): void =
 
   fcQMessageBox_aboutQt(parent.h)
 
-proc information2*(_: type QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: cint): cint =
+proc information2*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: cint): cint =
 
   fcQMessageBox_information2(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), button0)
 
-proc information3*(_: type QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string): cint =
+proc information3*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string): cint =
 
   fcQMessageBox_information3(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), struct_miqt_string(data: button0Text, len: csize_t(len(button0Text))))
 
-proc information4*(_: type QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: QMessageBoxStandardButton): QMessageBoxStandardButton =
+proc information4*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: cint): cint =
 
-  QMessageBoxStandardButton(fcQMessageBox_information4(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), cint(button0)))
+  cint(fcQMessageBox_information4(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), cint(button0)))
 
-proc question2*(_: type QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: cint): cint =
+proc question2*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: cint): cint =
 
   fcQMessageBox_question2(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), button0)
 
-proc question3*(_: type QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string): cint =
+proc question3*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string): cint =
 
   fcQMessageBox_question3(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), struct_miqt_string(data: button0Text, len: csize_t(len(button0Text))))
 
-proc question4*(_: type QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: QMessageBoxStandardButton, button1: QMessageBoxStandardButton): cint =
+proc question4*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: cint, button1: cint): cint =
 
   fcQMessageBox_question4(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), cint(button0), cint(button1))
 
-proc warning2*(_: type QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: cint, button1: cint): cint =
+proc warning2*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: cint, button1: cint): cint =
 
   fcQMessageBox_warning2(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), button0, button1)
 
-proc warning3*(_: type QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string): cint =
+proc warning3*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string): cint =
 
   fcQMessageBox_warning3(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), struct_miqt_string(data: button0Text, len: csize_t(len(button0Text))))
 
-proc warning4*(_: type QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: QMessageBoxStandardButton, button1: QMessageBoxStandardButton): cint =
+proc warning4*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: cint, button1: cint): cint =
 
   fcQMessageBox_warning4(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), cint(button0), cint(button1))
 
-proc critical2*(_: type QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: cint, button1: cint): cint =
+proc critical2*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: cint, button1: cint): cint =
 
   fcQMessageBox_critical2(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), button0, button1)
 
-proc critical3*(_: type QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string): cint =
+proc critical3*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string): cint =
 
   fcQMessageBox_critical3(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), struct_miqt_string(data: button0Text, len: csize_t(len(button0Text))))
 
-proc critical4*(_: type QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: QMessageBoxStandardButton, button1: QMessageBoxStandardButton): cint =
+proc critical4*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: cint, button1: cint): cint =
 
   fcQMessageBox_critical4(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), cint(button0), cint(button1))
 
-proc buttonText*(self: QMessageBox, button: cint): string =
+proc buttonText*(self: gen_qmessagebox_types.QMessageBox, button: cint): string =
 
   let v_ms = fcQMessageBox_buttonText(self.h, button)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setButtonText*(self: QMessageBox, button: cint, text: string): void =
+proc setButtonText*(self: gen_qmessagebox_types.QMessageBox, button: cint, text: string): void =
 
   fcQMessageBox_setButtonText(self.h, button, struct_miqt_string(data: text, len: csize_t(len(text))))
 
-proc informativeText*(self: QMessageBox, ): string =
+proc informativeText*(self: gen_qmessagebox_types.QMessageBox, ): string =
 
   let v_ms = fcQMessageBox_informativeText(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setInformativeText*(self: QMessageBox, text: string): void =
+proc setInformativeText*(self: gen_qmessagebox_types.QMessageBox, text: string): void =
 
   fcQMessageBox_setInformativeText(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
-proc detailedText*(self: QMessageBox, ): string =
+proc detailedText*(self: gen_qmessagebox_types.QMessageBox, ): string =
 
   let v_ms = fcQMessageBox_detailedText(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setDetailedText*(self: QMessageBox, text: string): void =
+proc setDetailedText*(self: gen_qmessagebox_types.QMessageBox, text: string): void =
 
   fcQMessageBox_setDetailedText(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
-proc setWindowTitle*(self: QMessageBox, title: string): void =
+proc setWindowTitle*(self: gen_qmessagebox_types.QMessageBox, title: string): void =
 
   fcQMessageBox_setWindowTitle(self.h, struct_miqt_string(data: title, len: csize_t(len(title))))
 
-proc setWindowModality*(self: QMessageBox, windowModality: gen_qnamespace.WindowModality): void =
+proc setWindowModality*(self: gen_qmessagebox_types.QMessageBox, windowModality: cint): void =
 
   fcQMessageBox_setWindowModality(self.h, cint(windowModality))
 
-proc standardIcon*(_: type QMessageBox, icon: QMessageBoxIcon): gen_qpixmap.QPixmap =
+proc standardIcon*(_: type gen_qmessagebox_types.QMessageBox, icon: cint): gen_qpixmap.QPixmap =
 
   gen_qpixmap.QPixmap(h: fcQMessageBox_standardIcon(cint(icon)))
 
-proc buttonClicked*(self: QMessageBox, button: gen_qabstractbutton.QAbstractButton): void =
+proc buttonClicked*(self: gen_qmessagebox_types.QMessageBox, button: gen_qabstractbutton.QAbstractButton): void =
 
   fcQMessageBox_buttonClicked(self.h, button.h)
 
@@ -666,1163 +658,948 @@ proc miqt_exec_callback_QMessageBox_buttonClicked(slot: int, button: pointer) {.
 
   nimfunc[](slotval1)
 
-proc onbuttonClicked*(self: QMessageBox, slot: proc(button: gen_qabstractbutton.QAbstractButton)) =
+proc onbuttonClicked*(self: gen_qmessagebox_types.QMessageBox, slot: proc(button: gen_qabstractbutton.QAbstractButton)) =
   type Cb = proc(button: gen_qabstractbutton.QAbstractButton)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQMessageBox_connect_buttonClicked(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QMessageBox, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qmessagebox_types.QMessageBox, s: cstring, c: cstring): string =
 
   let v_ms = fcQMessageBox_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QMessageBox, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qmessagebox_types.QMessageBox, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQMessageBox_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QMessageBox, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qmessagebox_types.QMessageBox, s: cstring, c: cstring): string =
 
   let v_ms = fcQMessageBox_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QMessageBox, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qmessagebox_types.QMessageBox, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQMessageBox_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc information42*(_: type QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, buttons: QMessageBoxStandardButton): QMessageBoxStandardButton =
+proc information42*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, buttons: cint): cint =
 
-  QMessageBoxStandardButton(fcQMessageBox_information42(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), cint(buttons)))
+  cint(fcQMessageBox_information42(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), cint(buttons)))
 
-proc information5*(_: type QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, buttons: QMessageBoxStandardButton, defaultButton: QMessageBoxStandardButton): QMessageBoxStandardButton =
+proc information5*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, buttons: cint, defaultButton: cint): cint =
 
-  QMessageBoxStandardButton(fcQMessageBox_information5(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), cint(buttons), cint(defaultButton)))
+  cint(fcQMessageBox_information5(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), cint(buttons), cint(defaultButton)))
 
-proc question42*(_: type QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, buttons: QMessageBoxStandardButton): QMessageBoxStandardButton =
+proc question42*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, buttons: cint): cint =
 
-  QMessageBoxStandardButton(fcQMessageBox_question42(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), cint(buttons)))
+  cint(fcQMessageBox_question42(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), cint(buttons)))
 
-proc question5*(_: type QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, buttons: QMessageBoxStandardButton, defaultButton: QMessageBoxStandardButton): QMessageBoxStandardButton =
+proc question5*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, buttons: cint, defaultButton: cint): cint =
 
-  QMessageBoxStandardButton(fcQMessageBox_question5(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), cint(buttons), cint(defaultButton)))
+  cint(fcQMessageBox_question5(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), cint(buttons), cint(defaultButton)))
 
-proc warning42*(_: type QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, buttons: QMessageBoxStandardButton): QMessageBoxStandardButton =
+proc warning42*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, buttons: cint): cint =
 
-  QMessageBoxStandardButton(fcQMessageBox_warning42(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), cint(buttons)))
+  cint(fcQMessageBox_warning42(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), cint(buttons)))
 
-proc warning5*(_: type QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, buttons: QMessageBoxStandardButton, defaultButton: QMessageBoxStandardButton): QMessageBoxStandardButton =
+proc warning5*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, buttons: cint, defaultButton: cint): cint =
 
-  QMessageBoxStandardButton(fcQMessageBox_warning5(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), cint(buttons), cint(defaultButton)))
+  cint(fcQMessageBox_warning5(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), cint(buttons), cint(defaultButton)))
 
-proc critical42*(_: type QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, buttons: QMessageBoxStandardButton): QMessageBoxStandardButton =
+proc critical42*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, buttons: cint): cint =
 
-  QMessageBoxStandardButton(fcQMessageBox_critical42(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), cint(buttons)))
+  cint(fcQMessageBox_critical42(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), cint(buttons)))
 
-proc critical5*(_: type QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, buttons: QMessageBoxStandardButton, defaultButton: QMessageBoxStandardButton): QMessageBoxStandardButton =
+proc critical5*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, buttons: cint, defaultButton: cint): cint =
 
-  QMessageBoxStandardButton(fcQMessageBox_critical5(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), cint(buttons), cint(defaultButton)))
+  cint(fcQMessageBox_critical5(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), cint(buttons), cint(defaultButton)))
 
-proc aboutQt2*(_: type QMessageBox, parent: gen_qwidget.QWidget, title: string): void =
+proc aboutQt2*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string): void =
 
   fcQMessageBox_aboutQt2(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))))
 
-proc information52*(_: type QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: cint, button1: cint): cint =
+proc information52*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: cint, button1: cint): cint =
 
   fcQMessageBox_information52(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), button0, button1)
 
-proc information6*(_: type QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: cint, button1: cint, button2: cint): cint =
+proc information6*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: cint, button1: cint, button2: cint): cint =
 
   fcQMessageBox_information6(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), button0, button1, button2)
 
-proc information53*(_: type QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string): cint =
+proc information53*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string): cint =
 
   fcQMessageBox_information53(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), struct_miqt_string(data: button0Text, len: csize_t(len(button0Text))), struct_miqt_string(data: button1Text, len: csize_t(len(button1Text))))
 
-proc information62*(_: type QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string, button2Text: string): cint =
+proc information62*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string, button2Text: string): cint =
 
   fcQMessageBox_information62(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), struct_miqt_string(data: button0Text, len: csize_t(len(button0Text))), struct_miqt_string(data: button1Text, len: csize_t(len(button1Text))), struct_miqt_string(data: button2Text, len: csize_t(len(button2Text))))
 
-proc information7*(_: type QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string, button2Text: string, defaultButtonNumber: cint): cint =
+proc information7*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string, button2Text: string, defaultButtonNumber: cint): cint =
 
   fcQMessageBox_information7(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), struct_miqt_string(data: button0Text, len: csize_t(len(button0Text))), struct_miqt_string(data: button1Text, len: csize_t(len(button1Text))), struct_miqt_string(data: button2Text, len: csize_t(len(button2Text))), defaultButtonNumber)
 
-proc information8*(_: type QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string, button2Text: string, defaultButtonNumber: cint, escapeButtonNumber: cint): cint =
+proc information8*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string, button2Text: string, defaultButtonNumber: cint, escapeButtonNumber: cint): cint =
 
   fcQMessageBox_information8(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), struct_miqt_string(data: button0Text, len: csize_t(len(button0Text))), struct_miqt_string(data: button1Text, len: csize_t(len(button1Text))), struct_miqt_string(data: button2Text, len: csize_t(len(button2Text))), defaultButtonNumber, escapeButtonNumber)
 
-proc information54*(_: type QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: QMessageBoxStandardButton, button1: QMessageBoxStandardButton): QMessageBoxStandardButton =
+proc information54*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: cint, button1: cint): cint =
 
-  QMessageBoxStandardButton(fcQMessageBox_information54(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), cint(button0), cint(button1)))
+  cint(fcQMessageBox_information54(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), cint(button0), cint(button1)))
 
-proc question52*(_: type QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: cint, button1: cint): cint =
+proc question52*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: cint, button1: cint): cint =
 
   fcQMessageBox_question52(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), button0, button1)
 
-proc question6*(_: type QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: cint, button1: cint, button2: cint): cint =
+proc question6*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: cint, button1: cint, button2: cint): cint =
 
   fcQMessageBox_question6(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), button0, button1, button2)
 
-proc question53*(_: type QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string): cint =
+proc question53*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string): cint =
 
   fcQMessageBox_question53(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), struct_miqt_string(data: button0Text, len: csize_t(len(button0Text))), struct_miqt_string(data: button1Text, len: csize_t(len(button1Text))))
 
-proc question62*(_: type QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string, button2Text: string): cint =
+proc question62*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string, button2Text: string): cint =
 
   fcQMessageBox_question62(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), struct_miqt_string(data: button0Text, len: csize_t(len(button0Text))), struct_miqt_string(data: button1Text, len: csize_t(len(button1Text))), struct_miqt_string(data: button2Text, len: csize_t(len(button2Text))))
 
-proc question7*(_: type QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string, button2Text: string, defaultButtonNumber: cint): cint =
+proc question7*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string, button2Text: string, defaultButtonNumber: cint): cint =
 
   fcQMessageBox_question7(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), struct_miqt_string(data: button0Text, len: csize_t(len(button0Text))), struct_miqt_string(data: button1Text, len: csize_t(len(button1Text))), struct_miqt_string(data: button2Text, len: csize_t(len(button2Text))), defaultButtonNumber)
 
-proc question8*(_: type QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string, button2Text: string, defaultButtonNumber: cint, escapeButtonNumber: cint): cint =
+proc question8*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string, button2Text: string, defaultButtonNumber: cint, escapeButtonNumber: cint): cint =
 
   fcQMessageBox_question8(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), struct_miqt_string(data: button0Text, len: csize_t(len(button0Text))), struct_miqt_string(data: button1Text, len: csize_t(len(button1Text))), struct_miqt_string(data: button2Text, len: csize_t(len(button2Text))), defaultButtonNumber, escapeButtonNumber)
 
-proc warning6*(_: type QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: cint, button1: cint, button2: cint): cint =
+proc warning6*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: cint, button1: cint, button2: cint): cint =
 
   fcQMessageBox_warning6(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), button0, button1, button2)
 
-proc warning52*(_: type QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string): cint =
+proc warning52*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string): cint =
 
   fcQMessageBox_warning52(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), struct_miqt_string(data: button0Text, len: csize_t(len(button0Text))), struct_miqt_string(data: button1Text, len: csize_t(len(button1Text))))
 
-proc warning62*(_: type QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string, button2Text: string): cint =
+proc warning62*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string, button2Text: string): cint =
 
   fcQMessageBox_warning62(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), struct_miqt_string(data: button0Text, len: csize_t(len(button0Text))), struct_miqt_string(data: button1Text, len: csize_t(len(button1Text))), struct_miqt_string(data: button2Text, len: csize_t(len(button2Text))))
 
-proc warning7*(_: type QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string, button2Text: string, defaultButtonNumber: cint): cint =
+proc warning7*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string, button2Text: string, defaultButtonNumber: cint): cint =
 
   fcQMessageBox_warning7(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), struct_miqt_string(data: button0Text, len: csize_t(len(button0Text))), struct_miqt_string(data: button1Text, len: csize_t(len(button1Text))), struct_miqt_string(data: button2Text, len: csize_t(len(button2Text))), defaultButtonNumber)
 
-proc warning8*(_: type QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string, button2Text: string, defaultButtonNumber: cint, escapeButtonNumber: cint): cint =
+proc warning8*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string, button2Text: string, defaultButtonNumber: cint, escapeButtonNumber: cint): cint =
 
   fcQMessageBox_warning8(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), struct_miqt_string(data: button0Text, len: csize_t(len(button0Text))), struct_miqt_string(data: button1Text, len: csize_t(len(button1Text))), struct_miqt_string(data: button2Text, len: csize_t(len(button2Text))), defaultButtonNumber, escapeButtonNumber)
 
-proc critical6*(_: type QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: cint, button1: cint, button2: cint): cint =
+proc critical6*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: cint, button1: cint, button2: cint): cint =
 
   fcQMessageBox_critical6(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), button0, button1, button2)
 
-proc critical52*(_: type QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string): cint =
+proc critical52*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string): cint =
 
   fcQMessageBox_critical52(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), struct_miqt_string(data: button0Text, len: csize_t(len(button0Text))), struct_miqt_string(data: button1Text, len: csize_t(len(button1Text))))
 
-proc critical62*(_: type QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string, button2Text: string): cint =
+proc critical62*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string, button2Text: string): cint =
 
   fcQMessageBox_critical62(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), struct_miqt_string(data: button0Text, len: csize_t(len(button0Text))), struct_miqt_string(data: button1Text, len: csize_t(len(button1Text))), struct_miqt_string(data: button2Text, len: csize_t(len(button2Text))))
 
-proc critical7*(_: type QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string, button2Text: string, defaultButtonNumber: cint): cint =
+proc critical7*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string, button2Text: string, defaultButtonNumber: cint): cint =
 
   fcQMessageBox_critical7(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), struct_miqt_string(data: button0Text, len: csize_t(len(button0Text))), struct_miqt_string(data: button1Text, len: csize_t(len(button1Text))), struct_miqt_string(data: button2Text, len: csize_t(len(button2Text))), defaultButtonNumber)
 
-proc critical8*(_: type QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string, button2Text: string, defaultButtonNumber: cint, escapeButtonNumber: cint): cint =
+proc critical8*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string, button2Text: string, defaultButtonNumber: cint, escapeButtonNumber: cint): cint =
 
   fcQMessageBox_critical8(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), struct_miqt_string(data: button0Text, len: csize_t(len(button0Text))), struct_miqt_string(data: button1Text, len: csize_t(len(button1Text))), struct_miqt_string(data: button2Text, len: csize_t(len(button2Text))), defaultButtonNumber, escapeButtonNumber)
 
-proc callVirtualBase_metaObject(self: QMessageBox, ): gen_qobjectdefs.QMetaObject =
-
+proc QMessageBoxmetaObject*(self: gen_qmessagebox_types.QMessageBox, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQMessageBox_virtualbase_metaObject(self.h))
 
-type QMessageBoxmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QMessageBox, slot: proc(super: QMessageBoxmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QMessageBoxmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QMessageBoxmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QMessageBoxmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMessageBox_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMessageBox_metaObject(self: ptr cQMessageBox, slot: int): pointer {.exportc: "miqt_exec_callback_QMessageBox_metaObject ".} =
-  type Cb = proc(super: QMessageBoxmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QMessageBox(h: self), )
+  var nimfunc = cast[ptr QMessageBoxmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QMessageBox, param1: cstring): pointer =
-
+proc QMessageBoxmetacast*(self: gen_qmessagebox_types.QMessageBox, param1: cstring): pointer =
 
   fQMessageBox_virtualbase_metacast(self.h, param1)
 
-type QMessageBoxmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QMessageBox, slot: proc(super: QMessageBoxmetacastBase, param1: cstring): pointer) =
+type QMessageBoxmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QMessageBoxmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QMessageBoxmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMessageBox_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMessageBox_metacast(self: ptr cQMessageBox, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QMessageBox_metacast ".} =
-  type Cb = proc(super: QMessageBoxmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QMessageBox(h: self), param1)
+  var nimfunc = cast[ptr QMessageBoxmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QMessageBox, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QMessageBoxmetacall*(self: gen_qmessagebox_types.QMessageBox, param1: cint, param2: cint, param3: pointer): cint =
 
   fQMessageBox_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QMessageBoxmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QMessageBox, slot: proc(super: QMessageBoxmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QMessageBoxmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QMessageBoxmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QMessageBoxmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMessageBox_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMessageBox_metacall(self: ptr cQMessageBox, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QMessageBox_metacall ".} =
-  type Cb = proc(super: QMessageBoxmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QMessageBox(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QMessageBoxmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_event(self: QMessageBox, e: gen_qcoreevent.QEvent): bool =
-
+proc QMessageBoxevent*(self: gen_qmessagebox_types.QMessageBox, e: gen_qcoreevent.QEvent): bool =
 
   fQMessageBox_virtualbase_event(self.h, e.h)
 
-type QMessageBoxeventBase* = proc(e: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QMessageBox, slot: proc(super: QMessageBoxeventBase, e: gen_qcoreevent.QEvent): bool) =
+type QMessageBoxeventProc* = proc(e: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMessageBoxeventBase, e: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QMessageBoxeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMessageBox_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMessageBox_event(self: ptr cQMessageBox, slot: int, e: pointer): bool {.exportc: "miqt_exec_callback_QMessageBox_event ".} =
-  type Cb = proc(super: QMessageBoxeventBase, e: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QMessageBox(h: self), e)
+  var nimfunc = cast[ptr QMessageBoxeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: e)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_resizeEvent(self: QMessageBox, event: gen_qevent.QResizeEvent): void =
-
+proc QMessageBoxresizeEvent*(self: gen_qmessagebox_types.QMessageBox, event: gen_qevent.QResizeEvent): void =
 
   fQMessageBox_virtualbase_resizeEvent(self.h, event.h)
 
-type QMessageBoxresizeEventBase* = proc(event: gen_qevent.QResizeEvent): void
-proc onresizeEvent*(self: QMessageBox, slot: proc(super: QMessageBoxresizeEventBase, event: gen_qevent.QResizeEvent): void) =
+type QMessageBoxresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
+proc onresizeEvent*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxresizeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMessageBoxresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var tmp = new Cb
+  var tmp = new QMessageBoxresizeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMessageBox_override_virtual_resizeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMessageBox_resizeEvent(self: ptr cQMessageBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMessageBox_resizeEvent ".} =
-  type Cb = proc(super: QMessageBoxresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QResizeEvent): auto =
-    callVirtualBase_resizeEvent(QMessageBox(h: self), event)
+  var nimfunc = cast[ptr QMessageBoxresizeEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QResizeEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_showEvent(self: QMessageBox, event: gen_qevent.QShowEvent): void =
-
+  nimfunc[](slotval1)
+proc QMessageBoxshowEvent*(self: gen_qmessagebox_types.QMessageBox, event: gen_qevent.QShowEvent): void =
 
   fQMessageBox_virtualbase_showEvent(self.h, event.h)
 
-type QMessageBoxshowEventBase* = proc(event: gen_qevent.QShowEvent): void
-proc onshowEvent*(self: QMessageBox, slot: proc(super: QMessageBoxshowEventBase, event: gen_qevent.QShowEvent): void) =
+type QMessageBoxshowEventProc* = proc(event: gen_qevent.QShowEvent): void
+proc onshowEvent*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxshowEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMessageBoxshowEventBase, event: gen_qevent.QShowEvent): void
-  var tmp = new Cb
+  var tmp = new QMessageBoxshowEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMessageBox_override_virtual_showEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMessageBox_showEvent(self: ptr cQMessageBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMessageBox_showEvent ".} =
-  type Cb = proc(super: QMessageBoxshowEventBase, event: gen_qevent.QShowEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QShowEvent): auto =
-    callVirtualBase_showEvent(QMessageBox(h: self), event)
+  var nimfunc = cast[ptr QMessageBoxshowEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QShowEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_closeEvent(self: QMessageBox, event: gen_qevent.QCloseEvent): void =
-
+  nimfunc[](slotval1)
+proc QMessageBoxcloseEvent*(self: gen_qmessagebox_types.QMessageBox, event: gen_qevent.QCloseEvent): void =
 
   fQMessageBox_virtualbase_closeEvent(self.h, event.h)
 
-type QMessageBoxcloseEventBase* = proc(event: gen_qevent.QCloseEvent): void
-proc oncloseEvent*(self: QMessageBox, slot: proc(super: QMessageBoxcloseEventBase, event: gen_qevent.QCloseEvent): void) =
+type QMessageBoxcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
+proc oncloseEvent*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxcloseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMessageBoxcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var tmp = new Cb
+  var tmp = new QMessageBoxcloseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMessageBox_override_virtual_closeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMessageBox_closeEvent(self: ptr cQMessageBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMessageBox_closeEvent ".} =
-  type Cb = proc(super: QMessageBoxcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QCloseEvent): auto =
-    callVirtualBase_closeEvent(QMessageBox(h: self), event)
+  var nimfunc = cast[ptr QMessageBoxcloseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QCloseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyPressEvent(self: QMessageBox, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QMessageBoxkeyPressEvent*(self: gen_qmessagebox_types.QMessageBox, event: gen_qevent.QKeyEvent): void =
 
   fQMessageBox_virtualbase_keyPressEvent(self.h, event.h)
 
-type QMessageBoxkeyPressEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyPressEvent*(self: QMessageBox, slot: proc(super: QMessageBoxkeyPressEventBase, event: gen_qevent.QKeyEvent): void) =
+type QMessageBoxkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyPressEvent*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxkeyPressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMessageBoxkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QMessageBoxkeyPressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMessageBox_override_virtual_keyPressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMessageBox_keyPressEvent(self: ptr cQMessageBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMessageBox_keyPressEvent ".} =
-  type Cb = proc(super: QMessageBoxkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyPressEvent(QMessageBox(h: self), event)
+  var nimfunc = cast[ptr QMessageBoxkeyPressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_changeEvent(self: QMessageBox, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QMessageBoxchangeEvent*(self: gen_qmessagebox_types.QMessageBox, event: gen_qcoreevent.QEvent): void =
 
   fQMessageBox_virtualbase_changeEvent(self.h, event.h)
 
-type QMessageBoxchangeEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onchangeEvent*(self: QMessageBox, slot: proc(super: QMessageBoxchangeEventBase, event: gen_qcoreevent.QEvent): void) =
+type QMessageBoxchangeEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onchangeEvent*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxchangeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMessageBoxchangeEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QMessageBoxchangeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMessageBox_override_virtual_changeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMessageBox_changeEvent(self: ptr cQMessageBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMessageBox_changeEvent ".} =
-  type Cb = proc(super: QMessageBoxchangeEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_changeEvent(QMessageBox(h: self), event)
+  var nimfunc = cast[ptr QMessageBoxchangeEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_setVisible(self: QMessageBox, visible: bool): void =
-
+  nimfunc[](slotval1)
+proc QMessageBoxsetVisible*(self: gen_qmessagebox_types.QMessageBox, visible: bool): void =
 
   fQMessageBox_virtualbase_setVisible(self.h, visible)
 
-type QMessageBoxsetVisibleBase* = proc(visible: bool): void
-proc onsetVisible*(self: QMessageBox, slot: proc(super: QMessageBoxsetVisibleBase, visible: bool): void) =
+type QMessageBoxsetVisibleProc* = proc(visible: bool): void
+proc onsetVisible*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxsetVisibleProc) =
   # TODO check subclass
-  type Cb = proc(super: QMessageBoxsetVisibleBase, visible: bool): void
-  var tmp = new Cb
+  var tmp = new QMessageBoxsetVisibleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMessageBox_override_virtual_setVisible(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMessageBox_setVisible(self: ptr cQMessageBox, slot: int, visible: bool): void {.exportc: "miqt_exec_callback_QMessageBox_setVisible ".} =
-  type Cb = proc(super: QMessageBoxsetVisibleBase, visible: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(visible: bool): auto =
-    callVirtualBase_setVisible(QMessageBox(h: self), visible)
+  var nimfunc = cast[ptr QMessageBoxsetVisibleProc](cast[pointer](slot))
   let slotval1 = visible
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_sizeHint(self: QMessageBox, ): gen_qsize.QSize =
-
+  nimfunc[](slotval1)
+proc QMessageBoxsizeHint*(self: gen_qmessagebox_types.QMessageBox, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQMessageBox_virtualbase_sizeHint(self.h))
 
-type QMessageBoxsizeHintBase* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: QMessageBox, slot: proc(super: QMessageBoxsizeHintBase): gen_qsize.QSize) =
+type QMessageBoxsizeHintProc* = proc(): gen_qsize.QSize
+proc onsizeHint*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxsizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QMessageBoxsizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QMessageBoxsizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMessageBox_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMessageBox_sizeHint(self: ptr cQMessageBox, slot: int): pointer {.exportc: "miqt_exec_callback_QMessageBox_sizeHint ".} =
-  type Cb = proc(super: QMessageBoxsizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sizeHint(QMessageBox(h: self), )
+  var nimfunc = cast[ptr QMessageBoxsizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_minimumSizeHint(self: QMessageBox, ): gen_qsize.QSize =
-
+proc QMessageBoxminimumSizeHint*(self: gen_qmessagebox_types.QMessageBox, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQMessageBox_virtualbase_minimumSizeHint(self.h))
 
-type QMessageBoxminimumSizeHintBase* = proc(): gen_qsize.QSize
-proc onminimumSizeHint*(self: QMessageBox, slot: proc(super: QMessageBoxminimumSizeHintBase): gen_qsize.QSize) =
+type QMessageBoxminimumSizeHintProc* = proc(): gen_qsize.QSize
+proc onminimumSizeHint*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxminimumSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QMessageBoxminimumSizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QMessageBoxminimumSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMessageBox_override_virtual_minimumSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMessageBox_minimumSizeHint(self: ptr cQMessageBox, slot: int): pointer {.exportc: "miqt_exec_callback_QMessageBox_minimumSizeHint ".} =
-  type Cb = proc(super: QMessageBoxminimumSizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_minimumSizeHint(QMessageBox(h: self), )
+  var nimfunc = cast[ptr QMessageBoxminimumSizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_open(self: QMessageBox, ): void =
-
+proc QMessageBoxopen*(self: gen_qmessagebox_types.QMessageBox, ): void =
 
   fQMessageBox_virtualbase_open(self.h)
 
-type QMessageBoxopenBase* = proc(): void
-proc onopen*(self: QMessageBox, slot: proc(super: QMessageBoxopenBase): void) =
+type QMessageBoxopenProc* = proc(): void
+proc onopen*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxopenProc) =
   # TODO check subclass
-  type Cb = proc(super: QMessageBoxopenBase): void
-  var tmp = new Cb
+  var tmp = new QMessageBoxopenProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMessageBox_override_virtual_open(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMessageBox_open(self: ptr cQMessageBox, slot: int): void {.exportc: "miqt_exec_callback_QMessageBox_open ".} =
-  type Cb = proc(super: QMessageBoxopenBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_open(QMessageBox(h: self), )
+  var nimfunc = cast[ptr QMessageBoxopenProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_exec(self: QMessageBox, ): cint =
-
+  nimfunc[]()
+proc QMessageBoxexec*(self: gen_qmessagebox_types.QMessageBox, ): cint =
 
   fQMessageBox_virtualbase_exec(self.h)
 
-type QMessageBoxexecBase* = proc(): cint
-proc onexec*(self: QMessageBox, slot: proc(super: QMessageBoxexecBase): cint) =
+type QMessageBoxexecProc* = proc(): cint
+proc onexec*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxexecProc) =
   # TODO check subclass
-  type Cb = proc(super: QMessageBoxexecBase): cint
-  var tmp = new Cb
+  var tmp = new QMessageBoxexecProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMessageBox_override_virtual_exec(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMessageBox_exec(self: ptr cQMessageBox, slot: int): cint {.exportc: "miqt_exec_callback_QMessageBox_exec ".} =
-  type Cb = proc(super: QMessageBoxexecBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_exec(QMessageBox(h: self), )
+  var nimfunc = cast[ptr QMessageBoxexecProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_done(self: QMessageBox, param1: cint): void =
-
+proc QMessageBoxdone*(self: gen_qmessagebox_types.QMessageBox, param1: cint): void =
 
   fQMessageBox_virtualbase_done(self.h, param1)
 
-type QMessageBoxdoneBase* = proc(param1: cint): void
-proc ondone*(self: QMessageBox, slot: proc(super: QMessageBoxdoneBase, param1: cint): void) =
+type QMessageBoxdoneProc* = proc(param1: cint): void
+proc ondone*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxdoneProc) =
   # TODO check subclass
-  type Cb = proc(super: QMessageBoxdoneBase, param1: cint): void
-  var tmp = new Cb
+  var tmp = new QMessageBoxdoneProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMessageBox_override_virtual_done(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMessageBox_done(self: ptr cQMessageBox, slot: int, param1: cint): void {.exportc: "miqt_exec_callback_QMessageBox_done ".} =
-  type Cb = proc(super: QMessageBoxdoneBase, param1: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_done(QMessageBox(h: self), param1)
+  var nimfunc = cast[ptr QMessageBoxdoneProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_accept(self: QMessageBox, ): void =
-
+  nimfunc[](slotval1)
+proc QMessageBoxaccept*(self: gen_qmessagebox_types.QMessageBox, ): void =
 
   fQMessageBox_virtualbase_accept(self.h)
 
-type QMessageBoxacceptBase* = proc(): void
-proc onaccept*(self: QMessageBox, slot: proc(super: QMessageBoxacceptBase): void) =
+type QMessageBoxacceptProc* = proc(): void
+proc onaccept*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxacceptProc) =
   # TODO check subclass
-  type Cb = proc(super: QMessageBoxacceptBase): void
-  var tmp = new Cb
+  var tmp = new QMessageBoxacceptProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMessageBox_override_virtual_accept(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMessageBox_accept(self: ptr cQMessageBox, slot: int): void {.exportc: "miqt_exec_callback_QMessageBox_accept ".} =
-  type Cb = proc(super: QMessageBoxacceptBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_accept(QMessageBox(h: self), )
+  var nimfunc = cast[ptr QMessageBoxacceptProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_reject(self: QMessageBox, ): void =
-
+  nimfunc[]()
+proc QMessageBoxreject*(self: gen_qmessagebox_types.QMessageBox, ): void =
 
   fQMessageBox_virtualbase_reject(self.h)
 
-type QMessageBoxrejectBase* = proc(): void
-proc onreject*(self: QMessageBox, slot: proc(super: QMessageBoxrejectBase): void) =
+type QMessageBoxrejectProc* = proc(): void
+proc onreject*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxrejectProc) =
   # TODO check subclass
-  type Cb = proc(super: QMessageBoxrejectBase): void
-  var tmp = new Cb
+  var tmp = new QMessageBoxrejectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMessageBox_override_virtual_reject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMessageBox_reject(self: ptr cQMessageBox, slot: int): void {.exportc: "miqt_exec_callback_QMessageBox_reject ".} =
-  type Cb = proc(super: QMessageBoxrejectBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_reject(QMessageBox(h: self), )
+  var nimfunc = cast[ptr QMessageBoxrejectProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_contextMenuEvent(self: QMessageBox, param1: gen_qevent.QContextMenuEvent): void =
-
+  nimfunc[]()
+proc QMessageBoxcontextMenuEvent*(self: gen_qmessagebox_types.QMessageBox, param1: gen_qevent.QContextMenuEvent): void =
 
   fQMessageBox_virtualbase_contextMenuEvent(self.h, param1.h)
 
-type QMessageBoxcontextMenuEventBase* = proc(param1: gen_qevent.QContextMenuEvent): void
-proc oncontextMenuEvent*(self: QMessageBox, slot: proc(super: QMessageBoxcontextMenuEventBase, param1: gen_qevent.QContextMenuEvent): void) =
+type QMessageBoxcontextMenuEventProc* = proc(param1: gen_qevent.QContextMenuEvent): void
+proc oncontextMenuEvent*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxcontextMenuEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMessageBoxcontextMenuEventBase, param1: gen_qevent.QContextMenuEvent): void
-  var tmp = new Cb
+  var tmp = new QMessageBoxcontextMenuEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMessageBox_override_virtual_contextMenuEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMessageBox_contextMenuEvent(self: ptr cQMessageBox, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QMessageBox_contextMenuEvent ".} =
-  type Cb = proc(super: QMessageBoxcontextMenuEventBase, param1: gen_qevent.QContextMenuEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QContextMenuEvent): auto =
-    callVirtualBase_contextMenuEvent(QMessageBox(h: self), param1)
+  var nimfunc = cast[ptr QMessageBoxcontextMenuEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QContextMenuEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_eventFilter(self: QMessageBox, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[](slotval1)
+proc QMessageBoxeventFilter*(self: gen_qmessagebox_types.QMessageBox, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool =
 
   fQMessageBox_virtualbase_eventFilter(self.h, param1.h, param2.h)
 
-type QMessageBoxeventFilterBase* = proc(param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QMessageBox, slot: proc(super: QMessageBoxeventFilterBase, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool) =
+type QMessageBoxeventFilterProc* = proc(param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QMessageBoxeventFilterBase, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QMessageBoxeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMessageBox_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMessageBox_eventFilter(self: ptr cQMessageBox, slot: int, param1: pointer, param2: pointer): bool {.exportc: "miqt_exec_callback_QMessageBox_eventFilter ".} =
-  type Cb = proc(super: QMessageBoxeventFilterBase, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QMessageBox(h: self), param1, param2)
+  var nimfunc = cast[ptr QMessageBoxeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: param1)
 
   let slotval2 = gen_qcoreevent.QEvent(h: param2)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_devType(self: QMessageBox, ): cint =
-
+proc QMessageBoxdevType*(self: gen_qmessagebox_types.QMessageBox, ): cint =
 
   fQMessageBox_virtualbase_devType(self.h)
 
-type QMessageBoxdevTypeBase* = proc(): cint
-proc ondevType*(self: QMessageBox, slot: proc(super: QMessageBoxdevTypeBase): cint) =
+type QMessageBoxdevTypeProc* = proc(): cint
+proc ondevType*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxdevTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: QMessageBoxdevTypeBase): cint
-  var tmp = new Cb
+  var tmp = new QMessageBoxdevTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMessageBox_override_virtual_devType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMessageBox_devType(self: ptr cQMessageBox, slot: int): cint {.exportc: "miqt_exec_callback_QMessageBox_devType ".} =
-  type Cb = proc(super: QMessageBoxdevTypeBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_devType(QMessageBox(h: self), )
+  var nimfunc = cast[ptr QMessageBoxdevTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_heightForWidth(self: QMessageBox, param1: cint): cint =
-
+proc QMessageBoxheightForWidth*(self: gen_qmessagebox_types.QMessageBox, param1: cint): cint =
 
   fQMessageBox_virtualbase_heightForWidth(self.h, param1)
 
-type QMessageBoxheightForWidthBase* = proc(param1: cint): cint
-proc onheightForWidth*(self: QMessageBox, slot: proc(super: QMessageBoxheightForWidthBase, param1: cint): cint) =
+type QMessageBoxheightForWidthProc* = proc(param1: cint): cint
+proc onheightForWidth*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxheightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QMessageBoxheightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QMessageBoxheightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMessageBox_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMessageBox_heightForWidth(self: ptr cQMessageBox, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QMessageBox_heightForWidth ".} =
-  type Cb = proc(super: QMessageBoxheightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_heightForWidth(QMessageBox(h: self), param1)
+  var nimfunc = cast[ptr QMessageBoxheightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_hasHeightForWidth(self: QMessageBox, ): bool =
-
+proc QMessageBoxhasHeightForWidth*(self: gen_qmessagebox_types.QMessageBox, ): bool =
 
   fQMessageBox_virtualbase_hasHeightForWidth(self.h)
 
-type QMessageBoxhasHeightForWidthBase* = proc(): bool
-proc onhasHeightForWidth*(self: QMessageBox, slot: proc(super: QMessageBoxhasHeightForWidthBase): bool) =
+type QMessageBoxhasHeightForWidthProc* = proc(): bool
+proc onhasHeightForWidth*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxhasHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QMessageBoxhasHeightForWidthBase): bool
-  var tmp = new Cb
+  var tmp = new QMessageBoxhasHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMessageBox_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMessageBox_hasHeightForWidth(self: ptr cQMessageBox, slot: int): bool {.exportc: "miqt_exec_callback_QMessageBox_hasHeightForWidth ".} =
-  type Cb = proc(super: QMessageBoxhasHeightForWidthBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasHeightForWidth(QMessageBox(h: self), )
+  var nimfunc = cast[ptr QMessageBoxhasHeightForWidthProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_paintEngine(self: QMessageBox, ): gen_qpaintengine.QPaintEngine =
-
+proc QMessageBoxpaintEngine*(self: gen_qmessagebox_types.QMessageBox, ): gen_qpaintengine.QPaintEngine =
 
   gen_qpaintengine.QPaintEngine(h: fQMessageBox_virtualbase_paintEngine(self.h))
 
-type QMessageBoxpaintEngineBase* = proc(): gen_qpaintengine.QPaintEngine
-proc onpaintEngine*(self: QMessageBox, slot: proc(super: QMessageBoxpaintEngineBase): gen_qpaintengine.QPaintEngine) =
+type QMessageBoxpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
+proc onpaintEngine*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxpaintEngineProc) =
   # TODO check subclass
-  type Cb = proc(super: QMessageBoxpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var tmp = new Cb
+  var tmp = new QMessageBoxpaintEngineProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMessageBox_override_virtual_paintEngine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMessageBox_paintEngine(self: ptr cQMessageBox, slot: int): pointer {.exportc: "miqt_exec_callback_QMessageBox_paintEngine ".} =
-  type Cb = proc(super: QMessageBoxpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_paintEngine(QMessageBox(h: self), )
+  var nimfunc = cast[ptr QMessageBoxpaintEngineProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_mousePressEvent(self: QMessageBox, event: gen_qevent.QMouseEvent): void =
-
+proc QMessageBoxmousePressEvent*(self: gen_qmessagebox_types.QMessageBox, event: gen_qevent.QMouseEvent): void =
 
   fQMessageBox_virtualbase_mousePressEvent(self.h, event.h)
 
-type QMessageBoxmousePressEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmousePressEvent*(self: QMessageBox, slot: proc(super: QMessageBoxmousePressEventBase, event: gen_qevent.QMouseEvent): void) =
+type QMessageBoxmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmousePressEvent*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxmousePressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMessageBoxmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QMessageBoxmousePressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMessageBox_override_virtual_mousePressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMessageBox_mousePressEvent(self: ptr cQMessageBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMessageBox_mousePressEvent ".} =
-  type Cb = proc(super: QMessageBoxmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mousePressEvent(QMessageBox(h: self), event)
+  var nimfunc = cast[ptr QMessageBoxmousePressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseReleaseEvent(self: QMessageBox, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QMessageBoxmouseReleaseEvent*(self: gen_qmessagebox_types.QMessageBox, event: gen_qevent.QMouseEvent): void =
 
   fQMessageBox_virtualbase_mouseReleaseEvent(self.h, event.h)
 
-type QMessageBoxmouseReleaseEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseReleaseEvent*(self: QMessageBox, slot: proc(super: QMessageBoxmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void) =
+type QMessageBoxmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseReleaseEvent*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxmouseReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMessageBoxmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QMessageBoxmouseReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMessageBox_override_virtual_mouseReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMessageBox_mouseReleaseEvent(self: ptr cQMessageBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMessageBox_mouseReleaseEvent ".} =
-  type Cb = proc(super: QMessageBoxmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseReleaseEvent(QMessageBox(h: self), event)
+  var nimfunc = cast[ptr QMessageBoxmouseReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseDoubleClickEvent(self: QMessageBox, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QMessageBoxmouseDoubleClickEvent*(self: gen_qmessagebox_types.QMessageBox, event: gen_qevent.QMouseEvent): void =
 
   fQMessageBox_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
-type QMessageBoxmouseDoubleClickEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseDoubleClickEvent*(self: QMessageBox, slot: proc(super: QMessageBoxmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void) =
+type QMessageBoxmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseDoubleClickEvent*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxmouseDoubleClickEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMessageBoxmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QMessageBoxmouseDoubleClickEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMessageBox_override_virtual_mouseDoubleClickEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMessageBox_mouseDoubleClickEvent(self: ptr cQMessageBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMessageBox_mouseDoubleClickEvent ".} =
-  type Cb = proc(super: QMessageBoxmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseDoubleClickEvent(QMessageBox(h: self), event)
+  var nimfunc = cast[ptr QMessageBoxmouseDoubleClickEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseMoveEvent(self: QMessageBox, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QMessageBoxmouseMoveEvent*(self: gen_qmessagebox_types.QMessageBox, event: gen_qevent.QMouseEvent): void =
 
   fQMessageBox_virtualbase_mouseMoveEvent(self.h, event.h)
 
-type QMessageBoxmouseMoveEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseMoveEvent*(self: QMessageBox, slot: proc(super: QMessageBoxmouseMoveEventBase, event: gen_qevent.QMouseEvent): void) =
+type QMessageBoxmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseMoveEvent*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxmouseMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMessageBoxmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QMessageBoxmouseMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMessageBox_override_virtual_mouseMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMessageBox_mouseMoveEvent(self: ptr cQMessageBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMessageBox_mouseMoveEvent ".} =
-  type Cb = proc(super: QMessageBoxmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseMoveEvent(QMessageBox(h: self), event)
+  var nimfunc = cast[ptr QMessageBoxmouseMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_wheelEvent(self: QMessageBox, event: gen_qevent.QWheelEvent): void =
-
+  nimfunc[](slotval1)
+proc QMessageBoxwheelEvent*(self: gen_qmessagebox_types.QMessageBox, event: gen_qevent.QWheelEvent): void =
 
   fQMessageBox_virtualbase_wheelEvent(self.h, event.h)
 
-type QMessageBoxwheelEventBase* = proc(event: gen_qevent.QWheelEvent): void
-proc onwheelEvent*(self: QMessageBox, slot: proc(super: QMessageBoxwheelEventBase, event: gen_qevent.QWheelEvent): void) =
+type QMessageBoxwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
+proc onwheelEvent*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxwheelEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMessageBoxwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var tmp = new Cb
+  var tmp = new QMessageBoxwheelEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMessageBox_override_virtual_wheelEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMessageBox_wheelEvent(self: ptr cQMessageBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMessageBox_wheelEvent ".} =
-  type Cb = proc(super: QMessageBoxwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QWheelEvent): auto =
-    callVirtualBase_wheelEvent(QMessageBox(h: self), event)
+  var nimfunc = cast[ptr QMessageBoxwheelEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QWheelEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyReleaseEvent(self: QMessageBox, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QMessageBoxkeyReleaseEvent*(self: gen_qmessagebox_types.QMessageBox, event: gen_qevent.QKeyEvent): void =
 
   fQMessageBox_virtualbase_keyReleaseEvent(self.h, event.h)
 
-type QMessageBoxkeyReleaseEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyReleaseEvent*(self: QMessageBox, slot: proc(super: QMessageBoxkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void) =
+type QMessageBoxkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyReleaseEvent*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxkeyReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMessageBoxkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QMessageBoxkeyReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMessageBox_override_virtual_keyReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMessageBox_keyReleaseEvent(self: ptr cQMessageBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMessageBox_keyReleaseEvent ".} =
-  type Cb = proc(super: QMessageBoxkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyReleaseEvent(QMessageBox(h: self), event)
+  var nimfunc = cast[ptr QMessageBoxkeyReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusInEvent(self: QMessageBox, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QMessageBoxfocusInEvent*(self: gen_qmessagebox_types.QMessageBox, event: gen_qevent.QFocusEvent): void =
 
   fQMessageBox_virtualbase_focusInEvent(self.h, event.h)
 
-type QMessageBoxfocusInEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusInEvent*(self: QMessageBox, slot: proc(super: QMessageBoxfocusInEventBase, event: gen_qevent.QFocusEvent): void) =
+type QMessageBoxfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusInEvent*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxfocusInEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMessageBoxfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QMessageBoxfocusInEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMessageBox_override_virtual_focusInEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMessageBox_focusInEvent(self: ptr cQMessageBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMessageBox_focusInEvent ".} =
-  type Cb = proc(super: QMessageBoxfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusInEvent(QMessageBox(h: self), event)
+  var nimfunc = cast[ptr QMessageBoxfocusInEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusOutEvent(self: QMessageBox, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QMessageBoxfocusOutEvent*(self: gen_qmessagebox_types.QMessageBox, event: gen_qevent.QFocusEvent): void =
 
   fQMessageBox_virtualbase_focusOutEvent(self.h, event.h)
 
-type QMessageBoxfocusOutEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusOutEvent*(self: QMessageBox, slot: proc(super: QMessageBoxfocusOutEventBase, event: gen_qevent.QFocusEvent): void) =
+type QMessageBoxfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusOutEvent*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxfocusOutEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMessageBoxfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QMessageBoxfocusOutEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMessageBox_override_virtual_focusOutEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMessageBox_focusOutEvent(self: ptr cQMessageBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMessageBox_focusOutEvent ".} =
-  type Cb = proc(super: QMessageBoxfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusOutEvent(QMessageBox(h: self), event)
+  var nimfunc = cast[ptr QMessageBoxfocusOutEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_enterEvent(self: QMessageBox, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QMessageBoxenterEvent*(self: gen_qmessagebox_types.QMessageBox, event: gen_qcoreevent.QEvent): void =
 
   fQMessageBox_virtualbase_enterEvent(self.h, event.h)
 
-type QMessageBoxenterEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onenterEvent*(self: QMessageBox, slot: proc(super: QMessageBoxenterEventBase, event: gen_qcoreevent.QEvent): void) =
+type QMessageBoxenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onenterEvent*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxenterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMessageBoxenterEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QMessageBoxenterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMessageBox_override_virtual_enterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMessageBox_enterEvent(self: ptr cQMessageBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMessageBox_enterEvent ".} =
-  type Cb = proc(super: QMessageBoxenterEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_enterEvent(QMessageBox(h: self), event)
+  var nimfunc = cast[ptr QMessageBoxenterEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_leaveEvent(self: QMessageBox, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QMessageBoxleaveEvent*(self: gen_qmessagebox_types.QMessageBox, event: gen_qcoreevent.QEvent): void =
 
   fQMessageBox_virtualbase_leaveEvent(self.h, event.h)
 
-type QMessageBoxleaveEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onleaveEvent*(self: QMessageBox, slot: proc(super: QMessageBoxleaveEventBase, event: gen_qcoreevent.QEvent): void) =
+type QMessageBoxleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onleaveEvent*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxleaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMessageBoxleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QMessageBoxleaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMessageBox_override_virtual_leaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMessageBox_leaveEvent(self: ptr cQMessageBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMessageBox_leaveEvent ".} =
-  type Cb = proc(super: QMessageBoxleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_leaveEvent(QMessageBox(h: self), event)
+  var nimfunc = cast[ptr QMessageBoxleaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_paintEvent(self: QMessageBox, event: gen_qevent.QPaintEvent): void =
-
+  nimfunc[](slotval1)
+proc QMessageBoxpaintEvent*(self: gen_qmessagebox_types.QMessageBox, event: gen_qevent.QPaintEvent): void =
 
   fQMessageBox_virtualbase_paintEvent(self.h, event.h)
 
-type QMessageBoxpaintEventBase* = proc(event: gen_qevent.QPaintEvent): void
-proc onpaintEvent*(self: QMessageBox, slot: proc(super: QMessageBoxpaintEventBase, event: gen_qevent.QPaintEvent): void) =
+type QMessageBoxpaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
+proc onpaintEvent*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxpaintEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMessageBoxpaintEventBase, event: gen_qevent.QPaintEvent): void
-  var tmp = new Cb
+  var tmp = new QMessageBoxpaintEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMessageBox_override_virtual_paintEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMessageBox_paintEvent(self: ptr cQMessageBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMessageBox_paintEvent ".} =
-  type Cb = proc(super: QMessageBoxpaintEventBase, event: gen_qevent.QPaintEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QPaintEvent): auto =
-    callVirtualBase_paintEvent(QMessageBox(h: self), event)
+  var nimfunc = cast[ptr QMessageBoxpaintEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QPaintEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_moveEvent(self: QMessageBox, event: gen_qevent.QMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QMessageBoxmoveEvent*(self: gen_qmessagebox_types.QMessageBox, event: gen_qevent.QMoveEvent): void =
 
   fQMessageBox_virtualbase_moveEvent(self.h, event.h)
 
-type QMessageBoxmoveEventBase* = proc(event: gen_qevent.QMoveEvent): void
-proc onmoveEvent*(self: QMessageBox, slot: proc(super: QMessageBoxmoveEventBase, event: gen_qevent.QMoveEvent): void) =
+type QMessageBoxmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
+proc onmoveEvent*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxmoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMessageBoxmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QMessageBoxmoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMessageBox_override_virtual_moveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMessageBox_moveEvent(self: ptr cQMessageBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMessageBox_moveEvent ".} =
-  type Cb = proc(super: QMessageBoxmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMoveEvent): auto =
-    callVirtualBase_moveEvent(QMessageBox(h: self), event)
+  var nimfunc = cast[ptr QMessageBoxmoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_tabletEvent(self: QMessageBox, event: gen_qevent.QTabletEvent): void =
-
+  nimfunc[](slotval1)
+proc QMessageBoxtabletEvent*(self: gen_qmessagebox_types.QMessageBox, event: gen_qevent.QTabletEvent): void =
 
   fQMessageBox_virtualbase_tabletEvent(self.h, event.h)
 
-type QMessageBoxtabletEventBase* = proc(event: gen_qevent.QTabletEvent): void
-proc ontabletEvent*(self: QMessageBox, slot: proc(super: QMessageBoxtabletEventBase, event: gen_qevent.QTabletEvent): void) =
+type QMessageBoxtabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
+proc ontabletEvent*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxtabletEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMessageBoxtabletEventBase, event: gen_qevent.QTabletEvent): void
-  var tmp = new Cb
+  var tmp = new QMessageBoxtabletEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMessageBox_override_virtual_tabletEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMessageBox_tabletEvent(self: ptr cQMessageBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMessageBox_tabletEvent ".} =
-  type Cb = proc(super: QMessageBoxtabletEventBase, event: gen_qevent.QTabletEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QTabletEvent): auto =
-    callVirtualBase_tabletEvent(QMessageBox(h: self), event)
+  var nimfunc = cast[ptr QMessageBoxtabletEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QTabletEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_actionEvent(self: QMessageBox, event: gen_qevent.QActionEvent): void =
-
+  nimfunc[](slotval1)
+proc QMessageBoxactionEvent*(self: gen_qmessagebox_types.QMessageBox, event: gen_qevent.QActionEvent): void =
 
   fQMessageBox_virtualbase_actionEvent(self.h, event.h)
 
-type QMessageBoxactionEventBase* = proc(event: gen_qevent.QActionEvent): void
-proc onactionEvent*(self: QMessageBox, slot: proc(super: QMessageBoxactionEventBase, event: gen_qevent.QActionEvent): void) =
+type QMessageBoxactionEventProc* = proc(event: gen_qevent.QActionEvent): void
+proc onactionEvent*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxactionEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMessageBoxactionEventBase, event: gen_qevent.QActionEvent): void
-  var tmp = new Cb
+  var tmp = new QMessageBoxactionEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMessageBox_override_virtual_actionEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMessageBox_actionEvent(self: ptr cQMessageBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMessageBox_actionEvent ".} =
-  type Cb = proc(super: QMessageBoxactionEventBase, event: gen_qevent.QActionEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QActionEvent): auto =
-    callVirtualBase_actionEvent(QMessageBox(h: self), event)
+  var nimfunc = cast[ptr QMessageBoxactionEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QActionEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragEnterEvent(self: QMessageBox, event: gen_qevent.QDragEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QMessageBoxdragEnterEvent*(self: gen_qmessagebox_types.QMessageBox, event: gen_qevent.QDragEnterEvent): void =
 
   fQMessageBox_virtualbase_dragEnterEvent(self.h, event.h)
 
-type QMessageBoxdragEnterEventBase* = proc(event: gen_qevent.QDragEnterEvent): void
-proc ondragEnterEvent*(self: QMessageBox, slot: proc(super: QMessageBoxdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void) =
+type QMessageBoxdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
+proc ondragEnterEvent*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxdragEnterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMessageBoxdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QMessageBoxdragEnterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMessageBox_override_virtual_dragEnterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMessageBox_dragEnterEvent(self: ptr cQMessageBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMessageBox_dragEnterEvent ".} =
-  type Cb = proc(super: QMessageBoxdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragEnterEvent): auto =
-    callVirtualBase_dragEnterEvent(QMessageBox(h: self), event)
+  var nimfunc = cast[ptr QMessageBoxdragEnterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragMoveEvent(self: QMessageBox, event: gen_qevent.QDragMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QMessageBoxdragMoveEvent*(self: gen_qmessagebox_types.QMessageBox, event: gen_qevent.QDragMoveEvent): void =
 
   fQMessageBox_virtualbase_dragMoveEvent(self.h, event.h)
 
-type QMessageBoxdragMoveEventBase* = proc(event: gen_qevent.QDragMoveEvent): void
-proc ondragMoveEvent*(self: QMessageBox, slot: proc(super: QMessageBoxdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void) =
+type QMessageBoxdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
+proc ondragMoveEvent*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxdragMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMessageBoxdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QMessageBoxdragMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMessageBox_override_virtual_dragMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMessageBox_dragMoveEvent(self: ptr cQMessageBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMessageBox_dragMoveEvent ".} =
-  type Cb = proc(super: QMessageBoxdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragMoveEvent): auto =
-    callVirtualBase_dragMoveEvent(QMessageBox(h: self), event)
+  var nimfunc = cast[ptr QMessageBoxdragMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragLeaveEvent(self: QMessageBox, event: gen_qevent.QDragLeaveEvent): void =
-
+  nimfunc[](slotval1)
+proc QMessageBoxdragLeaveEvent*(self: gen_qmessagebox_types.QMessageBox, event: gen_qevent.QDragLeaveEvent): void =
 
   fQMessageBox_virtualbase_dragLeaveEvent(self.h, event.h)
 
-type QMessageBoxdragLeaveEventBase* = proc(event: gen_qevent.QDragLeaveEvent): void
-proc ondragLeaveEvent*(self: QMessageBox, slot: proc(super: QMessageBoxdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void) =
+type QMessageBoxdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
+proc ondragLeaveEvent*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxdragLeaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMessageBoxdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var tmp = new Cb
+  var tmp = new QMessageBoxdragLeaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMessageBox_override_virtual_dragLeaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMessageBox_dragLeaveEvent(self: ptr cQMessageBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMessageBox_dragLeaveEvent ".} =
-  type Cb = proc(super: QMessageBoxdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragLeaveEvent): auto =
-    callVirtualBase_dragLeaveEvent(QMessageBox(h: self), event)
+  var nimfunc = cast[ptr QMessageBoxdragLeaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragLeaveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dropEvent(self: QMessageBox, event: gen_qevent.QDropEvent): void =
-
+  nimfunc[](slotval1)
+proc QMessageBoxdropEvent*(self: gen_qmessagebox_types.QMessageBox, event: gen_qevent.QDropEvent): void =
 
   fQMessageBox_virtualbase_dropEvent(self.h, event.h)
 
-type QMessageBoxdropEventBase* = proc(event: gen_qevent.QDropEvent): void
-proc ondropEvent*(self: QMessageBox, slot: proc(super: QMessageBoxdropEventBase, event: gen_qevent.QDropEvent): void) =
+type QMessageBoxdropEventProc* = proc(event: gen_qevent.QDropEvent): void
+proc ondropEvent*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxdropEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMessageBoxdropEventBase, event: gen_qevent.QDropEvent): void
-  var tmp = new Cb
+  var tmp = new QMessageBoxdropEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMessageBox_override_virtual_dropEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMessageBox_dropEvent(self: ptr cQMessageBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMessageBox_dropEvent ".} =
-  type Cb = proc(super: QMessageBoxdropEventBase, event: gen_qevent.QDropEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDropEvent): auto =
-    callVirtualBase_dropEvent(QMessageBox(h: self), event)
+  var nimfunc = cast[ptr QMessageBoxdropEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDropEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hideEvent(self: QMessageBox, event: gen_qevent.QHideEvent): void =
-
+  nimfunc[](slotval1)
+proc QMessageBoxhideEvent*(self: gen_qmessagebox_types.QMessageBox, event: gen_qevent.QHideEvent): void =
 
   fQMessageBox_virtualbase_hideEvent(self.h, event.h)
 
-type QMessageBoxhideEventBase* = proc(event: gen_qevent.QHideEvent): void
-proc onhideEvent*(self: QMessageBox, slot: proc(super: QMessageBoxhideEventBase, event: gen_qevent.QHideEvent): void) =
+type QMessageBoxhideEventProc* = proc(event: gen_qevent.QHideEvent): void
+proc onhideEvent*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxhideEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMessageBoxhideEventBase, event: gen_qevent.QHideEvent): void
-  var tmp = new Cb
+  var tmp = new QMessageBoxhideEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMessageBox_override_virtual_hideEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMessageBox_hideEvent(self: ptr cQMessageBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMessageBox_hideEvent ".} =
-  type Cb = proc(super: QMessageBoxhideEventBase, event: gen_qevent.QHideEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QHideEvent): auto =
-    callVirtualBase_hideEvent(QMessageBox(h: self), event)
+  var nimfunc = cast[ptr QMessageBoxhideEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QHideEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_nativeEvent(self: QMessageBox, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
+  nimfunc[](slotval1)
+proc QMessageBoxnativeEvent*(self: gen_qmessagebox_types.QMessageBox, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
 
   fQMessageBox_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
-type QMessageBoxnativeEventBase* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-proc onnativeEvent*(self: QMessageBox, slot: proc(super: QMessageBoxnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool) =
+type QMessageBoxnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
+proc onnativeEvent*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxnativeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMessageBoxnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-  var tmp = new Cb
+  var tmp = new QMessageBoxnativeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMessageBox_override_virtual_nativeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMessageBox_nativeEvent(self: ptr cQMessageBox, slot: int, eventType: struct_miqt_string, message: pointer, resultVal: ptr clong): bool {.exportc: "miqt_exec_callback_QMessageBox_nativeEvent ".} =
-  type Cb = proc(super: QMessageBoxnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(eventType: seq[byte], message: pointer, resultVal: ptr clong): auto =
-    callVirtualBase_nativeEvent(QMessageBox(h: self), eventType, message, resultVal)
+  var nimfunc = cast[ptr QMessageBoxnativeEventProc](cast[pointer](slot))
   var veventType_bytearray = eventType
   var veventTypex_ret = @(toOpenArrayByte(veventType_bytearray.data, 0, int(veventType_bytearray.len)-1))
   c_free(veventType_bytearray.data)
@@ -1833,294 +1610,234 @@ proc miqt_exec_callback_QMessageBox_nativeEvent(self: ptr cQMessageBox, slot: in
   let slotval3 = resultVal
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_metric(self: QMessageBox, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint =
-
+proc QMessageBoxmetric*(self: gen_qmessagebox_types.QMessageBox, param1: cint): cint =
 
   fQMessageBox_virtualbase_metric(self.h, cint(param1))
 
-type QMessageBoxmetricBase* = proc(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-proc onmetric*(self: QMessageBox, slot: proc(super: QMessageBoxmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint) =
+type QMessageBoxmetricProc* = proc(param1: cint): cint
+proc onmetric*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxmetricProc) =
   # TODO check subclass
-  type Cb = proc(super: QMessageBoxmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var tmp = new Cb
+  var tmp = new QMessageBoxmetricProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMessageBox_override_virtual_metric(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMessageBox_metric(self: ptr cQMessageBox, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QMessageBox_metric ".} =
-  type Cb = proc(super: QMessageBoxmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): auto =
-    callVirtualBase_metric(QMessageBox(h: self), param1)
-  let slotval1 = gen_qpaintdevice.QPaintDevicePaintDeviceMetric(param1)
+  var nimfunc = cast[ptr QMessageBoxmetricProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_initPainter(self: QMessageBox, painter: gen_qpainter.QPainter): void =
-
+proc QMessageBoxinitPainter*(self: gen_qmessagebox_types.QMessageBox, painter: gen_qpainter.QPainter): void =
 
   fQMessageBox_virtualbase_initPainter(self.h, painter.h)
 
-type QMessageBoxinitPainterBase* = proc(painter: gen_qpainter.QPainter): void
-proc oninitPainter*(self: QMessageBox, slot: proc(super: QMessageBoxinitPainterBase, painter: gen_qpainter.QPainter): void) =
+type QMessageBoxinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
+proc oninitPainter*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxinitPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QMessageBoxinitPainterBase, painter: gen_qpainter.QPainter): void
-  var tmp = new Cb
+  var tmp = new QMessageBoxinitPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMessageBox_override_virtual_initPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMessageBox_initPainter(self: ptr cQMessageBox, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_QMessageBox_initPainter ".} =
-  type Cb = proc(super: QMessageBoxinitPainterBase, painter: gen_qpainter.QPainter): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter): auto =
-    callVirtualBase_initPainter(QMessageBox(h: self), painter)
+  var nimfunc = cast[ptr QMessageBoxinitPainterProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_redirected(self: QMessageBox, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
+  nimfunc[](slotval1)
+proc QMessageBoxredirected*(self: gen_qmessagebox_types.QMessageBox, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
 
   gen_qpaintdevice.QPaintDevice(h: fQMessageBox_virtualbase_redirected(self.h, offset.h))
 
-type QMessageBoxredirectedBase* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-proc onredirected*(self: QMessageBox, slot: proc(super: QMessageBoxredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice) =
+type QMessageBoxredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
+proc onredirected*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxredirectedProc) =
   # TODO check subclass
-  type Cb = proc(super: QMessageBoxredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var tmp = new Cb
+  var tmp = new QMessageBoxredirectedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMessageBox_override_virtual_redirected(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMessageBox_redirected(self: ptr cQMessageBox, slot: int, offset: pointer): pointer {.exportc: "miqt_exec_callback_QMessageBox_redirected ".} =
-  type Cb = proc(super: QMessageBoxredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(offset: gen_qpoint.QPoint): auto =
-    callVirtualBase_redirected(QMessageBox(h: self), offset)
+  var nimfunc = cast[ptr QMessageBoxredirectedProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: offset)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_sharedPainter(self: QMessageBox, ): gen_qpainter.QPainter =
-
+proc QMessageBoxsharedPainter*(self: gen_qmessagebox_types.QMessageBox, ): gen_qpainter.QPainter =
 
   gen_qpainter.QPainter(h: fQMessageBox_virtualbase_sharedPainter(self.h))
 
-type QMessageBoxsharedPainterBase* = proc(): gen_qpainter.QPainter
-proc onsharedPainter*(self: QMessageBox, slot: proc(super: QMessageBoxsharedPainterBase): gen_qpainter.QPainter) =
+type QMessageBoxsharedPainterProc* = proc(): gen_qpainter.QPainter
+proc onsharedPainter*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxsharedPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QMessageBoxsharedPainterBase): gen_qpainter.QPainter
-  var tmp = new Cb
+  var tmp = new QMessageBoxsharedPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMessageBox_override_virtual_sharedPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMessageBox_sharedPainter(self: ptr cQMessageBox, slot: int): pointer {.exportc: "miqt_exec_callback_QMessageBox_sharedPainter ".} =
-  type Cb = proc(super: QMessageBoxsharedPainterBase): gen_qpainter.QPainter
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sharedPainter(QMessageBox(h: self), )
+  var nimfunc = cast[ptr QMessageBoxsharedPainterProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_inputMethodEvent(self: QMessageBox, param1: gen_qevent.QInputMethodEvent): void =
-
+proc QMessageBoxinputMethodEvent*(self: gen_qmessagebox_types.QMessageBox, param1: gen_qevent.QInputMethodEvent): void =
 
   fQMessageBox_virtualbase_inputMethodEvent(self.h, param1.h)
 
-type QMessageBoxinputMethodEventBase* = proc(param1: gen_qevent.QInputMethodEvent): void
-proc oninputMethodEvent*(self: QMessageBox, slot: proc(super: QMessageBoxinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void) =
+type QMessageBoxinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
+proc oninputMethodEvent*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxinputMethodEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMessageBoxinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var tmp = new Cb
+  var tmp = new QMessageBoxinputMethodEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMessageBox_override_virtual_inputMethodEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMessageBox_inputMethodEvent(self: ptr cQMessageBox, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QMessageBox_inputMethodEvent ".} =
-  type Cb = proc(super: QMessageBoxinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QInputMethodEvent): auto =
-    callVirtualBase_inputMethodEvent(QMessageBox(h: self), param1)
+  var nimfunc = cast[ptr QMessageBoxinputMethodEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QInputMethodEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_inputMethodQuery(self: QMessageBox, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant =
-
+  nimfunc[](slotval1)
+proc QMessageBoxinputMethodQuery*(self: gen_qmessagebox_types.QMessageBox, param1: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQMessageBox_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
-type QMessageBoxinputMethodQueryBase* = proc(param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-proc oninputMethodQuery*(self: QMessageBox, slot: proc(super: QMessageBoxinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant) =
+type QMessageBoxinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
+proc oninputMethodQuery*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxinputMethodQueryProc) =
   # TODO check subclass
-  type Cb = proc(super: QMessageBoxinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QMessageBoxinputMethodQueryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMessageBox_override_virtual_inputMethodQuery(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMessageBox_inputMethodQuery(self: ptr cQMessageBox, slot: int, param1: cint): pointer {.exportc: "miqt_exec_callback_QMessageBox_inputMethodQuery ".} =
-  type Cb = proc(super: QMessageBoxinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qnamespace.InputMethodQuery): auto =
-    callVirtualBase_inputMethodQuery(QMessageBox(h: self), param1)
-  let slotval1 = gen_qnamespace.InputMethodQuery(param1)
+  var nimfunc = cast[ptr QMessageBoxinputMethodQueryProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_focusNextPrevChild(self: QMessageBox, next: bool): bool =
-
+proc QMessageBoxfocusNextPrevChild*(self: gen_qmessagebox_types.QMessageBox, next: bool): bool =
 
   fQMessageBox_virtualbase_focusNextPrevChild(self.h, next)
 
-type QMessageBoxfocusNextPrevChildBase* = proc(next: bool): bool
-proc onfocusNextPrevChild*(self: QMessageBox, slot: proc(super: QMessageBoxfocusNextPrevChildBase, next: bool): bool) =
+type QMessageBoxfocusNextPrevChildProc* = proc(next: bool): bool
+proc onfocusNextPrevChild*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxfocusNextPrevChildProc) =
   # TODO check subclass
-  type Cb = proc(super: QMessageBoxfocusNextPrevChildBase, next: bool): bool
-  var tmp = new Cb
+  var tmp = new QMessageBoxfocusNextPrevChildProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMessageBox_override_virtual_focusNextPrevChild(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMessageBox_focusNextPrevChild(self: ptr cQMessageBox, slot: int, next: bool): bool {.exportc: "miqt_exec_callback_QMessageBox_focusNextPrevChild ".} =
-  type Cb = proc(super: QMessageBoxfocusNextPrevChildBase, next: bool): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(next: bool): auto =
-    callVirtualBase_focusNextPrevChild(QMessageBox(h: self), next)
+  var nimfunc = cast[ptr QMessageBoxfocusNextPrevChildProc](cast[pointer](slot))
   let slotval1 = next
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QMessageBox, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QMessageBoxtimerEvent*(self: gen_qmessagebox_types.QMessageBox, event: gen_qcoreevent.QTimerEvent): void =
 
   fQMessageBox_virtualbase_timerEvent(self.h, event.h)
 
-type QMessageBoxtimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QMessageBox, slot: proc(super: QMessageBoxtimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QMessageBoxtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxtimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMessageBoxtimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QMessageBoxtimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMessageBox_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMessageBox_timerEvent(self: ptr cQMessageBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMessageBox_timerEvent ".} =
-  type Cb = proc(super: QMessageBoxtimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QMessageBox(h: self), event)
+  var nimfunc = cast[ptr QMessageBoxtimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QMessageBox, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QMessageBoxchildEvent*(self: gen_qmessagebox_types.QMessageBox, event: gen_qcoreevent.QChildEvent): void =
 
   fQMessageBox_virtualbase_childEvent(self.h, event.h)
 
-type QMessageBoxchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QMessageBox, slot: proc(super: QMessageBoxchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QMessageBoxchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMessageBoxchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QMessageBoxchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMessageBox_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMessageBox_childEvent(self: ptr cQMessageBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMessageBox_childEvent ".} =
-  type Cb = proc(super: QMessageBoxchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QMessageBox(h: self), event)
+  var nimfunc = cast[ptr QMessageBoxchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QMessageBox, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QMessageBoxcustomEvent*(self: gen_qmessagebox_types.QMessageBox, event: gen_qcoreevent.QEvent): void =
 
   fQMessageBox_virtualbase_customEvent(self.h, event.h)
 
-type QMessageBoxcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QMessageBox, slot: proc(super: QMessageBoxcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QMessageBoxcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMessageBoxcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QMessageBoxcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMessageBox_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMessageBox_customEvent(self: ptr cQMessageBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMessageBox_customEvent ".} =
-  type Cb = proc(super: QMessageBoxcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QMessageBox(h: self), event)
+  var nimfunc = cast[ptr QMessageBoxcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QMessageBox, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QMessageBoxconnectNotify*(self: gen_qmessagebox_types.QMessageBox, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQMessageBox_virtualbase_connectNotify(self.h, signal.h)
 
-type QMessageBoxconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QMessageBox, slot: proc(super: QMessageBoxconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QMessageBoxconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QMessageBoxconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QMessageBoxconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMessageBox_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMessageBox_connectNotify(self: ptr cQMessageBox, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QMessageBox_connectNotify ".} =
-  type Cb = proc(super: QMessageBoxconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QMessageBox(h: self), signal)
+  var nimfunc = cast[ptr QMessageBoxconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QMessageBox, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QMessageBoxdisconnectNotify*(self: gen_qmessagebox_types.QMessageBox, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQMessageBox_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QMessageBoxdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QMessageBox, slot: proc(super: QMessageBoxdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QMessageBoxdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QMessageBoxdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QMessageBoxdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMessageBox_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMessageBox_disconnectNotify(self: ptr cQMessageBox, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QMessageBox_disconnectNotify ".} =
-  type Cb = proc(super: QMessageBoxdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QMessageBox(h: self), signal)
+  var nimfunc = cast[ptr QMessageBoxdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QMessageBox): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qmessagebox_types.QMessageBox): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQMessageBox_staticMetaObject())
-proc delete*(self: QMessageBox) =
+proc delete*(self: gen_qmessagebox_types.QMessageBox) =
   fcQMessageBox_delete(self.h)

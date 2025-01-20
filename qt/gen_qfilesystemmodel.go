@@ -561,7 +561,7 @@ func (this *QFileSystemModel) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QFileSystemModel_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QFileSystemModel) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QFileSystemModel) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QFileSystemModel_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -588,7 +588,7 @@ func (this *QFileSystemModel) callVirtualBase_Metacast(param1 string) unsafe.Poi
 	return (unsafe.Pointer)(C.QFileSystemModel_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QFileSystemModel) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QFileSystemModel) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QFileSystemModel_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

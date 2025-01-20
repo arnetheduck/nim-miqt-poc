@@ -34,28 +34,22 @@ const cflags = gorge("pkg-config -cflags Qt6Widgets")
 {.compile("gen_qtimezone.cpp", cflags).}
 
 
-type QTimeZoneEnum* = cint
-const
-  QTimeZoneMinUtcOffsetSecs* = -50400
-  QTimeZoneMaxUtcOffsetSecs* = 50400
+type QTimeZoneEnumEnum* = distinct cint
+template MinUtcOffsetSecs*(_: type QTimeZoneEnumEnum): untyped = -50400
+template MaxUtcOffsetSecs*(_: type QTimeZoneEnumEnum): untyped = 50400
 
 
-
-type QTimeZoneTimeType* = cint
-const
-  QTimeZoneStandardTime* = 0
-  QTimeZoneDaylightTime* = 1
-  QTimeZoneGenericTime* = 2
+type QTimeZoneTimeTypeEnum* = distinct cint
+template StandardTime*(_: type QTimeZoneTimeTypeEnum): untyped = 0
+template DaylightTime*(_: type QTimeZoneTimeTypeEnum): untyped = 1
+template GenericTime*(_: type QTimeZoneTimeTypeEnum): untyped = 2
 
 
-
-type QTimeZoneNameType* = cint
-const
-  QTimeZoneDefaultName* = 0
-  QTimeZoneLongName* = 1
-  QTimeZoneShortName* = 2
-  QTimeZoneOffsetName* = 3
-
+type QTimeZoneNameTypeEnum* = distinct cint
+template DefaultName*(_: type QTimeZoneNameTypeEnum): untyped = 0
+template LongName*(_: type QTimeZoneNameTypeEnum): untyped = 1
+template ShortName*(_: type QTimeZoneNameTypeEnum): untyped = 2
+template OffsetName*(_: type QTimeZoneNameTypeEnum): untyped = 3
 
 
 import gen_qtimezone_types
@@ -120,149 +114,149 @@ proc fcQTimeZoneOffsetData_operatorAssign(self: pointer, param1: pointer): void 
 proc fcQTimeZoneOffsetData_delete(self: pointer) {.importc: "QTimeZone__OffsetData_delete".}
 
 
-func init*(T: type QTimeZone, h: ptr cQTimeZone): QTimeZone =
+func init*(T: type gen_qtimezone_types.QTimeZone, h: ptr cQTimeZone): gen_qtimezone_types.QTimeZone =
   T(h: h)
-proc create*(T: type QTimeZone, ): QTimeZone =
+proc create*(T: type gen_qtimezone_types.QTimeZone, ): gen_qtimezone_types.QTimeZone =
 
-  QTimeZone.init(fcQTimeZone_new())
-proc create*(T: type QTimeZone, ianaId: seq[byte]): QTimeZone =
+  gen_qtimezone_types.QTimeZone.init(fcQTimeZone_new())
+proc create*(T: type gen_qtimezone_types.QTimeZone, ianaId: seq[byte]): gen_qtimezone_types.QTimeZone =
 
-  QTimeZone.init(fcQTimeZone_new2(struct_miqt_string(data: cast[cstring](if len(ianaId) == 0: nil else: unsafeAddr ianaId[0]), len: csize_t(len(ianaId)))))
-proc create*(T: type QTimeZone, offsetSeconds: cint): QTimeZone =
+  gen_qtimezone_types.QTimeZone.init(fcQTimeZone_new2(struct_miqt_string(data: cast[cstring](if len(ianaId) == 0: nil else: unsafeAddr ianaId[0]), len: csize_t(len(ianaId)))))
+proc create*(T: type gen_qtimezone_types.QTimeZone, offsetSeconds: cint): gen_qtimezone_types.QTimeZone =
 
-  QTimeZone.init(fcQTimeZone_new3(offsetSeconds))
-proc create*(T: type QTimeZone, zoneId: seq[byte], offsetSeconds: cint, name: string, abbreviation: string): QTimeZone =
+  gen_qtimezone_types.QTimeZone.init(fcQTimeZone_new3(offsetSeconds))
+proc create*(T: type gen_qtimezone_types.QTimeZone, zoneId: seq[byte], offsetSeconds: cint, name: string, abbreviation: string): gen_qtimezone_types.QTimeZone =
 
-  QTimeZone.init(fcQTimeZone_new4(struct_miqt_string(data: cast[cstring](if len(zoneId) == 0: nil else: unsafeAddr zoneId[0]), len: csize_t(len(zoneId))), offsetSeconds, struct_miqt_string(data: name, len: csize_t(len(name))), struct_miqt_string(data: abbreviation, len: csize_t(len(abbreviation)))))
-proc create*(T: type QTimeZone, other: QTimeZone): QTimeZone =
+  gen_qtimezone_types.QTimeZone.init(fcQTimeZone_new4(struct_miqt_string(data: cast[cstring](if len(zoneId) == 0: nil else: unsafeAddr zoneId[0]), len: csize_t(len(zoneId))), offsetSeconds, struct_miqt_string(data: name, len: csize_t(len(name))), struct_miqt_string(data: abbreviation, len: csize_t(len(abbreviation)))))
+proc create*(T: type gen_qtimezone_types.QTimeZone, other: gen_qtimezone_types.QTimeZone): gen_qtimezone_types.QTimeZone =
 
-  QTimeZone.init(fcQTimeZone_new5(other.h))
-proc create*(T: type QTimeZone, zoneId: seq[byte], offsetSeconds: cint, name: string, abbreviation: string, territory: gen_qlocale.QLocaleCountry): QTimeZone =
+  gen_qtimezone_types.QTimeZone.init(fcQTimeZone_new5(other.h))
+proc create*(T: type gen_qtimezone_types.QTimeZone, zoneId: seq[byte], offsetSeconds: cint, name: string, abbreviation: string, territory: cint): gen_qtimezone_types.QTimeZone =
 
-  QTimeZone.init(fcQTimeZone_new6(struct_miqt_string(data: cast[cstring](if len(zoneId) == 0: nil else: unsafeAddr zoneId[0]), len: csize_t(len(zoneId))), offsetSeconds, struct_miqt_string(data: name, len: csize_t(len(name))), struct_miqt_string(data: abbreviation, len: csize_t(len(abbreviation))), cint(territory)))
-proc create*(T: type QTimeZone, zoneId: seq[byte], offsetSeconds: cint, name: string, abbreviation: string, territory: gen_qlocale.QLocaleCountry, comment: string): QTimeZone =
+  gen_qtimezone_types.QTimeZone.init(fcQTimeZone_new6(struct_miqt_string(data: cast[cstring](if len(zoneId) == 0: nil else: unsafeAddr zoneId[0]), len: csize_t(len(zoneId))), offsetSeconds, struct_miqt_string(data: name, len: csize_t(len(name))), struct_miqt_string(data: abbreviation, len: csize_t(len(abbreviation))), cint(territory)))
+proc create*(T: type gen_qtimezone_types.QTimeZone, zoneId: seq[byte], offsetSeconds: cint, name: string, abbreviation: string, territory: cint, comment: string): gen_qtimezone_types.QTimeZone =
 
-  QTimeZone.init(fcQTimeZone_new7(struct_miqt_string(data: cast[cstring](if len(zoneId) == 0: nil else: unsafeAddr zoneId[0]), len: csize_t(len(zoneId))), offsetSeconds, struct_miqt_string(data: name, len: csize_t(len(name))), struct_miqt_string(data: abbreviation, len: csize_t(len(abbreviation))), cint(territory), struct_miqt_string(data: comment, len: csize_t(len(comment)))))
-proc operatorAssign*(self: QTimeZone, other: QTimeZone): void =
+  gen_qtimezone_types.QTimeZone.init(fcQTimeZone_new7(struct_miqt_string(data: cast[cstring](if len(zoneId) == 0: nil else: unsafeAddr zoneId[0]), len: csize_t(len(zoneId))), offsetSeconds, struct_miqt_string(data: name, len: csize_t(len(name))), struct_miqt_string(data: abbreviation, len: csize_t(len(abbreviation))), cint(territory), struct_miqt_string(data: comment, len: csize_t(len(comment)))))
+proc operatorAssign*(self: gen_qtimezone_types.QTimeZone, other: gen_qtimezone_types.QTimeZone): void =
 
   fcQTimeZone_operatorAssign(self.h, other.h)
 
-proc swap*(self: QTimeZone, other: QTimeZone): void =
+proc swap*(self: gen_qtimezone_types.QTimeZone, other: gen_qtimezone_types.QTimeZone): void =
 
   fcQTimeZone_swap(self.h, other.h)
 
-proc isValid*(self: QTimeZone, ): bool =
+proc isValid*(self: gen_qtimezone_types.QTimeZone, ): bool =
 
   fcQTimeZone_isValid(self.h)
 
-proc id*(self: QTimeZone, ): seq[byte] =
+proc id*(self: gen_qtimezone_types.QTimeZone, ): seq[byte] =
 
   var v_bytearray = fcQTimeZone_id(self.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc territory*(self: QTimeZone, ): gen_qlocale.QLocaleCountry =
+proc territory*(self: gen_qtimezone_types.QTimeZone, ): cint =
 
-  gen_qlocale.QLocaleCountry(fcQTimeZone_territory(self.h))
+  cint(fcQTimeZone_territory(self.h))
 
-proc country*(self: QTimeZone, ): gen_qlocale.QLocaleCountry =
+proc country*(self: gen_qtimezone_types.QTimeZone, ): cint =
 
-  gen_qlocale.QLocaleCountry(fcQTimeZone_country(self.h))
+  cint(fcQTimeZone_country(self.h))
 
-proc comment*(self: QTimeZone, ): string =
+proc comment*(self: gen_qtimezone_types.QTimeZone, ): string =
 
   let v_ms = fcQTimeZone_comment(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc displayName*(self: QTimeZone, atDateTime: gen_qdatetime.QDateTime): string =
+proc displayName*(self: gen_qtimezone_types.QTimeZone, atDateTime: gen_qdatetime.QDateTime): string =
 
   let v_ms = fcQTimeZone_displayName(self.h, atDateTime.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc displayNameWithTimeType*(self: QTimeZone, timeType: QTimeZoneTimeType): string =
+proc displayNameWithTimeType*(self: gen_qtimezone_types.QTimeZone, timeType: cint): string =
 
   let v_ms = fcQTimeZone_displayNameWithTimeType(self.h, cint(timeType))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc abbreviation*(self: QTimeZone, atDateTime: gen_qdatetime.QDateTime): string =
+proc abbreviation*(self: gen_qtimezone_types.QTimeZone, atDateTime: gen_qdatetime.QDateTime): string =
 
   let v_ms = fcQTimeZone_abbreviation(self.h, atDateTime.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc offsetFromUtc*(self: QTimeZone, atDateTime: gen_qdatetime.QDateTime): cint =
+proc offsetFromUtc*(self: gen_qtimezone_types.QTimeZone, atDateTime: gen_qdatetime.QDateTime): cint =
 
   fcQTimeZone_offsetFromUtc(self.h, atDateTime.h)
 
-proc standardTimeOffset*(self: QTimeZone, atDateTime: gen_qdatetime.QDateTime): cint =
+proc standardTimeOffset*(self: gen_qtimezone_types.QTimeZone, atDateTime: gen_qdatetime.QDateTime): cint =
 
   fcQTimeZone_standardTimeOffset(self.h, atDateTime.h)
 
-proc daylightTimeOffset*(self: QTimeZone, atDateTime: gen_qdatetime.QDateTime): cint =
+proc daylightTimeOffset*(self: gen_qtimezone_types.QTimeZone, atDateTime: gen_qdatetime.QDateTime): cint =
 
   fcQTimeZone_daylightTimeOffset(self.h, atDateTime.h)
 
-proc hasDaylightTime*(self: QTimeZone, ): bool =
+proc hasDaylightTime*(self: gen_qtimezone_types.QTimeZone, ): bool =
 
   fcQTimeZone_hasDaylightTime(self.h)
 
-proc isDaylightTime*(self: QTimeZone, atDateTime: gen_qdatetime.QDateTime): bool =
+proc isDaylightTime*(self: gen_qtimezone_types.QTimeZone, atDateTime: gen_qdatetime.QDateTime): bool =
 
   fcQTimeZone_isDaylightTime(self.h, atDateTime.h)
 
-proc offsetData*(self: QTimeZone, forDateTime: gen_qdatetime.QDateTime): QTimeZoneOffsetData =
+proc offsetData*(self: gen_qtimezone_types.QTimeZone, forDateTime: gen_qdatetime.QDateTime): gen_qtimezone_types.QTimeZoneOffsetData =
 
-  QTimeZoneOffsetData(h: fcQTimeZone_offsetData(self.h, forDateTime.h))
+  gen_qtimezone_types.QTimeZoneOffsetData(h: fcQTimeZone_offsetData(self.h, forDateTime.h))
 
-proc hasTransitions*(self: QTimeZone, ): bool =
+proc hasTransitions*(self: gen_qtimezone_types.QTimeZone, ): bool =
 
   fcQTimeZone_hasTransitions(self.h)
 
-proc nextTransition*(self: QTimeZone, afterDateTime: gen_qdatetime.QDateTime): QTimeZoneOffsetData =
+proc nextTransition*(self: gen_qtimezone_types.QTimeZone, afterDateTime: gen_qdatetime.QDateTime): gen_qtimezone_types.QTimeZoneOffsetData =
 
-  QTimeZoneOffsetData(h: fcQTimeZone_nextTransition(self.h, afterDateTime.h))
+  gen_qtimezone_types.QTimeZoneOffsetData(h: fcQTimeZone_nextTransition(self.h, afterDateTime.h))
 
-proc previousTransition*(self: QTimeZone, beforeDateTime: gen_qdatetime.QDateTime): QTimeZoneOffsetData =
+proc previousTransition*(self: gen_qtimezone_types.QTimeZone, beforeDateTime: gen_qdatetime.QDateTime): gen_qtimezone_types.QTimeZoneOffsetData =
 
-  QTimeZoneOffsetData(h: fcQTimeZone_previousTransition(self.h, beforeDateTime.h))
+  gen_qtimezone_types.QTimeZoneOffsetData(h: fcQTimeZone_previousTransition(self.h, beforeDateTime.h))
 
-proc transitions*(self: QTimeZone, fromDateTime: gen_qdatetime.QDateTime, toDateTime: gen_qdatetime.QDateTime): seq[QTimeZoneOffsetData] =
+proc transitions*(self: gen_qtimezone_types.QTimeZone, fromDateTime: gen_qdatetime.QDateTime, toDateTime: gen_qdatetime.QDateTime): seq[gen_qtimezone_types.QTimeZoneOffsetData] =
 
   var v_ma = fcQTimeZone_transitions(self.h, fromDateTime.h, toDateTime.h)
-  var vx_ret = newSeq[QTimeZoneOffsetData](int(v_ma.len))
+  var vx_ret = newSeq[gen_qtimezone_types.QTimeZoneOffsetData](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
-    vx_ret[i] = QTimeZoneOffsetData(h: v_outCast[i])
+    vx_ret[i] = gen_qtimezone_types.QTimeZoneOffsetData(h: v_outCast[i])
   vx_ret
 
-proc systemTimeZoneId*(_: type QTimeZone, ): seq[byte] =
+proc systemTimeZoneId*(_: type gen_qtimezone_types.QTimeZone, ): seq[byte] =
 
   var v_bytearray = fcQTimeZone_systemTimeZoneId()
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc systemTimeZone*(_: type QTimeZone, ): QTimeZone =
+proc systemTimeZone*(_: type gen_qtimezone_types.QTimeZone, ): gen_qtimezone_types.QTimeZone =
 
-  QTimeZone(h: fcQTimeZone_systemTimeZone())
+  gen_qtimezone_types.QTimeZone(h: fcQTimeZone_systemTimeZone())
 
-proc utc*(_: type QTimeZone, ): QTimeZone =
+proc utc*(_: type gen_qtimezone_types.QTimeZone, ): gen_qtimezone_types.QTimeZone =
 
-  QTimeZone(h: fcQTimeZone_utc())
+  gen_qtimezone_types.QTimeZone(h: fcQTimeZone_utc())
 
-proc isTimeZoneIdAvailable*(_: type QTimeZone, ianaId: seq[byte]): bool =
+proc isTimeZoneIdAvailable*(_: type gen_qtimezone_types.QTimeZone, ianaId: seq[byte]): bool =
 
   fcQTimeZone_isTimeZoneIdAvailable(struct_miqt_string(data: cast[cstring](if len(ianaId) == 0: nil else: unsafeAddr ianaId[0]), len: csize_t(len(ianaId))))
 
-proc availableTimeZoneIds*(_: type QTimeZone, ): seq[seq[byte]] =
+proc availableTimeZoneIds*(_: type gen_qtimezone_types.QTimeZone, ): seq[seq[byte]] =
 
   var v_ma = fcQTimeZone_availableTimeZoneIds()
   var vx_ret = newSeq[seq[byte]](int(v_ma.len))
@@ -274,7 +268,7 @@ proc availableTimeZoneIds*(_: type QTimeZone, ): seq[seq[byte]] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc availableTimeZoneIdsWithTerritory*(_: type QTimeZone, territory: gen_qlocale.QLocaleCountry): seq[seq[byte]] =
+proc availableTimeZoneIdsWithTerritory*(_: type gen_qtimezone_types.QTimeZone, territory: cint): seq[seq[byte]] =
 
   var v_ma = fcQTimeZone_availableTimeZoneIdsWithTerritory(cint(territory))
   var vx_ret = newSeq[seq[byte]](int(v_ma.len))
@@ -286,7 +280,7 @@ proc availableTimeZoneIdsWithTerritory*(_: type QTimeZone, territory: gen_qlocal
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc availableTimeZoneIdsWithOffsetSeconds*(_: type QTimeZone, offsetSeconds: cint): seq[seq[byte]] =
+proc availableTimeZoneIdsWithOffsetSeconds*(_: type gen_qtimezone_types.QTimeZone, offsetSeconds: cint): seq[seq[byte]] =
 
   var v_ma = fcQTimeZone_availableTimeZoneIdsWithOffsetSeconds(offsetSeconds)
   var vx_ret = newSeq[seq[byte]](int(v_ma.len))
@@ -298,28 +292,28 @@ proc availableTimeZoneIdsWithOffsetSeconds*(_: type QTimeZone, offsetSeconds: ci
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc ianaIdToWindowsId*(_: type QTimeZone, ianaId: seq[byte]): seq[byte] =
+proc ianaIdToWindowsId*(_: type gen_qtimezone_types.QTimeZone, ianaId: seq[byte]): seq[byte] =
 
   var v_bytearray = fcQTimeZone_ianaIdToWindowsId(struct_miqt_string(data: cast[cstring](if len(ianaId) == 0: nil else: unsafeAddr ianaId[0]), len: csize_t(len(ianaId))))
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc windowsIdToDefaultIanaId*(_: type QTimeZone, windowsId: seq[byte]): seq[byte] =
+proc windowsIdToDefaultIanaId*(_: type gen_qtimezone_types.QTimeZone, windowsId: seq[byte]): seq[byte] =
 
   var v_bytearray = fcQTimeZone_windowsIdToDefaultIanaId(struct_miqt_string(data: cast[cstring](if len(windowsId) == 0: nil else: unsafeAddr windowsId[0]), len: csize_t(len(windowsId))))
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc windowsIdToDefaultIanaId2*(_: type QTimeZone, windowsId: seq[byte], territory: gen_qlocale.QLocaleCountry): seq[byte] =
+proc windowsIdToDefaultIanaId2*(_: type gen_qtimezone_types.QTimeZone, windowsId: seq[byte], territory: cint): seq[byte] =
 
   var v_bytearray = fcQTimeZone_windowsIdToDefaultIanaId2(struct_miqt_string(data: cast[cstring](if len(windowsId) == 0: nil else: unsafeAddr windowsId[0]), len: csize_t(len(windowsId))), cint(territory))
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc windowsIdToIanaIds*(_: type QTimeZone, windowsId: seq[byte]): seq[seq[byte]] =
+proc windowsIdToIanaIds*(_: type gen_qtimezone_types.QTimeZone, windowsId: seq[byte]): seq[seq[byte]] =
 
   var v_ma = fcQTimeZone_windowsIdToIanaIds(struct_miqt_string(data: cast[cstring](if len(windowsId) == 0: nil else: unsafeAddr windowsId[0]), len: csize_t(len(windowsId))))
   var vx_ret = newSeq[seq[byte]](int(v_ma.len))
@@ -331,7 +325,7 @@ proc windowsIdToIanaIds*(_: type QTimeZone, windowsId: seq[byte]): seq[seq[byte]
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc windowsIdToIanaIds2*(_: type QTimeZone, windowsId: seq[byte], territory: gen_qlocale.QLocaleCountry): seq[seq[byte]] =
+proc windowsIdToIanaIds2*(_: type gen_qtimezone_types.QTimeZone, windowsId: seq[byte], territory: cint): seq[seq[byte]] =
 
   var v_ma = fcQTimeZone_windowsIdToIanaIds2(struct_miqt_string(data: cast[cstring](if len(windowsId) == 0: nil else: unsafeAddr windowsId[0]), len: csize_t(len(windowsId))), cint(territory))
   var vx_ret = newSeq[seq[byte]](int(v_ma.len))
@@ -343,45 +337,45 @@ proc windowsIdToIanaIds2*(_: type QTimeZone, windowsId: seq[byte], territory: ge
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc displayName2*(self: QTimeZone, atDateTime: gen_qdatetime.QDateTime, nameType: QTimeZoneNameType): string =
+proc displayName2*(self: gen_qtimezone_types.QTimeZone, atDateTime: gen_qdatetime.QDateTime, nameType: cint): string =
 
   let v_ms = fcQTimeZone_displayName2(self.h, atDateTime.h, cint(nameType))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc displayName3*(self: QTimeZone, atDateTime: gen_qdatetime.QDateTime, nameType: QTimeZoneNameType, locale: gen_qlocale.QLocale): string =
+proc displayName3*(self: gen_qtimezone_types.QTimeZone, atDateTime: gen_qdatetime.QDateTime, nameType: cint, locale: gen_qlocale.QLocale): string =
 
   let v_ms = fcQTimeZone_displayName3(self.h, atDateTime.h, cint(nameType), locale.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc displayName22*(self: QTimeZone, timeType: QTimeZoneTimeType, nameType: QTimeZoneNameType): string =
+proc displayName22*(self: gen_qtimezone_types.QTimeZone, timeType: cint, nameType: cint): string =
 
   let v_ms = fcQTimeZone_displayName22(self.h, cint(timeType), cint(nameType))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc displayName32*(self: QTimeZone, timeType: QTimeZoneTimeType, nameType: QTimeZoneNameType, locale: gen_qlocale.QLocale): string =
+proc displayName32*(self: gen_qtimezone_types.QTimeZone, timeType: cint, nameType: cint, locale: gen_qlocale.QLocale): string =
 
   let v_ms = fcQTimeZone_displayName32(self.h, cint(timeType), cint(nameType), locale.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc delete*(self: QTimeZone) =
+proc delete*(self: gen_qtimezone_types.QTimeZone) =
   fcQTimeZone_delete(self.h)
 
-func init*(T: type QTimeZoneOffsetData, h: ptr cQTimeZoneOffsetData): QTimeZoneOffsetData =
+func init*(T: type gen_qtimezone_types.QTimeZoneOffsetData, h: ptr cQTimeZoneOffsetData): gen_qtimezone_types.QTimeZoneOffsetData =
   T(h: h)
-proc create*(T: type QTimeZoneOffsetData, param1: QTimeZoneOffsetData): QTimeZoneOffsetData =
+proc create*(T: type gen_qtimezone_types.QTimeZoneOffsetData, param1: gen_qtimezone_types.QTimeZoneOffsetData): gen_qtimezone_types.QTimeZoneOffsetData =
 
-  QTimeZoneOffsetData.init(fcQTimeZoneOffsetData_new(param1.h))
-proc operatorAssign*(self: QTimeZoneOffsetData, param1: QTimeZoneOffsetData): void =
+  gen_qtimezone_types.QTimeZoneOffsetData.init(fcQTimeZoneOffsetData_new(param1.h))
+proc operatorAssign*(self: gen_qtimezone_types.QTimeZoneOffsetData, param1: gen_qtimezone_types.QTimeZoneOffsetData): void =
 
   fcQTimeZoneOffsetData_operatorAssign(self.h, param1.h)
 
-proc delete*(self: QTimeZoneOffsetData) =
+proc delete*(self: gen_qtimezone_types.QTimeZoneOffsetData) =
   fcQTimeZoneOffsetData_delete(self.h)

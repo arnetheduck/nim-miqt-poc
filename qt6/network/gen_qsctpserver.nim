@@ -97,373 +97,308 @@ proc fcQSctpServer_staticMetaObject(): pointer {.importc: "QSctpServer_staticMet
 proc fcQSctpServer_delete(self: pointer) {.importc: "QSctpServer_delete".}
 
 
-func init*(T: type QSctpServer, h: ptr cQSctpServer): QSctpServer =
+func init*(T: type gen_qsctpserver_types.QSctpServer, h: ptr cQSctpServer): gen_qsctpserver_types.QSctpServer =
   T(h: h)
-proc create*(T: type QSctpServer, ): QSctpServer =
+proc create*(T: type gen_qsctpserver_types.QSctpServer, ): gen_qsctpserver_types.QSctpServer =
 
-  QSctpServer.init(fcQSctpServer_new())
-proc create*(T: type QSctpServer, parent: gen_qobject.QObject): QSctpServer =
+  gen_qsctpserver_types.QSctpServer.init(fcQSctpServer_new())
+proc create*(T: type gen_qsctpserver_types.QSctpServer, parent: gen_qobject.QObject): gen_qsctpserver_types.QSctpServer =
 
-  QSctpServer.init(fcQSctpServer_new2(parent.h))
-proc metaObject*(self: QSctpServer, ): gen_qobjectdefs.QMetaObject =
+  gen_qsctpserver_types.QSctpServer.init(fcQSctpServer_new2(parent.h))
+proc metaObject*(self: gen_qsctpserver_types.QSctpServer, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQSctpServer_metaObject(self.h))
 
-proc metacast*(self: QSctpServer, param1: cstring): pointer =
+proc metacast*(self: gen_qsctpserver_types.QSctpServer, param1: cstring): pointer =
 
   fcQSctpServer_metacast(self.h, param1)
 
-proc metacall*(self: QSctpServer, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qsctpserver_types.QSctpServer, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQSctpServer_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QSctpServer, s: cstring): string =
+proc tr*(_: type gen_qsctpserver_types.QSctpServer, s: cstring): string =
 
   let v_ms = fcQSctpServer_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setMaximumChannelCount*(self: QSctpServer, count: cint): void =
+proc setMaximumChannelCount*(self: gen_qsctpserver_types.QSctpServer, count: cint): void =
 
   fcQSctpServer_setMaximumChannelCount(self.h, count)
 
-proc maximumChannelCount*(self: QSctpServer, ): cint =
+proc maximumChannelCount*(self: gen_qsctpserver_types.QSctpServer, ): cint =
 
   fcQSctpServer_maximumChannelCount(self.h)
 
-proc nextPendingDatagramConnection*(self: QSctpServer, ): gen_qsctpsocket.QSctpSocket =
+proc nextPendingDatagramConnection*(self: gen_qsctpserver_types.QSctpServer, ): gen_qsctpsocket.QSctpSocket =
 
   gen_qsctpsocket.QSctpSocket(h: fcQSctpServer_nextPendingDatagramConnection(self.h))
 
-proc tr2*(_: type QSctpServer, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qsctpserver_types.QSctpServer, s: cstring, c: cstring): string =
 
   let v_ms = fcQSctpServer_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QSctpServer, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qsctpserver_types.QSctpServer, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQSctpServer_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QSctpServer, ): gen_qobjectdefs.QMetaObject =
-
+proc QSctpServermetaObject*(self: gen_qsctpserver_types.QSctpServer, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQSctpServer_virtualbase_metaObject(self.h))
 
-type QSctpServermetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QSctpServer, slot: proc(super: QSctpServermetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QSctpServermetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qsctpserver_types.QSctpServer, slot: QSctpServermetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QSctpServermetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QSctpServermetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSctpServer_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSctpServer_metaObject(self: ptr cQSctpServer, slot: int): pointer {.exportc: "miqt_exec_callback_QSctpServer_metaObject ".} =
-  type Cb = proc(super: QSctpServermetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QSctpServer(h: self), )
+  var nimfunc = cast[ptr QSctpServermetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QSctpServer, param1: cstring): pointer =
-
+proc QSctpServermetacast*(self: gen_qsctpserver_types.QSctpServer, param1: cstring): pointer =
 
   fQSctpServer_virtualbase_metacast(self.h, param1)
 
-type QSctpServermetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QSctpServer, slot: proc(super: QSctpServermetacastBase, param1: cstring): pointer) =
+type QSctpServermetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qsctpserver_types.QSctpServer, slot: QSctpServermetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QSctpServermetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QSctpServermetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSctpServer_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSctpServer_metacast(self: ptr cQSctpServer, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QSctpServer_metacast ".} =
-  type Cb = proc(super: QSctpServermetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QSctpServer(h: self), param1)
+  var nimfunc = cast[ptr QSctpServermetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QSctpServer, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QSctpServermetacall*(self: gen_qsctpserver_types.QSctpServer, param1: cint, param2: cint, param3: pointer): cint =
 
   fQSctpServer_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QSctpServermetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QSctpServer, slot: proc(super: QSctpServermetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QSctpServermetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qsctpserver_types.QSctpServer, slot: QSctpServermetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QSctpServermetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QSctpServermetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSctpServer_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSctpServer_metacall(self: ptr cQSctpServer, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QSctpServer_metacall ".} =
-  type Cb = proc(super: QSctpServermetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QSctpServer(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QSctpServermetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_incomingConnection(self: QSctpServer, handle: uint): void =
-
+proc QSctpServerincomingConnection*(self: gen_qsctpserver_types.QSctpServer, handle: uint): void =
 
   fQSctpServer_virtualbase_incomingConnection(self.h, handle)
 
-type QSctpServerincomingConnectionBase* = proc(handle: uint): void
-proc onincomingConnection*(self: QSctpServer, slot: proc(super: QSctpServerincomingConnectionBase, handle: uint): void) =
+type QSctpServerincomingConnectionProc* = proc(handle: uint): void
+proc onincomingConnection*(self: gen_qsctpserver_types.QSctpServer, slot: QSctpServerincomingConnectionProc) =
   # TODO check subclass
-  type Cb = proc(super: QSctpServerincomingConnectionBase, handle: uint): void
-  var tmp = new Cb
+  var tmp = new QSctpServerincomingConnectionProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSctpServer_override_virtual_incomingConnection(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSctpServer_incomingConnection(self: ptr cQSctpServer, slot: int, handle: uint): void {.exportc: "miqt_exec_callback_QSctpServer_incomingConnection ".} =
-  type Cb = proc(super: QSctpServerincomingConnectionBase, handle: uint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(handle: uint): auto =
-    callVirtualBase_incomingConnection(QSctpServer(h: self), handle)
+  var nimfunc = cast[ptr QSctpServerincomingConnectionProc](cast[pointer](slot))
   let slotval1 = handle
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hasPendingConnections(self: QSctpServer, ): bool =
-
+  nimfunc[](slotval1)
+proc QSctpServerhasPendingConnections*(self: gen_qsctpserver_types.QSctpServer, ): bool =
 
   fQSctpServer_virtualbase_hasPendingConnections(self.h)
 
-type QSctpServerhasPendingConnectionsBase* = proc(): bool
-proc onhasPendingConnections*(self: QSctpServer, slot: proc(super: QSctpServerhasPendingConnectionsBase): bool) =
+type QSctpServerhasPendingConnectionsProc* = proc(): bool
+proc onhasPendingConnections*(self: gen_qsctpserver_types.QSctpServer, slot: QSctpServerhasPendingConnectionsProc) =
   # TODO check subclass
-  type Cb = proc(super: QSctpServerhasPendingConnectionsBase): bool
-  var tmp = new Cb
+  var tmp = new QSctpServerhasPendingConnectionsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSctpServer_override_virtual_hasPendingConnections(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSctpServer_hasPendingConnections(self: ptr cQSctpServer, slot: int): bool {.exportc: "miqt_exec_callback_QSctpServer_hasPendingConnections ".} =
-  type Cb = proc(super: QSctpServerhasPendingConnectionsBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasPendingConnections(QSctpServer(h: self), )
+  var nimfunc = cast[ptr QSctpServerhasPendingConnectionsProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_nextPendingConnection(self: QSctpServer, ): gen_qtcpsocket.QTcpSocket =
-
+proc QSctpServernextPendingConnection*(self: gen_qsctpserver_types.QSctpServer, ): gen_qtcpsocket.QTcpSocket =
 
   gen_qtcpsocket.QTcpSocket(h: fQSctpServer_virtualbase_nextPendingConnection(self.h))
 
-type QSctpServernextPendingConnectionBase* = proc(): gen_qtcpsocket.QTcpSocket
-proc onnextPendingConnection*(self: QSctpServer, slot: proc(super: QSctpServernextPendingConnectionBase): gen_qtcpsocket.QTcpSocket) =
+type QSctpServernextPendingConnectionProc* = proc(): gen_qtcpsocket.QTcpSocket
+proc onnextPendingConnection*(self: gen_qsctpserver_types.QSctpServer, slot: QSctpServernextPendingConnectionProc) =
   # TODO check subclass
-  type Cb = proc(super: QSctpServernextPendingConnectionBase): gen_qtcpsocket.QTcpSocket
-  var tmp = new Cb
+  var tmp = new QSctpServernextPendingConnectionProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSctpServer_override_virtual_nextPendingConnection(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSctpServer_nextPendingConnection(self: ptr cQSctpServer, slot: int): pointer {.exportc: "miqt_exec_callback_QSctpServer_nextPendingConnection ".} =
-  type Cb = proc(super: QSctpServernextPendingConnectionBase): gen_qtcpsocket.QTcpSocket
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_nextPendingConnection(QSctpServer(h: self), )
+  var nimfunc = cast[ptr QSctpServernextPendingConnectionProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_event(self: QSctpServer, event: gen_qcoreevent.QEvent): bool =
-
+proc QSctpServerevent*(self: gen_qsctpserver_types.QSctpServer, event: gen_qcoreevent.QEvent): bool =
 
   fQSctpServer_virtualbase_event(self.h, event.h)
 
-type QSctpServereventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QSctpServer, slot: proc(super: QSctpServereventBase, event: gen_qcoreevent.QEvent): bool) =
+type QSctpServereventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qsctpserver_types.QSctpServer, slot: QSctpServereventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSctpServereventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QSctpServereventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSctpServer_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSctpServer_event(self: ptr cQSctpServer, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QSctpServer_event ".} =
-  type Cb = proc(super: QSctpServereventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QSctpServer(h: self), event)
+  var nimfunc = cast[ptr QSctpServereventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QSctpServer, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QSctpServereventFilter*(self: gen_qsctpserver_types.QSctpServer, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQSctpServer_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QSctpServereventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QSctpServer, slot: proc(super: QSctpServereventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QSctpServereventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qsctpserver_types.QSctpServer, slot: QSctpServereventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QSctpServereventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QSctpServereventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSctpServer_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSctpServer_eventFilter(self: ptr cQSctpServer, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QSctpServer_eventFilter ".} =
-  type Cb = proc(super: QSctpServereventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QSctpServer(h: self), watched, event)
+  var nimfunc = cast[ptr QSctpServereventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QSctpServer, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QSctpServertimerEvent*(self: gen_qsctpserver_types.QSctpServer, event: gen_qcoreevent.QTimerEvent): void =
 
   fQSctpServer_virtualbase_timerEvent(self.h, event.h)
 
-type QSctpServertimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QSctpServer, slot: proc(super: QSctpServertimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QSctpServertimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qsctpserver_types.QSctpServer, slot: QSctpServertimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSctpServertimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QSctpServertimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSctpServer_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSctpServer_timerEvent(self: ptr cQSctpServer, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSctpServer_timerEvent ".} =
-  type Cb = proc(super: QSctpServertimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QSctpServer(h: self), event)
+  var nimfunc = cast[ptr QSctpServertimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QSctpServer, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QSctpServerchildEvent*(self: gen_qsctpserver_types.QSctpServer, event: gen_qcoreevent.QChildEvent): void =
 
   fQSctpServer_virtualbase_childEvent(self.h, event.h)
 
-type QSctpServerchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QSctpServer, slot: proc(super: QSctpServerchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QSctpServerchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qsctpserver_types.QSctpServer, slot: QSctpServerchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSctpServerchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QSctpServerchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSctpServer_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSctpServer_childEvent(self: ptr cQSctpServer, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSctpServer_childEvent ".} =
-  type Cb = proc(super: QSctpServerchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QSctpServer(h: self), event)
+  var nimfunc = cast[ptr QSctpServerchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QSctpServer, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QSctpServercustomEvent*(self: gen_qsctpserver_types.QSctpServer, event: gen_qcoreevent.QEvent): void =
 
   fQSctpServer_virtualbase_customEvent(self.h, event.h)
 
-type QSctpServercustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QSctpServer, slot: proc(super: QSctpServercustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QSctpServercustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qsctpserver_types.QSctpServer, slot: QSctpServercustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSctpServercustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QSctpServercustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSctpServer_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSctpServer_customEvent(self: ptr cQSctpServer, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSctpServer_customEvent ".} =
-  type Cb = proc(super: QSctpServercustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QSctpServer(h: self), event)
+  var nimfunc = cast[ptr QSctpServercustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QSctpServer, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QSctpServerconnectNotify*(self: gen_qsctpserver_types.QSctpServer, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQSctpServer_virtualbase_connectNotify(self.h, signal.h)
 
-type QSctpServerconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QSctpServer, slot: proc(super: QSctpServerconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QSctpServerconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qsctpserver_types.QSctpServer, slot: QSctpServerconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QSctpServerconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QSctpServerconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSctpServer_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSctpServer_connectNotify(self: ptr cQSctpServer, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QSctpServer_connectNotify ".} =
-  type Cb = proc(super: QSctpServerconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QSctpServer(h: self), signal)
+  var nimfunc = cast[ptr QSctpServerconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QSctpServer, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QSctpServerdisconnectNotify*(self: gen_qsctpserver_types.QSctpServer, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQSctpServer_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QSctpServerdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QSctpServer, slot: proc(super: QSctpServerdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QSctpServerdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qsctpserver_types.QSctpServer, slot: QSctpServerdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QSctpServerdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QSctpServerdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSctpServer_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSctpServer_disconnectNotify(self: ptr cQSctpServer, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QSctpServer_disconnectNotify ".} =
-  type Cb = proc(super: QSctpServerdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QSctpServer(h: self), signal)
+  var nimfunc = cast[ptr QSctpServerdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QSctpServer): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qsctpserver_types.QSctpServer): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQSctpServer_staticMetaObject())
-proc delete*(self: QSctpServer) =
+proc delete*(self: gen_qsctpserver_types.QSctpServer) =
   fcQSctpServer_delete(self.h)

@@ -43,7 +43,7 @@ type cQQmlModuleRegistration*{.exportc: "QQmlModuleRegistration", incompleteStru
 proc fcQQmlModuleRegistration_delete(self: pointer) {.importc: "QQmlModuleRegistration_delete".}
 
 
-func init*(T: type QQmlModuleRegistration, h: ptr cQQmlModuleRegistration): QQmlModuleRegistration =
+func init*(T: type gen_qqmlmoduleregistration_types.QQmlModuleRegistration, h: ptr cQQmlModuleRegistration): gen_qqmlmoduleregistration_types.QQmlModuleRegistration =
   T(h: h)
-proc delete*(self: QQmlModuleRegistration) =
+proc delete*(self: gen_qqmlmoduleregistration_types.QQmlModuleRegistration) =
   fcQQmlModuleRegistration_delete(self.h)

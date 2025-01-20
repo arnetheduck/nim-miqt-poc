@@ -34,26 +34,22 @@ const cflags = gorge("pkg-config -cflags Qt5Network")
 {.compile("gen_qocspresponse.cpp", cflags).}
 
 
-type QOcspCertificateStatus* = cint
-const
-  QOcspCertificateStatusGood* = 0
-  QOcspCertificateStatusRevoked* = 1
-  QOcspCertificateStatusUnknown* = 2
+type QOcspCertificateStatusEnum* = distinct cint
+template Good*(_: type QOcspCertificateStatusEnum): untyped = 0
+template Revoked*(_: type QOcspCertificateStatusEnum): untyped = 1
+template Unknown*(_: type QOcspCertificateStatusEnum): untyped = 2
 
 
-
-type QOcspRevocationReason* = cint
-const
-  QOcspRevocationReasonNone* = -1
-  QOcspRevocationReasonUnspecified* = 0
-  QOcspRevocationReasonKeyCompromise* = 1
-  QOcspRevocationReasonCACompromise* = 2
-  QOcspRevocationReasonAffiliationChanged* = 3
-  QOcspRevocationReasonSuperseded* = 4
-  QOcspRevocationReasonCessationOfOperation* = 5
-  QOcspRevocationReasonCertificateHold* = 6
-  QOcspRevocationReasonRemoveFromCRL* = 7
-
+type QOcspRevocationReasonEnum* = distinct cint
+template None*(_: type QOcspRevocationReasonEnum): untyped = -1
+template Unspecified*(_: type QOcspRevocationReasonEnum): untyped = 0
+template KeyCompromise*(_: type QOcspRevocationReasonEnum): untyped = 1
+template CACompromise*(_: type QOcspRevocationReasonEnum): untyped = 2
+template AffiliationChanged*(_: type QOcspRevocationReasonEnum): untyped = 3
+template Superseded*(_: type QOcspRevocationReasonEnum): untyped = 4
+template CessationOfOperation*(_: type QOcspRevocationReasonEnum): untyped = 5
+template CertificateHold*(_: type QOcspRevocationReasonEnum): untyped = 6
+template RemoveFromCRL*(_: type QOcspRevocationReasonEnum): untyped = 7
 
 
 import gen_qocspresponse_types
@@ -77,37 +73,37 @@ proc fcQOcspResponse_swap(self: pointer, other: pointer): void {.importc: "QOcsp
 proc fcQOcspResponse_delete(self: pointer) {.importc: "QOcspResponse_delete".}
 
 
-func init*(T: type QOcspResponse, h: ptr cQOcspResponse): QOcspResponse =
+func init*(T: type gen_qocspresponse_types.QOcspResponse, h: ptr cQOcspResponse): gen_qocspresponse_types.QOcspResponse =
   T(h: h)
-proc create*(T: type QOcspResponse, ): QOcspResponse =
+proc create*(T: type gen_qocspresponse_types.QOcspResponse, ): gen_qocspresponse_types.QOcspResponse =
 
-  QOcspResponse.init(fcQOcspResponse_new())
-proc create*(T: type QOcspResponse, other: QOcspResponse): QOcspResponse =
+  gen_qocspresponse_types.QOcspResponse.init(fcQOcspResponse_new())
+proc create*(T: type gen_qocspresponse_types.QOcspResponse, other: gen_qocspresponse_types.QOcspResponse): gen_qocspresponse_types.QOcspResponse =
 
-  QOcspResponse.init(fcQOcspResponse_new2(other.h))
-proc operatorAssign*(self: QOcspResponse, other: QOcspResponse): void =
+  gen_qocspresponse_types.QOcspResponse.init(fcQOcspResponse_new2(other.h))
+proc operatorAssign*(self: gen_qocspresponse_types.QOcspResponse, other: gen_qocspresponse_types.QOcspResponse): void =
 
   fcQOcspResponse_operatorAssign(self.h, other.h)
 
-proc certificateStatus*(self: QOcspResponse, ): QOcspCertificateStatus =
+proc certificateStatus*(self: gen_qocspresponse_types.QOcspResponse, ): cint =
 
-  QOcspCertificateStatus(fcQOcspResponse_certificateStatus(self.h))
+  cint(fcQOcspResponse_certificateStatus(self.h))
 
-proc revocationReason*(self: QOcspResponse, ): QOcspRevocationReason =
+proc revocationReason*(self: gen_qocspresponse_types.QOcspResponse, ): cint =
 
-  QOcspRevocationReason(fcQOcspResponse_revocationReason(self.h))
+  cint(fcQOcspResponse_revocationReason(self.h))
 
-proc responder*(self: QOcspResponse, ): gen_qsslcertificate.QSslCertificate =
+proc responder*(self: gen_qocspresponse_types.QOcspResponse, ): gen_qsslcertificate.QSslCertificate =
 
   gen_qsslcertificate.QSslCertificate(h: fcQOcspResponse_responder(self.h))
 
-proc subject*(self: QOcspResponse, ): gen_qsslcertificate.QSslCertificate =
+proc subject*(self: gen_qocspresponse_types.QOcspResponse, ): gen_qsslcertificate.QSslCertificate =
 
   gen_qsslcertificate.QSslCertificate(h: fcQOcspResponse_subject(self.h))
 
-proc swap*(self: QOcspResponse, other: QOcspResponse): void =
+proc swap*(self: gen_qocspresponse_types.QOcspResponse, other: gen_qocspresponse_types.QOcspResponse): void =
 
   fcQOcspResponse_swap(self.h, other.h)
 
-proc delete*(self: QOcspResponse) =
+proc delete*(self: gen_qocspresponse_types.QOcspResponse) =
   fcQOcspResponse_delete(self.h)

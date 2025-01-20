@@ -34,27 +34,25 @@ const cflags = gorge("pkg-config -cflags Qt6WebEngineWidgets")
 {.compile("gen_qwebenginecertificateerror.cpp", cflags).}
 
 
-type QWebEngineCertificateErrorType* = cint
-const
-  QWebEngineCertificateErrorSslPinnedKeyNotInCertificateChain* = -150
-  QWebEngineCertificateErrorCertificateCommonNameInvalid* = -200
-  QWebEngineCertificateErrorCertificateDateInvalid* = -201
-  QWebEngineCertificateErrorCertificateAuthorityInvalid* = -202
-  QWebEngineCertificateErrorCertificateContainsErrors* = -203
-  QWebEngineCertificateErrorCertificateNoRevocationMechanism* = -204
-  QWebEngineCertificateErrorCertificateUnableToCheckRevocation* = -205
-  QWebEngineCertificateErrorCertificateRevoked* = -206
-  QWebEngineCertificateErrorCertificateInvalid* = -207
-  QWebEngineCertificateErrorCertificateWeakSignatureAlgorithm* = -208
-  QWebEngineCertificateErrorCertificateNonUniqueName* = -210
-  QWebEngineCertificateErrorCertificateWeakKey* = -211
-  QWebEngineCertificateErrorCertificateNameConstraintViolation* = -212
-  QWebEngineCertificateErrorCertificateValidityTooLong* = -213
-  QWebEngineCertificateErrorCertificateTransparencyRequired* = -214
-  QWebEngineCertificateErrorCertificateSymantecLegacy* = -215
-  QWebEngineCertificateErrorCertificateKnownInterceptionBlocked* = -217
-  QWebEngineCertificateErrorSslObsoleteVersion* = -218
-
+type QWebEngineCertificateErrorTypeEnum* = distinct cint
+template SslPinnedKeyNotInCertificateChain*(_: type QWebEngineCertificateErrorTypeEnum): untyped = -150
+template CertificateCommonNameInvalid*(_: type QWebEngineCertificateErrorTypeEnum): untyped = -200
+template CertificateDateInvalid*(_: type QWebEngineCertificateErrorTypeEnum): untyped = -201
+template CertificateAuthorityInvalid*(_: type QWebEngineCertificateErrorTypeEnum): untyped = -202
+template CertificateContainsErrors*(_: type QWebEngineCertificateErrorTypeEnum): untyped = -203
+template CertificateNoRevocationMechanism*(_: type QWebEngineCertificateErrorTypeEnum): untyped = -204
+template CertificateUnableToCheckRevocation*(_: type QWebEngineCertificateErrorTypeEnum): untyped = -205
+template CertificateRevoked*(_: type QWebEngineCertificateErrorTypeEnum): untyped = -206
+template CertificateInvalid*(_: type QWebEngineCertificateErrorTypeEnum): untyped = -207
+template CertificateWeakSignatureAlgorithm*(_: type QWebEngineCertificateErrorTypeEnum): untyped = -208
+template CertificateNonUniqueName*(_: type QWebEngineCertificateErrorTypeEnum): untyped = -210
+template CertificateWeakKey*(_: type QWebEngineCertificateErrorTypeEnum): untyped = -211
+template CertificateNameConstraintViolation*(_: type QWebEngineCertificateErrorTypeEnum): untyped = -212
+template CertificateValidityTooLong*(_: type QWebEngineCertificateErrorTypeEnum): untyped = -213
+template CertificateTransparencyRequired*(_: type QWebEngineCertificateErrorTypeEnum): untyped = -214
+template CertificateSymantecLegacy*(_: type QWebEngineCertificateErrorTypeEnum): untyped = -215
+template CertificateKnownInterceptionBlocked*(_: type QWebEngineCertificateErrorTypeEnum): untyped = -217
+template SslObsoleteVersion*(_: type QWebEngineCertificateErrorTypeEnum): untyped = -218
 
 
 import gen_qwebenginecertificateerror_types
@@ -85,47 +83,47 @@ proc fcQWebEngineCertificateError_staticMetaObject(): pointer {.importc: "QWebEn
 proc fcQWebEngineCertificateError_delete(self: pointer) {.importc: "QWebEngineCertificateError_delete".}
 
 
-func init*(T: type QWebEngineCertificateError, h: ptr cQWebEngineCertificateError): QWebEngineCertificateError =
+func init*(T: type gen_qwebenginecertificateerror_types.QWebEngineCertificateError, h: ptr cQWebEngineCertificateError): gen_qwebenginecertificateerror_types.QWebEngineCertificateError =
   T(h: h)
-proc create*(T: type QWebEngineCertificateError, other: QWebEngineCertificateError): QWebEngineCertificateError =
+proc create*(T: type gen_qwebenginecertificateerror_types.QWebEngineCertificateError, other: gen_qwebenginecertificateerror_types.QWebEngineCertificateError): gen_qwebenginecertificateerror_types.QWebEngineCertificateError =
 
-  QWebEngineCertificateError.init(fcQWebEngineCertificateError_new(other.h))
-proc operatorAssign*(self: QWebEngineCertificateError, other: QWebEngineCertificateError): void =
+  gen_qwebenginecertificateerror_types.QWebEngineCertificateError.init(fcQWebEngineCertificateError_new(other.h))
+proc operatorAssign*(self: gen_qwebenginecertificateerror_types.QWebEngineCertificateError, other: gen_qwebenginecertificateerror_types.QWebEngineCertificateError): void =
 
   fcQWebEngineCertificateError_operatorAssign(self.h, other.h)
 
-proc typeX*(self: QWebEngineCertificateError, ): QWebEngineCertificateErrorType =
+proc typeX*(self: gen_qwebenginecertificateerror_types.QWebEngineCertificateError, ): cint =
 
-  QWebEngineCertificateErrorType(fcQWebEngineCertificateError_typeX(self.h))
+  cint(fcQWebEngineCertificateError_typeX(self.h))
 
-proc url*(self: QWebEngineCertificateError, ): gen_qurl.QUrl =
+proc url*(self: gen_qwebenginecertificateerror_types.QWebEngineCertificateError, ): gen_qurl.QUrl =
 
   gen_qurl.QUrl(h: fcQWebEngineCertificateError_url(self.h))
 
-proc isOverridable*(self: QWebEngineCertificateError, ): bool =
+proc isOverridable*(self: gen_qwebenginecertificateerror_types.QWebEngineCertificateError, ): bool =
 
   fcQWebEngineCertificateError_isOverridable(self.h)
 
-proc description*(self: QWebEngineCertificateError, ): string =
+proc description*(self: gen_qwebenginecertificateerror_types.QWebEngineCertificateError, ): string =
 
   let v_ms = fcQWebEngineCertificateError_description(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc deferX*(self: QWebEngineCertificateError, ): void =
+proc deferX*(self: gen_qwebenginecertificateerror_types.QWebEngineCertificateError, ): void =
 
   fcQWebEngineCertificateError_deferX(self.h)
 
-proc rejectCertificate*(self: QWebEngineCertificateError, ): void =
+proc rejectCertificate*(self: gen_qwebenginecertificateerror_types.QWebEngineCertificateError, ): void =
 
   fcQWebEngineCertificateError_rejectCertificate(self.h)
 
-proc acceptCertificate*(self: QWebEngineCertificateError, ): void =
+proc acceptCertificate*(self: gen_qwebenginecertificateerror_types.QWebEngineCertificateError, ): void =
 
   fcQWebEngineCertificateError_acceptCertificate(self.h)
 
-proc certificateChain*(self: QWebEngineCertificateError, ): seq[gen_qsslcertificate.QSslCertificate] =
+proc certificateChain*(self: gen_qwebenginecertificateerror_types.QWebEngineCertificateError, ): seq[gen_qsslcertificate.QSslCertificate] =
 
   var v_ma = fcQWebEngineCertificateError_certificateChain(self.h)
   var vx_ret = newSeq[gen_qsslcertificate.QSslCertificate](int(v_ma.len))
@@ -134,7 +132,7 @@ proc certificateChain*(self: QWebEngineCertificateError, ): seq[gen_qsslcertific
     vx_ret[i] = gen_qsslcertificate.QSslCertificate(h: v_outCast[i])
   vx_ret
 
-proc staticMetaObject*(_: type QWebEngineCertificateError): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qwebenginecertificateerror_types.QWebEngineCertificateError): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQWebEngineCertificateError_staticMetaObject())
-proc delete*(self: QWebEngineCertificateError) =
+proc delete*(self: gen_qwebenginecertificateerror_types.QWebEngineCertificateError) =
   fcQWebEngineCertificateError_delete(self.h)

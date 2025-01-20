@@ -64,92 +64,82 @@ proc fcQTestQTouchEventWidgetSequence_override_virtual_commit(self: pointer, slo
 proc fcQTestQTouchEventWidgetSequence_delete(self: pointer) {.importc: "QTest__QTouchEventWidgetSequence_delete".}
 
 
-func init*(T: type QTestQTouchEventWidgetSequence, h: ptr cQTestQTouchEventWidgetSequence): QTestQTouchEventWidgetSequence =
+func init*(T: type gen_qtestsupport_widgets_types.QTestQTouchEventWidgetSequence, h: ptr cQTestQTouchEventWidgetSequence): gen_qtestsupport_widgets_types.QTestQTouchEventWidgetSequence =
   T(h: h)
-proc create*(T: type QTestQTouchEventWidgetSequence, param1: QTestQTouchEventWidgetSequence): QTestQTouchEventWidgetSequence =
+proc create*(T: type gen_qtestsupport_widgets_types.QTestQTouchEventWidgetSequence, param1: gen_qtestsupport_widgets_types.QTestQTouchEventWidgetSequence): gen_qtestsupport_widgets_types.QTestQTouchEventWidgetSequence =
 
-  QTestQTouchEventWidgetSequence.init(fcQTestQTouchEventWidgetSequence_new(param1.h))
-proc press*(self: QTestQTouchEventWidgetSequence, touchId: cint, pt: gen_qpoint.QPoint): QTestQTouchEventWidgetSequence =
+  gen_qtestsupport_widgets_types.QTestQTouchEventWidgetSequence.init(fcQTestQTouchEventWidgetSequence_new(param1.h))
+proc press*(self: gen_qtestsupport_widgets_types.QTestQTouchEventWidgetSequence, touchId: cint, pt: gen_qpoint.QPoint): gen_qtestsupport_widgets_types.QTestQTouchEventWidgetSequence =
 
-  QTestQTouchEventWidgetSequence(h: fcQTestQTouchEventWidgetSequence_press(self.h, touchId, pt.h))
+  gen_qtestsupport_widgets_types.QTestQTouchEventWidgetSequence(h: fcQTestQTouchEventWidgetSequence_press(self.h, touchId, pt.h))
 
-proc move*(self: QTestQTouchEventWidgetSequence, touchId: cint, pt: gen_qpoint.QPoint): QTestQTouchEventWidgetSequence =
+proc move*(self: gen_qtestsupport_widgets_types.QTestQTouchEventWidgetSequence, touchId: cint, pt: gen_qpoint.QPoint): gen_qtestsupport_widgets_types.QTestQTouchEventWidgetSequence =
 
-  QTestQTouchEventWidgetSequence(h: fcQTestQTouchEventWidgetSequence_move(self.h, touchId, pt.h))
+  gen_qtestsupport_widgets_types.QTestQTouchEventWidgetSequence(h: fcQTestQTouchEventWidgetSequence_move(self.h, touchId, pt.h))
 
-proc release*(self: QTestQTouchEventWidgetSequence, touchId: cint, pt: gen_qpoint.QPoint): QTestQTouchEventWidgetSequence =
+proc release*(self: gen_qtestsupport_widgets_types.QTestQTouchEventWidgetSequence, touchId: cint, pt: gen_qpoint.QPoint): gen_qtestsupport_widgets_types.QTestQTouchEventWidgetSequence =
 
-  QTestQTouchEventWidgetSequence(h: fcQTestQTouchEventWidgetSequence_release(self.h, touchId, pt.h))
+  gen_qtestsupport_widgets_types.QTestQTouchEventWidgetSequence(h: fcQTestQTouchEventWidgetSequence_release(self.h, touchId, pt.h))
 
-proc stationary*(self: QTestQTouchEventWidgetSequence, touchId: cint): QTestQTouchEventWidgetSequence =
+proc stationary*(self: gen_qtestsupport_widgets_types.QTestQTouchEventWidgetSequence, touchId: cint): gen_qtestsupport_widgets_types.QTestQTouchEventWidgetSequence =
 
-  QTestQTouchEventWidgetSequence(h: fcQTestQTouchEventWidgetSequence_stationary(self.h, touchId))
+  gen_qtestsupport_widgets_types.QTestQTouchEventWidgetSequence(h: fcQTestQTouchEventWidgetSequence_stationary(self.h, touchId))
 
-proc commit*(self: QTestQTouchEventWidgetSequence, processEvents: bool): bool =
+proc commit*(self: gen_qtestsupport_widgets_types.QTestQTouchEventWidgetSequence, processEvents: bool): bool =
 
   fcQTestQTouchEventWidgetSequence_commit(self.h, processEvents)
 
-proc press3*(self: QTestQTouchEventWidgetSequence, touchId: cint, pt: gen_qpoint.QPoint, widget: gen_qwidget.QWidget): QTestQTouchEventWidgetSequence =
+proc press3*(self: gen_qtestsupport_widgets_types.QTestQTouchEventWidgetSequence, touchId: cint, pt: gen_qpoint.QPoint, widget: gen_qwidget.QWidget): gen_qtestsupport_widgets_types.QTestQTouchEventWidgetSequence =
 
-  QTestQTouchEventWidgetSequence(h: fcQTestQTouchEventWidgetSequence_press3(self.h, touchId, pt.h, widget.h))
+  gen_qtestsupport_widgets_types.QTestQTouchEventWidgetSequence(h: fcQTestQTouchEventWidgetSequence_press3(self.h, touchId, pt.h, widget.h))
 
-proc move3*(self: QTestQTouchEventWidgetSequence, touchId: cint, pt: gen_qpoint.QPoint, widget: gen_qwidget.QWidget): QTestQTouchEventWidgetSequence =
+proc move3*(self: gen_qtestsupport_widgets_types.QTestQTouchEventWidgetSequence, touchId: cint, pt: gen_qpoint.QPoint, widget: gen_qwidget.QWidget): gen_qtestsupport_widgets_types.QTestQTouchEventWidgetSequence =
 
-  QTestQTouchEventWidgetSequence(h: fcQTestQTouchEventWidgetSequence_move3(self.h, touchId, pt.h, widget.h))
+  gen_qtestsupport_widgets_types.QTestQTouchEventWidgetSequence(h: fcQTestQTouchEventWidgetSequence_move3(self.h, touchId, pt.h, widget.h))
 
-proc release3*(self: QTestQTouchEventWidgetSequence, touchId: cint, pt: gen_qpoint.QPoint, widget: gen_qwidget.QWidget): QTestQTouchEventWidgetSequence =
+proc release3*(self: gen_qtestsupport_widgets_types.QTestQTouchEventWidgetSequence, touchId: cint, pt: gen_qpoint.QPoint, widget: gen_qwidget.QWidget): gen_qtestsupport_widgets_types.QTestQTouchEventWidgetSequence =
 
-  QTestQTouchEventWidgetSequence(h: fcQTestQTouchEventWidgetSequence_release3(self.h, touchId, pt.h, widget.h))
+  gen_qtestsupport_widgets_types.QTestQTouchEventWidgetSequence(h: fcQTestQTouchEventWidgetSequence_release3(self.h, touchId, pt.h, widget.h))
 
-proc callVirtualBase_stationary(self: QTestQTouchEventWidgetSequence, touchId: cint): QTestQTouchEventWidgetSequence =
+proc QTestQTouchEventWidgetSequencestationary*(self: gen_qtestsupport_widgets_types.QTestQTouchEventWidgetSequence, touchId: cint): gen_qtestsupport_widgets_types.QTestQTouchEventWidgetSequence =
 
+  gen_qtestsupport_widgets_types.QTestQTouchEventWidgetSequence(h: fQTest__QTouchEventWidgetSequence_virtualbase_stationary(self.h, touchId))
 
-  QTestQTouchEventWidgetSequence(h: fQTest__QTouchEventWidgetSequence_virtualbase_stationary(self.h, touchId))
-
-type QTestQTouchEventWidgetSequencestationaryBase* = proc(touchId: cint): QTestQTouchEventWidgetSequence
-proc onstationary*(self: QTestQTouchEventWidgetSequence, slot: proc(super: QTestQTouchEventWidgetSequencestationaryBase, touchId: cint): QTestQTouchEventWidgetSequence) =
+type QTestQTouchEventWidgetSequencestationaryProc* = proc(touchId: cint): gen_qtestsupport_widgets_types.QTestQTouchEventWidgetSequence
+proc onstationary*(self: gen_qtestsupport_widgets_types.QTestQTouchEventWidgetSequence, slot: QTestQTouchEventWidgetSequencestationaryProc) =
   # TODO check subclass
-  type Cb = proc(super: QTestQTouchEventWidgetSequencestationaryBase, touchId: cint): QTestQTouchEventWidgetSequence
-  var tmp = new Cb
+  var tmp = new QTestQTouchEventWidgetSequencestationaryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTestQTouchEventWidgetSequence_override_virtual_stationary(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTest__QTouchEventWidgetSequence_stationary(self: ptr cQTestQTouchEventWidgetSequence, slot: int, touchId: cint): pointer {.exportc: "miqt_exec_callback_QTest__QTouchEventWidgetSequence_stationary ".} =
-  type Cb = proc(super: QTestQTouchEventWidgetSequencestationaryBase, touchId: cint): QTestQTouchEventWidgetSequence
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(touchId: cint): auto =
-    callVirtualBase_stationary(QTestQTouchEventWidgetSequence(h: self), touchId)
+  var nimfunc = cast[ptr QTestQTouchEventWidgetSequencestationaryProc](cast[pointer](slot))
   let slotval1 = touchId
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_commit(self: QTestQTouchEventWidgetSequence, processEvents: bool): bool =
-
+proc QTestQTouchEventWidgetSequencecommit*(self: gen_qtestsupport_widgets_types.QTestQTouchEventWidgetSequence, processEvents: bool): bool =
 
   fQTest__QTouchEventWidgetSequence_virtualbase_commit(self.h, processEvents)
 
-type QTestQTouchEventWidgetSequencecommitBase* = proc(processEvents: bool): bool
-proc oncommit*(self: QTestQTouchEventWidgetSequence, slot: proc(super: QTestQTouchEventWidgetSequencecommitBase, processEvents: bool): bool) =
+type QTestQTouchEventWidgetSequencecommitProc* = proc(processEvents: bool): bool
+proc oncommit*(self: gen_qtestsupport_widgets_types.QTestQTouchEventWidgetSequence, slot: QTestQTouchEventWidgetSequencecommitProc) =
   # TODO check subclass
-  type Cb = proc(super: QTestQTouchEventWidgetSequencecommitBase, processEvents: bool): bool
-  var tmp = new Cb
+  var tmp = new QTestQTouchEventWidgetSequencecommitProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTestQTouchEventWidgetSequence_override_virtual_commit(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTest__QTouchEventWidgetSequence_commit(self: ptr cQTestQTouchEventWidgetSequence, slot: int, processEvents: bool): bool {.exportc: "miqt_exec_callback_QTest__QTouchEventWidgetSequence_commit ".} =
-  type Cb = proc(super: QTestQTouchEventWidgetSequencecommitBase, processEvents: bool): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(processEvents: bool): auto =
-    callVirtualBase_commit(QTestQTouchEventWidgetSequence(h: self), processEvents)
+  var nimfunc = cast[ptr QTestQTouchEventWidgetSequencecommitProc](cast[pointer](slot))
   let slotval1 = processEvents
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc delete*(self: QTestQTouchEventWidgetSequence) =
+proc delete*(self: gen_qtestsupport_widgets_types.QTestQTouchEventWidgetSequence) =
   fcQTestQTouchEventWidgetSequence_delete(self.h)

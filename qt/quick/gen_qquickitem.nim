@@ -34,44 +34,38 @@ const cflags = gorge("pkg-config -cflags Qt5Quick")
 {.compile("gen_qquickitem.cpp", cflags).}
 
 
-type QQuickItemFlag* = cint
-const
-  QQuickItemItemClipsChildrenToShape* = 1
-  QQuickItemItemAcceptsInputMethod* = 2
-  QQuickItemItemIsFocusScope* = 4
-  QQuickItemItemHasContents* = 8
-  QQuickItemItemAcceptsDrops* = 16
+type QQuickItemFlagEnum* = distinct cint
+template ItemClipsChildrenToShape*(_: type QQuickItemFlagEnum): untyped = 1
+template ItemAcceptsInputMethod*(_: type QQuickItemFlagEnum): untyped = 2
+template ItemIsFocusScope*(_: type QQuickItemFlagEnum): untyped = 4
+template ItemHasContents*(_: type QQuickItemFlagEnum): untyped = 8
+template ItemAcceptsDrops*(_: type QQuickItemFlagEnum): untyped = 16
 
 
-
-type QQuickItemItemChange* = cint
-const
-  QQuickItemItemChildAddedChange* = 0
-  QQuickItemItemChildRemovedChange* = 1
-  QQuickItemItemSceneChange* = 2
-  QQuickItemItemVisibleHasChanged* = 3
-  QQuickItemItemParentHasChanged* = 4
-  QQuickItemItemOpacityHasChanged* = 5
-  QQuickItemItemActiveFocusHasChanged* = 6
-  QQuickItemItemRotationHasChanged* = 7
-  QQuickItemItemAntialiasingHasChanged* = 8
-  QQuickItemItemDevicePixelRatioHasChanged* = 9
-  QQuickItemItemEnabledHasChanged* = 10
+type QQuickItemItemChangeEnum* = distinct cint
+template ItemChildAddedChange*(_: type QQuickItemItemChangeEnum): untyped = 0
+template ItemChildRemovedChange*(_: type QQuickItemItemChangeEnum): untyped = 1
+template ItemSceneChange*(_: type QQuickItemItemChangeEnum): untyped = 2
+template ItemVisibleHasChanged*(_: type QQuickItemItemChangeEnum): untyped = 3
+template ItemParentHasChanged*(_: type QQuickItemItemChangeEnum): untyped = 4
+template ItemOpacityHasChanged*(_: type QQuickItemItemChangeEnum): untyped = 5
+template ItemActiveFocusHasChanged*(_: type QQuickItemItemChangeEnum): untyped = 6
+template ItemRotationHasChanged*(_: type QQuickItemItemChangeEnum): untyped = 7
+template ItemAntialiasingHasChanged*(_: type QQuickItemItemChangeEnum): untyped = 8
+template ItemDevicePixelRatioHasChanged*(_: type QQuickItemItemChangeEnum): untyped = 9
+template ItemEnabledHasChanged*(_: type QQuickItemItemChangeEnum): untyped = 10
 
 
-
-type QQuickItemTransformOrigin* = cint
-const
-  QQuickItemTopLeft* = 0
-  QQuickItemTop* = 1
-  QQuickItemTopRight* = 2
-  QQuickItemLeft* = 3
-  QQuickItemCenter* = 4
-  QQuickItemRight* = 5
-  QQuickItemBottomLeft* = 6
-  QQuickItemBottom* = 7
-  QQuickItemBottomRight* = 8
-
+type QQuickItemTransformOriginEnum* = distinct cint
+template TopLeft*(_: type QQuickItemTransformOriginEnum): untyped = 0
+template Top*(_: type QQuickItemTransformOriginEnum): untyped = 1
+template TopRight*(_: type QQuickItemTransformOriginEnum): untyped = 2
+template Left*(_: type QQuickItemTransformOriginEnum): untyped = 3
+template Center*(_: type QQuickItemTransformOriginEnum): untyped = 4
+template Right*(_: type QQuickItemTransformOriginEnum): untyped = 5
+template BottomLeft*(_: type QQuickItemTransformOriginEnum): untyped = 6
+template Bottom*(_: type QQuickItemTransformOriginEnum): untyped = 7
+template BottomRight*(_: type QQuickItemTransformOriginEnum): untyped = 8
 
 
 import gen_qquickitem_types
@@ -84,7 +78,6 @@ import
   gen_qjsvalue,
   gen_qmatrix4x4,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpoint,
@@ -102,7 +95,6 @@ export
   gen_qjsvalue,
   gen_qmatrix4x4,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpoint,
@@ -434,716 +426,664 @@ proc fcQQuickItemItemChangeData_delete(self: pointer) {.importc: "QQuickItem__It
 proc fcQQuickItemUpdatePaintNodeData_delete(self: pointer) {.importc: "QQuickItem__UpdatePaintNodeData_delete".}
 
 
-func init*(T: type QQuickTransform, h: ptr cQQuickTransform): QQuickTransform =
+func init*(T: type gen_qquickitem_types.QQuickTransform, h: ptr cQQuickTransform): gen_qquickitem_types.QQuickTransform =
   T(h: h)
-proc create*(T: type QQuickTransform, ): QQuickTransform =
+proc create*(T: type gen_qquickitem_types.QQuickTransform, ): gen_qquickitem_types.QQuickTransform =
 
-  QQuickTransform.init(fcQQuickTransform_new())
-proc create*(T: type QQuickTransform, parent: gen_qobject.QObject): QQuickTransform =
+  gen_qquickitem_types.QQuickTransform.init(fcQQuickTransform_new())
+proc create*(T: type gen_qquickitem_types.QQuickTransform, parent: gen_qobject.QObject): gen_qquickitem_types.QQuickTransform =
 
-  QQuickTransform.init(fcQQuickTransform_new2(parent.h))
-proc metaObject*(self: QQuickTransform, ): gen_qobjectdefs.QMetaObject =
+  gen_qquickitem_types.QQuickTransform.init(fcQQuickTransform_new2(parent.h))
+proc metaObject*(self: gen_qquickitem_types.QQuickTransform, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQQuickTransform_metaObject(self.h))
 
-proc metacast*(self: QQuickTransform, param1: cstring): pointer =
+proc metacast*(self: gen_qquickitem_types.QQuickTransform, param1: cstring): pointer =
 
   fcQQuickTransform_metacast(self.h, param1)
 
-proc metacall*(self: QQuickTransform, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qquickitem_types.QQuickTransform, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQQuickTransform_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QQuickTransform, s: cstring): string =
+proc tr*(_: type gen_qquickitem_types.QQuickTransform, s: cstring): string =
 
   let v_ms = fcQQuickTransform_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QQuickTransform, s: cstring): string =
+proc trUtf8*(_: type gen_qquickitem_types.QQuickTransform, s: cstring): string =
 
   let v_ms = fcQQuickTransform_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc appendToItem*(self: QQuickTransform, param1: QQuickItem): void =
+proc appendToItem*(self: gen_qquickitem_types.QQuickTransform, param1: gen_qquickitem_types.QQuickItem): void =
 
   fcQQuickTransform_appendToItem(self.h, param1.h)
 
-proc prependToItem*(self: QQuickTransform, param1: QQuickItem): void =
+proc prependToItem*(self: gen_qquickitem_types.QQuickTransform, param1: gen_qquickitem_types.QQuickItem): void =
 
   fcQQuickTransform_prependToItem(self.h, param1.h)
 
-proc applyTo*(self: QQuickTransform, matrix: gen_qmatrix4x4.QMatrix4x4): void =
+proc applyTo*(self: gen_qquickitem_types.QQuickTransform, matrix: gen_qmatrix4x4.QMatrix4x4): void =
 
   fcQQuickTransform_applyTo(self.h, matrix.h)
 
-proc tr2*(_: type QQuickTransform, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qquickitem_types.QQuickTransform, s: cstring, c: cstring): string =
 
   let v_ms = fcQQuickTransform_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QQuickTransform, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qquickitem_types.QQuickTransform, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQQuickTransform_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QQuickTransform, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qquickitem_types.QQuickTransform, s: cstring, c: cstring): string =
 
   let v_ms = fcQQuickTransform_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QQuickTransform, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qquickitem_types.QQuickTransform, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQQuickTransform_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QQuickTransform, ): gen_qobjectdefs.QMetaObject =
-
+proc QQuickTransformmetaObject*(self: gen_qquickitem_types.QQuickTransform, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQQuickTransform_virtualbase_metaObject(self.h))
 
-type QQuickTransformmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QQuickTransform, slot: proc(super: QQuickTransformmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QQuickTransformmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qquickitem_types.QQuickTransform, slot: QQuickTransformmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickTransformmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QQuickTransformmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickTransform_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickTransform_metaObject(self: ptr cQQuickTransform, slot: int): pointer {.exportc: "miqt_exec_callback_QQuickTransform_metaObject ".} =
-  type Cb = proc(super: QQuickTransformmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QQuickTransform(h: self), )
+  var nimfunc = cast[ptr QQuickTransformmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QQuickTransform, param1: cstring): pointer =
-
+proc QQuickTransformmetacast*(self: gen_qquickitem_types.QQuickTransform, param1: cstring): pointer =
 
   fQQuickTransform_virtualbase_metacast(self.h, param1)
 
-type QQuickTransformmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QQuickTransform, slot: proc(super: QQuickTransformmetacastBase, param1: cstring): pointer) =
+type QQuickTransformmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qquickitem_types.QQuickTransform, slot: QQuickTransformmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickTransformmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QQuickTransformmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickTransform_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickTransform_metacast(self: ptr cQQuickTransform, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QQuickTransform_metacast ".} =
-  type Cb = proc(super: QQuickTransformmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QQuickTransform(h: self), param1)
+  var nimfunc = cast[ptr QQuickTransformmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QQuickTransform, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QQuickTransformmetacall*(self: gen_qquickitem_types.QQuickTransform, param1: cint, param2: cint, param3: pointer): cint =
 
   fQQuickTransform_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QQuickTransformmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QQuickTransform, slot: proc(super: QQuickTransformmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QQuickTransformmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qquickitem_types.QQuickTransform, slot: QQuickTransformmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickTransformmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QQuickTransformmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickTransform_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickTransform_metacall(self: ptr cQQuickTransform, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QQuickTransform_metacall ".} =
-  type Cb = proc(super: QQuickTransformmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QQuickTransform(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QQuickTransformmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-type QQuickTransformapplyToBase* = proc(matrix: gen_qmatrix4x4.QMatrix4x4): void
-proc onapplyTo*(self: QQuickTransform, slot: proc(matrix: gen_qmatrix4x4.QMatrix4x4): void) =
+type QQuickTransformapplyToProc* = proc(matrix: gen_qmatrix4x4.QMatrix4x4): void
+proc onapplyTo*(self: gen_qquickitem_types.QQuickTransform, slot: QQuickTransformapplyToProc) =
   # TODO check subclass
-  type Cb = proc(matrix: gen_qmatrix4x4.QMatrix4x4): void
-  var tmp = new Cb
+  var tmp = new QQuickTransformapplyToProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickTransform_override_virtual_applyTo(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickTransform_applyTo(self: ptr cQQuickTransform, slot: int, matrix: pointer): void {.exportc: "miqt_exec_callback_QQuickTransform_applyTo ".} =
-  type Cb = proc(matrix: gen_qmatrix4x4.QMatrix4x4): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QQuickTransformapplyToProc](cast[pointer](slot))
   let slotval1 = gen_qmatrix4x4.QMatrix4x4(h: matrix)
 
 
   nimfunc[](slotval1)
-proc callVirtualBase_event(self: QQuickTransform, event: gen_qcoreevent.QEvent): bool =
-
+proc QQuickTransformevent*(self: gen_qquickitem_types.QQuickTransform, event: gen_qcoreevent.QEvent): bool =
 
   fQQuickTransform_virtualbase_event(self.h, event.h)
 
-type QQuickTransformeventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QQuickTransform, slot: proc(super: QQuickTransformeventBase, event: gen_qcoreevent.QEvent): bool) =
+type QQuickTransformeventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qquickitem_types.QQuickTransform, slot: QQuickTransformeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickTransformeventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QQuickTransformeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickTransform_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickTransform_event(self: ptr cQQuickTransform, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QQuickTransform_event ".} =
-  type Cb = proc(super: QQuickTransformeventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QQuickTransform(h: self), event)
+  var nimfunc = cast[ptr QQuickTransformeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QQuickTransform, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QQuickTransformeventFilter*(self: gen_qquickitem_types.QQuickTransform, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQQuickTransform_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QQuickTransformeventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QQuickTransform, slot: proc(super: QQuickTransformeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QQuickTransformeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qquickitem_types.QQuickTransform, slot: QQuickTransformeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickTransformeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QQuickTransformeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickTransform_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickTransform_eventFilter(self: ptr cQQuickTransform, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QQuickTransform_eventFilter ".} =
-  type Cb = proc(super: QQuickTransformeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QQuickTransform(h: self), watched, event)
+  var nimfunc = cast[ptr QQuickTransformeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QQuickTransform, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QQuickTransformtimerEvent*(self: gen_qquickitem_types.QQuickTransform, event: gen_qcoreevent.QTimerEvent): void =
 
   fQQuickTransform_virtualbase_timerEvent(self.h, event.h)
 
-type QQuickTransformtimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QQuickTransform, slot: proc(super: QQuickTransformtimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QQuickTransformtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qquickitem_types.QQuickTransform, slot: QQuickTransformtimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickTransformtimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QQuickTransformtimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickTransform_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickTransform_timerEvent(self: ptr cQQuickTransform, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QQuickTransform_timerEvent ".} =
-  type Cb = proc(super: QQuickTransformtimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QQuickTransform(h: self), event)
+  var nimfunc = cast[ptr QQuickTransformtimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QQuickTransform, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QQuickTransformchildEvent*(self: gen_qquickitem_types.QQuickTransform, event: gen_qcoreevent.QChildEvent): void =
 
   fQQuickTransform_virtualbase_childEvent(self.h, event.h)
 
-type QQuickTransformchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QQuickTransform, slot: proc(super: QQuickTransformchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QQuickTransformchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qquickitem_types.QQuickTransform, slot: QQuickTransformchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickTransformchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QQuickTransformchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickTransform_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickTransform_childEvent(self: ptr cQQuickTransform, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QQuickTransform_childEvent ".} =
-  type Cb = proc(super: QQuickTransformchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QQuickTransform(h: self), event)
+  var nimfunc = cast[ptr QQuickTransformchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QQuickTransform, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QQuickTransformcustomEvent*(self: gen_qquickitem_types.QQuickTransform, event: gen_qcoreevent.QEvent): void =
 
   fQQuickTransform_virtualbase_customEvent(self.h, event.h)
 
-type QQuickTransformcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QQuickTransform, slot: proc(super: QQuickTransformcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QQuickTransformcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qquickitem_types.QQuickTransform, slot: QQuickTransformcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickTransformcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QQuickTransformcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickTransform_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickTransform_customEvent(self: ptr cQQuickTransform, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QQuickTransform_customEvent ".} =
-  type Cb = proc(super: QQuickTransformcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QQuickTransform(h: self), event)
+  var nimfunc = cast[ptr QQuickTransformcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QQuickTransform, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QQuickTransformconnectNotify*(self: gen_qquickitem_types.QQuickTransform, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQQuickTransform_virtualbase_connectNotify(self.h, signal.h)
 
-type QQuickTransformconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QQuickTransform, slot: proc(super: QQuickTransformconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QQuickTransformconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qquickitem_types.QQuickTransform, slot: QQuickTransformconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickTransformconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QQuickTransformconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickTransform_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickTransform_connectNotify(self: ptr cQQuickTransform, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QQuickTransform_connectNotify ".} =
-  type Cb = proc(super: QQuickTransformconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QQuickTransform(h: self), signal)
+  var nimfunc = cast[ptr QQuickTransformconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QQuickTransform, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QQuickTransformdisconnectNotify*(self: gen_qquickitem_types.QQuickTransform, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQQuickTransform_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QQuickTransformdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QQuickTransform, slot: proc(super: QQuickTransformdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QQuickTransformdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qquickitem_types.QQuickTransform, slot: QQuickTransformdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickTransformdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QQuickTransformdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickTransform_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickTransform_disconnectNotify(self: ptr cQQuickTransform, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QQuickTransform_disconnectNotify ".} =
-  type Cb = proc(super: QQuickTransformdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QQuickTransform(h: self), signal)
+  var nimfunc = cast[ptr QQuickTransformdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QQuickTransform): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qquickitem_types.QQuickTransform): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQQuickTransform_staticMetaObject())
-proc delete*(self: QQuickTransform) =
+proc delete*(self: gen_qquickitem_types.QQuickTransform) =
   fcQQuickTransform_delete(self.h)
 
-func init*(T: type QQuickItem, h: ptr cQQuickItem): QQuickItem =
+func init*(T: type gen_qquickitem_types.QQuickItem, h: ptr cQQuickItem): gen_qquickitem_types.QQuickItem =
   T(h: h)
-proc create*(T: type QQuickItem, ): QQuickItem =
+proc create*(T: type gen_qquickitem_types.QQuickItem, ): gen_qquickitem_types.QQuickItem =
 
-  QQuickItem.init(fcQQuickItem_new())
-proc create*(T: type QQuickItem, parent: QQuickItem): QQuickItem =
+  gen_qquickitem_types.QQuickItem.init(fcQQuickItem_new())
+proc create*(T: type gen_qquickitem_types.QQuickItem, parent: gen_qquickitem_types.QQuickItem): gen_qquickitem_types.QQuickItem =
 
-  QQuickItem.init(fcQQuickItem_new2(parent.h))
-proc metaObject*(self: QQuickItem, ): gen_qobjectdefs.QMetaObject =
+  gen_qquickitem_types.QQuickItem.init(fcQQuickItem_new2(parent.h))
+proc metaObject*(self: gen_qquickitem_types.QQuickItem, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQQuickItem_metaObject(self.h))
 
-proc metacast*(self: QQuickItem, param1: cstring): pointer =
+proc metacast*(self: gen_qquickitem_types.QQuickItem, param1: cstring): pointer =
 
   fcQQuickItem_metacast(self.h, param1)
 
-proc metacall*(self: QQuickItem, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qquickitem_types.QQuickItem, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQQuickItem_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QQuickItem, s: cstring): string =
+proc tr*(_: type gen_qquickitem_types.QQuickItem, s: cstring): string =
 
   let v_ms = fcQQuickItem_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QQuickItem, s: cstring): string =
+proc trUtf8*(_: type gen_qquickitem_types.QQuickItem, s: cstring): string =
 
   let v_ms = fcQQuickItem_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc window*(self: QQuickItem, ): gen_qquickwindow.QQuickWindow =
+proc window*(self: gen_qquickitem_types.QQuickItem, ): gen_qquickwindow.QQuickWindow =
 
   gen_qquickwindow.QQuickWindow(h: fcQQuickItem_window(self.h))
 
-proc parentItem*(self: QQuickItem, ): QQuickItem =
+proc parentItem*(self: gen_qquickitem_types.QQuickItem, ): gen_qquickitem_types.QQuickItem =
 
-  QQuickItem(h: fcQQuickItem_parentItem(self.h))
+  gen_qquickitem_types.QQuickItem(h: fcQQuickItem_parentItem(self.h))
 
-proc setParentItem*(self: QQuickItem, parent: QQuickItem): void =
+proc setParentItem*(self: gen_qquickitem_types.QQuickItem, parent: gen_qquickitem_types.QQuickItem): void =
 
   fcQQuickItem_setParentItem(self.h, parent.h)
 
-proc stackBefore*(self: QQuickItem, param1: QQuickItem): void =
+proc stackBefore*(self: gen_qquickitem_types.QQuickItem, param1: gen_qquickitem_types.QQuickItem): void =
 
   fcQQuickItem_stackBefore(self.h, param1.h)
 
-proc stackAfter*(self: QQuickItem, param1: QQuickItem): void =
+proc stackAfter*(self: gen_qquickitem_types.QQuickItem, param1: gen_qquickitem_types.QQuickItem): void =
 
   fcQQuickItem_stackAfter(self.h, param1.h)
 
-proc childrenRect*(self: QQuickItem, ): gen_qrect.QRectF =
+proc childrenRect*(self: gen_qquickitem_types.QQuickItem, ): gen_qrect.QRectF =
 
   gen_qrect.QRectF(h: fcQQuickItem_childrenRect(self.h))
 
-proc childItems*(self: QQuickItem, ): seq[QQuickItem] =
+proc childItems*(self: gen_qquickitem_types.QQuickItem, ): seq[gen_qquickitem_types.QQuickItem] =
 
   var v_ma = fcQQuickItem_childItems(self.h)
-  var vx_ret = newSeq[QQuickItem](int(v_ma.len))
+  var vx_ret = newSeq[gen_qquickitem_types.QQuickItem](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
-    vx_ret[i] = QQuickItem(h: v_outCast[i])
+    vx_ret[i] = gen_qquickitem_types.QQuickItem(h: v_outCast[i])
   vx_ret
 
-proc clip*(self: QQuickItem, ): bool =
+proc clip*(self: gen_qquickitem_types.QQuickItem, ): bool =
 
   fcQQuickItem_clip(self.h)
 
-proc setClip*(self: QQuickItem, clip: bool): void =
+proc setClip*(self: gen_qquickitem_types.QQuickItem, clip: bool): void =
 
   fcQQuickItem_setClip(self.h, clip)
 
-proc state*(self: QQuickItem, ): string =
+proc state*(self: gen_qquickitem_types.QQuickItem, ): string =
 
   let v_ms = fcQQuickItem_state(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setState*(self: QQuickItem, state: string): void =
+proc setState*(self: gen_qquickitem_types.QQuickItem, state: string): void =
 
   fcQQuickItem_setState(self.h, struct_miqt_string(data: state, len: csize_t(len(state))))
 
-proc baselineOffset*(self: QQuickItem, ): float64 =
+proc baselineOffset*(self: gen_qquickitem_types.QQuickItem, ): float64 =
 
   fcQQuickItem_baselineOffset(self.h)
 
-proc setBaselineOffset*(self: QQuickItem, baselineOffset: float64): void =
+proc setBaselineOffset*(self: gen_qquickitem_types.QQuickItem, baselineOffset: float64): void =
 
   fcQQuickItem_setBaselineOffset(self.h, baselineOffset)
 
-proc x*(self: QQuickItem, ): float64 =
+proc x*(self: gen_qquickitem_types.QQuickItem, ): float64 =
 
   fcQQuickItem_x(self.h)
 
-proc y*(self: QQuickItem, ): float64 =
+proc y*(self: gen_qquickitem_types.QQuickItem, ): float64 =
 
   fcQQuickItem_y(self.h)
 
-proc position*(self: QQuickItem, ): gen_qpoint.QPointF =
+proc position*(self: gen_qquickitem_types.QQuickItem, ): gen_qpoint.QPointF =
 
   gen_qpoint.QPointF(h: fcQQuickItem_position(self.h))
 
-proc setX*(self: QQuickItem, x: float64): void =
+proc setX*(self: gen_qquickitem_types.QQuickItem, x: float64): void =
 
   fcQQuickItem_setX(self.h, x)
 
-proc setY*(self: QQuickItem, y: float64): void =
+proc setY*(self: gen_qquickitem_types.QQuickItem, y: float64): void =
 
   fcQQuickItem_setY(self.h, y)
 
-proc setPosition*(self: QQuickItem, position: gen_qpoint.QPointF): void =
+proc setPosition*(self: gen_qquickitem_types.QQuickItem, position: gen_qpoint.QPointF): void =
 
   fcQQuickItem_setPosition(self.h, position.h)
 
-proc width*(self: QQuickItem, ): float64 =
+proc width*(self: gen_qquickitem_types.QQuickItem, ): float64 =
 
   fcQQuickItem_width(self.h)
 
-proc setWidth*(self: QQuickItem, width: float64): void =
+proc setWidth*(self: gen_qquickitem_types.QQuickItem, width: float64): void =
 
   fcQQuickItem_setWidth(self.h, width)
 
-proc resetWidth*(self: QQuickItem, ): void =
+proc resetWidth*(self: gen_qquickitem_types.QQuickItem, ): void =
 
   fcQQuickItem_resetWidth(self.h)
 
-proc setImplicitWidth*(self: QQuickItem, implicitWidth: float64): void =
+proc setImplicitWidth*(self: gen_qquickitem_types.QQuickItem, implicitWidth: float64): void =
 
   fcQQuickItem_setImplicitWidth(self.h, implicitWidth)
 
-proc implicitWidth*(self: QQuickItem, ): float64 =
+proc implicitWidth*(self: gen_qquickitem_types.QQuickItem, ): float64 =
 
   fcQQuickItem_implicitWidth(self.h)
 
-proc height*(self: QQuickItem, ): float64 =
+proc height*(self: gen_qquickitem_types.QQuickItem, ): float64 =
 
   fcQQuickItem_height(self.h)
 
-proc setHeight*(self: QQuickItem, height: float64): void =
+proc setHeight*(self: gen_qquickitem_types.QQuickItem, height: float64): void =
 
   fcQQuickItem_setHeight(self.h, height)
 
-proc resetHeight*(self: QQuickItem, ): void =
+proc resetHeight*(self: gen_qquickitem_types.QQuickItem, ): void =
 
   fcQQuickItem_resetHeight(self.h)
 
-proc setImplicitHeight*(self: QQuickItem, implicitHeight: float64): void =
+proc setImplicitHeight*(self: gen_qquickitem_types.QQuickItem, implicitHeight: float64): void =
 
   fcQQuickItem_setImplicitHeight(self.h, implicitHeight)
 
-proc implicitHeight*(self: QQuickItem, ): float64 =
+proc implicitHeight*(self: gen_qquickitem_types.QQuickItem, ): float64 =
 
   fcQQuickItem_implicitHeight(self.h)
 
-proc size*(self: QQuickItem, ): gen_qsize.QSizeF =
+proc size*(self: gen_qquickitem_types.QQuickItem, ): gen_qsize.QSizeF =
 
   gen_qsize.QSizeF(h: fcQQuickItem_size(self.h))
 
-proc setSize*(self: QQuickItem, size: gen_qsize.QSizeF): void =
+proc setSize*(self: gen_qquickitem_types.QQuickItem, size: gen_qsize.QSizeF): void =
 
   fcQQuickItem_setSize(self.h, size.h)
 
-proc transformOrigin*(self: QQuickItem, ): QQuickItemTransformOrigin =
+proc transformOrigin*(self: gen_qquickitem_types.QQuickItem, ): cint =
 
-  QQuickItemTransformOrigin(fcQQuickItem_transformOrigin(self.h))
+  cint(fcQQuickItem_transformOrigin(self.h))
 
-proc setTransformOrigin*(self: QQuickItem, transformOrigin: QQuickItemTransformOrigin): void =
+proc setTransformOrigin*(self: gen_qquickitem_types.QQuickItem, transformOrigin: cint): void =
 
   fcQQuickItem_setTransformOrigin(self.h, cint(transformOrigin))
 
-proc transformOriginPoint*(self: QQuickItem, ): gen_qpoint.QPointF =
+proc transformOriginPoint*(self: gen_qquickitem_types.QQuickItem, ): gen_qpoint.QPointF =
 
   gen_qpoint.QPointF(h: fcQQuickItem_transformOriginPoint(self.h))
 
-proc setTransformOriginPoint*(self: QQuickItem, transformOriginPoint: gen_qpoint.QPointF): void =
+proc setTransformOriginPoint*(self: gen_qquickitem_types.QQuickItem, transformOriginPoint: gen_qpoint.QPointF): void =
 
   fcQQuickItem_setTransformOriginPoint(self.h, transformOriginPoint.h)
 
-proc z*(self: QQuickItem, ): float64 =
+proc z*(self: gen_qquickitem_types.QQuickItem, ): float64 =
 
   fcQQuickItem_z(self.h)
 
-proc setZ*(self: QQuickItem, z: float64): void =
+proc setZ*(self: gen_qquickitem_types.QQuickItem, z: float64): void =
 
   fcQQuickItem_setZ(self.h, z)
 
-proc rotation*(self: QQuickItem, ): float64 =
+proc rotation*(self: gen_qquickitem_types.QQuickItem, ): float64 =
 
   fcQQuickItem_rotation(self.h)
 
-proc setRotation*(self: QQuickItem, rotation: float64): void =
+proc setRotation*(self: gen_qquickitem_types.QQuickItem, rotation: float64): void =
 
   fcQQuickItem_setRotation(self.h, rotation)
 
-proc scale*(self: QQuickItem, ): float64 =
+proc scale*(self: gen_qquickitem_types.QQuickItem, ): float64 =
 
   fcQQuickItem_scale(self.h)
 
-proc setScale*(self: QQuickItem, scale: float64): void =
+proc setScale*(self: gen_qquickitem_types.QQuickItem, scale: float64): void =
 
   fcQQuickItem_setScale(self.h, scale)
 
-proc opacity*(self: QQuickItem, ): float64 =
+proc opacity*(self: gen_qquickitem_types.QQuickItem, ): float64 =
 
   fcQQuickItem_opacity(self.h)
 
-proc setOpacity*(self: QQuickItem, opacity: float64): void =
+proc setOpacity*(self: gen_qquickitem_types.QQuickItem, opacity: float64): void =
 
   fcQQuickItem_setOpacity(self.h, opacity)
 
-proc isVisible*(self: QQuickItem, ): bool =
+proc isVisible*(self: gen_qquickitem_types.QQuickItem, ): bool =
 
   fcQQuickItem_isVisible(self.h)
 
-proc setVisible*(self: QQuickItem, visible: bool): void =
+proc setVisible*(self: gen_qquickitem_types.QQuickItem, visible: bool): void =
 
   fcQQuickItem_setVisible(self.h, visible)
 
-proc isEnabled*(self: QQuickItem, ): bool =
+proc isEnabled*(self: gen_qquickitem_types.QQuickItem, ): bool =
 
   fcQQuickItem_isEnabled(self.h)
 
-proc setEnabled*(self: QQuickItem, enabled: bool): void =
+proc setEnabled*(self: gen_qquickitem_types.QQuickItem, enabled: bool): void =
 
   fcQQuickItem_setEnabled(self.h, enabled)
 
-proc smooth*(self: QQuickItem, ): bool =
+proc smooth*(self: gen_qquickitem_types.QQuickItem, ): bool =
 
   fcQQuickItem_smooth(self.h)
 
-proc setSmooth*(self: QQuickItem, smooth: bool): void =
+proc setSmooth*(self: gen_qquickitem_types.QQuickItem, smooth: bool): void =
 
   fcQQuickItem_setSmooth(self.h, smooth)
 
-proc activeFocusOnTab*(self: QQuickItem, ): bool =
+proc activeFocusOnTab*(self: gen_qquickitem_types.QQuickItem, ): bool =
 
   fcQQuickItem_activeFocusOnTab(self.h)
 
-proc setActiveFocusOnTab*(self: QQuickItem, activeFocusOnTab: bool): void =
+proc setActiveFocusOnTab*(self: gen_qquickitem_types.QQuickItem, activeFocusOnTab: bool): void =
 
   fcQQuickItem_setActiveFocusOnTab(self.h, activeFocusOnTab)
 
-proc antialiasing*(self: QQuickItem, ): bool =
+proc antialiasing*(self: gen_qquickitem_types.QQuickItem, ): bool =
 
   fcQQuickItem_antialiasing(self.h)
 
-proc setAntialiasing*(self: QQuickItem, antialiasing: bool): void =
+proc setAntialiasing*(self: gen_qquickitem_types.QQuickItem, antialiasing: bool): void =
 
   fcQQuickItem_setAntialiasing(self.h, antialiasing)
 
-proc resetAntialiasing*(self: QQuickItem, ): void =
+proc resetAntialiasing*(self: gen_qquickitem_types.QQuickItem, ): void =
 
   fcQQuickItem_resetAntialiasing(self.h)
 
-proc flags*(self: QQuickItem, ): QQuickItemFlag =
+proc flags*(self: gen_qquickitem_types.QQuickItem, ): cint =
 
-  QQuickItemFlag(fcQQuickItem_flags(self.h))
+  cint(fcQQuickItem_flags(self.h))
 
-proc setFlag*(self: QQuickItem, flag: QQuickItemFlag): void =
+proc setFlag*(self: gen_qquickitem_types.QQuickItem, flag: cint): void =
 
   fcQQuickItem_setFlag(self.h, cint(flag))
 
-proc setFlags*(self: QQuickItem, flags: QQuickItemFlag): void =
+proc setFlags*(self: gen_qquickitem_types.QQuickItem, flags: cint): void =
 
   fcQQuickItem_setFlags(self.h, cint(flags))
 
-proc boundingRect*(self: QQuickItem, ): gen_qrect.QRectF =
+proc boundingRect*(self: gen_qquickitem_types.QQuickItem, ): gen_qrect.QRectF =
 
   gen_qrect.QRectF(h: fcQQuickItem_boundingRect(self.h))
 
-proc clipRect*(self: QQuickItem, ): gen_qrect.QRectF =
+proc clipRect*(self: gen_qquickitem_types.QQuickItem, ): gen_qrect.QRectF =
 
   gen_qrect.QRectF(h: fcQQuickItem_clipRect(self.h))
 
-proc hasActiveFocus*(self: QQuickItem, ): bool =
+proc hasActiveFocus*(self: gen_qquickitem_types.QQuickItem, ): bool =
 
   fcQQuickItem_hasActiveFocus(self.h)
 
-proc hasFocus*(self: QQuickItem, ): bool =
+proc hasFocus*(self: gen_qquickitem_types.QQuickItem, ): bool =
 
   fcQQuickItem_hasFocus(self.h)
 
-proc setFocus*(self: QQuickItem, focus: bool): void =
+proc setFocus*(self: gen_qquickitem_types.QQuickItem, focus: bool): void =
 
   fcQQuickItem_setFocus(self.h, focus)
 
-proc setFocus2*(self: QQuickItem, focus: bool, reason: gen_qnamespace.FocusReason): void =
+proc setFocus2*(self: gen_qquickitem_types.QQuickItem, focus: bool, reason: cint): void =
 
   fcQQuickItem_setFocus2(self.h, focus, cint(reason))
 
-proc isFocusScope*(self: QQuickItem, ): bool =
+proc isFocusScope*(self: gen_qquickitem_types.QQuickItem, ): bool =
 
   fcQQuickItem_isFocusScope(self.h)
 
-proc scopedFocusItem*(self: QQuickItem, ): QQuickItem =
+proc scopedFocusItem*(self: gen_qquickitem_types.QQuickItem, ): gen_qquickitem_types.QQuickItem =
 
-  QQuickItem(h: fcQQuickItem_scopedFocusItem(self.h))
+  gen_qquickitem_types.QQuickItem(h: fcQQuickItem_scopedFocusItem(self.h))
 
-proc isAncestorOf*(self: QQuickItem, child: QQuickItem): bool =
+proc isAncestorOf*(self: gen_qquickitem_types.QQuickItem, child: gen_qquickitem_types.QQuickItem): bool =
 
   fcQQuickItem_isAncestorOf(self.h, child.h)
 
-proc acceptedMouseButtons*(self: QQuickItem, ): gen_qnamespace.MouseButton =
+proc acceptedMouseButtons*(self: gen_qquickitem_types.QQuickItem, ): cint =
 
-  gen_qnamespace.MouseButton(fcQQuickItem_acceptedMouseButtons(self.h))
+  cint(fcQQuickItem_acceptedMouseButtons(self.h))
 
-proc setAcceptedMouseButtons*(self: QQuickItem, buttons: gen_qnamespace.MouseButton): void =
+proc setAcceptedMouseButtons*(self: gen_qquickitem_types.QQuickItem, buttons: cint): void =
 
   fcQQuickItem_setAcceptedMouseButtons(self.h, cint(buttons))
 
-proc acceptHoverEvents*(self: QQuickItem, ): bool =
+proc acceptHoverEvents*(self: gen_qquickitem_types.QQuickItem, ): bool =
 
   fcQQuickItem_acceptHoverEvents(self.h)
 
-proc setAcceptHoverEvents*(self: QQuickItem, enabled: bool): void =
+proc setAcceptHoverEvents*(self: gen_qquickitem_types.QQuickItem, enabled: bool): void =
 
   fcQQuickItem_setAcceptHoverEvents(self.h, enabled)
 
-proc acceptTouchEvents*(self: QQuickItem, ): bool =
+proc acceptTouchEvents*(self: gen_qquickitem_types.QQuickItem, ): bool =
 
   fcQQuickItem_acceptTouchEvents(self.h)
 
-proc setAcceptTouchEvents*(self: QQuickItem, accept: bool): void =
+proc setAcceptTouchEvents*(self: gen_qquickitem_types.QQuickItem, accept: bool): void =
 
   fcQQuickItem_setAcceptTouchEvents(self.h, accept)
 
-proc cursor*(self: QQuickItem, ): gen_qcursor.QCursor =
+proc cursor*(self: gen_qquickitem_types.QQuickItem, ): gen_qcursor.QCursor =
 
   gen_qcursor.QCursor(h: fcQQuickItem_cursor(self.h))
 
-proc setCursor*(self: QQuickItem, cursor: gen_qcursor.QCursor): void =
+proc setCursor*(self: gen_qquickitem_types.QQuickItem, cursor: gen_qcursor.QCursor): void =
 
   fcQQuickItem_setCursor(self.h, cursor.h)
 
-proc unsetCursor*(self: QQuickItem, ): void =
+proc unsetCursor*(self: gen_qquickitem_types.QQuickItem, ): void =
 
   fcQQuickItem_unsetCursor(self.h)
 
-proc isUnderMouse*(self: QQuickItem, ): bool =
+proc isUnderMouse*(self: gen_qquickitem_types.QQuickItem, ): bool =
 
   fcQQuickItem_isUnderMouse(self.h)
 
-proc grabMouse*(self: QQuickItem, ): void =
+proc grabMouse*(self: gen_qquickitem_types.QQuickItem, ): void =
 
   fcQQuickItem_grabMouse(self.h)
 
-proc ungrabMouse*(self: QQuickItem, ): void =
+proc ungrabMouse*(self: gen_qquickitem_types.QQuickItem, ): void =
 
   fcQQuickItem_ungrabMouse(self.h)
 
-proc keepMouseGrab*(self: QQuickItem, ): bool =
+proc keepMouseGrab*(self: gen_qquickitem_types.QQuickItem, ): bool =
 
   fcQQuickItem_keepMouseGrab(self.h)
 
-proc setKeepMouseGrab*(self: QQuickItem, keepMouseGrab: bool): void =
+proc setKeepMouseGrab*(self: gen_qquickitem_types.QQuickItem, keepMouseGrab: bool): void =
 
   fcQQuickItem_setKeepMouseGrab(self.h, keepMouseGrab)
 
-proc filtersChildMouseEvents*(self: QQuickItem, ): bool =
+proc filtersChildMouseEvents*(self: gen_qquickitem_types.QQuickItem, ): bool =
 
   fcQQuickItem_filtersChildMouseEvents(self.h)
 
-proc setFiltersChildMouseEvents*(self: QQuickItem, filter: bool): void =
+proc setFiltersChildMouseEvents*(self: gen_qquickitem_types.QQuickItem, filter: bool): void =
 
   fcQQuickItem_setFiltersChildMouseEvents(self.h, filter)
 
-proc grabTouchPoints*(self: QQuickItem, ids: seq[cint]): void =
+proc grabTouchPoints*(self: gen_qquickitem_types.QQuickItem, ids: seq[cint]): void =
 
   var ids_CArray = newSeq[cint](len(ids))
   for i in 0..<len(ids):
@@ -1151,115 +1091,115 @@ proc grabTouchPoints*(self: QQuickItem, ids: seq[cint]): void =
 
   fcQQuickItem_grabTouchPoints(self.h, struct_miqt_array(len: csize_t(len(ids)), data: if len(ids) == 0: nil else: addr(ids_CArray[0])))
 
-proc ungrabTouchPoints*(self: QQuickItem, ): void =
+proc ungrabTouchPoints*(self: gen_qquickitem_types.QQuickItem, ): void =
 
   fcQQuickItem_ungrabTouchPoints(self.h)
 
-proc keepTouchGrab*(self: QQuickItem, ): bool =
+proc keepTouchGrab*(self: gen_qquickitem_types.QQuickItem, ): bool =
 
   fcQQuickItem_keepTouchGrab(self.h)
 
-proc setKeepTouchGrab*(self: QQuickItem, keepTouchGrab: bool): void =
+proc setKeepTouchGrab*(self: gen_qquickitem_types.QQuickItem, keepTouchGrab: bool): void =
 
   fcQQuickItem_setKeepTouchGrab(self.h, keepTouchGrab)
 
-proc grabToImage*(self: QQuickItem, callback: gen_qjsvalue.QJSValue): bool =
+proc grabToImage*(self: gen_qquickitem_types.QQuickItem, callback: gen_qjsvalue.QJSValue): bool =
 
   fcQQuickItem_grabToImage(self.h, callback.h)
 
-proc contains*(self: QQuickItem, point: gen_qpoint.QPointF): bool =
+proc contains*(self: gen_qquickitem_types.QQuickItem, point: gen_qpoint.QPointF): bool =
 
   fcQQuickItem_contains(self.h, point.h)
 
-proc containmentMask*(self: QQuickItem, ): gen_qobject.QObject =
+proc containmentMask*(self: gen_qquickitem_types.QQuickItem, ): gen_qobject.QObject =
 
   gen_qobject.QObject(h: fcQQuickItem_containmentMask(self.h))
 
-proc setContainmentMask*(self: QQuickItem, mask: gen_qobject.QObject): void =
+proc setContainmentMask*(self: gen_qquickitem_types.QQuickItem, mask: gen_qobject.QObject): void =
 
   fcQQuickItem_setContainmentMask(self.h, mask.h)
 
-proc itemTransform*(self: QQuickItem, param1: QQuickItem, param2: ptr bool): gen_qtransform.QTransform =
+proc itemTransform*(self: gen_qquickitem_types.QQuickItem, param1: gen_qquickitem_types.QQuickItem, param2: ptr bool): gen_qtransform.QTransform =
 
   gen_qtransform.QTransform(h: fcQQuickItem_itemTransform(self.h, param1.h, param2))
 
-proc mapToItem*(self: QQuickItem, item: QQuickItem, point: gen_qpoint.QPointF): gen_qpoint.QPointF =
+proc mapToItem*(self: gen_qquickitem_types.QQuickItem, item: gen_qquickitem_types.QQuickItem, point: gen_qpoint.QPointF): gen_qpoint.QPointF =
 
   gen_qpoint.QPointF(h: fcQQuickItem_mapToItem(self.h, item.h, point.h))
 
-proc mapToScene*(self: QQuickItem, point: gen_qpoint.QPointF): gen_qpoint.QPointF =
+proc mapToScene*(self: gen_qquickitem_types.QQuickItem, point: gen_qpoint.QPointF): gen_qpoint.QPointF =
 
   gen_qpoint.QPointF(h: fcQQuickItem_mapToScene(self.h, point.h))
 
-proc mapToGlobal*(self: QQuickItem, point: gen_qpoint.QPointF): gen_qpoint.QPointF =
+proc mapToGlobal*(self: gen_qquickitem_types.QQuickItem, point: gen_qpoint.QPointF): gen_qpoint.QPointF =
 
   gen_qpoint.QPointF(h: fcQQuickItem_mapToGlobal(self.h, point.h))
 
-proc mapRectToItem*(self: QQuickItem, item: QQuickItem, rect: gen_qrect.QRectF): gen_qrect.QRectF =
+proc mapRectToItem*(self: gen_qquickitem_types.QQuickItem, item: gen_qquickitem_types.QQuickItem, rect: gen_qrect.QRectF): gen_qrect.QRectF =
 
   gen_qrect.QRectF(h: fcQQuickItem_mapRectToItem(self.h, item.h, rect.h))
 
-proc mapRectToScene*(self: QQuickItem, rect: gen_qrect.QRectF): gen_qrect.QRectF =
+proc mapRectToScene*(self: gen_qquickitem_types.QQuickItem, rect: gen_qrect.QRectF): gen_qrect.QRectF =
 
   gen_qrect.QRectF(h: fcQQuickItem_mapRectToScene(self.h, rect.h))
 
-proc mapFromItem*(self: QQuickItem, item: QQuickItem, point: gen_qpoint.QPointF): gen_qpoint.QPointF =
+proc mapFromItem*(self: gen_qquickitem_types.QQuickItem, item: gen_qquickitem_types.QQuickItem, point: gen_qpoint.QPointF): gen_qpoint.QPointF =
 
   gen_qpoint.QPointF(h: fcQQuickItem_mapFromItem(self.h, item.h, point.h))
 
-proc mapFromScene*(self: QQuickItem, point: gen_qpoint.QPointF): gen_qpoint.QPointF =
+proc mapFromScene*(self: gen_qquickitem_types.QQuickItem, point: gen_qpoint.QPointF): gen_qpoint.QPointF =
 
   gen_qpoint.QPointF(h: fcQQuickItem_mapFromScene(self.h, point.h))
 
-proc mapFromGlobal*(self: QQuickItem, point: gen_qpoint.QPointF): gen_qpoint.QPointF =
+proc mapFromGlobal*(self: gen_qquickitem_types.QQuickItem, point: gen_qpoint.QPointF): gen_qpoint.QPointF =
 
   gen_qpoint.QPointF(h: fcQQuickItem_mapFromGlobal(self.h, point.h))
 
-proc mapRectFromItem*(self: QQuickItem, item: QQuickItem, rect: gen_qrect.QRectF): gen_qrect.QRectF =
+proc mapRectFromItem*(self: gen_qquickitem_types.QQuickItem, item: gen_qquickitem_types.QQuickItem, rect: gen_qrect.QRectF): gen_qrect.QRectF =
 
   gen_qrect.QRectF(h: fcQQuickItem_mapRectFromItem(self.h, item.h, rect.h))
 
-proc mapRectFromScene*(self: QQuickItem, rect: gen_qrect.QRectF): gen_qrect.QRectF =
+proc mapRectFromScene*(self: gen_qquickitem_types.QQuickItem, rect: gen_qrect.QRectF): gen_qrect.QRectF =
 
   gen_qrect.QRectF(h: fcQQuickItem_mapRectFromScene(self.h, rect.h))
 
-proc polish*(self: QQuickItem, ): void =
+proc polish*(self: gen_qquickitem_types.QQuickItem, ): void =
 
   fcQQuickItem_polish(self.h)
 
-proc forceActiveFocus*(self: QQuickItem, ): void =
+proc forceActiveFocus*(self: gen_qquickitem_types.QQuickItem, ): void =
 
   fcQQuickItem_forceActiveFocus(self.h)
 
-proc forceActiveFocusWithReason*(self: QQuickItem, reason: gen_qnamespace.FocusReason): void =
+proc forceActiveFocusWithReason*(self: gen_qquickitem_types.QQuickItem, reason: cint): void =
 
   fcQQuickItem_forceActiveFocusWithReason(self.h, cint(reason))
 
-proc nextItemInFocusChain*(self: QQuickItem, ): QQuickItem =
+proc nextItemInFocusChain*(self: gen_qquickitem_types.QQuickItem, ): gen_qquickitem_types.QQuickItem =
 
-  QQuickItem(h: fcQQuickItem_nextItemInFocusChain(self.h))
+  gen_qquickitem_types.QQuickItem(h: fcQQuickItem_nextItemInFocusChain(self.h))
 
-proc childAt*(self: QQuickItem, x: float64, y: float64): QQuickItem =
+proc childAt*(self: gen_qquickitem_types.QQuickItem, x: float64, y: float64): gen_qquickitem_types.QQuickItem =
 
-  QQuickItem(h: fcQQuickItem_childAt(self.h, x, y))
+  gen_qquickitem_types.QQuickItem(h: fcQQuickItem_childAt(self.h, x, y))
 
-proc inputMethodQuery*(self: QQuickItem, query: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant =
+proc inputMethodQuery*(self: gen_qquickitem_types.QQuickItem, query: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fcQQuickItem_inputMethodQuery(self.h, cint(query)))
 
-proc isTextureProvider*(self: QQuickItem, ): bool =
+proc isTextureProvider*(self: gen_qquickitem_types.QQuickItem, ): bool =
 
   fcQQuickItem_isTextureProvider(self.h)
 
-proc textureProvider*(self: QQuickItem, ): gen_qsgtextureprovider.QSGTextureProvider =
+proc textureProvider*(self: gen_qquickitem_types.QQuickItem, ): gen_qsgtextureprovider.QSGTextureProvider =
 
   gen_qsgtextureprovider.QSGTextureProvider(h: fcQQuickItem_textureProvider(self.h))
 
-proc update*(self: QQuickItem, ): void =
+proc update*(self: gen_qquickitem_types.QQuickItem, ): void =
 
   fcQQuickItem_update(self.h)
 
-proc childrenRectChanged*(self: QQuickItem, param1: gen_qrect.QRectF): void =
+proc childrenRectChanged*(self: gen_qquickitem_types.QQuickItem, param1: gen_qrect.QRectF): void =
 
   fcQQuickItem_childrenRectChanged(self.h, param1.h)
 
@@ -1271,13 +1211,13 @@ proc miqt_exec_callback_QQuickItem_childrenRectChanged(slot: int, param1: pointe
 
   nimfunc[](slotval1)
 
-proc onchildrenRectChanged*(self: QQuickItem, slot: proc(param1: gen_qrect.QRectF)) =
+proc onchildrenRectChanged*(self: gen_qquickitem_types.QQuickItem, slot: proc(param1: gen_qrect.QRectF)) =
   type Cb = proc(param1: gen_qrect.QRectF)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQQuickItem_connect_childrenRectChanged(self.h, cast[int](addr tmp[]))
-proc baselineOffsetChanged*(self: QQuickItem, param1: float64): void =
+proc baselineOffsetChanged*(self: gen_qquickitem_types.QQuickItem, param1: float64): void =
 
   fcQQuickItem_baselineOffsetChanged(self.h, param1)
 
@@ -1289,13 +1229,13 @@ proc miqt_exec_callback_QQuickItem_baselineOffsetChanged(slot: int, param1: floa
 
   nimfunc[](slotval1)
 
-proc onbaselineOffsetChanged*(self: QQuickItem, slot: proc(param1: float64)) =
+proc onbaselineOffsetChanged*(self: gen_qquickitem_types.QQuickItem, slot: proc(param1: float64)) =
   type Cb = proc(param1: float64)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQQuickItem_connect_baselineOffsetChanged(self.h, cast[int](addr tmp[]))
-proc stateChanged*(self: QQuickItem, param1: string): void =
+proc stateChanged*(self: gen_qquickitem_types.QQuickItem, param1: string): void =
 
   fcQQuickItem_stateChanged(self.h, struct_miqt_string(data: param1, len: csize_t(len(param1))))
 
@@ -1310,13 +1250,13 @@ proc miqt_exec_callback_QQuickItem_stateChanged(slot: int, param1: struct_miqt_s
 
   nimfunc[](slotval1)
 
-proc onstateChanged*(self: QQuickItem, slot: proc(param1: string)) =
+proc onstateChanged*(self: gen_qquickitem_types.QQuickItem, slot: proc(param1: string)) =
   type Cb = proc(param1: string)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQQuickItem_connect_stateChanged(self.h, cast[int](addr tmp[]))
-proc focusChanged*(self: QQuickItem, param1: bool): void =
+proc focusChanged*(self: gen_qquickitem_types.QQuickItem, param1: bool): void =
 
   fcQQuickItem_focusChanged(self.h, param1)
 
@@ -1328,13 +1268,13 @@ proc miqt_exec_callback_QQuickItem_focusChanged(slot: int, param1: bool) {.expor
 
   nimfunc[](slotval1)
 
-proc onfocusChanged*(self: QQuickItem, slot: proc(param1: bool)) =
+proc onfocusChanged*(self: gen_qquickitem_types.QQuickItem, slot: proc(param1: bool)) =
   type Cb = proc(param1: bool)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQQuickItem_connect_focusChanged(self.h, cast[int](addr tmp[]))
-proc activeFocusChanged*(self: QQuickItem, param1: bool): void =
+proc activeFocusChanged*(self: gen_qquickitem_types.QQuickItem, param1: bool): void =
 
   fcQQuickItem_activeFocusChanged(self.h, param1)
 
@@ -1346,13 +1286,13 @@ proc miqt_exec_callback_QQuickItem_activeFocusChanged(slot: int, param1: bool) {
 
   nimfunc[](slotval1)
 
-proc onactiveFocusChanged*(self: QQuickItem, slot: proc(param1: bool)) =
+proc onactiveFocusChanged*(self: gen_qquickitem_types.QQuickItem, slot: proc(param1: bool)) =
   type Cb = proc(param1: bool)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQQuickItem_connect_activeFocusChanged(self.h, cast[int](addr tmp[]))
-proc activeFocusOnTabChanged*(self: QQuickItem, param1: bool): void =
+proc activeFocusOnTabChanged*(self: gen_qquickitem_types.QQuickItem, param1: bool): void =
 
   fcQQuickItem_activeFocusOnTabChanged(self.h, param1)
 
@@ -1364,49 +1304,49 @@ proc miqt_exec_callback_QQuickItem_activeFocusOnTabChanged(slot: int, param1: bo
 
   nimfunc[](slotval1)
 
-proc onactiveFocusOnTabChanged*(self: QQuickItem, slot: proc(param1: bool)) =
+proc onactiveFocusOnTabChanged*(self: gen_qquickitem_types.QQuickItem, slot: proc(param1: bool)) =
   type Cb = proc(param1: bool)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQQuickItem_connect_activeFocusOnTabChanged(self.h, cast[int](addr tmp[]))
-proc parentChanged*(self: QQuickItem, param1: QQuickItem): void =
+proc parentChanged*(self: gen_qquickitem_types.QQuickItem, param1: gen_qquickitem_types.QQuickItem): void =
 
   fcQQuickItem_parentChanged(self.h, param1.h)
 
 proc miqt_exec_callback_QQuickItem_parentChanged(slot: int, param1: pointer) {.exportc.} =
-  type Cb = proc(param1: QQuickItem)
+  type Cb = proc(param1: gen_qquickitem_types.QQuickItem)
   let nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = QQuickItem(h: param1)
+  let slotval1 = gen_qquickitem_types.QQuickItem(h: param1)
 
 
   nimfunc[](slotval1)
 
-proc onparentChanged*(self: QQuickItem, slot: proc(param1: QQuickItem)) =
-  type Cb = proc(param1: QQuickItem)
+proc onparentChanged*(self: gen_qquickitem_types.QQuickItem, slot: proc(param1: gen_qquickitem_types.QQuickItem)) =
+  type Cb = proc(param1: gen_qquickitem_types.QQuickItem)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQQuickItem_connect_parentChanged(self.h, cast[int](addr tmp[]))
-proc transformOriginChanged*(self: QQuickItem, param1: QQuickItemTransformOrigin): void =
+proc transformOriginChanged*(self: gen_qquickitem_types.QQuickItem, param1: cint): void =
 
   fcQQuickItem_transformOriginChanged(self.h, cint(param1))
 
 proc miqt_exec_callback_QQuickItem_transformOriginChanged(slot: int, param1: cint) {.exportc.} =
-  type Cb = proc(param1: QQuickItemTransformOrigin)
+  type Cb = proc(param1: cint)
   let nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = QQuickItemTransformOrigin(param1)
+  let slotval1 = cint(param1)
 
 
   nimfunc[](slotval1)
 
-proc ontransformOriginChanged*(self: QQuickItem, slot: proc(param1: QQuickItemTransformOrigin)) =
-  type Cb = proc(param1: QQuickItemTransformOrigin)
+proc ontransformOriginChanged*(self: gen_qquickitem_types.QQuickItem, slot: proc(param1: cint)) =
+  type Cb = proc(param1: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQQuickItem_connect_transformOriginChanged(self.h, cast[int](addr tmp[]))
-proc smoothChanged*(self: QQuickItem, param1: bool): void =
+proc smoothChanged*(self: gen_qquickitem_types.QQuickItem, param1: bool): void =
 
   fcQQuickItem_smoothChanged(self.h, param1)
 
@@ -1418,13 +1358,13 @@ proc miqt_exec_callback_QQuickItem_smoothChanged(slot: int, param1: bool) {.expo
 
   nimfunc[](slotval1)
 
-proc onsmoothChanged*(self: QQuickItem, slot: proc(param1: bool)) =
+proc onsmoothChanged*(self: gen_qquickitem_types.QQuickItem, slot: proc(param1: bool)) =
   type Cb = proc(param1: bool)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQQuickItem_connect_smoothChanged(self.h, cast[int](addr tmp[]))
-proc antialiasingChanged*(self: QQuickItem, param1: bool): void =
+proc antialiasingChanged*(self: gen_qquickitem_types.QQuickItem, param1: bool): void =
 
   fcQQuickItem_antialiasingChanged(self.h, param1)
 
@@ -1436,13 +1376,13 @@ proc miqt_exec_callback_QQuickItem_antialiasingChanged(slot: int, param1: bool) 
 
   nimfunc[](slotval1)
 
-proc onantialiasingChanged*(self: QQuickItem, slot: proc(param1: bool)) =
+proc onantialiasingChanged*(self: gen_qquickitem_types.QQuickItem, slot: proc(param1: bool)) =
   type Cb = proc(param1: bool)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQQuickItem_connect_antialiasingChanged(self.h, cast[int](addr tmp[]))
-proc clipChanged*(self: QQuickItem, param1: bool): void =
+proc clipChanged*(self: gen_qquickitem_types.QQuickItem, param1: bool): void =
 
   fcQQuickItem_clipChanged(self.h, param1)
 
@@ -1454,13 +1394,13 @@ proc miqt_exec_callback_QQuickItem_clipChanged(slot: int, param1: bool) {.export
 
   nimfunc[](slotval1)
 
-proc onclipChanged*(self: QQuickItem, slot: proc(param1: bool)) =
+proc onclipChanged*(self: gen_qquickitem_types.QQuickItem, slot: proc(param1: bool)) =
   type Cb = proc(param1: bool)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQQuickItem_connect_clipChanged(self.h, cast[int](addr tmp[]))
-proc windowChanged*(self: QQuickItem, window: gen_qquickwindow.QQuickWindow): void =
+proc windowChanged*(self: gen_qquickitem_types.QQuickItem, window: gen_qquickwindow.QQuickWindow): void =
 
   fcQQuickItem_windowChanged(self.h, window.h)
 
@@ -1472,13 +1412,13 @@ proc miqt_exec_callback_QQuickItem_windowChanged(slot: int, window: pointer) {.e
 
   nimfunc[](slotval1)
 
-proc onwindowChanged*(self: QQuickItem, slot: proc(window: gen_qquickwindow.QQuickWindow)) =
+proc onwindowChanged*(self: gen_qquickitem_types.QQuickItem, slot: proc(window: gen_qquickwindow.QQuickWindow)) =
   type Cb = proc(window: gen_qquickwindow.QQuickWindow)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQQuickItem_connect_windowChanged(self.h, cast[int](addr tmp[]))
-proc childrenChanged*(self: QQuickItem, ): void =
+proc childrenChanged*(self: gen_qquickitem_types.QQuickItem, ): void =
 
   fcQQuickItem_childrenChanged(self.h)
 
@@ -1488,13 +1428,13 @@ proc miqt_exec_callback_QQuickItem_childrenChanged(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onchildrenChanged*(self: QQuickItem, slot: proc()) =
+proc onchildrenChanged*(self: gen_qquickitem_types.QQuickItem, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQQuickItem_connect_childrenChanged(self.h, cast[int](addr tmp[]))
-proc opacityChanged*(self: QQuickItem, ): void =
+proc opacityChanged*(self: gen_qquickitem_types.QQuickItem, ): void =
 
   fcQQuickItem_opacityChanged(self.h)
 
@@ -1504,13 +1444,13 @@ proc miqt_exec_callback_QQuickItem_opacityChanged(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onopacityChanged*(self: QQuickItem, slot: proc()) =
+proc onopacityChanged*(self: gen_qquickitem_types.QQuickItem, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQQuickItem_connect_opacityChanged(self.h, cast[int](addr tmp[]))
-proc enabledChanged*(self: QQuickItem, ): void =
+proc enabledChanged*(self: gen_qquickitem_types.QQuickItem, ): void =
 
   fcQQuickItem_enabledChanged(self.h)
 
@@ -1520,13 +1460,13 @@ proc miqt_exec_callback_QQuickItem_enabledChanged(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onenabledChanged*(self: QQuickItem, slot: proc()) =
+proc onenabledChanged*(self: gen_qquickitem_types.QQuickItem, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQQuickItem_connect_enabledChanged(self.h, cast[int](addr tmp[]))
-proc visibleChanged*(self: QQuickItem, ): void =
+proc visibleChanged*(self: gen_qquickitem_types.QQuickItem, ): void =
 
   fcQQuickItem_visibleChanged(self.h)
 
@@ -1536,13 +1476,13 @@ proc miqt_exec_callback_QQuickItem_visibleChanged(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onvisibleChanged*(self: QQuickItem, slot: proc()) =
+proc onvisibleChanged*(self: gen_qquickitem_types.QQuickItem, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQQuickItem_connect_visibleChanged(self.h, cast[int](addr tmp[]))
-proc visibleChildrenChanged*(self: QQuickItem, ): void =
+proc visibleChildrenChanged*(self: gen_qquickitem_types.QQuickItem, ): void =
 
   fcQQuickItem_visibleChildrenChanged(self.h)
 
@@ -1552,13 +1492,13 @@ proc miqt_exec_callback_QQuickItem_visibleChildrenChanged(slot: int) {.exportc.}
 
   nimfunc[]()
 
-proc onvisibleChildrenChanged*(self: QQuickItem, slot: proc()) =
+proc onvisibleChildrenChanged*(self: gen_qquickitem_types.QQuickItem, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQQuickItem_connect_visibleChildrenChanged(self.h, cast[int](addr tmp[]))
-proc rotationChanged*(self: QQuickItem, ): void =
+proc rotationChanged*(self: gen_qquickitem_types.QQuickItem, ): void =
 
   fcQQuickItem_rotationChanged(self.h)
 
@@ -1568,13 +1508,13 @@ proc miqt_exec_callback_QQuickItem_rotationChanged(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onrotationChanged*(self: QQuickItem, slot: proc()) =
+proc onrotationChanged*(self: gen_qquickitem_types.QQuickItem, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQQuickItem_connect_rotationChanged(self.h, cast[int](addr tmp[]))
-proc scaleChanged*(self: QQuickItem, ): void =
+proc scaleChanged*(self: gen_qquickitem_types.QQuickItem, ): void =
 
   fcQQuickItem_scaleChanged(self.h)
 
@@ -1584,13 +1524,13 @@ proc miqt_exec_callback_QQuickItem_scaleChanged(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onscaleChanged*(self: QQuickItem, slot: proc()) =
+proc onscaleChanged*(self: gen_qquickitem_types.QQuickItem, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQQuickItem_connect_scaleChanged(self.h, cast[int](addr tmp[]))
-proc xChanged*(self: QQuickItem, ): void =
+proc xChanged*(self: gen_qquickitem_types.QQuickItem, ): void =
 
   fcQQuickItem_xChanged(self.h)
 
@@ -1600,13 +1540,13 @@ proc miqt_exec_callback_QQuickItem_xChanged(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onxChanged*(self: QQuickItem, slot: proc()) =
+proc onxChanged*(self: gen_qquickitem_types.QQuickItem, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQQuickItem_connect_xChanged(self.h, cast[int](addr tmp[]))
-proc yChanged*(self: QQuickItem, ): void =
+proc yChanged*(self: gen_qquickitem_types.QQuickItem, ): void =
 
   fcQQuickItem_yChanged(self.h)
 
@@ -1616,13 +1556,13 @@ proc miqt_exec_callback_QQuickItem_yChanged(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onyChanged*(self: QQuickItem, slot: proc()) =
+proc onyChanged*(self: gen_qquickitem_types.QQuickItem, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQQuickItem_connect_yChanged(self.h, cast[int](addr tmp[]))
-proc widthChanged*(self: QQuickItem, ): void =
+proc widthChanged*(self: gen_qquickitem_types.QQuickItem, ): void =
 
   fcQQuickItem_widthChanged(self.h)
 
@@ -1632,13 +1572,13 @@ proc miqt_exec_callback_QQuickItem_widthChanged(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onwidthChanged*(self: QQuickItem, slot: proc()) =
+proc onwidthChanged*(self: gen_qquickitem_types.QQuickItem, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQQuickItem_connect_widthChanged(self.h, cast[int](addr tmp[]))
-proc heightChanged*(self: QQuickItem, ): void =
+proc heightChanged*(self: gen_qquickitem_types.QQuickItem, ): void =
 
   fcQQuickItem_heightChanged(self.h)
 
@@ -1648,13 +1588,13 @@ proc miqt_exec_callback_QQuickItem_heightChanged(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onheightChanged*(self: QQuickItem, slot: proc()) =
+proc onheightChanged*(self: gen_qquickitem_types.QQuickItem, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQQuickItem_connect_heightChanged(self.h, cast[int](addr tmp[]))
-proc zChanged*(self: QQuickItem, ): void =
+proc zChanged*(self: gen_qquickitem_types.QQuickItem, ): void =
 
   fcQQuickItem_zChanged(self.h)
 
@@ -1664,13 +1604,13 @@ proc miqt_exec_callback_QQuickItem_zChanged(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onzChanged*(self: QQuickItem, slot: proc()) =
+proc onzChanged*(self: gen_qquickitem_types.QQuickItem, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQQuickItem_connect_zChanged(self.h, cast[int](addr tmp[]))
-proc implicitWidthChanged*(self: QQuickItem, ): void =
+proc implicitWidthChanged*(self: gen_qquickitem_types.QQuickItem, ): void =
 
   fcQQuickItem_implicitWidthChanged(self.h)
 
@@ -1680,13 +1620,13 @@ proc miqt_exec_callback_QQuickItem_implicitWidthChanged(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onimplicitWidthChanged*(self: QQuickItem, slot: proc()) =
+proc onimplicitWidthChanged*(self: gen_qquickitem_types.QQuickItem, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQQuickItem_connect_implicitWidthChanged(self.h, cast[int](addr tmp[]))
-proc implicitHeightChanged*(self: QQuickItem, ): void =
+proc implicitHeightChanged*(self: gen_qquickitem_types.QQuickItem, ): void =
 
   fcQQuickItem_implicitHeightChanged(self.h)
 
@@ -1696,13 +1636,13 @@ proc miqt_exec_callback_QQuickItem_implicitHeightChanged(slot: int) {.exportc.} 
 
   nimfunc[]()
 
-proc onimplicitHeightChanged*(self: QQuickItem, slot: proc()) =
+proc onimplicitHeightChanged*(self: gen_qquickitem_types.QQuickItem, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQQuickItem_connect_implicitHeightChanged(self.h, cast[int](addr tmp[]))
-proc containmentMaskChanged*(self: QQuickItem, ): void =
+proc containmentMaskChanged*(self: gen_qquickitem_types.QQuickItem, ): void =
 
   fcQQuickItem_containmentMaskChanged(self.h)
 
@@ -1712,1126 +1652,901 @@ proc miqt_exec_callback_QQuickItem_containmentMaskChanged(slot: int) {.exportc.}
 
   nimfunc[]()
 
-proc oncontainmentMaskChanged*(self: QQuickItem, slot: proc()) =
+proc oncontainmentMaskChanged*(self: gen_qquickitem_types.QQuickItem, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQQuickItem_connect_containmentMaskChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QQuickItem, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qquickitem_types.QQuickItem, s: cstring, c: cstring): string =
 
   let v_ms = fcQQuickItem_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QQuickItem, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qquickitem_types.QQuickItem, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQQuickItem_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QQuickItem, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qquickitem_types.QQuickItem, s: cstring, c: cstring): string =
 
   let v_ms = fcQQuickItem_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QQuickItem, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qquickitem_types.QQuickItem, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQQuickItem_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setFlag2*(self: QQuickItem, flag: QQuickItemFlag, enabled: bool): void =
+proc setFlag2*(self: gen_qquickitem_types.QQuickItem, flag: cint, enabled: bool): void =
 
   fcQQuickItem_setFlag2(self.h, cint(flag), enabled)
 
-proc grabToImage22*(self: QQuickItem, callback: gen_qjsvalue.QJSValue, targetSize: gen_qsize.QSize): bool =
+proc grabToImage22*(self: gen_qquickitem_types.QQuickItem, callback: gen_qjsvalue.QJSValue, targetSize: gen_qsize.QSize): bool =
 
   fcQQuickItem_grabToImage22(self.h, callback.h, targetSize.h)
 
-proc nextItemInFocusChain1*(self: QQuickItem, forward: bool): QQuickItem =
+proc nextItemInFocusChain1*(self: gen_qquickitem_types.QQuickItem, forward: bool): gen_qquickitem_types.QQuickItem =
 
-  QQuickItem(h: fcQQuickItem_nextItemInFocusChain1(self.h, forward))
+  gen_qquickitem_types.QQuickItem(h: fcQQuickItem_nextItemInFocusChain1(self.h, forward))
 
-proc callVirtualBase_metaObject(self: QQuickItem, ): gen_qobjectdefs.QMetaObject =
-
+proc QQuickItemmetaObject*(self: gen_qquickitem_types.QQuickItem, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQQuickItem_virtualbase_metaObject(self.h))
 
-type QQuickItemmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QQuickItem, slot: proc(super: QQuickItemmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QQuickItemmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickItemmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QQuickItemmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickItem_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickItem_metaObject(self: ptr cQQuickItem, slot: int): pointer {.exportc: "miqt_exec_callback_QQuickItem_metaObject ".} =
-  type Cb = proc(super: QQuickItemmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QQuickItem(h: self), )
+  var nimfunc = cast[ptr QQuickItemmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QQuickItem, param1: cstring): pointer =
-
+proc QQuickItemmetacast*(self: gen_qquickitem_types.QQuickItem, param1: cstring): pointer =
 
   fQQuickItem_virtualbase_metacast(self.h, param1)
 
-type QQuickItemmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QQuickItem, slot: proc(super: QQuickItemmetacastBase, param1: cstring): pointer) =
+type QQuickItemmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickItemmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QQuickItemmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickItem_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickItem_metacast(self: ptr cQQuickItem, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QQuickItem_metacast ".} =
-  type Cb = proc(super: QQuickItemmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QQuickItem(h: self), param1)
+  var nimfunc = cast[ptr QQuickItemmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QQuickItem, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QQuickItemmetacall*(self: gen_qquickitem_types.QQuickItem, param1: cint, param2: cint, param3: pointer): cint =
 
   fQQuickItem_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QQuickItemmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QQuickItem, slot: proc(super: QQuickItemmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QQuickItemmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickItemmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QQuickItemmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickItem_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickItem_metacall(self: ptr cQQuickItem, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QQuickItem_metacall ".} =
-  type Cb = proc(super: QQuickItemmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QQuickItem(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QQuickItemmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_boundingRect(self: QQuickItem, ): gen_qrect.QRectF =
-
+proc QQuickItemboundingRect*(self: gen_qquickitem_types.QQuickItem, ): gen_qrect.QRectF =
 
   gen_qrect.QRectF(h: fQQuickItem_virtualbase_boundingRect(self.h))
 
-type QQuickItemboundingRectBase* = proc(): gen_qrect.QRectF
-proc onboundingRect*(self: QQuickItem, slot: proc(super: QQuickItemboundingRectBase): gen_qrect.QRectF) =
+type QQuickItemboundingRectProc* = proc(): gen_qrect.QRectF
+proc onboundingRect*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemboundingRectProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickItemboundingRectBase): gen_qrect.QRectF
-  var tmp = new Cb
+  var tmp = new QQuickItemboundingRectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickItem_override_virtual_boundingRect(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickItem_boundingRect(self: ptr cQQuickItem, slot: int): pointer {.exportc: "miqt_exec_callback_QQuickItem_boundingRect ".} =
-  type Cb = proc(super: QQuickItemboundingRectBase): gen_qrect.QRectF
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_boundingRect(QQuickItem(h: self), )
+  var nimfunc = cast[ptr QQuickItemboundingRectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_clipRect(self: QQuickItem, ): gen_qrect.QRectF =
-
+proc QQuickItemclipRect*(self: gen_qquickitem_types.QQuickItem, ): gen_qrect.QRectF =
 
   gen_qrect.QRectF(h: fQQuickItem_virtualbase_clipRect(self.h))
 
-type QQuickItemclipRectBase* = proc(): gen_qrect.QRectF
-proc onclipRect*(self: QQuickItem, slot: proc(super: QQuickItemclipRectBase): gen_qrect.QRectF) =
+type QQuickItemclipRectProc* = proc(): gen_qrect.QRectF
+proc onclipRect*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemclipRectProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickItemclipRectBase): gen_qrect.QRectF
-  var tmp = new Cb
+  var tmp = new QQuickItemclipRectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickItem_override_virtual_clipRect(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickItem_clipRect(self: ptr cQQuickItem, slot: int): pointer {.exportc: "miqt_exec_callback_QQuickItem_clipRect ".} =
-  type Cb = proc(super: QQuickItemclipRectBase): gen_qrect.QRectF
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_clipRect(QQuickItem(h: self), )
+  var nimfunc = cast[ptr QQuickItemclipRectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_contains(self: QQuickItem, point: gen_qpoint.QPointF): bool =
-
+proc QQuickItemcontains*(self: gen_qquickitem_types.QQuickItem, point: gen_qpoint.QPointF): bool =
 
   fQQuickItem_virtualbase_contains(self.h, point.h)
 
-type QQuickItemcontainsBase* = proc(point: gen_qpoint.QPointF): bool
-proc oncontains*(self: QQuickItem, slot: proc(super: QQuickItemcontainsBase, point: gen_qpoint.QPointF): bool) =
+type QQuickItemcontainsProc* = proc(point: gen_qpoint.QPointF): bool
+proc oncontains*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemcontainsProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickItemcontainsBase, point: gen_qpoint.QPointF): bool
-  var tmp = new Cb
+  var tmp = new QQuickItemcontainsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickItem_override_virtual_contains(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickItem_contains(self: ptr cQQuickItem, slot: int, point: pointer): bool {.exportc: "miqt_exec_callback_QQuickItem_contains ".} =
-  type Cb = proc(super: QQuickItemcontainsBase, point: gen_qpoint.QPointF): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(point: gen_qpoint.QPointF): auto =
-    callVirtualBase_contains(QQuickItem(h: self), point)
+  var nimfunc = cast[ptr QQuickItemcontainsProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPointF(h: point)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_inputMethodQuery(self: QQuickItem, query: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant =
-
+proc QQuickIteminputMethodQuery*(self: gen_qquickitem_types.QQuickItem, query: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQQuickItem_virtualbase_inputMethodQuery(self.h, cint(query)))
 
-type QQuickIteminputMethodQueryBase* = proc(query: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-proc oninputMethodQuery*(self: QQuickItem, slot: proc(super: QQuickIteminputMethodQueryBase, query: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant) =
+type QQuickIteminputMethodQueryProc* = proc(query: cint): gen_qvariant.QVariant
+proc oninputMethodQuery*(self: gen_qquickitem_types.QQuickItem, slot: QQuickIteminputMethodQueryProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickIteminputMethodQueryBase, query: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QQuickIteminputMethodQueryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickItem_override_virtual_inputMethodQuery(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickItem_inputMethodQuery(self: ptr cQQuickItem, slot: int, query: cint): pointer {.exportc: "miqt_exec_callback_QQuickItem_inputMethodQuery ".} =
-  type Cb = proc(super: QQuickIteminputMethodQueryBase, query: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(query: gen_qnamespace.InputMethodQuery): auto =
-    callVirtualBase_inputMethodQuery(QQuickItem(h: self), query)
-  let slotval1 = gen_qnamespace.InputMethodQuery(query)
+  var nimfunc = cast[ptr QQuickIteminputMethodQueryProc](cast[pointer](slot))
+  let slotval1 = cint(query)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_isTextureProvider(self: QQuickItem, ): bool =
-
+proc QQuickItemisTextureProvider*(self: gen_qquickitem_types.QQuickItem, ): bool =
 
   fQQuickItem_virtualbase_isTextureProvider(self.h)
 
-type QQuickItemisTextureProviderBase* = proc(): bool
-proc onisTextureProvider*(self: QQuickItem, slot: proc(super: QQuickItemisTextureProviderBase): bool) =
+type QQuickItemisTextureProviderProc* = proc(): bool
+proc onisTextureProvider*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemisTextureProviderProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickItemisTextureProviderBase): bool
-  var tmp = new Cb
+  var tmp = new QQuickItemisTextureProviderProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickItem_override_virtual_isTextureProvider(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickItem_isTextureProvider(self: ptr cQQuickItem, slot: int): bool {.exportc: "miqt_exec_callback_QQuickItem_isTextureProvider ".} =
-  type Cb = proc(super: QQuickItemisTextureProviderBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_isTextureProvider(QQuickItem(h: self), )
+  var nimfunc = cast[ptr QQuickItemisTextureProviderProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_textureProvider(self: QQuickItem, ): gen_qsgtextureprovider.QSGTextureProvider =
-
+proc QQuickItemtextureProvider*(self: gen_qquickitem_types.QQuickItem, ): gen_qsgtextureprovider.QSGTextureProvider =
 
   gen_qsgtextureprovider.QSGTextureProvider(h: fQQuickItem_virtualbase_textureProvider(self.h))
 
-type QQuickItemtextureProviderBase* = proc(): gen_qsgtextureprovider.QSGTextureProvider
-proc ontextureProvider*(self: QQuickItem, slot: proc(super: QQuickItemtextureProviderBase): gen_qsgtextureprovider.QSGTextureProvider) =
+type QQuickItemtextureProviderProc* = proc(): gen_qsgtextureprovider.QSGTextureProvider
+proc ontextureProvider*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemtextureProviderProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickItemtextureProviderBase): gen_qsgtextureprovider.QSGTextureProvider
-  var tmp = new Cb
+  var tmp = new QQuickItemtextureProviderProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickItem_override_virtual_textureProvider(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickItem_textureProvider(self: ptr cQQuickItem, slot: int): pointer {.exportc: "miqt_exec_callback_QQuickItem_textureProvider ".} =
-  type Cb = proc(super: QQuickItemtextureProviderBase): gen_qsgtextureprovider.QSGTextureProvider
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_textureProvider(QQuickItem(h: self), )
+  var nimfunc = cast[ptr QQuickItemtextureProviderProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_event(self: QQuickItem, param1: gen_qcoreevent.QEvent): bool =
-
+proc QQuickItemevent*(self: gen_qquickitem_types.QQuickItem, param1: gen_qcoreevent.QEvent): bool =
 
   fQQuickItem_virtualbase_event(self.h, param1.h)
 
-type QQuickItemeventBase* = proc(param1: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QQuickItem, slot: proc(super: QQuickItemeventBase, param1: gen_qcoreevent.QEvent): bool) =
+type QQuickItemeventProc* = proc(param1: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickItemeventBase, param1: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QQuickItemeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickItem_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickItem_event(self: ptr cQQuickItem, slot: int, param1: pointer): bool {.exportc: "miqt_exec_callback_QQuickItem_event ".} =
-  type Cb = proc(super: QQuickItemeventBase, param1: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QQuickItem(h: self), param1)
+  var nimfunc = cast[ptr QQuickItemeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_itemChange(self: QQuickItem, param1: QQuickItemItemChange, param2: QQuickItemItemChangeData): void =
-
+proc QQuickItemitemChange*(self: gen_qquickitem_types.QQuickItem, param1: cint, param2: gen_qquickitem_types.QQuickItemItemChangeData): void =
 
   fQQuickItem_virtualbase_itemChange(self.h, cint(param1), param2.h)
 
-type QQuickItemitemChangeBase* = proc(param1: QQuickItemItemChange, param2: QQuickItemItemChangeData): void
-proc onitemChange*(self: QQuickItem, slot: proc(super: QQuickItemitemChangeBase, param1: QQuickItemItemChange, param2: QQuickItemItemChangeData): void) =
+type QQuickItemitemChangeProc* = proc(param1: cint, param2: gen_qquickitem_types.QQuickItemItemChangeData): void
+proc onitemChange*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemitemChangeProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickItemitemChangeBase, param1: QQuickItemItemChange, param2: QQuickItemItemChangeData): void
-  var tmp = new Cb
+  var tmp = new QQuickItemitemChangeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickItem_override_virtual_itemChange(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickItem_itemChange(self: ptr cQQuickItem, slot: int, param1: cint, param2: pointer): void {.exportc: "miqt_exec_callback_QQuickItem_itemChange ".} =
-  type Cb = proc(super: QQuickItemitemChangeBase, param1: QQuickItemItemChange, param2: QQuickItemItemChangeData): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: QQuickItemItemChange, param2: QQuickItemItemChangeData): auto =
-    callVirtualBase_itemChange(QQuickItem(h: self), param1, param2)
-  let slotval1 = QQuickItemItemChange(param1)
+  var nimfunc = cast[ptr QQuickItemitemChangeProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
-  let slotval2 = QQuickItemItemChangeData(h: param2)
+  let slotval2 = gen_qquickitem_types.QQuickItemItemChangeData(h: param2)
 
 
-  nimfunc[](superCall, slotval1, slotval2)
-proc callVirtualBase_classBegin(self: QQuickItem, ): void =
-
+  nimfunc[](slotval1, slotval2)
+proc QQuickItemclassBegin*(self: gen_qquickitem_types.QQuickItem, ): void =
 
   fQQuickItem_virtualbase_classBegin(self.h)
 
-type QQuickItemclassBeginBase* = proc(): void
-proc onclassBegin*(self: QQuickItem, slot: proc(super: QQuickItemclassBeginBase): void) =
+type QQuickItemclassBeginProc* = proc(): void
+proc onclassBegin*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemclassBeginProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickItemclassBeginBase): void
-  var tmp = new Cb
+  var tmp = new QQuickItemclassBeginProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickItem_override_virtual_classBegin(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickItem_classBegin(self: ptr cQQuickItem, slot: int): void {.exportc: "miqt_exec_callback_QQuickItem_classBegin ".} =
-  type Cb = proc(super: QQuickItemclassBeginBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_classBegin(QQuickItem(h: self), )
+  var nimfunc = cast[ptr QQuickItemclassBeginProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_componentComplete(self: QQuickItem, ): void =
-
+  nimfunc[]()
+proc QQuickItemcomponentComplete*(self: gen_qquickitem_types.QQuickItem, ): void =
 
   fQQuickItem_virtualbase_componentComplete(self.h)
 
-type QQuickItemcomponentCompleteBase* = proc(): void
-proc oncomponentComplete*(self: QQuickItem, slot: proc(super: QQuickItemcomponentCompleteBase): void) =
+type QQuickItemcomponentCompleteProc* = proc(): void
+proc oncomponentComplete*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemcomponentCompleteProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickItemcomponentCompleteBase): void
-  var tmp = new Cb
+  var tmp = new QQuickItemcomponentCompleteProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickItem_override_virtual_componentComplete(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickItem_componentComplete(self: ptr cQQuickItem, slot: int): void {.exportc: "miqt_exec_callback_QQuickItem_componentComplete ".} =
-  type Cb = proc(super: QQuickItemcomponentCompleteBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_componentComplete(QQuickItem(h: self), )
+  var nimfunc = cast[ptr QQuickItemcomponentCompleteProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_keyPressEvent(self: QQuickItem, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[]()
+proc QQuickItemkeyPressEvent*(self: gen_qquickitem_types.QQuickItem, event: gen_qevent.QKeyEvent): void =
 
   fQQuickItem_virtualbase_keyPressEvent(self.h, event.h)
 
-type QQuickItemkeyPressEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyPressEvent*(self: QQuickItem, slot: proc(super: QQuickItemkeyPressEventBase, event: gen_qevent.QKeyEvent): void) =
+type QQuickItemkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyPressEvent*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemkeyPressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickItemkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QQuickItemkeyPressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickItem_override_virtual_keyPressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickItem_keyPressEvent(self: ptr cQQuickItem, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QQuickItem_keyPressEvent ".} =
-  type Cb = proc(super: QQuickItemkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyPressEvent(QQuickItem(h: self), event)
+  var nimfunc = cast[ptr QQuickItemkeyPressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyReleaseEvent(self: QQuickItem, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QQuickItemkeyReleaseEvent*(self: gen_qquickitem_types.QQuickItem, event: gen_qevent.QKeyEvent): void =
 
   fQQuickItem_virtualbase_keyReleaseEvent(self.h, event.h)
 
-type QQuickItemkeyReleaseEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyReleaseEvent*(self: QQuickItem, slot: proc(super: QQuickItemkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void) =
+type QQuickItemkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyReleaseEvent*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemkeyReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickItemkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QQuickItemkeyReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickItem_override_virtual_keyReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickItem_keyReleaseEvent(self: ptr cQQuickItem, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QQuickItem_keyReleaseEvent ".} =
-  type Cb = proc(super: QQuickItemkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyReleaseEvent(QQuickItem(h: self), event)
+  var nimfunc = cast[ptr QQuickItemkeyReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_inputMethodEvent(self: QQuickItem, param1: gen_qevent.QInputMethodEvent): void =
-
+  nimfunc[](slotval1)
+proc QQuickIteminputMethodEvent*(self: gen_qquickitem_types.QQuickItem, param1: gen_qevent.QInputMethodEvent): void =
 
   fQQuickItem_virtualbase_inputMethodEvent(self.h, param1.h)
 
-type QQuickIteminputMethodEventBase* = proc(param1: gen_qevent.QInputMethodEvent): void
-proc oninputMethodEvent*(self: QQuickItem, slot: proc(super: QQuickIteminputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void) =
+type QQuickIteminputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
+proc oninputMethodEvent*(self: gen_qquickitem_types.QQuickItem, slot: QQuickIteminputMethodEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickIteminputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var tmp = new Cb
+  var tmp = new QQuickIteminputMethodEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickItem_override_virtual_inputMethodEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickItem_inputMethodEvent(self: ptr cQQuickItem, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QQuickItem_inputMethodEvent ".} =
-  type Cb = proc(super: QQuickIteminputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QInputMethodEvent): auto =
-    callVirtualBase_inputMethodEvent(QQuickItem(h: self), param1)
+  var nimfunc = cast[ptr QQuickIteminputMethodEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QInputMethodEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusInEvent(self: QQuickItem, param1: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QQuickItemfocusInEvent*(self: gen_qquickitem_types.QQuickItem, param1: gen_qevent.QFocusEvent): void =
 
   fQQuickItem_virtualbase_focusInEvent(self.h, param1.h)
 
-type QQuickItemfocusInEventBase* = proc(param1: gen_qevent.QFocusEvent): void
-proc onfocusInEvent*(self: QQuickItem, slot: proc(super: QQuickItemfocusInEventBase, param1: gen_qevent.QFocusEvent): void) =
+type QQuickItemfocusInEventProc* = proc(param1: gen_qevent.QFocusEvent): void
+proc onfocusInEvent*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemfocusInEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickItemfocusInEventBase, param1: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QQuickItemfocusInEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickItem_override_virtual_focusInEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickItem_focusInEvent(self: ptr cQQuickItem, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QQuickItem_focusInEvent ".} =
-  type Cb = proc(super: QQuickItemfocusInEventBase, param1: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusInEvent(QQuickItem(h: self), param1)
+  var nimfunc = cast[ptr QQuickItemfocusInEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusOutEvent(self: QQuickItem, param1: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QQuickItemfocusOutEvent*(self: gen_qquickitem_types.QQuickItem, param1: gen_qevent.QFocusEvent): void =
 
   fQQuickItem_virtualbase_focusOutEvent(self.h, param1.h)
 
-type QQuickItemfocusOutEventBase* = proc(param1: gen_qevent.QFocusEvent): void
-proc onfocusOutEvent*(self: QQuickItem, slot: proc(super: QQuickItemfocusOutEventBase, param1: gen_qevent.QFocusEvent): void) =
+type QQuickItemfocusOutEventProc* = proc(param1: gen_qevent.QFocusEvent): void
+proc onfocusOutEvent*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemfocusOutEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickItemfocusOutEventBase, param1: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QQuickItemfocusOutEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickItem_override_virtual_focusOutEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickItem_focusOutEvent(self: ptr cQQuickItem, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QQuickItem_focusOutEvent ".} =
-  type Cb = proc(super: QQuickItemfocusOutEventBase, param1: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusOutEvent(QQuickItem(h: self), param1)
+  var nimfunc = cast[ptr QQuickItemfocusOutEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mousePressEvent(self: QQuickItem, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QQuickItemmousePressEvent*(self: gen_qquickitem_types.QQuickItem, event: gen_qevent.QMouseEvent): void =
 
   fQQuickItem_virtualbase_mousePressEvent(self.h, event.h)
 
-type QQuickItemmousePressEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmousePressEvent*(self: QQuickItem, slot: proc(super: QQuickItemmousePressEventBase, event: gen_qevent.QMouseEvent): void) =
+type QQuickItemmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmousePressEvent*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemmousePressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickItemmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QQuickItemmousePressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickItem_override_virtual_mousePressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickItem_mousePressEvent(self: ptr cQQuickItem, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QQuickItem_mousePressEvent ".} =
-  type Cb = proc(super: QQuickItemmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mousePressEvent(QQuickItem(h: self), event)
+  var nimfunc = cast[ptr QQuickItemmousePressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseMoveEvent(self: QQuickItem, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QQuickItemmouseMoveEvent*(self: gen_qquickitem_types.QQuickItem, event: gen_qevent.QMouseEvent): void =
 
   fQQuickItem_virtualbase_mouseMoveEvent(self.h, event.h)
 
-type QQuickItemmouseMoveEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseMoveEvent*(self: QQuickItem, slot: proc(super: QQuickItemmouseMoveEventBase, event: gen_qevent.QMouseEvent): void) =
+type QQuickItemmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseMoveEvent*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemmouseMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickItemmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QQuickItemmouseMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickItem_override_virtual_mouseMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickItem_mouseMoveEvent(self: ptr cQQuickItem, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QQuickItem_mouseMoveEvent ".} =
-  type Cb = proc(super: QQuickItemmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseMoveEvent(QQuickItem(h: self), event)
+  var nimfunc = cast[ptr QQuickItemmouseMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseReleaseEvent(self: QQuickItem, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QQuickItemmouseReleaseEvent*(self: gen_qquickitem_types.QQuickItem, event: gen_qevent.QMouseEvent): void =
 
   fQQuickItem_virtualbase_mouseReleaseEvent(self.h, event.h)
 
-type QQuickItemmouseReleaseEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseReleaseEvent*(self: QQuickItem, slot: proc(super: QQuickItemmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void) =
+type QQuickItemmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseReleaseEvent*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemmouseReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickItemmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QQuickItemmouseReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickItem_override_virtual_mouseReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickItem_mouseReleaseEvent(self: ptr cQQuickItem, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QQuickItem_mouseReleaseEvent ".} =
-  type Cb = proc(super: QQuickItemmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseReleaseEvent(QQuickItem(h: self), event)
+  var nimfunc = cast[ptr QQuickItemmouseReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseDoubleClickEvent(self: QQuickItem, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QQuickItemmouseDoubleClickEvent*(self: gen_qquickitem_types.QQuickItem, event: gen_qevent.QMouseEvent): void =
 
   fQQuickItem_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
-type QQuickItemmouseDoubleClickEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseDoubleClickEvent*(self: QQuickItem, slot: proc(super: QQuickItemmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void) =
+type QQuickItemmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseDoubleClickEvent*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemmouseDoubleClickEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickItemmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QQuickItemmouseDoubleClickEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickItem_override_virtual_mouseDoubleClickEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickItem_mouseDoubleClickEvent(self: ptr cQQuickItem, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QQuickItem_mouseDoubleClickEvent ".} =
-  type Cb = proc(super: QQuickItemmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseDoubleClickEvent(QQuickItem(h: self), event)
+  var nimfunc = cast[ptr QQuickItemmouseDoubleClickEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseUngrabEvent(self: QQuickItem, ): void =
-
+  nimfunc[](slotval1)
+proc QQuickItemmouseUngrabEvent*(self: gen_qquickitem_types.QQuickItem, ): void =
 
   fQQuickItem_virtualbase_mouseUngrabEvent(self.h)
 
-type QQuickItemmouseUngrabEventBase* = proc(): void
-proc onmouseUngrabEvent*(self: QQuickItem, slot: proc(super: QQuickItemmouseUngrabEventBase): void) =
+type QQuickItemmouseUngrabEventProc* = proc(): void
+proc onmouseUngrabEvent*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemmouseUngrabEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickItemmouseUngrabEventBase): void
-  var tmp = new Cb
+  var tmp = new QQuickItemmouseUngrabEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickItem_override_virtual_mouseUngrabEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickItem_mouseUngrabEvent(self: ptr cQQuickItem, slot: int): void {.exportc: "miqt_exec_callback_QQuickItem_mouseUngrabEvent ".} =
-  type Cb = proc(super: QQuickItemmouseUngrabEventBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_mouseUngrabEvent(QQuickItem(h: self), )
+  var nimfunc = cast[ptr QQuickItemmouseUngrabEventProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_touchUngrabEvent(self: QQuickItem, ): void =
-
+  nimfunc[]()
+proc QQuickItemtouchUngrabEvent*(self: gen_qquickitem_types.QQuickItem, ): void =
 
   fQQuickItem_virtualbase_touchUngrabEvent(self.h)
 
-type QQuickItemtouchUngrabEventBase* = proc(): void
-proc ontouchUngrabEvent*(self: QQuickItem, slot: proc(super: QQuickItemtouchUngrabEventBase): void) =
+type QQuickItemtouchUngrabEventProc* = proc(): void
+proc ontouchUngrabEvent*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemtouchUngrabEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickItemtouchUngrabEventBase): void
-  var tmp = new Cb
+  var tmp = new QQuickItemtouchUngrabEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickItem_override_virtual_touchUngrabEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickItem_touchUngrabEvent(self: ptr cQQuickItem, slot: int): void {.exportc: "miqt_exec_callback_QQuickItem_touchUngrabEvent ".} =
-  type Cb = proc(super: QQuickItemtouchUngrabEventBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_touchUngrabEvent(QQuickItem(h: self), )
+  var nimfunc = cast[ptr QQuickItemtouchUngrabEventProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_wheelEvent(self: QQuickItem, event: gen_qevent.QWheelEvent): void =
-
+  nimfunc[]()
+proc QQuickItemwheelEvent*(self: gen_qquickitem_types.QQuickItem, event: gen_qevent.QWheelEvent): void =
 
   fQQuickItem_virtualbase_wheelEvent(self.h, event.h)
 
-type QQuickItemwheelEventBase* = proc(event: gen_qevent.QWheelEvent): void
-proc onwheelEvent*(self: QQuickItem, slot: proc(super: QQuickItemwheelEventBase, event: gen_qevent.QWheelEvent): void) =
+type QQuickItemwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
+proc onwheelEvent*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemwheelEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickItemwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var tmp = new Cb
+  var tmp = new QQuickItemwheelEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickItem_override_virtual_wheelEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickItem_wheelEvent(self: ptr cQQuickItem, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QQuickItem_wheelEvent ".} =
-  type Cb = proc(super: QQuickItemwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QWheelEvent): auto =
-    callVirtualBase_wheelEvent(QQuickItem(h: self), event)
+  var nimfunc = cast[ptr QQuickItemwheelEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QWheelEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_touchEvent(self: QQuickItem, event: gen_qevent.QTouchEvent): void =
-
+  nimfunc[](slotval1)
+proc QQuickItemtouchEvent*(self: gen_qquickitem_types.QQuickItem, event: gen_qevent.QTouchEvent): void =
 
   fQQuickItem_virtualbase_touchEvent(self.h, event.h)
 
-type QQuickItemtouchEventBase* = proc(event: gen_qevent.QTouchEvent): void
-proc ontouchEvent*(self: QQuickItem, slot: proc(super: QQuickItemtouchEventBase, event: gen_qevent.QTouchEvent): void) =
+type QQuickItemtouchEventProc* = proc(event: gen_qevent.QTouchEvent): void
+proc ontouchEvent*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemtouchEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickItemtouchEventBase, event: gen_qevent.QTouchEvent): void
-  var tmp = new Cb
+  var tmp = new QQuickItemtouchEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickItem_override_virtual_touchEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickItem_touchEvent(self: ptr cQQuickItem, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QQuickItem_touchEvent ".} =
-  type Cb = proc(super: QQuickItemtouchEventBase, event: gen_qevent.QTouchEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QTouchEvent): auto =
-    callVirtualBase_touchEvent(QQuickItem(h: self), event)
+  var nimfunc = cast[ptr QQuickItemtouchEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QTouchEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hoverEnterEvent(self: QQuickItem, event: gen_qevent.QHoverEvent): void =
-
+  nimfunc[](slotval1)
+proc QQuickItemhoverEnterEvent*(self: gen_qquickitem_types.QQuickItem, event: gen_qevent.QHoverEvent): void =
 
   fQQuickItem_virtualbase_hoverEnterEvent(self.h, event.h)
 
-type QQuickItemhoverEnterEventBase* = proc(event: gen_qevent.QHoverEvent): void
-proc onhoverEnterEvent*(self: QQuickItem, slot: proc(super: QQuickItemhoverEnterEventBase, event: gen_qevent.QHoverEvent): void) =
+type QQuickItemhoverEnterEventProc* = proc(event: gen_qevent.QHoverEvent): void
+proc onhoverEnterEvent*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemhoverEnterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickItemhoverEnterEventBase, event: gen_qevent.QHoverEvent): void
-  var tmp = new Cb
+  var tmp = new QQuickItemhoverEnterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickItem_override_virtual_hoverEnterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickItem_hoverEnterEvent(self: ptr cQQuickItem, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QQuickItem_hoverEnterEvent ".} =
-  type Cb = proc(super: QQuickItemhoverEnterEventBase, event: gen_qevent.QHoverEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QHoverEvent): auto =
-    callVirtualBase_hoverEnterEvent(QQuickItem(h: self), event)
+  var nimfunc = cast[ptr QQuickItemhoverEnterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QHoverEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hoverMoveEvent(self: QQuickItem, event: gen_qevent.QHoverEvent): void =
-
+  nimfunc[](slotval1)
+proc QQuickItemhoverMoveEvent*(self: gen_qquickitem_types.QQuickItem, event: gen_qevent.QHoverEvent): void =
 
   fQQuickItem_virtualbase_hoverMoveEvent(self.h, event.h)
 
-type QQuickItemhoverMoveEventBase* = proc(event: gen_qevent.QHoverEvent): void
-proc onhoverMoveEvent*(self: QQuickItem, slot: proc(super: QQuickItemhoverMoveEventBase, event: gen_qevent.QHoverEvent): void) =
+type QQuickItemhoverMoveEventProc* = proc(event: gen_qevent.QHoverEvent): void
+proc onhoverMoveEvent*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemhoverMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickItemhoverMoveEventBase, event: gen_qevent.QHoverEvent): void
-  var tmp = new Cb
+  var tmp = new QQuickItemhoverMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickItem_override_virtual_hoverMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickItem_hoverMoveEvent(self: ptr cQQuickItem, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QQuickItem_hoverMoveEvent ".} =
-  type Cb = proc(super: QQuickItemhoverMoveEventBase, event: gen_qevent.QHoverEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QHoverEvent): auto =
-    callVirtualBase_hoverMoveEvent(QQuickItem(h: self), event)
+  var nimfunc = cast[ptr QQuickItemhoverMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QHoverEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hoverLeaveEvent(self: QQuickItem, event: gen_qevent.QHoverEvent): void =
-
+  nimfunc[](slotval1)
+proc QQuickItemhoverLeaveEvent*(self: gen_qquickitem_types.QQuickItem, event: gen_qevent.QHoverEvent): void =
 
   fQQuickItem_virtualbase_hoverLeaveEvent(self.h, event.h)
 
-type QQuickItemhoverLeaveEventBase* = proc(event: gen_qevent.QHoverEvent): void
-proc onhoverLeaveEvent*(self: QQuickItem, slot: proc(super: QQuickItemhoverLeaveEventBase, event: gen_qevent.QHoverEvent): void) =
+type QQuickItemhoverLeaveEventProc* = proc(event: gen_qevent.QHoverEvent): void
+proc onhoverLeaveEvent*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemhoverLeaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickItemhoverLeaveEventBase, event: gen_qevent.QHoverEvent): void
-  var tmp = new Cb
+  var tmp = new QQuickItemhoverLeaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickItem_override_virtual_hoverLeaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickItem_hoverLeaveEvent(self: ptr cQQuickItem, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QQuickItem_hoverLeaveEvent ".} =
-  type Cb = proc(super: QQuickItemhoverLeaveEventBase, event: gen_qevent.QHoverEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QHoverEvent): auto =
-    callVirtualBase_hoverLeaveEvent(QQuickItem(h: self), event)
+  var nimfunc = cast[ptr QQuickItemhoverLeaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QHoverEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragEnterEvent(self: QQuickItem, param1: gen_qevent.QDragEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QQuickItemdragEnterEvent*(self: gen_qquickitem_types.QQuickItem, param1: gen_qevent.QDragEnterEvent): void =
 
   fQQuickItem_virtualbase_dragEnterEvent(self.h, param1.h)
 
-type QQuickItemdragEnterEventBase* = proc(param1: gen_qevent.QDragEnterEvent): void
-proc ondragEnterEvent*(self: QQuickItem, slot: proc(super: QQuickItemdragEnterEventBase, param1: gen_qevent.QDragEnterEvent): void) =
+type QQuickItemdragEnterEventProc* = proc(param1: gen_qevent.QDragEnterEvent): void
+proc ondragEnterEvent*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemdragEnterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickItemdragEnterEventBase, param1: gen_qevent.QDragEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QQuickItemdragEnterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickItem_override_virtual_dragEnterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickItem_dragEnterEvent(self: ptr cQQuickItem, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QQuickItem_dragEnterEvent ".} =
-  type Cb = proc(super: QQuickItemdragEnterEventBase, param1: gen_qevent.QDragEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QDragEnterEvent): auto =
-    callVirtualBase_dragEnterEvent(QQuickItem(h: self), param1)
+  var nimfunc = cast[ptr QQuickItemdragEnterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragEnterEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragMoveEvent(self: QQuickItem, param1: gen_qevent.QDragMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QQuickItemdragMoveEvent*(self: gen_qquickitem_types.QQuickItem, param1: gen_qevent.QDragMoveEvent): void =
 
   fQQuickItem_virtualbase_dragMoveEvent(self.h, param1.h)
 
-type QQuickItemdragMoveEventBase* = proc(param1: gen_qevent.QDragMoveEvent): void
-proc ondragMoveEvent*(self: QQuickItem, slot: proc(super: QQuickItemdragMoveEventBase, param1: gen_qevent.QDragMoveEvent): void) =
+type QQuickItemdragMoveEventProc* = proc(param1: gen_qevent.QDragMoveEvent): void
+proc ondragMoveEvent*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemdragMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickItemdragMoveEventBase, param1: gen_qevent.QDragMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QQuickItemdragMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickItem_override_virtual_dragMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickItem_dragMoveEvent(self: ptr cQQuickItem, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QQuickItem_dragMoveEvent ".} =
-  type Cb = proc(super: QQuickItemdragMoveEventBase, param1: gen_qevent.QDragMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QDragMoveEvent): auto =
-    callVirtualBase_dragMoveEvent(QQuickItem(h: self), param1)
+  var nimfunc = cast[ptr QQuickItemdragMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragMoveEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragLeaveEvent(self: QQuickItem, param1: gen_qevent.QDragLeaveEvent): void =
-
+  nimfunc[](slotval1)
+proc QQuickItemdragLeaveEvent*(self: gen_qquickitem_types.QQuickItem, param1: gen_qevent.QDragLeaveEvent): void =
 
   fQQuickItem_virtualbase_dragLeaveEvent(self.h, param1.h)
 
-type QQuickItemdragLeaveEventBase* = proc(param1: gen_qevent.QDragLeaveEvent): void
-proc ondragLeaveEvent*(self: QQuickItem, slot: proc(super: QQuickItemdragLeaveEventBase, param1: gen_qevent.QDragLeaveEvent): void) =
+type QQuickItemdragLeaveEventProc* = proc(param1: gen_qevent.QDragLeaveEvent): void
+proc ondragLeaveEvent*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemdragLeaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickItemdragLeaveEventBase, param1: gen_qevent.QDragLeaveEvent): void
-  var tmp = new Cb
+  var tmp = new QQuickItemdragLeaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickItem_override_virtual_dragLeaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickItem_dragLeaveEvent(self: ptr cQQuickItem, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QQuickItem_dragLeaveEvent ".} =
-  type Cb = proc(super: QQuickItemdragLeaveEventBase, param1: gen_qevent.QDragLeaveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QDragLeaveEvent): auto =
-    callVirtualBase_dragLeaveEvent(QQuickItem(h: self), param1)
+  var nimfunc = cast[ptr QQuickItemdragLeaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragLeaveEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dropEvent(self: QQuickItem, param1: gen_qevent.QDropEvent): void =
-
+  nimfunc[](slotval1)
+proc QQuickItemdropEvent*(self: gen_qquickitem_types.QQuickItem, param1: gen_qevent.QDropEvent): void =
 
   fQQuickItem_virtualbase_dropEvent(self.h, param1.h)
 
-type QQuickItemdropEventBase* = proc(param1: gen_qevent.QDropEvent): void
-proc ondropEvent*(self: QQuickItem, slot: proc(super: QQuickItemdropEventBase, param1: gen_qevent.QDropEvent): void) =
+type QQuickItemdropEventProc* = proc(param1: gen_qevent.QDropEvent): void
+proc ondropEvent*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemdropEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickItemdropEventBase, param1: gen_qevent.QDropEvent): void
-  var tmp = new Cb
+  var tmp = new QQuickItemdropEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickItem_override_virtual_dropEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickItem_dropEvent(self: ptr cQQuickItem, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QQuickItem_dropEvent ".} =
-  type Cb = proc(super: QQuickItemdropEventBase, param1: gen_qevent.QDropEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QDropEvent): auto =
-    callVirtualBase_dropEvent(QQuickItem(h: self), param1)
+  var nimfunc = cast[ptr QQuickItemdropEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDropEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childMouseEventFilter(self: QQuickItem, param1: QQuickItem, param2: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[](slotval1)
+proc QQuickItemchildMouseEventFilter*(self: gen_qquickitem_types.QQuickItem, param1: gen_qquickitem_types.QQuickItem, param2: gen_qcoreevent.QEvent): bool =
 
   fQQuickItem_virtualbase_childMouseEventFilter(self.h, param1.h, param2.h)
 
-type QQuickItemchildMouseEventFilterBase* = proc(param1: QQuickItem, param2: gen_qcoreevent.QEvent): bool
-proc onchildMouseEventFilter*(self: QQuickItem, slot: proc(super: QQuickItemchildMouseEventFilterBase, param1: QQuickItem, param2: gen_qcoreevent.QEvent): bool) =
+type QQuickItemchildMouseEventFilterProc* = proc(param1: gen_qquickitem_types.QQuickItem, param2: gen_qcoreevent.QEvent): bool
+proc onchildMouseEventFilter*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemchildMouseEventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickItemchildMouseEventFilterBase, param1: QQuickItem, param2: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QQuickItemchildMouseEventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickItem_override_virtual_childMouseEventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickItem_childMouseEventFilter(self: ptr cQQuickItem, slot: int, param1: pointer, param2: pointer): bool {.exportc: "miqt_exec_callback_QQuickItem_childMouseEventFilter ".} =
-  type Cb = proc(super: QQuickItemchildMouseEventFilterBase, param1: QQuickItem, param2: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: QQuickItem, param2: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_childMouseEventFilter(QQuickItem(h: self), param1, param2)
-  let slotval1 = QQuickItem(h: param1)
+  var nimfunc = cast[ptr QQuickItemchildMouseEventFilterProc](cast[pointer](slot))
+  let slotval1 = gen_qquickitem_types.QQuickItem(h: param1)
 
   let slotval2 = gen_qcoreevent.QEvent(h: param2)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_windowDeactivateEvent(self: QQuickItem, ): void =
-
+proc QQuickItemwindowDeactivateEvent*(self: gen_qquickitem_types.QQuickItem, ): void =
 
   fQQuickItem_virtualbase_windowDeactivateEvent(self.h)
 
-type QQuickItemwindowDeactivateEventBase* = proc(): void
-proc onwindowDeactivateEvent*(self: QQuickItem, slot: proc(super: QQuickItemwindowDeactivateEventBase): void) =
+type QQuickItemwindowDeactivateEventProc* = proc(): void
+proc onwindowDeactivateEvent*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemwindowDeactivateEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickItemwindowDeactivateEventBase): void
-  var tmp = new Cb
+  var tmp = new QQuickItemwindowDeactivateEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickItem_override_virtual_windowDeactivateEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickItem_windowDeactivateEvent(self: ptr cQQuickItem, slot: int): void {.exportc: "miqt_exec_callback_QQuickItem_windowDeactivateEvent ".} =
-  type Cb = proc(super: QQuickItemwindowDeactivateEventBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_windowDeactivateEvent(QQuickItem(h: self), )
+  var nimfunc = cast[ptr QQuickItemwindowDeactivateEventProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_geometryChanged(self: QQuickItem, newGeometry: gen_qrect.QRectF, oldGeometry: gen_qrect.QRectF): void =
-
+  nimfunc[]()
+proc QQuickItemgeometryChanged*(self: gen_qquickitem_types.QQuickItem, newGeometry: gen_qrect.QRectF, oldGeometry: gen_qrect.QRectF): void =
 
   fQQuickItem_virtualbase_geometryChanged(self.h, newGeometry.h, oldGeometry.h)
 
-type QQuickItemgeometryChangedBase* = proc(newGeometry: gen_qrect.QRectF, oldGeometry: gen_qrect.QRectF): void
-proc ongeometryChanged*(self: QQuickItem, slot: proc(super: QQuickItemgeometryChangedBase, newGeometry: gen_qrect.QRectF, oldGeometry: gen_qrect.QRectF): void) =
+type QQuickItemgeometryChangedProc* = proc(newGeometry: gen_qrect.QRectF, oldGeometry: gen_qrect.QRectF): void
+proc ongeometryChanged*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemgeometryChangedProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickItemgeometryChangedBase, newGeometry: gen_qrect.QRectF, oldGeometry: gen_qrect.QRectF): void
-  var tmp = new Cb
+  var tmp = new QQuickItemgeometryChangedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickItem_override_virtual_geometryChanged(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickItem_geometryChanged(self: ptr cQQuickItem, slot: int, newGeometry: pointer, oldGeometry: pointer): void {.exportc: "miqt_exec_callback_QQuickItem_geometryChanged ".} =
-  type Cb = proc(super: QQuickItemgeometryChangedBase, newGeometry: gen_qrect.QRectF, oldGeometry: gen_qrect.QRectF): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(newGeometry: gen_qrect.QRectF, oldGeometry: gen_qrect.QRectF): auto =
-    callVirtualBase_geometryChanged(QQuickItem(h: self), newGeometry, oldGeometry)
+  var nimfunc = cast[ptr QQuickItemgeometryChangedProc](cast[pointer](slot))
   let slotval1 = gen_qrect.QRectF(h: newGeometry)
 
   let slotval2 = gen_qrect.QRectF(h: oldGeometry)
 
 
-  nimfunc[](superCall, slotval1, slotval2)
-proc callVirtualBase_updatePaintNode(self: QQuickItem, param1: gen_qsgnode.QSGNode, param2: QQuickItemUpdatePaintNodeData): gen_qsgnode.QSGNode =
-
+  nimfunc[](slotval1, slotval2)
+proc QQuickItemupdatePaintNode*(self: gen_qquickitem_types.QQuickItem, param1: gen_qsgnode.QSGNode, param2: gen_qquickitem_types.QQuickItemUpdatePaintNodeData): gen_qsgnode.QSGNode =
 
   gen_qsgnode.QSGNode(h: fQQuickItem_virtualbase_updatePaintNode(self.h, param1.h, param2.h))
 
-type QQuickItemupdatePaintNodeBase* = proc(param1: gen_qsgnode.QSGNode, param2: QQuickItemUpdatePaintNodeData): gen_qsgnode.QSGNode
-proc onupdatePaintNode*(self: QQuickItem, slot: proc(super: QQuickItemupdatePaintNodeBase, param1: gen_qsgnode.QSGNode, param2: QQuickItemUpdatePaintNodeData): gen_qsgnode.QSGNode) =
+type QQuickItemupdatePaintNodeProc* = proc(param1: gen_qsgnode.QSGNode, param2: gen_qquickitem_types.QQuickItemUpdatePaintNodeData): gen_qsgnode.QSGNode
+proc onupdatePaintNode*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemupdatePaintNodeProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickItemupdatePaintNodeBase, param1: gen_qsgnode.QSGNode, param2: QQuickItemUpdatePaintNodeData): gen_qsgnode.QSGNode
-  var tmp = new Cb
+  var tmp = new QQuickItemupdatePaintNodeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickItem_override_virtual_updatePaintNode(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickItem_updatePaintNode(self: ptr cQQuickItem, slot: int, param1: pointer, param2: pointer): pointer {.exportc: "miqt_exec_callback_QQuickItem_updatePaintNode ".} =
-  type Cb = proc(super: QQuickItemupdatePaintNodeBase, param1: gen_qsgnode.QSGNode, param2: QQuickItemUpdatePaintNodeData): gen_qsgnode.QSGNode
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qsgnode.QSGNode, param2: QQuickItemUpdatePaintNodeData): auto =
-    callVirtualBase_updatePaintNode(QQuickItem(h: self), param1, param2)
+  var nimfunc = cast[ptr QQuickItemupdatePaintNodeProc](cast[pointer](slot))
   let slotval1 = gen_qsgnode.QSGNode(h: param1)
 
-  let slotval2 = QQuickItemUpdatePaintNodeData(h: param2)
+  let slotval2 = gen_qquickitem_types.QQuickItemUpdatePaintNodeData(h: param2)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn.h
-proc callVirtualBase_releaseResources(self: QQuickItem, ): void =
-
+proc QQuickItemreleaseResources*(self: gen_qquickitem_types.QQuickItem, ): void =
 
   fQQuickItem_virtualbase_releaseResources(self.h)
 
-type QQuickItemreleaseResourcesBase* = proc(): void
-proc onreleaseResources*(self: QQuickItem, slot: proc(super: QQuickItemreleaseResourcesBase): void) =
+type QQuickItemreleaseResourcesProc* = proc(): void
+proc onreleaseResources*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemreleaseResourcesProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickItemreleaseResourcesBase): void
-  var tmp = new Cb
+  var tmp = new QQuickItemreleaseResourcesProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickItem_override_virtual_releaseResources(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickItem_releaseResources(self: ptr cQQuickItem, slot: int): void {.exportc: "miqt_exec_callback_QQuickItem_releaseResources ".} =
-  type Cb = proc(super: QQuickItemreleaseResourcesBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_releaseResources(QQuickItem(h: self), )
+  var nimfunc = cast[ptr QQuickItemreleaseResourcesProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_updatePolish(self: QQuickItem, ): void =
-
+  nimfunc[]()
+proc QQuickItemupdatePolish*(self: gen_qquickitem_types.QQuickItem, ): void =
 
   fQQuickItem_virtualbase_updatePolish(self.h)
 
-type QQuickItemupdatePolishBase* = proc(): void
-proc onupdatePolish*(self: QQuickItem, slot: proc(super: QQuickItemupdatePolishBase): void) =
+type QQuickItemupdatePolishProc* = proc(): void
+proc onupdatePolish*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemupdatePolishProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickItemupdatePolishBase): void
-  var tmp = new Cb
+  var tmp = new QQuickItemupdatePolishProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickItem_override_virtual_updatePolish(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickItem_updatePolish(self: ptr cQQuickItem, slot: int): void {.exportc: "miqt_exec_callback_QQuickItem_updatePolish ".} =
-  type Cb = proc(super: QQuickItemupdatePolishBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_updatePolish(QQuickItem(h: self), )
+  var nimfunc = cast[ptr QQuickItemupdatePolishProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_eventFilter(self: QQuickItem, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[]()
+proc QQuickItemeventFilter*(self: gen_qquickitem_types.QQuickItem, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQQuickItem_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QQuickItemeventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QQuickItem, slot: proc(super: QQuickItemeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QQuickItemeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickItemeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QQuickItemeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickItem_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickItem_eventFilter(self: ptr cQQuickItem, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QQuickItem_eventFilter ".} =
-  type Cb = proc(super: QQuickItemeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QQuickItem(h: self), watched, event)
+  var nimfunc = cast[ptr QQuickItemeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QQuickItem, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QQuickItemtimerEvent*(self: gen_qquickitem_types.QQuickItem, event: gen_qcoreevent.QTimerEvent): void =
 
   fQQuickItem_virtualbase_timerEvent(self.h, event.h)
 
-type QQuickItemtimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QQuickItem, slot: proc(super: QQuickItemtimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QQuickItemtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemtimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickItemtimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QQuickItemtimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickItem_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickItem_timerEvent(self: ptr cQQuickItem, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QQuickItem_timerEvent ".} =
-  type Cb = proc(super: QQuickItemtimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QQuickItem(h: self), event)
+  var nimfunc = cast[ptr QQuickItemtimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QQuickItem, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QQuickItemchildEvent*(self: gen_qquickitem_types.QQuickItem, event: gen_qcoreevent.QChildEvent): void =
 
   fQQuickItem_virtualbase_childEvent(self.h, event.h)
 
-type QQuickItemchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QQuickItem, slot: proc(super: QQuickItemchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QQuickItemchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickItemchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QQuickItemchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickItem_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickItem_childEvent(self: ptr cQQuickItem, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QQuickItem_childEvent ".} =
-  type Cb = proc(super: QQuickItemchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QQuickItem(h: self), event)
+  var nimfunc = cast[ptr QQuickItemchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QQuickItem, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QQuickItemcustomEvent*(self: gen_qquickitem_types.QQuickItem, event: gen_qcoreevent.QEvent): void =
 
   fQQuickItem_virtualbase_customEvent(self.h, event.h)
 
-type QQuickItemcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QQuickItem, slot: proc(super: QQuickItemcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QQuickItemcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickItemcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QQuickItemcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickItem_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickItem_customEvent(self: ptr cQQuickItem, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QQuickItem_customEvent ".} =
-  type Cb = proc(super: QQuickItemcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QQuickItem(h: self), event)
+  var nimfunc = cast[ptr QQuickItemcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QQuickItem, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QQuickItemconnectNotify*(self: gen_qquickitem_types.QQuickItem, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQQuickItem_virtualbase_connectNotify(self.h, signal.h)
 
-type QQuickItemconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QQuickItem, slot: proc(super: QQuickItemconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QQuickItemconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickItemconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QQuickItemconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickItem_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickItem_connectNotify(self: ptr cQQuickItem, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QQuickItem_connectNotify ".} =
-  type Cb = proc(super: QQuickItemconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QQuickItem(h: self), signal)
+  var nimfunc = cast[ptr QQuickItemconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QQuickItem, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QQuickItemdisconnectNotify*(self: gen_qquickitem_types.QQuickItem, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQQuickItem_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QQuickItemdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QQuickItem, slot: proc(super: QQuickItemdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QQuickItemdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qquickitem_types.QQuickItem, slot: QQuickItemdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickItemdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QQuickItemdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickItem_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickItem_disconnectNotify(self: ptr cQQuickItem, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QQuickItem_disconnectNotify ".} =
-  type Cb = proc(super: QQuickItemdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QQuickItem(h: self), signal)
+  var nimfunc = cast[ptr QQuickItemdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QQuickItem): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qquickitem_types.QQuickItem): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQQuickItem_staticMetaObject())
-proc delete*(self: QQuickItem) =
+proc delete*(self: gen_qquickitem_types.QQuickItem) =
   fcQQuickItem_delete(self.h)
 
-func init*(T: type QQuickItemItemChangeData, h: ptr cQQuickItemItemChangeData): QQuickItemItemChangeData =
+func init*(T: type gen_qquickitem_types.QQuickItemItemChangeData, h: ptr cQQuickItemItemChangeData): gen_qquickitem_types.QQuickItemItemChangeData =
   T(h: h)
-proc create*(T: type QQuickItemItemChangeData, v: QQuickItem): QQuickItemItemChangeData =
+proc create*(T: type gen_qquickitem_types.QQuickItemItemChangeData, v: gen_qquickitem_types.QQuickItem): gen_qquickitem_types.QQuickItemItemChangeData =
 
-  QQuickItemItemChangeData.init(fcQQuickItemItemChangeData_new(v.h))
-proc create2*(T: type QQuickItemItemChangeData, v: gen_qquickwindow.QQuickWindow): QQuickItemItemChangeData =
+  gen_qquickitem_types.QQuickItemItemChangeData.init(fcQQuickItemItemChangeData_new(v.h))
+proc create2*(T: type gen_qquickitem_types.QQuickItemItemChangeData, v: gen_qquickwindow.QQuickWindow): gen_qquickitem_types.QQuickItemItemChangeData =
 
-  QQuickItemItemChangeData.init(fcQQuickItemItemChangeData_new2(v.h))
-proc create*(T: type QQuickItemItemChangeData, v: float64): QQuickItemItemChangeData =
+  gen_qquickitem_types.QQuickItemItemChangeData.init(fcQQuickItemItemChangeData_new2(v.h))
+proc create*(T: type gen_qquickitem_types.QQuickItemItemChangeData, v: float64): gen_qquickitem_types.QQuickItemItemChangeData =
 
-  QQuickItemItemChangeData.init(fcQQuickItemItemChangeData_new3(v))
-proc create*(T: type QQuickItemItemChangeData, v: bool): QQuickItemItemChangeData =
+  gen_qquickitem_types.QQuickItemItemChangeData.init(fcQQuickItemItemChangeData_new3(v))
+proc create*(T: type gen_qquickitem_types.QQuickItemItemChangeData, v: bool): gen_qquickitem_types.QQuickItemItemChangeData =
 
-  QQuickItemItemChangeData.init(fcQQuickItemItemChangeData_new4(v))
-proc delete*(self: QQuickItemItemChangeData) =
+  gen_qquickitem_types.QQuickItemItemChangeData.init(fcQQuickItemItemChangeData_new4(v))
+proc delete*(self: gen_qquickitem_types.QQuickItemItemChangeData) =
   fcQQuickItemItemChangeData_delete(self.h)
 
-func init*(T: type QQuickItemUpdatePaintNodeData, h: ptr cQQuickItemUpdatePaintNodeData): QQuickItemUpdatePaintNodeData =
+func init*(T: type gen_qquickitem_types.QQuickItemUpdatePaintNodeData, h: ptr cQQuickItemUpdatePaintNodeData): gen_qquickitem_types.QQuickItemUpdatePaintNodeData =
   T(h: h)
-proc delete*(self: QQuickItemUpdatePaintNodeData) =
+proc delete*(self: gen_qquickitem_types.QQuickItemUpdatePaintNodeData) =
   fcQQuickItemUpdatePaintNodeData_delete(self.h)

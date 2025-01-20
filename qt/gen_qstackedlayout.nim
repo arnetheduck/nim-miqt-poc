@@ -34,11 +34,9 @@ const cflags = gorge("pkg-config -cflags Qt5Widgets")
 {.compile("gen_qstackedlayout.cpp", cflags).}
 
 
-type QStackedLayoutStackingMode* = cint
-const
-  QStackedLayoutStackOne* = 0
-  QStackedLayoutStackAll* = 1
-
+type QStackedLayoutStackingModeEnum* = distinct cint
+template StackOne*(_: type QStackedLayoutStackingModeEnum): untyped = 0
+template StackAll*(_: type QStackedLayoutStackingModeEnum): untyped = 1
 
 
 import gen_qstackedlayout_types
@@ -49,24 +47,20 @@ import
   gen_qlayout,
   gen_qlayoutitem,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qrect,
   gen_qsize,
-  gen_qsizepolicy,
   gen_qwidget
 export
   gen_qcoreevent,
   gen_qlayout,
   gen_qlayoutitem,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qrect,
   gen_qsize,
-  gen_qsizepolicy,
   gen_qwidget
 
 type cQStackedLayout*{.exportc: "QStackedLayout", incompleteStruct.} = object
@@ -169,108 +163,108 @@ proc fcQStackedLayout_staticMetaObject(): pointer {.importc: "QStackedLayout_sta
 proc fcQStackedLayout_delete(self: pointer) {.importc: "QStackedLayout_delete".}
 
 
-func init*(T: type QStackedLayout, h: ptr cQStackedLayout): QStackedLayout =
+func init*(T: type gen_qstackedlayout_types.QStackedLayout, h: ptr cQStackedLayout): gen_qstackedlayout_types.QStackedLayout =
   T(h: h)
-proc create*(T: type QStackedLayout, parent: gen_qwidget.QWidget): QStackedLayout =
+proc create*(T: type gen_qstackedlayout_types.QStackedLayout, parent: gen_qwidget.QWidget): gen_qstackedlayout_types.QStackedLayout =
 
-  QStackedLayout.init(fcQStackedLayout_new(parent.h))
-proc create*(T: type QStackedLayout, ): QStackedLayout =
+  gen_qstackedlayout_types.QStackedLayout.init(fcQStackedLayout_new(parent.h))
+proc create*(T: type gen_qstackedlayout_types.QStackedLayout, ): gen_qstackedlayout_types.QStackedLayout =
 
-  QStackedLayout.init(fcQStackedLayout_new2())
-proc create2*(T: type QStackedLayout, parentLayout: gen_qlayout.QLayout): QStackedLayout =
+  gen_qstackedlayout_types.QStackedLayout.init(fcQStackedLayout_new2())
+proc create2*(T: type gen_qstackedlayout_types.QStackedLayout, parentLayout: gen_qlayout.QLayout): gen_qstackedlayout_types.QStackedLayout =
 
-  QStackedLayout.init(fcQStackedLayout_new3(parentLayout.h))
-proc metaObject*(self: QStackedLayout, ): gen_qobjectdefs.QMetaObject =
+  gen_qstackedlayout_types.QStackedLayout.init(fcQStackedLayout_new3(parentLayout.h))
+proc metaObject*(self: gen_qstackedlayout_types.QStackedLayout, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQStackedLayout_metaObject(self.h))
 
-proc metacast*(self: QStackedLayout, param1: cstring): pointer =
+proc metacast*(self: gen_qstackedlayout_types.QStackedLayout, param1: cstring): pointer =
 
   fcQStackedLayout_metacast(self.h, param1)
 
-proc metacall*(self: QStackedLayout, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qstackedlayout_types.QStackedLayout, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQStackedLayout_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QStackedLayout, s: cstring): string =
+proc tr*(_: type gen_qstackedlayout_types.QStackedLayout, s: cstring): string =
 
   let v_ms = fcQStackedLayout_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QStackedLayout, s: cstring): string =
+proc trUtf8*(_: type gen_qstackedlayout_types.QStackedLayout, s: cstring): string =
 
   let v_ms = fcQStackedLayout_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc addWidget*(self: QStackedLayout, w: gen_qwidget.QWidget): cint =
+proc addWidget*(self: gen_qstackedlayout_types.QStackedLayout, w: gen_qwidget.QWidget): cint =
 
   fcQStackedLayout_addWidget(self.h, w.h)
 
-proc insertWidget*(self: QStackedLayout, index: cint, w: gen_qwidget.QWidget): cint =
+proc insertWidget*(self: gen_qstackedlayout_types.QStackedLayout, index: cint, w: gen_qwidget.QWidget): cint =
 
   fcQStackedLayout_insertWidget(self.h, index, w.h)
 
-proc currentWidget*(self: QStackedLayout, ): gen_qwidget.QWidget =
+proc currentWidget*(self: gen_qstackedlayout_types.QStackedLayout, ): gen_qwidget.QWidget =
 
   gen_qwidget.QWidget(h: fcQStackedLayout_currentWidget(self.h))
 
-proc currentIndex*(self: QStackedLayout, ): cint =
+proc currentIndex*(self: gen_qstackedlayout_types.QStackedLayout, ): cint =
 
   fcQStackedLayout_currentIndex(self.h)
 
-proc widget*(self: QStackedLayout, param1: cint): gen_qwidget.QWidget =
+proc widget*(self: gen_qstackedlayout_types.QStackedLayout, param1: cint): gen_qwidget.QWidget =
 
   gen_qwidget.QWidget(h: fcQStackedLayout_widget(self.h, param1))
 
-proc count*(self: QStackedLayout, ): cint =
+proc count*(self: gen_qstackedlayout_types.QStackedLayout, ): cint =
 
   fcQStackedLayout_count(self.h)
 
-proc stackingMode*(self: QStackedLayout, ): QStackedLayoutStackingMode =
+proc stackingMode*(self: gen_qstackedlayout_types.QStackedLayout, ): cint =
 
-  QStackedLayoutStackingMode(fcQStackedLayout_stackingMode(self.h))
+  cint(fcQStackedLayout_stackingMode(self.h))
 
-proc setStackingMode*(self: QStackedLayout, stackingMode: QStackedLayoutStackingMode): void =
+proc setStackingMode*(self: gen_qstackedlayout_types.QStackedLayout, stackingMode: cint): void =
 
   fcQStackedLayout_setStackingMode(self.h, cint(stackingMode))
 
-proc addItem*(self: QStackedLayout, item: gen_qlayoutitem.QLayoutItem): void =
+proc addItem*(self: gen_qstackedlayout_types.QStackedLayout, item: gen_qlayoutitem.QLayoutItem): void =
 
   fcQStackedLayout_addItem(self.h, item.h)
 
-proc sizeHint*(self: QStackedLayout, ): gen_qsize.QSize =
+proc sizeHint*(self: gen_qstackedlayout_types.QStackedLayout, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQStackedLayout_sizeHint(self.h))
 
-proc minimumSize*(self: QStackedLayout, ): gen_qsize.QSize =
+proc minimumSize*(self: gen_qstackedlayout_types.QStackedLayout, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQStackedLayout_minimumSize(self.h))
 
-proc itemAt*(self: QStackedLayout, param1: cint): gen_qlayoutitem.QLayoutItem =
+proc itemAt*(self: gen_qstackedlayout_types.QStackedLayout, param1: cint): gen_qlayoutitem.QLayoutItem =
 
   gen_qlayoutitem.QLayoutItem(h: fcQStackedLayout_itemAt(self.h, param1))
 
-proc takeAt*(self: QStackedLayout, param1: cint): gen_qlayoutitem.QLayoutItem =
+proc takeAt*(self: gen_qstackedlayout_types.QStackedLayout, param1: cint): gen_qlayoutitem.QLayoutItem =
 
   gen_qlayoutitem.QLayoutItem(h: fcQStackedLayout_takeAt(self.h, param1))
 
-proc setGeometry*(self: QStackedLayout, rect: gen_qrect.QRect): void =
+proc setGeometry*(self: gen_qstackedlayout_types.QStackedLayout, rect: gen_qrect.QRect): void =
 
   fcQStackedLayout_setGeometry(self.h, rect.h)
 
-proc hasHeightForWidth*(self: QStackedLayout, ): bool =
+proc hasHeightForWidth*(self: gen_qstackedlayout_types.QStackedLayout, ): bool =
 
   fcQStackedLayout_hasHeightForWidth(self.h)
 
-proc heightForWidth*(self: QStackedLayout, width: cint): cint =
+proc heightForWidth*(self: gen_qstackedlayout_types.QStackedLayout, width: cint): cint =
 
   fcQStackedLayout_heightForWidth(self.h, width)
 
-proc widgetRemoved*(self: QStackedLayout, index: cint): void =
+proc widgetRemoved*(self: gen_qstackedlayout_types.QStackedLayout, index: cint): void =
 
   fcQStackedLayout_widgetRemoved(self.h, index)
 
@@ -282,13 +276,13 @@ proc miqt_exec_callback_QStackedLayout_widgetRemoved(slot: int, index: cint) {.e
 
   nimfunc[](slotval1)
 
-proc onwidgetRemoved*(self: QStackedLayout, slot: proc(index: cint)) =
+proc onwidgetRemoved*(self: gen_qstackedlayout_types.QStackedLayout, slot: proc(index: cint)) =
   type Cb = proc(index: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQStackedLayout_connect_widgetRemoved(self.h, cast[int](addr tmp[]))
-proc currentChanged*(self: QStackedLayout, index: cint): void =
+proc currentChanged*(self: gen_qstackedlayout_types.QStackedLayout, index: cint): void =
 
   fcQStackedLayout_currentChanged(self.h, index)
 
@@ -300,761 +294,611 @@ proc miqt_exec_callback_QStackedLayout_currentChanged(slot: int, index: cint) {.
 
   nimfunc[](slotval1)
 
-proc oncurrentChanged*(self: QStackedLayout, slot: proc(index: cint)) =
+proc oncurrentChanged*(self: gen_qstackedlayout_types.QStackedLayout, slot: proc(index: cint)) =
   type Cb = proc(index: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQStackedLayout_connect_currentChanged(self.h, cast[int](addr tmp[]))
-proc setCurrentIndex*(self: QStackedLayout, index: cint): void =
+proc setCurrentIndex*(self: gen_qstackedlayout_types.QStackedLayout, index: cint): void =
 
   fcQStackedLayout_setCurrentIndex(self.h, index)
 
-proc setCurrentWidget*(self: QStackedLayout, w: gen_qwidget.QWidget): void =
+proc setCurrentWidget*(self: gen_qstackedlayout_types.QStackedLayout, w: gen_qwidget.QWidget): void =
 
   fcQStackedLayout_setCurrentWidget(self.h, w.h)
 
-proc tr2*(_: type QStackedLayout, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qstackedlayout_types.QStackedLayout, s: cstring, c: cstring): string =
 
   let v_ms = fcQStackedLayout_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QStackedLayout, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qstackedlayout_types.QStackedLayout, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQStackedLayout_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QStackedLayout, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qstackedlayout_types.QStackedLayout, s: cstring, c: cstring): string =
 
   let v_ms = fcQStackedLayout_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QStackedLayout, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qstackedlayout_types.QStackedLayout, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQStackedLayout_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QStackedLayout, ): gen_qobjectdefs.QMetaObject =
-
+proc QStackedLayoutmetaObject*(self: gen_qstackedlayout_types.QStackedLayout, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQStackedLayout_virtualbase_metaObject(self.h))
 
-type QStackedLayoutmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QStackedLayout, slot: proc(super: QStackedLayoutmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QStackedLayoutmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qstackedlayout_types.QStackedLayout, slot: QStackedLayoutmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QStackedLayoutmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QStackedLayoutmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStackedLayout_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStackedLayout_metaObject(self: ptr cQStackedLayout, slot: int): pointer {.exportc: "miqt_exec_callback_QStackedLayout_metaObject ".} =
-  type Cb = proc(super: QStackedLayoutmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QStackedLayout(h: self), )
+  var nimfunc = cast[ptr QStackedLayoutmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QStackedLayout, param1: cstring): pointer =
-
+proc QStackedLayoutmetacast*(self: gen_qstackedlayout_types.QStackedLayout, param1: cstring): pointer =
 
   fQStackedLayout_virtualbase_metacast(self.h, param1)
 
-type QStackedLayoutmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QStackedLayout, slot: proc(super: QStackedLayoutmetacastBase, param1: cstring): pointer) =
+type QStackedLayoutmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qstackedlayout_types.QStackedLayout, slot: QStackedLayoutmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QStackedLayoutmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QStackedLayoutmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStackedLayout_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStackedLayout_metacast(self: ptr cQStackedLayout, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QStackedLayout_metacast ".} =
-  type Cb = proc(super: QStackedLayoutmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QStackedLayout(h: self), param1)
+  var nimfunc = cast[ptr QStackedLayoutmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QStackedLayout, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QStackedLayoutmetacall*(self: gen_qstackedlayout_types.QStackedLayout, param1: cint, param2: cint, param3: pointer): cint =
 
   fQStackedLayout_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QStackedLayoutmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QStackedLayout, slot: proc(super: QStackedLayoutmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QStackedLayoutmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qstackedlayout_types.QStackedLayout, slot: QStackedLayoutmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QStackedLayoutmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QStackedLayoutmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStackedLayout_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStackedLayout_metacall(self: ptr cQStackedLayout, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QStackedLayout_metacall ".} =
-  type Cb = proc(super: QStackedLayoutmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QStackedLayout(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QStackedLayoutmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_count(self: QStackedLayout, ): cint =
-
+proc QStackedLayoutcount*(self: gen_qstackedlayout_types.QStackedLayout, ): cint =
 
   fQStackedLayout_virtualbase_count(self.h)
 
-type QStackedLayoutcountBase* = proc(): cint
-proc oncount*(self: QStackedLayout, slot: proc(super: QStackedLayoutcountBase): cint) =
+type QStackedLayoutcountProc* = proc(): cint
+proc oncount*(self: gen_qstackedlayout_types.QStackedLayout, slot: QStackedLayoutcountProc) =
   # TODO check subclass
-  type Cb = proc(super: QStackedLayoutcountBase): cint
-  var tmp = new Cb
+  var tmp = new QStackedLayoutcountProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStackedLayout_override_virtual_count(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStackedLayout_count(self: ptr cQStackedLayout, slot: int): cint {.exportc: "miqt_exec_callback_QStackedLayout_count ".} =
-  type Cb = proc(super: QStackedLayoutcountBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_count(QStackedLayout(h: self), )
+  var nimfunc = cast[ptr QStackedLayoutcountProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_addItem(self: QStackedLayout, item: gen_qlayoutitem.QLayoutItem): void =
-
+proc QStackedLayoutaddItem*(self: gen_qstackedlayout_types.QStackedLayout, item: gen_qlayoutitem.QLayoutItem): void =
 
   fQStackedLayout_virtualbase_addItem(self.h, item.h)
 
-type QStackedLayoutaddItemBase* = proc(item: gen_qlayoutitem.QLayoutItem): void
-proc onaddItem*(self: QStackedLayout, slot: proc(super: QStackedLayoutaddItemBase, item: gen_qlayoutitem.QLayoutItem): void) =
+type QStackedLayoutaddItemProc* = proc(item: gen_qlayoutitem.QLayoutItem): void
+proc onaddItem*(self: gen_qstackedlayout_types.QStackedLayout, slot: QStackedLayoutaddItemProc) =
   # TODO check subclass
-  type Cb = proc(super: QStackedLayoutaddItemBase, item: gen_qlayoutitem.QLayoutItem): void
-  var tmp = new Cb
+  var tmp = new QStackedLayoutaddItemProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStackedLayout_override_virtual_addItem(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStackedLayout_addItem(self: ptr cQStackedLayout, slot: int, item: pointer): void {.exportc: "miqt_exec_callback_QStackedLayout_addItem ".} =
-  type Cb = proc(super: QStackedLayoutaddItemBase, item: gen_qlayoutitem.QLayoutItem): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(item: gen_qlayoutitem.QLayoutItem): auto =
-    callVirtualBase_addItem(QStackedLayout(h: self), item)
+  var nimfunc = cast[ptr QStackedLayoutaddItemProc](cast[pointer](slot))
   let slotval1 = gen_qlayoutitem.QLayoutItem(h: item)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_sizeHint(self: QStackedLayout, ): gen_qsize.QSize =
-
+  nimfunc[](slotval1)
+proc QStackedLayoutsizeHint*(self: gen_qstackedlayout_types.QStackedLayout, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQStackedLayout_virtualbase_sizeHint(self.h))
 
-type QStackedLayoutsizeHintBase* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: QStackedLayout, slot: proc(super: QStackedLayoutsizeHintBase): gen_qsize.QSize) =
+type QStackedLayoutsizeHintProc* = proc(): gen_qsize.QSize
+proc onsizeHint*(self: gen_qstackedlayout_types.QStackedLayout, slot: QStackedLayoutsizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QStackedLayoutsizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QStackedLayoutsizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStackedLayout_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStackedLayout_sizeHint(self: ptr cQStackedLayout, slot: int): pointer {.exportc: "miqt_exec_callback_QStackedLayout_sizeHint ".} =
-  type Cb = proc(super: QStackedLayoutsizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sizeHint(QStackedLayout(h: self), )
+  var nimfunc = cast[ptr QStackedLayoutsizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_minimumSize(self: QStackedLayout, ): gen_qsize.QSize =
-
+proc QStackedLayoutminimumSize*(self: gen_qstackedlayout_types.QStackedLayout, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQStackedLayout_virtualbase_minimumSize(self.h))
 
-type QStackedLayoutminimumSizeBase* = proc(): gen_qsize.QSize
-proc onminimumSize*(self: QStackedLayout, slot: proc(super: QStackedLayoutminimumSizeBase): gen_qsize.QSize) =
+type QStackedLayoutminimumSizeProc* = proc(): gen_qsize.QSize
+proc onminimumSize*(self: gen_qstackedlayout_types.QStackedLayout, slot: QStackedLayoutminimumSizeProc) =
   # TODO check subclass
-  type Cb = proc(super: QStackedLayoutminimumSizeBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QStackedLayoutminimumSizeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStackedLayout_override_virtual_minimumSize(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStackedLayout_minimumSize(self: ptr cQStackedLayout, slot: int): pointer {.exportc: "miqt_exec_callback_QStackedLayout_minimumSize ".} =
-  type Cb = proc(super: QStackedLayoutminimumSizeBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_minimumSize(QStackedLayout(h: self), )
+  var nimfunc = cast[ptr QStackedLayoutminimumSizeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_itemAt(self: QStackedLayout, param1: cint): gen_qlayoutitem.QLayoutItem =
-
+proc QStackedLayoutitemAt*(self: gen_qstackedlayout_types.QStackedLayout, param1: cint): gen_qlayoutitem.QLayoutItem =
 
   gen_qlayoutitem.QLayoutItem(h: fQStackedLayout_virtualbase_itemAt(self.h, param1))
 
-type QStackedLayoutitemAtBase* = proc(param1: cint): gen_qlayoutitem.QLayoutItem
-proc onitemAt*(self: QStackedLayout, slot: proc(super: QStackedLayoutitemAtBase, param1: cint): gen_qlayoutitem.QLayoutItem) =
+type QStackedLayoutitemAtProc* = proc(param1: cint): gen_qlayoutitem.QLayoutItem
+proc onitemAt*(self: gen_qstackedlayout_types.QStackedLayout, slot: QStackedLayoutitemAtProc) =
   # TODO check subclass
-  type Cb = proc(super: QStackedLayoutitemAtBase, param1: cint): gen_qlayoutitem.QLayoutItem
-  var tmp = new Cb
+  var tmp = new QStackedLayoutitemAtProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStackedLayout_override_virtual_itemAt(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStackedLayout_itemAt(self: ptr cQStackedLayout, slot: int, param1: cint): pointer {.exportc: "miqt_exec_callback_QStackedLayout_itemAt ".} =
-  type Cb = proc(super: QStackedLayoutitemAtBase, param1: cint): gen_qlayoutitem.QLayoutItem
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_itemAt(QStackedLayout(h: self), param1)
+  var nimfunc = cast[ptr QStackedLayoutitemAtProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_takeAt(self: QStackedLayout, param1: cint): gen_qlayoutitem.QLayoutItem =
-
+proc QStackedLayouttakeAt*(self: gen_qstackedlayout_types.QStackedLayout, param1: cint): gen_qlayoutitem.QLayoutItem =
 
   gen_qlayoutitem.QLayoutItem(h: fQStackedLayout_virtualbase_takeAt(self.h, param1))
 
-type QStackedLayouttakeAtBase* = proc(param1: cint): gen_qlayoutitem.QLayoutItem
-proc ontakeAt*(self: QStackedLayout, slot: proc(super: QStackedLayouttakeAtBase, param1: cint): gen_qlayoutitem.QLayoutItem) =
+type QStackedLayouttakeAtProc* = proc(param1: cint): gen_qlayoutitem.QLayoutItem
+proc ontakeAt*(self: gen_qstackedlayout_types.QStackedLayout, slot: QStackedLayouttakeAtProc) =
   # TODO check subclass
-  type Cb = proc(super: QStackedLayouttakeAtBase, param1: cint): gen_qlayoutitem.QLayoutItem
-  var tmp = new Cb
+  var tmp = new QStackedLayouttakeAtProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStackedLayout_override_virtual_takeAt(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStackedLayout_takeAt(self: ptr cQStackedLayout, slot: int, param1: cint): pointer {.exportc: "miqt_exec_callback_QStackedLayout_takeAt ".} =
-  type Cb = proc(super: QStackedLayouttakeAtBase, param1: cint): gen_qlayoutitem.QLayoutItem
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_takeAt(QStackedLayout(h: self), param1)
+  var nimfunc = cast[ptr QStackedLayouttakeAtProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_setGeometry(self: QStackedLayout, rect: gen_qrect.QRect): void =
-
+proc QStackedLayoutsetGeometry*(self: gen_qstackedlayout_types.QStackedLayout, rect: gen_qrect.QRect): void =
 
   fQStackedLayout_virtualbase_setGeometry(self.h, rect.h)
 
-type QStackedLayoutsetGeometryBase* = proc(rect: gen_qrect.QRect): void
-proc onsetGeometry*(self: QStackedLayout, slot: proc(super: QStackedLayoutsetGeometryBase, rect: gen_qrect.QRect): void) =
+type QStackedLayoutsetGeometryProc* = proc(rect: gen_qrect.QRect): void
+proc onsetGeometry*(self: gen_qstackedlayout_types.QStackedLayout, slot: QStackedLayoutsetGeometryProc) =
   # TODO check subclass
-  type Cb = proc(super: QStackedLayoutsetGeometryBase, rect: gen_qrect.QRect): void
-  var tmp = new Cb
+  var tmp = new QStackedLayoutsetGeometryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStackedLayout_override_virtual_setGeometry(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStackedLayout_setGeometry(self: ptr cQStackedLayout, slot: int, rect: pointer): void {.exportc: "miqt_exec_callback_QStackedLayout_setGeometry ".} =
-  type Cb = proc(super: QStackedLayoutsetGeometryBase, rect: gen_qrect.QRect): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(rect: gen_qrect.QRect): auto =
-    callVirtualBase_setGeometry(QStackedLayout(h: self), rect)
+  var nimfunc = cast[ptr QStackedLayoutsetGeometryProc](cast[pointer](slot))
   let slotval1 = gen_qrect.QRect(h: rect)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hasHeightForWidth(self: QStackedLayout, ): bool =
-
+  nimfunc[](slotval1)
+proc QStackedLayouthasHeightForWidth*(self: gen_qstackedlayout_types.QStackedLayout, ): bool =
 
   fQStackedLayout_virtualbase_hasHeightForWidth(self.h)
 
-type QStackedLayouthasHeightForWidthBase* = proc(): bool
-proc onhasHeightForWidth*(self: QStackedLayout, slot: proc(super: QStackedLayouthasHeightForWidthBase): bool) =
+type QStackedLayouthasHeightForWidthProc* = proc(): bool
+proc onhasHeightForWidth*(self: gen_qstackedlayout_types.QStackedLayout, slot: QStackedLayouthasHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QStackedLayouthasHeightForWidthBase): bool
-  var tmp = new Cb
+  var tmp = new QStackedLayouthasHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStackedLayout_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStackedLayout_hasHeightForWidth(self: ptr cQStackedLayout, slot: int): bool {.exportc: "miqt_exec_callback_QStackedLayout_hasHeightForWidth ".} =
-  type Cb = proc(super: QStackedLayouthasHeightForWidthBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasHeightForWidth(QStackedLayout(h: self), )
+  var nimfunc = cast[ptr QStackedLayouthasHeightForWidthProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_heightForWidth(self: QStackedLayout, width: cint): cint =
-
+proc QStackedLayoutheightForWidth*(self: gen_qstackedlayout_types.QStackedLayout, width: cint): cint =
 
   fQStackedLayout_virtualbase_heightForWidth(self.h, width)
 
-type QStackedLayoutheightForWidthBase* = proc(width: cint): cint
-proc onheightForWidth*(self: QStackedLayout, slot: proc(super: QStackedLayoutheightForWidthBase, width: cint): cint) =
+type QStackedLayoutheightForWidthProc* = proc(width: cint): cint
+proc onheightForWidth*(self: gen_qstackedlayout_types.QStackedLayout, slot: QStackedLayoutheightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QStackedLayoutheightForWidthBase, width: cint): cint
-  var tmp = new Cb
+  var tmp = new QStackedLayoutheightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStackedLayout_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStackedLayout_heightForWidth(self: ptr cQStackedLayout, slot: int, width: cint): cint {.exportc: "miqt_exec_callback_QStackedLayout_heightForWidth ".} =
-  type Cb = proc(super: QStackedLayoutheightForWidthBase, width: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(width: cint): auto =
-    callVirtualBase_heightForWidth(QStackedLayout(h: self), width)
+  var nimfunc = cast[ptr QStackedLayoutheightForWidthProc](cast[pointer](slot))
   let slotval1 = width
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_invalidate(self: QStackedLayout, ): void =
-
+proc QStackedLayoutinvalidate*(self: gen_qstackedlayout_types.QStackedLayout, ): void =
 
   fQStackedLayout_virtualbase_invalidate(self.h)
 
-type QStackedLayoutinvalidateBase* = proc(): void
-proc oninvalidate*(self: QStackedLayout, slot: proc(super: QStackedLayoutinvalidateBase): void) =
+type QStackedLayoutinvalidateProc* = proc(): void
+proc oninvalidate*(self: gen_qstackedlayout_types.QStackedLayout, slot: QStackedLayoutinvalidateProc) =
   # TODO check subclass
-  type Cb = proc(super: QStackedLayoutinvalidateBase): void
-  var tmp = new Cb
+  var tmp = new QStackedLayoutinvalidateProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStackedLayout_override_virtual_invalidate(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStackedLayout_invalidate(self: ptr cQStackedLayout, slot: int): void {.exportc: "miqt_exec_callback_QStackedLayout_invalidate ".} =
-  type Cb = proc(super: QStackedLayoutinvalidateBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_invalidate(QStackedLayout(h: self), )
+  var nimfunc = cast[ptr QStackedLayoutinvalidateProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_geometry(self: QStackedLayout, ): gen_qrect.QRect =
-
+  nimfunc[]()
+proc QStackedLayoutgeometry*(self: gen_qstackedlayout_types.QStackedLayout, ): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fQStackedLayout_virtualbase_geometry(self.h))
 
-type QStackedLayoutgeometryBase* = proc(): gen_qrect.QRect
-proc ongeometry*(self: QStackedLayout, slot: proc(super: QStackedLayoutgeometryBase): gen_qrect.QRect) =
+type QStackedLayoutgeometryProc* = proc(): gen_qrect.QRect
+proc ongeometry*(self: gen_qstackedlayout_types.QStackedLayout, slot: QStackedLayoutgeometryProc) =
   # TODO check subclass
-  type Cb = proc(super: QStackedLayoutgeometryBase): gen_qrect.QRect
-  var tmp = new Cb
+  var tmp = new QStackedLayoutgeometryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStackedLayout_override_virtual_geometry(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStackedLayout_geometry(self: ptr cQStackedLayout, slot: int): pointer {.exportc: "miqt_exec_callback_QStackedLayout_geometry ".} =
-  type Cb = proc(super: QStackedLayoutgeometryBase): gen_qrect.QRect
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_geometry(QStackedLayout(h: self), )
+  var nimfunc = cast[ptr QStackedLayoutgeometryProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_expandingDirections(self: QStackedLayout, ): gen_qnamespace.Orientation =
+proc QStackedLayoutexpandingDirections*(self: gen_qstackedlayout_types.QStackedLayout, ): cint =
 
+  cint(fQStackedLayout_virtualbase_expandingDirections(self.h))
 
-  gen_qnamespace.Orientation(fQStackedLayout_virtualbase_expandingDirections(self.h))
-
-type QStackedLayoutexpandingDirectionsBase* = proc(): gen_qnamespace.Orientation
-proc onexpandingDirections*(self: QStackedLayout, slot: proc(super: QStackedLayoutexpandingDirectionsBase): gen_qnamespace.Orientation) =
+type QStackedLayoutexpandingDirectionsProc* = proc(): cint
+proc onexpandingDirections*(self: gen_qstackedlayout_types.QStackedLayout, slot: QStackedLayoutexpandingDirectionsProc) =
   # TODO check subclass
-  type Cb = proc(super: QStackedLayoutexpandingDirectionsBase): gen_qnamespace.Orientation
-  var tmp = new Cb
+  var tmp = new QStackedLayoutexpandingDirectionsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStackedLayout_override_virtual_expandingDirections(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStackedLayout_expandingDirections(self: ptr cQStackedLayout, slot: int): cint {.exportc: "miqt_exec_callback_QStackedLayout_expandingDirections ".} =
-  type Cb = proc(super: QStackedLayoutexpandingDirectionsBase): gen_qnamespace.Orientation
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_expandingDirections(QStackedLayout(h: self), )
+  var nimfunc = cast[ptr QStackedLayoutexpandingDirectionsProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   cint(virtualReturn)
-proc callVirtualBase_maximumSize(self: QStackedLayout, ): gen_qsize.QSize =
-
+proc QStackedLayoutmaximumSize*(self: gen_qstackedlayout_types.QStackedLayout, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQStackedLayout_virtualbase_maximumSize(self.h))
 
-type QStackedLayoutmaximumSizeBase* = proc(): gen_qsize.QSize
-proc onmaximumSize*(self: QStackedLayout, slot: proc(super: QStackedLayoutmaximumSizeBase): gen_qsize.QSize) =
+type QStackedLayoutmaximumSizeProc* = proc(): gen_qsize.QSize
+proc onmaximumSize*(self: gen_qstackedlayout_types.QStackedLayout, slot: QStackedLayoutmaximumSizeProc) =
   # TODO check subclass
-  type Cb = proc(super: QStackedLayoutmaximumSizeBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QStackedLayoutmaximumSizeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStackedLayout_override_virtual_maximumSize(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStackedLayout_maximumSize(self: ptr cQStackedLayout, slot: int): pointer {.exportc: "miqt_exec_callback_QStackedLayout_maximumSize ".} =
-  type Cb = proc(super: QStackedLayoutmaximumSizeBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_maximumSize(QStackedLayout(h: self), )
+  var nimfunc = cast[ptr QStackedLayoutmaximumSizeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_indexOf(self: QStackedLayout, param1: gen_qwidget.QWidget): cint =
-
+proc QStackedLayoutindexOf*(self: gen_qstackedlayout_types.QStackedLayout, param1: gen_qwidget.QWidget): cint =
 
   fQStackedLayout_virtualbase_indexOf(self.h, param1.h)
 
-type QStackedLayoutindexOfBase* = proc(param1: gen_qwidget.QWidget): cint
-proc onindexOf*(self: QStackedLayout, slot: proc(super: QStackedLayoutindexOfBase, param1: gen_qwidget.QWidget): cint) =
+type QStackedLayoutindexOfProc* = proc(param1: gen_qwidget.QWidget): cint
+proc onindexOf*(self: gen_qstackedlayout_types.QStackedLayout, slot: QStackedLayoutindexOfProc) =
   # TODO check subclass
-  type Cb = proc(super: QStackedLayoutindexOfBase, param1: gen_qwidget.QWidget): cint
-  var tmp = new Cb
+  var tmp = new QStackedLayoutindexOfProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStackedLayout_override_virtual_indexOf(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStackedLayout_indexOf(self: ptr cQStackedLayout, slot: int, param1: pointer): cint {.exportc: "miqt_exec_callback_QStackedLayout_indexOf ".} =
-  type Cb = proc(super: QStackedLayoutindexOfBase, param1: gen_qwidget.QWidget): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qwidget.QWidget): auto =
-    callVirtualBase_indexOf(QStackedLayout(h: self), param1)
+  var nimfunc = cast[ptr QStackedLayoutindexOfProc](cast[pointer](slot))
   let slotval1 = gen_qwidget.QWidget(h: param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_isEmpty(self: QStackedLayout, ): bool =
-
+proc QStackedLayoutisEmpty*(self: gen_qstackedlayout_types.QStackedLayout, ): bool =
 
   fQStackedLayout_virtualbase_isEmpty(self.h)
 
-type QStackedLayoutisEmptyBase* = proc(): bool
-proc onisEmpty*(self: QStackedLayout, slot: proc(super: QStackedLayoutisEmptyBase): bool) =
+type QStackedLayoutisEmptyProc* = proc(): bool
+proc onisEmpty*(self: gen_qstackedlayout_types.QStackedLayout, slot: QStackedLayoutisEmptyProc) =
   # TODO check subclass
-  type Cb = proc(super: QStackedLayoutisEmptyBase): bool
-  var tmp = new Cb
+  var tmp = new QStackedLayoutisEmptyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStackedLayout_override_virtual_isEmpty(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStackedLayout_isEmpty(self: ptr cQStackedLayout, slot: int): bool {.exportc: "miqt_exec_callback_QStackedLayout_isEmpty ".} =
-  type Cb = proc(super: QStackedLayoutisEmptyBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_isEmpty(QStackedLayout(h: self), )
+  var nimfunc = cast[ptr QStackedLayoutisEmptyProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_controlTypes(self: QStackedLayout, ): gen_qsizepolicy.QSizePolicyControlType =
+proc QStackedLayoutcontrolTypes*(self: gen_qstackedlayout_types.QStackedLayout, ): cint =
 
+  cint(fQStackedLayout_virtualbase_controlTypes(self.h))
 
-  gen_qsizepolicy.QSizePolicyControlType(fQStackedLayout_virtualbase_controlTypes(self.h))
-
-type QStackedLayoutcontrolTypesBase* = proc(): gen_qsizepolicy.QSizePolicyControlType
-proc oncontrolTypes*(self: QStackedLayout, slot: proc(super: QStackedLayoutcontrolTypesBase): gen_qsizepolicy.QSizePolicyControlType) =
+type QStackedLayoutcontrolTypesProc* = proc(): cint
+proc oncontrolTypes*(self: gen_qstackedlayout_types.QStackedLayout, slot: QStackedLayoutcontrolTypesProc) =
   # TODO check subclass
-  type Cb = proc(super: QStackedLayoutcontrolTypesBase): gen_qsizepolicy.QSizePolicyControlType
-  var tmp = new Cb
+  var tmp = new QStackedLayoutcontrolTypesProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStackedLayout_override_virtual_controlTypes(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStackedLayout_controlTypes(self: ptr cQStackedLayout, slot: int): cint {.exportc: "miqt_exec_callback_QStackedLayout_controlTypes ".} =
-  type Cb = proc(super: QStackedLayoutcontrolTypesBase): gen_qsizepolicy.QSizePolicyControlType
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_controlTypes(QStackedLayout(h: self), )
+  var nimfunc = cast[ptr QStackedLayoutcontrolTypesProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   cint(virtualReturn)
-proc callVirtualBase_layout(self: QStackedLayout, ): gen_qlayout.QLayout =
-
+proc QStackedLayoutlayout*(self: gen_qstackedlayout_types.QStackedLayout, ): gen_qlayout.QLayout =
 
   gen_qlayout.QLayout(h: fQStackedLayout_virtualbase_layout(self.h))
 
-type QStackedLayoutlayoutBase* = proc(): gen_qlayout.QLayout
-proc onlayout*(self: QStackedLayout, slot: proc(super: QStackedLayoutlayoutBase): gen_qlayout.QLayout) =
+type QStackedLayoutlayoutProc* = proc(): gen_qlayout.QLayout
+proc onlayout*(self: gen_qstackedlayout_types.QStackedLayout, slot: QStackedLayoutlayoutProc) =
   # TODO check subclass
-  type Cb = proc(super: QStackedLayoutlayoutBase): gen_qlayout.QLayout
-  var tmp = new Cb
+  var tmp = new QStackedLayoutlayoutProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStackedLayout_override_virtual_layout(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStackedLayout_layout(self: ptr cQStackedLayout, slot: int): pointer {.exportc: "miqt_exec_callback_QStackedLayout_layout ".} =
-  type Cb = proc(super: QStackedLayoutlayoutBase): gen_qlayout.QLayout
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_layout(QStackedLayout(h: self), )
+  var nimfunc = cast[ptr QStackedLayoutlayoutProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_childEvent(self: QStackedLayout, e: gen_qcoreevent.QChildEvent): void =
-
+proc QStackedLayoutchildEvent*(self: gen_qstackedlayout_types.QStackedLayout, e: gen_qcoreevent.QChildEvent): void =
 
   fQStackedLayout_virtualbase_childEvent(self.h, e.h)
 
-type QStackedLayoutchildEventBase* = proc(e: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QStackedLayout, slot: proc(super: QStackedLayoutchildEventBase, e: gen_qcoreevent.QChildEvent): void) =
+type QStackedLayoutchildEventProc* = proc(e: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qstackedlayout_types.QStackedLayout, slot: QStackedLayoutchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QStackedLayoutchildEventBase, e: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QStackedLayoutchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStackedLayout_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStackedLayout_childEvent(self: ptr cQStackedLayout, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QStackedLayout_childEvent ".} =
-  type Cb = proc(super: QStackedLayoutchildEventBase, e: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QStackedLayout(h: self), e)
+  var nimfunc = cast[ptr QStackedLayoutchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_event(self: QStackedLayout, event: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[](slotval1)
+proc QStackedLayoutevent*(self: gen_qstackedlayout_types.QStackedLayout, event: gen_qcoreevent.QEvent): bool =
 
   fQStackedLayout_virtualbase_event(self.h, event.h)
 
-type QStackedLayouteventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QStackedLayout, slot: proc(super: QStackedLayouteventBase, event: gen_qcoreevent.QEvent): bool) =
+type QStackedLayouteventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qstackedlayout_types.QStackedLayout, slot: QStackedLayouteventProc) =
   # TODO check subclass
-  type Cb = proc(super: QStackedLayouteventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QStackedLayouteventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStackedLayout_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStackedLayout_event(self: ptr cQStackedLayout, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QStackedLayout_event ".} =
-  type Cb = proc(super: QStackedLayouteventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QStackedLayout(h: self), event)
+  var nimfunc = cast[ptr QStackedLayouteventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QStackedLayout, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QStackedLayouteventFilter*(self: gen_qstackedlayout_types.QStackedLayout, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQStackedLayout_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QStackedLayouteventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QStackedLayout, slot: proc(super: QStackedLayouteventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QStackedLayouteventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qstackedlayout_types.QStackedLayout, slot: QStackedLayouteventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QStackedLayouteventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QStackedLayouteventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStackedLayout_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStackedLayout_eventFilter(self: ptr cQStackedLayout, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QStackedLayout_eventFilter ".} =
-  type Cb = proc(super: QStackedLayouteventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QStackedLayout(h: self), watched, event)
+  var nimfunc = cast[ptr QStackedLayouteventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QStackedLayout, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QStackedLayouttimerEvent*(self: gen_qstackedlayout_types.QStackedLayout, event: gen_qcoreevent.QTimerEvent): void =
 
   fQStackedLayout_virtualbase_timerEvent(self.h, event.h)
 
-type QStackedLayouttimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QStackedLayout, slot: proc(super: QStackedLayouttimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QStackedLayouttimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qstackedlayout_types.QStackedLayout, slot: QStackedLayouttimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QStackedLayouttimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QStackedLayouttimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStackedLayout_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStackedLayout_timerEvent(self: ptr cQStackedLayout, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QStackedLayout_timerEvent ".} =
-  type Cb = proc(super: QStackedLayouttimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QStackedLayout(h: self), event)
+  var nimfunc = cast[ptr QStackedLayouttimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QStackedLayout, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QStackedLayoutcustomEvent*(self: gen_qstackedlayout_types.QStackedLayout, event: gen_qcoreevent.QEvent): void =
 
   fQStackedLayout_virtualbase_customEvent(self.h, event.h)
 
-type QStackedLayoutcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QStackedLayout, slot: proc(super: QStackedLayoutcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QStackedLayoutcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qstackedlayout_types.QStackedLayout, slot: QStackedLayoutcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QStackedLayoutcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QStackedLayoutcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStackedLayout_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStackedLayout_customEvent(self: ptr cQStackedLayout, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QStackedLayout_customEvent ".} =
-  type Cb = proc(super: QStackedLayoutcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QStackedLayout(h: self), event)
+  var nimfunc = cast[ptr QStackedLayoutcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QStackedLayout, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QStackedLayoutconnectNotify*(self: gen_qstackedlayout_types.QStackedLayout, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQStackedLayout_virtualbase_connectNotify(self.h, signal.h)
 
-type QStackedLayoutconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QStackedLayout, slot: proc(super: QStackedLayoutconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QStackedLayoutconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qstackedlayout_types.QStackedLayout, slot: QStackedLayoutconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QStackedLayoutconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QStackedLayoutconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStackedLayout_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStackedLayout_connectNotify(self: ptr cQStackedLayout, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QStackedLayout_connectNotify ".} =
-  type Cb = proc(super: QStackedLayoutconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QStackedLayout(h: self), signal)
+  var nimfunc = cast[ptr QStackedLayoutconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QStackedLayout, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QStackedLayoutdisconnectNotify*(self: gen_qstackedlayout_types.QStackedLayout, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQStackedLayout_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QStackedLayoutdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QStackedLayout, slot: proc(super: QStackedLayoutdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QStackedLayoutdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qstackedlayout_types.QStackedLayout, slot: QStackedLayoutdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QStackedLayoutdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QStackedLayoutdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStackedLayout_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStackedLayout_disconnectNotify(self: ptr cQStackedLayout, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QStackedLayout_disconnectNotify ".} =
-  type Cb = proc(super: QStackedLayoutdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QStackedLayout(h: self), signal)
+  var nimfunc = cast[ptr QStackedLayoutdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_minimumHeightForWidth(self: QStackedLayout, param1: cint): cint =
-
+  nimfunc[](slotval1)
+proc QStackedLayoutminimumHeightForWidth*(self: gen_qstackedlayout_types.QStackedLayout, param1: cint): cint =
 
   fQStackedLayout_virtualbase_minimumHeightForWidth(self.h, param1)
 
-type QStackedLayoutminimumHeightForWidthBase* = proc(param1: cint): cint
-proc onminimumHeightForWidth*(self: QStackedLayout, slot: proc(super: QStackedLayoutminimumHeightForWidthBase, param1: cint): cint) =
+type QStackedLayoutminimumHeightForWidthProc* = proc(param1: cint): cint
+proc onminimumHeightForWidth*(self: gen_qstackedlayout_types.QStackedLayout, slot: QStackedLayoutminimumHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QStackedLayoutminimumHeightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QStackedLayoutminimumHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStackedLayout_override_virtual_minimumHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStackedLayout_minimumHeightForWidth(self: ptr cQStackedLayout, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QStackedLayout_minimumHeightForWidth ".} =
-  type Cb = proc(super: QStackedLayoutminimumHeightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_minimumHeightForWidth(QStackedLayout(h: self), param1)
+  var nimfunc = cast[ptr QStackedLayoutminimumHeightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_widget(self: QStackedLayout, ): gen_qwidget.QWidget =
-
+proc QStackedLayoutwidget*(self: gen_qstackedlayout_types.QStackedLayout, ): gen_qwidget.QWidget =
 
   gen_qwidget.QWidget(h: fQStackedLayout_virtualbase_widget(self.h))
 
-type QStackedLayoutwidgetBase* = proc(): gen_qwidget.QWidget
-proc onwidget*(self: QStackedLayout, slot: proc(super: QStackedLayoutwidgetBase): gen_qwidget.QWidget) =
+type QStackedLayoutwidgetProc* = proc(): gen_qwidget.QWidget
+proc onwidget*(self: gen_qstackedlayout_types.QStackedLayout, slot: QStackedLayoutwidgetProc) =
   # TODO check subclass
-  type Cb = proc(super: QStackedLayoutwidgetBase): gen_qwidget.QWidget
-  var tmp = new Cb
+  var tmp = new QStackedLayoutwidgetProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStackedLayout_override_virtual_widget(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStackedLayout_widget(self: ptr cQStackedLayout, slot: int): pointer {.exportc: "miqt_exec_callback_QStackedLayout_widget ".} =
-  type Cb = proc(super: QStackedLayoutwidgetBase): gen_qwidget.QWidget
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_widget(QStackedLayout(h: self), )
+  var nimfunc = cast[ptr QStackedLayoutwidgetProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_spacerItem(self: QStackedLayout, ): gen_qlayoutitem.QSpacerItem =
-
+proc QStackedLayoutspacerItem*(self: gen_qstackedlayout_types.QStackedLayout, ): gen_qlayoutitem.QSpacerItem =
 
   gen_qlayoutitem.QSpacerItem(h: fQStackedLayout_virtualbase_spacerItem(self.h))
 
-type QStackedLayoutspacerItemBase* = proc(): gen_qlayoutitem.QSpacerItem
-proc onspacerItem*(self: QStackedLayout, slot: proc(super: QStackedLayoutspacerItemBase): gen_qlayoutitem.QSpacerItem) =
+type QStackedLayoutspacerItemProc* = proc(): gen_qlayoutitem.QSpacerItem
+proc onspacerItem*(self: gen_qstackedlayout_types.QStackedLayout, slot: QStackedLayoutspacerItemProc) =
   # TODO check subclass
-  type Cb = proc(super: QStackedLayoutspacerItemBase): gen_qlayoutitem.QSpacerItem
-  var tmp = new Cb
+  var tmp = new QStackedLayoutspacerItemProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStackedLayout_override_virtual_spacerItem(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStackedLayout_spacerItem(self: ptr cQStackedLayout, slot: int): pointer {.exportc: "miqt_exec_callback_QStackedLayout_spacerItem ".} =
-  type Cb = proc(super: QStackedLayoutspacerItemBase): gen_qlayoutitem.QSpacerItem
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_spacerItem(QStackedLayout(h: self), )
+  var nimfunc = cast[ptr QStackedLayoutspacerItemProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc staticMetaObject*(_: type QStackedLayout): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qstackedlayout_types.QStackedLayout): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQStackedLayout_staticMetaObject())
-proc delete*(self: QStackedLayout) =
+proc delete*(self: gen_qstackedlayout_types.QStackedLayout) =
   fcQStackedLayout_delete(self.h)

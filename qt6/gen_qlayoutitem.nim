@@ -39,14 +39,12 @@ export gen_qlayoutitem_types
 
 import
   gen_qlayout,
-  gen_qnamespace,
   gen_qrect,
   gen_qsize,
   gen_qsizepolicy,
   gen_qwidget
 export
   gen_qlayout,
-  gen_qnamespace,
   gen_qrect,
   gen_qsize,
   gen_qsizepolicy,
@@ -230,1568 +228,1289 @@ proc fcQWidgetItemV2_override_virtual_spacerItem(self: pointer, slot: int) {.imp
 proc fcQWidgetItemV2_delete(self: pointer) {.importc: "QWidgetItemV2_delete".}
 
 
-func init*(T: type QLayoutItem, h: ptr cQLayoutItem): QLayoutItem =
+func init*(T: type gen_qlayoutitem_types.QLayoutItem, h: ptr cQLayoutItem): gen_qlayoutitem_types.QLayoutItem =
   T(h: h)
-proc create*(T: type QLayoutItem, ): QLayoutItem =
+proc create*(T: type gen_qlayoutitem_types.QLayoutItem, ): gen_qlayoutitem_types.QLayoutItem =
 
-  QLayoutItem.init(fcQLayoutItem_new())
-proc create*(T: type QLayoutItem, param1: QLayoutItem): QLayoutItem =
+  gen_qlayoutitem_types.QLayoutItem.init(fcQLayoutItem_new())
+proc create*(T: type gen_qlayoutitem_types.QLayoutItem, param1: gen_qlayoutitem_types.QLayoutItem): gen_qlayoutitem_types.QLayoutItem =
 
-  QLayoutItem.init(fcQLayoutItem_new2(param1.h))
-proc create*(T: type QLayoutItem, alignment: gen_qnamespace.AlignmentFlag): QLayoutItem =
+  gen_qlayoutitem_types.QLayoutItem.init(fcQLayoutItem_new2(param1.h))
+proc create*(T: type gen_qlayoutitem_types.QLayoutItem, alignment: cint): gen_qlayoutitem_types.QLayoutItem =
 
-  QLayoutItem.init(fcQLayoutItem_new3(cint(alignment)))
-proc sizeHint*(self: QLayoutItem, ): gen_qsize.QSize =
+  gen_qlayoutitem_types.QLayoutItem.init(fcQLayoutItem_new3(cint(alignment)))
+proc sizeHint*(self: gen_qlayoutitem_types.QLayoutItem, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQLayoutItem_sizeHint(self.h))
 
-proc minimumSize*(self: QLayoutItem, ): gen_qsize.QSize =
+proc minimumSize*(self: gen_qlayoutitem_types.QLayoutItem, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQLayoutItem_minimumSize(self.h))
 
-proc maximumSize*(self: QLayoutItem, ): gen_qsize.QSize =
+proc maximumSize*(self: gen_qlayoutitem_types.QLayoutItem, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQLayoutItem_maximumSize(self.h))
 
-proc expandingDirections*(self: QLayoutItem, ): gen_qnamespace.Orientation =
+proc expandingDirections*(self: gen_qlayoutitem_types.QLayoutItem, ): cint =
 
-  gen_qnamespace.Orientation(fcQLayoutItem_expandingDirections(self.h))
+  cint(fcQLayoutItem_expandingDirections(self.h))
 
-proc setGeometry*(self: QLayoutItem, geometry: gen_qrect.QRect): void =
+proc setGeometry*(self: gen_qlayoutitem_types.QLayoutItem, geometry: gen_qrect.QRect): void =
 
   fcQLayoutItem_setGeometry(self.h, geometry.h)
 
-proc geometry*(self: QLayoutItem, ): gen_qrect.QRect =
+proc geometry*(self: gen_qlayoutitem_types.QLayoutItem, ): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fcQLayoutItem_geometry(self.h))
 
-proc isEmpty*(self: QLayoutItem, ): bool =
+proc isEmpty*(self: gen_qlayoutitem_types.QLayoutItem, ): bool =
 
   fcQLayoutItem_isEmpty(self.h)
 
-proc hasHeightForWidth*(self: QLayoutItem, ): bool =
+proc hasHeightForWidth*(self: gen_qlayoutitem_types.QLayoutItem, ): bool =
 
   fcQLayoutItem_hasHeightForWidth(self.h)
 
-proc heightForWidth*(self: QLayoutItem, param1: cint): cint =
+proc heightForWidth*(self: gen_qlayoutitem_types.QLayoutItem, param1: cint): cint =
 
   fcQLayoutItem_heightForWidth(self.h, param1)
 
-proc minimumHeightForWidth*(self: QLayoutItem, param1: cint): cint =
+proc minimumHeightForWidth*(self: gen_qlayoutitem_types.QLayoutItem, param1: cint): cint =
 
   fcQLayoutItem_minimumHeightForWidth(self.h, param1)
 
-proc invalidate*(self: QLayoutItem, ): void =
+proc invalidate*(self: gen_qlayoutitem_types.QLayoutItem, ): void =
 
   fcQLayoutItem_invalidate(self.h)
 
-proc widget*(self: QLayoutItem, ): gen_qwidget.QWidget =
+proc widget*(self: gen_qlayoutitem_types.QLayoutItem, ): gen_qwidget.QWidget =
 
   gen_qwidget.QWidget(h: fcQLayoutItem_widget(self.h))
 
-proc layout*(self: QLayoutItem, ): gen_qlayout.QLayout =
+proc layout*(self: gen_qlayoutitem_types.QLayoutItem, ): gen_qlayout.QLayout =
 
   gen_qlayout.QLayout(h: fcQLayoutItem_layout(self.h))
 
-proc spacerItem*(self: QLayoutItem, ): QSpacerItem =
+proc spacerItem*(self: gen_qlayoutitem_types.QLayoutItem, ): gen_qlayoutitem_types.QSpacerItem =
 
-  QSpacerItem(h: fcQLayoutItem_spacerItem(self.h))
+  gen_qlayoutitem_types.QSpacerItem(h: fcQLayoutItem_spacerItem(self.h))
 
-proc alignment*(self: QLayoutItem, ): gen_qnamespace.AlignmentFlag =
+proc alignment*(self: gen_qlayoutitem_types.QLayoutItem, ): cint =
 
-  gen_qnamespace.AlignmentFlag(fcQLayoutItem_alignment(self.h))
+  cint(fcQLayoutItem_alignment(self.h))
 
-proc setAlignment*(self: QLayoutItem, a: gen_qnamespace.AlignmentFlag): void =
+proc setAlignment*(self: gen_qlayoutitem_types.QLayoutItem, a: cint): void =
 
   fcQLayoutItem_setAlignment(self.h, cint(a))
 
-proc controlTypes*(self: QLayoutItem, ): gen_qsizepolicy.QSizePolicyControlType =
+proc controlTypes*(self: gen_qlayoutitem_types.QLayoutItem, ): cint =
 
-  gen_qsizepolicy.QSizePolicyControlType(fcQLayoutItem_controlTypes(self.h))
+  cint(fcQLayoutItem_controlTypes(self.h))
 
-type QLayoutItemsizeHintBase* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: QLayoutItem, slot: proc(): gen_qsize.QSize) =
+type QLayoutItemsizeHintProc* = proc(): gen_qsize.QSize
+proc onsizeHint*(self: gen_qlayoutitem_types.QLayoutItem, slot: QLayoutItemsizeHintProc) =
   # TODO check subclass
-  type Cb = proc(): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QLayoutItemsizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLayoutItem_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLayoutItem_sizeHint(self: ptr cQLayoutItem, slot: int): pointer {.exportc: "miqt_exec_callback_QLayoutItem_sizeHint ".} =
-  type Cb = proc(): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QLayoutItemsizeHintProc](cast[pointer](slot))
 
   let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-type QLayoutItemminimumSizeBase* = proc(): gen_qsize.QSize
-proc onminimumSize*(self: QLayoutItem, slot: proc(): gen_qsize.QSize) =
+type QLayoutItemminimumSizeProc* = proc(): gen_qsize.QSize
+proc onminimumSize*(self: gen_qlayoutitem_types.QLayoutItem, slot: QLayoutItemminimumSizeProc) =
   # TODO check subclass
-  type Cb = proc(): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QLayoutItemminimumSizeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLayoutItem_override_virtual_minimumSize(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLayoutItem_minimumSize(self: ptr cQLayoutItem, slot: int): pointer {.exportc: "miqt_exec_callback_QLayoutItem_minimumSize ".} =
-  type Cb = proc(): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QLayoutItemminimumSizeProc](cast[pointer](slot))
 
   let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-type QLayoutItemmaximumSizeBase* = proc(): gen_qsize.QSize
-proc onmaximumSize*(self: QLayoutItem, slot: proc(): gen_qsize.QSize) =
+type QLayoutItemmaximumSizeProc* = proc(): gen_qsize.QSize
+proc onmaximumSize*(self: gen_qlayoutitem_types.QLayoutItem, slot: QLayoutItemmaximumSizeProc) =
   # TODO check subclass
-  type Cb = proc(): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QLayoutItemmaximumSizeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLayoutItem_override_virtual_maximumSize(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLayoutItem_maximumSize(self: ptr cQLayoutItem, slot: int): pointer {.exportc: "miqt_exec_callback_QLayoutItem_maximumSize ".} =
-  type Cb = proc(): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QLayoutItemmaximumSizeProc](cast[pointer](slot))
 
   let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-type QLayoutItemexpandingDirectionsBase* = proc(): gen_qnamespace.Orientation
-proc onexpandingDirections*(self: QLayoutItem, slot: proc(): gen_qnamespace.Orientation) =
+type QLayoutItemexpandingDirectionsProc* = proc(): cint
+proc onexpandingDirections*(self: gen_qlayoutitem_types.QLayoutItem, slot: QLayoutItemexpandingDirectionsProc) =
   # TODO check subclass
-  type Cb = proc(): gen_qnamespace.Orientation
-  var tmp = new Cb
+  var tmp = new QLayoutItemexpandingDirectionsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLayoutItem_override_virtual_expandingDirections(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLayoutItem_expandingDirections(self: ptr cQLayoutItem, slot: int): cint {.exportc: "miqt_exec_callback_QLayoutItem_expandingDirections ".} =
-  type Cb = proc(): gen_qnamespace.Orientation
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QLayoutItemexpandingDirectionsProc](cast[pointer](slot))
 
   let virtualReturn = nimfunc[]( )
 
   cint(virtualReturn)
-type QLayoutItemsetGeometryBase* = proc(geometry: gen_qrect.QRect): void
-proc onsetGeometry*(self: QLayoutItem, slot: proc(geometry: gen_qrect.QRect): void) =
+type QLayoutItemsetGeometryProc* = proc(geometry: gen_qrect.QRect): void
+proc onsetGeometry*(self: gen_qlayoutitem_types.QLayoutItem, slot: QLayoutItemsetGeometryProc) =
   # TODO check subclass
-  type Cb = proc(geometry: gen_qrect.QRect): void
-  var tmp = new Cb
+  var tmp = new QLayoutItemsetGeometryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLayoutItem_override_virtual_setGeometry(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLayoutItem_setGeometry(self: ptr cQLayoutItem, slot: int, geometry: pointer): void {.exportc: "miqt_exec_callback_QLayoutItem_setGeometry ".} =
-  type Cb = proc(geometry: gen_qrect.QRect): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QLayoutItemsetGeometryProc](cast[pointer](slot))
   let slotval1 = gen_qrect.QRect(h: geometry)
 
 
   nimfunc[](slotval1)
-type QLayoutItemgeometryBase* = proc(): gen_qrect.QRect
-proc ongeometry*(self: QLayoutItem, slot: proc(): gen_qrect.QRect) =
+type QLayoutItemgeometryProc* = proc(): gen_qrect.QRect
+proc ongeometry*(self: gen_qlayoutitem_types.QLayoutItem, slot: QLayoutItemgeometryProc) =
   # TODO check subclass
-  type Cb = proc(): gen_qrect.QRect
-  var tmp = new Cb
+  var tmp = new QLayoutItemgeometryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLayoutItem_override_virtual_geometry(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLayoutItem_geometry(self: ptr cQLayoutItem, slot: int): pointer {.exportc: "miqt_exec_callback_QLayoutItem_geometry ".} =
-  type Cb = proc(): gen_qrect.QRect
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QLayoutItemgeometryProc](cast[pointer](slot))
 
   let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-type QLayoutItemisEmptyBase* = proc(): bool
-proc onisEmpty*(self: QLayoutItem, slot: proc(): bool) =
+type QLayoutItemisEmptyProc* = proc(): bool
+proc onisEmpty*(self: gen_qlayoutitem_types.QLayoutItem, slot: QLayoutItemisEmptyProc) =
   # TODO check subclass
-  type Cb = proc(): bool
-  var tmp = new Cb
+  var tmp = new QLayoutItemisEmptyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLayoutItem_override_virtual_isEmpty(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLayoutItem_isEmpty(self: ptr cQLayoutItem, slot: int): bool {.exportc: "miqt_exec_callback_QLayoutItem_isEmpty ".} =
-  type Cb = proc(): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QLayoutItemisEmptyProc](cast[pointer](slot))
 
   let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_hasHeightForWidth(self: QLayoutItem, ): bool =
-
+proc QLayoutItemhasHeightForWidth*(self: gen_qlayoutitem_types.QLayoutItem, ): bool =
 
   fQLayoutItem_virtualbase_hasHeightForWidth(self.h)
 
-type QLayoutItemhasHeightForWidthBase* = proc(): bool
-proc onhasHeightForWidth*(self: QLayoutItem, slot: proc(super: QLayoutItemhasHeightForWidthBase): bool) =
+type QLayoutItemhasHeightForWidthProc* = proc(): bool
+proc onhasHeightForWidth*(self: gen_qlayoutitem_types.QLayoutItem, slot: QLayoutItemhasHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QLayoutItemhasHeightForWidthBase): bool
-  var tmp = new Cb
+  var tmp = new QLayoutItemhasHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLayoutItem_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLayoutItem_hasHeightForWidth(self: ptr cQLayoutItem, slot: int): bool {.exportc: "miqt_exec_callback_QLayoutItem_hasHeightForWidth ".} =
-  type Cb = proc(super: QLayoutItemhasHeightForWidthBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasHeightForWidth(QLayoutItem(h: self), )
+  var nimfunc = cast[ptr QLayoutItemhasHeightForWidthProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_heightForWidth(self: QLayoutItem, param1: cint): cint =
-
+proc QLayoutItemheightForWidth*(self: gen_qlayoutitem_types.QLayoutItem, param1: cint): cint =
 
   fQLayoutItem_virtualbase_heightForWidth(self.h, param1)
 
-type QLayoutItemheightForWidthBase* = proc(param1: cint): cint
-proc onheightForWidth*(self: QLayoutItem, slot: proc(super: QLayoutItemheightForWidthBase, param1: cint): cint) =
+type QLayoutItemheightForWidthProc* = proc(param1: cint): cint
+proc onheightForWidth*(self: gen_qlayoutitem_types.QLayoutItem, slot: QLayoutItemheightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QLayoutItemheightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QLayoutItemheightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLayoutItem_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLayoutItem_heightForWidth(self: ptr cQLayoutItem, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QLayoutItem_heightForWidth ".} =
-  type Cb = proc(super: QLayoutItemheightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_heightForWidth(QLayoutItem(h: self), param1)
+  var nimfunc = cast[ptr QLayoutItemheightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_minimumHeightForWidth(self: QLayoutItem, param1: cint): cint =
-
+proc QLayoutItemminimumHeightForWidth*(self: gen_qlayoutitem_types.QLayoutItem, param1: cint): cint =
 
   fQLayoutItem_virtualbase_minimumHeightForWidth(self.h, param1)
 
-type QLayoutItemminimumHeightForWidthBase* = proc(param1: cint): cint
-proc onminimumHeightForWidth*(self: QLayoutItem, slot: proc(super: QLayoutItemminimumHeightForWidthBase, param1: cint): cint) =
+type QLayoutItemminimumHeightForWidthProc* = proc(param1: cint): cint
+proc onminimumHeightForWidth*(self: gen_qlayoutitem_types.QLayoutItem, slot: QLayoutItemminimumHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QLayoutItemminimumHeightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QLayoutItemminimumHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLayoutItem_override_virtual_minimumHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLayoutItem_minimumHeightForWidth(self: ptr cQLayoutItem, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QLayoutItem_minimumHeightForWidth ".} =
-  type Cb = proc(super: QLayoutItemminimumHeightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_minimumHeightForWidth(QLayoutItem(h: self), param1)
+  var nimfunc = cast[ptr QLayoutItemminimumHeightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_invalidate(self: QLayoutItem, ): void =
-
+proc QLayoutIteminvalidate*(self: gen_qlayoutitem_types.QLayoutItem, ): void =
 
   fQLayoutItem_virtualbase_invalidate(self.h)
 
-type QLayoutIteminvalidateBase* = proc(): void
-proc oninvalidate*(self: QLayoutItem, slot: proc(super: QLayoutIteminvalidateBase): void) =
+type QLayoutIteminvalidateProc* = proc(): void
+proc oninvalidate*(self: gen_qlayoutitem_types.QLayoutItem, slot: QLayoutIteminvalidateProc) =
   # TODO check subclass
-  type Cb = proc(super: QLayoutIteminvalidateBase): void
-  var tmp = new Cb
+  var tmp = new QLayoutIteminvalidateProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLayoutItem_override_virtual_invalidate(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLayoutItem_invalidate(self: ptr cQLayoutItem, slot: int): void {.exportc: "miqt_exec_callback_QLayoutItem_invalidate ".} =
-  type Cb = proc(super: QLayoutIteminvalidateBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_invalidate(QLayoutItem(h: self), )
+  var nimfunc = cast[ptr QLayoutIteminvalidateProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_widget(self: QLayoutItem, ): gen_qwidget.QWidget =
-
+  nimfunc[]()
+proc QLayoutItemwidget*(self: gen_qlayoutitem_types.QLayoutItem, ): gen_qwidget.QWidget =
 
   gen_qwidget.QWidget(h: fQLayoutItem_virtualbase_widget(self.h))
 
-type QLayoutItemwidgetBase* = proc(): gen_qwidget.QWidget
-proc onwidget*(self: QLayoutItem, slot: proc(super: QLayoutItemwidgetBase): gen_qwidget.QWidget) =
+type QLayoutItemwidgetProc* = proc(): gen_qwidget.QWidget
+proc onwidget*(self: gen_qlayoutitem_types.QLayoutItem, slot: QLayoutItemwidgetProc) =
   # TODO check subclass
-  type Cb = proc(super: QLayoutItemwidgetBase): gen_qwidget.QWidget
-  var tmp = new Cb
+  var tmp = new QLayoutItemwidgetProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLayoutItem_override_virtual_widget(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLayoutItem_widget(self: ptr cQLayoutItem, slot: int): pointer {.exportc: "miqt_exec_callback_QLayoutItem_widget ".} =
-  type Cb = proc(super: QLayoutItemwidgetBase): gen_qwidget.QWidget
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_widget(QLayoutItem(h: self), )
+  var nimfunc = cast[ptr QLayoutItemwidgetProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_layout(self: QLayoutItem, ): gen_qlayout.QLayout =
-
+proc QLayoutItemlayout*(self: gen_qlayoutitem_types.QLayoutItem, ): gen_qlayout.QLayout =
 
   gen_qlayout.QLayout(h: fQLayoutItem_virtualbase_layout(self.h))
 
-type QLayoutItemlayoutBase* = proc(): gen_qlayout.QLayout
-proc onlayout*(self: QLayoutItem, slot: proc(super: QLayoutItemlayoutBase): gen_qlayout.QLayout) =
+type QLayoutItemlayoutProc* = proc(): gen_qlayout.QLayout
+proc onlayout*(self: gen_qlayoutitem_types.QLayoutItem, slot: QLayoutItemlayoutProc) =
   # TODO check subclass
-  type Cb = proc(super: QLayoutItemlayoutBase): gen_qlayout.QLayout
-  var tmp = new Cb
+  var tmp = new QLayoutItemlayoutProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLayoutItem_override_virtual_layout(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLayoutItem_layout(self: ptr cQLayoutItem, slot: int): pointer {.exportc: "miqt_exec_callback_QLayoutItem_layout ".} =
-  type Cb = proc(super: QLayoutItemlayoutBase): gen_qlayout.QLayout
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_layout(QLayoutItem(h: self), )
+  var nimfunc = cast[ptr QLayoutItemlayoutProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_spacerItem(self: QLayoutItem, ): QSpacerItem =
+proc QLayoutItemspacerItem*(self: gen_qlayoutitem_types.QLayoutItem, ): gen_qlayoutitem_types.QSpacerItem =
 
+  gen_qlayoutitem_types.QSpacerItem(h: fQLayoutItem_virtualbase_spacerItem(self.h))
 
-  QSpacerItem(h: fQLayoutItem_virtualbase_spacerItem(self.h))
-
-type QLayoutItemspacerItemBase* = proc(): QSpacerItem
-proc onspacerItem*(self: QLayoutItem, slot: proc(super: QLayoutItemspacerItemBase): QSpacerItem) =
+type QLayoutItemspacerItemProc* = proc(): gen_qlayoutitem_types.QSpacerItem
+proc onspacerItem*(self: gen_qlayoutitem_types.QLayoutItem, slot: QLayoutItemspacerItemProc) =
   # TODO check subclass
-  type Cb = proc(super: QLayoutItemspacerItemBase): QSpacerItem
-  var tmp = new Cb
+  var tmp = new QLayoutItemspacerItemProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLayoutItem_override_virtual_spacerItem(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLayoutItem_spacerItem(self: ptr cQLayoutItem, slot: int): pointer {.exportc: "miqt_exec_callback_QLayoutItem_spacerItem ".} =
-  type Cb = proc(super: QLayoutItemspacerItemBase): QSpacerItem
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_spacerItem(QLayoutItem(h: self), )
+  var nimfunc = cast[ptr QLayoutItemspacerItemProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_controlTypes(self: QLayoutItem, ): gen_qsizepolicy.QSizePolicyControlType =
+proc QLayoutItemcontrolTypes*(self: gen_qlayoutitem_types.QLayoutItem, ): cint =
 
+  cint(fQLayoutItem_virtualbase_controlTypes(self.h))
 
-  gen_qsizepolicy.QSizePolicyControlType(fQLayoutItem_virtualbase_controlTypes(self.h))
-
-type QLayoutItemcontrolTypesBase* = proc(): gen_qsizepolicy.QSizePolicyControlType
-proc oncontrolTypes*(self: QLayoutItem, slot: proc(super: QLayoutItemcontrolTypesBase): gen_qsizepolicy.QSizePolicyControlType) =
+type QLayoutItemcontrolTypesProc* = proc(): cint
+proc oncontrolTypes*(self: gen_qlayoutitem_types.QLayoutItem, slot: QLayoutItemcontrolTypesProc) =
   # TODO check subclass
-  type Cb = proc(super: QLayoutItemcontrolTypesBase): gen_qsizepolicy.QSizePolicyControlType
-  var tmp = new Cb
+  var tmp = new QLayoutItemcontrolTypesProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLayoutItem_override_virtual_controlTypes(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLayoutItem_controlTypes(self: ptr cQLayoutItem, slot: int): cint {.exportc: "miqt_exec_callback_QLayoutItem_controlTypes ".} =
-  type Cb = proc(super: QLayoutItemcontrolTypesBase): gen_qsizepolicy.QSizePolicyControlType
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_controlTypes(QLayoutItem(h: self), )
+  var nimfunc = cast[ptr QLayoutItemcontrolTypesProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   cint(virtualReturn)
-proc delete*(self: QLayoutItem) =
+proc delete*(self: gen_qlayoutitem_types.QLayoutItem) =
   fcQLayoutItem_delete(self.h)
 
-func init*(T: type QSpacerItem, h: ptr cQSpacerItem): QSpacerItem =
+func init*(T: type gen_qlayoutitem_types.QSpacerItem, h: ptr cQSpacerItem): gen_qlayoutitem_types.QSpacerItem =
   T(h: h)
-proc create*(T: type QSpacerItem, w: cint, h: cint): QSpacerItem =
+proc create*(T: type gen_qlayoutitem_types.QSpacerItem, w: cint, h: cint): gen_qlayoutitem_types.QSpacerItem =
 
-  QSpacerItem.init(fcQSpacerItem_new(w, h))
-proc create*(T: type QSpacerItem, param1: QSpacerItem): QSpacerItem =
+  gen_qlayoutitem_types.QSpacerItem.init(fcQSpacerItem_new(w, h))
+proc create*(T: type gen_qlayoutitem_types.QSpacerItem, param1: gen_qlayoutitem_types.QSpacerItem): gen_qlayoutitem_types.QSpacerItem =
 
-  QSpacerItem.init(fcQSpacerItem_new2(param1.h))
-proc create*(T: type QSpacerItem, w: cint, h: cint, hData: gen_qsizepolicy.QSizePolicyPolicy): QSpacerItem =
+  gen_qlayoutitem_types.QSpacerItem.init(fcQSpacerItem_new2(param1.h))
+proc create*(T: type gen_qlayoutitem_types.QSpacerItem, w: cint, h: cint, hData: cint): gen_qlayoutitem_types.QSpacerItem =
 
-  QSpacerItem.init(fcQSpacerItem_new3(w, h, cint(hData)))
-proc create*(T: type QSpacerItem, w: cint, h: cint, hData: gen_qsizepolicy.QSizePolicyPolicy, vData: gen_qsizepolicy.QSizePolicyPolicy): QSpacerItem =
+  gen_qlayoutitem_types.QSpacerItem.init(fcQSpacerItem_new3(w, h, cint(hData)))
+proc create*(T: type gen_qlayoutitem_types.QSpacerItem, w: cint, h: cint, hData: cint, vData: cint): gen_qlayoutitem_types.QSpacerItem =
 
-  QSpacerItem.init(fcQSpacerItem_new4(w, h, cint(hData), cint(vData)))
-proc changeSize*(self: QSpacerItem, w: cint, h: cint): void =
+  gen_qlayoutitem_types.QSpacerItem.init(fcQSpacerItem_new4(w, h, cint(hData), cint(vData)))
+proc changeSize*(self: gen_qlayoutitem_types.QSpacerItem, w: cint, h: cint): void =
 
   fcQSpacerItem_changeSize(self.h, w, h)
 
-proc sizeHint*(self: QSpacerItem, ): gen_qsize.QSize =
+proc sizeHint*(self: gen_qlayoutitem_types.QSpacerItem, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQSpacerItem_sizeHint(self.h))
 
-proc minimumSize*(self: QSpacerItem, ): gen_qsize.QSize =
+proc minimumSize*(self: gen_qlayoutitem_types.QSpacerItem, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQSpacerItem_minimumSize(self.h))
 
-proc maximumSize*(self: QSpacerItem, ): gen_qsize.QSize =
+proc maximumSize*(self: gen_qlayoutitem_types.QSpacerItem, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQSpacerItem_maximumSize(self.h))
 
-proc expandingDirections*(self: QSpacerItem, ): gen_qnamespace.Orientation =
+proc expandingDirections*(self: gen_qlayoutitem_types.QSpacerItem, ): cint =
 
-  gen_qnamespace.Orientation(fcQSpacerItem_expandingDirections(self.h))
+  cint(fcQSpacerItem_expandingDirections(self.h))
 
-proc isEmpty*(self: QSpacerItem, ): bool =
+proc isEmpty*(self: gen_qlayoutitem_types.QSpacerItem, ): bool =
 
   fcQSpacerItem_isEmpty(self.h)
 
-proc setGeometry*(self: QSpacerItem, geometry: gen_qrect.QRect): void =
+proc setGeometry*(self: gen_qlayoutitem_types.QSpacerItem, geometry: gen_qrect.QRect): void =
 
   fcQSpacerItem_setGeometry(self.h, geometry.h)
 
-proc geometry*(self: QSpacerItem, ): gen_qrect.QRect =
+proc geometry*(self: gen_qlayoutitem_types.QSpacerItem, ): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fcQSpacerItem_geometry(self.h))
 
-proc spacerItem*(self: QSpacerItem, ): QSpacerItem =
+proc spacerItem*(self: gen_qlayoutitem_types.QSpacerItem, ): gen_qlayoutitem_types.QSpacerItem =
 
-  QSpacerItem(h: fcQSpacerItem_spacerItem(self.h))
+  gen_qlayoutitem_types.QSpacerItem(h: fcQSpacerItem_spacerItem(self.h))
 
-proc sizePolicy*(self: QSpacerItem, ): gen_qsizepolicy.QSizePolicy =
+proc sizePolicy*(self: gen_qlayoutitem_types.QSpacerItem, ): gen_qsizepolicy.QSizePolicy =
 
   gen_qsizepolicy.QSizePolicy(h: fcQSpacerItem_sizePolicy(self.h))
 
-proc changeSize3*(self: QSpacerItem, w: cint, h: cint, hData: gen_qsizepolicy.QSizePolicyPolicy): void =
+proc changeSize3*(self: gen_qlayoutitem_types.QSpacerItem, w: cint, h: cint, hData: cint): void =
 
   fcQSpacerItem_changeSize3(self.h, w, h, cint(hData))
 
-proc changeSize4*(self: QSpacerItem, w: cint, h: cint, hData: gen_qsizepolicy.QSizePolicyPolicy, vData: gen_qsizepolicy.QSizePolicyPolicy): void =
+proc changeSize4*(self: gen_qlayoutitem_types.QSpacerItem, w: cint, h: cint, hData: cint, vData: cint): void =
 
   fcQSpacerItem_changeSize4(self.h, w, h, cint(hData), cint(vData))
 
-proc callVirtualBase_sizeHint(self: QSpacerItem, ): gen_qsize.QSize =
-
+proc QSpacerItemsizeHint*(self: gen_qlayoutitem_types.QSpacerItem, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQSpacerItem_virtualbase_sizeHint(self.h))
 
-type QSpacerItemsizeHintBase* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: QSpacerItem, slot: proc(super: QSpacerItemsizeHintBase): gen_qsize.QSize) =
+type QSpacerItemsizeHintProc* = proc(): gen_qsize.QSize
+proc onsizeHint*(self: gen_qlayoutitem_types.QSpacerItem, slot: QSpacerItemsizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpacerItemsizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QSpacerItemsizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpacerItem_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpacerItem_sizeHint(self: ptr cQSpacerItem, slot: int): pointer {.exportc: "miqt_exec_callback_QSpacerItem_sizeHint ".} =
-  type Cb = proc(super: QSpacerItemsizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sizeHint(QSpacerItem(h: self), )
+  var nimfunc = cast[ptr QSpacerItemsizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_minimumSize(self: QSpacerItem, ): gen_qsize.QSize =
-
+proc QSpacerItemminimumSize*(self: gen_qlayoutitem_types.QSpacerItem, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQSpacerItem_virtualbase_minimumSize(self.h))
 
-type QSpacerItemminimumSizeBase* = proc(): gen_qsize.QSize
-proc onminimumSize*(self: QSpacerItem, slot: proc(super: QSpacerItemminimumSizeBase): gen_qsize.QSize) =
+type QSpacerItemminimumSizeProc* = proc(): gen_qsize.QSize
+proc onminimumSize*(self: gen_qlayoutitem_types.QSpacerItem, slot: QSpacerItemminimumSizeProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpacerItemminimumSizeBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QSpacerItemminimumSizeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpacerItem_override_virtual_minimumSize(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpacerItem_minimumSize(self: ptr cQSpacerItem, slot: int): pointer {.exportc: "miqt_exec_callback_QSpacerItem_minimumSize ".} =
-  type Cb = proc(super: QSpacerItemminimumSizeBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_minimumSize(QSpacerItem(h: self), )
+  var nimfunc = cast[ptr QSpacerItemminimumSizeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_maximumSize(self: QSpacerItem, ): gen_qsize.QSize =
-
+proc QSpacerItemmaximumSize*(self: gen_qlayoutitem_types.QSpacerItem, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQSpacerItem_virtualbase_maximumSize(self.h))
 
-type QSpacerItemmaximumSizeBase* = proc(): gen_qsize.QSize
-proc onmaximumSize*(self: QSpacerItem, slot: proc(super: QSpacerItemmaximumSizeBase): gen_qsize.QSize) =
+type QSpacerItemmaximumSizeProc* = proc(): gen_qsize.QSize
+proc onmaximumSize*(self: gen_qlayoutitem_types.QSpacerItem, slot: QSpacerItemmaximumSizeProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpacerItemmaximumSizeBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QSpacerItemmaximumSizeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpacerItem_override_virtual_maximumSize(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpacerItem_maximumSize(self: ptr cQSpacerItem, slot: int): pointer {.exportc: "miqt_exec_callback_QSpacerItem_maximumSize ".} =
-  type Cb = proc(super: QSpacerItemmaximumSizeBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_maximumSize(QSpacerItem(h: self), )
+  var nimfunc = cast[ptr QSpacerItemmaximumSizeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_expandingDirections(self: QSpacerItem, ): gen_qnamespace.Orientation =
+proc QSpacerItemexpandingDirections*(self: gen_qlayoutitem_types.QSpacerItem, ): cint =
 
+  cint(fQSpacerItem_virtualbase_expandingDirections(self.h))
 
-  gen_qnamespace.Orientation(fQSpacerItem_virtualbase_expandingDirections(self.h))
-
-type QSpacerItemexpandingDirectionsBase* = proc(): gen_qnamespace.Orientation
-proc onexpandingDirections*(self: QSpacerItem, slot: proc(super: QSpacerItemexpandingDirectionsBase): gen_qnamespace.Orientation) =
+type QSpacerItemexpandingDirectionsProc* = proc(): cint
+proc onexpandingDirections*(self: gen_qlayoutitem_types.QSpacerItem, slot: QSpacerItemexpandingDirectionsProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpacerItemexpandingDirectionsBase): gen_qnamespace.Orientation
-  var tmp = new Cb
+  var tmp = new QSpacerItemexpandingDirectionsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpacerItem_override_virtual_expandingDirections(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpacerItem_expandingDirections(self: ptr cQSpacerItem, slot: int): cint {.exportc: "miqt_exec_callback_QSpacerItem_expandingDirections ".} =
-  type Cb = proc(super: QSpacerItemexpandingDirectionsBase): gen_qnamespace.Orientation
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_expandingDirections(QSpacerItem(h: self), )
+  var nimfunc = cast[ptr QSpacerItemexpandingDirectionsProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   cint(virtualReturn)
-proc callVirtualBase_isEmpty(self: QSpacerItem, ): bool =
-
+proc QSpacerItemisEmpty*(self: gen_qlayoutitem_types.QSpacerItem, ): bool =
 
   fQSpacerItem_virtualbase_isEmpty(self.h)
 
-type QSpacerItemisEmptyBase* = proc(): bool
-proc onisEmpty*(self: QSpacerItem, slot: proc(super: QSpacerItemisEmptyBase): bool) =
+type QSpacerItemisEmptyProc* = proc(): bool
+proc onisEmpty*(self: gen_qlayoutitem_types.QSpacerItem, slot: QSpacerItemisEmptyProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpacerItemisEmptyBase): bool
-  var tmp = new Cb
+  var tmp = new QSpacerItemisEmptyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpacerItem_override_virtual_isEmpty(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpacerItem_isEmpty(self: ptr cQSpacerItem, slot: int): bool {.exportc: "miqt_exec_callback_QSpacerItem_isEmpty ".} =
-  type Cb = proc(super: QSpacerItemisEmptyBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_isEmpty(QSpacerItem(h: self), )
+  var nimfunc = cast[ptr QSpacerItemisEmptyProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setGeometry(self: QSpacerItem, geometry: gen_qrect.QRect): void =
-
+proc QSpacerItemsetGeometry*(self: gen_qlayoutitem_types.QSpacerItem, geometry: gen_qrect.QRect): void =
 
   fQSpacerItem_virtualbase_setGeometry(self.h, geometry.h)
 
-type QSpacerItemsetGeometryBase* = proc(geometry: gen_qrect.QRect): void
-proc onsetGeometry*(self: QSpacerItem, slot: proc(super: QSpacerItemsetGeometryBase, geometry: gen_qrect.QRect): void) =
+type QSpacerItemsetGeometryProc* = proc(geometry: gen_qrect.QRect): void
+proc onsetGeometry*(self: gen_qlayoutitem_types.QSpacerItem, slot: QSpacerItemsetGeometryProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpacerItemsetGeometryBase, geometry: gen_qrect.QRect): void
-  var tmp = new Cb
+  var tmp = new QSpacerItemsetGeometryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpacerItem_override_virtual_setGeometry(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpacerItem_setGeometry(self: ptr cQSpacerItem, slot: int, geometry: pointer): void {.exportc: "miqt_exec_callback_QSpacerItem_setGeometry ".} =
-  type Cb = proc(super: QSpacerItemsetGeometryBase, geometry: gen_qrect.QRect): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(geometry: gen_qrect.QRect): auto =
-    callVirtualBase_setGeometry(QSpacerItem(h: self), geometry)
+  var nimfunc = cast[ptr QSpacerItemsetGeometryProc](cast[pointer](slot))
   let slotval1 = gen_qrect.QRect(h: geometry)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_geometry(self: QSpacerItem, ): gen_qrect.QRect =
-
+  nimfunc[](slotval1)
+proc QSpacerItemgeometry*(self: gen_qlayoutitem_types.QSpacerItem, ): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fQSpacerItem_virtualbase_geometry(self.h))
 
-type QSpacerItemgeometryBase* = proc(): gen_qrect.QRect
-proc ongeometry*(self: QSpacerItem, slot: proc(super: QSpacerItemgeometryBase): gen_qrect.QRect) =
+type QSpacerItemgeometryProc* = proc(): gen_qrect.QRect
+proc ongeometry*(self: gen_qlayoutitem_types.QSpacerItem, slot: QSpacerItemgeometryProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpacerItemgeometryBase): gen_qrect.QRect
-  var tmp = new Cb
+  var tmp = new QSpacerItemgeometryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpacerItem_override_virtual_geometry(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpacerItem_geometry(self: ptr cQSpacerItem, slot: int): pointer {.exportc: "miqt_exec_callback_QSpacerItem_geometry ".} =
-  type Cb = proc(super: QSpacerItemgeometryBase): gen_qrect.QRect
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_geometry(QSpacerItem(h: self), )
+  var nimfunc = cast[ptr QSpacerItemgeometryProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_spacerItem(self: QSpacerItem, ): QSpacerItem =
+proc QSpacerItemspacerItem*(self: gen_qlayoutitem_types.QSpacerItem, ): gen_qlayoutitem_types.QSpacerItem =
 
+  gen_qlayoutitem_types.QSpacerItem(h: fQSpacerItem_virtualbase_spacerItem(self.h))
 
-  QSpacerItem(h: fQSpacerItem_virtualbase_spacerItem(self.h))
-
-type QSpacerItemspacerItemBase* = proc(): QSpacerItem
-proc onspacerItem*(self: QSpacerItem, slot: proc(super: QSpacerItemspacerItemBase): QSpacerItem) =
+type QSpacerItemspacerItemProc* = proc(): gen_qlayoutitem_types.QSpacerItem
+proc onspacerItem*(self: gen_qlayoutitem_types.QSpacerItem, slot: QSpacerItemspacerItemProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpacerItemspacerItemBase): QSpacerItem
-  var tmp = new Cb
+  var tmp = new QSpacerItemspacerItemProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpacerItem_override_virtual_spacerItem(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpacerItem_spacerItem(self: ptr cQSpacerItem, slot: int): pointer {.exportc: "miqt_exec_callback_QSpacerItem_spacerItem ".} =
-  type Cb = proc(super: QSpacerItemspacerItemBase): QSpacerItem
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_spacerItem(QSpacerItem(h: self), )
+  var nimfunc = cast[ptr QSpacerItemspacerItemProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_hasHeightForWidth(self: QSpacerItem, ): bool =
-
+proc QSpacerItemhasHeightForWidth*(self: gen_qlayoutitem_types.QSpacerItem, ): bool =
 
   fQSpacerItem_virtualbase_hasHeightForWidth(self.h)
 
-type QSpacerItemhasHeightForWidthBase* = proc(): bool
-proc onhasHeightForWidth*(self: QSpacerItem, slot: proc(super: QSpacerItemhasHeightForWidthBase): bool) =
+type QSpacerItemhasHeightForWidthProc* = proc(): bool
+proc onhasHeightForWidth*(self: gen_qlayoutitem_types.QSpacerItem, slot: QSpacerItemhasHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpacerItemhasHeightForWidthBase): bool
-  var tmp = new Cb
+  var tmp = new QSpacerItemhasHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpacerItem_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpacerItem_hasHeightForWidth(self: ptr cQSpacerItem, slot: int): bool {.exportc: "miqt_exec_callback_QSpacerItem_hasHeightForWidth ".} =
-  type Cb = proc(super: QSpacerItemhasHeightForWidthBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasHeightForWidth(QSpacerItem(h: self), )
+  var nimfunc = cast[ptr QSpacerItemhasHeightForWidthProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_heightForWidth(self: QSpacerItem, param1: cint): cint =
-
+proc QSpacerItemheightForWidth*(self: gen_qlayoutitem_types.QSpacerItem, param1: cint): cint =
 
   fQSpacerItem_virtualbase_heightForWidth(self.h, param1)
 
-type QSpacerItemheightForWidthBase* = proc(param1: cint): cint
-proc onheightForWidth*(self: QSpacerItem, slot: proc(super: QSpacerItemheightForWidthBase, param1: cint): cint) =
+type QSpacerItemheightForWidthProc* = proc(param1: cint): cint
+proc onheightForWidth*(self: gen_qlayoutitem_types.QSpacerItem, slot: QSpacerItemheightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpacerItemheightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QSpacerItemheightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpacerItem_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpacerItem_heightForWidth(self: ptr cQSpacerItem, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QSpacerItem_heightForWidth ".} =
-  type Cb = proc(super: QSpacerItemheightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_heightForWidth(QSpacerItem(h: self), param1)
+  var nimfunc = cast[ptr QSpacerItemheightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_minimumHeightForWidth(self: QSpacerItem, param1: cint): cint =
-
+proc QSpacerItemminimumHeightForWidth*(self: gen_qlayoutitem_types.QSpacerItem, param1: cint): cint =
 
   fQSpacerItem_virtualbase_minimumHeightForWidth(self.h, param1)
 
-type QSpacerItemminimumHeightForWidthBase* = proc(param1: cint): cint
-proc onminimumHeightForWidth*(self: QSpacerItem, slot: proc(super: QSpacerItemminimumHeightForWidthBase, param1: cint): cint) =
+type QSpacerItemminimumHeightForWidthProc* = proc(param1: cint): cint
+proc onminimumHeightForWidth*(self: gen_qlayoutitem_types.QSpacerItem, slot: QSpacerItemminimumHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpacerItemminimumHeightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QSpacerItemminimumHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpacerItem_override_virtual_minimumHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpacerItem_minimumHeightForWidth(self: ptr cQSpacerItem, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QSpacerItem_minimumHeightForWidth ".} =
-  type Cb = proc(super: QSpacerItemminimumHeightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_minimumHeightForWidth(QSpacerItem(h: self), param1)
+  var nimfunc = cast[ptr QSpacerItemminimumHeightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_invalidate(self: QSpacerItem, ): void =
-
+proc QSpacerIteminvalidate*(self: gen_qlayoutitem_types.QSpacerItem, ): void =
 
   fQSpacerItem_virtualbase_invalidate(self.h)
 
-type QSpacerIteminvalidateBase* = proc(): void
-proc oninvalidate*(self: QSpacerItem, slot: proc(super: QSpacerIteminvalidateBase): void) =
+type QSpacerIteminvalidateProc* = proc(): void
+proc oninvalidate*(self: gen_qlayoutitem_types.QSpacerItem, slot: QSpacerIteminvalidateProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpacerIteminvalidateBase): void
-  var tmp = new Cb
+  var tmp = new QSpacerIteminvalidateProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpacerItem_override_virtual_invalidate(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpacerItem_invalidate(self: ptr cQSpacerItem, slot: int): void {.exportc: "miqt_exec_callback_QSpacerItem_invalidate ".} =
-  type Cb = proc(super: QSpacerIteminvalidateBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_invalidate(QSpacerItem(h: self), )
+  var nimfunc = cast[ptr QSpacerIteminvalidateProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_widget(self: QSpacerItem, ): gen_qwidget.QWidget =
-
+  nimfunc[]()
+proc QSpacerItemwidget*(self: gen_qlayoutitem_types.QSpacerItem, ): gen_qwidget.QWidget =
 
   gen_qwidget.QWidget(h: fQSpacerItem_virtualbase_widget(self.h))
 
-type QSpacerItemwidgetBase* = proc(): gen_qwidget.QWidget
-proc onwidget*(self: QSpacerItem, slot: proc(super: QSpacerItemwidgetBase): gen_qwidget.QWidget) =
+type QSpacerItemwidgetProc* = proc(): gen_qwidget.QWidget
+proc onwidget*(self: gen_qlayoutitem_types.QSpacerItem, slot: QSpacerItemwidgetProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpacerItemwidgetBase): gen_qwidget.QWidget
-  var tmp = new Cb
+  var tmp = new QSpacerItemwidgetProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpacerItem_override_virtual_widget(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpacerItem_widget(self: ptr cQSpacerItem, slot: int): pointer {.exportc: "miqt_exec_callback_QSpacerItem_widget ".} =
-  type Cb = proc(super: QSpacerItemwidgetBase): gen_qwidget.QWidget
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_widget(QSpacerItem(h: self), )
+  var nimfunc = cast[ptr QSpacerItemwidgetProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_layout(self: QSpacerItem, ): gen_qlayout.QLayout =
-
+proc QSpacerItemlayout*(self: gen_qlayoutitem_types.QSpacerItem, ): gen_qlayout.QLayout =
 
   gen_qlayout.QLayout(h: fQSpacerItem_virtualbase_layout(self.h))
 
-type QSpacerItemlayoutBase* = proc(): gen_qlayout.QLayout
-proc onlayout*(self: QSpacerItem, slot: proc(super: QSpacerItemlayoutBase): gen_qlayout.QLayout) =
+type QSpacerItemlayoutProc* = proc(): gen_qlayout.QLayout
+proc onlayout*(self: gen_qlayoutitem_types.QSpacerItem, slot: QSpacerItemlayoutProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpacerItemlayoutBase): gen_qlayout.QLayout
-  var tmp = new Cb
+  var tmp = new QSpacerItemlayoutProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpacerItem_override_virtual_layout(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpacerItem_layout(self: ptr cQSpacerItem, slot: int): pointer {.exportc: "miqt_exec_callback_QSpacerItem_layout ".} =
-  type Cb = proc(super: QSpacerItemlayoutBase): gen_qlayout.QLayout
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_layout(QSpacerItem(h: self), )
+  var nimfunc = cast[ptr QSpacerItemlayoutProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_controlTypes(self: QSpacerItem, ): gen_qsizepolicy.QSizePolicyControlType =
+proc QSpacerItemcontrolTypes*(self: gen_qlayoutitem_types.QSpacerItem, ): cint =
 
+  cint(fQSpacerItem_virtualbase_controlTypes(self.h))
 
-  gen_qsizepolicy.QSizePolicyControlType(fQSpacerItem_virtualbase_controlTypes(self.h))
-
-type QSpacerItemcontrolTypesBase* = proc(): gen_qsizepolicy.QSizePolicyControlType
-proc oncontrolTypes*(self: QSpacerItem, slot: proc(super: QSpacerItemcontrolTypesBase): gen_qsizepolicy.QSizePolicyControlType) =
+type QSpacerItemcontrolTypesProc* = proc(): cint
+proc oncontrolTypes*(self: gen_qlayoutitem_types.QSpacerItem, slot: QSpacerItemcontrolTypesProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpacerItemcontrolTypesBase): gen_qsizepolicy.QSizePolicyControlType
-  var tmp = new Cb
+  var tmp = new QSpacerItemcontrolTypesProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpacerItem_override_virtual_controlTypes(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpacerItem_controlTypes(self: ptr cQSpacerItem, slot: int): cint {.exportc: "miqt_exec_callback_QSpacerItem_controlTypes ".} =
-  type Cb = proc(super: QSpacerItemcontrolTypesBase): gen_qsizepolicy.QSizePolicyControlType
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_controlTypes(QSpacerItem(h: self), )
+  var nimfunc = cast[ptr QSpacerItemcontrolTypesProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   cint(virtualReturn)
-proc delete*(self: QSpacerItem) =
+proc delete*(self: gen_qlayoutitem_types.QSpacerItem) =
   fcQSpacerItem_delete(self.h)
 
-func init*(T: type QWidgetItem, h: ptr cQWidgetItem): QWidgetItem =
+func init*(T: type gen_qlayoutitem_types.QWidgetItem, h: ptr cQWidgetItem): gen_qlayoutitem_types.QWidgetItem =
   T(h: h)
-proc create*(T: type QWidgetItem, w: gen_qwidget.QWidget): QWidgetItem =
+proc create*(T: type gen_qlayoutitem_types.QWidgetItem, w: gen_qwidget.QWidget): gen_qlayoutitem_types.QWidgetItem =
 
-  QWidgetItem.init(fcQWidgetItem_new(w.h))
-proc sizeHint*(self: QWidgetItem, ): gen_qsize.QSize =
+  gen_qlayoutitem_types.QWidgetItem.init(fcQWidgetItem_new(w.h))
+proc sizeHint*(self: gen_qlayoutitem_types.QWidgetItem, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQWidgetItem_sizeHint(self.h))
 
-proc minimumSize*(self: QWidgetItem, ): gen_qsize.QSize =
+proc minimumSize*(self: gen_qlayoutitem_types.QWidgetItem, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQWidgetItem_minimumSize(self.h))
 
-proc maximumSize*(self: QWidgetItem, ): gen_qsize.QSize =
+proc maximumSize*(self: gen_qlayoutitem_types.QWidgetItem, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQWidgetItem_maximumSize(self.h))
 
-proc expandingDirections*(self: QWidgetItem, ): gen_qnamespace.Orientation =
+proc expandingDirections*(self: gen_qlayoutitem_types.QWidgetItem, ): cint =
 
-  gen_qnamespace.Orientation(fcQWidgetItem_expandingDirections(self.h))
+  cint(fcQWidgetItem_expandingDirections(self.h))
 
-proc isEmpty*(self: QWidgetItem, ): bool =
+proc isEmpty*(self: gen_qlayoutitem_types.QWidgetItem, ): bool =
 
   fcQWidgetItem_isEmpty(self.h)
 
-proc setGeometry*(self: QWidgetItem, geometry: gen_qrect.QRect): void =
+proc setGeometry*(self: gen_qlayoutitem_types.QWidgetItem, geometry: gen_qrect.QRect): void =
 
   fcQWidgetItem_setGeometry(self.h, geometry.h)
 
-proc geometry*(self: QWidgetItem, ): gen_qrect.QRect =
+proc geometry*(self: gen_qlayoutitem_types.QWidgetItem, ): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fcQWidgetItem_geometry(self.h))
 
-proc widget*(self: QWidgetItem, ): gen_qwidget.QWidget =
+proc widget*(self: gen_qlayoutitem_types.QWidgetItem, ): gen_qwidget.QWidget =
 
   gen_qwidget.QWidget(h: fcQWidgetItem_widget(self.h))
 
-proc hasHeightForWidth*(self: QWidgetItem, ): bool =
+proc hasHeightForWidth*(self: gen_qlayoutitem_types.QWidgetItem, ): bool =
 
   fcQWidgetItem_hasHeightForWidth(self.h)
 
-proc heightForWidth*(self: QWidgetItem, param1: cint): cint =
+proc heightForWidth*(self: gen_qlayoutitem_types.QWidgetItem, param1: cint): cint =
 
   fcQWidgetItem_heightForWidth(self.h, param1)
 
-proc minimumHeightForWidth*(self: QWidgetItem, param1: cint): cint =
+proc minimumHeightForWidth*(self: gen_qlayoutitem_types.QWidgetItem, param1: cint): cint =
 
   fcQWidgetItem_minimumHeightForWidth(self.h, param1)
 
-proc controlTypes*(self: QWidgetItem, ): gen_qsizepolicy.QSizePolicyControlType =
+proc controlTypes*(self: gen_qlayoutitem_types.QWidgetItem, ): cint =
 
-  gen_qsizepolicy.QSizePolicyControlType(fcQWidgetItem_controlTypes(self.h))
+  cint(fcQWidgetItem_controlTypes(self.h))
 
-proc callVirtualBase_sizeHint(self: QWidgetItem, ): gen_qsize.QSize =
-
+proc QWidgetItemsizeHint*(self: gen_qlayoutitem_types.QWidgetItem, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQWidgetItem_virtualbase_sizeHint(self.h))
 
-type QWidgetItemsizeHintBase* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: QWidgetItem, slot: proc(super: QWidgetItemsizeHintBase): gen_qsize.QSize) =
+type QWidgetItemsizeHintProc* = proc(): gen_qsize.QSize
+proc onsizeHint*(self: gen_qlayoutitem_types.QWidgetItem, slot: QWidgetItemsizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QWidgetItemsizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QWidgetItemsizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWidgetItem_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWidgetItem_sizeHint(self: ptr cQWidgetItem, slot: int): pointer {.exportc: "miqt_exec_callback_QWidgetItem_sizeHint ".} =
-  type Cb = proc(super: QWidgetItemsizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sizeHint(QWidgetItem(h: self), )
+  var nimfunc = cast[ptr QWidgetItemsizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_minimumSize(self: QWidgetItem, ): gen_qsize.QSize =
-
+proc QWidgetItemminimumSize*(self: gen_qlayoutitem_types.QWidgetItem, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQWidgetItem_virtualbase_minimumSize(self.h))
 
-type QWidgetItemminimumSizeBase* = proc(): gen_qsize.QSize
-proc onminimumSize*(self: QWidgetItem, slot: proc(super: QWidgetItemminimumSizeBase): gen_qsize.QSize) =
+type QWidgetItemminimumSizeProc* = proc(): gen_qsize.QSize
+proc onminimumSize*(self: gen_qlayoutitem_types.QWidgetItem, slot: QWidgetItemminimumSizeProc) =
   # TODO check subclass
-  type Cb = proc(super: QWidgetItemminimumSizeBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QWidgetItemminimumSizeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWidgetItem_override_virtual_minimumSize(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWidgetItem_minimumSize(self: ptr cQWidgetItem, slot: int): pointer {.exportc: "miqt_exec_callback_QWidgetItem_minimumSize ".} =
-  type Cb = proc(super: QWidgetItemminimumSizeBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_minimumSize(QWidgetItem(h: self), )
+  var nimfunc = cast[ptr QWidgetItemminimumSizeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_maximumSize(self: QWidgetItem, ): gen_qsize.QSize =
-
+proc QWidgetItemmaximumSize*(self: gen_qlayoutitem_types.QWidgetItem, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQWidgetItem_virtualbase_maximumSize(self.h))
 
-type QWidgetItemmaximumSizeBase* = proc(): gen_qsize.QSize
-proc onmaximumSize*(self: QWidgetItem, slot: proc(super: QWidgetItemmaximumSizeBase): gen_qsize.QSize) =
+type QWidgetItemmaximumSizeProc* = proc(): gen_qsize.QSize
+proc onmaximumSize*(self: gen_qlayoutitem_types.QWidgetItem, slot: QWidgetItemmaximumSizeProc) =
   # TODO check subclass
-  type Cb = proc(super: QWidgetItemmaximumSizeBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QWidgetItemmaximumSizeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWidgetItem_override_virtual_maximumSize(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWidgetItem_maximumSize(self: ptr cQWidgetItem, slot: int): pointer {.exportc: "miqt_exec_callback_QWidgetItem_maximumSize ".} =
-  type Cb = proc(super: QWidgetItemmaximumSizeBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_maximumSize(QWidgetItem(h: self), )
+  var nimfunc = cast[ptr QWidgetItemmaximumSizeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_expandingDirections(self: QWidgetItem, ): gen_qnamespace.Orientation =
+proc QWidgetItemexpandingDirections*(self: gen_qlayoutitem_types.QWidgetItem, ): cint =
 
+  cint(fQWidgetItem_virtualbase_expandingDirections(self.h))
 
-  gen_qnamespace.Orientation(fQWidgetItem_virtualbase_expandingDirections(self.h))
-
-type QWidgetItemexpandingDirectionsBase* = proc(): gen_qnamespace.Orientation
-proc onexpandingDirections*(self: QWidgetItem, slot: proc(super: QWidgetItemexpandingDirectionsBase): gen_qnamespace.Orientation) =
+type QWidgetItemexpandingDirectionsProc* = proc(): cint
+proc onexpandingDirections*(self: gen_qlayoutitem_types.QWidgetItem, slot: QWidgetItemexpandingDirectionsProc) =
   # TODO check subclass
-  type Cb = proc(super: QWidgetItemexpandingDirectionsBase): gen_qnamespace.Orientation
-  var tmp = new Cb
+  var tmp = new QWidgetItemexpandingDirectionsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWidgetItem_override_virtual_expandingDirections(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWidgetItem_expandingDirections(self: ptr cQWidgetItem, slot: int): cint {.exportc: "miqt_exec_callback_QWidgetItem_expandingDirections ".} =
-  type Cb = proc(super: QWidgetItemexpandingDirectionsBase): gen_qnamespace.Orientation
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_expandingDirections(QWidgetItem(h: self), )
+  var nimfunc = cast[ptr QWidgetItemexpandingDirectionsProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   cint(virtualReturn)
-proc callVirtualBase_isEmpty(self: QWidgetItem, ): bool =
-
+proc QWidgetItemisEmpty*(self: gen_qlayoutitem_types.QWidgetItem, ): bool =
 
   fQWidgetItem_virtualbase_isEmpty(self.h)
 
-type QWidgetItemisEmptyBase* = proc(): bool
-proc onisEmpty*(self: QWidgetItem, slot: proc(super: QWidgetItemisEmptyBase): bool) =
+type QWidgetItemisEmptyProc* = proc(): bool
+proc onisEmpty*(self: gen_qlayoutitem_types.QWidgetItem, slot: QWidgetItemisEmptyProc) =
   # TODO check subclass
-  type Cb = proc(super: QWidgetItemisEmptyBase): bool
-  var tmp = new Cb
+  var tmp = new QWidgetItemisEmptyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWidgetItem_override_virtual_isEmpty(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWidgetItem_isEmpty(self: ptr cQWidgetItem, slot: int): bool {.exportc: "miqt_exec_callback_QWidgetItem_isEmpty ".} =
-  type Cb = proc(super: QWidgetItemisEmptyBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_isEmpty(QWidgetItem(h: self), )
+  var nimfunc = cast[ptr QWidgetItemisEmptyProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setGeometry(self: QWidgetItem, geometry: gen_qrect.QRect): void =
-
+proc QWidgetItemsetGeometry*(self: gen_qlayoutitem_types.QWidgetItem, geometry: gen_qrect.QRect): void =
 
   fQWidgetItem_virtualbase_setGeometry(self.h, geometry.h)
 
-type QWidgetItemsetGeometryBase* = proc(geometry: gen_qrect.QRect): void
-proc onsetGeometry*(self: QWidgetItem, slot: proc(super: QWidgetItemsetGeometryBase, geometry: gen_qrect.QRect): void) =
+type QWidgetItemsetGeometryProc* = proc(geometry: gen_qrect.QRect): void
+proc onsetGeometry*(self: gen_qlayoutitem_types.QWidgetItem, slot: QWidgetItemsetGeometryProc) =
   # TODO check subclass
-  type Cb = proc(super: QWidgetItemsetGeometryBase, geometry: gen_qrect.QRect): void
-  var tmp = new Cb
+  var tmp = new QWidgetItemsetGeometryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWidgetItem_override_virtual_setGeometry(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWidgetItem_setGeometry(self: ptr cQWidgetItem, slot: int, geometry: pointer): void {.exportc: "miqt_exec_callback_QWidgetItem_setGeometry ".} =
-  type Cb = proc(super: QWidgetItemsetGeometryBase, geometry: gen_qrect.QRect): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(geometry: gen_qrect.QRect): auto =
-    callVirtualBase_setGeometry(QWidgetItem(h: self), geometry)
+  var nimfunc = cast[ptr QWidgetItemsetGeometryProc](cast[pointer](slot))
   let slotval1 = gen_qrect.QRect(h: geometry)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_geometry(self: QWidgetItem, ): gen_qrect.QRect =
-
+  nimfunc[](slotval1)
+proc QWidgetItemgeometry*(self: gen_qlayoutitem_types.QWidgetItem, ): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fQWidgetItem_virtualbase_geometry(self.h))
 
-type QWidgetItemgeometryBase* = proc(): gen_qrect.QRect
-proc ongeometry*(self: QWidgetItem, slot: proc(super: QWidgetItemgeometryBase): gen_qrect.QRect) =
+type QWidgetItemgeometryProc* = proc(): gen_qrect.QRect
+proc ongeometry*(self: gen_qlayoutitem_types.QWidgetItem, slot: QWidgetItemgeometryProc) =
   # TODO check subclass
-  type Cb = proc(super: QWidgetItemgeometryBase): gen_qrect.QRect
-  var tmp = new Cb
+  var tmp = new QWidgetItemgeometryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWidgetItem_override_virtual_geometry(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWidgetItem_geometry(self: ptr cQWidgetItem, slot: int): pointer {.exportc: "miqt_exec_callback_QWidgetItem_geometry ".} =
-  type Cb = proc(super: QWidgetItemgeometryBase): gen_qrect.QRect
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_geometry(QWidgetItem(h: self), )
+  var nimfunc = cast[ptr QWidgetItemgeometryProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_widget(self: QWidgetItem, ): gen_qwidget.QWidget =
-
+proc QWidgetItemwidget*(self: gen_qlayoutitem_types.QWidgetItem, ): gen_qwidget.QWidget =
 
   gen_qwidget.QWidget(h: fQWidgetItem_virtualbase_widget(self.h))
 
-type QWidgetItemwidgetBase* = proc(): gen_qwidget.QWidget
-proc onwidget*(self: QWidgetItem, slot: proc(super: QWidgetItemwidgetBase): gen_qwidget.QWidget) =
+type QWidgetItemwidgetProc* = proc(): gen_qwidget.QWidget
+proc onwidget*(self: gen_qlayoutitem_types.QWidgetItem, slot: QWidgetItemwidgetProc) =
   # TODO check subclass
-  type Cb = proc(super: QWidgetItemwidgetBase): gen_qwidget.QWidget
-  var tmp = new Cb
+  var tmp = new QWidgetItemwidgetProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWidgetItem_override_virtual_widget(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWidgetItem_widget(self: ptr cQWidgetItem, slot: int): pointer {.exportc: "miqt_exec_callback_QWidgetItem_widget ".} =
-  type Cb = proc(super: QWidgetItemwidgetBase): gen_qwidget.QWidget
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_widget(QWidgetItem(h: self), )
+  var nimfunc = cast[ptr QWidgetItemwidgetProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_hasHeightForWidth(self: QWidgetItem, ): bool =
-
+proc QWidgetItemhasHeightForWidth*(self: gen_qlayoutitem_types.QWidgetItem, ): bool =
 
   fQWidgetItem_virtualbase_hasHeightForWidth(self.h)
 
-type QWidgetItemhasHeightForWidthBase* = proc(): bool
-proc onhasHeightForWidth*(self: QWidgetItem, slot: proc(super: QWidgetItemhasHeightForWidthBase): bool) =
+type QWidgetItemhasHeightForWidthProc* = proc(): bool
+proc onhasHeightForWidth*(self: gen_qlayoutitem_types.QWidgetItem, slot: QWidgetItemhasHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QWidgetItemhasHeightForWidthBase): bool
-  var tmp = new Cb
+  var tmp = new QWidgetItemhasHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWidgetItem_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWidgetItem_hasHeightForWidth(self: ptr cQWidgetItem, slot: int): bool {.exportc: "miqt_exec_callback_QWidgetItem_hasHeightForWidth ".} =
-  type Cb = proc(super: QWidgetItemhasHeightForWidthBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasHeightForWidth(QWidgetItem(h: self), )
+  var nimfunc = cast[ptr QWidgetItemhasHeightForWidthProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_heightForWidth(self: QWidgetItem, param1: cint): cint =
-
+proc QWidgetItemheightForWidth*(self: gen_qlayoutitem_types.QWidgetItem, param1: cint): cint =
 
   fQWidgetItem_virtualbase_heightForWidth(self.h, param1)
 
-type QWidgetItemheightForWidthBase* = proc(param1: cint): cint
-proc onheightForWidth*(self: QWidgetItem, slot: proc(super: QWidgetItemheightForWidthBase, param1: cint): cint) =
+type QWidgetItemheightForWidthProc* = proc(param1: cint): cint
+proc onheightForWidth*(self: gen_qlayoutitem_types.QWidgetItem, slot: QWidgetItemheightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QWidgetItemheightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QWidgetItemheightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWidgetItem_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWidgetItem_heightForWidth(self: ptr cQWidgetItem, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QWidgetItem_heightForWidth ".} =
-  type Cb = proc(super: QWidgetItemheightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_heightForWidth(QWidgetItem(h: self), param1)
+  var nimfunc = cast[ptr QWidgetItemheightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_minimumHeightForWidth(self: QWidgetItem, param1: cint): cint =
-
+proc QWidgetItemminimumHeightForWidth*(self: gen_qlayoutitem_types.QWidgetItem, param1: cint): cint =
 
   fQWidgetItem_virtualbase_minimumHeightForWidth(self.h, param1)
 
-type QWidgetItemminimumHeightForWidthBase* = proc(param1: cint): cint
-proc onminimumHeightForWidth*(self: QWidgetItem, slot: proc(super: QWidgetItemminimumHeightForWidthBase, param1: cint): cint) =
+type QWidgetItemminimumHeightForWidthProc* = proc(param1: cint): cint
+proc onminimumHeightForWidth*(self: gen_qlayoutitem_types.QWidgetItem, slot: QWidgetItemminimumHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QWidgetItemminimumHeightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QWidgetItemminimumHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWidgetItem_override_virtual_minimumHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWidgetItem_minimumHeightForWidth(self: ptr cQWidgetItem, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QWidgetItem_minimumHeightForWidth ".} =
-  type Cb = proc(super: QWidgetItemminimumHeightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_minimumHeightForWidth(QWidgetItem(h: self), param1)
+  var nimfunc = cast[ptr QWidgetItemminimumHeightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_controlTypes(self: QWidgetItem, ): gen_qsizepolicy.QSizePolicyControlType =
+proc QWidgetItemcontrolTypes*(self: gen_qlayoutitem_types.QWidgetItem, ): cint =
 
+  cint(fQWidgetItem_virtualbase_controlTypes(self.h))
 
-  gen_qsizepolicy.QSizePolicyControlType(fQWidgetItem_virtualbase_controlTypes(self.h))
-
-type QWidgetItemcontrolTypesBase* = proc(): gen_qsizepolicy.QSizePolicyControlType
-proc oncontrolTypes*(self: QWidgetItem, slot: proc(super: QWidgetItemcontrolTypesBase): gen_qsizepolicy.QSizePolicyControlType) =
+type QWidgetItemcontrolTypesProc* = proc(): cint
+proc oncontrolTypes*(self: gen_qlayoutitem_types.QWidgetItem, slot: QWidgetItemcontrolTypesProc) =
   # TODO check subclass
-  type Cb = proc(super: QWidgetItemcontrolTypesBase): gen_qsizepolicy.QSizePolicyControlType
-  var tmp = new Cb
+  var tmp = new QWidgetItemcontrolTypesProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWidgetItem_override_virtual_controlTypes(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWidgetItem_controlTypes(self: ptr cQWidgetItem, slot: int): cint {.exportc: "miqt_exec_callback_QWidgetItem_controlTypes ".} =
-  type Cb = proc(super: QWidgetItemcontrolTypesBase): gen_qsizepolicy.QSizePolicyControlType
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_controlTypes(QWidgetItem(h: self), )
+  var nimfunc = cast[ptr QWidgetItemcontrolTypesProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   cint(virtualReturn)
-proc callVirtualBase_invalidate(self: QWidgetItem, ): void =
-
+proc QWidgetIteminvalidate*(self: gen_qlayoutitem_types.QWidgetItem, ): void =
 
   fQWidgetItem_virtualbase_invalidate(self.h)
 
-type QWidgetIteminvalidateBase* = proc(): void
-proc oninvalidate*(self: QWidgetItem, slot: proc(super: QWidgetIteminvalidateBase): void) =
+type QWidgetIteminvalidateProc* = proc(): void
+proc oninvalidate*(self: gen_qlayoutitem_types.QWidgetItem, slot: QWidgetIteminvalidateProc) =
   # TODO check subclass
-  type Cb = proc(super: QWidgetIteminvalidateBase): void
-  var tmp = new Cb
+  var tmp = new QWidgetIteminvalidateProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWidgetItem_override_virtual_invalidate(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWidgetItem_invalidate(self: ptr cQWidgetItem, slot: int): void {.exportc: "miqt_exec_callback_QWidgetItem_invalidate ".} =
-  type Cb = proc(super: QWidgetIteminvalidateBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_invalidate(QWidgetItem(h: self), )
+  var nimfunc = cast[ptr QWidgetIteminvalidateProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_layout(self: QWidgetItem, ): gen_qlayout.QLayout =
-
+  nimfunc[]()
+proc QWidgetItemlayout*(self: gen_qlayoutitem_types.QWidgetItem, ): gen_qlayout.QLayout =
 
   gen_qlayout.QLayout(h: fQWidgetItem_virtualbase_layout(self.h))
 
-type QWidgetItemlayoutBase* = proc(): gen_qlayout.QLayout
-proc onlayout*(self: QWidgetItem, slot: proc(super: QWidgetItemlayoutBase): gen_qlayout.QLayout) =
+type QWidgetItemlayoutProc* = proc(): gen_qlayout.QLayout
+proc onlayout*(self: gen_qlayoutitem_types.QWidgetItem, slot: QWidgetItemlayoutProc) =
   # TODO check subclass
-  type Cb = proc(super: QWidgetItemlayoutBase): gen_qlayout.QLayout
-  var tmp = new Cb
+  var tmp = new QWidgetItemlayoutProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWidgetItem_override_virtual_layout(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWidgetItem_layout(self: ptr cQWidgetItem, slot: int): pointer {.exportc: "miqt_exec_callback_QWidgetItem_layout ".} =
-  type Cb = proc(super: QWidgetItemlayoutBase): gen_qlayout.QLayout
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_layout(QWidgetItem(h: self), )
+  var nimfunc = cast[ptr QWidgetItemlayoutProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_spacerItem(self: QWidgetItem, ): QSpacerItem =
+proc QWidgetItemspacerItem*(self: gen_qlayoutitem_types.QWidgetItem, ): gen_qlayoutitem_types.QSpacerItem =
 
+  gen_qlayoutitem_types.QSpacerItem(h: fQWidgetItem_virtualbase_spacerItem(self.h))
 
-  QSpacerItem(h: fQWidgetItem_virtualbase_spacerItem(self.h))
-
-type QWidgetItemspacerItemBase* = proc(): QSpacerItem
-proc onspacerItem*(self: QWidgetItem, slot: proc(super: QWidgetItemspacerItemBase): QSpacerItem) =
+type QWidgetItemspacerItemProc* = proc(): gen_qlayoutitem_types.QSpacerItem
+proc onspacerItem*(self: gen_qlayoutitem_types.QWidgetItem, slot: QWidgetItemspacerItemProc) =
   # TODO check subclass
-  type Cb = proc(super: QWidgetItemspacerItemBase): QSpacerItem
-  var tmp = new Cb
+  var tmp = new QWidgetItemspacerItemProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWidgetItem_override_virtual_spacerItem(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWidgetItem_spacerItem(self: ptr cQWidgetItem, slot: int): pointer {.exportc: "miqt_exec_callback_QWidgetItem_spacerItem ".} =
-  type Cb = proc(super: QWidgetItemspacerItemBase): QSpacerItem
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_spacerItem(QWidgetItem(h: self), )
+  var nimfunc = cast[ptr QWidgetItemspacerItemProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc delete*(self: QWidgetItem) =
+proc delete*(self: gen_qlayoutitem_types.QWidgetItem) =
   fcQWidgetItem_delete(self.h)
 
-func init*(T: type QWidgetItemV2, h: ptr cQWidgetItemV2): QWidgetItemV2 =
+func init*(T: type gen_qlayoutitem_types.QWidgetItemV2, h: ptr cQWidgetItemV2): gen_qlayoutitem_types.QWidgetItemV2 =
   T(h: h)
-proc create*(T: type QWidgetItemV2, widget: gen_qwidget.QWidget): QWidgetItemV2 =
+proc create*(T: type gen_qlayoutitem_types.QWidgetItemV2, widget: gen_qwidget.QWidget): gen_qlayoutitem_types.QWidgetItemV2 =
 
-  QWidgetItemV2.init(fcQWidgetItemV2_new(widget.h))
-proc sizeHint*(self: QWidgetItemV2, ): gen_qsize.QSize =
+  gen_qlayoutitem_types.QWidgetItemV2.init(fcQWidgetItemV2_new(widget.h))
+proc sizeHint*(self: gen_qlayoutitem_types.QWidgetItemV2, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQWidgetItemV2_sizeHint(self.h))
 
-proc minimumSize*(self: QWidgetItemV2, ): gen_qsize.QSize =
+proc minimumSize*(self: gen_qlayoutitem_types.QWidgetItemV2, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQWidgetItemV2_minimumSize(self.h))
 
-proc maximumSize*(self: QWidgetItemV2, ): gen_qsize.QSize =
+proc maximumSize*(self: gen_qlayoutitem_types.QWidgetItemV2, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQWidgetItemV2_maximumSize(self.h))
 
-proc heightForWidth*(self: QWidgetItemV2, width: cint): cint =
+proc heightForWidth*(self: gen_qlayoutitem_types.QWidgetItemV2, width: cint): cint =
 
   fcQWidgetItemV2_heightForWidth(self.h, width)
 
-proc callVirtualBase_sizeHint(self: QWidgetItemV2, ): gen_qsize.QSize =
-
+proc QWidgetItemV2sizeHint*(self: gen_qlayoutitem_types.QWidgetItemV2, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQWidgetItemV2_virtualbase_sizeHint(self.h))
 
-type QWidgetItemV2sizeHintBase* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: QWidgetItemV2, slot: proc(super: QWidgetItemV2sizeHintBase): gen_qsize.QSize) =
+type QWidgetItemV2sizeHintProc* = proc(): gen_qsize.QSize
+proc onsizeHint*(self: gen_qlayoutitem_types.QWidgetItemV2, slot: QWidgetItemV2sizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QWidgetItemV2sizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QWidgetItemV2sizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWidgetItemV2_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWidgetItemV2_sizeHint(self: ptr cQWidgetItemV2, slot: int): pointer {.exportc: "miqt_exec_callback_QWidgetItemV2_sizeHint ".} =
-  type Cb = proc(super: QWidgetItemV2sizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sizeHint(QWidgetItemV2(h: self), )
+  var nimfunc = cast[ptr QWidgetItemV2sizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_minimumSize(self: QWidgetItemV2, ): gen_qsize.QSize =
-
+proc QWidgetItemV2minimumSize*(self: gen_qlayoutitem_types.QWidgetItemV2, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQWidgetItemV2_virtualbase_minimumSize(self.h))
 
-type QWidgetItemV2minimumSizeBase* = proc(): gen_qsize.QSize
-proc onminimumSize*(self: QWidgetItemV2, slot: proc(super: QWidgetItemV2minimumSizeBase): gen_qsize.QSize) =
+type QWidgetItemV2minimumSizeProc* = proc(): gen_qsize.QSize
+proc onminimumSize*(self: gen_qlayoutitem_types.QWidgetItemV2, slot: QWidgetItemV2minimumSizeProc) =
   # TODO check subclass
-  type Cb = proc(super: QWidgetItemV2minimumSizeBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QWidgetItemV2minimumSizeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWidgetItemV2_override_virtual_minimumSize(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWidgetItemV2_minimumSize(self: ptr cQWidgetItemV2, slot: int): pointer {.exportc: "miqt_exec_callback_QWidgetItemV2_minimumSize ".} =
-  type Cb = proc(super: QWidgetItemV2minimumSizeBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_minimumSize(QWidgetItemV2(h: self), )
+  var nimfunc = cast[ptr QWidgetItemV2minimumSizeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_maximumSize(self: QWidgetItemV2, ): gen_qsize.QSize =
-
+proc QWidgetItemV2maximumSize*(self: gen_qlayoutitem_types.QWidgetItemV2, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQWidgetItemV2_virtualbase_maximumSize(self.h))
 
-type QWidgetItemV2maximumSizeBase* = proc(): gen_qsize.QSize
-proc onmaximumSize*(self: QWidgetItemV2, slot: proc(super: QWidgetItemV2maximumSizeBase): gen_qsize.QSize) =
+type QWidgetItemV2maximumSizeProc* = proc(): gen_qsize.QSize
+proc onmaximumSize*(self: gen_qlayoutitem_types.QWidgetItemV2, slot: QWidgetItemV2maximumSizeProc) =
   # TODO check subclass
-  type Cb = proc(super: QWidgetItemV2maximumSizeBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QWidgetItemV2maximumSizeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWidgetItemV2_override_virtual_maximumSize(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWidgetItemV2_maximumSize(self: ptr cQWidgetItemV2, slot: int): pointer {.exportc: "miqt_exec_callback_QWidgetItemV2_maximumSize ".} =
-  type Cb = proc(super: QWidgetItemV2maximumSizeBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_maximumSize(QWidgetItemV2(h: self), )
+  var nimfunc = cast[ptr QWidgetItemV2maximumSizeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_heightForWidth(self: QWidgetItemV2, width: cint): cint =
-
+proc QWidgetItemV2heightForWidth*(self: gen_qlayoutitem_types.QWidgetItemV2, width: cint): cint =
 
   fQWidgetItemV2_virtualbase_heightForWidth(self.h, width)
 
-type QWidgetItemV2heightForWidthBase* = proc(width: cint): cint
-proc onheightForWidth*(self: QWidgetItemV2, slot: proc(super: QWidgetItemV2heightForWidthBase, width: cint): cint) =
+type QWidgetItemV2heightForWidthProc* = proc(width: cint): cint
+proc onheightForWidth*(self: gen_qlayoutitem_types.QWidgetItemV2, slot: QWidgetItemV2heightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QWidgetItemV2heightForWidthBase, width: cint): cint
-  var tmp = new Cb
+  var tmp = new QWidgetItemV2heightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWidgetItemV2_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWidgetItemV2_heightForWidth(self: ptr cQWidgetItemV2, slot: int, width: cint): cint {.exportc: "miqt_exec_callback_QWidgetItemV2_heightForWidth ".} =
-  type Cb = proc(super: QWidgetItemV2heightForWidthBase, width: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(width: cint): auto =
-    callVirtualBase_heightForWidth(QWidgetItemV2(h: self), width)
+  var nimfunc = cast[ptr QWidgetItemV2heightForWidthProc](cast[pointer](slot))
   let slotval1 = width
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_expandingDirections(self: QWidgetItemV2, ): gen_qnamespace.Orientation =
+proc QWidgetItemV2expandingDirections*(self: gen_qlayoutitem_types.QWidgetItemV2, ): cint =
 
+  cint(fQWidgetItemV2_virtualbase_expandingDirections(self.h))
 
-  gen_qnamespace.Orientation(fQWidgetItemV2_virtualbase_expandingDirections(self.h))
-
-type QWidgetItemV2expandingDirectionsBase* = proc(): gen_qnamespace.Orientation
-proc onexpandingDirections*(self: QWidgetItemV2, slot: proc(super: QWidgetItemV2expandingDirectionsBase): gen_qnamespace.Orientation) =
+type QWidgetItemV2expandingDirectionsProc* = proc(): cint
+proc onexpandingDirections*(self: gen_qlayoutitem_types.QWidgetItemV2, slot: QWidgetItemV2expandingDirectionsProc) =
   # TODO check subclass
-  type Cb = proc(super: QWidgetItemV2expandingDirectionsBase): gen_qnamespace.Orientation
-  var tmp = new Cb
+  var tmp = new QWidgetItemV2expandingDirectionsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWidgetItemV2_override_virtual_expandingDirections(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWidgetItemV2_expandingDirections(self: ptr cQWidgetItemV2, slot: int): cint {.exportc: "miqt_exec_callback_QWidgetItemV2_expandingDirections ".} =
-  type Cb = proc(super: QWidgetItemV2expandingDirectionsBase): gen_qnamespace.Orientation
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_expandingDirections(QWidgetItemV2(h: self), )
+  var nimfunc = cast[ptr QWidgetItemV2expandingDirectionsProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   cint(virtualReturn)
-proc callVirtualBase_isEmpty(self: QWidgetItemV2, ): bool =
-
+proc QWidgetItemV2isEmpty*(self: gen_qlayoutitem_types.QWidgetItemV2, ): bool =
 
   fQWidgetItemV2_virtualbase_isEmpty(self.h)
 
-type QWidgetItemV2isEmptyBase* = proc(): bool
-proc onisEmpty*(self: QWidgetItemV2, slot: proc(super: QWidgetItemV2isEmptyBase): bool) =
+type QWidgetItemV2isEmptyProc* = proc(): bool
+proc onisEmpty*(self: gen_qlayoutitem_types.QWidgetItemV2, slot: QWidgetItemV2isEmptyProc) =
   # TODO check subclass
-  type Cb = proc(super: QWidgetItemV2isEmptyBase): bool
-  var tmp = new Cb
+  var tmp = new QWidgetItemV2isEmptyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWidgetItemV2_override_virtual_isEmpty(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWidgetItemV2_isEmpty(self: ptr cQWidgetItemV2, slot: int): bool {.exportc: "miqt_exec_callback_QWidgetItemV2_isEmpty ".} =
-  type Cb = proc(super: QWidgetItemV2isEmptyBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_isEmpty(QWidgetItemV2(h: self), )
+  var nimfunc = cast[ptr QWidgetItemV2isEmptyProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setGeometry(self: QWidgetItemV2, geometry: gen_qrect.QRect): void =
-
+proc QWidgetItemV2setGeometry*(self: gen_qlayoutitem_types.QWidgetItemV2, geometry: gen_qrect.QRect): void =
 
   fQWidgetItemV2_virtualbase_setGeometry(self.h, geometry.h)
 
-type QWidgetItemV2setGeometryBase* = proc(geometry: gen_qrect.QRect): void
-proc onsetGeometry*(self: QWidgetItemV2, slot: proc(super: QWidgetItemV2setGeometryBase, geometry: gen_qrect.QRect): void) =
+type QWidgetItemV2setGeometryProc* = proc(geometry: gen_qrect.QRect): void
+proc onsetGeometry*(self: gen_qlayoutitem_types.QWidgetItemV2, slot: QWidgetItemV2setGeometryProc) =
   # TODO check subclass
-  type Cb = proc(super: QWidgetItemV2setGeometryBase, geometry: gen_qrect.QRect): void
-  var tmp = new Cb
+  var tmp = new QWidgetItemV2setGeometryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWidgetItemV2_override_virtual_setGeometry(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWidgetItemV2_setGeometry(self: ptr cQWidgetItemV2, slot: int, geometry: pointer): void {.exportc: "miqt_exec_callback_QWidgetItemV2_setGeometry ".} =
-  type Cb = proc(super: QWidgetItemV2setGeometryBase, geometry: gen_qrect.QRect): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(geometry: gen_qrect.QRect): auto =
-    callVirtualBase_setGeometry(QWidgetItemV2(h: self), geometry)
+  var nimfunc = cast[ptr QWidgetItemV2setGeometryProc](cast[pointer](slot))
   let slotval1 = gen_qrect.QRect(h: geometry)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_geometry(self: QWidgetItemV2, ): gen_qrect.QRect =
-
+  nimfunc[](slotval1)
+proc QWidgetItemV2geometry*(self: gen_qlayoutitem_types.QWidgetItemV2, ): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fQWidgetItemV2_virtualbase_geometry(self.h))
 
-type QWidgetItemV2geometryBase* = proc(): gen_qrect.QRect
-proc ongeometry*(self: QWidgetItemV2, slot: proc(super: QWidgetItemV2geometryBase): gen_qrect.QRect) =
+type QWidgetItemV2geometryProc* = proc(): gen_qrect.QRect
+proc ongeometry*(self: gen_qlayoutitem_types.QWidgetItemV2, slot: QWidgetItemV2geometryProc) =
   # TODO check subclass
-  type Cb = proc(super: QWidgetItemV2geometryBase): gen_qrect.QRect
-  var tmp = new Cb
+  var tmp = new QWidgetItemV2geometryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWidgetItemV2_override_virtual_geometry(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWidgetItemV2_geometry(self: ptr cQWidgetItemV2, slot: int): pointer {.exportc: "miqt_exec_callback_QWidgetItemV2_geometry ".} =
-  type Cb = proc(super: QWidgetItemV2geometryBase): gen_qrect.QRect
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_geometry(QWidgetItemV2(h: self), )
+  var nimfunc = cast[ptr QWidgetItemV2geometryProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_widget(self: QWidgetItemV2, ): gen_qwidget.QWidget =
-
+proc QWidgetItemV2widget*(self: gen_qlayoutitem_types.QWidgetItemV2, ): gen_qwidget.QWidget =
 
   gen_qwidget.QWidget(h: fQWidgetItemV2_virtualbase_widget(self.h))
 
-type QWidgetItemV2widgetBase* = proc(): gen_qwidget.QWidget
-proc onwidget*(self: QWidgetItemV2, slot: proc(super: QWidgetItemV2widgetBase): gen_qwidget.QWidget) =
+type QWidgetItemV2widgetProc* = proc(): gen_qwidget.QWidget
+proc onwidget*(self: gen_qlayoutitem_types.QWidgetItemV2, slot: QWidgetItemV2widgetProc) =
   # TODO check subclass
-  type Cb = proc(super: QWidgetItemV2widgetBase): gen_qwidget.QWidget
-  var tmp = new Cb
+  var tmp = new QWidgetItemV2widgetProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWidgetItemV2_override_virtual_widget(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWidgetItemV2_widget(self: ptr cQWidgetItemV2, slot: int): pointer {.exportc: "miqt_exec_callback_QWidgetItemV2_widget ".} =
-  type Cb = proc(super: QWidgetItemV2widgetBase): gen_qwidget.QWidget
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_widget(QWidgetItemV2(h: self), )
+  var nimfunc = cast[ptr QWidgetItemV2widgetProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_hasHeightForWidth(self: QWidgetItemV2, ): bool =
-
+proc QWidgetItemV2hasHeightForWidth*(self: gen_qlayoutitem_types.QWidgetItemV2, ): bool =
 
   fQWidgetItemV2_virtualbase_hasHeightForWidth(self.h)
 
-type QWidgetItemV2hasHeightForWidthBase* = proc(): bool
-proc onhasHeightForWidth*(self: QWidgetItemV2, slot: proc(super: QWidgetItemV2hasHeightForWidthBase): bool) =
+type QWidgetItemV2hasHeightForWidthProc* = proc(): bool
+proc onhasHeightForWidth*(self: gen_qlayoutitem_types.QWidgetItemV2, slot: QWidgetItemV2hasHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QWidgetItemV2hasHeightForWidthBase): bool
-  var tmp = new Cb
+  var tmp = new QWidgetItemV2hasHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWidgetItemV2_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWidgetItemV2_hasHeightForWidth(self: ptr cQWidgetItemV2, slot: int): bool {.exportc: "miqt_exec_callback_QWidgetItemV2_hasHeightForWidth ".} =
-  type Cb = proc(super: QWidgetItemV2hasHeightForWidthBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasHeightForWidth(QWidgetItemV2(h: self), )
+  var nimfunc = cast[ptr QWidgetItemV2hasHeightForWidthProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_minimumHeightForWidth(self: QWidgetItemV2, param1: cint): cint =
-
+proc QWidgetItemV2minimumHeightForWidth*(self: gen_qlayoutitem_types.QWidgetItemV2, param1: cint): cint =
 
   fQWidgetItemV2_virtualbase_minimumHeightForWidth(self.h, param1)
 
-type QWidgetItemV2minimumHeightForWidthBase* = proc(param1: cint): cint
-proc onminimumHeightForWidth*(self: QWidgetItemV2, slot: proc(super: QWidgetItemV2minimumHeightForWidthBase, param1: cint): cint) =
+type QWidgetItemV2minimumHeightForWidthProc* = proc(param1: cint): cint
+proc onminimumHeightForWidth*(self: gen_qlayoutitem_types.QWidgetItemV2, slot: QWidgetItemV2minimumHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QWidgetItemV2minimumHeightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QWidgetItemV2minimumHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWidgetItemV2_override_virtual_minimumHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWidgetItemV2_minimumHeightForWidth(self: ptr cQWidgetItemV2, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QWidgetItemV2_minimumHeightForWidth ".} =
-  type Cb = proc(super: QWidgetItemV2minimumHeightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_minimumHeightForWidth(QWidgetItemV2(h: self), param1)
+  var nimfunc = cast[ptr QWidgetItemV2minimumHeightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_controlTypes(self: QWidgetItemV2, ): gen_qsizepolicy.QSizePolicyControlType =
+proc QWidgetItemV2controlTypes*(self: gen_qlayoutitem_types.QWidgetItemV2, ): cint =
 
+  cint(fQWidgetItemV2_virtualbase_controlTypes(self.h))
 
-  gen_qsizepolicy.QSizePolicyControlType(fQWidgetItemV2_virtualbase_controlTypes(self.h))
-
-type QWidgetItemV2controlTypesBase* = proc(): gen_qsizepolicy.QSizePolicyControlType
-proc oncontrolTypes*(self: QWidgetItemV2, slot: proc(super: QWidgetItemV2controlTypesBase): gen_qsizepolicy.QSizePolicyControlType) =
+type QWidgetItemV2controlTypesProc* = proc(): cint
+proc oncontrolTypes*(self: gen_qlayoutitem_types.QWidgetItemV2, slot: QWidgetItemV2controlTypesProc) =
   # TODO check subclass
-  type Cb = proc(super: QWidgetItemV2controlTypesBase): gen_qsizepolicy.QSizePolicyControlType
-  var tmp = new Cb
+  var tmp = new QWidgetItemV2controlTypesProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWidgetItemV2_override_virtual_controlTypes(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWidgetItemV2_controlTypes(self: ptr cQWidgetItemV2, slot: int): cint {.exportc: "miqt_exec_callback_QWidgetItemV2_controlTypes ".} =
-  type Cb = proc(super: QWidgetItemV2controlTypesBase): gen_qsizepolicy.QSizePolicyControlType
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_controlTypes(QWidgetItemV2(h: self), )
+  var nimfunc = cast[ptr QWidgetItemV2controlTypesProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   cint(virtualReturn)
-proc callVirtualBase_invalidate(self: QWidgetItemV2, ): void =
-
+proc QWidgetItemV2invalidate*(self: gen_qlayoutitem_types.QWidgetItemV2, ): void =
 
   fQWidgetItemV2_virtualbase_invalidate(self.h)
 
-type QWidgetItemV2invalidateBase* = proc(): void
-proc oninvalidate*(self: QWidgetItemV2, slot: proc(super: QWidgetItemV2invalidateBase): void) =
+type QWidgetItemV2invalidateProc* = proc(): void
+proc oninvalidate*(self: gen_qlayoutitem_types.QWidgetItemV2, slot: QWidgetItemV2invalidateProc) =
   # TODO check subclass
-  type Cb = proc(super: QWidgetItemV2invalidateBase): void
-  var tmp = new Cb
+  var tmp = new QWidgetItemV2invalidateProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWidgetItemV2_override_virtual_invalidate(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWidgetItemV2_invalidate(self: ptr cQWidgetItemV2, slot: int): void {.exportc: "miqt_exec_callback_QWidgetItemV2_invalidate ".} =
-  type Cb = proc(super: QWidgetItemV2invalidateBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_invalidate(QWidgetItemV2(h: self), )
+  var nimfunc = cast[ptr QWidgetItemV2invalidateProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_layout(self: QWidgetItemV2, ): gen_qlayout.QLayout =
-
+  nimfunc[]()
+proc QWidgetItemV2layout*(self: gen_qlayoutitem_types.QWidgetItemV2, ): gen_qlayout.QLayout =
 
   gen_qlayout.QLayout(h: fQWidgetItemV2_virtualbase_layout(self.h))
 
-type QWidgetItemV2layoutBase* = proc(): gen_qlayout.QLayout
-proc onlayout*(self: QWidgetItemV2, slot: proc(super: QWidgetItemV2layoutBase): gen_qlayout.QLayout) =
+type QWidgetItemV2layoutProc* = proc(): gen_qlayout.QLayout
+proc onlayout*(self: gen_qlayoutitem_types.QWidgetItemV2, slot: QWidgetItemV2layoutProc) =
   # TODO check subclass
-  type Cb = proc(super: QWidgetItemV2layoutBase): gen_qlayout.QLayout
-  var tmp = new Cb
+  var tmp = new QWidgetItemV2layoutProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWidgetItemV2_override_virtual_layout(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWidgetItemV2_layout(self: ptr cQWidgetItemV2, slot: int): pointer {.exportc: "miqt_exec_callback_QWidgetItemV2_layout ".} =
-  type Cb = proc(super: QWidgetItemV2layoutBase): gen_qlayout.QLayout
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_layout(QWidgetItemV2(h: self), )
+  var nimfunc = cast[ptr QWidgetItemV2layoutProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_spacerItem(self: QWidgetItemV2, ): QSpacerItem =
+proc QWidgetItemV2spacerItem*(self: gen_qlayoutitem_types.QWidgetItemV2, ): gen_qlayoutitem_types.QSpacerItem =
 
+  gen_qlayoutitem_types.QSpacerItem(h: fQWidgetItemV2_virtualbase_spacerItem(self.h))
 
-  QSpacerItem(h: fQWidgetItemV2_virtualbase_spacerItem(self.h))
-
-type QWidgetItemV2spacerItemBase* = proc(): QSpacerItem
-proc onspacerItem*(self: QWidgetItemV2, slot: proc(super: QWidgetItemV2spacerItemBase): QSpacerItem) =
+type QWidgetItemV2spacerItemProc* = proc(): gen_qlayoutitem_types.QSpacerItem
+proc onspacerItem*(self: gen_qlayoutitem_types.QWidgetItemV2, slot: QWidgetItemV2spacerItemProc) =
   # TODO check subclass
-  type Cb = proc(super: QWidgetItemV2spacerItemBase): QSpacerItem
-  var tmp = new Cb
+  var tmp = new QWidgetItemV2spacerItemProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWidgetItemV2_override_virtual_spacerItem(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWidgetItemV2_spacerItem(self: ptr cQWidgetItemV2, slot: int): pointer {.exportc: "miqt_exec_callback_QWidgetItemV2_spacerItem ".} =
-  type Cb = proc(super: QWidgetItemV2spacerItemBase): QSpacerItem
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_spacerItem(QWidgetItemV2(h: self), )
+  var nimfunc = cast[ptr QWidgetItemV2spacerItemProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc delete*(self: QWidgetItemV2) =
+proc delete*(self: gen_qlayoutitem_types.QWidgetItemV2) =
   fcQWidgetItemV2_delete(self.h)

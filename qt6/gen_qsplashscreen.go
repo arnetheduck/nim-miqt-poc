@@ -216,7 +216,7 @@ func (this *QSplashScreen) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QSplashScreen_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QSplashScreen) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QSplashScreen) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QSplashScreen_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -243,7 +243,7 @@ func (this *QSplashScreen) callVirtualBase_Metacast(param1 string) unsafe.Pointe
 	return (unsafe.Pointer)(C.QSplashScreen_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QSplashScreen) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QSplashScreen) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QSplashScreen_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

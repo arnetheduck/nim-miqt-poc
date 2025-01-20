@@ -280,7 +280,7 @@ func (this *QSplitter) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QSplitter_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QSplitter) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QSplitter) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QSplitter_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -307,7 +307,7 @@ func (this *QSplitter) callVirtualBase_Metacast(param1 string) unsafe.Pointer {
 	return (unsafe.Pointer)(C.QSplitter_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QSplitter) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QSplitter) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QSplitter_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1795,7 +1795,7 @@ func (this *QSplitterHandle) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QSplitterHandle_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QSplitterHandle) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QSplitterHandle) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QSplitterHandle_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1822,7 +1822,7 @@ func (this *QSplitterHandle) callVirtualBase_Metacast(param1 string) unsafe.Poin
 	return (unsafe.Pointer)(C.QSplitterHandle_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QSplitterHandle) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QSplitterHandle) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QSplitterHandle_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

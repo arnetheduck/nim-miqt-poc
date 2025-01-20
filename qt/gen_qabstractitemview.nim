@@ -34,96 +34,78 @@ const cflags = gorge("pkg-config -cflags Qt5Widgets")
 {.compile("gen_qabstractitemview.cpp", cflags).}
 
 
-type QAbstractItemViewSelectionMode* = cint
-const
-  QAbstractItemViewNoSelection* = 0
-  QAbstractItemViewSingleSelection* = 1
-  QAbstractItemViewMultiSelection* = 2
-  QAbstractItemViewExtendedSelection* = 3
-  QAbstractItemViewContiguousSelection* = 4
+type QAbstractItemViewSelectionModeEnum* = distinct cint
+template NoSelection*(_: type QAbstractItemViewSelectionModeEnum): untyped = 0
+template SingleSelection*(_: type QAbstractItemViewSelectionModeEnum): untyped = 1
+template MultiSelection*(_: type QAbstractItemViewSelectionModeEnum): untyped = 2
+template ExtendedSelection*(_: type QAbstractItemViewSelectionModeEnum): untyped = 3
+template ContiguousSelection*(_: type QAbstractItemViewSelectionModeEnum): untyped = 4
 
 
-
-type QAbstractItemViewSelectionBehavior* = cint
-const
-  QAbstractItemViewSelectItems* = 0
-  QAbstractItemViewSelectRows* = 1
-  QAbstractItemViewSelectColumns* = 2
+type QAbstractItemViewSelectionBehaviorEnum* = distinct cint
+template SelectItems*(_: type QAbstractItemViewSelectionBehaviorEnum): untyped = 0
+template SelectRows*(_: type QAbstractItemViewSelectionBehaviorEnum): untyped = 1
+template SelectColumns*(_: type QAbstractItemViewSelectionBehaviorEnum): untyped = 2
 
 
-
-type QAbstractItemViewScrollHint* = cint
-const
-  QAbstractItemViewEnsureVisible* = 0
-  QAbstractItemViewPositionAtTop* = 1
-  QAbstractItemViewPositionAtBottom* = 2
-  QAbstractItemViewPositionAtCenter* = 3
+type QAbstractItemViewScrollHintEnum* = distinct cint
+template EnsureVisible*(_: type QAbstractItemViewScrollHintEnum): untyped = 0
+template PositionAtTop*(_: type QAbstractItemViewScrollHintEnum): untyped = 1
+template PositionAtBottom*(_: type QAbstractItemViewScrollHintEnum): untyped = 2
+template PositionAtCenter*(_: type QAbstractItemViewScrollHintEnum): untyped = 3
 
 
-
-type QAbstractItemViewEditTrigger* = cint
-const
-  QAbstractItemViewNoEditTriggers* = 0
-  QAbstractItemViewCurrentChanged* = 1
-  QAbstractItemViewDoubleClicked* = 2
-  QAbstractItemViewSelectedClicked* = 4
-  QAbstractItemViewEditKeyPressed* = 8
-  QAbstractItemViewAnyKeyPressed* = 16
-  QAbstractItemViewAllEditTriggers* = 31
+type QAbstractItemViewEditTriggerEnum* = distinct cint
+template NoEditTriggers*(_: type QAbstractItemViewEditTriggerEnum): untyped = 0
+template CurrentChanged*(_: type QAbstractItemViewEditTriggerEnum): untyped = 1
+template DoubleClicked*(_: type QAbstractItemViewEditTriggerEnum): untyped = 2
+template SelectedClicked*(_: type QAbstractItemViewEditTriggerEnum): untyped = 4
+template EditKeyPressed*(_: type QAbstractItemViewEditTriggerEnum): untyped = 8
+template AnyKeyPressed*(_: type QAbstractItemViewEditTriggerEnum): untyped = 16
+template AllEditTriggers*(_: type QAbstractItemViewEditTriggerEnum): untyped = 31
 
 
-
-type QAbstractItemViewScrollMode* = cint
-const
-  QAbstractItemViewScrollPerItem* = 0
-  QAbstractItemViewScrollPerPixel* = 1
+type QAbstractItemViewScrollModeEnum* = distinct cint
+template ScrollPerItem*(_: type QAbstractItemViewScrollModeEnum): untyped = 0
+template ScrollPerPixel*(_: type QAbstractItemViewScrollModeEnum): untyped = 1
 
 
-
-type QAbstractItemViewDragDropMode* = cint
-const
-  QAbstractItemViewNoDragDrop* = 0
-  QAbstractItemViewDragOnly* = 1
-  QAbstractItemViewDropOnly* = 2
-  QAbstractItemViewDragDrop* = 3
-  QAbstractItemViewInternalMove* = 4
+type QAbstractItemViewDragDropModeEnum* = distinct cint
+template NoDragDrop*(_: type QAbstractItemViewDragDropModeEnum): untyped = 0
+template DragOnly*(_: type QAbstractItemViewDragDropModeEnum): untyped = 1
+template DropOnly*(_: type QAbstractItemViewDragDropModeEnum): untyped = 2
+template DragDrop*(_: type QAbstractItemViewDragDropModeEnum): untyped = 3
+template InternalMove*(_: type QAbstractItemViewDragDropModeEnum): untyped = 4
 
 
-
-type QAbstractItemViewCursorAction* = cint
-const
-  QAbstractItemViewMoveUp* = 0
-  QAbstractItemViewMoveDown* = 1
-  QAbstractItemViewMoveLeft* = 2
-  QAbstractItemViewMoveRight* = 3
-  QAbstractItemViewMoveHome* = 4
-  QAbstractItemViewMoveEnd* = 5
-  QAbstractItemViewMovePageUp* = 6
-  QAbstractItemViewMovePageDown* = 7
-  QAbstractItemViewMoveNext* = 8
-  QAbstractItemViewMovePrevious* = 9
+type QAbstractItemViewCursorActionEnum* = distinct cint
+template MoveUp*(_: type QAbstractItemViewCursorActionEnum): untyped = 0
+template MoveDown*(_: type QAbstractItemViewCursorActionEnum): untyped = 1
+template MoveLeft*(_: type QAbstractItemViewCursorActionEnum): untyped = 2
+template MoveRight*(_: type QAbstractItemViewCursorActionEnum): untyped = 3
+template MoveHome*(_: type QAbstractItemViewCursorActionEnum): untyped = 4
+template MoveEnd*(_: type QAbstractItemViewCursorActionEnum): untyped = 5
+template MovePageUp*(_: type QAbstractItemViewCursorActionEnum): untyped = 6
+template MovePageDown*(_: type QAbstractItemViewCursorActionEnum): untyped = 7
+template MoveNext*(_: type QAbstractItemViewCursorActionEnum): untyped = 8
+template MovePrevious*(_: type QAbstractItemViewCursorActionEnum): untyped = 9
 
 
-
-type QAbstractItemViewState* = cint
-const
-  QAbstractItemViewNoState* = 0
-  QAbstractItemViewDraggingState* = 1
-  QAbstractItemViewDragSelectingState* = 2
-  QAbstractItemViewEditingState* = 3
-  QAbstractItemViewExpandingState* = 4
-  QAbstractItemViewCollapsingState* = 5
-  QAbstractItemViewAnimatingState* = 6
+type QAbstractItemViewStateEnum* = distinct cint
+template NoState*(_: type QAbstractItemViewStateEnum): untyped = 0
+template DraggingState*(_: type QAbstractItemViewStateEnum): untyped = 1
+template DragSelectingState*(_: type QAbstractItemViewStateEnum): untyped = 2
+template EditingState*(_: type QAbstractItemViewStateEnum): untyped = 3
+template ExpandingState*(_: type QAbstractItemViewStateEnum): untyped = 4
+template CollapsingState*(_: type QAbstractItemViewStateEnum): untyped = 5
+template AnimatingState*(_: type QAbstractItemViewStateEnum): untyped = 6
 
 
-
-type QAbstractItemViewDropIndicatorPosition* = cint
-const
-  QAbstractItemViewOnItem* = 0
-  QAbstractItemViewAboveItem* = 1
-  QAbstractItemViewBelowItem* = 2
-  QAbstractItemViewOnViewport* = 3
-
+type QAbstractItemViewDropIndicatorPositionEnum* = distinct cint
+template OnItem*(_: type QAbstractItemViewDropIndicatorPositionEnum): untyped = 0
+template AboveItem*(_: type QAbstractItemViewDropIndicatorPositionEnum): untyped = 1
+template BelowItem*(_: type QAbstractItemViewDropIndicatorPositionEnum): untyped = 2
+template OnViewport*(_: type QAbstractItemViewDropIndicatorPositionEnum): untyped = 3
 
 
 import gen_qabstractitemview_types
@@ -137,7 +119,6 @@ import
   gen_qevent,
   gen_qitemselectionmodel,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -158,7 +139,6 @@ export
   gen_qevent,
   gen_qitemselectionmodel,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -448,321 +428,321 @@ proc fcQAbstractItemView_staticMetaObject(): pointer {.importc: "QAbstractItemVi
 proc fcQAbstractItemView_delete(self: pointer) {.importc: "QAbstractItemView_delete".}
 
 
-func init*(T: type QAbstractItemView, h: ptr cQAbstractItemView): QAbstractItemView =
+func init*(T: type gen_qabstractitemview_types.QAbstractItemView, h: ptr cQAbstractItemView): gen_qabstractitemview_types.QAbstractItemView =
   T(h: h)
-proc create*(T: type QAbstractItemView, parent: gen_qwidget.QWidget): QAbstractItemView =
+proc create*(T: type gen_qabstractitemview_types.QAbstractItemView, parent: gen_qwidget.QWidget): gen_qabstractitemview_types.QAbstractItemView =
 
-  QAbstractItemView.init(fcQAbstractItemView_new(parent.h))
-proc create*(T: type QAbstractItemView, ): QAbstractItemView =
+  gen_qabstractitemview_types.QAbstractItemView.init(fcQAbstractItemView_new(parent.h))
+proc create*(T: type gen_qabstractitemview_types.QAbstractItemView, ): gen_qabstractitemview_types.QAbstractItemView =
 
-  QAbstractItemView.init(fcQAbstractItemView_new2())
-proc metaObject*(self: QAbstractItemView, ): gen_qobjectdefs.QMetaObject =
+  gen_qabstractitemview_types.QAbstractItemView.init(fcQAbstractItemView_new2())
+proc metaObject*(self: gen_qabstractitemview_types.QAbstractItemView, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQAbstractItemView_metaObject(self.h))
 
-proc metacast*(self: QAbstractItemView, param1: cstring): pointer =
+proc metacast*(self: gen_qabstractitemview_types.QAbstractItemView, param1: cstring): pointer =
 
   fcQAbstractItemView_metacast(self.h, param1)
 
-proc metacall*(self: QAbstractItemView, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qabstractitemview_types.QAbstractItemView, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQAbstractItemView_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QAbstractItemView, s: cstring): string =
+proc tr*(_: type gen_qabstractitemview_types.QAbstractItemView, s: cstring): string =
 
   let v_ms = fcQAbstractItemView_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QAbstractItemView, s: cstring): string =
+proc trUtf8*(_: type gen_qabstractitemview_types.QAbstractItemView, s: cstring): string =
 
   let v_ms = fcQAbstractItemView_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setModel*(self: QAbstractItemView, model: gen_qabstractitemmodel.QAbstractItemModel): void =
+proc setModel*(self: gen_qabstractitemview_types.QAbstractItemView, model: gen_qabstractitemmodel.QAbstractItemModel): void =
 
   fcQAbstractItemView_setModel(self.h, model.h)
 
-proc model*(self: QAbstractItemView, ): gen_qabstractitemmodel.QAbstractItemModel =
+proc model*(self: gen_qabstractitemview_types.QAbstractItemView, ): gen_qabstractitemmodel.QAbstractItemModel =
 
   gen_qabstractitemmodel.QAbstractItemModel(h: fcQAbstractItemView_model(self.h))
 
-proc setSelectionModel*(self: QAbstractItemView, selectionModel: gen_qitemselectionmodel.QItemSelectionModel): void =
+proc setSelectionModel*(self: gen_qabstractitemview_types.QAbstractItemView, selectionModel: gen_qitemselectionmodel.QItemSelectionModel): void =
 
   fcQAbstractItemView_setSelectionModel(self.h, selectionModel.h)
 
-proc selectionModel*(self: QAbstractItemView, ): gen_qitemselectionmodel.QItemSelectionModel =
+proc selectionModel*(self: gen_qabstractitemview_types.QAbstractItemView, ): gen_qitemselectionmodel.QItemSelectionModel =
 
   gen_qitemselectionmodel.QItemSelectionModel(h: fcQAbstractItemView_selectionModel(self.h))
 
-proc setItemDelegate*(self: QAbstractItemView, delegate: gen_qabstractitemdelegate.QAbstractItemDelegate): void =
+proc setItemDelegate*(self: gen_qabstractitemview_types.QAbstractItemView, delegate: gen_qabstractitemdelegate.QAbstractItemDelegate): void =
 
   fcQAbstractItemView_setItemDelegate(self.h, delegate.h)
 
-proc itemDelegate*(self: QAbstractItemView, ): gen_qabstractitemdelegate.QAbstractItemDelegate =
+proc itemDelegate*(self: gen_qabstractitemview_types.QAbstractItemView, ): gen_qabstractitemdelegate.QAbstractItemDelegate =
 
   gen_qabstractitemdelegate.QAbstractItemDelegate(h: fcQAbstractItemView_itemDelegate(self.h))
 
-proc setSelectionMode*(self: QAbstractItemView, mode: QAbstractItemViewSelectionMode): void =
+proc setSelectionMode*(self: gen_qabstractitemview_types.QAbstractItemView, mode: cint): void =
 
   fcQAbstractItemView_setSelectionMode(self.h, cint(mode))
 
-proc selectionMode*(self: QAbstractItemView, ): QAbstractItemViewSelectionMode =
+proc selectionMode*(self: gen_qabstractitemview_types.QAbstractItemView, ): cint =
 
-  QAbstractItemViewSelectionMode(fcQAbstractItemView_selectionMode(self.h))
+  cint(fcQAbstractItemView_selectionMode(self.h))
 
-proc setSelectionBehavior*(self: QAbstractItemView, behavior: QAbstractItemViewSelectionBehavior): void =
+proc setSelectionBehavior*(self: gen_qabstractitemview_types.QAbstractItemView, behavior: cint): void =
 
   fcQAbstractItemView_setSelectionBehavior(self.h, cint(behavior))
 
-proc selectionBehavior*(self: QAbstractItemView, ): QAbstractItemViewSelectionBehavior =
+proc selectionBehavior*(self: gen_qabstractitemview_types.QAbstractItemView, ): cint =
 
-  QAbstractItemViewSelectionBehavior(fcQAbstractItemView_selectionBehavior(self.h))
+  cint(fcQAbstractItemView_selectionBehavior(self.h))
 
-proc currentIndex*(self: QAbstractItemView, ): gen_qabstractitemmodel.QModelIndex =
+proc currentIndex*(self: gen_qabstractitemview_types.QAbstractItemView, ): gen_qabstractitemmodel.QModelIndex =
 
   gen_qabstractitemmodel.QModelIndex(h: fcQAbstractItemView_currentIndex(self.h))
 
-proc rootIndex*(self: QAbstractItemView, ): gen_qabstractitemmodel.QModelIndex =
+proc rootIndex*(self: gen_qabstractitemview_types.QAbstractItemView, ): gen_qabstractitemmodel.QModelIndex =
 
   gen_qabstractitemmodel.QModelIndex(h: fcQAbstractItemView_rootIndex(self.h))
 
-proc setEditTriggers*(self: QAbstractItemView, triggers: QAbstractItemViewEditTrigger): void =
+proc setEditTriggers*(self: gen_qabstractitemview_types.QAbstractItemView, triggers: cint): void =
 
   fcQAbstractItemView_setEditTriggers(self.h, cint(triggers))
 
-proc editTriggers*(self: QAbstractItemView, ): QAbstractItemViewEditTrigger =
+proc editTriggers*(self: gen_qabstractitemview_types.QAbstractItemView, ): cint =
 
-  QAbstractItemViewEditTrigger(fcQAbstractItemView_editTriggers(self.h))
+  cint(fcQAbstractItemView_editTriggers(self.h))
 
-proc setVerticalScrollMode*(self: QAbstractItemView, mode: QAbstractItemViewScrollMode): void =
+proc setVerticalScrollMode*(self: gen_qabstractitemview_types.QAbstractItemView, mode: cint): void =
 
   fcQAbstractItemView_setVerticalScrollMode(self.h, cint(mode))
 
-proc verticalScrollMode*(self: QAbstractItemView, ): QAbstractItemViewScrollMode =
+proc verticalScrollMode*(self: gen_qabstractitemview_types.QAbstractItemView, ): cint =
 
-  QAbstractItemViewScrollMode(fcQAbstractItemView_verticalScrollMode(self.h))
+  cint(fcQAbstractItemView_verticalScrollMode(self.h))
 
-proc resetVerticalScrollMode*(self: QAbstractItemView, ): void =
+proc resetVerticalScrollMode*(self: gen_qabstractitemview_types.QAbstractItemView, ): void =
 
   fcQAbstractItemView_resetVerticalScrollMode(self.h)
 
-proc setHorizontalScrollMode*(self: QAbstractItemView, mode: QAbstractItemViewScrollMode): void =
+proc setHorizontalScrollMode*(self: gen_qabstractitemview_types.QAbstractItemView, mode: cint): void =
 
   fcQAbstractItemView_setHorizontalScrollMode(self.h, cint(mode))
 
-proc horizontalScrollMode*(self: QAbstractItemView, ): QAbstractItemViewScrollMode =
+proc horizontalScrollMode*(self: gen_qabstractitemview_types.QAbstractItemView, ): cint =
 
-  QAbstractItemViewScrollMode(fcQAbstractItemView_horizontalScrollMode(self.h))
+  cint(fcQAbstractItemView_horizontalScrollMode(self.h))
 
-proc resetHorizontalScrollMode*(self: QAbstractItemView, ): void =
+proc resetHorizontalScrollMode*(self: gen_qabstractitemview_types.QAbstractItemView, ): void =
 
   fcQAbstractItemView_resetHorizontalScrollMode(self.h)
 
-proc setAutoScroll*(self: QAbstractItemView, enable: bool): void =
+proc setAutoScroll*(self: gen_qabstractitemview_types.QAbstractItemView, enable: bool): void =
 
   fcQAbstractItemView_setAutoScroll(self.h, enable)
 
-proc hasAutoScroll*(self: QAbstractItemView, ): bool =
+proc hasAutoScroll*(self: gen_qabstractitemview_types.QAbstractItemView, ): bool =
 
   fcQAbstractItemView_hasAutoScroll(self.h)
 
-proc setAutoScrollMargin*(self: QAbstractItemView, margin: cint): void =
+proc setAutoScrollMargin*(self: gen_qabstractitemview_types.QAbstractItemView, margin: cint): void =
 
   fcQAbstractItemView_setAutoScrollMargin(self.h, margin)
 
-proc autoScrollMargin*(self: QAbstractItemView, ): cint =
+proc autoScrollMargin*(self: gen_qabstractitemview_types.QAbstractItemView, ): cint =
 
   fcQAbstractItemView_autoScrollMargin(self.h)
 
-proc setTabKeyNavigation*(self: QAbstractItemView, enable: bool): void =
+proc setTabKeyNavigation*(self: gen_qabstractitemview_types.QAbstractItemView, enable: bool): void =
 
   fcQAbstractItemView_setTabKeyNavigation(self.h, enable)
 
-proc tabKeyNavigation*(self: QAbstractItemView, ): bool =
+proc tabKeyNavigation*(self: gen_qabstractitemview_types.QAbstractItemView, ): bool =
 
   fcQAbstractItemView_tabKeyNavigation(self.h)
 
-proc setDropIndicatorShown*(self: QAbstractItemView, enable: bool): void =
+proc setDropIndicatorShown*(self: gen_qabstractitemview_types.QAbstractItemView, enable: bool): void =
 
   fcQAbstractItemView_setDropIndicatorShown(self.h, enable)
 
-proc showDropIndicator*(self: QAbstractItemView, ): bool =
+proc showDropIndicator*(self: gen_qabstractitemview_types.QAbstractItemView, ): bool =
 
   fcQAbstractItemView_showDropIndicator(self.h)
 
-proc setDragEnabled*(self: QAbstractItemView, enable: bool): void =
+proc setDragEnabled*(self: gen_qabstractitemview_types.QAbstractItemView, enable: bool): void =
 
   fcQAbstractItemView_setDragEnabled(self.h, enable)
 
-proc dragEnabled*(self: QAbstractItemView, ): bool =
+proc dragEnabled*(self: gen_qabstractitemview_types.QAbstractItemView, ): bool =
 
   fcQAbstractItemView_dragEnabled(self.h)
 
-proc setDragDropOverwriteMode*(self: QAbstractItemView, overwrite: bool): void =
+proc setDragDropOverwriteMode*(self: gen_qabstractitemview_types.QAbstractItemView, overwrite: bool): void =
 
   fcQAbstractItemView_setDragDropOverwriteMode(self.h, overwrite)
 
-proc dragDropOverwriteMode*(self: QAbstractItemView, ): bool =
+proc dragDropOverwriteMode*(self: gen_qabstractitemview_types.QAbstractItemView, ): bool =
 
   fcQAbstractItemView_dragDropOverwriteMode(self.h)
 
-proc setDragDropMode*(self: QAbstractItemView, behavior: QAbstractItemViewDragDropMode): void =
+proc setDragDropMode*(self: gen_qabstractitemview_types.QAbstractItemView, behavior: cint): void =
 
   fcQAbstractItemView_setDragDropMode(self.h, cint(behavior))
 
-proc dragDropMode*(self: QAbstractItemView, ): QAbstractItemViewDragDropMode =
+proc dragDropMode*(self: gen_qabstractitemview_types.QAbstractItemView, ): cint =
 
-  QAbstractItemViewDragDropMode(fcQAbstractItemView_dragDropMode(self.h))
+  cint(fcQAbstractItemView_dragDropMode(self.h))
 
-proc setDefaultDropAction*(self: QAbstractItemView, dropAction: gen_qnamespace.DropAction): void =
+proc setDefaultDropAction*(self: gen_qabstractitemview_types.QAbstractItemView, dropAction: cint): void =
 
   fcQAbstractItemView_setDefaultDropAction(self.h, cint(dropAction))
 
-proc defaultDropAction*(self: QAbstractItemView, ): gen_qnamespace.DropAction =
+proc defaultDropAction*(self: gen_qabstractitemview_types.QAbstractItemView, ): cint =
 
-  gen_qnamespace.DropAction(fcQAbstractItemView_defaultDropAction(self.h))
+  cint(fcQAbstractItemView_defaultDropAction(self.h))
 
-proc setAlternatingRowColors*(self: QAbstractItemView, enable: bool): void =
+proc setAlternatingRowColors*(self: gen_qabstractitemview_types.QAbstractItemView, enable: bool): void =
 
   fcQAbstractItemView_setAlternatingRowColors(self.h, enable)
 
-proc alternatingRowColors*(self: QAbstractItemView, ): bool =
+proc alternatingRowColors*(self: gen_qabstractitemview_types.QAbstractItemView, ): bool =
 
   fcQAbstractItemView_alternatingRowColors(self.h)
 
-proc setIconSize*(self: QAbstractItemView, size: gen_qsize.QSize): void =
+proc setIconSize*(self: gen_qabstractitemview_types.QAbstractItemView, size: gen_qsize.QSize): void =
 
   fcQAbstractItemView_setIconSize(self.h, size.h)
 
-proc iconSize*(self: QAbstractItemView, ): gen_qsize.QSize =
+proc iconSize*(self: gen_qabstractitemview_types.QAbstractItemView, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQAbstractItemView_iconSize(self.h))
 
-proc setTextElideMode*(self: QAbstractItemView, mode: gen_qnamespace.TextElideMode): void =
+proc setTextElideMode*(self: gen_qabstractitemview_types.QAbstractItemView, mode: cint): void =
 
   fcQAbstractItemView_setTextElideMode(self.h, cint(mode))
 
-proc textElideMode*(self: QAbstractItemView, ): gen_qnamespace.TextElideMode =
+proc textElideMode*(self: gen_qabstractitemview_types.QAbstractItemView, ): cint =
 
-  gen_qnamespace.TextElideMode(fcQAbstractItemView_textElideMode(self.h))
+  cint(fcQAbstractItemView_textElideMode(self.h))
 
-proc keyboardSearch*(self: QAbstractItemView, search: string): void =
+proc keyboardSearch*(self: gen_qabstractitemview_types.QAbstractItemView, search: string): void =
 
   fcQAbstractItemView_keyboardSearch(self.h, struct_miqt_string(data: search, len: csize_t(len(search))))
 
-proc visualRect*(self: QAbstractItemView, index: gen_qabstractitemmodel.QModelIndex): gen_qrect.QRect =
+proc visualRect*(self: gen_qabstractitemview_types.QAbstractItemView, index: gen_qabstractitemmodel.QModelIndex): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fcQAbstractItemView_visualRect(self.h, index.h))
 
-proc scrollTo*(self: QAbstractItemView, index: gen_qabstractitemmodel.QModelIndex, hint: QAbstractItemViewScrollHint): void =
+proc scrollTo*(self: gen_qabstractitemview_types.QAbstractItemView, index: gen_qabstractitemmodel.QModelIndex, hint: cint): void =
 
   fcQAbstractItemView_scrollTo(self.h, index.h, cint(hint))
 
-proc indexAt*(self: QAbstractItemView, point: gen_qpoint.QPoint): gen_qabstractitemmodel.QModelIndex =
+proc indexAt*(self: gen_qabstractitemview_types.QAbstractItemView, point: gen_qpoint.QPoint): gen_qabstractitemmodel.QModelIndex =
 
   gen_qabstractitemmodel.QModelIndex(h: fcQAbstractItemView_indexAt(self.h, point.h))
 
-proc sizeHintForIndex*(self: QAbstractItemView, index: gen_qabstractitemmodel.QModelIndex): gen_qsize.QSize =
+proc sizeHintForIndex*(self: gen_qabstractitemview_types.QAbstractItemView, index: gen_qabstractitemmodel.QModelIndex): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQAbstractItemView_sizeHintForIndex(self.h, index.h))
 
-proc sizeHintForRow*(self: QAbstractItemView, row: cint): cint =
+proc sizeHintForRow*(self: gen_qabstractitemview_types.QAbstractItemView, row: cint): cint =
 
   fcQAbstractItemView_sizeHintForRow(self.h, row)
 
-proc sizeHintForColumn*(self: QAbstractItemView, column: cint): cint =
+proc sizeHintForColumn*(self: gen_qabstractitemview_types.QAbstractItemView, column: cint): cint =
 
   fcQAbstractItemView_sizeHintForColumn(self.h, column)
 
-proc openPersistentEditor*(self: QAbstractItemView, index: gen_qabstractitemmodel.QModelIndex): void =
+proc openPersistentEditor*(self: gen_qabstractitemview_types.QAbstractItemView, index: gen_qabstractitemmodel.QModelIndex): void =
 
   fcQAbstractItemView_openPersistentEditor(self.h, index.h)
 
-proc closePersistentEditor*(self: QAbstractItemView, index: gen_qabstractitemmodel.QModelIndex): void =
+proc closePersistentEditor*(self: gen_qabstractitemview_types.QAbstractItemView, index: gen_qabstractitemmodel.QModelIndex): void =
 
   fcQAbstractItemView_closePersistentEditor(self.h, index.h)
 
-proc isPersistentEditorOpen*(self: QAbstractItemView, index: gen_qabstractitemmodel.QModelIndex): bool =
+proc isPersistentEditorOpen*(self: gen_qabstractitemview_types.QAbstractItemView, index: gen_qabstractitemmodel.QModelIndex): bool =
 
   fcQAbstractItemView_isPersistentEditorOpen(self.h, index.h)
 
-proc setIndexWidget*(self: QAbstractItemView, index: gen_qabstractitemmodel.QModelIndex, widget: gen_qwidget.QWidget): void =
+proc setIndexWidget*(self: gen_qabstractitemview_types.QAbstractItemView, index: gen_qabstractitemmodel.QModelIndex, widget: gen_qwidget.QWidget): void =
 
   fcQAbstractItemView_setIndexWidget(self.h, index.h, widget.h)
 
-proc indexWidget*(self: QAbstractItemView, index: gen_qabstractitemmodel.QModelIndex): gen_qwidget.QWidget =
+proc indexWidget*(self: gen_qabstractitemview_types.QAbstractItemView, index: gen_qabstractitemmodel.QModelIndex): gen_qwidget.QWidget =
 
   gen_qwidget.QWidget(h: fcQAbstractItemView_indexWidget(self.h, index.h))
 
-proc setItemDelegateForRow*(self: QAbstractItemView, row: cint, delegate: gen_qabstractitemdelegate.QAbstractItemDelegate): void =
+proc setItemDelegateForRow*(self: gen_qabstractitemview_types.QAbstractItemView, row: cint, delegate: gen_qabstractitemdelegate.QAbstractItemDelegate): void =
 
   fcQAbstractItemView_setItemDelegateForRow(self.h, row, delegate.h)
 
-proc itemDelegateForRow*(self: QAbstractItemView, row: cint): gen_qabstractitemdelegate.QAbstractItemDelegate =
+proc itemDelegateForRow*(self: gen_qabstractitemview_types.QAbstractItemView, row: cint): gen_qabstractitemdelegate.QAbstractItemDelegate =
 
   gen_qabstractitemdelegate.QAbstractItemDelegate(h: fcQAbstractItemView_itemDelegateForRow(self.h, row))
 
-proc setItemDelegateForColumn*(self: QAbstractItemView, column: cint, delegate: gen_qabstractitemdelegate.QAbstractItemDelegate): void =
+proc setItemDelegateForColumn*(self: gen_qabstractitemview_types.QAbstractItemView, column: cint, delegate: gen_qabstractitemdelegate.QAbstractItemDelegate): void =
 
   fcQAbstractItemView_setItemDelegateForColumn(self.h, column, delegate.h)
 
-proc itemDelegateForColumn*(self: QAbstractItemView, column: cint): gen_qabstractitemdelegate.QAbstractItemDelegate =
+proc itemDelegateForColumn*(self: gen_qabstractitemview_types.QAbstractItemView, column: cint): gen_qabstractitemdelegate.QAbstractItemDelegate =
 
   gen_qabstractitemdelegate.QAbstractItemDelegate(h: fcQAbstractItemView_itemDelegateForColumn(self.h, column))
 
-proc itemDelegateWithIndex*(self: QAbstractItemView, index: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemdelegate.QAbstractItemDelegate =
+proc itemDelegateWithIndex*(self: gen_qabstractitemview_types.QAbstractItemView, index: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemdelegate.QAbstractItemDelegate =
 
   gen_qabstractitemdelegate.QAbstractItemDelegate(h: fcQAbstractItemView_itemDelegateWithIndex(self.h, index.h))
 
-proc inputMethodQuery*(self: QAbstractItemView, query: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant =
+proc inputMethodQuery*(self: gen_qabstractitemview_types.QAbstractItemView, query: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fcQAbstractItemView_inputMethodQuery(self.h, cint(query)))
 
-proc reset*(self: QAbstractItemView, ): void =
+proc reset*(self: gen_qabstractitemview_types.QAbstractItemView, ): void =
 
   fcQAbstractItemView_reset(self.h)
 
-proc setRootIndex*(self: QAbstractItemView, index: gen_qabstractitemmodel.QModelIndex): void =
+proc setRootIndex*(self: gen_qabstractitemview_types.QAbstractItemView, index: gen_qabstractitemmodel.QModelIndex): void =
 
   fcQAbstractItemView_setRootIndex(self.h, index.h)
 
-proc doItemsLayout*(self: QAbstractItemView, ): void =
+proc doItemsLayout*(self: gen_qabstractitemview_types.QAbstractItemView, ): void =
 
   fcQAbstractItemView_doItemsLayout(self.h)
 
-proc selectAll*(self: QAbstractItemView, ): void =
+proc selectAll*(self: gen_qabstractitemview_types.QAbstractItemView, ): void =
 
   fcQAbstractItemView_selectAll(self.h)
 
-proc edit*(self: QAbstractItemView, index: gen_qabstractitemmodel.QModelIndex): void =
+proc edit*(self: gen_qabstractitemview_types.QAbstractItemView, index: gen_qabstractitemmodel.QModelIndex): void =
 
   fcQAbstractItemView_edit(self.h, index.h)
 
-proc clearSelection*(self: QAbstractItemView, ): void =
+proc clearSelection*(self: gen_qabstractitemview_types.QAbstractItemView, ): void =
 
   fcQAbstractItemView_clearSelection(self.h)
 
-proc setCurrentIndex*(self: QAbstractItemView, index: gen_qabstractitemmodel.QModelIndex): void =
+proc setCurrentIndex*(self: gen_qabstractitemview_types.QAbstractItemView, index: gen_qabstractitemmodel.QModelIndex): void =
 
   fcQAbstractItemView_setCurrentIndex(self.h, index.h)
 
-proc scrollToTop*(self: QAbstractItemView, ): void =
+proc scrollToTop*(self: gen_qabstractitemview_types.QAbstractItemView, ): void =
 
   fcQAbstractItemView_scrollToTop(self.h)
 
-proc scrollToBottom*(self: QAbstractItemView, ): void =
+proc scrollToBottom*(self: gen_qabstractitemview_types.QAbstractItemView, ): void =
 
   fcQAbstractItemView_scrollToBottom(self.h)
 
-proc update*(self: QAbstractItemView, index: gen_qabstractitemmodel.QModelIndex): void =
+proc update*(self: gen_qabstractitemview_types.QAbstractItemView, index: gen_qabstractitemmodel.QModelIndex): void =
 
   fcQAbstractItemView_update(self.h, index.h)
 
-proc pressed*(self: QAbstractItemView, index: gen_qabstractitemmodel.QModelIndex): void =
+proc pressed*(self: gen_qabstractitemview_types.QAbstractItemView, index: gen_qabstractitemmodel.QModelIndex): void =
 
   fcQAbstractItemView_pressed(self.h, index.h)
 
@@ -774,13 +754,13 @@ proc miqt_exec_callback_QAbstractItemView_pressed(slot: int, index: pointer) {.e
 
   nimfunc[](slotval1)
 
-proc onpressed*(self: QAbstractItemView, slot: proc(index: gen_qabstractitemmodel.QModelIndex)) =
+proc onpressed*(self: gen_qabstractitemview_types.QAbstractItemView, slot: proc(index: gen_qabstractitemmodel.QModelIndex)) =
   type Cb = proc(index: gen_qabstractitemmodel.QModelIndex)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQAbstractItemView_connect_pressed(self.h, cast[int](addr tmp[]))
-proc clicked*(self: QAbstractItemView, index: gen_qabstractitemmodel.QModelIndex): void =
+proc clicked*(self: gen_qabstractitemview_types.QAbstractItemView, index: gen_qabstractitemmodel.QModelIndex): void =
 
   fcQAbstractItemView_clicked(self.h, index.h)
 
@@ -792,13 +772,13 @@ proc miqt_exec_callback_QAbstractItemView_clicked(slot: int, index: pointer) {.e
 
   nimfunc[](slotval1)
 
-proc onclicked*(self: QAbstractItemView, slot: proc(index: gen_qabstractitemmodel.QModelIndex)) =
+proc onclicked*(self: gen_qabstractitemview_types.QAbstractItemView, slot: proc(index: gen_qabstractitemmodel.QModelIndex)) =
   type Cb = proc(index: gen_qabstractitemmodel.QModelIndex)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQAbstractItemView_connect_clicked(self.h, cast[int](addr tmp[]))
-proc doubleClicked*(self: QAbstractItemView, index: gen_qabstractitemmodel.QModelIndex): void =
+proc doubleClicked*(self: gen_qabstractitemview_types.QAbstractItemView, index: gen_qabstractitemmodel.QModelIndex): void =
 
   fcQAbstractItemView_doubleClicked(self.h, index.h)
 
@@ -810,13 +790,13 @@ proc miqt_exec_callback_QAbstractItemView_doubleClicked(slot: int, index: pointe
 
   nimfunc[](slotval1)
 
-proc ondoubleClicked*(self: QAbstractItemView, slot: proc(index: gen_qabstractitemmodel.QModelIndex)) =
+proc ondoubleClicked*(self: gen_qabstractitemview_types.QAbstractItemView, slot: proc(index: gen_qabstractitemmodel.QModelIndex)) =
   type Cb = proc(index: gen_qabstractitemmodel.QModelIndex)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQAbstractItemView_connect_doubleClicked(self.h, cast[int](addr tmp[]))
-proc activated*(self: QAbstractItemView, index: gen_qabstractitemmodel.QModelIndex): void =
+proc activated*(self: gen_qabstractitemview_types.QAbstractItemView, index: gen_qabstractitemmodel.QModelIndex): void =
 
   fcQAbstractItemView_activated(self.h, index.h)
 
@@ -828,13 +808,13 @@ proc miqt_exec_callback_QAbstractItemView_activated(slot: int, index: pointer) {
 
   nimfunc[](slotval1)
 
-proc onactivated*(self: QAbstractItemView, slot: proc(index: gen_qabstractitemmodel.QModelIndex)) =
+proc onactivated*(self: gen_qabstractitemview_types.QAbstractItemView, slot: proc(index: gen_qabstractitemmodel.QModelIndex)) =
   type Cb = proc(index: gen_qabstractitemmodel.QModelIndex)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQAbstractItemView_connect_activated(self.h, cast[int](addr tmp[]))
-proc entered*(self: QAbstractItemView, index: gen_qabstractitemmodel.QModelIndex): void =
+proc entered*(self: gen_qabstractitemview_types.QAbstractItemView, index: gen_qabstractitemmodel.QModelIndex): void =
 
   fcQAbstractItemView_entered(self.h, index.h)
 
@@ -846,13 +826,13 @@ proc miqt_exec_callback_QAbstractItemView_entered(slot: int, index: pointer) {.e
 
   nimfunc[](slotval1)
 
-proc onentered*(self: QAbstractItemView, slot: proc(index: gen_qabstractitemmodel.QModelIndex)) =
+proc onentered*(self: gen_qabstractitemview_types.QAbstractItemView, slot: proc(index: gen_qabstractitemmodel.QModelIndex)) =
   type Cb = proc(index: gen_qabstractitemmodel.QModelIndex)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQAbstractItemView_connect_entered(self.h, cast[int](addr tmp[]))
-proc viewportEntered*(self: QAbstractItemView, ): void =
+proc viewportEntered*(self: gen_qabstractitemview_types.QAbstractItemView, ): void =
 
   fcQAbstractItemView_viewportEntered(self.h)
 
@@ -862,13 +842,13 @@ proc miqt_exec_callback_QAbstractItemView_viewportEntered(slot: int) {.exportc.}
 
   nimfunc[]()
 
-proc onviewportEntered*(self: QAbstractItemView, slot: proc()) =
+proc onviewportEntered*(self: gen_qabstractitemview_types.QAbstractItemView, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQAbstractItemView_connect_viewportEntered(self.h, cast[int](addr tmp[]))
-proc iconSizeChanged*(self: QAbstractItemView, size: gen_qsize.QSize): void =
+proc iconSizeChanged*(self: gen_qabstractitemview_types.QAbstractItemView, size: gen_qsize.QSize): void =
 
   fcQAbstractItemView_iconSizeChanged(self.h, size.h)
 
@@ -880,427 +860,351 @@ proc miqt_exec_callback_QAbstractItemView_iconSizeChanged(slot: int, size: point
 
   nimfunc[](slotval1)
 
-proc oniconSizeChanged*(self: QAbstractItemView, slot: proc(size: gen_qsize.QSize)) =
+proc oniconSizeChanged*(self: gen_qabstractitemview_types.QAbstractItemView, slot: proc(size: gen_qsize.QSize)) =
   type Cb = proc(size: gen_qsize.QSize)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQAbstractItemView_connect_iconSizeChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QAbstractItemView, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qabstractitemview_types.QAbstractItemView, s: cstring, c: cstring): string =
 
   let v_ms = fcQAbstractItemView_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QAbstractItemView, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qabstractitemview_types.QAbstractItemView, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQAbstractItemView_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QAbstractItemView, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qabstractitemview_types.QAbstractItemView, s: cstring, c: cstring): string =
 
   let v_ms = fcQAbstractItemView_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QAbstractItemView, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qabstractitemview_types.QAbstractItemView, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQAbstractItemView_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QAbstractItemView, ): gen_qobjectdefs.QMetaObject =
-
+proc QAbstractItemViewmetaObject*(self: gen_qabstractitemview_types.QAbstractItemView, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQAbstractItemView_virtualbase_metaObject(self.h))
 
-type QAbstractItemViewmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QAbstractItemViewmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_metaObject(self: ptr cQAbstractItemView, slot: int): pointer {.exportc: "miqt_exec_callback_QAbstractItemView_metaObject ".} =
-  type Cb = proc(super: QAbstractItemViewmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QAbstractItemView(h: self), )
+  var nimfunc = cast[ptr QAbstractItemViewmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QAbstractItemView, param1: cstring): pointer =
-
+proc QAbstractItemViewmetacast*(self: gen_qabstractitemview_types.QAbstractItemView, param1: cstring): pointer =
 
   fQAbstractItemView_virtualbase_metacast(self.h, param1)
 
-type QAbstractItemViewmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewmetacastBase, param1: cstring): pointer) =
+type QAbstractItemViewmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_metacast(self: ptr cQAbstractItemView, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QAbstractItemView_metacast ".} =
-  type Cb = proc(super: QAbstractItemViewmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QAbstractItemView(h: self), param1)
+  var nimfunc = cast[ptr QAbstractItemViewmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QAbstractItemView, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QAbstractItemViewmetacall*(self: gen_qabstractitemview_types.QAbstractItemView, param1: cint, param2: cint, param3: pointer): cint =
 
   fQAbstractItemView_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QAbstractItemViewmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QAbstractItemViewmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_metacall(self: ptr cQAbstractItemView, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QAbstractItemView_metacall ".} =
-  type Cb = proc(super: QAbstractItemViewmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QAbstractItemView(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QAbstractItemViewmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_setModel(self: QAbstractItemView, model: gen_qabstractitemmodel.QAbstractItemModel): void =
-
+proc QAbstractItemViewsetModel*(self: gen_qabstractitemview_types.QAbstractItemView, model: gen_qabstractitemmodel.QAbstractItemModel): void =
 
   fQAbstractItemView_virtualbase_setModel(self.h, model.h)
 
-type QAbstractItemViewsetModelBase* = proc(model: gen_qabstractitemmodel.QAbstractItemModel): void
-proc onsetModel*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewsetModelBase, model: gen_qabstractitemmodel.QAbstractItemModel): void) =
+type QAbstractItemViewsetModelProc* = proc(model: gen_qabstractitemmodel.QAbstractItemModel): void
+proc onsetModel*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewsetModelProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewsetModelBase, model: gen_qabstractitemmodel.QAbstractItemModel): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewsetModelProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_setModel(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_setModel(self: ptr cQAbstractItemView, slot: int, model: pointer): void {.exportc: "miqt_exec_callback_QAbstractItemView_setModel ".} =
-  type Cb = proc(super: QAbstractItemViewsetModelBase, model: gen_qabstractitemmodel.QAbstractItemModel): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(model: gen_qabstractitemmodel.QAbstractItemModel): auto =
-    callVirtualBase_setModel(QAbstractItemView(h: self), model)
+  var nimfunc = cast[ptr QAbstractItemViewsetModelProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QAbstractItemModel(h: model)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_setSelectionModel(self: QAbstractItemView, selectionModel: gen_qitemselectionmodel.QItemSelectionModel): void =
-
+  nimfunc[](slotval1)
+proc QAbstractItemViewsetSelectionModel*(self: gen_qabstractitemview_types.QAbstractItemView, selectionModel: gen_qitemselectionmodel.QItemSelectionModel): void =
 
   fQAbstractItemView_virtualbase_setSelectionModel(self.h, selectionModel.h)
 
-type QAbstractItemViewsetSelectionModelBase* = proc(selectionModel: gen_qitemselectionmodel.QItemSelectionModel): void
-proc onsetSelectionModel*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewsetSelectionModelBase, selectionModel: gen_qitemselectionmodel.QItemSelectionModel): void) =
+type QAbstractItemViewsetSelectionModelProc* = proc(selectionModel: gen_qitemselectionmodel.QItemSelectionModel): void
+proc onsetSelectionModel*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewsetSelectionModelProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewsetSelectionModelBase, selectionModel: gen_qitemselectionmodel.QItemSelectionModel): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewsetSelectionModelProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_setSelectionModel(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_setSelectionModel(self: ptr cQAbstractItemView, slot: int, selectionModel: pointer): void {.exportc: "miqt_exec_callback_QAbstractItemView_setSelectionModel ".} =
-  type Cb = proc(super: QAbstractItemViewsetSelectionModelBase, selectionModel: gen_qitemselectionmodel.QItemSelectionModel): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(selectionModel: gen_qitemselectionmodel.QItemSelectionModel): auto =
-    callVirtualBase_setSelectionModel(QAbstractItemView(h: self), selectionModel)
+  var nimfunc = cast[ptr QAbstractItemViewsetSelectionModelProc](cast[pointer](slot))
   let slotval1 = gen_qitemselectionmodel.QItemSelectionModel(h: selectionModel)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyboardSearch(self: QAbstractItemView, search: string): void =
-
+  nimfunc[](slotval1)
+proc QAbstractItemViewkeyboardSearch*(self: gen_qabstractitemview_types.QAbstractItemView, search: string): void =
 
   fQAbstractItemView_virtualbase_keyboardSearch(self.h, struct_miqt_string(data: search, len: csize_t(len(search))))
 
-type QAbstractItemViewkeyboardSearchBase* = proc(search: string): void
-proc onkeyboardSearch*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewkeyboardSearchBase, search: string): void) =
+type QAbstractItemViewkeyboardSearchProc* = proc(search: string): void
+proc onkeyboardSearch*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewkeyboardSearchProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewkeyboardSearchBase, search: string): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewkeyboardSearchProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_keyboardSearch(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_keyboardSearch(self: ptr cQAbstractItemView, slot: int, search: struct_miqt_string): void {.exportc: "miqt_exec_callback_QAbstractItemView_keyboardSearch ".} =
-  type Cb = proc(super: QAbstractItemViewkeyboardSearchBase, search: string): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(search: string): auto =
-    callVirtualBase_keyboardSearch(QAbstractItemView(h: self), search)
+  var nimfunc = cast[ptr QAbstractItemViewkeyboardSearchProc](cast[pointer](slot))
   let vsearch_ms = search
   let vsearchx_ret = string.fromBytes(toOpenArrayByte(vsearch_ms.data, 0, int(vsearch_ms.len)-1))
   c_free(vsearch_ms.data)
   let slotval1 = vsearchx_ret
 
 
-  nimfunc[](superCall, slotval1)
-type QAbstractItemViewvisualRectBase* = proc(index: gen_qabstractitemmodel.QModelIndex): gen_qrect.QRect
-proc onvisualRect*(self: QAbstractItemView, slot: proc(index: gen_qabstractitemmodel.QModelIndex): gen_qrect.QRect) =
+  nimfunc[](slotval1)
+type QAbstractItemViewvisualRectProc* = proc(index: gen_qabstractitemmodel.QModelIndex): gen_qrect.QRect
+proc onvisualRect*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewvisualRectProc) =
   # TODO check subclass
-  type Cb = proc(index: gen_qabstractitemmodel.QModelIndex): gen_qrect.QRect
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewvisualRectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_visualRect(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_visualRect(self: ptr cQAbstractItemView, slot: int, index: pointer): pointer {.exportc: "miqt_exec_callback_QAbstractItemView_visualRect ".} =
-  type Cb = proc(index: gen_qabstractitemmodel.QModelIndex): gen_qrect.QRect
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QAbstractItemViewvisualRectProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: index)
 
 
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-type QAbstractItemViewscrollToBase* = proc(index: gen_qabstractitemmodel.QModelIndex, hint: QAbstractItemViewScrollHint): void
-proc onscrollTo*(self: QAbstractItemView, slot: proc(index: gen_qabstractitemmodel.QModelIndex, hint: QAbstractItemViewScrollHint): void) =
+type QAbstractItemViewscrollToProc* = proc(index: gen_qabstractitemmodel.QModelIndex, hint: cint): void
+proc onscrollTo*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewscrollToProc) =
   # TODO check subclass
-  type Cb = proc(index: gen_qabstractitemmodel.QModelIndex, hint: QAbstractItemViewScrollHint): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewscrollToProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_scrollTo(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_scrollTo(self: ptr cQAbstractItemView, slot: int, index: pointer, hint: cint): void {.exportc: "miqt_exec_callback_QAbstractItemView_scrollTo ".} =
-  type Cb = proc(index: gen_qabstractitemmodel.QModelIndex, hint: QAbstractItemViewScrollHint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QAbstractItemViewscrollToProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: index)
 
-  let slotval2 = QAbstractItemViewScrollHint(hint)
+  let slotval2 = cint(hint)
 
 
   nimfunc[](slotval1, slotval2)
-type QAbstractItemViewindexAtBase* = proc(point: gen_qpoint.QPoint): gen_qabstractitemmodel.QModelIndex
-proc onindexAt*(self: QAbstractItemView, slot: proc(point: gen_qpoint.QPoint): gen_qabstractitemmodel.QModelIndex) =
+type QAbstractItemViewindexAtProc* = proc(point: gen_qpoint.QPoint): gen_qabstractitemmodel.QModelIndex
+proc onindexAt*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewindexAtProc) =
   # TODO check subclass
-  type Cb = proc(point: gen_qpoint.QPoint): gen_qabstractitemmodel.QModelIndex
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewindexAtProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_indexAt(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_indexAt(self: ptr cQAbstractItemView, slot: int, point: pointer): pointer {.exportc: "miqt_exec_callback_QAbstractItemView_indexAt ".} =
-  type Cb = proc(point: gen_qpoint.QPoint): gen_qabstractitemmodel.QModelIndex
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QAbstractItemViewindexAtProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: point)
 
 
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_sizeHintForRow(self: QAbstractItemView, row: cint): cint =
-
+proc QAbstractItemViewsizeHintForRow*(self: gen_qabstractitemview_types.QAbstractItemView, row: cint): cint =
 
   fQAbstractItemView_virtualbase_sizeHintForRow(self.h, row)
 
-type QAbstractItemViewsizeHintForRowBase* = proc(row: cint): cint
-proc onsizeHintForRow*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewsizeHintForRowBase, row: cint): cint) =
+type QAbstractItemViewsizeHintForRowProc* = proc(row: cint): cint
+proc onsizeHintForRow*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewsizeHintForRowProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewsizeHintForRowBase, row: cint): cint
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewsizeHintForRowProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_sizeHintForRow(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_sizeHintForRow(self: ptr cQAbstractItemView, slot: int, row: cint): cint {.exportc: "miqt_exec_callback_QAbstractItemView_sizeHintForRow ".} =
-  type Cb = proc(super: QAbstractItemViewsizeHintForRowBase, row: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(row: cint): auto =
-    callVirtualBase_sizeHintForRow(QAbstractItemView(h: self), row)
+  var nimfunc = cast[ptr QAbstractItemViewsizeHintForRowProc](cast[pointer](slot))
   let slotval1 = row
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_sizeHintForColumn(self: QAbstractItemView, column: cint): cint =
-
+proc QAbstractItemViewsizeHintForColumn*(self: gen_qabstractitemview_types.QAbstractItemView, column: cint): cint =
 
   fQAbstractItemView_virtualbase_sizeHintForColumn(self.h, column)
 
-type QAbstractItemViewsizeHintForColumnBase* = proc(column: cint): cint
-proc onsizeHintForColumn*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewsizeHintForColumnBase, column: cint): cint) =
+type QAbstractItemViewsizeHintForColumnProc* = proc(column: cint): cint
+proc onsizeHintForColumn*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewsizeHintForColumnProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewsizeHintForColumnBase, column: cint): cint
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewsizeHintForColumnProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_sizeHintForColumn(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_sizeHintForColumn(self: ptr cQAbstractItemView, slot: int, column: cint): cint {.exportc: "miqt_exec_callback_QAbstractItemView_sizeHintForColumn ".} =
-  type Cb = proc(super: QAbstractItemViewsizeHintForColumnBase, column: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(column: cint): auto =
-    callVirtualBase_sizeHintForColumn(QAbstractItemView(h: self), column)
+  var nimfunc = cast[ptr QAbstractItemViewsizeHintForColumnProc](cast[pointer](slot))
   let slotval1 = column
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_inputMethodQuery(self: QAbstractItemView, query: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant =
-
+proc QAbstractItemViewinputMethodQuery*(self: gen_qabstractitemview_types.QAbstractItemView, query: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQAbstractItemView_virtualbase_inputMethodQuery(self.h, cint(query)))
 
-type QAbstractItemViewinputMethodQueryBase* = proc(query: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-proc oninputMethodQuery*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewinputMethodQueryBase, query: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant) =
+type QAbstractItemViewinputMethodQueryProc* = proc(query: cint): gen_qvariant.QVariant
+proc oninputMethodQuery*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewinputMethodQueryProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewinputMethodQueryBase, query: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewinputMethodQueryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_inputMethodQuery(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_inputMethodQuery(self: ptr cQAbstractItemView, slot: int, query: cint): pointer {.exportc: "miqt_exec_callback_QAbstractItemView_inputMethodQuery ".} =
-  type Cb = proc(super: QAbstractItemViewinputMethodQueryBase, query: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(query: gen_qnamespace.InputMethodQuery): auto =
-    callVirtualBase_inputMethodQuery(QAbstractItemView(h: self), query)
-  let slotval1 = gen_qnamespace.InputMethodQuery(query)
+  var nimfunc = cast[ptr QAbstractItemViewinputMethodQueryProc](cast[pointer](slot))
+  let slotval1 = cint(query)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_reset(self: QAbstractItemView, ): void =
-
+proc QAbstractItemViewreset*(self: gen_qabstractitemview_types.QAbstractItemView, ): void =
 
   fQAbstractItemView_virtualbase_reset(self.h)
 
-type QAbstractItemViewresetBase* = proc(): void
-proc onreset*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewresetBase): void) =
+type QAbstractItemViewresetProc* = proc(): void
+proc onreset*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewresetProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewresetBase): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewresetProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_reset(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_reset(self: ptr cQAbstractItemView, slot: int): void {.exportc: "miqt_exec_callback_QAbstractItemView_reset ".} =
-  type Cb = proc(super: QAbstractItemViewresetBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_reset(QAbstractItemView(h: self), )
+  var nimfunc = cast[ptr QAbstractItemViewresetProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_setRootIndex(self: QAbstractItemView, index: gen_qabstractitemmodel.QModelIndex): void =
-
+  nimfunc[]()
+proc QAbstractItemViewsetRootIndex*(self: gen_qabstractitemview_types.QAbstractItemView, index: gen_qabstractitemmodel.QModelIndex): void =
 
   fQAbstractItemView_virtualbase_setRootIndex(self.h, index.h)
 
-type QAbstractItemViewsetRootIndexBase* = proc(index: gen_qabstractitemmodel.QModelIndex): void
-proc onsetRootIndex*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewsetRootIndexBase, index: gen_qabstractitemmodel.QModelIndex): void) =
+type QAbstractItemViewsetRootIndexProc* = proc(index: gen_qabstractitemmodel.QModelIndex): void
+proc onsetRootIndex*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewsetRootIndexProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewsetRootIndexBase, index: gen_qabstractitemmodel.QModelIndex): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewsetRootIndexProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_setRootIndex(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_setRootIndex(self: ptr cQAbstractItemView, slot: int, index: pointer): void {.exportc: "miqt_exec_callback_QAbstractItemView_setRootIndex ".} =
-  type Cb = proc(super: QAbstractItemViewsetRootIndexBase, index: gen_qabstractitemmodel.QModelIndex): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(index: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_setRootIndex(QAbstractItemView(h: self), index)
+  var nimfunc = cast[ptr QAbstractItemViewsetRootIndexProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: index)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_doItemsLayout(self: QAbstractItemView, ): void =
-
+  nimfunc[](slotval1)
+proc QAbstractItemViewdoItemsLayout*(self: gen_qabstractitemview_types.QAbstractItemView, ): void =
 
   fQAbstractItemView_virtualbase_doItemsLayout(self.h)
 
-type QAbstractItemViewdoItemsLayoutBase* = proc(): void
-proc ondoItemsLayout*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewdoItemsLayoutBase): void) =
+type QAbstractItemViewdoItemsLayoutProc* = proc(): void
+proc ondoItemsLayout*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewdoItemsLayoutProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewdoItemsLayoutBase): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewdoItemsLayoutProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_doItemsLayout(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_doItemsLayout(self: ptr cQAbstractItemView, slot: int): void {.exportc: "miqt_exec_callback_QAbstractItemView_doItemsLayout ".} =
-  type Cb = proc(super: QAbstractItemViewdoItemsLayoutBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_doItemsLayout(QAbstractItemView(h: self), )
+  var nimfunc = cast[ptr QAbstractItemViewdoItemsLayoutProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_selectAll(self: QAbstractItemView, ): void =
-
+  nimfunc[]()
+proc QAbstractItemViewselectAll*(self: gen_qabstractitemview_types.QAbstractItemView, ): void =
 
   fQAbstractItemView_virtualbase_selectAll(self.h)
 
-type QAbstractItemViewselectAllBase* = proc(): void
-proc onselectAll*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewselectAllBase): void) =
+type QAbstractItemViewselectAllProc* = proc(): void
+proc onselectAll*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewselectAllProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewselectAllBase): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewselectAllProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_selectAll(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_selectAll(self: ptr cQAbstractItemView, slot: int): void {.exportc: "miqt_exec_callback_QAbstractItemView_selectAll ".} =
-  type Cb = proc(super: QAbstractItemViewselectAllBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_selectAll(QAbstractItemView(h: self), )
+  var nimfunc = cast[ptr QAbstractItemViewselectAllProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_dataChanged(self: QAbstractItemView, topLeft: gen_qabstractitemmodel.QModelIndex, bottomRight: gen_qabstractitemmodel.QModelIndex, roles: seq[cint]): void =
+  nimfunc[]()
+proc QAbstractItemViewdataChanged*(self: gen_qabstractitemview_types.QAbstractItemView, topLeft: gen_qabstractitemmodel.QModelIndex, bottomRight: gen_qabstractitemmodel.QModelIndex, roles: seq[cint]): void =
 
   var roles_CArray = newSeq[cint](len(roles))
   for i in 0..<len(roles):
     roles_CArray[i] = roles[i]
 
-
   fQAbstractItemView_virtualbase_dataChanged(self.h, topLeft.h, bottomRight.h, struct_miqt_array(len: csize_t(len(roles)), data: if len(roles) == 0: nil else: addr(roles_CArray[0])))
 
-type QAbstractItemViewdataChangedBase* = proc(topLeft: gen_qabstractitemmodel.QModelIndex, bottomRight: gen_qabstractitemmodel.QModelIndex, roles: seq[cint]): void
-proc ondataChanged*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewdataChangedBase, topLeft: gen_qabstractitemmodel.QModelIndex, bottomRight: gen_qabstractitemmodel.QModelIndex, roles: seq[cint]): void) =
+type QAbstractItemViewdataChangedProc* = proc(topLeft: gen_qabstractitemmodel.QModelIndex, bottomRight: gen_qabstractitemmodel.QModelIndex, roles: seq[cint]): void
+proc ondataChanged*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewdataChangedProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewdataChangedBase, topLeft: gen_qabstractitemmodel.QModelIndex, bottomRight: gen_qabstractitemmodel.QModelIndex, roles: seq[cint]): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewdataChangedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_dataChanged(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_dataChanged(self: ptr cQAbstractItemView, slot: int, topLeft: pointer, bottomRight: pointer, roles: struct_miqt_array): void {.exportc: "miqt_exec_callback_QAbstractItemView_dataChanged ".} =
-  type Cb = proc(super: QAbstractItemViewdataChangedBase, topLeft: gen_qabstractitemmodel.QModelIndex, bottomRight: gen_qabstractitemmodel.QModelIndex, roles: seq[cint]): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(topLeft: gen_qabstractitemmodel.QModelIndex, bottomRight: gen_qabstractitemmodel.QModelIndex, roles: seq[cint]): auto =
-    callVirtualBase_dataChanged(QAbstractItemView(h: self), topLeft, bottomRight, roles)
+  var nimfunc = cast[ptr QAbstractItemViewdataChangedProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: topLeft)
 
   let slotval2 = gen_qabstractitemmodel.QModelIndex(h: bottomRight)
@@ -1313,26 +1217,21 @@ proc miqt_exec_callback_QAbstractItemView_dataChanged(self: ptr cQAbstractItemVi
   let slotval3 = vrolesx_ret
 
 
-  nimfunc[](superCall, slotval1, slotval2, slotval3)
-proc callVirtualBase_rowsInserted(self: QAbstractItemView, parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void =
-
+  nimfunc[](slotval1, slotval2, slotval3)
+proc QAbstractItemViewrowsInserted*(self: gen_qabstractitemview_types.QAbstractItemView, parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void =
 
   fQAbstractItemView_virtualbase_rowsInserted(self.h, parent.h, start, endVal)
 
-type QAbstractItemViewrowsInsertedBase* = proc(parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void
-proc onrowsInserted*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewrowsInsertedBase, parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void) =
+type QAbstractItemViewrowsInsertedProc* = proc(parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void
+proc onrowsInserted*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewrowsInsertedProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewrowsInsertedBase, parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewrowsInsertedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_rowsInserted(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_rowsInserted(self: ptr cQAbstractItemView, slot: int, parent: pointer, start: cint, endVal: cint): void {.exportc: "miqt_exec_callback_QAbstractItemView_rowsInserted ".} =
-  type Cb = proc(super: QAbstractItemViewrowsInsertedBase, parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): auto =
-    callVirtualBase_rowsInserted(QAbstractItemView(h: self), parent, start, endVal)
+  var nimfunc = cast[ptr QAbstractItemViewrowsInsertedProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: parent)
 
   let slotval2 = start
@@ -1340,26 +1239,21 @@ proc miqt_exec_callback_QAbstractItemView_rowsInserted(self: ptr cQAbstractItemV
   let slotval3 = endVal
 
 
-  nimfunc[](superCall, slotval1, slotval2, slotval3)
-proc callVirtualBase_rowsAboutToBeRemoved(self: QAbstractItemView, parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void =
-
+  nimfunc[](slotval1, slotval2, slotval3)
+proc QAbstractItemViewrowsAboutToBeRemoved*(self: gen_qabstractitemview_types.QAbstractItemView, parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void =
 
   fQAbstractItemView_virtualbase_rowsAboutToBeRemoved(self.h, parent.h, start, endVal)
 
-type QAbstractItemViewrowsAboutToBeRemovedBase* = proc(parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void
-proc onrowsAboutToBeRemoved*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewrowsAboutToBeRemovedBase, parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void) =
+type QAbstractItemViewrowsAboutToBeRemovedProc* = proc(parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void
+proc onrowsAboutToBeRemoved*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewrowsAboutToBeRemovedProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewrowsAboutToBeRemovedBase, parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewrowsAboutToBeRemovedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_rowsAboutToBeRemoved(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_rowsAboutToBeRemoved(self: ptr cQAbstractItemView, slot: int, parent: pointer, start: cint, endVal: cint): void {.exportc: "miqt_exec_callback_QAbstractItemView_rowsAboutToBeRemoved ".} =
-  type Cb = proc(super: QAbstractItemViewrowsAboutToBeRemovedBase, parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): auto =
-    callVirtualBase_rowsAboutToBeRemoved(QAbstractItemView(h: self), parent, start, endVal)
+  var nimfunc = cast[ptr QAbstractItemViewrowsAboutToBeRemovedProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: parent)
 
   let slotval2 = start
@@ -1367,391 +1261,318 @@ proc miqt_exec_callback_QAbstractItemView_rowsAboutToBeRemoved(self: ptr cQAbstr
   let slotval3 = endVal
 
 
-  nimfunc[](superCall, slotval1, slotval2, slotval3)
-proc callVirtualBase_selectionChanged(self: QAbstractItemView, selected: gen_qitemselectionmodel.QItemSelection, deselected: gen_qitemselectionmodel.QItemSelection): void =
-
+  nimfunc[](slotval1, slotval2, slotval3)
+proc QAbstractItemViewselectionChanged*(self: gen_qabstractitemview_types.QAbstractItemView, selected: gen_qitemselectionmodel.QItemSelection, deselected: gen_qitemselectionmodel.QItemSelection): void =
 
   fQAbstractItemView_virtualbase_selectionChanged(self.h, selected.h, deselected.h)
 
-type QAbstractItemViewselectionChangedBase* = proc(selected: gen_qitemselectionmodel.QItemSelection, deselected: gen_qitemselectionmodel.QItemSelection): void
-proc onselectionChanged*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewselectionChangedBase, selected: gen_qitemselectionmodel.QItemSelection, deselected: gen_qitemselectionmodel.QItemSelection): void) =
+type QAbstractItemViewselectionChangedProc* = proc(selected: gen_qitemselectionmodel.QItemSelection, deselected: gen_qitemselectionmodel.QItemSelection): void
+proc onselectionChanged*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewselectionChangedProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewselectionChangedBase, selected: gen_qitemselectionmodel.QItemSelection, deselected: gen_qitemselectionmodel.QItemSelection): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewselectionChangedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_selectionChanged(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_selectionChanged(self: ptr cQAbstractItemView, slot: int, selected: pointer, deselected: pointer): void {.exportc: "miqt_exec_callback_QAbstractItemView_selectionChanged ".} =
-  type Cb = proc(super: QAbstractItemViewselectionChangedBase, selected: gen_qitemselectionmodel.QItemSelection, deselected: gen_qitemselectionmodel.QItemSelection): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(selected: gen_qitemselectionmodel.QItemSelection, deselected: gen_qitemselectionmodel.QItemSelection): auto =
-    callVirtualBase_selectionChanged(QAbstractItemView(h: self), selected, deselected)
+  var nimfunc = cast[ptr QAbstractItemViewselectionChangedProc](cast[pointer](slot))
   let slotval1 = gen_qitemselectionmodel.QItemSelection(h: selected)
 
   let slotval2 = gen_qitemselectionmodel.QItemSelection(h: deselected)
 
 
-  nimfunc[](superCall, slotval1, slotval2)
-proc callVirtualBase_currentChanged(self: QAbstractItemView, current: gen_qabstractitemmodel.QModelIndex, previous: gen_qabstractitemmodel.QModelIndex): void =
-
+  nimfunc[](slotval1, slotval2)
+proc QAbstractItemViewcurrentChanged*(self: gen_qabstractitemview_types.QAbstractItemView, current: gen_qabstractitemmodel.QModelIndex, previous: gen_qabstractitemmodel.QModelIndex): void =
 
   fQAbstractItemView_virtualbase_currentChanged(self.h, current.h, previous.h)
 
-type QAbstractItemViewcurrentChangedBase* = proc(current: gen_qabstractitemmodel.QModelIndex, previous: gen_qabstractitemmodel.QModelIndex): void
-proc oncurrentChanged*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewcurrentChangedBase, current: gen_qabstractitemmodel.QModelIndex, previous: gen_qabstractitemmodel.QModelIndex): void) =
+type QAbstractItemViewcurrentChangedProc* = proc(current: gen_qabstractitemmodel.QModelIndex, previous: gen_qabstractitemmodel.QModelIndex): void
+proc oncurrentChanged*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewcurrentChangedProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewcurrentChangedBase, current: gen_qabstractitemmodel.QModelIndex, previous: gen_qabstractitemmodel.QModelIndex): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewcurrentChangedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_currentChanged(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_currentChanged(self: ptr cQAbstractItemView, slot: int, current: pointer, previous: pointer): void {.exportc: "miqt_exec_callback_QAbstractItemView_currentChanged ".} =
-  type Cb = proc(super: QAbstractItemViewcurrentChangedBase, current: gen_qabstractitemmodel.QModelIndex, previous: gen_qabstractitemmodel.QModelIndex): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(current: gen_qabstractitemmodel.QModelIndex, previous: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_currentChanged(QAbstractItemView(h: self), current, previous)
+  var nimfunc = cast[ptr QAbstractItemViewcurrentChangedProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: current)
 
   let slotval2 = gen_qabstractitemmodel.QModelIndex(h: previous)
 
 
-  nimfunc[](superCall, slotval1, slotval2)
-proc callVirtualBase_updateEditorData(self: QAbstractItemView, ): void =
-
+  nimfunc[](slotval1, slotval2)
+proc QAbstractItemViewupdateEditorData*(self: gen_qabstractitemview_types.QAbstractItemView, ): void =
 
   fQAbstractItemView_virtualbase_updateEditorData(self.h)
 
-type QAbstractItemViewupdateEditorDataBase* = proc(): void
-proc onupdateEditorData*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewupdateEditorDataBase): void) =
+type QAbstractItemViewupdateEditorDataProc* = proc(): void
+proc onupdateEditorData*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewupdateEditorDataProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewupdateEditorDataBase): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewupdateEditorDataProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_updateEditorData(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_updateEditorData(self: ptr cQAbstractItemView, slot: int): void {.exportc: "miqt_exec_callback_QAbstractItemView_updateEditorData ".} =
-  type Cb = proc(super: QAbstractItemViewupdateEditorDataBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_updateEditorData(QAbstractItemView(h: self), )
+  var nimfunc = cast[ptr QAbstractItemViewupdateEditorDataProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_updateEditorGeometries(self: QAbstractItemView, ): void =
-
+  nimfunc[]()
+proc QAbstractItemViewupdateEditorGeometries*(self: gen_qabstractitemview_types.QAbstractItemView, ): void =
 
   fQAbstractItemView_virtualbase_updateEditorGeometries(self.h)
 
-type QAbstractItemViewupdateEditorGeometriesBase* = proc(): void
-proc onupdateEditorGeometries*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewupdateEditorGeometriesBase): void) =
+type QAbstractItemViewupdateEditorGeometriesProc* = proc(): void
+proc onupdateEditorGeometries*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewupdateEditorGeometriesProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewupdateEditorGeometriesBase): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewupdateEditorGeometriesProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_updateEditorGeometries(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_updateEditorGeometries(self: ptr cQAbstractItemView, slot: int): void {.exportc: "miqt_exec_callback_QAbstractItemView_updateEditorGeometries ".} =
-  type Cb = proc(super: QAbstractItemViewupdateEditorGeometriesBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_updateEditorGeometries(QAbstractItemView(h: self), )
+  var nimfunc = cast[ptr QAbstractItemViewupdateEditorGeometriesProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_updateGeometries(self: QAbstractItemView, ): void =
-
+  nimfunc[]()
+proc QAbstractItemViewupdateGeometries*(self: gen_qabstractitemview_types.QAbstractItemView, ): void =
 
   fQAbstractItemView_virtualbase_updateGeometries(self.h)
 
-type QAbstractItemViewupdateGeometriesBase* = proc(): void
-proc onupdateGeometries*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewupdateGeometriesBase): void) =
+type QAbstractItemViewupdateGeometriesProc* = proc(): void
+proc onupdateGeometries*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewupdateGeometriesProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewupdateGeometriesBase): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewupdateGeometriesProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_updateGeometries(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_updateGeometries(self: ptr cQAbstractItemView, slot: int): void {.exportc: "miqt_exec_callback_QAbstractItemView_updateGeometries ".} =
-  type Cb = proc(super: QAbstractItemViewupdateGeometriesBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_updateGeometries(QAbstractItemView(h: self), )
+  var nimfunc = cast[ptr QAbstractItemViewupdateGeometriesProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_verticalScrollbarAction(self: QAbstractItemView, action: cint): void =
-
+  nimfunc[]()
+proc QAbstractItemViewverticalScrollbarAction*(self: gen_qabstractitemview_types.QAbstractItemView, action: cint): void =
 
   fQAbstractItemView_virtualbase_verticalScrollbarAction(self.h, action)
 
-type QAbstractItemViewverticalScrollbarActionBase* = proc(action: cint): void
-proc onverticalScrollbarAction*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewverticalScrollbarActionBase, action: cint): void) =
+type QAbstractItemViewverticalScrollbarActionProc* = proc(action: cint): void
+proc onverticalScrollbarAction*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewverticalScrollbarActionProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewverticalScrollbarActionBase, action: cint): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewverticalScrollbarActionProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_verticalScrollbarAction(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_verticalScrollbarAction(self: ptr cQAbstractItemView, slot: int, action: cint): void {.exportc: "miqt_exec_callback_QAbstractItemView_verticalScrollbarAction ".} =
-  type Cb = proc(super: QAbstractItemViewverticalScrollbarActionBase, action: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(action: cint): auto =
-    callVirtualBase_verticalScrollbarAction(QAbstractItemView(h: self), action)
+  var nimfunc = cast[ptr QAbstractItemViewverticalScrollbarActionProc](cast[pointer](slot))
   let slotval1 = action
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_horizontalScrollbarAction(self: QAbstractItemView, action: cint): void =
-
+  nimfunc[](slotval1)
+proc QAbstractItemViewhorizontalScrollbarAction*(self: gen_qabstractitemview_types.QAbstractItemView, action: cint): void =
 
   fQAbstractItemView_virtualbase_horizontalScrollbarAction(self.h, action)
 
-type QAbstractItemViewhorizontalScrollbarActionBase* = proc(action: cint): void
-proc onhorizontalScrollbarAction*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewhorizontalScrollbarActionBase, action: cint): void) =
+type QAbstractItemViewhorizontalScrollbarActionProc* = proc(action: cint): void
+proc onhorizontalScrollbarAction*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewhorizontalScrollbarActionProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewhorizontalScrollbarActionBase, action: cint): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewhorizontalScrollbarActionProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_horizontalScrollbarAction(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_horizontalScrollbarAction(self: ptr cQAbstractItemView, slot: int, action: cint): void {.exportc: "miqt_exec_callback_QAbstractItemView_horizontalScrollbarAction ".} =
-  type Cb = proc(super: QAbstractItemViewhorizontalScrollbarActionBase, action: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(action: cint): auto =
-    callVirtualBase_horizontalScrollbarAction(QAbstractItemView(h: self), action)
+  var nimfunc = cast[ptr QAbstractItemViewhorizontalScrollbarActionProc](cast[pointer](slot))
   let slotval1 = action
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_verticalScrollbarValueChanged(self: QAbstractItemView, value: cint): void =
-
+  nimfunc[](slotval1)
+proc QAbstractItemViewverticalScrollbarValueChanged*(self: gen_qabstractitemview_types.QAbstractItemView, value: cint): void =
 
   fQAbstractItemView_virtualbase_verticalScrollbarValueChanged(self.h, value)
 
-type QAbstractItemViewverticalScrollbarValueChangedBase* = proc(value: cint): void
-proc onverticalScrollbarValueChanged*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewverticalScrollbarValueChangedBase, value: cint): void) =
+type QAbstractItemViewverticalScrollbarValueChangedProc* = proc(value: cint): void
+proc onverticalScrollbarValueChanged*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewverticalScrollbarValueChangedProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewverticalScrollbarValueChangedBase, value: cint): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewverticalScrollbarValueChangedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_verticalScrollbarValueChanged(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_verticalScrollbarValueChanged(self: ptr cQAbstractItemView, slot: int, value: cint): void {.exportc: "miqt_exec_callback_QAbstractItemView_verticalScrollbarValueChanged ".} =
-  type Cb = proc(super: QAbstractItemViewverticalScrollbarValueChangedBase, value: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(value: cint): auto =
-    callVirtualBase_verticalScrollbarValueChanged(QAbstractItemView(h: self), value)
+  var nimfunc = cast[ptr QAbstractItemViewverticalScrollbarValueChangedProc](cast[pointer](slot))
   let slotval1 = value
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_horizontalScrollbarValueChanged(self: QAbstractItemView, value: cint): void =
-
+  nimfunc[](slotval1)
+proc QAbstractItemViewhorizontalScrollbarValueChanged*(self: gen_qabstractitemview_types.QAbstractItemView, value: cint): void =
 
   fQAbstractItemView_virtualbase_horizontalScrollbarValueChanged(self.h, value)
 
-type QAbstractItemViewhorizontalScrollbarValueChangedBase* = proc(value: cint): void
-proc onhorizontalScrollbarValueChanged*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewhorizontalScrollbarValueChangedBase, value: cint): void) =
+type QAbstractItemViewhorizontalScrollbarValueChangedProc* = proc(value: cint): void
+proc onhorizontalScrollbarValueChanged*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewhorizontalScrollbarValueChangedProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewhorizontalScrollbarValueChangedBase, value: cint): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewhorizontalScrollbarValueChangedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_horizontalScrollbarValueChanged(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_horizontalScrollbarValueChanged(self: ptr cQAbstractItemView, slot: int, value: cint): void {.exportc: "miqt_exec_callback_QAbstractItemView_horizontalScrollbarValueChanged ".} =
-  type Cb = proc(super: QAbstractItemViewhorizontalScrollbarValueChangedBase, value: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(value: cint): auto =
-    callVirtualBase_horizontalScrollbarValueChanged(QAbstractItemView(h: self), value)
+  var nimfunc = cast[ptr QAbstractItemViewhorizontalScrollbarValueChangedProc](cast[pointer](slot))
   let slotval1 = value
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_closeEditor(self: QAbstractItemView, editor: gen_qwidget.QWidget, hint: gen_qabstractitemdelegate.QAbstractItemDelegateEndEditHint): void =
-
+  nimfunc[](slotval1)
+proc QAbstractItemViewcloseEditor*(self: gen_qabstractitemview_types.QAbstractItemView, editor: gen_qwidget.QWidget, hint: cint): void =
 
   fQAbstractItemView_virtualbase_closeEditor(self.h, editor.h, cint(hint))
 
-type QAbstractItemViewcloseEditorBase* = proc(editor: gen_qwidget.QWidget, hint: gen_qabstractitemdelegate.QAbstractItemDelegateEndEditHint): void
-proc oncloseEditor*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewcloseEditorBase, editor: gen_qwidget.QWidget, hint: gen_qabstractitemdelegate.QAbstractItemDelegateEndEditHint): void) =
+type QAbstractItemViewcloseEditorProc* = proc(editor: gen_qwidget.QWidget, hint: cint): void
+proc oncloseEditor*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewcloseEditorProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewcloseEditorBase, editor: gen_qwidget.QWidget, hint: gen_qabstractitemdelegate.QAbstractItemDelegateEndEditHint): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewcloseEditorProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_closeEditor(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_closeEditor(self: ptr cQAbstractItemView, slot: int, editor: pointer, hint: cint): void {.exportc: "miqt_exec_callback_QAbstractItemView_closeEditor ".} =
-  type Cb = proc(super: QAbstractItemViewcloseEditorBase, editor: gen_qwidget.QWidget, hint: gen_qabstractitemdelegate.QAbstractItemDelegateEndEditHint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(editor: gen_qwidget.QWidget, hint: gen_qabstractitemdelegate.QAbstractItemDelegateEndEditHint): auto =
-    callVirtualBase_closeEditor(QAbstractItemView(h: self), editor, hint)
+  var nimfunc = cast[ptr QAbstractItemViewcloseEditorProc](cast[pointer](slot))
   let slotval1 = gen_qwidget.QWidget(h: editor)
 
-  let slotval2 = gen_qabstractitemdelegate.QAbstractItemDelegateEndEditHint(hint)
+  let slotval2 = cint(hint)
 
 
-  nimfunc[](superCall, slotval1, slotval2)
-proc callVirtualBase_commitData(self: QAbstractItemView, editor: gen_qwidget.QWidget): void =
-
+  nimfunc[](slotval1, slotval2)
+proc QAbstractItemViewcommitData*(self: gen_qabstractitemview_types.QAbstractItemView, editor: gen_qwidget.QWidget): void =
 
   fQAbstractItemView_virtualbase_commitData(self.h, editor.h)
 
-type QAbstractItemViewcommitDataBase* = proc(editor: gen_qwidget.QWidget): void
-proc oncommitData*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewcommitDataBase, editor: gen_qwidget.QWidget): void) =
+type QAbstractItemViewcommitDataProc* = proc(editor: gen_qwidget.QWidget): void
+proc oncommitData*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewcommitDataProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewcommitDataBase, editor: gen_qwidget.QWidget): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewcommitDataProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_commitData(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_commitData(self: ptr cQAbstractItemView, slot: int, editor: pointer): void {.exportc: "miqt_exec_callback_QAbstractItemView_commitData ".} =
-  type Cb = proc(super: QAbstractItemViewcommitDataBase, editor: gen_qwidget.QWidget): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(editor: gen_qwidget.QWidget): auto =
-    callVirtualBase_commitData(QAbstractItemView(h: self), editor)
+  var nimfunc = cast[ptr QAbstractItemViewcommitDataProc](cast[pointer](slot))
   let slotval1 = gen_qwidget.QWidget(h: editor)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_editorDestroyed(self: QAbstractItemView, editor: gen_qobject.QObject): void =
-
+  nimfunc[](slotval1)
+proc QAbstractItemVieweditorDestroyed*(self: gen_qabstractitemview_types.QAbstractItemView, editor: gen_qobject.QObject): void =
 
   fQAbstractItemView_virtualbase_editorDestroyed(self.h, editor.h)
 
-type QAbstractItemVieweditorDestroyedBase* = proc(editor: gen_qobject.QObject): void
-proc oneditorDestroyed*(self: QAbstractItemView, slot: proc(super: QAbstractItemVieweditorDestroyedBase, editor: gen_qobject.QObject): void) =
+type QAbstractItemVieweditorDestroyedProc* = proc(editor: gen_qobject.QObject): void
+proc oneditorDestroyed*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemVieweditorDestroyedProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemVieweditorDestroyedBase, editor: gen_qobject.QObject): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemVieweditorDestroyedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_editorDestroyed(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_editorDestroyed(self: ptr cQAbstractItemView, slot: int, editor: pointer): void {.exportc: "miqt_exec_callback_QAbstractItemView_editorDestroyed ".} =
-  type Cb = proc(super: QAbstractItemVieweditorDestroyedBase, editor: gen_qobject.QObject): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(editor: gen_qobject.QObject): auto =
-    callVirtualBase_editorDestroyed(QAbstractItemView(h: self), editor)
+  var nimfunc = cast[ptr QAbstractItemVieweditorDestroyedProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: editor)
 
 
-  nimfunc[](superCall, slotval1)
-type QAbstractItemViewmoveCursorBase* = proc(cursorAction: QAbstractItemViewCursorAction, modifiers: gen_qnamespace.KeyboardModifier): gen_qabstractitemmodel.QModelIndex
-proc onmoveCursor*(self: QAbstractItemView, slot: proc(cursorAction: QAbstractItemViewCursorAction, modifiers: gen_qnamespace.KeyboardModifier): gen_qabstractitemmodel.QModelIndex) =
+  nimfunc[](slotval1)
+type QAbstractItemViewmoveCursorProc* = proc(cursorAction: cint, modifiers: cint): gen_qabstractitemmodel.QModelIndex
+proc onmoveCursor*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewmoveCursorProc) =
   # TODO check subclass
-  type Cb = proc(cursorAction: QAbstractItemViewCursorAction, modifiers: gen_qnamespace.KeyboardModifier): gen_qabstractitemmodel.QModelIndex
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewmoveCursorProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_moveCursor(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_moveCursor(self: ptr cQAbstractItemView, slot: int, cursorAction: cint, modifiers: cint): pointer {.exportc: "miqt_exec_callback_QAbstractItemView_moveCursor ".} =
-  type Cb = proc(cursorAction: QAbstractItemViewCursorAction, modifiers: gen_qnamespace.KeyboardModifier): gen_qabstractitemmodel.QModelIndex
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = QAbstractItemViewCursorAction(cursorAction)
+  var nimfunc = cast[ptr QAbstractItemViewmoveCursorProc](cast[pointer](slot))
+  let slotval1 = cint(cursorAction)
 
-  let slotval2 = gen_qnamespace.KeyboardModifier(modifiers)
+  let slotval2 = cint(modifiers)
 
 
   let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn.h
-type QAbstractItemViewhorizontalOffsetBase* = proc(): cint
-proc onhorizontalOffset*(self: QAbstractItemView, slot: proc(): cint) =
+type QAbstractItemViewhorizontalOffsetProc* = proc(): cint
+proc onhorizontalOffset*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewhorizontalOffsetProc) =
   # TODO check subclass
-  type Cb = proc(): cint
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewhorizontalOffsetProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_horizontalOffset(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_horizontalOffset(self: ptr cQAbstractItemView, slot: int): cint {.exportc: "miqt_exec_callback_QAbstractItemView_horizontalOffset ".} =
-  type Cb = proc(): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QAbstractItemViewhorizontalOffsetProc](cast[pointer](slot))
 
   let virtualReturn = nimfunc[]( )
 
   virtualReturn
-type QAbstractItemViewverticalOffsetBase* = proc(): cint
-proc onverticalOffset*(self: QAbstractItemView, slot: proc(): cint) =
+type QAbstractItemViewverticalOffsetProc* = proc(): cint
+proc onverticalOffset*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewverticalOffsetProc) =
   # TODO check subclass
-  type Cb = proc(): cint
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewverticalOffsetProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_verticalOffset(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_verticalOffset(self: ptr cQAbstractItemView, slot: int): cint {.exportc: "miqt_exec_callback_QAbstractItemView_verticalOffset ".} =
-  type Cb = proc(): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QAbstractItemViewverticalOffsetProc](cast[pointer](slot))
 
   let virtualReturn = nimfunc[]( )
 
   virtualReturn
-type QAbstractItemViewisIndexHiddenBase* = proc(index: gen_qabstractitemmodel.QModelIndex): bool
-proc onisIndexHidden*(self: QAbstractItemView, slot: proc(index: gen_qabstractitemmodel.QModelIndex): bool) =
+type QAbstractItemViewisIndexHiddenProc* = proc(index: gen_qabstractitemmodel.QModelIndex): bool
+proc onisIndexHidden*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewisIndexHiddenProc) =
   # TODO check subclass
-  type Cb = proc(index: gen_qabstractitemmodel.QModelIndex): bool
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewisIndexHiddenProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_isIndexHidden(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_isIndexHidden(self: ptr cQAbstractItemView, slot: int, index: pointer): bool {.exportc: "miqt_exec_callback_QAbstractItemView_isIndexHidden ".} =
-  type Cb = proc(index: gen_qabstractitemmodel.QModelIndex): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QAbstractItemViewisIndexHiddenProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: index)
 
 
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-type QAbstractItemViewsetSelectionBase* = proc(rect: gen_qrect.QRect, command: gen_qitemselectionmodel.QItemSelectionModelSelectionFlag): void
-proc onsetSelection*(self: QAbstractItemView, slot: proc(rect: gen_qrect.QRect, command: gen_qitemselectionmodel.QItemSelectionModelSelectionFlag): void) =
+type QAbstractItemViewsetSelectionProc* = proc(rect: gen_qrect.QRect, command: cint): void
+proc onsetSelection*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewsetSelectionProc) =
   # TODO check subclass
-  type Cb = proc(rect: gen_qrect.QRect, command: gen_qitemselectionmodel.QItemSelectionModelSelectionFlag): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewsetSelectionProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_setSelection(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_setSelection(self: ptr cQAbstractItemView, slot: int, rect: pointer, command: cint): void {.exportc: "miqt_exec_callback_QAbstractItemView_setSelection ".} =
-  type Cb = proc(rect: gen_qrect.QRect, command: gen_qitemselectionmodel.QItemSelectionModelSelectionFlag): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QAbstractItemViewsetSelectionProc](cast[pointer](slot))
   let slotval1 = gen_qrect.QRect(h: rect)
 
-  let slotval2 = gen_qitemselectionmodel.QItemSelectionModelSelectionFlag(command)
+  let slotval2 = cint(command)
 
 
   nimfunc[](slotval1, slotval2)
-type QAbstractItemViewvisualRegionForSelectionBase* = proc(selection: gen_qitemselectionmodel.QItemSelection): gen_qregion.QRegion
-proc onvisualRegionForSelection*(self: QAbstractItemView, slot: proc(selection: gen_qitemselectionmodel.QItemSelection): gen_qregion.QRegion) =
+type QAbstractItemViewvisualRegionForSelectionProc* = proc(selection: gen_qitemselectionmodel.QItemSelection): gen_qregion.QRegion
+proc onvisualRegionForSelection*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewvisualRegionForSelectionProc) =
   # TODO check subclass
-  type Cb = proc(selection: gen_qitemselectionmodel.QItemSelection): gen_qregion.QRegion
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewvisualRegionForSelectionProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_visualRegionForSelection(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_visualRegionForSelection(self: ptr cQAbstractItemView, slot: int, selection: pointer): pointer {.exportc: "miqt_exec_callback_QAbstractItemView_visualRegionForSelection ".} =
-  type Cb = proc(selection: gen_qitemselectionmodel.QItemSelection): gen_qregion.QRegion
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QAbstractItemViewvisualRegionForSelectionProc](cast[pointer](slot))
   let slotval1 = gen_qitemselectionmodel.QItemSelection(h: selection)
 
 
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_selectedIndexes(self: QAbstractItemView, ): seq[gen_qabstractitemmodel.QModelIndex] =
-
+proc QAbstractItemViewselectedIndexes*(self: gen_qabstractitemview_types.QAbstractItemView, ): seq[gen_qabstractitemmodel.QModelIndex] =
 
   var v_ma = fQAbstractItemView_virtualbase_selectedIndexes(self.h)
   var vx_ret = newSeq[gen_qabstractitemmodel.QModelIndex](int(v_ma.len))
@@ -1760,1106 +1581,872 @@ proc callVirtualBase_selectedIndexes(self: QAbstractItemView, ): seq[gen_qabstra
     vx_ret[i] = gen_qabstractitemmodel.QModelIndex(h: v_outCast[i])
   vx_ret
 
-type QAbstractItemViewselectedIndexesBase* = proc(): seq[gen_qabstractitemmodel.QModelIndex]
-proc onselectedIndexes*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewselectedIndexesBase): seq[gen_qabstractitemmodel.QModelIndex]) =
+type QAbstractItemViewselectedIndexesProc* = proc(): seq[gen_qabstractitemmodel.QModelIndex]
+proc onselectedIndexes*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewselectedIndexesProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewselectedIndexesBase): seq[gen_qabstractitemmodel.QModelIndex]
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewselectedIndexesProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_selectedIndexes(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_selectedIndexes(self: ptr cQAbstractItemView, slot: int): struct_miqt_array {.exportc: "miqt_exec_callback_QAbstractItemView_selectedIndexes ".} =
-  type Cb = proc(super: QAbstractItemViewselectedIndexesBase): seq[gen_qabstractitemmodel.QModelIndex]
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_selectedIndexes(QAbstractItemView(h: self), )
+  var nimfunc = cast[ptr QAbstractItemViewselectedIndexesProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
   var virtualReturn_CArray = newSeq[pointer](len(virtualReturn))
   for i in 0..<len(virtualReturn):
     virtualReturn_CArray[i] = virtualReturn[i].h
 
 
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
-proc callVirtualBase_edit2(self: QAbstractItemView, index: gen_qabstractitemmodel.QModelIndex, trigger: QAbstractItemViewEditTrigger, event: gen_qcoreevent.QEvent): bool =
-
+proc QAbstractItemViewedit2*(self: gen_qabstractitemview_types.QAbstractItemView, index: gen_qabstractitemmodel.QModelIndex, trigger: cint, event: gen_qcoreevent.QEvent): bool =
 
   fQAbstractItemView_virtualbase_edit2(self.h, index.h, cint(trigger), event.h)
 
-type QAbstractItemViewedit2Base* = proc(index: gen_qabstractitemmodel.QModelIndex, trigger: QAbstractItemViewEditTrigger, event: gen_qcoreevent.QEvent): bool
-proc onedit2*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewedit2Base, index: gen_qabstractitemmodel.QModelIndex, trigger: QAbstractItemViewEditTrigger, event: gen_qcoreevent.QEvent): bool) =
+type QAbstractItemViewedit2Proc* = proc(index: gen_qabstractitemmodel.QModelIndex, trigger: cint, event: gen_qcoreevent.QEvent): bool
+proc onedit2*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewedit2Proc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewedit2Base, index: gen_qabstractitemmodel.QModelIndex, trigger: QAbstractItemViewEditTrigger, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewedit2Proc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_edit2(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_edit2(self: ptr cQAbstractItemView, slot: int, index: pointer, trigger: cint, event: pointer): bool {.exportc: "miqt_exec_callback_QAbstractItemView_edit2 ".} =
-  type Cb = proc(super: QAbstractItemViewedit2Base, index: gen_qabstractitemmodel.QModelIndex, trigger: QAbstractItemViewEditTrigger, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(index: gen_qabstractitemmodel.QModelIndex, trigger: QAbstractItemViewEditTrigger, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_edit2(QAbstractItemView(h: self), index, trigger, event)
+  var nimfunc = cast[ptr QAbstractItemViewedit2Proc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: index)
 
-  let slotval2 = QAbstractItemViewEditTrigger(trigger)
+  let slotval2 = cint(trigger)
 
   let slotval3 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_selectionCommand(self: QAbstractItemView, index: gen_qabstractitemmodel.QModelIndex, event: gen_qcoreevent.QEvent): gen_qitemselectionmodel.QItemSelectionModelSelectionFlag =
+proc QAbstractItemViewselectionCommand*(self: gen_qabstractitemview_types.QAbstractItemView, index: gen_qabstractitemmodel.QModelIndex, event: gen_qcoreevent.QEvent): cint =
 
+  cint(fQAbstractItemView_virtualbase_selectionCommand(self.h, index.h, event.h))
 
-  gen_qitemselectionmodel.QItemSelectionModelSelectionFlag(fQAbstractItemView_virtualbase_selectionCommand(self.h, index.h, event.h))
-
-type QAbstractItemViewselectionCommandBase* = proc(index: gen_qabstractitemmodel.QModelIndex, event: gen_qcoreevent.QEvent): gen_qitemselectionmodel.QItemSelectionModelSelectionFlag
-proc onselectionCommand*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewselectionCommandBase, index: gen_qabstractitemmodel.QModelIndex, event: gen_qcoreevent.QEvent): gen_qitemselectionmodel.QItemSelectionModelSelectionFlag) =
+type QAbstractItemViewselectionCommandProc* = proc(index: gen_qabstractitemmodel.QModelIndex, event: gen_qcoreevent.QEvent): cint
+proc onselectionCommand*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewselectionCommandProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewselectionCommandBase, index: gen_qabstractitemmodel.QModelIndex, event: gen_qcoreevent.QEvent): gen_qitemselectionmodel.QItemSelectionModelSelectionFlag
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewselectionCommandProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_selectionCommand(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_selectionCommand(self: ptr cQAbstractItemView, slot: int, index: pointer, event: pointer): cint {.exportc: "miqt_exec_callback_QAbstractItemView_selectionCommand ".} =
-  type Cb = proc(super: QAbstractItemViewselectionCommandBase, index: gen_qabstractitemmodel.QModelIndex, event: gen_qcoreevent.QEvent): gen_qitemselectionmodel.QItemSelectionModelSelectionFlag
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(index: gen_qabstractitemmodel.QModelIndex, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_selectionCommand(QAbstractItemView(h: self), index, event)
+  var nimfunc = cast[ptr QAbstractItemViewselectionCommandProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: index)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   cint(virtualReturn)
-proc callVirtualBase_startDrag(self: QAbstractItemView, supportedActions: gen_qnamespace.DropAction): void =
-
+proc QAbstractItemViewstartDrag*(self: gen_qabstractitemview_types.QAbstractItemView, supportedActions: cint): void =
 
   fQAbstractItemView_virtualbase_startDrag(self.h, cint(supportedActions))
 
-type QAbstractItemViewstartDragBase* = proc(supportedActions: gen_qnamespace.DropAction): void
-proc onstartDrag*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewstartDragBase, supportedActions: gen_qnamespace.DropAction): void) =
+type QAbstractItemViewstartDragProc* = proc(supportedActions: cint): void
+proc onstartDrag*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewstartDragProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewstartDragBase, supportedActions: gen_qnamespace.DropAction): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewstartDragProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_startDrag(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_startDrag(self: ptr cQAbstractItemView, slot: int, supportedActions: cint): void {.exportc: "miqt_exec_callback_QAbstractItemView_startDrag ".} =
-  type Cb = proc(super: QAbstractItemViewstartDragBase, supportedActions: gen_qnamespace.DropAction): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(supportedActions: gen_qnamespace.DropAction): auto =
-    callVirtualBase_startDrag(QAbstractItemView(h: self), supportedActions)
-  let slotval1 = gen_qnamespace.DropAction(supportedActions)
+  var nimfunc = cast[ptr QAbstractItemViewstartDragProc](cast[pointer](slot))
+  let slotval1 = cint(supportedActions)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_viewOptions(self: QAbstractItemView, ): gen_qstyleoption.QStyleOptionViewItem =
-
+  nimfunc[](slotval1)
+proc QAbstractItemViewviewOptions*(self: gen_qabstractitemview_types.QAbstractItemView, ): gen_qstyleoption.QStyleOptionViewItem =
 
   gen_qstyleoption.QStyleOptionViewItem(h: fQAbstractItemView_virtualbase_viewOptions(self.h))
 
-type QAbstractItemViewviewOptionsBase* = proc(): gen_qstyleoption.QStyleOptionViewItem
-proc onviewOptions*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewviewOptionsBase): gen_qstyleoption.QStyleOptionViewItem) =
+type QAbstractItemViewviewOptionsProc* = proc(): gen_qstyleoption.QStyleOptionViewItem
+proc onviewOptions*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewviewOptionsProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewviewOptionsBase): gen_qstyleoption.QStyleOptionViewItem
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewviewOptionsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_viewOptions(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_viewOptions(self: ptr cQAbstractItemView, slot: int): pointer {.exportc: "miqt_exec_callback_QAbstractItemView_viewOptions ".} =
-  type Cb = proc(super: QAbstractItemViewviewOptionsBase): gen_qstyleoption.QStyleOptionViewItem
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_viewOptions(QAbstractItemView(h: self), )
+  var nimfunc = cast[ptr QAbstractItemViewviewOptionsProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_focusNextPrevChild(self: QAbstractItemView, next: bool): bool =
-
+proc QAbstractItemViewfocusNextPrevChild*(self: gen_qabstractitemview_types.QAbstractItemView, next: bool): bool =
 
   fQAbstractItemView_virtualbase_focusNextPrevChild(self.h, next)
 
-type QAbstractItemViewfocusNextPrevChildBase* = proc(next: bool): bool
-proc onfocusNextPrevChild*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewfocusNextPrevChildBase, next: bool): bool) =
+type QAbstractItemViewfocusNextPrevChildProc* = proc(next: bool): bool
+proc onfocusNextPrevChild*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewfocusNextPrevChildProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewfocusNextPrevChildBase, next: bool): bool
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewfocusNextPrevChildProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_focusNextPrevChild(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_focusNextPrevChild(self: ptr cQAbstractItemView, slot: int, next: bool): bool {.exportc: "miqt_exec_callback_QAbstractItemView_focusNextPrevChild ".} =
-  type Cb = proc(super: QAbstractItemViewfocusNextPrevChildBase, next: bool): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(next: bool): auto =
-    callVirtualBase_focusNextPrevChild(QAbstractItemView(h: self), next)
+  var nimfunc = cast[ptr QAbstractItemViewfocusNextPrevChildProc](cast[pointer](slot))
   let slotval1 = next
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_event(self: QAbstractItemView, event: gen_qcoreevent.QEvent): bool =
-
+proc QAbstractItemViewevent*(self: gen_qabstractitemview_types.QAbstractItemView, event: gen_qcoreevent.QEvent): bool =
 
   fQAbstractItemView_virtualbase_event(self.h, event.h)
 
-type QAbstractItemVieweventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QAbstractItemView, slot: proc(super: QAbstractItemVieweventBase, event: gen_qcoreevent.QEvent): bool) =
+type QAbstractItemVieweventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemVieweventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemVieweventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QAbstractItemVieweventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_event(self: ptr cQAbstractItemView, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QAbstractItemView_event ".} =
-  type Cb = proc(super: QAbstractItemVieweventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QAbstractItemView(h: self), event)
+  var nimfunc = cast[ptr QAbstractItemVieweventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_viewportEvent(self: QAbstractItemView, event: gen_qcoreevent.QEvent): bool =
-
+proc QAbstractItemViewviewportEvent*(self: gen_qabstractitemview_types.QAbstractItemView, event: gen_qcoreevent.QEvent): bool =
 
   fQAbstractItemView_virtualbase_viewportEvent(self.h, event.h)
 
-type QAbstractItemViewviewportEventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onviewportEvent*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewviewportEventBase, event: gen_qcoreevent.QEvent): bool) =
+type QAbstractItemViewviewportEventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onviewportEvent*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewviewportEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewviewportEventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewviewportEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_viewportEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_viewportEvent(self: ptr cQAbstractItemView, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QAbstractItemView_viewportEvent ".} =
-  type Cb = proc(super: QAbstractItemViewviewportEventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_viewportEvent(QAbstractItemView(h: self), event)
+  var nimfunc = cast[ptr QAbstractItemViewviewportEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_mousePressEvent(self: QAbstractItemView, event: gen_qevent.QMouseEvent): void =
-
+proc QAbstractItemViewmousePressEvent*(self: gen_qabstractitemview_types.QAbstractItemView, event: gen_qevent.QMouseEvent): void =
 
   fQAbstractItemView_virtualbase_mousePressEvent(self.h, event.h)
 
-type QAbstractItemViewmousePressEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmousePressEvent*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewmousePressEventBase, event: gen_qevent.QMouseEvent): void) =
+type QAbstractItemViewmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmousePressEvent*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewmousePressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewmousePressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_mousePressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_mousePressEvent(self: ptr cQAbstractItemView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAbstractItemView_mousePressEvent ".} =
-  type Cb = proc(super: QAbstractItemViewmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mousePressEvent(QAbstractItemView(h: self), event)
+  var nimfunc = cast[ptr QAbstractItemViewmousePressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseMoveEvent(self: QAbstractItemView, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QAbstractItemViewmouseMoveEvent*(self: gen_qabstractitemview_types.QAbstractItemView, event: gen_qevent.QMouseEvent): void =
 
   fQAbstractItemView_virtualbase_mouseMoveEvent(self.h, event.h)
 
-type QAbstractItemViewmouseMoveEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseMoveEvent*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewmouseMoveEventBase, event: gen_qevent.QMouseEvent): void) =
+type QAbstractItemViewmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseMoveEvent*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewmouseMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewmouseMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_mouseMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_mouseMoveEvent(self: ptr cQAbstractItemView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAbstractItemView_mouseMoveEvent ".} =
-  type Cb = proc(super: QAbstractItemViewmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseMoveEvent(QAbstractItemView(h: self), event)
+  var nimfunc = cast[ptr QAbstractItemViewmouseMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseReleaseEvent(self: QAbstractItemView, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QAbstractItemViewmouseReleaseEvent*(self: gen_qabstractitemview_types.QAbstractItemView, event: gen_qevent.QMouseEvent): void =
 
   fQAbstractItemView_virtualbase_mouseReleaseEvent(self.h, event.h)
 
-type QAbstractItemViewmouseReleaseEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseReleaseEvent*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void) =
+type QAbstractItemViewmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseReleaseEvent*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewmouseReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewmouseReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_mouseReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_mouseReleaseEvent(self: ptr cQAbstractItemView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAbstractItemView_mouseReleaseEvent ".} =
-  type Cb = proc(super: QAbstractItemViewmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseReleaseEvent(QAbstractItemView(h: self), event)
+  var nimfunc = cast[ptr QAbstractItemViewmouseReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseDoubleClickEvent(self: QAbstractItemView, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QAbstractItemViewmouseDoubleClickEvent*(self: gen_qabstractitemview_types.QAbstractItemView, event: gen_qevent.QMouseEvent): void =
 
   fQAbstractItemView_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
-type QAbstractItemViewmouseDoubleClickEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseDoubleClickEvent*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void) =
+type QAbstractItemViewmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseDoubleClickEvent*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewmouseDoubleClickEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewmouseDoubleClickEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_mouseDoubleClickEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_mouseDoubleClickEvent(self: ptr cQAbstractItemView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAbstractItemView_mouseDoubleClickEvent ".} =
-  type Cb = proc(super: QAbstractItemViewmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseDoubleClickEvent(QAbstractItemView(h: self), event)
+  var nimfunc = cast[ptr QAbstractItemViewmouseDoubleClickEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragEnterEvent(self: QAbstractItemView, event: gen_qevent.QDragEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QAbstractItemViewdragEnterEvent*(self: gen_qabstractitemview_types.QAbstractItemView, event: gen_qevent.QDragEnterEvent): void =
 
   fQAbstractItemView_virtualbase_dragEnterEvent(self.h, event.h)
 
-type QAbstractItemViewdragEnterEventBase* = proc(event: gen_qevent.QDragEnterEvent): void
-proc ondragEnterEvent*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void) =
+type QAbstractItemViewdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
+proc ondragEnterEvent*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewdragEnterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewdragEnterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_dragEnterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_dragEnterEvent(self: ptr cQAbstractItemView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAbstractItemView_dragEnterEvent ".} =
-  type Cb = proc(super: QAbstractItemViewdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragEnterEvent): auto =
-    callVirtualBase_dragEnterEvent(QAbstractItemView(h: self), event)
+  var nimfunc = cast[ptr QAbstractItemViewdragEnterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragMoveEvent(self: QAbstractItemView, event: gen_qevent.QDragMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QAbstractItemViewdragMoveEvent*(self: gen_qabstractitemview_types.QAbstractItemView, event: gen_qevent.QDragMoveEvent): void =
 
   fQAbstractItemView_virtualbase_dragMoveEvent(self.h, event.h)
 
-type QAbstractItemViewdragMoveEventBase* = proc(event: gen_qevent.QDragMoveEvent): void
-proc ondragMoveEvent*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void) =
+type QAbstractItemViewdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
+proc ondragMoveEvent*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewdragMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewdragMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_dragMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_dragMoveEvent(self: ptr cQAbstractItemView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAbstractItemView_dragMoveEvent ".} =
-  type Cb = proc(super: QAbstractItemViewdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragMoveEvent): auto =
-    callVirtualBase_dragMoveEvent(QAbstractItemView(h: self), event)
+  var nimfunc = cast[ptr QAbstractItemViewdragMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragLeaveEvent(self: QAbstractItemView, event: gen_qevent.QDragLeaveEvent): void =
-
+  nimfunc[](slotval1)
+proc QAbstractItemViewdragLeaveEvent*(self: gen_qabstractitemview_types.QAbstractItemView, event: gen_qevent.QDragLeaveEvent): void =
 
   fQAbstractItemView_virtualbase_dragLeaveEvent(self.h, event.h)
 
-type QAbstractItemViewdragLeaveEventBase* = proc(event: gen_qevent.QDragLeaveEvent): void
-proc ondragLeaveEvent*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void) =
+type QAbstractItemViewdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
+proc ondragLeaveEvent*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewdragLeaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewdragLeaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_dragLeaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_dragLeaveEvent(self: ptr cQAbstractItemView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAbstractItemView_dragLeaveEvent ".} =
-  type Cb = proc(super: QAbstractItemViewdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragLeaveEvent): auto =
-    callVirtualBase_dragLeaveEvent(QAbstractItemView(h: self), event)
+  var nimfunc = cast[ptr QAbstractItemViewdragLeaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragLeaveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dropEvent(self: QAbstractItemView, event: gen_qevent.QDropEvent): void =
-
+  nimfunc[](slotval1)
+proc QAbstractItemViewdropEvent*(self: gen_qabstractitemview_types.QAbstractItemView, event: gen_qevent.QDropEvent): void =
 
   fQAbstractItemView_virtualbase_dropEvent(self.h, event.h)
 
-type QAbstractItemViewdropEventBase* = proc(event: gen_qevent.QDropEvent): void
-proc ondropEvent*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewdropEventBase, event: gen_qevent.QDropEvent): void) =
+type QAbstractItemViewdropEventProc* = proc(event: gen_qevent.QDropEvent): void
+proc ondropEvent*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewdropEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewdropEventBase, event: gen_qevent.QDropEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewdropEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_dropEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_dropEvent(self: ptr cQAbstractItemView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAbstractItemView_dropEvent ".} =
-  type Cb = proc(super: QAbstractItemViewdropEventBase, event: gen_qevent.QDropEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDropEvent): auto =
-    callVirtualBase_dropEvent(QAbstractItemView(h: self), event)
+  var nimfunc = cast[ptr QAbstractItemViewdropEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDropEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusInEvent(self: QAbstractItemView, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QAbstractItemViewfocusInEvent*(self: gen_qabstractitemview_types.QAbstractItemView, event: gen_qevent.QFocusEvent): void =
 
   fQAbstractItemView_virtualbase_focusInEvent(self.h, event.h)
 
-type QAbstractItemViewfocusInEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusInEvent*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewfocusInEventBase, event: gen_qevent.QFocusEvent): void) =
+type QAbstractItemViewfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusInEvent*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewfocusInEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewfocusInEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_focusInEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_focusInEvent(self: ptr cQAbstractItemView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAbstractItemView_focusInEvent ".} =
-  type Cb = proc(super: QAbstractItemViewfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusInEvent(QAbstractItemView(h: self), event)
+  var nimfunc = cast[ptr QAbstractItemViewfocusInEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusOutEvent(self: QAbstractItemView, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QAbstractItemViewfocusOutEvent*(self: gen_qabstractitemview_types.QAbstractItemView, event: gen_qevent.QFocusEvent): void =
 
   fQAbstractItemView_virtualbase_focusOutEvent(self.h, event.h)
 
-type QAbstractItemViewfocusOutEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusOutEvent*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewfocusOutEventBase, event: gen_qevent.QFocusEvent): void) =
+type QAbstractItemViewfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusOutEvent*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewfocusOutEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewfocusOutEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_focusOutEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_focusOutEvent(self: ptr cQAbstractItemView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAbstractItemView_focusOutEvent ".} =
-  type Cb = proc(super: QAbstractItemViewfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusOutEvent(QAbstractItemView(h: self), event)
+  var nimfunc = cast[ptr QAbstractItemViewfocusOutEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyPressEvent(self: QAbstractItemView, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QAbstractItemViewkeyPressEvent*(self: gen_qabstractitemview_types.QAbstractItemView, event: gen_qevent.QKeyEvent): void =
 
   fQAbstractItemView_virtualbase_keyPressEvent(self.h, event.h)
 
-type QAbstractItemViewkeyPressEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyPressEvent*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewkeyPressEventBase, event: gen_qevent.QKeyEvent): void) =
+type QAbstractItemViewkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyPressEvent*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewkeyPressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewkeyPressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_keyPressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_keyPressEvent(self: ptr cQAbstractItemView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAbstractItemView_keyPressEvent ".} =
-  type Cb = proc(super: QAbstractItemViewkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyPressEvent(QAbstractItemView(h: self), event)
+  var nimfunc = cast[ptr QAbstractItemViewkeyPressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_resizeEvent(self: QAbstractItemView, event: gen_qevent.QResizeEvent): void =
-
+  nimfunc[](slotval1)
+proc QAbstractItemViewresizeEvent*(self: gen_qabstractitemview_types.QAbstractItemView, event: gen_qevent.QResizeEvent): void =
 
   fQAbstractItemView_virtualbase_resizeEvent(self.h, event.h)
 
-type QAbstractItemViewresizeEventBase* = proc(event: gen_qevent.QResizeEvent): void
-proc onresizeEvent*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewresizeEventBase, event: gen_qevent.QResizeEvent): void) =
+type QAbstractItemViewresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
+proc onresizeEvent*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewresizeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewresizeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_resizeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_resizeEvent(self: ptr cQAbstractItemView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAbstractItemView_resizeEvent ".} =
-  type Cb = proc(super: QAbstractItemViewresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QResizeEvent): auto =
-    callVirtualBase_resizeEvent(QAbstractItemView(h: self), event)
+  var nimfunc = cast[ptr QAbstractItemViewresizeEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QResizeEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_timerEvent(self: QAbstractItemView, event: gen_qcoreevent.QTimerEvent): void =
-
+  nimfunc[](slotval1)
+proc QAbstractItemViewtimerEvent*(self: gen_qabstractitemview_types.QAbstractItemView, event: gen_qcoreevent.QTimerEvent): void =
 
   fQAbstractItemView_virtualbase_timerEvent(self.h, event.h)
 
-type QAbstractItemViewtimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewtimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QAbstractItemViewtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewtimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewtimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewtimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_timerEvent(self: ptr cQAbstractItemView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAbstractItemView_timerEvent ".} =
-  type Cb = proc(super: QAbstractItemViewtimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QAbstractItemView(h: self), event)
+  var nimfunc = cast[ptr QAbstractItemViewtimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_inputMethodEvent(self: QAbstractItemView, event: gen_qevent.QInputMethodEvent): void =
-
+  nimfunc[](slotval1)
+proc QAbstractItemViewinputMethodEvent*(self: gen_qabstractitemview_types.QAbstractItemView, event: gen_qevent.QInputMethodEvent): void =
 
   fQAbstractItemView_virtualbase_inputMethodEvent(self.h, event.h)
 
-type QAbstractItemViewinputMethodEventBase* = proc(event: gen_qevent.QInputMethodEvent): void
-proc oninputMethodEvent*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewinputMethodEventBase, event: gen_qevent.QInputMethodEvent): void) =
+type QAbstractItemViewinputMethodEventProc* = proc(event: gen_qevent.QInputMethodEvent): void
+proc oninputMethodEvent*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewinputMethodEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewinputMethodEventBase, event: gen_qevent.QInputMethodEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewinputMethodEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_inputMethodEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_inputMethodEvent(self: ptr cQAbstractItemView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAbstractItemView_inputMethodEvent ".} =
-  type Cb = proc(super: QAbstractItemViewinputMethodEventBase, event: gen_qevent.QInputMethodEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QInputMethodEvent): auto =
-    callVirtualBase_inputMethodEvent(QAbstractItemView(h: self), event)
+  var nimfunc = cast[ptr QAbstractItemViewinputMethodEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QInputMethodEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_eventFilter(self: QAbstractItemView, objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[](slotval1)
+proc QAbstractItemVieweventFilter*(self: gen_qabstractitemview_types.QAbstractItemView, objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQAbstractItemView_virtualbase_eventFilter(self.h, objectVal.h, event.h)
 
-type QAbstractItemVieweventFilterBase* = proc(objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QAbstractItemView, slot: proc(super: QAbstractItemVieweventFilterBase, objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QAbstractItemVieweventFilterProc* = proc(objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemVieweventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemVieweventFilterBase, objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QAbstractItemVieweventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_eventFilter(self: ptr cQAbstractItemView, slot: int, objectVal: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QAbstractItemView_eventFilter ".} =
-  type Cb = proc(super: QAbstractItemVieweventFilterBase, objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QAbstractItemView(h: self), objectVal, event)
+  var nimfunc = cast[ptr QAbstractItemVieweventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: objectVal)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_viewportSizeHint(self: QAbstractItemView, ): gen_qsize.QSize =
-
+proc QAbstractItemViewviewportSizeHint*(self: gen_qabstractitemview_types.QAbstractItemView, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQAbstractItemView_virtualbase_viewportSizeHint(self.h))
 
-type QAbstractItemViewviewportSizeHintBase* = proc(): gen_qsize.QSize
-proc onviewportSizeHint*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewviewportSizeHintBase): gen_qsize.QSize) =
+type QAbstractItemViewviewportSizeHintProc* = proc(): gen_qsize.QSize
+proc onviewportSizeHint*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewviewportSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewviewportSizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewviewportSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_viewportSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_viewportSizeHint(self: ptr cQAbstractItemView, slot: int): pointer {.exportc: "miqt_exec_callback_QAbstractItemView_viewportSizeHint ".} =
-  type Cb = proc(super: QAbstractItemViewviewportSizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_viewportSizeHint(QAbstractItemView(h: self), )
+  var nimfunc = cast[ptr QAbstractItemViewviewportSizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_minimumSizeHint(self: QAbstractItemView, ): gen_qsize.QSize =
-
+proc QAbstractItemViewminimumSizeHint*(self: gen_qabstractitemview_types.QAbstractItemView, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQAbstractItemView_virtualbase_minimumSizeHint(self.h))
 
-type QAbstractItemViewminimumSizeHintBase* = proc(): gen_qsize.QSize
-proc onminimumSizeHint*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewminimumSizeHintBase): gen_qsize.QSize) =
+type QAbstractItemViewminimumSizeHintProc* = proc(): gen_qsize.QSize
+proc onminimumSizeHint*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewminimumSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewminimumSizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewminimumSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_minimumSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_minimumSizeHint(self: ptr cQAbstractItemView, slot: int): pointer {.exportc: "miqt_exec_callback_QAbstractItemView_minimumSizeHint ".} =
-  type Cb = proc(super: QAbstractItemViewminimumSizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_minimumSizeHint(QAbstractItemView(h: self), )
+  var nimfunc = cast[ptr QAbstractItemViewminimumSizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_sizeHint(self: QAbstractItemView, ): gen_qsize.QSize =
-
+proc QAbstractItemViewsizeHint*(self: gen_qabstractitemview_types.QAbstractItemView, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQAbstractItemView_virtualbase_sizeHint(self.h))
 
-type QAbstractItemViewsizeHintBase* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewsizeHintBase): gen_qsize.QSize) =
+type QAbstractItemViewsizeHintProc* = proc(): gen_qsize.QSize
+proc onsizeHint*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewsizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewsizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewsizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_sizeHint(self: ptr cQAbstractItemView, slot: int): pointer {.exportc: "miqt_exec_callback_QAbstractItemView_sizeHint ".} =
-  type Cb = proc(super: QAbstractItemViewsizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sizeHint(QAbstractItemView(h: self), )
+  var nimfunc = cast[ptr QAbstractItemViewsizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_setupViewport(self: QAbstractItemView, viewport: gen_qwidget.QWidget): void =
-
+proc QAbstractItemViewsetupViewport*(self: gen_qabstractitemview_types.QAbstractItemView, viewport: gen_qwidget.QWidget): void =
 
   fQAbstractItemView_virtualbase_setupViewport(self.h, viewport.h)
 
-type QAbstractItemViewsetupViewportBase* = proc(viewport: gen_qwidget.QWidget): void
-proc onsetupViewport*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewsetupViewportBase, viewport: gen_qwidget.QWidget): void) =
+type QAbstractItemViewsetupViewportProc* = proc(viewport: gen_qwidget.QWidget): void
+proc onsetupViewport*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewsetupViewportProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewsetupViewportBase, viewport: gen_qwidget.QWidget): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewsetupViewportProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_setupViewport(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_setupViewport(self: ptr cQAbstractItemView, slot: int, viewport: pointer): void {.exportc: "miqt_exec_callback_QAbstractItemView_setupViewport ".} =
-  type Cb = proc(super: QAbstractItemViewsetupViewportBase, viewport: gen_qwidget.QWidget): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(viewport: gen_qwidget.QWidget): auto =
-    callVirtualBase_setupViewport(QAbstractItemView(h: self), viewport)
+  var nimfunc = cast[ptr QAbstractItemViewsetupViewportProc](cast[pointer](slot))
   let slotval1 = gen_qwidget.QWidget(h: viewport)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_paintEvent(self: QAbstractItemView, param1: gen_qevent.QPaintEvent): void =
-
+  nimfunc[](slotval1)
+proc QAbstractItemViewpaintEvent*(self: gen_qabstractitemview_types.QAbstractItemView, param1: gen_qevent.QPaintEvent): void =
 
   fQAbstractItemView_virtualbase_paintEvent(self.h, param1.h)
 
-type QAbstractItemViewpaintEventBase* = proc(param1: gen_qevent.QPaintEvent): void
-proc onpaintEvent*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewpaintEventBase, param1: gen_qevent.QPaintEvent): void) =
+type QAbstractItemViewpaintEventProc* = proc(param1: gen_qevent.QPaintEvent): void
+proc onpaintEvent*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewpaintEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewpaintEventBase, param1: gen_qevent.QPaintEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewpaintEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_paintEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_paintEvent(self: ptr cQAbstractItemView, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QAbstractItemView_paintEvent ".} =
-  type Cb = proc(super: QAbstractItemViewpaintEventBase, param1: gen_qevent.QPaintEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QPaintEvent): auto =
-    callVirtualBase_paintEvent(QAbstractItemView(h: self), param1)
+  var nimfunc = cast[ptr QAbstractItemViewpaintEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QPaintEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_wheelEvent(self: QAbstractItemView, param1: gen_qevent.QWheelEvent): void =
-
+  nimfunc[](slotval1)
+proc QAbstractItemViewwheelEvent*(self: gen_qabstractitemview_types.QAbstractItemView, param1: gen_qevent.QWheelEvent): void =
 
   fQAbstractItemView_virtualbase_wheelEvent(self.h, param1.h)
 
-type QAbstractItemViewwheelEventBase* = proc(param1: gen_qevent.QWheelEvent): void
-proc onwheelEvent*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewwheelEventBase, param1: gen_qevent.QWheelEvent): void) =
+type QAbstractItemViewwheelEventProc* = proc(param1: gen_qevent.QWheelEvent): void
+proc onwheelEvent*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewwheelEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewwheelEventBase, param1: gen_qevent.QWheelEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewwheelEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_wheelEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_wheelEvent(self: ptr cQAbstractItemView, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QAbstractItemView_wheelEvent ".} =
-  type Cb = proc(super: QAbstractItemViewwheelEventBase, param1: gen_qevent.QWheelEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QWheelEvent): auto =
-    callVirtualBase_wheelEvent(QAbstractItemView(h: self), param1)
+  var nimfunc = cast[ptr QAbstractItemViewwheelEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QWheelEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_contextMenuEvent(self: QAbstractItemView, param1: gen_qevent.QContextMenuEvent): void =
-
+  nimfunc[](slotval1)
+proc QAbstractItemViewcontextMenuEvent*(self: gen_qabstractitemview_types.QAbstractItemView, param1: gen_qevent.QContextMenuEvent): void =
 
   fQAbstractItemView_virtualbase_contextMenuEvent(self.h, param1.h)
 
-type QAbstractItemViewcontextMenuEventBase* = proc(param1: gen_qevent.QContextMenuEvent): void
-proc oncontextMenuEvent*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewcontextMenuEventBase, param1: gen_qevent.QContextMenuEvent): void) =
+type QAbstractItemViewcontextMenuEventProc* = proc(param1: gen_qevent.QContextMenuEvent): void
+proc oncontextMenuEvent*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewcontextMenuEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewcontextMenuEventBase, param1: gen_qevent.QContextMenuEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewcontextMenuEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_contextMenuEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_contextMenuEvent(self: ptr cQAbstractItemView, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QAbstractItemView_contextMenuEvent ".} =
-  type Cb = proc(super: QAbstractItemViewcontextMenuEventBase, param1: gen_qevent.QContextMenuEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QContextMenuEvent): auto =
-    callVirtualBase_contextMenuEvent(QAbstractItemView(h: self), param1)
+  var nimfunc = cast[ptr QAbstractItemViewcontextMenuEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QContextMenuEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_scrollContentsBy(self: QAbstractItemView, dx: cint, dy: cint): void =
-
+  nimfunc[](slotval1)
+proc QAbstractItemViewscrollContentsBy*(self: gen_qabstractitemview_types.QAbstractItemView, dx: cint, dy: cint): void =
 
   fQAbstractItemView_virtualbase_scrollContentsBy(self.h, dx, dy)
 
-type QAbstractItemViewscrollContentsByBase* = proc(dx: cint, dy: cint): void
-proc onscrollContentsBy*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewscrollContentsByBase, dx: cint, dy: cint): void) =
+type QAbstractItemViewscrollContentsByProc* = proc(dx: cint, dy: cint): void
+proc onscrollContentsBy*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewscrollContentsByProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewscrollContentsByBase, dx: cint, dy: cint): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewscrollContentsByProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_scrollContentsBy(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_scrollContentsBy(self: ptr cQAbstractItemView, slot: int, dx: cint, dy: cint): void {.exportc: "miqt_exec_callback_QAbstractItemView_scrollContentsBy ".} =
-  type Cb = proc(super: QAbstractItemViewscrollContentsByBase, dx: cint, dy: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(dx: cint, dy: cint): auto =
-    callVirtualBase_scrollContentsBy(QAbstractItemView(h: self), dx, dy)
+  var nimfunc = cast[ptr QAbstractItemViewscrollContentsByProc](cast[pointer](slot))
   let slotval1 = dx
 
   let slotval2 = dy
 
 
-  nimfunc[](superCall, slotval1, slotval2)
-proc callVirtualBase_changeEvent(self: QAbstractItemView, param1: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1, slotval2)
+proc QAbstractItemViewchangeEvent*(self: gen_qabstractitemview_types.QAbstractItemView, param1: gen_qcoreevent.QEvent): void =
 
   fQAbstractItemView_virtualbase_changeEvent(self.h, param1.h)
 
-type QAbstractItemViewchangeEventBase* = proc(param1: gen_qcoreevent.QEvent): void
-proc onchangeEvent*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewchangeEventBase, param1: gen_qcoreevent.QEvent): void) =
+type QAbstractItemViewchangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
+proc onchangeEvent*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewchangeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewchangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewchangeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_changeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_changeEvent(self: ptr cQAbstractItemView, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QAbstractItemView_changeEvent ".} =
-  type Cb = proc(super: QAbstractItemViewchangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_changeEvent(QAbstractItemView(h: self), param1)
+  var nimfunc = cast[ptr QAbstractItemViewchangeEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_devType(self: QAbstractItemView, ): cint =
-
+  nimfunc[](slotval1)
+proc QAbstractItemViewdevType*(self: gen_qabstractitemview_types.QAbstractItemView, ): cint =
 
   fQAbstractItemView_virtualbase_devType(self.h)
 
-type QAbstractItemViewdevTypeBase* = proc(): cint
-proc ondevType*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewdevTypeBase): cint) =
+type QAbstractItemViewdevTypeProc* = proc(): cint
+proc ondevType*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewdevTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewdevTypeBase): cint
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewdevTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_devType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_devType(self: ptr cQAbstractItemView, slot: int): cint {.exportc: "miqt_exec_callback_QAbstractItemView_devType ".} =
-  type Cb = proc(super: QAbstractItemViewdevTypeBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_devType(QAbstractItemView(h: self), )
+  var nimfunc = cast[ptr QAbstractItemViewdevTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setVisible(self: QAbstractItemView, visible: bool): void =
-
+proc QAbstractItemViewsetVisible*(self: gen_qabstractitemview_types.QAbstractItemView, visible: bool): void =
 
   fQAbstractItemView_virtualbase_setVisible(self.h, visible)
 
-type QAbstractItemViewsetVisibleBase* = proc(visible: bool): void
-proc onsetVisible*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewsetVisibleBase, visible: bool): void) =
+type QAbstractItemViewsetVisibleProc* = proc(visible: bool): void
+proc onsetVisible*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewsetVisibleProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewsetVisibleBase, visible: bool): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewsetVisibleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_setVisible(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_setVisible(self: ptr cQAbstractItemView, slot: int, visible: bool): void {.exportc: "miqt_exec_callback_QAbstractItemView_setVisible ".} =
-  type Cb = proc(super: QAbstractItemViewsetVisibleBase, visible: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(visible: bool): auto =
-    callVirtualBase_setVisible(QAbstractItemView(h: self), visible)
+  var nimfunc = cast[ptr QAbstractItemViewsetVisibleProc](cast[pointer](slot))
   let slotval1 = visible
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_heightForWidth(self: QAbstractItemView, param1: cint): cint =
-
+  nimfunc[](slotval1)
+proc QAbstractItemViewheightForWidth*(self: gen_qabstractitemview_types.QAbstractItemView, param1: cint): cint =
 
   fQAbstractItemView_virtualbase_heightForWidth(self.h, param1)
 
-type QAbstractItemViewheightForWidthBase* = proc(param1: cint): cint
-proc onheightForWidth*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewheightForWidthBase, param1: cint): cint) =
+type QAbstractItemViewheightForWidthProc* = proc(param1: cint): cint
+proc onheightForWidth*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewheightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewheightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewheightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_heightForWidth(self: ptr cQAbstractItemView, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QAbstractItemView_heightForWidth ".} =
-  type Cb = proc(super: QAbstractItemViewheightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_heightForWidth(QAbstractItemView(h: self), param1)
+  var nimfunc = cast[ptr QAbstractItemViewheightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_hasHeightForWidth(self: QAbstractItemView, ): bool =
-
+proc QAbstractItemViewhasHeightForWidth*(self: gen_qabstractitemview_types.QAbstractItemView, ): bool =
 
   fQAbstractItemView_virtualbase_hasHeightForWidth(self.h)
 
-type QAbstractItemViewhasHeightForWidthBase* = proc(): bool
-proc onhasHeightForWidth*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewhasHeightForWidthBase): bool) =
+type QAbstractItemViewhasHeightForWidthProc* = proc(): bool
+proc onhasHeightForWidth*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewhasHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewhasHeightForWidthBase): bool
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewhasHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_hasHeightForWidth(self: ptr cQAbstractItemView, slot: int): bool {.exportc: "miqt_exec_callback_QAbstractItemView_hasHeightForWidth ".} =
-  type Cb = proc(super: QAbstractItemViewhasHeightForWidthBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasHeightForWidth(QAbstractItemView(h: self), )
+  var nimfunc = cast[ptr QAbstractItemViewhasHeightForWidthProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_paintEngine(self: QAbstractItemView, ): gen_qpaintengine.QPaintEngine =
-
+proc QAbstractItemViewpaintEngine*(self: gen_qabstractitemview_types.QAbstractItemView, ): gen_qpaintengine.QPaintEngine =
 
   gen_qpaintengine.QPaintEngine(h: fQAbstractItemView_virtualbase_paintEngine(self.h))
 
-type QAbstractItemViewpaintEngineBase* = proc(): gen_qpaintengine.QPaintEngine
-proc onpaintEngine*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewpaintEngineBase): gen_qpaintengine.QPaintEngine) =
+type QAbstractItemViewpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
+proc onpaintEngine*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewpaintEngineProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewpaintEngineProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_paintEngine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_paintEngine(self: ptr cQAbstractItemView, slot: int): pointer {.exportc: "miqt_exec_callback_QAbstractItemView_paintEngine ".} =
-  type Cb = proc(super: QAbstractItemViewpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_paintEngine(QAbstractItemView(h: self), )
+  var nimfunc = cast[ptr QAbstractItemViewpaintEngineProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_keyReleaseEvent(self: QAbstractItemView, event: gen_qevent.QKeyEvent): void =
-
+proc QAbstractItemViewkeyReleaseEvent*(self: gen_qabstractitemview_types.QAbstractItemView, event: gen_qevent.QKeyEvent): void =
 
   fQAbstractItemView_virtualbase_keyReleaseEvent(self.h, event.h)
 
-type QAbstractItemViewkeyReleaseEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyReleaseEvent*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void) =
+type QAbstractItemViewkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyReleaseEvent*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewkeyReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewkeyReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_keyReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_keyReleaseEvent(self: ptr cQAbstractItemView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAbstractItemView_keyReleaseEvent ".} =
-  type Cb = proc(super: QAbstractItemViewkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyReleaseEvent(QAbstractItemView(h: self), event)
+  var nimfunc = cast[ptr QAbstractItemViewkeyReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_enterEvent(self: QAbstractItemView, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QAbstractItemViewenterEvent*(self: gen_qabstractitemview_types.QAbstractItemView, event: gen_qcoreevent.QEvent): void =
 
   fQAbstractItemView_virtualbase_enterEvent(self.h, event.h)
 
-type QAbstractItemViewenterEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onenterEvent*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewenterEventBase, event: gen_qcoreevent.QEvent): void) =
+type QAbstractItemViewenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onenterEvent*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewenterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewenterEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewenterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_enterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_enterEvent(self: ptr cQAbstractItemView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAbstractItemView_enterEvent ".} =
-  type Cb = proc(super: QAbstractItemViewenterEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_enterEvent(QAbstractItemView(h: self), event)
+  var nimfunc = cast[ptr QAbstractItemViewenterEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_leaveEvent(self: QAbstractItemView, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QAbstractItemViewleaveEvent*(self: gen_qabstractitemview_types.QAbstractItemView, event: gen_qcoreevent.QEvent): void =
 
   fQAbstractItemView_virtualbase_leaveEvent(self.h, event.h)
 
-type QAbstractItemViewleaveEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onleaveEvent*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewleaveEventBase, event: gen_qcoreevent.QEvent): void) =
+type QAbstractItemViewleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onleaveEvent*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewleaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewleaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_leaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_leaveEvent(self: ptr cQAbstractItemView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAbstractItemView_leaveEvent ".} =
-  type Cb = proc(super: QAbstractItemViewleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_leaveEvent(QAbstractItemView(h: self), event)
+  var nimfunc = cast[ptr QAbstractItemViewleaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_moveEvent(self: QAbstractItemView, event: gen_qevent.QMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QAbstractItemViewmoveEvent*(self: gen_qabstractitemview_types.QAbstractItemView, event: gen_qevent.QMoveEvent): void =
 
   fQAbstractItemView_virtualbase_moveEvent(self.h, event.h)
 
-type QAbstractItemViewmoveEventBase* = proc(event: gen_qevent.QMoveEvent): void
-proc onmoveEvent*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewmoveEventBase, event: gen_qevent.QMoveEvent): void) =
+type QAbstractItemViewmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
+proc onmoveEvent*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewmoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewmoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_moveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_moveEvent(self: ptr cQAbstractItemView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAbstractItemView_moveEvent ".} =
-  type Cb = proc(super: QAbstractItemViewmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMoveEvent): auto =
-    callVirtualBase_moveEvent(QAbstractItemView(h: self), event)
+  var nimfunc = cast[ptr QAbstractItemViewmoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_closeEvent(self: QAbstractItemView, event: gen_qevent.QCloseEvent): void =
-
+  nimfunc[](slotval1)
+proc QAbstractItemViewcloseEvent*(self: gen_qabstractitemview_types.QAbstractItemView, event: gen_qevent.QCloseEvent): void =
 
   fQAbstractItemView_virtualbase_closeEvent(self.h, event.h)
 
-type QAbstractItemViewcloseEventBase* = proc(event: gen_qevent.QCloseEvent): void
-proc oncloseEvent*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewcloseEventBase, event: gen_qevent.QCloseEvent): void) =
+type QAbstractItemViewcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
+proc oncloseEvent*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewcloseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewcloseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_closeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_closeEvent(self: ptr cQAbstractItemView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAbstractItemView_closeEvent ".} =
-  type Cb = proc(super: QAbstractItemViewcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QCloseEvent): auto =
-    callVirtualBase_closeEvent(QAbstractItemView(h: self), event)
+  var nimfunc = cast[ptr QAbstractItemViewcloseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QCloseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_tabletEvent(self: QAbstractItemView, event: gen_qevent.QTabletEvent): void =
-
+  nimfunc[](slotval1)
+proc QAbstractItemViewtabletEvent*(self: gen_qabstractitemview_types.QAbstractItemView, event: gen_qevent.QTabletEvent): void =
 
   fQAbstractItemView_virtualbase_tabletEvent(self.h, event.h)
 
-type QAbstractItemViewtabletEventBase* = proc(event: gen_qevent.QTabletEvent): void
-proc ontabletEvent*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewtabletEventBase, event: gen_qevent.QTabletEvent): void) =
+type QAbstractItemViewtabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
+proc ontabletEvent*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewtabletEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewtabletEventBase, event: gen_qevent.QTabletEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewtabletEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_tabletEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_tabletEvent(self: ptr cQAbstractItemView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAbstractItemView_tabletEvent ".} =
-  type Cb = proc(super: QAbstractItemViewtabletEventBase, event: gen_qevent.QTabletEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QTabletEvent): auto =
-    callVirtualBase_tabletEvent(QAbstractItemView(h: self), event)
+  var nimfunc = cast[ptr QAbstractItemViewtabletEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QTabletEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_actionEvent(self: QAbstractItemView, event: gen_qevent.QActionEvent): void =
-
+  nimfunc[](slotval1)
+proc QAbstractItemViewactionEvent*(self: gen_qabstractitemview_types.QAbstractItemView, event: gen_qevent.QActionEvent): void =
 
   fQAbstractItemView_virtualbase_actionEvent(self.h, event.h)
 
-type QAbstractItemViewactionEventBase* = proc(event: gen_qevent.QActionEvent): void
-proc onactionEvent*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewactionEventBase, event: gen_qevent.QActionEvent): void) =
+type QAbstractItemViewactionEventProc* = proc(event: gen_qevent.QActionEvent): void
+proc onactionEvent*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewactionEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewactionEventBase, event: gen_qevent.QActionEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewactionEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_actionEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_actionEvent(self: ptr cQAbstractItemView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAbstractItemView_actionEvent ".} =
-  type Cb = proc(super: QAbstractItemViewactionEventBase, event: gen_qevent.QActionEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QActionEvent): auto =
-    callVirtualBase_actionEvent(QAbstractItemView(h: self), event)
+  var nimfunc = cast[ptr QAbstractItemViewactionEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QActionEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_showEvent(self: QAbstractItemView, event: gen_qevent.QShowEvent): void =
-
+  nimfunc[](slotval1)
+proc QAbstractItemViewshowEvent*(self: gen_qabstractitemview_types.QAbstractItemView, event: gen_qevent.QShowEvent): void =
 
   fQAbstractItemView_virtualbase_showEvent(self.h, event.h)
 
-type QAbstractItemViewshowEventBase* = proc(event: gen_qevent.QShowEvent): void
-proc onshowEvent*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewshowEventBase, event: gen_qevent.QShowEvent): void) =
+type QAbstractItemViewshowEventProc* = proc(event: gen_qevent.QShowEvent): void
+proc onshowEvent*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewshowEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewshowEventBase, event: gen_qevent.QShowEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewshowEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_showEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_showEvent(self: ptr cQAbstractItemView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAbstractItemView_showEvent ".} =
-  type Cb = proc(super: QAbstractItemViewshowEventBase, event: gen_qevent.QShowEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QShowEvent): auto =
-    callVirtualBase_showEvent(QAbstractItemView(h: self), event)
+  var nimfunc = cast[ptr QAbstractItemViewshowEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QShowEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hideEvent(self: QAbstractItemView, event: gen_qevent.QHideEvent): void =
-
+  nimfunc[](slotval1)
+proc QAbstractItemViewhideEvent*(self: gen_qabstractitemview_types.QAbstractItemView, event: gen_qevent.QHideEvent): void =
 
   fQAbstractItemView_virtualbase_hideEvent(self.h, event.h)
 
-type QAbstractItemViewhideEventBase* = proc(event: gen_qevent.QHideEvent): void
-proc onhideEvent*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewhideEventBase, event: gen_qevent.QHideEvent): void) =
+type QAbstractItemViewhideEventProc* = proc(event: gen_qevent.QHideEvent): void
+proc onhideEvent*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewhideEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewhideEventBase, event: gen_qevent.QHideEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewhideEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_hideEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_hideEvent(self: ptr cQAbstractItemView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAbstractItemView_hideEvent ".} =
-  type Cb = proc(super: QAbstractItemViewhideEventBase, event: gen_qevent.QHideEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QHideEvent): auto =
-    callVirtualBase_hideEvent(QAbstractItemView(h: self), event)
+  var nimfunc = cast[ptr QAbstractItemViewhideEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QHideEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_nativeEvent(self: QAbstractItemView, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
+  nimfunc[](slotval1)
+proc QAbstractItemViewnativeEvent*(self: gen_qabstractitemview_types.QAbstractItemView, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
 
   fQAbstractItemView_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
-type QAbstractItemViewnativeEventBase* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-proc onnativeEvent*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool) =
+type QAbstractItemViewnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
+proc onnativeEvent*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewnativeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewnativeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_nativeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_nativeEvent(self: ptr cQAbstractItemView, slot: int, eventType: struct_miqt_string, message: pointer, resultVal: ptr clong): bool {.exportc: "miqt_exec_callback_QAbstractItemView_nativeEvent ".} =
-  type Cb = proc(super: QAbstractItemViewnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(eventType: seq[byte], message: pointer, resultVal: ptr clong): auto =
-    callVirtualBase_nativeEvent(QAbstractItemView(h: self), eventType, message, resultVal)
+  var nimfunc = cast[ptr QAbstractItemViewnativeEventProc](cast[pointer](slot))
   var veventType_bytearray = eventType
   var veventTypex_ret = @(toOpenArrayByte(veventType_bytearray.data, 0, int(veventType_bytearray.len)-1))
   c_free(veventType_bytearray.data)
@@ -2870,198 +2457,158 @@ proc miqt_exec_callback_QAbstractItemView_nativeEvent(self: ptr cQAbstractItemVi
   let slotval3 = resultVal
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_metric(self: QAbstractItemView, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint =
-
+proc QAbstractItemViewmetric*(self: gen_qabstractitemview_types.QAbstractItemView, param1: cint): cint =
 
   fQAbstractItemView_virtualbase_metric(self.h, cint(param1))
 
-type QAbstractItemViewmetricBase* = proc(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-proc onmetric*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint) =
+type QAbstractItemViewmetricProc* = proc(param1: cint): cint
+proc onmetric*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewmetricProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewmetricProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_metric(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_metric(self: ptr cQAbstractItemView, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QAbstractItemView_metric ".} =
-  type Cb = proc(super: QAbstractItemViewmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): auto =
-    callVirtualBase_metric(QAbstractItemView(h: self), param1)
-  let slotval1 = gen_qpaintdevice.QPaintDevicePaintDeviceMetric(param1)
+  var nimfunc = cast[ptr QAbstractItemViewmetricProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_initPainter(self: QAbstractItemView, painter: gen_qpainter.QPainter): void =
-
+proc QAbstractItemViewinitPainter*(self: gen_qabstractitemview_types.QAbstractItemView, painter: gen_qpainter.QPainter): void =
 
   fQAbstractItemView_virtualbase_initPainter(self.h, painter.h)
 
-type QAbstractItemViewinitPainterBase* = proc(painter: gen_qpainter.QPainter): void
-proc oninitPainter*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewinitPainterBase, painter: gen_qpainter.QPainter): void) =
+type QAbstractItemViewinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
+proc oninitPainter*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewinitPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewinitPainterBase, painter: gen_qpainter.QPainter): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewinitPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_initPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_initPainter(self: ptr cQAbstractItemView, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_QAbstractItemView_initPainter ".} =
-  type Cb = proc(super: QAbstractItemViewinitPainterBase, painter: gen_qpainter.QPainter): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter): auto =
-    callVirtualBase_initPainter(QAbstractItemView(h: self), painter)
+  var nimfunc = cast[ptr QAbstractItemViewinitPainterProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_redirected(self: QAbstractItemView, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
+  nimfunc[](slotval1)
+proc QAbstractItemViewredirected*(self: gen_qabstractitemview_types.QAbstractItemView, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
 
   gen_qpaintdevice.QPaintDevice(h: fQAbstractItemView_virtualbase_redirected(self.h, offset.h))
 
-type QAbstractItemViewredirectedBase* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-proc onredirected*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice) =
+type QAbstractItemViewredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
+proc onredirected*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewredirectedProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewredirectedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_redirected(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_redirected(self: ptr cQAbstractItemView, slot: int, offset: pointer): pointer {.exportc: "miqt_exec_callback_QAbstractItemView_redirected ".} =
-  type Cb = proc(super: QAbstractItemViewredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(offset: gen_qpoint.QPoint): auto =
-    callVirtualBase_redirected(QAbstractItemView(h: self), offset)
+  var nimfunc = cast[ptr QAbstractItemViewredirectedProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: offset)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_sharedPainter(self: QAbstractItemView, ): gen_qpainter.QPainter =
-
+proc QAbstractItemViewsharedPainter*(self: gen_qabstractitemview_types.QAbstractItemView, ): gen_qpainter.QPainter =
 
   gen_qpainter.QPainter(h: fQAbstractItemView_virtualbase_sharedPainter(self.h))
 
-type QAbstractItemViewsharedPainterBase* = proc(): gen_qpainter.QPainter
-proc onsharedPainter*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewsharedPainterBase): gen_qpainter.QPainter) =
+type QAbstractItemViewsharedPainterProc* = proc(): gen_qpainter.QPainter
+proc onsharedPainter*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewsharedPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewsharedPainterBase): gen_qpainter.QPainter
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewsharedPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_sharedPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_sharedPainter(self: ptr cQAbstractItemView, slot: int): pointer {.exportc: "miqt_exec_callback_QAbstractItemView_sharedPainter ".} =
-  type Cb = proc(super: QAbstractItemViewsharedPainterBase): gen_qpainter.QPainter
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sharedPainter(QAbstractItemView(h: self), )
+  var nimfunc = cast[ptr QAbstractItemViewsharedPainterProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_childEvent(self: QAbstractItemView, event: gen_qcoreevent.QChildEvent): void =
-
+proc QAbstractItemViewchildEvent*(self: gen_qabstractitemview_types.QAbstractItemView, event: gen_qcoreevent.QChildEvent): void =
 
   fQAbstractItemView_virtualbase_childEvent(self.h, event.h)
 
-type QAbstractItemViewchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QAbstractItemViewchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_childEvent(self: ptr cQAbstractItemView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAbstractItemView_childEvent ".} =
-  type Cb = proc(super: QAbstractItemViewchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QAbstractItemView(h: self), event)
+  var nimfunc = cast[ptr QAbstractItemViewchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QAbstractItemView, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QAbstractItemViewcustomEvent*(self: gen_qabstractitemview_types.QAbstractItemView, event: gen_qcoreevent.QEvent): void =
 
   fQAbstractItemView_virtualbase_customEvent(self.h, event.h)
 
-type QAbstractItemViewcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QAbstractItemViewcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_customEvent(self: ptr cQAbstractItemView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAbstractItemView_customEvent ".} =
-  type Cb = proc(super: QAbstractItemViewcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QAbstractItemView(h: self), event)
+  var nimfunc = cast[ptr QAbstractItemViewcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QAbstractItemView, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QAbstractItemViewconnectNotify*(self: gen_qabstractitemview_types.QAbstractItemView, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQAbstractItemView_virtualbase_connectNotify(self.h, signal.h)
 
-type QAbstractItemViewconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QAbstractItemViewconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_connectNotify(self: ptr cQAbstractItemView, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QAbstractItemView_connectNotify ".} =
-  type Cb = proc(super: QAbstractItemViewconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QAbstractItemView(h: self), signal)
+  var nimfunc = cast[ptr QAbstractItemViewconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QAbstractItemView, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QAbstractItemViewdisconnectNotify*(self: gen_qabstractitemview_types.QAbstractItemView, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQAbstractItemView_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QAbstractItemViewdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QAbstractItemViewdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qabstractitemview_types.QAbstractItemView, slot: QAbstractItemViewdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractItemViewdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QAbstractItemViewdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractItemView_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractItemView_disconnectNotify(self: ptr cQAbstractItemView, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QAbstractItemView_disconnectNotify ".} =
-  type Cb = proc(super: QAbstractItemViewdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QAbstractItemView(h: self), signal)
+  var nimfunc = cast[ptr QAbstractItemViewdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QAbstractItemView): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qabstractitemview_types.QAbstractItemView): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQAbstractItemView_staticMetaObject())
-proc delete*(self: QAbstractItemView) =
+proc delete*(self: gen_qabstractitemview_types.QAbstractItemView) =
   fcQAbstractItemView_delete(self.h)

@@ -227,7 +227,7 @@ func (this *QAudioSink) callVirtualBase_MetaObject() *qt6.QMetaObject {
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QAudioSink_virtualbase_metaObject(unsafe.Pointer(this.h))))
 
 }
-func (this *QAudioSink) OnmetaObject(slot func(super func() *qt6.QMetaObject) *qt6.QMetaObject) {
+func (this *QAudioSink) OnMetaObject(slot func(super func() *qt6.QMetaObject) *qt6.QMetaObject) {
 	ok := C.QAudioSink_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -254,7 +254,7 @@ func (this *QAudioSink) callVirtualBase_Metacast(param1 string) unsafe.Pointer {
 	return (unsafe.Pointer)(C.QAudioSink_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QAudioSink) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QAudioSink) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QAudioSink_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

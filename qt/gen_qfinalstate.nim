@@ -93,359 +93,299 @@ proc fcQFinalState_staticMetaObject(): pointer {.importc: "QFinalState_staticMet
 proc fcQFinalState_delete(self: pointer) {.importc: "QFinalState_delete".}
 
 
-func init*(T: type QFinalState, h: ptr cQFinalState): QFinalState =
+func init*(T: type gen_qfinalstate_types.QFinalState, h: ptr cQFinalState): gen_qfinalstate_types.QFinalState =
   T(h: h)
-proc create*(T: type QFinalState, ): QFinalState =
+proc create*(T: type gen_qfinalstate_types.QFinalState, ): gen_qfinalstate_types.QFinalState =
 
-  QFinalState.init(fcQFinalState_new())
-proc create*(T: type QFinalState, parent: gen_qstate.QState): QFinalState =
+  gen_qfinalstate_types.QFinalState.init(fcQFinalState_new())
+proc create*(T: type gen_qfinalstate_types.QFinalState, parent: gen_qstate.QState): gen_qfinalstate_types.QFinalState =
 
-  QFinalState.init(fcQFinalState_new2(parent.h))
-proc metaObject*(self: QFinalState, ): gen_qobjectdefs.QMetaObject =
+  gen_qfinalstate_types.QFinalState.init(fcQFinalState_new2(parent.h))
+proc metaObject*(self: gen_qfinalstate_types.QFinalState, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQFinalState_metaObject(self.h))
 
-proc metacast*(self: QFinalState, param1: cstring): pointer =
+proc metacast*(self: gen_qfinalstate_types.QFinalState, param1: cstring): pointer =
 
   fcQFinalState_metacast(self.h, param1)
 
-proc metacall*(self: QFinalState, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qfinalstate_types.QFinalState, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQFinalState_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QFinalState, s: cstring): string =
+proc tr*(_: type gen_qfinalstate_types.QFinalState, s: cstring): string =
 
   let v_ms = fcQFinalState_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QFinalState, s: cstring): string =
+proc trUtf8*(_: type gen_qfinalstate_types.QFinalState, s: cstring): string =
 
   let v_ms = fcQFinalState_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr2*(_: type QFinalState, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qfinalstate_types.QFinalState, s: cstring, c: cstring): string =
 
   let v_ms = fcQFinalState_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QFinalState, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qfinalstate_types.QFinalState, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQFinalState_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QFinalState, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qfinalstate_types.QFinalState, s: cstring, c: cstring): string =
 
   let v_ms = fcQFinalState_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QFinalState, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qfinalstate_types.QFinalState, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQFinalState_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QFinalState, ): gen_qobjectdefs.QMetaObject =
-
+proc QFinalStatemetaObject*(self: gen_qfinalstate_types.QFinalState, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQFinalState_virtualbase_metaObject(self.h))
 
-type QFinalStatemetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QFinalState, slot: proc(super: QFinalStatemetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QFinalStatemetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qfinalstate_types.QFinalState, slot: QFinalStatemetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QFinalStatemetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QFinalStatemetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFinalState_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFinalState_metaObject(self: ptr cQFinalState, slot: int): pointer {.exportc: "miqt_exec_callback_QFinalState_metaObject ".} =
-  type Cb = proc(super: QFinalStatemetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QFinalState(h: self), )
+  var nimfunc = cast[ptr QFinalStatemetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QFinalState, param1: cstring): pointer =
-
+proc QFinalStatemetacast*(self: gen_qfinalstate_types.QFinalState, param1: cstring): pointer =
 
   fQFinalState_virtualbase_metacast(self.h, param1)
 
-type QFinalStatemetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QFinalState, slot: proc(super: QFinalStatemetacastBase, param1: cstring): pointer) =
+type QFinalStatemetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qfinalstate_types.QFinalState, slot: QFinalStatemetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QFinalStatemetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QFinalStatemetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFinalState_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFinalState_metacast(self: ptr cQFinalState, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QFinalState_metacast ".} =
-  type Cb = proc(super: QFinalStatemetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QFinalState(h: self), param1)
+  var nimfunc = cast[ptr QFinalStatemetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QFinalState, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QFinalStatemetacall*(self: gen_qfinalstate_types.QFinalState, param1: cint, param2: cint, param3: pointer): cint =
 
   fQFinalState_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QFinalStatemetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QFinalState, slot: proc(super: QFinalStatemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QFinalStatemetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qfinalstate_types.QFinalState, slot: QFinalStatemetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QFinalStatemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QFinalStatemetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFinalState_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFinalState_metacall(self: ptr cQFinalState, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QFinalState_metacall ".} =
-  type Cb = proc(super: QFinalStatemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QFinalState(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QFinalStatemetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_onEntry(self: QFinalState, event: gen_qcoreevent.QEvent): void =
-
+proc QFinalStateonEntry*(self: gen_qfinalstate_types.QFinalState, event: gen_qcoreevent.QEvent): void =
 
   fQFinalState_virtualbase_onEntry(self.h, event.h)
 
-type QFinalStateonEntryBase* = proc(event: gen_qcoreevent.QEvent): void
-proc ononEntry*(self: QFinalState, slot: proc(super: QFinalStateonEntryBase, event: gen_qcoreevent.QEvent): void) =
+type QFinalStateonEntryProc* = proc(event: gen_qcoreevent.QEvent): void
+proc ononEntry*(self: gen_qfinalstate_types.QFinalState, slot: QFinalStateonEntryProc) =
   # TODO check subclass
-  type Cb = proc(super: QFinalStateonEntryBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QFinalStateonEntryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFinalState_override_virtual_onEntry(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFinalState_onEntry(self: ptr cQFinalState, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFinalState_onEntry ".} =
-  type Cb = proc(super: QFinalStateonEntryBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_onEntry(QFinalState(h: self), event)
+  var nimfunc = cast[ptr QFinalStateonEntryProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_onExit(self: QFinalState, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QFinalStateonExit*(self: gen_qfinalstate_types.QFinalState, event: gen_qcoreevent.QEvent): void =
 
   fQFinalState_virtualbase_onExit(self.h, event.h)
 
-type QFinalStateonExitBase* = proc(event: gen_qcoreevent.QEvent): void
-proc ononExit*(self: QFinalState, slot: proc(super: QFinalStateonExitBase, event: gen_qcoreevent.QEvent): void) =
+type QFinalStateonExitProc* = proc(event: gen_qcoreevent.QEvent): void
+proc ononExit*(self: gen_qfinalstate_types.QFinalState, slot: QFinalStateonExitProc) =
   # TODO check subclass
-  type Cb = proc(super: QFinalStateonExitBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QFinalStateonExitProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFinalState_override_virtual_onExit(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFinalState_onExit(self: ptr cQFinalState, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFinalState_onExit ".} =
-  type Cb = proc(super: QFinalStateonExitBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_onExit(QFinalState(h: self), event)
+  var nimfunc = cast[ptr QFinalStateonExitProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_event(self: QFinalState, e: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[](slotval1)
+proc QFinalStateevent*(self: gen_qfinalstate_types.QFinalState, e: gen_qcoreevent.QEvent): bool =
 
   fQFinalState_virtualbase_event(self.h, e.h)
 
-type QFinalStateeventBase* = proc(e: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QFinalState, slot: proc(super: QFinalStateeventBase, e: gen_qcoreevent.QEvent): bool) =
+type QFinalStateeventProc* = proc(e: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qfinalstate_types.QFinalState, slot: QFinalStateeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFinalStateeventBase, e: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QFinalStateeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFinalState_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFinalState_event(self: ptr cQFinalState, slot: int, e: pointer): bool {.exportc: "miqt_exec_callback_QFinalState_event ".} =
-  type Cb = proc(super: QFinalStateeventBase, e: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QFinalState(h: self), e)
+  var nimfunc = cast[ptr QFinalStateeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: e)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QFinalState, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QFinalStateeventFilter*(self: gen_qfinalstate_types.QFinalState, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQFinalState_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QFinalStateeventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QFinalState, slot: proc(super: QFinalStateeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QFinalStateeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qfinalstate_types.QFinalState, slot: QFinalStateeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QFinalStateeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QFinalStateeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFinalState_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFinalState_eventFilter(self: ptr cQFinalState, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QFinalState_eventFilter ".} =
-  type Cb = proc(super: QFinalStateeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QFinalState(h: self), watched, event)
+  var nimfunc = cast[ptr QFinalStateeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QFinalState, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QFinalStatetimerEvent*(self: gen_qfinalstate_types.QFinalState, event: gen_qcoreevent.QTimerEvent): void =
 
   fQFinalState_virtualbase_timerEvent(self.h, event.h)
 
-type QFinalStatetimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QFinalState, slot: proc(super: QFinalStatetimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QFinalStatetimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qfinalstate_types.QFinalState, slot: QFinalStatetimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFinalStatetimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QFinalStatetimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFinalState_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFinalState_timerEvent(self: ptr cQFinalState, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFinalState_timerEvent ".} =
-  type Cb = proc(super: QFinalStatetimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QFinalState(h: self), event)
+  var nimfunc = cast[ptr QFinalStatetimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QFinalState, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QFinalStatechildEvent*(self: gen_qfinalstate_types.QFinalState, event: gen_qcoreevent.QChildEvent): void =
 
   fQFinalState_virtualbase_childEvent(self.h, event.h)
 
-type QFinalStatechildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QFinalState, slot: proc(super: QFinalStatechildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QFinalStatechildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qfinalstate_types.QFinalState, slot: QFinalStatechildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFinalStatechildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QFinalStatechildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFinalState_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFinalState_childEvent(self: ptr cQFinalState, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFinalState_childEvent ".} =
-  type Cb = proc(super: QFinalStatechildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QFinalState(h: self), event)
+  var nimfunc = cast[ptr QFinalStatechildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QFinalState, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QFinalStatecustomEvent*(self: gen_qfinalstate_types.QFinalState, event: gen_qcoreevent.QEvent): void =
 
   fQFinalState_virtualbase_customEvent(self.h, event.h)
 
-type QFinalStatecustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QFinalState, slot: proc(super: QFinalStatecustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QFinalStatecustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qfinalstate_types.QFinalState, slot: QFinalStatecustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFinalStatecustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QFinalStatecustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFinalState_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFinalState_customEvent(self: ptr cQFinalState, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFinalState_customEvent ".} =
-  type Cb = proc(super: QFinalStatecustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QFinalState(h: self), event)
+  var nimfunc = cast[ptr QFinalStatecustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QFinalState, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QFinalStateconnectNotify*(self: gen_qfinalstate_types.QFinalState, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQFinalState_virtualbase_connectNotify(self.h, signal.h)
 
-type QFinalStateconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QFinalState, slot: proc(super: QFinalStateconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QFinalStateconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qfinalstate_types.QFinalState, slot: QFinalStateconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QFinalStateconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QFinalStateconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFinalState_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFinalState_connectNotify(self: ptr cQFinalState, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QFinalState_connectNotify ".} =
-  type Cb = proc(super: QFinalStateconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QFinalState(h: self), signal)
+  var nimfunc = cast[ptr QFinalStateconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QFinalState, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QFinalStatedisconnectNotify*(self: gen_qfinalstate_types.QFinalState, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQFinalState_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QFinalStatedisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QFinalState, slot: proc(super: QFinalStatedisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QFinalStatedisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qfinalstate_types.QFinalState, slot: QFinalStatedisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QFinalStatedisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QFinalStatedisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFinalState_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFinalState_disconnectNotify(self: ptr cQFinalState, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QFinalState_disconnectNotify ".} =
-  type Cb = proc(super: QFinalStatedisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QFinalState(h: self), signal)
+  var nimfunc = cast[ptr QFinalStatedisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QFinalState): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qfinalstate_types.QFinalState): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQFinalState_staticMetaObject())
-proc delete*(self: QFinalState) =
+proc delete*(self: gen_qfinalstate_types.QFinalState) =
   fcQFinalState_delete(self.h)

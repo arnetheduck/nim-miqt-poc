@@ -34,65 +34,59 @@ const cflags = gorge("pkg-config -cflags Qt6Core")
 {.compile("gen_qcborcommon.cpp", cflags).}
 
 
-type QCborSimpleType* = uint8
-const
-  QCborSimpleTypeFalse* = 20
-  QCborSimpleTypeTrue* = 21
-  QCborSimpleTypeNull* = 22
-  QCborSimpleTypeUndefined* = 23
+type QCborSimpleTypeEnum* = distinct uint8
+template False*(_: type QCborSimpleTypeEnum): untyped = 20
+template True*(_: type QCborSimpleTypeEnum): untyped = 21
+template Null*(_: type QCborSimpleTypeEnum): untyped = 22
+template Undefined*(_: type QCborSimpleTypeEnum): untyped = 23
 
 
+type QCborTagEnum* = distinct culonglong
 
-type QCborTag* = culonglong
-
-type QCborKnownTags* = cint
-const
-  QCborKnownTagsDateTimeString* = 0
-  QCborKnownTagsUnixTime_t* = 1
-  QCborKnownTagsPositiveBignum* = 2
-  QCborKnownTagsNegativeBignum* = 3
-  QCborKnownTagsDecimal* = 4
-  QCborKnownTagsBigfloat* = 5
-  QCborKnownTagsCOSE_Encrypt0* = 16
-  QCborKnownTagsCOSE_Mac0* = 17
-  QCborKnownTagsCOSE_Sign1* = 18
-  QCborKnownTagsExpectedBase64url* = 21
-  QCborKnownTagsExpectedBase64* = 22
-  QCborKnownTagsExpectedBase16* = 23
-  QCborKnownTagsEncodedCbor* = 24
-  QCborKnownTagsUrl* = 32
-  QCborKnownTagsBase64url* = 33
-  QCborKnownTagsBase64* = 34
-  QCborKnownTagsRegularExpression* = 35
-  QCborKnownTagsMimeMessage* = 36
-  QCborKnownTagsUuid* = 37
-  QCborKnownTagsCOSE_Encrypt* = 96
-  QCborKnownTagsCOSE_Mac* = 97
-  QCborKnownTagsCOSE_Sign* = 98
-  QCborKnownTagsSignature* = 55799
+type QCborKnownTagsEnum* = distinct cint
+template DateTimeString*(_: type QCborKnownTagsEnum): untyped = 0
+template UnixTime_t*(_: type QCborKnownTagsEnum): untyped = 1
+template PositiveBignum*(_: type QCborKnownTagsEnum): untyped = 2
+template NegativeBignum*(_: type QCborKnownTagsEnum): untyped = 3
+template Decimal*(_: type QCborKnownTagsEnum): untyped = 4
+template Bigfloat*(_: type QCborKnownTagsEnum): untyped = 5
+template COSE_Encrypt0*(_: type QCborKnownTagsEnum): untyped = 16
+template COSE_Mac0*(_: type QCborKnownTagsEnum): untyped = 17
+template COSE_Sign1*(_: type QCborKnownTagsEnum): untyped = 18
+template ExpectedBase64url*(_: type QCborKnownTagsEnum): untyped = 21
+template ExpectedBase64*(_: type QCborKnownTagsEnum): untyped = 22
+template ExpectedBase16*(_: type QCborKnownTagsEnum): untyped = 23
+template EncodedCbor*(_: type QCborKnownTagsEnum): untyped = 24
+template Url*(_: type QCborKnownTagsEnum): untyped = 32
+template Base64url*(_: type QCborKnownTagsEnum): untyped = 33
+template Base64*(_: type QCborKnownTagsEnum): untyped = 34
+template RegularExpression*(_: type QCborKnownTagsEnum): untyped = 35
+template MimeMessage*(_: type QCborKnownTagsEnum): untyped = 36
+template Uuid*(_: type QCborKnownTagsEnum): untyped = 37
+template COSE_Encrypt*(_: type QCborKnownTagsEnum): untyped = 96
+template COSE_Mac*(_: type QCborKnownTagsEnum): untyped = 97
+template COSE_Sign*(_: type QCborKnownTagsEnum): untyped = 98
+template Signature*(_: type QCborKnownTagsEnum): untyped = 55799
 
 
+type QCborNegativeIntegerEnum* = distinct culonglong
 
-type QCborNegativeInteger* = culonglong
-
-type QCborErrorCode* = cint
-const
-  QCborErrorUnknownError* = 1
-  QCborErrorAdvancePastEnd* = 3
-  QCborErrorInputOutputError* = 4
-  QCborErrorGarbageAtEnd* = 256
-  QCborErrorEndOfFile* = 257
-  QCborErrorUnexpectedBreak* = 258
-  QCborErrorUnknownType* = 259
-  QCborErrorIllegalType* = 260
-  QCborErrorIllegalNumber* = 261
-  QCborErrorIllegalSimpleType* = 262
-  QCborErrorInvalidUtf8String* = 516
-  QCborErrorDataTooLarge* = 1024
-  QCborErrorNestingTooDeep* = 1025
-  QCborErrorUnsupportedType* = 1026
-  QCborErrorNoError* = 0
-
+type QCborErrorCodeEnum* = distinct cint
+template UnknownError*(_: type QCborErrorCodeEnum): untyped = 1
+template AdvancePastEnd*(_: type QCborErrorCodeEnum): untyped = 3
+template InputOutputError*(_: type QCborErrorCodeEnum): untyped = 4
+template GarbageAtEnd*(_: type QCborErrorCodeEnum): untyped = 256
+template EndOfFile*(_: type QCborErrorCodeEnum): untyped = 257
+template UnexpectedBreak*(_: type QCborErrorCodeEnum): untyped = 258
+template UnknownType*(_: type QCborErrorCodeEnum): untyped = 259
+template IllegalType*(_: type QCborErrorCodeEnum): untyped = 260
+template IllegalNumber*(_: type QCborErrorCodeEnum): untyped = 261
+template IllegalSimpleType*(_: type QCborErrorCodeEnum): untyped = 262
+template InvalidUtf8String*(_: type QCborErrorCodeEnum): untyped = 516
+template DataTooLarge*(_: type QCborErrorCodeEnum): untyped = 1024
+template NestingTooDeep*(_: type QCborErrorCodeEnum): untyped = 1025
+template UnsupportedType*(_: type QCborErrorCodeEnum): untyped = 1026
+template NoError*(_: type QCborErrorCodeEnum): untyped = 0
 
 
 import gen_qcborcommon_types
@@ -111,20 +105,20 @@ proc fcQCborError_staticMetaObject(): pointer {.importc: "QCborError_staticMetaO
 proc fcQCborError_delete(self: pointer) {.importc: "QCborError_delete".}
 
 
-func init*(T: type QCborError, h: ptr cQCborError): QCborError =
+func init*(T: type gen_qcborcommon_types.QCborError, h: ptr cQCborError): gen_qcborcommon_types.QCborError =
   T(h: h)
-proc ToQCborError__Code*(self: QCborError, ): QCborErrorCode =
+proc ToQCborError__Code*(self: gen_qcborcommon_types.QCborError, ): cint =
 
-  QCborErrorCode(fcQCborError_ToQCborError__Code(self.h))
+  cint(fcQCborError_ToQCborError__Code(self.h))
 
-proc toString*(self: QCborError, ): string =
+proc toString*(self: gen_qcborcommon_types.QCborError, ): string =
 
   let v_ms = fcQCborError_toString(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc staticMetaObject*(_: type QCborError): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qcborcommon_types.QCborError): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQCborError_staticMetaObject())
-proc delete*(self: QCborError) =
+proc delete*(self: gen_qcborcommon_types.QCborError) =
   fcQCborError_delete(self.h)

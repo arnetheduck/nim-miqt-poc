@@ -34,15 +34,13 @@ const cflags = gorge("pkg-config -cflags Qt6Widgets")
 {.compile("gen_qmainwindow.cpp", cflags).}
 
 
-type QMainWindowDockOption* = cint
-const
-  QMainWindowAnimatedDocks* = 1
-  QMainWindowAllowNestedDocks* = 2
-  QMainWindowAllowTabbedDocks* = 4
-  QMainWindowForceTabbedDocks* = 8
-  QMainWindowVerticalTabs* = 16
-  QMainWindowGroupedDragging* = 32
-
+type QMainWindowDockOptionEnum* = distinct cint
+template AnimatedDocks*(_: type QMainWindowDockOptionEnum): untyped = 1
+template AllowNestedDocks*(_: type QMainWindowDockOptionEnum): untyped = 2
+template AllowTabbedDocks*(_: type QMainWindowDockOptionEnum): untyped = 4
+template ForceTabbedDocks*(_: type QMainWindowDockOptionEnum): untyped = 8
+template VerticalTabs*(_: type QMainWindowDockOptionEnum): untyped = 16
+template GroupedDragging*(_: type QMainWindowDockOptionEnum): untyped = 32
 
 
 import gen_qmainwindow_types
@@ -55,7 +53,6 @@ import
   gen_qmenu,
   gen_qmenubar,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -64,7 +61,6 @@ import
   gen_qpoint,
   gen_qsize,
   gen_qstatusbar,
-  gen_qtabwidget,
   gen_qtoolbar,
   gen_qvariant,
   gen_qwidget
@@ -75,7 +71,6 @@ export
   gen_qmenu,
   gen_qmenubar,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -84,7 +79,6 @@ export
   gen_qpoint,
   gen_qsize,
   gen_qstatusbar,
-  gen_qtabwidget,
   gen_qtoolbar,
   gen_qvariant,
   gen_qwidget
@@ -267,201 +261,201 @@ proc fcQMainWindow_staticMetaObject(): pointer {.importc: "QMainWindow_staticMet
 proc fcQMainWindow_delete(self: pointer) {.importc: "QMainWindow_delete".}
 
 
-func init*(T: type QMainWindow, h: ptr cQMainWindow): QMainWindow =
+func init*(T: type gen_qmainwindow_types.QMainWindow, h: ptr cQMainWindow): gen_qmainwindow_types.QMainWindow =
   T(h: h)
-proc create*(T: type QMainWindow, parent: gen_qwidget.QWidget): QMainWindow =
+proc create*(T: type gen_qmainwindow_types.QMainWindow, parent: gen_qwidget.QWidget): gen_qmainwindow_types.QMainWindow =
 
-  QMainWindow.init(fcQMainWindow_new(parent.h))
-proc create*(T: type QMainWindow, ): QMainWindow =
+  gen_qmainwindow_types.QMainWindow.init(fcQMainWindow_new(parent.h))
+proc create*(T: type gen_qmainwindow_types.QMainWindow, ): gen_qmainwindow_types.QMainWindow =
 
-  QMainWindow.init(fcQMainWindow_new2())
-proc create*(T: type QMainWindow, parent: gen_qwidget.QWidget, flags: gen_qnamespace.WindowType): QMainWindow =
+  gen_qmainwindow_types.QMainWindow.init(fcQMainWindow_new2())
+proc create*(T: type gen_qmainwindow_types.QMainWindow, parent: gen_qwidget.QWidget, flags: cint): gen_qmainwindow_types.QMainWindow =
 
-  QMainWindow.init(fcQMainWindow_new3(parent.h, cint(flags)))
-proc metaObject*(self: QMainWindow, ): gen_qobjectdefs.QMetaObject =
+  gen_qmainwindow_types.QMainWindow.init(fcQMainWindow_new3(parent.h, cint(flags)))
+proc metaObject*(self: gen_qmainwindow_types.QMainWindow, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQMainWindow_metaObject(self.h))
 
-proc metacast*(self: QMainWindow, param1: cstring): pointer =
+proc metacast*(self: gen_qmainwindow_types.QMainWindow, param1: cstring): pointer =
 
   fcQMainWindow_metacast(self.h, param1)
 
-proc metacall*(self: QMainWindow, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qmainwindow_types.QMainWindow, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQMainWindow_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QMainWindow, s: cstring): string =
+proc tr*(_: type gen_qmainwindow_types.QMainWindow, s: cstring): string =
 
   let v_ms = fcQMainWindow_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc iconSize*(self: QMainWindow, ): gen_qsize.QSize =
+proc iconSize*(self: gen_qmainwindow_types.QMainWindow, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQMainWindow_iconSize(self.h))
 
-proc setIconSize*(self: QMainWindow, iconSize: gen_qsize.QSize): void =
+proc setIconSize*(self: gen_qmainwindow_types.QMainWindow, iconSize: gen_qsize.QSize): void =
 
   fcQMainWindow_setIconSize(self.h, iconSize.h)
 
-proc toolButtonStyle*(self: QMainWindow, ): gen_qnamespace.ToolButtonStyle =
+proc toolButtonStyle*(self: gen_qmainwindow_types.QMainWindow, ): cint =
 
-  gen_qnamespace.ToolButtonStyle(fcQMainWindow_toolButtonStyle(self.h))
+  cint(fcQMainWindow_toolButtonStyle(self.h))
 
-proc setToolButtonStyle*(self: QMainWindow, toolButtonStyle: gen_qnamespace.ToolButtonStyle): void =
+proc setToolButtonStyle*(self: gen_qmainwindow_types.QMainWindow, toolButtonStyle: cint): void =
 
   fcQMainWindow_setToolButtonStyle(self.h, cint(toolButtonStyle))
 
-proc isAnimated*(self: QMainWindow, ): bool =
+proc isAnimated*(self: gen_qmainwindow_types.QMainWindow, ): bool =
 
   fcQMainWindow_isAnimated(self.h)
 
-proc isDockNestingEnabled*(self: QMainWindow, ): bool =
+proc isDockNestingEnabled*(self: gen_qmainwindow_types.QMainWindow, ): bool =
 
   fcQMainWindow_isDockNestingEnabled(self.h)
 
-proc documentMode*(self: QMainWindow, ): bool =
+proc documentMode*(self: gen_qmainwindow_types.QMainWindow, ): bool =
 
   fcQMainWindow_documentMode(self.h)
 
-proc setDocumentMode*(self: QMainWindow, enabled: bool): void =
+proc setDocumentMode*(self: gen_qmainwindow_types.QMainWindow, enabled: bool): void =
 
   fcQMainWindow_setDocumentMode(self.h, enabled)
 
-proc tabShape*(self: QMainWindow, ): gen_qtabwidget.QTabWidgetTabShape =
+proc tabShape*(self: gen_qmainwindow_types.QMainWindow, ): cint =
 
-  gen_qtabwidget.QTabWidgetTabShape(fcQMainWindow_tabShape(self.h))
+  cint(fcQMainWindow_tabShape(self.h))
 
-proc setTabShape*(self: QMainWindow, tabShape: gen_qtabwidget.QTabWidgetTabShape): void =
+proc setTabShape*(self: gen_qmainwindow_types.QMainWindow, tabShape: cint): void =
 
   fcQMainWindow_setTabShape(self.h, cint(tabShape))
 
-proc tabPosition*(self: QMainWindow, area: gen_qnamespace.DockWidgetArea): gen_qtabwidget.QTabWidgetTabPosition =
+proc tabPosition*(self: gen_qmainwindow_types.QMainWindow, area: cint): cint =
 
-  gen_qtabwidget.QTabWidgetTabPosition(fcQMainWindow_tabPosition(self.h, cint(area)))
+  cint(fcQMainWindow_tabPosition(self.h, cint(area)))
 
-proc setTabPosition*(self: QMainWindow, areas: gen_qnamespace.DockWidgetArea, tabPosition: gen_qtabwidget.QTabWidgetTabPosition): void =
+proc setTabPosition*(self: gen_qmainwindow_types.QMainWindow, areas: cint, tabPosition: cint): void =
 
   fcQMainWindow_setTabPosition(self.h, cint(areas), cint(tabPosition))
 
-proc setDockOptions*(self: QMainWindow, options: QMainWindowDockOption): void =
+proc setDockOptions*(self: gen_qmainwindow_types.QMainWindow, options: cint): void =
 
   fcQMainWindow_setDockOptions(self.h, cint(options))
 
-proc dockOptions*(self: QMainWindow, ): QMainWindowDockOption =
+proc dockOptions*(self: gen_qmainwindow_types.QMainWindow, ): cint =
 
-  QMainWindowDockOption(fcQMainWindow_dockOptions(self.h))
+  cint(fcQMainWindow_dockOptions(self.h))
 
-proc isSeparator*(self: QMainWindow, pos: gen_qpoint.QPoint): bool =
+proc isSeparator*(self: gen_qmainwindow_types.QMainWindow, pos: gen_qpoint.QPoint): bool =
 
   fcQMainWindow_isSeparator(self.h, pos.h)
 
-proc menuBar*(self: QMainWindow, ): gen_qmenubar.QMenuBar =
+proc menuBar*(self: gen_qmainwindow_types.QMainWindow, ): gen_qmenubar.QMenuBar =
 
   gen_qmenubar.QMenuBar(h: fcQMainWindow_menuBar(self.h))
 
-proc setMenuBar*(self: QMainWindow, menubar: gen_qmenubar.QMenuBar): void =
+proc setMenuBar*(self: gen_qmainwindow_types.QMainWindow, menubar: gen_qmenubar.QMenuBar): void =
 
   fcQMainWindow_setMenuBar(self.h, menubar.h)
 
-proc menuWidget*(self: QMainWindow, ): gen_qwidget.QWidget =
+proc menuWidget*(self: gen_qmainwindow_types.QMainWindow, ): gen_qwidget.QWidget =
 
   gen_qwidget.QWidget(h: fcQMainWindow_menuWidget(self.h))
 
-proc setMenuWidget*(self: QMainWindow, menubar: gen_qwidget.QWidget): void =
+proc setMenuWidget*(self: gen_qmainwindow_types.QMainWindow, menubar: gen_qwidget.QWidget): void =
 
   fcQMainWindow_setMenuWidget(self.h, menubar.h)
 
-proc statusBar*(self: QMainWindow, ): gen_qstatusbar.QStatusBar =
+proc statusBar*(self: gen_qmainwindow_types.QMainWindow, ): gen_qstatusbar.QStatusBar =
 
   gen_qstatusbar.QStatusBar(h: fcQMainWindow_statusBar(self.h))
 
-proc setStatusBar*(self: QMainWindow, statusbar: gen_qstatusbar.QStatusBar): void =
+proc setStatusBar*(self: gen_qmainwindow_types.QMainWindow, statusbar: gen_qstatusbar.QStatusBar): void =
 
   fcQMainWindow_setStatusBar(self.h, statusbar.h)
 
-proc centralWidget*(self: QMainWindow, ): gen_qwidget.QWidget =
+proc centralWidget*(self: gen_qmainwindow_types.QMainWindow, ): gen_qwidget.QWidget =
 
   gen_qwidget.QWidget(h: fcQMainWindow_centralWidget(self.h))
 
-proc setCentralWidget*(self: QMainWindow, widget: gen_qwidget.QWidget): void =
+proc setCentralWidget*(self: gen_qmainwindow_types.QMainWindow, widget: gen_qwidget.QWidget): void =
 
   fcQMainWindow_setCentralWidget(self.h, widget.h)
 
-proc takeCentralWidget*(self: QMainWindow, ): gen_qwidget.QWidget =
+proc takeCentralWidget*(self: gen_qmainwindow_types.QMainWindow, ): gen_qwidget.QWidget =
 
   gen_qwidget.QWidget(h: fcQMainWindow_takeCentralWidget(self.h))
 
-proc setCorner*(self: QMainWindow, corner: gen_qnamespace.Corner, area: gen_qnamespace.DockWidgetArea): void =
+proc setCorner*(self: gen_qmainwindow_types.QMainWindow, corner: cint, area: cint): void =
 
   fcQMainWindow_setCorner(self.h, cint(corner), cint(area))
 
-proc corner*(self: QMainWindow, corner: gen_qnamespace.Corner): gen_qnamespace.DockWidgetArea =
+proc corner*(self: gen_qmainwindow_types.QMainWindow, corner: cint): cint =
 
-  gen_qnamespace.DockWidgetArea(fcQMainWindow_corner(self.h, cint(corner)))
+  cint(fcQMainWindow_corner(self.h, cint(corner)))
 
-proc addToolBarBreak*(self: QMainWindow, ): void =
+proc addToolBarBreak*(self: gen_qmainwindow_types.QMainWindow, ): void =
 
   fcQMainWindow_addToolBarBreak(self.h)
 
-proc insertToolBarBreak*(self: QMainWindow, before: gen_qtoolbar.QToolBar): void =
+proc insertToolBarBreak*(self: gen_qmainwindow_types.QMainWindow, before: gen_qtoolbar.QToolBar): void =
 
   fcQMainWindow_insertToolBarBreak(self.h, before.h)
 
-proc addToolBar*(self: QMainWindow, area: gen_qnamespace.ToolBarArea, toolbar: gen_qtoolbar.QToolBar): void =
+proc addToolBar*(self: gen_qmainwindow_types.QMainWindow, area: cint, toolbar: gen_qtoolbar.QToolBar): void =
 
   fcQMainWindow_addToolBar(self.h, cint(area), toolbar.h)
 
-proc addToolBarWithToolbar*(self: QMainWindow, toolbar: gen_qtoolbar.QToolBar): void =
+proc addToolBarWithToolbar*(self: gen_qmainwindow_types.QMainWindow, toolbar: gen_qtoolbar.QToolBar): void =
 
   fcQMainWindow_addToolBarWithToolbar(self.h, toolbar.h)
 
-proc addToolBarWithTitle*(self: QMainWindow, title: string): gen_qtoolbar.QToolBar =
+proc addToolBarWithTitle*(self: gen_qmainwindow_types.QMainWindow, title: string): gen_qtoolbar.QToolBar =
 
   gen_qtoolbar.QToolBar(h: fcQMainWindow_addToolBarWithTitle(self.h, struct_miqt_string(data: title, len: csize_t(len(title)))))
 
-proc insertToolBar*(self: QMainWindow, before: gen_qtoolbar.QToolBar, toolbar: gen_qtoolbar.QToolBar): void =
+proc insertToolBar*(self: gen_qmainwindow_types.QMainWindow, before: gen_qtoolbar.QToolBar, toolbar: gen_qtoolbar.QToolBar): void =
 
   fcQMainWindow_insertToolBar(self.h, before.h, toolbar.h)
 
-proc removeToolBar*(self: QMainWindow, toolbar: gen_qtoolbar.QToolBar): void =
+proc removeToolBar*(self: gen_qmainwindow_types.QMainWindow, toolbar: gen_qtoolbar.QToolBar): void =
 
   fcQMainWindow_removeToolBar(self.h, toolbar.h)
 
-proc removeToolBarBreak*(self: QMainWindow, before: gen_qtoolbar.QToolBar): void =
+proc removeToolBarBreak*(self: gen_qmainwindow_types.QMainWindow, before: gen_qtoolbar.QToolBar): void =
 
   fcQMainWindow_removeToolBarBreak(self.h, before.h)
 
-proc unifiedTitleAndToolBarOnMac*(self: QMainWindow, ): bool =
+proc unifiedTitleAndToolBarOnMac*(self: gen_qmainwindow_types.QMainWindow, ): bool =
 
   fcQMainWindow_unifiedTitleAndToolBarOnMac(self.h)
 
-proc toolBarArea*(self: QMainWindow, toolbar: gen_qtoolbar.QToolBar): gen_qnamespace.ToolBarArea =
+proc toolBarArea*(self: gen_qmainwindow_types.QMainWindow, toolbar: gen_qtoolbar.QToolBar): cint =
 
-  gen_qnamespace.ToolBarArea(fcQMainWindow_toolBarArea(self.h, toolbar.h))
+  cint(fcQMainWindow_toolBarArea(self.h, toolbar.h))
 
-proc toolBarBreak*(self: QMainWindow, toolbar: gen_qtoolbar.QToolBar): bool =
+proc toolBarBreak*(self: gen_qmainwindow_types.QMainWindow, toolbar: gen_qtoolbar.QToolBar): bool =
 
   fcQMainWindow_toolBarBreak(self.h, toolbar.h)
 
-proc addDockWidget*(self: QMainWindow, area: gen_qnamespace.DockWidgetArea, dockwidget: gen_qdockwidget.QDockWidget): void =
+proc addDockWidget*(self: gen_qmainwindow_types.QMainWindow, area: cint, dockwidget: gen_qdockwidget.QDockWidget): void =
 
   fcQMainWindow_addDockWidget(self.h, cint(area), dockwidget.h)
 
-proc addDockWidget2*(self: QMainWindow, area: gen_qnamespace.DockWidgetArea, dockwidget: gen_qdockwidget.QDockWidget, orientation: gen_qnamespace.Orientation): void =
+proc addDockWidget2*(self: gen_qmainwindow_types.QMainWindow, area: cint, dockwidget: gen_qdockwidget.QDockWidget, orientation: cint): void =
 
   fcQMainWindow_addDockWidget2(self.h, cint(area), dockwidget.h, cint(orientation))
 
-proc splitDockWidget*(self: QMainWindow, after: gen_qdockwidget.QDockWidget, dockwidget: gen_qdockwidget.QDockWidget, orientation: gen_qnamespace.Orientation): void =
+proc splitDockWidget*(self: gen_qmainwindow_types.QMainWindow, after: gen_qdockwidget.QDockWidget, dockwidget: gen_qdockwidget.QDockWidget, orientation: cint): void =
 
   fcQMainWindow_splitDockWidget(self.h, after.h, dockwidget.h, cint(orientation))
 
-proc tabifyDockWidget*(self: QMainWindow, first: gen_qdockwidget.QDockWidget, second: gen_qdockwidget.QDockWidget): void =
+proc tabifyDockWidget*(self: gen_qmainwindow_types.QMainWindow, first: gen_qdockwidget.QDockWidget, second: gen_qdockwidget.QDockWidget): void =
 
   fcQMainWindow_tabifyDockWidget(self.h, first.h, second.h)
 
-proc tabifiedDockWidgets*(self: QMainWindow, dockwidget: gen_qdockwidget.QDockWidget): seq[gen_qdockwidget.QDockWidget] =
+proc tabifiedDockWidgets*(self: gen_qmainwindow_types.QMainWindow, dockwidget: gen_qdockwidget.QDockWidget): seq[gen_qdockwidget.QDockWidget] =
 
   var v_ma = fcQMainWindow_tabifiedDockWidgets(self.h, dockwidget.h)
   var vx_ret = newSeq[gen_qdockwidget.QDockWidget](int(v_ma.len))
@@ -470,19 +464,19 @@ proc tabifiedDockWidgets*(self: QMainWindow, dockwidget: gen_qdockwidget.QDockWi
     vx_ret[i] = gen_qdockwidget.QDockWidget(h: v_outCast[i])
   vx_ret
 
-proc removeDockWidget*(self: QMainWindow, dockwidget: gen_qdockwidget.QDockWidget): void =
+proc removeDockWidget*(self: gen_qmainwindow_types.QMainWindow, dockwidget: gen_qdockwidget.QDockWidget): void =
 
   fcQMainWindow_removeDockWidget(self.h, dockwidget.h)
 
-proc restoreDockWidget*(self: QMainWindow, dockwidget: gen_qdockwidget.QDockWidget): bool =
+proc restoreDockWidget*(self: gen_qmainwindow_types.QMainWindow, dockwidget: gen_qdockwidget.QDockWidget): bool =
 
   fcQMainWindow_restoreDockWidget(self.h, dockwidget.h)
 
-proc dockWidgetArea*(self: QMainWindow, dockwidget: gen_qdockwidget.QDockWidget): gen_qnamespace.DockWidgetArea =
+proc dockWidgetArea*(self: gen_qmainwindow_types.QMainWindow, dockwidget: gen_qdockwidget.QDockWidget): cint =
 
-  gen_qnamespace.DockWidgetArea(fcQMainWindow_dockWidgetArea(self.h, dockwidget.h))
+  cint(fcQMainWindow_dockWidgetArea(self.h, dockwidget.h))
 
-proc resizeDocks*(self: QMainWindow, docks: seq[gen_qdockwidget.QDockWidget], sizes: seq[cint], orientation: gen_qnamespace.Orientation): void =
+proc resizeDocks*(self: gen_qmainwindow_types.QMainWindow, docks: seq[gen_qdockwidget.QDockWidget], sizes: seq[cint], orientation: cint): void =
 
   var docks_CArray = newSeq[pointer](len(docks))
   for i in 0..<len(docks):
@@ -494,34 +488,34 @@ proc resizeDocks*(self: QMainWindow, docks: seq[gen_qdockwidget.QDockWidget], si
 
   fcQMainWindow_resizeDocks(self.h, struct_miqt_array(len: csize_t(len(docks)), data: if len(docks) == 0: nil else: addr(docks_CArray[0])), struct_miqt_array(len: csize_t(len(sizes)), data: if len(sizes) == 0: nil else: addr(sizes_CArray[0])), cint(orientation))
 
-proc saveState*(self: QMainWindow, ): seq[byte] =
+proc saveState*(self: gen_qmainwindow_types.QMainWindow, ): seq[byte] =
 
   var v_bytearray = fcQMainWindow_saveState(self.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc restoreState*(self: QMainWindow, state: seq[byte]): bool =
+proc restoreState*(self: gen_qmainwindow_types.QMainWindow, state: seq[byte]): bool =
 
   fcQMainWindow_restoreState(self.h, struct_miqt_string(data: cast[cstring](if len(state) == 0: nil else: unsafeAddr state[0]), len: csize_t(len(state))))
 
-proc createPopupMenu*(self: QMainWindow, ): gen_qmenu.QMenu =
+proc createPopupMenu*(self: gen_qmainwindow_types.QMainWindow, ): gen_qmenu.QMenu =
 
   gen_qmenu.QMenu(h: fcQMainWindow_createPopupMenu(self.h))
 
-proc setAnimated*(self: QMainWindow, enabled: bool): void =
+proc setAnimated*(self: gen_qmainwindow_types.QMainWindow, enabled: bool): void =
 
   fcQMainWindow_setAnimated(self.h, enabled)
 
-proc setDockNestingEnabled*(self: QMainWindow, enabled: bool): void =
+proc setDockNestingEnabled*(self: gen_qmainwindow_types.QMainWindow, enabled: bool): void =
 
   fcQMainWindow_setDockNestingEnabled(self.h, enabled)
 
-proc setUnifiedTitleAndToolBarOnMac*(self: QMainWindow, set: bool): void =
+proc setUnifiedTitleAndToolBarOnMac*(self: gen_qmainwindow_types.QMainWindow, set: bool): void =
 
   fcQMainWindow_setUnifiedTitleAndToolBarOnMac(self.h, set)
 
-proc iconSizeChanged*(self: QMainWindow, iconSize: gen_qsize.QSize): void =
+proc iconSizeChanged*(self: gen_qmainwindow_types.QMainWindow, iconSize: gen_qsize.QSize): void =
 
   fcQMainWindow_iconSizeChanged(self.h, iconSize.h)
 
@@ -533,31 +527,31 @@ proc miqt_exec_callback_QMainWindow_iconSizeChanged(slot: int, iconSize: pointer
 
   nimfunc[](slotval1)
 
-proc oniconSizeChanged*(self: QMainWindow, slot: proc(iconSize: gen_qsize.QSize)) =
+proc oniconSizeChanged*(self: gen_qmainwindow_types.QMainWindow, slot: proc(iconSize: gen_qsize.QSize)) =
   type Cb = proc(iconSize: gen_qsize.QSize)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQMainWindow_connect_iconSizeChanged(self.h, cast[int](addr tmp[]))
-proc toolButtonStyleChanged*(self: QMainWindow, toolButtonStyle: gen_qnamespace.ToolButtonStyle): void =
+proc toolButtonStyleChanged*(self: gen_qmainwindow_types.QMainWindow, toolButtonStyle: cint): void =
 
   fcQMainWindow_toolButtonStyleChanged(self.h, cint(toolButtonStyle))
 
 proc miqt_exec_callback_QMainWindow_toolButtonStyleChanged(slot: int, toolButtonStyle: cint) {.exportc.} =
-  type Cb = proc(toolButtonStyle: gen_qnamespace.ToolButtonStyle)
+  type Cb = proc(toolButtonStyle: cint)
   let nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = gen_qnamespace.ToolButtonStyle(toolButtonStyle)
+  let slotval1 = cint(toolButtonStyle)
 
 
   nimfunc[](slotval1)
 
-proc ontoolButtonStyleChanged*(self: QMainWindow, slot: proc(toolButtonStyle: gen_qnamespace.ToolButtonStyle)) =
-  type Cb = proc(toolButtonStyle: gen_qnamespace.ToolButtonStyle)
+proc ontoolButtonStyleChanged*(self: gen_qmainwindow_types.QMainWindow, slot: proc(toolButtonStyle: cint)) =
+  type Cb = proc(toolButtonStyle: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQMainWindow_connect_toolButtonStyleChanged(self.h, cast[int](addr tmp[]))
-proc tabifiedDockWidgetActivated*(self: QMainWindow, dockWidget: gen_qdockwidget.QDockWidget): void =
+proc tabifiedDockWidgetActivated*(self: gen_qmainwindow_types.QMainWindow, dockWidget: gen_qdockwidget.QDockWidget): void =
 
   fcQMainWindow_tabifiedDockWidgetActivated(self.h, dockWidget.h)
 
@@ -569,900 +563,715 @@ proc miqt_exec_callback_QMainWindow_tabifiedDockWidgetActivated(slot: int, dockW
 
   nimfunc[](slotval1)
 
-proc ontabifiedDockWidgetActivated*(self: QMainWindow, slot: proc(dockWidget: gen_qdockwidget.QDockWidget)) =
+proc ontabifiedDockWidgetActivated*(self: gen_qmainwindow_types.QMainWindow, slot: proc(dockWidget: gen_qdockwidget.QDockWidget)) =
   type Cb = proc(dockWidget: gen_qdockwidget.QDockWidget)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQMainWindow_connect_tabifiedDockWidgetActivated(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QMainWindow, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qmainwindow_types.QMainWindow, s: cstring, c: cstring): string =
 
   let v_ms = fcQMainWindow_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QMainWindow, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qmainwindow_types.QMainWindow, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQMainWindow_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc addToolBarBreak1*(self: QMainWindow, area: gen_qnamespace.ToolBarArea): void =
+proc addToolBarBreak1*(self: gen_qmainwindow_types.QMainWindow, area: cint): void =
 
   fcQMainWindow_addToolBarBreak1(self.h, cint(area))
 
-proc saveState1*(self: QMainWindow, version: cint): seq[byte] =
+proc saveState1*(self: gen_qmainwindow_types.QMainWindow, version: cint): seq[byte] =
 
   var v_bytearray = fcQMainWindow_saveState1(self.h, version)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc restoreState2*(self: QMainWindow, state: seq[byte], version: cint): bool =
+proc restoreState2*(self: gen_qmainwindow_types.QMainWindow, state: seq[byte], version: cint): bool =
 
   fcQMainWindow_restoreState2(self.h, struct_miqt_string(data: cast[cstring](if len(state) == 0: nil else: unsafeAddr state[0]), len: csize_t(len(state))), version)
 
-proc callVirtualBase_metaObject(self: QMainWindow, ): gen_qobjectdefs.QMetaObject =
-
+proc QMainWindowmetaObject*(self: gen_qmainwindow_types.QMainWindow, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQMainWindow_virtualbase_metaObject(self.h))
 
-type QMainWindowmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QMainWindow, slot: proc(super: QMainWindowmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QMainWindowmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QMainWindowmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QMainWindowmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMainWindow_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMainWindow_metaObject(self: ptr cQMainWindow, slot: int): pointer {.exportc: "miqt_exec_callback_QMainWindow_metaObject ".} =
-  type Cb = proc(super: QMainWindowmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QMainWindow(h: self), )
+  var nimfunc = cast[ptr QMainWindowmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QMainWindow, param1: cstring): pointer =
-
+proc QMainWindowmetacast*(self: gen_qmainwindow_types.QMainWindow, param1: cstring): pointer =
 
   fQMainWindow_virtualbase_metacast(self.h, param1)
 
-type QMainWindowmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QMainWindow, slot: proc(super: QMainWindowmetacastBase, param1: cstring): pointer) =
+type QMainWindowmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QMainWindowmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QMainWindowmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMainWindow_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMainWindow_metacast(self: ptr cQMainWindow, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QMainWindow_metacast ".} =
-  type Cb = proc(super: QMainWindowmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QMainWindow(h: self), param1)
+  var nimfunc = cast[ptr QMainWindowmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QMainWindow, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QMainWindowmetacall*(self: gen_qmainwindow_types.QMainWindow, param1: cint, param2: cint, param3: pointer): cint =
 
   fQMainWindow_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QMainWindowmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QMainWindow, slot: proc(super: QMainWindowmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QMainWindowmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QMainWindowmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QMainWindowmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMainWindow_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMainWindow_metacall(self: ptr cQMainWindow, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QMainWindow_metacall ".} =
-  type Cb = proc(super: QMainWindowmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QMainWindow(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QMainWindowmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_createPopupMenu(self: QMainWindow, ): gen_qmenu.QMenu =
-
+proc QMainWindowcreatePopupMenu*(self: gen_qmainwindow_types.QMainWindow, ): gen_qmenu.QMenu =
 
   gen_qmenu.QMenu(h: fQMainWindow_virtualbase_createPopupMenu(self.h))
 
-type QMainWindowcreatePopupMenuBase* = proc(): gen_qmenu.QMenu
-proc oncreatePopupMenu*(self: QMainWindow, slot: proc(super: QMainWindowcreatePopupMenuBase): gen_qmenu.QMenu) =
+type QMainWindowcreatePopupMenuProc* = proc(): gen_qmenu.QMenu
+proc oncreatePopupMenu*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowcreatePopupMenuProc) =
   # TODO check subclass
-  type Cb = proc(super: QMainWindowcreatePopupMenuBase): gen_qmenu.QMenu
-  var tmp = new Cb
+  var tmp = new QMainWindowcreatePopupMenuProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMainWindow_override_virtual_createPopupMenu(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMainWindow_createPopupMenu(self: ptr cQMainWindow, slot: int): pointer {.exportc: "miqt_exec_callback_QMainWindow_createPopupMenu ".} =
-  type Cb = proc(super: QMainWindowcreatePopupMenuBase): gen_qmenu.QMenu
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_createPopupMenu(QMainWindow(h: self), )
+  var nimfunc = cast[ptr QMainWindowcreatePopupMenuProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_contextMenuEvent(self: QMainWindow, event: gen_qevent.QContextMenuEvent): void =
-
+proc QMainWindowcontextMenuEvent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qevent.QContextMenuEvent): void =
 
   fQMainWindow_virtualbase_contextMenuEvent(self.h, event.h)
 
-type QMainWindowcontextMenuEventBase* = proc(event: gen_qevent.QContextMenuEvent): void
-proc oncontextMenuEvent*(self: QMainWindow, slot: proc(super: QMainWindowcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void) =
+type QMainWindowcontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
+proc oncontextMenuEvent*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowcontextMenuEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMainWindowcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var tmp = new Cb
+  var tmp = new QMainWindowcontextMenuEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMainWindow_override_virtual_contextMenuEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMainWindow_contextMenuEvent(self: ptr cQMainWindow, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMainWindow_contextMenuEvent ".} =
-  type Cb = proc(super: QMainWindowcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QContextMenuEvent): auto =
-    callVirtualBase_contextMenuEvent(QMainWindow(h: self), event)
+  var nimfunc = cast[ptr QMainWindowcontextMenuEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QContextMenuEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_event(self: QMainWindow, event: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[](slotval1)
+proc QMainWindowevent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qcoreevent.QEvent): bool =
 
   fQMainWindow_virtualbase_event(self.h, event.h)
 
-type QMainWindoweventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QMainWindow, slot: proc(super: QMainWindoweventBase, event: gen_qcoreevent.QEvent): bool) =
+type QMainWindoweventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindoweventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMainWindoweventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QMainWindoweventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMainWindow_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMainWindow_event(self: ptr cQMainWindow, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QMainWindow_event ".} =
-  type Cb = proc(super: QMainWindoweventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QMainWindow(h: self), event)
+  var nimfunc = cast[ptr QMainWindoweventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_devType(self: QMainWindow, ): cint =
-
+proc QMainWindowdevType*(self: gen_qmainwindow_types.QMainWindow, ): cint =
 
   fQMainWindow_virtualbase_devType(self.h)
 
-type QMainWindowdevTypeBase* = proc(): cint
-proc ondevType*(self: QMainWindow, slot: proc(super: QMainWindowdevTypeBase): cint) =
+type QMainWindowdevTypeProc* = proc(): cint
+proc ondevType*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowdevTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: QMainWindowdevTypeBase): cint
-  var tmp = new Cb
+  var tmp = new QMainWindowdevTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMainWindow_override_virtual_devType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMainWindow_devType(self: ptr cQMainWindow, slot: int): cint {.exportc: "miqt_exec_callback_QMainWindow_devType ".} =
-  type Cb = proc(super: QMainWindowdevTypeBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_devType(QMainWindow(h: self), )
+  var nimfunc = cast[ptr QMainWindowdevTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setVisible(self: QMainWindow, visible: bool): void =
-
+proc QMainWindowsetVisible*(self: gen_qmainwindow_types.QMainWindow, visible: bool): void =
 
   fQMainWindow_virtualbase_setVisible(self.h, visible)
 
-type QMainWindowsetVisibleBase* = proc(visible: bool): void
-proc onsetVisible*(self: QMainWindow, slot: proc(super: QMainWindowsetVisibleBase, visible: bool): void) =
+type QMainWindowsetVisibleProc* = proc(visible: bool): void
+proc onsetVisible*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowsetVisibleProc) =
   # TODO check subclass
-  type Cb = proc(super: QMainWindowsetVisibleBase, visible: bool): void
-  var tmp = new Cb
+  var tmp = new QMainWindowsetVisibleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMainWindow_override_virtual_setVisible(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMainWindow_setVisible(self: ptr cQMainWindow, slot: int, visible: bool): void {.exportc: "miqt_exec_callback_QMainWindow_setVisible ".} =
-  type Cb = proc(super: QMainWindowsetVisibleBase, visible: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(visible: bool): auto =
-    callVirtualBase_setVisible(QMainWindow(h: self), visible)
+  var nimfunc = cast[ptr QMainWindowsetVisibleProc](cast[pointer](slot))
   let slotval1 = visible
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_sizeHint(self: QMainWindow, ): gen_qsize.QSize =
-
+  nimfunc[](slotval1)
+proc QMainWindowsizeHint*(self: gen_qmainwindow_types.QMainWindow, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQMainWindow_virtualbase_sizeHint(self.h))
 
-type QMainWindowsizeHintBase* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: QMainWindow, slot: proc(super: QMainWindowsizeHintBase): gen_qsize.QSize) =
+type QMainWindowsizeHintProc* = proc(): gen_qsize.QSize
+proc onsizeHint*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowsizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QMainWindowsizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QMainWindowsizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMainWindow_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMainWindow_sizeHint(self: ptr cQMainWindow, slot: int): pointer {.exportc: "miqt_exec_callback_QMainWindow_sizeHint ".} =
-  type Cb = proc(super: QMainWindowsizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sizeHint(QMainWindow(h: self), )
+  var nimfunc = cast[ptr QMainWindowsizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_minimumSizeHint(self: QMainWindow, ): gen_qsize.QSize =
-
+proc QMainWindowminimumSizeHint*(self: gen_qmainwindow_types.QMainWindow, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQMainWindow_virtualbase_minimumSizeHint(self.h))
 
-type QMainWindowminimumSizeHintBase* = proc(): gen_qsize.QSize
-proc onminimumSizeHint*(self: QMainWindow, slot: proc(super: QMainWindowminimumSizeHintBase): gen_qsize.QSize) =
+type QMainWindowminimumSizeHintProc* = proc(): gen_qsize.QSize
+proc onminimumSizeHint*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowminimumSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QMainWindowminimumSizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QMainWindowminimumSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMainWindow_override_virtual_minimumSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMainWindow_minimumSizeHint(self: ptr cQMainWindow, slot: int): pointer {.exportc: "miqt_exec_callback_QMainWindow_minimumSizeHint ".} =
-  type Cb = proc(super: QMainWindowminimumSizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_minimumSizeHint(QMainWindow(h: self), )
+  var nimfunc = cast[ptr QMainWindowminimumSizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_heightForWidth(self: QMainWindow, param1: cint): cint =
-
+proc QMainWindowheightForWidth*(self: gen_qmainwindow_types.QMainWindow, param1: cint): cint =
 
   fQMainWindow_virtualbase_heightForWidth(self.h, param1)
 
-type QMainWindowheightForWidthBase* = proc(param1: cint): cint
-proc onheightForWidth*(self: QMainWindow, slot: proc(super: QMainWindowheightForWidthBase, param1: cint): cint) =
+type QMainWindowheightForWidthProc* = proc(param1: cint): cint
+proc onheightForWidth*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowheightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QMainWindowheightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QMainWindowheightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMainWindow_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMainWindow_heightForWidth(self: ptr cQMainWindow, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QMainWindow_heightForWidth ".} =
-  type Cb = proc(super: QMainWindowheightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_heightForWidth(QMainWindow(h: self), param1)
+  var nimfunc = cast[ptr QMainWindowheightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_hasHeightForWidth(self: QMainWindow, ): bool =
-
+proc QMainWindowhasHeightForWidth*(self: gen_qmainwindow_types.QMainWindow, ): bool =
 
   fQMainWindow_virtualbase_hasHeightForWidth(self.h)
 
-type QMainWindowhasHeightForWidthBase* = proc(): bool
-proc onhasHeightForWidth*(self: QMainWindow, slot: proc(super: QMainWindowhasHeightForWidthBase): bool) =
+type QMainWindowhasHeightForWidthProc* = proc(): bool
+proc onhasHeightForWidth*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowhasHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QMainWindowhasHeightForWidthBase): bool
-  var tmp = new Cb
+  var tmp = new QMainWindowhasHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMainWindow_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMainWindow_hasHeightForWidth(self: ptr cQMainWindow, slot: int): bool {.exportc: "miqt_exec_callback_QMainWindow_hasHeightForWidth ".} =
-  type Cb = proc(super: QMainWindowhasHeightForWidthBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasHeightForWidth(QMainWindow(h: self), )
+  var nimfunc = cast[ptr QMainWindowhasHeightForWidthProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_paintEngine(self: QMainWindow, ): gen_qpaintengine.QPaintEngine =
-
+proc QMainWindowpaintEngine*(self: gen_qmainwindow_types.QMainWindow, ): gen_qpaintengine.QPaintEngine =
 
   gen_qpaintengine.QPaintEngine(h: fQMainWindow_virtualbase_paintEngine(self.h))
 
-type QMainWindowpaintEngineBase* = proc(): gen_qpaintengine.QPaintEngine
-proc onpaintEngine*(self: QMainWindow, slot: proc(super: QMainWindowpaintEngineBase): gen_qpaintengine.QPaintEngine) =
+type QMainWindowpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
+proc onpaintEngine*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowpaintEngineProc) =
   # TODO check subclass
-  type Cb = proc(super: QMainWindowpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var tmp = new Cb
+  var tmp = new QMainWindowpaintEngineProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMainWindow_override_virtual_paintEngine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMainWindow_paintEngine(self: ptr cQMainWindow, slot: int): pointer {.exportc: "miqt_exec_callback_QMainWindow_paintEngine ".} =
-  type Cb = proc(super: QMainWindowpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_paintEngine(QMainWindow(h: self), )
+  var nimfunc = cast[ptr QMainWindowpaintEngineProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_mousePressEvent(self: QMainWindow, event: gen_qevent.QMouseEvent): void =
-
+proc QMainWindowmousePressEvent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qevent.QMouseEvent): void =
 
   fQMainWindow_virtualbase_mousePressEvent(self.h, event.h)
 
-type QMainWindowmousePressEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmousePressEvent*(self: QMainWindow, slot: proc(super: QMainWindowmousePressEventBase, event: gen_qevent.QMouseEvent): void) =
+type QMainWindowmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmousePressEvent*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowmousePressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMainWindowmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QMainWindowmousePressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMainWindow_override_virtual_mousePressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMainWindow_mousePressEvent(self: ptr cQMainWindow, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMainWindow_mousePressEvent ".} =
-  type Cb = proc(super: QMainWindowmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mousePressEvent(QMainWindow(h: self), event)
+  var nimfunc = cast[ptr QMainWindowmousePressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseReleaseEvent(self: QMainWindow, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QMainWindowmouseReleaseEvent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qevent.QMouseEvent): void =
 
   fQMainWindow_virtualbase_mouseReleaseEvent(self.h, event.h)
 
-type QMainWindowmouseReleaseEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseReleaseEvent*(self: QMainWindow, slot: proc(super: QMainWindowmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void) =
+type QMainWindowmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseReleaseEvent*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowmouseReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMainWindowmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QMainWindowmouseReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMainWindow_override_virtual_mouseReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMainWindow_mouseReleaseEvent(self: ptr cQMainWindow, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMainWindow_mouseReleaseEvent ".} =
-  type Cb = proc(super: QMainWindowmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseReleaseEvent(QMainWindow(h: self), event)
+  var nimfunc = cast[ptr QMainWindowmouseReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseDoubleClickEvent(self: QMainWindow, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QMainWindowmouseDoubleClickEvent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qevent.QMouseEvent): void =
 
   fQMainWindow_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
-type QMainWindowmouseDoubleClickEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseDoubleClickEvent*(self: QMainWindow, slot: proc(super: QMainWindowmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void) =
+type QMainWindowmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseDoubleClickEvent*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowmouseDoubleClickEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMainWindowmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QMainWindowmouseDoubleClickEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMainWindow_override_virtual_mouseDoubleClickEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMainWindow_mouseDoubleClickEvent(self: ptr cQMainWindow, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMainWindow_mouseDoubleClickEvent ".} =
-  type Cb = proc(super: QMainWindowmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseDoubleClickEvent(QMainWindow(h: self), event)
+  var nimfunc = cast[ptr QMainWindowmouseDoubleClickEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseMoveEvent(self: QMainWindow, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QMainWindowmouseMoveEvent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qevent.QMouseEvent): void =
 
   fQMainWindow_virtualbase_mouseMoveEvent(self.h, event.h)
 
-type QMainWindowmouseMoveEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseMoveEvent*(self: QMainWindow, slot: proc(super: QMainWindowmouseMoveEventBase, event: gen_qevent.QMouseEvent): void) =
+type QMainWindowmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseMoveEvent*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowmouseMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMainWindowmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QMainWindowmouseMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMainWindow_override_virtual_mouseMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMainWindow_mouseMoveEvent(self: ptr cQMainWindow, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMainWindow_mouseMoveEvent ".} =
-  type Cb = proc(super: QMainWindowmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseMoveEvent(QMainWindow(h: self), event)
+  var nimfunc = cast[ptr QMainWindowmouseMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_wheelEvent(self: QMainWindow, event: gen_qevent.QWheelEvent): void =
-
+  nimfunc[](slotval1)
+proc QMainWindowwheelEvent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qevent.QWheelEvent): void =
 
   fQMainWindow_virtualbase_wheelEvent(self.h, event.h)
 
-type QMainWindowwheelEventBase* = proc(event: gen_qevent.QWheelEvent): void
-proc onwheelEvent*(self: QMainWindow, slot: proc(super: QMainWindowwheelEventBase, event: gen_qevent.QWheelEvent): void) =
+type QMainWindowwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
+proc onwheelEvent*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowwheelEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMainWindowwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var tmp = new Cb
+  var tmp = new QMainWindowwheelEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMainWindow_override_virtual_wheelEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMainWindow_wheelEvent(self: ptr cQMainWindow, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMainWindow_wheelEvent ".} =
-  type Cb = proc(super: QMainWindowwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QWheelEvent): auto =
-    callVirtualBase_wheelEvent(QMainWindow(h: self), event)
+  var nimfunc = cast[ptr QMainWindowwheelEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QWheelEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyPressEvent(self: QMainWindow, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QMainWindowkeyPressEvent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qevent.QKeyEvent): void =
 
   fQMainWindow_virtualbase_keyPressEvent(self.h, event.h)
 
-type QMainWindowkeyPressEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyPressEvent*(self: QMainWindow, slot: proc(super: QMainWindowkeyPressEventBase, event: gen_qevent.QKeyEvent): void) =
+type QMainWindowkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyPressEvent*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowkeyPressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMainWindowkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QMainWindowkeyPressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMainWindow_override_virtual_keyPressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMainWindow_keyPressEvent(self: ptr cQMainWindow, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMainWindow_keyPressEvent ".} =
-  type Cb = proc(super: QMainWindowkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyPressEvent(QMainWindow(h: self), event)
+  var nimfunc = cast[ptr QMainWindowkeyPressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyReleaseEvent(self: QMainWindow, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QMainWindowkeyReleaseEvent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qevent.QKeyEvent): void =
 
   fQMainWindow_virtualbase_keyReleaseEvent(self.h, event.h)
 
-type QMainWindowkeyReleaseEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyReleaseEvent*(self: QMainWindow, slot: proc(super: QMainWindowkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void) =
+type QMainWindowkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyReleaseEvent*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowkeyReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMainWindowkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QMainWindowkeyReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMainWindow_override_virtual_keyReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMainWindow_keyReleaseEvent(self: ptr cQMainWindow, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMainWindow_keyReleaseEvent ".} =
-  type Cb = proc(super: QMainWindowkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyReleaseEvent(QMainWindow(h: self), event)
+  var nimfunc = cast[ptr QMainWindowkeyReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusInEvent(self: QMainWindow, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QMainWindowfocusInEvent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qevent.QFocusEvent): void =
 
   fQMainWindow_virtualbase_focusInEvent(self.h, event.h)
 
-type QMainWindowfocusInEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusInEvent*(self: QMainWindow, slot: proc(super: QMainWindowfocusInEventBase, event: gen_qevent.QFocusEvent): void) =
+type QMainWindowfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusInEvent*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowfocusInEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMainWindowfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QMainWindowfocusInEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMainWindow_override_virtual_focusInEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMainWindow_focusInEvent(self: ptr cQMainWindow, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMainWindow_focusInEvent ".} =
-  type Cb = proc(super: QMainWindowfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusInEvent(QMainWindow(h: self), event)
+  var nimfunc = cast[ptr QMainWindowfocusInEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusOutEvent(self: QMainWindow, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QMainWindowfocusOutEvent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qevent.QFocusEvent): void =
 
   fQMainWindow_virtualbase_focusOutEvent(self.h, event.h)
 
-type QMainWindowfocusOutEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusOutEvent*(self: QMainWindow, slot: proc(super: QMainWindowfocusOutEventBase, event: gen_qevent.QFocusEvent): void) =
+type QMainWindowfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusOutEvent*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowfocusOutEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMainWindowfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QMainWindowfocusOutEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMainWindow_override_virtual_focusOutEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMainWindow_focusOutEvent(self: ptr cQMainWindow, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMainWindow_focusOutEvent ".} =
-  type Cb = proc(super: QMainWindowfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusOutEvent(QMainWindow(h: self), event)
+  var nimfunc = cast[ptr QMainWindowfocusOutEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_enterEvent(self: QMainWindow, event: gen_qevent.QEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QMainWindowenterEvent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qevent.QEnterEvent): void =
 
   fQMainWindow_virtualbase_enterEvent(self.h, event.h)
 
-type QMainWindowenterEventBase* = proc(event: gen_qevent.QEnterEvent): void
-proc onenterEvent*(self: QMainWindow, slot: proc(super: QMainWindowenterEventBase, event: gen_qevent.QEnterEvent): void) =
+type QMainWindowenterEventProc* = proc(event: gen_qevent.QEnterEvent): void
+proc onenterEvent*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowenterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMainWindowenterEventBase, event: gen_qevent.QEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QMainWindowenterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMainWindow_override_virtual_enterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMainWindow_enterEvent(self: ptr cQMainWindow, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMainWindow_enterEvent ".} =
-  type Cb = proc(super: QMainWindowenterEventBase, event: gen_qevent.QEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QEnterEvent): auto =
-    callVirtualBase_enterEvent(QMainWindow(h: self), event)
+  var nimfunc = cast[ptr QMainWindowenterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_leaveEvent(self: QMainWindow, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QMainWindowleaveEvent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qcoreevent.QEvent): void =
 
   fQMainWindow_virtualbase_leaveEvent(self.h, event.h)
 
-type QMainWindowleaveEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onleaveEvent*(self: QMainWindow, slot: proc(super: QMainWindowleaveEventBase, event: gen_qcoreevent.QEvent): void) =
+type QMainWindowleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onleaveEvent*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowleaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMainWindowleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QMainWindowleaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMainWindow_override_virtual_leaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMainWindow_leaveEvent(self: ptr cQMainWindow, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMainWindow_leaveEvent ".} =
-  type Cb = proc(super: QMainWindowleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_leaveEvent(QMainWindow(h: self), event)
+  var nimfunc = cast[ptr QMainWindowleaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_paintEvent(self: QMainWindow, event: gen_qevent.QPaintEvent): void =
-
+  nimfunc[](slotval1)
+proc QMainWindowpaintEvent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qevent.QPaintEvent): void =
 
   fQMainWindow_virtualbase_paintEvent(self.h, event.h)
 
-type QMainWindowpaintEventBase* = proc(event: gen_qevent.QPaintEvent): void
-proc onpaintEvent*(self: QMainWindow, slot: proc(super: QMainWindowpaintEventBase, event: gen_qevent.QPaintEvent): void) =
+type QMainWindowpaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
+proc onpaintEvent*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowpaintEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMainWindowpaintEventBase, event: gen_qevent.QPaintEvent): void
-  var tmp = new Cb
+  var tmp = new QMainWindowpaintEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMainWindow_override_virtual_paintEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMainWindow_paintEvent(self: ptr cQMainWindow, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMainWindow_paintEvent ".} =
-  type Cb = proc(super: QMainWindowpaintEventBase, event: gen_qevent.QPaintEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QPaintEvent): auto =
-    callVirtualBase_paintEvent(QMainWindow(h: self), event)
+  var nimfunc = cast[ptr QMainWindowpaintEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QPaintEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_moveEvent(self: QMainWindow, event: gen_qevent.QMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QMainWindowmoveEvent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qevent.QMoveEvent): void =
 
   fQMainWindow_virtualbase_moveEvent(self.h, event.h)
 
-type QMainWindowmoveEventBase* = proc(event: gen_qevent.QMoveEvent): void
-proc onmoveEvent*(self: QMainWindow, slot: proc(super: QMainWindowmoveEventBase, event: gen_qevent.QMoveEvent): void) =
+type QMainWindowmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
+proc onmoveEvent*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowmoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMainWindowmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QMainWindowmoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMainWindow_override_virtual_moveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMainWindow_moveEvent(self: ptr cQMainWindow, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMainWindow_moveEvent ".} =
-  type Cb = proc(super: QMainWindowmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMoveEvent): auto =
-    callVirtualBase_moveEvent(QMainWindow(h: self), event)
+  var nimfunc = cast[ptr QMainWindowmoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_resizeEvent(self: QMainWindow, event: gen_qevent.QResizeEvent): void =
-
+  nimfunc[](slotval1)
+proc QMainWindowresizeEvent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qevent.QResizeEvent): void =
 
   fQMainWindow_virtualbase_resizeEvent(self.h, event.h)
 
-type QMainWindowresizeEventBase* = proc(event: gen_qevent.QResizeEvent): void
-proc onresizeEvent*(self: QMainWindow, slot: proc(super: QMainWindowresizeEventBase, event: gen_qevent.QResizeEvent): void) =
+type QMainWindowresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
+proc onresizeEvent*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowresizeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMainWindowresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var tmp = new Cb
+  var tmp = new QMainWindowresizeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMainWindow_override_virtual_resizeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMainWindow_resizeEvent(self: ptr cQMainWindow, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMainWindow_resizeEvent ".} =
-  type Cb = proc(super: QMainWindowresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QResizeEvent): auto =
-    callVirtualBase_resizeEvent(QMainWindow(h: self), event)
+  var nimfunc = cast[ptr QMainWindowresizeEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QResizeEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_closeEvent(self: QMainWindow, event: gen_qevent.QCloseEvent): void =
-
+  nimfunc[](slotval1)
+proc QMainWindowcloseEvent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qevent.QCloseEvent): void =
 
   fQMainWindow_virtualbase_closeEvent(self.h, event.h)
 
-type QMainWindowcloseEventBase* = proc(event: gen_qevent.QCloseEvent): void
-proc oncloseEvent*(self: QMainWindow, slot: proc(super: QMainWindowcloseEventBase, event: gen_qevent.QCloseEvent): void) =
+type QMainWindowcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
+proc oncloseEvent*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowcloseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMainWindowcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var tmp = new Cb
+  var tmp = new QMainWindowcloseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMainWindow_override_virtual_closeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMainWindow_closeEvent(self: ptr cQMainWindow, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMainWindow_closeEvent ".} =
-  type Cb = proc(super: QMainWindowcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QCloseEvent): auto =
-    callVirtualBase_closeEvent(QMainWindow(h: self), event)
+  var nimfunc = cast[ptr QMainWindowcloseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QCloseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_tabletEvent(self: QMainWindow, event: gen_qevent.QTabletEvent): void =
-
+  nimfunc[](slotval1)
+proc QMainWindowtabletEvent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qevent.QTabletEvent): void =
 
   fQMainWindow_virtualbase_tabletEvent(self.h, event.h)
 
-type QMainWindowtabletEventBase* = proc(event: gen_qevent.QTabletEvent): void
-proc ontabletEvent*(self: QMainWindow, slot: proc(super: QMainWindowtabletEventBase, event: gen_qevent.QTabletEvent): void) =
+type QMainWindowtabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
+proc ontabletEvent*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowtabletEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMainWindowtabletEventBase, event: gen_qevent.QTabletEvent): void
-  var tmp = new Cb
+  var tmp = new QMainWindowtabletEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMainWindow_override_virtual_tabletEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMainWindow_tabletEvent(self: ptr cQMainWindow, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMainWindow_tabletEvent ".} =
-  type Cb = proc(super: QMainWindowtabletEventBase, event: gen_qevent.QTabletEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QTabletEvent): auto =
-    callVirtualBase_tabletEvent(QMainWindow(h: self), event)
+  var nimfunc = cast[ptr QMainWindowtabletEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QTabletEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_actionEvent(self: QMainWindow, event: gen_qevent.QActionEvent): void =
-
+  nimfunc[](slotval1)
+proc QMainWindowactionEvent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qevent.QActionEvent): void =
 
   fQMainWindow_virtualbase_actionEvent(self.h, event.h)
 
-type QMainWindowactionEventBase* = proc(event: gen_qevent.QActionEvent): void
-proc onactionEvent*(self: QMainWindow, slot: proc(super: QMainWindowactionEventBase, event: gen_qevent.QActionEvent): void) =
+type QMainWindowactionEventProc* = proc(event: gen_qevent.QActionEvent): void
+proc onactionEvent*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowactionEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMainWindowactionEventBase, event: gen_qevent.QActionEvent): void
-  var tmp = new Cb
+  var tmp = new QMainWindowactionEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMainWindow_override_virtual_actionEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMainWindow_actionEvent(self: ptr cQMainWindow, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMainWindow_actionEvent ".} =
-  type Cb = proc(super: QMainWindowactionEventBase, event: gen_qevent.QActionEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QActionEvent): auto =
-    callVirtualBase_actionEvent(QMainWindow(h: self), event)
+  var nimfunc = cast[ptr QMainWindowactionEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QActionEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragEnterEvent(self: QMainWindow, event: gen_qevent.QDragEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QMainWindowdragEnterEvent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qevent.QDragEnterEvent): void =
 
   fQMainWindow_virtualbase_dragEnterEvent(self.h, event.h)
 
-type QMainWindowdragEnterEventBase* = proc(event: gen_qevent.QDragEnterEvent): void
-proc ondragEnterEvent*(self: QMainWindow, slot: proc(super: QMainWindowdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void) =
+type QMainWindowdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
+proc ondragEnterEvent*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowdragEnterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMainWindowdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QMainWindowdragEnterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMainWindow_override_virtual_dragEnterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMainWindow_dragEnterEvent(self: ptr cQMainWindow, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMainWindow_dragEnterEvent ".} =
-  type Cb = proc(super: QMainWindowdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragEnterEvent): auto =
-    callVirtualBase_dragEnterEvent(QMainWindow(h: self), event)
+  var nimfunc = cast[ptr QMainWindowdragEnterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragMoveEvent(self: QMainWindow, event: gen_qevent.QDragMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QMainWindowdragMoveEvent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qevent.QDragMoveEvent): void =
 
   fQMainWindow_virtualbase_dragMoveEvent(self.h, event.h)
 
-type QMainWindowdragMoveEventBase* = proc(event: gen_qevent.QDragMoveEvent): void
-proc ondragMoveEvent*(self: QMainWindow, slot: proc(super: QMainWindowdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void) =
+type QMainWindowdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
+proc ondragMoveEvent*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowdragMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMainWindowdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QMainWindowdragMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMainWindow_override_virtual_dragMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMainWindow_dragMoveEvent(self: ptr cQMainWindow, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMainWindow_dragMoveEvent ".} =
-  type Cb = proc(super: QMainWindowdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragMoveEvent): auto =
-    callVirtualBase_dragMoveEvent(QMainWindow(h: self), event)
+  var nimfunc = cast[ptr QMainWindowdragMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragLeaveEvent(self: QMainWindow, event: gen_qevent.QDragLeaveEvent): void =
-
+  nimfunc[](slotval1)
+proc QMainWindowdragLeaveEvent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qevent.QDragLeaveEvent): void =
 
   fQMainWindow_virtualbase_dragLeaveEvent(self.h, event.h)
 
-type QMainWindowdragLeaveEventBase* = proc(event: gen_qevent.QDragLeaveEvent): void
-proc ondragLeaveEvent*(self: QMainWindow, slot: proc(super: QMainWindowdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void) =
+type QMainWindowdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
+proc ondragLeaveEvent*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowdragLeaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMainWindowdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var tmp = new Cb
+  var tmp = new QMainWindowdragLeaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMainWindow_override_virtual_dragLeaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMainWindow_dragLeaveEvent(self: ptr cQMainWindow, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMainWindow_dragLeaveEvent ".} =
-  type Cb = proc(super: QMainWindowdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragLeaveEvent): auto =
-    callVirtualBase_dragLeaveEvent(QMainWindow(h: self), event)
+  var nimfunc = cast[ptr QMainWindowdragLeaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragLeaveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dropEvent(self: QMainWindow, event: gen_qevent.QDropEvent): void =
-
+  nimfunc[](slotval1)
+proc QMainWindowdropEvent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qevent.QDropEvent): void =
 
   fQMainWindow_virtualbase_dropEvent(self.h, event.h)
 
-type QMainWindowdropEventBase* = proc(event: gen_qevent.QDropEvent): void
-proc ondropEvent*(self: QMainWindow, slot: proc(super: QMainWindowdropEventBase, event: gen_qevent.QDropEvent): void) =
+type QMainWindowdropEventProc* = proc(event: gen_qevent.QDropEvent): void
+proc ondropEvent*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowdropEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMainWindowdropEventBase, event: gen_qevent.QDropEvent): void
-  var tmp = new Cb
+  var tmp = new QMainWindowdropEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMainWindow_override_virtual_dropEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMainWindow_dropEvent(self: ptr cQMainWindow, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMainWindow_dropEvent ".} =
-  type Cb = proc(super: QMainWindowdropEventBase, event: gen_qevent.QDropEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDropEvent): auto =
-    callVirtualBase_dropEvent(QMainWindow(h: self), event)
+  var nimfunc = cast[ptr QMainWindowdropEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDropEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_showEvent(self: QMainWindow, event: gen_qevent.QShowEvent): void =
-
+  nimfunc[](slotval1)
+proc QMainWindowshowEvent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qevent.QShowEvent): void =
 
   fQMainWindow_virtualbase_showEvent(self.h, event.h)
 
-type QMainWindowshowEventBase* = proc(event: gen_qevent.QShowEvent): void
-proc onshowEvent*(self: QMainWindow, slot: proc(super: QMainWindowshowEventBase, event: gen_qevent.QShowEvent): void) =
+type QMainWindowshowEventProc* = proc(event: gen_qevent.QShowEvent): void
+proc onshowEvent*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowshowEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMainWindowshowEventBase, event: gen_qevent.QShowEvent): void
-  var tmp = new Cb
+  var tmp = new QMainWindowshowEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMainWindow_override_virtual_showEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMainWindow_showEvent(self: ptr cQMainWindow, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMainWindow_showEvent ".} =
-  type Cb = proc(super: QMainWindowshowEventBase, event: gen_qevent.QShowEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QShowEvent): auto =
-    callVirtualBase_showEvent(QMainWindow(h: self), event)
+  var nimfunc = cast[ptr QMainWindowshowEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QShowEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hideEvent(self: QMainWindow, event: gen_qevent.QHideEvent): void =
-
+  nimfunc[](slotval1)
+proc QMainWindowhideEvent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qevent.QHideEvent): void =
 
   fQMainWindow_virtualbase_hideEvent(self.h, event.h)
 
-type QMainWindowhideEventBase* = proc(event: gen_qevent.QHideEvent): void
-proc onhideEvent*(self: QMainWindow, slot: proc(super: QMainWindowhideEventBase, event: gen_qevent.QHideEvent): void) =
+type QMainWindowhideEventProc* = proc(event: gen_qevent.QHideEvent): void
+proc onhideEvent*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowhideEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMainWindowhideEventBase, event: gen_qevent.QHideEvent): void
-  var tmp = new Cb
+  var tmp = new QMainWindowhideEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMainWindow_override_virtual_hideEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMainWindow_hideEvent(self: ptr cQMainWindow, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMainWindow_hideEvent ".} =
-  type Cb = proc(super: QMainWindowhideEventBase, event: gen_qevent.QHideEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QHideEvent): auto =
-    callVirtualBase_hideEvent(QMainWindow(h: self), event)
+  var nimfunc = cast[ptr QMainWindowhideEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QHideEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_nativeEvent(self: QMainWindow, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
-
+  nimfunc[](slotval1)
+proc QMainWindownativeEvent*(self: gen_qmainwindow_types.QMainWindow, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
 
   fQMainWindow_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
-type QMainWindownativeEventBase* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-proc onnativeEvent*(self: QMainWindow, slot: proc(super: QMainWindownativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool) =
+type QMainWindownativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
+proc onnativeEvent*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindownativeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMainWindownativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-  var tmp = new Cb
+  var tmp = new QMainWindownativeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMainWindow_override_virtual_nativeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMainWindow_nativeEvent(self: ptr cQMainWindow, slot: int, eventType: struct_miqt_string, message: pointer, resultVal: ptr uint): bool {.exportc: "miqt_exec_callback_QMainWindow_nativeEvent ".} =
-  type Cb = proc(super: QMainWindownativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(eventType: seq[byte], message: pointer, resultVal: ptr uint): auto =
-    callVirtualBase_nativeEvent(QMainWindow(h: self), eventType, message, resultVal)
+  var nimfunc = cast[ptr QMainWindownativeEventProc](cast[pointer](slot))
   var veventType_bytearray = eventType
   var veventTypex_ret = @(toOpenArrayByte(veventType_bytearray.data, 0, int(veventType_bytearray.len)-1))
   c_free(veventType_bytearray.data)
@@ -1473,344 +1282,274 @@ proc miqt_exec_callback_QMainWindow_nativeEvent(self: ptr cQMainWindow, slot: in
   let slotval3 = resultVal
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_changeEvent(self: QMainWindow, param1: gen_qcoreevent.QEvent): void =
-
+proc QMainWindowchangeEvent*(self: gen_qmainwindow_types.QMainWindow, param1: gen_qcoreevent.QEvent): void =
 
   fQMainWindow_virtualbase_changeEvent(self.h, param1.h)
 
-type QMainWindowchangeEventBase* = proc(param1: gen_qcoreevent.QEvent): void
-proc onchangeEvent*(self: QMainWindow, slot: proc(super: QMainWindowchangeEventBase, param1: gen_qcoreevent.QEvent): void) =
+type QMainWindowchangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
+proc onchangeEvent*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowchangeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMainWindowchangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QMainWindowchangeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMainWindow_override_virtual_changeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMainWindow_changeEvent(self: ptr cQMainWindow, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QMainWindow_changeEvent ".} =
-  type Cb = proc(super: QMainWindowchangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_changeEvent(QMainWindow(h: self), param1)
+  var nimfunc = cast[ptr QMainWindowchangeEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_metric(self: QMainWindow, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint =
-
+  nimfunc[](slotval1)
+proc QMainWindowmetric*(self: gen_qmainwindow_types.QMainWindow, param1: cint): cint =
 
   fQMainWindow_virtualbase_metric(self.h, cint(param1))
 
-type QMainWindowmetricBase* = proc(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-proc onmetric*(self: QMainWindow, slot: proc(super: QMainWindowmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint) =
+type QMainWindowmetricProc* = proc(param1: cint): cint
+proc onmetric*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowmetricProc) =
   # TODO check subclass
-  type Cb = proc(super: QMainWindowmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var tmp = new Cb
+  var tmp = new QMainWindowmetricProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMainWindow_override_virtual_metric(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMainWindow_metric(self: ptr cQMainWindow, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QMainWindow_metric ".} =
-  type Cb = proc(super: QMainWindowmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): auto =
-    callVirtualBase_metric(QMainWindow(h: self), param1)
-  let slotval1 = gen_qpaintdevice.QPaintDevicePaintDeviceMetric(param1)
+  var nimfunc = cast[ptr QMainWindowmetricProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_initPainter(self: QMainWindow, painter: gen_qpainter.QPainter): void =
-
+proc QMainWindowinitPainter*(self: gen_qmainwindow_types.QMainWindow, painter: gen_qpainter.QPainter): void =
 
   fQMainWindow_virtualbase_initPainter(self.h, painter.h)
 
-type QMainWindowinitPainterBase* = proc(painter: gen_qpainter.QPainter): void
-proc oninitPainter*(self: QMainWindow, slot: proc(super: QMainWindowinitPainterBase, painter: gen_qpainter.QPainter): void) =
+type QMainWindowinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
+proc oninitPainter*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowinitPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QMainWindowinitPainterBase, painter: gen_qpainter.QPainter): void
-  var tmp = new Cb
+  var tmp = new QMainWindowinitPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMainWindow_override_virtual_initPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMainWindow_initPainter(self: ptr cQMainWindow, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_QMainWindow_initPainter ".} =
-  type Cb = proc(super: QMainWindowinitPainterBase, painter: gen_qpainter.QPainter): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter): auto =
-    callVirtualBase_initPainter(QMainWindow(h: self), painter)
+  var nimfunc = cast[ptr QMainWindowinitPainterProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_redirected(self: QMainWindow, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
+  nimfunc[](slotval1)
+proc QMainWindowredirected*(self: gen_qmainwindow_types.QMainWindow, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
 
   gen_qpaintdevice.QPaintDevice(h: fQMainWindow_virtualbase_redirected(self.h, offset.h))
 
-type QMainWindowredirectedBase* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-proc onredirected*(self: QMainWindow, slot: proc(super: QMainWindowredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice) =
+type QMainWindowredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
+proc onredirected*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowredirectedProc) =
   # TODO check subclass
-  type Cb = proc(super: QMainWindowredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var tmp = new Cb
+  var tmp = new QMainWindowredirectedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMainWindow_override_virtual_redirected(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMainWindow_redirected(self: ptr cQMainWindow, slot: int, offset: pointer): pointer {.exportc: "miqt_exec_callback_QMainWindow_redirected ".} =
-  type Cb = proc(super: QMainWindowredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(offset: gen_qpoint.QPoint): auto =
-    callVirtualBase_redirected(QMainWindow(h: self), offset)
+  var nimfunc = cast[ptr QMainWindowredirectedProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: offset)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_sharedPainter(self: QMainWindow, ): gen_qpainter.QPainter =
-
+proc QMainWindowsharedPainter*(self: gen_qmainwindow_types.QMainWindow, ): gen_qpainter.QPainter =
 
   gen_qpainter.QPainter(h: fQMainWindow_virtualbase_sharedPainter(self.h))
 
-type QMainWindowsharedPainterBase* = proc(): gen_qpainter.QPainter
-proc onsharedPainter*(self: QMainWindow, slot: proc(super: QMainWindowsharedPainterBase): gen_qpainter.QPainter) =
+type QMainWindowsharedPainterProc* = proc(): gen_qpainter.QPainter
+proc onsharedPainter*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowsharedPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QMainWindowsharedPainterBase): gen_qpainter.QPainter
-  var tmp = new Cb
+  var tmp = new QMainWindowsharedPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMainWindow_override_virtual_sharedPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMainWindow_sharedPainter(self: ptr cQMainWindow, slot: int): pointer {.exportc: "miqt_exec_callback_QMainWindow_sharedPainter ".} =
-  type Cb = proc(super: QMainWindowsharedPainterBase): gen_qpainter.QPainter
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sharedPainter(QMainWindow(h: self), )
+  var nimfunc = cast[ptr QMainWindowsharedPainterProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_inputMethodEvent(self: QMainWindow, param1: gen_qevent.QInputMethodEvent): void =
-
+proc QMainWindowinputMethodEvent*(self: gen_qmainwindow_types.QMainWindow, param1: gen_qevent.QInputMethodEvent): void =
 
   fQMainWindow_virtualbase_inputMethodEvent(self.h, param1.h)
 
-type QMainWindowinputMethodEventBase* = proc(param1: gen_qevent.QInputMethodEvent): void
-proc oninputMethodEvent*(self: QMainWindow, slot: proc(super: QMainWindowinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void) =
+type QMainWindowinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
+proc oninputMethodEvent*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowinputMethodEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMainWindowinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var tmp = new Cb
+  var tmp = new QMainWindowinputMethodEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMainWindow_override_virtual_inputMethodEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMainWindow_inputMethodEvent(self: ptr cQMainWindow, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QMainWindow_inputMethodEvent ".} =
-  type Cb = proc(super: QMainWindowinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QInputMethodEvent): auto =
-    callVirtualBase_inputMethodEvent(QMainWindow(h: self), param1)
+  var nimfunc = cast[ptr QMainWindowinputMethodEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QInputMethodEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_inputMethodQuery(self: QMainWindow, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant =
-
+  nimfunc[](slotval1)
+proc QMainWindowinputMethodQuery*(self: gen_qmainwindow_types.QMainWindow, param1: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQMainWindow_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
-type QMainWindowinputMethodQueryBase* = proc(param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-proc oninputMethodQuery*(self: QMainWindow, slot: proc(super: QMainWindowinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant) =
+type QMainWindowinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
+proc oninputMethodQuery*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowinputMethodQueryProc) =
   # TODO check subclass
-  type Cb = proc(super: QMainWindowinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QMainWindowinputMethodQueryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMainWindow_override_virtual_inputMethodQuery(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMainWindow_inputMethodQuery(self: ptr cQMainWindow, slot: int, param1: cint): pointer {.exportc: "miqt_exec_callback_QMainWindow_inputMethodQuery ".} =
-  type Cb = proc(super: QMainWindowinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qnamespace.InputMethodQuery): auto =
-    callVirtualBase_inputMethodQuery(QMainWindow(h: self), param1)
-  let slotval1 = gen_qnamespace.InputMethodQuery(param1)
+  var nimfunc = cast[ptr QMainWindowinputMethodQueryProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_focusNextPrevChild(self: QMainWindow, next: bool): bool =
-
+proc QMainWindowfocusNextPrevChild*(self: gen_qmainwindow_types.QMainWindow, next: bool): bool =
 
   fQMainWindow_virtualbase_focusNextPrevChild(self.h, next)
 
-type QMainWindowfocusNextPrevChildBase* = proc(next: bool): bool
-proc onfocusNextPrevChild*(self: QMainWindow, slot: proc(super: QMainWindowfocusNextPrevChildBase, next: bool): bool) =
+type QMainWindowfocusNextPrevChildProc* = proc(next: bool): bool
+proc onfocusNextPrevChild*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowfocusNextPrevChildProc) =
   # TODO check subclass
-  type Cb = proc(super: QMainWindowfocusNextPrevChildBase, next: bool): bool
-  var tmp = new Cb
+  var tmp = new QMainWindowfocusNextPrevChildProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMainWindow_override_virtual_focusNextPrevChild(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMainWindow_focusNextPrevChild(self: ptr cQMainWindow, slot: int, next: bool): bool {.exportc: "miqt_exec_callback_QMainWindow_focusNextPrevChild ".} =
-  type Cb = proc(super: QMainWindowfocusNextPrevChildBase, next: bool): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(next: bool): auto =
-    callVirtualBase_focusNextPrevChild(QMainWindow(h: self), next)
+  var nimfunc = cast[ptr QMainWindowfocusNextPrevChildProc](cast[pointer](slot))
   let slotval1 = next
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QMainWindow, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QMainWindoweventFilter*(self: gen_qmainwindow_types.QMainWindow, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQMainWindow_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QMainWindoweventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QMainWindow, slot: proc(super: QMainWindoweventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QMainWindoweventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindoweventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QMainWindoweventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QMainWindoweventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMainWindow_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMainWindow_eventFilter(self: ptr cQMainWindow, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QMainWindow_eventFilter ".} =
-  type Cb = proc(super: QMainWindoweventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QMainWindow(h: self), watched, event)
+  var nimfunc = cast[ptr QMainWindoweventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QMainWindow, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QMainWindowtimerEvent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qcoreevent.QTimerEvent): void =
 
   fQMainWindow_virtualbase_timerEvent(self.h, event.h)
 
-type QMainWindowtimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QMainWindow, slot: proc(super: QMainWindowtimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QMainWindowtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowtimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMainWindowtimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QMainWindowtimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMainWindow_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMainWindow_timerEvent(self: ptr cQMainWindow, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMainWindow_timerEvent ".} =
-  type Cb = proc(super: QMainWindowtimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QMainWindow(h: self), event)
+  var nimfunc = cast[ptr QMainWindowtimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QMainWindow, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QMainWindowchildEvent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qcoreevent.QChildEvent): void =
 
   fQMainWindow_virtualbase_childEvent(self.h, event.h)
 
-type QMainWindowchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QMainWindow, slot: proc(super: QMainWindowchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QMainWindowchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMainWindowchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QMainWindowchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMainWindow_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMainWindow_childEvent(self: ptr cQMainWindow, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMainWindow_childEvent ".} =
-  type Cb = proc(super: QMainWindowchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QMainWindow(h: self), event)
+  var nimfunc = cast[ptr QMainWindowchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QMainWindow, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QMainWindowcustomEvent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qcoreevent.QEvent): void =
 
   fQMainWindow_virtualbase_customEvent(self.h, event.h)
 
-type QMainWindowcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QMainWindow, slot: proc(super: QMainWindowcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QMainWindowcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMainWindowcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QMainWindowcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMainWindow_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMainWindow_customEvent(self: ptr cQMainWindow, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMainWindow_customEvent ".} =
-  type Cb = proc(super: QMainWindowcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QMainWindow(h: self), event)
+  var nimfunc = cast[ptr QMainWindowcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QMainWindow, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QMainWindowconnectNotify*(self: gen_qmainwindow_types.QMainWindow, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQMainWindow_virtualbase_connectNotify(self.h, signal.h)
 
-type QMainWindowconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QMainWindow, slot: proc(super: QMainWindowconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QMainWindowconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QMainWindowconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QMainWindowconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMainWindow_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMainWindow_connectNotify(self: ptr cQMainWindow, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QMainWindow_connectNotify ".} =
-  type Cb = proc(super: QMainWindowconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QMainWindow(h: self), signal)
+  var nimfunc = cast[ptr QMainWindowconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QMainWindow, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QMainWindowdisconnectNotify*(self: gen_qmainwindow_types.QMainWindow, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQMainWindow_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QMainWindowdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QMainWindow, slot: proc(super: QMainWindowdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QMainWindowdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QMainWindowdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QMainWindowdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMainWindow_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMainWindow_disconnectNotify(self: ptr cQMainWindow, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QMainWindow_disconnectNotify ".} =
-  type Cb = proc(super: QMainWindowdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QMainWindow(h: self), signal)
+  var nimfunc = cast[ptr QMainWindowdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QMainWindow): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qmainwindow_types.QMainWindow): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQMainWindow_staticMetaObject())
-proc delete*(self: QMainWindow) =
+proc delete*(self: gen_qmainwindow_types.QMainWindow) =
   fcQMainWindow_delete(self.h)

@@ -53,27 +53,27 @@ proc fcQBindingStorage_registerDependency(self: pointer, data: pointer): void {.
 proc fcQBindingStorage_delete(self: pointer) {.importc: "QBindingStorage_delete".}
 
 
-func init*(T: type QBindingStatus, h: ptr cQBindingStatus): QBindingStatus =
+func init*(T: type gen_qbindingstorage_types.QBindingStatus, h: ptr cQBindingStatus): gen_qbindingstorage_types.QBindingStatus =
   T(h: h)
-proc delete*(self: QBindingStatus) =
+proc delete*(self: gen_qbindingstorage_types.QBindingStatus) =
   fcQBindingStatus_delete(self.h)
 
-func init*(T: type QBindingStorage, h: ptr cQBindingStorage): QBindingStorage =
+func init*(T: type gen_qbindingstorage_types.QBindingStorage, h: ptr cQBindingStorage): gen_qbindingstorage_types.QBindingStorage =
   T(h: h)
-proc create*(T: type QBindingStorage, ): QBindingStorage =
+proc create*(T: type gen_qbindingstorage_types.QBindingStorage, ): gen_qbindingstorage_types.QBindingStorage =
 
-  QBindingStorage.init(fcQBindingStorage_new())
-proc isEmpty*(self: QBindingStorage, ): bool =
+  gen_qbindingstorage_types.QBindingStorage.init(fcQBindingStorage_new())
+proc isEmpty*(self: gen_qbindingstorage_types.QBindingStorage, ): bool =
 
   fcQBindingStorage_isEmpty(self.h)
 
-proc isValid*(self: QBindingStorage, ): bool =
+proc isValid*(self: gen_qbindingstorage_types.QBindingStorage, ): bool =
 
   fcQBindingStorage_isValid(self.h)
 
-proc registerDependency*(self: QBindingStorage, data: gen_qpropertyprivate.QUntypedPropertyData): void =
+proc registerDependency*(self: gen_qbindingstorage_types.QBindingStorage, data: gen_qpropertyprivate.QUntypedPropertyData): void =
 
   fcQBindingStorage_registerDependency(self.h, data.h)
 
-proc delete*(self: QBindingStorage) =
+proc delete*(self: gen_qbindingstorage_types.QBindingStorage) =
   fcQBindingStorage_delete(self.h)

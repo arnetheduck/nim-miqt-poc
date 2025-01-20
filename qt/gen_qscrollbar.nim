@@ -42,7 +42,6 @@ import
   gen_qcoreevent,
   gen_qevent,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -57,7 +56,6 @@ export
   gen_qcoreevent,
   gen_qevent,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -191,987 +189,792 @@ proc fcQScrollBar_staticMetaObject(): pointer {.importc: "QScrollBar_staticMetaO
 proc fcQScrollBar_delete(self: pointer) {.importc: "QScrollBar_delete".}
 
 
-func init*(T: type QScrollBar, h: ptr cQScrollBar): QScrollBar =
+func init*(T: type gen_qscrollbar_types.QScrollBar, h: ptr cQScrollBar): gen_qscrollbar_types.QScrollBar =
   T(h: h)
-proc create*(T: type QScrollBar, parent: gen_qwidget.QWidget): QScrollBar =
+proc create*(T: type gen_qscrollbar_types.QScrollBar, parent: gen_qwidget.QWidget): gen_qscrollbar_types.QScrollBar =
 
-  QScrollBar.init(fcQScrollBar_new(parent.h))
-proc create*(T: type QScrollBar, ): QScrollBar =
+  gen_qscrollbar_types.QScrollBar.init(fcQScrollBar_new(parent.h))
+proc create*(T: type gen_qscrollbar_types.QScrollBar, ): gen_qscrollbar_types.QScrollBar =
 
-  QScrollBar.init(fcQScrollBar_new2())
-proc create*(T: type QScrollBar, param1: gen_qnamespace.Orientation): QScrollBar =
+  gen_qscrollbar_types.QScrollBar.init(fcQScrollBar_new2())
+proc create*(T: type gen_qscrollbar_types.QScrollBar, param1: cint): gen_qscrollbar_types.QScrollBar =
 
-  QScrollBar.init(fcQScrollBar_new3(cint(param1)))
-proc create*(T: type QScrollBar, param1: gen_qnamespace.Orientation, parent: gen_qwidget.QWidget): QScrollBar =
+  gen_qscrollbar_types.QScrollBar.init(fcQScrollBar_new3(cint(param1)))
+proc create*(T: type gen_qscrollbar_types.QScrollBar, param1: cint, parent: gen_qwidget.QWidget): gen_qscrollbar_types.QScrollBar =
 
-  QScrollBar.init(fcQScrollBar_new4(cint(param1), parent.h))
-proc metaObject*(self: QScrollBar, ): gen_qobjectdefs.QMetaObject =
+  gen_qscrollbar_types.QScrollBar.init(fcQScrollBar_new4(cint(param1), parent.h))
+proc metaObject*(self: gen_qscrollbar_types.QScrollBar, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQScrollBar_metaObject(self.h))
 
-proc metacast*(self: QScrollBar, param1: cstring): pointer =
+proc metacast*(self: gen_qscrollbar_types.QScrollBar, param1: cstring): pointer =
 
   fcQScrollBar_metacast(self.h, param1)
 
-proc metacall*(self: QScrollBar, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qscrollbar_types.QScrollBar, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQScrollBar_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QScrollBar, s: cstring): string =
+proc tr*(_: type gen_qscrollbar_types.QScrollBar, s: cstring): string =
 
   let v_ms = fcQScrollBar_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QScrollBar, s: cstring): string =
+proc trUtf8*(_: type gen_qscrollbar_types.QScrollBar, s: cstring): string =
 
   let v_ms = fcQScrollBar_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc sizeHint*(self: QScrollBar, ): gen_qsize.QSize =
+proc sizeHint*(self: gen_qscrollbar_types.QScrollBar, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQScrollBar_sizeHint(self.h))
 
-proc event*(self: QScrollBar, event: gen_qcoreevent.QEvent): bool =
+proc event*(self: gen_qscrollbar_types.QScrollBar, event: gen_qcoreevent.QEvent): bool =
 
   fcQScrollBar_event(self.h, event.h)
 
-proc tr2*(_: type QScrollBar, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qscrollbar_types.QScrollBar, s: cstring, c: cstring): string =
 
   let v_ms = fcQScrollBar_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QScrollBar, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qscrollbar_types.QScrollBar, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQScrollBar_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QScrollBar, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qscrollbar_types.QScrollBar, s: cstring, c: cstring): string =
 
   let v_ms = fcQScrollBar_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QScrollBar, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qscrollbar_types.QScrollBar, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQScrollBar_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QScrollBar, ): gen_qobjectdefs.QMetaObject =
-
+proc QScrollBarmetaObject*(self: gen_qscrollbar_types.QScrollBar, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQScrollBar_virtualbase_metaObject(self.h))
 
-type QScrollBarmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QScrollBar, slot: proc(super: QScrollBarmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QScrollBarmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qscrollbar_types.QScrollBar, slot: QScrollBarmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QScrollBarmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QScrollBarmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScrollBar_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScrollBar_metaObject(self: ptr cQScrollBar, slot: int): pointer {.exportc: "miqt_exec_callback_QScrollBar_metaObject ".} =
-  type Cb = proc(super: QScrollBarmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QScrollBar(h: self), )
+  var nimfunc = cast[ptr QScrollBarmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QScrollBar, param1: cstring): pointer =
-
+proc QScrollBarmetacast*(self: gen_qscrollbar_types.QScrollBar, param1: cstring): pointer =
 
   fQScrollBar_virtualbase_metacast(self.h, param1)
 
-type QScrollBarmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QScrollBar, slot: proc(super: QScrollBarmetacastBase, param1: cstring): pointer) =
+type QScrollBarmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qscrollbar_types.QScrollBar, slot: QScrollBarmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QScrollBarmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QScrollBarmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScrollBar_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScrollBar_metacast(self: ptr cQScrollBar, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QScrollBar_metacast ".} =
-  type Cb = proc(super: QScrollBarmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QScrollBar(h: self), param1)
+  var nimfunc = cast[ptr QScrollBarmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QScrollBar, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QScrollBarmetacall*(self: gen_qscrollbar_types.QScrollBar, param1: cint, param2: cint, param3: pointer): cint =
 
   fQScrollBar_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QScrollBarmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QScrollBar, slot: proc(super: QScrollBarmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QScrollBarmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qscrollbar_types.QScrollBar, slot: QScrollBarmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QScrollBarmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QScrollBarmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScrollBar_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScrollBar_metacall(self: ptr cQScrollBar, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QScrollBar_metacall ".} =
-  type Cb = proc(super: QScrollBarmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QScrollBar(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QScrollBarmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_sizeHint(self: QScrollBar, ): gen_qsize.QSize =
-
+proc QScrollBarsizeHint*(self: gen_qscrollbar_types.QScrollBar, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQScrollBar_virtualbase_sizeHint(self.h))
 
-type QScrollBarsizeHintBase* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: QScrollBar, slot: proc(super: QScrollBarsizeHintBase): gen_qsize.QSize) =
+type QScrollBarsizeHintProc* = proc(): gen_qsize.QSize
+proc onsizeHint*(self: gen_qscrollbar_types.QScrollBar, slot: QScrollBarsizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QScrollBarsizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QScrollBarsizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScrollBar_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScrollBar_sizeHint(self: ptr cQScrollBar, slot: int): pointer {.exportc: "miqt_exec_callback_QScrollBar_sizeHint ".} =
-  type Cb = proc(super: QScrollBarsizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sizeHint(QScrollBar(h: self), )
+  var nimfunc = cast[ptr QScrollBarsizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_event(self: QScrollBar, event: gen_qcoreevent.QEvent): bool =
-
+proc QScrollBarevent*(self: gen_qscrollbar_types.QScrollBar, event: gen_qcoreevent.QEvent): bool =
 
   fQScrollBar_virtualbase_event(self.h, event.h)
 
-type QScrollBareventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QScrollBar, slot: proc(super: QScrollBareventBase, event: gen_qcoreevent.QEvent): bool) =
+type QScrollBareventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qscrollbar_types.QScrollBar, slot: QScrollBareventProc) =
   # TODO check subclass
-  type Cb = proc(super: QScrollBareventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QScrollBareventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScrollBar_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScrollBar_event(self: ptr cQScrollBar, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QScrollBar_event ".} =
-  type Cb = proc(super: QScrollBareventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QScrollBar(h: self), event)
+  var nimfunc = cast[ptr QScrollBareventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_wheelEvent(self: QScrollBar, param1: gen_qevent.QWheelEvent): void =
-
+proc QScrollBarwheelEvent*(self: gen_qscrollbar_types.QScrollBar, param1: gen_qevent.QWheelEvent): void =
 
   fQScrollBar_virtualbase_wheelEvent(self.h, param1.h)
 
-type QScrollBarwheelEventBase* = proc(param1: gen_qevent.QWheelEvent): void
-proc onwheelEvent*(self: QScrollBar, slot: proc(super: QScrollBarwheelEventBase, param1: gen_qevent.QWheelEvent): void) =
+type QScrollBarwheelEventProc* = proc(param1: gen_qevent.QWheelEvent): void
+proc onwheelEvent*(self: gen_qscrollbar_types.QScrollBar, slot: QScrollBarwheelEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QScrollBarwheelEventBase, param1: gen_qevent.QWheelEvent): void
-  var tmp = new Cb
+  var tmp = new QScrollBarwheelEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScrollBar_override_virtual_wheelEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScrollBar_wheelEvent(self: ptr cQScrollBar, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QScrollBar_wheelEvent ".} =
-  type Cb = proc(super: QScrollBarwheelEventBase, param1: gen_qevent.QWheelEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QWheelEvent): auto =
-    callVirtualBase_wheelEvent(QScrollBar(h: self), param1)
+  var nimfunc = cast[ptr QScrollBarwheelEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QWheelEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_paintEvent(self: QScrollBar, param1: gen_qevent.QPaintEvent): void =
-
+  nimfunc[](slotval1)
+proc QScrollBarpaintEvent*(self: gen_qscrollbar_types.QScrollBar, param1: gen_qevent.QPaintEvent): void =
 
   fQScrollBar_virtualbase_paintEvent(self.h, param1.h)
 
-type QScrollBarpaintEventBase* = proc(param1: gen_qevent.QPaintEvent): void
-proc onpaintEvent*(self: QScrollBar, slot: proc(super: QScrollBarpaintEventBase, param1: gen_qevent.QPaintEvent): void) =
+type QScrollBarpaintEventProc* = proc(param1: gen_qevent.QPaintEvent): void
+proc onpaintEvent*(self: gen_qscrollbar_types.QScrollBar, slot: QScrollBarpaintEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QScrollBarpaintEventBase, param1: gen_qevent.QPaintEvent): void
-  var tmp = new Cb
+  var tmp = new QScrollBarpaintEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScrollBar_override_virtual_paintEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScrollBar_paintEvent(self: ptr cQScrollBar, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QScrollBar_paintEvent ".} =
-  type Cb = proc(super: QScrollBarpaintEventBase, param1: gen_qevent.QPaintEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QPaintEvent): auto =
-    callVirtualBase_paintEvent(QScrollBar(h: self), param1)
+  var nimfunc = cast[ptr QScrollBarpaintEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QPaintEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mousePressEvent(self: QScrollBar, param1: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QScrollBarmousePressEvent*(self: gen_qscrollbar_types.QScrollBar, param1: gen_qevent.QMouseEvent): void =
 
   fQScrollBar_virtualbase_mousePressEvent(self.h, param1.h)
 
-type QScrollBarmousePressEventBase* = proc(param1: gen_qevent.QMouseEvent): void
-proc onmousePressEvent*(self: QScrollBar, slot: proc(super: QScrollBarmousePressEventBase, param1: gen_qevent.QMouseEvent): void) =
+type QScrollBarmousePressEventProc* = proc(param1: gen_qevent.QMouseEvent): void
+proc onmousePressEvent*(self: gen_qscrollbar_types.QScrollBar, slot: QScrollBarmousePressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QScrollBarmousePressEventBase, param1: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QScrollBarmousePressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScrollBar_override_virtual_mousePressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScrollBar_mousePressEvent(self: ptr cQScrollBar, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QScrollBar_mousePressEvent ".} =
-  type Cb = proc(super: QScrollBarmousePressEventBase, param1: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mousePressEvent(QScrollBar(h: self), param1)
+  var nimfunc = cast[ptr QScrollBarmousePressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseReleaseEvent(self: QScrollBar, param1: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QScrollBarmouseReleaseEvent*(self: gen_qscrollbar_types.QScrollBar, param1: gen_qevent.QMouseEvent): void =
 
   fQScrollBar_virtualbase_mouseReleaseEvent(self.h, param1.h)
 
-type QScrollBarmouseReleaseEventBase* = proc(param1: gen_qevent.QMouseEvent): void
-proc onmouseReleaseEvent*(self: QScrollBar, slot: proc(super: QScrollBarmouseReleaseEventBase, param1: gen_qevent.QMouseEvent): void) =
+type QScrollBarmouseReleaseEventProc* = proc(param1: gen_qevent.QMouseEvent): void
+proc onmouseReleaseEvent*(self: gen_qscrollbar_types.QScrollBar, slot: QScrollBarmouseReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QScrollBarmouseReleaseEventBase, param1: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QScrollBarmouseReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScrollBar_override_virtual_mouseReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScrollBar_mouseReleaseEvent(self: ptr cQScrollBar, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QScrollBar_mouseReleaseEvent ".} =
-  type Cb = proc(super: QScrollBarmouseReleaseEventBase, param1: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseReleaseEvent(QScrollBar(h: self), param1)
+  var nimfunc = cast[ptr QScrollBarmouseReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseMoveEvent(self: QScrollBar, param1: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QScrollBarmouseMoveEvent*(self: gen_qscrollbar_types.QScrollBar, param1: gen_qevent.QMouseEvent): void =
 
   fQScrollBar_virtualbase_mouseMoveEvent(self.h, param1.h)
 
-type QScrollBarmouseMoveEventBase* = proc(param1: gen_qevent.QMouseEvent): void
-proc onmouseMoveEvent*(self: QScrollBar, slot: proc(super: QScrollBarmouseMoveEventBase, param1: gen_qevent.QMouseEvent): void) =
+type QScrollBarmouseMoveEventProc* = proc(param1: gen_qevent.QMouseEvent): void
+proc onmouseMoveEvent*(self: gen_qscrollbar_types.QScrollBar, slot: QScrollBarmouseMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QScrollBarmouseMoveEventBase, param1: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QScrollBarmouseMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScrollBar_override_virtual_mouseMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScrollBar_mouseMoveEvent(self: ptr cQScrollBar, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QScrollBar_mouseMoveEvent ".} =
-  type Cb = proc(super: QScrollBarmouseMoveEventBase, param1: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseMoveEvent(QScrollBar(h: self), param1)
+  var nimfunc = cast[ptr QScrollBarmouseMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hideEvent(self: QScrollBar, param1: gen_qevent.QHideEvent): void =
-
+  nimfunc[](slotval1)
+proc QScrollBarhideEvent*(self: gen_qscrollbar_types.QScrollBar, param1: gen_qevent.QHideEvent): void =
 
   fQScrollBar_virtualbase_hideEvent(self.h, param1.h)
 
-type QScrollBarhideEventBase* = proc(param1: gen_qevent.QHideEvent): void
-proc onhideEvent*(self: QScrollBar, slot: proc(super: QScrollBarhideEventBase, param1: gen_qevent.QHideEvent): void) =
+type QScrollBarhideEventProc* = proc(param1: gen_qevent.QHideEvent): void
+proc onhideEvent*(self: gen_qscrollbar_types.QScrollBar, slot: QScrollBarhideEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QScrollBarhideEventBase, param1: gen_qevent.QHideEvent): void
-  var tmp = new Cb
+  var tmp = new QScrollBarhideEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScrollBar_override_virtual_hideEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScrollBar_hideEvent(self: ptr cQScrollBar, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QScrollBar_hideEvent ".} =
-  type Cb = proc(super: QScrollBarhideEventBase, param1: gen_qevent.QHideEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QHideEvent): auto =
-    callVirtualBase_hideEvent(QScrollBar(h: self), param1)
+  var nimfunc = cast[ptr QScrollBarhideEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QHideEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_sliderChange(self: QScrollBar, change: gen_qabstractslider.QAbstractSliderSliderChange): void =
-
+  nimfunc[](slotval1)
+proc QScrollBarsliderChange*(self: gen_qscrollbar_types.QScrollBar, change: cint): void =
 
   fQScrollBar_virtualbase_sliderChange(self.h, cint(change))
 
-type QScrollBarsliderChangeBase* = proc(change: gen_qabstractslider.QAbstractSliderSliderChange): void
-proc onsliderChange*(self: QScrollBar, slot: proc(super: QScrollBarsliderChangeBase, change: gen_qabstractslider.QAbstractSliderSliderChange): void) =
+type QScrollBarsliderChangeProc* = proc(change: cint): void
+proc onsliderChange*(self: gen_qscrollbar_types.QScrollBar, slot: QScrollBarsliderChangeProc) =
   # TODO check subclass
-  type Cb = proc(super: QScrollBarsliderChangeBase, change: gen_qabstractslider.QAbstractSliderSliderChange): void
-  var tmp = new Cb
+  var tmp = new QScrollBarsliderChangeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScrollBar_override_virtual_sliderChange(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScrollBar_sliderChange(self: ptr cQScrollBar, slot: int, change: cint): void {.exportc: "miqt_exec_callback_QScrollBar_sliderChange ".} =
-  type Cb = proc(super: QScrollBarsliderChangeBase, change: gen_qabstractslider.QAbstractSliderSliderChange): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(change: gen_qabstractslider.QAbstractSliderSliderChange): auto =
-    callVirtualBase_sliderChange(QScrollBar(h: self), change)
-  let slotval1 = gen_qabstractslider.QAbstractSliderSliderChange(change)
+  var nimfunc = cast[ptr QScrollBarsliderChangeProc](cast[pointer](slot))
+  let slotval1 = cint(change)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_contextMenuEvent(self: QScrollBar, param1: gen_qevent.QContextMenuEvent): void =
-
+  nimfunc[](slotval1)
+proc QScrollBarcontextMenuEvent*(self: gen_qscrollbar_types.QScrollBar, param1: gen_qevent.QContextMenuEvent): void =
 
   fQScrollBar_virtualbase_contextMenuEvent(self.h, param1.h)
 
-type QScrollBarcontextMenuEventBase* = proc(param1: gen_qevent.QContextMenuEvent): void
-proc oncontextMenuEvent*(self: QScrollBar, slot: proc(super: QScrollBarcontextMenuEventBase, param1: gen_qevent.QContextMenuEvent): void) =
+type QScrollBarcontextMenuEventProc* = proc(param1: gen_qevent.QContextMenuEvent): void
+proc oncontextMenuEvent*(self: gen_qscrollbar_types.QScrollBar, slot: QScrollBarcontextMenuEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QScrollBarcontextMenuEventBase, param1: gen_qevent.QContextMenuEvent): void
-  var tmp = new Cb
+  var tmp = new QScrollBarcontextMenuEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScrollBar_override_virtual_contextMenuEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScrollBar_contextMenuEvent(self: ptr cQScrollBar, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QScrollBar_contextMenuEvent ".} =
-  type Cb = proc(super: QScrollBarcontextMenuEventBase, param1: gen_qevent.QContextMenuEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QContextMenuEvent): auto =
-    callVirtualBase_contextMenuEvent(QScrollBar(h: self), param1)
+  var nimfunc = cast[ptr QScrollBarcontextMenuEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QContextMenuEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyPressEvent(self: QScrollBar, ev: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QScrollBarkeyPressEvent*(self: gen_qscrollbar_types.QScrollBar, ev: gen_qevent.QKeyEvent): void =
 
   fQScrollBar_virtualbase_keyPressEvent(self.h, ev.h)
 
-type QScrollBarkeyPressEventBase* = proc(ev: gen_qevent.QKeyEvent): void
-proc onkeyPressEvent*(self: QScrollBar, slot: proc(super: QScrollBarkeyPressEventBase, ev: gen_qevent.QKeyEvent): void) =
+type QScrollBarkeyPressEventProc* = proc(ev: gen_qevent.QKeyEvent): void
+proc onkeyPressEvent*(self: gen_qscrollbar_types.QScrollBar, slot: QScrollBarkeyPressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QScrollBarkeyPressEventBase, ev: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QScrollBarkeyPressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScrollBar_override_virtual_keyPressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScrollBar_keyPressEvent(self: ptr cQScrollBar, slot: int, ev: pointer): void {.exportc: "miqt_exec_callback_QScrollBar_keyPressEvent ".} =
-  type Cb = proc(super: QScrollBarkeyPressEventBase, ev: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(ev: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyPressEvent(QScrollBar(h: self), ev)
+  var nimfunc = cast[ptr QScrollBarkeyPressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: ev)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_timerEvent(self: QScrollBar, param1: gen_qcoreevent.QTimerEvent): void =
-
+  nimfunc[](slotval1)
+proc QScrollBartimerEvent*(self: gen_qscrollbar_types.QScrollBar, param1: gen_qcoreevent.QTimerEvent): void =
 
   fQScrollBar_virtualbase_timerEvent(self.h, param1.h)
 
-type QScrollBartimerEventBase* = proc(param1: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QScrollBar, slot: proc(super: QScrollBartimerEventBase, param1: gen_qcoreevent.QTimerEvent): void) =
+type QScrollBartimerEventProc* = proc(param1: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qscrollbar_types.QScrollBar, slot: QScrollBartimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QScrollBartimerEventBase, param1: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QScrollBartimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScrollBar_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScrollBar_timerEvent(self: ptr cQScrollBar, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QScrollBar_timerEvent ".} =
-  type Cb = proc(super: QScrollBartimerEventBase, param1: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QScrollBar(h: self), param1)
+  var nimfunc = cast[ptr QScrollBartimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_changeEvent(self: QScrollBar, e: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QScrollBarchangeEvent*(self: gen_qscrollbar_types.QScrollBar, e: gen_qcoreevent.QEvent): void =
 
   fQScrollBar_virtualbase_changeEvent(self.h, e.h)
 
-type QScrollBarchangeEventBase* = proc(e: gen_qcoreevent.QEvent): void
-proc onchangeEvent*(self: QScrollBar, slot: proc(super: QScrollBarchangeEventBase, e: gen_qcoreevent.QEvent): void) =
+type QScrollBarchangeEventProc* = proc(e: gen_qcoreevent.QEvent): void
+proc onchangeEvent*(self: gen_qscrollbar_types.QScrollBar, slot: QScrollBarchangeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QScrollBarchangeEventBase, e: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QScrollBarchangeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScrollBar_override_virtual_changeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScrollBar_changeEvent(self: ptr cQScrollBar, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QScrollBar_changeEvent ".} =
-  type Cb = proc(super: QScrollBarchangeEventBase, e: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_changeEvent(QScrollBar(h: self), e)
+  var nimfunc = cast[ptr QScrollBarchangeEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_devType(self: QScrollBar, ): cint =
-
+  nimfunc[](slotval1)
+proc QScrollBardevType*(self: gen_qscrollbar_types.QScrollBar, ): cint =
 
   fQScrollBar_virtualbase_devType(self.h)
 
-type QScrollBardevTypeBase* = proc(): cint
-proc ondevType*(self: QScrollBar, slot: proc(super: QScrollBardevTypeBase): cint) =
+type QScrollBardevTypeProc* = proc(): cint
+proc ondevType*(self: gen_qscrollbar_types.QScrollBar, slot: QScrollBardevTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: QScrollBardevTypeBase): cint
-  var tmp = new Cb
+  var tmp = new QScrollBardevTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScrollBar_override_virtual_devType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScrollBar_devType(self: ptr cQScrollBar, slot: int): cint {.exportc: "miqt_exec_callback_QScrollBar_devType ".} =
-  type Cb = proc(super: QScrollBardevTypeBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_devType(QScrollBar(h: self), )
+  var nimfunc = cast[ptr QScrollBardevTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setVisible(self: QScrollBar, visible: bool): void =
-
+proc QScrollBarsetVisible*(self: gen_qscrollbar_types.QScrollBar, visible: bool): void =
 
   fQScrollBar_virtualbase_setVisible(self.h, visible)
 
-type QScrollBarsetVisibleBase* = proc(visible: bool): void
-proc onsetVisible*(self: QScrollBar, slot: proc(super: QScrollBarsetVisibleBase, visible: bool): void) =
+type QScrollBarsetVisibleProc* = proc(visible: bool): void
+proc onsetVisible*(self: gen_qscrollbar_types.QScrollBar, slot: QScrollBarsetVisibleProc) =
   # TODO check subclass
-  type Cb = proc(super: QScrollBarsetVisibleBase, visible: bool): void
-  var tmp = new Cb
+  var tmp = new QScrollBarsetVisibleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScrollBar_override_virtual_setVisible(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScrollBar_setVisible(self: ptr cQScrollBar, slot: int, visible: bool): void {.exportc: "miqt_exec_callback_QScrollBar_setVisible ".} =
-  type Cb = proc(super: QScrollBarsetVisibleBase, visible: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(visible: bool): auto =
-    callVirtualBase_setVisible(QScrollBar(h: self), visible)
+  var nimfunc = cast[ptr QScrollBarsetVisibleProc](cast[pointer](slot))
   let slotval1 = visible
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_minimumSizeHint(self: QScrollBar, ): gen_qsize.QSize =
-
+  nimfunc[](slotval1)
+proc QScrollBarminimumSizeHint*(self: gen_qscrollbar_types.QScrollBar, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQScrollBar_virtualbase_minimumSizeHint(self.h))
 
-type QScrollBarminimumSizeHintBase* = proc(): gen_qsize.QSize
-proc onminimumSizeHint*(self: QScrollBar, slot: proc(super: QScrollBarminimumSizeHintBase): gen_qsize.QSize) =
+type QScrollBarminimumSizeHintProc* = proc(): gen_qsize.QSize
+proc onminimumSizeHint*(self: gen_qscrollbar_types.QScrollBar, slot: QScrollBarminimumSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QScrollBarminimumSizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QScrollBarminimumSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScrollBar_override_virtual_minimumSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScrollBar_minimumSizeHint(self: ptr cQScrollBar, slot: int): pointer {.exportc: "miqt_exec_callback_QScrollBar_minimumSizeHint ".} =
-  type Cb = proc(super: QScrollBarminimumSizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_minimumSizeHint(QScrollBar(h: self), )
+  var nimfunc = cast[ptr QScrollBarminimumSizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_heightForWidth(self: QScrollBar, param1: cint): cint =
-
+proc QScrollBarheightForWidth*(self: gen_qscrollbar_types.QScrollBar, param1: cint): cint =
 
   fQScrollBar_virtualbase_heightForWidth(self.h, param1)
 
-type QScrollBarheightForWidthBase* = proc(param1: cint): cint
-proc onheightForWidth*(self: QScrollBar, slot: proc(super: QScrollBarheightForWidthBase, param1: cint): cint) =
+type QScrollBarheightForWidthProc* = proc(param1: cint): cint
+proc onheightForWidth*(self: gen_qscrollbar_types.QScrollBar, slot: QScrollBarheightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QScrollBarheightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QScrollBarheightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScrollBar_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScrollBar_heightForWidth(self: ptr cQScrollBar, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QScrollBar_heightForWidth ".} =
-  type Cb = proc(super: QScrollBarheightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_heightForWidth(QScrollBar(h: self), param1)
+  var nimfunc = cast[ptr QScrollBarheightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_hasHeightForWidth(self: QScrollBar, ): bool =
-
+proc QScrollBarhasHeightForWidth*(self: gen_qscrollbar_types.QScrollBar, ): bool =
 
   fQScrollBar_virtualbase_hasHeightForWidth(self.h)
 
-type QScrollBarhasHeightForWidthBase* = proc(): bool
-proc onhasHeightForWidth*(self: QScrollBar, slot: proc(super: QScrollBarhasHeightForWidthBase): bool) =
+type QScrollBarhasHeightForWidthProc* = proc(): bool
+proc onhasHeightForWidth*(self: gen_qscrollbar_types.QScrollBar, slot: QScrollBarhasHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QScrollBarhasHeightForWidthBase): bool
-  var tmp = new Cb
+  var tmp = new QScrollBarhasHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScrollBar_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScrollBar_hasHeightForWidth(self: ptr cQScrollBar, slot: int): bool {.exportc: "miqt_exec_callback_QScrollBar_hasHeightForWidth ".} =
-  type Cb = proc(super: QScrollBarhasHeightForWidthBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasHeightForWidth(QScrollBar(h: self), )
+  var nimfunc = cast[ptr QScrollBarhasHeightForWidthProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_paintEngine(self: QScrollBar, ): gen_qpaintengine.QPaintEngine =
-
+proc QScrollBarpaintEngine*(self: gen_qscrollbar_types.QScrollBar, ): gen_qpaintengine.QPaintEngine =
 
   gen_qpaintengine.QPaintEngine(h: fQScrollBar_virtualbase_paintEngine(self.h))
 
-type QScrollBarpaintEngineBase* = proc(): gen_qpaintengine.QPaintEngine
-proc onpaintEngine*(self: QScrollBar, slot: proc(super: QScrollBarpaintEngineBase): gen_qpaintengine.QPaintEngine) =
+type QScrollBarpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
+proc onpaintEngine*(self: gen_qscrollbar_types.QScrollBar, slot: QScrollBarpaintEngineProc) =
   # TODO check subclass
-  type Cb = proc(super: QScrollBarpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var tmp = new Cb
+  var tmp = new QScrollBarpaintEngineProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScrollBar_override_virtual_paintEngine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScrollBar_paintEngine(self: ptr cQScrollBar, slot: int): pointer {.exportc: "miqt_exec_callback_QScrollBar_paintEngine ".} =
-  type Cb = proc(super: QScrollBarpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_paintEngine(QScrollBar(h: self), )
+  var nimfunc = cast[ptr QScrollBarpaintEngineProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_mouseDoubleClickEvent(self: QScrollBar, event: gen_qevent.QMouseEvent): void =
-
+proc QScrollBarmouseDoubleClickEvent*(self: gen_qscrollbar_types.QScrollBar, event: gen_qevent.QMouseEvent): void =
 
   fQScrollBar_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
-type QScrollBarmouseDoubleClickEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseDoubleClickEvent*(self: QScrollBar, slot: proc(super: QScrollBarmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void) =
+type QScrollBarmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseDoubleClickEvent*(self: gen_qscrollbar_types.QScrollBar, slot: QScrollBarmouseDoubleClickEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QScrollBarmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QScrollBarmouseDoubleClickEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScrollBar_override_virtual_mouseDoubleClickEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScrollBar_mouseDoubleClickEvent(self: ptr cQScrollBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QScrollBar_mouseDoubleClickEvent ".} =
-  type Cb = proc(super: QScrollBarmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseDoubleClickEvent(QScrollBar(h: self), event)
+  var nimfunc = cast[ptr QScrollBarmouseDoubleClickEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyReleaseEvent(self: QScrollBar, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QScrollBarkeyReleaseEvent*(self: gen_qscrollbar_types.QScrollBar, event: gen_qevent.QKeyEvent): void =
 
   fQScrollBar_virtualbase_keyReleaseEvent(self.h, event.h)
 
-type QScrollBarkeyReleaseEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyReleaseEvent*(self: QScrollBar, slot: proc(super: QScrollBarkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void) =
+type QScrollBarkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyReleaseEvent*(self: gen_qscrollbar_types.QScrollBar, slot: QScrollBarkeyReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QScrollBarkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QScrollBarkeyReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScrollBar_override_virtual_keyReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScrollBar_keyReleaseEvent(self: ptr cQScrollBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QScrollBar_keyReleaseEvent ".} =
-  type Cb = proc(super: QScrollBarkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyReleaseEvent(QScrollBar(h: self), event)
+  var nimfunc = cast[ptr QScrollBarkeyReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusInEvent(self: QScrollBar, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QScrollBarfocusInEvent*(self: gen_qscrollbar_types.QScrollBar, event: gen_qevent.QFocusEvent): void =
 
   fQScrollBar_virtualbase_focusInEvent(self.h, event.h)
 
-type QScrollBarfocusInEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusInEvent*(self: QScrollBar, slot: proc(super: QScrollBarfocusInEventBase, event: gen_qevent.QFocusEvent): void) =
+type QScrollBarfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusInEvent*(self: gen_qscrollbar_types.QScrollBar, slot: QScrollBarfocusInEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QScrollBarfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QScrollBarfocusInEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScrollBar_override_virtual_focusInEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScrollBar_focusInEvent(self: ptr cQScrollBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QScrollBar_focusInEvent ".} =
-  type Cb = proc(super: QScrollBarfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusInEvent(QScrollBar(h: self), event)
+  var nimfunc = cast[ptr QScrollBarfocusInEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusOutEvent(self: QScrollBar, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QScrollBarfocusOutEvent*(self: gen_qscrollbar_types.QScrollBar, event: gen_qevent.QFocusEvent): void =
 
   fQScrollBar_virtualbase_focusOutEvent(self.h, event.h)
 
-type QScrollBarfocusOutEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusOutEvent*(self: QScrollBar, slot: proc(super: QScrollBarfocusOutEventBase, event: gen_qevent.QFocusEvent): void) =
+type QScrollBarfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusOutEvent*(self: gen_qscrollbar_types.QScrollBar, slot: QScrollBarfocusOutEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QScrollBarfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QScrollBarfocusOutEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScrollBar_override_virtual_focusOutEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScrollBar_focusOutEvent(self: ptr cQScrollBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QScrollBar_focusOutEvent ".} =
-  type Cb = proc(super: QScrollBarfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusOutEvent(QScrollBar(h: self), event)
+  var nimfunc = cast[ptr QScrollBarfocusOutEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_enterEvent(self: QScrollBar, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QScrollBarenterEvent*(self: gen_qscrollbar_types.QScrollBar, event: gen_qcoreevent.QEvent): void =
 
   fQScrollBar_virtualbase_enterEvent(self.h, event.h)
 
-type QScrollBarenterEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onenterEvent*(self: QScrollBar, slot: proc(super: QScrollBarenterEventBase, event: gen_qcoreevent.QEvent): void) =
+type QScrollBarenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onenterEvent*(self: gen_qscrollbar_types.QScrollBar, slot: QScrollBarenterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QScrollBarenterEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QScrollBarenterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScrollBar_override_virtual_enterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScrollBar_enterEvent(self: ptr cQScrollBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QScrollBar_enterEvent ".} =
-  type Cb = proc(super: QScrollBarenterEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_enterEvent(QScrollBar(h: self), event)
+  var nimfunc = cast[ptr QScrollBarenterEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_leaveEvent(self: QScrollBar, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QScrollBarleaveEvent*(self: gen_qscrollbar_types.QScrollBar, event: gen_qcoreevent.QEvent): void =
 
   fQScrollBar_virtualbase_leaveEvent(self.h, event.h)
 
-type QScrollBarleaveEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onleaveEvent*(self: QScrollBar, slot: proc(super: QScrollBarleaveEventBase, event: gen_qcoreevent.QEvent): void) =
+type QScrollBarleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onleaveEvent*(self: gen_qscrollbar_types.QScrollBar, slot: QScrollBarleaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QScrollBarleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QScrollBarleaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScrollBar_override_virtual_leaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScrollBar_leaveEvent(self: ptr cQScrollBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QScrollBar_leaveEvent ".} =
-  type Cb = proc(super: QScrollBarleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_leaveEvent(QScrollBar(h: self), event)
+  var nimfunc = cast[ptr QScrollBarleaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_moveEvent(self: QScrollBar, event: gen_qevent.QMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QScrollBarmoveEvent*(self: gen_qscrollbar_types.QScrollBar, event: gen_qevent.QMoveEvent): void =
 
   fQScrollBar_virtualbase_moveEvent(self.h, event.h)
 
-type QScrollBarmoveEventBase* = proc(event: gen_qevent.QMoveEvent): void
-proc onmoveEvent*(self: QScrollBar, slot: proc(super: QScrollBarmoveEventBase, event: gen_qevent.QMoveEvent): void) =
+type QScrollBarmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
+proc onmoveEvent*(self: gen_qscrollbar_types.QScrollBar, slot: QScrollBarmoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QScrollBarmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QScrollBarmoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScrollBar_override_virtual_moveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScrollBar_moveEvent(self: ptr cQScrollBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QScrollBar_moveEvent ".} =
-  type Cb = proc(super: QScrollBarmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMoveEvent): auto =
-    callVirtualBase_moveEvent(QScrollBar(h: self), event)
+  var nimfunc = cast[ptr QScrollBarmoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_resizeEvent(self: QScrollBar, event: gen_qevent.QResizeEvent): void =
-
+  nimfunc[](slotval1)
+proc QScrollBarresizeEvent*(self: gen_qscrollbar_types.QScrollBar, event: gen_qevent.QResizeEvent): void =
 
   fQScrollBar_virtualbase_resizeEvent(self.h, event.h)
 
-type QScrollBarresizeEventBase* = proc(event: gen_qevent.QResizeEvent): void
-proc onresizeEvent*(self: QScrollBar, slot: proc(super: QScrollBarresizeEventBase, event: gen_qevent.QResizeEvent): void) =
+type QScrollBarresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
+proc onresizeEvent*(self: gen_qscrollbar_types.QScrollBar, slot: QScrollBarresizeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QScrollBarresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var tmp = new Cb
+  var tmp = new QScrollBarresizeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScrollBar_override_virtual_resizeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScrollBar_resizeEvent(self: ptr cQScrollBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QScrollBar_resizeEvent ".} =
-  type Cb = proc(super: QScrollBarresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QResizeEvent): auto =
-    callVirtualBase_resizeEvent(QScrollBar(h: self), event)
+  var nimfunc = cast[ptr QScrollBarresizeEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QResizeEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_closeEvent(self: QScrollBar, event: gen_qevent.QCloseEvent): void =
-
+  nimfunc[](slotval1)
+proc QScrollBarcloseEvent*(self: gen_qscrollbar_types.QScrollBar, event: gen_qevent.QCloseEvent): void =
 
   fQScrollBar_virtualbase_closeEvent(self.h, event.h)
 
-type QScrollBarcloseEventBase* = proc(event: gen_qevent.QCloseEvent): void
-proc oncloseEvent*(self: QScrollBar, slot: proc(super: QScrollBarcloseEventBase, event: gen_qevent.QCloseEvent): void) =
+type QScrollBarcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
+proc oncloseEvent*(self: gen_qscrollbar_types.QScrollBar, slot: QScrollBarcloseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QScrollBarcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var tmp = new Cb
+  var tmp = new QScrollBarcloseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScrollBar_override_virtual_closeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScrollBar_closeEvent(self: ptr cQScrollBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QScrollBar_closeEvent ".} =
-  type Cb = proc(super: QScrollBarcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QCloseEvent): auto =
-    callVirtualBase_closeEvent(QScrollBar(h: self), event)
+  var nimfunc = cast[ptr QScrollBarcloseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QCloseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_tabletEvent(self: QScrollBar, event: gen_qevent.QTabletEvent): void =
-
+  nimfunc[](slotval1)
+proc QScrollBartabletEvent*(self: gen_qscrollbar_types.QScrollBar, event: gen_qevent.QTabletEvent): void =
 
   fQScrollBar_virtualbase_tabletEvent(self.h, event.h)
 
-type QScrollBartabletEventBase* = proc(event: gen_qevent.QTabletEvent): void
-proc ontabletEvent*(self: QScrollBar, slot: proc(super: QScrollBartabletEventBase, event: gen_qevent.QTabletEvent): void) =
+type QScrollBartabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
+proc ontabletEvent*(self: gen_qscrollbar_types.QScrollBar, slot: QScrollBartabletEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QScrollBartabletEventBase, event: gen_qevent.QTabletEvent): void
-  var tmp = new Cb
+  var tmp = new QScrollBartabletEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScrollBar_override_virtual_tabletEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScrollBar_tabletEvent(self: ptr cQScrollBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QScrollBar_tabletEvent ".} =
-  type Cb = proc(super: QScrollBartabletEventBase, event: gen_qevent.QTabletEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QTabletEvent): auto =
-    callVirtualBase_tabletEvent(QScrollBar(h: self), event)
+  var nimfunc = cast[ptr QScrollBartabletEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QTabletEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_actionEvent(self: QScrollBar, event: gen_qevent.QActionEvent): void =
-
+  nimfunc[](slotval1)
+proc QScrollBaractionEvent*(self: gen_qscrollbar_types.QScrollBar, event: gen_qevent.QActionEvent): void =
 
   fQScrollBar_virtualbase_actionEvent(self.h, event.h)
 
-type QScrollBaractionEventBase* = proc(event: gen_qevent.QActionEvent): void
-proc onactionEvent*(self: QScrollBar, slot: proc(super: QScrollBaractionEventBase, event: gen_qevent.QActionEvent): void) =
+type QScrollBaractionEventProc* = proc(event: gen_qevent.QActionEvent): void
+proc onactionEvent*(self: gen_qscrollbar_types.QScrollBar, slot: QScrollBaractionEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QScrollBaractionEventBase, event: gen_qevent.QActionEvent): void
-  var tmp = new Cb
+  var tmp = new QScrollBaractionEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScrollBar_override_virtual_actionEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScrollBar_actionEvent(self: ptr cQScrollBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QScrollBar_actionEvent ".} =
-  type Cb = proc(super: QScrollBaractionEventBase, event: gen_qevent.QActionEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QActionEvent): auto =
-    callVirtualBase_actionEvent(QScrollBar(h: self), event)
+  var nimfunc = cast[ptr QScrollBaractionEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QActionEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragEnterEvent(self: QScrollBar, event: gen_qevent.QDragEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QScrollBardragEnterEvent*(self: gen_qscrollbar_types.QScrollBar, event: gen_qevent.QDragEnterEvent): void =
 
   fQScrollBar_virtualbase_dragEnterEvent(self.h, event.h)
 
-type QScrollBardragEnterEventBase* = proc(event: gen_qevent.QDragEnterEvent): void
-proc ondragEnterEvent*(self: QScrollBar, slot: proc(super: QScrollBardragEnterEventBase, event: gen_qevent.QDragEnterEvent): void) =
+type QScrollBardragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
+proc ondragEnterEvent*(self: gen_qscrollbar_types.QScrollBar, slot: QScrollBardragEnterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QScrollBardragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QScrollBardragEnterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScrollBar_override_virtual_dragEnterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScrollBar_dragEnterEvent(self: ptr cQScrollBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QScrollBar_dragEnterEvent ".} =
-  type Cb = proc(super: QScrollBardragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragEnterEvent): auto =
-    callVirtualBase_dragEnterEvent(QScrollBar(h: self), event)
+  var nimfunc = cast[ptr QScrollBardragEnterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragMoveEvent(self: QScrollBar, event: gen_qevent.QDragMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QScrollBardragMoveEvent*(self: gen_qscrollbar_types.QScrollBar, event: gen_qevent.QDragMoveEvent): void =
 
   fQScrollBar_virtualbase_dragMoveEvent(self.h, event.h)
 
-type QScrollBardragMoveEventBase* = proc(event: gen_qevent.QDragMoveEvent): void
-proc ondragMoveEvent*(self: QScrollBar, slot: proc(super: QScrollBardragMoveEventBase, event: gen_qevent.QDragMoveEvent): void) =
+type QScrollBardragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
+proc ondragMoveEvent*(self: gen_qscrollbar_types.QScrollBar, slot: QScrollBardragMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QScrollBardragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QScrollBardragMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScrollBar_override_virtual_dragMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScrollBar_dragMoveEvent(self: ptr cQScrollBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QScrollBar_dragMoveEvent ".} =
-  type Cb = proc(super: QScrollBardragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragMoveEvent): auto =
-    callVirtualBase_dragMoveEvent(QScrollBar(h: self), event)
+  var nimfunc = cast[ptr QScrollBardragMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragLeaveEvent(self: QScrollBar, event: gen_qevent.QDragLeaveEvent): void =
-
+  nimfunc[](slotval1)
+proc QScrollBardragLeaveEvent*(self: gen_qscrollbar_types.QScrollBar, event: gen_qevent.QDragLeaveEvent): void =
 
   fQScrollBar_virtualbase_dragLeaveEvent(self.h, event.h)
 
-type QScrollBardragLeaveEventBase* = proc(event: gen_qevent.QDragLeaveEvent): void
-proc ondragLeaveEvent*(self: QScrollBar, slot: proc(super: QScrollBardragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void) =
+type QScrollBardragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
+proc ondragLeaveEvent*(self: gen_qscrollbar_types.QScrollBar, slot: QScrollBardragLeaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QScrollBardragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var tmp = new Cb
+  var tmp = new QScrollBardragLeaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScrollBar_override_virtual_dragLeaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScrollBar_dragLeaveEvent(self: ptr cQScrollBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QScrollBar_dragLeaveEvent ".} =
-  type Cb = proc(super: QScrollBardragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragLeaveEvent): auto =
-    callVirtualBase_dragLeaveEvent(QScrollBar(h: self), event)
+  var nimfunc = cast[ptr QScrollBardragLeaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragLeaveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dropEvent(self: QScrollBar, event: gen_qevent.QDropEvent): void =
-
+  nimfunc[](slotval1)
+proc QScrollBardropEvent*(self: gen_qscrollbar_types.QScrollBar, event: gen_qevent.QDropEvent): void =
 
   fQScrollBar_virtualbase_dropEvent(self.h, event.h)
 
-type QScrollBardropEventBase* = proc(event: gen_qevent.QDropEvent): void
-proc ondropEvent*(self: QScrollBar, slot: proc(super: QScrollBardropEventBase, event: gen_qevent.QDropEvent): void) =
+type QScrollBardropEventProc* = proc(event: gen_qevent.QDropEvent): void
+proc ondropEvent*(self: gen_qscrollbar_types.QScrollBar, slot: QScrollBardropEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QScrollBardropEventBase, event: gen_qevent.QDropEvent): void
-  var tmp = new Cb
+  var tmp = new QScrollBardropEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScrollBar_override_virtual_dropEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScrollBar_dropEvent(self: ptr cQScrollBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QScrollBar_dropEvent ".} =
-  type Cb = proc(super: QScrollBardropEventBase, event: gen_qevent.QDropEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDropEvent): auto =
-    callVirtualBase_dropEvent(QScrollBar(h: self), event)
+  var nimfunc = cast[ptr QScrollBardropEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDropEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_showEvent(self: QScrollBar, event: gen_qevent.QShowEvent): void =
-
+  nimfunc[](slotval1)
+proc QScrollBarshowEvent*(self: gen_qscrollbar_types.QScrollBar, event: gen_qevent.QShowEvent): void =
 
   fQScrollBar_virtualbase_showEvent(self.h, event.h)
 
-type QScrollBarshowEventBase* = proc(event: gen_qevent.QShowEvent): void
-proc onshowEvent*(self: QScrollBar, slot: proc(super: QScrollBarshowEventBase, event: gen_qevent.QShowEvent): void) =
+type QScrollBarshowEventProc* = proc(event: gen_qevent.QShowEvent): void
+proc onshowEvent*(self: gen_qscrollbar_types.QScrollBar, slot: QScrollBarshowEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QScrollBarshowEventBase, event: gen_qevent.QShowEvent): void
-  var tmp = new Cb
+  var tmp = new QScrollBarshowEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScrollBar_override_virtual_showEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScrollBar_showEvent(self: ptr cQScrollBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QScrollBar_showEvent ".} =
-  type Cb = proc(super: QScrollBarshowEventBase, event: gen_qevent.QShowEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QShowEvent): auto =
-    callVirtualBase_showEvent(QScrollBar(h: self), event)
+  var nimfunc = cast[ptr QScrollBarshowEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QShowEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_nativeEvent(self: QScrollBar, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
+  nimfunc[](slotval1)
+proc QScrollBarnativeEvent*(self: gen_qscrollbar_types.QScrollBar, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
 
   fQScrollBar_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
-type QScrollBarnativeEventBase* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-proc onnativeEvent*(self: QScrollBar, slot: proc(super: QScrollBarnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool) =
+type QScrollBarnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
+proc onnativeEvent*(self: gen_qscrollbar_types.QScrollBar, slot: QScrollBarnativeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QScrollBarnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-  var tmp = new Cb
+  var tmp = new QScrollBarnativeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScrollBar_override_virtual_nativeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScrollBar_nativeEvent(self: ptr cQScrollBar, slot: int, eventType: struct_miqt_string, message: pointer, resultVal: ptr clong): bool {.exportc: "miqt_exec_callback_QScrollBar_nativeEvent ".} =
-  type Cb = proc(super: QScrollBarnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(eventType: seq[byte], message: pointer, resultVal: ptr clong): auto =
-    callVirtualBase_nativeEvent(QScrollBar(h: self), eventType, message, resultVal)
+  var nimfunc = cast[ptr QScrollBarnativeEventProc](cast[pointer](slot))
   var veventType_bytearray = eventType
   var veventTypex_ret = @(toOpenArrayByte(veventType_bytearray.data, 0, int(veventType_bytearray.len)-1))
   c_free(veventType_bytearray.data)
@@ -1182,298 +985,238 @@ proc miqt_exec_callback_QScrollBar_nativeEvent(self: ptr cQScrollBar, slot: int,
   let slotval3 = resultVal
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_metric(self: QScrollBar, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint =
-
+proc QScrollBarmetric*(self: gen_qscrollbar_types.QScrollBar, param1: cint): cint =
 
   fQScrollBar_virtualbase_metric(self.h, cint(param1))
 
-type QScrollBarmetricBase* = proc(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-proc onmetric*(self: QScrollBar, slot: proc(super: QScrollBarmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint) =
+type QScrollBarmetricProc* = proc(param1: cint): cint
+proc onmetric*(self: gen_qscrollbar_types.QScrollBar, slot: QScrollBarmetricProc) =
   # TODO check subclass
-  type Cb = proc(super: QScrollBarmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var tmp = new Cb
+  var tmp = new QScrollBarmetricProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScrollBar_override_virtual_metric(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScrollBar_metric(self: ptr cQScrollBar, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QScrollBar_metric ".} =
-  type Cb = proc(super: QScrollBarmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): auto =
-    callVirtualBase_metric(QScrollBar(h: self), param1)
-  let slotval1 = gen_qpaintdevice.QPaintDevicePaintDeviceMetric(param1)
+  var nimfunc = cast[ptr QScrollBarmetricProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_initPainter(self: QScrollBar, painter: gen_qpainter.QPainter): void =
-
+proc QScrollBarinitPainter*(self: gen_qscrollbar_types.QScrollBar, painter: gen_qpainter.QPainter): void =
 
   fQScrollBar_virtualbase_initPainter(self.h, painter.h)
 
-type QScrollBarinitPainterBase* = proc(painter: gen_qpainter.QPainter): void
-proc oninitPainter*(self: QScrollBar, slot: proc(super: QScrollBarinitPainterBase, painter: gen_qpainter.QPainter): void) =
+type QScrollBarinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
+proc oninitPainter*(self: gen_qscrollbar_types.QScrollBar, slot: QScrollBarinitPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QScrollBarinitPainterBase, painter: gen_qpainter.QPainter): void
-  var tmp = new Cb
+  var tmp = new QScrollBarinitPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScrollBar_override_virtual_initPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScrollBar_initPainter(self: ptr cQScrollBar, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_QScrollBar_initPainter ".} =
-  type Cb = proc(super: QScrollBarinitPainterBase, painter: gen_qpainter.QPainter): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter): auto =
-    callVirtualBase_initPainter(QScrollBar(h: self), painter)
+  var nimfunc = cast[ptr QScrollBarinitPainterProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_redirected(self: QScrollBar, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
+  nimfunc[](slotval1)
+proc QScrollBarredirected*(self: gen_qscrollbar_types.QScrollBar, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
 
   gen_qpaintdevice.QPaintDevice(h: fQScrollBar_virtualbase_redirected(self.h, offset.h))
 
-type QScrollBarredirectedBase* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-proc onredirected*(self: QScrollBar, slot: proc(super: QScrollBarredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice) =
+type QScrollBarredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
+proc onredirected*(self: gen_qscrollbar_types.QScrollBar, slot: QScrollBarredirectedProc) =
   # TODO check subclass
-  type Cb = proc(super: QScrollBarredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var tmp = new Cb
+  var tmp = new QScrollBarredirectedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScrollBar_override_virtual_redirected(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScrollBar_redirected(self: ptr cQScrollBar, slot: int, offset: pointer): pointer {.exportc: "miqt_exec_callback_QScrollBar_redirected ".} =
-  type Cb = proc(super: QScrollBarredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(offset: gen_qpoint.QPoint): auto =
-    callVirtualBase_redirected(QScrollBar(h: self), offset)
+  var nimfunc = cast[ptr QScrollBarredirectedProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: offset)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_sharedPainter(self: QScrollBar, ): gen_qpainter.QPainter =
-
+proc QScrollBarsharedPainter*(self: gen_qscrollbar_types.QScrollBar, ): gen_qpainter.QPainter =
 
   gen_qpainter.QPainter(h: fQScrollBar_virtualbase_sharedPainter(self.h))
 
-type QScrollBarsharedPainterBase* = proc(): gen_qpainter.QPainter
-proc onsharedPainter*(self: QScrollBar, slot: proc(super: QScrollBarsharedPainterBase): gen_qpainter.QPainter) =
+type QScrollBarsharedPainterProc* = proc(): gen_qpainter.QPainter
+proc onsharedPainter*(self: gen_qscrollbar_types.QScrollBar, slot: QScrollBarsharedPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QScrollBarsharedPainterBase): gen_qpainter.QPainter
-  var tmp = new Cb
+  var tmp = new QScrollBarsharedPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScrollBar_override_virtual_sharedPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScrollBar_sharedPainter(self: ptr cQScrollBar, slot: int): pointer {.exportc: "miqt_exec_callback_QScrollBar_sharedPainter ".} =
-  type Cb = proc(super: QScrollBarsharedPainterBase): gen_qpainter.QPainter
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sharedPainter(QScrollBar(h: self), )
+  var nimfunc = cast[ptr QScrollBarsharedPainterProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_inputMethodEvent(self: QScrollBar, param1: gen_qevent.QInputMethodEvent): void =
-
+proc QScrollBarinputMethodEvent*(self: gen_qscrollbar_types.QScrollBar, param1: gen_qevent.QInputMethodEvent): void =
 
   fQScrollBar_virtualbase_inputMethodEvent(self.h, param1.h)
 
-type QScrollBarinputMethodEventBase* = proc(param1: gen_qevent.QInputMethodEvent): void
-proc oninputMethodEvent*(self: QScrollBar, slot: proc(super: QScrollBarinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void) =
+type QScrollBarinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
+proc oninputMethodEvent*(self: gen_qscrollbar_types.QScrollBar, slot: QScrollBarinputMethodEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QScrollBarinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var tmp = new Cb
+  var tmp = new QScrollBarinputMethodEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScrollBar_override_virtual_inputMethodEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScrollBar_inputMethodEvent(self: ptr cQScrollBar, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QScrollBar_inputMethodEvent ".} =
-  type Cb = proc(super: QScrollBarinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QInputMethodEvent): auto =
-    callVirtualBase_inputMethodEvent(QScrollBar(h: self), param1)
+  var nimfunc = cast[ptr QScrollBarinputMethodEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QInputMethodEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_inputMethodQuery(self: QScrollBar, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant =
-
+  nimfunc[](slotval1)
+proc QScrollBarinputMethodQuery*(self: gen_qscrollbar_types.QScrollBar, param1: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQScrollBar_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
-type QScrollBarinputMethodQueryBase* = proc(param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-proc oninputMethodQuery*(self: QScrollBar, slot: proc(super: QScrollBarinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant) =
+type QScrollBarinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
+proc oninputMethodQuery*(self: gen_qscrollbar_types.QScrollBar, slot: QScrollBarinputMethodQueryProc) =
   # TODO check subclass
-  type Cb = proc(super: QScrollBarinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QScrollBarinputMethodQueryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScrollBar_override_virtual_inputMethodQuery(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScrollBar_inputMethodQuery(self: ptr cQScrollBar, slot: int, param1: cint): pointer {.exportc: "miqt_exec_callback_QScrollBar_inputMethodQuery ".} =
-  type Cb = proc(super: QScrollBarinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qnamespace.InputMethodQuery): auto =
-    callVirtualBase_inputMethodQuery(QScrollBar(h: self), param1)
-  let slotval1 = gen_qnamespace.InputMethodQuery(param1)
+  var nimfunc = cast[ptr QScrollBarinputMethodQueryProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_focusNextPrevChild(self: QScrollBar, next: bool): bool =
-
+proc QScrollBarfocusNextPrevChild*(self: gen_qscrollbar_types.QScrollBar, next: bool): bool =
 
   fQScrollBar_virtualbase_focusNextPrevChild(self.h, next)
 
-type QScrollBarfocusNextPrevChildBase* = proc(next: bool): bool
-proc onfocusNextPrevChild*(self: QScrollBar, slot: proc(super: QScrollBarfocusNextPrevChildBase, next: bool): bool) =
+type QScrollBarfocusNextPrevChildProc* = proc(next: bool): bool
+proc onfocusNextPrevChild*(self: gen_qscrollbar_types.QScrollBar, slot: QScrollBarfocusNextPrevChildProc) =
   # TODO check subclass
-  type Cb = proc(super: QScrollBarfocusNextPrevChildBase, next: bool): bool
-  var tmp = new Cb
+  var tmp = new QScrollBarfocusNextPrevChildProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScrollBar_override_virtual_focusNextPrevChild(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScrollBar_focusNextPrevChild(self: ptr cQScrollBar, slot: int, next: bool): bool {.exportc: "miqt_exec_callback_QScrollBar_focusNextPrevChild ".} =
-  type Cb = proc(super: QScrollBarfocusNextPrevChildBase, next: bool): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(next: bool): auto =
-    callVirtualBase_focusNextPrevChild(QScrollBar(h: self), next)
+  var nimfunc = cast[ptr QScrollBarfocusNextPrevChildProc](cast[pointer](slot))
   let slotval1 = next
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QScrollBar, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QScrollBareventFilter*(self: gen_qscrollbar_types.QScrollBar, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQScrollBar_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QScrollBareventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QScrollBar, slot: proc(super: QScrollBareventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QScrollBareventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qscrollbar_types.QScrollBar, slot: QScrollBareventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QScrollBareventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QScrollBareventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScrollBar_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScrollBar_eventFilter(self: ptr cQScrollBar, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QScrollBar_eventFilter ".} =
-  type Cb = proc(super: QScrollBareventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QScrollBar(h: self), watched, event)
+  var nimfunc = cast[ptr QScrollBareventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_childEvent(self: QScrollBar, event: gen_qcoreevent.QChildEvent): void =
-
+proc QScrollBarchildEvent*(self: gen_qscrollbar_types.QScrollBar, event: gen_qcoreevent.QChildEvent): void =
 
   fQScrollBar_virtualbase_childEvent(self.h, event.h)
 
-type QScrollBarchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QScrollBar, slot: proc(super: QScrollBarchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QScrollBarchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qscrollbar_types.QScrollBar, slot: QScrollBarchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QScrollBarchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QScrollBarchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScrollBar_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScrollBar_childEvent(self: ptr cQScrollBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QScrollBar_childEvent ".} =
-  type Cb = proc(super: QScrollBarchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QScrollBar(h: self), event)
+  var nimfunc = cast[ptr QScrollBarchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QScrollBar, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QScrollBarcustomEvent*(self: gen_qscrollbar_types.QScrollBar, event: gen_qcoreevent.QEvent): void =
 
   fQScrollBar_virtualbase_customEvent(self.h, event.h)
 
-type QScrollBarcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QScrollBar, slot: proc(super: QScrollBarcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QScrollBarcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qscrollbar_types.QScrollBar, slot: QScrollBarcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QScrollBarcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QScrollBarcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScrollBar_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScrollBar_customEvent(self: ptr cQScrollBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QScrollBar_customEvent ".} =
-  type Cb = proc(super: QScrollBarcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QScrollBar(h: self), event)
+  var nimfunc = cast[ptr QScrollBarcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QScrollBar, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QScrollBarconnectNotify*(self: gen_qscrollbar_types.QScrollBar, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQScrollBar_virtualbase_connectNotify(self.h, signal.h)
 
-type QScrollBarconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QScrollBar, slot: proc(super: QScrollBarconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QScrollBarconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qscrollbar_types.QScrollBar, slot: QScrollBarconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QScrollBarconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QScrollBarconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScrollBar_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScrollBar_connectNotify(self: ptr cQScrollBar, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QScrollBar_connectNotify ".} =
-  type Cb = proc(super: QScrollBarconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QScrollBar(h: self), signal)
+  var nimfunc = cast[ptr QScrollBarconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QScrollBar, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QScrollBardisconnectNotify*(self: gen_qscrollbar_types.QScrollBar, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQScrollBar_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QScrollBardisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QScrollBar, slot: proc(super: QScrollBardisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QScrollBardisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qscrollbar_types.QScrollBar, slot: QScrollBardisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QScrollBardisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QScrollBardisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScrollBar_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScrollBar_disconnectNotify(self: ptr cQScrollBar, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QScrollBar_disconnectNotify ".} =
-  type Cb = proc(super: QScrollBardisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QScrollBar(h: self), signal)
+  var nimfunc = cast[ptr QScrollBardisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QScrollBar): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qscrollbar_types.QScrollBar): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQScrollBar_staticMetaObject())
-proc delete*(self: QScrollBar) =
+proc delete*(self: gen_qscrollbar_types.QScrollBar) =
   fcQScrollBar_delete(self.h)

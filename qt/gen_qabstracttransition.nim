@@ -34,11 +34,9 @@ const cflags = gorge("pkg-config -cflags Qt5Widgets")
 {.compile("gen_qabstracttransition.cpp", cflags).}
 
 
-type QAbstractTransitionTransitionType* = cint
-const
-  QAbstractTransitionExternalTransition* = 0
-  QAbstractTransitionInternalTransition* = 1
-
+type QAbstractTransitionTransitionTypeEnum* = distinct cint
+template ExternalTransition*(_: type QAbstractTransitionTransitionTypeEnum): untyped = 0
+template InternalTransition*(_: type QAbstractTransitionTransitionTypeEnum): untyped = 1
 
 
 import gen_qabstracttransition_types
@@ -113,53 +111,53 @@ proc fcQAbstractTransition_staticMetaObject(): pointer {.importc: "QAbstractTran
 proc fcQAbstractTransition_delete(self: pointer) {.importc: "QAbstractTransition_delete".}
 
 
-func init*(T: type QAbstractTransition, h: ptr cQAbstractTransition): QAbstractTransition =
+func init*(T: type gen_qabstracttransition_types.QAbstractTransition, h: ptr cQAbstractTransition): gen_qabstracttransition_types.QAbstractTransition =
   T(h: h)
-proc create*(T: type QAbstractTransition, ): QAbstractTransition =
+proc create*(T: type gen_qabstracttransition_types.QAbstractTransition, ): gen_qabstracttransition_types.QAbstractTransition =
 
-  QAbstractTransition.init(fcQAbstractTransition_new())
-proc create*(T: type QAbstractTransition, sourceState: gen_qstate.QState): QAbstractTransition =
+  gen_qabstracttransition_types.QAbstractTransition.init(fcQAbstractTransition_new())
+proc create*(T: type gen_qabstracttransition_types.QAbstractTransition, sourceState: gen_qstate.QState): gen_qabstracttransition_types.QAbstractTransition =
 
-  QAbstractTransition.init(fcQAbstractTransition_new2(sourceState.h))
-proc metaObject*(self: QAbstractTransition, ): gen_qobjectdefs.QMetaObject =
+  gen_qabstracttransition_types.QAbstractTransition.init(fcQAbstractTransition_new2(sourceState.h))
+proc metaObject*(self: gen_qabstracttransition_types.QAbstractTransition, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQAbstractTransition_metaObject(self.h))
 
-proc metacast*(self: QAbstractTransition, param1: cstring): pointer =
+proc metacast*(self: gen_qabstracttransition_types.QAbstractTransition, param1: cstring): pointer =
 
   fcQAbstractTransition_metacast(self.h, param1)
 
-proc metacall*(self: QAbstractTransition, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qabstracttransition_types.QAbstractTransition, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQAbstractTransition_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QAbstractTransition, s: cstring): string =
+proc tr*(_: type gen_qabstracttransition_types.QAbstractTransition, s: cstring): string =
 
   let v_ms = fcQAbstractTransition_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QAbstractTransition, s: cstring): string =
+proc trUtf8*(_: type gen_qabstracttransition_types.QAbstractTransition, s: cstring): string =
 
   let v_ms = fcQAbstractTransition_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc sourceState*(self: QAbstractTransition, ): gen_qstate.QState =
+proc sourceState*(self: gen_qabstracttransition_types.QAbstractTransition, ): gen_qstate.QState =
 
   gen_qstate.QState(h: fcQAbstractTransition_sourceState(self.h))
 
-proc targetState*(self: QAbstractTransition, ): gen_qabstractstate.QAbstractState =
+proc targetState*(self: gen_qabstracttransition_types.QAbstractTransition, ): gen_qabstractstate.QAbstractState =
 
   gen_qabstractstate.QAbstractState(h: fcQAbstractTransition_targetState(self.h))
 
-proc setTargetState*(self: QAbstractTransition, target: gen_qabstractstate.QAbstractState): void =
+proc setTargetState*(self: gen_qabstracttransition_types.QAbstractTransition, target: gen_qabstractstate.QAbstractState): void =
 
   fcQAbstractTransition_setTargetState(self.h, target.h)
 
-proc targetStates*(self: QAbstractTransition, ): seq[gen_qabstractstate.QAbstractState] =
+proc targetStates*(self: gen_qabstracttransition_types.QAbstractTransition, ): seq[gen_qabstractstate.QAbstractState] =
 
   var v_ma = fcQAbstractTransition_targetStates(self.h)
   var vx_ret = newSeq[gen_qabstractstate.QAbstractState](int(v_ma.len))
@@ -168,7 +166,7 @@ proc targetStates*(self: QAbstractTransition, ): seq[gen_qabstractstate.QAbstrac
     vx_ret[i] = gen_qabstractstate.QAbstractState(h: v_outCast[i])
   vx_ret
 
-proc setTargetStates*(self: QAbstractTransition, targets: seq[gen_qabstractstate.QAbstractState]): void =
+proc setTargetStates*(self: gen_qabstracttransition_types.QAbstractTransition, targets: seq[gen_qabstractstate.QAbstractState]): void =
 
   var targets_CArray = newSeq[pointer](len(targets))
   for i in 0..<len(targets):
@@ -176,27 +174,27 @@ proc setTargetStates*(self: QAbstractTransition, targets: seq[gen_qabstractstate
 
   fcQAbstractTransition_setTargetStates(self.h, struct_miqt_array(len: csize_t(len(targets)), data: if len(targets) == 0: nil else: addr(targets_CArray[0])))
 
-proc transitionType*(self: QAbstractTransition, ): QAbstractTransitionTransitionType =
+proc transitionType*(self: gen_qabstracttransition_types.QAbstractTransition, ): cint =
 
-  QAbstractTransitionTransitionType(fcQAbstractTransition_transitionType(self.h))
+  cint(fcQAbstractTransition_transitionType(self.h))
 
-proc setTransitionType*(self: QAbstractTransition, typeVal: QAbstractTransitionTransitionType): void =
+proc setTransitionType*(self: gen_qabstracttransition_types.QAbstractTransition, typeVal: cint): void =
 
   fcQAbstractTransition_setTransitionType(self.h, cint(typeVal))
 
-proc machine*(self: QAbstractTransition, ): gen_qstatemachine.QStateMachine =
+proc machine*(self: gen_qabstracttransition_types.QAbstractTransition, ): gen_qstatemachine.QStateMachine =
 
   gen_qstatemachine.QStateMachine(h: fcQAbstractTransition_machine(self.h))
 
-proc addAnimation*(self: QAbstractTransition, animation: gen_qabstractanimation.QAbstractAnimation): void =
+proc addAnimation*(self: gen_qabstracttransition_types.QAbstractTransition, animation: gen_qabstractanimation.QAbstractAnimation): void =
 
   fcQAbstractTransition_addAnimation(self.h, animation.h)
 
-proc removeAnimation*(self: QAbstractTransition, animation: gen_qabstractanimation.QAbstractAnimation): void =
+proc removeAnimation*(self: gen_qabstracttransition_types.QAbstractTransition, animation: gen_qabstractanimation.QAbstractAnimation): void =
 
   fcQAbstractTransition_removeAnimation(self.h, animation.h)
 
-proc animations*(self: QAbstractTransition, ): seq[gen_qabstractanimation.QAbstractAnimation] =
+proc animations*(self: gen_qabstracttransition_types.QAbstractTransition, ): seq[gen_qabstractanimation.QAbstractAnimation] =
 
   var v_ma = fcQAbstractTransition_animations(self.h)
   var vx_ret = newSeq[gen_qabstractanimation.QAbstractAnimation](int(v_ma.len))
@@ -205,313 +203,259 @@ proc animations*(self: QAbstractTransition, ): seq[gen_qabstractanimation.QAbstr
     vx_ret[i] = gen_qabstractanimation.QAbstractAnimation(h: v_outCast[i])
   vx_ret
 
-proc tr2*(_: type QAbstractTransition, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qabstracttransition_types.QAbstractTransition, s: cstring, c: cstring): string =
 
   let v_ms = fcQAbstractTransition_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QAbstractTransition, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qabstracttransition_types.QAbstractTransition, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQAbstractTransition_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QAbstractTransition, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qabstracttransition_types.QAbstractTransition, s: cstring, c: cstring): string =
 
   let v_ms = fcQAbstractTransition_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QAbstractTransition, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qabstracttransition_types.QAbstractTransition, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQAbstractTransition_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QAbstractTransition, ): gen_qobjectdefs.QMetaObject =
-
+proc QAbstractTransitionmetaObject*(self: gen_qabstracttransition_types.QAbstractTransition, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQAbstractTransition_virtualbase_metaObject(self.h))
 
-type QAbstractTransitionmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QAbstractTransition, slot: proc(super: QAbstractTransitionmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QAbstractTransitionmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qabstracttransition_types.QAbstractTransition, slot: QAbstractTransitionmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractTransitionmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QAbstractTransitionmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractTransition_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractTransition_metaObject(self: ptr cQAbstractTransition, slot: int): pointer {.exportc: "miqt_exec_callback_QAbstractTransition_metaObject ".} =
-  type Cb = proc(super: QAbstractTransitionmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QAbstractTransition(h: self), )
+  var nimfunc = cast[ptr QAbstractTransitionmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QAbstractTransition, param1: cstring): pointer =
-
+proc QAbstractTransitionmetacast*(self: gen_qabstracttransition_types.QAbstractTransition, param1: cstring): pointer =
 
   fQAbstractTransition_virtualbase_metacast(self.h, param1)
 
-type QAbstractTransitionmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QAbstractTransition, slot: proc(super: QAbstractTransitionmetacastBase, param1: cstring): pointer) =
+type QAbstractTransitionmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qabstracttransition_types.QAbstractTransition, slot: QAbstractTransitionmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractTransitionmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QAbstractTransitionmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractTransition_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractTransition_metacast(self: ptr cQAbstractTransition, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QAbstractTransition_metacast ".} =
-  type Cb = proc(super: QAbstractTransitionmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QAbstractTransition(h: self), param1)
+  var nimfunc = cast[ptr QAbstractTransitionmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QAbstractTransition, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QAbstractTransitionmetacall*(self: gen_qabstracttransition_types.QAbstractTransition, param1: cint, param2: cint, param3: pointer): cint =
 
   fQAbstractTransition_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QAbstractTransitionmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QAbstractTransition, slot: proc(super: QAbstractTransitionmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QAbstractTransitionmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qabstracttransition_types.QAbstractTransition, slot: QAbstractTransitionmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractTransitionmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QAbstractTransitionmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractTransition_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractTransition_metacall(self: ptr cQAbstractTransition, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QAbstractTransition_metacall ".} =
-  type Cb = proc(super: QAbstractTransitionmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QAbstractTransition(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QAbstractTransitionmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-type QAbstractTransitioneventTestBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc oneventTest*(self: QAbstractTransition, slot: proc(event: gen_qcoreevent.QEvent): bool) =
+type QAbstractTransitioneventTestProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc oneventTest*(self: gen_qabstracttransition_types.QAbstractTransition, slot: QAbstractTransitioneventTestProc) =
   # TODO check subclass
-  type Cb = proc(event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QAbstractTransitioneventTestProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractTransition_override_virtual_eventTest(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractTransition_eventTest(self: ptr cQAbstractTransition, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QAbstractTransition_eventTest ".} =
-  type Cb = proc(event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QAbstractTransitioneventTestProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-type QAbstractTransitiononTransitionBase* = proc(event: gen_qcoreevent.QEvent): void
-proc ononTransition*(self: QAbstractTransition, slot: proc(event: gen_qcoreevent.QEvent): void) =
+type QAbstractTransitiononTransitionProc* = proc(event: gen_qcoreevent.QEvent): void
+proc ononTransition*(self: gen_qabstracttransition_types.QAbstractTransition, slot: QAbstractTransitiononTransitionProc) =
   # TODO check subclass
-  type Cb = proc(event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractTransitiononTransitionProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractTransition_override_virtual_onTransition(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractTransition_onTransition(self: ptr cQAbstractTransition, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAbstractTransition_onTransition ".} =
-  type Cb = proc(event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QAbstractTransitiononTransitionProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
   nimfunc[](slotval1)
-proc callVirtualBase_event(self: QAbstractTransition, e: gen_qcoreevent.QEvent): bool =
-
+proc QAbstractTransitionevent*(self: gen_qabstracttransition_types.QAbstractTransition, e: gen_qcoreevent.QEvent): bool =
 
   fQAbstractTransition_virtualbase_event(self.h, e.h)
 
-type QAbstractTransitioneventBase* = proc(e: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QAbstractTransition, slot: proc(super: QAbstractTransitioneventBase, e: gen_qcoreevent.QEvent): bool) =
+type QAbstractTransitioneventProc* = proc(e: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qabstracttransition_types.QAbstractTransition, slot: QAbstractTransitioneventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractTransitioneventBase, e: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QAbstractTransitioneventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractTransition_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractTransition_event(self: ptr cQAbstractTransition, slot: int, e: pointer): bool {.exportc: "miqt_exec_callback_QAbstractTransition_event ".} =
-  type Cb = proc(super: QAbstractTransitioneventBase, e: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QAbstractTransition(h: self), e)
+  var nimfunc = cast[ptr QAbstractTransitioneventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: e)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QAbstractTransition, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QAbstractTransitioneventFilter*(self: gen_qabstracttransition_types.QAbstractTransition, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQAbstractTransition_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QAbstractTransitioneventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QAbstractTransition, slot: proc(super: QAbstractTransitioneventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QAbstractTransitioneventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qabstracttransition_types.QAbstractTransition, slot: QAbstractTransitioneventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractTransitioneventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QAbstractTransitioneventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractTransition_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractTransition_eventFilter(self: ptr cQAbstractTransition, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QAbstractTransition_eventFilter ".} =
-  type Cb = proc(super: QAbstractTransitioneventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QAbstractTransition(h: self), watched, event)
+  var nimfunc = cast[ptr QAbstractTransitioneventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QAbstractTransition, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QAbstractTransitiontimerEvent*(self: gen_qabstracttransition_types.QAbstractTransition, event: gen_qcoreevent.QTimerEvent): void =
 
   fQAbstractTransition_virtualbase_timerEvent(self.h, event.h)
 
-type QAbstractTransitiontimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QAbstractTransition, slot: proc(super: QAbstractTransitiontimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QAbstractTransitiontimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qabstracttransition_types.QAbstractTransition, slot: QAbstractTransitiontimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractTransitiontimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractTransitiontimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractTransition_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractTransition_timerEvent(self: ptr cQAbstractTransition, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAbstractTransition_timerEvent ".} =
-  type Cb = proc(super: QAbstractTransitiontimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QAbstractTransition(h: self), event)
+  var nimfunc = cast[ptr QAbstractTransitiontimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QAbstractTransition, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QAbstractTransitionchildEvent*(self: gen_qabstracttransition_types.QAbstractTransition, event: gen_qcoreevent.QChildEvent): void =
 
   fQAbstractTransition_virtualbase_childEvent(self.h, event.h)
 
-type QAbstractTransitionchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QAbstractTransition, slot: proc(super: QAbstractTransitionchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QAbstractTransitionchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qabstracttransition_types.QAbstractTransition, slot: QAbstractTransitionchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractTransitionchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractTransitionchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractTransition_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractTransition_childEvent(self: ptr cQAbstractTransition, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAbstractTransition_childEvent ".} =
-  type Cb = proc(super: QAbstractTransitionchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QAbstractTransition(h: self), event)
+  var nimfunc = cast[ptr QAbstractTransitionchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QAbstractTransition, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QAbstractTransitioncustomEvent*(self: gen_qabstracttransition_types.QAbstractTransition, event: gen_qcoreevent.QEvent): void =
 
   fQAbstractTransition_virtualbase_customEvent(self.h, event.h)
 
-type QAbstractTransitioncustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QAbstractTransition, slot: proc(super: QAbstractTransitioncustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QAbstractTransitioncustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qabstracttransition_types.QAbstractTransition, slot: QAbstractTransitioncustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractTransitioncustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractTransitioncustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractTransition_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractTransition_customEvent(self: ptr cQAbstractTransition, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAbstractTransition_customEvent ".} =
-  type Cb = proc(super: QAbstractTransitioncustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QAbstractTransition(h: self), event)
+  var nimfunc = cast[ptr QAbstractTransitioncustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QAbstractTransition, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QAbstractTransitionconnectNotify*(self: gen_qabstracttransition_types.QAbstractTransition, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQAbstractTransition_virtualbase_connectNotify(self.h, signal.h)
 
-type QAbstractTransitionconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QAbstractTransition, slot: proc(super: QAbstractTransitionconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QAbstractTransitionconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qabstracttransition_types.QAbstractTransition, slot: QAbstractTransitionconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractTransitionconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QAbstractTransitionconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractTransition_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractTransition_connectNotify(self: ptr cQAbstractTransition, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QAbstractTransition_connectNotify ".} =
-  type Cb = proc(super: QAbstractTransitionconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QAbstractTransition(h: self), signal)
+  var nimfunc = cast[ptr QAbstractTransitionconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QAbstractTransition, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QAbstractTransitiondisconnectNotify*(self: gen_qabstracttransition_types.QAbstractTransition, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQAbstractTransition_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QAbstractTransitiondisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QAbstractTransition, slot: proc(super: QAbstractTransitiondisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QAbstractTransitiondisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qabstracttransition_types.QAbstractTransition, slot: QAbstractTransitiondisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractTransitiondisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QAbstractTransitiondisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractTransition_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractTransition_disconnectNotify(self: ptr cQAbstractTransition, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QAbstractTransition_disconnectNotify ".} =
-  type Cb = proc(super: QAbstractTransitiondisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QAbstractTransition(h: self), signal)
+  var nimfunc = cast[ptr QAbstractTransitiondisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QAbstractTransition): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qabstracttransition_types.QAbstractTransition): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQAbstractTransition_staticMetaObject())
-proc delete*(self: QAbstractTransition) =
+proc delete*(self: gen_qabstracttransition_types.QAbstractTransition) =
   fcQAbstractTransition_delete(self.h)

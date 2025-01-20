@@ -38,10 +38,8 @@ import gen_qbasictimer_types
 export gen_qbasictimer_types
 
 import
-  gen_qnamespace,
   gen_qobject
 export
-  gen_qnamespace,
   gen_qobject
 
 type cQBasicTimer*{.exportc: "QBasicTimer", incompleteStruct.} = object
@@ -56,34 +54,34 @@ proc fcQBasicTimer_stop(self: pointer, ): void {.importc: "QBasicTimer_stop".}
 proc fcQBasicTimer_delete(self: pointer) {.importc: "QBasicTimer_delete".}
 
 
-func init*(T: type QBasicTimer, h: ptr cQBasicTimer): QBasicTimer =
+func init*(T: type gen_qbasictimer_types.QBasicTimer, h: ptr cQBasicTimer): gen_qbasictimer_types.QBasicTimer =
   T(h: h)
-proc create*(T: type QBasicTimer, ): QBasicTimer =
+proc create*(T: type gen_qbasictimer_types.QBasicTimer, ): gen_qbasictimer_types.QBasicTimer =
 
-  QBasicTimer.init(fcQBasicTimer_new())
-proc swap*(self: QBasicTimer, other: QBasicTimer): void =
+  gen_qbasictimer_types.QBasicTimer.init(fcQBasicTimer_new())
+proc swap*(self: gen_qbasictimer_types.QBasicTimer, other: gen_qbasictimer_types.QBasicTimer): void =
 
   fcQBasicTimer_swap(self.h, other.h)
 
-proc isActive*(self: QBasicTimer, ): bool =
+proc isActive*(self: gen_qbasictimer_types.QBasicTimer, ): bool =
 
   fcQBasicTimer_isActive(self.h)
 
-proc timerId*(self: QBasicTimer, ): cint =
+proc timerId*(self: gen_qbasictimer_types.QBasicTimer, ): cint =
 
   fcQBasicTimer_timerId(self.h)
 
-proc start*(self: QBasicTimer, msec: cint, obj: gen_qobject.QObject): void =
+proc start*(self: gen_qbasictimer_types.QBasicTimer, msec: cint, obj: gen_qobject.QObject): void =
 
   fcQBasicTimer_start(self.h, msec, obj.h)
 
-proc start2*(self: QBasicTimer, msec: cint, timerType: gen_qnamespace.TimerType, obj: gen_qobject.QObject): void =
+proc start2*(self: gen_qbasictimer_types.QBasicTimer, msec: cint, timerType: cint, obj: gen_qobject.QObject): void =
 
   fcQBasicTimer_start2(self.h, msec, cint(timerType), obj.h)
 
-proc stop*(self: QBasicTimer, ): void =
+proc stop*(self: gen_qbasictimer_types.QBasicTimer, ): void =
 
   fcQBasicTimer_stop(self.h)
 
-proc delete*(self: QBasicTimer) =
+proc delete*(self: gen_qbasictimer_types.QBasicTimer) =
   fcQBasicTimer_delete(self.h)

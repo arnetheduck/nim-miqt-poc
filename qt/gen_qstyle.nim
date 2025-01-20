@@ -34,627 +34,605 @@ const cflags = gorge("pkg-config -cflags Qt5Widgets")
 {.compile("gen_qstyle.cpp", cflags).}
 
 
-type QStyleStateFlag* = cint
-const
-  QStyleState_None* = 0
-  QStyleState_Enabled* = 1
-  QStyleState_Raised* = 2
-  QStyleState_Sunken* = 4
-  QStyleState_Off* = 8
-  QStyleState_NoChange* = 16
-  QStyleState_On* = 32
-  QStyleState_DownArrow* = 64
-  QStyleState_Horizontal* = 128
-  QStyleState_HasFocus* = 256
-  QStyleState_Top* = 512
-  QStyleState_Bottom* = 1024
-  QStyleState_FocusAtBorder* = 2048
-  QStyleState_AutoRaise* = 4096
-  QStyleState_MouseOver* = 8192
-  QStyleState_UpArrow* = 16384
-  QStyleState_Selected* = 32768
-  QStyleState_Active* = 65536
-  QStyleState_Window* = 131072
-  QStyleState_Open* = 262144
-  QStyleState_Children* = 524288
-  QStyleState_Item* = 1048576
-  QStyleState_Sibling* = 2097152
-  QStyleState_Editing* = 4194304
-  QStyleState_KeyboardFocusChange* = 8388608
-  QStyleState_ReadOnly* = 33554432
-  QStyleState_Small* = 67108864
-  QStyleState_Mini* = 134217728
+type QStyleStateFlagEnum* = distinct cint
+template State_None*(_: type QStyleStateFlagEnum): untyped = 0
+template State_Enabled*(_: type QStyleStateFlagEnum): untyped = 1
+template State_Raised*(_: type QStyleStateFlagEnum): untyped = 2
+template State_Sunken*(_: type QStyleStateFlagEnum): untyped = 4
+template State_Off*(_: type QStyleStateFlagEnum): untyped = 8
+template State_NoChange*(_: type QStyleStateFlagEnum): untyped = 16
+template State_On*(_: type QStyleStateFlagEnum): untyped = 32
+template State_DownArrow*(_: type QStyleStateFlagEnum): untyped = 64
+template State_Horizontal*(_: type QStyleStateFlagEnum): untyped = 128
+template State_HasFocus*(_: type QStyleStateFlagEnum): untyped = 256
+template State_Top*(_: type QStyleStateFlagEnum): untyped = 512
+template State_Bottom*(_: type QStyleStateFlagEnum): untyped = 1024
+template State_FocusAtBorder*(_: type QStyleStateFlagEnum): untyped = 2048
+template State_AutoRaise*(_: type QStyleStateFlagEnum): untyped = 4096
+template State_MouseOver*(_: type QStyleStateFlagEnum): untyped = 8192
+template State_UpArrow*(_: type QStyleStateFlagEnum): untyped = 16384
+template State_Selected*(_: type QStyleStateFlagEnum): untyped = 32768
+template State_Active*(_: type QStyleStateFlagEnum): untyped = 65536
+template State_Window*(_: type QStyleStateFlagEnum): untyped = 131072
+template State_Open*(_: type QStyleStateFlagEnum): untyped = 262144
+template State_Children*(_: type QStyleStateFlagEnum): untyped = 524288
+template State_Item*(_: type QStyleStateFlagEnum): untyped = 1048576
+template State_Sibling*(_: type QStyleStateFlagEnum): untyped = 2097152
+template State_Editing*(_: type QStyleStateFlagEnum): untyped = 4194304
+template State_KeyboardFocusChange*(_: type QStyleStateFlagEnum): untyped = 8388608
+template State_ReadOnly*(_: type QStyleStateFlagEnum): untyped = 33554432
+template State_Small*(_: type QStyleStateFlagEnum): untyped = 67108864
+template State_Mini*(_: type QStyleStateFlagEnum): untyped = 134217728
 
 
-
-type QStylePrimitiveElement* = cint
-const
-  QStylePE_Frame* = 0
-  QStylePE_FrameDefaultButton* = 1
-  QStylePE_FrameDockWidget* = 2
-  QStylePE_FrameFocusRect* = 3
-  QStylePE_FrameGroupBox* = 4
-  QStylePE_FrameLineEdit* = 5
-  QStylePE_FrameMenu* = 6
-  QStylePE_FrameStatusBarItem* = 7
-  QStylePE_FrameStatusBar* = 7
-  QStylePE_FrameTabWidget* = 8
-  QStylePE_FrameWindow* = 9
-  QStylePE_FrameButtonBevel* = 10
-  QStylePE_FrameButtonTool* = 11
-  QStylePE_FrameTabBarBase* = 12
-  QStylePE_PanelButtonCommand* = 13
-  QStylePE_PanelButtonBevel* = 14
-  QStylePE_PanelButtonTool* = 15
-  QStylePE_PanelMenuBar* = 16
-  QStylePE_PanelToolBar* = 17
-  QStylePE_PanelLineEdit* = 18
-  QStylePE_IndicatorArrowDown* = 19
-  QStylePE_IndicatorArrowLeft* = 20
-  QStylePE_IndicatorArrowRight* = 21
-  QStylePE_IndicatorArrowUp* = 22
-  QStylePE_IndicatorBranch* = 23
-  QStylePE_IndicatorButtonDropDown* = 24
-  QStylePE_IndicatorItemViewItemCheck* = 25
-  QStylePE_IndicatorViewItemCheck* = 25
-  QStylePE_IndicatorCheckBox* = 26
-  QStylePE_IndicatorDockWidgetResizeHandle* = 27
-  QStylePE_IndicatorHeaderArrow* = 28
-  QStylePE_IndicatorMenuCheckMark* = 29
-  QStylePE_IndicatorProgressChunk* = 30
-  QStylePE_IndicatorRadioButton* = 31
-  QStylePE_IndicatorSpinDown* = 32
-  QStylePE_IndicatorSpinMinus* = 33
-  QStylePE_IndicatorSpinPlus* = 34
-  QStylePE_IndicatorSpinUp* = 35
-  QStylePE_IndicatorToolBarHandle* = 36
-  QStylePE_IndicatorToolBarSeparator* = 37
-  QStylePE_PanelTipLabel* = 38
-  QStylePE_IndicatorTabTear* = 39
-  QStylePE_IndicatorTabTearLeft* = 39
-  QStylePE_PanelScrollAreaCorner* = 40
-  QStylePE_Widget* = 41
-  QStylePE_IndicatorColumnViewArrow* = 42
-  QStylePE_IndicatorItemViewItemDrop* = 43
-  QStylePE_PanelItemViewItem* = 44
-  QStylePE_PanelItemViewRow* = 45
-  QStylePE_PanelStatusBar* = 46
-  QStylePE_IndicatorTabClose* = 47
-  QStylePE_PanelMenu* = 48
-  QStylePE_IndicatorTabTearRight* = 49
-  QStylePE_CustomBase* = 251658240
+type QStylePrimitiveElementEnum* = distinct cint
+template PE_Frame*(_: type QStylePrimitiveElementEnum): untyped = 0
+template PE_FrameDefaultButton*(_: type QStylePrimitiveElementEnum): untyped = 1
+template PE_FrameDockWidget*(_: type QStylePrimitiveElementEnum): untyped = 2
+template PE_FrameFocusRect*(_: type QStylePrimitiveElementEnum): untyped = 3
+template PE_FrameGroupBox*(_: type QStylePrimitiveElementEnum): untyped = 4
+template PE_FrameLineEdit*(_: type QStylePrimitiveElementEnum): untyped = 5
+template PE_FrameMenu*(_: type QStylePrimitiveElementEnum): untyped = 6
+template PE_FrameStatusBarItem*(_: type QStylePrimitiveElementEnum): untyped = 7
+template PE_FrameStatusBar*(_: type QStylePrimitiveElementEnum): untyped = 7
+template PE_FrameTabWidget*(_: type QStylePrimitiveElementEnum): untyped = 8
+template PE_FrameWindow*(_: type QStylePrimitiveElementEnum): untyped = 9
+template PE_FrameButtonBevel*(_: type QStylePrimitiveElementEnum): untyped = 10
+template PE_FrameButtonTool*(_: type QStylePrimitiveElementEnum): untyped = 11
+template PE_FrameTabBarBase*(_: type QStylePrimitiveElementEnum): untyped = 12
+template PE_PanelButtonCommand*(_: type QStylePrimitiveElementEnum): untyped = 13
+template PE_PanelButtonBevel*(_: type QStylePrimitiveElementEnum): untyped = 14
+template PE_PanelButtonTool*(_: type QStylePrimitiveElementEnum): untyped = 15
+template PE_PanelMenuBar*(_: type QStylePrimitiveElementEnum): untyped = 16
+template PE_PanelToolBar*(_: type QStylePrimitiveElementEnum): untyped = 17
+template PE_PanelLineEdit*(_: type QStylePrimitiveElementEnum): untyped = 18
+template PE_IndicatorArrowDown*(_: type QStylePrimitiveElementEnum): untyped = 19
+template PE_IndicatorArrowLeft*(_: type QStylePrimitiveElementEnum): untyped = 20
+template PE_IndicatorArrowRight*(_: type QStylePrimitiveElementEnum): untyped = 21
+template PE_IndicatorArrowUp*(_: type QStylePrimitiveElementEnum): untyped = 22
+template PE_IndicatorBranch*(_: type QStylePrimitiveElementEnum): untyped = 23
+template PE_IndicatorButtonDropDown*(_: type QStylePrimitiveElementEnum): untyped = 24
+template PE_IndicatorItemViewItemCheck*(_: type QStylePrimitiveElementEnum): untyped = 25
+template PE_IndicatorViewItemCheck*(_: type QStylePrimitiveElementEnum): untyped = 25
+template PE_IndicatorCheckBox*(_: type QStylePrimitiveElementEnum): untyped = 26
+template PE_IndicatorDockWidgetResizeHandle*(_: type QStylePrimitiveElementEnum): untyped = 27
+template PE_IndicatorHeaderArrow*(_: type QStylePrimitiveElementEnum): untyped = 28
+template PE_IndicatorMenuCheckMark*(_: type QStylePrimitiveElementEnum): untyped = 29
+template PE_IndicatorProgressChunk*(_: type QStylePrimitiveElementEnum): untyped = 30
+template PE_IndicatorRadioButton*(_: type QStylePrimitiveElementEnum): untyped = 31
+template PE_IndicatorSpinDown*(_: type QStylePrimitiveElementEnum): untyped = 32
+template PE_IndicatorSpinMinus*(_: type QStylePrimitiveElementEnum): untyped = 33
+template PE_IndicatorSpinPlus*(_: type QStylePrimitiveElementEnum): untyped = 34
+template PE_IndicatorSpinUp*(_: type QStylePrimitiveElementEnum): untyped = 35
+template PE_IndicatorToolBarHandle*(_: type QStylePrimitiveElementEnum): untyped = 36
+template PE_IndicatorToolBarSeparator*(_: type QStylePrimitiveElementEnum): untyped = 37
+template PE_PanelTipLabel*(_: type QStylePrimitiveElementEnum): untyped = 38
+template PE_IndicatorTabTear*(_: type QStylePrimitiveElementEnum): untyped = 39
+template PE_IndicatorTabTearLeft*(_: type QStylePrimitiveElementEnum): untyped = 39
+template PE_PanelScrollAreaCorner*(_: type QStylePrimitiveElementEnum): untyped = 40
+template PE_Widget*(_: type QStylePrimitiveElementEnum): untyped = 41
+template PE_IndicatorColumnViewArrow*(_: type QStylePrimitiveElementEnum): untyped = 42
+template PE_IndicatorItemViewItemDrop*(_: type QStylePrimitiveElementEnum): untyped = 43
+template PE_PanelItemViewItem*(_: type QStylePrimitiveElementEnum): untyped = 44
+template PE_PanelItemViewRow*(_: type QStylePrimitiveElementEnum): untyped = 45
+template PE_PanelStatusBar*(_: type QStylePrimitiveElementEnum): untyped = 46
+template PE_IndicatorTabClose*(_: type QStylePrimitiveElementEnum): untyped = 47
+template PE_PanelMenu*(_: type QStylePrimitiveElementEnum): untyped = 48
+template PE_IndicatorTabTearRight*(_: type QStylePrimitiveElementEnum): untyped = 49
+template PE_CustomBase*(_: type QStylePrimitiveElementEnum): untyped = 251658240
 
 
-
-type QStyleControlElement* = cint
-const
-  QStyleCE_PushButton* = 0
-  QStyleCE_PushButtonBevel* = 1
-  QStyleCE_PushButtonLabel* = 2
-  QStyleCE_CheckBox* = 3
-  QStyleCE_CheckBoxLabel* = 4
-  QStyleCE_RadioButton* = 5
-  QStyleCE_RadioButtonLabel* = 6
-  QStyleCE_TabBarTab* = 7
-  QStyleCE_TabBarTabShape* = 8
-  QStyleCE_TabBarTabLabel* = 9
-  QStyleCE_ProgressBar* = 10
-  QStyleCE_ProgressBarGroove* = 11
-  QStyleCE_ProgressBarContents* = 12
-  QStyleCE_ProgressBarLabel* = 13
-  QStyleCE_MenuItem* = 14
-  QStyleCE_MenuScroller* = 15
-  QStyleCE_MenuVMargin* = 16
-  QStyleCE_MenuHMargin* = 17
-  QStyleCE_MenuTearoff* = 18
-  QStyleCE_MenuEmptyArea* = 19
-  QStyleCE_MenuBarItem* = 20
-  QStyleCE_MenuBarEmptyArea* = 21
-  QStyleCE_ToolButtonLabel* = 22
-  QStyleCE_Header* = 23
-  QStyleCE_HeaderSection* = 24
-  QStyleCE_HeaderLabel* = 25
-  QStyleCE_ToolBoxTab* = 26
-  QStyleCE_SizeGrip* = 27
-  QStyleCE_Splitter* = 28
-  QStyleCE_RubberBand* = 29
-  QStyleCE_DockWidgetTitle* = 30
-  QStyleCE_ScrollBarAddLine* = 31
-  QStyleCE_ScrollBarSubLine* = 32
-  QStyleCE_ScrollBarAddPage* = 33
-  QStyleCE_ScrollBarSubPage* = 34
-  QStyleCE_ScrollBarSlider* = 35
-  QStyleCE_ScrollBarFirst* = 36
-  QStyleCE_ScrollBarLast* = 37
-  QStyleCE_FocusFrame* = 38
-  QStyleCE_ComboBoxLabel* = 39
-  QStyleCE_ToolBar* = 40
-  QStyleCE_ToolBoxTabShape* = 41
-  QStyleCE_ToolBoxTabLabel* = 42
-  QStyleCE_HeaderEmptyArea* = 43
-  QStyleCE_ColumnViewGrip* = 44
-  QStyleCE_ItemViewItem* = 45
-  QStyleCE_ShapedFrame* = 46
-  QStyleCE_CustomBase* = 4026531840
+type QStyleControlElementEnum* = distinct cint
+template CE_PushButton*(_: type QStyleControlElementEnum): untyped = 0
+template CE_PushButtonBevel*(_: type QStyleControlElementEnum): untyped = 1
+template CE_PushButtonLabel*(_: type QStyleControlElementEnum): untyped = 2
+template CE_CheckBox*(_: type QStyleControlElementEnum): untyped = 3
+template CE_CheckBoxLabel*(_: type QStyleControlElementEnum): untyped = 4
+template CE_RadioButton*(_: type QStyleControlElementEnum): untyped = 5
+template CE_RadioButtonLabel*(_: type QStyleControlElementEnum): untyped = 6
+template CE_TabBarTab*(_: type QStyleControlElementEnum): untyped = 7
+template CE_TabBarTabShape*(_: type QStyleControlElementEnum): untyped = 8
+template CE_TabBarTabLabel*(_: type QStyleControlElementEnum): untyped = 9
+template CE_ProgressBar*(_: type QStyleControlElementEnum): untyped = 10
+template CE_ProgressBarGroove*(_: type QStyleControlElementEnum): untyped = 11
+template CE_ProgressBarContents*(_: type QStyleControlElementEnum): untyped = 12
+template CE_ProgressBarLabel*(_: type QStyleControlElementEnum): untyped = 13
+template CE_MenuItem*(_: type QStyleControlElementEnum): untyped = 14
+template CE_MenuScroller*(_: type QStyleControlElementEnum): untyped = 15
+template CE_MenuVMargin*(_: type QStyleControlElementEnum): untyped = 16
+template CE_MenuHMargin*(_: type QStyleControlElementEnum): untyped = 17
+template CE_MenuTearoff*(_: type QStyleControlElementEnum): untyped = 18
+template CE_MenuEmptyArea*(_: type QStyleControlElementEnum): untyped = 19
+template CE_MenuBarItem*(_: type QStyleControlElementEnum): untyped = 20
+template CE_MenuBarEmptyArea*(_: type QStyleControlElementEnum): untyped = 21
+template CE_ToolButtonLabel*(_: type QStyleControlElementEnum): untyped = 22
+template CE_Header*(_: type QStyleControlElementEnum): untyped = 23
+template CE_HeaderSection*(_: type QStyleControlElementEnum): untyped = 24
+template CE_HeaderLabel*(_: type QStyleControlElementEnum): untyped = 25
+template CE_ToolBoxTab*(_: type QStyleControlElementEnum): untyped = 26
+template CE_SizeGrip*(_: type QStyleControlElementEnum): untyped = 27
+template CE_Splitter*(_: type QStyleControlElementEnum): untyped = 28
+template CE_RubberBand*(_: type QStyleControlElementEnum): untyped = 29
+template CE_DockWidgetTitle*(_: type QStyleControlElementEnum): untyped = 30
+template CE_ScrollBarAddLine*(_: type QStyleControlElementEnum): untyped = 31
+template CE_ScrollBarSubLine*(_: type QStyleControlElementEnum): untyped = 32
+template CE_ScrollBarAddPage*(_: type QStyleControlElementEnum): untyped = 33
+template CE_ScrollBarSubPage*(_: type QStyleControlElementEnum): untyped = 34
+template CE_ScrollBarSlider*(_: type QStyleControlElementEnum): untyped = 35
+template CE_ScrollBarFirst*(_: type QStyleControlElementEnum): untyped = 36
+template CE_ScrollBarLast*(_: type QStyleControlElementEnum): untyped = 37
+template CE_FocusFrame*(_: type QStyleControlElementEnum): untyped = 38
+template CE_ComboBoxLabel*(_: type QStyleControlElementEnum): untyped = 39
+template CE_ToolBar*(_: type QStyleControlElementEnum): untyped = 40
+template CE_ToolBoxTabShape*(_: type QStyleControlElementEnum): untyped = 41
+template CE_ToolBoxTabLabel*(_: type QStyleControlElementEnum): untyped = 42
+template CE_HeaderEmptyArea*(_: type QStyleControlElementEnum): untyped = 43
+template CE_ColumnViewGrip*(_: type QStyleControlElementEnum): untyped = 44
+template CE_ItemViewItem*(_: type QStyleControlElementEnum): untyped = 45
+template CE_ShapedFrame*(_: type QStyleControlElementEnum): untyped = 46
+template CE_CustomBase*(_: type QStyleControlElementEnum): untyped = 4026531840
 
 
-
-type QStyleSubElement* = cint
-const
-  QStyleSE_PushButtonContents* = 0
-  QStyleSE_PushButtonFocusRect* = 1
-  QStyleSE_CheckBoxIndicator* = 2
-  QStyleSE_CheckBoxContents* = 3
-  QStyleSE_CheckBoxFocusRect* = 4
-  QStyleSE_CheckBoxClickRect* = 5
-  QStyleSE_RadioButtonIndicator* = 6
-  QStyleSE_RadioButtonContents* = 7
-  QStyleSE_RadioButtonFocusRect* = 8
-  QStyleSE_RadioButtonClickRect* = 9
-  QStyleSE_ComboBoxFocusRect* = 10
-  QStyleSE_SliderFocusRect* = 11
-  QStyleSE_ProgressBarGroove* = 12
-  QStyleSE_ProgressBarContents* = 13
-  QStyleSE_ProgressBarLabel* = 14
-  QStyleSE_ToolBoxTabContents* = 15
-  QStyleSE_HeaderLabel* = 16
-  QStyleSE_HeaderArrow* = 17
-  QStyleSE_TabWidgetTabBar* = 18
-  QStyleSE_TabWidgetTabPane* = 19
-  QStyleSE_TabWidgetTabContents* = 20
-  QStyleSE_TabWidgetLeftCorner* = 21
-  QStyleSE_TabWidgetRightCorner* = 22
-  QStyleSE_ItemViewItemCheckIndicator* = 23
-  QStyleSE_ViewItemCheckIndicator* = 23
-  QStyleSE_TabBarTearIndicator* = 24
-  QStyleSE_TabBarTearIndicatorLeft* = 24
-  QStyleSE_TreeViewDisclosureItem* = 25
-  QStyleSE_LineEditContents* = 26
-  QStyleSE_FrameContents* = 27
-  QStyleSE_DockWidgetCloseButton* = 28
-  QStyleSE_DockWidgetFloatButton* = 29
-  QStyleSE_DockWidgetTitleBarText* = 30
-  QStyleSE_DockWidgetIcon* = 31
-  QStyleSE_CheckBoxLayoutItem* = 32
-  QStyleSE_ComboBoxLayoutItem* = 33
-  QStyleSE_DateTimeEditLayoutItem* = 34
-  QStyleSE_DialogButtonBoxLayoutItem* = 35
-  QStyleSE_LabelLayoutItem* = 36
-  QStyleSE_ProgressBarLayoutItem* = 37
-  QStyleSE_PushButtonLayoutItem* = 38
-  QStyleSE_RadioButtonLayoutItem* = 39
-  QStyleSE_SliderLayoutItem* = 40
-  QStyleSE_SpinBoxLayoutItem* = 41
-  QStyleSE_ToolButtonLayoutItem* = 42
-  QStyleSE_FrameLayoutItem* = 43
-  QStyleSE_GroupBoxLayoutItem* = 44
-  QStyleSE_TabWidgetLayoutItem* = 45
-  QStyleSE_ItemViewItemDecoration* = 46
-  QStyleSE_ItemViewItemText* = 47
-  QStyleSE_ItemViewItemFocusRect* = 48
-  QStyleSE_TabBarTabLeftButton* = 49
-  QStyleSE_TabBarTabRightButton* = 50
-  QStyleSE_TabBarTabText* = 51
-  QStyleSE_ShapedFrameContents* = 52
-  QStyleSE_ToolBarHandle* = 53
-  QStyleSE_TabBarScrollLeftButton* = 54
-  QStyleSE_TabBarScrollRightButton* = 55
-  QStyleSE_TabBarTearIndicatorRight* = 56
-  QStyleSE_PushButtonBevel* = 57
-  QStyleSE_CustomBase* = 4026531840
+type QStyleSubElementEnum* = distinct cint
+template SE_PushButtonContents*(_: type QStyleSubElementEnum): untyped = 0
+template SE_PushButtonFocusRect*(_: type QStyleSubElementEnum): untyped = 1
+template SE_CheckBoxIndicator*(_: type QStyleSubElementEnum): untyped = 2
+template SE_CheckBoxContents*(_: type QStyleSubElementEnum): untyped = 3
+template SE_CheckBoxFocusRect*(_: type QStyleSubElementEnum): untyped = 4
+template SE_CheckBoxClickRect*(_: type QStyleSubElementEnum): untyped = 5
+template SE_RadioButtonIndicator*(_: type QStyleSubElementEnum): untyped = 6
+template SE_RadioButtonContents*(_: type QStyleSubElementEnum): untyped = 7
+template SE_RadioButtonFocusRect*(_: type QStyleSubElementEnum): untyped = 8
+template SE_RadioButtonClickRect*(_: type QStyleSubElementEnum): untyped = 9
+template SE_ComboBoxFocusRect*(_: type QStyleSubElementEnum): untyped = 10
+template SE_SliderFocusRect*(_: type QStyleSubElementEnum): untyped = 11
+template SE_ProgressBarGroove*(_: type QStyleSubElementEnum): untyped = 12
+template SE_ProgressBarContents*(_: type QStyleSubElementEnum): untyped = 13
+template SE_ProgressBarLabel*(_: type QStyleSubElementEnum): untyped = 14
+template SE_ToolBoxTabContents*(_: type QStyleSubElementEnum): untyped = 15
+template SE_HeaderLabel*(_: type QStyleSubElementEnum): untyped = 16
+template SE_HeaderArrow*(_: type QStyleSubElementEnum): untyped = 17
+template SE_TabWidgetTabBar*(_: type QStyleSubElementEnum): untyped = 18
+template SE_TabWidgetTabPane*(_: type QStyleSubElementEnum): untyped = 19
+template SE_TabWidgetTabContents*(_: type QStyleSubElementEnum): untyped = 20
+template SE_TabWidgetLeftCorner*(_: type QStyleSubElementEnum): untyped = 21
+template SE_TabWidgetRightCorner*(_: type QStyleSubElementEnum): untyped = 22
+template SE_ItemViewItemCheckIndicator*(_: type QStyleSubElementEnum): untyped = 23
+template SE_ViewItemCheckIndicator*(_: type QStyleSubElementEnum): untyped = 23
+template SE_TabBarTearIndicator*(_: type QStyleSubElementEnum): untyped = 24
+template SE_TabBarTearIndicatorLeft*(_: type QStyleSubElementEnum): untyped = 24
+template SE_TreeViewDisclosureItem*(_: type QStyleSubElementEnum): untyped = 25
+template SE_LineEditContents*(_: type QStyleSubElementEnum): untyped = 26
+template SE_FrameContents*(_: type QStyleSubElementEnum): untyped = 27
+template SE_DockWidgetCloseButton*(_: type QStyleSubElementEnum): untyped = 28
+template SE_DockWidgetFloatButton*(_: type QStyleSubElementEnum): untyped = 29
+template SE_DockWidgetTitleBarText*(_: type QStyleSubElementEnum): untyped = 30
+template SE_DockWidgetIcon*(_: type QStyleSubElementEnum): untyped = 31
+template SE_CheckBoxLayoutItem*(_: type QStyleSubElementEnum): untyped = 32
+template SE_ComboBoxLayoutItem*(_: type QStyleSubElementEnum): untyped = 33
+template SE_DateTimeEditLayoutItem*(_: type QStyleSubElementEnum): untyped = 34
+template SE_DialogButtonBoxLayoutItem*(_: type QStyleSubElementEnum): untyped = 35
+template SE_LabelLayoutItem*(_: type QStyleSubElementEnum): untyped = 36
+template SE_ProgressBarLayoutItem*(_: type QStyleSubElementEnum): untyped = 37
+template SE_PushButtonLayoutItem*(_: type QStyleSubElementEnum): untyped = 38
+template SE_RadioButtonLayoutItem*(_: type QStyleSubElementEnum): untyped = 39
+template SE_SliderLayoutItem*(_: type QStyleSubElementEnum): untyped = 40
+template SE_SpinBoxLayoutItem*(_: type QStyleSubElementEnum): untyped = 41
+template SE_ToolButtonLayoutItem*(_: type QStyleSubElementEnum): untyped = 42
+template SE_FrameLayoutItem*(_: type QStyleSubElementEnum): untyped = 43
+template SE_GroupBoxLayoutItem*(_: type QStyleSubElementEnum): untyped = 44
+template SE_TabWidgetLayoutItem*(_: type QStyleSubElementEnum): untyped = 45
+template SE_ItemViewItemDecoration*(_: type QStyleSubElementEnum): untyped = 46
+template SE_ItemViewItemText*(_: type QStyleSubElementEnum): untyped = 47
+template SE_ItemViewItemFocusRect*(_: type QStyleSubElementEnum): untyped = 48
+template SE_TabBarTabLeftButton*(_: type QStyleSubElementEnum): untyped = 49
+template SE_TabBarTabRightButton*(_: type QStyleSubElementEnum): untyped = 50
+template SE_TabBarTabText*(_: type QStyleSubElementEnum): untyped = 51
+template SE_ShapedFrameContents*(_: type QStyleSubElementEnum): untyped = 52
+template SE_ToolBarHandle*(_: type QStyleSubElementEnum): untyped = 53
+template SE_TabBarScrollLeftButton*(_: type QStyleSubElementEnum): untyped = 54
+template SE_TabBarScrollRightButton*(_: type QStyleSubElementEnum): untyped = 55
+template SE_TabBarTearIndicatorRight*(_: type QStyleSubElementEnum): untyped = 56
+template SE_PushButtonBevel*(_: type QStyleSubElementEnum): untyped = 57
+template SE_CustomBase*(_: type QStyleSubElementEnum): untyped = 4026531840
 
 
-
-type QStyleComplexControl* = cint
-const
-  QStyleCC_SpinBox* = 0
-  QStyleCC_ComboBox* = 1
-  QStyleCC_ScrollBar* = 2
-  QStyleCC_Slider* = 3
-  QStyleCC_ToolButton* = 4
-  QStyleCC_TitleBar* = 5
-  QStyleCC_Dial* = 6
-  QStyleCC_GroupBox* = 7
-  QStyleCC_MdiControls* = 8
-  QStyleCC_CustomBase* = 4026531840
+type QStyleComplexControlEnum* = distinct cint
+template CC_SpinBox*(_: type QStyleComplexControlEnum): untyped = 0
+template CC_ComboBox*(_: type QStyleComplexControlEnum): untyped = 1
+template CC_ScrollBar*(_: type QStyleComplexControlEnum): untyped = 2
+template CC_Slider*(_: type QStyleComplexControlEnum): untyped = 3
+template CC_ToolButton*(_: type QStyleComplexControlEnum): untyped = 4
+template CC_TitleBar*(_: type QStyleComplexControlEnum): untyped = 5
+template CC_Dial*(_: type QStyleComplexControlEnum): untyped = 6
+template CC_GroupBox*(_: type QStyleComplexControlEnum): untyped = 7
+template CC_MdiControls*(_: type QStyleComplexControlEnum): untyped = 8
+template CC_CustomBase*(_: type QStyleComplexControlEnum): untyped = 4026531840
 
 
-
-type QStyleSubControl* = cint
-const
-  QStyleSC_None* = 0
-  QStyleSC_ScrollBarAddLine* = 1
-  QStyleSC_ScrollBarSubLine* = 2
-  QStyleSC_ScrollBarAddPage* = 4
-  QStyleSC_ScrollBarSubPage* = 8
-  QStyleSC_ScrollBarFirst* = 16
-  QStyleSC_ScrollBarLast* = 32
-  QStyleSC_ScrollBarSlider* = 64
-  QStyleSC_ScrollBarGroove* = 128
-  QStyleSC_SpinBoxUp* = 1
-  QStyleSC_SpinBoxDown* = 2
-  QStyleSC_SpinBoxFrame* = 4
-  QStyleSC_SpinBoxEditField* = 8
-  QStyleSC_ComboBoxFrame* = 1
-  QStyleSC_ComboBoxEditField* = 2
-  QStyleSC_ComboBoxArrow* = 4
-  QStyleSC_ComboBoxListBoxPopup* = 8
-  QStyleSC_SliderGroove* = 1
-  QStyleSC_SliderHandle* = 2
-  QStyleSC_SliderTickmarks* = 4
-  QStyleSC_ToolButton* = 1
-  QStyleSC_ToolButtonMenu* = 2
-  QStyleSC_TitleBarSysMenu* = 1
-  QStyleSC_TitleBarMinButton* = 2
-  QStyleSC_TitleBarMaxButton* = 4
-  QStyleSC_TitleBarCloseButton* = 8
-  QStyleSC_TitleBarNormalButton* = 16
-  QStyleSC_TitleBarShadeButton* = 32
-  QStyleSC_TitleBarUnshadeButton* = 64
-  QStyleSC_TitleBarContextHelpButton* = 128
-  QStyleSC_TitleBarLabel* = 256
-  QStyleSC_DialGroove* = 1
-  QStyleSC_DialHandle* = 2
-  QStyleSC_DialTickmarks* = 4
-  QStyleSC_GroupBoxCheckBox* = 1
-  QStyleSC_GroupBoxLabel* = 2
-  QStyleSC_GroupBoxContents* = 4
-  QStyleSC_GroupBoxFrame* = 8
-  QStyleSC_MdiMinButton* = 1
-  QStyleSC_MdiNormalButton* = 2
-  QStyleSC_MdiCloseButton* = 4
-  QStyleSC_CustomBase* = 4026531840
-  QStyleSC_All* = 4294967295
+type QStyleSubControlEnum* = distinct cint
+template SC_None*(_: type QStyleSubControlEnum): untyped = 0
+template SC_ScrollBarAddLine*(_: type QStyleSubControlEnum): untyped = 1
+template SC_ScrollBarSubLine*(_: type QStyleSubControlEnum): untyped = 2
+template SC_ScrollBarAddPage*(_: type QStyleSubControlEnum): untyped = 4
+template SC_ScrollBarSubPage*(_: type QStyleSubControlEnum): untyped = 8
+template SC_ScrollBarFirst*(_: type QStyleSubControlEnum): untyped = 16
+template SC_ScrollBarLast*(_: type QStyleSubControlEnum): untyped = 32
+template SC_ScrollBarSlider*(_: type QStyleSubControlEnum): untyped = 64
+template SC_ScrollBarGroove*(_: type QStyleSubControlEnum): untyped = 128
+template SC_SpinBoxUp*(_: type QStyleSubControlEnum): untyped = 1
+template SC_SpinBoxDown*(_: type QStyleSubControlEnum): untyped = 2
+template SC_SpinBoxFrame*(_: type QStyleSubControlEnum): untyped = 4
+template SC_SpinBoxEditField*(_: type QStyleSubControlEnum): untyped = 8
+template SC_ComboBoxFrame*(_: type QStyleSubControlEnum): untyped = 1
+template SC_ComboBoxEditField*(_: type QStyleSubControlEnum): untyped = 2
+template SC_ComboBoxArrow*(_: type QStyleSubControlEnum): untyped = 4
+template SC_ComboBoxListBoxPopup*(_: type QStyleSubControlEnum): untyped = 8
+template SC_SliderGroove*(_: type QStyleSubControlEnum): untyped = 1
+template SC_SliderHandle*(_: type QStyleSubControlEnum): untyped = 2
+template SC_SliderTickmarks*(_: type QStyleSubControlEnum): untyped = 4
+template SC_ToolButton*(_: type QStyleSubControlEnum): untyped = 1
+template SC_ToolButtonMenu*(_: type QStyleSubControlEnum): untyped = 2
+template SC_TitleBarSysMenu*(_: type QStyleSubControlEnum): untyped = 1
+template SC_TitleBarMinButton*(_: type QStyleSubControlEnum): untyped = 2
+template SC_TitleBarMaxButton*(_: type QStyleSubControlEnum): untyped = 4
+template SC_TitleBarCloseButton*(_: type QStyleSubControlEnum): untyped = 8
+template SC_TitleBarNormalButton*(_: type QStyleSubControlEnum): untyped = 16
+template SC_TitleBarShadeButton*(_: type QStyleSubControlEnum): untyped = 32
+template SC_TitleBarUnshadeButton*(_: type QStyleSubControlEnum): untyped = 64
+template SC_TitleBarContextHelpButton*(_: type QStyleSubControlEnum): untyped = 128
+template SC_TitleBarLabel*(_: type QStyleSubControlEnum): untyped = 256
+template SC_DialGroove*(_: type QStyleSubControlEnum): untyped = 1
+template SC_DialHandle*(_: type QStyleSubControlEnum): untyped = 2
+template SC_DialTickmarks*(_: type QStyleSubControlEnum): untyped = 4
+template SC_GroupBoxCheckBox*(_: type QStyleSubControlEnum): untyped = 1
+template SC_GroupBoxLabel*(_: type QStyleSubControlEnum): untyped = 2
+template SC_GroupBoxContents*(_: type QStyleSubControlEnum): untyped = 4
+template SC_GroupBoxFrame*(_: type QStyleSubControlEnum): untyped = 8
+template SC_MdiMinButton*(_: type QStyleSubControlEnum): untyped = 1
+template SC_MdiNormalButton*(_: type QStyleSubControlEnum): untyped = 2
+template SC_MdiCloseButton*(_: type QStyleSubControlEnum): untyped = 4
+template SC_CustomBase*(_: type QStyleSubControlEnum): untyped = 4026531840
+template SC_All*(_: type QStyleSubControlEnum): untyped = 4294967295
 
 
-
-type QStylePixelMetric* = cint
-const
-  QStylePM_ButtonMargin* = 0
-  QStylePM_ButtonDefaultIndicator* = 1
-  QStylePM_MenuButtonIndicator* = 2
-  QStylePM_ButtonShiftHorizontal* = 3
-  QStylePM_ButtonShiftVertical* = 4
-  QStylePM_DefaultFrameWidth* = 5
-  QStylePM_SpinBoxFrameWidth* = 6
-  QStylePM_ComboBoxFrameWidth* = 7
-  QStylePM_MaximumDragDistance* = 8
-  QStylePM_ScrollBarExtent* = 9
-  QStylePM_ScrollBarSliderMin* = 10
-  QStylePM_SliderThickness* = 11
-  QStylePM_SliderControlThickness* = 12
-  QStylePM_SliderLength* = 13
-  QStylePM_SliderTickmarkOffset* = 14
-  QStylePM_SliderSpaceAvailable* = 15
-  QStylePM_DockWidgetSeparatorExtent* = 16
-  QStylePM_DockWidgetHandleExtent* = 17
-  QStylePM_DockWidgetFrameWidth* = 18
-  QStylePM_TabBarTabOverlap* = 19
-  QStylePM_TabBarTabHSpace* = 20
-  QStylePM_TabBarTabVSpace* = 21
-  QStylePM_TabBarBaseHeight* = 22
-  QStylePM_TabBarBaseOverlap* = 23
-  QStylePM_ProgressBarChunkWidth* = 24
-  QStylePM_SplitterWidth* = 25
-  QStylePM_TitleBarHeight* = 26
-  QStylePM_MenuScrollerHeight* = 27
-  QStylePM_MenuHMargin* = 28
-  QStylePM_MenuVMargin* = 29
-  QStylePM_MenuPanelWidth* = 30
-  QStylePM_MenuTearoffHeight* = 31
-  QStylePM_MenuDesktopFrameWidth* = 32
-  QStylePM_MenuBarPanelWidth* = 33
-  QStylePM_MenuBarItemSpacing* = 34
-  QStylePM_MenuBarVMargin* = 35
-  QStylePM_MenuBarHMargin* = 36
-  QStylePM_IndicatorWidth* = 37
-  QStylePM_IndicatorHeight* = 38
-  QStylePM_ExclusiveIndicatorWidth* = 39
-  QStylePM_ExclusiveIndicatorHeight* = 40
-  QStylePM_DialogButtonsSeparator* = 41
-  QStylePM_DialogButtonsButtonWidth* = 42
-  QStylePM_DialogButtonsButtonHeight* = 43
-  QStylePM_MdiSubWindowFrameWidth* = 44
-  QStylePM_MdiSubWindowMinimizedWidth* = 45
-  QStylePM_MDIFrameWidth* = 44
-  QStylePM_MDIMinimizedWidth* = 45
-  QStylePM_HeaderMargin* = 46
-  QStylePM_HeaderMarkSize* = 47
-  QStylePM_HeaderGripMargin* = 48
-  QStylePM_TabBarTabShiftHorizontal* = 49
-  QStylePM_TabBarTabShiftVertical* = 50
-  QStylePM_TabBarScrollButtonWidth* = 51
-  QStylePM_ToolBarFrameWidth* = 52
-  QStylePM_ToolBarHandleExtent* = 53
-  QStylePM_ToolBarItemSpacing* = 54
-  QStylePM_ToolBarItemMargin* = 55
-  QStylePM_ToolBarSeparatorExtent* = 56
-  QStylePM_ToolBarExtensionExtent* = 57
-  QStylePM_SpinBoxSliderHeight* = 58
-  QStylePM_DefaultTopLevelMargin* = 59
-  QStylePM_DefaultChildMargin* = 60
-  QStylePM_DefaultLayoutSpacing* = 61
-  QStylePM_ToolBarIconSize* = 62
-  QStylePM_ListViewIconSize* = 63
-  QStylePM_IconViewIconSize* = 64
-  QStylePM_SmallIconSize* = 65
-  QStylePM_LargeIconSize* = 66
-  QStylePM_FocusFrameVMargin* = 67
-  QStylePM_FocusFrameHMargin* = 68
-  QStylePM_ToolTipLabelFrameWidth* = 69
-  QStylePM_CheckBoxLabelSpacing* = 70
-  QStylePM_TabBarIconSize* = 71
-  QStylePM_SizeGripSize* = 72
-  QStylePM_DockWidgetTitleMargin* = 73
-  QStylePM_MessageBoxIconSize* = 74
-  QStylePM_ButtonIconSize* = 75
-  QStylePM_DockWidgetTitleBarButtonMargin* = 76
-  QStylePM_RadioButtonLabelSpacing* = 77
-  QStylePM_LayoutLeftMargin* = 78
-  QStylePM_LayoutTopMargin* = 79
-  QStylePM_LayoutRightMargin* = 80
-  QStylePM_LayoutBottomMargin* = 81
-  QStylePM_LayoutHorizontalSpacing* = 82
-  QStylePM_LayoutVerticalSpacing* = 83
-  QStylePM_TabBar_ScrollButtonOverlap* = 84
-  QStylePM_TextCursorWidth* = 85
-  QStylePM_TabCloseIndicatorWidth* = 86
-  QStylePM_TabCloseIndicatorHeight* = 87
-  QStylePM_ScrollView_ScrollBarSpacing* = 88
-  QStylePM_ScrollView_ScrollBarOverlap* = 89
-  QStylePM_SubMenuOverlap* = 90
-  QStylePM_TreeViewIndentation* = 91
-  QStylePM_HeaderDefaultSectionSizeHorizontal* = 92
-  QStylePM_HeaderDefaultSectionSizeVertical* = 93
-  QStylePM_TitleBarButtonIconSize* = 94
-  QStylePM_TitleBarButtonSize* = 95
-  QStylePM_CustomBase* = 4026531840
+type QStylePixelMetricEnum* = distinct cint
+template PM_ButtonMargin*(_: type QStylePixelMetricEnum): untyped = 0
+template PM_ButtonDefaultIndicator*(_: type QStylePixelMetricEnum): untyped = 1
+template PM_MenuButtonIndicator*(_: type QStylePixelMetricEnum): untyped = 2
+template PM_ButtonShiftHorizontal*(_: type QStylePixelMetricEnum): untyped = 3
+template PM_ButtonShiftVertical*(_: type QStylePixelMetricEnum): untyped = 4
+template PM_DefaultFrameWidth*(_: type QStylePixelMetricEnum): untyped = 5
+template PM_SpinBoxFrameWidth*(_: type QStylePixelMetricEnum): untyped = 6
+template PM_ComboBoxFrameWidth*(_: type QStylePixelMetricEnum): untyped = 7
+template PM_MaximumDragDistance*(_: type QStylePixelMetricEnum): untyped = 8
+template PM_ScrollBarExtent*(_: type QStylePixelMetricEnum): untyped = 9
+template PM_ScrollBarSliderMin*(_: type QStylePixelMetricEnum): untyped = 10
+template PM_SliderThickness*(_: type QStylePixelMetricEnum): untyped = 11
+template PM_SliderControlThickness*(_: type QStylePixelMetricEnum): untyped = 12
+template PM_SliderLength*(_: type QStylePixelMetricEnum): untyped = 13
+template PM_SliderTickmarkOffset*(_: type QStylePixelMetricEnum): untyped = 14
+template PM_SliderSpaceAvailable*(_: type QStylePixelMetricEnum): untyped = 15
+template PM_DockWidgetSeparatorExtent*(_: type QStylePixelMetricEnum): untyped = 16
+template PM_DockWidgetHandleExtent*(_: type QStylePixelMetricEnum): untyped = 17
+template PM_DockWidgetFrameWidth*(_: type QStylePixelMetricEnum): untyped = 18
+template PM_TabBarTabOverlap*(_: type QStylePixelMetricEnum): untyped = 19
+template PM_TabBarTabHSpace*(_: type QStylePixelMetricEnum): untyped = 20
+template PM_TabBarTabVSpace*(_: type QStylePixelMetricEnum): untyped = 21
+template PM_TabBarBaseHeight*(_: type QStylePixelMetricEnum): untyped = 22
+template PM_TabBarBaseOverlap*(_: type QStylePixelMetricEnum): untyped = 23
+template PM_ProgressBarChunkWidth*(_: type QStylePixelMetricEnum): untyped = 24
+template PM_SplitterWidth*(_: type QStylePixelMetricEnum): untyped = 25
+template PM_TitleBarHeight*(_: type QStylePixelMetricEnum): untyped = 26
+template PM_MenuScrollerHeight*(_: type QStylePixelMetricEnum): untyped = 27
+template PM_MenuHMargin*(_: type QStylePixelMetricEnum): untyped = 28
+template PM_MenuVMargin*(_: type QStylePixelMetricEnum): untyped = 29
+template PM_MenuPanelWidth*(_: type QStylePixelMetricEnum): untyped = 30
+template PM_MenuTearoffHeight*(_: type QStylePixelMetricEnum): untyped = 31
+template PM_MenuDesktopFrameWidth*(_: type QStylePixelMetricEnum): untyped = 32
+template PM_MenuBarPanelWidth*(_: type QStylePixelMetricEnum): untyped = 33
+template PM_MenuBarItemSpacing*(_: type QStylePixelMetricEnum): untyped = 34
+template PM_MenuBarVMargin*(_: type QStylePixelMetricEnum): untyped = 35
+template PM_MenuBarHMargin*(_: type QStylePixelMetricEnum): untyped = 36
+template PM_IndicatorWidth*(_: type QStylePixelMetricEnum): untyped = 37
+template PM_IndicatorHeight*(_: type QStylePixelMetricEnum): untyped = 38
+template PM_ExclusiveIndicatorWidth*(_: type QStylePixelMetricEnum): untyped = 39
+template PM_ExclusiveIndicatorHeight*(_: type QStylePixelMetricEnum): untyped = 40
+template PM_DialogButtonsSeparator*(_: type QStylePixelMetricEnum): untyped = 41
+template PM_DialogButtonsButtonWidth*(_: type QStylePixelMetricEnum): untyped = 42
+template PM_DialogButtonsButtonHeight*(_: type QStylePixelMetricEnum): untyped = 43
+template PM_MdiSubWindowFrameWidth*(_: type QStylePixelMetricEnum): untyped = 44
+template PM_MdiSubWindowMinimizedWidth*(_: type QStylePixelMetricEnum): untyped = 45
+template PM_MDIFrameWidth*(_: type QStylePixelMetricEnum): untyped = 44
+template PM_MDIMinimizedWidth*(_: type QStylePixelMetricEnum): untyped = 45
+template PM_HeaderMargin*(_: type QStylePixelMetricEnum): untyped = 46
+template PM_HeaderMarkSize*(_: type QStylePixelMetricEnum): untyped = 47
+template PM_HeaderGripMargin*(_: type QStylePixelMetricEnum): untyped = 48
+template PM_TabBarTabShiftHorizontal*(_: type QStylePixelMetricEnum): untyped = 49
+template PM_TabBarTabShiftVertical*(_: type QStylePixelMetricEnum): untyped = 50
+template PM_TabBarScrollButtonWidth*(_: type QStylePixelMetricEnum): untyped = 51
+template PM_ToolBarFrameWidth*(_: type QStylePixelMetricEnum): untyped = 52
+template PM_ToolBarHandleExtent*(_: type QStylePixelMetricEnum): untyped = 53
+template PM_ToolBarItemSpacing*(_: type QStylePixelMetricEnum): untyped = 54
+template PM_ToolBarItemMargin*(_: type QStylePixelMetricEnum): untyped = 55
+template PM_ToolBarSeparatorExtent*(_: type QStylePixelMetricEnum): untyped = 56
+template PM_ToolBarExtensionExtent*(_: type QStylePixelMetricEnum): untyped = 57
+template PM_SpinBoxSliderHeight*(_: type QStylePixelMetricEnum): untyped = 58
+template PM_DefaultTopLevelMargin*(_: type QStylePixelMetricEnum): untyped = 59
+template PM_DefaultChildMargin*(_: type QStylePixelMetricEnum): untyped = 60
+template PM_DefaultLayoutSpacing*(_: type QStylePixelMetricEnum): untyped = 61
+template PM_ToolBarIconSize*(_: type QStylePixelMetricEnum): untyped = 62
+template PM_ListViewIconSize*(_: type QStylePixelMetricEnum): untyped = 63
+template PM_IconViewIconSize*(_: type QStylePixelMetricEnum): untyped = 64
+template PM_SmallIconSize*(_: type QStylePixelMetricEnum): untyped = 65
+template PM_LargeIconSize*(_: type QStylePixelMetricEnum): untyped = 66
+template PM_FocusFrameVMargin*(_: type QStylePixelMetricEnum): untyped = 67
+template PM_FocusFrameHMargin*(_: type QStylePixelMetricEnum): untyped = 68
+template PM_ToolTipLabelFrameWidth*(_: type QStylePixelMetricEnum): untyped = 69
+template PM_CheckBoxLabelSpacing*(_: type QStylePixelMetricEnum): untyped = 70
+template PM_TabBarIconSize*(_: type QStylePixelMetricEnum): untyped = 71
+template PM_SizeGripSize*(_: type QStylePixelMetricEnum): untyped = 72
+template PM_DockWidgetTitleMargin*(_: type QStylePixelMetricEnum): untyped = 73
+template PM_MessageBoxIconSize*(_: type QStylePixelMetricEnum): untyped = 74
+template PM_ButtonIconSize*(_: type QStylePixelMetricEnum): untyped = 75
+template PM_DockWidgetTitleBarButtonMargin*(_: type QStylePixelMetricEnum): untyped = 76
+template PM_RadioButtonLabelSpacing*(_: type QStylePixelMetricEnum): untyped = 77
+template PM_LayoutLeftMargin*(_: type QStylePixelMetricEnum): untyped = 78
+template PM_LayoutTopMargin*(_: type QStylePixelMetricEnum): untyped = 79
+template PM_LayoutRightMargin*(_: type QStylePixelMetricEnum): untyped = 80
+template PM_LayoutBottomMargin*(_: type QStylePixelMetricEnum): untyped = 81
+template PM_LayoutHorizontalSpacing*(_: type QStylePixelMetricEnum): untyped = 82
+template PM_LayoutVerticalSpacing*(_: type QStylePixelMetricEnum): untyped = 83
+template PM_TabBar_ScrollButtonOverlap*(_: type QStylePixelMetricEnum): untyped = 84
+template PM_TextCursorWidth*(_: type QStylePixelMetricEnum): untyped = 85
+template PM_TabCloseIndicatorWidth*(_: type QStylePixelMetricEnum): untyped = 86
+template PM_TabCloseIndicatorHeight*(_: type QStylePixelMetricEnum): untyped = 87
+template PM_ScrollView_ScrollBarSpacing*(_: type QStylePixelMetricEnum): untyped = 88
+template PM_ScrollView_ScrollBarOverlap*(_: type QStylePixelMetricEnum): untyped = 89
+template PM_SubMenuOverlap*(_: type QStylePixelMetricEnum): untyped = 90
+template PM_TreeViewIndentation*(_: type QStylePixelMetricEnum): untyped = 91
+template PM_HeaderDefaultSectionSizeHorizontal*(_: type QStylePixelMetricEnum): untyped = 92
+template PM_HeaderDefaultSectionSizeVertical*(_: type QStylePixelMetricEnum): untyped = 93
+template PM_TitleBarButtonIconSize*(_: type QStylePixelMetricEnum): untyped = 94
+template PM_TitleBarButtonSize*(_: type QStylePixelMetricEnum): untyped = 95
+template PM_CustomBase*(_: type QStylePixelMetricEnum): untyped = 4026531840
 
 
-
-type QStyleContentsType* = cint
-const
-  QStyleCT_PushButton* = 0
-  QStyleCT_CheckBox* = 1
-  QStyleCT_RadioButton* = 2
-  QStyleCT_ToolButton* = 3
-  QStyleCT_ComboBox* = 4
-  QStyleCT_Splitter* = 5
-  QStyleCT_ProgressBar* = 6
-  QStyleCT_MenuItem* = 7
-  QStyleCT_MenuBarItem* = 8
-  QStyleCT_MenuBar* = 9
-  QStyleCT_Menu* = 10
-  QStyleCT_TabBarTab* = 11
-  QStyleCT_Slider* = 12
-  QStyleCT_ScrollBar* = 13
-  QStyleCT_LineEdit* = 14
-  QStyleCT_SpinBox* = 15
-  QStyleCT_SizeGrip* = 16
-  QStyleCT_TabWidget* = 17
-  QStyleCT_DialogButtons* = 18
-  QStyleCT_HeaderSection* = 19
-  QStyleCT_GroupBox* = 20
-  QStyleCT_MdiControls* = 21
-  QStyleCT_ItemViewItem* = 22
-  QStyleCT_CustomBase* = 4026531840
+type QStyleContentsTypeEnum* = distinct cint
+template CT_PushButton*(_: type QStyleContentsTypeEnum): untyped = 0
+template CT_CheckBox*(_: type QStyleContentsTypeEnum): untyped = 1
+template CT_RadioButton*(_: type QStyleContentsTypeEnum): untyped = 2
+template CT_ToolButton*(_: type QStyleContentsTypeEnum): untyped = 3
+template CT_ComboBox*(_: type QStyleContentsTypeEnum): untyped = 4
+template CT_Splitter*(_: type QStyleContentsTypeEnum): untyped = 5
+template CT_ProgressBar*(_: type QStyleContentsTypeEnum): untyped = 6
+template CT_MenuItem*(_: type QStyleContentsTypeEnum): untyped = 7
+template CT_MenuBarItem*(_: type QStyleContentsTypeEnum): untyped = 8
+template CT_MenuBar*(_: type QStyleContentsTypeEnum): untyped = 9
+template CT_Menu*(_: type QStyleContentsTypeEnum): untyped = 10
+template CT_TabBarTab*(_: type QStyleContentsTypeEnum): untyped = 11
+template CT_Slider*(_: type QStyleContentsTypeEnum): untyped = 12
+template CT_ScrollBar*(_: type QStyleContentsTypeEnum): untyped = 13
+template CT_LineEdit*(_: type QStyleContentsTypeEnum): untyped = 14
+template CT_SpinBox*(_: type QStyleContentsTypeEnum): untyped = 15
+template CT_SizeGrip*(_: type QStyleContentsTypeEnum): untyped = 16
+template CT_TabWidget*(_: type QStyleContentsTypeEnum): untyped = 17
+template CT_DialogButtons*(_: type QStyleContentsTypeEnum): untyped = 18
+template CT_HeaderSection*(_: type QStyleContentsTypeEnum): untyped = 19
+template CT_GroupBox*(_: type QStyleContentsTypeEnum): untyped = 20
+template CT_MdiControls*(_: type QStyleContentsTypeEnum): untyped = 21
+template CT_ItemViewItem*(_: type QStyleContentsTypeEnum): untyped = 22
+template CT_CustomBase*(_: type QStyleContentsTypeEnum): untyped = 4026531840
 
 
-
-type QStyleRequestSoftwareInputPanel* = cint
-const
-  QStyleRSIP_OnMouseClickAndAlreadyFocused* = 0
-  QStyleRSIP_OnMouseClick* = 1
+type QStyleRequestSoftwareInputPanelEnum* = distinct cint
+template RSIP_OnMouseClickAndAlreadyFocused*(_: type QStyleRequestSoftwareInputPanelEnum): untyped = 0
+template RSIP_OnMouseClick*(_: type QStyleRequestSoftwareInputPanelEnum): untyped = 1
 
 
-
-type QStyleStyleHint* = cint
-const
-  QStyleSH_EtchDisabledText* = 0
-  QStyleSH_DitherDisabledText* = 1
-  QStyleSH_ScrollBar_MiddleClickAbsolutePosition* = 2
-  QStyleSH_ScrollBar_ScrollWhenPointerLeavesControl* = 3
-  QStyleSH_TabBar_SelectMouseType* = 4
-  QStyleSH_TabBar_Alignment* = 5
-  QStyleSH_Header_ArrowAlignment* = 6
-  QStyleSH_Slider_SnapToValue* = 7
-  QStyleSH_Slider_SloppyKeyEvents* = 8
-  QStyleSH_ProgressDialog_CenterCancelButton* = 9
-  QStyleSH_ProgressDialog_TextLabelAlignment* = 10
-  QStyleSH_PrintDialog_RightAlignButtons* = 11
-  QStyleSH_MainWindow_SpaceBelowMenuBar* = 12
-  QStyleSH_FontDialog_SelectAssociatedText* = 13
-  QStyleSH_Menu_AllowActiveAndDisabled* = 14
-  QStyleSH_Menu_SpaceActivatesItem* = 15
-  QStyleSH_Menu_SubMenuPopupDelay* = 16
-  QStyleSH_ScrollView_FrameOnlyAroundContents* = 17
-  QStyleSH_MenuBar_AltKeyNavigation* = 18
-  QStyleSH_ComboBox_ListMouseTracking* = 19
-  QStyleSH_Menu_MouseTracking* = 20
-  QStyleSH_MenuBar_MouseTracking* = 21
-  QStyleSH_ItemView_ChangeHighlightOnFocus* = 22
-  QStyleSH_Widget_ShareActivation* = 23
-  QStyleSH_Workspace_FillSpaceOnMaximize* = 24
-  QStyleSH_ComboBox_Popup* = 25
-  QStyleSH_TitleBar_NoBorder* = 26
-  QStyleSH_Slider_StopMouseOverSlider* = 27
-  QStyleSH_ScrollBar_StopMouseOverSlider* = 27
-  QStyleSH_BlinkCursorWhenTextSelected* = 28
-  QStyleSH_RichText_FullWidthSelection* = 29
-  QStyleSH_Menu_Scrollable* = 30
-  QStyleSH_GroupBox_TextLabelVerticalAlignment* = 31
-  QStyleSH_GroupBox_TextLabelColor* = 32
-  QStyleSH_Menu_SloppySubMenus* = 33
-  QStyleSH_Table_GridLineColor* = 34
-  QStyleSH_LineEdit_PasswordCharacter* = 35
-  QStyleSH_DialogButtons_DefaultButton* = 36
-  QStyleSH_ToolBox_SelectedPageTitleBold* = 37
-  QStyleSH_TabBar_PreferNoArrows* = 38
-  QStyleSH_ScrollBar_LeftClickAbsolutePosition* = 39
-  QStyleSH_ListViewExpand_SelectMouseType* = 40
-  QStyleSH_UnderlineShortcut* = 41
-  QStyleSH_SpinBox_AnimateButton* = 42
-  QStyleSH_SpinBox_KeyPressAutoRepeatRate* = 43
-  QStyleSH_SpinBox_ClickAutoRepeatRate* = 44
-  QStyleSH_Menu_FillScreenWithScroll* = 45
-  QStyleSH_ToolTipLabel_Opacity* = 46
-  QStyleSH_DrawMenuBarSeparator* = 47
-  QStyleSH_TitleBar_ModifyNotification* = 48
-  QStyleSH_Button_FocusPolicy* = 49
-  QStyleSH_MessageBox_UseBorderForButtonSpacing* = 50
-  QStyleSH_TitleBar_AutoRaise* = 51
-  QStyleSH_ToolButton_PopupDelay* = 52
-  QStyleSH_FocusFrame_Mask* = 53
-  QStyleSH_RubberBand_Mask* = 54
-  QStyleSH_WindowFrame_Mask* = 55
-  QStyleSH_SpinControls_DisableOnBounds* = 56
-  QStyleSH_Dial_BackgroundRole* = 57
-  QStyleSH_ComboBox_LayoutDirection* = 58
-  QStyleSH_ItemView_EllipsisLocation* = 59
-  QStyleSH_ItemView_ShowDecorationSelected* = 60
-  QStyleSH_ItemView_ActivateItemOnSingleClick* = 61
-  QStyleSH_ScrollBar_ContextMenu* = 62
-  QStyleSH_ScrollBar_RollBetweenButtons* = 63
-  QStyleSH_Slider_AbsoluteSetButtons* = 64
-  QStyleSH_Slider_PageSetButtons* = 65
-  QStyleSH_Menu_KeyboardSearch* = 66
-  QStyleSH_TabBar_ElideMode* = 67
-  QStyleSH_DialogButtonLayout* = 68
-  QStyleSH_ComboBox_PopupFrameStyle* = 69
-  QStyleSH_MessageBox_TextInteractionFlags* = 70
-  QStyleSH_DialogButtonBox_ButtonsHaveIcons* = 71
-  QStyleSH_SpellCheckUnderlineStyle* = 72
-  QStyleSH_MessageBox_CenterButtons* = 73
-  QStyleSH_Menu_SelectionWrap* = 74
-  QStyleSH_ItemView_MovementWithoutUpdatingSelection* = 75
-  QStyleSH_ToolTip_Mask* = 76
-  QStyleSH_FocusFrame_AboveWidget* = 77
-  QStyleSH_TextControl_FocusIndicatorTextCharFormat* = 78
-  QStyleSH_WizardStyle* = 79
-  QStyleSH_ItemView_ArrowKeysNavigateIntoChildren* = 80
-  QStyleSH_Menu_Mask* = 81
-  QStyleSH_Menu_FlashTriggeredItem* = 82
-  QStyleSH_Menu_FadeOutOnHide* = 83
-  QStyleSH_SpinBox_ClickAutoRepeatThreshold* = 84
-  QStyleSH_ItemView_PaintAlternatingRowColorsForEmptyArea* = 85
-  QStyleSH_FormLayoutWrapPolicy* = 86
-  QStyleSH_TabWidget_DefaultTabPosition* = 87
-  QStyleSH_ToolBar_Movable* = 88
-  QStyleSH_FormLayoutFieldGrowthPolicy* = 89
-  QStyleSH_FormLayoutFormAlignment* = 90
-  QStyleSH_FormLayoutLabelAlignment* = 91
-  QStyleSH_ItemView_DrawDelegateFrame* = 92
-  QStyleSH_TabBar_CloseButtonPosition* = 93
-  QStyleSH_DockWidget_ButtonsHaveFrame* = 94
-  QStyleSH_ToolButtonStyle* = 95
-  QStyleSH_RequestSoftwareInputPanel* = 96
-  QStyleSH_ScrollBar_Transient* = 97
-  QStyleSH_Menu_SupportsSections* = 98
-  QStyleSH_ToolTip_WakeUpDelay* = 99
-  QStyleSH_ToolTip_FallAsleepDelay* = 100
-  QStyleSH_Widget_Animate* = 101
-  QStyleSH_Splitter_OpaqueResize* = 102
-  QStyleSH_ComboBox_UseNativePopup* = 103
-  QStyleSH_LineEdit_PasswordMaskDelay* = 104
-  QStyleSH_TabBar_ChangeCurrentDelay* = 105
-  QStyleSH_Menu_SubMenuUniDirection* = 106
-  QStyleSH_Menu_SubMenuUniDirectionFailCount* = 107
-  QStyleSH_Menu_SubMenuSloppySelectOtherActions* = 108
-  QStyleSH_Menu_SubMenuSloppyCloseTimeout* = 109
-  QStyleSH_Menu_SubMenuResetWhenReenteringParent* = 110
-  QStyleSH_Menu_SubMenuDontStartSloppyOnLeave* = 111
-  QStyleSH_ItemView_ScrollMode* = 112
-  QStyleSH_TitleBar_ShowToolTipsOnButtons* = 113
-  QStyleSH_Widget_Animation_Duration* = 114
-  QStyleSH_ComboBox_AllowWheelScrolling* = 115
-  QStyleSH_SpinBox_ButtonsInsideFrame* = 116
-  QStyleSH_SpinBox_StepModifier* = 117
-  QStyleSH_CustomBase* = 4026531840
+type QStyleStyleHintEnum* = distinct cint
+template SH_EtchDisabledText*(_: type QStyleStyleHintEnum): untyped = 0
+template SH_DitherDisabledText*(_: type QStyleStyleHintEnum): untyped = 1
+template SH_ScrollBar_MiddleClickAbsolutePosition*(_: type QStyleStyleHintEnum): untyped = 2
+template SH_ScrollBar_ScrollWhenPointerLeavesControl*(_: type QStyleStyleHintEnum): untyped = 3
+template SH_TabBar_SelectMouseType*(_: type QStyleStyleHintEnum): untyped = 4
+template SH_TabBar_Alignment*(_: type QStyleStyleHintEnum): untyped = 5
+template SH_Header_ArrowAlignment*(_: type QStyleStyleHintEnum): untyped = 6
+template SH_Slider_SnapToValue*(_: type QStyleStyleHintEnum): untyped = 7
+template SH_Slider_SloppyKeyEvents*(_: type QStyleStyleHintEnum): untyped = 8
+template SH_ProgressDialog_CenterCancelButton*(_: type QStyleStyleHintEnum): untyped = 9
+template SH_ProgressDialog_TextLabelAlignment*(_: type QStyleStyleHintEnum): untyped = 10
+template SH_PrintDialog_RightAlignButtons*(_: type QStyleStyleHintEnum): untyped = 11
+template SH_MainWindow_SpaceBelowMenuBar*(_: type QStyleStyleHintEnum): untyped = 12
+template SH_FontDialog_SelectAssociatedText*(_: type QStyleStyleHintEnum): untyped = 13
+template SH_Menu_AllowActiveAndDisabled*(_: type QStyleStyleHintEnum): untyped = 14
+template SH_Menu_SpaceActivatesItem*(_: type QStyleStyleHintEnum): untyped = 15
+template SH_Menu_SubMenuPopupDelay*(_: type QStyleStyleHintEnum): untyped = 16
+template SH_ScrollView_FrameOnlyAroundContents*(_: type QStyleStyleHintEnum): untyped = 17
+template SH_MenuBar_AltKeyNavigation*(_: type QStyleStyleHintEnum): untyped = 18
+template SH_ComboBox_ListMouseTracking*(_: type QStyleStyleHintEnum): untyped = 19
+template SH_Menu_MouseTracking*(_: type QStyleStyleHintEnum): untyped = 20
+template SH_MenuBar_MouseTracking*(_: type QStyleStyleHintEnum): untyped = 21
+template SH_ItemView_ChangeHighlightOnFocus*(_: type QStyleStyleHintEnum): untyped = 22
+template SH_Widget_ShareActivation*(_: type QStyleStyleHintEnum): untyped = 23
+template SH_Workspace_FillSpaceOnMaximize*(_: type QStyleStyleHintEnum): untyped = 24
+template SH_ComboBox_Popup*(_: type QStyleStyleHintEnum): untyped = 25
+template SH_TitleBar_NoBorder*(_: type QStyleStyleHintEnum): untyped = 26
+template SH_Slider_StopMouseOverSlider*(_: type QStyleStyleHintEnum): untyped = 27
+template SH_ScrollBar_StopMouseOverSlider*(_: type QStyleStyleHintEnum): untyped = 27
+template SH_BlinkCursorWhenTextSelected*(_: type QStyleStyleHintEnum): untyped = 28
+template SH_RichText_FullWidthSelection*(_: type QStyleStyleHintEnum): untyped = 29
+template SH_Menu_Scrollable*(_: type QStyleStyleHintEnum): untyped = 30
+template SH_GroupBox_TextLabelVerticalAlignment*(_: type QStyleStyleHintEnum): untyped = 31
+template SH_GroupBox_TextLabelColor*(_: type QStyleStyleHintEnum): untyped = 32
+template SH_Menu_SloppySubMenus*(_: type QStyleStyleHintEnum): untyped = 33
+template SH_Table_GridLineColor*(_: type QStyleStyleHintEnum): untyped = 34
+template SH_LineEdit_PasswordCharacter*(_: type QStyleStyleHintEnum): untyped = 35
+template SH_DialogButtons_DefaultButton*(_: type QStyleStyleHintEnum): untyped = 36
+template SH_ToolBox_SelectedPageTitleBold*(_: type QStyleStyleHintEnum): untyped = 37
+template SH_TabBar_PreferNoArrows*(_: type QStyleStyleHintEnum): untyped = 38
+template SH_ScrollBar_LeftClickAbsolutePosition*(_: type QStyleStyleHintEnum): untyped = 39
+template SH_ListViewExpand_SelectMouseType*(_: type QStyleStyleHintEnum): untyped = 40
+template SH_UnderlineShortcut*(_: type QStyleStyleHintEnum): untyped = 41
+template SH_SpinBox_AnimateButton*(_: type QStyleStyleHintEnum): untyped = 42
+template SH_SpinBox_KeyPressAutoRepeatRate*(_: type QStyleStyleHintEnum): untyped = 43
+template SH_SpinBox_ClickAutoRepeatRate*(_: type QStyleStyleHintEnum): untyped = 44
+template SH_Menu_FillScreenWithScroll*(_: type QStyleStyleHintEnum): untyped = 45
+template SH_ToolTipLabel_Opacity*(_: type QStyleStyleHintEnum): untyped = 46
+template SH_DrawMenuBarSeparator*(_: type QStyleStyleHintEnum): untyped = 47
+template SH_TitleBar_ModifyNotification*(_: type QStyleStyleHintEnum): untyped = 48
+template SH_Button_FocusPolicy*(_: type QStyleStyleHintEnum): untyped = 49
+template SH_MessageBox_UseBorderForButtonSpacing*(_: type QStyleStyleHintEnum): untyped = 50
+template SH_TitleBar_AutoRaise*(_: type QStyleStyleHintEnum): untyped = 51
+template SH_ToolButton_PopupDelay*(_: type QStyleStyleHintEnum): untyped = 52
+template SH_FocusFrame_Mask*(_: type QStyleStyleHintEnum): untyped = 53
+template SH_RubberBand_Mask*(_: type QStyleStyleHintEnum): untyped = 54
+template SH_WindowFrame_Mask*(_: type QStyleStyleHintEnum): untyped = 55
+template SH_SpinControls_DisableOnBounds*(_: type QStyleStyleHintEnum): untyped = 56
+template SH_Dial_BackgroundRole*(_: type QStyleStyleHintEnum): untyped = 57
+template SH_ComboBox_LayoutDirection*(_: type QStyleStyleHintEnum): untyped = 58
+template SH_ItemView_EllipsisLocation*(_: type QStyleStyleHintEnum): untyped = 59
+template SH_ItemView_ShowDecorationSelected*(_: type QStyleStyleHintEnum): untyped = 60
+template SH_ItemView_ActivateItemOnSingleClick*(_: type QStyleStyleHintEnum): untyped = 61
+template SH_ScrollBar_ContextMenu*(_: type QStyleStyleHintEnum): untyped = 62
+template SH_ScrollBar_RollBetweenButtons*(_: type QStyleStyleHintEnum): untyped = 63
+template SH_Slider_AbsoluteSetButtons*(_: type QStyleStyleHintEnum): untyped = 64
+template SH_Slider_PageSetButtons*(_: type QStyleStyleHintEnum): untyped = 65
+template SH_Menu_KeyboardSearch*(_: type QStyleStyleHintEnum): untyped = 66
+template SH_TabBar_ElideMode*(_: type QStyleStyleHintEnum): untyped = 67
+template SH_DialogButtonLayout*(_: type QStyleStyleHintEnum): untyped = 68
+template SH_ComboBox_PopupFrameStyle*(_: type QStyleStyleHintEnum): untyped = 69
+template SH_MessageBox_TextInteractionFlags*(_: type QStyleStyleHintEnum): untyped = 70
+template SH_DialogButtonBox_ButtonsHaveIcons*(_: type QStyleStyleHintEnum): untyped = 71
+template SH_SpellCheckUnderlineStyle*(_: type QStyleStyleHintEnum): untyped = 72
+template SH_MessageBox_CenterButtons*(_: type QStyleStyleHintEnum): untyped = 73
+template SH_Menu_SelectionWrap*(_: type QStyleStyleHintEnum): untyped = 74
+template SH_ItemView_MovementWithoutUpdatingSelection*(_: type QStyleStyleHintEnum): untyped = 75
+template SH_ToolTip_Mask*(_: type QStyleStyleHintEnum): untyped = 76
+template SH_FocusFrame_AboveWidget*(_: type QStyleStyleHintEnum): untyped = 77
+template SH_TextControl_FocusIndicatorTextCharFormat*(_: type QStyleStyleHintEnum): untyped = 78
+template SH_WizardStyle*(_: type QStyleStyleHintEnum): untyped = 79
+template SH_ItemView_ArrowKeysNavigateIntoChildren*(_: type QStyleStyleHintEnum): untyped = 80
+template SH_Menu_Mask*(_: type QStyleStyleHintEnum): untyped = 81
+template SH_Menu_FlashTriggeredItem*(_: type QStyleStyleHintEnum): untyped = 82
+template SH_Menu_FadeOutOnHide*(_: type QStyleStyleHintEnum): untyped = 83
+template SH_SpinBox_ClickAutoRepeatThreshold*(_: type QStyleStyleHintEnum): untyped = 84
+template SH_ItemView_PaintAlternatingRowColorsForEmptyArea*(_: type QStyleStyleHintEnum): untyped = 85
+template SH_FormLayoutWrapPolicy*(_: type QStyleStyleHintEnum): untyped = 86
+template SH_TabWidget_DefaultTabPosition*(_: type QStyleStyleHintEnum): untyped = 87
+template SH_ToolBar_Movable*(_: type QStyleStyleHintEnum): untyped = 88
+template SH_FormLayoutFieldGrowthPolicy*(_: type QStyleStyleHintEnum): untyped = 89
+template SH_FormLayoutFormAlignment*(_: type QStyleStyleHintEnum): untyped = 90
+template SH_FormLayoutLabelAlignment*(_: type QStyleStyleHintEnum): untyped = 91
+template SH_ItemView_DrawDelegateFrame*(_: type QStyleStyleHintEnum): untyped = 92
+template SH_TabBar_CloseButtonPosition*(_: type QStyleStyleHintEnum): untyped = 93
+template SH_DockWidget_ButtonsHaveFrame*(_: type QStyleStyleHintEnum): untyped = 94
+template SH_ToolButtonStyle*(_: type QStyleStyleHintEnum): untyped = 95
+template SH_RequestSoftwareInputPanel*(_: type QStyleStyleHintEnum): untyped = 96
+template SH_ScrollBar_Transient*(_: type QStyleStyleHintEnum): untyped = 97
+template SH_Menu_SupportsSections*(_: type QStyleStyleHintEnum): untyped = 98
+template SH_ToolTip_WakeUpDelay*(_: type QStyleStyleHintEnum): untyped = 99
+template SH_ToolTip_FallAsleepDelay*(_: type QStyleStyleHintEnum): untyped = 100
+template SH_Widget_Animate*(_: type QStyleStyleHintEnum): untyped = 101
+template SH_Splitter_OpaqueResize*(_: type QStyleStyleHintEnum): untyped = 102
+template SH_ComboBox_UseNativePopup*(_: type QStyleStyleHintEnum): untyped = 103
+template SH_LineEdit_PasswordMaskDelay*(_: type QStyleStyleHintEnum): untyped = 104
+template SH_TabBar_ChangeCurrentDelay*(_: type QStyleStyleHintEnum): untyped = 105
+template SH_Menu_SubMenuUniDirection*(_: type QStyleStyleHintEnum): untyped = 106
+template SH_Menu_SubMenuUniDirectionFailCount*(_: type QStyleStyleHintEnum): untyped = 107
+template SH_Menu_SubMenuSloppySelectOtherActions*(_: type QStyleStyleHintEnum): untyped = 108
+template SH_Menu_SubMenuSloppyCloseTimeout*(_: type QStyleStyleHintEnum): untyped = 109
+template SH_Menu_SubMenuResetWhenReenteringParent*(_: type QStyleStyleHintEnum): untyped = 110
+template SH_Menu_SubMenuDontStartSloppyOnLeave*(_: type QStyleStyleHintEnum): untyped = 111
+template SH_ItemView_ScrollMode*(_: type QStyleStyleHintEnum): untyped = 112
+template SH_TitleBar_ShowToolTipsOnButtons*(_: type QStyleStyleHintEnum): untyped = 113
+template SH_Widget_Animation_Duration*(_: type QStyleStyleHintEnum): untyped = 114
+template SH_ComboBox_AllowWheelScrolling*(_: type QStyleStyleHintEnum): untyped = 115
+template SH_SpinBox_ButtonsInsideFrame*(_: type QStyleStyleHintEnum): untyped = 116
+template SH_SpinBox_StepModifier*(_: type QStyleStyleHintEnum): untyped = 117
+template SH_CustomBase*(_: type QStyleStyleHintEnum): untyped = 4026531840
 
 
-
-type QStyleStandardPixmap* = cint
-const
-  QStyleSP_TitleBarMenuButton* = 0
-  QStyleSP_TitleBarMinButton* = 1
-  QStyleSP_TitleBarMaxButton* = 2
-  QStyleSP_TitleBarCloseButton* = 3
-  QStyleSP_TitleBarNormalButton* = 4
-  QStyleSP_TitleBarShadeButton* = 5
-  QStyleSP_TitleBarUnshadeButton* = 6
-  QStyleSP_TitleBarContextHelpButton* = 7
-  QStyleSP_DockWidgetCloseButton* = 8
-  QStyleSP_MessageBoxInformation* = 9
-  QStyleSP_MessageBoxWarning* = 10
-  QStyleSP_MessageBoxCritical* = 11
-  QStyleSP_MessageBoxQuestion* = 12
-  QStyleSP_DesktopIcon* = 13
-  QStyleSP_TrashIcon* = 14
-  QStyleSP_ComputerIcon* = 15
-  QStyleSP_DriveFDIcon* = 16
-  QStyleSP_DriveHDIcon* = 17
-  QStyleSP_DriveCDIcon* = 18
-  QStyleSP_DriveDVDIcon* = 19
-  QStyleSP_DriveNetIcon* = 20
-  QStyleSP_DirOpenIcon* = 21
-  QStyleSP_DirClosedIcon* = 22
-  QStyleSP_DirLinkIcon* = 23
-  QStyleSP_DirLinkOpenIcon* = 24
-  QStyleSP_FileIcon* = 25
-  QStyleSP_FileLinkIcon* = 26
-  QStyleSP_ToolBarHorizontalExtensionButton* = 27
-  QStyleSP_ToolBarVerticalExtensionButton* = 28
-  QStyleSP_FileDialogStart* = 29
-  QStyleSP_FileDialogEnd* = 30
-  QStyleSP_FileDialogToParent* = 31
-  QStyleSP_FileDialogNewFolder* = 32
-  QStyleSP_FileDialogDetailedView* = 33
-  QStyleSP_FileDialogInfoView* = 34
-  QStyleSP_FileDialogContentsView* = 35
-  QStyleSP_FileDialogListView* = 36
-  QStyleSP_FileDialogBack* = 37
-  QStyleSP_DirIcon* = 38
-  QStyleSP_DialogOkButton* = 39
-  QStyleSP_DialogCancelButton* = 40
-  QStyleSP_DialogHelpButton* = 41
-  QStyleSP_DialogOpenButton* = 42
-  QStyleSP_DialogSaveButton* = 43
-  QStyleSP_DialogCloseButton* = 44
-  QStyleSP_DialogApplyButton* = 45
-  QStyleSP_DialogResetButton* = 46
-  QStyleSP_DialogDiscardButton* = 47
-  QStyleSP_DialogYesButton* = 48
-  QStyleSP_DialogNoButton* = 49
-  QStyleSP_ArrowUp* = 50
-  QStyleSP_ArrowDown* = 51
-  QStyleSP_ArrowLeft* = 52
-  QStyleSP_ArrowRight* = 53
-  QStyleSP_ArrowBack* = 54
-  QStyleSP_ArrowForward* = 55
-  QStyleSP_DirHomeIcon* = 56
-  QStyleSP_CommandLink* = 57
-  QStyleSP_VistaShield* = 58
-  QStyleSP_BrowserReload* = 59
-  QStyleSP_BrowserStop* = 60
-  QStyleSP_MediaPlay* = 61
-  QStyleSP_MediaStop* = 62
-  QStyleSP_MediaPause* = 63
-  QStyleSP_MediaSkipForward* = 64
-  QStyleSP_MediaSkipBackward* = 65
-  QStyleSP_MediaSeekForward* = 66
-  QStyleSP_MediaSeekBackward* = 67
-  QStyleSP_MediaVolume* = 68
-  QStyleSP_MediaVolumeMuted* = 69
-  QStyleSP_LineEditClearButton* = 70
-  QStyleSP_DialogYesToAllButton* = 71
-  QStyleSP_DialogNoToAllButton* = 72
-  QStyleSP_DialogSaveAllButton* = 73
-  QStyleSP_DialogAbortButton* = 74
-  QStyleSP_DialogRetryButton* = 75
-  QStyleSP_DialogIgnoreButton* = 76
-  QStyleSP_RestoreDefaultsButton* = 77
-  QStyleSP_CustomBase* = 4026531840
-
+type QStyleStandardPixmapEnum* = distinct cint
+template SP_TitleBarMenuButton*(_: type QStyleStandardPixmapEnum): untyped = 0
+template SP_TitleBarMinButton*(_: type QStyleStandardPixmapEnum): untyped = 1
+template SP_TitleBarMaxButton*(_: type QStyleStandardPixmapEnum): untyped = 2
+template SP_TitleBarCloseButton*(_: type QStyleStandardPixmapEnum): untyped = 3
+template SP_TitleBarNormalButton*(_: type QStyleStandardPixmapEnum): untyped = 4
+template SP_TitleBarShadeButton*(_: type QStyleStandardPixmapEnum): untyped = 5
+template SP_TitleBarUnshadeButton*(_: type QStyleStandardPixmapEnum): untyped = 6
+template SP_TitleBarContextHelpButton*(_: type QStyleStandardPixmapEnum): untyped = 7
+template SP_DockWidgetCloseButton*(_: type QStyleStandardPixmapEnum): untyped = 8
+template SP_MessageBoxInformation*(_: type QStyleStandardPixmapEnum): untyped = 9
+template SP_MessageBoxWarning*(_: type QStyleStandardPixmapEnum): untyped = 10
+template SP_MessageBoxCritical*(_: type QStyleStandardPixmapEnum): untyped = 11
+template SP_MessageBoxQuestion*(_: type QStyleStandardPixmapEnum): untyped = 12
+template SP_DesktopIcon*(_: type QStyleStandardPixmapEnum): untyped = 13
+template SP_TrashIcon*(_: type QStyleStandardPixmapEnum): untyped = 14
+template SP_ComputerIcon*(_: type QStyleStandardPixmapEnum): untyped = 15
+template SP_DriveFDIcon*(_: type QStyleStandardPixmapEnum): untyped = 16
+template SP_DriveHDIcon*(_: type QStyleStandardPixmapEnum): untyped = 17
+template SP_DriveCDIcon*(_: type QStyleStandardPixmapEnum): untyped = 18
+template SP_DriveDVDIcon*(_: type QStyleStandardPixmapEnum): untyped = 19
+template SP_DriveNetIcon*(_: type QStyleStandardPixmapEnum): untyped = 20
+template SP_DirOpenIcon*(_: type QStyleStandardPixmapEnum): untyped = 21
+template SP_DirClosedIcon*(_: type QStyleStandardPixmapEnum): untyped = 22
+template SP_DirLinkIcon*(_: type QStyleStandardPixmapEnum): untyped = 23
+template SP_DirLinkOpenIcon*(_: type QStyleStandardPixmapEnum): untyped = 24
+template SP_FileIcon*(_: type QStyleStandardPixmapEnum): untyped = 25
+template SP_FileLinkIcon*(_: type QStyleStandardPixmapEnum): untyped = 26
+template SP_ToolBarHorizontalExtensionButton*(_: type QStyleStandardPixmapEnum): untyped = 27
+template SP_ToolBarVerticalExtensionButton*(_: type QStyleStandardPixmapEnum): untyped = 28
+template SP_FileDialogStart*(_: type QStyleStandardPixmapEnum): untyped = 29
+template SP_FileDialogEnd*(_: type QStyleStandardPixmapEnum): untyped = 30
+template SP_FileDialogToParent*(_: type QStyleStandardPixmapEnum): untyped = 31
+template SP_FileDialogNewFolder*(_: type QStyleStandardPixmapEnum): untyped = 32
+template SP_FileDialogDetailedView*(_: type QStyleStandardPixmapEnum): untyped = 33
+template SP_FileDialogInfoView*(_: type QStyleStandardPixmapEnum): untyped = 34
+template SP_FileDialogContentsView*(_: type QStyleStandardPixmapEnum): untyped = 35
+template SP_FileDialogListView*(_: type QStyleStandardPixmapEnum): untyped = 36
+template SP_FileDialogBack*(_: type QStyleStandardPixmapEnum): untyped = 37
+template SP_DirIcon*(_: type QStyleStandardPixmapEnum): untyped = 38
+template SP_DialogOkButton*(_: type QStyleStandardPixmapEnum): untyped = 39
+template SP_DialogCancelButton*(_: type QStyleStandardPixmapEnum): untyped = 40
+template SP_DialogHelpButton*(_: type QStyleStandardPixmapEnum): untyped = 41
+template SP_DialogOpenButton*(_: type QStyleStandardPixmapEnum): untyped = 42
+template SP_DialogSaveButton*(_: type QStyleStandardPixmapEnum): untyped = 43
+template SP_DialogCloseButton*(_: type QStyleStandardPixmapEnum): untyped = 44
+template SP_DialogApplyButton*(_: type QStyleStandardPixmapEnum): untyped = 45
+template SP_DialogResetButton*(_: type QStyleStandardPixmapEnum): untyped = 46
+template SP_DialogDiscardButton*(_: type QStyleStandardPixmapEnum): untyped = 47
+template SP_DialogYesButton*(_: type QStyleStandardPixmapEnum): untyped = 48
+template SP_DialogNoButton*(_: type QStyleStandardPixmapEnum): untyped = 49
+template SP_ArrowUp*(_: type QStyleStandardPixmapEnum): untyped = 50
+template SP_ArrowDown*(_: type QStyleStandardPixmapEnum): untyped = 51
+template SP_ArrowLeft*(_: type QStyleStandardPixmapEnum): untyped = 52
+template SP_ArrowRight*(_: type QStyleStandardPixmapEnum): untyped = 53
+template SP_ArrowBack*(_: type QStyleStandardPixmapEnum): untyped = 54
+template SP_ArrowForward*(_: type QStyleStandardPixmapEnum): untyped = 55
+template SP_DirHomeIcon*(_: type QStyleStandardPixmapEnum): untyped = 56
+template SP_CommandLink*(_: type QStyleStandardPixmapEnum): untyped = 57
+template SP_VistaShield*(_: type QStyleStandardPixmapEnum): untyped = 58
+template SP_BrowserReload*(_: type QStyleStandardPixmapEnum): untyped = 59
+template SP_BrowserStop*(_: type QStyleStandardPixmapEnum): untyped = 60
+template SP_MediaPlay*(_: type QStyleStandardPixmapEnum): untyped = 61
+template SP_MediaStop*(_: type QStyleStandardPixmapEnum): untyped = 62
+template SP_MediaPause*(_: type QStyleStandardPixmapEnum): untyped = 63
+template SP_MediaSkipForward*(_: type QStyleStandardPixmapEnum): untyped = 64
+template SP_MediaSkipBackward*(_: type QStyleStandardPixmapEnum): untyped = 65
+template SP_MediaSeekForward*(_: type QStyleStandardPixmapEnum): untyped = 66
+template SP_MediaSeekBackward*(_: type QStyleStandardPixmapEnum): untyped = 67
+template SP_MediaVolume*(_: type QStyleStandardPixmapEnum): untyped = 68
+template SP_MediaVolumeMuted*(_: type QStyleStandardPixmapEnum): untyped = 69
+template SP_LineEditClearButton*(_: type QStyleStandardPixmapEnum): untyped = 70
+template SP_DialogYesToAllButton*(_: type QStyleStandardPixmapEnum): untyped = 71
+template SP_DialogNoToAllButton*(_: type QStyleStandardPixmapEnum): untyped = 72
+template SP_DialogSaveAllButton*(_: type QStyleStandardPixmapEnum): untyped = 73
+template SP_DialogAbortButton*(_: type QStyleStandardPixmapEnum): untyped = 74
+template SP_DialogRetryButton*(_: type QStyleStandardPixmapEnum): untyped = 75
+template SP_DialogIgnoreButton*(_: type QStyleStandardPixmapEnum): untyped = 76
+template SP_RestoreDefaultsButton*(_: type QStyleStandardPixmapEnum): untyped = 77
+template SP_CustomBase*(_: type QStyleStandardPixmapEnum): untyped = 4026531840
 
 
 import gen_qstyle_types
@@ -666,7 +644,6 @@ import
   gen_qfontmetrics,
   gen_qicon,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpainter,
@@ -675,7 +652,6 @@ import
   gen_qpoint,
   gen_qrect,
   gen_qsize,
-  gen_qsizepolicy,
   gen_qstyleoption,
   gen_qwidget
 export
@@ -684,7 +660,6 @@ export
   gen_qfontmetrics,
   gen_qicon,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpainter,
@@ -693,7 +668,6 @@ export
   gen_qpoint,
   gen_qrect,
   gen_qsize,
-  gen_qsizepolicy,
   gen_qstyleoption,
   gen_qwidget
 
@@ -801,416 +775,371 @@ proc fcQStyle_staticMetaObject(): pointer {.importc: "QStyle_staticMetaObject".}
 proc fcQStyle_delete(self: pointer) {.importc: "QStyle_delete".}
 
 
-func init*(T: type QStyle, h: ptr cQStyle): QStyle =
+func init*(T: type gen_qstyle_types.QStyle, h: ptr cQStyle): gen_qstyle_types.QStyle =
   T(h: h)
-proc create*(T: type QStyle, ): QStyle =
+proc create*(T: type gen_qstyle_types.QStyle, ): gen_qstyle_types.QStyle =
 
-  QStyle.init(fcQStyle_new())
-proc metaObject*(self: QStyle, ): gen_qobjectdefs.QMetaObject =
+  gen_qstyle_types.QStyle.init(fcQStyle_new())
+proc metaObject*(self: gen_qstyle_types.QStyle, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQStyle_metaObject(self.h))
 
-proc metacast*(self: QStyle, param1: cstring): pointer =
+proc metacast*(self: gen_qstyle_types.QStyle, param1: cstring): pointer =
 
   fcQStyle_metacast(self.h, param1)
 
-proc metacall*(self: QStyle, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qstyle_types.QStyle, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQStyle_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QStyle, s: cstring): string =
+proc tr*(_: type gen_qstyle_types.QStyle, s: cstring): string =
 
   let v_ms = fcQStyle_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QStyle, s: cstring): string =
+proc trUtf8*(_: type gen_qstyle_types.QStyle, s: cstring): string =
 
   let v_ms = fcQStyle_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc polish*(self: QStyle, widget: gen_qwidget.QWidget): void =
+proc polish*(self: gen_qstyle_types.QStyle, widget: gen_qwidget.QWidget): void =
 
   fcQStyle_polish(self.h, widget.h)
 
-proc unpolish*(self: QStyle, widget: gen_qwidget.QWidget): void =
+proc unpolish*(self: gen_qstyle_types.QStyle, widget: gen_qwidget.QWidget): void =
 
   fcQStyle_unpolish(self.h, widget.h)
 
-proc polishWithApplication*(self: QStyle, application: gen_qapplication.QApplication): void =
+proc polishWithApplication*(self: gen_qstyle_types.QStyle, application: gen_qapplication.QApplication): void =
 
   fcQStyle_polishWithApplication(self.h, application.h)
 
-proc unpolishWithApplication*(self: QStyle, application: gen_qapplication.QApplication): void =
+proc unpolishWithApplication*(self: gen_qstyle_types.QStyle, application: gen_qapplication.QApplication): void =
 
   fcQStyle_unpolishWithApplication(self.h, application.h)
 
-proc polishWithPalette*(self: QStyle, palette: gen_qpalette.QPalette): void =
+proc polishWithPalette*(self: gen_qstyle_types.QStyle, palette: gen_qpalette.QPalette): void =
 
   fcQStyle_polishWithPalette(self.h, palette.h)
 
-proc itemTextRect*(self: QStyle, fm: gen_qfontmetrics.QFontMetrics, r: gen_qrect.QRect, flags: cint, enabled: bool, text: string): gen_qrect.QRect =
+proc itemTextRect*(self: gen_qstyle_types.QStyle, fm: gen_qfontmetrics.QFontMetrics, r: gen_qrect.QRect, flags: cint, enabled: bool, text: string): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fcQStyle_itemTextRect(self.h, fm.h, r.h, flags, enabled, struct_miqt_string(data: text, len: csize_t(len(text)))))
 
-proc itemPixmapRect*(self: QStyle, r: gen_qrect.QRect, flags: cint, pixmap: gen_qpixmap.QPixmap): gen_qrect.QRect =
+proc itemPixmapRect*(self: gen_qstyle_types.QStyle, r: gen_qrect.QRect, flags: cint, pixmap: gen_qpixmap.QPixmap): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fcQStyle_itemPixmapRect(self.h, r.h, flags, pixmap.h))
 
-proc drawItemText*(self: QStyle, painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, flags: cint, pal: gen_qpalette.QPalette, enabled: bool, text: string, textRole: gen_qpalette.QPaletteColorRole): void =
+proc drawItemText*(self: gen_qstyle_types.QStyle, painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, flags: cint, pal: gen_qpalette.QPalette, enabled: bool, text: string, textRole: cint): void =
 
   fcQStyle_drawItemText(self.h, painter.h, rect.h, flags, pal.h, enabled, struct_miqt_string(data: text, len: csize_t(len(text))), cint(textRole))
 
-proc drawItemPixmap*(self: QStyle, painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, alignment: cint, pixmap: gen_qpixmap.QPixmap): void =
+proc drawItemPixmap*(self: gen_qstyle_types.QStyle, painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, alignment: cint, pixmap: gen_qpixmap.QPixmap): void =
 
   fcQStyle_drawItemPixmap(self.h, painter.h, rect.h, alignment, pixmap.h)
 
-proc standardPalette*(self: QStyle, ): gen_qpalette.QPalette =
+proc standardPalette*(self: gen_qstyle_types.QStyle, ): gen_qpalette.QPalette =
 
   gen_qpalette.QPalette(h: fcQStyle_standardPalette(self.h))
 
-proc drawPrimitive*(self: QStyle, pe: QStylePrimitiveElement, opt: gen_qstyleoption.QStyleOption, p: gen_qpainter.QPainter, w: gen_qwidget.QWidget): void =
+proc drawPrimitive*(self: gen_qstyle_types.QStyle, pe: cint, opt: gen_qstyleoption.QStyleOption, p: gen_qpainter.QPainter, w: gen_qwidget.QWidget): void =
 
   fcQStyle_drawPrimitive(self.h, cint(pe), opt.h, p.h, w.h)
 
-proc drawControl*(self: QStyle, element: QStyleControlElement, opt: gen_qstyleoption.QStyleOption, p: gen_qpainter.QPainter, w: gen_qwidget.QWidget): void =
+proc drawControl*(self: gen_qstyle_types.QStyle, element: cint, opt: gen_qstyleoption.QStyleOption, p: gen_qpainter.QPainter, w: gen_qwidget.QWidget): void =
 
   fcQStyle_drawControl(self.h, cint(element), opt.h, p.h, w.h)
 
-proc subElementRect*(self: QStyle, subElement: QStyleSubElement, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qrect.QRect =
+proc subElementRect*(self: gen_qstyle_types.QStyle, subElement: cint, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fcQStyle_subElementRect(self.h, cint(subElement), option.h, widget.h))
 
-proc drawComplexControl*(self: QStyle, cc: QStyleComplexControl, opt: gen_qstyleoption.QStyleOptionComplex, p: gen_qpainter.QPainter, widget: gen_qwidget.QWidget): void =
+proc drawComplexControl*(self: gen_qstyle_types.QStyle, cc: cint, opt: gen_qstyleoption.QStyleOptionComplex, p: gen_qpainter.QPainter, widget: gen_qwidget.QWidget): void =
 
   fcQStyle_drawComplexControl(self.h, cint(cc), opt.h, p.h, widget.h)
 
-proc hitTestComplexControl*(self: QStyle, cc: QStyleComplexControl, opt: gen_qstyleoption.QStyleOptionComplex, pt: gen_qpoint.QPoint, widget: gen_qwidget.QWidget): QStyleSubControl =
+proc hitTestComplexControl*(self: gen_qstyle_types.QStyle, cc: cint, opt: gen_qstyleoption.QStyleOptionComplex, pt: gen_qpoint.QPoint, widget: gen_qwidget.QWidget): cint =
 
-  QStyleSubControl(fcQStyle_hitTestComplexControl(self.h, cint(cc), opt.h, pt.h, widget.h))
+  cint(fcQStyle_hitTestComplexControl(self.h, cint(cc), opt.h, pt.h, widget.h))
 
-proc subControlRect*(self: QStyle, cc: QStyleComplexControl, opt: gen_qstyleoption.QStyleOptionComplex, sc: QStyleSubControl, widget: gen_qwidget.QWidget): gen_qrect.QRect =
+proc subControlRect*(self: gen_qstyle_types.QStyle, cc: cint, opt: gen_qstyleoption.QStyleOptionComplex, sc: cint, widget: gen_qwidget.QWidget): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fcQStyle_subControlRect(self.h, cint(cc), opt.h, cint(sc), widget.h))
 
-proc pixelMetric*(self: QStyle, metric: QStylePixelMetric, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): cint =
+proc pixelMetric*(self: gen_qstyle_types.QStyle, metric: cint, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): cint =
 
   fcQStyle_pixelMetric(self.h, cint(metric), option.h, widget.h)
 
-proc sizeFromContents*(self: QStyle, ct: QStyleContentsType, opt: gen_qstyleoption.QStyleOption, contentsSize: gen_qsize.QSize, w: gen_qwidget.QWidget): gen_qsize.QSize =
+proc sizeFromContents*(self: gen_qstyle_types.QStyle, ct: cint, opt: gen_qstyleoption.QStyleOption, contentsSize: gen_qsize.QSize, w: gen_qwidget.QWidget): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQStyle_sizeFromContents(self.h, cint(ct), opt.h, contentsSize.h, w.h))
 
-proc styleHint*(self: QStyle, stylehint: QStyleStyleHint, opt: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget, returnData: gen_qstyleoption.QStyleHintReturn): cint =
+proc styleHint*(self: gen_qstyle_types.QStyle, stylehint: cint, opt: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget, returnData: gen_qstyleoption.QStyleHintReturn): cint =
 
   fcQStyle_styleHint(self.h, cint(stylehint), opt.h, widget.h, returnData.h)
 
-proc standardPixmap*(self: QStyle, standardPixmap: QStyleStandardPixmap, opt: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qpixmap.QPixmap =
+proc standardPixmap*(self: gen_qstyle_types.QStyle, standardPixmap: cint, opt: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qpixmap.QPixmap =
 
   gen_qpixmap.QPixmap(h: fcQStyle_standardPixmap(self.h, cint(standardPixmap), opt.h, widget.h))
 
-proc standardIcon*(self: QStyle, standardIcon: QStyleStandardPixmap, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qicon.QIcon =
+proc standardIcon*(self: gen_qstyle_types.QStyle, standardIcon: cint, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qicon.QIcon =
 
   gen_qicon.QIcon(h: fcQStyle_standardIcon(self.h, cint(standardIcon), option.h, widget.h))
 
-proc generatedIconPixmap*(self: QStyle, iconMode: gen_qicon.QIconMode, pixmap: gen_qpixmap.QPixmap, opt: gen_qstyleoption.QStyleOption): gen_qpixmap.QPixmap =
+proc generatedIconPixmap*(self: gen_qstyle_types.QStyle, iconMode: cint, pixmap: gen_qpixmap.QPixmap, opt: gen_qstyleoption.QStyleOption): gen_qpixmap.QPixmap =
 
   gen_qpixmap.QPixmap(h: fcQStyle_generatedIconPixmap(self.h, cint(iconMode), pixmap.h, opt.h))
 
-proc visualRect*(_: type QStyle, direction: gen_qnamespace.LayoutDirection, boundingRect: gen_qrect.QRect, logicalRect: gen_qrect.QRect): gen_qrect.QRect =
+proc visualRect*(_: type gen_qstyle_types.QStyle, direction: cint, boundingRect: gen_qrect.QRect, logicalRect: gen_qrect.QRect): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fcQStyle_visualRect(cint(direction), boundingRect.h, logicalRect.h))
 
-proc visualPos*(_: type QStyle, direction: gen_qnamespace.LayoutDirection, boundingRect: gen_qrect.QRect, logicalPos: gen_qpoint.QPoint): gen_qpoint.QPoint =
+proc visualPos*(_: type gen_qstyle_types.QStyle, direction: cint, boundingRect: gen_qrect.QRect, logicalPos: gen_qpoint.QPoint): gen_qpoint.QPoint =
 
   gen_qpoint.QPoint(h: fcQStyle_visualPos(cint(direction), boundingRect.h, logicalPos.h))
 
-proc sliderPositionFromValue*(_: type QStyle, min: cint, max: cint, val: cint, space: cint): cint =
+proc sliderPositionFromValue*(_: type gen_qstyle_types.QStyle, min: cint, max: cint, val: cint, space: cint): cint =
 
   fcQStyle_sliderPositionFromValue(min, max, val, space)
 
-proc sliderValueFromPosition*(_: type QStyle, min: cint, max: cint, pos: cint, space: cint): cint =
+proc sliderValueFromPosition*(_: type gen_qstyle_types.QStyle, min: cint, max: cint, pos: cint, space: cint): cint =
 
   fcQStyle_sliderValueFromPosition(min, max, pos, space)
 
-proc visualAlignment*(_: type QStyle, direction: gen_qnamespace.LayoutDirection, alignment: gen_qnamespace.AlignmentFlag): gen_qnamespace.AlignmentFlag =
+proc visualAlignment*(_: type gen_qstyle_types.QStyle, direction: cint, alignment: cint): cint =
 
-  gen_qnamespace.AlignmentFlag(fcQStyle_visualAlignment(cint(direction), cint(alignment)))
+  cint(fcQStyle_visualAlignment(cint(direction), cint(alignment)))
 
-proc alignedRect*(_: type QStyle, direction: gen_qnamespace.LayoutDirection, alignment: gen_qnamespace.AlignmentFlag, size: gen_qsize.QSize, rectangle: gen_qrect.QRect): gen_qrect.QRect =
+proc alignedRect*(_: type gen_qstyle_types.QStyle, direction: cint, alignment: cint, size: gen_qsize.QSize, rectangle: gen_qrect.QRect): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fcQStyle_alignedRect(cint(direction), cint(alignment), size.h, rectangle.h))
 
-proc layoutSpacing*(self: QStyle, control1: gen_qsizepolicy.QSizePolicyControlType, control2: gen_qsizepolicy.QSizePolicyControlType, orientation: gen_qnamespace.Orientation, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): cint =
+proc layoutSpacing*(self: gen_qstyle_types.QStyle, control1: cint, control2: cint, orientation: cint, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): cint =
 
   fcQStyle_layoutSpacing(self.h, cint(control1), cint(control2), cint(orientation), option.h, widget.h)
 
-proc combinedLayoutSpacing*(self: QStyle, controls1: gen_qsizepolicy.QSizePolicyControlType, controls2: gen_qsizepolicy.QSizePolicyControlType, orientation: gen_qnamespace.Orientation): cint =
+proc combinedLayoutSpacing*(self: gen_qstyle_types.QStyle, controls1: cint, controls2: cint, orientation: cint): cint =
 
   fcQStyle_combinedLayoutSpacing(self.h, cint(controls1), cint(controls2), cint(orientation))
 
-proc proxy*(self: QStyle, ): QStyle =
+proc proxy*(self: gen_qstyle_types.QStyle, ): gen_qstyle_types.QStyle =
 
-  QStyle(h: fcQStyle_proxy(self.h))
+  gen_qstyle_types.QStyle(h: fcQStyle_proxy(self.h))
 
-proc tr2*(_: type QStyle, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qstyle_types.QStyle, s: cstring, c: cstring): string =
 
   let v_ms = fcQStyle_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QStyle, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qstyle_types.QStyle, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQStyle_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QStyle, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qstyle_types.QStyle, s: cstring, c: cstring): string =
 
   let v_ms = fcQStyle_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QStyle, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qstyle_types.QStyle, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQStyle_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc sliderPositionFromValue5*(_: type QStyle, min: cint, max: cint, val: cint, space: cint, upsideDown: bool): cint =
+proc sliderPositionFromValue5*(_: type gen_qstyle_types.QStyle, min: cint, max: cint, val: cint, space: cint, upsideDown: bool): cint =
 
   fcQStyle_sliderPositionFromValue5(min, max, val, space, upsideDown)
 
-proc sliderValueFromPosition5*(_: type QStyle, min: cint, max: cint, pos: cint, space: cint, upsideDown: bool): cint =
+proc sliderValueFromPosition5*(_: type gen_qstyle_types.QStyle, min: cint, max: cint, pos: cint, space: cint, upsideDown: bool): cint =
 
   fcQStyle_sliderValueFromPosition5(min, max, pos, space, upsideDown)
 
-proc combinedLayoutSpacing4*(self: QStyle, controls1: gen_qsizepolicy.QSizePolicyControlType, controls2: gen_qsizepolicy.QSizePolicyControlType, orientation: gen_qnamespace.Orientation, option: gen_qstyleoption.QStyleOption): cint =
+proc combinedLayoutSpacing4*(self: gen_qstyle_types.QStyle, controls1: cint, controls2: cint, orientation: cint, option: gen_qstyleoption.QStyleOption): cint =
 
   fcQStyle_combinedLayoutSpacing4(self.h, cint(controls1), cint(controls2), cint(orientation), option.h)
 
-proc combinedLayoutSpacing5*(self: QStyle, controls1: gen_qsizepolicy.QSizePolicyControlType, controls2: gen_qsizepolicy.QSizePolicyControlType, orientation: gen_qnamespace.Orientation, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): cint =
+proc combinedLayoutSpacing5*(self: gen_qstyle_types.QStyle, controls1: cint, controls2: cint, orientation: cint, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): cint =
 
   fcQStyle_combinedLayoutSpacing5(self.h, cint(controls1), cint(controls2), cint(orientation), option.h, widget.h)
 
-proc callVirtualBase_metaObject(self: QStyle, ): gen_qobjectdefs.QMetaObject =
-
+proc QStylemetaObject*(self: gen_qstyle_types.QStyle, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQStyle_virtualbase_metaObject(self.h))
 
-type QStylemetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QStyle, slot: proc(super: QStylemetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QStylemetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qstyle_types.QStyle, slot: QStylemetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QStylemetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QStylemetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStyle_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStyle_metaObject(self: ptr cQStyle, slot: int): pointer {.exportc: "miqt_exec_callback_QStyle_metaObject ".} =
-  type Cb = proc(super: QStylemetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QStyle(h: self), )
+  var nimfunc = cast[ptr QStylemetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QStyle, param1: cstring): pointer =
-
+proc QStylemetacast*(self: gen_qstyle_types.QStyle, param1: cstring): pointer =
 
   fQStyle_virtualbase_metacast(self.h, param1)
 
-type QStylemetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QStyle, slot: proc(super: QStylemetacastBase, param1: cstring): pointer) =
+type QStylemetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qstyle_types.QStyle, slot: QStylemetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QStylemetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QStylemetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStyle_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStyle_metacast(self: ptr cQStyle, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QStyle_metacast ".} =
-  type Cb = proc(super: QStylemetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QStyle(h: self), param1)
+  var nimfunc = cast[ptr QStylemetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QStyle, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QStylemetacall*(self: gen_qstyle_types.QStyle, param1: cint, param2: cint, param3: pointer): cint =
 
   fQStyle_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QStylemetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QStyle, slot: proc(super: QStylemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QStylemetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qstyle_types.QStyle, slot: QStylemetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QStylemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QStylemetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStyle_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStyle_metacall(self: ptr cQStyle, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QStyle_metacall ".} =
-  type Cb = proc(super: QStylemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QStyle(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QStylemetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_polish(self: QStyle, widget: gen_qwidget.QWidget): void =
-
+proc QStylepolish*(self: gen_qstyle_types.QStyle, widget: gen_qwidget.QWidget): void =
 
   fQStyle_virtualbase_polish(self.h, widget.h)
 
-type QStylepolishBase* = proc(widget: gen_qwidget.QWidget): void
-proc onpolish*(self: QStyle, slot: proc(super: QStylepolishBase, widget: gen_qwidget.QWidget): void) =
+type QStylepolishProc* = proc(widget: gen_qwidget.QWidget): void
+proc onpolish*(self: gen_qstyle_types.QStyle, slot: QStylepolishProc) =
   # TODO check subclass
-  type Cb = proc(super: QStylepolishBase, widget: gen_qwidget.QWidget): void
-  var tmp = new Cb
+  var tmp = new QStylepolishProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStyle_override_virtual_polish(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStyle_polish(self: ptr cQStyle, slot: int, widget: pointer): void {.exportc: "miqt_exec_callback_QStyle_polish ".} =
-  type Cb = proc(super: QStylepolishBase, widget: gen_qwidget.QWidget): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(widget: gen_qwidget.QWidget): auto =
-    callVirtualBase_polish(QStyle(h: self), widget)
+  var nimfunc = cast[ptr QStylepolishProc](cast[pointer](slot))
   let slotval1 = gen_qwidget.QWidget(h: widget)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_unpolish(self: QStyle, widget: gen_qwidget.QWidget): void =
-
+  nimfunc[](slotval1)
+proc QStyleunpolish*(self: gen_qstyle_types.QStyle, widget: gen_qwidget.QWidget): void =
 
   fQStyle_virtualbase_unpolish(self.h, widget.h)
 
-type QStyleunpolishBase* = proc(widget: gen_qwidget.QWidget): void
-proc onunpolish*(self: QStyle, slot: proc(super: QStyleunpolishBase, widget: gen_qwidget.QWidget): void) =
+type QStyleunpolishProc* = proc(widget: gen_qwidget.QWidget): void
+proc onunpolish*(self: gen_qstyle_types.QStyle, slot: QStyleunpolishProc) =
   # TODO check subclass
-  type Cb = proc(super: QStyleunpolishBase, widget: gen_qwidget.QWidget): void
-  var tmp = new Cb
+  var tmp = new QStyleunpolishProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStyle_override_virtual_unpolish(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStyle_unpolish(self: ptr cQStyle, slot: int, widget: pointer): void {.exportc: "miqt_exec_callback_QStyle_unpolish ".} =
-  type Cb = proc(super: QStyleunpolishBase, widget: gen_qwidget.QWidget): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(widget: gen_qwidget.QWidget): auto =
-    callVirtualBase_unpolish(QStyle(h: self), widget)
+  var nimfunc = cast[ptr QStyleunpolishProc](cast[pointer](slot))
   let slotval1 = gen_qwidget.QWidget(h: widget)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_polishWithApplication(self: QStyle, application: gen_qapplication.QApplication): void =
-
+  nimfunc[](slotval1)
+proc QStylepolishWithApplication*(self: gen_qstyle_types.QStyle, application: gen_qapplication.QApplication): void =
 
   fQStyle_virtualbase_polishWithApplication(self.h, application.h)
 
-type QStylepolishWithApplicationBase* = proc(application: gen_qapplication.QApplication): void
-proc onpolishWithApplication*(self: QStyle, slot: proc(super: QStylepolishWithApplicationBase, application: gen_qapplication.QApplication): void) =
+type QStylepolishWithApplicationProc* = proc(application: gen_qapplication.QApplication): void
+proc onpolishWithApplication*(self: gen_qstyle_types.QStyle, slot: QStylepolishWithApplicationProc) =
   # TODO check subclass
-  type Cb = proc(super: QStylepolishWithApplicationBase, application: gen_qapplication.QApplication): void
-  var tmp = new Cb
+  var tmp = new QStylepolishWithApplicationProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStyle_override_virtual_polishWithApplication(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStyle_polishWithApplication(self: ptr cQStyle, slot: int, application: pointer): void {.exportc: "miqt_exec_callback_QStyle_polishWithApplication ".} =
-  type Cb = proc(super: QStylepolishWithApplicationBase, application: gen_qapplication.QApplication): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(application: gen_qapplication.QApplication): auto =
-    callVirtualBase_polishWithApplication(QStyle(h: self), application)
+  var nimfunc = cast[ptr QStylepolishWithApplicationProc](cast[pointer](slot))
   let slotval1 = gen_qapplication.QApplication(h: application)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_unpolishWithApplication(self: QStyle, application: gen_qapplication.QApplication): void =
-
+  nimfunc[](slotval1)
+proc QStyleunpolishWithApplication*(self: gen_qstyle_types.QStyle, application: gen_qapplication.QApplication): void =
 
   fQStyle_virtualbase_unpolishWithApplication(self.h, application.h)
 
-type QStyleunpolishWithApplicationBase* = proc(application: gen_qapplication.QApplication): void
-proc onunpolishWithApplication*(self: QStyle, slot: proc(super: QStyleunpolishWithApplicationBase, application: gen_qapplication.QApplication): void) =
+type QStyleunpolishWithApplicationProc* = proc(application: gen_qapplication.QApplication): void
+proc onunpolishWithApplication*(self: gen_qstyle_types.QStyle, slot: QStyleunpolishWithApplicationProc) =
   # TODO check subclass
-  type Cb = proc(super: QStyleunpolishWithApplicationBase, application: gen_qapplication.QApplication): void
-  var tmp = new Cb
+  var tmp = new QStyleunpolishWithApplicationProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStyle_override_virtual_unpolishWithApplication(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStyle_unpolishWithApplication(self: ptr cQStyle, slot: int, application: pointer): void {.exportc: "miqt_exec_callback_QStyle_unpolishWithApplication ".} =
-  type Cb = proc(super: QStyleunpolishWithApplicationBase, application: gen_qapplication.QApplication): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(application: gen_qapplication.QApplication): auto =
-    callVirtualBase_unpolishWithApplication(QStyle(h: self), application)
+  var nimfunc = cast[ptr QStyleunpolishWithApplicationProc](cast[pointer](slot))
   let slotval1 = gen_qapplication.QApplication(h: application)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_polishWithPalette(self: QStyle, palette: gen_qpalette.QPalette): void =
-
+  nimfunc[](slotval1)
+proc QStylepolishWithPalette*(self: gen_qstyle_types.QStyle, palette: gen_qpalette.QPalette): void =
 
   fQStyle_virtualbase_polishWithPalette(self.h, palette.h)
 
-type QStylepolishWithPaletteBase* = proc(palette: gen_qpalette.QPalette): void
-proc onpolishWithPalette*(self: QStyle, slot: proc(super: QStylepolishWithPaletteBase, palette: gen_qpalette.QPalette): void) =
+type QStylepolishWithPaletteProc* = proc(palette: gen_qpalette.QPalette): void
+proc onpolishWithPalette*(self: gen_qstyle_types.QStyle, slot: QStylepolishWithPaletteProc) =
   # TODO check subclass
-  type Cb = proc(super: QStylepolishWithPaletteBase, palette: gen_qpalette.QPalette): void
-  var tmp = new Cb
+  var tmp = new QStylepolishWithPaletteProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStyle_override_virtual_polishWithPalette(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStyle_polishWithPalette(self: ptr cQStyle, slot: int, palette: pointer): void {.exportc: "miqt_exec_callback_QStyle_polishWithPalette ".} =
-  type Cb = proc(super: QStylepolishWithPaletteBase, palette: gen_qpalette.QPalette): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(palette: gen_qpalette.QPalette): auto =
-    callVirtualBase_polishWithPalette(QStyle(h: self), palette)
+  var nimfunc = cast[ptr QStylepolishWithPaletteProc](cast[pointer](slot))
   let slotval1 = gen_qpalette.QPalette(h: palette)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_itemTextRect(self: QStyle, fm: gen_qfontmetrics.QFontMetrics, r: gen_qrect.QRect, flags: cint, enabled: bool, text: string): gen_qrect.QRect =
-
+  nimfunc[](slotval1)
+proc QStyleitemTextRect*(self: gen_qstyle_types.QStyle, fm: gen_qfontmetrics.QFontMetrics, r: gen_qrect.QRect, flags: cint, enabled: bool, text: string): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fQStyle_virtualbase_itemTextRect(self.h, fm.h, r.h, flags, enabled, struct_miqt_string(data: text, len: csize_t(len(text)))))
 
-type QStyleitemTextRectBase* = proc(fm: gen_qfontmetrics.QFontMetrics, r: gen_qrect.QRect, flags: cint, enabled: bool, text: string): gen_qrect.QRect
-proc onitemTextRect*(self: QStyle, slot: proc(super: QStyleitemTextRectBase, fm: gen_qfontmetrics.QFontMetrics, r: gen_qrect.QRect, flags: cint, enabled: bool, text: string): gen_qrect.QRect) =
+type QStyleitemTextRectProc* = proc(fm: gen_qfontmetrics.QFontMetrics, r: gen_qrect.QRect, flags: cint, enabled: bool, text: string): gen_qrect.QRect
+proc onitemTextRect*(self: gen_qstyle_types.QStyle, slot: QStyleitemTextRectProc) =
   # TODO check subclass
-  type Cb = proc(super: QStyleitemTextRectBase, fm: gen_qfontmetrics.QFontMetrics, r: gen_qrect.QRect, flags: cint, enabled: bool, text: string): gen_qrect.QRect
-  var tmp = new Cb
+  var tmp = new QStyleitemTextRectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStyle_override_virtual_itemTextRect(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStyle_itemTextRect(self: ptr cQStyle, slot: int, fm: pointer, r: pointer, flags: cint, enabled: bool, text: struct_miqt_string): pointer {.exportc: "miqt_exec_callback_QStyle_itemTextRect ".} =
-  type Cb = proc(super: QStyleitemTextRectBase, fm: gen_qfontmetrics.QFontMetrics, r: gen_qrect.QRect, flags: cint, enabled: bool, text: string): gen_qrect.QRect
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(fm: gen_qfontmetrics.QFontMetrics, r: gen_qrect.QRect, flags: cint, enabled: bool, text: string): auto =
-    callVirtualBase_itemTextRect(QStyle(h: self), fm, r, flags, enabled, text)
+  var nimfunc = cast[ptr QStyleitemTextRectProc](cast[pointer](slot))
   let slotval1 = gen_qfontmetrics.QFontMetrics(h: fm)
 
   let slotval2 = gen_qrect.QRect(h: r)
@@ -1225,28 +1154,23 @@ proc miqt_exec_callback_QStyle_itemTextRect(self: ptr cQStyle, slot: int, fm: po
   let slotval5 = vtextx_ret
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3, slotval4, slotval5 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3, slotval4, slotval5 )
 
   virtualReturn.h
-proc callVirtualBase_itemPixmapRect(self: QStyle, r: gen_qrect.QRect, flags: cint, pixmap: gen_qpixmap.QPixmap): gen_qrect.QRect =
-
+proc QStyleitemPixmapRect*(self: gen_qstyle_types.QStyle, r: gen_qrect.QRect, flags: cint, pixmap: gen_qpixmap.QPixmap): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fQStyle_virtualbase_itemPixmapRect(self.h, r.h, flags, pixmap.h))
 
-type QStyleitemPixmapRectBase* = proc(r: gen_qrect.QRect, flags: cint, pixmap: gen_qpixmap.QPixmap): gen_qrect.QRect
-proc onitemPixmapRect*(self: QStyle, slot: proc(super: QStyleitemPixmapRectBase, r: gen_qrect.QRect, flags: cint, pixmap: gen_qpixmap.QPixmap): gen_qrect.QRect) =
+type QStyleitemPixmapRectProc* = proc(r: gen_qrect.QRect, flags: cint, pixmap: gen_qpixmap.QPixmap): gen_qrect.QRect
+proc onitemPixmapRect*(self: gen_qstyle_types.QStyle, slot: QStyleitemPixmapRectProc) =
   # TODO check subclass
-  type Cb = proc(super: QStyleitemPixmapRectBase, r: gen_qrect.QRect, flags: cint, pixmap: gen_qpixmap.QPixmap): gen_qrect.QRect
-  var tmp = new Cb
+  var tmp = new QStyleitemPixmapRectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStyle_override_virtual_itemPixmapRect(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStyle_itemPixmapRect(self: ptr cQStyle, slot: int, r: pointer, flags: cint, pixmap: pointer): pointer {.exportc: "miqt_exec_callback_QStyle_itemPixmapRect ".} =
-  type Cb = proc(super: QStyleitemPixmapRectBase, r: gen_qrect.QRect, flags: cint, pixmap: gen_qpixmap.QPixmap): gen_qrect.QRect
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(r: gen_qrect.QRect, flags: cint, pixmap: gen_qpixmap.QPixmap): auto =
-    callVirtualBase_itemPixmapRect(QStyle(h: self), r, flags, pixmap)
+  var nimfunc = cast[ptr QStyleitemPixmapRectProc](cast[pointer](slot))
   let slotval1 = gen_qrect.QRect(h: r)
 
   let slotval2 = flags
@@ -1254,28 +1178,23 @@ proc miqt_exec_callback_QStyle_itemPixmapRect(self: ptr cQStyle, slot: int, r: p
   let slotval3 = gen_qpixmap.QPixmap(h: pixmap)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn.h
-proc callVirtualBase_drawItemText(self: QStyle, painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, flags: cint, pal: gen_qpalette.QPalette, enabled: bool, text: string, textRole: gen_qpalette.QPaletteColorRole): void =
-
+proc QStyledrawItemText*(self: gen_qstyle_types.QStyle, painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, flags: cint, pal: gen_qpalette.QPalette, enabled: bool, text: string, textRole: cint): void =
 
   fQStyle_virtualbase_drawItemText(self.h, painter.h, rect.h, flags, pal.h, enabled, struct_miqt_string(data: text, len: csize_t(len(text))), cint(textRole))
 
-type QStyledrawItemTextBase* = proc(painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, flags: cint, pal: gen_qpalette.QPalette, enabled: bool, text: string, textRole: gen_qpalette.QPaletteColorRole): void
-proc ondrawItemText*(self: QStyle, slot: proc(super: QStyledrawItemTextBase, painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, flags: cint, pal: gen_qpalette.QPalette, enabled: bool, text: string, textRole: gen_qpalette.QPaletteColorRole): void) =
+type QStyledrawItemTextProc* = proc(painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, flags: cint, pal: gen_qpalette.QPalette, enabled: bool, text: string, textRole: cint): void
+proc ondrawItemText*(self: gen_qstyle_types.QStyle, slot: QStyledrawItemTextProc) =
   # TODO check subclass
-  type Cb = proc(super: QStyledrawItemTextBase, painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, flags: cint, pal: gen_qpalette.QPalette, enabled: bool, text: string, textRole: gen_qpalette.QPaletteColorRole): void
-  var tmp = new Cb
+  var tmp = new QStyledrawItemTextProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStyle_override_virtual_drawItemText(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStyle_drawItemText(self: ptr cQStyle, slot: int, painter: pointer, rect: pointer, flags: cint, pal: pointer, enabled: bool, text: struct_miqt_string, textRole: cint): void {.exportc: "miqt_exec_callback_QStyle_drawItemText ".} =
-  type Cb = proc(super: QStyledrawItemTextBase, painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, flags: cint, pal: gen_qpalette.QPalette, enabled: bool, text: string, textRole: gen_qpalette.QPaletteColorRole): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, flags: cint, pal: gen_qpalette.QPalette, enabled: bool, text: string, textRole: gen_qpalette.QPaletteColorRole): auto =
-    callVirtualBase_drawItemText(QStyle(h: self), painter, rect, flags, pal, enabled, text, textRole)
+  var nimfunc = cast[ptr QStyledrawItemTextProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
   let slotval2 = gen_qrect.QRect(h: rect)
@@ -1291,29 +1210,24 @@ proc miqt_exec_callback_QStyle_drawItemText(self: ptr cQStyle, slot: int, painte
   c_free(vtext_ms.data)
   let slotval6 = vtextx_ret
 
-  let slotval7 = gen_qpalette.QPaletteColorRole(textRole)
+  let slotval7 = cint(textRole)
 
 
-  nimfunc[](superCall, slotval1, slotval2, slotval3, slotval4, slotval5, slotval6, slotval7)
-proc callVirtualBase_drawItemPixmap(self: QStyle, painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, alignment: cint, pixmap: gen_qpixmap.QPixmap): void =
-
+  nimfunc[](slotval1, slotval2, slotval3, slotval4, slotval5, slotval6, slotval7)
+proc QStyledrawItemPixmap*(self: gen_qstyle_types.QStyle, painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, alignment: cint, pixmap: gen_qpixmap.QPixmap): void =
 
   fQStyle_virtualbase_drawItemPixmap(self.h, painter.h, rect.h, alignment, pixmap.h)
 
-type QStyledrawItemPixmapBase* = proc(painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, alignment: cint, pixmap: gen_qpixmap.QPixmap): void
-proc ondrawItemPixmap*(self: QStyle, slot: proc(super: QStyledrawItemPixmapBase, painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, alignment: cint, pixmap: gen_qpixmap.QPixmap): void) =
+type QStyledrawItemPixmapProc* = proc(painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, alignment: cint, pixmap: gen_qpixmap.QPixmap): void
+proc ondrawItemPixmap*(self: gen_qstyle_types.QStyle, slot: QStyledrawItemPixmapProc) =
   # TODO check subclass
-  type Cb = proc(super: QStyledrawItemPixmapBase, painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, alignment: cint, pixmap: gen_qpixmap.QPixmap): void
-  var tmp = new Cb
+  var tmp = new QStyledrawItemPixmapProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStyle_override_virtual_drawItemPixmap(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStyle_drawItemPixmap(self: ptr cQStyle, slot: int, painter: pointer, rect: pointer, alignment: cint, pixmap: pointer): void {.exportc: "miqt_exec_callback_QStyle_drawItemPixmap ".} =
-  type Cb = proc(super: QStyledrawItemPixmapBase, painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, alignment: cint, pixmap: gen_qpixmap.QPixmap): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, alignment: cint, pixmap: gen_qpixmap.QPixmap): auto =
-    callVirtualBase_drawItemPixmap(QStyle(h: self), painter, rect, alignment, pixmap)
+  var nimfunc = cast[ptr QStyledrawItemPixmapProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
   let slotval2 = gen_qrect.QRect(h: rect)
@@ -1323,43 +1237,36 @@ proc miqt_exec_callback_QStyle_drawItemPixmap(self: ptr cQStyle, slot: int, pain
   let slotval4 = gen_qpixmap.QPixmap(h: pixmap)
 
 
-  nimfunc[](superCall, slotval1, slotval2, slotval3, slotval4)
-proc callVirtualBase_standardPalette(self: QStyle, ): gen_qpalette.QPalette =
-
+  nimfunc[](slotval1, slotval2, slotval3, slotval4)
+proc QStylestandardPalette*(self: gen_qstyle_types.QStyle, ): gen_qpalette.QPalette =
 
   gen_qpalette.QPalette(h: fQStyle_virtualbase_standardPalette(self.h))
 
-type QStylestandardPaletteBase* = proc(): gen_qpalette.QPalette
-proc onstandardPalette*(self: QStyle, slot: proc(super: QStylestandardPaletteBase): gen_qpalette.QPalette) =
+type QStylestandardPaletteProc* = proc(): gen_qpalette.QPalette
+proc onstandardPalette*(self: gen_qstyle_types.QStyle, slot: QStylestandardPaletteProc) =
   # TODO check subclass
-  type Cb = proc(super: QStylestandardPaletteBase): gen_qpalette.QPalette
-  var tmp = new Cb
+  var tmp = new QStylestandardPaletteProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStyle_override_virtual_standardPalette(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStyle_standardPalette(self: ptr cQStyle, slot: int): pointer {.exportc: "miqt_exec_callback_QStyle_standardPalette ".} =
-  type Cb = proc(super: QStylestandardPaletteBase): gen_qpalette.QPalette
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_standardPalette(QStyle(h: self), )
+  var nimfunc = cast[ptr QStylestandardPaletteProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-type QStyledrawPrimitiveBase* = proc(pe: QStylePrimitiveElement, opt: gen_qstyleoption.QStyleOption, p: gen_qpainter.QPainter, w: gen_qwidget.QWidget): void
-proc ondrawPrimitive*(self: QStyle, slot: proc(pe: QStylePrimitiveElement, opt: gen_qstyleoption.QStyleOption, p: gen_qpainter.QPainter, w: gen_qwidget.QWidget): void) =
+type QStyledrawPrimitiveProc* = proc(pe: cint, opt: gen_qstyleoption.QStyleOption, p: gen_qpainter.QPainter, w: gen_qwidget.QWidget): void
+proc ondrawPrimitive*(self: gen_qstyle_types.QStyle, slot: QStyledrawPrimitiveProc) =
   # TODO check subclass
-  type Cb = proc(pe: QStylePrimitiveElement, opt: gen_qstyleoption.QStyleOption, p: gen_qpainter.QPainter, w: gen_qwidget.QWidget): void
-  var tmp = new Cb
+  var tmp = new QStyledrawPrimitiveProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStyle_override_virtual_drawPrimitive(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStyle_drawPrimitive(self: ptr cQStyle, slot: int, pe: cint, opt: pointer, p: pointer, w: pointer): void {.exportc: "miqt_exec_callback_QStyle_drawPrimitive ".} =
-  type Cb = proc(pe: QStylePrimitiveElement, opt: gen_qstyleoption.QStyleOption, p: gen_qpainter.QPainter, w: gen_qwidget.QWidget): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = QStylePrimitiveElement(pe)
+  var nimfunc = cast[ptr QStyledrawPrimitiveProc](cast[pointer](slot))
+  let slotval1 = cint(pe)
 
   let slotval2 = gen_qstyleoption.QStyleOption(h: opt)
 
@@ -1369,19 +1276,17 @@ proc miqt_exec_callback_QStyle_drawPrimitive(self: ptr cQStyle, slot: int, pe: c
 
 
   nimfunc[](slotval1, slotval2, slotval3, slotval4)
-type QStyledrawControlBase* = proc(element: QStyleControlElement, opt: gen_qstyleoption.QStyleOption, p: gen_qpainter.QPainter, w: gen_qwidget.QWidget): void
-proc ondrawControl*(self: QStyle, slot: proc(element: QStyleControlElement, opt: gen_qstyleoption.QStyleOption, p: gen_qpainter.QPainter, w: gen_qwidget.QWidget): void) =
+type QStyledrawControlProc* = proc(element: cint, opt: gen_qstyleoption.QStyleOption, p: gen_qpainter.QPainter, w: gen_qwidget.QWidget): void
+proc ondrawControl*(self: gen_qstyle_types.QStyle, slot: QStyledrawControlProc) =
   # TODO check subclass
-  type Cb = proc(element: QStyleControlElement, opt: gen_qstyleoption.QStyleOption, p: gen_qpainter.QPainter, w: gen_qwidget.QWidget): void
-  var tmp = new Cb
+  var tmp = new QStyledrawControlProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStyle_override_virtual_drawControl(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStyle_drawControl(self: ptr cQStyle, slot: int, element: cint, opt: pointer, p: pointer, w: pointer): void {.exportc: "miqt_exec_callback_QStyle_drawControl ".} =
-  type Cb = proc(element: QStyleControlElement, opt: gen_qstyleoption.QStyleOption, p: gen_qpainter.QPainter, w: gen_qwidget.QWidget): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = QStyleControlElement(element)
+  var nimfunc = cast[ptr QStyledrawControlProc](cast[pointer](slot))
+  let slotval1 = cint(element)
 
   let slotval2 = gen_qstyleoption.QStyleOption(h: opt)
 
@@ -1391,19 +1296,17 @@ proc miqt_exec_callback_QStyle_drawControl(self: ptr cQStyle, slot: int, element
 
 
   nimfunc[](slotval1, slotval2, slotval3, slotval4)
-type QStylesubElementRectBase* = proc(subElement: QStyleSubElement, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qrect.QRect
-proc onsubElementRect*(self: QStyle, slot: proc(subElement: QStyleSubElement, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qrect.QRect) =
+type QStylesubElementRectProc* = proc(subElement: cint, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qrect.QRect
+proc onsubElementRect*(self: gen_qstyle_types.QStyle, slot: QStylesubElementRectProc) =
   # TODO check subclass
-  type Cb = proc(subElement: QStyleSubElement, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qrect.QRect
-  var tmp = new Cb
+  var tmp = new QStylesubElementRectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStyle_override_virtual_subElementRect(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStyle_subElementRect(self: ptr cQStyle, slot: int, subElement: cint, option: pointer, widget: pointer): pointer {.exportc: "miqt_exec_callback_QStyle_subElementRect ".} =
-  type Cb = proc(subElement: QStyleSubElement, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qrect.QRect
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = QStyleSubElement(subElement)
+  var nimfunc = cast[ptr QStylesubElementRectProc](cast[pointer](slot))
+  let slotval1 = cint(subElement)
 
   let slotval2 = gen_qstyleoption.QStyleOption(h: option)
 
@@ -1413,19 +1316,17 @@ proc miqt_exec_callback_QStyle_subElementRect(self: ptr cQStyle, slot: int, subE
   let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn.h
-type QStyledrawComplexControlBase* = proc(cc: QStyleComplexControl, opt: gen_qstyleoption.QStyleOptionComplex, p: gen_qpainter.QPainter, widget: gen_qwidget.QWidget): void
-proc ondrawComplexControl*(self: QStyle, slot: proc(cc: QStyleComplexControl, opt: gen_qstyleoption.QStyleOptionComplex, p: gen_qpainter.QPainter, widget: gen_qwidget.QWidget): void) =
+type QStyledrawComplexControlProc* = proc(cc: cint, opt: gen_qstyleoption.QStyleOptionComplex, p: gen_qpainter.QPainter, widget: gen_qwidget.QWidget): void
+proc ondrawComplexControl*(self: gen_qstyle_types.QStyle, slot: QStyledrawComplexControlProc) =
   # TODO check subclass
-  type Cb = proc(cc: QStyleComplexControl, opt: gen_qstyleoption.QStyleOptionComplex, p: gen_qpainter.QPainter, widget: gen_qwidget.QWidget): void
-  var tmp = new Cb
+  var tmp = new QStyledrawComplexControlProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStyle_override_virtual_drawComplexControl(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStyle_drawComplexControl(self: ptr cQStyle, slot: int, cc: cint, opt: pointer, p: pointer, widget: pointer): void {.exportc: "miqt_exec_callback_QStyle_drawComplexControl ".} =
-  type Cb = proc(cc: QStyleComplexControl, opt: gen_qstyleoption.QStyleOptionComplex, p: gen_qpainter.QPainter, widget: gen_qwidget.QWidget): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = QStyleComplexControl(cc)
+  var nimfunc = cast[ptr QStyledrawComplexControlProc](cast[pointer](slot))
+  let slotval1 = cint(cc)
 
   let slotval2 = gen_qstyleoption.QStyleOptionComplex(h: opt)
 
@@ -1435,19 +1336,17 @@ proc miqt_exec_callback_QStyle_drawComplexControl(self: ptr cQStyle, slot: int, 
 
 
   nimfunc[](slotval1, slotval2, slotval3, slotval4)
-type QStylehitTestComplexControlBase* = proc(cc: QStyleComplexControl, opt: gen_qstyleoption.QStyleOptionComplex, pt: gen_qpoint.QPoint, widget: gen_qwidget.QWidget): QStyleSubControl
-proc onhitTestComplexControl*(self: QStyle, slot: proc(cc: QStyleComplexControl, opt: gen_qstyleoption.QStyleOptionComplex, pt: gen_qpoint.QPoint, widget: gen_qwidget.QWidget): QStyleSubControl) =
+type QStylehitTestComplexControlProc* = proc(cc: cint, opt: gen_qstyleoption.QStyleOptionComplex, pt: gen_qpoint.QPoint, widget: gen_qwidget.QWidget): cint
+proc onhitTestComplexControl*(self: gen_qstyle_types.QStyle, slot: QStylehitTestComplexControlProc) =
   # TODO check subclass
-  type Cb = proc(cc: QStyleComplexControl, opt: gen_qstyleoption.QStyleOptionComplex, pt: gen_qpoint.QPoint, widget: gen_qwidget.QWidget): QStyleSubControl
-  var tmp = new Cb
+  var tmp = new QStylehitTestComplexControlProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStyle_override_virtual_hitTestComplexControl(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStyle_hitTestComplexControl(self: ptr cQStyle, slot: int, cc: cint, opt: pointer, pt: pointer, widget: pointer): cint {.exportc: "miqt_exec_callback_QStyle_hitTestComplexControl ".} =
-  type Cb = proc(cc: QStyleComplexControl, opt: gen_qstyleoption.QStyleOptionComplex, pt: gen_qpoint.QPoint, widget: gen_qwidget.QWidget): QStyleSubControl
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = QStyleComplexControl(cc)
+  var nimfunc = cast[ptr QStylehitTestComplexControlProc](cast[pointer](slot))
+  let slotval1 = cint(cc)
 
   let slotval2 = gen_qstyleoption.QStyleOptionComplex(h: opt)
 
@@ -1459,23 +1358,21 @@ proc miqt_exec_callback_QStyle_hitTestComplexControl(self: ptr cQStyle, slot: in
   let virtualReturn = nimfunc[](slotval1, slotval2, slotval3, slotval4 )
 
   cint(virtualReturn)
-type QStylesubControlRectBase* = proc(cc: QStyleComplexControl, opt: gen_qstyleoption.QStyleOptionComplex, sc: QStyleSubControl, widget: gen_qwidget.QWidget): gen_qrect.QRect
-proc onsubControlRect*(self: QStyle, slot: proc(cc: QStyleComplexControl, opt: gen_qstyleoption.QStyleOptionComplex, sc: QStyleSubControl, widget: gen_qwidget.QWidget): gen_qrect.QRect) =
+type QStylesubControlRectProc* = proc(cc: cint, opt: gen_qstyleoption.QStyleOptionComplex, sc: cint, widget: gen_qwidget.QWidget): gen_qrect.QRect
+proc onsubControlRect*(self: gen_qstyle_types.QStyle, slot: QStylesubControlRectProc) =
   # TODO check subclass
-  type Cb = proc(cc: QStyleComplexControl, opt: gen_qstyleoption.QStyleOptionComplex, sc: QStyleSubControl, widget: gen_qwidget.QWidget): gen_qrect.QRect
-  var tmp = new Cb
+  var tmp = new QStylesubControlRectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStyle_override_virtual_subControlRect(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStyle_subControlRect(self: ptr cQStyle, slot: int, cc: cint, opt: pointer, sc: cint, widget: pointer): pointer {.exportc: "miqt_exec_callback_QStyle_subControlRect ".} =
-  type Cb = proc(cc: QStyleComplexControl, opt: gen_qstyleoption.QStyleOptionComplex, sc: QStyleSubControl, widget: gen_qwidget.QWidget): gen_qrect.QRect
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = QStyleComplexControl(cc)
+  var nimfunc = cast[ptr QStylesubControlRectProc](cast[pointer](slot))
+  let slotval1 = cint(cc)
 
   let slotval2 = gen_qstyleoption.QStyleOptionComplex(h: opt)
 
-  let slotval3 = QStyleSubControl(sc)
+  let slotval3 = cint(sc)
 
   let slotval4 = gen_qwidget.QWidget(h: widget)
 
@@ -1483,19 +1380,17 @@ proc miqt_exec_callback_QStyle_subControlRect(self: ptr cQStyle, slot: int, cc: 
   let virtualReturn = nimfunc[](slotval1, slotval2, slotval3, slotval4 )
 
   virtualReturn.h
-type QStylepixelMetricBase* = proc(metric: QStylePixelMetric, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): cint
-proc onpixelMetric*(self: QStyle, slot: proc(metric: QStylePixelMetric, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): cint) =
+type QStylepixelMetricProc* = proc(metric: cint, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): cint
+proc onpixelMetric*(self: gen_qstyle_types.QStyle, slot: QStylepixelMetricProc) =
   # TODO check subclass
-  type Cb = proc(metric: QStylePixelMetric, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): cint
-  var tmp = new Cb
+  var tmp = new QStylepixelMetricProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStyle_override_virtual_pixelMetric(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStyle_pixelMetric(self: ptr cQStyle, slot: int, metric: cint, option: pointer, widget: pointer): cint {.exportc: "miqt_exec_callback_QStyle_pixelMetric ".} =
-  type Cb = proc(metric: QStylePixelMetric, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = QStylePixelMetric(metric)
+  var nimfunc = cast[ptr QStylepixelMetricProc](cast[pointer](slot))
+  let slotval1 = cint(metric)
 
   let slotval2 = gen_qstyleoption.QStyleOption(h: option)
 
@@ -1505,19 +1400,17 @@ proc miqt_exec_callback_QStyle_pixelMetric(self: ptr cQStyle, slot: int, metric:
   let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-type QStylesizeFromContentsBase* = proc(ct: QStyleContentsType, opt: gen_qstyleoption.QStyleOption, contentsSize: gen_qsize.QSize, w: gen_qwidget.QWidget): gen_qsize.QSize
-proc onsizeFromContents*(self: QStyle, slot: proc(ct: QStyleContentsType, opt: gen_qstyleoption.QStyleOption, contentsSize: gen_qsize.QSize, w: gen_qwidget.QWidget): gen_qsize.QSize) =
+type QStylesizeFromContentsProc* = proc(ct: cint, opt: gen_qstyleoption.QStyleOption, contentsSize: gen_qsize.QSize, w: gen_qwidget.QWidget): gen_qsize.QSize
+proc onsizeFromContents*(self: gen_qstyle_types.QStyle, slot: QStylesizeFromContentsProc) =
   # TODO check subclass
-  type Cb = proc(ct: QStyleContentsType, opt: gen_qstyleoption.QStyleOption, contentsSize: gen_qsize.QSize, w: gen_qwidget.QWidget): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QStylesizeFromContentsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStyle_override_virtual_sizeFromContents(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStyle_sizeFromContents(self: ptr cQStyle, slot: int, ct: cint, opt: pointer, contentsSize: pointer, w: pointer): pointer {.exportc: "miqt_exec_callback_QStyle_sizeFromContents ".} =
-  type Cb = proc(ct: QStyleContentsType, opt: gen_qstyleoption.QStyleOption, contentsSize: gen_qsize.QSize, w: gen_qwidget.QWidget): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = QStyleContentsType(ct)
+  var nimfunc = cast[ptr QStylesizeFromContentsProc](cast[pointer](slot))
+  let slotval1 = cint(ct)
 
   let slotval2 = gen_qstyleoption.QStyleOption(h: opt)
 
@@ -1529,19 +1422,17 @@ proc miqt_exec_callback_QStyle_sizeFromContents(self: ptr cQStyle, slot: int, ct
   let virtualReturn = nimfunc[](slotval1, slotval2, slotval3, slotval4 )
 
   virtualReturn.h
-type QStylestyleHintBase* = proc(stylehint: QStyleStyleHint, opt: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget, returnData: gen_qstyleoption.QStyleHintReturn): cint
-proc onstyleHint*(self: QStyle, slot: proc(stylehint: QStyleStyleHint, opt: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget, returnData: gen_qstyleoption.QStyleHintReturn): cint) =
+type QStylestyleHintProc* = proc(stylehint: cint, opt: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget, returnData: gen_qstyleoption.QStyleHintReturn): cint
+proc onstyleHint*(self: gen_qstyle_types.QStyle, slot: QStylestyleHintProc) =
   # TODO check subclass
-  type Cb = proc(stylehint: QStyleStyleHint, opt: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget, returnData: gen_qstyleoption.QStyleHintReturn): cint
-  var tmp = new Cb
+  var tmp = new QStylestyleHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStyle_override_virtual_styleHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStyle_styleHint(self: ptr cQStyle, slot: int, stylehint: cint, opt: pointer, widget: pointer, returnData: pointer): cint {.exportc: "miqt_exec_callback_QStyle_styleHint ".} =
-  type Cb = proc(stylehint: QStyleStyleHint, opt: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget, returnData: gen_qstyleoption.QStyleHintReturn): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = QStyleStyleHint(stylehint)
+  var nimfunc = cast[ptr QStylestyleHintProc](cast[pointer](slot))
+  let slotval1 = cint(stylehint)
 
   let slotval2 = gen_qstyleoption.QStyleOption(h: opt)
 
@@ -1553,19 +1444,17 @@ proc miqt_exec_callback_QStyle_styleHint(self: ptr cQStyle, slot: int, stylehint
   let virtualReturn = nimfunc[](slotval1, slotval2, slotval3, slotval4 )
 
   virtualReturn
-type QStylestandardPixmapBase* = proc(standardPixmap: QStyleStandardPixmap, opt: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qpixmap.QPixmap
-proc onstandardPixmap*(self: QStyle, slot: proc(standardPixmap: QStyleStandardPixmap, opt: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qpixmap.QPixmap) =
+type QStylestandardPixmapProc* = proc(standardPixmap: cint, opt: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qpixmap.QPixmap
+proc onstandardPixmap*(self: gen_qstyle_types.QStyle, slot: QStylestandardPixmapProc) =
   # TODO check subclass
-  type Cb = proc(standardPixmap: QStyleStandardPixmap, opt: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qpixmap.QPixmap
-  var tmp = new Cb
+  var tmp = new QStylestandardPixmapProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStyle_override_virtual_standardPixmap(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStyle_standardPixmap(self: ptr cQStyle, slot: int, standardPixmap: cint, opt: pointer, widget: pointer): pointer {.exportc: "miqt_exec_callback_QStyle_standardPixmap ".} =
-  type Cb = proc(standardPixmap: QStyleStandardPixmap, opt: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qpixmap.QPixmap
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = QStyleStandardPixmap(standardPixmap)
+  var nimfunc = cast[ptr QStylestandardPixmapProc](cast[pointer](slot))
+  let slotval1 = cint(standardPixmap)
 
   let slotval2 = gen_qstyleoption.QStyleOption(h: opt)
 
@@ -1575,19 +1464,17 @@ proc miqt_exec_callback_QStyle_standardPixmap(self: ptr cQStyle, slot: int, stan
   let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn.h
-type QStylestandardIconBase* = proc(standardIcon: QStyleStandardPixmap, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qicon.QIcon
-proc onstandardIcon*(self: QStyle, slot: proc(standardIcon: QStyleStandardPixmap, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qicon.QIcon) =
+type QStylestandardIconProc* = proc(standardIcon: cint, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qicon.QIcon
+proc onstandardIcon*(self: gen_qstyle_types.QStyle, slot: QStylestandardIconProc) =
   # TODO check subclass
-  type Cb = proc(standardIcon: QStyleStandardPixmap, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qicon.QIcon
-  var tmp = new Cb
+  var tmp = new QStylestandardIconProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStyle_override_virtual_standardIcon(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStyle_standardIcon(self: ptr cQStyle, slot: int, standardIcon: cint, option: pointer, widget: pointer): pointer {.exportc: "miqt_exec_callback_QStyle_standardIcon ".} =
-  type Cb = proc(standardIcon: QStyleStandardPixmap, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qicon.QIcon
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = QStyleStandardPixmap(standardIcon)
+  var nimfunc = cast[ptr QStylestandardIconProc](cast[pointer](slot))
+  let slotval1 = cint(standardIcon)
 
   let slotval2 = gen_qstyleoption.QStyleOption(h: option)
 
@@ -1597,19 +1484,17 @@ proc miqt_exec_callback_QStyle_standardIcon(self: ptr cQStyle, slot: int, standa
   let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn.h
-type QStylegeneratedIconPixmapBase* = proc(iconMode: gen_qicon.QIconMode, pixmap: gen_qpixmap.QPixmap, opt: gen_qstyleoption.QStyleOption): gen_qpixmap.QPixmap
-proc ongeneratedIconPixmap*(self: QStyle, slot: proc(iconMode: gen_qicon.QIconMode, pixmap: gen_qpixmap.QPixmap, opt: gen_qstyleoption.QStyleOption): gen_qpixmap.QPixmap) =
+type QStylegeneratedIconPixmapProc* = proc(iconMode: cint, pixmap: gen_qpixmap.QPixmap, opt: gen_qstyleoption.QStyleOption): gen_qpixmap.QPixmap
+proc ongeneratedIconPixmap*(self: gen_qstyle_types.QStyle, slot: QStylegeneratedIconPixmapProc) =
   # TODO check subclass
-  type Cb = proc(iconMode: gen_qicon.QIconMode, pixmap: gen_qpixmap.QPixmap, opt: gen_qstyleoption.QStyleOption): gen_qpixmap.QPixmap
-  var tmp = new Cb
+  var tmp = new QStylegeneratedIconPixmapProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStyle_override_virtual_generatedIconPixmap(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStyle_generatedIconPixmap(self: ptr cQStyle, slot: int, iconMode: cint, pixmap: pointer, opt: pointer): pointer {.exportc: "miqt_exec_callback_QStyle_generatedIconPixmap ".} =
-  type Cb = proc(iconMode: gen_qicon.QIconMode, pixmap: gen_qpixmap.QPixmap, opt: gen_qstyleoption.QStyleOption): gen_qpixmap.QPixmap
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = gen_qicon.QIconMode(iconMode)
+  var nimfunc = cast[ptr QStylegeneratedIconPixmapProc](cast[pointer](slot))
+  let slotval1 = cint(iconMode)
 
   let slotval2 = gen_qpixmap.QPixmap(h: pixmap)
 
@@ -1619,23 +1504,21 @@ proc miqt_exec_callback_QStyle_generatedIconPixmap(self: ptr cQStyle, slot: int,
   let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn.h
-type QStylelayoutSpacingBase* = proc(control1: gen_qsizepolicy.QSizePolicyControlType, control2: gen_qsizepolicy.QSizePolicyControlType, orientation: gen_qnamespace.Orientation, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): cint
-proc onlayoutSpacing*(self: QStyle, slot: proc(control1: gen_qsizepolicy.QSizePolicyControlType, control2: gen_qsizepolicy.QSizePolicyControlType, orientation: gen_qnamespace.Orientation, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): cint) =
+type QStylelayoutSpacingProc* = proc(control1: cint, control2: cint, orientation: cint, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): cint
+proc onlayoutSpacing*(self: gen_qstyle_types.QStyle, slot: QStylelayoutSpacingProc) =
   # TODO check subclass
-  type Cb = proc(control1: gen_qsizepolicy.QSizePolicyControlType, control2: gen_qsizepolicy.QSizePolicyControlType, orientation: gen_qnamespace.Orientation, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): cint
-  var tmp = new Cb
+  var tmp = new QStylelayoutSpacingProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStyle_override_virtual_layoutSpacing(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStyle_layoutSpacing(self: ptr cQStyle, slot: int, control1: cint, control2: cint, orientation: cint, option: pointer, widget: pointer): cint {.exportc: "miqt_exec_callback_QStyle_layoutSpacing ".} =
-  type Cb = proc(control1: gen_qsizepolicy.QSizePolicyControlType, control2: gen_qsizepolicy.QSizePolicyControlType, orientation: gen_qnamespace.Orientation, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = gen_qsizepolicy.QSizePolicyControlType(control1)
+  var nimfunc = cast[ptr QStylelayoutSpacingProc](cast[pointer](slot))
+  let slotval1 = cint(control1)
 
-  let slotval2 = gen_qsizepolicy.QSizePolicyControlType(control2)
+  let slotval2 = cint(control2)
 
-  let slotval3 = gen_qnamespace.Orientation(orientation)
+  let slotval3 = cint(orientation)
 
   let slotval4 = gen_qstyleoption.QStyleOption(h: option)
 
@@ -1645,174 +1528,139 @@ proc miqt_exec_callback_QStyle_layoutSpacing(self: ptr cQStyle, slot: int, contr
   let virtualReturn = nimfunc[](slotval1, slotval2, slotval3, slotval4, slotval5 )
 
   virtualReturn
-proc callVirtualBase_event(self: QStyle, event: gen_qcoreevent.QEvent): bool =
-
+proc QStyleevent*(self: gen_qstyle_types.QStyle, event: gen_qcoreevent.QEvent): bool =
 
   fQStyle_virtualbase_event(self.h, event.h)
 
-type QStyleeventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QStyle, slot: proc(super: QStyleeventBase, event: gen_qcoreevent.QEvent): bool) =
+type QStyleeventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qstyle_types.QStyle, slot: QStyleeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QStyleeventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QStyleeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStyle_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStyle_event(self: ptr cQStyle, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QStyle_event ".} =
-  type Cb = proc(super: QStyleeventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QStyle(h: self), event)
+  var nimfunc = cast[ptr QStyleeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QStyle, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QStyleeventFilter*(self: gen_qstyle_types.QStyle, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQStyle_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QStyleeventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QStyle, slot: proc(super: QStyleeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QStyleeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qstyle_types.QStyle, slot: QStyleeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QStyleeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QStyleeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStyle_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStyle_eventFilter(self: ptr cQStyle, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QStyle_eventFilter ".} =
-  type Cb = proc(super: QStyleeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QStyle(h: self), watched, event)
+  var nimfunc = cast[ptr QStyleeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QStyle, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QStyletimerEvent*(self: gen_qstyle_types.QStyle, event: gen_qcoreevent.QTimerEvent): void =
 
   fQStyle_virtualbase_timerEvent(self.h, event.h)
 
-type QStyletimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QStyle, slot: proc(super: QStyletimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QStyletimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qstyle_types.QStyle, slot: QStyletimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QStyletimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QStyletimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStyle_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStyle_timerEvent(self: ptr cQStyle, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QStyle_timerEvent ".} =
-  type Cb = proc(super: QStyletimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QStyle(h: self), event)
+  var nimfunc = cast[ptr QStyletimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QStyle, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QStylechildEvent*(self: gen_qstyle_types.QStyle, event: gen_qcoreevent.QChildEvent): void =
 
   fQStyle_virtualbase_childEvent(self.h, event.h)
 
-type QStylechildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QStyle, slot: proc(super: QStylechildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QStylechildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qstyle_types.QStyle, slot: QStylechildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QStylechildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QStylechildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStyle_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStyle_childEvent(self: ptr cQStyle, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QStyle_childEvent ".} =
-  type Cb = proc(super: QStylechildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QStyle(h: self), event)
+  var nimfunc = cast[ptr QStylechildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QStyle, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QStylecustomEvent*(self: gen_qstyle_types.QStyle, event: gen_qcoreevent.QEvent): void =
 
   fQStyle_virtualbase_customEvent(self.h, event.h)
 
-type QStylecustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QStyle, slot: proc(super: QStylecustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QStylecustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qstyle_types.QStyle, slot: QStylecustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QStylecustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QStylecustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStyle_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStyle_customEvent(self: ptr cQStyle, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QStyle_customEvent ".} =
-  type Cb = proc(super: QStylecustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QStyle(h: self), event)
+  var nimfunc = cast[ptr QStylecustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QStyle, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QStyleconnectNotify*(self: gen_qstyle_types.QStyle, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQStyle_virtualbase_connectNotify(self.h, signal.h)
 
-type QStyleconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QStyle, slot: proc(super: QStyleconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QStyleconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qstyle_types.QStyle, slot: QStyleconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QStyleconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QStyleconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStyle_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStyle_connectNotify(self: ptr cQStyle, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QStyle_connectNotify ".} =
-  type Cb = proc(super: QStyleconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QStyle(h: self), signal)
+  var nimfunc = cast[ptr QStyleconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QStyle, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QStyledisconnectNotify*(self: gen_qstyle_types.QStyle, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQStyle_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QStyledisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QStyle, slot: proc(super: QStyledisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QStyledisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qstyle_types.QStyle, slot: QStyledisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QStyledisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QStyledisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStyle_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStyle_disconnectNotify(self: ptr cQStyle, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QStyle_disconnectNotify ".} =
-  type Cb = proc(super: QStyledisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QStyle(h: self), signal)
+  var nimfunc = cast[ptr QStyledisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QStyle): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qstyle_types.QStyle): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQStyle_staticMetaObject())
-proc delete*(self: QStyle) =
+proc delete*(self: gen_qstyle_types.QStyle) =
   fcQStyle_delete(self.h)

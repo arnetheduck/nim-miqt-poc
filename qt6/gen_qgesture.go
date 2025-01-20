@@ -171,7 +171,7 @@ func (this *QGesture) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QGesture_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QGesture) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QGesture) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QGesture_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -198,7 +198,7 @@ func (this *QGesture) callVirtualBase_Metacast(param1 string) unsafe.Pointer {
 	return (unsafe.Pointer)(C.QGesture_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QGesture) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QGesture) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QGesture_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -588,7 +588,7 @@ func (this *QPanGesture) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QPanGesture_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QPanGesture) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QPanGesture) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QPanGesture_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -615,7 +615,7 @@ func (this *QPanGesture) callVirtualBase_Metacast(param1 string) unsafe.Pointer 
 	return (unsafe.Pointer)(C.QPanGesture_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QPanGesture) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QPanGesture) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QPanGesture_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1065,7 +1065,7 @@ func (this *QPinchGesture) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QPinchGesture_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QPinchGesture) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QPinchGesture) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QPinchGesture_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1092,7 +1092,7 @@ func (this *QPinchGesture) callVirtualBase_Metacast(param1 string) unsafe.Pointe
 	return (unsafe.Pointer)(C.QPinchGesture_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QPinchGesture) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QPinchGesture) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QPinchGesture_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1464,7 +1464,7 @@ func (this *QSwipeGesture) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QSwipeGesture_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QSwipeGesture) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QSwipeGesture) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QSwipeGesture_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1491,7 +1491,7 @@ func (this *QSwipeGesture) callVirtualBase_Metacast(param1 string) unsafe.Pointe
 	return (unsafe.Pointer)(C.QSwipeGesture_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QSwipeGesture) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QSwipeGesture) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QSwipeGesture_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1857,7 +1857,7 @@ func (this *QTapGesture) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QTapGesture_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QTapGesture) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QTapGesture) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QTapGesture_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1884,7 +1884,7 @@ func (this *QTapGesture) callVirtualBase_Metacast(param1 string) unsafe.Pointer 
 	return (unsafe.Pointer)(C.QTapGesture_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QTapGesture) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QTapGesture) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QTapGesture_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2258,7 +2258,7 @@ func (this *QTapAndHoldGesture) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QTapAndHoldGesture_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QTapAndHoldGesture) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QTapAndHoldGesture) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QTapAndHoldGesture_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2285,7 +2285,7 @@ func (this *QTapAndHoldGesture) callVirtualBase_Metacast(param1 string) unsafe.P
 	return (unsafe.Pointer)(C.QTapAndHoldGesture_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QTapAndHoldGesture) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QTapAndHoldGesture) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QTapAndHoldGesture_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

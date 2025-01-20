@@ -99,421 +99,351 @@ proc fcQPauseAnimation_staticMetaObject(): pointer {.importc: "QPauseAnimation_s
 proc fcQPauseAnimation_delete(self: pointer) {.importc: "QPauseAnimation_delete".}
 
 
-func init*(T: type QPauseAnimation, h: ptr cQPauseAnimation): QPauseAnimation =
+func init*(T: type gen_qpauseanimation_types.QPauseAnimation, h: ptr cQPauseAnimation): gen_qpauseanimation_types.QPauseAnimation =
   T(h: h)
-proc create*(T: type QPauseAnimation, ): QPauseAnimation =
+proc create*(T: type gen_qpauseanimation_types.QPauseAnimation, ): gen_qpauseanimation_types.QPauseAnimation =
 
-  QPauseAnimation.init(fcQPauseAnimation_new())
-proc create*(T: type QPauseAnimation, msecs: cint): QPauseAnimation =
+  gen_qpauseanimation_types.QPauseAnimation.init(fcQPauseAnimation_new())
+proc create*(T: type gen_qpauseanimation_types.QPauseAnimation, msecs: cint): gen_qpauseanimation_types.QPauseAnimation =
 
-  QPauseAnimation.init(fcQPauseAnimation_new2(msecs))
-proc create*(T: type QPauseAnimation, parent: gen_qobject.QObject): QPauseAnimation =
+  gen_qpauseanimation_types.QPauseAnimation.init(fcQPauseAnimation_new2(msecs))
+proc create*(T: type gen_qpauseanimation_types.QPauseAnimation, parent: gen_qobject.QObject): gen_qpauseanimation_types.QPauseAnimation =
 
-  QPauseAnimation.init(fcQPauseAnimation_new3(parent.h))
-proc create*(T: type QPauseAnimation, msecs: cint, parent: gen_qobject.QObject): QPauseAnimation =
+  gen_qpauseanimation_types.QPauseAnimation.init(fcQPauseAnimation_new3(parent.h))
+proc create*(T: type gen_qpauseanimation_types.QPauseAnimation, msecs: cint, parent: gen_qobject.QObject): gen_qpauseanimation_types.QPauseAnimation =
 
-  QPauseAnimation.init(fcQPauseAnimation_new4(msecs, parent.h))
-proc metaObject*(self: QPauseAnimation, ): gen_qobjectdefs.QMetaObject =
+  gen_qpauseanimation_types.QPauseAnimation.init(fcQPauseAnimation_new4(msecs, parent.h))
+proc metaObject*(self: gen_qpauseanimation_types.QPauseAnimation, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQPauseAnimation_metaObject(self.h))
 
-proc metacast*(self: QPauseAnimation, param1: cstring): pointer =
+proc metacast*(self: gen_qpauseanimation_types.QPauseAnimation, param1: cstring): pointer =
 
   fcQPauseAnimation_metacast(self.h, param1)
 
-proc metacall*(self: QPauseAnimation, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qpauseanimation_types.QPauseAnimation, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQPauseAnimation_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QPauseAnimation, s: cstring): string =
+proc tr*(_: type gen_qpauseanimation_types.QPauseAnimation, s: cstring): string =
 
   let v_ms = fcQPauseAnimation_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QPauseAnimation, s: cstring): string =
+proc trUtf8*(_: type gen_qpauseanimation_types.QPauseAnimation, s: cstring): string =
 
   let v_ms = fcQPauseAnimation_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc duration*(self: QPauseAnimation, ): cint =
+proc duration*(self: gen_qpauseanimation_types.QPauseAnimation, ): cint =
 
   fcQPauseAnimation_duration(self.h)
 
-proc setDuration*(self: QPauseAnimation, msecs: cint): void =
+proc setDuration*(self: gen_qpauseanimation_types.QPauseAnimation, msecs: cint): void =
 
   fcQPauseAnimation_setDuration(self.h, msecs)
 
-proc tr2*(_: type QPauseAnimation, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qpauseanimation_types.QPauseAnimation, s: cstring, c: cstring): string =
 
   let v_ms = fcQPauseAnimation_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QPauseAnimation, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qpauseanimation_types.QPauseAnimation, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQPauseAnimation_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QPauseAnimation, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qpauseanimation_types.QPauseAnimation, s: cstring, c: cstring): string =
 
   let v_ms = fcQPauseAnimation_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QPauseAnimation, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qpauseanimation_types.QPauseAnimation, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQPauseAnimation_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QPauseAnimation, ): gen_qobjectdefs.QMetaObject =
-
+proc QPauseAnimationmetaObject*(self: gen_qpauseanimation_types.QPauseAnimation, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQPauseAnimation_virtualbase_metaObject(self.h))
 
-type QPauseAnimationmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QPauseAnimation, slot: proc(super: QPauseAnimationmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QPauseAnimationmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qpauseanimation_types.QPauseAnimation, slot: QPauseAnimationmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QPauseAnimationmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QPauseAnimationmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPauseAnimation_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPauseAnimation_metaObject(self: ptr cQPauseAnimation, slot: int): pointer {.exportc: "miqt_exec_callback_QPauseAnimation_metaObject ".} =
-  type Cb = proc(super: QPauseAnimationmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QPauseAnimation(h: self), )
+  var nimfunc = cast[ptr QPauseAnimationmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QPauseAnimation, param1: cstring): pointer =
-
+proc QPauseAnimationmetacast*(self: gen_qpauseanimation_types.QPauseAnimation, param1: cstring): pointer =
 
   fQPauseAnimation_virtualbase_metacast(self.h, param1)
 
-type QPauseAnimationmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QPauseAnimation, slot: proc(super: QPauseAnimationmetacastBase, param1: cstring): pointer) =
+type QPauseAnimationmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qpauseanimation_types.QPauseAnimation, slot: QPauseAnimationmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QPauseAnimationmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QPauseAnimationmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPauseAnimation_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPauseAnimation_metacast(self: ptr cQPauseAnimation, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QPauseAnimation_metacast ".} =
-  type Cb = proc(super: QPauseAnimationmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QPauseAnimation(h: self), param1)
+  var nimfunc = cast[ptr QPauseAnimationmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QPauseAnimation, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QPauseAnimationmetacall*(self: gen_qpauseanimation_types.QPauseAnimation, param1: cint, param2: cint, param3: pointer): cint =
 
   fQPauseAnimation_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QPauseAnimationmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QPauseAnimation, slot: proc(super: QPauseAnimationmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QPauseAnimationmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qpauseanimation_types.QPauseAnimation, slot: QPauseAnimationmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QPauseAnimationmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QPauseAnimationmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPauseAnimation_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPauseAnimation_metacall(self: ptr cQPauseAnimation, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QPauseAnimation_metacall ".} =
-  type Cb = proc(super: QPauseAnimationmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QPauseAnimation(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QPauseAnimationmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_duration(self: QPauseAnimation, ): cint =
-
+proc QPauseAnimationduration*(self: gen_qpauseanimation_types.QPauseAnimation, ): cint =
 
   fQPauseAnimation_virtualbase_duration(self.h)
 
-type QPauseAnimationdurationBase* = proc(): cint
-proc onduration*(self: QPauseAnimation, slot: proc(super: QPauseAnimationdurationBase): cint) =
+type QPauseAnimationdurationProc* = proc(): cint
+proc onduration*(self: gen_qpauseanimation_types.QPauseAnimation, slot: QPauseAnimationdurationProc) =
   # TODO check subclass
-  type Cb = proc(super: QPauseAnimationdurationBase): cint
-  var tmp = new Cb
+  var tmp = new QPauseAnimationdurationProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPauseAnimation_override_virtual_duration(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPauseAnimation_duration(self: ptr cQPauseAnimation, slot: int): cint {.exportc: "miqt_exec_callback_QPauseAnimation_duration ".} =
-  type Cb = proc(super: QPauseAnimationdurationBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_duration(QPauseAnimation(h: self), )
+  var nimfunc = cast[ptr QPauseAnimationdurationProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_event(self: QPauseAnimation, e: gen_qcoreevent.QEvent): bool =
-
+proc QPauseAnimationevent*(self: gen_qpauseanimation_types.QPauseAnimation, e: gen_qcoreevent.QEvent): bool =
 
   fQPauseAnimation_virtualbase_event(self.h, e.h)
 
-type QPauseAnimationeventBase* = proc(e: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QPauseAnimation, slot: proc(super: QPauseAnimationeventBase, e: gen_qcoreevent.QEvent): bool) =
+type QPauseAnimationeventProc* = proc(e: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qpauseanimation_types.QPauseAnimation, slot: QPauseAnimationeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPauseAnimationeventBase, e: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QPauseAnimationeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPauseAnimation_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPauseAnimation_event(self: ptr cQPauseAnimation, slot: int, e: pointer): bool {.exportc: "miqt_exec_callback_QPauseAnimation_event ".} =
-  type Cb = proc(super: QPauseAnimationeventBase, e: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QPauseAnimation(h: self), e)
+  var nimfunc = cast[ptr QPauseAnimationeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: e)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_updateCurrentTime(self: QPauseAnimation, param1: cint): void =
-
+proc QPauseAnimationupdateCurrentTime*(self: gen_qpauseanimation_types.QPauseAnimation, param1: cint): void =
 
   fQPauseAnimation_virtualbase_updateCurrentTime(self.h, param1)
 
-type QPauseAnimationupdateCurrentTimeBase* = proc(param1: cint): void
-proc onupdateCurrentTime*(self: QPauseAnimation, slot: proc(super: QPauseAnimationupdateCurrentTimeBase, param1: cint): void) =
+type QPauseAnimationupdateCurrentTimeProc* = proc(param1: cint): void
+proc onupdateCurrentTime*(self: gen_qpauseanimation_types.QPauseAnimation, slot: QPauseAnimationupdateCurrentTimeProc) =
   # TODO check subclass
-  type Cb = proc(super: QPauseAnimationupdateCurrentTimeBase, param1: cint): void
-  var tmp = new Cb
+  var tmp = new QPauseAnimationupdateCurrentTimeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPauseAnimation_override_virtual_updateCurrentTime(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPauseAnimation_updateCurrentTime(self: ptr cQPauseAnimation, slot: int, param1: cint): void {.exportc: "miqt_exec_callback_QPauseAnimation_updateCurrentTime ".} =
-  type Cb = proc(super: QPauseAnimationupdateCurrentTimeBase, param1: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_updateCurrentTime(QPauseAnimation(h: self), param1)
+  var nimfunc = cast[ptr QPauseAnimationupdateCurrentTimeProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_updateState(self: QPauseAnimation, newState: gen_qabstractanimation.QAbstractAnimationState, oldState: gen_qabstractanimation.QAbstractAnimationState): void =
-
+  nimfunc[](slotval1)
+proc QPauseAnimationupdateState*(self: gen_qpauseanimation_types.QPauseAnimation, newState: cint, oldState: cint): void =
 
   fQPauseAnimation_virtualbase_updateState(self.h, cint(newState), cint(oldState))
 
-type QPauseAnimationupdateStateBase* = proc(newState: gen_qabstractanimation.QAbstractAnimationState, oldState: gen_qabstractanimation.QAbstractAnimationState): void
-proc onupdateState*(self: QPauseAnimation, slot: proc(super: QPauseAnimationupdateStateBase, newState: gen_qabstractanimation.QAbstractAnimationState, oldState: gen_qabstractanimation.QAbstractAnimationState): void) =
+type QPauseAnimationupdateStateProc* = proc(newState: cint, oldState: cint): void
+proc onupdateState*(self: gen_qpauseanimation_types.QPauseAnimation, slot: QPauseAnimationupdateStateProc) =
   # TODO check subclass
-  type Cb = proc(super: QPauseAnimationupdateStateBase, newState: gen_qabstractanimation.QAbstractAnimationState, oldState: gen_qabstractanimation.QAbstractAnimationState): void
-  var tmp = new Cb
+  var tmp = new QPauseAnimationupdateStateProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPauseAnimation_override_virtual_updateState(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPauseAnimation_updateState(self: ptr cQPauseAnimation, slot: int, newState: cint, oldState: cint): void {.exportc: "miqt_exec_callback_QPauseAnimation_updateState ".} =
-  type Cb = proc(super: QPauseAnimationupdateStateBase, newState: gen_qabstractanimation.QAbstractAnimationState, oldState: gen_qabstractanimation.QAbstractAnimationState): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(newState: gen_qabstractanimation.QAbstractAnimationState, oldState: gen_qabstractanimation.QAbstractAnimationState): auto =
-    callVirtualBase_updateState(QPauseAnimation(h: self), newState, oldState)
-  let slotval1 = gen_qabstractanimation.QAbstractAnimationState(newState)
+  var nimfunc = cast[ptr QPauseAnimationupdateStateProc](cast[pointer](slot))
+  let slotval1 = cint(newState)
 
-  let slotval2 = gen_qabstractanimation.QAbstractAnimationState(oldState)
+  let slotval2 = cint(oldState)
 
 
-  nimfunc[](superCall, slotval1, slotval2)
-proc callVirtualBase_updateDirection(self: QPauseAnimation, direction: gen_qabstractanimation.QAbstractAnimationDirection): void =
-
+  nimfunc[](slotval1, slotval2)
+proc QPauseAnimationupdateDirection*(self: gen_qpauseanimation_types.QPauseAnimation, direction: cint): void =
 
   fQPauseAnimation_virtualbase_updateDirection(self.h, cint(direction))
 
-type QPauseAnimationupdateDirectionBase* = proc(direction: gen_qabstractanimation.QAbstractAnimationDirection): void
-proc onupdateDirection*(self: QPauseAnimation, slot: proc(super: QPauseAnimationupdateDirectionBase, direction: gen_qabstractanimation.QAbstractAnimationDirection): void) =
+type QPauseAnimationupdateDirectionProc* = proc(direction: cint): void
+proc onupdateDirection*(self: gen_qpauseanimation_types.QPauseAnimation, slot: QPauseAnimationupdateDirectionProc) =
   # TODO check subclass
-  type Cb = proc(super: QPauseAnimationupdateDirectionBase, direction: gen_qabstractanimation.QAbstractAnimationDirection): void
-  var tmp = new Cb
+  var tmp = new QPauseAnimationupdateDirectionProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPauseAnimation_override_virtual_updateDirection(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPauseAnimation_updateDirection(self: ptr cQPauseAnimation, slot: int, direction: cint): void {.exportc: "miqt_exec_callback_QPauseAnimation_updateDirection ".} =
-  type Cb = proc(super: QPauseAnimationupdateDirectionBase, direction: gen_qabstractanimation.QAbstractAnimationDirection): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(direction: gen_qabstractanimation.QAbstractAnimationDirection): auto =
-    callVirtualBase_updateDirection(QPauseAnimation(h: self), direction)
-  let slotval1 = gen_qabstractanimation.QAbstractAnimationDirection(direction)
+  var nimfunc = cast[ptr QPauseAnimationupdateDirectionProc](cast[pointer](slot))
+  let slotval1 = cint(direction)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_eventFilter(self: QPauseAnimation, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[](slotval1)
+proc QPauseAnimationeventFilter*(self: gen_qpauseanimation_types.QPauseAnimation, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQPauseAnimation_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QPauseAnimationeventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QPauseAnimation, slot: proc(super: QPauseAnimationeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QPauseAnimationeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qpauseanimation_types.QPauseAnimation, slot: QPauseAnimationeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QPauseAnimationeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QPauseAnimationeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPauseAnimation_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPauseAnimation_eventFilter(self: ptr cQPauseAnimation, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QPauseAnimation_eventFilter ".} =
-  type Cb = proc(super: QPauseAnimationeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QPauseAnimation(h: self), watched, event)
+  var nimfunc = cast[ptr QPauseAnimationeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QPauseAnimation, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QPauseAnimationtimerEvent*(self: gen_qpauseanimation_types.QPauseAnimation, event: gen_qcoreevent.QTimerEvent): void =
 
   fQPauseAnimation_virtualbase_timerEvent(self.h, event.h)
 
-type QPauseAnimationtimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QPauseAnimation, slot: proc(super: QPauseAnimationtimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QPauseAnimationtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qpauseanimation_types.QPauseAnimation, slot: QPauseAnimationtimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPauseAnimationtimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QPauseAnimationtimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPauseAnimation_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPauseAnimation_timerEvent(self: ptr cQPauseAnimation, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPauseAnimation_timerEvent ".} =
-  type Cb = proc(super: QPauseAnimationtimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QPauseAnimation(h: self), event)
+  var nimfunc = cast[ptr QPauseAnimationtimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QPauseAnimation, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QPauseAnimationchildEvent*(self: gen_qpauseanimation_types.QPauseAnimation, event: gen_qcoreevent.QChildEvent): void =
 
   fQPauseAnimation_virtualbase_childEvent(self.h, event.h)
 
-type QPauseAnimationchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QPauseAnimation, slot: proc(super: QPauseAnimationchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QPauseAnimationchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qpauseanimation_types.QPauseAnimation, slot: QPauseAnimationchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPauseAnimationchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QPauseAnimationchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPauseAnimation_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPauseAnimation_childEvent(self: ptr cQPauseAnimation, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPauseAnimation_childEvent ".} =
-  type Cb = proc(super: QPauseAnimationchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QPauseAnimation(h: self), event)
+  var nimfunc = cast[ptr QPauseAnimationchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QPauseAnimation, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QPauseAnimationcustomEvent*(self: gen_qpauseanimation_types.QPauseAnimation, event: gen_qcoreevent.QEvent): void =
 
   fQPauseAnimation_virtualbase_customEvent(self.h, event.h)
 
-type QPauseAnimationcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QPauseAnimation, slot: proc(super: QPauseAnimationcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QPauseAnimationcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qpauseanimation_types.QPauseAnimation, slot: QPauseAnimationcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPauseAnimationcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QPauseAnimationcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPauseAnimation_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPauseAnimation_customEvent(self: ptr cQPauseAnimation, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPauseAnimation_customEvent ".} =
-  type Cb = proc(super: QPauseAnimationcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QPauseAnimation(h: self), event)
+  var nimfunc = cast[ptr QPauseAnimationcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QPauseAnimation, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QPauseAnimationconnectNotify*(self: gen_qpauseanimation_types.QPauseAnimation, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQPauseAnimation_virtualbase_connectNotify(self.h, signal.h)
 
-type QPauseAnimationconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QPauseAnimation, slot: proc(super: QPauseAnimationconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QPauseAnimationconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qpauseanimation_types.QPauseAnimation, slot: QPauseAnimationconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QPauseAnimationconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QPauseAnimationconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPauseAnimation_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPauseAnimation_connectNotify(self: ptr cQPauseAnimation, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QPauseAnimation_connectNotify ".} =
-  type Cb = proc(super: QPauseAnimationconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QPauseAnimation(h: self), signal)
+  var nimfunc = cast[ptr QPauseAnimationconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QPauseAnimation, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QPauseAnimationdisconnectNotify*(self: gen_qpauseanimation_types.QPauseAnimation, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQPauseAnimation_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QPauseAnimationdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QPauseAnimation, slot: proc(super: QPauseAnimationdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QPauseAnimationdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qpauseanimation_types.QPauseAnimation, slot: QPauseAnimationdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QPauseAnimationdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QPauseAnimationdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPauseAnimation_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPauseAnimation_disconnectNotify(self: ptr cQPauseAnimation, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QPauseAnimation_disconnectNotify ".} =
-  type Cb = proc(super: QPauseAnimationdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QPauseAnimation(h: self), signal)
+  var nimfunc = cast[ptr QPauseAnimationdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QPauseAnimation): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qpauseanimation_types.QPauseAnimation): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQPauseAnimation_staticMetaObject())
-proc delete*(self: QPauseAnimation) =
+proc delete*(self: gen_qpauseanimation_types.QPauseAnimation) =
   fcQPauseAnimation_delete(self.h)

@@ -55,31 +55,31 @@ proc fcQsciStyledText_style(self: pointer, ): cint {.importc: "QsciStyledText_st
 proc fcQsciStyledText_delete(self: pointer) {.importc: "QsciStyledText_delete".}
 
 
-func init*(T: type QsciStyledText, h: ptr cQsciStyledText): QsciStyledText =
+func init*(T: type gen_qscistyledtext_types.QsciStyledText, h: ptr cQsciStyledText): gen_qscistyledtext_types.QsciStyledText =
   T(h: h)
-proc create*(T: type QsciStyledText, text: string, style: cint): QsciStyledText =
+proc create*(T: type gen_qscistyledtext_types.QsciStyledText, text: string, style: cint): gen_qscistyledtext_types.QsciStyledText =
 
-  QsciStyledText.init(fcQsciStyledText_new(struct_miqt_string(data: text, len: csize_t(len(text))), style))
-proc create*(T: type QsciStyledText, text: string, style: gen_qscistyle.QsciStyle): QsciStyledText =
+  gen_qscistyledtext_types.QsciStyledText.init(fcQsciStyledText_new(struct_miqt_string(data: text, len: csize_t(len(text))), style))
+proc create*(T: type gen_qscistyledtext_types.QsciStyledText, text: string, style: gen_qscistyle.QsciStyle): gen_qscistyledtext_types.QsciStyledText =
 
-  QsciStyledText.init(fcQsciStyledText_new2(struct_miqt_string(data: text, len: csize_t(len(text))), style.h))
-proc create*(T: type QsciStyledText, param1: QsciStyledText): QsciStyledText =
+  gen_qscistyledtext_types.QsciStyledText.init(fcQsciStyledText_new2(struct_miqt_string(data: text, len: csize_t(len(text))), style.h))
+proc create*(T: type gen_qscistyledtext_types.QsciStyledText, param1: gen_qscistyledtext_types.QsciStyledText): gen_qscistyledtext_types.QsciStyledText =
 
-  QsciStyledText.init(fcQsciStyledText_new3(param1.h))
-proc apply*(self: QsciStyledText, sci: gen_qsciscintillabase.QsciScintillaBase): void =
+  gen_qscistyledtext_types.QsciStyledText.init(fcQsciStyledText_new3(param1.h))
+proc apply*(self: gen_qscistyledtext_types.QsciStyledText, sci: gen_qsciscintillabase.QsciScintillaBase): void =
 
   fcQsciStyledText_apply(self.h, sci.h)
 
-proc text*(self: QsciStyledText, ): string =
+proc text*(self: gen_qscistyledtext_types.QsciStyledText, ): string =
 
   let v_ms = fcQsciStyledText_text(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc style*(self: QsciStyledText, ): cint =
+proc style*(self: gen_qscistyledtext_types.QsciStyledText, ): cint =
 
   fcQsciStyledText_style(self.h)
 
-proc delete*(self: QsciStyledText) =
+proc delete*(self: gen_qscistyledtext_types.QsciStyledText) =
   fcQsciStyledText_delete(self.h)

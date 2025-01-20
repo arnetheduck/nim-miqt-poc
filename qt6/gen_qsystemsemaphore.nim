@@ -34,23 +34,19 @@ const cflags = gorge("pkg-config -cflags Qt6Widgets")
 {.compile("gen_qsystemsemaphore.cpp", cflags).}
 
 
-type QSystemSemaphoreAccessMode* = cint
-const
-  QSystemSemaphoreOpen* = 0
-  QSystemSemaphoreCreate* = 1
+type QSystemSemaphoreAccessModeEnum* = distinct cint
+template Open*(_: type QSystemSemaphoreAccessModeEnum): untyped = 0
+template Create*(_: type QSystemSemaphoreAccessModeEnum): untyped = 1
 
 
-
-type QSystemSemaphoreSystemSemaphoreError* = cint
-const
-  QSystemSemaphoreNoError* = 0
-  QSystemSemaphorePermissionDenied* = 1
-  QSystemSemaphoreKeyError* = 2
-  QSystemSemaphoreAlreadyExists* = 3
-  QSystemSemaphoreNotFound* = 4
-  QSystemSemaphoreOutOfResources* = 5
-  QSystemSemaphoreUnknownError* = 6
-
+type QSystemSemaphoreSystemSemaphoreErrorEnum* = distinct cint
+template NoError*(_: type QSystemSemaphoreSystemSemaphoreErrorEnum): untyped = 0
+template PermissionDenied*(_: type QSystemSemaphoreSystemSemaphoreErrorEnum): untyped = 1
+template KeyError*(_: type QSystemSemaphoreSystemSemaphoreErrorEnum): untyped = 2
+template AlreadyExists*(_: type QSystemSemaphoreSystemSemaphoreErrorEnum): untyped = 3
+template NotFound*(_: type QSystemSemaphoreSystemSemaphoreErrorEnum): untyped = 4
+template OutOfResources*(_: type QSystemSemaphoreSystemSemaphoreErrorEnum): untyped = 5
+template UnknownError*(_: type QSystemSemaphoreSystemSemaphoreErrorEnum): untyped = 6
 
 
 import gen_qsystemsemaphore_types
@@ -77,79 +73,79 @@ proc fcQSystemSemaphore_release1(self: pointer, n: cint): bool {.importc: "QSyst
 proc fcQSystemSemaphore_delete(self: pointer) {.importc: "QSystemSemaphore_delete".}
 
 
-func init*(T: type QSystemSemaphore, h: ptr cQSystemSemaphore): QSystemSemaphore =
+func init*(T: type gen_qsystemsemaphore_types.QSystemSemaphore, h: ptr cQSystemSemaphore): gen_qsystemsemaphore_types.QSystemSemaphore =
   T(h: h)
-proc create*(T: type QSystemSemaphore, key: string): QSystemSemaphore =
+proc create*(T: type gen_qsystemsemaphore_types.QSystemSemaphore, key: string): gen_qsystemsemaphore_types.QSystemSemaphore =
 
-  QSystemSemaphore.init(fcQSystemSemaphore_new(struct_miqt_string(data: key, len: csize_t(len(key)))))
-proc create*(T: type QSystemSemaphore, key: string, initialValue: cint): QSystemSemaphore =
+  gen_qsystemsemaphore_types.QSystemSemaphore.init(fcQSystemSemaphore_new(struct_miqt_string(data: key, len: csize_t(len(key)))))
+proc create*(T: type gen_qsystemsemaphore_types.QSystemSemaphore, key: string, initialValue: cint): gen_qsystemsemaphore_types.QSystemSemaphore =
 
-  QSystemSemaphore.init(fcQSystemSemaphore_new2(struct_miqt_string(data: key, len: csize_t(len(key))), initialValue))
-proc create*(T: type QSystemSemaphore, key: string, initialValue: cint, mode: QSystemSemaphoreAccessMode): QSystemSemaphore =
+  gen_qsystemsemaphore_types.QSystemSemaphore.init(fcQSystemSemaphore_new2(struct_miqt_string(data: key, len: csize_t(len(key))), initialValue))
+proc create*(T: type gen_qsystemsemaphore_types.QSystemSemaphore, key: string, initialValue: cint, mode: cint): gen_qsystemsemaphore_types.QSystemSemaphore =
 
-  QSystemSemaphore.init(fcQSystemSemaphore_new3(struct_miqt_string(data: key, len: csize_t(len(key))), initialValue, cint(mode)))
-proc tr*(_: type QSystemSemaphore, sourceText: cstring): string =
+  gen_qsystemsemaphore_types.QSystemSemaphore.init(fcQSystemSemaphore_new3(struct_miqt_string(data: key, len: csize_t(len(key))), initialValue, cint(mode)))
+proc tr*(_: type gen_qsystemsemaphore_types.QSystemSemaphore, sourceText: cstring): string =
 
   let v_ms = fcQSystemSemaphore_tr(sourceText)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setKey*(self: QSystemSemaphore, key: string): void =
+proc setKey*(self: gen_qsystemsemaphore_types.QSystemSemaphore, key: string): void =
 
   fcQSystemSemaphore_setKey(self.h, struct_miqt_string(data: key, len: csize_t(len(key))))
 
-proc key*(self: QSystemSemaphore, ): string =
+proc key*(self: gen_qsystemsemaphore_types.QSystemSemaphore, ): string =
 
   let v_ms = fcQSystemSemaphore_key(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc acquire*(self: QSystemSemaphore, ): bool =
+proc acquire*(self: gen_qsystemsemaphore_types.QSystemSemaphore, ): bool =
 
   fcQSystemSemaphore_acquire(self.h)
 
-proc release*(self: QSystemSemaphore, ): bool =
+proc release*(self: gen_qsystemsemaphore_types.QSystemSemaphore, ): bool =
 
   fcQSystemSemaphore_release(self.h)
 
-proc error*(self: QSystemSemaphore, ): QSystemSemaphoreSystemSemaphoreError =
+proc error*(self: gen_qsystemsemaphore_types.QSystemSemaphore, ): cint =
 
-  QSystemSemaphoreSystemSemaphoreError(fcQSystemSemaphore_error(self.h))
+  cint(fcQSystemSemaphore_error(self.h))
 
-proc errorString*(self: QSystemSemaphore, ): string =
+proc errorString*(self: gen_qsystemsemaphore_types.QSystemSemaphore, ): string =
 
   let v_ms = fcQSystemSemaphore_errorString(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr2*(_: type QSystemSemaphore, sourceText: cstring, disambiguation: cstring): string =
+proc tr2*(_: type gen_qsystemsemaphore_types.QSystemSemaphore, sourceText: cstring, disambiguation: cstring): string =
 
   let v_ms = fcQSystemSemaphore_tr2(sourceText, disambiguation)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QSystemSemaphore, sourceText: cstring, disambiguation: cstring, n: cint): string =
+proc tr3*(_: type gen_qsystemsemaphore_types.QSystemSemaphore, sourceText: cstring, disambiguation: cstring, n: cint): string =
 
   let v_ms = fcQSystemSemaphore_tr3(sourceText, disambiguation, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setKey2*(self: QSystemSemaphore, key: string, initialValue: cint): void =
+proc setKey2*(self: gen_qsystemsemaphore_types.QSystemSemaphore, key: string, initialValue: cint): void =
 
   fcQSystemSemaphore_setKey2(self.h, struct_miqt_string(data: key, len: csize_t(len(key))), initialValue)
 
-proc setKey3*(self: QSystemSemaphore, key: string, initialValue: cint, mode: QSystemSemaphoreAccessMode): void =
+proc setKey3*(self: gen_qsystemsemaphore_types.QSystemSemaphore, key: string, initialValue: cint, mode: cint): void =
 
   fcQSystemSemaphore_setKey3(self.h, struct_miqt_string(data: key, len: csize_t(len(key))), initialValue, cint(mode))
 
-proc release1*(self: QSystemSemaphore, n: cint): bool =
+proc release1*(self: gen_qsystemsemaphore_types.QSystemSemaphore, n: cint): bool =
 
   fcQSystemSemaphore_release1(self.h, n)
 
-proc delete*(self: QSystemSemaphore) =
+proc delete*(self: gen_qsystemsemaphore_types.QSystemSemaphore) =
   fcQSystemSemaphore_delete(self.h)

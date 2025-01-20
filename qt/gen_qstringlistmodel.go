@@ -282,7 +282,7 @@ func (this *QStringListModel) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QStringListModel_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QStringListModel) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QStringListModel) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QStringListModel_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -309,7 +309,7 @@ func (this *QStringListModel) callVirtualBase_Metacast(param1 string) unsafe.Poi
 	return (unsafe.Pointer)(C.QStringListModel_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QStringListModel) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QStringListModel) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QStringListModel_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

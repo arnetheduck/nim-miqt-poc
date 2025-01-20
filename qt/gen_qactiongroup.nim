@@ -34,12 +34,10 @@ const cflags = gorge("pkg-config -cflags Qt5Widgets")
 {.compile("gen_qactiongroup.cpp", cflags).}
 
 
-type QActionGroupExclusionPolicy* = cint
-const
-  QActionGroupNone* = 0
-  QActionGroupExclusive* = 1
-  QActionGroupExclusiveOptional* = 2
-
+type QActionGroupExclusionPolicyEnum* = distinct cint
+template None*(_: type QActionGroupExclusionPolicyEnum): untyped = 0
+template Exclusive*(_: type QActionGroupExclusionPolicyEnum): untyped = 1
+template ExclusiveOptional*(_: type QActionGroupExclusionPolicyEnum): untyped = 2
 
 
 import gen_qactiongroup_types
@@ -115,54 +113,54 @@ proc fcQActionGroup_staticMetaObject(): pointer {.importc: "QActionGroup_staticM
 proc fcQActionGroup_delete(self: pointer) {.importc: "QActionGroup_delete".}
 
 
-func init*(T: type QActionGroup, h: ptr cQActionGroup): QActionGroup =
+func init*(T: type gen_qactiongroup_types.QActionGroup, h: ptr cQActionGroup): gen_qactiongroup_types.QActionGroup =
   T(h: h)
-proc create*(T: type QActionGroup, parent: gen_qobject.QObject): QActionGroup =
+proc create*(T: type gen_qactiongroup_types.QActionGroup, parent: gen_qobject.QObject): gen_qactiongroup_types.QActionGroup =
 
-  QActionGroup.init(fcQActionGroup_new(parent.h))
-proc metaObject*(self: QActionGroup, ): gen_qobjectdefs.QMetaObject =
+  gen_qactiongroup_types.QActionGroup.init(fcQActionGroup_new(parent.h))
+proc metaObject*(self: gen_qactiongroup_types.QActionGroup, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQActionGroup_metaObject(self.h))
 
-proc metacast*(self: QActionGroup, param1: cstring): pointer =
+proc metacast*(self: gen_qactiongroup_types.QActionGroup, param1: cstring): pointer =
 
   fcQActionGroup_metacast(self.h, param1)
 
-proc metacall*(self: QActionGroup, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qactiongroup_types.QActionGroup, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQActionGroup_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QActionGroup, s: cstring): string =
+proc tr*(_: type gen_qactiongroup_types.QActionGroup, s: cstring): string =
 
   let v_ms = fcQActionGroup_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QActionGroup, s: cstring): string =
+proc trUtf8*(_: type gen_qactiongroup_types.QActionGroup, s: cstring): string =
 
   let v_ms = fcQActionGroup_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc addAction*(self: QActionGroup, a: gen_qaction.QAction): gen_qaction.QAction =
+proc addAction*(self: gen_qactiongroup_types.QActionGroup, a: gen_qaction.QAction): gen_qaction.QAction =
 
   gen_qaction.QAction(h: fcQActionGroup_addAction(self.h, a.h))
 
-proc addActionWithText*(self: QActionGroup, text: string): gen_qaction.QAction =
+proc addActionWithText*(self: gen_qactiongroup_types.QActionGroup, text: string): gen_qaction.QAction =
 
   gen_qaction.QAction(h: fcQActionGroup_addActionWithText(self.h, struct_miqt_string(data: text, len: csize_t(len(text)))))
 
-proc addAction2*(self: QActionGroup, icon: gen_qicon.QIcon, text: string): gen_qaction.QAction =
+proc addAction2*(self: gen_qactiongroup_types.QActionGroup, icon: gen_qicon.QIcon, text: string): gen_qaction.QAction =
 
   gen_qaction.QAction(h: fcQActionGroup_addAction2(self.h, icon.h, struct_miqt_string(data: text, len: csize_t(len(text)))))
 
-proc removeAction*(self: QActionGroup, a: gen_qaction.QAction): void =
+proc removeAction*(self: gen_qactiongroup_types.QActionGroup, a: gen_qaction.QAction): void =
 
   fcQActionGroup_removeAction(self.h, a.h)
 
-proc actions*(self: QActionGroup, ): seq[gen_qaction.QAction] =
+proc actions*(self: gen_qactiongroup_types.QActionGroup, ): seq[gen_qaction.QAction] =
 
   var v_ma = fcQActionGroup_actions(self.h)
   var vx_ret = newSeq[gen_qaction.QAction](int(v_ma.len))
@@ -171,47 +169,47 @@ proc actions*(self: QActionGroup, ): seq[gen_qaction.QAction] =
     vx_ret[i] = gen_qaction.QAction(h: v_outCast[i])
   vx_ret
 
-proc checkedAction*(self: QActionGroup, ): gen_qaction.QAction =
+proc checkedAction*(self: gen_qactiongroup_types.QActionGroup, ): gen_qaction.QAction =
 
   gen_qaction.QAction(h: fcQActionGroup_checkedAction(self.h))
 
-proc isExclusive*(self: QActionGroup, ): bool =
+proc isExclusive*(self: gen_qactiongroup_types.QActionGroup, ): bool =
 
   fcQActionGroup_isExclusive(self.h)
 
-proc isEnabled*(self: QActionGroup, ): bool =
+proc isEnabled*(self: gen_qactiongroup_types.QActionGroup, ): bool =
 
   fcQActionGroup_isEnabled(self.h)
 
-proc isVisible*(self: QActionGroup, ): bool =
+proc isVisible*(self: gen_qactiongroup_types.QActionGroup, ): bool =
 
   fcQActionGroup_isVisible(self.h)
 
-proc exclusionPolicy*(self: QActionGroup, ): QActionGroupExclusionPolicy =
+proc exclusionPolicy*(self: gen_qactiongroup_types.QActionGroup, ): cint =
 
-  QActionGroupExclusionPolicy(fcQActionGroup_exclusionPolicy(self.h))
+  cint(fcQActionGroup_exclusionPolicy(self.h))
 
-proc setEnabled*(self: QActionGroup, enabled: bool): void =
+proc setEnabled*(self: gen_qactiongroup_types.QActionGroup, enabled: bool): void =
 
   fcQActionGroup_setEnabled(self.h, enabled)
 
-proc setDisabled*(self: QActionGroup, b: bool): void =
+proc setDisabled*(self: gen_qactiongroup_types.QActionGroup, b: bool): void =
 
   fcQActionGroup_setDisabled(self.h, b)
 
-proc setVisible*(self: QActionGroup, visible: bool): void =
+proc setVisible*(self: gen_qactiongroup_types.QActionGroup, visible: bool): void =
 
   fcQActionGroup_setVisible(self.h, visible)
 
-proc setExclusive*(self: QActionGroup, exclusive: bool): void =
+proc setExclusive*(self: gen_qactiongroup_types.QActionGroup, exclusive: bool): void =
 
   fcQActionGroup_setExclusive(self.h, exclusive)
 
-proc setExclusionPolicy*(self: QActionGroup, policy: QActionGroupExclusionPolicy): void =
+proc setExclusionPolicy*(self: gen_qactiongroup_types.QActionGroup, policy: cint): void =
 
   fcQActionGroup_setExclusionPolicy(self.h, cint(policy))
 
-proc triggered*(self: QActionGroup, param1: gen_qaction.QAction): void =
+proc triggered*(self: gen_qactiongroup_types.QActionGroup, param1: gen_qaction.QAction): void =
 
   fcQActionGroup_triggered(self.h, param1.h)
 
@@ -223,13 +221,13 @@ proc miqt_exec_callback_QActionGroup_triggered(slot: int, param1: pointer) {.exp
 
   nimfunc[](slotval1)
 
-proc ontriggered*(self: QActionGroup, slot: proc(param1: gen_qaction.QAction)) =
+proc ontriggered*(self: gen_qactiongroup_types.QActionGroup, slot: proc(param1: gen_qaction.QAction)) =
   type Cb = proc(param1: gen_qaction.QAction)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQActionGroup_connect_triggered(self.h, cast[int](addr tmp[]))
-proc hovered*(self: QActionGroup, param1: gen_qaction.QAction): void =
+proc hovered*(self: gen_qactiongroup_types.QActionGroup, param1: gen_qaction.QAction): void =
 
   fcQActionGroup_hovered(self.h, param1.h)
 
@@ -241,285 +239,235 @@ proc miqt_exec_callback_QActionGroup_hovered(slot: int, param1: pointer) {.expor
 
   nimfunc[](slotval1)
 
-proc onhovered*(self: QActionGroup, slot: proc(param1: gen_qaction.QAction)) =
+proc onhovered*(self: gen_qactiongroup_types.QActionGroup, slot: proc(param1: gen_qaction.QAction)) =
   type Cb = proc(param1: gen_qaction.QAction)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQActionGroup_connect_hovered(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QActionGroup, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qactiongroup_types.QActionGroup, s: cstring, c: cstring): string =
 
   let v_ms = fcQActionGroup_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QActionGroup, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qactiongroup_types.QActionGroup, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQActionGroup_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QActionGroup, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qactiongroup_types.QActionGroup, s: cstring, c: cstring): string =
 
   let v_ms = fcQActionGroup_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QActionGroup, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qactiongroup_types.QActionGroup, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQActionGroup_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QActionGroup, ): gen_qobjectdefs.QMetaObject =
-
+proc QActionGroupmetaObject*(self: gen_qactiongroup_types.QActionGroup, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQActionGroup_virtualbase_metaObject(self.h))
 
-type QActionGroupmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QActionGroup, slot: proc(super: QActionGroupmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QActionGroupmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qactiongroup_types.QActionGroup, slot: QActionGroupmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QActionGroupmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QActionGroupmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQActionGroup_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QActionGroup_metaObject(self: ptr cQActionGroup, slot: int): pointer {.exportc: "miqt_exec_callback_QActionGroup_metaObject ".} =
-  type Cb = proc(super: QActionGroupmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QActionGroup(h: self), )
+  var nimfunc = cast[ptr QActionGroupmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QActionGroup, param1: cstring): pointer =
-
+proc QActionGroupmetacast*(self: gen_qactiongroup_types.QActionGroup, param1: cstring): pointer =
 
   fQActionGroup_virtualbase_metacast(self.h, param1)
 
-type QActionGroupmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QActionGroup, slot: proc(super: QActionGroupmetacastBase, param1: cstring): pointer) =
+type QActionGroupmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qactiongroup_types.QActionGroup, slot: QActionGroupmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QActionGroupmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QActionGroupmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQActionGroup_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QActionGroup_metacast(self: ptr cQActionGroup, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QActionGroup_metacast ".} =
-  type Cb = proc(super: QActionGroupmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QActionGroup(h: self), param1)
+  var nimfunc = cast[ptr QActionGroupmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QActionGroup, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QActionGroupmetacall*(self: gen_qactiongroup_types.QActionGroup, param1: cint, param2: cint, param3: pointer): cint =
 
   fQActionGroup_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QActionGroupmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QActionGroup, slot: proc(super: QActionGroupmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QActionGroupmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qactiongroup_types.QActionGroup, slot: QActionGroupmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QActionGroupmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QActionGroupmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQActionGroup_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QActionGroup_metacall(self: ptr cQActionGroup, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QActionGroup_metacall ".} =
-  type Cb = proc(super: QActionGroupmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QActionGroup(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QActionGroupmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_event(self: QActionGroup, event: gen_qcoreevent.QEvent): bool =
-
+proc QActionGroupevent*(self: gen_qactiongroup_types.QActionGroup, event: gen_qcoreevent.QEvent): bool =
 
   fQActionGroup_virtualbase_event(self.h, event.h)
 
-type QActionGroupeventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QActionGroup, slot: proc(super: QActionGroupeventBase, event: gen_qcoreevent.QEvent): bool) =
+type QActionGroupeventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qactiongroup_types.QActionGroup, slot: QActionGroupeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QActionGroupeventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QActionGroupeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQActionGroup_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QActionGroup_event(self: ptr cQActionGroup, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QActionGroup_event ".} =
-  type Cb = proc(super: QActionGroupeventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QActionGroup(h: self), event)
+  var nimfunc = cast[ptr QActionGroupeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QActionGroup, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QActionGroupeventFilter*(self: gen_qactiongroup_types.QActionGroup, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQActionGroup_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QActionGroupeventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QActionGroup, slot: proc(super: QActionGroupeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QActionGroupeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qactiongroup_types.QActionGroup, slot: QActionGroupeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QActionGroupeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QActionGroupeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQActionGroup_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QActionGroup_eventFilter(self: ptr cQActionGroup, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QActionGroup_eventFilter ".} =
-  type Cb = proc(super: QActionGroupeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QActionGroup(h: self), watched, event)
+  var nimfunc = cast[ptr QActionGroupeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QActionGroup, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QActionGrouptimerEvent*(self: gen_qactiongroup_types.QActionGroup, event: gen_qcoreevent.QTimerEvent): void =
 
   fQActionGroup_virtualbase_timerEvent(self.h, event.h)
 
-type QActionGrouptimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QActionGroup, slot: proc(super: QActionGrouptimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QActionGrouptimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qactiongroup_types.QActionGroup, slot: QActionGrouptimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QActionGrouptimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QActionGrouptimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQActionGroup_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QActionGroup_timerEvent(self: ptr cQActionGroup, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QActionGroup_timerEvent ".} =
-  type Cb = proc(super: QActionGrouptimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QActionGroup(h: self), event)
+  var nimfunc = cast[ptr QActionGrouptimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QActionGroup, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QActionGroupchildEvent*(self: gen_qactiongroup_types.QActionGroup, event: gen_qcoreevent.QChildEvent): void =
 
   fQActionGroup_virtualbase_childEvent(self.h, event.h)
 
-type QActionGroupchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QActionGroup, slot: proc(super: QActionGroupchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QActionGroupchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qactiongroup_types.QActionGroup, slot: QActionGroupchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QActionGroupchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QActionGroupchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQActionGroup_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QActionGroup_childEvent(self: ptr cQActionGroup, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QActionGroup_childEvent ".} =
-  type Cb = proc(super: QActionGroupchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QActionGroup(h: self), event)
+  var nimfunc = cast[ptr QActionGroupchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QActionGroup, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QActionGroupcustomEvent*(self: gen_qactiongroup_types.QActionGroup, event: gen_qcoreevent.QEvent): void =
 
   fQActionGroup_virtualbase_customEvent(self.h, event.h)
 
-type QActionGroupcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QActionGroup, slot: proc(super: QActionGroupcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QActionGroupcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qactiongroup_types.QActionGroup, slot: QActionGroupcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QActionGroupcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QActionGroupcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQActionGroup_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QActionGroup_customEvent(self: ptr cQActionGroup, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QActionGroup_customEvent ".} =
-  type Cb = proc(super: QActionGroupcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QActionGroup(h: self), event)
+  var nimfunc = cast[ptr QActionGroupcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QActionGroup, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QActionGroupconnectNotify*(self: gen_qactiongroup_types.QActionGroup, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQActionGroup_virtualbase_connectNotify(self.h, signal.h)
 
-type QActionGroupconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QActionGroup, slot: proc(super: QActionGroupconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QActionGroupconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qactiongroup_types.QActionGroup, slot: QActionGroupconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QActionGroupconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QActionGroupconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQActionGroup_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QActionGroup_connectNotify(self: ptr cQActionGroup, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QActionGroup_connectNotify ".} =
-  type Cb = proc(super: QActionGroupconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QActionGroup(h: self), signal)
+  var nimfunc = cast[ptr QActionGroupconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QActionGroup, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QActionGroupdisconnectNotify*(self: gen_qactiongroup_types.QActionGroup, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQActionGroup_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QActionGroupdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QActionGroup, slot: proc(super: QActionGroupdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QActionGroupdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qactiongroup_types.QActionGroup, slot: QActionGroupdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QActionGroupdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QActionGroupdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQActionGroup_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QActionGroup_disconnectNotify(self: ptr cQActionGroup, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QActionGroup_disconnectNotify ".} =
-  type Cb = proc(super: QActionGroupdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QActionGroup(h: self), signal)
+  var nimfunc = cast[ptr QActionGroupdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QActionGroup): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qactiongroup_types.QActionGroup): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQActionGroup_staticMetaObject())
-proc delete*(self: QActionGroup) =
+proc delete*(self: gen_qactiongroup_types.QActionGroup) =
   fcQActionGroup_delete(self.h)

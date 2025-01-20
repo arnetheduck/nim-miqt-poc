@@ -34,58 +34,56 @@ const cflags = gorge("pkg-config -cflags Qt6Widgets")
 {.compile("gen_qeasingcurve.cpp", cflags).}
 
 
-type QEasingCurveType* = cint
-const
-  QEasingCurveLinear* = 0
-  QEasingCurveInQuad* = 1
-  QEasingCurveOutQuad* = 2
-  QEasingCurveInOutQuad* = 3
-  QEasingCurveOutInQuad* = 4
-  QEasingCurveInCubic* = 5
-  QEasingCurveOutCubic* = 6
-  QEasingCurveInOutCubic* = 7
-  QEasingCurveOutInCubic* = 8
-  QEasingCurveInQuart* = 9
-  QEasingCurveOutQuart* = 10
-  QEasingCurveInOutQuart* = 11
-  QEasingCurveOutInQuart* = 12
-  QEasingCurveInQuint* = 13
-  QEasingCurveOutQuint* = 14
-  QEasingCurveInOutQuint* = 15
-  QEasingCurveOutInQuint* = 16
-  QEasingCurveInSine* = 17
-  QEasingCurveOutSine* = 18
-  QEasingCurveInOutSine* = 19
-  QEasingCurveOutInSine* = 20
-  QEasingCurveInExpo* = 21
-  QEasingCurveOutExpo* = 22
-  QEasingCurveInOutExpo* = 23
-  QEasingCurveOutInExpo* = 24
-  QEasingCurveInCirc* = 25
-  QEasingCurveOutCirc* = 26
-  QEasingCurveInOutCirc* = 27
-  QEasingCurveOutInCirc* = 28
-  QEasingCurveInElastic* = 29
-  QEasingCurveOutElastic* = 30
-  QEasingCurveInOutElastic* = 31
-  QEasingCurveOutInElastic* = 32
-  QEasingCurveInBack* = 33
-  QEasingCurveOutBack* = 34
-  QEasingCurveInOutBack* = 35
-  QEasingCurveOutInBack* = 36
-  QEasingCurveInBounce* = 37
-  QEasingCurveOutBounce* = 38
-  QEasingCurveInOutBounce* = 39
-  QEasingCurveOutInBounce* = 40
-  QEasingCurveInCurve* = 41
-  QEasingCurveOutCurve* = 42
-  QEasingCurveSineCurve* = 43
-  QEasingCurveCosineCurve* = 44
-  QEasingCurveBezierSpline* = 45
-  QEasingCurveTCBSpline* = 46
-  QEasingCurveCustom* = 47
-  QEasingCurveNCurveTypes* = 48
-
+type QEasingCurveTypeEnum* = distinct cint
+template Linear*(_: type QEasingCurveTypeEnum): untyped = 0
+template InQuad*(_: type QEasingCurveTypeEnum): untyped = 1
+template OutQuad*(_: type QEasingCurveTypeEnum): untyped = 2
+template InOutQuad*(_: type QEasingCurveTypeEnum): untyped = 3
+template OutInQuad*(_: type QEasingCurveTypeEnum): untyped = 4
+template InCubic*(_: type QEasingCurveTypeEnum): untyped = 5
+template OutCubic*(_: type QEasingCurveTypeEnum): untyped = 6
+template InOutCubic*(_: type QEasingCurveTypeEnum): untyped = 7
+template OutInCubic*(_: type QEasingCurveTypeEnum): untyped = 8
+template InQuart*(_: type QEasingCurveTypeEnum): untyped = 9
+template OutQuart*(_: type QEasingCurveTypeEnum): untyped = 10
+template InOutQuart*(_: type QEasingCurveTypeEnum): untyped = 11
+template OutInQuart*(_: type QEasingCurveTypeEnum): untyped = 12
+template InQuint*(_: type QEasingCurveTypeEnum): untyped = 13
+template OutQuint*(_: type QEasingCurveTypeEnum): untyped = 14
+template InOutQuint*(_: type QEasingCurveTypeEnum): untyped = 15
+template OutInQuint*(_: type QEasingCurveTypeEnum): untyped = 16
+template InSine*(_: type QEasingCurveTypeEnum): untyped = 17
+template OutSine*(_: type QEasingCurveTypeEnum): untyped = 18
+template InOutSine*(_: type QEasingCurveTypeEnum): untyped = 19
+template OutInSine*(_: type QEasingCurveTypeEnum): untyped = 20
+template InExpo*(_: type QEasingCurveTypeEnum): untyped = 21
+template OutExpo*(_: type QEasingCurveTypeEnum): untyped = 22
+template InOutExpo*(_: type QEasingCurveTypeEnum): untyped = 23
+template OutInExpo*(_: type QEasingCurveTypeEnum): untyped = 24
+template InCirc*(_: type QEasingCurveTypeEnum): untyped = 25
+template OutCirc*(_: type QEasingCurveTypeEnum): untyped = 26
+template InOutCirc*(_: type QEasingCurveTypeEnum): untyped = 27
+template OutInCirc*(_: type QEasingCurveTypeEnum): untyped = 28
+template InElastic*(_: type QEasingCurveTypeEnum): untyped = 29
+template OutElastic*(_: type QEasingCurveTypeEnum): untyped = 30
+template InOutElastic*(_: type QEasingCurveTypeEnum): untyped = 31
+template OutInElastic*(_: type QEasingCurveTypeEnum): untyped = 32
+template InBack*(_: type QEasingCurveTypeEnum): untyped = 33
+template OutBack*(_: type QEasingCurveTypeEnum): untyped = 34
+template InOutBack*(_: type QEasingCurveTypeEnum): untyped = 35
+template OutInBack*(_: type QEasingCurveTypeEnum): untyped = 36
+template InBounce*(_: type QEasingCurveTypeEnum): untyped = 37
+template OutBounce*(_: type QEasingCurveTypeEnum): untyped = 38
+template InOutBounce*(_: type QEasingCurveTypeEnum): untyped = 39
+template OutInBounce*(_: type QEasingCurveTypeEnum): untyped = 40
+template InCurve*(_: type QEasingCurveTypeEnum): untyped = 41
+template OutCurve*(_: type QEasingCurveTypeEnum): untyped = 42
+template SineCurve*(_: type QEasingCurveTypeEnum): untyped = 43
+template CosineCurve*(_: type QEasingCurveTypeEnum): untyped = 44
+template BezierSpline*(_: type QEasingCurveTypeEnum): untyped = 45
+template TCBSpline*(_: type QEasingCurveTypeEnum): untyped = 46
+template Custom*(_: type QEasingCurveTypeEnum): untyped = 47
+template NCurveTypes*(_: type QEasingCurveTypeEnum): untyped = 48
 
 
 import gen_qeasingcurve_types
@@ -123,66 +121,66 @@ proc fcQEasingCurve_staticMetaObject(): pointer {.importc: "QEasingCurve_staticM
 proc fcQEasingCurve_delete(self: pointer) {.importc: "QEasingCurve_delete".}
 
 
-func init*(T: type QEasingCurve, h: ptr cQEasingCurve): QEasingCurve =
+func init*(T: type gen_qeasingcurve_types.QEasingCurve, h: ptr cQEasingCurve): gen_qeasingcurve_types.QEasingCurve =
   T(h: h)
-proc create*(T: type QEasingCurve, ): QEasingCurve =
+proc create*(T: type gen_qeasingcurve_types.QEasingCurve, ): gen_qeasingcurve_types.QEasingCurve =
 
-  QEasingCurve.init(fcQEasingCurve_new())
-proc create*(T: type QEasingCurve, other: QEasingCurve): QEasingCurve =
+  gen_qeasingcurve_types.QEasingCurve.init(fcQEasingCurve_new())
+proc create*(T: type gen_qeasingcurve_types.QEasingCurve, other: gen_qeasingcurve_types.QEasingCurve): gen_qeasingcurve_types.QEasingCurve =
 
-  QEasingCurve.init(fcQEasingCurve_new2(other.h))
-proc create*(T: type QEasingCurve, typeVal: QEasingCurveType): QEasingCurve =
+  gen_qeasingcurve_types.QEasingCurve.init(fcQEasingCurve_new2(other.h))
+proc create*(T: type gen_qeasingcurve_types.QEasingCurve, typeVal: cint): gen_qeasingcurve_types.QEasingCurve =
 
-  QEasingCurve.init(fcQEasingCurve_new3(cint(typeVal)))
-proc operatorAssign*(self: QEasingCurve, other: QEasingCurve): void =
+  gen_qeasingcurve_types.QEasingCurve.init(fcQEasingCurve_new3(cint(typeVal)))
+proc operatorAssign*(self: gen_qeasingcurve_types.QEasingCurve, other: gen_qeasingcurve_types.QEasingCurve): void =
 
   fcQEasingCurve_operatorAssign(self.h, other.h)
 
-proc swap*(self: QEasingCurve, other: QEasingCurve): void =
+proc swap*(self: gen_qeasingcurve_types.QEasingCurve, other: gen_qeasingcurve_types.QEasingCurve): void =
 
   fcQEasingCurve_swap(self.h, other.h)
 
-proc operatorEqual*(self: QEasingCurve, other: QEasingCurve): bool =
+proc operatorEqual*(self: gen_qeasingcurve_types.QEasingCurve, other: gen_qeasingcurve_types.QEasingCurve): bool =
 
   fcQEasingCurve_operatorEqual(self.h, other.h)
 
-proc operatorNotEqual*(self: QEasingCurve, other: QEasingCurve): bool =
+proc operatorNotEqual*(self: gen_qeasingcurve_types.QEasingCurve, other: gen_qeasingcurve_types.QEasingCurve): bool =
 
   fcQEasingCurve_operatorNotEqual(self.h, other.h)
 
-proc amplitude*(self: QEasingCurve, ): float64 =
+proc amplitude*(self: gen_qeasingcurve_types.QEasingCurve, ): float64 =
 
   fcQEasingCurve_amplitude(self.h)
 
-proc setAmplitude*(self: QEasingCurve, amplitude: float64): void =
+proc setAmplitude*(self: gen_qeasingcurve_types.QEasingCurve, amplitude: float64): void =
 
   fcQEasingCurve_setAmplitude(self.h, amplitude)
 
-proc period*(self: QEasingCurve, ): float64 =
+proc period*(self: gen_qeasingcurve_types.QEasingCurve, ): float64 =
 
   fcQEasingCurve_period(self.h)
 
-proc setPeriod*(self: QEasingCurve, period: float64): void =
+proc setPeriod*(self: gen_qeasingcurve_types.QEasingCurve, period: float64): void =
 
   fcQEasingCurve_setPeriod(self.h, period)
 
-proc overshoot*(self: QEasingCurve, ): float64 =
+proc overshoot*(self: gen_qeasingcurve_types.QEasingCurve, ): float64 =
 
   fcQEasingCurve_overshoot(self.h)
 
-proc setOvershoot*(self: QEasingCurve, overshoot: float64): void =
+proc setOvershoot*(self: gen_qeasingcurve_types.QEasingCurve, overshoot: float64): void =
 
   fcQEasingCurve_setOvershoot(self.h, overshoot)
 
-proc addCubicBezierSegment*(self: QEasingCurve, c1: gen_qpoint.QPointF, c2: gen_qpoint.QPointF, endPoint: gen_qpoint.QPointF): void =
+proc addCubicBezierSegment*(self: gen_qeasingcurve_types.QEasingCurve, c1: gen_qpoint.QPointF, c2: gen_qpoint.QPointF, endPoint: gen_qpoint.QPointF): void =
 
   fcQEasingCurve_addCubicBezierSegment(self.h, c1.h, c2.h, endPoint.h)
 
-proc addTCBSegment*(self: QEasingCurve, nextPoint: gen_qpoint.QPointF, t: float64, c: float64, b: float64): void =
+proc addTCBSegment*(self: gen_qeasingcurve_types.QEasingCurve, nextPoint: gen_qpoint.QPointF, t: float64, c: float64, b: float64): void =
 
   fcQEasingCurve_addTCBSegment(self.h, nextPoint.h, t, c, b)
 
-proc toCubicSpline*(self: QEasingCurve, ): seq[gen_qpoint.QPointF] =
+proc toCubicSpline*(self: gen_qeasingcurve_types.QEasingCurve, ): seq[gen_qpoint.QPointF] =
 
   var v_ma = fcQEasingCurve_toCubicSpline(self.h)
   var vx_ret = newSeq[gen_qpoint.QPointF](int(v_ma.len))
@@ -191,19 +189,19 @@ proc toCubicSpline*(self: QEasingCurve, ): seq[gen_qpoint.QPointF] =
     vx_ret[i] = gen_qpoint.QPointF(h: v_outCast[i])
   vx_ret
 
-proc typeX*(self: QEasingCurve, ): QEasingCurveType =
+proc typeX*(self: gen_qeasingcurve_types.QEasingCurve, ): cint =
 
-  QEasingCurveType(fcQEasingCurve_typeX(self.h))
+  cint(fcQEasingCurve_typeX(self.h))
 
-proc setType*(self: QEasingCurve, typeVal: QEasingCurveType): void =
+proc setType*(self: gen_qeasingcurve_types.QEasingCurve, typeVal: cint): void =
 
   fcQEasingCurve_setType(self.h, cint(typeVal))
 
-proc valueForProgress*(self: QEasingCurve, progress: float64): float64 =
+proc valueForProgress*(self: gen_qeasingcurve_types.QEasingCurve, progress: float64): float64 =
 
   fcQEasingCurve_valueForProgress(self.h, progress)
 
-proc staticMetaObject*(_: type QEasingCurve): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qeasingcurve_types.QEasingCurve): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQEasingCurve_staticMetaObject())
-proc delete*(self: QEasingCurve) =
+proc delete*(self: gen_qeasingcurve_types.QEasingCurve) =
   fcQEasingCurve_delete(self.h)

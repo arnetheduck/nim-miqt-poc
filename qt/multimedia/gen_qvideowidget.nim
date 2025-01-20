@@ -43,7 +43,6 @@ import
   gen_qevent,
   gen_qmediaobject,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -59,7 +58,6 @@ export
   gen_qevent,
   gen_qmediaobject,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -215,97 +213,97 @@ proc fcQVideoWidget_staticMetaObject(): pointer {.importc: "QVideoWidget_staticM
 proc fcQVideoWidget_delete(self: pointer) {.importc: "QVideoWidget_delete".}
 
 
-func init*(T: type QVideoWidget, h: ptr cQVideoWidget): QVideoWidget =
+func init*(T: type gen_qvideowidget_types.QVideoWidget, h: ptr cQVideoWidget): gen_qvideowidget_types.QVideoWidget =
   T(h: h)
-proc create*(T: type QVideoWidget, parent: gen_qwidget.QWidget): QVideoWidget =
+proc create*(T: type gen_qvideowidget_types.QVideoWidget, parent: gen_qwidget.QWidget): gen_qvideowidget_types.QVideoWidget =
 
-  QVideoWidget.init(fcQVideoWidget_new(parent.h))
-proc create*(T: type QVideoWidget, ): QVideoWidget =
+  gen_qvideowidget_types.QVideoWidget.init(fcQVideoWidget_new(parent.h))
+proc create*(T: type gen_qvideowidget_types.QVideoWidget, ): gen_qvideowidget_types.QVideoWidget =
 
-  QVideoWidget.init(fcQVideoWidget_new2())
-proc metaObject*(self: QVideoWidget, ): gen_qobjectdefs.QMetaObject =
+  gen_qvideowidget_types.QVideoWidget.init(fcQVideoWidget_new2())
+proc metaObject*(self: gen_qvideowidget_types.QVideoWidget, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQVideoWidget_metaObject(self.h))
 
-proc metacast*(self: QVideoWidget, param1: cstring): pointer =
+proc metacast*(self: gen_qvideowidget_types.QVideoWidget, param1: cstring): pointer =
 
   fcQVideoWidget_metacast(self.h, param1)
 
-proc metacall*(self: QVideoWidget, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qvideowidget_types.QVideoWidget, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQVideoWidget_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QVideoWidget, s: cstring): string =
+proc tr*(_: type gen_qvideowidget_types.QVideoWidget, s: cstring): string =
 
   let v_ms = fcQVideoWidget_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QVideoWidget, s: cstring): string =
+proc trUtf8*(_: type gen_qvideowidget_types.QVideoWidget, s: cstring): string =
 
   let v_ms = fcQVideoWidget_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc mediaObject*(self: QVideoWidget, ): gen_qmediaobject.QMediaObject =
+proc mediaObject*(self: gen_qvideowidget_types.QVideoWidget, ): gen_qmediaobject.QMediaObject =
 
   gen_qmediaobject.QMediaObject(h: fcQVideoWidget_mediaObject(self.h))
 
-proc videoSurface*(self: QVideoWidget, ): gen_qabstractvideosurface.QAbstractVideoSurface =
+proc videoSurface*(self: gen_qvideowidget_types.QVideoWidget, ): gen_qabstractvideosurface.QAbstractVideoSurface =
 
   gen_qabstractvideosurface.QAbstractVideoSurface(h: fcQVideoWidget_videoSurface(self.h))
 
-proc aspectRatioMode*(self: QVideoWidget, ): gen_qnamespace.AspectRatioMode =
+proc aspectRatioMode*(self: gen_qvideowidget_types.QVideoWidget, ): cint =
 
-  gen_qnamespace.AspectRatioMode(fcQVideoWidget_aspectRatioMode(self.h))
+  cint(fcQVideoWidget_aspectRatioMode(self.h))
 
-proc brightness*(self: QVideoWidget, ): cint =
+proc brightness*(self: gen_qvideowidget_types.QVideoWidget, ): cint =
 
   fcQVideoWidget_brightness(self.h)
 
-proc contrast*(self: QVideoWidget, ): cint =
+proc contrast*(self: gen_qvideowidget_types.QVideoWidget, ): cint =
 
   fcQVideoWidget_contrast(self.h)
 
-proc hue*(self: QVideoWidget, ): cint =
+proc hue*(self: gen_qvideowidget_types.QVideoWidget, ): cint =
 
   fcQVideoWidget_hue(self.h)
 
-proc saturation*(self: QVideoWidget, ): cint =
+proc saturation*(self: gen_qvideowidget_types.QVideoWidget, ): cint =
 
   fcQVideoWidget_saturation(self.h)
 
-proc sizeHint*(self: QVideoWidget, ): gen_qsize.QSize =
+proc sizeHint*(self: gen_qvideowidget_types.QVideoWidget, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQVideoWidget_sizeHint(self.h))
 
-proc setFullScreen*(self: QVideoWidget, fullScreen: bool): void =
+proc setFullScreen*(self: gen_qvideowidget_types.QVideoWidget, fullScreen: bool): void =
 
   fcQVideoWidget_setFullScreen(self.h, fullScreen)
 
-proc setAspectRatioMode*(self: QVideoWidget, mode: gen_qnamespace.AspectRatioMode): void =
+proc setAspectRatioMode*(self: gen_qvideowidget_types.QVideoWidget, mode: cint): void =
 
   fcQVideoWidget_setAspectRatioMode(self.h, cint(mode))
 
-proc setBrightness*(self: QVideoWidget, brightness: cint): void =
+proc setBrightness*(self: gen_qvideowidget_types.QVideoWidget, brightness: cint): void =
 
   fcQVideoWidget_setBrightness(self.h, brightness)
 
-proc setContrast*(self: QVideoWidget, contrast: cint): void =
+proc setContrast*(self: gen_qvideowidget_types.QVideoWidget, contrast: cint): void =
 
   fcQVideoWidget_setContrast(self.h, contrast)
 
-proc setHue*(self: QVideoWidget, hue: cint): void =
+proc setHue*(self: gen_qvideowidget_types.QVideoWidget, hue: cint): void =
 
   fcQVideoWidget_setHue(self.h, hue)
 
-proc setSaturation*(self: QVideoWidget, saturation: cint): void =
+proc setSaturation*(self: gen_qvideowidget_types.QVideoWidget, saturation: cint): void =
 
   fcQVideoWidget_setSaturation(self.h, saturation)
 
-proc fullScreenChanged*(self: QVideoWidget, fullScreen: bool): void =
+proc fullScreenChanged*(self: gen_qvideowidget_types.QVideoWidget, fullScreen: bool): void =
 
   fcQVideoWidget_fullScreenChanged(self.h, fullScreen)
 
@@ -317,13 +315,13 @@ proc miqt_exec_callback_QVideoWidget_fullScreenChanged(slot: int, fullScreen: bo
 
   nimfunc[](slotval1)
 
-proc onfullScreenChanged*(self: QVideoWidget, slot: proc(fullScreen: bool)) =
+proc onfullScreenChanged*(self: gen_qvideowidget_types.QVideoWidget, slot: proc(fullScreen: bool)) =
   type Cb = proc(fullScreen: bool)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQVideoWidget_connect_fullScreenChanged(self.h, cast[int](addr tmp[]))
-proc brightnessChanged*(self: QVideoWidget, brightness: cint): void =
+proc brightnessChanged*(self: gen_qvideowidget_types.QVideoWidget, brightness: cint): void =
 
   fcQVideoWidget_brightnessChanged(self.h, brightness)
 
@@ -335,13 +333,13 @@ proc miqt_exec_callback_QVideoWidget_brightnessChanged(slot: int, brightness: ci
 
   nimfunc[](slotval1)
 
-proc onbrightnessChanged*(self: QVideoWidget, slot: proc(brightness: cint)) =
+proc onbrightnessChanged*(self: gen_qvideowidget_types.QVideoWidget, slot: proc(brightness: cint)) =
   type Cb = proc(brightness: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQVideoWidget_connect_brightnessChanged(self.h, cast[int](addr tmp[]))
-proc contrastChanged*(self: QVideoWidget, contrast: cint): void =
+proc contrastChanged*(self: gen_qvideowidget_types.QVideoWidget, contrast: cint): void =
 
   fcQVideoWidget_contrastChanged(self.h, contrast)
 
@@ -353,13 +351,13 @@ proc miqt_exec_callback_QVideoWidget_contrastChanged(slot: int, contrast: cint) 
 
   nimfunc[](slotval1)
 
-proc oncontrastChanged*(self: QVideoWidget, slot: proc(contrast: cint)) =
+proc oncontrastChanged*(self: gen_qvideowidget_types.QVideoWidget, slot: proc(contrast: cint)) =
   type Cb = proc(contrast: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQVideoWidget_connect_contrastChanged(self.h, cast[int](addr tmp[]))
-proc hueChanged*(self: QVideoWidget, hue: cint): void =
+proc hueChanged*(self: gen_qvideowidget_types.QVideoWidget, hue: cint): void =
 
   fcQVideoWidget_hueChanged(self.h, hue)
 
@@ -371,13 +369,13 @@ proc miqt_exec_callback_QVideoWidget_hueChanged(slot: int, hue: cint) {.exportc.
 
   nimfunc[](slotval1)
 
-proc onhueChanged*(self: QVideoWidget, slot: proc(hue: cint)) =
+proc onhueChanged*(self: gen_qvideowidget_types.QVideoWidget, slot: proc(hue: cint)) =
   type Cb = proc(hue: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQVideoWidget_connect_hueChanged(self.h, cast[int](addr tmp[]))
-proc saturationChanged*(self: QVideoWidget, saturation: cint): void =
+proc saturationChanged*(self: gen_qvideowidget_types.QVideoWidget, saturation: cint): void =
 
   fcQVideoWidget_saturationChanged(self.h, saturation)
 
@@ -389,924 +387,734 @@ proc miqt_exec_callback_QVideoWidget_saturationChanged(slot: int, saturation: ci
 
   nimfunc[](slotval1)
 
-proc onsaturationChanged*(self: QVideoWidget, slot: proc(saturation: cint)) =
+proc onsaturationChanged*(self: gen_qvideowidget_types.QVideoWidget, slot: proc(saturation: cint)) =
   type Cb = proc(saturation: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQVideoWidget_connect_saturationChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QVideoWidget, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qvideowidget_types.QVideoWidget, s: cstring, c: cstring): string =
 
   let v_ms = fcQVideoWidget_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QVideoWidget, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qvideowidget_types.QVideoWidget, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQVideoWidget_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QVideoWidget, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qvideowidget_types.QVideoWidget, s: cstring, c: cstring): string =
 
   let v_ms = fcQVideoWidget_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QVideoWidget, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qvideowidget_types.QVideoWidget, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQVideoWidget_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QVideoWidget, ): gen_qobjectdefs.QMetaObject =
-
+proc QVideoWidgetmetaObject*(self: gen_qvideowidget_types.QVideoWidget, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQVideoWidget_virtualbase_metaObject(self.h))
 
-type QVideoWidgetmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QVideoWidget, slot: proc(super: QVideoWidgetmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QVideoWidgetmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgetmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QVideoWidgetmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QVideoWidgetmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQVideoWidget_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QVideoWidget_metaObject(self: ptr cQVideoWidget, slot: int): pointer {.exportc: "miqt_exec_callback_QVideoWidget_metaObject ".} =
-  type Cb = proc(super: QVideoWidgetmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QVideoWidget(h: self), )
+  var nimfunc = cast[ptr QVideoWidgetmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QVideoWidget, param1: cstring): pointer =
-
+proc QVideoWidgetmetacast*(self: gen_qvideowidget_types.QVideoWidget, param1: cstring): pointer =
 
   fQVideoWidget_virtualbase_metacast(self.h, param1)
 
-type QVideoWidgetmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QVideoWidget, slot: proc(super: QVideoWidgetmetacastBase, param1: cstring): pointer) =
+type QVideoWidgetmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgetmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QVideoWidgetmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QVideoWidgetmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQVideoWidget_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QVideoWidget_metacast(self: ptr cQVideoWidget, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QVideoWidget_metacast ".} =
-  type Cb = proc(super: QVideoWidgetmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QVideoWidget(h: self), param1)
+  var nimfunc = cast[ptr QVideoWidgetmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QVideoWidget, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QVideoWidgetmetacall*(self: gen_qvideowidget_types.QVideoWidget, param1: cint, param2: cint, param3: pointer): cint =
 
   fQVideoWidget_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QVideoWidgetmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QVideoWidget, slot: proc(super: QVideoWidgetmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QVideoWidgetmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgetmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QVideoWidgetmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QVideoWidgetmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQVideoWidget_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QVideoWidget_metacall(self: ptr cQVideoWidget, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QVideoWidget_metacall ".} =
-  type Cb = proc(super: QVideoWidgetmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QVideoWidget(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QVideoWidgetmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_mediaObject(self: QVideoWidget, ): gen_qmediaobject.QMediaObject =
-
+proc QVideoWidgetmediaObject*(self: gen_qvideowidget_types.QVideoWidget, ): gen_qmediaobject.QMediaObject =
 
   gen_qmediaobject.QMediaObject(h: fQVideoWidget_virtualbase_mediaObject(self.h))
 
-type QVideoWidgetmediaObjectBase* = proc(): gen_qmediaobject.QMediaObject
-proc onmediaObject*(self: QVideoWidget, slot: proc(super: QVideoWidgetmediaObjectBase): gen_qmediaobject.QMediaObject) =
+type QVideoWidgetmediaObjectProc* = proc(): gen_qmediaobject.QMediaObject
+proc onmediaObject*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgetmediaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QVideoWidgetmediaObjectBase): gen_qmediaobject.QMediaObject
-  var tmp = new Cb
+  var tmp = new QVideoWidgetmediaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQVideoWidget_override_virtual_mediaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QVideoWidget_mediaObject(self: ptr cQVideoWidget, slot: int): pointer {.exportc: "miqt_exec_callback_QVideoWidget_mediaObject ".} =
-  type Cb = proc(super: QVideoWidgetmediaObjectBase): gen_qmediaobject.QMediaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_mediaObject(QVideoWidget(h: self), )
+  var nimfunc = cast[ptr QVideoWidgetmediaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_sizeHint(self: QVideoWidget, ): gen_qsize.QSize =
-
+proc QVideoWidgetsizeHint*(self: gen_qvideowidget_types.QVideoWidget, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQVideoWidget_virtualbase_sizeHint(self.h))
 
-type QVideoWidgetsizeHintBase* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: QVideoWidget, slot: proc(super: QVideoWidgetsizeHintBase): gen_qsize.QSize) =
+type QVideoWidgetsizeHintProc* = proc(): gen_qsize.QSize
+proc onsizeHint*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgetsizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QVideoWidgetsizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QVideoWidgetsizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQVideoWidget_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QVideoWidget_sizeHint(self: ptr cQVideoWidget, slot: int): pointer {.exportc: "miqt_exec_callback_QVideoWidget_sizeHint ".} =
-  type Cb = proc(super: QVideoWidgetsizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sizeHint(QVideoWidget(h: self), )
+  var nimfunc = cast[ptr QVideoWidgetsizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_event(self: QVideoWidget, event: gen_qcoreevent.QEvent): bool =
-
+proc QVideoWidgetevent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qcoreevent.QEvent): bool =
 
   fQVideoWidget_virtualbase_event(self.h, event.h)
 
-type QVideoWidgeteventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QVideoWidget, slot: proc(super: QVideoWidgeteventBase, event: gen_qcoreevent.QEvent): bool) =
+type QVideoWidgeteventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgeteventProc) =
   # TODO check subclass
-  type Cb = proc(super: QVideoWidgeteventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QVideoWidgeteventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQVideoWidget_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QVideoWidget_event(self: ptr cQVideoWidget, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QVideoWidget_event ".} =
-  type Cb = proc(super: QVideoWidgeteventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QVideoWidget(h: self), event)
+  var nimfunc = cast[ptr QVideoWidgeteventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_showEvent(self: QVideoWidget, event: gen_qevent.QShowEvent): void =
-
+proc QVideoWidgetshowEvent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qevent.QShowEvent): void =
 
   fQVideoWidget_virtualbase_showEvent(self.h, event.h)
 
-type QVideoWidgetshowEventBase* = proc(event: gen_qevent.QShowEvent): void
-proc onshowEvent*(self: QVideoWidget, slot: proc(super: QVideoWidgetshowEventBase, event: gen_qevent.QShowEvent): void) =
+type QVideoWidgetshowEventProc* = proc(event: gen_qevent.QShowEvent): void
+proc onshowEvent*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgetshowEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QVideoWidgetshowEventBase, event: gen_qevent.QShowEvent): void
-  var tmp = new Cb
+  var tmp = new QVideoWidgetshowEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQVideoWidget_override_virtual_showEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QVideoWidget_showEvent(self: ptr cQVideoWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QVideoWidget_showEvent ".} =
-  type Cb = proc(super: QVideoWidgetshowEventBase, event: gen_qevent.QShowEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QShowEvent): auto =
-    callVirtualBase_showEvent(QVideoWidget(h: self), event)
+  var nimfunc = cast[ptr QVideoWidgetshowEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QShowEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hideEvent(self: QVideoWidget, event: gen_qevent.QHideEvent): void =
-
+  nimfunc[](slotval1)
+proc QVideoWidgethideEvent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qevent.QHideEvent): void =
 
   fQVideoWidget_virtualbase_hideEvent(self.h, event.h)
 
-type QVideoWidgethideEventBase* = proc(event: gen_qevent.QHideEvent): void
-proc onhideEvent*(self: QVideoWidget, slot: proc(super: QVideoWidgethideEventBase, event: gen_qevent.QHideEvent): void) =
+type QVideoWidgethideEventProc* = proc(event: gen_qevent.QHideEvent): void
+proc onhideEvent*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgethideEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QVideoWidgethideEventBase, event: gen_qevent.QHideEvent): void
-  var tmp = new Cb
+  var tmp = new QVideoWidgethideEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQVideoWidget_override_virtual_hideEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QVideoWidget_hideEvent(self: ptr cQVideoWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QVideoWidget_hideEvent ".} =
-  type Cb = proc(super: QVideoWidgethideEventBase, event: gen_qevent.QHideEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QHideEvent): auto =
-    callVirtualBase_hideEvent(QVideoWidget(h: self), event)
+  var nimfunc = cast[ptr QVideoWidgethideEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QHideEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_resizeEvent(self: QVideoWidget, event: gen_qevent.QResizeEvent): void =
-
+  nimfunc[](slotval1)
+proc QVideoWidgetresizeEvent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qevent.QResizeEvent): void =
 
   fQVideoWidget_virtualbase_resizeEvent(self.h, event.h)
 
-type QVideoWidgetresizeEventBase* = proc(event: gen_qevent.QResizeEvent): void
-proc onresizeEvent*(self: QVideoWidget, slot: proc(super: QVideoWidgetresizeEventBase, event: gen_qevent.QResizeEvent): void) =
+type QVideoWidgetresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
+proc onresizeEvent*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgetresizeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QVideoWidgetresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var tmp = new Cb
+  var tmp = new QVideoWidgetresizeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQVideoWidget_override_virtual_resizeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QVideoWidget_resizeEvent(self: ptr cQVideoWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QVideoWidget_resizeEvent ".} =
-  type Cb = proc(super: QVideoWidgetresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QResizeEvent): auto =
-    callVirtualBase_resizeEvent(QVideoWidget(h: self), event)
+  var nimfunc = cast[ptr QVideoWidgetresizeEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QResizeEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_moveEvent(self: QVideoWidget, event: gen_qevent.QMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QVideoWidgetmoveEvent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qevent.QMoveEvent): void =
 
   fQVideoWidget_virtualbase_moveEvent(self.h, event.h)
 
-type QVideoWidgetmoveEventBase* = proc(event: gen_qevent.QMoveEvent): void
-proc onmoveEvent*(self: QVideoWidget, slot: proc(super: QVideoWidgetmoveEventBase, event: gen_qevent.QMoveEvent): void) =
+type QVideoWidgetmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
+proc onmoveEvent*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgetmoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QVideoWidgetmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QVideoWidgetmoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQVideoWidget_override_virtual_moveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QVideoWidget_moveEvent(self: ptr cQVideoWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QVideoWidget_moveEvent ".} =
-  type Cb = proc(super: QVideoWidgetmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMoveEvent): auto =
-    callVirtualBase_moveEvent(QVideoWidget(h: self), event)
+  var nimfunc = cast[ptr QVideoWidgetmoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_paintEvent(self: QVideoWidget, event: gen_qevent.QPaintEvent): void =
-
+  nimfunc[](slotval1)
+proc QVideoWidgetpaintEvent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qevent.QPaintEvent): void =
 
   fQVideoWidget_virtualbase_paintEvent(self.h, event.h)
 
-type QVideoWidgetpaintEventBase* = proc(event: gen_qevent.QPaintEvent): void
-proc onpaintEvent*(self: QVideoWidget, slot: proc(super: QVideoWidgetpaintEventBase, event: gen_qevent.QPaintEvent): void) =
+type QVideoWidgetpaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
+proc onpaintEvent*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgetpaintEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QVideoWidgetpaintEventBase, event: gen_qevent.QPaintEvent): void
-  var tmp = new Cb
+  var tmp = new QVideoWidgetpaintEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQVideoWidget_override_virtual_paintEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QVideoWidget_paintEvent(self: ptr cQVideoWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QVideoWidget_paintEvent ".} =
-  type Cb = proc(super: QVideoWidgetpaintEventBase, event: gen_qevent.QPaintEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QPaintEvent): auto =
-    callVirtualBase_paintEvent(QVideoWidget(h: self), event)
+  var nimfunc = cast[ptr QVideoWidgetpaintEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QPaintEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_setMediaObject(self: QVideoWidget, objectVal: gen_qmediaobject.QMediaObject): bool =
-
+  nimfunc[](slotval1)
+proc QVideoWidgetsetMediaObject*(self: gen_qvideowidget_types.QVideoWidget, objectVal: gen_qmediaobject.QMediaObject): bool =
 
   fQVideoWidget_virtualbase_setMediaObject(self.h, objectVal.h)
 
-type QVideoWidgetsetMediaObjectBase* = proc(objectVal: gen_qmediaobject.QMediaObject): bool
-proc onsetMediaObject*(self: QVideoWidget, slot: proc(super: QVideoWidgetsetMediaObjectBase, objectVal: gen_qmediaobject.QMediaObject): bool) =
+type QVideoWidgetsetMediaObjectProc* = proc(objectVal: gen_qmediaobject.QMediaObject): bool
+proc onsetMediaObject*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgetsetMediaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QVideoWidgetsetMediaObjectBase, objectVal: gen_qmediaobject.QMediaObject): bool
-  var tmp = new Cb
+  var tmp = new QVideoWidgetsetMediaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQVideoWidget_override_virtual_setMediaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QVideoWidget_setMediaObject(self: ptr cQVideoWidget, slot: int, objectVal: pointer): bool {.exportc: "miqt_exec_callback_QVideoWidget_setMediaObject ".} =
-  type Cb = proc(super: QVideoWidgetsetMediaObjectBase, objectVal: gen_qmediaobject.QMediaObject): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(objectVal: gen_qmediaobject.QMediaObject): auto =
-    callVirtualBase_setMediaObject(QVideoWidget(h: self), objectVal)
+  var nimfunc = cast[ptr QVideoWidgetsetMediaObjectProc](cast[pointer](slot))
   let slotval1 = gen_qmediaobject.QMediaObject(h: objectVal)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_devType(self: QVideoWidget, ): cint =
-
+proc QVideoWidgetdevType*(self: gen_qvideowidget_types.QVideoWidget, ): cint =
 
   fQVideoWidget_virtualbase_devType(self.h)
 
-type QVideoWidgetdevTypeBase* = proc(): cint
-proc ondevType*(self: QVideoWidget, slot: proc(super: QVideoWidgetdevTypeBase): cint) =
+type QVideoWidgetdevTypeProc* = proc(): cint
+proc ondevType*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgetdevTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: QVideoWidgetdevTypeBase): cint
-  var tmp = new Cb
+  var tmp = new QVideoWidgetdevTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQVideoWidget_override_virtual_devType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QVideoWidget_devType(self: ptr cQVideoWidget, slot: int): cint {.exportc: "miqt_exec_callback_QVideoWidget_devType ".} =
-  type Cb = proc(super: QVideoWidgetdevTypeBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_devType(QVideoWidget(h: self), )
+  var nimfunc = cast[ptr QVideoWidgetdevTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setVisible(self: QVideoWidget, visible: bool): void =
-
+proc QVideoWidgetsetVisible*(self: gen_qvideowidget_types.QVideoWidget, visible: bool): void =
 
   fQVideoWidget_virtualbase_setVisible(self.h, visible)
 
-type QVideoWidgetsetVisibleBase* = proc(visible: bool): void
-proc onsetVisible*(self: QVideoWidget, slot: proc(super: QVideoWidgetsetVisibleBase, visible: bool): void) =
+type QVideoWidgetsetVisibleProc* = proc(visible: bool): void
+proc onsetVisible*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgetsetVisibleProc) =
   # TODO check subclass
-  type Cb = proc(super: QVideoWidgetsetVisibleBase, visible: bool): void
-  var tmp = new Cb
+  var tmp = new QVideoWidgetsetVisibleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQVideoWidget_override_virtual_setVisible(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QVideoWidget_setVisible(self: ptr cQVideoWidget, slot: int, visible: bool): void {.exportc: "miqt_exec_callback_QVideoWidget_setVisible ".} =
-  type Cb = proc(super: QVideoWidgetsetVisibleBase, visible: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(visible: bool): auto =
-    callVirtualBase_setVisible(QVideoWidget(h: self), visible)
+  var nimfunc = cast[ptr QVideoWidgetsetVisibleProc](cast[pointer](slot))
   let slotval1 = visible
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_minimumSizeHint(self: QVideoWidget, ): gen_qsize.QSize =
-
+  nimfunc[](slotval1)
+proc QVideoWidgetminimumSizeHint*(self: gen_qvideowidget_types.QVideoWidget, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQVideoWidget_virtualbase_minimumSizeHint(self.h))
 
-type QVideoWidgetminimumSizeHintBase* = proc(): gen_qsize.QSize
-proc onminimumSizeHint*(self: QVideoWidget, slot: proc(super: QVideoWidgetminimumSizeHintBase): gen_qsize.QSize) =
+type QVideoWidgetminimumSizeHintProc* = proc(): gen_qsize.QSize
+proc onminimumSizeHint*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgetminimumSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QVideoWidgetminimumSizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QVideoWidgetminimumSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQVideoWidget_override_virtual_minimumSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QVideoWidget_minimumSizeHint(self: ptr cQVideoWidget, slot: int): pointer {.exportc: "miqt_exec_callback_QVideoWidget_minimumSizeHint ".} =
-  type Cb = proc(super: QVideoWidgetminimumSizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_minimumSizeHint(QVideoWidget(h: self), )
+  var nimfunc = cast[ptr QVideoWidgetminimumSizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_heightForWidth(self: QVideoWidget, param1: cint): cint =
-
+proc QVideoWidgetheightForWidth*(self: gen_qvideowidget_types.QVideoWidget, param1: cint): cint =
 
   fQVideoWidget_virtualbase_heightForWidth(self.h, param1)
 
-type QVideoWidgetheightForWidthBase* = proc(param1: cint): cint
-proc onheightForWidth*(self: QVideoWidget, slot: proc(super: QVideoWidgetheightForWidthBase, param1: cint): cint) =
+type QVideoWidgetheightForWidthProc* = proc(param1: cint): cint
+proc onheightForWidth*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgetheightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QVideoWidgetheightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QVideoWidgetheightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQVideoWidget_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QVideoWidget_heightForWidth(self: ptr cQVideoWidget, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QVideoWidget_heightForWidth ".} =
-  type Cb = proc(super: QVideoWidgetheightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_heightForWidth(QVideoWidget(h: self), param1)
+  var nimfunc = cast[ptr QVideoWidgetheightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_hasHeightForWidth(self: QVideoWidget, ): bool =
-
+proc QVideoWidgethasHeightForWidth*(self: gen_qvideowidget_types.QVideoWidget, ): bool =
 
   fQVideoWidget_virtualbase_hasHeightForWidth(self.h)
 
-type QVideoWidgethasHeightForWidthBase* = proc(): bool
-proc onhasHeightForWidth*(self: QVideoWidget, slot: proc(super: QVideoWidgethasHeightForWidthBase): bool) =
+type QVideoWidgethasHeightForWidthProc* = proc(): bool
+proc onhasHeightForWidth*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgethasHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QVideoWidgethasHeightForWidthBase): bool
-  var tmp = new Cb
+  var tmp = new QVideoWidgethasHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQVideoWidget_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QVideoWidget_hasHeightForWidth(self: ptr cQVideoWidget, slot: int): bool {.exportc: "miqt_exec_callback_QVideoWidget_hasHeightForWidth ".} =
-  type Cb = proc(super: QVideoWidgethasHeightForWidthBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasHeightForWidth(QVideoWidget(h: self), )
+  var nimfunc = cast[ptr QVideoWidgethasHeightForWidthProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_paintEngine(self: QVideoWidget, ): gen_qpaintengine.QPaintEngine =
-
+proc QVideoWidgetpaintEngine*(self: gen_qvideowidget_types.QVideoWidget, ): gen_qpaintengine.QPaintEngine =
 
   gen_qpaintengine.QPaintEngine(h: fQVideoWidget_virtualbase_paintEngine(self.h))
 
-type QVideoWidgetpaintEngineBase* = proc(): gen_qpaintengine.QPaintEngine
-proc onpaintEngine*(self: QVideoWidget, slot: proc(super: QVideoWidgetpaintEngineBase): gen_qpaintengine.QPaintEngine) =
+type QVideoWidgetpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
+proc onpaintEngine*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgetpaintEngineProc) =
   # TODO check subclass
-  type Cb = proc(super: QVideoWidgetpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var tmp = new Cb
+  var tmp = new QVideoWidgetpaintEngineProc
   tmp[] = slot
   GC_ref(tmp)
   fcQVideoWidget_override_virtual_paintEngine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QVideoWidget_paintEngine(self: ptr cQVideoWidget, slot: int): pointer {.exportc: "miqt_exec_callback_QVideoWidget_paintEngine ".} =
-  type Cb = proc(super: QVideoWidgetpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_paintEngine(QVideoWidget(h: self), )
+  var nimfunc = cast[ptr QVideoWidgetpaintEngineProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_mousePressEvent(self: QVideoWidget, event: gen_qevent.QMouseEvent): void =
-
+proc QVideoWidgetmousePressEvent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qevent.QMouseEvent): void =
 
   fQVideoWidget_virtualbase_mousePressEvent(self.h, event.h)
 
-type QVideoWidgetmousePressEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmousePressEvent*(self: QVideoWidget, slot: proc(super: QVideoWidgetmousePressEventBase, event: gen_qevent.QMouseEvent): void) =
+type QVideoWidgetmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmousePressEvent*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgetmousePressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QVideoWidgetmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QVideoWidgetmousePressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQVideoWidget_override_virtual_mousePressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QVideoWidget_mousePressEvent(self: ptr cQVideoWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QVideoWidget_mousePressEvent ".} =
-  type Cb = proc(super: QVideoWidgetmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mousePressEvent(QVideoWidget(h: self), event)
+  var nimfunc = cast[ptr QVideoWidgetmousePressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseReleaseEvent(self: QVideoWidget, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QVideoWidgetmouseReleaseEvent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qevent.QMouseEvent): void =
 
   fQVideoWidget_virtualbase_mouseReleaseEvent(self.h, event.h)
 
-type QVideoWidgetmouseReleaseEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseReleaseEvent*(self: QVideoWidget, slot: proc(super: QVideoWidgetmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void) =
+type QVideoWidgetmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseReleaseEvent*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgetmouseReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QVideoWidgetmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QVideoWidgetmouseReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQVideoWidget_override_virtual_mouseReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QVideoWidget_mouseReleaseEvent(self: ptr cQVideoWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QVideoWidget_mouseReleaseEvent ".} =
-  type Cb = proc(super: QVideoWidgetmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseReleaseEvent(QVideoWidget(h: self), event)
+  var nimfunc = cast[ptr QVideoWidgetmouseReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseDoubleClickEvent(self: QVideoWidget, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QVideoWidgetmouseDoubleClickEvent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qevent.QMouseEvent): void =
 
   fQVideoWidget_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
-type QVideoWidgetmouseDoubleClickEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseDoubleClickEvent*(self: QVideoWidget, slot: proc(super: QVideoWidgetmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void) =
+type QVideoWidgetmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseDoubleClickEvent*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgetmouseDoubleClickEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QVideoWidgetmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QVideoWidgetmouseDoubleClickEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQVideoWidget_override_virtual_mouseDoubleClickEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QVideoWidget_mouseDoubleClickEvent(self: ptr cQVideoWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QVideoWidget_mouseDoubleClickEvent ".} =
-  type Cb = proc(super: QVideoWidgetmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseDoubleClickEvent(QVideoWidget(h: self), event)
+  var nimfunc = cast[ptr QVideoWidgetmouseDoubleClickEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseMoveEvent(self: QVideoWidget, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QVideoWidgetmouseMoveEvent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qevent.QMouseEvent): void =
 
   fQVideoWidget_virtualbase_mouseMoveEvent(self.h, event.h)
 
-type QVideoWidgetmouseMoveEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseMoveEvent*(self: QVideoWidget, slot: proc(super: QVideoWidgetmouseMoveEventBase, event: gen_qevent.QMouseEvent): void) =
+type QVideoWidgetmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseMoveEvent*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgetmouseMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QVideoWidgetmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QVideoWidgetmouseMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQVideoWidget_override_virtual_mouseMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QVideoWidget_mouseMoveEvent(self: ptr cQVideoWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QVideoWidget_mouseMoveEvent ".} =
-  type Cb = proc(super: QVideoWidgetmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseMoveEvent(QVideoWidget(h: self), event)
+  var nimfunc = cast[ptr QVideoWidgetmouseMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_wheelEvent(self: QVideoWidget, event: gen_qevent.QWheelEvent): void =
-
+  nimfunc[](slotval1)
+proc QVideoWidgetwheelEvent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qevent.QWheelEvent): void =
 
   fQVideoWidget_virtualbase_wheelEvent(self.h, event.h)
 
-type QVideoWidgetwheelEventBase* = proc(event: gen_qevent.QWheelEvent): void
-proc onwheelEvent*(self: QVideoWidget, slot: proc(super: QVideoWidgetwheelEventBase, event: gen_qevent.QWheelEvent): void) =
+type QVideoWidgetwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
+proc onwheelEvent*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgetwheelEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QVideoWidgetwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var tmp = new Cb
+  var tmp = new QVideoWidgetwheelEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQVideoWidget_override_virtual_wheelEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QVideoWidget_wheelEvent(self: ptr cQVideoWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QVideoWidget_wheelEvent ".} =
-  type Cb = proc(super: QVideoWidgetwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QWheelEvent): auto =
-    callVirtualBase_wheelEvent(QVideoWidget(h: self), event)
+  var nimfunc = cast[ptr QVideoWidgetwheelEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QWheelEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyPressEvent(self: QVideoWidget, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QVideoWidgetkeyPressEvent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qevent.QKeyEvent): void =
 
   fQVideoWidget_virtualbase_keyPressEvent(self.h, event.h)
 
-type QVideoWidgetkeyPressEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyPressEvent*(self: QVideoWidget, slot: proc(super: QVideoWidgetkeyPressEventBase, event: gen_qevent.QKeyEvent): void) =
+type QVideoWidgetkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyPressEvent*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgetkeyPressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QVideoWidgetkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QVideoWidgetkeyPressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQVideoWidget_override_virtual_keyPressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QVideoWidget_keyPressEvent(self: ptr cQVideoWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QVideoWidget_keyPressEvent ".} =
-  type Cb = proc(super: QVideoWidgetkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyPressEvent(QVideoWidget(h: self), event)
+  var nimfunc = cast[ptr QVideoWidgetkeyPressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyReleaseEvent(self: QVideoWidget, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QVideoWidgetkeyReleaseEvent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qevent.QKeyEvent): void =
 
   fQVideoWidget_virtualbase_keyReleaseEvent(self.h, event.h)
 
-type QVideoWidgetkeyReleaseEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyReleaseEvent*(self: QVideoWidget, slot: proc(super: QVideoWidgetkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void) =
+type QVideoWidgetkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyReleaseEvent*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgetkeyReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QVideoWidgetkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QVideoWidgetkeyReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQVideoWidget_override_virtual_keyReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QVideoWidget_keyReleaseEvent(self: ptr cQVideoWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QVideoWidget_keyReleaseEvent ".} =
-  type Cb = proc(super: QVideoWidgetkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyReleaseEvent(QVideoWidget(h: self), event)
+  var nimfunc = cast[ptr QVideoWidgetkeyReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusInEvent(self: QVideoWidget, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QVideoWidgetfocusInEvent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qevent.QFocusEvent): void =
 
   fQVideoWidget_virtualbase_focusInEvent(self.h, event.h)
 
-type QVideoWidgetfocusInEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusInEvent*(self: QVideoWidget, slot: proc(super: QVideoWidgetfocusInEventBase, event: gen_qevent.QFocusEvent): void) =
+type QVideoWidgetfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusInEvent*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgetfocusInEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QVideoWidgetfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QVideoWidgetfocusInEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQVideoWidget_override_virtual_focusInEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QVideoWidget_focusInEvent(self: ptr cQVideoWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QVideoWidget_focusInEvent ".} =
-  type Cb = proc(super: QVideoWidgetfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusInEvent(QVideoWidget(h: self), event)
+  var nimfunc = cast[ptr QVideoWidgetfocusInEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusOutEvent(self: QVideoWidget, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QVideoWidgetfocusOutEvent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qevent.QFocusEvent): void =
 
   fQVideoWidget_virtualbase_focusOutEvent(self.h, event.h)
 
-type QVideoWidgetfocusOutEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusOutEvent*(self: QVideoWidget, slot: proc(super: QVideoWidgetfocusOutEventBase, event: gen_qevent.QFocusEvent): void) =
+type QVideoWidgetfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusOutEvent*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgetfocusOutEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QVideoWidgetfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QVideoWidgetfocusOutEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQVideoWidget_override_virtual_focusOutEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QVideoWidget_focusOutEvent(self: ptr cQVideoWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QVideoWidget_focusOutEvent ".} =
-  type Cb = proc(super: QVideoWidgetfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusOutEvent(QVideoWidget(h: self), event)
+  var nimfunc = cast[ptr QVideoWidgetfocusOutEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_enterEvent(self: QVideoWidget, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QVideoWidgetenterEvent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qcoreevent.QEvent): void =
 
   fQVideoWidget_virtualbase_enterEvent(self.h, event.h)
 
-type QVideoWidgetenterEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onenterEvent*(self: QVideoWidget, slot: proc(super: QVideoWidgetenterEventBase, event: gen_qcoreevent.QEvent): void) =
+type QVideoWidgetenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onenterEvent*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgetenterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QVideoWidgetenterEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QVideoWidgetenterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQVideoWidget_override_virtual_enterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QVideoWidget_enterEvent(self: ptr cQVideoWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QVideoWidget_enterEvent ".} =
-  type Cb = proc(super: QVideoWidgetenterEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_enterEvent(QVideoWidget(h: self), event)
+  var nimfunc = cast[ptr QVideoWidgetenterEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_leaveEvent(self: QVideoWidget, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QVideoWidgetleaveEvent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qcoreevent.QEvent): void =
 
   fQVideoWidget_virtualbase_leaveEvent(self.h, event.h)
 
-type QVideoWidgetleaveEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onleaveEvent*(self: QVideoWidget, slot: proc(super: QVideoWidgetleaveEventBase, event: gen_qcoreevent.QEvent): void) =
+type QVideoWidgetleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onleaveEvent*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgetleaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QVideoWidgetleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QVideoWidgetleaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQVideoWidget_override_virtual_leaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QVideoWidget_leaveEvent(self: ptr cQVideoWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QVideoWidget_leaveEvent ".} =
-  type Cb = proc(super: QVideoWidgetleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_leaveEvent(QVideoWidget(h: self), event)
+  var nimfunc = cast[ptr QVideoWidgetleaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_closeEvent(self: QVideoWidget, event: gen_qevent.QCloseEvent): void =
-
+  nimfunc[](slotval1)
+proc QVideoWidgetcloseEvent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qevent.QCloseEvent): void =
 
   fQVideoWidget_virtualbase_closeEvent(self.h, event.h)
 
-type QVideoWidgetcloseEventBase* = proc(event: gen_qevent.QCloseEvent): void
-proc oncloseEvent*(self: QVideoWidget, slot: proc(super: QVideoWidgetcloseEventBase, event: gen_qevent.QCloseEvent): void) =
+type QVideoWidgetcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
+proc oncloseEvent*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgetcloseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QVideoWidgetcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var tmp = new Cb
+  var tmp = new QVideoWidgetcloseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQVideoWidget_override_virtual_closeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QVideoWidget_closeEvent(self: ptr cQVideoWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QVideoWidget_closeEvent ".} =
-  type Cb = proc(super: QVideoWidgetcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QCloseEvent): auto =
-    callVirtualBase_closeEvent(QVideoWidget(h: self), event)
+  var nimfunc = cast[ptr QVideoWidgetcloseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QCloseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_contextMenuEvent(self: QVideoWidget, event: gen_qevent.QContextMenuEvent): void =
-
+  nimfunc[](slotval1)
+proc QVideoWidgetcontextMenuEvent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qevent.QContextMenuEvent): void =
 
   fQVideoWidget_virtualbase_contextMenuEvent(self.h, event.h)
 
-type QVideoWidgetcontextMenuEventBase* = proc(event: gen_qevent.QContextMenuEvent): void
-proc oncontextMenuEvent*(self: QVideoWidget, slot: proc(super: QVideoWidgetcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void) =
+type QVideoWidgetcontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
+proc oncontextMenuEvent*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgetcontextMenuEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QVideoWidgetcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var tmp = new Cb
+  var tmp = new QVideoWidgetcontextMenuEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQVideoWidget_override_virtual_contextMenuEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QVideoWidget_contextMenuEvent(self: ptr cQVideoWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QVideoWidget_contextMenuEvent ".} =
-  type Cb = proc(super: QVideoWidgetcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QContextMenuEvent): auto =
-    callVirtualBase_contextMenuEvent(QVideoWidget(h: self), event)
+  var nimfunc = cast[ptr QVideoWidgetcontextMenuEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QContextMenuEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_tabletEvent(self: QVideoWidget, event: gen_qevent.QTabletEvent): void =
-
+  nimfunc[](slotval1)
+proc QVideoWidgettabletEvent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qevent.QTabletEvent): void =
 
   fQVideoWidget_virtualbase_tabletEvent(self.h, event.h)
 
-type QVideoWidgettabletEventBase* = proc(event: gen_qevent.QTabletEvent): void
-proc ontabletEvent*(self: QVideoWidget, slot: proc(super: QVideoWidgettabletEventBase, event: gen_qevent.QTabletEvent): void) =
+type QVideoWidgettabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
+proc ontabletEvent*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgettabletEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QVideoWidgettabletEventBase, event: gen_qevent.QTabletEvent): void
-  var tmp = new Cb
+  var tmp = new QVideoWidgettabletEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQVideoWidget_override_virtual_tabletEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QVideoWidget_tabletEvent(self: ptr cQVideoWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QVideoWidget_tabletEvent ".} =
-  type Cb = proc(super: QVideoWidgettabletEventBase, event: gen_qevent.QTabletEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QTabletEvent): auto =
-    callVirtualBase_tabletEvent(QVideoWidget(h: self), event)
+  var nimfunc = cast[ptr QVideoWidgettabletEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QTabletEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_actionEvent(self: QVideoWidget, event: gen_qevent.QActionEvent): void =
-
+  nimfunc[](slotval1)
+proc QVideoWidgetactionEvent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qevent.QActionEvent): void =
 
   fQVideoWidget_virtualbase_actionEvent(self.h, event.h)
 
-type QVideoWidgetactionEventBase* = proc(event: gen_qevent.QActionEvent): void
-proc onactionEvent*(self: QVideoWidget, slot: proc(super: QVideoWidgetactionEventBase, event: gen_qevent.QActionEvent): void) =
+type QVideoWidgetactionEventProc* = proc(event: gen_qevent.QActionEvent): void
+proc onactionEvent*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgetactionEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QVideoWidgetactionEventBase, event: gen_qevent.QActionEvent): void
-  var tmp = new Cb
+  var tmp = new QVideoWidgetactionEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQVideoWidget_override_virtual_actionEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QVideoWidget_actionEvent(self: ptr cQVideoWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QVideoWidget_actionEvent ".} =
-  type Cb = proc(super: QVideoWidgetactionEventBase, event: gen_qevent.QActionEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QActionEvent): auto =
-    callVirtualBase_actionEvent(QVideoWidget(h: self), event)
+  var nimfunc = cast[ptr QVideoWidgetactionEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QActionEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragEnterEvent(self: QVideoWidget, event: gen_qevent.QDragEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QVideoWidgetdragEnterEvent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qevent.QDragEnterEvent): void =
 
   fQVideoWidget_virtualbase_dragEnterEvent(self.h, event.h)
 
-type QVideoWidgetdragEnterEventBase* = proc(event: gen_qevent.QDragEnterEvent): void
-proc ondragEnterEvent*(self: QVideoWidget, slot: proc(super: QVideoWidgetdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void) =
+type QVideoWidgetdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
+proc ondragEnterEvent*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgetdragEnterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QVideoWidgetdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QVideoWidgetdragEnterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQVideoWidget_override_virtual_dragEnterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QVideoWidget_dragEnterEvent(self: ptr cQVideoWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QVideoWidget_dragEnterEvent ".} =
-  type Cb = proc(super: QVideoWidgetdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragEnterEvent): auto =
-    callVirtualBase_dragEnterEvent(QVideoWidget(h: self), event)
+  var nimfunc = cast[ptr QVideoWidgetdragEnterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragMoveEvent(self: QVideoWidget, event: gen_qevent.QDragMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QVideoWidgetdragMoveEvent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qevent.QDragMoveEvent): void =
 
   fQVideoWidget_virtualbase_dragMoveEvent(self.h, event.h)
 
-type QVideoWidgetdragMoveEventBase* = proc(event: gen_qevent.QDragMoveEvent): void
-proc ondragMoveEvent*(self: QVideoWidget, slot: proc(super: QVideoWidgetdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void) =
+type QVideoWidgetdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
+proc ondragMoveEvent*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgetdragMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QVideoWidgetdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QVideoWidgetdragMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQVideoWidget_override_virtual_dragMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QVideoWidget_dragMoveEvent(self: ptr cQVideoWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QVideoWidget_dragMoveEvent ".} =
-  type Cb = proc(super: QVideoWidgetdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragMoveEvent): auto =
-    callVirtualBase_dragMoveEvent(QVideoWidget(h: self), event)
+  var nimfunc = cast[ptr QVideoWidgetdragMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragLeaveEvent(self: QVideoWidget, event: gen_qevent.QDragLeaveEvent): void =
-
+  nimfunc[](slotval1)
+proc QVideoWidgetdragLeaveEvent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qevent.QDragLeaveEvent): void =
 
   fQVideoWidget_virtualbase_dragLeaveEvent(self.h, event.h)
 
-type QVideoWidgetdragLeaveEventBase* = proc(event: gen_qevent.QDragLeaveEvent): void
-proc ondragLeaveEvent*(self: QVideoWidget, slot: proc(super: QVideoWidgetdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void) =
+type QVideoWidgetdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
+proc ondragLeaveEvent*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgetdragLeaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QVideoWidgetdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var tmp = new Cb
+  var tmp = new QVideoWidgetdragLeaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQVideoWidget_override_virtual_dragLeaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QVideoWidget_dragLeaveEvent(self: ptr cQVideoWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QVideoWidget_dragLeaveEvent ".} =
-  type Cb = proc(super: QVideoWidgetdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragLeaveEvent): auto =
-    callVirtualBase_dragLeaveEvent(QVideoWidget(h: self), event)
+  var nimfunc = cast[ptr QVideoWidgetdragLeaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragLeaveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dropEvent(self: QVideoWidget, event: gen_qevent.QDropEvent): void =
-
+  nimfunc[](slotval1)
+proc QVideoWidgetdropEvent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qevent.QDropEvent): void =
 
   fQVideoWidget_virtualbase_dropEvent(self.h, event.h)
 
-type QVideoWidgetdropEventBase* = proc(event: gen_qevent.QDropEvent): void
-proc ondropEvent*(self: QVideoWidget, slot: proc(super: QVideoWidgetdropEventBase, event: gen_qevent.QDropEvent): void) =
+type QVideoWidgetdropEventProc* = proc(event: gen_qevent.QDropEvent): void
+proc ondropEvent*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgetdropEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QVideoWidgetdropEventBase, event: gen_qevent.QDropEvent): void
-  var tmp = new Cb
+  var tmp = new QVideoWidgetdropEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQVideoWidget_override_virtual_dropEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QVideoWidget_dropEvent(self: ptr cQVideoWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QVideoWidget_dropEvent ".} =
-  type Cb = proc(super: QVideoWidgetdropEventBase, event: gen_qevent.QDropEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDropEvent): auto =
-    callVirtualBase_dropEvent(QVideoWidget(h: self), event)
+  var nimfunc = cast[ptr QVideoWidgetdropEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDropEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_nativeEvent(self: QVideoWidget, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
+  nimfunc[](slotval1)
+proc QVideoWidgetnativeEvent*(self: gen_qvideowidget_types.QVideoWidget, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
 
   fQVideoWidget_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
-type QVideoWidgetnativeEventBase* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-proc onnativeEvent*(self: QVideoWidget, slot: proc(super: QVideoWidgetnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool) =
+type QVideoWidgetnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
+proc onnativeEvent*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgetnativeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QVideoWidgetnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-  var tmp = new Cb
+  var tmp = new QVideoWidgetnativeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQVideoWidget_override_virtual_nativeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QVideoWidget_nativeEvent(self: ptr cQVideoWidget, slot: int, eventType: struct_miqt_string, message: pointer, resultVal: ptr clong): bool {.exportc: "miqt_exec_callback_QVideoWidget_nativeEvent ".} =
-  type Cb = proc(super: QVideoWidgetnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(eventType: seq[byte], message: pointer, resultVal: ptr clong): auto =
-    callVirtualBase_nativeEvent(QVideoWidget(h: self), eventType, message, resultVal)
+  var nimfunc = cast[ptr QVideoWidgetnativeEventProc](cast[pointer](slot))
   var veventType_bytearray = eventType
   var veventTypex_ret = @(toOpenArrayByte(veventType_bytearray.data, 0, int(veventType_bytearray.len)-1))
   c_free(veventType_bytearray.data)
@@ -1317,344 +1125,274 @@ proc miqt_exec_callback_QVideoWidget_nativeEvent(self: ptr cQVideoWidget, slot: 
   let slotval3 = resultVal
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_changeEvent(self: QVideoWidget, param1: gen_qcoreevent.QEvent): void =
-
+proc QVideoWidgetchangeEvent*(self: gen_qvideowidget_types.QVideoWidget, param1: gen_qcoreevent.QEvent): void =
 
   fQVideoWidget_virtualbase_changeEvent(self.h, param1.h)
 
-type QVideoWidgetchangeEventBase* = proc(param1: gen_qcoreevent.QEvent): void
-proc onchangeEvent*(self: QVideoWidget, slot: proc(super: QVideoWidgetchangeEventBase, param1: gen_qcoreevent.QEvent): void) =
+type QVideoWidgetchangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
+proc onchangeEvent*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgetchangeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QVideoWidgetchangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QVideoWidgetchangeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQVideoWidget_override_virtual_changeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QVideoWidget_changeEvent(self: ptr cQVideoWidget, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QVideoWidget_changeEvent ".} =
-  type Cb = proc(super: QVideoWidgetchangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_changeEvent(QVideoWidget(h: self), param1)
+  var nimfunc = cast[ptr QVideoWidgetchangeEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_metric(self: QVideoWidget, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint =
-
+  nimfunc[](slotval1)
+proc QVideoWidgetmetric*(self: gen_qvideowidget_types.QVideoWidget, param1: cint): cint =
 
   fQVideoWidget_virtualbase_metric(self.h, cint(param1))
 
-type QVideoWidgetmetricBase* = proc(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-proc onmetric*(self: QVideoWidget, slot: proc(super: QVideoWidgetmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint) =
+type QVideoWidgetmetricProc* = proc(param1: cint): cint
+proc onmetric*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgetmetricProc) =
   # TODO check subclass
-  type Cb = proc(super: QVideoWidgetmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var tmp = new Cb
+  var tmp = new QVideoWidgetmetricProc
   tmp[] = slot
   GC_ref(tmp)
   fcQVideoWidget_override_virtual_metric(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QVideoWidget_metric(self: ptr cQVideoWidget, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QVideoWidget_metric ".} =
-  type Cb = proc(super: QVideoWidgetmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): auto =
-    callVirtualBase_metric(QVideoWidget(h: self), param1)
-  let slotval1 = gen_qpaintdevice.QPaintDevicePaintDeviceMetric(param1)
+  var nimfunc = cast[ptr QVideoWidgetmetricProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_initPainter(self: QVideoWidget, painter: gen_qpainter.QPainter): void =
-
+proc QVideoWidgetinitPainter*(self: gen_qvideowidget_types.QVideoWidget, painter: gen_qpainter.QPainter): void =
 
   fQVideoWidget_virtualbase_initPainter(self.h, painter.h)
 
-type QVideoWidgetinitPainterBase* = proc(painter: gen_qpainter.QPainter): void
-proc oninitPainter*(self: QVideoWidget, slot: proc(super: QVideoWidgetinitPainterBase, painter: gen_qpainter.QPainter): void) =
+type QVideoWidgetinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
+proc oninitPainter*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgetinitPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QVideoWidgetinitPainterBase, painter: gen_qpainter.QPainter): void
-  var tmp = new Cb
+  var tmp = new QVideoWidgetinitPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQVideoWidget_override_virtual_initPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QVideoWidget_initPainter(self: ptr cQVideoWidget, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_QVideoWidget_initPainter ".} =
-  type Cb = proc(super: QVideoWidgetinitPainterBase, painter: gen_qpainter.QPainter): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter): auto =
-    callVirtualBase_initPainter(QVideoWidget(h: self), painter)
+  var nimfunc = cast[ptr QVideoWidgetinitPainterProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_redirected(self: QVideoWidget, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
+  nimfunc[](slotval1)
+proc QVideoWidgetredirected*(self: gen_qvideowidget_types.QVideoWidget, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
 
   gen_qpaintdevice.QPaintDevice(h: fQVideoWidget_virtualbase_redirected(self.h, offset.h))
 
-type QVideoWidgetredirectedBase* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-proc onredirected*(self: QVideoWidget, slot: proc(super: QVideoWidgetredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice) =
+type QVideoWidgetredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
+proc onredirected*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgetredirectedProc) =
   # TODO check subclass
-  type Cb = proc(super: QVideoWidgetredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var tmp = new Cb
+  var tmp = new QVideoWidgetredirectedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQVideoWidget_override_virtual_redirected(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QVideoWidget_redirected(self: ptr cQVideoWidget, slot: int, offset: pointer): pointer {.exportc: "miqt_exec_callback_QVideoWidget_redirected ".} =
-  type Cb = proc(super: QVideoWidgetredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(offset: gen_qpoint.QPoint): auto =
-    callVirtualBase_redirected(QVideoWidget(h: self), offset)
+  var nimfunc = cast[ptr QVideoWidgetredirectedProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: offset)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_sharedPainter(self: QVideoWidget, ): gen_qpainter.QPainter =
-
+proc QVideoWidgetsharedPainter*(self: gen_qvideowidget_types.QVideoWidget, ): gen_qpainter.QPainter =
 
   gen_qpainter.QPainter(h: fQVideoWidget_virtualbase_sharedPainter(self.h))
 
-type QVideoWidgetsharedPainterBase* = proc(): gen_qpainter.QPainter
-proc onsharedPainter*(self: QVideoWidget, slot: proc(super: QVideoWidgetsharedPainterBase): gen_qpainter.QPainter) =
+type QVideoWidgetsharedPainterProc* = proc(): gen_qpainter.QPainter
+proc onsharedPainter*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgetsharedPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QVideoWidgetsharedPainterBase): gen_qpainter.QPainter
-  var tmp = new Cb
+  var tmp = new QVideoWidgetsharedPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQVideoWidget_override_virtual_sharedPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QVideoWidget_sharedPainter(self: ptr cQVideoWidget, slot: int): pointer {.exportc: "miqt_exec_callback_QVideoWidget_sharedPainter ".} =
-  type Cb = proc(super: QVideoWidgetsharedPainterBase): gen_qpainter.QPainter
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sharedPainter(QVideoWidget(h: self), )
+  var nimfunc = cast[ptr QVideoWidgetsharedPainterProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_inputMethodEvent(self: QVideoWidget, param1: gen_qevent.QInputMethodEvent): void =
-
+proc QVideoWidgetinputMethodEvent*(self: gen_qvideowidget_types.QVideoWidget, param1: gen_qevent.QInputMethodEvent): void =
 
   fQVideoWidget_virtualbase_inputMethodEvent(self.h, param1.h)
 
-type QVideoWidgetinputMethodEventBase* = proc(param1: gen_qevent.QInputMethodEvent): void
-proc oninputMethodEvent*(self: QVideoWidget, slot: proc(super: QVideoWidgetinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void) =
+type QVideoWidgetinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
+proc oninputMethodEvent*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgetinputMethodEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QVideoWidgetinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var tmp = new Cb
+  var tmp = new QVideoWidgetinputMethodEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQVideoWidget_override_virtual_inputMethodEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QVideoWidget_inputMethodEvent(self: ptr cQVideoWidget, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QVideoWidget_inputMethodEvent ".} =
-  type Cb = proc(super: QVideoWidgetinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QInputMethodEvent): auto =
-    callVirtualBase_inputMethodEvent(QVideoWidget(h: self), param1)
+  var nimfunc = cast[ptr QVideoWidgetinputMethodEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QInputMethodEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_inputMethodQuery(self: QVideoWidget, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant =
-
+  nimfunc[](slotval1)
+proc QVideoWidgetinputMethodQuery*(self: gen_qvideowidget_types.QVideoWidget, param1: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQVideoWidget_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
-type QVideoWidgetinputMethodQueryBase* = proc(param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-proc oninputMethodQuery*(self: QVideoWidget, slot: proc(super: QVideoWidgetinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant) =
+type QVideoWidgetinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
+proc oninputMethodQuery*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgetinputMethodQueryProc) =
   # TODO check subclass
-  type Cb = proc(super: QVideoWidgetinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QVideoWidgetinputMethodQueryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQVideoWidget_override_virtual_inputMethodQuery(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QVideoWidget_inputMethodQuery(self: ptr cQVideoWidget, slot: int, param1: cint): pointer {.exportc: "miqt_exec_callback_QVideoWidget_inputMethodQuery ".} =
-  type Cb = proc(super: QVideoWidgetinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qnamespace.InputMethodQuery): auto =
-    callVirtualBase_inputMethodQuery(QVideoWidget(h: self), param1)
-  let slotval1 = gen_qnamespace.InputMethodQuery(param1)
+  var nimfunc = cast[ptr QVideoWidgetinputMethodQueryProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_focusNextPrevChild(self: QVideoWidget, next: bool): bool =
-
+proc QVideoWidgetfocusNextPrevChild*(self: gen_qvideowidget_types.QVideoWidget, next: bool): bool =
 
   fQVideoWidget_virtualbase_focusNextPrevChild(self.h, next)
 
-type QVideoWidgetfocusNextPrevChildBase* = proc(next: bool): bool
-proc onfocusNextPrevChild*(self: QVideoWidget, slot: proc(super: QVideoWidgetfocusNextPrevChildBase, next: bool): bool) =
+type QVideoWidgetfocusNextPrevChildProc* = proc(next: bool): bool
+proc onfocusNextPrevChild*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgetfocusNextPrevChildProc) =
   # TODO check subclass
-  type Cb = proc(super: QVideoWidgetfocusNextPrevChildBase, next: bool): bool
-  var tmp = new Cb
+  var tmp = new QVideoWidgetfocusNextPrevChildProc
   tmp[] = slot
   GC_ref(tmp)
   fcQVideoWidget_override_virtual_focusNextPrevChild(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QVideoWidget_focusNextPrevChild(self: ptr cQVideoWidget, slot: int, next: bool): bool {.exportc: "miqt_exec_callback_QVideoWidget_focusNextPrevChild ".} =
-  type Cb = proc(super: QVideoWidgetfocusNextPrevChildBase, next: bool): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(next: bool): auto =
-    callVirtualBase_focusNextPrevChild(QVideoWidget(h: self), next)
+  var nimfunc = cast[ptr QVideoWidgetfocusNextPrevChildProc](cast[pointer](slot))
   let slotval1 = next
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QVideoWidget, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QVideoWidgeteventFilter*(self: gen_qvideowidget_types.QVideoWidget, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQVideoWidget_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QVideoWidgeteventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QVideoWidget, slot: proc(super: QVideoWidgeteventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QVideoWidgeteventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgeteventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QVideoWidgeteventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QVideoWidgeteventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQVideoWidget_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QVideoWidget_eventFilter(self: ptr cQVideoWidget, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QVideoWidget_eventFilter ".} =
-  type Cb = proc(super: QVideoWidgeteventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QVideoWidget(h: self), watched, event)
+  var nimfunc = cast[ptr QVideoWidgeteventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QVideoWidget, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QVideoWidgettimerEvent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qcoreevent.QTimerEvent): void =
 
   fQVideoWidget_virtualbase_timerEvent(self.h, event.h)
 
-type QVideoWidgettimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QVideoWidget, slot: proc(super: QVideoWidgettimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QVideoWidgettimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgettimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QVideoWidgettimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QVideoWidgettimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQVideoWidget_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QVideoWidget_timerEvent(self: ptr cQVideoWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QVideoWidget_timerEvent ".} =
-  type Cb = proc(super: QVideoWidgettimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QVideoWidget(h: self), event)
+  var nimfunc = cast[ptr QVideoWidgettimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QVideoWidget, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QVideoWidgetchildEvent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qcoreevent.QChildEvent): void =
 
   fQVideoWidget_virtualbase_childEvent(self.h, event.h)
 
-type QVideoWidgetchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QVideoWidget, slot: proc(super: QVideoWidgetchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QVideoWidgetchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgetchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QVideoWidgetchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QVideoWidgetchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQVideoWidget_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QVideoWidget_childEvent(self: ptr cQVideoWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QVideoWidget_childEvent ".} =
-  type Cb = proc(super: QVideoWidgetchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QVideoWidget(h: self), event)
+  var nimfunc = cast[ptr QVideoWidgetchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QVideoWidget, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QVideoWidgetcustomEvent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qcoreevent.QEvent): void =
 
   fQVideoWidget_virtualbase_customEvent(self.h, event.h)
 
-type QVideoWidgetcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QVideoWidget, slot: proc(super: QVideoWidgetcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QVideoWidgetcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgetcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QVideoWidgetcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QVideoWidgetcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQVideoWidget_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QVideoWidget_customEvent(self: ptr cQVideoWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QVideoWidget_customEvent ".} =
-  type Cb = proc(super: QVideoWidgetcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QVideoWidget(h: self), event)
+  var nimfunc = cast[ptr QVideoWidgetcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QVideoWidget, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QVideoWidgetconnectNotify*(self: gen_qvideowidget_types.QVideoWidget, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQVideoWidget_virtualbase_connectNotify(self.h, signal.h)
 
-type QVideoWidgetconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QVideoWidget, slot: proc(super: QVideoWidgetconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QVideoWidgetconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgetconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QVideoWidgetconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QVideoWidgetconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQVideoWidget_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QVideoWidget_connectNotify(self: ptr cQVideoWidget, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QVideoWidget_connectNotify ".} =
-  type Cb = proc(super: QVideoWidgetconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QVideoWidget(h: self), signal)
+  var nimfunc = cast[ptr QVideoWidgetconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QVideoWidget, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QVideoWidgetdisconnectNotify*(self: gen_qvideowidget_types.QVideoWidget, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQVideoWidget_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QVideoWidgetdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QVideoWidget, slot: proc(super: QVideoWidgetdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QVideoWidgetdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgetdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QVideoWidgetdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QVideoWidgetdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQVideoWidget_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QVideoWidget_disconnectNotify(self: ptr cQVideoWidget, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QVideoWidget_disconnectNotify ".} =
-  type Cb = proc(super: QVideoWidgetdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QVideoWidget(h: self), signal)
+  var nimfunc = cast[ptr QVideoWidgetdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QVideoWidget): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qvideowidget_types.QVideoWidget): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQVideoWidget_staticMetaObject())
-proc delete*(self: QVideoWidget) =
+proc delete*(self: gen_qvideowidget_types.QVideoWidget) =
   fcQVideoWidget_delete(self.h)

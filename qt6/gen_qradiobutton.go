@@ -144,7 +144,7 @@ func (this *QRadioButton) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QRadioButton_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QRadioButton) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QRadioButton) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QRadioButton_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -171,7 +171,7 @@ func (this *QRadioButton) callVirtualBase_Metacast(param1 string) unsafe.Pointer
 	return (unsafe.Pointer)(C.QRadioButton_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QRadioButton) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QRadioButton) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QRadioButton_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

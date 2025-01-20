@@ -39,7 +39,6 @@ export gen_qbitmap_types
 
 import
   gen_qimage,
-  gen_qnamespace,
   gen_qpaintdevice,
   gen_qpaintengine,
   gen_qpainter,
@@ -50,7 +49,6 @@ import
   gen_qvariant
 export
   gen_qimage,
-  gen_qnamespace,
   gen_qpaintdevice,
   gen_qpaintengine,
   gen_qpainter,
@@ -95,214 +93,184 @@ proc fcQBitmap_override_virtual_sharedPainter(self: pointer, slot: int) {.import
 proc fcQBitmap_delete(self: pointer) {.importc: "QBitmap_delete".}
 
 
-func init*(T: type QBitmap, h: ptr cQBitmap): QBitmap =
+func init*(T: type gen_qbitmap_types.QBitmap, h: ptr cQBitmap): gen_qbitmap_types.QBitmap =
   T(h: h)
-proc create*(T: type QBitmap, ): QBitmap =
+proc create*(T: type gen_qbitmap_types.QBitmap, ): gen_qbitmap_types.QBitmap =
 
-  QBitmap.init(fcQBitmap_new())
-proc create*(T: type QBitmap, param1: gen_qpixmap.QPixmap): QBitmap =
+  gen_qbitmap_types.QBitmap.init(fcQBitmap_new())
+proc create*(T: type gen_qbitmap_types.QBitmap, param1: gen_qpixmap.QPixmap): gen_qbitmap_types.QBitmap =
 
-  QBitmap.init(fcQBitmap_new2(param1.h))
-proc create*(T: type QBitmap, w: cint, h: cint): QBitmap =
+  gen_qbitmap_types.QBitmap.init(fcQBitmap_new2(param1.h))
+proc create*(T: type gen_qbitmap_types.QBitmap, w: cint, h: cint): gen_qbitmap_types.QBitmap =
 
-  QBitmap.init(fcQBitmap_new3(w, h))
-proc create2*(T: type QBitmap, param1: gen_qsize.QSize): QBitmap =
+  gen_qbitmap_types.QBitmap.init(fcQBitmap_new3(w, h))
+proc create2*(T: type gen_qbitmap_types.QBitmap, param1: gen_qsize.QSize): gen_qbitmap_types.QBitmap =
 
-  QBitmap.init(fcQBitmap_new4(param1.h))
-proc create*(T: type QBitmap, fileName: string): QBitmap =
+  gen_qbitmap_types.QBitmap.init(fcQBitmap_new4(param1.h))
+proc create*(T: type gen_qbitmap_types.QBitmap, fileName: string): gen_qbitmap_types.QBitmap =
 
-  QBitmap.init(fcQBitmap_new5(struct_miqt_string(data: fileName, len: csize_t(len(fileName)))))
-proc create2*(T: type QBitmap, param1: QBitmap): QBitmap =
+  gen_qbitmap_types.QBitmap.init(fcQBitmap_new5(struct_miqt_string(data: fileName, len: csize_t(len(fileName)))))
+proc create2*(T: type gen_qbitmap_types.QBitmap, param1: gen_qbitmap_types.QBitmap): gen_qbitmap_types.QBitmap =
 
-  QBitmap.init(fcQBitmap_new6(param1.h))
-proc create*(T: type QBitmap, fileName: string, format: cstring): QBitmap =
+  gen_qbitmap_types.QBitmap.init(fcQBitmap_new6(param1.h))
+proc create*(T: type gen_qbitmap_types.QBitmap, fileName: string, format: cstring): gen_qbitmap_types.QBitmap =
 
-  QBitmap.init(fcQBitmap_new7(struct_miqt_string(data: fileName, len: csize_t(len(fileName))), format))
-proc operatorAssign*(self: QBitmap, param1: gen_qpixmap.QPixmap): void =
+  gen_qbitmap_types.QBitmap.init(fcQBitmap_new7(struct_miqt_string(data: fileName, len: csize_t(len(fileName))), format))
+proc operatorAssign*(self: gen_qbitmap_types.QBitmap, param1: gen_qpixmap.QPixmap): void =
 
   fcQBitmap_operatorAssign(self.h, param1.h)
 
-proc swap*(self: QBitmap, other: QBitmap): void =
+proc swap*(self: gen_qbitmap_types.QBitmap, other: gen_qbitmap_types.QBitmap): void =
 
   fcQBitmap_swap(self.h, other.h)
 
-proc ToQVariant*(self: QBitmap, ): gen_qvariant.QVariant =
+proc ToQVariant*(self: gen_qbitmap_types.QBitmap, ): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fcQBitmap_ToQVariant(self.h))
 
-proc clear*(self: QBitmap, ): void =
+proc clear*(self: gen_qbitmap_types.QBitmap, ): void =
 
   fcQBitmap_clear(self.h)
 
-proc fromImage*(_: type QBitmap, image: gen_qimage.QImage): QBitmap =
+proc fromImage*(_: type gen_qbitmap_types.QBitmap, image: gen_qimage.QImage): gen_qbitmap_types.QBitmap =
 
-  QBitmap(h: fcQBitmap_fromImage(image.h))
+  gen_qbitmap_types.QBitmap(h: fcQBitmap_fromImage(image.h))
 
-proc fromData*(_: type QBitmap, size: gen_qsize.QSize, bits: ptr uint8): QBitmap =
+proc fromData*(_: type gen_qbitmap_types.QBitmap, size: gen_qsize.QSize, bits: ptr uint8): gen_qbitmap_types.QBitmap =
 
-  QBitmap(h: fcQBitmap_fromData(size.h, bits))
+  gen_qbitmap_types.QBitmap(h: fcQBitmap_fromData(size.h, bits))
 
-proc fromPixmap*(_: type QBitmap, pixmap: gen_qpixmap.QPixmap): QBitmap =
+proc fromPixmap*(_: type gen_qbitmap_types.QBitmap, pixmap: gen_qpixmap.QPixmap): gen_qbitmap_types.QBitmap =
 
-  QBitmap(h: fcQBitmap_fromPixmap(pixmap.h))
+  gen_qbitmap_types.QBitmap(h: fcQBitmap_fromPixmap(pixmap.h))
 
-proc transformed*(self: QBitmap, matrix: gen_qtransform.QTransform): QBitmap =
+proc transformed*(self: gen_qbitmap_types.QBitmap, matrix: gen_qtransform.QTransform): gen_qbitmap_types.QBitmap =
 
-  QBitmap(h: fcQBitmap_transformed(self.h, matrix.h))
+  gen_qbitmap_types.QBitmap(h: fcQBitmap_transformed(self.h, matrix.h))
 
-proc operatorAssignWithQBitmap*(self: QBitmap, param1: QBitmap): void =
+proc operatorAssignWithQBitmap*(self: gen_qbitmap_types.QBitmap, param1: gen_qbitmap_types.QBitmap): void =
 
   fcQBitmap_operatorAssignWithQBitmap(self.h, param1.h)
 
-proc fromImage2*(_: type QBitmap, image: gen_qimage.QImage, flags: gen_qnamespace.ImageConversionFlag): QBitmap =
+proc fromImage2*(_: type gen_qbitmap_types.QBitmap, image: gen_qimage.QImage, flags: cint): gen_qbitmap_types.QBitmap =
 
-  QBitmap(h: fcQBitmap_fromImage2(image.h, cint(flags)))
+  gen_qbitmap_types.QBitmap(h: fcQBitmap_fromImage2(image.h, cint(flags)))
 
-proc fromData3*(_: type QBitmap, size: gen_qsize.QSize, bits: ptr uint8, monoFormat: gen_qimage.QImageFormat): QBitmap =
+proc fromData3*(_: type gen_qbitmap_types.QBitmap, size: gen_qsize.QSize, bits: ptr uint8, monoFormat: cint): gen_qbitmap_types.QBitmap =
 
-  QBitmap(h: fcQBitmap_fromData3(size.h, bits, cint(monoFormat)))
+  gen_qbitmap_types.QBitmap(h: fcQBitmap_fromData3(size.h, bits, cint(monoFormat)))
 
-proc callVirtualBase_devType(self: QBitmap, ): cint =
-
+proc QBitmapdevType*(self: gen_qbitmap_types.QBitmap, ): cint =
 
   fQBitmap_virtualbase_devType(self.h)
 
-type QBitmapdevTypeBase* = proc(): cint
-proc ondevType*(self: QBitmap, slot: proc(super: QBitmapdevTypeBase): cint) =
+type QBitmapdevTypeProc* = proc(): cint
+proc ondevType*(self: gen_qbitmap_types.QBitmap, slot: QBitmapdevTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: QBitmapdevTypeBase): cint
-  var tmp = new Cb
+  var tmp = new QBitmapdevTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQBitmap_override_virtual_devType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QBitmap_devType(self: ptr cQBitmap, slot: int): cint {.exportc: "miqt_exec_callback_QBitmap_devType ".} =
-  type Cb = proc(super: QBitmapdevTypeBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_devType(QBitmap(h: self), )
+  var nimfunc = cast[ptr QBitmapdevTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_paintEngine(self: QBitmap, ): gen_qpaintengine.QPaintEngine =
-
+proc QBitmappaintEngine*(self: gen_qbitmap_types.QBitmap, ): gen_qpaintengine.QPaintEngine =
 
   gen_qpaintengine.QPaintEngine(h: fQBitmap_virtualbase_paintEngine(self.h))
 
-type QBitmappaintEngineBase* = proc(): gen_qpaintengine.QPaintEngine
-proc onpaintEngine*(self: QBitmap, slot: proc(super: QBitmappaintEngineBase): gen_qpaintengine.QPaintEngine) =
+type QBitmappaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
+proc onpaintEngine*(self: gen_qbitmap_types.QBitmap, slot: QBitmappaintEngineProc) =
   # TODO check subclass
-  type Cb = proc(super: QBitmappaintEngineBase): gen_qpaintengine.QPaintEngine
-  var tmp = new Cb
+  var tmp = new QBitmappaintEngineProc
   tmp[] = slot
   GC_ref(tmp)
   fcQBitmap_override_virtual_paintEngine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QBitmap_paintEngine(self: ptr cQBitmap, slot: int): pointer {.exportc: "miqt_exec_callback_QBitmap_paintEngine ".} =
-  type Cb = proc(super: QBitmappaintEngineBase): gen_qpaintengine.QPaintEngine
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_paintEngine(QBitmap(h: self), )
+  var nimfunc = cast[ptr QBitmappaintEngineProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metric(self: QBitmap, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint =
-
+proc QBitmapmetric*(self: gen_qbitmap_types.QBitmap, param1: cint): cint =
 
   fQBitmap_virtualbase_metric(self.h, cint(param1))
 
-type QBitmapmetricBase* = proc(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-proc onmetric*(self: QBitmap, slot: proc(super: QBitmapmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint) =
+type QBitmapmetricProc* = proc(param1: cint): cint
+proc onmetric*(self: gen_qbitmap_types.QBitmap, slot: QBitmapmetricProc) =
   # TODO check subclass
-  type Cb = proc(super: QBitmapmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var tmp = new Cb
+  var tmp = new QBitmapmetricProc
   tmp[] = slot
   GC_ref(tmp)
   fcQBitmap_override_virtual_metric(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QBitmap_metric(self: ptr cQBitmap, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QBitmap_metric ".} =
-  type Cb = proc(super: QBitmapmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): auto =
-    callVirtualBase_metric(QBitmap(h: self), param1)
-  let slotval1 = gen_qpaintdevice.QPaintDevicePaintDeviceMetric(param1)
+  var nimfunc = cast[ptr QBitmapmetricProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_initPainter(self: QBitmap, painter: gen_qpainter.QPainter): void =
-
+proc QBitmapinitPainter*(self: gen_qbitmap_types.QBitmap, painter: gen_qpainter.QPainter): void =
 
   fQBitmap_virtualbase_initPainter(self.h, painter.h)
 
-type QBitmapinitPainterBase* = proc(painter: gen_qpainter.QPainter): void
-proc oninitPainter*(self: QBitmap, slot: proc(super: QBitmapinitPainterBase, painter: gen_qpainter.QPainter): void) =
+type QBitmapinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
+proc oninitPainter*(self: gen_qbitmap_types.QBitmap, slot: QBitmapinitPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QBitmapinitPainterBase, painter: gen_qpainter.QPainter): void
-  var tmp = new Cb
+  var tmp = new QBitmapinitPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQBitmap_override_virtual_initPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QBitmap_initPainter(self: ptr cQBitmap, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_QBitmap_initPainter ".} =
-  type Cb = proc(super: QBitmapinitPainterBase, painter: gen_qpainter.QPainter): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter): auto =
-    callVirtualBase_initPainter(QBitmap(h: self), painter)
+  var nimfunc = cast[ptr QBitmapinitPainterProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_redirected(self: QBitmap, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
+  nimfunc[](slotval1)
+proc QBitmapredirected*(self: gen_qbitmap_types.QBitmap, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
 
   gen_qpaintdevice.QPaintDevice(h: fQBitmap_virtualbase_redirected(self.h, offset.h))
 
-type QBitmapredirectedBase* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-proc onredirected*(self: QBitmap, slot: proc(super: QBitmapredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice) =
+type QBitmapredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
+proc onredirected*(self: gen_qbitmap_types.QBitmap, slot: QBitmapredirectedProc) =
   # TODO check subclass
-  type Cb = proc(super: QBitmapredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var tmp = new Cb
+  var tmp = new QBitmapredirectedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQBitmap_override_virtual_redirected(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QBitmap_redirected(self: ptr cQBitmap, slot: int, offset: pointer): pointer {.exportc: "miqt_exec_callback_QBitmap_redirected ".} =
-  type Cb = proc(super: QBitmapredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(offset: gen_qpoint.QPoint): auto =
-    callVirtualBase_redirected(QBitmap(h: self), offset)
+  var nimfunc = cast[ptr QBitmapredirectedProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: offset)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_sharedPainter(self: QBitmap, ): gen_qpainter.QPainter =
-
+proc QBitmapsharedPainter*(self: gen_qbitmap_types.QBitmap, ): gen_qpainter.QPainter =
 
   gen_qpainter.QPainter(h: fQBitmap_virtualbase_sharedPainter(self.h))
 
-type QBitmapsharedPainterBase* = proc(): gen_qpainter.QPainter
-proc onsharedPainter*(self: QBitmap, slot: proc(super: QBitmapsharedPainterBase): gen_qpainter.QPainter) =
+type QBitmapsharedPainterProc* = proc(): gen_qpainter.QPainter
+proc onsharedPainter*(self: gen_qbitmap_types.QBitmap, slot: QBitmapsharedPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QBitmapsharedPainterBase): gen_qpainter.QPainter
-  var tmp = new Cb
+  var tmp = new QBitmapsharedPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQBitmap_override_virtual_sharedPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QBitmap_sharedPainter(self: ptr cQBitmap, slot: int): pointer {.exportc: "miqt_exec_callback_QBitmap_sharedPainter ".} =
-  type Cb = proc(super: QBitmapsharedPainterBase): gen_qpainter.QPainter
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sharedPainter(QBitmap(h: self), )
+  var nimfunc = cast[ptr QBitmapsharedPainterProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc delete*(self: QBitmap) =
+proc delete*(self: gen_qbitmap_types.QBitmap) =
   fcQBitmap_delete(self.h)

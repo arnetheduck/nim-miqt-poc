@@ -89,333 +89,281 @@ proc fcQWebEngineUrlSchemeHandler_staticMetaObject(): pointer {.importc: "QWebEn
 proc fcQWebEngineUrlSchemeHandler_delete(self: pointer) {.importc: "QWebEngineUrlSchemeHandler_delete".}
 
 
-func init*(T: type QWebEngineUrlSchemeHandler, h: ptr cQWebEngineUrlSchemeHandler): QWebEngineUrlSchemeHandler =
+func init*(T: type gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, h: ptr cQWebEngineUrlSchemeHandler): gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler =
   T(h: h)
-proc create*(T: type QWebEngineUrlSchemeHandler, ): QWebEngineUrlSchemeHandler =
+proc create*(T: type gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, ): gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler =
 
-  QWebEngineUrlSchemeHandler.init(fcQWebEngineUrlSchemeHandler_new())
-proc create*(T: type QWebEngineUrlSchemeHandler, parent: gen_qobject.QObject): QWebEngineUrlSchemeHandler =
+  gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler.init(fcQWebEngineUrlSchemeHandler_new())
+proc create*(T: type gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, parent: gen_qobject.QObject): gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler =
 
-  QWebEngineUrlSchemeHandler.init(fcQWebEngineUrlSchemeHandler_new2(parent.h))
-proc metaObject*(self: QWebEngineUrlSchemeHandler, ): gen_qobjectdefs.QMetaObject =
+  gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler.init(fcQWebEngineUrlSchemeHandler_new2(parent.h))
+proc metaObject*(self: gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQWebEngineUrlSchemeHandler_metaObject(self.h))
 
-proc metacast*(self: QWebEngineUrlSchemeHandler, param1: cstring): pointer =
+proc metacast*(self: gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, param1: cstring): pointer =
 
   fcQWebEngineUrlSchemeHandler_metacast(self.h, param1)
 
-proc metacall*(self: QWebEngineUrlSchemeHandler, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQWebEngineUrlSchemeHandler_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QWebEngineUrlSchemeHandler, s: cstring): string =
+proc tr*(_: type gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, s: cstring): string =
 
   let v_ms = fcQWebEngineUrlSchemeHandler_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QWebEngineUrlSchemeHandler, s: cstring): string =
+proc trUtf8*(_: type gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, s: cstring): string =
 
   let v_ms = fcQWebEngineUrlSchemeHandler_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc requestStarted*(self: QWebEngineUrlSchemeHandler, param1: gen_qwebengineurlrequestjob.QWebEngineUrlRequestJob): void =
+proc requestStarted*(self: gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, param1: gen_qwebengineurlrequestjob.QWebEngineUrlRequestJob): void =
 
   fcQWebEngineUrlSchemeHandler_requestStarted(self.h, param1.h)
 
-proc tr2*(_: type QWebEngineUrlSchemeHandler, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, s: cstring, c: cstring): string =
 
   let v_ms = fcQWebEngineUrlSchemeHandler_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QWebEngineUrlSchemeHandler, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQWebEngineUrlSchemeHandler_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QWebEngineUrlSchemeHandler, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, s: cstring, c: cstring): string =
 
   let v_ms = fcQWebEngineUrlSchemeHandler_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QWebEngineUrlSchemeHandler, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQWebEngineUrlSchemeHandler_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QWebEngineUrlSchemeHandler, ): gen_qobjectdefs.QMetaObject =
-
+proc QWebEngineUrlSchemeHandlermetaObject*(self: gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQWebEngineUrlSchemeHandler_virtualbase_metaObject(self.h))
 
-type QWebEngineUrlSchemeHandlermetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QWebEngineUrlSchemeHandler, slot: proc(super: QWebEngineUrlSchemeHandlermetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QWebEngineUrlSchemeHandlermetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, slot: QWebEngineUrlSchemeHandlermetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineUrlSchemeHandlermetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QWebEngineUrlSchemeHandlermetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineUrlSchemeHandler_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineUrlSchemeHandler_metaObject(self: ptr cQWebEngineUrlSchemeHandler, slot: int): pointer {.exportc: "miqt_exec_callback_QWebEngineUrlSchemeHandler_metaObject ".} =
-  type Cb = proc(super: QWebEngineUrlSchemeHandlermetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QWebEngineUrlSchemeHandler(h: self), )
+  var nimfunc = cast[ptr QWebEngineUrlSchemeHandlermetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QWebEngineUrlSchemeHandler, param1: cstring): pointer =
-
+proc QWebEngineUrlSchemeHandlermetacast*(self: gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, param1: cstring): pointer =
 
   fQWebEngineUrlSchemeHandler_virtualbase_metacast(self.h, param1)
 
-type QWebEngineUrlSchemeHandlermetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QWebEngineUrlSchemeHandler, slot: proc(super: QWebEngineUrlSchemeHandlermetacastBase, param1: cstring): pointer) =
+type QWebEngineUrlSchemeHandlermetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, slot: QWebEngineUrlSchemeHandlermetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineUrlSchemeHandlermetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QWebEngineUrlSchemeHandlermetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineUrlSchemeHandler_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineUrlSchemeHandler_metacast(self: ptr cQWebEngineUrlSchemeHandler, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QWebEngineUrlSchemeHandler_metacast ".} =
-  type Cb = proc(super: QWebEngineUrlSchemeHandlermetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QWebEngineUrlSchemeHandler(h: self), param1)
+  var nimfunc = cast[ptr QWebEngineUrlSchemeHandlermetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QWebEngineUrlSchemeHandler, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QWebEngineUrlSchemeHandlermetacall*(self: gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, param1: cint, param2: cint, param3: pointer): cint =
 
   fQWebEngineUrlSchemeHandler_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QWebEngineUrlSchemeHandlermetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QWebEngineUrlSchemeHandler, slot: proc(super: QWebEngineUrlSchemeHandlermetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QWebEngineUrlSchemeHandlermetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, slot: QWebEngineUrlSchemeHandlermetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineUrlSchemeHandlermetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QWebEngineUrlSchemeHandlermetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineUrlSchemeHandler_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineUrlSchemeHandler_metacall(self: ptr cQWebEngineUrlSchemeHandler, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QWebEngineUrlSchemeHandler_metacall ".} =
-  type Cb = proc(super: QWebEngineUrlSchemeHandlermetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QWebEngineUrlSchemeHandler(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QWebEngineUrlSchemeHandlermetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-type QWebEngineUrlSchemeHandlerrequestStartedBase* = proc(param1: gen_qwebengineurlrequestjob.QWebEngineUrlRequestJob): void
-proc onrequestStarted*(self: QWebEngineUrlSchemeHandler, slot: proc(param1: gen_qwebengineurlrequestjob.QWebEngineUrlRequestJob): void) =
+type QWebEngineUrlSchemeHandlerrequestStartedProc* = proc(param1: gen_qwebengineurlrequestjob.QWebEngineUrlRequestJob): void
+proc onrequestStarted*(self: gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, slot: QWebEngineUrlSchemeHandlerrequestStartedProc) =
   # TODO check subclass
-  type Cb = proc(param1: gen_qwebengineurlrequestjob.QWebEngineUrlRequestJob): void
-  var tmp = new Cb
+  var tmp = new QWebEngineUrlSchemeHandlerrequestStartedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineUrlSchemeHandler_override_virtual_requestStarted(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineUrlSchemeHandler_requestStarted(self: ptr cQWebEngineUrlSchemeHandler, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QWebEngineUrlSchemeHandler_requestStarted ".} =
-  type Cb = proc(param1: gen_qwebengineurlrequestjob.QWebEngineUrlRequestJob): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QWebEngineUrlSchemeHandlerrequestStartedProc](cast[pointer](slot))
   let slotval1 = gen_qwebengineurlrequestjob.QWebEngineUrlRequestJob(h: param1)
 
 
   nimfunc[](slotval1)
-proc callVirtualBase_event(self: QWebEngineUrlSchemeHandler, event: gen_qcoreevent.QEvent): bool =
-
+proc QWebEngineUrlSchemeHandlerevent*(self: gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, event: gen_qcoreevent.QEvent): bool =
 
   fQWebEngineUrlSchemeHandler_virtualbase_event(self.h, event.h)
 
-type QWebEngineUrlSchemeHandlereventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QWebEngineUrlSchemeHandler, slot: proc(super: QWebEngineUrlSchemeHandlereventBase, event: gen_qcoreevent.QEvent): bool) =
+type QWebEngineUrlSchemeHandlereventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, slot: QWebEngineUrlSchemeHandlereventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineUrlSchemeHandlereventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QWebEngineUrlSchemeHandlereventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineUrlSchemeHandler_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineUrlSchemeHandler_event(self: ptr cQWebEngineUrlSchemeHandler, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QWebEngineUrlSchemeHandler_event ".} =
-  type Cb = proc(super: QWebEngineUrlSchemeHandlereventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QWebEngineUrlSchemeHandler(h: self), event)
+  var nimfunc = cast[ptr QWebEngineUrlSchemeHandlereventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QWebEngineUrlSchemeHandler, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QWebEngineUrlSchemeHandlereventFilter*(self: gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQWebEngineUrlSchemeHandler_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QWebEngineUrlSchemeHandlereventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QWebEngineUrlSchemeHandler, slot: proc(super: QWebEngineUrlSchemeHandlereventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QWebEngineUrlSchemeHandlereventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, slot: QWebEngineUrlSchemeHandlereventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineUrlSchemeHandlereventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QWebEngineUrlSchemeHandlereventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineUrlSchemeHandler_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineUrlSchemeHandler_eventFilter(self: ptr cQWebEngineUrlSchemeHandler, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QWebEngineUrlSchemeHandler_eventFilter ".} =
-  type Cb = proc(super: QWebEngineUrlSchemeHandlereventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QWebEngineUrlSchemeHandler(h: self), watched, event)
+  var nimfunc = cast[ptr QWebEngineUrlSchemeHandlereventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QWebEngineUrlSchemeHandler, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QWebEngineUrlSchemeHandlertimerEvent*(self: gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, event: gen_qcoreevent.QTimerEvent): void =
 
   fQWebEngineUrlSchemeHandler_virtualbase_timerEvent(self.h, event.h)
 
-type QWebEngineUrlSchemeHandlertimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QWebEngineUrlSchemeHandler, slot: proc(super: QWebEngineUrlSchemeHandlertimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QWebEngineUrlSchemeHandlertimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, slot: QWebEngineUrlSchemeHandlertimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineUrlSchemeHandlertimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QWebEngineUrlSchemeHandlertimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineUrlSchemeHandler_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineUrlSchemeHandler_timerEvent(self: ptr cQWebEngineUrlSchemeHandler, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebEngineUrlSchemeHandler_timerEvent ".} =
-  type Cb = proc(super: QWebEngineUrlSchemeHandlertimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QWebEngineUrlSchemeHandler(h: self), event)
+  var nimfunc = cast[ptr QWebEngineUrlSchemeHandlertimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QWebEngineUrlSchemeHandler, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebEngineUrlSchemeHandlerchildEvent*(self: gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, event: gen_qcoreevent.QChildEvent): void =
 
   fQWebEngineUrlSchemeHandler_virtualbase_childEvent(self.h, event.h)
 
-type QWebEngineUrlSchemeHandlerchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QWebEngineUrlSchemeHandler, slot: proc(super: QWebEngineUrlSchemeHandlerchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QWebEngineUrlSchemeHandlerchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, slot: QWebEngineUrlSchemeHandlerchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineUrlSchemeHandlerchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QWebEngineUrlSchemeHandlerchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineUrlSchemeHandler_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineUrlSchemeHandler_childEvent(self: ptr cQWebEngineUrlSchemeHandler, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebEngineUrlSchemeHandler_childEvent ".} =
-  type Cb = proc(super: QWebEngineUrlSchemeHandlerchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QWebEngineUrlSchemeHandler(h: self), event)
+  var nimfunc = cast[ptr QWebEngineUrlSchemeHandlerchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QWebEngineUrlSchemeHandler, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebEngineUrlSchemeHandlercustomEvent*(self: gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, event: gen_qcoreevent.QEvent): void =
 
   fQWebEngineUrlSchemeHandler_virtualbase_customEvent(self.h, event.h)
 
-type QWebEngineUrlSchemeHandlercustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QWebEngineUrlSchemeHandler, slot: proc(super: QWebEngineUrlSchemeHandlercustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QWebEngineUrlSchemeHandlercustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, slot: QWebEngineUrlSchemeHandlercustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineUrlSchemeHandlercustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QWebEngineUrlSchemeHandlercustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineUrlSchemeHandler_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineUrlSchemeHandler_customEvent(self: ptr cQWebEngineUrlSchemeHandler, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebEngineUrlSchemeHandler_customEvent ".} =
-  type Cb = proc(super: QWebEngineUrlSchemeHandlercustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QWebEngineUrlSchemeHandler(h: self), event)
+  var nimfunc = cast[ptr QWebEngineUrlSchemeHandlercustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QWebEngineUrlSchemeHandler, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QWebEngineUrlSchemeHandlerconnectNotify*(self: gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQWebEngineUrlSchemeHandler_virtualbase_connectNotify(self.h, signal.h)
 
-type QWebEngineUrlSchemeHandlerconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QWebEngineUrlSchemeHandler, slot: proc(super: QWebEngineUrlSchemeHandlerconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QWebEngineUrlSchemeHandlerconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, slot: QWebEngineUrlSchemeHandlerconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineUrlSchemeHandlerconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QWebEngineUrlSchemeHandlerconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineUrlSchemeHandler_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineUrlSchemeHandler_connectNotify(self: ptr cQWebEngineUrlSchemeHandler, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QWebEngineUrlSchemeHandler_connectNotify ".} =
-  type Cb = proc(super: QWebEngineUrlSchemeHandlerconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QWebEngineUrlSchemeHandler(h: self), signal)
+  var nimfunc = cast[ptr QWebEngineUrlSchemeHandlerconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QWebEngineUrlSchemeHandler, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QWebEngineUrlSchemeHandlerdisconnectNotify*(self: gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQWebEngineUrlSchemeHandler_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QWebEngineUrlSchemeHandlerdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QWebEngineUrlSchemeHandler, slot: proc(super: QWebEngineUrlSchemeHandlerdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QWebEngineUrlSchemeHandlerdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, slot: QWebEngineUrlSchemeHandlerdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineUrlSchemeHandlerdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QWebEngineUrlSchemeHandlerdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineUrlSchemeHandler_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineUrlSchemeHandler_disconnectNotify(self: ptr cQWebEngineUrlSchemeHandler, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QWebEngineUrlSchemeHandler_disconnectNotify ".} =
-  type Cb = proc(super: QWebEngineUrlSchemeHandlerdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QWebEngineUrlSchemeHandler(h: self), signal)
+  var nimfunc = cast[ptr QWebEngineUrlSchemeHandlerdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QWebEngineUrlSchemeHandler): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQWebEngineUrlSchemeHandler_staticMetaObject())
-proc delete*(self: QWebEngineUrlSchemeHandler) =
+proc delete*(self: gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler) =
   fcQWebEngineUrlSchemeHandler_delete(self.h)

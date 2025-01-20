@@ -181,7 +181,7 @@ func (this *QGraphicsEffect) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QGraphicsEffect_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QGraphicsEffect) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QGraphicsEffect) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QGraphicsEffect_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -208,7 +208,7 @@ func (this *QGraphicsEffect) callVirtualBase_Metacast(param1 string) unsafe.Poin
 	return (unsafe.Pointer)(C.QGraphicsEffect_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QGraphicsEffect) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QGraphicsEffect) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QGraphicsEffect_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -698,7 +698,7 @@ func (this *QGraphicsColorizeEffect) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QGraphicsColorizeEffect_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QGraphicsColorizeEffect) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QGraphicsColorizeEffect) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QGraphicsColorizeEffect_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -725,7 +725,7 @@ func (this *QGraphicsColorizeEffect) callVirtualBase_Metacast(param1 string) uns
 	return (unsafe.Pointer)(C.QGraphicsColorizeEffect_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QGraphicsColorizeEffect) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QGraphicsColorizeEffect) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QGraphicsColorizeEffect_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1225,7 +1225,7 @@ func (this *QGraphicsBlurEffect) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QGraphicsBlurEffect_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QGraphicsBlurEffect) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QGraphicsBlurEffect) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QGraphicsBlurEffect_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1252,7 +1252,7 @@ func (this *QGraphicsBlurEffect) callVirtualBase_Metacast(param1 string) unsafe.
 	return (unsafe.Pointer)(C.QGraphicsBlurEffect_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QGraphicsBlurEffect) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QGraphicsBlurEffect) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QGraphicsBlurEffect_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1808,7 +1808,7 @@ func (this *QGraphicsDropShadowEffect) callVirtualBase_MetaObject() *QMetaObject
 	return newQMetaObject(C.QGraphicsDropShadowEffect_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QGraphicsDropShadowEffect) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QGraphicsDropShadowEffect) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QGraphicsDropShadowEffect_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1835,7 +1835,7 @@ func (this *QGraphicsDropShadowEffect) callVirtualBase_Metacast(param1 string) u
 	return (unsafe.Pointer)(C.QGraphicsDropShadowEffect_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QGraphicsDropShadowEffect) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QGraphicsDropShadowEffect) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QGraphicsDropShadowEffect_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2331,7 +2331,7 @@ func (this *QGraphicsOpacityEffect) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QGraphicsOpacityEffect_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QGraphicsOpacityEffect) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QGraphicsOpacityEffect) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QGraphicsOpacityEffect_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2358,7 +2358,7 @@ func (this *QGraphicsOpacityEffect) callVirtualBase_Metacast(param1 string) unsa
 	return (unsafe.Pointer)(C.QGraphicsOpacityEffect_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QGraphicsOpacityEffect) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QGraphicsOpacityEffect) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QGraphicsOpacityEffect_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

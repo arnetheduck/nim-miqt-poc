@@ -41,14 +41,12 @@ import
   gen_qcoreevent,
   gen_qgraphicslayout,
   gen_qgraphicslayoutitem,
-  gen_qnamespace,
   gen_qrect,
   gen_qsize
 export
   gen_qcoreevent,
   gen_qgraphicslayout,
   gen_qgraphicslayoutitem,
-  gen_qnamespace,
   gen_qrect,
   gen_qsize
 
@@ -126,363 +124,328 @@ proc fcQGraphicsGridLayout_override_virtual_isEmpty(self: pointer, slot: int) {.
 proc fcQGraphicsGridLayout_delete(self: pointer) {.importc: "QGraphicsGridLayout_delete".}
 
 
-func init*(T: type QGraphicsGridLayout, h: ptr cQGraphicsGridLayout): QGraphicsGridLayout =
+func init*(T: type gen_qgraphicsgridlayout_types.QGraphicsGridLayout, h: ptr cQGraphicsGridLayout): gen_qgraphicsgridlayout_types.QGraphicsGridLayout =
   T(h: h)
-proc create*(T: type QGraphicsGridLayout, ): QGraphicsGridLayout =
+proc create*(T: type gen_qgraphicsgridlayout_types.QGraphicsGridLayout, ): gen_qgraphicsgridlayout_types.QGraphicsGridLayout =
 
-  QGraphicsGridLayout.init(fcQGraphicsGridLayout_new())
-proc create*(T: type QGraphicsGridLayout, parent: gen_qgraphicslayoutitem.QGraphicsLayoutItem): QGraphicsGridLayout =
+  gen_qgraphicsgridlayout_types.QGraphicsGridLayout.init(fcQGraphicsGridLayout_new())
+proc create*(T: type gen_qgraphicsgridlayout_types.QGraphicsGridLayout, parent: gen_qgraphicslayoutitem.QGraphicsLayoutItem): gen_qgraphicsgridlayout_types.QGraphicsGridLayout =
 
-  QGraphicsGridLayout.init(fcQGraphicsGridLayout_new2(parent.h))
-proc addItem*(self: QGraphicsGridLayout, item: gen_qgraphicslayoutitem.QGraphicsLayoutItem, row: cint, column: cint, rowSpan: cint, columnSpan: cint): void =
+  gen_qgraphicsgridlayout_types.QGraphicsGridLayout.init(fcQGraphicsGridLayout_new2(parent.h))
+proc addItem*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, item: gen_qgraphicslayoutitem.QGraphicsLayoutItem, row: cint, column: cint, rowSpan: cint, columnSpan: cint): void =
 
   fcQGraphicsGridLayout_addItem(self.h, item.h, row, column, rowSpan, columnSpan)
 
-proc addItem2*(self: QGraphicsGridLayout, item: gen_qgraphicslayoutitem.QGraphicsLayoutItem, row: cint, column: cint): void =
+proc addItem2*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, item: gen_qgraphicslayoutitem.QGraphicsLayoutItem, row: cint, column: cint): void =
 
   fcQGraphicsGridLayout_addItem2(self.h, item.h, row, column)
 
-proc setHorizontalSpacing*(self: QGraphicsGridLayout, spacing: float64): void =
+proc setHorizontalSpacing*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, spacing: float64): void =
 
   fcQGraphicsGridLayout_setHorizontalSpacing(self.h, spacing)
 
-proc horizontalSpacing*(self: QGraphicsGridLayout, ): float64 =
+proc horizontalSpacing*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, ): float64 =
 
   fcQGraphicsGridLayout_horizontalSpacing(self.h)
 
-proc setVerticalSpacing*(self: QGraphicsGridLayout, spacing: float64): void =
+proc setVerticalSpacing*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, spacing: float64): void =
 
   fcQGraphicsGridLayout_setVerticalSpacing(self.h, spacing)
 
-proc verticalSpacing*(self: QGraphicsGridLayout, ): float64 =
+proc verticalSpacing*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, ): float64 =
 
   fcQGraphicsGridLayout_verticalSpacing(self.h)
 
-proc setSpacing*(self: QGraphicsGridLayout, spacing: float64): void =
+proc setSpacing*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, spacing: float64): void =
 
   fcQGraphicsGridLayout_setSpacing(self.h, spacing)
 
-proc setRowSpacing*(self: QGraphicsGridLayout, row: cint, spacing: float64): void =
+proc setRowSpacing*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, row: cint, spacing: float64): void =
 
   fcQGraphicsGridLayout_setRowSpacing(self.h, row, spacing)
 
-proc rowSpacing*(self: QGraphicsGridLayout, row: cint): float64 =
+proc rowSpacing*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, row: cint): float64 =
 
   fcQGraphicsGridLayout_rowSpacing(self.h, row)
 
-proc setColumnSpacing*(self: QGraphicsGridLayout, column: cint, spacing: float64): void =
+proc setColumnSpacing*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, column: cint, spacing: float64): void =
 
   fcQGraphicsGridLayout_setColumnSpacing(self.h, column, spacing)
 
-proc columnSpacing*(self: QGraphicsGridLayout, column: cint): float64 =
+proc columnSpacing*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, column: cint): float64 =
 
   fcQGraphicsGridLayout_columnSpacing(self.h, column)
 
-proc setRowStretchFactor*(self: QGraphicsGridLayout, row: cint, stretch: cint): void =
+proc setRowStretchFactor*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, row: cint, stretch: cint): void =
 
   fcQGraphicsGridLayout_setRowStretchFactor(self.h, row, stretch)
 
-proc rowStretchFactor*(self: QGraphicsGridLayout, row: cint): cint =
+proc rowStretchFactor*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, row: cint): cint =
 
   fcQGraphicsGridLayout_rowStretchFactor(self.h, row)
 
-proc setColumnStretchFactor*(self: QGraphicsGridLayout, column: cint, stretch: cint): void =
+proc setColumnStretchFactor*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, column: cint, stretch: cint): void =
 
   fcQGraphicsGridLayout_setColumnStretchFactor(self.h, column, stretch)
 
-proc columnStretchFactor*(self: QGraphicsGridLayout, column: cint): cint =
+proc columnStretchFactor*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, column: cint): cint =
 
   fcQGraphicsGridLayout_columnStretchFactor(self.h, column)
 
-proc setRowMinimumHeight*(self: QGraphicsGridLayout, row: cint, height: float64): void =
+proc setRowMinimumHeight*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, row: cint, height: float64): void =
 
   fcQGraphicsGridLayout_setRowMinimumHeight(self.h, row, height)
 
-proc rowMinimumHeight*(self: QGraphicsGridLayout, row: cint): float64 =
+proc rowMinimumHeight*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, row: cint): float64 =
 
   fcQGraphicsGridLayout_rowMinimumHeight(self.h, row)
 
-proc setRowPreferredHeight*(self: QGraphicsGridLayout, row: cint, height: float64): void =
+proc setRowPreferredHeight*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, row: cint, height: float64): void =
 
   fcQGraphicsGridLayout_setRowPreferredHeight(self.h, row, height)
 
-proc rowPreferredHeight*(self: QGraphicsGridLayout, row: cint): float64 =
+proc rowPreferredHeight*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, row: cint): float64 =
 
   fcQGraphicsGridLayout_rowPreferredHeight(self.h, row)
 
-proc setRowMaximumHeight*(self: QGraphicsGridLayout, row: cint, height: float64): void =
+proc setRowMaximumHeight*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, row: cint, height: float64): void =
 
   fcQGraphicsGridLayout_setRowMaximumHeight(self.h, row, height)
 
-proc rowMaximumHeight*(self: QGraphicsGridLayout, row: cint): float64 =
+proc rowMaximumHeight*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, row: cint): float64 =
 
   fcQGraphicsGridLayout_rowMaximumHeight(self.h, row)
 
-proc setRowFixedHeight*(self: QGraphicsGridLayout, row: cint, height: float64): void =
+proc setRowFixedHeight*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, row: cint, height: float64): void =
 
   fcQGraphicsGridLayout_setRowFixedHeight(self.h, row, height)
 
-proc setColumnMinimumWidth*(self: QGraphicsGridLayout, column: cint, width: float64): void =
+proc setColumnMinimumWidth*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, column: cint, width: float64): void =
 
   fcQGraphicsGridLayout_setColumnMinimumWidth(self.h, column, width)
 
-proc columnMinimumWidth*(self: QGraphicsGridLayout, column: cint): float64 =
+proc columnMinimumWidth*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, column: cint): float64 =
 
   fcQGraphicsGridLayout_columnMinimumWidth(self.h, column)
 
-proc setColumnPreferredWidth*(self: QGraphicsGridLayout, column: cint, width: float64): void =
+proc setColumnPreferredWidth*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, column: cint, width: float64): void =
 
   fcQGraphicsGridLayout_setColumnPreferredWidth(self.h, column, width)
 
-proc columnPreferredWidth*(self: QGraphicsGridLayout, column: cint): float64 =
+proc columnPreferredWidth*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, column: cint): float64 =
 
   fcQGraphicsGridLayout_columnPreferredWidth(self.h, column)
 
-proc setColumnMaximumWidth*(self: QGraphicsGridLayout, column: cint, width: float64): void =
+proc setColumnMaximumWidth*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, column: cint, width: float64): void =
 
   fcQGraphicsGridLayout_setColumnMaximumWidth(self.h, column, width)
 
-proc columnMaximumWidth*(self: QGraphicsGridLayout, column: cint): float64 =
+proc columnMaximumWidth*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, column: cint): float64 =
 
   fcQGraphicsGridLayout_columnMaximumWidth(self.h, column)
 
-proc setColumnFixedWidth*(self: QGraphicsGridLayout, column: cint, width: float64): void =
+proc setColumnFixedWidth*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, column: cint, width: float64): void =
 
   fcQGraphicsGridLayout_setColumnFixedWidth(self.h, column, width)
 
-proc setRowAlignment*(self: QGraphicsGridLayout, row: cint, alignment: gen_qnamespace.AlignmentFlag): void =
+proc setRowAlignment*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, row: cint, alignment: cint): void =
 
   fcQGraphicsGridLayout_setRowAlignment(self.h, row, cint(alignment))
 
-proc rowAlignment*(self: QGraphicsGridLayout, row: cint): gen_qnamespace.AlignmentFlag =
+proc rowAlignment*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, row: cint): cint =
 
-  gen_qnamespace.AlignmentFlag(fcQGraphicsGridLayout_rowAlignment(self.h, row))
+  cint(fcQGraphicsGridLayout_rowAlignment(self.h, row))
 
-proc setColumnAlignment*(self: QGraphicsGridLayout, column: cint, alignment: gen_qnamespace.AlignmentFlag): void =
+proc setColumnAlignment*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, column: cint, alignment: cint): void =
 
   fcQGraphicsGridLayout_setColumnAlignment(self.h, column, cint(alignment))
 
-proc columnAlignment*(self: QGraphicsGridLayout, column: cint): gen_qnamespace.AlignmentFlag =
+proc columnAlignment*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, column: cint): cint =
 
-  gen_qnamespace.AlignmentFlag(fcQGraphicsGridLayout_columnAlignment(self.h, column))
+  cint(fcQGraphicsGridLayout_columnAlignment(self.h, column))
 
-proc setAlignment*(self: QGraphicsGridLayout, item: gen_qgraphicslayoutitem.QGraphicsLayoutItem, alignment: gen_qnamespace.AlignmentFlag): void =
+proc setAlignment*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, item: gen_qgraphicslayoutitem.QGraphicsLayoutItem, alignment: cint): void =
 
   fcQGraphicsGridLayout_setAlignment(self.h, item.h, cint(alignment))
 
-proc alignment*(self: QGraphicsGridLayout, item: gen_qgraphicslayoutitem.QGraphicsLayoutItem): gen_qnamespace.AlignmentFlag =
+proc alignment*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, item: gen_qgraphicslayoutitem.QGraphicsLayoutItem): cint =
 
-  gen_qnamespace.AlignmentFlag(fcQGraphicsGridLayout_alignment(self.h, item.h))
+  cint(fcQGraphicsGridLayout_alignment(self.h, item.h))
 
-proc rowCount*(self: QGraphicsGridLayout, ): cint =
+proc rowCount*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, ): cint =
 
   fcQGraphicsGridLayout_rowCount(self.h)
 
-proc columnCount*(self: QGraphicsGridLayout, ): cint =
+proc columnCount*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, ): cint =
 
   fcQGraphicsGridLayout_columnCount(self.h)
 
-proc itemAt*(self: QGraphicsGridLayout, row: cint, column: cint): gen_qgraphicslayoutitem.QGraphicsLayoutItem =
+proc itemAt*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, row: cint, column: cint): gen_qgraphicslayoutitem.QGraphicsLayoutItem =
 
   gen_qgraphicslayoutitem.QGraphicsLayoutItem(h: fcQGraphicsGridLayout_itemAt(self.h, row, column))
 
-proc count*(self: QGraphicsGridLayout, ): cint =
+proc count*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, ): cint =
 
   fcQGraphicsGridLayout_count(self.h)
 
-proc itemAtWithIndex*(self: QGraphicsGridLayout, index: cint): gen_qgraphicslayoutitem.QGraphicsLayoutItem =
+proc itemAtWithIndex*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, index: cint): gen_qgraphicslayoutitem.QGraphicsLayoutItem =
 
   gen_qgraphicslayoutitem.QGraphicsLayoutItem(h: fcQGraphicsGridLayout_itemAtWithIndex(self.h, index))
 
-proc removeAt*(self: QGraphicsGridLayout, index: cint): void =
+proc removeAt*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, index: cint): void =
 
   fcQGraphicsGridLayout_removeAt(self.h, index)
 
-proc removeItem*(self: QGraphicsGridLayout, item: gen_qgraphicslayoutitem.QGraphicsLayoutItem): void =
+proc removeItem*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, item: gen_qgraphicslayoutitem.QGraphicsLayoutItem): void =
 
   fcQGraphicsGridLayout_removeItem(self.h, item.h)
 
-proc invalidate*(self: QGraphicsGridLayout, ): void =
+proc invalidate*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, ): void =
 
   fcQGraphicsGridLayout_invalidate(self.h)
 
-proc setGeometry*(self: QGraphicsGridLayout, rect: gen_qrect.QRectF): void =
+proc setGeometry*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, rect: gen_qrect.QRectF): void =
 
   fcQGraphicsGridLayout_setGeometry(self.h, rect.h)
 
-proc sizeHint*(self: QGraphicsGridLayout, which: gen_qnamespace.SizeHint, constraint: gen_qsize.QSizeF): gen_qsize.QSizeF =
+proc sizeHint*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, which: cint, constraint: gen_qsize.QSizeF): gen_qsize.QSizeF =
 
   gen_qsize.QSizeF(h: fcQGraphicsGridLayout_sizeHint(self.h, cint(which), constraint.h))
 
-proc addItem6*(self: QGraphicsGridLayout, item: gen_qgraphicslayoutitem.QGraphicsLayoutItem, row: cint, column: cint, rowSpan: cint, columnSpan: cint, alignment: gen_qnamespace.AlignmentFlag): void =
+proc addItem6*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, item: gen_qgraphicslayoutitem.QGraphicsLayoutItem, row: cint, column: cint, rowSpan: cint, columnSpan: cint, alignment: cint): void =
 
   fcQGraphicsGridLayout_addItem6(self.h, item.h, row, column, rowSpan, columnSpan, cint(alignment))
 
-proc addItem4*(self: QGraphicsGridLayout, item: gen_qgraphicslayoutitem.QGraphicsLayoutItem, row: cint, column: cint, alignment: gen_qnamespace.AlignmentFlag): void =
+proc addItem4*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, item: gen_qgraphicslayoutitem.QGraphicsLayoutItem, row: cint, column: cint, alignment: cint): void =
 
   fcQGraphicsGridLayout_addItem4(self.h, item.h, row, column, cint(alignment))
 
-proc callVirtualBase_count(self: QGraphicsGridLayout, ): cint =
-
+proc QGraphicsGridLayoutcount*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, ): cint =
 
   fQGraphicsGridLayout_virtualbase_count(self.h)
 
-type QGraphicsGridLayoutcountBase* = proc(): cint
-proc oncount*(self: QGraphicsGridLayout, slot: proc(super: QGraphicsGridLayoutcountBase): cint) =
+type QGraphicsGridLayoutcountProc* = proc(): cint
+proc oncount*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, slot: QGraphicsGridLayoutcountProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsGridLayoutcountBase): cint
-  var tmp = new Cb
+  var tmp = new QGraphicsGridLayoutcountProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsGridLayout_override_virtual_count(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsGridLayout_count(self: ptr cQGraphicsGridLayout, slot: int): cint {.exportc: "miqt_exec_callback_QGraphicsGridLayout_count ".} =
-  type Cb = proc(super: QGraphicsGridLayoutcountBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_count(QGraphicsGridLayout(h: self), )
+  var nimfunc = cast[ptr QGraphicsGridLayoutcountProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_itemAtWithIndex(self: QGraphicsGridLayout, index: cint): gen_qgraphicslayoutitem.QGraphicsLayoutItem =
-
+proc QGraphicsGridLayoutitemAtWithIndex*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, index: cint): gen_qgraphicslayoutitem.QGraphicsLayoutItem =
 
   gen_qgraphicslayoutitem.QGraphicsLayoutItem(h: fQGraphicsGridLayout_virtualbase_itemAtWithIndex(self.h, index))
 
-type QGraphicsGridLayoutitemAtWithIndexBase* = proc(index: cint): gen_qgraphicslayoutitem.QGraphicsLayoutItem
-proc onitemAtWithIndex*(self: QGraphicsGridLayout, slot: proc(super: QGraphicsGridLayoutitemAtWithIndexBase, index: cint): gen_qgraphicslayoutitem.QGraphicsLayoutItem) =
+type QGraphicsGridLayoutitemAtWithIndexProc* = proc(index: cint): gen_qgraphicslayoutitem.QGraphicsLayoutItem
+proc onitemAtWithIndex*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, slot: QGraphicsGridLayoutitemAtWithIndexProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsGridLayoutitemAtWithIndexBase, index: cint): gen_qgraphicslayoutitem.QGraphicsLayoutItem
-  var tmp = new Cb
+  var tmp = new QGraphicsGridLayoutitemAtWithIndexProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsGridLayout_override_virtual_itemAtWithIndex(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsGridLayout_itemAtWithIndex(self: ptr cQGraphicsGridLayout, slot: int, index: cint): pointer {.exportc: "miqt_exec_callback_QGraphicsGridLayout_itemAtWithIndex ".} =
-  type Cb = proc(super: QGraphicsGridLayoutitemAtWithIndexBase, index: cint): gen_qgraphicslayoutitem.QGraphicsLayoutItem
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(index: cint): auto =
-    callVirtualBase_itemAtWithIndex(QGraphicsGridLayout(h: self), index)
+  var nimfunc = cast[ptr QGraphicsGridLayoutitemAtWithIndexProc](cast[pointer](slot))
   let slotval1 = index
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_removeAt(self: QGraphicsGridLayout, index: cint): void =
-
+proc QGraphicsGridLayoutremoveAt*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, index: cint): void =
 
   fQGraphicsGridLayout_virtualbase_removeAt(self.h, index)
 
-type QGraphicsGridLayoutremoveAtBase* = proc(index: cint): void
-proc onremoveAt*(self: QGraphicsGridLayout, slot: proc(super: QGraphicsGridLayoutremoveAtBase, index: cint): void) =
+type QGraphicsGridLayoutremoveAtProc* = proc(index: cint): void
+proc onremoveAt*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, slot: QGraphicsGridLayoutremoveAtProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsGridLayoutremoveAtBase, index: cint): void
-  var tmp = new Cb
+  var tmp = new QGraphicsGridLayoutremoveAtProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsGridLayout_override_virtual_removeAt(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsGridLayout_removeAt(self: ptr cQGraphicsGridLayout, slot: int, index: cint): void {.exportc: "miqt_exec_callback_QGraphicsGridLayout_removeAt ".} =
-  type Cb = proc(super: QGraphicsGridLayoutremoveAtBase, index: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(index: cint): auto =
-    callVirtualBase_removeAt(QGraphicsGridLayout(h: self), index)
+  var nimfunc = cast[ptr QGraphicsGridLayoutremoveAtProc](cast[pointer](slot))
   let slotval1 = index
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_invalidate(self: QGraphicsGridLayout, ): void =
-
+  nimfunc[](slotval1)
+proc QGraphicsGridLayoutinvalidate*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, ): void =
 
   fQGraphicsGridLayout_virtualbase_invalidate(self.h)
 
-type QGraphicsGridLayoutinvalidateBase* = proc(): void
-proc oninvalidate*(self: QGraphicsGridLayout, slot: proc(super: QGraphicsGridLayoutinvalidateBase): void) =
+type QGraphicsGridLayoutinvalidateProc* = proc(): void
+proc oninvalidate*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, slot: QGraphicsGridLayoutinvalidateProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsGridLayoutinvalidateBase): void
-  var tmp = new Cb
+  var tmp = new QGraphicsGridLayoutinvalidateProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsGridLayout_override_virtual_invalidate(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsGridLayout_invalidate(self: ptr cQGraphicsGridLayout, slot: int): void {.exportc: "miqt_exec_callback_QGraphicsGridLayout_invalidate ".} =
-  type Cb = proc(super: QGraphicsGridLayoutinvalidateBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_invalidate(QGraphicsGridLayout(h: self), )
+  var nimfunc = cast[ptr QGraphicsGridLayoutinvalidateProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_setGeometry(self: QGraphicsGridLayout, rect: gen_qrect.QRectF): void =
-
+  nimfunc[]()
+proc QGraphicsGridLayoutsetGeometry*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, rect: gen_qrect.QRectF): void =
 
   fQGraphicsGridLayout_virtualbase_setGeometry(self.h, rect.h)
 
-type QGraphicsGridLayoutsetGeometryBase* = proc(rect: gen_qrect.QRectF): void
-proc onsetGeometry*(self: QGraphicsGridLayout, slot: proc(super: QGraphicsGridLayoutsetGeometryBase, rect: gen_qrect.QRectF): void) =
+type QGraphicsGridLayoutsetGeometryProc* = proc(rect: gen_qrect.QRectF): void
+proc onsetGeometry*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, slot: QGraphicsGridLayoutsetGeometryProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsGridLayoutsetGeometryBase, rect: gen_qrect.QRectF): void
-  var tmp = new Cb
+  var tmp = new QGraphicsGridLayoutsetGeometryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsGridLayout_override_virtual_setGeometry(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsGridLayout_setGeometry(self: ptr cQGraphicsGridLayout, slot: int, rect: pointer): void {.exportc: "miqt_exec_callback_QGraphicsGridLayout_setGeometry ".} =
-  type Cb = proc(super: QGraphicsGridLayoutsetGeometryBase, rect: gen_qrect.QRectF): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(rect: gen_qrect.QRectF): auto =
-    callVirtualBase_setGeometry(QGraphicsGridLayout(h: self), rect)
+  var nimfunc = cast[ptr QGraphicsGridLayoutsetGeometryProc](cast[pointer](slot))
   let slotval1 = gen_qrect.QRectF(h: rect)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_sizeHint(self: QGraphicsGridLayout, which: gen_qnamespace.SizeHint, constraint: gen_qsize.QSizeF): gen_qsize.QSizeF =
-
+  nimfunc[](slotval1)
+proc QGraphicsGridLayoutsizeHint*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, which: cint, constraint: gen_qsize.QSizeF): gen_qsize.QSizeF =
 
   gen_qsize.QSizeF(h: fQGraphicsGridLayout_virtualbase_sizeHint(self.h, cint(which), constraint.h))
 
-type QGraphicsGridLayoutsizeHintBase* = proc(which: gen_qnamespace.SizeHint, constraint: gen_qsize.QSizeF): gen_qsize.QSizeF
-proc onsizeHint*(self: QGraphicsGridLayout, slot: proc(super: QGraphicsGridLayoutsizeHintBase, which: gen_qnamespace.SizeHint, constraint: gen_qsize.QSizeF): gen_qsize.QSizeF) =
+type QGraphicsGridLayoutsizeHintProc* = proc(which: cint, constraint: gen_qsize.QSizeF): gen_qsize.QSizeF
+proc onsizeHint*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, slot: QGraphicsGridLayoutsizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsGridLayoutsizeHintBase, which: gen_qnamespace.SizeHint, constraint: gen_qsize.QSizeF): gen_qsize.QSizeF
-  var tmp = new Cb
+  var tmp = new QGraphicsGridLayoutsizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsGridLayout_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsGridLayout_sizeHint(self: ptr cQGraphicsGridLayout, slot: int, which: cint, constraint: pointer): pointer {.exportc: "miqt_exec_callback_QGraphicsGridLayout_sizeHint ".} =
-  type Cb = proc(super: QGraphicsGridLayoutsizeHintBase, which: gen_qnamespace.SizeHint, constraint: gen_qsize.QSizeF): gen_qsize.QSizeF
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(which: gen_qnamespace.SizeHint, constraint: gen_qsize.QSizeF): auto =
-    callVirtualBase_sizeHint(QGraphicsGridLayout(h: self), which, constraint)
-  let slotval1 = gen_qnamespace.SizeHint(which)
+  var nimfunc = cast[ptr QGraphicsGridLayoutsizeHintProc](cast[pointer](slot))
+  let slotval1 = cint(which)
 
   let slotval2 = gen_qsize.QSizeF(h: constraint)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn.h
-proc callVirtualBase_getContentsMargins(self: QGraphicsGridLayout, left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): void =
-
+proc QGraphicsGridLayoutgetContentsMargins*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): void =
 
   fQGraphicsGridLayout_virtualbase_getContentsMargins(self.h, left, top, right, bottom)
 
-type QGraphicsGridLayoutgetContentsMarginsBase* = proc(left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): void
-proc ongetContentsMargins*(self: QGraphicsGridLayout, slot: proc(super: QGraphicsGridLayoutgetContentsMarginsBase, left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): void) =
+type QGraphicsGridLayoutgetContentsMarginsProc* = proc(left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): void
+proc ongetContentsMargins*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, slot: QGraphicsGridLayoutgetContentsMarginsProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsGridLayoutgetContentsMarginsBase, left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): void
-  var tmp = new Cb
+  var tmp = new QGraphicsGridLayoutgetContentsMarginsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsGridLayout_override_virtual_getContentsMargins(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsGridLayout_getContentsMargins(self: ptr cQGraphicsGridLayout, slot: int, left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): void {.exportc: "miqt_exec_callback_QGraphicsGridLayout_getContentsMargins ".} =
-  type Cb = proc(super: QGraphicsGridLayoutgetContentsMarginsBase, left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): auto =
-    callVirtualBase_getContentsMargins(QGraphicsGridLayout(h: self), left, top, right, bottom)
+  var nimfunc = cast[ptr QGraphicsGridLayoutgetContentsMarginsProc](cast[pointer](slot))
   let slotval1 = left
 
   let slotval2 = top
@@ -492,73 +455,58 @@ proc miqt_exec_callback_QGraphicsGridLayout_getContentsMargins(self: ptr cQGraph
   let slotval4 = bottom
 
 
-  nimfunc[](superCall, slotval1, slotval2, slotval3, slotval4)
-proc callVirtualBase_updateGeometry(self: QGraphicsGridLayout, ): void =
-
+  nimfunc[](slotval1, slotval2, slotval3, slotval4)
+proc QGraphicsGridLayoutupdateGeometry*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, ): void =
 
   fQGraphicsGridLayout_virtualbase_updateGeometry(self.h)
 
-type QGraphicsGridLayoutupdateGeometryBase* = proc(): void
-proc onupdateGeometry*(self: QGraphicsGridLayout, slot: proc(super: QGraphicsGridLayoutupdateGeometryBase): void) =
+type QGraphicsGridLayoutupdateGeometryProc* = proc(): void
+proc onupdateGeometry*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, slot: QGraphicsGridLayoutupdateGeometryProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsGridLayoutupdateGeometryBase): void
-  var tmp = new Cb
+  var tmp = new QGraphicsGridLayoutupdateGeometryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsGridLayout_override_virtual_updateGeometry(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsGridLayout_updateGeometry(self: ptr cQGraphicsGridLayout, slot: int): void {.exportc: "miqt_exec_callback_QGraphicsGridLayout_updateGeometry ".} =
-  type Cb = proc(super: QGraphicsGridLayoutupdateGeometryBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_updateGeometry(QGraphicsGridLayout(h: self), )
+  var nimfunc = cast[ptr QGraphicsGridLayoutupdateGeometryProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_widgetEvent(self: QGraphicsGridLayout, e: gen_qcoreevent.QEvent): void =
-
+  nimfunc[]()
+proc QGraphicsGridLayoutwidgetEvent*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, e: gen_qcoreevent.QEvent): void =
 
   fQGraphicsGridLayout_virtualbase_widgetEvent(self.h, e.h)
 
-type QGraphicsGridLayoutwidgetEventBase* = proc(e: gen_qcoreevent.QEvent): void
-proc onwidgetEvent*(self: QGraphicsGridLayout, slot: proc(super: QGraphicsGridLayoutwidgetEventBase, e: gen_qcoreevent.QEvent): void) =
+type QGraphicsGridLayoutwidgetEventProc* = proc(e: gen_qcoreevent.QEvent): void
+proc onwidgetEvent*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, slot: QGraphicsGridLayoutwidgetEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsGridLayoutwidgetEventBase, e: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QGraphicsGridLayoutwidgetEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsGridLayout_override_virtual_widgetEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsGridLayout_widgetEvent(self: ptr cQGraphicsGridLayout, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QGraphicsGridLayout_widgetEvent ".} =
-  type Cb = proc(super: QGraphicsGridLayoutwidgetEventBase, e: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_widgetEvent(QGraphicsGridLayout(h: self), e)
+  var nimfunc = cast[ptr QGraphicsGridLayoutwidgetEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_isEmpty(self: QGraphicsGridLayout, ): bool =
-
+  nimfunc[](slotval1)
+proc QGraphicsGridLayoutisEmpty*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, ): bool =
 
   fQGraphicsGridLayout_virtualbase_isEmpty(self.h)
 
-type QGraphicsGridLayoutisEmptyBase* = proc(): bool
-proc onisEmpty*(self: QGraphicsGridLayout, slot: proc(super: QGraphicsGridLayoutisEmptyBase): bool) =
+type QGraphicsGridLayoutisEmptyProc* = proc(): bool
+proc onisEmpty*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout, slot: QGraphicsGridLayoutisEmptyProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsGridLayoutisEmptyBase): bool
-  var tmp = new Cb
+  var tmp = new QGraphicsGridLayoutisEmptyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsGridLayout_override_virtual_isEmpty(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsGridLayout_isEmpty(self: ptr cQGraphicsGridLayout, slot: int): bool {.exportc: "miqt_exec_callback_QGraphicsGridLayout_isEmpty ".} =
-  type Cb = proc(super: QGraphicsGridLayoutisEmptyBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_isEmpty(QGraphicsGridLayout(h: self), )
+  var nimfunc = cast[ptr QGraphicsGridLayoutisEmptyProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc delete*(self: QGraphicsGridLayout) =
+proc delete*(self: gen_qgraphicsgridlayout_types.QGraphicsGridLayout) =
   fcQGraphicsGridLayout_delete(self.h)

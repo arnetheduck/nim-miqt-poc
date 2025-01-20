@@ -96,382 +96,317 @@ proc fcQsciMacro_staticMetaObject(): pointer {.importc: "QsciMacro_staticMetaObj
 proc fcQsciMacro_delete(self: pointer) {.importc: "QsciMacro_delete".}
 
 
-func init*(T: type QsciMacro, h: ptr cQsciMacro): QsciMacro =
+func init*(T: type gen_qscimacro_types.QsciMacro, h: ptr cQsciMacro): gen_qscimacro_types.QsciMacro =
   T(h: h)
-proc create*(T: type QsciMacro, parent: gen_qsciscintilla.QsciScintilla): QsciMacro =
+proc create*(T: type gen_qscimacro_types.QsciMacro, parent: gen_qsciscintilla.QsciScintilla): gen_qscimacro_types.QsciMacro =
 
-  QsciMacro.init(fcQsciMacro_new(parent.h))
-proc create*(T: type QsciMacro, asc: string, parent: gen_qsciscintilla.QsciScintilla): QsciMacro =
+  gen_qscimacro_types.QsciMacro.init(fcQsciMacro_new(parent.h))
+proc create*(T: type gen_qscimacro_types.QsciMacro, asc: string, parent: gen_qsciscintilla.QsciScintilla): gen_qscimacro_types.QsciMacro =
 
-  QsciMacro.init(fcQsciMacro_new2(struct_miqt_string(data: asc, len: csize_t(len(asc))), parent.h))
-proc metaObject*(self: QsciMacro, ): gen_qobjectdefs.QMetaObject =
+  gen_qscimacro_types.QsciMacro.init(fcQsciMacro_new2(struct_miqt_string(data: asc, len: csize_t(len(asc))), parent.h))
+proc metaObject*(self: gen_qscimacro_types.QsciMacro, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQsciMacro_metaObject(self.h))
 
-proc metacast*(self: QsciMacro, param1: cstring): pointer =
+proc metacast*(self: gen_qscimacro_types.QsciMacro, param1: cstring): pointer =
 
   fcQsciMacro_metacast(self.h, param1)
 
-proc metacall*(self: QsciMacro, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qscimacro_types.QsciMacro, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQsciMacro_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QsciMacro, s: cstring): string =
+proc tr*(_: type gen_qscimacro_types.QsciMacro, s: cstring): string =
 
   let v_ms = fcQsciMacro_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc clear*(self: QsciMacro, ): void =
+proc clear*(self: gen_qscimacro_types.QsciMacro, ): void =
 
   fcQsciMacro_clear(self.h)
 
-proc load*(self: QsciMacro, asc: string): bool =
+proc load*(self: gen_qscimacro_types.QsciMacro, asc: string): bool =
 
   fcQsciMacro_load(self.h, struct_miqt_string(data: asc, len: csize_t(len(asc))))
 
-proc save*(self: QsciMacro, ): string =
+proc save*(self: gen_qscimacro_types.QsciMacro, ): string =
 
   let v_ms = fcQsciMacro_save(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc play*(self: QsciMacro, ): void =
+proc play*(self: gen_qscimacro_types.QsciMacro, ): void =
 
   fcQsciMacro_play(self.h)
 
-proc startRecording*(self: QsciMacro, ): void =
+proc startRecording*(self: gen_qscimacro_types.QsciMacro, ): void =
 
   fcQsciMacro_startRecording(self.h)
 
-proc endRecording*(self: QsciMacro, ): void =
+proc endRecording*(self: gen_qscimacro_types.QsciMacro, ): void =
 
   fcQsciMacro_endRecording(self.h)
 
-proc tr2*(_: type QsciMacro, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qscimacro_types.QsciMacro, s: cstring, c: cstring): string =
 
   let v_ms = fcQsciMacro_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QsciMacro, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qscimacro_types.QsciMacro, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQsciMacro_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QsciMacro, ): gen_qobjectdefs.QMetaObject =
-
+proc QsciMacrometaObject*(self: gen_qscimacro_types.QsciMacro, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQsciMacro_virtualbase_metaObject(self.h))
 
-type QsciMacrometaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QsciMacro, slot: proc(super: QsciMacrometaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QsciMacrometaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qscimacro_types.QsciMacro, slot: QsciMacrometaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciMacrometaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QsciMacrometaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciMacro_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciMacro_metaObject(self: ptr cQsciMacro, slot: int): pointer {.exportc: "miqt_exec_callback_QsciMacro_metaObject ".} =
-  type Cb = proc(super: QsciMacrometaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QsciMacro(h: self), )
+  var nimfunc = cast[ptr QsciMacrometaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QsciMacro, param1: cstring): pointer =
-
+proc QsciMacrometacast*(self: gen_qscimacro_types.QsciMacro, param1: cstring): pointer =
 
   fQsciMacro_virtualbase_metacast(self.h, param1)
 
-type QsciMacrometacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QsciMacro, slot: proc(super: QsciMacrometacastBase, param1: cstring): pointer) =
+type QsciMacrometacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qscimacro_types.QsciMacro, slot: QsciMacrometacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciMacrometacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QsciMacrometacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciMacro_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciMacro_metacast(self: ptr cQsciMacro, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QsciMacro_metacast ".} =
-  type Cb = proc(super: QsciMacrometacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QsciMacro(h: self), param1)
+  var nimfunc = cast[ptr QsciMacrometacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QsciMacro, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QsciMacrometacall*(self: gen_qscimacro_types.QsciMacro, param1: cint, param2: cint, param3: pointer): cint =
 
   fQsciMacro_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QsciMacrometacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QsciMacro, slot: proc(super: QsciMacrometacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QsciMacrometacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qscimacro_types.QsciMacro, slot: QsciMacrometacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciMacrometacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QsciMacrometacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciMacro_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciMacro_metacall(self: ptr cQsciMacro, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QsciMacro_metacall ".} =
-  type Cb = proc(super: QsciMacrometacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QsciMacro(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QsciMacrometacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_play(self: QsciMacro, ): void =
-
+proc QsciMacroplay*(self: gen_qscimacro_types.QsciMacro, ): void =
 
   fQsciMacro_virtualbase_play(self.h)
 
-type QsciMacroplayBase* = proc(): void
-proc onplay*(self: QsciMacro, slot: proc(super: QsciMacroplayBase): void) =
+type QsciMacroplayProc* = proc(): void
+proc onplay*(self: gen_qscimacro_types.QsciMacro, slot: QsciMacroplayProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciMacroplayBase): void
-  var tmp = new Cb
+  var tmp = new QsciMacroplayProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciMacro_override_virtual_play(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciMacro_play(self: ptr cQsciMacro, slot: int): void {.exportc: "miqt_exec_callback_QsciMacro_play ".} =
-  type Cb = proc(super: QsciMacroplayBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_play(QsciMacro(h: self), )
+  var nimfunc = cast[ptr QsciMacroplayProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_startRecording(self: QsciMacro, ): void =
-
+  nimfunc[]()
+proc QsciMacrostartRecording*(self: gen_qscimacro_types.QsciMacro, ): void =
 
   fQsciMacro_virtualbase_startRecording(self.h)
 
-type QsciMacrostartRecordingBase* = proc(): void
-proc onstartRecording*(self: QsciMacro, slot: proc(super: QsciMacrostartRecordingBase): void) =
+type QsciMacrostartRecordingProc* = proc(): void
+proc onstartRecording*(self: gen_qscimacro_types.QsciMacro, slot: QsciMacrostartRecordingProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciMacrostartRecordingBase): void
-  var tmp = new Cb
+  var tmp = new QsciMacrostartRecordingProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciMacro_override_virtual_startRecording(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciMacro_startRecording(self: ptr cQsciMacro, slot: int): void {.exportc: "miqt_exec_callback_QsciMacro_startRecording ".} =
-  type Cb = proc(super: QsciMacrostartRecordingBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_startRecording(QsciMacro(h: self), )
+  var nimfunc = cast[ptr QsciMacrostartRecordingProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_endRecording(self: QsciMacro, ): void =
-
+  nimfunc[]()
+proc QsciMacroendRecording*(self: gen_qscimacro_types.QsciMacro, ): void =
 
   fQsciMacro_virtualbase_endRecording(self.h)
 
-type QsciMacroendRecordingBase* = proc(): void
-proc onendRecording*(self: QsciMacro, slot: proc(super: QsciMacroendRecordingBase): void) =
+type QsciMacroendRecordingProc* = proc(): void
+proc onendRecording*(self: gen_qscimacro_types.QsciMacro, slot: QsciMacroendRecordingProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciMacroendRecordingBase): void
-  var tmp = new Cb
+  var tmp = new QsciMacroendRecordingProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciMacro_override_virtual_endRecording(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciMacro_endRecording(self: ptr cQsciMacro, slot: int): void {.exportc: "miqt_exec_callback_QsciMacro_endRecording ".} =
-  type Cb = proc(super: QsciMacroendRecordingBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_endRecording(QsciMacro(h: self), )
+  var nimfunc = cast[ptr QsciMacroendRecordingProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_event(self: QsciMacro, event: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[]()
+proc QsciMacroevent*(self: gen_qscimacro_types.QsciMacro, event: gen_qcoreevent.QEvent): bool =
 
   fQsciMacro_virtualbase_event(self.h, event.h)
 
-type QsciMacroeventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QsciMacro, slot: proc(super: QsciMacroeventBase, event: gen_qcoreevent.QEvent): bool) =
+type QsciMacroeventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qscimacro_types.QsciMacro, slot: QsciMacroeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciMacroeventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QsciMacroeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciMacro_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciMacro_event(self: ptr cQsciMacro, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QsciMacro_event ".} =
-  type Cb = proc(super: QsciMacroeventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QsciMacro(h: self), event)
+  var nimfunc = cast[ptr QsciMacroeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QsciMacro, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QsciMacroeventFilter*(self: gen_qscimacro_types.QsciMacro, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQsciMacro_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QsciMacroeventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QsciMacro, slot: proc(super: QsciMacroeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QsciMacroeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qscimacro_types.QsciMacro, slot: QsciMacroeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciMacroeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QsciMacroeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciMacro_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciMacro_eventFilter(self: ptr cQsciMacro, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QsciMacro_eventFilter ".} =
-  type Cb = proc(super: QsciMacroeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QsciMacro(h: self), watched, event)
+  var nimfunc = cast[ptr QsciMacroeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QsciMacro, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QsciMacrotimerEvent*(self: gen_qscimacro_types.QsciMacro, event: gen_qcoreevent.QTimerEvent): void =
 
   fQsciMacro_virtualbase_timerEvent(self.h, event.h)
 
-type QsciMacrotimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QsciMacro, slot: proc(super: QsciMacrotimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QsciMacrotimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qscimacro_types.QsciMacro, slot: QsciMacrotimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciMacrotimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QsciMacrotimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciMacro_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciMacro_timerEvent(self: ptr cQsciMacro, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QsciMacro_timerEvent ".} =
-  type Cb = proc(super: QsciMacrotimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QsciMacro(h: self), event)
+  var nimfunc = cast[ptr QsciMacrotimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QsciMacro, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QsciMacrochildEvent*(self: gen_qscimacro_types.QsciMacro, event: gen_qcoreevent.QChildEvent): void =
 
   fQsciMacro_virtualbase_childEvent(self.h, event.h)
 
-type QsciMacrochildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QsciMacro, slot: proc(super: QsciMacrochildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QsciMacrochildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qscimacro_types.QsciMacro, slot: QsciMacrochildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciMacrochildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QsciMacrochildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciMacro_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciMacro_childEvent(self: ptr cQsciMacro, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QsciMacro_childEvent ".} =
-  type Cb = proc(super: QsciMacrochildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QsciMacro(h: self), event)
+  var nimfunc = cast[ptr QsciMacrochildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QsciMacro, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QsciMacrocustomEvent*(self: gen_qscimacro_types.QsciMacro, event: gen_qcoreevent.QEvent): void =
 
   fQsciMacro_virtualbase_customEvent(self.h, event.h)
 
-type QsciMacrocustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QsciMacro, slot: proc(super: QsciMacrocustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QsciMacrocustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qscimacro_types.QsciMacro, slot: QsciMacrocustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciMacrocustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QsciMacrocustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciMacro_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciMacro_customEvent(self: ptr cQsciMacro, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QsciMacro_customEvent ".} =
-  type Cb = proc(super: QsciMacrocustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QsciMacro(h: self), event)
+  var nimfunc = cast[ptr QsciMacrocustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QsciMacro, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QsciMacroconnectNotify*(self: gen_qscimacro_types.QsciMacro, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQsciMacro_virtualbase_connectNotify(self.h, signal.h)
 
-type QsciMacroconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QsciMacro, slot: proc(super: QsciMacroconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QsciMacroconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qscimacro_types.QsciMacro, slot: QsciMacroconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciMacroconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QsciMacroconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciMacro_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciMacro_connectNotify(self: ptr cQsciMacro, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QsciMacro_connectNotify ".} =
-  type Cb = proc(super: QsciMacroconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QsciMacro(h: self), signal)
+  var nimfunc = cast[ptr QsciMacroconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QsciMacro, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QsciMacrodisconnectNotify*(self: gen_qscimacro_types.QsciMacro, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQsciMacro_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QsciMacrodisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QsciMacro, slot: proc(super: QsciMacrodisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QsciMacrodisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qscimacro_types.QsciMacro, slot: QsciMacrodisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciMacrodisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QsciMacrodisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciMacro_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciMacro_disconnectNotify(self: ptr cQsciMacro, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QsciMacro_disconnectNotify ".} =
-  type Cb = proc(super: QsciMacrodisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QsciMacro(h: self), signal)
+  var nimfunc = cast[ptr QsciMacrodisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QsciMacro): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qscimacro_types.QsciMacro): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQsciMacro_staticMetaObject())
-proc delete*(self: QsciMacro) =
+proc delete*(self: gen_qscimacro_types.QsciMacro) =
   fcQsciMacro_delete(self.h)

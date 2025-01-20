@@ -38,11 +38,9 @@ import gen_qstringmatcher_types
 export gen_qstringmatcher_types
 
 import
-  gen_qchar,
-  gen_qnamespace
+  gen_qchar
 export
-  gen_qchar,
-  gen_qnamespace
+  gen_qchar
 
 type cQStringMatcher*{.exportc: "QStringMatcher", incompleteStruct.} = object
 
@@ -64,64 +62,64 @@ proc fcQStringMatcher_indexIn3(self: pointer, str: pointer, length: cint, fromVa
 proc fcQStringMatcher_delete(self: pointer) {.importc: "QStringMatcher_delete".}
 
 
-func init*(T: type QStringMatcher, h: ptr cQStringMatcher): QStringMatcher =
+func init*(T: type gen_qstringmatcher_types.QStringMatcher, h: ptr cQStringMatcher): gen_qstringmatcher_types.QStringMatcher =
   T(h: h)
-proc create*(T: type QStringMatcher, ): QStringMatcher =
+proc create*(T: type gen_qstringmatcher_types.QStringMatcher, ): gen_qstringmatcher_types.QStringMatcher =
 
-  QStringMatcher.init(fcQStringMatcher_new())
-proc create*(T: type QStringMatcher, pattern: string): QStringMatcher =
+  gen_qstringmatcher_types.QStringMatcher.init(fcQStringMatcher_new())
+proc create*(T: type gen_qstringmatcher_types.QStringMatcher, pattern: string): gen_qstringmatcher_types.QStringMatcher =
 
-  QStringMatcher.init(fcQStringMatcher_new2(struct_miqt_string(data: pattern, len: csize_t(len(pattern)))))
-proc create*(T: type QStringMatcher, uc: gen_qchar.QChar, len: cint): QStringMatcher =
+  gen_qstringmatcher_types.QStringMatcher.init(fcQStringMatcher_new2(struct_miqt_string(data: pattern, len: csize_t(len(pattern)))))
+proc create*(T: type gen_qstringmatcher_types.QStringMatcher, uc: gen_qchar.QChar, len: cint): gen_qstringmatcher_types.QStringMatcher =
 
-  QStringMatcher.init(fcQStringMatcher_new3(uc.h, len))
-proc create*(T: type QStringMatcher, other: QStringMatcher): QStringMatcher =
+  gen_qstringmatcher_types.QStringMatcher.init(fcQStringMatcher_new3(uc.h, len))
+proc create*(T: type gen_qstringmatcher_types.QStringMatcher, other: gen_qstringmatcher_types.QStringMatcher): gen_qstringmatcher_types.QStringMatcher =
 
-  QStringMatcher.init(fcQStringMatcher_new4(other.h))
-proc create*(T: type QStringMatcher, pattern: string, cs: gen_qnamespace.CaseSensitivity): QStringMatcher =
+  gen_qstringmatcher_types.QStringMatcher.init(fcQStringMatcher_new4(other.h))
+proc create*(T: type gen_qstringmatcher_types.QStringMatcher, pattern: string, cs: cint): gen_qstringmatcher_types.QStringMatcher =
 
-  QStringMatcher.init(fcQStringMatcher_new5(struct_miqt_string(data: pattern, len: csize_t(len(pattern))), cint(cs)))
-proc create*(T: type QStringMatcher, uc: gen_qchar.QChar, len: cint, cs: gen_qnamespace.CaseSensitivity): QStringMatcher =
+  gen_qstringmatcher_types.QStringMatcher.init(fcQStringMatcher_new5(struct_miqt_string(data: pattern, len: csize_t(len(pattern))), cint(cs)))
+proc create*(T: type gen_qstringmatcher_types.QStringMatcher, uc: gen_qchar.QChar, len: cint, cs: cint): gen_qstringmatcher_types.QStringMatcher =
 
-  QStringMatcher.init(fcQStringMatcher_new6(uc.h, len, cint(cs)))
-proc operatorAssign*(self: QStringMatcher, other: QStringMatcher): void =
+  gen_qstringmatcher_types.QStringMatcher.init(fcQStringMatcher_new6(uc.h, len, cint(cs)))
+proc operatorAssign*(self: gen_qstringmatcher_types.QStringMatcher, other: gen_qstringmatcher_types.QStringMatcher): void =
 
   fcQStringMatcher_operatorAssign(self.h, other.h)
 
-proc setPattern*(self: QStringMatcher, pattern: string): void =
+proc setPattern*(self: gen_qstringmatcher_types.QStringMatcher, pattern: string): void =
 
   fcQStringMatcher_setPattern(self.h, struct_miqt_string(data: pattern, len: csize_t(len(pattern))))
 
-proc setCaseSensitivity*(self: QStringMatcher, cs: gen_qnamespace.CaseSensitivity): void =
+proc setCaseSensitivity*(self: gen_qstringmatcher_types.QStringMatcher, cs: cint): void =
 
   fcQStringMatcher_setCaseSensitivity(self.h, cint(cs))
 
-proc indexIn*(self: QStringMatcher, str: string): cint =
+proc indexIn*(self: gen_qstringmatcher_types.QStringMatcher, str: string): cint =
 
   fcQStringMatcher_indexIn(self.h, struct_miqt_string(data: str, len: csize_t(len(str))))
 
-proc indexIn2*(self: QStringMatcher, str: gen_qchar.QChar, length: cint): cint =
+proc indexIn2*(self: gen_qstringmatcher_types.QStringMatcher, str: gen_qchar.QChar, length: cint): cint =
 
   fcQStringMatcher_indexIn2(self.h, str.h, length)
 
-proc pattern*(self: QStringMatcher, ): string =
+proc pattern*(self: gen_qstringmatcher_types.QStringMatcher, ): string =
 
   let v_ms = fcQStringMatcher_pattern(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc caseSensitivity*(self: QStringMatcher, ): gen_qnamespace.CaseSensitivity =
+proc caseSensitivity*(self: gen_qstringmatcher_types.QStringMatcher, ): cint =
 
-  gen_qnamespace.CaseSensitivity(fcQStringMatcher_caseSensitivity(self.h))
+  cint(fcQStringMatcher_caseSensitivity(self.h))
 
-proc indexIn22*(self: QStringMatcher, str: string, fromVal: cint): cint =
+proc indexIn22*(self: gen_qstringmatcher_types.QStringMatcher, str: string, fromVal: cint): cint =
 
   fcQStringMatcher_indexIn22(self.h, struct_miqt_string(data: str, len: csize_t(len(str))), fromVal)
 
-proc indexIn3*(self: QStringMatcher, str: gen_qchar.QChar, length: cint, fromVal: cint): cint =
+proc indexIn3*(self: gen_qstringmatcher_types.QStringMatcher, str: gen_qchar.QChar, length: cint, fromVal: cint): cint =
 
   fcQStringMatcher_indexIn3(self.h, str.h, length, fromVal)
 
-proc delete*(self: QStringMatcher) =
+proc delete*(self: gen_qstringmatcher_types.QStringMatcher) =
   fcQStringMatcher_delete(self.h)

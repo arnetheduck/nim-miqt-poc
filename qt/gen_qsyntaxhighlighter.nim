@@ -94,173 +94,156 @@ proc fcQSyntaxHighlighter_staticMetaObject(): pointer {.importc: "QSyntaxHighlig
 proc fcQSyntaxHighlighter_delete(self: pointer) {.importc: "QSyntaxHighlighter_delete".}
 
 
-func init*(T: type QSyntaxHighlighter, h: ptr cQSyntaxHighlighter): QSyntaxHighlighter =
+func init*(T: type gen_qsyntaxhighlighter_types.QSyntaxHighlighter, h: ptr cQSyntaxHighlighter): gen_qsyntaxhighlighter_types.QSyntaxHighlighter =
   T(h: h)
-proc create*(T: type QSyntaxHighlighter, parent: gen_qobject.QObject): QSyntaxHighlighter =
+proc create*(T: type gen_qsyntaxhighlighter_types.QSyntaxHighlighter, parent: gen_qobject.QObject): gen_qsyntaxhighlighter_types.QSyntaxHighlighter =
 
-  QSyntaxHighlighter.init(fcQSyntaxHighlighter_new(parent.h))
-proc create2*(T: type QSyntaxHighlighter, parent: gen_qtextdocument.QTextDocument): QSyntaxHighlighter =
+  gen_qsyntaxhighlighter_types.QSyntaxHighlighter.init(fcQSyntaxHighlighter_new(parent.h))
+proc create2*(T: type gen_qsyntaxhighlighter_types.QSyntaxHighlighter, parent: gen_qtextdocument.QTextDocument): gen_qsyntaxhighlighter_types.QSyntaxHighlighter =
 
-  QSyntaxHighlighter.init(fcQSyntaxHighlighter_new2(parent.h))
-proc metaObject*(self: QSyntaxHighlighter, ): gen_qobjectdefs.QMetaObject =
+  gen_qsyntaxhighlighter_types.QSyntaxHighlighter.init(fcQSyntaxHighlighter_new2(parent.h))
+proc metaObject*(self: gen_qsyntaxhighlighter_types.QSyntaxHighlighter, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQSyntaxHighlighter_metaObject(self.h))
 
-proc metacast*(self: QSyntaxHighlighter, param1: cstring): pointer =
+proc metacast*(self: gen_qsyntaxhighlighter_types.QSyntaxHighlighter, param1: cstring): pointer =
 
   fcQSyntaxHighlighter_metacast(self.h, param1)
 
-proc metacall*(self: QSyntaxHighlighter, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qsyntaxhighlighter_types.QSyntaxHighlighter, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQSyntaxHighlighter_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QSyntaxHighlighter, s: cstring): string =
+proc tr*(_: type gen_qsyntaxhighlighter_types.QSyntaxHighlighter, s: cstring): string =
 
   let v_ms = fcQSyntaxHighlighter_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QSyntaxHighlighter, s: cstring): string =
+proc trUtf8*(_: type gen_qsyntaxhighlighter_types.QSyntaxHighlighter, s: cstring): string =
 
   let v_ms = fcQSyntaxHighlighter_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setDocument*(self: QSyntaxHighlighter, doc: gen_qtextdocument.QTextDocument): void =
+proc setDocument*(self: gen_qsyntaxhighlighter_types.QSyntaxHighlighter, doc: gen_qtextdocument.QTextDocument): void =
 
   fcQSyntaxHighlighter_setDocument(self.h, doc.h)
 
-proc document*(self: QSyntaxHighlighter, ): gen_qtextdocument.QTextDocument =
+proc document*(self: gen_qsyntaxhighlighter_types.QSyntaxHighlighter, ): gen_qtextdocument.QTextDocument =
 
   gen_qtextdocument.QTextDocument(h: fcQSyntaxHighlighter_document(self.h))
 
-proc rehighlight*(self: QSyntaxHighlighter, ): void =
+proc rehighlight*(self: gen_qsyntaxhighlighter_types.QSyntaxHighlighter, ): void =
 
   fcQSyntaxHighlighter_rehighlight(self.h)
 
-proc rehighlightBlock*(self: QSyntaxHighlighter, blockVal: gen_qtextobject.QTextBlock): void =
+proc rehighlightBlock*(self: gen_qsyntaxhighlighter_types.QSyntaxHighlighter, blockVal: gen_qtextobject.QTextBlock): void =
 
   fcQSyntaxHighlighter_rehighlightBlock(self.h, blockVal.h)
 
-proc tr2*(_: type QSyntaxHighlighter, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qsyntaxhighlighter_types.QSyntaxHighlighter, s: cstring, c: cstring): string =
 
   let v_ms = fcQSyntaxHighlighter_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QSyntaxHighlighter, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qsyntaxhighlighter_types.QSyntaxHighlighter, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQSyntaxHighlighter_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QSyntaxHighlighter, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qsyntaxhighlighter_types.QSyntaxHighlighter, s: cstring, c: cstring): string =
 
   let v_ms = fcQSyntaxHighlighter_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QSyntaxHighlighter, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qsyntaxhighlighter_types.QSyntaxHighlighter, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQSyntaxHighlighter_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QSyntaxHighlighter, ): gen_qobjectdefs.QMetaObject =
-
+proc QSyntaxHighlightermetaObject*(self: gen_qsyntaxhighlighter_types.QSyntaxHighlighter, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQSyntaxHighlighter_virtualbase_metaObject(self.h))
 
-type QSyntaxHighlightermetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QSyntaxHighlighter, slot: proc(super: QSyntaxHighlightermetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QSyntaxHighlightermetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qsyntaxhighlighter_types.QSyntaxHighlighter, slot: QSyntaxHighlightermetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QSyntaxHighlightermetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QSyntaxHighlightermetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSyntaxHighlighter_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSyntaxHighlighter_metaObject(self: ptr cQSyntaxHighlighter, slot: int): pointer {.exportc: "miqt_exec_callback_QSyntaxHighlighter_metaObject ".} =
-  type Cb = proc(super: QSyntaxHighlightermetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QSyntaxHighlighter(h: self), )
+  var nimfunc = cast[ptr QSyntaxHighlightermetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QSyntaxHighlighter, param1: cstring): pointer =
-
+proc QSyntaxHighlightermetacast*(self: gen_qsyntaxhighlighter_types.QSyntaxHighlighter, param1: cstring): pointer =
 
   fQSyntaxHighlighter_virtualbase_metacast(self.h, param1)
 
-type QSyntaxHighlightermetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QSyntaxHighlighter, slot: proc(super: QSyntaxHighlightermetacastBase, param1: cstring): pointer) =
+type QSyntaxHighlightermetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qsyntaxhighlighter_types.QSyntaxHighlighter, slot: QSyntaxHighlightermetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QSyntaxHighlightermetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QSyntaxHighlightermetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSyntaxHighlighter_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSyntaxHighlighter_metacast(self: ptr cQSyntaxHighlighter, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QSyntaxHighlighter_metacast ".} =
-  type Cb = proc(super: QSyntaxHighlightermetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QSyntaxHighlighter(h: self), param1)
+  var nimfunc = cast[ptr QSyntaxHighlightermetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QSyntaxHighlighter, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QSyntaxHighlightermetacall*(self: gen_qsyntaxhighlighter_types.QSyntaxHighlighter, param1: cint, param2: cint, param3: pointer): cint =
 
   fQSyntaxHighlighter_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QSyntaxHighlightermetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QSyntaxHighlighter, slot: proc(super: QSyntaxHighlightermetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QSyntaxHighlightermetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qsyntaxhighlighter_types.QSyntaxHighlighter, slot: QSyntaxHighlightermetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QSyntaxHighlightermetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QSyntaxHighlightermetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSyntaxHighlighter_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSyntaxHighlighter_metacall(self: ptr cQSyntaxHighlighter, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QSyntaxHighlighter_metacall ".} =
-  type Cb = proc(super: QSyntaxHighlightermetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QSyntaxHighlighter(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QSyntaxHighlightermetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-type QSyntaxHighlighterhighlightBlockBase* = proc(text: string): void
-proc onhighlightBlock*(self: QSyntaxHighlighter, slot: proc(text: string): void) =
+type QSyntaxHighlighterhighlightBlockProc* = proc(text: string): void
+proc onhighlightBlock*(self: gen_qsyntaxhighlighter_types.QSyntaxHighlighter, slot: QSyntaxHighlighterhighlightBlockProc) =
   # TODO check subclass
-  type Cb = proc(text: string): void
-  var tmp = new Cb
+  var tmp = new QSyntaxHighlighterhighlightBlockProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSyntaxHighlighter_override_virtual_highlightBlock(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSyntaxHighlighter_highlightBlock(self: ptr cQSyntaxHighlighter, slot: int, text: struct_miqt_string): void {.exportc: "miqt_exec_callback_QSyntaxHighlighter_highlightBlock ".} =
-  type Cb = proc(text: string): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QSyntaxHighlighterhighlightBlockProc](cast[pointer](slot))
   let vtext_ms = text
   let vtextx_ret = string.fromBytes(toOpenArrayByte(vtext_ms.data, 0, int(vtext_ms.len)-1))
   c_free(vtext_ms.data)
@@ -268,174 +251,139 @@ proc miqt_exec_callback_QSyntaxHighlighter_highlightBlock(self: ptr cQSyntaxHigh
 
 
   nimfunc[](slotval1)
-proc callVirtualBase_event(self: QSyntaxHighlighter, event: gen_qcoreevent.QEvent): bool =
-
+proc QSyntaxHighlighterevent*(self: gen_qsyntaxhighlighter_types.QSyntaxHighlighter, event: gen_qcoreevent.QEvent): bool =
 
   fQSyntaxHighlighter_virtualbase_event(self.h, event.h)
 
-type QSyntaxHighlightereventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QSyntaxHighlighter, slot: proc(super: QSyntaxHighlightereventBase, event: gen_qcoreevent.QEvent): bool) =
+type QSyntaxHighlightereventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qsyntaxhighlighter_types.QSyntaxHighlighter, slot: QSyntaxHighlightereventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSyntaxHighlightereventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QSyntaxHighlightereventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSyntaxHighlighter_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSyntaxHighlighter_event(self: ptr cQSyntaxHighlighter, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QSyntaxHighlighter_event ".} =
-  type Cb = proc(super: QSyntaxHighlightereventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QSyntaxHighlighter(h: self), event)
+  var nimfunc = cast[ptr QSyntaxHighlightereventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QSyntaxHighlighter, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QSyntaxHighlightereventFilter*(self: gen_qsyntaxhighlighter_types.QSyntaxHighlighter, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQSyntaxHighlighter_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QSyntaxHighlightereventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QSyntaxHighlighter, slot: proc(super: QSyntaxHighlightereventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QSyntaxHighlightereventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qsyntaxhighlighter_types.QSyntaxHighlighter, slot: QSyntaxHighlightereventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QSyntaxHighlightereventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QSyntaxHighlightereventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSyntaxHighlighter_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSyntaxHighlighter_eventFilter(self: ptr cQSyntaxHighlighter, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QSyntaxHighlighter_eventFilter ".} =
-  type Cb = proc(super: QSyntaxHighlightereventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QSyntaxHighlighter(h: self), watched, event)
+  var nimfunc = cast[ptr QSyntaxHighlightereventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QSyntaxHighlighter, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QSyntaxHighlightertimerEvent*(self: gen_qsyntaxhighlighter_types.QSyntaxHighlighter, event: gen_qcoreevent.QTimerEvent): void =
 
   fQSyntaxHighlighter_virtualbase_timerEvent(self.h, event.h)
 
-type QSyntaxHighlightertimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QSyntaxHighlighter, slot: proc(super: QSyntaxHighlightertimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QSyntaxHighlightertimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qsyntaxhighlighter_types.QSyntaxHighlighter, slot: QSyntaxHighlightertimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSyntaxHighlightertimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QSyntaxHighlightertimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSyntaxHighlighter_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSyntaxHighlighter_timerEvent(self: ptr cQSyntaxHighlighter, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSyntaxHighlighter_timerEvent ".} =
-  type Cb = proc(super: QSyntaxHighlightertimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QSyntaxHighlighter(h: self), event)
+  var nimfunc = cast[ptr QSyntaxHighlightertimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QSyntaxHighlighter, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QSyntaxHighlighterchildEvent*(self: gen_qsyntaxhighlighter_types.QSyntaxHighlighter, event: gen_qcoreevent.QChildEvent): void =
 
   fQSyntaxHighlighter_virtualbase_childEvent(self.h, event.h)
 
-type QSyntaxHighlighterchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QSyntaxHighlighter, slot: proc(super: QSyntaxHighlighterchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QSyntaxHighlighterchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qsyntaxhighlighter_types.QSyntaxHighlighter, slot: QSyntaxHighlighterchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSyntaxHighlighterchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QSyntaxHighlighterchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSyntaxHighlighter_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSyntaxHighlighter_childEvent(self: ptr cQSyntaxHighlighter, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSyntaxHighlighter_childEvent ".} =
-  type Cb = proc(super: QSyntaxHighlighterchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QSyntaxHighlighter(h: self), event)
+  var nimfunc = cast[ptr QSyntaxHighlighterchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QSyntaxHighlighter, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QSyntaxHighlightercustomEvent*(self: gen_qsyntaxhighlighter_types.QSyntaxHighlighter, event: gen_qcoreevent.QEvent): void =
 
   fQSyntaxHighlighter_virtualbase_customEvent(self.h, event.h)
 
-type QSyntaxHighlightercustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QSyntaxHighlighter, slot: proc(super: QSyntaxHighlightercustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QSyntaxHighlightercustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qsyntaxhighlighter_types.QSyntaxHighlighter, slot: QSyntaxHighlightercustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSyntaxHighlightercustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QSyntaxHighlightercustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSyntaxHighlighter_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSyntaxHighlighter_customEvent(self: ptr cQSyntaxHighlighter, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSyntaxHighlighter_customEvent ".} =
-  type Cb = proc(super: QSyntaxHighlightercustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QSyntaxHighlighter(h: self), event)
+  var nimfunc = cast[ptr QSyntaxHighlightercustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QSyntaxHighlighter, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QSyntaxHighlighterconnectNotify*(self: gen_qsyntaxhighlighter_types.QSyntaxHighlighter, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQSyntaxHighlighter_virtualbase_connectNotify(self.h, signal.h)
 
-type QSyntaxHighlighterconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QSyntaxHighlighter, slot: proc(super: QSyntaxHighlighterconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QSyntaxHighlighterconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qsyntaxhighlighter_types.QSyntaxHighlighter, slot: QSyntaxHighlighterconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QSyntaxHighlighterconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QSyntaxHighlighterconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSyntaxHighlighter_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSyntaxHighlighter_connectNotify(self: ptr cQSyntaxHighlighter, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QSyntaxHighlighter_connectNotify ".} =
-  type Cb = proc(super: QSyntaxHighlighterconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QSyntaxHighlighter(h: self), signal)
+  var nimfunc = cast[ptr QSyntaxHighlighterconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QSyntaxHighlighter, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QSyntaxHighlighterdisconnectNotify*(self: gen_qsyntaxhighlighter_types.QSyntaxHighlighter, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQSyntaxHighlighter_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QSyntaxHighlighterdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QSyntaxHighlighter, slot: proc(super: QSyntaxHighlighterdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QSyntaxHighlighterdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qsyntaxhighlighter_types.QSyntaxHighlighter, slot: QSyntaxHighlighterdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QSyntaxHighlighterdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QSyntaxHighlighterdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSyntaxHighlighter_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSyntaxHighlighter_disconnectNotify(self: ptr cQSyntaxHighlighter, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QSyntaxHighlighter_disconnectNotify ".} =
-  type Cb = proc(super: QSyntaxHighlighterdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QSyntaxHighlighter(h: self), signal)
+  var nimfunc = cast[ptr QSyntaxHighlighterdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QSyntaxHighlighter): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qsyntaxhighlighter_types.QSyntaxHighlighter): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQSyntaxHighlighter_staticMetaObject())
-proc delete*(self: QSyntaxHighlighter) =
+proc delete*(self: gen_qsyntaxhighlighter_types.QSyntaxHighlighter) =
   fcQSyntaxHighlighter_delete(self.h)

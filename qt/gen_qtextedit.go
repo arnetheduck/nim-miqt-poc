@@ -822,7 +822,7 @@ func (this *QTextEdit) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QTextEdit_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QTextEdit) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QTextEdit) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QTextEdit_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -849,7 +849,7 @@ func (this *QTextEdit) callVirtualBase_Metacast(param1 string) unsafe.Pointer {
 	return (unsafe.Pointer)(C.QTextEdit_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QTextEdit) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QTextEdit) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QTextEdit_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

@@ -255,7 +255,7 @@ func (this *QConcatenateTablesProxyModel) callVirtualBase_MetaObject() *QMetaObj
 	return newQMetaObject(C.QConcatenateTablesProxyModel_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QConcatenateTablesProxyModel) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QConcatenateTablesProxyModel) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QConcatenateTablesProxyModel_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -282,7 +282,7 @@ func (this *QConcatenateTablesProxyModel) callVirtualBase_Metacast(param1 string
 	return (unsafe.Pointer)(C.QConcatenateTablesProxyModel_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QConcatenateTablesProxyModel) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QConcatenateTablesProxyModel) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QConcatenateTablesProxyModel_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

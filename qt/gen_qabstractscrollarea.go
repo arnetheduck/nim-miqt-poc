@@ -243,7 +243,7 @@ func (this *QAbstractScrollArea) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QAbstractScrollArea_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QAbstractScrollArea) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QAbstractScrollArea) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QAbstractScrollArea_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -270,7 +270,7 @@ func (this *QAbstractScrollArea) callVirtualBase_Metacast(param1 string) unsafe.
 	return (unsafe.Pointer)(C.QAbstractScrollArea_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QAbstractScrollArea) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QAbstractScrollArea) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QAbstractScrollArea_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

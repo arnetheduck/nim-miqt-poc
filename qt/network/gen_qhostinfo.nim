@@ -34,12 +34,10 @@ const cflags = gorge("pkg-config -cflags Qt5Network")
 {.compile("gen_qhostinfo.cpp", cflags).}
 
 
-type QHostInfoHostInfoError* = cint
-const
-  QHostInfoNoError* = 0
-  QHostInfoHostNotFound* = 1
-  QHostInfoUnknownError* = 2
-
+type QHostInfoHostInfoErrorEnum* = distinct cint
+template NoError*(_: type QHostInfoHostInfoErrorEnum): untyped = 0
+template HostNotFound*(_: type QHostInfoHostInfoErrorEnum): untyped = 1
+template UnknownError*(_: type QHostInfoHostInfoErrorEnum): untyped = 2
 
 
 import gen_qhostinfo_types
@@ -74,37 +72,37 @@ proc fcQHostInfo_localDomainName(): struct_miqt_string {.importc: "QHostInfo_loc
 proc fcQHostInfo_delete(self: pointer) {.importc: "QHostInfo_delete".}
 
 
-func init*(T: type QHostInfo, h: ptr cQHostInfo): QHostInfo =
+func init*(T: type gen_qhostinfo_types.QHostInfo, h: ptr cQHostInfo): gen_qhostinfo_types.QHostInfo =
   T(h: h)
-proc create*(T: type QHostInfo, ): QHostInfo =
+proc create*(T: type gen_qhostinfo_types.QHostInfo, ): gen_qhostinfo_types.QHostInfo =
 
-  QHostInfo.init(fcQHostInfo_new())
-proc create*(T: type QHostInfo, d: QHostInfo): QHostInfo =
+  gen_qhostinfo_types.QHostInfo.init(fcQHostInfo_new())
+proc create*(T: type gen_qhostinfo_types.QHostInfo, d: gen_qhostinfo_types.QHostInfo): gen_qhostinfo_types.QHostInfo =
 
-  QHostInfo.init(fcQHostInfo_new2(d.h))
-proc create*(T: type QHostInfo, lookupId: cint): QHostInfo =
+  gen_qhostinfo_types.QHostInfo.init(fcQHostInfo_new2(d.h))
+proc create*(T: type gen_qhostinfo_types.QHostInfo, lookupId: cint): gen_qhostinfo_types.QHostInfo =
 
-  QHostInfo.init(fcQHostInfo_new3(lookupId))
-proc operatorAssign*(self: QHostInfo, d: QHostInfo): void =
+  gen_qhostinfo_types.QHostInfo.init(fcQHostInfo_new3(lookupId))
+proc operatorAssign*(self: gen_qhostinfo_types.QHostInfo, d: gen_qhostinfo_types.QHostInfo): void =
 
   fcQHostInfo_operatorAssign(self.h, d.h)
 
-proc swap*(self: QHostInfo, other: QHostInfo): void =
+proc swap*(self: gen_qhostinfo_types.QHostInfo, other: gen_qhostinfo_types.QHostInfo): void =
 
   fcQHostInfo_swap(self.h, other.h)
 
-proc hostName*(self: QHostInfo, ): string =
+proc hostName*(self: gen_qhostinfo_types.QHostInfo, ): string =
 
   let v_ms = fcQHostInfo_hostName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setHostName*(self: QHostInfo, name: string): void =
+proc setHostName*(self: gen_qhostinfo_types.QHostInfo, name: string): void =
 
   fcQHostInfo_setHostName(self.h, struct_miqt_string(data: name, len: csize_t(len(name))))
 
-proc addresses*(self: QHostInfo, ): seq[gen_qhostaddress.QHostAddress] =
+proc addresses*(self: gen_qhostinfo_types.QHostInfo, ): seq[gen_qhostaddress.QHostAddress] =
 
   var v_ma = fcQHostInfo_addresses(self.h)
   var vx_ret = newSeq[gen_qhostaddress.QHostAddress](int(v_ma.len))
@@ -113,7 +111,7 @@ proc addresses*(self: QHostInfo, ): seq[gen_qhostaddress.QHostAddress] =
     vx_ret[i] = gen_qhostaddress.QHostAddress(h: v_outCast[i])
   vx_ret
 
-proc setAddresses*(self: QHostInfo, addresses: seq[gen_qhostaddress.QHostAddress]): void =
+proc setAddresses*(self: gen_qhostinfo_types.QHostInfo, addresses: seq[gen_qhostaddress.QHostAddress]): void =
 
   var addresses_CArray = newSeq[pointer](len(addresses))
   for i in 0..<len(addresses):
@@ -121,54 +119,54 @@ proc setAddresses*(self: QHostInfo, addresses: seq[gen_qhostaddress.QHostAddress
 
   fcQHostInfo_setAddresses(self.h, struct_miqt_array(len: csize_t(len(addresses)), data: if len(addresses) == 0: nil else: addr(addresses_CArray[0])))
 
-proc error*(self: QHostInfo, ): QHostInfoHostInfoError =
+proc error*(self: gen_qhostinfo_types.QHostInfo, ): cint =
 
-  QHostInfoHostInfoError(fcQHostInfo_error(self.h))
+  cint(fcQHostInfo_error(self.h))
 
-proc setError*(self: QHostInfo, error: QHostInfoHostInfoError): void =
+proc setError*(self: gen_qhostinfo_types.QHostInfo, error: cint): void =
 
   fcQHostInfo_setError(self.h, cint(error))
 
-proc errorString*(self: QHostInfo, ): string =
+proc errorString*(self: gen_qhostinfo_types.QHostInfo, ): string =
 
   let v_ms = fcQHostInfo_errorString(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setErrorString*(self: QHostInfo, errorString: string): void =
+proc setErrorString*(self: gen_qhostinfo_types.QHostInfo, errorString: string): void =
 
   fcQHostInfo_setErrorString(self.h, struct_miqt_string(data: errorString, len: csize_t(len(errorString))))
 
-proc setLookupId*(self: QHostInfo, id: cint): void =
+proc setLookupId*(self: gen_qhostinfo_types.QHostInfo, id: cint): void =
 
   fcQHostInfo_setLookupId(self.h, id)
 
-proc lookupId*(self: QHostInfo, ): cint =
+proc lookupId*(self: gen_qhostinfo_types.QHostInfo, ): cint =
 
   fcQHostInfo_lookupId(self.h)
 
-proc abortHostLookup*(_: type QHostInfo, lookupId: cint): void =
+proc abortHostLookup*(_: type gen_qhostinfo_types.QHostInfo, lookupId: cint): void =
 
   fcQHostInfo_abortHostLookup(lookupId)
 
-proc fromName*(_: type QHostInfo, name: string): QHostInfo =
+proc fromName*(_: type gen_qhostinfo_types.QHostInfo, name: string): gen_qhostinfo_types.QHostInfo =
 
-  QHostInfo(h: fcQHostInfo_fromName(struct_miqt_string(data: name, len: csize_t(len(name)))))
+  gen_qhostinfo_types.QHostInfo(h: fcQHostInfo_fromName(struct_miqt_string(data: name, len: csize_t(len(name)))))
 
-proc localHostName*(_: type QHostInfo, ): string =
+proc localHostName*(_: type gen_qhostinfo_types.QHostInfo, ): string =
 
   let v_ms = fcQHostInfo_localHostName()
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc localDomainName*(_: type QHostInfo, ): string =
+proc localDomainName*(_: type gen_qhostinfo_types.QHostInfo, ): string =
 
   let v_ms = fcQHostInfo_localDomainName()
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc delete*(self: QHostInfo) =
+proc delete*(self: gen_qhostinfo_types.QHostInfo) =
   fcQHostInfo_delete(self.h)

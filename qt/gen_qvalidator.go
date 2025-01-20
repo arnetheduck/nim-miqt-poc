@@ -201,7 +201,7 @@ func (this *QValidator) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QValidator_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QValidator) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QValidator) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QValidator_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -228,7 +228,7 @@ func (this *QValidator) callVirtualBase_Metacast(param1 string) unsafe.Pointer {
 	return (unsafe.Pointer)(C.QValidator_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QValidator) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QValidator) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QValidator_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -762,7 +762,7 @@ func (this *QIntValidator) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QIntValidator_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QIntValidator) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QIntValidator) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QIntValidator_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -789,7 +789,7 @@ func (this *QIntValidator) callVirtualBase_Metacast(param1 string) unsafe.Pointe
 	return (unsafe.Pointer)(C.QIntValidator_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QIntValidator) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QIntValidator) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QIntValidator_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1409,7 +1409,7 @@ func (this *QDoubleValidator) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QDoubleValidator_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QDoubleValidator) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QDoubleValidator) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QDoubleValidator_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1436,7 +1436,7 @@ func (this *QDoubleValidator) callVirtualBase_Metacast(param1 string) unsafe.Poi
 	return (unsafe.Pointer)(C.QDoubleValidator_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QDoubleValidator) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QDoubleValidator) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QDoubleValidator_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1970,7 +1970,7 @@ func (this *QRegExpValidator) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QRegExpValidator_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QRegExpValidator) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QRegExpValidator) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QRegExpValidator_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1997,7 +1997,7 @@ func (this *QRegExpValidator) callVirtualBase_Metacast(param1 string) unsafe.Poi
 	return (unsafe.Pointer)(C.QRegExpValidator_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QRegExpValidator) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QRegExpValidator) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QRegExpValidator_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2503,7 +2503,7 @@ func (this *QRegularExpressionValidator) callVirtualBase_MetaObject() *QMetaObje
 	return newQMetaObject(C.QRegularExpressionValidator_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QRegularExpressionValidator) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QRegularExpressionValidator) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QRegularExpressionValidator_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2530,7 +2530,7 @@ func (this *QRegularExpressionValidator) callVirtualBase_Metacast(param1 string)
 	return (unsafe.Pointer)(C.QRegularExpressionValidator_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QRegularExpressionValidator) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QRegularExpressionValidator) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QRegularExpressionValidator_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

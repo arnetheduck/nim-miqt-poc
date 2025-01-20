@@ -34,54 +34,48 @@ const cflags = gorge("pkg-config -cflags Qt5MultimediaWidgets")
 {.compile("gen_qcameraexposure.cpp", cflags).}
 
 
-type QCameraExposureFlashMode* = cint
-const
-  QCameraExposureFlashAuto* = 1
-  QCameraExposureFlashOff* = 2
-  QCameraExposureFlashOn* = 4
-  QCameraExposureFlashRedEyeReduction* = 8
-  QCameraExposureFlashFill* = 16
-  QCameraExposureFlashTorch* = 32
-  QCameraExposureFlashVideoLight* = 64
-  QCameraExposureFlashSlowSyncFrontCurtain* = 128
-  QCameraExposureFlashSlowSyncRearCurtain* = 256
-  QCameraExposureFlashManual* = 512
+type QCameraExposureFlashModeEnum* = distinct cint
+template FlashAuto*(_: type QCameraExposureFlashModeEnum): untyped = 1
+template FlashOff*(_: type QCameraExposureFlashModeEnum): untyped = 2
+template FlashOn*(_: type QCameraExposureFlashModeEnum): untyped = 4
+template FlashRedEyeReduction*(_: type QCameraExposureFlashModeEnum): untyped = 8
+template FlashFill*(_: type QCameraExposureFlashModeEnum): untyped = 16
+template FlashTorch*(_: type QCameraExposureFlashModeEnum): untyped = 32
+template FlashVideoLight*(_: type QCameraExposureFlashModeEnum): untyped = 64
+template FlashSlowSyncFrontCurtain*(_: type QCameraExposureFlashModeEnum): untyped = 128
+template FlashSlowSyncRearCurtain*(_: type QCameraExposureFlashModeEnum): untyped = 256
+template FlashManual*(_: type QCameraExposureFlashModeEnum): untyped = 512
 
 
-
-type QCameraExposureExposureMode* = cint
-const
-  QCameraExposureExposureAuto* = 0
-  QCameraExposureExposureManual* = 1
-  QCameraExposureExposurePortrait* = 2
-  QCameraExposureExposureNight* = 3
-  QCameraExposureExposureBacklight* = 4
-  QCameraExposureExposureSpotlight* = 5
-  QCameraExposureExposureSports* = 6
-  QCameraExposureExposureSnow* = 7
-  QCameraExposureExposureBeach* = 8
-  QCameraExposureExposureLargeAperture* = 9
-  QCameraExposureExposureSmallAperture* = 10
-  QCameraExposureExposureAction* = 11
-  QCameraExposureExposureLandscape* = 12
-  QCameraExposureExposureNightPortrait* = 13
-  QCameraExposureExposureTheatre* = 14
-  QCameraExposureExposureSunset* = 15
-  QCameraExposureExposureSteadyPhoto* = 16
-  QCameraExposureExposureFireworks* = 17
-  QCameraExposureExposureParty* = 18
-  QCameraExposureExposureCandlelight* = 19
-  QCameraExposureExposureBarcode* = 20
-  QCameraExposureExposureModeVendor* = 1000
+type QCameraExposureExposureModeEnum* = distinct cint
+template ExposureAuto*(_: type QCameraExposureExposureModeEnum): untyped = 0
+template ExposureManual*(_: type QCameraExposureExposureModeEnum): untyped = 1
+template ExposurePortrait*(_: type QCameraExposureExposureModeEnum): untyped = 2
+template ExposureNight*(_: type QCameraExposureExposureModeEnum): untyped = 3
+template ExposureBacklight*(_: type QCameraExposureExposureModeEnum): untyped = 4
+template ExposureSpotlight*(_: type QCameraExposureExposureModeEnum): untyped = 5
+template ExposureSports*(_: type QCameraExposureExposureModeEnum): untyped = 6
+template ExposureSnow*(_: type QCameraExposureExposureModeEnum): untyped = 7
+template ExposureBeach*(_: type QCameraExposureExposureModeEnum): untyped = 8
+template ExposureLargeAperture*(_: type QCameraExposureExposureModeEnum): untyped = 9
+template ExposureSmallAperture*(_: type QCameraExposureExposureModeEnum): untyped = 10
+template ExposureAction*(_: type QCameraExposureExposureModeEnum): untyped = 11
+template ExposureLandscape*(_: type QCameraExposureExposureModeEnum): untyped = 12
+template ExposureNightPortrait*(_: type QCameraExposureExposureModeEnum): untyped = 13
+template ExposureTheatre*(_: type QCameraExposureExposureModeEnum): untyped = 14
+template ExposureSunset*(_: type QCameraExposureExposureModeEnum): untyped = 15
+template ExposureSteadyPhoto*(_: type QCameraExposureExposureModeEnum): untyped = 16
+template ExposureFireworks*(_: type QCameraExposureExposureModeEnum): untyped = 17
+template ExposureParty*(_: type QCameraExposureExposureModeEnum): untyped = 18
+template ExposureCandlelight*(_: type QCameraExposureExposureModeEnum): untyped = 19
+template ExposureBarcode*(_: type QCameraExposureExposureModeEnum): untyped = 20
+template ExposureModeVendor*(_: type QCameraExposureExposureModeEnum): untyped = 1000
 
 
-
-type QCameraExposureMeteringMode* = cint
-const
-  QCameraExposureMeteringMatrix* = 1
-  QCameraExposureMeteringAverage* = 2
-  QCameraExposureMeteringSpot* = 3
-
+type QCameraExposureMeteringModeEnum* = distinct cint
+template MeteringMatrix*(_: type QCameraExposureMeteringModeEnum): untyped = 1
+template MeteringAverage*(_: type QCameraExposureMeteringModeEnum): untyped = 2
+template MeteringSpot*(_: type QCameraExposureMeteringModeEnum): untyped = 3
 
 
 import gen_qcameraexposure_types
@@ -157,103 +151,103 @@ proc fcQCameraExposure_supportedShutterSpeeds1(self: pointer, continuous: ptr bo
 proc fcQCameraExposure_staticMetaObject(): pointer {.importc: "QCameraExposure_staticMetaObject".}
 
 
-func init*(T: type QCameraExposure, h: ptr cQCameraExposure): QCameraExposure =
+func init*(T: type gen_qcameraexposure_types.QCameraExposure, h: ptr cQCameraExposure): gen_qcameraexposure_types.QCameraExposure =
   T(h: h)
-proc metaObject*(self: QCameraExposure, ): gen_qobjectdefs.QMetaObject =
+proc metaObject*(self: gen_qcameraexposure_types.QCameraExposure, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQCameraExposure_metaObject(self.h))
 
-proc metacast*(self: QCameraExposure, param1: cstring): pointer =
+proc metacast*(self: gen_qcameraexposure_types.QCameraExposure, param1: cstring): pointer =
 
   fcQCameraExposure_metacast(self.h, param1)
 
-proc metacall*(self: QCameraExposure, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qcameraexposure_types.QCameraExposure, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQCameraExposure_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QCameraExposure, s: cstring): string =
+proc tr*(_: type gen_qcameraexposure_types.QCameraExposure, s: cstring): string =
 
   let v_ms = fcQCameraExposure_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QCameraExposure, s: cstring): string =
+proc trUtf8*(_: type gen_qcameraexposure_types.QCameraExposure, s: cstring): string =
 
   let v_ms = fcQCameraExposure_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc isAvailable*(self: QCameraExposure, ): bool =
+proc isAvailable*(self: gen_qcameraexposure_types.QCameraExposure, ): bool =
 
   fcQCameraExposure_isAvailable(self.h)
 
-proc flashMode*(self: QCameraExposure, ): QCameraExposureFlashMode =
+proc flashMode*(self: gen_qcameraexposure_types.QCameraExposure, ): cint =
 
-  QCameraExposureFlashMode(fcQCameraExposure_flashMode(self.h))
+  cint(fcQCameraExposure_flashMode(self.h))
 
-proc isFlashModeSupported*(self: QCameraExposure, mode: QCameraExposureFlashMode): bool =
+proc isFlashModeSupported*(self: gen_qcameraexposure_types.QCameraExposure, mode: cint): bool =
 
   fcQCameraExposure_isFlashModeSupported(self.h, cint(mode))
 
-proc isFlashReady*(self: QCameraExposure, ): bool =
+proc isFlashReady*(self: gen_qcameraexposure_types.QCameraExposure, ): bool =
 
   fcQCameraExposure_isFlashReady(self.h)
 
-proc exposureMode*(self: QCameraExposure, ): QCameraExposureExposureMode =
+proc exposureMode*(self: gen_qcameraexposure_types.QCameraExposure, ): cint =
 
-  QCameraExposureExposureMode(fcQCameraExposure_exposureMode(self.h))
+  cint(fcQCameraExposure_exposureMode(self.h))
 
-proc isExposureModeSupported*(self: QCameraExposure, mode: QCameraExposureExposureMode): bool =
+proc isExposureModeSupported*(self: gen_qcameraexposure_types.QCameraExposure, mode: cint): bool =
 
   fcQCameraExposure_isExposureModeSupported(self.h, cint(mode))
 
-proc exposureCompensation*(self: QCameraExposure, ): float64 =
+proc exposureCompensation*(self: gen_qcameraexposure_types.QCameraExposure, ): float64 =
 
   fcQCameraExposure_exposureCompensation(self.h)
 
-proc meteringMode*(self: QCameraExposure, ): QCameraExposureMeteringMode =
+proc meteringMode*(self: gen_qcameraexposure_types.QCameraExposure, ): cint =
 
-  QCameraExposureMeteringMode(fcQCameraExposure_meteringMode(self.h))
+  cint(fcQCameraExposure_meteringMode(self.h))
 
-proc isMeteringModeSupported*(self: QCameraExposure, mode: QCameraExposureMeteringMode): bool =
+proc isMeteringModeSupported*(self: gen_qcameraexposure_types.QCameraExposure, mode: cint): bool =
 
   fcQCameraExposure_isMeteringModeSupported(self.h, cint(mode))
 
-proc spotMeteringPoint*(self: QCameraExposure, ): gen_qpoint.QPointF =
+proc spotMeteringPoint*(self: gen_qcameraexposure_types.QCameraExposure, ): gen_qpoint.QPointF =
 
   gen_qpoint.QPointF(h: fcQCameraExposure_spotMeteringPoint(self.h))
 
-proc setSpotMeteringPoint*(self: QCameraExposure, point: gen_qpoint.QPointF): void =
+proc setSpotMeteringPoint*(self: gen_qcameraexposure_types.QCameraExposure, point: gen_qpoint.QPointF): void =
 
   fcQCameraExposure_setSpotMeteringPoint(self.h, point.h)
 
-proc isoSensitivity*(self: QCameraExposure, ): cint =
+proc isoSensitivity*(self: gen_qcameraexposure_types.QCameraExposure, ): cint =
 
   fcQCameraExposure_isoSensitivity(self.h)
 
-proc aperture*(self: QCameraExposure, ): float64 =
+proc aperture*(self: gen_qcameraexposure_types.QCameraExposure, ): float64 =
 
   fcQCameraExposure_aperture(self.h)
 
-proc shutterSpeed*(self: QCameraExposure, ): float64 =
+proc shutterSpeed*(self: gen_qcameraexposure_types.QCameraExposure, ): float64 =
 
   fcQCameraExposure_shutterSpeed(self.h)
 
-proc requestedIsoSensitivity*(self: QCameraExposure, ): cint =
+proc requestedIsoSensitivity*(self: gen_qcameraexposure_types.QCameraExposure, ): cint =
 
   fcQCameraExposure_requestedIsoSensitivity(self.h)
 
-proc requestedAperture*(self: QCameraExposure, ): float64 =
+proc requestedAperture*(self: gen_qcameraexposure_types.QCameraExposure, ): float64 =
 
   fcQCameraExposure_requestedAperture(self.h)
 
-proc requestedShutterSpeed*(self: QCameraExposure, ): float64 =
+proc requestedShutterSpeed*(self: gen_qcameraexposure_types.QCameraExposure, ): float64 =
 
   fcQCameraExposure_requestedShutterSpeed(self.h)
 
-proc supportedIsoSensitivities*(self: QCameraExposure, ): seq[cint] =
+proc supportedIsoSensitivities*(self: gen_qcameraexposure_types.QCameraExposure, ): seq[cint] =
 
   var v_ma = fcQCameraExposure_supportedIsoSensitivities(self.h)
   var vx_ret = newSeq[cint](int(v_ma.len))
@@ -262,7 +256,7 @@ proc supportedIsoSensitivities*(self: QCameraExposure, ): seq[cint] =
     vx_ret[i] = v_outCast[i]
   vx_ret
 
-proc supportedApertures*(self: QCameraExposure, ): seq[float64] =
+proc supportedApertures*(self: gen_qcameraexposure_types.QCameraExposure, ): seq[float64] =
 
   var v_ma = fcQCameraExposure_supportedApertures(self.h)
   var vx_ret = newSeq[float64](int(v_ma.len))
@@ -271,7 +265,7 @@ proc supportedApertures*(self: QCameraExposure, ): seq[float64] =
     vx_ret[i] = v_outCast[i]
   vx_ret
 
-proc supportedShutterSpeeds*(self: QCameraExposure, ): seq[float64] =
+proc supportedShutterSpeeds*(self: gen_qcameraexposure_types.QCameraExposure, ): seq[float64] =
 
   var v_ma = fcQCameraExposure_supportedShutterSpeeds(self.h)
   var vx_ret = newSeq[float64](int(v_ma.len))
@@ -280,47 +274,47 @@ proc supportedShutterSpeeds*(self: QCameraExposure, ): seq[float64] =
     vx_ret[i] = v_outCast[i]
   vx_ret
 
-proc setFlashMode*(self: QCameraExposure, mode: QCameraExposureFlashMode): void =
+proc setFlashMode*(self: gen_qcameraexposure_types.QCameraExposure, mode: cint): void =
 
   fcQCameraExposure_setFlashMode(self.h, cint(mode))
 
-proc setExposureMode*(self: QCameraExposure, mode: QCameraExposureExposureMode): void =
+proc setExposureMode*(self: gen_qcameraexposure_types.QCameraExposure, mode: cint): void =
 
   fcQCameraExposure_setExposureMode(self.h, cint(mode))
 
-proc setMeteringMode*(self: QCameraExposure, mode: QCameraExposureMeteringMode): void =
+proc setMeteringMode*(self: gen_qcameraexposure_types.QCameraExposure, mode: cint): void =
 
   fcQCameraExposure_setMeteringMode(self.h, cint(mode))
 
-proc setExposureCompensation*(self: QCameraExposure, ev: float64): void =
+proc setExposureCompensation*(self: gen_qcameraexposure_types.QCameraExposure, ev: float64): void =
 
   fcQCameraExposure_setExposureCompensation(self.h, ev)
 
-proc setManualIsoSensitivity*(self: QCameraExposure, iso: cint): void =
+proc setManualIsoSensitivity*(self: gen_qcameraexposure_types.QCameraExposure, iso: cint): void =
 
   fcQCameraExposure_setManualIsoSensitivity(self.h, iso)
 
-proc setAutoIsoSensitivity*(self: QCameraExposure, ): void =
+proc setAutoIsoSensitivity*(self: gen_qcameraexposure_types.QCameraExposure, ): void =
 
   fcQCameraExposure_setAutoIsoSensitivity(self.h)
 
-proc setManualAperture*(self: QCameraExposure, aperture: float64): void =
+proc setManualAperture*(self: gen_qcameraexposure_types.QCameraExposure, aperture: float64): void =
 
   fcQCameraExposure_setManualAperture(self.h, aperture)
 
-proc setAutoAperture*(self: QCameraExposure, ): void =
+proc setAutoAperture*(self: gen_qcameraexposure_types.QCameraExposure, ): void =
 
   fcQCameraExposure_setAutoAperture(self.h)
 
-proc setManualShutterSpeed*(self: QCameraExposure, seconds: float64): void =
+proc setManualShutterSpeed*(self: gen_qcameraexposure_types.QCameraExposure, seconds: float64): void =
 
   fcQCameraExposure_setManualShutterSpeed(self.h, seconds)
 
-proc setAutoShutterSpeed*(self: QCameraExposure, ): void =
+proc setAutoShutterSpeed*(self: gen_qcameraexposure_types.QCameraExposure, ): void =
 
   fcQCameraExposure_setAutoShutterSpeed(self.h)
 
-proc flashReady*(self: QCameraExposure, param1: bool): void =
+proc flashReady*(self: gen_qcameraexposure_types.QCameraExposure, param1: bool): void =
 
   fcQCameraExposure_flashReady(self.h, param1)
 
@@ -332,13 +326,13 @@ proc miqt_exec_callback_QCameraExposure_flashReady(slot: int, param1: bool) {.ex
 
   nimfunc[](slotval1)
 
-proc onflashReady*(self: QCameraExposure, slot: proc(param1: bool)) =
+proc onflashReady*(self: gen_qcameraexposure_types.QCameraExposure, slot: proc(param1: bool)) =
   type Cb = proc(param1: bool)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQCameraExposure_connect_flashReady(self.h, cast[int](addr tmp[]))
-proc apertureChanged*(self: QCameraExposure, param1: float64): void =
+proc apertureChanged*(self: gen_qcameraexposure_types.QCameraExposure, param1: float64): void =
 
   fcQCameraExposure_apertureChanged(self.h, param1)
 
@@ -350,13 +344,13 @@ proc miqt_exec_callback_QCameraExposure_apertureChanged(slot: int, param1: float
 
   nimfunc[](slotval1)
 
-proc onapertureChanged*(self: QCameraExposure, slot: proc(param1: float64)) =
+proc onapertureChanged*(self: gen_qcameraexposure_types.QCameraExposure, slot: proc(param1: float64)) =
   type Cb = proc(param1: float64)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQCameraExposure_connect_apertureChanged(self.h, cast[int](addr tmp[]))
-proc apertureRangeChanged*(self: QCameraExposure, ): void =
+proc apertureRangeChanged*(self: gen_qcameraexposure_types.QCameraExposure, ): void =
 
   fcQCameraExposure_apertureRangeChanged(self.h)
 
@@ -366,13 +360,13 @@ proc miqt_exec_callback_QCameraExposure_apertureRangeChanged(slot: int) {.export
 
   nimfunc[]()
 
-proc onapertureRangeChanged*(self: QCameraExposure, slot: proc()) =
+proc onapertureRangeChanged*(self: gen_qcameraexposure_types.QCameraExposure, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQCameraExposure_connect_apertureRangeChanged(self.h, cast[int](addr tmp[]))
-proc shutterSpeedChanged*(self: QCameraExposure, speed: float64): void =
+proc shutterSpeedChanged*(self: gen_qcameraexposure_types.QCameraExposure, speed: float64): void =
 
   fcQCameraExposure_shutterSpeedChanged(self.h, speed)
 
@@ -384,13 +378,13 @@ proc miqt_exec_callback_QCameraExposure_shutterSpeedChanged(slot: int, speed: fl
 
   nimfunc[](slotval1)
 
-proc onshutterSpeedChanged*(self: QCameraExposure, slot: proc(speed: float64)) =
+proc onshutterSpeedChanged*(self: gen_qcameraexposure_types.QCameraExposure, slot: proc(speed: float64)) =
   type Cb = proc(speed: float64)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQCameraExposure_connect_shutterSpeedChanged(self.h, cast[int](addr tmp[]))
-proc shutterSpeedRangeChanged*(self: QCameraExposure, ): void =
+proc shutterSpeedRangeChanged*(self: gen_qcameraexposure_types.QCameraExposure, ): void =
 
   fcQCameraExposure_shutterSpeedRangeChanged(self.h)
 
@@ -400,13 +394,13 @@ proc miqt_exec_callback_QCameraExposure_shutterSpeedRangeChanged(slot: int) {.ex
 
   nimfunc[]()
 
-proc onshutterSpeedRangeChanged*(self: QCameraExposure, slot: proc()) =
+proc onshutterSpeedRangeChanged*(self: gen_qcameraexposure_types.QCameraExposure, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQCameraExposure_connect_shutterSpeedRangeChanged(self.h, cast[int](addr tmp[]))
-proc isoSensitivityChanged*(self: QCameraExposure, param1: cint): void =
+proc isoSensitivityChanged*(self: gen_qcameraexposure_types.QCameraExposure, param1: cint): void =
 
   fcQCameraExposure_isoSensitivityChanged(self.h, param1)
 
@@ -418,13 +412,13 @@ proc miqt_exec_callback_QCameraExposure_isoSensitivityChanged(slot: int, param1:
 
   nimfunc[](slotval1)
 
-proc onisoSensitivityChanged*(self: QCameraExposure, slot: proc(param1: cint)) =
+proc onisoSensitivityChanged*(self: gen_qcameraexposure_types.QCameraExposure, slot: proc(param1: cint)) =
   type Cb = proc(param1: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQCameraExposure_connect_isoSensitivityChanged(self.h, cast[int](addr tmp[]))
-proc exposureCompensationChanged*(self: QCameraExposure, param1: float64): void =
+proc exposureCompensationChanged*(self: gen_qcameraexposure_types.QCameraExposure, param1: float64): void =
 
   fcQCameraExposure_exposureCompensationChanged(self.h, param1)
 
@@ -436,41 +430,41 @@ proc miqt_exec_callback_QCameraExposure_exposureCompensationChanged(slot: int, p
 
   nimfunc[](slotval1)
 
-proc onexposureCompensationChanged*(self: QCameraExposure, slot: proc(param1: float64)) =
+proc onexposureCompensationChanged*(self: gen_qcameraexposure_types.QCameraExposure, slot: proc(param1: float64)) =
   type Cb = proc(param1: float64)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQCameraExposure_connect_exposureCompensationChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QCameraExposure, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qcameraexposure_types.QCameraExposure, s: cstring, c: cstring): string =
 
   let v_ms = fcQCameraExposure_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QCameraExposure, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qcameraexposure_types.QCameraExposure, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQCameraExposure_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QCameraExposure, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qcameraexposure_types.QCameraExposure, s: cstring, c: cstring): string =
 
   let v_ms = fcQCameraExposure_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QCameraExposure, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qcameraexposure_types.QCameraExposure, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQCameraExposure_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc supportedIsoSensitivities1*(self: QCameraExposure, continuous: ptr bool): seq[cint] =
+proc supportedIsoSensitivities1*(self: gen_qcameraexposure_types.QCameraExposure, continuous: ptr bool): seq[cint] =
 
   var v_ma = fcQCameraExposure_supportedIsoSensitivities1(self.h, continuous)
   var vx_ret = newSeq[cint](int(v_ma.len))
@@ -479,7 +473,7 @@ proc supportedIsoSensitivities1*(self: QCameraExposure, continuous: ptr bool): s
     vx_ret[i] = v_outCast[i]
   vx_ret
 
-proc supportedApertures1*(self: QCameraExposure, continuous: ptr bool): seq[float64] =
+proc supportedApertures1*(self: gen_qcameraexposure_types.QCameraExposure, continuous: ptr bool): seq[float64] =
 
   var v_ma = fcQCameraExposure_supportedApertures1(self.h, continuous)
   var vx_ret = newSeq[float64](int(v_ma.len))
@@ -488,7 +482,7 @@ proc supportedApertures1*(self: QCameraExposure, continuous: ptr bool): seq[floa
     vx_ret[i] = v_outCast[i]
   vx_ret
 
-proc supportedShutterSpeeds1*(self: QCameraExposure, continuous: ptr bool): seq[float64] =
+proc supportedShutterSpeeds1*(self: gen_qcameraexposure_types.QCameraExposure, continuous: ptr bool): seq[float64] =
 
   var v_ma = fcQCameraExposure_supportedShutterSpeeds1(self.h, continuous)
   var vx_ret = newSeq[float64](int(v_ma.len))
@@ -497,5 +491,5 @@ proc supportedShutterSpeeds1*(self: QCameraExposure, continuous: ptr bool): seq[
     vx_ret[i] = v_outCast[i]
   vx_ret
 
-proc staticMetaObject*(_: type QCameraExposure): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qcameraexposure_types.QCameraExposure): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQCameraExposure_staticMetaObject())

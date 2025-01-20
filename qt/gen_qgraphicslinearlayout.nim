@@ -41,14 +41,12 @@ import
   gen_qcoreevent,
   gen_qgraphicslayout,
   gen_qgraphicslayoutitem,
-  gen_qnamespace,
   gen_qrect,
   gen_qsize
 export
   gen_qcoreevent,
   gen_qgraphicslayout,
   gen_qgraphicslayoutitem,
-  gen_qnamespace,
   gen_qrect,
   gen_qsize
 
@@ -104,281 +102,246 @@ proc fcQGraphicsLinearLayout_override_virtual_widgetEvent(self: pointer, slot: i
 proc fcQGraphicsLinearLayout_delete(self: pointer) {.importc: "QGraphicsLinearLayout_delete".}
 
 
-func init*(T: type QGraphicsLinearLayout, h: ptr cQGraphicsLinearLayout): QGraphicsLinearLayout =
+func init*(T: type gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, h: ptr cQGraphicsLinearLayout): gen_qgraphicslinearlayout_types.QGraphicsLinearLayout =
   T(h: h)
-proc create*(T: type QGraphicsLinearLayout, ): QGraphicsLinearLayout =
+proc create*(T: type gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, ): gen_qgraphicslinearlayout_types.QGraphicsLinearLayout =
 
-  QGraphicsLinearLayout.init(fcQGraphicsLinearLayout_new())
-proc create*(T: type QGraphicsLinearLayout, orientation: gen_qnamespace.Orientation): QGraphicsLinearLayout =
+  gen_qgraphicslinearlayout_types.QGraphicsLinearLayout.init(fcQGraphicsLinearLayout_new())
+proc create*(T: type gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, orientation: cint): gen_qgraphicslinearlayout_types.QGraphicsLinearLayout =
 
-  QGraphicsLinearLayout.init(fcQGraphicsLinearLayout_new2(cint(orientation)))
-proc create*(T: type QGraphicsLinearLayout, parent: gen_qgraphicslayoutitem.QGraphicsLayoutItem): QGraphicsLinearLayout =
+  gen_qgraphicslinearlayout_types.QGraphicsLinearLayout.init(fcQGraphicsLinearLayout_new2(cint(orientation)))
+proc create*(T: type gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, parent: gen_qgraphicslayoutitem.QGraphicsLayoutItem): gen_qgraphicslinearlayout_types.QGraphicsLinearLayout =
 
-  QGraphicsLinearLayout.init(fcQGraphicsLinearLayout_new3(parent.h))
-proc create*(T: type QGraphicsLinearLayout, orientation: gen_qnamespace.Orientation, parent: gen_qgraphicslayoutitem.QGraphicsLayoutItem): QGraphicsLinearLayout =
+  gen_qgraphicslinearlayout_types.QGraphicsLinearLayout.init(fcQGraphicsLinearLayout_new3(parent.h))
+proc create*(T: type gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, orientation: cint, parent: gen_qgraphicslayoutitem.QGraphicsLayoutItem): gen_qgraphicslinearlayout_types.QGraphicsLinearLayout =
 
-  QGraphicsLinearLayout.init(fcQGraphicsLinearLayout_new4(cint(orientation), parent.h))
-proc setOrientation*(self: QGraphicsLinearLayout, orientation: gen_qnamespace.Orientation): void =
+  gen_qgraphicslinearlayout_types.QGraphicsLinearLayout.init(fcQGraphicsLinearLayout_new4(cint(orientation), parent.h))
+proc setOrientation*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, orientation: cint): void =
 
   fcQGraphicsLinearLayout_setOrientation(self.h, cint(orientation))
 
-proc orientation*(self: QGraphicsLinearLayout, ): gen_qnamespace.Orientation =
+proc orientation*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, ): cint =
 
-  gen_qnamespace.Orientation(fcQGraphicsLinearLayout_orientation(self.h))
+  cint(fcQGraphicsLinearLayout_orientation(self.h))
 
-proc addItem*(self: QGraphicsLinearLayout, item: gen_qgraphicslayoutitem.QGraphicsLayoutItem): void =
+proc addItem*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, item: gen_qgraphicslayoutitem.QGraphicsLayoutItem): void =
 
   fcQGraphicsLinearLayout_addItem(self.h, item.h)
 
-proc addStretch*(self: QGraphicsLinearLayout, ): void =
+proc addStretch*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, ): void =
 
   fcQGraphicsLinearLayout_addStretch(self.h)
 
-proc insertItem*(self: QGraphicsLinearLayout, index: cint, item: gen_qgraphicslayoutitem.QGraphicsLayoutItem): void =
+proc insertItem*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, index: cint, item: gen_qgraphicslayoutitem.QGraphicsLayoutItem): void =
 
   fcQGraphicsLinearLayout_insertItem(self.h, index, item.h)
 
-proc insertStretch*(self: QGraphicsLinearLayout, index: cint): void =
+proc insertStretch*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, index: cint): void =
 
   fcQGraphicsLinearLayout_insertStretch(self.h, index)
 
-proc removeItem*(self: QGraphicsLinearLayout, item: gen_qgraphicslayoutitem.QGraphicsLayoutItem): void =
+proc removeItem*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, item: gen_qgraphicslayoutitem.QGraphicsLayoutItem): void =
 
   fcQGraphicsLinearLayout_removeItem(self.h, item.h)
 
-proc removeAt*(self: QGraphicsLinearLayout, index: cint): void =
+proc removeAt*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, index: cint): void =
 
   fcQGraphicsLinearLayout_removeAt(self.h, index)
 
-proc setSpacing*(self: QGraphicsLinearLayout, spacing: float64): void =
+proc setSpacing*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, spacing: float64): void =
 
   fcQGraphicsLinearLayout_setSpacing(self.h, spacing)
 
-proc spacing*(self: QGraphicsLinearLayout, ): float64 =
+proc spacing*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, ): float64 =
 
   fcQGraphicsLinearLayout_spacing(self.h)
 
-proc setItemSpacing*(self: QGraphicsLinearLayout, index: cint, spacing: float64): void =
+proc setItemSpacing*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, index: cint, spacing: float64): void =
 
   fcQGraphicsLinearLayout_setItemSpacing(self.h, index, spacing)
 
-proc itemSpacing*(self: QGraphicsLinearLayout, index: cint): float64 =
+proc itemSpacing*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, index: cint): float64 =
 
   fcQGraphicsLinearLayout_itemSpacing(self.h, index)
 
-proc setStretchFactor*(self: QGraphicsLinearLayout, item: gen_qgraphicslayoutitem.QGraphicsLayoutItem, stretch: cint): void =
+proc setStretchFactor*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, item: gen_qgraphicslayoutitem.QGraphicsLayoutItem, stretch: cint): void =
 
   fcQGraphicsLinearLayout_setStretchFactor(self.h, item.h, stretch)
 
-proc stretchFactor*(self: QGraphicsLinearLayout, item: gen_qgraphicslayoutitem.QGraphicsLayoutItem): cint =
+proc stretchFactor*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, item: gen_qgraphicslayoutitem.QGraphicsLayoutItem): cint =
 
   fcQGraphicsLinearLayout_stretchFactor(self.h, item.h)
 
-proc setAlignment*(self: QGraphicsLinearLayout, item: gen_qgraphicslayoutitem.QGraphicsLayoutItem, alignment: gen_qnamespace.AlignmentFlag): void =
+proc setAlignment*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, item: gen_qgraphicslayoutitem.QGraphicsLayoutItem, alignment: cint): void =
 
   fcQGraphicsLinearLayout_setAlignment(self.h, item.h, cint(alignment))
 
-proc alignment*(self: QGraphicsLinearLayout, item: gen_qgraphicslayoutitem.QGraphicsLayoutItem): gen_qnamespace.AlignmentFlag =
+proc alignment*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, item: gen_qgraphicslayoutitem.QGraphicsLayoutItem): cint =
 
-  gen_qnamespace.AlignmentFlag(fcQGraphicsLinearLayout_alignment(self.h, item.h))
+  cint(fcQGraphicsLinearLayout_alignment(self.h, item.h))
 
-proc setGeometry*(self: QGraphicsLinearLayout, rect: gen_qrect.QRectF): void =
+proc setGeometry*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, rect: gen_qrect.QRectF): void =
 
   fcQGraphicsLinearLayout_setGeometry(self.h, rect.h)
 
-proc count*(self: QGraphicsLinearLayout, ): cint =
+proc count*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, ): cint =
 
   fcQGraphicsLinearLayout_count(self.h)
 
-proc itemAt*(self: QGraphicsLinearLayout, index: cint): gen_qgraphicslayoutitem.QGraphicsLayoutItem =
+proc itemAt*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, index: cint): gen_qgraphicslayoutitem.QGraphicsLayoutItem =
 
   gen_qgraphicslayoutitem.QGraphicsLayoutItem(h: fcQGraphicsLinearLayout_itemAt(self.h, index))
 
-proc invalidate*(self: QGraphicsLinearLayout, ): void =
+proc invalidate*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, ): void =
 
   fcQGraphicsLinearLayout_invalidate(self.h)
 
-proc sizeHint*(self: QGraphicsLinearLayout, which: gen_qnamespace.SizeHint, constraint: gen_qsize.QSizeF): gen_qsize.QSizeF =
+proc sizeHint*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, which: cint, constraint: gen_qsize.QSizeF): gen_qsize.QSizeF =
 
   gen_qsize.QSizeF(h: fcQGraphicsLinearLayout_sizeHint(self.h, cint(which), constraint.h))
 
-proc dump*(self: QGraphicsLinearLayout, ): void =
+proc dump*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, ): void =
 
   fcQGraphicsLinearLayout_dump(self.h)
 
-proc addStretch1*(self: QGraphicsLinearLayout, stretch: cint): void =
+proc addStretch1*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, stretch: cint): void =
 
   fcQGraphicsLinearLayout_addStretch1(self.h, stretch)
 
-proc insertStretch2*(self: QGraphicsLinearLayout, index: cint, stretch: cint): void =
+proc insertStretch2*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, index: cint, stretch: cint): void =
 
   fcQGraphicsLinearLayout_insertStretch2(self.h, index, stretch)
 
-proc dump1*(self: QGraphicsLinearLayout, indent: cint): void =
+proc dump1*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, indent: cint): void =
 
   fcQGraphicsLinearLayout_dump1(self.h, indent)
 
-proc callVirtualBase_removeAt(self: QGraphicsLinearLayout, index: cint): void =
-
+proc QGraphicsLinearLayoutremoveAt*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, index: cint): void =
 
   fQGraphicsLinearLayout_virtualbase_removeAt(self.h, index)
 
-type QGraphicsLinearLayoutremoveAtBase* = proc(index: cint): void
-proc onremoveAt*(self: QGraphicsLinearLayout, slot: proc(super: QGraphicsLinearLayoutremoveAtBase, index: cint): void) =
+type QGraphicsLinearLayoutremoveAtProc* = proc(index: cint): void
+proc onremoveAt*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, slot: QGraphicsLinearLayoutremoveAtProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsLinearLayoutremoveAtBase, index: cint): void
-  var tmp = new Cb
+  var tmp = new QGraphicsLinearLayoutremoveAtProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsLinearLayout_override_virtual_removeAt(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsLinearLayout_removeAt(self: ptr cQGraphicsLinearLayout, slot: int, index: cint): void {.exportc: "miqt_exec_callback_QGraphicsLinearLayout_removeAt ".} =
-  type Cb = proc(super: QGraphicsLinearLayoutremoveAtBase, index: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(index: cint): auto =
-    callVirtualBase_removeAt(QGraphicsLinearLayout(h: self), index)
+  var nimfunc = cast[ptr QGraphicsLinearLayoutremoveAtProc](cast[pointer](slot))
   let slotval1 = index
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_setGeometry(self: QGraphicsLinearLayout, rect: gen_qrect.QRectF): void =
-
+  nimfunc[](slotval1)
+proc QGraphicsLinearLayoutsetGeometry*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, rect: gen_qrect.QRectF): void =
 
   fQGraphicsLinearLayout_virtualbase_setGeometry(self.h, rect.h)
 
-type QGraphicsLinearLayoutsetGeometryBase* = proc(rect: gen_qrect.QRectF): void
-proc onsetGeometry*(self: QGraphicsLinearLayout, slot: proc(super: QGraphicsLinearLayoutsetGeometryBase, rect: gen_qrect.QRectF): void) =
+type QGraphicsLinearLayoutsetGeometryProc* = proc(rect: gen_qrect.QRectF): void
+proc onsetGeometry*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, slot: QGraphicsLinearLayoutsetGeometryProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsLinearLayoutsetGeometryBase, rect: gen_qrect.QRectF): void
-  var tmp = new Cb
+  var tmp = new QGraphicsLinearLayoutsetGeometryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsLinearLayout_override_virtual_setGeometry(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsLinearLayout_setGeometry(self: ptr cQGraphicsLinearLayout, slot: int, rect: pointer): void {.exportc: "miqt_exec_callback_QGraphicsLinearLayout_setGeometry ".} =
-  type Cb = proc(super: QGraphicsLinearLayoutsetGeometryBase, rect: gen_qrect.QRectF): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(rect: gen_qrect.QRectF): auto =
-    callVirtualBase_setGeometry(QGraphicsLinearLayout(h: self), rect)
+  var nimfunc = cast[ptr QGraphicsLinearLayoutsetGeometryProc](cast[pointer](slot))
   let slotval1 = gen_qrect.QRectF(h: rect)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_count(self: QGraphicsLinearLayout, ): cint =
-
+  nimfunc[](slotval1)
+proc QGraphicsLinearLayoutcount*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, ): cint =
 
   fQGraphicsLinearLayout_virtualbase_count(self.h)
 
-type QGraphicsLinearLayoutcountBase* = proc(): cint
-proc oncount*(self: QGraphicsLinearLayout, slot: proc(super: QGraphicsLinearLayoutcountBase): cint) =
+type QGraphicsLinearLayoutcountProc* = proc(): cint
+proc oncount*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, slot: QGraphicsLinearLayoutcountProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsLinearLayoutcountBase): cint
-  var tmp = new Cb
+  var tmp = new QGraphicsLinearLayoutcountProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsLinearLayout_override_virtual_count(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsLinearLayout_count(self: ptr cQGraphicsLinearLayout, slot: int): cint {.exportc: "miqt_exec_callback_QGraphicsLinearLayout_count ".} =
-  type Cb = proc(super: QGraphicsLinearLayoutcountBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_count(QGraphicsLinearLayout(h: self), )
+  var nimfunc = cast[ptr QGraphicsLinearLayoutcountProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_itemAt(self: QGraphicsLinearLayout, index: cint): gen_qgraphicslayoutitem.QGraphicsLayoutItem =
-
+proc QGraphicsLinearLayoutitemAt*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, index: cint): gen_qgraphicslayoutitem.QGraphicsLayoutItem =
 
   gen_qgraphicslayoutitem.QGraphicsLayoutItem(h: fQGraphicsLinearLayout_virtualbase_itemAt(self.h, index))
 
-type QGraphicsLinearLayoutitemAtBase* = proc(index: cint): gen_qgraphicslayoutitem.QGraphicsLayoutItem
-proc onitemAt*(self: QGraphicsLinearLayout, slot: proc(super: QGraphicsLinearLayoutitemAtBase, index: cint): gen_qgraphicslayoutitem.QGraphicsLayoutItem) =
+type QGraphicsLinearLayoutitemAtProc* = proc(index: cint): gen_qgraphicslayoutitem.QGraphicsLayoutItem
+proc onitemAt*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, slot: QGraphicsLinearLayoutitemAtProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsLinearLayoutitemAtBase, index: cint): gen_qgraphicslayoutitem.QGraphicsLayoutItem
-  var tmp = new Cb
+  var tmp = new QGraphicsLinearLayoutitemAtProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsLinearLayout_override_virtual_itemAt(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsLinearLayout_itemAt(self: ptr cQGraphicsLinearLayout, slot: int, index: cint): pointer {.exportc: "miqt_exec_callback_QGraphicsLinearLayout_itemAt ".} =
-  type Cb = proc(super: QGraphicsLinearLayoutitemAtBase, index: cint): gen_qgraphicslayoutitem.QGraphicsLayoutItem
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(index: cint): auto =
-    callVirtualBase_itemAt(QGraphicsLinearLayout(h: self), index)
+  var nimfunc = cast[ptr QGraphicsLinearLayoutitemAtProc](cast[pointer](slot))
   let slotval1 = index
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_invalidate(self: QGraphicsLinearLayout, ): void =
-
+proc QGraphicsLinearLayoutinvalidate*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, ): void =
 
   fQGraphicsLinearLayout_virtualbase_invalidate(self.h)
 
-type QGraphicsLinearLayoutinvalidateBase* = proc(): void
-proc oninvalidate*(self: QGraphicsLinearLayout, slot: proc(super: QGraphicsLinearLayoutinvalidateBase): void) =
+type QGraphicsLinearLayoutinvalidateProc* = proc(): void
+proc oninvalidate*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, slot: QGraphicsLinearLayoutinvalidateProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsLinearLayoutinvalidateBase): void
-  var tmp = new Cb
+  var tmp = new QGraphicsLinearLayoutinvalidateProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsLinearLayout_override_virtual_invalidate(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsLinearLayout_invalidate(self: ptr cQGraphicsLinearLayout, slot: int): void {.exportc: "miqt_exec_callback_QGraphicsLinearLayout_invalidate ".} =
-  type Cb = proc(super: QGraphicsLinearLayoutinvalidateBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_invalidate(QGraphicsLinearLayout(h: self), )
+  var nimfunc = cast[ptr QGraphicsLinearLayoutinvalidateProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_sizeHint(self: QGraphicsLinearLayout, which: gen_qnamespace.SizeHint, constraint: gen_qsize.QSizeF): gen_qsize.QSizeF =
-
+  nimfunc[]()
+proc QGraphicsLinearLayoutsizeHint*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, which: cint, constraint: gen_qsize.QSizeF): gen_qsize.QSizeF =
 
   gen_qsize.QSizeF(h: fQGraphicsLinearLayout_virtualbase_sizeHint(self.h, cint(which), constraint.h))
 
-type QGraphicsLinearLayoutsizeHintBase* = proc(which: gen_qnamespace.SizeHint, constraint: gen_qsize.QSizeF): gen_qsize.QSizeF
-proc onsizeHint*(self: QGraphicsLinearLayout, slot: proc(super: QGraphicsLinearLayoutsizeHintBase, which: gen_qnamespace.SizeHint, constraint: gen_qsize.QSizeF): gen_qsize.QSizeF) =
+type QGraphicsLinearLayoutsizeHintProc* = proc(which: cint, constraint: gen_qsize.QSizeF): gen_qsize.QSizeF
+proc onsizeHint*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, slot: QGraphicsLinearLayoutsizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsLinearLayoutsizeHintBase, which: gen_qnamespace.SizeHint, constraint: gen_qsize.QSizeF): gen_qsize.QSizeF
-  var tmp = new Cb
+  var tmp = new QGraphicsLinearLayoutsizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsLinearLayout_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsLinearLayout_sizeHint(self: ptr cQGraphicsLinearLayout, slot: int, which: cint, constraint: pointer): pointer {.exportc: "miqt_exec_callback_QGraphicsLinearLayout_sizeHint ".} =
-  type Cb = proc(super: QGraphicsLinearLayoutsizeHintBase, which: gen_qnamespace.SizeHint, constraint: gen_qsize.QSizeF): gen_qsize.QSizeF
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(which: gen_qnamespace.SizeHint, constraint: gen_qsize.QSizeF): auto =
-    callVirtualBase_sizeHint(QGraphicsLinearLayout(h: self), which, constraint)
-  let slotval1 = gen_qnamespace.SizeHint(which)
+  var nimfunc = cast[ptr QGraphicsLinearLayoutsizeHintProc](cast[pointer](slot))
+  let slotval1 = cint(which)
 
   let slotval2 = gen_qsize.QSizeF(h: constraint)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn.h
-proc callVirtualBase_getContentsMargins(self: QGraphicsLinearLayout, left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): void =
-
+proc QGraphicsLinearLayoutgetContentsMargins*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): void =
 
   fQGraphicsLinearLayout_virtualbase_getContentsMargins(self.h, left, top, right, bottom)
 
-type QGraphicsLinearLayoutgetContentsMarginsBase* = proc(left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): void
-proc ongetContentsMargins*(self: QGraphicsLinearLayout, slot: proc(super: QGraphicsLinearLayoutgetContentsMarginsBase, left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): void) =
+type QGraphicsLinearLayoutgetContentsMarginsProc* = proc(left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): void
+proc ongetContentsMargins*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, slot: QGraphicsLinearLayoutgetContentsMarginsProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsLinearLayoutgetContentsMarginsBase, left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): void
-  var tmp = new Cb
+  var tmp = new QGraphicsLinearLayoutgetContentsMarginsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsLinearLayout_override_virtual_getContentsMargins(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsLinearLayout_getContentsMargins(self: ptr cQGraphicsLinearLayout, slot: int, left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): void {.exportc: "miqt_exec_callback_QGraphicsLinearLayout_getContentsMargins ".} =
-  type Cb = proc(super: QGraphicsLinearLayoutgetContentsMarginsBase, left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): auto =
-    callVirtualBase_getContentsMargins(QGraphicsLinearLayout(h: self), left, top, right, bottom)
+  var nimfunc = cast[ptr QGraphicsLinearLayoutgetContentsMarginsProc](cast[pointer](slot))
   let slotval1 = left
 
   let slotval2 = top
@@ -388,50 +351,40 @@ proc miqt_exec_callback_QGraphicsLinearLayout_getContentsMargins(self: ptr cQGra
   let slotval4 = bottom
 
 
-  nimfunc[](superCall, slotval1, slotval2, slotval3, slotval4)
-proc callVirtualBase_updateGeometry(self: QGraphicsLinearLayout, ): void =
-
+  nimfunc[](slotval1, slotval2, slotval3, slotval4)
+proc QGraphicsLinearLayoutupdateGeometry*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, ): void =
 
   fQGraphicsLinearLayout_virtualbase_updateGeometry(self.h)
 
-type QGraphicsLinearLayoutupdateGeometryBase* = proc(): void
-proc onupdateGeometry*(self: QGraphicsLinearLayout, slot: proc(super: QGraphicsLinearLayoutupdateGeometryBase): void) =
+type QGraphicsLinearLayoutupdateGeometryProc* = proc(): void
+proc onupdateGeometry*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, slot: QGraphicsLinearLayoutupdateGeometryProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsLinearLayoutupdateGeometryBase): void
-  var tmp = new Cb
+  var tmp = new QGraphicsLinearLayoutupdateGeometryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsLinearLayout_override_virtual_updateGeometry(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsLinearLayout_updateGeometry(self: ptr cQGraphicsLinearLayout, slot: int): void {.exportc: "miqt_exec_callback_QGraphicsLinearLayout_updateGeometry ".} =
-  type Cb = proc(super: QGraphicsLinearLayoutupdateGeometryBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_updateGeometry(QGraphicsLinearLayout(h: self), )
+  var nimfunc = cast[ptr QGraphicsLinearLayoutupdateGeometryProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_widgetEvent(self: QGraphicsLinearLayout, e: gen_qcoreevent.QEvent): void =
-
+  nimfunc[]()
+proc QGraphicsLinearLayoutwidgetEvent*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, e: gen_qcoreevent.QEvent): void =
 
   fQGraphicsLinearLayout_virtualbase_widgetEvent(self.h, e.h)
 
-type QGraphicsLinearLayoutwidgetEventBase* = proc(e: gen_qcoreevent.QEvent): void
-proc onwidgetEvent*(self: QGraphicsLinearLayout, slot: proc(super: QGraphicsLinearLayoutwidgetEventBase, e: gen_qcoreevent.QEvent): void) =
+type QGraphicsLinearLayoutwidgetEventProc* = proc(e: gen_qcoreevent.QEvent): void
+proc onwidgetEvent*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, slot: QGraphicsLinearLayoutwidgetEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsLinearLayoutwidgetEventBase, e: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QGraphicsLinearLayoutwidgetEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsLinearLayout_override_virtual_widgetEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsLinearLayout_widgetEvent(self: ptr cQGraphicsLinearLayout, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QGraphicsLinearLayout_widgetEvent ".} =
-  type Cb = proc(super: QGraphicsLinearLayoutwidgetEventBase, e: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_widgetEvent(QGraphicsLinearLayout(h: self), e)
+  var nimfunc = cast[ptr QGraphicsLinearLayoutwidgetEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc delete*(self: QGraphicsLinearLayout) =
+  nimfunc[](slotval1)
+proc delete*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout) =
   fcQGraphicsLinearLayout_delete(self.h)

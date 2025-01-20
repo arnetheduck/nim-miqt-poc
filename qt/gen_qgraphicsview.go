@@ -697,7 +697,7 @@ func (this *QGraphicsView) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QGraphicsView_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QGraphicsView) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QGraphicsView) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QGraphicsView_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -724,7 +724,7 @@ func (this *QGraphicsView) callVirtualBase_Metacast(param1 string) unsafe.Pointe
 	return (unsafe.Pointer)(C.QGraphicsView_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QGraphicsView) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QGraphicsView) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QGraphicsView_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

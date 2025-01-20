@@ -34,91 +34,81 @@ const cflags = gorge("pkg-config -cflags Qt5WebKitWidgets")
 {.compile("gen_qwebsettings.cpp", cflags).}
 
 
-type QWebSettingsFontFamily* = cint
-const
-  QWebSettingsStandardFont* = 0
-  QWebSettingsFixedFont* = 1
-  QWebSettingsSerifFont* = 2
-  QWebSettingsSansSerifFont* = 3
-  QWebSettingsCursiveFont* = 4
-  QWebSettingsFantasyFont* = 5
+type QWebSettingsFontFamilyEnum* = distinct cint
+template StandardFont*(_: type QWebSettingsFontFamilyEnum): untyped = 0
+template FixedFont*(_: type QWebSettingsFontFamilyEnum): untyped = 1
+template SerifFont*(_: type QWebSettingsFontFamilyEnum): untyped = 2
+template SansSerifFont*(_: type QWebSettingsFontFamilyEnum): untyped = 3
+template CursiveFont*(_: type QWebSettingsFontFamilyEnum): untyped = 4
+template FantasyFont*(_: type QWebSettingsFontFamilyEnum): untyped = 5
 
 
-
-type QWebSettingsWebAttribute* = cint
-const
-  QWebSettingsAutoLoadImages* = 0
-  QWebSettingsJavascriptEnabled* = 1
-  QWebSettingsJavaEnabled* = 2
-  QWebSettingsPluginsEnabled* = 3
-  QWebSettingsPrivateBrowsingEnabled* = 4
-  QWebSettingsJavascriptCanOpenWindows* = 5
-  QWebSettingsJavascriptCanAccessClipboard* = 6
-  QWebSettingsDeveloperExtrasEnabled* = 7
-  QWebSettingsLinksIncludedInFocusChain* = 8
-  QWebSettingsZoomTextOnly* = 9
-  QWebSettingsPrintElementBackgrounds* = 10
-  QWebSettingsOfflineStorageDatabaseEnabled* = 11
-  QWebSettingsOfflineWebApplicationCacheEnabled* = 12
-  QWebSettingsLocalStorageEnabled* = 13
-  QWebSettingsLocalStorageDatabaseEnabled* = 13
-  QWebSettingsLocalContentCanAccessRemoteUrls* = 14
-  QWebSettingsDnsPrefetchEnabled* = 15
-  QWebSettingsXSSAuditingEnabled* = 16
-  QWebSettingsAcceleratedCompositingEnabled* = 17
-  QWebSettingsSpatialNavigationEnabled* = 18
-  QWebSettingsLocalContentCanAccessFileUrls* = 19
-  QWebSettingsTiledBackingStoreEnabled* = 20
-  QWebSettingsFrameFlatteningEnabled* = 21
-  QWebSettingsSiteSpecificQuirksEnabled* = 22
-  QWebSettingsJavascriptCanCloseWindows* = 23
-  QWebSettingsWebGLEnabled* = 24
-  QWebSettingsCSSRegionsEnabled* = 25
-  QWebSettingsHyperlinkAuditingEnabled* = 26
-  QWebSettingsCSSGridLayoutEnabled* = 27
-  QWebSettingsScrollAnimatorEnabled* = 28
-  QWebSettingsCaretBrowsingEnabled* = 29
-  QWebSettingsNotificationsEnabled* = 30
-  QWebSettingsWebAudioEnabled* = 31
-  QWebSettingsAccelerated2dCanvasEnabled* = 32
-  QWebSettingsMediaSourceEnabled* = 33
-  QWebSettingsMediaEnabled* = 34
-  QWebSettingsWebSecurityEnabled* = 35
-  QWebSettingsFullScreenSupportEnabled* = 36
-  QWebSettingsImagesEnabled* = 37
-  QWebSettingsAllowRunningInsecureContent* = 38
-  QWebSettingsErrorPageEnabled* = 39
+type QWebSettingsWebAttributeEnum* = distinct cint
+template AutoLoadImages*(_: type QWebSettingsWebAttributeEnum): untyped = 0
+template JavascriptEnabled*(_: type QWebSettingsWebAttributeEnum): untyped = 1
+template JavaEnabled*(_: type QWebSettingsWebAttributeEnum): untyped = 2
+template PluginsEnabled*(_: type QWebSettingsWebAttributeEnum): untyped = 3
+template PrivateBrowsingEnabled*(_: type QWebSettingsWebAttributeEnum): untyped = 4
+template JavascriptCanOpenWindows*(_: type QWebSettingsWebAttributeEnum): untyped = 5
+template JavascriptCanAccessClipboard*(_: type QWebSettingsWebAttributeEnum): untyped = 6
+template DeveloperExtrasEnabled*(_: type QWebSettingsWebAttributeEnum): untyped = 7
+template LinksIncludedInFocusChain*(_: type QWebSettingsWebAttributeEnum): untyped = 8
+template ZoomTextOnly*(_: type QWebSettingsWebAttributeEnum): untyped = 9
+template PrintElementBackgrounds*(_: type QWebSettingsWebAttributeEnum): untyped = 10
+template OfflineStorageDatabaseEnabled*(_: type QWebSettingsWebAttributeEnum): untyped = 11
+template OfflineWebApplicationCacheEnabled*(_: type QWebSettingsWebAttributeEnum): untyped = 12
+template LocalStorageEnabled*(_: type QWebSettingsWebAttributeEnum): untyped = 13
+template LocalStorageDatabaseEnabled*(_: type QWebSettingsWebAttributeEnum): untyped = 13
+template LocalContentCanAccessRemoteUrls*(_: type QWebSettingsWebAttributeEnum): untyped = 14
+template DnsPrefetchEnabled*(_: type QWebSettingsWebAttributeEnum): untyped = 15
+template XSSAuditingEnabled*(_: type QWebSettingsWebAttributeEnum): untyped = 16
+template AcceleratedCompositingEnabled*(_: type QWebSettingsWebAttributeEnum): untyped = 17
+template SpatialNavigationEnabled*(_: type QWebSettingsWebAttributeEnum): untyped = 18
+template LocalContentCanAccessFileUrls*(_: type QWebSettingsWebAttributeEnum): untyped = 19
+template TiledBackingStoreEnabled*(_: type QWebSettingsWebAttributeEnum): untyped = 20
+template FrameFlatteningEnabled*(_: type QWebSettingsWebAttributeEnum): untyped = 21
+template SiteSpecificQuirksEnabled*(_: type QWebSettingsWebAttributeEnum): untyped = 22
+template JavascriptCanCloseWindows*(_: type QWebSettingsWebAttributeEnum): untyped = 23
+template WebGLEnabled*(_: type QWebSettingsWebAttributeEnum): untyped = 24
+template CSSRegionsEnabled*(_: type QWebSettingsWebAttributeEnum): untyped = 25
+template HyperlinkAuditingEnabled*(_: type QWebSettingsWebAttributeEnum): untyped = 26
+template CSSGridLayoutEnabled*(_: type QWebSettingsWebAttributeEnum): untyped = 27
+template ScrollAnimatorEnabled*(_: type QWebSettingsWebAttributeEnum): untyped = 28
+template CaretBrowsingEnabled*(_: type QWebSettingsWebAttributeEnum): untyped = 29
+template NotificationsEnabled*(_: type QWebSettingsWebAttributeEnum): untyped = 30
+template WebAudioEnabled*(_: type QWebSettingsWebAttributeEnum): untyped = 31
+template Accelerated2dCanvasEnabled*(_: type QWebSettingsWebAttributeEnum): untyped = 32
+template MediaSourceEnabled*(_: type QWebSettingsWebAttributeEnum): untyped = 33
+template MediaEnabled*(_: type QWebSettingsWebAttributeEnum): untyped = 34
+template WebSecurityEnabled*(_: type QWebSettingsWebAttributeEnum): untyped = 35
+template FullScreenSupportEnabled*(_: type QWebSettingsWebAttributeEnum): untyped = 36
+template ImagesEnabled*(_: type QWebSettingsWebAttributeEnum): untyped = 37
+template AllowRunningInsecureContent*(_: type QWebSettingsWebAttributeEnum): untyped = 38
+template ErrorPageEnabled*(_: type QWebSettingsWebAttributeEnum): untyped = 39
 
 
-
-type QWebSettingsWebGraphic* = cint
-const
-  QWebSettingsMissingImageGraphic* = 0
-  QWebSettingsMissingPluginGraphic* = 1
-  QWebSettingsDefaultFrameIconGraphic* = 2
-  QWebSettingsTextAreaSizeGripCornerGraphic* = 3
-  QWebSettingsDeleteButtonGraphic* = 4
-  QWebSettingsInputSpeechButtonGraphic* = 5
-  QWebSettingsSearchCancelButtonGraphic* = 6
-  QWebSettingsSearchCancelButtonPressedGraphic* = 7
+type QWebSettingsWebGraphicEnum* = distinct cint
+template MissingImageGraphic*(_: type QWebSettingsWebGraphicEnum): untyped = 0
+template MissingPluginGraphic*(_: type QWebSettingsWebGraphicEnum): untyped = 1
+template DefaultFrameIconGraphic*(_: type QWebSettingsWebGraphicEnum): untyped = 2
+template TextAreaSizeGripCornerGraphic*(_: type QWebSettingsWebGraphicEnum): untyped = 3
+template DeleteButtonGraphic*(_: type QWebSettingsWebGraphicEnum): untyped = 4
+template InputSpeechButtonGraphic*(_: type QWebSettingsWebGraphicEnum): untyped = 5
+template SearchCancelButtonGraphic*(_: type QWebSettingsWebGraphicEnum): untyped = 6
+template SearchCancelButtonPressedGraphic*(_: type QWebSettingsWebGraphicEnum): untyped = 7
 
 
-
-type QWebSettingsFontSize* = cint
-const
-  QWebSettingsMinimumFontSize* = 0
-  QWebSettingsMinimumLogicalFontSize* = 1
-  QWebSettingsDefaultFontSize* = 2
-  QWebSettingsDefaultFixedFontSize* = 3
+type QWebSettingsFontSizeEnum* = distinct cint
+template MinimumFontSize*(_: type QWebSettingsFontSizeEnum): untyped = 0
+template MinimumLogicalFontSize*(_: type QWebSettingsFontSizeEnum): untyped = 1
+template DefaultFontSize*(_: type QWebSettingsFontSizeEnum): untyped = 2
+template DefaultFixedFontSize*(_: type QWebSettingsFontSizeEnum): untyped = 3
 
 
-
-type QWebSettingsThirdPartyCookiePolicy* = cint
-const
-  QWebSettingsAlwaysAllowThirdPartyCookies* = 0
-  QWebSettingsAlwaysBlockThirdPartyCookies* = 1
-  QWebSettingsAllowThirdPartyWithExistingCookies* = 2
-
+type QWebSettingsThirdPartyCookiePolicyEnum* = distinct cint
+template AlwaysAllowThirdPartyCookies*(_: type QWebSettingsThirdPartyCookiePolicyEnum): untyped = 0
+template AlwaysBlockThirdPartyCookies*(_: type QWebSettingsThirdPartyCookiePolicyEnum): untyped = 1
+template AllowThirdPartyWithExistingCookies*(_: type QWebSettingsThirdPartyCookiePolicyEnum): untyped = 2
 
 
 import gen_qwebsettings_types
@@ -179,90 +169,90 @@ proc fcQWebSettings_cssMediaType(self: pointer, ): struct_miqt_string {.importc:
 proc fcQWebSettings_enablePersistentStorage1(path: struct_miqt_string): void {.importc: "QWebSettings_enablePersistentStorage1".}
 
 
-func init*(T: type QWebSettings, h: ptr cQWebSettings): QWebSettings =
+func init*(T: type gen_qwebsettings_types.QWebSettings, h: ptr cQWebSettings): gen_qwebsettings_types.QWebSettings =
   T(h: h)
-proc globalSettings*(_: type QWebSettings, ): QWebSettings =
+proc globalSettings*(_: type gen_qwebsettings_types.QWebSettings, ): gen_qwebsettings_types.QWebSettings =
 
-  QWebSettings(h: fcQWebSettings_globalSettings())
+  gen_qwebsettings_types.QWebSettings(h: fcQWebSettings_globalSettings())
 
-proc setFontFamily*(self: QWebSettings, which: QWebSettingsFontFamily, family: string): void =
+proc setFontFamily*(self: gen_qwebsettings_types.QWebSettings, which: cint, family: string): void =
 
   fcQWebSettings_setFontFamily(self.h, cint(which), struct_miqt_string(data: family, len: csize_t(len(family))))
 
-proc fontFamily*(self: QWebSettings, which: QWebSettingsFontFamily): string =
+proc fontFamily*(self: gen_qwebsettings_types.QWebSettings, which: cint): string =
 
   let v_ms = fcQWebSettings_fontFamily(self.h, cint(which))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc resetFontFamily*(self: QWebSettings, which: QWebSettingsFontFamily): void =
+proc resetFontFamily*(self: gen_qwebsettings_types.QWebSettings, which: cint): void =
 
   fcQWebSettings_resetFontFamily(self.h, cint(which))
 
-proc setFontSize*(self: QWebSettings, typeVal: QWebSettingsFontSize, size: cint): void =
+proc setFontSize*(self: gen_qwebsettings_types.QWebSettings, typeVal: cint, size: cint): void =
 
   fcQWebSettings_setFontSize(self.h, cint(typeVal), size)
 
-proc fontSize*(self: QWebSettings, typeVal: QWebSettingsFontSize): cint =
+proc fontSize*(self: gen_qwebsettings_types.QWebSettings, typeVal: cint): cint =
 
   fcQWebSettings_fontSize(self.h, cint(typeVal))
 
-proc resetFontSize*(self: QWebSettings, typeVal: QWebSettingsFontSize): void =
+proc resetFontSize*(self: gen_qwebsettings_types.QWebSettings, typeVal: cint): void =
 
   fcQWebSettings_resetFontSize(self.h, cint(typeVal))
 
-proc setAttribute*(self: QWebSettings, attr: QWebSettingsWebAttribute, on: bool): void =
+proc setAttribute*(self: gen_qwebsettings_types.QWebSettings, attr: cint, on: bool): void =
 
   fcQWebSettings_setAttribute(self.h, cint(attr), on)
 
-proc testAttribute*(self: QWebSettings, attr: QWebSettingsWebAttribute): bool =
+proc testAttribute*(self: gen_qwebsettings_types.QWebSettings, attr: cint): bool =
 
   fcQWebSettings_testAttribute(self.h, cint(attr))
 
-proc resetAttribute*(self: QWebSettings, attr: QWebSettingsWebAttribute): void =
+proc resetAttribute*(self: gen_qwebsettings_types.QWebSettings, attr: cint): void =
 
   fcQWebSettings_resetAttribute(self.h, cint(attr))
 
-proc setUserStyleSheetUrl*(self: QWebSettings, location: gen_qurl.QUrl): void =
+proc setUserStyleSheetUrl*(self: gen_qwebsettings_types.QWebSettings, location: gen_qurl.QUrl): void =
 
   fcQWebSettings_setUserStyleSheetUrl(self.h, location.h)
 
-proc userStyleSheetUrl*(self: QWebSettings, ): gen_qurl.QUrl =
+proc userStyleSheetUrl*(self: gen_qwebsettings_types.QWebSettings, ): gen_qurl.QUrl =
 
   gen_qurl.QUrl(h: fcQWebSettings_userStyleSheetUrl(self.h))
 
-proc setDefaultTextEncoding*(self: QWebSettings, encoding: string): void =
+proc setDefaultTextEncoding*(self: gen_qwebsettings_types.QWebSettings, encoding: string): void =
 
   fcQWebSettings_setDefaultTextEncoding(self.h, struct_miqt_string(data: encoding, len: csize_t(len(encoding))))
 
-proc defaultTextEncoding*(self: QWebSettings, ): string =
+proc defaultTextEncoding*(self: gen_qwebsettings_types.QWebSettings, ): string =
 
   let v_ms = fcQWebSettings_defaultTextEncoding(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setIconDatabasePath*(_: type QWebSettings, location: string): void =
+proc setIconDatabasePath*(_: type gen_qwebsettings_types.QWebSettings, location: string): void =
 
   fcQWebSettings_setIconDatabasePath(struct_miqt_string(data: location, len: csize_t(len(location))))
 
-proc iconDatabasePath*(_: type QWebSettings, ): string =
+proc iconDatabasePath*(_: type gen_qwebsettings_types.QWebSettings, ): string =
 
   let v_ms = fcQWebSettings_iconDatabasePath()
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc clearIconDatabase*(_: type QWebSettings, ): void =
+proc clearIconDatabase*(_: type gen_qwebsettings_types.QWebSettings, ): void =
 
   fcQWebSettings_clearIconDatabase()
 
-proc iconForUrl*(_: type QWebSettings, url: gen_qurl.QUrl): gen_qicon.QIcon =
+proc iconForUrl*(_: type gen_qwebsettings_types.QWebSettings, url: gen_qurl.QUrl): gen_qicon.QIcon =
 
   gen_qicon.QIcon(h: fcQWebSettings_iconForUrl(url.h))
 
-proc setPluginSearchPaths*(_: type QWebSettings, paths: seq[string]): void =
+proc setPluginSearchPaths*(_: type gen_qwebsettings_types.QWebSettings, paths: seq[string]): void =
 
   var paths_CArray = newSeq[struct_miqt_string](len(paths))
   for i in 0..<len(paths):
@@ -270,7 +260,7 @@ proc setPluginSearchPaths*(_: type QWebSettings, paths: seq[string]): void =
 
   fcQWebSettings_setPluginSearchPaths(struct_miqt_array(len: csize_t(len(paths)), data: if len(paths) == 0: nil else: addr(paths_CArray[0])))
 
-proc pluginSearchPaths*(_: type QWebSettings, ): seq[string] =
+proc pluginSearchPaths*(_: type gen_qwebsettings_types.QWebSettings, ): seq[string] =
 
   var v_ma = fcQWebSettings_pluginSearchPaths()
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -282,103 +272,103 @@ proc pluginSearchPaths*(_: type QWebSettings, ): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc setWebGraphic*(_: type QWebSettings, typeVal: QWebSettingsWebGraphic, graphic: gen_qpixmap.QPixmap): void =
+proc setWebGraphic*(_: type gen_qwebsettings_types.QWebSettings, typeVal: cint, graphic: gen_qpixmap.QPixmap): void =
 
   fcQWebSettings_setWebGraphic(cint(typeVal), graphic.h)
 
-proc webGraphic*(_: type QWebSettings, typeVal: QWebSettingsWebGraphic): gen_qpixmap.QPixmap =
+proc webGraphic*(_: type gen_qwebsettings_types.QWebSettings, typeVal: cint): gen_qpixmap.QPixmap =
 
   gen_qpixmap.QPixmap(h: fcQWebSettings_webGraphic(cint(typeVal)))
 
-proc setMaximumPagesInCache*(_: type QWebSettings, pages: cint): void =
+proc setMaximumPagesInCache*(_: type gen_qwebsettings_types.QWebSettings, pages: cint): void =
 
   fcQWebSettings_setMaximumPagesInCache(pages)
 
-proc maximumPagesInCache*(_: type QWebSettings, ): cint =
+proc maximumPagesInCache*(_: type gen_qwebsettings_types.QWebSettings, ): cint =
 
   fcQWebSettings_maximumPagesInCache()
 
-proc setObjectCacheCapacities*(_: type QWebSettings, cacheMinDeadCapacity: cint, cacheMaxDead: cint, totalCapacity: cint): void =
+proc setObjectCacheCapacities*(_: type gen_qwebsettings_types.QWebSettings, cacheMinDeadCapacity: cint, cacheMaxDead: cint, totalCapacity: cint): void =
 
   fcQWebSettings_setObjectCacheCapacities(cacheMinDeadCapacity, cacheMaxDead, totalCapacity)
 
-proc setOfflineStoragePath*(_: type QWebSettings, path: string): void =
+proc setOfflineStoragePath*(_: type gen_qwebsettings_types.QWebSettings, path: string): void =
 
   fcQWebSettings_setOfflineStoragePath(struct_miqt_string(data: path, len: csize_t(len(path))))
 
-proc offlineStoragePath*(_: type QWebSettings, ): string =
+proc offlineStoragePath*(_: type gen_qwebsettings_types.QWebSettings, ): string =
 
   let v_ms = fcQWebSettings_offlineStoragePath()
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setOfflineStorageDefaultQuota*(_: type QWebSettings, maximumSize: clonglong): void =
+proc setOfflineStorageDefaultQuota*(_: type gen_qwebsettings_types.QWebSettings, maximumSize: clonglong): void =
 
   fcQWebSettings_setOfflineStorageDefaultQuota(maximumSize)
 
-proc offlineStorageDefaultQuota*(_: type QWebSettings, ): clonglong =
+proc offlineStorageDefaultQuota*(_: type gen_qwebsettings_types.QWebSettings, ): clonglong =
 
   fcQWebSettings_offlineStorageDefaultQuota()
 
-proc setOfflineWebApplicationCachePath*(_: type QWebSettings, path: string): void =
+proc setOfflineWebApplicationCachePath*(_: type gen_qwebsettings_types.QWebSettings, path: string): void =
 
   fcQWebSettings_setOfflineWebApplicationCachePath(struct_miqt_string(data: path, len: csize_t(len(path))))
 
-proc offlineWebApplicationCachePath*(_: type QWebSettings, ): string =
+proc offlineWebApplicationCachePath*(_: type gen_qwebsettings_types.QWebSettings, ): string =
 
   let v_ms = fcQWebSettings_offlineWebApplicationCachePath()
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setOfflineWebApplicationCacheQuota*(_: type QWebSettings, maximumSize: clonglong): void =
+proc setOfflineWebApplicationCacheQuota*(_: type gen_qwebsettings_types.QWebSettings, maximumSize: clonglong): void =
 
   fcQWebSettings_setOfflineWebApplicationCacheQuota(maximumSize)
 
-proc offlineWebApplicationCacheQuota*(_: type QWebSettings, ): clonglong =
+proc offlineWebApplicationCacheQuota*(_: type gen_qwebsettings_types.QWebSettings, ): clonglong =
 
   fcQWebSettings_offlineWebApplicationCacheQuota()
 
-proc setLocalStoragePath*(self: QWebSettings, path: string): void =
+proc setLocalStoragePath*(self: gen_qwebsettings_types.QWebSettings, path: string): void =
 
   fcQWebSettings_setLocalStoragePath(self.h, struct_miqt_string(data: path, len: csize_t(len(path))))
 
-proc localStoragePath*(self: QWebSettings, ): string =
+proc localStoragePath*(self: gen_qwebsettings_types.QWebSettings, ): string =
 
   let v_ms = fcQWebSettings_localStoragePath(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc clearMemoryCaches*(_: type QWebSettings, ): void =
+proc clearMemoryCaches*(_: type gen_qwebsettings_types.QWebSettings, ): void =
 
   fcQWebSettings_clearMemoryCaches()
 
-proc enablePersistentStorage*(_: type QWebSettings, ): void =
+proc enablePersistentStorage*(_: type gen_qwebsettings_types.QWebSettings, ): void =
 
   fcQWebSettings_enablePersistentStorage()
 
-proc setThirdPartyCookiePolicy*(self: QWebSettings, thirdPartyCookiePolicy: QWebSettingsThirdPartyCookiePolicy): void =
+proc setThirdPartyCookiePolicy*(self: gen_qwebsettings_types.QWebSettings, thirdPartyCookiePolicy: cint): void =
 
   fcQWebSettings_setThirdPartyCookiePolicy(self.h, cint(thirdPartyCookiePolicy))
 
-proc thirdPartyCookiePolicy*(self: QWebSettings, ): QWebSettingsThirdPartyCookiePolicy =
+proc thirdPartyCookiePolicy*(self: gen_qwebsettings_types.QWebSettings, ): cint =
 
-  QWebSettingsThirdPartyCookiePolicy(fcQWebSettings_thirdPartyCookiePolicy(self.h))
+  cint(fcQWebSettings_thirdPartyCookiePolicy(self.h))
 
-proc setCSSMediaType*(self: QWebSettings, cSSMediaType: string): void =
+proc setCSSMediaType*(self: gen_qwebsettings_types.QWebSettings, cSSMediaType: string): void =
 
   fcQWebSettings_setCSSMediaType(self.h, struct_miqt_string(data: cSSMediaType, len: csize_t(len(cSSMediaType))))
 
-proc cssMediaType*(self: QWebSettings, ): string =
+proc cssMediaType*(self: gen_qwebsettings_types.QWebSettings, ): string =
 
   let v_ms = fcQWebSettings_cssMediaType(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc enablePersistentStorage1*(_: type QWebSettings, path: string): void =
+proc enablePersistentStorage1*(_: type gen_qwebsettings_types.QWebSettings, path: string): void =
 
   fcQWebSettings_enablePersistentStorage1(struct_miqt_string(data: path, len: csize_t(len(path))))
 

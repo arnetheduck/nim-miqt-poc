@@ -34,56 +34,48 @@ const cflags = gorge("pkg-config -cflags Qt6Widgets")
 {.compile("gen_qsizepolicy.cpp", cflags).}
 
 
-type QSizePolicyPolicyFlag* = cint
-const
-  QSizePolicyGrowFlag* = 1
-  QSizePolicyExpandFlag* = 2
-  QSizePolicyShrinkFlag* = 4
-  QSizePolicyIgnoreFlag* = 8
+type QSizePolicyPolicyFlagEnum* = distinct cint
+template GrowFlag*(_: type QSizePolicyPolicyFlagEnum): untyped = 1
+template ExpandFlag*(_: type QSizePolicyPolicyFlagEnum): untyped = 2
+template ShrinkFlag*(_: type QSizePolicyPolicyFlagEnum): untyped = 4
+template IgnoreFlag*(_: type QSizePolicyPolicyFlagEnum): untyped = 8
 
 
-
-type QSizePolicyPolicy* = cint
-const
-  QSizePolicyFixed* = 0
-  QSizePolicyMinimum* = 1
-  QSizePolicyMaximum* = 4
-  QSizePolicyPreferred* = 5
-  QSizePolicyMinimumExpanding* = 3
-  QSizePolicyExpanding* = 7
-  QSizePolicyIgnored* = 13
+type QSizePolicyPolicyEnum* = distinct cint
+template Fixed*(_: type QSizePolicyPolicyEnum): untyped = 0
+template Minimum*(_: type QSizePolicyPolicyEnum): untyped = 1
+template Maximum*(_: type QSizePolicyPolicyEnum): untyped = 4
+template Preferred*(_: type QSizePolicyPolicyEnum): untyped = 5
+template MinimumExpanding*(_: type QSizePolicyPolicyEnum): untyped = 3
+template Expanding*(_: type QSizePolicyPolicyEnum): untyped = 7
+template Ignored*(_: type QSizePolicyPolicyEnum): untyped = 13
 
 
-
-type QSizePolicyControlType* = cint
-const
-  QSizePolicyDefaultType* = 1
-  QSizePolicyButtonBox* = 2
-  QSizePolicyCheckBox* = 4
-  QSizePolicyComboBox* = 8
-  QSizePolicyFrame* = 16
-  QSizePolicyGroupBox* = 32
-  QSizePolicyLabel* = 64
-  QSizePolicyLine* = 128
-  QSizePolicyLineEdit* = 256
-  QSizePolicyPushButton* = 512
-  QSizePolicyRadioButton* = 1024
-  QSizePolicySlider* = 2048
-  QSizePolicySpinBox* = 4096
-  QSizePolicyTabWidget* = 8192
-  QSizePolicyToolButton* = 16384
-
+type QSizePolicyControlTypeEnum* = distinct cint
+template DefaultType*(_: type QSizePolicyControlTypeEnum): untyped = 1
+template ButtonBox*(_: type QSizePolicyControlTypeEnum): untyped = 2
+template CheckBox*(_: type QSizePolicyControlTypeEnum): untyped = 4
+template ComboBox*(_: type QSizePolicyControlTypeEnum): untyped = 8
+template Frame*(_: type QSizePolicyControlTypeEnum): untyped = 16
+template GroupBox*(_: type QSizePolicyControlTypeEnum): untyped = 32
+template Label*(_: type QSizePolicyControlTypeEnum): untyped = 64
+template Line*(_: type QSizePolicyControlTypeEnum): untyped = 128
+template LineEdit*(_: type QSizePolicyControlTypeEnum): untyped = 256
+template PushButton*(_: type QSizePolicyControlTypeEnum): untyped = 512
+template RadioButton*(_: type QSizePolicyControlTypeEnum): untyped = 1024
+template Slider*(_: type QSizePolicyControlTypeEnum): untyped = 2048
+template SpinBox*(_: type QSizePolicyControlTypeEnum): untyped = 4096
+template TabWidget*(_: type QSizePolicyControlTypeEnum): untyped = 8192
+template ToolButton*(_: type QSizePolicyControlTypeEnum): untyped = 16384
 
 
 import gen_qsizepolicy_types
 export gen_qsizepolicy_types
 
 import
-  gen_qnamespace,
   gen_qobjectdefs,
   gen_qvariant
 export
-  gen_qnamespace,
   gen_qobjectdefs,
   gen_qvariant
 
@@ -119,109 +111,109 @@ proc fcQSizePolicy_staticMetaObject(): pointer {.importc: "QSizePolicy_staticMet
 proc fcQSizePolicy_delete(self: pointer) {.importc: "QSizePolicy_delete".}
 
 
-func init*(T: type QSizePolicy, h: ptr cQSizePolicy): QSizePolicy =
+func init*(T: type gen_qsizepolicy_types.QSizePolicy, h: ptr cQSizePolicy): gen_qsizepolicy_types.QSizePolicy =
   T(h: h)
-proc create*(T: type QSizePolicy, ): QSizePolicy =
+proc create*(T: type gen_qsizepolicy_types.QSizePolicy, ): gen_qsizepolicy_types.QSizePolicy =
 
-  QSizePolicy.init(fcQSizePolicy_new())
-proc create*(T: type QSizePolicy, horizontal: QSizePolicyPolicy, vertical: QSizePolicyPolicy): QSizePolicy =
+  gen_qsizepolicy_types.QSizePolicy.init(fcQSizePolicy_new())
+proc create*(T: type gen_qsizepolicy_types.QSizePolicy, horizontal: cint, vertical: cint): gen_qsizepolicy_types.QSizePolicy =
 
-  QSizePolicy.init(fcQSizePolicy_new2(cint(horizontal), cint(vertical)))
-proc create*(T: type QSizePolicy, param1: QSizePolicy): QSizePolicy =
+  gen_qsizepolicy_types.QSizePolicy.init(fcQSizePolicy_new2(cint(horizontal), cint(vertical)))
+proc create*(T: type gen_qsizepolicy_types.QSizePolicy, param1: gen_qsizepolicy_types.QSizePolicy): gen_qsizepolicy_types.QSizePolicy =
 
-  QSizePolicy.init(fcQSizePolicy_new3(param1.h))
-proc create*(T: type QSizePolicy, horizontal: QSizePolicyPolicy, vertical: QSizePolicyPolicy, typeVal: QSizePolicyControlType): QSizePolicy =
+  gen_qsizepolicy_types.QSizePolicy.init(fcQSizePolicy_new3(param1.h))
+proc create*(T: type gen_qsizepolicy_types.QSizePolicy, horizontal: cint, vertical: cint, typeVal: cint): gen_qsizepolicy_types.QSizePolicy =
 
-  QSizePolicy.init(fcQSizePolicy_new4(cint(horizontal), cint(vertical), cint(typeVal)))
-proc horizontalPolicy*(self: QSizePolicy, ): QSizePolicyPolicy =
+  gen_qsizepolicy_types.QSizePolicy.init(fcQSizePolicy_new4(cint(horizontal), cint(vertical), cint(typeVal)))
+proc horizontalPolicy*(self: gen_qsizepolicy_types.QSizePolicy, ): cint =
 
-  QSizePolicyPolicy(fcQSizePolicy_horizontalPolicy(self.h))
+  cint(fcQSizePolicy_horizontalPolicy(self.h))
 
-proc verticalPolicy*(self: QSizePolicy, ): QSizePolicyPolicy =
+proc verticalPolicy*(self: gen_qsizepolicy_types.QSizePolicy, ): cint =
 
-  QSizePolicyPolicy(fcQSizePolicy_verticalPolicy(self.h))
+  cint(fcQSizePolicy_verticalPolicy(self.h))
 
-proc controlType*(self: QSizePolicy, ): QSizePolicyControlType =
+proc controlType*(self: gen_qsizepolicy_types.QSizePolicy, ): cint =
 
-  QSizePolicyControlType(fcQSizePolicy_controlType(self.h))
+  cint(fcQSizePolicy_controlType(self.h))
 
-proc setHorizontalPolicy*(self: QSizePolicy, d: QSizePolicyPolicy): void =
+proc setHorizontalPolicy*(self: gen_qsizepolicy_types.QSizePolicy, d: cint): void =
 
   fcQSizePolicy_setHorizontalPolicy(self.h, cint(d))
 
-proc setVerticalPolicy*(self: QSizePolicy, d: QSizePolicyPolicy): void =
+proc setVerticalPolicy*(self: gen_qsizepolicy_types.QSizePolicy, d: cint): void =
 
   fcQSizePolicy_setVerticalPolicy(self.h, cint(d))
 
-proc setControlType*(self: QSizePolicy, typeVal: QSizePolicyControlType): void =
+proc setControlType*(self: gen_qsizepolicy_types.QSizePolicy, typeVal: cint): void =
 
   fcQSizePolicy_setControlType(self.h, cint(typeVal))
 
-proc expandingDirections*(self: QSizePolicy, ): gen_qnamespace.Orientation =
+proc expandingDirections*(self: gen_qsizepolicy_types.QSizePolicy, ): cint =
 
-  gen_qnamespace.Orientation(fcQSizePolicy_expandingDirections(self.h))
+  cint(fcQSizePolicy_expandingDirections(self.h))
 
-proc setHeightForWidth*(self: QSizePolicy, b: bool): void =
+proc setHeightForWidth*(self: gen_qsizepolicy_types.QSizePolicy, b: bool): void =
 
   fcQSizePolicy_setHeightForWidth(self.h, b)
 
-proc hasHeightForWidth*(self: QSizePolicy, ): bool =
+proc hasHeightForWidth*(self: gen_qsizepolicy_types.QSizePolicy, ): bool =
 
   fcQSizePolicy_hasHeightForWidth(self.h)
 
-proc setWidthForHeight*(self: QSizePolicy, b: bool): void =
+proc setWidthForHeight*(self: gen_qsizepolicy_types.QSizePolicy, b: bool): void =
 
   fcQSizePolicy_setWidthForHeight(self.h, b)
 
-proc hasWidthForHeight*(self: QSizePolicy, ): bool =
+proc hasWidthForHeight*(self: gen_qsizepolicy_types.QSizePolicy, ): bool =
 
   fcQSizePolicy_hasWidthForHeight(self.h)
 
-proc operatorEqual*(self: QSizePolicy, s: QSizePolicy): bool =
+proc operatorEqual*(self: gen_qsizepolicy_types.QSizePolicy, s: gen_qsizepolicy_types.QSizePolicy): bool =
 
   fcQSizePolicy_operatorEqual(self.h, s.h)
 
-proc operatorNotEqual*(self: QSizePolicy, s: QSizePolicy): bool =
+proc operatorNotEqual*(self: gen_qsizepolicy_types.QSizePolicy, s: gen_qsizepolicy_types.QSizePolicy): bool =
 
   fcQSizePolicy_operatorNotEqual(self.h, s.h)
 
-proc ToQVariant*(self: QSizePolicy, ): gen_qvariant.QVariant =
+proc ToQVariant*(self: gen_qsizepolicy_types.QSizePolicy, ): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fcQSizePolicy_ToQVariant(self.h))
 
-proc horizontalStretch*(self: QSizePolicy, ): cint =
+proc horizontalStretch*(self: gen_qsizepolicy_types.QSizePolicy, ): cint =
 
   fcQSizePolicy_horizontalStretch(self.h)
 
-proc verticalStretch*(self: QSizePolicy, ): cint =
+proc verticalStretch*(self: gen_qsizepolicy_types.QSizePolicy, ): cint =
 
   fcQSizePolicy_verticalStretch(self.h)
 
-proc setHorizontalStretch*(self: QSizePolicy, stretchFactor: cint): void =
+proc setHorizontalStretch*(self: gen_qsizepolicy_types.QSizePolicy, stretchFactor: cint): void =
 
   fcQSizePolicy_setHorizontalStretch(self.h, stretchFactor)
 
-proc setVerticalStretch*(self: QSizePolicy, stretchFactor: cint): void =
+proc setVerticalStretch*(self: gen_qsizepolicy_types.QSizePolicy, stretchFactor: cint): void =
 
   fcQSizePolicy_setVerticalStretch(self.h, stretchFactor)
 
-proc retainSizeWhenHidden*(self: QSizePolicy, ): bool =
+proc retainSizeWhenHidden*(self: gen_qsizepolicy_types.QSizePolicy, ): bool =
 
   fcQSizePolicy_retainSizeWhenHidden(self.h)
 
-proc setRetainSizeWhenHidden*(self: QSizePolicy, retainSize: bool): void =
+proc setRetainSizeWhenHidden*(self: gen_qsizepolicy_types.QSizePolicy, retainSize: bool): void =
 
   fcQSizePolicy_setRetainSizeWhenHidden(self.h, retainSize)
 
-proc transpose*(self: QSizePolicy, ): void =
+proc transpose*(self: gen_qsizepolicy_types.QSizePolicy, ): void =
 
   fcQSizePolicy_transpose(self.h)
 
-proc transposed*(self: QSizePolicy, ): QSizePolicy =
+proc transposed*(self: gen_qsizepolicy_types.QSizePolicy, ): gen_qsizepolicy_types.QSizePolicy =
 
-  QSizePolicy(h: fcQSizePolicy_transposed(self.h))
+  gen_qsizepolicy_types.QSizePolicy(h: fcQSizePolicy_transposed(self.h))
 
-proc staticMetaObject*(_: type QSizePolicy): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qsizepolicy_types.QSizePolicy): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQSizePolicy_staticMetaObject())
-proc delete*(self: QSizePolicy) =
+proc delete*(self: gen_qsizepolicy_types.QSizePolicy) =
   fcQSizePolicy_delete(self.h)

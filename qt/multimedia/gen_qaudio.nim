@@ -34,56 +34,46 @@ const cflags = gorge("pkg-config -cflags Qt5MultimediaWidgets")
 {.compile("gen_qaudio.cpp", cflags).}
 
 
-type QAudioError* = cint
-const
-  QAudioNoError* = 0
-  QAudioOpenError* = 1
-  QAudioIOError* = 2
-  QAudioUnderrunError* = 3
-  QAudioFatalError* = 4
+type QAudioErrorEnum* = distinct cint
+template NoError*(_: type QAudioErrorEnum): untyped = 0
+template OpenError*(_: type QAudioErrorEnum): untyped = 1
+template IOError*(_: type QAudioErrorEnum): untyped = 2
+template UnderrunError*(_: type QAudioErrorEnum): untyped = 3
+template FatalError*(_: type QAudioErrorEnum): untyped = 4
 
 
-
-type QAudioState* = cint
-const
-  QAudioActiveState* = 0
-  QAudioSuspendedState* = 1
-  QAudioStoppedState* = 2
-  QAudioIdleState* = 3
-  QAudioInterruptedState* = 4
+type QAudioStateEnum* = distinct cint
+template ActiveState*(_: type QAudioStateEnum): untyped = 0
+template SuspendedState*(_: type QAudioStateEnum): untyped = 1
+template StoppedState*(_: type QAudioStateEnum): untyped = 2
+template IdleState*(_: type QAudioStateEnum): untyped = 3
+template InterruptedState*(_: type QAudioStateEnum): untyped = 4
 
 
-
-type QAudioMode* = cint
-const
-  QAudioAudioInput* = 0
-  QAudioAudioOutput* = 1
+type QAudioModeEnum* = distinct cint
+template AudioInput*(_: type QAudioModeEnum): untyped = 0
+template AudioOutput*(_: type QAudioModeEnum): untyped = 1
 
 
-
-type QAudioRole* = cint
-const
-  QAudioUnknownRole* = 0
-  QAudioMusicRole* = 1
-  QAudioVideoRole* = 2
-  QAudioVoiceCommunicationRole* = 3
-  QAudioAlarmRole* = 4
-  QAudioNotificationRole* = 5
-  QAudioRingtoneRole* = 6
-  QAudioAccessibilityRole* = 7
-  QAudioSonificationRole* = 8
-  QAudioGameRole* = 9
-  QAudioCustomRole* = 10
+type QAudioRoleEnum* = distinct cint
+template UnknownRole*(_: type QAudioRoleEnum): untyped = 0
+template MusicRole*(_: type QAudioRoleEnum): untyped = 1
+template VideoRole*(_: type QAudioRoleEnum): untyped = 2
+template VoiceCommunicationRole*(_: type QAudioRoleEnum): untyped = 3
+template AlarmRole*(_: type QAudioRoleEnum): untyped = 4
+template NotificationRole*(_: type QAudioRoleEnum): untyped = 5
+template RingtoneRole*(_: type QAudioRoleEnum): untyped = 6
+template AccessibilityRole*(_: type QAudioRoleEnum): untyped = 7
+template SonificationRole*(_: type QAudioRoleEnum): untyped = 8
+template GameRole*(_: type QAudioRoleEnum): untyped = 9
+template CustomRole*(_: type QAudioRoleEnum): untyped = 10
 
 
-
-type QAudioVolumeScale* = cint
-const
-  QAudioLinearVolumeScale* = 0
-  QAudioCubicVolumeScale* = 1
-  QAudioLogarithmicVolumeScale* = 2
-  QAudioDecibelVolumeScale* = 3
-
+type QAudioVolumeScaleEnum* = distinct cint
+template LinearVolumeScale*(_: type QAudioVolumeScaleEnum): untyped = 0
+template CubicVolumeScale*(_: type QAudioVolumeScaleEnum): untyped = 1
+template LogarithmicVolumeScale*(_: type QAudioVolumeScaleEnum): untyped = 2
+template DecibelVolumeScale*(_: type QAudioVolumeScaleEnum): untyped = 3
 
 
 import gen_qaudio_types

@@ -61,47 +61,47 @@ proc fcQPluginMetaDataElfNoteHeader_new2(param1: pointer): ptr cQPluginMetaDataE
 proc fcQPluginMetaDataElfNoteHeader_delete(self: pointer) {.importc: "QPluginMetaData__ElfNoteHeader_delete".}
 
 
-func init*(T: type QPluginMetaData, h: ptr cQPluginMetaData): QPluginMetaData =
+func init*(T: type gen_qplugin_types.QPluginMetaData, h: ptr cQPluginMetaData): gen_qplugin_types.QPluginMetaData =
   T(h: h)
-proc archRequirements*(_: type QPluginMetaData, ): uint8 =
+proc archRequirements*(_: type gen_qplugin_types.QPluginMetaData, ): uint8 =
 
   fcQPluginMetaData_archRequirements()
 
-proc delete*(self: QPluginMetaData) =
+proc delete*(self: gen_qplugin_types.QPluginMetaData) =
   fcQPluginMetaData_delete(self.h)
 
-func init*(T: type QStaticPlugin, h: ptr cQStaticPlugin): QStaticPlugin =
+func init*(T: type gen_qplugin_types.QStaticPlugin, h: ptr cQStaticPlugin): gen_qplugin_types.QStaticPlugin =
   T(h: h)
-proc metaData*(self: QStaticPlugin, ): gen_qjsonobject.QJsonObject =
+proc metaData*(self: gen_qplugin_types.QStaticPlugin, ): gen_qjsonobject.QJsonObject =
 
   gen_qjsonobject.QJsonObject(h: fcQStaticPlugin_metaData(self.h))
 
-proc delete*(self: QStaticPlugin) =
+proc delete*(self: gen_qplugin_types.QStaticPlugin) =
   fcQStaticPlugin_delete(self.h)
 
-func init*(T: type QPluginMetaDataHeader, h: ptr cQPluginMetaDataHeader): QPluginMetaDataHeader =
+func init*(T: type gen_qplugin_types.QPluginMetaDataHeader, h: ptr cQPluginMetaDataHeader): gen_qplugin_types.QPluginMetaDataHeader =
   T(h: h)
-proc create*(T: type QPluginMetaDataHeader, param1: QPluginMetaDataHeader): QPluginMetaDataHeader =
+proc create*(T: type gen_qplugin_types.QPluginMetaDataHeader, param1: gen_qplugin_types.QPluginMetaDataHeader): gen_qplugin_types.QPluginMetaDataHeader =
 
-  QPluginMetaDataHeader.init(fcQPluginMetaDataHeader_new(param1.h))
-proc delete*(self: QPluginMetaDataHeader) =
+  gen_qplugin_types.QPluginMetaDataHeader.init(fcQPluginMetaDataHeader_new(param1.h))
+proc delete*(self: gen_qplugin_types.QPluginMetaDataHeader) =
   fcQPluginMetaDataHeader_delete(self.h)
 
-func init*(T: type QPluginMetaDataMagicHeader, h: ptr cQPluginMetaDataMagicHeader): QPluginMetaDataMagicHeader =
+func init*(T: type gen_qplugin_types.QPluginMetaDataMagicHeader, h: ptr cQPluginMetaDataMagicHeader): gen_qplugin_types.QPluginMetaDataMagicHeader =
   T(h: h)
-proc create*(T: type QPluginMetaDataMagicHeader, ): QPluginMetaDataMagicHeader =
+proc create*(T: type gen_qplugin_types.QPluginMetaDataMagicHeader, ): gen_qplugin_types.QPluginMetaDataMagicHeader =
 
-  QPluginMetaDataMagicHeader.init(fcQPluginMetaDataMagicHeader_new())
-proc delete*(self: QPluginMetaDataMagicHeader) =
+  gen_qplugin_types.QPluginMetaDataMagicHeader.init(fcQPluginMetaDataMagicHeader_new())
+proc delete*(self: gen_qplugin_types.QPluginMetaDataMagicHeader) =
   fcQPluginMetaDataMagicHeader_delete(self.h)
 
-func init*(T: type QPluginMetaDataElfNoteHeader, h: ptr cQPluginMetaDataElfNoteHeader): QPluginMetaDataElfNoteHeader =
+func init*(T: type gen_qplugin_types.QPluginMetaDataElfNoteHeader, h: ptr cQPluginMetaDataElfNoteHeader): gen_qplugin_types.QPluginMetaDataElfNoteHeader =
   T(h: h)
-proc create*(T: type QPluginMetaDataElfNoteHeader, payloadSize: cuint): QPluginMetaDataElfNoteHeader =
+proc create*(T: type gen_qplugin_types.QPluginMetaDataElfNoteHeader, payloadSize: cuint): gen_qplugin_types.QPluginMetaDataElfNoteHeader =
 
-  QPluginMetaDataElfNoteHeader.init(fcQPluginMetaDataElfNoteHeader_new(payloadSize))
-proc create*(T: type QPluginMetaDataElfNoteHeader, param1: QPluginMetaDataElfNoteHeader): QPluginMetaDataElfNoteHeader =
+  gen_qplugin_types.QPluginMetaDataElfNoteHeader.init(fcQPluginMetaDataElfNoteHeader_new(payloadSize))
+proc create*(T: type gen_qplugin_types.QPluginMetaDataElfNoteHeader, param1: gen_qplugin_types.QPluginMetaDataElfNoteHeader): gen_qplugin_types.QPluginMetaDataElfNoteHeader =
 
-  QPluginMetaDataElfNoteHeader.init(fcQPluginMetaDataElfNoteHeader_new2(param1.h))
-proc delete*(self: QPluginMetaDataElfNoteHeader) =
+  gen_qplugin_types.QPluginMetaDataElfNoteHeader.init(fcQPluginMetaDataElfNoteHeader_new2(param1.h))
+proc delete*(self: gen_qplugin_types.QPluginMetaDataElfNoteHeader) =
   fcQPluginMetaDataElfNoteHeader_delete(self.h)

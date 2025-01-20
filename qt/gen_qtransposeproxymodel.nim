@@ -44,7 +44,6 @@ import
   gen_qitemselectionmodel,
   gen_qmetaobject,
   gen_qmimedata,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qsize,
@@ -57,7 +56,6 @@ export
   gen_qitemselectionmodel,
   gen_qmetaobject,
   gen_qmimedata,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qsize,
@@ -197,61 +195,61 @@ proc fcQTransposeProxyModel_staticMetaObject(): pointer {.importc: "QTransposePr
 proc fcQTransposeProxyModel_delete(self: pointer) {.importc: "QTransposeProxyModel_delete".}
 
 
-func init*(T: type QTransposeProxyModel, h: ptr cQTransposeProxyModel): QTransposeProxyModel =
+func init*(T: type gen_qtransposeproxymodel_types.QTransposeProxyModel, h: ptr cQTransposeProxyModel): gen_qtransposeproxymodel_types.QTransposeProxyModel =
   T(h: h)
-proc create*(T: type QTransposeProxyModel, ): QTransposeProxyModel =
+proc create*(T: type gen_qtransposeproxymodel_types.QTransposeProxyModel, ): gen_qtransposeproxymodel_types.QTransposeProxyModel =
 
-  QTransposeProxyModel.init(fcQTransposeProxyModel_new())
-proc create*(T: type QTransposeProxyModel, parent: gen_qobject.QObject): QTransposeProxyModel =
+  gen_qtransposeproxymodel_types.QTransposeProxyModel.init(fcQTransposeProxyModel_new())
+proc create*(T: type gen_qtransposeproxymodel_types.QTransposeProxyModel, parent: gen_qobject.QObject): gen_qtransposeproxymodel_types.QTransposeProxyModel =
 
-  QTransposeProxyModel.init(fcQTransposeProxyModel_new2(parent.h))
-proc metaObject*(self: QTransposeProxyModel, ): gen_qobjectdefs.QMetaObject =
+  gen_qtransposeproxymodel_types.QTransposeProxyModel.init(fcQTransposeProxyModel_new2(parent.h))
+proc metaObject*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQTransposeProxyModel_metaObject(self.h))
 
-proc metacast*(self: QTransposeProxyModel, param1: cstring): pointer =
+proc metacast*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, param1: cstring): pointer =
 
   fcQTransposeProxyModel_metacast(self.h, param1)
 
-proc metacall*(self: QTransposeProxyModel, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQTransposeProxyModel_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QTransposeProxyModel, s: cstring): string =
+proc tr*(_: type gen_qtransposeproxymodel_types.QTransposeProxyModel, s: cstring): string =
 
   let v_ms = fcQTransposeProxyModel_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QTransposeProxyModel, s: cstring): string =
+proc trUtf8*(_: type gen_qtransposeproxymodel_types.QTransposeProxyModel, s: cstring): string =
 
   let v_ms = fcQTransposeProxyModel_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setSourceModel*(self: QTransposeProxyModel, newSourceModel: gen_qabstractitemmodel.QAbstractItemModel): void =
+proc setSourceModel*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, newSourceModel: gen_qabstractitemmodel.QAbstractItemModel): void =
 
   fcQTransposeProxyModel_setSourceModel(self.h, newSourceModel.h)
 
-proc rowCount*(self: QTransposeProxyModel, parent: gen_qabstractitemmodel.QModelIndex): cint =
+proc rowCount*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, parent: gen_qabstractitemmodel.QModelIndex): cint =
 
   fcQTransposeProxyModel_rowCount(self.h, parent.h)
 
-proc columnCount*(self: QTransposeProxyModel, parent: gen_qabstractitemmodel.QModelIndex): cint =
+proc columnCount*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, parent: gen_qabstractitemmodel.QModelIndex): cint =
 
   fcQTransposeProxyModel_columnCount(self.h, parent.h)
 
-proc headerData*(self: QTransposeProxyModel, section: cint, orientation: gen_qnamespace.Orientation, role: cint): gen_qvariant.QVariant =
+proc headerData*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, section: cint, orientation: cint, role: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fcQTransposeProxyModel_headerData(self.h, section, cint(orientation), role))
 
-proc setHeaderData*(self: QTransposeProxyModel, section: cint, orientation: gen_qnamespace.Orientation, value: gen_qvariant.QVariant, role: cint): bool =
+proc setHeaderData*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, section: cint, orientation: cint, value: gen_qvariant.QVariant, role: cint): bool =
 
   fcQTransposeProxyModel_setHeaderData(self.h, section, cint(orientation), value.h, role)
 
-proc setItemData*(self: QTransposeProxyModel, index: gen_qabstractitemmodel.QModelIndex, roles: Table[cint,gen_qvariant.QVariant]): bool =
+proc setItemData*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, index: gen_qabstractitemmodel.QModelIndex, roles: Table[cint,gen_qvariant.QVariant]): bool =
 
   var roles_Keys_CArray = newSeq[cint](len(roles))
   var roles_Values_CArray = newSeq[pointer](len(roles))
@@ -263,11 +261,11 @@ proc setItemData*(self: QTransposeProxyModel, index: gen_qabstractitemmodel.QMod
 
   fcQTransposeProxyModel_setItemData(self.h, index.h, struct_miqt_map(len: csize_t(len(roles)),keys: if len(roles) == 0: nil else: addr(roles_Keys_CArray[0]), values: if len(roles) == 0: nil else: addr(roles_Values_CArray[0]),))
 
-proc span*(self: QTransposeProxyModel, index: gen_qabstractitemmodel.QModelIndex): gen_qsize.QSize =
+proc span*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, index: gen_qabstractitemmodel.QModelIndex): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQTransposeProxyModel_span(self.h, index.h))
 
-proc itemData*(self: QTransposeProxyModel, index: gen_qabstractitemmodel.QModelIndex): Table[cint,gen_qvariant.QVariant] =
+proc itemData*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, index: gen_qabstractitemmodel.QModelIndex): Table[cint,gen_qvariant.QVariant] =
 
   var v_mm = fcQTransposeProxyModel_itemData(self.h, index.h)
   var vx_ret: Table[cint, gen_qvariant.QVariant]
@@ -281,289 +279,249 @@ proc itemData*(self: QTransposeProxyModel, index: gen_qabstractitemmodel.QModelI
     vx_ret[v_entry_Key] = v_entry_Value
   vx_ret
 
-proc mapFromSource*(self: QTransposeProxyModel, sourceIndex: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
+proc mapFromSource*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, sourceIndex: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
 
   gen_qabstractitemmodel.QModelIndex(h: fcQTransposeProxyModel_mapFromSource(self.h, sourceIndex.h))
 
-proc mapToSource*(self: QTransposeProxyModel, proxyIndex: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
+proc mapToSource*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, proxyIndex: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
 
   gen_qabstractitemmodel.QModelIndex(h: fcQTransposeProxyModel_mapToSource(self.h, proxyIndex.h))
 
-proc parent*(self: QTransposeProxyModel, index: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
+proc parent*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, index: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
 
   gen_qabstractitemmodel.QModelIndex(h: fcQTransposeProxyModel_parent(self.h, index.h))
 
-proc index*(self: QTransposeProxyModel, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
+proc index*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
 
   gen_qabstractitemmodel.QModelIndex(h: fcQTransposeProxyModel_index(self.h, row, column, parent.h))
 
-proc insertRows*(self: QTransposeProxyModel, row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
+proc insertRows*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
 
   fcQTransposeProxyModel_insertRows(self.h, row, count, parent.h)
 
-proc removeRows*(self: QTransposeProxyModel, row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
+proc removeRows*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
 
   fcQTransposeProxyModel_removeRows(self.h, row, count, parent.h)
 
-proc moveRows*(self: QTransposeProxyModel, sourceParent: gen_qabstractitemmodel.QModelIndex, sourceRow: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool =
+proc moveRows*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, sourceParent: gen_qabstractitemmodel.QModelIndex, sourceRow: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool =
 
   fcQTransposeProxyModel_moveRows(self.h, sourceParent.h, sourceRow, count, destinationParent.h, destinationChild)
 
-proc insertColumns*(self: QTransposeProxyModel, column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
+proc insertColumns*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
 
   fcQTransposeProxyModel_insertColumns(self.h, column, count, parent.h)
 
-proc removeColumns*(self: QTransposeProxyModel, column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
+proc removeColumns*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
 
   fcQTransposeProxyModel_removeColumns(self.h, column, count, parent.h)
 
-proc moveColumns*(self: QTransposeProxyModel, sourceParent: gen_qabstractitemmodel.QModelIndex, sourceColumn: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool =
+proc moveColumns*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, sourceParent: gen_qabstractitemmodel.QModelIndex, sourceColumn: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool =
 
   fcQTransposeProxyModel_moveColumns(self.h, sourceParent.h, sourceColumn, count, destinationParent.h, destinationChild)
 
-proc sort*(self: QTransposeProxyModel, column: cint, order: gen_qnamespace.SortOrder): void =
+proc sort*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, column: cint, order: cint): void =
 
   fcQTransposeProxyModel_sort(self.h, column, cint(order))
 
-proc tr2*(_: type QTransposeProxyModel, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qtransposeproxymodel_types.QTransposeProxyModel, s: cstring, c: cstring): string =
 
   let v_ms = fcQTransposeProxyModel_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QTransposeProxyModel, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qtransposeproxymodel_types.QTransposeProxyModel, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQTransposeProxyModel_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QTransposeProxyModel, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qtransposeproxymodel_types.QTransposeProxyModel, s: cstring, c: cstring): string =
 
   let v_ms = fcQTransposeProxyModel_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QTransposeProxyModel, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qtransposeproxymodel_types.QTransposeProxyModel, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQTransposeProxyModel_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QTransposeProxyModel, ): gen_qobjectdefs.QMetaObject =
-
+proc QTransposeProxyModelmetaObject*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQTransposeProxyModel_virtualbase_metaObject(self.h))
 
-type QTransposeProxyModelmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QTransposeProxyModel, slot: proc(super: QTransposeProxyModelmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QTransposeProxyModelmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, slot: QTransposeProxyModelmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QTransposeProxyModelmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QTransposeProxyModelmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTransposeProxyModel_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTransposeProxyModel_metaObject(self: ptr cQTransposeProxyModel, slot: int): pointer {.exportc: "miqt_exec_callback_QTransposeProxyModel_metaObject ".} =
-  type Cb = proc(super: QTransposeProxyModelmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QTransposeProxyModel(h: self), )
+  var nimfunc = cast[ptr QTransposeProxyModelmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QTransposeProxyModel, param1: cstring): pointer =
-
+proc QTransposeProxyModelmetacast*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, param1: cstring): pointer =
 
   fQTransposeProxyModel_virtualbase_metacast(self.h, param1)
 
-type QTransposeProxyModelmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QTransposeProxyModel, slot: proc(super: QTransposeProxyModelmetacastBase, param1: cstring): pointer) =
+type QTransposeProxyModelmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, slot: QTransposeProxyModelmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QTransposeProxyModelmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QTransposeProxyModelmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTransposeProxyModel_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTransposeProxyModel_metacast(self: ptr cQTransposeProxyModel, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QTransposeProxyModel_metacast ".} =
-  type Cb = proc(super: QTransposeProxyModelmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QTransposeProxyModel(h: self), param1)
+  var nimfunc = cast[ptr QTransposeProxyModelmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QTransposeProxyModel, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QTransposeProxyModelmetacall*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, param1: cint, param2: cint, param3: pointer): cint =
 
   fQTransposeProxyModel_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QTransposeProxyModelmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QTransposeProxyModel, slot: proc(super: QTransposeProxyModelmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QTransposeProxyModelmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, slot: QTransposeProxyModelmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QTransposeProxyModelmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QTransposeProxyModelmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTransposeProxyModel_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTransposeProxyModel_metacall(self: ptr cQTransposeProxyModel, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QTransposeProxyModel_metacall ".} =
-  type Cb = proc(super: QTransposeProxyModelmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QTransposeProxyModel(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QTransposeProxyModelmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_setSourceModel(self: QTransposeProxyModel, newSourceModel: gen_qabstractitemmodel.QAbstractItemModel): void =
-
+proc QTransposeProxyModelsetSourceModel*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, newSourceModel: gen_qabstractitemmodel.QAbstractItemModel): void =
 
   fQTransposeProxyModel_virtualbase_setSourceModel(self.h, newSourceModel.h)
 
-type QTransposeProxyModelsetSourceModelBase* = proc(newSourceModel: gen_qabstractitemmodel.QAbstractItemModel): void
-proc onsetSourceModel*(self: QTransposeProxyModel, slot: proc(super: QTransposeProxyModelsetSourceModelBase, newSourceModel: gen_qabstractitemmodel.QAbstractItemModel): void) =
+type QTransposeProxyModelsetSourceModelProc* = proc(newSourceModel: gen_qabstractitemmodel.QAbstractItemModel): void
+proc onsetSourceModel*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, slot: QTransposeProxyModelsetSourceModelProc) =
   # TODO check subclass
-  type Cb = proc(super: QTransposeProxyModelsetSourceModelBase, newSourceModel: gen_qabstractitemmodel.QAbstractItemModel): void
-  var tmp = new Cb
+  var tmp = new QTransposeProxyModelsetSourceModelProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTransposeProxyModel_override_virtual_setSourceModel(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTransposeProxyModel_setSourceModel(self: ptr cQTransposeProxyModel, slot: int, newSourceModel: pointer): void {.exportc: "miqt_exec_callback_QTransposeProxyModel_setSourceModel ".} =
-  type Cb = proc(super: QTransposeProxyModelsetSourceModelBase, newSourceModel: gen_qabstractitemmodel.QAbstractItemModel): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(newSourceModel: gen_qabstractitemmodel.QAbstractItemModel): auto =
-    callVirtualBase_setSourceModel(QTransposeProxyModel(h: self), newSourceModel)
+  var nimfunc = cast[ptr QTransposeProxyModelsetSourceModelProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QAbstractItemModel(h: newSourceModel)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_rowCount(self: QTransposeProxyModel, parent: gen_qabstractitemmodel.QModelIndex): cint =
-
+  nimfunc[](slotval1)
+proc QTransposeProxyModelrowCount*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, parent: gen_qabstractitemmodel.QModelIndex): cint =
 
   fQTransposeProxyModel_virtualbase_rowCount(self.h, parent.h)
 
-type QTransposeProxyModelrowCountBase* = proc(parent: gen_qabstractitemmodel.QModelIndex): cint
-proc onrowCount*(self: QTransposeProxyModel, slot: proc(super: QTransposeProxyModelrowCountBase, parent: gen_qabstractitemmodel.QModelIndex): cint) =
+type QTransposeProxyModelrowCountProc* = proc(parent: gen_qabstractitemmodel.QModelIndex): cint
+proc onrowCount*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, slot: QTransposeProxyModelrowCountProc) =
   # TODO check subclass
-  type Cb = proc(super: QTransposeProxyModelrowCountBase, parent: gen_qabstractitemmodel.QModelIndex): cint
-  var tmp = new Cb
+  var tmp = new QTransposeProxyModelrowCountProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTransposeProxyModel_override_virtual_rowCount(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTransposeProxyModel_rowCount(self: ptr cQTransposeProxyModel, slot: int, parent: pointer): cint {.exportc: "miqt_exec_callback_QTransposeProxyModel_rowCount ".} =
-  type Cb = proc(super: QTransposeProxyModelrowCountBase, parent: gen_qabstractitemmodel.QModelIndex): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(parent: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_rowCount(QTransposeProxyModel(h: self), parent)
+  var nimfunc = cast[ptr QTransposeProxyModelrowCountProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: parent)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_columnCount(self: QTransposeProxyModel, parent: gen_qabstractitemmodel.QModelIndex): cint =
-
+proc QTransposeProxyModelcolumnCount*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, parent: gen_qabstractitemmodel.QModelIndex): cint =
 
   fQTransposeProxyModel_virtualbase_columnCount(self.h, parent.h)
 
-type QTransposeProxyModelcolumnCountBase* = proc(parent: gen_qabstractitemmodel.QModelIndex): cint
-proc oncolumnCount*(self: QTransposeProxyModel, slot: proc(super: QTransposeProxyModelcolumnCountBase, parent: gen_qabstractitemmodel.QModelIndex): cint) =
+type QTransposeProxyModelcolumnCountProc* = proc(parent: gen_qabstractitemmodel.QModelIndex): cint
+proc oncolumnCount*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, slot: QTransposeProxyModelcolumnCountProc) =
   # TODO check subclass
-  type Cb = proc(super: QTransposeProxyModelcolumnCountBase, parent: gen_qabstractitemmodel.QModelIndex): cint
-  var tmp = new Cb
+  var tmp = new QTransposeProxyModelcolumnCountProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTransposeProxyModel_override_virtual_columnCount(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTransposeProxyModel_columnCount(self: ptr cQTransposeProxyModel, slot: int, parent: pointer): cint {.exportc: "miqt_exec_callback_QTransposeProxyModel_columnCount ".} =
-  type Cb = proc(super: QTransposeProxyModelcolumnCountBase, parent: gen_qabstractitemmodel.QModelIndex): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(parent: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_columnCount(QTransposeProxyModel(h: self), parent)
+  var nimfunc = cast[ptr QTransposeProxyModelcolumnCountProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: parent)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_headerData(self: QTransposeProxyModel, section: cint, orientation: gen_qnamespace.Orientation, role: cint): gen_qvariant.QVariant =
-
+proc QTransposeProxyModelheaderData*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, section: cint, orientation: cint, role: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQTransposeProxyModel_virtualbase_headerData(self.h, section, cint(orientation), role))
 
-type QTransposeProxyModelheaderDataBase* = proc(section: cint, orientation: gen_qnamespace.Orientation, role: cint): gen_qvariant.QVariant
-proc onheaderData*(self: QTransposeProxyModel, slot: proc(super: QTransposeProxyModelheaderDataBase, section: cint, orientation: gen_qnamespace.Orientation, role: cint): gen_qvariant.QVariant) =
+type QTransposeProxyModelheaderDataProc* = proc(section: cint, orientation: cint, role: cint): gen_qvariant.QVariant
+proc onheaderData*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, slot: QTransposeProxyModelheaderDataProc) =
   # TODO check subclass
-  type Cb = proc(super: QTransposeProxyModelheaderDataBase, section: cint, orientation: gen_qnamespace.Orientation, role: cint): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QTransposeProxyModelheaderDataProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTransposeProxyModel_override_virtual_headerData(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTransposeProxyModel_headerData(self: ptr cQTransposeProxyModel, slot: int, section: cint, orientation: cint, role: cint): pointer {.exportc: "miqt_exec_callback_QTransposeProxyModel_headerData ".} =
-  type Cb = proc(super: QTransposeProxyModelheaderDataBase, section: cint, orientation: gen_qnamespace.Orientation, role: cint): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(section: cint, orientation: gen_qnamespace.Orientation, role: cint): auto =
-    callVirtualBase_headerData(QTransposeProxyModel(h: self), section, orientation, role)
+  var nimfunc = cast[ptr QTransposeProxyModelheaderDataProc](cast[pointer](slot))
   let slotval1 = section
 
-  let slotval2 = gen_qnamespace.Orientation(orientation)
+  let slotval2 = cint(orientation)
 
   let slotval3 = role
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn.h
-proc callVirtualBase_setHeaderData(self: QTransposeProxyModel, section: cint, orientation: gen_qnamespace.Orientation, value: gen_qvariant.QVariant, role: cint): bool =
-
+proc QTransposeProxyModelsetHeaderData*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, section: cint, orientation: cint, value: gen_qvariant.QVariant, role: cint): bool =
 
   fQTransposeProxyModel_virtualbase_setHeaderData(self.h, section, cint(orientation), value.h, role)
 
-type QTransposeProxyModelsetHeaderDataBase* = proc(section: cint, orientation: gen_qnamespace.Orientation, value: gen_qvariant.QVariant, role: cint): bool
-proc onsetHeaderData*(self: QTransposeProxyModel, slot: proc(super: QTransposeProxyModelsetHeaderDataBase, section: cint, orientation: gen_qnamespace.Orientation, value: gen_qvariant.QVariant, role: cint): bool) =
+type QTransposeProxyModelsetHeaderDataProc* = proc(section: cint, orientation: cint, value: gen_qvariant.QVariant, role: cint): bool
+proc onsetHeaderData*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, slot: QTransposeProxyModelsetHeaderDataProc) =
   # TODO check subclass
-  type Cb = proc(super: QTransposeProxyModelsetHeaderDataBase, section: cint, orientation: gen_qnamespace.Orientation, value: gen_qvariant.QVariant, role: cint): bool
-  var tmp = new Cb
+  var tmp = new QTransposeProxyModelsetHeaderDataProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTransposeProxyModel_override_virtual_setHeaderData(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTransposeProxyModel_setHeaderData(self: ptr cQTransposeProxyModel, slot: int, section: cint, orientation: cint, value: pointer, role: cint): bool {.exportc: "miqt_exec_callback_QTransposeProxyModel_setHeaderData ".} =
-  type Cb = proc(super: QTransposeProxyModelsetHeaderDataBase, section: cint, orientation: gen_qnamespace.Orientation, value: gen_qvariant.QVariant, role: cint): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(section: cint, orientation: gen_qnamespace.Orientation, value: gen_qvariant.QVariant, role: cint): auto =
-    callVirtualBase_setHeaderData(QTransposeProxyModel(h: self), section, orientation, value, role)
+  var nimfunc = cast[ptr QTransposeProxyModelsetHeaderDataProc](cast[pointer](slot))
   let slotval1 = section
 
-  let slotval2 = gen_qnamespace.Orientation(orientation)
+  let slotval2 = cint(orientation)
 
   let slotval3 = gen_qvariant.QVariant(h: value)
 
   let slotval4 = role
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3, slotval4 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3, slotval4 )
 
   virtualReturn
-proc callVirtualBase_setItemData(self: QTransposeProxyModel, index: gen_qabstractitemmodel.QModelIndex, roles: Table[cint,gen_qvariant.QVariant]): bool =
+proc QTransposeProxyModelsetItemData*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, index: gen_qabstractitemmodel.QModelIndex, roles: Table[cint,gen_qvariant.QVariant]): bool =
 
   var roles_Keys_CArray = newSeq[cint](len(roles))
   var roles_Values_CArray = newSeq[pointer](len(roles))
@@ -573,23 +531,18 @@ proc callVirtualBase_setItemData(self: QTransposeProxyModel, index: gen_qabstrac
     roles_Values_CArray[roles_ctr] = roles_v.h
     roles_ctr += 1
 
-
   fQTransposeProxyModel_virtualbase_setItemData(self.h, index.h, struct_miqt_map(len: csize_t(len(roles)),keys: if len(roles) == 0: nil else: addr(roles_Keys_CArray[0]), values: if len(roles) == 0: nil else: addr(roles_Values_CArray[0]),))
 
-type QTransposeProxyModelsetItemDataBase* = proc(index: gen_qabstractitemmodel.QModelIndex, roles: Table[cint,gen_qvariant.QVariant]): bool
-proc onsetItemData*(self: QTransposeProxyModel, slot: proc(super: QTransposeProxyModelsetItemDataBase, index: gen_qabstractitemmodel.QModelIndex, roles: Table[cint,gen_qvariant.QVariant]): bool) =
+type QTransposeProxyModelsetItemDataProc* = proc(index: gen_qabstractitemmodel.QModelIndex, roles: Table[cint,gen_qvariant.QVariant]): bool
+proc onsetItemData*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, slot: QTransposeProxyModelsetItemDataProc) =
   # TODO check subclass
-  type Cb = proc(super: QTransposeProxyModelsetItemDataBase, index: gen_qabstractitemmodel.QModelIndex, roles: Table[cint,gen_qvariant.QVariant]): bool
-  var tmp = new Cb
+  var tmp = new QTransposeProxyModelsetItemDataProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTransposeProxyModel_override_virtual_setItemData(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTransposeProxyModel_setItemData(self: ptr cQTransposeProxyModel, slot: int, index: pointer, roles: struct_miqt_map): bool {.exportc: "miqt_exec_callback_QTransposeProxyModel_setItemData ".} =
-  type Cb = proc(super: QTransposeProxyModelsetItemDataBase, index: gen_qabstractitemmodel.QModelIndex, roles: Table[cint,gen_qvariant.QVariant]): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(index: gen_qabstractitemmodel.QModelIndex, roles: Table[cint,gen_qvariant.QVariant]): auto =
-    callVirtualBase_setItemData(QTransposeProxyModel(h: self), index, roles)
+  var nimfunc = cast[ptr QTransposeProxyModelsetItemDataProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: index)
 
   var vroles_mm = roles
@@ -605,36 +558,30 @@ proc miqt_exec_callback_QTransposeProxyModel_setItemData(self: ptr cQTransposePr
   let slotval2 = vrolesx_ret
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_span(self: QTransposeProxyModel, index: gen_qabstractitemmodel.QModelIndex): gen_qsize.QSize =
-
+proc QTransposeProxyModelspan*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, index: gen_qabstractitemmodel.QModelIndex): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQTransposeProxyModel_virtualbase_span(self.h, index.h))
 
-type QTransposeProxyModelspanBase* = proc(index: gen_qabstractitemmodel.QModelIndex): gen_qsize.QSize
-proc onspan*(self: QTransposeProxyModel, slot: proc(super: QTransposeProxyModelspanBase, index: gen_qabstractitemmodel.QModelIndex): gen_qsize.QSize) =
+type QTransposeProxyModelspanProc* = proc(index: gen_qabstractitemmodel.QModelIndex): gen_qsize.QSize
+proc onspan*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, slot: QTransposeProxyModelspanProc) =
   # TODO check subclass
-  type Cb = proc(super: QTransposeProxyModelspanBase, index: gen_qabstractitemmodel.QModelIndex): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QTransposeProxyModelspanProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTransposeProxyModel_override_virtual_span(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTransposeProxyModel_span(self: ptr cQTransposeProxyModel, slot: int, index: pointer): pointer {.exportc: "miqt_exec_callback_QTransposeProxyModel_span ".} =
-  type Cb = proc(super: QTransposeProxyModelspanBase, index: gen_qabstractitemmodel.QModelIndex): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(index: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_span(QTransposeProxyModel(h: self), index)
+  var nimfunc = cast[ptr QTransposeProxyModelspanProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: index)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_itemData(self: QTransposeProxyModel, index: gen_qabstractitemmodel.QModelIndex): Table[cint,gen_qvariant.QVariant] =
-
+proc QTransposeProxyModelitemData*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, index: gen_qabstractitemmodel.QModelIndex): Table[cint,gen_qvariant.QVariant] =
 
   var v_mm = fQTransposeProxyModel_virtualbase_itemData(self.h, index.h)
   var vx_ret: Table[cint, gen_qvariant.QVariant]
@@ -648,24 +595,20 @@ proc callVirtualBase_itemData(self: QTransposeProxyModel, index: gen_qabstractit
     vx_ret[v_entry_Key] = v_entry_Value
   vx_ret
 
-type QTransposeProxyModelitemDataBase* = proc(index: gen_qabstractitemmodel.QModelIndex): Table[cint,gen_qvariant.QVariant]
-proc onitemData*(self: QTransposeProxyModel, slot: proc(super: QTransposeProxyModelitemDataBase, index: gen_qabstractitemmodel.QModelIndex): Table[cint,gen_qvariant.QVariant]) =
+type QTransposeProxyModelitemDataProc* = proc(index: gen_qabstractitemmodel.QModelIndex): Table[cint,gen_qvariant.QVariant]
+proc onitemData*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, slot: QTransposeProxyModelitemDataProc) =
   # TODO check subclass
-  type Cb = proc(super: QTransposeProxyModelitemDataBase, index: gen_qabstractitemmodel.QModelIndex): Table[cint,gen_qvariant.QVariant]
-  var tmp = new Cb
+  var tmp = new QTransposeProxyModelitemDataProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTransposeProxyModel_override_virtual_itemData(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTransposeProxyModel_itemData(self: ptr cQTransposeProxyModel, slot: int, index: pointer): struct_miqt_map {.exportc: "miqt_exec_callback_QTransposeProxyModel_itemData ".} =
-  type Cb = proc(super: QTransposeProxyModelitemDataBase, index: gen_qabstractitemmodel.QModelIndex): Table[cint,gen_qvariant.QVariant]
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(index: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_itemData(QTransposeProxyModel(h: self), index)
+  var nimfunc = cast[ptr QTransposeProxyModelitemDataProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: index)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
   var virtualReturn_Keys_CArray = newSeq[cint](len(virtualReturn))
   var virtualReturn_Values_CArray = newSeq[pointer](len(virtualReturn))
   var virtualReturn_ctr = 0
@@ -676,100 +619,80 @@ proc miqt_exec_callback_QTransposeProxyModel_itemData(self: ptr cQTransposeProxy
 
 
   struct_miqt_map(len: csize_t(len(virtualReturn)),keys: if len(virtualReturn) == 0: nil else: addr(virtualReturn_Keys_CArray[0]), values: if len(virtualReturn) == 0: nil else: addr(virtualReturn_Values_CArray[0]),)
-proc callVirtualBase_mapFromSource(self: QTransposeProxyModel, sourceIndex: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
-
+proc QTransposeProxyModelmapFromSource*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, sourceIndex: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
 
   gen_qabstractitemmodel.QModelIndex(h: fQTransposeProxyModel_virtualbase_mapFromSource(self.h, sourceIndex.h))
 
-type QTransposeProxyModelmapFromSourceBase* = proc(sourceIndex: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
-proc onmapFromSource*(self: QTransposeProxyModel, slot: proc(super: QTransposeProxyModelmapFromSourceBase, sourceIndex: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex) =
+type QTransposeProxyModelmapFromSourceProc* = proc(sourceIndex: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
+proc onmapFromSource*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, slot: QTransposeProxyModelmapFromSourceProc) =
   # TODO check subclass
-  type Cb = proc(super: QTransposeProxyModelmapFromSourceBase, sourceIndex: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
-  var tmp = new Cb
+  var tmp = new QTransposeProxyModelmapFromSourceProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTransposeProxyModel_override_virtual_mapFromSource(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTransposeProxyModel_mapFromSource(self: ptr cQTransposeProxyModel, slot: int, sourceIndex: pointer): pointer {.exportc: "miqt_exec_callback_QTransposeProxyModel_mapFromSource ".} =
-  type Cb = proc(super: QTransposeProxyModelmapFromSourceBase, sourceIndex: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(sourceIndex: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_mapFromSource(QTransposeProxyModel(h: self), sourceIndex)
+  var nimfunc = cast[ptr QTransposeProxyModelmapFromSourceProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: sourceIndex)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_mapToSource(self: QTransposeProxyModel, proxyIndex: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
-
+proc QTransposeProxyModelmapToSource*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, proxyIndex: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
 
   gen_qabstractitemmodel.QModelIndex(h: fQTransposeProxyModel_virtualbase_mapToSource(self.h, proxyIndex.h))
 
-type QTransposeProxyModelmapToSourceBase* = proc(proxyIndex: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
-proc onmapToSource*(self: QTransposeProxyModel, slot: proc(super: QTransposeProxyModelmapToSourceBase, proxyIndex: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex) =
+type QTransposeProxyModelmapToSourceProc* = proc(proxyIndex: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
+proc onmapToSource*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, slot: QTransposeProxyModelmapToSourceProc) =
   # TODO check subclass
-  type Cb = proc(super: QTransposeProxyModelmapToSourceBase, proxyIndex: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
-  var tmp = new Cb
+  var tmp = new QTransposeProxyModelmapToSourceProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTransposeProxyModel_override_virtual_mapToSource(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTransposeProxyModel_mapToSource(self: ptr cQTransposeProxyModel, slot: int, proxyIndex: pointer): pointer {.exportc: "miqt_exec_callback_QTransposeProxyModel_mapToSource ".} =
-  type Cb = proc(super: QTransposeProxyModelmapToSourceBase, proxyIndex: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(proxyIndex: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_mapToSource(QTransposeProxyModel(h: self), proxyIndex)
+  var nimfunc = cast[ptr QTransposeProxyModelmapToSourceProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: proxyIndex)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_parent(self: QTransposeProxyModel, index: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
-
+proc QTransposeProxyModelparent*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, index: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
 
   gen_qabstractitemmodel.QModelIndex(h: fQTransposeProxyModel_virtualbase_parent(self.h, index.h))
 
-type QTransposeProxyModelparentBase* = proc(index: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
-proc onparent*(self: QTransposeProxyModel, slot: proc(super: QTransposeProxyModelparentBase, index: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex) =
+type QTransposeProxyModelparentProc* = proc(index: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
+proc onparent*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, slot: QTransposeProxyModelparentProc) =
   # TODO check subclass
-  type Cb = proc(super: QTransposeProxyModelparentBase, index: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
-  var tmp = new Cb
+  var tmp = new QTransposeProxyModelparentProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTransposeProxyModel_override_virtual_parent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTransposeProxyModel_parent(self: ptr cQTransposeProxyModel, slot: int, index: pointer): pointer {.exportc: "miqt_exec_callback_QTransposeProxyModel_parent ".} =
-  type Cb = proc(super: QTransposeProxyModelparentBase, index: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(index: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_parent(QTransposeProxyModel(h: self), index)
+  var nimfunc = cast[ptr QTransposeProxyModelparentProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: index)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_index(self: QTransposeProxyModel, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
-
+proc QTransposeProxyModelindex*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
 
   gen_qabstractitemmodel.QModelIndex(h: fQTransposeProxyModel_virtualbase_index(self.h, row, column, parent.h))
 
-type QTransposeProxyModelindexBase* = proc(row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
-proc onindex*(self: QTransposeProxyModel, slot: proc(super: QTransposeProxyModelindexBase, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex) =
+type QTransposeProxyModelindexProc* = proc(row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
+proc onindex*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, slot: QTransposeProxyModelindexProc) =
   # TODO check subclass
-  type Cb = proc(super: QTransposeProxyModelindexBase, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
-  var tmp = new Cb
+  var tmp = new QTransposeProxyModelindexProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTransposeProxyModel_override_virtual_index(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTransposeProxyModel_index(self: ptr cQTransposeProxyModel, slot: int, row: cint, column: cint, parent: pointer): pointer {.exportc: "miqt_exec_callback_QTransposeProxyModel_index ".} =
-  type Cb = proc(super: QTransposeProxyModelindexBase, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_index(QTransposeProxyModel(h: self), row, column, parent)
+  var nimfunc = cast[ptr QTransposeProxyModelindexProc](cast[pointer](slot))
   let slotval1 = row
 
   let slotval2 = column
@@ -777,28 +700,23 @@ proc miqt_exec_callback_QTransposeProxyModel_index(self: ptr cQTransposeProxyMod
   let slotval3 = gen_qabstractitemmodel.QModelIndex(h: parent)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn.h
-proc callVirtualBase_insertRows(self: QTransposeProxyModel, row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
+proc QTransposeProxyModelinsertRows*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
 
   fQTransposeProxyModel_virtualbase_insertRows(self.h, row, count, parent.h)
 
-type QTransposeProxyModelinsertRowsBase* = proc(row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
-proc oninsertRows*(self: QTransposeProxyModel, slot: proc(super: QTransposeProxyModelinsertRowsBase, row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool) =
+type QTransposeProxyModelinsertRowsProc* = proc(row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
+proc oninsertRows*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, slot: QTransposeProxyModelinsertRowsProc) =
   # TODO check subclass
-  type Cb = proc(super: QTransposeProxyModelinsertRowsBase, row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
-  var tmp = new Cb
+  var tmp = new QTransposeProxyModelinsertRowsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTransposeProxyModel_override_virtual_insertRows(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTransposeProxyModel_insertRows(self: ptr cQTransposeProxyModel, slot: int, row: cint, count: cint, parent: pointer): bool {.exportc: "miqt_exec_callback_QTransposeProxyModel_insertRows ".} =
-  type Cb = proc(super: QTransposeProxyModelinsertRowsBase, row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_insertRows(QTransposeProxyModel(h: self), row, count, parent)
+  var nimfunc = cast[ptr QTransposeProxyModelinsertRowsProc](cast[pointer](slot))
   let slotval1 = row
 
   let slotval2 = count
@@ -806,28 +724,23 @@ proc miqt_exec_callback_QTransposeProxyModel_insertRows(self: ptr cQTransposePro
   let slotval3 = gen_qabstractitemmodel.QModelIndex(h: parent)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_removeRows(self: QTransposeProxyModel, row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
+proc QTransposeProxyModelremoveRows*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
 
   fQTransposeProxyModel_virtualbase_removeRows(self.h, row, count, parent.h)
 
-type QTransposeProxyModelremoveRowsBase* = proc(row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
-proc onremoveRows*(self: QTransposeProxyModel, slot: proc(super: QTransposeProxyModelremoveRowsBase, row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool) =
+type QTransposeProxyModelremoveRowsProc* = proc(row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
+proc onremoveRows*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, slot: QTransposeProxyModelremoveRowsProc) =
   # TODO check subclass
-  type Cb = proc(super: QTransposeProxyModelremoveRowsBase, row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
-  var tmp = new Cb
+  var tmp = new QTransposeProxyModelremoveRowsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTransposeProxyModel_override_virtual_removeRows(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTransposeProxyModel_removeRows(self: ptr cQTransposeProxyModel, slot: int, row: cint, count: cint, parent: pointer): bool {.exportc: "miqt_exec_callback_QTransposeProxyModel_removeRows ".} =
-  type Cb = proc(super: QTransposeProxyModelremoveRowsBase, row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_removeRows(QTransposeProxyModel(h: self), row, count, parent)
+  var nimfunc = cast[ptr QTransposeProxyModelremoveRowsProc](cast[pointer](slot))
   let slotval1 = row
 
   let slotval2 = count
@@ -835,28 +748,23 @@ proc miqt_exec_callback_QTransposeProxyModel_removeRows(self: ptr cQTransposePro
   let slotval3 = gen_qabstractitemmodel.QModelIndex(h: parent)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_moveRows(self: QTransposeProxyModel, sourceParent: gen_qabstractitemmodel.QModelIndex, sourceRow: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool =
-
+proc QTransposeProxyModelmoveRows*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, sourceParent: gen_qabstractitemmodel.QModelIndex, sourceRow: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool =
 
   fQTransposeProxyModel_virtualbase_moveRows(self.h, sourceParent.h, sourceRow, count, destinationParent.h, destinationChild)
 
-type QTransposeProxyModelmoveRowsBase* = proc(sourceParent: gen_qabstractitemmodel.QModelIndex, sourceRow: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool
-proc onmoveRows*(self: QTransposeProxyModel, slot: proc(super: QTransposeProxyModelmoveRowsBase, sourceParent: gen_qabstractitemmodel.QModelIndex, sourceRow: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool) =
+type QTransposeProxyModelmoveRowsProc* = proc(sourceParent: gen_qabstractitemmodel.QModelIndex, sourceRow: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool
+proc onmoveRows*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, slot: QTransposeProxyModelmoveRowsProc) =
   # TODO check subclass
-  type Cb = proc(super: QTransposeProxyModelmoveRowsBase, sourceParent: gen_qabstractitemmodel.QModelIndex, sourceRow: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool
-  var tmp = new Cb
+  var tmp = new QTransposeProxyModelmoveRowsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTransposeProxyModel_override_virtual_moveRows(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTransposeProxyModel_moveRows(self: ptr cQTransposeProxyModel, slot: int, sourceParent: pointer, sourceRow: cint, count: cint, destinationParent: pointer, destinationChild: cint): bool {.exportc: "miqt_exec_callback_QTransposeProxyModel_moveRows ".} =
-  type Cb = proc(super: QTransposeProxyModelmoveRowsBase, sourceParent: gen_qabstractitemmodel.QModelIndex, sourceRow: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(sourceParent: gen_qabstractitemmodel.QModelIndex, sourceRow: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): auto =
-    callVirtualBase_moveRows(QTransposeProxyModel(h: self), sourceParent, sourceRow, count, destinationParent, destinationChild)
+  var nimfunc = cast[ptr QTransposeProxyModelmoveRowsProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: sourceParent)
 
   let slotval2 = sourceRow
@@ -868,28 +776,23 @@ proc miqt_exec_callback_QTransposeProxyModel_moveRows(self: ptr cQTransposeProxy
   let slotval5 = destinationChild
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3, slotval4, slotval5 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3, slotval4, slotval5 )
 
   virtualReturn
-proc callVirtualBase_insertColumns(self: QTransposeProxyModel, column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
+proc QTransposeProxyModelinsertColumns*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
 
   fQTransposeProxyModel_virtualbase_insertColumns(self.h, column, count, parent.h)
 
-type QTransposeProxyModelinsertColumnsBase* = proc(column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
-proc oninsertColumns*(self: QTransposeProxyModel, slot: proc(super: QTransposeProxyModelinsertColumnsBase, column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool) =
+type QTransposeProxyModelinsertColumnsProc* = proc(column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
+proc oninsertColumns*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, slot: QTransposeProxyModelinsertColumnsProc) =
   # TODO check subclass
-  type Cb = proc(super: QTransposeProxyModelinsertColumnsBase, column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
-  var tmp = new Cb
+  var tmp = new QTransposeProxyModelinsertColumnsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTransposeProxyModel_override_virtual_insertColumns(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTransposeProxyModel_insertColumns(self: ptr cQTransposeProxyModel, slot: int, column: cint, count: cint, parent: pointer): bool {.exportc: "miqt_exec_callback_QTransposeProxyModel_insertColumns ".} =
-  type Cb = proc(super: QTransposeProxyModelinsertColumnsBase, column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_insertColumns(QTransposeProxyModel(h: self), column, count, parent)
+  var nimfunc = cast[ptr QTransposeProxyModelinsertColumnsProc](cast[pointer](slot))
   let slotval1 = column
 
   let slotval2 = count
@@ -897,28 +800,23 @@ proc miqt_exec_callback_QTransposeProxyModel_insertColumns(self: ptr cQTranspose
   let slotval3 = gen_qabstractitemmodel.QModelIndex(h: parent)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_removeColumns(self: QTransposeProxyModel, column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
+proc QTransposeProxyModelremoveColumns*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
 
   fQTransposeProxyModel_virtualbase_removeColumns(self.h, column, count, parent.h)
 
-type QTransposeProxyModelremoveColumnsBase* = proc(column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
-proc onremoveColumns*(self: QTransposeProxyModel, slot: proc(super: QTransposeProxyModelremoveColumnsBase, column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool) =
+type QTransposeProxyModelremoveColumnsProc* = proc(column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
+proc onremoveColumns*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, slot: QTransposeProxyModelremoveColumnsProc) =
   # TODO check subclass
-  type Cb = proc(super: QTransposeProxyModelremoveColumnsBase, column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
-  var tmp = new Cb
+  var tmp = new QTransposeProxyModelremoveColumnsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTransposeProxyModel_override_virtual_removeColumns(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTransposeProxyModel_removeColumns(self: ptr cQTransposeProxyModel, slot: int, column: cint, count: cint, parent: pointer): bool {.exportc: "miqt_exec_callback_QTransposeProxyModel_removeColumns ".} =
-  type Cb = proc(super: QTransposeProxyModelremoveColumnsBase, column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_removeColumns(QTransposeProxyModel(h: self), column, count, parent)
+  var nimfunc = cast[ptr QTransposeProxyModelremoveColumnsProc](cast[pointer](slot))
   let slotval1 = column
 
   let slotval2 = count
@@ -926,28 +824,23 @@ proc miqt_exec_callback_QTransposeProxyModel_removeColumns(self: ptr cQTranspose
   let slotval3 = gen_qabstractitemmodel.QModelIndex(h: parent)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_moveColumns(self: QTransposeProxyModel, sourceParent: gen_qabstractitemmodel.QModelIndex, sourceColumn: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool =
-
+proc QTransposeProxyModelmoveColumns*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, sourceParent: gen_qabstractitemmodel.QModelIndex, sourceColumn: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool =
 
   fQTransposeProxyModel_virtualbase_moveColumns(self.h, sourceParent.h, sourceColumn, count, destinationParent.h, destinationChild)
 
-type QTransposeProxyModelmoveColumnsBase* = proc(sourceParent: gen_qabstractitemmodel.QModelIndex, sourceColumn: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool
-proc onmoveColumns*(self: QTransposeProxyModel, slot: proc(super: QTransposeProxyModelmoveColumnsBase, sourceParent: gen_qabstractitemmodel.QModelIndex, sourceColumn: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool) =
+type QTransposeProxyModelmoveColumnsProc* = proc(sourceParent: gen_qabstractitemmodel.QModelIndex, sourceColumn: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool
+proc onmoveColumns*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, slot: QTransposeProxyModelmoveColumnsProc) =
   # TODO check subclass
-  type Cb = proc(super: QTransposeProxyModelmoveColumnsBase, sourceParent: gen_qabstractitemmodel.QModelIndex, sourceColumn: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool
-  var tmp = new Cb
+  var tmp = new QTransposeProxyModelmoveColumnsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTransposeProxyModel_override_virtual_moveColumns(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTransposeProxyModel_moveColumns(self: ptr cQTransposeProxyModel, slot: int, sourceParent: pointer, sourceColumn: cint, count: cint, destinationParent: pointer, destinationChild: cint): bool {.exportc: "miqt_exec_callback_QTransposeProxyModel_moveColumns ".} =
-  type Cb = proc(super: QTransposeProxyModelmoveColumnsBase, sourceParent: gen_qabstractitemmodel.QModelIndex, sourceColumn: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(sourceParent: gen_qabstractitemmodel.QModelIndex, sourceColumn: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): auto =
-    callVirtualBase_moveColumns(QTransposeProxyModel(h: self), sourceParent, sourceColumn, count, destinationParent, destinationChild)
+  var nimfunc = cast[ptr QTransposeProxyModelmoveColumnsProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: sourceParent)
 
   let slotval2 = sourceColumn
@@ -959,199 +852,159 @@ proc miqt_exec_callback_QTransposeProxyModel_moveColumns(self: ptr cQTransposePr
   let slotval5 = destinationChild
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3, slotval4, slotval5 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3, slotval4, slotval5 )
 
   virtualReturn
-proc callVirtualBase_sort(self: QTransposeProxyModel, column: cint, order: gen_qnamespace.SortOrder): void =
-
+proc QTransposeProxyModelsort*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, column: cint, order: cint): void =
 
   fQTransposeProxyModel_virtualbase_sort(self.h, column, cint(order))
 
-type QTransposeProxyModelsortBase* = proc(column: cint, order: gen_qnamespace.SortOrder): void
-proc onsort*(self: QTransposeProxyModel, slot: proc(super: QTransposeProxyModelsortBase, column: cint, order: gen_qnamespace.SortOrder): void) =
+type QTransposeProxyModelsortProc* = proc(column: cint, order: cint): void
+proc onsort*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, slot: QTransposeProxyModelsortProc) =
   # TODO check subclass
-  type Cb = proc(super: QTransposeProxyModelsortBase, column: cint, order: gen_qnamespace.SortOrder): void
-  var tmp = new Cb
+  var tmp = new QTransposeProxyModelsortProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTransposeProxyModel_override_virtual_sort(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTransposeProxyModel_sort(self: ptr cQTransposeProxyModel, slot: int, column: cint, order: cint): void {.exportc: "miqt_exec_callback_QTransposeProxyModel_sort ".} =
-  type Cb = proc(super: QTransposeProxyModelsortBase, column: cint, order: gen_qnamespace.SortOrder): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(column: cint, order: gen_qnamespace.SortOrder): auto =
-    callVirtualBase_sort(QTransposeProxyModel(h: self), column, order)
+  var nimfunc = cast[ptr QTransposeProxyModelsortProc](cast[pointer](slot))
   let slotval1 = column
 
-  let slotval2 = gen_qnamespace.SortOrder(order)
+  let slotval2 = cint(order)
 
 
-  nimfunc[](superCall, slotval1, slotval2)
-proc callVirtualBase_mapSelectionToSource(self: QTransposeProxyModel, selection: gen_qitemselectionmodel.QItemSelection): gen_qitemselectionmodel.QItemSelection =
-
+  nimfunc[](slotval1, slotval2)
+proc QTransposeProxyModelmapSelectionToSource*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, selection: gen_qitemselectionmodel.QItemSelection): gen_qitemselectionmodel.QItemSelection =
 
   gen_qitemselectionmodel.QItemSelection(h: fQTransposeProxyModel_virtualbase_mapSelectionToSource(self.h, selection.h))
 
-type QTransposeProxyModelmapSelectionToSourceBase* = proc(selection: gen_qitemselectionmodel.QItemSelection): gen_qitemselectionmodel.QItemSelection
-proc onmapSelectionToSource*(self: QTransposeProxyModel, slot: proc(super: QTransposeProxyModelmapSelectionToSourceBase, selection: gen_qitemselectionmodel.QItemSelection): gen_qitemselectionmodel.QItemSelection) =
+type QTransposeProxyModelmapSelectionToSourceProc* = proc(selection: gen_qitemselectionmodel.QItemSelection): gen_qitemselectionmodel.QItemSelection
+proc onmapSelectionToSource*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, slot: QTransposeProxyModelmapSelectionToSourceProc) =
   # TODO check subclass
-  type Cb = proc(super: QTransposeProxyModelmapSelectionToSourceBase, selection: gen_qitemselectionmodel.QItemSelection): gen_qitemselectionmodel.QItemSelection
-  var tmp = new Cb
+  var tmp = new QTransposeProxyModelmapSelectionToSourceProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTransposeProxyModel_override_virtual_mapSelectionToSource(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTransposeProxyModel_mapSelectionToSource(self: ptr cQTransposeProxyModel, slot: int, selection: pointer): pointer {.exportc: "miqt_exec_callback_QTransposeProxyModel_mapSelectionToSource ".} =
-  type Cb = proc(super: QTransposeProxyModelmapSelectionToSourceBase, selection: gen_qitemselectionmodel.QItemSelection): gen_qitemselectionmodel.QItemSelection
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(selection: gen_qitemselectionmodel.QItemSelection): auto =
-    callVirtualBase_mapSelectionToSource(QTransposeProxyModel(h: self), selection)
+  var nimfunc = cast[ptr QTransposeProxyModelmapSelectionToSourceProc](cast[pointer](slot))
   let slotval1 = gen_qitemselectionmodel.QItemSelection(h: selection)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_mapSelectionFromSource(self: QTransposeProxyModel, selection: gen_qitemselectionmodel.QItemSelection): gen_qitemselectionmodel.QItemSelection =
-
+proc QTransposeProxyModelmapSelectionFromSource*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, selection: gen_qitemselectionmodel.QItemSelection): gen_qitemselectionmodel.QItemSelection =
 
   gen_qitemselectionmodel.QItemSelection(h: fQTransposeProxyModel_virtualbase_mapSelectionFromSource(self.h, selection.h))
 
-type QTransposeProxyModelmapSelectionFromSourceBase* = proc(selection: gen_qitemselectionmodel.QItemSelection): gen_qitemselectionmodel.QItemSelection
-proc onmapSelectionFromSource*(self: QTransposeProxyModel, slot: proc(super: QTransposeProxyModelmapSelectionFromSourceBase, selection: gen_qitemselectionmodel.QItemSelection): gen_qitemselectionmodel.QItemSelection) =
+type QTransposeProxyModelmapSelectionFromSourceProc* = proc(selection: gen_qitemselectionmodel.QItemSelection): gen_qitemselectionmodel.QItemSelection
+proc onmapSelectionFromSource*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, slot: QTransposeProxyModelmapSelectionFromSourceProc) =
   # TODO check subclass
-  type Cb = proc(super: QTransposeProxyModelmapSelectionFromSourceBase, selection: gen_qitemselectionmodel.QItemSelection): gen_qitemselectionmodel.QItemSelection
-  var tmp = new Cb
+  var tmp = new QTransposeProxyModelmapSelectionFromSourceProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTransposeProxyModel_override_virtual_mapSelectionFromSource(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTransposeProxyModel_mapSelectionFromSource(self: ptr cQTransposeProxyModel, slot: int, selection: pointer): pointer {.exportc: "miqt_exec_callback_QTransposeProxyModel_mapSelectionFromSource ".} =
-  type Cb = proc(super: QTransposeProxyModelmapSelectionFromSourceBase, selection: gen_qitemselectionmodel.QItemSelection): gen_qitemselectionmodel.QItemSelection
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(selection: gen_qitemselectionmodel.QItemSelection): auto =
-    callVirtualBase_mapSelectionFromSource(QTransposeProxyModel(h: self), selection)
+  var nimfunc = cast[ptr QTransposeProxyModelmapSelectionFromSourceProc](cast[pointer](slot))
   let slotval1 = gen_qitemselectionmodel.QItemSelection(h: selection)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_submit(self: QTransposeProxyModel, ): bool =
-
+proc QTransposeProxyModelsubmit*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, ): bool =
 
   fQTransposeProxyModel_virtualbase_submit(self.h)
 
-type QTransposeProxyModelsubmitBase* = proc(): bool
-proc onsubmit*(self: QTransposeProxyModel, slot: proc(super: QTransposeProxyModelsubmitBase): bool) =
+type QTransposeProxyModelsubmitProc* = proc(): bool
+proc onsubmit*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, slot: QTransposeProxyModelsubmitProc) =
   # TODO check subclass
-  type Cb = proc(super: QTransposeProxyModelsubmitBase): bool
-  var tmp = new Cb
+  var tmp = new QTransposeProxyModelsubmitProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTransposeProxyModel_override_virtual_submit(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTransposeProxyModel_submit(self: ptr cQTransposeProxyModel, slot: int): bool {.exportc: "miqt_exec_callback_QTransposeProxyModel_submit ".} =
-  type Cb = proc(super: QTransposeProxyModelsubmitBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_submit(QTransposeProxyModel(h: self), )
+  var nimfunc = cast[ptr QTransposeProxyModelsubmitProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_revert(self: QTransposeProxyModel, ): void =
-
+proc QTransposeProxyModelrevert*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, ): void =
 
   fQTransposeProxyModel_virtualbase_revert(self.h)
 
-type QTransposeProxyModelrevertBase* = proc(): void
-proc onrevert*(self: QTransposeProxyModel, slot: proc(super: QTransposeProxyModelrevertBase): void) =
+type QTransposeProxyModelrevertProc* = proc(): void
+proc onrevert*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, slot: QTransposeProxyModelrevertProc) =
   # TODO check subclass
-  type Cb = proc(super: QTransposeProxyModelrevertBase): void
-  var tmp = new Cb
+  var tmp = new QTransposeProxyModelrevertProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTransposeProxyModel_override_virtual_revert(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTransposeProxyModel_revert(self: ptr cQTransposeProxyModel, slot: int): void {.exportc: "miqt_exec_callback_QTransposeProxyModel_revert ".} =
-  type Cb = proc(super: QTransposeProxyModelrevertBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_revert(QTransposeProxyModel(h: self), )
+  var nimfunc = cast[ptr QTransposeProxyModelrevertProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_data(self: QTransposeProxyModel, proxyIndex: gen_qabstractitemmodel.QModelIndex, role: cint): gen_qvariant.QVariant =
-
+  nimfunc[]()
+proc QTransposeProxyModeldata*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, proxyIndex: gen_qabstractitemmodel.QModelIndex, role: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQTransposeProxyModel_virtualbase_data(self.h, proxyIndex.h, role))
 
-type QTransposeProxyModeldataBase* = proc(proxyIndex: gen_qabstractitemmodel.QModelIndex, role: cint): gen_qvariant.QVariant
-proc ondata*(self: QTransposeProxyModel, slot: proc(super: QTransposeProxyModeldataBase, proxyIndex: gen_qabstractitemmodel.QModelIndex, role: cint): gen_qvariant.QVariant) =
+type QTransposeProxyModeldataProc* = proc(proxyIndex: gen_qabstractitemmodel.QModelIndex, role: cint): gen_qvariant.QVariant
+proc ondata*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, slot: QTransposeProxyModeldataProc) =
   # TODO check subclass
-  type Cb = proc(super: QTransposeProxyModeldataBase, proxyIndex: gen_qabstractitemmodel.QModelIndex, role: cint): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QTransposeProxyModeldataProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTransposeProxyModel_override_virtual_data(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTransposeProxyModel_data(self: ptr cQTransposeProxyModel, slot: int, proxyIndex: pointer, role: cint): pointer {.exportc: "miqt_exec_callback_QTransposeProxyModel_data ".} =
-  type Cb = proc(super: QTransposeProxyModeldataBase, proxyIndex: gen_qabstractitemmodel.QModelIndex, role: cint): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(proxyIndex: gen_qabstractitemmodel.QModelIndex, role: cint): auto =
-    callVirtualBase_data(QTransposeProxyModel(h: self), proxyIndex, role)
+  var nimfunc = cast[ptr QTransposeProxyModeldataProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: proxyIndex)
 
   let slotval2 = role
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn.h
-proc callVirtualBase_flags(self: QTransposeProxyModel, index: gen_qabstractitemmodel.QModelIndex): gen_qnamespace.ItemFlag =
+proc QTransposeProxyModelflags*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, index: gen_qabstractitemmodel.QModelIndex): cint =
 
+  cint(fQTransposeProxyModel_virtualbase_flags(self.h, index.h))
 
-  gen_qnamespace.ItemFlag(fQTransposeProxyModel_virtualbase_flags(self.h, index.h))
-
-type QTransposeProxyModelflagsBase* = proc(index: gen_qabstractitemmodel.QModelIndex): gen_qnamespace.ItemFlag
-proc onflags*(self: QTransposeProxyModel, slot: proc(super: QTransposeProxyModelflagsBase, index: gen_qabstractitemmodel.QModelIndex): gen_qnamespace.ItemFlag) =
+type QTransposeProxyModelflagsProc* = proc(index: gen_qabstractitemmodel.QModelIndex): cint
+proc onflags*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, slot: QTransposeProxyModelflagsProc) =
   # TODO check subclass
-  type Cb = proc(super: QTransposeProxyModelflagsBase, index: gen_qabstractitemmodel.QModelIndex): gen_qnamespace.ItemFlag
-  var tmp = new Cb
+  var tmp = new QTransposeProxyModelflagsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTransposeProxyModel_override_virtual_flags(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTransposeProxyModel_flags(self: ptr cQTransposeProxyModel, slot: int, index: pointer): cint {.exportc: "miqt_exec_callback_QTransposeProxyModel_flags ".} =
-  type Cb = proc(super: QTransposeProxyModelflagsBase, index: gen_qabstractitemmodel.QModelIndex): gen_qnamespace.ItemFlag
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(index: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_flags(QTransposeProxyModel(h: self), index)
+  var nimfunc = cast[ptr QTransposeProxyModelflagsProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: index)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   cint(virtualReturn)
-proc callVirtualBase_setData(self: QTransposeProxyModel, index: gen_qabstractitemmodel.QModelIndex, value: gen_qvariant.QVariant, role: cint): bool =
-
+proc QTransposeProxyModelsetData*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, index: gen_qabstractitemmodel.QModelIndex, value: gen_qvariant.QVariant, role: cint): bool =
 
   fQTransposeProxyModel_virtualbase_setData(self.h, index.h, value.h, role)
 
-type QTransposeProxyModelsetDataBase* = proc(index: gen_qabstractitemmodel.QModelIndex, value: gen_qvariant.QVariant, role: cint): bool
-proc onsetData*(self: QTransposeProxyModel, slot: proc(super: QTransposeProxyModelsetDataBase, index: gen_qabstractitemmodel.QModelIndex, value: gen_qvariant.QVariant, role: cint): bool) =
+type QTransposeProxyModelsetDataProc* = proc(index: gen_qabstractitemmodel.QModelIndex, value: gen_qvariant.QVariant, role: cint): bool
+proc onsetData*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, slot: QTransposeProxyModelsetDataProc) =
   # TODO check subclass
-  type Cb = proc(super: QTransposeProxyModelsetDataBase, index: gen_qabstractitemmodel.QModelIndex, value: gen_qvariant.QVariant, role: cint): bool
-  var tmp = new Cb
+  var tmp = new QTransposeProxyModelsetDataProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTransposeProxyModel_override_virtual_setData(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTransposeProxyModel_setData(self: ptr cQTransposeProxyModel, slot: int, index: pointer, value: pointer, role: cint): bool {.exportc: "miqt_exec_callback_QTransposeProxyModel_setData ".} =
-  type Cb = proc(super: QTransposeProxyModelsetDataBase, index: gen_qabstractitemmodel.QModelIndex, value: gen_qvariant.QVariant, role: cint): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(index: gen_qabstractitemmodel.QModelIndex, value: gen_qvariant.QVariant, role: cint): auto =
-    callVirtualBase_setData(QTransposeProxyModel(h: self), index, value, role)
+  var nimfunc = cast[ptr QTransposeProxyModelsetDataProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: index)
 
   let slotval2 = gen_qvariant.QVariant(h: value)
@@ -1159,126 +1012,101 @@ proc miqt_exec_callback_QTransposeProxyModel_setData(self: ptr cQTransposeProxyM
   let slotval3 = role
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_buddy(self: QTransposeProxyModel, index: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
-
+proc QTransposeProxyModelbuddy*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, index: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
 
   gen_qabstractitemmodel.QModelIndex(h: fQTransposeProxyModel_virtualbase_buddy(self.h, index.h))
 
-type QTransposeProxyModelbuddyBase* = proc(index: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
-proc onbuddy*(self: QTransposeProxyModel, slot: proc(super: QTransposeProxyModelbuddyBase, index: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex) =
+type QTransposeProxyModelbuddyProc* = proc(index: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
+proc onbuddy*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, slot: QTransposeProxyModelbuddyProc) =
   # TODO check subclass
-  type Cb = proc(super: QTransposeProxyModelbuddyBase, index: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
-  var tmp = new Cb
+  var tmp = new QTransposeProxyModelbuddyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTransposeProxyModel_override_virtual_buddy(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTransposeProxyModel_buddy(self: ptr cQTransposeProxyModel, slot: int, index: pointer): pointer {.exportc: "miqt_exec_callback_QTransposeProxyModel_buddy ".} =
-  type Cb = proc(super: QTransposeProxyModelbuddyBase, index: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(index: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_buddy(QTransposeProxyModel(h: self), index)
+  var nimfunc = cast[ptr QTransposeProxyModelbuddyProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: index)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_canFetchMore(self: QTransposeProxyModel, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
+proc QTransposeProxyModelcanFetchMore*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, parent: gen_qabstractitemmodel.QModelIndex): bool =
 
   fQTransposeProxyModel_virtualbase_canFetchMore(self.h, parent.h)
 
-type QTransposeProxyModelcanFetchMoreBase* = proc(parent: gen_qabstractitemmodel.QModelIndex): bool
-proc oncanFetchMore*(self: QTransposeProxyModel, slot: proc(super: QTransposeProxyModelcanFetchMoreBase, parent: gen_qabstractitemmodel.QModelIndex): bool) =
+type QTransposeProxyModelcanFetchMoreProc* = proc(parent: gen_qabstractitemmodel.QModelIndex): bool
+proc oncanFetchMore*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, slot: QTransposeProxyModelcanFetchMoreProc) =
   # TODO check subclass
-  type Cb = proc(super: QTransposeProxyModelcanFetchMoreBase, parent: gen_qabstractitemmodel.QModelIndex): bool
-  var tmp = new Cb
+  var tmp = new QTransposeProxyModelcanFetchMoreProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTransposeProxyModel_override_virtual_canFetchMore(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTransposeProxyModel_canFetchMore(self: ptr cQTransposeProxyModel, slot: int, parent: pointer): bool {.exportc: "miqt_exec_callback_QTransposeProxyModel_canFetchMore ".} =
-  type Cb = proc(super: QTransposeProxyModelcanFetchMoreBase, parent: gen_qabstractitemmodel.QModelIndex): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(parent: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_canFetchMore(QTransposeProxyModel(h: self), parent)
+  var nimfunc = cast[ptr QTransposeProxyModelcanFetchMoreProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: parent)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_fetchMore(self: QTransposeProxyModel, parent: gen_qabstractitemmodel.QModelIndex): void =
-
+proc QTransposeProxyModelfetchMore*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, parent: gen_qabstractitemmodel.QModelIndex): void =
 
   fQTransposeProxyModel_virtualbase_fetchMore(self.h, parent.h)
 
-type QTransposeProxyModelfetchMoreBase* = proc(parent: gen_qabstractitemmodel.QModelIndex): void
-proc onfetchMore*(self: QTransposeProxyModel, slot: proc(super: QTransposeProxyModelfetchMoreBase, parent: gen_qabstractitemmodel.QModelIndex): void) =
+type QTransposeProxyModelfetchMoreProc* = proc(parent: gen_qabstractitemmodel.QModelIndex): void
+proc onfetchMore*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, slot: QTransposeProxyModelfetchMoreProc) =
   # TODO check subclass
-  type Cb = proc(super: QTransposeProxyModelfetchMoreBase, parent: gen_qabstractitemmodel.QModelIndex): void
-  var tmp = new Cb
+  var tmp = new QTransposeProxyModelfetchMoreProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTransposeProxyModel_override_virtual_fetchMore(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTransposeProxyModel_fetchMore(self: ptr cQTransposeProxyModel, slot: int, parent: pointer): void {.exportc: "miqt_exec_callback_QTransposeProxyModel_fetchMore ".} =
-  type Cb = proc(super: QTransposeProxyModelfetchMoreBase, parent: gen_qabstractitemmodel.QModelIndex): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(parent: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_fetchMore(QTransposeProxyModel(h: self), parent)
+  var nimfunc = cast[ptr QTransposeProxyModelfetchMoreProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: parent)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hasChildren(self: QTransposeProxyModel, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
+  nimfunc[](slotval1)
+proc QTransposeProxyModelhasChildren*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, parent: gen_qabstractitemmodel.QModelIndex): bool =
 
   fQTransposeProxyModel_virtualbase_hasChildren(self.h, parent.h)
 
-type QTransposeProxyModelhasChildrenBase* = proc(parent: gen_qabstractitemmodel.QModelIndex): bool
-proc onhasChildren*(self: QTransposeProxyModel, slot: proc(super: QTransposeProxyModelhasChildrenBase, parent: gen_qabstractitemmodel.QModelIndex): bool) =
+type QTransposeProxyModelhasChildrenProc* = proc(parent: gen_qabstractitemmodel.QModelIndex): bool
+proc onhasChildren*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, slot: QTransposeProxyModelhasChildrenProc) =
   # TODO check subclass
-  type Cb = proc(super: QTransposeProxyModelhasChildrenBase, parent: gen_qabstractitemmodel.QModelIndex): bool
-  var tmp = new Cb
+  var tmp = new QTransposeProxyModelhasChildrenProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTransposeProxyModel_override_virtual_hasChildren(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTransposeProxyModel_hasChildren(self: ptr cQTransposeProxyModel, slot: int, parent: pointer): bool {.exportc: "miqt_exec_callback_QTransposeProxyModel_hasChildren ".} =
-  type Cb = proc(super: QTransposeProxyModelhasChildrenBase, parent: gen_qabstractitemmodel.QModelIndex): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(parent: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_hasChildren(QTransposeProxyModel(h: self), parent)
+  var nimfunc = cast[ptr QTransposeProxyModelhasChildrenProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: parent)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_sibling(self: QTransposeProxyModel, row: cint, column: cint, idx: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
-
+proc QTransposeProxyModelsibling*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, row: cint, column: cint, idx: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
 
   gen_qabstractitemmodel.QModelIndex(h: fQTransposeProxyModel_virtualbase_sibling(self.h, row, column, idx.h))
 
-type QTransposeProxyModelsiblingBase* = proc(row: cint, column: cint, idx: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
-proc onsibling*(self: QTransposeProxyModel, slot: proc(super: QTransposeProxyModelsiblingBase, row: cint, column: cint, idx: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex) =
+type QTransposeProxyModelsiblingProc* = proc(row: cint, column: cint, idx: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
+proc onsibling*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, slot: QTransposeProxyModelsiblingProc) =
   # TODO check subclass
-  type Cb = proc(super: QTransposeProxyModelsiblingBase, row: cint, column: cint, idx: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
-  var tmp = new Cb
+  var tmp = new QTransposeProxyModelsiblingProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTransposeProxyModel_override_virtual_sibling(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTransposeProxyModel_sibling(self: ptr cQTransposeProxyModel, slot: int, row: cint, column: cint, idx: pointer): pointer {.exportc: "miqt_exec_callback_QTransposeProxyModel_sibling ".} =
-  type Cb = proc(super: QTransposeProxyModelsiblingBase, row: cint, column: cint, idx: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(row: cint, column: cint, idx: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_sibling(QTransposeProxyModel(h: self), row, column, idx)
+  var nimfunc = cast[ptr QTransposeProxyModelsiblingProc](cast[pointer](slot))
   let slotval1 = row
 
   let slotval2 = column
@@ -1286,32 +1114,27 @@ proc miqt_exec_callback_QTransposeProxyModel_sibling(self: ptr cQTransposeProxyM
   let slotval3 = gen_qabstractitemmodel.QModelIndex(h: idx)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn.h
-proc callVirtualBase_mimeData(self: QTransposeProxyModel, indexes: seq[gen_qabstractitemmodel.QModelIndex]): gen_qmimedata.QMimeData =
+proc QTransposeProxyModelmimeData*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, indexes: seq[gen_qabstractitemmodel.QModelIndex]): gen_qmimedata.QMimeData =
 
   var indexes_CArray = newSeq[pointer](len(indexes))
   for i in 0..<len(indexes):
     indexes_CArray[i] = indexes[i].h
 
-
   gen_qmimedata.QMimeData(h: fQTransposeProxyModel_virtualbase_mimeData(self.h, struct_miqt_array(len: csize_t(len(indexes)), data: if len(indexes) == 0: nil else: addr(indexes_CArray[0]))))
 
-type QTransposeProxyModelmimeDataBase* = proc(indexes: seq[gen_qabstractitemmodel.QModelIndex]): gen_qmimedata.QMimeData
-proc onmimeData*(self: QTransposeProxyModel, slot: proc(super: QTransposeProxyModelmimeDataBase, indexes: seq[gen_qabstractitemmodel.QModelIndex]): gen_qmimedata.QMimeData) =
+type QTransposeProxyModelmimeDataProc* = proc(indexes: seq[gen_qabstractitemmodel.QModelIndex]): gen_qmimedata.QMimeData
+proc onmimeData*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, slot: QTransposeProxyModelmimeDataProc) =
   # TODO check subclass
-  type Cb = proc(super: QTransposeProxyModelmimeDataBase, indexes: seq[gen_qabstractitemmodel.QModelIndex]): gen_qmimedata.QMimeData
-  var tmp = new Cb
+  var tmp = new QTransposeProxyModelmimeDataProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTransposeProxyModel_override_virtual_mimeData(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTransposeProxyModel_mimeData(self: ptr cQTransposeProxyModel, slot: int, indexes: struct_miqt_array): pointer {.exportc: "miqt_exec_callback_QTransposeProxyModel_mimeData ".} =
-  type Cb = proc(super: QTransposeProxyModelmimeDataBase, indexes: seq[gen_qabstractitemmodel.QModelIndex]): gen_qmimedata.QMimeData
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(indexes: seq[gen_qabstractitemmodel.QModelIndex]): auto =
-    callVirtualBase_mimeData(QTransposeProxyModel(h: self), indexes)
+  var nimfunc = cast[ptr QTransposeProxyModelmimeDataProc](cast[pointer](slot))
   var vindexes_ma = indexes
   var vindexesx_ret = newSeq[gen_qabstractitemmodel.QModelIndex](int(vindexes_ma.len))
   let vindexes_outCast = cast[ptr UncheckedArray[pointer]](vindexes_ma.data)
@@ -1320,31 +1143,26 @@ proc miqt_exec_callback_QTransposeProxyModel_mimeData(self: ptr cQTransposeProxy
   let slotval1 = vindexesx_ret
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_canDropMimeData(self: QTransposeProxyModel, data: gen_qmimedata.QMimeData, action: gen_qnamespace.DropAction, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
+proc QTransposeProxyModelcanDropMimeData*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, data: gen_qmimedata.QMimeData, action: cint, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
 
   fQTransposeProxyModel_virtualbase_canDropMimeData(self.h, data.h, cint(action), row, column, parent.h)
 
-type QTransposeProxyModelcanDropMimeDataBase* = proc(data: gen_qmimedata.QMimeData, action: gen_qnamespace.DropAction, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
-proc oncanDropMimeData*(self: QTransposeProxyModel, slot: proc(super: QTransposeProxyModelcanDropMimeDataBase, data: gen_qmimedata.QMimeData, action: gen_qnamespace.DropAction, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool) =
+type QTransposeProxyModelcanDropMimeDataProc* = proc(data: gen_qmimedata.QMimeData, action: cint, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
+proc oncanDropMimeData*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, slot: QTransposeProxyModelcanDropMimeDataProc) =
   # TODO check subclass
-  type Cb = proc(super: QTransposeProxyModelcanDropMimeDataBase, data: gen_qmimedata.QMimeData, action: gen_qnamespace.DropAction, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
-  var tmp = new Cb
+  var tmp = new QTransposeProxyModelcanDropMimeDataProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTransposeProxyModel_override_virtual_canDropMimeData(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTransposeProxyModel_canDropMimeData(self: ptr cQTransposeProxyModel, slot: int, data: pointer, action: cint, row: cint, column: cint, parent: pointer): bool {.exportc: "miqt_exec_callback_QTransposeProxyModel_canDropMimeData ".} =
-  type Cb = proc(super: QTransposeProxyModelcanDropMimeDataBase, data: gen_qmimedata.QMimeData, action: gen_qnamespace.DropAction, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(data: gen_qmimedata.QMimeData, action: gen_qnamespace.DropAction, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_canDropMimeData(QTransposeProxyModel(h: self), data, action, row, column, parent)
+  var nimfunc = cast[ptr QTransposeProxyModelcanDropMimeDataProc](cast[pointer](slot))
   let slotval1 = gen_qmimedata.QMimeData(h: data)
 
-  let slotval2 = gen_qnamespace.DropAction(action)
+  let slotval2 = cint(action)
 
   let slotval3 = row
 
@@ -1353,31 +1171,26 @@ proc miqt_exec_callback_QTransposeProxyModel_canDropMimeData(self: ptr cQTranspo
   let slotval5 = gen_qabstractitemmodel.QModelIndex(h: parent)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3, slotval4, slotval5 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3, slotval4, slotval5 )
 
   virtualReturn
-proc callVirtualBase_dropMimeData(self: QTransposeProxyModel, data: gen_qmimedata.QMimeData, action: gen_qnamespace.DropAction, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
+proc QTransposeProxyModeldropMimeData*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, data: gen_qmimedata.QMimeData, action: cint, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
 
   fQTransposeProxyModel_virtualbase_dropMimeData(self.h, data.h, cint(action), row, column, parent.h)
 
-type QTransposeProxyModeldropMimeDataBase* = proc(data: gen_qmimedata.QMimeData, action: gen_qnamespace.DropAction, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
-proc ondropMimeData*(self: QTransposeProxyModel, slot: proc(super: QTransposeProxyModeldropMimeDataBase, data: gen_qmimedata.QMimeData, action: gen_qnamespace.DropAction, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool) =
+type QTransposeProxyModeldropMimeDataProc* = proc(data: gen_qmimedata.QMimeData, action: cint, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
+proc ondropMimeData*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, slot: QTransposeProxyModeldropMimeDataProc) =
   # TODO check subclass
-  type Cb = proc(super: QTransposeProxyModeldropMimeDataBase, data: gen_qmimedata.QMimeData, action: gen_qnamespace.DropAction, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
-  var tmp = new Cb
+  var tmp = new QTransposeProxyModeldropMimeDataProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTransposeProxyModel_override_virtual_dropMimeData(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTransposeProxyModel_dropMimeData(self: ptr cQTransposeProxyModel, slot: int, data: pointer, action: cint, row: cint, column: cint, parent: pointer): bool {.exportc: "miqt_exec_callback_QTransposeProxyModel_dropMimeData ".} =
-  type Cb = proc(super: QTransposeProxyModeldropMimeDataBase, data: gen_qmimedata.QMimeData, action: gen_qnamespace.DropAction, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(data: gen_qmimedata.QMimeData, action: gen_qnamespace.DropAction, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_dropMimeData(QTransposeProxyModel(h: self), data, action, row, column, parent)
+  var nimfunc = cast[ptr QTransposeProxyModeldropMimeDataProc](cast[pointer](slot))
   let slotval1 = gen_qmimedata.QMimeData(h: data)
 
-  let slotval2 = gen_qnamespace.DropAction(action)
+  let slotval2 = cint(action)
 
   let slotval3 = row
 
@@ -1386,11 +1199,10 @@ proc miqt_exec_callback_QTransposeProxyModel_dropMimeData(self: ptr cQTransposeP
   let slotval5 = gen_qabstractitemmodel.QModelIndex(h: parent)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3, slotval4, slotval5 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3, slotval4, slotval5 )
 
   virtualReturn
-proc callVirtualBase_mimeTypes(self: QTransposeProxyModel, ): seq[string] =
-
+proc QTransposeProxyModelmimeTypes*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, ): seq[string] =
 
   var v_ma = fQTransposeProxyModel_virtualbase_mimeTypes(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -1402,76 +1214,61 @@ proc callVirtualBase_mimeTypes(self: QTransposeProxyModel, ): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-type QTransposeProxyModelmimeTypesBase* = proc(): seq[string]
-proc onmimeTypes*(self: QTransposeProxyModel, slot: proc(super: QTransposeProxyModelmimeTypesBase): seq[string]) =
+type QTransposeProxyModelmimeTypesProc* = proc(): seq[string]
+proc onmimeTypes*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, slot: QTransposeProxyModelmimeTypesProc) =
   # TODO check subclass
-  type Cb = proc(super: QTransposeProxyModelmimeTypesBase): seq[string]
-  var tmp = new Cb
+  var tmp = new QTransposeProxyModelmimeTypesProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTransposeProxyModel_override_virtual_mimeTypes(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTransposeProxyModel_mimeTypes(self: ptr cQTransposeProxyModel, slot: int): struct_miqt_array {.exportc: "miqt_exec_callback_QTransposeProxyModel_mimeTypes ".} =
-  type Cb = proc(super: QTransposeProxyModelmimeTypesBase): seq[string]
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_mimeTypes(QTransposeProxyModel(h: self), )
+  var nimfunc = cast[ptr QTransposeProxyModelmimeTypesProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
   var virtualReturn_CArray = newSeq[struct_miqt_string](len(virtualReturn))
   for i in 0..<len(virtualReturn):
     virtualReturn_CArray[i] = struct_miqt_string(data: virtualReturn[i], len: csize_t(len(virtualReturn[i])))
 
 
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
-proc callVirtualBase_supportedDragActions(self: QTransposeProxyModel, ): gen_qnamespace.DropAction =
+proc QTransposeProxyModelsupportedDragActions*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, ): cint =
 
+  cint(fQTransposeProxyModel_virtualbase_supportedDragActions(self.h))
 
-  gen_qnamespace.DropAction(fQTransposeProxyModel_virtualbase_supportedDragActions(self.h))
-
-type QTransposeProxyModelsupportedDragActionsBase* = proc(): gen_qnamespace.DropAction
-proc onsupportedDragActions*(self: QTransposeProxyModel, slot: proc(super: QTransposeProxyModelsupportedDragActionsBase): gen_qnamespace.DropAction) =
+type QTransposeProxyModelsupportedDragActionsProc* = proc(): cint
+proc onsupportedDragActions*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, slot: QTransposeProxyModelsupportedDragActionsProc) =
   # TODO check subclass
-  type Cb = proc(super: QTransposeProxyModelsupportedDragActionsBase): gen_qnamespace.DropAction
-  var tmp = new Cb
+  var tmp = new QTransposeProxyModelsupportedDragActionsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTransposeProxyModel_override_virtual_supportedDragActions(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTransposeProxyModel_supportedDragActions(self: ptr cQTransposeProxyModel, slot: int): cint {.exportc: "miqt_exec_callback_QTransposeProxyModel_supportedDragActions ".} =
-  type Cb = proc(super: QTransposeProxyModelsupportedDragActionsBase): gen_qnamespace.DropAction
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_supportedDragActions(QTransposeProxyModel(h: self), )
+  var nimfunc = cast[ptr QTransposeProxyModelsupportedDragActionsProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   cint(virtualReturn)
-proc callVirtualBase_supportedDropActions(self: QTransposeProxyModel, ): gen_qnamespace.DropAction =
+proc QTransposeProxyModelsupportedDropActions*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, ): cint =
 
+  cint(fQTransposeProxyModel_virtualbase_supportedDropActions(self.h))
 
-  gen_qnamespace.DropAction(fQTransposeProxyModel_virtualbase_supportedDropActions(self.h))
-
-type QTransposeProxyModelsupportedDropActionsBase* = proc(): gen_qnamespace.DropAction
-proc onsupportedDropActions*(self: QTransposeProxyModel, slot: proc(super: QTransposeProxyModelsupportedDropActionsBase): gen_qnamespace.DropAction) =
+type QTransposeProxyModelsupportedDropActionsProc* = proc(): cint
+proc onsupportedDropActions*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, slot: QTransposeProxyModelsupportedDropActionsProc) =
   # TODO check subclass
-  type Cb = proc(super: QTransposeProxyModelsupportedDropActionsBase): gen_qnamespace.DropAction
-  var tmp = new Cb
+  var tmp = new QTransposeProxyModelsupportedDropActionsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTransposeProxyModel_override_virtual_supportedDropActions(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTransposeProxyModel_supportedDropActions(self: ptr cQTransposeProxyModel, slot: int): cint {.exportc: "miqt_exec_callback_QTransposeProxyModel_supportedDropActions ".} =
-  type Cb = proc(super: QTransposeProxyModelsupportedDropActionsBase): gen_qnamespace.DropAction
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_supportedDropActions(QTransposeProxyModel(h: self), )
+  var nimfunc = cast[ptr QTransposeProxyModelsupportedDropActionsProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   cint(virtualReturn)
-proc callVirtualBase_match(self: QTransposeProxyModel, start: gen_qabstractitemmodel.QModelIndex, role: cint, value: gen_qvariant.QVariant, hits: cint, flags: gen_qnamespace.MatchFlag): seq[gen_qabstractitemmodel.QModelIndex] =
-
+proc QTransposeProxyModelmatch*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, start: gen_qabstractitemmodel.QModelIndex, role: cint, value: gen_qvariant.QVariant, hits: cint, flags: cint): seq[gen_qabstractitemmodel.QModelIndex] =
 
   var v_ma = fQTransposeProxyModel_virtualbase_match(self.h, start.h, role, value.h, hits, cint(flags))
   var vx_ret = newSeq[gen_qabstractitemmodel.QModelIndex](int(v_ma.len))
@@ -1480,20 +1277,16 @@ proc callVirtualBase_match(self: QTransposeProxyModel, start: gen_qabstractitemm
     vx_ret[i] = gen_qabstractitemmodel.QModelIndex(h: v_outCast[i])
   vx_ret
 
-type QTransposeProxyModelmatchBase* = proc(start: gen_qabstractitemmodel.QModelIndex, role: cint, value: gen_qvariant.QVariant, hits: cint, flags: gen_qnamespace.MatchFlag): seq[gen_qabstractitemmodel.QModelIndex]
-proc onmatch*(self: QTransposeProxyModel, slot: proc(super: QTransposeProxyModelmatchBase, start: gen_qabstractitemmodel.QModelIndex, role: cint, value: gen_qvariant.QVariant, hits: cint, flags: gen_qnamespace.MatchFlag): seq[gen_qabstractitemmodel.QModelIndex]) =
+type QTransposeProxyModelmatchProc* = proc(start: gen_qabstractitemmodel.QModelIndex, role: cint, value: gen_qvariant.QVariant, hits: cint, flags: cint): seq[gen_qabstractitemmodel.QModelIndex]
+proc onmatch*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, slot: QTransposeProxyModelmatchProc) =
   # TODO check subclass
-  type Cb = proc(super: QTransposeProxyModelmatchBase, start: gen_qabstractitemmodel.QModelIndex, role: cint, value: gen_qvariant.QVariant, hits: cint, flags: gen_qnamespace.MatchFlag): seq[gen_qabstractitemmodel.QModelIndex]
-  var tmp = new Cb
+  var tmp = new QTransposeProxyModelmatchProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTransposeProxyModel_override_virtual_match(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTransposeProxyModel_match(self: ptr cQTransposeProxyModel, slot: int, start: pointer, role: cint, value: pointer, hits: cint, flags: cint): struct_miqt_array {.exportc: "miqt_exec_callback_QTransposeProxyModel_match ".} =
-  type Cb = proc(super: QTransposeProxyModelmatchBase, start: gen_qabstractitemmodel.QModelIndex, role: cint, value: gen_qvariant.QVariant, hits: cint, flags: gen_qnamespace.MatchFlag): seq[gen_qabstractitemmodel.QModelIndex]
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(start: gen_qabstractitemmodel.QModelIndex, role: cint, value: gen_qvariant.QVariant, hits: cint, flags: gen_qnamespace.MatchFlag): auto =
-    callVirtualBase_match(QTransposeProxyModel(h: self), start, role, value, hits, flags)
+  var nimfunc = cast[ptr QTransposeProxyModelmatchProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: start)
 
   let slotval2 = role
@@ -1502,18 +1295,17 @@ proc miqt_exec_callback_QTransposeProxyModel_match(self: ptr cQTransposeProxyMod
 
   let slotval4 = hits
 
-  let slotval5 = gen_qnamespace.MatchFlag(flags)
+  let slotval5 = cint(flags)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3, slotval4, slotval5 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3, slotval4, slotval5 )
   var virtualReturn_CArray = newSeq[pointer](len(virtualReturn))
   for i in 0..<len(virtualReturn):
     virtualReturn_CArray[i] = virtualReturn[i].h
 
 
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
-proc callVirtualBase_roleNames(self: QTransposeProxyModel, ): Table[cint,seq[byte]] =
-
+proc QTransposeProxyModelroleNames*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, ): Table[cint,seq[byte]] =
 
   var v_mm = fQTransposeProxyModel_virtualbase_roleNames(self.h)
   var vx_ret: Table[cint, seq[byte]]
@@ -1530,22 +1322,18 @@ proc callVirtualBase_roleNames(self: QTransposeProxyModel, ): Table[cint,seq[byt
     vx_ret[v_entry_Key] = v_entry_Value
   vx_ret
 
-type QTransposeProxyModelroleNamesBase* = proc(): Table[cint,seq[byte]]
-proc onroleNames*(self: QTransposeProxyModel, slot: proc(super: QTransposeProxyModelroleNamesBase): Table[cint,seq[byte]]) =
+type QTransposeProxyModelroleNamesProc* = proc(): Table[cint,seq[byte]]
+proc onroleNames*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, slot: QTransposeProxyModelroleNamesProc) =
   # TODO check subclass
-  type Cb = proc(super: QTransposeProxyModelroleNamesBase): Table[cint,seq[byte]]
-  var tmp = new Cb
+  var tmp = new QTransposeProxyModelroleNamesProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTransposeProxyModel_override_virtual_roleNames(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTransposeProxyModel_roleNames(self: ptr cQTransposeProxyModel, slot: int): struct_miqt_map {.exportc: "miqt_exec_callback_QTransposeProxyModel_roleNames ".} =
-  type Cb = proc(super: QTransposeProxyModelroleNamesBase): Table[cint,seq[byte]]
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_roleNames(QTransposeProxyModel(h: self), )
+  var nimfunc = cast[ptr QTransposeProxyModelroleNamesProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
   var virtualReturn_Keys_CArray = newSeq[cint](len(virtualReturn))
   var virtualReturn_Values_CArray = newSeq[struct_miqt_string](len(virtualReturn))
   var virtualReturn_ctr = 0
@@ -1556,174 +1344,139 @@ proc miqt_exec_callback_QTransposeProxyModel_roleNames(self: ptr cQTransposeProx
 
 
   struct_miqt_map(len: csize_t(len(virtualReturn)),keys: if len(virtualReturn) == 0: nil else: addr(virtualReturn_Keys_CArray[0]), values: if len(virtualReturn) == 0: nil else: addr(virtualReturn_Values_CArray[0]),)
-proc callVirtualBase_event(self: QTransposeProxyModel, event: gen_qcoreevent.QEvent): bool =
-
+proc QTransposeProxyModelevent*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, event: gen_qcoreevent.QEvent): bool =
 
   fQTransposeProxyModel_virtualbase_event(self.h, event.h)
 
-type QTransposeProxyModeleventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QTransposeProxyModel, slot: proc(super: QTransposeProxyModeleventBase, event: gen_qcoreevent.QEvent): bool) =
+type QTransposeProxyModeleventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, slot: QTransposeProxyModeleventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTransposeProxyModeleventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QTransposeProxyModeleventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTransposeProxyModel_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTransposeProxyModel_event(self: ptr cQTransposeProxyModel, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QTransposeProxyModel_event ".} =
-  type Cb = proc(super: QTransposeProxyModeleventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QTransposeProxyModel(h: self), event)
+  var nimfunc = cast[ptr QTransposeProxyModeleventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QTransposeProxyModel, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QTransposeProxyModeleventFilter*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQTransposeProxyModel_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QTransposeProxyModeleventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QTransposeProxyModel, slot: proc(super: QTransposeProxyModeleventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QTransposeProxyModeleventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, slot: QTransposeProxyModeleventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QTransposeProxyModeleventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QTransposeProxyModeleventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTransposeProxyModel_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTransposeProxyModel_eventFilter(self: ptr cQTransposeProxyModel, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QTransposeProxyModel_eventFilter ".} =
-  type Cb = proc(super: QTransposeProxyModeleventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QTransposeProxyModel(h: self), watched, event)
+  var nimfunc = cast[ptr QTransposeProxyModeleventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QTransposeProxyModel, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QTransposeProxyModeltimerEvent*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, event: gen_qcoreevent.QTimerEvent): void =
 
   fQTransposeProxyModel_virtualbase_timerEvent(self.h, event.h)
 
-type QTransposeProxyModeltimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QTransposeProxyModel, slot: proc(super: QTransposeProxyModeltimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QTransposeProxyModeltimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, slot: QTransposeProxyModeltimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTransposeProxyModeltimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QTransposeProxyModeltimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTransposeProxyModel_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTransposeProxyModel_timerEvent(self: ptr cQTransposeProxyModel, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTransposeProxyModel_timerEvent ".} =
-  type Cb = proc(super: QTransposeProxyModeltimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QTransposeProxyModel(h: self), event)
+  var nimfunc = cast[ptr QTransposeProxyModeltimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QTransposeProxyModel, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QTransposeProxyModelchildEvent*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, event: gen_qcoreevent.QChildEvent): void =
 
   fQTransposeProxyModel_virtualbase_childEvent(self.h, event.h)
 
-type QTransposeProxyModelchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QTransposeProxyModel, slot: proc(super: QTransposeProxyModelchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QTransposeProxyModelchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, slot: QTransposeProxyModelchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTransposeProxyModelchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QTransposeProxyModelchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTransposeProxyModel_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTransposeProxyModel_childEvent(self: ptr cQTransposeProxyModel, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTransposeProxyModel_childEvent ".} =
-  type Cb = proc(super: QTransposeProxyModelchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QTransposeProxyModel(h: self), event)
+  var nimfunc = cast[ptr QTransposeProxyModelchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QTransposeProxyModel, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QTransposeProxyModelcustomEvent*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, event: gen_qcoreevent.QEvent): void =
 
   fQTransposeProxyModel_virtualbase_customEvent(self.h, event.h)
 
-type QTransposeProxyModelcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QTransposeProxyModel, slot: proc(super: QTransposeProxyModelcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QTransposeProxyModelcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, slot: QTransposeProxyModelcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTransposeProxyModelcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QTransposeProxyModelcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTransposeProxyModel_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTransposeProxyModel_customEvent(self: ptr cQTransposeProxyModel, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTransposeProxyModel_customEvent ".} =
-  type Cb = proc(super: QTransposeProxyModelcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QTransposeProxyModel(h: self), event)
+  var nimfunc = cast[ptr QTransposeProxyModelcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QTransposeProxyModel, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QTransposeProxyModelconnectNotify*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQTransposeProxyModel_virtualbase_connectNotify(self.h, signal.h)
 
-type QTransposeProxyModelconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QTransposeProxyModel, slot: proc(super: QTransposeProxyModelconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QTransposeProxyModelconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, slot: QTransposeProxyModelconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QTransposeProxyModelconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QTransposeProxyModelconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTransposeProxyModel_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTransposeProxyModel_connectNotify(self: ptr cQTransposeProxyModel, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QTransposeProxyModel_connectNotify ".} =
-  type Cb = proc(super: QTransposeProxyModelconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QTransposeProxyModel(h: self), signal)
+  var nimfunc = cast[ptr QTransposeProxyModelconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QTransposeProxyModel, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QTransposeProxyModeldisconnectNotify*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQTransposeProxyModel_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QTransposeProxyModeldisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QTransposeProxyModel, slot: proc(super: QTransposeProxyModeldisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QTransposeProxyModeldisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel, slot: QTransposeProxyModeldisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QTransposeProxyModeldisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QTransposeProxyModeldisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTransposeProxyModel_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTransposeProxyModel_disconnectNotify(self: ptr cQTransposeProxyModel, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QTransposeProxyModel_disconnectNotify ".} =
-  type Cb = proc(super: QTransposeProxyModeldisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QTransposeProxyModel(h: self), signal)
+  var nimfunc = cast[ptr QTransposeProxyModeldisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QTransposeProxyModel): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qtransposeproxymodel_types.QTransposeProxyModel): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQTransposeProxyModel_staticMetaObject())
-proc delete*(self: QTransposeProxyModel) =
+proc delete*(self: gen_qtransposeproxymodel_types.QTransposeProxyModel) =
   fcQTransposeProxyModel_delete(self.h)

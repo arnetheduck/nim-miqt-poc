@@ -42,7 +42,6 @@ import
   gen_qcoreevent,
   gen_qevent,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -50,7 +49,6 @@ import
   gen_qpainter,
   gen_qpoint,
   gen_qsize,
-  gen_qvalidator,
   gen_qvariant,
   gen_qwidget
 export
@@ -58,7 +56,6 @@ export
   gen_qcoreevent,
   gen_qevent,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -66,7 +63,6 @@ export
   gen_qpainter,
   gen_qpoint,
   gen_qsize,
-  gen_qvalidator,
   gen_qvariant,
   gen_qwidget
 
@@ -381,122 +377,122 @@ proc fcQDoubleSpinBox_staticMetaObject(): pointer {.importc: "QDoubleSpinBox_sta
 proc fcQDoubleSpinBox_delete(self: pointer) {.importc: "QDoubleSpinBox_delete".}
 
 
-func init*(T: type QSpinBox, h: ptr cQSpinBox): QSpinBox =
+func init*(T: type gen_qspinbox_types.QSpinBox, h: ptr cQSpinBox): gen_qspinbox_types.QSpinBox =
   T(h: h)
-proc create*(T: type QSpinBox, parent: gen_qwidget.QWidget): QSpinBox =
+proc create*(T: type gen_qspinbox_types.QSpinBox, parent: gen_qwidget.QWidget): gen_qspinbox_types.QSpinBox =
 
-  QSpinBox.init(fcQSpinBox_new(parent.h))
-proc create*(T: type QSpinBox, ): QSpinBox =
+  gen_qspinbox_types.QSpinBox.init(fcQSpinBox_new(parent.h))
+proc create*(T: type gen_qspinbox_types.QSpinBox, ): gen_qspinbox_types.QSpinBox =
 
-  QSpinBox.init(fcQSpinBox_new2())
-proc metaObject*(self: QSpinBox, ): gen_qobjectdefs.QMetaObject =
+  gen_qspinbox_types.QSpinBox.init(fcQSpinBox_new2())
+proc metaObject*(self: gen_qspinbox_types.QSpinBox, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQSpinBox_metaObject(self.h))
 
-proc metacast*(self: QSpinBox, param1: cstring): pointer =
+proc metacast*(self: gen_qspinbox_types.QSpinBox, param1: cstring): pointer =
 
   fcQSpinBox_metacast(self.h, param1)
 
-proc metacall*(self: QSpinBox, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qspinbox_types.QSpinBox, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQSpinBox_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QSpinBox, s: cstring): string =
+proc tr*(_: type gen_qspinbox_types.QSpinBox, s: cstring): string =
 
   let v_ms = fcQSpinBox_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QSpinBox, s: cstring): string =
+proc trUtf8*(_: type gen_qspinbox_types.QSpinBox, s: cstring): string =
 
   let v_ms = fcQSpinBox_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc value*(self: QSpinBox, ): cint =
+proc value*(self: gen_qspinbox_types.QSpinBox, ): cint =
 
   fcQSpinBox_value(self.h)
 
-proc prefix*(self: QSpinBox, ): string =
+proc prefix*(self: gen_qspinbox_types.QSpinBox, ): string =
 
   let v_ms = fcQSpinBox_prefix(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setPrefix*(self: QSpinBox, prefix: string): void =
+proc setPrefix*(self: gen_qspinbox_types.QSpinBox, prefix: string): void =
 
   fcQSpinBox_setPrefix(self.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
-proc suffix*(self: QSpinBox, ): string =
+proc suffix*(self: gen_qspinbox_types.QSpinBox, ): string =
 
   let v_ms = fcQSpinBox_suffix(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setSuffix*(self: QSpinBox, suffix: string): void =
+proc setSuffix*(self: gen_qspinbox_types.QSpinBox, suffix: string): void =
 
   fcQSpinBox_setSuffix(self.h, struct_miqt_string(data: suffix, len: csize_t(len(suffix))))
 
-proc cleanText*(self: QSpinBox, ): string =
+proc cleanText*(self: gen_qspinbox_types.QSpinBox, ): string =
 
   let v_ms = fcQSpinBox_cleanText(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc singleStep*(self: QSpinBox, ): cint =
+proc singleStep*(self: gen_qspinbox_types.QSpinBox, ): cint =
 
   fcQSpinBox_singleStep(self.h)
 
-proc setSingleStep*(self: QSpinBox, val: cint): void =
+proc setSingleStep*(self: gen_qspinbox_types.QSpinBox, val: cint): void =
 
   fcQSpinBox_setSingleStep(self.h, val)
 
-proc minimum*(self: QSpinBox, ): cint =
+proc minimum*(self: gen_qspinbox_types.QSpinBox, ): cint =
 
   fcQSpinBox_minimum(self.h)
 
-proc setMinimum*(self: QSpinBox, min: cint): void =
+proc setMinimum*(self: gen_qspinbox_types.QSpinBox, min: cint): void =
 
   fcQSpinBox_setMinimum(self.h, min)
 
-proc maximum*(self: QSpinBox, ): cint =
+proc maximum*(self: gen_qspinbox_types.QSpinBox, ): cint =
 
   fcQSpinBox_maximum(self.h)
 
-proc setMaximum*(self: QSpinBox, max: cint): void =
+proc setMaximum*(self: gen_qspinbox_types.QSpinBox, max: cint): void =
 
   fcQSpinBox_setMaximum(self.h, max)
 
-proc setRange*(self: QSpinBox, min: cint, max: cint): void =
+proc setRange*(self: gen_qspinbox_types.QSpinBox, min: cint, max: cint): void =
 
   fcQSpinBox_setRange(self.h, min, max)
 
-proc stepType*(self: QSpinBox, ): gen_qabstractspinbox.QAbstractSpinBoxStepType =
+proc stepType*(self: gen_qspinbox_types.QSpinBox, ): cint =
 
-  gen_qabstractspinbox.QAbstractSpinBoxStepType(fcQSpinBox_stepType(self.h))
+  cint(fcQSpinBox_stepType(self.h))
 
-proc setStepType*(self: QSpinBox, stepType: gen_qabstractspinbox.QAbstractSpinBoxStepType): void =
+proc setStepType*(self: gen_qspinbox_types.QSpinBox, stepType: cint): void =
 
   fcQSpinBox_setStepType(self.h, cint(stepType))
 
-proc displayIntegerBase*(self: QSpinBox, ): cint =
+proc displayIntegerBase*(self: gen_qspinbox_types.QSpinBox, ): cint =
 
   fcQSpinBox_displayIntegerBase(self.h)
 
-proc setDisplayIntegerBase*(self: QSpinBox, base: cint): void =
+proc setDisplayIntegerBase*(self: gen_qspinbox_types.QSpinBox, base: cint): void =
 
   fcQSpinBox_setDisplayIntegerBase(self.h, base)
 
-proc setValue*(self: QSpinBox, val: cint): void =
+proc setValue*(self: gen_qspinbox_types.QSpinBox, val: cint): void =
 
   fcQSpinBox_setValue(self.h, val)
 
-proc valueChanged*(self: QSpinBox, param1: cint): void =
+proc valueChanged*(self: gen_qspinbox_types.QSpinBox, param1: cint): void =
 
   fcQSpinBox_valueChanged(self.h, param1)
 
@@ -508,13 +504,13 @@ proc miqt_exec_callback_QSpinBox_valueChanged(slot: int, param1: cint) {.exportc
 
   nimfunc[](slotval1)
 
-proc onvalueChanged*(self: QSpinBox, slot: proc(param1: cint)) =
+proc onvalueChanged*(self: gen_qspinbox_types.QSpinBox, slot: proc(param1: cint)) =
   type Cb = proc(param1: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQSpinBox_connect_valueChanged(self.h, cast[int](addr tmp[]))
-proc textChanged*(self: QSpinBox, param1: string): void =
+proc textChanged*(self: gen_qspinbox_types.QSpinBox, param1: string): void =
 
   fcQSpinBox_textChanged(self.h, struct_miqt_string(data: param1, len: csize_t(len(param1))))
 
@@ -529,13 +525,13 @@ proc miqt_exec_callback_QSpinBox_textChanged(slot: int, param1: struct_miqt_stri
 
   nimfunc[](slotval1)
 
-proc ontextChanged*(self: QSpinBox, slot: proc(param1: string)) =
+proc ontextChanged*(self: gen_qspinbox_types.QSpinBox, slot: proc(param1: string)) =
   type Cb = proc(param1: string)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQSpinBox_connect_textChanged(self.h, cast[int](addr tmp[]))
-proc valueChangedWithQString*(self: QSpinBox, param1: string): void =
+proc valueChangedWithQString*(self: gen_qspinbox_types.QSpinBox, param1: string): void =
 
   fcQSpinBox_valueChangedWithQString(self.h, struct_miqt_string(data: param1, len: csize_t(len(param1))))
 
@@ -550,161 +546,136 @@ proc miqt_exec_callback_QSpinBox_valueChangedWithQString(slot: int, param1: stru
 
   nimfunc[](slotval1)
 
-proc onvalueChangedWithQString*(self: QSpinBox, slot: proc(param1: string)) =
+proc onvalueChangedWithQString*(self: gen_qspinbox_types.QSpinBox, slot: proc(param1: string)) =
   type Cb = proc(param1: string)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQSpinBox_connect_valueChangedWithQString(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QSpinBox, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qspinbox_types.QSpinBox, s: cstring, c: cstring): string =
 
   let v_ms = fcQSpinBox_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QSpinBox, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qspinbox_types.QSpinBox, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQSpinBox_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QSpinBox, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qspinbox_types.QSpinBox, s: cstring, c: cstring): string =
 
   let v_ms = fcQSpinBox_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QSpinBox, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qspinbox_types.QSpinBox, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQSpinBox_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QSpinBox, ): gen_qobjectdefs.QMetaObject =
-
+proc QSpinBoxmetaObject*(self: gen_qspinbox_types.QSpinBox, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQSpinBox_virtualbase_metaObject(self.h))
 
-type QSpinBoxmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QSpinBox, slot: proc(super: QSpinBoxmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QSpinBoxmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QSpinBoxmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_metaObject(self: ptr cQSpinBox, slot: int): pointer {.exportc: "miqt_exec_callback_QSpinBox_metaObject ".} =
-  type Cb = proc(super: QSpinBoxmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QSpinBox(h: self), )
+  var nimfunc = cast[ptr QSpinBoxmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QSpinBox, param1: cstring): pointer =
-
+proc QSpinBoxmetacast*(self: gen_qspinbox_types.QSpinBox, param1: cstring): pointer =
 
   fQSpinBox_virtualbase_metacast(self.h, param1)
 
-type QSpinBoxmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QSpinBox, slot: proc(super: QSpinBoxmetacastBase, param1: cstring): pointer) =
+type QSpinBoxmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QSpinBoxmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_metacast(self: ptr cQSpinBox, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QSpinBox_metacast ".} =
-  type Cb = proc(super: QSpinBoxmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QSpinBox(h: self), param1)
+  var nimfunc = cast[ptr QSpinBoxmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QSpinBox, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QSpinBoxmetacall*(self: gen_qspinbox_types.QSpinBox, param1: cint, param2: cint, param3: pointer): cint =
 
   fQSpinBox_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QSpinBoxmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QSpinBox, slot: proc(super: QSpinBoxmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QSpinBoxmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QSpinBoxmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_metacall(self: ptr cQSpinBox, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QSpinBox_metacall ".} =
-  type Cb = proc(super: QSpinBoxmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QSpinBox(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QSpinBoxmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_event(self: QSpinBox, event: gen_qcoreevent.QEvent): bool =
-
+proc QSpinBoxevent*(self: gen_qspinbox_types.QSpinBox, event: gen_qcoreevent.QEvent): bool =
 
   fQSpinBox_virtualbase_event(self.h, event.h)
 
-type QSpinBoxeventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QSpinBox, slot: proc(super: QSpinBoxeventBase, event: gen_qcoreevent.QEvent): bool) =
+type QSpinBoxeventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxeventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QSpinBoxeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_event(self: ptr cQSpinBox, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QSpinBox_event ".} =
-  type Cb = proc(super: QSpinBoxeventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QSpinBox(h: self), event)
+  var nimfunc = cast[ptr QSpinBoxeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_validate(self: QSpinBox, input: string, pos: ptr cint): gen_qvalidator.QValidatorState =
+proc QSpinBoxvalidate*(self: gen_qspinbox_types.QSpinBox, input: string, pos: ptr cint): cint =
 
+  cint(fQSpinBox_virtualbase_validate(self.h, struct_miqt_string(data: input, len: csize_t(len(input))), pos))
 
-  gen_qvalidator.QValidatorState(fQSpinBox_virtualbase_validate(self.h, struct_miqt_string(data: input, len: csize_t(len(input))), pos))
-
-type QSpinBoxvalidateBase* = proc(input: string, pos: ptr cint): gen_qvalidator.QValidatorState
-proc onvalidate*(self: QSpinBox, slot: proc(super: QSpinBoxvalidateBase, input: string, pos: ptr cint): gen_qvalidator.QValidatorState) =
+type QSpinBoxvalidateProc* = proc(input: string, pos: ptr cint): cint
+proc onvalidate*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxvalidateProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxvalidateBase, input: string, pos: ptr cint): gen_qvalidator.QValidatorState
-  var tmp = new Cb
+  var tmp = new QSpinBoxvalidateProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_validate(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_validate(self: ptr cQSpinBox, slot: int, input: struct_miqt_string, pos: ptr cint): cint {.exportc: "miqt_exec_callback_QSpinBox_validate ".} =
-  type Cb = proc(super: QSpinBoxvalidateBase, input: string, pos: ptr cint): gen_qvalidator.QValidatorState
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(input: string, pos: ptr cint): auto =
-    callVirtualBase_validate(QSpinBox(h: self), input, pos)
+  var nimfunc = cast[ptr QSpinBoxvalidateProc](cast[pointer](slot))
   let vinput_ms = input
   let vinputx_ret = string.fromBytes(toOpenArrayByte(vinput_ms.data, 0, int(vinput_ms.len)-1))
   c_free(vinput_ms.data)
@@ -713,963 +684,758 @@ proc miqt_exec_callback_QSpinBox_validate(self: ptr cQSpinBox, slot: int, input:
   let slotval2 = pos
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   cint(virtualReturn)
-proc callVirtualBase_valueFromText(self: QSpinBox, text: string): cint =
-
+proc QSpinBoxvalueFromText*(self: gen_qspinbox_types.QSpinBox, text: string): cint =
 
   fQSpinBox_virtualbase_valueFromText(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
-type QSpinBoxvalueFromTextBase* = proc(text: string): cint
-proc onvalueFromText*(self: QSpinBox, slot: proc(super: QSpinBoxvalueFromTextBase, text: string): cint) =
+type QSpinBoxvalueFromTextProc* = proc(text: string): cint
+proc onvalueFromText*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxvalueFromTextProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxvalueFromTextBase, text: string): cint
-  var tmp = new Cb
+  var tmp = new QSpinBoxvalueFromTextProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_valueFromText(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_valueFromText(self: ptr cQSpinBox, slot: int, text: struct_miqt_string): cint {.exportc: "miqt_exec_callback_QSpinBox_valueFromText ".} =
-  type Cb = proc(super: QSpinBoxvalueFromTextBase, text: string): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(text: string): auto =
-    callVirtualBase_valueFromText(QSpinBox(h: self), text)
+  var nimfunc = cast[ptr QSpinBoxvalueFromTextProc](cast[pointer](slot))
   let vtext_ms = text
   let vtextx_ret = string.fromBytes(toOpenArrayByte(vtext_ms.data, 0, int(vtext_ms.len)-1))
   c_free(vtext_ms.data)
   let slotval1 = vtextx_ret
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_textFromValue(self: QSpinBox, val: cint): string =
-
+proc QSpinBoxtextFromValue*(self: gen_qspinbox_types.QSpinBox, val: cint): string =
 
   let v_ms = fQSpinBox_virtualbase_textFromValue(self.h, val)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-type QSpinBoxtextFromValueBase* = proc(val: cint): string
-proc ontextFromValue*(self: QSpinBox, slot: proc(super: QSpinBoxtextFromValueBase, val: cint): string) =
+type QSpinBoxtextFromValueProc* = proc(val: cint): string
+proc ontextFromValue*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxtextFromValueProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxtextFromValueBase, val: cint): string
-  var tmp = new Cb
+  var tmp = new QSpinBoxtextFromValueProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_textFromValue(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_textFromValue(self: ptr cQSpinBox, slot: int, val: cint): struct_miqt_string {.exportc: "miqt_exec_callback_QSpinBox_textFromValue ".} =
-  type Cb = proc(super: QSpinBoxtextFromValueBase, val: cint): string
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(val: cint): auto =
-    callVirtualBase_textFromValue(QSpinBox(h: self), val)
+  var nimfunc = cast[ptr QSpinBoxtextFromValueProc](cast[pointer](slot))
   let slotval1 = val
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
-proc callVirtualBase_fixup(self: QSpinBox, str: string): void =
-
+proc QSpinBoxfixup*(self: gen_qspinbox_types.QSpinBox, str: string): void =
 
   fQSpinBox_virtualbase_fixup(self.h, struct_miqt_string(data: str, len: csize_t(len(str))))
 
-type QSpinBoxfixupBase* = proc(str: string): void
-proc onfixup*(self: QSpinBox, slot: proc(super: QSpinBoxfixupBase, str: string): void) =
+type QSpinBoxfixupProc* = proc(str: string): void
+proc onfixup*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxfixupProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxfixupBase, str: string): void
-  var tmp = new Cb
+  var tmp = new QSpinBoxfixupProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_fixup(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_fixup(self: ptr cQSpinBox, slot: int, str: struct_miqt_string): void {.exportc: "miqt_exec_callback_QSpinBox_fixup ".} =
-  type Cb = proc(super: QSpinBoxfixupBase, str: string): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(str: string): auto =
-    callVirtualBase_fixup(QSpinBox(h: self), str)
+  var nimfunc = cast[ptr QSpinBoxfixupProc](cast[pointer](slot))
   let vstr_ms = str
   let vstrx_ret = string.fromBytes(toOpenArrayByte(vstr_ms.data, 0, int(vstr_ms.len)-1))
   c_free(vstr_ms.data)
   let slotval1 = vstrx_ret
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_sizeHint(self: QSpinBox, ): gen_qsize.QSize =
-
+  nimfunc[](slotval1)
+proc QSpinBoxsizeHint*(self: gen_qspinbox_types.QSpinBox, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQSpinBox_virtualbase_sizeHint(self.h))
 
-type QSpinBoxsizeHintBase* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: QSpinBox, slot: proc(super: QSpinBoxsizeHintBase): gen_qsize.QSize) =
+type QSpinBoxsizeHintProc* = proc(): gen_qsize.QSize
+proc onsizeHint*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxsizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxsizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QSpinBoxsizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_sizeHint(self: ptr cQSpinBox, slot: int): pointer {.exportc: "miqt_exec_callback_QSpinBox_sizeHint ".} =
-  type Cb = proc(super: QSpinBoxsizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sizeHint(QSpinBox(h: self), )
+  var nimfunc = cast[ptr QSpinBoxsizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_minimumSizeHint(self: QSpinBox, ): gen_qsize.QSize =
-
+proc QSpinBoxminimumSizeHint*(self: gen_qspinbox_types.QSpinBox, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQSpinBox_virtualbase_minimumSizeHint(self.h))
 
-type QSpinBoxminimumSizeHintBase* = proc(): gen_qsize.QSize
-proc onminimumSizeHint*(self: QSpinBox, slot: proc(super: QSpinBoxminimumSizeHintBase): gen_qsize.QSize) =
+type QSpinBoxminimumSizeHintProc* = proc(): gen_qsize.QSize
+proc onminimumSizeHint*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxminimumSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxminimumSizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QSpinBoxminimumSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_minimumSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_minimumSizeHint(self: ptr cQSpinBox, slot: int): pointer {.exportc: "miqt_exec_callback_QSpinBox_minimumSizeHint ".} =
-  type Cb = proc(super: QSpinBoxminimumSizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_minimumSizeHint(QSpinBox(h: self), )
+  var nimfunc = cast[ptr QSpinBoxminimumSizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_inputMethodQuery(self: QSpinBox, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant =
-
+proc QSpinBoxinputMethodQuery*(self: gen_qspinbox_types.QSpinBox, param1: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQSpinBox_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
-type QSpinBoxinputMethodQueryBase* = proc(param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-proc oninputMethodQuery*(self: QSpinBox, slot: proc(super: QSpinBoxinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant) =
+type QSpinBoxinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
+proc oninputMethodQuery*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxinputMethodQueryProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QSpinBoxinputMethodQueryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_inputMethodQuery(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_inputMethodQuery(self: ptr cQSpinBox, slot: int, param1: cint): pointer {.exportc: "miqt_exec_callback_QSpinBox_inputMethodQuery ".} =
-  type Cb = proc(super: QSpinBoxinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qnamespace.InputMethodQuery): auto =
-    callVirtualBase_inputMethodQuery(QSpinBox(h: self), param1)
-  let slotval1 = gen_qnamespace.InputMethodQuery(param1)
+  var nimfunc = cast[ptr QSpinBoxinputMethodQueryProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_stepBy(self: QSpinBox, steps: cint): void =
-
+proc QSpinBoxstepBy*(self: gen_qspinbox_types.QSpinBox, steps: cint): void =
 
   fQSpinBox_virtualbase_stepBy(self.h, steps)
 
-type QSpinBoxstepByBase* = proc(steps: cint): void
-proc onstepBy*(self: QSpinBox, slot: proc(super: QSpinBoxstepByBase, steps: cint): void) =
+type QSpinBoxstepByProc* = proc(steps: cint): void
+proc onstepBy*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxstepByProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxstepByBase, steps: cint): void
-  var tmp = new Cb
+  var tmp = new QSpinBoxstepByProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_stepBy(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_stepBy(self: ptr cQSpinBox, slot: int, steps: cint): void {.exportc: "miqt_exec_callback_QSpinBox_stepBy ".} =
-  type Cb = proc(super: QSpinBoxstepByBase, steps: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(steps: cint): auto =
-    callVirtualBase_stepBy(QSpinBox(h: self), steps)
+  var nimfunc = cast[ptr QSpinBoxstepByProc](cast[pointer](slot))
   let slotval1 = steps
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_clear(self: QSpinBox, ): void =
-
+  nimfunc[](slotval1)
+proc QSpinBoxclear*(self: gen_qspinbox_types.QSpinBox, ): void =
 
   fQSpinBox_virtualbase_clear(self.h)
 
-type QSpinBoxclearBase* = proc(): void
-proc onclear*(self: QSpinBox, slot: proc(super: QSpinBoxclearBase): void) =
+type QSpinBoxclearProc* = proc(): void
+proc onclear*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxclearProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxclearBase): void
-  var tmp = new Cb
+  var tmp = new QSpinBoxclearProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_clear(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_clear(self: ptr cQSpinBox, slot: int): void {.exportc: "miqt_exec_callback_QSpinBox_clear ".} =
-  type Cb = proc(super: QSpinBoxclearBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_clear(QSpinBox(h: self), )
+  var nimfunc = cast[ptr QSpinBoxclearProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_resizeEvent(self: QSpinBox, event: gen_qevent.QResizeEvent): void =
-
+  nimfunc[]()
+proc QSpinBoxresizeEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qevent.QResizeEvent): void =
 
   fQSpinBox_virtualbase_resizeEvent(self.h, event.h)
 
-type QSpinBoxresizeEventBase* = proc(event: gen_qevent.QResizeEvent): void
-proc onresizeEvent*(self: QSpinBox, slot: proc(super: QSpinBoxresizeEventBase, event: gen_qevent.QResizeEvent): void) =
+type QSpinBoxresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
+proc onresizeEvent*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxresizeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var tmp = new Cb
+  var tmp = new QSpinBoxresizeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_resizeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_resizeEvent(self: ptr cQSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSpinBox_resizeEvent ".} =
-  type Cb = proc(super: QSpinBoxresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QResizeEvent): auto =
-    callVirtualBase_resizeEvent(QSpinBox(h: self), event)
+  var nimfunc = cast[ptr QSpinBoxresizeEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QResizeEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyPressEvent(self: QSpinBox, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QSpinBoxkeyPressEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qevent.QKeyEvent): void =
 
   fQSpinBox_virtualbase_keyPressEvent(self.h, event.h)
 
-type QSpinBoxkeyPressEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyPressEvent*(self: QSpinBox, slot: proc(super: QSpinBoxkeyPressEventBase, event: gen_qevent.QKeyEvent): void) =
+type QSpinBoxkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyPressEvent*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxkeyPressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QSpinBoxkeyPressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_keyPressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_keyPressEvent(self: ptr cQSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSpinBox_keyPressEvent ".} =
-  type Cb = proc(super: QSpinBoxkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyPressEvent(QSpinBox(h: self), event)
+  var nimfunc = cast[ptr QSpinBoxkeyPressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyReleaseEvent(self: QSpinBox, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QSpinBoxkeyReleaseEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qevent.QKeyEvent): void =
 
   fQSpinBox_virtualbase_keyReleaseEvent(self.h, event.h)
 
-type QSpinBoxkeyReleaseEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyReleaseEvent*(self: QSpinBox, slot: proc(super: QSpinBoxkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void) =
+type QSpinBoxkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyReleaseEvent*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxkeyReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QSpinBoxkeyReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_keyReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_keyReleaseEvent(self: ptr cQSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSpinBox_keyReleaseEvent ".} =
-  type Cb = proc(super: QSpinBoxkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyReleaseEvent(QSpinBox(h: self), event)
+  var nimfunc = cast[ptr QSpinBoxkeyReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_wheelEvent(self: QSpinBox, event: gen_qevent.QWheelEvent): void =
-
+  nimfunc[](slotval1)
+proc QSpinBoxwheelEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qevent.QWheelEvent): void =
 
   fQSpinBox_virtualbase_wheelEvent(self.h, event.h)
 
-type QSpinBoxwheelEventBase* = proc(event: gen_qevent.QWheelEvent): void
-proc onwheelEvent*(self: QSpinBox, slot: proc(super: QSpinBoxwheelEventBase, event: gen_qevent.QWheelEvent): void) =
+type QSpinBoxwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
+proc onwheelEvent*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxwheelEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var tmp = new Cb
+  var tmp = new QSpinBoxwheelEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_wheelEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_wheelEvent(self: ptr cQSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSpinBox_wheelEvent ".} =
-  type Cb = proc(super: QSpinBoxwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QWheelEvent): auto =
-    callVirtualBase_wheelEvent(QSpinBox(h: self), event)
+  var nimfunc = cast[ptr QSpinBoxwheelEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QWheelEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusInEvent(self: QSpinBox, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QSpinBoxfocusInEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qevent.QFocusEvent): void =
 
   fQSpinBox_virtualbase_focusInEvent(self.h, event.h)
 
-type QSpinBoxfocusInEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusInEvent*(self: QSpinBox, slot: proc(super: QSpinBoxfocusInEventBase, event: gen_qevent.QFocusEvent): void) =
+type QSpinBoxfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusInEvent*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxfocusInEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QSpinBoxfocusInEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_focusInEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_focusInEvent(self: ptr cQSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSpinBox_focusInEvent ".} =
-  type Cb = proc(super: QSpinBoxfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusInEvent(QSpinBox(h: self), event)
+  var nimfunc = cast[ptr QSpinBoxfocusInEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusOutEvent(self: QSpinBox, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QSpinBoxfocusOutEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qevent.QFocusEvent): void =
 
   fQSpinBox_virtualbase_focusOutEvent(self.h, event.h)
 
-type QSpinBoxfocusOutEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusOutEvent*(self: QSpinBox, slot: proc(super: QSpinBoxfocusOutEventBase, event: gen_qevent.QFocusEvent): void) =
+type QSpinBoxfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusOutEvent*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxfocusOutEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QSpinBoxfocusOutEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_focusOutEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_focusOutEvent(self: ptr cQSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSpinBox_focusOutEvent ".} =
-  type Cb = proc(super: QSpinBoxfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusOutEvent(QSpinBox(h: self), event)
+  var nimfunc = cast[ptr QSpinBoxfocusOutEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_contextMenuEvent(self: QSpinBox, event: gen_qevent.QContextMenuEvent): void =
-
+  nimfunc[](slotval1)
+proc QSpinBoxcontextMenuEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qevent.QContextMenuEvent): void =
 
   fQSpinBox_virtualbase_contextMenuEvent(self.h, event.h)
 
-type QSpinBoxcontextMenuEventBase* = proc(event: gen_qevent.QContextMenuEvent): void
-proc oncontextMenuEvent*(self: QSpinBox, slot: proc(super: QSpinBoxcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void) =
+type QSpinBoxcontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
+proc oncontextMenuEvent*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxcontextMenuEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var tmp = new Cb
+  var tmp = new QSpinBoxcontextMenuEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_contextMenuEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_contextMenuEvent(self: ptr cQSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSpinBox_contextMenuEvent ".} =
-  type Cb = proc(super: QSpinBoxcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QContextMenuEvent): auto =
-    callVirtualBase_contextMenuEvent(QSpinBox(h: self), event)
+  var nimfunc = cast[ptr QSpinBoxcontextMenuEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QContextMenuEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_changeEvent(self: QSpinBox, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QSpinBoxchangeEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qcoreevent.QEvent): void =
 
   fQSpinBox_virtualbase_changeEvent(self.h, event.h)
 
-type QSpinBoxchangeEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onchangeEvent*(self: QSpinBox, slot: proc(super: QSpinBoxchangeEventBase, event: gen_qcoreevent.QEvent): void) =
+type QSpinBoxchangeEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onchangeEvent*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxchangeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxchangeEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QSpinBoxchangeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_changeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_changeEvent(self: ptr cQSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSpinBox_changeEvent ".} =
-  type Cb = proc(super: QSpinBoxchangeEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_changeEvent(QSpinBox(h: self), event)
+  var nimfunc = cast[ptr QSpinBoxchangeEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_closeEvent(self: QSpinBox, event: gen_qevent.QCloseEvent): void =
-
+  nimfunc[](slotval1)
+proc QSpinBoxcloseEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qevent.QCloseEvent): void =
 
   fQSpinBox_virtualbase_closeEvent(self.h, event.h)
 
-type QSpinBoxcloseEventBase* = proc(event: gen_qevent.QCloseEvent): void
-proc oncloseEvent*(self: QSpinBox, slot: proc(super: QSpinBoxcloseEventBase, event: gen_qevent.QCloseEvent): void) =
+type QSpinBoxcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
+proc oncloseEvent*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxcloseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var tmp = new Cb
+  var tmp = new QSpinBoxcloseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_closeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_closeEvent(self: ptr cQSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSpinBox_closeEvent ".} =
-  type Cb = proc(super: QSpinBoxcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QCloseEvent): auto =
-    callVirtualBase_closeEvent(QSpinBox(h: self), event)
+  var nimfunc = cast[ptr QSpinBoxcloseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QCloseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hideEvent(self: QSpinBox, event: gen_qevent.QHideEvent): void =
-
+  nimfunc[](slotval1)
+proc QSpinBoxhideEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qevent.QHideEvent): void =
 
   fQSpinBox_virtualbase_hideEvent(self.h, event.h)
 
-type QSpinBoxhideEventBase* = proc(event: gen_qevent.QHideEvent): void
-proc onhideEvent*(self: QSpinBox, slot: proc(super: QSpinBoxhideEventBase, event: gen_qevent.QHideEvent): void) =
+type QSpinBoxhideEventProc* = proc(event: gen_qevent.QHideEvent): void
+proc onhideEvent*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxhideEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxhideEventBase, event: gen_qevent.QHideEvent): void
-  var tmp = new Cb
+  var tmp = new QSpinBoxhideEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_hideEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_hideEvent(self: ptr cQSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSpinBox_hideEvent ".} =
-  type Cb = proc(super: QSpinBoxhideEventBase, event: gen_qevent.QHideEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QHideEvent): auto =
-    callVirtualBase_hideEvent(QSpinBox(h: self), event)
+  var nimfunc = cast[ptr QSpinBoxhideEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QHideEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mousePressEvent(self: QSpinBox, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QSpinBoxmousePressEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qevent.QMouseEvent): void =
 
   fQSpinBox_virtualbase_mousePressEvent(self.h, event.h)
 
-type QSpinBoxmousePressEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmousePressEvent*(self: QSpinBox, slot: proc(super: QSpinBoxmousePressEventBase, event: gen_qevent.QMouseEvent): void) =
+type QSpinBoxmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmousePressEvent*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxmousePressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QSpinBoxmousePressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_mousePressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_mousePressEvent(self: ptr cQSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSpinBox_mousePressEvent ".} =
-  type Cb = proc(super: QSpinBoxmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mousePressEvent(QSpinBox(h: self), event)
+  var nimfunc = cast[ptr QSpinBoxmousePressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseReleaseEvent(self: QSpinBox, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QSpinBoxmouseReleaseEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qevent.QMouseEvent): void =
 
   fQSpinBox_virtualbase_mouseReleaseEvent(self.h, event.h)
 
-type QSpinBoxmouseReleaseEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseReleaseEvent*(self: QSpinBox, slot: proc(super: QSpinBoxmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void) =
+type QSpinBoxmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseReleaseEvent*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxmouseReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QSpinBoxmouseReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_mouseReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_mouseReleaseEvent(self: ptr cQSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSpinBox_mouseReleaseEvent ".} =
-  type Cb = proc(super: QSpinBoxmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseReleaseEvent(QSpinBox(h: self), event)
+  var nimfunc = cast[ptr QSpinBoxmouseReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseMoveEvent(self: QSpinBox, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QSpinBoxmouseMoveEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qevent.QMouseEvent): void =
 
   fQSpinBox_virtualbase_mouseMoveEvent(self.h, event.h)
 
-type QSpinBoxmouseMoveEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseMoveEvent*(self: QSpinBox, slot: proc(super: QSpinBoxmouseMoveEventBase, event: gen_qevent.QMouseEvent): void) =
+type QSpinBoxmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseMoveEvent*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxmouseMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QSpinBoxmouseMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_mouseMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_mouseMoveEvent(self: ptr cQSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSpinBox_mouseMoveEvent ".} =
-  type Cb = proc(super: QSpinBoxmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseMoveEvent(QSpinBox(h: self), event)
+  var nimfunc = cast[ptr QSpinBoxmouseMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_timerEvent(self: QSpinBox, event: gen_qcoreevent.QTimerEvent): void =
-
+  nimfunc[](slotval1)
+proc QSpinBoxtimerEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qcoreevent.QTimerEvent): void =
 
   fQSpinBox_virtualbase_timerEvent(self.h, event.h)
 
-type QSpinBoxtimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QSpinBox, slot: proc(super: QSpinBoxtimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QSpinBoxtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxtimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxtimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QSpinBoxtimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_timerEvent(self: ptr cQSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSpinBox_timerEvent ".} =
-  type Cb = proc(super: QSpinBoxtimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QSpinBox(h: self), event)
+  var nimfunc = cast[ptr QSpinBoxtimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_paintEvent(self: QSpinBox, event: gen_qevent.QPaintEvent): void =
-
+  nimfunc[](slotval1)
+proc QSpinBoxpaintEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qevent.QPaintEvent): void =
 
   fQSpinBox_virtualbase_paintEvent(self.h, event.h)
 
-type QSpinBoxpaintEventBase* = proc(event: gen_qevent.QPaintEvent): void
-proc onpaintEvent*(self: QSpinBox, slot: proc(super: QSpinBoxpaintEventBase, event: gen_qevent.QPaintEvent): void) =
+type QSpinBoxpaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
+proc onpaintEvent*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxpaintEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxpaintEventBase, event: gen_qevent.QPaintEvent): void
-  var tmp = new Cb
+  var tmp = new QSpinBoxpaintEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_paintEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_paintEvent(self: ptr cQSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSpinBox_paintEvent ".} =
-  type Cb = proc(super: QSpinBoxpaintEventBase, event: gen_qevent.QPaintEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QPaintEvent): auto =
-    callVirtualBase_paintEvent(QSpinBox(h: self), event)
+  var nimfunc = cast[ptr QSpinBoxpaintEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QPaintEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_showEvent(self: QSpinBox, event: gen_qevent.QShowEvent): void =
-
+  nimfunc[](slotval1)
+proc QSpinBoxshowEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qevent.QShowEvent): void =
 
   fQSpinBox_virtualbase_showEvent(self.h, event.h)
 
-type QSpinBoxshowEventBase* = proc(event: gen_qevent.QShowEvent): void
-proc onshowEvent*(self: QSpinBox, slot: proc(super: QSpinBoxshowEventBase, event: gen_qevent.QShowEvent): void) =
+type QSpinBoxshowEventProc* = proc(event: gen_qevent.QShowEvent): void
+proc onshowEvent*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxshowEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxshowEventBase, event: gen_qevent.QShowEvent): void
-  var tmp = new Cb
+  var tmp = new QSpinBoxshowEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_showEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_showEvent(self: ptr cQSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSpinBox_showEvent ".} =
-  type Cb = proc(super: QSpinBoxshowEventBase, event: gen_qevent.QShowEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QShowEvent): auto =
-    callVirtualBase_showEvent(QSpinBox(h: self), event)
+  var nimfunc = cast[ptr QSpinBoxshowEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QShowEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_stepEnabled(self: QSpinBox, ): gen_qabstractspinbox.QAbstractSpinBoxStepEnabledFlag =
+  nimfunc[](slotval1)
+proc QSpinBoxstepEnabled*(self: gen_qspinbox_types.QSpinBox, ): cint =
 
+  cint(fQSpinBox_virtualbase_stepEnabled(self.h))
 
-  gen_qabstractspinbox.QAbstractSpinBoxStepEnabledFlag(fQSpinBox_virtualbase_stepEnabled(self.h))
-
-type QSpinBoxstepEnabledBase* = proc(): gen_qabstractspinbox.QAbstractSpinBoxStepEnabledFlag
-proc onstepEnabled*(self: QSpinBox, slot: proc(super: QSpinBoxstepEnabledBase): gen_qabstractspinbox.QAbstractSpinBoxStepEnabledFlag) =
+type QSpinBoxstepEnabledProc* = proc(): cint
+proc onstepEnabled*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxstepEnabledProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxstepEnabledBase): gen_qabstractspinbox.QAbstractSpinBoxStepEnabledFlag
-  var tmp = new Cb
+  var tmp = new QSpinBoxstepEnabledProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_stepEnabled(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_stepEnabled(self: ptr cQSpinBox, slot: int): cint {.exportc: "miqt_exec_callback_QSpinBox_stepEnabled ".} =
-  type Cb = proc(super: QSpinBoxstepEnabledBase): gen_qabstractspinbox.QAbstractSpinBoxStepEnabledFlag
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_stepEnabled(QSpinBox(h: self), )
+  var nimfunc = cast[ptr QSpinBoxstepEnabledProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   cint(virtualReturn)
-proc callVirtualBase_devType(self: QSpinBox, ): cint =
-
+proc QSpinBoxdevType*(self: gen_qspinbox_types.QSpinBox, ): cint =
 
   fQSpinBox_virtualbase_devType(self.h)
 
-type QSpinBoxdevTypeBase* = proc(): cint
-proc ondevType*(self: QSpinBox, slot: proc(super: QSpinBoxdevTypeBase): cint) =
+type QSpinBoxdevTypeProc* = proc(): cint
+proc ondevType*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxdevTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxdevTypeBase): cint
-  var tmp = new Cb
+  var tmp = new QSpinBoxdevTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_devType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_devType(self: ptr cQSpinBox, slot: int): cint {.exportc: "miqt_exec_callback_QSpinBox_devType ".} =
-  type Cb = proc(super: QSpinBoxdevTypeBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_devType(QSpinBox(h: self), )
+  var nimfunc = cast[ptr QSpinBoxdevTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setVisible(self: QSpinBox, visible: bool): void =
-
+proc QSpinBoxsetVisible*(self: gen_qspinbox_types.QSpinBox, visible: bool): void =
 
   fQSpinBox_virtualbase_setVisible(self.h, visible)
 
-type QSpinBoxsetVisibleBase* = proc(visible: bool): void
-proc onsetVisible*(self: QSpinBox, slot: proc(super: QSpinBoxsetVisibleBase, visible: bool): void) =
+type QSpinBoxsetVisibleProc* = proc(visible: bool): void
+proc onsetVisible*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxsetVisibleProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxsetVisibleBase, visible: bool): void
-  var tmp = new Cb
+  var tmp = new QSpinBoxsetVisibleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_setVisible(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_setVisible(self: ptr cQSpinBox, slot: int, visible: bool): void {.exportc: "miqt_exec_callback_QSpinBox_setVisible ".} =
-  type Cb = proc(super: QSpinBoxsetVisibleBase, visible: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(visible: bool): auto =
-    callVirtualBase_setVisible(QSpinBox(h: self), visible)
+  var nimfunc = cast[ptr QSpinBoxsetVisibleProc](cast[pointer](slot))
   let slotval1 = visible
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_heightForWidth(self: QSpinBox, param1: cint): cint =
-
+  nimfunc[](slotval1)
+proc QSpinBoxheightForWidth*(self: gen_qspinbox_types.QSpinBox, param1: cint): cint =
 
   fQSpinBox_virtualbase_heightForWidth(self.h, param1)
 
-type QSpinBoxheightForWidthBase* = proc(param1: cint): cint
-proc onheightForWidth*(self: QSpinBox, slot: proc(super: QSpinBoxheightForWidthBase, param1: cint): cint) =
+type QSpinBoxheightForWidthProc* = proc(param1: cint): cint
+proc onheightForWidth*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxheightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxheightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QSpinBoxheightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_heightForWidth(self: ptr cQSpinBox, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QSpinBox_heightForWidth ".} =
-  type Cb = proc(super: QSpinBoxheightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_heightForWidth(QSpinBox(h: self), param1)
+  var nimfunc = cast[ptr QSpinBoxheightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_hasHeightForWidth(self: QSpinBox, ): bool =
-
+proc QSpinBoxhasHeightForWidth*(self: gen_qspinbox_types.QSpinBox, ): bool =
 
   fQSpinBox_virtualbase_hasHeightForWidth(self.h)
 
-type QSpinBoxhasHeightForWidthBase* = proc(): bool
-proc onhasHeightForWidth*(self: QSpinBox, slot: proc(super: QSpinBoxhasHeightForWidthBase): bool) =
+type QSpinBoxhasHeightForWidthProc* = proc(): bool
+proc onhasHeightForWidth*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxhasHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxhasHeightForWidthBase): bool
-  var tmp = new Cb
+  var tmp = new QSpinBoxhasHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_hasHeightForWidth(self: ptr cQSpinBox, slot: int): bool {.exportc: "miqt_exec_callback_QSpinBox_hasHeightForWidth ".} =
-  type Cb = proc(super: QSpinBoxhasHeightForWidthBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasHeightForWidth(QSpinBox(h: self), )
+  var nimfunc = cast[ptr QSpinBoxhasHeightForWidthProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_paintEngine(self: QSpinBox, ): gen_qpaintengine.QPaintEngine =
-
+proc QSpinBoxpaintEngine*(self: gen_qspinbox_types.QSpinBox, ): gen_qpaintengine.QPaintEngine =
 
   gen_qpaintengine.QPaintEngine(h: fQSpinBox_virtualbase_paintEngine(self.h))
 
-type QSpinBoxpaintEngineBase* = proc(): gen_qpaintengine.QPaintEngine
-proc onpaintEngine*(self: QSpinBox, slot: proc(super: QSpinBoxpaintEngineBase): gen_qpaintengine.QPaintEngine) =
+type QSpinBoxpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
+proc onpaintEngine*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxpaintEngineProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var tmp = new Cb
+  var tmp = new QSpinBoxpaintEngineProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_paintEngine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_paintEngine(self: ptr cQSpinBox, slot: int): pointer {.exportc: "miqt_exec_callback_QSpinBox_paintEngine ".} =
-  type Cb = proc(super: QSpinBoxpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_paintEngine(QSpinBox(h: self), )
+  var nimfunc = cast[ptr QSpinBoxpaintEngineProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_mouseDoubleClickEvent(self: QSpinBox, event: gen_qevent.QMouseEvent): void =
-
+proc QSpinBoxmouseDoubleClickEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qevent.QMouseEvent): void =
 
   fQSpinBox_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
-type QSpinBoxmouseDoubleClickEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseDoubleClickEvent*(self: QSpinBox, slot: proc(super: QSpinBoxmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void) =
+type QSpinBoxmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseDoubleClickEvent*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxmouseDoubleClickEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QSpinBoxmouseDoubleClickEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_mouseDoubleClickEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_mouseDoubleClickEvent(self: ptr cQSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSpinBox_mouseDoubleClickEvent ".} =
-  type Cb = proc(super: QSpinBoxmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseDoubleClickEvent(QSpinBox(h: self), event)
+  var nimfunc = cast[ptr QSpinBoxmouseDoubleClickEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_enterEvent(self: QSpinBox, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QSpinBoxenterEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qcoreevent.QEvent): void =
 
   fQSpinBox_virtualbase_enterEvent(self.h, event.h)
 
-type QSpinBoxenterEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onenterEvent*(self: QSpinBox, slot: proc(super: QSpinBoxenterEventBase, event: gen_qcoreevent.QEvent): void) =
+type QSpinBoxenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onenterEvent*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxenterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxenterEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QSpinBoxenterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_enterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_enterEvent(self: ptr cQSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSpinBox_enterEvent ".} =
-  type Cb = proc(super: QSpinBoxenterEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_enterEvent(QSpinBox(h: self), event)
+  var nimfunc = cast[ptr QSpinBoxenterEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_leaveEvent(self: QSpinBox, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QSpinBoxleaveEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qcoreevent.QEvent): void =
 
   fQSpinBox_virtualbase_leaveEvent(self.h, event.h)
 
-type QSpinBoxleaveEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onleaveEvent*(self: QSpinBox, slot: proc(super: QSpinBoxleaveEventBase, event: gen_qcoreevent.QEvent): void) =
+type QSpinBoxleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onleaveEvent*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxleaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QSpinBoxleaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_leaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_leaveEvent(self: ptr cQSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSpinBox_leaveEvent ".} =
-  type Cb = proc(super: QSpinBoxleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_leaveEvent(QSpinBox(h: self), event)
+  var nimfunc = cast[ptr QSpinBoxleaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_moveEvent(self: QSpinBox, event: gen_qevent.QMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QSpinBoxmoveEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qevent.QMoveEvent): void =
 
   fQSpinBox_virtualbase_moveEvent(self.h, event.h)
 
-type QSpinBoxmoveEventBase* = proc(event: gen_qevent.QMoveEvent): void
-proc onmoveEvent*(self: QSpinBox, slot: proc(super: QSpinBoxmoveEventBase, event: gen_qevent.QMoveEvent): void) =
+type QSpinBoxmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
+proc onmoveEvent*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxmoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QSpinBoxmoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_moveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_moveEvent(self: ptr cQSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSpinBox_moveEvent ".} =
-  type Cb = proc(super: QSpinBoxmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMoveEvent): auto =
-    callVirtualBase_moveEvent(QSpinBox(h: self), event)
+  var nimfunc = cast[ptr QSpinBoxmoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_tabletEvent(self: QSpinBox, event: gen_qevent.QTabletEvent): void =
-
+  nimfunc[](slotval1)
+proc QSpinBoxtabletEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qevent.QTabletEvent): void =
 
   fQSpinBox_virtualbase_tabletEvent(self.h, event.h)
 
-type QSpinBoxtabletEventBase* = proc(event: gen_qevent.QTabletEvent): void
-proc ontabletEvent*(self: QSpinBox, slot: proc(super: QSpinBoxtabletEventBase, event: gen_qevent.QTabletEvent): void) =
+type QSpinBoxtabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
+proc ontabletEvent*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxtabletEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxtabletEventBase, event: gen_qevent.QTabletEvent): void
-  var tmp = new Cb
+  var tmp = new QSpinBoxtabletEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_tabletEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_tabletEvent(self: ptr cQSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSpinBox_tabletEvent ".} =
-  type Cb = proc(super: QSpinBoxtabletEventBase, event: gen_qevent.QTabletEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QTabletEvent): auto =
-    callVirtualBase_tabletEvent(QSpinBox(h: self), event)
+  var nimfunc = cast[ptr QSpinBoxtabletEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QTabletEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_actionEvent(self: QSpinBox, event: gen_qevent.QActionEvent): void =
-
+  nimfunc[](slotval1)
+proc QSpinBoxactionEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qevent.QActionEvent): void =
 
   fQSpinBox_virtualbase_actionEvent(self.h, event.h)
 
-type QSpinBoxactionEventBase* = proc(event: gen_qevent.QActionEvent): void
-proc onactionEvent*(self: QSpinBox, slot: proc(super: QSpinBoxactionEventBase, event: gen_qevent.QActionEvent): void) =
+type QSpinBoxactionEventProc* = proc(event: gen_qevent.QActionEvent): void
+proc onactionEvent*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxactionEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxactionEventBase, event: gen_qevent.QActionEvent): void
-  var tmp = new Cb
+  var tmp = new QSpinBoxactionEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_actionEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_actionEvent(self: ptr cQSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSpinBox_actionEvent ".} =
-  type Cb = proc(super: QSpinBoxactionEventBase, event: gen_qevent.QActionEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QActionEvent): auto =
-    callVirtualBase_actionEvent(QSpinBox(h: self), event)
+  var nimfunc = cast[ptr QSpinBoxactionEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QActionEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragEnterEvent(self: QSpinBox, event: gen_qevent.QDragEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QSpinBoxdragEnterEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qevent.QDragEnterEvent): void =
 
   fQSpinBox_virtualbase_dragEnterEvent(self.h, event.h)
 
-type QSpinBoxdragEnterEventBase* = proc(event: gen_qevent.QDragEnterEvent): void
-proc ondragEnterEvent*(self: QSpinBox, slot: proc(super: QSpinBoxdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void) =
+type QSpinBoxdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
+proc ondragEnterEvent*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxdragEnterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QSpinBoxdragEnterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_dragEnterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_dragEnterEvent(self: ptr cQSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSpinBox_dragEnterEvent ".} =
-  type Cb = proc(super: QSpinBoxdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragEnterEvent): auto =
-    callVirtualBase_dragEnterEvent(QSpinBox(h: self), event)
+  var nimfunc = cast[ptr QSpinBoxdragEnterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragMoveEvent(self: QSpinBox, event: gen_qevent.QDragMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QSpinBoxdragMoveEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qevent.QDragMoveEvent): void =
 
   fQSpinBox_virtualbase_dragMoveEvent(self.h, event.h)
 
-type QSpinBoxdragMoveEventBase* = proc(event: gen_qevent.QDragMoveEvent): void
-proc ondragMoveEvent*(self: QSpinBox, slot: proc(super: QSpinBoxdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void) =
+type QSpinBoxdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
+proc ondragMoveEvent*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxdragMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QSpinBoxdragMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_dragMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_dragMoveEvent(self: ptr cQSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSpinBox_dragMoveEvent ".} =
-  type Cb = proc(super: QSpinBoxdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragMoveEvent): auto =
-    callVirtualBase_dragMoveEvent(QSpinBox(h: self), event)
+  var nimfunc = cast[ptr QSpinBoxdragMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragLeaveEvent(self: QSpinBox, event: gen_qevent.QDragLeaveEvent): void =
-
+  nimfunc[](slotval1)
+proc QSpinBoxdragLeaveEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qevent.QDragLeaveEvent): void =
 
   fQSpinBox_virtualbase_dragLeaveEvent(self.h, event.h)
 
-type QSpinBoxdragLeaveEventBase* = proc(event: gen_qevent.QDragLeaveEvent): void
-proc ondragLeaveEvent*(self: QSpinBox, slot: proc(super: QSpinBoxdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void) =
+type QSpinBoxdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
+proc ondragLeaveEvent*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxdragLeaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var tmp = new Cb
+  var tmp = new QSpinBoxdragLeaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_dragLeaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_dragLeaveEvent(self: ptr cQSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSpinBox_dragLeaveEvent ".} =
-  type Cb = proc(super: QSpinBoxdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragLeaveEvent): auto =
-    callVirtualBase_dragLeaveEvent(QSpinBox(h: self), event)
+  var nimfunc = cast[ptr QSpinBoxdragLeaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragLeaveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dropEvent(self: QSpinBox, event: gen_qevent.QDropEvent): void =
-
+  nimfunc[](slotval1)
+proc QSpinBoxdropEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qevent.QDropEvent): void =
 
   fQSpinBox_virtualbase_dropEvent(self.h, event.h)
 
-type QSpinBoxdropEventBase* = proc(event: gen_qevent.QDropEvent): void
-proc ondropEvent*(self: QSpinBox, slot: proc(super: QSpinBoxdropEventBase, event: gen_qevent.QDropEvent): void) =
+type QSpinBoxdropEventProc* = proc(event: gen_qevent.QDropEvent): void
+proc ondropEvent*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxdropEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxdropEventBase, event: gen_qevent.QDropEvent): void
-  var tmp = new Cb
+  var tmp = new QSpinBoxdropEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_dropEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_dropEvent(self: ptr cQSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSpinBox_dropEvent ".} =
-  type Cb = proc(super: QSpinBoxdropEventBase, event: gen_qevent.QDropEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDropEvent): auto =
-    callVirtualBase_dropEvent(QSpinBox(h: self), event)
+  var nimfunc = cast[ptr QSpinBoxdropEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDropEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_nativeEvent(self: QSpinBox, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
+  nimfunc[](slotval1)
+proc QSpinBoxnativeEvent*(self: gen_qspinbox_types.QSpinBox, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
 
   fQSpinBox_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
-type QSpinBoxnativeEventBase* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-proc onnativeEvent*(self: QSpinBox, slot: proc(super: QSpinBoxnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool) =
+type QSpinBoxnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
+proc onnativeEvent*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxnativeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-  var tmp = new Cb
+  var tmp = new QSpinBoxnativeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_nativeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_nativeEvent(self: ptr cQSpinBox, slot: int, eventType: struct_miqt_string, message: pointer, resultVal: ptr clong): bool {.exportc: "miqt_exec_callback_QSpinBox_nativeEvent ".} =
-  type Cb = proc(super: QSpinBoxnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(eventType: seq[byte], message: pointer, resultVal: ptr clong): auto =
-    callVirtualBase_nativeEvent(QSpinBox(h: self), eventType, message, resultVal)
+  var nimfunc = cast[ptr QSpinBoxnativeEventProc](cast[pointer](slot))
   var veventType_bytearray = eventType
   var veventTypex_ret = @(toOpenArrayByte(veventType_bytearray.data, 0, int(veventType_bytearray.len)-1))
   c_free(veventType_bytearray.data)
@@ -1680,412 +1446,357 @@ proc miqt_exec_callback_QSpinBox_nativeEvent(self: ptr cQSpinBox, slot: int, eve
   let slotval3 = resultVal
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_metric(self: QSpinBox, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint =
-
+proc QSpinBoxmetric*(self: gen_qspinbox_types.QSpinBox, param1: cint): cint =
 
   fQSpinBox_virtualbase_metric(self.h, cint(param1))
 
-type QSpinBoxmetricBase* = proc(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-proc onmetric*(self: QSpinBox, slot: proc(super: QSpinBoxmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint) =
+type QSpinBoxmetricProc* = proc(param1: cint): cint
+proc onmetric*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxmetricProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var tmp = new Cb
+  var tmp = new QSpinBoxmetricProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_metric(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_metric(self: ptr cQSpinBox, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QSpinBox_metric ".} =
-  type Cb = proc(super: QSpinBoxmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): auto =
-    callVirtualBase_metric(QSpinBox(h: self), param1)
-  let slotval1 = gen_qpaintdevice.QPaintDevicePaintDeviceMetric(param1)
+  var nimfunc = cast[ptr QSpinBoxmetricProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_initPainter(self: QSpinBox, painter: gen_qpainter.QPainter): void =
-
+proc QSpinBoxinitPainter*(self: gen_qspinbox_types.QSpinBox, painter: gen_qpainter.QPainter): void =
 
   fQSpinBox_virtualbase_initPainter(self.h, painter.h)
 
-type QSpinBoxinitPainterBase* = proc(painter: gen_qpainter.QPainter): void
-proc oninitPainter*(self: QSpinBox, slot: proc(super: QSpinBoxinitPainterBase, painter: gen_qpainter.QPainter): void) =
+type QSpinBoxinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
+proc oninitPainter*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxinitPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxinitPainterBase, painter: gen_qpainter.QPainter): void
-  var tmp = new Cb
+  var tmp = new QSpinBoxinitPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_initPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_initPainter(self: ptr cQSpinBox, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_QSpinBox_initPainter ".} =
-  type Cb = proc(super: QSpinBoxinitPainterBase, painter: gen_qpainter.QPainter): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter): auto =
-    callVirtualBase_initPainter(QSpinBox(h: self), painter)
+  var nimfunc = cast[ptr QSpinBoxinitPainterProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_redirected(self: QSpinBox, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
+  nimfunc[](slotval1)
+proc QSpinBoxredirected*(self: gen_qspinbox_types.QSpinBox, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
 
   gen_qpaintdevice.QPaintDevice(h: fQSpinBox_virtualbase_redirected(self.h, offset.h))
 
-type QSpinBoxredirectedBase* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-proc onredirected*(self: QSpinBox, slot: proc(super: QSpinBoxredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice) =
+type QSpinBoxredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
+proc onredirected*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxredirectedProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var tmp = new Cb
+  var tmp = new QSpinBoxredirectedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_redirected(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_redirected(self: ptr cQSpinBox, slot: int, offset: pointer): pointer {.exportc: "miqt_exec_callback_QSpinBox_redirected ".} =
-  type Cb = proc(super: QSpinBoxredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(offset: gen_qpoint.QPoint): auto =
-    callVirtualBase_redirected(QSpinBox(h: self), offset)
+  var nimfunc = cast[ptr QSpinBoxredirectedProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: offset)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_sharedPainter(self: QSpinBox, ): gen_qpainter.QPainter =
-
+proc QSpinBoxsharedPainter*(self: gen_qspinbox_types.QSpinBox, ): gen_qpainter.QPainter =
 
   gen_qpainter.QPainter(h: fQSpinBox_virtualbase_sharedPainter(self.h))
 
-type QSpinBoxsharedPainterBase* = proc(): gen_qpainter.QPainter
-proc onsharedPainter*(self: QSpinBox, slot: proc(super: QSpinBoxsharedPainterBase): gen_qpainter.QPainter) =
+type QSpinBoxsharedPainterProc* = proc(): gen_qpainter.QPainter
+proc onsharedPainter*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxsharedPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxsharedPainterBase): gen_qpainter.QPainter
-  var tmp = new Cb
+  var tmp = new QSpinBoxsharedPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_sharedPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_sharedPainter(self: ptr cQSpinBox, slot: int): pointer {.exportc: "miqt_exec_callback_QSpinBox_sharedPainter ".} =
-  type Cb = proc(super: QSpinBoxsharedPainterBase): gen_qpainter.QPainter
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sharedPainter(QSpinBox(h: self), )
+  var nimfunc = cast[ptr QSpinBoxsharedPainterProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_inputMethodEvent(self: QSpinBox, param1: gen_qevent.QInputMethodEvent): void =
-
+proc QSpinBoxinputMethodEvent*(self: gen_qspinbox_types.QSpinBox, param1: gen_qevent.QInputMethodEvent): void =
 
   fQSpinBox_virtualbase_inputMethodEvent(self.h, param1.h)
 
-type QSpinBoxinputMethodEventBase* = proc(param1: gen_qevent.QInputMethodEvent): void
-proc oninputMethodEvent*(self: QSpinBox, slot: proc(super: QSpinBoxinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void) =
+type QSpinBoxinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
+proc oninputMethodEvent*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxinputMethodEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var tmp = new Cb
+  var tmp = new QSpinBoxinputMethodEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_inputMethodEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_inputMethodEvent(self: ptr cQSpinBox, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QSpinBox_inputMethodEvent ".} =
-  type Cb = proc(super: QSpinBoxinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QInputMethodEvent): auto =
-    callVirtualBase_inputMethodEvent(QSpinBox(h: self), param1)
+  var nimfunc = cast[ptr QSpinBoxinputMethodEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QInputMethodEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusNextPrevChild(self: QSpinBox, next: bool): bool =
-
+  nimfunc[](slotval1)
+proc QSpinBoxfocusNextPrevChild*(self: gen_qspinbox_types.QSpinBox, next: bool): bool =
 
   fQSpinBox_virtualbase_focusNextPrevChild(self.h, next)
 
-type QSpinBoxfocusNextPrevChildBase* = proc(next: bool): bool
-proc onfocusNextPrevChild*(self: QSpinBox, slot: proc(super: QSpinBoxfocusNextPrevChildBase, next: bool): bool) =
+type QSpinBoxfocusNextPrevChildProc* = proc(next: bool): bool
+proc onfocusNextPrevChild*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxfocusNextPrevChildProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxfocusNextPrevChildBase, next: bool): bool
-  var tmp = new Cb
+  var tmp = new QSpinBoxfocusNextPrevChildProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_focusNextPrevChild(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_focusNextPrevChild(self: ptr cQSpinBox, slot: int, next: bool): bool {.exportc: "miqt_exec_callback_QSpinBox_focusNextPrevChild ".} =
-  type Cb = proc(super: QSpinBoxfocusNextPrevChildBase, next: bool): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(next: bool): auto =
-    callVirtualBase_focusNextPrevChild(QSpinBox(h: self), next)
+  var nimfunc = cast[ptr QSpinBoxfocusNextPrevChildProc](cast[pointer](slot))
   let slotval1 = next
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QSpinBox, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QSpinBoxeventFilter*(self: gen_qspinbox_types.QSpinBox, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQSpinBox_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QSpinBoxeventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QSpinBox, slot: proc(super: QSpinBoxeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QSpinBoxeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QSpinBoxeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_eventFilter(self: ptr cQSpinBox, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QSpinBox_eventFilter ".} =
-  type Cb = proc(super: QSpinBoxeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QSpinBox(h: self), watched, event)
+  var nimfunc = cast[ptr QSpinBoxeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_childEvent(self: QSpinBox, event: gen_qcoreevent.QChildEvent): void =
-
+proc QSpinBoxchildEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qcoreevent.QChildEvent): void =
 
   fQSpinBox_virtualbase_childEvent(self.h, event.h)
 
-type QSpinBoxchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QSpinBox, slot: proc(super: QSpinBoxchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QSpinBoxchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QSpinBoxchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_childEvent(self: ptr cQSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSpinBox_childEvent ".} =
-  type Cb = proc(super: QSpinBoxchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QSpinBox(h: self), event)
+  var nimfunc = cast[ptr QSpinBoxchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QSpinBox, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QSpinBoxcustomEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qcoreevent.QEvent): void =
 
   fQSpinBox_virtualbase_customEvent(self.h, event.h)
 
-type QSpinBoxcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QSpinBox, slot: proc(super: QSpinBoxcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QSpinBoxcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QSpinBoxcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_customEvent(self: ptr cQSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSpinBox_customEvent ".} =
-  type Cb = proc(super: QSpinBoxcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QSpinBox(h: self), event)
+  var nimfunc = cast[ptr QSpinBoxcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QSpinBox, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QSpinBoxconnectNotify*(self: gen_qspinbox_types.QSpinBox, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQSpinBox_virtualbase_connectNotify(self.h, signal.h)
 
-type QSpinBoxconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QSpinBox, slot: proc(super: QSpinBoxconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QSpinBoxconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QSpinBoxconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_connectNotify(self: ptr cQSpinBox, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QSpinBox_connectNotify ".} =
-  type Cb = proc(super: QSpinBoxconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QSpinBox(h: self), signal)
+  var nimfunc = cast[ptr QSpinBoxconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QSpinBox, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QSpinBoxdisconnectNotify*(self: gen_qspinbox_types.QSpinBox, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQSpinBox_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QSpinBoxdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QSpinBox, slot: proc(super: QSpinBoxdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QSpinBoxdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QSpinBoxdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QSpinBoxdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSpinBox_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSpinBox_disconnectNotify(self: ptr cQSpinBox, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QSpinBox_disconnectNotify ".} =
-  type Cb = proc(super: QSpinBoxdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QSpinBox(h: self), signal)
+  var nimfunc = cast[ptr QSpinBoxdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QSpinBox): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qspinbox_types.QSpinBox): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQSpinBox_staticMetaObject())
-proc delete*(self: QSpinBox) =
+proc delete*(self: gen_qspinbox_types.QSpinBox) =
   fcQSpinBox_delete(self.h)
 
-func init*(T: type QDoubleSpinBox, h: ptr cQDoubleSpinBox): QDoubleSpinBox =
+func init*(T: type gen_qspinbox_types.QDoubleSpinBox, h: ptr cQDoubleSpinBox): gen_qspinbox_types.QDoubleSpinBox =
   T(h: h)
-proc create*(T: type QDoubleSpinBox, parent: gen_qwidget.QWidget): QDoubleSpinBox =
+proc create*(T: type gen_qspinbox_types.QDoubleSpinBox, parent: gen_qwidget.QWidget): gen_qspinbox_types.QDoubleSpinBox =
 
-  QDoubleSpinBox.init(fcQDoubleSpinBox_new(parent.h))
-proc create*(T: type QDoubleSpinBox, ): QDoubleSpinBox =
+  gen_qspinbox_types.QDoubleSpinBox.init(fcQDoubleSpinBox_new(parent.h))
+proc create*(T: type gen_qspinbox_types.QDoubleSpinBox, ): gen_qspinbox_types.QDoubleSpinBox =
 
-  QDoubleSpinBox.init(fcQDoubleSpinBox_new2())
-proc metaObject*(self: QDoubleSpinBox, ): gen_qobjectdefs.QMetaObject =
+  gen_qspinbox_types.QDoubleSpinBox.init(fcQDoubleSpinBox_new2())
+proc metaObject*(self: gen_qspinbox_types.QDoubleSpinBox, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQDoubleSpinBox_metaObject(self.h))
 
-proc metacast*(self: QDoubleSpinBox, param1: cstring): pointer =
+proc metacast*(self: gen_qspinbox_types.QDoubleSpinBox, param1: cstring): pointer =
 
   fcQDoubleSpinBox_metacast(self.h, param1)
 
-proc metacall*(self: QDoubleSpinBox, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qspinbox_types.QDoubleSpinBox, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQDoubleSpinBox_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QDoubleSpinBox, s: cstring): string =
+proc tr*(_: type gen_qspinbox_types.QDoubleSpinBox, s: cstring): string =
 
   let v_ms = fcQDoubleSpinBox_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QDoubleSpinBox, s: cstring): string =
+proc trUtf8*(_: type gen_qspinbox_types.QDoubleSpinBox, s: cstring): string =
 
   let v_ms = fcQDoubleSpinBox_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc value*(self: QDoubleSpinBox, ): float64 =
+proc value*(self: gen_qspinbox_types.QDoubleSpinBox, ): float64 =
 
   fcQDoubleSpinBox_value(self.h)
 
-proc prefix*(self: QDoubleSpinBox, ): string =
+proc prefix*(self: gen_qspinbox_types.QDoubleSpinBox, ): string =
 
   let v_ms = fcQDoubleSpinBox_prefix(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setPrefix*(self: QDoubleSpinBox, prefix: string): void =
+proc setPrefix*(self: gen_qspinbox_types.QDoubleSpinBox, prefix: string): void =
 
   fcQDoubleSpinBox_setPrefix(self.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
-proc suffix*(self: QDoubleSpinBox, ): string =
+proc suffix*(self: gen_qspinbox_types.QDoubleSpinBox, ): string =
 
   let v_ms = fcQDoubleSpinBox_suffix(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setSuffix*(self: QDoubleSpinBox, suffix: string): void =
+proc setSuffix*(self: gen_qspinbox_types.QDoubleSpinBox, suffix: string): void =
 
   fcQDoubleSpinBox_setSuffix(self.h, struct_miqt_string(data: suffix, len: csize_t(len(suffix))))
 
-proc cleanText*(self: QDoubleSpinBox, ): string =
+proc cleanText*(self: gen_qspinbox_types.QDoubleSpinBox, ): string =
 
   let v_ms = fcQDoubleSpinBox_cleanText(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc singleStep*(self: QDoubleSpinBox, ): float64 =
+proc singleStep*(self: gen_qspinbox_types.QDoubleSpinBox, ): float64 =
 
   fcQDoubleSpinBox_singleStep(self.h)
 
-proc setSingleStep*(self: QDoubleSpinBox, val: float64): void =
+proc setSingleStep*(self: gen_qspinbox_types.QDoubleSpinBox, val: float64): void =
 
   fcQDoubleSpinBox_setSingleStep(self.h, val)
 
-proc minimum*(self: QDoubleSpinBox, ): float64 =
+proc minimum*(self: gen_qspinbox_types.QDoubleSpinBox, ): float64 =
 
   fcQDoubleSpinBox_minimum(self.h)
 
-proc setMinimum*(self: QDoubleSpinBox, min: float64): void =
+proc setMinimum*(self: gen_qspinbox_types.QDoubleSpinBox, min: float64): void =
 
   fcQDoubleSpinBox_setMinimum(self.h, min)
 
-proc maximum*(self: QDoubleSpinBox, ): float64 =
+proc maximum*(self: gen_qspinbox_types.QDoubleSpinBox, ): float64 =
 
   fcQDoubleSpinBox_maximum(self.h)
 
-proc setMaximum*(self: QDoubleSpinBox, max: float64): void =
+proc setMaximum*(self: gen_qspinbox_types.QDoubleSpinBox, max: float64): void =
 
   fcQDoubleSpinBox_setMaximum(self.h, max)
 
-proc setRange*(self: QDoubleSpinBox, min: float64, max: float64): void =
+proc setRange*(self: gen_qspinbox_types.QDoubleSpinBox, min: float64, max: float64): void =
 
   fcQDoubleSpinBox_setRange(self.h, min, max)
 
-proc stepType*(self: QDoubleSpinBox, ): gen_qabstractspinbox.QAbstractSpinBoxStepType =
+proc stepType*(self: gen_qspinbox_types.QDoubleSpinBox, ): cint =
 
-  gen_qabstractspinbox.QAbstractSpinBoxStepType(fcQDoubleSpinBox_stepType(self.h))
+  cint(fcQDoubleSpinBox_stepType(self.h))
 
-proc setStepType*(self: QDoubleSpinBox, stepType: gen_qabstractspinbox.QAbstractSpinBoxStepType): void =
+proc setStepType*(self: gen_qspinbox_types.QDoubleSpinBox, stepType: cint): void =
 
   fcQDoubleSpinBox_setStepType(self.h, cint(stepType))
 
-proc decimals*(self: QDoubleSpinBox, ): cint =
+proc decimals*(self: gen_qspinbox_types.QDoubleSpinBox, ): cint =
 
   fcQDoubleSpinBox_decimals(self.h)
 
-proc setDecimals*(self: QDoubleSpinBox, prec: cint): void =
+proc setDecimals*(self: gen_qspinbox_types.QDoubleSpinBox, prec: cint): void =
 
   fcQDoubleSpinBox_setDecimals(self.h, prec)
 
-proc validate*(self: QDoubleSpinBox, input: string, pos: ptr cint): gen_qvalidator.QValidatorState =
+proc validate*(self: gen_qspinbox_types.QDoubleSpinBox, input: string, pos: ptr cint): cint =
 
-  gen_qvalidator.QValidatorState(fcQDoubleSpinBox_validate(self.h, struct_miqt_string(data: input, len: csize_t(len(input))), pos))
+  cint(fcQDoubleSpinBox_validate(self.h, struct_miqt_string(data: input, len: csize_t(len(input))), pos))
 
-proc valueFromText*(self: QDoubleSpinBox, text: string): float64 =
+proc valueFromText*(self: gen_qspinbox_types.QDoubleSpinBox, text: string): float64 =
 
   fcQDoubleSpinBox_valueFromText(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
-proc textFromValue*(self: QDoubleSpinBox, val: float64): string =
+proc textFromValue*(self: gen_qspinbox_types.QDoubleSpinBox, val: float64): string =
 
   let v_ms = fcQDoubleSpinBox_textFromValue(self.h, val)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc fixup*(self: QDoubleSpinBox, str: string): void =
+proc fixup*(self: gen_qspinbox_types.QDoubleSpinBox, str: string): void =
 
   fcQDoubleSpinBox_fixup(self.h, struct_miqt_string(data: str, len: csize_t(len(str))))
 
-proc setValue*(self: QDoubleSpinBox, val: float64): void =
+proc setValue*(self: gen_qspinbox_types.QDoubleSpinBox, val: float64): void =
 
   fcQDoubleSpinBox_setValue(self.h, val)
 
-proc valueChanged*(self: QDoubleSpinBox, param1: float64): void =
+proc valueChanged*(self: gen_qspinbox_types.QDoubleSpinBox, param1: float64): void =
 
   fcQDoubleSpinBox_valueChanged(self.h, param1)
 
@@ -2097,13 +1808,13 @@ proc miqt_exec_callback_QDoubleSpinBox_valueChanged(slot: int, param1: float64) 
 
   nimfunc[](slotval1)
 
-proc onvalueChanged*(self: QDoubleSpinBox, slot: proc(param1: float64)) =
+proc onvalueChanged*(self: gen_qspinbox_types.QDoubleSpinBox, slot: proc(param1: float64)) =
   type Cb = proc(param1: float64)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQDoubleSpinBox_connect_valueChanged(self.h, cast[int](addr tmp[]))
-proc textChanged*(self: QDoubleSpinBox, param1: string): void =
+proc textChanged*(self: gen_qspinbox_types.QDoubleSpinBox, param1: string): void =
 
   fcQDoubleSpinBox_textChanged(self.h, struct_miqt_string(data: param1, len: csize_t(len(param1))))
 
@@ -2118,13 +1829,13 @@ proc miqt_exec_callback_QDoubleSpinBox_textChanged(slot: int, param1: struct_miq
 
   nimfunc[](slotval1)
 
-proc ontextChanged*(self: QDoubleSpinBox, slot: proc(param1: string)) =
+proc ontextChanged*(self: gen_qspinbox_types.QDoubleSpinBox, slot: proc(param1: string)) =
   type Cb = proc(param1: string)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQDoubleSpinBox_connect_textChanged(self.h, cast[int](addr tmp[]))
-proc valueChangedWithQString*(self: QDoubleSpinBox, param1: string): void =
+proc valueChangedWithQString*(self: gen_qspinbox_types.QDoubleSpinBox, param1: string): void =
 
   fcQDoubleSpinBox_valueChangedWithQString(self.h, struct_miqt_string(data: param1, len: csize_t(len(param1))))
 
@@ -2139,136 +1850,116 @@ proc miqt_exec_callback_QDoubleSpinBox_valueChangedWithQString(slot: int, param1
 
   nimfunc[](slotval1)
 
-proc onvalueChangedWithQString*(self: QDoubleSpinBox, slot: proc(param1: string)) =
+proc onvalueChangedWithQString*(self: gen_qspinbox_types.QDoubleSpinBox, slot: proc(param1: string)) =
   type Cb = proc(param1: string)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQDoubleSpinBox_connect_valueChangedWithQString(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QDoubleSpinBox, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qspinbox_types.QDoubleSpinBox, s: cstring, c: cstring): string =
 
   let v_ms = fcQDoubleSpinBox_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QDoubleSpinBox, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qspinbox_types.QDoubleSpinBox, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQDoubleSpinBox_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QDoubleSpinBox, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qspinbox_types.QDoubleSpinBox, s: cstring, c: cstring): string =
 
   let v_ms = fcQDoubleSpinBox_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QDoubleSpinBox, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qspinbox_types.QDoubleSpinBox, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQDoubleSpinBox_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QDoubleSpinBox, ): gen_qobjectdefs.QMetaObject =
-
+proc QDoubleSpinBoxmetaObject*(self: gen_qspinbox_types.QDoubleSpinBox, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQDoubleSpinBox_virtualbase_metaObject(self.h))
 
-type QDoubleSpinBoxmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QDoubleSpinBoxmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_metaObject(self: ptr cQDoubleSpinBox, slot: int): pointer {.exportc: "miqt_exec_callback_QDoubleSpinBox_metaObject ".} =
-  type Cb = proc(super: QDoubleSpinBoxmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QDoubleSpinBox(h: self), )
+  var nimfunc = cast[ptr QDoubleSpinBoxmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QDoubleSpinBox, param1: cstring): pointer =
-
+proc QDoubleSpinBoxmetacast*(self: gen_qspinbox_types.QDoubleSpinBox, param1: cstring): pointer =
 
   fQDoubleSpinBox_virtualbase_metacast(self.h, param1)
 
-type QDoubleSpinBoxmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxmetacastBase, param1: cstring): pointer) =
+type QDoubleSpinBoxmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_metacast(self: ptr cQDoubleSpinBox, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QDoubleSpinBox_metacast ".} =
-  type Cb = proc(super: QDoubleSpinBoxmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QDoubleSpinBox(h: self), param1)
+  var nimfunc = cast[ptr QDoubleSpinBoxmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QDoubleSpinBox, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QDoubleSpinBoxmetacall*(self: gen_qspinbox_types.QDoubleSpinBox, param1: cint, param2: cint, param3: pointer): cint =
 
   fQDoubleSpinBox_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QDoubleSpinBoxmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QDoubleSpinBoxmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_metacall(self: ptr cQDoubleSpinBox, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QDoubleSpinBox_metacall ".} =
-  type Cb = proc(super: QDoubleSpinBoxmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QDoubleSpinBox(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QDoubleSpinBoxmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_validate(self: QDoubleSpinBox, input: string, pos: ptr cint): gen_qvalidator.QValidatorState =
+proc QDoubleSpinBoxvalidate*(self: gen_qspinbox_types.QDoubleSpinBox, input: string, pos: ptr cint): cint =
 
+  cint(fQDoubleSpinBox_virtualbase_validate(self.h, struct_miqt_string(data: input, len: csize_t(len(input))), pos))
 
-  gen_qvalidator.QValidatorState(fQDoubleSpinBox_virtualbase_validate(self.h, struct_miqt_string(data: input, len: csize_t(len(input))), pos))
-
-type QDoubleSpinBoxvalidateBase* = proc(input: string, pos: ptr cint): gen_qvalidator.QValidatorState
-proc onvalidate*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxvalidateBase, input: string, pos: ptr cint): gen_qvalidator.QValidatorState) =
+type QDoubleSpinBoxvalidateProc* = proc(input: string, pos: ptr cint): cint
+proc onvalidate*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxvalidateProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxvalidateBase, input: string, pos: ptr cint): gen_qvalidator.QValidatorState
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxvalidateProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_validate(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_validate(self: ptr cQDoubleSpinBox, slot: int, input: struct_miqt_string, pos: ptr cint): cint {.exportc: "miqt_exec_callback_QDoubleSpinBox_validate ".} =
-  type Cb = proc(super: QDoubleSpinBoxvalidateBase, input: string, pos: ptr cint): gen_qvalidator.QValidatorState
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(input: string, pos: ptr cint): auto =
-    callVirtualBase_validate(QDoubleSpinBox(h: self), input, pos)
+  var nimfunc = cast[ptr QDoubleSpinBoxvalidateProc](cast[pointer](slot))
   let vinput_ms = input
   let vinputx_ret = string.fromBytes(toOpenArrayByte(vinput_ms.data, 0, int(vinput_ms.len)-1))
   c_free(vinput_ms.data)
@@ -2277,988 +1968,778 @@ proc miqt_exec_callback_QDoubleSpinBox_validate(self: ptr cQDoubleSpinBox, slot:
   let slotval2 = pos
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   cint(virtualReturn)
-proc callVirtualBase_valueFromText(self: QDoubleSpinBox, text: string): float64 =
-
+proc QDoubleSpinBoxvalueFromText*(self: gen_qspinbox_types.QDoubleSpinBox, text: string): float64 =
 
   fQDoubleSpinBox_virtualbase_valueFromText(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
-type QDoubleSpinBoxvalueFromTextBase* = proc(text: string): float64
-proc onvalueFromText*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxvalueFromTextBase, text: string): float64) =
+type QDoubleSpinBoxvalueFromTextProc* = proc(text: string): float64
+proc onvalueFromText*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxvalueFromTextProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxvalueFromTextBase, text: string): float64
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxvalueFromTextProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_valueFromText(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_valueFromText(self: ptr cQDoubleSpinBox, slot: int, text: struct_miqt_string): float64 {.exportc: "miqt_exec_callback_QDoubleSpinBox_valueFromText ".} =
-  type Cb = proc(super: QDoubleSpinBoxvalueFromTextBase, text: string): float64
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(text: string): auto =
-    callVirtualBase_valueFromText(QDoubleSpinBox(h: self), text)
+  var nimfunc = cast[ptr QDoubleSpinBoxvalueFromTextProc](cast[pointer](slot))
   let vtext_ms = text
   let vtextx_ret = string.fromBytes(toOpenArrayByte(vtext_ms.data, 0, int(vtext_ms.len)-1))
   c_free(vtext_ms.data)
   let slotval1 = vtextx_ret
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_textFromValue(self: QDoubleSpinBox, val: float64): string =
-
+proc QDoubleSpinBoxtextFromValue*(self: gen_qspinbox_types.QDoubleSpinBox, val: float64): string =
 
   let v_ms = fQDoubleSpinBox_virtualbase_textFromValue(self.h, val)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-type QDoubleSpinBoxtextFromValueBase* = proc(val: float64): string
-proc ontextFromValue*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxtextFromValueBase, val: float64): string) =
+type QDoubleSpinBoxtextFromValueProc* = proc(val: float64): string
+proc ontextFromValue*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxtextFromValueProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxtextFromValueBase, val: float64): string
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxtextFromValueProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_textFromValue(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_textFromValue(self: ptr cQDoubleSpinBox, slot: int, val: float64): struct_miqt_string {.exportc: "miqt_exec_callback_QDoubleSpinBox_textFromValue ".} =
-  type Cb = proc(super: QDoubleSpinBoxtextFromValueBase, val: float64): string
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(val: float64): auto =
-    callVirtualBase_textFromValue(QDoubleSpinBox(h: self), val)
+  var nimfunc = cast[ptr QDoubleSpinBoxtextFromValueProc](cast[pointer](slot))
   let slotval1 = val
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
-proc callVirtualBase_fixup(self: QDoubleSpinBox, str: string): void =
-
+proc QDoubleSpinBoxfixup*(self: gen_qspinbox_types.QDoubleSpinBox, str: string): void =
 
   fQDoubleSpinBox_virtualbase_fixup(self.h, struct_miqt_string(data: str, len: csize_t(len(str))))
 
-type QDoubleSpinBoxfixupBase* = proc(str: string): void
-proc onfixup*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxfixupBase, str: string): void) =
+type QDoubleSpinBoxfixupProc* = proc(str: string): void
+proc onfixup*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxfixupProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxfixupBase, str: string): void
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxfixupProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_fixup(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_fixup(self: ptr cQDoubleSpinBox, slot: int, str: struct_miqt_string): void {.exportc: "miqt_exec_callback_QDoubleSpinBox_fixup ".} =
-  type Cb = proc(super: QDoubleSpinBoxfixupBase, str: string): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(str: string): auto =
-    callVirtualBase_fixup(QDoubleSpinBox(h: self), str)
+  var nimfunc = cast[ptr QDoubleSpinBoxfixupProc](cast[pointer](slot))
   let vstr_ms = str
   let vstrx_ret = string.fromBytes(toOpenArrayByte(vstr_ms.data, 0, int(vstr_ms.len)-1))
   c_free(vstr_ms.data)
   let slotval1 = vstrx_ret
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_sizeHint(self: QDoubleSpinBox, ): gen_qsize.QSize =
-
+  nimfunc[](slotval1)
+proc QDoubleSpinBoxsizeHint*(self: gen_qspinbox_types.QDoubleSpinBox, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQDoubleSpinBox_virtualbase_sizeHint(self.h))
 
-type QDoubleSpinBoxsizeHintBase* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxsizeHintBase): gen_qsize.QSize) =
+type QDoubleSpinBoxsizeHintProc* = proc(): gen_qsize.QSize
+proc onsizeHint*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxsizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxsizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxsizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_sizeHint(self: ptr cQDoubleSpinBox, slot: int): pointer {.exportc: "miqt_exec_callback_QDoubleSpinBox_sizeHint ".} =
-  type Cb = proc(super: QDoubleSpinBoxsizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sizeHint(QDoubleSpinBox(h: self), )
+  var nimfunc = cast[ptr QDoubleSpinBoxsizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_minimumSizeHint(self: QDoubleSpinBox, ): gen_qsize.QSize =
-
+proc QDoubleSpinBoxminimumSizeHint*(self: gen_qspinbox_types.QDoubleSpinBox, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQDoubleSpinBox_virtualbase_minimumSizeHint(self.h))
 
-type QDoubleSpinBoxminimumSizeHintBase* = proc(): gen_qsize.QSize
-proc onminimumSizeHint*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxminimumSizeHintBase): gen_qsize.QSize) =
+type QDoubleSpinBoxminimumSizeHintProc* = proc(): gen_qsize.QSize
+proc onminimumSizeHint*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxminimumSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxminimumSizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxminimumSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_minimumSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_minimumSizeHint(self: ptr cQDoubleSpinBox, slot: int): pointer {.exportc: "miqt_exec_callback_QDoubleSpinBox_minimumSizeHint ".} =
-  type Cb = proc(super: QDoubleSpinBoxminimumSizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_minimumSizeHint(QDoubleSpinBox(h: self), )
+  var nimfunc = cast[ptr QDoubleSpinBoxminimumSizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_event(self: QDoubleSpinBox, event: gen_qcoreevent.QEvent): bool =
-
+proc QDoubleSpinBoxevent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qcoreevent.QEvent): bool =
 
   fQDoubleSpinBox_virtualbase_event(self.h, event.h)
 
-type QDoubleSpinBoxeventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxeventBase, event: gen_qcoreevent.QEvent): bool) =
+type QDoubleSpinBoxeventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxeventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_event(self: ptr cQDoubleSpinBox, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QDoubleSpinBox_event ".} =
-  type Cb = proc(super: QDoubleSpinBoxeventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QDoubleSpinBox(h: self), event)
+  var nimfunc = cast[ptr QDoubleSpinBoxeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_inputMethodQuery(self: QDoubleSpinBox, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant =
-
+proc QDoubleSpinBoxinputMethodQuery*(self: gen_qspinbox_types.QDoubleSpinBox, param1: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQDoubleSpinBox_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
-type QDoubleSpinBoxinputMethodQueryBase* = proc(param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-proc oninputMethodQuery*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant) =
+type QDoubleSpinBoxinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
+proc oninputMethodQuery*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxinputMethodQueryProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxinputMethodQueryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_inputMethodQuery(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_inputMethodQuery(self: ptr cQDoubleSpinBox, slot: int, param1: cint): pointer {.exportc: "miqt_exec_callback_QDoubleSpinBox_inputMethodQuery ".} =
-  type Cb = proc(super: QDoubleSpinBoxinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qnamespace.InputMethodQuery): auto =
-    callVirtualBase_inputMethodQuery(QDoubleSpinBox(h: self), param1)
-  let slotval1 = gen_qnamespace.InputMethodQuery(param1)
+  var nimfunc = cast[ptr QDoubleSpinBoxinputMethodQueryProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_stepBy(self: QDoubleSpinBox, steps: cint): void =
-
+proc QDoubleSpinBoxstepBy*(self: gen_qspinbox_types.QDoubleSpinBox, steps: cint): void =
 
   fQDoubleSpinBox_virtualbase_stepBy(self.h, steps)
 
-type QDoubleSpinBoxstepByBase* = proc(steps: cint): void
-proc onstepBy*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxstepByBase, steps: cint): void) =
+type QDoubleSpinBoxstepByProc* = proc(steps: cint): void
+proc onstepBy*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxstepByProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxstepByBase, steps: cint): void
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxstepByProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_stepBy(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_stepBy(self: ptr cQDoubleSpinBox, slot: int, steps: cint): void {.exportc: "miqt_exec_callback_QDoubleSpinBox_stepBy ".} =
-  type Cb = proc(super: QDoubleSpinBoxstepByBase, steps: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(steps: cint): auto =
-    callVirtualBase_stepBy(QDoubleSpinBox(h: self), steps)
+  var nimfunc = cast[ptr QDoubleSpinBoxstepByProc](cast[pointer](slot))
   let slotval1 = steps
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_clear(self: QDoubleSpinBox, ): void =
-
+  nimfunc[](slotval1)
+proc QDoubleSpinBoxclear*(self: gen_qspinbox_types.QDoubleSpinBox, ): void =
 
   fQDoubleSpinBox_virtualbase_clear(self.h)
 
-type QDoubleSpinBoxclearBase* = proc(): void
-proc onclear*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxclearBase): void) =
+type QDoubleSpinBoxclearProc* = proc(): void
+proc onclear*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxclearProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxclearBase): void
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxclearProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_clear(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_clear(self: ptr cQDoubleSpinBox, slot: int): void {.exportc: "miqt_exec_callback_QDoubleSpinBox_clear ".} =
-  type Cb = proc(super: QDoubleSpinBoxclearBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_clear(QDoubleSpinBox(h: self), )
+  var nimfunc = cast[ptr QDoubleSpinBoxclearProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_resizeEvent(self: QDoubleSpinBox, event: gen_qevent.QResizeEvent): void =
-
+  nimfunc[]()
+proc QDoubleSpinBoxresizeEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qevent.QResizeEvent): void =
 
   fQDoubleSpinBox_virtualbase_resizeEvent(self.h, event.h)
 
-type QDoubleSpinBoxresizeEventBase* = proc(event: gen_qevent.QResizeEvent): void
-proc onresizeEvent*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxresizeEventBase, event: gen_qevent.QResizeEvent): void) =
+type QDoubleSpinBoxresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
+proc onresizeEvent*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxresizeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxresizeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_resizeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_resizeEvent(self: ptr cQDoubleSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDoubleSpinBox_resizeEvent ".} =
-  type Cb = proc(super: QDoubleSpinBoxresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QResizeEvent): auto =
-    callVirtualBase_resizeEvent(QDoubleSpinBox(h: self), event)
+  var nimfunc = cast[ptr QDoubleSpinBoxresizeEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QResizeEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyPressEvent(self: QDoubleSpinBox, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QDoubleSpinBoxkeyPressEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qevent.QKeyEvent): void =
 
   fQDoubleSpinBox_virtualbase_keyPressEvent(self.h, event.h)
 
-type QDoubleSpinBoxkeyPressEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyPressEvent*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxkeyPressEventBase, event: gen_qevent.QKeyEvent): void) =
+type QDoubleSpinBoxkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyPressEvent*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxkeyPressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxkeyPressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_keyPressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_keyPressEvent(self: ptr cQDoubleSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDoubleSpinBox_keyPressEvent ".} =
-  type Cb = proc(super: QDoubleSpinBoxkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyPressEvent(QDoubleSpinBox(h: self), event)
+  var nimfunc = cast[ptr QDoubleSpinBoxkeyPressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyReleaseEvent(self: QDoubleSpinBox, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QDoubleSpinBoxkeyReleaseEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qevent.QKeyEvent): void =
 
   fQDoubleSpinBox_virtualbase_keyReleaseEvent(self.h, event.h)
 
-type QDoubleSpinBoxkeyReleaseEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyReleaseEvent*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void) =
+type QDoubleSpinBoxkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyReleaseEvent*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxkeyReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxkeyReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_keyReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_keyReleaseEvent(self: ptr cQDoubleSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDoubleSpinBox_keyReleaseEvent ".} =
-  type Cb = proc(super: QDoubleSpinBoxkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyReleaseEvent(QDoubleSpinBox(h: self), event)
+  var nimfunc = cast[ptr QDoubleSpinBoxkeyReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_wheelEvent(self: QDoubleSpinBox, event: gen_qevent.QWheelEvent): void =
-
+  nimfunc[](slotval1)
+proc QDoubleSpinBoxwheelEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qevent.QWheelEvent): void =
 
   fQDoubleSpinBox_virtualbase_wheelEvent(self.h, event.h)
 
-type QDoubleSpinBoxwheelEventBase* = proc(event: gen_qevent.QWheelEvent): void
-proc onwheelEvent*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxwheelEventBase, event: gen_qevent.QWheelEvent): void) =
+type QDoubleSpinBoxwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
+proc onwheelEvent*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxwheelEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxwheelEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_wheelEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_wheelEvent(self: ptr cQDoubleSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDoubleSpinBox_wheelEvent ".} =
-  type Cb = proc(super: QDoubleSpinBoxwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QWheelEvent): auto =
-    callVirtualBase_wheelEvent(QDoubleSpinBox(h: self), event)
+  var nimfunc = cast[ptr QDoubleSpinBoxwheelEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QWheelEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusInEvent(self: QDoubleSpinBox, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QDoubleSpinBoxfocusInEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qevent.QFocusEvent): void =
 
   fQDoubleSpinBox_virtualbase_focusInEvent(self.h, event.h)
 
-type QDoubleSpinBoxfocusInEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusInEvent*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxfocusInEventBase, event: gen_qevent.QFocusEvent): void) =
+type QDoubleSpinBoxfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusInEvent*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxfocusInEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxfocusInEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_focusInEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_focusInEvent(self: ptr cQDoubleSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDoubleSpinBox_focusInEvent ".} =
-  type Cb = proc(super: QDoubleSpinBoxfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusInEvent(QDoubleSpinBox(h: self), event)
+  var nimfunc = cast[ptr QDoubleSpinBoxfocusInEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusOutEvent(self: QDoubleSpinBox, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QDoubleSpinBoxfocusOutEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qevent.QFocusEvent): void =
 
   fQDoubleSpinBox_virtualbase_focusOutEvent(self.h, event.h)
 
-type QDoubleSpinBoxfocusOutEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusOutEvent*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxfocusOutEventBase, event: gen_qevent.QFocusEvent): void) =
+type QDoubleSpinBoxfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusOutEvent*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxfocusOutEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxfocusOutEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_focusOutEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_focusOutEvent(self: ptr cQDoubleSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDoubleSpinBox_focusOutEvent ".} =
-  type Cb = proc(super: QDoubleSpinBoxfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusOutEvent(QDoubleSpinBox(h: self), event)
+  var nimfunc = cast[ptr QDoubleSpinBoxfocusOutEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_contextMenuEvent(self: QDoubleSpinBox, event: gen_qevent.QContextMenuEvent): void =
-
+  nimfunc[](slotval1)
+proc QDoubleSpinBoxcontextMenuEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qevent.QContextMenuEvent): void =
 
   fQDoubleSpinBox_virtualbase_contextMenuEvent(self.h, event.h)
 
-type QDoubleSpinBoxcontextMenuEventBase* = proc(event: gen_qevent.QContextMenuEvent): void
-proc oncontextMenuEvent*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void) =
+type QDoubleSpinBoxcontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
+proc oncontextMenuEvent*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxcontextMenuEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxcontextMenuEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_contextMenuEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_contextMenuEvent(self: ptr cQDoubleSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDoubleSpinBox_contextMenuEvent ".} =
-  type Cb = proc(super: QDoubleSpinBoxcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QContextMenuEvent): auto =
-    callVirtualBase_contextMenuEvent(QDoubleSpinBox(h: self), event)
+  var nimfunc = cast[ptr QDoubleSpinBoxcontextMenuEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QContextMenuEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_changeEvent(self: QDoubleSpinBox, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QDoubleSpinBoxchangeEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qcoreevent.QEvent): void =
 
   fQDoubleSpinBox_virtualbase_changeEvent(self.h, event.h)
 
-type QDoubleSpinBoxchangeEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onchangeEvent*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxchangeEventBase, event: gen_qcoreevent.QEvent): void) =
+type QDoubleSpinBoxchangeEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onchangeEvent*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxchangeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxchangeEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxchangeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_changeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_changeEvent(self: ptr cQDoubleSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDoubleSpinBox_changeEvent ".} =
-  type Cb = proc(super: QDoubleSpinBoxchangeEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_changeEvent(QDoubleSpinBox(h: self), event)
+  var nimfunc = cast[ptr QDoubleSpinBoxchangeEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_closeEvent(self: QDoubleSpinBox, event: gen_qevent.QCloseEvent): void =
-
+  nimfunc[](slotval1)
+proc QDoubleSpinBoxcloseEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qevent.QCloseEvent): void =
 
   fQDoubleSpinBox_virtualbase_closeEvent(self.h, event.h)
 
-type QDoubleSpinBoxcloseEventBase* = proc(event: gen_qevent.QCloseEvent): void
-proc oncloseEvent*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxcloseEventBase, event: gen_qevent.QCloseEvent): void) =
+type QDoubleSpinBoxcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
+proc oncloseEvent*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxcloseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxcloseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_closeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_closeEvent(self: ptr cQDoubleSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDoubleSpinBox_closeEvent ".} =
-  type Cb = proc(super: QDoubleSpinBoxcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QCloseEvent): auto =
-    callVirtualBase_closeEvent(QDoubleSpinBox(h: self), event)
+  var nimfunc = cast[ptr QDoubleSpinBoxcloseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QCloseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hideEvent(self: QDoubleSpinBox, event: gen_qevent.QHideEvent): void =
-
+  nimfunc[](slotval1)
+proc QDoubleSpinBoxhideEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qevent.QHideEvent): void =
 
   fQDoubleSpinBox_virtualbase_hideEvent(self.h, event.h)
 
-type QDoubleSpinBoxhideEventBase* = proc(event: gen_qevent.QHideEvent): void
-proc onhideEvent*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxhideEventBase, event: gen_qevent.QHideEvent): void) =
+type QDoubleSpinBoxhideEventProc* = proc(event: gen_qevent.QHideEvent): void
+proc onhideEvent*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxhideEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxhideEventBase, event: gen_qevent.QHideEvent): void
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxhideEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_hideEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_hideEvent(self: ptr cQDoubleSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDoubleSpinBox_hideEvent ".} =
-  type Cb = proc(super: QDoubleSpinBoxhideEventBase, event: gen_qevent.QHideEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QHideEvent): auto =
-    callVirtualBase_hideEvent(QDoubleSpinBox(h: self), event)
+  var nimfunc = cast[ptr QDoubleSpinBoxhideEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QHideEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mousePressEvent(self: QDoubleSpinBox, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QDoubleSpinBoxmousePressEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qevent.QMouseEvent): void =
 
   fQDoubleSpinBox_virtualbase_mousePressEvent(self.h, event.h)
 
-type QDoubleSpinBoxmousePressEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmousePressEvent*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxmousePressEventBase, event: gen_qevent.QMouseEvent): void) =
+type QDoubleSpinBoxmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmousePressEvent*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxmousePressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxmousePressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_mousePressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_mousePressEvent(self: ptr cQDoubleSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDoubleSpinBox_mousePressEvent ".} =
-  type Cb = proc(super: QDoubleSpinBoxmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mousePressEvent(QDoubleSpinBox(h: self), event)
+  var nimfunc = cast[ptr QDoubleSpinBoxmousePressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseReleaseEvent(self: QDoubleSpinBox, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QDoubleSpinBoxmouseReleaseEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qevent.QMouseEvent): void =
 
   fQDoubleSpinBox_virtualbase_mouseReleaseEvent(self.h, event.h)
 
-type QDoubleSpinBoxmouseReleaseEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseReleaseEvent*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void) =
+type QDoubleSpinBoxmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseReleaseEvent*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxmouseReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxmouseReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_mouseReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_mouseReleaseEvent(self: ptr cQDoubleSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDoubleSpinBox_mouseReleaseEvent ".} =
-  type Cb = proc(super: QDoubleSpinBoxmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseReleaseEvent(QDoubleSpinBox(h: self), event)
+  var nimfunc = cast[ptr QDoubleSpinBoxmouseReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseMoveEvent(self: QDoubleSpinBox, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QDoubleSpinBoxmouseMoveEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qevent.QMouseEvent): void =
 
   fQDoubleSpinBox_virtualbase_mouseMoveEvent(self.h, event.h)
 
-type QDoubleSpinBoxmouseMoveEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseMoveEvent*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxmouseMoveEventBase, event: gen_qevent.QMouseEvent): void) =
+type QDoubleSpinBoxmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseMoveEvent*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxmouseMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxmouseMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_mouseMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_mouseMoveEvent(self: ptr cQDoubleSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDoubleSpinBox_mouseMoveEvent ".} =
-  type Cb = proc(super: QDoubleSpinBoxmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseMoveEvent(QDoubleSpinBox(h: self), event)
+  var nimfunc = cast[ptr QDoubleSpinBoxmouseMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_timerEvent(self: QDoubleSpinBox, event: gen_qcoreevent.QTimerEvent): void =
-
+  nimfunc[](slotval1)
+proc QDoubleSpinBoxtimerEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qcoreevent.QTimerEvent): void =
 
   fQDoubleSpinBox_virtualbase_timerEvent(self.h, event.h)
 
-type QDoubleSpinBoxtimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxtimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QDoubleSpinBoxtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxtimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxtimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxtimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_timerEvent(self: ptr cQDoubleSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDoubleSpinBox_timerEvent ".} =
-  type Cb = proc(super: QDoubleSpinBoxtimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QDoubleSpinBox(h: self), event)
+  var nimfunc = cast[ptr QDoubleSpinBoxtimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_paintEvent(self: QDoubleSpinBox, event: gen_qevent.QPaintEvent): void =
-
+  nimfunc[](slotval1)
+proc QDoubleSpinBoxpaintEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qevent.QPaintEvent): void =
 
   fQDoubleSpinBox_virtualbase_paintEvent(self.h, event.h)
 
-type QDoubleSpinBoxpaintEventBase* = proc(event: gen_qevent.QPaintEvent): void
-proc onpaintEvent*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxpaintEventBase, event: gen_qevent.QPaintEvent): void) =
+type QDoubleSpinBoxpaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
+proc onpaintEvent*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxpaintEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxpaintEventBase, event: gen_qevent.QPaintEvent): void
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxpaintEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_paintEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_paintEvent(self: ptr cQDoubleSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDoubleSpinBox_paintEvent ".} =
-  type Cb = proc(super: QDoubleSpinBoxpaintEventBase, event: gen_qevent.QPaintEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QPaintEvent): auto =
-    callVirtualBase_paintEvent(QDoubleSpinBox(h: self), event)
+  var nimfunc = cast[ptr QDoubleSpinBoxpaintEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QPaintEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_showEvent(self: QDoubleSpinBox, event: gen_qevent.QShowEvent): void =
-
+  nimfunc[](slotval1)
+proc QDoubleSpinBoxshowEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qevent.QShowEvent): void =
 
   fQDoubleSpinBox_virtualbase_showEvent(self.h, event.h)
 
-type QDoubleSpinBoxshowEventBase* = proc(event: gen_qevent.QShowEvent): void
-proc onshowEvent*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxshowEventBase, event: gen_qevent.QShowEvent): void) =
+type QDoubleSpinBoxshowEventProc* = proc(event: gen_qevent.QShowEvent): void
+proc onshowEvent*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxshowEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxshowEventBase, event: gen_qevent.QShowEvent): void
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxshowEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_showEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_showEvent(self: ptr cQDoubleSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDoubleSpinBox_showEvent ".} =
-  type Cb = proc(super: QDoubleSpinBoxshowEventBase, event: gen_qevent.QShowEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QShowEvent): auto =
-    callVirtualBase_showEvent(QDoubleSpinBox(h: self), event)
+  var nimfunc = cast[ptr QDoubleSpinBoxshowEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QShowEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_stepEnabled(self: QDoubleSpinBox, ): gen_qabstractspinbox.QAbstractSpinBoxStepEnabledFlag =
+  nimfunc[](slotval1)
+proc QDoubleSpinBoxstepEnabled*(self: gen_qspinbox_types.QDoubleSpinBox, ): cint =
 
+  cint(fQDoubleSpinBox_virtualbase_stepEnabled(self.h))
 
-  gen_qabstractspinbox.QAbstractSpinBoxStepEnabledFlag(fQDoubleSpinBox_virtualbase_stepEnabled(self.h))
-
-type QDoubleSpinBoxstepEnabledBase* = proc(): gen_qabstractspinbox.QAbstractSpinBoxStepEnabledFlag
-proc onstepEnabled*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxstepEnabledBase): gen_qabstractspinbox.QAbstractSpinBoxStepEnabledFlag) =
+type QDoubleSpinBoxstepEnabledProc* = proc(): cint
+proc onstepEnabled*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxstepEnabledProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxstepEnabledBase): gen_qabstractspinbox.QAbstractSpinBoxStepEnabledFlag
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxstepEnabledProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_stepEnabled(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_stepEnabled(self: ptr cQDoubleSpinBox, slot: int): cint {.exportc: "miqt_exec_callback_QDoubleSpinBox_stepEnabled ".} =
-  type Cb = proc(super: QDoubleSpinBoxstepEnabledBase): gen_qabstractspinbox.QAbstractSpinBoxStepEnabledFlag
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_stepEnabled(QDoubleSpinBox(h: self), )
+  var nimfunc = cast[ptr QDoubleSpinBoxstepEnabledProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   cint(virtualReturn)
-proc callVirtualBase_devType(self: QDoubleSpinBox, ): cint =
-
+proc QDoubleSpinBoxdevType*(self: gen_qspinbox_types.QDoubleSpinBox, ): cint =
 
   fQDoubleSpinBox_virtualbase_devType(self.h)
 
-type QDoubleSpinBoxdevTypeBase* = proc(): cint
-proc ondevType*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxdevTypeBase): cint) =
+type QDoubleSpinBoxdevTypeProc* = proc(): cint
+proc ondevType*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxdevTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxdevTypeBase): cint
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxdevTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_devType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_devType(self: ptr cQDoubleSpinBox, slot: int): cint {.exportc: "miqt_exec_callback_QDoubleSpinBox_devType ".} =
-  type Cb = proc(super: QDoubleSpinBoxdevTypeBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_devType(QDoubleSpinBox(h: self), )
+  var nimfunc = cast[ptr QDoubleSpinBoxdevTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setVisible(self: QDoubleSpinBox, visible: bool): void =
-
+proc QDoubleSpinBoxsetVisible*(self: gen_qspinbox_types.QDoubleSpinBox, visible: bool): void =
 
   fQDoubleSpinBox_virtualbase_setVisible(self.h, visible)
 
-type QDoubleSpinBoxsetVisibleBase* = proc(visible: bool): void
-proc onsetVisible*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxsetVisibleBase, visible: bool): void) =
+type QDoubleSpinBoxsetVisibleProc* = proc(visible: bool): void
+proc onsetVisible*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxsetVisibleProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxsetVisibleBase, visible: bool): void
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxsetVisibleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_setVisible(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_setVisible(self: ptr cQDoubleSpinBox, slot: int, visible: bool): void {.exportc: "miqt_exec_callback_QDoubleSpinBox_setVisible ".} =
-  type Cb = proc(super: QDoubleSpinBoxsetVisibleBase, visible: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(visible: bool): auto =
-    callVirtualBase_setVisible(QDoubleSpinBox(h: self), visible)
+  var nimfunc = cast[ptr QDoubleSpinBoxsetVisibleProc](cast[pointer](slot))
   let slotval1 = visible
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_heightForWidth(self: QDoubleSpinBox, param1: cint): cint =
-
+  nimfunc[](slotval1)
+proc QDoubleSpinBoxheightForWidth*(self: gen_qspinbox_types.QDoubleSpinBox, param1: cint): cint =
 
   fQDoubleSpinBox_virtualbase_heightForWidth(self.h, param1)
 
-type QDoubleSpinBoxheightForWidthBase* = proc(param1: cint): cint
-proc onheightForWidth*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxheightForWidthBase, param1: cint): cint) =
+type QDoubleSpinBoxheightForWidthProc* = proc(param1: cint): cint
+proc onheightForWidth*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxheightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxheightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxheightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_heightForWidth(self: ptr cQDoubleSpinBox, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QDoubleSpinBox_heightForWidth ".} =
-  type Cb = proc(super: QDoubleSpinBoxheightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_heightForWidth(QDoubleSpinBox(h: self), param1)
+  var nimfunc = cast[ptr QDoubleSpinBoxheightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_hasHeightForWidth(self: QDoubleSpinBox, ): bool =
-
+proc QDoubleSpinBoxhasHeightForWidth*(self: gen_qspinbox_types.QDoubleSpinBox, ): bool =
 
   fQDoubleSpinBox_virtualbase_hasHeightForWidth(self.h)
 
-type QDoubleSpinBoxhasHeightForWidthBase* = proc(): bool
-proc onhasHeightForWidth*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxhasHeightForWidthBase): bool) =
+type QDoubleSpinBoxhasHeightForWidthProc* = proc(): bool
+proc onhasHeightForWidth*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxhasHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxhasHeightForWidthBase): bool
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxhasHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_hasHeightForWidth(self: ptr cQDoubleSpinBox, slot: int): bool {.exportc: "miqt_exec_callback_QDoubleSpinBox_hasHeightForWidth ".} =
-  type Cb = proc(super: QDoubleSpinBoxhasHeightForWidthBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasHeightForWidth(QDoubleSpinBox(h: self), )
+  var nimfunc = cast[ptr QDoubleSpinBoxhasHeightForWidthProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_paintEngine(self: QDoubleSpinBox, ): gen_qpaintengine.QPaintEngine =
-
+proc QDoubleSpinBoxpaintEngine*(self: gen_qspinbox_types.QDoubleSpinBox, ): gen_qpaintengine.QPaintEngine =
 
   gen_qpaintengine.QPaintEngine(h: fQDoubleSpinBox_virtualbase_paintEngine(self.h))
 
-type QDoubleSpinBoxpaintEngineBase* = proc(): gen_qpaintengine.QPaintEngine
-proc onpaintEngine*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxpaintEngineBase): gen_qpaintengine.QPaintEngine) =
+type QDoubleSpinBoxpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
+proc onpaintEngine*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxpaintEngineProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxpaintEngineProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_paintEngine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_paintEngine(self: ptr cQDoubleSpinBox, slot: int): pointer {.exportc: "miqt_exec_callback_QDoubleSpinBox_paintEngine ".} =
-  type Cb = proc(super: QDoubleSpinBoxpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_paintEngine(QDoubleSpinBox(h: self), )
+  var nimfunc = cast[ptr QDoubleSpinBoxpaintEngineProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_mouseDoubleClickEvent(self: QDoubleSpinBox, event: gen_qevent.QMouseEvent): void =
-
+proc QDoubleSpinBoxmouseDoubleClickEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qevent.QMouseEvent): void =
 
   fQDoubleSpinBox_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
-type QDoubleSpinBoxmouseDoubleClickEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseDoubleClickEvent*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void) =
+type QDoubleSpinBoxmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseDoubleClickEvent*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxmouseDoubleClickEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxmouseDoubleClickEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_mouseDoubleClickEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_mouseDoubleClickEvent(self: ptr cQDoubleSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDoubleSpinBox_mouseDoubleClickEvent ".} =
-  type Cb = proc(super: QDoubleSpinBoxmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseDoubleClickEvent(QDoubleSpinBox(h: self), event)
+  var nimfunc = cast[ptr QDoubleSpinBoxmouseDoubleClickEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_enterEvent(self: QDoubleSpinBox, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QDoubleSpinBoxenterEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qcoreevent.QEvent): void =
 
   fQDoubleSpinBox_virtualbase_enterEvent(self.h, event.h)
 
-type QDoubleSpinBoxenterEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onenterEvent*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxenterEventBase, event: gen_qcoreevent.QEvent): void) =
+type QDoubleSpinBoxenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onenterEvent*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxenterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxenterEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxenterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_enterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_enterEvent(self: ptr cQDoubleSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDoubleSpinBox_enterEvent ".} =
-  type Cb = proc(super: QDoubleSpinBoxenterEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_enterEvent(QDoubleSpinBox(h: self), event)
+  var nimfunc = cast[ptr QDoubleSpinBoxenterEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_leaveEvent(self: QDoubleSpinBox, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QDoubleSpinBoxleaveEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qcoreevent.QEvent): void =
 
   fQDoubleSpinBox_virtualbase_leaveEvent(self.h, event.h)
 
-type QDoubleSpinBoxleaveEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onleaveEvent*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxleaveEventBase, event: gen_qcoreevent.QEvent): void) =
+type QDoubleSpinBoxleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onleaveEvent*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxleaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxleaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_leaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_leaveEvent(self: ptr cQDoubleSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDoubleSpinBox_leaveEvent ".} =
-  type Cb = proc(super: QDoubleSpinBoxleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_leaveEvent(QDoubleSpinBox(h: self), event)
+  var nimfunc = cast[ptr QDoubleSpinBoxleaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_moveEvent(self: QDoubleSpinBox, event: gen_qevent.QMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QDoubleSpinBoxmoveEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qevent.QMoveEvent): void =
 
   fQDoubleSpinBox_virtualbase_moveEvent(self.h, event.h)
 
-type QDoubleSpinBoxmoveEventBase* = proc(event: gen_qevent.QMoveEvent): void
-proc onmoveEvent*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxmoveEventBase, event: gen_qevent.QMoveEvent): void) =
+type QDoubleSpinBoxmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
+proc onmoveEvent*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxmoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxmoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_moveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_moveEvent(self: ptr cQDoubleSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDoubleSpinBox_moveEvent ".} =
-  type Cb = proc(super: QDoubleSpinBoxmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMoveEvent): auto =
-    callVirtualBase_moveEvent(QDoubleSpinBox(h: self), event)
+  var nimfunc = cast[ptr QDoubleSpinBoxmoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_tabletEvent(self: QDoubleSpinBox, event: gen_qevent.QTabletEvent): void =
-
+  nimfunc[](slotval1)
+proc QDoubleSpinBoxtabletEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qevent.QTabletEvent): void =
 
   fQDoubleSpinBox_virtualbase_tabletEvent(self.h, event.h)
 
-type QDoubleSpinBoxtabletEventBase* = proc(event: gen_qevent.QTabletEvent): void
-proc ontabletEvent*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxtabletEventBase, event: gen_qevent.QTabletEvent): void) =
+type QDoubleSpinBoxtabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
+proc ontabletEvent*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxtabletEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxtabletEventBase, event: gen_qevent.QTabletEvent): void
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxtabletEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_tabletEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_tabletEvent(self: ptr cQDoubleSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDoubleSpinBox_tabletEvent ".} =
-  type Cb = proc(super: QDoubleSpinBoxtabletEventBase, event: gen_qevent.QTabletEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QTabletEvent): auto =
-    callVirtualBase_tabletEvent(QDoubleSpinBox(h: self), event)
+  var nimfunc = cast[ptr QDoubleSpinBoxtabletEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QTabletEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_actionEvent(self: QDoubleSpinBox, event: gen_qevent.QActionEvent): void =
-
+  nimfunc[](slotval1)
+proc QDoubleSpinBoxactionEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qevent.QActionEvent): void =
 
   fQDoubleSpinBox_virtualbase_actionEvent(self.h, event.h)
 
-type QDoubleSpinBoxactionEventBase* = proc(event: gen_qevent.QActionEvent): void
-proc onactionEvent*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxactionEventBase, event: gen_qevent.QActionEvent): void) =
+type QDoubleSpinBoxactionEventProc* = proc(event: gen_qevent.QActionEvent): void
+proc onactionEvent*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxactionEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxactionEventBase, event: gen_qevent.QActionEvent): void
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxactionEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_actionEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_actionEvent(self: ptr cQDoubleSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDoubleSpinBox_actionEvent ".} =
-  type Cb = proc(super: QDoubleSpinBoxactionEventBase, event: gen_qevent.QActionEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QActionEvent): auto =
-    callVirtualBase_actionEvent(QDoubleSpinBox(h: self), event)
+  var nimfunc = cast[ptr QDoubleSpinBoxactionEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QActionEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragEnterEvent(self: QDoubleSpinBox, event: gen_qevent.QDragEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QDoubleSpinBoxdragEnterEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qevent.QDragEnterEvent): void =
 
   fQDoubleSpinBox_virtualbase_dragEnterEvent(self.h, event.h)
 
-type QDoubleSpinBoxdragEnterEventBase* = proc(event: gen_qevent.QDragEnterEvent): void
-proc ondragEnterEvent*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void) =
+type QDoubleSpinBoxdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
+proc ondragEnterEvent*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxdragEnterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxdragEnterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_dragEnterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_dragEnterEvent(self: ptr cQDoubleSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDoubleSpinBox_dragEnterEvent ".} =
-  type Cb = proc(super: QDoubleSpinBoxdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragEnterEvent): auto =
-    callVirtualBase_dragEnterEvent(QDoubleSpinBox(h: self), event)
+  var nimfunc = cast[ptr QDoubleSpinBoxdragEnterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragMoveEvent(self: QDoubleSpinBox, event: gen_qevent.QDragMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QDoubleSpinBoxdragMoveEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qevent.QDragMoveEvent): void =
 
   fQDoubleSpinBox_virtualbase_dragMoveEvent(self.h, event.h)
 
-type QDoubleSpinBoxdragMoveEventBase* = proc(event: gen_qevent.QDragMoveEvent): void
-proc ondragMoveEvent*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void) =
+type QDoubleSpinBoxdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
+proc ondragMoveEvent*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxdragMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxdragMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_dragMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_dragMoveEvent(self: ptr cQDoubleSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDoubleSpinBox_dragMoveEvent ".} =
-  type Cb = proc(super: QDoubleSpinBoxdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragMoveEvent): auto =
-    callVirtualBase_dragMoveEvent(QDoubleSpinBox(h: self), event)
+  var nimfunc = cast[ptr QDoubleSpinBoxdragMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragLeaveEvent(self: QDoubleSpinBox, event: gen_qevent.QDragLeaveEvent): void =
-
+  nimfunc[](slotval1)
+proc QDoubleSpinBoxdragLeaveEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qevent.QDragLeaveEvent): void =
 
   fQDoubleSpinBox_virtualbase_dragLeaveEvent(self.h, event.h)
 
-type QDoubleSpinBoxdragLeaveEventBase* = proc(event: gen_qevent.QDragLeaveEvent): void
-proc ondragLeaveEvent*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void) =
+type QDoubleSpinBoxdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
+proc ondragLeaveEvent*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxdragLeaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxdragLeaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_dragLeaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_dragLeaveEvent(self: ptr cQDoubleSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDoubleSpinBox_dragLeaveEvent ".} =
-  type Cb = proc(super: QDoubleSpinBoxdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragLeaveEvent): auto =
-    callVirtualBase_dragLeaveEvent(QDoubleSpinBox(h: self), event)
+  var nimfunc = cast[ptr QDoubleSpinBoxdragLeaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragLeaveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dropEvent(self: QDoubleSpinBox, event: gen_qevent.QDropEvent): void =
-
+  nimfunc[](slotval1)
+proc QDoubleSpinBoxdropEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qevent.QDropEvent): void =
 
   fQDoubleSpinBox_virtualbase_dropEvent(self.h, event.h)
 
-type QDoubleSpinBoxdropEventBase* = proc(event: gen_qevent.QDropEvent): void
-proc ondropEvent*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxdropEventBase, event: gen_qevent.QDropEvent): void) =
+type QDoubleSpinBoxdropEventProc* = proc(event: gen_qevent.QDropEvent): void
+proc ondropEvent*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxdropEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxdropEventBase, event: gen_qevent.QDropEvent): void
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxdropEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_dropEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_dropEvent(self: ptr cQDoubleSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDoubleSpinBox_dropEvent ".} =
-  type Cb = proc(super: QDoubleSpinBoxdropEventBase, event: gen_qevent.QDropEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDropEvent): auto =
-    callVirtualBase_dropEvent(QDoubleSpinBox(h: self), event)
+  var nimfunc = cast[ptr QDoubleSpinBoxdropEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDropEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_nativeEvent(self: QDoubleSpinBox, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
+  nimfunc[](slotval1)
+proc QDoubleSpinBoxnativeEvent*(self: gen_qspinbox_types.QDoubleSpinBox, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
 
   fQDoubleSpinBox_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
-type QDoubleSpinBoxnativeEventBase* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-proc onnativeEvent*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool) =
+type QDoubleSpinBoxnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
+proc onnativeEvent*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxnativeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxnativeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_nativeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_nativeEvent(self: ptr cQDoubleSpinBox, slot: int, eventType: struct_miqt_string, message: pointer, resultVal: ptr clong): bool {.exportc: "miqt_exec_callback_QDoubleSpinBox_nativeEvent ".} =
-  type Cb = proc(super: QDoubleSpinBoxnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(eventType: seq[byte], message: pointer, resultVal: ptr clong): auto =
-    callVirtualBase_nativeEvent(QDoubleSpinBox(h: self), eventType, message, resultVal)
+  var nimfunc = cast[ptr QDoubleSpinBoxnativeEventProc](cast[pointer](slot))
   var veventType_bytearray = eventType
   var veventTypex_ret = @(toOpenArrayByte(veventType_bytearray.data, 0, int(veventType_bytearray.len)-1))
   c_free(veventType_bytearray.data)
@@ -3269,273 +2750,218 @@ proc miqt_exec_callback_QDoubleSpinBox_nativeEvent(self: ptr cQDoubleSpinBox, sl
   let slotval3 = resultVal
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_metric(self: QDoubleSpinBox, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint =
-
+proc QDoubleSpinBoxmetric*(self: gen_qspinbox_types.QDoubleSpinBox, param1: cint): cint =
 
   fQDoubleSpinBox_virtualbase_metric(self.h, cint(param1))
 
-type QDoubleSpinBoxmetricBase* = proc(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-proc onmetric*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint) =
+type QDoubleSpinBoxmetricProc* = proc(param1: cint): cint
+proc onmetric*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxmetricProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxmetricProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_metric(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_metric(self: ptr cQDoubleSpinBox, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QDoubleSpinBox_metric ".} =
-  type Cb = proc(super: QDoubleSpinBoxmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): auto =
-    callVirtualBase_metric(QDoubleSpinBox(h: self), param1)
-  let slotval1 = gen_qpaintdevice.QPaintDevicePaintDeviceMetric(param1)
+  var nimfunc = cast[ptr QDoubleSpinBoxmetricProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_initPainter(self: QDoubleSpinBox, painter: gen_qpainter.QPainter): void =
-
+proc QDoubleSpinBoxinitPainter*(self: gen_qspinbox_types.QDoubleSpinBox, painter: gen_qpainter.QPainter): void =
 
   fQDoubleSpinBox_virtualbase_initPainter(self.h, painter.h)
 
-type QDoubleSpinBoxinitPainterBase* = proc(painter: gen_qpainter.QPainter): void
-proc oninitPainter*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxinitPainterBase, painter: gen_qpainter.QPainter): void) =
+type QDoubleSpinBoxinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
+proc oninitPainter*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxinitPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxinitPainterBase, painter: gen_qpainter.QPainter): void
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxinitPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_initPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_initPainter(self: ptr cQDoubleSpinBox, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_QDoubleSpinBox_initPainter ".} =
-  type Cb = proc(super: QDoubleSpinBoxinitPainterBase, painter: gen_qpainter.QPainter): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter): auto =
-    callVirtualBase_initPainter(QDoubleSpinBox(h: self), painter)
+  var nimfunc = cast[ptr QDoubleSpinBoxinitPainterProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_redirected(self: QDoubleSpinBox, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
+  nimfunc[](slotval1)
+proc QDoubleSpinBoxredirected*(self: gen_qspinbox_types.QDoubleSpinBox, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
 
   gen_qpaintdevice.QPaintDevice(h: fQDoubleSpinBox_virtualbase_redirected(self.h, offset.h))
 
-type QDoubleSpinBoxredirectedBase* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-proc onredirected*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice) =
+type QDoubleSpinBoxredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
+proc onredirected*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxredirectedProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxredirectedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_redirected(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_redirected(self: ptr cQDoubleSpinBox, slot: int, offset: pointer): pointer {.exportc: "miqt_exec_callback_QDoubleSpinBox_redirected ".} =
-  type Cb = proc(super: QDoubleSpinBoxredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(offset: gen_qpoint.QPoint): auto =
-    callVirtualBase_redirected(QDoubleSpinBox(h: self), offset)
+  var nimfunc = cast[ptr QDoubleSpinBoxredirectedProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: offset)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_sharedPainter(self: QDoubleSpinBox, ): gen_qpainter.QPainter =
-
+proc QDoubleSpinBoxsharedPainter*(self: gen_qspinbox_types.QDoubleSpinBox, ): gen_qpainter.QPainter =
 
   gen_qpainter.QPainter(h: fQDoubleSpinBox_virtualbase_sharedPainter(self.h))
 
-type QDoubleSpinBoxsharedPainterBase* = proc(): gen_qpainter.QPainter
-proc onsharedPainter*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxsharedPainterBase): gen_qpainter.QPainter) =
+type QDoubleSpinBoxsharedPainterProc* = proc(): gen_qpainter.QPainter
+proc onsharedPainter*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxsharedPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxsharedPainterBase): gen_qpainter.QPainter
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxsharedPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_sharedPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_sharedPainter(self: ptr cQDoubleSpinBox, slot: int): pointer {.exportc: "miqt_exec_callback_QDoubleSpinBox_sharedPainter ".} =
-  type Cb = proc(super: QDoubleSpinBoxsharedPainterBase): gen_qpainter.QPainter
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sharedPainter(QDoubleSpinBox(h: self), )
+  var nimfunc = cast[ptr QDoubleSpinBoxsharedPainterProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_inputMethodEvent(self: QDoubleSpinBox, param1: gen_qevent.QInputMethodEvent): void =
-
+proc QDoubleSpinBoxinputMethodEvent*(self: gen_qspinbox_types.QDoubleSpinBox, param1: gen_qevent.QInputMethodEvent): void =
 
   fQDoubleSpinBox_virtualbase_inputMethodEvent(self.h, param1.h)
 
-type QDoubleSpinBoxinputMethodEventBase* = proc(param1: gen_qevent.QInputMethodEvent): void
-proc oninputMethodEvent*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void) =
+type QDoubleSpinBoxinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
+proc oninputMethodEvent*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxinputMethodEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxinputMethodEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_inputMethodEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_inputMethodEvent(self: ptr cQDoubleSpinBox, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QDoubleSpinBox_inputMethodEvent ".} =
-  type Cb = proc(super: QDoubleSpinBoxinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QInputMethodEvent): auto =
-    callVirtualBase_inputMethodEvent(QDoubleSpinBox(h: self), param1)
+  var nimfunc = cast[ptr QDoubleSpinBoxinputMethodEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QInputMethodEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusNextPrevChild(self: QDoubleSpinBox, next: bool): bool =
-
+  nimfunc[](slotval1)
+proc QDoubleSpinBoxfocusNextPrevChild*(self: gen_qspinbox_types.QDoubleSpinBox, next: bool): bool =
 
   fQDoubleSpinBox_virtualbase_focusNextPrevChild(self.h, next)
 
-type QDoubleSpinBoxfocusNextPrevChildBase* = proc(next: bool): bool
-proc onfocusNextPrevChild*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxfocusNextPrevChildBase, next: bool): bool) =
+type QDoubleSpinBoxfocusNextPrevChildProc* = proc(next: bool): bool
+proc onfocusNextPrevChild*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxfocusNextPrevChildProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxfocusNextPrevChildBase, next: bool): bool
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxfocusNextPrevChildProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_focusNextPrevChild(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_focusNextPrevChild(self: ptr cQDoubleSpinBox, slot: int, next: bool): bool {.exportc: "miqt_exec_callback_QDoubleSpinBox_focusNextPrevChild ".} =
-  type Cb = proc(super: QDoubleSpinBoxfocusNextPrevChildBase, next: bool): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(next: bool): auto =
-    callVirtualBase_focusNextPrevChild(QDoubleSpinBox(h: self), next)
+  var nimfunc = cast[ptr QDoubleSpinBoxfocusNextPrevChildProc](cast[pointer](slot))
   let slotval1 = next
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QDoubleSpinBox, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QDoubleSpinBoxeventFilter*(self: gen_qspinbox_types.QDoubleSpinBox, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQDoubleSpinBox_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QDoubleSpinBoxeventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QDoubleSpinBoxeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_eventFilter(self: ptr cQDoubleSpinBox, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QDoubleSpinBox_eventFilter ".} =
-  type Cb = proc(super: QDoubleSpinBoxeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QDoubleSpinBox(h: self), watched, event)
+  var nimfunc = cast[ptr QDoubleSpinBoxeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_childEvent(self: QDoubleSpinBox, event: gen_qcoreevent.QChildEvent): void =
-
+proc QDoubleSpinBoxchildEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qcoreevent.QChildEvent): void =
 
   fQDoubleSpinBox_virtualbase_childEvent(self.h, event.h)
 
-type QDoubleSpinBoxchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QDoubleSpinBoxchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_childEvent(self: ptr cQDoubleSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDoubleSpinBox_childEvent ".} =
-  type Cb = proc(super: QDoubleSpinBoxchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QDoubleSpinBox(h: self), event)
+  var nimfunc = cast[ptr QDoubleSpinBoxchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QDoubleSpinBox, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QDoubleSpinBoxcustomEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qcoreevent.QEvent): void =
 
   fQDoubleSpinBox_virtualbase_customEvent(self.h, event.h)
 
-type QDoubleSpinBoxcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QDoubleSpinBoxcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_customEvent(self: ptr cQDoubleSpinBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDoubleSpinBox_customEvent ".} =
-  type Cb = proc(super: QDoubleSpinBoxcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QDoubleSpinBox(h: self), event)
+  var nimfunc = cast[ptr QDoubleSpinBoxcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QDoubleSpinBox, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QDoubleSpinBoxconnectNotify*(self: gen_qspinbox_types.QDoubleSpinBox, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQDoubleSpinBox_virtualbase_connectNotify(self.h, signal.h)
 
-type QDoubleSpinBoxconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QDoubleSpinBoxconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_connectNotify(self: ptr cQDoubleSpinBox, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QDoubleSpinBox_connectNotify ".} =
-  type Cb = proc(super: QDoubleSpinBoxconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QDoubleSpinBox(h: self), signal)
+  var nimfunc = cast[ptr QDoubleSpinBoxconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QDoubleSpinBox, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QDoubleSpinBoxdisconnectNotify*(self: gen_qspinbox_types.QDoubleSpinBox, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQDoubleSpinBox_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QDoubleSpinBoxdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QDoubleSpinBoxdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QDoubleSpinBoxdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QDoubleSpinBoxdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDoubleSpinBox_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDoubleSpinBox_disconnectNotify(self: ptr cQDoubleSpinBox, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QDoubleSpinBox_disconnectNotify ".} =
-  type Cb = proc(super: QDoubleSpinBoxdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QDoubleSpinBox(h: self), signal)
+  var nimfunc = cast[ptr QDoubleSpinBoxdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QDoubleSpinBox): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qspinbox_types.QDoubleSpinBox): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQDoubleSpinBox_staticMetaObject())
-proc delete*(self: QDoubleSpinBox) =
+proc delete*(self: gen_qspinbox_types.QDoubleSpinBox) =
   fcQDoubleSpinBox_delete(self.h)

@@ -65,101 +65,86 @@ proc fcQSGFlatColorMaterial_override_virtual_compare(self: pointer, slot: int) {
 proc fcQSGFlatColorMaterial_delete(self: pointer) {.importc: "QSGFlatColorMaterial_delete".}
 
 
-func init*(T: type QSGFlatColorMaterial, h: ptr cQSGFlatColorMaterial): QSGFlatColorMaterial =
+func init*(T: type gen_qsgflatcolormaterial_types.QSGFlatColorMaterial, h: ptr cQSGFlatColorMaterial): gen_qsgflatcolormaterial_types.QSGFlatColorMaterial =
   T(h: h)
-proc create*(T: type QSGFlatColorMaterial, ): QSGFlatColorMaterial =
+proc create*(T: type gen_qsgflatcolormaterial_types.QSGFlatColorMaterial, ): gen_qsgflatcolormaterial_types.QSGFlatColorMaterial =
 
-  QSGFlatColorMaterial.init(fcQSGFlatColorMaterial_new())
-proc typeX*(self: QSGFlatColorMaterial, ): gen_qsgmaterialtype.QSGMaterialType =
+  gen_qsgflatcolormaterial_types.QSGFlatColorMaterial.init(fcQSGFlatColorMaterial_new())
+proc typeX*(self: gen_qsgflatcolormaterial_types.QSGFlatColorMaterial, ): gen_qsgmaterialtype.QSGMaterialType =
 
   gen_qsgmaterialtype.QSGMaterialType(h: fcQSGFlatColorMaterial_typeX(self.h))
 
-proc createShader*(self: QSGFlatColorMaterial, ): gen_qsgmaterialshader.QSGMaterialShader =
+proc createShader*(self: gen_qsgflatcolormaterial_types.QSGFlatColorMaterial, ): gen_qsgmaterialshader.QSGMaterialShader =
 
   gen_qsgmaterialshader.QSGMaterialShader(h: fcQSGFlatColorMaterial_createShader(self.h))
 
-proc setColor*(self: QSGFlatColorMaterial, color: gen_qcolor.QColor): void =
+proc setColor*(self: gen_qsgflatcolormaterial_types.QSGFlatColorMaterial, color: gen_qcolor.QColor): void =
 
   fcQSGFlatColorMaterial_setColor(self.h, color.h)
 
-proc color*(self: QSGFlatColorMaterial, ): gen_qcolor.QColor =
+proc color*(self: gen_qsgflatcolormaterial_types.QSGFlatColorMaterial, ): gen_qcolor.QColor =
 
   gen_qcolor.QColor(h: fcQSGFlatColorMaterial_color(self.h))
 
-proc compare*(self: QSGFlatColorMaterial, other: gen_qsgmaterial.QSGMaterial): cint =
+proc compare*(self: gen_qsgflatcolormaterial_types.QSGFlatColorMaterial, other: gen_qsgmaterial.QSGMaterial): cint =
 
   fcQSGFlatColorMaterial_compare(self.h, other.h)
 
-proc callVirtualBase_typeX(self: QSGFlatColorMaterial, ): gen_qsgmaterialtype.QSGMaterialType =
-
+proc QSGFlatColorMaterialtypeX*(self: gen_qsgflatcolormaterial_types.QSGFlatColorMaterial, ): gen_qsgmaterialtype.QSGMaterialType =
 
   gen_qsgmaterialtype.QSGMaterialType(h: fQSGFlatColorMaterial_virtualbase_type(self.h))
 
-type QSGFlatColorMaterialtypeXBase* = proc(): gen_qsgmaterialtype.QSGMaterialType
-proc ontypeX*(self: QSGFlatColorMaterial, slot: proc(super: QSGFlatColorMaterialtypeXBase): gen_qsgmaterialtype.QSGMaterialType) =
+type QSGFlatColorMaterialtypeXProc* = proc(): gen_qsgmaterialtype.QSGMaterialType
+proc ontypeX*(self: gen_qsgflatcolormaterial_types.QSGFlatColorMaterial, slot: QSGFlatColorMaterialtypeXProc) =
   # TODO check subclass
-  type Cb = proc(super: QSGFlatColorMaterialtypeXBase): gen_qsgmaterialtype.QSGMaterialType
-  var tmp = new Cb
+  var tmp = new QSGFlatColorMaterialtypeXProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSGFlatColorMaterial_override_virtual_typeX(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSGFlatColorMaterial_type(self: ptr cQSGFlatColorMaterial, slot: int): pointer {.exportc: "miqt_exec_callback_QSGFlatColorMaterial_type ".} =
-  type Cb = proc(super: QSGFlatColorMaterialtypeXBase): gen_qsgmaterialtype.QSGMaterialType
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_typeX(QSGFlatColorMaterial(h: self), )
+  var nimfunc = cast[ptr QSGFlatColorMaterialtypeXProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_createShader(self: QSGFlatColorMaterial, ): gen_qsgmaterialshader.QSGMaterialShader =
-
+proc QSGFlatColorMaterialcreateShader*(self: gen_qsgflatcolormaterial_types.QSGFlatColorMaterial, ): gen_qsgmaterialshader.QSGMaterialShader =
 
   gen_qsgmaterialshader.QSGMaterialShader(h: fQSGFlatColorMaterial_virtualbase_createShader(self.h))
 
-type QSGFlatColorMaterialcreateShaderBase* = proc(): gen_qsgmaterialshader.QSGMaterialShader
-proc oncreateShader*(self: QSGFlatColorMaterial, slot: proc(super: QSGFlatColorMaterialcreateShaderBase): gen_qsgmaterialshader.QSGMaterialShader) =
+type QSGFlatColorMaterialcreateShaderProc* = proc(): gen_qsgmaterialshader.QSGMaterialShader
+proc oncreateShader*(self: gen_qsgflatcolormaterial_types.QSGFlatColorMaterial, slot: QSGFlatColorMaterialcreateShaderProc) =
   # TODO check subclass
-  type Cb = proc(super: QSGFlatColorMaterialcreateShaderBase): gen_qsgmaterialshader.QSGMaterialShader
-  var tmp = new Cb
+  var tmp = new QSGFlatColorMaterialcreateShaderProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSGFlatColorMaterial_override_virtual_createShader(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSGFlatColorMaterial_createShader(self: ptr cQSGFlatColorMaterial, slot: int): pointer {.exportc: "miqt_exec_callback_QSGFlatColorMaterial_createShader ".} =
-  type Cb = proc(super: QSGFlatColorMaterialcreateShaderBase): gen_qsgmaterialshader.QSGMaterialShader
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_createShader(QSGFlatColorMaterial(h: self), )
+  var nimfunc = cast[ptr QSGFlatColorMaterialcreateShaderProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_compare(self: QSGFlatColorMaterial, other: gen_qsgmaterial.QSGMaterial): cint =
-
+proc QSGFlatColorMaterialcompare*(self: gen_qsgflatcolormaterial_types.QSGFlatColorMaterial, other: gen_qsgmaterial.QSGMaterial): cint =
 
   fQSGFlatColorMaterial_virtualbase_compare(self.h, other.h)
 
-type QSGFlatColorMaterialcompareBase* = proc(other: gen_qsgmaterial.QSGMaterial): cint
-proc oncompare*(self: QSGFlatColorMaterial, slot: proc(super: QSGFlatColorMaterialcompareBase, other: gen_qsgmaterial.QSGMaterial): cint) =
+type QSGFlatColorMaterialcompareProc* = proc(other: gen_qsgmaterial.QSGMaterial): cint
+proc oncompare*(self: gen_qsgflatcolormaterial_types.QSGFlatColorMaterial, slot: QSGFlatColorMaterialcompareProc) =
   # TODO check subclass
-  type Cb = proc(super: QSGFlatColorMaterialcompareBase, other: gen_qsgmaterial.QSGMaterial): cint
-  var tmp = new Cb
+  var tmp = new QSGFlatColorMaterialcompareProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSGFlatColorMaterial_override_virtual_compare(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSGFlatColorMaterial_compare(self: ptr cQSGFlatColorMaterial, slot: int, other: pointer): cint {.exportc: "miqt_exec_callback_QSGFlatColorMaterial_compare ".} =
-  type Cb = proc(super: QSGFlatColorMaterialcompareBase, other: gen_qsgmaterial.QSGMaterial): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(other: gen_qsgmaterial.QSGMaterial): auto =
-    callVirtualBase_compare(QSGFlatColorMaterial(h: self), other)
+  var nimfunc = cast[ptr QSGFlatColorMaterialcompareProc](cast[pointer](slot))
   let slotval1 = gen_qsgmaterial.QSGMaterial(h: other)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc delete*(self: QSGFlatColorMaterial) =
+proc delete*(self: gen_qsgflatcolormaterial_types.QSGFlatColorMaterial) =
   fcQSGFlatColorMaterial_delete(self.h)

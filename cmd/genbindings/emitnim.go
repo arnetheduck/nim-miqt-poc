@@ -27,6 +27,7 @@ func nimReservedWord(s string) bool {
 		"notin", "object", "of", "or", "out", "proc", "ptr", "raise", "ref", "return",
 		"shl", "shr", "static", "template", "try", "tuple", "type", "using", "var",
 		"when", "while", "xor", "yield",
+		"Exception",
 		"super", "ret", "result": // not language-reserved words, but a binding-reserved words
 		return true
 	default:
@@ -63,21 +64,28 @@ func (p CppParameter) nimParameterName() string {
 func cabiClassNameNim(className string, cabi bool) string {
 	className = cabiClassName(className)
 	className = strings.Replace(className, `__`, ``, -1)
-	if cabi {
-		return "c" + cabiClassName((className))
-	} else {
-		className = strings.TrimSuffix(className, "_")
+	className = strings.TrimSuffix(className, "_")
 
-		return cabiClassName((className))
+	if cabi {
+		className = "c" + cabiClassName((className))
+	} else {
+
+		className = cabiClassName(className)
 	}
+
+	if nimReservedWord(className) {
+		className += "X"
+	}
+
+	return className
 }
 
 func (e CppEnum) nimEnumName() string {
 	enumName := cabiClassNameNim(ifv(strings.HasSuffix(e.EnumName, "::"), e.EnumName+"Enum", e.EnumName), false) // Fully qualified name of the enum itself
-	if _, ok := KnownClassnames[enumName]; ok {
-		enumName = enumName + "Enum"
-	}
-	return enumName
+	// if _, ok := KnownClassnames[enumName]; ok {
+	// 	enumName = enumName + "Enum"
+	// }
+	return enumName + "Enum"
 }
 
 func (gfs *nimFileState) indent() {
@@ -214,20 +222,20 @@ func (p CppParameter) renderTypeNim(gfs *nimFileState, cabi bool) string {
 	default:
 
 		if ft, ok := p.QFlagsOf(); ok {
-			if cabi {
+			if cabi || true {
 				ret += "cint"
 			} else {
 				if enumInfo, ok := KnownEnums[ft.ParameterType]; ok && enumInfo.ModuleName != gfs.currentModuleName {
 					// Cross-package
-					ret += enumInfo.ModuleName + "." + cabiClassNameNim(ft.ParameterType, cabi)
+					ret += enumInfo.ModuleName + "." + enumInfo.Enum.nimEnumName()
 					gfs.imports[enumInfo.ModuleName] = struct{}{}
 				} else {
 					// Same package
-					ret += cabiClassNameNim(ft.ParameterType, cabi)
+					ret += enumInfo.Enum.nimEnumName()
 				}
 			}
 		} else if enumInfo, ok := KnownEnums[p.ParameterType]; ok {
-			if cabi {
+			if cabi || true {
 				ret += "cint"
 			} else {
 				if enumInfo.ModuleName != gfs.currentModuleName {
@@ -255,6 +263,8 @@ func (p CppParameter) renderTypeNim(gfs *nimFileState, cabi bool) string {
 		if pkg.ModuleName != gfs.currentModuleName {
 			ret = pkg.ModuleName + "." + ret
 			gfs.imports[pkg.ModuleName] = struct{}{}
+		} else {
+			ret = gfs.currentModuleName + "_types." + ret
 		}
 	}
 
@@ -593,6 +603,8 @@ func (gfs *nimFileState) emitCabiToNim(assignExpr string, rt CppParameter, rvalu
 		if pkg.ModuleName != gfs.currentModuleName {
 			crossPackage = pkg.ModuleName + "."
 			gfs.imports[pkg.ModuleName] = struct{}{}
+		} else {
+			crossPackage = gfs.currentModuleName + "_types."
 		}
 
 		// We can only reference the rvalue once, in case it is a complex
@@ -794,24 +806,25 @@ export ` + pkg.ModuleName + `_types
 		// "::" at the end means an anonymous nested enum
 		enumName := e.nimEnumName()
 
-		enumShortName := enumName // Shorter name, so that enum elements are reachable from the surrounding namespace
-		if _, ok := preventShortNames[enumName]; !ok {
-			enumShortName = cabiClassNameNim(e.ShortEnumName(), false)
-		}
+		// enumShortName := enumName // Shorter name, so that enum elements are reachable from the surrounding namespace
+		// if _, ok := preventShortNames[enumName]; !ok {
+		// 	enumShortName = cabiClassNameNim(e.ShortEnumName(), false)
+		// }
 
 		underlyingType := e.UnderlyingType.renderTypeNim(&gfs, false)
 		ret.WriteString(`
-type ` + enumName + `* = ` + underlyingType + `
+type ` + enumName + `* = distinct ` + underlyingType + `
 `)
 
 		if len(e.Entries) > 0 {
-			var smallvalues []string
 			zoo := map[string]struct{}{}
 			for _, ee := range e.Entries {
 				i := 0
 
-				basename := titleCase(cabiClassNameNim(enumShortName+ee.EntryName, false))
-
+				basename := ee.EntryName
+				if nimReservedWord(basename) {
+					basename += "Val"
+				}
 				nimbase := strings.ReplaceAll(strings.ToLower(basename), "_", "")
 				nimname := nimbase + maybeSuffix(i)
 				for {
@@ -829,17 +842,12 @@ type ` + enumName + `* = ` + underlyingType + `
 					}
 				}
 				zoo[nimname] = struct{}{}
-				enumname := basename + maybeSuffix(i)
-				enumConstDeclaration := "  " + enumname + "* = " + ee.EntryValue + "\n"
+				entryName := basename + maybeSuffix(i)
 
-				smallvalues = append(smallvalues, enumConstDeclaration)
+				ret.WriteString("template " + entryName + "*(_: type " + enumName + "): untyped = " + ee.EntryValue + "\n")
 			}
 
-			if len(smallvalues) > 0 {
-				ret.WriteString("const\n")
-				ret.WriteString(strings.Join(smallvalues, ""))
-				ret.WriteString("\n\n")
-			}
+			ret.WriteString("\n")
 
 		}
 	}
@@ -854,12 +862,13 @@ export ` + moduleName(headerName) + `_types
 `)
 	for _, c := range src.Classes {
 		nimClassName := cabiClassNameNim(c.ClassName, false)
+		nimPkgClassName := moduleName(headerName) + `_types.` + nimClassName
 		rawClassName := cabiClassNameNim(c.ClassName, true)
 
 		fmt.Fprintf(&ret, `
 func init*(T: type %[1]s, h: ptr %[2]s): %[1]s =
   T(h: h)
-`, nimClassName, rawClassName)
+`, nimPkgClassName, rawClassName)
 
 		// Qt has some overloads (const vs non-const, & vs *) that don't result in
 		// a distinct parameter set on the nim side
@@ -890,7 +899,7 @@ func init*(T: type %[1]s, h: ptr %[2]s): %[1]s =
 
 			fmt.Fprintf(&ret, `proc create%[2]s*(T: type %[3]s, %[4]s): %[3]s =
 %[5]s  %[3]s.init(f%[6]s_new%[1]s(%[7]s))
-`, maybeSuffix(i), maybeSuffix(j), nimClassName, nimParams,
+`, maybeSuffix(i), maybeSuffix(j), nimPkgClassName, nimParams,
 				preamble, rawClassName, forwarding)
 		}
 
@@ -907,7 +916,7 @@ func init*(T: type %[1]s, h: ptr %[2]s): %[1]s =
 			rawMethodName := "f" + rawClassName + `_` + m.nimMethodName()
 			rvalue := rawMethodName + `(` + forwarding + `)`
 
-			params := ifv(m.IsStatic, `_: type `, `self: `) + nimClassName + ", " + gfs.emitParametersNim(m.Parameters, false)
+			params := ifv(m.IsStatic, `_: type `, `self: `) + nimPkgClassName + ", " + gfs.emitParametersNim(m.Parameters, false)
 
 			// TOOD `this: ptr ` + rawClassName + `, `?
 			rawParams := ifv(m.IsStatic, "", "self: pointer, ") + gfs.emitParametersNim(m.Parameters, true)
@@ -953,7 +962,7 @@ proc on%[7]s*(self: %[8]s, slot: %[3]s) =
   f%[6]s(self.h, cast[int](addr tmp[]))
 `,
 					cabiCallbackName(c, m), strings.Join(namedParams, ", "), cbType, conversion,
-					strings.Join(paramNames, `, `), cabiConnectName(c, m), m.nimMethodName(), nimClassName)
+					strings.Join(paramNames, `, `), cabiConnectName(c, m), m.nimMethodName(), nimPkgClassName)
 			}
 		}
 
@@ -973,11 +982,10 @@ proc on%[7]s*(self: %[8]s, slot: %[3]s) =
 				fmt.Fprintf(&cabi, `proc f%[1]s(self: pointer, %[2]s): %[3]s{.importc: "%[1]s".}
 `, cabiVirtualBaseName(c, m), gfs.emitParametersNim(m.Parameters, true), rawReturnTypeDecl)
 
-				fmt.Fprintf(&ret, `proc callVirtualBase_%[1]s(self: %[2]s, %[3]s): %[4]s =
-%[5]s
-%[6]s
+				fmt.Fprintf(&ret, `proc %[1]s%[2]s*(self: %[3]s, %[4]s): %[5]s =
+%[6]s%[7]s
 `,
-					m.nimMethodName(), nimClassName, gfs.emitParametersNim(m.Parameters, false), returnTypeDecl,
+					nimClassName, m.nimMethodName(), nimPkgClassName, gfs.emitParametersNim(m.Parameters, false), returnTypeDecl,
 					preamble,
 					gfs.emitCabiToNim("", m.ReturnType, `f`+cabiVirtualBaseName(c, m)+`(`+forwarding+`)`),
 				)
@@ -993,18 +1001,6 @@ proc on%[7]s*(self: %[8]s, slot: %[3]s) =
 				var namedParams []string
 				var paramNames []string
 
-				if !m.IsPureVirtual {
-					var fparamNames []string
-					var superNames []string
-					for i, p := range m.Parameters {
-						superNames = append(superNames, p.nimParameterName())
-						fparamNames = append(fparamNames, fmt.Sprintf("slotval%d", i+1))
-					}
-					conversion += gfs.ind + "proc superCall(" + gfs.emitParametersNim(m.Parameters, false) + `): auto =
-    callVirtualBase_` + m.nimMethodName() + "(" + nimClassName + "(h: self), " + strings.Join(superNames, `, `) + ")\n"
-					paramNames = append(paramNames, "superCall")
-				}
-
 				for i, pp := range m.Parameters {
 					namedParams = append(namedParams, pp.nimParameterName()+": "+pp.parameterTypeNim(&gfs))
 
@@ -1013,35 +1009,24 @@ proc on%[7]s*(self: %[8]s, slot: %[3]s) =
 				}
 
 				cabiReturnType := m.ReturnType.parameterTypeNim(&gfs)
-
-				superCbType := `proc(` + gfs.emitParametersNim(m.Parameters, false) + `): ` + m.ReturnType.renderReturnTypeNim(&gfs, false)
-				superCbName := nimClassName + m.nimMethodName() + `Base`
-
+				cbTypeName := nimClassName + m.nimMethodName() + "Proc"
 				cbType := `proc(`
-				if !m.IsPureVirtual {
-					cbType += `super: ` + superCbName
-					if len(m.Parameters) > 0 {
-						cbType += `, `
-					}
-				}
 				cbType += gfs.emitParametersNim(m.Parameters, false)
 				cbType += `): ` + m.ReturnType.renderReturnTypeNim(&gfs, false)
 
 				cabi.WriteString(`proc f` + rawClassName + `_override_virtual_` + m.nimMethodName() + `(self: pointer, slot: int) {.importc: "` + cabiOverrideVirtualName(c, m) + `".}
 `)
 
-				ret.WriteString(`type ` + superCbName + `* = ` + superCbType + `
-proc on` + m.nimMethodName() + `*(self: ` + nimClassName + `, slot: ` + cbType + `) =
+				ret.WriteString(`type ` + cbTypeName + "* = " + cbType + `
+proc on` + m.nimMethodName() + `*(self: ` + nimPkgClassName + `, slot: ` + cbTypeName + `) =
   # TODO check subclass
-  type Cb = ` + cbType + `
-  var tmp = new Cb
+  var tmp = new ` + cbTypeName + `
   tmp[] = slot
   GC_ref(tmp)
   f` + rawClassName + `_override_virtual_` + m.nimMethodName() + `(self.h, cast[int](addr tmp[]))
 
 proc ` + cabiCallbackName(c, m) + `(self: ptr ` + rawClassName + `, slot: int` + ifv(len(m.Parameters) > 0, ", ", "") + strings.Join(namedParams, `, `) + `): ` + cabiReturnType + ` {.exportc: "` + cabiCallbackName(c, m) + ` ".} =
-  type Cb = ` + cbType + `
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr ` + cbTypeName + `](cast[pointer](slot))
 `)
 				ret.WriteString(conversion + "\n")
 				if cabiReturnType == "void" {
@@ -1066,7 +1051,7 @@ proc ` + cabiCallbackName(c, m) + `(self: ptr ` + rawClassName + `, slot: int` +
 
 				fmt.Fprintf(&ret, `proc staticMetaObject*(_: type %s): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fc%s())
-`, nimClassName, cabiStaticMetaObjectName(c))
+`, nimPkgClassName, cabiStaticMetaObjectName(c))
 			}
 		}
 
@@ -1074,7 +1059,7 @@ proc ` + cabiCallbackName(c, m) + `(self: ptr ` + rawClassName + `, slot: int` +
 			cabi.WriteString(`proc f` + rawClassName + `_delete(self: pointer) {.importc: "` + cabiDeleteName(c) + `".}
 `)
 
-			ret.WriteString(`proc delete*(self: ` + nimClassName + `) =
+			ret.WriteString(`proc delete*(self: ` + nimPkgClassName + `) =
   f` + rawClassName + `_delete(self.h)
 `)
 

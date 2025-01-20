@@ -168,7 +168,7 @@ func (this *QWebHistoryInterface) callVirtualBase_MetaObject() *qt.QMetaObject {
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebHistoryInterface_virtualbase_metaObject(unsafe.Pointer(this.h))))
 
 }
-func (this *QWebHistoryInterface) OnmetaObject(slot func(super func() *qt.QMetaObject) *qt.QMetaObject) {
+func (this *QWebHistoryInterface) OnMetaObject(slot func(super func() *qt.QMetaObject) *qt.QMetaObject) {
 	ok := C.QWebHistoryInterface_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -195,7 +195,7 @@ func (this *QWebHistoryInterface) callVirtualBase_Metacast(param1 string) unsafe
 	return (unsafe.Pointer)(C.QWebHistoryInterface_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QWebHistoryInterface) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QWebHistoryInterface) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QWebHistoryInterface_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

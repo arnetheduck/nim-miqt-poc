@@ -209,7 +209,7 @@ func (this *QAccessibleBridgePlugin) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QAccessibleBridgePlugin_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QAccessibleBridgePlugin) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QAccessibleBridgePlugin) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QAccessibleBridgePlugin_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -236,7 +236,7 @@ func (this *QAccessibleBridgePlugin) callVirtualBase_Metacast(param1 string) uns
 	return (unsafe.Pointer)(C.QAccessibleBridgePlugin_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QAccessibleBridgePlugin) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QAccessibleBridgePlugin) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QAccessibleBridgePlugin_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

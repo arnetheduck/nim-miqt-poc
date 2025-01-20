@@ -75,48 +75,48 @@ proc fcQWebEngineCookieStoreFilterRequest_operatorAssign(self: pointer, param1: 
 proc fcQWebEngineCookieStoreFilterRequest_delete(self: pointer) {.importc: "QWebEngineCookieStore__FilterRequest_delete".}
 
 
-func init*(T: type QWebEngineCookieStore, h: ptr cQWebEngineCookieStore): QWebEngineCookieStore =
+func init*(T: type gen_qwebenginecookiestore_types.QWebEngineCookieStore, h: ptr cQWebEngineCookieStore): gen_qwebenginecookiestore_types.QWebEngineCookieStore =
   T(h: h)
-proc metaObject*(self: QWebEngineCookieStore, ): gen_qobjectdefs.QMetaObject =
+proc metaObject*(self: gen_qwebenginecookiestore_types.QWebEngineCookieStore, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQWebEngineCookieStore_metaObject(self.h))
 
-proc metacast*(self: QWebEngineCookieStore, param1: cstring): pointer =
+proc metacast*(self: gen_qwebenginecookiestore_types.QWebEngineCookieStore, param1: cstring): pointer =
 
   fcQWebEngineCookieStore_metacast(self.h, param1)
 
-proc metacall*(self: QWebEngineCookieStore, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qwebenginecookiestore_types.QWebEngineCookieStore, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQWebEngineCookieStore_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QWebEngineCookieStore, s: cstring): string =
+proc tr*(_: type gen_qwebenginecookiestore_types.QWebEngineCookieStore, s: cstring): string =
 
   let v_ms = fcQWebEngineCookieStore_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setCookie*(self: QWebEngineCookieStore, cookie: gen_qnetworkcookie.QNetworkCookie): void =
+proc setCookie*(self: gen_qwebenginecookiestore_types.QWebEngineCookieStore, cookie: gen_qnetworkcookie.QNetworkCookie): void =
 
   fcQWebEngineCookieStore_setCookie(self.h, cookie.h)
 
-proc deleteCookie*(self: QWebEngineCookieStore, cookie: gen_qnetworkcookie.QNetworkCookie): void =
+proc deleteCookie*(self: gen_qwebenginecookiestore_types.QWebEngineCookieStore, cookie: gen_qnetworkcookie.QNetworkCookie): void =
 
   fcQWebEngineCookieStore_deleteCookie(self.h, cookie.h)
 
-proc deleteSessionCookies*(self: QWebEngineCookieStore, ): void =
+proc deleteSessionCookies*(self: gen_qwebenginecookiestore_types.QWebEngineCookieStore, ): void =
 
   fcQWebEngineCookieStore_deleteSessionCookies(self.h)
 
-proc deleteAllCookies*(self: QWebEngineCookieStore, ): void =
+proc deleteAllCookies*(self: gen_qwebenginecookiestore_types.QWebEngineCookieStore, ): void =
 
   fcQWebEngineCookieStore_deleteAllCookies(self.h)
 
-proc loadAllCookies*(self: QWebEngineCookieStore, ): void =
+proc loadAllCookies*(self: gen_qwebenginecookiestore_types.QWebEngineCookieStore, ): void =
 
   fcQWebEngineCookieStore_loadAllCookies(self.h)
 
-proc cookieAdded*(self: QWebEngineCookieStore, cookie: gen_qnetworkcookie.QNetworkCookie): void =
+proc cookieAdded*(self: gen_qwebenginecookiestore_types.QWebEngineCookieStore, cookie: gen_qnetworkcookie.QNetworkCookie): void =
 
   fcQWebEngineCookieStore_cookieAdded(self.h, cookie.h)
 
@@ -128,13 +128,13 @@ proc miqt_exec_callback_QWebEngineCookieStore_cookieAdded(slot: int, cookie: poi
 
   nimfunc[](slotval1)
 
-proc oncookieAdded*(self: QWebEngineCookieStore, slot: proc(cookie: gen_qnetworkcookie.QNetworkCookie)) =
+proc oncookieAdded*(self: gen_qwebenginecookiestore_types.QWebEngineCookieStore, slot: proc(cookie: gen_qnetworkcookie.QNetworkCookie)) =
   type Cb = proc(cookie: gen_qnetworkcookie.QNetworkCookie)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQWebEngineCookieStore_connect_cookieAdded(self.h, cast[int](addr tmp[]))
-proc cookieRemoved*(self: QWebEngineCookieStore, cookie: gen_qnetworkcookie.QNetworkCookie): void =
+proc cookieRemoved*(self: gen_qwebenginecookiestore_types.QWebEngineCookieStore, cookie: gen_qnetworkcookie.QNetworkCookie): void =
 
   fcQWebEngineCookieStore_cookieRemoved(self.h, cookie.h)
 
@@ -146,47 +146,47 @@ proc miqt_exec_callback_QWebEngineCookieStore_cookieRemoved(slot: int, cookie: p
 
   nimfunc[](slotval1)
 
-proc oncookieRemoved*(self: QWebEngineCookieStore, slot: proc(cookie: gen_qnetworkcookie.QNetworkCookie)) =
+proc oncookieRemoved*(self: gen_qwebenginecookiestore_types.QWebEngineCookieStore, slot: proc(cookie: gen_qnetworkcookie.QNetworkCookie)) =
   type Cb = proc(cookie: gen_qnetworkcookie.QNetworkCookie)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQWebEngineCookieStore_connect_cookieRemoved(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QWebEngineCookieStore, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qwebenginecookiestore_types.QWebEngineCookieStore, s: cstring, c: cstring): string =
 
   let v_ms = fcQWebEngineCookieStore_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QWebEngineCookieStore, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qwebenginecookiestore_types.QWebEngineCookieStore, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQWebEngineCookieStore_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setCookie2*(self: QWebEngineCookieStore, cookie: gen_qnetworkcookie.QNetworkCookie, origin: gen_qurl.QUrl): void =
+proc setCookie2*(self: gen_qwebenginecookiestore_types.QWebEngineCookieStore, cookie: gen_qnetworkcookie.QNetworkCookie, origin: gen_qurl.QUrl): void =
 
   fcQWebEngineCookieStore_setCookie2(self.h, cookie.h, origin.h)
 
-proc deleteCookie2*(self: QWebEngineCookieStore, cookie: gen_qnetworkcookie.QNetworkCookie, origin: gen_qurl.QUrl): void =
+proc deleteCookie2*(self: gen_qwebenginecookiestore_types.QWebEngineCookieStore, cookie: gen_qnetworkcookie.QNetworkCookie, origin: gen_qurl.QUrl): void =
 
   fcQWebEngineCookieStore_deleteCookie2(self.h, cookie.h, origin.h)
 
-proc staticMetaObject*(_: type QWebEngineCookieStore): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qwebenginecookiestore_types.QWebEngineCookieStore): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQWebEngineCookieStore_staticMetaObject())
-proc delete*(self: QWebEngineCookieStore) =
+proc delete*(self: gen_qwebenginecookiestore_types.QWebEngineCookieStore) =
   fcQWebEngineCookieStore_delete(self.h)
 
-func init*(T: type QWebEngineCookieStoreFilterRequest, h: ptr cQWebEngineCookieStoreFilterRequest): QWebEngineCookieStoreFilterRequest =
+func init*(T: type gen_qwebenginecookiestore_types.QWebEngineCookieStoreFilterRequest, h: ptr cQWebEngineCookieStoreFilterRequest): gen_qwebenginecookiestore_types.QWebEngineCookieStoreFilterRequest =
   T(h: h)
-proc create*(T: type QWebEngineCookieStoreFilterRequest, param1: QWebEngineCookieStoreFilterRequest): QWebEngineCookieStoreFilterRequest =
+proc create*(T: type gen_qwebenginecookiestore_types.QWebEngineCookieStoreFilterRequest, param1: gen_qwebenginecookiestore_types.QWebEngineCookieStoreFilterRequest): gen_qwebenginecookiestore_types.QWebEngineCookieStoreFilterRequest =
 
-  QWebEngineCookieStoreFilterRequest.init(fcQWebEngineCookieStoreFilterRequest_new(param1.h))
-proc operatorAssign*(self: QWebEngineCookieStoreFilterRequest, param1: QWebEngineCookieStoreFilterRequest): void =
+  gen_qwebenginecookiestore_types.QWebEngineCookieStoreFilterRequest.init(fcQWebEngineCookieStoreFilterRequest_new(param1.h))
+proc operatorAssign*(self: gen_qwebenginecookiestore_types.QWebEngineCookieStoreFilterRequest, param1: gen_qwebenginecookiestore_types.QWebEngineCookieStoreFilterRequest): void =
 
   fcQWebEngineCookieStoreFilterRequest_operatorAssign(self.h, param1.h)
 
-proc delete*(self: QWebEngineCookieStoreFilterRequest) =
+proc delete*(self: gen_qwebenginecookiestore_types.QWebEngineCookieStoreFilterRequest) =
   fcQWebEngineCookieStoreFilterRequest_delete(self.h)

@@ -44,7 +44,6 @@ import
   gen_qfontmetrics,
   gen_qicon,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpainter,
@@ -53,7 +52,6 @@ import
   gen_qpoint,
   gen_qrect,
   gen_qsize,
-  gen_qsizepolicy,
   gen_qstyle,
   gen_qstyleoption,
   gen_qwidget
@@ -64,7 +62,6 @@ export
   gen_qfontmetrics,
   gen_qicon,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpainter,
@@ -73,7 +70,6 @@ export
   gen_qpoint,
   gen_qrect,
   gen_qsize,
-  gen_qsizepolicy,
   gen_qstyle,
   gen_qstyleoption,
   gen_qwidget
@@ -184,247 +180,227 @@ proc fcQProxyStyle_staticMetaObject(): pointer {.importc: "QProxyStyle_staticMet
 proc fcQProxyStyle_delete(self: pointer) {.importc: "QProxyStyle_delete".}
 
 
-func init*(T: type QProxyStyle, h: ptr cQProxyStyle): QProxyStyle =
+func init*(T: type gen_qproxystyle_types.QProxyStyle, h: ptr cQProxyStyle): gen_qproxystyle_types.QProxyStyle =
   T(h: h)
-proc create*(T: type QProxyStyle, ): QProxyStyle =
+proc create*(T: type gen_qproxystyle_types.QProxyStyle, ): gen_qproxystyle_types.QProxyStyle =
 
-  QProxyStyle.init(fcQProxyStyle_new())
-proc create*(T: type QProxyStyle, key: string): QProxyStyle =
+  gen_qproxystyle_types.QProxyStyle.init(fcQProxyStyle_new())
+proc create*(T: type gen_qproxystyle_types.QProxyStyle, key: string): gen_qproxystyle_types.QProxyStyle =
 
-  QProxyStyle.init(fcQProxyStyle_new2(struct_miqt_string(data: key, len: csize_t(len(key)))))
-proc create*(T: type QProxyStyle, style: gen_qstyle.QStyle): QProxyStyle =
+  gen_qproxystyle_types.QProxyStyle.init(fcQProxyStyle_new2(struct_miqt_string(data: key, len: csize_t(len(key)))))
+proc create*(T: type gen_qproxystyle_types.QProxyStyle, style: gen_qstyle.QStyle): gen_qproxystyle_types.QProxyStyle =
 
-  QProxyStyle.init(fcQProxyStyle_new3(style.h))
-proc metaObject*(self: QProxyStyle, ): gen_qobjectdefs.QMetaObject =
+  gen_qproxystyle_types.QProxyStyle.init(fcQProxyStyle_new3(style.h))
+proc metaObject*(self: gen_qproxystyle_types.QProxyStyle, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQProxyStyle_metaObject(self.h))
 
-proc metacast*(self: QProxyStyle, param1: cstring): pointer =
+proc metacast*(self: gen_qproxystyle_types.QProxyStyle, param1: cstring): pointer =
 
   fcQProxyStyle_metacast(self.h, param1)
 
-proc metacall*(self: QProxyStyle, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qproxystyle_types.QProxyStyle, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQProxyStyle_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QProxyStyle, s: cstring): string =
+proc tr*(_: type gen_qproxystyle_types.QProxyStyle, s: cstring): string =
 
   let v_ms = fcQProxyStyle_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc baseStyle*(self: QProxyStyle, ): gen_qstyle.QStyle =
+proc baseStyle*(self: gen_qproxystyle_types.QProxyStyle, ): gen_qstyle.QStyle =
 
   gen_qstyle.QStyle(h: fcQProxyStyle_baseStyle(self.h))
 
-proc setBaseStyle*(self: QProxyStyle, style: gen_qstyle.QStyle): void =
+proc setBaseStyle*(self: gen_qproxystyle_types.QProxyStyle, style: gen_qstyle.QStyle): void =
 
   fcQProxyStyle_setBaseStyle(self.h, style.h)
 
-proc drawPrimitive*(self: QProxyStyle, element: gen_qstyle.QStylePrimitiveElement, option: gen_qstyleoption.QStyleOption, painter: gen_qpainter.QPainter, widget: gen_qwidget.QWidget): void =
+proc drawPrimitive*(self: gen_qproxystyle_types.QProxyStyle, element: cint, option: gen_qstyleoption.QStyleOption, painter: gen_qpainter.QPainter, widget: gen_qwidget.QWidget): void =
 
   fcQProxyStyle_drawPrimitive(self.h, cint(element), option.h, painter.h, widget.h)
 
-proc drawControl*(self: QProxyStyle, element: gen_qstyle.QStyleControlElement, option: gen_qstyleoption.QStyleOption, painter: gen_qpainter.QPainter, widget: gen_qwidget.QWidget): void =
+proc drawControl*(self: gen_qproxystyle_types.QProxyStyle, element: cint, option: gen_qstyleoption.QStyleOption, painter: gen_qpainter.QPainter, widget: gen_qwidget.QWidget): void =
 
   fcQProxyStyle_drawControl(self.h, cint(element), option.h, painter.h, widget.h)
 
-proc drawComplexControl*(self: QProxyStyle, control: gen_qstyle.QStyleComplexControl, option: gen_qstyleoption.QStyleOptionComplex, painter: gen_qpainter.QPainter, widget: gen_qwidget.QWidget): void =
+proc drawComplexControl*(self: gen_qproxystyle_types.QProxyStyle, control: cint, option: gen_qstyleoption.QStyleOptionComplex, painter: gen_qpainter.QPainter, widget: gen_qwidget.QWidget): void =
 
   fcQProxyStyle_drawComplexControl(self.h, cint(control), option.h, painter.h, widget.h)
 
-proc drawItemText*(self: QProxyStyle, painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, flags: cint, pal: gen_qpalette.QPalette, enabled: bool, text: string, textRole: gen_qpalette.QPaletteColorRole): void =
+proc drawItemText*(self: gen_qproxystyle_types.QProxyStyle, painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, flags: cint, pal: gen_qpalette.QPalette, enabled: bool, text: string, textRole: cint): void =
 
   fcQProxyStyle_drawItemText(self.h, painter.h, rect.h, flags, pal.h, enabled, struct_miqt_string(data: text, len: csize_t(len(text))), cint(textRole))
 
-proc drawItemPixmap*(self: QProxyStyle, painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, alignment: cint, pixmap: gen_qpixmap.QPixmap): void =
+proc drawItemPixmap*(self: gen_qproxystyle_types.QProxyStyle, painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, alignment: cint, pixmap: gen_qpixmap.QPixmap): void =
 
   fcQProxyStyle_drawItemPixmap(self.h, painter.h, rect.h, alignment, pixmap.h)
 
-proc sizeFromContents*(self: QProxyStyle, typeVal: gen_qstyle.QStyleContentsType, option: gen_qstyleoption.QStyleOption, size: gen_qsize.QSize, widget: gen_qwidget.QWidget): gen_qsize.QSize =
+proc sizeFromContents*(self: gen_qproxystyle_types.QProxyStyle, typeVal: cint, option: gen_qstyleoption.QStyleOption, size: gen_qsize.QSize, widget: gen_qwidget.QWidget): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQProxyStyle_sizeFromContents(self.h, cint(typeVal), option.h, size.h, widget.h))
 
-proc subElementRect*(self: QProxyStyle, element: gen_qstyle.QStyleSubElement, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qrect.QRect =
+proc subElementRect*(self: gen_qproxystyle_types.QProxyStyle, element: cint, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fcQProxyStyle_subElementRect(self.h, cint(element), option.h, widget.h))
 
-proc subControlRect*(self: QProxyStyle, cc: gen_qstyle.QStyleComplexControl, opt: gen_qstyleoption.QStyleOptionComplex, sc: gen_qstyle.QStyleSubControl, widget: gen_qwidget.QWidget): gen_qrect.QRect =
+proc subControlRect*(self: gen_qproxystyle_types.QProxyStyle, cc: cint, opt: gen_qstyleoption.QStyleOptionComplex, sc: cint, widget: gen_qwidget.QWidget): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fcQProxyStyle_subControlRect(self.h, cint(cc), opt.h, cint(sc), widget.h))
 
-proc itemTextRect*(self: QProxyStyle, fm: gen_qfontmetrics.QFontMetrics, r: gen_qrect.QRect, flags: cint, enabled: bool, text: string): gen_qrect.QRect =
+proc itemTextRect*(self: gen_qproxystyle_types.QProxyStyle, fm: gen_qfontmetrics.QFontMetrics, r: gen_qrect.QRect, flags: cint, enabled: bool, text: string): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fcQProxyStyle_itemTextRect(self.h, fm.h, r.h, flags, enabled, struct_miqt_string(data: text, len: csize_t(len(text)))))
 
-proc itemPixmapRect*(self: QProxyStyle, r: gen_qrect.QRect, flags: cint, pixmap: gen_qpixmap.QPixmap): gen_qrect.QRect =
+proc itemPixmapRect*(self: gen_qproxystyle_types.QProxyStyle, r: gen_qrect.QRect, flags: cint, pixmap: gen_qpixmap.QPixmap): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fcQProxyStyle_itemPixmapRect(self.h, r.h, flags, pixmap.h))
 
-proc hitTestComplexControl*(self: QProxyStyle, control: gen_qstyle.QStyleComplexControl, option: gen_qstyleoption.QStyleOptionComplex, pos: gen_qpoint.QPoint, widget: gen_qwidget.QWidget): gen_qstyle.QStyleSubControl =
+proc hitTestComplexControl*(self: gen_qproxystyle_types.QProxyStyle, control: cint, option: gen_qstyleoption.QStyleOptionComplex, pos: gen_qpoint.QPoint, widget: gen_qwidget.QWidget): cint =
 
-  gen_qstyle.QStyleSubControl(fcQProxyStyle_hitTestComplexControl(self.h, cint(control), option.h, pos.h, widget.h))
+  cint(fcQProxyStyle_hitTestComplexControl(self.h, cint(control), option.h, pos.h, widget.h))
 
-proc styleHint*(self: QProxyStyle, hint: gen_qstyle.QStyleStyleHint, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget, returnData: gen_qstyleoption.QStyleHintReturn): cint =
+proc styleHint*(self: gen_qproxystyle_types.QProxyStyle, hint: cint, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget, returnData: gen_qstyleoption.QStyleHintReturn): cint =
 
   fcQProxyStyle_styleHint(self.h, cint(hint), option.h, widget.h, returnData.h)
 
-proc pixelMetric*(self: QProxyStyle, metric: gen_qstyle.QStylePixelMetric, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): cint =
+proc pixelMetric*(self: gen_qproxystyle_types.QProxyStyle, metric: cint, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): cint =
 
   fcQProxyStyle_pixelMetric(self.h, cint(metric), option.h, widget.h)
 
-proc layoutSpacing*(self: QProxyStyle, control1: gen_qsizepolicy.QSizePolicyControlType, control2: gen_qsizepolicy.QSizePolicyControlType, orientation: gen_qnamespace.Orientation, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): cint =
+proc layoutSpacing*(self: gen_qproxystyle_types.QProxyStyle, control1: cint, control2: cint, orientation: cint, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): cint =
 
   fcQProxyStyle_layoutSpacing(self.h, cint(control1), cint(control2), cint(orientation), option.h, widget.h)
 
-proc standardIcon*(self: QProxyStyle, standardIcon: gen_qstyle.QStyleStandardPixmap, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qicon.QIcon =
+proc standardIcon*(self: gen_qproxystyle_types.QProxyStyle, standardIcon: cint, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qicon.QIcon =
 
   gen_qicon.QIcon(h: fcQProxyStyle_standardIcon(self.h, cint(standardIcon), option.h, widget.h))
 
-proc standardPixmap*(self: QProxyStyle, standardPixmap: gen_qstyle.QStyleStandardPixmap, opt: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qpixmap.QPixmap =
+proc standardPixmap*(self: gen_qproxystyle_types.QProxyStyle, standardPixmap: cint, opt: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qpixmap.QPixmap =
 
   gen_qpixmap.QPixmap(h: fcQProxyStyle_standardPixmap(self.h, cint(standardPixmap), opt.h, widget.h))
 
-proc generatedIconPixmap*(self: QProxyStyle, iconMode: gen_qicon.QIconMode, pixmap: gen_qpixmap.QPixmap, opt: gen_qstyleoption.QStyleOption): gen_qpixmap.QPixmap =
+proc generatedIconPixmap*(self: gen_qproxystyle_types.QProxyStyle, iconMode: cint, pixmap: gen_qpixmap.QPixmap, opt: gen_qstyleoption.QStyleOption): gen_qpixmap.QPixmap =
 
   gen_qpixmap.QPixmap(h: fcQProxyStyle_generatedIconPixmap(self.h, cint(iconMode), pixmap.h, opt.h))
 
-proc standardPalette*(self: QProxyStyle, ): gen_qpalette.QPalette =
+proc standardPalette*(self: gen_qproxystyle_types.QProxyStyle, ): gen_qpalette.QPalette =
 
   gen_qpalette.QPalette(h: fcQProxyStyle_standardPalette(self.h))
 
-proc polish*(self: QProxyStyle, widget: gen_qwidget.QWidget): void =
+proc polish*(self: gen_qproxystyle_types.QProxyStyle, widget: gen_qwidget.QWidget): void =
 
   fcQProxyStyle_polish(self.h, widget.h)
 
-proc polishWithPal*(self: QProxyStyle, pal: gen_qpalette.QPalette): void =
+proc polishWithPal*(self: gen_qproxystyle_types.QProxyStyle, pal: gen_qpalette.QPalette): void =
 
   fcQProxyStyle_polishWithPal(self.h, pal.h)
 
-proc polishWithApp*(self: QProxyStyle, app: gen_qapplication.QApplication): void =
+proc polishWithApp*(self: gen_qproxystyle_types.QProxyStyle, app: gen_qapplication.QApplication): void =
 
   fcQProxyStyle_polishWithApp(self.h, app.h)
 
-proc unpolish*(self: QProxyStyle, widget: gen_qwidget.QWidget): void =
+proc unpolish*(self: gen_qproxystyle_types.QProxyStyle, widget: gen_qwidget.QWidget): void =
 
   fcQProxyStyle_unpolish(self.h, widget.h)
 
-proc unpolishWithApp*(self: QProxyStyle, app: gen_qapplication.QApplication): void =
+proc unpolishWithApp*(self: gen_qproxystyle_types.QProxyStyle, app: gen_qapplication.QApplication): void =
 
   fcQProxyStyle_unpolishWithApp(self.h, app.h)
 
-proc tr2*(_: type QProxyStyle, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qproxystyle_types.QProxyStyle, s: cstring, c: cstring): string =
 
   let v_ms = fcQProxyStyle_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QProxyStyle, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qproxystyle_types.QProxyStyle, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQProxyStyle_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QProxyStyle, ): gen_qobjectdefs.QMetaObject =
-
+proc QProxyStylemetaObject*(self: gen_qproxystyle_types.QProxyStyle, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQProxyStyle_virtualbase_metaObject(self.h))
 
-type QProxyStylemetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QProxyStyle, slot: proc(super: QProxyStylemetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QProxyStylemetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qproxystyle_types.QProxyStyle, slot: QProxyStylemetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QProxyStylemetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QProxyStylemetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProxyStyle_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProxyStyle_metaObject(self: ptr cQProxyStyle, slot: int): pointer {.exportc: "miqt_exec_callback_QProxyStyle_metaObject ".} =
-  type Cb = proc(super: QProxyStylemetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QProxyStyle(h: self), )
+  var nimfunc = cast[ptr QProxyStylemetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QProxyStyle, param1: cstring): pointer =
-
+proc QProxyStylemetacast*(self: gen_qproxystyle_types.QProxyStyle, param1: cstring): pointer =
 
   fQProxyStyle_virtualbase_metacast(self.h, param1)
 
-type QProxyStylemetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QProxyStyle, slot: proc(super: QProxyStylemetacastBase, param1: cstring): pointer) =
+type QProxyStylemetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qproxystyle_types.QProxyStyle, slot: QProxyStylemetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QProxyStylemetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QProxyStylemetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProxyStyle_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProxyStyle_metacast(self: ptr cQProxyStyle, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QProxyStyle_metacast ".} =
-  type Cb = proc(super: QProxyStylemetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QProxyStyle(h: self), param1)
+  var nimfunc = cast[ptr QProxyStylemetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QProxyStyle, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QProxyStylemetacall*(self: gen_qproxystyle_types.QProxyStyle, param1: cint, param2: cint, param3: pointer): cint =
 
   fQProxyStyle_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QProxyStylemetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QProxyStyle, slot: proc(super: QProxyStylemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QProxyStylemetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qproxystyle_types.QProxyStyle, slot: QProxyStylemetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QProxyStylemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QProxyStylemetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProxyStyle_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProxyStyle_metacall(self: ptr cQProxyStyle, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QProxyStyle_metacall ".} =
-  type Cb = proc(super: QProxyStylemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QProxyStyle(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QProxyStylemetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_drawPrimitive(self: QProxyStyle, element: gen_qstyle.QStylePrimitiveElement, option: gen_qstyleoption.QStyleOption, painter: gen_qpainter.QPainter, widget: gen_qwidget.QWidget): void =
-
+proc QProxyStyledrawPrimitive*(self: gen_qproxystyle_types.QProxyStyle, element: cint, option: gen_qstyleoption.QStyleOption, painter: gen_qpainter.QPainter, widget: gen_qwidget.QWidget): void =
 
   fQProxyStyle_virtualbase_drawPrimitive(self.h, cint(element), option.h, painter.h, widget.h)
 
-type QProxyStyledrawPrimitiveBase* = proc(element: gen_qstyle.QStylePrimitiveElement, option: gen_qstyleoption.QStyleOption, painter: gen_qpainter.QPainter, widget: gen_qwidget.QWidget): void
-proc ondrawPrimitive*(self: QProxyStyle, slot: proc(super: QProxyStyledrawPrimitiveBase, element: gen_qstyle.QStylePrimitiveElement, option: gen_qstyleoption.QStyleOption, painter: gen_qpainter.QPainter, widget: gen_qwidget.QWidget): void) =
+type QProxyStyledrawPrimitiveProc* = proc(element: cint, option: gen_qstyleoption.QStyleOption, painter: gen_qpainter.QPainter, widget: gen_qwidget.QWidget): void
+proc ondrawPrimitive*(self: gen_qproxystyle_types.QProxyStyle, slot: QProxyStyledrawPrimitiveProc) =
   # TODO check subclass
-  type Cb = proc(super: QProxyStyledrawPrimitiveBase, element: gen_qstyle.QStylePrimitiveElement, option: gen_qstyleoption.QStyleOption, painter: gen_qpainter.QPainter, widget: gen_qwidget.QWidget): void
-  var tmp = new Cb
+  var tmp = new QProxyStyledrawPrimitiveProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProxyStyle_override_virtual_drawPrimitive(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProxyStyle_drawPrimitive(self: ptr cQProxyStyle, slot: int, element: cint, option: pointer, painter: pointer, widget: pointer): void {.exportc: "miqt_exec_callback_QProxyStyle_drawPrimitive ".} =
-  type Cb = proc(super: QProxyStyledrawPrimitiveBase, element: gen_qstyle.QStylePrimitiveElement, option: gen_qstyleoption.QStyleOption, painter: gen_qpainter.QPainter, widget: gen_qwidget.QWidget): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(element: gen_qstyle.QStylePrimitiveElement, option: gen_qstyleoption.QStyleOption, painter: gen_qpainter.QPainter, widget: gen_qwidget.QWidget): auto =
-    callVirtualBase_drawPrimitive(QProxyStyle(h: self), element, option, painter, widget)
-  let slotval1 = gen_qstyle.QStylePrimitiveElement(element)
+  var nimfunc = cast[ptr QProxyStyledrawPrimitiveProc](cast[pointer](slot))
+  let slotval1 = cint(element)
 
   let slotval2 = gen_qstyleoption.QStyleOption(h: option)
 
@@ -433,27 +409,22 @@ proc miqt_exec_callback_QProxyStyle_drawPrimitive(self: ptr cQProxyStyle, slot: 
   let slotval4 = gen_qwidget.QWidget(h: widget)
 
 
-  nimfunc[](superCall, slotval1, slotval2, slotval3, slotval4)
-proc callVirtualBase_drawControl(self: QProxyStyle, element: gen_qstyle.QStyleControlElement, option: gen_qstyleoption.QStyleOption, painter: gen_qpainter.QPainter, widget: gen_qwidget.QWidget): void =
-
+  nimfunc[](slotval1, slotval2, slotval3, slotval4)
+proc QProxyStyledrawControl*(self: gen_qproxystyle_types.QProxyStyle, element: cint, option: gen_qstyleoption.QStyleOption, painter: gen_qpainter.QPainter, widget: gen_qwidget.QWidget): void =
 
   fQProxyStyle_virtualbase_drawControl(self.h, cint(element), option.h, painter.h, widget.h)
 
-type QProxyStyledrawControlBase* = proc(element: gen_qstyle.QStyleControlElement, option: gen_qstyleoption.QStyleOption, painter: gen_qpainter.QPainter, widget: gen_qwidget.QWidget): void
-proc ondrawControl*(self: QProxyStyle, slot: proc(super: QProxyStyledrawControlBase, element: gen_qstyle.QStyleControlElement, option: gen_qstyleoption.QStyleOption, painter: gen_qpainter.QPainter, widget: gen_qwidget.QWidget): void) =
+type QProxyStyledrawControlProc* = proc(element: cint, option: gen_qstyleoption.QStyleOption, painter: gen_qpainter.QPainter, widget: gen_qwidget.QWidget): void
+proc ondrawControl*(self: gen_qproxystyle_types.QProxyStyle, slot: QProxyStyledrawControlProc) =
   # TODO check subclass
-  type Cb = proc(super: QProxyStyledrawControlBase, element: gen_qstyle.QStyleControlElement, option: gen_qstyleoption.QStyleOption, painter: gen_qpainter.QPainter, widget: gen_qwidget.QWidget): void
-  var tmp = new Cb
+  var tmp = new QProxyStyledrawControlProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProxyStyle_override_virtual_drawControl(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProxyStyle_drawControl(self: ptr cQProxyStyle, slot: int, element: cint, option: pointer, painter: pointer, widget: pointer): void {.exportc: "miqt_exec_callback_QProxyStyle_drawControl ".} =
-  type Cb = proc(super: QProxyStyledrawControlBase, element: gen_qstyle.QStyleControlElement, option: gen_qstyleoption.QStyleOption, painter: gen_qpainter.QPainter, widget: gen_qwidget.QWidget): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(element: gen_qstyle.QStyleControlElement, option: gen_qstyleoption.QStyleOption, painter: gen_qpainter.QPainter, widget: gen_qwidget.QWidget): auto =
-    callVirtualBase_drawControl(QProxyStyle(h: self), element, option, painter, widget)
-  let slotval1 = gen_qstyle.QStyleControlElement(element)
+  var nimfunc = cast[ptr QProxyStyledrawControlProc](cast[pointer](slot))
+  let slotval1 = cint(element)
 
   let slotval2 = gen_qstyleoption.QStyleOption(h: option)
 
@@ -462,27 +433,22 @@ proc miqt_exec_callback_QProxyStyle_drawControl(self: ptr cQProxyStyle, slot: in
   let slotval4 = gen_qwidget.QWidget(h: widget)
 
 
-  nimfunc[](superCall, slotval1, slotval2, slotval3, slotval4)
-proc callVirtualBase_drawComplexControl(self: QProxyStyle, control: gen_qstyle.QStyleComplexControl, option: gen_qstyleoption.QStyleOptionComplex, painter: gen_qpainter.QPainter, widget: gen_qwidget.QWidget): void =
-
+  nimfunc[](slotval1, slotval2, slotval3, slotval4)
+proc QProxyStyledrawComplexControl*(self: gen_qproxystyle_types.QProxyStyle, control: cint, option: gen_qstyleoption.QStyleOptionComplex, painter: gen_qpainter.QPainter, widget: gen_qwidget.QWidget): void =
 
   fQProxyStyle_virtualbase_drawComplexControl(self.h, cint(control), option.h, painter.h, widget.h)
 
-type QProxyStyledrawComplexControlBase* = proc(control: gen_qstyle.QStyleComplexControl, option: gen_qstyleoption.QStyleOptionComplex, painter: gen_qpainter.QPainter, widget: gen_qwidget.QWidget): void
-proc ondrawComplexControl*(self: QProxyStyle, slot: proc(super: QProxyStyledrawComplexControlBase, control: gen_qstyle.QStyleComplexControl, option: gen_qstyleoption.QStyleOptionComplex, painter: gen_qpainter.QPainter, widget: gen_qwidget.QWidget): void) =
+type QProxyStyledrawComplexControlProc* = proc(control: cint, option: gen_qstyleoption.QStyleOptionComplex, painter: gen_qpainter.QPainter, widget: gen_qwidget.QWidget): void
+proc ondrawComplexControl*(self: gen_qproxystyle_types.QProxyStyle, slot: QProxyStyledrawComplexControlProc) =
   # TODO check subclass
-  type Cb = proc(super: QProxyStyledrawComplexControlBase, control: gen_qstyle.QStyleComplexControl, option: gen_qstyleoption.QStyleOptionComplex, painter: gen_qpainter.QPainter, widget: gen_qwidget.QWidget): void
-  var tmp = new Cb
+  var tmp = new QProxyStyledrawComplexControlProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProxyStyle_override_virtual_drawComplexControl(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProxyStyle_drawComplexControl(self: ptr cQProxyStyle, slot: int, control: cint, option: pointer, painter: pointer, widget: pointer): void {.exportc: "miqt_exec_callback_QProxyStyle_drawComplexControl ".} =
-  type Cb = proc(super: QProxyStyledrawComplexControlBase, control: gen_qstyle.QStyleComplexControl, option: gen_qstyleoption.QStyleOptionComplex, painter: gen_qpainter.QPainter, widget: gen_qwidget.QWidget): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(control: gen_qstyle.QStyleComplexControl, option: gen_qstyleoption.QStyleOptionComplex, painter: gen_qpainter.QPainter, widget: gen_qwidget.QWidget): auto =
-    callVirtualBase_drawComplexControl(QProxyStyle(h: self), control, option, painter, widget)
-  let slotval1 = gen_qstyle.QStyleComplexControl(control)
+  var nimfunc = cast[ptr QProxyStyledrawComplexControlProc](cast[pointer](slot))
+  let slotval1 = cint(control)
 
   let slotval2 = gen_qstyleoption.QStyleOptionComplex(h: option)
 
@@ -491,26 +457,21 @@ proc miqt_exec_callback_QProxyStyle_drawComplexControl(self: ptr cQProxyStyle, s
   let slotval4 = gen_qwidget.QWidget(h: widget)
 
 
-  nimfunc[](superCall, slotval1, slotval2, slotval3, slotval4)
-proc callVirtualBase_drawItemText(self: QProxyStyle, painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, flags: cint, pal: gen_qpalette.QPalette, enabled: bool, text: string, textRole: gen_qpalette.QPaletteColorRole): void =
-
+  nimfunc[](slotval1, slotval2, slotval3, slotval4)
+proc QProxyStyledrawItemText*(self: gen_qproxystyle_types.QProxyStyle, painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, flags: cint, pal: gen_qpalette.QPalette, enabled: bool, text: string, textRole: cint): void =
 
   fQProxyStyle_virtualbase_drawItemText(self.h, painter.h, rect.h, flags, pal.h, enabled, struct_miqt_string(data: text, len: csize_t(len(text))), cint(textRole))
 
-type QProxyStyledrawItemTextBase* = proc(painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, flags: cint, pal: gen_qpalette.QPalette, enabled: bool, text: string, textRole: gen_qpalette.QPaletteColorRole): void
-proc ondrawItemText*(self: QProxyStyle, slot: proc(super: QProxyStyledrawItemTextBase, painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, flags: cint, pal: gen_qpalette.QPalette, enabled: bool, text: string, textRole: gen_qpalette.QPaletteColorRole): void) =
+type QProxyStyledrawItemTextProc* = proc(painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, flags: cint, pal: gen_qpalette.QPalette, enabled: bool, text: string, textRole: cint): void
+proc ondrawItemText*(self: gen_qproxystyle_types.QProxyStyle, slot: QProxyStyledrawItemTextProc) =
   # TODO check subclass
-  type Cb = proc(super: QProxyStyledrawItemTextBase, painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, flags: cint, pal: gen_qpalette.QPalette, enabled: bool, text: string, textRole: gen_qpalette.QPaletteColorRole): void
-  var tmp = new Cb
+  var tmp = new QProxyStyledrawItemTextProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProxyStyle_override_virtual_drawItemText(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProxyStyle_drawItemText(self: ptr cQProxyStyle, slot: int, painter: pointer, rect: pointer, flags: cint, pal: pointer, enabled: bool, text: struct_miqt_string, textRole: cint): void {.exportc: "miqt_exec_callback_QProxyStyle_drawItemText ".} =
-  type Cb = proc(super: QProxyStyledrawItemTextBase, painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, flags: cint, pal: gen_qpalette.QPalette, enabled: bool, text: string, textRole: gen_qpalette.QPaletteColorRole): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, flags: cint, pal: gen_qpalette.QPalette, enabled: bool, text: string, textRole: gen_qpalette.QPaletteColorRole): auto =
-    callVirtualBase_drawItemText(QProxyStyle(h: self), painter, rect, flags, pal, enabled, text, textRole)
+  var nimfunc = cast[ptr QProxyStyledrawItemTextProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
   let slotval2 = gen_qrect.QRect(h: rect)
@@ -526,29 +487,24 @@ proc miqt_exec_callback_QProxyStyle_drawItemText(self: ptr cQProxyStyle, slot: i
   c_free(vtext_ms.data)
   let slotval6 = vtextx_ret
 
-  let slotval7 = gen_qpalette.QPaletteColorRole(textRole)
+  let slotval7 = cint(textRole)
 
 
-  nimfunc[](superCall, slotval1, slotval2, slotval3, slotval4, slotval5, slotval6, slotval7)
-proc callVirtualBase_drawItemPixmap(self: QProxyStyle, painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, alignment: cint, pixmap: gen_qpixmap.QPixmap): void =
-
+  nimfunc[](slotval1, slotval2, slotval3, slotval4, slotval5, slotval6, slotval7)
+proc QProxyStyledrawItemPixmap*(self: gen_qproxystyle_types.QProxyStyle, painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, alignment: cint, pixmap: gen_qpixmap.QPixmap): void =
 
   fQProxyStyle_virtualbase_drawItemPixmap(self.h, painter.h, rect.h, alignment, pixmap.h)
 
-type QProxyStyledrawItemPixmapBase* = proc(painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, alignment: cint, pixmap: gen_qpixmap.QPixmap): void
-proc ondrawItemPixmap*(self: QProxyStyle, slot: proc(super: QProxyStyledrawItemPixmapBase, painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, alignment: cint, pixmap: gen_qpixmap.QPixmap): void) =
+type QProxyStyledrawItemPixmapProc* = proc(painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, alignment: cint, pixmap: gen_qpixmap.QPixmap): void
+proc ondrawItemPixmap*(self: gen_qproxystyle_types.QProxyStyle, slot: QProxyStyledrawItemPixmapProc) =
   # TODO check subclass
-  type Cb = proc(super: QProxyStyledrawItemPixmapBase, painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, alignment: cint, pixmap: gen_qpixmap.QPixmap): void
-  var tmp = new Cb
+  var tmp = new QProxyStyledrawItemPixmapProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProxyStyle_override_virtual_drawItemPixmap(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProxyStyle_drawItemPixmap(self: ptr cQProxyStyle, slot: int, painter: pointer, rect: pointer, alignment: cint, pixmap: pointer): void {.exportc: "miqt_exec_callback_QProxyStyle_drawItemPixmap ".} =
-  type Cb = proc(super: QProxyStyledrawItemPixmapBase, painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, alignment: cint, pixmap: gen_qpixmap.QPixmap): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, alignment: cint, pixmap: gen_qpixmap.QPixmap): auto =
-    callVirtualBase_drawItemPixmap(QProxyStyle(h: self), painter, rect, alignment, pixmap)
+  var nimfunc = cast[ptr QProxyStyledrawItemPixmapProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
   let slotval2 = gen_qrect.QRect(h: rect)
@@ -558,27 +514,22 @@ proc miqt_exec_callback_QProxyStyle_drawItemPixmap(self: ptr cQProxyStyle, slot:
   let slotval4 = gen_qpixmap.QPixmap(h: pixmap)
 
 
-  nimfunc[](superCall, slotval1, slotval2, slotval3, slotval4)
-proc callVirtualBase_sizeFromContents(self: QProxyStyle, typeVal: gen_qstyle.QStyleContentsType, option: gen_qstyleoption.QStyleOption, size: gen_qsize.QSize, widget: gen_qwidget.QWidget): gen_qsize.QSize =
-
+  nimfunc[](slotval1, slotval2, slotval3, slotval4)
+proc QProxyStylesizeFromContents*(self: gen_qproxystyle_types.QProxyStyle, typeVal: cint, option: gen_qstyleoption.QStyleOption, size: gen_qsize.QSize, widget: gen_qwidget.QWidget): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQProxyStyle_virtualbase_sizeFromContents(self.h, cint(typeVal), option.h, size.h, widget.h))
 
-type QProxyStylesizeFromContentsBase* = proc(typeVal: gen_qstyle.QStyleContentsType, option: gen_qstyleoption.QStyleOption, size: gen_qsize.QSize, widget: gen_qwidget.QWidget): gen_qsize.QSize
-proc onsizeFromContents*(self: QProxyStyle, slot: proc(super: QProxyStylesizeFromContentsBase, typeVal: gen_qstyle.QStyleContentsType, option: gen_qstyleoption.QStyleOption, size: gen_qsize.QSize, widget: gen_qwidget.QWidget): gen_qsize.QSize) =
+type QProxyStylesizeFromContentsProc* = proc(typeVal: cint, option: gen_qstyleoption.QStyleOption, size: gen_qsize.QSize, widget: gen_qwidget.QWidget): gen_qsize.QSize
+proc onsizeFromContents*(self: gen_qproxystyle_types.QProxyStyle, slot: QProxyStylesizeFromContentsProc) =
   # TODO check subclass
-  type Cb = proc(super: QProxyStylesizeFromContentsBase, typeVal: gen_qstyle.QStyleContentsType, option: gen_qstyleoption.QStyleOption, size: gen_qsize.QSize, widget: gen_qwidget.QWidget): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QProxyStylesizeFromContentsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProxyStyle_override_virtual_sizeFromContents(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProxyStyle_sizeFromContents(self: ptr cQProxyStyle, slot: int, typeVal: cint, option: pointer, size: pointer, widget: pointer): pointer {.exportc: "miqt_exec_callback_QProxyStyle_sizeFromContents ".} =
-  type Cb = proc(super: QProxyStylesizeFromContentsBase, typeVal: gen_qstyle.QStyleContentsType, option: gen_qstyleoption.QStyleOption, size: gen_qsize.QSize, widget: gen_qwidget.QWidget): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(typeVal: gen_qstyle.QStyleContentsType, option: gen_qstyleoption.QStyleOption, size: gen_qsize.QSize, widget: gen_qwidget.QWidget): auto =
-    callVirtualBase_sizeFromContents(QProxyStyle(h: self), typeVal, option, size, widget)
-  let slotval1 = gen_qstyle.QStyleContentsType(typeVal)
+  var nimfunc = cast[ptr QProxyStylesizeFromContentsProc](cast[pointer](slot))
+  let slotval1 = cint(typeVal)
 
   let slotval2 = gen_qstyleoption.QStyleOption(h: option)
 
@@ -587,88 +538,73 @@ proc miqt_exec_callback_QProxyStyle_sizeFromContents(self: ptr cQProxyStyle, slo
   let slotval4 = gen_qwidget.QWidget(h: widget)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3, slotval4 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3, slotval4 )
 
   virtualReturn.h
-proc callVirtualBase_subElementRect(self: QProxyStyle, element: gen_qstyle.QStyleSubElement, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qrect.QRect =
-
+proc QProxyStylesubElementRect*(self: gen_qproxystyle_types.QProxyStyle, element: cint, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fQProxyStyle_virtualbase_subElementRect(self.h, cint(element), option.h, widget.h))
 
-type QProxyStylesubElementRectBase* = proc(element: gen_qstyle.QStyleSubElement, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qrect.QRect
-proc onsubElementRect*(self: QProxyStyle, slot: proc(super: QProxyStylesubElementRectBase, element: gen_qstyle.QStyleSubElement, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qrect.QRect) =
+type QProxyStylesubElementRectProc* = proc(element: cint, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qrect.QRect
+proc onsubElementRect*(self: gen_qproxystyle_types.QProxyStyle, slot: QProxyStylesubElementRectProc) =
   # TODO check subclass
-  type Cb = proc(super: QProxyStylesubElementRectBase, element: gen_qstyle.QStyleSubElement, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qrect.QRect
-  var tmp = new Cb
+  var tmp = new QProxyStylesubElementRectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProxyStyle_override_virtual_subElementRect(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProxyStyle_subElementRect(self: ptr cQProxyStyle, slot: int, element: cint, option: pointer, widget: pointer): pointer {.exportc: "miqt_exec_callback_QProxyStyle_subElementRect ".} =
-  type Cb = proc(super: QProxyStylesubElementRectBase, element: gen_qstyle.QStyleSubElement, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qrect.QRect
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(element: gen_qstyle.QStyleSubElement, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): auto =
-    callVirtualBase_subElementRect(QProxyStyle(h: self), element, option, widget)
-  let slotval1 = gen_qstyle.QStyleSubElement(element)
+  var nimfunc = cast[ptr QProxyStylesubElementRectProc](cast[pointer](slot))
+  let slotval1 = cint(element)
 
   let slotval2 = gen_qstyleoption.QStyleOption(h: option)
 
   let slotval3 = gen_qwidget.QWidget(h: widget)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn.h
-proc callVirtualBase_subControlRect(self: QProxyStyle, cc: gen_qstyle.QStyleComplexControl, opt: gen_qstyleoption.QStyleOptionComplex, sc: gen_qstyle.QStyleSubControl, widget: gen_qwidget.QWidget): gen_qrect.QRect =
-
+proc QProxyStylesubControlRect*(self: gen_qproxystyle_types.QProxyStyle, cc: cint, opt: gen_qstyleoption.QStyleOptionComplex, sc: cint, widget: gen_qwidget.QWidget): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fQProxyStyle_virtualbase_subControlRect(self.h, cint(cc), opt.h, cint(sc), widget.h))
 
-type QProxyStylesubControlRectBase* = proc(cc: gen_qstyle.QStyleComplexControl, opt: gen_qstyleoption.QStyleOptionComplex, sc: gen_qstyle.QStyleSubControl, widget: gen_qwidget.QWidget): gen_qrect.QRect
-proc onsubControlRect*(self: QProxyStyle, slot: proc(super: QProxyStylesubControlRectBase, cc: gen_qstyle.QStyleComplexControl, opt: gen_qstyleoption.QStyleOptionComplex, sc: gen_qstyle.QStyleSubControl, widget: gen_qwidget.QWidget): gen_qrect.QRect) =
+type QProxyStylesubControlRectProc* = proc(cc: cint, opt: gen_qstyleoption.QStyleOptionComplex, sc: cint, widget: gen_qwidget.QWidget): gen_qrect.QRect
+proc onsubControlRect*(self: gen_qproxystyle_types.QProxyStyle, slot: QProxyStylesubControlRectProc) =
   # TODO check subclass
-  type Cb = proc(super: QProxyStylesubControlRectBase, cc: gen_qstyle.QStyleComplexControl, opt: gen_qstyleoption.QStyleOptionComplex, sc: gen_qstyle.QStyleSubControl, widget: gen_qwidget.QWidget): gen_qrect.QRect
-  var tmp = new Cb
+  var tmp = new QProxyStylesubControlRectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProxyStyle_override_virtual_subControlRect(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProxyStyle_subControlRect(self: ptr cQProxyStyle, slot: int, cc: cint, opt: pointer, sc: cint, widget: pointer): pointer {.exportc: "miqt_exec_callback_QProxyStyle_subControlRect ".} =
-  type Cb = proc(super: QProxyStylesubControlRectBase, cc: gen_qstyle.QStyleComplexControl, opt: gen_qstyleoption.QStyleOptionComplex, sc: gen_qstyle.QStyleSubControl, widget: gen_qwidget.QWidget): gen_qrect.QRect
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(cc: gen_qstyle.QStyleComplexControl, opt: gen_qstyleoption.QStyleOptionComplex, sc: gen_qstyle.QStyleSubControl, widget: gen_qwidget.QWidget): auto =
-    callVirtualBase_subControlRect(QProxyStyle(h: self), cc, opt, sc, widget)
-  let slotval1 = gen_qstyle.QStyleComplexControl(cc)
+  var nimfunc = cast[ptr QProxyStylesubControlRectProc](cast[pointer](slot))
+  let slotval1 = cint(cc)
 
   let slotval2 = gen_qstyleoption.QStyleOptionComplex(h: opt)
 
-  let slotval3 = gen_qstyle.QStyleSubControl(sc)
+  let slotval3 = cint(sc)
 
   let slotval4 = gen_qwidget.QWidget(h: widget)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3, slotval4 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3, slotval4 )
 
   virtualReturn.h
-proc callVirtualBase_itemTextRect(self: QProxyStyle, fm: gen_qfontmetrics.QFontMetrics, r: gen_qrect.QRect, flags: cint, enabled: bool, text: string): gen_qrect.QRect =
-
+proc QProxyStyleitemTextRect*(self: gen_qproxystyle_types.QProxyStyle, fm: gen_qfontmetrics.QFontMetrics, r: gen_qrect.QRect, flags: cint, enabled: bool, text: string): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fQProxyStyle_virtualbase_itemTextRect(self.h, fm.h, r.h, flags, enabled, struct_miqt_string(data: text, len: csize_t(len(text)))))
 
-type QProxyStyleitemTextRectBase* = proc(fm: gen_qfontmetrics.QFontMetrics, r: gen_qrect.QRect, flags: cint, enabled: bool, text: string): gen_qrect.QRect
-proc onitemTextRect*(self: QProxyStyle, slot: proc(super: QProxyStyleitemTextRectBase, fm: gen_qfontmetrics.QFontMetrics, r: gen_qrect.QRect, flags: cint, enabled: bool, text: string): gen_qrect.QRect) =
+type QProxyStyleitemTextRectProc* = proc(fm: gen_qfontmetrics.QFontMetrics, r: gen_qrect.QRect, flags: cint, enabled: bool, text: string): gen_qrect.QRect
+proc onitemTextRect*(self: gen_qproxystyle_types.QProxyStyle, slot: QProxyStyleitemTextRectProc) =
   # TODO check subclass
-  type Cb = proc(super: QProxyStyleitemTextRectBase, fm: gen_qfontmetrics.QFontMetrics, r: gen_qrect.QRect, flags: cint, enabled: bool, text: string): gen_qrect.QRect
-  var tmp = new Cb
+  var tmp = new QProxyStyleitemTextRectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProxyStyle_override_virtual_itemTextRect(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProxyStyle_itemTextRect(self: ptr cQProxyStyle, slot: int, fm: pointer, r: pointer, flags: cint, enabled: bool, text: struct_miqt_string): pointer {.exportc: "miqt_exec_callback_QProxyStyle_itemTextRect ".} =
-  type Cb = proc(super: QProxyStyleitemTextRectBase, fm: gen_qfontmetrics.QFontMetrics, r: gen_qrect.QRect, flags: cint, enabled: bool, text: string): gen_qrect.QRect
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(fm: gen_qfontmetrics.QFontMetrics, r: gen_qrect.QRect, flags: cint, enabled: bool, text: string): auto =
-    callVirtualBase_itemTextRect(QProxyStyle(h: self), fm, r, flags, enabled, text)
+  var nimfunc = cast[ptr QProxyStyleitemTextRectProc](cast[pointer](slot))
   let slotval1 = gen_qfontmetrics.QFontMetrics(h: fm)
 
   let slotval2 = gen_qrect.QRect(h: r)
@@ -683,28 +619,23 @@ proc miqt_exec_callback_QProxyStyle_itemTextRect(self: ptr cQProxyStyle, slot: i
   let slotval5 = vtextx_ret
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3, slotval4, slotval5 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3, slotval4, slotval5 )
 
   virtualReturn.h
-proc callVirtualBase_itemPixmapRect(self: QProxyStyle, r: gen_qrect.QRect, flags: cint, pixmap: gen_qpixmap.QPixmap): gen_qrect.QRect =
-
+proc QProxyStyleitemPixmapRect*(self: gen_qproxystyle_types.QProxyStyle, r: gen_qrect.QRect, flags: cint, pixmap: gen_qpixmap.QPixmap): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fQProxyStyle_virtualbase_itemPixmapRect(self.h, r.h, flags, pixmap.h))
 
-type QProxyStyleitemPixmapRectBase* = proc(r: gen_qrect.QRect, flags: cint, pixmap: gen_qpixmap.QPixmap): gen_qrect.QRect
-proc onitemPixmapRect*(self: QProxyStyle, slot: proc(super: QProxyStyleitemPixmapRectBase, r: gen_qrect.QRect, flags: cint, pixmap: gen_qpixmap.QPixmap): gen_qrect.QRect) =
+type QProxyStyleitemPixmapRectProc* = proc(r: gen_qrect.QRect, flags: cint, pixmap: gen_qpixmap.QPixmap): gen_qrect.QRect
+proc onitemPixmapRect*(self: gen_qproxystyle_types.QProxyStyle, slot: QProxyStyleitemPixmapRectProc) =
   # TODO check subclass
-  type Cb = proc(super: QProxyStyleitemPixmapRectBase, r: gen_qrect.QRect, flags: cint, pixmap: gen_qpixmap.QPixmap): gen_qrect.QRect
-  var tmp = new Cb
+  var tmp = new QProxyStyleitemPixmapRectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProxyStyle_override_virtual_itemPixmapRect(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProxyStyle_itemPixmapRect(self: ptr cQProxyStyle, slot: int, r: pointer, flags: cint, pixmap: pointer): pointer {.exportc: "miqt_exec_callback_QProxyStyle_itemPixmapRect ".} =
-  type Cb = proc(super: QProxyStyleitemPixmapRectBase, r: gen_qrect.QRect, flags: cint, pixmap: gen_qpixmap.QPixmap): gen_qrect.QRect
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(r: gen_qrect.QRect, flags: cint, pixmap: gen_qpixmap.QPixmap): auto =
-    callVirtualBase_itemPixmapRect(QProxyStyle(h: self), r, flags, pixmap)
+  var nimfunc = cast[ptr QProxyStyleitemPixmapRectProc](cast[pointer](slot))
   let slotval1 = gen_qrect.QRect(h: r)
 
   let slotval2 = flags
@@ -712,29 +643,24 @@ proc miqt_exec_callback_QProxyStyle_itemPixmapRect(self: ptr cQProxyStyle, slot:
   let slotval3 = gen_qpixmap.QPixmap(h: pixmap)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn.h
-proc callVirtualBase_hitTestComplexControl(self: QProxyStyle, control: gen_qstyle.QStyleComplexControl, option: gen_qstyleoption.QStyleOptionComplex, pos: gen_qpoint.QPoint, widget: gen_qwidget.QWidget): gen_qstyle.QStyleSubControl =
+proc QProxyStylehitTestComplexControl*(self: gen_qproxystyle_types.QProxyStyle, control: cint, option: gen_qstyleoption.QStyleOptionComplex, pos: gen_qpoint.QPoint, widget: gen_qwidget.QWidget): cint =
 
+  cint(fQProxyStyle_virtualbase_hitTestComplexControl(self.h, cint(control), option.h, pos.h, widget.h))
 
-  gen_qstyle.QStyleSubControl(fQProxyStyle_virtualbase_hitTestComplexControl(self.h, cint(control), option.h, pos.h, widget.h))
-
-type QProxyStylehitTestComplexControlBase* = proc(control: gen_qstyle.QStyleComplexControl, option: gen_qstyleoption.QStyleOptionComplex, pos: gen_qpoint.QPoint, widget: gen_qwidget.QWidget): gen_qstyle.QStyleSubControl
-proc onhitTestComplexControl*(self: QProxyStyle, slot: proc(super: QProxyStylehitTestComplexControlBase, control: gen_qstyle.QStyleComplexControl, option: gen_qstyleoption.QStyleOptionComplex, pos: gen_qpoint.QPoint, widget: gen_qwidget.QWidget): gen_qstyle.QStyleSubControl) =
+type QProxyStylehitTestComplexControlProc* = proc(control: cint, option: gen_qstyleoption.QStyleOptionComplex, pos: gen_qpoint.QPoint, widget: gen_qwidget.QWidget): cint
+proc onhitTestComplexControl*(self: gen_qproxystyle_types.QProxyStyle, slot: QProxyStylehitTestComplexControlProc) =
   # TODO check subclass
-  type Cb = proc(super: QProxyStylehitTestComplexControlBase, control: gen_qstyle.QStyleComplexControl, option: gen_qstyleoption.QStyleOptionComplex, pos: gen_qpoint.QPoint, widget: gen_qwidget.QWidget): gen_qstyle.QStyleSubControl
-  var tmp = new Cb
+  var tmp = new QProxyStylehitTestComplexControlProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProxyStyle_override_virtual_hitTestComplexControl(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProxyStyle_hitTestComplexControl(self: ptr cQProxyStyle, slot: int, control: cint, option: pointer, pos: pointer, widget: pointer): cint {.exportc: "miqt_exec_callback_QProxyStyle_hitTestComplexControl ".} =
-  type Cb = proc(super: QProxyStylehitTestComplexControlBase, control: gen_qstyle.QStyleComplexControl, option: gen_qstyleoption.QStyleOptionComplex, pos: gen_qpoint.QPoint, widget: gen_qwidget.QWidget): gen_qstyle.QStyleSubControl
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(control: gen_qstyle.QStyleComplexControl, option: gen_qstyleoption.QStyleOptionComplex, pos: gen_qpoint.QPoint, widget: gen_qwidget.QWidget): auto =
-    callVirtualBase_hitTestComplexControl(QProxyStyle(h: self), control, option, pos, widget)
-  let slotval1 = gen_qstyle.QStyleComplexControl(control)
+  var nimfunc = cast[ptr QProxyStylehitTestComplexControlProc](cast[pointer](slot))
+  let slotval1 = cint(control)
 
   let slotval2 = gen_qstyleoption.QStyleOptionComplex(h: option)
 
@@ -743,29 +669,24 @@ proc miqt_exec_callback_QProxyStyle_hitTestComplexControl(self: ptr cQProxyStyle
   let slotval4 = gen_qwidget.QWidget(h: widget)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3, slotval4 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3, slotval4 )
 
   cint(virtualReturn)
-proc callVirtualBase_styleHint(self: QProxyStyle, hint: gen_qstyle.QStyleStyleHint, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget, returnData: gen_qstyleoption.QStyleHintReturn): cint =
-
+proc QProxyStylestyleHint*(self: gen_qproxystyle_types.QProxyStyle, hint: cint, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget, returnData: gen_qstyleoption.QStyleHintReturn): cint =
 
   fQProxyStyle_virtualbase_styleHint(self.h, cint(hint), option.h, widget.h, returnData.h)
 
-type QProxyStylestyleHintBase* = proc(hint: gen_qstyle.QStyleStyleHint, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget, returnData: gen_qstyleoption.QStyleHintReturn): cint
-proc onstyleHint*(self: QProxyStyle, slot: proc(super: QProxyStylestyleHintBase, hint: gen_qstyle.QStyleStyleHint, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget, returnData: gen_qstyleoption.QStyleHintReturn): cint) =
+type QProxyStylestyleHintProc* = proc(hint: cint, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget, returnData: gen_qstyleoption.QStyleHintReturn): cint
+proc onstyleHint*(self: gen_qproxystyle_types.QProxyStyle, slot: QProxyStylestyleHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QProxyStylestyleHintBase, hint: gen_qstyle.QStyleStyleHint, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget, returnData: gen_qstyleoption.QStyleHintReturn): cint
-  var tmp = new Cb
+  var tmp = new QProxyStylestyleHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProxyStyle_override_virtual_styleHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProxyStyle_styleHint(self: ptr cQProxyStyle, slot: int, hint: cint, option: pointer, widget: pointer, returnData: pointer): cint {.exportc: "miqt_exec_callback_QProxyStyle_styleHint ".} =
-  type Cb = proc(super: QProxyStylestyleHintBase, hint: gen_qstyle.QStyleStyleHint, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget, returnData: gen_qstyleoption.QStyleHintReturn): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(hint: gen_qstyle.QStyleStyleHint, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget, returnData: gen_qstyleoption.QStyleHintReturn): auto =
-    callVirtualBase_styleHint(QProxyStyle(h: self), hint, option, widget, returnData)
-  let slotval1 = gen_qstyle.QStyleStyleHint(hint)
+  var nimfunc = cast[ptr QProxyStylestyleHintProc](cast[pointer](slot))
+  let slotval1 = cint(hint)
 
   let slotval2 = gen_qstyleoption.QStyleOption(h: option)
 
@@ -774,464 +695,374 @@ proc miqt_exec_callback_QProxyStyle_styleHint(self: ptr cQProxyStyle, slot: int,
   let slotval4 = gen_qstyleoption.QStyleHintReturn(h: returnData)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3, slotval4 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3, slotval4 )
 
   virtualReturn
-proc callVirtualBase_pixelMetric(self: QProxyStyle, metric: gen_qstyle.QStylePixelMetric, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): cint =
-
+proc QProxyStylepixelMetric*(self: gen_qproxystyle_types.QProxyStyle, metric: cint, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): cint =
 
   fQProxyStyle_virtualbase_pixelMetric(self.h, cint(metric), option.h, widget.h)
 
-type QProxyStylepixelMetricBase* = proc(metric: gen_qstyle.QStylePixelMetric, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): cint
-proc onpixelMetric*(self: QProxyStyle, slot: proc(super: QProxyStylepixelMetricBase, metric: gen_qstyle.QStylePixelMetric, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): cint) =
+type QProxyStylepixelMetricProc* = proc(metric: cint, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): cint
+proc onpixelMetric*(self: gen_qproxystyle_types.QProxyStyle, slot: QProxyStylepixelMetricProc) =
   # TODO check subclass
-  type Cb = proc(super: QProxyStylepixelMetricBase, metric: gen_qstyle.QStylePixelMetric, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): cint
-  var tmp = new Cb
+  var tmp = new QProxyStylepixelMetricProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProxyStyle_override_virtual_pixelMetric(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProxyStyle_pixelMetric(self: ptr cQProxyStyle, slot: int, metric: cint, option: pointer, widget: pointer): cint {.exportc: "miqt_exec_callback_QProxyStyle_pixelMetric ".} =
-  type Cb = proc(super: QProxyStylepixelMetricBase, metric: gen_qstyle.QStylePixelMetric, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(metric: gen_qstyle.QStylePixelMetric, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): auto =
-    callVirtualBase_pixelMetric(QProxyStyle(h: self), metric, option, widget)
-  let slotval1 = gen_qstyle.QStylePixelMetric(metric)
+  var nimfunc = cast[ptr QProxyStylepixelMetricProc](cast[pointer](slot))
+  let slotval1 = cint(metric)
 
   let slotval2 = gen_qstyleoption.QStyleOption(h: option)
 
   let slotval3 = gen_qwidget.QWidget(h: widget)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_layoutSpacing(self: QProxyStyle, control1: gen_qsizepolicy.QSizePolicyControlType, control2: gen_qsizepolicy.QSizePolicyControlType, orientation: gen_qnamespace.Orientation, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): cint =
-
+proc QProxyStylelayoutSpacing*(self: gen_qproxystyle_types.QProxyStyle, control1: cint, control2: cint, orientation: cint, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): cint =
 
   fQProxyStyle_virtualbase_layoutSpacing(self.h, cint(control1), cint(control2), cint(orientation), option.h, widget.h)
 
-type QProxyStylelayoutSpacingBase* = proc(control1: gen_qsizepolicy.QSizePolicyControlType, control2: gen_qsizepolicy.QSizePolicyControlType, orientation: gen_qnamespace.Orientation, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): cint
-proc onlayoutSpacing*(self: QProxyStyle, slot: proc(super: QProxyStylelayoutSpacingBase, control1: gen_qsizepolicy.QSizePolicyControlType, control2: gen_qsizepolicy.QSizePolicyControlType, orientation: gen_qnamespace.Orientation, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): cint) =
+type QProxyStylelayoutSpacingProc* = proc(control1: cint, control2: cint, orientation: cint, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): cint
+proc onlayoutSpacing*(self: gen_qproxystyle_types.QProxyStyle, slot: QProxyStylelayoutSpacingProc) =
   # TODO check subclass
-  type Cb = proc(super: QProxyStylelayoutSpacingBase, control1: gen_qsizepolicy.QSizePolicyControlType, control2: gen_qsizepolicy.QSizePolicyControlType, orientation: gen_qnamespace.Orientation, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): cint
-  var tmp = new Cb
+  var tmp = new QProxyStylelayoutSpacingProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProxyStyle_override_virtual_layoutSpacing(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProxyStyle_layoutSpacing(self: ptr cQProxyStyle, slot: int, control1: cint, control2: cint, orientation: cint, option: pointer, widget: pointer): cint {.exportc: "miqt_exec_callback_QProxyStyle_layoutSpacing ".} =
-  type Cb = proc(super: QProxyStylelayoutSpacingBase, control1: gen_qsizepolicy.QSizePolicyControlType, control2: gen_qsizepolicy.QSizePolicyControlType, orientation: gen_qnamespace.Orientation, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(control1: gen_qsizepolicy.QSizePolicyControlType, control2: gen_qsizepolicy.QSizePolicyControlType, orientation: gen_qnamespace.Orientation, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): auto =
-    callVirtualBase_layoutSpacing(QProxyStyle(h: self), control1, control2, orientation, option, widget)
-  let slotval1 = gen_qsizepolicy.QSizePolicyControlType(control1)
+  var nimfunc = cast[ptr QProxyStylelayoutSpacingProc](cast[pointer](slot))
+  let slotval1 = cint(control1)
 
-  let slotval2 = gen_qsizepolicy.QSizePolicyControlType(control2)
+  let slotval2 = cint(control2)
 
-  let slotval3 = gen_qnamespace.Orientation(orientation)
+  let slotval3 = cint(orientation)
 
   let slotval4 = gen_qstyleoption.QStyleOption(h: option)
 
   let slotval5 = gen_qwidget.QWidget(h: widget)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3, slotval4, slotval5 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3, slotval4, slotval5 )
 
   virtualReturn
-proc callVirtualBase_standardIcon(self: QProxyStyle, standardIcon: gen_qstyle.QStyleStandardPixmap, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qicon.QIcon =
-
+proc QProxyStylestandardIcon*(self: gen_qproxystyle_types.QProxyStyle, standardIcon: cint, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qicon.QIcon =
 
   gen_qicon.QIcon(h: fQProxyStyle_virtualbase_standardIcon(self.h, cint(standardIcon), option.h, widget.h))
 
-type QProxyStylestandardIconBase* = proc(standardIcon: gen_qstyle.QStyleStandardPixmap, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qicon.QIcon
-proc onstandardIcon*(self: QProxyStyle, slot: proc(super: QProxyStylestandardIconBase, standardIcon: gen_qstyle.QStyleStandardPixmap, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qicon.QIcon) =
+type QProxyStylestandardIconProc* = proc(standardIcon: cint, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qicon.QIcon
+proc onstandardIcon*(self: gen_qproxystyle_types.QProxyStyle, slot: QProxyStylestandardIconProc) =
   # TODO check subclass
-  type Cb = proc(super: QProxyStylestandardIconBase, standardIcon: gen_qstyle.QStyleStandardPixmap, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qicon.QIcon
-  var tmp = new Cb
+  var tmp = new QProxyStylestandardIconProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProxyStyle_override_virtual_standardIcon(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProxyStyle_standardIcon(self: ptr cQProxyStyle, slot: int, standardIcon: cint, option: pointer, widget: pointer): pointer {.exportc: "miqt_exec_callback_QProxyStyle_standardIcon ".} =
-  type Cb = proc(super: QProxyStylestandardIconBase, standardIcon: gen_qstyle.QStyleStandardPixmap, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qicon.QIcon
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(standardIcon: gen_qstyle.QStyleStandardPixmap, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): auto =
-    callVirtualBase_standardIcon(QProxyStyle(h: self), standardIcon, option, widget)
-  let slotval1 = gen_qstyle.QStyleStandardPixmap(standardIcon)
+  var nimfunc = cast[ptr QProxyStylestandardIconProc](cast[pointer](slot))
+  let slotval1 = cint(standardIcon)
 
   let slotval2 = gen_qstyleoption.QStyleOption(h: option)
 
   let slotval3 = gen_qwidget.QWidget(h: widget)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn.h
-proc callVirtualBase_standardPixmap(self: QProxyStyle, standardPixmap: gen_qstyle.QStyleStandardPixmap, opt: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qpixmap.QPixmap =
-
+proc QProxyStylestandardPixmap*(self: gen_qproxystyle_types.QProxyStyle, standardPixmap: cint, opt: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qpixmap.QPixmap =
 
   gen_qpixmap.QPixmap(h: fQProxyStyle_virtualbase_standardPixmap(self.h, cint(standardPixmap), opt.h, widget.h))
 
-type QProxyStylestandardPixmapBase* = proc(standardPixmap: gen_qstyle.QStyleStandardPixmap, opt: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qpixmap.QPixmap
-proc onstandardPixmap*(self: QProxyStyle, slot: proc(super: QProxyStylestandardPixmapBase, standardPixmap: gen_qstyle.QStyleStandardPixmap, opt: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qpixmap.QPixmap) =
+type QProxyStylestandardPixmapProc* = proc(standardPixmap: cint, opt: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qpixmap.QPixmap
+proc onstandardPixmap*(self: gen_qproxystyle_types.QProxyStyle, slot: QProxyStylestandardPixmapProc) =
   # TODO check subclass
-  type Cb = proc(super: QProxyStylestandardPixmapBase, standardPixmap: gen_qstyle.QStyleStandardPixmap, opt: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qpixmap.QPixmap
-  var tmp = new Cb
+  var tmp = new QProxyStylestandardPixmapProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProxyStyle_override_virtual_standardPixmap(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProxyStyle_standardPixmap(self: ptr cQProxyStyle, slot: int, standardPixmap: cint, opt: pointer, widget: pointer): pointer {.exportc: "miqt_exec_callback_QProxyStyle_standardPixmap ".} =
-  type Cb = proc(super: QProxyStylestandardPixmapBase, standardPixmap: gen_qstyle.QStyleStandardPixmap, opt: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qpixmap.QPixmap
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(standardPixmap: gen_qstyle.QStyleStandardPixmap, opt: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): auto =
-    callVirtualBase_standardPixmap(QProxyStyle(h: self), standardPixmap, opt, widget)
-  let slotval1 = gen_qstyle.QStyleStandardPixmap(standardPixmap)
+  var nimfunc = cast[ptr QProxyStylestandardPixmapProc](cast[pointer](slot))
+  let slotval1 = cint(standardPixmap)
 
   let slotval2 = gen_qstyleoption.QStyleOption(h: opt)
 
   let slotval3 = gen_qwidget.QWidget(h: widget)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn.h
-proc callVirtualBase_generatedIconPixmap(self: QProxyStyle, iconMode: gen_qicon.QIconMode, pixmap: gen_qpixmap.QPixmap, opt: gen_qstyleoption.QStyleOption): gen_qpixmap.QPixmap =
-
+proc QProxyStylegeneratedIconPixmap*(self: gen_qproxystyle_types.QProxyStyle, iconMode: cint, pixmap: gen_qpixmap.QPixmap, opt: gen_qstyleoption.QStyleOption): gen_qpixmap.QPixmap =
 
   gen_qpixmap.QPixmap(h: fQProxyStyle_virtualbase_generatedIconPixmap(self.h, cint(iconMode), pixmap.h, opt.h))
 
-type QProxyStylegeneratedIconPixmapBase* = proc(iconMode: gen_qicon.QIconMode, pixmap: gen_qpixmap.QPixmap, opt: gen_qstyleoption.QStyleOption): gen_qpixmap.QPixmap
-proc ongeneratedIconPixmap*(self: QProxyStyle, slot: proc(super: QProxyStylegeneratedIconPixmapBase, iconMode: gen_qicon.QIconMode, pixmap: gen_qpixmap.QPixmap, opt: gen_qstyleoption.QStyleOption): gen_qpixmap.QPixmap) =
+type QProxyStylegeneratedIconPixmapProc* = proc(iconMode: cint, pixmap: gen_qpixmap.QPixmap, opt: gen_qstyleoption.QStyleOption): gen_qpixmap.QPixmap
+proc ongeneratedIconPixmap*(self: gen_qproxystyle_types.QProxyStyle, slot: QProxyStylegeneratedIconPixmapProc) =
   # TODO check subclass
-  type Cb = proc(super: QProxyStylegeneratedIconPixmapBase, iconMode: gen_qicon.QIconMode, pixmap: gen_qpixmap.QPixmap, opt: gen_qstyleoption.QStyleOption): gen_qpixmap.QPixmap
-  var tmp = new Cb
+  var tmp = new QProxyStylegeneratedIconPixmapProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProxyStyle_override_virtual_generatedIconPixmap(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProxyStyle_generatedIconPixmap(self: ptr cQProxyStyle, slot: int, iconMode: cint, pixmap: pointer, opt: pointer): pointer {.exportc: "miqt_exec_callback_QProxyStyle_generatedIconPixmap ".} =
-  type Cb = proc(super: QProxyStylegeneratedIconPixmapBase, iconMode: gen_qicon.QIconMode, pixmap: gen_qpixmap.QPixmap, opt: gen_qstyleoption.QStyleOption): gen_qpixmap.QPixmap
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(iconMode: gen_qicon.QIconMode, pixmap: gen_qpixmap.QPixmap, opt: gen_qstyleoption.QStyleOption): auto =
-    callVirtualBase_generatedIconPixmap(QProxyStyle(h: self), iconMode, pixmap, opt)
-  let slotval1 = gen_qicon.QIconMode(iconMode)
+  var nimfunc = cast[ptr QProxyStylegeneratedIconPixmapProc](cast[pointer](slot))
+  let slotval1 = cint(iconMode)
 
   let slotval2 = gen_qpixmap.QPixmap(h: pixmap)
 
   let slotval3 = gen_qstyleoption.QStyleOption(h: opt)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn.h
-proc callVirtualBase_standardPalette(self: QProxyStyle, ): gen_qpalette.QPalette =
-
+proc QProxyStylestandardPalette*(self: gen_qproxystyle_types.QProxyStyle, ): gen_qpalette.QPalette =
 
   gen_qpalette.QPalette(h: fQProxyStyle_virtualbase_standardPalette(self.h))
 
-type QProxyStylestandardPaletteBase* = proc(): gen_qpalette.QPalette
-proc onstandardPalette*(self: QProxyStyle, slot: proc(super: QProxyStylestandardPaletteBase): gen_qpalette.QPalette) =
+type QProxyStylestandardPaletteProc* = proc(): gen_qpalette.QPalette
+proc onstandardPalette*(self: gen_qproxystyle_types.QProxyStyle, slot: QProxyStylestandardPaletteProc) =
   # TODO check subclass
-  type Cb = proc(super: QProxyStylestandardPaletteBase): gen_qpalette.QPalette
-  var tmp = new Cb
+  var tmp = new QProxyStylestandardPaletteProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProxyStyle_override_virtual_standardPalette(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProxyStyle_standardPalette(self: ptr cQProxyStyle, slot: int): pointer {.exportc: "miqt_exec_callback_QProxyStyle_standardPalette ".} =
-  type Cb = proc(super: QProxyStylestandardPaletteBase): gen_qpalette.QPalette
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_standardPalette(QProxyStyle(h: self), )
+  var nimfunc = cast[ptr QProxyStylestandardPaletteProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_polish(self: QProxyStyle, widget: gen_qwidget.QWidget): void =
-
+proc QProxyStylepolish*(self: gen_qproxystyle_types.QProxyStyle, widget: gen_qwidget.QWidget): void =
 
   fQProxyStyle_virtualbase_polish(self.h, widget.h)
 
-type QProxyStylepolishBase* = proc(widget: gen_qwidget.QWidget): void
-proc onpolish*(self: QProxyStyle, slot: proc(super: QProxyStylepolishBase, widget: gen_qwidget.QWidget): void) =
+type QProxyStylepolishProc* = proc(widget: gen_qwidget.QWidget): void
+proc onpolish*(self: gen_qproxystyle_types.QProxyStyle, slot: QProxyStylepolishProc) =
   # TODO check subclass
-  type Cb = proc(super: QProxyStylepolishBase, widget: gen_qwidget.QWidget): void
-  var tmp = new Cb
+  var tmp = new QProxyStylepolishProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProxyStyle_override_virtual_polish(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProxyStyle_polish(self: ptr cQProxyStyle, slot: int, widget: pointer): void {.exportc: "miqt_exec_callback_QProxyStyle_polish ".} =
-  type Cb = proc(super: QProxyStylepolishBase, widget: gen_qwidget.QWidget): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(widget: gen_qwidget.QWidget): auto =
-    callVirtualBase_polish(QProxyStyle(h: self), widget)
+  var nimfunc = cast[ptr QProxyStylepolishProc](cast[pointer](slot))
   let slotval1 = gen_qwidget.QWidget(h: widget)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_polishWithPal(self: QProxyStyle, pal: gen_qpalette.QPalette): void =
-
+  nimfunc[](slotval1)
+proc QProxyStylepolishWithPal*(self: gen_qproxystyle_types.QProxyStyle, pal: gen_qpalette.QPalette): void =
 
   fQProxyStyle_virtualbase_polishWithPal(self.h, pal.h)
 
-type QProxyStylepolishWithPalBase* = proc(pal: gen_qpalette.QPalette): void
-proc onpolishWithPal*(self: QProxyStyle, slot: proc(super: QProxyStylepolishWithPalBase, pal: gen_qpalette.QPalette): void) =
+type QProxyStylepolishWithPalProc* = proc(pal: gen_qpalette.QPalette): void
+proc onpolishWithPal*(self: gen_qproxystyle_types.QProxyStyle, slot: QProxyStylepolishWithPalProc) =
   # TODO check subclass
-  type Cb = proc(super: QProxyStylepolishWithPalBase, pal: gen_qpalette.QPalette): void
-  var tmp = new Cb
+  var tmp = new QProxyStylepolishWithPalProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProxyStyle_override_virtual_polishWithPal(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProxyStyle_polishWithPal(self: ptr cQProxyStyle, slot: int, pal: pointer): void {.exportc: "miqt_exec_callback_QProxyStyle_polishWithPal ".} =
-  type Cb = proc(super: QProxyStylepolishWithPalBase, pal: gen_qpalette.QPalette): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(pal: gen_qpalette.QPalette): auto =
-    callVirtualBase_polishWithPal(QProxyStyle(h: self), pal)
+  var nimfunc = cast[ptr QProxyStylepolishWithPalProc](cast[pointer](slot))
   let slotval1 = gen_qpalette.QPalette(h: pal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_polishWithApp(self: QProxyStyle, app: gen_qapplication.QApplication): void =
-
+  nimfunc[](slotval1)
+proc QProxyStylepolishWithApp*(self: gen_qproxystyle_types.QProxyStyle, app: gen_qapplication.QApplication): void =
 
   fQProxyStyle_virtualbase_polishWithApp(self.h, app.h)
 
-type QProxyStylepolishWithAppBase* = proc(app: gen_qapplication.QApplication): void
-proc onpolishWithApp*(self: QProxyStyle, slot: proc(super: QProxyStylepolishWithAppBase, app: gen_qapplication.QApplication): void) =
+type QProxyStylepolishWithAppProc* = proc(app: gen_qapplication.QApplication): void
+proc onpolishWithApp*(self: gen_qproxystyle_types.QProxyStyle, slot: QProxyStylepolishWithAppProc) =
   # TODO check subclass
-  type Cb = proc(super: QProxyStylepolishWithAppBase, app: gen_qapplication.QApplication): void
-  var tmp = new Cb
+  var tmp = new QProxyStylepolishWithAppProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProxyStyle_override_virtual_polishWithApp(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProxyStyle_polishWithApp(self: ptr cQProxyStyle, slot: int, app: pointer): void {.exportc: "miqt_exec_callback_QProxyStyle_polishWithApp ".} =
-  type Cb = proc(super: QProxyStylepolishWithAppBase, app: gen_qapplication.QApplication): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(app: gen_qapplication.QApplication): auto =
-    callVirtualBase_polishWithApp(QProxyStyle(h: self), app)
+  var nimfunc = cast[ptr QProxyStylepolishWithAppProc](cast[pointer](slot))
   let slotval1 = gen_qapplication.QApplication(h: app)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_unpolish(self: QProxyStyle, widget: gen_qwidget.QWidget): void =
-
+  nimfunc[](slotval1)
+proc QProxyStyleunpolish*(self: gen_qproxystyle_types.QProxyStyle, widget: gen_qwidget.QWidget): void =
 
   fQProxyStyle_virtualbase_unpolish(self.h, widget.h)
 
-type QProxyStyleunpolishBase* = proc(widget: gen_qwidget.QWidget): void
-proc onunpolish*(self: QProxyStyle, slot: proc(super: QProxyStyleunpolishBase, widget: gen_qwidget.QWidget): void) =
+type QProxyStyleunpolishProc* = proc(widget: gen_qwidget.QWidget): void
+proc onunpolish*(self: gen_qproxystyle_types.QProxyStyle, slot: QProxyStyleunpolishProc) =
   # TODO check subclass
-  type Cb = proc(super: QProxyStyleunpolishBase, widget: gen_qwidget.QWidget): void
-  var tmp = new Cb
+  var tmp = new QProxyStyleunpolishProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProxyStyle_override_virtual_unpolish(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProxyStyle_unpolish(self: ptr cQProxyStyle, slot: int, widget: pointer): void {.exportc: "miqt_exec_callback_QProxyStyle_unpolish ".} =
-  type Cb = proc(super: QProxyStyleunpolishBase, widget: gen_qwidget.QWidget): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(widget: gen_qwidget.QWidget): auto =
-    callVirtualBase_unpolish(QProxyStyle(h: self), widget)
+  var nimfunc = cast[ptr QProxyStyleunpolishProc](cast[pointer](slot))
   let slotval1 = gen_qwidget.QWidget(h: widget)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_unpolishWithApp(self: QProxyStyle, app: gen_qapplication.QApplication): void =
-
+  nimfunc[](slotval1)
+proc QProxyStyleunpolishWithApp*(self: gen_qproxystyle_types.QProxyStyle, app: gen_qapplication.QApplication): void =
 
   fQProxyStyle_virtualbase_unpolishWithApp(self.h, app.h)
 
-type QProxyStyleunpolishWithAppBase* = proc(app: gen_qapplication.QApplication): void
-proc onunpolishWithApp*(self: QProxyStyle, slot: proc(super: QProxyStyleunpolishWithAppBase, app: gen_qapplication.QApplication): void) =
+type QProxyStyleunpolishWithAppProc* = proc(app: gen_qapplication.QApplication): void
+proc onunpolishWithApp*(self: gen_qproxystyle_types.QProxyStyle, slot: QProxyStyleunpolishWithAppProc) =
   # TODO check subclass
-  type Cb = proc(super: QProxyStyleunpolishWithAppBase, app: gen_qapplication.QApplication): void
-  var tmp = new Cb
+  var tmp = new QProxyStyleunpolishWithAppProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProxyStyle_override_virtual_unpolishWithApp(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProxyStyle_unpolishWithApp(self: ptr cQProxyStyle, slot: int, app: pointer): void {.exportc: "miqt_exec_callback_QProxyStyle_unpolishWithApp ".} =
-  type Cb = proc(super: QProxyStyleunpolishWithAppBase, app: gen_qapplication.QApplication): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(app: gen_qapplication.QApplication): auto =
-    callVirtualBase_unpolishWithApp(QProxyStyle(h: self), app)
+  var nimfunc = cast[ptr QProxyStyleunpolishWithAppProc](cast[pointer](slot))
   let slotval1 = gen_qapplication.QApplication(h: app)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_event(self: QProxyStyle, e: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[](slotval1)
+proc QProxyStyleevent*(self: gen_qproxystyle_types.QProxyStyle, e: gen_qcoreevent.QEvent): bool =
 
   fQProxyStyle_virtualbase_event(self.h, e.h)
 
-type QProxyStyleeventBase* = proc(e: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QProxyStyle, slot: proc(super: QProxyStyleeventBase, e: gen_qcoreevent.QEvent): bool) =
+type QProxyStyleeventProc* = proc(e: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qproxystyle_types.QProxyStyle, slot: QProxyStyleeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProxyStyleeventBase, e: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QProxyStyleeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProxyStyle_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProxyStyle_event(self: ptr cQProxyStyle, slot: int, e: pointer): bool {.exportc: "miqt_exec_callback_QProxyStyle_event ".} =
-  type Cb = proc(super: QProxyStyleeventBase, e: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QProxyStyle(h: self), e)
+  var nimfunc = cast[ptr QProxyStyleeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: e)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QProxyStyle, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QProxyStyleeventFilter*(self: gen_qproxystyle_types.QProxyStyle, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQProxyStyle_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QProxyStyleeventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QProxyStyle, slot: proc(super: QProxyStyleeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QProxyStyleeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qproxystyle_types.QProxyStyle, slot: QProxyStyleeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QProxyStyleeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QProxyStyleeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProxyStyle_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProxyStyle_eventFilter(self: ptr cQProxyStyle, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QProxyStyle_eventFilter ".} =
-  type Cb = proc(super: QProxyStyleeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QProxyStyle(h: self), watched, event)
+  var nimfunc = cast[ptr QProxyStyleeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QProxyStyle, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QProxyStyletimerEvent*(self: gen_qproxystyle_types.QProxyStyle, event: gen_qcoreevent.QTimerEvent): void =
 
   fQProxyStyle_virtualbase_timerEvent(self.h, event.h)
 
-type QProxyStyletimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QProxyStyle, slot: proc(super: QProxyStyletimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QProxyStyletimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qproxystyle_types.QProxyStyle, slot: QProxyStyletimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProxyStyletimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QProxyStyletimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProxyStyle_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProxyStyle_timerEvent(self: ptr cQProxyStyle, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QProxyStyle_timerEvent ".} =
-  type Cb = proc(super: QProxyStyletimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QProxyStyle(h: self), event)
+  var nimfunc = cast[ptr QProxyStyletimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QProxyStyle, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QProxyStylechildEvent*(self: gen_qproxystyle_types.QProxyStyle, event: gen_qcoreevent.QChildEvent): void =
 
   fQProxyStyle_virtualbase_childEvent(self.h, event.h)
 
-type QProxyStylechildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QProxyStyle, slot: proc(super: QProxyStylechildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QProxyStylechildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qproxystyle_types.QProxyStyle, slot: QProxyStylechildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProxyStylechildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QProxyStylechildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProxyStyle_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProxyStyle_childEvent(self: ptr cQProxyStyle, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QProxyStyle_childEvent ".} =
-  type Cb = proc(super: QProxyStylechildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QProxyStyle(h: self), event)
+  var nimfunc = cast[ptr QProxyStylechildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QProxyStyle, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QProxyStylecustomEvent*(self: gen_qproxystyle_types.QProxyStyle, event: gen_qcoreevent.QEvent): void =
 
   fQProxyStyle_virtualbase_customEvent(self.h, event.h)
 
-type QProxyStylecustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QProxyStyle, slot: proc(super: QProxyStylecustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QProxyStylecustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qproxystyle_types.QProxyStyle, slot: QProxyStylecustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProxyStylecustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QProxyStylecustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProxyStyle_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProxyStyle_customEvent(self: ptr cQProxyStyle, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QProxyStyle_customEvent ".} =
-  type Cb = proc(super: QProxyStylecustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QProxyStyle(h: self), event)
+  var nimfunc = cast[ptr QProxyStylecustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QProxyStyle, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QProxyStyleconnectNotify*(self: gen_qproxystyle_types.QProxyStyle, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQProxyStyle_virtualbase_connectNotify(self.h, signal.h)
 
-type QProxyStyleconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QProxyStyle, slot: proc(super: QProxyStyleconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QProxyStyleconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qproxystyle_types.QProxyStyle, slot: QProxyStyleconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QProxyStyleconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QProxyStyleconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProxyStyle_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProxyStyle_connectNotify(self: ptr cQProxyStyle, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QProxyStyle_connectNotify ".} =
-  type Cb = proc(super: QProxyStyleconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QProxyStyle(h: self), signal)
+  var nimfunc = cast[ptr QProxyStyleconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QProxyStyle, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QProxyStyledisconnectNotify*(self: gen_qproxystyle_types.QProxyStyle, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQProxyStyle_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QProxyStyledisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QProxyStyle, slot: proc(super: QProxyStyledisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QProxyStyledisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qproxystyle_types.QProxyStyle, slot: QProxyStyledisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QProxyStyledisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QProxyStyledisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProxyStyle_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProxyStyle_disconnectNotify(self: ptr cQProxyStyle, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QProxyStyle_disconnectNotify ".} =
-  type Cb = proc(super: QProxyStyledisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QProxyStyle(h: self), signal)
+  var nimfunc = cast[ptr QProxyStyledisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QProxyStyle): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qproxystyle_types.QProxyStyle): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQProxyStyle_staticMetaObject())
-proc delete*(self: QProxyStyle) =
+proc delete*(self: gen_qproxystyle_types.QProxyStyle) =
   fcQProxyStyle_delete(self.h)

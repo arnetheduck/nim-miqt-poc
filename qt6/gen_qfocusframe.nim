@@ -41,7 +41,6 @@ import
   gen_qcoreevent,
   gen_qevent,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -56,7 +55,6 @@ export
   gen_qcoreevent,
   gen_qevent,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -186,941 +184,751 @@ proc fcQFocusFrame_staticMetaObject(): pointer {.importc: "QFocusFrame_staticMet
 proc fcQFocusFrame_delete(self: pointer) {.importc: "QFocusFrame_delete".}
 
 
-func init*(T: type QFocusFrame, h: ptr cQFocusFrame): QFocusFrame =
+func init*(T: type gen_qfocusframe_types.QFocusFrame, h: ptr cQFocusFrame): gen_qfocusframe_types.QFocusFrame =
   T(h: h)
-proc create*(T: type QFocusFrame, parent: gen_qwidget.QWidget): QFocusFrame =
+proc create*(T: type gen_qfocusframe_types.QFocusFrame, parent: gen_qwidget.QWidget): gen_qfocusframe_types.QFocusFrame =
 
-  QFocusFrame.init(fcQFocusFrame_new(parent.h))
-proc create*(T: type QFocusFrame, ): QFocusFrame =
+  gen_qfocusframe_types.QFocusFrame.init(fcQFocusFrame_new(parent.h))
+proc create*(T: type gen_qfocusframe_types.QFocusFrame, ): gen_qfocusframe_types.QFocusFrame =
 
-  QFocusFrame.init(fcQFocusFrame_new2())
-proc metaObject*(self: QFocusFrame, ): gen_qobjectdefs.QMetaObject =
+  gen_qfocusframe_types.QFocusFrame.init(fcQFocusFrame_new2())
+proc metaObject*(self: gen_qfocusframe_types.QFocusFrame, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQFocusFrame_metaObject(self.h))
 
-proc metacast*(self: QFocusFrame, param1: cstring): pointer =
+proc metacast*(self: gen_qfocusframe_types.QFocusFrame, param1: cstring): pointer =
 
   fcQFocusFrame_metacast(self.h, param1)
 
-proc metacall*(self: QFocusFrame, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qfocusframe_types.QFocusFrame, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQFocusFrame_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QFocusFrame, s: cstring): string =
+proc tr*(_: type gen_qfocusframe_types.QFocusFrame, s: cstring): string =
 
   let v_ms = fcQFocusFrame_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setWidget*(self: QFocusFrame, widget: gen_qwidget.QWidget): void =
+proc setWidget*(self: gen_qfocusframe_types.QFocusFrame, widget: gen_qwidget.QWidget): void =
 
   fcQFocusFrame_setWidget(self.h, widget.h)
 
-proc widget*(self: QFocusFrame, ): gen_qwidget.QWidget =
+proc widget*(self: gen_qfocusframe_types.QFocusFrame, ): gen_qwidget.QWidget =
 
   gen_qwidget.QWidget(h: fcQFocusFrame_widget(self.h))
 
-proc tr2*(_: type QFocusFrame, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qfocusframe_types.QFocusFrame, s: cstring, c: cstring): string =
 
   let v_ms = fcQFocusFrame_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QFocusFrame, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qfocusframe_types.QFocusFrame, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQFocusFrame_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QFocusFrame, ): gen_qobjectdefs.QMetaObject =
-
+proc QFocusFramemetaObject*(self: gen_qfocusframe_types.QFocusFrame, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQFocusFrame_virtualbase_metaObject(self.h))
 
-type QFocusFramemetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QFocusFrame, slot: proc(super: QFocusFramemetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QFocusFramemetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qfocusframe_types.QFocusFrame, slot: QFocusFramemetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QFocusFramemetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QFocusFramemetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFocusFrame_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFocusFrame_metaObject(self: ptr cQFocusFrame, slot: int): pointer {.exportc: "miqt_exec_callback_QFocusFrame_metaObject ".} =
-  type Cb = proc(super: QFocusFramemetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QFocusFrame(h: self), )
+  var nimfunc = cast[ptr QFocusFramemetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QFocusFrame, param1: cstring): pointer =
-
+proc QFocusFramemetacast*(self: gen_qfocusframe_types.QFocusFrame, param1: cstring): pointer =
 
   fQFocusFrame_virtualbase_metacast(self.h, param1)
 
-type QFocusFramemetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QFocusFrame, slot: proc(super: QFocusFramemetacastBase, param1: cstring): pointer) =
+type QFocusFramemetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qfocusframe_types.QFocusFrame, slot: QFocusFramemetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QFocusFramemetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QFocusFramemetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFocusFrame_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFocusFrame_metacast(self: ptr cQFocusFrame, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QFocusFrame_metacast ".} =
-  type Cb = proc(super: QFocusFramemetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QFocusFrame(h: self), param1)
+  var nimfunc = cast[ptr QFocusFramemetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QFocusFrame, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QFocusFramemetacall*(self: gen_qfocusframe_types.QFocusFrame, param1: cint, param2: cint, param3: pointer): cint =
 
   fQFocusFrame_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QFocusFramemetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QFocusFrame, slot: proc(super: QFocusFramemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QFocusFramemetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qfocusframe_types.QFocusFrame, slot: QFocusFramemetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QFocusFramemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QFocusFramemetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFocusFrame_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFocusFrame_metacall(self: ptr cQFocusFrame, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QFocusFrame_metacall ".} =
-  type Cb = proc(super: QFocusFramemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QFocusFrame(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QFocusFramemetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_event(self: QFocusFrame, e: gen_qcoreevent.QEvent): bool =
-
+proc QFocusFrameevent*(self: gen_qfocusframe_types.QFocusFrame, e: gen_qcoreevent.QEvent): bool =
 
   fQFocusFrame_virtualbase_event(self.h, e.h)
 
-type QFocusFrameeventBase* = proc(e: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QFocusFrame, slot: proc(super: QFocusFrameeventBase, e: gen_qcoreevent.QEvent): bool) =
+type QFocusFrameeventProc* = proc(e: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qfocusframe_types.QFocusFrame, slot: QFocusFrameeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFocusFrameeventBase, e: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QFocusFrameeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFocusFrame_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFocusFrame_event(self: ptr cQFocusFrame, slot: int, e: pointer): bool {.exportc: "miqt_exec_callback_QFocusFrame_event ".} =
-  type Cb = proc(super: QFocusFrameeventBase, e: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QFocusFrame(h: self), e)
+  var nimfunc = cast[ptr QFocusFrameeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: e)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QFocusFrame, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool =
-
+proc QFocusFrameeventFilter*(self: gen_qfocusframe_types.QFocusFrame, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool =
 
   fQFocusFrame_virtualbase_eventFilter(self.h, param1.h, param2.h)
 
-type QFocusFrameeventFilterBase* = proc(param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QFocusFrame, slot: proc(super: QFocusFrameeventFilterBase, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool) =
+type QFocusFrameeventFilterProc* = proc(param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qfocusframe_types.QFocusFrame, slot: QFocusFrameeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QFocusFrameeventFilterBase, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QFocusFrameeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFocusFrame_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFocusFrame_eventFilter(self: ptr cQFocusFrame, slot: int, param1: pointer, param2: pointer): bool {.exportc: "miqt_exec_callback_QFocusFrame_eventFilter ".} =
-  type Cb = proc(super: QFocusFrameeventFilterBase, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QFocusFrame(h: self), param1, param2)
+  var nimfunc = cast[ptr QFocusFrameeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: param1)
 
   let slotval2 = gen_qcoreevent.QEvent(h: param2)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_paintEvent(self: QFocusFrame, param1: gen_qevent.QPaintEvent): void =
-
+proc QFocusFramepaintEvent*(self: gen_qfocusframe_types.QFocusFrame, param1: gen_qevent.QPaintEvent): void =
 
   fQFocusFrame_virtualbase_paintEvent(self.h, param1.h)
 
-type QFocusFramepaintEventBase* = proc(param1: gen_qevent.QPaintEvent): void
-proc onpaintEvent*(self: QFocusFrame, slot: proc(super: QFocusFramepaintEventBase, param1: gen_qevent.QPaintEvent): void) =
+type QFocusFramepaintEventProc* = proc(param1: gen_qevent.QPaintEvent): void
+proc onpaintEvent*(self: gen_qfocusframe_types.QFocusFrame, slot: QFocusFramepaintEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFocusFramepaintEventBase, param1: gen_qevent.QPaintEvent): void
-  var tmp = new Cb
+  var tmp = new QFocusFramepaintEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFocusFrame_override_virtual_paintEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFocusFrame_paintEvent(self: ptr cQFocusFrame, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QFocusFrame_paintEvent ".} =
-  type Cb = proc(super: QFocusFramepaintEventBase, param1: gen_qevent.QPaintEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QPaintEvent): auto =
-    callVirtualBase_paintEvent(QFocusFrame(h: self), param1)
+  var nimfunc = cast[ptr QFocusFramepaintEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QPaintEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_initStyleOption(self: QFocusFrame, option: gen_qstyleoption.QStyleOption): void =
-
+  nimfunc[](slotval1)
+proc QFocusFrameinitStyleOption*(self: gen_qfocusframe_types.QFocusFrame, option: gen_qstyleoption.QStyleOption): void =
 
   fQFocusFrame_virtualbase_initStyleOption(self.h, option.h)
 
-type QFocusFrameinitStyleOptionBase* = proc(option: gen_qstyleoption.QStyleOption): void
-proc oninitStyleOption*(self: QFocusFrame, slot: proc(super: QFocusFrameinitStyleOptionBase, option: gen_qstyleoption.QStyleOption): void) =
+type QFocusFrameinitStyleOptionProc* = proc(option: gen_qstyleoption.QStyleOption): void
+proc oninitStyleOption*(self: gen_qfocusframe_types.QFocusFrame, slot: QFocusFrameinitStyleOptionProc) =
   # TODO check subclass
-  type Cb = proc(super: QFocusFrameinitStyleOptionBase, option: gen_qstyleoption.QStyleOption): void
-  var tmp = new Cb
+  var tmp = new QFocusFrameinitStyleOptionProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFocusFrame_override_virtual_initStyleOption(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFocusFrame_initStyleOption(self: ptr cQFocusFrame, slot: int, option: pointer): void {.exportc: "miqt_exec_callback_QFocusFrame_initStyleOption ".} =
-  type Cb = proc(super: QFocusFrameinitStyleOptionBase, option: gen_qstyleoption.QStyleOption): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(option: gen_qstyleoption.QStyleOption): auto =
-    callVirtualBase_initStyleOption(QFocusFrame(h: self), option)
+  var nimfunc = cast[ptr QFocusFrameinitStyleOptionProc](cast[pointer](slot))
   let slotval1 = gen_qstyleoption.QStyleOption(h: option)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_devType(self: QFocusFrame, ): cint =
-
+  nimfunc[](slotval1)
+proc QFocusFramedevType*(self: gen_qfocusframe_types.QFocusFrame, ): cint =
 
   fQFocusFrame_virtualbase_devType(self.h)
 
-type QFocusFramedevTypeBase* = proc(): cint
-proc ondevType*(self: QFocusFrame, slot: proc(super: QFocusFramedevTypeBase): cint) =
+type QFocusFramedevTypeProc* = proc(): cint
+proc ondevType*(self: gen_qfocusframe_types.QFocusFrame, slot: QFocusFramedevTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: QFocusFramedevTypeBase): cint
-  var tmp = new Cb
+  var tmp = new QFocusFramedevTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFocusFrame_override_virtual_devType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFocusFrame_devType(self: ptr cQFocusFrame, slot: int): cint {.exportc: "miqt_exec_callback_QFocusFrame_devType ".} =
-  type Cb = proc(super: QFocusFramedevTypeBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_devType(QFocusFrame(h: self), )
+  var nimfunc = cast[ptr QFocusFramedevTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setVisible(self: QFocusFrame, visible: bool): void =
-
+proc QFocusFramesetVisible*(self: gen_qfocusframe_types.QFocusFrame, visible: bool): void =
 
   fQFocusFrame_virtualbase_setVisible(self.h, visible)
 
-type QFocusFramesetVisibleBase* = proc(visible: bool): void
-proc onsetVisible*(self: QFocusFrame, slot: proc(super: QFocusFramesetVisibleBase, visible: bool): void) =
+type QFocusFramesetVisibleProc* = proc(visible: bool): void
+proc onsetVisible*(self: gen_qfocusframe_types.QFocusFrame, slot: QFocusFramesetVisibleProc) =
   # TODO check subclass
-  type Cb = proc(super: QFocusFramesetVisibleBase, visible: bool): void
-  var tmp = new Cb
+  var tmp = new QFocusFramesetVisibleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFocusFrame_override_virtual_setVisible(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFocusFrame_setVisible(self: ptr cQFocusFrame, slot: int, visible: bool): void {.exportc: "miqt_exec_callback_QFocusFrame_setVisible ".} =
-  type Cb = proc(super: QFocusFramesetVisibleBase, visible: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(visible: bool): auto =
-    callVirtualBase_setVisible(QFocusFrame(h: self), visible)
+  var nimfunc = cast[ptr QFocusFramesetVisibleProc](cast[pointer](slot))
   let slotval1 = visible
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_sizeHint(self: QFocusFrame, ): gen_qsize.QSize =
-
+  nimfunc[](slotval1)
+proc QFocusFramesizeHint*(self: gen_qfocusframe_types.QFocusFrame, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQFocusFrame_virtualbase_sizeHint(self.h))
 
-type QFocusFramesizeHintBase* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: QFocusFrame, slot: proc(super: QFocusFramesizeHintBase): gen_qsize.QSize) =
+type QFocusFramesizeHintProc* = proc(): gen_qsize.QSize
+proc onsizeHint*(self: gen_qfocusframe_types.QFocusFrame, slot: QFocusFramesizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QFocusFramesizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QFocusFramesizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFocusFrame_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFocusFrame_sizeHint(self: ptr cQFocusFrame, slot: int): pointer {.exportc: "miqt_exec_callback_QFocusFrame_sizeHint ".} =
-  type Cb = proc(super: QFocusFramesizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sizeHint(QFocusFrame(h: self), )
+  var nimfunc = cast[ptr QFocusFramesizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_minimumSizeHint(self: QFocusFrame, ): gen_qsize.QSize =
-
+proc QFocusFrameminimumSizeHint*(self: gen_qfocusframe_types.QFocusFrame, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQFocusFrame_virtualbase_minimumSizeHint(self.h))
 
-type QFocusFrameminimumSizeHintBase* = proc(): gen_qsize.QSize
-proc onminimumSizeHint*(self: QFocusFrame, slot: proc(super: QFocusFrameminimumSizeHintBase): gen_qsize.QSize) =
+type QFocusFrameminimumSizeHintProc* = proc(): gen_qsize.QSize
+proc onminimumSizeHint*(self: gen_qfocusframe_types.QFocusFrame, slot: QFocusFrameminimumSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QFocusFrameminimumSizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QFocusFrameminimumSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFocusFrame_override_virtual_minimumSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFocusFrame_minimumSizeHint(self: ptr cQFocusFrame, slot: int): pointer {.exportc: "miqt_exec_callback_QFocusFrame_minimumSizeHint ".} =
-  type Cb = proc(super: QFocusFrameminimumSizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_minimumSizeHint(QFocusFrame(h: self), )
+  var nimfunc = cast[ptr QFocusFrameminimumSizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_heightForWidth(self: QFocusFrame, param1: cint): cint =
-
+proc QFocusFrameheightForWidth*(self: gen_qfocusframe_types.QFocusFrame, param1: cint): cint =
 
   fQFocusFrame_virtualbase_heightForWidth(self.h, param1)
 
-type QFocusFrameheightForWidthBase* = proc(param1: cint): cint
-proc onheightForWidth*(self: QFocusFrame, slot: proc(super: QFocusFrameheightForWidthBase, param1: cint): cint) =
+type QFocusFrameheightForWidthProc* = proc(param1: cint): cint
+proc onheightForWidth*(self: gen_qfocusframe_types.QFocusFrame, slot: QFocusFrameheightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QFocusFrameheightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QFocusFrameheightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFocusFrame_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFocusFrame_heightForWidth(self: ptr cQFocusFrame, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QFocusFrame_heightForWidth ".} =
-  type Cb = proc(super: QFocusFrameheightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_heightForWidth(QFocusFrame(h: self), param1)
+  var nimfunc = cast[ptr QFocusFrameheightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_hasHeightForWidth(self: QFocusFrame, ): bool =
-
+proc QFocusFramehasHeightForWidth*(self: gen_qfocusframe_types.QFocusFrame, ): bool =
 
   fQFocusFrame_virtualbase_hasHeightForWidth(self.h)
 
-type QFocusFramehasHeightForWidthBase* = proc(): bool
-proc onhasHeightForWidth*(self: QFocusFrame, slot: proc(super: QFocusFramehasHeightForWidthBase): bool) =
+type QFocusFramehasHeightForWidthProc* = proc(): bool
+proc onhasHeightForWidth*(self: gen_qfocusframe_types.QFocusFrame, slot: QFocusFramehasHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QFocusFramehasHeightForWidthBase): bool
-  var tmp = new Cb
+  var tmp = new QFocusFramehasHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFocusFrame_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFocusFrame_hasHeightForWidth(self: ptr cQFocusFrame, slot: int): bool {.exportc: "miqt_exec_callback_QFocusFrame_hasHeightForWidth ".} =
-  type Cb = proc(super: QFocusFramehasHeightForWidthBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasHeightForWidth(QFocusFrame(h: self), )
+  var nimfunc = cast[ptr QFocusFramehasHeightForWidthProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_paintEngine(self: QFocusFrame, ): gen_qpaintengine.QPaintEngine =
-
+proc QFocusFramepaintEngine*(self: gen_qfocusframe_types.QFocusFrame, ): gen_qpaintengine.QPaintEngine =
 
   gen_qpaintengine.QPaintEngine(h: fQFocusFrame_virtualbase_paintEngine(self.h))
 
-type QFocusFramepaintEngineBase* = proc(): gen_qpaintengine.QPaintEngine
-proc onpaintEngine*(self: QFocusFrame, slot: proc(super: QFocusFramepaintEngineBase): gen_qpaintengine.QPaintEngine) =
+type QFocusFramepaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
+proc onpaintEngine*(self: gen_qfocusframe_types.QFocusFrame, slot: QFocusFramepaintEngineProc) =
   # TODO check subclass
-  type Cb = proc(super: QFocusFramepaintEngineBase): gen_qpaintengine.QPaintEngine
-  var tmp = new Cb
+  var tmp = new QFocusFramepaintEngineProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFocusFrame_override_virtual_paintEngine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFocusFrame_paintEngine(self: ptr cQFocusFrame, slot: int): pointer {.exportc: "miqt_exec_callback_QFocusFrame_paintEngine ".} =
-  type Cb = proc(super: QFocusFramepaintEngineBase): gen_qpaintengine.QPaintEngine
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_paintEngine(QFocusFrame(h: self), )
+  var nimfunc = cast[ptr QFocusFramepaintEngineProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_mousePressEvent(self: QFocusFrame, event: gen_qevent.QMouseEvent): void =
-
+proc QFocusFramemousePressEvent*(self: gen_qfocusframe_types.QFocusFrame, event: gen_qevent.QMouseEvent): void =
 
   fQFocusFrame_virtualbase_mousePressEvent(self.h, event.h)
 
-type QFocusFramemousePressEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmousePressEvent*(self: QFocusFrame, slot: proc(super: QFocusFramemousePressEventBase, event: gen_qevent.QMouseEvent): void) =
+type QFocusFramemousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmousePressEvent*(self: gen_qfocusframe_types.QFocusFrame, slot: QFocusFramemousePressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFocusFramemousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QFocusFramemousePressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFocusFrame_override_virtual_mousePressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFocusFrame_mousePressEvent(self: ptr cQFocusFrame, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFocusFrame_mousePressEvent ".} =
-  type Cb = proc(super: QFocusFramemousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mousePressEvent(QFocusFrame(h: self), event)
+  var nimfunc = cast[ptr QFocusFramemousePressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseReleaseEvent(self: QFocusFrame, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QFocusFramemouseReleaseEvent*(self: gen_qfocusframe_types.QFocusFrame, event: gen_qevent.QMouseEvent): void =
 
   fQFocusFrame_virtualbase_mouseReleaseEvent(self.h, event.h)
 
-type QFocusFramemouseReleaseEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseReleaseEvent*(self: QFocusFrame, slot: proc(super: QFocusFramemouseReleaseEventBase, event: gen_qevent.QMouseEvent): void) =
+type QFocusFramemouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseReleaseEvent*(self: gen_qfocusframe_types.QFocusFrame, slot: QFocusFramemouseReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFocusFramemouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QFocusFramemouseReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFocusFrame_override_virtual_mouseReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFocusFrame_mouseReleaseEvent(self: ptr cQFocusFrame, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFocusFrame_mouseReleaseEvent ".} =
-  type Cb = proc(super: QFocusFramemouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseReleaseEvent(QFocusFrame(h: self), event)
+  var nimfunc = cast[ptr QFocusFramemouseReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseDoubleClickEvent(self: QFocusFrame, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QFocusFramemouseDoubleClickEvent*(self: gen_qfocusframe_types.QFocusFrame, event: gen_qevent.QMouseEvent): void =
 
   fQFocusFrame_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
-type QFocusFramemouseDoubleClickEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseDoubleClickEvent*(self: QFocusFrame, slot: proc(super: QFocusFramemouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void) =
+type QFocusFramemouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseDoubleClickEvent*(self: gen_qfocusframe_types.QFocusFrame, slot: QFocusFramemouseDoubleClickEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFocusFramemouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QFocusFramemouseDoubleClickEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFocusFrame_override_virtual_mouseDoubleClickEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFocusFrame_mouseDoubleClickEvent(self: ptr cQFocusFrame, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFocusFrame_mouseDoubleClickEvent ".} =
-  type Cb = proc(super: QFocusFramemouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseDoubleClickEvent(QFocusFrame(h: self), event)
+  var nimfunc = cast[ptr QFocusFramemouseDoubleClickEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseMoveEvent(self: QFocusFrame, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QFocusFramemouseMoveEvent*(self: gen_qfocusframe_types.QFocusFrame, event: gen_qevent.QMouseEvent): void =
 
   fQFocusFrame_virtualbase_mouseMoveEvent(self.h, event.h)
 
-type QFocusFramemouseMoveEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseMoveEvent*(self: QFocusFrame, slot: proc(super: QFocusFramemouseMoveEventBase, event: gen_qevent.QMouseEvent): void) =
+type QFocusFramemouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseMoveEvent*(self: gen_qfocusframe_types.QFocusFrame, slot: QFocusFramemouseMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFocusFramemouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QFocusFramemouseMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFocusFrame_override_virtual_mouseMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFocusFrame_mouseMoveEvent(self: ptr cQFocusFrame, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFocusFrame_mouseMoveEvent ".} =
-  type Cb = proc(super: QFocusFramemouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseMoveEvent(QFocusFrame(h: self), event)
+  var nimfunc = cast[ptr QFocusFramemouseMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_wheelEvent(self: QFocusFrame, event: gen_qevent.QWheelEvent): void =
-
+  nimfunc[](slotval1)
+proc QFocusFramewheelEvent*(self: gen_qfocusframe_types.QFocusFrame, event: gen_qevent.QWheelEvent): void =
 
   fQFocusFrame_virtualbase_wheelEvent(self.h, event.h)
 
-type QFocusFramewheelEventBase* = proc(event: gen_qevent.QWheelEvent): void
-proc onwheelEvent*(self: QFocusFrame, slot: proc(super: QFocusFramewheelEventBase, event: gen_qevent.QWheelEvent): void) =
+type QFocusFramewheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
+proc onwheelEvent*(self: gen_qfocusframe_types.QFocusFrame, slot: QFocusFramewheelEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFocusFramewheelEventBase, event: gen_qevent.QWheelEvent): void
-  var tmp = new Cb
+  var tmp = new QFocusFramewheelEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFocusFrame_override_virtual_wheelEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFocusFrame_wheelEvent(self: ptr cQFocusFrame, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFocusFrame_wheelEvent ".} =
-  type Cb = proc(super: QFocusFramewheelEventBase, event: gen_qevent.QWheelEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QWheelEvent): auto =
-    callVirtualBase_wheelEvent(QFocusFrame(h: self), event)
+  var nimfunc = cast[ptr QFocusFramewheelEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QWheelEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyPressEvent(self: QFocusFrame, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QFocusFramekeyPressEvent*(self: gen_qfocusframe_types.QFocusFrame, event: gen_qevent.QKeyEvent): void =
 
   fQFocusFrame_virtualbase_keyPressEvent(self.h, event.h)
 
-type QFocusFramekeyPressEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyPressEvent*(self: QFocusFrame, slot: proc(super: QFocusFramekeyPressEventBase, event: gen_qevent.QKeyEvent): void) =
+type QFocusFramekeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyPressEvent*(self: gen_qfocusframe_types.QFocusFrame, slot: QFocusFramekeyPressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFocusFramekeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QFocusFramekeyPressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFocusFrame_override_virtual_keyPressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFocusFrame_keyPressEvent(self: ptr cQFocusFrame, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFocusFrame_keyPressEvent ".} =
-  type Cb = proc(super: QFocusFramekeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyPressEvent(QFocusFrame(h: self), event)
+  var nimfunc = cast[ptr QFocusFramekeyPressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyReleaseEvent(self: QFocusFrame, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QFocusFramekeyReleaseEvent*(self: gen_qfocusframe_types.QFocusFrame, event: gen_qevent.QKeyEvent): void =
 
   fQFocusFrame_virtualbase_keyReleaseEvent(self.h, event.h)
 
-type QFocusFramekeyReleaseEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyReleaseEvent*(self: QFocusFrame, slot: proc(super: QFocusFramekeyReleaseEventBase, event: gen_qevent.QKeyEvent): void) =
+type QFocusFramekeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyReleaseEvent*(self: gen_qfocusframe_types.QFocusFrame, slot: QFocusFramekeyReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFocusFramekeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QFocusFramekeyReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFocusFrame_override_virtual_keyReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFocusFrame_keyReleaseEvent(self: ptr cQFocusFrame, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFocusFrame_keyReleaseEvent ".} =
-  type Cb = proc(super: QFocusFramekeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyReleaseEvent(QFocusFrame(h: self), event)
+  var nimfunc = cast[ptr QFocusFramekeyReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusInEvent(self: QFocusFrame, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QFocusFramefocusInEvent*(self: gen_qfocusframe_types.QFocusFrame, event: gen_qevent.QFocusEvent): void =
 
   fQFocusFrame_virtualbase_focusInEvent(self.h, event.h)
 
-type QFocusFramefocusInEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusInEvent*(self: QFocusFrame, slot: proc(super: QFocusFramefocusInEventBase, event: gen_qevent.QFocusEvent): void) =
+type QFocusFramefocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusInEvent*(self: gen_qfocusframe_types.QFocusFrame, slot: QFocusFramefocusInEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFocusFramefocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QFocusFramefocusInEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFocusFrame_override_virtual_focusInEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFocusFrame_focusInEvent(self: ptr cQFocusFrame, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFocusFrame_focusInEvent ".} =
-  type Cb = proc(super: QFocusFramefocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusInEvent(QFocusFrame(h: self), event)
+  var nimfunc = cast[ptr QFocusFramefocusInEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusOutEvent(self: QFocusFrame, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QFocusFramefocusOutEvent*(self: gen_qfocusframe_types.QFocusFrame, event: gen_qevent.QFocusEvent): void =
 
   fQFocusFrame_virtualbase_focusOutEvent(self.h, event.h)
 
-type QFocusFramefocusOutEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusOutEvent*(self: QFocusFrame, slot: proc(super: QFocusFramefocusOutEventBase, event: gen_qevent.QFocusEvent): void) =
+type QFocusFramefocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusOutEvent*(self: gen_qfocusframe_types.QFocusFrame, slot: QFocusFramefocusOutEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFocusFramefocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QFocusFramefocusOutEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFocusFrame_override_virtual_focusOutEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFocusFrame_focusOutEvent(self: ptr cQFocusFrame, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFocusFrame_focusOutEvent ".} =
-  type Cb = proc(super: QFocusFramefocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusOutEvent(QFocusFrame(h: self), event)
+  var nimfunc = cast[ptr QFocusFramefocusOutEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_enterEvent(self: QFocusFrame, event: gen_qevent.QEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QFocusFrameenterEvent*(self: gen_qfocusframe_types.QFocusFrame, event: gen_qevent.QEnterEvent): void =
 
   fQFocusFrame_virtualbase_enterEvent(self.h, event.h)
 
-type QFocusFrameenterEventBase* = proc(event: gen_qevent.QEnterEvent): void
-proc onenterEvent*(self: QFocusFrame, slot: proc(super: QFocusFrameenterEventBase, event: gen_qevent.QEnterEvent): void) =
+type QFocusFrameenterEventProc* = proc(event: gen_qevent.QEnterEvent): void
+proc onenterEvent*(self: gen_qfocusframe_types.QFocusFrame, slot: QFocusFrameenterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFocusFrameenterEventBase, event: gen_qevent.QEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QFocusFrameenterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFocusFrame_override_virtual_enterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFocusFrame_enterEvent(self: ptr cQFocusFrame, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFocusFrame_enterEvent ".} =
-  type Cb = proc(super: QFocusFrameenterEventBase, event: gen_qevent.QEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QEnterEvent): auto =
-    callVirtualBase_enterEvent(QFocusFrame(h: self), event)
+  var nimfunc = cast[ptr QFocusFrameenterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_leaveEvent(self: QFocusFrame, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QFocusFrameleaveEvent*(self: gen_qfocusframe_types.QFocusFrame, event: gen_qcoreevent.QEvent): void =
 
   fQFocusFrame_virtualbase_leaveEvent(self.h, event.h)
 
-type QFocusFrameleaveEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onleaveEvent*(self: QFocusFrame, slot: proc(super: QFocusFrameleaveEventBase, event: gen_qcoreevent.QEvent): void) =
+type QFocusFrameleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onleaveEvent*(self: gen_qfocusframe_types.QFocusFrame, slot: QFocusFrameleaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFocusFrameleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QFocusFrameleaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFocusFrame_override_virtual_leaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFocusFrame_leaveEvent(self: ptr cQFocusFrame, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFocusFrame_leaveEvent ".} =
-  type Cb = proc(super: QFocusFrameleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_leaveEvent(QFocusFrame(h: self), event)
+  var nimfunc = cast[ptr QFocusFrameleaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_moveEvent(self: QFocusFrame, event: gen_qevent.QMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QFocusFramemoveEvent*(self: gen_qfocusframe_types.QFocusFrame, event: gen_qevent.QMoveEvent): void =
 
   fQFocusFrame_virtualbase_moveEvent(self.h, event.h)
 
-type QFocusFramemoveEventBase* = proc(event: gen_qevent.QMoveEvent): void
-proc onmoveEvent*(self: QFocusFrame, slot: proc(super: QFocusFramemoveEventBase, event: gen_qevent.QMoveEvent): void) =
+type QFocusFramemoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
+proc onmoveEvent*(self: gen_qfocusframe_types.QFocusFrame, slot: QFocusFramemoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFocusFramemoveEventBase, event: gen_qevent.QMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QFocusFramemoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFocusFrame_override_virtual_moveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFocusFrame_moveEvent(self: ptr cQFocusFrame, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFocusFrame_moveEvent ".} =
-  type Cb = proc(super: QFocusFramemoveEventBase, event: gen_qevent.QMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMoveEvent): auto =
-    callVirtualBase_moveEvent(QFocusFrame(h: self), event)
+  var nimfunc = cast[ptr QFocusFramemoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_resizeEvent(self: QFocusFrame, event: gen_qevent.QResizeEvent): void =
-
+  nimfunc[](slotval1)
+proc QFocusFrameresizeEvent*(self: gen_qfocusframe_types.QFocusFrame, event: gen_qevent.QResizeEvent): void =
 
   fQFocusFrame_virtualbase_resizeEvent(self.h, event.h)
 
-type QFocusFrameresizeEventBase* = proc(event: gen_qevent.QResizeEvent): void
-proc onresizeEvent*(self: QFocusFrame, slot: proc(super: QFocusFrameresizeEventBase, event: gen_qevent.QResizeEvent): void) =
+type QFocusFrameresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
+proc onresizeEvent*(self: gen_qfocusframe_types.QFocusFrame, slot: QFocusFrameresizeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFocusFrameresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var tmp = new Cb
+  var tmp = new QFocusFrameresizeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFocusFrame_override_virtual_resizeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFocusFrame_resizeEvent(self: ptr cQFocusFrame, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFocusFrame_resizeEvent ".} =
-  type Cb = proc(super: QFocusFrameresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QResizeEvent): auto =
-    callVirtualBase_resizeEvent(QFocusFrame(h: self), event)
+  var nimfunc = cast[ptr QFocusFrameresizeEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QResizeEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_closeEvent(self: QFocusFrame, event: gen_qevent.QCloseEvent): void =
-
+  nimfunc[](slotval1)
+proc QFocusFramecloseEvent*(self: gen_qfocusframe_types.QFocusFrame, event: gen_qevent.QCloseEvent): void =
 
   fQFocusFrame_virtualbase_closeEvent(self.h, event.h)
 
-type QFocusFramecloseEventBase* = proc(event: gen_qevent.QCloseEvent): void
-proc oncloseEvent*(self: QFocusFrame, slot: proc(super: QFocusFramecloseEventBase, event: gen_qevent.QCloseEvent): void) =
+type QFocusFramecloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
+proc oncloseEvent*(self: gen_qfocusframe_types.QFocusFrame, slot: QFocusFramecloseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFocusFramecloseEventBase, event: gen_qevent.QCloseEvent): void
-  var tmp = new Cb
+  var tmp = new QFocusFramecloseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFocusFrame_override_virtual_closeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFocusFrame_closeEvent(self: ptr cQFocusFrame, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFocusFrame_closeEvent ".} =
-  type Cb = proc(super: QFocusFramecloseEventBase, event: gen_qevent.QCloseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QCloseEvent): auto =
-    callVirtualBase_closeEvent(QFocusFrame(h: self), event)
+  var nimfunc = cast[ptr QFocusFramecloseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QCloseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_contextMenuEvent(self: QFocusFrame, event: gen_qevent.QContextMenuEvent): void =
-
+  nimfunc[](slotval1)
+proc QFocusFramecontextMenuEvent*(self: gen_qfocusframe_types.QFocusFrame, event: gen_qevent.QContextMenuEvent): void =
 
   fQFocusFrame_virtualbase_contextMenuEvent(self.h, event.h)
 
-type QFocusFramecontextMenuEventBase* = proc(event: gen_qevent.QContextMenuEvent): void
-proc oncontextMenuEvent*(self: QFocusFrame, slot: proc(super: QFocusFramecontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void) =
+type QFocusFramecontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
+proc oncontextMenuEvent*(self: gen_qfocusframe_types.QFocusFrame, slot: QFocusFramecontextMenuEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFocusFramecontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var tmp = new Cb
+  var tmp = new QFocusFramecontextMenuEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFocusFrame_override_virtual_contextMenuEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFocusFrame_contextMenuEvent(self: ptr cQFocusFrame, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFocusFrame_contextMenuEvent ".} =
-  type Cb = proc(super: QFocusFramecontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QContextMenuEvent): auto =
-    callVirtualBase_contextMenuEvent(QFocusFrame(h: self), event)
+  var nimfunc = cast[ptr QFocusFramecontextMenuEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QContextMenuEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_tabletEvent(self: QFocusFrame, event: gen_qevent.QTabletEvent): void =
-
+  nimfunc[](slotval1)
+proc QFocusFrametabletEvent*(self: gen_qfocusframe_types.QFocusFrame, event: gen_qevent.QTabletEvent): void =
 
   fQFocusFrame_virtualbase_tabletEvent(self.h, event.h)
 
-type QFocusFrametabletEventBase* = proc(event: gen_qevent.QTabletEvent): void
-proc ontabletEvent*(self: QFocusFrame, slot: proc(super: QFocusFrametabletEventBase, event: gen_qevent.QTabletEvent): void) =
+type QFocusFrametabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
+proc ontabletEvent*(self: gen_qfocusframe_types.QFocusFrame, slot: QFocusFrametabletEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFocusFrametabletEventBase, event: gen_qevent.QTabletEvent): void
-  var tmp = new Cb
+  var tmp = new QFocusFrametabletEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFocusFrame_override_virtual_tabletEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFocusFrame_tabletEvent(self: ptr cQFocusFrame, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFocusFrame_tabletEvent ".} =
-  type Cb = proc(super: QFocusFrametabletEventBase, event: gen_qevent.QTabletEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QTabletEvent): auto =
-    callVirtualBase_tabletEvent(QFocusFrame(h: self), event)
+  var nimfunc = cast[ptr QFocusFrametabletEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QTabletEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_actionEvent(self: QFocusFrame, event: gen_qevent.QActionEvent): void =
-
+  nimfunc[](slotval1)
+proc QFocusFrameactionEvent*(self: gen_qfocusframe_types.QFocusFrame, event: gen_qevent.QActionEvent): void =
 
   fQFocusFrame_virtualbase_actionEvent(self.h, event.h)
 
-type QFocusFrameactionEventBase* = proc(event: gen_qevent.QActionEvent): void
-proc onactionEvent*(self: QFocusFrame, slot: proc(super: QFocusFrameactionEventBase, event: gen_qevent.QActionEvent): void) =
+type QFocusFrameactionEventProc* = proc(event: gen_qevent.QActionEvent): void
+proc onactionEvent*(self: gen_qfocusframe_types.QFocusFrame, slot: QFocusFrameactionEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFocusFrameactionEventBase, event: gen_qevent.QActionEvent): void
-  var tmp = new Cb
+  var tmp = new QFocusFrameactionEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFocusFrame_override_virtual_actionEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFocusFrame_actionEvent(self: ptr cQFocusFrame, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFocusFrame_actionEvent ".} =
-  type Cb = proc(super: QFocusFrameactionEventBase, event: gen_qevent.QActionEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QActionEvent): auto =
-    callVirtualBase_actionEvent(QFocusFrame(h: self), event)
+  var nimfunc = cast[ptr QFocusFrameactionEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QActionEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragEnterEvent(self: QFocusFrame, event: gen_qevent.QDragEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QFocusFramedragEnterEvent*(self: gen_qfocusframe_types.QFocusFrame, event: gen_qevent.QDragEnterEvent): void =
 
   fQFocusFrame_virtualbase_dragEnterEvent(self.h, event.h)
 
-type QFocusFramedragEnterEventBase* = proc(event: gen_qevent.QDragEnterEvent): void
-proc ondragEnterEvent*(self: QFocusFrame, slot: proc(super: QFocusFramedragEnterEventBase, event: gen_qevent.QDragEnterEvent): void) =
+type QFocusFramedragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
+proc ondragEnterEvent*(self: gen_qfocusframe_types.QFocusFrame, slot: QFocusFramedragEnterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFocusFramedragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QFocusFramedragEnterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFocusFrame_override_virtual_dragEnterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFocusFrame_dragEnterEvent(self: ptr cQFocusFrame, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFocusFrame_dragEnterEvent ".} =
-  type Cb = proc(super: QFocusFramedragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragEnterEvent): auto =
-    callVirtualBase_dragEnterEvent(QFocusFrame(h: self), event)
+  var nimfunc = cast[ptr QFocusFramedragEnterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragMoveEvent(self: QFocusFrame, event: gen_qevent.QDragMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QFocusFramedragMoveEvent*(self: gen_qfocusframe_types.QFocusFrame, event: gen_qevent.QDragMoveEvent): void =
 
   fQFocusFrame_virtualbase_dragMoveEvent(self.h, event.h)
 
-type QFocusFramedragMoveEventBase* = proc(event: gen_qevent.QDragMoveEvent): void
-proc ondragMoveEvent*(self: QFocusFrame, slot: proc(super: QFocusFramedragMoveEventBase, event: gen_qevent.QDragMoveEvent): void) =
+type QFocusFramedragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
+proc ondragMoveEvent*(self: gen_qfocusframe_types.QFocusFrame, slot: QFocusFramedragMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFocusFramedragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QFocusFramedragMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFocusFrame_override_virtual_dragMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFocusFrame_dragMoveEvent(self: ptr cQFocusFrame, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFocusFrame_dragMoveEvent ".} =
-  type Cb = proc(super: QFocusFramedragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragMoveEvent): auto =
-    callVirtualBase_dragMoveEvent(QFocusFrame(h: self), event)
+  var nimfunc = cast[ptr QFocusFramedragMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragLeaveEvent(self: QFocusFrame, event: gen_qevent.QDragLeaveEvent): void =
-
+  nimfunc[](slotval1)
+proc QFocusFramedragLeaveEvent*(self: gen_qfocusframe_types.QFocusFrame, event: gen_qevent.QDragLeaveEvent): void =
 
   fQFocusFrame_virtualbase_dragLeaveEvent(self.h, event.h)
 
-type QFocusFramedragLeaveEventBase* = proc(event: gen_qevent.QDragLeaveEvent): void
-proc ondragLeaveEvent*(self: QFocusFrame, slot: proc(super: QFocusFramedragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void) =
+type QFocusFramedragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
+proc ondragLeaveEvent*(self: gen_qfocusframe_types.QFocusFrame, slot: QFocusFramedragLeaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFocusFramedragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var tmp = new Cb
+  var tmp = new QFocusFramedragLeaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFocusFrame_override_virtual_dragLeaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFocusFrame_dragLeaveEvent(self: ptr cQFocusFrame, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFocusFrame_dragLeaveEvent ".} =
-  type Cb = proc(super: QFocusFramedragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragLeaveEvent): auto =
-    callVirtualBase_dragLeaveEvent(QFocusFrame(h: self), event)
+  var nimfunc = cast[ptr QFocusFramedragLeaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragLeaveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dropEvent(self: QFocusFrame, event: gen_qevent.QDropEvent): void =
-
+  nimfunc[](slotval1)
+proc QFocusFramedropEvent*(self: gen_qfocusframe_types.QFocusFrame, event: gen_qevent.QDropEvent): void =
 
   fQFocusFrame_virtualbase_dropEvent(self.h, event.h)
 
-type QFocusFramedropEventBase* = proc(event: gen_qevent.QDropEvent): void
-proc ondropEvent*(self: QFocusFrame, slot: proc(super: QFocusFramedropEventBase, event: gen_qevent.QDropEvent): void) =
+type QFocusFramedropEventProc* = proc(event: gen_qevent.QDropEvent): void
+proc ondropEvent*(self: gen_qfocusframe_types.QFocusFrame, slot: QFocusFramedropEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFocusFramedropEventBase, event: gen_qevent.QDropEvent): void
-  var tmp = new Cb
+  var tmp = new QFocusFramedropEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFocusFrame_override_virtual_dropEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFocusFrame_dropEvent(self: ptr cQFocusFrame, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFocusFrame_dropEvent ".} =
-  type Cb = proc(super: QFocusFramedropEventBase, event: gen_qevent.QDropEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDropEvent): auto =
-    callVirtualBase_dropEvent(QFocusFrame(h: self), event)
+  var nimfunc = cast[ptr QFocusFramedropEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDropEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_showEvent(self: QFocusFrame, event: gen_qevent.QShowEvent): void =
-
+  nimfunc[](slotval1)
+proc QFocusFrameshowEvent*(self: gen_qfocusframe_types.QFocusFrame, event: gen_qevent.QShowEvent): void =
 
   fQFocusFrame_virtualbase_showEvent(self.h, event.h)
 
-type QFocusFrameshowEventBase* = proc(event: gen_qevent.QShowEvent): void
-proc onshowEvent*(self: QFocusFrame, slot: proc(super: QFocusFrameshowEventBase, event: gen_qevent.QShowEvent): void) =
+type QFocusFrameshowEventProc* = proc(event: gen_qevent.QShowEvent): void
+proc onshowEvent*(self: gen_qfocusframe_types.QFocusFrame, slot: QFocusFrameshowEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFocusFrameshowEventBase, event: gen_qevent.QShowEvent): void
-  var tmp = new Cb
+  var tmp = new QFocusFrameshowEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFocusFrame_override_virtual_showEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFocusFrame_showEvent(self: ptr cQFocusFrame, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFocusFrame_showEvent ".} =
-  type Cb = proc(super: QFocusFrameshowEventBase, event: gen_qevent.QShowEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QShowEvent): auto =
-    callVirtualBase_showEvent(QFocusFrame(h: self), event)
+  var nimfunc = cast[ptr QFocusFrameshowEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QShowEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hideEvent(self: QFocusFrame, event: gen_qevent.QHideEvent): void =
-
+  nimfunc[](slotval1)
+proc QFocusFramehideEvent*(self: gen_qfocusframe_types.QFocusFrame, event: gen_qevent.QHideEvent): void =
 
   fQFocusFrame_virtualbase_hideEvent(self.h, event.h)
 
-type QFocusFramehideEventBase* = proc(event: gen_qevent.QHideEvent): void
-proc onhideEvent*(self: QFocusFrame, slot: proc(super: QFocusFramehideEventBase, event: gen_qevent.QHideEvent): void) =
+type QFocusFramehideEventProc* = proc(event: gen_qevent.QHideEvent): void
+proc onhideEvent*(self: gen_qfocusframe_types.QFocusFrame, slot: QFocusFramehideEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFocusFramehideEventBase, event: gen_qevent.QHideEvent): void
-  var tmp = new Cb
+  var tmp = new QFocusFramehideEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFocusFrame_override_virtual_hideEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFocusFrame_hideEvent(self: ptr cQFocusFrame, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFocusFrame_hideEvent ".} =
-  type Cb = proc(super: QFocusFramehideEventBase, event: gen_qevent.QHideEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QHideEvent): auto =
-    callVirtualBase_hideEvent(QFocusFrame(h: self), event)
+  var nimfunc = cast[ptr QFocusFramehideEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QHideEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_nativeEvent(self: QFocusFrame, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
-
+  nimfunc[](slotval1)
+proc QFocusFramenativeEvent*(self: gen_qfocusframe_types.QFocusFrame, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
 
   fQFocusFrame_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
-type QFocusFramenativeEventBase* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-proc onnativeEvent*(self: QFocusFrame, slot: proc(super: QFocusFramenativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool) =
+type QFocusFramenativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
+proc onnativeEvent*(self: gen_qfocusframe_types.QFocusFrame, slot: QFocusFramenativeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFocusFramenativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-  var tmp = new Cb
+  var tmp = new QFocusFramenativeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFocusFrame_override_virtual_nativeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFocusFrame_nativeEvent(self: ptr cQFocusFrame, slot: int, eventType: struct_miqt_string, message: pointer, resultVal: ptr uint): bool {.exportc: "miqt_exec_callback_QFocusFrame_nativeEvent ".} =
-  type Cb = proc(super: QFocusFramenativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(eventType: seq[byte], message: pointer, resultVal: ptr uint): auto =
-    callVirtualBase_nativeEvent(QFocusFrame(h: self), eventType, message, resultVal)
+  var nimfunc = cast[ptr QFocusFramenativeEventProc](cast[pointer](slot))
   var veventType_bytearray = eventType
   var veventTypex_ret = @(toOpenArrayByte(veventType_bytearray.data, 0, int(veventType_bytearray.len)-1))
   c_free(veventType_bytearray.data)
@@ -1131,317 +939,252 @@ proc miqt_exec_callback_QFocusFrame_nativeEvent(self: ptr cQFocusFrame, slot: in
   let slotval3 = resultVal
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_changeEvent(self: QFocusFrame, param1: gen_qcoreevent.QEvent): void =
-
+proc QFocusFramechangeEvent*(self: gen_qfocusframe_types.QFocusFrame, param1: gen_qcoreevent.QEvent): void =
 
   fQFocusFrame_virtualbase_changeEvent(self.h, param1.h)
 
-type QFocusFramechangeEventBase* = proc(param1: gen_qcoreevent.QEvent): void
-proc onchangeEvent*(self: QFocusFrame, slot: proc(super: QFocusFramechangeEventBase, param1: gen_qcoreevent.QEvent): void) =
+type QFocusFramechangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
+proc onchangeEvent*(self: gen_qfocusframe_types.QFocusFrame, slot: QFocusFramechangeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFocusFramechangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QFocusFramechangeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFocusFrame_override_virtual_changeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFocusFrame_changeEvent(self: ptr cQFocusFrame, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QFocusFrame_changeEvent ".} =
-  type Cb = proc(super: QFocusFramechangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_changeEvent(QFocusFrame(h: self), param1)
+  var nimfunc = cast[ptr QFocusFramechangeEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_metric(self: QFocusFrame, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint =
-
+  nimfunc[](slotval1)
+proc QFocusFramemetric*(self: gen_qfocusframe_types.QFocusFrame, param1: cint): cint =
 
   fQFocusFrame_virtualbase_metric(self.h, cint(param1))
 
-type QFocusFramemetricBase* = proc(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-proc onmetric*(self: QFocusFrame, slot: proc(super: QFocusFramemetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint) =
+type QFocusFramemetricProc* = proc(param1: cint): cint
+proc onmetric*(self: gen_qfocusframe_types.QFocusFrame, slot: QFocusFramemetricProc) =
   # TODO check subclass
-  type Cb = proc(super: QFocusFramemetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var tmp = new Cb
+  var tmp = new QFocusFramemetricProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFocusFrame_override_virtual_metric(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFocusFrame_metric(self: ptr cQFocusFrame, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QFocusFrame_metric ".} =
-  type Cb = proc(super: QFocusFramemetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): auto =
-    callVirtualBase_metric(QFocusFrame(h: self), param1)
-  let slotval1 = gen_qpaintdevice.QPaintDevicePaintDeviceMetric(param1)
+  var nimfunc = cast[ptr QFocusFramemetricProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_initPainter(self: QFocusFrame, painter: gen_qpainter.QPainter): void =
-
+proc QFocusFrameinitPainter*(self: gen_qfocusframe_types.QFocusFrame, painter: gen_qpainter.QPainter): void =
 
   fQFocusFrame_virtualbase_initPainter(self.h, painter.h)
 
-type QFocusFrameinitPainterBase* = proc(painter: gen_qpainter.QPainter): void
-proc oninitPainter*(self: QFocusFrame, slot: proc(super: QFocusFrameinitPainterBase, painter: gen_qpainter.QPainter): void) =
+type QFocusFrameinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
+proc oninitPainter*(self: gen_qfocusframe_types.QFocusFrame, slot: QFocusFrameinitPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QFocusFrameinitPainterBase, painter: gen_qpainter.QPainter): void
-  var tmp = new Cb
+  var tmp = new QFocusFrameinitPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFocusFrame_override_virtual_initPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFocusFrame_initPainter(self: ptr cQFocusFrame, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_QFocusFrame_initPainter ".} =
-  type Cb = proc(super: QFocusFrameinitPainterBase, painter: gen_qpainter.QPainter): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter): auto =
-    callVirtualBase_initPainter(QFocusFrame(h: self), painter)
+  var nimfunc = cast[ptr QFocusFrameinitPainterProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_redirected(self: QFocusFrame, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
+  nimfunc[](slotval1)
+proc QFocusFrameredirected*(self: gen_qfocusframe_types.QFocusFrame, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
 
   gen_qpaintdevice.QPaintDevice(h: fQFocusFrame_virtualbase_redirected(self.h, offset.h))
 
-type QFocusFrameredirectedBase* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-proc onredirected*(self: QFocusFrame, slot: proc(super: QFocusFrameredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice) =
+type QFocusFrameredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
+proc onredirected*(self: gen_qfocusframe_types.QFocusFrame, slot: QFocusFrameredirectedProc) =
   # TODO check subclass
-  type Cb = proc(super: QFocusFrameredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var tmp = new Cb
+  var tmp = new QFocusFrameredirectedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFocusFrame_override_virtual_redirected(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFocusFrame_redirected(self: ptr cQFocusFrame, slot: int, offset: pointer): pointer {.exportc: "miqt_exec_callback_QFocusFrame_redirected ".} =
-  type Cb = proc(super: QFocusFrameredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(offset: gen_qpoint.QPoint): auto =
-    callVirtualBase_redirected(QFocusFrame(h: self), offset)
+  var nimfunc = cast[ptr QFocusFrameredirectedProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: offset)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_sharedPainter(self: QFocusFrame, ): gen_qpainter.QPainter =
-
+proc QFocusFramesharedPainter*(self: gen_qfocusframe_types.QFocusFrame, ): gen_qpainter.QPainter =
 
   gen_qpainter.QPainter(h: fQFocusFrame_virtualbase_sharedPainter(self.h))
 
-type QFocusFramesharedPainterBase* = proc(): gen_qpainter.QPainter
-proc onsharedPainter*(self: QFocusFrame, slot: proc(super: QFocusFramesharedPainterBase): gen_qpainter.QPainter) =
+type QFocusFramesharedPainterProc* = proc(): gen_qpainter.QPainter
+proc onsharedPainter*(self: gen_qfocusframe_types.QFocusFrame, slot: QFocusFramesharedPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QFocusFramesharedPainterBase): gen_qpainter.QPainter
-  var tmp = new Cb
+  var tmp = new QFocusFramesharedPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFocusFrame_override_virtual_sharedPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFocusFrame_sharedPainter(self: ptr cQFocusFrame, slot: int): pointer {.exportc: "miqt_exec_callback_QFocusFrame_sharedPainter ".} =
-  type Cb = proc(super: QFocusFramesharedPainterBase): gen_qpainter.QPainter
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sharedPainter(QFocusFrame(h: self), )
+  var nimfunc = cast[ptr QFocusFramesharedPainterProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_inputMethodEvent(self: QFocusFrame, param1: gen_qevent.QInputMethodEvent): void =
-
+proc QFocusFrameinputMethodEvent*(self: gen_qfocusframe_types.QFocusFrame, param1: gen_qevent.QInputMethodEvent): void =
 
   fQFocusFrame_virtualbase_inputMethodEvent(self.h, param1.h)
 
-type QFocusFrameinputMethodEventBase* = proc(param1: gen_qevent.QInputMethodEvent): void
-proc oninputMethodEvent*(self: QFocusFrame, slot: proc(super: QFocusFrameinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void) =
+type QFocusFrameinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
+proc oninputMethodEvent*(self: gen_qfocusframe_types.QFocusFrame, slot: QFocusFrameinputMethodEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFocusFrameinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var tmp = new Cb
+  var tmp = new QFocusFrameinputMethodEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFocusFrame_override_virtual_inputMethodEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFocusFrame_inputMethodEvent(self: ptr cQFocusFrame, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QFocusFrame_inputMethodEvent ".} =
-  type Cb = proc(super: QFocusFrameinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QInputMethodEvent): auto =
-    callVirtualBase_inputMethodEvent(QFocusFrame(h: self), param1)
+  var nimfunc = cast[ptr QFocusFrameinputMethodEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QInputMethodEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_inputMethodQuery(self: QFocusFrame, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant =
-
+  nimfunc[](slotval1)
+proc QFocusFrameinputMethodQuery*(self: gen_qfocusframe_types.QFocusFrame, param1: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQFocusFrame_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
-type QFocusFrameinputMethodQueryBase* = proc(param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-proc oninputMethodQuery*(self: QFocusFrame, slot: proc(super: QFocusFrameinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant) =
+type QFocusFrameinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
+proc oninputMethodQuery*(self: gen_qfocusframe_types.QFocusFrame, slot: QFocusFrameinputMethodQueryProc) =
   # TODO check subclass
-  type Cb = proc(super: QFocusFrameinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QFocusFrameinputMethodQueryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFocusFrame_override_virtual_inputMethodQuery(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFocusFrame_inputMethodQuery(self: ptr cQFocusFrame, slot: int, param1: cint): pointer {.exportc: "miqt_exec_callback_QFocusFrame_inputMethodQuery ".} =
-  type Cb = proc(super: QFocusFrameinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qnamespace.InputMethodQuery): auto =
-    callVirtualBase_inputMethodQuery(QFocusFrame(h: self), param1)
-  let slotval1 = gen_qnamespace.InputMethodQuery(param1)
+  var nimfunc = cast[ptr QFocusFrameinputMethodQueryProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_focusNextPrevChild(self: QFocusFrame, next: bool): bool =
-
+proc QFocusFramefocusNextPrevChild*(self: gen_qfocusframe_types.QFocusFrame, next: bool): bool =
 
   fQFocusFrame_virtualbase_focusNextPrevChild(self.h, next)
 
-type QFocusFramefocusNextPrevChildBase* = proc(next: bool): bool
-proc onfocusNextPrevChild*(self: QFocusFrame, slot: proc(super: QFocusFramefocusNextPrevChildBase, next: bool): bool) =
+type QFocusFramefocusNextPrevChildProc* = proc(next: bool): bool
+proc onfocusNextPrevChild*(self: gen_qfocusframe_types.QFocusFrame, slot: QFocusFramefocusNextPrevChildProc) =
   # TODO check subclass
-  type Cb = proc(super: QFocusFramefocusNextPrevChildBase, next: bool): bool
-  var tmp = new Cb
+  var tmp = new QFocusFramefocusNextPrevChildProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFocusFrame_override_virtual_focusNextPrevChild(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFocusFrame_focusNextPrevChild(self: ptr cQFocusFrame, slot: int, next: bool): bool {.exportc: "miqt_exec_callback_QFocusFrame_focusNextPrevChild ".} =
-  type Cb = proc(super: QFocusFramefocusNextPrevChildBase, next: bool): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(next: bool): auto =
-    callVirtualBase_focusNextPrevChild(QFocusFrame(h: self), next)
+  var nimfunc = cast[ptr QFocusFramefocusNextPrevChildProc](cast[pointer](slot))
   let slotval1 = next
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QFocusFrame, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QFocusFrametimerEvent*(self: gen_qfocusframe_types.QFocusFrame, event: gen_qcoreevent.QTimerEvent): void =
 
   fQFocusFrame_virtualbase_timerEvent(self.h, event.h)
 
-type QFocusFrametimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QFocusFrame, slot: proc(super: QFocusFrametimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QFocusFrametimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qfocusframe_types.QFocusFrame, slot: QFocusFrametimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFocusFrametimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QFocusFrametimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFocusFrame_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFocusFrame_timerEvent(self: ptr cQFocusFrame, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFocusFrame_timerEvent ".} =
-  type Cb = proc(super: QFocusFrametimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QFocusFrame(h: self), event)
+  var nimfunc = cast[ptr QFocusFrametimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QFocusFrame, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QFocusFramechildEvent*(self: gen_qfocusframe_types.QFocusFrame, event: gen_qcoreevent.QChildEvent): void =
 
   fQFocusFrame_virtualbase_childEvent(self.h, event.h)
 
-type QFocusFramechildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QFocusFrame, slot: proc(super: QFocusFramechildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QFocusFramechildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qfocusframe_types.QFocusFrame, slot: QFocusFramechildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFocusFramechildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QFocusFramechildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFocusFrame_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFocusFrame_childEvent(self: ptr cQFocusFrame, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFocusFrame_childEvent ".} =
-  type Cb = proc(super: QFocusFramechildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QFocusFrame(h: self), event)
+  var nimfunc = cast[ptr QFocusFramechildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QFocusFrame, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QFocusFramecustomEvent*(self: gen_qfocusframe_types.QFocusFrame, event: gen_qcoreevent.QEvent): void =
 
   fQFocusFrame_virtualbase_customEvent(self.h, event.h)
 
-type QFocusFramecustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QFocusFrame, slot: proc(super: QFocusFramecustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QFocusFramecustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qfocusframe_types.QFocusFrame, slot: QFocusFramecustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFocusFramecustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QFocusFramecustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFocusFrame_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFocusFrame_customEvent(self: ptr cQFocusFrame, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFocusFrame_customEvent ".} =
-  type Cb = proc(super: QFocusFramecustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QFocusFrame(h: self), event)
+  var nimfunc = cast[ptr QFocusFramecustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QFocusFrame, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QFocusFrameconnectNotify*(self: gen_qfocusframe_types.QFocusFrame, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQFocusFrame_virtualbase_connectNotify(self.h, signal.h)
 
-type QFocusFrameconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QFocusFrame, slot: proc(super: QFocusFrameconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QFocusFrameconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qfocusframe_types.QFocusFrame, slot: QFocusFrameconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QFocusFrameconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QFocusFrameconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFocusFrame_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFocusFrame_connectNotify(self: ptr cQFocusFrame, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QFocusFrame_connectNotify ".} =
-  type Cb = proc(super: QFocusFrameconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QFocusFrame(h: self), signal)
+  var nimfunc = cast[ptr QFocusFrameconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QFocusFrame, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QFocusFramedisconnectNotify*(self: gen_qfocusframe_types.QFocusFrame, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQFocusFrame_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QFocusFramedisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QFocusFrame, slot: proc(super: QFocusFramedisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QFocusFramedisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qfocusframe_types.QFocusFrame, slot: QFocusFramedisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QFocusFramedisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QFocusFramedisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFocusFrame_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFocusFrame_disconnectNotify(self: ptr cQFocusFrame, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QFocusFrame_disconnectNotify ".} =
-  type Cb = proc(super: QFocusFramedisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QFocusFrame(h: self), signal)
+  var nimfunc = cast[ptr QFocusFramedisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QFocusFrame): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qfocusframe_types.QFocusFrame): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQFocusFrame_staticMetaObject())
-proc delete*(self: QFocusFrame) =
+proc delete*(self: gen_qfocusframe_types.QFocusFrame) =
   fcQFocusFrame_delete(self.h)

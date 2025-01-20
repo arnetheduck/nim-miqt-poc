@@ -173,355 +173,297 @@ proc fcQsciLexerJava_staticMetaObject(): pointer {.importc: "QsciLexerJava_stati
 proc fcQsciLexerJava_delete(self: pointer) {.importc: "QsciLexerJava_delete".}
 
 
-func init*(T: type QsciLexerJava, h: ptr cQsciLexerJava): QsciLexerJava =
+func init*(T: type gen_qscilexerjava_types.QsciLexerJava, h: ptr cQsciLexerJava): gen_qscilexerjava_types.QsciLexerJava =
   T(h: h)
-proc create*(T: type QsciLexerJava, ): QsciLexerJava =
+proc create*(T: type gen_qscilexerjava_types.QsciLexerJava, ): gen_qscilexerjava_types.QsciLexerJava =
 
-  QsciLexerJava.init(fcQsciLexerJava_new())
-proc create*(T: type QsciLexerJava, parent: gen_qobject.QObject): QsciLexerJava =
+  gen_qscilexerjava_types.QsciLexerJava.init(fcQsciLexerJava_new())
+proc create*(T: type gen_qscilexerjava_types.QsciLexerJava, parent: gen_qobject.QObject): gen_qscilexerjava_types.QsciLexerJava =
 
-  QsciLexerJava.init(fcQsciLexerJava_new2(parent.h))
-proc metaObject*(self: QsciLexerJava, ): gen_qobjectdefs.QMetaObject =
+  gen_qscilexerjava_types.QsciLexerJava.init(fcQsciLexerJava_new2(parent.h))
+proc metaObject*(self: gen_qscilexerjava_types.QsciLexerJava, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQsciLexerJava_metaObject(self.h))
 
-proc metacast*(self: QsciLexerJava, param1: cstring): pointer =
+proc metacast*(self: gen_qscilexerjava_types.QsciLexerJava, param1: cstring): pointer =
 
   fcQsciLexerJava_metacast(self.h, param1)
 
-proc metacall*(self: QsciLexerJava, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qscilexerjava_types.QsciLexerJava, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQsciLexerJava_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QsciLexerJava, s: cstring): string =
+proc tr*(_: type gen_qscilexerjava_types.QsciLexerJava, s: cstring): string =
 
   let v_ms = fcQsciLexerJava_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QsciLexerJava, s: cstring): string =
+proc trUtf8*(_: type gen_qscilexerjava_types.QsciLexerJava, s: cstring): string =
 
   let v_ms = fcQsciLexerJava_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc language*(self: QsciLexerJava, ): cstring =
+proc language*(self: gen_qscilexerjava_types.QsciLexerJava, ): cstring =
 
   (fcQsciLexerJava_language(self.h))
 
-proc keywords*(self: QsciLexerJava, set: cint): cstring =
+proc keywords*(self: gen_qscilexerjava_types.QsciLexerJava, set: cint): cstring =
 
   (fcQsciLexerJava_keywords(self.h, set))
 
-proc tr2*(_: type QsciLexerJava, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qscilexerjava_types.QsciLexerJava, s: cstring, c: cstring): string =
 
   let v_ms = fcQsciLexerJava_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QsciLexerJava, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qscilexerjava_types.QsciLexerJava, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQsciLexerJava_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QsciLexerJava, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qscilexerjava_types.QsciLexerJava, s: cstring, c: cstring): string =
 
   let v_ms = fcQsciLexerJava_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QsciLexerJava, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qscilexerjava_types.QsciLexerJava, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQsciLexerJava_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QsciLexerJava, ): gen_qobjectdefs.QMetaObject =
-
+proc QsciLexerJavametaObject*(self: gen_qscilexerjava_types.QsciLexerJava, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQsciLexerJava_virtualbase_metaObject(self.h))
 
-type QsciLexerJavametaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QsciLexerJava, slot: proc(super: QsciLexerJavametaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QsciLexerJavametaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qscilexerjava_types.QsciLexerJava, slot: QsciLexerJavametaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerJavametaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QsciLexerJavametaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexerJava_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexerJava_metaObject(self: ptr cQsciLexerJava, slot: int): pointer {.exportc: "miqt_exec_callback_QsciLexerJava_metaObject ".} =
-  type Cb = proc(super: QsciLexerJavametaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QsciLexerJava(h: self), )
+  var nimfunc = cast[ptr QsciLexerJavametaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QsciLexerJava, param1: cstring): pointer =
-
+proc QsciLexerJavametacast*(self: gen_qscilexerjava_types.QsciLexerJava, param1: cstring): pointer =
 
   fQsciLexerJava_virtualbase_metacast(self.h, param1)
 
-type QsciLexerJavametacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QsciLexerJava, slot: proc(super: QsciLexerJavametacastBase, param1: cstring): pointer) =
+type QsciLexerJavametacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qscilexerjava_types.QsciLexerJava, slot: QsciLexerJavametacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerJavametacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QsciLexerJavametacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexerJava_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexerJava_metacast(self: ptr cQsciLexerJava, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QsciLexerJava_metacast ".} =
-  type Cb = proc(super: QsciLexerJavametacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QsciLexerJava(h: self), param1)
+  var nimfunc = cast[ptr QsciLexerJavametacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QsciLexerJava, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QsciLexerJavametacall*(self: gen_qscilexerjava_types.QsciLexerJava, param1: cint, param2: cint, param3: pointer): cint =
 
   fQsciLexerJava_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QsciLexerJavametacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QsciLexerJava, slot: proc(super: QsciLexerJavametacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QsciLexerJavametacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qscilexerjava_types.QsciLexerJava, slot: QsciLexerJavametacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerJavametacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QsciLexerJavametacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexerJava_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexerJava_metacall(self: ptr cQsciLexerJava, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QsciLexerJava_metacall ".} =
-  type Cb = proc(super: QsciLexerJavametacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QsciLexerJava(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QsciLexerJavametacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_setFoldAtElse(self: QsciLexerJava, fold: bool): void =
-
+proc QsciLexerJavasetFoldAtElse*(self: gen_qscilexerjava_types.QsciLexerJava, fold: bool): void =
 
   fQsciLexerJava_virtualbase_setFoldAtElse(self.h, fold)
 
-type QsciLexerJavasetFoldAtElseBase* = proc(fold: bool): void
-proc onsetFoldAtElse*(self: QsciLexerJava, slot: proc(super: QsciLexerJavasetFoldAtElseBase, fold: bool): void) =
+type QsciLexerJavasetFoldAtElseProc* = proc(fold: bool): void
+proc onsetFoldAtElse*(self: gen_qscilexerjava_types.QsciLexerJava, slot: QsciLexerJavasetFoldAtElseProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerJavasetFoldAtElseBase, fold: bool): void
-  var tmp = new Cb
+  var tmp = new QsciLexerJavasetFoldAtElseProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexerJava_override_virtual_setFoldAtElse(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexerJava_setFoldAtElse(self: ptr cQsciLexerJava, slot: int, fold: bool): void {.exportc: "miqt_exec_callback_QsciLexerJava_setFoldAtElse ".} =
-  type Cb = proc(super: QsciLexerJavasetFoldAtElseBase, fold: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(fold: bool): auto =
-    callVirtualBase_setFoldAtElse(QsciLexerJava(h: self), fold)
+  var nimfunc = cast[ptr QsciLexerJavasetFoldAtElseProc](cast[pointer](slot))
   let slotval1 = fold
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_setFoldComments(self: QsciLexerJava, fold: bool): void =
-
+  nimfunc[](slotval1)
+proc QsciLexerJavasetFoldComments*(self: gen_qscilexerjava_types.QsciLexerJava, fold: bool): void =
 
   fQsciLexerJava_virtualbase_setFoldComments(self.h, fold)
 
-type QsciLexerJavasetFoldCommentsBase* = proc(fold: bool): void
-proc onsetFoldComments*(self: QsciLexerJava, slot: proc(super: QsciLexerJavasetFoldCommentsBase, fold: bool): void) =
+type QsciLexerJavasetFoldCommentsProc* = proc(fold: bool): void
+proc onsetFoldComments*(self: gen_qscilexerjava_types.QsciLexerJava, slot: QsciLexerJavasetFoldCommentsProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerJavasetFoldCommentsBase, fold: bool): void
-  var tmp = new Cb
+  var tmp = new QsciLexerJavasetFoldCommentsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexerJava_override_virtual_setFoldComments(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexerJava_setFoldComments(self: ptr cQsciLexerJava, slot: int, fold: bool): void {.exportc: "miqt_exec_callback_QsciLexerJava_setFoldComments ".} =
-  type Cb = proc(super: QsciLexerJavasetFoldCommentsBase, fold: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(fold: bool): auto =
-    callVirtualBase_setFoldComments(QsciLexerJava(h: self), fold)
+  var nimfunc = cast[ptr QsciLexerJavasetFoldCommentsProc](cast[pointer](slot))
   let slotval1 = fold
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_setFoldCompact(self: QsciLexerJava, fold: bool): void =
-
+  nimfunc[](slotval1)
+proc QsciLexerJavasetFoldCompact*(self: gen_qscilexerjava_types.QsciLexerJava, fold: bool): void =
 
   fQsciLexerJava_virtualbase_setFoldCompact(self.h, fold)
 
-type QsciLexerJavasetFoldCompactBase* = proc(fold: bool): void
-proc onsetFoldCompact*(self: QsciLexerJava, slot: proc(super: QsciLexerJavasetFoldCompactBase, fold: bool): void) =
+type QsciLexerJavasetFoldCompactProc* = proc(fold: bool): void
+proc onsetFoldCompact*(self: gen_qscilexerjava_types.QsciLexerJava, slot: QsciLexerJavasetFoldCompactProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerJavasetFoldCompactBase, fold: bool): void
-  var tmp = new Cb
+  var tmp = new QsciLexerJavasetFoldCompactProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexerJava_override_virtual_setFoldCompact(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexerJava_setFoldCompact(self: ptr cQsciLexerJava, slot: int, fold: bool): void {.exportc: "miqt_exec_callback_QsciLexerJava_setFoldCompact ".} =
-  type Cb = proc(super: QsciLexerJavasetFoldCompactBase, fold: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(fold: bool): auto =
-    callVirtualBase_setFoldCompact(QsciLexerJava(h: self), fold)
+  var nimfunc = cast[ptr QsciLexerJavasetFoldCompactProc](cast[pointer](slot))
   let slotval1 = fold
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_setFoldPreprocessor(self: QsciLexerJava, fold: bool): void =
-
+  nimfunc[](slotval1)
+proc QsciLexerJavasetFoldPreprocessor*(self: gen_qscilexerjava_types.QsciLexerJava, fold: bool): void =
 
   fQsciLexerJava_virtualbase_setFoldPreprocessor(self.h, fold)
 
-type QsciLexerJavasetFoldPreprocessorBase* = proc(fold: bool): void
-proc onsetFoldPreprocessor*(self: QsciLexerJava, slot: proc(super: QsciLexerJavasetFoldPreprocessorBase, fold: bool): void) =
+type QsciLexerJavasetFoldPreprocessorProc* = proc(fold: bool): void
+proc onsetFoldPreprocessor*(self: gen_qscilexerjava_types.QsciLexerJava, slot: QsciLexerJavasetFoldPreprocessorProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerJavasetFoldPreprocessorBase, fold: bool): void
-  var tmp = new Cb
+  var tmp = new QsciLexerJavasetFoldPreprocessorProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexerJava_override_virtual_setFoldPreprocessor(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexerJava_setFoldPreprocessor(self: ptr cQsciLexerJava, slot: int, fold: bool): void {.exportc: "miqt_exec_callback_QsciLexerJava_setFoldPreprocessor ".} =
-  type Cb = proc(super: QsciLexerJavasetFoldPreprocessorBase, fold: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(fold: bool): auto =
-    callVirtualBase_setFoldPreprocessor(QsciLexerJava(h: self), fold)
+  var nimfunc = cast[ptr QsciLexerJavasetFoldPreprocessorProc](cast[pointer](slot))
   let slotval1 = fold
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_setStylePreprocessor(self: QsciLexerJava, style: bool): void =
-
+  nimfunc[](slotval1)
+proc QsciLexerJavasetStylePreprocessor*(self: gen_qscilexerjava_types.QsciLexerJava, style: bool): void =
 
   fQsciLexerJava_virtualbase_setStylePreprocessor(self.h, style)
 
-type QsciLexerJavasetStylePreprocessorBase* = proc(style: bool): void
-proc onsetStylePreprocessor*(self: QsciLexerJava, slot: proc(super: QsciLexerJavasetStylePreprocessorBase, style: bool): void) =
+type QsciLexerJavasetStylePreprocessorProc* = proc(style: bool): void
+proc onsetStylePreprocessor*(self: gen_qscilexerjava_types.QsciLexerJava, slot: QsciLexerJavasetStylePreprocessorProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerJavasetStylePreprocessorBase, style: bool): void
-  var tmp = new Cb
+  var tmp = new QsciLexerJavasetStylePreprocessorProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexerJava_override_virtual_setStylePreprocessor(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexerJava_setStylePreprocessor(self: ptr cQsciLexerJava, slot: int, style: bool): void {.exportc: "miqt_exec_callback_QsciLexerJava_setStylePreprocessor ".} =
-  type Cb = proc(super: QsciLexerJavasetStylePreprocessorBase, style: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(style: bool): auto =
-    callVirtualBase_setStylePreprocessor(QsciLexerJava(h: self), style)
+  var nimfunc = cast[ptr QsciLexerJavasetStylePreprocessorProc](cast[pointer](slot))
   let slotval1 = style
 
 
-  nimfunc[](superCall, slotval1)
-type QsciLexerJavalanguageBase* = proc(): cstring
-proc onlanguage*(self: QsciLexerJava, slot: proc(): cstring) =
+  nimfunc[](slotval1)
+type QsciLexerJavalanguageProc* = proc(): cstring
+proc onlanguage*(self: gen_qscilexerjava_types.QsciLexerJava, slot: QsciLexerJavalanguageProc) =
   # TODO check subclass
-  type Cb = proc(): cstring
-  var tmp = new Cb
+  var tmp = new QsciLexerJavalanguageProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexerJava_override_virtual_language(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexerJava_language(self: ptr cQsciLexerJava, slot: int): cstring {.exportc: "miqt_exec_callback_QsciLexerJava_language ".} =
-  type Cb = proc(): cstring
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QsciLexerJavalanguageProc](cast[pointer](slot))
 
   let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_lexer(self: QsciLexerJava, ): cstring =
-
+proc QsciLexerJavalexer*(self: gen_qscilexerjava_types.QsciLexerJava, ): cstring =
 
   (fQsciLexerJava_virtualbase_lexer(self.h))
 
-type QsciLexerJavalexerBase* = proc(): cstring
-proc onlexer*(self: QsciLexerJava, slot: proc(super: QsciLexerJavalexerBase): cstring) =
+type QsciLexerJavalexerProc* = proc(): cstring
+proc onlexer*(self: gen_qscilexerjava_types.QsciLexerJava, slot: QsciLexerJavalexerProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerJavalexerBase): cstring
-  var tmp = new Cb
+  var tmp = new QsciLexerJavalexerProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexerJava_override_virtual_lexer(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexerJava_lexer(self: ptr cQsciLexerJava, slot: int): cstring {.exportc: "miqt_exec_callback_QsciLexerJava_lexer ".} =
-  type Cb = proc(super: QsciLexerJavalexerBase): cstring
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_lexer(QsciLexerJava(h: self), )
+  var nimfunc = cast[ptr QsciLexerJavalexerProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_lexerId(self: QsciLexerJava, ): cint =
-
+proc QsciLexerJavalexerId*(self: gen_qscilexerjava_types.QsciLexerJava, ): cint =
 
   fQsciLexerJava_virtualbase_lexerId(self.h)
 
-type QsciLexerJavalexerIdBase* = proc(): cint
-proc onlexerId*(self: QsciLexerJava, slot: proc(super: QsciLexerJavalexerIdBase): cint) =
+type QsciLexerJavalexerIdProc* = proc(): cint
+proc onlexerId*(self: gen_qscilexerjava_types.QsciLexerJava, slot: QsciLexerJavalexerIdProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerJavalexerIdBase): cint
-  var tmp = new Cb
+  var tmp = new QsciLexerJavalexerIdProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexerJava_override_virtual_lexerId(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexerJava_lexerId(self: ptr cQsciLexerJava, slot: int): cint {.exportc: "miqt_exec_callback_QsciLexerJava_lexerId ".} =
-  type Cb = proc(super: QsciLexerJavalexerIdBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_lexerId(QsciLexerJava(h: self), )
+  var nimfunc = cast[ptr QsciLexerJavalexerIdProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_autoCompletionFillups(self: QsciLexerJava, ): cstring =
-
+proc QsciLexerJavaautoCompletionFillups*(self: gen_qscilexerjava_types.QsciLexerJava, ): cstring =
 
   (fQsciLexerJava_virtualbase_autoCompletionFillups(self.h))
 
-type QsciLexerJavaautoCompletionFillupsBase* = proc(): cstring
-proc onautoCompletionFillups*(self: QsciLexerJava, slot: proc(super: QsciLexerJavaautoCompletionFillupsBase): cstring) =
+type QsciLexerJavaautoCompletionFillupsProc* = proc(): cstring
+proc onautoCompletionFillups*(self: gen_qscilexerjava_types.QsciLexerJava, slot: QsciLexerJavaautoCompletionFillupsProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerJavaautoCompletionFillupsBase): cstring
-  var tmp = new Cb
+  var tmp = new QsciLexerJavaautoCompletionFillupsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexerJava_override_virtual_autoCompletionFillups(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexerJava_autoCompletionFillups(self: ptr cQsciLexerJava, slot: int): cstring {.exportc: "miqt_exec_callback_QsciLexerJava_autoCompletionFillups ".} =
-  type Cb = proc(super: QsciLexerJavaautoCompletionFillupsBase): cstring
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_autoCompletionFillups(QsciLexerJava(h: self), )
+  var nimfunc = cast[ptr QsciLexerJavaautoCompletionFillupsProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_autoCompletionWordSeparators(self: QsciLexerJava, ): seq[string] =
-
+proc QsciLexerJavaautoCompletionWordSeparators*(self: gen_qscilexerjava_types.QsciLexerJava, ): seq[string] =
 
   var v_ma = fQsciLexerJava_virtualbase_autoCompletionWordSeparators(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -533,693 +475,552 @@ proc callVirtualBase_autoCompletionWordSeparators(self: QsciLexerJava, ): seq[st
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-type QsciLexerJavaautoCompletionWordSeparatorsBase* = proc(): seq[string]
-proc onautoCompletionWordSeparators*(self: QsciLexerJava, slot: proc(super: QsciLexerJavaautoCompletionWordSeparatorsBase): seq[string]) =
+type QsciLexerJavaautoCompletionWordSeparatorsProc* = proc(): seq[string]
+proc onautoCompletionWordSeparators*(self: gen_qscilexerjava_types.QsciLexerJava, slot: QsciLexerJavaautoCompletionWordSeparatorsProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerJavaautoCompletionWordSeparatorsBase): seq[string]
-  var tmp = new Cb
+  var tmp = new QsciLexerJavaautoCompletionWordSeparatorsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexerJava_override_virtual_autoCompletionWordSeparators(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexerJava_autoCompletionWordSeparators(self: ptr cQsciLexerJava, slot: int): struct_miqt_array {.exportc: "miqt_exec_callback_QsciLexerJava_autoCompletionWordSeparators ".} =
-  type Cb = proc(super: QsciLexerJavaautoCompletionWordSeparatorsBase): seq[string]
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_autoCompletionWordSeparators(QsciLexerJava(h: self), )
+  var nimfunc = cast[ptr QsciLexerJavaautoCompletionWordSeparatorsProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
   var virtualReturn_CArray = newSeq[struct_miqt_string](len(virtualReturn))
   for i in 0..<len(virtualReturn):
     virtualReturn_CArray[i] = struct_miqt_string(data: virtualReturn[i], len: csize_t(len(virtualReturn[i])))
 
 
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
-proc callVirtualBase_blockEnd(self: QsciLexerJava, style: ptr cint): cstring =
-
+proc QsciLexerJavablockEnd*(self: gen_qscilexerjava_types.QsciLexerJava, style: ptr cint): cstring =
 
   (fQsciLexerJava_virtualbase_blockEnd(self.h, style))
 
-type QsciLexerJavablockEndBase* = proc(style: ptr cint): cstring
-proc onblockEnd*(self: QsciLexerJava, slot: proc(super: QsciLexerJavablockEndBase, style: ptr cint): cstring) =
+type QsciLexerJavablockEndProc* = proc(style: ptr cint): cstring
+proc onblockEnd*(self: gen_qscilexerjava_types.QsciLexerJava, slot: QsciLexerJavablockEndProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerJavablockEndBase, style: ptr cint): cstring
-  var tmp = new Cb
+  var tmp = new QsciLexerJavablockEndProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexerJava_override_virtual_blockEnd(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexerJava_blockEnd(self: ptr cQsciLexerJava, slot: int, style: ptr cint): cstring {.exportc: "miqt_exec_callback_QsciLexerJava_blockEnd ".} =
-  type Cb = proc(super: QsciLexerJavablockEndBase, style: ptr cint): cstring
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(style: ptr cint): auto =
-    callVirtualBase_blockEnd(QsciLexerJava(h: self), style)
+  var nimfunc = cast[ptr QsciLexerJavablockEndProc](cast[pointer](slot))
   let slotval1 = style
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_blockLookback(self: QsciLexerJava, ): cint =
-
+proc QsciLexerJavablockLookback*(self: gen_qscilexerjava_types.QsciLexerJava, ): cint =
 
   fQsciLexerJava_virtualbase_blockLookback(self.h)
 
-type QsciLexerJavablockLookbackBase* = proc(): cint
-proc onblockLookback*(self: QsciLexerJava, slot: proc(super: QsciLexerJavablockLookbackBase): cint) =
+type QsciLexerJavablockLookbackProc* = proc(): cint
+proc onblockLookback*(self: gen_qscilexerjava_types.QsciLexerJava, slot: QsciLexerJavablockLookbackProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerJavablockLookbackBase): cint
-  var tmp = new Cb
+  var tmp = new QsciLexerJavablockLookbackProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexerJava_override_virtual_blockLookback(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexerJava_blockLookback(self: ptr cQsciLexerJava, slot: int): cint {.exportc: "miqt_exec_callback_QsciLexerJava_blockLookback ".} =
-  type Cb = proc(super: QsciLexerJavablockLookbackBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_blockLookback(QsciLexerJava(h: self), )
+  var nimfunc = cast[ptr QsciLexerJavablockLookbackProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_blockStart(self: QsciLexerJava, style: ptr cint): cstring =
-
+proc QsciLexerJavablockStart*(self: gen_qscilexerjava_types.QsciLexerJava, style: ptr cint): cstring =
 
   (fQsciLexerJava_virtualbase_blockStart(self.h, style))
 
-type QsciLexerJavablockStartBase* = proc(style: ptr cint): cstring
-proc onblockStart*(self: QsciLexerJava, slot: proc(super: QsciLexerJavablockStartBase, style: ptr cint): cstring) =
+type QsciLexerJavablockStartProc* = proc(style: ptr cint): cstring
+proc onblockStart*(self: gen_qscilexerjava_types.QsciLexerJava, slot: QsciLexerJavablockStartProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerJavablockStartBase, style: ptr cint): cstring
-  var tmp = new Cb
+  var tmp = new QsciLexerJavablockStartProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexerJava_override_virtual_blockStart(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexerJava_blockStart(self: ptr cQsciLexerJava, slot: int, style: ptr cint): cstring {.exportc: "miqt_exec_callback_QsciLexerJava_blockStart ".} =
-  type Cb = proc(super: QsciLexerJavablockStartBase, style: ptr cint): cstring
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(style: ptr cint): auto =
-    callVirtualBase_blockStart(QsciLexerJava(h: self), style)
+  var nimfunc = cast[ptr QsciLexerJavablockStartProc](cast[pointer](slot))
   let slotval1 = style
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_blockStartKeyword(self: QsciLexerJava, style: ptr cint): cstring =
-
+proc QsciLexerJavablockStartKeyword*(self: gen_qscilexerjava_types.QsciLexerJava, style: ptr cint): cstring =
 
   (fQsciLexerJava_virtualbase_blockStartKeyword(self.h, style))
 
-type QsciLexerJavablockStartKeywordBase* = proc(style: ptr cint): cstring
-proc onblockStartKeyword*(self: QsciLexerJava, slot: proc(super: QsciLexerJavablockStartKeywordBase, style: ptr cint): cstring) =
+type QsciLexerJavablockStartKeywordProc* = proc(style: ptr cint): cstring
+proc onblockStartKeyword*(self: gen_qscilexerjava_types.QsciLexerJava, slot: QsciLexerJavablockStartKeywordProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerJavablockStartKeywordBase, style: ptr cint): cstring
-  var tmp = new Cb
+  var tmp = new QsciLexerJavablockStartKeywordProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexerJava_override_virtual_blockStartKeyword(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexerJava_blockStartKeyword(self: ptr cQsciLexerJava, slot: int, style: ptr cint): cstring {.exportc: "miqt_exec_callback_QsciLexerJava_blockStartKeyword ".} =
-  type Cb = proc(super: QsciLexerJavablockStartKeywordBase, style: ptr cint): cstring
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(style: ptr cint): auto =
-    callVirtualBase_blockStartKeyword(QsciLexerJava(h: self), style)
+  var nimfunc = cast[ptr QsciLexerJavablockStartKeywordProc](cast[pointer](slot))
   let slotval1 = style
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_braceStyle(self: QsciLexerJava, ): cint =
-
+proc QsciLexerJavabraceStyle*(self: gen_qscilexerjava_types.QsciLexerJava, ): cint =
 
   fQsciLexerJava_virtualbase_braceStyle(self.h)
 
-type QsciLexerJavabraceStyleBase* = proc(): cint
-proc onbraceStyle*(self: QsciLexerJava, slot: proc(super: QsciLexerJavabraceStyleBase): cint) =
+type QsciLexerJavabraceStyleProc* = proc(): cint
+proc onbraceStyle*(self: gen_qscilexerjava_types.QsciLexerJava, slot: QsciLexerJavabraceStyleProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerJavabraceStyleBase): cint
-  var tmp = new Cb
+  var tmp = new QsciLexerJavabraceStyleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexerJava_override_virtual_braceStyle(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexerJava_braceStyle(self: ptr cQsciLexerJava, slot: int): cint {.exportc: "miqt_exec_callback_QsciLexerJava_braceStyle ".} =
-  type Cb = proc(super: QsciLexerJavabraceStyleBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_braceStyle(QsciLexerJava(h: self), )
+  var nimfunc = cast[ptr QsciLexerJavabraceStyleProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_caseSensitive(self: QsciLexerJava, ): bool =
-
+proc QsciLexerJavacaseSensitive*(self: gen_qscilexerjava_types.QsciLexerJava, ): bool =
 
   fQsciLexerJava_virtualbase_caseSensitive(self.h)
 
-type QsciLexerJavacaseSensitiveBase* = proc(): bool
-proc oncaseSensitive*(self: QsciLexerJava, slot: proc(super: QsciLexerJavacaseSensitiveBase): bool) =
+type QsciLexerJavacaseSensitiveProc* = proc(): bool
+proc oncaseSensitive*(self: gen_qscilexerjava_types.QsciLexerJava, slot: QsciLexerJavacaseSensitiveProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerJavacaseSensitiveBase): bool
-  var tmp = new Cb
+  var tmp = new QsciLexerJavacaseSensitiveProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexerJava_override_virtual_caseSensitive(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexerJava_caseSensitive(self: ptr cQsciLexerJava, slot: int): bool {.exportc: "miqt_exec_callback_QsciLexerJava_caseSensitive ".} =
-  type Cb = proc(super: QsciLexerJavacaseSensitiveBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_caseSensitive(QsciLexerJava(h: self), )
+  var nimfunc = cast[ptr QsciLexerJavacaseSensitiveProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_color(self: QsciLexerJava, style: cint): gen_qcolor.QColor =
-
+proc QsciLexerJavacolor*(self: gen_qscilexerjava_types.QsciLexerJava, style: cint): gen_qcolor.QColor =
 
   gen_qcolor.QColor(h: fQsciLexerJava_virtualbase_color(self.h, style))
 
-type QsciLexerJavacolorBase* = proc(style: cint): gen_qcolor.QColor
-proc oncolor*(self: QsciLexerJava, slot: proc(super: QsciLexerJavacolorBase, style: cint): gen_qcolor.QColor) =
+type QsciLexerJavacolorProc* = proc(style: cint): gen_qcolor.QColor
+proc oncolor*(self: gen_qscilexerjava_types.QsciLexerJava, slot: QsciLexerJavacolorProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerJavacolorBase, style: cint): gen_qcolor.QColor
-  var tmp = new Cb
+  var tmp = new QsciLexerJavacolorProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexerJava_override_virtual_color(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexerJava_color(self: ptr cQsciLexerJava, slot: int, style: cint): pointer {.exportc: "miqt_exec_callback_QsciLexerJava_color ".} =
-  type Cb = proc(super: QsciLexerJavacolorBase, style: cint): gen_qcolor.QColor
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(style: cint): auto =
-    callVirtualBase_color(QsciLexerJava(h: self), style)
+  var nimfunc = cast[ptr QsciLexerJavacolorProc](cast[pointer](slot))
   let slotval1 = style
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_eolFill(self: QsciLexerJava, style: cint): bool =
-
+proc QsciLexerJavaeolFill*(self: gen_qscilexerjava_types.QsciLexerJava, style: cint): bool =
 
   fQsciLexerJava_virtualbase_eolFill(self.h, style)
 
-type QsciLexerJavaeolFillBase* = proc(style: cint): bool
-proc oneolFill*(self: QsciLexerJava, slot: proc(super: QsciLexerJavaeolFillBase, style: cint): bool) =
+type QsciLexerJavaeolFillProc* = proc(style: cint): bool
+proc oneolFill*(self: gen_qscilexerjava_types.QsciLexerJava, slot: QsciLexerJavaeolFillProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerJavaeolFillBase, style: cint): bool
-  var tmp = new Cb
+  var tmp = new QsciLexerJavaeolFillProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexerJava_override_virtual_eolFill(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexerJava_eolFill(self: ptr cQsciLexerJava, slot: int, style: cint): bool {.exportc: "miqt_exec_callback_QsciLexerJava_eolFill ".} =
-  type Cb = proc(super: QsciLexerJavaeolFillBase, style: cint): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(style: cint): auto =
-    callVirtualBase_eolFill(QsciLexerJava(h: self), style)
+  var nimfunc = cast[ptr QsciLexerJavaeolFillProc](cast[pointer](slot))
   let slotval1 = style
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_font(self: QsciLexerJava, style: cint): gen_qfont.QFont =
-
+proc QsciLexerJavafont*(self: gen_qscilexerjava_types.QsciLexerJava, style: cint): gen_qfont.QFont =
 
   gen_qfont.QFont(h: fQsciLexerJava_virtualbase_font(self.h, style))
 
-type QsciLexerJavafontBase* = proc(style: cint): gen_qfont.QFont
-proc onfont*(self: QsciLexerJava, slot: proc(super: QsciLexerJavafontBase, style: cint): gen_qfont.QFont) =
+type QsciLexerJavafontProc* = proc(style: cint): gen_qfont.QFont
+proc onfont*(self: gen_qscilexerjava_types.QsciLexerJava, slot: QsciLexerJavafontProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerJavafontBase, style: cint): gen_qfont.QFont
-  var tmp = new Cb
+  var tmp = new QsciLexerJavafontProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexerJava_override_virtual_font(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexerJava_font(self: ptr cQsciLexerJava, slot: int, style: cint): pointer {.exportc: "miqt_exec_callback_QsciLexerJava_font ".} =
-  type Cb = proc(super: QsciLexerJavafontBase, style: cint): gen_qfont.QFont
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(style: cint): auto =
-    callVirtualBase_font(QsciLexerJava(h: self), style)
+  var nimfunc = cast[ptr QsciLexerJavafontProc](cast[pointer](slot))
   let slotval1 = style
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_indentationGuideView(self: QsciLexerJava, ): cint =
-
+proc QsciLexerJavaindentationGuideView*(self: gen_qscilexerjava_types.QsciLexerJava, ): cint =
 
   fQsciLexerJava_virtualbase_indentationGuideView(self.h)
 
-type QsciLexerJavaindentationGuideViewBase* = proc(): cint
-proc onindentationGuideView*(self: QsciLexerJava, slot: proc(super: QsciLexerJavaindentationGuideViewBase): cint) =
+type QsciLexerJavaindentationGuideViewProc* = proc(): cint
+proc onindentationGuideView*(self: gen_qscilexerjava_types.QsciLexerJava, slot: QsciLexerJavaindentationGuideViewProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerJavaindentationGuideViewBase): cint
-  var tmp = new Cb
+  var tmp = new QsciLexerJavaindentationGuideViewProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexerJava_override_virtual_indentationGuideView(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexerJava_indentationGuideView(self: ptr cQsciLexerJava, slot: int): cint {.exportc: "miqt_exec_callback_QsciLexerJava_indentationGuideView ".} =
-  type Cb = proc(super: QsciLexerJavaindentationGuideViewBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_indentationGuideView(QsciLexerJava(h: self), )
+  var nimfunc = cast[ptr QsciLexerJavaindentationGuideViewProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_keywords(self: QsciLexerJava, set: cint): cstring =
-
+proc QsciLexerJavakeywords*(self: gen_qscilexerjava_types.QsciLexerJava, set: cint): cstring =
 
   (fQsciLexerJava_virtualbase_keywords(self.h, set))
 
-type QsciLexerJavakeywordsBase* = proc(set: cint): cstring
-proc onkeywords*(self: QsciLexerJava, slot: proc(super: QsciLexerJavakeywordsBase, set: cint): cstring) =
+type QsciLexerJavakeywordsProc* = proc(set: cint): cstring
+proc onkeywords*(self: gen_qscilexerjava_types.QsciLexerJava, slot: QsciLexerJavakeywordsProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerJavakeywordsBase, set: cint): cstring
-  var tmp = new Cb
+  var tmp = new QsciLexerJavakeywordsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexerJava_override_virtual_keywords(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexerJava_keywords(self: ptr cQsciLexerJava, slot: int, set: cint): cstring {.exportc: "miqt_exec_callback_QsciLexerJava_keywords ".} =
-  type Cb = proc(super: QsciLexerJavakeywordsBase, set: cint): cstring
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(set: cint): auto =
-    callVirtualBase_keywords(QsciLexerJava(h: self), set)
+  var nimfunc = cast[ptr QsciLexerJavakeywordsProc](cast[pointer](slot))
   let slotval1 = set
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_defaultStyle(self: QsciLexerJava, ): cint =
-
+proc QsciLexerJavadefaultStyle*(self: gen_qscilexerjava_types.QsciLexerJava, ): cint =
 
   fQsciLexerJava_virtualbase_defaultStyle(self.h)
 
-type QsciLexerJavadefaultStyleBase* = proc(): cint
-proc ondefaultStyle*(self: QsciLexerJava, slot: proc(super: QsciLexerJavadefaultStyleBase): cint) =
+type QsciLexerJavadefaultStyleProc* = proc(): cint
+proc ondefaultStyle*(self: gen_qscilexerjava_types.QsciLexerJava, slot: QsciLexerJavadefaultStyleProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerJavadefaultStyleBase): cint
-  var tmp = new Cb
+  var tmp = new QsciLexerJavadefaultStyleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexerJava_override_virtual_defaultStyle(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexerJava_defaultStyle(self: ptr cQsciLexerJava, slot: int): cint {.exportc: "miqt_exec_callback_QsciLexerJava_defaultStyle ".} =
-  type Cb = proc(super: QsciLexerJavadefaultStyleBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_defaultStyle(QsciLexerJava(h: self), )
+  var nimfunc = cast[ptr QsciLexerJavadefaultStyleProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-type QsciLexerJavadescriptionBase* = proc(style: cint): string
-proc ondescription*(self: QsciLexerJava, slot: proc(style: cint): string) =
+type QsciLexerJavadescriptionProc* = proc(style: cint): string
+proc ondescription*(self: gen_qscilexerjava_types.QsciLexerJava, slot: QsciLexerJavadescriptionProc) =
   # TODO check subclass
-  type Cb = proc(style: cint): string
-  var tmp = new Cb
+  var tmp = new QsciLexerJavadescriptionProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexerJava_override_virtual_description(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexerJava_description(self: ptr cQsciLexerJava, slot: int, style: cint): struct_miqt_string {.exportc: "miqt_exec_callback_QsciLexerJava_description ".} =
-  type Cb = proc(style: cint): string
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QsciLexerJavadescriptionProc](cast[pointer](slot))
   let slotval1 = style
 
 
   let virtualReturn = nimfunc[](slotval1 )
 
   struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
-proc callVirtualBase_paper(self: QsciLexerJava, style: cint): gen_qcolor.QColor =
-
+proc QsciLexerJavapaper*(self: gen_qscilexerjava_types.QsciLexerJava, style: cint): gen_qcolor.QColor =
 
   gen_qcolor.QColor(h: fQsciLexerJava_virtualbase_paper(self.h, style))
 
-type QsciLexerJavapaperBase* = proc(style: cint): gen_qcolor.QColor
-proc onpaper*(self: QsciLexerJava, slot: proc(super: QsciLexerJavapaperBase, style: cint): gen_qcolor.QColor) =
+type QsciLexerJavapaperProc* = proc(style: cint): gen_qcolor.QColor
+proc onpaper*(self: gen_qscilexerjava_types.QsciLexerJava, slot: QsciLexerJavapaperProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerJavapaperBase, style: cint): gen_qcolor.QColor
-  var tmp = new Cb
+  var tmp = new QsciLexerJavapaperProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexerJava_override_virtual_paper(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexerJava_paper(self: ptr cQsciLexerJava, slot: int, style: cint): pointer {.exportc: "miqt_exec_callback_QsciLexerJava_paper ".} =
-  type Cb = proc(super: QsciLexerJavapaperBase, style: cint): gen_qcolor.QColor
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(style: cint): auto =
-    callVirtualBase_paper(QsciLexerJava(h: self), style)
+  var nimfunc = cast[ptr QsciLexerJavapaperProc](cast[pointer](slot))
   let slotval1 = style
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_defaultColorWithStyle(self: QsciLexerJava, style: cint): gen_qcolor.QColor =
-
+proc QsciLexerJavadefaultColorWithStyle*(self: gen_qscilexerjava_types.QsciLexerJava, style: cint): gen_qcolor.QColor =
 
   gen_qcolor.QColor(h: fQsciLexerJava_virtualbase_defaultColorWithStyle(self.h, style))
 
-type QsciLexerJavadefaultColorWithStyleBase* = proc(style: cint): gen_qcolor.QColor
-proc ondefaultColorWithStyle*(self: QsciLexerJava, slot: proc(super: QsciLexerJavadefaultColorWithStyleBase, style: cint): gen_qcolor.QColor) =
+type QsciLexerJavadefaultColorWithStyleProc* = proc(style: cint): gen_qcolor.QColor
+proc ondefaultColorWithStyle*(self: gen_qscilexerjava_types.QsciLexerJava, slot: QsciLexerJavadefaultColorWithStyleProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerJavadefaultColorWithStyleBase, style: cint): gen_qcolor.QColor
-  var tmp = new Cb
+  var tmp = new QsciLexerJavadefaultColorWithStyleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexerJava_override_virtual_defaultColorWithStyle(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexerJava_defaultColorWithStyle(self: ptr cQsciLexerJava, slot: int, style: cint): pointer {.exportc: "miqt_exec_callback_QsciLexerJava_defaultColorWithStyle ".} =
-  type Cb = proc(super: QsciLexerJavadefaultColorWithStyleBase, style: cint): gen_qcolor.QColor
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(style: cint): auto =
-    callVirtualBase_defaultColorWithStyle(QsciLexerJava(h: self), style)
+  var nimfunc = cast[ptr QsciLexerJavadefaultColorWithStyleProc](cast[pointer](slot))
   let slotval1 = style
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_defaultEolFill(self: QsciLexerJava, style: cint): bool =
-
+proc QsciLexerJavadefaultEolFill*(self: gen_qscilexerjava_types.QsciLexerJava, style: cint): bool =
 
   fQsciLexerJava_virtualbase_defaultEolFill(self.h, style)
 
-type QsciLexerJavadefaultEolFillBase* = proc(style: cint): bool
-proc ondefaultEolFill*(self: QsciLexerJava, slot: proc(super: QsciLexerJavadefaultEolFillBase, style: cint): bool) =
+type QsciLexerJavadefaultEolFillProc* = proc(style: cint): bool
+proc ondefaultEolFill*(self: gen_qscilexerjava_types.QsciLexerJava, slot: QsciLexerJavadefaultEolFillProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerJavadefaultEolFillBase, style: cint): bool
-  var tmp = new Cb
+  var tmp = new QsciLexerJavadefaultEolFillProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexerJava_override_virtual_defaultEolFill(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexerJava_defaultEolFill(self: ptr cQsciLexerJava, slot: int, style: cint): bool {.exportc: "miqt_exec_callback_QsciLexerJava_defaultEolFill ".} =
-  type Cb = proc(super: QsciLexerJavadefaultEolFillBase, style: cint): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(style: cint): auto =
-    callVirtualBase_defaultEolFill(QsciLexerJava(h: self), style)
+  var nimfunc = cast[ptr QsciLexerJavadefaultEolFillProc](cast[pointer](slot))
   let slotval1 = style
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_defaultFontWithStyle(self: QsciLexerJava, style: cint): gen_qfont.QFont =
-
+proc QsciLexerJavadefaultFontWithStyle*(self: gen_qscilexerjava_types.QsciLexerJava, style: cint): gen_qfont.QFont =
 
   gen_qfont.QFont(h: fQsciLexerJava_virtualbase_defaultFontWithStyle(self.h, style))
 
-type QsciLexerJavadefaultFontWithStyleBase* = proc(style: cint): gen_qfont.QFont
-proc ondefaultFontWithStyle*(self: QsciLexerJava, slot: proc(super: QsciLexerJavadefaultFontWithStyleBase, style: cint): gen_qfont.QFont) =
+type QsciLexerJavadefaultFontWithStyleProc* = proc(style: cint): gen_qfont.QFont
+proc ondefaultFontWithStyle*(self: gen_qscilexerjava_types.QsciLexerJava, slot: QsciLexerJavadefaultFontWithStyleProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerJavadefaultFontWithStyleBase, style: cint): gen_qfont.QFont
-  var tmp = new Cb
+  var tmp = new QsciLexerJavadefaultFontWithStyleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexerJava_override_virtual_defaultFontWithStyle(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexerJava_defaultFontWithStyle(self: ptr cQsciLexerJava, slot: int, style: cint): pointer {.exportc: "miqt_exec_callback_QsciLexerJava_defaultFontWithStyle ".} =
-  type Cb = proc(super: QsciLexerJavadefaultFontWithStyleBase, style: cint): gen_qfont.QFont
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(style: cint): auto =
-    callVirtualBase_defaultFontWithStyle(QsciLexerJava(h: self), style)
+  var nimfunc = cast[ptr QsciLexerJavadefaultFontWithStyleProc](cast[pointer](slot))
   let slotval1 = style
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_defaultPaperWithStyle(self: QsciLexerJava, style: cint): gen_qcolor.QColor =
-
+proc QsciLexerJavadefaultPaperWithStyle*(self: gen_qscilexerjava_types.QsciLexerJava, style: cint): gen_qcolor.QColor =
 
   gen_qcolor.QColor(h: fQsciLexerJava_virtualbase_defaultPaperWithStyle(self.h, style))
 
-type QsciLexerJavadefaultPaperWithStyleBase* = proc(style: cint): gen_qcolor.QColor
-proc ondefaultPaperWithStyle*(self: QsciLexerJava, slot: proc(super: QsciLexerJavadefaultPaperWithStyleBase, style: cint): gen_qcolor.QColor) =
+type QsciLexerJavadefaultPaperWithStyleProc* = proc(style: cint): gen_qcolor.QColor
+proc ondefaultPaperWithStyle*(self: gen_qscilexerjava_types.QsciLexerJava, slot: QsciLexerJavadefaultPaperWithStyleProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerJavadefaultPaperWithStyleBase, style: cint): gen_qcolor.QColor
-  var tmp = new Cb
+  var tmp = new QsciLexerJavadefaultPaperWithStyleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexerJava_override_virtual_defaultPaperWithStyle(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexerJava_defaultPaperWithStyle(self: ptr cQsciLexerJava, slot: int, style: cint): pointer {.exportc: "miqt_exec_callback_QsciLexerJava_defaultPaperWithStyle ".} =
-  type Cb = proc(super: QsciLexerJavadefaultPaperWithStyleBase, style: cint): gen_qcolor.QColor
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(style: cint): auto =
-    callVirtualBase_defaultPaperWithStyle(QsciLexerJava(h: self), style)
+  var nimfunc = cast[ptr QsciLexerJavadefaultPaperWithStyleProc](cast[pointer](slot))
   let slotval1 = style
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_setEditor(self: QsciLexerJava, editor: gen_qsciscintilla.QsciScintilla): void =
-
+proc QsciLexerJavasetEditor*(self: gen_qscilexerjava_types.QsciLexerJava, editor: gen_qsciscintilla.QsciScintilla): void =
 
   fQsciLexerJava_virtualbase_setEditor(self.h, editor.h)
 
-type QsciLexerJavasetEditorBase* = proc(editor: gen_qsciscintilla.QsciScintilla): void
-proc onsetEditor*(self: QsciLexerJava, slot: proc(super: QsciLexerJavasetEditorBase, editor: gen_qsciscintilla.QsciScintilla): void) =
+type QsciLexerJavasetEditorProc* = proc(editor: gen_qsciscintilla.QsciScintilla): void
+proc onsetEditor*(self: gen_qscilexerjava_types.QsciLexerJava, slot: QsciLexerJavasetEditorProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerJavasetEditorBase, editor: gen_qsciscintilla.QsciScintilla): void
-  var tmp = new Cb
+  var tmp = new QsciLexerJavasetEditorProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexerJava_override_virtual_setEditor(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexerJava_setEditor(self: ptr cQsciLexerJava, slot: int, editor: pointer): void {.exportc: "miqt_exec_callback_QsciLexerJava_setEditor ".} =
-  type Cb = proc(super: QsciLexerJavasetEditorBase, editor: gen_qsciscintilla.QsciScintilla): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(editor: gen_qsciscintilla.QsciScintilla): auto =
-    callVirtualBase_setEditor(QsciLexerJava(h: self), editor)
+  var nimfunc = cast[ptr QsciLexerJavasetEditorProc](cast[pointer](slot))
   let slotval1 = gen_qsciscintilla.QsciScintilla(h: editor)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_refreshProperties(self: QsciLexerJava, ): void =
-
+  nimfunc[](slotval1)
+proc QsciLexerJavarefreshProperties*(self: gen_qscilexerjava_types.QsciLexerJava, ): void =
 
   fQsciLexerJava_virtualbase_refreshProperties(self.h)
 
-type QsciLexerJavarefreshPropertiesBase* = proc(): void
-proc onrefreshProperties*(self: QsciLexerJava, slot: proc(super: QsciLexerJavarefreshPropertiesBase): void) =
+type QsciLexerJavarefreshPropertiesProc* = proc(): void
+proc onrefreshProperties*(self: gen_qscilexerjava_types.QsciLexerJava, slot: QsciLexerJavarefreshPropertiesProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerJavarefreshPropertiesBase): void
-  var tmp = new Cb
+  var tmp = new QsciLexerJavarefreshPropertiesProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexerJava_override_virtual_refreshProperties(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexerJava_refreshProperties(self: ptr cQsciLexerJava, slot: int): void {.exportc: "miqt_exec_callback_QsciLexerJava_refreshProperties ".} =
-  type Cb = proc(super: QsciLexerJavarefreshPropertiesBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_refreshProperties(QsciLexerJava(h: self), )
+  var nimfunc = cast[ptr QsciLexerJavarefreshPropertiesProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_styleBitsNeeded(self: QsciLexerJava, ): cint =
-
+  nimfunc[]()
+proc QsciLexerJavastyleBitsNeeded*(self: gen_qscilexerjava_types.QsciLexerJava, ): cint =
 
   fQsciLexerJava_virtualbase_styleBitsNeeded(self.h)
 
-type QsciLexerJavastyleBitsNeededBase* = proc(): cint
-proc onstyleBitsNeeded*(self: QsciLexerJava, slot: proc(super: QsciLexerJavastyleBitsNeededBase): cint) =
+type QsciLexerJavastyleBitsNeededProc* = proc(): cint
+proc onstyleBitsNeeded*(self: gen_qscilexerjava_types.QsciLexerJava, slot: QsciLexerJavastyleBitsNeededProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerJavastyleBitsNeededBase): cint
-  var tmp = new Cb
+  var tmp = new QsciLexerJavastyleBitsNeededProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexerJava_override_virtual_styleBitsNeeded(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexerJava_styleBitsNeeded(self: ptr cQsciLexerJava, slot: int): cint {.exportc: "miqt_exec_callback_QsciLexerJava_styleBitsNeeded ".} =
-  type Cb = proc(super: QsciLexerJavastyleBitsNeededBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_styleBitsNeeded(QsciLexerJava(h: self), )
+  var nimfunc = cast[ptr QsciLexerJavastyleBitsNeededProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_wordCharacters(self: QsciLexerJava, ): cstring =
-
+proc QsciLexerJavawordCharacters*(self: gen_qscilexerjava_types.QsciLexerJava, ): cstring =
 
   (fQsciLexerJava_virtualbase_wordCharacters(self.h))
 
-type QsciLexerJavawordCharactersBase* = proc(): cstring
-proc onwordCharacters*(self: QsciLexerJava, slot: proc(super: QsciLexerJavawordCharactersBase): cstring) =
+type QsciLexerJavawordCharactersProc* = proc(): cstring
+proc onwordCharacters*(self: gen_qscilexerjava_types.QsciLexerJava, slot: QsciLexerJavawordCharactersProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerJavawordCharactersBase): cstring
-  var tmp = new Cb
+  var tmp = new QsciLexerJavawordCharactersProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexerJava_override_virtual_wordCharacters(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexerJava_wordCharacters(self: ptr cQsciLexerJava, slot: int): cstring {.exportc: "miqt_exec_callback_QsciLexerJava_wordCharacters ".} =
-  type Cb = proc(super: QsciLexerJavawordCharactersBase): cstring
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_wordCharacters(QsciLexerJava(h: self), )
+  var nimfunc = cast[ptr QsciLexerJavawordCharactersProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setAutoIndentStyle(self: QsciLexerJava, autoindentstyle: cint): void =
-
+proc QsciLexerJavasetAutoIndentStyle*(self: gen_qscilexerjava_types.QsciLexerJava, autoindentstyle: cint): void =
 
   fQsciLexerJava_virtualbase_setAutoIndentStyle(self.h, autoindentstyle)
 
-type QsciLexerJavasetAutoIndentStyleBase* = proc(autoindentstyle: cint): void
-proc onsetAutoIndentStyle*(self: QsciLexerJava, slot: proc(super: QsciLexerJavasetAutoIndentStyleBase, autoindentstyle: cint): void) =
+type QsciLexerJavasetAutoIndentStyleProc* = proc(autoindentstyle: cint): void
+proc onsetAutoIndentStyle*(self: gen_qscilexerjava_types.QsciLexerJava, slot: QsciLexerJavasetAutoIndentStyleProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerJavasetAutoIndentStyleBase, autoindentstyle: cint): void
-  var tmp = new Cb
+  var tmp = new QsciLexerJavasetAutoIndentStyleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexerJava_override_virtual_setAutoIndentStyle(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexerJava_setAutoIndentStyle(self: ptr cQsciLexerJava, slot: int, autoindentstyle: cint): void {.exportc: "miqt_exec_callback_QsciLexerJava_setAutoIndentStyle ".} =
-  type Cb = proc(super: QsciLexerJavasetAutoIndentStyleBase, autoindentstyle: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(autoindentstyle: cint): auto =
-    callVirtualBase_setAutoIndentStyle(QsciLexerJava(h: self), autoindentstyle)
+  var nimfunc = cast[ptr QsciLexerJavasetAutoIndentStyleProc](cast[pointer](slot))
   let slotval1 = autoindentstyle
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_setColor(self: QsciLexerJava, c: gen_qcolor.QColor, style: cint): void =
-
+  nimfunc[](slotval1)
+proc QsciLexerJavasetColor*(self: gen_qscilexerjava_types.QsciLexerJava, c: gen_qcolor.QColor, style: cint): void =
 
   fQsciLexerJava_virtualbase_setColor(self.h, c.h, style)
 
-type QsciLexerJavasetColorBase* = proc(c: gen_qcolor.QColor, style: cint): void
-proc onsetColor*(self: QsciLexerJava, slot: proc(super: QsciLexerJavasetColorBase, c: gen_qcolor.QColor, style: cint): void) =
+type QsciLexerJavasetColorProc* = proc(c: gen_qcolor.QColor, style: cint): void
+proc onsetColor*(self: gen_qscilexerjava_types.QsciLexerJava, slot: QsciLexerJavasetColorProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerJavasetColorBase, c: gen_qcolor.QColor, style: cint): void
-  var tmp = new Cb
+  var tmp = new QsciLexerJavasetColorProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexerJava_override_virtual_setColor(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexerJava_setColor(self: ptr cQsciLexerJava, slot: int, c: pointer, style: cint): void {.exportc: "miqt_exec_callback_QsciLexerJava_setColor ".} =
-  type Cb = proc(super: QsciLexerJavasetColorBase, c: gen_qcolor.QColor, style: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(c: gen_qcolor.QColor, style: cint): auto =
-    callVirtualBase_setColor(QsciLexerJava(h: self), c, style)
+  var nimfunc = cast[ptr QsciLexerJavasetColorProc](cast[pointer](slot))
   let slotval1 = gen_qcolor.QColor(h: c)
 
   let slotval2 = style
 
 
-  nimfunc[](superCall, slotval1, slotval2)
-proc callVirtualBase_setEolFill(self: QsciLexerJava, eoffill: bool, style: cint): void =
-
+  nimfunc[](slotval1, slotval2)
+proc QsciLexerJavasetEolFill*(self: gen_qscilexerjava_types.QsciLexerJava, eoffill: bool, style: cint): void =
 
   fQsciLexerJava_virtualbase_setEolFill(self.h, eoffill, style)
 
-type QsciLexerJavasetEolFillBase* = proc(eoffill: bool, style: cint): void
-proc onsetEolFill*(self: QsciLexerJava, slot: proc(super: QsciLexerJavasetEolFillBase, eoffill: bool, style: cint): void) =
+type QsciLexerJavasetEolFillProc* = proc(eoffill: bool, style: cint): void
+proc onsetEolFill*(self: gen_qscilexerjava_types.QsciLexerJava, slot: QsciLexerJavasetEolFillProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerJavasetEolFillBase, eoffill: bool, style: cint): void
-  var tmp = new Cb
+  var tmp = new QsciLexerJavasetEolFillProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexerJava_override_virtual_setEolFill(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexerJava_setEolFill(self: ptr cQsciLexerJava, slot: int, eoffill: bool, style: cint): void {.exportc: "miqt_exec_callback_QsciLexerJava_setEolFill ".} =
-  type Cb = proc(super: QsciLexerJavasetEolFillBase, eoffill: bool, style: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(eoffill: bool, style: cint): auto =
-    callVirtualBase_setEolFill(QsciLexerJava(h: self), eoffill, style)
+  var nimfunc = cast[ptr QsciLexerJavasetEolFillProc](cast[pointer](slot))
   let slotval1 = eoffill
 
   let slotval2 = style
 
 
-  nimfunc[](superCall, slotval1, slotval2)
-proc callVirtualBase_setFont(self: QsciLexerJava, f: gen_qfont.QFont, style: cint): void =
-
+  nimfunc[](slotval1, slotval2)
+proc QsciLexerJavasetFont*(self: gen_qscilexerjava_types.QsciLexerJava, f: gen_qfont.QFont, style: cint): void =
 
   fQsciLexerJava_virtualbase_setFont(self.h, f.h, style)
 
-type QsciLexerJavasetFontBase* = proc(f: gen_qfont.QFont, style: cint): void
-proc onsetFont*(self: QsciLexerJava, slot: proc(super: QsciLexerJavasetFontBase, f: gen_qfont.QFont, style: cint): void) =
+type QsciLexerJavasetFontProc* = proc(f: gen_qfont.QFont, style: cint): void
+proc onsetFont*(self: gen_qscilexerjava_types.QsciLexerJava, slot: QsciLexerJavasetFontProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerJavasetFontBase, f: gen_qfont.QFont, style: cint): void
-  var tmp = new Cb
+  var tmp = new QsciLexerJavasetFontProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexerJava_override_virtual_setFont(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexerJava_setFont(self: ptr cQsciLexerJava, slot: int, f: pointer, style: cint): void {.exportc: "miqt_exec_callback_QsciLexerJava_setFont ".} =
-  type Cb = proc(super: QsciLexerJavasetFontBase, f: gen_qfont.QFont, style: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(f: gen_qfont.QFont, style: cint): auto =
-    callVirtualBase_setFont(QsciLexerJava(h: self), f, style)
+  var nimfunc = cast[ptr QsciLexerJavasetFontProc](cast[pointer](slot))
   let slotval1 = gen_qfont.QFont(h: f)
 
   let slotval2 = style
 
 
-  nimfunc[](superCall, slotval1, slotval2)
-proc callVirtualBase_setPaper(self: QsciLexerJava, c: gen_qcolor.QColor, style: cint): void =
-
+  nimfunc[](slotval1, slotval2)
+proc QsciLexerJavasetPaper*(self: gen_qscilexerjava_types.QsciLexerJava, c: gen_qcolor.QColor, style: cint): void =
 
   fQsciLexerJava_virtualbase_setPaper(self.h, c.h, style)
 
-type QsciLexerJavasetPaperBase* = proc(c: gen_qcolor.QColor, style: cint): void
-proc onsetPaper*(self: QsciLexerJava, slot: proc(super: QsciLexerJavasetPaperBase, c: gen_qcolor.QColor, style: cint): void) =
+type QsciLexerJavasetPaperProc* = proc(c: gen_qcolor.QColor, style: cint): void
+proc onsetPaper*(self: gen_qscilexerjava_types.QsciLexerJava, slot: QsciLexerJavasetPaperProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerJavasetPaperBase, c: gen_qcolor.QColor, style: cint): void
-  var tmp = new Cb
+  var tmp = new QsciLexerJavasetPaperProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexerJava_override_virtual_setPaper(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexerJava_setPaper(self: ptr cQsciLexerJava, slot: int, c: pointer, style: cint): void {.exportc: "miqt_exec_callback_QsciLexerJava_setPaper ".} =
-  type Cb = proc(super: QsciLexerJavasetPaperBase, c: gen_qcolor.QColor, style: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(c: gen_qcolor.QColor, style: cint): auto =
-    callVirtualBase_setPaper(QsciLexerJava(h: self), c, style)
+  var nimfunc = cast[ptr QsciLexerJavasetPaperProc](cast[pointer](slot))
   let slotval1 = gen_qcolor.QColor(h: c)
 
   let slotval2 = style
 
 
-  nimfunc[](superCall, slotval1, slotval2)
-proc callVirtualBase_readProperties(self: QsciLexerJava, qs: gen_qsettings.QSettings, prefix: string): bool =
-
+  nimfunc[](slotval1, slotval2)
+proc QsciLexerJavareadProperties*(self: gen_qscilexerjava_types.QsciLexerJava, qs: gen_qsettings.QSettings, prefix: string): bool =
 
   fQsciLexerJava_virtualbase_readProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
-type QsciLexerJavareadPropertiesBase* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
-proc onreadProperties*(self: QsciLexerJava, slot: proc(super: QsciLexerJavareadPropertiesBase, qs: gen_qsettings.QSettings, prefix: string): bool) =
+type QsciLexerJavareadPropertiesProc* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
+proc onreadProperties*(self: gen_qscilexerjava_types.QsciLexerJava, slot: QsciLexerJavareadPropertiesProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerJavareadPropertiesBase, qs: gen_qsettings.QSettings, prefix: string): bool
-  var tmp = new Cb
+  var tmp = new QsciLexerJavareadPropertiesProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexerJava_override_virtual_readProperties(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexerJava_readProperties(self: ptr cQsciLexerJava, slot: int, qs: pointer, prefix: struct_miqt_string): bool {.exportc: "miqt_exec_callback_QsciLexerJava_readProperties ".} =
-  type Cb = proc(super: QsciLexerJavareadPropertiesBase, qs: gen_qsettings.QSettings, prefix: string): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(qs: gen_qsettings.QSettings, prefix: string): auto =
-    callVirtualBase_readProperties(QsciLexerJava(h: self), qs, prefix)
+  var nimfunc = cast[ptr QsciLexerJavareadPropertiesProc](cast[pointer](slot))
   let slotval1 = gen_qsettings.QSettings(h: qs)
 
   let vprefix_ms = prefix
@@ -1228,28 +1029,23 @@ proc miqt_exec_callback_QsciLexerJava_readProperties(self: ptr cQsciLexerJava, s
   let slotval2 = vprefixx_ret
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_writeProperties(self: QsciLexerJava, qs: gen_qsettings.QSettings, prefix: string): bool =
-
+proc QsciLexerJavawriteProperties*(self: gen_qscilexerjava_types.QsciLexerJava, qs: gen_qsettings.QSettings, prefix: string): bool =
 
   fQsciLexerJava_virtualbase_writeProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
-type QsciLexerJavawritePropertiesBase* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
-proc onwriteProperties*(self: QsciLexerJava, slot: proc(super: QsciLexerJavawritePropertiesBase, qs: gen_qsettings.QSettings, prefix: string): bool) =
+type QsciLexerJavawritePropertiesProc* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
+proc onwriteProperties*(self: gen_qscilexerjava_types.QsciLexerJava, slot: QsciLexerJavawritePropertiesProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerJavawritePropertiesBase, qs: gen_qsettings.QSettings, prefix: string): bool
-  var tmp = new Cb
+  var tmp = new QsciLexerJavawritePropertiesProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexerJava_override_virtual_writeProperties(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexerJava_writeProperties(self: ptr cQsciLexerJava, slot: int, qs: pointer, prefix: struct_miqt_string): bool {.exportc: "miqt_exec_callback_QsciLexerJava_writeProperties ".} =
-  type Cb = proc(super: QsciLexerJavawritePropertiesBase, qs: gen_qsettings.QSettings, prefix: string): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(qs: gen_qsettings.QSettings, prefix: string): auto =
-    callVirtualBase_writeProperties(QsciLexerJava(h: self), qs, prefix)
+  var nimfunc = cast[ptr QsciLexerJavawritePropertiesProc](cast[pointer](slot))
   let slotval1 = gen_qsettings.QSettings(h: qs)
 
   let vprefix_ms = prefix
@@ -1258,177 +1054,142 @@ proc miqt_exec_callback_QsciLexerJava_writeProperties(self: ptr cQsciLexerJava, 
   let slotval2 = vprefixx_ret
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_event(self: QsciLexerJava, event: gen_qcoreevent.QEvent): bool =
-
+proc QsciLexerJavaevent*(self: gen_qscilexerjava_types.QsciLexerJava, event: gen_qcoreevent.QEvent): bool =
 
   fQsciLexerJava_virtualbase_event(self.h, event.h)
 
-type QsciLexerJavaeventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QsciLexerJava, slot: proc(super: QsciLexerJavaeventBase, event: gen_qcoreevent.QEvent): bool) =
+type QsciLexerJavaeventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qscilexerjava_types.QsciLexerJava, slot: QsciLexerJavaeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerJavaeventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QsciLexerJavaeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexerJava_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexerJava_event(self: ptr cQsciLexerJava, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QsciLexerJava_event ".} =
-  type Cb = proc(super: QsciLexerJavaeventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QsciLexerJava(h: self), event)
+  var nimfunc = cast[ptr QsciLexerJavaeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QsciLexerJava, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QsciLexerJavaeventFilter*(self: gen_qscilexerjava_types.QsciLexerJava, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQsciLexerJava_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QsciLexerJavaeventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QsciLexerJava, slot: proc(super: QsciLexerJavaeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QsciLexerJavaeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qscilexerjava_types.QsciLexerJava, slot: QsciLexerJavaeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerJavaeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QsciLexerJavaeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexerJava_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexerJava_eventFilter(self: ptr cQsciLexerJava, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QsciLexerJava_eventFilter ".} =
-  type Cb = proc(super: QsciLexerJavaeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QsciLexerJava(h: self), watched, event)
+  var nimfunc = cast[ptr QsciLexerJavaeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QsciLexerJava, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QsciLexerJavatimerEvent*(self: gen_qscilexerjava_types.QsciLexerJava, event: gen_qcoreevent.QTimerEvent): void =
 
   fQsciLexerJava_virtualbase_timerEvent(self.h, event.h)
 
-type QsciLexerJavatimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QsciLexerJava, slot: proc(super: QsciLexerJavatimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QsciLexerJavatimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qscilexerjava_types.QsciLexerJava, slot: QsciLexerJavatimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerJavatimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QsciLexerJavatimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexerJava_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexerJava_timerEvent(self: ptr cQsciLexerJava, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QsciLexerJava_timerEvent ".} =
-  type Cb = proc(super: QsciLexerJavatimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QsciLexerJava(h: self), event)
+  var nimfunc = cast[ptr QsciLexerJavatimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QsciLexerJava, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QsciLexerJavachildEvent*(self: gen_qscilexerjava_types.QsciLexerJava, event: gen_qcoreevent.QChildEvent): void =
 
   fQsciLexerJava_virtualbase_childEvent(self.h, event.h)
 
-type QsciLexerJavachildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QsciLexerJava, slot: proc(super: QsciLexerJavachildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QsciLexerJavachildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qscilexerjava_types.QsciLexerJava, slot: QsciLexerJavachildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerJavachildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QsciLexerJavachildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexerJava_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexerJava_childEvent(self: ptr cQsciLexerJava, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QsciLexerJava_childEvent ".} =
-  type Cb = proc(super: QsciLexerJavachildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QsciLexerJava(h: self), event)
+  var nimfunc = cast[ptr QsciLexerJavachildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QsciLexerJava, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QsciLexerJavacustomEvent*(self: gen_qscilexerjava_types.QsciLexerJava, event: gen_qcoreevent.QEvent): void =
 
   fQsciLexerJava_virtualbase_customEvent(self.h, event.h)
 
-type QsciLexerJavacustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QsciLexerJava, slot: proc(super: QsciLexerJavacustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QsciLexerJavacustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qscilexerjava_types.QsciLexerJava, slot: QsciLexerJavacustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerJavacustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QsciLexerJavacustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexerJava_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexerJava_customEvent(self: ptr cQsciLexerJava, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QsciLexerJava_customEvent ".} =
-  type Cb = proc(super: QsciLexerJavacustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QsciLexerJava(h: self), event)
+  var nimfunc = cast[ptr QsciLexerJavacustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QsciLexerJava, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QsciLexerJavaconnectNotify*(self: gen_qscilexerjava_types.QsciLexerJava, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQsciLexerJava_virtualbase_connectNotify(self.h, signal.h)
 
-type QsciLexerJavaconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QsciLexerJava, slot: proc(super: QsciLexerJavaconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QsciLexerJavaconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qscilexerjava_types.QsciLexerJava, slot: QsciLexerJavaconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerJavaconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QsciLexerJavaconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexerJava_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexerJava_connectNotify(self: ptr cQsciLexerJava, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QsciLexerJava_connectNotify ".} =
-  type Cb = proc(super: QsciLexerJavaconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QsciLexerJava(h: self), signal)
+  var nimfunc = cast[ptr QsciLexerJavaconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QsciLexerJava, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QsciLexerJavadisconnectNotify*(self: gen_qscilexerjava_types.QsciLexerJava, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQsciLexerJava_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QsciLexerJavadisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QsciLexerJava, slot: proc(super: QsciLexerJavadisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QsciLexerJavadisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qscilexerjava_types.QsciLexerJava, slot: QsciLexerJavadisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerJavadisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QsciLexerJavadisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexerJava_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexerJava_disconnectNotify(self: ptr cQsciLexerJava, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QsciLexerJava_disconnectNotify ".} =
-  type Cb = proc(super: QsciLexerJavadisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QsciLexerJava(h: self), signal)
+  var nimfunc = cast[ptr QsciLexerJavadisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QsciLexerJava): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qscilexerjava_types.QsciLexerJava): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQsciLexerJava_staticMetaObject())
-proc delete*(self: QsciLexerJava) =
+proc delete*(self: gen_qscilexerjava_types.QsciLexerJava) =
   fcQsciLexerJava_delete(self.h)

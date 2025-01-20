@@ -63,65 +63,65 @@ proc fcQScriptValueIterator_operatorAssign(self: pointer, value: pointer): void 
 proc fcQScriptValueIterator_delete(self: pointer) {.importc: "QScriptValueIterator_delete".}
 
 
-func init*(T: type QScriptValueIterator, h: ptr cQScriptValueIterator): QScriptValueIterator =
+func init*(T: type gen_qscriptvalueiterator_types.QScriptValueIterator, h: ptr cQScriptValueIterator): gen_qscriptvalueiterator_types.QScriptValueIterator =
   T(h: h)
-proc create*(T: type QScriptValueIterator, value: gen_qscriptvalue.QScriptValue): QScriptValueIterator =
+proc create*(T: type gen_qscriptvalueiterator_types.QScriptValueIterator, value: gen_qscriptvalue.QScriptValue): gen_qscriptvalueiterator_types.QScriptValueIterator =
 
-  QScriptValueIterator.init(fcQScriptValueIterator_new(value.h))
-proc hasNext*(self: QScriptValueIterator, ): bool =
+  gen_qscriptvalueiterator_types.QScriptValueIterator.init(fcQScriptValueIterator_new(value.h))
+proc hasNext*(self: gen_qscriptvalueiterator_types.QScriptValueIterator, ): bool =
 
   fcQScriptValueIterator_hasNext(self.h)
 
-proc next*(self: QScriptValueIterator, ): void =
+proc next*(self: gen_qscriptvalueiterator_types.QScriptValueIterator, ): void =
 
   fcQScriptValueIterator_next(self.h)
 
-proc hasPrevious*(self: QScriptValueIterator, ): bool =
+proc hasPrevious*(self: gen_qscriptvalueiterator_types.QScriptValueIterator, ): bool =
 
   fcQScriptValueIterator_hasPrevious(self.h)
 
-proc previous*(self: QScriptValueIterator, ): void =
+proc previous*(self: gen_qscriptvalueiterator_types.QScriptValueIterator, ): void =
 
   fcQScriptValueIterator_previous(self.h)
 
-proc name*(self: QScriptValueIterator, ): string =
+proc name*(self: gen_qscriptvalueiterator_types.QScriptValueIterator, ): string =
 
   let v_ms = fcQScriptValueIterator_name(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc scriptName*(self: QScriptValueIterator, ): gen_qscriptstring.QScriptString =
+proc scriptName*(self: gen_qscriptvalueiterator_types.QScriptValueIterator, ): gen_qscriptstring.QScriptString =
 
   gen_qscriptstring.QScriptString(h: fcQScriptValueIterator_scriptName(self.h))
 
-proc value*(self: QScriptValueIterator, ): gen_qscriptvalue.QScriptValue =
+proc value*(self: gen_qscriptvalueiterator_types.QScriptValueIterator, ): gen_qscriptvalue.QScriptValue =
 
   gen_qscriptvalue.QScriptValue(h: fcQScriptValueIterator_value(self.h))
 
-proc setValue*(self: QScriptValueIterator, value: gen_qscriptvalue.QScriptValue): void =
+proc setValue*(self: gen_qscriptvalueiterator_types.QScriptValueIterator, value: gen_qscriptvalue.QScriptValue): void =
 
   fcQScriptValueIterator_setValue(self.h, value.h)
 
-proc flags*(self: QScriptValueIterator, ): gen_qscriptvalue.QScriptValuePropertyFlag =
+proc flags*(self: gen_qscriptvalueiterator_types.QScriptValueIterator, ): cint =
 
-  gen_qscriptvalue.QScriptValuePropertyFlag(fcQScriptValueIterator_flags(self.h))
+  cint(fcQScriptValueIterator_flags(self.h))
 
-proc remove*(self: QScriptValueIterator, ): void =
+proc remove*(self: gen_qscriptvalueiterator_types.QScriptValueIterator, ): void =
 
   fcQScriptValueIterator_remove(self.h)
 
-proc toFront*(self: QScriptValueIterator, ): void =
+proc toFront*(self: gen_qscriptvalueiterator_types.QScriptValueIterator, ): void =
 
   fcQScriptValueIterator_toFront(self.h)
 
-proc toBack*(self: QScriptValueIterator, ): void =
+proc toBack*(self: gen_qscriptvalueiterator_types.QScriptValueIterator, ): void =
 
   fcQScriptValueIterator_toBack(self.h)
 
-proc operatorAssign*(self: QScriptValueIterator, value: gen_qscriptvalue.QScriptValue): void =
+proc operatorAssign*(self: gen_qscriptvalueiterator_types.QScriptValueIterator, value: gen_qscriptvalue.QScriptValue): void =
 
   fcQScriptValueIterator_operatorAssign(self.h, value.h)
 
-proc delete*(self: QScriptValueIterator) =
+proc delete*(self: gen_qscriptvalueiterator_types.QScriptValueIterator) =
   fcQScriptValueIterator_delete(self.h)

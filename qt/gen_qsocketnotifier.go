@@ -167,7 +167,7 @@ func (this *QSocketNotifier) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QSocketNotifier_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QSocketNotifier) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QSocketNotifier) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QSocketNotifier_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -194,7 +194,7 @@ func (this *QSocketNotifier) callVirtualBase_Metacast(param1 string) unsafe.Poin
 	return (unsafe.Pointer)(C.QSocketNotifier_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QSocketNotifier) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QSocketNotifier) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QSocketNotifier_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

@@ -38,14 +38,12 @@ import gen_qwebpluginfactory_types
 export gen_qwebpluginfactory_types
 
 import
-  TODO,
   gen_qcoreevent,
   gen_qmetaobject,
   gen_qobject,
   gen_qobjectdefs,
   gen_qurl
 export
-  TODO,
   gen_qcoreevent,
   gen_qmetaobject,
   gen_qobject,
@@ -116,54 +114,54 @@ proc fcQWebPluginFactoryExtensionOption_delete(self: pointer) {.importc: "QWebPl
 proc fcQWebPluginFactoryExtensionReturn_delete(self: pointer) {.importc: "QWebPluginFactory__ExtensionReturn_delete".}
 
 
-func init*(T: type QWebPluginFactory, h: ptr cQWebPluginFactory): QWebPluginFactory =
+func init*(T: type gen_qwebpluginfactory_types.QWebPluginFactory, h: ptr cQWebPluginFactory): gen_qwebpluginfactory_types.QWebPluginFactory =
   T(h: h)
-proc create*(T: type QWebPluginFactory, ): QWebPluginFactory =
+proc create*(T: type gen_qwebpluginfactory_types.QWebPluginFactory, ): gen_qwebpluginfactory_types.QWebPluginFactory =
 
-  QWebPluginFactory.init(fcQWebPluginFactory_new())
-proc create*(T: type QWebPluginFactory, parent: gen_qobject.QObject): QWebPluginFactory =
+  gen_qwebpluginfactory_types.QWebPluginFactory.init(fcQWebPluginFactory_new())
+proc create*(T: type gen_qwebpluginfactory_types.QWebPluginFactory, parent: gen_qobject.QObject): gen_qwebpluginfactory_types.QWebPluginFactory =
 
-  QWebPluginFactory.init(fcQWebPluginFactory_new2(parent.h))
-proc metaObject*(self: QWebPluginFactory, ): gen_qobjectdefs.QMetaObject =
+  gen_qwebpluginfactory_types.QWebPluginFactory.init(fcQWebPluginFactory_new2(parent.h))
+proc metaObject*(self: gen_qwebpluginfactory_types.QWebPluginFactory, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQWebPluginFactory_metaObject(self.h))
 
-proc metacast*(self: QWebPluginFactory, param1: cstring): pointer =
+proc metacast*(self: gen_qwebpluginfactory_types.QWebPluginFactory, param1: cstring): pointer =
 
   fcQWebPluginFactory_metacast(self.h, param1)
 
-proc metacall*(self: QWebPluginFactory, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qwebpluginfactory_types.QWebPluginFactory, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQWebPluginFactory_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QWebPluginFactory, s: cstring): string =
+proc tr*(_: type gen_qwebpluginfactory_types.QWebPluginFactory, s: cstring): string =
 
   let v_ms = fcQWebPluginFactory_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QWebPluginFactory, s: cstring): string =
+proc trUtf8*(_: type gen_qwebpluginfactory_types.QWebPluginFactory, s: cstring): string =
 
   let v_ms = fcQWebPluginFactory_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc plugins*(self: QWebPluginFactory, ): seq[QWebPluginFactoryPlugin] =
+proc plugins*(self: gen_qwebpluginfactory_types.QWebPluginFactory, ): seq[gen_qwebpluginfactory_types.QWebPluginFactoryPlugin] =
 
   var v_ma = fcQWebPluginFactory_plugins(self.h)
-  var vx_ret = newSeq[QWebPluginFactoryPlugin](int(v_ma.len))
+  var vx_ret = newSeq[gen_qwebpluginfactory_types.QWebPluginFactoryPlugin](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
-    vx_ret[i] = QWebPluginFactoryPlugin(h: v_outCast[i])
+    vx_ret[i] = gen_qwebpluginfactory_types.QWebPluginFactoryPlugin(h: v_outCast[i])
   vx_ret
 
-proc refreshPlugins*(self: QWebPluginFactory, ): void =
+proc refreshPlugins*(self: gen_qwebpluginfactory_types.QWebPluginFactory, ): void =
 
   fcQWebPluginFactory_refreshPlugins(self.h)
 
-proc create*(self: QWebPluginFactory, mimeType: string, param2: gen_qurl.QUrl, argumentNames: seq[string], argumentValues: seq[string]): gen_qobject.QObject =
+proc create*(self: gen_qwebpluginfactory_types.QWebPluginFactory, mimeType: string, param2: gen_qurl.QUrl, argumentNames: seq[string], argumentValues: seq[string]): gen_qobject.QObject =
 
   var argumentNames_CArray = newSeq[struct_miqt_string](len(argumentNames))
   for i in 0..<len(argumentNames):
@@ -175,131 +173,114 @@ proc create*(self: QWebPluginFactory, mimeType: string, param2: gen_qurl.QUrl, a
 
   gen_qobject.QObject(h: fcQWebPluginFactory_create(self.h, struct_miqt_string(data: mimeType, len: csize_t(len(mimeType))), param2.h, struct_miqt_array(len: csize_t(len(argumentNames)), data: if len(argumentNames) == 0: nil else: addr(argumentNames_CArray[0])), struct_miqt_array(len: csize_t(len(argumentValues)), data: if len(argumentValues) == 0: nil else: addr(argumentValues_CArray[0]))))
 
-proc extension*(self: QWebPluginFactory, extension: TODO.QWebPluginFactoryExtension, option: QWebPluginFactoryExtensionOption, output: QWebPluginFactoryExtensionReturn): bool =
+proc extension*(self: gen_qwebpluginfactory_types.QWebPluginFactory, extension: cint, option: gen_qwebpluginfactory_types.QWebPluginFactoryExtensionOption, output: gen_qwebpluginfactory_types.QWebPluginFactoryExtensionReturn): bool =
 
   fcQWebPluginFactory_extension(self.h, cint(extension), option.h, output.h)
 
-proc supportsExtension*(self: QWebPluginFactory, extension: TODO.QWebPluginFactoryExtension): bool =
+proc supportsExtension*(self: gen_qwebpluginfactory_types.QWebPluginFactory, extension: cint): bool =
 
   fcQWebPluginFactory_supportsExtension(self.h, cint(extension))
 
-proc tr2*(_: type QWebPluginFactory, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qwebpluginfactory_types.QWebPluginFactory, s: cstring, c: cstring): string =
 
   let v_ms = fcQWebPluginFactory_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QWebPluginFactory, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qwebpluginfactory_types.QWebPluginFactory, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQWebPluginFactory_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QWebPluginFactory, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qwebpluginfactory_types.QWebPluginFactory, s: cstring, c: cstring): string =
 
   let v_ms = fcQWebPluginFactory_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QWebPluginFactory, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qwebpluginfactory_types.QWebPluginFactory, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQWebPluginFactory_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QWebPluginFactory, ): gen_qobjectdefs.QMetaObject =
-
+proc QWebPluginFactorymetaObject*(self: gen_qwebpluginfactory_types.QWebPluginFactory, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQWebPluginFactory_virtualbase_metaObject(self.h))
 
-type QWebPluginFactorymetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QWebPluginFactory, slot: proc(super: QWebPluginFactorymetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QWebPluginFactorymetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qwebpluginfactory_types.QWebPluginFactory, slot: QWebPluginFactorymetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebPluginFactorymetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QWebPluginFactorymetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebPluginFactory_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebPluginFactory_metaObject(self: ptr cQWebPluginFactory, slot: int): pointer {.exportc: "miqt_exec_callback_QWebPluginFactory_metaObject ".} =
-  type Cb = proc(super: QWebPluginFactorymetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QWebPluginFactory(h: self), )
+  var nimfunc = cast[ptr QWebPluginFactorymetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QWebPluginFactory, param1: cstring): pointer =
-
+proc QWebPluginFactorymetacast*(self: gen_qwebpluginfactory_types.QWebPluginFactory, param1: cstring): pointer =
 
   fQWebPluginFactory_virtualbase_metacast(self.h, param1)
 
-type QWebPluginFactorymetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QWebPluginFactory, slot: proc(super: QWebPluginFactorymetacastBase, param1: cstring): pointer) =
+type QWebPluginFactorymetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qwebpluginfactory_types.QWebPluginFactory, slot: QWebPluginFactorymetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebPluginFactorymetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QWebPluginFactorymetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebPluginFactory_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebPluginFactory_metacast(self: ptr cQWebPluginFactory, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QWebPluginFactory_metacast ".} =
-  type Cb = proc(super: QWebPluginFactorymetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QWebPluginFactory(h: self), param1)
+  var nimfunc = cast[ptr QWebPluginFactorymetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QWebPluginFactory, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QWebPluginFactorymetacall*(self: gen_qwebpluginfactory_types.QWebPluginFactory, param1: cint, param2: cint, param3: pointer): cint =
 
   fQWebPluginFactory_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QWebPluginFactorymetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QWebPluginFactory, slot: proc(super: QWebPluginFactorymetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QWebPluginFactorymetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qwebpluginfactory_types.QWebPluginFactory, slot: QWebPluginFactorymetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebPluginFactorymetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QWebPluginFactorymetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebPluginFactory_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebPluginFactory_metacall(self: ptr cQWebPluginFactory, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QWebPluginFactory_metacall ".} =
-  type Cb = proc(super: QWebPluginFactorymetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QWebPluginFactory(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QWebPluginFactorymetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-type QWebPluginFactorypluginsBase* = proc(): seq[QWebPluginFactoryPlugin]
-proc onplugins*(self: QWebPluginFactory, slot: proc(): seq[QWebPluginFactoryPlugin]) =
+type QWebPluginFactorypluginsProc* = proc(): seq[gen_qwebpluginfactory_types.QWebPluginFactoryPlugin]
+proc onplugins*(self: gen_qwebpluginfactory_types.QWebPluginFactory, slot: QWebPluginFactorypluginsProc) =
   # TODO check subclass
-  type Cb = proc(): seq[QWebPluginFactoryPlugin]
-  var tmp = new Cb
+  var tmp = new QWebPluginFactorypluginsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebPluginFactory_override_virtual_plugins(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebPluginFactory_plugins(self: ptr cQWebPluginFactory, slot: int): struct_miqt_array {.exportc: "miqt_exec_callback_QWebPluginFactory_plugins ".} =
-  type Cb = proc(): seq[QWebPluginFactoryPlugin]
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QWebPluginFactorypluginsProc](cast[pointer](slot))
 
   let virtualReturn = nimfunc[]( )
   var virtualReturn_CArray = newSeq[pointer](len(virtualReturn))
@@ -308,39 +289,32 @@ proc miqt_exec_callback_QWebPluginFactory_plugins(self: ptr cQWebPluginFactory, 
 
 
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
-proc callVirtualBase_refreshPlugins(self: QWebPluginFactory, ): void =
-
+proc QWebPluginFactoryrefreshPlugins*(self: gen_qwebpluginfactory_types.QWebPluginFactory, ): void =
 
   fQWebPluginFactory_virtualbase_refreshPlugins(self.h)
 
-type QWebPluginFactoryrefreshPluginsBase* = proc(): void
-proc onrefreshPlugins*(self: QWebPluginFactory, slot: proc(super: QWebPluginFactoryrefreshPluginsBase): void) =
+type QWebPluginFactoryrefreshPluginsProc* = proc(): void
+proc onrefreshPlugins*(self: gen_qwebpluginfactory_types.QWebPluginFactory, slot: QWebPluginFactoryrefreshPluginsProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebPluginFactoryrefreshPluginsBase): void
-  var tmp = new Cb
+  var tmp = new QWebPluginFactoryrefreshPluginsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebPluginFactory_override_virtual_refreshPlugins(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebPluginFactory_refreshPlugins(self: ptr cQWebPluginFactory, slot: int): void {.exportc: "miqt_exec_callback_QWebPluginFactory_refreshPlugins ".} =
-  type Cb = proc(super: QWebPluginFactoryrefreshPluginsBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_refreshPlugins(QWebPluginFactory(h: self), )
+  var nimfunc = cast[ptr QWebPluginFactoryrefreshPluginsProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-type QWebPluginFactorycreateBase* = proc(mimeType: string, param2: gen_qurl.QUrl, argumentNames: seq[string], argumentValues: seq[string]): gen_qobject.QObject
-proc oncreate*(self: QWebPluginFactory, slot: proc(mimeType: string, param2: gen_qurl.QUrl, argumentNames: seq[string], argumentValues: seq[string]): gen_qobject.QObject) =
+  nimfunc[]()
+type QWebPluginFactorycreateProc* = proc(mimeType: string, param2: gen_qurl.QUrl, argumentNames: seq[string], argumentValues: seq[string]): gen_qobject.QObject
+proc oncreate*(self: gen_qwebpluginfactory_types.QWebPluginFactory, slot: QWebPluginFactorycreateProc) =
   # TODO check subclass
-  type Cb = proc(mimeType: string, param2: gen_qurl.QUrl, argumentNames: seq[string], argumentValues: seq[string]): gen_qobject.QObject
-  var tmp = new Cb
+  var tmp = new QWebPluginFactorycreateProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebPluginFactory_override_virtual_create(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebPluginFactory_create(self: ptr cQWebPluginFactory, slot: int, mimeType: struct_miqt_string, param2: pointer, argumentNames: struct_miqt_array, argumentValues: struct_miqt_array): pointer {.exportc: "miqt_exec_callback_QWebPluginFactory_create ".} =
-  type Cb = proc(mimeType: string, param2: gen_qurl.QUrl, argumentNames: seq[string], argumentValues: seq[string]): gen_qobject.QObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QWebPluginFactorycreateProc](cast[pointer](slot))
   let vmimeType_ms = mimeType
   let vmimeTypex_ret = string.fromBytes(toOpenArrayByte(vmimeType_ms.data, 0, int(vmimeType_ms.len)-1))
   c_free(vmimeType_ms.data)
@@ -372,270 +346,225 @@ proc miqt_exec_callback_QWebPluginFactory_create(self: ptr cQWebPluginFactory, s
   let virtualReturn = nimfunc[](slotval1, slotval2, slotval3, slotval4 )
 
   virtualReturn.h
-proc callVirtualBase_extension(self: QWebPluginFactory, extension: TODO.QWebPluginFactoryExtension, option: QWebPluginFactoryExtensionOption, output: QWebPluginFactoryExtensionReturn): bool =
-
+proc QWebPluginFactoryextension*(self: gen_qwebpluginfactory_types.QWebPluginFactory, extension: cint, option: gen_qwebpluginfactory_types.QWebPluginFactoryExtensionOption, output: gen_qwebpluginfactory_types.QWebPluginFactoryExtensionReturn): bool =
 
   fQWebPluginFactory_virtualbase_extension(self.h, cint(extension), option.h, output.h)
 
-type QWebPluginFactoryextensionBase* = proc(extension: TODO.QWebPluginFactoryExtension, option: QWebPluginFactoryExtensionOption, output: QWebPluginFactoryExtensionReturn): bool
-proc onextension*(self: QWebPluginFactory, slot: proc(super: QWebPluginFactoryextensionBase, extension: TODO.QWebPluginFactoryExtension, option: QWebPluginFactoryExtensionOption, output: QWebPluginFactoryExtensionReturn): bool) =
+type QWebPluginFactoryextensionProc* = proc(extension: cint, option: gen_qwebpluginfactory_types.QWebPluginFactoryExtensionOption, output: gen_qwebpluginfactory_types.QWebPluginFactoryExtensionReturn): bool
+proc onextension*(self: gen_qwebpluginfactory_types.QWebPluginFactory, slot: QWebPluginFactoryextensionProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebPluginFactoryextensionBase, extension: TODO.QWebPluginFactoryExtension, option: QWebPluginFactoryExtensionOption, output: QWebPluginFactoryExtensionReturn): bool
-  var tmp = new Cb
+  var tmp = new QWebPluginFactoryextensionProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebPluginFactory_override_virtual_extension(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebPluginFactory_extension(self: ptr cQWebPluginFactory, slot: int, extension: cint, option: pointer, output: pointer): bool {.exportc: "miqt_exec_callback_QWebPluginFactory_extension ".} =
-  type Cb = proc(super: QWebPluginFactoryextensionBase, extension: TODO.QWebPluginFactoryExtension, option: QWebPluginFactoryExtensionOption, output: QWebPluginFactoryExtensionReturn): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(extension: TODO.QWebPluginFactoryExtension, option: QWebPluginFactoryExtensionOption, output: QWebPluginFactoryExtensionReturn): auto =
-    callVirtualBase_extension(QWebPluginFactory(h: self), extension, option, output)
-  let slotval1 = TODO.QWebPluginFactoryExtension(extension)
+  var nimfunc = cast[ptr QWebPluginFactoryextensionProc](cast[pointer](slot))
+  let slotval1 = cint(extension)
 
-  let slotval2 = QWebPluginFactoryExtensionOption(h: option)
+  let slotval2 = gen_qwebpluginfactory_types.QWebPluginFactoryExtensionOption(h: option)
 
-  let slotval3 = QWebPluginFactoryExtensionReturn(h: output)
+  let slotval3 = gen_qwebpluginfactory_types.QWebPluginFactoryExtensionReturn(h: output)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_supportsExtension(self: QWebPluginFactory, extension: TODO.QWebPluginFactoryExtension): bool =
-
+proc QWebPluginFactorysupportsExtension*(self: gen_qwebpluginfactory_types.QWebPluginFactory, extension: cint): bool =
 
   fQWebPluginFactory_virtualbase_supportsExtension(self.h, cint(extension))
 
-type QWebPluginFactorysupportsExtensionBase* = proc(extension: TODO.QWebPluginFactoryExtension): bool
-proc onsupportsExtension*(self: QWebPluginFactory, slot: proc(super: QWebPluginFactorysupportsExtensionBase, extension: TODO.QWebPluginFactoryExtension): bool) =
+type QWebPluginFactorysupportsExtensionProc* = proc(extension: cint): bool
+proc onsupportsExtension*(self: gen_qwebpluginfactory_types.QWebPluginFactory, slot: QWebPluginFactorysupportsExtensionProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebPluginFactorysupportsExtensionBase, extension: TODO.QWebPluginFactoryExtension): bool
-  var tmp = new Cb
+  var tmp = new QWebPluginFactorysupportsExtensionProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebPluginFactory_override_virtual_supportsExtension(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebPluginFactory_supportsExtension(self: ptr cQWebPluginFactory, slot: int, extension: cint): bool {.exportc: "miqt_exec_callback_QWebPluginFactory_supportsExtension ".} =
-  type Cb = proc(super: QWebPluginFactorysupportsExtensionBase, extension: TODO.QWebPluginFactoryExtension): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(extension: TODO.QWebPluginFactoryExtension): auto =
-    callVirtualBase_supportsExtension(QWebPluginFactory(h: self), extension)
-  let slotval1 = TODO.QWebPluginFactoryExtension(extension)
+  var nimfunc = cast[ptr QWebPluginFactorysupportsExtensionProc](cast[pointer](slot))
+  let slotval1 = cint(extension)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_event(self: QWebPluginFactory, event: gen_qcoreevent.QEvent): bool =
-
+proc QWebPluginFactoryevent*(self: gen_qwebpluginfactory_types.QWebPluginFactory, event: gen_qcoreevent.QEvent): bool =
 
   fQWebPluginFactory_virtualbase_event(self.h, event.h)
 
-type QWebPluginFactoryeventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QWebPluginFactory, slot: proc(super: QWebPluginFactoryeventBase, event: gen_qcoreevent.QEvent): bool) =
+type QWebPluginFactoryeventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qwebpluginfactory_types.QWebPluginFactory, slot: QWebPluginFactoryeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebPluginFactoryeventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QWebPluginFactoryeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebPluginFactory_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebPluginFactory_event(self: ptr cQWebPluginFactory, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QWebPluginFactory_event ".} =
-  type Cb = proc(super: QWebPluginFactoryeventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QWebPluginFactory(h: self), event)
+  var nimfunc = cast[ptr QWebPluginFactoryeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QWebPluginFactory, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QWebPluginFactoryeventFilter*(self: gen_qwebpluginfactory_types.QWebPluginFactory, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQWebPluginFactory_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QWebPluginFactoryeventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QWebPluginFactory, slot: proc(super: QWebPluginFactoryeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QWebPluginFactoryeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qwebpluginfactory_types.QWebPluginFactory, slot: QWebPluginFactoryeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebPluginFactoryeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QWebPluginFactoryeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebPluginFactory_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebPluginFactory_eventFilter(self: ptr cQWebPluginFactory, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QWebPluginFactory_eventFilter ".} =
-  type Cb = proc(super: QWebPluginFactoryeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QWebPluginFactory(h: self), watched, event)
+  var nimfunc = cast[ptr QWebPluginFactoryeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QWebPluginFactory, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QWebPluginFactorytimerEvent*(self: gen_qwebpluginfactory_types.QWebPluginFactory, event: gen_qcoreevent.QTimerEvent): void =
 
   fQWebPluginFactory_virtualbase_timerEvent(self.h, event.h)
 
-type QWebPluginFactorytimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QWebPluginFactory, slot: proc(super: QWebPluginFactorytimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QWebPluginFactorytimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qwebpluginfactory_types.QWebPluginFactory, slot: QWebPluginFactorytimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebPluginFactorytimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QWebPluginFactorytimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebPluginFactory_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebPluginFactory_timerEvent(self: ptr cQWebPluginFactory, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebPluginFactory_timerEvent ".} =
-  type Cb = proc(super: QWebPluginFactorytimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QWebPluginFactory(h: self), event)
+  var nimfunc = cast[ptr QWebPluginFactorytimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QWebPluginFactory, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebPluginFactorychildEvent*(self: gen_qwebpluginfactory_types.QWebPluginFactory, event: gen_qcoreevent.QChildEvent): void =
 
   fQWebPluginFactory_virtualbase_childEvent(self.h, event.h)
 
-type QWebPluginFactorychildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QWebPluginFactory, slot: proc(super: QWebPluginFactorychildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QWebPluginFactorychildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qwebpluginfactory_types.QWebPluginFactory, slot: QWebPluginFactorychildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebPluginFactorychildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QWebPluginFactorychildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebPluginFactory_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebPluginFactory_childEvent(self: ptr cQWebPluginFactory, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebPluginFactory_childEvent ".} =
-  type Cb = proc(super: QWebPluginFactorychildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QWebPluginFactory(h: self), event)
+  var nimfunc = cast[ptr QWebPluginFactorychildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QWebPluginFactory, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebPluginFactorycustomEvent*(self: gen_qwebpluginfactory_types.QWebPluginFactory, event: gen_qcoreevent.QEvent): void =
 
   fQWebPluginFactory_virtualbase_customEvent(self.h, event.h)
 
-type QWebPluginFactorycustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QWebPluginFactory, slot: proc(super: QWebPluginFactorycustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QWebPluginFactorycustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qwebpluginfactory_types.QWebPluginFactory, slot: QWebPluginFactorycustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebPluginFactorycustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QWebPluginFactorycustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebPluginFactory_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebPluginFactory_customEvent(self: ptr cQWebPluginFactory, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebPluginFactory_customEvent ".} =
-  type Cb = proc(super: QWebPluginFactorycustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QWebPluginFactory(h: self), event)
+  var nimfunc = cast[ptr QWebPluginFactorycustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QWebPluginFactory, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QWebPluginFactoryconnectNotify*(self: gen_qwebpluginfactory_types.QWebPluginFactory, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQWebPluginFactory_virtualbase_connectNotify(self.h, signal.h)
 
-type QWebPluginFactoryconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QWebPluginFactory, slot: proc(super: QWebPluginFactoryconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QWebPluginFactoryconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qwebpluginfactory_types.QWebPluginFactory, slot: QWebPluginFactoryconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebPluginFactoryconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QWebPluginFactoryconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebPluginFactory_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebPluginFactory_connectNotify(self: ptr cQWebPluginFactory, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QWebPluginFactory_connectNotify ".} =
-  type Cb = proc(super: QWebPluginFactoryconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QWebPluginFactory(h: self), signal)
+  var nimfunc = cast[ptr QWebPluginFactoryconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QWebPluginFactory, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QWebPluginFactorydisconnectNotify*(self: gen_qwebpluginfactory_types.QWebPluginFactory, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQWebPluginFactory_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QWebPluginFactorydisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QWebPluginFactory, slot: proc(super: QWebPluginFactorydisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QWebPluginFactorydisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qwebpluginfactory_types.QWebPluginFactory, slot: QWebPluginFactorydisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebPluginFactorydisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QWebPluginFactorydisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebPluginFactory_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebPluginFactory_disconnectNotify(self: ptr cQWebPluginFactory, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QWebPluginFactory_disconnectNotify ".} =
-  type Cb = proc(super: QWebPluginFactorydisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QWebPluginFactory(h: self), signal)
+  var nimfunc = cast[ptr QWebPluginFactorydisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QWebPluginFactory): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qwebpluginfactory_types.QWebPluginFactory): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQWebPluginFactory_staticMetaObject())
-proc delete*(self: QWebPluginFactory) =
+proc delete*(self: gen_qwebpluginfactory_types.QWebPluginFactory) =
   fcQWebPluginFactory_delete(self.h)
 
-func init*(T: type QWebPluginFactoryMimeType, h: ptr cQWebPluginFactoryMimeType): QWebPluginFactoryMimeType =
+func init*(T: type gen_qwebpluginfactory_types.QWebPluginFactoryMimeType, h: ptr cQWebPluginFactoryMimeType): gen_qwebpluginfactory_types.QWebPluginFactoryMimeType =
   T(h: h)
-proc create*(T: type QWebPluginFactoryMimeType, param1: QWebPluginFactoryMimeType): QWebPluginFactoryMimeType =
+proc create*(T: type gen_qwebpluginfactory_types.QWebPluginFactoryMimeType, param1: gen_qwebpluginfactory_types.QWebPluginFactoryMimeType): gen_qwebpluginfactory_types.QWebPluginFactoryMimeType =
 
-  QWebPluginFactoryMimeType.init(fcQWebPluginFactoryMimeType_new(param1.h))
-proc operatorEqual*(self: QWebPluginFactoryMimeType, other: QWebPluginFactoryMimeType): bool =
+  gen_qwebpluginfactory_types.QWebPluginFactoryMimeType.init(fcQWebPluginFactoryMimeType_new(param1.h))
+proc operatorEqual*(self: gen_qwebpluginfactory_types.QWebPluginFactoryMimeType, other: gen_qwebpluginfactory_types.QWebPluginFactoryMimeType): bool =
 
   fcQWebPluginFactoryMimeType_operatorEqual(self.h, other.h)
 
-proc operatorNotEqual*(self: QWebPluginFactoryMimeType, other: QWebPluginFactoryMimeType): bool =
+proc operatorNotEqual*(self: gen_qwebpluginfactory_types.QWebPluginFactoryMimeType, other: gen_qwebpluginfactory_types.QWebPluginFactoryMimeType): bool =
 
   fcQWebPluginFactoryMimeType_operatorNotEqual(self.h, other.h)
 
-proc operatorAssign*(self: QWebPluginFactoryMimeType, param1: QWebPluginFactoryMimeType): void =
+proc operatorAssign*(self: gen_qwebpluginfactory_types.QWebPluginFactoryMimeType, param1: gen_qwebpluginfactory_types.QWebPluginFactoryMimeType): void =
 
   fcQWebPluginFactoryMimeType_operatorAssign(self.h, param1.h)
 
-proc delete*(self: QWebPluginFactoryMimeType) =
+proc delete*(self: gen_qwebpluginfactory_types.QWebPluginFactoryMimeType) =
   fcQWebPluginFactoryMimeType_delete(self.h)
 
-func init*(T: type QWebPluginFactoryPlugin, h: ptr cQWebPluginFactoryPlugin): QWebPluginFactoryPlugin =
+func init*(T: type gen_qwebpluginfactory_types.QWebPluginFactoryPlugin, h: ptr cQWebPluginFactoryPlugin): gen_qwebpluginfactory_types.QWebPluginFactoryPlugin =
   T(h: h)
-proc create*(T: type QWebPluginFactoryPlugin, param1: QWebPluginFactoryPlugin): QWebPluginFactoryPlugin =
+proc create*(T: type gen_qwebpluginfactory_types.QWebPluginFactoryPlugin, param1: gen_qwebpluginfactory_types.QWebPluginFactoryPlugin): gen_qwebpluginfactory_types.QWebPluginFactoryPlugin =
 
-  QWebPluginFactoryPlugin.init(fcQWebPluginFactoryPlugin_new(param1.h))
-proc operatorAssign*(self: QWebPluginFactoryPlugin, param1: QWebPluginFactoryPlugin): void =
+  gen_qwebpluginfactory_types.QWebPluginFactoryPlugin.init(fcQWebPluginFactoryPlugin_new(param1.h))
+proc operatorAssign*(self: gen_qwebpluginfactory_types.QWebPluginFactoryPlugin, param1: gen_qwebpluginfactory_types.QWebPluginFactoryPlugin): void =
 
   fcQWebPluginFactoryPlugin_operatorAssign(self.h, param1.h)
 
-proc delete*(self: QWebPluginFactoryPlugin) =
+proc delete*(self: gen_qwebpluginfactory_types.QWebPluginFactoryPlugin) =
   fcQWebPluginFactoryPlugin_delete(self.h)
 
-func init*(T: type QWebPluginFactoryExtensionOption, h: ptr cQWebPluginFactoryExtensionOption): QWebPluginFactoryExtensionOption =
+func init*(T: type gen_qwebpluginfactory_types.QWebPluginFactoryExtensionOption, h: ptr cQWebPluginFactoryExtensionOption): gen_qwebpluginfactory_types.QWebPluginFactoryExtensionOption =
   T(h: h)
-proc delete*(self: QWebPluginFactoryExtensionOption) =
+proc delete*(self: gen_qwebpluginfactory_types.QWebPluginFactoryExtensionOption) =
   fcQWebPluginFactoryExtensionOption_delete(self.h)
 
-func init*(T: type QWebPluginFactoryExtensionReturn, h: ptr cQWebPluginFactoryExtensionReturn): QWebPluginFactoryExtensionReturn =
+func init*(T: type gen_qwebpluginfactory_types.QWebPluginFactoryExtensionReturn, h: ptr cQWebPluginFactoryExtensionReturn): gen_qwebpluginfactory_types.QWebPluginFactoryExtensionReturn =
   T(h: h)
-proc delete*(self: QWebPluginFactoryExtensionReturn) =
+proc delete*(self: gen_qwebpluginfactory_types.QWebPluginFactoryExtensionReturn) =
   fcQWebPluginFactoryExtensionReturn_delete(self.h)

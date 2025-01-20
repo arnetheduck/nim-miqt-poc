@@ -54,58 +54,58 @@ proc fcQSslPreSharedKeyAuthenticator_maximumPreSharedKeyLength(self: pointer, ):
 proc fcQSslPreSharedKeyAuthenticator_delete(self: pointer) {.importc: "QSslPreSharedKeyAuthenticator_delete".}
 
 
-func init*(T: type QSslPreSharedKeyAuthenticator, h: ptr cQSslPreSharedKeyAuthenticator): QSslPreSharedKeyAuthenticator =
+func init*(T: type gen_qsslpresharedkeyauthenticator_types.QSslPreSharedKeyAuthenticator, h: ptr cQSslPreSharedKeyAuthenticator): gen_qsslpresharedkeyauthenticator_types.QSslPreSharedKeyAuthenticator =
   T(h: h)
-proc create*(T: type QSslPreSharedKeyAuthenticator, ): QSslPreSharedKeyAuthenticator =
+proc create*(T: type gen_qsslpresharedkeyauthenticator_types.QSslPreSharedKeyAuthenticator, ): gen_qsslpresharedkeyauthenticator_types.QSslPreSharedKeyAuthenticator =
 
-  QSslPreSharedKeyAuthenticator.init(fcQSslPreSharedKeyAuthenticator_new())
-proc create*(T: type QSslPreSharedKeyAuthenticator, authenticator: QSslPreSharedKeyAuthenticator): QSslPreSharedKeyAuthenticator =
+  gen_qsslpresharedkeyauthenticator_types.QSslPreSharedKeyAuthenticator.init(fcQSslPreSharedKeyAuthenticator_new())
+proc create*(T: type gen_qsslpresharedkeyauthenticator_types.QSslPreSharedKeyAuthenticator, authenticator: gen_qsslpresharedkeyauthenticator_types.QSslPreSharedKeyAuthenticator): gen_qsslpresharedkeyauthenticator_types.QSslPreSharedKeyAuthenticator =
 
-  QSslPreSharedKeyAuthenticator.init(fcQSslPreSharedKeyAuthenticator_new2(authenticator.h))
-proc operatorAssign*(self: QSslPreSharedKeyAuthenticator, authenticator: QSslPreSharedKeyAuthenticator): void =
+  gen_qsslpresharedkeyauthenticator_types.QSslPreSharedKeyAuthenticator.init(fcQSslPreSharedKeyAuthenticator_new2(authenticator.h))
+proc operatorAssign*(self: gen_qsslpresharedkeyauthenticator_types.QSslPreSharedKeyAuthenticator, authenticator: gen_qsslpresharedkeyauthenticator_types.QSslPreSharedKeyAuthenticator): void =
 
   fcQSslPreSharedKeyAuthenticator_operatorAssign(self.h, authenticator.h)
 
-proc swap*(self: QSslPreSharedKeyAuthenticator, other: QSslPreSharedKeyAuthenticator): void =
+proc swap*(self: gen_qsslpresharedkeyauthenticator_types.QSslPreSharedKeyAuthenticator, other: gen_qsslpresharedkeyauthenticator_types.QSslPreSharedKeyAuthenticator): void =
 
   fcQSslPreSharedKeyAuthenticator_swap(self.h, other.h)
 
-proc identityHint*(self: QSslPreSharedKeyAuthenticator, ): seq[byte] =
+proc identityHint*(self: gen_qsslpresharedkeyauthenticator_types.QSslPreSharedKeyAuthenticator, ): seq[byte] =
 
   var v_bytearray = fcQSslPreSharedKeyAuthenticator_identityHint(self.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc setIdentity*(self: QSslPreSharedKeyAuthenticator, identity: seq[byte]): void =
+proc setIdentity*(self: gen_qsslpresharedkeyauthenticator_types.QSslPreSharedKeyAuthenticator, identity: seq[byte]): void =
 
   fcQSslPreSharedKeyAuthenticator_setIdentity(self.h, struct_miqt_string(data: cast[cstring](if len(identity) == 0: nil else: unsafeAddr identity[0]), len: csize_t(len(identity))))
 
-proc identity*(self: QSslPreSharedKeyAuthenticator, ): seq[byte] =
+proc identity*(self: gen_qsslpresharedkeyauthenticator_types.QSslPreSharedKeyAuthenticator, ): seq[byte] =
 
   var v_bytearray = fcQSslPreSharedKeyAuthenticator_identity(self.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc maximumIdentityLength*(self: QSslPreSharedKeyAuthenticator, ): cint =
+proc maximumIdentityLength*(self: gen_qsslpresharedkeyauthenticator_types.QSslPreSharedKeyAuthenticator, ): cint =
 
   fcQSslPreSharedKeyAuthenticator_maximumIdentityLength(self.h)
 
-proc setPreSharedKey*(self: QSslPreSharedKeyAuthenticator, preSharedKey: seq[byte]): void =
+proc setPreSharedKey*(self: gen_qsslpresharedkeyauthenticator_types.QSslPreSharedKeyAuthenticator, preSharedKey: seq[byte]): void =
 
   fcQSslPreSharedKeyAuthenticator_setPreSharedKey(self.h, struct_miqt_string(data: cast[cstring](if len(preSharedKey) == 0: nil else: unsafeAddr preSharedKey[0]), len: csize_t(len(preSharedKey))))
 
-proc preSharedKey*(self: QSslPreSharedKeyAuthenticator, ): seq[byte] =
+proc preSharedKey*(self: gen_qsslpresharedkeyauthenticator_types.QSslPreSharedKeyAuthenticator, ): seq[byte] =
 
   var v_bytearray = fcQSslPreSharedKeyAuthenticator_preSharedKey(self.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc maximumPreSharedKeyLength*(self: QSslPreSharedKeyAuthenticator, ): cint =
+proc maximumPreSharedKeyLength*(self: gen_qsslpresharedkeyauthenticator_types.QSslPreSharedKeyAuthenticator, ): cint =
 
   fcQSslPreSharedKeyAuthenticator_maximumPreSharedKeyLength(self.h)
 
-proc delete*(self: QSslPreSharedKeyAuthenticator) =
+proc delete*(self: gen_qsslpresharedkeyauthenticator_types.QSslPreSharedKeyAuthenticator) =
   fcQSslPreSharedKeyAuthenticator_delete(self.h)

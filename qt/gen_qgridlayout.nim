@@ -42,24 +42,20 @@ import
   gen_qlayout,
   gen_qlayoutitem,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qrect,
   gen_qsize,
-  gen_qsizepolicy,
   gen_qwidget
 export
   gen_qcoreevent,
   gen_qlayout,
   gen_qlayoutitem,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qrect,
   gen_qsize,
-  gen_qsizepolicy,
   gen_qwidget
 
 type cQGridLayout*{.exportc: "QGridLayout", incompleteStruct.} = object
@@ -186,969 +182,819 @@ proc fcQGridLayout_staticMetaObject(): pointer {.importc: "QGridLayout_staticMet
 proc fcQGridLayout_delete(self: pointer) {.importc: "QGridLayout_delete".}
 
 
-func init*(T: type QGridLayout, h: ptr cQGridLayout): QGridLayout =
+func init*(T: type gen_qgridlayout_types.QGridLayout, h: ptr cQGridLayout): gen_qgridlayout_types.QGridLayout =
   T(h: h)
-proc create*(T: type QGridLayout, parent: gen_qwidget.QWidget): QGridLayout =
+proc create*(T: type gen_qgridlayout_types.QGridLayout, parent: gen_qwidget.QWidget): gen_qgridlayout_types.QGridLayout =
 
-  QGridLayout.init(fcQGridLayout_new(parent.h))
-proc create*(T: type QGridLayout, ): QGridLayout =
+  gen_qgridlayout_types.QGridLayout.init(fcQGridLayout_new(parent.h))
+proc create*(T: type gen_qgridlayout_types.QGridLayout, ): gen_qgridlayout_types.QGridLayout =
 
-  QGridLayout.init(fcQGridLayout_new2())
-proc metaObject*(self: QGridLayout, ): gen_qobjectdefs.QMetaObject =
+  gen_qgridlayout_types.QGridLayout.init(fcQGridLayout_new2())
+proc metaObject*(self: gen_qgridlayout_types.QGridLayout, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQGridLayout_metaObject(self.h))
 
-proc metacast*(self: QGridLayout, param1: cstring): pointer =
+proc metacast*(self: gen_qgridlayout_types.QGridLayout, param1: cstring): pointer =
 
   fcQGridLayout_metacast(self.h, param1)
 
-proc metacall*(self: QGridLayout, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qgridlayout_types.QGridLayout, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQGridLayout_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QGridLayout, s: cstring): string =
+proc tr*(_: type gen_qgridlayout_types.QGridLayout, s: cstring): string =
 
   let v_ms = fcQGridLayout_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QGridLayout, s: cstring): string =
+proc trUtf8*(_: type gen_qgridlayout_types.QGridLayout, s: cstring): string =
 
   let v_ms = fcQGridLayout_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc sizeHint*(self: QGridLayout, ): gen_qsize.QSize =
+proc sizeHint*(self: gen_qgridlayout_types.QGridLayout, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQGridLayout_sizeHint(self.h))
 
-proc minimumSize*(self: QGridLayout, ): gen_qsize.QSize =
+proc minimumSize*(self: gen_qgridlayout_types.QGridLayout, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQGridLayout_minimumSize(self.h))
 
-proc maximumSize*(self: QGridLayout, ): gen_qsize.QSize =
+proc maximumSize*(self: gen_qgridlayout_types.QGridLayout, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQGridLayout_maximumSize(self.h))
 
-proc setHorizontalSpacing*(self: QGridLayout, spacing: cint): void =
+proc setHorizontalSpacing*(self: gen_qgridlayout_types.QGridLayout, spacing: cint): void =
 
   fcQGridLayout_setHorizontalSpacing(self.h, spacing)
 
-proc horizontalSpacing*(self: QGridLayout, ): cint =
+proc horizontalSpacing*(self: gen_qgridlayout_types.QGridLayout, ): cint =
 
   fcQGridLayout_horizontalSpacing(self.h)
 
-proc setVerticalSpacing*(self: QGridLayout, spacing: cint): void =
+proc setVerticalSpacing*(self: gen_qgridlayout_types.QGridLayout, spacing: cint): void =
 
   fcQGridLayout_setVerticalSpacing(self.h, spacing)
 
-proc verticalSpacing*(self: QGridLayout, ): cint =
+proc verticalSpacing*(self: gen_qgridlayout_types.QGridLayout, ): cint =
 
   fcQGridLayout_verticalSpacing(self.h)
 
-proc setSpacing*(self: QGridLayout, spacing: cint): void =
+proc setSpacing*(self: gen_qgridlayout_types.QGridLayout, spacing: cint): void =
 
   fcQGridLayout_setSpacing(self.h, spacing)
 
-proc spacing*(self: QGridLayout, ): cint =
+proc spacing*(self: gen_qgridlayout_types.QGridLayout, ): cint =
 
   fcQGridLayout_spacing(self.h)
 
-proc setRowStretch*(self: QGridLayout, row: cint, stretch: cint): void =
+proc setRowStretch*(self: gen_qgridlayout_types.QGridLayout, row: cint, stretch: cint): void =
 
   fcQGridLayout_setRowStretch(self.h, row, stretch)
 
-proc setColumnStretch*(self: QGridLayout, column: cint, stretch: cint): void =
+proc setColumnStretch*(self: gen_qgridlayout_types.QGridLayout, column: cint, stretch: cint): void =
 
   fcQGridLayout_setColumnStretch(self.h, column, stretch)
 
-proc rowStretch*(self: QGridLayout, row: cint): cint =
+proc rowStretch*(self: gen_qgridlayout_types.QGridLayout, row: cint): cint =
 
   fcQGridLayout_rowStretch(self.h, row)
 
-proc columnStretch*(self: QGridLayout, column: cint): cint =
+proc columnStretch*(self: gen_qgridlayout_types.QGridLayout, column: cint): cint =
 
   fcQGridLayout_columnStretch(self.h, column)
 
-proc setRowMinimumHeight*(self: QGridLayout, row: cint, minSize: cint): void =
+proc setRowMinimumHeight*(self: gen_qgridlayout_types.QGridLayout, row: cint, minSize: cint): void =
 
   fcQGridLayout_setRowMinimumHeight(self.h, row, minSize)
 
-proc setColumnMinimumWidth*(self: QGridLayout, column: cint, minSize: cint): void =
+proc setColumnMinimumWidth*(self: gen_qgridlayout_types.QGridLayout, column: cint, minSize: cint): void =
 
   fcQGridLayout_setColumnMinimumWidth(self.h, column, minSize)
 
-proc rowMinimumHeight*(self: QGridLayout, row: cint): cint =
+proc rowMinimumHeight*(self: gen_qgridlayout_types.QGridLayout, row: cint): cint =
 
   fcQGridLayout_rowMinimumHeight(self.h, row)
 
-proc columnMinimumWidth*(self: QGridLayout, column: cint): cint =
+proc columnMinimumWidth*(self: gen_qgridlayout_types.QGridLayout, column: cint): cint =
 
   fcQGridLayout_columnMinimumWidth(self.h, column)
 
-proc columnCount*(self: QGridLayout, ): cint =
+proc columnCount*(self: gen_qgridlayout_types.QGridLayout, ): cint =
 
   fcQGridLayout_columnCount(self.h)
 
-proc rowCount*(self: QGridLayout, ): cint =
+proc rowCount*(self: gen_qgridlayout_types.QGridLayout, ): cint =
 
   fcQGridLayout_rowCount(self.h)
 
-proc cellRect*(self: QGridLayout, row: cint, column: cint): gen_qrect.QRect =
+proc cellRect*(self: gen_qgridlayout_types.QGridLayout, row: cint, column: cint): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fcQGridLayout_cellRect(self.h, row, column))
 
-proc hasHeightForWidth*(self: QGridLayout, ): bool =
+proc hasHeightForWidth*(self: gen_qgridlayout_types.QGridLayout, ): bool =
 
   fcQGridLayout_hasHeightForWidth(self.h)
 
-proc heightForWidth*(self: QGridLayout, param1: cint): cint =
+proc heightForWidth*(self: gen_qgridlayout_types.QGridLayout, param1: cint): cint =
 
   fcQGridLayout_heightForWidth(self.h, param1)
 
-proc minimumHeightForWidth*(self: QGridLayout, param1: cint): cint =
+proc minimumHeightForWidth*(self: gen_qgridlayout_types.QGridLayout, param1: cint): cint =
 
   fcQGridLayout_minimumHeightForWidth(self.h, param1)
 
-proc expandingDirections*(self: QGridLayout, ): gen_qnamespace.Orientation =
+proc expandingDirections*(self: gen_qgridlayout_types.QGridLayout, ): cint =
 
-  gen_qnamespace.Orientation(fcQGridLayout_expandingDirections(self.h))
+  cint(fcQGridLayout_expandingDirections(self.h))
 
-proc invalidate*(self: QGridLayout, ): void =
+proc invalidate*(self: gen_qgridlayout_types.QGridLayout, ): void =
 
   fcQGridLayout_invalidate(self.h)
 
-proc addWidget*(self: QGridLayout, w: gen_qwidget.QWidget): void =
+proc addWidget*(self: gen_qgridlayout_types.QGridLayout, w: gen_qwidget.QWidget): void =
 
   fcQGridLayout_addWidget(self.h, w.h)
 
-proc addWidget2*(self: QGridLayout, param1: gen_qwidget.QWidget, row: cint, column: cint): void =
+proc addWidget2*(self: gen_qgridlayout_types.QGridLayout, param1: gen_qwidget.QWidget, row: cint, column: cint): void =
 
   fcQGridLayout_addWidget2(self.h, param1.h, row, column)
 
-proc addWidget3*(self: QGridLayout, param1: gen_qwidget.QWidget, row: cint, column: cint, rowSpan: cint, columnSpan: cint): void =
+proc addWidget3*(self: gen_qgridlayout_types.QGridLayout, param1: gen_qwidget.QWidget, row: cint, column: cint, rowSpan: cint, columnSpan: cint): void =
 
   fcQGridLayout_addWidget3(self.h, param1.h, row, column, rowSpan, columnSpan)
 
-proc addLayout*(self: QGridLayout, param1: gen_qlayout.QLayout, row: cint, column: cint): void =
+proc addLayout*(self: gen_qgridlayout_types.QGridLayout, param1: gen_qlayout.QLayout, row: cint, column: cint): void =
 
   fcQGridLayout_addLayout(self.h, param1.h, row, column)
 
-proc addLayout2*(self: QGridLayout, param1: gen_qlayout.QLayout, row: cint, column: cint, rowSpan: cint, columnSpan: cint): void =
+proc addLayout2*(self: gen_qgridlayout_types.QGridLayout, param1: gen_qlayout.QLayout, row: cint, column: cint, rowSpan: cint, columnSpan: cint): void =
 
   fcQGridLayout_addLayout2(self.h, param1.h, row, column, rowSpan, columnSpan)
 
-proc setOriginCorner*(self: QGridLayout, originCorner: gen_qnamespace.Corner): void =
+proc setOriginCorner*(self: gen_qgridlayout_types.QGridLayout, originCorner: cint): void =
 
   fcQGridLayout_setOriginCorner(self.h, cint(originCorner))
 
-proc originCorner*(self: QGridLayout, ): gen_qnamespace.Corner =
+proc originCorner*(self: gen_qgridlayout_types.QGridLayout, ): cint =
 
-  gen_qnamespace.Corner(fcQGridLayout_originCorner(self.h))
+  cint(fcQGridLayout_originCorner(self.h))
 
-proc itemAt*(self: QGridLayout, index: cint): gen_qlayoutitem.QLayoutItem =
+proc itemAt*(self: gen_qgridlayout_types.QGridLayout, index: cint): gen_qlayoutitem.QLayoutItem =
 
   gen_qlayoutitem.QLayoutItem(h: fcQGridLayout_itemAt(self.h, index))
 
-proc itemAtPosition*(self: QGridLayout, row: cint, column: cint): gen_qlayoutitem.QLayoutItem =
+proc itemAtPosition*(self: gen_qgridlayout_types.QGridLayout, row: cint, column: cint): gen_qlayoutitem.QLayoutItem =
 
   gen_qlayoutitem.QLayoutItem(h: fcQGridLayout_itemAtPosition(self.h, row, column))
 
-proc takeAt*(self: QGridLayout, index: cint): gen_qlayoutitem.QLayoutItem =
+proc takeAt*(self: gen_qgridlayout_types.QGridLayout, index: cint): gen_qlayoutitem.QLayoutItem =
 
   gen_qlayoutitem.QLayoutItem(h: fcQGridLayout_takeAt(self.h, index))
 
-proc count*(self: QGridLayout, ): cint =
+proc count*(self: gen_qgridlayout_types.QGridLayout, ): cint =
 
   fcQGridLayout_count(self.h)
 
-proc setGeometry*(self: QGridLayout, geometry: gen_qrect.QRect): void =
+proc setGeometry*(self: gen_qgridlayout_types.QGridLayout, geometry: gen_qrect.QRect): void =
 
   fcQGridLayout_setGeometry(self.h, geometry.h)
 
-proc addItem*(self: QGridLayout, item: gen_qlayoutitem.QLayoutItem, row: cint, column: cint): void =
+proc addItem*(self: gen_qgridlayout_types.QGridLayout, item: gen_qlayoutitem.QLayoutItem, row: cint, column: cint): void =
 
   fcQGridLayout_addItem(self.h, item.h, row, column)
 
-proc setDefaultPositioning*(self: QGridLayout, n: cint, orient: gen_qnamespace.Orientation): void =
+proc setDefaultPositioning*(self: gen_qgridlayout_types.QGridLayout, n: cint, orient: cint): void =
 
   fcQGridLayout_setDefaultPositioning(self.h, n, cint(orient))
 
-proc getItemPosition*(self: QGridLayout, idx: cint, row: ptr cint, column: ptr cint, rowSpan: ptr cint, columnSpan: ptr cint): void =
+proc getItemPosition*(self: gen_qgridlayout_types.QGridLayout, idx: cint, row: ptr cint, column: ptr cint, rowSpan: ptr cint, columnSpan: ptr cint): void =
 
   fcQGridLayout_getItemPosition(self.h, idx, row, column, rowSpan, columnSpan)
 
-proc tr2*(_: type QGridLayout, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qgridlayout_types.QGridLayout, s: cstring, c: cstring): string =
 
   let v_ms = fcQGridLayout_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QGridLayout, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qgridlayout_types.QGridLayout, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQGridLayout_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QGridLayout, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qgridlayout_types.QGridLayout, s: cstring, c: cstring): string =
 
   let v_ms = fcQGridLayout_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QGridLayout, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qgridlayout_types.QGridLayout, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQGridLayout_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc addWidget4*(self: QGridLayout, param1: gen_qwidget.QWidget, row: cint, column: cint, param4: gen_qnamespace.AlignmentFlag): void =
+proc addWidget4*(self: gen_qgridlayout_types.QGridLayout, param1: gen_qwidget.QWidget, row: cint, column: cint, param4: cint): void =
 
   fcQGridLayout_addWidget4(self.h, param1.h, row, column, cint(param4))
 
-proc addWidget6*(self: QGridLayout, param1: gen_qwidget.QWidget, row: cint, column: cint, rowSpan: cint, columnSpan: cint, param6: gen_qnamespace.AlignmentFlag): void =
+proc addWidget6*(self: gen_qgridlayout_types.QGridLayout, param1: gen_qwidget.QWidget, row: cint, column: cint, rowSpan: cint, columnSpan: cint, param6: cint): void =
 
   fcQGridLayout_addWidget6(self.h, param1.h, row, column, rowSpan, columnSpan, cint(param6))
 
-proc addLayout4*(self: QGridLayout, param1: gen_qlayout.QLayout, row: cint, column: cint, param4: gen_qnamespace.AlignmentFlag): void =
+proc addLayout4*(self: gen_qgridlayout_types.QGridLayout, param1: gen_qlayout.QLayout, row: cint, column: cint, param4: cint): void =
 
   fcQGridLayout_addLayout4(self.h, param1.h, row, column, cint(param4))
 
-proc addLayout6*(self: QGridLayout, param1: gen_qlayout.QLayout, row: cint, column: cint, rowSpan: cint, columnSpan: cint, param6: gen_qnamespace.AlignmentFlag): void =
+proc addLayout6*(self: gen_qgridlayout_types.QGridLayout, param1: gen_qlayout.QLayout, row: cint, column: cint, rowSpan: cint, columnSpan: cint, param6: cint): void =
 
   fcQGridLayout_addLayout6(self.h, param1.h, row, column, rowSpan, columnSpan, cint(param6))
 
-proc addItem4*(self: QGridLayout, item: gen_qlayoutitem.QLayoutItem, row: cint, column: cint, rowSpan: cint): void =
+proc addItem4*(self: gen_qgridlayout_types.QGridLayout, item: gen_qlayoutitem.QLayoutItem, row: cint, column: cint, rowSpan: cint): void =
 
   fcQGridLayout_addItem4(self.h, item.h, row, column, rowSpan)
 
-proc addItem5*(self: QGridLayout, item: gen_qlayoutitem.QLayoutItem, row: cint, column: cint, rowSpan: cint, columnSpan: cint): void =
+proc addItem5*(self: gen_qgridlayout_types.QGridLayout, item: gen_qlayoutitem.QLayoutItem, row: cint, column: cint, rowSpan: cint, columnSpan: cint): void =
 
   fcQGridLayout_addItem5(self.h, item.h, row, column, rowSpan, columnSpan)
 
-proc addItem6*(self: QGridLayout, item: gen_qlayoutitem.QLayoutItem, row: cint, column: cint, rowSpan: cint, columnSpan: cint, param6: gen_qnamespace.AlignmentFlag): void =
+proc addItem6*(self: gen_qgridlayout_types.QGridLayout, item: gen_qlayoutitem.QLayoutItem, row: cint, column: cint, rowSpan: cint, columnSpan: cint, param6: cint): void =
 
   fcQGridLayout_addItem6(self.h, item.h, row, column, rowSpan, columnSpan, cint(param6))
 
-proc callVirtualBase_metaObject(self: QGridLayout, ): gen_qobjectdefs.QMetaObject =
-
+proc QGridLayoutmetaObject*(self: gen_qgridlayout_types.QGridLayout, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQGridLayout_virtualbase_metaObject(self.h))
 
-type QGridLayoutmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QGridLayout, slot: proc(super: QGridLayoutmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QGridLayoutmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qgridlayout_types.QGridLayout, slot: QGridLayoutmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QGridLayoutmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QGridLayoutmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGridLayout_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGridLayout_metaObject(self: ptr cQGridLayout, slot: int): pointer {.exportc: "miqt_exec_callback_QGridLayout_metaObject ".} =
-  type Cb = proc(super: QGridLayoutmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QGridLayout(h: self), )
+  var nimfunc = cast[ptr QGridLayoutmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QGridLayout, param1: cstring): pointer =
-
+proc QGridLayoutmetacast*(self: gen_qgridlayout_types.QGridLayout, param1: cstring): pointer =
 
   fQGridLayout_virtualbase_metacast(self.h, param1)
 
-type QGridLayoutmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QGridLayout, slot: proc(super: QGridLayoutmetacastBase, param1: cstring): pointer) =
+type QGridLayoutmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qgridlayout_types.QGridLayout, slot: QGridLayoutmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QGridLayoutmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QGridLayoutmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGridLayout_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGridLayout_metacast(self: ptr cQGridLayout, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QGridLayout_metacast ".} =
-  type Cb = proc(super: QGridLayoutmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QGridLayout(h: self), param1)
+  var nimfunc = cast[ptr QGridLayoutmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QGridLayout, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QGridLayoutmetacall*(self: gen_qgridlayout_types.QGridLayout, param1: cint, param2: cint, param3: pointer): cint =
 
   fQGridLayout_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QGridLayoutmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QGridLayout, slot: proc(super: QGridLayoutmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QGridLayoutmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qgridlayout_types.QGridLayout, slot: QGridLayoutmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QGridLayoutmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QGridLayoutmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGridLayout_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGridLayout_metacall(self: ptr cQGridLayout, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QGridLayout_metacall ".} =
-  type Cb = proc(super: QGridLayoutmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QGridLayout(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QGridLayoutmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_sizeHint(self: QGridLayout, ): gen_qsize.QSize =
-
+proc QGridLayoutsizeHint*(self: gen_qgridlayout_types.QGridLayout, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQGridLayout_virtualbase_sizeHint(self.h))
 
-type QGridLayoutsizeHintBase* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: QGridLayout, slot: proc(super: QGridLayoutsizeHintBase): gen_qsize.QSize) =
+type QGridLayoutsizeHintProc* = proc(): gen_qsize.QSize
+proc onsizeHint*(self: gen_qgridlayout_types.QGridLayout, slot: QGridLayoutsizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QGridLayoutsizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QGridLayoutsizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGridLayout_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGridLayout_sizeHint(self: ptr cQGridLayout, slot: int): pointer {.exportc: "miqt_exec_callback_QGridLayout_sizeHint ".} =
-  type Cb = proc(super: QGridLayoutsizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sizeHint(QGridLayout(h: self), )
+  var nimfunc = cast[ptr QGridLayoutsizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_minimumSize(self: QGridLayout, ): gen_qsize.QSize =
-
+proc QGridLayoutminimumSize*(self: gen_qgridlayout_types.QGridLayout, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQGridLayout_virtualbase_minimumSize(self.h))
 
-type QGridLayoutminimumSizeBase* = proc(): gen_qsize.QSize
-proc onminimumSize*(self: QGridLayout, slot: proc(super: QGridLayoutminimumSizeBase): gen_qsize.QSize) =
+type QGridLayoutminimumSizeProc* = proc(): gen_qsize.QSize
+proc onminimumSize*(self: gen_qgridlayout_types.QGridLayout, slot: QGridLayoutminimumSizeProc) =
   # TODO check subclass
-  type Cb = proc(super: QGridLayoutminimumSizeBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QGridLayoutminimumSizeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGridLayout_override_virtual_minimumSize(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGridLayout_minimumSize(self: ptr cQGridLayout, slot: int): pointer {.exportc: "miqt_exec_callback_QGridLayout_minimumSize ".} =
-  type Cb = proc(super: QGridLayoutminimumSizeBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_minimumSize(QGridLayout(h: self), )
+  var nimfunc = cast[ptr QGridLayoutminimumSizeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_maximumSize(self: QGridLayout, ): gen_qsize.QSize =
-
+proc QGridLayoutmaximumSize*(self: gen_qgridlayout_types.QGridLayout, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQGridLayout_virtualbase_maximumSize(self.h))
 
-type QGridLayoutmaximumSizeBase* = proc(): gen_qsize.QSize
-proc onmaximumSize*(self: QGridLayout, slot: proc(super: QGridLayoutmaximumSizeBase): gen_qsize.QSize) =
+type QGridLayoutmaximumSizeProc* = proc(): gen_qsize.QSize
+proc onmaximumSize*(self: gen_qgridlayout_types.QGridLayout, slot: QGridLayoutmaximumSizeProc) =
   # TODO check subclass
-  type Cb = proc(super: QGridLayoutmaximumSizeBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QGridLayoutmaximumSizeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGridLayout_override_virtual_maximumSize(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGridLayout_maximumSize(self: ptr cQGridLayout, slot: int): pointer {.exportc: "miqt_exec_callback_QGridLayout_maximumSize ".} =
-  type Cb = proc(super: QGridLayoutmaximumSizeBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_maximumSize(QGridLayout(h: self), )
+  var nimfunc = cast[ptr QGridLayoutmaximumSizeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_hasHeightForWidth(self: QGridLayout, ): bool =
-
+proc QGridLayouthasHeightForWidth*(self: gen_qgridlayout_types.QGridLayout, ): bool =
 
   fQGridLayout_virtualbase_hasHeightForWidth(self.h)
 
-type QGridLayouthasHeightForWidthBase* = proc(): bool
-proc onhasHeightForWidth*(self: QGridLayout, slot: proc(super: QGridLayouthasHeightForWidthBase): bool) =
+type QGridLayouthasHeightForWidthProc* = proc(): bool
+proc onhasHeightForWidth*(self: gen_qgridlayout_types.QGridLayout, slot: QGridLayouthasHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QGridLayouthasHeightForWidthBase): bool
-  var tmp = new Cb
+  var tmp = new QGridLayouthasHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGridLayout_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGridLayout_hasHeightForWidth(self: ptr cQGridLayout, slot: int): bool {.exportc: "miqt_exec_callback_QGridLayout_hasHeightForWidth ".} =
-  type Cb = proc(super: QGridLayouthasHeightForWidthBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasHeightForWidth(QGridLayout(h: self), )
+  var nimfunc = cast[ptr QGridLayouthasHeightForWidthProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_heightForWidth(self: QGridLayout, param1: cint): cint =
-
+proc QGridLayoutheightForWidth*(self: gen_qgridlayout_types.QGridLayout, param1: cint): cint =
 
   fQGridLayout_virtualbase_heightForWidth(self.h, param1)
 
-type QGridLayoutheightForWidthBase* = proc(param1: cint): cint
-proc onheightForWidth*(self: QGridLayout, slot: proc(super: QGridLayoutheightForWidthBase, param1: cint): cint) =
+type QGridLayoutheightForWidthProc* = proc(param1: cint): cint
+proc onheightForWidth*(self: gen_qgridlayout_types.QGridLayout, slot: QGridLayoutheightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QGridLayoutheightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QGridLayoutheightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGridLayout_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGridLayout_heightForWidth(self: ptr cQGridLayout, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QGridLayout_heightForWidth ".} =
-  type Cb = proc(super: QGridLayoutheightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_heightForWidth(QGridLayout(h: self), param1)
+  var nimfunc = cast[ptr QGridLayoutheightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_minimumHeightForWidth(self: QGridLayout, param1: cint): cint =
-
+proc QGridLayoutminimumHeightForWidth*(self: gen_qgridlayout_types.QGridLayout, param1: cint): cint =
 
   fQGridLayout_virtualbase_minimumHeightForWidth(self.h, param1)
 
-type QGridLayoutminimumHeightForWidthBase* = proc(param1: cint): cint
-proc onminimumHeightForWidth*(self: QGridLayout, slot: proc(super: QGridLayoutminimumHeightForWidthBase, param1: cint): cint) =
+type QGridLayoutminimumHeightForWidthProc* = proc(param1: cint): cint
+proc onminimumHeightForWidth*(self: gen_qgridlayout_types.QGridLayout, slot: QGridLayoutminimumHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QGridLayoutminimumHeightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QGridLayoutminimumHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGridLayout_override_virtual_minimumHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGridLayout_minimumHeightForWidth(self: ptr cQGridLayout, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QGridLayout_minimumHeightForWidth ".} =
-  type Cb = proc(super: QGridLayoutminimumHeightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_minimumHeightForWidth(QGridLayout(h: self), param1)
+  var nimfunc = cast[ptr QGridLayoutminimumHeightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_expandingDirections(self: QGridLayout, ): gen_qnamespace.Orientation =
+proc QGridLayoutexpandingDirections*(self: gen_qgridlayout_types.QGridLayout, ): cint =
 
+  cint(fQGridLayout_virtualbase_expandingDirections(self.h))
 
-  gen_qnamespace.Orientation(fQGridLayout_virtualbase_expandingDirections(self.h))
-
-type QGridLayoutexpandingDirectionsBase* = proc(): gen_qnamespace.Orientation
-proc onexpandingDirections*(self: QGridLayout, slot: proc(super: QGridLayoutexpandingDirectionsBase): gen_qnamespace.Orientation) =
+type QGridLayoutexpandingDirectionsProc* = proc(): cint
+proc onexpandingDirections*(self: gen_qgridlayout_types.QGridLayout, slot: QGridLayoutexpandingDirectionsProc) =
   # TODO check subclass
-  type Cb = proc(super: QGridLayoutexpandingDirectionsBase): gen_qnamespace.Orientation
-  var tmp = new Cb
+  var tmp = new QGridLayoutexpandingDirectionsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGridLayout_override_virtual_expandingDirections(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGridLayout_expandingDirections(self: ptr cQGridLayout, slot: int): cint {.exportc: "miqt_exec_callback_QGridLayout_expandingDirections ".} =
-  type Cb = proc(super: QGridLayoutexpandingDirectionsBase): gen_qnamespace.Orientation
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_expandingDirections(QGridLayout(h: self), )
+  var nimfunc = cast[ptr QGridLayoutexpandingDirectionsProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   cint(virtualReturn)
-proc callVirtualBase_invalidate(self: QGridLayout, ): void =
-
+proc QGridLayoutinvalidate*(self: gen_qgridlayout_types.QGridLayout, ): void =
 
   fQGridLayout_virtualbase_invalidate(self.h)
 
-type QGridLayoutinvalidateBase* = proc(): void
-proc oninvalidate*(self: QGridLayout, slot: proc(super: QGridLayoutinvalidateBase): void) =
+type QGridLayoutinvalidateProc* = proc(): void
+proc oninvalidate*(self: gen_qgridlayout_types.QGridLayout, slot: QGridLayoutinvalidateProc) =
   # TODO check subclass
-  type Cb = proc(super: QGridLayoutinvalidateBase): void
-  var tmp = new Cb
+  var tmp = new QGridLayoutinvalidateProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGridLayout_override_virtual_invalidate(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGridLayout_invalidate(self: ptr cQGridLayout, slot: int): void {.exportc: "miqt_exec_callback_QGridLayout_invalidate ".} =
-  type Cb = proc(super: QGridLayoutinvalidateBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_invalidate(QGridLayout(h: self), )
+  var nimfunc = cast[ptr QGridLayoutinvalidateProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_itemAt(self: QGridLayout, index: cint): gen_qlayoutitem.QLayoutItem =
-
+  nimfunc[]()
+proc QGridLayoutitemAt*(self: gen_qgridlayout_types.QGridLayout, index: cint): gen_qlayoutitem.QLayoutItem =
 
   gen_qlayoutitem.QLayoutItem(h: fQGridLayout_virtualbase_itemAt(self.h, index))
 
-type QGridLayoutitemAtBase* = proc(index: cint): gen_qlayoutitem.QLayoutItem
-proc onitemAt*(self: QGridLayout, slot: proc(super: QGridLayoutitemAtBase, index: cint): gen_qlayoutitem.QLayoutItem) =
+type QGridLayoutitemAtProc* = proc(index: cint): gen_qlayoutitem.QLayoutItem
+proc onitemAt*(self: gen_qgridlayout_types.QGridLayout, slot: QGridLayoutitemAtProc) =
   # TODO check subclass
-  type Cb = proc(super: QGridLayoutitemAtBase, index: cint): gen_qlayoutitem.QLayoutItem
-  var tmp = new Cb
+  var tmp = new QGridLayoutitemAtProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGridLayout_override_virtual_itemAt(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGridLayout_itemAt(self: ptr cQGridLayout, slot: int, index: cint): pointer {.exportc: "miqt_exec_callback_QGridLayout_itemAt ".} =
-  type Cb = proc(super: QGridLayoutitemAtBase, index: cint): gen_qlayoutitem.QLayoutItem
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(index: cint): auto =
-    callVirtualBase_itemAt(QGridLayout(h: self), index)
+  var nimfunc = cast[ptr QGridLayoutitemAtProc](cast[pointer](slot))
   let slotval1 = index
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_takeAt(self: QGridLayout, index: cint): gen_qlayoutitem.QLayoutItem =
-
+proc QGridLayouttakeAt*(self: gen_qgridlayout_types.QGridLayout, index: cint): gen_qlayoutitem.QLayoutItem =
 
   gen_qlayoutitem.QLayoutItem(h: fQGridLayout_virtualbase_takeAt(self.h, index))
 
-type QGridLayouttakeAtBase* = proc(index: cint): gen_qlayoutitem.QLayoutItem
-proc ontakeAt*(self: QGridLayout, slot: proc(super: QGridLayouttakeAtBase, index: cint): gen_qlayoutitem.QLayoutItem) =
+type QGridLayouttakeAtProc* = proc(index: cint): gen_qlayoutitem.QLayoutItem
+proc ontakeAt*(self: gen_qgridlayout_types.QGridLayout, slot: QGridLayouttakeAtProc) =
   # TODO check subclass
-  type Cb = proc(super: QGridLayouttakeAtBase, index: cint): gen_qlayoutitem.QLayoutItem
-  var tmp = new Cb
+  var tmp = new QGridLayouttakeAtProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGridLayout_override_virtual_takeAt(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGridLayout_takeAt(self: ptr cQGridLayout, slot: int, index: cint): pointer {.exportc: "miqt_exec_callback_QGridLayout_takeAt ".} =
-  type Cb = proc(super: QGridLayouttakeAtBase, index: cint): gen_qlayoutitem.QLayoutItem
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(index: cint): auto =
-    callVirtualBase_takeAt(QGridLayout(h: self), index)
+  var nimfunc = cast[ptr QGridLayouttakeAtProc](cast[pointer](slot))
   let slotval1 = index
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_count(self: QGridLayout, ): cint =
-
+proc QGridLayoutcount*(self: gen_qgridlayout_types.QGridLayout, ): cint =
 
   fQGridLayout_virtualbase_count(self.h)
 
-type QGridLayoutcountBase* = proc(): cint
-proc oncount*(self: QGridLayout, slot: proc(super: QGridLayoutcountBase): cint) =
+type QGridLayoutcountProc* = proc(): cint
+proc oncount*(self: gen_qgridlayout_types.QGridLayout, slot: QGridLayoutcountProc) =
   # TODO check subclass
-  type Cb = proc(super: QGridLayoutcountBase): cint
-  var tmp = new Cb
+  var tmp = new QGridLayoutcountProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGridLayout_override_virtual_count(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGridLayout_count(self: ptr cQGridLayout, slot: int): cint {.exportc: "miqt_exec_callback_QGridLayout_count ".} =
-  type Cb = proc(super: QGridLayoutcountBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_count(QGridLayout(h: self), )
+  var nimfunc = cast[ptr QGridLayoutcountProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setGeometry(self: QGridLayout, geometry: gen_qrect.QRect): void =
-
+proc QGridLayoutsetGeometry*(self: gen_qgridlayout_types.QGridLayout, geometry: gen_qrect.QRect): void =
 
   fQGridLayout_virtualbase_setGeometry(self.h, geometry.h)
 
-type QGridLayoutsetGeometryBase* = proc(geometry: gen_qrect.QRect): void
-proc onsetGeometry*(self: QGridLayout, slot: proc(super: QGridLayoutsetGeometryBase, geometry: gen_qrect.QRect): void) =
+type QGridLayoutsetGeometryProc* = proc(geometry: gen_qrect.QRect): void
+proc onsetGeometry*(self: gen_qgridlayout_types.QGridLayout, slot: QGridLayoutsetGeometryProc) =
   # TODO check subclass
-  type Cb = proc(super: QGridLayoutsetGeometryBase, geometry: gen_qrect.QRect): void
-  var tmp = new Cb
+  var tmp = new QGridLayoutsetGeometryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGridLayout_override_virtual_setGeometry(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGridLayout_setGeometry(self: ptr cQGridLayout, slot: int, geometry: pointer): void {.exportc: "miqt_exec_callback_QGridLayout_setGeometry ".} =
-  type Cb = proc(super: QGridLayoutsetGeometryBase, geometry: gen_qrect.QRect): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(geometry: gen_qrect.QRect): auto =
-    callVirtualBase_setGeometry(QGridLayout(h: self), geometry)
+  var nimfunc = cast[ptr QGridLayoutsetGeometryProc](cast[pointer](slot))
   let slotval1 = gen_qrect.QRect(h: geometry)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_addItemWithQLayoutItem(self: QGridLayout, param1: gen_qlayoutitem.QLayoutItem): void =
-
+  nimfunc[](slotval1)
+proc QGridLayoutaddItemWithQLayoutItem*(self: gen_qgridlayout_types.QGridLayout, param1: gen_qlayoutitem.QLayoutItem): void =
 
   fQGridLayout_virtualbase_addItemWithQLayoutItem(self.h, param1.h)
 
-type QGridLayoutaddItemWithQLayoutItemBase* = proc(param1: gen_qlayoutitem.QLayoutItem): void
-proc onaddItemWithQLayoutItem*(self: QGridLayout, slot: proc(super: QGridLayoutaddItemWithQLayoutItemBase, param1: gen_qlayoutitem.QLayoutItem): void) =
+type QGridLayoutaddItemWithQLayoutItemProc* = proc(param1: gen_qlayoutitem.QLayoutItem): void
+proc onaddItemWithQLayoutItem*(self: gen_qgridlayout_types.QGridLayout, slot: QGridLayoutaddItemWithQLayoutItemProc) =
   # TODO check subclass
-  type Cb = proc(super: QGridLayoutaddItemWithQLayoutItemBase, param1: gen_qlayoutitem.QLayoutItem): void
-  var tmp = new Cb
+  var tmp = new QGridLayoutaddItemWithQLayoutItemProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGridLayout_override_virtual_addItemWithQLayoutItem(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGridLayout_addItemWithQLayoutItem(self: ptr cQGridLayout, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QGridLayout_addItemWithQLayoutItem ".} =
-  type Cb = proc(super: QGridLayoutaddItemWithQLayoutItemBase, param1: gen_qlayoutitem.QLayoutItem): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qlayoutitem.QLayoutItem): auto =
-    callVirtualBase_addItemWithQLayoutItem(QGridLayout(h: self), param1)
+  var nimfunc = cast[ptr QGridLayoutaddItemWithQLayoutItemProc](cast[pointer](slot))
   let slotval1 = gen_qlayoutitem.QLayoutItem(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_geometry(self: QGridLayout, ): gen_qrect.QRect =
-
+  nimfunc[](slotval1)
+proc QGridLayoutgeometry*(self: gen_qgridlayout_types.QGridLayout, ): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fQGridLayout_virtualbase_geometry(self.h))
 
-type QGridLayoutgeometryBase* = proc(): gen_qrect.QRect
-proc ongeometry*(self: QGridLayout, slot: proc(super: QGridLayoutgeometryBase): gen_qrect.QRect) =
+type QGridLayoutgeometryProc* = proc(): gen_qrect.QRect
+proc ongeometry*(self: gen_qgridlayout_types.QGridLayout, slot: QGridLayoutgeometryProc) =
   # TODO check subclass
-  type Cb = proc(super: QGridLayoutgeometryBase): gen_qrect.QRect
-  var tmp = new Cb
+  var tmp = new QGridLayoutgeometryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGridLayout_override_virtual_geometry(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGridLayout_geometry(self: ptr cQGridLayout, slot: int): pointer {.exportc: "miqt_exec_callback_QGridLayout_geometry ".} =
-  type Cb = proc(super: QGridLayoutgeometryBase): gen_qrect.QRect
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_geometry(QGridLayout(h: self), )
+  var nimfunc = cast[ptr QGridLayoutgeometryProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_indexOf(self: QGridLayout, param1: gen_qwidget.QWidget): cint =
-
+proc QGridLayoutindexOf*(self: gen_qgridlayout_types.QGridLayout, param1: gen_qwidget.QWidget): cint =
 
   fQGridLayout_virtualbase_indexOf(self.h, param1.h)
 
-type QGridLayoutindexOfBase* = proc(param1: gen_qwidget.QWidget): cint
-proc onindexOf*(self: QGridLayout, slot: proc(super: QGridLayoutindexOfBase, param1: gen_qwidget.QWidget): cint) =
+type QGridLayoutindexOfProc* = proc(param1: gen_qwidget.QWidget): cint
+proc onindexOf*(self: gen_qgridlayout_types.QGridLayout, slot: QGridLayoutindexOfProc) =
   # TODO check subclass
-  type Cb = proc(super: QGridLayoutindexOfBase, param1: gen_qwidget.QWidget): cint
-  var tmp = new Cb
+  var tmp = new QGridLayoutindexOfProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGridLayout_override_virtual_indexOf(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGridLayout_indexOf(self: ptr cQGridLayout, slot: int, param1: pointer): cint {.exportc: "miqt_exec_callback_QGridLayout_indexOf ".} =
-  type Cb = proc(super: QGridLayoutindexOfBase, param1: gen_qwidget.QWidget): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qwidget.QWidget): auto =
-    callVirtualBase_indexOf(QGridLayout(h: self), param1)
+  var nimfunc = cast[ptr QGridLayoutindexOfProc](cast[pointer](slot))
   let slotval1 = gen_qwidget.QWidget(h: param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_isEmpty(self: QGridLayout, ): bool =
-
+proc QGridLayoutisEmpty*(self: gen_qgridlayout_types.QGridLayout, ): bool =
 
   fQGridLayout_virtualbase_isEmpty(self.h)
 
-type QGridLayoutisEmptyBase* = proc(): bool
-proc onisEmpty*(self: QGridLayout, slot: proc(super: QGridLayoutisEmptyBase): bool) =
+type QGridLayoutisEmptyProc* = proc(): bool
+proc onisEmpty*(self: gen_qgridlayout_types.QGridLayout, slot: QGridLayoutisEmptyProc) =
   # TODO check subclass
-  type Cb = proc(super: QGridLayoutisEmptyBase): bool
-  var tmp = new Cb
+  var tmp = new QGridLayoutisEmptyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGridLayout_override_virtual_isEmpty(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGridLayout_isEmpty(self: ptr cQGridLayout, slot: int): bool {.exportc: "miqt_exec_callback_QGridLayout_isEmpty ".} =
-  type Cb = proc(super: QGridLayoutisEmptyBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_isEmpty(QGridLayout(h: self), )
+  var nimfunc = cast[ptr QGridLayoutisEmptyProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_controlTypes(self: QGridLayout, ): gen_qsizepolicy.QSizePolicyControlType =
+proc QGridLayoutcontrolTypes*(self: gen_qgridlayout_types.QGridLayout, ): cint =
 
+  cint(fQGridLayout_virtualbase_controlTypes(self.h))
 
-  gen_qsizepolicy.QSizePolicyControlType(fQGridLayout_virtualbase_controlTypes(self.h))
-
-type QGridLayoutcontrolTypesBase* = proc(): gen_qsizepolicy.QSizePolicyControlType
-proc oncontrolTypes*(self: QGridLayout, slot: proc(super: QGridLayoutcontrolTypesBase): gen_qsizepolicy.QSizePolicyControlType) =
+type QGridLayoutcontrolTypesProc* = proc(): cint
+proc oncontrolTypes*(self: gen_qgridlayout_types.QGridLayout, slot: QGridLayoutcontrolTypesProc) =
   # TODO check subclass
-  type Cb = proc(super: QGridLayoutcontrolTypesBase): gen_qsizepolicy.QSizePolicyControlType
-  var tmp = new Cb
+  var tmp = new QGridLayoutcontrolTypesProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGridLayout_override_virtual_controlTypes(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGridLayout_controlTypes(self: ptr cQGridLayout, slot: int): cint {.exportc: "miqt_exec_callback_QGridLayout_controlTypes ".} =
-  type Cb = proc(super: QGridLayoutcontrolTypesBase): gen_qsizepolicy.QSizePolicyControlType
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_controlTypes(QGridLayout(h: self), )
+  var nimfunc = cast[ptr QGridLayoutcontrolTypesProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   cint(virtualReturn)
-proc callVirtualBase_layout(self: QGridLayout, ): gen_qlayout.QLayout =
-
+proc QGridLayoutlayout*(self: gen_qgridlayout_types.QGridLayout, ): gen_qlayout.QLayout =
 
   gen_qlayout.QLayout(h: fQGridLayout_virtualbase_layout(self.h))
 
-type QGridLayoutlayoutBase* = proc(): gen_qlayout.QLayout
-proc onlayout*(self: QGridLayout, slot: proc(super: QGridLayoutlayoutBase): gen_qlayout.QLayout) =
+type QGridLayoutlayoutProc* = proc(): gen_qlayout.QLayout
+proc onlayout*(self: gen_qgridlayout_types.QGridLayout, slot: QGridLayoutlayoutProc) =
   # TODO check subclass
-  type Cb = proc(super: QGridLayoutlayoutBase): gen_qlayout.QLayout
-  var tmp = new Cb
+  var tmp = new QGridLayoutlayoutProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGridLayout_override_virtual_layout(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGridLayout_layout(self: ptr cQGridLayout, slot: int): pointer {.exportc: "miqt_exec_callback_QGridLayout_layout ".} =
-  type Cb = proc(super: QGridLayoutlayoutBase): gen_qlayout.QLayout
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_layout(QGridLayout(h: self), )
+  var nimfunc = cast[ptr QGridLayoutlayoutProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_childEvent(self: QGridLayout, e: gen_qcoreevent.QChildEvent): void =
-
+proc QGridLayoutchildEvent*(self: gen_qgridlayout_types.QGridLayout, e: gen_qcoreevent.QChildEvent): void =
 
   fQGridLayout_virtualbase_childEvent(self.h, e.h)
 
-type QGridLayoutchildEventBase* = proc(e: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QGridLayout, slot: proc(super: QGridLayoutchildEventBase, e: gen_qcoreevent.QChildEvent): void) =
+type QGridLayoutchildEventProc* = proc(e: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qgridlayout_types.QGridLayout, slot: QGridLayoutchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGridLayoutchildEventBase, e: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QGridLayoutchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGridLayout_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGridLayout_childEvent(self: ptr cQGridLayout, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QGridLayout_childEvent ".} =
-  type Cb = proc(super: QGridLayoutchildEventBase, e: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QGridLayout(h: self), e)
+  var nimfunc = cast[ptr QGridLayoutchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_event(self: QGridLayout, event: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[](slotval1)
+proc QGridLayoutevent*(self: gen_qgridlayout_types.QGridLayout, event: gen_qcoreevent.QEvent): bool =
 
   fQGridLayout_virtualbase_event(self.h, event.h)
 
-type QGridLayouteventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QGridLayout, slot: proc(super: QGridLayouteventBase, event: gen_qcoreevent.QEvent): bool) =
+type QGridLayouteventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qgridlayout_types.QGridLayout, slot: QGridLayouteventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGridLayouteventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QGridLayouteventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGridLayout_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGridLayout_event(self: ptr cQGridLayout, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QGridLayout_event ".} =
-  type Cb = proc(super: QGridLayouteventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QGridLayout(h: self), event)
+  var nimfunc = cast[ptr QGridLayouteventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QGridLayout, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QGridLayouteventFilter*(self: gen_qgridlayout_types.QGridLayout, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQGridLayout_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QGridLayouteventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QGridLayout, slot: proc(super: QGridLayouteventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QGridLayouteventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qgridlayout_types.QGridLayout, slot: QGridLayouteventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QGridLayouteventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QGridLayouteventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGridLayout_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGridLayout_eventFilter(self: ptr cQGridLayout, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QGridLayout_eventFilter ".} =
-  type Cb = proc(super: QGridLayouteventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QGridLayout(h: self), watched, event)
+  var nimfunc = cast[ptr QGridLayouteventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QGridLayout, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QGridLayouttimerEvent*(self: gen_qgridlayout_types.QGridLayout, event: gen_qcoreevent.QTimerEvent): void =
 
   fQGridLayout_virtualbase_timerEvent(self.h, event.h)
 
-type QGridLayouttimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QGridLayout, slot: proc(super: QGridLayouttimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QGridLayouttimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qgridlayout_types.QGridLayout, slot: QGridLayouttimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGridLayouttimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QGridLayouttimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGridLayout_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGridLayout_timerEvent(self: ptr cQGridLayout, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGridLayout_timerEvent ".} =
-  type Cb = proc(super: QGridLayouttimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QGridLayout(h: self), event)
+  var nimfunc = cast[ptr QGridLayouttimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QGridLayout, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QGridLayoutcustomEvent*(self: gen_qgridlayout_types.QGridLayout, event: gen_qcoreevent.QEvent): void =
 
   fQGridLayout_virtualbase_customEvent(self.h, event.h)
 
-type QGridLayoutcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QGridLayout, slot: proc(super: QGridLayoutcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QGridLayoutcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qgridlayout_types.QGridLayout, slot: QGridLayoutcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGridLayoutcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QGridLayoutcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGridLayout_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGridLayout_customEvent(self: ptr cQGridLayout, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGridLayout_customEvent ".} =
-  type Cb = proc(super: QGridLayoutcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QGridLayout(h: self), event)
+  var nimfunc = cast[ptr QGridLayoutcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QGridLayout, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QGridLayoutconnectNotify*(self: gen_qgridlayout_types.QGridLayout, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQGridLayout_virtualbase_connectNotify(self.h, signal.h)
 
-type QGridLayoutconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QGridLayout, slot: proc(super: QGridLayoutconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QGridLayoutconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qgridlayout_types.QGridLayout, slot: QGridLayoutconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QGridLayoutconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QGridLayoutconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGridLayout_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGridLayout_connectNotify(self: ptr cQGridLayout, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QGridLayout_connectNotify ".} =
-  type Cb = proc(super: QGridLayoutconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QGridLayout(h: self), signal)
+  var nimfunc = cast[ptr QGridLayoutconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QGridLayout, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QGridLayoutdisconnectNotify*(self: gen_qgridlayout_types.QGridLayout, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQGridLayout_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QGridLayoutdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QGridLayout, slot: proc(super: QGridLayoutdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QGridLayoutdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qgridlayout_types.QGridLayout, slot: QGridLayoutdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QGridLayoutdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QGridLayoutdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGridLayout_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGridLayout_disconnectNotify(self: ptr cQGridLayout, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QGridLayout_disconnectNotify ".} =
-  type Cb = proc(super: QGridLayoutdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QGridLayout(h: self), signal)
+  var nimfunc = cast[ptr QGridLayoutdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_widget(self: QGridLayout, ): gen_qwidget.QWidget =
-
+  nimfunc[](slotval1)
+proc QGridLayoutwidget*(self: gen_qgridlayout_types.QGridLayout, ): gen_qwidget.QWidget =
 
   gen_qwidget.QWidget(h: fQGridLayout_virtualbase_widget(self.h))
 
-type QGridLayoutwidgetBase* = proc(): gen_qwidget.QWidget
-proc onwidget*(self: QGridLayout, slot: proc(super: QGridLayoutwidgetBase): gen_qwidget.QWidget) =
+type QGridLayoutwidgetProc* = proc(): gen_qwidget.QWidget
+proc onwidget*(self: gen_qgridlayout_types.QGridLayout, slot: QGridLayoutwidgetProc) =
   # TODO check subclass
-  type Cb = proc(super: QGridLayoutwidgetBase): gen_qwidget.QWidget
-  var tmp = new Cb
+  var tmp = new QGridLayoutwidgetProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGridLayout_override_virtual_widget(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGridLayout_widget(self: ptr cQGridLayout, slot: int): pointer {.exportc: "miqt_exec_callback_QGridLayout_widget ".} =
-  type Cb = proc(super: QGridLayoutwidgetBase): gen_qwidget.QWidget
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_widget(QGridLayout(h: self), )
+  var nimfunc = cast[ptr QGridLayoutwidgetProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_spacerItem(self: QGridLayout, ): gen_qlayoutitem.QSpacerItem =
-
+proc QGridLayoutspacerItem*(self: gen_qgridlayout_types.QGridLayout, ): gen_qlayoutitem.QSpacerItem =
 
   gen_qlayoutitem.QSpacerItem(h: fQGridLayout_virtualbase_spacerItem(self.h))
 
-type QGridLayoutspacerItemBase* = proc(): gen_qlayoutitem.QSpacerItem
-proc onspacerItem*(self: QGridLayout, slot: proc(super: QGridLayoutspacerItemBase): gen_qlayoutitem.QSpacerItem) =
+type QGridLayoutspacerItemProc* = proc(): gen_qlayoutitem.QSpacerItem
+proc onspacerItem*(self: gen_qgridlayout_types.QGridLayout, slot: QGridLayoutspacerItemProc) =
   # TODO check subclass
-  type Cb = proc(super: QGridLayoutspacerItemBase): gen_qlayoutitem.QSpacerItem
-  var tmp = new Cb
+  var tmp = new QGridLayoutspacerItemProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGridLayout_override_virtual_spacerItem(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGridLayout_spacerItem(self: ptr cQGridLayout, slot: int): pointer {.exportc: "miqt_exec_callback_QGridLayout_spacerItem ".} =
-  type Cb = proc(super: QGridLayoutspacerItemBase): gen_qlayoutitem.QSpacerItem
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_spacerItem(QGridLayout(h: self), )
+  var nimfunc = cast[ptr QGridLayoutspacerItemProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc staticMetaObject*(_: type QGridLayout): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qgridlayout_types.QGridLayout): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQGridLayout_staticMetaObject())
-proc delete*(self: QGridLayout) =
+proc delete*(self: gen_qgridlayout_types.QGridLayout) =
   fcQGridLayout_delete(self.h)

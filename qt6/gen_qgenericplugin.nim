@@ -84,140 +84,123 @@ proc fcQGenericPlugin_staticMetaObject(): pointer {.importc: "QGenericPlugin_sta
 proc fcQGenericPlugin_delete(self: pointer) {.importc: "QGenericPlugin_delete".}
 
 
-func init*(T: type QGenericPlugin, h: ptr cQGenericPlugin): QGenericPlugin =
+func init*(T: type gen_qgenericplugin_types.QGenericPlugin, h: ptr cQGenericPlugin): gen_qgenericplugin_types.QGenericPlugin =
   T(h: h)
-proc create*(T: type QGenericPlugin, ): QGenericPlugin =
+proc create*(T: type gen_qgenericplugin_types.QGenericPlugin, ): gen_qgenericplugin_types.QGenericPlugin =
 
-  QGenericPlugin.init(fcQGenericPlugin_new())
-proc create*(T: type QGenericPlugin, parent: gen_qobject.QObject): QGenericPlugin =
+  gen_qgenericplugin_types.QGenericPlugin.init(fcQGenericPlugin_new())
+proc create*(T: type gen_qgenericplugin_types.QGenericPlugin, parent: gen_qobject.QObject): gen_qgenericplugin_types.QGenericPlugin =
 
-  QGenericPlugin.init(fcQGenericPlugin_new2(parent.h))
-proc metaObject*(self: QGenericPlugin, ): gen_qobjectdefs.QMetaObject =
+  gen_qgenericplugin_types.QGenericPlugin.init(fcQGenericPlugin_new2(parent.h))
+proc metaObject*(self: gen_qgenericplugin_types.QGenericPlugin, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQGenericPlugin_metaObject(self.h))
 
-proc metacast*(self: QGenericPlugin, param1: cstring): pointer =
+proc metacast*(self: gen_qgenericplugin_types.QGenericPlugin, param1: cstring): pointer =
 
   fcQGenericPlugin_metacast(self.h, param1)
 
-proc metacall*(self: QGenericPlugin, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qgenericplugin_types.QGenericPlugin, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQGenericPlugin_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QGenericPlugin, s: cstring): string =
+proc tr*(_: type gen_qgenericplugin_types.QGenericPlugin, s: cstring): string =
 
   let v_ms = fcQGenericPlugin_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc create*(self: QGenericPlugin, name: string, spec: string): gen_qobject.QObject =
+proc create*(self: gen_qgenericplugin_types.QGenericPlugin, name: string, spec: string): gen_qobject.QObject =
 
   gen_qobject.QObject(h: fcQGenericPlugin_create(self.h, struct_miqt_string(data: name, len: csize_t(len(name))), struct_miqt_string(data: spec, len: csize_t(len(spec)))))
 
-proc tr2*(_: type QGenericPlugin, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qgenericplugin_types.QGenericPlugin, s: cstring, c: cstring): string =
 
   let v_ms = fcQGenericPlugin_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QGenericPlugin, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qgenericplugin_types.QGenericPlugin, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQGenericPlugin_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QGenericPlugin, ): gen_qobjectdefs.QMetaObject =
-
+proc QGenericPluginmetaObject*(self: gen_qgenericplugin_types.QGenericPlugin, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQGenericPlugin_virtualbase_metaObject(self.h))
 
-type QGenericPluginmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QGenericPlugin, slot: proc(super: QGenericPluginmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QGenericPluginmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qgenericplugin_types.QGenericPlugin, slot: QGenericPluginmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QGenericPluginmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QGenericPluginmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGenericPlugin_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGenericPlugin_metaObject(self: ptr cQGenericPlugin, slot: int): pointer {.exportc: "miqt_exec_callback_QGenericPlugin_metaObject ".} =
-  type Cb = proc(super: QGenericPluginmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QGenericPlugin(h: self), )
+  var nimfunc = cast[ptr QGenericPluginmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QGenericPlugin, param1: cstring): pointer =
-
+proc QGenericPluginmetacast*(self: gen_qgenericplugin_types.QGenericPlugin, param1: cstring): pointer =
 
   fQGenericPlugin_virtualbase_metacast(self.h, param1)
 
-type QGenericPluginmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QGenericPlugin, slot: proc(super: QGenericPluginmetacastBase, param1: cstring): pointer) =
+type QGenericPluginmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qgenericplugin_types.QGenericPlugin, slot: QGenericPluginmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QGenericPluginmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QGenericPluginmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGenericPlugin_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGenericPlugin_metacast(self: ptr cQGenericPlugin, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QGenericPlugin_metacast ".} =
-  type Cb = proc(super: QGenericPluginmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QGenericPlugin(h: self), param1)
+  var nimfunc = cast[ptr QGenericPluginmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QGenericPlugin, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QGenericPluginmetacall*(self: gen_qgenericplugin_types.QGenericPlugin, param1: cint, param2: cint, param3: pointer): cint =
 
   fQGenericPlugin_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QGenericPluginmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QGenericPlugin, slot: proc(super: QGenericPluginmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QGenericPluginmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qgenericplugin_types.QGenericPlugin, slot: QGenericPluginmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QGenericPluginmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QGenericPluginmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGenericPlugin_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGenericPlugin_metacall(self: ptr cQGenericPlugin, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QGenericPlugin_metacall ".} =
-  type Cb = proc(super: QGenericPluginmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QGenericPlugin(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QGenericPluginmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-type QGenericPlugincreateBase* = proc(name: string, spec: string): gen_qobject.QObject
-proc oncreate*(self: QGenericPlugin, slot: proc(name: string, spec: string): gen_qobject.QObject) =
+type QGenericPlugincreateProc* = proc(name: string, spec: string): gen_qobject.QObject
+proc oncreate*(self: gen_qgenericplugin_types.QGenericPlugin, slot: QGenericPlugincreateProc) =
   # TODO check subclass
-  type Cb = proc(name: string, spec: string): gen_qobject.QObject
-  var tmp = new Cb
+  var tmp = new QGenericPlugincreateProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGenericPlugin_override_virtual_create(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGenericPlugin_create(self: ptr cQGenericPlugin, slot: int, name: struct_miqt_string, spec: struct_miqt_string): pointer {.exportc: "miqt_exec_callback_QGenericPlugin_create ".} =
-  type Cb = proc(name: string, spec: string): gen_qobject.QObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QGenericPlugincreateProc](cast[pointer](slot))
   let vname_ms = name
   let vnamex_ret = string.fromBytes(toOpenArrayByte(vname_ms.data, 0, int(vname_ms.len)-1))
   c_free(vname_ms.data)
@@ -232,174 +215,139 @@ proc miqt_exec_callback_QGenericPlugin_create(self: ptr cQGenericPlugin, slot: i
   let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn.h
-proc callVirtualBase_event(self: QGenericPlugin, event: gen_qcoreevent.QEvent): bool =
-
+proc QGenericPluginevent*(self: gen_qgenericplugin_types.QGenericPlugin, event: gen_qcoreevent.QEvent): bool =
 
   fQGenericPlugin_virtualbase_event(self.h, event.h)
 
-type QGenericPlugineventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QGenericPlugin, slot: proc(super: QGenericPlugineventBase, event: gen_qcoreevent.QEvent): bool) =
+type QGenericPlugineventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qgenericplugin_types.QGenericPlugin, slot: QGenericPlugineventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGenericPlugineventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QGenericPlugineventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGenericPlugin_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGenericPlugin_event(self: ptr cQGenericPlugin, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QGenericPlugin_event ".} =
-  type Cb = proc(super: QGenericPlugineventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QGenericPlugin(h: self), event)
+  var nimfunc = cast[ptr QGenericPlugineventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QGenericPlugin, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QGenericPlugineventFilter*(self: gen_qgenericplugin_types.QGenericPlugin, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQGenericPlugin_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QGenericPlugineventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QGenericPlugin, slot: proc(super: QGenericPlugineventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QGenericPlugineventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qgenericplugin_types.QGenericPlugin, slot: QGenericPlugineventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QGenericPlugineventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QGenericPlugineventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGenericPlugin_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGenericPlugin_eventFilter(self: ptr cQGenericPlugin, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QGenericPlugin_eventFilter ".} =
-  type Cb = proc(super: QGenericPlugineventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QGenericPlugin(h: self), watched, event)
+  var nimfunc = cast[ptr QGenericPlugineventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QGenericPlugin, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QGenericPlugintimerEvent*(self: gen_qgenericplugin_types.QGenericPlugin, event: gen_qcoreevent.QTimerEvent): void =
 
   fQGenericPlugin_virtualbase_timerEvent(self.h, event.h)
 
-type QGenericPlugintimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QGenericPlugin, slot: proc(super: QGenericPlugintimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QGenericPlugintimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qgenericplugin_types.QGenericPlugin, slot: QGenericPlugintimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGenericPlugintimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QGenericPlugintimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGenericPlugin_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGenericPlugin_timerEvent(self: ptr cQGenericPlugin, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGenericPlugin_timerEvent ".} =
-  type Cb = proc(super: QGenericPlugintimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QGenericPlugin(h: self), event)
+  var nimfunc = cast[ptr QGenericPlugintimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QGenericPlugin, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QGenericPluginchildEvent*(self: gen_qgenericplugin_types.QGenericPlugin, event: gen_qcoreevent.QChildEvent): void =
 
   fQGenericPlugin_virtualbase_childEvent(self.h, event.h)
 
-type QGenericPluginchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QGenericPlugin, slot: proc(super: QGenericPluginchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QGenericPluginchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qgenericplugin_types.QGenericPlugin, slot: QGenericPluginchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGenericPluginchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QGenericPluginchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGenericPlugin_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGenericPlugin_childEvent(self: ptr cQGenericPlugin, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGenericPlugin_childEvent ".} =
-  type Cb = proc(super: QGenericPluginchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QGenericPlugin(h: self), event)
+  var nimfunc = cast[ptr QGenericPluginchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QGenericPlugin, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QGenericPlugincustomEvent*(self: gen_qgenericplugin_types.QGenericPlugin, event: gen_qcoreevent.QEvent): void =
 
   fQGenericPlugin_virtualbase_customEvent(self.h, event.h)
 
-type QGenericPlugincustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QGenericPlugin, slot: proc(super: QGenericPlugincustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QGenericPlugincustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qgenericplugin_types.QGenericPlugin, slot: QGenericPlugincustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGenericPlugincustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QGenericPlugincustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGenericPlugin_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGenericPlugin_customEvent(self: ptr cQGenericPlugin, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGenericPlugin_customEvent ".} =
-  type Cb = proc(super: QGenericPlugincustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QGenericPlugin(h: self), event)
+  var nimfunc = cast[ptr QGenericPlugincustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QGenericPlugin, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QGenericPluginconnectNotify*(self: gen_qgenericplugin_types.QGenericPlugin, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQGenericPlugin_virtualbase_connectNotify(self.h, signal.h)
 
-type QGenericPluginconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QGenericPlugin, slot: proc(super: QGenericPluginconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QGenericPluginconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qgenericplugin_types.QGenericPlugin, slot: QGenericPluginconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QGenericPluginconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QGenericPluginconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGenericPlugin_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGenericPlugin_connectNotify(self: ptr cQGenericPlugin, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QGenericPlugin_connectNotify ".} =
-  type Cb = proc(super: QGenericPluginconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QGenericPlugin(h: self), signal)
+  var nimfunc = cast[ptr QGenericPluginconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QGenericPlugin, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QGenericPlugindisconnectNotify*(self: gen_qgenericplugin_types.QGenericPlugin, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQGenericPlugin_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QGenericPlugindisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QGenericPlugin, slot: proc(super: QGenericPlugindisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QGenericPlugindisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qgenericplugin_types.QGenericPlugin, slot: QGenericPlugindisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QGenericPlugindisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QGenericPlugindisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGenericPlugin_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGenericPlugin_disconnectNotify(self: ptr cQGenericPlugin, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QGenericPlugin_disconnectNotify ".} =
-  type Cb = proc(super: QGenericPlugindisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QGenericPlugin(h: self), signal)
+  var nimfunc = cast[ptr QGenericPlugindisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QGenericPlugin): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qgenericplugin_types.QGenericPlugin): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQGenericPlugin_staticMetaObject())
-proc delete*(self: QGenericPlugin) =
+proc delete*(self: gen_qgenericplugin_types.QGenericPlugin) =
   fcQGenericPlugin_delete(self.h)

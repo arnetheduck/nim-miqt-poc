@@ -181,7 +181,7 @@ func (this *QPrintDialog) callVirtualBase_MetaObject() *qt6.QMetaObject {
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QPrintDialog_virtualbase_metaObject(unsafe.Pointer(this.h))))
 
 }
-func (this *QPrintDialog) OnmetaObject(slot func(super func() *qt6.QMetaObject) *qt6.QMetaObject) {
+func (this *QPrintDialog) OnMetaObject(slot func(super func() *qt6.QMetaObject) *qt6.QMetaObject) {
 	ok := C.QPrintDialog_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -208,7 +208,7 @@ func (this *QPrintDialog) callVirtualBase_Metacast(param1 string) unsafe.Pointer
 	return (unsafe.Pointer)(C.QPrintDialog_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QPrintDialog) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QPrintDialog) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QPrintDialog_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

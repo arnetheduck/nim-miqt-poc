@@ -34,66 +34,62 @@ const cflags = gorge("pkg-config -cflags Qt5MultimediaWidgets")
 {.compile("gen_qradiodata.cpp", cflags).}
 
 
-type QRadioDataError* = cint
-const
-  QRadioDataNoError* = 0
-  QRadioDataResourceError* = 1
-  QRadioDataOpenError* = 2
-  QRadioDataOutOfRangeError* = 3
+type QRadioDataErrorEnum* = distinct cint
+template NoError*(_: type QRadioDataErrorEnum): untyped = 0
+template ResourceError*(_: type QRadioDataErrorEnum): untyped = 1
+template OpenError*(_: type QRadioDataErrorEnum): untyped = 2
+template OutOfRangeError*(_: type QRadioDataErrorEnum): untyped = 3
 
 
-
-type QRadioDataProgramType* = cint
-const
-  QRadioDataUndefined* = 0
-  QRadioDataNews* = 1
-  QRadioDataCurrentAffairs* = 2
-  QRadioDataInformation* = 3
-  QRadioDataSport* = 4
-  QRadioDataEducation* = 5
-  QRadioDataDrama* = 6
-  QRadioDataCulture* = 7
-  QRadioDataScience* = 8
-  QRadioDataVaried* = 9
-  QRadioDataPopMusic* = 10
-  QRadioDataRockMusic* = 11
-  QRadioDataEasyListening* = 12
-  QRadioDataLightClassical* = 13
-  QRadioDataSeriousClassical* = 14
-  QRadioDataOtherMusic* = 15
-  QRadioDataWeather* = 16
-  QRadioDataFinance* = 17
-  QRadioDataChildrensProgrammes* = 18
-  QRadioDataSocialAffairs* = 19
-  QRadioDataReligion* = 20
-  QRadioDataPhoneIn* = 21
-  QRadioDataTravel* = 22
-  QRadioDataLeisure* = 23
-  QRadioDataJazzMusic* = 24
-  QRadioDataCountryMusic* = 25
-  QRadioDataNationalMusic* = 26
-  QRadioDataOldiesMusic* = 27
-  QRadioDataFolkMusic* = 28
-  QRadioDataDocumentary* = 29
-  QRadioDataAlarmTest* = 30
-  QRadioDataAlarm* = 31
-  QRadioDataTalk* = 32
-  QRadioDataClassicRock* = 33
-  QRadioDataAdultHits* = 34
-  QRadioDataSoftRock* = 35
-  QRadioDataTop40* = 36
-  QRadioDataSoft* = 37
-  QRadioDataNostalgia* = 38
-  QRadioDataClassical* = 39
-  QRadioDataRhythmAndBlues* = 40
-  QRadioDataSoftRhythmAndBlues* = 41
-  QRadioDataLanguage* = 42
-  QRadioDataReligiousMusic* = 43
-  QRadioDataReligiousTalk* = 44
-  QRadioDataPersonality* = 45
-  QRadioDataPublic* = 46
-  QRadioDataCollege* = 47
-
+type QRadioDataProgramTypeEnum* = distinct cint
+template Undefined*(_: type QRadioDataProgramTypeEnum): untyped = 0
+template News*(_: type QRadioDataProgramTypeEnum): untyped = 1
+template CurrentAffairs*(_: type QRadioDataProgramTypeEnum): untyped = 2
+template Information*(_: type QRadioDataProgramTypeEnum): untyped = 3
+template Sport*(_: type QRadioDataProgramTypeEnum): untyped = 4
+template Education*(_: type QRadioDataProgramTypeEnum): untyped = 5
+template Drama*(_: type QRadioDataProgramTypeEnum): untyped = 6
+template Culture*(_: type QRadioDataProgramTypeEnum): untyped = 7
+template Science*(_: type QRadioDataProgramTypeEnum): untyped = 8
+template Varied*(_: type QRadioDataProgramTypeEnum): untyped = 9
+template PopMusic*(_: type QRadioDataProgramTypeEnum): untyped = 10
+template RockMusic*(_: type QRadioDataProgramTypeEnum): untyped = 11
+template EasyListening*(_: type QRadioDataProgramTypeEnum): untyped = 12
+template LightClassical*(_: type QRadioDataProgramTypeEnum): untyped = 13
+template SeriousClassical*(_: type QRadioDataProgramTypeEnum): untyped = 14
+template OtherMusic*(_: type QRadioDataProgramTypeEnum): untyped = 15
+template Weather*(_: type QRadioDataProgramTypeEnum): untyped = 16
+template Finance*(_: type QRadioDataProgramTypeEnum): untyped = 17
+template ChildrensProgrammes*(_: type QRadioDataProgramTypeEnum): untyped = 18
+template SocialAffairs*(_: type QRadioDataProgramTypeEnum): untyped = 19
+template Religion*(_: type QRadioDataProgramTypeEnum): untyped = 20
+template PhoneIn*(_: type QRadioDataProgramTypeEnum): untyped = 21
+template Travel*(_: type QRadioDataProgramTypeEnum): untyped = 22
+template Leisure*(_: type QRadioDataProgramTypeEnum): untyped = 23
+template JazzMusic*(_: type QRadioDataProgramTypeEnum): untyped = 24
+template CountryMusic*(_: type QRadioDataProgramTypeEnum): untyped = 25
+template NationalMusic*(_: type QRadioDataProgramTypeEnum): untyped = 26
+template OldiesMusic*(_: type QRadioDataProgramTypeEnum): untyped = 27
+template FolkMusic*(_: type QRadioDataProgramTypeEnum): untyped = 28
+template Documentary*(_: type QRadioDataProgramTypeEnum): untyped = 29
+template AlarmTest*(_: type QRadioDataProgramTypeEnum): untyped = 30
+template Alarm*(_: type QRadioDataProgramTypeEnum): untyped = 31
+template Talk*(_: type QRadioDataProgramTypeEnum): untyped = 32
+template ClassicRock*(_: type QRadioDataProgramTypeEnum): untyped = 33
+template AdultHits*(_: type QRadioDataProgramTypeEnum): untyped = 34
+template SoftRock*(_: type QRadioDataProgramTypeEnum): untyped = 35
+template Top40*(_: type QRadioDataProgramTypeEnum): untyped = 36
+template Soft*(_: type QRadioDataProgramTypeEnum): untyped = 37
+template Nostalgia*(_: type QRadioDataProgramTypeEnum): untyped = 38
+template Classical*(_: type QRadioDataProgramTypeEnum): untyped = 39
+template RhythmAndBlues*(_: type QRadioDataProgramTypeEnum): untyped = 40
+template SoftRhythmAndBlues*(_: type QRadioDataProgramTypeEnum): untyped = 41
+template Language*(_: type QRadioDataProgramTypeEnum): untyped = 42
+template ReligiousMusic*(_: type QRadioDataProgramTypeEnum): untyped = 43
+template ReligiousTalk*(_: type QRadioDataProgramTypeEnum): untyped = 44
+template Personality*(_: type QRadioDataProgramTypeEnum): untyped = 45
+template Public*(_: type QRadioDataProgramTypeEnum): untyped = 46
+template College*(_: type QRadioDataProgramTypeEnum): untyped = 47
 
 
 import gen_qradiodata_types
@@ -103,14 +99,12 @@ import
   gen_qcoreevent,
   gen_qmediaobject,
   gen_qmetaobject,
-  gen_qmultimedia,
   gen_qobject,
   gen_qobjectdefs
 export
   gen_qcoreevent,
   gen_qmediaobject,
   gen_qmetaobject,
-  gen_qmultimedia,
   gen_qobject,
   gen_qobjectdefs
 
@@ -180,100 +174,100 @@ proc fcQRadioData_staticMetaObject(): pointer {.importc: "QRadioData_staticMetaO
 proc fcQRadioData_delete(self: pointer) {.importc: "QRadioData_delete".}
 
 
-func init*(T: type QRadioData, h: ptr cQRadioData): QRadioData =
+func init*(T: type gen_qradiodata_types.QRadioData, h: ptr cQRadioData): gen_qradiodata_types.QRadioData =
   T(h: h)
-proc create*(T: type QRadioData, mediaObject: gen_qmediaobject.QMediaObject): QRadioData =
+proc create*(T: type gen_qradiodata_types.QRadioData, mediaObject: gen_qmediaobject.QMediaObject): gen_qradiodata_types.QRadioData =
 
-  QRadioData.init(fcQRadioData_new(mediaObject.h))
-proc create*(T: type QRadioData, mediaObject: gen_qmediaobject.QMediaObject, parent: gen_qobject.QObject): QRadioData =
+  gen_qradiodata_types.QRadioData.init(fcQRadioData_new(mediaObject.h))
+proc create*(T: type gen_qradiodata_types.QRadioData, mediaObject: gen_qmediaobject.QMediaObject, parent: gen_qobject.QObject): gen_qradiodata_types.QRadioData =
 
-  QRadioData.init(fcQRadioData_new2(mediaObject.h, parent.h))
-proc metaObject*(self: QRadioData, ): gen_qobjectdefs.QMetaObject =
+  gen_qradiodata_types.QRadioData.init(fcQRadioData_new2(mediaObject.h, parent.h))
+proc metaObject*(self: gen_qradiodata_types.QRadioData, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQRadioData_metaObject(self.h))
 
-proc metacast*(self: QRadioData, param1: cstring): pointer =
+proc metacast*(self: gen_qradiodata_types.QRadioData, param1: cstring): pointer =
 
   fcQRadioData_metacast(self.h, param1)
 
-proc metacall*(self: QRadioData, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qradiodata_types.QRadioData, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQRadioData_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QRadioData, s: cstring): string =
+proc tr*(_: type gen_qradiodata_types.QRadioData, s: cstring): string =
 
   let v_ms = fcQRadioData_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QRadioData, s: cstring): string =
+proc trUtf8*(_: type gen_qradiodata_types.QRadioData, s: cstring): string =
 
   let v_ms = fcQRadioData_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc availability*(self: QRadioData, ): gen_qmultimedia.QMultimediaAvailabilityStatus =
+proc availability*(self: gen_qradiodata_types.QRadioData, ): cint =
 
-  gen_qmultimedia.QMultimediaAvailabilityStatus(fcQRadioData_availability(self.h))
+  cint(fcQRadioData_availability(self.h))
 
-proc mediaObject*(self: QRadioData, ): gen_qmediaobject.QMediaObject =
+proc mediaObject*(self: gen_qradiodata_types.QRadioData, ): gen_qmediaobject.QMediaObject =
 
   gen_qmediaobject.QMediaObject(h: fcQRadioData_mediaObject(self.h))
 
-proc stationId*(self: QRadioData, ): string =
+proc stationId*(self: gen_qradiodata_types.QRadioData, ): string =
 
   let v_ms = fcQRadioData_stationId(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc programType*(self: QRadioData, ): QRadioDataProgramType =
+proc programType*(self: gen_qradiodata_types.QRadioData, ): cint =
 
-  QRadioDataProgramType(fcQRadioData_programType(self.h))
+  cint(fcQRadioData_programType(self.h))
 
-proc programTypeName*(self: QRadioData, ): string =
+proc programTypeName*(self: gen_qradiodata_types.QRadioData, ): string =
 
   let v_ms = fcQRadioData_programTypeName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc stationName*(self: QRadioData, ): string =
+proc stationName*(self: gen_qradiodata_types.QRadioData, ): string =
 
   let v_ms = fcQRadioData_stationName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc radioText*(self: QRadioData, ): string =
+proc radioText*(self: gen_qradiodata_types.QRadioData, ): string =
 
   let v_ms = fcQRadioData_radioText(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc isAlternativeFrequenciesEnabled*(self: QRadioData, ): bool =
+proc isAlternativeFrequenciesEnabled*(self: gen_qradiodata_types.QRadioData, ): bool =
 
   fcQRadioData_isAlternativeFrequenciesEnabled(self.h)
 
-proc error*(self: QRadioData, ): QRadioDataError =
+proc error*(self: gen_qradiodata_types.QRadioData, ): cint =
 
-  QRadioDataError(fcQRadioData_error(self.h))
+  cint(fcQRadioData_error(self.h))
 
-proc errorString*(self: QRadioData, ): string =
+proc errorString*(self: gen_qradiodata_types.QRadioData, ): string =
 
   let v_ms = fcQRadioData_errorString(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setAlternativeFrequenciesEnabled*(self: QRadioData, enabled: bool): void =
+proc setAlternativeFrequenciesEnabled*(self: gen_qradiodata_types.QRadioData, enabled: bool): void =
 
   fcQRadioData_setAlternativeFrequenciesEnabled(self.h, enabled)
 
-proc stationIdChanged*(self: QRadioData, stationId: string): void =
+proc stationIdChanged*(self: gen_qradiodata_types.QRadioData, stationId: string): void =
 
   fcQRadioData_stationIdChanged(self.h, struct_miqt_string(data: stationId, len: csize_t(len(stationId))))
 
@@ -288,31 +282,31 @@ proc miqt_exec_callback_QRadioData_stationIdChanged(slot: int, stationId: struct
 
   nimfunc[](slotval1)
 
-proc onstationIdChanged*(self: QRadioData, slot: proc(stationId: string)) =
+proc onstationIdChanged*(self: gen_qradiodata_types.QRadioData, slot: proc(stationId: string)) =
   type Cb = proc(stationId: string)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQRadioData_connect_stationIdChanged(self.h, cast[int](addr tmp[]))
-proc programTypeChanged*(self: QRadioData, programType: QRadioDataProgramType): void =
+proc programTypeChanged*(self: gen_qradiodata_types.QRadioData, programType: cint): void =
 
   fcQRadioData_programTypeChanged(self.h, cint(programType))
 
 proc miqt_exec_callback_QRadioData_programTypeChanged(slot: int, programType: cint) {.exportc.} =
-  type Cb = proc(programType: QRadioDataProgramType)
+  type Cb = proc(programType: cint)
   let nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = QRadioDataProgramType(programType)
+  let slotval1 = cint(programType)
 
 
   nimfunc[](slotval1)
 
-proc onprogramTypeChanged*(self: QRadioData, slot: proc(programType: QRadioDataProgramType)) =
-  type Cb = proc(programType: QRadioDataProgramType)
+proc onprogramTypeChanged*(self: gen_qradiodata_types.QRadioData, slot: proc(programType: cint)) =
+  type Cb = proc(programType: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQRadioData_connect_programTypeChanged(self.h, cast[int](addr tmp[]))
-proc programTypeNameChanged*(self: QRadioData, programTypeName: string): void =
+proc programTypeNameChanged*(self: gen_qradiodata_types.QRadioData, programTypeName: string): void =
 
   fcQRadioData_programTypeNameChanged(self.h, struct_miqt_string(data: programTypeName, len: csize_t(len(programTypeName))))
 
@@ -327,13 +321,13 @@ proc miqt_exec_callback_QRadioData_programTypeNameChanged(slot: int, programType
 
   nimfunc[](slotval1)
 
-proc onprogramTypeNameChanged*(self: QRadioData, slot: proc(programTypeName: string)) =
+proc onprogramTypeNameChanged*(self: gen_qradiodata_types.QRadioData, slot: proc(programTypeName: string)) =
   type Cb = proc(programTypeName: string)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQRadioData_connect_programTypeNameChanged(self.h, cast[int](addr tmp[]))
-proc stationNameChanged*(self: QRadioData, stationName: string): void =
+proc stationNameChanged*(self: gen_qradiodata_types.QRadioData, stationName: string): void =
 
   fcQRadioData_stationNameChanged(self.h, struct_miqt_string(data: stationName, len: csize_t(len(stationName))))
 
@@ -348,13 +342,13 @@ proc miqt_exec_callback_QRadioData_stationNameChanged(slot: int, stationName: st
 
   nimfunc[](slotval1)
 
-proc onstationNameChanged*(self: QRadioData, slot: proc(stationName: string)) =
+proc onstationNameChanged*(self: gen_qradiodata_types.QRadioData, slot: proc(stationName: string)) =
   type Cb = proc(stationName: string)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQRadioData_connect_stationNameChanged(self.h, cast[int](addr tmp[]))
-proc radioTextChanged*(self: QRadioData, radioText: string): void =
+proc radioTextChanged*(self: gen_qradiodata_types.QRadioData, radioText: string): void =
 
   fcQRadioData_radioTextChanged(self.h, struct_miqt_string(data: radioText, len: csize_t(len(radioText))))
 
@@ -369,13 +363,13 @@ proc miqt_exec_callback_QRadioData_radioTextChanged(slot: int, radioText: struct
 
   nimfunc[](slotval1)
 
-proc onradioTextChanged*(self: QRadioData, slot: proc(radioText: string)) =
+proc onradioTextChanged*(self: gen_qradiodata_types.QRadioData, slot: proc(radioText: string)) =
   type Cb = proc(radioText: string)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQRadioData_connect_radioTextChanged(self.h, cast[int](addr tmp[]))
-proc alternativeFrequenciesEnabledChanged*(self: QRadioData, enabled: bool): void =
+proc alternativeFrequenciesEnabledChanged*(self: gen_qradiodata_types.QRadioData, enabled: bool): void =
 
   fcQRadioData_alternativeFrequenciesEnabledChanged(self.h, enabled)
 
@@ -387,351 +381,291 @@ proc miqt_exec_callback_QRadioData_alternativeFrequenciesEnabledChanged(slot: in
 
   nimfunc[](slotval1)
 
-proc onalternativeFrequenciesEnabledChanged*(self: QRadioData, slot: proc(enabled: bool)) =
+proc onalternativeFrequenciesEnabledChanged*(self: gen_qradiodata_types.QRadioData, slot: proc(enabled: bool)) =
   type Cb = proc(enabled: bool)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQRadioData_connect_alternativeFrequenciesEnabledChanged(self.h, cast[int](addr tmp[]))
-proc errorWithError*(self: QRadioData, error: QRadioDataError): void =
+proc errorWithError*(self: gen_qradiodata_types.QRadioData, error: cint): void =
 
   fcQRadioData_errorWithError(self.h, cint(error))
 
 proc miqt_exec_callback_QRadioData_errorWithError(slot: int, error: cint) {.exportc.} =
-  type Cb = proc(error: QRadioDataError)
+  type Cb = proc(error: cint)
   let nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = QRadioDataError(error)
+  let slotval1 = cint(error)
 
 
   nimfunc[](slotval1)
 
-proc onerrorWithError*(self: QRadioData, slot: proc(error: QRadioDataError)) =
-  type Cb = proc(error: QRadioDataError)
+proc onerrorWithError*(self: gen_qradiodata_types.QRadioData, slot: proc(error: cint)) =
+  type Cb = proc(error: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQRadioData_connect_errorWithError(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QRadioData, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qradiodata_types.QRadioData, s: cstring, c: cstring): string =
 
   let v_ms = fcQRadioData_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QRadioData, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qradiodata_types.QRadioData, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQRadioData_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QRadioData, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qradiodata_types.QRadioData, s: cstring, c: cstring): string =
 
   let v_ms = fcQRadioData_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QRadioData, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qradiodata_types.QRadioData, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQRadioData_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QRadioData, ): gen_qobjectdefs.QMetaObject =
-
+proc QRadioDatametaObject*(self: gen_qradiodata_types.QRadioData, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQRadioData_virtualbase_metaObject(self.h))
 
-type QRadioDatametaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QRadioData, slot: proc(super: QRadioDatametaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QRadioDatametaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qradiodata_types.QRadioData, slot: QRadioDatametaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QRadioDatametaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QRadioDatametaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRadioData_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRadioData_metaObject(self: ptr cQRadioData, slot: int): pointer {.exportc: "miqt_exec_callback_QRadioData_metaObject ".} =
-  type Cb = proc(super: QRadioDatametaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QRadioData(h: self), )
+  var nimfunc = cast[ptr QRadioDatametaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QRadioData, param1: cstring): pointer =
-
+proc QRadioDatametacast*(self: gen_qradiodata_types.QRadioData, param1: cstring): pointer =
 
   fQRadioData_virtualbase_metacast(self.h, param1)
 
-type QRadioDatametacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QRadioData, slot: proc(super: QRadioDatametacastBase, param1: cstring): pointer) =
+type QRadioDatametacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qradiodata_types.QRadioData, slot: QRadioDatametacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QRadioDatametacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QRadioDatametacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRadioData_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRadioData_metacast(self: ptr cQRadioData, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QRadioData_metacast ".} =
-  type Cb = proc(super: QRadioDatametacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QRadioData(h: self), param1)
+  var nimfunc = cast[ptr QRadioDatametacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QRadioData, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QRadioDatametacall*(self: gen_qradiodata_types.QRadioData, param1: cint, param2: cint, param3: pointer): cint =
 
   fQRadioData_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QRadioDatametacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QRadioData, slot: proc(super: QRadioDatametacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QRadioDatametacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qradiodata_types.QRadioData, slot: QRadioDatametacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QRadioDatametacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QRadioDatametacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRadioData_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRadioData_metacall(self: ptr cQRadioData, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QRadioData_metacall ".} =
-  type Cb = proc(super: QRadioDatametacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QRadioData(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QRadioDatametacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_mediaObject(self: QRadioData, ): gen_qmediaobject.QMediaObject =
-
+proc QRadioDatamediaObject*(self: gen_qradiodata_types.QRadioData, ): gen_qmediaobject.QMediaObject =
 
   gen_qmediaobject.QMediaObject(h: fQRadioData_virtualbase_mediaObject(self.h))
 
-type QRadioDatamediaObjectBase* = proc(): gen_qmediaobject.QMediaObject
-proc onmediaObject*(self: QRadioData, slot: proc(super: QRadioDatamediaObjectBase): gen_qmediaobject.QMediaObject) =
+type QRadioDatamediaObjectProc* = proc(): gen_qmediaobject.QMediaObject
+proc onmediaObject*(self: gen_qradiodata_types.QRadioData, slot: QRadioDatamediaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QRadioDatamediaObjectBase): gen_qmediaobject.QMediaObject
-  var tmp = new Cb
+  var tmp = new QRadioDatamediaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRadioData_override_virtual_mediaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRadioData_mediaObject(self: ptr cQRadioData, slot: int): pointer {.exportc: "miqt_exec_callback_QRadioData_mediaObject ".} =
-  type Cb = proc(super: QRadioDatamediaObjectBase): gen_qmediaobject.QMediaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_mediaObject(QRadioData(h: self), )
+  var nimfunc = cast[ptr QRadioDatamediaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_setMediaObject(self: QRadioData, mediaObject: gen_qmediaobject.QMediaObject): bool =
-
+proc QRadioDatasetMediaObject*(self: gen_qradiodata_types.QRadioData, mediaObject: gen_qmediaobject.QMediaObject): bool =
 
   fQRadioData_virtualbase_setMediaObject(self.h, mediaObject.h)
 
-type QRadioDatasetMediaObjectBase* = proc(mediaObject: gen_qmediaobject.QMediaObject): bool
-proc onsetMediaObject*(self: QRadioData, slot: proc(super: QRadioDatasetMediaObjectBase, mediaObject: gen_qmediaobject.QMediaObject): bool) =
+type QRadioDatasetMediaObjectProc* = proc(mediaObject: gen_qmediaobject.QMediaObject): bool
+proc onsetMediaObject*(self: gen_qradiodata_types.QRadioData, slot: QRadioDatasetMediaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QRadioDatasetMediaObjectBase, mediaObject: gen_qmediaobject.QMediaObject): bool
-  var tmp = new Cb
+  var tmp = new QRadioDatasetMediaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRadioData_override_virtual_setMediaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRadioData_setMediaObject(self: ptr cQRadioData, slot: int, mediaObject: pointer): bool {.exportc: "miqt_exec_callback_QRadioData_setMediaObject ".} =
-  type Cb = proc(super: QRadioDatasetMediaObjectBase, mediaObject: gen_qmediaobject.QMediaObject): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(mediaObject: gen_qmediaobject.QMediaObject): auto =
-    callVirtualBase_setMediaObject(QRadioData(h: self), mediaObject)
+  var nimfunc = cast[ptr QRadioDatasetMediaObjectProc](cast[pointer](slot))
   let slotval1 = gen_qmediaobject.QMediaObject(h: mediaObject)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_event(self: QRadioData, event: gen_qcoreevent.QEvent): bool =
-
+proc QRadioDataevent*(self: gen_qradiodata_types.QRadioData, event: gen_qcoreevent.QEvent): bool =
 
   fQRadioData_virtualbase_event(self.h, event.h)
 
-type QRadioDataeventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QRadioData, slot: proc(super: QRadioDataeventBase, event: gen_qcoreevent.QEvent): bool) =
+type QRadioDataeventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qradiodata_types.QRadioData, slot: QRadioDataeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRadioDataeventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QRadioDataeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRadioData_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRadioData_event(self: ptr cQRadioData, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QRadioData_event ".} =
-  type Cb = proc(super: QRadioDataeventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QRadioData(h: self), event)
+  var nimfunc = cast[ptr QRadioDataeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QRadioData, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QRadioDataeventFilter*(self: gen_qradiodata_types.QRadioData, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQRadioData_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QRadioDataeventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QRadioData, slot: proc(super: QRadioDataeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QRadioDataeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qradiodata_types.QRadioData, slot: QRadioDataeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QRadioDataeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QRadioDataeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRadioData_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRadioData_eventFilter(self: ptr cQRadioData, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QRadioData_eventFilter ".} =
-  type Cb = proc(super: QRadioDataeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QRadioData(h: self), watched, event)
+  var nimfunc = cast[ptr QRadioDataeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QRadioData, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QRadioDatatimerEvent*(self: gen_qradiodata_types.QRadioData, event: gen_qcoreevent.QTimerEvent): void =
 
   fQRadioData_virtualbase_timerEvent(self.h, event.h)
 
-type QRadioDatatimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QRadioData, slot: proc(super: QRadioDatatimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QRadioDatatimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qradiodata_types.QRadioData, slot: QRadioDatatimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRadioDatatimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QRadioDatatimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRadioData_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRadioData_timerEvent(self: ptr cQRadioData, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QRadioData_timerEvent ".} =
-  type Cb = proc(super: QRadioDatatimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QRadioData(h: self), event)
+  var nimfunc = cast[ptr QRadioDatatimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QRadioData, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QRadioDatachildEvent*(self: gen_qradiodata_types.QRadioData, event: gen_qcoreevent.QChildEvent): void =
 
   fQRadioData_virtualbase_childEvent(self.h, event.h)
 
-type QRadioDatachildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QRadioData, slot: proc(super: QRadioDatachildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QRadioDatachildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qradiodata_types.QRadioData, slot: QRadioDatachildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRadioDatachildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QRadioDatachildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRadioData_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRadioData_childEvent(self: ptr cQRadioData, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QRadioData_childEvent ".} =
-  type Cb = proc(super: QRadioDatachildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QRadioData(h: self), event)
+  var nimfunc = cast[ptr QRadioDatachildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QRadioData, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QRadioDatacustomEvent*(self: gen_qradiodata_types.QRadioData, event: gen_qcoreevent.QEvent): void =
 
   fQRadioData_virtualbase_customEvent(self.h, event.h)
 
-type QRadioDatacustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QRadioData, slot: proc(super: QRadioDatacustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QRadioDatacustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qradiodata_types.QRadioData, slot: QRadioDatacustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRadioDatacustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QRadioDatacustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRadioData_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRadioData_customEvent(self: ptr cQRadioData, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QRadioData_customEvent ".} =
-  type Cb = proc(super: QRadioDatacustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QRadioData(h: self), event)
+  var nimfunc = cast[ptr QRadioDatacustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QRadioData, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QRadioDataconnectNotify*(self: gen_qradiodata_types.QRadioData, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQRadioData_virtualbase_connectNotify(self.h, signal.h)
 
-type QRadioDataconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QRadioData, slot: proc(super: QRadioDataconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QRadioDataconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qradiodata_types.QRadioData, slot: QRadioDataconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QRadioDataconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QRadioDataconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRadioData_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRadioData_connectNotify(self: ptr cQRadioData, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QRadioData_connectNotify ".} =
-  type Cb = proc(super: QRadioDataconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QRadioData(h: self), signal)
+  var nimfunc = cast[ptr QRadioDataconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QRadioData, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QRadioDatadisconnectNotify*(self: gen_qradiodata_types.QRadioData, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQRadioData_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QRadioDatadisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QRadioData, slot: proc(super: QRadioDatadisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QRadioDatadisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qradiodata_types.QRadioData, slot: QRadioDatadisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QRadioDatadisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QRadioDatadisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRadioData_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRadioData_disconnectNotify(self: ptr cQRadioData, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QRadioData_disconnectNotify ".} =
-  type Cb = proc(super: QRadioDatadisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QRadioData(h: self), signal)
+  var nimfunc = cast[ptr QRadioDatadisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QRadioData): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qradiodata_types.QRadioData): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQRadioData_staticMetaObject())
-proc delete*(self: QRadioData) =
+proc delete*(self: gen_qradiodata_types.QRadioData) =
   fcQRadioData_delete(self.h)

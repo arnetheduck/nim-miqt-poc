@@ -306,7 +306,7 @@ func (this *QAbstractProxyModel) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QAbstractProxyModel_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QAbstractProxyModel) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QAbstractProxyModel) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QAbstractProxyModel_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -333,7 +333,7 @@ func (this *QAbstractProxyModel) callVirtualBase_Metacast(param1 string) unsafe.
 	return (unsafe.Pointer)(C.QAbstractProxyModel_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QAbstractProxyModel) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QAbstractProxyModel) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QAbstractProxyModel_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

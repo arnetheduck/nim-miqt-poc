@@ -38,11 +38,9 @@ import gen_qcameraviewfindersettings_types
 export gen_qcameraviewfindersettings_types
 
 import
-  gen_qsize,
-  gen_qvideoframe
+  gen_qsize
 export
-  gen_qsize,
-  gen_qvideoframe
+  gen_qsize
 
 type cQCameraViewfinderSettings*{.exportc: "QCameraViewfinderSettings", incompleteStruct.} = object
 
@@ -66,73 +64,73 @@ proc fcQCameraViewfinderSettings_setPixelAspectRatio2(self: pointer, horizontal:
 proc fcQCameraViewfinderSettings_delete(self: pointer) {.importc: "QCameraViewfinderSettings_delete".}
 
 
-func init*(T: type QCameraViewfinderSettings, h: ptr cQCameraViewfinderSettings): QCameraViewfinderSettings =
+func init*(T: type gen_qcameraviewfindersettings_types.QCameraViewfinderSettings, h: ptr cQCameraViewfinderSettings): gen_qcameraviewfindersettings_types.QCameraViewfinderSettings =
   T(h: h)
-proc create*(T: type QCameraViewfinderSettings, ): QCameraViewfinderSettings =
+proc create*(T: type gen_qcameraviewfindersettings_types.QCameraViewfinderSettings, ): gen_qcameraviewfindersettings_types.QCameraViewfinderSettings =
 
-  QCameraViewfinderSettings.init(fcQCameraViewfinderSettings_new())
-proc create*(T: type QCameraViewfinderSettings, other: QCameraViewfinderSettings): QCameraViewfinderSettings =
+  gen_qcameraviewfindersettings_types.QCameraViewfinderSettings.init(fcQCameraViewfinderSettings_new())
+proc create*(T: type gen_qcameraviewfindersettings_types.QCameraViewfinderSettings, other: gen_qcameraviewfindersettings_types.QCameraViewfinderSettings): gen_qcameraviewfindersettings_types.QCameraViewfinderSettings =
 
-  QCameraViewfinderSettings.init(fcQCameraViewfinderSettings_new2(other.h))
-proc operatorAssign*(self: QCameraViewfinderSettings, other: QCameraViewfinderSettings): void =
+  gen_qcameraviewfindersettings_types.QCameraViewfinderSettings.init(fcQCameraViewfinderSettings_new2(other.h))
+proc operatorAssign*(self: gen_qcameraviewfindersettings_types.QCameraViewfinderSettings, other: gen_qcameraviewfindersettings_types.QCameraViewfinderSettings): void =
 
   fcQCameraViewfinderSettings_operatorAssign(self.h, other.h)
 
-proc swap*(self: QCameraViewfinderSettings, other: QCameraViewfinderSettings): void =
+proc swap*(self: gen_qcameraviewfindersettings_types.QCameraViewfinderSettings, other: gen_qcameraviewfindersettings_types.QCameraViewfinderSettings): void =
 
   fcQCameraViewfinderSettings_swap(self.h, other.h)
 
-proc isNull*(self: QCameraViewfinderSettings, ): bool =
+proc isNull*(self: gen_qcameraviewfindersettings_types.QCameraViewfinderSettings, ): bool =
 
   fcQCameraViewfinderSettings_isNull(self.h)
 
-proc resolution*(self: QCameraViewfinderSettings, ): gen_qsize.QSize =
+proc resolution*(self: gen_qcameraviewfindersettings_types.QCameraViewfinderSettings, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQCameraViewfinderSettings_resolution(self.h))
 
-proc setResolution*(self: QCameraViewfinderSettings, resolution: gen_qsize.QSize): void =
+proc setResolution*(self: gen_qcameraviewfindersettings_types.QCameraViewfinderSettings, resolution: gen_qsize.QSize): void =
 
   fcQCameraViewfinderSettings_setResolution(self.h, resolution.h)
 
-proc setResolution2*(self: QCameraViewfinderSettings, width: cint, height: cint): void =
+proc setResolution2*(self: gen_qcameraviewfindersettings_types.QCameraViewfinderSettings, width: cint, height: cint): void =
 
   fcQCameraViewfinderSettings_setResolution2(self.h, width, height)
 
-proc minimumFrameRate*(self: QCameraViewfinderSettings, ): float64 =
+proc minimumFrameRate*(self: gen_qcameraviewfindersettings_types.QCameraViewfinderSettings, ): float64 =
 
   fcQCameraViewfinderSettings_minimumFrameRate(self.h)
 
-proc setMinimumFrameRate*(self: QCameraViewfinderSettings, rate: float64): void =
+proc setMinimumFrameRate*(self: gen_qcameraviewfindersettings_types.QCameraViewfinderSettings, rate: float64): void =
 
   fcQCameraViewfinderSettings_setMinimumFrameRate(self.h, rate)
 
-proc maximumFrameRate*(self: QCameraViewfinderSettings, ): float64 =
+proc maximumFrameRate*(self: gen_qcameraviewfindersettings_types.QCameraViewfinderSettings, ): float64 =
 
   fcQCameraViewfinderSettings_maximumFrameRate(self.h)
 
-proc setMaximumFrameRate*(self: QCameraViewfinderSettings, rate: float64): void =
+proc setMaximumFrameRate*(self: gen_qcameraviewfindersettings_types.QCameraViewfinderSettings, rate: float64): void =
 
   fcQCameraViewfinderSettings_setMaximumFrameRate(self.h, rate)
 
-proc pixelFormat*(self: QCameraViewfinderSettings, ): gen_qvideoframe.QVideoFramePixelFormat =
+proc pixelFormat*(self: gen_qcameraviewfindersettings_types.QCameraViewfinderSettings, ): cint =
 
-  gen_qvideoframe.QVideoFramePixelFormat(fcQCameraViewfinderSettings_pixelFormat(self.h))
+  cint(fcQCameraViewfinderSettings_pixelFormat(self.h))
 
-proc setPixelFormat*(self: QCameraViewfinderSettings, format: gen_qvideoframe.QVideoFramePixelFormat): void =
+proc setPixelFormat*(self: gen_qcameraviewfindersettings_types.QCameraViewfinderSettings, format: cint): void =
 
   fcQCameraViewfinderSettings_setPixelFormat(self.h, cint(format))
 
-proc pixelAspectRatio*(self: QCameraViewfinderSettings, ): gen_qsize.QSize =
+proc pixelAspectRatio*(self: gen_qcameraviewfindersettings_types.QCameraViewfinderSettings, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQCameraViewfinderSettings_pixelAspectRatio(self.h))
 
-proc setPixelAspectRatio*(self: QCameraViewfinderSettings, ratio: gen_qsize.QSize): void =
+proc setPixelAspectRatio*(self: gen_qcameraviewfindersettings_types.QCameraViewfinderSettings, ratio: gen_qsize.QSize): void =
 
   fcQCameraViewfinderSettings_setPixelAspectRatio(self.h, ratio.h)
 
-proc setPixelAspectRatio2*(self: QCameraViewfinderSettings, horizontal: cint, vertical: cint): void =
+proc setPixelAspectRatio2*(self: gen_qcameraviewfindersettings_types.QCameraViewfinderSettings, horizontal: cint, vertical: cint): void =
 
   fcQCameraViewfinderSettings_setPixelAspectRatio2(self.h, horizontal, vertical)
 
-proc delete*(self: QCameraViewfinderSettings) =
+proc delete*(self: gen_qcameraviewfindersettings_types.QCameraViewfinderSettings) =
   fcQCameraViewfinderSettings_delete(self.h)

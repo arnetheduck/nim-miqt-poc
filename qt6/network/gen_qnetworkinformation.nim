@@ -34,33 +34,27 @@ const cflags = gorge("pkg-config -cflags Qt6Network")
 {.compile("gen_qnetworkinformation.cpp", cflags).}
 
 
-type QNetworkInformationReachability* = cint
-const
-  QNetworkInformationReachabilityUnknown* = 0
-  QNetworkInformationReachabilityDisconnected* = 1
-  QNetworkInformationReachabilityLocal* = 2
-  QNetworkInformationReachabilitySite* = 3
-  QNetworkInformationReachabilityOnline* = 4
+type QNetworkInformationReachabilityEnum* = distinct cint
+template Unknown*(_: type QNetworkInformationReachabilityEnum): untyped = 0
+template Disconnected*(_: type QNetworkInformationReachabilityEnum): untyped = 1
+template Local*(_: type QNetworkInformationReachabilityEnum): untyped = 2
+template Site*(_: type QNetworkInformationReachabilityEnum): untyped = 3
+template Online*(_: type QNetworkInformationReachabilityEnum): untyped = 4
 
 
-
-type QNetworkInformationTransportMedium* = cint
-const
-  QNetworkInformationTransportMediumUnknown* = 0
-  QNetworkInformationTransportMediumEthernet* = 1
-  QNetworkInformationTransportMediumCellular* = 2
-  QNetworkInformationTransportMediumWiFi* = 3
-  QNetworkInformationTransportMediumBluetooth* = 4
+type QNetworkInformationTransportMediumEnum* = distinct cint
+template Unknown*(_: type QNetworkInformationTransportMediumEnum): untyped = 0
+template Ethernet*(_: type QNetworkInformationTransportMediumEnum): untyped = 1
+template Cellular*(_: type QNetworkInformationTransportMediumEnum): untyped = 2
+template WiFi*(_: type QNetworkInformationTransportMediumEnum): untyped = 3
+template Bluetooth*(_: type QNetworkInformationTransportMediumEnum): untyped = 4
 
 
-
-type QNetworkInformationFeature* = cint
-const
-  QNetworkInformationFeatureReachability* = 1
-  QNetworkInformationFeatureCaptivePortal* = 2
-  QNetworkInformationFeatureTransportMedium* = 4
-  QNetworkInformationFeatureMetered* = 8
-
+type QNetworkInformationFeatureEnum* = distinct cint
+template Reachability*(_: type QNetworkInformationFeatureEnum): untyped = 1
+template CaptivePortal*(_: type QNetworkInformationFeatureEnum): untyped = 2
+template TransportMedium*(_: type QNetworkInformationFeatureEnum): untyped = 4
+template Metered*(_: type QNetworkInformationFeatureEnum): untyped = 8
 
 
 import gen_qnetworkinformation_types
@@ -104,71 +98,71 @@ proc fcQNetworkInformation_tr3(s: cstring, c: cstring, n: cint): struct_miqt_str
 proc fcQNetworkInformation_staticMetaObject(): pointer {.importc: "QNetworkInformation_staticMetaObject".}
 
 
-func init*(T: type QNetworkInformation, h: ptr cQNetworkInformation): QNetworkInformation =
+func init*(T: type gen_qnetworkinformation_types.QNetworkInformation, h: ptr cQNetworkInformation): gen_qnetworkinformation_types.QNetworkInformation =
   T(h: h)
-proc metaObject*(self: QNetworkInformation, ): gen_qobjectdefs.QMetaObject =
+proc metaObject*(self: gen_qnetworkinformation_types.QNetworkInformation, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQNetworkInformation_metaObject(self.h))
 
-proc metacast*(self: QNetworkInformation, param1: cstring): pointer =
+proc metacast*(self: gen_qnetworkinformation_types.QNetworkInformation, param1: cstring): pointer =
 
   fcQNetworkInformation_metacast(self.h, param1)
 
-proc metacall*(self: QNetworkInformation, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qnetworkinformation_types.QNetworkInformation, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQNetworkInformation_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QNetworkInformation, s: cstring): string =
+proc tr*(_: type gen_qnetworkinformation_types.QNetworkInformation, s: cstring): string =
 
   let v_ms = fcQNetworkInformation_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc reachability*(self: QNetworkInformation, ): QNetworkInformationReachability =
+proc reachability*(self: gen_qnetworkinformation_types.QNetworkInformation, ): cint =
 
-  QNetworkInformationReachability(fcQNetworkInformation_reachability(self.h))
+  cint(fcQNetworkInformation_reachability(self.h))
 
-proc isBehindCaptivePortal*(self: QNetworkInformation, ): bool =
+proc isBehindCaptivePortal*(self: gen_qnetworkinformation_types.QNetworkInformation, ): bool =
 
   fcQNetworkInformation_isBehindCaptivePortal(self.h)
 
-proc transportMedium*(self: QNetworkInformation, ): QNetworkInformationTransportMedium =
+proc transportMedium*(self: gen_qnetworkinformation_types.QNetworkInformation, ): cint =
 
-  QNetworkInformationTransportMedium(fcQNetworkInformation_transportMedium(self.h))
+  cint(fcQNetworkInformation_transportMedium(self.h))
 
-proc isMetered*(self: QNetworkInformation, ): bool =
+proc isMetered*(self: gen_qnetworkinformation_types.QNetworkInformation, ): bool =
 
   fcQNetworkInformation_isMetered(self.h)
 
-proc backendName*(self: QNetworkInformation, ): string =
+proc backendName*(self: gen_qnetworkinformation_types.QNetworkInformation, ): string =
 
   let v_ms = fcQNetworkInformation_backendName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc supports*(self: QNetworkInformation, features: QNetworkInformationFeature): bool =
+proc supports*(self: gen_qnetworkinformation_types.QNetworkInformation, features: cint): bool =
 
   fcQNetworkInformation_supports(self.h, cint(features))
 
-proc supportedFeatures*(self: QNetworkInformation, ): QNetworkInformationFeature =
+proc supportedFeatures*(self: gen_qnetworkinformation_types.QNetworkInformation, ): cint =
 
-  QNetworkInformationFeature(fcQNetworkInformation_supportedFeatures(self.h))
+  cint(fcQNetworkInformation_supportedFeatures(self.h))
 
-proc loadDefaultBackend*(_: type QNetworkInformation, ): bool =
+proc loadDefaultBackend*(_: type gen_qnetworkinformation_types.QNetworkInformation, ): bool =
 
   fcQNetworkInformation_loadDefaultBackend()
 
-proc loadBackendByFeatures*(_: type QNetworkInformation, features: QNetworkInformationFeature): bool =
+proc loadBackendByFeatures*(_: type gen_qnetworkinformation_types.QNetworkInformation, features: cint): bool =
 
   fcQNetworkInformation_loadBackendByFeatures(cint(features))
 
-proc loadWithFeatures*(_: type QNetworkInformation, features: QNetworkInformationFeature): bool =
+proc loadWithFeatures*(_: type gen_qnetworkinformation_types.QNetworkInformation, features: cint): bool =
 
   fcQNetworkInformation_loadWithFeatures(cint(features))
 
-proc availableBackends*(_: type QNetworkInformation, ): seq[string] =
+proc availableBackends*(_: type gen_qnetworkinformation_types.QNetworkInformation, ): seq[string] =
 
   var v_ma = fcQNetworkInformation_availableBackends()
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -180,29 +174,29 @@ proc availableBackends*(_: type QNetworkInformation, ): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc instance*(_: type QNetworkInformation, ): QNetworkInformation =
+proc instance*(_: type gen_qnetworkinformation_types.QNetworkInformation, ): gen_qnetworkinformation_types.QNetworkInformation =
 
-  QNetworkInformation(h: fcQNetworkInformation_instance())
+  gen_qnetworkinformation_types.QNetworkInformation(h: fcQNetworkInformation_instance())
 
-proc reachabilityChanged*(self: QNetworkInformation, newReachability: QNetworkInformationReachability): void =
+proc reachabilityChanged*(self: gen_qnetworkinformation_types.QNetworkInformation, newReachability: cint): void =
 
   fcQNetworkInformation_reachabilityChanged(self.h, cint(newReachability))
 
 proc miqt_exec_callback_QNetworkInformation_reachabilityChanged(slot: int, newReachability: cint) {.exportc.} =
-  type Cb = proc(newReachability: QNetworkInformationReachability)
+  type Cb = proc(newReachability: cint)
   let nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = QNetworkInformationReachability(newReachability)
+  let slotval1 = cint(newReachability)
 
 
   nimfunc[](slotval1)
 
-proc onreachabilityChanged*(self: QNetworkInformation, slot: proc(newReachability: QNetworkInformationReachability)) =
-  type Cb = proc(newReachability: QNetworkInformationReachability)
+proc onreachabilityChanged*(self: gen_qnetworkinformation_types.QNetworkInformation, slot: proc(newReachability: cint)) =
+  type Cb = proc(newReachability: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQNetworkInformation_connect_reachabilityChanged(self.h, cast[int](addr tmp[]))
-proc isBehindCaptivePortalChanged*(self: QNetworkInformation, state: bool): void =
+proc isBehindCaptivePortalChanged*(self: gen_qnetworkinformation_types.QNetworkInformation, state: bool): void =
 
   fcQNetworkInformation_isBehindCaptivePortalChanged(self.h, state)
 
@@ -214,31 +208,31 @@ proc miqt_exec_callback_QNetworkInformation_isBehindCaptivePortalChanged(slot: i
 
   nimfunc[](slotval1)
 
-proc onisBehindCaptivePortalChanged*(self: QNetworkInformation, slot: proc(state: bool)) =
+proc onisBehindCaptivePortalChanged*(self: gen_qnetworkinformation_types.QNetworkInformation, slot: proc(state: bool)) =
   type Cb = proc(state: bool)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQNetworkInformation_connect_isBehindCaptivePortalChanged(self.h, cast[int](addr tmp[]))
-proc transportMediumChanged*(self: QNetworkInformation, current: QNetworkInformationTransportMedium): void =
+proc transportMediumChanged*(self: gen_qnetworkinformation_types.QNetworkInformation, current: cint): void =
 
   fcQNetworkInformation_transportMediumChanged(self.h, cint(current))
 
 proc miqt_exec_callback_QNetworkInformation_transportMediumChanged(slot: int, current: cint) {.exportc.} =
-  type Cb = proc(current: QNetworkInformationTransportMedium)
+  type Cb = proc(current: cint)
   let nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = QNetworkInformationTransportMedium(current)
+  let slotval1 = cint(current)
 
 
   nimfunc[](slotval1)
 
-proc ontransportMediumChanged*(self: QNetworkInformation, slot: proc(current: QNetworkInformationTransportMedium)) =
-  type Cb = proc(current: QNetworkInformationTransportMedium)
+proc ontransportMediumChanged*(self: gen_qnetworkinformation_types.QNetworkInformation, slot: proc(current: cint)) =
+  type Cb = proc(current: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQNetworkInformation_connect_transportMediumChanged(self.h, cast[int](addr tmp[]))
-proc isMeteredChanged*(self: QNetworkInformation, isMetered: bool): void =
+proc isMeteredChanged*(self: gen_qnetworkinformation_types.QNetworkInformation, isMetered: bool): void =
 
   fcQNetworkInformation_isMeteredChanged(self.h, isMetered)
 
@@ -250,25 +244,25 @@ proc miqt_exec_callback_QNetworkInformation_isMeteredChanged(slot: int, isMetere
 
   nimfunc[](slotval1)
 
-proc onisMeteredChanged*(self: QNetworkInformation, slot: proc(isMetered: bool)) =
+proc onisMeteredChanged*(self: gen_qnetworkinformation_types.QNetworkInformation, slot: proc(isMetered: bool)) =
   type Cb = proc(isMetered: bool)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQNetworkInformation_connect_isMeteredChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QNetworkInformation, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qnetworkinformation_types.QNetworkInformation, s: cstring, c: cstring): string =
 
   let v_ms = fcQNetworkInformation_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QNetworkInformation, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qnetworkinformation_types.QNetworkInformation, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQNetworkInformation_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc staticMetaObject*(_: type QNetworkInformation): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qnetworkinformation_types.QNetworkInformation): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQNetworkInformation_staticMetaObject())

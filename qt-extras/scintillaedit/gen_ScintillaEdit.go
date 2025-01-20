@@ -6579,7 +6579,7 @@ func (this *ScintillaEditBase) callVirtualBase_MetaObject() *qt.QMetaObject {
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.ScintillaEditBase_virtualbase_metaObject(unsafe.Pointer(this.h))))
 
 }
-func (this *ScintillaEditBase) OnmetaObject(slot func(super func() *qt.QMetaObject) *qt.QMetaObject) {
+func (this *ScintillaEditBase) OnMetaObject(slot func(super func() *qt.QMetaObject) *qt.QMetaObject) {
 	ok := C.ScintillaEditBase_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -6606,7 +6606,7 @@ func (this *ScintillaEditBase) callVirtualBase_Metacast(param1 string) unsafe.Po
 	return (unsafe.Pointer)(C.ScintillaEditBase_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *ScintillaEditBase) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *ScintillaEditBase) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.ScintillaEditBase_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -8534,7 +8534,7 @@ func (this *ScintillaDocument) callVirtualBase_MetaObject() *qt.QMetaObject {
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.ScintillaDocument_virtualbase_metaObject(unsafe.Pointer(this.h))))
 
 }
-func (this *ScintillaDocument) OnmetaObject(slot func(super func() *qt.QMetaObject) *qt.QMetaObject) {
+func (this *ScintillaDocument) OnMetaObject(slot func(super func() *qt.QMetaObject) *qt.QMetaObject) {
 	ok := C.ScintillaDocument_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -8561,7 +8561,7 @@ func (this *ScintillaDocument) callVirtualBase_Metacast(param1 string) unsafe.Po
 	return (unsafe.Pointer)(C.ScintillaDocument_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *ScintillaDocument) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *ScintillaDocument) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.ScintillaDocument_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -12445,7 +12445,7 @@ func (this *ScintillaEdit) callVirtualBase_MetaObject() *qt.QMetaObject {
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.ScintillaEdit_virtualbase_metaObject(unsafe.Pointer(this.h))))
 
 }
-func (this *ScintillaEdit) OnmetaObject(slot func(super func() *qt.QMetaObject) *qt.QMetaObject) {
+func (this *ScintillaEdit) OnMetaObject(slot func(super func() *qt.QMetaObject) *qt.QMetaObject) {
 	ok := C.ScintillaEdit_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -12472,7 +12472,7 @@ func (this *ScintillaEdit) callVirtualBase_Metacast(param1 string) unsafe.Pointe
 	return (unsafe.Pointer)(C.ScintillaEdit_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *ScintillaEdit) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *ScintillaEdit) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.ScintillaEdit_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

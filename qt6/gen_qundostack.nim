@@ -149,300 +149,280 @@ proc fcQUndoStack_staticMetaObject(): pointer {.importc: "QUndoStack_staticMetaO
 proc fcQUndoStack_delete(self: pointer) {.importc: "QUndoStack_delete".}
 
 
-func init*(T: type QUndoCommand, h: ptr cQUndoCommand): QUndoCommand =
+func init*(T: type gen_qundostack_types.QUndoCommand, h: ptr cQUndoCommand): gen_qundostack_types.QUndoCommand =
   T(h: h)
-proc create*(T: type QUndoCommand, ): QUndoCommand =
+proc create*(T: type gen_qundostack_types.QUndoCommand, ): gen_qundostack_types.QUndoCommand =
 
-  QUndoCommand.init(fcQUndoCommand_new())
-proc create*(T: type QUndoCommand, text: string): QUndoCommand =
+  gen_qundostack_types.QUndoCommand.init(fcQUndoCommand_new())
+proc create*(T: type gen_qundostack_types.QUndoCommand, text: string): gen_qundostack_types.QUndoCommand =
 
-  QUndoCommand.init(fcQUndoCommand_new2(struct_miqt_string(data: text, len: csize_t(len(text)))))
-proc create*(T: type QUndoCommand, parent: QUndoCommand): QUndoCommand =
+  gen_qundostack_types.QUndoCommand.init(fcQUndoCommand_new2(struct_miqt_string(data: text, len: csize_t(len(text)))))
+proc create*(T: type gen_qundostack_types.QUndoCommand, parent: gen_qundostack_types.QUndoCommand): gen_qundostack_types.QUndoCommand =
 
-  QUndoCommand.init(fcQUndoCommand_new3(parent.h))
-proc create*(T: type QUndoCommand, text: string, parent: QUndoCommand): QUndoCommand =
+  gen_qundostack_types.QUndoCommand.init(fcQUndoCommand_new3(parent.h))
+proc create*(T: type gen_qundostack_types.QUndoCommand, text: string, parent: gen_qundostack_types.QUndoCommand): gen_qundostack_types.QUndoCommand =
 
-  QUndoCommand.init(fcQUndoCommand_new4(struct_miqt_string(data: text, len: csize_t(len(text))), parent.h))
-proc undo*(self: QUndoCommand, ): void =
+  gen_qundostack_types.QUndoCommand.init(fcQUndoCommand_new4(struct_miqt_string(data: text, len: csize_t(len(text))), parent.h))
+proc undo*(self: gen_qundostack_types.QUndoCommand, ): void =
 
   fcQUndoCommand_undo(self.h)
 
-proc redo*(self: QUndoCommand, ): void =
+proc redo*(self: gen_qundostack_types.QUndoCommand, ): void =
 
   fcQUndoCommand_redo(self.h)
 
-proc text*(self: QUndoCommand, ): string =
+proc text*(self: gen_qundostack_types.QUndoCommand, ): string =
 
   let v_ms = fcQUndoCommand_text(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc actionText*(self: QUndoCommand, ): string =
+proc actionText*(self: gen_qundostack_types.QUndoCommand, ): string =
 
   let v_ms = fcQUndoCommand_actionText(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setText*(self: QUndoCommand, text: string): void =
+proc setText*(self: gen_qundostack_types.QUndoCommand, text: string): void =
 
   fcQUndoCommand_setText(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
-proc isObsolete*(self: QUndoCommand, ): bool =
+proc isObsolete*(self: gen_qundostack_types.QUndoCommand, ): bool =
 
   fcQUndoCommand_isObsolete(self.h)
 
-proc setObsolete*(self: QUndoCommand, obsolete: bool): void =
+proc setObsolete*(self: gen_qundostack_types.QUndoCommand, obsolete: bool): void =
 
   fcQUndoCommand_setObsolete(self.h, obsolete)
 
-proc id*(self: QUndoCommand, ): cint =
+proc id*(self: gen_qundostack_types.QUndoCommand, ): cint =
 
   fcQUndoCommand_id(self.h)
 
-proc mergeWith*(self: QUndoCommand, other: QUndoCommand): bool =
+proc mergeWith*(self: gen_qundostack_types.QUndoCommand, other: gen_qundostack_types.QUndoCommand): bool =
 
   fcQUndoCommand_mergeWith(self.h, other.h)
 
-proc childCount*(self: QUndoCommand, ): cint =
+proc childCount*(self: gen_qundostack_types.QUndoCommand, ): cint =
 
   fcQUndoCommand_childCount(self.h)
 
-proc child*(self: QUndoCommand, index: cint): QUndoCommand =
+proc child*(self: gen_qundostack_types.QUndoCommand, index: cint): gen_qundostack_types.QUndoCommand =
 
-  QUndoCommand(h: fcQUndoCommand_child(self.h, index))
+  gen_qundostack_types.QUndoCommand(h: fcQUndoCommand_child(self.h, index))
 
-proc callVirtualBase_undo(self: QUndoCommand, ): void =
-
+proc QUndoCommandundo*(self: gen_qundostack_types.QUndoCommand, ): void =
 
   fQUndoCommand_virtualbase_undo(self.h)
 
-type QUndoCommandundoBase* = proc(): void
-proc onundo*(self: QUndoCommand, slot: proc(super: QUndoCommandundoBase): void) =
+type QUndoCommandundoProc* = proc(): void
+proc onundo*(self: gen_qundostack_types.QUndoCommand, slot: QUndoCommandundoProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoCommandundoBase): void
-  var tmp = new Cb
+  var tmp = new QUndoCommandundoProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoCommand_override_virtual_undo(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoCommand_undo(self: ptr cQUndoCommand, slot: int): void {.exportc: "miqt_exec_callback_QUndoCommand_undo ".} =
-  type Cb = proc(super: QUndoCommandundoBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_undo(QUndoCommand(h: self), )
+  var nimfunc = cast[ptr QUndoCommandundoProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_redo(self: QUndoCommand, ): void =
-
+  nimfunc[]()
+proc QUndoCommandredo*(self: gen_qundostack_types.QUndoCommand, ): void =
 
   fQUndoCommand_virtualbase_redo(self.h)
 
-type QUndoCommandredoBase* = proc(): void
-proc onredo*(self: QUndoCommand, slot: proc(super: QUndoCommandredoBase): void) =
+type QUndoCommandredoProc* = proc(): void
+proc onredo*(self: gen_qundostack_types.QUndoCommand, slot: QUndoCommandredoProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoCommandredoBase): void
-  var tmp = new Cb
+  var tmp = new QUndoCommandredoProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoCommand_override_virtual_redo(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoCommand_redo(self: ptr cQUndoCommand, slot: int): void {.exportc: "miqt_exec_callback_QUndoCommand_redo ".} =
-  type Cb = proc(super: QUndoCommandredoBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_redo(QUndoCommand(h: self), )
+  var nimfunc = cast[ptr QUndoCommandredoProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_id(self: QUndoCommand, ): cint =
-
+  nimfunc[]()
+proc QUndoCommandid*(self: gen_qundostack_types.QUndoCommand, ): cint =
 
   fQUndoCommand_virtualbase_id(self.h)
 
-type QUndoCommandidBase* = proc(): cint
-proc onid*(self: QUndoCommand, slot: proc(super: QUndoCommandidBase): cint) =
+type QUndoCommandidProc* = proc(): cint
+proc onid*(self: gen_qundostack_types.QUndoCommand, slot: QUndoCommandidProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoCommandidBase): cint
-  var tmp = new Cb
+  var tmp = new QUndoCommandidProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoCommand_override_virtual_id(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoCommand_id(self: ptr cQUndoCommand, slot: int): cint {.exportc: "miqt_exec_callback_QUndoCommand_id ".} =
-  type Cb = proc(super: QUndoCommandidBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_id(QUndoCommand(h: self), )
+  var nimfunc = cast[ptr QUndoCommandidProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_mergeWith(self: QUndoCommand, other: QUndoCommand): bool =
-
+proc QUndoCommandmergeWith*(self: gen_qundostack_types.QUndoCommand, other: gen_qundostack_types.QUndoCommand): bool =
 
   fQUndoCommand_virtualbase_mergeWith(self.h, other.h)
 
-type QUndoCommandmergeWithBase* = proc(other: QUndoCommand): bool
-proc onmergeWith*(self: QUndoCommand, slot: proc(super: QUndoCommandmergeWithBase, other: QUndoCommand): bool) =
+type QUndoCommandmergeWithProc* = proc(other: gen_qundostack_types.QUndoCommand): bool
+proc onmergeWith*(self: gen_qundostack_types.QUndoCommand, slot: QUndoCommandmergeWithProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoCommandmergeWithBase, other: QUndoCommand): bool
-  var tmp = new Cb
+  var tmp = new QUndoCommandmergeWithProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoCommand_override_virtual_mergeWith(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoCommand_mergeWith(self: ptr cQUndoCommand, slot: int, other: pointer): bool {.exportc: "miqt_exec_callback_QUndoCommand_mergeWith ".} =
-  type Cb = proc(super: QUndoCommandmergeWithBase, other: QUndoCommand): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(other: QUndoCommand): auto =
-    callVirtualBase_mergeWith(QUndoCommand(h: self), other)
-  let slotval1 = QUndoCommand(h: other)
+  var nimfunc = cast[ptr QUndoCommandmergeWithProc](cast[pointer](slot))
+  let slotval1 = gen_qundostack_types.QUndoCommand(h: other)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc delete*(self: QUndoCommand) =
+proc delete*(self: gen_qundostack_types.QUndoCommand) =
   fcQUndoCommand_delete(self.h)
 
-func init*(T: type QUndoStack, h: ptr cQUndoStack): QUndoStack =
+func init*(T: type gen_qundostack_types.QUndoStack, h: ptr cQUndoStack): gen_qundostack_types.QUndoStack =
   T(h: h)
-proc create*(T: type QUndoStack, ): QUndoStack =
+proc create*(T: type gen_qundostack_types.QUndoStack, ): gen_qundostack_types.QUndoStack =
 
-  QUndoStack.init(fcQUndoStack_new())
-proc create*(T: type QUndoStack, parent: gen_qobject.QObject): QUndoStack =
+  gen_qundostack_types.QUndoStack.init(fcQUndoStack_new())
+proc create*(T: type gen_qundostack_types.QUndoStack, parent: gen_qobject.QObject): gen_qundostack_types.QUndoStack =
 
-  QUndoStack.init(fcQUndoStack_new2(parent.h))
-proc metaObject*(self: QUndoStack, ): gen_qobjectdefs.QMetaObject =
+  gen_qundostack_types.QUndoStack.init(fcQUndoStack_new2(parent.h))
+proc metaObject*(self: gen_qundostack_types.QUndoStack, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQUndoStack_metaObject(self.h))
 
-proc metacast*(self: QUndoStack, param1: cstring): pointer =
+proc metacast*(self: gen_qundostack_types.QUndoStack, param1: cstring): pointer =
 
   fcQUndoStack_metacast(self.h, param1)
 
-proc metacall*(self: QUndoStack, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qundostack_types.QUndoStack, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQUndoStack_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QUndoStack, s: cstring): string =
+proc tr*(_: type gen_qundostack_types.QUndoStack, s: cstring): string =
 
   let v_ms = fcQUndoStack_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc clear*(self: QUndoStack, ): void =
+proc clear*(self: gen_qundostack_types.QUndoStack, ): void =
 
   fcQUndoStack_clear(self.h)
 
-proc push*(self: QUndoStack, cmd: QUndoCommand): void =
+proc push*(self: gen_qundostack_types.QUndoStack, cmd: gen_qundostack_types.QUndoCommand): void =
 
   fcQUndoStack_push(self.h, cmd.h)
 
-proc canUndo*(self: QUndoStack, ): bool =
+proc canUndo*(self: gen_qundostack_types.QUndoStack, ): bool =
 
   fcQUndoStack_canUndo(self.h)
 
-proc canRedo*(self: QUndoStack, ): bool =
+proc canRedo*(self: gen_qundostack_types.QUndoStack, ): bool =
 
   fcQUndoStack_canRedo(self.h)
 
-proc undoText*(self: QUndoStack, ): string =
+proc undoText*(self: gen_qundostack_types.QUndoStack, ): string =
 
   let v_ms = fcQUndoStack_undoText(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc redoText*(self: QUndoStack, ): string =
+proc redoText*(self: gen_qundostack_types.QUndoStack, ): string =
 
   let v_ms = fcQUndoStack_redoText(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc count*(self: QUndoStack, ): cint =
+proc count*(self: gen_qundostack_types.QUndoStack, ): cint =
 
   fcQUndoStack_count(self.h)
 
-proc index*(self: QUndoStack, ): cint =
+proc index*(self: gen_qundostack_types.QUndoStack, ): cint =
 
   fcQUndoStack_index(self.h)
 
-proc text*(self: QUndoStack, idx: cint): string =
+proc text*(self: gen_qundostack_types.QUndoStack, idx: cint): string =
 
   let v_ms = fcQUndoStack_text(self.h, idx)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc createUndoAction*(self: QUndoStack, parent: gen_qobject.QObject): gen_qaction.QAction =
+proc createUndoAction*(self: gen_qundostack_types.QUndoStack, parent: gen_qobject.QObject): gen_qaction.QAction =
 
   gen_qaction.QAction(h: fcQUndoStack_createUndoAction(self.h, parent.h))
 
-proc createRedoAction*(self: QUndoStack, parent: gen_qobject.QObject): gen_qaction.QAction =
+proc createRedoAction*(self: gen_qundostack_types.QUndoStack, parent: gen_qobject.QObject): gen_qaction.QAction =
 
   gen_qaction.QAction(h: fcQUndoStack_createRedoAction(self.h, parent.h))
 
-proc isActive*(self: QUndoStack, ): bool =
+proc isActive*(self: gen_qundostack_types.QUndoStack, ): bool =
 
   fcQUndoStack_isActive(self.h)
 
-proc isClean*(self: QUndoStack, ): bool =
+proc isClean*(self: gen_qundostack_types.QUndoStack, ): bool =
 
   fcQUndoStack_isClean(self.h)
 
-proc cleanIndex*(self: QUndoStack, ): cint =
+proc cleanIndex*(self: gen_qundostack_types.QUndoStack, ): cint =
 
   fcQUndoStack_cleanIndex(self.h)
 
-proc beginMacro*(self: QUndoStack, text: string): void =
+proc beginMacro*(self: gen_qundostack_types.QUndoStack, text: string): void =
 
   fcQUndoStack_beginMacro(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
-proc endMacro*(self: QUndoStack, ): void =
+proc endMacro*(self: gen_qundostack_types.QUndoStack, ): void =
 
   fcQUndoStack_endMacro(self.h)
 
-proc setUndoLimit*(self: QUndoStack, limit: cint): void =
+proc setUndoLimit*(self: gen_qundostack_types.QUndoStack, limit: cint): void =
 
   fcQUndoStack_setUndoLimit(self.h, limit)
 
-proc undoLimit*(self: QUndoStack, ): cint =
+proc undoLimit*(self: gen_qundostack_types.QUndoStack, ): cint =
 
   fcQUndoStack_undoLimit(self.h)
 
-proc command*(self: QUndoStack, index: cint): QUndoCommand =
+proc command*(self: gen_qundostack_types.QUndoStack, index: cint): gen_qundostack_types.QUndoCommand =
 
-  QUndoCommand(h: fcQUndoStack_command(self.h, index))
+  gen_qundostack_types.QUndoCommand(h: fcQUndoStack_command(self.h, index))
 
-proc setClean*(self: QUndoStack, ): void =
+proc setClean*(self: gen_qundostack_types.QUndoStack, ): void =
 
   fcQUndoStack_setClean(self.h)
 
-proc resetClean*(self: QUndoStack, ): void =
+proc resetClean*(self: gen_qundostack_types.QUndoStack, ): void =
 
   fcQUndoStack_resetClean(self.h)
 
-proc setIndex*(self: QUndoStack, idx: cint): void =
+proc setIndex*(self: gen_qundostack_types.QUndoStack, idx: cint): void =
 
   fcQUndoStack_setIndex(self.h, idx)
 
-proc undo*(self: QUndoStack, ): void =
+proc undo*(self: gen_qundostack_types.QUndoStack, ): void =
 
   fcQUndoStack_undo(self.h)
 
-proc redo*(self: QUndoStack, ): void =
+proc redo*(self: gen_qundostack_types.QUndoStack, ): void =
 
   fcQUndoStack_redo(self.h)
 
-proc setActive*(self: QUndoStack, ): void =
+proc setActive*(self: gen_qundostack_types.QUndoStack, ): void =
 
   fcQUndoStack_setActive(self.h)
 
-proc indexChanged*(self: QUndoStack, idx: cint): void =
+proc indexChanged*(self: gen_qundostack_types.QUndoStack, idx: cint): void =
 
   fcQUndoStack_indexChanged(self.h, idx)
 
@@ -454,13 +434,13 @@ proc miqt_exec_callback_QUndoStack_indexChanged(slot: int, idx: cint) {.exportc.
 
   nimfunc[](slotval1)
 
-proc onindexChanged*(self: QUndoStack, slot: proc(idx: cint)) =
+proc onindexChanged*(self: gen_qundostack_types.QUndoStack, slot: proc(idx: cint)) =
   type Cb = proc(idx: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQUndoStack_connect_indexChanged(self.h, cast[int](addr tmp[]))
-proc cleanChanged*(self: QUndoStack, clean: bool): void =
+proc cleanChanged*(self: gen_qundostack_types.QUndoStack, clean: bool): void =
 
   fcQUndoStack_cleanChanged(self.h, clean)
 
@@ -472,13 +452,13 @@ proc miqt_exec_callback_QUndoStack_cleanChanged(slot: int, clean: bool) {.export
 
   nimfunc[](slotval1)
 
-proc oncleanChanged*(self: QUndoStack, slot: proc(clean: bool)) =
+proc oncleanChanged*(self: gen_qundostack_types.QUndoStack, slot: proc(clean: bool)) =
   type Cb = proc(clean: bool)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQUndoStack_connect_cleanChanged(self.h, cast[int](addr tmp[]))
-proc canUndoChanged*(self: QUndoStack, canUndo: bool): void =
+proc canUndoChanged*(self: gen_qundostack_types.QUndoStack, canUndo: bool): void =
 
   fcQUndoStack_canUndoChanged(self.h, canUndo)
 
@@ -490,13 +470,13 @@ proc miqt_exec_callback_QUndoStack_canUndoChanged(slot: int, canUndo: bool) {.ex
 
   nimfunc[](slotval1)
 
-proc oncanUndoChanged*(self: QUndoStack, slot: proc(canUndo: bool)) =
+proc oncanUndoChanged*(self: gen_qundostack_types.QUndoStack, slot: proc(canUndo: bool)) =
   type Cb = proc(canUndo: bool)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQUndoStack_connect_canUndoChanged(self.h, cast[int](addr tmp[]))
-proc canRedoChanged*(self: QUndoStack, canRedo: bool): void =
+proc canRedoChanged*(self: gen_qundostack_types.QUndoStack, canRedo: bool): void =
 
   fcQUndoStack_canRedoChanged(self.h, canRedo)
 
@@ -508,13 +488,13 @@ proc miqt_exec_callback_QUndoStack_canRedoChanged(slot: int, canRedo: bool) {.ex
 
   nimfunc[](slotval1)
 
-proc oncanRedoChanged*(self: QUndoStack, slot: proc(canRedo: bool)) =
+proc oncanRedoChanged*(self: gen_qundostack_types.QUndoStack, slot: proc(canRedo: bool)) =
   type Cb = proc(canRedo: bool)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQUndoStack_connect_canRedoChanged(self.h, cast[int](addr tmp[]))
-proc undoTextChanged*(self: QUndoStack, undoText: string): void =
+proc undoTextChanged*(self: gen_qundostack_types.QUndoStack, undoText: string): void =
 
   fcQUndoStack_undoTextChanged(self.h, struct_miqt_string(data: undoText, len: csize_t(len(undoText))))
 
@@ -529,13 +509,13 @@ proc miqt_exec_callback_QUndoStack_undoTextChanged(slot: int, undoText: struct_m
 
   nimfunc[](slotval1)
 
-proc onundoTextChanged*(self: QUndoStack, slot: proc(undoText: string)) =
+proc onundoTextChanged*(self: gen_qundostack_types.QUndoStack, slot: proc(undoText: string)) =
   type Cb = proc(undoText: string)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQUndoStack_connect_undoTextChanged(self.h, cast[int](addr tmp[]))
-proc redoTextChanged*(self: QUndoStack, redoText: string): void =
+proc redoTextChanged*(self: gen_qundostack_types.QUndoStack, redoText: string): void =
 
   fcQUndoStack_redoTextChanged(self.h, struct_miqt_string(data: redoText, len: csize_t(len(redoText))))
 
@@ -550,283 +530,233 @@ proc miqt_exec_callback_QUndoStack_redoTextChanged(slot: int, redoText: struct_m
 
   nimfunc[](slotval1)
 
-proc onredoTextChanged*(self: QUndoStack, slot: proc(redoText: string)) =
+proc onredoTextChanged*(self: gen_qundostack_types.QUndoStack, slot: proc(redoText: string)) =
   type Cb = proc(redoText: string)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQUndoStack_connect_redoTextChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QUndoStack, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qundostack_types.QUndoStack, s: cstring, c: cstring): string =
 
   let v_ms = fcQUndoStack_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QUndoStack, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qundostack_types.QUndoStack, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQUndoStack_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc createUndoAction2*(self: QUndoStack, parent: gen_qobject.QObject, prefix: string): gen_qaction.QAction =
+proc createUndoAction2*(self: gen_qundostack_types.QUndoStack, parent: gen_qobject.QObject, prefix: string): gen_qaction.QAction =
 
   gen_qaction.QAction(h: fcQUndoStack_createUndoAction2(self.h, parent.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix)))))
 
-proc createRedoAction2*(self: QUndoStack, parent: gen_qobject.QObject, prefix: string): gen_qaction.QAction =
+proc createRedoAction2*(self: gen_qundostack_types.QUndoStack, parent: gen_qobject.QObject, prefix: string): gen_qaction.QAction =
 
   gen_qaction.QAction(h: fcQUndoStack_createRedoAction2(self.h, parent.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix)))))
 
-proc setActive1*(self: QUndoStack, active: bool): void =
+proc setActive1*(self: gen_qundostack_types.QUndoStack, active: bool): void =
 
   fcQUndoStack_setActive1(self.h, active)
 
-proc callVirtualBase_metaObject(self: QUndoStack, ): gen_qobjectdefs.QMetaObject =
-
+proc QUndoStackmetaObject*(self: gen_qundostack_types.QUndoStack, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQUndoStack_virtualbase_metaObject(self.h))
 
-type QUndoStackmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QUndoStack, slot: proc(super: QUndoStackmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QUndoStackmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qundostack_types.QUndoStack, slot: QUndoStackmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoStackmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QUndoStackmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoStack_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoStack_metaObject(self: ptr cQUndoStack, slot: int): pointer {.exportc: "miqt_exec_callback_QUndoStack_metaObject ".} =
-  type Cb = proc(super: QUndoStackmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QUndoStack(h: self), )
+  var nimfunc = cast[ptr QUndoStackmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QUndoStack, param1: cstring): pointer =
-
+proc QUndoStackmetacast*(self: gen_qundostack_types.QUndoStack, param1: cstring): pointer =
 
   fQUndoStack_virtualbase_metacast(self.h, param1)
 
-type QUndoStackmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QUndoStack, slot: proc(super: QUndoStackmetacastBase, param1: cstring): pointer) =
+type QUndoStackmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qundostack_types.QUndoStack, slot: QUndoStackmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoStackmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QUndoStackmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoStack_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoStack_metacast(self: ptr cQUndoStack, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QUndoStack_metacast ".} =
-  type Cb = proc(super: QUndoStackmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QUndoStack(h: self), param1)
+  var nimfunc = cast[ptr QUndoStackmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QUndoStack, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QUndoStackmetacall*(self: gen_qundostack_types.QUndoStack, param1: cint, param2: cint, param3: pointer): cint =
 
   fQUndoStack_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QUndoStackmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QUndoStack, slot: proc(super: QUndoStackmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QUndoStackmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qundostack_types.QUndoStack, slot: QUndoStackmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoStackmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QUndoStackmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoStack_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoStack_metacall(self: ptr cQUndoStack, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QUndoStack_metacall ".} =
-  type Cb = proc(super: QUndoStackmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QUndoStack(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QUndoStackmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_event(self: QUndoStack, event: gen_qcoreevent.QEvent): bool =
-
+proc QUndoStackevent*(self: gen_qundostack_types.QUndoStack, event: gen_qcoreevent.QEvent): bool =
 
   fQUndoStack_virtualbase_event(self.h, event.h)
 
-type QUndoStackeventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QUndoStack, slot: proc(super: QUndoStackeventBase, event: gen_qcoreevent.QEvent): bool) =
+type QUndoStackeventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qundostack_types.QUndoStack, slot: QUndoStackeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoStackeventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QUndoStackeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoStack_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoStack_event(self: ptr cQUndoStack, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QUndoStack_event ".} =
-  type Cb = proc(super: QUndoStackeventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QUndoStack(h: self), event)
+  var nimfunc = cast[ptr QUndoStackeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QUndoStack, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QUndoStackeventFilter*(self: gen_qundostack_types.QUndoStack, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQUndoStack_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QUndoStackeventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QUndoStack, slot: proc(super: QUndoStackeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QUndoStackeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qundostack_types.QUndoStack, slot: QUndoStackeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoStackeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QUndoStackeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoStack_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoStack_eventFilter(self: ptr cQUndoStack, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QUndoStack_eventFilter ".} =
-  type Cb = proc(super: QUndoStackeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QUndoStack(h: self), watched, event)
+  var nimfunc = cast[ptr QUndoStackeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QUndoStack, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QUndoStacktimerEvent*(self: gen_qundostack_types.QUndoStack, event: gen_qcoreevent.QTimerEvent): void =
 
   fQUndoStack_virtualbase_timerEvent(self.h, event.h)
 
-type QUndoStacktimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QUndoStack, slot: proc(super: QUndoStacktimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QUndoStacktimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qundostack_types.QUndoStack, slot: QUndoStacktimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoStacktimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QUndoStacktimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoStack_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoStack_timerEvent(self: ptr cQUndoStack, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QUndoStack_timerEvent ".} =
-  type Cb = proc(super: QUndoStacktimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QUndoStack(h: self), event)
+  var nimfunc = cast[ptr QUndoStacktimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QUndoStack, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QUndoStackchildEvent*(self: gen_qundostack_types.QUndoStack, event: gen_qcoreevent.QChildEvent): void =
 
   fQUndoStack_virtualbase_childEvent(self.h, event.h)
 
-type QUndoStackchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QUndoStack, slot: proc(super: QUndoStackchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QUndoStackchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qundostack_types.QUndoStack, slot: QUndoStackchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoStackchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QUndoStackchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoStack_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoStack_childEvent(self: ptr cQUndoStack, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QUndoStack_childEvent ".} =
-  type Cb = proc(super: QUndoStackchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QUndoStack(h: self), event)
+  var nimfunc = cast[ptr QUndoStackchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QUndoStack, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QUndoStackcustomEvent*(self: gen_qundostack_types.QUndoStack, event: gen_qcoreevent.QEvent): void =
 
   fQUndoStack_virtualbase_customEvent(self.h, event.h)
 
-type QUndoStackcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QUndoStack, slot: proc(super: QUndoStackcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QUndoStackcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qundostack_types.QUndoStack, slot: QUndoStackcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoStackcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QUndoStackcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoStack_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoStack_customEvent(self: ptr cQUndoStack, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QUndoStack_customEvent ".} =
-  type Cb = proc(super: QUndoStackcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QUndoStack(h: self), event)
+  var nimfunc = cast[ptr QUndoStackcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QUndoStack, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QUndoStackconnectNotify*(self: gen_qundostack_types.QUndoStack, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQUndoStack_virtualbase_connectNotify(self.h, signal.h)
 
-type QUndoStackconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QUndoStack, slot: proc(super: QUndoStackconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QUndoStackconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qundostack_types.QUndoStack, slot: QUndoStackconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoStackconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QUndoStackconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoStack_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoStack_connectNotify(self: ptr cQUndoStack, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QUndoStack_connectNotify ".} =
-  type Cb = proc(super: QUndoStackconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QUndoStack(h: self), signal)
+  var nimfunc = cast[ptr QUndoStackconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QUndoStack, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QUndoStackdisconnectNotify*(self: gen_qundostack_types.QUndoStack, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQUndoStack_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QUndoStackdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QUndoStack, slot: proc(super: QUndoStackdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QUndoStackdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qundostack_types.QUndoStack, slot: QUndoStackdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QUndoStackdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QUndoStackdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUndoStack_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUndoStack_disconnectNotify(self: ptr cQUndoStack, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QUndoStack_disconnectNotify ".} =
-  type Cb = proc(super: QUndoStackdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QUndoStack(h: self), signal)
+  var nimfunc = cast[ptr QUndoStackdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QUndoStack): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qundostack_types.QUndoStack): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQUndoStack_staticMetaObject())
-proc delete*(self: QUndoStack) =
+proc delete*(self: gen_qundostack_types.QUndoStack) =
   fcQUndoStack_delete(self.h)

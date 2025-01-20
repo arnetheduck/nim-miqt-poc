@@ -42,7 +42,6 @@ import
   gen_qcoreevent,
   gen_qevent,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -59,7 +58,6 @@ export
   gen_qcoreevent,
   gen_qevent,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -203,77 +201,77 @@ proc fcQSplashScreen_staticMetaObject(): pointer {.importc: "QSplashScreen_stati
 proc fcQSplashScreen_delete(self: pointer) {.importc: "QSplashScreen_delete".}
 
 
-func init*(T: type QSplashScreen, h: ptr cQSplashScreen): QSplashScreen =
+func init*(T: type gen_qsplashscreen_types.QSplashScreen, h: ptr cQSplashScreen): gen_qsplashscreen_types.QSplashScreen =
   T(h: h)
-proc create*(T: type QSplashScreen, ): QSplashScreen =
+proc create*(T: type gen_qsplashscreen_types.QSplashScreen, ): gen_qsplashscreen_types.QSplashScreen =
 
-  QSplashScreen.init(fcQSplashScreen_new())
-proc create*(T: type QSplashScreen, screen: gen_qscreen.QScreen): QSplashScreen =
+  gen_qsplashscreen_types.QSplashScreen.init(fcQSplashScreen_new())
+proc create*(T: type gen_qsplashscreen_types.QSplashScreen, screen: gen_qscreen.QScreen): gen_qsplashscreen_types.QSplashScreen =
 
-  QSplashScreen.init(fcQSplashScreen_new2(screen.h))
-proc create2*(T: type QSplashScreen, pixmap: gen_qpixmap.QPixmap): QSplashScreen =
+  gen_qsplashscreen_types.QSplashScreen.init(fcQSplashScreen_new2(screen.h))
+proc create2*(T: type gen_qsplashscreen_types.QSplashScreen, pixmap: gen_qpixmap.QPixmap): gen_qsplashscreen_types.QSplashScreen =
 
-  QSplashScreen.init(fcQSplashScreen_new3(pixmap.h))
-proc create*(T: type QSplashScreen, pixmap: gen_qpixmap.QPixmap, f: gen_qnamespace.WindowType): QSplashScreen =
+  gen_qsplashscreen_types.QSplashScreen.init(fcQSplashScreen_new3(pixmap.h))
+proc create*(T: type gen_qsplashscreen_types.QSplashScreen, pixmap: gen_qpixmap.QPixmap, f: cint): gen_qsplashscreen_types.QSplashScreen =
 
-  QSplashScreen.init(fcQSplashScreen_new4(pixmap.h, cint(f)))
-proc create*(T: type QSplashScreen, screen: gen_qscreen.QScreen, pixmap: gen_qpixmap.QPixmap): QSplashScreen =
+  gen_qsplashscreen_types.QSplashScreen.init(fcQSplashScreen_new4(pixmap.h, cint(f)))
+proc create*(T: type gen_qsplashscreen_types.QSplashScreen, screen: gen_qscreen.QScreen, pixmap: gen_qpixmap.QPixmap): gen_qsplashscreen_types.QSplashScreen =
 
-  QSplashScreen.init(fcQSplashScreen_new5(screen.h, pixmap.h))
-proc create*(T: type QSplashScreen, screen: gen_qscreen.QScreen, pixmap: gen_qpixmap.QPixmap, f: gen_qnamespace.WindowType): QSplashScreen =
+  gen_qsplashscreen_types.QSplashScreen.init(fcQSplashScreen_new5(screen.h, pixmap.h))
+proc create*(T: type gen_qsplashscreen_types.QSplashScreen, screen: gen_qscreen.QScreen, pixmap: gen_qpixmap.QPixmap, f: cint): gen_qsplashscreen_types.QSplashScreen =
 
-  QSplashScreen.init(fcQSplashScreen_new6(screen.h, pixmap.h, cint(f)))
-proc metaObject*(self: QSplashScreen, ): gen_qobjectdefs.QMetaObject =
+  gen_qsplashscreen_types.QSplashScreen.init(fcQSplashScreen_new6(screen.h, pixmap.h, cint(f)))
+proc metaObject*(self: gen_qsplashscreen_types.QSplashScreen, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQSplashScreen_metaObject(self.h))
 
-proc metacast*(self: QSplashScreen, param1: cstring): pointer =
+proc metacast*(self: gen_qsplashscreen_types.QSplashScreen, param1: cstring): pointer =
 
   fcQSplashScreen_metacast(self.h, param1)
 
-proc metacall*(self: QSplashScreen, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qsplashscreen_types.QSplashScreen, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQSplashScreen_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QSplashScreen, s: cstring): string =
+proc tr*(_: type gen_qsplashscreen_types.QSplashScreen, s: cstring): string =
 
   let v_ms = fcQSplashScreen_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setPixmap*(self: QSplashScreen, pixmap: gen_qpixmap.QPixmap): void =
+proc setPixmap*(self: gen_qsplashscreen_types.QSplashScreen, pixmap: gen_qpixmap.QPixmap): void =
 
   fcQSplashScreen_setPixmap(self.h, pixmap.h)
 
-proc pixmap*(self: QSplashScreen, ): gen_qpixmap.QPixmap =
+proc pixmap*(self: gen_qsplashscreen_types.QSplashScreen, ): gen_qpixmap.QPixmap =
 
   gen_qpixmap.QPixmap(h: fcQSplashScreen_pixmap(self.h))
 
-proc finish*(self: QSplashScreen, w: gen_qwidget.QWidget): void =
+proc finish*(self: gen_qsplashscreen_types.QSplashScreen, w: gen_qwidget.QWidget): void =
 
   fcQSplashScreen_finish(self.h, w.h)
 
-proc repaint*(self: QSplashScreen, ): void =
+proc repaint*(self: gen_qsplashscreen_types.QSplashScreen, ): void =
 
   fcQSplashScreen_repaint(self.h)
 
-proc message*(self: QSplashScreen, ): string =
+proc message*(self: gen_qsplashscreen_types.QSplashScreen, ): string =
 
   let v_ms = fcQSplashScreen_message(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc showMessage*(self: QSplashScreen, message: string): void =
+proc showMessage*(self: gen_qsplashscreen_types.QSplashScreen, message: string): void =
 
   fcQSplashScreen_showMessage(self.h, struct_miqt_string(data: message, len: csize_t(len(message))))
 
-proc clearMessage*(self: QSplashScreen, ): void =
+proc clearMessage*(self: gen_qsplashscreen_types.QSplashScreen, ): void =
 
   fcQSplashScreen_clearMessage(self.h)
 
-proc messageChanged*(self: QSplashScreen, message: string): void =
+proc messageChanged*(self: gen_qsplashscreen_types.QSplashScreen, message: string): void =
 
   fcQSplashScreen_messageChanged(self.h, struct_miqt_string(data: message, len: csize_t(len(message))))
 
@@ -288,893 +286,708 @@ proc miqt_exec_callback_QSplashScreen_messageChanged(slot: int, message: struct_
 
   nimfunc[](slotval1)
 
-proc onmessageChanged*(self: QSplashScreen, slot: proc(message: string)) =
+proc onmessageChanged*(self: gen_qsplashscreen_types.QSplashScreen, slot: proc(message: string)) =
   type Cb = proc(message: string)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQSplashScreen_connect_messageChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QSplashScreen, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qsplashscreen_types.QSplashScreen, s: cstring, c: cstring): string =
 
   let v_ms = fcQSplashScreen_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QSplashScreen, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qsplashscreen_types.QSplashScreen, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQSplashScreen_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc showMessage2*(self: QSplashScreen, message: string, alignment: cint): void =
+proc showMessage2*(self: gen_qsplashscreen_types.QSplashScreen, message: string, alignment: cint): void =
 
   fcQSplashScreen_showMessage2(self.h, struct_miqt_string(data: message, len: csize_t(len(message))), alignment)
 
-proc showMessage3*(self: QSplashScreen, message: string, alignment: cint, color: gen_qcolor.QColor): void =
+proc showMessage3*(self: gen_qsplashscreen_types.QSplashScreen, message: string, alignment: cint, color: gen_qcolor.QColor): void =
 
   fcQSplashScreen_showMessage3(self.h, struct_miqt_string(data: message, len: csize_t(len(message))), alignment, color.h)
 
-proc callVirtualBase_metaObject(self: QSplashScreen, ): gen_qobjectdefs.QMetaObject =
-
+proc QSplashScreenmetaObject*(self: gen_qsplashscreen_types.QSplashScreen, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQSplashScreen_virtualbase_metaObject(self.h))
 
-type QSplashScreenmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QSplashScreen, slot: proc(super: QSplashScreenmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QSplashScreenmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qsplashscreen_types.QSplashScreen, slot: QSplashScreenmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplashScreenmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QSplashScreenmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplashScreen_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplashScreen_metaObject(self: ptr cQSplashScreen, slot: int): pointer {.exportc: "miqt_exec_callback_QSplashScreen_metaObject ".} =
-  type Cb = proc(super: QSplashScreenmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QSplashScreen(h: self), )
+  var nimfunc = cast[ptr QSplashScreenmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QSplashScreen, param1: cstring): pointer =
-
+proc QSplashScreenmetacast*(self: gen_qsplashscreen_types.QSplashScreen, param1: cstring): pointer =
 
   fQSplashScreen_virtualbase_metacast(self.h, param1)
 
-type QSplashScreenmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QSplashScreen, slot: proc(super: QSplashScreenmetacastBase, param1: cstring): pointer) =
+type QSplashScreenmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qsplashscreen_types.QSplashScreen, slot: QSplashScreenmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplashScreenmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QSplashScreenmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplashScreen_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplashScreen_metacast(self: ptr cQSplashScreen, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QSplashScreen_metacast ".} =
-  type Cb = proc(super: QSplashScreenmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QSplashScreen(h: self), param1)
+  var nimfunc = cast[ptr QSplashScreenmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QSplashScreen, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QSplashScreenmetacall*(self: gen_qsplashscreen_types.QSplashScreen, param1: cint, param2: cint, param3: pointer): cint =
 
   fQSplashScreen_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QSplashScreenmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QSplashScreen, slot: proc(super: QSplashScreenmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QSplashScreenmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qsplashscreen_types.QSplashScreen, slot: QSplashScreenmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplashScreenmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QSplashScreenmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplashScreen_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplashScreen_metacall(self: ptr cQSplashScreen, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QSplashScreen_metacall ".} =
-  type Cb = proc(super: QSplashScreenmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QSplashScreen(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QSplashScreenmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_event(self: QSplashScreen, e: gen_qcoreevent.QEvent): bool =
-
+proc QSplashScreenevent*(self: gen_qsplashscreen_types.QSplashScreen, e: gen_qcoreevent.QEvent): bool =
 
   fQSplashScreen_virtualbase_event(self.h, e.h)
 
-type QSplashScreeneventBase* = proc(e: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QSplashScreen, slot: proc(super: QSplashScreeneventBase, e: gen_qcoreevent.QEvent): bool) =
+type QSplashScreeneventProc* = proc(e: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qsplashscreen_types.QSplashScreen, slot: QSplashScreeneventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplashScreeneventBase, e: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QSplashScreeneventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplashScreen_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplashScreen_event(self: ptr cQSplashScreen, slot: int, e: pointer): bool {.exportc: "miqt_exec_callback_QSplashScreen_event ".} =
-  type Cb = proc(super: QSplashScreeneventBase, e: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QSplashScreen(h: self), e)
+  var nimfunc = cast[ptr QSplashScreeneventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: e)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_drawContents(self: QSplashScreen, painter: gen_qpainter.QPainter): void =
-
+proc QSplashScreendrawContents*(self: gen_qsplashscreen_types.QSplashScreen, painter: gen_qpainter.QPainter): void =
 
   fQSplashScreen_virtualbase_drawContents(self.h, painter.h)
 
-type QSplashScreendrawContentsBase* = proc(painter: gen_qpainter.QPainter): void
-proc ondrawContents*(self: QSplashScreen, slot: proc(super: QSplashScreendrawContentsBase, painter: gen_qpainter.QPainter): void) =
+type QSplashScreendrawContentsProc* = proc(painter: gen_qpainter.QPainter): void
+proc ondrawContents*(self: gen_qsplashscreen_types.QSplashScreen, slot: QSplashScreendrawContentsProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplashScreendrawContentsBase, painter: gen_qpainter.QPainter): void
-  var tmp = new Cb
+  var tmp = new QSplashScreendrawContentsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplashScreen_override_virtual_drawContents(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplashScreen_drawContents(self: ptr cQSplashScreen, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_QSplashScreen_drawContents ".} =
-  type Cb = proc(super: QSplashScreendrawContentsBase, painter: gen_qpainter.QPainter): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter): auto =
-    callVirtualBase_drawContents(QSplashScreen(h: self), painter)
+  var nimfunc = cast[ptr QSplashScreendrawContentsProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mousePressEvent(self: QSplashScreen, param1: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplashScreenmousePressEvent*(self: gen_qsplashscreen_types.QSplashScreen, param1: gen_qevent.QMouseEvent): void =
 
   fQSplashScreen_virtualbase_mousePressEvent(self.h, param1.h)
 
-type QSplashScreenmousePressEventBase* = proc(param1: gen_qevent.QMouseEvent): void
-proc onmousePressEvent*(self: QSplashScreen, slot: proc(super: QSplashScreenmousePressEventBase, param1: gen_qevent.QMouseEvent): void) =
+type QSplashScreenmousePressEventProc* = proc(param1: gen_qevent.QMouseEvent): void
+proc onmousePressEvent*(self: gen_qsplashscreen_types.QSplashScreen, slot: QSplashScreenmousePressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplashScreenmousePressEventBase, param1: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QSplashScreenmousePressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplashScreen_override_virtual_mousePressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplashScreen_mousePressEvent(self: ptr cQSplashScreen, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QSplashScreen_mousePressEvent ".} =
-  type Cb = proc(super: QSplashScreenmousePressEventBase, param1: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mousePressEvent(QSplashScreen(h: self), param1)
+  var nimfunc = cast[ptr QSplashScreenmousePressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_devType(self: QSplashScreen, ): cint =
-
+  nimfunc[](slotval1)
+proc QSplashScreendevType*(self: gen_qsplashscreen_types.QSplashScreen, ): cint =
 
   fQSplashScreen_virtualbase_devType(self.h)
 
-type QSplashScreendevTypeBase* = proc(): cint
-proc ondevType*(self: QSplashScreen, slot: proc(super: QSplashScreendevTypeBase): cint) =
+type QSplashScreendevTypeProc* = proc(): cint
+proc ondevType*(self: gen_qsplashscreen_types.QSplashScreen, slot: QSplashScreendevTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplashScreendevTypeBase): cint
-  var tmp = new Cb
+  var tmp = new QSplashScreendevTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplashScreen_override_virtual_devType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplashScreen_devType(self: ptr cQSplashScreen, slot: int): cint {.exportc: "miqt_exec_callback_QSplashScreen_devType ".} =
-  type Cb = proc(super: QSplashScreendevTypeBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_devType(QSplashScreen(h: self), )
+  var nimfunc = cast[ptr QSplashScreendevTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setVisible(self: QSplashScreen, visible: bool): void =
-
+proc QSplashScreensetVisible*(self: gen_qsplashscreen_types.QSplashScreen, visible: bool): void =
 
   fQSplashScreen_virtualbase_setVisible(self.h, visible)
 
-type QSplashScreensetVisibleBase* = proc(visible: bool): void
-proc onsetVisible*(self: QSplashScreen, slot: proc(super: QSplashScreensetVisibleBase, visible: bool): void) =
+type QSplashScreensetVisibleProc* = proc(visible: bool): void
+proc onsetVisible*(self: gen_qsplashscreen_types.QSplashScreen, slot: QSplashScreensetVisibleProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplashScreensetVisibleBase, visible: bool): void
-  var tmp = new Cb
+  var tmp = new QSplashScreensetVisibleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplashScreen_override_virtual_setVisible(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplashScreen_setVisible(self: ptr cQSplashScreen, slot: int, visible: bool): void {.exportc: "miqt_exec_callback_QSplashScreen_setVisible ".} =
-  type Cb = proc(super: QSplashScreensetVisibleBase, visible: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(visible: bool): auto =
-    callVirtualBase_setVisible(QSplashScreen(h: self), visible)
+  var nimfunc = cast[ptr QSplashScreensetVisibleProc](cast[pointer](slot))
   let slotval1 = visible
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_sizeHint(self: QSplashScreen, ): gen_qsize.QSize =
-
+  nimfunc[](slotval1)
+proc QSplashScreensizeHint*(self: gen_qsplashscreen_types.QSplashScreen, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQSplashScreen_virtualbase_sizeHint(self.h))
 
-type QSplashScreensizeHintBase* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: QSplashScreen, slot: proc(super: QSplashScreensizeHintBase): gen_qsize.QSize) =
+type QSplashScreensizeHintProc* = proc(): gen_qsize.QSize
+proc onsizeHint*(self: gen_qsplashscreen_types.QSplashScreen, slot: QSplashScreensizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplashScreensizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QSplashScreensizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplashScreen_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplashScreen_sizeHint(self: ptr cQSplashScreen, slot: int): pointer {.exportc: "miqt_exec_callback_QSplashScreen_sizeHint ".} =
-  type Cb = proc(super: QSplashScreensizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sizeHint(QSplashScreen(h: self), )
+  var nimfunc = cast[ptr QSplashScreensizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_minimumSizeHint(self: QSplashScreen, ): gen_qsize.QSize =
-
+proc QSplashScreenminimumSizeHint*(self: gen_qsplashscreen_types.QSplashScreen, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQSplashScreen_virtualbase_minimumSizeHint(self.h))
 
-type QSplashScreenminimumSizeHintBase* = proc(): gen_qsize.QSize
-proc onminimumSizeHint*(self: QSplashScreen, slot: proc(super: QSplashScreenminimumSizeHintBase): gen_qsize.QSize) =
+type QSplashScreenminimumSizeHintProc* = proc(): gen_qsize.QSize
+proc onminimumSizeHint*(self: gen_qsplashscreen_types.QSplashScreen, slot: QSplashScreenminimumSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplashScreenminimumSizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QSplashScreenminimumSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplashScreen_override_virtual_minimumSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplashScreen_minimumSizeHint(self: ptr cQSplashScreen, slot: int): pointer {.exportc: "miqt_exec_callback_QSplashScreen_minimumSizeHint ".} =
-  type Cb = proc(super: QSplashScreenminimumSizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_minimumSizeHint(QSplashScreen(h: self), )
+  var nimfunc = cast[ptr QSplashScreenminimumSizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_heightForWidth(self: QSplashScreen, param1: cint): cint =
-
+proc QSplashScreenheightForWidth*(self: gen_qsplashscreen_types.QSplashScreen, param1: cint): cint =
 
   fQSplashScreen_virtualbase_heightForWidth(self.h, param1)
 
-type QSplashScreenheightForWidthBase* = proc(param1: cint): cint
-proc onheightForWidth*(self: QSplashScreen, slot: proc(super: QSplashScreenheightForWidthBase, param1: cint): cint) =
+type QSplashScreenheightForWidthProc* = proc(param1: cint): cint
+proc onheightForWidth*(self: gen_qsplashscreen_types.QSplashScreen, slot: QSplashScreenheightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplashScreenheightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QSplashScreenheightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplashScreen_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplashScreen_heightForWidth(self: ptr cQSplashScreen, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QSplashScreen_heightForWidth ".} =
-  type Cb = proc(super: QSplashScreenheightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_heightForWidth(QSplashScreen(h: self), param1)
+  var nimfunc = cast[ptr QSplashScreenheightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_hasHeightForWidth(self: QSplashScreen, ): bool =
-
+proc QSplashScreenhasHeightForWidth*(self: gen_qsplashscreen_types.QSplashScreen, ): bool =
 
   fQSplashScreen_virtualbase_hasHeightForWidth(self.h)
 
-type QSplashScreenhasHeightForWidthBase* = proc(): bool
-proc onhasHeightForWidth*(self: QSplashScreen, slot: proc(super: QSplashScreenhasHeightForWidthBase): bool) =
+type QSplashScreenhasHeightForWidthProc* = proc(): bool
+proc onhasHeightForWidth*(self: gen_qsplashscreen_types.QSplashScreen, slot: QSplashScreenhasHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplashScreenhasHeightForWidthBase): bool
-  var tmp = new Cb
+  var tmp = new QSplashScreenhasHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplashScreen_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplashScreen_hasHeightForWidth(self: ptr cQSplashScreen, slot: int): bool {.exportc: "miqt_exec_callback_QSplashScreen_hasHeightForWidth ".} =
-  type Cb = proc(super: QSplashScreenhasHeightForWidthBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasHeightForWidth(QSplashScreen(h: self), )
+  var nimfunc = cast[ptr QSplashScreenhasHeightForWidthProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_paintEngine(self: QSplashScreen, ): gen_qpaintengine.QPaintEngine =
-
+proc QSplashScreenpaintEngine*(self: gen_qsplashscreen_types.QSplashScreen, ): gen_qpaintengine.QPaintEngine =
 
   gen_qpaintengine.QPaintEngine(h: fQSplashScreen_virtualbase_paintEngine(self.h))
 
-type QSplashScreenpaintEngineBase* = proc(): gen_qpaintengine.QPaintEngine
-proc onpaintEngine*(self: QSplashScreen, slot: proc(super: QSplashScreenpaintEngineBase): gen_qpaintengine.QPaintEngine) =
+type QSplashScreenpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
+proc onpaintEngine*(self: gen_qsplashscreen_types.QSplashScreen, slot: QSplashScreenpaintEngineProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplashScreenpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var tmp = new Cb
+  var tmp = new QSplashScreenpaintEngineProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplashScreen_override_virtual_paintEngine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplashScreen_paintEngine(self: ptr cQSplashScreen, slot: int): pointer {.exportc: "miqt_exec_callback_QSplashScreen_paintEngine ".} =
-  type Cb = proc(super: QSplashScreenpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_paintEngine(QSplashScreen(h: self), )
+  var nimfunc = cast[ptr QSplashScreenpaintEngineProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_mouseReleaseEvent(self: QSplashScreen, event: gen_qevent.QMouseEvent): void =
-
+proc QSplashScreenmouseReleaseEvent*(self: gen_qsplashscreen_types.QSplashScreen, event: gen_qevent.QMouseEvent): void =
 
   fQSplashScreen_virtualbase_mouseReleaseEvent(self.h, event.h)
 
-type QSplashScreenmouseReleaseEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseReleaseEvent*(self: QSplashScreen, slot: proc(super: QSplashScreenmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void) =
+type QSplashScreenmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseReleaseEvent*(self: gen_qsplashscreen_types.QSplashScreen, slot: QSplashScreenmouseReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplashScreenmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QSplashScreenmouseReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplashScreen_override_virtual_mouseReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplashScreen_mouseReleaseEvent(self: ptr cQSplashScreen, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplashScreen_mouseReleaseEvent ".} =
-  type Cb = proc(super: QSplashScreenmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseReleaseEvent(QSplashScreen(h: self), event)
+  var nimfunc = cast[ptr QSplashScreenmouseReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseDoubleClickEvent(self: QSplashScreen, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplashScreenmouseDoubleClickEvent*(self: gen_qsplashscreen_types.QSplashScreen, event: gen_qevent.QMouseEvent): void =
 
   fQSplashScreen_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
-type QSplashScreenmouseDoubleClickEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseDoubleClickEvent*(self: QSplashScreen, slot: proc(super: QSplashScreenmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void) =
+type QSplashScreenmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseDoubleClickEvent*(self: gen_qsplashscreen_types.QSplashScreen, slot: QSplashScreenmouseDoubleClickEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplashScreenmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QSplashScreenmouseDoubleClickEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplashScreen_override_virtual_mouseDoubleClickEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplashScreen_mouseDoubleClickEvent(self: ptr cQSplashScreen, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplashScreen_mouseDoubleClickEvent ".} =
-  type Cb = proc(super: QSplashScreenmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseDoubleClickEvent(QSplashScreen(h: self), event)
+  var nimfunc = cast[ptr QSplashScreenmouseDoubleClickEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseMoveEvent(self: QSplashScreen, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplashScreenmouseMoveEvent*(self: gen_qsplashscreen_types.QSplashScreen, event: gen_qevent.QMouseEvent): void =
 
   fQSplashScreen_virtualbase_mouseMoveEvent(self.h, event.h)
 
-type QSplashScreenmouseMoveEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseMoveEvent*(self: QSplashScreen, slot: proc(super: QSplashScreenmouseMoveEventBase, event: gen_qevent.QMouseEvent): void) =
+type QSplashScreenmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseMoveEvent*(self: gen_qsplashscreen_types.QSplashScreen, slot: QSplashScreenmouseMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplashScreenmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QSplashScreenmouseMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplashScreen_override_virtual_mouseMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplashScreen_mouseMoveEvent(self: ptr cQSplashScreen, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplashScreen_mouseMoveEvent ".} =
-  type Cb = proc(super: QSplashScreenmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseMoveEvent(QSplashScreen(h: self), event)
+  var nimfunc = cast[ptr QSplashScreenmouseMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_wheelEvent(self: QSplashScreen, event: gen_qevent.QWheelEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplashScreenwheelEvent*(self: gen_qsplashscreen_types.QSplashScreen, event: gen_qevent.QWheelEvent): void =
 
   fQSplashScreen_virtualbase_wheelEvent(self.h, event.h)
 
-type QSplashScreenwheelEventBase* = proc(event: gen_qevent.QWheelEvent): void
-proc onwheelEvent*(self: QSplashScreen, slot: proc(super: QSplashScreenwheelEventBase, event: gen_qevent.QWheelEvent): void) =
+type QSplashScreenwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
+proc onwheelEvent*(self: gen_qsplashscreen_types.QSplashScreen, slot: QSplashScreenwheelEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplashScreenwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var tmp = new Cb
+  var tmp = new QSplashScreenwheelEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplashScreen_override_virtual_wheelEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplashScreen_wheelEvent(self: ptr cQSplashScreen, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplashScreen_wheelEvent ".} =
-  type Cb = proc(super: QSplashScreenwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QWheelEvent): auto =
-    callVirtualBase_wheelEvent(QSplashScreen(h: self), event)
+  var nimfunc = cast[ptr QSplashScreenwheelEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QWheelEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyPressEvent(self: QSplashScreen, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplashScreenkeyPressEvent*(self: gen_qsplashscreen_types.QSplashScreen, event: gen_qevent.QKeyEvent): void =
 
   fQSplashScreen_virtualbase_keyPressEvent(self.h, event.h)
 
-type QSplashScreenkeyPressEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyPressEvent*(self: QSplashScreen, slot: proc(super: QSplashScreenkeyPressEventBase, event: gen_qevent.QKeyEvent): void) =
+type QSplashScreenkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyPressEvent*(self: gen_qsplashscreen_types.QSplashScreen, slot: QSplashScreenkeyPressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplashScreenkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QSplashScreenkeyPressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplashScreen_override_virtual_keyPressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplashScreen_keyPressEvent(self: ptr cQSplashScreen, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplashScreen_keyPressEvent ".} =
-  type Cb = proc(super: QSplashScreenkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyPressEvent(QSplashScreen(h: self), event)
+  var nimfunc = cast[ptr QSplashScreenkeyPressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyReleaseEvent(self: QSplashScreen, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplashScreenkeyReleaseEvent*(self: gen_qsplashscreen_types.QSplashScreen, event: gen_qevent.QKeyEvent): void =
 
   fQSplashScreen_virtualbase_keyReleaseEvent(self.h, event.h)
 
-type QSplashScreenkeyReleaseEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyReleaseEvent*(self: QSplashScreen, slot: proc(super: QSplashScreenkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void) =
+type QSplashScreenkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyReleaseEvent*(self: gen_qsplashscreen_types.QSplashScreen, slot: QSplashScreenkeyReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplashScreenkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QSplashScreenkeyReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplashScreen_override_virtual_keyReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplashScreen_keyReleaseEvent(self: ptr cQSplashScreen, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplashScreen_keyReleaseEvent ".} =
-  type Cb = proc(super: QSplashScreenkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyReleaseEvent(QSplashScreen(h: self), event)
+  var nimfunc = cast[ptr QSplashScreenkeyReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusInEvent(self: QSplashScreen, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplashScreenfocusInEvent*(self: gen_qsplashscreen_types.QSplashScreen, event: gen_qevent.QFocusEvent): void =
 
   fQSplashScreen_virtualbase_focusInEvent(self.h, event.h)
 
-type QSplashScreenfocusInEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusInEvent*(self: QSplashScreen, slot: proc(super: QSplashScreenfocusInEventBase, event: gen_qevent.QFocusEvent): void) =
+type QSplashScreenfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusInEvent*(self: gen_qsplashscreen_types.QSplashScreen, slot: QSplashScreenfocusInEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplashScreenfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QSplashScreenfocusInEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplashScreen_override_virtual_focusInEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplashScreen_focusInEvent(self: ptr cQSplashScreen, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplashScreen_focusInEvent ".} =
-  type Cb = proc(super: QSplashScreenfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusInEvent(QSplashScreen(h: self), event)
+  var nimfunc = cast[ptr QSplashScreenfocusInEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusOutEvent(self: QSplashScreen, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplashScreenfocusOutEvent*(self: gen_qsplashscreen_types.QSplashScreen, event: gen_qevent.QFocusEvent): void =
 
   fQSplashScreen_virtualbase_focusOutEvent(self.h, event.h)
 
-type QSplashScreenfocusOutEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusOutEvent*(self: QSplashScreen, slot: proc(super: QSplashScreenfocusOutEventBase, event: gen_qevent.QFocusEvent): void) =
+type QSplashScreenfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusOutEvent*(self: gen_qsplashscreen_types.QSplashScreen, slot: QSplashScreenfocusOutEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplashScreenfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QSplashScreenfocusOutEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplashScreen_override_virtual_focusOutEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplashScreen_focusOutEvent(self: ptr cQSplashScreen, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplashScreen_focusOutEvent ".} =
-  type Cb = proc(super: QSplashScreenfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusOutEvent(QSplashScreen(h: self), event)
+  var nimfunc = cast[ptr QSplashScreenfocusOutEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_enterEvent(self: QSplashScreen, event: gen_qevent.QEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplashScreenenterEvent*(self: gen_qsplashscreen_types.QSplashScreen, event: gen_qevent.QEnterEvent): void =
 
   fQSplashScreen_virtualbase_enterEvent(self.h, event.h)
 
-type QSplashScreenenterEventBase* = proc(event: gen_qevent.QEnterEvent): void
-proc onenterEvent*(self: QSplashScreen, slot: proc(super: QSplashScreenenterEventBase, event: gen_qevent.QEnterEvent): void) =
+type QSplashScreenenterEventProc* = proc(event: gen_qevent.QEnterEvent): void
+proc onenterEvent*(self: gen_qsplashscreen_types.QSplashScreen, slot: QSplashScreenenterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplashScreenenterEventBase, event: gen_qevent.QEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QSplashScreenenterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplashScreen_override_virtual_enterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplashScreen_enterEvent(self: ptr cQSplashScreen, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplashScreen_enterEvent ".} =
-  type Cb = proc(super: QSplashScreenenterEventBase, event: gen_qevent.QEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QEnterEvent): auto =
-    callVirtualBase_enterEvent(QSplashScreen(h: self), event)
+  var nimfunc = cast[ptr QSplashScreenenterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_leaveEvent(self: QSplashScreen, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplashScreenleaveEvent*(self: gen_qsplashscreen_types.QSplashScreen, event: gen_qcoreevent.QEvent): void =
 
   fQSplashScreen_virtualbase_leaveEvent(self.h, event.h)
 
-type QSplashScreenleaveEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onleaveEvent*(self: QSplashScreen, slot: proc(super: QSplashScreenleaveEventBase, event: gen_qcoreevent.QEvent): void) =
+type QSplashScreenleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onleaveEvent*(self: gen_qsplashscreen_types.QSplashScreen, slot: QSplashScreenleaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplashScreenleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QSplashScreenleaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplashScreen_override_virtual_leaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplashScreen_leaveEvent(self: ptr cQSplashScreen, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplashScreen_leaveEvent ".} =
-  type Cb = proc(super: QSplashScreenleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_leaveEvent(QSplashScreen(h: self), event)
+  var nimfunc = cast[ptr QSplashScreenleaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_paintEvent(self: QSplashScreen, event: gen_qevent.QPaintEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplashScreenpaintEvent*(self: gen_qsplashscreen_types.QSplashScreen, event: gen_qevent.QPaintEvent): void =
 
   fQSplashScreen_virtualbase_paintEvent(self.h, event.h)
 
-type QSplashScreenpaintEventBase* = proc(event: gen_qevent.QPaintEvent): void
-proc onpaintEvent*(self: QSplashScreen, slot: proc(super: QSplashScreenpaintEventBase, event: gen_qevent.QPaintEvent): void) =
+type QSplashScreenpaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
+proc onpaintEvent*(self: gen_qsplashscreen_types.QSplashScreen, slot: QSplashScreenpaintEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplashScreenpaintEventBase, event: gen_qevent.QPaintEvent): void
-  var tmp = new Cb
+  var tmp = new QSplashScreenpaintEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplashScreen_override_virtual_paintEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplashScreen_paintEvent(self: ptr cQSplashScreen, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplashScreen_paintEvent ".} =
-  type Cb = proc(super: QSplashScreenpaintEventBase, event: gen_qevent.QPaintEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QPaintEvent): auto =
-    callVirtualBase_paintEvent(QSplashScreen(h: self), event)
+  var nimfunc = cast[ptr QSplashScreenpaintEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QPaintEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_moveEvent(self: QSplashScreen, event: gen_qevent.QMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplashScreenmoveEvent*(self: gen_qsplashscreen_types.QSplashScreen, event: gen_qevent.QMoveEvent): void =
 
   fQSplashScreen_virtualbase_moveEvent(self.h, event.h)
 
-type QSplashScreenmoveEventBase* = proc(event: gen_qevent.QMoveEvent): void
-proc onmoveEvent*(self: QSplashScreen, slot: proc(super: QSplashScreenmoveEventBase, event: gen_qevent.QMoveEvent): void) =
+type QSplashScreenmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
+proc onmoveEvent*(self: gen_qsplashscreen_types.QSplashScreen, slot: QSplashScreenmoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplashScreenmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QSplashScreenmoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplashScreen_override_virtual_moveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplashScreen_moveEvent(self: ptr cQSplashScreen, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplashScreen_moveEvent ".} =
-  type Cb = proc(super: QSplashScreenmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMoveEvent): auto =
-    callVirtualBase_moveEvent(QSplashScreen(h: self), event)
+  var nimfunc = cast[ptr QSplashScreenmoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_resizeEvent(self: QSplashScreen, event: gen_qevent.QResizeEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplashScreenresizeEvent*(self: gen_qsplashscreen_types.QSplashScreen, event: gen_qevent.QResizeEvent): void =
 
   fQSplashScreen_virtualbase_resizeEvent(self.h, event.h)
 
-type QSplashScreenresizeEventBase* = proc(event: gen_qevent.QResizeEvent): void
-proc onresizeEvent*(self: QSplashScreen, slot: proc(super: QSplashScreenresizeEventBase, event: gen_qevent.QResizeEvent): void) =
+type QSplashScreenresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
+proc onresizeEvent*(self: gen_qsplashscreen_types.QSplashScreen, slot: QSplashScreenresizeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplashScreenresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var tmp = new Cb
+  var tmp = new QSplashScreenresizeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplashScreen_override_virtual_resizeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplashScreen_resizeEvent(self: ptr cQSplashScreen, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplashScreen_resizeEvent ".} =
-  type Cb = proc(super: QSplashScreenresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QResizeEvent): auto =
-    callVirtualBase_resizeEvent(QSplashScreen(h: self), event)
+  var nimfunc = cast[ptr QSplashScreenresizeEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QResizeEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_closeEvent(self: QSplashScreen, event: gen_qevent.QCloseEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplashScreencloseEvent*(self: gen_qsplashscreen_types.QSplashScreen, event: gen_qevent.QCloseEvent): void =
 
   fQSplashScreen_virtualbase_closeEvent(self.h, event.h)
 
-type QSplashScreencloseEventBase* = proc(event: gen_qevent.QCloseEvent): void
-proc oncloseEvent*(self: QSplashScreen, slot: proc(super: QSplashScreencloseEventBase, event: gen_qevent.QCloseEvent): void) =
+type QSplashScreencloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
+proc oncloseEvent*(self: gen_qsplashscreen_types.QSplashScreen, slot: QSplashScreencloseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplashScreencloseEventBase, event: gen_qevent.QCloseEvent): void
-  var tmp = new Cb
+  var tmp = new QSplashScreencloseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplashScreen_override_virtual_closeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplashScreen_closeEvent(self: ptr cQSplashScreen, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplashScreen_closeEvent ".} =
-  type Cb = proc(super: QSplashScreencloseEventBase, event: gen_qevent.QCloseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QCloseEvent): auto =
-    callVirtualBase_closeEvent(QSplashScreen(h: self), event)
+  var nimfunc = cast[ptr QSplashScreencloseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QCloseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_contextMenuEvent(self: QSplashScreen, event: gen_qevent.QContextMenuEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplashScreencontextMenuEvent*(self: gen_qsplashscreen_types.QSplashScreen, event: gen_qevent.QContextMenuEvent): void =
 
   fQSplashScreen_virtualbase_contextMenuEvent(self.h, event.h)
 
-type QSplashScreencontextMenuEventBase* = proc(event: gen_qevent.QContextMenuEvent): void
-proc oncontextMenuEvent*(self: QSplashScreen, slot: proc(super: QSplashScreencontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void) =
+type QSplashScreencontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
+proc oncontextMenuEvent*(self: gen_qsplashscreen_types.QSplashScreen, slot: QSplashScreencontextMenuEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplashScreencontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var tmp = new Cb
+  var tmp = new QSplashScreencontextMenuEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplashScreen_override_virtual_contextMenuEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplashScreen_contextMenuEvent(self: ptr cQSplashScreen, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplashScreen_contextMenuEvent ".} =
-  type Cb = proc(super: QSplashScreencontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QContextMenuEvent): auto =
-    callVirtualBase_contextMenuEvent(QSplashScreen(h: self), event)
+  var nimfunc = cast[ptr QSplashScreencontextMenuEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QContextMenuEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_tabletEvent(self: QSplashScreen, event: gen_qevent.QTabletEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplashScreentabletEvent*(self: gen_qsplashscreen_types.QSplashScreen, event: gen_qevent.QTabletEvent): void =
 
   fQSplashScreen_virtualbase_tabletEvent(self.h, event.h)
 
-type QSplashScreentabletEventBase* = proc(event: gen_qevent.QTabletEvent): void
-proc ontabletEvent*(self: QSplashScreen, slot: proc(super: QSplashScreentabletEventBase, event: gen_qevent.QTabletEvent): void) =
+type QSplashScreentabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
+proc ontabletEvent*(self: gen_qsplashscreen_types.QSplashScreen, slot: QSplashScreentabletEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplashScreentabletEventBase, event: gen_qevent.QTabletEvent): void
-  var tmp = new Cb
+  var tmp = new QSplashScreentabletEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplashScreen_override_virtual_tabletEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplashScreen_tabletEvent(self: ptr cQSplashScreen, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplashScreen_tabletEvent ".} =
-  type Cb = proc(super: QSplashScreentabletEventBase, event: gen_qevent.QTabletEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QTabletEvent): auto =
-    callVirtualBase_tabletEvent(QSplashScreen(h: self), event)
+  var nimfunc = cast[ptr QSplashScreentabletEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QTabletEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_actionEvent(self: QSplashScreen, event: gen_qevent.QActionEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplashScreenactionEvent*(self: gen_qsplashscreen_types.QSplashScreen, event: gen_qevent.QActionEvent): void =
 
   fQSplashScreen_virtualbase_actionEvent(self.h, event.h)
 
-type QSplashScreenactionEventBase* = proc(event: gen_qevent.QActionEvent): void
-proc onactionEvent*(self: QSplashScreen, slot: proc(super: QSplashScreenactionEventBase, event: gen_qevent.QActionEvent): void) =
+type QSplashScreenactionEventProc* = proc(event: gen_qevent.QActionEvent): void
+proc onactionEvent*(self: gen_qsplashscreen_types.QSplashScreen, slot: QSplashScreenactionEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplashScreenactionEventBase, event: gen_qevent.QActionEvent): void
-  var tmp = new Cb
+  var tmp = new QSplashScreenactionEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplashScreen_override_virtual_actionEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplashScreen_actionEvent(self: ptr cQSplashScreen, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplashScreen_actionEvent ".} =
-  type Cb = proc(super: QSplashScreenactionEventBase, event: gen_qevent.QActionEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QActionEvent): auto =
-    callVirtualBase_actionEvent(QSplashScreen(h: self), event)
+  var nimfunc = cast[ptr QSplashScreenactionEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QActionEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragEnterEvent(self: QSplashScreen, event: gen_qevent.QDragEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplashScreendragEnterEvent*(self: gen_qsplashscreen_types.QSplashScreen, event: gen_qevent.QDragEnterEvent): void =
 
   fQSplashScreen_virtualbase_dragEnterEvent(self.h, event.h)
 
-type QSplashScreendragEnterEventBase* = proc(event: gen_qevent.QDragEnterEvent): void
-proc ondragEnterEvent*(self: QSplashScreen, slot: proc(super: QSplashScreendragEnterEventBase, event: gen_qevent.QDragEnterEvent): void) =
+type QSplashScreendragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
+proc ondragEnterEvent*(self: gen_qsplashscreen_types.QSplashScreen, slot: QSplashScreendragEnterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplashScreendragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QSplashScreendragEnterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplashScreen_override_virtual_dragEnterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplashScreen_dragEnterEvent(self: ptr cQSplashScreen, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplashScreen_dragEnterEvent ".} =
-  type Cb = proc(super: QSplashScreendragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragEnterEvent): auto =
-    callVirtualBase_dragEnterEvent(QSplashScreen(h: self), event)
+  var nimfunc = cast[ptr QSplashScreendragEnterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragMoveEvent(self: QSplashScreen, event: gen_qevent.QDragMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplashScreendragMoveEvent*(self: gen_qsplashscreen_types.QSplashScreen, event: gen_qevent.QDragMoveEvent): void =
 
   fQSplashScreen_virtualbase_dragMoveEvent(self.h, event.h)
 
-type QSplashScreendragMoveEventBase* = proc(event: gen_qevent.QDragMoveEvent): void
-proc ondragMoveEvent*(self: QSplashScreen, slot: proc(super: QSplashScreendragMoveEventBase, event: gen_qevent.QDragMoveEvent): void) =
+type QSplashScreendragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
+proc ondragMoveEvent*(self: gen_qsplashscreen_types.QSplashScreen, slot: QSplashScreendragMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplashScreendragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QSplashScreendragMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplashScreen_override_virtual_dragMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplashScreen_dragMoveEvent(self: ptr cQSplashScreen, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplashScreen_dragMoveEvent ".} =
-  type Cb = proc(super: QSplashScreendragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragMoveEvent): auto =
-    callVirtualBase_dragMoveEvent(QSplashScreen(h: self), event)
+  var nimfunc = cast[ptr QSplashScreendragMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragLeaveEvent(self: QSplashScreen, event: gen_qevent.QDragLeaveEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplashScreendragLeaveEvent*(self: gen_qsplashscreen_types.QSplashScreen, event: gen_qevent.QDragLeaveEvent): void =
 
   fQSplashScreen_virtualbase_dragLeaveEvent(self.h, event.h)
 
-type QSplashScreendragLeaveEventBase* = proc(event: gen_qevent.QDragLeaveEvent): void
-proc ondragLeaveEvent*(self: QSplashScreen, slot: proc(super: QSplashScreendragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void) =
+type QSplashScreendragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
+proc ondragLeaveEvent*(self: gen_qsplashscreen_types.QSplashScreen, slot: QSplashScreendragLeaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplashScreendragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var tmp = new Cb
+  var tmp = new QSplashScreendragLeaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplashScreen_override_virtual_dragLeaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplashScreen_dragLeaveEvent(self: ptr cQSplashScreen, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplashScreen_dragLeaveEvent ".} =
-  type Cb = proc(super: QSplashScreendragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragLeaveEvent): auto =
-    callVirtualBase_dragLeaveEvent(QSplashScreen(h: self), event)
+  var nimfunc = cast[ptr QSplashScreendragLeaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragLeaveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dropEvent(self: QSplashScreen, event: gen_qevent.QDropEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplashScreendropEvent*(self: gen_qsplashscreen_types.QSplashScreen, event: gen_qevent.QDropEvent): void =
 
   fQSplashScreen_virtualbase_dropEvent(self.h, event.h)
 
-type QSplashScreendropEventBase* = proc(event: gen_qevent.QDropEvent): void
-proc ondropEvent*(self: QSplashScreen, slot: proc(super: QSplashScreendropEventBase, event: gen_qevent.QDropEvent): void) =
+type QSplashScreendropEventProc* = proc(event: gen_qevent.QDropEvent): void
+proc ondropEvent*(self: gen_qsplashscreen_types.QSplashScreen, slot: QSplashScreendropEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplashScreendropEventBase, event: gen_qevent.QDropEvent): void
-  var tmp = new Cb
+  var tmp = new QSplashScreendropEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplashScreen_override_virtual_dropEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplashScreen_dropEvent(self: ptr cQSplashScreen, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplashScreen_dropEvent ".} =
-  type Cb = proc(super: QSplashScreendropEventBase, event: gen_qevent.QDropEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDropEvent): auto =
-    callVirtualBase_dropEvent(QSplashScreen(h: self), event)
+  var nimfunc = cast[ptr QSplashScreendropEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDropEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_showEvent(self: QSplashScreen, event: gen_qevent.QShowEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplashScreenshowEvent*(self: gen_qsplashscreen_types.QSplashScreen, event: gen_qevent.QShowEvent): void =
 
   fQSplashScreen_virtualbase_showEvent(self.h, event.h)
 
-type QSplashScreenshowEventBase* = proc(event: gen_qevent.QShowEvent): void
-proc onshowEvent*(self: QSplashScreen, slot: proc(super: QSplashScreenshowEventBase, event: gen_qevent.QShowEvent): void) =
+type QSplashScreenshowEventProc* = proc(event: gen_qevent.QShowEvent): void
+proc onshowEvent*(self: gen_qsplashscreen_types.QSplashScreen, slot: QSplashScreenshowEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplashScreenshowEventBase, event: gen_qevent.QShowEvent): void
-  var tmp = new Cb
+  var tmp = new QSplashScreenshowEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplashScreen_override_virtual_showEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplashScreen_showEvent(self: ptr cQSplashScreen, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplashScreen_showEvent ".} =
-  type Cb = proc(super: QSplashScreenshowEventBase, event: gen_qevent.QShowEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QShowEvent): auto =
-    callVirtualBase_showEvent(QSplashScreen(h: self), event)
+  var nimfunc = cast[ptr QSplashScreenshowEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QShowEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hideEvent(self: QSplashScreen, event: gen_qevent.QHideEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplashScreenhideEvent*(self: gen_qsplashscreen_types.QSplashScreen, event: gen_qevent.QHideEvent): void =
 
   fQSplashScreen_virtualbase_hideEvent(self.h, event.h)
 
-type QSplashScreenhideEventBase* = proc(event: gen_qevent.QHideEvent): void
-proc onhideEvent*(self: QSplashScreen, slot: proc(super: QSplashScreenhideEventBase, event: gen_qevent.QHideEvent): void) =
+type QSplashScreenhideEventProc* = proc(event: gen_qevent.QHideEvent): void
+proc onhideEvent*(self: gen_qsplashscreen_types.QSplashScreen, slot: QSplashScreenhideEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplashScreenhideEventBase, event: gen_qevent.QHideEvent): void
-  var tmp = new Cb
+  var tmp = new QSplashScreenhideEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplashScreen_override_virtual_hideEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplashScreen_hideEvent(self: ptr cQSplashScreen, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplashScreen_hideEvent ".} =
-  type Cb = proc(super: QSplashScreenhideEventBase, event: gen_qevent.QHideEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QHideEvent): auto =
-    callVirtualBase_hideEvent(QSplashScreen(h: self), event)
+  var nimfunc = cast[ptr QSplashScreenhideEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QHideEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_nativeEvent(self: QSplashScreen, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
-
+  nimfunc[](slotval1)
+proc QSplashScreennativeEvent*(self: gen_qsplashscreen_types.QSplashScreen, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
 
   fQSplashScreen_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
-type QSplashScreennativeEventBase* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-proc onnativeEvent*(self: QSplashScreen, slot: proc(super: QSplashScreennativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool) =
+type QSplashScreennativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
+proc onnativeEvent*(self: gen_qsplashscreen_types.QSplashScreen, slot: QSplashScreennativeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplashScreennativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-  var tmp = new Cb
+  var tmp = new QSplashScreennativeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplashScreen_override_virtual_nativeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplashScreen_nativeEvent(self: ptr cQSplashScreen, slot: int, eventType: struct_miqt_string, message: pointer, resultVal: ptr uint): bool {.exportc: "miqt_exec_callback_QSplashScreen_nativeEvent ".} =
-  type Cb = proc(super: QSplashScreennativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(eventType: seq[byte], message: pointer, resultVal: ptr uint): auto =
-    callVirtualBase_nativeEvent(QSplashScreen(h: self), eventType, message, resultVal)
+  var nimfunc = cast[ptr QSplashScreennativeEventProc](cast[pointer](slot))
   var veventType_bytearray = eventType
   var veventTypex_ret = @(toOpenArrayByte(veventType_bytearray.data, 0, int(veventType_bytearray.len)-1))
   c_free(veventType_bytearray.data)
@@ -1185,344 +998,274 @@ proc miqt_exec_callback_QSplashScreen_nativeEvent(self: ptr cQSplashScreen, slot
   let slotval3 = resultVal
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_changeEvent(self: QSplashScreen, param1: gen_qcoreevent.QEvent): void =
-
+proc QSplashScreenchangeEvent*(self: gen_qsplashscreen_types.QSplashScreen, param1: gen_qcoreevent.QEvent): void =
 
   fQSplashScreen_virtualbase_changeEvent(self.h, param1.h)
 
-type QSplashScreenchangeEventBase* = proc(param1: gen_qcoreevent.QEvent): void
-proc onchangeEvent*(self: QSplashScreen, slot: proc(super: QSplashScreenchangeEventBase, param1: gen_qcoreevent.QEvent): void) =
+type QSplashScreenchangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
+proc onchangeEvent*(self: gen_qsplashscreen_types.QSplashScreen, slot: QSplashScreenchangeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplashScreenchangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QSplashScreenchangeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplashScreen_override_virtual_changeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplashScreen_changeEvent(self: ptr cQSplashScreen, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QSplashScreen_changeEvent ".} =
-  type Cb = proc(super: QSplashScreenchangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_changeEvent(QSplashScreen(h: self), param1)
+  var nimfunc = cast[ptr QSplashScreenchangeEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_metric(self: QSplashScreen, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint =
-
+  nimfunc[](slotval1)
+proc QSplashScreenmetric*(self: gen_qsplashscreen_types.QSplashScreen, param1: cint): cint =
 
   fQSplashScreen_virtualbase_metric(self.h, cint(param1))
 
-type QSplashScreenmetricBase* = proc(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-proc onmetric*(self: QSplashScreen, slot: proc(super: QSplashScreenmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint) =
+type QSplashScreenmetricProc* = proc(param1: cint): cint
+proc onmetric*(self: gen_qsplashscreen_types.QSplashScreen, slot: QSplashScreenmetricProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplashScreenmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var tmp = new Cb
+  var tmp = new QSplashScreenmetricProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplashScreen_override_virtual_metric(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplashScreen_metric(self: ptr cQSplashScreen, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QSplashScreen_metric ".} =
-  type Cb = proc(super: QSplashScreenmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): auto =
-    callVirtualBase_metric(QSplashScreen(h: self), param1)
-  let slotval1 = gen_qpaintdevice.QPaintDevicePaintDeviceMetric(param1)
+  var nimfunc = cast[ptr QSplashScreenmetricProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_initPainter(self: QSplashScreen, painter: gen_qpainter.QPainter): void =
-
+proc QSplashScreeninitPainter*(self: gen_qsplashscreen_types.QSplashScreen, painter: gen_qpainter.QPainter): void =
 
   fQSplashScreen_virtualbase_initPainter(self.h, painter.h)
 
-type QSplashScreeninitPainterBase* = proc(painter: gen_qpainter.QPainter): void
-proc oninitPainter*(self: QSplashScreen, slot: proc(super: QSplashScreeninitPainterBase, painter: gen_qpainter.QPainter): void) =
+type QSplashScreeninitPainterProc* = proc(painter: gen_qpainter.QPainter): void
+proc oninitPainter*(self: gen_qsplashscreen_types.QSplashScreen, slot: QSplashScreeninitPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplashScreeninitPainterBase, painter: gen_qpainter.QPainter): void
-  var tmp = new Cb
+  var tmp = new QSplashScreeninitPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplashScreen_override_virtual_initPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplashScreen_initPainter(self: ptr cQSplashScreen, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_QSplashScreen_initPainter ".} =
-  type Cb = proc(super: QSplashScreeninitPainterBase, painter: gen_qpainter.QPainter): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter): auto =
-    callVirtualBase_initPainter(QSplashScreen(h: self), painter)
+  var nimfunc = cast[ptr QSplashScreeninitPainterProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_redirected(self: QSplashScreen, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
+  nimfunc[](slotval1)
+proc QSplashScreenredirected*(self: gen_qsplashscreen_types.QSplashScreen, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
 
   gen_qpaintdevice.QPaintDevice(h: fQSplashScreen_virtualbase_redirected(self.h, offset.h))
 
-type QSplashScreenredirectedBase* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-proc onredirected*(self: QSplashScreen, slot: proc(super: QSplashScreenredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice) =
+type QSplashScreenredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
+proc onredirected*(self: gen_qsplashscreen_types.QSplashScreen, slot: QSplashScreenredirectedProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplashScreenredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var tmp = new Cb
+  var tmp = new QSplashScreenredirectedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplashScreen_override_virtual_redirected(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplashScreen_redirected(self: ptr cQSplashScreen, slot: int, offset: pointer): pointer {.exportc: "miqt_exec_callback_QSplashScreen_redirected ".} =
-  type Cb = proc(super: QSplashScreenredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(offset: gen_qpoint.QPoint): auto =
-    callVirtualBase_redirected(QSplashScreen(h: self), offset)
+  var nimfunc = cast[ptr QSplashScreenredirectedProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: offset)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_sharedPainter(self: QSplashScreen, ): gen_qpainter.QPainter =
-
+proc QSplashScreensharedPainter*(self: gen_qsplashscreen_types.QSplashScreen, ): gen_qpainter.QPainter =
 
   gen_qpainter.QPainter(h: fQSplashScreen_virtualbase_sharedPainter(self.h))
 
-type QSplashScreensharedPainterBase* = proc(): gen_qpainter.QPainter
-proc onsharedPainter*(self: QSplashScreen, slot: proc(super: QSplashScreensharedPainterBase): gen_qpainter.QPainter) =
+type QSplashScreensharedPainterProc* = proc(): gen_qpainter.QPainter
+proc onsharedPainter*(self: gen_qsplashscreen_types.QSplashScreen, slot: QSplashScreensharedPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplashScreensharedPainterBase): gen_qpainter.QPainter
-  var tmp = new Cb
+  var tmp = new QSplashScreensharedPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplashScreen_override_virtual_sharedPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplashScreen_sharedPainter(self: ptr cQSplashScreen, slot: int): pointer {.exportc: "miqt_exec_callback_QSplashScreen_sharedPainter ".} =
-  type Cb = proc(super: QSplashScreensharedPainterBase): gen_qpainter.QPainter
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sharedPainter(QSplashScreen(h: self), )
+  var nimfunc = cast[ptr QSplashScreensharedPainterProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_inputMethodEvent(self: QSplashScreen, param1: gen_qevent.QInputMethodEvent): void =
-
+proc QSplashScreeninputMethodEvent*(self: gen_qsplashscreen_types.QSplashScreen, param1: gen_qevent.QInputMethodEvent): void =
 
   fQSplashScreen_virtualbase_inputMethodEvent(self.h, param1.h)
 
-type QSplashScreeninputMethodEventBase* = proc(param1: gen_qevent.QInputMethodEvent): void
-proc oninputMethodEvent*(self: QSplashScreen, slot: proc(super: QSplashScreeninputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void) =
+type QSplashScreeninputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
+proc oninputMethodEvent*(self: gen_qsplashscreen_types.QSplashScreen, slot: QSplashScreeninputMethodEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplashScreeninputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var tmp = new Cb
+  var tmp = new QSplashScreeninputMethodEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplashScreen_override_virtual_inputMethodEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplashScreen_inputMethodEvent(self: ptr cQSplashScreen, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QSplashScreen_inputMethodEvent ".} =
-  type Cb = proc(super: QSplashScreeninputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QInputMethodEvent): auto =
-    callVirtualBase_inputMethodEvent(QSplashScreen(h: self), param1)
+  var nimfunc = cast[ptr QSplashScreeninputMethodEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QInputMethodEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_inputMethodQuery(self: QSplashScreen, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant =
-
+  nimfunc[](slotval1)
+proc QSplashScreeninputMethodQuery*(self: gen_qsplashscreen_types.QSplashScreen, param1: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQSplashScreen_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
-type QSplashScreeninputMethodQueryBase* = proc(param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-proc oninputMethodQuery*(self: QSplashScreen, slot: proc(super: QSplashScreeninputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant) =
+type QSplashScreeninputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
+proc oninputMethodQuery*(self: gen_qsplashscreen_types.QSplashScreen, slot: QSplashScreeninputMethodQueryProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplashScreeninputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QSplashScreeninputMethodQueryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplashScreen_override_virtual_inputMethodQuery(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplashScreen_inputMethodQuery(self: ptr cQSplashScreen, slot: int, param1: cint): pointer {.exportc: "miqt_exec_callback_QSplashScreen_inputMethodQuery ".} =
-  type Cb = proc(super: QSplashScreeninputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qnamespace.InputMethodQuery): auto =
-    callVirtualBase_inputMethodQuery(QSplashScreen(h: self), param1)
-  let slotval1 = gen_qnamespace.InputMethodQuery(param1)
+  var nimfunc = cast[ptr QSplashScreeninputMethodQueryProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_focusNextPrevChild(self: QSplashScreen, next: bool): bool =
-
+proc QSplashScreenfocusNextPrevChild*(self: gen_qsplashscreen_types.QSplashScreen, next: bool): bool =
 
   fQSplashScreen_virtualbase_focusNextPrevChild(self.h, next)
 
-type QSplashScreenfocusNextPrevChildBase* = proc(next: bool): bool
-proc onfocusNextPrevChild*(self: QSplashScreen, slot: proc(super: QSplashScreenfocusNextPrevChildBase, next: bool): bool) =
+type QSplashScreenfocusNextPrevChildProc* = proc(next: bool): bool
+proc onfocusNextPrevChild*(self: gen_qsplashscreen_types.QSplashScreen, slot: QSplashScreenfocusNextPrevChildProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplashScreenfocusNextPrevChildBase, next: bool): bool
-  var tmp = new Cb
+  var tmp = new QSplashScreenfocusNextPrevChildProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplashScreen_override_virtual_focusNextPrevChild(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplashScreen_focusNextPrevChild(self: ptr cQSplashScreen, slot: int, next: bool): bool {.exportc: "miqt_exec_callback_QSplashScreen_focusNextPrevChild ".} =
-  type Cb = proc(super: QSplashScreenfocusNextPrevChildBase, next: bool): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(next: bool): auto =
-    callVirtualBase_focusNextPrevChild(QSplashScreen(h: self), next)
+  var nimfunc = cast[ptr QSplashScreenfocusNextPrevChildProc](cast[pointer](slot))
   let slotval1 = next
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QSplashScreen, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QSplashScreeneventFilter*(self: gen_qsplashscreen_types.QSplashScreen, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQSplashScreen_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QSplashScreeneventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QSplashScreen, slot: proc(super: QSplashScreeneventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QSplashScreeneventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qsplashscreen_types.QSplashScreen, slot: QSplashScreeneventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplashScreeneventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QSplashScreeneventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplashScreen_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplashScreen_eventFilter(self: ptr cQSplashScreen, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QSplashScreen_eventFilter ".} =
-  type Cb = proc(super: QSplashScreeneventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QSplashScreen(h: self), watched, event)
+  var nimfunc = cast[ptr QSplashScreeneventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QSplashScreen, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QSplashScreentimerEvent*(self: gen_qsplashscreen_types.QSplashScreen, event: gen_qcoreevent.QTimerEvent): void =
 
   fQSplashScreen_virtualbase_timerEvent(self.h, event.h)
 
-type QSplashScreentimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QSplashScreen, slot: proc(super: QSplashScreentimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QSplashScreentimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qsplashscreen_types.QSplashScreen, slot: QSplashScreentimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplashScreentimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QSplashScreentimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplashScreen_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplashScreen_timerEvent(self: ptr cQSplashScreen, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplashScreen_timerEvent ".} =
-  type Cb = proc(super: QSplashScreentimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QSplashScreen(h: self), event)
+  var nimfunc = cast[ptr QSplashScreentimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QSplashScreen, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplashScreenchildEvent*(self: gen_qsplashscreen_types.QSplashScreen, event: gen_qcoreevent.QChildEvent): void =
 
   fQSplashScreen_virtualbase_childEvent(self.h, event.h)
 
-type QSplashScreenchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QSplashScreen, slot: proc(super: QSplashScreenchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QSplashScreenchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qsplashscreen_types.QSplashScreen, slot: QSplashScreenchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplashScreenchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QSplashScreenchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplashScreen_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplashScreen_childEvent(self: ptr cQSplashScreen, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplashScreen_childEvent ".} =
-  type Cb = proc(super: QSplashScreenchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QSplashScreen(h: self), event)
+  var nimfunc = cast[ptr QSplashScreenchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QSplashScreen, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplashScreencustomEvent*(self: gen_qsplashscreen_types.QSplashScreen, event: gen_qcoreevent.QEvent): void =
 
   fQSplashScreen_virtualbase_customEvent(self.h, event.h)
 
-type QSplashScreencustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QSplashScreen, slot: proc(super: QSplashScreencustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QSplashScreencustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qsplashscreen_types.QSplashScreen, slot: QSplashScreencustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplashScreencustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QSplashScreencustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplashScreen_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplashScreen_customEvent(self: ptr cQSplashScreen, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplashScreen_customEvent ".} =
-  type Cb = proc(super: QSplashScreencustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QSplashScreen(h: self), event)
+  var nimfunc = cast[ptr QSplashScreencustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QSplashScreen, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QSplashScreenconnectNotify*(self: gen_qsplashscreen_types.QSplashScreen, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQSplashScreen_virtualbase_connectNotify(self.h, signal.h)
 
-type QSplashScreenconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QSplashScreen, slot: proc(super: QSplashScreenconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QSplashScreenconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qsplashscreen_types.QSplashScreen, slot: QSplashScreenconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplashScreenconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QSplashScreenconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplashScreen_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplashScreen_connectNotify(self: ptr cQSplashScreen, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QSplashScreen_connectNotify ".} =
-  type Cb = proc(super: QSplashScreenconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QSplashScreen(h: self), signal)
+  var nimfunc = cast[ptr QSplashScreenconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QSplashScreen, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QSplashScreendisconnectNotify*(self: gen_qsplashscreen_types.QSplashScreen, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQSplashScreen_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QSplashScreendisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QSplashScreen, slot: proc(super: QSplashScreendisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QSplashScreendisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qsplashscreen_types.QSplashScreen, slot: QSplashScreendisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplashScreendisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QSplashScreendisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplashScreen_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplashScreen_disconnectNotify(self: ptr cQSplashScreen, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QSplashScreen_disconnectNotify ".} =
-  type Cb = proc(super: QSplashScreendisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QSplashScreen(h: self), signal)
+  var nimfunc = cast[ptr QSplashScreendisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QSplashScreen): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qsplashscreen_types.QSplashScreen): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQSplashScreen_staticMetaObject())
-proc delete*(self: QSplashScreen) =
+proc delete*(self: gen_qsplashscreen_types.QSplashScreen) =
   fcQSplashScreen_delete(self.h)

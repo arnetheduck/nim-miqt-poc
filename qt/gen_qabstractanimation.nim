@@ -34,26 +34,20 @@ const cflags = gorge("pkg-config -cflags Qt5Widgets")
 {.compile("gen_qabstractanimation.cpp", cflags).}
 
 
-type QAbstractAnimationDirection* = cint
-const
-  QAbstractAnimationForward* = 0
-  QAbstractAnimationBackward* = 1
+type QAbstractAnimationDirectionEnum* = distinct cint
+template Forward*(_: type QAbstractAnimationDirectionEnum): untyped = 0
+template Backward*(_: type QAbstractAnimationDirectionEnum): untyped = 1
 
 
-
-type QAbstractAnimationState* = cint
-const
-  QAbstractAnimationStopped* = 0
-  QAbstractAnimationPaused* = 1
-  QAbstractAnimationRunning* = 2
+type QAbstractAnimationStateEnum* = distinct cint
+template Stopped*(_: type QAbstractAnimationStateEnum): untyped = 0
+template Paused*(_: type QAbstractAnimationStateEnum): untyped = 1
+template Running*(_: type QAbstractAnimationStateEnum): untyped = 2
 
 
-
-type QAbstractAnimationDeletionPolicy* = cint
-const
-  QAbstractAnimationKeepWhenStopped* = 0
-  QAbstractAnimationDeleteWhenStopped* = 1
-
+type QAbstractAnimationDeletionPolicyEnum* = distinct cint
+template KeepWhenStopped*(_: type QAbstractAnimationDeletionPolicyEnum): untyped = 0
+template DeleteWhenStopped*(_: type QAbstractAnimationDeletionPolicyEnum): untyped = 1
 
 
 import gen_qabstractanimation_types
@@ -194,85 +188,85 @@ proc fcQAnimationDriver_staticMetaObject(): pointer {.importc: "QAnimationDriver
 proc fcQAnimationDriver_delete(self: pointer) {.importc: "QAnimationDriver_delete".}
 
 
-func init*(T: type QAbstractAnimation, h: ptr cQAbstractAnimation): QAbstractAnimation =
+func init*(T: type gen_qabstractanimation_types.QAbstractAnimation, h: ptr cQAbstractAnimation): gen_qabstractanimation_types.QAbstractAnimation =
   T(h: h)
-proc create*(T: type QAbstractAnimation, ): QAbstractAnimation =
+proc create*(T: type gen_qabstractanimation_types.QAbstractAnimation, ): gen_qabstractanimation_types.QAbstractAnimation =
 
-  QAbstractAnimation.init(fcQAbstractAnimation_new())
-proc create*(T: type QAbstractAnimation, parent: gen_qobject.QObject): QAbstractAnimation =
+  gen_qabstractanimation_types.QAbstractAnimation.init(fcQAbstractAnimation_new())
+proc create*(T: type gen_qabstractanimation_types.QAbstractAnimation, parent: gen_qobject.QObject): gen_qabstractanimation_types.QAbstractAnimation =
 
-  QAbstractAnimation.init(fcQAbstractAnimation_new2(parent.h))
-proc metaObject*(self: QAbstractAnimation, ): gen_qobjectdefs.QMetaObject =
+  gen_qabstractanimation_types.QAbstractAnimation.init(fcQAbstractAnimation_new2(parent.h))
+proc metaObject*(self: gen_qabstractanimation_types.QAbstractAnimation, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQAbstractAnimation_metaObject(self.h))
 
-proc metacast*(self: QAbstractAnimation, param1: cstring): pointer =
+proc metacast*(self: gen_qabstractanimation_types.QAbstractAnimation, param1: cstring): pointer =
 
   fcQAbstractAnimation_metacast(self.h, param1)
 
-proc metacall*(self: QAbstractAnimation, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qabstractanimation_types.QAbstractAnimation, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQAbstractAnimation_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QAbstractAnimation, s: cstring): string =
+proc tr*(_: type gen_qabstractanimation_types.QAbstractAnimation, s: cstring): string =
 
   let v_ms = fcQAbstractAnimation_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QAbstractAnimation, s: cstring): string =
+proc trUtf8*(_: type gen_qabstractanimation_types.QAbstractAnimation, s: cstring): string =
 
   let v_ms = fcQAbstractAnimation_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc state*(self: QAbstractAnimation, ): QAbstractAnimationState =
+proc state*(self: gen_qabstractanimation_types.QAbstractAnimation, ): cint =
 
-  QAbstractAnimationState(fcQAbstractAnimation_state(self.h))
+  cint(fcQAbstractAnimation_state(self.h))
 
-proc group*(self: QAbstractAnimation, ): gen_qanimationgroup.QAnimationGroup =
+proc group*(self: gen_qabstractanimation_types.QAbstractAnimation, ): gen_qanimationgroup.QAnimationGroup =
 
   gen_qanimationgroup.QAnimationGroup(h: fcQAbstractAnimation_group(self.h))
 
-proc direction*(self: QAbstractAnimation, ): QAbstractAnimationDirection =
+proc direction*(self: gen_qabstractanimation_types.QAbstractAnimation, ): cint =
 
-  QAbstractAnimationDirection(fcQAbstractAnimation_direction(self.h))
+  cint(fcQAbstractAnimation_direction(self.h))
 
-proc setDirection*(self: QAbstractAnimation, direction: QAbstractAnimationDirection): void =
+proc setDirection*(self: gen_qabstractanimation_types.QAbstractAnimation, direction: cint): void =
 
   fcQAbstractAnimation_setDirection(self.h, cint(direction))
 
-proc currentTime*(self: QAbstractAnimation, ): cint =
+proc currentTime*(self: gen_qabstractanimation_types.QAbstractAnimation, ): cint =
 
   fcQAbstractAnimation_currentTime(self.h)
 
-proc currentLoopTime*(self: QAbstractAnimation, ): cint =
+proc currentLoopTime*(self: gen_qabstractanimation_types.QAbstractAnimation, ): cint =
 
   fcQAbstractAnimation_currentLoopTime(self.h)
 
-proc loopCount*(self: QAbstractAnimation, ): cint =
+proc loopCount*(self: gen_qabstractanimation_types.QAbstractAnimation, ): cint =
 
   fcQAbstractAnimation_loopCount(self.h)
 
-proc setLoopCount*(self: QAbstractAnimation, loopCount: cint): void =
+proc setLoopCount*(self: gen_qabstractanimation_types.QAbstractAnimation, loopCount: cint): void =
 
   fcQAbstractAnimation_setLoopCount(self.h, loopCount)
 
-proc currentLoop*(self: QAbstractAnimation, ): cint =
+proc currentLoop*(self: gen_qabstractanimation_types.QAbstractAnimation, ): cint =
 
   fcQAbstractAnimation_currentLoop(self.h)
 
-proc duration*(self: QAbstractAnimation, ): cint =
+proc duration*(self: gen_qabstractanimation_types.QAbstractAnimation, ): cint =
 
   fcQAbstractAnimation_duration(self.h)
 
-proc totalDuration*(self: QAbstractAnimation, ): cint =
+proc totalDuration*(self: gen_qabstractanimation_types.QAbstractAnimation, ): cint =
 
   fcQAbstractAnimation_totalDuration(self.h)
 
-proc finished*(self: QAbstractAnimation, ): void =
+proc finished*(self: gen_qabstractanimation_types.QAbstractAnimation, ): void =
 
   fcQAbstractAnimation_finished(self.h)
 
@@ -282,33 +276,33 @@ proc miqt_exec_callback_QAbstractAnimation_finished(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onfinished*(self: QAbstractAnimation, slot: proc()) =
+proc onfinished*(self: gen_qabstractanimation_types.QAbstractAnimation, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQAbstractAnimation_connect_finished(self.h, cast[int](addr tmp[]))
-proc stateChanged*(self: QAbstractAnimation, newState: QAbstractAnimationState, oldState: QAbstractAnimationState): void =
+proc stateChanged*(self: gen_qabstractanimation_types.QAbstractAnimation, newState: cint, oldState: cint): void =
 
   fcQAbstractAnimation_stateChanged(self.h, cint(newState), cint(oldState))
 
 proc miqt_exec_callback_QAbstractAnimation_stateChanged(slot: int, newState: cint, oldState: cint) {.exportc.} =
-  type Cb = proc(newState: QAbstractAnimationState, oldState: QAbstractAnimationState)
+  type Cb = proc(newState: cint, oldState: cint)
   let nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = QAbstractAnimationState(newState)
+  let slotval1 = cint(newState)
 
-  let slotval2 = QAbstractAnimationState(oldState)
+  let slotval2 = cint(oldState)
 
 
   nimfunc[](slotval1, slotval2)
 
-proc onstateChanged*(self: QAbstractAnimation, slot: proc(newState: QAbstractAnimationState, oldState: QAbstractAnimationState)) =
-  type Cb = proc(newState: QAbstractAnimationState, oldState: QAbstractAnimationState)
+proc onstateChanged*(self: gen_qabstractanimation_types.QAbstractAnimation, slot: proc(newState: cint, oldState: cint)) =
+  type Cb = proc(newState: cint, oldState: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQAbstractAnimation_connect_stateChanged(self.h, cast[int](addr tmp[]))
-proc currentLoopChanged*(self: QAbstractAnimation, currentLoop: cint): void =
+proc currentLoopChanged*(self: gen_qabstractanimation_types.QAbstractAnimation, currentLoop: cint): void =
 
   fcQAbstractAnimation_currentLoopChanged(self.h, currentLoop)
 
@@ -320,478 +314,414 @@ proc miqt_exec_callback_QAbstractAnimation_currentLoopChanged(slot: int, current
 
   nimfunc[](slotval1)
 
-proc oncurrentLoopChanged*(self: QAbstractAnimation, slot: proc(currentLoop: cint)) =
+proc oncurrentLoopChanged*(self: gen_qabstractanimation_types.QAbstractAnimation, slot: proc(currentLoop: cint)) =
   type Cb = proc(currentLoop: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQAbstractAnimation_connect_currentLoopChanged(self.h, cast[int](addr tmp[]))
-proc directionChanged*(self: QAbstractAnimation, param1: QAbstractAnimationDirection): void =
+proc directionChanged*(self: gen_qabstractanimation_types.QAbstractAnimation, param1: cint): void =
 
   fcQAbstractAnimation_directionChanged(self.h, cint(param1))
 
 proc miqt_exec_callback_QAbstractAnimation_directionChanged(slot: int, param1: cint) {.exportc.} =
-  type Cb = proc(param1: QAbstractAnimationDirection)
+  type Cb = proc(param1: cint)
   let nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = QAbstractAnimationDirection(param1)
+  let slotval1 = cint(param1)
 
 
   nimfunc[](slotval1)
 
-proc ondirectionChanged*(self: QAbstractAnimation, slot: proc(param1: QAbstractAnimationDirection)) =
-  type Cb = proc(param1: QAbstractAnimationDirection)
+proc ondirectionChanged*(self: gen_qabstractanimation_types.QAbstractAnimation, slot: proc(param1: cint)) =
+  type Cb = proc(param1: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQAbstractAnimation_connect_directionChanged(self.h, cast[int](addr tmp[]))
-proc start*(self: QAbstractAnimation, ): void =
+proc start*(self: gen_qabstractanimation_types.QAbstractAnimation, ): void =
 
   fcQAbstractAnimation_start(self.h)
 
-proc pause*(self: QAbstractAnimation, ): void =
+proc pause*(self: gen_qabstractanimation_types.QAbstractAnimation, ): void =
 
   fcQAbstractAnimation_pause(self.h)
 
-proc resume*(self: QAbstractAnimation, ): void =
+proc resume*(self: gen_qabstractanimation_types.QAbstractAnimation, ): void =
 
   fcQAbstractAnimation_resume(self.h)
 
-proc setPaused*(self: QAbstractAnimation, paused: bool): void =
+proc setPaused*(self: gen_qabstractanimation_types.QAbstractAnimation, paused: bool): void =
 
   fcQAbstractAnimation_setPaused(self.h, paused)
 
-proc stop*(self: QAbstractAnimation, ): void =
+proc stop*(self: gen_qabstractanimation_types.QAbstractAnimation, ): void =
 
   fcQAbstractAnimation_stop(self.h)
 
-proc setCurrentTime*(self: QAbstractAnimation, msecs: cint): void =
+proc setCurrentTime*(self: gen_qabstractanimation_types.QAbstractAnimation, msecs: cint): void =
 
   fcQAbstractAnimation_setCurrentTime(self.h, msecs)
 
-proc tr2*(_: type QAbstractAnimation, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qabstractanimation_types.QAbstractAnimation, s: cstring, c: cstring): string =
 
   let v_ms = fcQAbstractAnimation_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QAbstractAnimation, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qabstractanimation_types.QAbstractAnimation, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQAbstractAnimation_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QAbstractAnimation, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qabstractanimation_types.QAbstractAnimation, s: cstring, c: cstring): string =
 
   let v_ms = fcQAbstractAnimation_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QAbstractAnimation, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qabstractanimation_types.QAbstractAnimation, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQAbstractAnimation_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc start1*(self: QAbstractAnimation, policy: QAbstractAnimationDeletionPolicy): void =
+proc start1*(self: gen_qabstractanimation_types.QAbstractAnimation, policy: cint): void =
 
   fcQAbstractAnimation_start1(self.h, cint(policy))
 
-proc callVirtualBase_metaObject(self: QAbstractAnimation, ): gen_qobjectdefs.QMetaObject =
-
+proc QAbstractAnimationmetaObject*(self: gen_qabstractanimation_types.QAbstractAnimation, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQAbstractAnimation_virtualbase_metaObject(self.h))
 
-type QAbstractAnimationmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QAbstractAnimation, slot: proc(super: QAbstractAnimationmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QAbstractAnimationmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qabstractanimation_types.QAbstractAnimation, slot: QAbstractAnimationmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractAnimationmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QAbstractAnimationmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractAnimation_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractAnimation_metaObject(self: ptr cQAbstractAnimation, slot: int): pointer {.exportc: "miqt_exec_callback_QAbstractAnimation_metaObject ".} =
-  type Cb = proc(super: QAbstractAnimationmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QAbstractAnimation(h: self), )
+  var nimfunc = cast[ptr QAbstractAnimationmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QAbstractAnimation, param1: cstring): pointer =
-
+proc QAbstractAnimationmetacast*(self: gen_qabstractanimation_types.QAbstractAnimation, param1: cstring): pointer =
 
   fQAbstractAnimation_virtualbase_metacast(self.h, param1)
 
-type QAbstractAnimationmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QAbstractAnimation, slot: proc(super: QAbstractAnimationmetacastBase, param1: cstring): pointer) =
+type QAbstractAnimationmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qabstractanimation_types.QAbstractAnimation, slot: QAbstractAnimationmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractAnimationmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QAbstractAnimationmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractAnimation_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractAnimation_metacast(self: ptr cQAbstractAnimation, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QAbstractAnimation_metacast ".} =
-  type Cb = proc(super: QAbstractAnimationmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QAbstractAnimation(h: self), param1)
+  var nimfunc = cast[ptr QAbstractAnimationmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QAbstractAnimation, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QAbstractAnimationmetacall*(self: gen_qabstractanimation_types.QAbstractAnimation, param1: cint, param2: cint, param3: pointer): cint =
 
   fQAbstractAnimation_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QAbstractAnimationmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QAbstractAnimation, slot: proc(super: QAbstractAnimationmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QAbstractAnimationmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qabstractanimation_types.QAbstractAnimation, slot: QAbstractAnimationmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractAnimationmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QAbstractAnimationmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractAnimation_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractAnimation_metacall(self: ptr cQAbstractAnimation, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QAbstractAnimation_metacall ".} =
-  type Cb = proc(super: QAbstractAnimationmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QAbstractAnimation(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QAbstractAnimationmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-type QAbstractAnimationdurationBase* = proc(): cint
-proc onduration*(self: QAbstractAnimation, slot: proc(): cint) =
+type QAbstractAnimationdurationProc* = proc(): cint
+proc onduration*(self: gen_qabstractanimation_types.QAbstractAnimation, slot: QAbstractAnimationdurationProc) =
   # TODO check subclass
-  type Cb = proc(): cint
-  var tmp = new Cb
+  var tmp = new QAbstractAnimationdurationProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractAnimation_override_virtual_duration(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractAnimation_duration(self: ptr cQAbstractAnimation, slot: int): cint {.exportc: "miqt_exec_callback_QAbstractAnimation_duration ".} =
-  type Cb = proc(): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QAbstractAnimationdurationProc](cast[pointer](slot))
 
   let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_event(self: QAbstractAnimation, event: gen_qcoreevent.QEvent): bool =
-
+proc QAbstractAnimationevent*(self: gen_qabstractanimation_types.QAbstractAnimation, event: gen_qcoreevent.QEvent): bool =
 
   fQAbstractAnimation_virtualbase_event(self.h, event.h)
 
-type QAbstractAnimationeventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QAbstractAnimation, slot: proc(super: QAbstractAnimationeventBase, event: gen_qcoreevent.QEvent): bool) =
+type QAbstractAnimationeventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qabstractanimation_types.QAbstractAnimation, slot: QAbstractAnimationeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractAnimationeventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QAbstractAnimationeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractAnimation_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractAnimation_event(self: ptr cQAbstractAnimation, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QAbstractAnimation_event ".} =
-  type Cb = proc(super: QAbstractAnimationeventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QAbstractAnimation(h: self), event)
+  var nimfunc = cast[ptr QAbstractAnimationeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-type QAbstractAnimationupdateCurrentTimeBase* = proc(currentTime: cint): void
-proc onupdateCurrentTime*(self: QAbstractAnimation, slot: proc(currentTime: cint): void) =
+type QAbstractAnimationupdateCurrentTimeProc* = proc(currentTime: cint): void
+proc onupdateCurrentTime*(self: gen_qabstractanimation_types.QAbstractAnimation, slot: QAbstractAnimationupdateCurrentTimeProc) =
   # TODO check subclass
-  type Cb = proc(currentTime: cint): void
-  var tmp = new Cb
+  var tmp = new QAbstractAnimationupdateCurrentTimeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractAnimation_override_virtual_updateCurrentTime(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractAnimation_updateCurrentTime(self: ptr cQAbstractAnimation, slot: int, currentTime: cint): void {.exportc: "miqt_exec_callback_QAbstractAnimation_updateCurrentTime ".} =
-  type Cb = proc(currentTime: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QAbstractAnimationupdateCurrentTimeProc](cast[pointer](slot))
   let slotval1 = currentTime
 
 
   nimfunc[](slotval1)
-proc callVirtualBase_updateState(self: QAbstractAnimation, newState: QAbstractAnimationState, oldState: QAbstractAnimationState): void =
-
+proc QAbstractAnimationupdateState*(self: gen_qabstractanimation_types.QAbstractAnimation, newState: cint, oldState: cint): void =
 
   fQAbstractAnimation_virtualbase_updateState(self.h, cint(newState), cint(oldState))
 
-type QAbstractAnimationupdateStateBase* = proc(newState: QAbstractAnimationState, oldState: QAbstractAnimationState): void
-proc onupdateState*(self: QAbstractAnimation, slot: proc(super: QAbstractAnimationupdateStateBase, newState: QAbstractAnimationState, oldState: QAbstractAnimationState): void) =
+type QAbstractAnimationupdateStateProc* = proc(newState: cint, oldState: cint): void
+proc onupdateState*(self: gen_qabstractanimation_types.QAbstractAnimation, slot: QAbstractAnimationupdateStateProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractAnimationupdateStateBase, newState: QAbstractAnimationState, oldState: QAbstractAnimationState): void
-  var tmp = new Cb
+  var tmp = new QAbstractAnimationupdateStateProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractAnimation_override_virtual_updateState(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractAnimation_updateState(self: ptr cQAbstractAnimation, slot: int, newState: cint, oldState: cint): void {.exportc: "miqt_exec_callback_QAbstractAnimation_updateState ".} =
-  type Cb = proc(super: QAbstractAnimationupdateStateBase, newState: QAbstractAnimationState, oldState: QAbstractAnimationState): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(newState: QAbstractAnimationState, oldState: QAbstractAnimationState): auto =
-    callVirtualBase_updateState(QAbstractAnimation(h: self), newState, oldState)
-  let slotval1 = QAbstractAnimationState(newState)
+  var nimfunc = cast[ptr QAbstractAnimationupdateStateProc](cast[pointer](slot))
+  let slotval1 = cint(newState)
 
-  let slotval2 = QAbstractAnimationState(oldState)
+  let slotval2 = cint(oldState)
 
 
-  nimfunc[](superCall, slotval1, slotval2)
-proc callVirtualBase_updateDirection(self: QAbstractAnimation, direction: QAbstractAnimationDirection): void =
-
+  nimfunc[](slotval1, slotval2)
+proc QAbstractAnimationupdateDirection*(self: gen_qabstractanimation_types.QAbstractAnimation, direction: cint): void =
 
   fQAbstractAnimation_virtualbase_updateDirection(self.h, cint(direction))
 
-type QAbstractAnimationupdateDirectionBase* = proc(direction: QAbstractAnimationDirection): void
-proc onupdateDirection*(self: QAbstractAnimation, slot: proc(super: QAbstractAnimationupdateDirectionBase, direction: QAbstractAnimationDirection): void) =
+type QAbstractAnimationupdateDirectionProc* = proc(direction: cint): void
+proc onupdateDirection*(self: gen_qabstractanimation_types.QAbstractAnimation, slot: QAbstractAnimationupdateDirectionProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractAnimationupdateDirectionBase, direction: QAbstractAnimationDirection): void
-  var tmp = new Cb
+  var tmp = new QAbstractAnimationupdateDirectionProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractAnimation_override_virtual_updateDirection(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractAnimation_updateDirection(self: ptr cQAbstractAnimation, slot: int, direction: cint): void {.exportc: "miqt_exec_callback_QAbstractAnimation_updateDirection ".} =
-  type Cb = proc(super: QAbstractAnimationupdateDirectionBase, direction: QAbstractAnimationDirection): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(direction: QAbstractAnimationDirection): auto =
-    callVirtualBase_updateDirection(QAbstractAnimation(h: self), direction)
-  let slotval1 = QAbstractAnimationDirection(direction)
+  var nimfunc = cast[ptr QAbstractAnimationupdateDirectionProc](cast[pointer](slot))
+  let slotval1 = cint(direction)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_eventFilter(self: QAbstractAnimation, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[](slotval1)
+proc QAbstractAnimationeventFilter*(self: gen_qabstractanimation_types.QAbstractAnimation, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQAbstractAnimation_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QAbstractAnimationeventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QAbstractAnimation, slot: proc(super: QAbstractAnimationeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QAbstractAnimationeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qabstractanimation_types.QAbstractAnimation, slot: QAbstractAnimationeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractAnimationeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QAbstractAnimationeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractAnimation_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractAnimation_eventFilter(self: ptr cQAbstractAnimation, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QAbstractAnimation_eventFilter ".} =
-  type Cb = proc(super: QAbstractAnimationeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QAbstractAnimation(h: self), watched, event)
+  var nimfunc = cast[ptr QAbstractAnimationeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QAbstractAnimation, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QAbstractAnimationtimerEvent*(self: gen_qabstractanimation_types.QAbstractAnimation, event: gen_qcoreevent.QTimerEvent): void =
 
   fQAbstractAnimation_virtualbase_timerEvent(self.h, event.h)
 
-type QAbstractAnimationtimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QAbstractAnimation, slot: proc(super: QAbstractAnimationtimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QAbstractAnimationtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qabstractanimation_types.QAbstractAnimation, slot: QAbstractAnimationtimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractAnimationtimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractAnimationtimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractAnimation_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractAnimation_timerEvent(self: ptr cQAbstractAnimation, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAbstractAnimation_timerEvent ".} =
-  type Cb = proc(super: QAbstractAnimationtimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QAbstractAnimation(h: self), event)
+  var nimfunc = cast[ptr QAbstractAnimationtimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QAbstractAnimation, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QAbstractAnimationchildEvent*(self: gen_qabstractanimation_types.QAbstractAnimation, event: gen_qcoreevent.QChildEvent): void =
 
   fQAbstractAnimation_virtualbase_childEvent(self.h, event.h)
 
-type QAbstractAnimationchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QAbstractAnimation, slot: proc(super: QAbstractAnimationchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QAbstractAnimationchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qabstractanimation_types.QAbstractAnimation, slot: QAbstractAnimationchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractAnimationchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractAnimationchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractAnimation_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractAnimation_childEvent(self: ptr cQAbstractAnimation, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAbstractAnimation_childEvent ".} =
-  type Cb = proc(super: QAbstractAnimationchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QAbstractAnimation(h: self), event)
+  var nimfunc = cast[ptr QAbstractAnimationchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QAbstractAnimation, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QAbstractAnimationcustomEvent*(self: gen_qabstractanimation_types.QAbstractAnimation, event: gen_qcoreevent.QEvent): void =
 
   fQAbstractAnimation_virtualbase_customEvent(self.h, event.h)
 
-type QAbstractAnimationcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QAbstractAnimation, slot: proc(super: QAbstractAnimationcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QAbstractAnimationcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qabstractanimation_types.QAbstractAnimation, slot: QAbstractAnimationcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractAnimationcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractAnimationcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractAnimation_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractAnimation_customEvent(self: ptr cQAbstractAnimation, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAbstractAnimation_customEvent ".} =
-  type Cb = proc(super: QAbstractAnimationcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QAbstractAnimation(h: self), event)
+  var nimfunc = cast[ptr QAbstractAnimationcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QAbstractAnimation, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QAbstractAnimationconnectNotify*(self: gen_qabstractanimation_types.QAbstractAnimation, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQAbstractAnimation_virtualbase_connectNotify(self.h, signal.h)
 
-type QAbstractAnimationconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QAbstractAnimation, slot: proc(super: QAbstractAnimationconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QAbstractAnimationconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qabstractanimation_types.QAbstractAnimation, slot: QAbstractAnimationconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractAnimationconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QAbstractAnimationconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractAnimation_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractAnimation_connectNotify(self: ptr cQAbstractAnimation, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QAbstractAnimation_connectNotify ".} =
-  type Cb = proc(super: QAbstractAnimationconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QAbstractAnimation(h: self), signal)
+  var nimfunc = cast[ptr QAbstractAnimationconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QAbstractAnimation, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QAbstractAnimationdisconnectNotify*(self: gen_qabstractanimation_types.QAbstractAnimation, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQAbstractAnimation_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QAbstractAnimationdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QAbstractAnimation, slot: proc(super: QAbstractAnimationdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QAbstractAnimationdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qabstractanimation_types.QAbstractAnimation, slot: QAbstractAnimationdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractAnimationdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QAbstractAnimationdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractAnimation_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractAnimation_disconnectNotify(self: ptr cQAbstractAnimation, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QAbstractAnimation_disconnectNotify ".} =
-  type Cb = proc(super: QAbstractAnimationdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QAbstractAnimation(h: self), signal)
+  var nimfunc = cast[ptr QAbstractAnimationdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QAbstractAnimation): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qabstractanimation_types.QAbstractAnimation): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQAbstractAnimation_staticMetaObject())
-proc delete*(self: QAbstractAnimation) =
+proc delete*(self: gen_qabstractanimation_types.QAbstractAnimation) =
   fcQAbstractAnimation_delete(self.h)
 
-func init*(T: type QAnimationDriver, h: ptr cQAnimationDriver): QAnimationDriver =
+func init*(T: type gen_qabstractanimation_types.QAnimationDriver, h: ptr cQAnimationDriver): gen_qabstractanimation_types.QAnimationDriver =
   T(h: h)
-proc create*(T: type QAnimationDriver, ): QAnimationDriver =
+proc create*(T: type gen_qabstractanimation_types.QAnimationDriver, ): gen_qabstractanimation_types.QAnimationDriver =
 
-  QAnimationDriver.init(fcQAnimationDriver_new())
-proc create*(T: type QAnimationDriver, parent: gen_qobject.QObject): QAnimationDriver =
+  gen_qabstractanimation_types.QAnimationDriver.init(fcQAnimationDriver_new())
+proc create*(T: type gen_qabstractanimation_types.QAnimationDriver, parent: gen_qobject.QObject): gen_qabstractanimation_types.QAnimationDriver =
 
-  QAnimationDriver.init(fcQAnimationDriver_new2(parent.h))
-proc metaObject*(self: QAnimationDriver, ): gen_qobjectdefs.QMetaObject =
+  gen_qabstractanimation_types.QAnimationDriver.init(fcQAnimationDriver_new2(parent.h))
+proc metaObject*(self: gen_qabstractanimation_types.QAnimationDriver, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQAnimationDriver_metaObject(self.h))
 
-proc metacast*(self: QAnimationDriver, param1: cstring): pointer =
+proc metacast*(self: gen_qabstractanimation_types.QAnimationDriver, param1: cstring): pointer =
 
   fcQAnimationDriver_metacast(self.h, param1)
 
-proc metacall*(self: QAnimationDriver, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qabstractanimation_types.QAnimationDriver, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQAnimationDriver_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QAnimationDriver, s: cstring): string =
+proc tr*(_: type gen_qabstractanimation_types.QAnimationDriver, s: cstring): string =
 
   let v_ms = fcQAnimationDriver_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QAnimationDriver, s: cstring): string =
+proc trUtf8*(_: type gen_qabstractanimation_types.QAnimationDriver, s: cstring): string =
 
   let v_ms = fcQAnimationDriver_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc advance*(self: QAnimationDriver, ): void =
+proc advance*(self: gen_qabstractanimation_types.QAnimationDriver, ): void =
 
   fcQAnimationDriver_advance(self.h)
 
-proc install*(self: QAnimationDriver, ): void =
+proc install*(self: gen_qabstractanimation_types.QAnimationDriver, ): void =
 
   fcQAnimationDriver_install(self.h)
 
-proc uninstall*(self: QAnimationDriver, ): void =
+proc uninstall*(self: gen_qabstractanimation_types.QAnimationDriver, ): void =
 
   fcQAnimationDriver_uninstall(self.h)
 
-proc isRunning*(self: QAnimationDriver, ): bool =
+proc isRunning*(self: gen_qabstractanimation_types.QAnimationDriver, ): bool =
 
   fcQAnimationDriver_isRunning(self.h)
 
-proc elapsed*(self: QAnimationDriver, ): clonglong =
+proc elapsed*(self: gen_qabstractanimation_types.QAnimationDriver, ): clonglong =
 
   fcQAnimationDriver_elapsed(self.h)
 
-proc setStartTime*(self: QAnimationDriver, startTime: clonglong): void =
+proc setStartTime*(self: gen_qabstractanimation_types.QAnimationDriver, startTime: clonglong): void =
 
   fcQAnimationDriver_setStartTime(self.h, startTime)
 
-proc startTime*(self: QAnimationDriver, ): clonglong =
+proc startTime*(self: gen_qabstractanimation_types.QAnimationDriver, ): clonglong =
 
   fcQAnimationDriver_startTime(self.h)
 
-proc started*(self: QAnimationDriver, ): void =
+proc started*(self: gen_qabstractanimation_types.QAnimationDriver, ): void =
 
   fcQAnimationDriver_started(self.h)
 
@@ -801,13 +731,13 @@ proc miqt_exec_callback_QAnimationDriver_started(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onstarted*(self: QAnimationDriver, slot: proc()) =
+proc onstarted*(self: gen_qabstractanimation_types.QAnimationDriver, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQAnimationDriver_connect_started(self.h, cast[int](addr tmp[]))
-proc stopped*(self: QAnimationDriver, ): void =
+proc stopped*(self: gen_qabstractanimation_types.QAnimationDriver, ): void =
 
   fcQAnimationDriver_stopped(self.h)
 
@@ -817,371 +747,301 @@ proc miqt_exec_callback_QAnimationDriver_stopped(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onstopped*(self: QAnimationDriver, slot: proc()) =
+proc onstopped*(self: gen_qabstractanimation_types.QAnimationDriver, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQAnimationDriver_connect_stopped(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QAnimationDriver, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qabstractanimation_types.QAnimationDriver, s: cstring, c: cstring): string =
 
   let v_ms = fcQAnimationDriver_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QAnimationDriver, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qabstractanimation_types.QAnimationDriver, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQAnimationDriver_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QAnimationDriver, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qabstractanimation_types.QAnimationDriver, s: cstring, c: cstring): string =
 
   let v_ms = fcQAnimationDriver_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QAnimationDriver, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qabstractanimation_types.QAnimationDriver, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQAnimationDriver_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QAnimationDriver, ): gen_qobjectdefs.QMetaObject =
-
+proc QAnimationDrivermetaObject*(self: gen_qabstractanimation_types.QAnimationDriver, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQAnimationDriver_virtualbase_metaObject(self.h))
 
-type QAnimationDrivermetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QAnimationDriver, slot: proc(super: QAnimationDrivermetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QAnimationDrivermetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qabstractanimation_types.QAnimationDriver, slot: QAnimationDrivermetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QAnimationDrivermetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QAnimationDrivermetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAnimationDriver_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAnimationDriver_metaObject(self: ptr cQAnimationDriver, slot: int): pointer {.exportc: "miqt_exec_callback_QAnimationDriver_metaObject ".} =
-  type Cb = proc(super: QAnimationDrivermetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QAnimationDriver(h: self), )
+  var nimfunc = cast[ptr QAnimationDrivermetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QAnimationDriver, param1: cstring): pointer =
-
+proc QAnimationDrivermetacast*(self: gen_qabstractanimation_types.QAnimationDriver, param1: cstring): pointer =
 
   fQAnimationDriver_virtualbase_metacast(self.h, param1)
 
-type QAnimationDrivermetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QAnimationDriver, slot: proc(super: QAnimationDrivermetacastBase, param1: cstring): pointer) =
+type QAnimationDrivermetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qabstractanimation_types.QAnimationDriver, slot: QAnimationDrivermetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QAnimationDrivermetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QAnimationDrivermetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAnimationDriver_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAnimationDriver_metacast(self: ptr cQAnimationDriver, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QAnimationDriver_metacast ".} =
-  type Cb = proc(super: QAnimationDrivermetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QAnimationDriver(h: self), param1)
+  var nimfunc = cast[ptr QAnimationDrivermetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QAnimationDriver, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QAnimationDrivermetacall*(self: gen_qabstractanimation_types.QAnimationDriver, param1: cint, param2: cint, param3: pointer): cint =
 
   fQAnimationDriver_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QAnimationDrivermetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QAnimationDriver, slot: proc(super: QAnimationDrivermetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QAnimationDrivermetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qabstractanimation_types.QAnimationDriver, slot: QAnimationDrivermetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QAnimationDrivermetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QAnimationDrivermetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAnimationDriver_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAnimationDriver_metacall(self: ptr cQAnimationDriver, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QAnimationDriver_metacall ".} =
-  type Cb = proc(super: QAnimationDrivermetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QAnimationDriver(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QAnimationDrivermetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_advance(self: QAnimationDriver, ): void =
-
+proc QAnimationDriveradvance*(self: gen_qabstractanimation_types.QAnimationDriver, ): void =
 
   fQAnimationDriver_virtualbase_advance(self.h)
 
-type QAnimationDriveradvanceBase* = proc(): void
-proc onadvance*(self: QAnimationDriver, slot: proc(super: QAnimationDriveradvanceBase): void) =
+type QAnimationDriveradvanceProc* = proc(): void
+proc onadvance*(self: gen_qabstractanimation_types.QAnimationDriver, slot: QAnimationDriveradvanceProc) =
   # TODO check subclass
-  type Cb = proc(super: QAnimationDriveradvanceBase): void
-  var tmp = new Cb
+  var tmp = new QAnimationDriveradvanceProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAnimationDriver_override_virtual_advance(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAnimationDriver_advance(self: ptr cQAnimationDriver, slot: int): void {.exportc: "miqt_exec_callback_QAnimationDriver_advance ".} =
-  type Cb = proc(super: QAnimationDriveradvanceBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_advance(QAnimationDriver(h: self), )
+  var nimfunc = cast[ptr QAnimationDriveradvanceProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_elapsed(self: QAnimationDriver, ): clonglong =
-
+  nimfunc[]()
+proc QAnimationDriverelapsed*(self: gen_qabstractanimation_types.QAnimationDriver, ): clonglong =
 
   fQAnimationDriver_virtualbase_elapsed(self.h)
 
-type QAnimationDriverelapsedBase* = proc(): clonglong
-proc onelapsed*(self: QAnimationDriver, slot: proc(super: QAnimationDriverelapsedBase): clonglong) =
+type QAnimationDriverelapsedProc* = proc(): clonglong
+proc onelapsed*(self: gen_qabstractanimation_types.QAnimationDriver, slot: QAnimationDriverelapsedProc) =
   # TODO check subclass
-  type Cb = proc(super: QAnimationDriverelapsedBase): clonglong
-  var tmp = new Cb
+  var tmp = new QAnimationDriverelapsedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAnimationDriver_override_virtual_elapsed(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAnimationDriver_elapsed(self: ptr cQAnimationDriver, slot: int): clonglong {.exportc: "miqt_exec_callback_QAnimationDriver_elapsed ".} =
-  type Cb = proc(super: QAnimationDriverelapsedBase): clonglong
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_elapsed(QAnimationDriver(h: self), )
+  var nimfunc = cast[ptr QAnimationDriverelapsedProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_start(self: QAnimationDriver, ): void =
-
+proc QAnimationDriverstart*(self: gen_qabstractanimation_types.QAnimationDriver, ): void =
 
   fQAnimationDriver_virtualbase_start(self.h)
 
-type QAnimationDriverstartBase* = proc(): void
-proc onstart*(self: QAnimationDriver, slot: proc(super: QAnimationDriverstartBase): void) =
+type QAnimationDriverstartProc* = proc(): void
+proc onstart*(self: gen_qabstractanimation_types.QAnimationDriver, slot: QAnimationDriverstartProc) =
   # TODO check subclass
-  type Cb = proc(super: QAnimationDriverstartBase): void
-  var tmp = new Cb
+  var tmp = new QAnimationDriverstartProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAnimationDriver_override_virtual_start(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAnimationDriver_start(self: ptr cQAnimationDriver, slot: int): void {.exportc: "miqt_exec_callback_QAnimationDriver_start ".} =
-  type Cb = proc(super: QAnimationDriverstartBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_start(QAnimationDriver(h: self), )
+  var nimfunc = cast[ptr QAnimationDriverstartProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_stop(self: QAnimationDriver, ): void =
-
+  nimfunc[]()
+proc QAnimationDriverstop*(self: gen_qabstractanimation_types.QAnimationDriver, ): void =
 
   fQAnimationDriver_virtualbase_stop(self.h)
 
-type QAnimationDriverstopBase* = proc(): void
-proc onstop*(self: QAnimationDriver, slot: proc(super: QAnimationDriverstopBase): void) =
+type QAnimationDriverstopProc* = proc(): void
+proc onstop*(self: gen_qabstractanimation_types.QAnimationDriver, slot: QAnimationDriverstopProc) =
   # TODO check subclass
-  type Cb = proc(super: QAnimationDriverstopBase): void
-  var tmp = new Cb
+  var tmp = new QAnimationDriverstopProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAnimationDriver_override_virtual_stop(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAnimationDriver_stop(self: ptr cQAnimationDriver, slot: int): void {.exportc: "miqt_exec_callback_QAnimationDriver_stop ".} =
-  type Cb = proc(super: QAnimationDriverstopBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_stop(QAnimationDriver(h: self), )
+  var nimfunc = cast[ptr QAnimationDriverstopProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_event(self: QAnimationDriver, event: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[]()
+proc QAnimationDriverevent*(self: gen_qabstractanimation_types.QAnimationDriver, event: gen_qcoreevent.QEvent): bool =
 
   fQAnimationDriver_virtualbase_event(self.h, event.h)
 
-type QAnimationDrivereventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QAnimationDriver, slot: proc(super: QAnimationDrivereventBase, event: gen_qcoreevent.QEvent): bool) =
+type QAnimationDrivereventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qabstractanimation_types.QAnimationDriver, slot: QAnimationDrivereventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAnimationDrivereventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QAnimationDrivereventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAnimationDriver_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAnimationDriver_event(self: ptr cQAnimationDriver, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QAnimationDriver_event ".} =
-  type Cb = proc(super: QAnimationDrivereventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QAnimationDriver(h: self), event)
+  var nimfunc = cast[ptr QAnimationDrivereventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QAnimationDriver, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QAnimationDrivereventFilter*(self: gen_qabstractanimation_types.QAnimationDriver, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQAnimationDriver_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QAnimationDrivereventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QAnimationDriver, slot: proc(super: QAnimationDrivereventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QAnimationDrivereventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qabstractanimation_types.QAnimationDriver, slot: QAnimationDrivereventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QAnimationDrivereventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QAnimationDrivereventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAnimationDriver_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAnimationDriver_eventFilter(self: ptr cQAnimationDriver, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QAnimationDriver_eventFilter ".} =
-  type Cb = proc(super: QAnimationDrivereventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QAnimationDriver(h: self), watched, event)
+  var nimfunc = cast[ptr QAnimationDrivereventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QAnimationDriver, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QAnimationDrivertimerEvent*(self: gen_qabstractanimation_types.QAnimationDriver, event: gen_qcoreevent.QTimerEvent): void =
 
   fQAnimationDriver_virtualbase_timerEvent(self.h, event.h)
 
-type QAnimationDrivertimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QAnimationDriver, slot: proc(super: QAnimationDrivertimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QAnimationDrivertimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qabstractanimation_types.QAnimationDriver, slot: QAnimationDrivertimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAnimationDrivertimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QAnimationDrivertimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAnimationDriver_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAnimationDriver_timerEvent(self: ptr cQAnimationDriver, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAnimationDriver_timerEvent ".} =
-  type Cb = proc(super: QAnimationDrivertimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QAnimationDriver(h: self), event)
+  var nimfunc = cast[ptr QAnimationDrivertimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QAnimationDriver, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QAnimationDriverchildEvent*(self: gen_qabstractanimation_types.QAnimationDriver, event: gen_qcoreevent.QChildEvent): void =
 
   fQAnimationDriver_virtualbase_childEvent(self.h, event.h)
 
-type QAnimationDriverchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QAnimationDriver, slot: proc(super: QAnimationDriverchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QAnimationDriverchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qabstractanimation_types.QAnimationDriver, slot: QAnimationDriverchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAnimationDriverchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QAnimationDriverchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAnimationDriver_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAnimationDriver_childEvent(self: ptr cQAnimationDriver, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAnimationDriver_childEvent ".} =
-  type Cb = proc(super: QAnimationDriverchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QAnimationDriver(h: self), event)
+  var nimfunc = cast[ptr QAnimationDriverchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QAnimationDriver, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QAnimationDrivercustomEvent*(self: gen_qabstractanimation_types.QAnimationDriver, event: gen_qcoreevent.QEvent): void =
 
   fQAnimationDriver_virtualbase_customEvent(self.h, event.h)
 
-type QAnimationDrivercustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QAnimationDriver, slot: proc(super: QAnimationDrivercustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QAnimationDrivercustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qabstractanimation_types.QAnimationDriver, slot: QAnimationDrivercustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAnimationDrivercustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QAnimationDrivercustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAnimationDriver_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAnimationDriver_customEvent(self: ptr cQAnimationDriver, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAnimationDriver_customEvent ".} =
-  type Cb = proc(super: QAnimationDrivercustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QAnimationDriver(h: self), event)
+  var nimfunc = cast[ptr QAnimationDrivercustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QAnimationDriver, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QAnimationDriverconnectNotify*(self: gen_qabstractanimation_types.QAnimationDriver, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQAnimationDriver_virtualbase_connectNotify(self.h, signal.h)
 
-type QAnimationDriverconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QAnimationDriver, slot: proc(super: QAnimationDriverconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QAnimationDriverconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qabstractanimation_types.QAnimationDriver, slot: QAnimationDriverconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QAnimationDriverconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QAnimationDriverconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAnimationDriver_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAnimationDriver_connectNotify(self: ptr cQAnimationDriver, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QAnimationDriver_connectNotify ".} =
-  type Cb = proc(super: QAnimationDriverconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QAnimationDriver(h: self), signal)
+  var nimfunc = cast[ptr QAnimationDriverconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QAnimationDriver, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QAnimationDriverdisconnectNotify*(self: gen_qabstractanimation_types.QAnimationDriver, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQAnimationDriver_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QAnimationDriverdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QAnimationDriver, slot: proc(super: QAnimationDriverdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QAnimationDriverdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qabstractanimation_types.QAnimationDriver, slot: QAnimationDriverdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QAnimationDriverdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QAnimationDriverdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAnimationDriver_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAnimationDriver_disconnectNotify(self: ptr cQAnimationDriver, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QAnimationDriver_disconnectNotify ".} =
-  type Cb = proc(super: QAnimationDriverdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QAnimationDriver(h: self), signal)
+  var nimfunc = cast[ptr QAnimationDriverdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QAnimationDriver): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qabstractanimation_types.QAnimationDriver): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQAnimationDriver_staticMetaObject())
-proc delete*(self: QAnimationDriver) =
+proc delete*(self: gen_qabstractanimation_types.QAnimationDriver) =
   fcQAnimationDriver_delete(self.h)

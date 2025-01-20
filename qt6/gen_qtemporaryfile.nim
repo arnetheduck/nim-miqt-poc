@@ -40,16 +40,12 @@ export gen_qtemporaryfile_types
 import
   gen_qcoreevent,
   gen_qfile,
-  gen_qfiledevice,
-  gen_qiodevicebase,
   gen_qmetaobject,
   gen_qobject,
   gen_qobjectdefs
 export
   gen_qcoreevent,
   gen_qfile,
-  gen_qfiledevice,
-  gen_qiodevicebase,
   gen_qmetaobject,
   gen_qobject,
   gen_qobjectdefs
@@ -141,850 +137,695 @@ proc fcQTemporaryFile_staticMetaObject(): pointer {.importc: "QTemporaryFile_sta
 proc fcQTemporaryFile_delete(self: pointer) {.importc: "QTemporaryFile_delete".}
 
 
-func init*(T: type QTemporaryFile, h: ptr cQTemporaryFile): QTemporaryFile =
+func init*(T: type gen_qtemporaryfile_types.QTemporaryFile, h: ptr cQTemporaryFile): gen_qtemporaryfile_types.QTemporaryFile =
   T(h: h)
-proc create*(T: type QTemporaryFile, ): QTemporaryFile =
+proc create*(T: type gen_qtemporaryfile_types.QTemporaryFile, ): gen_qtemporaryfile_types.QTemporaryFile =
 
-  QTemporaryFile.init(fcQTemporaryFile_new())
-proc create*(T: type QTemporaryFile, templateName: string): QTemporaryFile =
+  gen_qtemporaryfile_types.QTemporaryFile.init(fcQTemporaryFile_new())
+proc create*(T: type gen_qtemporaryfile_types.QTemporaryFile, templateName: string): gen_qtemporaryfile_types.QTemporaryFile =
 
-  QTemporaryFile.init(fcQTemporaryFile_new2(struct_miqt_string(data: templateName, len: csize_t(len(templateName)))))
-proc create*(T: type QTemporaryFile, parent: gen_qobject.QObject): QTemporaryFile =
+  gen_qtemporaryfile_types.QTemporaryFile.init(fcQTemporaryFile_new2(struct_miqt_string(data: templateName, len: csize_t(len(templateName)))))
+proc create*(T: type gen_qtemporaryfile_types.QTemporaryFile, parent: gen_qobject.QObject): gen_qtemporaryfile_types.QTemporaryFile =
 
-  QTemporaryFile.init(fcQTemporaryFile_new3(parent.h))
-proc create*(T: type QTemporaryFile, templateName: string, parent: gen_qobject.QObject): QTemporaryFile =
+  gen_qtemporaryfile_types.QTemporaryFile.init(fcQTemporaryFile_new3(parent.h))
+proc create*(T: type gen_qtemporaryfile_types.QTemporaryFile, templateName: string, parent: gen_qobject.QObject): gen_qtemporaryfile_types.QTemporaryFile =
 
-  QTemporaryFile.init(fcQTemporaryFile_new4(struct_miqt_string(data: templateName, len: csize_t(len(templateName))), parent.h))
-proc metaObject*(self: QTemporaryFile, ): gen_qobjectdefs.QMetaObject =
+  gen_qtemporaryfile_types.QTemporaryFile.init(fcQTemporaryFile_new4(struct_miqt_string(data: templateName, len: csize_t(len(templateName))), parent.h))
+proc metaObject*(self: gen_qtemporaryfile_types.QTemporaryFile, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQTemporaryFile_metaObject(self.h))
 
-proc metacast*(self: QTemporaryFile, param1: cstring): pointer =
+proc metacast*(self: gen_qtemporaryfile_types.QTemporaryFile, param1: cstring): pointer =
 
   fcQTemporaryFile_metacast(self.h, param1)
 
-proc metacall*(self: QTemporaryFile, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qtemporaryfile_types.QTemporaryFile, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQTemporaryFile_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QTemporaryFile, s: cstring): string =
+proc tr*(_: type gen_qtemporaryfile_types.QTemporaryFile, s: cstring): string =
 
   let v_ms = fcQTemporaryFile_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc autoRemove*(self: QTemporaryFile, ): bool =
+proc autoRemove*(self: gen_qtemporaryfile_types.QTemporaryFile, ): bool =
 
   fcQTemporaryFile_autoRemove(self.h)
 
-proc setAutoRemove*(self: QTemporaryFile, b: bool): void =
+proc setAutoRemove*(self: gen_qtemporaryfile_types.QTemporaryFile, b: bool): void =
 
   fcQTemporaryFile_setAutoRemove(self.h, b)
 
-proc open*(self: QTemporaryFile, ): bool =
+proc open*(self: gen_qtemporaryfile_types.QTemporaryFile, ): bool =
 
   fcQTemporaryFile_open(self.h)
 
-proc fileName*(self: QTemporaryFile, ): string =
+proc fileName*(self: gen_qtemporaryfile_types.QTemporaryFile, ): string =
 
   let v_ms = fcQTemporaryFile_fileName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc fileTemplate*(self: QTemporaryFile, ): string =
+proc fileTemplate*(self: gen_qtemporaryfile_types.QTemporaryFile, ): string =
 
   let v_ms = fcQTemporaryFile_fileTemplate(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setFileTemplate*(self: QTemporaryFile, name: string): void =
+proc setFileTemplate*(self: gen_qtemporaryfile_types.QTemporaryFile, name: string): void =
 
   fcQTemporaryFile_setFileTemplate(self.h, struct_miqt_string(data: name, len: csize_t(len(name))))
 
-proc rename*(self: QTemporaryFile, newName: string): bool =
+proc rename*(self: gen_qtemporaryfile_types.QTemporaryFile, newName: string): bool =
 
   fcQTemporaryFile_rename(self.h, struct_miqt_string(data: newName, len: csize_t(len(newName))))
 
-proc createNativeFile*(_: type QTemporaryFile, fileName: string): QTemporaryFile =
+proc createNativeFile*(_: type gen_qtemporaryfile_types.QTemporaryFile, fileName: string): gen_qtemporaryfile_types.QTemporaryFile =
 
-  QTemporaryFile(h: fcQTemporaryFile_createNativeFile(struct_miqt_string(data: fileName, len: csize_t(len(fileName)))))
+  gen_qtemporaryfile_types.QTemporaryFile(h: fcQTemporaryFile_createNativeFile(struct_miqt_string(data: fileName, len: csize_t(len(fileName)))))
 
-proc createNativeFileWithFile*(_: type QTemporaryFile, file: gen_qfile.QFile): QTemporaryFile =
+proc createNativeFileWithFile*(_: type gen_qtemporaryfile_types.QTemporaryFile, file: gen_qfile.QFile): gen_qtemporaryfile_types.QTemporaryFile =
 
-  QTemporaryFile(h: fcQTemporaryFile_createNativeFileWithFile(file.h))
+  gen_qtemporaryfile_types.QTemporaryFile(h: fcQTemporaryFile_createNativeFileWithFile(file.h))
 
-proc tr2*(_: type QTemporaryFile, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qtemporaryfile_types.QTemporaryFile, s: cstring, c: cstring): string =
 
   let v_ms = fcQTemporaryFile_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QTemporaryFile, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qtemporaryfile_types.QTemporaryFile, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQTemporaryFile_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QTemporaryFile, ): gen_qobjectdefs.QMetaObject =
-
+proc QTemporaryFilemetaObject*(self: gen_qtemporaryfile_types.QTemporaryFile, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQTemporaryFile_virtualbase_metaObject(self.h))
 
-type QTemporaryFilemetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QTemporaryFile, slot: proc(super: QTemporaryFilemetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QTemporaryFilemetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qtemporaryfile_types.QTemporaryFile, slot: QTemporaryFilemetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QTemporaryFilemetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QTemporaryFilemetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTemporaryFile_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTemporaryFile_metaObject(self: ptr cQTemporaryFile, slot: int): pointer {.exportc: "miqt_exec_callback_QTemporaryFile_metaObject ".} =
-  type Cb = proc(super: QTemporaryFilemetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QTemporaryFile(h: self), )
+  var nimfunc = cast[ptr QTemporaryFilemetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QTemporaryFile, param1: cstring): pointer =
-
+proc QTemporaryFilemetacast*(self: gen_qtemporaryfile_types.QTemporaryFile, param1: cstring): pointer =
 
   fQTemporaryFile_virtualbase_metacast(self.h, param1)
 
-type QTemporaryFilemetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QTemporaryFile, slot: proc(super: QTemporaryFilemetacastBase, param1: cstring): pointer) =
+type QTemporaryFilemetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qtemporaryfile_types.QTemporaryFile, slot: QTemporaryFilemetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QTemporaryFilemetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QTemporaryFilemetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTemporaryFile_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTemporaryFile_metacast(self: ptr cQTemporaryFile, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QTemporaryFile_metacast ".} =
-  type Cb = proc(super: QTemporaryFilemetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QTemporaryFile(h: self), param1)
+  var nimfunc = cast[ptr QTemporaryFilemetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QTemporaryFile, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QTemporaryFilemetacall*(self: gen_qtemporaryfile_types.QTemporaryFile, param1: cint, param2: cint, param3: pointer): cint =
 
   fQTemporaryFile_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QTemporaryFilemetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QTemporaryFile, slot: proc(super: QTemporaryFilemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QTemporaryFilemetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qtemporaryfile_types.QTemporaryFile, slot: QTemporaryFilemetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QTemporaryFilemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QTemporaryFilemetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTemporaryFile_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTemporaryFile_metacall(self: ptr cQTemporaryFile, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QTemporaryFile_metacall ".} =
-  type Cb = proc(super: QTemporaryFilemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QTemporaryFile(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QTemporaryFilemetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_fileName(self: QTemporaryFile, ): string =
-
+proc QTemporaryFilefileName*(self: gen_qtemporaryfile_types.QTemporaryFile, ): string =
 
   let v_ms = fQTemporaryFile_virtualbase_fileName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-type QTemporaryFilefileNameBase* = proc(): string
-proc onfileName*(self: QTemporaryFile, slot: proc(super: QTemporaryFilefileNameBase): string) =
+type QTemporaryFilefileNameProc* = proc(): string
+proc onfileName*(self: gen_qtemporaryfile_types.QTemporaryFile, slot: QTemporaryFilefileNameProc) =
   # TODO check subclass
-  type Cb = proc(super: QTemporaryFilefileNameBase): string
-  var tmp = new Cb
+  var tmp = new QTemporaryFilefileNameProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTemporaryFile_override_virtual_fileName(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTemporaryFile_fileName(self: ptr cQTemporaryFile, slot: int): struct_miqt_string {.exportc: "miqt_exec_callback_QTemporaryFile_fileName ".} =
-  type Cb = proc(super: QTemporaryFilefileNameBase): string
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_fileName(QTemporaryFile(h: self), )
+  var nimfunc = cast[ptr QTemporaryFilefileNameProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
-proc callVirtualBase_openWithFlags(self: QTemporaryFile, flags: gen_qiodevicebase.QIODeviceBaseOpenModeFlag): bool =
-
+proc QTemporaryFileopenWithFlags*(self: gen_qtemporaryfile_types.QTemporaryFile, flags: cint): bool =
 
   fQTemporaryFile_virtualbase_openWithFlags(self.h, cint(flags))
 
-type QTemporaryFileopenWithFlagsBase* = proc(flags: gen_qiodevicebase.QIODeviceBaseOpenModeFlag): bool
-proc onopenWithFlags*(self: QTemporaryFile, slot: proc(super: QTemporaryFileopenWithFlagsBase, flags: gen_qiodevicebase.QIODeviceBaseOpenModeFlag): bool) =
+type QTemporaryFileopenWithFlagsProc* = proc(flags: cint): bool
+proc onopenWithFlags*(self: gen_qtemporaryfile_types.QTemporaryFile, slot: QTemporaryFileopenWithFlagsProc) =
   # TODO check subclass
-  type Cb = proc(super: QTemporaryFileopenWithFlagsBase, flags: gen_qiodevicebase.QIODeviceBaseOpenModeFlag): bool
-  var tmp = new Cb
+  var tmp = new QTemporaryFileopenWithFlagsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTemporaryFile_override_virtual_openWithFlags(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTemporaryFile_openWithFlags(self: ptr cQTemporaryFile, slot: int, flags: cint): bool {.exportc: "miqt_exec_callback_QTemporaryFile_openWithFlags ".} =
-  type Cb = proc(super: QTemporaryFileopenWithFlagsBase, flags: gen_qiodevicebase.QIODeviceBaseOpenModeFlag): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(flags: gen_qiodevicebase.QIODeviceBaseOpenModeFlag): auto =
-    callVirtualBase_openWithFlags(QTemporaryFile(h: self), flags)
-  let slotval1 = gen_qiodevicebase.QIODeviceBaseOpenModeFlag(flags)
+  var nimfunc = cast[ptr QTemporaryFileopenWithFlagsProc](cast[pointer](slot))
+  let slotval1 = cint(flags)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_size(self: QTemporaryFile, ): clonglong =
-
+proc QTemporaryFilesize*(self: gen_qtemporaryfile_types.QTemporaryFile, ): clonglong =
 
   fQTemporaryFile_virtualbase_size(self.h)
 
-type QTemporaryFilesizeBase* = proc(): clonglong
-proc onsize*(self: QTemporaryFile, slot: proc(super: QTemporaryFilesizeBase): clonglong) =
+type QTemporaryFilesizeProc* = proc(): clonglong
+proc onsize*(self: gen_qtemporaryfile_types.QTemporaryFile, slot: QTemporaryFilesizeProc) =
   # TODO check subclass
-  type Cb = proc(super: QTemporaryFilesizeBase): clonglong
-  var tmp = new Cb
+  var tmp = new QTemporaryFilesizeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTemporaryFile_override_virtual_size(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTemporaryFile_size(self: ptr cQTemporaryFile, slot: int): clonglong {.exportc: "miqt_exec_callback_QTemporaryFile_size ".} =
-  type Cb = proc(super: QTemporaryFilesizeBase): clonglong
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_size(QTemporaryFile(h: self), )
+  var nimfunc = cast[ptr QTemporaryFilesizeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_resize(self: QTemporaryFile, sz: clonglong): bool =
-
+proc QTemporaryFileresize*(self: gen_qtemporaryfile_types.QTemporaryFile, sz: clonglong): bool =
 
   fQTemporaryFile_virtualbase_resize(self.h, sz)
 
-type QTemporaryFileresizeBase* = proc(sz: clonglong): bool
-proc onresize*(self: QTemporaryFile, slot: proc(super: QTemporaryFileresizeBase, sz: clonglong): bool) =
+type QTemporaryFileresizeProc* = proc(sz: clonglong): bool
+proc onresize*(self: gen_qtemporaryfile_types.QTemporaryFile, slot: QTemporaryFileresizeProc) =
   # TODO check subclass
-  type Cb = proc(super: QTemporaryFileresizeBase, sz: clonglong): bool
-  var tmp = new Cb
+  var tmp = new QTemporaryFileresizeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTemporaryFile_override_virtual_resize(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTemporaryFile_resize(self: ptr cQTemporaryFile, slot: int, sz: clonglong): bool {.exportc: "miqt_exec_callback_QTemporaryFile_resize ".} =
-  type Cb = proc(super: QTemporaryFileresizeBase, sz: clonglong): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(sz: clonglong): auto =
-    callVirtualBase_resize(QTemporaryFile(h: self), sz)
+  var nimfunc = cast[ptr QTemporaryFileresizeProc](cast[pointer](slot))
   let slotval1 = sz
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_permissions(self: QTemporaryFile, ): gen_qfiledevice.QFileDevicePermission =
+proc QTemporaryFilepermissions*(self: gen_qtemporaryfile_types.QTemporaryFile, ): cint =
 
+  cint(fQTemporaryFile_virtualbase_permissions(self.h))
 
-  gen_qfiledevice.QFileDevicePermission(fQTemporaryFile_virtualbase_permissions(self.h))
-
-type QTemporaryFilepermissionsBase* = proc(): gen_qfiledevice.QFileDevicePermission
-proc onpermissions*(self: QTemporaryFile, slot: proc(super: QTemporaryFilepermissionsBase): gen_qfiledevice.QFileDevicePermission) =
+type QTemporaryFilepermissionsProc* = proc(): cint
+proc onpermissions*(self: gen_qtemporaryfile_types.QTemporaryFile, slot: QTemporaryFilepermissionsProc) =
   # TODO check subclass
-  type Cb = proc(super: QTemporaryFilepermissionsBase): gen_qfiledevice.QFileDevicePermission
-  var tmp = new Cb
+  var tmp = new QTemporaryFilepermissionsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTemporaryFile_override_virtual_permissions(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTemporaryFile_permissions(self: ptr cQTemporaryFile, slot: int): cint {.exportc: "miqt_exec_callback_QTemporaryFile_permissions ".} =
-  type Cb = proc(super: QTemporaryFilepermissionsBase): gen_qfiledevice.QFileDevicePermission
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_permissions(QTemporaryFile(h: self), )
+  var nimfunc = cast[ptr QTemporaryFilepermissionsProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   cint(virtualReturn)
-proc callVirtualBase_setPermissions(self: QTemporaryFile, permissionSpec: gen_qfiledevice.QFileDevicePermission): bool =
-
+proc QTemporaryFilesetPermissions*(self: gen_qtemporaryfile_types.QTemporaryFile, permissionSpec: cint): bool =
 
   fQTemporaryFile_virtualbase_setPermissions(self.h, cint(permissionSpec))
 
-type QTemporaryFilesetPermissionsBase* = proc(permissionSpec: gen_qfiledevice.QFileDevicePermission): bool
-proc onsetPermissions*(self: QTemporaryFile, slot: proc(super: QTemporaryFilesetPermissionsBase, permissionSpec: gen_qfiledevice.QFileDevicePermission): bool) =
+type QTemporaryFilesetPermissionsProc* = proc(permissionSpec: cint): bool
+proc onsetPermissions*(self: gen_qtemporaryfile_types.QTemporaryFile, slot: QTemporaryFilesetPermissionsProc) =
   # TODO check subclass
-  type Cb = proc(super: QTemporaryFilesetPermissionsBase, permissionSpec: gen_qfiledevice.QFileDevicePermission): bool
-  var tmp = new Cb
+  var tmp = new QTemporaryFilesetPermissionsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTemporaryFile_override_virtual_setPermissions(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTemporaryFile_setPermissions(self: ptr cQTemporaryFile, slot: int, permissionSpec: cint): bool {.exportc: "miqt_exec_callback_QTemporaryFile_setPermissions ".} =
-  type Cb = proc(super: QTemporaryFilesetPermissionsBase, permissionSpec: gen_qfiledevice.QFileDevicePermission): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(permissionSpec: gen_qfiledevice.QFileDevicePermission): auto =
-    callVirtualBase_setPermissions(QTemporaryFile(h: self), permissionSpec)
-  let slotval1 = gen_qfiledevice.QFileDevicePermission(permissionSpec)
+  var nimfunc = cast[ptr QTemporaryFilesetPermissionsProc](cast[pointer](slot))
+  let slotval1 = cint(permissionSpec)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_close(self: QTemporaryFile, ): void =
-
+proc QTemporaryFileclose*(self: gen_qtemporaryfile_types.QTemporaryFile, ): void =
 
   fQTemporaryFile_virtualbase_close(self.h)
 
-type QTemporaryFilecloseBase* = proc(): void
-proc onclose*(self: QTemporaryFile, slot: proc(super: QTemporaryFilecloseBase): void) =
+type QTemporaryFilecloseProc* = proc(): void
+proc onclose*(self: gen_qtemporaryfile_types.QTemporaryFile, slot: QTemporaryFilecloseProc) =
   # TODO check subclass
-  type Cb = proc(super: QTemporaryFilecloseBase): void
-  var tmp = new Cb
+  var tmp = new QTemporaryFilecloseProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTemporaryFile_override_virtual_close(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTemporaryFile_close(self: ptr cQTemporaryFile, slot: int): void {.exportc: "miqt_exec_callback_QTemporaryFile_close ".} =
-  type Cb = proc(super: QTemporaryFilecloseBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_close(QTemporaryFile(h: self), )
+  var nimfunc = cast[ptr QTemporaryFilecloseProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_isSequential(self: QTemporaryFile, ): bool =
-
+  nimfunc[]()
+proc QTemporaryFileisSequential*(self: gen_qtemporaryfile_types.QTemporaryFile, ): bool =
 
   fQTemporaryFile_virtualbase_isSequential(self.h)
 
-type QTemporaryFileisSequentialBase* = proc(): bool
-proc onisSequential*(self: QTemporaryFile, slot: proc(super: QTemporaryFileisSequentialBase): bool) =
+type QTemporaryFileisSequentialProc* = proc(): bool
+proc onisSequential*(self: gen_qtemporaryfile_types.QTemporaryFile, slot: QTemporaryFileisSequentialProc) =
   # TODO check subclass
-  type Cb = proc(super: QTemporaryFileisSequentialBase): bool
-  var tmp = new Cb
+  var tmp = new QTemporaryFileisSequentialProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTemporaryFile_override_virtual_isSequential(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTemporaryFile_isSequential(self: ptr cQTemporaryFile, slot: int): bool {.exportc: "miqt_exec_callback_QTemporaryFile_isSequential ".} =
-  type Cb = proc(super: QTemporaryFileisSequentialBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_isSequential(QTemporaryFile(h: self), )
+  var nimfunc = cast[ptr QTemporaryFileisSequentialProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_pos(self: QTemporaryFile, ): clonglong =
-
+proc QTemporaryFilepos*(self: gen_qtemporaryfile_types.QTemporaryFile, ): clonglong =
 
   fQTemporaryFile_virtualbase_pos(self.h)
 
-type QTemporaryFileposBase* = proc(): clonglong
-proc onpos*(self: QTemporaryFile, slot: proc(super: QTemporaryFileposBase): clonglong) =
+type QTemporaryFileposProc* = proc(): clonglong
+proc onpos*(self: gen_qtemporaryfile_types.QTemporaryFile, slot: QTemporaryFileposProc) =
   # TODO check subclass
-  type Cb = proc(super: QTemporaryFileposBase): clonglong
-  var tmp = new Cb
+  var tmp = new QTemporaryFileposProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTemporaryFile_override_virtual_pos(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTemporaryFile_pos(self: ptr cQTemporaryFile, slot: int): clonglong {.exportc: "miqt_exec_callback_QTemporaryFile_pos ".} =
-  type Cb = proc(super: QTemporaryFileposBase): clonglong
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_pos(QTemporaryFile(h: self), )
+  var nimfunc = cast[ptr QTemporaryFileposProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_seek(self: QTemporaryFile, offset: clonglong): bool =
-
+proc QTemporaryFileseek*(self: gen_qtemporaryfile_types.QTemporaryFile, offset: clonglong): bool =
 
   fQTemporaryFile_virtualbase_seek(self.h, offset)
 
-type QTemporaryFileseekBase* = proc(offset: clonglong): bool
-proc onseek*(self: QTemporaryFile, slot: proc(super: QTemporaryFileseekBase, offset: clonglong): bool) =
+type QTemporaryFileseekProc* = proc(offset: clonglong): bool
+proc onseek*(self: gen_qtemporaryfile_types.QTemporaryFile, slot: QTemporaryFileseekProc) =
   # TODO check subclass
-  type Cb = proc(super: QTemporaryFileseekBase, offset: clonglong): bool
-  var tmp = new Cb
+  var tmp = new QTemporaryFileseekProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTemporaryFile_override_virtual_seek(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTemporaryFile_seek(self: ptr cQTemporaryFile, slot: int, offset: clonglong): bool {.exportc: "miqt_exec_callback_QTemporaryFile_seek ".} =
-  type Cb = proc(super: QTemporaryFileseekBase, offset: clonglong): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(offset: clonglong): auto =
-    callVirtualBase_seek(QTemporaryFile(h: self), offset)
+  var nimfunc = cast[ptr QTemporaryFileseekProc](cast[pointer](slot))
   let slotval1 = offset
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_atEnd(self: QTemporaryFile, ): bool =
-
+proc QTemporaryFileatEnd*(self: gen_qtemporaryfile_types.QTemporaryFile, ): bool =
 
   fQTemporaryFile_virtualbase_atEnd(self.h)
 
-type QTemporaryFileatEndBase* = proc(): bool
-proc onatEnd*(self: QTemporaryFile, slot: proc(super: QTemporaryFileatEndBase): bool) =
+type QTemporaryFileatEndProc* = proc(): bool
+proc onatEnd*(self: gen_qtemporaryfile_types.QTemporaryFile, slot: QTemporaryFileatEndProc) =
   # TODO check subclass
-  type Cb = proc(super: QTemporaryFileatEndBase): bool
-  var tmp = new Cb
+  var tmp = new QTemporaryFileatEndProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTemporaryFile_override_virtual_atEnd(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTemporaryFile_atEnd(self: ptr cQTemporaryFile, slot: int): bool {.exportc: "miqt_exec_callback_QTemporaryFile_atEnd ".} =
-  type Cb = proc(super: QTemporaryFileatEndBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_atEnd(QTemporaryFile(h: self), )
+  var nimfunc = cast[ptr QTemporaryFileatEndProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_readData(self: QTemporaryFile, data: cstring, maxlen: clonglong): clonglong =
-
+proc QTemporaryFilereadData*(self: gen_qtemporaryfile_types.QTemporaryFile, data: cstring, maxlen: clonglong): clonglong =
 
   fQTemporaryFile_virtualbase_readData(self.h, data, maxlen)
 
-type QTemporaryFilereadDataBase* = proc(data: cstring, maxlen: clonglong): clonglong
-proc onreadData*(self: QTemporaryFile, slot: proc(super: QTemporaryFilereadDataBase, data: cstring, maxlen: clonglong): clonglong) =
+type QTemporaryFilereadDataProc* = proc(data: cstring, maxlen: clonglong): clonglong
+proc onreadData*(self: gen_qtemporaryfile_types.QTemporaryFile, slot: QTemporaryFilereadDataProc) =
   # TODO check subclass
-  type Cb = proc(super: QTemporaryFilereadDataBase, data: cstring, maxlen: clonglong): clonglong
-  var tmp = new Cb
+  var tmp = new QTemporaryFilereadDataProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTemporaryFile_override_virtual_readData(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTemporaryFile_readData(self: ptr cQTemporaryFile, slot: int, data: cstring, maxlen: clonglong): clonglong {.exportc: "miqt_exec_callback_QTemporaryFile_readData ".} =
-  type Cb = proc(super: QTemporaryFilereadDataBase, data: cstring, maxlen: clonglong): clonglong
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(data: cstring, maxlen: clonglong): auto =
-    callVirtualBase_readData(QTemporaryFile(h: self), data, maxlen)
+  var nimfunc = cast[ptr QTemporaryFilereadDataProc](cast[pointer](slot))
   let slotval1 = (data)
 
   let slotval2 = maxlen
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_writeData(self: QTemporaryFile, data: cstring, len: clonglong): clonglong =
-
+proc QTemporaryFilewriteData*(self: gen_qtemporaryfile_types.QTemporaryFile, data: cstring, len: clonglong): clonglong =
 
   fQTemporaryFile_virtualbase_writeData(self.h, data, len)
 
-type QTemporaryFilewriteDataBase* = proc(data: cstring, len: clonglong): clonglong
-proc onwriteData*(self: QTemporaryFile, slot: proc(super: QTemporaryFilewriteDataBase, data: cstring, len: clonglong): clonglong) =
+type QTemporaryFilewriteDataProc* = proc(data: cstring, len: clonglong): clonglong
+proc onwriteData*(self: gen_qtemporaryfile_types.QTemporaryFile, slot: QTemporaryFilewriteDataProc) =
   # TODO check subclass
-  type Cb = proc(super: QTemporaryFilewriteDataBase, data: cstring, len: clonglong): clonglong
-  var tmp = new Cb
+  var tmp = new QTemporaryFilewriteDataProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTemporaryFile_override_virtual_writeData(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTemporaryFile_writeData(self: ptr cQTemporaryFile, slot: int, data: cstring, len: clonglong): clonglong {.exportc: "miqt_exec_callback_QTemporaryFile_writeData ".} =
-  type Cb = proc(super: QTemporaryFilewriteDataBase, data: cstring, len: clonglong): clonglong
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(data: cstring, len: clonglong): auto =
-    callVirtualBase_writeData(QTemporaryFile(h: self), data, len)
+  var nimfunc = cast[ptr QTemporaryFilewriteDataProc](cast[pointer](slot))
   let slotval1 = (data)
 
   let slotval2 = len
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_readLineData(self: QTemporaryFile, data: cstring, maxlen: clonglong): clonglong =
-
+proc QTemporaryFilereadLineData*(self: gen_qtemporaryfile_types.QTemporaryFile, data: cstring, maxlen: clonglong): clonglong =
 
   fQTemporaryFile_virtualbase_readLineData(self.h, data, maxlen)
 
-type QTemporaryFilereadLineDataBase* = proc(data: cstring, maxlen: clonglong): clonglong
-proc onreadLineData*(self: QTemporaryFile, slot: proc(super: QTemporaryFilereadLineDataBase, data: cstring, maxlen: clonglong): clonglong) =
+type QTemporaryFilereadLineDataProc* = proc(data: cstring, maxlen: clonglong): clonglong
+proc onreadLineData*(self: gen_qtemporaryfile_types.QTemporaryFile, slot: QTemporaryFilereadLineDataProc) =
   # TODO check subclass
-  type Cb = proc(super: QTemporaryFilereadLineDataBase, data: cstring, maxlen: clonglong): clonglong
-  var tmp = new Cb
+  var tmp = new QTemporaryFilereadLineDataProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTemporaryFile_override_virtual_readLineData(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTemporaryFile_readLineData(self: ptr cQTemporaryFile, slot: int, data: cstring, maxlen: clonglong): clonglong {.exportc: "miqt_exec_callback_QTemporaryFile_readLineData ".} =
-  type Cb = proc(super: QTemporaryFilereadLineDataBase, data: cstring, maxlen: clonglong): clonglong
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(data: cstring, maxlen: clonglong): auto =
-    callVirtualBase_readLineData(QTemporaryFile(h: self), data, maxlen)
+  var nimfunc = cast[ptr QTemporaryFilereadLineDataProc](cast[pointer](slot))
   let slotval1 = (data)
 
   let slotval2 = maxlen
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_reset(self: QTemporaryFile, ): bool =
-
+proc QTemporaryFilereset*(self: gen_qtemporaryfile_types.QTemporaryFile, ): bool =
 
   fQTemporaryFile_virtualbase_reset(self.h)
 
-type QTemporaryFileresetBase* = proc(): bool
-proc onreset*(self: QTemporaryFile, slot: proc(super: QTemporaryFileresetBase): bool) =
+type QTemporaryFileresetProc* = proc(): bool
+proc onreset*(self: gen_qtemporaryfile_types.QTemporaryFile, slot: QTemporaryFileresetProc) =
   # TODO check subclass
-  type Cb = proc(super: QTemporaryFileresetBase): bool
-  var tmp = new Cb
+  var tmp = new QTemporaryFileresetProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTemporaryFile_override_virtual_reset(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTemporaryFile_reset(self: ptr cQTemporaryFile, slot: int): bool {.exportc: "miqt_exec_callback_QTemporaryFile_reset ".} =
-  type Cb = proc(super: QTemporaryFileresetBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_reset(QTemporaryFile(h: self), )
+  var nimfunc = cast[ptr QTemporaryFileresetProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_bytesAvailable(self: QTemporaryFile, ): clonglong =
-
+proc QTemporaryFilebytesAvailable*(self: gen_qtemporaryfile_types.QTemporaryFile, ): clonglong =
 
   fQTemporaryFile_virtualbase_bytesAvailable(self.h)
 
-type QTemporaryFilebytesAvailableBase* = proc(): clonglong
-proc onbytesAvailable*(self: QTemporaryFile, slot: proc(super: QTemporaryFilebytesAvailableBase): clonglong) =
+type QTemporaryFilebytesAvailableProc* = proc(): clonglong
+proc onbytesAvailable*(self: gen_qtemporaryfile_types.QTemporaryFile, slot: QTemporaryFilebytesAvailableProc) =
   # TODO check subclass
-  type Cb = proc(super: QTemporaryFilebytesAvailableBase): clonglong
-  var tmp = new Cb
+  var tmp = new QTemporaryFilebytesAvailableProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTemporaryFile_override_virtual_bytesAvailable(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTemporaryFile_bytesAvailable(self: ptr cQTemporaryFile, slot: int): clonglong {.exportc: "miqt_exec_callback_QTemporaryFile_bytesAvailable ".} =
-  type Cb = proc(super: QTemporaryFilebytesAvailableBase): clonglong
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_bytesAvailable(QTemporaryFile(h: self), )
+  var nimfunc = cast[ptr QTemporaryFilebytesAvailableProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_bytesToWrite(self: QTemporaryFile, ): clonglong =
-
+proc QTemporaryFilebytesToWrite*(self: gen_qtemporaryfile_types.QTemporaryFile, ): clonglong =
 
   fQTemporaryFile_virtualbase_bytesToWrite(self.h)
 
-type QTemporaryFilebytesToWriteBase* = proc(): clonglong
-proc onbytesToWrite*(self: QTemporaryFile, slot: proc(super: QTemporaryFilebytesToWriteBase): clonglong) =
+type QTemporaryFilebytesToWriteProc* = proc(): clonglong
+proc onbytesToWrite*(self: gen_qtemporaryfile_types.QTemporaryFile, slot: QTemporaryFilebytesToWriteProc) =
   # TODO check subclass
-  type Cb = proc(super: QTemporaryFilebytesToWriteBase): clonglong
-  var tmp = new Cb
+  var tmp = new QTemporaryFilebytesToWriteProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTemporaryFile_override_virtual_bytesToWrite(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTemporaryFile_bytesToWrite(self: ptr cQTemporaryFile, slot: int): clonglong {.exportc: "miqt_exec_callback_QTemporaryFile_bytesToWrite ".} =
-  type Cb = proc(super: QTemporaryFilebytesToWriteBase): clonglong
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_bytesToWrite(QTemporaryFile(h: self), )
+  var nimfunc = cast[ptr QTemporaryFilebytesToWriteProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_canReadLine(self: QTemporaryFile, ): bool =
-
+proc QTemporaryFilecanReadLine*(self: gen_qtemporaryfile_types.QTemporaryFile, ): bool =
 
   fQTemporaryFile_virtualbase_canReadLine(self.h)
 
-type QTemporaryFilecanReadLineBase* = proc(): bool
-proc oncanReadLine*(self: QTemporaryFile, slot: proc(super: QTemporaryFilecanReadLineBase): bool) =
+type QTemporaryFilecanReadLineProc* = proc(): bool
+proc oncanReadLine*(self: gen_qtemporaryfile_types.QTemporaryFile, slot: QTemporaryFilecanReadLineProc) =
   # TODO check subclass
-  type Cb = proc(super: QTemporaryFilecanReadLineBase): bool
-  var tmp = new Cb
+  var tmp = new QTemporaryFilecanReadLineProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTemporaryFile_override_virtual_canReadLine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTemporaryFile_canReadLine(self: ptr cQTemporaryFile, slot: int): bool {.exportc: "miqt_exec_callback_QTemporaryFile_canReadLine ".} =
-  type Cb = proc(super: QTemporaryFilecanReadLineBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_canReadLine(QTemporaryFile(h: self), )
+  var nimfunc = cast[ptr QTemporaryFilecanReadLineProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_waitForReadyRead(self: QTemporaryFile, msecs: cint): bool =
-
+proc QTemporaryFilewaitForReadyRead*(self: gen_qtemporaryfile_types.QTemporaryFile, msecs: cint): bool =
 
   fQTemporaryFile_virtualbase_waitForReadyRead(self.h, msecs)
 
-type QTemporaryFilewaitForReadyReadBase* = proc(msecs: cint): bool
-proc onwaitForReadyRead*(self: QTemporaryFile, slot: proc(super: QTemporaryFilewaitForReadyReadBase, msecs: cint): bool) =
+type QTemporaryFilewaitForReadyReadProc* = proc(msecs: cint): bool
+proc onwaitForReadyRead*(self: gen_qtemporaryfile_types.QTemporaryFile, slot: QTemporaryFilewaitForReadyReadProc) =
   # TODO check subclass
-  type Cb = proc(super: QTemporaryFilewaitForReadyReadBase, msecs: cint): bool
-  var tmp = new Cb
+  var tmp = new QTemporaryFilewaitForReadyReadProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTemporaryFile_override_virtual_waitForReadyRead(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTemporaryFile_waitForReadyRead(self: ptr cQTemporaryFile, slot: int, msecs: cint): bool {.exportc: "miqt_exec_callback_QTemporaryFile_waitForReadyRead ".} =
-  type Cb = proc(super: QTemporaryFilewaitForReadyReadBase, msecs: cint): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(msecs: cint): auto =
-    callVirtualBase_waitForReadyRead(QTemporaryFile(h: self), msecs)
+  var nimfunc = cast[ptr QTemporaryFilewaitForReadyReadProc](cast[pointer](slot))
   let slotval1 = msecs
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_waitForBytesWritten(self: QTemporaryFile, msecs: cint): bool =
-
+proc QTemporaryFilewaitForBytesWritten*(self: gen_qtemporaryfile_types.QTemporaryFile, msecs: cint): bool =
 
   fQTemporaryFile_virtualbase_waitForBytesWritten(self.h, msecs)
 
-type QTemporaryFilewaitForBytesWrittenBase* = proc(msecs: cint): bool
-proc onwaitForBytesWritten*(self: QTemporaryFile, slot: proc(super: QTemporaryFilewaitForBytesWrittenBase, msecs: cint): bool) =
+type QTemporaryFilewaitForBytesWrittenProc* = proc(msecs: cint): bool
+proc onwaitForBytesWritten*(self: gen_qtemporaryfile_types.QTemporaryFile, slot: QTemporaryFilewaitForBytesWrittenProc) =
   # TODO check subclass
-  type Cb = proc(super: QTemporaryFilewaitForBytesWrittenBase, msecs: cint): bool
-  var tmp = new Cb
+  var tmp = new QTemporaryFilewaitForBytesWrittenProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTemporaryFile_override_virtual_waitForBytesWritten(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTemporaryFile_waitForBytesWritten(self: ptr cQTemporaryFile, slot: int, msecs: cint): bool {.exportc: "miqt_exec_callback_QTemporaryFile_waitForBytesWritten ".} =
-  type Cb = proc(super: QTemporaryFilewaitForBytesWrittenBase, msecs: cint): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(msecs: cint): auto =
-    callVirtualBase_waitForBytesWritten(QTemporaryFile(h: self), msecs)
+  var nimfunc = cast[ptr QTemporaryFilewaitForBytesWrittenProc](cast[pointer](slot))
   let slotval1 = msecs
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_skipData(self: QTemporaryFile, maxSize: clonglong): clonglong =
-
+proc QTemporaryFileskipData*(self: gen_qtemporaryfile_types.QTemporaryFile, maxSize: clonglong): clonglong =
 
   fQTemporaryFile_virtualbase_skipData(self.h, maxSize)
 
-type QTemporaryFileskipDataBase* = proc(maxSize: clonglong): clonglong
-proc onskipData*(self: QTemporaryFile, slot: proc(super: QTemporaryFileskipDataBase, maxSize: clonglong): clonglong) =
+type QTemporaryFileskipDataProc* = proc(maxSize: clonglong): clonglong
+proc onskipData*(self: gen_qtemporaryfile_types.QTemporaryFile, slot: QTemporaryFileskipDataProc) =
   # TODO check subclass
-  type Cb = proc(super: QTemporaryFileskipDataBase, maxSize: clonglong): clonglong
-  var tmp = new Cb
+  var tmp = new QTemporaryFileskipDataProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTemporaryFile_override_virtual_skipData(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTemporaryFile_skipData(self: ptr cQTemporaryFile, slot: int, maxSize: clonglong): clonglong {.exportc: "miqt_exec_callback_QTemporaryFile_skipData ".} =
-  type Cb = proc(super: QTemporaryFileskipDataBase, maxSize: clonglong): clonglong
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(maxSize: clonglong): auto =
-    callVirtualBase_skipData(QTemporaryFile(h: self), maxSize)
+  var nimfunc = cast[ptr QTemporaryFileskipDataProc](cast[pointer](slot))
   let slotval1 = maxSize
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_event(self: QTemporaryFile, event: gen_qcoreevent.QEvent): bool =
-
+proc QTemporaryFileevent*(self: gen_qtemporaryfile_types.QTemporaryFile, event: gen_qcoreevent.QEvent): bool =
 
   fQTemporaryFile_virtualbase_event(self.h, event.h)
 
-type QTemporaryFileeventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QTemporaryFile, slot: proc(super: QTemporaryFileeventBase, event: gen_qcoreevent.QEvent): bool) =
+type QTemporaryFileeventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qtemporaryfile_types.QTemporaryFile, slot: QTemporaryFileeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTemporaryFileeventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QTemporaryFileeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTemporaryFile_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTemporaryFile_event(self: ptr cQTemporaryFile, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QTemporaryFile_event ".} =
-  type Cb = proc(super: QTemporaryFileeventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QTemporaryFile(h: self), event)
+  var nimfunc = cast[ptr QTemporaryFileeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QTemporaryFile, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QTemporaryFileeventFilter*(self: gen_qtemporaryfile_types.QTemporaryFile, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQTemporaryFile_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QTemporaryFileeventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QTemporaryFile, slot: proc(super: QTemporaryFileeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QTemporaryFileeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qtemporaryfile_types.QTemporaryFile, slot: QTemporaryFileeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QTemporaryFileeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QTemporaryFileeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTemporaryFile_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTemporaryFile_eventFilter(self: ptr cQTemporaryFile, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QTemporaryFile_eventFilter ".} =
-  type Cb = proc(super: QTemporaryFileeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QTemporaryFile(h: self), watched, event)
+  var nimfunc = cast[ptr QTemporaryFileeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QTemporaryFile, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QTemporaryFiletimerEvent*(self: gen_qtemporaryfile_types.QTemporaryFile, event: gen_qcoreevent.QTimerEvent): void =
 
   fQTemporaryFile_virtualbase_timerEvent(self.h, event.h)
 
-type QTemporaryFiletimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QTemporaryFile, slot: proc(super: QTemporaryFiletimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QTemporaryFiletimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qtemporaryfile_types.QTemporaryFile, slot: QTemporaryFiletimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTemporaryFiletimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QTemporaryFiletimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTemporaryFile_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTemporaryFile_timerEvent(self: ptr cQTemporaryFile, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTemporaryFile_timerEvent ".} =
-  type Cb = proc(super: QTemporaryFiletimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QTemporaryFile(h: self), event)
+  var nimfunc = cast[ptr QTemporaryFiletimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QTemporaryFile, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QTemporaryFilechildEvent*(self: gen_qtemporaryfile_types.QTemporaryFile, event: gen_qcoreevent.QChildEvent): void =
 
   fQTemporaryFile_virtualbase_childEvent(self.h, event.h)
 
-type QTemporaryFilechildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QTemporaryFile, slot: proc(super: QTemporaryFilechildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QTemporaryFilechildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qtemporaryfile_types.QTemporaryFile, slot: QTemporaryFilechildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTemporaryFilechildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QTemporaryFilechildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTemporaryFile_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTemporaryFile_childEvent(self: ptr cQTemporaryFile, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTemporaryFile_childEvent ".} =
-  type Cb = proc(super: QTemporaryFilechildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QTemporaryFile(h: self), event)
+  var nimfunc = cast[ptr QTemporaryFilechildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QTemporaryFile, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QTemporaryFilecustomEvent*(self: gen_qtemporaryfile_types.QTemporaryFile, event: gen_qcoreevent.QEvent): void =
 
   fQTemporaryFile_virtualbase_customEvent(self.h, event.h)
 
-type QTemporaryFilecustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QTemporaryFile, slot: proc(super: QTemporaryFilecustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QTemporaryFilecustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qtemporaryfile_types.QTemporaryFile, slot: QTemporaryFilecustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTemporaryFilecustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QTemporaryFilecustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTemporaryFile_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTemporaryFile_customEvent(self: ptr cQTemporaryFile, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTemporaryFile_customEvent ".} =
-  type Cb = proc(super: QTemporaryFilecustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QTemporaryFile(h: self), event)
+  var nimfunc = cast[ptr QTemporaryFilecustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QTemporaryFile, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QTemporaryFileconnectNotify*(self: gen_qtemporaryfile_types.QTemporaryFile, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQTemporaryFile_virtualbase_connectNotify(self.h, signal.h)
 
-type QTemporaryFileconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QTemporaryFile, slot: proc(super: QTemporaryFileconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QTemporaryFileconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qtemporaryfile_types.QTemporaryFile, slot: QTemporaryFileconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QTemporaryFileconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QTemporaryFileconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTemporaryFile_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTemporaryFile_connectNotify(self: ptr cQTemporaryFile, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QTemporaryFile_connectNotify ".} =
-  type Cb = proc(super: QTemporaryFileconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QTemporaryFile(h: self), signal)
+  var nimfunc = cast[ptr QTemporaryFileconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QTemporaryFile, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QTemporaryFiledisconnectNotify*(self: gen_qtemporaryfile_types.QTemporaryFile, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQTemporaryFile_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QTemporaryFiledisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QTemporaryFile, slot: proc(super: QTemporaryFiledisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QTemporaryFiledisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qtemporaryfile_types.QTemporaryFile, slot: QTemporaryFiledisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QTemporaryFiledisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QTemporaryFiledisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTemporaryFile_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTemporaryFile_disconnectNotify(self: ptr cQTemporaryFile, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QTemporaryFile_disconnectNotify ".} =
-  type Cb = proc(super: QTemporaryFiledisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QTemporaryFile(h: self), signal)
+  var nimfunc = cast[ptr QTemporaryFiledisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QTemporaryFile): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qtemporaryfile_types.QTemporaryFile): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQTemporaryFile_staticMetaObject())
-proc delete*(self: QTemporaryFile) =
+proc delete*(self: gen_qtemporaryfile_types.QTemporaryFile) =
   fcQTemporaryFile_delete(self.h)

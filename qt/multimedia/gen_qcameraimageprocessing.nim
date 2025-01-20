@@ -34,34 +34,30 @@ const cflags = gorge("pkg-config -cflags Qt5MultimediaWidgets")
 {.compile("gen_qcameraimageprocessing.cpp", cflags).}
 
 
-type QCameraImageProcessingWhiteBalanceMode* = cint
-const
-  QCameraImageProcessingWhiteBalanceAuto* = 0
-  QCameraImageProcessingWhiteBalanceManual* = 1
-  QCameraImageProcessingWhiteBalanceSunlight* = 2
-  QCameraImageProcessingWhiteBalanceCloudy* = 3
-  QCameraImageProcessingWhiteBalanceShade* = 4
-  QCameraImageProcessingWhiteBalanceTungsten* = 5
-  QCameraImageProcessingWhiteBalanceFluorescent* = 6
-  QCameraImageProcessingWhiteBalanceFlash* = 7
-  QCameraImageProcessingWhiteBalanceSunset* = 8
-  QCameraImageProcessingWhiteBalanceVendor* = 1000
+type QCameraImageProcessingWhiteBalanceModeEnum* = distinct cint
+template WhiteBalanceAuto*(_: type QCameraImageProcessingWhiteBalanceModeEnum): untyped = 0
+template WhiteBalanceManual*(_: type QCameraImageProcessingWhiteBalanceModeEnum): untyped = 1
+template WhiteBalanceSunlight*(_: type QCameraImageProcessingWhiteBalanceModeEnum): untyped = 2
+template WhiteBalanceCloudy*(_: type QCameraImageProcessingWhiteBalanceModeEnum): untyped = 3
+template WhiteBalanceShade*(_: type QCameraImageProcessingWhiteBalanceModeEnum): untyped = 4
+template WhiteBalanceTungsten*(_: type QCameraImageProcessingWhiteBalanceModeEnum): untyped = 5
+template WhiteBalanceFluorescent*(_: type QCameraImageProcessingWhiteBalanceModeEnum): untyped = 6
+template WhiteBalanceFlash*(_: type QCameraImageProcessingWhiteBalanceModeEnum): untyped = 7
+template WhiteBalanceSunset*(_: type QCameraImageProcessingWhiteBalanceModeEnum): untyped = 8
+template WhiteBalanceVendor*(_: type QCameraImageProcessingWhiteBalanceModeEnum): untyped = 1000
 
 
-
-type QCameraImageProcessingColorFilter* = cint
-const
-  QCameraImageProcessingColorFilterNone* = 0
-  QCameraImageProcessingColorFilterGrayscale* = 1
-  QCameraImageProcessingColorFilterNegative* = 2
-  QCameraImageProcessingColorFilterSolarize* = 3
-  QCameraImageProcessingColorFilterSepia* = 4
-  QCameraImageProcessingColorFilterPosterize* = 5
-  QCameraImageProcessingColorFilterWhiteboard* = 6
-  QCameraImageProcessingColorFilterBlackboard* = 7
-  QCameraImageProcessingColorFilterAqua* = 8
-  QCameraImageProcessingColorFilterVendor* = 1000
-
+type QCameraImageProcessingColorFilterEnum* = distinct cint
+template ColorFilterNone*(_: type QCameraImageProcessingColorFilterEnum): untyped = 0
+template ColorFilterGrayscale*(_: type QCameraImageProcessingColorFilterEnum): untyped = 1
+template ColorFilterNegative*(_: type QCameraImageProcessingColorFilterEnum): untyped = 2
+template ColorFilterSolarize*(_: type QCameraImageProcessingColorFilterEnum): untyped = 3
+template ColorFilterSepia*(_: type QCameraImageProcessingColorFilterEnum): untyped = 4
+template ColorFilterPosterize*(_: type QCameraImageProcessingColorFilterEnum): untyped = 5
+template ColorFilterWhiteboard*(_: type QCameraImageProcessingColorFilterEnum): untyped = 6
+template ColorFilterBlackboard*(_: type QCameraImageProcessingColorFilterEnum): untyped = 7
+template ColorFilterAqua*(_: type QCameraImageProcessingColorFilterEnum): untyped = 8
+template ColorFilterVendor*(_: type QCameraImageProcessingColorFilterEnum): untyped = 1000
 
 
 import gen_qcameraimageprocessing_types
@@ -107,137 +103,137 @@ proc fcQCameraImageProcessing_trUtf83(s: cstring, c: cstring, n: cint): struct_m
 proc fcQCameraImageProcessing_staticMetaObject(): pointer {.importc: "QCameraImageProcessing_staticMetaObject".}
 
 
-func init*(T: type QCameraImageProcessing, h: ptr cQCameraImageProcessing): QCameraImageProcessing =
+func init*(T: type gen_qcameraimageprocessing_types.QCameraImageProcessing, h: ptr cQCameraImageProcessing): gen_qcameraimageprocessing_types.QCameraImageProcessing =
   T(h: h)
-proc metaObject*(self: QCameraImageProcessing, ): gen_qobjectdefs.QMetaObject =
+proc metaObject*(self: gen_qcameraimageprocessing_types.QCameraImageProcessing, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQCameraImageProcessing_metaObject(self.h))
 
-proc metacast*(self: QCameraImageProcessing, param1: cstring): pointer =
+proc metacast*(self: gen_qcameraimageprocessing_types.QCameraImageProcessing, param1: cstring): pointer =
 
   fcQCameraImageProcessing_metacast(self.h, param1)
 
-proc metacall*(self: QCameraImageProcessing, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qcameraimageprocessing_types.QCameraImageProcessing, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQCameraImageProcessing_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QCameraImageProcessing, s: cstring): string =
+proc tr*(_: type gen_qcameraimageprocessing_types.QCameraImageProcessing, s: cstring): string =
 
   let v_ms = fcQCameraImageProcessing_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QCameraImageProcessing, s: cstring): string =
+proc trUtf8*(_: type gen_qcameraimageprocessing_types.QCameraImageProcessing, s: cstring): string =
 
   let v_ms = fcQCameraImageProcessing_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc isAvailable*(self: QCameraImageProcessing, ): bool =
+proc isAvailable*(self: gen_qcameraimageprocessing_types.QCameraImageProcessing, ): bool =
 
   fcQCameraImageProcessing_isAvailable(self.h)
 
-proc whiteBalanceMode*(self: QCameraImageProcessing, ): QCameraImageProcessingWhiteBalanceMode =
+proc whiteBalanceMode*(self: gen_qcameraimageprocessing_types.QCameraImageProcessing, ): cint =
 
-  QCameraImageProcessingWhiteBalanceMode(fcQCameraImageProcessing_whiteBalanceMode(self.h))
+  cint(fcQCameraImageProcessing_whiteBalanceMode(self.h))
 
-proc setWhiteBalanceMode*(self: QCameraImageProcessing, mode: QCameraImageProcessingWhiteBalanceMode): void =
+proc setWhiteBalanceMode*(self: gen_qcameraimageprocessing_types.QCameraImageProcessing, mode: cint): void =
 
   fcQCameraImageProcessing_setWhiteBalanceMode(self.h, cint(mode))
 
-proc isWhiteBalanceModeSupported*(self: QCameraImageProcessing, mode: QCameraImageProcessingWhiteBalanceMode): bool =
+proc isWhiteBalanceModeSupported*(self: gen_qcameraimageprocessing_types.QCameraImageProcessing, mode: cint): bool =
 
   fcQCameraImageProcessing_isWhiteBalanceModeSupported(self.h, cint(mode))
 
-proc manualWhiteBalance*(self: QCameraImageProcessing, ): float64 =
+proc manualWhiteBalance*(self: gen_qcameraimageprocessing_types.QCameraImageProcessing, ): float64 =
 
   fcQCameraImageProcessing_manualWhiteBalance(self.h)
 
-proc setManualWhiteBalance*(self: QCameraImageProcessing, colorTemperature: float64): void =
+proc setManualWhiteBalance*(self: gen_qcameraimageprocessing_types.QCameraImageProcessing, colorTemperature: float64): void =
 
   fcQCameraImageProcessing_setManualWhiteBalance(self.h, colorTemperature)
 
-proc brightness*(self: QCameraImageProcessing, ): float64 =
+proc brightness*(self: gen_qcameraimageprocessing_types.QCameraImageProcessing, ): float64 =
 
   fcQCameraImageProcessing_brightness(self.h)
 
-proc setBrightness*(self: QCameraImageProcessing, value: float64): void =
+proc setBrightness*(self: gen_qcameraimageprocessing_types.QCameraImageProcessing, value: float64): void =
 
   fcQCameraImageProcessing_setBrightness(self.h, value)
 
-proc contrast*(self: QCameraImageProcessing, ): float64 =
+proc contrast*(self: gen_qcameraimageprocessing_types.QCameraImageProcessing, ): float64 =
 
   fcQCameraImageProcessing_contrast(self.h)
 
-proc setContrast*(self: QCameraImageProcessing, value: float64): void =
+proc setContrast*(self: gen_qcameraimageprocessing_types.QCameraImageProcessing, value: float64): void =
 
   fcQCameraImageProcessing_setContrast(self.h, value)
 
-proc saturation*(self: QCameraImageProcessing, ): float64 =
+proc saturation*(self: gen_qcameraimageprocessing_types.QCameraImageProcessing, ): float64 =
 
   fcQCameraImageProcessing_saturation(self.h)
 
-proc setSaturation*(self: QCameraImageProcessing, value: float64): void =
+proc setSaturation*(self: gen_qcameraimageprocessing_types.QCameraImageProcessing, value: float64): void =
 
   fcQCameraImageProcessing_setSaturation(self.h, value)
 
-proc sharpeningLevel*(self: QCameraImageProcessing, ): float64 =
+proc sharpeningLevel*(self: gen_qcameraimageprocessing_types.QCameraImageProcessing, ): float64 =
 
   fcQCameraImageProcessing_sharpeningLevel(self.h)
 
-proc setSharpeningLevel*(self: QCameraImageProcessing, value: float64): void =
+proc setSharpeningLevel*(self: gen_qcameraimageprocessing_types.QCameraImageProcessing, value: float64): void =
 
   fcQCameraImageProcessing_setSharpeningLevel(self.h, value)
 
-proc denoisingLevel*(self: QCameraImageProcessing, ): float64 =
+proc denoisingLevel*(self: gen_qcameraimageprocessing_types.QCameraImageProcessing, ): float64 =
 
   fcQCameraImageProcessing_denoisingLevel(self.h)
 
-proc setDenoisingLevel*(self: QCameraImageProcessing, value: float64): void =
+proc setDenoisingLevel*(self: gen_qcameraimageprocessing_types.QCameraImageProcessing, value: float64): void =
 
   fcQCameraImageProcessing_setDenoisingLevel(self.h, value)
 
-proc colorFilter*(self: QCameraImageProcessing, ): QCameraImageProcessingColorFilter =
+proc colorFilter*(self: gen_qcameraimageprocessing_types.QCameraImageProcessing, ): cint =
 
-  QCameraImageProcessingColorFilter(fcQCameraImageProcessing_colorFilter(self.h))
+  cint(fcQCameraImageProcessing_colorFilter(self.h))
 
-proc setColorFilter*(self: QCameraImageProcessing, filter: QCameraImageProcessingColorFilter): void =
+proc setColorFilter*(self: gen_qcameraimageprocessing_types.QCameraImageProcessing, filter: cint): void =
 
   fcQCameraImageProcessing_setColorFilter(self.h, cint(filter))
 
-proc isColorFilterSupported*(self: QCameraImageProcessing, filter: QCameraImageProcessingColorFilter): bool =
+proc isColorFilterSupported*(self: gen_qcameraimageprocessing_types.QCameraImageProcessing, filter: cint): bool =
 
   fcQCameraImageProcessing_isColorFilterSupported(self.h, cint(filter))
 
-proc tr2*(_: type QCameraImageProcessing, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qcameraimageprocessing_types.QCameraImageProcessing, s: cstring, c: cstring): string =
 
   let v_ms = fcQCameraImageProcessing_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QCameraImageProcessing, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qcameraimageprocessing_types.QCameraImageProcessing, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQCameraImageProcessing_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QCameraImageProcessing, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qcameraimageprocessing_types.QCameraImageProcessing, s: cstring, c: cstring): string =
 
   let v_ms = fcQCameraImageProcessing_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QCameraImageProcessing, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qcameraimageprocessing_types.QCameraImageProcessing, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQCameraImageProcessing_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc staticMetaObject*(_: type QCameraImageProcessing): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qcameraimageprocessing_types.QCameraImageProcessing): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQCameraImageProcessing_staticMetaObject())

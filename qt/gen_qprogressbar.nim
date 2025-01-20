@@ -34,11 +34,9 @@ const cflags = gorge("pkg-config -cflags Qt5Widgets")
 {.compile("gen_qprogressbar.cpp", cflags).}
 
 
-type QProgressBarDirection* = cint
-const
-  QProgressBarTopToBottom* = 0
-  QProgressBarBottomToTop* = 1
-
+type QProgressBarDirectionEnum* = distinct cint
+template TopToBottom*(_: type QProgressBarDirectionEnum): untyped = 0
+template BottomToTop*(_: type QProgressBarDirectionEnum): untyped = 1
 
 
 import gen_qprogressbar_types
@@ -48,7 +46,6 @@ import
   gen_qcoreevent,
   gen_qevent,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -62,7 +59,6 @@ export
   gen_qcoreevent,
   gen_qevent,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -218,143 +214,143 @@ proc fcQProgressBar_staticMetaObject(): pointer {.importc: "QProgressBar_staticM
 proc fcQProgressBar_delete(self: pointer) {.importc: "QProgressBar_delete".}
 
 
-func init*(T: type QProgressBar, h: ptr cQProgressBar): QProgressBar =
+func init*(T: type gen_qprogressbar_types.QProgressBar, h: ptr cQProgressBar): gen_qprogressbar_types.QProgressBar =
   T(h: h)
-proc create*(T: type QProgressBar, parent: gen_qwidget.QWidget): QProgressBar =
+proc create*(T: type gen_qprogressbar_types.QProgressBar, parent: gen_qwidget.QWidget): gen_qprogressbar_types.QProgressBar =
 
-  QProgressBar.init(fcQProgressBar_new(parent.h))
-proc create*(T: type QProgressBar, ): QProgressBar =
+  gen_qprogressbar_types.QProgressBar.init(fcQProgressBar_new(parent.h))
+proc create*(T: type gen_qprogressbar_types.QProgressBar, ): gen_qprogressbar_types.QProgressBar =
 
-  QProgressBar.init(fcQProgressBar_new2())
-proc metaObject*(self: QProgressBar, ): gen_qobjectdefs.QMetaObject =
+  gen_qprogressbar_types.QProgressBar.init(fcQProgressBar_new2())
+proc metaObject*(self: gen_qprogressbar_types.QProgressBar, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQProgressBar_metaObject(self.h))
 
-proc metacast*(self: QProgressBar, param1: cstring): pointer =
+proc metacast*(self: gen_qprogressbar_types.QProgressBar, param1: cstring): pointer =
 
   fcQProgressBar_metacast(self.h, param1)
 
-proc metacall*(self: QProgressBar, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qprogressbar_types.QProgressBar, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQProgressBar_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QProgressBar, s: cstring): string =
+proc tr*(_: type gen_qprogressbar_types.QProgressBar, s: cstring): string =
 
   let v_ms = fcQProgressBar_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QProgressBar, s: cstring): string =
+proc trUtf8*(_: type gen_qprogressbar_types.QProgressBar, s: cstring): string =
 
   let v_ms = fcQProgressBar_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc minimum*(self: QProgressBar, ): cint =
+proc minimum*(self: gen_qprogressbar_types.QProgressBar, ): cint =
 
   fcQProgressBar_minimum(self.h)
 
-proc maximum*(self: QProgressBar, ): cint =
+proc maximum*(self: gen_qprogressbar_types.QProgressBar, ): cint =
 
   fcQProgressBar_maximum(self.h)
 
-proc value*(self: QProgressBar, ): cint =
+proc value*(self: gen_qprogressbar_types.QProgressBar, ): cint =
 
   fcQProgressBar_value(self.h)
 
-proc text*(self: QProgressBar, ): string =
+proc text*(self: gen_qprogressbar_types.QProgressBar, ): string =
 
   let v_ms = fcQProgressBar_text(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setTextVisible*(self: QProgressBar, visible: bool): void =
+proc setTextVisible*(self: gen_qprogressbar_types.QProgressBar, visible: bool): void =
 
   fcQProgressBar_setTextVisible(self.h, visible)
 
-proc isTextVisible*(self: QProgressBar, ): bool =
+proc isTextVisible*(self: gen_qprogressbar_types.QProgressBar, ): bool =
 
   fcQProgressBar_isTextVisible(self.h)
 
-proc alignment*(self: QProgressBar, ): gen_qnamespace.AlignmentFlag =
+proc alignment*(self: gen_qprogressbar_types.QProgressBar, ): cint =
 
-  gen_qnamespace.AlignmentFlag(fcQProgressBar_alignment(self.h))
+  cint(fcQProgressBar_alignment(self.h))
 
-proc setAlignment*(self: QProgressBar, alignment: gen_qnamespace.AlignmentFlag): void =
+proc setAlignment*(self: gen_qprogressbar_types.QProgressBar, alignment: cint): void =
 
   fcQProgressBar_setAlignment(self.h, cint(alignment))
 
-proc sizeHint*(self: QProgressBar, ): gen_qsize.QSize =
+proc sizeHint*(self: gen_qprogressbar_types.QProgressBar, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQProgressBar_sizeHint(self.h))
 
-proc minimumSizeHint*(self: QProgressBar, ): gen_qsize.QSize =
+proc minimumSizeHint*(self: gen_qprogressbar_types.QProgressBar, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQProgressBar_minimumSizeHint(self.h))
 
-proc orientation*(self: QProgressBar, ): gen_qnamespace.Orientation =
+proc orientation*(self: gen_qprogressbar_types.QProgressBar, ): cint =
 
-  gen_qnamespace.Orientation(fcQProgressBar_orientation(self.h))
+  cint(fcQProgressBar_orientation(self.h))
 
-proc setInvertedAppearance*(self: QProgressBar, invert: bool): void =
+proc setInvertedAppearance*(self: gen_qprogressbar_types.QProgressBar, invert: bool): void =
 
   fcQProgressBar_setInvertedAppearance(self.h, invert)
 
-proc invertedAppearance*(self: QProgressBar, ): bool =
+proc invertedAppearance*(self: gen_qprogressbar_types.QProgressBar, ): bool =
 
   fcQProgressBar_invertedAppearance(self.h)
 
-proc setTextDirection*(self: QProgressBar, textDirection: QProgressBarDirection): void =
+proc setTextDirection*(self: gen_qprogressbar_types.QProgressBar, textDirection: cint): void =
 
   fcQProgressBar_setTextDirection(self.h, cint(textDirection))
 
-proc textDirection*(self: QProgressBar, ): QProgressBarDirection =
+proc textDirection*(self: gen_qprogressbar_types.QProgressBar, ): cint =
 
-  QProgressBarDirection(fcQProgressBar_textDirection(self.h))
+  cint(fcQProgressBar_textDirection(self.h))
 
-proc setFormat*(self: QProgressBar, format: string): void =
+proc setFormat*(self: gen_qprogressbar_types.QProgressBar, format: string): void =
 
   fcQProgressBar_setFormat(self.h, struct_miqt_string(data: format, len: csize_t(len(format))))
 
-proc resetFormat*(self: QProgressBar, ): void =
+proc resetFormat*(self: gen_qprogressbar_types.QProgressBar, ): void =
 
   fcQProgressBar_resetFormat(self.h)
 
-proc format*(self: QProgressBar, ): string =
+proc format*(self: gen_qprogressbar_types.QProgressBar, ): string =
 
   let v_ms = fcQProgressBar_format(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc reset*(self: QProgressBar, ): void =
+proc reset*(self: gen_qprogressbar_types.QProgressBar, ): void =
 
   fcQProgressBar_reset(self.h)
 
-proc setRange*(self: QProgressBar, minimum: cint, maximum: cint): void =
+proc setRange*(self: gen_qprogressbar_types.QProgressBar, minimum: cint, maximum: cint): void =
 
   fcQProgressBar_setRange(self.h, minimum, maximum)
 
-proc setMinimum*(self: QProgressBar, minimum: cint): void =
+proc setMinimum*(self: gen_qprogressbar_types.QProgressBar, minimum: cint): void =
 
   fcQProgressBar_setMinimum(self.h, minimum)
 
-proc setMaximum*(self: QProgressBar, maximum: cint): void =
+proc setMaximum*(self: gen_qprogressbar_types.QProgressBar, maximum: cint): void =
 
   fcQProgressBar_setMaximum(self.h, maximum)
 
-proc setValue*(self: QProgressBar, value: cint): void =
+proc setValue*(self: gen_qprogressbar_types.QProgressBar, value: cint): void =
 
   fcQProgressBar_setValue(self.h, value)
 
-proc setOrientation*(self: QProgressBar, orientation: gen_qnamespace.Orientation): void =
+proc setOrientation*(self: gen_qprogressbar_types.QProgressBar, orientation: cint): void =
 
   fcQProgressBar_setOrientation(self.h, cint(orientation))
 
-proc valueChanged*(self: QProgressBar, value: cint): void =
+proc valueChanged*(self: gen_qprogressbar_types.QProgressBar, value: cint): void =
 
   fcQProgressBar_valueChanged(self.h, value)
 
@@ -366,902 +362,717 @@ proc miqt_exec_callback_QProgressBar_valueChanged(slot: int, value: cint) {.expo
 
   nimfunc[](slotval1)
 
-proc onvalueChanged*(self: QProgressBar, slot: proc(value: cint)) =
+proc onvalueChanged*(self: gen_qprogressbar_types.QProgressBar, slot: proc(value: cint)) =
   type Cb = proc(value: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQProgressBar_connect_valueChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QProgressBar, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qprogressbar_types.QProgressBar, s: cstring, c: cstring): string =
 
   let v_ms = fcQProgressBar_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QProgressBar, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qprogressbar_types.QProgressBar, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQProgressBar_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QProgressBar, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qprogressbar_types.QProgressBar, s: cstring, c: cstring): string =
 
   let v_ms = fcQProgressBar_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QProgressBar, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qprogressbar_types.QProgressBar, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQProgressBar_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QProgressBar, ): gen_qobjectdefs.QMetaObject =
-
+proc QProgressBarmetaObject*(self: gen_qprogressbar_types.QProgressBar, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQProgressBar_virtualbase_metaObject(self.h))
 
-type QProgressBarmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QProgressBar, slot: proc(super: QProgressBarmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QProgressBarmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qprogressbar_types.QProgressBar, slot: QProgressBarmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressBarmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QProgressBarmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressBar_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressBar_metaObject(self: ptr cQProgressBar, slot: int): pointer {.exportc: "miqt_exec_callback_QProgressBar_metaObject ".} =
-  type Cb = proc(super: QProgressBarmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QProgressBar(h: self), )
+  var nimfunc = cast[ptr QProgressBarmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QProgressBar, param1: cstring): pointer =
-
+proc QProgressBarmetacast*(self: gen_qprogressbar_types.QProgressBar, param1: cstring): pointer =
 
   fQProgressBar_virtualbase_metacast(self.h, param1)
 
-type QProgressBarmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QProgressBar, slot: proc(super: QProgressBarmetacastBase, param1: cstring): pointer) =
+type QProgressBarmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qprogressbar_types.QProgressBar, slot: QProgressBarmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressBarmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QProgressBarmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressBar_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressBar_metacast(self: ptr cQProgressBar, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QProgressBar_metacast ".} =
-  type Cb = proc(super: QProgressBarmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QProgressBar(h: self), param1)
+  var nimfunc = cast[ptr QProgressBarmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QProgressBar, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QProgressBarmetacall*(self: gen_qprogressbar_types.QProgressBar, param1: cint, param2: cint, param3: pointer): cint =
 
   fQProgressBar_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QProgressBarmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QProgressBar, slot: proc(super: QProgressBarmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QProgressBarmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qprogressbar_types.QProgressBar, slot: QProgressBarmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressBarmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QProgressBarmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressBar_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressBar_metacall(self: ptr cQProgressBar, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QProgressBar_metacall ".} =
-  type Cb = proc(super: QProgressBarmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QProgressBar(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QProgressBarmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_text(self: QProgressBar, ): string =
-
+proc QProgressBartext*(self: gen_qprogressbar_types.QProgressBar, ): string =
 
   let v_ms = fQProgressBar_virtualbase_text(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-type QProgressBartextBase* = proc(): string
-proc ontext*(self: QProgressBar, slot: proc(super: QProgressBartextBase): string) =
+type QProgressBartextProc* = proc(): string
+proc ontext*(self: gen_qprogressbar_types.QProgressBar, slot: QProgressBartextProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressBartextBase): string
-  var tmp = new Cb
+  var tmp = new QProgressBartextProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressBar_override_virtual_text(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressBar_text(self: ptr cQProgressBar, slot: int): struct_miqt_string {.exportc: "miqt_exec_callback_QProgressBar_text ".} =
-  type Cb = proc(super: QProgressBartextBase): string
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_text(QProgressBar(h: self), )
+  var nimfunc = cast[ptr QProgressBartextProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
-proc callVirtualBase_sizeHint(self: QProgressBar, ): gen_qsize.QSize =
-
+proc QProgressBarsizeHint*(self: gen_qprogressbar_types.QProgressBar, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQProgressBar_virtualbase_sizeHint(self.h))
 
-type QProgressBarsizeHintBase* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: QProgressBar, slot: proc(super: QProgressBarsizeHintBase): gen_qsize.QSize) =
+type QProgressBarsizeHintProc* = proc(): gen_qsize.QSize
+proc onsizeHint*(self: gen_qprogressbar_types.QProgressBar, slot: QProgressBarsizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressBarsizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QProgressBarsizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressBar_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressBar_sizeHint(self: ptr cQProgressBar, slot: int): pointer {.exportc: "miqt_exec_callback_QProgressBar_sizeHint ".} =
-  type Cb = proc(super: QProgressBarsizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sizeHint(QProgressBar(h: self), )
+  var nimfunc = cast[ptr QProgressBarsizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_minimumSizeHint(self: QProgressBar, ): gen_qsize.QSize =
-
+proc QProgressBarminimumSizeHint*(self: gen_qprogressbar_types.QProgressBar, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQProgressBar_virtualbase_minimumSizeHint(self.h))
 
-type QProgressBarminimumSizeHintBase* = proc(): gen_qsize.QSize
-proc onminimumSizeHint*(self: QProgressBar, slot: proc(super: QProgressBarminimumSizeHintBase): gen_qsize.QSize) =
+type QProgressBarminimumSizeHintProc* = proc(): gen_qsize.QSize
+proc onminimumSizeHint*(self: gen_qprogressbar_types.QProgressBar, slot: QProgressBarminimumSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressBarminimumSizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QProgressBarminimumSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressBar_override_virtual_minimumSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressBar_minimumSizeHint(self: ptr cQProgressBar, slot: int): pointer {.exportc: "miqt_exec_callback_QProgressBar_minimumSizeHint ".} =
-  type Cb = proc(super: QProgressBarminimumSizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_minimumSizeHint(QProgressBar(h: self), )
+  var nimfunc = cast[ptr QProgressBarminimumSizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_event(self: QProgressBar, e: gen_qcoreevent.QEvent): bool =
-
+proc QProgressBarevent*(self: gen_qprogressbar_types.QProgressBar, e: gen_qcoreevent.QEvent): bool =
 
   fQProgressBar_virtualbase_event(self.h, e.h)
 
-type QProgressBareventBase* = proc(e: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QProgressBar, slot: proc(super: QProgressBareventBase, e: gen_qcoreevent.QEvent): bool) =
+type QProgressBareventProc* = proc(e: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qprogressbar_types.QProgressBar, slot: QProgressBareventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressBareventBase, e: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QProgressBareventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressBar_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressBar_event(self: ptr cQProgressBar, slot: int, e: pointer): bool {.exportc: "miqt_exec_callback_QProgressBar_event ".} =
-  type Cb = proc(super: QProgressBareventBase, e: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QProgressBar(h: self), e)
+  var nimfunc = cast[ptr QProgressBareventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: e)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_paintEvent(self: QProgressBar, param1: gen_qevent.QPaintEvent): void =
-
+proc QProgressBarpaintEvent*(self: gen_qprogressbar_types.QProgressBar, param1: gen_qevent.QPaintEvent): void =
 
   fQProgressBar_virtualbase_paintEvent(self.h, param1.h)
 
-type QProgressBarpaintEventBase* = proc(param1: gen_qevent.QPaintEvent): void
-proc onpaintEvent*(self: QProgressBar, slot: proc(super: QProgressBarpaintEventBase, param1: gen_qevent.QPaintEvent): void) =
+type QProgressBarpaintEventProc* = proc(param1: gen_qevent.QPaintEvent): void
+proc onpaintEvent*(self: gen_qprogressbar_types.QProgressBar, slot: QProgressBarpaintEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressBarpaintEventBase, param1: gen_qevent.QPaintEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressBarpaintEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressBar_override_virtual_paintEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressBar_paintEvent(self: ptr cQProgressBar, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QProgressBar_paintEvent ".} =
-  type Cb = proc(super: QProgressBarpaintEventBase, param1: gen_qevent.QPaintEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QPaintEvent): auto =
-    callVirtualBase_paintEvent(QProgressBar(h: self), param1)
+  var nimfunc = cast[ptr QProgressBarpaintEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QPaintEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_devType(self: QProgressBar, ): cint =
-
+  nimfunc[](slotval1)
+proc QProgressBardevType*(self: gen_qprogressbar_types.QProgressBar, ): cint =
 
   fQProgressBar_virtualbase_devType(self.h)
 
-type QProgressBardevTypeBase* = proc(): cint
-proc ondevType*(self: QProgressBar, slot: proc(super: QProgressBardevTypeBase): cint) =
+type QProgressBardevTypeProc* = proc(): cint
+proc ondevType*(self: gen_qprogressbar_types.QProgressBar, slot: QProgressBardevTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressBardevTypeBase): cint
-  var tmp = new Cb
+  var tmp = new QProgressBardevTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressBar_override_virtual_devType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressBar_devType(self: ptr cQProgressBar, slot: int): cint {.exportc: "miqt_exec_callback_QProgressBar_devType ".} =
-  type Cb = proc(super: QProgressBardevTypeBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_devType(QProgressBar(h: self), )
+  var nimfunc = cast[ptr QProgressBardevTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setVisible(self: QProgressBar, visible: bool): void =
-
+proc QProgressBarsetVisible*(self: gen_qprogressbar_types.QProgressBar, visible: bool): void =
 
   fQProgressBar_virtualbase_setVisible(self.h, visible)
 
-type QProgressBarsetVisibleBase* = proc(visible: bool): void
-proc onsetVisible*(self: QProgressBar, slot: proc(super: QProgressBarsetVisibleBase, visible: bool): void) =
+type QProgressBarsetVisibleProc* = proc(visible: bool): void
+proc onsetVisible*(self: gen_qprogressbar_types.QProgressBar, slot: QProgressBarsetVisibleProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressBarsetVisibleBase, visible: bool): void
-  var tmp = new Cb
+  var tmp = new QProgressBarsetVisibleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressBar_override_virtual_setVisible(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressBar_setVisible(self: ptr cQProgressBar, slot: int, visible: bool): void {.exportc: "miqt_exec_callback_QProgressBar_setVisible ".} =
-  type Cb = proc(super: QProgressBarsetVisibleBase, visible: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(visible: bool): auto =
-    callVirtualBase_setVisible(QProgressBar(h: self), visible)
+  var nimfunc = cast[ptr QProgressBarsetVisibleProc](cast[pointer](slot))
   let slotval1 = visible
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_heightForWidth(self: QProgressBar, param1: cint): cint =
-
+  nimfunc[](slotval1)
+proc QProgressBarheightForWidth*(self: gen_qprogressbar_types.QProgressBar, param1: cint): cint =
 
   fQProgressBar_virtualbase_heightForWidth(self.h, param1)
 
-type QProgressBarheightForWidthBase* = proc(param1: cint): cint
-proc onheightForWidth*(self: QProgressBar, slot: proc(super: QProgressBarheightForWidthBase, param1: cint): cint) =
+type QProgressBarheightForWidthProc* = proc(param1: cint): cint
+proc onheightForWidth*(self: gen_qprogressbar_types.QProgressBar, slot: QProgressBarheightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressBarheightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QProgressBarheightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressBar_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressBar_heightForWidth(self: ptr cQProgressBar, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QProgressBar_heightForWidth ".} =
-  type Cb = proc(super: QProgressBarheightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_heightForWidth(QProgressBar(h: self), param1)
+  var nimfunc = cast[ptr QProgressBarheightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_hasHeightForWidth(self: QProgressBar, ): bool =
-
+proc QProgressBarhasHeightForWidth*(self: gen_qprogressbar_types.QProgressBar, ): bool =
 
   fQProgressBar_virtualbase_hasHeightForWidth(self.h)
 
-type QProgressBarhasHeightForWidthBase* = proc(): bool
-proc onhasHeightForWidth*(self: QProgressBar, slot: proc(super: QProgressBarhasHeightForWidthBase): bool) =
+type QProgressBarhasHeightForWidthProc* = proc(): bool
+proc onhasHeightForWidth*(self: gen_qprogressbar_types.QProgressBar, slot: QProgressBarhasHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressBarhasHeightForWidthBase): bool
-  var tmp = new Cb
+  var tmp = new QProgressBarhasHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressBar_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressBar_hasHeightForWidth(self: ptr cQProgressBar, slot: int): bool {.exportc: "miqt_exec_callback_QProgressBar_hasHeightForWidth ".} =
-  type Cb = proc(super: QProgressBarhasHeightForWidthBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasHeightForWidth(QProgressBar(h: self), )
+  var nimfunc = cast[ptr QProgressBarhasHeightForWidthProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_paintEngine(self: QProgressBar, ): gen_qpaintengine.QPaintEngine =
-
+proc QProgressBarpaintEngine*(self: gen_qprogressbar_types.QProgressBar, ): gen_qpaintengine.QPaintEngine =
 
   gen_qpaintengine.QPaintEngine(h: fQProgressBar_virtualbase_paintEngine(self.h))
 
-type QProgressBarpaintEngineBase* = proc(): gen_qpaintengine.QPaintEngine
-proc onpaintEngine*(self: QProgressBar, slot: proc(super: QProgressBarpaintEngineBase): gen_qpaintengine.QPaintEngine) =
+type QProgressBarpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
+proc onpaintEngine*(self: gen_qprogressbar_types.QProgressBar, slot: QProgressBarpaintEngineProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressBarpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var tmp = new Cb
+  var tmp = new QProgressBarpaintEngineProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressBar_override_virtual_paintEngine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressBar_paintEngine(self: ptr cQProgressBar, slot: int): pointer {.exportc: "miqt_exec_callback_QProgressBar_paintEngine ".} =
-  type Cb = proc(super: QProgressBarpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_paintEngine(QProgressBar(h: self), )
+  var nimfunc = cast[ptr QProgressBarpaintEngineProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_mousePressEvent(self: QProgressBar, event: gen_qevent.QMouseEvent): void =
-
+proc QProgressBarmousePressEvent*(self: gen_qprogressbar_types.QProgressBar, event: gen_qevent.QMouseEvent): void =
 
   fQProgressBar_virtualbase_mousePressEvent(self.h, event.h)
 
-type QProgressBarmousePressEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmousePressEvent*(self: QProgressBar, slot: proc(super: QProgressBarmousePressEventBase, event: gen_qevent.QMouseEvent): void) =
+type QProgressBarmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmousePressEvent*(self: gen_qprogressbar_types.QProgressBar, slot: QProgressBarmousePressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressBarmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressBarmousePressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressBar_override_virtual_mousePressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressBar_mousePressEvent(self: ptr cQProgressBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QProgressBar_mousePressEvent ".} =
-  type Cb = proc(super: QProgressBarmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mousePressEvent(QProgressBar(h: self), event)
+  var nimfunc = cast[ptr QProgressBarmousePressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseReleaseEvent(self: QProgressBar, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QProgressBarmouseReleaseEvent*(self: gen_qprogressbar_types.QProgressBar, event: gen_qevent.QMouseEvent): void =
 
   fQProgressBar_virtualbase_mouseReleaseEvent(self.h, event.h)
 
-type QProgressBarmouseReleaseEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseReleaseEvent*(self: QProgressBar, slot: proc(super: QProgressBarmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void) =
+type QProgressBarmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseReleaseEvent*(self: gen_qprogressbar_types.QProgressBar, slot: QProgressBarmouseReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressBarmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressBarmouseReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressBar_override_virtual_mouseReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressBar_mouseReleaseEvent(self: ptr cQProgressBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QProgressBar_mouseReleaseEvent ".} =
-  type Cb = proc(super: QProgressBarmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseReleaseEvent(QProgressBar(h: self), event)
+  var nimfunc = cast[ptr QProgressBarmouseReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseDoubleClickEvent(self: QProgressBar, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QProgressBarmouseDoubleClickEvent*(self: gen_qprogressbar_types.QProgressBar, event: gen_qevent.QMouseEvent): void =
 
   fQProgressBar_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
-type QProgressBarmouseDoubleClickEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseDoubleClickEvent*(self: QProgressBar, slot: proc(super: QProgressBarmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void) =
+type QProgressBarmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseDoubleClickEvent*(self: gen_qprogressbar_types.QProgressBar, slot: QProgressBarmouseDoubleClickEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressBarmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressBarmouseDoubleClickEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressBar_override_virtual_mouseDoubleClickEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressBar_mouseDoubleClickEvent(self: ptr cQProgressBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QProgressBar_mouseDoubleClickEvent ".} =
-  type Cb = proc(super: QProgressBarmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseDoubleClickEvent(QProgressBar(h: self), event)
+  var nimfunc = cast[ptr QProgressBarmouseDoubleClickEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseMoveEvent(self: QProgressBar, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QProgressBarmouseMoveEvent*(self: gen_qprogressbar_types.QProgressBar, event: gen_qevent.QMouseEvent): void =
 
   fQProgressBar_virtualbase_mouseMoveEvent(self.h, event.h)
 
-type QProgressBarmouseMoveEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseMoveEvent*(self: QProgressBar, slot: proc(super: QProgressBarmouseMoveEventBase, event: gen_qevent.QMouseEvent): void) =
+type QProgressBarmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseMoveEvent*(self: gen_qprogressbar_types.QProgressBar, slot: QProgressBarmouseMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressBarmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressBarmouseMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressBar_override_virtual_mouseMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressBar_mouseMoveEvent(self: ptr cQProgressBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QProgressBar_mouseMoveEvent ".} =
-  type Cb = proc(super: QProgressBarmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseMoveEvent(QProgressBar(h: self), event)
+  var nimfunc = cast[ptr QProgressBarmouseMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_wheelEvent(self: QProgressBar, event: gen_qevent.QWheelEvent): void =
-
+  nimfunc[](slotval1)
+proc QProgressBarwheelEvent*(self: gen_qprogressbar_types.QProgressBar, event: gen_qevent.QWheelEvent): void =
 
   fQProgressBar_virtualbase_wheelEvent(self.h, event.h)
 
-type QProgressBarwheelEventBase* = proc(event: gen_qevent.QWheelEvent): void
-proc onwheelEvent*(self: QProgressBar, slot: proc(super: QProgressBarwheelEventBase, event: gen_qevent.QWheelEvent): void) =
+type QProgressBarwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
+proc onwheelEvent*(self: gen_qprogressbar_types.QProgressBar, slot: QProgressBarwheelEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressBarwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressBarwheelEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressBar_override_virtual_wheelEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressBar_wheelEvent(self: ptr cQProgressBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QProgressBar_wheelEvent ".} =
-  type Cb = proc(super: QProgressBarwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QWheelEvent): auto =
-    callVirtualBase_wheelEvent(QProgressBar(h: self), event)
+  var nimfunc = cast[ptr QProgressBarwheelEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QWheelEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyPressEvent(self: QProgressBar, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QProgressBarkeyPressEvent*(self: gen_qprogressbar_types.QProgressBar, event: gen_qevent.QKeyEvent): void =
 
   fQProgressBar_virtualbase_keyPressEvent(self.h, event.h)
 
-type QProgressBarkeyPressEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyPressEvent*(self: QProgressBar, slot: proc(super: QProgressBarkeyPressEventBase, event: gen_qevent.QKeyEvent): void) =
+type QProgressBarkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyPressEvent*(self: gen_qprogressbar_types.QProgressBar, slot: QProgressBarkeyPressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressBarkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressBarkeyPressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressBar_override_virtual_keyPressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressBar_keyPressEvent(self: ptr cQProgressBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QProgressBar_keyPressEvent ".} =
-  type Cb = proc(super: QProgressBarkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyPressEvent(QProgressBar(h: self), event)
+  var nimfunc = cast[ptr QProgressBarkeyPressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyReleaseEvent(self: QProgressBar, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QProgressBarkeyReleaseEvent*(self: gen_qprogressbar_types.QProgressBar, event: gen_qevent.QKeyEvent): void =
 
   fQProgressBar_virtualbase_keyReleaseEvent(self.h, event.h)
 
-type QProgressBarkeyReleaseEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyReleaseEvent*(self: QProgressBar, slot: proc(super: QProgressBarkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void) =
+type QProgressBarkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyReleaseEvent*(self: gen_qprogressbar_types.QProgressBar, slot: QProgressBarkeyReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressBarkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressBarkeyReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressBar_override_virtual_keyReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressBar_keyReleaseEvent(self: ptr cQProgressBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QProgressBar_keyReleaseEvent ".} =
-  type Cb = proc(super: QProgressBarkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyReleaseEvent(QProgressBar(h: self), event)
+  var nimfunc = cast[ptr QProgressBarkeyReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusInEvent(self: QProgressBar, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QProgressBarfocusInEvent*(self: gen_qprogressbar_types.QProgressBar, event: gen_qevent.QFocusEvent): void =
 
   fQProgressBar_virtualbase_focusInEvent(self.h, event.h)
 
-type QProgressBarfocusInEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusInEvent*(self: QProgressBar, slot: proc(super: QProgressBarfocusInEventBase, event: gen_qevent.QFocusEvent): void) =
+type QProgressBarfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusInEvent*(self: gen_qprogressbar_types.QProgressBar, slot: QProgressBarfocusInEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressBarfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressBarfocusInEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressBar_override_virtual_focusInEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressBar_focusInEvent(self: ptr cQProgressBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QProgressBar_focusInEvent ".} =
-  type Cb = proc(super: QProgressBarfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusInEvent(QProgressBar(h: self), event)
+  var nimfunc = cast[ptr QProgressBarfocusInEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusOutEvent(self: QProgressBar, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QProgressBarfocusOutEvent*(self: gen_qprogressbar_types.QProgressBar, event: gen_qevent.QFocusEvent): void =
 
   fQProgressBar_virtualbase_focusOutEvent(self.h, event.h)
 
-type QProgressBarfocusOutEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusOutEvent*(self: QProgressBar, slot: proc(super: QProgressBarfocusOutEventBase, event: gen_qevent.QFocusEvent): void) =
+type QProgressBarfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusOutEvent*(self: gen_qprogressbar_types.QProgressBar, slot: QProgressBarfocusOutEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressBarfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressBarfocusOutEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressBar_override_virtual_focusOutEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressBar_focusOutEvent(self: ptr cQProgressBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QProgressBar_focusOutEvent ".} =
-  type Cb = proc(super: QProgressBarfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusOutEvent(QProgressBar(h: self), event)
+  var nimfunc = cast[ptr QProgressBarfocusOutEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_enterEvent(self: QProgressBar, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QProgressBarenterEvent*(self: gen_qprogressbar_types.QProgressBar, event: gen_qcoreevent.QEvent): void =
 
   fQProgressBar_virtualbase_enterEvent(self.h, event.h)
 
-type QProgressBarenterEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onenterEvent*(self: QProgressBar, slot: proc(super: QProgressBarenterEventBase, event: gen_qcoreevent.QEvent): void) =
+type QProgressBarenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onenterEvent*(self: gen_qprogressbar_types.QProgressBar, slot: QProgressBarenterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressBarenterEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressBarenterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressBar_override_virtual_enterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressBar_enterEvent(self: ptr cQProgressBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QProgressBar_enterEvent ".} =
-  type Cb = proc(super: QProgressBarenterEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_enterEvent(QProgressBar(h: self), event)
+  var nimfunc = cast[ptr QProgressBarenterEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_leaveEvent(self: QProgressBar, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QProgressBarleaveEvent*(self: gen_qprogressbar_types.QProgressBar, event: gen_qcoreevent.QEvent): void =
 
   fQProgressBar_virtualbase_leaveEvent(self.h, event.h)
 
-type QProgressBarleaveEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onleaveEvent*(self: QProgressBar, slot: proc(super: QProgressBarleaveEventBase, event: gen_qcoreevent.QEvent): void) =
+type QProgressBarleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onleaveEvent*(self: gen_qprogressbar_types.QProgressBar, slot: QProgressBarleaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressBarleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressBarleaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressBar_override_virtual_leaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressBar_leaveEvent(self: ptr cQProgressBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QProgressBar_leaveEvent ".} =
-  type Cb = proc(super: QProgressBarleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_leaveEvent(QProgressBar(h: self), event)
+  var nimfunc = cast[ptr QProgressBarleaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_moveEvent(self: QProgressBar, event: gen_qevent.QMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QProgressBarmoveEvent*(self: gen_qprogressbar_types.QProgressBar, event: gen_qevent.QMoveEvent): void =
 
   fQProgressBar_virtualbase_moveEvent(self.h, event.h)
 
-type QProgressBarmoveEventBase* = proc(event: gen_qevent.QMoveEvent): void
-proc onmoveEvent*(self: QProgressBar, slot: proc(super: QProgressBarmoveEventBase, event: gen_qevent.QMoveEvent): void) =
+type QProgressBarmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
+proc onmoveEvent*(self: gen_qprogressbar_types.QProgressBar, slot: QProgressBarmoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressBarmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressBarmoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressBar_override_virtual_moveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressBar_moveEvent(self: ptr cQProgressBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QProgressBar_moveEvent ".} =
-  type Cb = proc(super: QProgressBarmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMoveEvent): auto =
-    callVirtualBase_moveEvent(QProgressBar(h: self), event)
+  var nimfunc = cast[ptr QProgressBarmoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_resizeEvent(self: QProgressBar, event: gen_qevent.QResizeEvent): void =
-
+  nimfunc[](slotval1)
+proc QProgressBarresizeEvent*(self: gen_qprogressbar_types.QProgressBar, event: gen_qevent.QResizeEvent): void =
 
   fQProgressBar_virtualbase_resizeEvent(self.h, event.h)
 
-type QProgressBarresizeEventBase* = proc(event: gen_qevent.QResizeEvent): void
-proc onresizeEvent*(self: QProgressBar, slot: proc(super: QProgressBarresizeEventBase, event: gen_qevent.QResizeEvent): void) =
+type QProgressBarresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
+proc onresizeEvent*(self: gen_qprogressbar_types.QProgressBar, slot: QProgressBarresizeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressBarresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressBarresizeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressBar_override_virtual_resizeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressBar_resizeEvent(self: ptr cQProgressBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QProgressBar_resizeEvent ".} =
-  type Cb = proc(super: QProgressBarresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QResizeEvent): auto =
-    callVirtualBase_resizeEvent(QProgressBar(h: self), event)
+  var nimfunc = cast[ptr QProgressBarresizeEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QResizeEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_closeEvent(self: QProgressBar, event: gen_qevent.QCloseEvent): void =
-
+  nimfunc[](slotval1)
+proc QProgressBarcloseEvent*(self: gen_qprogressbar_types.QProgressBar, event: gen_qevent.QCloseEvent): void =
 
   fQProgressBar_virtualbase_closeEvent(self.h, event.h)
 
-type QProgressBarcloseEventBase* = proc(event: gen_qevent.QCloseEvent): void
-proc oncloseEvent*(self: QProgressBar, slot: proc(super: QProgressBarcloseEventBase, event: gen_qevent.QCloseEvent): void) =
+type QProgressBarcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
+proc oncloseEvent*(self: gen_qprogressbar_types.QProgressBar, slot: QProgressBarcloseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressBarcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressBarcloseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressBar_override_virtual_closeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressBar_closeEvent(self: ptr cQProgressBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QProgressBar_closeEvent ".} =
-  type Cb = proc(super: QProgressBarcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QCloseEvent): auto =
-    callVirtualBase_closeEvent(QProgressBar(h: self), event)
+  var nimfunc = cast[ptr QProgressBarcloseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QCloseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_contextMenuEvent(self: QProgressBar, event: gen_qevent.QContextMenuEvent): void =
-
+  nimfunc[](slotval1)
+proc QProgressBarcontextMenuEvent*(self: gen_qprogressbar_types.QProgressBar, event: gen_qevent.QContextMenuEvent): void =
 
   fQProgressBar_virtualbase_contextMenuEvent(self.h, event.h)
 
-type QProgressBarcontextMenuEventBase* = proc(event: gen_qevent.QContextMenuEvent): void
-proc oncontextMenuEvent*(self: QProgressBar, slot: proc(super: QProgressBarcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void) =
+type QProgressBarcontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
+proc oncontextMenuEvent*(self: gen_qprogressbar_types.QProgressBar, slot: QProgressBarcontextMenuEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressBarcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressBarcontextMenuEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressBar_override_virtual_contextMenuEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressBar_contextMenuEvent(self: ptr cQProgressBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QProgressBar_contextMenuEvent ".} =
-  type Cb = proc(super: QProgressBarcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QContextMenuEvent): auto =
-    callVirtualBase_contextMenuEvent(QProgressBar(h: self), event)
+  var nimfunc = cast[ptr QProgressBarcontextMenuEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QContextMenuEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_tabletEvent(self: QProgressBar, event: gen_qevent.QTabletEvent): void =
-
+  nimfunc[](slotval1)
+proc QProgressBartabletEvent*(self: gen_qprogressbar_types.QProgressBar, event: gen_qevent.QTabletEvent): void =
 
   fQProgressBar_virtualbase_tabletEvent(self.h, event.h)
 
-type QProgressBartabletEventBase* = proc(event: gen_qevent.QTabletEvent): void
-proc ontabletEvent*(self: QProgressBar, slot: proc(super: QProgressBartabletEventBase, event: gen_qevent.QTabletEvent): void) =
+type QProgressBartabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
+proc ontabletEvent*(self: gen_qprogressbar_types.QProgressBar, slot: QProgressBartabletEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressBartabletEventBase, event: gen_qevent.QTabletEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressBartabletEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressBar_override_virtual_tabletEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressBar_tabletEvent(self: ptr cQProgressBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QProgressBar_tabletEvent ".} =
-  type Cb = proc(super: QProgressBartabletEventBase, event: gen_qevent.QTabletEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QTabletEvent): auto =
-    callVirtualBase_tabletEvent(QProgressBar(h: self), event)
+  var nimfunc = cast[ptr QProgressBartabletEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QTabletEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_actionEvent(self: QProgressBar, event: gen_qevent.QActionEvent): void =
-
+  nimfunc[](slotval1)
+proc QProgressBaractionEvent*(self: gen_qprogressbar_types.QProgressBar, event: gen_qevent.QActionEvent): void =
 
   fQProgressBar_virtualbase_actionEvent(self.h, event.h)
 
-type QProgressBaractionEventBase* = proc(event: gen_qevent.QActionEvent): void
-proc onactionEvent*(self: QProgressBar, slot: proc(super: QProgressBaractionEventBase, event: gen_qevent.QActionEvent): void) =
+type QProgressBaractionEventProc* = proc(event: gen_qevent.QActionEvent): void
+proc onactionEvent*(self: gen_qprogressbar_types.QProgressBar, slot: QProgressBaractionEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressBaractionEventBase, event: gen_qevent.QActionEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressBaractionEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressBar_override_virtual_actionEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressBar_actionEvent(self: ptr cQProgressBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QProgressBar_actionEvent ".} =
-  type Cb = proc(super: QProgressBaractionEventBase, event: gen_qevent.QActionEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QActionEvent): auto =
-    callVirtualBase_actionEvent(QProgressBar(h: self), event)
+  var nimfunc = cast[ptr QProgressBaractionEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QActionEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragEnterEvent(self: QProgressBar, event: gen_qevent.QDragEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QProgressBardragEnterEvent*(self: gen_qprogressbar_types.QProgressBar, event: gen_qevent.QDragEnterEvent): void =
 
   fQProgressBar_virtualbase_dragEnterEvent(self.h, event.h)
 
-type QProgressBardragEnterEventBase* = proc(event: gen_qevent.QDragEnterEvent): void
-proc ondragEnterEvent*(self: QProgressBar, slot: proc(super: QProgressBardragEnterEventBase, event: gen_qevent.QDragEnterEvent): void) =
+type QProgressBardragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
+proc ondragEnterEvent*(self: gen_qprogressbar_types.QProgressBar, slot: QProgressBardragEnterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressBardragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressBardragEnterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressBar_override_virtual_dragEnterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressBar_dragEnterEvent(self: ptr cQProgressBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QProgressBar_dragEnterEvent ".} =
-  type Cb = proc(super: QProgressBardragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragEnterEvent): auto =
-    callVirtualBase_dragEnterEvent(QProgressBar(h: self), event)
+  var nimfunc = cast[ptr QProgressBardragEnterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragMoveEvent(self: QProgressBar, event: gen_qevent.QDragMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QProgressBardragMoveEvent*(self: gen_qprogressbar_types.QProgressBar, event: gen_qevent.QDragMoveEvent): void =
 
   fQProgressBar_virtualbase_dragMoveEvent(self.h, event.h)
 
-type QProgressBardragMoveEventBase* = proc(event: gen_qevent.QDragMoveEvent): void
-proc ondragMoveEvent*(self: QProgressBar, slot: proc(super: QProgressBardragMoveEventBase, event: gen_qevent.QDragMoveEvent): void) =
+type QProgressBardragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
+proc ondragMoveEvent*(self: gen_qprogressbar_types.QProgressBar, slot: QProgressBardragMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressBardragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressBardragMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressBar_override_virtual_dragMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressBar_dragMoveEvent(self: ptr cQProgressBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QProgressBar_dragMoveEvent ".} =
-  type Cb = proc(super: QProgressBardragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragMoveEvent): auto =
-    callVirtualBase_dragMoveEvent(QProgressBar(h: self), event)
+  var nimfunc = cast[ptr QProgressBardragMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragLeaveEvent(self: QProgressBar, event: gen_qevent.QDragLeaveEvent): void =
-
+  nimfunc[](slotval1)
+proc QProgressBardragLeaveEvent*(self: gen_qprogressbar_types.QProgressBar, event: gen_qevent.QDragLeaveEvent): void =
 
   fQProgressBar_virtualbase_dragLeaveEvent(self.h, event.h)
 
-type QProgressBardragLeaveEventBase* = proc(event: gen_qevent.QDragLeaveEvent): void
-proc ondragLeaveEvent*(self: QProgressBar, slot: proc(super: QProgressBardragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void) =
+type QProgressBardragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
+proc ondragLeaveEvent*(self: gen_qprogressbar_types.QProgressBar, slot: QProgressBardragLeaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressBardragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressBardragLeaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressBar_override_virtual_dragLeaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressBar_dragLeaveEvent(self: ptr cQProgressBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QProgressBar_dragLeaveEvent ".} =
-  type Cb = proc(super: QProgressBardragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragLeaveEvent): auto =
-    callVirtualBase_dragLeaveEvent(QProgressBar(h: self), event)
+  var nimfunc = cast[ptr QProgressBardragLeaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragLeaveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dropEvent(self: QProgressBar, event: gen_qevent.QDropEvent): void =
-
+  nimfunc[](slotval1)
+proc QProgressBardropEvent*(self: gen_qprogressbar_types.QProgressBar, event: gen_qevent.QDropEvent): void =
 
   fQProgressBar_virtualbase_dropEvent(self.h, event.h)
 
-type QProgressBardropEventBase* = proc(event: gen_qevent.QDropEvent): void
-proc ondropEvent*(self: QProgressBar, slot: proc(super: QProgressBardropEventBase, event: gen_qevent.QDropEvent): void) =
+type QProgressBardropEventProc* = proc(event: gen_qevent.QDropEvent): void
+proc ondropEvent*(self: gen_qprogressbar_types.QProgressBar, slot: QProgressBardropEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressBardropEventBase, event: gen_qevent.QDropEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressBardropEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressBar_override_virtual_dropEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressBar_dropEvent(self: ptr cQProgressBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QProgressBar_dropEvent ".} =
-  type Cb = proc(super: QProgressBardropEventBase, event: gen_qevent.QDropEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDropEvent): auto =
-    callVirtualBase_dropEvent(QProgressBar(h: self), event)
+  var nimfunc = cast[ptr QProgressBardropEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDropEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_showEvent(self: QProgressBar, event: gen_qevent.QShowEvent): void =
-
+  nimfunc[](slotval1)
+proc QProgressBarshowEvent*(self: gen_qprogressbar_types.QProgressBar, event: gen_qevent.QShowEvent): void =
 
   fQProgressBar_virtualbase_showEvent(self.h, event.h)
 
-type QProgressBarshowEventBase* = proc(event: gen_qevent.QShowEvent): void
-proc onshowEvent*(self: QProgressBar, slot: proc(super: QProgressBarshowEventBase, event: gen_qevent.QShowEvent): void) =
+type QProgressBarshowEventProc* = proc(event: gen_qevent.QShowEvent): void
+proc onshowEvent*(self: gen_qprogressbar_types.QProgressBar, slot: QProgressBarshowEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressBarshowEventBase, event: gen_qevent.QShowEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressBarshowEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressBar_override_virtual_showEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressBar_showEvent(self: ptr cQProgressBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QProgressBar_showEvent ".} =
-  type Cb = proc(super: QProgressBarshowEventBase, event: gen_qevent.QShowEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QShowEvent): auto =
-    callVirtualBase_showEvent(QProgressBar(h: self), event)
+  var nimfunc = cast[ptr QProgressBarshowEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QShowEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hideEvent(self: QProgressBar, event: gen_qevent.QHideEvent): void =
-
+  nimfunc[](slotval1)
+proc QProgressBarhideEvent*(self: gen_qprogressbar_types.QProgressBar, event: gen_qevent.QHideEvent): void =
 
   fQProgressBar_virtualbase_hideEvent(self.h, event.h)
 
-type QProgressBarhideEventBase* = proc(event: gen_qevent.QHideEvent): void
-proc onhideEvent*(self: QProgressBar, slot: proc(super: QProgressBarhideEventBase, event: gen_qevent.QHideEvent): void) =
+type QProgressBarhideEventProc* = proc(event: gen_qevent.QHideEvent): void
+proc onhideEvent*(self: gen_qprogressbar_types.QProgressBar, slot: QProgressBarhideEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressBarhideEventBase, event: gen_qevent.QHideEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressBarhideEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressBar_override_virtual_hideEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressBar_hideEvent(self: ptr cQProgressBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QProgressBar_hideEvent ".} =
-  type Cb = proc(super: QProgressBarhideEventBase, event: gen_qevent.QHideEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QHideEvent): auto =
-    callVirtualBase_hideEvent(QProgressBar(h: self), event)
+  var nimfunc = cast[ptr QProgressBarhideEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QHideEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_nativeEvent(self: QProgressBar, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
+  nimfunc[](slotval1)
+proc QProgressBarnativeEvent*(self: gen_qprogressbar_types.QProgressBar, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
 
   fQProgressBar_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
-type QProgressBarnativeEventBase* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-proc onnativeEvent*(self: QProgressBar, slot: proc(super: QProgressBarnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool) =
+type QProgressBarnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
+proc onnativeEvent*(self: gen_qprogressbar_types.QProgressBar, slot: QProgressBarnativeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressBarnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-  var tmp = new Cb
+  var tmp = new QProgressBarnativeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressBar_override_virtual_nativeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressBar_nativeEvent(self: ptr cQProgressBar, slot: int, eventType: struct_miqt_string, message: pointer, resultVal: ptr clong): bool {.exportc: "miqt_exec_callback_QProgressBar_nativeEvent ".} =
-  type Cb = proc(super: QProgressBarnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(eventType: seq[byte], message: pointer, resultVal: ptr clong): auto =
-    callVirtualBase_nativeEvent(QProgressBar(h: self), eventType, message, resultVal)
+  var nimfunc = cast[ptr QProgressBarnativeEventProc](cast[pointer](slot))
   var veventType_bytearray = eventType
   var veventTypex_ret = @(toOpenArrayByte(veventType_bytearray.data, 0, int(veventType_bytearray.len)-1))
   c_free(veventType_bytearray.data)
@@ -1272,344 +1083,274 @@ proc miqt_exec_callback_QProgressBar_nativeEvent(self: ptr cQProgressBar, slot: 
   let slotval3 = resultVal
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_changeEvent(self: QProgressBar, param1: gen_qcoreevent.QEvent): void =
-
+proc QProgressBarchangeEvent*(self: gen_qprogressbar_types.QProgressBar, param1: gen_qcoreevent.QEvent): void =
 
   fQProgressBar_virtualbase_changeEvent(self.h, param1.h)
 
-type QProgressBarchangeEventBase* = proc(param1: gen_qcoreevent.QEvent): void
-proc onchangeEvent*(self: QProgressBar, slot: proc(super: QProgressBarchangeEventBase, param1: gen_qcoreevent.QEvent): void) =
+type QProgressBarchangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
+proc onchangeEvent*(self: gen_qprogressbar_types.QProgressBar, slot: QProgressBarchangeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressBarchangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressBarchangeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressBar_override_virtual_changeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressBar_changeEvent(self: ptr cQProgressBar, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QProgressBar_changeEvent ".} =
-  type Cb = proc(super: QProgressBarchangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_changeEvent(QProgressBar(h: self), param1)
+  var nimfunc = cast[ptr QProgressBarchangeEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_metric(self: QProgressBar, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint =
-
+  nimfunc[](slotval1)
+proc QProgressBarmetric*(self: gen_qprogressbar_types.QProgressBar, param1: cint): cint =
 
   fQProgressBar_virtualbase_metric(self.h, cint(param1))
 
-type QProgressBarmetricBase* = proc(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-proc onmetric*(self: QProgressBar, slot: proc(super: QProgressBarmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint) =
+type QProgressBarmetricProc* = proc(param1: cint): cint
+proc onmetric*(self: gen_qprogressbar_types.QProgressBar, slot: QProgressBarmetricProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressBarmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var tmp = new Cb
+  var tmp = new QProgressBarmetricProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressBar_override_virtual_metric(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressBar_metric(self: ptr cQProgressBar, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QProgressBar_metric ".} =
-  type Cb = proc(super: QProgressBarmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): auto =
-    callVirtualBase_metric(QProgressBar(h: self), param1)
-  let slotval1 = gen_qpaintdevice.QPaintDevicePaintDeviceMetric(param1)
+  var nimfunc = cast[ptr QProgressBarmetricProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_initPainter(self: QProgressBar, painter: gen_qpainter.QPainter): void =
-
+proc QProgressBarinitPainter*(self: gen_qprogressbar_types.QProgressBar, painter: gen_qpainter.QPainter): void =
 
   fQProgressBar_virtualbase_initPainter(self.h, painter.h)
 
-type QProgressBarinitPainterBase* = proc(painter: gen_qpainter.QPainter): void
-proc oninitPainter*(self: QProgressBar, slot: proc(super: QProgressBarinitPainterBase, painter: gen_qpainter.QPainter): void) =
+type QProgressBarinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
+proc oninitPainter*(self: gen_qprogressbar_types.QProgressBar, slot: QProgressBarinitPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressBarinitPainterBase, painter: gen_qpainter.QPainter): void
-  var tmp = new Cb
+  var tmp = new QProgressBarinitPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressBar_override_virtual_initPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressBar_initPainter(self: ptr cQProgressBar, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_QProgressBar_initPainter ".} =
-  type Cb = proc(super: QProgressBarinitPainterBase, painter: gen_qpainter.QPainter): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter): auto =
-    callVirtualBase_initPainter(QProgressBar(h: self), painter)
+  var nimfunc = cast[ptr QProgressBarinitPainterProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_redirected(self: QProgressBar, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
+  nimfunc[](slotval1)
+proc QProgressBarredirected*(self: gen_qprogressbar_types.QProgressBar, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
 
   gen_qpaintdevice.QPaintDevice(h: fQProgressBar_virtualbase_redirected(self.h, offset.h))
 
-type QProgressBarredirectedBase* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-proc onredirected*(self: QProgressBar, slot: proc(super: QProgressBarredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice) =
+type QProgressBarredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
+proc onredirected*(self: gen_qprogressbar_types.QProgressBar, slot: QProgressBarredirectedProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressBarredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var tmp = new Cb
+  var tmp = new QProgressBarredirectedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressBar_override_virtual_redirected(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressBar_redirected(self: ptr cQProgressBar, slot: int, offset: pointer): pointer {.exportc: "miqt_exec_callback_QProgressBar_redirected ".} =
-  type Cb = proc(super: QProgressBarredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(offset: gen_qpoint.QPoint): auto =
-    callVirtualBase_redirected(QProgressBar(h: self), offset)
+  var nimfunc = cast[ptr QProgressBarredirectedProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: offset)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_sharedPainter(self: QProgressBar, ): gen_qpainter.QPainter =
-
+proc QProgressBarsharedPainter*(self: gen_qprogressbar_types.QProgressBar, ): gen_qpainter.QPainter =
 
   gen_qpainter.QPainter(h: fQProgressBar_virtualbase_sharedPainter(self.h))
 
-type QProgressBarsharedPainterBase* = proc(): gen_qpainter.QPainter
-proc onsharedPainter*(self: QProgressBar, slot: proc(super: QProgressBarsharedPainterBase): gen_qpainter.QPainter) =
+type QProgressBarsharedPainterProc* = proc(): gen_qpainter.QPainter
+proc onsharedPainter*(self: gen_qprogressbar_types.QProgressBar, slot: QProgressBarsharedPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressBarsharedPainterBase): gen_qpainter.QPainter
-  var tmp = new Cb
+  var tmp = new QProgressBarsharedPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressBar_override_virtual_sharedPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressBar_sharedPainter(self: ptr cQProgressBar, slot: int): pointer {.exportc: "miqt_exec_callback_QProgressBar_sharedPainter ".} =
-  type Cb = proc(super: QProgressBarsharedPainterBase): gen_qpainter.QPainter
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sharedPainter(QProgressBar(h: self), )
+  var nimfunc = cast[ptr QProgressBarsharedPainterProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_inputMethodEvent(self: QProgressBar, param1: gen_qevent.QInputMethodEvent): void =
-
+proc QProgressBarinputMethodEvent*(self: gen_qprogressbar_types.QProgressBar, param1: gen_qevent.QInputMethodEvent): void =
 
   fQProgressBar_virtualbase_inputMethodEvent(self.h, param1.h)
 
-type QProgressBarinputMethodEventBase* = proc(param1: gen_qevent.QInputMethodEvent): void
-proc oninputMethodEvent*(self: QProgressBar, slot: proc(super: QProgressBarinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void) =
+type QProgressBarinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
+proc oninputMethodEvent*(self: gen_qprogressbar_types.QProgressBar, slot: QProgressBarinputMethodEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressBarinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressBarinputMethodEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressBar_override_virtual_inputMethodEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressBar_inputMethodEvent(self: ptr cQProgressBar, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QProgressBar_inputMethodEvent ".} =
-  type Cb = proc(super: QProgressBarinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QInputMethodEvent): auto =
-    callVirtualBase_inputMethodEvent(QProgressBar(h: self), param1)
+  var nimfunc = cast[ptr QProgressBarinputMethodEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QInputMethodEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_inputMethodQuery(self: QProgressBar, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant =
-
+  nimfunc[](slotval1)
+proc QProgressBarinputMethodQuery*(self: gen_qprogressbar_types.QProgressBar, param1: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQProgressBar_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
-type QProgressBarinputMethodQueryBase* = proc(param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-proc oninputMethodQuery*(self: QProgressBar, slot: proc(super: QProgressBarinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant) =
+type QProgressBarinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
+proc oninputMethodQuery*(self: gen_qprogressbar_types.QProgressBar, slot: QProgressBarinputMethodQueryProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressBarinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QProgressBarinputMethodQueryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressBar_override_virtual_inputMethodQuery(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressBar_inputMethodQuery(self: ptr cQProgressBar, slot: int, param1: cint): pointer {.exportc: "miqt_exec_callback_QProgressBar_inputMethodQuery ".} =
-  type Cb = proc(super: QProgressBarinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qnamespace.InputMethodQuery): auto =
-    callVirtualBase_inputMethodQuery(QProgressBar(h: self), param1)
-  let slotval1 = gen_qnamespace.InputMethodQuery(param1)
+  var nimfunc = cast[ptr QProgressBarinputMethodQueryProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_focusNextPrevChild(self: QProgressBar, next: bool): bool =
-
+proc QProgressBarfocusNextPrevChild*(self: gen_qprogressbar_types.QProgressBar, next: bool): bool =
 
   fQProgressBar_virtualbase_focusNextPrevChild(self.h, next)
 
-type QProgressBarfocusNextPrevChildBase* = proc(next: bool): bool
-proc onfocusNextPrevChild*(self: QProgressBar, slot: proc(super: QProgressBarfocusNextPrevChildBase, next: bool): bool) =
+type QProgressBarfocusNextPrevChildProc* = proc(next: bool): bool
+proc onfocusNextPrevChild*(self: gen_qprogressbar_types.QProgressBar, slot: QProgressBarfocusNextPrevChildProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressBarfocusNextPrevChildBase, next: bool): bool
-  var tmp = new Cb
+  var tmp = new QProgressBarfocusNextPrevChildProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressBar_override_virtual_focusNextPrevChild(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressBar_focusNextPrevChild(self: ptr cQProgressBar, slot: int, next: bool): bool {.exportc: "miqt_exec_callback_QProgressBar_focusNextPrevChild ".} =
-  type Cb = proc(super: QProgressBarfocusNextPrevChildBase, next: bool): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(next: bool): auto =
-    callVirtualBase_focusNextPrevChild(QProgressBar(h: self), next)
+  var nimfunc = cast[ptr QProgressBarfocusNextPrevChildProc](cast[pointer](slot))
   let slotval1 = next
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QProgressBar, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QProgressBareventFilter*(self: gen_qprogressbar_types.QProgressBar, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQProgressBar_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QProgressBareventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QProgressBar, slot: proc(super: QProgressBareventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QProgressBareventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qprogressbar_types.QProgressBar, slot: QProgressBareventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressBareventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QProgressBareventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressBar_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressBar_eventFilter(self: ptr cQProgressBar, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QProgressBar_eventFilter ".} =
-  type Cb = proc(super: QProgressBareventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QProgressBar(h: self), watched, event)
+  var nimfunc = cast[ptr QProgressBareventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QProgressBar, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QProgressBartimerEvent*(self: gen_qprogressbar_types.QProgressBar, event: gen_qcoreevent.QTimerEvent): void =
 
   fQProgressBar_virtualbase_timerEvent(self.h, event.h)
 
-type QProgressBartimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QProgressBar, slot: proc(super: QProgressBartimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QProgressBartimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qprogressbar_types.QProgressBar, slot: QProgressBartimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressBartimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressBartimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressBar_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressBar_timerEvent(self: ptr cQProgressBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QProgressBar_timerEvent ".} =
-  type Cb = proc(super: QProgressBartimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QProgressBar(h: self), event)
+  var nimfunc = cast[ptr QProgressBartimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QProgressBar, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QProgressBarchildEvent*(self: gen_qprogressbar_types.QProgressBar, event: gen_qcoreevent.QChildEvent): void =
 
   fQProgressBar_virtualbase_childEvent(self.h, event.h)
 
-type QProgressBarchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QProgressBar, slot: proc(super: QProgressBarchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QProgressBarchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qprogressbar_types.QProgressBar, slot: QProgressBarchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressBarchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressBarchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressBar_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressBar_childEvent(self: ptr cQProgressBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QProgressBar_childEvent ".} =
-  type Cb = proc(super: QProgressBarchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QProgressBar(h: self), event)
+  var nimfunc = cast[ptr QProgressBarchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QProgressBar, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QProgressBarcustomEvent*(self: gen_qprogressbar_types.QProgressBar, event: gen_qcoreevent.QEvent): void =
 
   fQProgressBar_virtualbase_customEvent(self.h, event.h)
 
-type QProgressBarcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QProgressBar, slot: proc(super: QProgressBarcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QProgressBarcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qprogressbar_types.QProgressBar, slot: QProgressBarcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressBarcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QProgressBarcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressBar_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressBar_customEvent(self: ptr cQProgressBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QProgressBar_customEvent ".} =
-  type Cb = proc(super: QProgressBarcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QProgressBar(h: self), event)
+  var nimfunc = cast[ptr QProgressBarcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QProgressBar, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QProgressBarconnectNotify*(self: gen_qprogressbar_types.QProgressBar, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQProgressBar_virtualbase_connectNotify(self.h, signal.h)
 
-type QProgressBarconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QProgressBar, slot: proc(super: QProgressBarconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QProgressBarconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qprogressbar_types.QProgressBar, slot: QProgressBarconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressBarconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QProgressBarconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressBar_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressBar_connectNotify(self: ptr cQProgressBar, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QProgressBar_connectNotify ".} =
-  type Cb = proc(super: QProgressBarconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QProgressBar(h: self), signal)
+  var nimfunc = cast[ptr QProgressBarconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QProgressBar, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QProgressBardisconnectNotify*(self: gen_qprogressbar_types.QProgressBar, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQProgressBar_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QProgressBardisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QProgressBar, slot: proc(super: QProgressBardisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QProgressBardisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qprogressbar_types.QProgressBar, slot: QProgressBardisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QProgressBardisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QProgressBardisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQProgressBar_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QProgressBar_disconnectNotify(self: ptr cQProgressBar, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QProgressBar_disconnectNotify ".} =
-  type Cb = proc(super: QProgressBardisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QProgressBar(h: self), signal)
+  var nimfunc = cast[ptr QProgressBardisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QProgressBar): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qprogressbar_types.QProgressBar): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQProgressBar_staticMetaObject())
-proc delete*(self: QProgressBar) =
+proc delete*(self: gen_qprogressbar_types.QProgressBar) =
   fcQProgressBar_delete(self.h)

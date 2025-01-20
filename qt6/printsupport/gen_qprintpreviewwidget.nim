@@ -34,20 +34,16 @@ const cflags = gorge("pkg-config -cflags Qt6PrintSupport")
 {.compile("gen_qprintpreviewwidget.cpp", cflags).}
 
 
-type QPrintPreviewWidgetViewMode* = cint
-const
-  QPrintPreviewWidgetSinglePageView* = 0
-  QPrintPreviewWidgetFacingPagesView* = 1
-  QPrintPreviewWidgetAllPagesView* = 2
+type QPrintPreviewWidgetViewModeEnum* = distinct cint
+template SinglePageView*(_: type QPrintPreviewWidgetViewModeEnum): untyped = 0
+template FacingPagesView*(_: type QPrintPreviewWidgetViewModeEnum): untyped = 1
+template AllPagesView*(_: type QPrintPreviewWidgetViewModeEnum): untyped = 2
 
 
-
-type QPrintPreviewWidgetZoomMode* = cint
-const
-  QPrintPreviewWidgetCustomZoom* = 0
-  QPrintPreviewWidgetFitToWidth* = 1
-  QPrintPreviewWidgetFitInView* = 2
-
+type QPrintPreviewWidgetZoomModeEnum* = distinct cint
+template CustomZoom*(_: type QPrintPreviewWidgetZoomModeEnum): untyped = 0
+template FitToWidth*(_: type QPrintPreviewWidgetZoomModeEnum): untyped = 1
+template FitInView*(_: type QPrintPreviewWidgetZoomModeEnum): untyped = 2
 
 
 import gen_qprintpreviewwidget_types
@@ -57,10 +53,8 @@ import
   gen_qcoreevent,
   gen_qevent,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
-  gen_qpagelayout,
   gen_qpaintdevice,
   gen_qpaintengine,
   gen_qpainter,
@@ -73,10 +67,8 @@ export
   gen_qcoreevent,
   gen_qevent,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
-  gen_qpagelayout,
   gen_qpaintdevice,
   gen_qpaintengine,
   gen_qpainter,
@@ -233,138 +225,138 @@ proc fcQPrintPreviewWidget_staticMetaObject(): pointer {.importc: "QPrintPreview
 proc fcQPrintPreviewWidget_delete(self: pointer) {.importc: "QPrintPreviewWidget_delete".}
 
 
-func init*(T: type QPrintPreviewWidget, h: ptr cQPrintPreviewWidget): QPrintPreviewWidget =
+func init*(T: type gen_qprintpreviewwidget_types.QPrintPreviewWidget, h: ptr cQPrintPreviewWidget): gen_qprintpreviewwidget_types.QPrintPreviewWidget =
   T(h: h)
-proc create*(T: type QPrintPreviewWidget, parent: gen_qwidget.QWidget): QPrintPreviewWidget =
+proc create*(T: type gen_qprintpreviewwidget_types.QPrintPreviewWidget, parent: gen_qwidget.QWidget): gen_qprintpreviewwidget_types.QPrintPreviewWidget =
 
-  QPrintPreviewWidget.init(fcQPrintPreviewWidget_new(parent.h))
-proc create2*(T: type QPrintPreviewWidget, printer: gen_qprinter.QPrinter): QPrintPreviewWidget =
+  gen_qprintpreviewwidget_types.QPrintPreviewWidget.init(fcQPrintPreviewWidget_new(parent.h))
+proc create2*(T: type gen_qprintpreviewwidget_types.QPrintPreviewWidget, printer: gen_qprinter.QPrinter): gen_qprintpreviewwidget_types.QPrintPreviewWidget =
 
-  QPrintPreviewWidget.init(fcQPrintPreviewWidget_new2(printer.h))
-proc create*(T: type QPrintPreviewWidget, ): QPrintPreviewWidget =
+  gen_qprintpreviewwidget_types.QPrintPreviewWidget.init(fcQPrintPreviewWidget_new2(printer.h))
+proc create*(T: type gen_qprintpreviewwidget_types.QPrintPreviewWidget, ): gen_qprintpreviewwidget_types.QPrintPreviewWidget =
 
-  QPrintPreviewWidget.init(fcQPrintPreviewWidget_new3())
-proc create*(T: type QPrintPreviewWidget, printer: gen_qprinter.QPrinter, parent: gen_qwidget.QWidget): QPrintPreviewWidget =
+  gen_qprintpreviewwidget_types.QPrintPreviewWidget.init(fcQPrintPreviewWidget_new3())
+proc create*(T: type gen_qprintpreviewwidget_types.QPrintPreviewWidget, printer: gen_qprinter.QPrinter, parent: gen_qwidget.QWidget): gen_qprintpreviewwidget_types.QPrintPreviewWidget =
 
-  QPrintPreviewWidget.init(fcQPrintPreviewWidget_new4(printer.h, parent.h))
-proc create*(T: type QPrintPreviewWidget, printer: gen_qprinter.QPrinter, parent: gen_qwidget.QWidget, flags: gen_qnamespace.WindowType): QPrintPreviewWidget =
+  gen_qprintpreviewwidget_types.QPrintPreviewWidget.init(fcQPrintPreviewWidget_new4(printer.h, parent.h))
+proc create*(T: type gen_qprintpreviewwidget_types.QPrintPreviewWidget, printer: gen_qprinter.QPrinter, parent: gen_qwidget.QWidget, flags: cint): gen_qprintpreviewwidget_types.QPrintPreviewWidget =
 
-  QPrintPreviewWidget.init(fcQPrintPreviewWidget_new5(printer.h, parent.h, cint(flags)))
-proc create*(T: type QPrintPreviewWidget, parent: gen_qwidget.QWidget, flags: gen_qnamespace.WindowType): QPrintPreviewWidget =
+  gen_qprintpreviewwidget_types.QPrintPreviewWidget.init(fcQPrintPreviewWidget_new5(printer.h, parent.h, cint(flags)))
+proc create*(T: type gen_qprintpreviewwidget_types.QPrintPreviewWidget, parent: gen_qwidget.QWidget, flags: cint): gen_qprintpreviewwidget_types.QPrintPreviewWidget =
 
-  QPrintPreviewWidget.init(fcQPrintPreviewWidget_new6(parent.h, cint(flags)))
-proc metaObject*(self: QPrintPreviewWidget, ): gen_qobjectdefs.QMetaObject =
+  gen_qprintpreviewwidget_types.QPrintPreviewWidget.init(fcQPrintPreviewWidget_new6(parent.h, cint(flags)))
+proc metaObject*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQPrintPreviewWidget_metaObject(self.h))
 
-proc metacast*(self: QPrintPreviewWidget, param1: cstring): pointer =
+proc metacast*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, param1: cstring): pointer =
 
   fcQPrintPreviewWidget_metacast(self.h, param1)
 
-proc metacall*(self: QPrintPreviewWidget, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQPrintPreviewWidget_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QPrintPreviewWidget, s: cstring): string =
+proc tr*(_: type gen_qprintpreviewwidget_types.QPrintPreviewWidget, s: cstring): string =
 
   let v_ms = fcQPrintPreviewWidget_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc zoomFactor*(self: QPrintPreviewWidget, ): float64 =
+proc zoomFactor*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, ): float64 =
 
   fcQPrintPreviewWidget_zoomFactor(self.h)
 
-proc orientation*(self: QPrintPreviewWidget, ): gen_qpagelayout.QPageLayoutOrientation =
+proc orientation*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, ): cint =
 
-  gen_qpagelayout.QPageLayoutOrientation(fcQPrintPreviewWidget_orientation(self.h))
+  cint(fcQPrintPreviewWidget_orientation(self.h))
 
-proc viewMode*(self: QPrintPreviewWidget, ): QPrintPreviewWidgetViewMode =
+proc viewMode*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, ): cint =
 
-  QPrintPreviewWidgetViewMode(fcQPrintPreviewWidget_viewMode(self.h))
+  cint(fcQPrintPreviewWidget_viewMode(self.h))
 
-proc zoomMode*(self: QPrintPreviewWidget, ): QPrintPreviewWidgetZoomMode =
+proc zoomMode*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, ): cint =
 
-  QPrintPreviewWidgetZoomMode(fcQPrintPreviewWidget_zoomMode(self.h))
+  cint(fcQPrintPreviewWidget_zoomMode(self.h))
 
-proc currentPage*(self: QPrintPreviewWidget, ): cint =
+proc currentPage*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, ): cint =
 
   fcQPrintPreviewWidget_currentPage(self.h)
 
-proc pageCount*(self: QPrintPreviewWidget, ): cint =
+proc pageCount*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, ): cint =
 
   fcQPrintPreviewWidget_pageCount(self.h)
 
-proc setVisible*(self: QPrintPreviewWidget, visible: bool): void =
+proc setVisible*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, visible: bool): void =
 
   fcQPrintPreviewWidget_setVisible(self.h, visible)
 
-proc print*(self: QPrintPreviewWidget, ): void =
+proc print*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, ): void =
 
   fcQPrintPreviewWidget_print(self.h)
 
-proc zoomIn*(self: QPrintPreviewWidget, ): void =
+proc zoomIn*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, ): void =
 
   fcQPrintPreviewWidget_zoomIn(self.h)
 
-proc zoomOut*(self: QPrintPreviewWidget, ): void =
+proc zoomOut*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, ): void =
 
   fcQPrintPreviewWidget_zoomOut(self.h)
 
-proc setZoomFactor*(self: QPrintPreviewWidget, zoomFactor: float64): void =
+proc setZoomFactor*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, zoomFactor: float64): void =
 
   fcQPrintPreviewWidget_setZoomFactor(self.h, zoomFactor)
 
-proc setOrientation*(self: QPrintPreviewWidget, orientation: gen_qpagelayout.QPageLayoutOrientation): void =
+proc setOrientation*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, orientation: cint): void =
 
   fcQPrintPreviewWidget_setOrientation(self.h, cint(orientation))
 
-proc setViewMode*(self: QPrintPreviewWidget, viewMode: QPrintPreviewWidgetViewMode): void =
+proc setViewMode*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, viewMode: cint): void =
 
   fcQPrintPreviewWidget_setViewMode(self.h, cint(viewMode))
 
-proc setZoomMode*(self: QPrintPreviewWidget, zoomMode: QPrintPreviewWidgetZoomMode): void =
+proc setZoomMode*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, zoomMode: cint): void =
 
   fcQPrintPreviewWidget_setZoomMode(self.h, cint(zoomMode))
 
-proc setCurrentPage*(self: QPrintPreviewWidget, pageNumber: cint): void =
+proc setCurrentPage*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, pageNumber: cint): void =
 
   fcQPrintPreviewWidget_setCurrentPage(self.h, pageNumber)
 
-proc fitToWidth*(self: QPrintPreviewWidget, ): void =
+proc fitToWidth*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, ): void =
 
   fcQPrintPreviewWidget_fitToWidth(self.h)
 
-proc fitInView*(self: QPrintPreviewWidget, ): void =
+proc fitInView*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, ): void =
 
   fcQPrintPreviewWidget_fitInView(self.h)
 
-proc setLandscapeOrientation*(self: QPrintPreviewWidget, ): void =
+proc setLandscapeOrientation*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, ): void =
 
   fcQPrintPreviewWidget_setLandscapeOrientation(self.h)
 
-proc setPortraitOrientation*(self: QPrintPreviewWidget, ): void =
+proc setPortraitOrientation*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, ): void =
 
   fcQPrintPreviewWidget_setPortraitOrientation(self.h)
 
-proc setSinglePageViewMode*(self: QPrintPreviewWidget, ): void =
+proc setSinglePageViewMode*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, ): void =
 
   fcQPrintPreviewWidget_setSinglePageViewMode(self.h)
 
-proc setFacingPagesViewMode*(self: QPrintPreviewWidget, ): void =
+proc setFacingPagesViewMode*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, ): void =
 
   fcQPrintPreviewWidget_setFacingPagesViewMode(self.h)
 
-proc setAllPagesViewMode*(self: QPrintPreviewWidget, ): void =
+proc setAllPagesViewMode*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, ): void =
 
   fcQPrintPreviewWidget_setAllPagesViewMode(self.h)
 
-proc updatePreview*(self: QPrintPreviewWidget, ): void =
+proc updatePreview*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, ): void =
 
   fcQPrintPreviewWidget_updatePreview(self.h)
 
-proc paintRequested*(self: QPrintPreviewWidget, printer: gen_qprinter.QPrinter): void =
+proc paintRequested*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, printer: gen_qprinter.QPrinter): void =
 
   fcQPrintPreviewWidget_paintRequested(self.h, printer.h)
 
@@ -376,13 +368,13 @@ proc miqt_exec_callback_QPrintPreviewWidget_paintRequested(slot: int, printer: p
 
   nimfunc[](slotval1)
 
-proc onpaintRequested*(self: QPrintPreviewWidget, slot: proc(printer: gen_qprinter.QPrinter)) =
+proc onpaintRequested*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: proc(printer: gen_qprinter.QPrinter)) =
   type Cb = proc(printer: gen_qprinter.QPrinter)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQPrintPreviewWidget_connect_paintRequested(self.h, cast[int](addr tmp[]))
-proc previewChanged*(self: QPrintPreviewWidget, ): void =
+proc previewChanged*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, ): void =
 
   fcQPrintPreviewWidget_previewChanged(self.h)
 
@@ -392,870 +384,690 @@ proc miqt_exec_callback_QPrintPreviewWidget_previewChanged(slot: int) {.exportc.
 
   nimfunc[]()
 
-proc onpreviewChanged*(self: QPrintPreviewWidget, slot: proc()) =
+proc onpreviewChanged*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQPrintPreviewWidget_connect_previewChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QPrintPreviewWidget, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qprintpreviewwidget_types.QPrintPreviewWidget, s: cstring, c: cstring): string =
 
   let v_ms = fcQPrintPreviewWidget_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QPrintPreviewWidget, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qprintpreviewwidget_types.QPrintPreviewWidget, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQPrintPreviewWidget_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc zoomIn1*(self: QPrintPreviewWidget, zoom: float64): void =
+proc zoomIn1*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, zoom: float64): void =
 
   fcQPrintPreviewWidget_zoomIn1(self.h, zoom)
 
-proc zoomOut1*(self: QPrintPreviewWidget, zoom: float64): void =
+proc zoomOut1*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, zoom: float64): void =
 
   fcQPrintPreviewWidget_zoomOut1(self.h, zoom)
 
-proc callVirtualBase_metaObject(self: QPrintPreviewWidget, ): gen_qobjectdefs.QMetaObject =
-
+proc QPrintPreviewWidgetmetaObject*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQPrintPreviewWidget_virtualbase_metaObject(self.h))
 
-type QPrintPreviewWidgetmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QPrintPreviewWidget, slot: proc(super: QPrintPreviewWidgetmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QPrintPreviewWidgetmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: QPrintPreviewWidgetmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintPreviewWidgetmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QPrintPreviewWidgetmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrintPreviewWidget_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrintPreviewWidget_metaObject(self: ptr cQPrintPreviewWidget, slot: int): pointer {.exportc: "miqt_exec_callback_QPrintPreviewWidget_metaObject ".} =
-  type Cb = proc(super: QPrintPreviewWidgetmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QPrintPreviewWidget(h: self), )
+  var nimfunc = cast[ptr QPrintPreviewWidgetmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QPrintPreviewWidget, param1: cstring): pointer =
-
+proc QPrintPreviewWidgetmetacast*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, param1: cstring): pointer =
 
   fQPrintPreviewWidget_virtualbase_metacast(self.h, param1)
 
-type QPrintPreviewWidgetmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QPrintPreviewWidget, slot: proc(super: QPrintPreviewWidgetmetacastBase, param1: cstring): pointer) =
+type QPrintPreviewWidgetmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: QPrintPreviewWidgetmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintPreviewWidgetmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QPrintPreviewWidgetmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrintPreviewWidget_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrintPreviewWidget_metacast(self: ptr cQPrintPreviewWidget, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QPrintPreviewWidget_metacast ".} =
-  type Cb = proc(super: QPrintPreviewWidgetmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QPrintPreviewWidget(h: self), param1)
+  var nimfunc = cast[ptr QPrintPreviewWidgetmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QPrintPreviewWidget, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QPrintPreviewWidgetmetacall*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, param1: cint, param2: cint, param3: pointer): cint =
 
   fQPrintPreviewWidget_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QPrintPreviewWidgetmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QPrintPreviewWidget, slot: proc(super: QPrintPreviewWidgetmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QPrintPreviewWidgetmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: QPrintPreviewWidgetmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintPreviewWidgetmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QPrintPreviewWidgetmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrintPreviewWidget_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrintPreviewWidget_metacall(self: ptr cQPrintPreviewWidget, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QPrintPreviewWidget_metacall ".} =
-  type Cb = proc(super: QPrintPreviewWidgetmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QPrintPreviewWidget(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QPrintPreviewWidgetmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_setVisible(self: QPrintPreviewWidget, visible: bool): void =
-
+proc QPrintPreviewWidgetsetVisible*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, visible: bool): void =
 
   fQPrintPreviewWidget_virtualbase_setVisible(self.h, visible)
 
-type QPrintPreviewWidgetsetVisibleBase* = proc(visible: bool): void
-proc onsetVisible*(self: QPrintPreviewWidget, slot: proc(super: QPrintPreviewWidgetsetVisibleBase, visible: bool): void) =
+type QPrintPreviewWidgetsetVisibleProc* = proc(visible: bool): void
+proc onsetVisible*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: QPrintPreviewWidgetsetVisibleProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintPreviewWidgetsetVisibleBase, visible: bool): void
-  var tmp = new Cb
+  var tmp = new QPrintPreviewWidgetsetVisibleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrintPreviewWidget_override_virtual_setVisible(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrintPreviewWidget_setVisible(self: ptr cQPrintPreviewWidget, slot: int, visible: bool): void {.exportc: "miqt_exec_callback_QPrintPreviewWidget_setVisible ".} =
-  type Cb = proc(super: QPrintPreviewWidgetsetVisibleBase, visible: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(visible: bool): auto =
-    callVirtualBase_setVisible(QPrintPreviewWidget(h: self), visible)
+  var nimfunc = cast[ptr QPrintPreviewWidgetsetVisibleProc](cast[pointer](slot))
   let slotval1 = visible
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_devType(self: QPrintPreviewWidget, ): cint =
-
+  nimfunc[](slotval1)
+proc QPrintPreviewWidgetdevType*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, ): cint =
 
   fQPrintPreviewWidget_virtualbase_devType(self.h)
 
-type QPrintPreviewWidgetdevTypeBase* = proc(): cint
-proc ondevType*(self: QPrintPreviewWidget, slot: proc(super: QPrintPreviewWidgetdevTypeBase): cint) =
+type QPrintPreviewWidgetdevTypeProc* = proc(): cint
+proc ondevType*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: QPrintPreviewWidgetdevTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintPreviewWidgetdevTypeBase): cint
-  var tmp = new Cb
+  var tmp = new QPrintPreviewWidgetdevTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrintPreviewWidget_override_virtual_devType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrintPreviewWidget_devType(self: ptr cQPrintPreviewWidget, slot: int): cint {.exportc: "miqt_exec_callback_QPrintPreviewWidget_devType ".} =
-  type Cb = proc(super: QPrintPreviewWidgetdevTypeBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_devType(QPrintPreviewWidget(h: self), )
+  var nimfunc = cast[ptr QPrintPreviewWidgetdevTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_sizeHint(self: QPrintPreviewWidget, ): gen_qsize.QSize =
-
+proc QPrintPreviewWidgetsizeHint*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQPrintPreviewWidget_virtualbase_sizeHint(self.h))
 
-type QPrintPreviewWidgetsizeHintBase* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: QPrintPreviewWidget, slot: proc(super: QPrintPreviewWidgetsizeHintBase): gen_qsize.QSize) =
+type QPrintPreviewWidgetsizeHintProc* = proc(): gen_qsize.QSize
+proc onsizeHint*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: QPrintPreviewWidgetsizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintPreviewWidgetsizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QPrintPreviewWidgetsizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrintPreviewWidget_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrintPreviewWidget_sizeHint(self: ptr cQPrintPreviewWidget, slot: int): pointer {.exportc: "miqt_exec_callback_QPrintPreviewWidget_sizeHint ".} =
-  type Cb = proc(super: QPrintPreviewWidgetsizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sizeHint(QPrintPreviewWidget(h: self), )
+  var nimfunc = cast[ptr QPrintPreviewWidgetsizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_minimumSizeHint(self: QPrintPreviewWidget, ): gen_qsize.QSize =
-
+proc QPrintPreviewWidgetminimumSizeHint*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQPrintPreviewWidget_virtualbase_minimumSizeHint(self.h))
 
-type QPrintPreviewWidgetminimumSizeHintBase* = proc(): gen_qsize.QSize
-proc onminimumSizeHint*(self: QPrintPreviewWidget, slot: proc(super: QPrintPreviewWidgetminimumSizeHintBase): gen_qsize.QSize) =
+type QPrintPreviewWidgetminimumSizeHintProc* = proc(): gen_qsize.QSize
+proc onminimumSizeHint*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: QPrintPreviewWidgetminimumSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintPreviewWidgetminimumSizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QPrintPreviewWidgetminimumSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrintPreviewWidget_override_virtual_minimumSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrintPreviewWidget_minimumSizeHint(self: ptr cQPrintPreviewWidget, slot: int): pointer {.exportc: "miqt_exec_callback_QPrintPreviewWidget_minimumSizeHint ".} =
-  type Cb = proc(super: QPrintPreviewWidgetminimumSizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_minimumSizeHint(QPrintPreviewWidget(h: self), )
+  var nimfunc = cast[ptr QPrintPreviewWidgetminimumSizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_heightForWidth(self: QPrintPreviewWidget, param1: cint): cint =
-
+proc QPrintPreviewWidgetheightForWidth*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, param1: cint): cint =
 
   fQPrintPreviewWidget_virtualbase_heightForWidth(self.h, param1)
 
-type QPrintPreviewWidgetheightForWidthBase* = proc(param1: cint): cint
-proc onheightForWidth*(self: QPrintPreviewWidget, slot: proc(super: QPrintPreviewWidgetheightForWidthBase, param1: cint): cint) =
+type QPrintPreviewWidgetheightForWidthProc* = proc(param1: cint): cint
+proc onheightForWidth*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: QPrintPreviewWidgetheightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintPreviewWidgetheightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QPrintPreviewWidgetheightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrintPreviewWidget_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrintPreviewWidget_heightForWidth(self: ptr cQPrintPreviewWidget, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QPrintPreviewWidget_heightForWidth ".} =
-  type Cb = proc(super: QPrintPreviewWidgetheightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_heightForWidth(QPrintPreviewWidget(h: self), param1)
+  var nimfunc = cast[ptr QPrintPreviewWidgetheightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_hasHeightForWidth(self: QPrintPreviewWidget, ): bool =
-
+proc QPrintPreviewWidgethasHeightForWidth*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, ): bool =
 
   fQPrintPreviewWidget_virtualbase_hasHeightForWidth(self.h)
 
-type QPrintPreviewWidgethasHeightForWidthBase* = proc(): bool
-proc onhasHeightForWidth*(self: QPrintPreviewWidget, slot: proc(super: QPrintPreviewWidgethasHeightForWidthBase): bool) =
+type QPrintPreviewWidgethasHeightForWidthProc* = proc(): bool
+proc onhasHeightForWidth*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: QPrintPreviewWidgethasHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintPreviewWidgethasHeightForWidthBase): bool
-  var tmp = new Cb
+  var tmp = new QPrintPreviewWidgethasHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrintPreviewWidget_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrintPreviewWidget_hasHeightForWidth(self: ptr cQPrintPreviewWidget, slot: int): bool {.exportc: "miqt_exec_callback_QPrintPreviewWidget_hasHeightForWidth ".} =
-  type Cb = proc(super: QPrintPreviewWidgethasHeightForWidthBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasHeightForWidth(QPrintPreviewWidget(h: self), )
+  var nimfunc = cast[ptr QPrintPreviewWidgethasHeightForWidthProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_paintEngine(self: QPrintPreviewWidget, ): gen_qpaintengine.QPaintEngine =
-
+proc QPrintPreviewWidgetpaintEngine*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, ): gen_qpaintengine.QPaintEngine =
 
   gen_qpaintengine.QPaintEngine(h: fQPrintPreviewWidget_virtualbase_paintEngine(self.h))
 
-type QPrintPreviewWidgetpaintEngineBase* = proc(): gen_qpaintengine.QPaintEngine
-proc onpaintEngine*(self: QPrintPreviewWidget, slot: proc(super: QPrintPreviewWidgetpaintEngineBase): gen_qpaintengine.QPaintEngine) =
+type QPrintPreviewWidgetpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
+proc onpaintEngine*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: QPrintPreviewWidgetpaintEngineProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintPreviewWidgetpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var tmp = new Cb
+  var tmp = new QPrintPreviewWidgetpaintEngineProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrintPreviewWidget_override_virtual_paintEngine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrintPreviewWidget_paintEngine(self: ptr cQPrintPreviewWidget, slot: int): pointer {.exportc: "miqt_exec_callback_QPrintPreviewWidget_paintEngine ".} =
-  type Cb = proc(super: QPrintPreviewWidgetpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_paintEngine(QPrintPreviewWidget(h: self), )
+  var nimfunc = cast[ptr QPrintPreviewWidgetpaintEngineProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_event(self: QPrintPreviewWidget, event: gen_qcoreevent.QEvent): bool =
-
+proc QPrintPreviewWidgetevent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, event: gen_qcoreevent.QEvent): bool =
 
   fQPrintPreviewWidget_virtualbase_event(self.h, event.h)
 
-type QPrintPreviewWidgeteventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QPrintPreviewWidget, slot: proc(super: QPrintPreviewWidgeteventBase, event: gen_qcoreevent.QEvent): bool) =
+type QPrintPreviewWidgeteventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: QPrintPreviewWidgeteventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintPreviewWidgeteventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QPrintPreviewWidgeteventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrintPreviewWidget_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrintPreviewWidget_event(self: ptr cQPrintPreviewWidget, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QPrintPreviewWidget_event ".} =
-  type Cb = proc(super: QPrintPreviewWidgeteventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QPrintPreviewWidget(h: self), event)
+  var nimfunc = cast[ptr QPrintPreviewWidgeteventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_mousePressEvent(self: QPrintPreviewWidget, event: gen_qevent.QMouseEvent): void =
-
+proc QPrintPreviewWidgetmousePressEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, event: gen_qevent.QMouseEvent): void =
 
   fQPrintPreviewWidget_virtualbase_mousePressEvent(self.h, event.h)
 
-type QPrintPreviewWidgetmousePressEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmousePressEvent*(self: QPrintPreviewWidget, slot: proc(super: QPrintPreviewWidgetmousePressEventBase, event: gen_qevent.QMouseEvent): void) =
+type QPrintPreviewWidgetmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmousePressEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: QPrintPreviewWidgetmousePressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintPreviewWidgetmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QPrintPreviewWidgetmousePressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrintPreviewWidget_override_virtual_mousePressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrintPreviewWidget_mousePressEvent(self: ptr cQPrintPreviewWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPrintPreviewWidget_mousePressEvent ".} =
-  type Cb = proc(super: QPrintPreviewWidgetmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mousePressEvent(QPrintPreviewWidget(h: self), event)
+  var nimfunc = cast[ptr QPrintPreviewWidgetmousePressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseReleaseEvent(self: QPrintPreviewWidget, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QPrintPreviewWidgetmouseReleaseEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, event: gen_qevent.QMouseEvent): void =
 
   fQPrintPreviewWidget_virtualbase_mouseReleaseEvent(self.h, event.h)
 
-type QPrintPreviewWidgetmouseReleaseEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseReleaseEvent*(self: QPrintPreviewWidget, slot: proc(super: QPrintPreviewWidgetmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void) =
+type QPrintPreviewWidgetmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseReleaseEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: QPrintPreviewWidgetmouseReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintPreviewWidgetmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QPrintPreviewWidgetmouseReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrintPreviewWidget_override_virtual_mouseReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrintPreviewWidget_mouseReleaseEvent(self: ptr cQPrintPreviewWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPrintPreviewWidget_mouseReleaseEvent ".} =
-  type Cb = proc(super: QPrintPreviewWidgetmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseReleaseEvent(QPrintPreviewWidget(h: self), event)
+  var nimfunc = cast[ptr QPrintPreviewWidgetmouseReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseDoubleClickEvent(self: QPrintPreviewWidget, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QPrintPreviewWidgetmouseDoubleClickEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, event: gen_qevent.QMouseEvent): void =
 
   fQPrintPreviewWidget_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
-type QPrintPreviewWidgetmouseDoubleClickEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseDoubleClickEvent*(self: QPrintPreviewWidget, slot: proc(super: QPrintPreviewWidgetmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void) =
+type QPrintPreviewWidgetmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseDoubleClickEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: QPrintPreviewWidgetmouseDoubleClickEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintPreviewWidgetmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QPrintPreviewWidgetmouseDoubleClickEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrintPreviewWidget_override_virtual_mouseDoubleClickEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrintPreviewWidget_mouseDoubleClickEvent(self: ptr cQPrintPreviewWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPrintPreviewWidget_mouseDoubleClickEvent ".} =
-  type Cb = proc(super: QPrintPreviewWidgetmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseDoubleClickEvent(QPrintPreviewWidget(h: self), event)
+  var nimfunc = cast[ptr QPrintPreviewWidgetmouseDoubleClickEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseMoveEvent(self: QPrintPreviewWidget, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QPrintPreviewWidgetmouseMoveEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, event: gen_qevent.QMouseEvent): void =
 
   fQPrintPreviewWidget_virtualbase_mouseMoveEvent(self.h, event.h)
 
-type QPrintPreviewWidgetmouseMoveEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseMoveEvent*(self: QPrintPreviewWidget, slot: proc(super: QPrintPreviewWidgetmouseMoveEventBase, event: gen_qevent.QMouseEvent): void) =
+type QPrintPreviewWidgetmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseMoveEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: QPrintPreviewWidgetmouseMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintPreviewWidgetmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QPrintPreviewWidgetmouseMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrintPreviewWidget_override_virtual_mouseMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrintPreviewWidget_mouseMoveEvent(self: ptr cQPrintPreviewWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPrintPreviewWidget_mouseMoveEvent ".} =
-  type Cb = proc(super: QPrintPreviewWidgetmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseMoveEvent(QPrintPreviewWidget(h: self), event)
+  var nimfunc = cast[ptr QPrintPreviewWidgetmouseMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_wheelEvent(self: QPrintPreviewWidget, event: gen_qevent.QWheelEvent): void =
-
+  nimfunc[](slotval1)
+proc QPrintPreviewWidgetwheelEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, event: gen_qevent.QWheelEvent): void =
 
   fQPrintPreviewWidget_virtualbase_wheelEvent(self.h, event.h)
 
-type QPrintPreviewWidgetwheelEventBase* = proc(event: gen_qevent.QWheelEvent): void
-proc onwheelEvent*(self: QPrintPreviewWidget, slot: proc(super: QPrintPreviewWidgetwheelEventBase, event: gen_qevent.QWheelEvent): void) =
+type QPrintPreviewWidgetwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
+proc onwheelEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: QPrintPreviewWidgetwheelEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintPreviewWidgetwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var tmp = new Cb
+  var tmp = new QPrintPreviewWidgetwheelEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrintPreviewWidget_override_virtual_wheelEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrintPreviewWidget_wheelEvent(self: ptr cQPrintPreviewWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPrintPreviewWidget_wheelEvent ".} =
-  type Cb = proc(super: QPrintPreviewWidgetwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QWheelEvent): auto =
-    callVirtualBase_wheelEvent(QPrintPreviewWidget(h: self), event)
+  var nimfunc = cast[ptr QPrintPreviewWidgetwheelEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QWheelEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyPressEvent(self: QPrintPreviewWidget, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QPrintPreviewWidgetkeyPressEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, event: gen_qevent.QKeyEvent): void =
 
   fQPrintPreviewWidget_virtualbase_keyPressEvent(self.h, event.h)
 
-type QPrintPreviewWidgetkeyPressEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyPressEvent*(self: QPrintPreviewWidget, slot: proc(super: QPrintPreviewWidgetkeyPressEventBase, event: gen_qevent.QKeyEvent): void) =
+type QPrintPreviewWidgetkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyPressEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: QPrintPreviewWidgetkeyPressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintPreviewWidgetkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QPrintPreviewWidgetkeyPressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrintPreviewWidget_override_virtual_keyPressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrintPreviewWidget_keyPressEvent(self: ptr cQPrintPreviewWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPrintPreviewWidget_keyPressEvent ".} =
-  type Cb = proc(super: QPrintPreviewWidgetkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyPressEvent(QPrintPreviewWidget(h: self), event)
+  var nimfunc = cast[ptr QPrintPreviewWidgetkeyPressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyReleaseEvent(self: QPrintPreviewWidget, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QPrintPreviewWidgetkeyReleaseEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, event: gen_qevent.QKeyEvent): void =
 
   fQPrintPreviewWidget_virtualbase_keyReleaseEvent(self.h, event.h)
 
-type QPrintPreviewWidgetkeyReleaseEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyReleaseEvent*(self: QPrintPreviewWidget, slot: proc(super: QPrintPreviewWidgetkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void) =
+type QPrintPreviewWidgetkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyReleaseEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: QPrintPreviewWidgetkeyReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintPreviewWidgetkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QPrintPreviewWidgetkeyReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrintPreviewWidget_override_virtual_keyReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrintPreviewWidget_keyReleaseEvent(self: ptr cQPrintPreviewWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPrintPreviewWidget_keyReleaseEvent ".} =
-  type Cb = proc(super: QPrintPreviewWidgetkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyReleaseEvent(QPrintPreviewWidget(h: self), event)
+  var nimfunc = cast[ptr QPrintPreviewWidgetkeyReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusInEvent(self: QPrintPreviewWidget, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QPrintPreviewWidgetfocusInEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, event: gen_qevent.QFocusEvent): void =
 
   fQPrintPreviewWidget_virtualbase_focusInEvent(self.h, event.h)
 
-type QPrintPreviewWidgetfocusInEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusInEvent*(self: QPrintPreviewWidget, slot: proc(super: QPrintPreviewWidgetfocusInEventBase, event: gen_qevent.QFocusEvent): void) =
+type QPrintPreviewWidgetfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusInEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: QPrintPreviewWidgetfocusInEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintPreviewWidgetfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QPrintPreviewWidgetfocusInEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrintPreviewWidget_override_virtual_focusInEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrintPreviewWidget_focusInEvent(self: ptr cQPrintPreviewWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPrintPreviewWidget_focusInEvent ".} =
-  type Cb = proc(super: QPrintPreviewWidgetfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusInEvent(QPrintPreviewWidget(h: self), event)
+  var nimfunc = cast[ptr QPrintPreviewWidgetfocusInEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusOutEvent(self: QPrintPreviewWidget, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QPrintPreviewWidgetfocusOutEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, event: gen_qevent.QFocusEvent): void =
 
   fQPrintPreviewWidget_virtualbase_focusOutEvent(self.h, event.h)
 
-type QPrintPreviewWidgetfocusOutEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusOutEvent*(self: QPrintPreviewWidget, slot: proc(super: QPrintPreviewWidgetfocusOutEventBase, event: gen_qevent.QFocusEvent): void) =
+type QPrintPreviewWidgetfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusOutEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: QPrintPreviewWidgetfocusOutEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintPreviewWidgetfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QPrintPreviewWidgetfocusOutEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrintPreviewWidget_override_virtual_focusOutEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrintPreviewWidget_focusOutEvent(self: ptr cQPrintPreviewWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPrintPreviewWidget_focusOutEvent ".} =
-  type Cb = proc(super: QPrintPreviewWidgetfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusOutEvent(QPrintPreviewWidget(h: self), event)
+  var nimfunc = cast[ptr QPrintPreviewWidgetfocusOutEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_enterEvent(self: QPrintPreviewWidget, event: gen_qevent.QEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QPrintPreviewWidgetenterEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, event: gen_qevent.QEnterEvent): void =
 
   fQPrintPreviewWidget_virtualbase_enterEvent(self.h, event.h)
 
-type QPrintPreviewWidgetenterEventBase* = proc(event: gen_qevent.QEnterEvent): void
-proc onenterEvent*(self: QPrintPreviewWidget, slot: proc(super: QPrintPreviewWidgetenterEventBase, event: gen_qevent.QEnterEvent): void) =
+type QPrintPreviewWidgetenterEventProc* = proc(event: gen_qevent.QEnterEvent): void
+proc onenterEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: QPrintPreviewWidgetenterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintPreviewWidgetenterEventBase, event: gen_qevent.QEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QPrintPreviewWidgetenterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrintPreviewWidget_override_virtual_enterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrintPreviewWidget_enterEvent(self: ptr cQPrintPreviewWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPrintPreviewWidget_enterEvent ".} =
-  type Cb = proc(super: QPrintPreviewWidgetenterEventBase, event: gen_qevent.QEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QEnterEvent): auto =
-    callVirtualBase_enterEvent(QPrintPreviewWidget(h: self), event)
+  var nimfunc = cast[ptr QPrintPreviewWidgetenterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_leaveEvent(self: QPrintPreviewWidget, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QPrintPreviewWidgetleaveEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, event: gen_qcoreevent.QEvent): void =
 
   fQPrintPreviewWidget_virtualbase_leaveEvent(self.h, event.h)
 
-type QPrintPreviewWidgetleaveEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onleaveEvent*(self: QPrintPreviewWidget, slot: proc(super: QPrintPreviewWidgetleaveEventBase, event: gen_qcoreevent.QEvent): void) =
+type QPrintPreviewWidgetleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onleaveEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: QPrintPreviewWidgetleaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintPreviewWidgetleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QPrintPreviewWidgetleaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrintPreviewWidget_override_virtual_leaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrintPreviewWidget_leaveEvent(self: ptr cQPrintPreviewWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPrintPreviewWidget_leaveEvent ".} =
-  type Cb = proc(super: QPrintPreviewWidgetleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_leaveEvent(QPrintPreviewWidget(h: self), event)
+  var nimfunc = cast[ptr QPrintPreviewWidgetleaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_paintEvent(self: QPrintPreviewWidget, event: gen_qevent.QPaintEvent): void =
-
+  nimfunc[](slotval1)
+proc QPrintPreviewWidgetpaintEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, event: gen_qevent.QPaintEvent): void =
 
   fQPrintPreviewWidget_virtualbase_paintEvent(self.h, event.h)
 
-type QPrintPreviewWidgetpaintEventBase* = proc(event: gen_qevent.QPaintEvent): void
-proc onpaintEvent*(self: QPrintPreviewWidget, slot: proc(super: QPrintPreviewWidgetpaintEventBase, event: gen_qevent.QPaintEvent): void) =
+type QPrintPreviewWidgetpaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
+proc onpaintEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: QPrintPreviewWidgetpaintEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintPreviewWidgetpaintEventBase, event: gen_qevent.QPaintEvent): void
-  var tmp = new Cb
+  var tmp = new QPrintPreviewWidgetpaintEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrintPreviewWidget_override_virtual_paintEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrintPreviewWidget_paintEvent(self: ptr cQPrintPreviewWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPrintPreviewWidget_paintEvent ".} =
-  type Cb = proc(super: QPrintPreviewWidgetpaintEventBase, event: gen_qevent.QPaintEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QPaintEvent): auto =
-    callVirtualBase_paintEvent(QPrintPreviewWidget(h: self), event)
+  var nimfunc = cast[ptr QPrintPreviewWidgetpaintEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QPaintEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_moveEvent(self: QPrintPreviewWidget, event: gen_qevent.QMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QPrintPreviewWidgetmoveEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, event: gen_qevent.QMoveEvent): void =
 
   fQPrintPreviewWidget_virtualbase_moveEvent(self.h, event.h)
 
-type QPrintPreviewWidgetmoveEventBase* = proc(event: gen_qevent.QMoveEvent): void
-proc onmoveEvent*(self: QPrintPreviewWidget, slot: proc(super: QPrintPreviewWidgetmoveEventBase, event: gen_qevent.QMoveEvent): void) =
+type QPrintPreviewWidgetmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
+proc onmoveEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: QPrintPreviewWidgetmoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintPreviewWidgetmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QPrintPreviewWidgetmoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrintPreviewWidget_override_virtual_moveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrintPreviewWidget_moveEvent(self: ptr cQPrintPreviewWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPrintPreviewWidget_moveEvent ".} =
-  type Cb = proc(super: QPrintPreviewWidgetmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMoveEvent): auto =
-    callVirtualBase_moveEvent(QPrintPreviewWidget(h: self), event)
+  var nimfunc = cast[ptr QPrintPreviewWidgetmoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_resizeEvent(self: QPrintPreviewWidget, event: gen_qevent.QResizeEvent): void =
-
+  nimfunc[](slotval1)
+proc QPrintPreviewWidgetresizeEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, event: gen_qevent.QResizeEvent): void =
 
   fQPrintPreviewWidget_virtualbase_resizeEvent(self.h, event.h)
 
-type QPrintPreviewWidgetresizeEventBase* = proc(event: gen_qevent.QResizeEvent): void
-proc onresizeEvent*(self: QPrintPreviewWidget, slot: proc(super: QPrintPreviewWidgetresizeEventBase, event: gen_qevent.QResizeEvent): void) =
+type QPrintPreviewWidgetresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
+proc onresizeEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: QPrintPreviewWidgetresizeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintPreviewWidgetresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var tmp = new Cb
+  var tmp = new QPrintPreviewWidgetresizeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrintPreviewWidget_override_virtual_resizeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrintPreviewWidget_resizeEvent(self: ptr cQPrintPreviewWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPrintPreviewWidget_resizeEvent ".} =
-  type Cb = proc(super: QPrintPreviewWidgetresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QResizeEvent): auto =
-    callVirtualBase_resizeEvent(QPrintPreviewWidget(h: self), event)
+  var nimfunc = cast[ptr QPrintPreviewWidgetresizeEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QResizeEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_closeEvent(self: QPrintPreviewWidget, event: gen_qevent.QCloseEvent): void =
-
+  nimfunc[](slotval1)
+proc QPrintPreviewWidgetcloseEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, event: gen_qevent.QCloseEvent): void =
 
   fQPrintPreviewWidget_virtualbase_closeEvent(self.h, event.h)
 
-type QPrintPreviewWidgetcloseEventBase* = proc(event: gen_qevent.QCloseEvent): void
-proc oncloseEvent*(self: QPrintPreviewWidget, slot: proc(super: QPrintPreviewWidgetcloseEventBase, event: gen_qevent.QCloseEvent): void) =
+type QPrintPreviewWidgetcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
+proc oncloseEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: QPrintPreviewWidgetcloseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintPreviewWidgetcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var tmp = new Cb
+  var tmp = new QPrintPreviewWidgetcloseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrintPreviewWidget_override_virtual_closeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrintPreviewWidget_closeEvent(self: ptr cQPrintPreviewWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPrintPreviewWidget_closeEvent ".} =
-  type Cb = proc(super: QPrintPreviewWidgetcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QCloseEvent): auto =
-    callVirtualBase_closeEvent(QPrintPreviewWidget(h: self), event)
+  var nimfunc = cast[ptr QPrintPreviewWidgetcloseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QCloseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_contextMenuEvent(self: QPrintPreviewWidget, event: gen_qevent.QContextMenuEvent): void =
-
+  nimfunc[](slotval1)
+proc QPrintPreviewWidgetcontextMenuEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, event: gen_qevent.QContextMenuEvent): void =
 
   fQPrintPreviewWidget_virtualbase_contextMenuEvent(self.h, event.h)
 
-type QPrintPreviewWidgetcontextMenuEventBase* = proc(event: gen_qevent.QContextMenuEvent): void
-proc oncontextMenuEvent*(self: QPrintPreviewWidget, slot: proc(super: QPrintPreviewWidgetcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void) =
+type QPrintPreviewWidgetcontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
+proc oncontextMenuEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: QPrintPreviewWidgetcontextMenuEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintPreviewWidgetcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var tmp = new Cb
+  var tmp = new QPrintPreviewWidgetcontextMenuEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrintPreviewWidget_override_virtual_contextMenuEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrintPreviewWidget_contextMenuEvent(self: ptr cQPrintPreviewWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPrintPreviewWidget_contextMenuEvent ".} =
-  type Cb = proc(super: QPrintPreviewWidgetcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QContextMenuEvent): auto =
-    callVirtualBase_contextMenuEvent(QPrintPreviewWidget(h: self), event)
+  var nimfunc = cast[ptr QPrintPreviewWidgetcontextMenuEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QContextMenuEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_tabletEvent(self: QPrintPreviewWidget, event: gen_qevent.QTabletEvent): void =
-
+  nimfunc[](slotval1)
+proc QPrintPreviewWidgettabletEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, event: gen_qevent.QTabletEvent): void =
 
   fQPrintPreviewWidget_virtualbase_tabletEvent(self.h, event.h)
 
-type QPrintPreviewWidgettabletEventBase* = proc(event: gen_qevent.QTabletEvent): void
-proc ontabletEvent*(self: QPrintPreviewWidget, slot: proc(super: QPrintPreviewWidgettabletEventBase, event: gen_qevent.QTabletEvent): void) =
+type QPrintPreviewWidgettabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
+proc ontabletEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: QPrintPreviewWidgettabletEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintPreviewWidgettabletEventBase, event: gen_qevent.QTabletEvent): void
-  var tmp = new Cb
+  var tmp = new QPrintPreviewWidgettabletEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrintPreviewWidget_override_virtual_tabletEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrintPreviewWidget_tabletEvent(self: ptr cQPrintPreviewWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPrintPreviewWidget_tabletEvent ".} =
-  type Cb = proc(super: QPrintPreviewWidgettabletEventBase, event: gen_qevent.QTabletEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QTabletEvent): auto =
-    callVirtualBase_tabletEvent(QPrintPreviewWidget(h: self), event)
+  var nimfunc = cast[ptr QPrintPreviewWidgettabletEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QTabletEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_actionEvent(self: QPrintPreviewWidget, event: gen_qevent.QActionEvent): void =
-
+  nimfunc[](slotval1)
+proc QPrintPreviewWidgetactionEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, event: gen_qevent.QActionEvent): void =
 
   fQPrintPreviewWidget_virtualbase_actionEvent(self.h, event.h)
 
-type QPrintPreviewWidgetactionEventBase* = proc(event: gen_qevent.QActionEvent): void
-proc onactionEvent*(self: QPrintPreviewWidget, slot: proc(super: QPrintPreviewWidgetactionEventBase, event: gen_qevent.QActionEvent): void) =
+type QPrintPreviewWidgetactionEventProc* = proc(event: gen_qevent.QActionEvent): void
+proc onactionEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: QPrintPreviewWidgetactionEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintPreviewWidgetactionEventBase, event: gen_qevent.QActionEvent): void
-  var tmp = new Cb
+  var tmp = new QPrintPreviewWidgetactionEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrintPreviewWidget_override_virtual_actionEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrintPreviewWidget_actionEvent(self: ptr cQPrintPreviewWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPrintPreviewWidget_actionEvent ".} =
-  type Cb = proc(super: QPrintPreviewWidgetactionEventBase, event: gen_qevent.QActionEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QActionEvent): auto =
-    callVirtualBase_actionEvent(QPrintPreviewWidget(h: self), event)
+  var nimfunc = cast[ptr QPrintPreviewWidgetactionEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QActionEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragEnterEvent(self: QPrintPreviewWidget, event: gen_qevent.QDragEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QPrintPreviewWidgetdragEnterEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, event: gen_qevent.QDragEnterEvent): void =
 
   fQPrintPreviewWidget_virtualbase_dragEnterEvent(self.h, event.h)
 
-type QPrintPreviewWidgetdragEnterEventBase* = proc(event: gen_qevent.QDragEnterEvent): void
-proc ondragEnterEvent*(self: QPrintPreviewWidget, slot: proc(super: QPrintPreviewWidgetdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void) =
+type QPrintPreviewWidgetdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
+proc ondragEnterEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: QPrintPreviewWidgetdragEnterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintPreviewWidgetdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QPrintPreviewWidgetdragEnterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrintPreviewWidget_override_virtual_dragEnterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrintPreviewWidget_dragEnterEvent(self: ptr cQPrintPreviewWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPrintPreviewWidget_dragEnterEvent ".} =
-  type Cb = proc(super: QPrintPreviewWidgetdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragEnterEvent): auto =
-    callVirtualBase_dragEnterEvent(QPrintPreviewWidget(h: self), event)
+  var nimfunc = cast[ptr QPrintPreviewWidgetdragEnterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragMoveEvent(self: QPrintPreviewWidget, event: gen_qevent.QDragMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QPrintPreviewWidgetdragMoveEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, event: gen_qevent.QDragMoveEvent): void =
 
   fQPrintPreviewWidget_virtualbase_dragMoveEvent(self.h, event.h)
 
-type QPrintPreviewWidgetdragMoveEventBase* = proc(event: gen_qevent.QDragMoveEvent): void
-proc ondragMoveEvent*(self: QPrintPreviewWidget, slot: proc(super: QPrintPreviewWidgetdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void) =
+type QPrintPreviewWidgetdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
+proc ondragMoveEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: QPrintPreviewWidgetdragMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintPreviewWidgetdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QPrintPreviewWidgetdragMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrintPreviewWidget_override_virtual_dragMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrintPreviewWidget_dragMoveEvent(self: ptr cQPrintPreviewWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPrintPreviewWidget_dragMoveEvent ".} =
-  type Cb = proc(super: QPrintPreviewWidgetdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragMoveEvent): auto =
-    callVirtualBase_dragMoveEvent(QPrintPreviewWidget(h: self), event)
+  var nimfunc = cast[ptr QPrintPreviewWidgetdragMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragLeaveEvent(self: QPrintPreviewWidget, event: gen_qevent.QDragLeaveEvent): void =
-
+  nimfunc[](slotval1)
+proc QPrintPreviewWidgetdragLeaveEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, event: gen_qevent.QDragLeaveEvent): void =
 
   fQPrintPreviewWidget_virtualbase_dragLeaveEvent(self.h, event.h)
 
-type QPrintPreviewWidgetdragLeaveEventBase* = proc(event: gen_qevent.QDragLeaveEvent): void
-proc ondragLeaveEvent*(self: QPrintPreviewWidget, slot: proc(super: QPrintPreviewWidgetdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void) =
+type QPrintPreviewWidgetdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
+proc ondragLeaveEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: QPrintPreviewWidgetdragLeaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintPreviewWidgetdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var tmp = new Cb
+  var tmp = new QPrintPreviewWidgetdragLeaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrintPreviewWidget_override_virtual_dragLeaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrintPreviewWidget_dragLeaveEvent(self: ptr cQPrintPreviewWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPrintPreviewWidget_dragLeaveEvent ".} =
-  type Cb = proc(super: QPrintPreviewWidgetdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragLeaveEvent): auto =
-    callVirtualBase_dragLeaveEvent(QPrintPreviewWidget(h: self), event)
+  var nimfunc = cast[ptr QPrintPreviewWidgetdragLeaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragLeaveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dropEvent(self: QPrintPreviewWidget, event: gen_qevent.QDropEvent): void =
-
+  nimfunc[](slotval1)
+proc QPrintPreviewWidgetdropEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, event: gen_qevent.QDropEvent): void =
 
   fQPrintPreviewWidget_virtualbase_dropEvent(self.h, event.h)
 
-type QPrintPreviewWidgetdropEventBase* = proc(event: gen_qevent.QDropEvent): void
-proc ondropEvent*(self: QPrintPreviewWidget, slot: proc(super: QPrintPreviewWidgetdropEventBase, event: gen_qevent.QDropEvent): void) =
+type QPrintPreviewWidgetdropEventProc* = proc(event: gen_qevent.QDropEvent): void
+proc ondropEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: QPrintPreviewWidgetdropEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintPreviewWidgetdropEventBase, event: gen_qevent.QDropEvent): void
-  var tmp = new Cb
+  var tmp = new QPrintPreviewWidgetdropEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrintPreviewWidget_override_virtual_dropEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrintPreviewWidget_dropEvent(self: ptr cQPrintPreviewWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPrintPreviewWidget_dropEvent ".} =
-  type Cb = proc(super: QPrintPreviewWidgetdropEventBase, event: gen_qevent.QDropEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDropEvent): auto =
-    callVirtualBase_dropEvent(QPrintPreviewWidget(h: self), event)
+  var nimfunc = cast[ptr QPrintPreviewWidgetdropEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDropEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_showEvent(self: QPrintPreviewWidget, event: gen_qevent.QShowEvent): void =
-
+  nimfunc[](slotval1)
+proc QPrintPreviewWidgetshowEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, event: gen_qevent.QShowEvent): void =
 
   fQPrintPreviewWidget_virtualbase_showEvent(self.h, event.h)
 
-type QPrintPreviewWidgetshowEventBase* = proc(event: gen_qevent.QShowEvent): void
-proc onshowEvent*(self: QPrintPreviewWidget, slot: proc(super: QPrintPreviewWidgetshowEventBase, event: gen_qevent.QShowEvent): void) =
+type QPrintPreviewWidgetshowEventProc* = proc(event: gen_qevent.QShowEvent): void
+proc onshowEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: QPrintPreviewWidgetshowEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintPreviewWidgetshowEventBase, event: gen_qevent.QShowEvent): void
-  var tmp = new Cb
+  var tmp = new QPrintPreviewWidgetshowEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrintPreviewWidget_override_virtual_showEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrintPreviewWidget_showEvent(self: ptr cQPrintPreviewWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPrintPreviewWidget_showEvent ".} =
-  type Cb = proc(super: QPrintPreviewWidgetshowEventBase, event: gen_qevent.QShowEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QShowEvent): auto =
-    callVirtualBase_showEvent(QPrintPreviewWidget(h: self), event)
+  var nimfunc = cast[ptr QPrintPreviewWidgetshowEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QShowEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hideEvent(self: QPrintPreviewWidget, event: gen_qevent.QHideEvent): void =
-
+  nimfunc[](slotval1)
+proc QPrintPreviewWidgethideEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, event: gen_qevent.QHideEvent): void =
 
   fQPrintPreviewWidget_virtualbase_hideEvent(self.h, event.h)
 
-type QPrintPreviewWidgethideEventBase* = proc(event: gen_qevent.QHideEvent): void
-proc onhideEvent*(self: QPrintPreviewWidget, slot: proc(super: QPrintPreviewWidgethideEventBase, event: gen_qevent.QHideEvent): void) =
+type QPrintPreviewWidgethideEventProc* = proc(event: gen_qevent.QHideEvent): void
+proc onhideEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: QPrintPreviewWidgethideEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintPreviewWidgethideEventBase, event: gen_qevent.QHideEvent): void
-  var tmp = new Cb
+  var tmp = new QPrintPreviewWidgethideEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrintPreviewWidget_override_virtual_hideEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrintPreviewWidget_hideEvent(self: ptr cQPrintPreviewWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPrintPreviewWidget_hideEvent ".} =
-  type Cb = proc(super: QPrintPreviewWidgethideEventBase, event: gen_qevent.QHideEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QHideEvent): auto =
-    callVirtualBase_hideEvent(QPrintPreviewWidget(h: self), event)
+  var nimfunc = cast[ptr QPrintPreviewWidgethideEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QHideEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_nativeEvent(self: QPrintPreviewWidget, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
-
+  nimfunc[](slotval1)
+proc QPrintPreviewWidgetnativeEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
 
   fQPrintPreviewWidget_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
-type QPrintPreviewWidgetnativeEventBase* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-proc onnativeEvent*(self: QPrintPreviewWidget, slot: proc(super: QPrintPreviewWidgetnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool) =
+type QPrintPreviewWidgetnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
+proc onnativeEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: QPrintPreviewWidgetnativeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintPreviewWidgetnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-  var tmp = new Cb
+  var tmp = new QPrintPreviewWidgetnativeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrintPreviewWidget_override_virtual_nativeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrintPreviewWidget_nativeEvent(self: ptr cQPrintPreviewWidget, slot: int, eventType: struct_miqt_string, message: pointer, resultVal: ptr uint): bool {.exportc: "miqt_exec_callback_QPrintPreviewWidget_nativeEvent ".} =
-  type Cb = proc(super: QPrintPreviewWidgetnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(eventType: seq[byte], message: pointer, resultVal: ptr uint): auto =
-    callVirtualBase_nativeEvent(QPrintPreviewWidget(h: self), eventType, message, resultVal)
+  var nimfunc = cast[ptr QPrintPreviewWidgetnativeEventProc](cast[pointer](slot))
   var veventType_bytearray = eventType
   var veventTypex_ret = @(toOpenArrayByte(veventType_bytearray.data, 0, int(veventType_bytearray.len)-1))
   c_free(veventType_bytearray.data)
@@ -1266,344 +1078,274 @@ proc miqt_exec_callback_QPrintPreviewWidget_nativeEvent(self: ptr cQPrintPreview
   let slotval3 = resultVal
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_changeEvent(self: QPrintPreviewWidget, param1: gen_qcoreevent.QEvent): void =
-
+proc QPrintPreviewWidgetchangeEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, param1: gen_qcoreevent.QEvent): void =
 
   fQPrintPreviewWidget_virtualbase_changeEvent(self.h, param1.h)
 
-type QPrintPreviewWidgetchangeEventBase* = proc(param1: gen_qcoreevent.QEvent): void
-proc onchangeEvent*(self: QPrintPreviewWidget, slot: proc(super: QPrintPreviewWidgetchangeEventBase, param1: gen_qcoreevent.QEvent): void) =
+type QPrintPreviewWidgetchangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
+proc onchangeEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: QPrintPreviewWidgetchangeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintPreviewWidgetchangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QPrintPreviewWidgetchangeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrintPreviewWidget_override_virtual_changeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrintPreviewWidget_changeEvent(self: ptr cQPrintPreviewWidget, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QPrintPreviewWidget_changeEvent ".} =
-  type Cb = proc(super: QPrintPreviewWidgetchangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_changeEvent(QPrintPreviewWidget(h: self), param1)
+  var nimfunc = cast[ptr QPrintPreviewWidgetchangeEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_metric(self: QPrintPreviewWidget, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint =
-
+  nimfunc[](slotval1)
+proc QPrintPreviewWidgetmetric*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, param1: cint): cint =
 
   fQPrintPreviewWidget_virtualbase_metric(self.h, cint(param1))
 
-type QPrintPreviewWidgetmetricBase* = proc(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-proc onmetric*(self: QPrintPreviewWidget, slot: proc(super: QPrintPreviewWidgetmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint) =
+type QPrintPreviewWidgetmetricProc* = proc(param1: cint): cint
+proc onmetric*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: QPrintPreviewWidgetmetricProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintPreviewWidgetmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var tmp = new Cb
+  var tmp = new QPrintPreviewWidgetmetricProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrintPreviewWidget_override_virtual_metric(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrintPreviewWidget_metric(self: ptr cQPrintPreviewWidget, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QPrintPreviewWidget_metric ".} =
-  type Cb = proc(super: QPrintPreviewWidgetmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): auto =
-    callVirtualBase_metric(QPrintPreviewWidget(h: self), param1)
-  let slotval1 = gen_qpaintdevice.QPaintDevicePaintDeviceMetric(param1)
+  var nimfunc = cast[ptr QPrintPreviewWidgetmetricProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_initPainter(self: QPrintPreviewWidget, painter: gen_qpainter.QPainter): void =
-
+proc QPrintPreviewWidgetinitPainter*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, painter: gen_qpainter.QPainter): void =
 
   fQPrintPreviewWidget_virtualbase_initPainter(self.h, painter.h)
 
-type QPrintPreviewWidgetinitPainterBase* = proc(painter: gen_qpainter.QPainter): void
-proc oninitPainter*(self: QPrintPreviewWidget, slot: proc(super: QPrintPreviewWidgetinitPainterBase, painter: gen_qpainter.QPainter): void) =
+type QPrintPreviewWidgetinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
+proc oninitPainter*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: QPrintPreviewWidgetinitPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintPreviewWidgetinitPainterBase, painter: gen_qpainter.QPainter): void
-  var tmp = new Cb
+  var tmp = new QPrintPreviewWidgetinitPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrintPreviewWidget_override_virtual_initPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrintPreviewWidget_initPainter(self: ptr cQPrintPreviewWidget, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_QPrintPreviewWidget_initPainter ".} =
-  type Cb = proc(super: QPrintPreviewWidgetinitPainterBase, painter: gen_qpainter.QPainter): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter): auto =
-    callVirtualBase_initPainter(QPrintPreviewWidget(h: self), painter)
+  var nimfunc = cast[ptr QPrintPreviewWidgetinitPainterProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_redirected(self: QPrintPreviewWidget, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
+  nimfunc[](slotval1)
+proc QPrintPreviewWidgetredirected*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
 
   gen_qpaintdevice.QPaintDevice(h: fQPrintPreviewWidget_virtualbase_redirected(self.h, offset.h))
 
-type QPrintPreviewWidgetredirectedBase* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-proc onredirected*(self: QPrintPreviewWidget, slot: proc(super: QPrintPreviewWidgetredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice) =
+type QPrintPreviewWidgetredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
+proc onredirected*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: QPrintPreviewWidgetredirectedProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintPreviewWidgetredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var tmp = new Cb
+  var tmp = new QPrintPreviewWidgetredirectedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrintPreviewWidget_override_virtual_redirected(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrintPreviewWidget_redirected(self: ptr cQPrintPreviewWidget, slot: int, offset: pointer): pointer {.exportc: "miqt_exec_callback_QPrintPreviewWidget_redirected ".} =
-  type Cb = proc(super: QPrintPreviewWidgetredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(offset: gen_qpoint.QPoint): auto =
-    callVirtualBase_redirected(QPrintPreviewWidget(h: self), offset)
+  var nimfunc = cast[ptr QPrintPreviewWidgetredirectedProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: offset)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_sharedPainter(self: QPrintPreviewWidget, ): gen_qpainter.QPainter =
-
+proc QPrintPreviewWidgetsharedPainter*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, ): gen_qpainter.QPainter =
 
   gen_qpainter.QPainter(h: fQPrintPreviewWidget_virtualbase_sharedPainter(self.h))
 
-type QPrintPreviewWidgetsharedPainterBase* = proc(): gen_qpainter.QPainter
-proc onsharedPainter*(self: QPrintPreviewWidget, slot: proc(super: QPrintPreviewWidgetsharedPainterBase): gen_qpainter.QPainter) =
+type QPrintPreviewWidgetsharedPainterProc* = proc(): gen_qpainter.QPainter
+proc onsharedPainter*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: QPrintPreviewWidgetsharedPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintPreviewWidgetsharedPainterBase): gen_qpainter.QPainter
-  var tmp = new Cb
+  var tmp = new QPrintPreviewWidgetsharedPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrintPreviewWidget_override_virtual_sharedPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrintPreviewWidget_sharedPainter(self: ptr cQPrintPreviewWidget, slot: int): pointer {.exportc: "miqt_exec_callback_QPrintPreviewWidget_sharedPainter ".} =
-  type Cb = proc(super: QPrintPreviewWidgetsharedPainterBase): gen_qpainter.QPainter
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sharedPainter(QPrintPreviewWidget(h: self), )
+  var nimfunc = cast[ptr QPrintPreviewWidgetsharedPainterProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_inputMethodEvent(self: QPrintPreviewWidget, param1: gen_qevent.QInputMethodEvent): void =
-
+proc QPrintPreviewWidgetinputMethodEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, param1: gen_qevent.QInputMethodEvent): void =
 
   fQPrintPreviewWidget_virtualbase_inputMethodEvent(self.h, param1.h)
 
-type QPrintPreviewWidgetinputMethodEventBase* = proc(param1: gen_qevent.QInputMethodEvent): void
-proc oninputMethodEvent*(self: QPrintPreviewWidget, slot: proc(super: QPrintPreviewWidgetinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void) =
+type QPrintPreviewWidgetinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
+proc oninputMethodEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: QPrintPreviewWidgetinputMethodEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintPreviewWidgetinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var tmp = new Cb
+  var tmp = new QPrintPreviewWidgetinputMethodEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrintPreviewWidget_override_virtual_inputMethodEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrintPreviewWidget_inputMethodEvent(self: ptr cQPrintPreviewWidget, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QPrintPreviewWidget_inputMethodEvent ".} =
-  type Cb = proc(super: QPrintPreviewWidgetinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QInputMethodEvent): auto =
-    callVirtualBase_inputMethodEvent(QPrintPreviewWidget(h: self), param1)
+  var nimfunc = cast[ptr QPrintPreviewWidgetinputMethodEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QInputMethodEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_inputMethodQuery(self: QPrintPreviewWidget, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant =
-
+  nimfunc[](slotval1)
+proc QPrintPreviewWidgetinputMethodQuery*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, param1: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQPrintPreviewWidget_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
-type QPrintPreviewWidgetinputMethodQueryBase* = proc(param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-proc oninputMethodQuery*(self: QPrintPreviewWidget, slot: proc(super: QPrintPreviewWidgetinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant) =
+type QPrintPreviewWidgetinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
+proc oninputMethodQuery*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: QPrintPreviewWidgetinputMethodQueryProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintPreviewWidgetinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QPrintPreviewWidgetinputMethodQueryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrintPreviewWidget_override_virtual_inputMethodQuery(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrintPreviewWidget_inputMethodQuery(self: ptr cQPrintPreviewWidget, slot: int, param1: cint): pointer {.exportc: "miqt_exec_callback_QPrintPreviewWidget_inputMethodQuery ".} =
-  type Cb = proc(super: QPrintPreviewWidgetinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qnamespace.InputMethodQuery): auto =
-    callVirtualBase_inputMethodQuery(QPrintPreviewWidget(h: self), param1)
-  let slotval1 = gen_qnamespace.InputMethodQuery(param1)
+  var nimfunc = cast[ptr QPrintPreviewWidgetinputMethodQueryProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_focusNextPrevChild(self: QPrintPreviewWidget, next: bool): bool =
-
+proc QPrintPreviewWidgetfocusNextPrevChild*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, next: bool): bool =
 
   fQPrintPreviewWidget_virtualbase_focusNextPrevChild(self.h, next)
 
-type QPrintPreviewWidgetfocusNextPrevChildBase* = proc(next: bool): bool
-proc onfocusNextPrevChild*(self: QPrintPreviewWidget, slot: proc(super: QPrintPreviewWidgetfocusNextPrevChildBase, next: bool): bool) =
+type QPrintPreviewWidgetfocusNextPrevChildProc* = proc(next: bool): bool
+proc onfocusNextPrevChild*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: QPrintPreviewWidgetfocusNextPrevChildProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintPreviewWidgetfocusNextPrevChildBase, next: bool): bool
-  var tmp = new Cb
+  var tmp = new QPrintPreviewWidgetfocusNextPrevChildProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrintPreviewWidget_override_virtual_focusNextPrevChild(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrintPreviewWidget_focusNextPrevChild(self: ptr cQPrintPreviewWidget, slot: int, next: bool): bool {.exportc: "miqt_exec_callback_QPrintPreviewWidget_focusNextPrevChild ".} =
-  type Cb = proc(super: QPrintPreviewWidgetfocusNextPrevChildBase, next: bool): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(next: bool): auto =
-    callVirtualBase_focusNextPrevChild(QPrintPreviewWidget(h: self), next)
+  var nimfunc = cast[ptr QPrintPreviewWidgetfocusNextPrevChildProc](cast[pointer](slot))
   let slotval1 = next
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QPrintPreviewWidget, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QPrintPreviewWidgeteventFilter*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQPrintPreviewWidget_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QPrintPreviewWidgeteventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QPrintPreviewWidget, slot: proc(super: QPrintPreviewWidgeteventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QPrintPreviewWidgeteventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: QPrintPreviewWidgeteventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintPreviewWidgeteventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QPrintPreviewWidgeteventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrintPreviewWidget_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrintPreviewWidget_eventFilter(self: ptr cQPrintPreviewWidget, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QPrintPreviewWidget_eventFilter ".} =
-  type Cb = proc(super: QPrintPreviewWidgeteventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QPrintPreviewWidget(h: self), watched, event)
+  var nimfunc = cast[ptr QPrintPreviewWidgeteventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QPrintPreviewWidget, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QPrintPreviewWidgettimerEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, event: gen_qcoreevent.QTimerEvent): void =
 
   fQPrintPreviewWidget_virtualbase_timerEvent(self.h, event.h)
 
-type QPrintPreviewWidgettimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QPrintPreviewWidget, slot: proc(super: QPrintPreviewWidgettimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QPrintPreviewWidgettimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: QPrintPreviewWidgettimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintPreviewWidgettimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QPrintPreviewWidgettimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrintPreviewWidget_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrintPreviewWidget_timerEvent(self: ptr cQPrintPreviewWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPrintPreviewWidget_timerEvent ".} =
-  type Cb = proc(super: QPrintPreviewWidgettimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QPrintPreviewWidget(h: self), event)
+  var nimfunc = cast[ptr QPrintPreviewWidgettimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QPrintPreviewWidget, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QPrintPreviewWidgetchildEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, event: gen_qcoreevent.QChildEvent): void =
 
   fQPrintPreviewWidget_virtualbase_childEvent(self.h, event.h)
 
-type QPrintPreviewWidgetchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QPrintPreviewWidget, slot: proc(super: QPrintPreviewWidgetchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QPrintPreviewWidgetchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: QPrintPreviewWidgetchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintPreviewWidgetchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QPrintPreviewWidgetchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrintPreviewWidget_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrintPreviewWidget_childEvent(self: ptr cQPrintPreviewWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPrintPreviewWidget_childEvent ".} =
-  type Cb = proc(super: QPrintPreviewWidgetchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QPrintPreviewWidget(h: self), event)
+  var nimfunc = cast[ptr QPrintPreviewWidgetchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QPrintPreviewWidget, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QPrintPreviewWidgetcustomEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, event: gen_qcoreevent.QEvent): void =
 
   fQPrintPreviewWidget_virtualbase_customEvent(self.h, event.h)
 
-type QPrintPreviewWidgetcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QPrintPreviewWidget, slot: proc(super: QPrintPreviewWidgetcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QPrintPreviewWidgetcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: QPrintPreviewWidgetcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintPreviewWidgetcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QPrintPreviewWidgetcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrintPreviewWidget_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrintPreviewWidget_customEvent(self: ptr cQPrintPreviewWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPrintPreviewWidget_customEvent ".} =
-  type Cb = proc(super: QPrintPreviewWidgetcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QPrintPreviewWidget(h: self), event)
+  var nimfunc = cast[ptr QPrintPreviewWidgetcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QPrintPreviewWidget, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QPrintPreviewWidgetconnectNotify*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQPrintPreviewWidget_virtualbase_connectNotify(self.h, signal.h)
 
-type QPrintPreviewWidgetconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QPrintPreviewWidget, slot: proc(super: QPrintPreviewWidgetconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QPrintPreviewWidgetconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: QPrintPreviewWidgetconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintPreviewWidgetconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QPrintPreviewWidgetconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrintPreviewWidget_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrintPreviewWidget_connectNotify(self: ptr cQPrintPreviewWidget, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QPrintPreviewWidget_connectNotify ".} =
-  type Cb = proc(super: QPrintPreviewWidgetconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QPrintPreviewWidget(h: self), signal)
+  var nimfunc = cast[ptr QPrintPreviewWidgetconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QPrintPreviewWidget, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QPrintPreviewWidgetdisconnectNotify*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQPrintPreviewWidget_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QPrintPreviewWidgetdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QPrintPreviewWidget, slot: proc(super: QPrintPreviewWidgetdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QPrintPreviewWidgetdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget, slot: QPrintPreviewWidgetdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintPreviewWidgetdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QPrintPreviewWidgetdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrintPreviewWidget_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrintPreviewWidget_disconnectNotify(self: ptr cQPrintPreviewWidget, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QPrintPreviewWidget_disconnectNotify ".} =
-  type Cb = proc(super: QPrintPreviewWidgetdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QPrintPreviewWidget(h: self), signal)
+  var nimfunc = cast[ptr QPrintPreviewWidgetdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QPrintPreviewWidget): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qprintpreviewwidget_types.QPrintPreviewWidget): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQPrintPreviewWidget_staticMetaObject())
-proc delete*(self: QPrintPreviewWidget) =
+proc delete*(self: gen_qprintpreviewwidget_types.QPrintPreviewWidget) =
   fcQPrintPreviewWidget_delete(self.h)

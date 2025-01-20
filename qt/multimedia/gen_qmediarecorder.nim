@@ -34,34 +34,28 @@ const cflags = gorge("pkg-config -cflags Qt5MultimediaWidgets")
 {.compile("gen_qmediarecorder.cpp", cflags).}
 
 
-type QMediaRecorderState* = cint
-const
-  QMediaRecorderStoppedState* = 0
-  QMediaRecorderRecordingState* = 1
-  QMediaRecorderPausedState* = 2
+type QMediaRecorderStateEnum* = distinct cint
+template StoppedState*(_: type QMediaRecorderStateEnum): untyped = 0
+template RecordingState*(_: type QMediaRecorderStateEnum): untyped = 1
+template PausedState*(_: type QMediaRecorderStateEnum): untyped = 2
 
 
-
-type QMediaRecorderStatus* = cint
-const
-  QMediaRecorderUnavailableStatus* = 0
-  QMediaRecorderUnloadedStatus* = 1
-  QMediaRecorderLoadingStatus* = 2
-  QMediaRecorderLoadedStatus* = 3
-  QMediaRecorderStartingStatus* = 4
-  QMediaRecorderRecordingStatus* = 5
-  QMediaRecorderPausedStatus* = 6
-  QMediaRecorderFinalizingStatus* = 7
+type QMediaRecorderStatusEnum* = distinct cint
+template UnavailableStatus*(_: type QMediaRecorderStatusEnum): untyped = 0
+template UnloadedStatus*(_: type QMediaRecorderStatusEnum): untyped = 1
+template LoadingStatus*(_: type QMediaRecorderStatusEnum): untyped = 2
+template LoadedStatus*(_: type QMediaRecorderStatusEnum): untyped = 3
+template StartingStatus*(_: type QMediaRecorderStatusEnum): untyped = 4
+template RecordingStatus*(_: type QMediaRecorderStatusEnum): untyped = 5
+template PausedStatus*(_: type QMediaRecorderStatusEnum): untyped = 6
+template FinalizingStatus*(_: type QMediaRecorderStatusEnum): untyped = 7
 
 
-
-type QMediaRecorderError* = cint
-const
-  QMediaRecorderNoError* = 0
-  QMediaRecorderResourceError* = 1
-  QMediaRecorderFormatError* = 2
-  QMediaRecorderOutOfSpaceError* = 3
-
+type QMediaRecorderErrorEnum* = distinct cint
+template NoError*(_: type QMediaRecorderErrorEnum): untyped = 0
+template ResourceError*(_: type QMediaRecorderErrorEnum): untyped = 1
+template FormatError*(_: type QMediaRecorderErrorEnum): untyped = 2
+template OutOfSpaceError*(_: type QMediaRecorderErrorEnum): untyped = 3
 
 
 import gen_qmediarecorder_types
@@ -72,7 +66,6 @@ import
   gen_qmediaencodersettings,
   gen_qmediaobject,
   gen_qmetaobject,
-  gen_qmultimedia,
   gen_qobject,
   gen_qobjectdefs,
   gen_qsize,
@@ -83,7 +76,6 @@ export
   gen_qmediaencodersettings,
   gen_qmediaobject,
   gen_qmetaobject,
-  gen_qmultimedia,
   gen_qobject,
   gen_qobjectdefs,
   gen_qsize,
@@ -204,96 +196,96 @@ proc fcQMediaRecorder_staticMetaObject(): pointer {.importc: "QMediaRecorder_sta
 proc fcQMediaRecorder_delete(self: pointer) {.importc: "QMediaRecorder_delete".}
 
 
-func init*(T: type QMediaRecorder, h: ptr cQMediaRecorder): QMediaRecorder =
+func init*(T: type gen_qmediarecorder_types.QMediaRecorder, h: ptr cQMediaRecorder): gen_qmediarecorder_types.QMediaRecorder =
   T(h: h)
-proc create*(T: type QMediaRecorder, mediaObject: gen_qmediaobject.QMediaObject): QMediaRecorder =
+proc create*(T: type gen_qmediarecorder_types.QMediaRecorder, mediaObject: gen_qmediaobject.QMediaObject): gen_qmediarecorder_types.QMediaRecorder =
 
-  QMediaRecorder.init(fcQMediaRecorder_new(mediaObject.h))
-proc create*(T: type QMediaRecorder, mediaObject: gen_qmediaobject.QMediaObject, parent: gen_qobject.QObject): QMediaRecorder =
+  gen_qmediarecorder_types.QMediaRecorder.init(fcQMediaRecorder_new(mediaObject.h))
+proc create*(T: type gen_qmediarecorder_types.QMediaRecorder, mediaObject: gen_qmediaobject.QMediaObject, parent: gen_qobject.QObject): gen_qmediarecorder_types.QMediaRecorder =
 
-  QMediaRecorder.init(fcQMediaRecorder_new2(mediaObject.h, parent.h))
-proc metaObject*(self: QMediaRecorder, ): gen_qobjectdefs.QMetaObject =
+  gen_qmediarecorder_types.QMediaRecorder.init(fcQMediaRecorder_new2(mediaObject.h, parent.h))
+proc metaObject*(self: gen_qmediarecorder_types.QMediaRecorder, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQMediaRecorder_metaObject(self.h))
 
-proc metacast*(self: QMediaRecorder, param1: cstring): pointer =
+proc metacast*(self: gen_qmediarecorder_types.QMediaRecorder, param1: cstring): pointer =
 
   fcQMediaRecorder_metacast(self.h, param1)
 
-proc metacall*(self: QMediaRecorder, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qmediarecorder_types.QMediaRecorder, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQMediaRecorder_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QMediaRecorder, s: cstring): string =
+proc tr*(_: type gen_qmediarecorder_types.QMediaRecorder, s: cstring): string =
 
   let v_ms = fcQMediaRecorder_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QMediaRecorder, s: cstring): string =
+proc trUtf8*(_: type gen_qmediarecorder_types.QMediaRecorder, s: cstring): string =
 
   let v_ms = fcQMediaRecorder_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc mediaObject*(self: QMediaRecorder, ): gen_qmediaobject.QMediaObject =
+proc mediaObject*(self: gen_qmediarecorder_types.QMediaRecorder, ): gen_qmediaobject.QMediaObject =
 
   gen_qmediaobject.QMediaObject(h: fcQMediaRecorder_mediaObject(self.h))
 
-proc isAvailable*(self: QMediaRecorder, ): bool =
+proc isAvailable*(self: gen_qmediarecorder_types.QMediaRecorder, ): bool =
 
   fcQMediaRecorder_isAvailable(self.h)
 
-proc availability*(self: QMediaRecorder, ): gen_qmultimedia.QMultimediaAvailabilityStatus =
+proc availability*(self: gen_qmediarecorder_types.QMediaRecorder, ): cint =
 
-  gen_qmultimedia.QMultimediaAvailabilityStatus(fcQMediaRecorder_availability(self.h))
+  cint(fcQMediaRecorder_availability(self.h))
 
-proc outputLocation*(self: QMediaRecorder, ): gen_qurl.QUrl =
+proc outputLocation*(self: gen_qmediarecorder_types.QMediaRecorder, ): gen_qurl.QUrl =
 
   gen_qurl.QUrl(h: fcQMediaRecorder_outputLocation(self.h))
 
-proc setOutputLocation*(self: QMediaRecorder, location: gen_qurl.QUrl): bool =
+proc setOutputLocation*(self: gen_qmediarecorder_types.QMediaRecorder, location: gen_qurl.QUrl): bool =
 
   fcQMediaRecorder_setOutputLocation(self.h, location.h)
 
-proc actualLocation*(self: QMediaRecorder, ): gen_qurl.QUrl =
+proc actualLocation*(self: gen_qmediarecorder_types.QMediaRecorder, ): gen_qurl.QUrl =
 
   gen_qurl.QUrl(h: fcQMediaRecorder_actualLocation(self.h))
 
-proc state*(self: QMediaRecorder, ): QMediaRecorderState =
+proc state*(self: gen_qmediarecorder_types.QMediaRecorder, ): cint =
 
-  QMediaRecorderState(fcQMediaRecorder_state(self.h))
+  cint(fcQMediaRecorder_state(self.h))
 
-proc status*(self: QMediaRecorder, ): QMediaRecorderStatus =
+proc status*(self: gen_qmediarecorder_types.QMediaRecorder, ): cint =
 
-  QMediaRecorderStatus(fcQMediaRecorder_status(self.h))
+  cint(fcQMediaRecorder_status(self.h))
 
-proc error*(self: QMediaRecorder, ): QMediaRecorderError =
+proc error*(self: gen_qmediarecorder_types.QMediaRecorder, ): cint =
 
-  QMediaRecorderError(fcQMediaRecorder_error(self.h))
+  cint(fcQMediaRecorder_error(self.h))
 
-proc errorString*(self: QMediaRecorder, ): string =
+proc errorString*(self: gen_qmediarecorder_types.QMediaRecorder, ): string =
 
   let v_ms = fcQMediaRecorder_errorString(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc duration*(self: QMediaRecorder, ): clonglong =
+proc duration*(self: gen_qmediarecorder_types.QMediaRecorder, ): clonglong =
 
   fcQMediaRecorder_duration(self.h)
 
-proc isMuted*(self: QMediaRecorder, ): bool =
+proc isMuted*(self: gen_qmediarecorder_types.QMediaRecorder, ): bool =
 
   fcQMediaRecorder_isMuted(self.h)
 
-proc volume*(self: QMediaRecorder, ): float64 =
+proc volume*(self: gen_qmediarecorder_types.QMediaRecorder, ): float64 =
 
   fcQMediaRecorder_volume(self.h)
 
-proc supportedContainers*(self: QMediaRecorder, ): seq[string] =
+proc supportedContainers*(self: gen_qmediarecorder_types.QMediaRecorder, ): seq[string] =
 
   var v_ma = fcQMediaRecorder_supportedContainers(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -305,14 +297,14 @@ proc supportedContainers*(self: QMediaRecorder, ): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc containerDescription*(self: QMediaRecorder, format: string): string =
+proc containerDescription*(self: gen_qmediarecorder_types.QMediaRecorder, format: string): string =
 
   let v_ms = fcQMediaRecorder_containerDescription(self.h, struct_miqt_string(data: format, len: csize_t(len(format))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc supportedAudioCodecs*(self: QMediaRecorder, ): seq[string] =
+proc supportedAudioCodecs*(self: gen_qmediarecorder_types.QMediaRecorder, ): seq[string] =
 
   var v_ma = fcQMediaRecorder_supportedAudioCodecs(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -324,14 +316,14 @@ proc supportedAudioCodecs*(self: QMediaRecorder, ): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc audioCodecDescription*(self: QMediaRecorder, codecName: string): string =
+proc audioCodecDescription*(self: gen_qmediarecorder_types.QMediaRecorder, codecName: string): string =
 
   let v_ms = fcQMediaRecorder_audioCodecDescription(self.h, struct_miqt_string(data: codecName, len: csize_t(len(codecName))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc supportedAudioSampleRates*(self: QMediaRecorder, ): seq[cint] =
+proc supportedAudioSampleRates*(self: gen_qmediarecorder_types.QMediaRecorder, ): seq[cint] =
 
   var v_ma = fcQMediaRecorder_supportedAudioSampleRates(self.h)
   var vx_ret = newSeq[cint](int(v_ma.len))
@@ -340,7 +332,7 @@ proc supportedAudioSampleRates*(self: QMediaRecorder, ): seq[cint] =
     vx_ret[i] = v_outCast[i]
   vx_ret
 
-proc supportedVideoCodecs*(self: QMediaRecorder, ): seq[string] =
+proc supportedVideoCodecs*(self: gen_qmediarecorder_types.QMediaRecorder, ): seq[string] =
 
   var v_ma = fcQMediaRecorder_supportedVideoCodecs(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -352,14 +344,14 @@ proc supportedVideoCodecs*(self: QMediaRecorder, ): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc videoCodecDescription*(self: QMediaRecorder, codecName: string): string =
+proc videoCodecDescription*(self: gen_qmediarecorder_types.QMediaRecorder, codecName: string): string =
 
   let v_ms = fcQMediaRecorder_videoCodecDescription(self.h, struct_miqt_string(data: codecName, len: csize_t(len(codecName))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc supportedResolutions*(self: QMediaRecorder, ): seq[gen_qsize.QSize] =
+proc supportedResolutions*(self: gen_qmediarecorder_types.QMediaRecorder, ): seq[gen_qsize.QSize] =
 
   var v_ma = fcQMediaRecorder_supportedResolutions(self.h)
   var vx_ret = newSeq[gen_qsize.QSize](int(v_ma.len))
@@ -368,7 +360,7 @@ proc supportedResolutions*(self: QMediaRecorder, ): seq[gen_qsize.QSize] =
     vx_ret[i] = gen_qsize.QSize(h: v_outCast[i])
   vx_ret
 
-proc supportedFrameRates*(self: QMediaRecorder, ): seq[float64] =
+proc supportedFrameRates*(self: gen_qmediarecorder_types.QMediaRecorder, ): seq[float64] =
 
   var v_ma = fcQMediaRecorder_supportedFrameRates(self.h)
   var vx_ret = newSeq[float64](int(v_ma.len))
@@ -377,54 +369,54 @@ proc supportedFrameRates*(self: QMediaRecorder, ): seq[float64] =
     vx_ret[i] = v_outCast[i]
   vx_ret
 
-proc audioSettings*(self: QMediaRecorder, ): gen_qmediaencodersettings.QAudioEncoderSettings =
+proc audioSettings*(self: gen_qmediarecorder_types.QMediaRecorder, ): gen_qmediaencodersettings.QAudioEncoderSettings =
 
   gen_qmediaencodersettings.QAudioEncoderSettings(h: fcQMediaRecorder_audioSettings(self.h))
 
-proc videoSettings*(self: QMediaRecorder, ): gen_qmediaencodersettings.QVideoEncoderSettings =
+proc videoSettings*(self: gen_qmediarecorder_types.QMediaRecorder, ): gen_qmediaencodersettings.QVideoEncoderSettings =
 
   gen_qmediaencodersettings.QVideoEncoderSettings(h: fcQMediaRecorder_videoSettings(self.h))
 
-proc containerFormat*(self: QMediaRecorder, ): string =
+proc containerFormat*(self: gen_qmediarecorder_types.QMediaRecorder, ): string =
 
   let v_ms = fcQMediaRecorder_containerFormat(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setAudioSettings*(self: QMediaRecorder, audioSettings: gen_qmediaencodersettings.QAudioEncoderSettings): void =
+proc setAudioSettings*(self: gen_qmediarecorder_types.QMediaRecorder, audioSettings: gen_qmediaencodersettings.QAudioEncoderSettings): void =
 
   fcQMediaRecorder_setAudioSettings(self.h, audioSettings.h)
 
-proc setVideoSettings*(self: QMediaRecorder, videoSettings: gen_qmediaencodersettings.QVideoEncoderSettings): void =
+proc setVideoSettings*(self: gen_qmediarecorder_types.QMediaRecorder, videoSettings: gen_qmediaencodersettings.QVideoEncoderSettings): void =
 
   fcQMediaRecorder_setVideoSettings(self.h, videoSettings.h)
 
-proc setContainerFormat*(self: QMediaRecorder, container: string): void =
+proc setContainerFormat*(self: gen_qmediarecorder_types.QMediaRecorder, container: string): void =
 
   fcQMediaRecorder_setContainerFormat(self.h, struct_miqt_string(data: container, len: csize_t(len(container))))
 
-proc setEncodingSettings*(self: QMediaRecorder, audioSettings: gen_qmediaencodersettings.QAudioEncoderSettings): void =
+proc setEncodingSettings*(self: gen_qmediarecorder_types.QMediaRecorder, audioSettings: gen_qmediaencodersettings.QAudioEncoderSettings): void =
 
   fcQMediaRecorder_setEncodingSettings(self.h, audioSettings.h)
 
-proc isMetaDataAvailable*(self: QMediaRecorder, ): bool =
+proc isMetaDataAvailable*(self: gen_qmediarecorder_types.QMediaRecorder, ): bool =
 
   fcQMediaRecorder_isMetaDataAvailable(self.h)
 
-proc isMetaDataWritable*(self: QMediaRecorder, ): bool =
+proc isMetaDataWritable*(self: gen_qmediarecorder_types.QMediaRecorder, ): bool =
 
   fcQMediaRecorder_isMetaDataWritable(self.h)
 
-proc metaData*(self: QMediaRecorder, key: string): gen_qvariant.QVariant =
+proc metaData*(self: gen_qmediarecorder_types.QMediaRecorder, key: string): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fcQMediaRecorder_metaData(self.h, struct_miqt_string(data: key, len: csize_t(len(key)))))
 
-proc setMetaData*(self: QMediaRecorder, key: string, value: gen_qvariant.QVariant): void =
+proc setMetaData*(self: gen_qmediarecorder_types.QMediaRecorder, key: string, value: gen_qvariant.QVariant): void =
 
   fcQMediaRecorder_setMetaData(self.h, struct_miqt_string(data: key, len: csize_t(len(key))), value.h)
 
-proc availableMetaData*(self: QMediaRecorder, ): seq[string] =
+proc availableMetaData*(self: gen_qmediarecorder_types.QMediaRecorder, ): seq[string] =
 
   var v_ma = fcQMediaRecorder_availableMetaData(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -436,63 +428,63 @@ proc availableMetaData*(self: QMediaRecorder, ): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc record*(self: QMediaRecorder, ): void =
+proc record*(self: gen_qmediarecorder_types.QMediaRecorder, ): void =
 
   fcQMediaRecorder_record(self.h)
 
-proc pause*(self: QMediaRecorder, ): void =
+proc pause*(self: gen_qmediarecorder_types.QMediaRecorder, ): void =
 
   fcQMediaRecorder_pause(self.h)
 
-proc stop*(self: QMediaRecorder, ): void =
+proc stop*(self: gen_qmediarecorder_types.QMediaRecorder, ): void =
 
   fcQMediaRecorder_stop(self.h)
 
-proc setMuted*(self: QMediaRecorder, muted: bool): void =
+proc setMuted*(self: gen_qmediarecorder_types.QMediaRecorder, muted: bool): void =
 
   fcQMediaRecorder_setMuted(self.h, muted)
 
-proc setVolume*(self: QMediaRecorder, volume: float64): void =
+proc setVolume*(self: gen_qmediarecorder_types.QMediaRecorder, volume: float64): void =
 
   fcQMediaRecorder_setVolume(self.h, volume)
 
-proc stateChanged*(self: QMediaRecorder, state: QMediaRecorderState): void =
+proc stateChanged*(self: gen_qmediarecorder_types.QMediaRecorder, state: cint): void =
 
   fcQMediaRecorder_stateChanged(self.h, cint(state))
 
 proc miqt_exec_callback_QMediaRecorder_stateChanged(slot: int, state: cint) {.exportc.} =
-  type Cb = proc(state: QMediaRecorderState)
+  type Cb = proc(state: cint)
   let nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = QMediaRecorderState(state)
+  let slotval1 = cint(state)
 
 
   nimfunc[](slotval1)
 
-proc onstateChanged*(self: QMediaRecorder, slot: proc(state: QMediaRecorderState)) =
-  type Cb = proc(state: QMediaRecorderState)
+proc onstateChanged*(self: gen_qmediarecorder_types.QMediaRecorder, slot: proc(state: cint)) =
+  type Cb = proc(state: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQMediaRecorder_connect_stateChanged(self.h, cast[int](addr tmp[]))
-proc statusChanged*(self: QMediaRecorder, status: QMediaRecorderStatus): void =
+proc statusChanged*(self: gen_qmediarecorder_types.QMediaRecorder, status: cint): void =
 
   fcQMediaRecorder_statusChanged(self.h, cint(status))
 
 proc miqt_exec_callback_QMediaRecorder_statusChanged(slot: int, status: cint) {.exportc.} =
-  type Cb = proc(status: QMediaRecorderStatus)
+  type Cb = proc(status: cint)
   let nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = QMediaRecorderStatus(status)
+  let slotval1 = cint(status)
 
 
   nimfunc[](slotval1)
 
-proc onstatusChanged*(self: QMediaRecorder, slot: proc(status: QMediaRecorderStatus)) =
-  type Cb = proc(status: QMediaRecorderStatus)
+proc onstatusChanged*(self: gen_qmediarecorder_types.QMediaRecorder, slot: proc(status: cint)) =
+  type Cb = proc(status: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQMediaRecorder_connect_statusChanged(self.h, cast[int](addr tmp[]))
-proc durationChanged*(self: QMediaRecorder, duration: clonglong): void =
+proc durationChanged*(self: gen_qmediarecorder_types.QMediaRecorder, duration: clonglong): void =
 
   fcQMediaRecorder_durationChanged(self.h, duration)
 
@@ -504,13 +496,13 @@ proc miqt_exec_callback_QMediaRecorder_durationChanged(slot: int, duration: clon
 
   nimfunc[](slotval1)
 
-proc ondurationChanged*(self: QMediaRecorder, slot: proc(duration: clonglong)) =
+proc ondurationChanged*(self: gen_qmediarecorder_types.QMediaRecorder, slot: proc(duration: clonglong)) =
   type Cb = proc(duration: clonglong)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQMediaRecorder_connect_durationChanged(self.h, cast[int](addr tmp[]))
-proc mutedChanged*(self: QMediaRecorder, muted: bool): void =
+proc mutedChanged*(self: gen_qmediarecorder_types.QMediaRecorder, muted: bool): void =
 
   fcQMediaRecorder_mutedChanged(self.h, muted)
 
@@ -522,13 +514,13 @@ proc miqt_exec_callback_QMediaRecorder_mutedChanged(slot: int, muted: bool) {.ex
 
   nimfunc[](slotval1)
 
-proc onmutedChanged*(self: QMediaRecorder, slot: proc(muted: bool)) =
+proc onmutedChanged*(self: gen_qmediarecorder_types.QMediaRecorder, slot: proc(muted: bool)) =
   type Cb = proc(muted: bool)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQMediaRecorder_connect_mutedChanged(self.h, cast[int](addr tmp[]))
-proc volumeChanged*(self: QMediaRecorder, volume: float64): void =
+proc volumeChanged*(self: gen_qmediarecorder_types.QMediaRecorder, volume: float64): void =
 
   fcQMediaRecorder_volumeChanged(self.h, volume)
 
@@ -540,13 +532,13 @@ proc miqt_exec_callback_QMediaRecorder_volumeChanged(slot: int, volume: float64)
 
   nimfunc[](slotval1)
 
-proc onvolumeChanged*(self: QMediaRecorder, slot: proc(volume: float64)) =
+proc onvolumeChanged*(self: gen_qmediarecorder_types.QMediaRecorder, slot: proc(volume: float64)) =
   type Cb = proc(volume: float64)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQMediaRecorder_connect_volumeChanged(self.h, cast[int](addr tmp[]))
-proc actualLocationChanged*(self: QMediaRecorder, location: gen_qurl.QUrl): void =
+proc actualLocationChanged*(self: gen_qmediarecorder_types.QMediaRecorder, location: gen_qurl.QUrl): void =
 
   fcQMediaRecorder_actualLocationChanged(self.h, location.h)
 
@@ -558,31 +550,31 @@ proc miqt_exec_callback_QMediaRecorder_actualLocationChanged(slot: int, location
 
   nimfunc[](slotval1)
 
-proc onactualLocationChanged*(self: QMediaRecorder, slot: proc(location: gen_qurl.QUrl)) =
+proc onactualLocationChanged*(self: gen_qmediarecorder_types.QMediaRecorder, slot: proc(location: gen_qurl.QUrl)) =
   type Cb = proc(location: gen_qurl.QUrl)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQMediaRecorder_connect_actualLocationChanged(self.h, cast[int](addr tmp[]))
-proc errorWithError*(self: QMediaRecorder, error: QMediaRecorderError): void =
+proc errorWithError*(self: gen_qmediarecorder_types.QMediaRecorder, error: cint): void =
 
   fcQMediaRecorder_errorWithError(self.h, cint(error))
 
 proc miqt_exec_callback_QMediaRecorder_errorWithError(slot: int, error: cint) {.exportc.} =
-  type Cb = proc(error: QMediaRecorderError)
+  type Cb = proc(error: cint)
   let nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = QMediaRecorderError(error)
+  let slotval1 = cint(error)
 
 
   nimfunc[](slotval1)
 
-proc onerrorWithError*(self: QMediaRecorder, slot: proc(error: QMediaRecorderError)) =
-  type Cb = proc(error: QMediaRecorderError)
+proc onerrorWithError*(self: gen_qmediarecorder_types.QMediaRecorder, slot: proc(error: cint)) =
+  type Cb = proc(error: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQMediaRecorder_connect_errorWithError(self.h, cast[int](addr tmp[]))
-proc metaDataAvailableChanged*(self: QMediaRecorder, available: bool): void =
+proc metaDataAvailableChanged*(self: gen_qmediarecorder_types.QMediaRecorder, available: bool): void =
 
   fcQMediaRecorder_metaDataAvailableChanged(self.h, available)
 
@@ -594,13 +586,13 @@ proc miqt_exec_callback_QMediaRecorder_metaDataAvailableChanged(slot: int, avail
 
   nimfunc[](slotval1)
 
-proc onmetaDataAvailableChanged*(self: QMediaRecorder, slot: proc(available: bool)) =
+proc onmetaDataAvailableChanged*(self: gen_qmediarecorder_types.QMediaRecorder, slot: proc(available: bool)) =
   type Cb = proc(available: bool)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQMediaRecorder_connect_metaDataAvailableChanged(self.h, cast[int](addr tmp[]))
-proc metaDataWritableChanged*(self: QMediaRecorder, writable: bool): void =
+proc metaDataWritableChanged*(self: gen_qmediarecorder_types.QMediaRecorder, writable: bool): void =
 
   fcQMediaRecorder_metaDataWritableChanged(self.h, writable)
 
@@ -612,13 +604,13 @@ proc miqt_exec_callback_QMediaRecorder_metaDataWritableChanged(slot: int, writab
 
   nimfunc[](slotval1)
 
-proc onmetaDataWritableChanged*(self: QMediaRecorder, slot: proc(writable: bool)) =
+proc onmetaDataWritableChanged*(self: gen_qmediarecorder_types.QMediaRecorder, slot: proc(writable: bool)) =
   type Cb = proc(writable: bool)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQMediaRecorder_connect_metaDataWritableChanged(self.h, cast[int](addr tmp[]))
-proc metaDataChanged*(self: QMediaRecorder, ): void =
+proc metaDataChanged*(self: gen_qmediarecorder_types.QMediaRecorder, ): void =
 
   fcQMediaRecorder_metaDataChanged(self.h)
 
@@ -628,13 +620,13 @@ proc miqt_exec_callback_QMediaRecorder_metaDataChanged(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onmetaDataChanged*(self: QMediaRecorder, slot: proc()) =
+proc onmetaDataChanged*(self: gen_qmediarecorder_types.QMediaRecorder, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQMediaRecorder_connect_metaDataChanged(self.h, cast[int](addr tmp[]))
-proc metaDataChanged2*(self: QMediaRecorder, key: string, value: gen_qvariant.QVariant): void =
+proc metaDataChanged2*(self: gen_qmediarecorder_types.QMediaRecorder, key: string, value: gen_qvariant.QVariant): void =
 
   fcQMediaRecorder_metaDataChanged2(self.h, struct_miqt_string(data: key, len: csize_t(len(key))), value.h)
 
@@ -651,13 +643,13 @@ proc miqt_exec_callback_QMediaRecorder_metaDataChanged2(slot: int, key: struct_m
 
   nimfunc[](slotval1, slotval2)
 
-proc onmetaDataChanged2*(self: QMediaRecorder, slot: proc(key: string, value: gen_qvariant.QVariant)) =
+proc onmetaDataChanged2*(self: gen_qmediarecorder_types.QMediaRecorder, slot: proc(key: string, value: gen_qvariant.QVariant)) =
   type Cb = proc(key: string, value: gen_qvariant.QVariant)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQMediaRecorder_connect_metaDataChanged2(self.h, cast[int](addr tmp[]))
-proc availabilityChanged*(self: QMediaRecorder, available: bool): void =
+proc availabilityChanged*(self: gen_qmediarecorder_types.QMediaRecorder, available: bool): void =
 
   fcQMediaRecorder_availabilityChanged(self.h, available)
 
@@ -669,59 +661,59 @@ proc miqt_exec_callback_QMediaRecorder_availabilityChanged(slot: int, available:
 
   nimfunc[](slotval1)
 
-proc onavailabilityChanged*(self: QMediaRecorder, slot: proc(available: bool)) =
+proc onavailabilityChanged*(self: gen_qmediarecorder_types.QMediaRecorder, slot: proc(available: bool)) =
   type Cb = proc(available: bool)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQMediaRecorder_connect_availabilityChanged(self.h, cast[int](addr tmp[]))
-proc availabilityChangedWithAvailability*(self: QMediaRecorder, availability: gen_qmultimedia.QMultimediaAvailabilityStatus): void =
+proc availabilityChangedWithAvailability*(self: gen_qmediarecorder_types.QMediaRecorder, availability: cint): void =
 
   fcQMediaRecorder_availabilityChangedWithAvailability(self.h, cint(availability))
 
 proc miqt_exec_callback_QMediaRecorder_availabilityChangedWithAvailability(slot: int, availability: cint) {.exportc.} =
-  type Cb = proc(availability: gen_qmultimedia.QMultimediaAvailabilityStatus)
+  type Cb = proc(availability: cint)
   let nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = gen_qmultimedia.QMultimediaAvailabilityStatus(availability)
+  let slotval1 = cint(availability)
 
 
   nimfunc[](slotval1)
 
-proc onavailabilityChangedWithAvailability*(self: QMediaRecorder, slot: proc(availability: gen_qmultimedia.QMultimediaAvailabilityStatus)) =
-  type Cb = proc(availability: gen_qmultimedia.QMultimediaAvailabilityStatus)
+proc onavailabilityChangedWithAvailability*(self: gen_qmediarecorder_types.QMediaRecorder, slot: proc(availability: cint)) =
+  type Cb = proc(availability: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQMediaRecorder_connect_availabilityChangedWithAvailability(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QMediaRecorder, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qmediarecorder_types.QMediaRecorder, s: cstring, c: cstring): string =
 
   let v_ms = fcQMediaRecorder_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QMediaRecorder, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qmediarecorder_types.QMediaRecorder, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQMediaRecorder_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QMediaRecorder, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qmediarecorder_types.QMediaRecorder, s: cstring, c: cstring): string =
 
   let v_ms = fcQMediaRecorder_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QMediaRecorder, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qmediarecorder_types.QMediaRecorder, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQMediaRecorder_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc supportedAudioSampleRates1*(self: QMediaRecorder, settings: gen_qmediaencodersettings.QAudioEncoderSettings): seq[cint] =
+proc supportedAudioSampleRates1*(self: gen_qmediarecorder_types.QMediaRecorder, settings: gen_qmediaencodersettings.QAudioEncoderSettings): seq[cint] =
 
   var v_ma = fcQMediaRecorder_supportedAudioSampleRates1(self.h, settings.h)
   var vx_ret = newSeq[cint](int(v_ma.len))
@@ -730,7 +722,7 @@ proc supportedAudioSampleRates1*(self: QMediaRecorder, settings: gen_qmediaencod
     vx_ret[i] = v_outCast[i]
   vx_ret
 
-proc supportedAudioSampleRates2*(self: QMediaRecorder, settings: gen_qmediaencodersettings.QAudioEncoderSettings, continuous: ptr bool): seq[cint] =
+proc supportedAudioSampleRates2*(self: gen_qmediarecorder_types.QMediaRecorder, settings: gen_qmediaencodersettings.QAudioEncoderSettings, continuous: ptr bool): seq[cint] =
 
   var v_ma = fcQMediaRecorder_supportedAudioSampleRates2(self.h, settings.h, continuous)
   var vx_ret = newSeq[cint](int(v_ma.len))
@@ -739,7 +731,7 @@ proc supportedAudioSampleRates2*(self: QMediaRecorder, settings: gen_qmediaencod
     vx_ret[i] = v_outCast[i]
   vx_ret
 
-proc supportedResolutions1*(self: QMediaRecorder, settings: gen_qmediaencodersettings.QVideoEncoderSettings): seq[gen_qsize.QSize] =
+proc supportedResolutions1*(self: gen_qmediarecorder_types.QMediaRecorder, settings: gen_qmediaencodersettings.QVideoEncoderSettings): seq[gen_qsize.QSize] =
 
   var v_ma = fcQMediaRecorder_supportedResolutions1(self.h, settings.h)
   var vx_ret = newSeq[gen_qsize.QSize](int(v_ma.len))
@@ -748,7 +740,7 @@ proc supportedResolutions1*(self: QMediaRecorder, settings: gen_qmediaencoderset
     vx_ret[i] = gen_qsize.QSize(h: v_outCast[i])
   vx_ret
 
-proc supportedResolutions2*(self: QMediaRecorder, settings: gen_qmediaencodersettings.QVideoEncoderSettings, continuous: ptr bool): seq[gen_qsize.QSize] =
+proc supportedResolutions2*(self: gen_qmediarecorder_types.QMediaRecorder, settings: gen_qmediaencodersettings.QVideoEncoderSettings, continuous: ptr bool): seq[gen_qsize.QSize] =
 
   var v_ma = fcQMediaRecorder_supportedResolutions2(self.h, settings.h, continuous)
   var vx_ret = newSeq[gen_qsize.QSize](int(v_ma.len))
@@ -757,7 +749,7 @@ proc supportedResolutions2*(self: QMediaRecorder, settings: gen_qmediaencoderset
     vx_ret[i] = gen_qsize.QSize(h: v_outCast[i])
   vx_ret
 
-proc supportedFrameRates1*(self: QMediaRecorder, settings: gen_qmediaencodersettings.QVideoEncoderSettings): seq[float64] =
+proc supportedFrameRates1*(self: gen_qmediarecorder_types.QMediaRecorder, settings: gen_qmediaencodersettings.QVideoEncoderSettings): seq[float64] =
 
   var v_ma = fcQMediaRecorder_supportedFrameRates1(self.h, settings.h)
   var vx_ret = newSeq[float64](int(v_ma.len))
@@ -766,7 +758,7 @@ proc supportedFrameRates1*(self: QMediaRecorder, settings: gen_qmediaencodersett
     vx_ret[i] = v_outCast[i]
   vx_ret
 
-proc supportedFrameRates2*(self: QMediaRecorder, settings: gen_qmediaencodersettings.QVideoEncoderSettings, continuous: ptr bool): seq[float64] =
+proc supportedFrameRates2*(self: gen_qmediarecorder_types.QMediaRecorder, settings: gen_qmediaencodersettings.QVideoEncoderSettings, continuous: ptr bool): seq[float64] =
 
   var v_ma = fcQMediaRecorder_supportedFrameRates2(self.h, settings.h, continuous)
   var vx_ret = newSeq[float64](int(v_ma.len))
@@ -775,307 +767,247 @@ proc supportedFrameRates2*(self: QMediaRecorder, settings: gen_qmediaencodersett
     vx_ret[i] = v_outCast[i]
   vx_ret
 
-proc setEncodingSettings2*(self: QMediaRecorder, audioSettings: gen_qmediaencodersettings.QAudioEncoderSettings, videoSettings: gen_qmediaencodersettings.QVideoEncoderSettings): void =
+proc setEncodingSettings2*(self: gen_qmediarecorder_types.QMediaRecorder, audioSettings: gen_qmediaencodersettings.QAudioEncoderSettings, videoSettings: gen_qmediaencodersettings.QVideoEncoderSettings): void =
 
   fcQMediaRecorder_setEncodingSettings2(self.h, audioSettings.h, videoSettings.h)
 
-proc setEncodingSettings3*(self: QMediaRecorder, audioSettings: gen_qmediaencodersettings.QAudioEncoderSettings, videoSettings: gen_qmediaencodersettings.QVideoEncoderSettings, containerMimeType: string): void =
+proc setEncodingSettings3*(self: gen_qmediarecorder_types.QMediaRecorder, audioSettings: gen_qmediaencodersettings.QAudioEncoderSettings, videoSettings: gen_qmediaencodersettings.QVideoEncoderSettings, containerMimeType: string): void =
 
   fcQMediaRecorder_setEncodingSettings3(self.h, audioSettings.h, videoSettings.h, struct_miqt_string(data: containerMimeType, len: csize_t(len(containerMimeType))))
 
-proc callVirtualBase_metaObject(self: QMediaRecorder, ): gen_qobjectdefs.QMetaObject =
-
+proc QMediaRecordermetaObject*(self: gen_qmediarecorder_types.QMediaRecorder, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQMediaRecorder_virtualbase_metaObject(self.h))
 
-type QMediaRecordermetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QMediaRecorder, slot: proc(super: QMediaRecordermetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QMediaRecordermetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qmediarecorder_types.QMediaRecorder, slot: QMediaRecordermetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QMediaRecordermetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QMediaRecordermetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMediaRecorder_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMediaRecorder_metaObject(self: ptr cQMediaRecorder, slot: int): pointer {.exportc: "miqt_exec_callback_QMediaRecorder_metaObject ".} =
-  type Cb = proc(super: QMediaRecordermetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QMediaRecorder(h: self), )
+  var nimfunc = cast[ptr QMediaRecordermetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QMediaRecorder, param1: cstring): pointer =
-
+proc QMediaRecordermetacast*(self: gen_qmediarecorder_types.QMediaRecorder, param1: cstring): pointer =
 
   fQMediaRecorder_virtualbase_metacast(self.h, param1)
 
-type QMediaRecordermetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QMediaRecorder, slot: proc(super: QMediaRecordermetacastBase, param1: cstring): pointer) =
+type QMediaRecordermetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qmediarecorder_types.QMediaRecorder, slot: QMediaRecordermetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QMediaRecordermetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QMediaRecordermetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMediaRecorder_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMediaRecorder_metacast(self: ptr cQMediaRecorder, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QMediaRecorder_metacast ".} =
-  type Cb = proc(super: QMediaRecordermetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QMediaRecorder(h: self), param1)
+  var nimfunc = cast[ptr QMediaRecordermetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QMediaRecorder, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QMediaRecordermetacall*(self: gen_qmediarecorder_types.QMediaRecorder, param1: cint, param2: cint, param3: pointer): cint =
 
   fQMediaRecorder_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QMediaRecordermetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QMediaRecorder, slot: proc(super: QMediaRecordermetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QMediaRecordermetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qmediarecorder_types.QMediaRecorder, slot: QMediaRecordermetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QMediaRecordermetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QMediaRecordermetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMediaRecorder_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMediaRecorder_metacall(self: ptr cQMediaRecorder, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QMediaRecorder_metacall ".} =
-  type Cb = proc(super: QMediaRecordermetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QMediaRecorder(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QMediaRecordermetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_mediaObject(self: QMediaRecorder, ): gen_qmediaobject.QMediaObject =
-
+proc QMediaRecordermediaObject*(self: gen_qmediarecorder_types.QMediaRecorder, ): gen_qmediaobject.QMediaObject =
 
   gen_qmediaobject.QMediaObject(h: fQMediaRecorder_virtualbase_mediaObject(self.h))
 
-type QMediaRecordermediaObjectBase* = proc(): gen_qmediaobject.QMediaObject
-proc onmediaObject*(self: QMediaRecorder, slot: proc(super: QMediaRecordermediaObjectBase): gen_qmediaobject.QMediaObject) =
+type QMediaRecordermediaObjectProc* = proc(): gen_qmediaobject.QMediaObject
+proc onmediaObject*(self: gen_qmediarecorder_types.QMediaRecorder, slot: QMediaRecordermediaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QMediaRecordermediaObjectBase): gen_qmediaobject.QMediaObject
-  var tmp = new Cb
+  var tmp = new QMediaRecordermediaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMediaRecorder_override_virtual_mediaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMediaRecorder_mediaObject(self: ptr cQMediaRecorder, slot: int): pointer {.exportc: "miqt_exec_callback_QMediaRecorder_mediaObject ".} =
-  type Cb = proc(super: QMediaRecordermediaObjectBase): gen_qmediaobject.QMediaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_mediaObject(QMediaRecorder(h: self), )
+  var nimfunc = cast[ptr QMediaRecordermediaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_setMediaObject(self: QMediaRecorder, objectVal: gen_qmediaobject.QMediaObject): bool =
-
+proc QMediaRecordersetMediaObject*(self: gen_qmediarecorder_types.QMediaRecorder, objectVal: gen_qmediaobject.QMediaObject): bool =
 
   fQMediaRecorder_virtualbase_setMediaObject(self.h, objectVal.h)
 
-type QMediaRecordersetMediaObjectBase* = proc(objectVal: gen_qmediaobject.QMediaObject): bool
-proc onsetMediaObject*(self: QMediaRecorder, slot: proc(super: QMediaRecordersetMediaObjectBase, objectVal: gen_qmediaobject.QMediaObject): bool) =
+type QMediaRecordersetMediaObjectProc* = proc(objectVal: gen_qmediaobject.QMediaObject): bool
+proc onsetMediaObject*(self: gen_qmediarecorder_types.QMediaRecorder, slot: QMediaRecordersetMediaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QMediaRecordersetMediaObjectBase, objectVal: gen_qmediaobject.QMediaObject): bool
-  var tmp = new Cb
+  var tmp = new QMediaRecordersetMediaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMediaRecorder_override_virtual_setMediaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMediaRecorder_setMediaObject(self: ptr cQMediaRecorder, slot: int, objectVal: pointer): bool {.exportc: "miqt_exec_callback_QMediaRecorder_setMediaObject ".} =
-  type Cb = proc(super: QMediaRecordersetMediaObjectBase, objectVal: gen_qmediaobject.QMediaObject): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(objectVal: gen_qmediaobject.QMediaObject): auto =
-    callVirtualBase_setMediaObject(QMediaRecorder(h: self), objectVal)
+  var nimfunc = cast[ptr QMediaRecordersetMediaObjectProc](cast[pointer](slot))
   let slotval1 = gen_qmediaobject.QMediaObject(h: objectVal)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_event(self: QMediaRecorder, event: gen_qcoreevent.QEvent): bool =
-
+proc QMediaRecorderevent*(self: gen_qmediarecorder_types.QMediaRecorder, event: gen_qcoreevent.QEvent): bool =
 
   fQMediaRecorder_virtualbase_event(self.h, event.h)
 
-type QMediaRecordereventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QMediaRecorder, slot: proc(super: QMediaRecordereventBase, event: gen_qcoreevent.QEvent): bool) =
+type QMediaRecordereventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qmediarecorder_types.QMediaRecorder, slot: QMediaRecordereventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMediaRecordereventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QMediaRecordereventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMediaRecorder_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMediaRecorder_event(self: ptr cQMediaRecorder, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QMediaRecorder_event ".} =
-  type Cb = proc(super: QMediaRecordereventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QMediaRecorder(h: self), event)
+  var nimfunc = cast[ptr QMediaRecordereventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QMediaRecorder, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QMediaRecordereventFilter*(self: gen_qmediarecorder_types.QMediaRecorder, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQMediaRecorder_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QMediaRecordereventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QMediaRecorder, slot: proc(super: QMediaRecordereventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QMediaRecordereventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qmediarecorder_types.QMediaRecorder, slot: QMediaRecordereventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QMediaRecordereventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QMediaRecordereventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMediaRecorder_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMediaRecorder_eventFilter(self: ptr cQMediaRecorder, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QMediaRecorder_eventFilter ".} =
-  type Cb = proc(super: QMediaRecordereventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QMediaRecorder(h: self), watched, event)
+  var nimfunc = cast[ptr QMediaRecordereventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QMediaRecorder, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QMediaRecordertimerEvent*(self: gen_qmediarecorder_types.QMediaRecorder, event: gen_qcoreevent.QTimerEvent): void =
 
   fQMediaRecorder_virtualbase_timerEvent(self.h, event.h)
 
-type QMediaRecordertimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QMediaRecorder, slot: proc(super: QMediaRecordertimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QMediaRecordertimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qmediarecorder_types.QMediaRecorder, slot: QMediaRecordertimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMediaRecordertimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QMediaRecordertimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMediaRecorder_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMediaRecorder_timerEvent(self: ptr cQMediaRecorder, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMediaRecorder_timerEvent ".} =
-  type Cb = proc(super: QMediaRecordertimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QMediaRecorder(h: self), event)
+  var nimfunc = cast[ptr QMediaRecordertimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QMediaRecorder, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QMediaRecorderchildEvent*(self: gen_qmediarecorder_types.QMediaRecorder, event: gen_qcoreevent.QChildEvent): void =
 
   fQMediaRecorder_virtualbase_childEvent(self.h, event.h)
 
-type QMediaRecorderchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QMediaRecorder, slot: proc(super: QMediaRecorderchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QMediaRecorderchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qmediarecorder_types.QMediaRecorder, slot: QMediaRecorderchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMediaRecorderchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QMediaRecorderchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMediaRecorder_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMediaRecorder_childEvent(self: ptr cQMediaRecorder, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMediaRecorder_childEvent ".} =
-  type Cb = proc(super: QMediaRecorderchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QMediaRecorder(h: self), event)
+  var nimfunc = cast[ptr QMediaRecorderchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QMediaRecorder, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QMediaRecordercustomEvent*(self: gen_qmediarecorder_types.QMediaRecorder, event: gen_qcoreevent.QEvent): void =
 
   fQMediaRecorder_virtualbase_customEvent(self.h, event.h)
 
-type QMediaRecordercustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QMediaRecorder, slot: proc(super: QMediaRecordercustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QMediaRecordercustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qmediarecorder_types.QMediaRecorder, slot: QMediaRecordercustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMediaRecordercustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QMediaRecordercustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMediaRecorder_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMediaRecorder_customEvent(self: ptr cQMediaRecorder, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMediaRecorder_customEvent ".} =
-  type Cb = proc(super: QMediaRecordercustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QMediaRecorder(h: self), event)
+  var nimfunc = cast[ptr QMediaRecordercustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QMediaRecorder, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QMediaRecorderconnectNotify*(self: gen_qmediarecorder_types.QMediaRecorder, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQMediaRecorder_virtualbase_connectNotify(self.h, signal.h)
 
-type QMediaRecorderconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QMediaRecorder, slot: proc(super: QMediaRecorderconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QMediaRecorderconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qmediarecorder_types.QMediaRecorder, slot: QMediaRecorderconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QMediaRecorderconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QMediaRecorderconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMediaRecorder_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMediaRecorder_connectNotify(self: ptr cQMediaRecorder, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QMediaRecorder_connectNotify ".} =
-  type Cb = proc(super: QMediaRecorderconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QMediaRecorder(h: self), signal)
+  var nimfunc = cast[ptr QMediaRecorderconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QMediaRecorder, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QMediaRecorderdisconnectNotify*(self: gen_qmediarecorder_types.QMediaRecorder, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQMediaRecorder_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QMediaRecorderdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QMediaRecorder, slot: proc(super: QMediaRecorderdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QMediaRecorderdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qmediarecorder_types.QMediaRecorder, slot: QMediaRecorderdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QMediaRecorderdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QMediaRecorderdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMediaRecorder_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMediaRecorder_disconnectNotify(self: ptr cQMediaRecorder, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QMediaRecorder_disconnectNotify ".} =
-  type Cb = proc(super: QMediaRecorderdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QMediaRecorder(h: self), signal)
+  var nimfunc = cast[ptr QMediaRecorderdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QMediaRecorder): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qmediarecorder_types.QMediaRecorder): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQMediaRecorder_staticMetaObject())
-proc delete*(self: QMediaRecorder) =
+proc delete*(self: gen_qmediarecorder_types.QMediaRecorder) =
   fcQMediaRecorder_delete(self.h)

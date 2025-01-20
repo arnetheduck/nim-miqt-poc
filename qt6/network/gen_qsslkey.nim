@@ -38,11 +38,9 @@ import gen_qsslkey_types
 export gen_qsslkey_types
 
 import
-  gen_qiodevice,
-  gen_qssl
+  gen_qiodevice
 export
-  gen_qiodevice,
-  gen_qssl
+  gen_qiodevice
 
 type cQSslKey*{.exportc: "QSslKey", incompleteStruct.} = object
 
@@ -75,111 +73,111 @@ proc fcQSslKey_toDer1(self: pointer, passPhrase: struct_miqt_string): struct_miq
 proc fcQSslKey_delete(self: pointer) {.importc: "QSslKey_delete".}
 
 
-func init*(T: type QSslKey, h: ptr cQSslKey): QSslKey =
+func init*(T: type gen_qsslkey_types.QSslKey, h: ptr cQSslKey): gen_qsslkey_types.QSslKey =
   T(h: h)
-proc create*(T: type QSslKey, ): QSslKey =
+proc create*(T: type gen_qsslkey_types.QSslKey, ): gen_qsslkey_types.QSslKey =
 
-  QSslKey.init(fcQSslKey_new())
-proc create*(T: type QSslKey, encoded: seq[byte], algorithm: gen_qssl.QSslKeyAlgorithm): QSslKey =
+  gen_qsslkey_types.QSslKey.init(fcQSslKey_new())
+proc create*(T: type gen_qsslkey_types.QSslKey, encoded: seq[byte], algorithm: cint): gen_qsslkey_types.QSslKey =
 
-  QSslKey.init(fcQSslKey_new2(struct_miqt_string(data: cast[cstring](if len(encoded) == 0: nil else: unsafeAddr encoded[0]), len: csize_t(len(encoded))), cint(algorithm)))
-proc create*(T: type QSslKey, device: gen_qiodevice.QIODevice, algorithm: gen_qssl.QSslKeyAlgorithm): QSslKey =
+  gen_qsslkey_types.QSslKey.init(fcQSslKey_new2(struct_miqt_string(data: cast[cstring](if len(encoded) == 0: nil else: unsafeAddr encoded[0]), len: csize_t(len(encoded))), cint(algorithm)))
+proc create*(T: type gen_qsslkey_types.QSslKey, device: gen_qiodevice.QIODevice, algorithm: cint): gen_qsslkey_types.QSslKey =
 
-  QSslKey.init(fcQSslKey_new3(device.h, cint(algorithm)))
-proc create*(T: type QSslKey, handle: pointer): QSslKey =
+  gen_qsslkey_types.QSslKey.init(fcQSslKey_new3(device.h, cint(algorithm)))
+proc create*(T: type gen_qsslkey_types.QSslKey, handle: pointer): gen_qsslkey_types.QSslKey =
 
-  QSslKey.init(fcQSslKey_new4(handle))
-proc create2*(T: type QSslKey, other: QSslKey): QSslKey =
+  gen_qsslkey_types.QSslKey.init(fcQSslKey_new4(handle))
+proc create2*(T: type gen_qsslkey_types.QSslKey, other: gen_qsslkey_types.QSslKey): gen_qsslkey_types.QSslKey =
 
-  QSslKey.init(fcQSslKey_new5(other.h))
-proc create*(T: type QSslKey, encoded: seq[byte], algorithm: gen_qssl.QSslKeyAlgorithm, format: gen_qssl.QSslEncodingFormat): QSslKey =
+  gen_qsslkey_types.QSslKey.init(fcQSslKey_new5(other.h))
+proc create*(T: type gen_qsslkey_types.QSslKey, encoded: seq[byte], algorithm: cint, format: cint): gen_qsslkey_types.QSslKey =
 
-  QSslKey.init(fcQSslKey_new6(struct_miqt_string(data: cast[cstring](if len(encoded) == 0: nil else: unsafeAddr encoded[0]), len: csize_t(len(encoded))), cint(algorithm), cint(format)))
-proc create*(T: type QSslKey, encoded: seq[byte], algorithm: gen_qssl.QSslKeyAlgorithm, format: gen_qssl.QSslEncodingFormat, typeVal: gen_qssl.QSslKeyType): QSslKey =
+  gen_qsslkey_types.QSslKey.init(fcQSslKey_new6(struct_miqt_string(data: cast[cstring](if len(encoded) == 0: nil else: unsafeAddr encoded[0]), len: csize_t(len(encoded))), cint(algorithm), cint(format)))
+proc create*(T: type gen_qsslkey_types.QSslKey, encoded: seq[byte], algorithm: cint, format: cint, typeVal: cint): gen_qsslkey_types.QSslKey =
 
-  QSslKey.init(fcQSslKey_new7(struct_miqt_string(data: cast[cstring](if len(encoded) == 0: nil else: unsafeAddr encoded[0]), len: csize_t(len(encoded))), cint(algorithm), cint(format), cint(typeVal)))
-proc create*(T: type QSslKey, encoded: seq[byte], algorithm: gen_qssl.QSslKeyAlgorithm, format: gen_qssl.QSslEncodingFormat, typeVal: gen_qssl.QSslKeyType, passPhrase: seq[byte]): QSslKey =
+  gen_qsslkey_types.QSslKey.init(fcQSslKey_new7(struct_miqt_string(data: cast[cstring](if len(encoded) == 0: nil else: unsafeAddr encoded[0]), len: csize_t(len(encoded))), cint(algorithm), cint(format), cint(typeVal)))
+proc create*(T: type gen_qsslkey_types.QSslKey, encoded: seq[byte], algorithm: cint, format: cint, typeVal: cint, passPhrase: seq[byte]): gen_qsslkey_types.QSslKey =
 
-  QSslKey.init(fcQSslKey_new8(struct_miqt_string(data: cast[cstring](if len(encoded) == 0: nil else: unsafeAddr encoded[0]), len: csize_t(len(encoded))), cint(algorithm), cint(format), cint(typeVal), struct_miqt_string(data: cast[cstring](if len(passPhrase) == 0: nil else: unsafeAddr passPhrase[0]), len: csize_t(len(passPhrase)))))
-proc create*(T: type QSslKey, device: gen_qiodevice.QIODevice, algorithm: gen_qssl.QSslKeyAlgorithm, format: gen_qssl.QSslEncodingFormat): QSslKey =
+  gen_qsslkey_types.QSslKey.init(fcQSslKey_new8(struct_miqt_string(data: cast[cstring](if len(encoded) == 0: nil else: unsafeAddr encoded[0]), len: csize_t(len(encoded))), cint(algorithm), cint(format), cint(typeVal), struct_miqt_string(data: cast[cstring](if len(passPhrase) == 0: nil else: unsafeAddr passPhrase[0]), len: csize_t(len(passPhrase)))))
+proc create*(T: type gen_qsslkey_types.QSslKey, device: gen_qiodevice.QIODevice, algorithm: cint, format: cint): gen_qsslkey_types.QSslKey =
 
-  QSslKey.init(fcQSslKey_new9(device.h, cint(algorithm), cint(format)))
-proc create*(T: type QSslKey, device: gen_qiodevice.QIODevice, algorithm: gen_qssl.QSslKeyAlgorithm, format: gen_qssl.QSslEncodingFormat, typeVal: gen_qssl.QSslKeyType): QSslKey =
+  gen_qsslkey_types.QSslKey.init(fcQSslKey_new9(device.h, cint(algorithm), cint(format)))
+proc create*(T: type gen_qsslkey_types.QSslKey, device: gen_qiodevice.QIODevice, algorithm: cint, format: cint, typeVal: cint): gen_qsslkey_types.QSslKey =
 
-  QSslKey.init(fcQSslKey_new10(device.h, cint(algorithm), cint(format), cint(typeVal)))
-proc create*(T: type QSslKey, device: gen_qiodevice.QIODevice, algorithm: gen_qssl.QSslKeyAlgorithm, format: gen_qssl.QSslEncodingFormat, typeVal: gen_qssl.QSslKeyType, passPhrase: seq[byte]): QSslKey =
+  gen_qsslkey_types.QSslKey.init(fcQSslKey_new10(device.h, cint(algorithm), cint(format), cint(typeVal)))
+proc create*(T: type gen_qsslkey_types.QSslKey, device: gen_qiodevice.QIODevice, algorithm: cint, format: cint, typeVal: cint, passPhrase: seq[byte]): gen_qsslkey_types.QSslKey =
 
-  QSslKey.init(fcQSslKey_new11(device.h, cint(algorithm), cint(format), cint(typeVal), struct_miqt_string(data: cast[cstring](if len(passPhrase) == 0: nil else: unsafeAddr passPhrase[0]), len: csize_t(len(passPhrase)))))
-proc create2*(T: type QSslKey, handle: pointer, typeVal: gen_qssl.QSslKeyType): QSslKey =
+  gen_qsslkey_types.QSslKey.init(fcQSslKey_new11(device.h, cint(algorithm), cint(format), cint(typeVal), struct_miqt_string(data: cast[cstring](if len(passPhrase) == 0: nil else: unsafeAddr passPhrase[0]), len: csize_t(len(passPhrase)))))
+proc create2*(T: type gen_qsslkey_types.QSslKey, handle: pointer, typeVal: cint): gen_qsslkey_types.QSslKey =
 
-  QSslKey.init(fcQSslKey_new12(handle, cint(typeVal)))
-proc operatorAssign*(self: QSslKey, other: QSslKey): void =
+  gen_qsslkey_types.QSslKey.init(fcQSslKey_new12(handle, cint(typeVal)))
+proc operatorAssign*(self: gen_qsslkey_types.QSslKey, other: gen_qsslkey_types.QSslKey): void =
 
   fcQSslKey_operatorAssign(self.h, other.h)
 
-proc swap*(self: QSslKey, other: QSslKey): void =
+proc swap*(self: gen_qsslkey_types.QSslKey, other: gen_qsslkey_types.QSslKey): void =
 
   fcQSslKey_swap(self.h, other.h)
 
-proc isNull*(self: QSslKey, ): bool =
+proc isNull*(self: gen_qsslkey_types.QSslKey, ): bool =
 
   fcQSslKey_isNull(self.h)
 
-proc clear*(self: QSslKey, ): void =
+proc clear*(self: gen_qsslkey_types.QSslKey, ): void =
 
   fcQSslKey_clear(self.h)
 
-proc length*(self: QSslKey, ): cint =
+proc length*(self: gen_qsslkey_types.QSslKey, ): cint =
 
   fcQSslKey_length(self.h)
 
-proc typeX*(self: QSslKey, ): gen_qssl.QSslKeyType =
+proc typeX*(self: gen_qsslkey_types.QSslKey, ): cint =
 
-  gen_qssl.QSslKeyType(fcQSslKey_typeX(self.h))
+  cint(fcQSslKey_typeX(self.h))
 
-proc algorithm*(self: QSslKey, ): gen_qssl.QSslKeyAlgorithm =
+proc algorithm*(self: gen_qsslkey_types.QSslKey, ): cint =
 
-  gen_qssl.QSslKeyAlgorithm(fcQSslKey_algorithm(self.h))
+  cint(fcQSslKey_algorithm(self.h))
 
-proc toPem*(self: QSslKey, ): seq[byte] =
+proc toPem*(self: gen_qsslkey_types.QSslKey, ): seq[byte] =
 
   var v_bytearray = fcQSslKey_toPem(self.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc toDer*(self: QSslKey, ): seq[byte] =
+proc toDer*(self: gen_qsslkey_types.QSslKey, ): seq[byte] =
 
   var v_bytearray = fcQSslKey_toDer(self.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc handle*(self: QSslKey, ): pointer =
+proc handle*(self: gen_qsslkey_types.QSslKey, ): pointer =
 
   fcQSslKey_handle(self.h)
 
-proc operatorEqual*(self: QSslKey, key: QSslKey): bool =
+proc operatorEqual*(self: gen_qsslkey_types.QSslKey, key: gen_qsslkey_types.QSslKey): bool =
 
   fcQSslKey_operatorEqual(self.h, key.h)
 
-proc operatorNotEqual*(self: QSslKey, key: QSslKey): bool =
+proc operatorNotEqual*(self: gen_qsslkey_types.QSslKey, key: gen_qsslkey_types.QSslKey): bool =
 
   fcQSslKey_operatorNotEqual(self.h, key.h)
 
-proc toPem1*(self: QSslKey, passPhrase: seq[byte]): seq[byte] =
+proc toPem1*(self: gen_qsslkey_types.QSslKey, passPhrase: seq[byte]): seq[byte] =
 
   var v_bytearray = fcQSslKey_toPem1(self.h, struct_miqt_string(data: cast[cstring](if len(passPhrase) == 0: nil else: unsafeAddr passPhrase[0]), len: csize_t(len(passPhrase))))
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc toDer1*(self: QSslKey, passPhrase: seq[byte]): seq[byte] =
+proc toDer1*(self: gen_qsslkey_types.QSslKey, passPhrase: seq[byte]): seq[byte] =
 
   var v_bytearray = fcQSslKey_toDer1(self.h, struct_miqt_string(data: cast[cstring](if len(passPhrase) == 0: nil else: unsafeAddr passPhrase[0]), len: csize_t(len(passPhrase))))
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc delete*(self: QSslKey) =
+proc delete*(self: gen_qsslkey_types.QSslKey) =
   fcQSslKey_delete(self.h)

@@ -34,41 +34,33 @@ const cflags = gorge("pkg-config -cflags Qt5MultimediaWidgets")
 {.compile("gen_qmultimedia.cpp", cflags).}
 
 
-type QMultimediaSupportEstimate* = cint
-const
-  QMultimediaNotSupported* = 0
-  QMultimediaMaybeSupported* = 1
-  QMultimediaProbablySupported* = 2
-  QMultimediaPreferredService* = 3
+type QMultimediaSupportEstimateEnum* = distinct cint
+template NotSupported*(_: type QMultimediaSupportEstimateEnum): untyped = 0
+template MaybeSupported*(_: type QMultimediaSupportEstimateEnum): untyped = 1
+template ProbablySupported*(_: type QMultimediaSupportEstimateEnum): untyped = 2
+template PreferredService*(_: type QMultimediaSupportEstimateEnum): untyped = 3
 
 
-
-type QMultimediaEncodingQuality* = cint
-const
-  QMultimediaVeryLowQuality* = 0
-  QMultimediaLowQuality* = 1
-  QMultimediaNormalQuality* = 2
-  QMultimediaHighQuality* = 3
-  QMultimediaVeryHighQuality* = 4
+type QMultimediaEncodingQualityEnum* = distinct cint
+template VeryLowQuality*(_: type QMultimediaEncodingQualityEnum): untyped = 0
+template LowQuality*(_: type QMultimediaEncodingQualityEnum): untyped = 1
+template NormalQuality*(_: type QMultimediaEncodingQualityEnum): untyped = 2
+template HighQuality*(_: type QMultimediaEncodingQualityEnum): untyped = 3
+template VeryHighQuality*(_: type QMultimediaEncodingQualityEnum): untyped = 4
 
 
-
-type QMultimediaEncodingMode* = cint
-const
-  QMultimediaConstantQualityEncoding* = 0
-  QMultimediaConstantBitRateEncoding* = 1
-  QMultimediaAverageBitRateEncoding* = 2
-  QMultimediaTwoPassEncoding* = 3
+type QMultimediaEncodingModeEnum* = distinct cint
+template ConstantQualityEncoding*(_: type QMultimediaEncodingModeEnum): untyped = 0
+template ConstantBitRateEncoding*(_: type QMultimediaEncodingModeEnum): untyped = 1
+template AverageBitRateEncoding*(_: type QMultimediaEncodingModeEnum): untyped = 2
+template TwoPassEncoding*(_: type QMultimediaEncodingModeEnum): untyped = 3
 
 
-
-type QMultimediaAvailabilityStatus* = cint
-const
-  QMultimediaAvailable* = 0
-  QMultimediaServiceMissing* = 1
-  QMultimediaBusy* = 2
-  QMultimediaResourceError* = 3
-
+type QMultimediaAvailabilityStatusEnum* = distinct cint
+template Available*(_: type QMultimediaAvailabilityStatusEnum): untyped = 0
+template ServiceMissing*(_: type QMultimediaAvailabilityStatusEnum): untyped = 1
+template Busy*(_: type QMultimediaAvailabilityStatusEnum): untyped = 2
+template ResourceError*(_: type QMultimediaAvailabilityStatusEnum): untyped = 3
 
 
 import gen_qmultimedia_types

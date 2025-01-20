@@ -34,40 +34,32 @@ const cflags = gorge("pkg-config -cflags Qt5MultimediaWidgets")
 {.compile("gen_qvideosurfaceformat.cpp", cflags).}
 
 
-type QVideoSurfaceFormatDirection* = cint
-const
-  QVideoSurfaceFormatTopToBottom* = 0
-  QVideoSurfaceFormatBottomToTop* = 1
+type QVideoSurfaceFormatDirectionEnum* = distinct cint
+template TopToBottom*(_: type QVideoSurfaceFormatDirectionEnum): untyped = 0
+template BottomToTop*(_: type QVideoSurfaceFormatDirectionEnum): untyped = 1
 
 
-
-type QVideoSurfaceFormatYCbCrColorSpace* = cint
-const
-  QVideoSurfaceFormatYCbCr_Undefined* = 0
-  QVideoSurfaceFormatYCbCr_BT601* = 1
-  QVideoSurfaceFormatYCbCr_BT709* = 2
-  QVideoSurfaceFormatYCbCr_xvYCC601* = 3
-  QVideoSurfaceFormatYCbCr_xvYCC709* = 4
-  QVideoSurfaceFormatYCbCr_JPEG* = 5
-  QVideoSurfaceFormatYCbCr_CustomMatrix* = 6
-
+type QVideoSurfaceFormatYCbCrColorSpaceEnum* = distinct cint
+template YCbCr_Undefined*(_: type QVideoSurfaceFormatYCbCrColorSpaceEnum): untyped = 0
+template YCbCr_BT601*(_: type QVideoSurfaceFormatYCbCrColorSpaceEnum): untyped = 1
+template YCbCr_BT709*(_: type QVideoSurfaceFormatYCbCrColorSpaceEnum): untyped = 2
+template YCbCr_xvYCC601*(_: type QVideoSurfaceFormatYCbCrColorSpaceEnum): untyped = 3
+template YCbCr_xvYCC709*(_: type QVideoSurfaceFormatYCbCrColorSpaceEnum): untyped = 4
+template YCbCr_JPEG*(_: type QVideoSurfaceFormatYCbCrColorSpaceEnum): untyped = 5
+template YCbCr_CustomMatrix*(_: type QVideoSurfaceFormatYCbCrColorSpaceEnum): untyped = 6
 
 
 import gen_qvideosurfaceformat_types
 export gen_qvideosurfaceformat_types
 
 import
-  gen_qabstractvideobuffer,
   gen_qrect,
   gen_qsize,
-  gen_qvariant,
-  gen_qvideoframe
+  gen_qvariant
 export
-  gen_qabstractvideobuffer,
   gen_qrect,
   gen_qsize,
-  gen_qvariant,
-  gen_qvideoframe
+  gen_qvariant
 
 type cQVideoSurfaceFormat*{.exportc: "QVideoSurfaceFormat", incompleteStruct.} = object
 
@@ -106,121 +98,121 @@ proc fcQVideoSurfaceFormat_setProperty(self: pointer, name: cstring, value: poin
 proc fcQVideoSurfaceFormat_delete(self: pointer) {.importc: "QVideoSurfaceFormat_delete".}
 
 
-func init*(T: type QVideoSurfaceFormat, h: ptr cQVideoSurfaceFormat): QVideoSurfaceFormat =
+func init*(T: type gen_qvideosurfaceformat_types.QVideoSurfaceFormat, h: ptr cQVideoSurfaceFormat): gen_qvideosurfaceformat_types.QVideoSurfaceFormat =
   T(h: h)
-proc create*(T: type QVideoSurfaceFormat, ): QVideoSurfaceFormat =
+proc create*(T: type gen_qvideosurfaceformat_types.QVideoSurfaceFormat, ): gen_qvideosurfaceformat_types.QVideoSurfaceFormat =
 
-  QVideoSurfaceFormat.init(fcQVideoSurfaceFormat_new())
-proc create*(T: type QVideoSurfaceFormat, size: gen_qsize.QSize, pixelFormat: gen_qvideoframe.QVideoFramePixelFormat): QVideoSurfaceFormat =
+  gen_qvideosurfaceformat_types.QVideoSurfaceFormat.init(fcQVideoSurfaceFormat_new())
+proc create*(T: type gen_qvideosurfaceformat_types.QVideoSurfaceFormat, size: gen_qsize.QSize, pixelFormat: cint): gen_qvideosurfaceformat_types.QVideoSurfaceFormat =
 
-  QVideoSurfaceFormat.init(fcQVideoSurfaceFormat_new2(size.h, cint(pixelFormat)))
-proc create*(T: type QVideoSurfaceFormat, format: QVideoSurfaceFormat): QVideoSurfaceFormat =
+  gen_qvideosurfaceformat_types.QVideoSurfaceFormat.init(fcQVideoSurfaceFormat_new2(size.h, cint(pixelFormat)))
+proc create*(T: type gen_qvideosurfaceformat_types.QVideoSurfaceFormat, format: gen_qvideosurfaceformat_types.QVideoSurfaceFormat): gen_qvideosurfaceformat_types.QVideoSurfaceFormat =
 
-  QVideoSurfaceFormat.init(fcQVideoSurfaceFormat_new3(format.h))
-proc create*(T: type QVideoSurfaceFormat, size: gen_qsize.QSize, pixelFormat: gen_qvideoframe.QVideoFramePixelFormat, handleType: gen_qabstractvideobuffer.QAbstractVideoBufferHandleType): QVideoSurfaceFormat =
+  gen_qvideosurfaceformat_types.QVideoSurfaceFormat.init(fcQVideoSurfaceFormat_new3(format.h))
+proc create*(T: type gen_qvideosurfaceformat_types.QVideoSurfaceFormat, size: gen_qsize.QSize, pixelFormat: cint, handleType: cint): gen_qvideosurfaceformat_types.QVideoSurfaceFormat =
 
-  QVideoSurfaceFormat.init(fcQVideoSurfaceFormat_new4(size.h, cint(pixelFormat), cint(handleType)))
-proc operatorAssign*(self: QVideoSurfaceFormat, format: QVideoSurfaceFormat): void =
+  gen_qvideosurfaceformat_types.QVideoSurfaceFormat.init(fcQVideoSurfaceFormat_new4(size.h, cint(pixelFormat), cint(handleType)))
+proc operatorAssign*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, format: gen_qvideosurfaceformat_types.QVideoSurfaceFormat): void =
 
   fcQVideoSurfaceFormat_operatorAssign(self.h, format.h)
 
-proc operatorEqual*(self: QVideoSurfaceFormat, format: QVideoSurfaceFormat): bool =
+proc operatorEqual*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, format: gen_qvideosurfaceformat_types.QVideoSurfaceFormat): bool =
 
   fcQVideoSurfaceFormat_operatorEqual(self.h, format.h)
 
-proc operatorNotEqual*(self: QVideoSurfaceFormat, format: QVideoSurfaceFormat): bool =
+proc operatorNotEqual*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, format: gen_qvideosurfaceformat_types.QVideoSurfaceFormat): bool =
 
   fcQVideoSurfaceFormat_operatorNotEqual(self.h, format.h)
 
-proc isValid*(self: QVideoSurfaceFormat, ): bool =
+proc isValid*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, ): bool =
 
   fcQVideoSurfaceFormat_isValid(self.h)
 
-proc pixelFormat*(self: QVideoSurfaceFormat, ): gen_qvideoframe.QVideoFramePixelFormat =
+proc pixelFormat*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, ): cint =
 
-  gen_qvideoframe.QVideoFramePixelFormat(fcQVideoSurfaceFormat_pixelFormat(self.h))
+  cint(fcQVideoSurfaceFormat_pixelFormat(self.h))
 
-proc handleType*(self: QVideoSurfaceFormat, ): gen_qabstractvideobuffer.QAbstractVideoBufferHandleType =
+proc handleType*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, ): cint =
 
-  gen_qabstractvideobuffer.QAbstractVideoBufferHandleType(fcQVideoSurfaceFormat_handleType(self.h))
+  cint(fcQVideoSurfaceFormat_handleType(self.h))
 
-proc frameSize*(self: QVideoSurfaceFormat, ): gen_qsize.QSize =
+proc frameSize*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQVideoSurfaceFormat_frameSize(self.h))
 
-proc setFrameSize*(self: QVideoSurfaceFormat, size: gen_qsize.QSize): void =
+proc setFrameSize*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, size: gen_qsize.QSize): void =
 
   fcQVideoSurfaceFormat_setFrameSize(self.h, size.h)
 
-proc setFrameSize2*(self: QVideoSurfaceFormat, width: cint, height: cint): void =
+proc setFrameSize2*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, width: cint, height: cint): void =
 
   fcQVideoSurfaceFormat_setFrameSize2(self.h, width, height)
 
-proc frameWidth*(self: QVideoSurfaceFormat, ): cint =
+proc frameWidth*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, ): cint =
 
   fcQVideoSurfaceFormat_frameWidth(self.h)
 
-proc frameHeight*(self: QVideoSurfaceFormat, ): cint =
+proc frameHeight*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, ): cint =
 
   fcQVideoSurfaceFormat_frameHeight(self.h)
 
-proc viewport*(self: QVideoSurfaceFormat, ): gen_qrect.QRect =
+proc viewport*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, ): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fcQVideoSurfaceFormat_viewport(self.h))
 
-proc setViewport*(self: QVideoSurfaceFormat, viewport: gen_qrect.QRect): void =
+proc setViewport*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, viewport: gen_qrect.QRect): void =
 
   fcQVideoSurfaceFormat_setViewport(self.h, viewport.h)
 
-proc scanLineDirection*(self: QVideoSurfaceFormat, ): QVideoSurfaceFormatDirection =
+proc scanLineDirection*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, ): cint =
 
-  QVideoSurfaceFormatDirection(fcQVideoSurfaceFormat_scanLineDirection(self.h))
+  cint(fcQVideoSurfaceFormat_scanLineDirection(self.h))
 
-proc setScanLineDirection*(self: QVideoSurfaceFormat, direction: QVideoSurfaceFormatDirection): void =
+proc setScanLineDirection*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, direction: cint): void =
 
   fcQVideoSurfaceFormat_setScanLineDirection(self.h, cint(direction))
 
-proc frameRate*(self: QVideoSurfaceFormat, ): float64 =
+proc frameRate*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, ): float64 =
 
   fcQVideoSurfaceFormat_frameRate(self.h)
 
-proc setFrameRate*(self: QVideoSurfaceFormat, rate: float64): void =
+proc setFrameRate*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, rate: float64): void =
 
   fcQVideoSurfaceFormat_setFrameRate(self.h, rate)
 
-proc pixelAspectRatio*(self: QVideoSurfaceFormat, ): gen_qsize.QSize =
+proc pixelAspectRatio*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQVideoSurfaceFormat_pixelAspectRatio(self.h))
 
-proc setPixelAspectRatio*(self: QVideoSurfaceFormat, ratio: gen_qsize.QSize): void =
+proc setPixelAspectRatio*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, ratio: gen_qsize.QSize): void =
 
   fcQVideoSurfaceFormat_setPixelAspectRatio(self.h, ratio.h)
 
-proc setPixelAspectRatio2*(self: QVideoSurfaceFormat, width: cint, height: cint): void =
+proc setPixelAspectRatio2*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, width: cint, height: cint): void =
 
   fcQVideoSurfaceFormat_setPixelAspectRatio2(self.h, width, height)
 
-proc yCbCrColorSpace*(self: QVideoSurfaceFormat, ): QVideoSurfaceFormatYCbCrColorSpace =
+proc yCbCrColorSpace*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, ): cint =
 
-  QVideoSurfaceFormatYCbCrColorSpace(fcQVideoSurfaceFormat_yCbCrColorSpace(self.h))
+  cint(fcQVideoSurfaceFormat_yCbCrColorSpace(self.h))
 
-proc setYCbCrColorSpace*(self: QVideoSurfaceFormat, colorSpace: QVideoSurfaceFormatYCbCrColorSpace): void =
+proc setYCbCrColorSpace*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, colorSpace: cint): void =
 
   fcQVideoSurfaceFormat_setYCbCrColorSpace(self.h, cint(colorSpace))
 
-proc isMirrored*(self: QVideoSurfaceFormat, ): bool =
+proc isMirrored*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, ): bool =
 
   fcQVideoSurfaceFormat_isMirrored(self.h)
 
-proc setMirrored*(self: QVideoSurfaceFormat, mirrored: bool): void =
+proc setMirrored*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, mirrored: bool): void =
 
   fcQVideoSurfaceFormat_setMirrored(self.h, mirrored)
 
-proc sizeHint*(self: QVideoSurfaceFormat, ): gen_qsize.QSize =
+proc sizeHint*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQVideoSurfaceFormat_sizeHint(self.h))
 
-proc propertyNames*(self: QVideoSurfaceFormat, ): seq[seq[byte]] =
+proc propertyNames*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, ): seq[seq[byte]] =
 
   var v_ma = fcQVideoSurfaceFormat_propertyNames(self.h)
   var vx_ret = newSeq[seq[byte]](int(v_ma.len))
@@ -232,13 +224,13 @@ proc propertyNames*(self: QVideoSurfaceFormat, ): seq[seq[byte]] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc property*(self: QVideoSurfaceFormat, name: cstring): gen_qvariant.QVariant =
+proc property*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, name: cstring): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fcQVideoSurfaceFormat_property(self.h, name))
 
-proc setProperty*(self: QVideoSurfaceFormat, name: cstring, value: gen_qvariant.QVariant): void =
+proc setProperty*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, name: cstring, value: gen_qvariant.QVariant): void =
 
   fcQVideoSurfaceFormat_setProperty(self.h, name, value.h)
 
-proc delete*(self: QVideoSurfaceFormat) =
+proc delete*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat) =
   fcQVideoSurfaceFormat_delete(self.h)

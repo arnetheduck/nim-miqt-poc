@@ -34,12 +34,10 @@ const cflags = gorge("pkg-config -cflags Qt5Widgets")
 {.compile("gen_qcolormap.cpp", cflags).}
 
 
-type QColormapMode* = cint
-const
-  QColormapDirect* = 0
-  QColormapIndexed* = 1
-  QColormapGray* = 2
-
+type QColormapModeEnum* = distinct cint
+template Direct*(_: type QColormapModeEnum): untyped = 0
+template Indexed*(_: type QColormapModeEnum): untyped = 1
+template Gray*(_: type QColormapModeEnum): untyped = 2
 
 
 import gen_qcolormap_types
@@ -67,48 +65,48 @@ proc fcQColormap_instance1(screen: cint): pointer {.importc: "QColormap_instance
 proc fcQColormap_delete(self: pointer) {.importc: "QColormap_delete".}
 
 
-func init*(T: type QColormap, h: ptr cQColormap): QColormap =
+func init*(T: type gen_qcolormap_types.QColormap, h: ptr cQColormap): gen_qcolormap_types.QColormap =
   T(h: h)
-proc create*(T: type QColormap, colormap: QColormap): QColormap =
+proc create*(T: type gen_qcolormap_types.QColormap, colormap: gen_qcolormap_types.QColormap): gen_qcolormap_types.QColormap =
 
-  QColormap.init(fcQColormap_new(colormap.h))
-proc initialize*(_: type QColormap, ): void =
+  gen_qcolormap_types.QColormap.init(fcQColormap_new(colormap.h))
+proc initialize*(_: type gen_qcolormap_types.QColormap, ): void =
 
   fcQColormap_initialize()
 
-proc cleanup*(_: type QColormap, ): void =
+proc cleanup*(_: type gen_qcolormap_types.QColormap, ): void =
 
   fcQColormap_cleanup()
 
-proc instance*(_: type QColormap, ): QColormap =
+proc instance*(_: type gen_qcolormap_types.QColormap, ): gen_qcolormap_types.QColormap =
 
-  QColormap(h: fcQColormap_instance())
+  gen_qcolormap_types.QColormap(h: fcQColormap_instance())
 
-proc operatorAssign*(self: QColormap, colormap: QColormap): void =
+proc operatorAssign*(self: gen_qcolormap_types.QColormap, colormap: gen_qcolormap_types.QColormap): void =
 
   fcQColormap_operatorAssign(self.h, colormap.h)
 
-proc mode*(self: QColormap, ): QColormapMode =
+proc mode*(self: gen_qcolormap_types.QColormap, ): cint =
 
-  QColormapMode(fcQColormap_mode(self.h))
+  cint(fcQColormap_mode(self.h))
 
-proc depth*(self: QColormap, ): cint =
+proc depth*(self: gen_qcolormap_types.QColormap, ): cint =
 
   fcQColormap_depth(self.h)
 
-proc size*(self: QColormap, ): cint =
+proc size*(self: gen_qcolormap_types.QColormap, ): cint =
 
   fcQColormap_size(self.h)
 
-proc pixel*(self: QColormap, color: gen_qcolor.QColor): cuint =
+proc pixel*(self: gen_qcolormap_types.QColormap, color: gen_qcolor.QColor): cuint =
 
   fcQColormap_pixel(self.h, color.h)
 
-proc colorAt*(self: QColormap, pixel: cuint): gen_qcolor.QColor =
+proc colorAt*(self: gen_qcolormap_types.QColormap, pixel: cuint): gen_qcolor.QColor =
 
   gen_qcolor.QColor(h: fcQColormap_colorAt(self.h, pixel))
 
-proc colormap*(self: QColormap, ): seq[gen_qcolor.QColor] =
+proc colormap*(self: gen_qcolormap_types.QColormap, ): seq[gen_qcolor.QColor] =
 
   var v_ma = fcQColormap_colormap(self.h)
   var vx_ret = newSeq[gen_qcolor.QColor](int(v_ma.len))
@@ -117,9 +115,9 @@ proc colormap*(self: QColormap, ): seq[gen_qcolor.QColor] =
     vx_ret[i] = gen_qcolor.QColor(h: v_outCast[i])
   vx_ret
 
-proc instance1*(_: type QColormap, screen: cint): QColormap =
+proc instance1*(_: type gen_qcolormap_types.QColormap, screen: cint): gen_qcolormap_types.QColormap =
 
-  QColormap(h: fcQColormap_instance1(screen))
+  gen_qcolormap_types.QColormap(h: fcQColormap_instance1(screen))
 
-proc delete*(self: QColormap) =
+proc delete*(self: gen_qcolormap_types.QColormap) =
   fcQColormap_delete(self.h)

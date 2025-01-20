@@ -66,35 +66,35 @@ proc fcQAudioEncoderSettingsControl_staticMetaObject(): pointer {.importc: "QAud
 proc fcQAudioEncoderSettingsControl_delete(self: pointer) {.importc: "QAudioEncoderSettingsControl_delete".}
 
 
-func init*(T: type QAudioEncoderSettingsControl, h: ptr cQAudioEncoderSettingsControl): QAudioEncoderSettingsControl =
+func init*(T: type gen_qaudioencodersettingscontrol_types.QAudioEncoderSettingsControl, h: ptr cQAudioEncoderSettingsControl): gen_qaudioencodersettingscontrol_types.QAudioEncoderSettingsControl =
   T(h: h)
-proc metaObject*(self: QAudioEncoderSettingsControl, ): gen_qobjectdefs.QMetaObject =
+proc metaObject*(self: gen_qaudioencodersettingscontrol_types.QAudioEncoderSettingsControl, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQAudioEncoderSettingsControl_metaObject(self.h))
 
-proc metacast*(self: QAudioEncoderSettingsControl, param1: cstring): pointer =
+proc metacast*(self: gen_qaudioencodersettingscontrol_types.QAudioEncoderSettingsControl, param1: cstring): pointer =
 
   fcQAudioEncoderSettingsControl_metacast(self.h, param1)
 
-proc metacall*(self: QAudioEncoderSettingsControl, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qaudioencodersettingscontrol_types.QAudioEncoderSettingsControl, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQAudioEncoderSettingsControl_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QAudioEncoderSettingsControl, s: cstring): string =
+proc tr*(_: type gen_qaudioencodersettingscontrol_types.QAudioEncoderSettingsControl, s: cstring): string =
 
   let v_ms = fcQAudioEncoderSettingsControl_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QAudioEncoderSettingsControl, s: cstring): string =
+proc trUtf8*(_: type gen_qaudioencodersettingscontrol_types.QAudioEncoderSettingsControl, s: cstring): string =
 
   let v_ms = fcQAudioEncoderSettingsControl_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc supportedAudioCodecs*(self: QAudioEncoderSettingsControl, ): seq[string] =
+proc supportedAudioCodecs*(self: gen_qaudioencodersettingscontrol_types.QAudioEncoderSettingsControl, ): seq[string] =
 
   var v_ma = fcQAudioEncoderSettingsControl_supportedAudioCodecs(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -106,14 +106,14 @@ proc supportedAudioCodecs*(self: QAudioEncoderSettingsControl, ): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc codecDescription*(self: QAudioEncoderSettingsControl, codecName: string): string =
+proc codecDescription*(self: gen_qaudioencodersettingscontrol_types.QAudioEncoderSettingsControl, codecName: string): string =
 
   let v_ms = fcQAudioEncoderSettingsControl_codecDescription(self.h, struct_miqt_string(data: codecName, len: csize_t(len(codecName))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc supportedSampleRates*(self: QAudioEncoderSettingsControl, settings: gen_qmediaencodersettings.QAudioEncoderSettings, continuous: ptr bool): seq[cint] =
+proc supportedSampleRates*(self: gen_qaudioencodersettingscontrol_types.QAudioEncoderSettingsControl, settings: gen_qmediaencodersettings.QAudioEncoderSettings, continuous: ptr bool): seq[cint] =
 
   var v_ma = fcQAudioEncoderSettingsControl_supportedSampleRates(self.h, settings.h, continuous)
   var vx_ret = newSeq[cint](int(v_ma.len))
@@ -122,43 +122,43 @@ proc supportedSampleRates*(self: QAudioEncoderSettingsControl, settings: gen_qme
     vx_ret[i] = v_outCast[i]
   vx_ret
 
-proc audioSettings*(self: QAudioEncoderSettingsControl, ): gen_qmediaencodersettings.QAudioEncoderSettings =
+proc audioSettings*(self: gen_qaudioencodersettingscontrol_types.QAudioEncoderSettingsControl, ): gen_qmediaencodersettings.QAudioEncoderSettings =
 
   gen_qmediaencodersettings.QAudioEncoderSettings(h: fcQAudioEncoderSettingsControl_audioSettings(self.h))
 
-proc setAudioSettings*(self: QAudioEncoderSettingsControl, settings: gen_qmediaencodersettings.QAudioEncoderSettings): void =
+proc setAudioSettings*(self: gen_qaudioencodersettingscontrol_types.QAudioEncoderSettingsControl, settings: gen_qmediaencodersettings.QAudioEncoderSettings): void =
 
   fcQAudioEncoderSettingsControl_setAudioSettings(self.h, settings.h)
 
-proc tr2*(_: type QAudioEncoderSettingsControl, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qaudioencodersettingscontrol_types.QAudioEncoderSettingsControl, s: cstring, c: cstring): string =
 
   let v_ms = fcQAudioEncoderSettingsControl_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QAudioEncoderSettingsControl, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qaudioencodersettingscontrol_types.QAudioEncoderSettingsControl, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQAudioEncoderSettingsControl_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QAudioEncoderSettingsControl, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qaudioencodersettingscontrol_types.QAudioEncoderSettingsControl, s: cstring, c: cstring): string =
 
   let v_ms = fcQAudioEncoderSettingsControl_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QAudioEncoderSettingsControl, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qaudioencodersettingscontrol_types.QAudioEncoderSettingsControl, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQAudioEncoderSettingsControl_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc staticMetaObject*(_: type QAudioEncoderSettingsControl): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qaudioencodersettingscontrol_types.QAudioEncoderSettingsControl): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQAudioEncoderSettingsControl_staticMetaObject())
-proc delete*(self: QAudioEncoderSettingsControl) =
+proc delete*(self: gen_qaudioencodersettingscontrol_types.QAudioEncoderSettingsControl) =
   fcQAudioEncoderSettingsControl_delete(self.h)

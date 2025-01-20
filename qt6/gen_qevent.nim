@@ -34,43 +34,33 @@ const cflags = gorge("pkg-config -cflags Qt6Widgets")
 {.compile("gen_qevent.cpp", cflags).}
 
 
-type QWheelEventEnum* = cint
-const
-  QWheelEventDefaultDeltasPerStep* = 120
+type QWheelEventEnumEnum* = distinct cint
+template DefaultDeltasPerStep*(_: type QWheelEventEnumEnum): untyped = 120
 
 
-
-type QPlatformSurfaceEventSurfaceEventType* = cint
-const
-  QPlatformSurfaceEventSurfaceCreated* = 0
-  QPlatformSurfaceEventSurfaceAboutToBeDestroyed* = 1
+type QPlatformSurfaceEventSurfaceEventTypeEnum* = distinct cint
+template SurfaceCreated*(_: type QPlatformSurfaceEventSurfaceEventTypeEnum): untyped = 0
+template SurfaceAboutToBeDestroyed*(_: type QPlatformSurfaceEventSurfaceEventTypeEnum): untyped = 1
 
 
-
-type QContextMenuEventReason* = cint
-const
-  QContextMenuEventMouse* = 0
-  QContextMenuEventKeyboard* = 1
-  QContextMenuEventOther* = 2
+type QContextMenuEventReasonEnum* = distinct cint
+template Mouse*(_: type QContextMenuEventReasonEnum): untyped = 0
+template Keyboard*(_: type QContextMenuEventReasonEnum): untyped = 1
+template Other*(_: type QContextMenuEventReasonEnum): untyped = 2
 
 
-
-type QInputMethodEventAttributeType* = cint
-const
-  QInputMethodEventTextFormat* = 0
-  QInputMethodEventCursor* = 1
-  QInputMethodEventLanguage* = 2
-  QInputMethodEventRuby* = 3
-  QInputMethodEventSelection* = 4
+type QInputMethodEventAttributeTypeEnum* = distinct cint
+template TextFormat*(_: type QInputMethodEventAttributeTypeEnum): untyped = 0
+template Cursor*(_: type QInputMethodEventAttributeTypeEnum): untyped = 1
+template Language*(_: type QInputMethodEventAttributeTypeEnum): untyped = 2
+template Ruby*(_: type QInputMethodEventAttributeTypeEnum): untyped = 3
+template Selection*(_: type QInputMethodEventAttributeTypeEnum): untyped = 4
 
 
-
-type QScrollEventScrollState* = cint
-const
-  QScrollEventScrollStarted* = 0
-  QScrollEventScrollUpdated* = 1
-  QScrollEventScrollFinished* = 2
-
+type QScrollEventScrollStateEnum* = distinct cint
+template ScrollStarted*(_: type QScrollEventScrollStateEnum): untyped = 0
+template ScrollUpdated*(_: type QScrollEventScrollStateEnum): untyped = 1
+template ScrollFinished*(_: type QScrollEventScrollStateEnum): untyped = 2
 
 
 import gen_qevent_types
@@ -82,7 +72,6 @@ import
   gen_qeventpoint,
   gen_qfile,
   gen_qinputdevice,
-  gen_qiodevicebase,
   gen_qkeysequence,
   gen_qmimedata,
   gen_qnamespace,
@@ -102,7 +91,6 @@ export
   gen_qeventpoint,
   gen_qfile,
   gen_qinputdevice,
-  gen_qiodevicebase,
   gen_qkeysequence,
   gen_qmimedata,
   gen_qnamespace,
@@ -748,154 +736,139 @@ proc fcQInputMethodEventAttribute_operatorAssign(self: pointer, param1: pointer)
 proc fcQInputMethodEventAttribute_delete(self: pointer) {.importc: "QInputMethodEvent__Attribute_delete".}
 
 
-func init*(T: type QInputEvent, h: ptr cQInputEvent): QInputEvent =
+func init*(T: type gen_qevent_types.QInputEvent, h: ptr cQInputEvent): gen_qevent_types.QInputEvent =
   T(h: h)
-proc create*(T: type QInputEvent, typeVal: gen_qcoreevent.QEventType, m_dev: gen_qinputdevice.QInputDevice): QInputEvent =
+proc create*(T: type gen_qevent_types.QInputEvent, typeVal: cint, m_dev: gen_qinputdevice.QInputDevice): gen_qevent_types.QInputEvent =
 
-  QInputEvent.init(fcQInputEvent_new(cint(typeVal), m_dev.h))
-proc create*(T: type QInputEvent, typeVal: gen_qcoreevent.QEventType, m_dev: gen_qinputdevice.QInputDevice, modifiers: gen_qnamespace.KeyboardModifier): QInputEvent =
+  gen_qevent_types.QInputEvent.init(fcQInputEvent_new(cint(typeVal), m_dev.h))
+proc create*(T: type gen_qevent_types.QInputEvent, typeVal: cint, m_dev: gen_qinputdevice.QInputDevice, modifiers: cint): gen_qevent_types.QInputEvent =
 
-  QInputEvent.init(fcQInputEvent_new2(cint(typeVal), m_dev.h, cint(modifiers)))
-proc clone*(self: QInputEvent, ): QInputEvent =
+  gen_qevent_types.QInputEvent.init(fcQInputEvent_new2(cint(typeVal), m_dev.h, cint(modifiers)))
+proc clone*(self: gen_qevent_types.QInputEvent, ): gen_qevent_types.QInputEvent =
 
-  QInputEvent(h: fcQInputEvent_clone(self.h))
+  gen_qevent_types.QInputEvent(h: fcQInputEvent_clone(self.h))
 
-proc device*(self: QInputEvent, ): gen_qinputdevice.QInputDevice =
+proc device*(self: gen_qevent_types.QInputEvent, ): gen_qinputdevice.QInputDevice =
 
   gen_qinputdevice.QInputDevice(h: fcQInputEvent_device(self.h))
 
-proc deviceType*(self: QInputEvent, ): gen_qinputdevice.QInputDeviceDeviceType =
+proc deviceType*(self: gen_qevent_types.QInputEvent, ): cint =
 
-  gen_qinputdevice.QInputDeviceDeviceType(fcQInputEvent_deviceType(self.h))
+  cint(fcQInputEvent_deviceType(self.h))
 
-proc modifiers*(self: QInputEvent, ): gen_qnamespace.KeyboardModifier =
+proc modifiers*(self: gen_qevent_types.QInputEvent, ): cint =
 
-  gen_qnamespace.KeyboardModifier(fcQInputEvent_modifiers(self.h))
+  cint(fcQInputEvent_modifiers(self.h))
 
-proc setModifiers*(self: QInputEvent, modifiers: gen_qnamespace.KeyboardModifier): void =
+proc setModifiers*(self: gen_qevent_types.QInputEvent, modifiers: cint): void =
 
   fcQInputEvent_setModifiers(self.h, cint(modifiers))
 
-proc timestamp*(self: QInputEvent, ): culonglong =
+proc timestamp*(self: gen_qevent_types.QInputEvent, ): culonglong =
 
   fcQInputEvent_timestamp(self.h)
 
-proc setTimestamp*(self: QInputEvent, timestamp: culonglong): void =
+proc setTimestamp*(self: gen_qevent_types.QInputEvent, timestamp: culonglong): void =
 
   fcQInputEvent_setTimestamp(self.h, timestamp)
 
-proc callVirtualBase_clone(self: QInputEvent, ): QInputEvent =
+proc QInputEventclone*(self: gen_qevent_types.QInputEvent, ): gen_qevent_types.QInputEvent =
 
+  gen_qevent_types.QInputEvent(h: fQInputEvent_virtualbase_clone(self.h))
 
-  QInputEvent(h: fQInputEvent_virtualbase_clone(self.h))
-
-type QInputEventcloneBase* = proc(): QInputEvent
-proc onclone*(self: QInputEvent, slot: proc(super: QInputEventcloneBase): QInputEvent) =
+type QInputEventcloneProc* = proc(): gen_qevent_types.QInputEvent
+proc onclone*(self: gen_qevent_types.QInputEvent, slot: QInputEventcloneProc) =
   # TODO check subclass
-  type Cb = proc(super: QInputEventcloneBase): QInputEvent
-  var tmp = new Cb
+  var tmp = new QInputEventcloneProc
   tmp[] = slot
   GC_ref(tmp)
   fcQInputEvent_override_virtual_clone(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QInputEvent_clone(self: ptr cQInputEvent, slot: int): pointer {.exportc: "miqt_exec_callback_QInputEvent_clone ".} =
-  type Cb = proc(super: QInputEventcloneBase): QInputEvent
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_clone(QInputEvent(h: self), )
+  var nimfunc = cast[ptr QInputEventcloneProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_setTimestamp(self: QInputEvent, timestamp: culonglong): void =
-
+proc QInputEventsetTimestamp*(self: gen_qevent_types.QInputEvent, timestamp: culonglong): void =
 
   fQInputEvent_virtualbase_setTimestamp(self.h, timestamp)
 
-type QInputEventsetTimestampBase* = proc(timestamp: culonglong): void
-proc onsetTimestamp*(self: QInputEvent, slot: proc(super: QInputEventsetTimestampBase, timestamp: culonglong): void) =
+type QInputEventsetTimestampProc* = proc(timestamp: culonglong): void
+proc onsetTimestamp*(self: gen_qevent_types.QInputEvent, slot: QInputEventsetTimestampProc) =
   # TODO check subclass
-  type Cb = proc(super: QInputEventsetTimestampBase, timestamp: culonglong): void
-  var tmp = new Cb
+  var tmp = new QInputEventsetTimestampProc
   tmp[] = slot
   GC_ref(tmp)
   fcQInputEvent_override_virtual_setTimestamp(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QInputEvent_setTimestamp(self: ptr cQInputEvent, slot: int, timestamp: culonglong): void {.exportc: "miqt_exec_callback_QInputEvent_setTimestamp ".} =
-  type Cb = proc(super: QInputEventsetTimestampBase, timestamp: culonglong): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(timestamp: culonglong): auto =
-    callVirtualBase_setTimestamp(QInputEvent(h: self), timestamp)
+  var nimfunc = cast[ptr QInputEventsetTimestampProc](cast[pointer](slot))
   let slotval1 = timestamp
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_setAccepted(self: QInputEvent, accepted: bool): void =
-
+  nimfunc[](slotval1)
+proc QInputEventsetAccepted*(self: gen_qevent_types.QInputEvent, accepted: bool): void =
 
   fQInputEvent_virtualbase_setAccepted(self.h, accepted)
 
-type QInputEventsetAcceptedBase* = proc(accepted: bool): void
-proc onsetAccepted*(self: QInputEvent, slot: proc(super: QInputEventsetAcceptedBase, accepted: bool): void) =
+type QInputEventsetAcceptedProc* = proc(accepted: bool): void
+proc onsetAccepted*(self: gen_qevent_types.QInputEvent, slot: QInputEventsetAcceptedProc) =
   # TODO check subclass
-  type Cb = proc(super: QInputEventsetAcceptedBase, accepted: bool): void
-  var tmp = new Cb
+  var tmp = new QInputEventsetAcceptedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQInputEvent_override_virtual_setAccepted(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QInputEvent_setAccepted(self: ptr cQInputEvent, slot: int, accepted: bool): void {.exportc: "miqt_exec_callback_QInputEvent_setAccepted ".} =
-  type Cb = proc(super: QInputEventsetAcceptedBase, accepted: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(accepted: bool): auto =
-    callVirtualBase_setAccepted(QInputEvent(h: self), accepted)
+  var nimfunc = cast[ptr QInputEventsetAcceptedProc](cast[pointer](slot))
   let slotval1 = accepted
 
 
-  nimfunc[](superCall, slotval1)
-proc delete*(self: QInputEvent) =
+  nimfunc[](slotval1)
+proc delete*(self: gen_qevent_types.QInputEvent) =
   fcQInputEvent_delete(self.h)
 
-func init*(T: type QPointerEvent, h: ptr cQPointerEvent): QPointerEvent =
+func init*(T: type gen_qevent_types.QPointerEvent, h: ptr cQPointerEvent): gen_qevent_types.QPointerEvent =
   T(h: h)
-proc create*(T: type QPointerEvent, typeVal: gen_qcoreevent.QEventType, dev: gen_qpointingdevice.QPointingDevice): QPointerEvent =
+proc create*(T: type gen_qevent_types.QPointerEvent, typeVal: cint, dev: gen_qpointingdevice.QPointingDevice): gen_qevent_types.QPointerEvent =
 
-  QPointerEvent.init(fcQPointerEvent_new(cint(typeVal), dev.h))
-proc create*(T: type QPointerEvent, typeVal: gen_qcoreevent.QEventType, dev: gen_qpointingdevice.QPointingDevice, modifiers: gen_qnamespace.KeyboardModifier): QPointerEvent =
+  gen_qevent_types.QPointerEvent.init(fcQPointerEvent_new(cint(typeVal), dev.h))
+proc create*(T: type gen_qevent_types.QPointerEvent, typeVal: cint, dev: gen_qpointingdevice.QPointingDevice, modifiers: cint): gen_qevent_types.QPointerEvent =
 
-  QPointerEvent.init(fcQPointerEvent_new2(cint(typeVal), dev.h, cint(modifiers)))
-proc create*(T: type QPointerEvent, typeVal: gen_qcoreevent.QEventType, dev: gen_qpointingdevice.QPointingDevice, modifiers: gen_qnamespace.KeyboardModifier, points: seq[gen_qeventpoint.QEventPoint]): QPointerEvent =
+  gen_qevent_types.QPointerEvent.init(fcQPointerEvent_new2(cint(typeVal), dev.h, cint(modifiers)))
+proc create*(T: type gen_qevent_types.QPointerEvent, typeVal: cint, dev: gen_qpointingdevice.QPointingDevice, modifiers: cint, points: seq[gen_qeventpoint.QEventPoint]): gen_qevent_types.QPointerEvent =
 
   var points_CArray = newSeq[pointer](len(points))
   for i in 0..<len(points):
     points_CArray[i] = points[i].h
 
-  QPointerEvent.init(fcQPointerEvent_new3(cint(typeVal), dev.h, cint(modifiers), struct_miqt_array(len: csize_t(len(points)), data: if len(points) == 0: nil else: addr(points_CArray[0]))))
-proc clone*(self: QPointerEvent, ): QPointerEvent =
+  gen_qevent_types.QPointerEvent.init(fcQPointerEvent_new3(cint(typeVal), dev.h, cint(modifiers), struct_miqt_array(len: csize_t(len(points)), data: if len(points) == 0: nil else: addr(points_CArray[0]))))
+proc clone*(self: gen_qevent_types.QPointerEvent, ): gen_qevent_types.QPointerEvent =
 
-  QPointerEvent(h: fcQPointerEvent_clone(self.h))
+  gen_qevent_types.QPointerEvent(h: fcQPointerEvent_clone(self.h))
 
-proc pointingDevice*(self: QPointerEvent, ): gen_qpointingdevice.QPointingDevice =
+proc pointingDevice*(self: gen_qevent_types.QPointerEvent, ): gen_qpointingdevice.QPointingDevice =
 
   gen_qpointingdevice.QPointingDevice(h: fcQPointerEvent_pointingDevice(self.h))
 
-proc pointerType*(self: QPointerEvent, ): gen_qpointingdevice.QPointingDevicePointerType =
+proc pointerType*(self: gen_qevent_types.QPointerEvent, ): cint =
 
-  gen_qpointingdevice.QPointingDevicePointerType(fcQPointerEvent_pointerType(self.h))
+  cint(fcQPointerEvent_pointerType(self.h))
 
-proc setTimestamp*(self: QPointerEvent, timestamp: culonglong): void =
+proc setTimestamp*(self: gen_qevent_types.QPointerEvent, timestamp: culonglong): void =
 
   fcQPointerEvent_setTimestamp(self.h, timestamp)
 
-proc pointCount*(self: QPointerEvent, ): int64 =
+proc pointCount*(self: gen_qevent_types.QPointerEvent, ): int64 =
 
   fcQPointerEvent_pointCount(self.h)
 
-proc point*(self: QPointerEvent, i: int64): gen_qeventpoint.QEventPoint =
+proc point*(self: gen_qevent_types.QPointerEvent, i: int64): gen_qeventpoint.QEventPoint =
 
   gen_qeventpoint.QEventPoint(h: fcQPointerEvent_point(self.h, i))
 
-proc points*(self: QPointerEvent, ): seq[gen_qeventpoint.QEventPoint] =
+proc points*(self: gen_qevent_types.QPointerEvent, ): seq[gen_qeventpoint.QEventPoint] =
 
   var v_ma = fcQPointerEvent_points(self.h)
   var vx_ret = newSeq[gen_qeventpoint.QEventPoint](int(v_ma.len))
@@ -904,3430 +877,2950 @@ proc points*(self: QPointerEvent, ): seq[gen_qeventpoint.QEventPoint] =
     vx_ret[i] = gen_qeventpoint.QEventPoint(h: v_outCast[i])
   vx_ret
 
-proc pointById*(self: QPointerEvent, id: cint): gen_qeventpoint.QEventPoint =
+proc pointById*(self: gen_qevent_types.QPointerEvent, id: cint): gen_qeventpoint.QEventPoint =
 
   gen_qeventpoint.QEventPoint(h: fcQPointerEvent_pointById(self.h, id))
 
-proc allPointsGrabbed*(self: QPointerEvent, ): bool =
+proc allPointsGrabbed*(self: gen_qevent_types.QPointerEvent, ): bool =
 
   fcQPointerEvent_allPointsGrabbed(self.h)
 
-proc isBeginEvent*(self: QPointerEvent, ): bool =
+proc isBeginEvent*(self: gen_qevent_types.QPointerEvent, ): bool =
 
   fcQPointerEvent_isBeginEvent(self.h)
 
-proc isUpdateEvent*(self: QPointerEvent, ): bool =
+proc isUpdateEvent*(self: gen_qevent_types.QPointerEvent, ): bool =
 
   fcQPointerEvent_isUpdateEvent(self.h)
 
-proc isEndEvent*(self: QPointerEvent, ): bool =
+proc isEndEvent*(self: gen_qevent_types.QPointerEvent, ): bool =
 
   fcQPointerEvent_isEndEvent(self.h)
 
-proc allPointsAccepted*(self: QPointerEvent, ): bool =
+proc allPointsAccepted*(self: gen_qevent_types.QPointerEvent, ): bool =
 
   fcQPointerEvent_allPointsAccepted(self.h)
 
-proc setAccepted*(self: QPointerEvent, accepted: bool): void =
+proc setAccepted*(self: gen_qevent_types.QPointerEvent, accepted: bool): void =
 
   fcQPointerEvent_setAccepted(self.h, accepted)
 
-proc exclusiveGrabber*(self: QPointerEvent, point: gen_qeventpoint.QEventPoint): gen_qobject.QObject =
+proc exclusiveGrabber*(self: gen_qevent_types.QPointerEvent, point: gen_qeventpoint.QEventPoint): gen_qobject.QObject =
 
   gen_qobject.QObject(h: fcQPointerEvent_exclusiveGrabber(self.h, point.h))
 
-proc setExclusiveGrabber*(self: QPointerEvent, point: gen_qeventpoint.QEventPoint, exclusiveGrabber: gen_qobject.QObject): void =
+proc setExclusiveGrabber*(self: gen_qevent_types.QPointerEvent, point: gen_qeventpoint.QEventPoint, exclusiveGrabber: gen_qobject.QObject): void =
 
   fcQPointerEvent_setExclusiveGrabber(self.h, point.h, exclusiveGrabber.h)
 
-proc clearPassiveGrabbers*(self: QPointerEvent, point: gen_qeventpoint.QEventPoint): void =
+proc clearPassiveGrabbers*(self: gen_qevent_types.QPointerEvent, point: gen_qeventpoint.QEventPoint): void =
 
   fcQPointerEvent_clearPassiveGrabbers(self.h, point.h)
 
-proc addPassiveGrabber*(self: QPointerEvent, point: gen_qeventpoint.QEventPoint, grabber: gen_qobject.QObject): bool =
+proc addPassiveGrabber*(self: gen_qevent_types.QPointerEvent, point: gen_qeventpoint.QEventPoint, grabber: gen_qobject.QObject): bool =
 
   fcQPointerEvent_addPassiveGrabber(self.h, point.h, grabber.h)
 
-proc removePassiveGrabber*(self: QPointerEvent, point: gen_qeventpoint.QEventPoint, grabber: gen_qobject.QObject): bool =
+proc removePassiveGrabber*(self: gen_qevent_types.QPointerEvent, point: gen_qeventpoint.QEventPoint, grabber: gen_qobject.QObject): bool =
 
   fcQPointerEvent_removePassiveGrabber(self.h, point.h, grabber.h)
 
-proc callVirtualBase_clone(self: QPointerEvent, ): QPointerEvent =
+proc QPointerEventclone*(self: gen_qevent_types.QPointerEvent, ): gen_qevent_types.QPointerEvent =
 
+  gen_qevent_types.QPointerEvent(h: fQPointerEvent_virtualbase_clone(self.h))
 
-  QPointerEvent(h: fQPointerEvent_virtualbase_clone(self.h))
-
-type QPointerEventcloneBase* = proc(): QPointerEvent
-proc onclone*(self: QPointerEvent, slot: proc(super: QPointerEventcloneBase): QPointerEvent) =
+type QPointerEventcloneProc* = proc(): gen_qevent_types.QPointerEvent
+proc onclone*(self: gen_qevent_types.QPointerEvent, slot: QPointerEventcloneProc) =
   # TODO check subclass
-  type Cb = proc(super: QPointerEventcloneBase): QPointerEvent
-  var tmp = new Cb
+  var tmp = new QPointerEventcloneProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPointerEvent_override_virtual_clone(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPointerEvent_clone(self: ptr cQPointerEvent, slot: int): pointer {.exportc: "miqt_exec_callback_QPointerEvent_clone ".} =
-  type Cb = proc(super: QPointerEventcloneBase): QPointerEvent
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_clone(QPointerEvent(h: self), )
+  var nimfunc = cast[ptr QPointerEventcloneProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_setTimestamp(self: QPointerEvent, timestamp: culonglong): void =
-
+proc QPointerEventsetTimestamp*(self: gen_qevent_types.QPointerEvent, timestamp: culonglong): void =
 
   fQPointerEvent_virtualbase_setTimestamp(self.h, timestamp)
 
-type QPointerEventsetTimestampBase* = proc(timestamp: culonglong): void
-proc onsetTimestamp*(self: QPointerEvent, slot: proc(super: QPointerEventsetTimestampBase, timestamp: culonglong): void) =
+type QPointerEventsetTimestampProc* = proc(timestamp: culonglong): void
+proc onsetTimestamp*(self: gen_qevent_types.QPointerEvent, slot: QPointerEventsetTimestampProc) =
   # TODO check subclass
-  type Cb = proc(super: QPointerEventsetTimestampBase, timestamp: culonglong): void
-  var tmp = new Cb
+  var tmp = new QPointerEventsetTimestampProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPointerEvent_override_virtual_setTimestamp(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPointerEvent_setTimestamp(self: ptr cQPointerEvent, slot: int, timestamp: culonglong): void {.exportc: "miqt_exec_callback_QPointerEvent_setTimestamp ".} =
-  type Cb = proc(super: QPointerEventsetTimestampBase, timestamp: culonglong): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(timestamp: culonglong): auto =
-    callVirtualBase_setTimestamp(QPointerEvent(h: self), timestamp)
+  var nimfunc = cast[ptr QPointerEventsetTimestampProc](cast[pointer](slot))
   let slotval1 = timestamp
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_isBeginEvent(self: QPointerEvent, ): bool =
-
+  nimfunc[](slotval1)
+proc QPointerEventisBeginEvent*(self: gen_qevent_types.QPointerEvent, ): bool =
 
   fQPointerEvent_virtualbase_isBeginEvent(self.h)
 
-type QPointerEventisBeginEventBase* = proc(): bool
-proc onisBeginEvent*(self: QPointerEvent, slot: proc(super: QPointerEventisBeginEventBase): bool) =
+type QPointerEventisBeginEventProc* = proc(): bool
+proc onisBeginEvent*(self: gen_qevent_types.QPointerEvent, slot: QPointerEventisBeginEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPointerEventisBeginEventBase): bool
-  var tmp = new Cb
+  var tmp = new QPointerEventisBeginEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPointerEvent_override_virtual_isBeginEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPointerEvent_isBeginEvent(self: ptr cQPointerEvent, slot: int): bool {.exportc: "miqt_exec_callback_QPointerEvent_isBeginEvent ".} =
-  type Cb = proc(super: QPointerEventisBeginEventBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_isBeginEvent(QPointerEvent(h: self), )
+  var nimfunc = cast[ptr QPointerEventisBeginEventProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_isUpdateEvent(self: QPointerEvent, ): bool =
-
+proc QPointerEventisUpdateEvent*(self: gen_qevent_types.QPointerEvent, ): bool =
 
   fQPointerEvent_virtualbase_isUpdateEvent(self.h)
 
-type QPointerEventisUpdateEventBase* = proc(): bool
-proc onisUpdateEvent*(self: QPointerEvent, slot: proc(super: QPointerEventisUpdateEventBase): bool) =
+type QPointerEventisUpdateEventProc* = proc(): bool
+proc onisUpdateEvent*(self: gen_qevent_types.QPointerEvent, slot: QPointerEventisUpdateEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPointerEventisUpdateEventBase): bool
-  var tmp = new Cb
+  var tmp = new QPointerEventisUpdateEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPointerEvent_override_virtual_isUpdateEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPointerEvent_isUpdateEvent(self: ptr cQPointerEvent, slot: int): bool {.exportc: "miqt_exec_callback_QPointerEvent_isUpdateEvent ".} =
-  type Cb = proc(super: QPointerEventisUpdateEventBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_isUpdateEvent(QPointerEvent(h: self), )
+  var nimfunc = cast[ptr QPointerEventisUpdateEventProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_isEndEvent(self: QPointerEvent, ): bool =
-
+proc QPointerEventisEndEvent*(self: gen_qevent_types.QPointerEvent, ): bool =
 
   fQPointerEvent_virtualbase_isEndEvent(self.h)
 
-type QPointerEventisEndEventBase* = proc(): bool
-proc onisEndEvent*(self: QPointerEvent, slot: proc(super: QPointerEventisEndEventBase): bool) =
+type QPointerEventisEndEventProc* = proc(): bool
+proc onisEndEvent*(self: gen_qevent_types.QPointerEvent, slot: QPointerEventisEndEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPointerEventisEndEventBase): bool
-  var tmp = new Cb
+  var tmp = new QPointerEventisEndEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPointerEvent_override_virtual_isEndEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPointerEvent_isEndEvent(self: ptr cQPointerEvent, slot: int): bool {.exportc: "miqt_exec_callback_QPointerEvent_isEndEvent ".} =
-  type Cb = proc(super: QPointerEventisEndEventBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_isEndEvent(QPointerEvent(h: self), )
+  var nimfunc = cast[ptr QPointerEventisEndEventProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setAccepted(self: QPointerEvent, accepted: bool): void =
-
+proc QPointerEventsetAccepted*(self: gen_qevent_types.QPointerEvent, accepted: bool): void =
 
   fQPointerEvent_virtualbase_setAccepted(self.h, accepted)
 
-type QPointerEventsetAcceptedBase* = proc(accepted: bool): void
-proc onsetAccepted*(self: QPointerEvent, slot: proc(super: QPointerEventsetAcceptedBase, accepted: bool): void) =
+type QPointerEventsetAcceptedProc* = proc(accepted: bool): void
+proc onsetAccepted*(self: gen_qevent_types.QPointerEvent, slot: QPointerEventsetAcceptedProc) =
   # TODO check subclass
-  type Cb = proc(super: QPointerEventsetAcceptedBase, accepted: bool): void
-  var tmp = new Cb
+  var tmp = new QPointerEventsetAcceptedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPointerEvent_override_virtual_setAccepted(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPointerEvent_setAccepted(self: ptr cQPointerEvent, slot: int, accepted: bool): void {.exportc: "miqt_exec_callback_QPointerEvent_setAccepted ".} =
-  type Cb = proc(super: QPointerEventsetAcceptedBase, accepted: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(accepted: bool): auto =
-    callVirtualBase_setAccepted(QPointerEvent(h: self), accepted)
+  var nimfunc = cast[ptr QPointerEventsetAcceptedProc](cast[pointer](slot))
   let slotval1 = accepted
 
 
-  nimfunc[](superCall, slotval1)
-proc delete*(self: QPointerEvent) =
+  nimfunc[](slotval1)
+proc delete*(self: gen_qevent_types.QPointerEvent) =
   fcQPointerEvent_delete(self.h)
 
-func init*(T: type QSinglePointEvent, h: ptr cQSinglePointEvent): QSinglePointEvent =
+func init*(T: type gen_qevent_types.QSinglePointEvent, h: ptr cQSinglePointEvent): gen_qevent_types.QSinglePointEvent =
   T(h: h)
-proc clone*(self: QSinglePointEvent, ): QSinglePointEvent =
+proc clone*(self: gen_qevent_types.QSinglePointEvent, ): gen_qevent_types.QSinglePointEvent =
 
-  QSinglePointEvent(h: fcQSinglePointEvent_clone(self.h))
+  gen_qevent_types.QSinglePointEvent(h: fcQSinglePointEvent_clone(self.h))
 
-proc button*(self: QSinglePointEvent, ): gen_qnamespace.MouseButton =
+proc button*(self: gen_qevent_types.QSinglePointEvent, ): cint =
 
-  gen_qnamespace.MouseButton(fcQSinglePointEvent_button(self.h))
+  cint(fcQSinglePointEvent_button(self.h))
 
-proc buttons*(self: QSinglePointEvent, ): gen_qnamespace.MouseButton =
+proc buttons*(self: gen_qevent_types.QSinglePointEvent, ): cint =
 
-  gen_qnamespace.MouseButton(fcQSinglePointEvent_buttons(self.h))
+  cint(fcQSinglePointEvent_buttons(self.h))
 
-proc position*(self: QSinglePointEvent, ): gen_qpoint.QPointF =
+proc position*(self: gen_qevent_types.QSinglePointEvent, ): gen_qpoint.QPointF =
 
   gen_qpoint.QPointF(h: fcQSinglePointEvent_position(self.h))
 
-proc scenePosition*(self: QSinglePointEvent, ): gen_qpoint.QPointF =
+proc scenePosition*(self: gen_qevent_types.QSinglePointEvent, ): gen_qpoint.QPointF =
 
   gen_qpoint.QPointF(h: fcQSinglePointEvent_scenePosition(self.h))
 
-proc globalPosition*(self: QSinglePointEvent, ): gen_qpoint.QPointF =
+proc globalPosition*(self: gen_qevent_types.QSinglePointEvent, ): gen_qpoint.QPointF =
 
   gen_qpoint.QPointF(h: fcQSinglePointEvent_globalPosition(self.h))
 
-proc isBeginEvent*(self: QSinglePointEvent, ): bool =
+proc isBeginEvent*(self: gen_qevent_types.QSinglePointEvent, ): bool =
 
   fcQSinglePointEvent_isBeginEvent(self.h)
 
-proc isUpdateEvent*(self: QSinglePointEvent, ): bool =
+proc isUpdateEvent*(self: gen_qevent_types.QSinglePointEvent, ): bool =
 
   fcQSinglePointEvent_isUpdateEvent(self.h)
 
-proc isEndEvent*(self: QSinglePointEvent, ): bool =
+proc isEndEvent*(self: gen_qevent_types.QSinglePointEvent, ): bool =
 
   fcQSinglePointEvent_isEndEvent(self.h)
 
-proc exclusivePointGrabber*(self: QSinglePointEvent, ): gen_qobject.QObject =
+proc exclusivePointGrabber*(self: gen_qevent_types.QSinglePointEvent, ): gen_qobject.QObject =
 
   gen_qobject.QObject(h: fcQSinglePointEvent_exclusivePointGrabber(self.h))
 
-proc setExclusivePointGrabber*(self: QSinglePointEvent, exclusiveGrabber: gen_qobject.QObject): void =
+proc setExclusivePointGrabber*(self: gen_qevent_types.QSinglePointEvent, exclusiveGrabber: gen_qobject.QObject): void =
 
   fcQSinglePointEvent_setExclusivePointGrabber(self.h, exclusiveGrabber.h)
 
-proc staticMetaObject*(_: type QSinglePointEvent): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qevent_types.QSinglePointEvent): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQSinglePointEvent_staticMetaObject())
-proc delete*(self: QSinglePointEvent) =
+proc delete*(self: gen_qevent_types.QSinglePointEvent) =
   fcQSinglePointEvent_delete(self.h)
 
-func init*(T: type QEnterEvent, h: ptr cQEnterEvent): QEnterEvent =
+func init*(T: type gen_qevent_types.QEnterEvent, h: ptr cQEnterEvent): gen_qevent_types.QEnterEvent =
   T(h: h)
-proc create*(T: type QEnterEvent, localPos: gen_qpoint.QPointF, scenePos: gen_qpoint.QPointF, globalPos: gen_qpoint.QPointF): QEnterEvent =
+proc create*(T: type gen_qevent_types.QEnterEvent, localPos: gen_qpoint.QPointF, scenePos: gen_qpoint.QPointF, globalPos: gen_qpoint.QPointF): gen_qevent_types.QEnterEvent =
 
-  QEnterEvent.init(fcQEnterEvent_new(localPos.h, scenePos.h, globalPos.h))
-proc create*(T: type QEnterEvent, localPos: gen_qpoint.QPointF, scenePos: gen_qpoint.QPointF, globalPos: gen_qpoint.QPointF, device: gen_qpointingdevice.QPointingDevice): QEnterEvent =
+  gen_qevent_types.QEnterEvent.init(fcQEnterEvent_new(localPos.h, scenePos.h, globalPos.h))
+proc create*(T: type gen_qevent_types.QEnterEvent, localPos: gen_qpoint.QPointF, scenePos: gen_qpoint.QPointF, globalPos: gen_qpoint.QPointF, device: gen_qpointingdevice.QPointingDevice): gen_qevent_types.QEnterEvent =
 
-  QEnterEvent.init(fcQEnterEvent_new2(localPos.h, scenePos.h, globalPos.h, device.h))
-proc clone*(self: QEnterEvent, ): QEnterEvent =
+  gen_qevent_types.QEnterEvent.init(fcQEnterEvent_new2(localPos.h, scenePos.h, globalPos.h, device.h))
+proc clone*(self: gen_qevent_types.QEnterEvent, ): gen_qevent_types.QEnterEvent =
 
-  QEnterEvent(h: fcQEnterEvent_clone(self.h))
+  gen_qevent_types.QEnterEvent(h: fcQEnterEvent_clone(self.h))
 
-proc pos*(self: QEnterEvent, ): gen_qpoint.QPoint =
+proc pos*(self: gen_qevent_types.QEnterEvent, ): gen_qpoint.QPoint =
 
   gen_qpoint.QPoint(h: fcQEnterEvent_pos(self.h))
 
-proc globalPos*(self: QEnterEvent, ): gen_qpoint.QPoint =
+proc globalPos*(self: gen_qevent_types.QEnterEvent, ): gen_qpoint.QPoint =
 
   gen_qpoint.QPoint(h: fcQEnterEvent_globalPos(self.h))
 
-proc x*(self: QEnterEvent, ): cint =
+proc x*(self: gen_qevent_types.QEnterEvent, ): cint =
 
   fcQEnterEvent_x(self.h)
 
-proc y*(self: QEnterEvent, ): cint =
+proc y*(self: gen_qevent_types.QEnterEvent, ): cint =
 
   fcQEnterEvent_y(self.h)
 
-proc globalX*(self: QEnterEvent, ): cint =
+proc globalX*(self: gen_qevent_types.QEnterEvent, ): cint =
 
   fcQEnterEvent_globalX(self.h)
 
-proc globalY*(self: QEnterEvent, ): cint =
+proc globalY*(self: gen_qevent_types.QEnterEvent, ): cint =
 
   fcQEnterEvent_globalY(self.h)
 
-proc localPos*(self: QEnterEvent, ): gen_qpoint.QPointF =
+proc localPos*(self: gen_qevent_types.QEnterEvent, ): gen_qpoint.QPointF =
 
   gen_qpoint.QPointF(h: fcQEnterEvent_localPos(self.h))
 
-proc windowPos*(self: QEnterEvent, ): gen_qpoint.QPointF =
+proc windowPos*(self: gen_qevent_types.QEnterEvent, ): gen_qpoint.QPointF =
 
   gen_qpoint.QPointF(h: fcQEnterEvent_windowPos(self.h))
 
-proc screenPos*(self: QEnterEvent, ): gen_qpoint.QPointF =
+proc screenPos*(self: gen_qevent_types.QEnterEvent, ): gen_qpoint.QPointF =
 
   gen_qpoint.QPointF(h: fcQEnterEvent_screenPos(self.h))
 
-proc callVirtualBase_clone(self: QEnterEvent, ): QEnterEvent =
+proc QEnterEventclone*(self: gen_qevent_types.QEnterEvent, ): gen_qevent_types.QEnterEvent =
 
+  gen_qevent_types.QEnterEvent(h: fQEnterEvent_virtualbase_clone(self.h))
 
-  QEnterEvent(h: fQEnterEvent_virtualbase_clone(self.h))
-
-type QEnterEventcloneBase* = proc(): QEnterEvent
-proc onclone*(self: QEnterEvent, slot: proc(super: QEnterEventcloneBase): QEnterEvent) =
+type QEnterEventcloneProc* = proc(): gen_qevent_types.QEnterEvent
+proc onclone*(self: gen_qevent_types.QEnterEvent, slot: QEnterEventcloneProc) =
   # TODO check subclass
-  type Cb = proc(super: QEnterEventcloneBase): QEnterEvent
-  var tmp = new Cb
+  var tmp = new QEnterEventcloneProc
   tmp[] = slot
   GC_ref(tmp)
   fcQEnterEvent_override_virtual_clone(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QEnterEvent_clone(self: ptr cQEnterEvent, slot: int): pointer {.exportc: "miqt_exec_callback_QEnterEvent_clone ".} =
-  type Cb = proc(super: QEnterEventcloneBase): QEnterEvent
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_clone(QEnterEvent(h: self), )
+  var nimfunc = cast[ptr QEnterEventcloneProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_isBeginEvent(self: QEnterEvent, ): bool =
-
+proc QEnterEventisBeginEvent*(self: gen_qevent_types.QEnterEvent, ): bool =
 
   fQEnterEvent_virtualbase_isBeginEvent(self.h)
 
-type QEnterEventisBeginEventBase* = proc(): bool
-proc onisBeginEvent*(self: QEnterEvent, slot: proc(super: QEnterEventisBeginEventBase): bool) =
+type QEnterEventisBeginEventProc* = proc(): bool
+proc onisBeginEvent*(self: gen_qevent_types.QEnterEvent, slot: QEnterEventisBeginEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QEnterEventisBeginEventBase): bool
-  var tmp = new Cb
+  var tmp = new QEnterEventisBeginEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQEnterEvent_override_virtual_isBeginEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QEnterEvent_isBeginEvent(self: ptr cQEnterEvent, slot: int): bool {.exportc: "miqt_exec_callback_QEnterEvent_isBeginEvent ".} =
-  type Cb = proc(super: QEnterEventisBeginEventBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_isBeginEvent(QEnterEvent(h: self), )
+  var nimfunc = cast[ptr QEnterEventisBeginEventProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_isUpdateEvent(self: QEnterEvent, ): bool =
-
+proc QEnterEventisUpdateEvent*(self: gen_qevent_types.QEnterEvent, ): bool =
 
   fQEnterEvent_virtualbase_isUpdateEvent(self.h)
 
-type QEnterEventisUpdateEventBase* = proc(): bool
-proc onisUpdateEvent*(self: QEnterEvent, slot: proc(super: QEnterEventisUpdateEventBase): bool) =
+type QEnterEventisUpdateEventProc* = proc(): bool
+proc onisUpdateEvent*(self: gen_qevent_types.QEnterEvent, slot: QEnterEventisUpdateEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QEnterEventisUpdateEventBase): bool
-  var tmp = new Cb
+  var tmp = new QEnterEventisUpdateEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQEnterEvent_override_virtual_isUpdateEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QEnterEvent_isUpdateEvent(self: ptr cQEnterEvent, slot: int): bool {.exportc: "miqt_exec_callback_QEnterEvent_isUpdateEvent ".} =
-  type Cb = proc(super: QEnterEventisUpdateEventBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_isUpdateEvent(QEnterEvent(h: self), )
+  var nimfunc = cast[ptr QEnterEventisUpdateEventProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_isEndEvent(self: QEnterEvent, ): bool =
-
+proc QEnterEventisEndEvent*(self: gen_qevent_types.QEnterEvent, ): bool =
 
   fQEnterEvent_virtualbase_isEndEvent(self.h)
 
-type QEnterEventisEndEventBase* = proc(): bool
-proc onisEndEvent*(self: QEnterEvent, slot: proc(super: QEnterEventisEndEventBase): bool) =
+type QEnterEventisEndEventProc* = proc(): bool
+proc onisEndEvent*(self: gen_qevent_types.QEnterEvent, slot: QEnterEventisEndEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QEnterEventisEndEventBase): bool
-  var tmp = new Cb
+  var tmp = new QEnterEventisEndEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQEnterEvent_override_virtual_isEndEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QEnterEvent_isEndEvent(self: ptr cQEnterEvent, slot: int): bool {.exportc: "miqt_exec_callback_QEnterEvent_isEndEvent ".} =
-  type Cb = proc(super: QEnterEventisEndEventBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_isEndEvent(QEnterEvent(h: self), )
+  var nimfunc = cast[ptr QEnterEventisEndEventProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setTimestamp(self: QEnterEvent, timestamp: culonglong): void =
-
+proc QEnterEventsetTimestamp*(self: gen_qevent_types.QEnterEvent, timestamp: culonglong): void =
 
   fQEnterEvent_virtualbase_setTimestamp(self.h, timestamp)
 
-type QEnterEventsetTimestampBase* = proc(timestamp: culonglong): void
-proc onsetTimestamp*(self: QEnterEvent, slot: proc(super: QEnterEventsetTimestampBase, timestamp: culonglong): void) =
+type QEnterEventsetTimestampProc* = proc(timestamp: culonglong): void
+proc onsetTimestamp*(self: gen_qevent_types.QEnterEvent, slot: QEnterEventsetTimestampProc) =
   # TODO check subclass
-  type Cb = proc(super: QEnterEventsetTimestampBase, timestamp: culonglong): void
-  var tmp = new Cb
+  var tmp = new QEnterEventsetTimestampProc
   tmp[] = slot
   GC_ref(tmp)
   fcQEnterEvent_override_virtual_setTimestamp(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QEnterEvent_setTimestamp(self: ptr cQEnterEvent, slot: int, timestamp: culonglong): void {.exportc: "miqt_exec_callback_QEnterEvent_setTimestamp ".} =
-  type Cb = proc(super: QEnterEventsetTimestampBase, timestamp: culonglong): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(timestamp: culonglong): auto =
-    callVirtualBase_setTimestamp(QEnterEvent(h: self), timestamp)
+  var nimfunc = cast[ptr QEnterEventsetTimestampProc](cast[pointer](slot))
   let slotval1 = timestamp
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_setAccepted(self: QEnterEvent, accepted: bool): void =
-
+  nimfunc[](slotval1)
+proc QEnterEventsetAccepted*(self: gen_qevent_types.QEnterEvent, accepted: bool): void =
 
   fQEnterEvent_virtualbase_setAccepted(self.h, accepted)
 
-type QEnterEventsetAcceptedBase* = proc(accepted: bool): void
-proc onsetAccepted*(self: QEnterEvent, slot: proc(super: QEnterEventsetAcceptedBase, accepted: bool): void) =
+type QEnterEventsetAcceptedProc* = proc(accepted: bool): void
+proc onsetAccepted*(self: gen_qevent_types.QEnterEvent, slot: QEnterEventsetAcceptedProc) =
   # TODO check subclass
-  type Cb = proc(super: QEnterEventsetAcceptedBase, accepted: bool): void
-  var tmp = new Cb
+  var tmp = new QEnterEventsetAcceptedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQEnterEvent_override_virtual_setAccepted(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QEnterEvent_setAccepted(self: ptr cQEnterEvent, slot: int, accepted: bool): void {.exportc: "miqt_exec_callback_QEnterEvent_setAccepted ".} =
-  type Cb = proc(super: QEnterEventsetAcceptedBase, accepted: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(accepted: bool): auto =
-    callVirtualBase_setAccepted(QEnterEvent(h: self), accepted)
+  var nimfunc = cast[ptr QEnterEventsetAcceptedProc](cast[pointer](slot))
   let slotval1 = accepted
 
 
-  nimfunc[](superCall, slotval1)
-proc delete*(self: QEnterEvent) =
+  nimfunc[](slotval1)
+proc delete*(self: gen_qevent_types.QEnterEvent) =
   fcQEnterEvent_delete(self.h)
 
-func init*(T: type QMouseEvent, h: ptr cQMouseEvent): QMouseEvent =
+func init*(T: type gen_qevent_types.QMouseEvent, h: ptr cQMouseEvent): gen_qevent_types.QMouseEvent =
   T(h: h)
-proc create*(T: type QMouseEvent, typeVal: gen_qcoreevent.QEventType, localPos: gen_qpoint.QPointF, button: gen_qnamespace.MouseButton, buttons: gen_qnamespace.MouseButton, modifiers: gen_qnamespace.KeyboardModifier): QMouseEvent =
+proc create*(T: type gen_qevent_types.QMouseEvent, typeVal: cint, localPos: gen_qpoint.QPointF, button: cint, buttons: cint, modifiers: cint): gen_qevent_types.QMouseEvent =
 
-  QMouseEvent.init(fcQMouseEvent_new(cint(typeVal), localPos.h, cint(button), cint(buttons), cint(modifiers)))
-proc create*(T: type QMouseEvent, typeVal: gen_qcoreevent.QEventType, localPos: gen_qpoint.QPointF, globalPos: gen_qpoint.QPointF, button: gen_qnamespace.MouseButton, buttons: gen_qnamespace.MouseButton, modifiers: gen_qnamespace.KeyboardModifier): QMouseEvent =
+  gen_qevent_types.QMouseEvent.init(fcQMouseEvent_new(cint(typeVal), localPos.h, cint(button), cint(buttons), cint(modifiers)))
+proc create*(T: type gen_qevent_types.QMouseEvent, typeVal: cint, localPos: gen_qpoint.QPointF, globalPos: gen_qpoint.QPointF, button: cint, buttons: cint, modifiers: cint): gen_qevent_types.QMouseEvent =
 
-  QMouseEvent.init(fcQMouseEvent_new2(cint(typeVal), localPos.h, globalPos.h, cint(button), cint(buttons), cint(modifiers)))
-proc create*(T: type QMouseEvent, typeVal: gen_qcoreevent.QEventType, localPos: gen_qpoint.QPointF, scenePos: gen_qpoint.QPointF, globalPos: gen_qpoint.QPointF, button: gen_qnamespace.MouseButton, buttons: gen_qnamespace.MouseButton, modifiers: gen_qnamespace.KeyboardModifier): QMouseEvent =
+  gen_qevent_types.QMouseEvent.init(fcQMouseEvent_new2(cint(typeVal), localPos.h, globalPos.h, cint(button), cint(buttons), cint(modifiers)))
+proc create*(T: type gen_qevent_types.QMouseEvent, typeVal: cint, localPos: gen_qpoint.QPointF, scenePos: gen_qpoint.QPointF, globalPos: gen_qpoint.QPointF, button: cint, buttons: cint, modifiers: cint): gen_qevent_types.QMouseEvent =
 
-  QMouseEvent.init(fcQMouseEvent_new3(cint(typeVal), localPos.h, scenePos.h, globalPos.h, cint(button), cint(buttons), cint(modifiers)))
-proc create*(T: type QMouseEvent, typeVal: gen_qcoreevent.QEventType, localPos: gen_qpoint.QPointF, scenePos: gen_qpoint.QPointF, globalPos: gen_qpoint.QPointF, button: gen_qnamespace.MouseButton, buttons: gen_qnamespace.MouseButton, modifiers: gen_qnamespace.KeyboardModifier, source: gen_qnamespace.MouseEventSource): QMouseEvent =
+  gen_qevent_types.QMouseEvent.init(fcQMouseEvent_new3(cint(typeVal), localPos.h, scenePos.h, globalPos.h, cint(button), cint(buttons), cint(modifiers)))
+proc create*(T: type gen_qevent_types.QMouseEvent, typeVal: cint, localPos: gen_qpoint.QPointF, scenePos: gen_qpoint.QPointF, globalPos: gen_qpoint.QPointF, button: cint, buttons: cint, modifiers: cint, source: cint): gen_qevent_types.QMouseEvent =
 
-  QMouseEvent.init(fcQMouseEvent_new4(cint(typeVal), localPos.h, scenePos.h, globalPos.h, cint(button), cint(buttons), cint(modifiers), cint(source)))
-proc create*(T: type QMouseEvent, typeVal: gen_qcoreevent.QEventType, localPos: gen_qpoint.QPointF, button: gen_qnamespace.MouseButton, buttons: gen_qnamespace.MouseButton, modifiers: gen_qnamespace.KeyboardModifier, device: gen_qpointingdevice.QPointingDevice): QMouseEvent =
+  gen_qevent_types.QMouseEvent.init(fcQMouseEvent_new4(cint(typeVal), localPos.h, scenePos.h, globalPos.h, cint(button), cint(buttons), cint(modifiers), cint(source)))
+proc create*(T: type gen_qevent_types.QMouseEvent, typeVal: cint, localPos: gen_qpoint.QPointF, button: cint, buttons: cint, modifiers: cint, device: gen_qpointingdevice.QPointingDevice): gen_qevent_types.QMouseEvent =
 
-  QMouseEvent.init(fcQMouseEvent_new5(cint(typeVal), localPos.h, cint(button), cint(buttons), cint(modifiers), device.h))
-proc create*(T: type QMouseEvent, typeVal: gen_qcoreevent.QEventType, localPos: gen_qpoint.QPointF, globalPos: gen_qpoint.QPointF, button: gen_qnamespace.MouseButton, buttons: gen_qnamespace.MouseButton, modifiers: gen_qnamespace.KeyboardModifier, device: gen_qpointingdevice.QPointingDevice): QMouseEvent =
+  gen_qevent_types.QMouseEvent.init(fcQMouseEvent_new5(cint(typeVal), localPos.h, cint(button), cint(buttons), cint(modifiers), device.h))
+proc create*(T: type gen_qevent_types.QMouseEvent, typeVal: cint, localPos: gen_qpoint.QPointF, globalPos: gen_qpoint.QPointF, button: cint, buttons: cint, modifiers: cint, device: gen_qpointingdevice.QPointingDevice): gen_qevent_types.QMouseEvent =
 
-  QMouseEvent.init(fcQMouseEvent_new6(cint(typeVal), localPos.h, globalPos.h, cint(button), cint(buttons), cint(modifiers), device.h))
-proc create*(T: type QMouseEvent, typeVal: gen_qcoreevent.QEventType, localPos: gen_qpoint.QPointF, scenePos: gen_qpoint.QPointF, globalPos: gen_qpoint.QPointF, button: gen_qnamespace.MouseButton, buttons: gen_qnamespace.MouseButton, modifiers: gen_qnamespace.KeyboardModifier, device: gen_qpointingdevice.QPointingDevice): QMouseEvent =
+  gen_qevent_types.QMouseEvent.init(fcQMouseEvent_new6(cint(typeVal), localPos.h, globalPos.h, cint(button), cint(buttons), cint(modifiers), device.h))
+proc create*(T: type gen_qevent_types.QMouseEvent, typeVal: cint, localPos: gen_qpoint.QPointF, scenePos: gen_qpoint.QPointF, globalPos: gen_qpoint.QPointF, button: cint, buttons: cint, modifiers: cint, device: gen_qpointingdevice.QPointingDevice): gen_qevent_types.QMouseEvent =
 
-  QMouseEvent.init(fcQMouseEvent_new7(cint(typeVal), localPos.h, scenePos.h, globalPos.h, cint(button), cint(buttons), cint(modifiers), device.h))
-proc create*(T: type QMouseEvent, typeVal: gen_qcoreevent.QEventType, localPos: gen_qpoint.QPointF, scenePos: gen_qpoint.QPointF, globalPos: gen_qpoint.QPointF, button: gen_qnamespace.MouseButton, buttons: gen_qnamespace.MouseButton, modifiers: gen_qnamespace.KeyboardModifier, source: gen_qnamespace.MouseEventSource, device: gen_qpointingdevice.QPointingDevice): QMouseEvent =
+  gen_qevent_types.QMouseEvent.init(fcQMouseEvent_new7(cint(typeVal), localPos.h, scenePos.h, globalPos.h, cint(button), cint(buttons), cint(modifiers), device.h))
+proc create*(T: type gen_qevent_types.QMouseEvent, typeVal: cint, localPos: gen_qpoint.QPointF, scenePos: gen_qpoint.QPointF, globalPos: gen_qpoint.QPointF, button: cint, buttons: cint, modifiers: cint, source: cint, device: gen_qpointingdevice.QPointingDevice): gen_qevent_types.QMouseEvent =
 
-  QMouseEvent.init(fcQMouseEvent_new8(cint(typeVal), localPos.h, scenePos.h, globalPos.h, cint(button), cint(buttons), cint(modifiers), cint(source), device.h))
-proc clone*(self: QMouseEvent, ): QMouseEvent =
+  gen_qevent_types.QMouseEvent.init(fcQMouseEvent_new8(cint(typeVal), localPos.h, scenePos.h, globalPos.h, cint(button), cint(buttons), cint(modifiers), cint(source), device.h))
+proc clone*(self: gen_qevent_types.QMouseEvent, ): gen_qevent_types.QMouseEvent =
 
-  QMouseEvent(h: fcQMouseEvent_clone(self.h))
+  gen_qevent_types.QMouseEvent(h: fcQMouseEvent_clone(self.h))
 
-proc pos*(self: QMouseEvent, ): gen_qpoint.QPoint =
+proc pos*(self: gen_qevent_types.QMouseEvent, ): gen_qpoint.QPoint =
 
   gen_qpoint.QPoint(h: fcQMouseEvent_pos(self.h))
 
-proc globalPos*(self: QMouseEvent, ): gen_qpoint.QPoint =
+proc globalPos*(self: gen_qevent_types.QMouseEvent, ): gen_qpoint.QPoint =
 
   gen_qpoint.QPoint(h: fcQMouseEvent_globalPos(self.h))
 
-proc x*(self: QMouseEvent, ): cint =
+proc x*(self: gen_qevent_types.QMouseEvent, ): cint =
 
   fcQMouseEvent_x(self.h)
 
-proc y*(self: QMouseEvent, ): cint =
+proc y*(self: gen_qevent_types.QMouseEvent, ): cint =
 
   fcQMouseEvent_y(self.h)
 
-proc globalX*(self: QMouseEvent, ): cint =
+proc globalX*(self: gen_qevent_types.QMouseEvent, ): cint =
 
   fcQMouseEvent_globalX(self.h)
 
-proc globalY*(self: QMouseEvent, ): cint =
+proc globalY*(self: gen_qevent_types.QMouseEvent, ): cint =
 
   fcQMouseEvent_globalY(self.h)
 
-proc localPos*(self: QMouseEvent, ): gen_qpoint.QPointF =
+proc localPos*(self: gen_qevent_types.QMouseEvent, ): gen_qpoint.QPointF =
 
   gen_qpoint.QPointF(h: fcQMouseEvent_localPos(self.h))
 
-proc windowPos*(self: QMouseEvent, ): gen_qpoint.QPointF =
+proc windowPos*(self: gen_qevent_types.QMouseEvent, ): gen_qpoint.QPointF =
 
   gen_qpoint.QPointF(h: fcQMouseEvent_windowPos(self.h))
 
-proc screenPos*(self: QMouseEvent, ): gen_qpoint.QPointF =
+proc screenPos*(self: gen_qevent_types.QMouseEvent, ): gen_qpoint.QPointF =
 
   gen_qpoint.QPointF(h: fcQMouseEvent_screenPos(self.h))
 
-proc source*(self: QMouseEvent, ): gen_qnamespace.MouseEventSource =
+proc source*(self: gen_qevent_types.QMouseEvent, ): cint =
 
-  gen_qnamespace.MouseEventSource(fcQMouseEvent_source(self.h))
+  cint(fcQMouseEvent_source(self.h))
 
-proc flags*(self: QMouseEvent, ): gen_qnamespace.MouseEventFlag =
+proc flags*(self: gen_qevent_types.QMouseEvent, ): cint =
 
-  gen_qnamespace.MouseEventFlag(fcQMouseEvent_flags(self.h))
+  cint(fcQMouseEvent_flags(self.h))
 
-proc callVirtualBase_clone(self: QMouseEvent, ): QMouseEvent =
+proc QMouseEventclone*(self: gen_qevent_types.QMouseEvent, ): gen_qevent_types.QMouseEvent =
 
+  gen_qevent_types.QMouseEvent(h: fQMouseEvent_virtualbase_clone(self.h))
 
-  QMouseEvent(h: fQMouseEvent_virtualbase_clone(self.h))
-
-type QMouseEventcloneBase* = proc(): QMouseEvent
-proc onclone*(self: QMouseEvent, slot: proc(super: QMouseEventcloneBase): QMouseEvent) =
+type QMouseEventcloneProc* = proc(): gen_qevent_types.QMouseEvent
+proc onclone*(self: gen_qevent_types.QMouseEvent, slot: QMouseEventcloneProc) =
   # TODO check subclass
-  type Cb = proc(super: QMouseEventcloneBase): QMouseEvent
-  var tmp = new Cb
+  var tmp = new QMouseEventcloneProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMouseEvent_override_virtual_clone(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMouseEvent_clone(self: ptr cQMouseEvent, slot: int): pointer {.exportc: "miqt_exec_callback_QMouseEvent_clone ".} =
-  type Cb = proc(super: QMouseEventcloneBase): QMouseEvent
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_clone(QMouseEvent(h: self), )
+  var nimfunc = cast[ptr QMouseEventcloneProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_isBeginEvent(self: QMouseEvent, ): bool =
-
+proc QMouseEventisBeginEvent*(self: gen_qevent_types.QMouseEvent, ): bool =
 
   fQMouseEvent_virtualbase_isBeginEvent(self.h)
 
-type QMouseEventisBeginEventBase* = proc(): bool
-proc onisBeginEvent*(self: QMouseEvent, slot: proc(super: QMouseEventisBeginEventBase): bool) =
+type QMouseEventisBeginEventProc* = proc(): bool
+proc onisBeginEvent*(self: gen_qevent_types.QMouseEvent, slot: QMouseEventisBeginEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMouseEventisBeginEventBase): bool
-  var tmp = new Cb
+  var tmp = new QMouseEventisBeginEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMouseEvent_override_virtual_isBeginEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMouseEvent_isBeginEvent(self: ptr cQMouseEvent, slot: int): bool {.exportc: "miqt_exec_callback_QMouseEvent_isBeginEvent ".} =
-  type Cb = proc(super: QMouseEventisBeginEventBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_isBeginEvent(QMouseEvent(h: self), )
+  var nimfunc = cast[ptr QMouseEventisBeginEventProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_isUpdateEvent(self: QMouseEvent, ): bool =
-
+proc QMouseEventisUpdateEvent*(self: gen_qevent_types.QMouseEvent, ): bool =
 
   fQMouseEvent_virtualbase_isUpdateEvent(self.h)
 
-type QMouseEventisUpdateEventBase* = proc(): bool
-proc onisUpdateEvent*(self: QMouseEvent, slot: proc(super: QMouseEventisUpdateEventBase): bool) =
+type QMouseEventisUpdateEventProc* = proc(): bool
+proc onisUpdateEvent*(self: gen_qevent_types.QMouseEvent, slot: QMouseEventisUpdateEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMouseEventisUpdateEventBase): bool
-  var tmp = new Cb
+  var tmp = new QMouseEventisUpdateEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMouseEvent_override_virtual_isUpdateEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMouseEvent_isUpdateEvent(self: ptr cQMouseEvent, slot: int): bool {.exportc: "miqt_exec_callback_QMouseEvent_isUpdateEvent ".} =
-  type Cb = proc(super: QMouseEventisUpdateEventBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_isUpdateEvent(QMouseEvent(h: self), )
+  var nimfunc = cast[ptr QMouseEventisUpdateEventProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_isEndEvent(self: QMouseEvent, ): bool =
-
+proc QMouseEventisEndEvent*(self: gen_qevent_types.QMouseEvent, ): bool =
 
   fQMouseEvent_virtualbase_isEndEvent(self.h)
 
-type QMouseEventisEndEventBase* = proc(): bool
-proc onisEndEvent*(self: QMouseEvent, slot: proc(super: QMouseEventisEndEventBase): bool) =
+type QMouseEventisEndEventProc* = proc(): bool
+proc onisEndEvent*(self: gen_qevent_types.QMouseEvent, slot: QMouseEventisEndEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMouseEventisEndEventBase): bool
-  var tmp = new Cb
+  var tmp = new QMouseEventisEndEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMouseEvent_override_virtual_isEndEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMouseEvent_isEndEvent(self: ptr cQMouseEvent, slot: int): bool {.exportc: "miqt_exec_callback_QMouseEvent_isEndEvent ".} =
-  type Cb = proc(super: QMouseEventisEndEventBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_isEndEvent(QMouseEvent(h: self), )
+  var nimfunc = cast[ptr QMouseEventisEndEventProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setTimestamp(self: QMouseEvent, timestamp: culonglong): void =
-
+proc QMouseEventsetTimestamp*(self: gen_qevent_types.QMouseEvent, timestamp: culonglong): void =
 
   fQMouseEvent_virtualbase_setTimestamp(self.h, timestamp)
 
-type QMouseEventsetTimestampBase* = proc(timestamp: culonglong): void
-proc onsetTimestamp*(self: QMouseEvent, slot: proc(super: QMouseEventsetTimestampBase, timestamp: culonglong): void) =
+type QMouseEventsetTimestampProc* = proc(timestamp: culonglong): void
+proc onsetTimestamp*(self: gen_qevent_types.QMouseEvent, slot: QMouseEventsetTimestampProc) =
   # TODO check subclass
-  type Cb = proc(super: QMouseEventsetTimestampBase, timestamp: culonglong): void
-  var tmp = new Cb
+  var tmp = new QMouseEventsetTimestampProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMouseEvent_override_virtual_setTimestamp(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMouseEvent_setTimestamp(self: ptr cQMouseEvent, slot: int, timestamp: culonglong): void {.exportc: "miqt_exec_callback_QMouseEvent_setTimestamp ".} =
-  type Cb = proc(super: QMouseEventsetTimestampBase, timestamp: culonglong): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(timestamp: culonglong): auto =
-    callVirtualBase_setTimestamp(QMouseEvent(h: self), timestamp)
+  var nimfunc = cast[ptr QMouseEventsetTimestampProc](cast[pointer](slot))
   let slotval1 = timestamp
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_setAccepted(self: QMouseEvent, accepted: bool): void =
-
+  nimfunc[](slotval1)
+proc QMouseEventsetAccepted*(self: gen_qevent_types.QMouseEvent, accepted: bool): void =
 
   fQMouseEvent_virtualbase_setAccepted(self.h, accepted)
 
-type QMouseEventsetAcceptedBase* = proc(accepted: bool): void
-proc onsetAccepted*(self: QMouseEvent, slot: proc(super: QMouseEventsetAcceptedBase, accepted: bool): void) =
+type QMouseEventsetAcceptedProc* = proc(accepted: bool): void
+proc onsetAccepted*(self: gen_qevent_types.QMouseEvent, slot: QMouseEventsetAcceptedProc) =
   # TODO check subclass
-  type Cb = proc(super: QMouseEventsetAcceptedBase, accepted: bool): void
-  var tmp = new Cb
+  var tmp = new QMouseEventsetAcceptedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMouseEvent_override_virtual_setAccepted(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMouseEvent_setAccepted(self: ptr cQMouseEvent, slot: int, accepted: bool): void {.exportc: "miqt_exec_callback_QMouseEvent_setAccepted ".} =
-  type Cb = proc(super: QMouseEventsetAcceptedBase, accepted: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(accepted: bool): auto =
-    callVirtualBase_setAccepted(QMouseEvent(h: self), accepted)
+  var nimfunc = cast[ptr QMouseEventsetAcceptedProc](cast[pointer](slot))
   let slotval1 = accepted
 
 
-  nimfunc[](superCall, slotval1)
-proc delete*(self: QMouseEvent) =
+  nimfunc[](slotval1)
+proc delete*(self: gen_qevent_types.QMouseEvent) =
   fcQMouseEvent_delete(self.h)
 
-func init*(T: type QHoverEvent, h: ptr cQHoverEvent): QHoverEvent =
+func init*(T: type gen_qevent_types.QHoverEvent, h: ptr cQHoverEvent): gen_qevent_types.QHoverEvent =
   T(h: h)
-proc create*(T: type QHoverEvent, typeVal: gen_qcoreevent.QEventType, scenePos: gen_qpoint.QPointF, globalPos: gen_qpoint.QPointF, oldPos: gen_qpoint.QPointF): QHoverEvent =
+proc create*(T: type gen_qevent_types.QHoverEvent, typeVal: cint, scenePos: gen_qpoint.QPointF, globalPos: gen_qpoint.QPointF, oldPos: gen_qpoint.QPointF): gen_qevent_types.QHoverEvent =
 
-  QHoverEvent.init(fcQHoverEvent_new(cint(typeVal), scenePos.h, globalPos.h, oldPos.h))
-proc create*(T: type QHoverEvent, typeVal: gen_qcoreevent.QEventType, pos: gen_qpoint.QPointF, oldPos: gen_qpoint.QPointF): QHoverEvent =
+  gen_qevent_types.QHoverEvent.init(fcQHoverEvent_new(cint(typeVal), scenePos.h, globalPos.h, oldPos.h))
+proc create*(T: type gen_qevent_types.QHoverEvent, typeVal: cint, pos: gen_qpoint.QPointF, oldPos: gen_qpoint.QPointF): gen_qevent_types.QHoverEvent =
 
-  QHoverEvent.init(fcQHoverEvent_new2(cint(typeVal), pos.h, oldPos.h))
-proc create*(T: type QHoverEvent, typeVal: gen_qcoreevent.QEventType, scenePos: gen_qpoint.QPointF, globalPos: gen_qpoint.QPointF, oldPos: gen_qpoint.QPointF, modifiers: gen_qnamespace.KeyboardModifier): QHoverEvent =
+  gen_qevent_types.QHoverEvent.init(fcQHoverEvent_new2(cint(typeVal), pos.h, oldPos.h))
+proc create*(T: type gen_qevent_types.QHoverEvent, typeVal: cint, scenePos: gen_qpoint.QPointF, globalPos: gen_qpoint.QPointF, oldPos: gen_qpoint.QPointF, modifiers: cint): gen_qevent_types.QHoverEvent =
 
-  QHoverEvent.init(fcQHoverEvent_new3(cint(typeVal), scenePos.h, globalPos.h, oldPos.h, cint(modifiers)))
-proc create*(T: type QHoverEvent, typeVal: gen_qcoreevent.QEventType, scenePos: gen_qpoint.QPointF, globalPos: gen_qpoint.QPointF, oldPos: gen_qpoint.QPointF, modifiers: gen_qnamespace.KeyboardModifier, device: gen_qpointingdevice.QPointingDevice): QHoverEvent =
+  gen_qevent_types.QHoverEvent.init(fcQHoverEvent_new3(cint(typeVal), scenePos.h, globalPos.h, oldPos.h, cint(modifiers)))
+proc create*(T: type gen_qevent_types.QHoverEvent, typeVal: cint, scenePos: gen_qpoint.QPointF, globalPos: gen_qpoint.QPointF, oldPos: gen_qpoint.QPointF, modifiers: cint, device: gen_qpointingdevice.QPointingDevice): gen_qevent_types.QHoverEvent =
 
-  QHoverEvent.init(fcQHoverEvent_new4(cint(typeVal), scenePos.h, globalPos.h, oldPos.h, cint(modifiers), device.h))
-proc create*(T: type QHoverEvent, typeVal: gen_qcoreevent.QEventType, pos: gen_qpoint.QPointF, oldPos: gen_qpoint.QPointF, modifiers: gen_qnamespace.KeyboardModifier): QHoverEvent =
+  gen_qevent_types.QHoverEvent.init(fcQHoverEvent_new4(cint(typeVal), scenePos.h, globalPos.h, oldPos.h, cint(modifiers), device.h))
+proc create*(T: type gen_qevent_types.QHoverEvent, typeVal: cint, pos: gen_qpoint.QPointF, oldPos: gen_qpoint.QPointF, modifiers: cint): gen_qevent_types.QHoverEvent =
 
-  QHoverEvent.init(fcQHoverEvent_new5(cint(typeVal), pos.h, oldPos.h, cint(modifiers)))
-proc create*(T: type QHoverEvent, typeVal: gen_qcoreevent.QEventType, pos: gen_qpoint.QPointF, oldPos: gen_qpoint.QPointF, modifiers: gen_qnamespace.KeyboardModifier, device: gen_qpointingdevice.QPointingDevice): QHoverEvent =
+  gen_qevent_types.QHoverEvent.init(fcQHoverEvent_new5(cint(typeVal), pos.h, oldPos.h, cint(modifiers)))
+proc create*(T: type gen_qevent_types.QHoverEvent, typeVal: cint, pos: gen_qpoint.QPointF, oldPos: gen_qpoint.QPointF, modifiers: cint, device: gen_qpointingdevice.QPointingDevice): gen_qevent_types.QHoverEvent =
 
-  QHoverEvent.init(fcQHoverEvent_new6(cint(typeVal), pos.h, oldPos.h, cint(modifiers), device.h))
-proc clone*(self: QHoverEvent, ): QHoverEvent =
+  gen_qevent_types.QHoverEvent.init(fcQHoverEvent_new6(cint(typeVal), pos.h, oldPos.h, cint(modifiers), device.h))
+proc clone*(self: gen_qevent_types.QHoverEvent, ): gen_qevent_types.QHoverEvent =
 
-  QHoverEvent(h: fcQHoverEvent_clone(self.h))
+  gen_qevent_types.QHoverEvent(h: fcQHoverEvent_clone(self.h))
 
-proc pos*(self: QHoverEvent, ): gen_qpoint.QPoint =
+proc pos*(self: gen_qevent_types.QHoverEvent, ): gen_qpoint.QPoint =
 
   gen_qpoint.QPoint(h: fcQHoverEvent_pos(self.h))
 
-proc posF*(self: QHoverEvent, ): gen_qpoint.QPointF =
+proc posF*(self: gen_qevent_types.QHoverEvent, ): gen_qpoint.QPointF =
 
   gen_qpoint.QPointF(h: fcQHoverEvent_posF(self.h))
 
-proc isUpdateEvent*(self: QHoverEvent, ): bool =
+proc isUpdateEvent*(self: gen_qevent_types.QHoverEvent, ): bool =
 
   fcQHoverEvent_isUpdateEvent(self.h)
 
-proc oldPos*(self: QHoverEvent, ): gen_qpoint.QPoint =
+proc oldPos*(self: gen_qevent_types.QHoverEvent, ): gen_qpoint.QPoint =
 
   gen_qpoint.QPoint(h: fcQHoverEvent_oldPos(self.h))
 
-proc oldPosF*(self: QHoverEvent, ): gen_qpoint.QPointF =
+proc oldPosF*(self: gen_qevent_types.QHoverEvent, ): gen_qpoint.QPointF =
 
   gen_qpoint.QPointF(h: fcQHoverEvent_oldPosF(self.h))
 
-proc callVirtualBase_clone(self: QHoverEvent, ): QHoverEvent =
+proc QHoverEventclone*(self: gen_qevent_types.QHoverEvent, ): gen_qevent_types.QHoverEvent =
 
+  gen_qevent_types.QHoverEvent(h: fQHoverEvent_virtualbase_clone(self.h))
 
-  QHoverEvent(h: fQHoverEvent_virtualbase_clone(self.h))
-
-type QHoverEventcloneBase* = proc(): QHoverEvent
-proc onclone*(self: QHoverEvent, slot: proc(super: QHoverEventcloneBase): QHoverEvent) =
+type QHoverEventcloneProc* = proc(): gen_qevent_types.QHoverEvent
+proc onclone*(self: gen_qevent_types.QHoverEvent, slot: QHoverEventcloneProc) =
   # TODO check subclass
-  type Cb = proc(super: QHoverEventcloneBase): QHoverEvent
-  var tmp = new Cb
+  var tmp = new QHoverEventcloneProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHoverEvent_override_virtual_clone(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHoverEvent_clone(self: ptr cQHoverEvent, slot: int): pointer {.exportc: "miqt_exec_callback_QHoverEvent_clone ".} =
-  type Cb = proc(super: QHoverEventcloneBase): QHoverEvent
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_clone(QHoverEvent(h: self), )
+  var nimfunc = cast[ptr QHoverEventcloneProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_isUpdateEvent(self: QHoverEvent, ): bool =
-
+proc QHoverEventisUpdateEvent*(self: gen_qevent_types.QHoverEvent, ): bool =
 
   fQHoverEvent_virtualbase_isUpdateEvent(self.h)
 
-type QHoverEventisUpdateEventBase* = proc(): bool
-proc onisUpdateEvent*(self: QHoverEvent, slot: proc(super: QHoverEventisUpdateEventBase): bool) =
+type QHoverEventisUpdateEventProc* = proc(): bool
+proc onisUpdateEvent*(self: gen_qevent_types.QHoverEvent, slot: QHoverEventisUpdateEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QHoverEventisUpdateEventBase): bool
-  var tmp = new Cb
+  var tmp = new QHoverEventisUpdateEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHoverEvent_override_virtual_isUpdateEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHoverEvent_isUpdateEvent(self: ptr cQHoverEvent, slot: int): bool {.exportc: "miqt_exec_callback_QHoverEvent_isUpdateEvent ".} =
-  type Cb = proc(super: QHoverEventisUpdateEventBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_isUpdateEvent(QHoverEvent(h: self), )
+  var nimfunc = cast[ptr QHoverEventisUpdateEventProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_isBeginEvent(self: QHoverEvent, ): bool =
-
+proc QHoverEventisBeginEvent*(self: gen_qevent_types.QHoverEvent, ): bool =
 
   fQHoverEvent_virtualbase_isBeginEvent(self.h)
 
-type QHoverEventisBeginEventBase* = proc(): bool
-proc onisBeginEvent*(self: QHoverEvent, slot: proc(super: QHoverEventisBeginEventBase): bool) =
+type QHoverEventisBeginEventProc* = proc(): bool
+proc onisBeginEvent*(self: gen_qevent_types.QHoverEvent, slot: QHoverEventisBeginEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QHoverEventisBeginEventBase): bool
-  var tmp = new Cb
+  var tmp = new QHoverEventisBeginEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHoverEvent_override_virtual_isBeginEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHoverEvent_isBeginEvent(self: ptr cQHoverEvent, slot: int): bool {.exportc: "miqt_exec_callback_QHoverEvent_isBeginEvent ".} =
-  type Cb = proc(super: QHoverEventisBeginEventBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_isBeginEvent(QHoverEvent(h: self), )
+  var nimfunc = cast[ptr QHoverEventisBeginEventProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_isEndEvent(self: QHoverEvent, ): bool =
-
+proc QHoverEventisEndEvent*(self: gen_qevent_types.QHoverEvent, ): bool =
 
   fQHoverEvent_virtualbase_isEndEvent(self.h)
 
-type QHoverEventisEndEventBase* = proc(): bool
-proc onisEndEvent*(self: QHoverEvent, slot: proc(super: QHoverEventisEndEventBase): bool) =
+type QHoverEventisEndEventProc* = proc(): bool
+proc onisEndEvent*(self: gen_qevent_types.QHoverEvent, slot: QHoverEventisEndEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QHoverEventisEndEventBase): bool
-  var tmp = new Cb
+  var tmp = new QHoverEventisEndEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHoverEvent_override_virtual_isEndEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHoverEvent_isEndEvent(self: ptr cQHoverEvent, slot: int): bool {.exportc: "miqt_exec_callback_QHoverEvent_isEndEvent ".} =
-  type Cb = proc(super: QHoverEventisEndEventBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_isEndEvent(QHoverEvent(h: self), )
+  var nimfunc = cast[ptr QHoverEventisEndEventProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setTimestamp(self: QHoverEvent, timestamp: culonglong): void =
-
+proc QHoverEventsetTimestamp*(self: gen_qevent_types.QHoverEvent, timestamp: culonglong): void =
 
   fQHoverEvent_virtualbase_setTimestamp(self.h, timestamp)
 
-type QHoverEventsetTimestampBase* = proc(timestamp: culonglong): void
-proc onsetTimestamp*(self: QHoverEvent, slot: proc(super: QHoverEventsetTimestampBase, timestamp: culonglong): void) =
+type QHoverEventsetTimestampProc* = proc(timestamp: culonglong): void
+proc onsetTimestamp*(self: gen_qevent_types.QHoverEvent, slot: QHoverEventsetTimestampProc) =
   # TODO check subclass
-  type Cb = proc(super: QHoverEventsetTimestampBase, timestamp: culonglong): void
-  var tmp = new Cb
+  var tmp = new QHoverEventsetTimestampProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHoverEvent_override_virtual_setTimestamp(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHoverEvent_setTimestamp(self: ptr cQHoverEvent, slot: int, timestamp: culonglong): void {.exportc: "miqt_exec_callback_QHoverEvent_setTimestamp ".} =
-  type Cb = proc(super: QHoverEventsetTimestampBase, timestamp: culonglong): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(timestamp: culonglong): auto =
-    callVirtualBase_setTimestamp(QHoverEvent(h: self), timestamp)
+  var nimfunc = cast[ptr QHoverEventsetTimestampProc](cast[pointer](slot))
   let slotval1 = timestamp
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_setAccepted(self: QHoverEvent, accepted: bool): void =
-
+  nimfunc[](slotval1)
+proc QHoverEventsetAccepted*(self: gen_qevent_types.QHoverEvent, accepted: bool): void =
 
   fQHoverEvent_virtualbase_setAccepted(self.h, accepted)
 
-type QHoverEventsetAcceptedBase* = proc(accepted: bool): void
-proc onsetAccepted*(self: QHoverEvent, slot: proc(super: QHoverEventsetAcceptedBase, accepted: bool): void) =
+type QHoverEventsetAcceptedProc* = proc(accepted: bool): void
+proc onsetAccepted*(self: gen_qevent_types.QHoverEvent, slot: QHoverEventsetAcceptedProc) =
   # TODO check subclass
-  type Cb = proc(super: QHoverEventsetAcceptedBase, accepted: bool): void
-  var tmp = new Cb
+  var tmp = new QHoverEventsetAcceptedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHoverEvent_override_virtual_setAccepted(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHoverEvent_setAccepted(self: ptr cQHoverEvent, slot: int, accepted: bool): void {.exportc: "miqt_exec_callback_QHoverEvent_setAccepted ".} =
-  type Cb = proc(super: QHoverEventsetAcceptedBase, accepted: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(accepted: bool): auto =
-    callVirtualBase_setAccepted(QHoverEvent(h: self), accepted)
+  var nimfunc = cast[ptr QHoverEventsetAcceptedProc](cast[pointer](slot))
   let slotval1 = accepted
 
 
-  nimfunc[](superCall, slotval1)
-proc delete*(self: QHoverEvent) =
+  nimfunc[](slotval1)
+proc delete*(self: gen_qevent_types.QHoverEvent) =
   fcQHoverEvent_delete(self.h)
 
-func init*(T: type QWheelEvent, h: ptr cQWheelEvent): QWheelEvent =
+func init*(T: type gen_qevent_types.QWheelEvent, h: ptr cQWheelEvent): gen_qevent_types.QWheelEvent =
   T(h: h)
-proc create*(T: type QWheelEvent, pos: gen_qpoint.QPointF, globalPos: gen_qpoint.QPointF, pixelDelta: gen_qpoint.QPoint, angleDelta: gen_qpoint.QPoint, buttons: gen_qnamespace.MouseButton, modifiers: gen_qnamespace.KeyboardModifier, phase: gen_qnamespace.ScrollPhase, inverted: bool): QWheelEvent =
+proc create*(T: type gen_qevent_types.QWheelEvent, pos: gen_qpoint.QPointF, globalPos: gen_qpoint.QPointF, pixelDelta: gen_qpoint.QPoint, angleDelta: gen_qpoint.QPoint, buttons: cint, modifiers: cint, phase: cint, inverted: bool): gen_qevent_types.QWheelEvent =
 
-  QWheelEvent.init(fcQWheelEvent_new(pos.h, globalPos.h, pixelDelta.h, angleDelta.h, cint(buttons), cint(modifiers), cint(phase), inverted))
-proc create*(T: type QWheelEvent, pos: gen_qpoint.QPointF, globalPos: gen_qpoint.QPointF, pixelDelta: gen_qpoint.QPoint, angleDelta: gen_qpoint.QPoint, buttons: gen_qnamespace.MouseButton, modifiers: gen_qnamespace.KeyboardModifier, phase: gen_qnamespace.ScrollPhase, inverted: bool, source: gen_qnamespace.MouseEventSource): QWheelEvent =
+  gen_qevent_types.QWheelEvent.init(fcQWheelEvent_new(pos.h, globalPos.h, pixelDelta.h, angleDelta.h, cint(buttons), cint(modifiers), cint(phase), inverted))
+proc create*(T: type gen_qevent_types.QWheelEvent, pos: gen_qpoint.QPointF, globalPos: gen_qpoint.QPointF, pixelDelta: gen_qpoint.QPoint, angleDelta: gen_qpoint.QPoint, buttons: cint, modifiers: cint, phase: cint, inverted: bool, source: cint): gen_qevent_types.QWheelEvent =
 
-  QWheelEvent.init(fcQWheelEvent_new2(pos.h, globalPos.h, pixelDelta.h, angleDelta.h, cint(buttons), cint(modifiers), cint(phase), inverted, cint(source)))
-proc create*(T: type QWheelEvent, pos: gen_qpoint.QPointF, globalPos: gen_qpoint.QPointF, pixelDelta: gen_qpoint.QPoint, angleDelta: gen_qpoint.QPoint, buttons: gen_qnamespace.MouseButton, modifiers: gen_qnamespace.KeyboardModifier, phase: gen_qnamespace.ScrollPhase, inverted: bool, source: gen_qnamespace.MouseEventSource, device: gen_qpointingdevice.QPointingDevice): QWheelEvent =
+  gen_qevent_types.QWheelEvent.init(fcQWheelEvent_new2(pos.h, globalPos.h, pixelDelta.h, angleDelta.h, cint(buttons), cint(modifiers), cint(phase), inverted, cint(source)))
+proc create*(T: type gen_qevent_types.QWheelEvent, pos: gen_qpoint.QPointF, globalPos: gen_qpoint.QPointF, pixelDelta: gen_qpoint.QPoint, angleDelta: gen_qpoint.QPoint, buttons: cint, modifiers: cint, phase: cint, inverted: bool, source: cint, device: gen_qpointingdevice.QPointingDevice): gen_qevent_types.QWheelEvent =
 
-  QWheelEvent.init(fcQWheelEvent_new3(pos.h, globalPos.h, pixelDelta.h, angleDelta.h, cint(buttons), cint(modifiers), cint(phase), inverted, cint(source), device.h))
-proc clone*(self: QWheelEvent, ): QWheelEvent =
+  gen_qevent_types.QWheelEvent.init(fcQWheelEvent_new3(pos.h, globalPos.h, pixelDelta.h, angleDelta.h, cint(buttons), cint(modifiers), cint(phase), inverted, cint(source), device.h))
+proc clone*(self: gen_qevent_types.QWheelEvent, ): gen_qevent_types.QWheelEvent =
 
-  QWheelEvent(h: fcQWheelEvent_clone(self.h))
+  gen_qevent_types.QWheelEvent(h: fcQWheelEvent_clone(self.h))
 
-proc pixelDelta*(self: QWheelEvent, ): gen_qpoint.QPoint =
+proc pixelDelta*(self: gen_qevent_types.QWheelEvent, ): gen_qpoint.QPoint =
 
   gen_qpoint.QPoint(h: fcQWheelEvent_pixelDelta(self.h))
 
-proc angleDelta*(self: QWheelEvent, ): gen_qpoint.QPoint =
+proc angleDelta*(self: gen_qevent_types.QWheelEvent, ): gen_qpoint.QPoint =
 
   gen_qpoint.QPoint(h: fcQWheelEvent_angleDelta(self.h))
 
-proc phase*(self: QWheelEvent, ): gen_qnamespace.ScrollPhase =
+proc phase*(self: gen_qevent_types.QWheelEvent, ): cint =
 
-  gen_qnamespace.ScrollPhase(fcQWheelEvent_phase(self.h))
+  cint(fcQWheelEvent_phase(self.h))
 
-proc inverted*(self: QWheelEvent, ): bool =
+proc inverted*(self: gen_qevent_types.QWheelEvent, ): bool =
 
   fcQWheelEvent_inverted(self.h)
 
-proc isInverted*(self: QWheelEvent, ): bool =
+proc isInverted*(self: gen_qevent_types.QWheelEvent, ): bool =
 
   fcQWheelEvent_isInverted(self.h)
 
-proc hasPixelDelta*(self: QWheelEvent, ): bool =
+proc hasPixelDelta*(self: gen_qevent_types.QWheelEvent, ): bool =
 
   fcQWheelEvent_hasPixelDelta(self.h)
 
-proc isBeginEvent*(self: QWheelEvent, ): bool =
+proc isBeginEvent*(self: gen_qevent_types.QWheelEvent, ): bool =
 
   fcQWheelEvent_isBeginEvent(self.h)
 
-proc isUpdateEvent*(self: QWheelEvent, ): bool =
+proc isUpdateEvent*(self: gen_qevent_types.QWheelEvent, ): bool =
 
   fcQWheelEvent_isUpdateEvent(self.h)
 
-proc isEndEvent*(self: QWheelEvent, ): bool =
+proc isEndEvent*(self: gen_qevent_types.QWheelEvent, ): bool =
 
   fcQWheelEvent_isEndEvent(self.h)
 
-proc source*(self: QWheelEvent, ): gen_qnamespace.MouseEventSource =
+proc source*(self: gen_qevent_types.QWheelEvent, ): cint =
 
-  gen_qnamespace.MouseEventSource(fcQWheelEvent_source(self.h))
+  cint(fcQWheelEvent_source(self.h))
 
-proc callVirtualBase_clone(self: QWheelEvent, ): QWheelEvent =
+proc QWheelEventclone*(self: gen_qevent_types.QWheelEvent, ): gen_qevent_types.QWheelEvent =
 
+  gen_qevent_types.QWheelEvent(h: fQWheelEvent_virtualbase_clone(self.h))
 
-  QWheelEvent(h: fQWheelEvent_virtualbase_clone(self.h))
-
-type QWheelEventcloneBase* = proc(): QWheelEvent
-proc onclone*(self: QWheelEvent, slot: proc(super: QWheelEventcloneBase): QWheelEvent) =
+type QWheelEventcloneProc* = proc(): gen_qevent_types.QWheelEvent
+proc onclone*(self: gen_qevent_types.QWheelEvent, slot: QWheelEventcloneProc) =
   # TODO check subclass
-  type Cb = proc(super: QWheelEventcloneBase): QWheelEvent
-  var tmp = new Cb
+  var tmp = new QWheelEventcloneProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWheelEvent_override_virtual_clone(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWheelEvent_clone(self: ptr cQWheelEvent, slot: int): pointer {.exportc: "miqt_exec_callback_QWheelEvent_clone ".} =
-  type Cb = proc(super: QWheelEventcloneBase): QWheelEvent
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_clone(QWheelEvent(h: self), )
+  var nimfunc = cast[ptr QWheelEventcloneProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_isBeginEvent(self: QWheelEvent, ): bool =
-
+proc QWheelEventisBeginEvent*(self: gen_qevent_types.QWheelEvent, ): bool =
 
   fQWheelEvent_virtualbase_isBeginEvent(self.h)
 
-type QWheelEventisBeginEventBase* = proc(): bool
-proc onisBeginEvent*(self: QWheelEvent, slot: proc(super: QWheelEventisBeginEventBase): bool) =
+type QWheelEventisBeginEventProc* = proc(): bool
+proc onisBeginEvent*(self: gen_qevent_types.QWheelEvent, slot: QWheelEventisBeginEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWheelEventisBeginEventBase): bool
-  var tmp = new Cb
+  var tmp = new QWheelEventisBeginEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWheelEvent_override_virtual_isBeginEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWheelEvent_isBeginEvent(self: ptr cQWheelEvent, slot: int): bool {.exportc: "miqt_exec_callback_QWheelEvent_isBeginEvent ".} =
-  type Cb = proc(super: QWheelEventisBeginEventBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_isBeginEvent(QWheelEvent(h: self), )
+  var nimfunc = cast[ptr QWheelEventisBeginEventProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_isUpdateEvent(self: QWheelEvent, ): bool =
-
+proc QWheelEventisUpdateEvent*(self: gen_qevent_types.QWheelEvent, ): bool =
 
   fQWheelEvent_virtualbase_isUpdateEvent(self.h)
 
-type QWheelEventisUpdateEventBase* = proc(): bool
-proc onisUpdateEvent*(self: QWheelEvent, slot: proc(super: QWheelEventisUpdateEventBase): bool) =
+type QWheelEventisUpdateEventProc* = proc(): bool
+proc onisUpdateEvent*(self: gen_qevent_types.QWheelEvent, slot: QWheelEventisUpdateEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWheelEventisUpdateEventBase): bool
-  var tmp = new Cb
+  var tmp = new QWheelEventisUpdateEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWheelEvent_override_virtual_isUpdateEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWheelEvent_isUpdateEvent(self: ptr cQWheelEvent, slot: int): bool {.exportc: "miqt_exec_callback_QWheelEvent_isUpdateEvent ".} =
-  type Cb = proc(super: QWheelEventisUpdateEventBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_isUpdateEvent(QWheelEvent(h: self), )
+  var nimfunc = cast[ptr QWheelEventisUpdateEventProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_isEndEvent(self: QWheelEvent, ): bool =
-
+proc QWheelEventisEndEvent*(self: gen_qevent_types.QWheelEvent, ): bool =
 
   fQWheelEvent_virtualbase_isEndEvent(self.h)
 
-type QWheelEventisEndEventBase* = proc(): bool
-proc onisEndEvent*(self: QWheelEvent, slot: proc(super: QWheelEventisEndEventBase): bool) =
+type QWheelEventisEndEventProc* = proc(): bool
+proc onisEndEvent*(self: gen_qevent_types.QWheelEvent, slot: QWheelEventisEndEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWheelEventisEndEventBase): bool
-  var tmp = new Cb
+  var tmp = new QWheelEventisEndEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWheelEvent_override_virtual_isEndEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWheelEvent_isEndEvent(self: ptr cQWheelEvent, slot: int): bool {.exportc: "miqt_exec_callback_QWheelEvent_isEndEvent ".} =
-  type Cb = proc(super: QWheelEventisEndEventBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_isEndEvent(QWheelEvent(h: self), )
+  var nimfunc = cast[ptr QWheelEventisEndEventProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setTimestamp(self: QWheelEvent, timestamp: culonglong): void =
-
+proc QWheelEventsetTimestamp*(self: gen_qevent_types.QWheelEvent, timestamp: culonglong): void =
 
   fQWheelEvent_virtualbase_setTimestamp(self.h, timestamp)
 
-type QWheelEventsetTimestampBase* = proc(timestamp: culonglong): void
-proc onsetTimestamp*(self: QWheelEvent, slot: proc(super: QWheelEventsetTimestampBase, timestamp: culonglong): void) =
+type QWheelEventsetTimestampProc* = proc(timestamp: culonglong): void
+proc onsetTimestamp*(self: gen_qevent_types.QWheelEvent, slot: QWheelEventsetTimestampProc) =
   # TODO check subclass
-  type Cb = proc(super: QWheelEventsetTimestampBase, timestamp: culonglong): void
-  var tmp = new Cb
+  var tmp = new QWheelEventsetTimestampProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWheelEvent_override_virtual_setTimestamp(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWheelEvent_setTimestamp(self: ptr cQWheelEvent, slot: int, timestamp: culonglong): void {.exportc: "miqt_exec_callback_QWheelEvent_setTimestamp ".} =
-  type Cb = proc(super: QWheelEventsetTimestampBase, timestamp: culonglong): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(timestamp: culonglong): auto =
-    callVirtualBase_setTimestamp(QWheelEvent(h: self), timestamp)
+  var nimfunc = cast[ptr QWheelEventsetTimestampProc](cast[pointer](slot))
   let slotval1 = timestamp
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_setAccepted(self: QWheelEvent, accepted: bool): void =
-
+  nimfunc[](slotval1)
+proc QWheelEventsetAccepted*(self: gen_qevent_types.QWheelEvent, accepted: bool): void =
 
   fQWheelEvent_virtualbase_setAccepted(self.h, accepted)
 
-type QWheelEventsetAcceptedBase* = proc(accepted: bool): void
-proc onsetAccepted*(self: QWheelEvent, slot: proc(super: QWheelEventsetAcceptedBase, accepted: bool): void) =
+type QWheelEventsetAcceptedProc* = proc(accepted: bool): void
+proc onsetAccepted*(self: gen_qevent_types.QWheelEvent, slot: QWheelEventsetAcceptedProc) =
   # TODO check subclass
-  type Cb = proc(super: QWheelEventsetAcceptedBase, accepted: bool): void
-  var tmp = new Cb
+  var tmp = new QWheelEventsetAcceptedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWheelEvent_override_virtual_setAccepted(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWheelEvent_setAccepted(self: ptr cQWheelEvent, slot: int, accepted: bool): void {.exportc: "miqt_exec_callback_QWheelEvent_setAccepted ".} =
-  type Cb = proc(super: QWheelEventsetAcceptedBase, accepted: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(accepted: bool): auto =
-    callVirtualBase_setAccepted(QWheelEvent(h: self), accepted)
+  var nimfunc = cast[ptr QWheelEventsetAcceptedProc](cast[pointer](slot))
   let slotval1 = accepted
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QWheelEvent): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qevent_types.QWheelEvent): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQWheelEvent_staticMetaObject())
-proc delete*(self: QWheelEvent) =
+proc delete*(self: gen_qevent_types.QWheelEvent) =
   fcQWheelEvent_delete(self.h)
 
-func init*(T: type QTabletEvent, h: ptr cQTabletEvent): QTabletEvent =
+func init*(T: type gen_qevent_types.QTabletEvent, h: ptr cQTabletEvent): gen_qevent_types.QTabletEvent =
   T(h: h)
-proc create*(T: type QTabletEvent, t: gen_qcoreevent.QEventType, device: gen_qpointingdevice.QPointingDevice, pos: gen_qpoint.QPointF, globalPos: gen_qpoint.QPointF, pressure: float64, xTilt: float32, yTilt: float32, tangentialPressure: float32, rotation: float64, z: float32, keyState: gen_qnamespace.KeyboardModifier, button: gen_qnamespace.MouseButton, buttons: gen_qnamespace.MouseButton): QTabletEvent =
+proc create*(T: type gen_qevent_types.QTabletEvent, t: cint, device: gen_qpointingdevice.QPointingDevice, pos: gen_qpoint.QPointF, globalPos: gen_qpoint.QPointF, pressure: float64, xTilt: float32, yTilt: float32, tangentialPressure: float32, rotation: float64, z: float32, keyState: cint, button: cint, buttons: cint): gen_qevent_types.QTabletEvent =
 
-  QTabletEvent.init(fcQTabletEvent_new(cint(t), device.h, pos.h, globalPos.h, pressure, xTilt, yTilt, tangentialPressure, rotation, z, cint(keyState), cint(button), cint(buttons)))
-proc clone*(self: QTabletEvent, ): QTabletEvent =
+  gen_qevent_types.QTabletEvent.init(fcQTabletEvent_new(cint(t), device.h, pos.h, globalPos.h, pressure, xTilt, yTilt, tangentialPressure, rotation, z, cint(keyState), cint(button), cint(buttons)))
+proc clone*(self: gen_qevent_types.QTabletEvent, ): gen_qevent_types.QTabletEvent =
 
-  QTabletEvent(h: fcQTabletEvent_clone(self.h))
+  gen_qevent_types.QTabletEvent(h: fcQTabletEvent_clone(self.h))
 
-proc pos*(self: QTabletEvent, ): gen_qpoint.QPoint =
+proc pos*(self: gen_qevent_types.QTabletEvent, ): gen_qpoint.QPoint =
 
   gen_qpoint.QPoint(h: fcQTabletEvent_pos(self.h))
 
-proc globalPos*(self: QTabletEvent, ): gen_qpoint.QPoint =
+proc globalPos*(self: gen_qevent_types.QTabletEvent, ): gen_qpoint.QPoint =
 
   gen_qpoint.QPoint(h: fcQTabletEvent_globalPos(self.h))
 
-proc posF*(self: QTabletEvent, ): gen_qpoint.QPointF =
+proc posF*(self: gen_qevent_types.QTabletEvent, ): gen_qpoint.QPointF =
 
   gen_qpoint.QPointF(h: fcQTabletEvent_posF(self.h))
 
-proc globalPosF*(self: QTabletEvent, ): gen_qpoint.QPointF =
+proc globalPosF*(self: gen_qevent_types.QTabletEvent, ): gen_qpoint.QPointF =
 
   gen_qpoint.QPointF(h: fcQTabletEvent_globalPosF(self.h))
 
-proc x*(self: QTabletEvent, ): cint =
+proc x*(self: gen_qevent_types.QTabletEvent, ): cint =
 
   fcQTabletEvent_x(self.h)
 
-proc y*(self: QTabletEvent, ): cint =
+proc y*(self: gen_qevent_types.QTabletEvent, ): cint =
 
   fcQTabletEvent_y(self.h)
 
-proc globalX*(self: QTabletEvent, ): cint =
+proc globalX*(self: gen_qevent_types.QTabletEvent, ): cint =
 
   fcQTabletEvent_globalX(self.h)
 
-proc globalY*(self: QTabletEvent, ): cint =
+proc globalY*(self: gen_qevent_types.QTabletEvent, ): cint =
 
   fcQTabletEvent_globalY(self.h)
 
-proc hiResGlobalX*(self: QTabletEvent, ): float64 =
+proc hiResGlobalX*(self: gen_qevent_types.QTabletEvent, ): float64 =
 
   fcQTabletEvent_hiResGlobalX(self.h)
 
-proc hiResGlobalY*(self: QTabletEvent, ): float64 =
+proc hiResGlobalY*(self: gen_qevent_types.QTabletEvent, ): float64 =
 
   fcQTabletEvent_hiResGlobalY(self.h)
 
-proc uniqueId*(self: QTabletEvent, ): clonglong =
+proc uniqueId*(self: gen_qevent_types.QTabletEvent, ): clonglong =
 
   fcQTabletEvent_uniqueId(self.h)
 
-proc pressure*(self: QTabletEvent, ): float64 =
+proc pressure*(self: gen_qevent_types.QTabletEvent, ): float64 =
 
   fcQTabletEvent_pressure(self.h)
 
-proc rotation*(self: QTabletEvent, ): float64 =
+proc rotation*(self: gen_qevent_types.QTabletEvent, ): float64 =
 
   fcQTabletEvent_rotation(self.h)
 
-proc z*(self: QTabletEvent, ): float64 =
+proc z*(self: gen_qevent_types.QTabletEvent, ): float64 =
 
   fcQTabletEvent_z(self.h)
 
-proc tangentialPressure*(self: QTabletEvent, ): float64 =
+proc tangentialPressure*(self: gen_qevent_types.QTabletEvent, ): float64 =
 
   fcQTabletEvent_tangentialPressure(self.h)
 
-proc xTilt*(self: QTabletEvent, ): float64 =
+proc xTilt*(self: gen_qevent_types.QTabletEvent, ): float64 =
 
   fcQTabletEvent_xTilt(self.h)
 
-proc yTilt*(self: QTabletEvent, ): float64 =
+proc yTilt*(self: gen_qevent_types.QTabletEvent, ): float64 =
 
   fcQTabletEvent_yTilt(self.h)
 
-proc callVirtualBase_clone(self: QTabletEvent, ): QTabletEvent =
+proc QTabletEventclone*(self: gen_qevent_types.QTabletEvent, ): gen_qevent_types.QTabletEvent =
 
+  gen_qevent_types.QTabletEvent(h: fQTabletEvent_virtualbase_clone(self.h))
 
-  QTabletEvent(h: fQTabletEvent_virtualbase_clone(self.h))
-
-type QTabletEventcloneBase* = proc(): QTabletEvent
-proc onclone*(self: QTabletEvent, slot: proc(super: QTabletEventcloneBase): QTabletEvent) =
+type QTabletEventcloneProc* = proc(): gen_qevent_types.QTabletEvent
+proc onclone*(self: gen_qevent_types.QTabletEvent, slot: QTabletEventcloneProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabletEventcloneBase): QTabletEvent
-  var tmp = new Cb
+  var tmp = new QTabletEventcloneProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabletEvent_override_virtual_clone(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabletEvent_clone(self: ptr cQTabletEvent, slot: int): pointer {.exportc: "miqt_exec_callback_QTabletEvent_clone ".} =
-  type Cb = proc(super: QTabletEventcloneBase): QTabletEvent
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_clone(QTabletEvent(h: self), )
+  var nimfunc = cast[ptr QTabletEventcloneProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_isBeginEvent(self: QTabletEvent, ): bool =
-
+proc QTabletEventisBeginEvent*(self: gen_qevent_types.QTabletEvent, ): bool =
 
   fQTabletEvent_virtualbase_isBeginEvent(self.h)
 
-type QTabletEventisBeginEventBase* = proc(): bool
-proc onisBeginEvent*(self: QTabletEvent, slot: proc(super: QTabletEventisBeginEventBase): bool) =
+type QTabletEventisBeginEventProc* = proc(): bool
+proc onisBeginEvent*(self: gen_qevent_types.QTabletEvent, slot: QTabletEventisBeginEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabletEventisBeginEventBase): bool
-  var tmp = new Cb
+  var tmp = new QTabletEventisBeginEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabletEvent_override_virtual_isBeginEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabletEvent_isBeginEvent(self: ptr cQTabletEvent, slot: int): bool {.exportc: "miqt_exec_callback_QTabletEvent_isBeginEvent ".} =
-  type Cb = proc(super: QTabletEventisBeginEventBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_isBeginEvent(QTabletEvent(h: self), )
+  var nimfunc = cast[ptr QTabletEventisBeginEventProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_isUpdateEvent(self: QTabletEvent, ): bool =
-
+proc QTabletEventisUpdateEvent*(self: gen_qevent_types.QTabletEvent, ): bool =
 
   fQTabletEvent_virtualbase_isUpdateEvent(self.h)
 
-type QTabletEventisUpdateEventBase* = proc(): bool
-proc onisUpdateEvent*(self: QTabletEvent, slot: proc(super: QTabletEventisUpdateEventBase): bool) =
+type QTabletEventisUpdateEventProc* = proc(): bool
+proc onisUpdateEvent*(self: gen_qevent_types.QTabletEvent, slot: QTabletEventisUpdateEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabletEventisUpdateEventBase): bool
-  var tmp = new Cb
+  var tmp = new QTabletEventisUpdateEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabletEvent_override_virtual_isUpdateEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabletEvent_isUpdateEvent(self: ptr cQTabletEvent, slot: int): bool {.exportc: "miqt_exec_callback_QTabletEvent_isUpdateEvent ".} =
-  type Cb = proc(super: QTabletEventisUpdateEventBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_isUpdateEvent(QTabletEvent(h: self), )
+  var nimfunc = cast[ptr QTabletEventisUpdateEventProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_isEndEvent(self: QTabletEvent, ): bool =
-
+proc QTabletEventisEndEvent*(self: gen_qevent_types.QTabletEvent, ): bool =
 
   fQTabletEvent_virtualbase_isEndEvent(self.h)
 
-type QTabletEventisEndEventBase* = proc(): bool
-proc onisEndEvent*(self: QTabletEvent, slot: proc(super: QTabletEventisEndEventBase): bool) =
+type QTabletEventisEndEventProc* = proc(): bool
+proc onisEndEvent*(self: gen_qevent_types.QTabletEvent, slot: QTabletEventisEndEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabletEventisEndEventBase): bool
-  var tmp = new Cb
+  var tmp = new QTabletEventisEndEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabletEvent_override_virtual_isEndEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabletEvent_isEndEvent(self: ptr cQTabletEvent, slot: int): bool {.exportc: "miqt_exec_callback_QTabletEvent_isEndEvent ".} =
-  type Cb = proc(super: QTabletEventisEndEventBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_isEndEvent(QTabletEvent(h: self), )
+  var nimfunc = cast[ptr QTabletEventisEndEventProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setTimestamp(self: QTabletEvent, timestamp: culonglong): void =
-
+proc QTabletEventsetTimestamp*(self: gen_qevent_types.QTabletEvent, timestamp: culonglong): void =
 
   fQTabletEvent_virtualbase_setTimestamp(self.h, timestamp)
 
-type QTabletEventsetTimestampBase* = proc(timestamp: culonglong): void
-proc onsetTimestamp*(self: QTabletEvent, slot: proc(super: QTabletEventsetTimestampBase, timestamp: culonglong): void) =
+type QTabletEventsetTimestampProc* = proc(timestamp: culonglong): void
+proc onsetTimestamp*(self: gen_qevent_types.QTabletEvent, slot: QTabletEventsetTimestampProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabletEventsetTimestampBase, timestamp: culonglong): void
-  var tmp = new Cb
+  var tmp = new QTabletEventsetTimestampProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabletEvent_override_virtual_setTimestamp(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabletEvent_setTimestamp(self: ptr cQTabletEvent, slot: int, timestamp: culonglong): void {.exportc: "miqt_exec_callback_QTabletEvent_setTimestamp ".} =
-  type Cb = proc(super: QTabletEventsetTimestampBase, timestamp: culonglong): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(timestamp: culonglong): auto =
-    callVirtualBase_setTimestamp(QTabletEvent(h: self), timestamp)
+  var nimfunc = cast[ptr QTabletEventsetTimestampProc](cast[pointer](slot))
   let slotval1 = timestamp
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_setAccepted(self: QTabletEvent, accepted: bool): void =
-
+  nimfunc[](slotval1)
+proc QTabletEventsetAccepted*(self: gen_qevent_types.QTabletEvent, accepted: bool): void =
 
   fQTabletEvent_virtualbase_setAccepted(self.h, accepted)
 
-type QTabletEventsetAcceptedBase* = proc(accepted: bool): void
-proc onsetAccepted*(self: QTabletEvent, slot: proc(super: QTabletEventsetAcceptedBase, accepted: bool): void) =
+type QTabletEventsetAcceptedProc* = proc(accepted: bool): void
+proc onsetAccepted*(self: gen_qevent_types.QTabletEvent, slot: QTabletEventsetAcceptedProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabletEventsetAcceptedBase, accepted: bool): void
-  var tmp = new Cb
+  var tmp = new QTabletEventsetAcceptedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabletEvent_override_virtual_setAccepted(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabletEvent_setAccepted(self: ptr cQTabletEvent, slot: int, accepted: bool): void {.exportc: "miqt_exec_callback_QTabletEvent_setAccepted ".} =
-  type Cb = proc(super: QTabletEventsetAcceptedBase, accepted: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(accepted: bool): auto =
-    callVirtualBase_setAccepted(QTabletEvent(h: self), accepted)
+  var nimfunc = cast[ptr QTabletEventsetAcceptedProc](cast[pointer](slot))
   let slotval1 = accepted
 
 
-  nimfunc[](superCall, slotval1)
-proc delete*(self: QTabletEvent) =
+  nimfunc[](slotval1)
+proc delete*(self: gen_qevent_types.QTabletEvent) =
   fcQTabletEvent_delete(self.h)
 
-func init*(T: type QNativeGestureEvent, h: ptr cQNativeGestureEvent): QNativeGestureEvent =
+func init*(T: type gen_qevent_types.QNativeGestureEvent, h: ptr cQNativeGestureEvent): gen_qevent_types.QNativeGestureEvent =
   T(h: h)
-proc create*(T: type QNativeGestureEvent, typeVal: gen_qnamespace.NativeGestureType, dev: gen_qpointingdevice.QPointingDevice, localPos: gen_qpoint.QPointF, scenePos: gen_qpoint.QPointF, globalPos: gen_qpoint.QPointF, value: float64, sequenceId: culonglong, intArgument: culonglong): QNativeGestureEvent =
+proc create*(T: type gen_qevent_types.QNativeGestureEvent, typeVal: cint, dev: gen_qpointingdevice.QPointingDevice, localPos: gen_qpoint.QPointF, scenePos: gen_qpoint.QPointF, globalPos: gen_qpoint.QPointF, value: float64, sequenceId: culonglong, intArgument: culonglong): gen_qevent_types.QNativeGestureEvent =
 
-  QNativeGestureEvent.init(fcQNativeGestureEvent_new(cint(typeVal), dev.h, localPos.h, scenePos.h, globalPos.h, value, sequenceId, intArgument))
-proc create*(T: type QNativeGestureEvent, typeVal: gen_qnamespace.NativeGestureType, dev: gen_qpointingdevice.QPointingDevice, fingerCount: cint, localPos: gen_qpoint.QPointF, scenePos: gen_qpoint.QPointF, globalPos: gen_qpoint.QPointF, value: float64, delta: gen_qpoint.QPointF): QNativeGestureEvent =
+  gen_qevent_types.QNativeGestureEvent.init(fcQNativeGestureEvent_new(cint(typeVal), dev.h, localPos.h, scenePos.h, globalPos.h, value, sequenceId, intArgument))
+proc create*(T: type gen_qevent_types.QNativeGestureEvent, typeVal: cint, dev: gen_qpointingdevice.QPointingDevice, fingerCount: cint, localPos: gen_qpoint.QPointF, scenePos: gen_qpoint.QPointF, globalPos: gen_qpoint.QPointF, value: float64, delta: gen_qpoint.QPointF): gen_qevent_types.QNativeGestureEvent =
 
-  QNativeGestureEvent.init(fcQNativeGestureEvent_new2(cint(typeVal), dev.h, fingerCount, localPos.h, scenePos.h, globalPos.h, value, delta.h))
-proc create*(T: type QNativeGestureEvent, typeVal: gen_qnamespace.NativeGestureType, dev: gen_qpointingdevice.QPointingDevice, fingerCount: cint, localPos: gen_qpoint.QPointF, scenePos: gen_qpoint.QPointF, globalPos: gen_qpoint.QPointF, value: float64, delta: gen_qpoint.QPointF, sequenceId: culonglong): QNativeGestureEvent =
+  gen_qevent_types.QNativeGestureEvent.init(fcQNativeGestureEvent_new2(cint(typeVal), dev.h, fingerCount, localPos.h, scenePos.h, globalPos.h, value, delta.h))
+proc create*(T: type gen_qevent_types.QNativeGestureEvent, typeVal: cint, dev: gen_qpointingdevice.QPointingDevice, fingerCount: cint, localPos: gen_qpoint.QPointF, scenePos: gen_qpoint.QPointF, globalPos: gen_qpoint.QPointF, value: float64, delta: gen_qpoint.QPointF, sequenceId: culonglong): gen_qevent_types.QNativeGestureEvent =
 
-  QNativeGestureEvent.init(fcQNativeGestureEvent_new3(cint(typeVal), dev.h, fingerCount, localPos.h, scenePos.h, globalPos.h, value, delta.h, sequenceId))
-proc clone*(self: QNativeGestureEvent, ): QNativeGestureEvent =
+  gen_qevent_types.QNativeGestureEvent.init(fcQNativeGestureEvent_new3(cint(typeVal), dev.h, fingerCount, localPos.h, scenePos.h, globalPos.h, value, delta.h, sequenceId))
+proc clone*(self: gen_qevent_types.QNativeGestureEvent, ): gen_qevent_types.QNativeGestureEvent =
 
-  QNativeGestureEvent(h: fcQNativeGestureEvent_clone(self.h))
+  gen_qevent_types.QNativeGestureEvent(h: fcQNativeGestureEvent_clone(self.h))
 
-proc gestureType*(self: QNativeGestureEvent, ): gen_qnamespace.NativeGestureType =
+proc gestureType*(self: gen_qevent_types.QNativeGestureEvent, ): cint =
 
-  gen_qnamespace.NativeGestureType(fcQNativeGestureEvent_gestureType(self.h))
+  cint(fcQNativeGestureEvent_gestureType(self.h))
 
-proc fingerCount*(self: QNativeGestureEvent, ): cint =
+proc fingerCount*(self: gen_qevent_types.QNativeGestureEvent, ): cint =
 
   fcQNativeGestureEvent_fingerCount(self.h)
 
-proc value*(self: QNativeGestureEvent, ): float64 =
+proc value*(self: gen_qevent_types.QNativeGestureEvent, ): float64 =
 
   fcQNativeGestureEvent_value(self.h)
 
-proc delta*(self: QNativeGestureEvent, ): gen_qpoint.QPointF =
+proc delta*(self: gen_qevent_types.QNativeGestureEvent, ): gen_qpoint.QPointF =
 
   gen_qpoint.QPointF(h: fcQNativeGestureEvent_delta(self.h))
 
-proc pos*(self: QNativeGestureEvent, ): gen_qpoint.QPoint =
+proc pos*(self: gen_qevent_types.QNativeGestureEvent, ): gen_qpoint.QPoint =
 
   gen_qpoint.QPoint(h: fcQNativeGestureEvent_pos(self.h))
 
-proc globalPos*(self: QNativeGestureEvent, ): gen_qpoint.QPoint =
+proc globalPos*(self: gen_qevent_types.QNativeGestureEvent, ): gen_qpoint.QPoint =
 
   gen_qpoint.QPoint(h: fcQNativeGestureEvent_globalPos(self.h))
 
-proc localPos*(self: QNativeGestureEvent, ): gen_qpoint.QPointF =
+proc localPos*(self: gen_qevent_types.QNativeGestureEvent, ): gen_qpoint.QPointF =
 
   gen_qpoint.QPointF(h: fcQNativeGestureEvent_localPos(self.h))
 
-proc windowPos*(self: QNativeGestureEvent, ): gen_qpoint.QPointF =
+proc windowPos*(self: gen_qevent_types.QNativeGestureEvent, ): gen_qpoint.QPointF =
 
   gen_qpoint.QPointF(h: fcQNativeGestureEvent_windowPos(self.h))
 
-proc screenPos*(self: QNativeGestureEvent, ): gen_qpoint.QPointF =
+proc screenPos*(self: gen_qevent_types.QNativeGestureEvent, ): gen_qpoint.QPointF =
 
   gen_qpoint.QPointF(h: fcQNativeGestureEvent_screenPos(self.h))
 
-proc callVirtualBase_clone(self: QNativeGestureEvent, ): QNativeGestureEvent =
+proc QNativeGestureEventclone*(self: gen_qevent_types.QNativeGestureEvent, ): gen_qevent_types.QNativeGestureEvent =
 
+  gen_qevent_types.QNativeGestureEvent(h: fQNativeGestureEvent_virtualbase_clone(self.h))
 
-  QNativeGestureEvent(h: fQNativeGestureEvent_virtualbase_clone(self.h))
-
-type QNativeGestureEventcloneBase* = proc(): QNativeGestureEvent
-proc onclone*(self: QNativeGestureEvent, slot: proc(super: QNativeGestureEventcloneBase): QNativeGestureEvent) =
+type QNativeGestureEventcloneProc* = proc(): gen_qevent_types.QNativeGestureEvent
+proc onclone*(self: gen_qevent_types.QNativeGestureEvent, slot: QNativeGestureEventcloneProc) =
   # TODO check subclass
-  type Cb = proc(super: QNativeGestureEventcloneBase): QNativeGestureEvent
-  var tmp = new Cb
+  var tmp = new QNativeGestureEventcloneProc
   tmp[] = slot
   GC_ref(tmp)
   fcQNativeGestureEvent_override_virtual_clone(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QNativeGestureEvent_clone(self: ptr cQNativeGestureEvent, slot: int): pointer {.exportc: "miqt_exec_callback_QNativeGestureEvent_clone ".} =
-  type Cb = proc(super: QNativeGestureEventcloneBase): QNativeGestureEvent
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_clone(QNativeGestureEvent(h: self), )
+  var nimfunc = cast[ptr QNativeGestureEventcloneProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_isBeginEvent(self: QNativeGestureEvent, ): bool =
-
+proc QNativeGestureEventisBeginEvent*(self: gen_qevent_types.QNativeGestureEvent, ): bool =
 
   fQNativeGestureEvent_virtualbase_isBeginEvent(self.h)
 
-type QNativeGestureEventisBeginEventBase* = proc(): bool
-proc onisBeginEvent*(self: QNativeGestureEvent, slot: proc(super: QNativeGestureEventisBeginEventBase): bool) =
+type QNativeGestureEventisBeginEventProc* = proc(): bool
+proc onisBeginEvent*(self: gen_qevent_types.QNativeGestureEvent, slot: QNativeGestureEventisBeginEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QNativeGestureEventisBeginEventBase): bool
-  var tmp = new Cb
+  var tmp = new QNativeGestureEventisBeginEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQNativeGestureEvent_override_virtual_isBeginEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QNativeGestureEvent_isBeginEvent(self: ptr cQNativeGestureEvent, slot: int): bool {.exportc: "miqt_exec_callback_QNativeGestureEvent_isBeginEvent ".} =
-  type Cb = proc(super: QNativeGestureEventisBeginEventBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_isBeginEvent(QNativeGestureEvent(h: self), )
+  var nimfunc = cast[ptr QNativeGestureEventisBeginEventProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_isUpdateEvent(self: QNativeGestureEvent, ): bool =
-
+proc QNativeGestureEventisUpdateEvent*(self: gen_qevent_types.QNativeGestureEvent, ): bool =
 
   fQNativeGestureEvent_virtualbase_isUpdateEvent(self.h)
 
-type QNativeGestureEventisUpdateEventBase* = proc(): bool
-proc onisUpdateEvent*(self: QNativeGestureEvent, slot: proc(super: QNativeGestureEventisUpdateEventBase): bool) =
+type QNativeGestureEventisUpdateEventProc* = proc(): bool
+proc onisUpdateEvent*(self: gen_qevent_types.QNativeGestureEvent, slot: QNativeGestureEventisUpdateEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QNativeGestureEventisUpdateEventBase): bool
-  var tmp = new Cb
+  var tmp = new QNativeGestureEventisUpdateEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQNativeGestureEvent_override_virtual_isUpdateEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QNativeGestureEvent_isUpdateEvent(self: ptr cQNativeGestureEvent, slot: int): bool {.exportc: "miqt_exec_callback_QNativeGestureEvent_isUpdateEvent ".} =
-  type Cb = proc(super: QNativeGestureEventisUpdateEventBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_isUpdateEvent(QNativeGestureEvent(h: self), )
+  var nimfunc = cast[ptr QNativeGestureEventisUpdateEventProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_isEndEvent(self: QNativeGestureEvent, ): bool =
-
+proc QNativeGestureEventisEndEvent*(self: gen_qevent_types.QNativeGestureEvent, ): bool =
 
   fQNativeGestureEvent_virtualbase_isEndEvent(self.h)
 
-type QNativeGestureEventisEndEventBase* = proc(): bool
-proc onisEndEvent*(self: QNativeGestureEvent, slot: proc(super: QNativeGestureEventisEndEventBase): bool) =
+type QNativeGestureEventisEndEventProc* = proc(): bool
+proc onisEndEvent*(self: gen_qevent_types.QNativeGestureEvent, slot: QNativeGestureEventisEndEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QNativeGestureEventisEndEventBase): bool
-  var tmp = new Cb
+  var tmp = new QNativeGestureEventisEndEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQNativeGestureEvent_override_virtual_isEndEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QNativeGestureEvent_isEndEvent(self: ptr cQNativeGestureEvent, slot: int): bool {.exportc: "miqt_exec_callback_QNativeGestureEvent_isEndEvent ".} =
-  type Cb = proc(super: QNativeGestureEventisEndEventBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_isEndEvent(QNativeGestureEvent(h: self), )
+  var nimfunc = cast[ptr QNativeGestureEventisEndEventProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setTimestamp(self: QNativeGestureEvent, timestamp: culonglong): void =
-
+proc QNativeGestureEventsetTimestamp*(self: gen_qevent_types.QNativeGestureEvent, timestamp: culonglong): void =
 
   fQNativeGestureEvent_virtualbase_setTimestamp(self.h, timestamp)
 
-type QNativeGestureEventsetTimestampBase* = proc(timestamp: culonglong): void
-proc onsetTimestamp*(self: QNativeGestureEvent, slot: proc(super: QNativeGestureEventsetTimestampBase, timestamp: culonglong): void) =
+type QNativeGestureEventsetTimestampProc* = proc(timestamp: culonglong): void
+proc onsetTimestamp*(self: gen_qevent_types.QNativeGestureEvent, slot: QNativeGestureEventsetTimestampProc) =
   # TODO check subclass
-  type Cb = proc(super: QNativeGestureEventsetTimestampBase, timestamp: culonglong): void
-  var tmp = new Cb
+  var tmp = new QNativeGestureEventsetTimestampProc
   tmp[] = slot
   GC_ref(tmp)
   fcQNativeGestureEvent_override_virtual_setTimestamp(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QNativeGestureEvent_setTimestamp(self: ptr cQNativeGestureEvent, slot: int, timestamp: culonglong): void {.exportc: "miqt_exec_callback_QNativeGestureEvent_setTimestamp ".} =
-  type Cb = proc(super: QNativeGestureEventsetTimestampBase, timestamp: culonglong): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(timestamp: culonglong): auto =
-    callVirtualBase_setTimestamp(QNativeGestureEvent(h: self), timestamp)
+  var nimfunc = cast[ptr QNativeGestureEventsetTimestampProc](cast[pointer](slot))
   let slotval1 = timestamp
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_setAccepted(self: QNativeGestureEvent, accepted: bool): void =
-
+  nimfunc[](slotval1)
+proc QNativeGestureEventsetAccepted*(self: gen_qevent_types.QNativeGestureEvent, accepted: bool): void =
 
   fQNativeGestureEvent_virtualbase_setAccepted(self.h, accepted)
 
-type QNativeGestureEventsetAcceptedBase* = proc(accepted: bool): void
-proc onsetAccepted*(self: QNativeGestureEvent, slot: proc(super: QNativeGestureEventsetAcceptedBase, accepted: bool): void) =
+type QNativeGestureEventsetAcceptedProc* = proc(accepted: bool): void
+proc onsetAccepted*(self: gen_qevent_types.QNativeGestureEvent, slot: QNativeGestureEventsetAcceptedProc) =
   # TODO check subclass
-  type Cb = proc(super: QNativeGestureEventsetAcceptedBase, accepted: bool): void
-  var tmp = new Cb
+  var tmp = new QNativeGestureEventsetAcceptedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQNativeGestureEvent_override_virtual_setAccepted(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QNativeGestureEvent_setAccepted(self: ptr cQNativeGestureEvent, slot: int, accepted: bool): void {.exportc: "miqt_exec_callback_QNativeGestureEvent_setAccepted ".} =
-  type Cb = proc(super: QNativeGestureEventsetAcceptedBase, accepted: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(accepted: bool): auto =
-    callVirtualBase_setAccepted(QNativeGestureEvent(h: self), accepted)
+  var nimfunc = cast[ptr QNativeGestureEventsetAcceptedProc](cast[pointer](slot))
   let slotval1 = accepted
 
 
-  nimfunc[](superCall, slotval1)
-proc delete*(self: QNativeGestureEvent) =
+  nimfunc[](slotval1)
+proc delete*(self: gen_qevent_types.QNativeGestureEvent) =
   fcQNativeGestureEvent_delete(self.h)
 
-func init*(T: type QKeyEvent, h: ptr cQKeyEvent): QKeyEvent =
+func init*(T: type gen_qevent_types.QKeyEvent, h: ptr cQKeyEvent): gen_qevent_types.QKeyEvent =
   T(h: h)
-proc create*(T: type QKeyEvent, typeVal: gen_qcoreevent.QEventType, key: cint, modifiers: gen_qnamespace.KeyboardModifier): QKeyEvent =
+proc create*(T: type gen_qevent_types.QKeyEvent, typeVal: cint, key: cint, modifiers: cint): gen_qevent_types.QKeyEvent =
 
-  QKeyEvent.init(fcQKeyEvent_new(cint(typeVal), key, cint(modifiers)))
-proc create*(T: type QKeyEvent, typeVal: gen_qcoreevent.QEventType, key: cint, modifiers: gen_qnamespace.KeyboardModifier, nativeScanCode: cuint, nativeVirtualKey: cuint, nativeModifiers: cuint): QKeyEvent =
+  gen_qevent_types.QKeyEvent.init(fcQKeyEvent_new(cint(typeVal), key, cint(modifiers)))
+proc create*(T: type gen_qevent_types.QKeyEvent, typeVal: cint, key: cint, modifiers: cint, nativeScanCode: cuint, nativeVirtualKey: cuint, nativeModifiers: cuint): gen_qevent_types.QKeyEvent =
 
-  QKeyEvent.init(fcQKeyEvent_new2(cint(typeVal), key, cint(modifiers), nativeScanCode, nativeVirtualKey, nativeModifiers))
-proc create*(T: type QKeyEvent, typeVal: gen_qcoreevent.QEventType, key: cint, modifiers: gen_qnamespace.KeyboardModifier, text: string): QKeyEvent =
+  gen_qevent_types.QKeyEvent.init(fcQKeyEvent_new2(cint(typeVal), key, cint(modifiers), nativeScanCode, nativeVirtualKey, nativeModifiers))
+proc create*(T: type gen_qevent_types.QKeyEvent, typeVal: cint, key: cint, modifiers: cint, text: string): gen_qevent_types.QKeyEvent =
 
-  QKeyEvent.init(fcQKeyEvent_new3(cint(typeVal), key, cint(modifiers), struct_miqt_string(data: text, len: csize_t(len(text)))))
-proc create*(T: type QKeyEvent, typeVal: gen_qcoreevent.QEventType, key: cint, modifiers: gen_qnamespace.KeyboardModifier, text: string, autorep: bool): QKeyEvent =
+  gen_qevent_types.QKeyEvent.init(fcQKeyEvent_new3(cint(typeVal), key, cint(modifiers), struct_miqt_string(data: text, len: csize_t(len(text)))))
+proc create*(T: type gen_qevent_types.QKeyEvent, typeVal: cint, key: cint, modifiers: cint, text: string, autorep: bool): gen_qevent_types.QKeyEvent =
 
-  QKeyEvent.init(fcQKeyEvent_new4(cint(typeVal), key, cint(modifiers), struct_miqt_string(data: text, len: csize_t(len(text))), autorep))
-proc create*(T: type QKeyEvent, typeVal: gen_qcoreevent.QEventType, key: cint, modifiers: gen_qnamespace.KeyboardModifier, text: string, autorep: bool, count: cushort): QKeyEvent =
+  gen_qevent_types.QKeyEvent.init(fcQKeyEvent_new4(cint(typeVal), key, cint(modifiers), struct_miqt_string(data: text, len: csize_t(len(text))), autorep))
+proc create*(T: type gen_qevent_types.QKeyEvent, typeVal: cint, key: cint, modifiers: cint, text: string, autorep: bool, count: cushort): gen_qevent_types.QKeyEvent =
 
-  QKeyEvent.init(fcQKeyEvent_new5(cint(typeVal), key, cint(modifiers), struct_miqt_string(data: text, len: csize_t(len(text))), autorep, count))
-proc create*(T: type QKeyEvent, typeVal: gen_qcoreevent.QEventType, key: cint, modifiers: gen_qnamespace.KeyboardModifier, nativeScanCode: cuint, nativeVirtualKey: cuint, nativeModifiers: cuint, text: string): QKeyEvent =
+  gen_qevent_types.QKeyEvent.init(fcQKeyEvent_new5(cint(typeVal), key, cint(modifiers), struct_miqt_string(data: text, len: csize_t(len(text))), autorep, count))
+proc create*(T: type gen_qevent_types.QKeyEvent, typeVal: cint, key: cint, modifiers: cint, nativeScanCode: cuint, nativeVirtualKey: cuint, nativeModifiers: cuint, text: string): gen_qevent_types.QKeyEvent =
 
-  QKeyEvent.init(fcQKeyEvent_new6(cint(typeVal), key, cint(modifiers), nativeScanCode, nativeVirtualKey, nativeModifiers, struct_miqt_string(data: text, len: csize_t(len(text)))))
-proc create*(T: type QKeyEvent, typeVal: gen_qcoreevent.QEventType, key: cint, modifiers: gen_qnamespace.KeyboardModifier, nativeScanCode: cuint, nativeVirtualKey: cuint, nativeModifiers: cuint, text: string, autorep: bool): QKeyEvent =
+  gen_qevent_types.QKeyEvent.init(fcQKeyEvent_new6(cint(typeVal), key, cint(modifiers), nativeScanCode, nativeVirtualKey, nativeModifiers, struct_miqt_string(data: text, len: csize_t(len(text)))))
+proc create*(T: type gen_qevent_types.QKeyEvent, typeVal: cint, key: cint, modifiers: cint, nativeScanCode: cuint, nativeVirtualKey: cuint, nativeModifiers: cuint, text: string, autorep: bool): gen_qevent_types.QKeyEvent =
 
-  QKeyEvent.init(fcQKeyEvent_new7(cint(typeVal), key, cint(modifiers), nativeScanCode, nativeVirtualKey, nativeModifiers, struct_miqt_string(data: text, len: csize_t(len(text))), autorep))
-proc create*(T: type QKeyEvent, typeVal: gen_qcoreevent.QEventType, key: cint, modifiers: gen_qnamespace.KeyboardModifier, nativeScanCode: cuint, nativeVirtualKey: cuint, nativeModifiers: cuint, text: string, autorep: bool, count: cushort): QKeyEvent =
+  gen_qevent_types.QKeyEvent.init(fcQKeyEvent_new7(cint(typeVal), key, cint(modifiers), nativeScanCode, nativeVirtualKey, nativeModifiers, struct_miqt_string(data: text, len: csize_t(len(text))), autorep))
+proc create*(T: type gen_qevent_types.QKeyEvent, typeVal: cint, key: cint, modifiers: cint, nativeScanCode: cuint, nativeVirtualKey: cuint, nativeModifiers: cuint, text: string, autorep: bool, count: cushort): gen_qevent_types.QKeyEvent =
 
-  QKeyEvent.init(fcQKeyEvent_new8(cint(typeVal), key, cint(modifiers), nativeScanCode, nativeVirtualKey, nativeModifiers, struct_miqt_string(data: text, len: csize_t(len(text))), autorep, count))
-proc create*(T: type QKeyEvent, typeVal: gen_qcoreevent.QEventType, key: cint, modifiers: gen_qnamespace.KeyboardModifier, nativeScanCode: cuint, nativeVirtualKey: cuint, nativeModifiers: cuint, text: string, autorep: bool, count: cushort, device: gen_qinputdevice.QInputDevice): QKeyEvent =
+  gen_qevent_types.QKeyEvent.init(fcQKeyEvent_new8(cint(typeVal), key, cint(modifiers), nativeScanCode, nativeVirtualKey, nativeModifiers, struct_miqt_string(data: text, len: csize_t(len(text))), autorep, count))
+proc create*(T: type gen_qevent_types.QKeyEvent, typeVal: cint, key: cint, modifiers: cint, nativeScanCode: cuint, nativeVirtualKey: cuint, nativeModifiers: cuint, text: string, autorep: bool, count: cushort, device: gen_qinputdevice.QInputDevice): gen_qevent_types.QKeyEvent =
 
-  QKeyEvent.init(fcQKeyEvent_new9(cint(typeVal), key, cint(modifiers), nativeScanCode, nativeVirtualKey, nativeModifiers, struct_miqt_string(data: text, len: csize_t(len(text))), autorep, count, device.h))
-proc clone*(self: QKeyEvent, ): QKeyEvent =
+  gen_qevent_types.QKeyEvent.init(fcQKeyEvent_new9(cint(typeVal), key, cint(modifiers), nativeScanCode, nativeVirtualKey, nativeModifiers, struct_miqt_string(data: text, len: csize_t(len(text))), autorep, count, device.h))
+proc clone*(self: gen_qevent_types.QKeyEvent, ): gen_qevent_types.QKeyEvent =
 
-  QKeyEvent(h: fcQKeyEvent_clone(self.h))
+  gen_qevent_types.QKeyEvent(h: fcQKeyEvent_clone(self.h))
 
-proc key*(self: QKeyEvent, ): cint =
+proc key*(self: gen_qevent_types.QKeyEvent, ): cint =
 
   fcQKeyEvent_key(self.h)
 
-proc matches*(self: QKeyEvent, key: gen_qkeysequence.QKeySequenceStandardKey): bool =
+proc matches*(self: gen_qevent_types.QKeyEvent, key: cint): bool =
 
   fcQKeyEvent_matches(self.h, cint(key))
 
-proc modifiers*(self: QKeyEvent, ): gen_qnamespace.KeyboardModifier =
+proc modifiers*(self: gen_qevent_types.QKeyEvent, ): cint =
 
-  gen_qnamespace.KeyboardModifier(fcQKeyEvent_modifiers(self.h))
+  cint(fcQKeyEvent_modifiers(self.h))
 
-proc keyCombination*(self: QKeyEvent, ): gen_qnamespace.QKeyCombination =
+proc keyCombination*(self: gen_qevent_types.QKeyEvent, ): gen_qnamespace.QKeyCombination =
 
   gen_qnamespace.QKeyCombination(h: fcQKeyEvent_keyCombination(self.h))
 
-proc text*(self: QKeyEvent, ): string =
+proc text*(self: gen_qevent_types.QKeyEvent, ): string =
 
   let v_ms = fcQKeyEvent_text(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc isAutoRepeat*(self: QKeyEvent, ): bool =
+proc isAutoRepeat*(self: gen_qevent_types.QKeyEvent, ): bool =
 
   fcQKeyEvent_isAutoRepeat(self.h)
 
-proc count*(self: QKeyEvent, ): cint =
+proc count*(self: gen_qevent_types.QKeyEvent, ): cint =
 
   fcQKeyEvent_count(self.h)
 
-proc nativeScanCode*(self: QKeyEvent, ): cuint =
+proc nativeScanCode*(self: gen_qevent_types.QKeyEvent, ): cuint =
 
   fcQKeyEvent_nativeScanCode(self.h)
 
-proc nativeVirtualKey*(self: QKeyEvent, ): cuint =
+proc nativeVirtualKey*(self: gen_qevent_types.QKeyEvent, ): cuint =
 
   fcQKeyEvent_nativeVirtualKey(self.h)
 
-proc nativeModifiers*(self: QKeyEvent, ): cuint =
+proc nativeModifiers*(self: gen_qevent_types.QKeyEvent, ): cuint =
 
   fcQKeyEvent_nativeModifiers(self.h)
 
-proc callVirtualBase_clone(self: QKeyEvent, ): QKeyEvent =
+proc QKeyEventclone*(self: gen_qevent_types.QKeyEvent, ): gen_qevent_types.QKeyEvent =
 
+  gen_qevent_types.QKeyEvent(h: fQKeyEvent_virtualbase_clone(self.h))
 
-  QKeyEvent(h: fQKeyEvent_virtualbase_clone(self.h))
-
-type QKeyEventcloneBase* = proc(): QKeyEvent
-proc onclone*(self: QKeyEvent, slot: proc(super: QKeyEventcloneBase): QKeyEvent) =
+type QKeyEventcloneProc* = proc(): gen_qevent_types.QKeyEvent
+proc onclone*(self: gen_qevent_types.QKeyEvent, slot: QKeyEventcloneProc) =
   # TODO check subclass
-  type Cb = proc(super: QKeyEventcloneBase): QKeyEvent
-  var tmp = new Cb
+  var tmp = new QKeyEventcloneProc
   tmp[] = slot
   GC_ref(tmp)
   fcQKeyEvent_override_virtual_clone(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QKeyEvent_clone(self: ptr cQKeyEvent, slot: int): pointer {.exportc: "miqt_exec_callback_QKeyEvent_clone ".} =
-  type Cb = proc(super: QKeyEventcloneBase): QKeyEvent
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_clone(QKeyEvent(h: self), )
+  var nimfunc = cast[ptr QKeyEventcloneProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_setTimestamp(self: QKeyEvent, timestamp: culonglong): void =
-
+proc QKeyEventsetTimestamp*(self: gen_qevent_types.QKeyEvent, timestamp: culonglong): void =
 
   fQKeyEvent_virtualbase_setTimestamp(self.h, timestamp)
 
-type QKeyEventsetTimestampBase* = proc(timestamp: culonglong): void
-proc onsetTimestamp*(self: QKeyEvent, slot: proc(super: QKeyEventsetTimestampBase, timestamp: culonglong): void) =
+type QKeyEventsetTimestampProc* = proc(timestamp: culonglong): void
+proc onsetTimestamp*(self: gen_qevent_types.QKeyEvent, slot: QKeyEventsetTimestampProc) =
   # TODO check subclass
-  type Cb = proc(super: QKeyEventsetTimestampBase, timestamp: culonglong): void
-  var tmp = new Cb
+  var tmp = new QKeyEventsetTimestampProc
   tmp[] = slot
   GC_ref(tmp)
   fcQKeyEvent_override_virtual_setTimestamp(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QKeyEvent_setTimestamp(self: ptr cQKeyEvent, slot: int, timestamp: culonglong): void {.exportc: "miqt_exec_callback_QKeyEvent_setTimestamp ".} =
-  type Cb = proc(super: QKeyEventsetTimestampBase, timestamp: culonglong): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(timestamp: culonglong): auto =
-    callVirtualBase_setTimestamp(QKeyEvent(h: self), timestamp)
+  var nimfunc = cast[ptr QKeyEventsetTimestampProc](cast[pointer](slot))
   let slotval1 = timestamp
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_setAccepted(self: QKeyEvent, accepted: bool): void =
-
+  nimfunc[](slotval1)
+proc QKeyEventsetAccepted*(self: gen_qevent_types.QKeyEvent, accepted: bool): void =
 
   fQKeyEvent_virtualbase_setAccepted(self.h, accepted)
 
-type QKeyEventsetAcceptedBase* = proc(accepted: bool): void
-proc onsetAccepted*(self: QKeyEvent, slot: proc(super: QKeyEventsetAcceptedBase, accepted: bool): void) =
+type QKeyEventsetAcceptedProc* = proc(accepted: bool): void
+proc onsetAccepted*(self: gen_qevent_types.QKeyEvent, slot: QKeyEventsetAcceptedProc) =
   # TODO check subclass
-  type Cb = proc(super: QKeyEventsetAcceptedBase, accepted: bool): void
-  var tmp = new Cb
+  var tmp = new QKeyEventsetAcceptedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQKeyEvent_override_virtual_setAccepted(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QKeyEvent_setAccepted(self: ptr cQKeyEvent, slot: int, accepted: bool): void {.exportc: "miqt_exec_callback_QKeyEvent_setAccepted ".} =
-  type Cb = proc(super: QKeyEventsetAcceptedBase, accepted: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(accepted: bool): auto =
-    callVirtualBase_setAccepted(QKeyEvent(h: self), accepted)
+  var nimfunc = cast[ptr QKeyEventsetAcceptedProc](cast[pointer](slot))
   let slotval1 = accepted
 
 
-  nimfunc[](superCall, slotval1)
-proc delete*(self: QKeyEvent) =
+  nimfunc[](slotval1)
+proc delete*(self: gen_qevent_types.QKeyEvent) =
   fcQKeyEvent_delete(self.h)
 
-func init*(T: type QFocusEvent, h: ptr cQFocusEvent): QFocusEvent =
+func init*(T: type gen_qevent_types.QFocusEvent, h: ptr cQFocusEvent): gen_qevent_types.QFocusEvent =
   T(h: h)
-proc create*(T: type QFocusEvent, typeVal: gen_qcoreevent.QEventType): QFocusEvent =
+proc create*(T: type gen_qevent_types.QFocusEvent, typeVal: cint): gen_qevent_types.QFocusEvent =
 
-  QFocusEvent.init(fcQFocusEvent_new(cint(typeVal)))
-proc create*(T: type QFocusEvent, typeVal: gen_qcoreevent.QEventType, reason: gen_qnamespace.FocusReason): QFocusEvent =
+  gen_qevent_types.QFocusEvent.init(fcQFocusEvent_new(cint(typeVal)))
+proc create*(T: type gen_qevent_types.QFocusEvent, typeVal: cint, reason: cint): gen_qevent_types.QFocusEvent =
 
-  QFocusEvent.init(fcQFocusEvent_new2(cint(typeVal), cint(reason)))
-proc clone*(self: QFocusEvent, ): QFocusEvent =
+  gen_qevent_types.QFocusEvent.init(fcQFocusEvent_new2(cint(typeVal), cint(reason)))
+proc clone*(self: gen_qevent_types.QFocusEvent, ): gen_qevent_types.QFocusEvent =
 
-  QFocusEvent(h: fcQFocusEvent_clone(self.h))
+  gen_qevent_types.QFocusEvent(h: fcQFocusEvent_clone(self.h))
 
-proc gotFocus*(self: QFocusEvent, ): bool =
+proc gotFocus*(self: gen_qevent_types.QFocusEvent, ): bool =
 
   fcQFocusEvent_gotFocus(self.h)
 
-proc lostFocus*(self: QFocusEvent, ): bool =
+proc lostFocus*(self: gen_qevent_types.QFocusEvent, ): bool =
 
   fcQFocusEvent_lostFocus(self.h)
 
-proc reason*(self: QFocusEvent, ): gen_qnamespace.FocusReason =
+proc reason*(self: gen_qevent_types.QFocusEvent, ): cint =
 
-  gen_qnamespace.FocusReason(fcQFocusEvent_reason(self.h))
+  cint(fcQFocusEvent_reason(self.h))
 
-proc callVirtualBase_clone(self: QFocusEvent, ): QFocusEvent =
+proc QFocusEventclone*(self: gen_qevent_types.QFocusEvent, ): gen_qevent_types.QFocusEvent =
 
+  gen_qevent_types.QFocusEvent(h: fQFocusEvent_virtualbase_clone(self.h))
 
-  QFocusEvent(h: fQFocusEvent_virtualbase_clone(self.h))
-
-type QFocusEventcloneBase* = proc(): QFocusEvent
-proc onclone*(self: QFocusEvent, slot: proc(super: QFocusEventcloneBase): QFocusEvent) =
+type QFocusEventcloneProc* = proc(): gen_qevent_types.QFocusEvent
+proc onclone*(self: gen_qevent_types.QFocusEvent, slot: QFocusEventcloneProc) =
   # TODO check subclass
-  type Cb = proc(super: QFocusEventcloneBase): QFocusEvent
-  var tmp = new Cb
+  var tmp = new QFocusEventcloneProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFocusEvent_override_virtual_clone(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFocusEvent_clone(self: ptr cQFocusEvent, slot: int): pointer {.exportc: "miqt_exec_callback_QFocusEvent_clone ".} =
-  type Cb = proc(super: QFocusEventcloneBase): QFocusEvent
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_clone(QFocusEvent(h: self), )
+  var nimfunc = cast[ptr QFocusEventcloneProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_setAccepted(self: QFocusEvent, accepted: bool): void =
-
+proc QFocusEventsetAccepted*(self: gen_qevent_types.QFocusEvent, accepted: bool): void =
 
   fQFocusEvent_virtualbase_setAccepted(self.h, accepted)
 
-type QFocusEventsetAcceptedBase* = proc(accepted: bool): void
-proc onsetAccepted*(self: QFocusEvent, slot: proc(super: QFocusEventsetAcceptedBase, accepted: bool): void) =
+type QFocusEventsetAcceptedProc* = proc(accepted: bool): void
+proc onsetAccepted*(self: gen_qevent_types.QFocusEvent, slot: QFocusEventsetAcceptedProc) =
   # TODO check subclass
-  type Cb = proc(super: QFocusEventsetAcceptedBase, accepted: bool): void
-  var tmp = new Cb
+  var tmp = new QFocusEventsetAcceptedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFocusEvent_override_virtual_setAccepted(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFocusEvent_setAccepted(self: ptr cQFocusEvent, slot: int, accepted: bool): void {.exportc: "miqt_exec_callback_QFocusEvent_setAccepted ".} =
-  type Cb = proc(super: QFocusEventsetAcceptedBase, accepted: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(accepted: bool): auto =
-    callVirtualBase_setAccepted(QFocusEvent(h: self), accepted)
+  var nimfunc = cast[ptr QFocusEventsetAcceptedProc](cast[pointer](slot))
   let slotval1 = accepted
 
 
-  nimfunc[](superCall, slotval1)
-proc delete*(self: QFocusEvent) =
+  nimfunc[](slotval1)
+proc delete*(self: gen_qevent_types.QFocusEvent) =
   fcQFocusEvent_delete(self.h)
 
-func init*(T: type QPaintEvent, h: ptr cQPaintEvent): QPaintEvent =
+func init*(T: type gen_qevent_types.QPaintEvent, h: ptr cQPaintEvent): gen_qevent_types.QPaintEvent =
   T(h: h)
-proc create*(T: type QPaintEvent, paintRegion: gen_qregion.QRegion): QPaintEvent =
+proc create*(T: type gen_qevent_types.QPaintEvent, paintRegion: gen_qregion.QRegion): gen_qevent_types.QPaintEvent =
 
-  QPaintEvent.init(fcQPaintEvent_new(paintRegion.h))
-proc create2*(T: type QPaintEvent, paintRect: gen_qrect.QRect): QPaintEvent =
+  gen_qevent_types.QPaintEvent.init(fcQPaintEvent_new(paintRegion.h))
+proc create2*(T: type gen_qevent_types.QPaintEvent, paintRect: gen_qrect.QRect): gen_qevent_types.QPaintEvent =
 
-  QPaintEvent.init(fcQPaintEvent_new2(paintRect.h))
-proc clone*(self: QPaintEvent, ): QPaintEvent =
+  gen_qevent_types.QPaintEvent.init(fcQPaintEvent_new2(paintRect.h))
+proc clone*(self: gen_qevent_types.QPaintEvent, ): gen_qevent_types.QPaintEvent =
 
-  QPaintEvent(h: fcQPaintEvent_clone(self.h))
+  gen_qevent_types.QPaintEvent(h: fcQPaintEvent_clone(self.h))
 
-proc rect*(self: QPaintEvent, ): gen_qrect.QRect =
+proc rect*(self: gen_qevent_types.QPaintEvent, ): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fcQPaintEvent_rect(self.h))
 
-proc region*(self: QPaintEvent, ): gen_qregion.QRegion =
+proc region*(self: gen_qevent_types.QPaintEvent, ): gen_qregion.QRegion =
 
   gen_qregion.QRegion(h: fcQPaintEvent_region(self.h))
 
-proc callVirtualBase_clone(self: QPaintEvent, ): QPaintEvent =
+proc QPaintEventclone*(self: gen_qevent_types.QPaintEvent, ): gen_qevent_types.QPaintEvent =
 
+  gen_qevent_types.QPaintEvent(h: fQPaintEvent_virtualbase_clone(self.h))
 
-  QPaintEvent(h: fQPaintEvent_virtualbase_clone(self.h))
-
-type QPaintEventcloneBase* = proc(): QPaintEvent
-proc onclone*(self: QPaintEvent, slot: proc(super: QPaintEventcloneBase): QPaintEvent) =
+type QPaintEventcloneProc* = proc(): gen_qevent_types.QPaintEvent
+proc onclone*(self: gen_qevent_types.QPaintEvent, slot: QPaintEventcloneProc) =
   # TODO check subclass
-  type Cb = proc(super: QPaintEventcloneBase): QPaintEvent
-  var tmp = new Cb
+  var tmp = new QPaintEventcloneProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPaintEvent_override_virtual_clone(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPaintEvent_clone(self: ptr cQPaintEvent, slot: int): pointer {.exportc: "miqt_exec_callback_QPaintEvent_clone ".} =
-  type Cb = proc(super: QPaintEventcloneBase): QPaintEvent
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_clone(QPaintEvent(h: self), )
+  var nimfunc = cast[ptr QPaintEventcloneProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_setAccepted(self: QPaintEvent, accepted: bool): void =
-
+proc QPaintEventsetAccepted*(self: gen_qevent_types.QPaintEvent, accepted: bool): void =
 
   fQPaintEvent_virtualbase_setAccepted(self.h, accepted)
 
-type QPaintEventsetAcceptedBase* = proc(accepted: bool): void
-proc onsetAccepted*(self: QPaintEvent, slot: proc(super: QPaintEventsetAcceptedBase, accepted: bool): void) =
+type QPaintEventsetAcceptedProc* = proc(accepted: bool): void
+proc onsetAccepted*(self: gen_qevent_types.QPaintEvent, slot: QPaintEventsetAcceptedProc) =
   # TODO check subclass
-  type Cb = proc(super: QPaintEventsetAcceptedBase, accepted: bool): void
-  var tmp = new Cb
+  var tmp = new QPaintEventsetAcceptedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPaintEvent_override_virtual_setAccepted(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPaintEvent_setAccepted(self: ptr cQPaintEvent, slot: int, accepted: bool): void {.exportc: "miqt_exec_callback_QPaintEvent_setAccepted ".} =
-  type Cb = proc(super: QPaintEventsetAcceptedBase, accepted: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(accepted: bool): auto =
-    callVirtualBase_setAccepted(QPaintEvent(h: self), accepted)
+  var nimfunc = cast[ptr QPaintEventsetAcceptedProc](cast[pointer](slot))
   let slotval1 = accepted
 
 
-  nimfunc[](superCall, slotval1)
-proc delete*(self: QPaintEvent) =
+  nimfunc[](slotval1)
+proc delete*(self: gen_qevent_types.QPaintEvent) =
   fcQPaintEvent_delete(self.h)
 
-func init*(T: type QMoveEvent, h: ptr cQMoveEvent): QMoveEvent =
+func init*(T: type gen_qevent_types.QMoveEvent, h: ptr cQMoveEvent): gen_qevent_types.QMoveEvent =
   T(h: h)
-proc create*(T: type QMoveEvent, pos: gen_qpoint.QPoint, oldPos: gen_qpoint.QPoint): QMoveEvent =
+proc create*(T: type gen_qevent_types.QMoveEvent, pos: gen_qpoint.QPoint, oldPos: gen_qpoint.QPoint): gen_qevent_types.QMoveEvent =
 
-  QMoveEvent.init(fcQMoveEvent_new(pos.h, oldPos.h))
-proc clone*(self: QMoveEvent, ): QMoveEvent =
+  gen_qevent_types.QMoveEvent.init(fcQMoveEvent_new(pos.h, oldPos.h))
+proc clone*(self: gen_qevent_types.QMoveEvent, ): gen_qevent_types.QMoveEvent =
 
-  QMoveEvent(h: fcQMoveEvent_clone(self.h))
+  gen_qevent_types.QMoveEvent(h: fcQMoveEvent_clone(self.h))
 
-proc pos*(self: QMoveEvent, ): gen_qpoint.QPoint =
+proc pos*(self: gen_qevent_types.QMoveEvent, ): gen_qpoint.QPoint =
 
   gen_qpoint.QPoint(h: fcQMoveEvent_pos(self.h))
 
-proc oldPos*(self: QMoveEvent, ): gen_qpoint.QPoint =
+proc oldPos*(self: gen_qevent_types.QMoveEvent, ): gen_qpoint.QPoint =
 
   gen_qpoint.QPoint(h: fcQMoveEvent_oldPos(self.h))
 
-proc callVirtualBase_clone(self: QMoveEvent, ): QMoveEvent =
+proc QMoveEventclone*(self: gen_qevent_types.QMoveEvent, ): gen_qevent_types.QMoveEvent =
 
+  gen_qevent_types.QMoveEvent(h: fQMoveEvent_virtualbase_clone(self.h))
 
-  QMoveEvent(h: fQMoveEvent_virtualbase_clone(self.h))
-
-type QMoveEventcloneBase* = proc(): QMoveEvent
-proc onclone*(self: QMoveEvent, slot: proc(super: QMoveEventcloneBase): QMoveEvent) =
+type QMoveEventcloneProc* = proc(): gen_qevent_types.QMoveEvent
+proc onclone*(self: gen_qevent_types.QMoveEvent, slot: QMoveEventcloneProc) =
   # TODO check subclass
-  type Cb = proc(super: QMoveEventcloneBase): QMoveEvent
-  var tmp = new Cb
+  var tmp = new QMoveEventcloneProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMoveEvent_override_virtual_clone(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMoveEvent_clone(self: ptr cQMoveEvent, slot: int): pointer {.exportc: "miqt_exec_callback_QMoveEvent_clone ".} =
-  type Cb = proc(super: QMoveEventcloneBase): QMoveEvent
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_clone(QMoveEvent(h: self), )
+  var nimfunc = cast[ptr QMoveEventcloneProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_setAccepted(self: QMoveEvent, accepted: bool): void =
-
+proc QMoveEventsetAccepted*(self: gen_qevent_types.QMoveEvent, accepted: bool): void =
 
   fQMoveEvent_virtualbase_setAccepted(self.h, accepted)
 
-type QMoveEventsetAcceptedBase* = proc(accepted: bool): void
-proc onsetAccepted*(self: QMoveEvent, slot: proc(super: QMoveEventsetAcceptedBase, accepted: bool): void) =
+type QMoveEventsetAcceptedProc* = proc(accepted: bool): void
+proc onsetAccepted*(self: gen_qevent_types.QMoveEvent, slot: QMoveEventsetAcceptedProc) =
   # TODO check subclass
-  type Cb = proc(super: QMoveEventsetAcceptedBase, accepted: bool): void
-  var tmp = new Cb
+  var tmp = new QMoveEventsetAcceptedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMoveEvent_override_virtual_setAccepted(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMoveEvent_setAccepted(self: ptr cQMoveEvent, slot: int, accepted: bool): void {.exportc: "miqt_exec_callback_QMoveEvent_setAccepted ".} =
-  type Cb = proc(super: QMoveEventsetAcceptedBase, accepted: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(accepted: bool): auto =
-    callVirtualBase_setAccepted(QMoveEvent(h: self), accepted)
+  var nimfunc = cast[ptr QMoveEventsetAcceptedProc](cast[pointer](slot))
   let slotval1 = accepted
 
 
-  nimfunc[](superCall, slotval1)
-proc delete*(self: QMoveEvent) =
+  nimfunc[](slotval1)
+proc delete*(self: gen_qevent_types.QMoveEvent) =
   fcQMoveEvent_delete(self.h)
 
-func init*(T: type QExposeEvent, h: ptr cQExposeEvent): QExposeEvent =
+func init*(T: type gen_qevent_types.QExposeEvent, h: ptr cQExposeEvent): gen_qevent_types.QExposeEvent =
   T(h: h)
-proc create*(T: type QExposeEvent, m_region: gen_qregion.QRegion): QExposeEvent =
+proc create*(T: type gen_qevent_types.QExposeEvent, m_region: gen_qregion.QRegion): gen_qevent_types.QExposeEvent =
 
-  QExposeEvent.init(fcQExposeEvent_new(m_region.h))
-proc clone*(self: QExposeEvent, ): QExposeEvent =
+  gen_qevent_types.QExposeEvent.init(fcQExposeEvent_new(m_region.h))
+proc clone*(self: gen_qevent_types.QExposeEvent, ): gen_qevent_types.QExposeEvent =
 
-  QExposeEvent(h: fcQExposeEvent_clone(self.h))
+  gen_qevent_types.QExposeEvent(h: fcQExposeEvent_clone(self.h))
 
-proc region*(self: QExposeEvent, ): gen_qregion.QRegion =
+proc region*(self: gen_qevent_types.QExposeEvent, ): gen_qregion.QRegion =
 
   gen_qregion.QRegion(h: fcQExposeEvent_region(self.h))
 
-proc callVirtualBase_clone(self: QExposeEvent, ): QExposeEvent =
+proc QExposeEventclone*(self: gen_qevent_types.QExposeEvent, ): gen_qevent_types.QExposeEvent =
 
+  gen_qevent_types.QExposeEvent(h: fQExposeEvent_virtualbase_clone(self.h))
 
-  QExposeEvent(h: fQExposeEvent_virtualbase_clone(self.h))
-
-type QExposeEventcloneBase* = proc(): QExposeEvent
-proc onclone*(self: QExposeEvent, slot: proc(super: QExposeEventcloneBase): QExposeEvent) =
+type QExposeEventcloneProc* = proc(): gen_qevent_types.QExposeEvent
+proc onclone*(self: gen_qevent_types.QExposeEvent, slot: QExposeEventcloneProc) =
   # TODO check subclass
-  type Cb = proc(super: QExposeEventcloneBase): QExposeEvent
-  var tmp = new Cb
+  var tmp = new QExposeEventcloneProc
   tmp[] = slot
   GC_ref(tmp)
   fcQExposeEvent_override_virtual_clone(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QExposeEvent_clone(self: ptr cQExposeEvent, slot: int): pointer {.exportc: "miqt_exec_callback_QExposeEvent_clone ".} =
-  type Cb = proc(super: QExposeEventcloneBase): QExposeEvent
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_clone(QExposeEvent(h: self), )
+  var nimfunc = cast[ptr QExposeEventcloneProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_setAccepted(self: QExposeEvent, accepted: bool): void =
-
+proc QExposeEventsetAccepted*(self: gen_qevent_types.QExposeEvent, accepted: bool): void =
 
   fQExposeEvent_virtualbase_setAccepted(self.h, accepted)
 
-type QExposeEventsetAcceptedBase* = proc(accepted: bool): void
-proc onsetAccepted*(self: QExposeEvent, slot: proc(super: QExposeEventsetAcceptedBase, accepted: bool): void) =
+type QExposeEventsetAcceptedProc* = proc(accepted: bool): void
+proc onsetAccepted*(self: gen_qevent_types.QExposeEvent, slot: QExposeEventsetAcceptedProc) =
   # TODO check subclass
-  type Cb = proc(super: QExposeEventsetAcceptedBase, accepted: bool): void
-  var tmp = new Cb
+  var tmp = new QExposeEventsetAcceptedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQExposeEvent_override_virtual_setAccepted(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QExposeEvent_setAccepted(self: ptr cQExposeEvent, slot: int, accepted: bool): void {.exportc: "miqt_exec_callback_QExposeEvent_setAccepted ".} =
-  type Cb = proc(super: QExposeEventsetAcceptedBase, accepted: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(accepted: bool): auto =
-    callVirtualBase_setAccepted(QExposeEvent(h: self), accepted)
+  var nimfunc = cast[ptr QExposeEventsetAcceptedProc](cast[pointer](slot))
   let slotval1 = accepted
 
 
-  nimfunc[](superCall, slotval1)
-proc delete*(self: QExposeEvent) =
+  nimfunc[](slotval1)
+proc delete*(self: gen_qevent_types.QExposeEvent) =
   fcQExposeEvent_delete(self.h)
 
-func init*(T: type QPlatformSurfaceEvent, h: ptr cQPlatformSurfaceEvent): QPlatformSurfaceEvent =
+func init*(T: type gen_qevent_types.QPlatformSurfaceEvent, h: ptr cQPlatformSurfaceEvent): gen_qevent_types.QPlatformSurfaceEvent =
   T(h: h)
-proc create*(T: type QPlatformSurfaceEvent, surfaceEventType: QPlatformSurfaceEventSurfaceEventType): QPlatformSurfaceEvent =
+proc create*(T: type gen_qevent_types.QPlatformSurfaceEvent, surfaceEventType: cint): gen_qevent_types.QPlatformSurfaceEvent =
 
-  QPlatformSurfaceEvent.init(fcQPlatformSurfaceEvent_new(cint(surfaceEventType)))
-proc clone*(self: QPlatformSurfaceEvent, ): QPlatformSurfaceEvent =
+  gen_qevent_types.QPlatformSurfaceEvent.init(fcQPlatformSurfaceEvent_new(cint(surfaceEventType)))
+proc clone*(self: gen_qevent_types.QPlatformSurfaceEvent, ): gen_qevent_types.QPlatformSurfaceEvent =
 
-  QPlatformSurfaceEvent(h: fcQPlatformSurfaceEvent_clone(self.h))
+  gen_qevent_types.QPlatformSurfaceEvent(h: fcQPlatformSurfaceEvent_clone(self.h))
 
-proc surfaceEventType*(self: QPlatformSurfaceEvent, ): QPlatformSurfaceEventSurfaceEventType =
+proc surfaceEventType*(self: gen_qevent_types.QPlatformSurfaceEvent, ): cint =
 
-  QPlatformSurfaceEventSurfaceEventType(fcQPlatformSurfaceEvent_surfaceEventType(self.h))
+  cint(fcQPlatformSurfaceEvent_surfaceEventType(self.h))
 
-proc callVirtualBase_clone(self: QPlatformSurfaceEvent, ): QPlatformSurfaceEvent =
+proc QPlatformSurfaceEventclone*(self: gen_qevent_types.QPlatformSurfaceEvent, ): gen_qevent_types.QPlatformSurfaceEvent =
 
+  gen_qevent_types.QPlatformSurfaceEvent(h: fQPlatformSurfaceEvent_virtualbase_clone(self.h))
 
-  QPlatformSurfaceEvent(h: fQPlatformSurfaceEvent_virtualbase_clone(self.h))
-
-type QPlatformSurfaceEventcloneBase* = proc(): QPlatformSurfaceEvent
-proc onclone*(self: QPlatformSurfaceEvent, slot: proc(super: QPlatformSurfaceEventcloneBase): QPlatformSurfaceEvent) =
+type QPlatformSurfaceEventcloneProc* = proc(): gen_qevent_types.QPlatformSurfaceEvent
+proc onclone*(self: gen_qevent_types.QPlatformSurfaceEvent, slot: QPlatformSurfaceEventcloneProc) =
   # TODO check subclass
-  type Cb = proc(super: QPlatformSurfaceEventcloneBase): QPlatformSurfaceEvent
-  var tmp = new Cb
+  var tmp = new QPlatformSurfaceEventcloneProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPlatformSurfaceEvent_override_virtual_clone(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPlatformSurfaceEvent_clone(self: ptr cQPlatformSurfaceEvent, slot: int): pointer {.exportc: "miqt_exec_callback_QPlatformSurfaceEvent_clone ".} =
-  type Cb = proc(super: QPlatformSurfaceEventcloneBase): QPlatformSurfaceEvent
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_clone(QPlatformSurfaceEvent(h: self), )
+  var nimfunc = cast[ptr QPlatformSurfaceEventcloneProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_setAccepted(self: QPlatformSurfaceEvent, accepted: bool): void =
-
+proc QPlatformSurfaceEventsetAccepted*(self: gen_qevent_types.QPlatformSurfaceEvent, accepted: bool): void =
 
   fQPlatformSurfaceEvent_virtualbase_setAccepted(self.h, accepted)
 
-type QPlatformSurfaceEventsetAcceptedBase* = proc(accepted: bool): void
-proc onsetAccepted*(self: QPlatformSurfaceEvent, slot: proc(super: QPlatformSurfaceEventsetAcceptedBase, accepted: bool): void) =
+type QPlatformSurfaceEventsetAcceptedProc* = proc(accepted: bool): void
+proc onsetAccepted*(self: gen_qevent_types.QPlatformSurfaceEvent, slot: QPlatformSurfaceEventsetAcceptedProc) =
   # TODO check subclass
-  type Cb = proc(super: QPlatformSurfaceEventsetAcceptedBase, accepted: bool): void
-  var tmp = new Cb
+  var tmp = new QPlatformSurfaceEventsetAcceptedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPlatformSurfaceEvent_override_virtual_setAccepted(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPlatformSurfaceEvent_setAccepted(self: ptr cQPlatformSurfaceEvent, slot: int, accepted: bool): void {.exportc: "miqt_exec_callback_QPlatformSurfaceEvent_setAccepted ".} =
-  type Cb = proc(super: QPlatformSurfaceEventsetAcceptedBase, accepted: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(accepted: bool): auto =
-    callVirtualBase_setAccepted(QPlatformSurfaceEvent(h: self), accepted)
+  var nimfunc = cast[ptr QPlatformSurfaceEventsetAcceptedProc](cast[pointer](slot))
   let slotval1 = accepted
 
 
-  nimfunc[](superCall, slotval1)
-proc delete*(self: QPlatformSurfaceEvent) =
+  nimfunc[](slotval1)
+proc delete*(self: gen_qevent_types.QPlatformSurfaceEvent) =
   fcQPlatformSurfaceEvent_delete(self.h)
 
-func init*(T: type QResizeEvent, h: ptr cQResizeEvent): QResizeEvent =
+func init*(T: type gen_qevent_types.QResizeEvent, h: ptr cQResizeEvent): gen_qevent_types.QResizeEvent =
   T(h: h)
-proc create*(T: type QResizeEvent, size: gen_qsize.QSize, oldSize: gen_qsize.QSize): QResizeEvent =
+proc create*(T: type gen_qevent_types.QResizeEvent, size: gen_qsize.QSize, oldSize: gen_qsize.QSize): gen_qevent_types.QResizeEvent =
 
-  QResizeEvent.init(fcQResizeEvent_new(size.h, oldSize.h))
-proc clone*(self: QResizeEvent, ): QResizeEvent =
+  gen_qevent_types.QResizeEvent.init(fcQResizeEvent_new(size.h, oldSize.h))
+proc clone*(self: gen_qevent_types.QResizeEvent, ): gen_qevent_types.QResizeEvent =
 
-  QResizeEvent(h: fcQResizeEvent_clone(self.h))
+  gen_qevent_types.QResizeEvent(h: fcQResizeEvent_clone(self.h))
 
-proc size*(self: QResizeEvent, ): gen_qsize.QSize =
+proc size*(self: gen_qevent_types.QResizeEvent, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQResizeEvent_size(self.h))
 
-proc oldSize*(self: QResizeEvent, ): gen_qsize.QSize =
+proc oldSize*(self: gen_qevent_types.QResizeEvent, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQResizeEvent_oldSize(self.h))
 
-proc callVirtualBase_clone(self: QResizeEvent, ): QResizeEvent =
+proc QResizeEventclone*(self: gen_qevent_types.QResizeEvent, ): gen_qevent_types.QResizeEvent =
 
+  gen_qevent_types.QResizeEvent(h: fQResizeEvent_virtualbase_clone(self.h))
 
-  QResizeEvent(h: fQResizeEvent_virtualbase_clone(self.h))
-
-type QResizeEventcloneBase* = proc(): QResizeEvent
-proc onclone*(self: QResizeEvent, slot: proc(super: QResizeEventcloneBase): QResizeEvent) =
+type QResizeEventcloneProc* = proc(): gen_qevent_types.QResizeEvent
+proc onclone*(self: gen_qevent_types.QResizeEvent, slot: QResizeEventcloneProc) =
   # TODO check subclass
-  type Cb = proc(super: QResizeEventcloneBase): QResizeEvent
-  var tmp = new Cb
+  var tmp = new QResizeEventcloneProc
   tmp[] = slot
   GC_ref(tmp)
   fcQResizeEvent_override_virtual_clone(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QResizeEvent_clone(self: ptr cQResizeEvent, slot: int): pointer {.exportc: "miqt_exec_callback_QResizeEvent_clone ".} =
-  type Cb = proc(super: QResizeEventcloneBase): QResizeEvent
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_clone(QResizeEvent(h: self), )
+  var nimfunc = cast[ptr QResizeEventcloneProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_setAccepted(self: QResizeEvent, accepted: bool): void =
-
+proc QResizeEventsetAccepted*(self: gen_qevent_types.QResizeEvent, accepted: bool): void =
 
   fQResizeEvent_virtualbase_setAccepted(self.h, accepted)
 
-type QResizeEventsetAcceptedBase* = proc(accepted: bool): void
-proc onsetAccepted*(self: QResizeEvent, slot: proc(super: QResizeEventsetAcceptedBase, accepted: bool): void) =
+type QResizeEventsetAcceptedProc* = proc(accepted: bool): void
+proc onsetAccepted*(self: gen_qevent_types.QResizeEvent, slot: QResizeEventsetAcceptedProc) =
   # TODO check subclass
-  type Cb = proc(super: QResizeEventsetAcceptedBase, accepted: bool): void
-  var tmp = new Cb
+  var tmp = new QResizeEventsetAcceptedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQResizeEvent_override_virtual_setAccepted(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QResizeEvent_setAccepted(self: ptr cQResizeEvent, slot: int, accepted: bool): void {.exportc: "miqt_exec_callback_QResizeEvent_setAccepted ".} =
-  type Cb = proc(super: QResizeEventsetAcceptedBase, accepted: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(accepted: bool): auto =
-    callVirtualBase_setAccepted(QResizeEvent(h: self), accepted)
+  var nimfunc = cast[ptr QResizeEventsetAcceptedProc](cast[pointer](slot))
   let slotval1 = accepted
 
 
-  nimfunc[](superCall, slotval1)
-proc delete*(self: QResizeEvent) =
+  nimfunc[](slotval1)
+proc delete*(self: gen_qevent_types.QResizeEvent) =
   fcQResizeEvent_delete(self.h)
 
-func init*(T: type QCloseEvent, h: ptr cQCloseEvent): QCloseEvent =
+func init*(T: type gen_qevent_types.QCloseEvent, h: ptr cQCloseEvent): gen_qevent_types.QCloseEvent =
   T(h: h)
-proc create*(T: type QCloseEvent, ): QCloseEvent =
+proc create*(T: type gen_qevent_types.QCloseEvent, ): gen_qevent_types.QCloseEvent =
 
-  QCloseEvent.init(fcQCloseEvent_new())
-proc clone*(self: QCloseEvent, ): QCloseEvent =
+  gen_qevent_types.QCloseEvent.init(fcQCloseEvent_new())
+proc clone*(self: gen_qevent_types.QCloseEvent, ): gen_qevent_types.QCloseEvent =
 
-  QCloseEvent(h: fcQCloseEvent_clone(self.h))
+  gen_qevent_types.QCloseEvent(h: fcQCloseEvent_clone(self.h))
 
-proc callVirtualBase_clone(self: QCloseEvent, ): QCloseEvent =
+proc QCloseEventclone*(self: gen_qevent_types.QCloseEvent, ): gen_qevent_types.QCloseEvent =
 
+  gen_qevent_types.QCloseEvent(h: fQCloseEvent_virtualbase_clone(self.h))
 
-  QCloseEvent(h: fQCloseEvent_virtualbase_clone(self.h))
-
-type QCloseEventcloneBase* = proc(): QCloseEvent
-proc onclone*(self: QCloseEvent, slot: proc(super: QCloseEventcloneBase): QCloseEvent) =
+type QCloseEventcloneProc* = proc(): gen_qevent_types.QCloseEvent
+proc onclone*(self: gen_qevent_types.QCloseEvent, slot: QCloseEventcloneProc) =
   # TODO check subclass
-  type Cb = proc(super: QCloseEventcloneBase): QCloseEvent
-  var tmp = new Cb
+  var tmp = new QCloseEventcloneProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCloseEvent_override_virtual_clone(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCloseEvent_clone(self: ptr cQCloseEvent, slot: int): pointer {.exportc: "miqt_exec_callback_QCloseEvent_clone ".} =
-  type Cb = proc(super: QCloseEventcloneBase): QCloseEvent
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_clone(QCloseEvent(h: self), )
+  var nimfunc = cast[ptr QCloseEventcloneProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_setAccepted(self: QCloseEvent, accepted: bool): void =
-
+proc QCloseEventsetAccepted*(self: gen_qevent_types.QCloseEvent, accepted: bool): void =
 
   fQCloseEvent_virtualbase_setAccepted(self.h, accepted)
 
-type QCloseEventsetAcceptedBase* = proc(accepted: bool): void
-proc onsetAccepted*(self: QCloseEvent, slot: proc(super: QCloseEventsetAcceptedBase, accepted: bool): void) =
+type QCloseEventsetAcceptedProc* = proc(accepted: bool): void
+proc onsetAccepted*(self: gen_qevent_types.QCloseEvent, slot: QCloseEventsetAcceptedProc) =
   # TODO check subclass
-  type Cb = proc(super: QCloseEventsetAcceptedBase, accepted: bool): void
-  var tmp = new Cb
+  var tmp = new QCloseEventsetAcceptedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCloseEvent_override_virtual_setAccepted(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCloseEvent_setAccepted(self: ptr cQCloseEvent, slot: int, accepted: bool): void {.exportc: "miqt_exec_callback_QCloseEvent_setAccepted ".} =
-  type Cb = proc(super: QCloseEventsetAcceptedBase, accepted: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(accepted: bool): auto =
-    callVirtualBase_setAccepted(QCloseEvent(h: self), accepted)
+  var nimfunc = cast[ptr QCloseEventsetAcceptedProc](cast[pointer](slot))
   let slotval1 = accepted
 
 
-  nimfunc[](superCall, slotval1)
-proc delete*(self: QCloseEvent) =
+  nimfunc[](slotval1)
+proc delete*(self: gen_qevent_types.QCloseEvent) =
   fcQCloseEvent_delete(self.h)
 
-func init*(T: type QIconDragEvent, h: ptr cQIconDragEvent): QIconDragEvent =
+func init*(T: type gen_qevent_types.QIconDragEvent, h: ptr cQIconDragEvent): gen_qevent_types.QIconDragEvent =
   T(h: h)
-proc create*(T: type QIconDragEvent, ): QIconDragEvent =
+proc create*(T: type gen_qevent_types.QIconDragEvent, ): gen_qevent_types.QIconDragEvent =
 
-  QIconDragEvent.init(fcQIconDragEvent_new())
-proc clone*(self: QIconDragEvent, ): QIconDragEvent =
+  gen_qevent_types.QIconDragEvent.init(fcQIconDragEvent_new())
+proc clone*(self: gen_qevent_types.QIconDragEvent, ): gen_qevent_types.QIconDragEvent =
 
-  QIconDragEvent(h: fcQIconDragEvent_clone(self.h))
+  gen_qevent_types.QIconDragEvent(h: fcQIconDragEvent_clone(self.h))
 
-proc callVirtualBase_clone(self: QIconDragEvent, ): QIconDragEvent =
+proc QIconDragEventclone*(self: gen_qevent_types.QIconDragEvent, ): gen_qevent_types.QIconDragEvent =
 
+  gen_qevent_types.QIconDragEvent(h: fQIconDragEvent_virtualbase_clone(self.h))
 
-  QIconDragEvent(h: fQIconDragEvent_virtualbase_clone(self.h))
-
-type QIconDragEventcloneBase* = proc(): QIconDragEvent
-proc onclone*(self: QIconDragEvent, slot: proc(super: QIconDragEventcloneBase): QIconDragEvent) =
+type QIconDragEventcloneProc* = proc(): gen_qevent_types.QIconDragEvent
+proc onclone*(self: gen_qevent_types.QIconDragEvent, slot: QIconDragEventcloneProc) =
   # TODO check subclass
-  type Cb = proc(super: QIconDragEventcloneBase): QIconDragEvent
-  var tmp = new Cb
+  var tmp = new QIconDragEventcloneProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIconDragEvent_override_virtual_clone(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIconDragEvent_clone(self: ptr cQIconDragEvent, slot: int): pointer {.exportc: "miqt_exec_callback_QIconDragEvent_clone ".} =
-  type Cb = proc(super: QIconDragEventcloneBase): QIconDragEvent
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_clone(QIconDragEvent(h: self), )
+  var nimfunc = cast[ptr QIconDragEventcloneProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_setAccepted(self: QIconDragEvent, accepted: bool): void =
-
+proc QIconDragEventsetAccepted*(self: gen_qevent_types.QIconDragEvent, accepted: bool): void =
 
   fQIconDragEvent_virtualbase_setAccepted(self.h, accepted)
 
-type QIconDragEventsetAcceptedBase* = proc(accepted: bool): void
-proc onsetAccepted*(self: QIconDragEvent, slot: proc(super: QIconDragEventsetAcceptedBase, accepted: bool): void) =
+type QIconDragEventsetAcceptedProc* = proc(accepted: bool): void
+proc onsetAccepted*(self: gen_qevent_types.QIconDragEvent, slot: QIconDragEventsetAcceptedProc) =
   # TODO check subclass
-  type Cb = proc(super: QIconDragEventsetAcceptedBase, accepted: bool): void
-  var tmp = new Cb
+  var tmp = new QIconDragEventsetAcceptedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIconDragEvent_override_virtual_setAccepted(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIconDragEvent_setAccepted(self: ptr cQIconDragEvent, slot: int, accepted: bool): void {.exportc: "miqt_exec_callback_QIconDragEvent_setAccepted ".} =
-  type Cb = proc(super: QIconDragEventsetAcceptedBase, accepted: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(accepted: bool): auto =
-    callVirtualBase_setAccepted(QIconDragEvent(h: self), accepted)
+  var nimfunc = cast[ptr QIconDragEventsetAcceptedProc](cast[pointer](slot))
   let slotval1 = accepted
 
 
-  nimfunc[](superCall, slotval1)
-proc delete*(self: QIconDragEvent) =
+  nimfunc[](slotval1)
+proc delete*(self: gen_qevent_types.QIconDragEvent) =
   fcQIconDragEvent_delete(self.h)
 
-func init*(T: type QShowEvent, h: ptr cQShowEvent): QShowEvent =
+func init*(T: type gen_qevent_types.QShowEvent, h: ptr cQShowEvent): gen_qevent_types.QShowEvent =
   T(h: h)
-proc create*(T: type QShowEvent, ): QShowEvent =
+proc create*(T: type gen_qevent_types.QShowEvent, ): gen_qevent_types.QShowEvent =
 
-  QShowEvent.init(fcQShowEvent_new())
-proc clone*(self: QShowEvent, ): QShowEvent =
+  gen_qevent_types.QShowEvent.init(fcQShowEvent_new())
+proc clone*(self: gen_qevent_types.QShowEvent, ): gen_qevent_types.QShowEvent =
 
-  QShowEvent(h: fcQShowEvent_clone(self.h))
+  gen_qevent_types.QShowEvent(h: fcQShowEvent_clone(self.h))
 
-proc callVirtualBase_clone(self: QShowEvent, ): QShowEvent =
+proc QShowEventclone*(self: gen_qevent_types.QShowEvent, ): gen_qevent_types.QShowEvent =
 
+  gen_qevent_types.QShowEvent(h: fQShowEvent_virtualbase_clone(self.h))
 
-  QShowEvent(h: fQShowEvent_virtualbase_clone(self.h))
-
-type QShowEventcloneBase* = proc(): QShowEvent
-proc onclone*(self: QShowEvent, slot: proc(super: QShowEventcloneBase): QShowEvent) =
+type QShowEventcloneProc* = proc(): gen_qevent_types.QShowEvent
+proc onclone*(self: gen_qevent_types.QShowEvent, slot: QShowEventcloneProc) =
   # TODO check subclass
-  type Cb = proc(super: QShowEventcloneBase): QShowEvent
-  var tmp = new Cb
+  var tmp = new QShowEventcloneProc
   tmp[] = slot
   GC_ref(tmp)
   fcQShowEvent_override_virtual_clone(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QShowEvent_clone(self: ptr cQShowEvent, slot: int): pointer {.exportc: "miqt_exec_callback_QShowEvent_clone ".} =
-  type Cb = proc(super: QShowEventcloneBase): QShowEvent
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_clone(QShowEvent(h: self), )
+  var nimfunc = cast[ptr QShowEventcloneProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_setAccepted(self: QShowEvent, accepted: bool): void =
-
+proc QShowEventsetAccepted*(self: gen_qevent_types.QShowEvent, accepted: bool): void =
 
   fQShowEvent_virtualbase_setAccepted(self.h, accepted)
 
-type QShowEventsetAcceptedBase* = proc(accepted: bool): void
-proc onsetAccepted*(self: QShowEvent, slot: proc(super: QShowEventsetAcceptedBase, accepted: bool): void) =
+type QShowEventsetAcceptedProc* = proc(accepted: bool): void
+proc onsetAccepted*(self: gen_qevent_types.QShowEvent, slot: QShowEventsetAcceptedProc) =
   # TODO check subclass
-  type Cb = proc(super: QShowEventsetAcceptedBase, accepted: bool): void
-  var tmp = new Cb
+  var tmp = new QShowEventsetAcceptedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQShowEvent_override_virtual_setAccepted(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QShowEvent_setAccepted(self: ptr cQShowEvent, slot: int, accepted: bool): void {.exportc: "miqt_exec_callback_QShowEvent_setAccepted ".} =
-  type Cb = proc(super: QShowEventsetAcceptedBase, accepted: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(accepted: bool): auto =
-    callVirtualBase_setAccepted(QShowEvent(h: self), accepted)
+  var nimfunc = cast[ptr QShowEventsetAcceptedProc](cast[pointer](slot))
   let slotval1 = accepted
 
 
-  nimfunc[](superCall, slotval1)
-proc delete*(self: QShowEvent) =
+  nimfunc[](slotval1)
+proc delete*(self: gen_qevent_types.QShowEvent) =
   fcQShowEvent_delete(self.h)
 
-func init*(T: type QHideEvent, h: ptr cQHideEvent): QHideEvent =
+func init*(T: type gen_qevent_types.QHideEvent, h: ptr cQHideEvent): gen_qevent_types.QHideEvent =
   T(h: h)
-proc create*(T: type QHideEvent, ): QHideEvent =
+proc create*(T: type gen_qevent_types.QHideEvent, ): gen_qevent_types.QHideEvent =
 
-  QHideEvent.init(fcQHideEvent_new())
-proc clone*(self: QHideEvent, ): QHideEvent =
+  gen_qevent_types.QHideEvent.init(fcQHideEvent_new())
+proc clone*(self: gen_qevent_types.QHideEvent, ): gen_qevent_types.QHideEvent =
 
-  QHideEvent(h: fcQHideEvent_clone(self.h))
+  gen_qevent_types.QHideEvent(h: fcQHideEvent_clone(self.h))
 
-proc callVirtualBase_clone(self: QHideEvent, ): QHideEvent =
+proc QHideEventclone*(self: gen_qevent_types.QHideEvent, ): gen_qevent_types.QHideEvent =
 
+  gen_qevent_types.QHideEvent(h: fQHideEvent_virtualbase_clone(self.h))
 
-  QHideEvent(h: fQHideEvent_virtualbase_clone(self.h))
-
-type QHideEventcloneBase* = proc(): QHideEvent
-proc onclone*(self: QHideEvent, slot: proc(super: QHideEventcloneBase): QHideEvent) =
+type QHideEventcloneProc* = proc(): gen_qevent_types.QHideEvent
+proc onclone*(self: gen_qevent_types.QHideEvent, slot: QHideEventcloneProc) =
   # TODO check subclass
-  type Cb = proc(super: QHideEventcloneBase): QHideEvent
-  var tmp = new Cb
+  var tmp = new QHideEventcloneProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHideEvent_override_virtual_clone(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHideEvent_clone(self: ptr cQHideEvent, slot: int): pointer {.exportc: "miqt_exec_callback_QHideEvent_clone ".} =
-  type Cb = proc(super: QHideEventcloneBase): QHideEvent
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_clone(QHideEvent(h: self), )
+  var nimfunc = cast[ptr QHideEventcloneProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_setAccepted(self: QHideEvent, accepted: bool): void =
-
+proc QHideEventsetAccepted*(self: gen_qevent_types.QHideEvent, accepted: bool): void =
 
   fQHideEvent_virtualbase_setAccepted(self.h, accepted)
 
-type QHideEventsetAcceptedBase* = proc(accepted: bool): void
-proc onsetAccepted*(self: QHideEvent, slot: proc(super: QHideEventsetAcceptedBase, accepted: bool): void) =
+type QHideEventsetAcceptedProc* = proc(accepted: bool): void
+proc onsetAccepted*(self: gen_qevent_types.QHideEvent, slot: QHideEventsetAcceptedProc) =
   # TODO check subclass
-  type Cb = proc(super: QHideEventsetAcceptedBase, accepted: bool): void
-  var tmp = new Cb
+  var tmp = new QHideEventsetAcceptedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHideEvent_override_virtual_setAccepted(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHideEvent_setAccepted(self: ptr cQHideEvent, slot: int, accepted: bool): void {.exportc: "miqt_exec_callback_QHideEvent_setAccepted ".} =
-  type Cb = proc(super: QHideEventsetAcceptedBase, accepted: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(accepted: bool): auto =
-    callVirtualBase_setAccepted(QHideEvent(h: self), accepted)
+  var nimfunc = cast[ptr QHideEventsetAcceptedProc](cast[pointer](slot))
   let slotval1 = accepted
 
 
-  nimfunc[](superCall, slotval1)
-proc delete*(self: QHideEvent) =
+  nimfunc[](slotval1)
+proc delete*(self: gen_qevent_types.QHideEvent) =
   fcQHideEvent_delete(self.h)
 
-func init*(T: type QContextMenuEvent, h: ptr cQContextMenuEvent): QContextMenuEvent =
+func init*(T: type gen_qevent_types.QContextMenuEvent, h: ptr cQContextMenuEvent): gen_qevent_types.QContextMenuEvent =
   T(h: h)
-proc create*(T: type QContextMenuEvent, reason: QContextMenuEventReason, pos: gen_qpoint.QPoint, globalPos: gen_qpoint.QPoint): QContextMenuEvent =
+proc create*(T: type gen_qevent_types.QContextMenuEvent, reason: cint, pos: gen_qpoint.QPoint, globalPos: gen_qpoint.QPoint): gen_qevent_types.QContextMenuEvent =
 
-  QContextMenuEvent.init(fcQContextMenuEvent_new(cint(reason), pos.h, globalPos.h))
-proc create*(T: type QContextMenuEvent, reason: QContextMenuEventReason, pos: gen_qpoint.QPoint): QContextMenuEvent =
+  gen_qevent_types.QContextMenuEvent.init(fcQContextMenuEvent_new(cint(reason), pos.h, globalPos.h))
+proc create*(T: type gen_qevent_types.QContextMenuEvent, reason: cint, pos: gen_qpoint.QPoint): gen_qevent_types.QContextMenuEvent =
 
-  QContextMenuEvent.init(fcQContextMenuEvent_new2(cint(reason), pos.h))
-proc create*(T: type QContextMenuEvent, reason: QContextMenuEventReason, pos: gen_qpoint.QPoint, globalPos: gen_qpoint.QPoint, modifiers: gen_qnamespace.KeyboardModifier): QContextMenuEvent =
+  gen_qevent_types.QContextMenuEvent.init(fcQContextMenuEvent_new2(cint(reason), pos.h))
+proc create*(T: type gen_qevent_types.QContextMenuEvent, reason: cint, pos: gen_qpoint.QPoint, globalPos: gen_qpoint.QPoint, modifiers: cint): gen_qevent_types.QContextMenuEvent =
 
-  QContextMenuEvent.init(fcQContextMenuEvent_new3(cint(reason), pos.h, globalPos.h, cint(modifiers)))
-proc clone*(self: QContextMenuEvent, ): QContextMenuEvent =
+  gen_qevent_types.QContextMenuEvent.init(fcQContextMenuEvent_new3(cint(reason), pos.h, globalPos.h, cint(modifiers)))
+proc clone*(self: gen_qevent_types.QContextMenuEvent, ): gen_qevent_types.QContextMenuEvent =
 
-  QContextMenuEvent(h: fcQContextMenuEvent_clone(self.h))
+  gen_qevent_types.QContextMenuEvent(h: fcQContextMenuEvent_clone(self.h))
 
-proc x*(self: QContextMenuEvent, ): cint =
+proc x*(self: gen_qevent_types.QContextMenuEvent, ): cint =
 
   fcQContextMenuEvent_x(self.h)
 
-proc y*(self: QContextMenuEvent, ): cint =
+proc y*(self: gen_qevent_types.QContextMenuEvent, ): cint =
 
   fcQContextMenuEvent_y(self.h)
 
-proc globalX*(self: QContextMenuEvent, ): cint =
+proc globalX*(self: gen_qevent_types.QContextMenuEvent, ): cint =
 
   fcQContextMenuEvent_globalX(self.h)
 
-proc globalY*(self: QContextMenuEvent, ): cint =
+proc globalY*(self: gen_qevent_types.QContextMenuEvent, ): cint =
 
   fcQContextMenuEvent_globalY(self.h)
 
-proc pos*(self: QContextMenuEvent, ): gen_qpoint.QPoint =
+proc pos*(self: gen_qevent_types.QContextMenuEvent, ): gen_qpoint.QPoint =
 
   gen_qpoint.QPoint(h: fcQContextMenuEvent_pos(self.h))
 
-proc globalPos*(self: QContextMenuEvent, ): gen_qpoint.QPoint =
+proc globalPos*(self: gen_qevent_types.QContextMenuEvent, ): gen_qpoint.QPoint =
 
   gen_qpoint.QPoint(h: fcQContextMenuEvent_globalPos(self.h))
 
-proc reason*(self: QContextMenuEvent, ): QContextMenuEventReason =
+proc reason*(self: gen_qevent_types.QContextMenuEvent, ): cint =
 
-  QContextMenuEventReason(fcQContextMenuEvent_reason(self.h))
+  cint(fcQContextMenuEvent_reason(self.h))
 
-proc callVirtualBase_clone(self: QContextMenuEvent, ): QContextMenuEvent =
+proc QContextMenuEventclone*(self: gen_qevent_types.QContextMenuEvent, ): gen_qevent_types.QContextMenuEvent =
 
+  gen_qevent_types.QContextMenuEvent(h: fQContextMenuEvent_virtualbase_clone(self.h))
 
-  QContextMenuEvent(h: fQContextMenuEvent_virtualbase_clone(self.h))
-
-type QContextMenuEventcloneBase* = proc(): QContextMenuEvent
-proc onclone*(self: QContextMenuEvent, slot: proc(super: QContextMenuEventcloneBase): QContextMenuEvent) =
+type QContextMenuEventcloneProc* = proc(): gen_qevent_types.QContextMenuEvent
+proc onclone*(self: gen_qevent_types.QContextMenuEvent, slot: QContextMenuEventcloneProc) =
   # TODO check subclass
-  type Cb = proc(super: QContextMenuEventcloneBase): QContextMenuEvent
-  var tmp = new Cb
+  var tmp = new QContextMenuEventcloneProc
   tmp[] = slot
   GC_ref(tmp)
   fcQContextMenuEvent_override_virtual_clone(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QContextMenuEvent_clone(self: ptr cQContextMenuEvent, slot: int): pointer {.exportc: "miqt_exec_callback_QContextMenuEvent_clone ".} =
-  type Cb = proc(super: QContextMenuEventcloneBase): QContextMenuEvent
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_clone(QContextMenuEvent(h: self), )
+  var nimfunc = cast[ptr QContextMenuEventcloneProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_setTimestamp(self: QContextMenuEvent, timestamp: culonglong): void =
-
+proc QContextMenuEventsetTimestamp*(self: gen_qevent_types.QContextMenuEvent, timestamp: culonglong): void =
 
   fQContextMenuEvent_virtualbase_setTimestamp(self.h, timestamp)
 
-type QContextMenuEventsetTimestampBase* = proc(timestamp: culonglong): void
-proc onsetTimestamp*(self: QContextMenuEvent, slot: proc(super: QContextMenuEventsetTimestampBase, timestamp: culonglong): void) =
+type QContextMenuEventsetTimestampProc* = proc(timestamp: culonglong): void
+proc onsetTimestamp*(self: gen_qevent_types.QContextMenuEvent, slot: QContextMenuEventsetTimestampProc) =
   # TODO check subclass
-  type Cb = proc(super: QContextMenuEventsetTimestampBase, timestamp: culonglong): void
-  var tmp = new Cb
+  var tmp = new QContextMenuEventsetTimestampProc
   tmp[] = slot
   GC_ref(tmp)
   fcQContextMenuEvent_override_virtual_setTimestamp(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QContextMenuEvent_setTimestamp(self: ptr cQContextMenuEvent, slot: int, timestamp: culonglong): void {.exportc: "miqt_exec_callback_QContextMenuEvent_setTimestamp ".} =
-  type Cb = proc(super: QContextMenuEventsetTimestampBase, timestamp: culonglong): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(timestamp: culonglong): auto =
-    callVirtualBase_setTimestamp(QContextMenuEvent(h: self), timestamp)
+  var nimfunc = cast[ptr QContextMenuEventsetTimestampProc](cast[pointer](slot))
   let slotval1 = timestamp
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_setAccepted(self: QContextMenuEvent, accepted: bool): void =
-
+  nimfunc[](slotval1)
+proc QContextMenuEventsetAccepted*(self: gen_qevent_types.QContextMenuEvent, accepted: bool): void =
 
   fQContextMenuEvent_virtualbase_setAccepted(self.h, accepted)
 
-type QContextMenuEventsetAcceptedBase* = proc(accepted: bool): void
-proc onsetAccepted*(self: QContextMenuEvent, slot: proc(super: QContextMenuEventsetAcceptedBase, accepted: bool): void) =
+type QContextMenuEventsetAcceptedProc* = proc(accepted: bool): void
+proc onsetAccepted*(self: gen_qevent_types.QContextMenuEvent, slot: QContextMenuEventsetAcceptedProc) =
   # TODO check subclass
-  type Cb = proc(super: QContextMenuEventsetAcceptedBase, accepted: bool): void
-  var tmp = new Cb
+  var tmp = new QContextMenuEventsetAcceptedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQContextMenuEvent_override_virtual_setAccepted(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QContextMenuEvent_setAccepted(self: ptr cQContextMenuEvent, slot: int, accepted: bool): void {.exportc: "miqt_exec_callback_QContextMenuEvent_setAccepted ".} =
-  type Cb = proc(super: QContextMenuEventsetAcceptedBase, accepted: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(accepted: bool): auto =
-    callVirtualBase_setAccepted(QContextMenuEvent(h: self), accepted)
+  var nimfunc = cast[ptr QContextMenuEventsetAcceptedProc](cast[pointer](slot))
   let slotval1 = accepted
 
 
-  nimfunc[](superCall, slotval1)
-proc delete*(self: QContextMenuEvent) =
+  nimfunc[](slotval1)
+proc delete*(self: gen_qevent_types.QContextMenuEvent) =
   fcQContextMenuEvent_delete(self.h)
 
-func init*(T: type QInputMethodEvent, h: ptr cQInputMethodEvent): QInputMethodEvent =
+func init*(T: type gen_qevent_types.QInputMethodEvent, h: ptr cQInputMethodEvent): gen_qevent_types.QInputMethodEvent =
   T(h: h)
-proc create*(T: type QInputMethodEvent, ): QInputMethodEvent =
+proc create*(T: type gen_qevent_types.QInputMethodEvent, ): gen_qevent_types.QInputMethodEvent =
 
-  QInputMethodEvent.init(fcQInputMethodEvent_new())
-proc create*(T: type QInputMethodEvent, preeditText: string, attributes: seq[QInputMethodEventAttribute]): QInputMethodEvent =
+  gen_qevent_types.QInputMethodEvent.init(fcQInputMethodEvent_new())
+proc create*(T: type gen_qevent_types.QInputMethodEvent, preeditText: string, attributes: seq[gen_qevent_types.QInputMethodEventAttribute]): gen_qevent_types.QInputMethodEvent =
 
   var attributes_CArray = newSeq[pointer](len(attributes))
   for i in 0..<len(attributes):
     attributes_CArray[i] = attributes[i].h
 
-  QInputMethodEvent.init(fcQInputMethodEvent_new2(struct_miqt_string(data: preeditText, len: csize_t(len(preeditText))), struct_miqt_array(len: csize_t(len(attributes)), data: if len(attributes) == 0: nil else: addr(attributes_CArray[0]))))
-proc clone*(self: QInputMethodEvent, ): QInputMethodEvent =
+  gen_qevent_types.QInputMethodEvent.init(fcQInputMethodEvent_new2(struct_miqt_string(data: preeditText, len: csize_t(len(preeditText))), struct_miqt_array(len: csize_t(len(attributes)), data: if len(attributes) == 0: nil else: addr(attributes_CArray[0]))))
+proc clone*(self: gen_qevent_types.QInputMethodEvent, ): gen_qevent_types.QInputMethodEvent =
 
-  QInputMethodEvent(h: fcQInputMethodEvent_clone(self.h))
+  gen_qevent_types.QInputMethodEvent(h: fcQInputMethodEvent_clone(self.h))
 
-proc setCommitString*(self: QInputMethodEvent, commitString: string): void =
+proc setCommitString*(self: gen_qevent_types.QInputMethodEvent, commitString: string): void =
 
   fcQInputMethodEvent_setCommitString(self.h, struct_miqt_string(data: commitString, len: csize_t(len(commitString))))
 
-proc attributes*(self: QInputMethodEvent, ): seq[QInputMethodEventAttribute] =
+proc attributes*(self: gen_qevent_types.QInputMethodEvent, ): seq[gen_qevent_types.QInputMethodEventAttribute] =
 
   var v_ma = fcQInputMethodEvent_attributes(self.h)
-  var vx_ret = newSeq[QInputMethodEventAttribute](int(v_ma.len))
+  var vx_ret = newSeq[gen_qevent_types.QInputMethodEventAttribute](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
-    vx_ret[i] = QInputMethodEventAttribute(h: v_outCast[i])
+    vx_ret[i] = gen_qevent_types.QInputMethodEventAttribute(h: v_outCast[i])
   vx_ret
 
-proc preeditString*(self: QInputMethodEvent, ): string =
+proc preeditString*(self: gen_qevent_types.QInputMethodEvent, ): string =
 
   let v_ms = fcQInputMethodEvent_preeditString(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc commitString*(self: QInputMethodEvent, ): string =
+proc commitString*(self: gen_qevent_types.QInputMethodEvent, ): string =
 
   let v_ms = fcQInputMethodEvent_commitString(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc replacementStart*(self: QInputMethodEvent, ): cint =
+proc replacementStart*(self: gen_qevent_types.QInputMethodEvent, ): cint =
 
   fcQInputMethodEvent_replacementStart(self.h)
 
-proc replacementLength*(self: QInputMethodEvent, ): cint =
+proc replacementLength*(self: gen_qevent_types.QInputMethodEvent, ): cint =
 
   fcQInputMethodEvent_replacementLength(self.h)
 
-proc setCommitString2*(self: QInputMethodEvent, commitString: string, replaceFrom: cint): void =
+proc setCommitString2*(self: gen_qevent_types.QInputMethodEvent, commitString: string, replaceFrom: cint): void =
 
   fcQInputMethodEvent_setCommitString2(self.h, struct_miqt_string(data: commitString, len: csize_t(len(commitString))), replaceFrom)
 
-proc setCommitString3*(self: QInputMethodEvent, commitString: string, replaceFrom: cint, replaceLength: cint): void =
+proc setCommitString3*(self: gen_qevent_types.QInputMethodEvent, commitString: string, replaceFrom: cint, replaceLength: cint): void =
 
   fcQInputMethodEvent_setCommitString3(self.h, struct_miqt_string(data: commitString, len: csize_t(len(commitString))), replaceFrom, replaceLength)
 
-proc callVirtualBase_clone(self: QInputMethodEvent, ): QInputMethodEvent =
+proc QInputMethodEventclone*(self: gen_qevent_types.QInputMethodEvent, ): gen_qevent_types.QInputMethodEvent =
 
+  gen_qevent_types.QInputMethodEvent(h: fQInputMethodEvent_virtualbase_clone(self.h))
 
-  QInputMethodEvent(h: fQInputMethodEvent_virtualbase_clone(self.h))
-
-type QInputMethodEventcloneBase* = proc(): QInputMethodEvent
-proc onclone*(self: QInputMethodEvent, slot: proc(super: QInputMethodEventcloneBase): QInputMethodEvent) =
+type QInputMethodEventcloneProc* = proc(): gen_qevent_types.QInputMethodEvent
+proc onclone*(self: gen_qevent_types.QInputMethodEvent, slot: QInputMethodEventcloneProc) =
   # TODO check subclass
-  type Cb = proc(super: QInputMethodEventcloneBase): QInputMethodEvent
-  var tmp = new Cb
+  var tmp = new QInputMethodEventcloneProc
   tmp[] = slot
   GC_ref(tmp)
   fcQInputMethodEvent_override_virtual_clone(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QInputMethodEvent_clone(self: ptr cQInputMethodEvent, slot: int): pointer {.exportc: "miqt_exec_callback_QInputMethodEvent_clone ".} =
-  type Cb = proc(super: QInputMethodEventcloneBase): QInputMethodEvent
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_clone(QInputMethodEvent(h: self), )
+  var nimfunc = cast[ptr QInputMethodEventcloneProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_setAccepted(self: QInputMethodEvent, accepted: bool): void =
-
+proc QInputMethodEventsetAccepted*(self: gen_qevent_types.QInputMethodEvent, accepted: bool): void =
 
   fQInputMethodEvent_virtualbase_setAccepted(self.h, accepted)
 
-type QInputMethodEventsetAcceptedBase* = proc(accepted: bool): void
-proc onsetAccepted*(self: QInputMethodEvent, slot: proc(super: QInputMethodEventsetAcceptedBase, accepted: bool): void) =
+type QInputMethodEventsetAcceptedProc* = proc(accepted: bool): void
+proc onsetAccepted*(self: gen_qevent_types.QInputMethodEvent, slot: QInputMethodEventsetAcceptedProc) =
   # TODO check subclass
-  type Cb = proc(super: QInputMethodEventsetAcceptedBase, accepted: bool): void
-  var tmp = new Cb
+  var tmp = new QInputMethodEventsetAcceptedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQInputMethodEvent_override_virtual_setAccepted(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QInputMethodEvent_setAccepted(self: ptr cQInputMethodEvent, slot: int, accepted: bool): void {.exportc: "miqt_exec_callback_QInputMethodEvent_setAccepted ".} =
-  type Cb = proc(super: QInputMethodEventsetAcceptedBase, accepted: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(accepted: bool): auto =
-    callVirtualBase_setAccepted(QInputMethodEvent(h: self), accepted)
+  var nimfunc = cast[ptr QInputMethodEventsetAcceptedProc](cast[pointer](slot))
   let slotval1 = accepted
 
 
-  nimfunc[](superCall, slotval1)
-proc delete*(self: QInputMethodEvent) =
+  nimfunc[](slotval1)
+proc delete*(self: gen_qevent_types.QInputMethodEvent) =
   fcQInputMethodEvent_delete(self.h)
 
-func init*(T: type QInputMethodQueryEvent, h: ptr cQInputMethodQueryEvent): QInputMethodQueryEvent =
+func init*(T: type gen_qevent_types.QInputMethodQueryEvent, h: ptr cQInputMethodQueryEvent): gen_qevent_types.QInputMethodQueryEvent =
   T(h: h)
-proc create*(T: type QInputMethodQueryEvent, queries: gen_qnamespace.InputMethodQuery): QInputMethodQueryEvent =
+proc create*(T: type gen_qevent_types.QInputMethodQueryEvent, queries: cint): gen_qevent_types.QInputMethodQueryEvent =
 
-  QInputMethodQueryEvent.init(fcQInputMethodQueryEvent_new(cint(queries)))
-proc clone*(self: QInputMethodQueryEvent, ): QInputMethodQueryEvent =
+  gen_qevent_types.QInputMethodQueryEvent.init(fcQInputMethodQueryEvent_new(cint(queries)))
+proc clone*(self: gen_qevent_types.QInputMethodQueryEvent, ): gen_qevent_types.QInputMethodQueryEvent =
 
-  QInputMethodQueryEvent(h: fcQInputMethodQueryEvent_clone(self.h))
+  gen_qevent_types.QInputMethodQueryEvent(h: fcQInputMethodQueryEvent_clone(self.h))
 
-proc queries*(self: QInputMethodQueryEvent, ): gen_qnamespace.InputMethodQuery =
+proc queries*(self: gen_qevent_types.QInputMethodQueryEvent, ): cint =
 
-  gen_qnamespace.InputMethodQuery(fcQInputMethodQueryEvent_queries(self.h))
+  cint(fcQInputMethodQueryEvent_queries(self.h))
 
-proc setValue*(self: QInputMethodQueryEvent, query: gen_qnamespace.InputMethodQuery, value: gen_qvariant.QVariant): void =
+proc setValue*(self: gen_qevent_types.QInputMethodQueryEvent, query: cint, value: gen_qvariant.QVariant): void =
 
   fcQInputMethodQueryEvent_setValue(self.h, cint(query), value.h)
 
-proc value*(self: QInputMethodQueryEvent, query: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant =
+proc value*(self: gen_qevent_types.QInputMethodQueryEvent, query: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fcQInputMethodQueryEvent_value(self.h, cint(query)))
 
-proc callVirtualBase_clone(self: QInputMethodQueryEvent, ): QInputMethodQueryEvent =
+proc QInputMethodQueryEventclone*(self: gen_qevent_types.QInputMethodQueryEvent, ): gen_qevent_types.QInputMethodQueryEvent =
 
+  gen_qevent_types.QInputMethodQueryEvent(h: fQInputMethodQueryEvent_virtualbase_clone(self.h))
 
-  QInputMethodQueryEvent(h: fQInputMethodQueryEvent_virtualbase_clone(self.h))
-
-type QInputMethodQueryEventcloneBase* = proc(): QInputMethodQueryEvent
-proc onclone*(self: QInputMethodQueryEvent, slot: proc(super: QInputMethodQueryEventcloneBase): QInputMethodQueryEvent) =
+type QInputMethodQueryEventcloneProc* = proc(): gen_qevent_types.QInputMethodQueryEvent
+proc onclone*(self: gen_qevent_types.QInputMethodQueryEvent, slot: QInputMethodQueryEventcloneProc) =
   # TODO check subclass
-  type Cb = proc(super: QInputMethodQueryEventcloneBase): QInputMethodQueryEvent
-  var tmp = new Cb
+  var tmp = new QInputMethodQueryEventcloneProc
   tmp[] = slot
   GC_ref(tmp)
   fcQInputMethodQueryEvent_override_virtual_clone(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QInputMethodQueryEvent_clone(self: ptr cQInputMethodQueryEvent, slot: int): pointer {.exportc: "miqt_exec_callback_QInputMethodQueryEvent_clone ".} =
-  type Cb = proc(super: QInputMethodQueryEventcloneBase): QInputMethodQueryEvent
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_clone(QInputMethodQueryEvent(h: self), )
+  var nimfunc = cast[ptr QInputMethodQueryEventcloneProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_setAccepted(self: QInputMethodQueryEvent, accepted: bool): void =
-
+proc QInputMethodQueryEventsetAccepted*(self: gen_qevent_types.QInputMethodQueryEvent, accepted: bool): void =
 
   fQInputMethodQueryEvent_virtualbase_setAccepted(self.h, accepted)
 
-type QInputMethodQueryEventsetAcceptedBase* = proc(accepted: bool): void
-proc onsetAccepted*(self: QInputMethodQueryEvent, slot: proc(super: QInputMethodQueryEventsetAcceptedBase, accepted: bool): void) =
+type QInputMethodQueryEventsetAcceptedProc* = proc(accepted: bool): void
+proc onsetAccepted*(self: gen_qevent_types.QInputMethodQueryEvent, slot: QInputMethodQueryEventsetAcceptedProc) =
   # TODO check subclass
-  type Cb = proc(super: QInputMethodQueryEventsetAcceptedBase, accepted: bool): void
-  var tmp = new Cb
+  var tmp = new QInputMethodQueryEventsetAcceptedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQInputMethodQueryEvent_override_virtual_setAccepted(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QInputMethodQueryEvent_setAccepted(self: ptr cQInputMethodQueryEvent, slot: int, accepted: bool): void {.exportc: "miqt_exec_callback_QInputMethodQueryEvent_setAccepted ".} =
-  type Cb = proc(super: QInputMethodQueryEventsetAcceptedBase, accepted: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(accepted: bool): auto =
-    callVirtualBase_setAccepted(QInputMethodQueryEvent(h: self), accepted)
+  var nimfunc = cast[ptr QInputMethodQueryEventsetAcceptedProc](cast[pointer](slot))
   let slotval1 = accepted
 
 
-  nimfunc[](superCall, slotval1)
-proc delete*(self: QInputMethodQueryEvent) =
+  nimfunc[](slotval1)
+proc delete*(self: gen_qevent_types.QInputMethodQueryEvent) =
   fcQInputMethodQueryEvent_delete(self.h)
 
-func init*(T: type QDropEvent, h: ptr cQDropEvent): QDropEvent =
+func init*(T: type gen_qevent_types.QDropEvent, h: ptr cQDropEvent): gen_qevent_types.QDropEvent =
   T(h: h)
-proc create*(T: type QDropEvent, pos: gen_qpoint.QPointF, actions: gen_qnamespace.DropAction, data: gen_qmimedata.QMimeData, buttons: gen_qnamespace.MouseButton, modifiers: gen_qnamespace.KeyboardModifier): QDropEvent =
+proc create*(T: type gen_qevent_types.QDropEvent, pos: gen_qpoint.QPointF, actions: cint, data: gen_qmimedata.QMimeData, buttons: cint, modifiers: cint): gen_qevent_types.QDropEvent =
 
-  QDropEvent.init(fcQDropEvent_new(pos.h, cint(actions), data.h, cint(buttons), cint(modifiers)))
-proc create*(T: type QDropEvent, pos: gen_qpoint.QPointF, actions: gen_qnamespace.DropAction, data: gen_qmimedata.QMimeData, buttons: gen_qnamespace.MouseButton, modifiers: gen_qnamespace.KeyboardModifier, typeVal: gen_qcoreevent.QEventType): QDropEvent =
+  gen_qevent_types.QDropEvent.init(fcQDropEvent_new(pos.h, cint(actions), data.h, cint(buttons), cint(modifiers)))
+proc create*(T: type gen_qevent_types.QDropEvent, pos: gen_qpoint.QPointF, actions: cint, data: gen_qmimedata.QMimeData, buttons: cint, modifiers: cint, typeVal: cint): gen_qevent_types.QDropEvent =
 
-  QDropEvent.init(fcQDropEvent_new2(pos.h, cint(actions), data.h, cint(buttons), cint(modifiers), cint(typeVal)))
-proc clone*(self: QDropEvent, ): QDropEvent =
+  gen_qevent_types.QDropEvent.init(fcQDropEvent_new2(pos.h, cint(actions), data.h, cint(buttons), cint(modifiers), cint(typeVal)))
+proc clone*(self: gen_qevent_types.QDropEvent, ): gen_qevent_types.QDropEvent =
 
-  QDropEvent(h: fcQDropEvent_clone(self.h))
+  gen_qevent_types.QDropEvent(h: fcQDropEvent_clone(self.h))
 
-proc pos*(self: QDropEvent, ): gen_qpoint.QPoint =
+proc pos*(self: gen_qevent_types.QDropEvent, ): gen_qpoint.QPoint =
 
   gen_qpoint.QPoint(h: fcQDropEvent_pos(self.h))
 
-proc posF*(self: QDropEvent, ): gen_qpoint.QPointF =
+proc posF*(self: gen_qevent_types.QDropEvent, ): gen_qpoint.QPointF =
 
   gen_qpoint.QPointF(h: fcQDropEvent_posF(self.h))
 
-proc mouseButtons*(self: QDropEvent, ): gen_qnamespace.MouseButton =
+proc mouseButtons*(self: gen_qevent_types.QDropEvent, ): cint =
 
-  gen_qnamespace.MouseButton(fcQDropEvent_mouseButtons(self.h))
+  cint(fcQDropEvent_mouseButtons(self.h))
 
-proc keyboardModifiers*(self: QDropEvent, ): gen_qnamespace.KeyboardModifier =
+proc keyboardModifiers*(self: gen_qevent_types.QDropEvent, ): cint =
 
-  gen_qnamespace.KeyboardModifier(fcQDropEvent_keyboardModifiers(self.h))
+  cint(fcQDropEvent_keyboardModifiers(self.h))
 
-proc position*(self: QDropEvent, ): gen_qpoint.QPointF =
+proc position*(self: gen_qevent_types.QDropEvent, ): gen_qpoint.QPointF =
 
   gen_qpoint.QPointF(h: fcQDropEvent_position(self.h))
 
-proc buttons*(self: QDropEvent, ): gen_qnamespace.MouseButton =
+proc buttons*(self: gen_qevent_types.QDropEvent, ): cint =
 
-  gen_qnamespace.MouseButton(fcQDropEvent_buttons(self.h))
+  cint(fcQDropEvent_buttons(self.h))
 
-proc modifiers*(self: QDropEvent, ): gen_qnamespace.KeyboardModifier =
+proc modifiers*(self: gen_qevent_types.QDropEvent, ): cint =
 
-  gen_qnamespace.KeyboardModifier(fcQDropEvent_modifiers(self.h))
+  cint(fcQDropEvent_modifiers(self.h))
 
-proc possibleActions*(self: QDropEvent, ): gen_qnamespace.DropAction =
+proc possibleActions*(self: gen_qevent_types.QDropEvent, ): cint =
 
-  gen_qnamespace.DropAction(fcQDropEvent_possibleActions(self.h))
+  cint(fcQDropEvent_possibleActions(self.h))
 
-proc proposedAction*(self: QDropEvent, ): gen_qnamespace.DropAction =
+proc proposedAction*(self: gen_qevent_types.QDropEvent, ): cint =
 
-  gen_qnamespace.DropAction(fcQDropEvent_proposedAction(self.h))
+  cint(fcQDropEvent_proposedAction(self.h))
 
-proc acceptProposedAction*(self: QDropEvent, ): void =
+proc acceptProposedAction*(self: gen_qevent_types.QDropEvent, ): void =
 
   fcQDropEvent_acceptProposedAction(self.h)
 
-proc dropAction*(self: QDropEvent, ): gen_qnamespace.DropAction =
+proc dropAction*(self: gen_qevent_types.QDropEvent, ): cint =
 
-  gen_qnamespace.DropAction(fcQDropEvent_dropAction(self.h))
+  cint(fcQDropEvent_dropAction(self.h))
 
-proc setDropAction*(self: QDropEvent, action: gen_qnamespace.DropAction): void =
+proc setDropAction*(self: gen_qevent_types.QDropEvent, action: cint): void =
 
   fcQDropEvent_setDropAction(self.h, cint(action))
 
-proc source*(self: QDropEvent, ): gen_qobject.QObject =
+proc source*(self: gen_qevent_types.QDropEvent, ): gen_qobject.QObject =
 
   gen_qobject.QObject(h: fcQDropEvent_source(self.h))
 
-proc mimeData*(self: QDropEvent, ): gen_qmimedata.QMimeData =
+proc mimeData*(self: gen_qevent_types.QDropEvent, ): gen_qmimedata.QMimeData =
 
   gen_qmimedata.QMimeData(h: fcQDropEvent_mimeData(self.h))
 
-proc callVirtualBase_clone(self: QDropEvent, ): QDropEvent =
+proc QDropEventclone*(self: gen_qevent_types.QDropEvent, ): gen_qevent_types.QDropEvent =
 
+  gen_qevent_types.QDropEvent(h: fQDropEvent_virtualbase_clone(self.h))
 
-  QDropEvent(h: fQDropEvent_virtualbase_clone(self.h))
-
-type QDropEventcloneBase* = proc(): QDropEvent
-proc onclone*(self: QDropEvent, slot: proc(super: QDropEventcloneBase): QDropEvent) =
+type QDropEventcloneProc* = proc(): gen_qevent_types.QDropEvent
+proc onclone*(self: gen_qevent_types.QDropEvent, slot: QDropEventcloneProc) =
   # TODO check subclass
-  type Cb = proc(super: QDropEventcloneBase): QDropEvent
-  var tmp = new Cb
+  var tmp = new QDropEventcloneProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDropEvent_override_virtual_clone(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDropEvent_clone(self: ptr cQDropEvent, slot: int): pointer {.exportc: "miqt_exec_callback_QDropEvent_clone ".} =
-  type Cb = proc(super: QDropEventcloneBase): QDropEvent
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_clone(QDropEvent(h: self), )
+  var nimfunc = cast[ptr QDropEventcloneProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_setAccepted(self: QDropEvent, accepted: bool): void =
-
+proc QDropEventsetAccepted*(self: gen_qevent_types.QDropEvent, accepted: bool): void =
 
   fQDropEvent_virtualbase_setAccepted(self.h, accepted)
 
-type QDropEventsetAcceptedBase* = proc(accepted: bool): void
-proc onsetAccepted*(self: QDropEvent, slot: proc(super: QDropEventsetAcceptedBase, accepted: bool): void) =
+type QDropEventsetAcceptedProc* = proc(accepted: bool): void
+proc onsetAccepted*(self: gen_qevent_types.QDropEvent, slot: QDropEventsetAcceptedProc) =
   # TODO check subclass
-  type Cb = proc(super: QDropEventsetAcceptedBase, accepted: bool): void
-  var tmp = new Cb
+  var tmp = new QDropEventsetAcceptedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDropEvent_override_virtual_setAccepted(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDropEvent_setAccepted(self: ptr cQDropEvent, slot: int, accepted: bool): void {.exportc: "miqt_exec_callback_QDropEvent_setAccepted ".} =
-  type Cb = proc(super: QDropEventsetAcceptedBase, accepted: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(accepted: bool): auto =
-    callVirtualBase_setAccepted(QDropEvent(h: self), accepted)
+  var nimfunc = cast[ptr QDropEventsetAcceptedProc](cast[pointer](slot))
   let slotval1 = accepted
 
 
-  nimfunc[](superCall, slotval1)
-proc delete*(self: QDropEvent) =
+  nimfunc[](slotval1)
+proc delete*(self: gen_qevent_types.QDropEvent) =
   fcQDropEvent_delete(self.h)
 
-func init*(T: type QDragMoveEvent, h: ptr cQDragMoveEvent): QDragMoveEvent =
+func init*(T: type gen_qevent_types.QDragMoveEvent, h: ptr cQDragMoveEvent): gen_qevent_types.QDragMoveEvent =
   T(h: h)
-proc create*(T: type QDragMoveEvent, pos: gen_qpoint.QPoint, actions: gen_qnamespace.DropAction, data: gen_qmimedata.QMimeData, buttons: gen_qnamespace.MouseButton, modifiers: gen_qnamespace.KeyboardModifier): QDragMoveEvent =
+proc create*(T: type gen_qevent_types.QDragMoveEvent, pos: gen_qpoint.QPoint, actions: cint, data: gen_qmimedata.QMimeData, buttons: cint, modifiers: cint): gen_qevent_types.QDragMoveEvent =
 
-  QDragMoveEvent.init(fcQDragMoveEvent_new(pos.h, cint(actions), data.h, cint(buttons), cint(modifiers)))
-proc create*(T: type QDragMoveEvent, pos: gen_qpoint.QPoint, actions: gen_qnamespace.DropAction, data: gen_qmimedata.QMimeData, buttons: gen_qnamespace.MouseButton, modifiers: gen_qnamespace.KeyboardModifier, typeVal: gen_qcoreevent.QEventType): QDragMoveEvent =
+  gen_qevent_types.QDragMoveEvent.init(fcQDragMoveEvent_new(pos.h, cint(actions), data.h, cint(buttons), cint(modifiers)))
+proc create*(T: type gen_qevent_types.QDragMoveEvent, pos: gen_qpoint.QPoint, actions: cint, data: gen_qmimedata.QMimeData, buttons: cint, modifiers: cint, typeVal: cint): gen_qevent_types.QDragMoveEvent =
 
-  QDragMoveEvent.init(fcQDragMoveEvent_new2(pos.h, cint(actions), data.h, cint(buttons), cint(modifiers), cint(typeVal)))
-proc clone*(self: QDragMoveEvent, ): QDragMoveEvent =
+  gen_qevent_types.QDragMoveEvent.init(fcQDragMoveEvent_new2(pos.h, cint(actions), data.h, cint(buttons), cint(modifiers), cint(typeVal)))
+proc clone*(self: gen_qevent_types.QDragMoveEvent, ): gen_qevent_types.QDragMoveEvent =
 
-  QDragMoveEvent(h: fcQDragMoveEvent_clone(self.h))
+  gen_qevent_types.QDragMoveEvent(h: fcQDragMoveEvent_clone(self.h))
 
-proc answerRect*(self: QDragMoveEvent, ): gen_qrect.QRect =
+proc answerRect*(self: gen_qevent_types.QDragMoveEvent, ): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fcQDragMoveEvent_answerRect(self.h))
 
-proc accept*(self: QDragMoveEvent, ): void =
+proc accept*(self: gen_qevent_types.QDragMoveEvent, ): void =
 
   fcQDragMoveEvent_accept(self.h)
 
-proc ignore*(self: QDragMoveEvent, ): void =
+proc ignore*(self: gen_qevent_types.QDragMoveEvent, ): void =
 
   fcQDragMoveEvent_ignore(self.h)
 
-proc acceptWithQRect*(self: QDragMoveEvent, r: gen_qrect.QRect): void =
+proc acceptWithQRect*(self: gen_qevent_types.QDragMoveEvent, r: gen_qrect.QRect): void =
 
   fcQDragMoveEvent_acceptWithQRect(self.h, r.h)
 
-proc ignoreWithQRect*(self: QDragMoveEvent, r: gen_qrect.QRect): void =
+proc ignoreWithQRect*(self: gen_qevent_types.QDragMoveEvent, r: gen_qrect.QRect): void =
 
   fcQDragMoveEvent_ignoreWithQRect(self.h, r.h)
 
-proc callVirtualBase_clone(self: QDragMoveEvent, ): QDragMoveEvent =
+proc QDragMoveEventclone*(self: gen_qevent_types.QDragMoveEvent, ): gen_qevent_types.QDragMoveEvent =
 
+  gen_qevent_types.QDragMoveEvent(h: fQDragMoveEvent_virtualbase_clone(self.h))
 
-  QDragMoveEvent(h: fQDragMoveEvent_virtualbase_clone(self.h))
-
-type QDragMoveEventcloneBase* = proc(): QDragMoveEvent
-proc onclone*(self: QDragMoveEvent, slot: proc(super: QDragMoveEventcloneBase): QDragMoveEvent) =
+type QDragMoveEventcloneProc* = proc(): gen_qevent_types.QDragMoveEvent
+proc onclone*(self: gen_qevent_types.QDragMoveEvent, slot: QDragMoveEventcloneProc) =
   # TODO check subclass
-  type Cb = proc(super: QDragMoveEventcloneBase): QDragMoveEvent
-  var tmp = new Cb
+  var tmp = new QDragMoveEventcloneProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDragMoveEvent_override_virtual_clone(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDragMoveEvent_clone(self: ptr cQDragMoveEvent, slot: int): pointer {.exportc: "miqt_exec_callback_QDragMoveEvent_clone ".} =
-  type Cb = proc(super: QDragMoveEventcloneBase): QDragMoveEvent
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_clone(QDragMoveEvent(h: self), )
+  var nimfunc = cast[ptr QDragMoveEventcloneProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_setAccepted(self: QDragMoveEvent, accepted: bool): void =
-
+proc QDragMoveEventsetAccepted*(self: gen_qevent_types.QDragMoveEvent, accepted: bool): void =
 
   fQDragMoveEvent_virtualbase_setAccepted(self.h, accepted)
 
-type QDragMoveEventsetAcceptedBase* = proc(accepted: bool): void
-proc onsetAccepted*(self: QDragMoveEvent, slot: proc(super: QDragMoveEventsetAcceptedBase, accepted: bool): void) =
+type QDragMoveEventsetAcceptedProc* = proc(accepted: bool): void
+proc onsetAccepted*(self: gen_qevent_types.QDragMoveEvent, slot: QDragMoveEventsetAcceptedProc) =
   # TODO check subclass
-  type Cb = proc(super: QDragMoveEventsetAcceptedBase, accepted: bool): void
-  var tmp = new Cb
+  var tmp = new QDragMoveEventsetAcceptedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDragMoveEvent_override_virtual_setAccepted(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDragMoveEvent_setAccepted(self: ptr cQDragMoveEvent, slot: int, accepted: bool): void {.exportc: "miqt_exec_callback_QDragMoveEvent_setAccepted ".} =
-  type Cb = proc(super: QDragMoveEventsetAcceptedBase, accepted: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(accepted: bool): auto =
-    callVirtualBase_setAccepted(QDragMoveEvent(h: self), accepted)
+  var nimfunc = cast[ptr QDragMoveEventsetAcceptedProc](cast[pointer](slot))
   let slotval1 = accepted
 
 
-  nimfunc[](superCall, slotval1)
-proc delete*(self: QDragMoveEvent) =
+  nimfunc[](slotval1)
+proc delete*(self: gen_qevent_types.QDragMoveEvent) =
   fcQDragMoveEvent_delete(self.h)
 
-func init*(T: type QDragEnterEvent, h: ptr cQDragEnterEvent): QDragEnterEvent =
+func init*(T: type gen_qevent_types.QDragEnterEvent, h: ptr cQDragEnterEvent): gen_qevent_types.QDragEnterEvent =
   T(h: h)
-proc create*(T: type QDragEnterEvent, pos: gen_qpoint.QPoint, actions: gen_qnamespace.DropAction, data: gen_qmimedata.QMimeData, buttons: gen_qnamespace.MouseButton, modifiers: gen_qnamespace.KeyboardModifier): QDragEnterEvent =
+proc create*(T: type gen_qevent_types.QDragEnterEvent, pos: gen_qpoint.QPoint, actions: cint, data: gen_qmimedata.QMimeData, buttons: cint, modifiers: cint): gen_qevent_types.QDragEnterEvent =
 
-  QDragEnterEvent.init(fcQDragEnterEvent_new(pos.h, cint(actions), data.h, cint(buttons), cint(modifiers)))
-proc clone*(self: QDragEnterEvent, ): QDragEnterEvent =
+  gen_qevent_types.QDragEnterEvent.init(fcQDragEnterEvent_new(pos.h, cint(actions), data.h, cint(buttons), cint(modifiers)))
+proc clone*(self: gen_qevent_types.QDragEnterEvent, ): gen_qevent_types.QDragEnterEvent =
 
-  QDragEnterEvent(h: fcQDragEnterEvent_clone(self.h))
+  gen_qevent_types.QDragEnterEvent(h: fcQDragEnterEvent_clone(self.h))
 
-proc callVirtualBase_clone(self: QDragEnterEvent, ): QDragEnterEvent =
+proc QDragEnterEventclone*(self: gen_qevent_types.QDragEnterEvent, ): gen_qevent_types.QDragEnterEvent =
 
+  gen_qevent_types.QDragEnterEvent(h: fQDragEnterEvent_virtualbase_clone(self.h))
 
-  QDragEnterEvent(h: fQDragEnterEvent_virtualbase_clone(self.h))
-
-type QDragEnterEventcloneBase* = proc(): QDragEnterEvent
-proc onclone*(self: QDragEnterEvent, slot: proc(super: QDragEnterEventcloneBase): QDragEnterEvent) =
+type QDragEnterEventcloneProc* = proc(): gen_qevent_types.QDragEnterEvent
+proc onclone*(self: gen_qevent_types.QDragEnterEvent, slot: QDragEnterEventcloneProc) =
   # TODO check subclass
-  type Cb = proc(super: QDragEnterEventcloneBase): QDragEnterEvent
-  var tmp = new Cb
+  var tmp = new QDragEnterEventcloneProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDragEnterEvent_override_virtual_clone(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDragEnterEvent_clone(self: ptr cQDragEnterEvent, slot: int): pointer {.exportc: "miqt_exec_callback_QDragEnterEvent_clone ".} =
-  type Cb = proc(super: QDragEnterEventcloneBase): QDragEnterEvent
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_clone(QDragEnterEvent(h: self), )
+  var nimfunc = cast[ptr QDragEnterEventcloneProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_setAccepted(self: QDragEnterEvent, accepted: bool): void =
-
+proc QDragEnterEventsetAccepted*(self: gen_qevent_types.QDragEnterEvent, accepted: bool): void =
 
   fQDragEnterEvent_virtualbase_setAccepted(self.h, accepted)
 
-type QDragEnterEventsetAcceptedBase* = proc(accepted: bool): void
-proc onsetAccepted*(self: QDragEnterEvent, slot: proc(super: QDragEnterEventsetAcceptedBase, accepted: bool): void) =
+type QDragEnterEventsetAcceptedProc* = proc(accepted: bool): void
+proc onsetAccepted*(self: gen_qevent_types.QDragEnterEvent, slot: QDragEnterEventsetAcceptedProc) =
   # TODO check subclass
-  type Cb = proc(super: QDragEnterEventsetAcceptedBase, accepted: bool): void
-  var tmp = new Cb
+  var tmp = new QDragEnterEventsetAcceptedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDragEnterEvent_override_virtual_setAccepted(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDragEnterEvent_setAccepted(self: ptr cQDragEnterEvent, slot: int, accepted: bool): void {.exportc: "miqt_exec_callback_QDragEnterEvent_setAccepted ".} =
-  type Cb = proc(super: QDragEnterEventsetAcceptedBase, accepted: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(accepted: bool): auto =
-    callVirtualBase_setAccepted(QDragEnterEvent(h: self), accepted)
+  var nimfunc = cast[ptr QDragEnterEventsetAcceptedProc](cast[pointer](slot))
   let slotval1 = accepted
 
 
-  nimfunc[](superCall, slotval1)
-proc delete*(self: QDragEnterEvent) =
+  nimfunc[](slotval1)
+proc delete*(self: gen_qevent_types.QDragEnterEvent) =
   fcQDragEnterEvent_delete(self.h)
 
-func init*(T: type QDragLeaveEvent, h: ptr cQDragLeaveEvent): QDragLeaveEvent =
+func init*(T: type gen_qevent_types.QDragLeaveEvent, h: ptr cQDragLeaveEvent): gen_qevent_types.QDragLeaveEvent =
   T(h: h)
-proc create*(T: type QDragLeaveEvent, ): QDragLeaveEvent =
+proc create*(T: type gen_qevent_types.QDragLeaveEvent, ): gen_qevent_types.QDragLeaveEvent =
 
-  QDragLeaveEvent.init(fcQDragLeaveEvent_new())
-proc clone*(self: QDragLeaveEvent, ): QDragLeaveEvent =
+  gen_qevent_types.QDragLeaveEvent.init(fcQDragLeaveEvent_new())
+proc clone*(self: gen_qevent_types.QDragLeaveEvent, ): gen_qevent_types.QDragLeaveEvent =
 
-  QDragLeaveEvent(h: fcQDragLeaveEvent_clone(self.h))
+  gen_qevent_types.QDragLeaveEvent(h: fcQDragLeaveEvent_clone(self.h))
 
-proc callVirtualBase_clone(self: QDragLeaveEvent, ): QDragLeaveEvent =
+proc QDragLeaveEventclone*(self: gen_qevent_types.QDragLeaveEvent, ): gen_qevent_types.QDragLeaveEvent =
 
+  gen_qevent_types.QDragLeaveEvent(h: fQDragLeaveEvent_virtualbase_clone(self.h))
 
-  QDragLeaveEvent(h: fQDragLeaveEvent_virtualbase_clone(self.h))
-
-type QDragLeaveEventcloneBase* = proc(): QDragLeaveEvent
-proc onclone*(self: QDragLeaveEvent, slot: proc(super: QDragLeaveEventcloneBase): QDragLeaveEvent) =
+type QDragLeaveEventcloneProc* = proc(): gen_qevent_types.QDragLeaveEvent
+proc onclone*(self: gen_qevent_types.QDragLeaveEvent, slot: QDragLeaveEventcloneProc) =
   # TODO check subclass
-  type Cb = proc(super: QDragLeaveEventcloneBase): QDragLeaveEvent
-  var tmp = new Cb
+  var tmp = new QDragLeaveEventcloneProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDragLeaveEvent_override_virtual_clone(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDragLeaveEvent_clone(self: ptr cQDragLeaveEvent, slot: int): pointer {.exportc: "miqt_exec_callback_QDragLeaveEvent_clone ".} =
-  type Cb = proc(super: QDragLeaveEventcloneBase): QDragLeaveEvent
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_clone(QDragLeaveEvent(h: self), )
+  var nimfunc = cast[ptr QDragLeaveEventcloneProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_setAccepted(self: QDragLeaveEvent, accepted: bool): void =
-
+proc QDragLeaveEventsetAccepted*(self: gen_qevent_types.QDragLeaveEvent, accepted: bool): void =
 
   fQDragLeaveEvent_virtualbase_setAccepted(self.h, accepted)
 
-type QDragLeaveEventsetAcceptedBase* = proc(accepted: bool): void
-proc onsetAccepted*(self: QDragLeaveEvent, slot: proc(super: QDragLeaveEventsetAcceptedBase, accepted: bool): void) =
+type QDragLeaveEventsetAcceptedProc* = proc(accepted: bool): void
+proc onsetAccepted*(self: gen_qevent_types.QDragLeaveEvent, slot: QDragLeaveEventsetAcceptedProc) =
   # TODO check subclass
-  type Cb = proc(super: QDragLeaveEventsetAcceptedBase, accepted: bool): void
-  var tmp = new Cb
+  var tmp = new QDragLeaveEventsetAcceptedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDragLeaveEvent_override_virtual_setAccepted(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDragLeaveEvent_setAccepted(self: ptr cQDragLeaveEvent, slot: int, accepted: bool): void {.exportc: "miqt_exec_callback_QDragLeaveEvent_setAccepted ".} =
-  type Cb = proc(super: QDragLeaveEventsetAcceptedBase, accepted: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(accepted: bool): auto =
-    callVirtualBase_setAccepted(QDragLeaveEvent(h: self), accepted)
+  var nimfunc = cast[ptr QDragLeaveEventsetAcceptedProc](cast[pointer](slot))
   let slotval1 = accepted
 
 
-  nimfunc[](superCall, slotval1)
-proc delete*(self: QDragLeaveEvent) =
+  nimfunc[](slotval1)
+proc delete*(self: gen_qevent_types.QDragLeaveEvent) =
   fcQDragLeaveEvent_delete(self.h)
 
-func init*(T: type QHelpEvent, h: ptr cQHelpEvent): QHelpEvent =
+func init*(T: type gen_qevent_types.QHelpEvent, h: ptr cQHelpEvent): gen_qevent_types.QHelpEvent =
   T(h: h)
-proc create*(T: type QHelpEvent, typeVal: gen_qcoreevent.QEventType, pos: gen_qpoint.QPoint, globalPos: gen_qpoint.QPoint): QHelpEvent =
+proc create*(T: type gen_qevent_types.QHelpEvent, typeVal: cint, pos: gen_qpoint.QPoint, globalPos: gen_qpoint.QPoint): gen_qevent_types.QHelpEvent =
 
-  QHelpEvent.init(fcQHelpEvent_new(cint(typeVal), pos.h, globalPos.h))
-proc clone*(self: QHelpEvent, ): QHelpEvent =
+  gen_qevent_types.QHelpEvent.init(fcQHelpEvent_new(cint(typeVal), pos.h, globalPos.h))
+proc clone*(self: gen_qevent_types.QHelpEvent, ): gen_qevent_types.QHelpEvent =
 
-  QHelpEvent(h: fcQHelpEvent_clone(self.h))
+  gen_qevent_types.QHelpEvent(h: fcQHelpEvent_clone(self.h))
 
-proc x*(self: QHelpEvent, ): cint =
+proc x*(self: gen_qevent_types.QHelpEvent, ): cint =
 
   fcQHelpEvent_x(self.h)
 
-proc y*(self: QHelpEvent, ): cint =
+proc y*(self: gen_qevent_types.QHelpEvent, ): cint =
 
   fcQHelpEvent_y(self.h)
 
-proc globalX*(self: QHelpEvent, ): cint =
+proc globalX*(self: gen_qevent_types.QHelpEvent, ): cint =
 
   fcQHelpEvent_globalX(self.h)
 
-proc globalY*(self: QHelpEvent, ): cint =
+proc globalY*(self: gen_qevent_types.QHelpEvent, ): cint =
 
   fcQHelpEvent_globalY(self.h)
 
-proc pos*(self: QHelpEvent, ): gen_qpoint.QPoint =
+proc pos*(self: gen_qevent_types.QHelpEvent, ): gen_qpoint.QPoint =
 
   gen_qpoint.QPoint(h: fcQHelpEvent_pos(self.h))
 
-proc globalPos*(self: QHelpEvent, ): gen_qpoint.QPoint =
+proc globalPos*(self: gen_qevent_types.QHelpEvent, ): gen_qpoint.QPoint =
 
   gen_qpoint.QPoint(h: fcQHelpEvent_globalPos(self.h))
 
-proc callVirtualBase_clone(self: QHelpEvent, ): QHelpEvent =
+proc QHelpEventclone*(self: gen_qevent_types.QHelpEvent, ): gen_qevent_types.QHelpEvent =
 
+  gen_qevent_types.QHelpEvent(h: fQHelpEvent_virtualbase_clone(self.h))
 
-  QHelpEvent(h: fQHelpEvent_virtualbase_clone(self.h))
-
-type QHelpEventcloneBase* = proc(): QHelpEvent
-proc onclone*(self: QHelpEvent, slot: proc(super: QHelpEventcloneBase): QHelpEvent) =
+type QHelpEventcloneProc* = proc(): gen_qevent_types.QHelpEvent
+proc onclone*(self: gen_qevent_types.QHelpEvent, slot: QHelpEventcloneProc) =
   # TODO check subclass
-  type Cb = proc(super: QHelpEventcloneBase): QHelpEvent
-  var tmp = new Cb
+  var tmp = new QHelpEventcloneProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHelpEvent_override_virtual_clone(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHelpEvent_clone(self: ptr cQHelpEvent, slot: int): pointer {.exportc: "miqt_exec_callback_QHelpEvent_clone ".} =
-  type Cb = proc(super: QHelpEventcloneBase): QHelpEvent
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_clone(QHelpEvent(h: self), )
+  var nimfunc = cast[ptr QHelpEventcloneProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_setAccepted(self: QHelpEvent, accepted: bool): void =
-
+proc QHelpEventsetAccepted*(self: gen_qevent_types.QHelpEvent, accepted: bool): void =
 
   fQHelpEvent_virtualbase_setAccepted(self.h, accepted)
 
-type QHelpEventsetAcceptedBase* = proc(accepted: bool): void
-proc onsetAccepted*(self: QHelpEvent, slot: proc(super: QHelpEventsetAcceptedBase, accepted: bool): void) =
+type QHelpEventsetAcceptedProc* = proc(accepted: bool): void
+proc onsetAccepted*(self: gen_qevent_types.QHelpEvent, slot: QHelpEventsetAcceptedProc) =
   # TODO check subclass
-  type Cb = proc(super: QHelpEventsetAcceptedBase, accepted: bool): void
-  var tmp = new Cb
+  var tmp = new QHelpEventsetAcceptedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHelpEvent_override_virtual_setAccepted(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHelpEvent_setAccepted(self: ptr cQHelpEvent, slot: int, accepted: bool): void {.exportc: "miqt_exec_callback_QHelpEvent_setAccepted ".} =
-  type Cb = proc(super: QHelpEventsetAcceptedBase, accepted: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(accepted: bool): auto =
-    callVirtualBase_setAccepted(QHelpEvent(h: self), accepted)
+  var nimfunc = cast[ptr QHelpEventsetAcceptedProc](cast[pointer](slot))
   let slotval1 = accepted
 
 
-  nimfunc[](superCall, slotval1)
-proc delete*(self: QHelpEvent) =
+  nimfunc[](slotval1)
+proc delete*(self: gen_qevent_types.QHelpEvent) =
   fcQHelpEvent_delete(self.h)
 
-func init*(T: type QStatusTipEvent, h: ptr cQStatusTipEvent): QStatusTipEvent =
+func init*(T: type gen_qevent_types.QStatusTipEvent, h: ptr cQStatusTipEvent): gen_qevent_types.QStatusTipEvent =
   T(h: h)
-proc create*(T: type QStatusTipEvent, tip: string): QStatusTipEvent =
+proc create*(T: type gen_qevent_types.QStatusTipEvent, tip: string): gen_qevent_types.QStatusTipEvent =
 
-  QStatusTipEvent.init(fcQStatusTipEvent_new(struct_miqt_string(data: tip, len: csize_t(len(tip)))))
-proc clone*(self: QStatusTipEvent, ): QStatusTipEvent =
+  gen_qevent_types.QStatusTipEvent.init(fcQStatusTipEvent_new(struct_miqt_string(data: tip, len: csize_t(len(tip)))))
+proc clone*(self: gen_qevent_types.QStatusTipEvent, ): gen_qevent_types.QStatusTipEvent =
 
-  QStatusTipEvent(h: fcQStatusTipEvent_clone(self.h))
+  gen_qevent_types.QStatusTipEvent(h: fcQStatusTipEvent_clone(self.h))
 
-proc tip*(self: QStatusTipEvent, ): string =
+proc tip*(self: gen_qevent_types.QStatusTipEvent, ): string =
 
   let v_ms = fcQStatusTipEvent_tip(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_clone(self: QStatusTipEvent, ): QStatusTipEvent =
+proc QStatusTipEventclone*(self: gen_qevent_types.QStatusTipEvent, ): gen_qevent_types.QStatusTipEvent =
 
+  gen_qevent_types.QStatusTipEvent(h: fQStatusTipEvent_virtualbase_clone(self.h))
 
-  QStatusTipEvent(h: fQStatusTipEvent_virtualbase_clone(self.h))
-
-type QStatusTipEventcloneBase* = proc(): QStatusTipEvent
-proc onclone*(self: QStatusTipEvent, slot: proc(super: QStatusTipEventcloneBase): QStatusTipEvent) =
+type QStatusTipEventcloneProc* = proc(): gen_qevent_types.QStatusTipEvent
+proc onclone*(self: gen_qevent_types.QStatusTipEvent, slot: QStatusTipEventcloneProc) =
   # TODO check subclass
-  type Cb = proc(super: QStatusTipEventcloneBase): QStatusTipEvent
-  var tmp = new Cb
+  var tmp = new QStatusTipEventcloneProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStatusTipEvent_override_virtual_clone(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStatusTipEvent_clone(self: ptr cQStatusTipEvent, slot: int): pointer {.exportc: "miqt_exec_callback_QStatusTipEvent_clone ".} =
-  type Cb = proc(super: QStatusTipEventcloneBase): QStatusTipEvent
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_clone(QStatusTipEvent(h: self), )
+  var nimfunc = cast[ptr QStatusTipEventcloneProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_setAccepted(self: QStatusTipEvent, accepted: bool): void =
-
+proc QStatusTipEventsetAccepted*(self: gen_qevent_types.QStatusTipEvent, accepted: bool): void =
 
   fQStatusTipEvent_virtualbase_setAccepted(self.h, accepted)
 
-type QStatusTipEventsetAcceptedBase* = proc(accepted: bool): void
-proc onsetAccepted*(self: QStatusTipEvent, slot: proc(super: QStatusTipEventsetAcceptedBase, accepted: bool): void) =
+type QStatusTipEventsetAcceptedProc* = proc(accepted: bool): void
+proc onsetAccepted*(self: gen_qevent_types.QStatusTipEvent, slot: QStatusTipEventsetAcceptedProc) =
   # TODO check subclass
-  type Cb = proc(super: QStatusTipEventsetAcceptedBase, accepted: bool): void
-  var tmp = new Cb
+  var tmp = new QStatusTipEventsetAcceptedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStatusTipEvent_override_virtual_setAccepted(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStatusTipEvent_setAccepted(self: ptr cQStatusTipEvent, slot: int, accepted: bool): void {.exportc: "miqt_exec_callback_QStatusTipEvent_setAccepted ".} =
-  type Cb = proc(super: QStatusTipEventsetAcceptedBase, accepted: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(accepted: bool): auto =
-    callVirtualBase_setAccepted(QStatusTipEvent(h: self), accepted)
+  var nimfunc = cast[ptr QStatusTipEventsetAcceptedProc](cast[pointer](slot))
   let slotval1 = accepted
 
 
-  nimfunc[](superCall, slotval1)
-proc delete*(self: QStatusTipEvent) =
+  nimfunc[](slotval1)
+proc delete*(self: gen_qevent_types.QStatusTipEvent) =
   fcQStatusTipEvent_delete(self.h)
 
-func init*(T: type QWhatsThisClickedEvent, h: ptr cQWhatsThisClickedEvent): QWhatsThisClickedEvent =
+func init*(T: type gen_qevent_types.QWhatsThisClickedEvent, h: ptr cQWhatsThisClickedEvent): gen_qevent_types.QWhatsThisClickedEvent =
   T(h: h)
-proc create*(T: type QWhatsThisClickedEvent, href: string): QWhatsThisClickedEvent =
+proc create*(T: type gen_qevent_types.QWhatsThisClickedEvent, href: string): gen_qevent_types.QWhatsThisClickedEvent =
 
-  QWhatsThisClickedEvent.init(fcQWhatsThisClickedEvent_new(struct_miqt_string(data: href, len: csize_t(len(href)))))
-proc clone*(self: QWhatsThisClickedEvent, ): QWhatsThisClickedEvent =
+  gen_qevent_types.QWhatsThisClickedEvent.init(fcQWhatsThisClickedEvent_new(struct_miqt_string(data: href, len: csize_t(len(href)))))
+proc clone*(self: gen_qevent_types.QWhatsThisClickedEvent, ): gen_qevent_types.QWhatsThisClickedEvent =
 
-  QWhatsThisClickedEvent(h: fcQWhatsThisClickedEvent_clone(self.h))
+  gen_qevent_types.QWhatsThisClickedEvent(h: fcQWhatsThisClickedEvent_clone(self.h))
 
-proc href*(self: QWhatsThisClickedEvent, ): string =
+proc href*(self: gen_qevent_types.QWhatsThisClickedEvent, ): string =
 
   let v_ms = fcQWhatsThisClickedEvent_href(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_clone(self: QWhatsThisClickedEvent, ): QWhatsThisClickedEvent =
+proc QWhatsThisClickedEventclone*(self: gen_qevent_types.QWhatsThisClickedEvent, ): gen_qevent_types.QWhatsThisClickedEvent =
 
+  gen_qevent_types.QWhatsThisClickedEvent(h: fQWhatsThisClickedEvent_virtualbase_clone(self.h))
 
-  QWhatsThisClickedEvent(h: fQWhatsThisClickedEvent_virtualbase_clone(self.h))
-
-type QWhatsThisClickedEventcloneBase* = proc(): QWhatsThisClickedEvent
-proc onclone*(self: QWhatsThisClickedEvent, slot: proc(super: QWhatsThisClickedEventcloneBase): QWhatsThisClickedEvent) =
+type QWhatsThisClickedEventcloneProc* = proc(): gen_qevent_types.QWhatsThisClickedEvent
+proc onclone*(self: gen_qevent_types.QWhatsThisClickedEvent, slot: QWhatsThisClickedEventcloneProc) =
   # TODO check subclass
-  type Cb = proc(super: QWhatsThisClickedEventcloneBase): QWhatsThisClickedEvent
-  var tmp = new Cb
+  var tmp = new QWhatsThisClickedEventcloneProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWhatsThisClickedEvent_override_virtual_clone(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWhatsThisClickedEvent_clone(self: ptr cQWhatsThisClickedEvent, slot: int): pointer {.exportc: "miqt_exec_callback_QWhatsThisClickedEvent_clone ".} =
-  type Cb = proc(super: QWhatsThisClickedEventcloneBase): QWhatsThisClickedEvent
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_clone(QWhatsThisClickedEvent(h: self), )
+  var nimfunc = cast[ptr QWhatsThisClickedEventcloneProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_setAccepted(self: QWhatsThisClickedEvent, accepted: bool): void =
-
+proc QWhatsThisClickedEventsetAccepted*(self: gen_qevent_types.QWhatsThisClickedEvent, accepted: bool): void =
 
   fQWhatsThisClickedEvent_virtualbase_setAccepted(self.h, accepted)
 
-type QWhatsThisClickedEventsetAcceptedBase* = proc(accepted: bool): void
-proc onsetAccepted*(self: QWhatsThisClickedEvent, slot: proc(super: QWhatsThisClickedEventsetAcceptedBase, accepted: bool): void) =
+type QWhatsThisClickedEventsetAcceptedProc* = proc(accepted: bool): void
+proc onsetAccepted*(self: gen_qevent_types.QWhatsThisClickedEvent, slot: QWhatsThisClickedEventsetAcceptedProc) =
   # TODO check subclass
-  type Cb = proc(super: QWhatsThisClickedEventsetAcceptedBase, accepted: bool): void
-  var tmp = new Cb
+  var tmp = new QWhatsThisClickedEventsetAcceptedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWhatsThisClickedEvent_override_virtual_setAccepted(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWhatsThisClickedEvent_setAccepted(self: ptr cQWhatsThisClickedEvent, slot: int, accepted: bool): void {.exportc: "miqt_exec_callback_QWhatsThisClickedEvent_setAccepted ".} =
-  type Cb = proc(super: QWhatsThisClickedEventsetAcceptedBase, accepted: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(accepted: bool): auto =
-    callVirtualBase_setAccepted(QWhatsThisClickedEvent(h: self), accepted)
+  var nimfunc = cast[ptr QWhatsThisClickedEventsetAcceptedProc](cast[pointer](slot))
   let slotval1 = accepted
 
 
-  nimfunc[](superCall, slotval1)
-proc delete*(self: QWhatsThisClickedEvent) =
+  nimfunc[](slotval1)
+proc delete*(self: gen_qevent_types.QWhatsThisClickedEvent) =
   fcQWhatsThisClickedEvent_delete(self.h)
 
-func init*(T: type QActionEvent, h: ptr cQActionEvent): QActionEvent =
+func init*(T: type gen_qevent_types.QActionEvent, h: ptr cQActionEvent): gen_qevent_types.QActionEvent =
   T(h: h)
-proc create*(T: type QActionEvent, typeVal: cint, action: gen_qaction.QAction): QActionEvent =
+proc create*(T: type gen_qevent_types.QActionEvent, typeVal: cint, action: gen_qaction.QAction): gen_qevent_types.QActionEvent =
 
-  QActionEvent.init(fcQActionEvent_new(typeVal, action.h))
-proc create*(T: type QActionEvent, typeVal: cint, action: gen_qaction.QAction, before: gen_qaction.QAction): QActionEvent =
+  gen_qevent_types.QActionEvent.init(fcQActionEvent_new(typeVal, action.h))
+proc create*(T: type gen_qevent_types.QActionEvent, typeVal: cint, action: gen_qaction.QAction, before: gen_qaction.QAction): gen_qevent_types.QActionEvent =
 
-  QActionEvent.init(fcQActionEvent_new2(typeVal, action.h, before.h))
-proc clone*(self: QActionEvent, ): QActionEvent =
+  gen_qevent_types.QActionEvent.init(fcQActionEvent_new2(typeVal, action.h, before.h))
+proc clone*(self: gen_qevent_types.QActionEvent, ): gen_qevent_types.QActionEvent =
 
-  QActionEvent(h: fcQActionEvent_clone(self.h))
+  gen_qevent_types.QActionEvent(h: fcQActionEvent_clone(self.h))
 
-proc action*(self: QActionEvent, ): gen_qaction.QAction =
+proc action*(self: gen_qevent_types.QActionEvent, ): gen_qaction.QAction =
 
   gen_qaction.QAction(h: fcQActionEvent_action(self.h))
 
-proc before*(self: QActionEvent, ): gen_qaction.QAction =
+proc before*(self: gen_qevent_types.QActionEvent, ): gen_qaction.QAction =
 
   gen_qaction.QAction(h: fcQActionEvent_before(self.h))
 
-proc callVirtualBase_clone(self: QActionEvent, ): QActionEvent =
+proc QActionEventclone*(self: gen_qevent_types.QActionEvent, ): gen_qevent_types.QActionEvent =
 
+  gen_qevent_types.QActionEvent(h: fQActionEvent_virtualbase_clone(self.h))
 
-  QActionEvent(h: fQActionEvent_virtualbase_clone(self.h))
-
-type QActionEventcloneBase* = proc(): QActionEvent
-proc onclone*(self: QActionEvent, slot: proc(super: QActionEventcloneBase): QActionEvent) =
+type QActionEventcloneProc* = proc(): gen_qevent_types.QActionEvent
+proc onclone*(self: gen_qevent_types.QActionEvent, slot: QActionEventcloneProc) =
   # TODO check subclass
-  type Cb = proc(super: QActionEventcloneBase): QActionEvent
-  var tmp = new Cb
+  var tmp = new QActionEventcloneProc
   tmp[] = slot
   GC_ref(tmp)
   fcQActionEvent_override_virtual_clone(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QActionEvent_clone(self: ptr cQActionEvent, slot: int): pointer {.exportc: "miqt_exec_callback_QActionEvent_clone ".} =
-  type Cb = proc(super: QActionEventcloneBase): QActionEvent
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_clone(QActionEvent(h: self), )
+  var nimfunc = cast[ptr QActionEventcloneProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_setAccepted(self: QActionEvent, accepted: bool): void =
-
+proc QActionEventsetAccepted*(self: gen_qevent_types.QActionEvent, accepted: bool): void =
 
   fQActionEvent_virtualbase_setAccepted(self.h, accepted)
 
-type QActionEventsetAcceptedBase* = proc(accepted: bool): void
-proc onsetAccepted*(self: QActionEvent, slot: proc(super: QActionEventsetAcceptedBase, accepted: bool): void) =
+type QActionEventsetAcceptedProc* = proc(accepted: bool): void
+proc onsetAccepted*(self: gen_qevent_types.QActionEvent, slot: QActionEventsetAcceptedProc) =
   # TODO check subclass
-  type Cb = proc(super: QActionEventsetAcceptedBase, accepted: bool): void
-  var tmp = new Cb
+  var tmp = new QActionEventsetAcceptedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQActionEvent_override_virtual_setAccepted(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QActionEvent_setAccepted(self: ptr cQActionEvent, slot: int, accepted: bool): void {.exportc: "miqt_exec_callback_QActionEvent_setAccepted ".} =
-  type Cb = proc(super: QActionEventsetAcceptedBase, accepted: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(accepted: bool): auto =
-    callVirtualBase_setAccepted(QActionEvent(h: self), accepted)
+  var nimfunc = cast[ptr QActionEventsetAcceptedProc](cast[pointer](slot))
   let slotval1 = accepted
 
 
-  nimfunc[](superCall, slotval1)
-proc delete*(self: QActionEvent) =
+  nimfunc[](slotval1)
+proc delete*(self: gen_qevent_types.QActionEvent) =
   fcQActionEvent_delete(self.h)
 
-func init*(T: type QFileOpenEvent, h: ptr cQFileOpenEvent): QFileOpenEvent =
+func init*(T: type gen_qevent_types.QFileOpenEvent, h: ptr cQFileOpenEvent): gen_qevent_types.QFileOpenEvent =
   T(h: h)
-proc create*(T: type QFileOpenEvent, file: string): QFileOpenEvent =
+proc create*(T: type gen_qevent_types.QFileOpenEvent, file: string): gen_qevent_types.QFileOpenEvent =
 
-  QFileOpenEvent.init(fcQFileOpenEvent_new(struct_miqt_string(data: file, len: csize_t(len(file)))))
-proc create*(T: type QFileOpenEvent, url: gen_qurl.QUrl): QFileOpenEvent =
+  gen_qevent_types.QFileOpenEvent.init(fcQFileOpenEvent_new(struct_miqt_string(data: file, len: csize_t(len(file)))))
+proc create*(T: type gen_qevent_types.QFileOpenEvent, url: gen_qurl.QUrl): gen_qevent_types.QFileOpenEvent =
 
-  QFileOpenEvent.init(fcQFileOpenEvent_new2(url.h))
-proc clone*(self: QFileOpenEvent, ): QFileOpenEvent =
+  gen_qevent_types.QFileOpenEvent.init(fcQFileOpenEvent_new2(url.h))
+proc clone*(self: gen_qevent_types.QFileOpenEvent, ): gen_qevent_types.QFileOpenEvent =
 
-  QFileOpenEvent(h: fcQFileOpenEvent_clone(self.h))
+  gen_qevent_types.QFileOpenEvent(h: fcQFileOpenEvent_clone(self.h))
 
-proc file*(self: QFileOpenEvent, ): string =
+proc file*(self: gen_qevent_types.QFileOpenEvent, ): string =
 
   let v_ms = fcQFileOpenEvent_file(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc url*(self: QFileOpenEvent, ): gen_qurl.QUrl =
+proc url*(self: gen_qevent_types.QFileOpenEvent, ): gen_qurl.QUrl =
 
   gen_qurl.QUrl(h: fcQFileOpenEvent_url(self.h))
 
-proc openFile*(self: QFileOpenEvent, file: gen_qfile.QFile, flags: gen_qiodevicebase.QIODeviceBaseOpenModeFlag): bool =
+proc openFile*(self: gen_qevent_types.QFileOpenEvent, file: gen_qfile.QFile, flags: cint): bool =
 
   fcQFileOpenEvent_openFile(self.h, file.h, cint(flags))
 
-proc callVirtualBase_clone(self: QFileOpenEvent, ): QFileOpenEvent =
+proc QFileOpenEventclone*(self: gen_qevent_types.QFileOpenEvent, ): gen_qevent_types.QFileOpenEvent =
 
+  gen_qevent_types.QFileOpenEvent(h: fQFileOpenEvent_virtualbase_clone(self.h))
 
-  QFileOpenEvent(h: fQFileOpenEvent_virtualbase_clone(self.h))
-
-type QFileOpenEventcloneBase* = proc(): QFileOpenEvent
-proc onclone*(self: QFileOpenEvent, slot: proc(super: QFileOpenEventcloneBase): QFileOpenEvent) =
+type QFileOpenEventcloneProc* = proc(): gen_qevent_types.QFileOpenEvent
+proc onclone*(self: gen_qevent_types.QFileOpenEvent, slot: QFileOpenEventcloneProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileOpenEventcloneBase): QFileOpenEvent
-  var tmp = new Cb
+  var tmp = new QFileOpenEventcloneProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileOpenEvent_override_virtual_clone(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileOpenEvent_clone(self: ptr cQFileOpenEvent, slot: int): pointer {.exportc: "miqt_exec_callback_QFileOpenEvent_clone ".} =
-  type Cb = proc(super: QFileOpenEventcloneBase): QFileOpenEvent
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_clone(QFileOpenEvent(h: self), )
+  var nimfunc = cast[ptr QFileOpenEventcloneProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_setAccepted(self: QFileOpenEvent, accepted: bool): void =
-
+proc QFileOpenEventsetAccepted*(self: gen_qevent_types.QFileOpenEvent, accepted: bool): void =
 
   fQFileOpenEvent_virtualbase_setAccepted(self.h, accepted)
 
-type QFileOpenEventsetAcceptedBase* = proc(accepted: bool): void
-proc onsetAccepted*(self: QFileOpenEvent, slot: proc(super: QFileOpenEventsetAcceptedBase, accepted: bool): void) =
+type QFileOpenEventsetAcceptedProc* = proc(accepted: bool): void
+proc onsetAccepted*(self: gen_qevent_types.QFileOpenEvent, slot: QFileOpenEventsetAcceptedProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileOpenEventsetAcceptedBase, accepted: bool): void
-  var tmp = new Cb
+  var tmp = new QFileOpenEventsetAcceptedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileOpenEvent_override_virtual_setAccepted(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileOpenEvent_setAccepted(self: ptr cQFileOpenEvent, slot: int, accepted: bool): void {.exportc: "miqt_exec_callback_QFileOpenEvent_setAccepted ".} =
-  type Cb = proc(super: QFileOpenEventsetAcceptedBase, accepted: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(accepted: bool): auto =
-    callVirtualBase_setAccepted(QFileOpenEvent(h: self), accepted)
+  var nimfunc = cast[ptr QFileOpenEventsetAcceptedProc](cast[pointer](slot))
   let slotval1 = accepted
 
 
-  nimfunc[](superCall, slotval1)
-proc delete*(self: QFileOpenEvent) =
+  nimfunc[](slotval1)
+proc delete*(self: gen_qevent_types.QFileOpenEvent) =
   fcQFileOpenEvent_delete(self.h)
 
-func init*(T: type QToolBarChangeEvent, h: ptr cQToolBarChangeEvent): QToolBarChangeEvent =
+func init*(T: type gen_qevent_types.QToolBarChangeEvent, h: ptr cQToolBarChangeEvent): gen_qevent_types.QToolBarChangeEvent =
   T(h: h)
-proc create*(T: type QToolBarChangeEvent, t: bool): QToolBarChangeEvent =
+proc create*(T: type gen_qevent_types.QToolBarChangeEvent, t: bool): gen_qevent_types.QToolBarChangeEvent =
 
-  QToolBarChangeEvent.init(fcQToolBarChangeEvent_new(t))
-proc clone*(self: QToolBarChangeEvent, ): QToolBarChangeEvent =
+  gen_qevent_types.QToolBarChangeEvent.init(fcQToolBarChangeEvent_new(t))
+proc clone*(self: gen_qevent_types.QToolBarChangeEvent, ): gen_qevent_types.QToolBarChangeEvent =
 
-  QToolBarChangeEvent(h: fcQToolBarChangeEvent_clone(self.h))
+  gen_qevent_types.QToolBarChangeEvent(h: fcQToolBarChangeEvent_clone(self.h))
 
-proc toggle*(self: QToolBarChangeEvent, ): bool =
+proc toggle*(self: gen_qevent_types.QToolBarChangeEvent, ): bool =
 
   fcQToolBarChangeEvent_toggle(self.h)
 
-proc callVirtualBase_clone(self: QToolBarChangeEvent, ): QToolBarChangeEvent =
+proc QToolBarChangeEventclone*(self: gen_qevent_types.QToolBarChangeEvent, ): gen_qevent_types.QToolBarChangeEvent =
 
+  gen_qevent_types.QToolBarChangeEvent(h: fQToolBarChangeEvent_virtualbase_clone(self.h))
 
-  QToolBarChangeEvent(h: fQToolBarChangeEvent_virtualbase_clone(self.h))
-
-type QToolBarChangeEventcloneBase* = proc(): QToolBarChangeEvent
-proc onclone*(self: QToolBarChangeEvent, slot: proc(super: QToolBarChangeEventcloneBase): QToolBarChangeEvent) =
+type QToolBarChangeEventcloneProc* = proc(): gen_qevent_types.QToolBarChangeEvent
+proc onclone*(self: gen_qevent_types.QToolBarChangeEvent, slot: QToolBarChangeEventcloneProc) =
   # TODO check subclass
-  type Cb = proc(super: QToolBarChangeEventcloneBase): QToolBarChangeEvent
-  var tmp = new Cb
+  var tmp = new QToolBarChangeEventcloneProc
   tmp[] = slot
   GC_ref(tmp)
   fcQToolBarChangeEvent_override_virtual_clone(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QToolBarChangeEvent_clone(self: ptr cQToolBarChangeEvent, slot: int): pointer {.exportc: "miqt_exec_callback_QToolBarChangeEvent_clone ".} =
-  type Cb = proc(super: QToolBarChangeEventcloneBase): QToolBarChangeEvent
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_clone(QToolBarChangeEvent(h: self), )
+  var nimfunc = cast[ptr QToolBarChangeEventcloneProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_setAccepted(self: QToolBarChangeEvent, accepted: bool): void =
-
+proc QToolBarChangeEventsetAccepted*(self: gen_qevent_types.QToolBarChangeEvent, accepted: bool): void =
 
   fQToolBarChangeEvent_virtualbase_setAccepted(self.h, accepted)
 
-type QToolBarChangeEventsetAcceptedBase* = proc(accepted: bool): void
-proc onsetAccepted*(self: QToolBarChangeEvent, slot: proc(super: QToolBarChangeEventsetAcceptedBase, accepted: bool): void) =
+type QToolBarChangeEventsetAcceptedProc* = proc(accepted: bool): void
+proc onsetAccepted*(self: gen_qevent_types.QToolBarChangeEvent, slot: QToolBarChangeEventsetAcceptedProc) =
   # TODO check subclass
-  type Cb = proc(super: QToolBarChangeEventsetAcceptedBase, accepted: bool): void
-  var tmp = new Cb
+  var tmp = new QToolBarChangeEventsetAcceptedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQToolBarChangeEvent_override_virtual_setAccepted(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QToolBarChangeEvent_setAccepted(self: ptr cQToolBarChangeEvent, slot: int, accepted: bool): void {.exportc: "miqt_exec_callback_QToolBarChangeEvent_setAccepted ".} =
-  type Cb = proc(super: QToolBarChangeEventsetAcceptedBase, accepted: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(accepted: bool): auto =
-    callVirtualBase_setAccepted(QToolBarChangeEvent(h: self), accepted)
+  var nimfunc = cast[ptr QToolBarChangeEventsetAcceptedProc](cast[pointer](slot))
   let slotval1 = accepted
 
 
-  nimfunc[](superCall, slotval1)
-proc delete*(self: QToolBarChangeEvent) =
+  nimfunc[](slotval1)
+proc delete*(self: gen_qevent_types.QToolBarChangeEvent) =
   fcQToolBarChangeEvent_delete(self.h)
 
-func init*(T: type QShortcutEvent, h: ptr cQShortcutEvent): QShortcutEvent =
+func init*(T: type gen_qevent_types.QShortcutEvent, h: ptr cQShortcutEvent): gen_qevent_types.QShortcutEvent =
   T(h: h)
-proc create*(T: type QShortcutEvent, key: gen_qkeysequence.QKeySequence, id: cint): QShortcutEvent =
+proc create*(T: type gen_qevent_types.QShortcutEvent, key: gen_qkeysequence.QKeySequence, id: cint): gen_qevent_types.QShortcutEvent =
 
-  QShortcutEvent.init(fcQShortcutEvent_new(key.h, id))
-proc create*(T: type QShortcutEvent, key: gen_qkeysequence.QKeySequence, id: cint, ambiguous: bool): QShortcutEvent =
+  gen_qevent_types.QShortcutEvent.init(fcQShortcutEvent_new(key.h, id))
+proc create*(T: type gen_qevent_types.QShortcutEvent, key: gen_qkeysequence.QKeySequence, id: cint, ambiguous: bool): gen_qevent_types.QShortcutEvent =
 
-  QShortcutEvent.init(fcQShortcutEvent_new2(key.h, id, ambiguous))
-proc clone*(self: QShortcutEvent, ): QShortcutEvent =
+  gen_qevent_types.QShortcutEvent.init(fcQShortcutEvent_new2(key.h, id, ambiguous))
+proc clone*(self: gen_qevent_types.QShortcutEvent, ): gen_qevent_types.QShortcutEvent =
 
-  QShortcutEvent(h: fcQShortcutEvent_clone(self.h))
+  gen_qevent_types.QShortcutEvent(h: fcQShortcutEvent_clone(self.h))
 
-proc key*(self: QShortcutEvent, ): gen_qkeysequence.QKeySequence =
+proc key*(self: gen_qevent_types.QShortcutEvent, ): gen_qkeysequence.QKeySequence =
 
   gen_qkeysequence.QKeySequence(h: fcQShortcutEvent_key(self.h))
 
-proc shortcutId*(self: QShortcutEvent, ): cint =
+proc shortcutId*(self: gen_qevent_types.QShortcutEvent, ): cint =
 
   fcQShortcutEvent_shortcutId(self.h)
 
-proc isAmbiguous*(self: QShortcutEvent, ): bool =
+proc isAmbiguous*(self: gen_qevent_types.QShortcutEvent, ): bool =
 
   fcQShortcutEvent_isAmbiguous(self.h)
 
-proc callVirtualBase_clone(self: QShortcutEvent, ): QShortcutEvent =
+proc QShortcutEventclone*(self: gen_qevent_types.QShortcutEvent, ): gen_qevent_types.QShortcutEvent =
 
+  gen_qevent_types.QShortcutEvent(h: fQShortcutEvent_virtualbase_clone(self.h))
 
-  QShortcutEvent(h: fQShortcutEvent_virtualbase_clone(self.h))
-
-type QShortcutEventcloneBase* = proc(): QShortcutEvent
-proc onclone*(self: QShortcutEvent, slot: proc(super: QShortcutEventcloneBase): QShortcutEvent) =
+type QShortcutEventcloneProc* = proc(): gen_qevent_types.QShortcutEvent
+proc onclone*(self: gen_qevent_types.QShortcutEvent, slot: QShortcutEventcloneProc) =
   # TODO check subclass
-  type Cb = proc(super: QShortcutEventcloneBase): QShortcutEvent
-  var tmp = new Cb
+  var tmp = new QShortcutEventcloneProc
   tmp[] = slot
   GC_ref(tmp)
   fcQShortcutEvent_override_virtual_clone(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QShortcutEvent_clone(self: ptr cQShortcutEvent, slot: int): pointer {.exportc: "miqt_exec_callback_QShortcutEvent_clone ".} =
-  type Cb = proc(super: QShortcutEventcloneBase): QShortcutEvent
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_clone(QShortcutEvent(h: self), )
+  var nimfunc = cast[ptr QShortcutEventcloneProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_setAccepted(self: QShortcutEvent, accepted: bool): void =
-
+proc QShortcutEventsetAccepted*(self: gen_qevent_types.QShortcutEvent, accepted: bool): void =
 
   fQShortcutEvent_virtualbase_setAccepted(self.h, accepted)
 
-type QShortcutEventsetAcceptedBase* = proc(accepted: bool): void
-proc onsetAccepted*(self: QShortcutEvent, slot: proc(super: QShortcutEventsetAcceptedBase, accepted: bool): void) =
+type QShortcutEventsetAcceptedProc* = proc(accepted: bool): void
+proc onsetAccepted*(self: gen_qevent_types.QShortcutEvent, slot: QShortcutEventsetAcceptedProc) =
   # TODO check subclass
-  type Cb = proc(super: QShortcutEventsetAcceptedBase, accepted: bool): void
-  var tmp = new Cb
+  var tmp = new QShortcutEventsetAcceptedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQShortcutEvent_override_virtual_setAccepted(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QShortcutEvent_setAccepted(self: ptr cQShortcutEvent, slot: int, accepted: bool): void {.exportc: "miqt_exec_callback_QShortcutEvent_setAccepted ".} =
-  type Cb = proc(super: QShortcutEventsetAcceptedBase, accepted: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(accepted: bool): auto =
-    callVirtualBase_setAccepted(QShortcutEvent(h: self), accepted)
+  var nimfunc = cast[ptr QShortcutEventsetAcceptedProc](cast[pointer](slot))
   let slotval1 = accepted
 
 
-  nimfunc[](superCall, slotval1)
-proc delete*(self: QShortcutEvent) =
+  nimfunc[](slotval1)
+proc delete*(self: gen_qevent_types.QShortcutEvent) =
   fcQShortcutEvent_delete(self.h)
 
-func init*(T: type QWindowStateChangeEvent, h: ptr cQWindowStateChangeEvent): QWindowStateChangeEvent =
+func init*(T: type gen_qevent_types.QWindowStateChangeEvent, h: ptr cQWindowStateChangeEvent): gen_qevent_types.QWindowStateChangeEvent =
   T(h: h)
-proc create*(T: type QWindowStateChangeEvent, oldState: gen_qnamespace.WindowState): QWindowStateChangeEvent =
+proc create*(T: type gen_qevent_types.QWindowStateChangeEvent, oldState: cint): gen_qevent_types.QWindowStateChangeEvent =
 
-  QWindowStateChangeEvent.init(fcQWindowStateChangeEvent_new(cint(oldState)))
-proc create*(T: type QWindowStateChangeEvent, oldState: gen_qnamespace.WindowState, isOverride: bool): QWindowStateChangeEvent =
+  gen_qevent_types.QWindowStateChangeEvent.init(fcQWindowStateChangeEvent_new(cint(oldState)))
+proc create*(T: type gen_qevent_types.QWindowStateChangeEvent, oldState: cint, isOverride: bool): gen_qevent_types.QWindowStateChangeEvent =
 
-  QWindowStateChangeEvent.init(fcQWindowStateChangeEvent_new2(cint(oldState), isOverride))
-proc clone*(self: QWindowStateChangeEvent, ): QWindowStateChangeEvent =
+  gen_qevent_types.QWindowStateChangeEvent.init(fcQWindowStateChangeEvent_new2(cint(oldState), isOverride))
+proc clone*(self: gen_qevent_types.QWindowStateChangeEvent, ): gen_qevent_types.QWindowStateChangeEvent =
 
-  QWindowStateChangeEvent(h: fcQWindowStateChangeEvent_clone(self.h))
+  gen_qevent_types.QWindowStateChangeEvent(h: fcQWindowStateChangeEvent_clone(self.h))
 
-proc oldState*(self: QWindowStateChangeEvent, ): gen_qnamespace.WindowState =
+proc oldState*(self: gen_qevent_types.QWindowStateChangeEvent, ): cint =
 
-  gen_qnamespace.WindowState(fcQWindowStateChangeEvent_oldState(self.h))
+  cint(fcQWindowStateChangeEvent_oldState(self.h))
 
-proc isOverride*(self: QWindowStateChangeEvent, ): bool =
+proc isOverride*(self: gen_qevent_types.QWindowStateChangeEvent, ): bool =
 
   fcQWindowStateChangeEvent_isOverride(self.h)
 
-proc callVirtualBase_clone(self: QWindowStateChangeEvent, ): QWindowStateChangeEvent =
+proc QWindowStateChangeEventclone*(self: gen_qevent_types.QWindowStateChangeEvent, ): gen_qevent_types.QWindowStateChangeEvent =
 
+  gen_qevent_types.QWindowStateChangeEvent(h: fQWindowStateChangeEvent_virtualbase_clone(self.h))
 
-  QWindowStateChangeEvent(h: fQWindowStateChangeEvent_virtualbase_clone(self.h))
-
-type QWindowStateChangeEventcloneBase* = proc(): QWindowStateChangeEvent
-proc onclone*(self: QWindowStateChangeEvent, slot: proc(super: QWindowStateChangeEventcloneBase): QWindowStateChangeEvent) =
+type QWindowStateChangeEventcloneProc* = proc(): gen_qevent_types.QWindowStateChangeEvent
+proc onclone*(self: gen_qevent_types.QWindowStateChangeEvent, slot: QWindowStateChangeEventcloneProc) =
   # TODO check subclass
-  type Cb = proc(super: QWindowStateChangeEventcloneBase): QWindowStateChangeEvent
-  var tmp = new Cb
+  var tmp = new QWindowStateChangeEventcloneProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWindowStateChangeEvent_override_virtual_clone(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWindowStateChangeEvent_clone(self: ptr cQWindowStateChangeEvent, slot: int): pointer {.exportc: "miqt_exec_callback_QWindowStateChangeEvent_clone ".} =
-  type Cb = proc(super: QWindowStateChangeEventcloneBase): QWindowStateChangeEvent
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_clone(QWindowStateChangeEvent(h: self), )
+  var nimfunc = cast[ptr QWindowStateChangeEventcloneProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_setAccepted(self: QWindowStateChangeEvent, accepted: bool): void =
-
+proc QWindowStateChangeEventsetAccepted*(self: gen_qevent_types.QWindowStateChangeEvent, accepted: bool): void =
 
   fQWindowStateChangeEvent_virtualbase_setAccepted(self.h, accepted)
 
-type QWindowStateChangeEventsetAcceptedBase* = proc(accepted: bool): void
-proc onsetAccepted*(self: QWindowStateChangeEvent, slot: proc(super: QWindowStateChangeEventsetAcceptedBase, accepted: bool): void) =
+type QWindowStateChangeEventsetAcceptedProc* = proc(accepted: bool): void
+proc onsetAccepted*(self: gen_qevent_types.QWindowStateChangeEvent, slot: QWindowStateChangeEventsetAcceptedProc) =
   # TODO check subclass
-  type Cb = proc(super: QWindowStateChangeEventsetAcceptedBase, accepted: bool): void
-  var tmp = new Cb
+  var tmp = new QWindowStateChangeEventsetAcceptedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWindowStateChangeEvent_override_virtual_setAccepted(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWindowStateChangeEvent_setAccepted(self: ptr cQWindowStateChangeEvent, slot: int, accepted: bool): void {.exportc: "miqt_exec_callback_QWindowStateChangeEvent_setAccepted ".} =
-  type Cb = proc(super: QWindowStateChangeEventsetAcceptedBase, accepted: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(accepted: bool): auto =
-    callVirtualBase_setAccepted(QWindowStateChangeEvent(h: self), accepted)
+  var nimfunc = cast[ptr QWindowStateChangeEventsetAcceptedProc](cast[pointer](slot))
   let slotval1 = accepted
 
 
-  nimfunc[](superCall, slotval1)
-proc delete*(self: QWindowStateChangeEvent) =
+  nimfunc[](slotval1)
+proc delete*(self: gen_qevent_types.QWindowStateChangeEvent) =
   fcQWindowStateChangeEvent_delete(self.h)
 
-func init*(T: type QTouchEvent, h: ptr cQTouchEvent): QTouchEvent =
+func init*(T: type gen_qevent_types.QTouchEvent, h: ptr cQTouchEvent): gen_qevent_types.QTouchEvent =
   T(h: h)
-proc create*(T: type QTouchEvent, eventType: gen_qcoreevent.QEventType): QTouchEvent =
+proc create*(T: type gen_qevent_types.QTouchEvent, eventType: cint): gen_qevent_types.QTouchEvent =
 
-  QTouchEvent.init(fcQTouchEvent_new(cint(eventType)))
-proc create*(T: type QTouchEvent, eventType: gen_qcoreevent.QEventType, device: gen_qpointingdevice.QPointingDevice, modifiers: gen_qnamespace.KeyboardModifier, touchPointStates: gen_qeventpoint.QEventPointState): QTouchEvent =
+  gen_qevent_types.QTouchEvent.init(fcQTouchEvent_new(cint(eventType)))
+proc create*(T: type gen_qevent_types.QTouchEvent, eventType: cint, device: gen_qpointingdevice.QPointingDevice, modifiers: cint, touchPointStates: cint): gen_qevent_types.QTouchEvent =
 
-  QTouchEvent.init(fcQTouchEvent_new2(cint(eventType), device.h, cint(modifiers), cint(touchPointStates)))
-proc create*(T: type QTouchEvent, eventType: gen_qcoreevent.QEventType, device: gen_qpointingdevice.QPointingDevice): QTouchEvent =
+  gen_qevent_types.QTouchEvent.init(fcQTouchEvent_new2(cint(eventType), device.h, cint(modifiers), cint(touchPointStates)))
+proc create*(T: type gen_qevent_types.QTouchEvent, eventType: cint, device: gen_qpointingdevice.QPointingDevice): gen_qevent_types.QTouchEvent =
 
-  QTouchEvent.init(fcQTouchEvent_new3(cint(eventType), device.h))
-proc create*(T: type QTouchEvent, eventType: gen_qcoreevent.QEventType, device: gen_qpointingdevice.QPointingDevice, modifiers: gen_qnamespace.KeyboardModifier): QTouchEvent =
+  gen_qevent_types.QTouchEvent.init(fcQTouchEvent_new3(cint(eventType), device.h))
+proc create*(T: type gen_qevent_types.QTouchEvent, eventType: cint, device: gen_qpointingdevice.QPointingDevice, modifiers: cint): gen_qevent_types.QTouchEvent =
 
-  QTouchEvent.init(fcQTouchEvent_new4(cint(eventType), device.h, cint(modifiers)))
-proc create*(T: type QTouchEvent, eventType: gen_qcoreevent.QEventType, device: gen_qpointingdevice.QPointingDevice, modifiers: gen_qnamespace.KeyboardModifier, touchPoints: seq[gen_qeventpoint.QEventPoint]): QTouchEvent =
-
-  var touchPoints_CArray = newSeq[pointer](len(touchPoints))
-  for i in 0..<len(touchPoints):
-    touchPoints_CArray[i] = touchPoints[i].h
-
-  QTouchEvent.init(fcQTouchEvent_new5(cint(eventType), device.h, cint(modifiers), struct_miqt_array(len: csize_t(len(touchPoints)), data: if len(touchPoints) == 0: nil else: addr(touchPoints_CArray[0]))))
-proc create*(T: type QTouchEvent, eventType: gen_qcoreevent.QEventType, device: gen_qpointingdevice.QPointingDevice, modifiers: gen_qnamespace.KeyboardModifier, touchPointStates: gen_qeventpoint.QEventPointState, touchPoints: seq[gen_qeventpoint.QEventPoint]): QTouchEvent =
+  gen_qevent_types.QTouchEvent.init(fcQTouchEvent_new4(cint(eventType), device.h, cint(modifiers)))
+proc create*(T: type gen_qevent_types.QTouchEvent, eventType: cint, device: gen_qpointingdevice.QPointingDevice, modifiers: cint, touchPoints: seq[gen_qeventpoint.QEventPoint]): gen_qevent_types.QTouchEvent =
 
   var touchPoints_CArray = newSeq[pointer](len(touchPoints))
   for i in 0..<len(touchPoints):
     touchPoints_CArray[i] = touchPoints[i].h
 
-  QTouchEvent.init(fcQTouchEvent_new6(cint(eventType), device.h, cint(modifiers), cint(touchPointStates), struct_miqt_array(len: csize_t(len(touchPoints)), data: if len(touchPoints) == 0: nil else: addr(touchPoints_CArray[0]))))
-proc clone*(self: QTouchEvent, ): QTouchEvent =
+  gen_qevent_types.QTouchEvent.init(fcQTouchEvent_new5(cint(eventType), device.h, cint(modifiers), struct_miqt_array(len: csize_t(len(touchPoints)), data: if len(touchPoints) == 0: nil else: addr(touchPoints_CArray[0]))))
+proc create*(T: type gen_qevent_types.QTouchEvent, eventType: cint, device: gen_qpointingdevice.QPointingDevice, modifiers: cint, touchPointStates: cint, touchPoints: seq[gen_qeventpoint.QEventPoint]): gen_qevent_types.QTouchEvent =
 
-  QTouchEvent(h: fcQTouchEvent_clone(self.h))
+  var touchPoints_CArray = newSeq[pointer](len(touchPoints))
+  for i in 0..<len(touchPoints):
+    touchPoints_CArray[i] = touchPoints[i].h
 
-proc target*(self: QTouchEvent, ): gen_qobject.QObject =
+  gen_qevent_types.QTouchEvent.init(fcQTouchEvent_new6(cint(eventType), device.h, cint(modifiers), cint(touchPointStates), struct_miqt_array(len: csize_t(len(touchPoints)), data: if len(touchPoints) == 0: nil else: addr(touchPoints_CArray[0]))))
+proc clone*(self: gen_qevent_types.QTouchEvent, ): gen_qevent_types.QTouchEvent =
+
+  gen_qevent_types.QTouchEvent(h: fcQTouchEvent_clone(self.h))
+
+proc target*(self: gen_qevent_types.QTouchEvent, ): gen_qobject.QObject =
 
   gen_qobject.QObject(h: fcQTouchEvent_target(self.h))
 
-proc touchPointStates*(self: QTouchEvent, ): gen_qeventpoint.QEventPointState =
+proc touchPointStates*(self: gen_qevent_types.QTouchEvent, ): cint =
 
-  gen_qeventpoint.QEventPointState(fcQTouchEvent_touchPointStates(self.h))
+  cint(fcQTouchEvent_touchPointStates(self.h))
 
-proc touchPoints*(self: QTouchEvent, ): seq[gen_qeventpoint.QEventPoint] =
+proc touchPoints*(self: gen_qevent_types.QTouchEvent, ): seq[gen_qeventpoint.QEventPoint] =
 
   var v_ma = fcQTouchEvent_touchPoints(self.h)
   var vx_ret = newSeq[gen_qeventpoint.QEventPoint](int(v_ma.len))
@@ -4336,457 +3829,387 @@ proc touchPoints*(self: QTouchEvent, ): seq[gen_qeventpoint.QEventPoint] =
     vx_ret[i] = gen_qeventpoint.QEventPoint(h: v_outCast[i])
   vx_ret
 
-proc isBeginEvent*(self: QTouchEvent, ): bool =
+proc isBeginEvent*(self: gen_qevent_types.QTouchEvent, ): bool =
 
   fcQTouchEvent_isBeginEvent(self.h)
 
-proc isUpdateEvent*(self: QTouchEvent, ): bool =
+proc isUpdateEvent*(self: gen_qevent_types.QTouchEvent, ): bool =
 
   fcQTouchEvent_isUpdateEvent(self.h)
 
-proc isEndEvent*(self: QTouchEvent, ): bool =
+proc isEndEvent*(self: gen_qevent_types.QTouchEvent, ): bool =
 
   fcQTouchEvent_isEndEvent(self.h)
 
-proc callVirtualBase_clone(self: QTouchEvent, ): QTouchEvent =
+proc QTouchEventclone*(self: gen_qevent_types.QTouchEvent, ): gen_qevent_types.QTouchEvent =
 
+  gen_qevent_types.QTouchEvent(h: fQTouchEvent_virtualbase_clone(self.h))
 
-  QTouchEvent(h: fQTouchEvent_virtualbase_clone(self.h))
-
-type QTouchEventcloneBase* = proc(): QTouchEvent
-proc onclone*(self: QTouchEvent, slot: proc(super: QTouchEventcloneBase): QTouchEvent) =
+type QTouchEventcloneProc* = proc(): gen_qevent_types.QTouchEvent
+proc onclone*(self: gen_qevent_types.QTouchEvent, slot: QTouchEventcloneProc) =
   # TODO check subclass
-  type Cb = proc(super: QTouchEventcloneBase): QTouchEvent
-  var tmp = new Cb
+  var tmp = new QTouchEventcloneProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTouchEvent_override_virtual_clone(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTouchEvent_clone(self: ptr cQTouchEvent, slot: int): pointer {.exportc: "miqt_exec_callback_QTouchEvent_clone ".} =
-  type Cb = proc(super: QTouchEventcloneBase): QTouchEvent
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_clone(QTouchEvent(h: self), )
+  var nimfunc = cast[ptr QTouchEventcloneProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_isBeginEvent(self: QTouchEvent, ): bool =
-
+proc QTouchEventisBeginEvent*(self: gen_qevent_types.QTouchEvent, ): bool =
 
   fQTouchEvent_virtualbase_isBeginEvent(self.h)
 
-type QTouchEventisBeginEventBase* = proc(): bool
-proc onisBeginEvent*(self: QTouchEvent, slot: proc(super: QTouchEventisBeginEventBase): bool) =
+type QTouchEventisBeginEventProc* = proc(): bool
+proc onisBeginEvent*(self: gen_qevent_types.QTouchEvent, slot: QTouchEventisBeginEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTouchEventisBeginEventBase): bool
-  var tmp = new Cb
+  var tmp = new QTouchEventisBeginEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTouchEvent_override_virtual_isBeginEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTouchEvent_isBeginEvent(self: ptr cQTouchEvent, slot: int): bool {.exportc: "miqt_exec_callback_QTouchEvent_isBeginEvent ".} =
-  type Cb = proc(super: QTouchEventisBeginEventBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_isBeginEvent(QTouchEvent(h: self), )
+  var nimfunc = cast[ptr QTouchEventisBeginEventProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_isUpdateEvent(self: QTouchEvent, ): bool =
-
+proc QTouchEventisUpdateEvent*(self: gen_qevent_types.QTouchEvent, ): bool =
 
   fQTouchEvent_virtualbase_isUpdateEvent(self.h)
 
-type QTouchEventisUpdateEventBase* = proc(): bool
-proc onisUpdateEvent*(self: QTouchEvent, slot: proc(super: QTouchEventisUpdateEventBase): bool) =
+type QTouchEventisUpdateEventProc* = proc(): bool
+proc onisUpdateEvent*(self: gen_qevent_types.QTouchEvent, slot: QTouchEventisUpdateEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTouchEventisUpdateEventBase): bool
-  var tmp = new Cb
+  var tmp = new QTouchEventisUpdateEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTouchEvent_override_virtual_isUpdateEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTouchEvent_isUpdateEvent(self: ptr cQTouchEvent, slot: int): bool {.exportc: "miqt_exec_callback_QTouchEvent_isUpdateEvent ".} =
-  type Cb = proc(super: QTouchEventisUpdateEventBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_isUpdateEvent(QTouchEvent(h: self), )
+  var nimfunc = cast[ptr QTouchEventisUpdateEventProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_isEndEvent(self: QTouchEvent, ): bool =
-
+proc QTouchEventisEndEvent*(self: gen_qevent_types.QTouchEvent, ): bool =
 
   fQTouchEvent_virtualbase_isEndEvent(self.h)
 
-type QTouchEventisEndEventBase* = proc(): bool
-proc onisEndEvent*(self: QTouchEvent, slot: proc(super: QTouchEventisEndEventBase): bool) =
+type QTouchEventisEndEventProc* = proc(): bool
+proc onisEndEvent*(self: gen_qevent_types.QTouchEvent, slot: QTouchEventisEndEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTouchEventisEndEventBase): bool
-  var tmp = new Cb
+  var tmp = new QTouchEventisEndEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTouchEvent_override_virtual_isEndEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTouchEvent_isEndEvent(self: ptr cQTouchEvent, slot: int): bool {.exportc: "miqt_exec_callback_QTouchEvent_isEndEvent ".} =
-  type Cb = proc(super: QTouchEventisEndEventBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_isEndEvent(QTouchEvent(h: self), )
+  var nimfunc = cast[ptr QTouchEventisEndEventProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setTimestamp(self: QTouchEvent, timestamp: culonglong): void =
-
+proc QTouchEventsetTimestamp*(self: gen_qevent_types.QTouchEvent, timestamp: culonglong): void =
 
   fQTouchEvent_virtualbase_setTimestamp(self.h, timestamp)
 
-type QTouchEventsetTimestampBase* = proc(timestamp: culonglong): void
-proc onsetTimestamp*(self: QTouchEvent, slot: proc(super: QTouchEventsetTimestampBase, timestamp: culonglong): void) =
+type QTouchEventsetTimestampProc* = proc(timestamp: culonglong): void
+proc onsetTimestamp*(self: gen_qevent_types.QTouchEvent, slot: QTouchEventsetTimestampProc) =
   # TODO check subclass
-  type Cb = proc(super: QTouchEventsetTimestampBase, timestamp: culonglong): void
-  var tmp = new Cb
+  var tmp = new QTouchEventsetTimestampProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTouchEvent_override_virtual_setTimestamp(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTouchEvent_setTimestamp(self: ptr cQTouchEvent, slot: int, timestamp: culonglong): void {.exportc: "miqt_exec_callback_QTouchEvent_setTimestamp ".} =
-  type Cb = proc(super: QTouchEventsetTimestampBase, timestamp: culonglong): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(timestamp: culonglong): auto =
-    callVirtualBase_setTimestamp(QTouchEvent(h: self), timestamp)
+  var nimfunc = cast[ptr QTouchEventsetTimestampProc](cast[pointer](slot))
   let slotval1 = timestamp
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_setAccepted(self: QTouchEvent, accepted: bool): void =
-
+  nimfunc[](slotval1)
+proc QTouchEventsetAccepted*(self: gen_qevent_types.QTouchEvent, accepted: bool): void =
 
   fQTouchEvent_virtualbase_setAccepted(self.h, accepted)
 
-type QTouchEventsetAcceptedBase* = proc(accepted: bool): void
-proc onsetAccepted*(self: QTouchEvent, slot: proc(super: QTouchEventsetAcceptedBase, accepted: bool): void) =
+type QTouchEventsetAcceptedProc* = proc(accepted: bool): void
+proc onsetAccepted*(self: gen_qevent_types.QTouchEvent, slot: QTouchEventsetAcceptedProc) =
   # TODO check subclass
-  type Cb = proc(super: QTouchEventsetAcceptedBase, accepted: bool): void
-  var tmp = new Cb
+  var tmp = new QTouchEventsetAcceptedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTouchEvent_override_virtual_setAccepted(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTouchEvent_setAccepted(self: ptr cQTouchEvent, slot: int, accepted: bool): void {.exportc: "miqt_exec_callback_QTouchEvent_setAccepted ".} =
-  type Cb = proc(super: QTouchEventsetAcceptedBase, accepted: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(accepted: bool): auto =
-    callVirtualBase_setAccepted(QTouchEvent(h: self), accepted)
+  var nimfunc = cast[ptr QTouchEventsetAcceptedProc](cast[pointer](slot))
   let slotval1 = accepted
 
 
-  nimfunc[](superCall, slotval1)
-proc delete*(self: QTouchEvent) =
+  nimfunc[](slotval1)
+proc delete*(self: gen_qevent_types.QTouchEvent) =
   fcQTouchEvent_delete(self.h)
 
-func init*(T: type QScrollPrepareEvent, h: ptr cQScrollPrepareEvent): QScrollPrepareEvent =
+func init*(T: type gen_qevent_types.QScrollPrepareEvent, h: ptr cQScrollPrepareEvent): gen_qevent_types.QScrollPrepareEvent =
   T(h: h)
-proc create*(T: type QScrollPrepareEvent, startPos: gen_qpoint.QPointF): QScrollPrepareEvent =
+proc create*(T: type gen_qevent_types.QScrollPrepareEvent, startPos: gen_qpoint.QPointF): gen_qevent_types.QScrollPrepareEvent =
 
-  QScrollPrepareEvent.init(fcQScrollPrepareEvent_new(startPos.h))
-proc clone*(self: QScrollPrepareEvent, ): QScrollPrepareEvent =
+  gen_qevent_types.QScrollPrepareEvent.init(fcQScrollPrepareEvent_new(startPos.h))
+proc clone*(self: gen_qevent_types.QScrollPrepareEvent, ): gen_qevent_types.QScrollPrepareEvent =
 
-  QScrollPrepareEvent(h: fcQScrollPrepareEvent_clone(self.h))
+  gen_qevent_types.QScrollPrepareEvent(h: fcQScrollPrepareEvent_clone(self.h))
 
-proc startPos*(self: QScrollPrepareEvent, ): gen_qpoint.QPointF =
+proc startPos*(self: gen_qevent_types.QScrollPrepareEvent, ): gen_qpoint.QPointF =
 
   gen_qpoint.QPointF(h: fcQScrollPrepareEvent_startPos(self.h))
 
-proc viewportSize*(self: QScrollPrepareEvent, ): gen_qsize.QSizeF =
+proc viewportSize*(self: gen_qevent_types.QScrollPrepareEvent, ): gen_qsize.QSizeF =
 
   gen_qsize.QSizeF(h: fcQScrollPrepareEvent_viewportSize(self.h))
 
-proc contentPosRange*(self: QScrollPrepareEvent, ): gen_qrect.QRectF =
+proc contentPosRange*(self: gen_qevent_types.QScrollPrepareEvent, ): gen_qrect.QRectF =
 
   gen_qrect.QRectF(h: fcQScrollPrepareEvent_contentPosRange(self.h))
 
-proc contentPos*(self: QScrollPrepareEvent, ): gen_qpoint.QPointF =
+proc contentPos*(self: gen_qevent_types.QScrollPrepareEvent, ): gen_qpoint.QPointF =
 
   gen_qpoint.QPointF(h: fcQScrollPrepareEvent_contentPos(self.h))
 
-proc setViewportSize*(self: QScrollPrepareEvent, size: gen_qsize.QSizeF): void =
+proc setViewportSize*(self: gen_qevent_types.QScrollPrepareEvent, size: gen_qsize.QSizeF): void =
 
   fcQScrollPrepareEvent_setViewportSize(self.h, size.h)
 
-proc setContentPosRange*(self: QScrollPrepareEvent, rect: gen_qrect.QRectF): void =
+proc setContentPosRange*(self: gen_qevent_types.QScrollPrepareEvent, rect: gen_qrect.QRectF): void =
 
   fcQScrollPrepareEvent_setContentPosRange(self.h, rect.h)
 
-proc setContentPos*(self: QScrollPrepareEvent, pos: gen_qpoint.QPointF): void =
+proc setContentPos*(self: gen_qevent_types.QScrollPrepareEvent, pos: gen_qpoint.QPointF): void =
 
   fcQScrollPrepareEvent_setContentPos(self.h, pos.h)
 
-proc callVirtualBase_clone(self: QScrollPrepareEvent, ): QScrollPrepareEvent =
+proc QScrollPrepareEventclone*(self: gen_qevent_types.QScrollPrepareEvent, ): gen_qevent_types.QScrollPrepareEvent =
 
+  gen_qevent_types.QScrollPrepareEvent(h: fQScrollPrepareEvent_virtualbase_clone(self.h))
 
-  QScrollPrepareEvent(h: fQScrollPrepareEvent_virtualbase_clone(self.h))
-
-type QScrollPrepareEventcloneBase* = proc(): QScrollPrepareEvent
-proc onclone*(self: QScrollPrepareEvent, slot: proc(super: QScrollPrepareEventcloneBase): QScrollPrepareEvent) =
+type QScrollPrepareEventcloneProc* = proc(): gen_qevent_types.QScrollPrepareEvent
+proc onclone*(self: gen_qevent_types.QScrollPrepareEvent, slot: QScrollPrepareEventcloneProc) =
   # TODO check subclass
-  type Cb = proc(super: QScrollPrepareEventcloneBase): QScrollPrepareEvent
-  var tmp = new Cb
+  var tmp = new QScrollPrepareEventcloneProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScrollPrepareEvent_override_virtual_clone(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScrollPrepareEvent_clone(self: ptr cQScrollPrepareEvent, slot: int): pointer {.exportc: "miqt_exec_callback_QScrollPrepareEvent_clone ".} =
-  type Cb = proc(super: QScrollPrepareEventcloneBase): QScrollPrepareEvent
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_clone(QScrollPrepareEvent(h: self), )
+  var nimfunc = cast[ptr QScrollPrepareEventcloneProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_setAccepted(self: QScrollPrepareEvent, accepted: bool): void =
-
+proc QScrollPrepareEventsetAccepted*(self: gen_qevent_types.QScrollPrepareEvent, accepted: bool): void =
 
   fQScrollPrepareEvent_virtualbase_setAccepted(self.h, accepted)
 
-type QScrollPrepareEventsetAcceptedBase* = proc(accepted: bool): void
-proc onsetAccepted*(self: QScrollPrepareEvent, slot: proc(super: QScrollPrepareEventsetAcceptedBase, accepted: bool): void) =
+type QScrollPrepareEventsetAcceptedProc* = proc(accepted: bool): void
+proc onsetAccepted*(self: gen_qevent_types.QScrollPrepareEvent, slot: QScrollPrepareEventsetAcceptedProc) =
   # TODO check subclass
-  type Cb = proc(super: QScrollPrepareEventsetAcceptedBase, accepted: bool): void
-  var tmp = new Cb
+  var tmp = new QScrollPrepareEventsetAcceptedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScrollPrepareEvent_override_virtual_setAccepted(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScrollPrepareEvent_setAccepted(self: ptr cQScrollPrepareEvent, slot: int, accepted: bool): void {.exportc: "miqt_exec_callback_QScrollPrepareEvent_setAccepted ".} =
-  type Cb = proc(super: QScrollPrepareEventsetAcceptedBase, accepted: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(accepted: bool): auto =
-    callVirtualBase_setAccepted(QScrollPrepareEvent(h: self), accepted)
+  var nimfunc = cast[ptr QScrollPrepareEventsetAcceptedProc](cast[pointer](slot))
   let slotval1 = accepted
 
 
-  nimfunc[](superCall, slotval1)
-proc delete*(self: QScrollPrepareEvent) =
+  nimfunc[](slotval1)
+proc delete*(self: gen_qevent_types.QScrollPrepareEvent) =
   fcQScrollPrepareEvent_delete(self.h)
 
-func init*(T: type QScrollEvent, h: ptr cQScrollEvent): QScrollEvent =
+func init*(T: type gen_qevent_types.QScrollEvent, h: ptr cQScrollEvent): gen_qevent_types.QScrollEvent =
   T(h: h)
-proc create*(T: type QScrollEvent, contentPos: gen_qpoint.QPointF, overshoot: gen_qpoint.QPointF, scrollState: QScrollEventScrollState): QScrollEvent =
+proc create*(T: type gen_qevent_types.QScrollEvent, contentPos: gen_qpoint.QPointF, overshoot: gen_qpoint.QPointF, scrollState: cint): gen_qevent_types.QScrollEvent =
 
-  QScrollEvent.init(fcQScrollEvent_new(contentPos.h, overshoot.h, cint(scrollState)))
-proc clone*(self: QScrollEvent, ): QScrollEvent =
+  gen_qevent_types.QScrollEvent.init(fcQScrollEvent_new(contentPos.h, overshoot.h, cint(scrollState)))
+proc clone*(self: gen_qevent_types.QScrollEvent, ): gen_qevent_types.QScrollEvent =
 
-  QScrollEvent(h: fcQScrollEvent_clone(self.h))
+  gen_qevent_types.QScrollEvent(h: fcQScrollEvent_clone(self.h))
 
-proc contentPos*(self: QScrollEvent, ): gen_qpoint.QPointF =
+proc contentPos*(self: gen_qevent_types.QScrollEvent, ): gen_qpoint.QPointF =
 
   gen_qpoint.QPointF(h: fcQScrollEvent_contentPos(self.h))
 
-proc overshootDistance*(self: QScrollEvent, ): gen_qpoint.QPointF =
+proc overshootDistance*(self: gen_qevent_types.QScrollEvent, ): gen_qpoint.QPointF =
 
   gen_qpoint.QPointF(h: fcQScrollEvent_overshootDistance(self.h))
 
-proc scrollState*(self: QScrollEvent, ): QScrollEventScrollState =
+proc scrollState*(self: gen_qevent_types.QScrollEvent, ): cint =
 
-  QScrollEventScrollState(fcQScrollEvent_scrollState(self.h))
+  cint(fcQScrollEvent_scrollState(self.h))
 
-proc callVirtualBase_clone(self: QScrollEvent, ): QScrollEvent =
+proc QScrollEventclone*(self: gen_qevent_types.QScrollEvent, ): gen_qevent_types.QScrollEvent =
 
+  gen_qevent_types.QScrollEvent(h: fQScrollEvent_virtualbase_clone(self.h))
 
-  QScrollEvent(h: fQScrollEvent_virtualbase_clone(self.h))
-
-type QScrollEventcloneBase* = proc(): QScrollEvent
-proc onclone*(self: QScrollEvent, slot: proc(super: QScrollEventcloneBase): QScrollEvent) =
+type QScrollEventcloneProc* = proc(): gen_qevent_types.QScrollEvent
+proc onclone*(self: gen_qevent_types.QScrollEvent, slot: QScrollEventcloneProc) =
   # TODO check subclass
-  type Cb = proc(super: QScrollEventcloneBase): QScrollEvent
-  var tmp = new Cb
+  var tmp = new QScrollEventcloneProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScrollEvent_override_virtual_clone(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScrollEvent_clone(self: ptr cQScrollEvent, slot: int): pointer {.exportc: "miqt_exec_callback_QScrollEvent_clone ".} =
-  type Cb = proc(super: QScrollEventcloneBase): QScrollEvent
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_clone(QScrollEvent(h: self), )
+  var nimfunc = cast[ptr QScrollEventcloneProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_setAccepted(self: QScrollEvent, accepted: bool): void =
-
+proc QScrollEventsetAccepted*(self: gen_qevent_types.QScrollEvent, accepted: bool): void =
 
   fQScrollEvent_virtualbase_setAccepted(self.h, accepted)
 
-type QScrollEventsetAcceptedBase* = proc(accepted: bool): void
-proc onsetAccepted*(self: QScrollEvent, slot: proc(super: QScrollEventsetAcceptedBase, accepted: bool): void) =
+type QScrollEventsetAcceptedProc* = proc(accepted: bool): void
+proc onsetAccepted*(self: gen_qevent_types.QScrollEvent, slot: QScrollEventsetAcceptedProc) =
   # TODO check subclass
-  type Cb = proc(super: QScrollEventsetAcceptedBase, accepted: bool): void
-  var tmp = new Cb
+  var tmp = new QScrollEventsetAcceptedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScrollEvent_override_virtual_setAccepted(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScrollEvent_setAccepted(self: ptr cQScrollEvent, slot: int, accepted: bool): void {.exportc: "miqt_exec_callback_QScrollEvent_setAccepted ".} =
-  type Cb = proc(super: QScrollEventsetAcceptedBase, accepted: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(accepted: bool): auto =
-    callVirtualBase_setAccepted(QScrollEvent(h: self), accepted)
+  var nimfunc = cast[ptr QScrollEventsetAcceptedProc](cast[pointer](slot))
   let slotval1 = accepted
 
 
-  nimfunc[](superCall, slotval1)
-proc delete*(self: QScrollEvent) =
+  nimfunc[](slotval1)
+proc delete*(self: gen_qevent_types.QScrollEvent) =
   fcQScrollEvent_delete(self.h)
 
-func init*(T: type QScreenOrientationChangeEvent, h: ptr cQScreenOrientationChangeEvent): QScreenOrientationChangeEvent =
+func init*(T: type gen_qevent_types.QScreenOrientationChangeEvent, h: ptr cQScreenOrientationChangeEvent): gen_qevent_types.QScreenOrientationChangeEvent =
   T(h: h)
-proc create*(T: type QScreenOrientationChangeEvent, screen: gen_qscreen.QScreen, orientation: gen_qnamespace.ScreenOrientation): QScreenOrientationChangeEvent =
+proc create*(T: type gen_qevent_types.QScreenOrientationChangeEvent, screen: gen_qscreen.QScreen, orientation: cint): gen_qevent_types.QScreenOrientationChangeEvent =
 
-  QScreenOrientationChangeEvent.init(fcQScreenOrientationChangeEvent_new(screen.h, cint(orientation)))
-proc clone*(self: QScreenOrientationChangeEvent, ): QScreenOrientationChangeEvent =
+  gen_qevent_types.QScreenOrientationChangeEvent.init(fcQScreenOrientationChangeEvent_new(screen.h, cint(orientation)))
+proc clone*(self: gen_qevent_types.QScreenOrientationChangeEvent, ): gen_qevent_types.QScreenOrientationChangeEvent =
 
-  QScreenOrientationChangeEvent(h: fcQScreenOrientationChangeEvent_clone(self.h))
+  gen_qevent_types.QScreenOrientationChangeEvent(h: fcQScreenOrientationChangeEvent_clone(self.h))
 
-proc screen*(self: QScreenOrientationChangeEvent, ): gen_qscreen.QScreen =
+proc screen*(self: gen_qevent_types.QScreenOrientationChangeEvent, ): gen_qscreen.QScreen =
 
   gen_qscreen.QScreen(h: fcQScreenOrientationChangeEvent_screen(self.h))
 
-proc orientation*(self: QScreenOrientationChangeEvent, ): gen_qnamespace.ScreenOrientation =
+proc orientation*(self: gen_qevent_types.QScreenOrientationChangeEvent, ): cint =
 
-  gen_qnamespace.ScreenOrientation(fcQScreenOrientationChangeEvent_orientation(self.h))
+  cint(fcQScreenOrientationChangeEvent_orientation(self.h))
 
-proc callVirtualBase_clone(self: QScreenOrientationChangeEvent, ): QScreenOrientationChangeEvent =
+proc QScreenOrientationChangeEventclone*(self: gen_qevent_types.QScreenOrientationChangeEvent, ): gen_qevent_types.QScreenOrientationChangeEvent =
 
+  gen_qevent_types.QScreenOrientationChangeEvent(h: fQScreenOrientationChangeEvent_virtualbase_clone(self.h))
 
-  QScreenOrientationChangeEvent(h: fQScreenOrientationChangeEvent_virtualbase_clone(self.h))
-
-type QScreenOrientationChangeEventcloneBase* = proc(): QScreenOrientationChangeEvent
-proc onclone*(self: QScreenOrientationChangeEvent, slot: proc(super: QScreenOrientationChangeEventcloneBase): QScreenOrientationChangeEvent) =
+type QScreenOrientationChangeEventcloneProc* = proc(): gen_qevent_types.QScreenOrientationChangeEvent
+proc onclone*(self: gen_qevent_types.QScreenOrientationChangeEvent, slot: QScreenOrientationChangeEventcloneProc) =
   # TODO check subclass
-  type Cb = proc(super: QScreenOrientationChangeEventcloneBase): QScreenOrientationChangeEvent
-  var tmp = new Cb
+  var tmp = new QScreenOrientationChangeEventcloneProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScreenOrientationChangeEvent_override_virtual_clone(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScreenOrientationChangeEvent_clone(self: ptr cQScreenOrientationChangeEvent, slot: int): pointer {.exportc: "miqt_exec_callback_QScreenOrientationChangeEvent_clone ".} =
-  type Cb = proc(super: QScreenOrientationChangeEventcloneBase): QScreenOrientationChangeEvent
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_clone(QScreenOrientationChangeEvent(h: self), )
+  var nimfunc = cast[ptr QScreenOrientationChangeEventcloneProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_setAccepted(self: QScreenOrientationChangeEvent, accepted: bool): void =
-
+proc QScreenOrientationChangeEventsetAccepted*(self: gen_qevent_types.QScreenOrientationChangeEvent, accepted: bool): void =
 
   fQScreenOrientationChangeEvent_virtualbase_setAccepted(self.h, accepted)
 
-type QScreenOrientationChangeEventsetAcceptedBase* = proc(accepted: bool): void
-proc onsetAccepted*(self: QScreenOrientationChangeEvent, slot: proc(super: QScreenOrientationChangeEventsetAcceptedBase, accepted: bool): void) =
+type QScreenOrientationChangeEventsetAcceptedProc* = proc(accepted: bool): void
+proc onsetAccepted*(self: gen_qevent_types.QScreenOrientationChangeEvent, slot: QScreenOrientationChangeEventsetAcceptedProc) =
   # TODO check subclass
-  type Cb = proc(super: QScreenOrientationChangeEventsetAcceptedBase, accepted: bool): void
-  var tmp = new Cb
+  var tmp = new QScreenOrientationChangeEventsetAcceptedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScreenOrientationChangeEvent_override_virtual_setAccepted(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScreenOrientationChangeEvent_setAccepted(self: ptr cQScreenOrientationChangeEvent, slot: int, accepted: bool): void {.exportc: "miqt_exec_callback_QScreenOrientationChangeEvent_setAccepted ".} =
-  type Cb = proc(super: QScreenOrientationChangeEventsetAcceptedBase, accepted: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(accepted: bool): auto =
-    callVirtualBase_setAccepted(QScreenOrientationChangeEvent(h: self), accepted)
+  var nimfunc = cast[ptr QScreenOrientationChangeEventsetAcceptedProc](cast[pointer](slot))
   let slotval1 = accepted
 
 
-  nimfunc[](superCall, slotval1)
-proc delete*(self: QScreenOrientationChangeEvent) =
+  nimfunc[](slotval1)
+proc delete*(self: gen_qevent_types.QScreenOrientationChangeEvent) =
   fcQScreenOrientationChangeEvent_delete(self.h)
 
-func init*(T: type QApplicationStateChangeEvent, h: ptr cQApplicationStateChangeEvent): QApplicationStateChangeEvent =
+func init*(T: type gen_qevent_types.QApplicationStateChangeEvent, h: ptr cQApplicationStateChangeEvent): gen_qevent_types.QApplicationStateChangeEvent =
   T(h: h)
-proc create*(T: type QApplicationStateChangeEvent, state: gen_qnamespace.ApplicationState): QApplicationStateChangeEvent =
+proc create*(T: type gen_qevent_types.QApplicationStateChangeEvent, state: cint): gen_qevent_types.QApplicationStateChangeEvent =
 
-  QApplicationStateChangeEvent.init(fcQApplicationStateChangeEvent_new(cint(state)))
-proc clone*(self: QApplicationStateChangeEvent, ): QApplicationStateChangeEvent =
+  gen_qevent_types.QApplicationStateChangeEvent.init(fcQApplicationStateChangeEvent_new(cint(state)))
+proc clone*(self: gen_qevent_types.QApplicationStateChangeEvent, ): gen_qevent_types.QApplicationStateChangeEvent =
 
-  QApplicationStateChangeEvent(h: fcQApplicationStateChangeEvent_clone(self.h))
+  gen_qevent_types.QApplicationStateChangeEvent(h: fcQApplicationStateChangeEvent_clone(self.h))
 
-proc applicationState*(self: QApplicationStateChangeEvent, ): gen_qnamespace.ApplicationState =
+proc applicationState*(self: gen_qevent_types.QApplicationStateChangeEvent, ): cint =
 
-  gen_qnamespace.ApplicationState(fcQApplicationStateChangeEvent_applicationState(self.h))
+  cint(fcQApplicationStateChangeEvent_applicationState(self.h))
 
-proc callVirtualBase_clone(self: QApplicationStateChangeEvent, ): QApplicationStateChangeEvent =
+proc QApplicationStateChangeEventclone*(self: gen_qevent_types.QApplicationStateChangeEvent, ): gen_qevent_types.QApplicationStateChangeEvent =
 
+  gen_qevent_types.QApplicationStateChangeEvent(h: fQApplicationStateChangeEvent_virtualbase_clone(self.h))
 
-  QApplicationStateChangeEvent(h: fQApplicationStateChangeEvent_virtualbase_clone(self.h))
-
-type QApplicationStateChangeEventcloneBase* = proc(): QApplicationStateChangeEvent
-proc onclone*(self: QApplicationStateChangeEvent, slot: proc(super: QApplicationStateChangeEventcloneBase): QApplicationStateChangeEvent) =
+type QApplicationStateChangeEventcloneProc* = proc(): gen_qevent_types.QApplicationStateChangeEvent
+proc onclone*(self: gen_qevent_types.QApplicationStateChangeEvent, slot: QApplicationStateChangeEventcloneProc) =
   # TODO check subclass
-  type Cb = proc(super: QApplicationStateChangeEventcloneBase): QApplicationStateChangeEvent
-  var tmp = new Cb
+  var tmp = new QApplicationStateChangeEventcloneProc
   tmp[] = slot
   GC_ref(tmp)
   fcQApplicationStateChangeEvent_override_virtual_clone(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QApplicationStateChangeEvent_clone(self: ptr cQApplicationStateChangeEvent, slot: int): pointer {.exportc: "miqt_exec_callback_QApplicationStateChangeEvent_clone ".} =
-  type Cb = proc(super: QApplicationStateChangeEventcloneBase): QApplicationStateChangeEvent
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_clone(QApplicationStateChangeEvent(h: self), )
+  var nimfunc = cast[ptr QApplicationStateChangeEventcloneProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_setAccepted(self: QApplicationStateChangeEvent, accepted: bool): void =
-
+proc QApplicationStateChangeEventsetAccepted*(self: gen_qevent_types.QApplicationStateChangeEvent, accepted: bool): void =
 
   fQApplicationStateChangeEvent_virtualbase_setAccepted(self.h, accepted)
 
-type QApplicationStateChangeEventsetAcceptedBase* = proc(accepted: bool): void
-proc onsetAccepted*(self: QApplicationStateChangeEvent, slot: proc(super: QApplicationStateChangeEventsetAcceptedBase, accepted: bool): void) =
+type QApplicationStateChangeEventsetAcceptedProc* = proc(accepted: bool): void
+proc onsetAccepted*(self: gen_qevent_types.QApplicationStateChangeEvent, slot: QApplicationStateChangeEventsetAcceptedProc) =
   # TODO check subclass
-  type Cb = proc(super: QApplicationStateChangeEventsetAcceptedBase, accepted: bool): void
-  var tmp = new Cb
+  var tmp = new QApplicationStateChangeEventsetAcceptedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQApplicationStateChangeEvent_override_virtual_setAccepted(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QApplicationStateChangeEvent_setAccepted(self: ptr cQApplicationStateChangeEvent, slot: int, accepted: bool): void {.exportc: "miqt_exec_callback_QApplicationStateChangeEvent_setAccepted ".} =
-  type Cb = proc(super: QApplicationStateChangeEventsetAcceptedBase, accepted: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(accepted: bool): auto =
-    callVirtualBase_setAccepted(QApplicationStateChangeEvent(h: self), accepted)
+  var nimfunc = cast[ptr QApplicationStateChangeEventsetAcceptedProc](cast[pointer](slot))
   let slotval1 = accepted
 
 
-  nimfunc[](superCall, slotval1)
-proc delete*(self: QApplicationStateChangeEvent) =
+  nimfunc[](slotval1)
+proc delete*(self: gen_qevent_types.QApplicationStateChangeEvent) =
   fcQApplicationStateChangeEvent_delete(self.h)
 
-func init*(T: type QInputMethodEventAttribute, h: ptr cQInputMethodEventAttribute): QInputMethodEventAttribute =
+func init*(T: type gen_qevent_types.QInputMethodEventAttribute, h: ptr cQInputMethodEventAttribute): gen_qevent_types.QInputMethodEventAttribute =
   T(h: h)
-proc create*(T: type QInputMethodEventAttribute, typ: QInputMethodEventAttributeType, s: cint, l: cint, val: gen_qvariant.QVariant): QInputMethodEventAttribute =
+proc create*(T: type gen_qevent_types.QInputMethodEventAttribute, typ: cint, s: cint, l: cint, val: gen_qvariant.QVariant): gen_qevent_types.QInputMethodEventAttribute =
 
-  QInputMethodEventAttribute.init(fcQInputMethodEventAttribute_new(cint(typ), s, l, val.h))
-proc create*(T: type QInputMethodEventAttribute, typ: QInputMethodEventAttributeType, s: cint, l: cint): QInputMethodEventAttribute =
+  gen_qevent_types.QInputMethodEventAttribute.init(fcQInputMethodEventAttribute_new(cint(typ), s, l, val.h))
+proc create*(T: type gen_qevent_types.QInputMethodEventAttribute, typ: cint, s: cint, l: cint): gen_qevent_types.QInputMethodEventAttribute =
 
-  QInputMethodEventAttribute.init(fcQInputMethodEventAttribute_new2(cint(typ), s, l))
-proc create*(T: type QInputMethodEventAttribute, param1: QInputMethodEventAttribute): QInputMethodEventAttribute =
+  gen_qevent_types.QInputMethodEventAttribute.init(fcQInputMethodEventAttribute_new2(cint(typ), s, l))
+proc create*(T: type gen_qevent_types.QInputMethodEventAttribute, param1: gen_qevent_types.QInputMethodEventAttribute): gen_qevent_types.QInputMethodEventAttribute =
 
-  QInputMethodEventAttribute.init(fcQInputMethodEventAttribute_new3(param1.h))
-proc operatorAssign*(self: QInputMethodEventAttribute, param1: QInputMethodEventAttribute): void =
+  gen_qevent_types.QInputMethodEventAttribute.init(fcQInputMethodEventAttribute_new3(param1.h))
+proc operatorAssign*(self: gen_qevent_types.QInputMethodEventAttribute, param1: gen_qevent_types.QInputMethodEventAttribute): void =
 
   fcQInputMethodEventAttribute_operatorAssign(self.h, param1.h)
 
-proc delete*(self: QInputMethodEventAttribute) =
+proc delete*(self: gen_qevent_types.QInputMethodEventAttribute) =
   fcQInputMethodEventAttribute_delete(self.h)

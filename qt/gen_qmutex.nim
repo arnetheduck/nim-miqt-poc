@@ -34,11 +34,9 @@ const cflags = gorge("pkg-config -cflags Qt5Widgets")
 {.compile("gen_qmutex.cpp", cflags).}
 
 
-type QMutexRecursionMode* = cint
-const
-  QMutexNonRecursive* = 0
-  QMutexRecursive* = 1
-
+type QMutexRecursionModeEnum* = distinct cint
+template NonRecursive*(_: type QMutexRecursionModeEnum): untyped = 0
+template Recursive*(_: type QMutexRecursionModeEnum): untyped = 1
 
 
 import gen_qmutex_types
@@ -77,100 +75,100 @@ proc fcQMutexLocker_mutex(self: pointer, ): pointer {.importc: "QMutexLocker_mut
 proc fcQMutexLocker_delete(self: pointer) {.importc: "QMutexLocker_delete".}
 
 
-func init*(T: type QBasicMutex, h: ptr cQBasicMutex): QBasicMutex =
+func init*(T: type gen_qmutex_types.QBasicMutex, h: ptr cQBasicMutex): gen_qmutex_types.QBasicMutex =
   T(h: h)
-proc create*(T: type QBasicMutex, ): QBasicMutex =
+proc create*(T: type gen_qmutex_types.QBasicMutex, ): gen_qmutex_types.QBasicMutex =
 
-  QBasicMutex.init(fcQBasicMutex_new())
-proc lock*(self: QBasicMutex, ): void =
+  gen_qmutex_types.QBasicMutex.init(fcQBasicMutex_new())
+proc lock*(self: gen_qmutex_types.QBasicMutex, ): void =
 
   fcQBasicMutex_lock(self.h)
 
-proc unlock*(self: QBasicMutex, ): void =
+proc unlock*(self: gen_qmutex_types.QBasicMutex, ): void =
 
   fcQBasicMutex_unlock(self.h)
 
-proc tryLock*(self: QBasicMutex, ): bool =
+proc tryLock*(self: gen_qmutex_types.QBasicMutex, ): bool =
 
   fcQBasicMutex_tryLock(self.h)
 
-proc tryLock2*(self: QBasicMutex, ): bool =
+proc tryLock2*(self: gen_qmutex_types.QBasicMutex, ): bool =
 
   fcQBasicMutex_tryLock2(self.h)
 
-proc isRecursive*(self: QBasicMutex, ): bool =
+proc isRecursive*(self: gen_qmutex_types.QBasicMutex, ): bool =
 
   fcQBasicMutex_isRecursive(self.h)
 
-proc isRecursive2*(self: QBasicMutex, ): bool =
+proc isRecursive2*(self: gen_qmutex_types.QBasicMutex, ): bool =
 
   fcQBasicMutex_isRecursive2(self.h)
 
-proc delete*(self: QBasicMutex) =
+proc delete*(self: gen_qmutex_types.QBasicMutex) =
   fcQBasicMutex_delete(self.h)
 
-func init*(T: type QMutex, h: ptr cQMutex): QMutex =
+func init*(T: type gen_qmutex_types.QMutex, h: ptr cQMutex): gen_qmutex_types.QMutex =
   T(h: h)
-proc create*(T: type QMutex, ): QMutex =
+proc create*(T: type gen_qmutex_types.QMutex, ): gen_qmutex_types.QMutex =
 
-  QMutex.init(fcQMutex_new())
-proc create*(T: type QMutex, mode: QMutexRecursionMode): QMutex =
+  gen_qmutex_types.QMutex.init(fcQMutex_new())
+proc create*(T: type gen_qmutex_types.QMutex, mode: cint): gen_qmutex_types.QMutex =
 
-  QMutex.init(fcQMutex_new2(cint(mode)))
-proc lock*(self: QMutex, ): void =
+  gen_qmutex_types.QMutex.init(fcQMutex_new2(cint(mode)))
+proc lock*(self: gen_qmutex_types.QMutex, ): void =
 
   fcQMutex_lock(self.h)
 
-proc tryLock*(self: QMutex, ): bool =
+proc tryLock*(self: gen_qmutex_types.QMutex, ): bool =
 
   fcQMutex_tryLock(self.h)
 
-proc unlock*(self: QMutex, ): void =
+proc unlock*(self: gen_qmutex_types.QMutex, ): void =
 
   fcQMutex_unlock(self.h)
 
-proc tryLock2*(self: QMutex, ): bool =
+proc tryLock2*(self: gen_qmutex_types.QMutex, ): bool =
 
   fcQMutex_tryLock2(self.h)
 
-proc isRecursive*(self: QMutex, ): bool =
+proc isRecursive*(self: gen_qmutex_types.QMutex, ): bool =
 
   fcQMutex_isRecursive(self.h)
 
-proc tryLock1*(self: QMutex, timeout: cint): bool =
+proc tryLock1*(self: gen_qmutex_types.QMutex, timeout: cint): bool =
 
   fcQMutex_tryLock1(self.h, timeout)
 
-proc delete*(self: QMutex) =
+proc delete*(self: gen_qmutex_types.QMutex) =
   fcQMutex_delete(self.h)
 
-func init*(T: type QRecursiveMutex, h: ptr cQRecursiveMutex): QRecursiveMutex =
+func init*(T: type gen_qmutex_types.QRecursiveMutex, h: ptr cQRecursiveMutex): gen_qmutex_types.QRecursiveMutex =
   T(h: h)
-proc create*(T: type QRecursiveMutex, ): QRecursiveMutex =
+proc create*(T: type gen_qmutex_types.QRecursiveMutex, ): gen_qmutex_types.QRecursiveMutex =
 
-  QRecursiveMutex.init(fcQRecursiveMutex_new())
-proc delete*(self: QRecursiveMutex) =
+  gen_qmutex_types.QRecursiveMutex.init(fcQRecursiveMutex_new())
+proc delete*(self: gen_qmutex_types.QRecursiveMutex) =
   fcQRecursiveMutex_delete(self.h)
 
-func init*(T: type QMutexLocker, h: ptr cQMutexLocker): QMutexLocker =
+func init*(T: type gen_qmutex_types.QMutexLocker, h: ptr cQMutexLocker): gen_qmutex_types.QMutexLocker =
   T(h: h)
-proc create*(T: type QMutexLocker, m: QBasicMutex): QMutexLocker =
+proc create*(T: type gen_qmutex_types.QMutexLocker, m: gen_qmutex_types.QBasicMutex): gen_qmutex_types.QMutexLocker =
 
-  QMutexLocker.init(fcQMutexLocker_new(m.h))
-proc create2*(T: type QMutexLocker, m: QRecursiveMutex): QMutexLocker =
+  gen_qmutex_types.QMutexLocker.init(fcQMutexLocker_new(m.h))
+proc create2*(T: type gen_qmutex_types.QMutexLocker, m: gen_qmutex_types.QRecursiveMutex): gen_qmutex_types.QMutexLocker =
 
-  QMutexLocker.init(fcQMutexLocker_new2(m.h))
-proc unlock*(self: QMutexLocker, ): void =
+  gen_qmutex_types.QMutexLocker.init(fcQMutexLocker_new2(m.h))
+proc unlock*(self: gen_qmutex_types.QMutexLocker, ): void =
 
   fcQMutexLocker_unlock(self.h)
 
-proc relock*(self: QMutexLocker, ): void =
+proc relock*(self: gen_qmutex_types.QMutexLocker, ): void =
 
   fcQMutexLocker_relock(self.h)
 
-proc mutex*(self: QMutexLocker, ): QMutex =
+proc mutex*(self: gen_qmutex_types.QMutexLocker, ): gen_qmutex_types.QMutex =
 
-  QMutex(h: fcQMutexLocker_mutex(self.h))
+  gen_qmutex_types.QMutex(h: fcQMutexLocker_mutex(self.h))
 
-proc delete*(self: QMutexLocker) =
+proc delete*(self: gen_qmutex_types.QMutexLocker) =
   fcQMutexLocker_delete(self.h)

@@ -45,12 +45,12 @@ proc fcQUntypedPropertyData_delete(self: pointer) {.importc: "QUntypedPropertyDa
 proc fcQPropertyProxyBindingData_delete(self: pointer) {.importc: "QPropertyProxyBindingData_delete".}
 
 
-func init*(T: type QUntypedPropertyData, h: ptr cQUntypedPropertyData): QUntypedPropertyData =
+func init*(T: type gen_qpropertyprivate_types.QUntypedPropertyData, h: ptr cQUntypedPropertyData): gen_qpropertyprivate_types.QUntypedPropertyData =
   T(h: h)
-proc delete*(self: QUntypedPropertyData) =
+proc delete*(self: gen_qpropertyprivate_types.QUntypedPropertyData) =
   fcQUntypedPropertyData_delete(self.h)
 
-func init*(T: type QPropertyProxyBindingData, h: ptr cQPropertyProxyBindingData): QPropertyProxyBindingData =
+func init*(T: type gen_qpropertyprivate_types.QPropertyProxyBindingData, h: ptr cQPropertyProxyBindingData): gen_qpropertyprivate_types.QPropertyProxyBindingData =
   T(h: h)
-proc delete*(self: QPropertyProxyBindingData) =
+proc delete*(self: gen_qpropertyprivate_types.QPropertyProxyBindingData) =
   fcQPropertyProxyBindingData_delete(self.h)

@@ -43,16 +43,14 @@ import
   gen_qobject,
   gen_qobjectdefs,
   gen_qsciabstractapis,
-  gen_qscilexer,
-  gen_qsciscintilla
+  gen_qscilexer
 export
   gen_qcoreevent,
   gen_qmetaobject,
   gen_qobject,
   gen_qobjectdefs,
   gen_qsciabstractapis,
-  gen_qscilexer,
-  gen_qsciscintilla
+  gen_qscilexer
 
 type cQsciAPIs*{.exportc: "QsciAPIs", incompleteStruct.} = object
 
@@ -117,74 +115,74 @@ proc fcQsciAPIs_staticMetaObject(): pointer {.importc: "QsciAPIs_staticMetaObjec
 proc fcQsciAPIs_delete(self: pointer) {.importc: "QsciAPIs_delete".}
 
 
-func init*(T: type QsciAPIs, h: ptr cQsciAPIs): QsciAPIs =
+func init*(T: type gen_qsciapis_types.QsciAPIs, h: ptr cQsciAPIs): gen_qsciapis_types.QsciAPIs =
   T(h: h)
-proc create*(T: type QsciAPIs, lexer: gen_qscilexer.QsciLexer): QsciAPIs =
+proc create*(T: type gen_qsciapis_types.QsciAPIs, lexer: gen_qscilexer.QsciLexer): gen_qsciapis_types.QsciAPIs =
 
-  QsciAPIs.init(fcQsciAPIs_new(lexer.h))
-proc metaObject*(self: QsciAPIs, ): gen_qobjectdefs.QMetaObject =
+  gen_qsciapis_types.QsciAPIs.init(fcQsciAPIs_new(lexer.h))
+proc metaObject*(self: gen_qsciapis_types.QsciAPIs, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQsciAPIs_metaObject(self.h))
 
-proc metacast*(self: QsciAPIs, param1: cstring): pointer =
+proc metacast*(self: gen_qsciapis_types.QsciAPIs, param1: cstring): pointer =
 
   fcQsciAPIs_metacast(self.h, param1)
 
-proc metacall*(self: QsciAPIs, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qsciapis_types.QsciAPIs, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQsciAPIs_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QsciAPIs, s: cstring): string =
+proc tr*(_: type gen_qsciapis_types.QsciAPIs, s: cstring): string =
 
   let v_ms = fcQsciAPIs_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc add*(self: QsciAPIs, entry: string): void =
+proc add*(self: gen_qsciapis_types.QsciAPIs, entry: string): void =
 
   fcQsciAPIs_add(self.h, struct_miqt_string(data: entry, len: csize_t(len(entry))))
 
-proc clear*(self: QsciAPIs, ): void =
+proc clear*(self: gen_qsciapis_types.QsciAPIs, ): void =
 
   fcQsciAPIs_clear(self.h)
 
-proc load*(self: QsciAPIs, filename: string): bool =
+proc load*(self: gen_qsciapis_types.QsciAPIs, filename: string): bool =
 
   fcQsciAPIs_load(self.h, struct_miqt_string(data: filename, len: csize_t(len(filename))))
 
-proc remove*(self: QsciAPIs, entry: string): void =
+proc remove*(self: gen_qsciapis_types.QsciAPIs, entry: string): void =
 
   fcQsciAPIs_remove(self.h, struct_miqt_string(data: entry, len: csize_t(len(entry))))
 
-proc prepare*(self: QsciAPIs, ): void =
+proc prepare*(self: gen_qsciapis_types.QsciAPIs, ): void =
 
   fcQsciAPIs_prepare(self.h)
 
-proc cancelPreparation*(self: QsciAPIs, ): void =
+proc cancelPreparation*(self: gen_qsciapis_types.QsciAPIs, ): void =
 
   fcQsciAPIs_cancelPreparation(self.h)
 
-proc defaultPreparedName*(self: QsciAPIs, ): string =
+proc defaultPreparedName*(self: gen_qsciapis_types.QsciAPIs, ): string =
 
   let v_ms = fcQsciAPIs_defaultPreparedName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc isPrepared*(self: QsciAPIs, ): bool =
+proc isPrepared*(self: gen_qsciapis_types.QsciAPIs, ): bool =
 
   fcQsciAPIs_isPrepared(self.h)
 
-proc loadPrepared*(self: QsciAPIs, ): bool =
+proc loadPrepared*(self: gen_qsciapis_types.QsciAPIs, ): bool =
 
   fcQsciAPIs_loadPrepared(self.h)
 
-proc savePrepared*(self: QsciAPIs, ): bool =
+proc savePrepared*(self: gen_qsciapis_types.QsciAPIs, ): bool =
 
   fcQsciAPIs_savePrepared(self.h)
 
-proc updateAutoCompletionList*(self: QsciAPIs, context: seq[string], list: seq[string]): void =
+proc updateAutoCompletionList*(self: gen_qsciapis_types.QsciAPIs, context: seq[string], list: seq[string]): void =
 
   var context_CArray = newSeq[struct_miqt_string](len(context))
   for i in 0..<len(context):
@@ -196,11 +194,11 @@ proc updateAutoCompletionList*(self: QsciAPIs, context: seq[string], list: seq[s
 
   fcQsciAPIs_updateAutoCompletionList(self.h, struct_miqt_array(len: csize_t(len(context)), data: if len(context) == 0: nil else: addr(context_CArray[0])), struct_miqt_array(len: csize_t(len(list)), data: if len(list) == 0: nil else: addr(list_CArray[0])))
 
-proc autoCompletionSelected*(self: QsciAPIs, sel: string): void =
+proc autoCompletionSelected*(self: gen_qsciapis_types.QsciAPIs, sel: string): void =
 
   fcQsciAPIs_autoCompletionSelected(self.h, struct_miqt_string(data: sel, len: csize_t(len(sel))))
 
-proc callTips*(self: QsciAPIs, context: seq[string], commas: cint, style: gen_qsciscintilla.QsciScintillaCallTipsStyle, shifts: seq[cint]): seq[string] =
+proc callTips*(self: gen_qsciapis_types.QsciAPIs, context: seq[string], commas: cint, style: cint, shifts: seq[cint]): seq[string] =
 
   var context_CArray = newSeq[struct_miqt_string](len(context))
   for i in 0..<len(context):
@@ -220,11 +218,11 @@ proc callTips*(self: QsciAPIs, context: seq[string], commas: cint, style: gen_qs
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc event*(self: QsciAPIs, e: gen_qcoreevent.QEvent): bool =
+proc event*(self: gen_qsciapis_types.QsciAPIs, e: gen_qcoreevent.QEvent): bool =
 
   fcQsciAPIs_event(self.h, e.h)
 
-proc installedAPIFiles*(self: QsciAPIs, ): seq[string] =
+proc installedAPIFiles*(self: gen_qsciapis_types.QsciAPIs, ): seq[string] =
 
   var v_ma = fcQsciAPIs_installedAPIFiles(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -236,7 +234,7 @@ proc installedAPIFiles*(self: QsciAPIs, ): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc apiPreparationCancelled*(self: QsciAPIs, ): void =
+proc apiPreparationCancelled*(self: gen_qsciapis_types.QsciAPIs, ): void =
 
   fcQsciAPIs_apiPreparationCancelled(self.h)
 
@@ -246,13 +244,13 @@ proc miqt_exec_callback_QsciAPIs_apiPreparationCancelled(slot: int) {.exportc.} 
 
   nimfunc[]()
 
-proc onapiPreparationCancelled*(self: QsciAPIs, slot: proc()) =
+proc onapiPreparationCancelled*(self: gen_qsciapis_types.QsciAPIs, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQsciAPIs_connect_apiPreparationCancelled(self.h, cast[int](addr tmp[]))
-proc apiPreparationStarted*(self: QsciAPIs, ): void =
+proc apiPreparationStarted*(self: gen_qsciapis_types.QsciAPIs, ): void =
 
   fcQsciAPIs_apiPreparationStarted(self.h)
 
@@ -262,13 +260,13 @@ proc miqt_exec_callback_QsciAPIs_apiPreparationStarted(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onapiPreparationStarted*(self: QsciAPIs, slot: proc()) =
+proc onapiPreparationStarted*(self: gen_qsciapis_types.QsciAPIs, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQsciAPIs_connect_apiPreparationStarted(self.h, cast[int](addr tmp[]))
-proc apiPreparationFinished*(self: QsciAPIs, ): void =
+proc apiPreparationFinished*(self: gen_qsciapis_types.QsciAPIs, ): void =
 
   fcQsciAPIs_apiPreparationFinished(self.h)
 
@@ -278,116 +276,101 @@ proc miqt_exec_callback_QsciAPIs_apiPreparationFinished(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onapiPreparationFinished*(self: QsciAPIs, slot: proc()) =
+proc onapiPreparationFinished*(self: gen_qsciapis_types.QsciAPIs, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQsciAPIs_connect_apiPreparationFinished(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QsciAPIs, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qsciapis_types.QsciAPIs, s: cstring, c: cstring): string =
 
   let v_ms = fcQsciAPIs_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QsciAPIs, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qsciapis_types.QsciAPIs, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQsciAPIs_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc isPrepared1*(self: QsciAPIs, filename: string): bool =
+proc isPrepared1*(self: gen_qsciapis_types.QsciAPIs, filename: string): bool =
 
   fcQsciAPIs_isPrepared1(self.h, struct_miqt_string(data: filename, len: csize_t(len(filename))))
 
-proc loadPrepared1*(self: QsciAPIs, filename: string): bool =
+proc loadPrepared1*(self: gen_qsciapis_types.QsciAPIs, filename: string): bool =
 
   fcQsciAPIs_loadPrepared1(self.h, struct_miqt_string(data: filename, len: csize_t(len(filename))))
 
-proc savePrepared1*(self: QsciAPIs, filename: string): bool =
+proc savePrepared1*(self: gen_qsciapis_types.QsciAPIs, filename: string): bool =
 
   fcQsciAPIs_savePrepared1(self.h, struct_miqt_string(data: filename, len: csize_t(len(filename))))
 
-proc callVirtualBase_metaObject(self: QsciAPIs, ): gen_qobjectdefs.QMetaObject =
-
+proc QsciAPIsmetaObject*(self: gen_qsciapis_types.QsciAPIs, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQsciAPIs_virtualbase_metaObject(self.h))
 
-type QsciAPIsmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QsciAPIs, slot: proc(super: QsciAPIsmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QsciAPIsmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qsciapis_types.QsciAPIs, slot: QsciAPIsmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciAPIsmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QsciAPIsmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciAPIs_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciAPIs_metaObject(self: ptr cQsciAPIs, slot: int): pointer {.exportc: "miqt_exec_callback_QsciAPIs_metaObject ".} =
-  type Cb = proc(super: QsciAPIsmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QsciAPIs(h: self), )
+  var nimfunc = cast[ptr QsciAPIsmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QsciAPIs, param1: cstring): pointer =
-
+proc QsciAPIsmetacast*(self: gen_qsciapis_types.QsciAPIs, param1: cstring): pointer =
 
   fQsciAPIs_virtualbase_metacast(self.h, param1)
 
-type QsciAPIsmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QsciAPIs, slot: proc(super: QsciAPIsmetacastBase, param1: cstring): pointer) =
+type QsciAPIsmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qsciapis_types.QsciAPIs, slot: QsciAPIsmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciAPIsmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QsciAPIsmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciAPIs_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciAPIs_metacast(self: ptr cQsciAPIs, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QsciAPIs_metacast ".} =
-  type Cb = proc(super: QsciAPIsmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QsciAPIs(h: self), param1)
+  var nimfunc = cast[ptr QsciAPIsmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QsciAPIs, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QsciAPIsmetacall*(self: gen_qsciapis_types.QsciAPIs, param1: cint, param2: cint, param3: pointer): cint =
 
   fQsciAPIs_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QsciAPIsmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QsciAPIs, slot: proc(super: QsciAPIsmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QsciAPIsmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qsciapis_types.QsciAPIs, slot: QsciAPIsmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciAPIsmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QsciAPIsmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciAPIs_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciAPIs_metacall(self: ptr cQsciAPIs, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QsciAPIs_metacall ".} =
-  type Cb = proc(super: QsciAPIsmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QsciAPIs(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QsciAPIsmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_updateAutoCompletionList(self: QsciAPIs, context: seq[string], list: seq[string]): void =
+proc QsciAPIsupdateAutoCompletionList*(self: gen_qsciapis_types.QsciAPIs, context: seq[string], list: seq[string]): void =
 
   var context_CArray = newSeq[struct_miqt_string](len(context))
   for i in 0..<len(context):
@@ -397,23 +380,18 @@ proc callVirtualBase_updateAutoCompletionList(self: QsciAPIs, context: seq[strin
   for i in 0..<len(list):
     list_CArray[i] = struct_miqt_string(data: list[i], len: csize_t(len(list[i])))
 
-
   fQsciAPIs_virtualbase_updateAutoCompletionList(self.h, struct_miqt_array(len: csize_t(len(context)), data: if len(context) == 0: nil else: addr(context_CArray[0])), struct_miqt_array(len: csize_t(len(list)), data: if len(list) == 0: nil else: addr(list_CArray[0])))
 
-type QsciAPIsupdateAutoCompletionListBase* = proc(context: seq[string], list: seq[string]): void
-proc onupdateAutoCompletionList*(self: QsciAPIs, slot: proc(super: QsciAPIsupdateAutoCompletionListBase, context: seq[string], list: seq[string]): void) =
+type QsciAPIsupdateAutoCompletionListProc* = proc(context: seq[string], list: seq[string]): void
+proc onupdateAutoCompletionList*(self: gen_qsciapis_types.QsciAPIs, slot: QsciAPIsupdateAutoCompletionListProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciAPIsupdateAutoCompletionListBase, context: seq[string], list: seq[string]): void
-  var tmp = new Cb
+  var tmp = new QsciAPIsupdateAutoCompletionListProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciAPIs_override_virtual_updateAutoCompletionList(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciAPIs_updateAutoCompletionList(self: ptr cQsciAPIs, slot: int, context: struct_miqt_array, list: struct_miqt_array): void {.exportc: "miqt_exec_callback_QsciAPIs_updateAutoCompletionList ".} =
-  type Cb = proc(super: QsciAPIsupdateAutoCompletionListBase, context: seq[string], list: seq[string]): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(context: seq[string], list: seq[string]): auto =
-    callVirtualBase_updateAutoCompletionList(QsciAPIs(h: self), context, list)
+  var nimfunc = cast[ptr QsciAPIsupdateAutoCompletionListProc](cast[pointer](slot))
   var vcontext_ma = context
   var vcontextx_ret = newSeq[string](int(vcontext_ma.len))
   let vcontext_outCast = cast[ptr UncheckedArray[struct_miqt_string]](vcontext_ma.data)
@@ -435,34 +413,29 @@ proc miqt_exec_callback_QsciAPIs_updateAutoCompletionList(self: ptr cQsciAPIs, s
   let slotval2 = vlistx_ret
 
 
-  nimfunc[](superCall, slotval1, slotval2)
-proc callVirtualBase_autoCompletionSelected(self: QsciAPIs, sel: string): void =
-
+  nimfunc[](slotval1, slotval2)
+proc QsciAPIsautoCompletionSelected*(self: gen_qsciapis_types.QsciAPIs, sel: string): void =
 
   fQsciAPIs_virtualbase_autoCompletionSelected(self.h, struct_miqt_string(data: sel, len: csize_t(len(sel))))
 
-type QsciAPIsautoCompletionSelectedBase* = proc(sel: string): void
-proc onautoCompletionSelected*(self: QsciAPIs, slot: proc(super: QsciAPIsautoCompletionSelectedBase, sel: string): void) =
+type QsciAPIsautoCompletionSelectedProc* = proc(sel: string): void
+proc onautoCompletionSelected*(self: gen_qsciapis_types.QsciAPIs, slot: QsciAPIsautoCompletionSelectedProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciAPIsautoCompletionSelectedBase, sel: string): void
-  var tmp = new Cb
+  var tmp = new QsciAPIsautoCompletionSelectedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciAPIs_override_virtual_autoCompletionSelected(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciAPIs_autoCompletionSelected(self: ptr cQsciAPIs, slot: int, sel: struct_miqt_string): void {.exportc: "miqt_exec_callback_QsciAPIs_autoCompletionSelected ".} =
-  type Cb = proc(super: QsciAPIsautoCompletionSelectedBase, sel: string): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(sel: string): auto =
-    callVirtualBase_autoCompletionSelected(QsciAPIs(h: self), sel)
+  var nimfunc = cast[ptr QsciAPIsautoCompletionSelectedProc](cast[pointer](slot))
   let vsel_ms = sel
   let vselx_ret = string.fromBytes(toOpenArrayByte(vsel_ms.data, 0, int(vsel_ms.len)-1))
   c_free(vsel_ms.data)
   let slotval1 = vselx_ret
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_callTips(self: QsciAPIs, context: seq[string], commas: cint, style: gen_qsciscintilla.QsciScintillaCallTipsStyle, shifts: seq[cint]): seq[string] =
+  nimfunc[](slotval1)
+proc QsciAPIscallTips*(self: gen_qsciapis_types.QsciAPIs, context: seq[string], commas: cint, style: cint, shifts: seq[cint]): seq[string] =
 
   var context_CArray = newSeq[struct_miqt_string](len(context))
   for i in 0..<len(context):
@@ -471,7 +444,6 @@ proc callVirtualBase_callTips(self: QsciAPIs, context: seq[string], commas: cint
   var shifts_CArray = newSeq[cint](len(shifts))
   for i in 0..<len(shifts):
     shifts_CArray[i] = shifts[i]
-
 
   var v_ma = fQsciAPIs_virtualbase_callTips(self.h, struct_miqt_array(len: csize_t(len(context)), data: if len(context) == 0: nil else: addr(context_CArray[0])), commas, cint(style), struct_miqt_array(len: csize_t(len(shifts)), data: if len(shifts) == 0: nil else: addr(shifts_CArray[0])))
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -483,20 +455,16 @@ proc callVirtualBase_callTips(self: QsciAPIs, context: seq[string], commas: cint
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-type QsciAPIscallTipsBase* = proc(context: seq[string], commas: cint, style: gen_qsciscintilla.QsciScintillaCallTipsStyle, shifts: seq[cint]): seq[string]
-proc oncallTips*(self: QsciAPIs, slot: proc(super: QsciAPIscallTipsBase, context: seq[string], commas: cint, style: gen_qsciscintilla.QsciScintillaCallTipsStyle, shifts: seq[cint]): seq[string]) =
+type QsciAPIscallTipsProc* = proc(context: seq[string], commas: cint, style: cint, shifts: seq[cint]): seq[string]
+proc oncallTips*(self: gen_qsciapis_types.QsciAPIs, slot: QsciAPIscallTipsProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciAPIscallTipsBase, context: seq[string], commas: cint, style: gen_qsciscintilla.QsciScintillaCallTipsStyle, shifts: seq[cint]): seq[string]
-  var tmp = new Cb
+  var tmp = new QsciAPIscallTipsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciAPIs_override_virtual_callTips(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciAPIs_callTips(self: ptr cQsciAPIs, slot: int, context: struct_miqt_array, commas: cint, style: cint, shifts: struct_miqt_array): struct_miqt_array {.exportc: "miqt_exec_callback_QsciAPIs_callTips ".} =
-  type Cb = proc(super: QsciAPIscallTipsBase, context: seq[string], commas: cint, style: gen_qsciscintilla.QsciScintillaCallTipsStyle, shifts: seq[cint]): seq[string]
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(context: seq[string], commas: cint, style: gen_qsciscintilla.QsciScintillaCallTipsStyle, shifts: seq[cint]): auto =
-    callVirtualBase_callTips(QsciAPIs(h: self), context, commas, style, shifts)
+  var nimfunc = cast[ptr QsciAPIscallTipsProc](cast[pointer](slot))
   var vcontext_ma = context
   var vcontextx_ret = newSeq[string](int(vcontext_ma.len))
   let vcontext_outCast = cast[ptr UncheckedArray[struct_miqt_string]](vcontext_ma.data)
@@ -509,7 +477,7 @@ proc miqt_exec_callback_QsciAPIs_callTips(self: ptr cQsciAPIs, slot: int, contex
 
   let slotval2 = commas
 
-  let slotval3 = gen_qsciscintilla.QsciScintillaCallTipsStyle(style)
+  let slotval3 = cint(style)
 
   var vshifts_ma = shifts
   var vshiftsx_ret = newSeq[cint](int(vshifts_ma.len))
@@ -519,181 +487,146 @@ proc miqt_exec_callback_QsciAPIs_callTips(self: ptr cQsciAPIs, slot: int, contex
   let slotval4 = vshiftsx_ret
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3, slotval4 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3, slotval4 )
   var virtualReturn_CArray = newSeq[struct_miqt_string](len(virtualReturn))
   for i in 0..<len(virtualReturn):
     virtualReturn_CArray[i] = struct_miqt_string(data: virtualReturn[i], len: csize_t(len(virtualReturn[i])))
 
 
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
-proc callVirtualBase_event(self: QsciAPIs, e: gen_qcoreevent.QEvent): bool =
-
+proc QsciAPIsevent*(self: gen_qsciapis_types.QsciAPIs, e: gen_qcoreevent.QEvent): bool =
 
   fQsciAPIs_virtualbase_event(self.h, e.h)
 
-type QsciAPIseventBase* = proc(e: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QsciAPIs, slot: proc(super: QsciAPIseventBase, e: gen_qcoreevent.QEvent): bool) =
+type QsciAPIseventProc* = proc(e: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qsciapis_types.QsciAPIs, slot: QsciAPIseventProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciAPIseventBase, e: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QsciAPIseventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciAPIs_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciAPIs_event(self: ptr cQsciAPIs, slot: int, e: pointer): bool {.exportc: "miqt_exec_callback_QsciAPIs_event ".} =
-  type Cb = proc(super: QsciAPIseventBase, e: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QsciAPIs(h: self), e)
+  var nimfunc = cast[ptr QsciAPIseventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: e)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QsciAPIs, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QsciAPIseventFilter*(self: gen_qsciapis_types.QsciAPIs, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQsciAPIs_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QsciAPIseventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QsciAPIs, slot: proc(super: QsciAPIseventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QsciAPIseventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qsciapis_types.QsciAPIs, slot: QsciAPIseventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciAPIseventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QsciAPIseventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciAPIs_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciAPIs_eventFilter(self: ptr cQsciAPIs, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QsciAPIs_eventFilter ".} =
-  type Cb = proc(super: QsciAPIseventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QsciAPIs(h: self), watched, event)
+  var nimfunc = cast[ptr QsciAPIseventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QsciAPIs, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QsciAPIstimerEvent*(self: gen_qsciapis_types.QsciAPIs, event: gen_qcoreevent.QTimerEvent): void =
 
   fQsciAPIs_virtualbase_timerEvent(self.h, event.h)
 
-type QsciAPIstimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QsciAPIs, slot: proc(super: QsciAPIstimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QsciAPIstimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qsciapis_types.QsciAPIs, slot: QsciAPIstimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciAPIstimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QsciAPIstimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciAPIs_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciAPIs_timerEvent(self: ptr cQsciAPIs, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QsciAPIs_timerEvent ".} =
-  type Cb = proc(super: QsciAPIstimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QsciAPIs(h: self), event)
+  var nimfunc = cast[ptr QsciAPIstimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QsciAPIs, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QsciAPIschildEvent*(self: gen_qsciapis_types.QsciAPIs, event: gen_qcoreevent.QChildEvent): void =
 
   fQsciAPIs_virtualbase_childEvent(self.h, event.h)
 
-type QsciAPIschildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QsciAPIs, slot: proc(super: QsciAPIschildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QsciAPIschildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qsciapis_types.QsciAPIs, slot: QsciAPIschildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciAPIschildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QsciAPIschildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciAPIs_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciAPIs_childEvent(self: ptr cQsciAPIs, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QsciAPIs_childEvent ".} =
-  type Cb = proc(super: QsciAPIschildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QsciAPIs(h: self), event)
+  var nimfunc = cast[ptr QsciAPIschildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QsciAPIs, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QsciAPIscustomEvent*(self: gen_qsciapis_types.QsciAPIs, event: gen_qcoreevent.QEvent): void =
 
   fQsciAPIs_virtualbase_customEvent(self.h, event.h)
 
-type QsciAPIscustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QsciAPIs, slot: proc(super: QsciAPIscustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QsciAPIscustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qsciapis_types.QsciAPIs, slot: QsciAPIscustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciAPIscustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QsciAPIscustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciAPIs_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciAPIs_customEvent(self: ptr cQsciAPIs, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QsciAPIs_customEvent ".} =
-  type Cb = proc(super: QsciAPIscustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QsciAPIs(h: self), event)
+  var nimfunc = cast[ptr QsciAPIscustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QsciAPIs, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QsciAPIsconnectNotify*(self: gen_qsciapis_types.QsciAPIs, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQsciAPIs_virtualbase_connectNotify(self.h, signal.h)
 
-type QsciAPIsconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QsciAPIs, slot: proc(super: QsciAPIsconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QsciAPIsconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qsciapis_types.QsciAPIs, slot: QsciAPIsconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciAPIsconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QsciAPIsconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciAPIs_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciAPIs_connectNotify(self: ptr cQsciAPIs, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QsciAPIs_connectNotify ".} =
-  type Cb = proc(super: QsciAPIsconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QsciAPIs(h: self), signal)
+  var nimfunc = cast[ptr QsciAPIsconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QsciAPIs, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QsciAPIsdisconnectNotify*(self: gen_qsciapis_types.QsciAPIs, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQsciAPIs_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QsciAPIsdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QsciAPIs, slot: proc(super: QsciAPIsdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QsciAPIsdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qsciapis_types.QsciAPIs, slot: QsciAPIsdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciAPIsdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QsciAPIsdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciAPIs_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciAPIs_disconnectNotify(self: ptr cQsciAPIs, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QsciAPIs_disconnectNotify ".} =
-  type Cb = proc(super: QsciAPIsdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QsciAPIs(h: self), signal)
+  var nimfunc = cast[ptr QsciAPIsdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QsciAPIs): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qsciapis_types.QsciAPIs): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQsciAPIs_staticMetaObject())
-proc delete*(self: QsciAPIs) =
+proc delete*(self: gen_qsciapis_types.QsciAPIs) =
   fcQsciAPIs_delete(self.h)

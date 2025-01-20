@@ -34,42 +34,34 @@ const cflags = gorge("pkg-config -cflags Qt6Widgets")
 {.compile("gen_qregularexpression.cpp", cflags).}
 
 
-type QRegularExpressionPatternOption* = cint
-const
-  QRegularExpressionNoPatternOption* = 0
-  QRegularExpressionCaseInsensitiveOption* = 1
-  QRegularExpressionDotMatchesEverythingOption* = 2
-  QRegularExpressionMultilineOption* = 4
-  QRegularExpressionExtendedPatternSyntaxOption* = 8
-  QRegularExpressionInvertedGreedinessOption* = 16
-  QRegularExpressionDontCaptureOption* = 32
-  QRegularExpressionUseUnicodePropertiesOption* = 64
+type QRegularExpressionPatternOptionEnum* = distinct cint
+template NoPatternOption*(_: type QRegularExpressionPatternOptionEnum): untyped = 0
+template CaseInsensitiveOption*(_: type QRegularExpressionPatternOptionEnum): untyped = 1
+template DotMatchesEverythingOption*(_: type QRegularExpressionPatternOptionEnum): untyped = 2
+template MultilineOption*(_: type QRegularExpressionPatternOptionEnum): untyped = 4
+template ExtendedPatternSyntaxOption*(_: type QRegularExpressionPatternOptionEnum): untyped = 8
+template InvertedGreedinessOption*(_: type QRegularExpressionPatternOptionEnum): untyped = 16
+template DontCaptureOption*(_: type QRegularExpressionPatternOptionEnum): untyped = 32
+template UseUnicodePropertiesOption*(_: type QRegularExpressionPatternOptionEnum): untyped = 64
 
 
-
-type QRegularExpressionMatchType* = cint
-const
-  QRegularExpressionNormalMatch* = 0
-  QRegularExpressionPartialPreferCompleteMatch* = 1
-  QRegularExpressionPartialPreferFirstMatch* = 2
-  QRegularExpressionNoMatch* = 3
+type QRegularExpressionMatchTypeEnum* = distinct cint
+template NormalMatch*(_: type QRegularExpressionMatchTypeEnum): untyped = 0
+template PartialPreferCompleteMatch*(_: type QRegularExpressionMatchTypeEnum): untyped = 1
+template PartialPreferFirstMatch*(_: type QRegularExpressionMatchTypeEnum): untyped = 2
+template NoMatch*(_: type QRegularExpressionMatchTypeEnum): untyped = 3
 
 
-
-type QRegularExpressionMatchOption* = cint
-const
-  QRegularExpressionNoMatchOption* = 0
-  QRegularExpressionAnchorAtOffsetMatchOption* = 1
-  QRegularExpressionAnchoredMatchOption* = 1
-  QRegularExpressionDontCheckSubjectStringMatchOption* = 2
+type QRegularExpressionMatchOptionEnum* = distinct cint
+template NoMatchOption*(_: type QRegularExpressionMatchOptionEnum): untyped = 0
+template AnchorAtOffsetMatchOption*(_: type QRegularExpressionMatchOptionEnum): untyped = 1
+template AnchoredMatchOption*(_: type QRegularExpressionMatchOptionEnum): untyped = 1
+template DontCheckSubjectStringMatchOption*(_: type QRegularExpressionMatchOptionEnum): untyped = 2
 
 
-
-type QRegularExpressionWildcardConversionOption* = cint
-const
-  QRegularExpressionDefaultWildcardConversion* = 0
-  QRegularExpressionUnanchoredWildcardConversion* = 1
-
+type QRegularExpressionWildcardConversionOptionEnum* = distinct cint
+template DefaultWildcardConversion*(_: type QRegularExpressionWildcardConversionOptionEnum): untyped = 0
+template UnanchoredWildcardConversion*(_: type QRegularExpressionWildcardConversionOptionEnum): untyped = 1
 
 
 import gen_qregularexpression_types
@@ -152,67 +144,67 @@ proc fcQRegularExpressionMatchIterator_matchOptions(self: pointer, ): cint {.imp
 proc fcQRegularExpressionMatchIterator_delete(self: pointer) {.importc: "QRegularExpressionMatchIterator_delete".}
 
 
-func init*(T: type QRegularExpression, h: ptr cQRegularExpression): QRegularExpression =
+func init*(T: type gen_qregularexpression_types.QRegularExpression, h: ptr cQRegularExpression): gen_qregularexpression_types.QRegularExpression =
   T(h: h)
-proc create*(T: type QRegularExpression, ): QRegularExpression =
+proc create*(T: type gen_qregularexpression_types.QRegularExpression, ): gen_qregularexpression_types.QRegularExpression =
 
-  QRegularExpression.init(fcQRegularExpression_new())
-proc create*(T: type QRegularExpression, pattern: string): QRegularExpression =
+  gen_qregularexpression_types.QRegularExpression.init(fcQRegularExpression_new())
+proc create*(T: type gen_qregularexpression_types.QRegularExpression, pattern: string): gen_qregularexpression_types.QRegularExpression =
 
-  QRegularExpression.init(fcQRegularExpression_new2(struct_miqt_string(data: pattern, len: csize_t(len(pattern)))))
-proc create*(T: type QRegularExpression, re: QRegularExpression): QRegularExpression =
+  gen_qregularexpression_types.QRegularExpression.init(fcQRegularExpression_new2(struct_miqt_string(data: pattern, len: csize_t(len(pattern)))))
+proc create*(T: type gen_qregularexpression_types.QRegularExpression, re: gen_qregularexpression_types.QRegularExpression): gen_qregularexpression_types.QRegularExpression =
 
-  QRegularExpression.init(fcQRegularExpression_new3(re.h))
-proc create*(T: type QRegularExpression, pattern: string, options: QRegularExpressionPatternOption): QRegularExpression =
+  gen_qregularexpression_types.QRegularExpression.init(fcQRegularExpression_new3(re.h))
+proc create*(T: type gen_qregularexpression_types.QRegularExpression, pattern: string, options: cint): gen_qregularexpression_types.QRegularExpression =
 
-  QRegularExpression.init(fcQRegularExpression_new4(struct_miqt_string(data: pattern, len: csize_t(len(pattern))), cint(options)))
-proc patternOptions*(self: QRegularExpression, ): QRegularExpressionPatternOption =
+  gen_qregularexpression_types.QRegularExpression.init(fcQRegularExpression_new4(struct_miqt_string(data: pattern, len: csize_t(len(pattern))), cint(options)))
+proc patternOptions*(self: gen_qregularexpression_types.QRegularExpression, ): cint =
 
-  QRegularExpressionPatternOption(fcQRegularExpression_patternOptions(self.h))
+  cint(fcQRegularExpression_patternOptions(self.h))
 
-proc setPatternOptions*(self: QRegularExpression, options: QRegularExpressionPatternOption): void =
+proc setPatternOptions*(self: gen_qregularexpression_types.QRegularExpression, options: cint): void =
 
   fcQRegularExpression_setPatternOptions(self.h, cint(options))
 
-proc operatorAssign*(self: QRegularExpression, re: QRegularExpression): void =
+proc operatorAssign*(self: gen_qregularexpression_types.QRegularExpression, re: gen_qregularexpression_types.QRegularExpression): void =
 
   fcQRegularExpression_operatorAssign(self.h, re.h)
 
-proc swap*(self: QRegularExpression, other: QRegularExpression): void =
+proc swap*(self: gen_qregularexpression_types.QRegularExpression, other: gen_qregularexpression_types.QRegularExpression): void =
 
   fcQRegularExpression_swap(self.h, other.h)
 
-proc pattern*(self: QRegularExpression, ): string =
+proc pattern*(self: gen_qregularexpression_types.QRegularExpression, ): string =
 
   let v_ms = fcQRegularExpression_pattern(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setPattern*(self: QRegularExpression, pattern: string): void =
+proc setPattern*(self: gen_qregularexpression_types.QRegularExpression, pattern: string): void =
 
   fcQRegularExpression_setPattern(self.h, struct_miqt_string(data: pattern, len: csize_t(len(pattern))))
 
-proc isValid*(self: QRegularExpression, ): bool =
+proc isValid*(self: gen_qregularexpression_types.QRegularExpression, ): bool =
 
   fcQRegularExpression_isValid(self.h)
 
-proc patternErrorOffset*(self: QRegularExpression, ): int64 =
+proc patternErrorOffset*(self: gen_qregularexpression_types.QRegularExpression, ): int64 =
 
   fcQRegularExpression_patternErrorOffset(self.h)
 
-proc errorString*(self: QRegularExpression, ): string =
+proc errorString*(self: gen_qregularexpression_types.QRegularExpression, ): string =
 
   let v_ms = fcQRegularExpression_errorString(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc captureCount*(self: QRegularExpression, ): cint =
+proc captureCount*(self: gen_qregularexpression_types.QRegularExpression, ): cint =
 
   fcQRegularExpression_captureCount(self.h)
 
-proc namedCaptureGroups*(self: QRegularExpression, ): seq[string] =
+proc namedCaptureGroups*(self: gen_qregularexpression_types.QRegularExpression, ): seq[string] =
 
   var v_ma = fcQRegularExpression_namedCaptureGroups(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -224,148 +216,148 @@ proc namedCaptureGroups*(self: QRegularExpression, ): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc match*(self: QRegularExpression, subject: string): QRegularExpressionMatch =
+proc match*(self: gen_qregularexpression_types.QRegularExpression, subject: string): gen_qregularexpression_types.QRegularExpressionMatch =
 
-  QRegularExpressionMatch(h: fcQRegularExpression_match(self.h, struct_miqt_string(data: subject, len: csize_t(len(subject)))))
+  gen_qregularexpression_types.QRegularExpressionMatch(h: fcQRegularExpression_match(self.h, struct_miqt_string(data: subject, len: csize_t(len(subject)))))
 
-proc globalMatch*(self: QRegularExpression, subject: string): QRegularExpressionMatchIterator =
+proc globalMatch*(self: gen_qregularexpression_types.QRegularExpression, subject: string): gen_qregularexpression_types.QRegularExpressionMatchIterator =
 
-  QRegularExpressionMatchIterator(h: fcQRegularExpression_globalMatch(self.h, struct_miqt_string(data: subject, len: csize_t(len(subject)))))
+  gen_qregularexpression_types.QRegularExpressionMatchIterator(h: fcQRegularExpression_globalMatch(self.h, struct_miqt_string(data: subject, len: csize_t(len(subject)))))
 
-proc optimize*(self: QRegularExpression, ): void =
+proc optimize*(self: gen_qregularexpression_types.QRegularExpression, ): void =
 
   fcQRegularExpression_optimize(self.h)
 
-proc escape*(_: type QRegularExpression, str: string): string =
+proc escape*(_: type gen_qregularexpression_types.QRegularExpression, str: string): string =
 
   let v_ms = fcQRegularExpression_escape(struct_miqt_string(data: str, len: csize_t(len(str))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc wildcardToRegularExpression*(_: type QRegularExpression, str: string): string =
+proc wildcardToRegularExpression*(_: type gen_qregularexpression_types.QRegularExpression, str: string): string =
 
   let v_ms = fcQRegularExpression_wildcardToRegularExpression(struct_miqt_string(data: str, len: csize_t(len(str))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc anchoredPattern*(_: type QRegularExpression, expression: string): string =
+proc anchoredPattern*(_: type gen_qregularexpression_types.QRegularExpression, expression: string): string =
 
   let v_ms = fcQRegularExpression_anchoredPattern(struct_miqt_string(data: expression, len: csize_t(len(expression))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc operatorEqual*(self: QRegularExpression, re: QRegularExpression): bool =
+proc operatorEqual*(self: gen_qregularexpression_types.QRegularExpression, re: gen_qregularexpression_types.QRegularExpression): bool =
 
   fcQRegularExpression_operatorEqual(self.h, re.h)
 
-proc operatorNotEqual*(self: QRegularExpression, re: QRegularExpression): bool =
+proc operatorNotEqual*(self: gen_qregularexpression_types.QRegularExpression, re: gen_qregularexpression_types.QRegularExpression): bool =
 
   fcQRegularExpression_operatorNotEqual(self.h, re.h)
 
-proc match2*(self: QRegularExpression, subject: string, offset: int64): QRegularExpressionMatch =
+proc match2*(self: gen_qregularexpression_types.QRegularExpression, subject: string, offset: int64): gen_qregularexpression_types.QRegularExpressionMatch =
 
-  QRegularExpressionMatch(h: fcQRegularExpression_match2(self.h, struct_miqt_string(data: subject, len: csize_t(len(subject))), offset))
+  gen_qregularexpression_types.QRegularExpressionMatch(h: fcQRegularExpression_match2(self.h, struct_miqt_string(data: subject, len: csize_t(len(subject))), offset))
 
-proc match3*(self: QRegularExpression, subject: string, offset: int64, matchType: QRegularExpressionMatchType): QRegularExpressionMatch =
+proc match3*(self: gen_qregularexpression_types.QRegularExpression, subject: string, offset: int64, matchType: cint): gen_qregularexpression_types.QRegularExpressionMatch =
 
-  QRegularExpressionMatch(h: fcQRegularExpression_match3(self.h, struct_miqt_string(data: subject, len: csize_t(len(subject))), offset, cint(matchType)))
+  gen_qregularexpression_types.QRegularExpressionMatch(h: fcQRegularExpression_match3(self.h, struct_miqt_string(data: subject, len: csize_t(len(subject))), offset, cint(matchType)))
 
-proc match4*(self: QRegularExpression, subject: string, offset: int64, matchType: QRegularExpressionMatchType, matchOptions: QRegularExpressionMatchOption): QRegularExpressionMatch =
+proc match4*(self: gen_qregularexpression_types.QRegularExpression, subject: string, offset: int64, matchType: cint, matchOptions: cint): gen_qregularexpression_types.QRegularExpressionMatch =
 
-  QRegularExpressionMatch(h: fcQRegularExpression_match4(self.h, struct_miqt_string(data: subject, len: csize_t(len(subject))), offset, cint(matchType), cint(matchOptions)))
+  gen_qregularexpression_types.QRegularExpressionMatch(h: fcQRegularExpression_match4(self.h, struct_miqt_string(data: subject, len: csize_t(len(subject))), offset, cint(matchType), cint(matchOptions)))
 
-proc globalMatch2*(self: QRegularExpression, subject: string, offset: int64): QRegularExpressionMatchIterator =
+proc globalMatch2*(self: gen_qregularexpression_types.QRegularExpression, subject: string, offset: int64): gen_qregularexpression_types.QRegularExpressionMatchIterator =
 
-  QRegularExpressionMatchIterator(h: fcQRegularExpression_globalMatch2(self.h, struct_miqt_string(data: subject, len: csize_t(len(subject))), offset))
+  gen_qregularexpression_types.QRegularExpressionMatchIterator(h: fcQRegularExpression_globalMatch2(self.h, struct_miqt_string(data: subject, len: csize_t(len(subject))), offset))
 
-proc globalMatch3*(self: QRegularExpression, subject: string, offset: int64, matchType: QRegularExpressionMatchType): QRegularExpressionMatchIterator =
+proc globalMatch3*(self: gen_qregularexpression_types.QRegularExpression, subject: string, offset: int64, matchType: cint): gen_qregularexpression_types.QRegularExpressionMatchIterator =
 
-  QRegularExpressionMatchIterator(h: fcQRegularExpression_globalMatch3(self.h, struct_miqt_string(data: subject, len: csize_t(len(subject))), offset, cint(matchType)))
+  gen_qregularexpression_types.QRegularExpressionMatchIterator(h: fcQRegularExpression_globalMatch3(self.h, struct_miqt_string(data: subject, len: csize_t(len(subject))), offset, cint(matchType)))
 
-proc globalMatch4*(self: QRegularExpression, subject: string, offset: int64, matchType: QRegularExpressionMatchType, matchOptions: QRegularExpressionMatchOption): QRegularExpressionMatchIterator =
+proc globalMatch4*(self: gen_qregularexpression_types.QRegularExpression, subject: string, offset: int64, matchType: cint, matchOptions: cint): gen_qregularexpression_types.QRegularExpressionMatchIterator =
 
-  QRegularExpressionMatchIterator(h: fcQRegularExpression_globalMatch4(self.h, struct_miqt_string(data: subject, len: csize_t(len(subject))), offset, cint(matchType), cint(matchOptions)))
+  gen_qregularexpression_types.QRegularExpressionMatchIterator(h: fcQRegularExpression_globalMatch4(self.h, struct_miqt_string(data: subject, len: csize_t(len(subject))), offset, cint(matchType), cint(matchOptions)))
 
-proc wildcardToRegularExpression2*(_: type QRegularExpression, str: string, options: QRegularExpressionWildcardConversionOption): string =
+proc wildcardToRegularExpression2*(_: type gen_qregularexpression_types.QRegularExpression, str: string, options: cint): string =
 
   let v_ms = fcQRegularExpression_wildcardToRegularExpression2(struct_miqt_string(data: str, len: csize_t(len(str))), cint(options))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc delete*(self: QRegularExpression) =
+proc delete*(self: gen_qregularexpression_types.QRegularExpression) =
   fcQRegularExpression_delete(self.h)
 
-func init*(T: type QRegularExpressionMatch, h: ptr cQRegularExpressionMatch): QRegularExpressionMatch =
+func init*(T: type gen_qregularexpression_types.QRegularExpressionMatch, h: ptr cQRegularExpressionMatch): gen_qregularexpression_types.QRegularExpressionMatch =
   T(h: h)
-proc create*(T: type QRegularExpressionMatch, ): QRegularExpressionMatch =
+proc create*(T: type gen_qregularexpression_types.QRegularExpressionMatch, ): gen_qregularexpression_types.QRegularExpressionMatch =
 
-  QRegularExpressionMatch.init(fcQRegularExpressionMatch_new())
-proc create*(T: type QRegularExpressionMatch, match: QRegularExpressionMatch): QRegularExpressionMatch =
+  gen_qregularexpression_types.QRegularExpressionMatch.init(fcQRegularExpressionMatch_new())
+proc create*(T: type gen_qregularexpression_types.QRegularExpressionMatch, match: gen_qregularexpression_types.QRegularExpressionMatch): gen_qregularexpression_types.QRegularExpressionMatch =
 
-  QRegularExpressionMatch.init(fcQRegularExpressionMatch_new2(match.h))
-proc operatorAssign*(self: QRegularExpressionMatch, match: QRegularExpressionMatch): void =
+  gen_qregularexpression_types.QRegularExpressionMatch.init(fcQRegularExpressionMatch_new2(match.h))
+proc operatorAssign*(self: gen_qregularexpression_types.QRegularExpressionMatch, match: gen_qregularexpression_types.QRegularExpressionMatch): void =
 
   fcQRegularExpressionMatch_operatorAssign(self.h, match.h)
 
-proc swap*(self: QRegularExpressionMatch, other: QRegularExpressionMatch): void =
+proc swap*(self: gen_qregularexpression_types.QRegularExpressionMatch, other: gen_qregularexpression_types.QRegularExpressionMatch): void =
 
   fcQRegularExpressionMatch_swap(self.h, other.h)
 
-proc regularExpression*(self: QRegularExpressionMatch, ): QRegularExpression =
+proc regularExpression*(self: gen_qregularexpression_types.QRegularExpressionMatch, ): gen_qregularexpression_types.QRegularExpression =
 
-  QRegularExpression(h: fcQRegularExpressionMatch_regularExpression(self.h))
+  gen_qregularexpression_types.QRegularExpression(h: fcQRegularExpressionMatch_regularExpression(self.h))
 
-proc matchType*(self: QRegularExpressionMatch, ): QRegularExpressionMatchType =
+proc matchType*(self: gen_qregularexpression_types.QRegularExpressionMatch, ): cint =
 
-  QRegularExpressionMatchType(fcQRegularExpressionMatch_matchType(self.h))
+  cint(fcQRegularExpressionMatch_matchType(self.h))
 
-proc matchOptions*(self: QRegularExpressionMatch, ): QRegularExpressionMatchOption =
+proc matchOptions*(self: gen_qregularexpression_types.QRegularExpressionMatch, ): cint =
 
-  QRegularExpressionMatchOption(fcQRegularExpressionMatch_matchOptions(self.h))
+  cint(fcQRegularExpressionMatch_matchOptions(self.h))
 
-proc hasMatch*(self: QRegularExpressionMatch, ): bool =
+proc hasMatch*(self: gen_qregularexpression_types.QRegularExpressionMatch, ): bool =
 
   fcQRegularExpressionMatch_hasMatch(self.h)
 
-proc hasPartialMatch*(self: QRegularExpressionMatch, ): bool =
+proc hasPartialMatch*(self: gen_qregularexpression_types.QRegularExpressionMatch, ): bool =
 
   fcQRegularExpressionMatch_hasPartialMatch(self.h)
 
-proc isValid*(self: QRegularExpressionMatch, ): bool =
+proc isValid*(self: gen_qregularexpression_types.QRegularExpressionMatch, ): bool =
 
   fcQRegularExpressionMatch_isValid(self.h)
 
-proc lastCapturedIndex*(self: QRegularExpressionMatch, ): cint =
+proc lastCapturedIndex*(self: gen_qregularexpression_types.QRegularExpressionMatch, ): cint =
 
   fcQRegularExpressionMatch_lastCapturedIndex(self.h)
 
-proc hasCaptured*(self: QRegularExpressionMatch, name: string): bool =
+proc hasCaptured*(self: gen_qregularexpression_types.QRegularExpressionMatch, name: string): bool =
 
   fcQRegularExpressionMatch_hasCaptured(self.h, struct_miqt_string(data: name, len: csize_t(len(name))))
 
-proc hasCapturedWithNth*(self: QRegularExpressionMatch, nth: cint): bool =
+proc hasCapturedWithNth*(self: gen_qregularexpression_types.QRegularExpressionMatch, nth: cint): bool =
 
   fcQRegularExpressionMatch_hasCapturedWithNth(self.h, nth)
 
-proc captured*(self: QRegularExpressionMatch, ): string =
+proc captured*(self: gen_qregularexpression_types.QRegularExpressionMatch, ): string =
 
   let v_ms = fcQRegularExpressionMatch_captured(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc capturedWithName*(self: QRegularExpressionMatch, name: string): string =
+proc capturedWithName*(self: gen_qregularexpression_types.QRegularExpressionMatch, name: string): string =
 
   let v_ms = fcQRegularExpressionMatch_capturedWithName(self.h, struct_miqt_string(data: name, len: csize_t(len(name))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc capturedTexts*(self: QRegularExpressionMatch, ): seq[string] =
+proc capturedTexts*(self: gen_qregularexpression_types.QRegularExpressionMatch, ): seq[string] =
 
   var v_ma = fcQRegularExpressionMatch_capturedTexts(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -377,95 +369,95 @@ proc capturedTexts*(self: QRegularExpressionMatch, ): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc capturedStart*(self: QRegularExpressionMatch, ): int64 =
+proc capturedStart*(self: gen_qregularexpression_types.QRegularExpressionMatch, ): int64 =
 
   fcQRegularExpressionMatch_capturedStart(self.h)
 
-proc capturedLength*(self: QRegularExpressionMatch, ): int64 =
+proc capturedLength*(self: gen_qregularexpression_types.QRegularExpressionMatch, ): int64 =
 
   fcQRegularExpressionMatch_capturedLength(self.h)
 
-proc capturedEnd*(self: QRegularExpressionMatch, ): int64 =
+proc capturedEnd*(self: gen_qregularexpression_types.QRegularExpressionMatch, ): int64 =
 
   fcQRegularExpressionMatch_capturedEnd(self.h)
 
-proc capturedStartWithName*(self: QRegularExpressionMatch, name: string): int64 =
+proc capturedStartWithName*(self: gen_qregularexpression_types.QRegularExpressionMatch, name: string): int64 =
 
   fcQRegularExpressionMatch_capturedStartWithName(self.h, struct_miqt_string(data: name, len: csize_t(len(name))))
 
-proc capturedLengthWithName*(self: QRegularExpressionMatch, name: string): int64 =
+proc capturedLengthWithName*(self: gen_qregularexpression_types.QRegularExpressionMatch, name: string): int64 =
 
   fcQRegularExpressionMatch_capturedLengthWithName(self.h, struct_miqt_string(data: name, len: csize_t(len(name))))
 
-proc capturedEndWithName*(self: QRegularExpressionMatch, name: string): int64 =
+proc capturedEndWithName*(self: gen_qregularexpression_types.QRegularExpressionMatch, name: string): int64 =
 
   fcQRegularExpressionMatch_capturedEndWithName(self.h, struct_miqt_string(data: name, len: csize_t(len(name))))
 
-proc captured1*(self: QRegularExpressionMatch, nth: cint): string =
+proc captured1*(self: gen_qregularexpression_types.QRegularExpressionMatch, nth: cint): string =
 
   let v_ms = fcQRegularExpressionMatch_captured1(self.h, nth)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc capturedStart1*(self: QRegularExpressionMatch, nth: cint): int64 =
+proc capturedStart1*(self: gen_qregularexpression_types.QRegularExpressionMatch, nth: cint): int64 =
 
   fcQRegularExpressionMatch_capturedStart1(self.h, nth)
 
-proc capturedLength1*(self: QRegularExpressionMatch, nth: cint): int64 =
+proc capturedLength1*(self: gen_qregularexpression_types.QRegularExpressionMatch, nth: cint): int64 =
 
   fcQRegularExpressionMatch_capturedLength1(self.h, nth)
 
-proc capturedEnd1*(self: QRegularExpressionMatch, nth: cint): int64 =
+proc capturedEnd1*(self: gen_qregularexpression_types.QRegularExpressionMatch, nth: cint): int64 =
 
   fcQRegularExpressionMatch_capturedEnd1(self.h, nth)
 
-proc delete*(self: QRegularExpressionMatch) =
+proc delete*(self: gen_qregularexpression_types.QRegularExpressionMatch) =
   fcQRegularExpressionMatch_delete(self.h)
 
-func init*(T: type QRegularExpressionMatchIterator, h: ptr cQRegularExpressionMatchIterator): QRegularExpressionMatchIterator =
+func init*(T: type gen_qregularexpression_types.QRegularExpressionMatchIterator, h: ptr cQRegularExpressionMatchIterator): gen_qregularexpression_types.QRegularExpressionMatchIterator =
   T(h: h)
-proc create*(T: type QRegularExpressionMatchIterator, ): QRegularExpressionMatchIterator =
+proc create*(T: type gen_qregularexpression_types.QRegularExpressionMatchIterator, ): gen_qregularexpression_types.QRegularExpressionMatchIterator =
 
-  QRegularExpressionMatchIterator.init(fcQRegularExpressionMatchIterator_new())
-proc create*(T: type QRegularExpressionMatchIterator, iteratorVal: QRegularExpressionMatchIterator): QRegularExpressionMatchIterator =
+  gen_qregularexpression_types.QRegularExpressionMatchIterator.init(fcQRegularExpressionMatchIterator_new())
+proc create*(T: type gen_qregularexpression_types.QRegularExpressionMatchIterator, iteratorVal: gen_qregularexpression_types.QRegularExpressionMatchIterator): gen_qregularexpression_types.QRegularExpressionMatchIterator =
 
-  QRegularExpressionMatchIterator.init(fcQRegularExpressionMatchIterator_new2(iteratorVal.h))
-proc operatorAssign*(self: QRegularExpressionMatchIterator, iteratorVal: QRegularExpressionMatchIterator): void =
+  gen_qregularexpression_types.QRegularExpressionMatchIterator.init(fcQRegularExpressionMatchIterator_new2(iteratorVal.h))
+proc operatorAssign*(self: gen_qregularexpression_types.QRegularExpressionMatchIterator, iteratorVal: gen_qregularexpression_types.QRegularExpressionMatchIterator): void =
 
   fcQRegularExpressionMatchIterator_operatorAssign(self.h, iteratorVal.h)
 
-proc swap*(self: QRegularExpressionMatchIterator, other: QRegularExpressionMatchIterator): void =
+proc swap*(self: gen_qregularexpression_types.QRegularExpressionMatchIterator, other: gen_qregularexpression_types.QRegularExpressionMatchIterator): void =
 
   fcQRegularExpressionMatchIterator_swap(self.h, other.h)
 
-proc isValid*(self: QRegularExpressionMatchIterator, ): bool =
+proc isValid*(self: gen_qregularexpression_types.QRegularExpressionMatchIterator, ): bool =
 
   fcQRegularExpressionMatchIterator_isValid(self.h)
 
-proc hasNext*(self: QRegularExpressionMatchIterator, ): bool =
+proc hasNext*(self: gen_qregularexpression_types.QRegularExpressionMatchIterator, ): bool =
 
   fcQRegularExpressionMatchIterator_hasNext(self.h)
 
-proc next*(self: QRegularExpressionMatchIterator, ): QRegularExpressionMatch =
+proc next*(self: gen_qregularexpression_types.QRegularExpressionMatchIterator, ): gen_qregularexpression_types.QRegularExpressionMatch =
 
-  QRegularExpressionMatch(h: fcQRegularExpressionMatchIterator_next(self.h))
+  gen_qregularexpression_types.QRegularExpressionMatch(h: fcQRegularExpressionMatchIterator_next(self.h))
 
-proc peekNext*(self: QRegularExpressionMatchIterator, ): QRegularExpressionMatch =
+proc peekNext*(self: gen_qregularexpression_types.QRegularExpressionMatchIterator, ): gen_qregularexpression_types.QRegularExpressionMatch =
 
-  QRegularExpressionMatch(h: fcQRegularExpressionMatchIterator_peekNext(self.h))
+  gen_qregularexpression_types.QRegularExpressionMatch(h: fcQRegularExpressionMatchIterator_peekNext(self.h))
 
-proc regularExpression*(self: QRegularExpressionMatchIterator, ): QRegularExpression =
+proc regularExpression*(self: gen_qregularexpression_types.QRegularExpressionMatchIterator, ): gen_qregularexpression_types.QRegularExpression =
 
-  QRegularExpression(h: fcQRegularExpressionMatchIterator_regularExpression(self.h))
+  gen_qregularexpression_types.QRegularExpression(h: fcQRegularExpressionMatchIterator_regularExpression(self.h))
 
-proc matchType*(self: QRegularExpressionMatchIterator, ): QRegularExpressionMatchType =
+proc matchType*(self: gen_qregularexpression_types.QRegularExpressionMatchIterator, ): cint =
 
-  QRegularExpressionMatchType(fcQRegularExpressionMatchIterator_matchType(self.h))
+  cint(fcQRegularExpressionMatchIterator_matchType(self.h))
 
-proc matchOptions*(self: QRegularExpressionMatchIterator, ): QRegularExpressionMatchOption =
+proc matchOptions*(self: gen_qregularexpression_types.QRegularExpressionMatchIterator, ): cint =
 
-  QRegularExpressionMatchOption(fcQRegularExpressionMatchIterator_matchOptions(self.h))
+  cint(fcQRegularExpressionMatchIterator_matchOptions(self.h))
 
-proc delete*(self: QRegularExpressionMatchIterator) =
+proc delete*(self: gen_qregularexpression_types.QRegularExpressionMatchIterator) =
   fcQRegularExpressionMatchIterator_delete(self.h)

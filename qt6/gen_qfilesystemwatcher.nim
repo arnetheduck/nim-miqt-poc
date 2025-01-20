@@ -90,52 +90,52 @@ proc fcQFileSystemWatcher_staticMetaObject(): pointer {.importc: "QFileSystemWat
 proc fcQFileSystemWatcher_delete(self: pointer) {.importc: "QFileSystemWatcher_delete".}
 
 
-func init*(T: type QFileSystemWatcher, h: ptr cQFileSystemWatcher): QFileSystemWatcher =
+func init*(T: type gen_qfilesystemwatcher_types.QFileSystemWatcher, h: ptr cQFileSystemWatcher): gen_qfilesystemwatcher_types.QFileSystemWatcher =
   T(h: h)
-proc create*(T: type QFileSystemWatcher, ): QFileSystemWatcher =
+proc create*(T: type gen_qfilesystemwatcher_types.QFileSystemWatcher, ): gen_qfilesystemwatcher_types.QFileSystemWatcher =
 
-  QFileSystemWatcher.init(fcQFileSystemWatcher_new())
-proc create*(T: type QFileSystemWatcher, paths: seq[string]): QFileSystemWatcher =
-
-  var paths_CArray = newSeq[struct_miqt_string](len(paths))
-  for i in 0..<len(paths):
-    paths_CArray[i] = struct_miqt_string(data: paths[i], len: csize_t(len(paths[i])))
-
-  QFileSystemWatcher.init(fcQFileSystemWatcher_new2(struct_miqt_array(len: csize_t(len(paths)), data: if len(paths) == 0: nil else: addr(paths_CArray[0]))))
-proc create*(T: type QFileSystemWatcher, parent: gen_qobject.QObject): QFileSystemWatcher =
-
-  QFileSystemWatcher.init(fcQFileSystemWatcher_new3(parent.h))
-proc create*(T: type QFileSystemWatcher, paths: seq[string], parent: gen_qobject.QObject): QFileSystemWatcher =
+  gen_qfilesystemwatcher_types.QFileSystemWatcher.init(fcQFileSystemWatcher_new())
+proc create*(T: type gen_qfilesystemwatcher_types.QFileSystemWatcher, paths: seq[string]): gen_qfilesystemwatcher_types.QFileSystemWatcher =
 
   var paths_CArray = newSeq[struct_miqt_string](len(paths))
   for i in 0..<len(paths):
     paths_CArray[i] = struct_miqt_string(data: paths[i], len: csize_t(len(paths[i])))
 
-  QFileSystemWatcher.init(fcQFileSystemWatcher_new4(struct_miqt_array(len: csize_t(len(paths)), data: if len(paths) == 0: nil else: addr(paths_CArray[0])), parent.h))
-proc metaObject*(self: QFileSystemWatcher, ): gen_qobjectdefs.QMetaObject =
+  gen_qfilesystemwatcher_types.QFileSystemWatcher.init(fcQFileSystemWatcher_new2(struct_miqt_array(len: csize_t(len(paths)), data: if len(paths) == 0: nil else: addr(paths_CArray[0]))))
+proc create*(T: type gen_qfilesystemwatcher_types.QFileSystemWatcher, parent: gen_qobject.QObject): gen_qfilesystemwatcher_types.QFileSystemWatcher =
+
+  gen_qfilesystemwatcher_types.QFileSystemWatcher.init(fcQFileSystemWatcher_new3(parent.h))
+proc create*(T: type gen_qfilesystemwatcher_types.QFileSystemWatcher, paths: seq[string], parent: gen_qobject.QObject): gen_qfilesystemwatcher_types.QFileSystemWatcher =
+
+  var paths_CArray = newSeq[struct_miqt_string](len(paths))
+  for i in 0..<len(paths):
+    paths_CArray[i] = struct_miqt_string(data: paths[i], len: csize_t(len(paths[i])))
+
+  gen_qfilesystemwatcher_types.QFileSystemWatcher.init(fcQFileSystemWatcher_new4(struct_miqt_array(len: csize_t(len(paths)), data: if len(paths) == 0: nil else: addr(paths_CArray[0])), parent.h))
+proc metaObject*(self: gen_qfilesystemwatcher_types.QFileSystemWatcher, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQFileSystemWatcher_metaObject(self.h))
 
-proc metacast*(self: QFileSystemWatcher, param1: cstring): pointer =
+proc metacast*(self: gen_qfilesystemwatcher_types.QFileSystemWatcher, param1: cstring): pointer =
 
   fcQFileSystemWatcher_metacast(self.h, param1)
 
-proc metacall*(self: QFileSystemWatcher, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qfilesystemwatcher_types.QFileSystemWatcher, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQFileSystemWatcher_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QFileSystemWatcher, s: cstring): string =
+proc tr*(_: type gen_qfilesystemwatcher_types.QFileSystemWatcher, s: cstring): string =
 
   let v_ms = fcQFileSystemWatcher_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc addPath*(self: QFileSystemWatcher, file: string): bool =
+proc addPath*(self: gen_qfilesystemwatcher_types.QFileSystemWatcher, file: string): bool =
 
   fcQFileSystemWatcher_addPath(self.h, struct_miqt_string(data: file, len: csize_t(len(file))))
 
-proc addPaths*(self: QFileSystemWatcher, files: seq[string]): seq[string] =
+proc addPaths*(self: gen_qfilesystemwatcher_types.QFileSystemWatcher, files: seq[string]): seq[string] =
 
   var files_CArray = newSeq[struct_miqt_string](len(files))
   for i in 0..<len(files):
@@ -151,11 +151,11 @@ proc addPaths*(self: QFileSystemWatcher, files: seq[string]): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc removePath*(self: QFileSystemWatcher, file: string): bool =
+proc removePath*(self: gen_qfilesystemwatcher_types.QFileSystemWatcher, file: string): bool =
 
   fcQFileSystemWatcher_removePath(self.h, struct_miqt_string(data: file, len: csize_t(len(file))))
 
-proc removePaths*(self: QFileSystemWatcher, files: seq[string]): seq[string] =
+proc removePaths*(self: gen_qfilesystemwatcher_types.QFileSystemWatcher, files: seq[string]): seq[string] =
 
   var files_CArray = newSeq[struct_miqt_string](len(files))
   for i in 0..<len(files):
@@ -171,7 +171,7 @@ proc removePaths*(self: QFileSystemWatcher, files: seq[string]): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc files*(self: QFileSystemWatcher, ): seq[string] =
+proc files*(self: gen_qfilesystemwatcher_types.QFileSystemWatcher, ): seq[string] =
 
   var v_ma = fcQFileSystemWatcher_files(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -183,7 +183,7 @@ proc files*(self: QFileSystemWatcher, ): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc directories*(self: QFileSystemWatcher, ): seq[string] =
+proc directories*(self: gen_qfilesystemwatcher_types.QFileSystemWatcher, ): seq[string] =
 
   var v_ma = fcQFileSystemWatcher_directories(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -195,265 +195,215 @@ proc directories*(self: QFileSystemWatcher, ): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc tr2*(_: type QFileSystemWatcher, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qfilesystemwatcher_types.QFileSystemWatcher, s: cstring, c: cstring): string =
 
   let v_ms = fcQFileSystemWatcher_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QFileSystemWatcher, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qfilesystemwatcher_types.QFileSystemWatcher, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQFileSystemWatcher_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QFileSystemWatcher, ): gen_qobjectdefs.QMetaObject =
-
+proc QFileSystemWatchermetaObject*(self: gen_qfilesystemwatcher_types.QFileSystemWatcher, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQFileSystemWatcher_virtualbase_metaObject(self.h))
 
-type QFileSystemWatchermetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QFileSystemWatcher, slot: proc(super: QFileSystemWatchermetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QFileSystemWatchermetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qfilesystemwatcher_types.QFileSystemWatcher, slot: QFileSystemWatchermetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileSystemWatchermetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QFileSystemWatchermetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileSystemWatcher_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileSystemWatcher_metaObject(self: ptr cQFileSystemWatcher, slot: int): pointer {.exportc: "miqt_exec_callback_QFileSystemWatcher_metaObject ".} =
-  type Cb = proc(super: QFileSystemWatchermetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QFileSystemWatcher(h: self), )
+  var nimfunc = cast[ptr QFileSystemWatchermetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QFileSystemWatcher, param1: cstring): pointer =
-
+proc QFileSystemWatchermetacast*(self: gen_qfilesystemwatcher_types.QFileSystemWatcher, param1: cstring): pointer =
 
   fQFileSystemWatcher_virtualbase_metacast(self.h, param1)
 
-type QFileSystemWatchermetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QFileSystemWatcher, slot: proc(super: QFileSystemWatchermetacastBase, param1: cstring): pointer) =
+type QFileSystemWatchermetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qfilesystemwatcher_types.QFileSystemWatcher, slot: QFileSystemWatchermetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileSystemWatchermetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QFileSystemWatchermetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileSystemWatcher_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileSystemWatcher_metacast(self: ptr cQFileSystemWatcher, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QFileSystemWatcher_metacast ".} =
-  type Cb = proc(super: QFileSystemWatchermetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QFileSystemWatcher(h: self), param1)
+  var nimfunc = cast[ptr QFileSystemWatchermetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QFileSystemWatcher, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QFileSystemWatchermetacall*(self: gen_qfilesystemwatcher_types.QFileSystemWatcher, param1: cint, param2: cint, param3: pointer): cint =
 
   fQFileSystemWatcher_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QFileSystemWatchermetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QFileSystemWatcher, slot: proc(super: QFileSystemWatchermetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QFileSystemWatchermetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qfilesystemwatcher_types.QFileSystemWatcher, slot: QFileSystemWatchermetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileSystemWatchermetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QFileSystemWatchermetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileSystemWatcher_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileSystemWatcher_metacall(self: ptr cQFileSystemWatcher, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QFileSystemWatcher_metacall ".} =
-  type Cb = proc(super: QFileSystemWatchermetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QFileSystemWatcher(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QFileSystemWatchermetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_event(self: QFileSystemWatcher, event: gen_qcoreevent.QEvent): bool =
-
+proc QFileSystemWatcherevent*(self: gen_qfilesystemwatcher_types.QFileSystemWatcher, event: gen_qcoreevent.QEvent): bool =
 
   fQFileSystemWatcher_virtualbase_event(self.h, event.h)
 
-type QFileSystemWatchereventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QFileSystemWatcher, slot: proc(super: QFileSystemWatchereventBase, event: gen_qcoreevent.QEvent): bool) =
+type QFileSystemWatchereventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qfilesystemwatcher_types.QFileSystemWatcher, slot: QFileSystemWatchereventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileSystemWatchereventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QFileSystemWatchereventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileSystemWatcher_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileSystemWatcher_event(self: ptr cQFileSystemWatcher, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QFileSystemWatcher_event ".} =
-  type Cb = proc(super: QFileSystemWatchereventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QFileSystemWatcher(h: self), event)
+  var nimfunc = cast[ptr QFileSystemWatchereventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QFileSystemWatcher, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QFileSystemWatchereventFilter*(self: gen_qfilesystemwatcher_types.QFileSystemWatcher, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQFileSystemWatcher_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QFileSystemWatchereventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QFileSystemWatcher, slot: proc(super: QFileSystemWatchereventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QFileSystemWatchereventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qfilesystemwatcher_types.QFileSystemWatcher, slot: QFileSystemWatchereventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileSystemWatchereventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QFileSystemWatchereventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileSystemWatcher_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileSystemWatcher_eventFilter(self: ptr cQFileSystemWatcher, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QFileSystemWatcher_eventFilter ".} =
-  type Cb = proc(super: QFileSystemWatchereventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QFileSystemWatcher(h: self), watched, event)
+  var nimfunc = cast[ptr QFileSystemWatchereventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QFileSystemWatcher, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QFileSystemWatchertimerEvent*(self: gen_qfilesystemwatcher_types.QFileSystemWatcher, event: gen_qcoreevent.QTimerEvent): void =
 
   fQFileSystemWatcher_virtualbase_timerEvent(self.h, event.h)
 
-type QFileSystemWatchertimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QFileSystemWatcher, slot: proc(super: QFileSystemWatchertimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QFileSystemWatchertimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qfilesystemwatcher_types.QFileSystemWatcher, slot: QFileSystemWatchertimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileSystemWatchertimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QFileSystemWatchertimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileSystemWatcher_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileSystemWatcher_timerEvent(self: ptr cQFileSystemWatcher, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFileSystemWatcher_timerEvent ".} =
-  type Cb = proc(super: QFileSystemWatchertimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QFileSystemWatcher(h: self), event)
+  var nimfunc = cast[ptr QFileSystemWatchertimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QFileSystemWatcher, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QFileSystemWatcherchildEvent*(self: gen_qfilesystemwatcher_types.QFileSystemWatcher, event: gen_qcoreevent.QChildEvent): void =
 
   fQFileSystemWatcher_virtualbase_childEvent(self.h, event.h)
 
-type QFileSystemWatcherchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QFileSystemWatcher, slot: proc(super: QFileSystemWatcherchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QFileSystemWatcherchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qfilesystemwatcher_types.QFileSystemWatcher, slot: QFileSystemWatcherchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileSystemWatcherchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QFileSystemWatcherchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileSystemWatcher_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileSystemWatcher_childEvent(self: ptr cQFileSystemWatcher, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFileSystemWatcher_childEvent ".} =
-  type Cb = proc(super: QFileSystemWatcherchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QFileSystemWatcher(h: self), event)
+  var nimfunc = cast[ptr QFileSystemWatcherchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QFileSystemWatcher, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QFileSystemWatchercustomEvent*(self: gen_qfilesystemwatcher_types.QFileSystemWatcher, event: gen_qcoreevent.QEvent): void =
 
   fQFileSystemWatcher_virtualbase_customEvent(self.h, event.h)
 
-type QFileSystemWatchercustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QFileSystemWatcher, slot: proc(super: QFileSystemWatchercustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QFileSystemWatchercustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qfilesystemwatcher_types.QFileSystemWatcher, slot: QFileSystemWatchercustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileSystemWatchercustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QFileSystemWatchercustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileSystemWatcher_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileSystemWatcher_customEvent(self: ptr cQFileSystemWatcher, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFileSystemWatcher_customEvent ".} =
-  type Cb = proc(super: QFileSystemWatchercustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QFileSystemWatcher(h: self), event)
+  var nimfunc = cast[ptr QFileSystemWatchercustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QFileSystemWatcher, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QFileSystemWatcherconnectNotify*(self: gen_qfilesystemwatcher_types.QFileSystemWatcher, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQFileSystemWatcher_virtualbase_connectNotify(self.h, signal.h)
 
-type QFileSystemWatcherconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QFileSystemWatcher, slot: proc(super: QFileSystemWatcherconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QFileSystemWatcherconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qfilesystemwatcher_types.QFileSystemWatcher, slot: QFileSystemWatcherconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileSystemWatcherconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QFileSystemWatcherconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileSystemWatcher_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileSystemWatcher_connectNotify(self: ptr cQFileSystemWatcher, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QFileSystemWatcher_connectNotify ".} =
-  type Cb = proc(super: QFileSystemWatcherconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QFileSystemWatcher(h: self), signal)
+  var nimfunc = cast[ptr QFileSystemWatcherconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QFileSystemWatcher, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QFileSystemWatcherdisconnectNotify*(self: gen_qfilesystemwatcher_types.QFileSystemWatcher, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQFileSystemWatcher_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QFileSystemWatcherdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QFileSystemWatcher, slot: proc(super: QFileSystemWatcherdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QFileSystemWatcherdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qfilesystemwatcher_types.QFileSystemWatcher, slot: QFileSystemWatcherdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileSystemWatcherdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QFileSystemWatcherdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileSystemWatcher_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileSystemWatcher_disconnectNotify(self: ptr cQFileSystemWatcher, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QFileSystemWatcher_disconnectNotify ".} =
-  type Cb = proc(super: QFileSystemWatcherdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QFileSystemWatcher(h: self), signal)
+  var nimfunc = cast[ptr QFileSystemWatcherdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QFileSystemWatcher): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qfilesystemwatcher_types.QFileSystemWatcher): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQFileSystemWatcher_staticMetaObject())
-proc delete*(self: QFileSystemWatcher) =
+proc delete*(self: gen_qfilesystemwatcher_types.QFileSystemWatcher) =
   fcQFileSystemWatcher_delete(self.h)

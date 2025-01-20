@@ -319,7 +319,7 @@ func (this *QAbstractSpinBox) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QAbstractSpinBox_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QAbstractSpinBox) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QAbstractSpinBox) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QAbstractSpinBox_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -346,7 +346,7 @@ func (this *QAbstractSpinBox) callVirtualBase_Metacast(param1 string) unsafe.Poi
 	return (unsafe.Pointer)(C.QAbstractSpinBox_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QAbstractSpinBox) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QAbstractSpinBox) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QAbstractSpinBox_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

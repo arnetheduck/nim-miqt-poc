@@ -91,173 +91,156 @@ proc fcQWebHistoryInterface_staticMetaObject(): pointer {.importc: "QWebHistoryI
 proc fcQWebHistoryInterface_delete(self: pointer) {.importc: "QWebHistoryInterface_delete".}
 
 
-func init*(T: type QWebHistoryInterface, h: ptr cQWebHistoryInterface): QWebHistoryInterface =
+func init*(T: type gen_qwebhistoryinterface_types.QWebHistoryInterface, h: ptr cQWebHistoryInterface): gen_qwebhistoryinterface_types.QWebHistoryInterface =
   T(h: h)
-proc create*(T: type QWebHistoryInterface, ): QWebHistoryInterface =
+proc create*(T: type gen_qwebhistoryinterface_types.QWebHistoryInterface, ): gen_qwebhistoryinterface_types.QWebHistoryInterface =
 
-  QWebHistoryInterface.init(fcQWebHistoryInterface_new())
-proc create*(T: type QWebHistoryInterface, parent: gen_qobject.QObject): QWebHistoryInterface =
+  gen_qwebhistoryinterface_types.QWebHistoryInterface.init(fcQWebHistoryInterface_new())
+proc create*(T: type gen_qwebhistoryinterface_types.QWebHistoryInterface, parent: gen_qobject.QObject): gen_qwebhistoryinterface_types.QWebHistoryInterface =
 
-  QWebHistoryInterface.init(fcQWebHistoryInterface_new2(parent.h))
-proc metaObject*(self: QWebHistoryInterface, ): gen_qobjectdefs.QMetaObject =
+  gen_qwebhistoryinterface_types.QWebHistoryInterface.init(fcQWebHistoryInterface_new2(parent.h))
+proc metaObject*(self: gen_qwebhistoryinterface_types.QWebHistoryInterface, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQWebHistoryInterface_metaObject(self.h))
 
-proc metacast*(self: QWebHistoryInterface, param1: cstring): pointer =
+proc metacast*(self: gen_qwebhistoryinterface_types.QWebHistoryInterface, param1: cstring): pointer =
 
   fcQWebHistoryInterface_metacast(self.h, param1)
 
-proc metacall*(self: QWebHistoryInterface, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qwebhistoryinterface_types.QWebHistoryInterface, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQWebHistoryInterface_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QWebHistoryInterface, s: cstring): string =
+proc tr*(_: type gen_qwebhistoryinterface_types.QWebHistoryInterface, s: cstring): string =
 
   let v_ms = fcQWebHistoryInterface_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QWebHistoryInterface, s: cstring): string =
+proc trUtf8*(_: type gen_qwebhistoryinterface_types.QWebHistoryInterface, s: cstring): string =
 
   let v_ms = fcQWebHistoryInterface_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setDefaultInterface*(_: type QWebHistoryInterface, defaultInterface: QWebHistoryInterface): void =
+proc setDefaultInterface*(_: type gen_qwebhistoryinterface_types.QWebHistoryInterface, defaultInterface: gen_qwebhistoryinterface_types.QWebHistoryInterface): void =
 
   fcQWebHistoryInterface_setDefaultInterface(defaultInterface.h)
 
-proc defaultInterface*(_: type QWebHistoryInterface, ): QWebHistoryInterface =
+proc defaultInterface*(_: type gen_qwebhistoryinterface_types.QWebHistoryInterface, ): gen_qwebhistoryinterface_types.QWebHistoryInterface =
 
-  QWebHistoryInterface(h: fcQWebHistoryInterface_defaultInterface())
+  gen_qwebhistoryinterface_types.QWebHistoryInterface(h: fcQWebHistoryInterface_defaultInterface())
 
-proc historyContains*(self: QWebHistoryInterface, url: string): bool =
+proc historyContains*(self: gen_qwebhistoryinterface_types.QWebHistoryInterface, url: string): bool =
 
   fcQWebHistoryInterface_historyContains(self.h, struct_miqt_string(data: url, len: csize_t(len(url))))
 
-proc addHistoryEntry*(self: QWebHistoryInterface, url: string): void =
+proc addHistoryEntry*(self: gen_qwebhistoryinterface_types.QWebHistoryInterface, url: string): void =
 
   fcQWebHistoryInterface_addHistoryEntry(self.h, struct_miqt_string(data: url, len: csize_t(len(url))))
 
-proc tr2*(_: type QWebHistoryInterface, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qwebhistoryinterface_types.QWebHistoryInterface, s: cstring, c: cstring): string =
 
   let v_ms = fcQWebHistoryInterface_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QWebHistoryInterface, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qwebhistoryinterface_types.QWebHistoryInterface, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQWebHistoryInterface_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QWebHistoryInterface, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qwebhistoryinterface_types.QWebHistoryInterface, s: cstring, c: cstring): string =
 
   let v_ms = fcQWebHistoryInterface_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QWebHistoryInterface, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qwebhistoryinterface_types.QWebHistoryInterface, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQWebHistoryInterface_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QWebHistoryInterface, ): gen_qobjectdefs.QMetaObject =
-
+proc QWebHistoryInterfacemetaObject*(self: gen_qwebhistoryinterface_types.QWebHistoryInterface, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQWebHistoryInterface_virtualbase_metaObject(self.h))
 
-type QWebHistoryInterfacemetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QWebHistoryInterface, slot: proc(super: QWebHistoryInterfacemetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QWebHistoryInterfacemetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qwebhistoryinterface_types.QWebHistoryInterface, slot: QWebHistoryInterfacemetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebHistoryInterfacemetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QWebHistoryInterfacemetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebHistoryInterface_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebHistoryInterface_metaObject(self: ptr cQWebHistoryInterface, slot: int): pointer {.exportc: "miqt_exec_callback_QWebHistoryInterface_metaObject ".} =
-  type Cb = proc(super: QWebHistoryInterfacemetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QWebHistoryInterface(h: self), )
+  var nimfunc = cast[ptr QWebHistoryInterfacemetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QWebHistoryInterface, param1: cstring): pointer =
-
+proc QWebHistoryInterfacemetacast*(self: gen_qwebhistoryinterface_types.QWebHistoryInterface, param1: cstring): pointer =
 
   fQWebHistoryInterface_virtualbase_metacast(self.h, param1)
 
-type QWebHistoryInterfacemetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QWebHistoryInterface, slot: proc(super: QWebHistoryInterfacemetacastBase, param1: cstring): pointer) =
+type QWebHistoryInterfacemetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qwebhistoryinterface_types.QWebHistoryInterface, slot: QWebHistoryInterfacemetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebHistoryInterfacemetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QWebHistoryInterfacemetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebHistoryInterface_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebHistoryInterface_metacast(self: ptr cQWebHistoryInterface, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QWebHistoryInterface_metacast ".} =
-  type Cb = proc(super: QWebHistoryInterfacemetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QWebHistoryInterface(h: self), param1)
+  var nimfunc = cast[ptr QWebHistoryInterfacemetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QWebHistoryInterface, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QWebHistoryInterfacemetacall*(self: gen_qwebhistoryinterface_types.QWebHistoryInterface, param1: cint, param2: cint, param3: pointer): cint =
 
   fQWebHistoryInterface_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QWebHistoryInterfacemetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QWebHistoryInterface, slot: proc(super: QWebHistoryInterfacemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QWebHistoryInterfacemetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qwebhistoryinterface_types.QWebHistoryInterface, slot: QWebHistoryInterfacemetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebHistoryInterfacemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QWebHistoryInterfacemetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebHistoryInterface_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebHistoryInterface_metacall(self: ptr cQWebHistoryInterface, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QWebHistoryInterface_metacall ".} =
-  type Cb = proc(super: QWebHistoryInterfacemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QWebHistoryInterface(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QWebHistoryInterfacemetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-type QWebHistoryInterfacehistoryContainsBase* = proc(url: string): bool
-proc onhistoryContains*(self: QWebHistoryInterface, slot: proc(url: string): bool) =
+type QWebHistoryInterfacehistoryContainsProc* = proc(url: string): bool
+proc onhistoryContains*(self: gen_qwebhistoryinterface_types.QWebHistoryInterface, slot: QWebHistoryInterfacehistoryContainsProc) =
   # TODO check subclass
-  type Cb = proc(url: string): bool
-  var tmp = new Cb
+  var tmp = new QWebHistoryInterfacehistoryContainsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebHistoryInterface_override_virtual_historyContains(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebHistoryInterface_historyContains(self: ptr cQWebHistoryInterface, slot: int, url: struct_miqt_string): bool {.exportc: "miqt_exec_callback_QWebHistoryInterface_historyContains ".} =
-  type Cb = proc(url: string): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QWebHistoryInterfacehistoryContainsProc](cast[pointer](slot))
   let vurl_ms = url
   let vurlx_ret = string.fromBytes(toOpenArrayByte(vurl_ms.data, 0, int(vurl_ms.len)-1))
   c_free(vurl_ms.data)
@@ -267,18 +250,16 @@ proc miqt_exec_callback_QWebHistoryInterface_historyContains(self: ptr cQWebHist
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-type QWebHistoryInterfaceaddHistoryEntryBase* = proc(url: string): void
-proc onaddHistoryEntry*(self: QWebHistoryInterface, slot: proc(url: string): void) =
+type QWebHistoryInterfaceaddHistoryEntryProc* = proc(url: string): void
+proc onaddHistoryEntry*(self: gen_qwebhistoryinterface_types.QWebHistoryInterface, slot: QWebHistoryInterfaceaddHistoryEntryProc) =
   # TODO check subclass
-  type Cb = proc(url: string): void
-  var tmp = new Cb
+  var tmp = new QWebHistoryInterfaceaddHistoryEntryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebHistoryInterface_override_virtual_addHistoryEntry(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebHistoryInterface_addHistoryEntry(self: ptr cQWebHistoryInterface, slot: int, url: struct_miqt_string): void {.exportc: "miqt_exec_callback_QWebHistoryInterface_addHistoryEntry ".} =
-  type Cb = proc(url: string): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QWebHistoryInterfaceaddHistoryEntryProc](cast[pointer](slot))
   let vurl_ms = url
   let vurlx_ret = string.fromBytes(toOpenArrayByte(vurl_ms.data, 0, int(vurl_ms.len)-1))
   c_free(vurl_ms.data)
@@ -286,174 +267,139 @@ proc miqt_exec_callback_QWebHistoryInterface_addHistoryEntry(self: ptr cQWebHist
 
 
   nimfunc[](slotval1)
-proc callVirtualBase_event(self: QWebHistoryInterface, event: gen_qcoreevent.QEvent): bool =
-
+proc QWebHistoryInterfaceevent*(self: gen_qwebhistoryinterface_types.QWebHistoryInterface, event: gen_qcoreevent.QEvent): bool =
 
   fQWebHistoryInterface_virtualbase_event(self.h, event.h)
 
-type QWebHistoryInterfaceeventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QWebHistoryInterface, slot: proc(super: QWebHistoryInterfaceeventBase, event: gen_qcoreevent.QEvent): bool) =
+type QWebHistoryInterfaceeventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qwebhistoryinterface_types.QWebHistoryInterface, slot: QWebHistoryInterfaceeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebHistoryInterfaceeventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QWebHistoryInterfaceeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebHistoryInterface_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebHistoryInterface_event(self: ptr cQWebHistoryInterface, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QWebHistoryInterface_event ".} =
-  type Cb = proc(super: QWebHistoryInterfaceeventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QWebHistoryInterface(h: self), event)
+  var nimfunc = cast[ptr QWebHistoryInterfaceeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QWebHistoryInterface, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QWebHistoryInterfaceeventFilter*(self: gen_qwebhistoryinterface_types.QWebHistoryInterface, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQWebHistoryInterface_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QWebHistoryInterfaceeventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QWebHistoryInterface, slot: proc(super: QWebHistoryInterfaceeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QWebHistoryInterfaceeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qwebhistoryinterface_types.QWebHistoryInterface, slot: QWebHistoryInterfaceeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebHistoryInterfaceeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QWebHistoryInterfaceeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebHistoryInterface_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebHistoryInterface_eventFilter(self: ptr cQWebHistoryInterface, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QWebHistoryInterface_eventFilter ".} =
-  type Cb = proc(super: QWebHistoryInterfaceeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QWebHistoryInterface(h: self), watched, event)
+  var nimfunc = cast[ptr QWebHistoryInterfaceeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QWebHistoryInterface, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QWebHistoryInterfacetimerEvent*(self: gen_qwebhistoryinterface_types.QWebHistoryInterface, event: gen_qcoreevent.QTimerEvent): void =
 
   fQWebHistoryInterface_virtualbase_timerEvent(self.h, event.h)
 
-type QWebHistoryInterfacetimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QWebHistoryInterface, slot: proc(super: QWebHistoryInterfacetimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QWebHistoryInterfacetimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qwebhistoryinterface_types.QWebHistoryInterface, slot: QWebHistoryInterfacetimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebHistoryInterfacetimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QWebHistoryInterfacetimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebHistoryInterface_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebHistoryInterface_timerEvent(self: ptr cQWebHistoryInterface, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebHistoryInterface_timerEvent ".} =
-  type Cb = proc(super: QWebHistoryInterfacetimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QWebHistoryInterface(h: self), event)
+  var nimfunc = cast[ptr QWebHistoryInterfacetimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QWebHistoryInterface, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebHistoryInterfacechildEvent*(self: gen_qwebhistoryinterface_types.QWebHistoryInterface, event: gen_qcoreevent.QChildEvent): void =
 
   fQWebHistoryInterface_virtualbase_childEvent(self.h, event.h)
 
-type QWebHistoryInterfacechildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QWebHistoryInterface, slot: proc(super: QWebHistoryInterfacechildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QWebHistoryInterfacechildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qwebhistoryinterface_types.QWebHistoryInterface, slot: QWebHistoryInterfacechildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebHistoryInterfacechildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QWebHistoryInterfacechildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebHistoryInterface_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebHistoryInterface_childEvent(self: ptr cQWebHistoryInterface, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebHistoryInterface_childEvent ".} =
-  type Cb = proc(super: QWebHistoryInterfacechildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QWebHistoryInterface(h: self), event)
+  var nimfunc = cast[ptr QWebHistoryInterfacechildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QWebHistoryInterface, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebHistoryInterfacecustomEvent*(self: gen_qwebhistoryinterface_types.QWebHistoryInterface, event: gen_qcoreevent.QEvent): void =
 
   fQWebHistoryInterface_virtualbase_customEvent(self.h, event.h)
 
-type QWebHistoryInterfacecustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QWebHistoryInterface, slot: proc(super: QWebHistoryInterfacecustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QWebHistoryInterfacecustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qwebhistoryinterface_types.QWebHistoryInterface, slot: QWebHistoryInterfacecustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebHistoryInterfacecustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QWebHistoryInterfacecustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebHistoryInterface_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebHistoryInterface_customEvent(self: ptr cQWebHistoryInterface, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebHistoryInterface_customEvent ".} =
-  type Cb = proc(super: QWebHistoryInterfacecustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QWebHistoryInterface(h: self), event)
+  var nimfunc = cast[ptr QWebHistoryInterfacecustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QWebHistoryInterface, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QWebHistoryInterfaceconnectNotify*(self: gen_qwebhistoryinterface_types.QWebHistoryInterface, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQWebHistoryInterface_virtualbase_connectNotify(self.h, signal.h)
 
-type QWebHistoryInterfaceconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QWebHistoryInterface, slot: proc(super: QWebHistoryInterfaceconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QWebHistoryInterfaceconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qwebhistoryinterface_types.QWebHistoryInterface, slot: QWebHistoryInterfaceconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebHistoryInterfaceconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QWebHistoryInterfaceconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebHistoryInterface_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebHistoryInterface_connectNotify(self: ptr cQWebHistoryInterface, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QWebHistoryInterface_connectNotify ".} =
-  type Cb = proc(super: QWebHistoryInterfaceconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QWebHistoryInterface(h: self), signal)
+  var nimfunc = cast[ptr QWebHistoryInterfaceconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QWebHistoryInterface, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QWebHistoryInterfacedisconnectNotify*(self: gen_qwebhistoryinterface_types.QWebHistoryInterface, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQWebHistoryInterface_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QWebHistoryInterfacedisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QWebHistoryInterface, slot: proc(super: QWebHistoryInterfacedisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QWebHistoryInterfacedisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qwebhistoryinterface_types.QWebHistoryInterface, slot: QWebHistoryInterfacedisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebHistoryInterfacedisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QWebHistoryInterfacedisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebHistoryInterface_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebHistoryInterface_disconnectNotify(self: ptr cQWebHistoryInterface, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QWebHistoryInterface_disconnectNotify ".} =
-  type Cb = proc(super: QWebHistoryInterfacedisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QWebHistoryInterface(h: self), signal)
+  var nimfunc = cast[ptr QWebHistoryInterfacedisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QWebHistoryInterface): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qwebhistoryinterface_types.QWebHistoryInterface): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQWebHistoryInterface_staticMetaObject())
-proc delete*(self: QWebHistoryInterface) =
+proc delete*(self: gen_qwebhistoryinterface_types.QWebHistoryInterface) =
   fcQWebHistoryInterface_delete(self.h)

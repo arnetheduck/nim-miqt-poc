@@ -45,15 +45,15 @@ proc fcQContiguousCacheData_freeData(data: pointer): void {.importc: "QContiguou
 proc fcQContiguousCacheData_delete(self: pointer) {.importc: "QContiguousCacheData_delete".}
 
 
-func init*(T: type QContiguousCacheData, h: ptr cQContiguousCacheData): QContiguousCacheData =
+func init*(T: type gen_qcontiguouscache_types.QContiguousCacheData, h: ptr cQContiguousCacheData): gen_qcontiguouscache_types.QContiguousCacheData =
   T(h: h)
-proc allocateData*(_: type QContiguousCacheData, size: cint, alignment: cint): QContiguousCacheData =
+proc allocateData*(_: type gen_qcontiguouscache_types.QContiguousCacheData, size: cint, alignment: cint): gen_qcontiguouscache_types.QContiguousCacheData =
 
-  QContiguousCacheData(h: fcQContiguousCacheData_allocateData(size, alignment))
+  gen_qcontiguouscache_types.QContiguousCacheData(h: fcQContiguousCacheData_allocateData(size, alignment))
 
-proc freeData*(_: type QContiguousCacheData, data: QContiguousCacheData): void =
+proc freeData*(_: type gen_qcontiguouscache_types.QContiguousCacheData, data: gen_qcontiguouscache_types.QContiguousCacheData): void =
 
   fcQContiguousCacheData_freeData(data.h)
 
-proc delete*(self: QContiguousCacheData) =
+proc delete*(self: gen_qcontiguouscache_types.QContiguousCacheData) =
   fcQContiguousCacheData_delete(self.h)

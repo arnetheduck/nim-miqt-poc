@@ -52,13 +52,13 @@ proc fcQWebEngineClientCertificateStore_remove(self: pointer, certificate: point
 proc fcQWebEngineClientCertificateStore_clear(self: pointer, ): void {.importc: "QWebEngineClientCertificateStore_clear".}
 
 
-func init*(T: type QWebEngineClientCertificateStore, h: ptr cQWebEngineClientCertificateStore): QWebEngineClientCertificateStore =
+func init*(T: type gen_qwebengineclientcertificatestore_types.QWebEngineClientCertificateStore, h: ptr cQWebEngineClientCertificateStore): gen_qwebengineclientcertificatestore_types.QWebEngineClientCertificateStore =
   T(h: h)
-proc add*(self: QWebEngineClientCertificateStore, certificate: gen_qsslcertificate.QSslCertificate, privateKey: gen_qsslkey.QSslKey): void =
+proc add*(self: gen_qwebengineclientcertificatestore_types.QWebEngineClientCertificateStore, certificate: gen_qsslcertificate.QSslCertificate, privateKey: gen_qsslkey.QSslKey): void =
 
   fcQWebEngineClientCertificateStore_add(self.h, certificate.h, privateKey.h)
 
-proc certificates*(self: QWebEngineClientCertificateStore, ): seq[gen_qsslcertificate.QSslCertificate] =
+proc certificates*(self: gen_qwebengineclientcertificatestore_types.QWebEngineClientCertificateStore, ): seq[gen_qsslcertificate.QSslCertificate] =
 
   var v_ma = fcQWebEngineClientCertificateStore_certificates(self.h)
   var vx_ret = newSeq[gen_qsslcertificate.QSslCertificate](int(v_ma.len))
@@ -67,11 +67,11 @@ proc certificates*(self: QWebEngineClientCertificateStore, ): seq[gen_qsslcertif
     vx_ret[i] = gen_qsslcertificate.QSslCertificate(h: v_outCast[i])
   vx_ret
 
-proc remove*(self: QWebEngineClientCertificateStore, certificate: gen_qsslcertificate.QSslCertificate): void =
+proc remove*(self: gen_qwebengineclientcertificatestore_types.QWebEngineClientCertificateStore, certificate: gen_qsslcertificate.QSslCertificate): void =
 
   fcQWebEngineClientCertificateStore_remove(self.h, certificate.h)
 
-proc clear*(self: QWebEngineClientCertificateStore, ): void =
+proc clear*(self: gen_qwebengineclientcertificatestore_types.QWebEngineClientCertificateStore, ): void =
 
   fcQWebEngineClientCertificateStore_clear(self.h)
 

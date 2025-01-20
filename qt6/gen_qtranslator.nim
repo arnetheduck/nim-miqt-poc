@@ -102,211 +102,191 @@ proc fcQTranslator_staticMetaObject(): pointer {.importc: "QTranslator_staticMet
 proc fcQTranslator_delete(self: pointer) {.importc: "QTranslator_delete".}
 
 
-func init*(T: type QTranslator, h: ptr cQTranslator): QTranslator =
+func init*(T: type gen_qtranslator_types.QTranslator, h: ptr cQTranslator): gen_qtranslator_types.QTranslator =
   T(h: h)
-proc create*(T: type QTranslator, ): QTranslator =
+proc create*(T: type gen_qtranslator_types.QTranslator, ): gen_qtranslator_types.QTranslator =
 
-  QTranslator.init(fcQTranslator_new())
-proc create*(T: type QTranslator, parent: gen_qobject.QObject): QTranslator =
+  gen_qtranslator_types.QTranslator.init(fcQTranslator_new())
+proc create*(T: type gen_qtranslator_types.QTranslator, parent: gen_qobject.QObject): gen_qtranslator_types.QTranslator =
 
-  QTranslator.init(fcQTranslator_new2(parent.h))
-proc metaObject*(self: QTranslator, ): gen_qobjectdefs.QMetaObject =
+  gen_qtranslator_types.QTranslator.init(fcQTranslator_new2(parent.h))
+proc metaObject*(self: gen_qtranslator_types.QTranslator, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQTranslator_metaObject(self.h))
 
-proc metacast*(self: QTranslator, param1: cstring): pointer =
+proc metacast*(self: gen_qtranslator_types.QTranslator, param1: cstring): pointer =
 
   fcQTranslator_metacast(self.h, param1)
 
-proc metacall*(self: QTranslator, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qtranslator_types.QTranslator, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQTranslator_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QTranslator, s: cstring): string =
+proc tr*(_: type gen_qtranslator_types.QTranslator, s: cstring): string =
 
   let v_ms = fcQTranslator_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc translate*(self: QTranslator, context: cstring, sourceText: cstring, disambiguation: cstring, n: cint): string =
+proc translate*(self: gen_qtranslator_types.QTranslator, context: cstring, sourceText: cstring, disambiguation: cstring, n: cint): string =
 
   let v_ms = fcQTranslator_translate(self.h, context, sourceText, disambiguation, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc isEmpty*(self: QTranslator, ): bool =
+proc isEmpty*(self: gen_qtranslator_types.QTranslator, ): bool =
 
   fcQTranslator_isEmpty(self.h)
 
-proc language*(self: QTranslator, ): string =
+proc language*(self: gen_qtranslator_types.QTranslator, ): string =
 
   let v_ms = fcQTranslator_language(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc filePath*(self: QTranslator, ): string =
+proc filePath*(self: gen_qtranslator_types.QTranslator, ): string =
 
   let v_ms = fcQTranslator_filePath(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc load*(self: QTranslator, filename: string): bool =
+proc load*(self: gen_qtranslator_types.QTranslator, filename: string): bool =
 
   fcQTranslator_load(self.h, struct_miqt_string(data: filename, len: csize_t(len(filename))))
 
-proc load2*(self: QTranslator, locale: gen_qlocale.QLocale, filename: string): bool =
+proc load2*(self: gen_qtranslator_types.QTranslator, locale: gen_qlocale.QLocale, filename: string): bool =
 
   fcQTranslator_load2(self.h, locale.h, struct_miqt_string(data: filename, len: csize_t(len(filename))))
 
-proc load3*(self: QTranslator, data: ptr uint8, len: cint): bool =
+proc load3*(self: gen_qtranslator_types.QTranslator, data: ptr uint8, len: cint): bool =
 
   fcQTranslator_load3(self.h, data, len)
 
-proc tr2*(_: type QTranslator, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qtranslator_types.QTranslator, s: cstring, c: cstring): string =
 
   let v_ms = fcQTranslator_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QTranslator, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qtranslator_types.QTranslator, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQTranslator_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc load22*(self: QTranslator, filename: string, directory: string): bool =
+proc load22*(self: gen_qtranslator_types.QTranslator, filename: string, directory: string): bool =
 
   fcQTranslator_load22(self.h, struct_miqt_string(data: filename, len: csize_t(len(filename))), struct_miqt_string(data: directory, len: csize_t(len(directory))))
 
-proc load32*(self: QTranslator, filename: string, directory: string, search_delimiters: string): bool =
+proc load32*(self: gen_qtranslator_types.QTranslator, filename: string, directory: string, search_delimiters: string): bool =
 
   fcQTranslator_load32(self.h, struct_miqt_string(data: filename, len: csize_t(len(filename))), struct_miqt_string(data: directory, len: csize_t(len(directory))), struct_miqt_string(data: search_delimiters, len: csize_t(len(search_delimiters))))
 
-proc load4*(self: QTranslator, filename: string, directory: string, search_delimiters: string, suffix: string): bool =
+proc load4*(self: gen_qtranslator_types.QTranslator, filename: string, directory: string, search_delimiters: string, suffix: string): bool =
 
   fcQTranslator_load4(self.h, struct_miqt_string(data: filename, len: csize_t(len(filename))), struct_miqt_string(data: directory, len: csize_t(len(directory))), struct_miqt_string(data: search_delimiters, len: csize_t(len(search_delimiters))), struct_miqt_string(data: suffix, len: csize_t(len(suffix))))
 
-proc load33*(self: QTranslator, locale: gen_qlocale.QLocale, filename: string, prefix: string): bool =
+proc load33*(self: gen_qtranslator_types.QTranslator, locale: gen_qlocale.QLocale, filename: string, prefix: string): bool =
 
   fcQTranslator_load33(self.h, locale.h, struct_miqt_string(data: filename, len: csize_t(len(filename))), struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
-proc load42*(self: QTranslator, locale: gen_qlocale.QLocale, filename: string, prefix: string, directory: string): bool =
+proc load42*(self: gen_qtranslator_types.QTranslator, locale: gen_qlocale.QLocale, filename: string, prefix: string, directory: string): bool =
 
   fcQTranslator_load42(self.h, locale.h, struct_miqt_string(data: filename, len: csize_t(len(filename))), struct_miqt_string(data: prefix, len: csize_t(len(prefix))), struct_miqt_string(data: directory, len: csize_t(len(directory))))
 
-proc load5*(self: QTranslator, locale: gen_qlocale.QLocale, filename: string, prefix: string, directory: string, suffix: string): bool =
+proc load5*(self: gen_qtranslator_types.QTranslator, locale: gen_qlocale.QLocale, filename: string, prefix: string, directory: string, suffix: string): bool =
 
   fcQTranslator_load5(self.h, locale.h, struct_miqt_string(data: filename, len: csize_t(len(filename))), struct_miqt_string(data: prefix, len: csize_t(len(prefix))), struct_miqt_string(data: directory, len: csize_t(len(directory))), struct_miqt_string(data: suffix, len: csize_t(len(suffix))))
 
-proc load34*(self: QTranslator, data: ptr uint8, len: cint, directory: string): bool =
+proc load34*(self: gen_qtranslator_types.QTranslator, data: ptr uint8, len: cint, directory: string): bool =
 
   fcQTranslator_load34(self.h, data, len, struct_miqt_string(data: directory, len: csize_t(len(directory))))
 
-proc callVirtualBase_metaObject(self: QTranslator, ): gen_qobjectdefs.QMetaObject =
-
+proc QTranslatormetaObject*(self: gen_qtranslator_types.QTranslator, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQTranslator_virtualbase_metaObject(self.h))
 
-type QTranslatormetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QTranslator, slot: proc(super: QTranslatormetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QTranslatormetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qtranslator_types.QTranslator, slot: QTranslatormetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QTranslatormetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QTranslatormetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTranslator_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTranslator_metaObject(self: ptr cQTranslator, slot: int): pointer {.exportc: "miqt_exec_callback_QTranslator_metaObject ".} =
-  type Cb = proc(super: QTranslatormetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QTranslator(h: self), )
+  var nimfunc = cast[ptr QTranslatormetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QTranslator, param1: cstring): pointer =
-
+proc QTranslatormetacast*(self: gen_qtranslator_types.QTranslator, param1: cstring): pointer =
 
   fQTranslator_virtualbase_metacast(self.h, param1)
 
-type QTranslatormetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QTranslator, slot: proc(super: QTranslatormetacastBase, param1: cstring): pointer) =
+type QTranslatormetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qtranslator_types.QTranslator, slot: QTranslatormetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QTranslatormetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QTranslatormetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTranslator_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTranslator_metacast(self: ptr cQTranslator, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QTranslator_metacast ".} =
-  type Cb = proc(super: QTranslatormetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QTranslator(h: self), param1)
+  var nimfunc = cast[ptr QTranslatormetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QTranslator, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QTranslatormetacall*(self: gen_qtranslator_types.QTranslator, param1: cint, param2: cint, param3: pointer): cint =
 
   fQTranslator_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QTranslatormetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QTranslator, slot: proc(super: QTranslatormetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QTranslatormetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qtranslator_types.QTranslator, slot: QTranslatormetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QTranslatormetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QTranslatormetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTranslator_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTranslator_metacall(self: ptr cQTranslator, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QTranslator_metacall ".} =
-  type Cb = proc(super: QTranslatormetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QTranslator(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QTranslatormetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_translate(self: QTranslator, context: cstring, sourceText: cstring, disambiguation: cstring, n: cint): string =
-
+proc QTranslatortranslate*(self: gen_qtranslator_types.QTranslator, context: cstring, sourceText: cstring, disambiguation: cstring, n: cint): string =
 
   let v_ms = fQTranslator_virtualbase_translate(self.h, context, sourceText, disambiguation, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-type QTranslatortranslateBase* = proc(context: cstring, sourceText: cstring, disambiguation: cstring, n: cint): string
-proc ontranslate*(self: QTranslator, slot: proc(super: QTranslatortranslateBase, context: cstring, sourceText: cstring, disambiguation: cstring, n: cint): string) =
+type QTranslatortranslateProc* = proc(context: cstring, sourceText: cstring, disambiguation: cstring, n: cint): string
+proc ontranslate*(self: gen_qtranslator_types.QTranslator, slot: QTranslatortranslateProc) =
   # TODO check subclass
-  type Cb = proc(super: QTranslatortranslateBase, context: cstring, sourceText: cstring, disambiguation: cstring, n: cint): string
-  var tmp = new Cb
+  var tmp = new QTranslatortranslateProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTranslator_override_virtual_translate(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTranslator_translate(self: ptr cQTranslator, slot: int, context: cstring, sourceText: cstring, disambiguation: cstring, n: cint): struct_miqt_string {.exportc: "miqt_exec_callback_QTranslator_translate ".} =
-  type Cb = proc(super: QTranslatortranslateBase, context: cstring, sourceText: cstring, disambiguation: cstring, n: cint): string
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(context: cstring, sourceText: cstring, disambiguation: cstring, n: cint): auto =
-    callVirtualBase_translate(QTranslator(h: self), context, sourceText, disambiguation, n)
+  var nimfunc = cast[ptr QTranslatortranslateProc](cast[pointer](slot))
   let slotval1 = (context)
 
   let slotval2 = (sourceText)
@@ -316,200 +296,160 @@ proc miqt_exec_callback_QTranslator_translate(self: ptr cQTranslator, slot: int,
   let slotval4 = n
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3, slotval4 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3, slotval4 )
 
   struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
-proc callVirtualBase_isEmpty(self: QTranslator, ): bool =
-
+proc QTranslatorisEmpty*(self: gen_qtranslator_types.QTranslator, ): bool =
 
   fQTranslator_virtualbase_isEmpty(self.h)
 
-type QTranslatorisEmptyBase* = proc(): bool
-proc onisEmpty*(self: QTranslator, slot: proc(super: QTranslatorisEmptyBase): bool) =
+type QTranslatorisEmptyProc* = proc(): bool
+proc onisEmpty*(self: gen_qtranslator_types.QTranslator, slot: QTranslatorisEmptyProc) =
   # TODO check subclass
-  type Cb = proc(super: QTranslatorisEmptyBase): bool
-  var tmp = new Cb
+  var tmp = new QTranslatorisEmptyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTranslator_override_virtual_isEmpty(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTranslator_isEmpty(self: ptr cQTranslator, slot: int): bool {.exportc: "miqt_exec_callback_QTranslator_isEmpty ".} =
-  type Cb = proc(super: QTranslatorisEmptyBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_isEmpty(QTranslator(h: self), )
+  var nimfunc = cast[ptr QTranslatorisEmptyProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_event(self: QTranslator, event: gen_qcoreevent.QEvent): bool =
-
+proc QTranslatorevent*(self: gen_qtranslator_types.QTranslator, event: gen_qcoreevent.QEvent): bool =
 
   fQTranslator_virtualbase_event(self.h, event.h)
 
-type QTranslatoreventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QTranslator, slot: proc(super: QTranslatoreventBase, event: gen_qcoreevent.QEvent): bool) =
+type QTranslatoreventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qtranslator_types.QTranslator, slot: QTranslatoreventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTranslatoreventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QTranslatoreventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTranslator_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTranslator_event(self: ptr cQTranslator, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QTranslator_event ".} =
-  type Cb = proc(super: QTranslatoreventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QTranslator(h: self), event)
+  var nimfunc = cast[ptr QTranslatoreventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QTranslator, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QTranslatoreventFilter*(self: gen_qtranslator_types.QTranslator, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQTranslator_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QTranslatoreventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QTranslator, slot: proc(super: QTranslatoreventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QTranslatoreventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qtranslator_types.QTranslator, slot: QTranslatoreventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QTranslatoreventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QTranslatoreventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTranslator_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTranslator_eventFilter(self: ptr cQTranslator, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QTranslator_eventFilter ".} =
-  type Cb = proc(super: QTranslatoreventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QTranslator(h: self), watched, event)
+  var nimfunc = cast[ptr QTranslatoreventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QTranslator, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QTranslatortimerEvent*(self: gen_qtranslator_types.QTranslator, event: gen_qcoreevent.QTimerEvent): void =
 
   fQTranslator_virtualbase_timerEvent(self.h, event.h)
 
-type QTranslatortimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QTranslator, slot: proc(super: QTranslatortimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QTranslatortimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qtranslator_types.QTranslator, slot: QTranslatortimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTranslatortimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QTranslatortimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTranslator_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTranslator_timerEvent(self: ptr cQTranslator, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTranslator_timerEvent ".} =
-  type Cb = proc(super: QTranslatortimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QTranslator(h: self), event)
+  var nimfunc = cast[ptr QTranslatortimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QTranslator, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QTranslatorchildEvent*(self: gen_qtranslator_types.QTranslator, event: gen_qcoreevent.QChildEvent): void =
 
   fQTranslator_virtualbase_childEvent(self.h, event.h)
 
-type QTranslatorchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QTranslator, slot: proc(super: QTranslatorchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QTranslatorchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qtranslator_types.QTranslator, slot: QTranslatorchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTranslatorchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QTranslatorchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTranslator_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTranslator_childEvent(self: ptr cQTranslator, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTranslator_childEvent ".} =
-  type Cb = proc(super: QTranslatorchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QTranslator(h: self), event)
+  var nimfunc = cast[ptr QTranslatorchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QTranslator, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QTranslatorcustomEvent*(self: gen_qtranslator_types.QTranslator, event: gen_qcoreevent.QEvent): void =
 
   fQTranslator_virtualbase_customEvent(self.h, event.h)
 
-type QTranslatorcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QTranslator, slot: proc(super: QTranslatorcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QTranslatorcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qtranslator_types.QTranslator, slot: QTranslatorcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTranslatorcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QTranslatorcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTranslator_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTranslator_customEvent(self: ptr cQTranslator, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTranslator_customEvent ".} =
-  type Cb = proc(super: QTranslatorcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QTranslator(h: self), event)
+  var nimfunc = cast[ptr QTranslatorcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QTranslator, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QTranslatorconnectNotify*(self: gen_qtranslator_types.QTranslator, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQTranslator_virtualbase_connectNotify(self.h, signal.h)
 
-type QTranslatorconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QTranslator, slot: proc(super: QTranslatorconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QTranslatorconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qtranslator_types.QTranslator, slot: QTranslatorconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QTranslatorconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QTranslatorconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTranslator_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTranslator_connectNotify(self: ptr cQTranslator, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QTranslator_connectNotify ".} =
-  type Cb = proc(super: QTranslatorconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QTranslator(h: self), signal)
+  var nimfunc = cast[ptr QTranslatorconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QTranslator, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QTranslatordisconnectNotify*(self: gen_qtranslator_types.QTranslator, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQTranslator_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QTranslatordisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QTranslator, slot: proc(super: QTranslatordisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QTranslatordisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qtranslator_types.QTranslator, slot: QTranslatordisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QTranslatordisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QTranslatordisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTranslator_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTranslator_disconnectNotify(self: ptr cQTranslator, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QTranslator_disconnectNotify ".} =
-  type Cb = proc(super: QTranslatordisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QTranslator(h: self), signal)
+  var nimfunc = cast[ptr QTranslatordisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QTranslator): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qtranslator_types.QTranslator): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQTranslator_staticMetaObject())
-proc delete*(self: QTranslator) =
+proc delete*(self: gen_qtranslator_types.QTranslator) =
   fcQTranslator_delete(self.h)

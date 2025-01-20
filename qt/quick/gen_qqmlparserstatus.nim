@@ -48,46 +48,42 @@ proc fcQQmlParserStatus_override_virtual_componentComplete(self: pointer, slot: 
 proc fcQQmlParserStatus_delete(self: pointer) {.importc: "QQmlParserStatus_delete".}
 
 
-func init*(T: type QQmlParserStatus, h: ptr cQQmlParserStatus): QQmlParserStatus =
+func init*(T: type gen_qqmlparserstatus_types.QQmlParserStatus, h: ptr cQQmlParserStatus): gen_qqmlparserstatus_types.QQmlParserStatus =
   T(h: h)
-proc create*(T: type QQmlParserStatus, ): QQmlParserStatus =
+proc create*(T: type gen_qqmlparserstatus_types.QQmlParserStatus, ): gen_qqmlparserstatus_types.QQmlParserStatus =
 
-  QQmlParserStatus.init(fcQQmlParserStatus_new())
-proc classBegin*(self: QQmlParserStatus, ): void =
+  gen_qqmlparserstatus_types.QQmlParserStatus.init(fcQQmlParserStatus_new())
+proc classBegin*(self: gen_qqmlparserstatus_types.QQmlParserStatus, ): void =
 
   fcQQmlParserStatus_classBegin(self.h)
 
-proc componentComplete*(self: QQmlParserStatus, ): void =
+proc componentComplete*(self: gen_qqmlparserstatus_types.QQmlParserStatus, ): void =
 
   fcQQmlParserStatus_componentComplete(self.h)
 
-type QQmlParserStatusclassBeginBase* = proc(): void
-proc onclassBegin*(self: QQmlParserStatus, slot: proc(): void) =
+type QQmlParserStatusclassBeginProc* = proc(): void
+proc onclassBegin*(self: gen_qqmlparserstatus_types.QQmlParserStatus, slot: QQmlParserStatusclassBeginProc) =
   # TODO check subclass
-  type Cb = proc(): void
-  var tmp = new Cb
+  var tmp = new QQmlParserStatusclassBeginProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQmlParserStatus_override_virtual_classBegin(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQmlParserStatus_classBegin(self: ptr cQQmlParserStatus, slot: int): void {.exportc: "miqt_exec_callback_QQmlParserStatus_classBegin ".} =
-  type Cb = proc(): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QQmlParserStatusclassBeginProc](cast[pointer](slot))
 
   nimfunc[]()
-type QQmlParserStatuscomponentCompleteBase* = proc(): void
-proc oncomponentComplete*(self: QQmlParserStatus, slot: proc(): void) =
+type QQmlParserStatuscomponentCompleteProc* = proc(): void
+proc oncomponentComplete*(self: gen_qqmlparserstatus_types.QQmlParserStatus, slot: QQmlParserStatuscomponentCompleteProc) =
   # TODO check subclass
-  type Cb = proc(): void
-  var tmp = new Cb
+  var tmp = new QQmlParserStatuscomponentCompleteProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQmlParserStatus_override_virtual_componentComplete(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQmlParserStatus_componentComplete(self: ptr cQQmlParserStatus, slot: int): void {.exportc: "miqt_exec_callback_QQmlParserStatus_componentComplete ".} =
-  type Cb = proc(): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QQmlParserStatuscomponentCompleteProc](cast[pointer](slot))
 
   nimfunc[]()
-proc delete*(self: QQmlParserStatus) =
+proc delete*(self: gen_qqmlparserstatus_types.QQmlParserStatus) =
   fcQQmlParserStatus_delete(self.h)

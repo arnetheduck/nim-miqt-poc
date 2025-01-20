@@ -214,54 +214,54 @@ proc fcQsciLexer_staticMetaObject(): pointer {.importc: "QsciLexer_staticMetaObj
 proc fcQsciLexer_delete(self: pointer) {.importc: "QsciLexer_delete".}
 
 
-func init*(T: type QsciLexer, h: ptr cQsciLexer): QsciLexer =
+func init*(T: type gen_qscilexer_types.QsciLexer, h: ptr cQsciLexer): gen_qscilexer_types.QsciLexer =
   T(h: h)
-proc create*(T: type QsciLexer, ): QsciLexer =
+proc create*(T: type gen_qscilexer_types.QsciLexer, ): gen_qscilexer_types.QsciLexer =
 
-  QsciLexer.init(fcQsciLexer_new())
-proc create*(T: type QsciLexer, parent: gen_qobject.QObject): QsciLexer =
+  gen_qscilexer_types.QsciLexer.init(fcQsciLexer_new())
+proc create*(T: type gen_qscilexer_types.QsciLexer, parent: gen_qobject.QObject): gen_qscilexer_types.QsciLexer =
 
-  QsciLexer.init(fcQsciLexer_new2(parent.h))
-proc metaObject*(self: QsciLexer, ): gen_qobjectdefs.QMetaObject =
+  gen_qscilexer_types.QsciLexer.init(fcQsciLexer_new2(parent.h))
+proc metaObject*(self: gen_qscilexer_types.QsciLexer, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQsciLexer_metaObject(self.h))
 
-proc metacast*(self: QsciLexer, param1: cstring): pointer =
+proc metacast*(self: gen_qscilexer_types.QsciLexer, param1: cstring): pointer =
 
   fcQsciLexer_metacast(self.h, param1)
 
-proc metacall*(self: QsciLexer, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qscilexer_types.QsciLexer, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQsciLexer_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QsciLexer, s: cstring): string =
+proc tr*(_: type gen_qscilexer_types.QsciLexer, s: cstring): string =
 
   let v_ms = fcQsciLexer_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc language*(self: QsciLexer, ): cstring =
+proc language*(self: gen_qscilexer_types.QsciLexer, ): cstring =
 
   (fcQsciLexer_language(self.h))
 
-proc lexer*(self: QsciLexer, ): cstring =
+proc lexer*(self: gen_qscilexer_types.QsciLexer, ): cstring =
 
   (fcQsciLexer_lexer(self.h))
 
-proc lexerId*(self: QsciLexer, ): cint =
+proc lexerId*(self: gen_qscilexer_types.QsciLexer, ): cint =
 
   fcQsciLexer_lexerId(self.h)
 
-proc apis*(self: QsciLexer, ): gen_qsciabstractapis.QsciAbstractAPIs =
+proc apis*(self: gen_qscilexer_types.QsciLexer, ): gen_qsciabstractapis.QsciAbstractAPIs =
 
   gen_qsciabstractapis.QsciAbstractAPIs(h: fcQsciLexer_apis(self.h))
 
-proc autoCompletionFillups*(self: QsciLexer, ): cstring =
+proc autoCompletionFillups*(self: gen_qscilexer_types.QsciLexer, ): cstring =
 
   (fcQsciLexer_autoCompletionFillups(self.h))
 
-proc autoCompletionWordSeparators*(self: QsciLexer, ): seq[string] =
+proc autoCompletionWordSeparators*(self: gen_qscilexer_types.QsciLexer, ): seq[string] =
 
   var v_ma = fcQsciLexer_autoCompletionWordSeparators(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -273,162 +273,162 @@ proc autoCompletionWordSeparators*(self: QsciLexer, ): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc autoIndentStyle*(self: QsciLexer, ): cint =
+proc autoIndentStyle*(self: gen_qscilexer_types.QsciLexer, ): cint =
 
   fcQsciLexer_autoIndentStyle(self.h)
 
-proc blockEnd*(self: QsciLexer, style: ptr cint): cstring =
+proc blockEnd*(self: gen_qscilexer_types.QsciLexer, style: ptr cint): cstring =
 
   (fcQsciLexer_blockEnd(self.h, style))
 
-proc blockLookback*(self: QsciLexer, ): cint =
+proc blockLookback*(self: gen_qscilexer_types.QsciLexer, ): cint =
 
   fcQsciLexer_blockLookback(self.h)
 
-proc blockStart*(self: QsciLexer, style: ptr cint): cstring =
+proc blockStart*(self: gen_qscilexer_types.QsciLexer, style: ptr cint): cstring =
 
   (fcQsciLexer_blockStart(self.h, style))
 
-proc blockStartKeyword*(self: QsciLexer, style: ptr cint): cstring =
+proc blockStartKeyword*(self: gen_qscilexer_types.QsciLexer, style: ptr cint): cstring =
 
   (fcQsciLexer_blockStartKeyword(self.h, style))
 
-proc braceStyle*(self: QsciLexer, ): cint =
+proc braceStyle*(self: gen_qscilexer_types.QsciLexer, ): cint =
 
   fcQsciLexer_braceStyle(self.h)
 
-proc caseSensitive*(self: QsciLexer, ): bool =
+proc caseSensitive*(self: gen_qscilexer_types.QsciLexer, ): bool =
 
   fcQsciLexer_caseSensitive(self.h)
 
-proc color*(self: QsciLexer, style: cint): gen_qcolor.QColor =
+proc color*(self: gen_qscilexer_types.QsciLexer, style: cint): gen_qcolor.QColor =
 
   gen_qcolor.QColor(h: fcQsciLexer_color(self.h, style))
 
-proc eolFill*(self: QsciLexer, style: cint): bool =
+proc eolFill*(self: gen_qscilexer_types.QsciLexer, style: cint): bool =
 
   fcQsciLexer_eolFill(self.h, style)
 
-proc font*(self: QsciLexer, style: cint): gen_qfont.QFont =
+proc font*(self: gen_qscilexer_types.QsciLexer, style: cint): gen_qfont.QFont =
 
   gen_qfont.QFont(h: fcQsciLexer_font(self.h, style))
 
-proc indentationGuideView*(self: QsciLexer, ): cint =
+proc indentationGuideView*(self: gen_qscilexer_types.QsciLexer, ): cint =
 
   fcQsciLexer_indentationGuideView(self.h)
 
-proc keywords*(self: QsciLexer, set: cint): cstring =
+proc keywords*(self: gen_qscilexer_types.QsciLexer, set: cint): cstring =
 
   (fcQsciLexer_keywords(self.h, set))
 
-proc defaultStyle*(self: QsciLexer, ): cint =
+proc defaultStyle*(self: gen_qscilexer_types.QsciLexer, ): cint =
 
   fcQsciLexer_defaultStyle(self.h)
 
-proc description*(self: QsciLexer, style: cint): string =
+proc description*(self: gen_qscilexer_types.QsciLexer, style: cint): string =
 
   let v_ms = fcQsciLexer_description(self.h, style)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc paper*(self: QsciLexer, style: cint): gen_qcolor.QColor =
+proc paper*(self: gen_qscilexer_types.QsciLexer, style: cint): gen_qcolor.QColor =
 
   gen_qcolor.QColor(h: fcQsciLexer_paper(self.h, style))
 
-proc defaultColor*(self: QsciLexer, ): gen_qcolor.QColor =
+proc defaultColor*(self: gen_qscilexer_types.QsciLexer, ): gen_qcolor.QColor =
 
   gen_qcolor.QColor(h: fcQsciLexer_defaultColor(self.h))
 
-proc defaultColorWithStyle*(self: QsciLexer, style: cint): gen_qcolor.QColor =
+proc defaultColorWithStyle*(self: gen_qscilexer_types.QsciLexer, style: cint): gen_qcolor.QColor =
 
   gen_qcolor.QColor(h: fcQsciLexer_defaultColorWithStyle(self.h, style))
 
-proc defaultEolFill*(self: QsciLexer, style: cint): bool =
+proc defaultEolFill*(self: gen_qscilexer_types.QsciLexer, style: cint): bool =
 
   fcQsciLexer_defaultEolFill(self.h, style)
 
-proc defaultFont*(self: QsciLexer, ): gen_qfont.QFont =
+proc defaultFont*(self: gen_qscilexer_types.QsciLexer, ): gen_qfont.QFont =
 
   gen_qfont.QFont(h: fcQsciLexer_defaultFont(self.h))
 
-proc defaultFontWithStyle*(self: QsciLexer, style: cint): gen_qfont.QFont =
+proc defaultFontWithStyle*(self: gen_qscilexer_types.QsciLexer, style: cint): gen_qfont.QFont =
 
   gen_qfont.QFont(h: fcQsciLexer_defaultFontWithStyle(self.h, style))
 
-proc defaultPaper*(self: QsciLexer, ): gen_qcolor.QColor =
+proc defaultPaper*(self: gen_qscilexer_types.QsciLexer, ): gen_qcolor.QColor =
 
   gen_qcolor.QColor(h: fcQsciLexer_defaultPaper(self.h))
 
-proc defaultPaperWithStyle*(self: QsciLexer, style: cint): gen_qcolor.QColor =
+proc defaultPaperWithStyle*(self: gen_qscilexer_types.QsciLexer, style: cint): gen_qcolor.QColor =
 
   gen_qcolor.QColor(h: fcQsciLexer_defaultPaperWithStyle(self.h, style))
 
-proc editor*(self: QsciLexer, ): gen_qsciscintilla.QsciScintilla =
+proc editor*(self: gen_qscilexer_types.QsciLexer, ): gen_qsciscintilla.QsciScintilla =
 
   gen_qsciscintilla.QsciScintilla(h: fcQsciLexer_editor(self.h))
 
-proc setAPIs*(self: QsciLexer, apis: gen_qsciabstractapis.QsciAbstractAPIs): void =
+proc setAPIs*(self: gen_qscilexer_types.QsciLexer, apis: gen_qsciabstractapis.QsciAbstractAPIs): void =
 
   fcQsciLexer_setAPIs(self.h, apis.h)
 
-proc setDefaultColor*(self: QsciLexer, c: gen_qcolor.QColor): void =
+proc setDefaultColor*(self: gen_qscilexer_types.QsciLexer, c: gen_qcolor.QColor): void =
 
   fcQsciLexer_setDefaultColor(self.h, c.h)
 
-proc setDefaultFont*(self: QsciLexer, f: gen_qfont.QFont): void =
+proc setDefaultFont*(self: gen_qscilexer_types.QsciLexer, f: gen_qfont.QFont): void =
 
   fcQsciLexer_setDefaultFont(self.h, f.h)
 
-proc setDefaultPaper*(self: QsciLexer, c: gen_qcolor.QColor): void =
+proc setDefaultPaper*(self: gen_qscilexer_types.QsciLexer, c: gen_qcolor.QColor): void =
 
   fcQsciLexer_setDefaultPaper(self.h, c.h)
 
-proc setEditor*(self: QsciLexer, editor: gen_qsciscintilla.QsciScintilla): void =
+proc setEditor*(self: gen_qscilexer_types.QsciLexer, editor: gen_qsciscintilla.QsciScintilla): void =
 
   fcQsciLexer_setEditor(self.h, editor.h)
 
-proc readSettings*(self: QsciLexer, qs: gen_qsettings.QSettings): bool =
+proc readSettings*(self: gen_qscilexer_types.QsciLexer, qs: gen_qsettings.QSettings): bool =
 
   fcQsciLexer_readSettings(self.h, qs.h)
 
-proc refreshProperties*(self: QsciLexer, ): void =
+proc refreshProperties*(self: gen_qscilexer_types.QsciLexer, ): void =
 
   fcQsciLexer_refreshProperties(self.h)
 
-proc styleBitsNeeded*(self: QsciLexer, ): cint =
+proc styleBitsNeeded*(self: gen_qscilexer_types.QsciLexer, ): cint =
 
   fcQsciLexer_styleBitsNeeded(self.h)
 
-proc wordCharacters*(self: QsciLexer, ): cstring =
+proc wordCharacters*(self: gen_qscilexer_types.QsciLexer, ): cstring =
 
   (fcQsciLexer_wordCharacters(self.h))
 
-proc writeSettings*(self: QsciLexer, qs: gen_qsettings.QSettings): bool =
+proc writeSettings*(self: gen_qscilexer_types.QsciLexer, qs: gen_qsettings.QSettings): bool =
 
   fcQsciLexer_writeSettings(self.h, qs.h)
 
-proc setAutoIndentStyle*(self: QsciLexer, autoindentstyle: cint): void =
+proc setAutoIndentStyle*(self: gen_qscilexer_types.QsciLexer, autoindentstyle: cint): void =
 
   fcQsciLexer_setAutoIndentStyle(self.h, autoindentstyle)
 
-proc setColor*(self: QsciLexer, c: gen_qcolor.QColor, style: cint): void =
+proc setColor*(self: gen_qscilexer_types.QsciLexer, c: gen_qcolor.QColor, style: cint): void =
 
   fcQsciLexer_setColor(self.h, c.h, style)
 
-proc setEolFill*(self: QsciLexer, eoffill: bool, style: cint): void =
+proc setEolFill*(self: gen_qscilexer_types.QsciLexer, eoffill: bool, style: cint): void =
 
   fcQsciLexer_setEolFill(self.h, eoffill, style)
 
-proc setFont*(self: QsciLexer, f: gen_qfont.QFont, style: cint): void =
+proc setFont*(self: gen_qscilexer_types.QsciLexer, f: gen_qfont.QFont, style: cint): void =
 
   fcQsciLexer_setFont(self.h, f.h, style)
 
-proc setPaper*(self: QsciLexer, c: gen_qcolor.QColor, style: cint): void =
+proc setPaper*(self: gen_qscilexer_types.QsciLexer, c: gen_qcolor.QColor, style: cint): void =
 
   fcQsciLexer_setPaper(self.h, c.h, style)
 
-proc colorChanged*(self: QsciLexer, c: gen_qcolor.QColor, style: cint): void =
+proc colorChanged*(self: gen_qscilexer_types.QsciLexer, c: gen_qcolor.QColor, style: cint): void =
 
   fcQsciLexer_colorChanged(self.h, c.h, style)
 
@@ -442,13 +442,13 @@ proc miqt_exec_callback_QsciLexer_colorChanged(slot: int, c: pointer, style: cin
 
   nimfunc[](slotval1, slotval2)
 
-proc oncolorChanged*(self: QsciLexer, slot: proc(c: gen_qcolor.QColor, style: cint)) =
+proc oncolorChanged*(self: gen_qscilexer_types.QsciLexer, slot: proc(c: gen_qcolor.QColor, style: cint)) =
   type Cb = proc(c: gen_qcolor.QColor, style: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQsciLexer_connect_colorChanged(self.h, cast[int](addr tmp[]))
-proc eolFillChanged*(self: QsciLexer, eolfilled: bool, style: cint): void =
+proc eolFillChanged*(self: gen_qscilexer_types.QsciLexer, eolfilled: bool, style: cint): void =
 
   fcQsciLexer_eolFillChanged(self.h, eolfilled, style)
 
@@ -462,13 +462,13 @@ proc miqt_exec_callback_QsciLexer_eolFillChanged(slot: int, eolfilled: bool, sty
 
   nimfunc[](slotval1, slotval2)
 
-proc oneolFillChanged*(self: QsciLexer, slot: proc(eolfilled: bool, style: cint)) =
+proc oneolFillChanged*(self: gen_qscilexer_types.QsciLexer, slot: proc(eolfilled: bool, style: cint)) =
   type Cb = proc(eolfilled: bool, style: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQsciLexer_connect_eolFillChanged(self.h, cast[int](addr tmp[]))
-proc fontChanged*(self: QsciLexer, f: gen_qfont.QFont, style: cint): void =
+proc fontChanged*(self: gen_qscilexer_types.QsciLexer, f: gen_qfont.QFont, style: cint): void =
 
   fcQsciLexer_fontChanged(self.h, f.h, style)
 
@@ -482,13 +482,13 @@ proc miqt_exec_callback_QsciLexer_fontChanged(slot: int, f: pointer, style: cint
 
   nimfunc[](slotval1, slotval2)
 
-proc onfontChanged*(self: QsciLexer, slot: proc(f: gen_qfont.QFont, style: cint)) =
+proc onfontChanged*(self: gen_qscilexer_types.QsciLexer, slot: proc(f: gen_qfont.QFont, style: cint)) =
   type Cb = proc(f: gen_qfont.QFont, style: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQsciLexer_connect_fontChanged(self.h, cast[int](addr tmp[]))
-proc paperChanged*(self: QsciLexer, c: gen_qcolor.QColor, style: cint): void =
+proc paperChanged*(self: gen_qscilexer_types.QsciLexer, c: gen_qcolor.QColor, style: cint): void =
 
   fcQsciLexer_paperChanged(self.h, c.h, style)
 
@@ -502,13 +502,13 @@ proc miqt_exec_callback_QsciLexer_paperChanged(slot: int, c: pointer, style: cin
 
   nimfunc[](slotval1, slotval2)
 
-proc onpaperChanged*(self: QsciLexer, slot: proc(c: gen_qcolor.QColor, style: cint)) =
+proc onpaperChanged*(self: gen_qscilexer_types.QsciLexer, slot: proc(c: gen_qcolor.QColor, style: cint)) =
   type Cb = proc(c: gen_qcolor.QColor, style: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQsciLexer_connect_paperChanged(self.h, cast[int](addr tmp[]))
-proc propertyChanged*(self: QsciLexer, prop: cstring, val: cstring): void =
+proc propertyChanged*(self: gen_qscilexer_types.QsciLexer, prop: cstring, val: cstring): void =
 
   fcQsciLexer_propertyChanged(self.h, prop, val)
 
@@ -522,198 +522,165 @@ proc miqt_exec_callback_QsciLexer_propertyChanged(slot: int, prop: cstring, val:
 
   nimfunc[](slotval1, slotval2)
 
-proc onpropertyChanged*(self: QsciLexer, slot: proc(prop: cstring, val: cstring)) =
+proc onpropertyChanged*(self: gen_qscilexer_types.QsciLexer, slot: proc(prop: cstring, val: cstring)) =
   type Cb = proc(prop: cstring, val: cstring)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQsciLexer_connect_propertyChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QsciLexer, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qscilexer_types.QsciLexer, s: cstring, c: cstring): string =
 
   let v_ms = fcQsciLexer_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QsciLexer, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qscilexer_types.QsciLexer, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQsciLexer_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc readSettings2*(self: QsciLexer, qs: gen_qsettings.QSettings, prefix: cstring): bool =
+proc readSettings2*(self: gen_qscilexer_types.QsciLexer, qs: gen_qsettings.QSettings, prefix: cstring): bool =
 
   fcQsciLexer_readSettings2(self.h, qs.h, prefix)
 
-proc writeSettings2*(self: QsciLexer, qs: gen_qsettings.QSettings, prefix: cstring): bool =
+proc writeSettings2*(self: gen_qscilexer_types.QsciLexer, qs: gen_qsettings.QSettings, prefix: cstring): bool =
 
   fcQsciLexer_writeSettings2(self.h, qs.h, prefix)
 
-proc callVirtualBase_metaObject(self: QsciLexer, ): gen_qobjectdefs.QMetaObject =
-
+proc QsciLexermetaObject*(self: gen_qscilexer_types.QsciLexer, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQsciLexer_virtualbase_metaObject(self.h))
 
-type QsciLexermetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QsciLexer, slot: proc(super: QsciLexermetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QsciLexermetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qscilexer_types.QsciLexer, slot: QsciLexermetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexermetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QsciLexermetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexer_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexer_metaObject(self: ptr cQsciLexer, slot: int): pointer {.exportc: "miqt_exec_callback_QsciLexer_metaObject ".} =
-  type Cb = proc(super: QsciLexermetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QsciLexer(h: self), )
+  var nimfunc = cast[ptr QsciLexermetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QsciLexer, param1: cstring): pointer =
-
+proc QsciLexermetacast*(self: gen_qscilexer_types.QsciLexer, param1: cstring): pointer =
 
   fQsciLexer_virtualbase_metacast(self.h, param1)
 
-type QsciLexermetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QsciLexer, slot: proc(super: QsciLexermetacastBase, param1: cstring): pointer) =
+type QsciLexermetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qscilexer_types.QsciLexer, slot: QsciLexermetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexermetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QsciLexermetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexer_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexer_metacast(self: ptr cQsciLexer, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QsciLexer_metacast ".} =
-  type Cb = proc(super: QsciLexermetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QsciLexer(h: self), param1)
+  var nimfunc = cast[ptr QsciLexermetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QsciLexer, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QsciLexermetacall*(self: gen_qscilexer_types.QsciLexer, param1: cint, param2: cint, param3: pointer): cint =
 
   fQsciLexer_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QsciLexermetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QsciLexer, slot: proc(super: QsciLexermetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QsciLexermetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qscilexer_types.QsciLexer, slot: QsciLexermetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexermetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QsciLexermetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexer_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexer_metacall(self: ptr cQsciLexer, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QsciLexer_metacall ".} =
-  type Cb = proc(super: QsciLexermetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QsciLexer(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QsciLexermetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-type QsciLexerlanguageBase* = proc(): cstring
-proc onlanguage*(self: QsciLexer, slot: proc(): cstring) =
+type QsciLexerlanguageProc* = proc(): cstring
+proc onlanguage*(self: gen_qscilexer_types.QsciLexer, slot: QsciLexerlanguageProc) =
   # TODO check subclass
-  type Cb = proc(): cstring
-  var tmp = new Cb
+  var tmp = new QsciLexerlanguageProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexer_override_virtual_language(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexer_language(self: ptr cQsciLexer, slot: int): cstring {.exportc: "miqt_exec_callback_QsciLexer_language ".} =
-  type Cb = proc(): cstring
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QsciLexerlanguageProc](cast[pointer](slot))
 
   let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_lexer(self: QsciLexer, ): cstring =
-
+proc QsciLexerlexer*(self: gen_qscilexer_types.QsciLexer, ): cstring =
 
   (fQsciLexer_virtualbase_lexer(self.h))
 
-type QsciLexerlexerBase* = proc(): cstring
-proc onlexer*(self: QsciLexer, slot: proc(super: QsciLexerlexerBase): cstring) =
+type QsciLexerlexerProc* = proc(): cstring
+proc onlexer*(self: gen_qscilexer_types.QsciLexer, slot: QsciLexerlexerProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerlexerBase): cstring
-  var tmp = new Cb
+  var tmp = new QsciLexerlexerProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexer_override_virtual_lexer(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexer_lexer(self: ptr cQsciLexer, slot: int): cstring {.exportc: "miqt_exec_callback_QsciLexer_lexer ".} =
-  type Cb = proc(super: QsciLexerlexerBase): cstring
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_lexer(QsciLexer(h: self), )
+  var nimfunc = cast[ptr QsciLexerlexerProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_lexerId(self: QsciLexer, ): cint =
-
+proc QsciLexerlexerId*(self: gen_qscilexer_types.QsciLexer, ): cint =
 
   fQsciLexer_virtualbase_lexerId(self.h)
 
-type QsciLexerlexerIdBase* = proc(): cint
-proc onlexerId*(self: QsciLexer, slot: proc(super: QsciLexerlexerIdBase): cint) =
+type QsciLexerlexerIdProc* = proc(): cint
+proc onlexerId*(self: gen_qscilexer_types.QsciLexer, slot: QsciLexerlexerIdProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerlexerIdBase): cint
-  var tmp = new Cb
+  var tmp = new QsciLexerlexerIdProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexer_override_virtual_lexerId(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexer_lexerId(self: ptr cQsciLexer, slot: int): cint {.exportc: "miqt_exec_callback_QsciLexer_lexerId ".} =
-  type Cb = proc(super: QsciLexerlexerIdBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_lexerId(QsciLexer(h: self), )
+  var nimfunc = cast[ptr QsciLexerlexerIdProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_autoCompletionFillups(self: QsciLexer, ): cstring =
-
+proc QsciLexerautoCompletionFillups*(self: gen_qscilexer_types.QsciLexer, ): cstring =
 
   (fQsciLexer_virtualbase_autoCompletionFillups(self.h))
 
-type QsciLexerautoCompletionFillupsBase* = proc(): cstring
-proc onautoCompletionFillups*(self: QsciLexer, slot: proc(super: QsciLexerautoCompletionFillupsBase): cstring) =
+type QsciLexerautoCompletionFillupsProc* = proc(): cstring
+proc onautoCompletionFillups*(self: gen_qscilexer_types.QsciLexer, slot: QsciLexerautoCompletionFillupsProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerautoCompletionFillupsBase): cstring
-  var tmp = new Cb
+  var tmp = new QsciLexerautoCompletionFillupsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexer_override_virtual_autoCompletionFillups(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexer_autoCompletionFillups(self: ptr cQsciLexer, slot: int): cstring {.exportc: "miqt_exec_callback_QsciLexer_autoCompletionFillups ".} =
-  type Cb = proc(super: QsciLexerautoCompletionFillupsBase): cstring
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_autoCompletionFillups(QsciLexer(h: self), )
+  var nimfunc = cast[ptr QsciLexerautoCompletionFillupsProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_autoCompletionWordSeparators(self: QsciLexer, ): seq[string] =
-
+proc QsciLexerautoCompletionWordSeparators*(self: gen_qscilexer_types.QsciLexer, ): seq[string] =
 
   var v_ma = fQsciLexer_virtualbase_autoCompletionWordSeparators(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -725,693 +692,552 @@ proc callVirtualBase_autoCompletionWordSeparators(self: QsciLexer, ): seq[string
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-type QsciLexerautoCompletionWordSeparatorsBase* = proc(): seq[string]
-proc onautoCompletionWordSeparators*(self: QsciLexer, slot: proc(super: QsciLexerautoCompletionWordSeparatorsBase): seq[string]) =
+type QsciLexerautoCompletionWordSeparatorsProc* = proc(): seq[string]
+proc onautoCompletionWordSeparators*(self: gen_qscilexer_types.QsciLexer, slot: QsciLexerautoCompletionWordSeparatorsProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerautoCompletionWordSeparatorsBase): seq[string]
-  var tmp = new Cb
+  var tmp = new QsciLexerautoCompletionWordSeparatorsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexer_override_virtual_autoCompletionWordSeparators(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexer_autoCompletionWordSeparators(self: ptr cQsciLexer, slot: int): struct_miqt_array {.exportc: "miqt_exec_callback_QsciLexer_autoCompletionWordSeparators ".} =
-  type Cb = proc(super: QsciLexerautoCompletionWordSeparatorsBase): seq[string]
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_autoCompletionWordSeparators(QsciLexer(h: self), )
+  var nimfunc = cast[ptr QsciLexerautoCompletionWordSeparatorsProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
   var virtualReturn_CArray = newSeq[struct_miqt_string](len(virtualReturn))
   for i in 0..<len(virtualReturn):
     virtualReturn_CArray[i] = struct_miqt_string(data: virtualReturn[i], len: csize_t(len(virtualReturn[i])))
 
 
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
-proc callVirtualBase_blockEnd(self: QsciLexer, style: ptr cint): cstring =
-
+proc QsciLexerblockEnd*(self: gen_qscilexer_types.QsciLexer, style: ptr cint): cstring =
 
   (fQsciLexer_virtualbase_blockEnd(self.h, style))
 
-type QsciLexerblockEndBase* = proc(style: ptr cint): cstring
-proc onblockEnd*(self: QsciLexer, slot: proc(super: QsciLexerblockEndBase, style: ptr cint): cstring) =
+type QsciLexerblockEndProc* = proc(style: ptr cint): cstring
+proc onblockEnd*(self: gen_qscilexer_types.QsciLexer, slot: QsciLexerblockEndProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerblockEndBase, style: ptr cint): cstring
-  var tmp = new Cb
+  var tmp = new QsciLexerblockEndProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexer_override_virtual_blockEnd(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexer_blockEnd(self: ptr cQsciLexer, slot: int, style: ptr cint): cstring {.exportc: "miqt_exec_callback_QsciLexer_blockEnd ".} =
-  type Cb = proc(super: QsciLexerblockEndBase, style: ptr cint): cstring
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(style: ptr cint): auto =
-    callVirtualBase_blockEnd(QsciLexer(h: self), style)
+  var nimfunc = cast[ptr QsciLexerblockEndProc](cast[pointer](slot))
   let slotval1 = style
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_blockLookback(self: QsciLexer, ): cint =
-
+proc QsciLexerblockLookback*(self: gen_qscilexer_types.QsciLexer, ): cint =
 
   fQsciLexer_virtualbase_blockLookback(self.h)
 
-type QsciLexerblockLookbackBase* = proc(): cint
-proc onblockLookback*(self: QsciLexer, slot: proc(super: QsciLexerblockLookbackBase): cint) =
+type QsciLexerblockLookbackProc* = proc(): cint
+proc onblockLookback*(self: gen_qscilexer_types.QsciLexer, slot: QsciLexerblockLookbackProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerblockLookbackBase): cint
-  var tmp = new Cb
+  var tmp = new QsciLexerblockLookbackProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexer_override_virtual_blockLookback(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexer_blockLookback(self: ptr cQsciLexer, slot: int): cint {.exportc: "miqt_exec_callback_QsciLexer_blockLookback ".} =
-  type Cb = proc(super: QsciLexerblockLookbackBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_blockLookback(QsciLexer(h: self), )
+  var nimfunc = cast[ptr QsciLexerblockLookbackProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_blockStart(self: QsciLexer, style: ptr cint): cstring =
-
+proc QsciLexerblockStart*(self: gen_qscilexer_types.QsciLexer, style: ptr cint): cstring =
 
   (fQsciLexer_virtualbase_blockStart(self.h, style))
 
-type QsciLexerblockStartBase* = proc(style: ptr cint): cstring
-proc onblockStart*(self: QsciLexer, slot: proc(super: QsciLexerblockStartBase, style: ptr cint): cstring) =
+type QsciLexerblockStartProc* = proc(style: ptr cint): cstring
+proc onblockStart*(self: gen_qscilexer_types.QsciLexer, slot: QsciLexerblockStartProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerblockStartBase, style: ptr cint): cstring
-  var tmp = new Cb
+  var tmp = new QsciLexerblockStartProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexer_override_virtual_blockStart(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexer_blockStart(self: ptr cQsciLexer, slot: int, style: ptr cint): cstring {.exportc: "miqt_exec_callback_QsciLexer_blockStart ".} =
-  type Cb = proc(super: QsciLexerblockStartBase, style: ptr cint): cstring
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(style: ptr cint): auto =
-    callVirtualBase_blockStart(QsciLexer(h: self), style)
+  var nimfunc = cast[ptr QsciLexerblockStartProc](cast[pointer](slot))
   let slotval1 = style
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_blockStartKeyword(self: QsciLexer, style: ptr cint): cstring =
-
+proc QsciLexerblockStartKeyword*(self: gen_qscilexer_types.QsciLexer, style: ptr cint): cstring =
 
   (fQsciLexer_virtualbase_blockStartKeyword(self.h, style))
 
-type QsciLexerblockStartKeywordBase* = proc(style: ptr cint): cstring
-proc onblockStartKeyword*(self: QsciLexer, slot: proc(super: QsciLexerblockStartKeywordBase, style: ptr cint): cstring) =
+type QsciLexerblockStartKeywordProc* = proc(style: ptr cint): cstring
+proc onblockStartKeyword*(self: gen_qscilexer_types.QsciLexer, slot: QsciLexerblockStartKeywordProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerblockStartKeywordBase, style: ptr cint): cstring
-  var tmp = new Cb
+  var tmp = new QsciLexerblockStartKeywordProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexer_override_virtual_blockStartKeyword(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexer_blockStartKeyword(self: ptr cQsciLexer, slot: int, style: ptr cint): cstring {.exportc: "miqt_exec_callback_QsciLexer_blockStartKeyword ".} =
-  type Cb = proc(super: QsciLexerblockStartKeywordBase, style: ptr cint): cstring
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(style: ptr cint): auto =
-    callVirtualBase_blockStartKeyword(QsciLexer(h: self), style)
+  var nimfunc = cast[ptr QsciLexerblockStartKeywordProc](cast[pointer](slot))
   let slotval1 = style
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_braceStyle(self: QsciLexer, ): cint =
-
+proc QsciLexerbraceStyle*(self: gen_qscilexer_types.QsciLexer, ): cint =
 
   fQsciLexer_virtualbase_braceStyle(self.h)
 
-type QsciLexerbraceStyleBase* = proc(): cint
-proc onbraceStyle*(self: QsciLexer, slot: proc(super: QsciLexerbraceStyleBase): cint) =
+type QsciLexerbraceStyleProc* = proc(): cint
+proc onbraceStyle*(self: gen_qscilexer_types.QsciLexer, slot: QsciLexerbraceStyleProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerbraceStyleBase): cint
-  var tmp = new Cb
+  var tmp = new QsciLexerbraceStyleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexer_override_virtual_braceStyle(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexer_braceStyle(self: ptr cQsciLexer, slot: int): cint {.exportc: "miqt_exec_callback_QsciLexer_braceStyle ".} =
-  type Cb = proc(super: QsciLexerbraceStyleBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_braceStyle(QsciLexer(h: self), )
+  var nimfunc = cast[ptr QsciLexerbraceStyleProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_caseSensitive(self: QsciLexer, ): bool =
-
+proc QsciLexercaseSensitive*(self: gen_qscilexer_types.QsciLexer, ): bool =
 
   fQsciLexer_virtualbase_caseSensitive(self.h)
 
-type QsciLexercaseSensitiveBase* = proc(): bool
-proc oncaseSensitive*(self: QsciLexer, slot: proc(super: QsciLexercaseSensitiveBase): bool) =
+type QsciLexercaseSensitiveProc* = proc(): bool
+proc oncaseSensitive*(self: gen_qscilexer_types.QsciLexer, slot: QsciLexercaseSensitiveProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexercaseSensitiveBase): bool
-  var tmp = new Cb
+  var tmp = new QsciLexercaseSensitiveProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexer_override_virtual_caseSensitive(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexer_caseSensitive(self: ptr cQsciLexer, slot: int): bool {.exportc: "miqt_exec_callback_QsciLexer_caseSensitive ".} =
-  type Cb = proc(super: QsciLexercaseSensitiveBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_caseSensitive(QsciLexer(h: self), )
+  var nimfunc = cast[ptr QsciLexercaseSensitiveProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_color(self: QsciLexer, style: cint): gen_qcolor.QColor =
-
+proc QsciLexercolor*(self: gen_qscilexer_types.QsciLexer, style: cint): gen_qcolor.QColor =
 
   gen_qcolor.QColor(h: fQsciLexer_virtualbase_color(self.h, style))
 
-type QsciLexercolorBase* = proc(style: cint): gen_qcolor.QColor
-proc oncolor*(self: QsciLexer, slot: proc(super: QsciLexercolorBase, style: cint): gen_qcolor.QColor) =
+type QsciLexercolorProc* = proc(style: cint): gen_qcolor.QColor
+proc oncolor*(self: gen_qscilexer_types.QsciLexer, slot: QsciLexercolorProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexercolorBase, style: cint): gen_qcolor.QColor
-  var tmp = new Cb
+  var tmp = new QsciLexercolorProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexer_override_virtual_color(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexer_color(self: ptr cQsciLexer, slot: int, style: cint): pointer {.exportc: "miqt_exec_callback_QsciLexer_color ".} =
-  type Cb = proc(super: QsciLexercolorBase, style: cint): gen_qcolor.QColor
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(style: cint): auto =
-    callVirtualBase_color(QsciLexer(h: self), style)
+  var nimfunc = cast[ptr QsciLexercolorProc](cast[pointer](slot))
   let slotval1 = style
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_eolFill(self: QsciLexer, style: cint): bool =
-
+proc QsciLexereolFill*(self: gen_qscilexer_types.QsciLexer, style: cint): bool =
 
   fQsciLexer_virtualbase_eolFill(self.h, style)
 
-type QsciLexereolFillBase* = proc(style: cint): bool
-proc oneolFill*(self: QsciLexer, slot: proc(super: QsciLexereolFillBase, style: cint): bool) =
+type QsciLexereolFillProc* = proc(style: cint): bool
+proc oneolFill*(self: gen_qscilexer_types.QsciLexer, slot: QsciLexereolFillProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexereolFillBase, style: cint): bool
-  var tmp = new Cb
+  var tmp = new QsciLexereolFillProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexer_override_virtual_eolFill(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexer_eolFill(self: ptr cQsciLexer, slot: int, style: cint): bool {.exportc: "miqt_exec_callback_QsciLexer_eolFill ".} =
-  type Cb = proc(super: QsciLexereolFillBase, style: cint): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(style: cint): auto =
-    callVirtualBase_eolFill(QsciLexer(h: self), style)
+  var nimfunc = cast[ptr QsciLexereolFillProc](cast[pointer](slot))
   let slotval1 = style
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_font(self: QsciLexer, style: cint): gen_qfont.QFont =
-
+proc QsciLexerfont*(self: gen_qscilexer_types.QsciLexer, style: cint): gen_qfont.QFont =
 
   gen_qfont.QFont(h: fQsciLexer_virtualbase_font(self.h, style))
 
-type QsciLexerfontBase* = proc(style: cint): gen_qfont.QFont
-proc onfont*(self: QsciLexer, slot: proc(super: QsciLexerfontBase, style: cint): gen_qfont.QFont) =
+type QsciLexerfontProc* = proc(style: cint): gen_qfont.QFont
+proc onfont*(self: gen_qscilexer_types.QsciLexer, slot: QsciLexerfontProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerfontBase, style: cint): gen_qfont.QFont
-  var tmp = new Cb
+  var tmp = new QsciLexerfontProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexer_override_virtual_font(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexer_font(self: ptr cQsciLexer, slot: int, style: cint): pointer {.exportc: "miqt_exec_callback_QsciLexer_font ".} =
-  type Cb = proc(super: QsciLexerfontBase, style: cint): gen_qfont.QFont
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(style: cint): auto =
-    callVirtualBase_font(QsciLexer(h: self), style)
+  var nimfunc = cast[ptr QsciLexerfontProc](cast[pointer](slot))
   let slotval1 = style
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_indentationGuideView(self: QsciLexer, ): cint =
-
+proc QsciLexerindentationGuideView*(self: gen_qscilexer_types.QsciLexer, ): cint =
 
   fQsciLexer_virtualbase_indentationGuideView(self.h)
 
-type QsciLexerindentationGuideViewBase* = proc(): cint
-proc onindentationGuideView*(self: QsciLexer, slot: proc(super: QsciLexerindentationGuideViewBase): cint) =
+type QsciLexerindentationGuideViewProc* = proc(): cint
+proc onindentationGuideView*(self: gen_qscilexer_types.QsciLexer, slot: QsciLexerindentationGuideViewProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerindentationGuideViewBase): cint
-  var tmp = new Cb
+  var tmp = new QsciLexerindentationGuideViewProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexer_override_virtual_indentationGuideView(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexer_indentationGuideView(self: ptr cQsciLexer, slot: int): cint {.exportc: "miqt_exec_callback_QsciLexer_indentationGuideView ".} =
-  type Cb = proc(super: QsciLexerindentationGuideViewBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_indentationGuideView(QsciLexer(h: self), )
+  var nimfunc = cast[ptr QsciLexerindentationGuideViewProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_keywords(self: QsciLexer, set: cint): cstring =
-
+proc QsciLexerkeywords*(self: gen_qscilexer_types.QsciLexer, set: cint): cstring =
 
   (fQsciLexer_virtualbase_keywords(self.h, set))
 
-type QsciLexerkeywordsBase* = proc(set: cint): cstring
-proc onkeywords*(self: QsciLexer, slot: proc(super: QsciLexerkeywordsBase, set: cint): cstring) =
+type QsciLexerkeywordsProc* = proc(set: cint): cstring
+proc onkeywords*(self: gen_qscilexer_types.QsciLexer, slot: QsciLexerkeywordsProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerkeywordsBase, set: cint): cstring
-  var tmp = new Cb
+  var tmp = new QsciLexerkeywordsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexer_override_virtual_keywords(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexer_keywords(self: ptr cQsciLexer, slot: int, set: cint): cstring {.exportc: "miqt_exec_callback_QsciLexer_keywords ".} =
-  type Cb = proc(super: QsciLexerkeywordsBase, set: cint): cstring
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(set: cint): auto =
-    callVirtualBase_keywords(QsciLexer(h: self), set)
+  var nimfunc = cast[ptr QsciLexerkeywordsProc](cast[pointer](slot))
   let slotval1 = set
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_defaultStyle(self: QsciLexer, ): cint =
-
+proc QsciLexerdefaultStyle*(self: gen_qscilexer_types.QsciLexer, ): cint =
 
   fQsciLexer_virtualbase_defaultStyle(self.h)
 
-type QsciLexerdefaultStyleBase* = proc(): cint
-proc ondefaultStyle*(self: QsciLexer, slot: proc(super: QsciLexerdefaultStyleBase): cint) =
+type QsciLexerdefaultStyleProc* = proc(): cint
+proc ondefaultStyle*(self: gen_qscilexer_types.QsciLexer, slot: QsciLexerdefaultStyleProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerdefaultStyleBase): cint
-  var tmp = new Cb
+  var tmp = new QsciLexerdefaultStyleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexer_override_virtual_defaultStyle(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexer_defaultStyle(self: ptr cQsciLexer, slot: int): cint {.exportc: "miqt_exec_callback_QsciLexer_defaultStyle ".} =
-  type Cb = proc(super: QsciLexerdefaultStyleBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_defaultStyle(QsciLexer(h: self), )
+  var nimfunc = cast[ptr QsciLexerdefaultStyleProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-type QsciLexerdescriptionBase* = proc(style: cint): string
-proc ondescription*(self: QsciLexer, slot: proc(style: cint): string) =
+type QsciLexerdescriptionProc* = proc(style: cint): string
+proc ondescription*(self: gen_qscilexer_types.QsciLexer, slot: QsciLexerdescriptionProc) =
   # TODO check subclass
-  type Cb = proc(style: cint): string
-  var tmp = new Cb
+  var tmp = new QsciLexerdescriptionProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexer_override_virtual_description(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexer_description(self: ptr cQsciLexer, slot: int, style: cint): struct_miqt_string {.exportc: "miqt_exec_callback_QsciLexer_description ".} =
-  type Cb = proc(style: cint): string
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QsciLexerdescriptionProc](cast[pointer](slot))
   let slotval1 = style
 
 
   let virtualReturn = nimfunc[](slotval1 )
 
   struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
-proc callVirtualBase_paper(self: QsciLexer, style: cint): gen_qcolor.QColor =
-
+proc QsciLexerpaper*(self: gen_qscilexer_types.QsciLexer, style: cint): gen_qcolor.QColor =
 
   gen_qcolor.QColor(h: fQsciLexer_virtualbase_paper(self.h, style))
 
-type QsciLexerpaperBase* = proc(style: cint): gen_qcolor.QColor
-proc onpaper*(self: QsciLexer, slot: proc(super: QsciLexerpaperBase, style: cint): gen_qcolor.QColor) =
+type QsciLexerpaperProc* = proc(style: cint): gen_qcolor.QColor
+proc onpaper*(self: gen_qscilexer_types.QsciLexer, slot: QsciLexerpaperProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerpaperBase, style: cint): gen_qcolor.QColor
-  var tmp = new Cb
+  var tmp = new QsciLexerpaperProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexer_override_virtual_paper(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexer_paper(self: ptr cQsciLexer, slot: int, style: cint): pointer {.exportc: "miqt_exec_callback_QsciLexer_paper ".} =
-  type Cb = proc(super: QsciLexerpaperBase, style: cint): gen_qcolor.QColor
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(style: cint): auto =
-    callVirtualBase_paper(QsciLexer(h: self), style)
+  var nimfunc = cast[ptr QsciLexerpaperProc](cast[pointer](slot))
   let slotval1 = style
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_defaultColorWithStyle(self: QsciLexer, style: cint): gen_qcolor.QColor =
-
+proc QsciLexerdefaultColorWithStyle*(self: gen_qscilexer_types.QsciLexer, style: cint): gen_qcolor.QColor =
 
   gen_qcolor.QColor(h: fQsciLexer_virtualbase_defaultColorWithStyle(self.h, style))
 
-type QsciLexerdefaultColorWithStyleBase* = proc(style: cint): gen_qcolor.QColor
-proc ondefaultColorWithStyle*(self: QsciLexer, slot: proc(super: QsciLexerdefaultColorWithStyleBase, style: cint): gen_qcolor.QColor) =
+type QsciLexerdefaultColorWithStyleProc* = proc(style: cint): gen_qcolor.QColor
+proc ondefaultColorWithStyle*(self: gen_qscilexer_types.QsciLexer, slot: QsciLexerdefaultColorWithStyleProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerdefaultColorWithStyleBase, style: cint): gen_qcolor.QColor
-  var tmp = new Cb
+  var tmp = new QsciLexerdefaultColorWithStyleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexer_override_virtual_defaultColorWithStyle(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexer_defaultColorWithStyle(self: ptr cQsciLexer, slot: int, style: cint): pointer {.exportc: "miqt_exec_callback_QsciLexer_defaultColorWithStyle ".} =
-  type Cb = proc(super: QsciLexerdefaultColorWithStyleBase, style: cint): gen_qcolor.QColor
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(style: cint): auto =
-    callVirtualBase_defaultColorWithStyle(QsciLexer(h: self), style)
+  var nimfunc = cast[ptr QsciLexerdefaultColorWithStyleProc](cast[pointer](slot))
   let slotval1 = style
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_defaultEolFill(self: QsciLexer, style: cint): bool =
-
+proc QsciLexerdefaultEolFill*(self: gen_qscilexer_types.QsciLexer, style: cint): bool =
 
   fQsciLexer_virtualbase_defaultEolFill(self.h, style)
 
-type QsciLexerdefaultEolFillBase* = proc(style: cint): bool
-proc ondefaultEolFill*(self: QsciLexer, slot: proc(super: QsciLexerdefaultEolFillBase, style: cint): bool) =
+type QsciLexerdefaultEolFillProc* = proc(style: cint): bool
+proc ondefaultEolFill*(self: gen_qscilexer_types.QsciLexer, slot: QsciLexerdefaultEolFillProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerdefaultEolFillBase, style: cint): bool
-  var tmp = new Cb
+  var tmp = new QsciLexerdefaultEolFillProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexer_override_virtual_defaultEolFill(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexer_defaultEolFill(self: ptr cQsciLexer, slot: int, style: cint): bool {.exportc: "miqt_exec_callback_QsciLexer_defaultEolFill ".} =
-  type Cb = proc(super: QsciLexerdefaultEolFillBase, style: cint): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(style: cint): auto =
-    callVirtualBase_defaultEolFill(QsciLexer(h: self), style)
+  var nimfunc = cast[ptr QsciLexerdefaultEolFillProc](cast[pointer](slot))
   let slotval1 = style
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_defaultFontWithStyle(self: QsciLexer, style: cint): gen_qfont.QFont =
-
+proc QsciLexerdefaultFontWithStyle*(self: gen_qscilexer_types.QsciLexer, style: cint): gen_qfont.QFont =
 
   gen_qfont.QFont(h: fQsciLexer_virtualbase_defaultFontWithStyle(self.h, style))
 
-type QsciLexerdefaultFontWithStyleBase* = proc(style: cint): gen_qfont.QFont
-proc ondefaultFontWithStyle*(self: QsciLexer, slot: proc(super: QsciLexerdefaultFontWithStyleBase, style: cint): gen_qfont.QFont) =
+type QsciLexerdefaultFontWithStyleProc* = proc(style: cint): gen_qfont.QFont
+proc ondefaultFontWithStyle*(self: gen_qscilexer_types.QsciLexer, slot: QsciLexerdefaultFontWithStyleProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerdefaultFontWithStyleBase, style: cint): gen_qfont.QFont
-  var tmp = new Cb
+  var tmp = new QsciLexerdefaultFontWithStyleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexer_override_virtual_defaultFontWithStyle(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexer_defaultFontWithStyle(self: ptr cQsciLexer, slot: int, style: cint): pointer {.exportc: "miqt_exec_callback_QsciLexer_defaultFontWithStyle ".} =
-  type Cb = proc(super: QsciLexerdefaultFontWithStyleBase, style: cint): gen_qfont.QFont
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(style: cint): auto =
-    callVirtualBase_defaultFontWithStyle(QsciLexer(h: self), style)
+  var nimfunc = cast[ptr QsciLexerdefaultFontWithStyleProc](cast[pointer](slot))
   let slotval1 = style
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_defaultPaperWithStyle(self: QsciLexer, style: cint): gen_qcolor.QColor =
-
+proc QsciLexerdefaultPaperWithStyle*(self: gen_qscilexer_types.QsciLexer, style: cint): gen_qcolor.QColor =
 
   gen_qcolor.QColor(h: fQsciLexer_virtualbase_defaultPaperWithStyle(self.h, style))
 
-type QsciLexerdefaultPaperWithStyleBase* = proc(style: cint): gen_qcolor.QColor
-proc ondefaultPaperWithStyle*(self: QsciLexer, slot: proc(super: QsciLexerdefaultPaperWithStyleBase, style: cint): gen_qcolor.QColor) =
+type QsciLexerdefaultPaperWithStyleProc* = proc(style: cint): gen_qcolor.QColor
+proc ondefaultPaperWithStyle*(self: gen_qscilexer_types.QsciLexer, slot: QsciLexerdefaultPaperWithStyleProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerdefaultPaperWithStyleBase, style: cint): gen_qcolor.QColor
-  var tmp = new Cb
+  var tmp = new QsciLexerdefaultPaperWithStyleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexer_override_virtual_defaultPaperWithStyle(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexer_defaultPaperWithStyle(self: ptr cQsciLexer, slot: int, style: cint): pointer {.exportc: "miqt_exec_callback_QsciLexer_defaultPaperWithStyle ".} =
-  type Cb = proc(super: QsciLexerdefaultPaperWithStyleBase, style: cint): gen_qcolor.QColor
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(style: cint): auto =
-    callVirtualBase_defaultPaperWithStyle(QsciLexer(h: self), style)
+  var nimfunc = cast[ptr QsciLexerdefaultPaperWithStyleProc](cast[pointer](slot))
   let slotval1 = style
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_setEditor(self: QsciLexer, editor: gen_qsciscintilla.QsciScintilla): void =
-
+proc QsciLexersetEditor*(self: gen_qscilexer_types.QsciLexer, editor: gen_qsciscintilla.QsciScintilla): void =
 
   fQsciLexer_virtualbase_setEditor(self.h, editor.h)
 
-type QsciLexersetEditorBase* = proc(editor: gen_qsciscintilla.QsciScintilla): void
-proc onsetEditor*(self: QsciLexer, slot: proc(super: QsciLexersetEditorBase, editor: gen_qsciscintilla.QsciScintilla): void) =
+type QsciLexersetEditorProc* = proc(editor: gen_qsciscintilla.QsciScintilla): void
+proc onsetEditor*(self: gen_qscilexer_types.QsciLexer, slot: QsciLexersetEditorProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexersetEditorBase, editor: gen_qsciscintilla.QsciScintilla): void
-  var tmp = new Cb
+  var tmp = new QsciLexersetEditorProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexer_override_virtual_setEditor(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexer_setEditor(self: ptr cQsciLexer, slot: int, editor: pointer): void {.exportc: "miqt_exec_callback_QsciLexer_setEditor ".} =
-  type Cb = proc(super: QsciLexersetEditorBase, editor: gen_qsciscintilla.QsciScintilla): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(editor: gen_qsciscintilla.QsciScintilla): auto =
-    callVirtualBase_setEditor(QsciLexer(h: self), editor)
+  var nimfunc = cast[ptr QsciLexersetEditorProc](cast[pointer](slot))
   let slotval1 = gen_qsciscintilla.QsciScintilla(h: editor)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_refreshProperties(self: QsciLexer, ): void =
-
+  nimfunc[](slotval1)
+proc QsciLexerrefreshProperties*(self: gen_qscilexer_types.QsciLexer, ): void =
 
   fQsciLexer_virtualbase_refreshProperties(self.h)
 
-type QsciLexerrefreshPropertiesBase* = proc(): void
-proc onrefreshProperties*(self: QsciLexer, slot: proc(super: QsciLexerrefreshPropertiesBase): void) =
+type QsciLexerrefreshPropertiesProc* = proc(): void
+proc onrefreshProperties*(self: gen_qscilexer_types.QsciLexer, slot: QsciLexerrefreshPropertiesProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerrefreshPropertiesBase): void
-  var tmp = new Cb
+  var tmp = new QsciLexerrefreshPropertiesProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexer_override_virtual_refreshProperties(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexer_refreshProperties(self: ptr cQsciLexer, slot: int): void {.exportc: "miqt_exec_callback_QsciLexer_refreshProperties ".} =
-  type Cb = proc(super: QsciLexerrefreshPropertiesBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_refreshProperties(QsciLexer(h: self), )
+  var nimfunc = cast[ptr QsciLexerrefreshPropertiesProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_styleBitsNeeded(self: QsciLexer, ): cint =
-
+  nimfunc[]()
+proc QsciLexerstyleBitsNeeded*(self: gen_qscilexer_types.QsciLexer, ): cint =
 
   fQsciLexer_virtualbase_styleBitsNeeded(self.h)
 
-type QsciLexerstyleBitsNeededBase* = proc(): cint
-proc onstyleBitsNeeded*(self: QsciLexer, slot: proc(super: QsciLexerstyleBitsNeededBase): cint) =
+type QsciLexerstyleBitsNeededProc* = proc(): cint
+proc onstyleBitsNeeded*(self: gen_qscilexer_types.QsciLexer, slot: QsciLexerstyleBitsNeededProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerstyleBitsNeededBase): cint
-  var tmp = new Cb
+  var tmp = new QsciLexerstyleBitsNeededProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexer_override_virtual_styleBitsNeeded(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexer_styleBitsNeeded(self: ptr cQsciLexer, slot: int): cint {.exportc: "miqt_exec_callback_QsciLexer_styleBitsNeeded ".} =
-  type Cb = proc(super: QsciLexerstyleBitsNeededBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_styleBitsNeeded(QsciLexer(h: self), )
+  var nimfunc = cast[ptr QsciLexerstyleBitsNeededProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_wordCharacters(self: QsciLexer, ): cstring =
-
+proc QsciLexerwordCharacters*(self: gen_qscilexer_types.QsciLexer, ): cstring =
 
   (fQsciLexer_virtualbase_wordCharacters(self.h))
 
-type QsciLexerwordCharactersBase* = proc(): cstring
-proc onwordCharacters*(self: QsciLexer, slot: proc(super: QsciLexerwordCharactersBase): cstring) =
+type QsciLexerwordCharactersProc* = proc(): cstring
+proc onwordCharacters*(self: gen_qscilexer_types.QsciLexer, slot: QsciLexerwordCharactersProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerwordCharactersBase): cstring
-  var tmp = new Cb
+  var tmp = new QsciLexerwordCharactersProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexer_override_virtual_wordCharacters(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexer_wordCharacters(self: ptr cQsciLexer, slot: int): cstring {.exportc: "miqt_exec_callback_QsciLexer_wordCharacters ".} =
-  type Cb = proc(super: QsciLexerwordCharactersBase): cstring
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_wordCharacters(QsciLexer(h: self), )
+  var nimfunc = cast[ptr QsciLexerwordCharactersProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setAutoIndentStyle(self: QsciLexer, autoindentstyle: cint): void =
-
+proc QsciLexersetAutoIndentStyle*(self: gen_qscilexer_types.QsciLexer, autoindentstyle: cint): void =
 
   fQsciLexer_virtualbase_setAutoIndentStyle(self.h, autoindentstyle)
 
-type QsciLexersetAutoIndentStyleBase* = proc(autoindentstyle: cint): void
-proc onsetAutoIndentStyle*(self: QsciLexer, slot: proc(super: QsciLexersetAutoIndentStyleBase, autoindentstyle: cint): void) =
+type QsciLexersetAutoIndentStyleProc* = proc(autoindentstyle: cint): void
+proc onsetAutoIndentStyle*(self: gen_qscilexer_types.QsciLexer, slot: QsciLexersetAutoIndentStyleProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexersetAutoIndentStyleBase, autoindentstyle: cint): void
-  var tmp = new Cb
+  var tmp = new QsciLexersetAutoIndentStyleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexer_override_virtual_setAutoIndentStyle(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexer_setAutoIndentStyle(self: ptr cQsciLexer, slot: int, autoindentstyle: cint): void {.exportc: "miqt_exec_callback_QsciLexer_setAutoIndentStyle ".} =
-  type Cb = proc(super: QsciLexersetAutoIndentStyleBase, autoindentstyle: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(autoindentstyle: cint): auto =
-    callVirtualBase_setAutoIndentStyle(QsciLexer(h: self), autoindentstyle)
+  var nimfunc = cast[ptr QsciLexersetAutoIndentStyleProc](cast[pointer](slot))
   let slotval1 = autoindentstyle
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_setColor(self: QsciLexer, c: gen_qcolor.QColor, style: cint): void =
-
+  nimfunc[](slotval1)
+proc QsciLexersetColor*(self: gen_qscilexer_types.QsciLexer, c: gen_qcolor.QColor, style: cint): void =
 
   fQsciLexer_virtualbase_setColor(self.h, c.h, style)
 
-type QsciLexersetColorBase* = proc(c: gen_qcolor.QColor, style: cint): void
-proc onsetColor*(self: QsciLexer, slot: proc(super: QsciLexersetColorBase, c: gen_qcolor.QColor, style: cint): void) =
+type QsciLexersetColorProc* = proc(c: gen_qcolor.QColor, style: cint): void
+proc onsetColor*(self: gen_qscilexer_types.QsciLexer, slot: QsciLexersetColorProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexersetColorBase, c: gen_qcolor.QColor, style: cint): void
-  var tmp = new Cb
+  var tmp = new QsciLexersetColorProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexer_override_virtual_setColor(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexer_setColor(self: ptr cQsciLexer, slot: int, c: pointer, style: cint): void {.exportc: "miqt_exec_callback_QsciLexer_setColor ".} =
-  type Cb = proc(super: QsciLexersetColorBase, c: gen_qcolor.QColor, style: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(c: gen_qcolor.QColor, style: cint): auto =
-    callVirtualBase_setColor(QsciLexer(h: self), c, style)
+  var nimfunc = cast[ptr QsciLexersetColorProc](cast[pointer](slot))
   let slotval1 = gen_qcolor.QColor(h: c)
 
   let slotval2 = style
 
 
-  nimfunc[](superCall, slotval1, slotval2)
-proc callVirtualBase_setEolFill(self: QsciLexer, eoffill: bool, style: cint): void =
-
+  nimfunc[](slotval1, slotval2)
+proc QsciLexersetEolFill*(self: gen_qscilexer_types.QsciLexer, eoffill: bool, style: cint): void =
 
   fQsciLexer_virtualbase_setEolFill(self.h, eoffill, style)
 
-type QsciLexersetEolFillBase* = proc(eoffill: bool, style: cint): void
-proc onsetEolFill*(self: QsciLexer, slot: proc(super: QsciLexersetEolFillBase, eoffill: bool, style: cint): void) =
+type QsciLexersetEolFillProc* = proc(eoffill: bool, style: cint): void
+proc onsetEolFill*(self: gen_qscilexer_types.QsciLexer, slot: QsciLexersetEolFillProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexersetEolFillBase, eoffill: bool, style: cint): void
-  var tmp = new Cb
+  var tmp = new QsciLexersetEolFillProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexer_override_virtual_setEolFill(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexer_setEolFill(self: ptr cQsciLexer, slot: int, eoffill: bool, style: cint): void {.exportc: "miqt_exec_callback_QsciLexer_setEolFill ".} =
-  type Cb = proc(super: QsciLexersetEolFillBase, eoffill: bool, style: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(eoffill: bool, style: cint): auto =
-    callVirtualBase_setEolFill(QsciLexer(h: self), eoffill, style)
+  var nimfunc = cast[ptr QsciLexersetEolFillProc](cast[pointer](slot))
   let slotval1 = eoffill
 
   let slotval2 = style
 
 
-  nimfunc[](superCall, slotval1, slotval2)
-proc callVirtualBase_setFont(self: QsciLexer, f: gen_qfont.QFont, style: cint): void =
-
+  nimfunc[](slotval1, slotval2)
+proc QsciLexersetFont*(self: gen_qscilexer_types.QsciLexer, f: gen_qfont.QFont, style: cint): void =
 
   fQsciLexer_virtualbase_setFont(self.h, f.h, style)
 
-type QsciLexersetFontBase* = proc(f: gen_qfont.QFont, style: cint): void
-proc onsetFont*(self: QsciLexer, slot: proc(super: QsciLexersetFontBase, f: gen_qfont.QFont, style: cint): void) =
+type QsciLexersetFontProc* = proc(f: gen_qfont.QFont, style: cint): void
+proc onsetFont*(self: gen_qscilexer_types.QsciLexer, slot: QsciLexersetFontProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexersetFontBase, f: gen_qfont.QFont, style: cint): void
-  var tmp = new Cb
+  var tmp = new QsciLexersetFontProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexer_override_virtual_setFont(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexer_setFont(self: ptr cQsciLexer, slot: int, f: pointer, style: cint): void {.exportc: "miqt_exec_callback_QsciLexer_setFont ".} =
-  type Cb = proc(super: QsciLexersetFontBase, f: gen_qfont.QFont, style: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(f: gen_qfont.QFont, style: cint): auto =
-    callVirtualBase_setFont(QsciLexer(h: self), f, style)
+  var nimfunc = cast[ptr QsciLexersetFontProc](cast[pointer](slot))
   let slotval1 = gen_qfont.QFont(h: f)
 
   let slotval2 = style
 
 
-  nimfunc[](superCall, slotval1, slotval2)
-proc callVirtualBase_setPaper(self: QsciLexer, c: gen_qcolor.QColor, style: cint): void =
-
+  nimfunc[](slotval1, slotval2)
+proc QsciLexersetPaper*(self: gen_qscilexer_types.QsciLexer, c: gen_qcolor.QColor, style: cint): void =
 
   fQsciLexer_virtualbase_setPaper(self.h, c.h, style)
 
-type QsciLexersetPaperBase* = proc(c: gen_qcolor.QColor, style: cint): void
-proc onsetPaper*(self: QsciLexer, slot: proc(super: QsciLexersetPaperBase, c: gen_qcolor.QColor, style: cint): void) =
+type QsciLexersetPaperProc* = proc(c: gen_qcolor.QColor, style: cint): void
+proc onsetPaper*(self: gen_qscilexer_types.QsciLexer, slot: QsciLexersetPaperProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexersetPaperBase, c: gen_qcolor.QColor, style: cint): void
-  var tmp = new Cb
+  var tmp = new QsciLexersetPaperProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexer_override_virtual_setPaper(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexer_setPaper(self: ptr cQsciLexer, slot: int, c: pointer, style: cint): void {.exportc: "miqt_exec_callback_QsciLexer_setPaper ".} =
-  type Cb = proc(super: QsciLexersetPaperBase, c: gen_qcolor.QColor, style: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(c: gen_qcolor.QColor, style: cint): auto =
-    callVirtualBase_setPaper(QsciLexer(h: self), c, style)
+  var nimfunc = cast[ptr QsciLexersetPaperProc](cast[pointer](slot))
   let slotval1 = gen_qcolor.QColor(h: c)
 
   let slotval2 = style
 
 
-  nimfunc[](superCall, slotval1, slotval2)
-proc callVirtualBase_readProperties(self: QsciLexer, qs: gen_qsettings.QSettings, prefix: string): bool =
-
+  nimfunc[](slotval1, slotval2)
+proc QsciLexerreadProperties*(self: gen_qscilexer_types.QsciLexer, qs: gen_qsettings.QSettings, prefix: string): bool =
 
   fQsciLexer_virtualbase_readProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
-type QsciLexerreadPropertiesBase* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
-proc onreadProperties*(self: QsciLexer, slot: proc(super: QsciLexerreadPropertiesBase, qs: gen_qsettings.QSettings, prefix: string): bool) =
+type QsciLexerreadPropertiesProc* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
+proc onreadProperties*(self: gen_qscilexer_types.QsciLexer, slot: QsciLexerreadPropertiesProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerreadPropertiesBase, qs: gen_qsettings.QSettings, prefix: string): bool
-  var tmp = new Cb
+  var tmp = new QsciLexerreadPropertiesProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexer_override_virtual_readProperties(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexer_readProperties(self: ptr cQsciLexer, slot: int, qs: pointer, prefix: struct_miqt_string): bool {.exportc: "miqt_exec_callback_QsciLexer_readProperties ".} =
-  type Cb = proc(super: QsciLexerreadPropertiesBase, qs: gen_qsettings.QSettings, prefix: string): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(qs: gen_qsettings.QSettings, prefix: string): auto =
-    callVirtualBase_readProperties(QsciLexer(h: self), qs, prefix)
+  var nimfunc = cast[ptr QsciLexerreadPropertiesProc](cast[pointer](slot))
   let slotval1 = gen_qsettings.QSettings(h: qs)
 
   let vprefix_ms = prefix
@@ -1420,28 +1246,23 @@ proc miqt_exec_callback_QsciLexer_readProperties(self: ptr cQsciLexer, slot: int
   let slotval2 = vprefixx_ret
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_writeProperties(self: QsciLexer, qs: gen_qsettings.QSettings, prefix: string): bool =
-
+proc QsciLexerwriteProperties*(self: gen_qscilexer_types.QsciLexer, qs: gen_qsettings.QSettings, prefix: string): bool =
 
   fQsciLexer_virtualbase_writeProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
-type QsciLexerwritePropertiesBase* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
-proc onwriteProperties*(self: QsciLexer, slot: proc(super: QsciLexerwritePropertiesBase, qs: gen_qsettings.QSettings, prefix: string): bool) =
+type QsciLexerwritePropertiesProc* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
+proc onwriteProperties*(self: gen_qscilexer_types.QsciLexer, slot: QsciLexerwritePropertiesProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerwritePropertiesBase, qs: gen_qsettings.QSettings, prefix: string): bool
-  var tmp = new Cb
+  var tmp = new QsciLexerwritePropertiesProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexer_override_virtual_writeProperties(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexer_writeProperties(self: ptr cQsciLexer, slot: int, qs: pointer, prefix: struct_miqt_string): bool {.exportc: "miqt_exec_callback_QsciLexer_writeProperties ".} =
-  type Cb = proc(super: QsciLexerwritePropertiesBase, qs: gen_qsettings.QSettings, prefix: string): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(qs: gen_qsettings.QSettings, prefix: string): auto =
-    callVirtualBase_writeProperties(QsciLexer(h: self), qs, prefix)
+  var nimfunc = cast[ptr QsciLexerwritePropertiesProc](cast[pointer](slot))
   let slotval1 = gen_qsettings.QSettings(h: qs)
 
   let vprefix_ms = prefix
@@ -1450,177 +1271,142 @@ proc miqt_exec_callback_QsciLexer_writeProperties(self: ptr cQsciLexer, slot: in
   let slotval2 = vprefixx_ret
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_event(self: QsciLexer, event: gen_qcoreevent.QEvent): bool =
-
+proc QsciLexerevent*(self: gen_qscilexer_types.QsciLexer, event: gen_qcoreevent.QEvent): bool =
 
   fQsciLexer_virtualbase_event(self.h, event.h)
 
-type QsciLexereventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QsciLexer, slot: proc(super: QsciLexereventBase, event: gen_qcoreevent.QEvent): bool) =
+type QsciLexereventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qscilexer_types.QsciLexer, slot: QsciLexereventProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexereventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QsciLexereventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexer_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexer_event(self: ptr cQsciLexer, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QsciLexer_event ".} =
-  type Cb = proc(super: QsciLexereventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QsciLexer(h: self), event)
+  var nimfunc = cast[ptr QsciLexereventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QsciLexer, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QsciLexereventFilter*(self: gen_qscilexer_types.QsciLexer, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQsciLexer_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QsciLexereventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QsciLexer, slot: proc(super: QsciLexereventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QsciLexereventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qscilexer_types.QsciLexer, slot: QsciLexereventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexereventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QsciLexereventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexer_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexer_eventFilter(self: ptr cQsciLexer, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QsciLexer_eventFilter ".} =
-  type Cb = proc(super: QsciLexereventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QsciLexer(h: self), watched, event)
+  var nimfunc = cast[ptr QsciLexereventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QsciLexer, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QsciLexertimerEvent*(self: gen_qscilexer_types.QsciLexer, event: gen_qcoreevent.QTimerEvent): void =
 
   fQsciLexer_virtualbase_timerEvent(self.h, event.h)
 
-type QsciLexertimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QsciLexer, slot: proc(super: QsciLexertimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QsciLexertimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qscilexer_types.QsciLexer, slot: QsciLexertimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexertimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QsciLexertimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexer_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexer_timerEvent(self: ptr cQsciLexer, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QsciLexer_timerEvent ".} =
-  type Cb = proc(super: QsciLexertimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QsciLexer(h: self), event)
+  var nimfunc = cast[ptr QsciLexertimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QsciLexer, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QsciLexerchildEvent*(self: gen_qscilexer_types.QsciLexer, event: gen_qcoreevent.QChildEvent): void =
 
   fQsciLexer_virtualbase_childEvent(self.h, event.h)
 
-type QsciLexerchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QsciLexer, slot: proc(super: QsciLexerchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QsciLexerchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qscilexer_types.QsciLexer, slot: QsciLexerchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QsciLexerchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexer_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexer_childEvent(self: ptr cQsciLexer, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QsciLexer_childEvent ".} =
-  type Cb = proc(super: QsciLexerchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QsciLexer(h: self), event)
+  var nimfunc = cast[ptr QsciLexerchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QsciLexer, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QsciLexercustomEvent*(self: gen_qscilexer_types.QsciLexer, event: gen_qcoreevent.QEvent): void =
 
   fQsciLexer_virtualbase_customEvent(self.h, event.h)
 
-type QsciLexercustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QsciLexer, slot: proc(super: QsciLexercustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QsciLexercustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qscilexer_types.QsciLexer, slot: QsciLexercustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexercustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QsciLexercustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexer_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexer_customEvent(self: ptr cQsciLexer, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QsciLexer_customEvent ".} =
-  type Cb = proc(super: QsciLexercustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QsciLexer(h: self), event)
+  var nimfunc = cast[ptr QsciLexercustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QsciLexer, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QsciLexerconnectNotify*(self: gen_qscilexer_types.QsciLexer, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQsciLexer_virtualbase_connectNotify(self.h, signal.h)
 
-type QsciLexerconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QsciLexer, slot: proc(super: QsciLexerconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QsciLexerconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qscilexer_types.QsciLexer, slot: QsciLexerconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QsciLexerconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexer_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexer_connectNotify(self: ptr cQsciLexer, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QsciLexer_connectNotify ".} =
-  type Cb = proc(super: QsciLexerconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QsciLexer(h: self), signal)
+  var nimfunc = cast[ptr QsciLexerconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QsciLexer, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QsciLexerdisconnectNotify*(self: gen_qscilexer_types.QsciLexer, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQsciLexer_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QsciLexerdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QsciLexer, slot: proc(super: QsciLexerdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QsciLexerdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qscilexer_types.QsciLexer, slot: QsciLexerdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciLexerdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QsciLexerdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciLexer_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciLexer_disconnectNotify(self: ptr cQsciLexer, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QsciLexer_disconnectNotify ".} =
-  type Cb = proc(super: QsciLexerdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QsciLexer(h: self), signal)
+  var nimfunc = cast[ptr QsciLexerdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QsciLexer): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qscilexer_types.QsciLexer): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQsciLexer_staticMetaObject())
-proc delete*(self: QsciLexer) =
+proc delete*(self: gen_qscilexer_types.QsciLexer) =
   fcQsciLexer_delete(self.h)

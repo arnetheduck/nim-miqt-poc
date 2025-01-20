@@ -34,42 +34,36 @@ const cflags = gorge("pkg-config -cflags Qt5Quick")
 {.compile("gen_qsgnode.cpp", cflags).}
 
 
-type QSGNodeNodeType* = cint
-const
-  QSGNodeBasicNodeType* = 0
-  QSGNodeGeometryNodeType* = 1
-  QSGNodeTransformNodeType* = 2
-  QSGNodeClipNodeType* = 3
-  QSGNodeOpacityNodeType* = 4
-  QSGNodeRootNodeType* = 5
-  QSGNodeRenderNodeType* = 6
+type QSGNodeNodeTypeEnum* = distinct cint
+template BasicNodeType*(_: type QSGNodeNodeTypeEnum): untyped = 0
+template GeometryNodeType*(_: type QSGNodeNodeTypeEnum): untyped = 1
+template TransformNodeType*(_: type QSGNodeNodeTypeEnum): untyped = 2
+template ClipNodeType*(_: type QSGNodeNodeTypeEnum): untyped = 3
+template OpacityNodeType*(_: type QSGNodeNodeTypeEnum): untyped = 4
+template RootNodeType*(_: type QSGNodeNodeTypeEnum): untyped = 5
+template RenderNodeType*(_: type QSGNodeNodeTypeEnum): untyped = 6
 
 
-
-type QSGNodeFlag* = cint
-const
-  QSGNodeOwnedByParent* = 1
-  QSGNodeUsePreprocess* = 2
-  QSGNodeOwnsGeometry* = 65536
-  QSGNodeOwnsMaterial* = 131072
-  QSGNodeOwnsOpaqueMaterial* = 262144
-  QSGNodeIsVisitableNode* = 16777216
+type QSGNodeFlagEnum* = distinct cint
+template OwnedByParent*(_: type QSGNodeFlagEnum): untyped = 1
+template UsePreprocess*(_: type QSGNodeFlagEnum): untyped = 2
+template OwnsGeometry*(_: type QSGNodeFlagEnum): untyped = 65536
+template OwnsMaterial*(_: type QSGNodeFlagEnum): untyped = 131072
+template OwnsOpaqueMaterial*(_: type QSGNodeFlagEnum): untyped = 262144
+template IsVisitableNode*(_: type QSGNodeFlagEnum): untyped = 16777216
 
 
-
-type QSGNodeDirtyStateBit* = cint
-const
-  QSGNodeDirtySubtreeBlocked* = 128
-  QSGNodeDirtyMatrix* = 256
-  QSGNodeDirtyNodeAdded* = 1024
-  QSGNodeDirtyNodeRemoved* = 2048
-  QSGNodeDirtyGeometry* = 4096
-  QSGNodeDirtyMaterial* = 8192
-  QSGNodeDirtyOpacity* = 16384
-  QSGNodeDirtyForceUpdate* = 32768
-  QSGNodeDirtyUsePreprocess* = 2
-  QSGNodeDirtyPropagationMask* = 50432
-
+type QSGNodeDirtyStateBitEnum* = distinct cint
+template DirtySubtreeBlocked*(_: type QSGNodeDirtyStateBitEnum): untyped = 128
+template DirtyMatrix*(_: type QSGNodeDirtyStateBitEnum): untyped = 256
+template DirtyNodeAdded*(_: type QSGNodeDirtyStateBitEnum): untyped = 1024
+template DirtyNodeRemoved*(_: type QSGNodeDirtyStateBitEnum): untyped = 2048
+template DirtyGeometry*(_: type QSGNodeDirtyStateBitEnum): untyped = 4096
+template DirtyMaterial*(_: type QSGNodeDirtyStateBitEnum): untyped = 8192
+template DirtyOpacity*(_: type QSGNodeDirtyStateBitEnum): untyped = 16384
+template DirtyForceUpdate*(_: type QSGNodeDirtyStateBitEnum): untyped = 32768
+template DirtyUsePreprocess*(_: type QSGNodeDirtyStateBitEnum): untyped = 2
+template DirtyPropagationMask*(_: type QSGNodeDirtyStateBitEnum): untyped = 50432
 
 
 import gen_qsgnode_types
@@ -189,540 +183,480 @@ proc fcQSGOpacityNode_delete(self: pointer) {.importc: "QSGOpacityNode_delete".}
 proc fcQSGNodeVisitor_delete(self: pointer) {.importc: "QSGNodeVisitor_delete".}
 
 
-func init*(T: type QSGNode, h: ptr cQSGNode): QSGNode =
+func init*(T: type gen_qsgnode_types.QSGNode, h: ptr cQSGNode): gen_qsgnode_types.QSGNode =
   T(h: h)
-proc create*(T: type QSGNode, ): QSGNode =
+proc create*(T: type gen_qsgnode_types.QSGNode, ): gen_qsgnode_types.QSGNode =
 
-  QSGNode.init(fcQSGNode_new())
-proc parent*(self: QSGNode, ): QSGNode =
+  gen_qsgnode_types.QSGNode.init(fcQSGNode_new())
+proc parent*(self: gen_qsgnode_types.QSGNode, ): gen_qsgnode_types.QSGNode =
 
-  QSGNode(h: fcQSGNode_parent(self.h))
+  gen_qsgnode_types.QSGNode(h: fcQSGNode_parent(self.h))
 
-proc removeChildNode*(self: QSGNode, node: QSGNode): void =
+proc removeChildNode*(self: gen_qsgnode_types.QSGNode, node: gen_qsgnode_types.QSGNode): void =
 
   fcQSGNode_removeChildNode(self.h, node.h)
 
-proc removeAllChildNodes*(self: QSGNode, ): void =
+proc removeAllChildNodes*(self: gen_qsgnode_types.QSGNode, ): void =
 
   fcQSGNode_removeAllChildNodes(self.h)
 
-proc prependChildNode*(self: QSGNode, node: QSGNode): void =
+proc prependChildNode*(self: gen_qsgnode_types.QSGNode, node: gen_qsgnode_types.QSGNode): void =
 
   fcQSGNode_prependChildNode(self.h, node.h)
 
-proc appendChildNode*(self: QSGNode, node: QSGNode): void =
+proc appendChildNode*(self: gen_qsgnode_types.QSGNode, node: gen_qsgnode_types.QSGNode): void =
 
   fcQSGNode_appendChildNode(self.h, node.h)
 
-proc insertChildNodeBefore*(self: QSGNode, node: QSGNode, before: QSGNode): void =
+proc insertChildNodeBefore*(self: gen_qsgnode_types.QSGNode, node: gen_qsgnode_types.QSGNode, before: gen_qsgnode_types.QSGNode): void =
 
   fcQSGNode_insertChildNodeBefore(self.h, node.h, before.h)
 
-proc insertChildNodeAfter*(self: QSGNode, node: QSGNode, after: QSGNode): void =
+proc insertChildNodeAfter*(self: gen_qsgnode_types.QSGNode, node: gen_qsgnode_types.QSGNode, after: gen_qsgnode_types.QSGNode): void =
 
   fcQSGNode_insertChildNodeAfter(self.h, node.h, after.h)
 
-proc reparentChildNodesTo*(self: QSGNode, newParent: QSGNode): void =
+proc reparentChildNodesTo*(self: gen_qsgnode_types.QSGNode, newParent: gen_qsgnode_types.QSGNode): void =
 
   fcQSGNode_reparentChildNodesTo(self.h, newParent.h)
 
-proc childCount*(self: QSGNode, ): cint =
+proc childCount*(self: gen_qsgnode_types.QSGNode, ): cint =
 
   fcQSGNode_childCount(self.h)
 
-proc childAtIndex*(self: QSGNode, i: cint): QSGNode =
+proc childAtIndex*(self: gen_qsgnode_types.QSGNode, i: cint): gen_qsgnode_types.QSGNode =
 
-  QSGNode(h: fcQSGNode_childAtIndex(self.h, i))
+  gen_qsgnode_types.QSGNode(h: fcQSGNode_childAtIndex(self.h, i))
 
-proc firstChild*(self: QSGNode, ): QSGNode =
+proc firstChild*(self: gen_qsgnode_types.QSGNode, ): gen_qsgnode_types.QSGNode =
 
-  QSGNode(h: fcQSGNode_firstChild(self.h))
+  gen_qsgnode_types.QSGNode(h: fcQSGNode_firstChild(self.h))
 
-proc lastChild*(self: QSGNode, ): QSGNode =
+proc lastChild*(self: gen_qsgnode_types.QSGNode, ): gen_qsgnode_types.QSGNode =
 
-  QSGNode(h: fcQSGNode_lastChild(self.h))
+  gen_qsgnode_types.QSGNode(h: fcQSGNode_lastChild(self.h))
 
-proc nextSibling*(self: QSGNode, ): QSGNode =
+proc nextSibling*(self: gen_qsgnode_types.QSGNode, ): gen_qsgnode_types.QSGNode =
 
-  QSGNode(h: fcQSGNode_nextSibling(self.h))
+  gen_qsgnode_types.QSGNode(h: fcQSGNode_nextSibling(self.h))
 
-proc previousSibling*(self: QSGNode, ): QSGNode =
+proc previousSibling*(self: gen_qsgnode_types.QSGNode, ): gen_qsgnode_types.QSGNode =
 
-  QSGNode(h: fcQSGNode_previousSibling(self.h))
+  gen_qsgnode_types.QSGNode(h: fcQSGNode_previousSibling(self.h))
 
-proc typeX*(self: QSGNode, ): QSGNodeNodeType =
+proc typeX*(self: gen_qsgnode_types.QSGNode, ): cint =
 
-  QSGNodeNodeType(fcQSGNode_typeX(self.h))
+  cint(fcQSGNode_typeX(self.h))
 
-proc clearDirty*(self: QSGNode, ): void =
+proc clearDirty*(self: gen_qsgnode_types.QSGNode, ): void =
 
   fcQSGNode_clearDirty(self.h)
 
-proc markDirty*(self: QSGNode, bits: QSGNodeDirtyStateBit): void =
+proc markDirty*(self: gen_qsgnode_types.QSGNode, bits: cint): void =
 
   fcQSGNode_markDirty(self.h, cint(bits))
 
-proc dirtyState*(self: QSGNode, ): QSGNodeDirtyStateBit =
+proc dirtyState*(self: gen_qsgnode_types.QSGNode, ): cint =
 
-  QSGNodeDirtyStateBit(fcQSGNode_dirtyState(self.h))
+  cint(fcQSGNode_dirtyState(self.h))
 
-proc isSubtreeBlocked*(self: QSGNode, ): bool =
+proc isSubtreeBlocked*(self: gen_qsgnode_types.QSGNode, ): bool =
 
   fcQSGNode_isSubtreeBlocked(self.h)
 
-proc flags*(self: QSGNode, ): QSGNodeFlag =
+proc flags*(self: gen_qsgnode_types.QSGNode, ): cint =
 
-  QSGNodeFlag(fcQSGNode_flags(self.h))
+  cint(fcQSGNode_flags(self.h))
 
-proc setFlag*(self: QSGNode, param1: QSGNodeFlag): void =
+proc setFlag*(self: gen_qsgnode_types.QSGNode, param1: cint): void =
 
   fcQSGNode_setFlag(self.h, cint(param1))
 
-proc setFlags*(self: QSGNode, param1: QSGNodeFlag): void =
+proc setFlags*(self: gen_qsgnode_types.QSGNode, param1: cint): void =
 
   fcQSGNode_setFlags(self.h, cint(param1))
 
-proc preprocess*(self: QSGNode, ): void =
+proc preprocess*(self: gen_qsgnode_types.QSGNode, ): void =
 
   fcQSGNode_preprocess(self.h)
 
-proc setFlag2*(self: QSGNode, param1: QSGNodeFlag, param2: bool): void =
+proc setFlag2*(self: gen_qsgnode_types.QSGNode, param1: cint, param2: bool): void =
 
   fcQSGNode_setFlag2(self.h, cint(param1), param2)
 
-proc setFlags2*(self: QSGNode, param1: QSGNodeFlag, param2: bool): void =
+proc setFlags2*(self: gen_qsgnode_types.QSGNode, param1: cint, param2: bool): void =
 
   fcQSGNode_setFlags2(self.h, cint(param1), param2)
 
-proc callVirtualBase_isSubtreeBlocked(self: QSGNode, ): bool =
-
+proc QSGNodeisSubtreeBlocked*(self: gen_qsgnode_types.QSGNode, ): bool =
 
   fQSGNode_virtualbase_isSubtreeBlocked(self.h)
 
-type QSGNodeisSubtreeBlockedBase* = proc(): bool
-proc onisSubtreeBlocked*(self: QSGNode, slot: proc(super: QSGNodeisSubtreeBlockedBase): bool) =
+type QSGNodeisSubtreeBlockedProc* = proc(): bool
+proc onisSubtreeBlocked*(self: gen_qsgnode_types.QSGNode, slot: QSGNodeisSubtreeBlockedProc) =
   # TODO check subclass
-  type Cb = proc(super: QSGNodeisSubtreeBlockedBase): bool
-  var tmp = new Cb
+  var tmp = new QSGNodeisSubtreeBlockedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSGNode_override_virtual_isSubtreeBlocked(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSGNode_isSubtreeBlocked(self: ptr cQSGNode, slot: int): bool {.exportc: "miqt_exec_callback_QSGNode_isSubtreeBlocked ".} =
-  type Cb = proc(super: QSGNodeisSubtreeBlockedBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_isSubtreeBlocked(QSGNode(h: self), )
+  var nimfunc = cast[ptr QSGNodeisSubtreeBlockedProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_preprocess(self: QSGNode, ): void =
-
+proc QSGNodepreprocess*(self: gen_qsgnode_types.QSGNode, ): void =
 
   fQSGNode_virtualbase_preprocess(self.h)
 
-type QSGNodepreprocessBase* = proc(): void
-proc onpreprocess*(self: QSGNode, slot: proc(super: QSGNodepreprocessBase): void) =
+type QSGNodepreprocessProc* = proc(): void
+proc onpreprocess*(self: gen_qsgnode_types.QSGNode, slot: QSGNodepreprocessProc) =
   # TODO check subclass
-  type Cb = proc(super: QSGNodepreprocessBase): void
-  var tmp = new Cb
+  var tmp = new QSGNodepreprocessProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSGNode_override_virtual_preprocess(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSGNode_preprocess(self: ptr cQSGNode, slot: int): void {.exportc: "miqt_exec_callback_QSGNode_preprocess ".} =
-  type Cb = proc(super: QSGNodepreprocessBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_preprocess(QSGNode(h: self), )
+  var nimfunc = cast[ptr QSGNodepreprocessProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc delete*(self: QSGNode) =
+  nimfunc[]()
+proc delete*(self: gen_qsgnode_types.QSGNode) =
   fcQSGNode_delete(self.h)
 
-func init*(T: type QSGBasicGeometryNode, h: ptr cQSGBasicGeometryNode): QSGBasicGeometryNode =
+func init*(T: type gen_qsgnode_types.QSGBasicGeometryNode, h: ptr cQSGBasicGeometryNode): gen_qsgnode_types.QSGBasicGeometryNode =
   T(h: h)
-proc setGeometry*(self: QSGBasicGeometryNode, geometry: gen_qsggeometry.QSGGeometry): void =
+proc setGeometry*(self: gen_qsgnode_types.QSGBasicGeometryNode, geometry: gen_qsggeometry.QSGGeometry): void =
 
   fcQSGBasicGeometryNode_setGeometry(self.h, geometry.h)
 
-proc geometry*(self: QSGBasicGeometryNode, ): gen_qsggeometry.QSGGeometry =
+proc geometry*(self: gen_qsgnode_types.QSGBasicGeometryNode, ): gen_qsggeometry.QSGGeometry =
 
   gen_qsggeometry.QSGGeometry(h: fcQSGBasicGeometryNode_geometry(self.h))
 
-proc geometry2*(self: QSGBasicGeometryNode, ): gen_qsggeometry.QSGGeometry =
+proc geometry2*(self: gen_qsgnode_types.QSGBasicGeometryNode, ): gen_qsggeometry.QSGGeometry =
 
   gen_qsggeometry.QSGGeometry(h: fcQSGBasicGeometryNode_geometry2(self.h))
 
-proc matrix*(self: QSGBasicGeometryNode, ): gen_qmatrix4x4.QMatrix4x4 =
+proc matrix*(self: gen_qsgnode_types.QSGBasicGeometryNode, ): gen_qmatrix4x4.QMatrix4x4 =
 
   gen_qmatrix4x4.QMatrix4x4(h: fcQSGBasicGeometryNode_matrix(self.h))
 
-proc clipList*(self: QSGBasicGeometryNode, ): QSGClipNode =
+proc clipList*(self: gen_qsgnode_types.QSGBasicGeometryNode, ): gen_qsgnode_types.QSGClipNode =
 
-  QSGClipNode(h: fcQSGBasicGeometryNode_clipList(self.h))
+  gen_qsgnode_types.QSGClipNode(h: fcQSGBasicGeometryNode_clipList(self.h))
 
-proc setRendererMatrix*(self: QSGBasicGeometryNode, m: gen_qmatrix4x4.QMatrix4x4): void =
+proc setRendererMatrix*(self: gen_qsgnode_types.QSGBasicGeometryNode, m: gen_qmatrix4x4.QMatrix4x4): void =
 
   fcQSGBasicGeometryNode_setRendererMatrix(self.h, m.h)
 
-proc setRendererClipList*(self: QSGBasicGeometryNode, c: QSGClipNode): void =
+proc setRendererClipList*(self: gen_qsgnode_types.QSGBasicGeometryNode, c: gen_qsgnode_types.QSGClipNode): void =
 
   fcQSGBasicGeometryNode_setRendererClipList(self.h, c.h)
 
-proc delete*(self: QSGBasicGeometryNode) =
+proc delete*(self: gen_qsgnode_types.QSGBasicGeometryNode) =
   fcQSGBasicGeometryNode_delete(self.h)
 
-func init*(T: type QSGGeometryNode, h: ptr cQSGGeometryNode): QSGGeometryNode =
+func init*(T: type gen_qsgnode_types.QSGGeometryNode, h: ptr cQSGGeometryNode): gen_qsgnode_types.QSGGeometryNode =
   T(h: h)
-proc create*(T: type QSGGeometryNode, ): QSGGeometryNode =
+proc create*(T: type gen_qsgnode_types.QSGGeometryNode, ): gen_qsgnode_types.QSGGeometryNode =
 
-  QSGGeometryNode.init(fcQSGGeometryNode_new())
-proc setMaterial*(self: QSGGeometryNode, material: gen_qsgmaterial.QSGMaterial): void =
+  gen_qsgnode_types.QSGGeometryNode.init(fcQSGGeometryNode_new())
+proc setMaterial*(self: gen_qsgnode_types.QSGGeometryNode, material: gen_qsgmaterial.QSGMaterial): void =
 
   fcQSGGeometryNode_setMaterial(self.h, material.h)
 
-proc material*(self: QSGGeometryNode, ): gen_qsgmaterial.QSGMaterial =
+proc material*(self: gen_qsgnode_types.QSGGeometryNode, ): gen_qsgmaterial.QSGMaterial =
 
   gen_qsgmaterial.QSGMaterial(h: fcQSGGeometryNode_material(self.h))
 
-proc setOpaqueMaterial*(self: QSGGeometryNode, material: gen_qsgmaterial.QSGMaterial): void =
+proc setOpaqueMaterial*(self: gen_qsgnode_types.QSGGeometryNode, material: gen_qsgmaterial.QSGMaterial): void =
 
   fcQSGGeometryNode_setOpaqueMaterial(self.h, material.h)
 
-proc opaqueMaterial*(self: QSGGeometryNode, ): gen_qsgmaterial.QSGMaterial =
+proc opaqueMaterial*(self: gen_qsgnode_types.QSGGeometryNode, ): gen_qsgmaterial.QSGMaterial =
 
   gen_qsgmaterial.QSGMaterial(h: fcQSGGeometryNode_opaqueMaterial(self.h))
 
-proc activeMaterial*(self: QSGGeometryNode, ): gen_qsgmaterial.QSGMaterial =
+proc activeMaterial*(self: gen_qsgnode_types.QSGGeometryNode, ): gen_qsgmaterial.QSGMaterial =
 
   gen_qsgmaterial.QSGMaterial(h: fcQSGGeometryNode_activeMaterial(self.h))
 
-proc setRenderOrder*(self: QSGGeometryNode, order: cint): void =
+proc setRenderOrder*(self: gen_qsgnode_types.QSGGeometryNode, order: cint): void =
 
   fcQSGGeometryNode_setRenderOrder(self.h, order)
 
-proc renderOrder*(self: QSGGeometryNode, ): cint =
+proc renderOrder*(self: gen_qsgnode_types.QSGGeometryNode, ): cint =
 
   fcQSGGeometryNode_renderOrder(self.h)
 
-proc setInheritedOpacity*(self: QSGGeometryNode, opacity: float64): void =
+proc setInheritedOpacity*(self: gen_qsgnode_types.QSGGeometryNode, opacity: float64): void =
 
   fcQSGGeometryNode_setInheritedOpacity(self.h, opacity)
 
-proc inheritedOpacity*(self: QSGGeometryNode, ): float64 =
+proc inheritedOpacity*(self: gen_qsgnode_types.QSGGeometryNode, ): float64 =
 
   fcQSGGeometryNode_inheritedOpacity(self.h)
 
-proc callVirtualBase_isSubtreeBlocked(self: QSGGeometryNode, ): bool =
-
+proc QSGGeometryNodeisSubtreeBlocked*(self: gen_qsgnode_types.QSGGeometryNode, ): bool =
 
   fQSGGeometryNode_virtualbase_isSubtreeBlocked(self.h)
 
-type QSGGeometryNodeisSubtreeBlockedBase* = proc(): bool
-proc onisSubtreeBlocked*(self: QSGGeometryNode, slot: proc(super: QSGGeometryNodeisSubtreeBlockedBase): bool) =
+type QSGGeometryNodeisSubtreeBlockedProc* = proc(): bool
+proc onisSubtreeBlocked*(self: gen_qsgnode_types.QSGGeometryNode, slot: QSGGeometryNodeisSubtreeBlockedProc) =
   # TODO check subclass
-  type Cb = proc(super: QSGGeometryNodeisSubtreeBlockedBase): bool
-  var tmp = new Cb
+  var tmp = new QSGGeometryNodeisSubtreeBlockedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSGGeometryNode_override_virtual_isSubtreeBlocked(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSGGeometryNode_isSubtreeBlocked(self: ptr cQSGGeometryNode, slot: int): bool {.exportc: "miqt_exec_callback_QSGGeometryNode_isSubtreeBlocked ".} =
-  type Cb = proc(super: QSGGeometryNodeisSubtreeBlockedBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_isSubtreeBlocked(QSGGeometryNode(h: self), )
+  var nimfunc = cast[ptr QSGGeometryNodeisSubtreeBlockedProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_preprocess(self: QSGGeometryNode, ): void =
-
+proc QSGGeometryNodepreprocess*(self: gen_qsgnode_types.QSGGeometryNode, ): void =
 
   fQSGGeometryNode_virtualbase_preprocess(self.h)
 
-type QSGGeometryNodepreprocessBase* = proc(): void
-proc onpreprocess*(self: QSGGeometryNode, slot: proc(super: QSGGeometryNodepreprocessBase): void) =
+type QSGGeometryNodepreprocessProc* = proc(): void
+proc onpreprocess*(self: gen_qsgnode_types.QSGGeometryNode, slot: QSGGeometryNodepreprocessProc) =
   # TODO check subclass
-  type Cb = proc(super: QSGGeometryNodepreprocessBase): void
-  var tmp = new Cb
+  var tmp = new QSGGeometryNodepreprocessProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSGGeometryNode_override_virtual_preprocess(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSGGeometryNode_preprocess(self: ptr cQSGGeometryNode, slot: int): void {.exportc: "miqt_exec_callback_QSGGeometryNode_preprocess ".} =
-  type Cb = proc(super: QSGGeometryNodepreprocessBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_preprocess(QSGGeometryNode(h: self), )
+  var nimfunc = cast[ptr QSGGeometryNodepreprocessProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc delete*(self: QSGGeometryNode) =
+  nimfunc[]()
+proc delete*(self: gen_qsgnode_types.QSGGeometryNode) =
   fcQSGGeometryNode_delete(self.h)
 
-func init*(T: type QSGClipNode, h: ptr cQSGClipNode): QSGClipNode =
+func init*(T: type gen_qsgnode_types.QSGClipNode, h: ptr cQSGClipNode): gen_qsgnode_types.QSGClipNode =
   T(h: h)
-proc create*(T: type QSGClipNode, ): QSGClipNode =
+proc create*(T: type gen_qsgnode_types.QSGClipNode, ): gen_qsgnode_types.QSGClipNode =
 
-  QSGClipNode.init(fcQSGClipNode_new())
-proc setIsRectangular*(self: QSGClipNode, rectHint: bool): void =
+  gen_qsgnode_types.QSGClipNode.init(fcQSGClipNode_new())
+proc setIsRectangular*(self: gen_qsgnode_types.QSGClipNode, rectHint: bool): void =
 
   fcQSGClipNode_setIsRectangular(self.h, rectHint)
 
-proc isRectangular*(self: QSGClipNode, ): bool =
+proc isRectangular*(self: gen_qsgnode_types.QSGClipNode, ): bool =
 
   fcQSGClipNode_isRectangular(self.h)
 
-proc setClipRect*(self: QSGClipNode, clipRect: gen_qrect.QRectF): void =
+proc setClipRect*(self: gen_qsgnode_types.QSGClipNode, clipRect: gen_qrect.QRectF): void =
 
   fcQSGClipNode_setClipRect(self.h, clipRect.h)
 
-proc clipRect*(self: QSGClipNode, ): gen_qrect.QRectF =
+proc clipRect*(self: gen_qsgnode_types.QSGClipNode, ): gen_qrect.QRectF =
 
   gen_qrect.QRectF(h: fcQSGClipNode_clipRect(self.h))
 
-proc callVirtualBase_isSubtreeBlocked(self: QSGClipNode, ): bool =
-
+proc QSGClipNodeisSubtreeBlocked*(self: gen_qsgnode_types.QSGClipNode, ): bool =
 
   fQSGClipNode_virtualbase_isSubtreeBlocked(self.h)
 
-type QSGClipNodeisSubtreeBlockedBase* = proc(): bool
-proc onisSubtreeBlocked*(self: QSGClipNode, slot: proc(super: QSGClipNodeisSubtreeBlockedBase): bool) =
+type QSGClipNodeisSubtreeBlockedProc* = proc(): bool
+proc onisSubtreeBlocked*(self: gen_qsgnode_types.QSGClipNode, slot: QSGClipNodeisSubtreeBlockedProc) =
   # TODO check subclass
-  type Cb = proc(super: QSGClipNodeisSubtreeBlockedBase): bool
-  var tmp = new Cb
+  var tmp = new QSGClipNodeisSubtreeBlockedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSGClipNode_override_virtual_isSubtreeBlocked(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSGClipNode_isSubtreeBlocked(self: ptr cQSGClipNode, slot: int): bool {.exportc: "miqt_exec_callback_QSGClipNode_isSubtreeBlocked ".} =
-  type Cb = proc(super: QSGClipNodeisSubtreeBlockedBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_isSubtreeBlocked(QSGClipNode(h: self), )
+  var nimfunc = cast[ptr QSGClipNodeisSubtreeBlockedProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_preprocess(self: QSGClipNode, ): void =
-
+proc QSGClipNodepreprocess*(self: gen_qsgnode_types.QSGClipNode, ): void =
 
   fQSGClipNode_virtualbase_preprocess(self.h)
 
-type QSGClipNodepreprocessBase* = proc(): void
-proc onpreprocess*(self: QSGClipNode, slot: proc(super: QSGClipNodepreprocessBase): void) =
+type QSGClipNodepreprocessProc* = proc(): void
+proc onpreprocess*(self: gen_qsgnode_types.QSGClipNode, slot: QSGClipNodepreprocessProc) =
   # TODO check subclass
-  type Cb = proc(super: QSGClipNodepreprocessBase): void
-  var tmp = new Cb
+  var tmp = new QSGClipNodepreprocessProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSGClipNode_override_virtual_preprocess(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSGClipNode_preprocess(self: ptr cQSGClipNode, slot: int): void {.exportc: "miqt_exec_callback_QSGClipNode_preprocess ".} =
-  type Cb = proc(super: QSGClipNodepreprocessBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_preprocess(QSGClipNode(h: self), )
+  var nimfunc = cast[ptr QSGClipNodepreprocessProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc delete*(self: QSGClipNode) =
+  nimfunc[]()
+proc delete*(self: gen_qsgnode_types.QSGClipNode) =
   fcQSGClipNode_delete(self.h)
 
-func init*(T: type QSGTransformNode, h: ptr cQSGTransformNode): QSGTransformNode =
+func init*(T: type gen_qsgnode_types.QSGTransformNode, h: ptr cQSGTransformNode): gen_qsgnode_types.QSGTransformNode =
   T(h: h)
-proc create*(T: type QSGTransformNode, ): QSGTransformNode =
+proc create*(T: type gen_qsgnode_types.QSGTransformNode, ): gen_qsgnode_types.QSGTransformNode =
 
-  QSGTransformNode.init(fcQSGTransformNode_new())
-proc setMatrix*(self: QSGTransformNode, matrix: gen_qmatrix4x4.QMatrix4x4): void =
+  gen_qsgnode_types.QSGTransformNode.init(fcQSGTransformNode_new())
+proc setMatrix*(self: gen_qsgnode_types.QSGTransformNode, matrix: gen_qmatrix4x4.QMatrix4x4): void =
 
   fcQSGTransformNode_setMatrix(self.h, matrix.h)
 
-proc matrix*(self: QSGTransformNode, ): gen_qmatrix4x4.QMatrix4x4 =
+proc matrix*(self: gen_qsgnode_types.QSGTransformNode, ): gen_qmatrix4x4.QMatrix4x4 =
 
   gen_qmatrix4x4.QMatrix4x4(h: fcQSGTransformNode_matrix(self.h))
 
-proc setCombinedMatrix*(self: QSGTransformNode, matrix: gen_qmatrix4x4.QMatrix4x4): void =
+proc setCombinedMatrix*(self: gen_qsgnode_types.QSGTransformNode, matrix: gen_qmatrix4x4.QMatrix4x4): void =
 
   fcQSGTransformNode_setCombinedMatrix(self.h, matrix.h)
 
-proc combinedMatrix*(self: QSGTransformNode, ): gen_qmatrix4x4.QMatrix4x4 =
+proc combinedMatrix*(self: gen_qsgnode_types.QSGTransformNode, ): gen_qmatrix4x4.QMatrix4x4 =
 
   gen_qmatrix4x4.QMatrix4x4(h: fcQSGTransformNode_combinedMatrix(self.h))
 
-proc callVirtualBase_isSubtreeBlocked(self: QSGTransformNode, ): bool =
-
+proc QSGTransformNodeisSubtreeBlocked*(self: gen_qsgnode_types.QSGTransformNode, ): bool =
 
   fQSGTransformNode_virtualbase_isSubtreeBlocked(self.h)
 
-type QSGTransformNodeisSubtreeBlockedBase* = proc(): bool
-proc onisSubtreeBlocked*(self: QSGTransformNode, slot: proc(super: QSGTransformNodeisSubtreeBlockedBase): bool) =
+type QSGTransformNodeisSubtreeBlockedProc* = proc(): bool
+proc onisSubtreeBlocked*(self: gen_qsgnode_types.QSGTransformNode, slot: QSGTransformNodeisSubtreeBlockedProc) =
   # TODO check subclass
-  type Cb = proc(super: QSGTransformNodeisSubtreeBlockedBase): bool
-  var tmp = new Cb
+  var tmp = new QSGTransformNodeisSubtreeBlockedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSGTransformNode_override_virtual_isSubtreeBlocked(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSGTransformNode_isSubtreeBlocked(self: ptr cQSGTransformNode, slot: int): bool {.exportc: "miqt_exec_callback_QSGTransformNode_isSubtreeBlocked ".} =
-  type Cb = proc(super: QSGTransformNodeisSubtreeBlockedBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_isSubtreeBlocked(QSGTransformNode(h: self), )
+  var nimfunc = cast[ptr QSGTransformNodeisSubtreeBlockedProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_preprocess(self: QSGTransformNode, ): void =
-
+proc QSGTransformNodepreprocess*(self: gen_qsgnode_types.QSGTransformNode, ): void =
 
   fQSGTransformNode_virtualbase_preprocess(self.h)
 
-type QSGTransformNodepreprocessBase* = proc(): void
-proc onpreprocess*(self: QSGTransformNode, slot: proc(super: QSGTransformNodepreprocessBase): void) =
+type QSGTransformNodepreprocessProc* = proc(): void
+proc onpreprocess*(self: gen_qsgnode_types.QSGTransformNode, slot: QSGTransformNodepreprocessProc) =
   # TODO check subclass
-  type Cb = proc(super: QSGTransformNodepreprocessBase): void
-  var tmp = new Cb
+  var tmp = new QSGTransformNodepreprocessProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSGTransformNode_override_virtual_preprocess(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSGTransformNode_preprocess(self: ptr cQSGTransformNode, slot: int): void {.exportc: "miqt_exec_callback_QSGTransformNode_preprocess ".} =
-  type Cb = proc(super: QSGTransformNodepreprocessBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_preprocess(QSGTransformNode(h: self), )
+  var nimfunc = cast[ptr QSGTransformNodepreprocessProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc delete*(self: QSGTransformNode) =
+  nimfunc[]()
+proc delete*(self: gen_qsgnode_types.QSGTransformNode) =
   fcQSGTransformNode_delete(self.h)
 
-func init*(T: type QSGRootNode, h: ptr cQSGRootNode): QSGRootNode =
+func init*(T: type gen_qsgnode_types.QSGRootNode, h: ptr cQSGRootNode): gen_qsgnode_types.QSGRootNode =
   T(h: h)
-proc create*(T: type QSGRootNode, ): QSGRootNode =
+proc create*(T: type gen_qsgnode_types.QSGRootNode, ): gen_qsgnode_types.QSGRootNode =
 
-  QSGRootNode.init(fcQSGRootNode_new())
-proc callVirtualBase_isSubtreeBlocked(self: QSGRootNode, ): bool =
-
+  gen_qsgnode_types.QSGRootNode.init(fcQSGRootNode_new())
+proc QSGRootNodeisSubtreeBlocked*(self: gen_qsgnode_types.QSGRootNode, ): bool =
 
   fQSGRootNode_virtualbase_isSubtreeBlocked(self.h)
 
-type QSGRootNodeisSubtreeBlockedBase* = proc(): bool
-proc onisSubtreeBlocked*(self: QSGRootNode, slot: proc(super: QSGRootNodeisSubtreeBlockedBase): bool) =
+type QSGRootNodeisSubtreeBlockedProc* = proc(): bool
+proc onisSubtreeBlocked*(self: gen_qsgnode_types.QSGRootNode, slot: QSGRootNodeisSubtreeBlockedProc) =
   # TODO check subclass
-  type Cb = proc(super: QSGRootNodeisSubtreeBlockedBase): bool
-  var tmp = new Cb
+  var tmp = new QSGRootNodeisSubtreeBlockedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSGRootNode_override_virtual_isSubtreeBlocked(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSGRootNode_isSubtreeBlocked(self: ptr cQSGRootNode, slot: int): bool {.exportc: "miqt_exec_callback_QSGRootNode_isSubtreeBlocked ".} =
-  type Cb = proc(super: QSGRootNodeisSubtreeBlockedBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_isSubtreeBlocked(QSGRootNode(h: self), )
+  var nimfunc = cast[ptr QSGRootNodeisSubtreeBlockedProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_preprocess(self: QSGRootNode, ): void =
-
+proc QSGRootNodepreprocess*(self: gen_qsgnode_types.QSGRootNode, ): void =
 
   fQSGRootNode_virtualbase_preprocess(self.h)
 
-type QSGRootNodepreprocessBase* = proc(): void
-proc onpreprocess*(self: QSGRootNode, slot: proc(super: QSGRootNodepreprocessBase): void) =
+type QSGRootNodepreprocessProc* = proc(): void
+proc onpreprocess*(self: gen_qsgnode_types.QSGRootNode, slot: QSGRootNodepreprocessProc) =
   # TODO check subclass
-  type Cb = proc(super: QSGRootNodepreprocessBase): void
-  var tmp = new Cb
+  var tmp = new QSGRootNodepreprocessProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSGRootNode_override_virtual_preprocess(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSGRootNode_preprocess(self: ptr cQSGRootNode, slot: int): void {.exportc: "miqt_exec_callback_QSGRootNode_preprocess ".} =
-  type Cb = proc(super: QSGRootNodepreprocessBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_preprocess(QSGRootNode(h: self), )
+  var nimfunc = cast[ptr QSGRootNodepreprocessProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc delete*(self: QSGRootNode) =
+  nimfunc[]()
+proc delete*(self: gen_qsgnode_types.QSGRootNode) =
   fcQSGRootNode_delete(self.h)
 
-func init*(T: type QSGOpacityNode, h: ptr cQSGOpacityNode): QSGOpacityNode =
+func init*(T: type gen_qsgnode_types.QSGOpacityNode, h: ptr cQSGOpacityNode): gen_qsgnode_types.QSGOpacityNode =
   T(h: h)
-proc create*(T: type QSGOpacityNode, ): QSGOpacityNode =
+proc create*(T: type gen_qsgnode_types.QSGOpacityNode, ): gen_qsgnode_types.QSGOpacityNode =
 
-  QSGOpacityNode.init(fcQSGOpacityNode_new())
-proc setOpacity*(self: QSGOpacityNode, opacity: float64): void =
+  gen_qsgnode_types.QSGOpacityNode.init(fcQSGOpacityNode_new())
+proc setOpacity*(self: gen_qsgnode_types.QSGOpacityNode, opacity: float64): void =
 
   fcQSGOpacityNode_setOpacity(self.h, opacity)
 
-proc opacity*(self: QSGOpacityNode, ): float64 =
+proc opacity*(self: gen_qsgnode_types.QSGOpacityNode, ): float64 =
 
   fcQSGOpacityNode_opacity(self.h)
 
-proc setCombinedOpacity*(self: QSGOpacityNode, opacity: float64): void =
+proc setCombinedOpacity*(self: gen_qsgnode_types.QSGOpacityNode, opacity: float64): void =
 
   fcQSGOpacityNode_setCombinedOpacity(self.h, opacity)
 
-proc combinedOpacity*(self: QSGOpacityNode, ): float64 =
+proc combinedOpacity*(self: gen_qsgnode_types.QSGOpacityNode, ): float64 =
 
   fcQSGOpacityNode_combinedOpacity(self.h)
 
-proc isSubtreeBlocked*(self: QSGOpacityNode, ): bool =
+proc isSubtreeBlocked*(self: gen_qsgnode_types.QSGOpacityNode, ): bool =
 
   fcQSGOpacityNode_isSubtreeBlocked(self.h)
 
-proc callVirtualBase_isSubtreeBlocked(self: QSGOpacityNode, ): bool =
-
+proc QSGOpacityNodeisSubtreeBlocked*(self: gen_qsgnode_types.QSGOpacityNode, ): bool =
 
   fQSGOpacityNode_virtualbase_isSubtreeBlocked(self.h)
 
-type QSGOpacityNodeisSubtreeBlockedBase* = proc(): bool
-proc onisSubtreeBlocked*(self: QSGOpacityNode, slot: proc(super: QSGOpacityNodeisSubtreeBlockedBase): bool) =
+type QSGOpacityNodeisSubtreeBlockedProc* = proc(): bool
+proc onisSubtreeBlocked*(self: gen_qsgnode_types.QSGOpacityNode, slot: QSGOpacityNodeisSubtreeBlockedProc) =
   # TODO check subclass
-  type Cb = proc(super: QSGOpacityNodeisSubtreeBlockedBase): bool
-  var tmp = new Cb
+  var tmp = new QSGOpacityNodeisSubtreeBlockedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSGOpacityNode_override_virtual_isSubtreeBlocked(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSGOpacityNode_isSubtreeBlocked(self: ptr cQSGOpacityNode, slot: int): bool {.exportc: "miqt_exec_callback_QSGOpacityNode_isSubtreeBlocked ".} =
-  type Cb = proc(super: QSGOpacityNodeisSubtreeBlockedBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_isSubtreeBlocked(QSGOpacityNode(h: self), )
+  var nimfunc = cast[ptr QSGOpacityNodeisSubtreeBlockedProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_preprocess(self: QSGOpacityNode, ): void =
-
+proc QSGOpacityNodepreprocess*(self: gen_qsgnode_types.QSGOpacityNode, ): void =
 
   fQSGOpacityNode_virtualbase_preprocess(self.h)
 
-type QSGOpacityNodepreprocessBase* = proc(): void
-proc onpreprocess*(self: QSGOpacityNode, slot: proc(super: QSGOpacityNodepreprocessBase): void) =
+type QSGOpacityNodepreprocessProc* = proc(): void
+proc onpreprocess*(self: gen_qsgnode_types.QSGOpacityNode, slot: QSGOpacityNodepreprocessProc) =
   # TODO check subclass
-  type Cb = proc(super: QSGOpacityNodepreprocessBase): void
-  var tmp = new Cb
+  var tmp = new QSGOpacityNodepreprocessProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSGOpacityNode_override_virtual_preprocess(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSGOpacityNode_preprocess(self: ptr cQSGOpacityNode, slot: int): void {.exportc: "miqt_exec_callback_QSGOpacityNode_preprocess ".} =
-  type Cb = proc(super: QSGOpacityNodepreprocessBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_preprocess(QSGOpacityNode(h: self), )
+  var nimfunc = cast[ptr QSGOpacityNodepreprocessProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc delete*(self: QSGOpacityNode) =
+  nimfunc[]()
+proc delete*(self: gen_qsgnode_types.QSGOpacityNode) =
   fcQSGOpacityNode_delete(self.h)
 
-func init*(T: type QSGNodeVisitor, h: ptr cQSGNodeVisitor): QSGNodeVisitor =
+func init*(T: type gen_qsgnode_types.QSGNodeVisitor, h: ptr cQSGNodeVisitor): gen_qsgnode_types.QSGNodeVisitor =
   T(h: h)
-proc delete*(self: QSGNodeVisitor) =
+proc delete*(self: gen_qsgnode_types.QSGNodeVisitor) =
   fcQSGNodeVisitor_delete(self.h)

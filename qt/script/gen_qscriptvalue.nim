@@ -34,33 +34,27 @@ const cflags = gorge("pkg-config -cflags Qt5Script")
 {.compile("gen_qscriptvalue.cpp", cflags).}
 
 
-type QScriptValueResolveFlag* = cint
-const
-  QScriptValueResolveLocal* = 0
-  QScriptValueResolvePrototype* = 1
-  QScriptValueResolveScope* = 2
-  QScriptValueResolveFull* = 3
+type QScriptValueResolveFlagEnum* = distinct cint
+template ResolveLocal*(_: type QScriptValueResolveFlagEnum): untyped = 0
+template ResolvePrototype*(_: type QScriptValueResolveFlagEnum): untyped = 1
+template ResolveScope*(_: type QScriptValueResolveFlagEnum): untyped = 2
+template ResolveFull*(_: type QScriptValueResolveFlagEnum): untyped = 3
 
 
-
-type QScriptValuePropertyFlag* = cint
-const
-  QScriptValueReadOnly* = 1
-  QScriptValueUndeletable* = 2
-  QScriptValueSkipInEnumeration* = 4
-  QScriptValuePropertyGetter* = 8
-  QScriptValuePropertySetter* = 16
-  QScriptValueQObjectMember* = 32
-  QScriptValueKeepExistingFlags* = 2048
-  QScriptValueUserRange* = 4278190080
+type QScriptValuePropertyFlagEnum* = distinct cint
+template ReadOnly*(_: type QScriptValuePropertyFlagEnum): untyped = 1
+template Undeletable*(_: type QScriptValuePropertyFlagEnum): untyped = 2
+template SkipInEnumeration*(_: type QScriptValuePropertyFlagEnum): untyped = 4
+template PropertyGetter*(_: type QScriptValuePropertyFlagEnum): untyped = 8
+template PropertySetter*(_: type QScriptValuePropertyFlagEnum): untyped = 16
+template QObjectMember*(_: type QScriptValuePropertyFlagEnum): untyped = 32
+template KeepExistingFlags*(_: type QScriptValuePropertyFlagEnum): untyped = 2048
+template UserRange*(_: type QScriptValuePropertyFlagEnum): untyped = 4278190080
 
 
-
-type QScriptValueSpecialValue* = cint
-const
-  QScriptValueNullValue* = 0
-  QScriptValueUndefinedValue* = 1
-
+type QScriptValueSpecialValueEnum* = distinct cint
+template NullValue*(_: type QScriptValueSpecialValueEnum): untyped = 0
+template UndefinedValue*(_: type QScriptValueSpecialValueEnum): untyped = 1
 
 
 import gen_qscriptvalue_types
@@ -174,338 +168,338 @@ proc fcQScriptValue_construct1(self: pointer, args: struct_miqt_array): pointer 
 proc fcQScriptValue_delete(self: pointer) {.importc: "QScriptValue_delete".}
 
 
-func init*(T: type QScriptValue, h: ptr cQScriptValue): QScriptValue =
+func init*(T: type gen_qscriptvalue_types.QScriptValue, h: ptr cQScriptValue): gen_qscriptvalue_types.QScriptValue =
   T(h: h)
-proc create*(T: type QScriptValue, ): QScriptValue =
+proc create*(T: type gen_qscriptvalue_types.QScriptValue, ): gen_qscriptvalue_types.QScriptValue =
 
-  QScriptValue.init(fcQScriptValue_new())
-proc create*(T: type QScriptValue, other: QScriptValue): QScriptValue =
+  gen_qscriptvalue_types.QScriptValue.init(fcQScriptValue_new())
+proc create*(T: type gen_qscriptvalue_types.QScriptValue, other: gen_qscriptvalue_types.QScriptValue): gen_qscriptvalue_types.QScriptValue =
 
-  QScriptValue.init(fcQScriptValue_new2(other.h))
-proc create*(T: type QScriptValue, engine: gen_qscriptengine.QScriptEngine, val: QScriptValueSpecialValue): QScriptValue =
+  gen_qscriptvalue_types.QScriptValue.init(fcQScriptValue_new2(other.h))
+proc create*(T: type gen_qscriptvalue_types.QScriptValue, engine: gen_qscriptengine.QScriptEngine, val: cint): gen_qscriptvalue_types.QScriptValue =
 
-  QScriptValue.init(fcQScriptValue_new3(engine.h, cint(val)))
-proc create*(T: type QScriptValue, engine: gen_qscriptengine.QScriptEngine, val: bool): QScriptValue =
+  gen_qscriptvalue_types.QScriptValue.init(fcQScriptValue_new3(engine.h, cint(val)))
+proc create*(T: type gen_qscriptvalue_types.QScriptValue, engine: gen_qscriptengine.QScriptEngine, val: bool): gen_qscriptvalue_types.QScriptValue =
 
-  QScriptValue.init(fcQScriptValue_new4(engine.h, val))
-proc create2*(T: type QScriptValue, engine: gen_qscriptengine.QScriptEngine, val: cint): QScriptValue =
+  gen_qscriptvalue_types.QScriptValue.init(fcQScriptValue_new4(engine.h, val))
+proc create2*(T: type gen_qscriptvalue_types.QScriptValue, engine: gen_qscriptengine.QScriptEngine, val: cint): gen_qscriptvalue_types.QScriptValue =
 
-  QScriptValue.init(fcQScriptValue_new5(engine.h, val))
-proc create*(T: type QScriptValue, engine: gen_qscriptengine.QScriptEngine, val: cuint): QScriptValue =
+  gen_qscriptvalue_types.QScriptValue.init(fcQScriptValue_new5(engine.h, val))
+proc create*(T: type gen_qscriptvalue_types.QScriptValue, engine: gen_qscriptengine.QScriptEngine, val: cuint): gen_qscriptvalue_types.QScriptValue =
 
-  QScriptValue.init(fcQScriptValue_new6(engine.h, val))
-proc create*(T: type QScriptValue, engine: gen_qscriptengine.QScriptEngine, val: float64): QScriptValue =
+  gen_qscriptvalue_types.QScriptValue.init(fcQScriptValue_new6(engine.h, val))
+proc create*(T: type gen_qscriptvalue_types.QScriptValue, engine: gen_qscriptengine.QScriptEngine, val: float64): gen_qscriptvalue_types.QScriptValue =
 
-  QScriptValue.init(fcQScriptValue_new7(engine.h, val))
-proc create*(T: type QScriptValue, engine: gen_qscriptengine.QScriptEngine, val: string): QScriptValue =
+  gen_qscriptvalue_types.QScriptValue.init(fcQScriptValue_new7(engine.h, val))
+proc create*(T: type gen_qscriptvalue_types.QScriptValue, engine: gen_qscriptengine.QScriptEngine, val: string): gen_qscriptvalue_types.QScriptValue =
 
-  QScriptValue.init(fcQScriptValue_new8(engine.h, struct_miqt_string(data: val, len: csize_t(len(val)))))
-proc create*(T: type QScriptValue, engine: gen_qscriptengine.QScriptEngine, val: cstring): QScriptValue =
+  gen_qscriptvalue_types.QScriptValue.init(fcQScriptValue_new8(engine.h, struct_miqt_string(data: val, len: csize_t(len(val)))))
+proc create*(T: type gen_qscriptvalue_types.QScriptValue, engine: gen_qscriptengine.QScriptEngine, val: cstring): gen_qscriptvalue_types.QScriptValue =
 
-  QScriptValue.init(fcQScriptValue_new9(engine.h, val))
-proc create*(T: type QScriptValue, value: QScriptValueSpecialValue): QScriptValue =
+  gen_qscriptvalue_types.QScriptValue.init(fcQScriptValue_new9(engine.h, val))
+proc create*(T: type gen_qscriptvalue_types.QScriptValue, value: cint): gen_qscriptvalue_types.QScriptValue =
 
-  QScriptValue.init(fcQScriptValue_new10(cint(value)))
-proc create*(T: type QScriptValue, value: bool): QScriptValue =
+  gen_qscriptvalue_types.QScriptValue.init(fcQScriptValue_new10(cint(value)))
+proc create*(T: type gen_qscriptvalue_types.QScriptValue, value: bool): gen_qscriptvalue_types.QScriptValue =
 
-  QScriptValue.init(fcQScriptValue_new11(value))
-proc create2*(T: type QScriptValue, value: cint): QScriptValue =
+  gen_qscriptvalue_types.QScriptValue.init(fcQScriptValue_new11(value))
+proc create2*(T: type gen_qscriptvalue_types.QScriptValue, value: cint): gen_qscriptvalue_types.QScriptValue =
 
-  QScriptValue.init(fcQScriptValue_new12(value))
-proc create*(T: type QScriptValue, value: cuint): QScriptValue =
+  gen_qscriptvalue_types.QScriptValue.init(fcQScriptValue_new12(value))
+proc create*(T: type gen_qscriptvalue_types.QScriptValue, value: cuint): gen_qscriptvalue_types.QScriptValue =
 
-  QScriptValue.init(fcQScriptValue_new13(value))
-proc create*(T: type QScriptValue, value: float64): QScriptValue =
+  gen_qscriptvalue_types.QScriptValue.init(fcQScriptValue_new13(value))
+proc create*(T: type gen_qscriptvalue_types.QScriptValue, value: float64): gen_qscriptvalue_types.QScriptValue =
 
-  QScriptValue.init(fcQScriptValue_new14(value))
-proc create*(T: type QScriptValue, value: string): QScriptValue =
+  gen_qscriptvalue_types.QScriptValue.init(fcQScriptValue_new14(value))
+proc create*(T: type gen_qscriptvalue_types.QScriptValue, value: string): gen_qscriptvalue_types.QScriptValue =
 
-  QScriptValue.init(fcQScriptValue_new15(struct_miqt_string(data: value, len: csize_t(len(value)))))
-proc create*(T: type QScriptValue, value: cstring): QScriptValue =
+  gen_qscriptvalue_types.QScriptValue.init(fcQScriptValue_new15(struct_miqt_string(data: value, len: csize_t(len(value)))))
+proc create*(T: type gen_qscriptvalue_types.QScriptValue, value: cstring): gen_qscriptvalue_types.QScriptValue =
 
-  QScriptValue.init(fcQScriptValue_new16(value))
-proc operatorAssign*(self: QScriptValue, other: QScriptValue): void =
+  gen_qscriptvalue_types.QScriptValue.init(fcQScriptValue_new16(value))
+proc operatorAssign*(self: gen_qscriptvalue_types.QScriptValue, other: gen_qscriptvalue_types.QScriptValue): void =
 
   fcQScriptValue_operatorAssign(self.h, other.h)
 
-proc engine*(self: QScriptValue, ): gen_qscriptengine.QScriptEngine =
+proc engine*(self: gen_qscriptvalue_types.QScriptValue, ): gen_qscriptengine.QScriptEngine =
 
   gen_qscriptengine.QScriptEngine(h: fcQScriptValue_engine(self.h))
 
-proc isValid*(self: QScriptValue, ): bool =
+proc isValid*(self: gen_qscriptvalue_types.QScriptValue, ): bool =
 
   fcQScriptValue_isValid(self.h)
 
-proc isBool*(self: QScriptValue, ): bool =
+proc isBool*(self: gen_qscriptvalue_types.QScriptValue, ): bool =
 
   fcQScriptValue_isBool(self.h)
 
-proc isBoolean*(self: QScriptValue, ): bool =
+proc isBoolean*(self: gen_qscriptvalue_types.QScriptValue, ): bool =
 
   fcQScriptValue_isBoolean(self.h)
 
-proc isNumber*(self: QScriptValue, ): bool =
+proc isNumber*(self: gen_qscriptvalue_types.QScriptValue, ): bool =
 
   fcQScriptValue_isNumber(self.h)
 
-proc isFunction*(self: QScriptValue, ): bool =
+proc isFunction*(self: gen_qscriptvalue_types.QScriptValue, ): bool =
 
   fcQScriptValue_isFunction(self.h)
 
-proc isNull*(self: QScriptValue, ): bool =
+proc isNull*(self: gen_qscriptvalue_types.QScriptValue, ): bool =
 
   fcQScriptValue_isNull(self.h)
 
-proc isString*(self: QScriptValue, ): bool =
+proc isString*(self: gen_qscriptvalue_types.QScriptValue, ): bool =
 
   fcQScriptValue_isString(self.h)
 
-proc isUndefined*(self: QScriptValue, ): bool =
+proc isUndefined*(self: gen_qscriptvalue_types.QScriptValue, ): bool =
 
   fcQScriptValue_isUndefined(self.h)
 
-proc isVariant*(self: QScriptValue, ): bool =
+proc isVariant*(self: gen_qscriptvalue_types.QScriptValue, ): bool =
 
   fcQScriptValue_isVariant(self.h)
 
-proc isQObject*(self: QScriptValue, ): bool =
+proc isQObject*(self: gen_qscriptvalue_types.QScriptValue, ): bool =
 
   fcQScriptValue_isQObject(self.h)
 
-proc isQMetaObject*(self: QScriptValue, ): bool =
+proc isQMetaObject*(self: gen_qscriptvalue_types.QScriptValue, ): bool =
 
   fcQScriptValue_isQMetaObject(self.h)
 
-proc isObject*(self: QScriptValue, ): bool =
+proc isObject*(self: gen_qscriptvalue_types.QScriptValue, ): bool =
 
   fcQScriptValue_isObject(self.h)
 
-proc isDate*(self: QScriptValue, ): bool =
+proc isDate*(self: gen_qscriptvalue_types.QScriptValue, ): bool =
 
   fcQScriptValue_isDate(self.h)
 
-proc isRegExp*(self: QScriptValue, ): bool =
+proc isRegExp*(self: gen_qscriptvalue_types.QScriptValue, ): bool =
 
   fcQScriptValue_isRegExp(self.h)
 
-proc isArray*(self: QScriptValue, ): bool =
+proc isArray*(self: gen_qscriptvalue_types.QScriptValue, ): bool =
 
   fcQScriptValue_isArray(self.h)
 
-proc isError*(self: QScriptValue, ): bool =
+proc isError*(self: gen_qscriptvalue_types.QScriptValue, ): bool =
 
   fcQScriptValue_isError(self.h)
 
-proc toString*(self: QScriptValue, ): string =
+proc toString*(self: gen_qscriptvalue_types.QScriptValue, ): string =
 
   let v_ms = fcQScriptValue_toString(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc toNumber*(self: QScriptValue, ): float64 =
+proc toNumber*(self: gen_qscriptvalue_types.QScriptValue, ): float64 =
 
   fcQScriptValue_toNumber(self.h)
 
-proc toBool*(self: QScriptValue, ): bool =
+proc toBool*(self: gen_qscriptvalue_types.QScriptValue, ): bool =
 
   fcQScriptValue_toBool(self.h)
 
-proc toBoolean*(self: QScriptValue, ): bool =
+proc toBoolean*(self: gen_qscriptvalue_types.QScriptValue, ): bool =
 
   fcQScriptValue_toBoolean(self.h)
 
-proc toInteger*(self: QScriptValue, ): float64 =
+proc toInteger*(self: gen_qscriptvalue_types.QScriptValue, ): float64 =
 
   fcQScriptValue_toInteger(self.h)
 
-proc toInt32*(self: QScriptValue, ): cint =
+proc toInt32*(self: gen_qscriptvalue_types.QScriptValue, ): cint =
 
   fcQScriptValue_toInt32(self.h)
 
-proc toUInt32*(self: QScriptValue, ): cuint =
+proc toUInt32*(self: gen_qscriptvalue_types.QScriptValue, ): cuint =
 
   fcQScriptValue_toUInt32(self.h)
 
-proc toUInt16*(self: QScriptValue, ): cushort =
+proc toUInt16*(self: gen_qscriptvalue_types.QScriptValue, ): cushort =
 
   fcQScriptValue_toUInt16(self.h)
 
-proc toVariant*(self: QScriptValue, ): gen_qvariant.QVariant =
+proc toVariant*(self: gen_qscriptvalue_types.QScriptValue, ): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fcQScriptValue_toVariant(self.h))
 
-proc toQObject*(self: QScriptValue, ): gen_qobject.QObject =
+proc toQObject*(self: gen_qscriptvalue_types.QScriptValue, ): gen_qobject.QObject =
 
   gen_qobject.QObject(h: fcQScriptValue_toQObject(self.h))
 
-proc toQMetaObject*(self: QScriptValue, ): gen_qobjectdefs.QMetaObject =
+proc toQMetaObject*(self: gen_qscriptvalue_types.QScriptValue, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQScriptValue_toQMetaObject(self.h))
 
-proc toObject*(self: QScriptValue, ): QScriptValue =
+proc toObject*(self: gen_qscriptvalue_types.QScriptValue, ): gen_qscriptvalue_types.QScriptValue =
 
-  QScriptValue(h: fcQScriptValue_toObject(self.h))
+  gen_qscriptvalue_types.QScriptValue(h: fcQScriptValue_toObject(self.h))
 
-proc toDateTime*(self: QScriptValue, ): gen_qdatetime.QDateTime =
+proc toDateTime*(self: gen_qscriptvalue_types.QScriptValue, ): gen_qdatetime.QDateTime =
 
   gen_qdatetime.QDateTime(h: fcQScriptValue_toDateTime(self.h))
 
-proc toRegExp*(self: QScriptValue, ): gen_qregexp.QRegExp =
+proc toRegExp*(self: gen_qscriptvalue_types.QScriptValue, ): gen_qregexp.QRegExp =
 
   gen_qregexp.QRegExp(h: fcQScriptValue_toRegExp(self.h))
 
-proc instanceOf*(self: QScriptValue, other: QScriptValue): bool =
+proc instanceOf*(self: gen_qscriptvalue_types.QScriptValue, other: gen_qscriptvalue_types.QScriptValue): bool =
 
   fcQScriptValue_instanceOf(self.h, other.h)
 
-proc lessThan*(self: QScriptValue, other: QScriptValue): bool =
+proc lessThan*(self: gen_qscriptvalue_types.QScriptValue, other: gen_qscriptvalue_types.QScriptValue): bool =
 
   fcQScriptValue_lessThan(self.h, other.h)
 
-proc equals*(self: QScriptValue, other: QScriptValue): bool =
+proc equals*(self: gen_qscriptvalue_types.QScriptValue, other: gen_qscriptvalue_types.QScriptValue): bool =
 
   fcQScriptValue_equals(self.h, other.h)
 
-proc strictlyEquals*(self: QScriptValue, other: QScriptValue): bool =
+proc strictlyEquals*(self: gen_qscriptvalue_types.QScriptValue, other: gen_qscriptvalue_types.QScriptValue): bool =
 
   fcQScriptValue_strictlyEquals(self.h, other.h)
 
-proc prototype*(self: QScriptValue, ): QScriptValue =
+proc prototype*(self: gen_qscriptvalue_types.QScriptValue, ): gen_qscriptvalue_types.QScriptValue =
 
-  QScriptValue(h: fcQScriptValue_prototype(self.h))
+  gen_qscriptvalue_types.QScriptValue(h: fcQScriptValue_prototype(self.h))
 
-proc setPrototype*(self: QScriptValue, prototype: QScriptValue): void =
+proc setPrototype*(self: gen_qscriptvalue_types.QScriptValue, prototype: gen_qscriptvalue_types.QScriptValue): void =
 
   fcQScriptValue_setPrototype(self.h, prototype.h)
 
-proc scope*(self: QScriptValue, ): QScriptValue =
+proc scope*(self: gen_qscriptvalue_types.QScriptValue, ): gen_qscriptvalue_types.QScriptValue =
 
-  QScriptValue(h: fcQScriptValue_scope(self.h))
+  gen_qscriptvalue_types.QScriptValue(h: fcQScriptValue_scope(self.h))
 
-proc setScope*(self: QScriptValue, scope: QScriptValue): void =
+proc setScope*(self: gen_qscriptvalue_types.QScriptValue, scope: gen_qscriptvalue_types.QScriptValue): void =
 
   fcQScriptValue_setScope(self.h, scope.h)
 
-proc property*(self: QScriptValue, name: string): QScriptValue =
+proc property*(self: gen_qscriptvalue_types.QScriptValue, name: string): gen_qscriptvalue_types.QScriptValue =
 
-  QScriptValue(h: fcQScriptValue_property(self.h, struct_miqt_string(data: name, len: csize_t(len(name)))))
+  gen_qscriptvalue_types.QScriptValue(h: fcQScriptValue_property(self.h, struct_miqt_string(data: name, len: csize_t(len(name)))))
 
-proc setProperty*(self: QScriptValue, name: string, value: QScriptValue): void =
+proc setProperty*(self: gen_qscriptvalue_types.QScriptValue, name: string, value: gen_qscriptvalue_types.QScriptValue): void =
 
   fcQScriptValue_setProperty(self.h, struct_miqt_string(data: name, len: csize_t(len(name))), value.h)
 
-proc propertyWithArrayIndex*(self: QScriptValue, arrayIndex: cuint): QScriptValue =
+proc propertyWithArrayIndex*(self: gen_qscriptvalue_types.QScriptValue, arrayIndex: cuint): gen_qscriptvalue_types.QScriptValue =
 
-  QScriptValue(h: fcQScriptValue_propertyWithArrayIndex(self.h, arrayIndex))
+  gen_qscriptvalue_types.QScriptValue(h: fcQScriptValue_propertyWithArrayIndex(self.h, arrayIndex))
 
-proc setProperty2*(self: QScriptValue, arrayIndex: cuint, value: QScriptValue): void =
+proc setProperty2*(self: gen_qscriptvalue_types.QScriptValue, arrayIndex: cuint, value: gen_qscriptvalue_types.QScriptValue): void =
 
   fcQScriptValue_setProperty2(self.h, arrayIndex, value.h)
 
-proc propertyWithName*(self: QScriptValue, name: gen_qscriptstring.QScriptString): QScriptValue =
+proc propertyWithName*(self: gen_qscriptvalue_types.QScriptValue, name: gen_qscriptstring.QScriptString): gen_qscriptvalue_types.QScriptValue =
 
-  QScriptValue(h: fcQScriptValue_propertyWithName(self.h, name.h))
+  gen_qscriptvalue_types.QScriptValue(h: fcQScriptValue_propertyWithName(self.h, name.h))
 
-proc setProperty3*(self: QScriptValue, name: gen_qscriptstring.QScriptString, value: QScriptValue): void =
+proc setProperty3*(self: gen_qscriptvalue_types.QScriptValue, name: gen_qscriptstring.QScriptString, value: gen_qscriptvalue_types.QScriptValue): void =
 
   fcQScriptValue_setProperty3(self.h, name.h, value.h)
 
-proc propertyFlags*(self: QScriptValue, name: string): QScriptValuePropertyFlag =
+proc propertyFlags*(self: gen_qscriptvalue_types.QScriptValue, name: string): cint =
 
-  QScriptValuePropertyFlag(fcQScriptValue_propertyFlags(self.h, struct_miqt_string(data: name, len: csize_t(len(name)))))
+  cint(fcQScriptValue_propertyFlags(self.h, struct_miqt_string(data: name, len: csize_t(len(name)))))
 
-proc propertyFlagsWithName*(self: QScriptValue, name: gen_qscriptstring.QScriptString): QScriptValuePropertyFlag =
+proc propertyFlagsWithName*(self: gen_qscriptvalue_types.QScriptValue, name: gen_qscriptstring.QScriptString): cint =
 
-  QScriptValuePropertyFlag(fcQScriptValue_propertyFlagsWithName(self.h, name.h))
+  cint(fcQScriptValue_propertyFlagsWithName(self.h, name.h))
 
-proc call*(self: QScriptValue, ): QScriptValue =
+proc call*(self: gen_qscriptvalue_types.QScriptValue, ): gen_qscriptvalue_types.QScriptValue =
 
-  QScriptValue(h: fcQScriptValue_call(self.h))
+  gen_qscriptvalue_types.QScriptValue(h: fcQScriptValue_call(self.h))
 
-proc call2*(self: QScriptValue, thisObject: QScriptValue, arguments: QScriptValue): QScriptValue =
+proc call2*(self: gen_qscriptvalue_types.QScriptValue, thisObject: gen_qscriptvalue_types.QScriptValue, arguments: gen_qscriptvalue_types.QScriptValue): gen_qscriptvalue_types.QScriptValue =
 
-  QScriptValue(h: fcQScriptValue_call2(self.h, thisObject.h, arguments.h))
+  gen_qscriptvalue_types.QScriptValue(h: fcQScriptValue_call2(self.h, thisObject.h, arguments.h))
 
-proc construct*(self: QScriptValue, ): QScriptValue =
+proc construct*(self: gen_qscriptvalue_types.QScriptValue, ): gen_qscriptvalue_types.QScriptValue =
 
-  QScriptValue(h: fcQScriptValue_construct(self.h))
+  gen_qscriptvalue_types.QScriptValue(h: fcQScriptValue_construct(self.h))
 
-proc constructWithArguments*(self: QScriptValue, arguments: QScriptValue): QScriptValue =
+proc constructWithArguments*(self: gen_qscriptvalue_types.QScriptValue, arguments: gen_qscriptvalue_types.QScriptValue): gen_qscriptvalue_types.QScriptValue =
 
-  QScriptValue(h: fcQScriptValue_constructWithArguments(self.h, arguments.h))
+  gen_qscriptvalue_types.QScriptValue(h: fcQScriptValue_constructWithArguments(self.h, arguments.h))
 
-proc data*(self: QScriptValue, ): QScriptValue =
+proc data*(self: gen_qscriptvalue_types.QScriptValue, ): gen_qscriptvalue_types.QScriptValue =
 
-  QScriptValue(h: fcQScriptValue_data(self.h))
+  gen_qscriptvalue_types.QScriptValue(h: fcQScriptValue_data(self.h))
 
-proc setData*(self: QScriptValue, data: QScriptValue): void =
+proc setData*(self: gen_qscriptvalue_types.QScriptValue, data: gen_qscriptvalue_types.QScriptValue): void =
 
   fcQScriptValue_setData(self.h, data.h)
 
-proc scriptClass*(self: QScriptValue, ): gen_qscriptclass.QScriptClass =
+proc scriptClass*(self: gen_qscriptvalue_types.QScriptValue, ): gen_qscriptclass.QScriptClass =
 
   gen_qscriptclass.QScriptClass(h: fcQScriptValue_scriptClass(self.h))
 
-proc setScriptClass*(self: QScriptValue, scriptClass: gen_qscriptclass.QScriptClass): void =
+proc setScriptClass*(self: gen_qscriptvalue_types.QScriptValue, scriptClass: gen_qscriptclass.QScriptClass): void =
 
   fcQScriptValue_setScriptClass(self.h, scriptClass.h)
 
-proc objectId*(self: QScriptValue, ): clonglong =
+proc objectId*(self: gen_qscriptvalue_types.QScriptValue, ): clonglong =
 
   fcQScriptValue_objectId(self.h)
 
-proc property2*(self: QScriptValue, name: string, mode: ptr QScriptValueResolveFlag): QScriptValue =
+proc property2*(self: gen_qscriptvalue_types.QScriptValue, name: string, mode: ptr cint): gen_qscriptvalue_types.QScriptValue =
 
-  QScriptValue(h: fcQScriptValue_property2(self.h, struct_miqt_string(data: name, len: csize_t(len(name))), mode))
+  gen_qscriptvalue_types.QScriptValue(h: fcQScriptValue_property2(self.h, struct_miqt_string(data: name, len: csize_t(len(name))), mode))
 
-proc setProperty32*(self: QScriptValue, name: string, value: QScriptValue, flags: ptr QScriptValuePropertyFlag): void =
+proc setProperty32*(self: gen_qscriptvalue_types.QScriptValue, name: string, value: gen_qscriptvalue_types.QScriptValue, flags: ptr cint): void =
 
   fcQScriptValue_setProperty32(self.h, struct_miqt_string(data: name, len: csize_t(len(name))), value.h, flags)
 
-proc property22*(self: QScriptValue, arrayIndex: cuint, mode: ptr QScriptValueResolveFlag): QScriptValue =
+proc property22*(self: gen_qscriptvalue_types.QScriptValue, arrayIndex: cuint, mode: ptr cint): gen_qscriptvalue_types.QScriptValue =
 
-  QScriptValue(h: fcQScriptValue_property22(self.h, arrayIndex, mode))
+  gen_qscriptvalue_types.QScriptValue(h: fcQScriptValue_property22(self.h, arrayIndex, mode))
 
-proc setProperty33*(self: QScriptValue, arrayIndex: cuint, value: QScriptValue, flags: ptr QScriptValuePropertyFlag): void =
+proc setProperty33*(self: gen_qscriptvalue_types.QScriptValue, arrayIndex: cuint, value: gen_qscriptvalue_types.QScriptValue, flags: ptr cint): void =
 
   fcQScriptValue_setProperty33(self.h, arrayIndex, value.h, flags)
 
-proc property23*(self: QScriptValue, name: gen_qscriptstring.QScriptString, mode: ptr QScriptValueResolveFlag): QScriptValue =
+proc property23*(self: gen_qscriptvalue_types.QScriptValue, name: gen_qscriptstring.QScriptString, mode: ptr cint): gen_qscriptvalue_types.QScriptValue =
 
-  QScriptValue(h: fcQScriptValue_property23(self.h, name.h, mode))
+  gen_qscriptvalue_types.QScriptValue(h: fcQScriptValue_property23(self.h, name.h, mode))
 
-proc setProperty34*(self: QScriptValue, name: gen_qscriptstring.QScriptString, value: QScriptValue, flags: ptr QScriptValuePropertyFlag): void =
+proc setProperty34*(self: gen_qscriptvalue_types.QScriptValue, name: gen_qscriptstring.QScriptString, value: gen_qscriptvalue_types.QScriptValue, flags: ptr cint): void =
 
   fcQScriptValue_setProperty34(self.h, name.h, value.h, flags)
 
-proc propertyFlags2*(self: QScriptValue, name: string, mode: ptr QScriptValueResolveFlag): QScriptValuePropertyFlag =
+proc propertyFlags2*(self: gen_qscriptvalue_types.QScriptValue, name: string, mode: ptr cint): cint =
 
-  QScriptValuePropertyFlag(fcQScriptValue_propertyFlags2(self.h, struct_miqt_string(data: name, len: csize_t(len(name))), mode))
+  cint(fcQScriptValue_propertyFlags2(self.h, struct_miqt_string(data: name, len: csize_t(len(name))), mode))
 
-proc propertyFlags22*(self: QScriptValue, name: gen_qscriptstring.QScriptString, mode: ptr QScriptValueResolveFlag): QScriptValuePropertyFlag =
+proc propertyFlags22*(self: gen_qscriptvalue_types.QScriptValue, name: gen_qscriptstring.QScriptString, mode: ptr cint): cint =
 
-  QScriptValuePropertyFlag(fcQScriptValue_propertyFlags22(self.h, name.h, mode))
+  cint(fcQScriptValue_propertyFlags22(self.h, name.h, mode))
 
-proc call1*(self: QScriptValue, thisObject: QScriptValue): QScriptValue =
+proc call1*(self: gen_qscriptvalue_types.QScriptValue, thisObject: gen_qscriptvalue_types.QScriptValue): gen_qscriptvalue_types.QScriptValue =
 
-  QScriptValue(h: fcQScriptValue_call1(self.h, thisObject.h))
+  gen_qscriptvalue_types.QScriptValue(h: fcQScriptValue_call1(self.h, thisObject.h))
 
-proc call22*(self: QScriptValue, thisObject: QScriptValue, args: seq[QScriptValue]): QScriptValue =
-
-  var args_CArray = newSeq[pointer](len(args))
-  for i in 0..<len(args):
-    args_CArray[i] = args[i].h
-
-  QScriptValue(h: fcQScriptValue_call22(self.h, thisObject.h, struct_miqt_array(len: csize_t(len(args)), data: if len(args) == 0: nil else: addr(args_CArray[0]))))
-
-proc construct1*(self: QScriptValue, args: seq[QScriptValue]): QScriptValue =
+proc call22*(self: gen_qscriptvalue_types.QScriptValue, thisObject: gen_qscriptvalue_types.QScriptValue, args: seq[gen_qscriptvalue_types.QScriptValue]): gen_qscriptvalue_types.QScriptValue =
 
   var args_CArray = newSeq[pointer](len(args))
   for i in 0..<len(args):
     args_CArray[i] = args[i].h
 
-  QScriptValue(h: fcQScriptValue_construct1(self.h, struct_miqt_array(len: csize_t(len(args)), data: if len(args) == 0: nil else: addr(args_CArray[0]))))
+  gen_qscriptvalue_types.QScriptValue(h: fcQScriptValue_call22(self.h, thisObject.h, struct_miqt_array(len: csize_t(len(args)), data: if len(args) == 0: nil else: addr(args_CArray[0]))))
 
-proc delete*(self: QScriptValue) =
+proc construct1*(self: gen_qscriptvalue_types.QScriptValue, args: seq[gen_qscriptvalue_types.QScriptValue]): gen_qscriptvalue_types.QScriptValue =
+
+  var args_CArray = newSeq[pointer](len(args))
+  for i in 0..<len(args):
+    args_CArray[i] = args[i].h
+
+  gen_qscriptvalue_types.QScriptValue(h: fcQScriptValue_construct1(self.h, struct_miqt_array(len: csize_t(len(args)), data: if len(args) == 0: nil else: addr(args_CArray[0]))))
+
+proc delete*(self: gen_qscriptvalue_types.QScriptValue) =
   fcQScriptValue_delete(self.h)

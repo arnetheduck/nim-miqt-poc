@@ -34,551 +34,397 @@ const cflags = gorge("pkg-config -cflags Qt6Widgets")
 {.compile("gen_qstyleoption.cpp", cflags).}
 
 
-type QStyleOptionOptionType* = cint
-const
-  QStyleOptionSO_Default* = 0
-  QStyleOptionSO_FocusRect* = 1
-  QStyleOptionSO_Button* = 2
-  QStyleOptionSO_Tab* = 3
-  QStyleOptionSO_MenuItem* = 4
-  QStyleOptionSO_Frame* = 5
-  QStyleOptionSO_ProgressBar* = 6
-  QStyleOptionSO_ToolBox* = 7
-  QStyleOptionSO_Header* = 8
-  QStyleOptionSO_DockWidget* = 9
-  QStyleOptionSO_ViewItem* = 10
-  QStyleOptionSO_TabWidgetFrame* = 11
-  QStyleOptionSO_TabBarBase* = 12
-  QStyleOptionSO_RubberBand* = 13
-  QStyleOptionSO_ToolBar* = 14
-  QStyleOptionSO_GraphicsItem* = 15
-  QStyleOptionSO_Complex* = 983040
-  QStyleOptionSO_Slider* = 983041
-  QStyleOptionSO_SpinBox* = 983042
-  QStyleOptionSO_ToolButton* = 983043
-  QStyleOptionSO_ComboBox* = 983044
-  QStyleOptionSO_TitleBar* = 983045
-  QStyleOptionSO_GroupBox* = 983046
-  QStyleOptionSO_SizeGrip* = 983047
-  QStyleOptionSO_CustomBase* = 3840
-  QStyleOptionSO_ComplexCustomBase* = 251658240
+type QStyleOptionOptionTypeEnum* = distinct cint
+template SO_Default*(_: type QStyleOptionOptionTypeEnum): untyped = 0
+template SO_FocusRect*(_: type QStyleOptionOptionTypeEnum): untyped = 1
+template SO_Button*(_: type QStyleOptionOptionTypeEnum): untyped = 2
+template SO_Tab*(_: type QStyleOptionOptionTypeEnum): untyped = 3
+template SO_MenuItem*(_: type QStyleOptionOptionTypeEnum): untyped = 4
+template SO_Frame*(_: type QStyleOptionOptionTypeEnum): untyped = 5
+template SO_ProgressBar*(_: type QStyleOptionOptionTypeEnum): untyped = 6
+template SO_ToolBox*(_: type QStyleOptionOptionTypeEnum): untyped = 7
+template SO_Header*(_: type QStyleOptionOptionTypeEnum): untyped = 8
+template SO_DockWidget*(_: type QStyleOptionOptionTypeEnum): untyped = 9
+template SO_ViewItem*(_: type QStyleOptionOptionTypeEnum): untyped = 10
+template SO_TabWidgetFrame*(_: type QStyleOptionOptionTypeEnum): untyped = 11
+template SO_TabBarBase*(_: type QStyleOptionOptionTypeEnum): untyped = 12
+template SO_RubberBand*(_: type QStyleOptionOptionTypeEnum): untyped = 13
+template SO_ToolBar*(_: type QStyleOptionOptionTypeEnum): untyped = 14
+template SO_GraphicsItem*(_: type QStyleOptionOptionTypeEnum): untyped = 15
+template SO_Complex*(_: type QStyleOptionOptionTypeEnum): untyped = 983040
+template SO_Slider*(_: type QStyleOptionOptionTypeEnum): untyped = 983041
+template SO_SpinBox*(_: type QStyleOptionOptionTypeEnum): untyped = 983042
+template SO_ToolButton*(_: type QStyleOptionOptionTypeEnum): untyped = 983043
+template SO_ComboBox*(_: type QStyleOptionOptionTypeEnum): untyped = 983044
+template SO_TitleBar*(_: type QStyleOptionOptionTypeEnum): untyped = 983045
+template SO_GroupBox*(_: type QStyleOptionOptionTypeEnum): untyped = 983046
+template SO_SizeGrip*(_: type QStyleOptionOptionTypeEnum): untyped = 983047
+template SO_CustomBase*(_: type QStyleOptionOptionTypeEnum): untyped = 3840
+template SO_ComplexCustomBase*(_: type QStyleOptionOptionTypeEnum): untyped = 251658240
 
 
+type QStyleOptionStyleOptionTypeEnum* = distinct cint
+template Type*(_: type QStyleOptionStyleOptionTypeEnum): untyped = 0
 
-type QStyleOptionStyleOptionType* = cint
-const
-  QStyleOptionType* = 0
 
+type QStyleOptionStyleOptionVersionEnum* = distinct cint
+template Version*(_: type QStyleOptionStyleOptionVersionEnum): untyped = 1
 
 
-type QStyleOptionStyleOptionVersion* = cint
-const
-  QStyleOptionVersion* = 1
+type QStyleOptionFocusRectStyleOptionTypeEnum* = distinct cint
+template Type*(_: type QStyleOptionFocusRectStyleOptionTypeEnum): untyped = 1
 
 
+type QStyleOptionFocusRectStyleOptionVersionEnum* = distinct cint
+template Version*(_: type QStyleOptionFocusRectStyleOptionVersionEnum): untyped = 1
 
-type QStyleOptionFocusRectStyleOptionType* = cint
-const
-  QStyleOptionFocusRectType* = 1
 
+type QStyleOptionFrameStyleOptionTypeEnum* = distinct cint
+template Type*(_: type QStyleOptionFrameStyleOptionTypeEnum): untyped = 5
 
 
-type QStyleOptionFocusRectStyleOptionVersion* = cint
-const
-  QStyleOptionFocusRectVersion* = 1
+type QStyleOptionFrameStyleOptionVersionEnum* = distinct cint
+template Version*(_: type QStyleOptionFrameStyleOptionVersionEnum): untyped = 1
 
 
+type QStyleOptionFrameFrameFeatureEnum* = distinct cint
+template None*(_: type QStyleOptionFrameFrameFeatureEnum): untyped = 0
+template Flat*(_: type QStyleOptionFrameFrameFeatureEnum): untyped = 1
+template Rounded*(_: type QStyleOptionFrameFrameFeatureEnum): untyped = 2
 
-type QStyleOptionFrameStyleOptionType* = cint
-const
-  QStyleOptionFrameType* = 5
 
+type QStyleOptionTabWidgetFrameStyleOptionTypeEnum* = distinct cint
+template Type*(_: type QStyleOptionTabWidgetFrameStyleOptionTypeEnum): untyped = 11
 
 
-type QStyleOptionFrameStyleOptionVersion* = cint
-const
-  QStyleOptionFrameVersion* = 1
+type QStyleOptionTabWidgetFrameStyleOptionVersionEnum* = distinct cint
+template Version*(_: type QStyleOptionTabWidgetFrameStyleOptionVersionEnum): untyped = 1
 
 
+type QStyleOptionTabBarBaseStyleOptionTypeEnum* = distinct cint
+template Type*(_: type QStyleOptionTabBarBaseStyleOptionTypeEnum): untyped = 12
 
-type QStyleOptionFrameFrameFeature* = cint
-const
-  QStyleOptionFrameNone* = 0
-  QStyleOptionFrameFlat* = 1
-  QStyleOptionFrameRounded* = 2
 
+type QStyleOptionTabBarBaseStyleOptionVersionEnum* = distinct cint
+template Version*(_: type QStyleOptionTabBarBaseStyleOptionVersionEnum): untyped = 1
 
 
-type QStyleOptionTabWidgetFrameStyleOptionType* = cint
-const
-  QStyleOptionTabWidgetFrameType* = 11
+type QStyleOptionHeaderStyleOptionTypeEnum* = distinct cint
+template Type*(_: type QStyleOptionHeaderStyleOptionTypeEnum): untyped = 8
 
 
+type QStyleOptionHeaderStyleOptionVersionEnum* = distinct cint
+template Version*(_: type QStyleOptionHeaderStyleOptionVersionEnum): untyped = 1
 
-type QStyleOptionTabWidgetFrameStyleOptionVersion* = cint
-const
-  QStyleOptionTabWidgetFrameVersion* = 1
 
+type QStyleOptionHeaderSectionPositionEnum* = distinct cint
+template Beginning*(_: type QStyleOptionHeaderSectionPositionEnum): untyped = 0
+template Middle*(_: type QStyleOptionHeaderSectionPositionEnum): untyped = 1
+template End*(_: type QStyleOptionHeaderSectionPositionEnum): untyped = 2
+template OnlyOneSection*(_: type QStyleOptionHeaderSectionPositionEnum): untyped = 3
 
 
-type QStyleOptionTabBarBaseStyleOptionType* = cint
-const
-  QStyleOptionTabBarBaseType* = 12
+type QStyleOptionHeaderSelectedPositionEnum* = distinct cint
+template NotAdjacent*(_: type QStyleOptionHeaderSelectedPositionEnum): untyped = 0
+template NextIsSelected*(_: type QStyleOptionHeaderSelectedPositionEnum): untyped = 1
+template PreviousIsSelected*(_: type QStyleOptionHeaderSelectedPositionEnum): untyped = 2
+template NextAndPreviousAreSelected*(_: type QStyleOptionHeaderSelectedPositionEnum): untyped = 3
 
 
+type QStyleOptionHeaderSortIndicatorEnum* = distinct cint
+template None*(_: type QStyleOptionHeaderSortIndicatorEnum): untyped = 0
+template SortUp*(_: type QStyleOptionHeaderSortIndicatorEnum): untyped = 1
+template SortDown*(_: type QStyleOptionHeaderSortIndicatorEnum): untyped = 2
 
-type QStyleOptionTabBarBaseStyleOptionVersion* = cint
-const
-  QStyleOptionTabBarBaseVersion* = 1
 
+type QStyleOptionHeaderV2StyleOptionTypeEnum* = distinct cint
+template Type*(_: type QStyleOptionHeaderV2StyleOptionTypeEnum): untyped = 8
 
 
-type QStyleOptionHeaderStyleOptionType* = cint
-const
-  QStyleOptionHeaderType* = 8
+type QStyleOptionHeaderV2StyleOptionVersionEnum* = distinct cint
+template Version*(_: type QStyleOptionHeaderV2StyleOptionVersionEnum): untyped = 2
 
 
+type QStyleOptionButtonStyleOptionTypeEnum* = distinct cint
+template Type*(_: type QStyleOptionButtonStyleOptionTypeEnum): untyped = 2
 
-type QStyleOptionHeaderStyleOptionVersion* = cint
-const
-  QStyleOptionHeaderVersion* = 1
 
+type QStyleOptionButtonStyleOptionVersionEnum* = distinct cint
+template Version*(_: type QStyleOptionButtonStyleOptionVersionEnum): untyped = 1
 
 
-type QStyleOptionHeaderSectionPosition* = cint
-const
-  QStyleOptionHeaderBeginning* = 0
-  QStyleOptionHeaderMiddle* = 1
-  QStyleOptionHeaderEnd* = 2
-  QStyleOptionHeaderOnlyOneSection* = 3
+type QStyleOptionButtonButtonFeatureEnum* = distinct cint
+template None*(_: type QStyleOptionButtonButtonFeatureEnum): untyped = 0
+template Flat*(_: type QStyleOptionButtonButtonFeatureEnum): untyped = 1
+template HasMenu*(_: type QStyleOptionButtonButtonFeatureEnum): untyped = 2
+template DefaultButton*(_: type QStyleOptionButtonButtonFeatureEnum): untyped = 4
+template AutoDefaultButton*(_: type QStyleOptionButtonButtonFeatureEnum): untyped = 8
+template CommandLinkButton*(_: type QStyleOptionButtonButtonFeatureEnum): untyped = 16
 
 
+type QStyleOptionTabStyleOptionTypeEnum* = distinct cint
+template Type*(_: type QStyleOptionTabStyleOptionTypeEnum): untyped = 3
 
-type QStyleOptionHeaderSelectedPosition* = cint
-const
-  QStyleOptionHeaderNotAdjacent* = 0
-  QStyleOptionHeaderNextIsSelected* = 1
-  QStyleOptionHeaderPreviousIsSelected* = 2
-  QStyleOptionHeaderNextAndPreviousAreSelected* = 3
 
+type QStyleOptionTabStyleOptionVersionEnum* = distinct cint
+template Version*(_: type QStyleOptionTabStyleOptionVersionEnum): untyped = 1
 
 
-type QStyleOptionHeaderSortIndicator* = cint
-const
-  QStyleOptionHeaderNone* = 0
-  QStyleOptionHeaderSortUp* = 1
-  QStyleOptionHeaderSortDown* = 2
+type QStyleOptionTabTabPositionEnum* = distinct cint
+template Beginning*(_: type QStyleOptionTabTabPositionEnum): untyped = 0
+template Middle*(_: type QStyleOptionTabTabPositionEnum): untyped = 1
+template End*(_: type QStyleOptionTabTabPositionEnum): untyped = 2
+template OnlyOneTab*(_: type QStyleOptionTabTabPositionEnum): untyped = 3
 
 
+type QStyleOptionTabSelectedPositionEnum* = distinct cint
+template NotAdjacent*(_: type QStyleOptionTabSelectedPositionEnum): untyped = 0
+template NextIsSelected*(_: type QStyleOptionTabSelectedPositionEnum): untyped = 1
+template PreviousIsSelected*(_: type QStyleOptionTabSelectedPositionEnum): untyped = 2
 
-type QStyleOptionHeaderV2StyleOptionType* = cint
-const
-  QStyleOptionHeaderV2Type* = 8
 
+type QStyleOptionTabCornerWidgetEnum* = distinct cint
+template NoCornerWidgets*(_: type QStyleOptionTabCornerWidgetEnum): untyped = 0
+template LeftCornerWidget*(_: type QStyleOptionTabCornerWidgetEnum): untyped = 1
+template RightCornerWidget*(_: type QStyleOptionTabCornerWidgetEnum): untyped = 2
 
 
-type QStyleOptionHeaderV2StyleOptionVersion* = cint
-const
-  QStyleOptionHeaderV2Version* = 2
+type QStyleOptionTabTabFeatureEnum* = distinct cint
+template None*(_: type QStyleOptionTabTabFeatureEnum): untyped = 0
+template HasFrame*(_: type QStyleOptionTabTabFeatureEnum): untyped = 1
 
 
+type QStyleOptionToolBarStyleOptionTypeEnum* = distinct cint
+template Type*(_: type QStyleOptionToolBarStyleOptionTypeEnum): untyped = 14
 
-type QStyleOptionButtonStyleOptionType* = cint
-const
-  QStyleOptionButtonType* = 2
 
+type QStyleOptionToolBarStyleOptionVersionEnum* = distinct cint
+template Version*(_: type QStyleOptionToolBarStyleOptionVersionEnum): untyped = 1
 
 
-type QStyleOptionButtonStyleOptionVersion* = cint
-const
-  QStyleOptionButtonVersion* = 1
+type QStyleOptionToolBarToolBarPositionEnum* = distinct cint
+template Beginning*(_: type QStyleOptionToolBarToolBarPositionEnum): untyped = 0
+template Middle*(_: type QStyleOptionToolBarToolBarPositionEnum): untyped = 1
+template End*(_: type QStyleOptionToolBarToolBarPositionEnum): untyped = 2
+template OnlyOne*(_: type QStyleOptionToolBarToolBarPositionEnum): untyped = 3
 
 
+type QStyleOptionToolBarToolBarFeatureEnum* = distinct cint
+template None*(_: type QStyleOptionToolBarToolBarFeatureEnum): untyped = 0
+template Movable*(_: type QStyleOptionToolBarToolBarFeatureEnum): untyped = 1
 
-type QStyleOptionButtonButtonFeature* = cint
-const
-  QStyleOptionButtonNone* = 0
-  QStyleOptionButtonFlat* = 1
-  QStyleOptionButtonHasMenu* = 2
-  QStyleOptionButtonDefaultButton* = 4
-  QStyleOptionButtonAutoDefaultButton* = 8
-  QStyleOptionButtonCommandLinkButton* = 16
 
+type QStyleOptionProgressBarStyleOptionTypeEnum* = distinct cint
+template Type*(_: type QStyleOptionProgressBarStyleOptionTypeEnum): untyped = 6
 
 
-type QStyleOptionTabStyleOptionType* = cint
-const
-  QStyleOptionTabType* = 3
+type QStyleOptionProgressBarStyleOptionVersionEnum* = distinct cint
+template Version*(_: type QStyleOptionProgressBarStyleOptionVersionEnum): untyped = 1
 
 
+type QStyleOptionMenuItemStyleOptionTypeEnum* = distinct cint
+template Type*(_: type QStyleOptionMenuItemStyleOptionTypeEnum): untyped = 4
 
-type QStyleOptionTabStyleOptionVersion* = cint
-const
-  QStyleOptionTabVersion* = 1
 
+type QStyleOptionMenuItemStyleOptionVersionEnum* = distinct cint
+template Version*(_: type QStyleOptionMenuItemStyleOptionVersionEnum): untyped = 1
 
 
-type QStyleOptionTabTabPosition* = cint
-const
-  QStyleOptionTabBeginning* = 0
-  QStyleOptionTabMiddle* = 1
-  QStyleOptionTabEnd* = 2
-  QStyleOptionTabOnlyOneTab* = 3
+type QStyleOptionMenuItemMenuItemTypeEnum* = distinct cint
+template Normal*(_: type QStyleOptionMenuItemMenuItemTypeEnum): untyped = 0
+template DefaultItem*(_: type QStyleOptionMenuItemMenuItemTypeEnum): untyped = 1
+template Separator*(_: type QStyleOptionMenuItemMenuItemTypeEnum): untyped = 2
+template SubMenu*(_: type QStyleOptionMenuItemMenuItemTypeEnum): untyped = 3
+template Scroller*(_: type QStyleOptionMenuItemMenuItemTypeEnum): untyped = 4
+template TearOff*(_: type QStyleOptionMenuItemMenuItemTypeEnum): untyped = 5
+template Margin*(_: type QStyleOptionMenuItemMenuItemTypeEnum): untyped = 6
+template EmptyArea*(_: type QStyleOptionMenuItemMenuItemTypeEnum): untyped = 7
 
 
+type QStyleOptionMenuItemCheckTypeEnum* = distinct cint
+template NotCheckable*(_: type QStyleOptionMenuItemCheckTypeEnum): untyped = 0
+template Exclusive*(_: type QStyleOptionMenuItemCheckTypeEnum): untyped = 1
+template NonExclusive*(_: type QStyleOptionMenuItemCheckTypeEnum): untyped = 2
 
-type QStyleOptionTabSelectedPosition* = cint
-const
-  QStyleOptionTabNotAdjacent* = 0
-  QStyleOptionTabNextIsSelected* = 1
-  QStyleOptionTabPreviousIsSelected* = 2
 
+type QStyleOptionDockWidgetStyleOptionTypeEnum* = distinct cint
+template Type*(_: type QStyleOptionDockWidgetStyleOptionTypeEnum): untyped = 9
 
 
-type QStyleOptionTabCornerWidget* = cint
-const
-  QStyleOptionTabNoCornerWidgets* = 0
-  QStyleOptionTabLeftCornerWidget* = 1
-  QStyleOptionTabRightCornerWidget* = 2
+type QStyleOptionDockWidgetStyleOptionVersionEnum* = distinct cint
+template Version*(_: type QStyleOptionDockWidgetStyleOptionVersionEnum): untyped = 1
 
 
+type QStyleOptionViewItemStyleOptionTypeEnum* = distinct cint
+template Type*(_: type QStyleOptionViewItemStyleOptionTypeEnum): untyped = 10
 
-type QStyleOptionTabTabFeature* = cint
-const
-  QStyleOptionTabNone* = 0
-  QStyleOptionTabHasFrame* = 1
 
+type QStyleOptionViewItemStyleOptionVersionEnum* = distinct cint
+template Version*(_: type QStyleOptionViewItemStyleOptionVersionEnum): untyped = 1
 
 
-type QStyleOptionToolBarStyleOptionType* = cint
-const
-  QStyleOptionToolBarType* = 14
+type QStyleOptionViewItemPositionEnum* = distinct cint
+template Left*(_: type QStyleOptionViewItemPositionEnum): untyped = 0
+template Right*(_: type QStyleOptionViewItemPositionEnum): untyped = 1
+template Top*(_: type QStyleOptionViewItemPositionEnum): untyped = 2
+template Bottom*(_: type QStyleOptionViewItemPositionEnum): untyped = 3
 
 
+type QStyleOptionViewItemViewItemFeatureEnum* = distinct cint
+template None*(_: type QStyleOptionViewItemViewItemFeatureEnum): untyped = 0
+template WrapText*(_: type QStyleOptionViewItemViewItemFeatureEnum): untyped = 1
+template Alternate*(_: type QStyleOptionViewItemViewItemFeatureEnum): untyped = 2
+template HasCheckIndicator*(_: type QStyleOptionViewItemViewItemFeatureEnum): untyped = 4
+template HasDisplay*(_: type QStyleOptionViewItemViewItemFeatureEnum): untyped = 8
+template HasDecoration*(_: type QStyleOptionViewItemViewItemFeatureEnum): untyped = 16
 
-type QStyleOptionToolBarStyleOptionVersion* = cint
-const
-  QStyleOptionToolBarVersion* = 1
 
+type QStyleOptionViewItemViewItemPositionEnum* = distinct cint
+template Invalid*(_: type QStyleOptionViewItemViewItemPositionEnum): untyped = 0
+template Beginning*(_: type QStyleOptionViewItemViewItemPositionEnum): untyped = 1
+template Middle*(_: type QStyleOptionViewItemViewItemPositionEnum): untyped = 2
+template End*(_: type QStyleOptionViewItemViewItemPositionEnum): untyped = 3
+template OnlyOne*(_: type QStyleOptionViewItemViewItemPositionEnum): untyped = 4
 
 
-type QStyleOptionToolBarToolBarPosition* = cint
-const
-  QStyleOptionToolBarBeginning* = 0
-  QStyleOptionToolBarMiddle* = 1
-  QStyleOptionToolBarEnd* = 2
-  QStyleOptionToolBarOnlyOne* = 3
+type QStyleOptionToolBoxStyleOptionTypeEnum* = distinct cint
+template Type*(_: type QStyleOptionToolBoxStyleOptionTypeEnum): untyped = 7
 
 
+type QStyleOptionToolBoxStyleOptionVersionEnum* = distinct cint
+template Version*(_: type QStyleOptionToolBoxStyleOptionVersionEnum): untyped = 1
 
-type QStyleOptionToolBarToolBarFeature* = cint
-const
-  QStyleOptionToolBarNone* = 0
-  QStyleOptionToolBarMovable* = 1
 
+type QStyleOptionToolBoxTabPositionEnum* = distinct cint
+template Beginning*(_: type QStyleOptionToolBoxTabPositionEnum): untyped = 0
+template Middle*(_: type QStyleOptionToolBoxTabPositionEnum): untyped = 1
+template End*(_: type QStyleOptionToolBoxTabPositionEnum): untyped = 2
+template OnlyOneTab*(_: type QStyleOptionToolBoxTabPositionEnum): untyped = 3
 
 
-type QStyleOptionProgressBarStyleOptionType* = cint
-const
-  QStyleOptionProgressBarType* = 6
+type QStyleOptionToolBoxSelectedPositionEnum* = distinct cint
+template NotAdjacent*(_: type QStyleOptionToolBoxSelectedPositionEnum): untyped = 0
+template NextIsSelected*(_: type QStyleOptionToolBoxSelectedPositionEnum): untyped = 1
+template PreviousIsSelected*(_: type QStyleOptionToolBoxSelectedPositionEnum): untyped = 2
 
 
+type QStyleOptionRubberBandStyleOptionTypeEnum* = distinct cint
+template Type*(_: type QStyleOptionRubberBandStyleOptionTypeEnum): untyped = 13
 
-type QStyleOptionProgressBarStyleOptionVersion* = cint
-const
-  QStyleOptionProgressBarVersion* = 1
 
+type QStyleOptionRubberBandStyleOptionVersionEnum* = distinct cint
+template Version*(_: type QStyleOptionRubberBandStyleOptionVersionEnum): untyped = 1
 
 
-type QStyleOptionMenuItemStyleOptionType* = cint
-const
-  QStyleOptionMenuItemType* = 4
+type QStyleOptionComplexStyleOptionTypeEnum* = distinct cint
+template Type*(_: type QStyleOptionComplexStyleOptionTypeEnum): untyped = 983040
 
 
+type QStyleOptionComplexStyleOptionVersionEnum* = distinct cint
+template Version*(_: type QStyleOptionComplexStyleOptionVersionEnum): untyped = 1
 
-type QStyleOptionMenuItemStyleOptionVersion* = cint
-const
-  QStyleOptionMenuItemVersion* = 1
 
+type QStyleOptionSliderStyleOptionTypeEnum* = distinct cint
+template Type*(_: type QStyleOptionSliderStyleOptionTypeEnum): untyped = 983041
 
 
-type QStyleOptionMenuItemMenuItemType* = cint
-const
-  QStyleOptionMenuItemNormal* = 0
-  QStyleOptionMenuItemDefaultItem* = 1
-  QStyleOptionMenuItemSeparator* = 2
-  QStyleOptionMenuItemSubMenu* = 3
-  QStyleOptionMenuItemScroller* = 4
-  QStyleOptionMenuItemTearOff* = 5
-  QStyleOptionMenuItemMargin* = 6
-  QStyleOptionMenuItemEmptyArea* = 7
+type QStyleOptionSliderStyleOptionVersionEnum* = distinct cint
+template Version*(_: type QStyleOptionSliderStyleOptionVersionEnum): untyped = 1
 
 
+type QStyleOptionSpinBoxStyleOptionTypeEnum* = distinct cint
+template Type*(_: type QStyleOptionSpinBoxStyleOptionTypeEnum): untyped = 983042
 
-type QStyleOptionMenuItemCheckType* = cint
-const
-  QStyleOptionMenuItemNotCheckable* = 0
-  QStyleOptionMenuItemExclusive* = 1
-  QStyleOptionMenuItemNonExclusive* = 2
 
+type QStyleOptionSpinBoxStyleOptionVersionEnum* = distinct cint
+template Version*(_: type QStyleOptionSpinBoxStyleOptionVersionEnum): untyped = 1
 
 
-type QStyleOptionDockWidgetStyleOptionType* = cint
-const
-  QStyleOptionDockWidgetType* = 9
+type QStyleOptionToolButtonStyleOptionTypeEnum* = distinct cint
+template Type*(_: type QStyleOptionToolButtonStyleOptionTypeEnum): untyped = 983043
 
 
+type QStyleOptionToolButtonStyleOptionVersionEnum* = distinct cint
+template Version*(_: type QStyleOptionToolButtonStyleOptionVersionEnum): untyped = 1
 
-type QStyleOptionDockWidgetStyleOptionVersion* = cint
-const
-  QStyleOptionDockWidgetVersion* = 1
 
+type QStyleOptionToolButtonToolButtonFeatureEnum* = distinct cint
+template None*(_: type QStyleOptionToolButtonToolButtonFeatureEnum): untyped = 0
+template Arrow*(_: type QStyleOptionToolButtonToolButtonFeatureEnum): untyped = 1
+template Menu*(_: type QStyleOptionToolButtonToolButtonFeatureEnum): untyped = 4
+template MenuButtonPopup*(_: type QStyleOptionToolButtonToolButtonFeatureEnum): untyped = 4
+template PopupDelay*(_: type QStyleOptionToolButtonToolButtonFeatureEnum): untyped = 8
+template HasMenu*(_: type QStyleOptionToolButtonToolButtonFeatureEnum): untyped = 16
 
 
-type QStyleOptionViewItemStyleOptionType* = cint
-const
-  QStyleOptionViewItemType* = 10
+type QStyleOptionComboBoxStyleOptionTypeEnum* = distinct cint
+template Type*(_: type QStyleOptionComboBoxStyleOptionTypeEnum): untyped = 983044
 
 
+type QStyleOptionComboBoxStyleOptionVersionEnum* = distinct cint
+template Version*(_: type QStyleOptionComboBoxStyleOptionVersionEnum): untyped = 1
 
-type QStyleOptionViewItemStyleOptionVersion* = cint
-const
-  QStyleOptionViewItemVersion* = 1
 
+type QStyleOptionTitleBarStyleOptionTypeEnum* = distinct cint
+template Type*(_: type QStyleOptionTitleBarStyleOptionTypeEnum): untyped = 983045
 
 
-type QStyleOptionViewItemPosition* = cint
-const
-  QStyleOptionViewItemLeft* = 0
-  QStyleOptionViewItemRight* = 1
-  QStyleOptionViewItemTop* = 2
-  QStyleOptionViewItemBottom* = 3
+type QStyleOptionTitleBarStyleOptionVersionEnum* = distinct cint
+template Version*(_: type QStyleOptionTitleBarStyleOptionVersionEnum): untyped = 1
 
 
+type QStyleOptionGroupBoxStyleOptionTypeEnum* = distinct cint
+template Type*(_: type QStyleOptionGroupBoxStyleOptionTypeEnum): untyped = 983046
 
-type QStyleOptionViewItemViewItemFeature* = cint
-const
-  QStyleOptionViewItemNone* = 0
-  QStyleOptionViewItemWrapText* = 1
-  QStyleOptionViewItemAlternate* = 2
-  QStyleOptionViewItemHasCheckIndicator* = 4
-  QStyleOptionViewItemHasDisplay* = 8
-  QStyleOptionViewItemHasDecoration* = 16
 
+type QStyleOptionGroupBoxStyleOptionVersionEnum* = distinct cint
+template Version*(_: type QStyleOptionGroupBoxStyleOptionVersionEnum): untyped = 1
 
 
-type QStyleOptionViewItemViewItemPosition* = cint
-const
-  QStyleOptionViewItemInvalid* = 0
-  QStyleOptionViewItemBeginning* = 1
-  QStyleOptionViewItemMiddle* = 2
-  QStyleOptionViewItemEnd* = 3
-  QStyleOptionViewItemOnlyOne* = 4
+type QStyleOptionSizeGripStyleOptionTypeEnum* = distinct cint
+template Type*(_: type QStyleOptionSizeGripStyleOptionTypeEnum): untyped = 983047
 
 
+type QStyleOptionSizeGripStyleOptionVersionEnum* = distinct cint
+template Version*(_: type QStyleOptionSizeGripStyleOptionVersionEnum): untyped = 1
 
-type QStyleOptionToolBoxStyleOptionType* = cint
-const
-  QStyleOptionToolBoxType* = 7
 
+type QStyleOptionGraphicsItemStyleOptionTypeEnum* = distinct cint
+template Type*(_: type QStyleOptionGraphicsItemStyleOptionTypeEnum): untyped = 15
 
 
-type QStyleOptionToolBoxStyleOptionVersion* = cint
-const
-  QStyleOptionToolBoxVersion* = 1
+type QStyleOptionGraphicsItemStyleOptionVersionEnum* = distinct cint
+template Version*(_: type QStyleOptionGraphicsItemStyleOptionVersionEnum): untyped = 1
 
 
+type QStyleHintReturnHintReturnTypeEnum* = distinct cint
+template SH_Default*(_: type QStyleHintReturnHintReturnTypeEnum): untyped = 61440
+template SH_Mask*(_: type QStyleHintReturnHintReturnTypeEnum): untyped = 61441
+template SH_Variant*(_: type QStyleHintReturnHintReturnTypeEnum): untyped = 61442
 
-type QStyleOptionToolBoxTabPosition* = cint
-const
-  QStyleOptionToolBoxBeginning* = 0
-  QStyleOptionToolBoxMiddle* = 1
-  QStyleOptionToolBoxEnd* = 2
-  QStyleOptionToolBoxOnlyOneTab* = 3
 
+type QStyleHintReturnStyleOptionTypeEnum* = distinct cint
+template Type*(_: type QStyleHintReturnStyleOptionTypeEnum): untyped = 61440
 
 
-type QStyleOptionToolBoxSelectedPosition* = cint
-const
-  QStyleOptionToolBoxNotAdjacent* = 0
-  QStyleOptionToolBoxNextIsSelected* = 1
-  QStyleOptionToolBoxPreviousIsSelected* = 2
+type QStyleHintReturnStyleOptionVersionEnum* = distinct cint
+template Version*(_: type QStyleHintReturnStyleOptionVersionEnum): untyped = 1
 
 
+type QStyleHintReturnMaskStyleOptionTypeEnum* = distinct cint
+template Type*(_: type QStyleHintReturnMaskStyleOptionTypeEnum): untyped = 61441
 
-type QStyleOptionRubberBandStyleOptionType* = cint
-const
-  QStyleOptionRubberBandType* = 13
 
+type QStyleHintReturnMaskStyleOptionVersionEnum* = distinct cint
+template Version*(_: type QStyleHintReturnMaskStyleOptionVersionEnum): untyped = 1
 
 
-type QStyleOptionRubberBandStyleOptionVersion* = cint
-const
-  QStyleOptionRubberBandVersion* = 1
+type QStyleHintReturnVariantStyleOptionTypeEnum* = distinct cint
+template Type*(_: type QStyleHintReturnVariantStyleOptionTypeEnum): untyped = 61442
 
 
-
-type QStyleOptionComplexStyleOptionType* = cint
-const
-  QStyleOptionComplexType* = 983040
-
-
-
-type QStyleOptionComplexStyleOptionVersion* = cint
-const
-  QStyleOptionComplexVersion* = 1
-
-
-
-type QStyleOptionSliderStyleOptionType* = cint
-const
-  QStyleOptionSliderType* = 983041
-
-
-
-type QStyleOptionSliderStyleOptionVersion* = cint
-const
-  QStyleOptionSliderVersion* = 1
-
-
-
-type QStyleOptionSpinBoxStyleOptionType* = cint
-const
-  QStyleOptionSpinBoxType* = 983042
-
-
-
-type QStyleOptionSpinBoxStyleOptionVersion* = cint
-const
-  QStyleOptionSpinBoxVersion* = 1
-
-
-
-type QStyleOptionToolButtonStyleOptionType* = cint
-const
-  QStyleOptionToolButtonType* = 983043
-
-
-
-type QStyleOptionToolButtonStyleOptionVersion* = cint
-const
-  QStyleOptionToolButtonVersion* = 1
-
-
-
-type QStyleOptionToolButtonToolButtonFeature* = cint
-const
-  QStyleOptionToolButtonNone* = 0
-  QStyleOptionToolButtonArrow* = 1
-  QStyleOptionToolButtonMenu* = 4
-  QStyleOptionToolButtonMenuButtonPopup* = 4
-  QStyleOptionToolButtonPopupDelay* = 8
-  QStyleOptionToolButtonHasMenu* = 16
-
-
-
-type QStyleOptionComboBoxStyleOptionType* = cint
-const
-  QStyleOptionComboBoxType* = 983044
-
-
-
-type QStyleOptionComboBoxStyleOptionVersion* = cint
-const
-  QStyleOptionComboBoxVersion* = 1
-
-
-
-type QStyleOptionTitleBarStyleOptionType* = cint
-const
-  QStyleOptionTitleBarType* = 983045
-
-
-
-type QStyleOptionTitleBarStyleOptionVersion* = cint
-const
-  QStyleOptionTitleBarVersion* = 1
-
-
-
-type QStyleOptionGroupBoxStyleOptionType* = cint
-const
-  QStyleOptionGroupBoxType* = 983046
-
-
-
-type QStyleOptionGroupBoxStyleOptionVersion* = cint
-const
-  QStyleOptionGroupBoxVersion* = 1
-
-
-
-type QStyleOptionSizeGripStyleOptionType* = cint
-const
-  QStyleOptionSizeGripType* = 983047
-
-
-
-type QStyleOptionSizeGripStyleOptionVersion* = cint
-const
-  QStyleOptionSizeGripVersion* = 1
-
-
-
-type QStyleOptionGraphicsItemStyleOptionType* = cint
-const
-  QStyleOptionGraphicsItemType* = 15
-
-
-
-type QStyleOptionGraphicsItemStyleOptionVersion* = cint
-const
-  QStyleOptionGraphicsItemVersion* = 1
-
-
-
-type QStyleHintReturnHintReturnType* = cint
-const
-  QStyleHintReturnSH_Default* = 61440
-  QStyleHintReturnSH_Mask* = 61441
-  QStyleHintReturnSH_Variant* = 61442
-
-
-
-type QStyleHintReturnStyleOptionType* = cint
-const
-  QStyleHintReturnType* = 61440
-
-
-
-type QStyleHintReturnStyleOptionVersion* = cint
-const
-  QStyleHintReturnVersion* = 1
-
-
-
-type QStyleHintReturnMaskStyleOptionType* = cint
-const
-  QStyleHintReturnMaskType* = 61441
-
-
-
-type QStyleHintReturnMaskStyleOptionVersion* = cint
-const
-  QStyleHintReturnMaskVersion* = 1
-
-
-
-type QStyleHintReturnVariantStyleOptionType* = cint
-const
-  QStyleHintReturnVariantType* = 61442
-
-
-
-type QStyleHintReturnVariantStyleOptionVersion* = cint
-const
-  QStyleHintReturnVariantVersion* = 1
-
+type QStyleHintReturnVariantStyleOptionVersionEnum* = distinct cint
+template Version*(_: type QStyleHintReturnVariantStyleOptionVersionEnum): untyped = 1
 
 
 import gen_qstyleoption_types
@@ -718,352 +564,352 @@ proc fcQStyleHintReturnVariant_operatorAssign(self: pointer, param1: pointer): v
 proc fcQStyleHintReturnVariant_delete(self: pointer) {.importc: "QStyleHintReturnVariant_delete".}
 
 
-func init*(T: type QStyleOption, h: ptr cQStyleOption): QStyleOption =
+func init*(T: type gen_qstyleoption_types.QStyleOption, h: ptr cQStyleOption): gen_qstyleoption_types.QStyleOption =
   T(h: h)
-proc create*(T: type QStyleOption, ): QStyleOption =
+proc create*(T: type gen_qstyleoption_types.QStyleOption, ): gen_qstyleoption_types.QStyleOption =
 
-  QStyleOption.init(fcQStyleOption_new())
-proc create*(T: type QStyleOption, other: QStyleOption): QStyleOption =
+  gen_qstyleoption_types.QStyleOption.init(fcQStyleOption_new())
+proc create*(T: type gen_qstyleoption_types.QStyleOption, other: gen_qstyleoption_types.QStyleOption): gen_qstyleoption_types.QStyleOption =
 
-  QStyleOption.init(fcQStyleOption_new2(other.h))
-proc create*(T: type QStyleOption, version: cint): QStyleOption =
+  gen_qstyleoption_types.QStyleOption.init(fcQStyleOption_new2(other.h))
+proc create*(T: type gen_qstyleoption_types.QStyleOption, version: cint): gen_qstyleoption_types.QStyleOption =
 
-  QStyleOption.init(fcQStyleOption_new3(version))
-proc create*(T: type QStyleOption, version: cint, typeVal: cint): QStyleOption =
+  gen_qstyleoption_types.QStyleOption.init(fcQStyleOption_new3(version))
+proc create*(T: type gen_qstyleoption_types.QStyleOption, version: cint, typeVal: cint): gen_qstyleoption_types.QStyleOption =
 
-  QStyleOption.init(fcQStyleOption_new4(version, typeVal))
-proc initFrom*(self: QStyleOption, w: gen_qwidget.QWidget): void =
+  gen_qstyleoption_types.QStyleOption.init(fcQStyleOption_new4(version, typeVal))
+proc initFrom*(self: gen_qstyleoption_types.QStyleOption, w: gen_qwidget.QWidget): void =
 
   fcQStyleOption_initFrom(self.h, w.h)
 
-proc operatorAssign*(self: QStyleOption, other: QStyleOption): void =
+proc operatorAssign*(self: gen_qstyleoption_types.QStyleOption, other: gen_qstyleoption_types.QStyleOption): void =
 
   fcQStyleOption_operatorAssign(self.h, other.h)
 
-proc delete*(self: QStyleOption) =
+proc delete*(self: gen_qstyleoption_types.QStyleOption) =
   fcQStyleOption_delete(self.h)
 
-func init*(T: type QStyleOptionFocusRect, h: ptr cQStyleOptionFocusRect): QStyleOptionFocusRect =
+func init*(T: type gen_qstyleoption_types.QStyleOptionFocusRect, h: ptr cQStyleOptionFocusRect): gen_qstyleoption_types.QStyleOptionFocusRect =
   T(h: h)
-proc create*(T: type QStyleOptionFocusRect, ): QStyleOptionFocusRect =
+proc create*(T: type gen_qstyleoption_types.QStyleOptionFocusRect, ): gen_qstyleoption_types.QStyleOptionFocusRect =
 
-  QStyleOptionFocusRect.init(fcQStyleOptionFocusRect_new())
-proc create*(T: type QStyleOptionFocusRect, other: QStyleOptionFocusRect): QStyleOptionFocusRect =
+  gen_qstyleoption_types.QStyleOptionFocusRect.init(fcQStyleOptionFocusRect_new())
+proc create*(T: type gen_qstyleoption_types.QStyleOptionFocusRect, other: gen_qstyleoption_types.QStyleOptionFocusRect): gen_qstyleoption_types.QStyleOptionFocusRect =
 
-  QStyleOptionFocusRect.init(fcQStyleOptionFocusRect_new2(other.h))
-proc delete*(self: QStyleOptionFocusRect) =
+  gen_qstyleoption_types.QStyleOptionFocusRect.init(fcQStyleOptionFocusRect_new2(other.h))
+proc delete*(self: gen_qstyleoption_types.QStyleOptionFocusRect) =
   fcQStyleOptionFocusRect_delete(self.h)
 
-func init*(T: type QStyleOptionFrame, h: ptr cQStyleOptionFrame): QStyleOptionFrame =
+func init*(T: type gen_qstyleoption_types.QStyleOptionFrame, h: ptr cQStyleOptionFrame): gen_qstyleoption_types.QStyleOptionFrame =
   T(h: h)
-proc create*(T: type QStyleOptionFrame, ): QStyleOptionFrame =
+proc create*(T: type gen_qstyleoption_types.QStyleOptionFrame, ): gen_qstyleoption_types.QStyleOptionFrame =
 
-  QStyleOptionFrame.init(fcQStyleOptionFrame_new())
-proc create*(T: type QStyleOptionFrame, other: QStyleOptionFrame): QStyleOptionFrame =
+  gen_qstyleoption_types.QStyleOptionFrame.init(fcQStyleOptionFrame_new())
+proc create*(T: type gen_qstyleoption_types.QStyleOptionFrame, other: gen_qstyleoption_types.QStyleOptionFrame): gen_qstyleoption_types.QStyleOptionFrame =
 
-  QStyleOptionFrame.init(fcQStyleOptionFrame_new2(other.h))
-proc delete*(self: QStyleOptionFrame) =
+  gen_qstyleoption_types.QStyleOptionFrame.init(fcQStyleOptionFrame_new2(other.h))
+proc delete*(self: gen_qstyleoption_types.QStyleOptionFrame) =
   fcQStyleOptionFrame_delete(self.h)
 
-func init*(T: type QStyleOptionTabWidgetFrame, h: ptr cQStyleOptionTabWidgetFrame): QStyleOptionTabWidgetFrame =
+func init*(T: type gen_qstyleoption_types.QStyleOptionTabWidgetFrame, h: ptr cQStyleOptionTabWidgetFrame): gen_qstyleoption_types.QStyleOptionTabWidgetFrame =
   T(h: h)
-proc create*(T: type QStyleOptionTabWidgetFrame, ): QStyleOptionTabWidgetFrame =
+proc create*(T: type gen_qstyleoption_types.QStyleOptionTabWidgetFrame, ): gen_qstyleoption_types.QStyleOptionTabWidgetFrame =
 
-  QStyleOptionTabWidgetFrame.init(fcQStyleOptionTabWidgetFrame_new())
-proc create*(T: type QStyleOptionTabWidgetFrame, other: QStyleOptionTabWidgetFrame): QStyleOptionTabWidgetFrame =
+  gen_qstyleoption_types.QStyleOptionTabWidgetFrame.init(fcQStyleOptionTabWidgetFrame_new())
+proc create*(T: type gen_qstyleoption_types.QStyleOptionTabWidgetFrame, other: gen_qstyleoption_types.QStyleOptionTabWidgetFrame): gen_qstyleoption_types.QStyleOptionTabWidgetFrame =
 
-  QStyleOptionTabWidgetFrame.init(fcQStyleOptionTabWidgetFrame_new2(other.h))
-proc delete*(self: QStyleOptionTabWidgetFrame) =
+  gen_qstyleoption_types.QStyleOptionTabWidgetFrame.init(fcQStyleOptionTabWidgetFrame_new2(other.h))
+proc delete*(self: gen_qstyleoption_types.QStyleOptionTabWidgetFrame) =
   fcQStyleOptionTabWidgetFrame_delete(self.h)
 
-func init*(T: type QStyleOptionTabBarBase, h: ptr cQStyleOptionTabBarBase): QStyleOptionTabBarBase =
+func init*(T: type gen_qstyleoption_types.QStyleOptionTabBarBase, h: ptr cQStyleOptionTabBarBase): gen_qstyleoption_types.QStyleOptionTabBarBase =
   T(h: h)
-proc create*(T: type QStyleOptionTabBarBase, ): QStyleOptionTabBarBase =
+proc create*(T: type gen_qstyleoption_types.QStyleOptionTabBarBase, ): gen_qstyleoption_types.QStyleOptionTabBarBase =
 
-  QStyleOptionTabBarBase.init(fcQStyleOptionTabBarBase_new())
-proc create*(T: type QStyleOptionTabBarBase, other: QStyleOptionTabBarBase): QStyleOptionTabBarBase =
+  gen_qstyleoption_types.QStyleOptionTabBarBase.init(fcQStyleOptionTabBarBase_new())
+proc create*(T: type gen_qstyleoption_types.QStyleOptionTabBarBase, other: gen_qstyleoption_types.QStyleOptionTabBarBase): gen_qstyleoption_types.QStyleOptionTabBarBase =
 
-  QStyleOptionTabBarBase.init(fcQStyleOptionTabBarBase_new2(other.h))
-proc delete*(self: QStyleOptionTabBarBase) =
+  gen_qstyleoption_types.QStyleOptionTabBarBase.init(fcQStyleOptionTabBarBase_new2(other.h))
+proc delete*(self: gen_qstyleoption_types.QStyleOptionTabBarBase) =
   fcQStyleOptionTabBarBase_delete(self.h)
 
-func init*(T: type QStyleOptionHeader, h: ptr cQStyleOptionHeader): QStyleOptionHeader =
+func init*(T: type gen_qstyleoption_types.QStyleOptionHeader, h: ptr cQStyleOptionHeader): gen_qstyleoption_types.QStyleOptionHeader =
   T(h: h)
-proc create*(T: type QStyleOptionHeader, ): QStyleOptionHeader =
+proc create*(T: type gen_qstyleoption_types.QStyleOptionHeader, ): gen_qstyleoption_types.QStyleOptionHeader =
 
-  QStyleOptionHeader.init(fcQStyleOptionHeader_new())
-proc create*(T: type QStyleOptionHeader, other: QStyleOptionHeader): QStyleOptionHeader =
+  gen_qstyleoption_types.QStyleOptionHeader.init(fcQStyleOptionHeader_new())
+proc create*(T: type gen_qstyleoption_types.QStyleOptionHeader, other: gen_qstyleoption_types.QStyleOptionHeader): gen_qstyleoption_types.QStyleOptionHeader =
 
-  QStyleOptionHeader.init(fcQStyleOptionHeader_new2(other.h))
-proc delete*(self: QStyleOptionHeader) =
+  gen_qstyleoption_types.QStyleOptionHeader.init(fcQStyleOptionHeader_new2(other.h))
+proc delete*(self: gen_qstyleoption_types.QStyleOptionHeader) =
   fcQStyleOptionHeader_delete(self.h)
 
-func init*(T: type QStyleOptionHeaderV2, h: ptr cQStyleOptionHeaderV2): QStyleOptionHeaderV2 =
+func init*(T: type gen_qstyleoption_types.QStyleOptionHeaderV2, h: ptr cQStyleOptionHeaderV2): gen_qstyleoption_types.QStyleOptionHeaderV2 =
   T(h: h)
-proc create*(T: type QStyleOptionHeaderV2, ): QStyleOptionHeaderV2 =
+proc create*(T: type gen_qstyleoption_types.QStyleOptionHeaderV2, ): gen_qstyleoption_types.QStyleOptionHeaderV2 =
 
-  QStyleOptionHeaderV2.init(fcQStyleOptionHeaderV2_new())
-proc create*(T: type QStyleOptionHeaderV2, other: QStyleOptionHeaderV2): QStyleOptionHeaderV2 =
+  gen_qstyleoption_types.QStyleOptionHeaderV2.init(fcQStyleOptionHeaderV2_new())
+proc create*(T: type gen_qstyleoption_types.QStyleOptionHeaderV2, other: gen_qstyleoption_types.QStyleOptionHeaderV2): gen_qstyleoption_types.QStyleOptionHeaderV2 =
 
-  QStyleOptionHeaderV2.init(fcQStyleOptionHeaderV2_new2(other.h))
-proc delete*(self: QStyleOptionHeaderV2) =
+  gen_qstyleoption_types.QStyleOptionHeaderV2.init(fcQStyleOptionHeaderV2_new2(other.h))
+proc delete*(self: gen_qstyleoption_types.QStyleOptionHeaderV2) =
   fcQStyleOptionHeaderV2_delete(self.h)
 
-func init*(T: type QStyleOptionButton, h: ptr cQStyleOptionButton): QStyleOptionButton =
+func init*(T: type gen_qstyleoption_types.QStyleOptionButton, h: ptr cQStyleOptionButton): gen_qstyleoption_types.QStyleOptionButton =
   T(h: h)
-proc create*(T: type QStyleOptionButton, ): QStyleOptionButton =
+proc create*(T: type gen_qstyleoption_types.QStyleOptionButton, ): gen_qstyleoption_types.QStyleOptionButton =
 
-  QStyleOptionButton.init(fcQStyleOptionButton_new())
-proc create*(T: type QStyleOptionButton, other: QStyleOptionButton): QStyleOptionButton =
+  gen_qstyleoption_types.QStyleOptionButton.init(fcQStyleOptionButton_new())
+proc create*(T: type gen_qstyleoption_types.QStyleOptionButton, other: gen_qstyleoption_types.QStyleOptionButton): gen_qstyleoption_types.QStyleOptionButton =
 
-  QStyleOptionButton.init(fcQStyleOptionButton_new2(other.h))
-proc delete*(self: QStyleOptionButton) =
+  gen_qstyleoption_types.QStyleOptionButton.init(fcQStyleOptionButton_new2(other.h))
+proc delete*(self: gen_qstyleoption_types.QStyleOptionButton) =
   fcQStyleOptionButton_delete(self.h)
 
-func init*(T: type QStyleOptionTab, h: ptr cQStyleOptionTab): QStyleOptionTab =
+func init*(T: type gen_qstyleoption_types.QStyleOptionTab, h: ptr cQStyleOptionTab): gen_qstyleoption_types.QStyleOptionTab =
   T(h: h)
-proc create*(T: type QStyleOptionTab, ): QStyleOptionTab =
+proc create*(T: type gen_qstyleoption_types.QStyleOptionTab, ): gen_qstyleoption_types.QStyleOptionTab =
 
-  QStyleOptionTab.init(fcQStyleOptionTab_new())
-proc create*(T: type QStyleOptionTab, other: QStyleOptionTab): QStyleOptionTab =
+  gen_qstyleoption_types.QStyleOptionTab.init(fcQStyleOptionTab_new())
+proc create*(T: type gen_qstyleoption_types.QStyleOptionTab, other: gen_qstyleoption_types.QStyleOptionTab): gen_qstyleoption_types.QStyleOptionTab =
 
-  QStyleOptionTab.init(fcQStyleOptionTab_new2(other.h))
-proc delete*(self: QStyleOptionTab) =
+  gen_qstyleoption_types.QStyleOptionTab.init(fcQStyleOptionTab_new2(other.h))
+proc delete*(self: gen_qstyleoption_types.QStyleOptionTab) =
   fcQStyleOptionTab_delete(self.h)
 
-func init*(T: type QStyleOptionToolBar, h: ptr cQStyleOptionToolBar): QStyleOptionToolBar =
+func init*(T: type gen_qstyleoption_types.QStyleOptionToolBar, h: ptr cQStyleOptionToolBar): gen_qstyleoption_types.QStyleOptionToolBar =
   T(h: h)
-proc create*(T: type QStyleOptionToolBar, ): QStyleOptionToolBar =
+proc create*(T: type gen_qstyleoption_types.QStyleOptionToolBar, ): gen_qstyleoption_types.QStyleOptionToolBar =
 
-  QStyleOptionToolBar.init(fcQStyleOptionToolBar_new())
-proc create*(T: type QStyleOptionToolBar, other: QStyleOptionToolBar): QStyleOptionToolBar =
+  gen_qstyleoption_types.QStyleOptionToolBar.init(fcQStyleOptionToolBar_new())
+proc create*(T: type gen_qstyleoption_types.QStyleOptionToolBar, other: gen_qstyleoption_types.QStyleOptionToolBar): gen_qstyleoption_types.QStyleOptionToolBar =
 
-  QStyleOptionToolBar.init(fcQStyleOptionToolBar_new2(other.h))
-proc delete*(self: QStyleOptionToolBar) =
+  gen_qstyleoption_types.QStyleOptionToolBar.init(fcQStyleOptionToolBar_new2(other.h))
+proc delete*(self: gen_qstyleoption_types.QStyleOptionToolBar) =
   fcQStyleOptionToolBar_delete(self.h)
 
-func init*(T: type QStyleOptionProgressBar, h: ptr cQStyleOptionProgressBar): QStyleOptionProgressBar =
+func init*(T: type gen_qstyleoption_types.QStyleOptionProgressBar, h: ptr cQStyleOptionProgressBar): gen_qstyleoption_types.QStyleOptionProgressBar =
   T(h: h)
-proc create*(T: type QStyleOptionProgressBar, ): QStyleOptionProgressBar =
+proc create*(T: type gen_qstyleoption_types.QStyleOptionProgressBar, ): gen_qstyleoption_types.QStyleOptionProgressBar =
 
-  QStyleOptionProgressBar.init(fcQStyleOptionProgressBar_new())
-proc create*(T: type QStyleOptionProgressBar, other: QStyleOptionProgressBar): QStyleOptionProgressBar =
+  gen_qstyleoption_types.QStyleOptionProgressBar.init(fcQStyleOptionProgressBar_new())
+proc create*(T: type gen_qstyleoption_types.QStyleOptionProgressBar, other: gen_qstyleoption_types.QStyleOptionProgressBar): gen_qstyleoption_types.QStyleOptionProgressBar =
 
-  QStyleOptionProgressBar.init(fcQStyleOptionProgressBar_new2(other.h))
-proc delete*(self: QStyleOptionProgressBar) =
+  gen_qstyleoption_types.QStyleOptionProgressBar.init(fcQStyleOptionProgressBar_new2(other.h))
+proc delete*(self: gen_qstyleoption_types.QStyleOptionProgressBar) =
   fcQStyleOptionProgressBar_delete(self.h)
 
-func init*(T: type QStyleOptionMenuItem, h: ptr cQStyleOptionMenuItem): QStyleOptionMenuItem =
+func init*(T: type gen_qstyleoption_types.QStyleOptionMenuItem, h: ptr cQStyleOptionMenuItem): gen_qstyleoption_types.QStyleOptionMenuItem =
   T(h: h)
-proc create*(T: type QStyleOptionMenuItem, ): QStyleOptionMenuItem =
+proc create*(T: type gen_qstyleoption_types.QStyleOptionMenuItem, ): gen_qstyleoption_types.QStyleOptionMenuItem =
 
-  QStyleOptionMenuItem.init(fcQStyleOptionMenuItem_new())
-proc create*(T: type QStyleOptionMenuItem, other: QStyleOptionMenuItem): QStyleOptionMenuItem =
+  gen_qstyleoption_types.QStyleOptionMenuItem.init(fcQStyleOptionMenuItem_new())
+proc create*(T: type gen_qstyleoption_types.QStyleOptionMenuItem, other: gen_qstyleoption_types.QStyleOptionMenuItem): gen_qstyleoption_types.QStyleOptionMenuItem =
 
-  QStyleOptionMenuItem.init(fcQStyleOptionMenuItem_new2(other.h))
-proc delete*(self: QStyleOptionMenuItem) =
+  gen_qstyleoption_types.QStyleOptionMenuItem.init(fcQStyleOptionMenuItem_new2(other.h))
+proc delete*(self: gen_qstyleoption_types.QStyleOptionMenuItem) =
   fcQStyleOptionMenuItem_delete(self.h)
 
-func init*(T: type QStyleOptionDockWidget, h: ptr cQStyleOptionDockWidget): QStyleOptionDockWidget =
+func init*(T: type gen_qstyleoption_types.QStyleOptionDockWidget, h: ptr cQStyleOptionDockWidget): gen_qstyleoption_types.QStyleOptionDockWidget =
   T(h: h)
-proc create*(T: type QStyleOptionDockWidget, ): QStyleOptionDockWidget =
+proc create*(T: type gen_qstyleoption_types.QStyleOptionDockWidget, ): gen_qstyleoption_types.QStyleOptionDockWidget =
 
-  QStyleOptionDockWidget.init(fcQStyleOptionDockWidget_new())
-proc create*(T: type QStyleOptionDockWidget, other: QStyleOptionDockWidget): QStyleOptionDockWidget =
+  gen_qstyleoption_types.QStyleOptionDockWidget.init(fcQStyleOptionDockWidget_new())
+proc create*(T: type gen_qstyleoption_types.QStyleOptionDockWidget, other: gen_qstyleoption_types.QStyleOptionDockWidget): gen_qstyleoption_types.QStyleOptionDockWidget =
 
-  QStyleOptionDockWidget.init(fcQStyleOptionDockWidget_new2(other.h))
-proc delete*(self: QStyleOptionDockWidget) =
+  gen_qstyleoption_types.QStyleOptionDockWidget.init(fcQStyleOptionDockWidget_new2(other.h))
+proc delete*(self: gen_qstyleoption_types.QStyleOptionDockWidget) =
   fcQStyleOptionDockWidget_delete(self.h)
 
-func init*(T: type QStyleOptionViewItem, h: ptr cQStyleOptionViewItem): QStyleOptionViewItem =
+func init*(T: type gen_qstyleoption_types.QStyleOptionViewItem, h: ptr cQStyleOptionViewItem): gen_qstyleoption_types.QStyleOptionViewItem =
   T(h: h)
-proc create*(T: type QStyleOptionViewItem, ): QStyleOptionViewItem =
+proc create*(T: type gen_qstyleoption_types.QStyleOptionViewItem, ): gen_qstyleoption_types.QStyleOptionViewItem =
 
-  QStyleOptionViewItem.init(fcQStyleOptionViewItem_new())
-proc create*(T: type QStyleOptionViewItem, other: QStyleOptionViewItem): QStyleOptionViewItem =
+  gen_qstyleoption_types.QStyleOptionViewItem.init(fcQStyleOptionViewItem_new())
+proc create*(T: type gen_qstyleoption_types.QStyleOptionViewItem, other: gen_qstyleoption_types.QStyleOptionViewItem): gen_qstyleoption_types.QStyleOptionViewItem =
 
-  QStyleOptionViewItem.init(fcQStyleOptionViewItem_new2(other.h))
-proc delete*(self: QStyleOptionViewItem) =
+  gen_qstyleoption_types.QStyleOptionViewItem.init(fcQStyleOptionViewItem_new2(other.h))
+proc delete*(self: gen_qstyleoption_types.QStyleOptionViewItem) =
   fcQStyleOptionViewItem_delete(self.h)
 
-func init*(T: type QStyleOptionToolBox, h: ptr cQStyleOptionToolBox): QStyleOptionToolBox =
+func init*(T: type gen_qstyleoption_types.QStyleOptionToolBox, h: ptr cQStyleOptionToolBox): gen_qstyleoption_types.QStyleOptionToolBox =
   T(h: h)
-proc create*(T: type QStyleOptionToolBox, ): QStyleOptionToolBox =
+proc create*(T: type gen_qstyleoption_types.QStyleOptionToolBox, ): gen_qstyleoption_types.QStyleOptionToolBox =
 
-  QStyleOptionToolBox.init(fcQStyleOptionToolBox_new())
-proc create*(T: type QStyleOptionToolBox, other: QStyleOptionToolBox): QStyleOptionToolBox =
+  gen_qstyleoption_types.QStyleOptionToolBox.init(fcQStyleOptionToolBox_new())
+proc create*(T: type gen_qstyleoption_types.QStyleOptionToolBox, other: gen_qstyleoption_types.QStyleOptionToolBox): gen_qstyleoption_types.QStyleOptionToolBox =
 
-  QStyleOptionToolBox.init(fcQStyleOptionToolBox_new2(other.h))
-proc delete*(self: QStyleOptionToolBox) =
+  gen_qstyleoption_types.QStyleOptionToolBox.init(fcQStyleOptionToolBox_new2(other.h))
+proc delete*(self: gen_qstyleoption_types.QStyleOptionToolBox) =
   fcQStyleOptionToolBox_delete(self.h)
 
-func init*(T: type QStyleOptionRubberBand, h: ptr cQStyleOptionRubberBand): QStyleOptionRubberBand =
+func init*(T: type gen_qstyleoption_types.QStyleOptionRubberBand, h: ptr cQStyleOptionRubberBand): gen_qstyleoption_types.QStyleOptionRubberBand =
   T(h: h)
-proc create*(T: type QStyleOptionRubberBand, ): QStyleOptionRubberBand =
+proc create*(T: type gen_qstyleoption_types.QStyleOptionRubberBand, ): gen_qstyleoption_types.QStyleOptionRubberBand =
 
-  QStyleOptionRubberBand.init(fcQStyleOptionRubberBand_new())
-proc create*(T: type QStyleOptionRubberBand, other: QStyleOptionRubberBand): QStyleOptionRubberBand =
+  gen_qstyleoption_types.QStyleOptionRubberBand.init(fcQStyleOptionRubberBand_new())
+proc create*(T: type gen_qstyleoption_types.QStyleOptionRubberBand, other: gen_qstyleoption_types.QStyleOptionRubberBand): gen_qstyleoption_types.QStyleOptionRubberBand =
 
-  QStyleOptionRubberBand.init(fcQStyleOptionRubberBand_new2(other.h))
-proc delete*(self: QStyleOptionRubberBand) =
+  gen_qstyleoption_types.QStyleOptionRubberBand.init(fcQStyleOptionRubberBand_new2(other.h))
+proc delete*(self: gen_qstyleoption_types.QStyleOptionRubberBand) =
   fcQStyleOptionRubberBand_delete(self.h)
 
-func init*(T: type QStyleOptionComplex, h: ptr cQStyleOptionComplex): QStyleOptionComplex =
+func init*(T: type gen_qstyleoption_types.QStyleOptionComplex, h: ptr cQStyleOptionComplex): gen_qstyleoption_types.QStyleOptionComplex =
   T(h: h)
-proc create*(T: type QStyleOptionComplex, ): QStyleOptionComplex =
+proc create*(T: type gen_qstyleoption_types.QStyleOptionComplex, ): gen_qstyleoption_types.QStyleOptionComplex =
 
-  QStyleOptionComplex.init(fcQStyleOptionComplex_new())
-proc create*(T: type QStyleOptionComplex, other: QStyleOptionComplex): QStyleOptionComplex =
+  gen_qstyleoption_types.QStyleOptionComplex.init(fcQStyleOptionComplex_new())
+proc create*(T: type gen_qstyleoption_types.QStyleOptionComplex, other: gen_qstyleoption_types.QStyleOptionComplex): gen_qstyleoption_types.QStyleOptionComplex =
 
-  QStyleOptionComplex.init(fcQStyleOptionComplex_new2(other.h))
-proc create*(T: type QStyleOptionComplex, version: cint): QStyleOptionComplex =
+  gen_qstyleoption_types.QStyleOptionComplex.init(fcQStyleOptionComplex_new2(other.h))
+proc create*(T: type gen_qstyleoption_types.QStyleOptionComplex, version: cint): gen_qstyleoption_types.QStyleOptionComplex =
 
-  QStyleOptionComplex.init(fcQStyleOptionComplex_new3(version))
-proc create*(T: type QStyleOptionComplex, version: cint, typeVal: cint): QStyleOptionComplex =
+  gen_qstyleoption_types.QStyleOptionComplex.init(fcQStyleOptionComplex_new3(version))
+proc create*(T: type gen_qstyleoption_types.QStyleOptionComplex, version: cint, typeVal: cint): gen_qstyleoption_types.QStyleOptionComplex =
 
-  QStyleOptionComplex.init(fcQStyleOptionComplex_new4(version, typeVal))
-proc delete*(self: QStyleOptionComplex) =
+  gen_qstyleoption_types.QStyleOptionComplex.init(fcQStyleOptionComplex_new4(version, typeVal))
+proc delete*(self: gen_qstyleoption_types.QStyleOptionComplex) =
   fcQStyleOptionComplex_delete(self.h)
 
-func init*(T: type QStyleOptionSlider, h: ptr cQStyleOptionSlider): QStyleOptionSlider =
+func init*(T: type gen_qstyleoption_types.QStyleOptionSlider, h: ptr cQStyleOptionSlider): gen_qstyleoption_types.QStyleOptionSlider =
   T(h: h)
-proc create*(T: type QStyleOptionSlider, ): QStyleOptionSlider =
+proc create*(T: type gen_qstyleoption_types.QStyleOptionSlider, ): gen_qstyleoption_types.QStyleOptionSlider =
 
-  QStyleOptionSlider.init(fcQStyleOptionSlider_new())
-proc create*(T: type QStyleOptionSlider, other: QStyleOptionSlider): QStyleOptionSlider =
+  gen_qstyleoption_types.QStyleOptionSlider.init(fcQStyleOptionSlider_new())
+proc create*(T: type gen_qstyleoption_types.QStyleOptionSlider, other: gen_qstyleoption_types.QStyleOptionSlider): gen_qstyleoption_types.QStyleOptionSlider =
 
-  QStyleOptionSlider.init(fcQStyleOptionSlider_new2(other.h))
-proc delete*(self: QStyleOptionSlider) =
+  gen_qstyleoption_types.QStyleOptionSlider.init(fcQStyleOptionSlider_new2(other.h))
+proc delete*(self: gen_qstyleoption_types.QStyleOptionSlider) =
   fcQStyleOptionSlider_delete(self.h)
 
-func init*(T: type QStyleOptionSpinBox, h: ptr cQStyleOptionSpinBox): QStyleOptionSpinBox =
+func init*(T: type gen_qstyleoption_types.QStyleOptionSpinBox, h: ptr cQStyleOptionSpinBox): gen_qstyleoption_types.QStyleOptionSpinBox =
   T(h: h)
-proc create*(T: type QStyleOptionSpinBox, ): QStyleOptionSpinBox =
+proc create*(T: type gen_qstyleoption_types.QStyleOptionSpinBox, ): gen_qstyleoption_types.QStyleOptionSpinBox =
 
-  QStyleOptionSpinBox.init(fcQStyleOptionSpinBox_new())
-proc create*(T: type QStyleOptionSpinBox, other: QStyleOptionSpinBox): QStyleOptionSpinBox =
+  gen_qstyleoption_types.QStyleOptionSpinBox.init(fcQStyleOptionSpinBox_new())
+proc create*(T: type gen_qstyleoption_types.QStyleOptionSpinBox, other: gen_qstyleoption_types.QStyleOptionSpinBox): gen_qstyleoption_types.QStyleOptionSpinBox =
 
-  QStyleOptionSpinBox.init(fcQStyleOptionSpinBox_new2(other.h))
-proc delete*(self: QStyleOptionSpinBox) =
+  gen_qstyleoption_types.QStyleOptionSpinBox.init(fcQStyleOptionSpinBox_new2(other.h))
+proc delete*(self: gen_qstyleoption_types.QStyleOptionSpinBox) =
   fcQStyleOptionSpinBox_delete(self.h)
 
-func init*(T: type QStyleOptionToolButton, h: ptr cQStyleOptionToolButton): QStyleOptionToolButton =
+func init*(T: type gen_qstyleoption_types.QStyleOptionToolButton, h: ptr cQStyleOptionToolButton): gen_qstyleoption_types.QStyleOptionToolButton =
   T(h: h)
-proc create*(T: type QStyleOptionToolButton, ): QStyleOptionToolButton =
+proc create*(T: type gen_qstyleoption_types.QStyleOptionToolButton, ): gen_qstyleoption_types.QStyleOptionToolButton =
 
-  QStyleOptionToolButton.init(fcQStyleOptionToolButton_new())
-proc create*(T: type QStyleOptionToolButton, other: QStyleOptionToolButton): QStyleOptionToolButton =
+  gen_qstyleoption_types.QStyleOptionToolButton.init(fcQStyleOptionToolButton_new())
+proc create*(T: type gen_qstyleoption_types.QStyleOptionToolButton, other: gen_qstyleoption_types.QStyleOptionToolButton): gen_qstyleoption_types.QStyleOptionToolButton =
 
-  QStyleOptionToolButton.init(fcQStyleOptionToolButton_new2(other.h))
-proc delete*(self: QStyleOptionToolButton) =
+  gen_qstyleoption_types.QStyleOptionToolButton.init(fcQStyleOptionToolButton_new2(other.h))
+proc delete*(self: gen_qstyleoption_types.QStyleOptionToolButton) =
   fcQStyleOptionToolButton_delete(self.h)
 
-func init*(T: type QStyleOptionComboBox, h: ptr cQStyleOptionComboBox): QStyleOptionComboBox =
+func init*(T: type gen_qstyleoption_types.QStyleOptionComboBox, h: ptr cQStyleOptionComboBox): gen_qstyleoption_types.QStyleOptionComboBox =
   T(h: h)
-proc create*(T: type QStyleOptionComboBox, ): QStyleOptionComboBox =
+proc create*(T: type gen_qstyleoption_types.QStyleOptionComboBox, ): gen_qstyleoption_types.QStyleOptionComboBox =
 
-  QStyleOptionComboBox.init(fcQStyleOptionComboBox_new())
-proc create*(T: type QStyleOptionComboBox, other: QStyleOptionComboBox): QStyleOptionComboBox =
+  gen_qstyleoption_types.QStyleOptionComboBox.init(fcQStyleOptionComboBox_new())
+proc create*(T: type gen_qstyleoption_types.QStyleOptionComboBox, other: gen_qstyleoption_types.QStyleOptionComboBox): gen_qstyleoption_types.QStyleOptionComboBox =
 
-  QStyleOptionComboBox.init(fcQStyleOptionComboBox_new2(other.h))
-proc delete*(self: QStyleOptionComboBox) =
+  gen_qstyleoption_types.QStyleOptionComboBox.init(fcQStyleOptionComboBox_new2(other.h))
+proc delete*(self: gen_qstyleoption_types.QStyleOptionComboBox) =
   fcQStyleOptionComboBox_delete(self.h)
 
-func init*(T: type QStyleOptionTitleBar, h: ptr cQStyleOptionTitleBar): QStyleOptionTitleBar =
+func init*(T: type gen_qstyleoption_types.QStyleOptionTitleBar, h: ptr cQStyleOptionTitleBar): gen_qstyleoption_types.QStyleOptionTitleBar =
   T(h: h)
-proc create*(T: type QStyleOptionTitleBar, ): QStyleOptionTitleBar =
+proc create*(T: type gen_qstyleoption_types.QStyleOptionTitleBar, ): gen_qstyleoption_types.QStyleOptionTitleBar =
 
-  QStyleOptionTitleBar.init(fcQStyleOptionTitleBar_new())
-proc create*(T: type QStyleOptionTitleBar, other: QStyleOptionTitleBar): QStyleOptionTitleBar =
+  gen_qstyleoption_types.QStyleOptionTitleBar.init(fcQStyleOptionTitleBar_new())
+proc create*(T: type gen_qstyleoption_types.QStyleOptionTitleBar, other: gen_qstyleoption_types.QStyleOptionTitleBar): gen_qstyleoption_types.QStyleOptionTitleBar =
 
-  QStyleOptionTitleBar.init(fcQStyleOptionTitleBar_new2(other.h))
-proc delete*(self: QStyleOptionTitleBar) =
+  gen_qstyleoption_types.QStyleOptionTitleBar.init(fcQStyleOptionTitleBar_new2(other.h))
+proc delete*(self: gen_qstyleoption_types.QStyleOptionTitleBar) =
   fcQStyleOptionTitleBar_delete(self.h)
 
-func init*(T: type QStyleOptionGroupBox, h: ptr cQStyleOptionGroupBox): QStyleOptionGroupBox =
+func init*(T: type gen_qstyleoption_types.QStyleOptionGroupBox, h: ptr cQStyleOptionGroupBox): gen_qstyleoption_types.QStyleOptionGroupBox =
   T(h: h)
-proc create*(T: type QStyleOptionGroupBox, ): QStyleOptionGroupBox =
+proc create*(T: type gen_qstyleoption_types.QStyleOptionGroupBox, ): gen_qstyleoption_types.QStyleOptionGroupBox =
 
-  QStyleOptionGroupBox.init(fcQStyleOptionGroupBox_new())
-proc create*(T: type QStyleOptionGroupBox, other: QStyleOptionGroupBox): QStyleOptionGroupBox =
+  gen_qstyleoption_types.QStyleOptionGroupBox.init(fcQStyleOptionGroupBox_new())
+proc create*(T: type gen_qstyleoption_types.QStyleOptionGroupBox, other: gen_qstyleoption_types.QStyleOptionGroupBox): gen_qstyleoption_types.QStyleOptionGroupBox =
 
-  QStyleOptionGroupBox.init(fcQStyleOptionGroupBox_new2(other.h))
-proc delete*(self: QStyleOptionGroupBox) =
+  gen_qstyleoption_types.QStyleOptionGroupBox.init(fcQStyleOptionGroupBox_new2(other.h))
+proc delete*(self: gen_qstyleoption_types.QStyleOptionGroupBox) =
   fcQStyleOptionGroupBox_delete(self.h)
 
-func init*(T: type QStyleOptionSizeGrip, h: ptr cQStyleOptionSizeGrip): QStyleOptionSizeGrip =
+func init*(T: type gen_qstyleoption_types.QStyleOptionSizeGrip, h: ptr cQStyleOptionSizeGrip): gen_qstyleoption_types.QStyleOptionSizeGrip =
   T(h: h)
-proc create*(T: type QStyleOptionSizeGrip, ): QStyleOptionSizeGrip =
+proc create*(T: type gen_qstyleoption_types.QStyleOptionSizeGrip, ): gen_qstyleoption_types.QStyleOptionSizeGrip =
 
-  QStyleOptionSizeGrip.init(fcQStyleOptionSizeGrip_new())
-proc create*(T: type QStyleOptionSizeGrip, other: QStyleOptionSizeGrip): QStyleOptionSizeGrip =
+  gen_qstyleoption_types.QStyleOptionSizeGrip.init(fcQStyleOptionSizeGrip_new())
+proc create*(T: type gen_qstyleoption_types.QStyleOptionSizeGrip, other: gen_qstyleoption_types.QStyleOptionSizeGrip): gen_qstyleoption_types.QStyleOptionSizeGrip =
 
-  QStyleOptionSizeGrip.init(fcQStyleOptionSizeGrip_new2(other.h))
-proc delete*(self: QStyleOptionSizeGrip) =
+  gen_qstyleoption_types.QStyleOptionSizeGrip.init(fcQStyleOptionSizeGrip_new2(other.h))
+proc delete*(self: gen_qstyleoption_types.QStyleOptionSizeGrip) =
   fcQStyleOptionSizeGrip_delete(self.h)
 
-func init*(T: type QStyleOptionGraphicsItem, h: ptr cQStyleOptionGraphicsItem): QStyleOptionGraphicsItem =
+func init*(T: type gen_qstyleoption_types.QStyleOptionGraphicsItem, h: ptr cQStyleOptionGraphicsItem): gen_qstyleoption_types.QStyleOptionGraphicsItem =
   T(h: h)
-proc create*(T: type QStyleOptionGraphicsItem, ): QStyleOptionGraphicsItem =
+proc create*(T: type gen_qstyleoption_types.QStyleOptionGraphicsItem, ): gen_qstyleoption_types.QStyleOptionGraphicsItem =
 
-  QStyleOptionGraphicsItem.init(fcQStyleOptionGraphicsItem_new())
-proc create*(T: type QStyleOptionGraphicsItem, other: QStyleOptionGraphicsItem): QStyleOptionGraphicsItem =
+  gen_qstyleoption_types.QStyleOptionGraphicsItem.init(fcQStyleOptionGraphicsItem_new())
+proc create*(T: type gen_qstyleoption_types.QStyleOptionGraphicsItem, other: gen_qstyleoption_types.QStyleOptionGraphicsItem): gen_qstyleoption_types.QStyleOptionGraphicsItem =
 
-  QStyleOptionGraphicsItem.init(fcQStyleOptionGraphicsItem_new2(other.h))
-proc levelOfDetailFromTransform*(_: type QStyleOptionGraphicsItem, worldTransform: gen_qtransform.QTransform): float64 =
+  gen_qstyleoption_types.QStyleOptionGraphicsItem.init(fcQStyleOptionGraphicsItem_new2(other.h))
+proc levelOfDetailFromTransform*(_: type gen_qstyleoption_types.QStyleOptionGraphicsItem, worldTransform: gen_qtransform.QTransform): float64 =
 
   fcQStyleOptionGraphicsItem_levelOfDetailFromTransform(worldTransform.h)
 
-proc delete*(self: QStyleOptionGraphicsItem) =
+proc delete*(self: gen_qstyleoption_types.QStyleOptionGraphicsItem) =
   fcQStyleOptionGraphicsItem_delete(self.h)
 
-func init*(T: type QStyleHintReturn, h: ptr cQStyleHintReturn): QStyleHintReturn =
+func init*(T: type gen_qstyleoption_types.QStyleHintReturn, h: ptr cQStyleHintReturn): gen_qstyleoption_types.QStyleHintReturn =
   T(h: h)
-proc create*(T: type QStyleHintReturn, ): QStyleHintReturn =
+proc create*(T: type gen_qstyleoption_types.QStyleHintReturn, ): gen_qstyleoption_types.QStyleHintReturn =
 
-  QStyleHintReturn.init(fcQStyleHintReturn_new())
-proc create*(T: type QStyleHintReturn, param1: QStyleHintReturn): QStyleHintReturn =
+  gen_qstyleoption_types.QStyleHintReturn.init(fcQStyleHintReturn_new())
+proc create*(T: type gen_qstyleoption_types.QStyleHintReturn, param1: gen_qstyleoption_types.QStyleHintReturn): gen_qstyleoption_types.QStyleHintReturn =
 
-  QStyleHintReturn.init(fcQStyleHintReturn_new2(param1.h))
-proc create*(T: type QStyleHintReturn, version: cint): QStyleHintReturn =
+  gen_qstyleoption_types.QStyleHintReturn.init(fcQStyleHintReturn_new2(param1.h))
+proc create*(T: type gen_qstyleoption_types.QStyleHintReturn, version: cint): gen_qstyleoption_types.QStyleHintReturn =
 
-  QStyleHintReturn.init(fcQStyleHintReturn_new3(version))
-proc create*(T: type QStyleHintReturn, version: cint, typeVal: cint): QStyleHintReturn =
+  gen_qstyleoption_types.QStyleHintReturn.init(fcQStyleHintReturn_new3(version))
+proc create*(T: type gen_qstyleoption_types.QStyleHintReturn, version: cint, typeVal: cint): gen_qstyleoption_types.QStyleHintReturn =
 
-  QStyleHintReturn.init(fcQStyleHintReturn_new4(version, typeVal))
-proc operatorAssign*(self: QStyleHintReturn, param1: QStyleHintReturn): void =
+  gen_qstyleoption_types.QStyleHintReturn.init(fcQStyleHintReturn_new4(version, typeVal))
+proc operatorAssign*(self: gen_qstyleoption_types.QStyleHintReturn, param1: gen_qstyleoption_types.QStyleHintReturn): void =
 
   fcQStyleHintReturn_operatorAssign(self.h, param1.h)
 
-proc delete*(self: QStyleHintReturn) =
+proc delete*(self: gen_qstyleoption_types.QStyleHintReturn) =
   fcQStyleHintReturn_delete(self.h)
 
-func init*(T: type QStyleHintReturnMask, h: ptr cQStyleHintReturnMask): QStyleHintReturnMask =
+func init*(T: type gen_qstyleoption_types.QStyleHintReturnMask, h: ptr cQStyleHintReturnMask): gen_qstyleoption_types.QStyleHintReturnMask =
   T(h: h)
-proc create*(T: type QStyleHintReturnMask, ): QStyleHintReturnMask =
+proc create*(T: type gen_qstyleoption_types.QStyleHintReturnMask, ): gen_qstyleoption_types.QStyleHintReturnMask =
 
-  QStyleHintReturnMask.init(fcQStyleHintReturnMask_new())
-proc create*(T: type QStyleHintReturnMask, param1: QStyleHintReturnMask): QStyleHintReturnMask =
+  gen_qstyleoption_types.QStyleHintReturnMask.init(fcQStyleHintReturnMask_new())
+proc create*(T: type gen_qstyleoption_types.QStyleHintReturnMask, param1: gen_qstyleoption_types.QStyleHintReturnMask): gen_qstyleoption_types.QStyleHintReturnMask =
 
-  QStyleHintReturnMask.init(fcQStyleHintReturnMask_new2(param1.h))
-proc operatorAssign*(self: QStyleHintReturnMask, param1: QStyleHintReturnMask): void =
+  gen_qstyleoption_types.QStyleHintReturnMask.init(fcQStyleHintReturnMask_new2(param1.h))
+proc operatorAssign*(self: gen_qstyleoption_types.QStyleHintReturnMask, param1: gen_qstyleoption_types.QStyleHintReturnMask): void =
 
   fcQStyleHintReturnMask_operatorAssign(self.h, param1.h)
 
-proc delete*(self: QStyleHintReturnMask) =
+proc delete*(self: gen_qstyleoption_types.QStyleHintReturnMask) =
   fcQStyleHintReturnMask_delete(self.h)
 
-func init*(T: type QStyleHintReturnVariant, h: ptr cQStyleHintReturnVariant): QStyleHintReturnVariant =
+func init*(T: type gen_qstyleoption_types.QStyleHintReturnVariant, h: ptr cQStyleHintReturnVariant): gen_qstyleoption_types.QStyleHintReturnVariant =
   T(h: h)
-proc create*(T: type QStyleHintReturnVariant, ): QStyleHintReturnVariant =
+proc create*(T: type gen_qstyleoption_types.QStyleHintReturnVariant, ): gen_qstyleoption_types.QStyleHintReturnVariant =
 
-  QStyleHintReturnVariant.init(fcQStyleHintReturnVariant_new())
-proc create*(T: type QStyleHintReturnVariant, param1: QStyleHintReturnVariant): QStyleHintReturnVariant =
+  gen_qstyleoption_types.QStyleHintReturnVariant.init(fcQStyleHintReturnVariant_new())
+proc create*(T: type gen_qstyleoption_types.QStyleHintReturnVariant, param1: gen_qstyleoption_types.QStyleHintReturnVariant): gen_qstyleoption_types.QStyleHintReturnVariant =
 
-  QStyleHintReturnVariant.init(fcQStyleHintReturnVariant_new2(param1.h))
-proc operatorAssign*(self: QStyleHintReturnVariant, param1: QStyleHintReturnVariant): void =
+  gen_qstyleoption_types.QStyleHintReturnVariant.init(fcQStyleHintReturnVariant_new2(param1.h))
+proc operatorAssign*(self: gen_qstyleoption_types.QStyleHintReturnVariant, param1: gen_qstyleoption_types.QStyleHintReturnVariant): void =
 
   fcQStyleHintReturnVariant_operatorAssign(self.h, param1.h)
 
-proc delete*(self: QStyleHintReturnVariant) =
+proc delete*(self: gen_qstyleoption_types.QStyleHintReturnVariant) =
   fcQStyleHintReturnVariant_delete(self.h)

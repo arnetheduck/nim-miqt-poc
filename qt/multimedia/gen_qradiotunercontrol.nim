@@ -39,12 +39,10 @@ export gen_qradiotunercontrol_types
 
 import
   gen_qmediacontrol,
-  gen_qobjectdefs,
-  gen_qradiotuner
+  gen_qobjectdefs
 export
   gen_qmediacontrol,
-  gen_qobjectdefs,
-  gen_qradiotuner
+  gen_qobjectdefs
 
 type cQRadioTunerControl*{.exportc: "QRadioTunerControl", incompleteStruct.} = object
 
@@ -109,59 +107,59 @@ proc fcQRadioTunerControl_staticMetaObject(): pointer {.importc: "QRadioTunerCon
 proc fcQRadioTunerControl_delete(self: pointer) {.importc: "QRadioTunerControl_delete".}
 
 
-func init*(T: type QRadioTunerControl, h: ptr cQRadioTunerControl): QRadioTunerControl =
+func init*(T: type gen_qradiotunercontrol_types.QRadioTunerControl, h: ptr cQRadioTunerControl): gen_qradiotunercontrol_types.QRadioTunerControl =
   T(h: h)
-proc metaObject*(self: QRadioTunerControl, ): gen_qobjectdefs.QMetaObject =
+proc metaObject*(self: gen_qradiotunercontrol_types.QRadioTunerControl, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQRadioTunerControl_metaObject(self.h))
 
-proc metacast*(self: QRadioTunerControl, param1: cstring): pointer =
+proc metacast*(self: gen_qradiotunercontrol_types.QRadioTunerControl, param1: cstring): pointer =
 
   fcQRadioTunerControl_metacast(self.h, param1)
 
-proc metacall*(self: QRadioTunerControl, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qradiotunercontrol_types.QRadioTunerControl, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQRadioTunerControl_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QRadioTunerControl, s: cstring): string =
+proc tr*(_: type gen_qradiotunercontrol_types.QRadioTunerControl, s: cstring): string =
 
   let v_ms = fcQRadioTunerControl_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QRadioTunerControl, s: cstring): string =
+proc trUtf8*(_: type gen_qradiotunercontrol_types.QRadioTunerControl, s: cstring): string =
 
   let v_ms = fcQRadioTunerControl_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc state*(self: QRadioTunerControl, ): gen_qradiotuner.QRadioTunerState =
+proc state*(self: gen_qradiotunercontrol_types.QRadioTunerControl, ): cint =
 
-  gen_qradiotuner.QRadioTunerState(fcQRadioTunerControl_state(self.h))
+  cint(fcQRadioTunerControl_state(self.h))
 
-proc band*(self: QRadioTunerControl, ): gen_qradiotuner.QRadioTunerBand =
+proc band*(self: gen_qradiotunercontrol_types.QRadioTunerControl, ): cint =
 
-  gen_qradiotuner.QRadioTunerBand(fcQRadioTunerControl_band(self.h))
+  cint(fcQRadioTunerControl_band(self.h))
 
-proc setBand*(self: QRadioTunerControl, b: gen_qradiotuner.QRadioTunerBand): void =
+proc setBand*(self: gen_qradiotunercontrol_types.QRadioTunerControl, b: cint): void =
 
   fcQRadioTunerControl_setBand(self.h, cint(b))
 
-proc isBandSupported*(self: QRadioTunerControl, b: gen_qradiotuner.QRadioTunerBand): bool =
+proc isBandSupported*(self: gen_qradiotunercontrol_types.QRadioTunerControl, b: cint): bool =
 
   fcQRadioTunerControl_isBandSupported(self.h, cint(b))
 
-proc frequency*(self: QRadioTunerControl, ): cint =
+proc frequency*(self: gen_qradiotunercontrol_types.QRadioTunerControl, ): cint =
 
   fcQRadioTunerControl_frequency(self.h)
 
-proc frequencyStep*(self: QRadioTunerControl, b: gen_qradiotuner.QRadioTunerBand): cint =
+proc frequencyStep*(self: gen_qradiotunercontrol_types.QRadioTunerControl, b: cint): cint =
 
   fcQRadioTunerControl_frequencyStep(self.h, cint(b))
 
-proc frequencyRange*(self: QRadioTunerControl, b: gen_qradiotuner.QRadioTunerBand): tuple[first: cint, second: cint] =
+proc frequencyRange*(self: gen_qradiotunercontrol_types.QRadioTunerControl, b: cint): tuple[first: cint, second: cint] =
 
   var v_mm = fcQRadioTunerControl_frequencyRange(self.h, cint(b))
   var v_First_CArray = cast[ptr UncheckedArray[cint]](v_mm.keys)
@@ -172,122 +170,122 @@ proc frequencyRange*(self: QRadioTunerControl, b: gen_qradiotuner.QRadioTunerBan
 
   (first: v_entry_First , second: v_entry_Second )
 
-proc setFrequency*(self: QRadioTunerControl, frequency: cint): void =
+proc setFrequency*(self: gen_qradiotunercontrol_types.QRadioTunerControl, frequency: cint): void =
 
   fcQRadioTunerControl_setFrequency(self.h, frequency)
 
-proc isStereo*(self: QRadioTunerControl, ): bool =
+proc isStereo*(self: gen_qradiotunercontrol_types.QRadioTunerControl, ): bool =
 
   fcQRadioTunerControl_isStereo(self.h)
 
-proc stereoMode*(self: QRadioTunerControl, ): gen_qradiotuner.QRadioTunerStereoMode =
+proc stereoMode*(self: gen_qradiotunercontrol_types.QRadioTunerControl, ): cint =
 
-  gen_qradiotuner.QRadioTunerStereoMode(fcQRadioTunerControl_stereoMode(self.h))
+  cint(fcQRadioTunerControl_stereoMode(self.h))
 
-proc setStereoMode*(self: QRadioTunerControl, mode: gen_qradiotuner.QRadioTunerStereoMode): void =
+proc setStereoMode*(self: gen_qradiotunercontrol_types.QRadioTunerControl, mode: cint): void =
 
   fcQRadioTunerControl_setStereoMode(self.h, cint(mode))
 
-proc signalStrength*(self: QRadioTunerControl, ): cint =
+proc signalStrength*(self: gen_qradiotunercontrol_types.QRadioTunerControl, ): cint =
 
   fcQRadioTunerControl_signalStrength(self.h)
 
-proc volume*(self: QRadioTunerControl, ): cint =
+proc volume*(self: gen_qradiotunercontrol_types.QRadioTunerControl, ): cint =
 
   fcQRadioTunerControl_volume(self.h)
 
-proc setVolume*(self: QRadioTunerControl, volume: cint): void =
+proc setVolume*(self: gen_qradiotunercontrol_types.QRadioTunerControl, volume: cint): void =
 
   fcQRadioTunerControl_setVolume(self.h, volume)
 
-proc isMuted*(self: QRadioTunerControl, ): bool =
+proc isMuted*(self: gen_qradiotunercontrol_types.QRadioTunerControl, ): bool =
 
   fcQRadioTunerControl_isMuted(self.h)
 
-proc setMuted*(self: QRadioTunerControl, muted: bool): void =
+proc setMuted*(self: gen_qradiotunercontrol_types.QRadioTunerControl, muted: bool): void =
 
   fcQRadioTunerControl_setMuted(self.h, muted)
 
-proc isSearching*(self: QRadioTunerControl, ): bool =
+proc isSearching*(self: gen_qradiotunercontrol_types.QRadioTunerControl, ): bool =
 
   fcQRadioTunerControl_isSearching(self.h)
 
-proc isAntennaConnected*(self: QRadioTunerControl, ): bool =
+proc isAntennaConnected*(self: gen_qradiotunercontrol_types.QRadioTunerControl, ): bool =
 
   fcQRadioTunerControl_isAntennaConnected(self.h)
 
-proc searchForward*(self: QRadioTunerControl, ): void =
+proc searchForward*(self: gen_qradiotunercontrol_types.QRadioTunerControl, ): void =
 
   fcQRadioTunerControl_searchForward(self.h)
 
-proc searchBackward*(self: QRadioTunerControl, ): void =
+proc searchBackward*(self: gen_qradiotunercontrol_types.QRadioTunerControl, ): void =
 
   fcQRadioTunerControl_searchBackward(self.h)
 
-proc searchAllStations*(self: QRadioTunerControl, searchMode: gen_qradiotuner.QRadioTunerSearchMode): void =
+proc searchAllStations*(self: gen_qradiotunercontrol_types.QRadioTunerControl, searchMode: cint): void =
 
   fcQRadioTunerControl_searchAllStations(self.h, cint(searchMode))
 
-proc cancelSearch*(self: QRadioTunerControl, ): void =
+proc cancelSearch*(self: gen_qradiotunercontrol_types.QRadioTunerControl, ): void =
 
   fcQRadioTunerControl_cancelSearch(self.h)
 
-proc start*(self: QRadioTunerControl, ): void =
+proc start*(self: gen_qradiotunercontrol_types.QRadioTunerControl, ): void =
 
   fcQRadioTunerControl_start(self.h)
 
-proc stop*(self: QRadioTunerControl, ): void =
+proc stop*(self: gen_qradiotunercontrol_types.QRadioTunerControl, ): void =
 
   fcQRadioTunerControl_stop(self.h)
 
-proc error*(self: QRadioTunerControl, ): gen_qradiotuner.QRadioTunerError =
+proc error*(self: gen_qradiotunercontrol_types.QRadioTunerControl, ): cint =
 
-  gen_qradiotuner.QRadioTunerError(fcQRadioTunerControl_error(self.h))
+  cint(fcQRadioTunerControl_error(self.h))
 
-proc errorString*(self: QRadioTunerControl, ): string =
+proc errorString*(self: gen_qradiotunercontrol_types.QRadioTunerControl, ): string =
 
   let v_ms = fcQRadioTunerControl_errorString(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc stateChanged*(self: QRadioTunerControl, state: gen_qradiotuner.QRadioTunerState): void =
+proc stateChanged*(self: gen_qradiotunercontrol_types.QRadioTunerControl, state: cint): void =
 
   fcQRadioTunerControl_stateChanged(self.h, cint(state))
 
 proc miqt_exec_callback_QRadioTunerControl_stateChanged(slot: int, state: cint) {.exportc.} =
-  type Cb = proc(state: gen_qradiotuner.QRadioTunerState)
+  type Cb = proc(state: cint)
   let nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = gen_qradiotuner.QRadioTunerState(state)
+  let slotval1 = cint(state)
 
 
   nimfunc[](slotval1)
 
-proc onstateChanged*(self: QRadioTunerControl, slot: proc(state: gen_qradiotuner.QRadioTunerState)) =
-  type Cb = proc(state: gen_qradiotuner.QRadioTunerState)
+proc onstateChanged*(self: gen_qradiotunercontrol_types.QRadioTunerControl, slot: proc(state: cint)) =
+  type Cb = proc(state: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQRadioTunerControl_connect_stateChanged(self.h, cast[int](addr tmp[]))
-proc bandChanged*(self: QRadioTunerControl, band: gen_qradiotuner.QRadioTunerBand): void =
+proc bandChanged*(self: gen_qradiotunercontrol_types.QRadioTunerControl, band: cint): void =
 
   fcQRadioTunerControl_bandChanged(self.h, cint(band))
 
 proc miqt_exec_callback_QRadioTunerControl_bandChanged(slot: int, band: cint) {.exportc.} =
-  type Cb = proc(band: gen_qradiotuner.QRadioTunerBand)
+  type Cb = proc(band: cint)
   let nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = gen_qradiotuner.QRadioTunerBand(band)
+  let slotval1 = cint(band)
 
 
   nimfunc[](slotval1)
 
-proc onbandChanged*(self: QRadioTunerControl, slot: proc(band: gen_qradiotuner.QRadioTunerBand)) =
-  type Cb = proc(band: gen_qradiotuner.QRadioTunerBand)
+proc onbandChanged*(self: gen_qradiotunercontrol_types.QRadioTunerControl, slot: proc(band: cint)) =
+  type Cb = proc(band: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQRadioTunerControl_connect_bandChanged(self.h, cast[int](addr tmp[]))
-proc frequencyChanged*(self: QRadioTunerControl, frequency: cint): void =
+proc frequencyChanged*(self: gen_qradiotunercontrol_types.QRadioTunerControl, frequency: cint): void =
 
   fcQRadioTunerControl_frequencyChanged(self.h, frequency)
 
@@ -299,13 +297,13 @@ proc miqt_exec_callback_QRadioTunerControl_frequencyChanged(slot: int, frequency
 
   nimfunc[](slotval1)
 
-proc onfrequencyChanged*(self: QRadioTunerControl, slot: proc(frequency: cint)) =
+proc onfrequencyChanged*(self: gen_qradiotunercontrol_types.QRadioTunerControl, slot: proc(frequency: cint)) =
   type Cb = proc(frequency: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQRadioTunerControl_connect_frequencyChanged(self.h, cast[int](addr tmp[]))
-proc stereoStatusChanged*(self: QRadioTunerControl, stereo: bool): void =
+proc stereoStatusChanged*(self: gen_qradiotunercontrol_types.QRadioTunerControl, stereo: bool): void =
 
   fcQRadioTunerControl_stereoStatusChanged(self.h, stereo)
 
@@ -317,13 +315,13 @@ proc miqt_exec_callback_QRadioTunerControl_stereoStatusChanged(slot: int, stereo
 
   nimfunc[](slotval1)
 
-proc onstereoStatusChanged*(self: QRadioTunerControl, slot: proc(stereo: bool)) =
+proc onstereoStatusChanged*(self: gen_qradiotunercontrol_types.QRadioTunerControl, slot: proc(stereo: bool)) =
   type Cb = proc(stereo: bool)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQRadioTunerControl_connect_stereoStatusChanged(self.h, cast[int](addr tmp[]))
-proc searchingChanged*(self: QRadioTunerControl, searching: bool): void =
+proc searchingChanged*(self: gen_qradiotunercontrol_types.QRadioTunerControl, searching: bool): void =
 
   fcQRadioTunerControl_searchingChanged(self.h, searching)
 
@@ -335,13 +333,13 @@ proc miqt_exec_callback_QRadioTunerControl_searchingChanged(slot: int, searching
 
   nimfunc[](slotval1)
 
-proc onsearchingChanged*(self: QRadioTunerControl, slot: proc(searching: bool)) =
+proc onsearchingChanged*(self: gen_qradiotunercontrol_types.QRadioTunerControl, slot: proc(searching: bool)) =
   type Cb = proc(searching: bool)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQRadioTunerControl_connect_searchingChanged(self.h, cast[int](addr tmp[]))
-proc signalStrengthChanged*(self: QRadioTunerControl, signalStrength: cint): void =
+proc signalStrengthChanged*(self: gen_qradiotunercontrol_types.QRadioTunerControl, signalStrength: cint): void =
 
   fcQRadioTunerControl_signalStrengthChanged(self.h, signalStrength)
 
@@ -353,13 +351,13 @@ proc miqt_exec_callback_QRadioTunerControl_signalStrengthChanged(slot: int, sign
 
   nimfunc[](slotval1)
 
-proc onsignalStrengthChanged*(self: QRadioTunerControl, slot: proc(signalStrength: cint)) =
+proc onsignalStrengthChanged*(self: gen_qradiotunercontrol_types.QRadioTunerControl, slot: proc(signalStrength: cint)) =
   type Cb = proc(signalStrength: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQRadioTunerControl_connect_signalStrengthChanged(self.h, cast[int](addr tmp[]))
-proc volumeChanged*(self: QRadioTunerControl, volume: cint): void =
+proc volumeChanged*(self: gen_qradiotunercontrol_types.QRadioTunerControl, volume: cint): void =
 
   fcQRadioTunerControl_volumeChanged(self.h, volume)
 
@@ -371,13 +369,13 @@ proc miqt_exec_callback_QRadioTunerControl_volumeChanged(slot: int, volume: cint
 
   nimfunc[](slotval1)
 
-proc onvolumeChanged*(self: QRadioTunerControl, slot: proc(volume: cint)) =
+proc onvolumeChanged*(self: gen_qradiotunercontrol_types.QRadioTunerControl, slot: proc(volume: cint)) =
   type Cb = proc(volume: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQRadioTunerControl_connect_volumeChanged(self.h, cast[int](addr tmp[]))
-proc mutedChanged*(self: QRadioTunerControl, muted: bool): void =
+proc mutedChanged*(self: gen_qradiotunercontrol_types.QRadioTunerControl, muted: bool): void =
 
   fcQRadioTunerControl_mutedChanged(self.h, muted)
 
@@ -389,31 +387,31 @@ proc miqt_exec_callback_QRadioTunerControl_mutedChanged(slot: int, muted: bool) 
 
   nimfunc[](slotval1)
 
-proc onmutedChanged*(self: QRadioTunerControl, slot: proc(muted: bool)) =
+proc onmutedChanged*(self: gen_qradiotunercontrol_types.QRadioTunerControl, slot: proc(muted: bool)) =
   type Cb = proc(muted: bool)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQRadioTunerControl_connect_mutedChanged(self.h, cast[int](addr tmp[]))
-proc errorWithErr*(self: QRadioTunerControl, err: gen_qradiotuner.QRadioTunerError): void =
+proc errorWithErr*(self: gen_qradiotunercontrol_types.QRadioTunerControl, err: cint): void =
 
   fcQRadioTunerControl_errorWithErr(self.h, cint(err))
 
 proc miqt_exec_callback_QRadioTunerControl_errorWithErr(slot: int, err: cint) {.exportc.} =
-  type Cb = proc(err: gen_qradiotuner.QRadioTunerError)
+  type Cb = proc(err: cint)
   let nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = gen_qradiotuner.QRadioTunerError(err)
+  let slotval1 = cint(err)
 
 
   nimfunc[](slotval1)
 
-proc onerrorWithErr*(self: QRadioTunerControl, slot: proc(err: gen_qradiotuner.QRadioTunerError)) =
-  type Cb = proc(err: gen_qradiotuner.QRadioTunerError)
+proc onerrorWithErr*(self: gen_qradiotunercontrol_types.QRadioTunerControl, slot: proc(err: cint)) =
+  type Cb = proc(err: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQRadioTunerControl_connect_errorWithErr(self.h, cast[int](addr tmp[]))
-proc stationFound*(self: QRadioTunerControl, frequency: cint, stationId: string): void =
+proc stationFound*(self: gen_qradiotunercontrol_types.QRadioTunerControl, frequency: cint, stationId: string): void =
 
   fcQRadioTunerControl_stationFound(self.h, frequency, struct_miqt_string(data: stationId, len: csize_t(len(stationId))))
 
@@ -430,13 +428,13 @@ proc miqt_exec_callback_QRadioTunerControl_stationFound(slot: int, frequency: ci
 
   nimfunc[](slotval1, slotval2)
 
-proc onstationFound*(self: QRadioTunerControl, slot: proc(frequency: cint, stationId: string)) =
+proc onstationFound*(self: gen_qradiotunercontrol_types.QRadioTunerControl, slot: proc(frequency: cint, stationId: string)) =
   type Cb = proc(frequency: cint, stationId: string)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQRadioTunerControl_connect_stationFound(self.h, cast[int](addr tmp[]))
-proc antennaConnectedChanged*(self: QRadioTunerControl, connectionStatus: bool): void =
+proc antennaConnectedChanged*(self: gen_qradiotunercontrol_types.QRadioTunerControl, connectionStatus: bool): void =
 
   fcQRadioTunerControl_antennaConnectedChanged(self.h, connectionStatus)
 
@@ -448,41 +446,41 @@ proc miqt_exec_callback_QRadioTunerControl_antennaConnectedChanged(slot: int, co
 
   nimfunc[](slotval1)
 
-proc onantennaConnectedChanged*(self: QRadioTunerControl, slot: proc(connectionStatus: bool)) =
+proc onantennaConnectedChanged*(self: gen_qradiotunercontrol_types.QRadioTunerControl, slot: proc(connectionStatus: bool)) =
   type Cb = proc(connectionStatus: bool)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQRadioTunerControl_connect_antennaConnectedChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QRadioTunerControl, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qradiotunercontrol_types.QRadioTunerControl, s: cstring, c: cstring): string =
 
   let v_ms = fcQRadioTunerControl_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QRadioTunerControl, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qradiotunercontrol_types.QRadioTunerControl, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQRadioTunerControl_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QRadioTunerControl, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qradiotunercontrol_types.QRadioTunerControl, s: cstring, c: cstring): string =
 
   let v_ms = fcQRadioTunerControl_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QRadioTunerControl, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qradiotunercontrol_types.QRadioTunerControl, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQRadioTunerControl_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc staticMetaObject*(_: type QRadioTunerControl): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qradiotunercontrol_types.QRadioTunerControl): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQRadioTunerControl_staticMetaObject())
-proc delete*(self: QRadioTunerControl) =
+proc delete*(self: gen_qradiotunercontrol_types.QRadioTunerControl) =
   fcQRadioTunerControl_delete(self.h)

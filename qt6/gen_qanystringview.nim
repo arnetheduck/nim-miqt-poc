@@ -38,11 +38,9 @@ import gen_qanystringview_types
 export gen_qanystringview_types
 
 import
-  gen_qchar,
-  gen_qnamespace
+  gen_qchar
 export
-  gen_qchar,
-  gen_qnamespace
+  gen_qchar
 
 type cQAnyStringView*{.exportc: "QAnyStringView", incompleteStruct.} = object
 
@@ -67,77 +65,77 @@ proc fcQAnyStringView_compare3(lhs: pointer, rhs: pointer, cs: cint): cint {.imp
 proc fcQAnyStringView_delete(self: pointer) {.importc: "QAnyStringView_delete".}
 
 
-func init*(T: type QAnyStringView, h: ptr cQAnyStringView): QAnyStringView =
+func init*(T: type gen_qanystringview_types.QAnyStringView, h: ptr cQAnyStringView): gen_qanystringview_types.QAnyStringView =
   T(h: h)
-proc create*(T: type QAnyStringView, ): QAnyStringView =
+proc create*(T: type gen_qanystringview_types.QAnyStringView, ): gen_qanystringview_types.QAnyStringView =
 
-  QAnyStringView.init(fcQAnyStringView_new())
-proc create*(T: type QAnyStringView, str: seq[byte]): QAnyStringView =
+  gen_qanystringview_types.QAnyStringView.init(fcQAnyStringView_new())
+proc create*(T: type gen_qanystringview_types.QAnyStringView, str: seq[byte]): gen_qanystringview_types.QAnyStringView =
 
-  QAnyStringView.init(fcQAnyStringView_new2(struct_miqt_string(data: cast[cstring](if len(str) == 0: nil else: unsafeAddr str[0]), len: csize_t(len(str)))))
-proc create2*(T: type QAnyStringView, str: string): QAnyStringView =
+  gen_qanystringview_types.QAnyStringView.init(fcQAnyStringView_new2(struct_miqt_string(data: cast[cstring](if len(str) == 0: nil else: unsafeAddr str[0]), len: csize_t(len(str)))))
+proc create2*(T: type gen_qanystringview_types.QAnyStringView, str: string): gen_qanystringview_types.QAnyStringView =
 
-  QAnyStringView.init(fcQAnyStringView_new3(struct_miqt_string(data: str, len: csize_t(len(str)))))
-proc create*(T: type QAnyStringView, c: gen_qchar.QChar): QAnyStringView =
+  gen_qanystringview_types.QAnyStringView.init(fcQAnyStringView_new3(struct_miqt_string(data: str, len: csize_t(len(str)))))
+proc create*(T: type gen_qanystringview_types.QAnyStringView, c: gen_qchar.QChar): gen_qanystringview_types.QAnyStringView =
 
-  QAnyStringView.init(fcQAnyStringView_new4(c.h))
-proc create2*(T: type QAnyStringView, param1: QAnyStringView): QAnyStringView =
+  gen_qanystringview_types.QAnyStringView.init(fcQAnyStringView_new4(c.h))
+proc create2*(T: type gen_qanystringview_types.QAnyStringView, param1: gen_qanystringview_types.QAnyStringView): gen_qanystringview_types.QAnyStringView =
 
-  QAnyStringView.init(fcQAnyStringView_new5(param1.h))
-proc toString*(self: QAnyStringView, ): string =
+  gen_qanystringview_types.QAnyStringView.init(fcQAnyStringView_new5(param1.h))
+proc toString*(self: gen_qanystringview_types.QAnyStringView, ): string =
 
   let v_ms = fcQAnyStringView_toString(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc size*(self: QAnyStringView, ): int64 =
+proc size*(self: gen_qanystringview_types.QAnyStringView, ): int64 =
 
   fcQAnyStringView_size(self.h)
 
-proc data*(self: QAnyStringView, ): pointer =
+proc data*(self: gen_qanystringview_types.QAnyStringView, ): pointer =
 
   fcQAnyStringView_data(self.h)
 
-proc compare*(_: type QAnyStringView, lhs: QAnyStringView, rhs: QAnyStringView): cint =
+proc compare*(_: type gen_qanystringview_types.QAnyStringView, lhs: gen_qanystringview_types.QAnyStringView, rhs: gen_qanystringview_types.QAnyStringView): cint =
 
   fcQAnyStringView_compare(lhs.h, rhs.h)
 
-proc equal*(_: type QAnyStringView, lhs: QAnyStringView, rhs: QAnyStringView): bool =
+proc equal*(_: type gen_qanystringview_types.QAnyStringView, lhs: gen_qanystringview_types.QAnyStringView, rhs: gen_qanystringview_types.QAnyStringView): bool =
 
   fcQAnyStringView_equal(lhs.h, rhs.h)
 
-proc front*(self: QAnyStringView, ): gen_qchar.QChar =
+proc front*(self: gen_qanystringview_types.QAnyStringView, ): gen_qchar.QChar =
 
   gen_qchar.QChar(h: fcQAnyStringView_front(self.h))
 
-proc back*(self: QAnyStringView, ): gen_qchar.QChar =
+proc back*(self: gen_qanystringview_types.QAnyStringView, ): gen_qchar.QChar =
 
   gen_qchar.QChar(h: fcQAnyStringView_back(self.h))
 
-proc empty*(self: QAnyStringView, ): bool =
+proc empty*(self: gen_qanystringview_types.QAnyStringView, ): bool =
 
   fcQAnyStringView_empty(self.h)
 
-proc sizeBytes*(self: QAnyStringView, ): int64 =
+proc sizeBytes*(self: gen_qanystringview_types.QAnyStringView, ): int64 =
 
   fcQAnyStringView_sizeBytes(self.h)
 
-proc isNull*(self: QAnyStringView, ): bool =
+proc isNull*(self: gen_qanystringview_types.QAnyStringView, ): bool =
 
   fcQAnyStringView_isNull(self.h)
 
-proc isEmpty*(self: QAnyStringView, ): bool =
+proc isEmpty*(self: gen_qanystringview_types.QAnyStringView, ): bool =
 
   fcQAnyStringView_isEmpty(self.h)
 
-proc length*(self: QAnyStringView, ): int64 =
+proc length*(self: gen_qanystringview_types.QAnyStringView, ): int64 =
 
   fcQAnyStringView_length(self.h)
 
-proc compare3*(_: type QAnyStringView, lhs: QAnyStringView, rhs: QAnyStringView, cs: gen_qnamespace.CaseSensitivity): cint =
+proc compare3*(_: type gen_qanystringview_types.QAnyStringView, lhs: gen_qanystringview_types.QAnyStringView, rhs: gen_qanystringview_types.QAnyStringView, cs: cint): cint =
 
   fcQAnyStringView_compare3(lhs.h, rhs.h, cint(cs))
 
-proc delete*(self: QAnyStringView) =
+proc delete*(self: gen_qanystringview_types.QAnyStringView) =
   fcQAnyStringView_delete(self.h)

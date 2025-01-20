@@ -41,7 +41,6 @@ import
   gen_qcoreevent,
   gen_qevent,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -56,7 +55,6 @@ export
   gen_qcoreevent,
   gen_qevent,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -203,87 +201,87 @@ proc fcQGroupBox_staticMetaObject(): pointer {.importc: "QGroupBox_staticMetaObj
 proc fcQGroupBox_delete(self: pointer) {.importc: "QGroupBox_delete".}
 
 
-func init*(T: type QGroupBox, h: ptr cQGroupBox): QGroupBox =
+func init*(T: type gen_qgroupbox_types.QGroupBox, h: ptr cQGroupBox): gen_qgroupbox_types.QGroupBox =
   T(h: h)
-proc create*(T: type QGroupBox, parent: gen_qwidget.QWidget): QGroupBox =
+proc create*(T: type gen_qgroupbox_types.QGroupBox, parent: gen_qwidget.QWidget): gen_qgroupbox_types.QGroupBox =
 
-  QGroupBox.init(fcQGroupBox_new(parent.h))
-proc create*(T: type QGroupBox, ): QGroupBox =
+  gen_qgroupbox_types.QGroupBox.init(fcQGroupBox_new(parent.h))
+proc create*(T: type gen_qgroupbox_types.QGroupBox, ): gen_qgroupbox_types.QGroupBox =
 
-  QGroupBox.init(fcQGroupBox_new2())
-proc create*(T: type QGroupBox, title: string): QGroupBox =
+  gen_qgroupbox_types.QGroupBox.init(fcQGroupBox_new2())
+proc create*(T: type gen_qgroupbox_types.QGroupBox, title: string): gen_qgroupbox_types.QGroupBox =
 
-  QGroupBox.init(fcQGroupBox_new3(struct_miqt_string(data: title, len: csize_t(len(title)))))
-proc create*(T: type QGroupBox, title: string, parent: gen_qwidget.QWidget): QGroupBox =
+  gen_qgroupbox_types.QGroupBox.init(fcQGroupBox_new3(struct_miqt_string(data: title, len: csize_t(len(title)))))
+proc create*(T: type gen_qgroupbox_types.QGroupBox, title: string, parent: gen_qwidget.QWidget): gen_qgroupbox_types.QGroupBox =
 
-  QGroupBox.init(fcQGroupBox_new4(struct_miqt_string(data: title, len: csize_t(len(title))), parent.h))
-proc metaObject*(self: QGroupBox, ): gen_qobjectdefs.QMetaObject =
+  gen_qgroupbox_types.QGroupBox.init(fcQGroupBox_new4(struct_miqt_string(data: title, len: csize_t(len(title))), parent.h))
+proc metaObject*(self: gen_qgroupbox_types.QGroupBox, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQGroupBox_metaObject(self.h))
 
-proc metacast*(self: QGroupBox, param1: cstring): pointer =
+proc metacast*(self: gen_qgroupbox_types.QGroupBox, param1: cstring): pointer =
 
   fcQGroupBox_metacast(self.h, param1)
 
-proc metacall*(self: QGroupBox, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qgroupbox_types.QGroupBox, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQGroupBox_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QGroupBox, s: cstring): string =
+proc tr*(_: type gen_qgroupbox_types.QGroupBox, s: cstring): string =
 
   let v_ms = fcQGroupBox_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc title*(self: QGroupBox, ): string =
+proc title*(self: gen_qgroupbox_types.QGroupBox, ): string =
 
   let v_ms = fcQGroupBox_title(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setTitle*(self: QGroupBox, title: string): void =
+proc setTitle*(self: gen_qgroupbox_types.QGroupBox, title: string): void =
 
   fcQGroupBox_setTitle(self.h, struct_miqt_string(data: title, len: csize_t(len(title))))
 
-proc alignment*(self: QGroupBox, ): gen_qnamespace.AlignmentFlag =
+proc alignment*(self: gen_qgroupbox_types.QGroupBox, ): cint =
 
-  gen_qnamespace.AlignmentFlag(fcQGroupBox_alignment(self.h))
+  cint(fcQGroupBox_alignment(self.h))
 
-proc setAlignment*(self: QGroupBox, alignment: cint): void =
+proc setAlignment*(self: gen_qgroupbox_types.QGroupBox, alignment: cint): void =
 
   fcQGroupBox_setAlignment(self.h, alignment)
 
-proc minimumSizeHint*(self: QGroupBox, ): gen_qsize.QSize =
+proc minimumSizeHint*(self: gen_qgroupbox_types.QGroupBox, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQGroupBox_minimumSizeHint(self.h))
 
-proc isFlat*(self: QGroupBox, ): bool =
+proc isFlat*(self: gen_qgroupbox_types.QGroupBox, ): bool =
 
   fcQGroupBox_isFlat(self.h)
 
-proc setFlat*(self: QGroupBox, flat: bool): void =
+proc setFlat*(self: gen_qgroupbox_types.QGroupBox, flat: bool): void =
 
   fcQGroupBox_setFlat(self.h, flat)
 
-proc isCheckable*(self: QGroupBox, ): bool =
+proc isCheckable*(self: gen_qgroupbox_types.QGroupBox, ): bool =
 
   fcQGroupBox_isCheckable(self.h)
 
-proc setCheckable*(self: QGroupBox, checkable: bool): void =
+proc setCheckable*(self: gen_qgroupbox_types.QGroupBox, checkable: bool): void =
 
   fcQGroupBox_setCheckable(self.h, checkable)
 
-proc isChecked*(self: QGroupBox, ): bool =
+proc isChecked*(self: gen_qgroupbox_types.QGroupBox, ): bool =
 
   fcQGroupBox_isChecked(self.h)
 
-proc setChecked*(self: QGroupBox, checked: bool): void =
+proc setChecked*(self: gen_qgroupbox_types.QGroupBox, checked: bool): void =
 
   fcQGroupBox_setChecked(self.h, checked)
 
-proc clicked*(self: QGroupBox, ): void =
+proc clicked*(self: gen_qgroupbox_types.QGroupBox, ): void =
 
   fcQGroupBox_clicked(self.h)
 
@@ -293,13 +291,13 @@ proc miqt_exec_callback_QGroupBox_clicked(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onclicked*(self: QGroupBox, slot: proc()) =
+proc onclicked*(self: gen_qgroupbox_types.QGroupBox, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQGroupBox_connect_clicked(self.h, cast[int](addr tmp[]))
-proc toggled*(self: QGroupBox, param1: bool): void =
+proc toggled*(self: gen_qgroupbox_types.QGroupBox, param1: bool): void =
 
   fcQGroupBox_toggled(self.h, param1)
 
@@ -311,27 +309,27 @@ proc miqt_exec_callback_QGroupBox_toggled(slot: int, param1: bool) {.exportc.} =
 
   nimfunc[](slotval1)
 
-proc ontoggled*(self: QGroupBox, slot: proc(param1: bool)) =
+proc ontoggled*(self: gen_qgroupbox_types.QGroupBox, slot: proc(param1: bool)) =
   type Cb = proc(param1: bool)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQGroupBox_connect_toggled(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QGroupBox, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qgroupbox_types.QGroupBox, s: cstring, c: cstring): string =
 
   let v_ms = fcQGroupBox_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QGroupBox, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qgroupbox_types.QGroupBox, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQGroupBox_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc clicked1*(self: QGroupBox, checked: bool): void =
+proc clicked1*(self: gen_qgroupbox_types.QGroupBox, checked: bool): void =
 
   fcQGroupBox_clicked1(self.h, checked)
 
@@ -343,917 +341,722 @@ proc miqt_exec_callback_QGroupBox_clicked1(slot: int, checked: bool) {.exportc.}
 
   nimfunc[](slotval1)
 
-proc onclicked1*(self: QGroupBox, slot: proc(checked: bool)) =
+proc onclicked1*(self: gen_qgroupbox_types.QGroupBox, slot: proc(checked: bool)) =
   type Cb = proc(checked: bool)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQGroupBox_connect_clicked1(self.h, cast[int](addr tmp[]))
-proc callVirtualBase_metaObject(self: QGroupBox, ): gen_qobjectdefs.QMetaObject =
-
+proc QGroupBoxmetaObject*(self: gen_qgroupbox_types.QGroupBox, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQGroupBox_virtualbase_metaObject(self.h))
 
-type QGroupBoxmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QGroupBox, slot: proc(super: QGroupBoxmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QGroupBoxmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QGroupBoxmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QGroupBoxmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGroupBox_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGroupBox_metaObject(self: ptr cQGroupBox, slot: int): pointer {.exportc: "miqt_exec_callback_QGroupBox_metaObject ".} =
-  type Cb = proc(super: QGroupBoxmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QGroupBox(h: self), )
+  var nimfunc = cast[ptr QGroupBoxmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QGroupBox, param1: cstring): pointer =
-
+proc QGroupBoxmetacast*(self: gen_qgroupbox_types.QGroupBox, param1: cstring): pointer =
 
   fQGroupBox_virtualbase_metacast(self.h, param1)
 
-type QGroupBoxmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QGroupBox, slot: proc(super: QGroupBoxmetacastBase, param1: cstring): pointer) =
+type QGroupBoxmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QGroupBoxmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QGroupBoxmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGroupBox_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGroupBox_metacast(self: ptr cQGroupBox, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QGroupBox_metacast ".} =
-  type Cb = proc(super: QGroupBoxmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QGroupBox(h: self), param1)
+  var nimfunc = cast[ptr QGroupBoxmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QGroupBox, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QGroupBoxmetacall*(self: gen_qgroupbox_types.QGroupBox, param1: cint, param2: cint, param3: pointer): cint =
 
   fQGroupBox_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QGroupBoxmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QGroupBox, slot: proc(super: QGroupBoxmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QGroupBoxmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QGroupBoxmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QGroupBoxmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGroupBox_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGroupBox_metacall(self: ptr cQGroupBox, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QGroupBox_metacall ".} =
-  type Cb = proc(super: QGroupBoxmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QGroupBox(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QGroupBoxmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_minimumSizeHint(self: QGroupBox, ): gen_qsize.QSize =
-
+proc QGroupBoxminimumSizeHint*(self: gen_qgroupbox_types.QGroupBox, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQGroupBox_virtualbase_minimumSizeHint(self.h))
 
-type QGroupBoxminimumSizeHintBase* = proc(): gen_qsize.QSize
-proc onminimumSizeHint*(self: QGroupBox, slot: proc(super: QGroupBoxminimumSizeHintBase): gen_qsize.QSize) =
+type QGroupBoxminimumSizeHintProc* = proc(): gen_qsize.QSize
+proc onminimumSizeHint*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxminimumSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QGroupBoxminimumSizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QGroupBoxminimumSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGroupBox_override_virtual_minimumSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGroupBox_minimumSizeHint(self: ptr cQGroupBox, slot: int): pointer {.exportc: "miqt_exec_callback_QGroupBox_minimumSizeHint ".} =
-  type Cb = proc(super: QGroupBoxminimumSizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_minimumSizeHint(QGroupBox(h: self), )
+  var nimfunc = cast[ptr QGroupBoxminimumSizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_event(self: QGroupBox, event: gen_qcoreevent.QEvent): bool =
-
+proc QGroupBoxevent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qcoreevent.QEvent): bool =
 
   fQGroupBox_virtualbase_event(self.h, event.h)
 
-type QGroupBoxeventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QGroupBox, slot: proc(super: QGroupBoxeventBase, event: gen_qcoreevent.QEvent): bool) =
+type QGroupBoxeventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGroupBoxeventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QGroupBoxeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGroupBox_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGroupBox_event(self: ptr cQGroupBox, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QGroupBox_event ".} =
-  type Cb = proc(super: QGroupBoxeventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QGroupBox(h: self), event)
+  var nimfunc = cast[ptr QGroupBoxeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_childEvent(self: QGroupBox, event: gen_qcoreevent.QChildEvent): void =
-
+proc QGroupBoxchildEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qcoreevent.QChildEvent): void =
 
   fQGroupBox_virtualbase_childEvent(self.h, event.h)
 
-type QGroupBoxchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QGroupBox, slot: proc(super: QGroupBoxchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QGroupBoxchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGroupBoxchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QGroupBoxchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGroupBox_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGroupBox_childEvent(self: ptr cQGroupBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGroupBox_childEvent ".} =
-  type Cb = proc(super: QGroupBoxchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QGroupBox(h: self), event)
+  var nimfunc = cast[ptr QGroupBoxchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_resizeEvent(self: QGroupBox, event: gen_qevent.QResizeEvent): void =
-
+  nimfunc[](slotval1)
+proc QGroupBoxresizeEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qevent.QResizeEvent): void =
 
   fQGroupBox_virtualbase_resizeEvent(self.h, event.h)
 
-type QGroupBoxresizeEventBase* = proc(event: gen_qevent.QResizeEvent): void
-proc onresizeEvent*(self: QGroupBox, slot: proc(super: QGroupBoxresizeEventBase, event: gen_qevent.QResizeEvent): void) =
+type QGroupBoxresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
+proc onresizeEvent*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxresizeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGroupBoxresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var tmp = new Cb
+  var tmp = new QGroupBoxresizeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGroupBox_override_virtual_resizeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGroupBox_resizeEvent(self: ptr cQGroupBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGroupBox_resizeEvent ".} =
-  type Cb = proc(super: QGroupBoxresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QResizeEvent): auto =
-    callVirtualBase_resizeEvent(QGroupBox(h: self), event)
+  var nimfunc = cast[ptr QGroupBoxresizeEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QResizeEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_paintEvent(self: QGroupBox, event: gen_qevent.QPaintEvent): void =
-
+  nimfunc[](slotval1)
+proc QGroupBoxpaintEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qevent.QPaintEvent): void =
 
   fQGroupBox_virtualbase_paintEvent(self.h, event.h)
 
-type QGroupBoxpaintEventBase* = proc(event: gen_qevent.QPaintEvent): void
-proc onpaintEvent*(self: QGroupBox, slot: proc(super: QGroupBoxpaintEventBase, event: gen_qevent.QPaintEvent): void) =
+type QGroupBoxpaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
+proc onpaintEvent*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxpaintEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGroupBoxpaintEventBase, event: gen_qevent.QPaintEvent): void
-  var tmp = new Cb
+  var tmp = new QGroupBoxpaintEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGroupBox_override_virtual_paintEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGroupBox_paintEvent(self: ptr cQGroupBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGroupBox_paintEvent ".} =
-  type Cb = proc(super: QGroupBoxpaintEventBase, event: gen_qevent.QPaintEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QPaintEvent): auto =
-    callVirtualBase_paintEvent(QGroupBox(h: self), event)
+  var nimfunc = cast[ptr QGroupBoxpaintEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QPaintEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusInEvent(self: QGroupBox, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QGroupBoxfocusInEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qevent.QFocusEvent): void =
 
   fQGroupBox_virtualbase_focusInEvent(self.h, event.h)
 
-type QGroupBoxfocusInEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusInEvent*(self: QGroupBox, slot: proc(super: QGroupBoxfocusInEventBase, event: gen_qevent.QFocusEvent): void) =
+type QGroupBoxfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusInEvent*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxfocusInEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGroupBoxfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QGroupBoxfocusInEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGroupBox_override_virtual_focusInEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGroupBox_focusInEvent(self: ptr cQGroupBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGroupBox_focusInEvent ".} =
-  type Cb = proc(super: QGroupBoxfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusInEvent(QGroupBox(h: self), event)
+  var nimfunc = cast[ptr QGroupBoxfocusInEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_changeEvent(self: QGroupBox, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QGroupBoxchangeEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qcoreevent.QEvent): void =
 
   fQGroupBox_virtualbase_changeEvent(self.h, event.h)
 
-type QGroupBoxchangeEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onchangeEvent*(self: QGroupBox, slot: proc(super: QGroupBoxchangeEventBase, event: gen_qcoreevent.QEvent): void) =
+type QGroupBoxchangeEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onchangeEvent*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxchangeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGroupBoxchangeEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QGroupBoxchangeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGroupBox_override_virtual_changeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGroupBox_changeEvent(self: ptr cQGroupBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGroupBox_changeEvent ".} =
-  type Cb = proc(super: QGroupBoxchangeEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_changeEvent(QGroupBox(h: self), event)
+  var nimfunc = cast[ptr QGroupBoxchangeEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mousePressEvent(self: QGroupBox, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QGroupBoxmousePressEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qevent.QMouseEvent): void =
 
   fQGroupBox_virtualbase_mousePressEvent(self.h, event.h)
 
-type QGroupBoxmousePressEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmousePressEvent*(self: QGroupBox, slot: proc(super: QGroupBoxmousePressEventBase, event: gen_qevent.QMouseEvent): void) =
+type QGroupBoxmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmousePressEvent*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxmousePressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGroupBoxmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QGroupBoxmousePressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGroupBox_override_virtual_mousePressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGroupBox_mousePressEvent(self: ptr cQGroupBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGroupBox_mousePressEvent ".} =
-  type Cb = proc(super: QGroupBoxmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mousePressEvent(QGroupBox(h: self), event)
+  var nimfunc = cast[ptr QGroupBoxmousePressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseMoveEvent(self: QGroupBox, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QGroupBoxmouseMoveEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qevent.QMouseEvent): void =
 
   fQGroupBox_virtualbase_mouseMoveEvent(self.h, event.h)
 
-type QGroupBoxmouseMoveEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseMoveEvent*(self: QGroupBox, slot: proc(super: QGroupBoxmouseMoveEventBase, event: gen_qevent.QMouseEvent): void) =
+type QGroupBoxmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseMoveEvent*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxmouseMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGroupBoxmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QGroupBoxmouseMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGroupBox_override_virtual_mouseMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGroupBox_mouseMoveEvent(self: ptr cQGroupBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGroupBox_mouseMoveEvent ".} =
-  type Cb = proc(super: QGroupBoxmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseMoveEvent(QGroupBox(h: self), event)
+  var nimfunc = cast[ptr QGroupBoxmouseMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseReleaseEvent(self: QGroupBox, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QGroupBoxmouseReleaseEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qevent.QMouseEvent): void =
 
   fQGroupBox_virtualbase_mouseReleaseEvent(self.h, event.h)
 
-type QGroupBoxmouseReleaseEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseReleaseEvent*(self: QGroupBox, slot: proc(super: QGroupBoxmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void) =
+type QGroupBoxmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseReleaseEvent*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxmouseReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGroupBoxmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QGroupBoxmouseReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGroupBox_override_virtual_mouseReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGroupBox_mouseReleaseEvent(self: ptr cQGroupBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGroupBox_mouseReleaseEvent ".} =
-  type Cb = proc(super: QGroupBoxmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseReleaseEvent(QGroupBox(h: self), event)
+  var nimfunc = cast[ptr QGroupBoxmouseReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_initStyleOption(self: QGroupBox, option: gen_qstyleoption.QStyleOptionGroupBox): void =
-
+  nimfunc[](slotval1)
+proc QGroupBoxinitStyleOption*(self: gen_qgroupbox_types.QGroupBox, option: gen_qstyleoption.QStyleOptionGroupBox): void =
 
   fQGroupBox_virtualbase_initStyleOption(self.h, option.h)
 
-type QGroupBoxinitStyleOptionBase* = proc(option: gen_qstyleoption.QStyleOptionGroupBox): void
-proc oninitStyleOption*(self: QGroupBox, slot: proc(super: QGroupBoxinitStyleOptionBase, option: gen_qstyleoption.QStyleOptionGroupBox): void) =
+type QGroupBoxinitStyleOptionProc* = proc(option: gen_qstyleoption.QStyleOptionGroupBox): void
+proc oninitStyleOption*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxinitStyleOptionProc) =
   # TODO check subclass
-  type Cb = proc(super: QGroupBoxinitStyleOptionBase, option: gen_qstyleoption.QStyleOptionGroupBox): void
-  var tmp = new Cb
+  var tmp = new QGroupBoxinitStyleOptionProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGroupBox_override_virtual_initStyleOption(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGroupBox_initStyleOption(self: ptr cQGroupBox, slot: int, option: pointer): void {.exportc: "miqt_exec_callback_QGroupBox_initStyleOption ".} =
-  type Cb = proc(super: QGroupBoxinitStyleOptionBase, option: gen_qstyleoption.QStyleOptionGroupBox): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(option: gen_qstyleoption.QStyleOptionGroupBox): auto =
-    callVirtualBase_initStyleOption(QGroupBox(h: self), option)
+  var nimfunc = cast[ptr QGroupBoxinitStyleOptionProc](cast[pointer](slot))
   let slotval1 = gen_qstyleoption.QStyleOptionGroupBox(h: option)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_devType(self: QGroupBox, ): cint =
-
+  nimfunc[](slotval1)
+proc QGroupBoxdevType*(self: gen_qgroupbox_types.QGroupBox, ): cint =
 
   fQGroupBox_virtualbase_devType(self.h)
 
-type QGroupBoxdevTypeBase* = proc(): cint
-proc ondevType*(self: QGroupBox, slot: proc(super: QGroupBoxdevTypeBase): cint) =
+type QGroupBoxdevTypeProc* = proc(): cint
+proc ondevType*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxdevTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: QGroupBoxdevTypeBase): cint
-  var tmp = new Cb
+  var tmp = new QGroupBoxdevTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGroupBox_override_virtual_devType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGroupBox_devType(self: ptr cQGroupBox, slot: int): cint {.exportc: "miqt_exec_callback_QGroupBox_devType ".} =
-  type Cb = proc(super: QGroupBoxdevTypeBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_devType(QGroupBox(h: self), )
+  var nimfunc = cast[ptr QGroupBoxdevTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setVisible(self: QGroupBox, visible: bool): void =
-
+proc QGroupBoxsetVisible*(self: gen_qgroupbox_types.QGroupBox, visible: bool): void =
 
   fQGroupBox_virtualbase_setVisible(self.h, visible)
 
-type QGroupBoxsetVisibleBase* = proc(visible: bool): void
-proc onsetVisible*(self: QGroupBox, slot: proc(super: QGroupBoxsetVisibleBase, visible: bool): void) =
+type QGroupBoxsetVisibleProc* = proc(visible: bool): void
+proc onsetVisible*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxsetVisibleProc) =
   # TODO check subclass
-  type Cb = proc(super: QGroupBoxsetVisibleBase, visible: bool): void
-  var tmp = new Cb
+  var tmp = new QGroupBoxsetVisibleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGroupBox_override_virtual_setVisible(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGroupBox_setVisible(self: ptr cQGroupBox, slot: int, visible: bool): void {.exportc: "miqt_exec_callback_QGroupBox_setVisible ".} =
-  type Cb = proc(super: QGroupBoxsetVisibleBase, visible: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(visible: bool): auto =
-    callVirtualBase_setVisible(QGroupBox(h: self), visible)
+  var nimfunc = cast[ptr QGroupBoxsetVisibleProc](cast[pointer](slot))
   let slotval1 = visible
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_sizeHint(self: QGroupBox, ): gen_qsize.QSize =
-
+  nimfunc[](slotval1)
+proc QGroupBoxsizeHint*(self: gen_qgroupbox_types.QGroupBox, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQGroupBox_virtualbase_sizeHint(self.h))
 
-type QGroupBoxsizeHintBase* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: QGroupBox, slot: proc(super: QGroupBoxsizeHintBase): gen_qsize.QSize) =
+type QGroupBoxsizeHintProc* = proc(): gen_qsize.QSize
+proc onsizeHint*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxsizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QGroupBoxsizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QGroupBoxsizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGroupBox_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGroupBox_sizeHint(self: ptr cQGroupBox, slot: int): pointer {.exportc: "miqt_exec_callback_QGroupBox_sizeHint ".} =
-  type Cb = proc(super: QGroupBoxsizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sizeHint(QGroupBox(h: self), )
+  var nimfunc = cast[ptr QGroupBoxsizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_heightForWidth(self: QGroupBox, param1: cint): cint =
-
+proc QGroupBoxheightForWidth*(self: gen_qgroupbox_types.QGroupBox, param1: cint): cint =
 
   fQGroupBox_virtualbase_heightForWidth(self.h, param1)
 
-type QGroupBoxheightForWidthBase* = proc(param1: cint): cint
-proc onheightForWidth*(self: QGroupBox, slot: proc(super: QGroupBoxheightForWidthBase, param1: cint): cint) =
+type QGroupBoxheightForWidthProc* = proc(param1: cint): cint
+proc onheightForWidth*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxheightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QGroupBoxheightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QGroupBoxheightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGroupBox_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGroupBox_heightForWidth(self: ptr cQGroupBox, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QGroupBox_heightForWidth ".} =
-  type Cb = proc(super: QGroupBoxheightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_heightForWidth(QGroupBox(h: self), param1)
+  var nimfunc = cast[ptr QGroupBoxheightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_hasHeightForWidth(self: QGroupBox, ): bool =
-
+proc QGroupBoxhasHeightForWidth*(self: gen_qgroupbox_types.QGroupBox, ): bool =
 
   fQGroupBox_virtualbase_hasHeightForWidth(self.h)
 
-type QGroupBoxhasHeightForWidthBase* = proc(): bool
-proc onhasHeightForWidth*(self: QGroupBox, slot: proc(super: QGroupBoxhasHeightForWidthBase): bool) =
+type QGroupBoxhasHeightForWidthProc* = proc(): bool
+proc onhasHeightForWidth*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxhasHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QGroupBoxhasHeightForWidthBase): bool
-  var tmp = new Cb
+  var tmp = new QGroupBoxhasHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGroupBox_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGroupBox_hasHeightForWidth(self: ptr cQGroupBox, slot: int): bool {.exportc: "miqt_exec_callback_QGroupBox_hasHeightForWidth ".} =
-  type Cb = proc(super: QGroupBoxhasHeightForWidthBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasHeightForWidth(QGroupBox(h: self), )
+  var nimfunc = cast[ptr QGroupBoxhasHeightForWidthProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_paintEngine(self: QGroupBox, ): gen_qpaintengine.QPaintEngine =
-
+proc QGroupBoxpaintEngine*(self: gen_qgroupbox_types.QGroupBox, ): gen_qpaintengine.QPaintEngine =
 
   gen_qpaintengine.QPaintEngine(h: fQGroupBox_virtualbase_paintEngine(self.h))
 
-type QGroupBoxpaintEngineBase* = proc(): gen_qpaintengine.QPaintEngine
-proc onpaintEngine*(self: QGroupBox, slot: proc(super: QGroupBoxpaintEngineBase): gen_qpaintengine.QPaintEngine) =
+type QGroupBoxpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
+proc onpaintEngine*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxpaintEngineProc) =
   # TODO check subclass
-  type Cb = proc(super: QGroupBoxpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var tmp = new Cb
+  var tmp = new QGroupBoxpaintEngineProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGroupBox_override_virtual_paintEngine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGroupBox_paintEngine(self: ptr cQGroupBox, slot: int): pointer {.exportc: "miqt_exec_callback_QGroupBox_paintEngine ".} =
-  type Cb = proc(super: QGroupBoxpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_paintEngine(QGroupBox(h: self), )
+  var nimfunc = cast[ptr QGroupBoxpaintEngineProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_mouseDoubleClickEvent(self: QGroupBox, event: gen_qevent.QMouseEvent): void =
-
+proc QGroupBoxmouseDoubleClickEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qevent.QMouseEvent): void =
 
   fQGroupBox_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
-type QGroupBoxmouseDoubleClickEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseDoubleClickEvent*(self: QGroupBox, slot: proc(super: QGroupBoxmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void) =
+type QGroupBoxmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseDoubleClickEvent*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxmouseDoubleClickEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGroupBoxmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QGroupBoxmouseDoubleClickEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGroupBox_override_virtual_mouseDoubleClickEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGroupBox_mouseDoubleClickEvent(self: ptr cQGroupBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGroupBox_mouseDoubleClickEvent ".} =
-  type Cb = proc(super: QGroupBoxmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseDoubleClickEvent(QGroupBox(h: self), event)
+  var nimfunc = cast[ptr QGroupBoxmouseDoubleClickEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_wheelEvent(self: QGroupBox, event: gen_qevent.QWheelEvent): void =
-
+  nimfunc[](slotval1)
+proc QGroupBoxwheelEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qevent.QWheelEvent): void =
 
   fQGroupBox_virtualbase_wheelEvent(self.h, event.h)
 
-type QGroupBoxwheelEventBase* = proc(event: gen_qevent.QWheelEvent): void
-proc onwheelEvent*(self: QGroupBox, slot: proc(super: QGroupBoxwheelEventBase, event: gen_qevent.QWheelEvent): void) =
+type QGroupBoxwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
+proc onwheelEvent*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxwheelEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGroupBoxwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var tmp = new Cb
+  var tmp = new QGroupBoxwheelEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGroupBox_override_virtual_wheelEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGroupBox_wheelEvent(self: ptr cQGroupBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGroupBox_wheelEvent ".} =
-  type Cb = proc(super: QGroupBoxwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QWheelEvent): auto =
-    callVirtualBase_wheelEvent(QGroupBox(h: self), event)
+  var nimfunc = cast[ptr QGroupBoxwheelEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QWheelEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyPressEvent(self: QGroupBox, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QGroupBoxkeyPressEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qevent.QKeyEvent): void =
 
   fQGroupBox_virtualbase_keyPressEvent(self.h, event.h)
 
-type QGroupBoxkeyPressEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyPressEvent*(self: QGroupBox, slot: proc(super: QGroupBoxkeyPressEventBase, event: gen_qevent.QKeyEvent): void) =
+type QGroupBoxkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyPressEvent*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxkeyPressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGroupBoxkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QGroupBoxkeyPressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGroupBox_override_virtual_keyPressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGroupBox_keyPressEvent(self: ptr cQGroupBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGroupBox_keyPressEvent ".} =
-  type Cb = proc(super: QGroupBoxkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyPressEvent(QGroupBox(h: self), event)
+  var nimfunc = cast[ptr QGroupBoxkeyPressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyReleaseEvent(self: QGroupBox, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QGroupBoxkeyReleaseEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qevent.QKeyEvent): void =
 
   fQGroupBox_virtualbase_keyReleaseEvent(self.h, event.h)
 
-type QGroupBoxkeyReleaseEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyReleaseEvent*(self: QGroupBox, slot: proc(super: QGroupBoxkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void) =
+type QGroupBoxkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyReleaseEvent*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxkeyReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGroupBoxkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QGroupBoxkeyReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGroupBox_override_virtual_keyReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGroupBox_keyReleaseEvent(self: ptr cQGroupBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGroupBox_keyReleaseEvent ".} =
-  type Cb = proc(super: QGroupBoxkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyReleaseEvent(QGroupBox(h: self), event)
+  var nimfunc = cast[ptr QGroupBoxkeyReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusOutEvent(self: QGroupBox, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QGroupBoxfocusOutEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qevent.QFocusEvent): void =
 
   fQGroupBox_virtualbase_focusOutEvent(self.h, event.h)
 
-type QGroupBoxfocusOutEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusOutEvent*(self: QGroupBox, slot: proc(super: QGroupBoxfocusOutEventBase, event: gen_qevent.QFocusEvent): void) =
+type QGroupBoxfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusOutEvent*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxfocusOutEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGroupBoxfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QGroupBoxfocusOutEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGroupBox_override_virtual_focusOutEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGroupBox_focusOutEvent(self: ptr cQGroupBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGroupBox_focusOutEvent ".} =
-  type Cb = proc(super: QGroupBoxfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusOutEvent(QGroupBox(h: self), event)
+  var nimfunc = cast[ptr QGroupBoxfocusOutEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_enterEvent(self: QGroupBox, event: gen_qevent.QEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QGroupBoxenterEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qevent.QEnterEvent): void =
 
   fQGroupBox_virtualbase_enterEvent(self.h, event.h)
 
-type QGroupBoxenterEventBase* = proc(event: gen_qevent.QEnterEvent): void
-proc onenterEvent*(self: QGroupBox, slot: proc(super: QGroupBoxenterEventBase, event: gen_qevent.QEnterEvent): void) =
+type QGroupBoxenterEventProc* = proc(event: gen_qevent.QEnterEvent): void
+proc onenterEvent*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxenterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGroupBoxenterEventBase, event: gen_qevent.QEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QGroupBoxenterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGroupBox_override_virtual_enterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGroupBox_enterEvent(self: ptr cQGroupBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGroupBox_enterEvent ".} =
-  type Cb = proc(super: QGroupBoxenterEventBase, event: gen_qevent.QEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QEnterEvent): auto =
-    callVirtualBase_enterEvent(QGroupBox(h: self), event)
+  var nimfunc = cast[ptr QGroupBoxenterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_leaveEvent(self: QGroupBox, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QGroupBoxleaveEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qcoreevent.QEvent): void =
 
   fQGroupBox_virtualbase_leaveEvent(self.h, event.h)
 
-type QGroupBoxleaveEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onleaveEvent*(self: QGroupBox, slot: proc(super: QGroupBoxleaveEventBase, event: gen_qcoreevent.QEvent): void) =
+type QGroupBoxleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onleaveEvent*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxleaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGroupBoxleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QGroupBoxleaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGroupBox_override_virtual_leaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGroupBox_leaveEvent(self: ptr cQGroupBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGroupBox_leaveEvent ".} =
-  type Cb = proc(super: QGroupBoxleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_leaveEvent(QGroupBox(h: self), event)
+  var nimfunc = cast[ptr QGroupBoxleaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_moveEvent(self: QGroupBox, event: gen_qevent.QMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QGroupBoxmoveEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qevent.QMoveEvent): void =
 
   fQGroupBox_virtualbase_moveEvent(self.h, event.h)
 
-type QGroupBoxmoveEventBase* = proc(event: gen_qevent.QMoveEvent): void
-proc onmoveEvent*(self: QGroupBox, slot: proc(super: QGroupBoxmoveEventBase, event: gen_qevent.QMoveEvent): void) =
+type QGroupBoxmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
+proc onmoveEvent*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxmoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGroupBoxmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QGroupBoxmoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGroupBox_override_virtual_moveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGroupBox_moveEvent(self: ptr cQGroupBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGroupBox_moveEvent ".} =
-  type Cb = proc(super: QGroupBoxmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMoveEvent): auto =
-    callVirtualBase_moveEvent(QGroupBox(h: self), event)
+  var nimfunc = cast[ptr QGroupBoxmoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_closeEvent(self: QGroupBox, event: gen_qevent.QCloseEvent): void =
-
+  nimfunc[](slotval1)
+proc QGroupBoxcloseEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qevent.QCloseEvent): void =
 
   fQGroupBox_virtualbase_closeEvent(self.h, event.h)
 
-type QGroupBoxcloseEventBase* = proc(event: gen_qevent.QCloseEvent): void
-proc oncloseEvent*(self: QGroupBox, slot: proc(super: QGroupBoxcloseEventBase, event: gen_qevent.QCloseEvent): void) =
+type QGroupBoxcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
+proc oncloseEvent*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxcloseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGroupBoxcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var tmp = new Cb
+  var tmp = new QGroupBoxcloseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGroupBox_override_virtual_closeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGroupBox_closeEvent(self: ptr cQGroupBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGroupBox_closeEvent ".} =
-  type Cb = proc(super: QGroupBoxcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QCloseEvent): auto =
-    callVirtualBase_closeEvent(QGroupBox(h: self), event)
+  var nimfunc = cast[ptr QGroupBoxcloseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QCloseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_contextMenuEvent(self: QGroupBox, event: gen_qevent.QContextMenuEvent): void =
-
+  nimfunc[](slotval1)
+proc QGroupBoxcontextMenuEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qevent.QContextMenuEvent): void =
 
   fQGroupBox_virtualbase_contextMenuEvent(self.h, event.h)
 
-type QGroupBoxcontextMenuEventBase* = proc(event: gen_qevent.QContextMenuEvent): void
-proc oncontextMenuEvent*(self: QGroupBox, slot: proc(super: QGroupBoxcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void) =
+type QGroupBoxcontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
+proc oncontextMenuEvent*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxcontextMenuEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGroupBoxcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var tmp = new Cb
+  var tmp = new QGroupBoxcontextMenuEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGroupBox_override_virtual_contextMenuEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGroupBox_contextMenuEvent(self: ptr cQGroupBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGroupBox_contextMenuEvent ".} =
-  type Cb = proc(super: QGroupBoxcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QContextMenuEvent): auto =
-    callVirtualBase_contextMenuEvent(QGroupBox(h: self), event)
+  var nimfunc = cast[ptr QGroupBoxcontextMenuEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QContextMenuEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_tabletEvent(self: QGroupBox, event: gen_qevent.QTabletEvent): void =
-
+  nimfunc[](slotval1)
+proc QGroupBoxtabletEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qevent.QTabletEvent): void =
 
   fQGroupBox_virtualbase_tabletEvent(self.h, event.h)
 
-type QGroupBoxtabletEventBase* = proc(event: gen_qevent.QTabletEvent): void
-proc ontabletEvent*(self: QGroupBox, slot: proc(super: QGroupBoxtabletEventBase, event: gen_qevent.QTabletEvent): void) =
+type QGroupBoxtabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
+proc ontabletEvent*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxtabletEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGroupBoxtabletEventBase, event: gen_qevent.QTabletEvent): void
-  var tmp = new Cb
+  var tmp = new QGroupBoxtabletEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGroupBox_override_virtual_tabletEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGroupBox_tabletEvent(self: ptr cQGroupBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGroupBox_tabletEvent ".} =
-  type Cb = proc(super: QGroupBoxtabletEventBase, event: gen_qevent.QTabletEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QTabletEvent): auto =
-    callVirtualBase_tabletEvent(QGroupBox(h: self), event)
+  var nimfunc = cast[ptr QGroupBoxtabletEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QTabletEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_actionEvent(self: QGroupBox, event: gen_qevent.QActionEvent): void =
-
+  nimfunc[](slotval1)
+proc QGroupBoxactionEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qevent.QActionEvent): void =
 
   fQGroupBox_virtualbase_actionEvent(self.h, event.h)
 
-type QGroupBoxactionEventBase* = proc(event: gen_qevent.QActionEvent): void
-proc onactionEvent*(self: QGroupBox, slot: proc(super: QGroupBoxactionEventBase, event: gen_qevent.QActionEvent): void) =
+type QGroupBoxactionEventProc* = proc(event: gen_qevent.QActionEvent): void
+proc onactionEvent*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxactionEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGroupBoxactionEventBase, event: gen_qevent.QActionEvent): void
-  var tmp = new Cb
+  var tmp = new QGroupBoxactionEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGroupBox_override_virtual_actionEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGroupBox_actionEvent(self: ptr cQGroupBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGroupBox_actionEvent ".} =
-  type Cb = proc(super: QGroupBoxactionEventBase, event: gen_qevent.QActionEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QActionEvent): auto =
-    callVirtualBase_actionEvent(QGroupBox(h: self), event)
+  var nimfunc = cast[ptr QGroupBoxactionEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QActionEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragEnterEvent(self: QGroupBox, event: gen_qevent.QDragEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QGroupBoxdragEnterEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qevent.QDragEnterEvent): void =
 
   fQGroupBox_virtualbase_dragEnterEvent(self.h, event.h)
 
-type QGroupBoxdragEnterEventBase* = proc(event: gen_qevent.QDragEnterEvent): void
-proc ondragEnterEvent*(self: QGroupBox, slot: proc(super: QGroupBoxdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void) =
+type QGroupBoxdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
+proc ondragEnterEvent*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxdragEnterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGroupBoxdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QGroupBoxdragEnterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGroupBox_override_virtual_dragEnterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGroupBox_dragEnterEvent(self: ptr cQGroupBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGroupBox_dragEnterEvent ".} =
-  type Cb = proc(super: QGroupBoxdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragEnterEvent): auto =
-    callVirtualBase_dragEnterEvent(QGroupBox(h: self), event)
+  var nimfunc = cast[ptr QGroupBoxdragEnterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragMoveEvent(self: QGroupBox, event: gen_qevent.QDragMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QGroupBoxdragMoveEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qevent.QDragMoveEvent): void =
 
   fQGroupBox_virtualbase_dragMoveEvent(self.h, event.h)
 
-type QGroupBoxdragMoveEventBase* = proc(event: gen_qevent.QDragMoveEvent): void
-proc ondragMoveEvent*(self: QGroupBox, slot: proc(super: QGroupBoxdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void) =
+type QGroupBoxdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
+proc ondragMoveEvent*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxdragMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGroupBoxdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QGroupBoxdragMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGroupBox_override_virtual_dragMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGroupBox_dragMoveEvent(self: ptr cQGroupBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGroupBox_dragMoveEvent ".} =
-  type Cb = proc(super: QGroupBoxdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragMoveEvent): auto =
-    callVirtualBase_dragMoveEvent(QGroupBox(h: self), event)
+  var nimfunc = cast[ptr QGroupBoxdragMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragLeaveEvent(self: QGroupBox, event: gen_qevent.QDragLeaveEvent): void =
-
+  nimfunc[](slotval1)
+proc QGroupBoxdragLeaveEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qevent.QDragLeaveEvent): void =
 
   fQGroupBox_virtualbase_dragLeaveEvent(self.h, event.h)
 
-type QGroupBoxdragLeaveEventBase* = proc(event: gen_qevent.QDragLeaveEvent): void
-proc ondragLeaveEvent*(self: QGroupBox, slot: proc(super: QGroupBoxdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void) =
+type QGroupBoxdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
+proc ondragLeaveEvent*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxdragLeaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGroupBoxdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var tmp = new Cb
+  var tmp = new QGroupBoxdragLeaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGroupBox_override_virtual_dragLeaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGroupBox_dragLeaveEvent(self: ptr cQGroupBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGroupBox_dragLeaveEvent ".} =
-  type Cb = proc(super: QGroupBoxdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragLeaveEvent): auto =
-    callVirtualBase_dragLeaveEvent(QGroupBox(h: self), event)
+  var nimfunc = cast[ptr QGroupBoxdragLeaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragLeaveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dropEvent(self: QGroupBox, event: gen_qevent.QDropEvent): void =
-
+  nimfunc[](slotval1)
+proc QGroupBoxdropEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qevent.QDropEvent): void =
 
   fQGroupBox_virtualbase_dropEvent(self.h, event.h)
 
-type QGroupBoxdropEventBase* = proc(event: gen_qevent.QDropEvent): void
-proc ondropEvent*(self: QGroupBox, slot: proc(super: QGroupBoxdropEventBase, event: gen_qevent.QDropEvent): void) =
+type QGroupBoxdropEventProc* = proc(event: gen_qevent.QDropEvent): void
+proc ondropEvent*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxdropEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGroupBoxdropEventBase, event: gen_qevent.QDropEvent): void
-  var tmp = new Cb
+  var tmp = new QGroupBoxdropEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGroupBox_override_virtual_dropEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGroupBox_dropEvent(self: ptr cQGroupBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGroupBox_dropEvent ".} =
-  type Cb = proc(super: QGroupBoxdropEventBase, event: gen_qevent.QDropEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDropEvent): auto =
-    callVirtualBase_dropEvent(QGroupBox(h: self), event)
+  var nimfunc = cast[ptr QGroupBoxdropEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDropEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_showEvent(self: QGroupBox, event: gen_qevent.QShowEvent): void =
-
+  nimfunc[](slotval1)
+proc QGroupBoxshowEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qevent.QShowEvent): void =
 
   fQGroupBox_virtualbase_showEvent(self.h, event.h)
 
-type QGroupBoxshowEventBase* = proc(event: gen_qevent.QShowEvent): void
-proc onshowEvent*(self: QGroupBox, slot: proc(super: QGroupBoxshowEventBase, event: gen_qevent.QShowEvent): void) =
+type QGroupBoxshowEventProc* = proc(event: gen_qevent.QShowEvent): void
+proc onshowEvent*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxshowEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGroupBoxshowEventBase, event: gen_qevent.QShowEvent): void
-  var tmp = new Cb
+  var tmp = new QGroupBoxshowEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGroupBox_override_virtual_showEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGroupBox_showEvent(self: ptr cQGroupBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGroupBox_showEvent ".} =
-  type Cb = proc(super: QGroupBoxshowEventBase, event: gen_qevent.QShowEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QShowEvent): auto =
-    callVirtualBase_showEvent(QGroupBox(h: self), event)
+  var nimfunc = cast[ptr QGroupBoxshowEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QShowEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hideEvent(self: QGroupBox, event: gen_qevent.QHideEvent): void =
-
+  nimfunc[](slotval1)
+proc QGroupBoxhideEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qevent.QHideEvent): void =
 
   fQGroupBox_virtualbase_hideEvent(self.h, event.h)
 
-type QGroupBoxhideEventBase* = proc(event: gen_qevent.QHideEvent): void
-proc onhideEvent*(self: QGroupBox, slot: proc(super: QGroupBoxhideEventBase, event: gen_qevent.QHideEvent): void) =
+type QGroupBoxhideEventProc* = proc(event: gen_qevent.QHideEvent): void
+proc onhideEvent*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxhideEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGroupBoxhideEventBase, event: gen_qevent.QHideEvent): void
-  var tmp = new Cb
+  var tmp = new QGroupBoxhideEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGroupBox_override_virtual_hideEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGroupBox_hideEvent(self: ptr cQGroupBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGroupBox_hideEvent ".} =
-  type Cb = proc(super: QGroupBoxhideEventBase, event: gen_qevent.QHideEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QHideEvent): auto =
-    callVirtualBase_hideEvent(QGroupBox(h: self), event)
+  var nimfunc = cast[ptr QGroupBoxhideEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QHideEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_nativeEvent(self: QGroupBox, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
-
+  nimfunc[](slotval1)
+proc QGroupBoxnativeEvent*(self: gen_qgroupbox_types.QGroupBox, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
 
   fQGroupBox_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
-type QGroupBoxnativeEventBase* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-proc onnativeEvent*(self: QGroupBox, slot: proc(super: QGroupBoxnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool) =
+type QGroupBoxnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
+proc onnativeEvent*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxnativeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGroupBoxnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-  var tmp = new Cb
+  var tmp = new QGroupBoxnativeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGroupBox_override_virtual_nativeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGroupBox_nativeEvent(self: ptr cQGroupBox, slot: int, eventType: struct_miqt_string, message: pointer, resultVal: ptr uint): bool {.exportc: "miqt_exec_callback_QGroupBox_nativeEvent ".} =
-  type Cb = proc(super: QGroupBoxnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(eventType: seq[byte], message: pointer, resultVal: ptr uint): auto =
-    callVirtualBase_nativeEvent(QGroupBox(h: self), eventType, message, resultVal)
+  var nimfunc = cast[ptr QGroupBoxnativeEventProc](cast[pointer](slot))
   var veventType_bytearray = eventType
   var veventTypex_ret = @(toOpenArrayByte(veventType_bytearray.data, 0, int(veventType_bytearray.len)-1))
   c_free(veventType_bytearray.data)
@@ -1264,298 +1067,238 @@ proc miqt_exec_callback_QGroupBox_nativeEvent(self: ptr cQGroupBox, slot: int, e
   let slotval3 = resultVal
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_metric(self: QGroupBox, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint =
-
+proc QGroupBoxmetric*(self: gen_qgroupbox_types.QGroupBox, param1: cint): cint =
 
   fQGroupBox_virtualbase_metric(self.h, cint(param1))
 
-type QGroupBoxmetricBase* = proc(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-proc onmetric*(self: QGroupBox, slot: proc(super: QGroupBoxmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint) =
+type QGroupBoxmetricProc* = proc(param1: cint): cint
+proc onmetric*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxmetricProc) =
   # TODO check subclass
-  type Cb = proc(super: QGroupBoxmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var tmp = new Cb
+  var tmp = new QGroupBoxmetricProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGroupBox_override_virtual_metric(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGroupBox_metric(self: ptr cQGroupBox, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QGroupBox_metric ".} =
-  type Cb = proc(super: QGroupBoxmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): auto =
-    callVirtualBase_metric(QGroupBox(h: self), param1)
-  let slotval1 = gen_qpaintdevice.QPaintDevicePaintDeviceMetric(param1)
+  var nimfunc = cast[ptr QGroupBoxmetricProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_initPainter(self: QGroupBox, painter: gen_qpainter.QPainter): void =
-
+proc QGroupBoxinitPainter*(self: gen_qgroupbox_types.QGroupBox, painter: gen_qpainter.QPainter): void =
 
   fQGroupBox_virtualbase_initPainter(self.h, painter.h)
 
-type QGroupBoxinitPainterBase* = proc(painter: gen_qpainter.QPainter): void
-proc oninitPainter*(self: QGroupBox, slot: proc(super: QGroupBoxinitPainterBase, painter: gen_qpainter.QPainter): void) =
+type QGroupBoxinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
+proc oninitPainter*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxinitPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QGroupBoxinitPainterBase, painter: gen_qpainter.QPainter): void
-  var tmp = new Cb
+  var tmp = new QGroupBoxinitPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGroupBox_override_virtual_initPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGroupBox_initPainter(self: ptr cQGroupBox, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_QGroupBox_initPainter ".} =
-  type Cb = proc(super: QGroupBoxinitPainterBase, painter: gen_qpainter.QPainter): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter): auto =
-    callVirtualBase_initPainter(QGroupBox(h: self), painter)
+  var nimfunc = cast[ptr QGroupBoxinitPainterProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_redirected(self: QGroupBox, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
+  nimfunc[](slotval1)
+proc QGroupBoxredirected*(self: gen_qgroupbox_types.QGroupBox, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
 
   gen_qpaintdevice.QPaintDevice(h: fQGroupBox_virtualbase_redirected(self.h, offset.h))
 
-type QGroupBoxredirectedBase* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-proc onredirected*(self: QGroupBox, slot: proc(super: QGroupBoxredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice) =
+type QGroupBoxredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
+proc onredirected*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxredirectedProc) =
   # TODO check subclass
-  type Cb = proc(super: QGroupBoxredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var tmp = new Cb
+  var tmp = new QGroupBoxredirectedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGroupBox_override_virtual_redirected(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGroupBox_redirected(self: ptr cQGroupBox, slot: int, offset: pointer): pointer {.exportc: "miqt_exec_callback_QGroupBox_redirected ".} =
-  type Cb = proc(super: QGroupBoxredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(offset: gen_qpoint.QPoint): auto =
-    callVirtualBase_redirected(QGroupBox(h: self), offset)
+  var nimfunc = cast[ptr QGroupBoxredirectedProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: offset)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_sharedPainter(self: QGroupBox, ): gen_qpainter.QPainter =
-
+proc QGroupBoxsharedPainter*(self: gen_qgroupbox_types.QGroupBox, ): gen_qpainter.QPainter =
 
   gen_qpainter.QPainter(h: fQGroupBox_virtualbase_sharedPainter(self.h))
 
-type QGroupBoxsharedPainterBase* = proc(): gen_qpainter.QPainter
-proc onsharedPainter*(self: QGroupBox, slot: proc(super: QGroupBoxsharedPainterBase): gen_qpainter.QPainter) =
+type QGroupBoxsharedPainterProc* = proc(): gen_qpainter.QPainter
+proc onsharedPainter*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxsharedPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QGroupBoxsharedPainterBase): gen_qpainter.QPainter
-  var tmp = new Cb
+  var tmp = new QGroupBoxsharedPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGroupBox_override_virtual_sharedPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGroupBox_sharedPainter(self: ptr cQGroupBox, slot: int): pointer {.exportc: "miqt_exec_callback_QGroupBox_sharedPainter ".} =
-  type Cb = proc(super: QGroupBoxsharedPainterBase): gen_qpainter.QPainter
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sharedPainter(QGroupBox(h: self), )
+  var nimfunc = cast[ptr QGroupBoxsharedPainterProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_inputMethodEvent(self: QGroupBox, param1: gen_qevent.QInputMethodEvent): void =
-
+proc QGroupBoxinputMethodEvent*(self: gen_qgroupbox_types.QGroupBox, param1: gen_qevent.QInputMethodEvent): void =
 
   fQGroupBox_virtualbase_inputMethodEvent(self.h, param1.h)
 
-type QGroupBoxinputMethodEventBase* = proc(param1: gen_qevent.QInputMethodEvent): void
-proc oninputMethodEvent*(self: QGroupBox, slot: proc(super: QGroupBoxinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void) =
+type QGroupBoxinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
+proc oninputMethodEvent*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxinputMethodEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGroupBoxinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var tmp = new Cb
+  var tmp = new QGroupBoxinputMethodEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGroupBox_override_virtual_inputMethodEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGroupBox_inputMethodEvent(self: ptr cQGroupBox, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QGroupBox_inputMethodEvent ".} =
-  type Cb = proc(super: QGroupBoxinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QInputMethodEvent): auto =
-    callVirtualBase_inputMethodEvent(QGroupBox(h: self), param1)
+  var nimfunc = cast[ptr QGroupBoxinputMethodEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QInputMethodEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_inputMethodQuery(self: QGroupBox, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant =
-
+  nimfunc[](slotval1)
+proc QGroupBoxinputMethodQuery*(self: gen_qgroupbox_types.QGroupBox, param1: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQGroupBox_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
-type QGroupBoxinputMethodQueryBase* = proc(param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-proc oninputMethodQuery*(self: QGroupBox, slot: proc(super: QGroupBoxinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant) =
+type QGroupBoxinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
+proc oninputMethodQuery*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxinputMethodQueryProc) =
   # TODO check subclass
-  type Cb = proc(super: QGroupBoxinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QGroupBoxinputMethodQueryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGroupBox_override_virtual_inputMethodQuery(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGroupBox_inputMethodQuery(self: ptr cQGroupBox, slot: int, param1: cint): pointer {.exportc: "miqt_exec_callback_QGroupBox_inputMethodQuery ".} =
-  type Cb = proc(super: QGroupBoxinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qnamespace.InputMethodQuery): auto =
-    callVirtualBase_inputMethodQuery(QGroupBox(h: self), param1)
-  let slotval1 = gen_qnamespace.InputMethodQuery(param1)
+  var nimfunc = cast[ptr QGroupBoxinputMethodQueryProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_focusNextPrevChild(self: QGroupBox, next: bool): bool =
-
+proc QGroupBoxfocusNextPrevChild*(self: gen_qgroupbox_types.QGroupBox, next: bool): bool =
 
   fQGroupBox_virtualbase_focusNextPrevChild(self.h, next)
 
-type QGroupBoxfocusNextPrevChildBase* = proc(next: bool): bool
-proc onfocusNextPrevChild*(self: QGroupBox, slot: proc(super: QGroupBoxfocusNextPrevChildBase, next: bool): bool) =
+type QGroupBoxfocusNextPrevChildProc* = proc(next: bool): bool
+proc onfocusNextPrevChild*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxfocusNextPrevChildProc) =
   # TODO check subclass
-  type Cb = proc(super: QGroupBoxfocusNextPrevChildBase, next: bool): bool
-  var tmp = new Cb
+  var tmp = new QGroupBoxfocusNextPrevChildProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGroupBox_override_virtual_focusNextPrevChild(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGroupBox_focusNextPrevChild(self: ptr cQGroupBox, slot: int, next: bool): bool {.exportc: "miqt_exec_callback_QGroupBox_focusNextPrevChild ".} =
-  type Cb = proc(super: QGroupBoxfocusNextPrevChildBase, next: bool): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(next: bool): auto =
-    callVirtualBase_focusNextPrevChild(QGroupBox(h: self), next)
+  var nimfunc = cast[ptr QGroupBoxfocusNextPrevChildProc](cast[pointer](slot))
   let slotval1 = next
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QGroupBox, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QGroupBoxeventFilter*(self: gen_qgroupbox_types.QGroupBox, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQGroupBox_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QGroupBoxeventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QGroupBox, slot: proc(super: QGroupBoxeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QGroupBoxeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QGroupBoxeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QGroupBoxeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGroupBox_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGroupBox_eventFilter(self: ptr cQGroupBox, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QGroupBox_eventFilter ".} =
-  type Cb = proc(super: QGroupBoxeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QGroupBox(h: self), watched, event)
+  var nimfunc = cast[ptr QGroupBoxeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QGroupBox, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QGroupBoxtimerEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qcoreevent.QTimerEvent): void =
 
   fQGroupBox_virtualbase_timerEvent(self.h, event.h)
 
-type QGroupBoxtimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QGroupBox, slot: proc(super: QGroupBoxtimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QGroupBoxtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxtimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGroupBoxtimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QGroupBoxtimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGroupBox_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGroupBox_timerEvent(self: ptr cQGroupBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGroupBox_timerEvent ".} =
-  type Cb = proc(super: QGroupBoxtimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QGroupBox(h: self), event)
+  var nimfunc = cast[ptr QGroupBoxtimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QGroupBox, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QGroupBoxcustomEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qcoreevent.QEvent): void =
 
   fQGroupBox_virtualbase_customEvent(self.h, event.h)
 
-type QGroupBoxcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QGroupBox, slot: proc(super: QGroupBoxcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QGroupBoxcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGroupBoxcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QGroupBoxcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGroupBox_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGroupBox_customEvent(self: ptr cQGroupBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGroupBox_customEvent ".} =
-  type Cb = proc(super: QGroupBoxcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QGroupBox(h: self), event)
+  var nimfunc = cast[ptr QGroupBoxcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QGroupBox, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QGroupBoxconnectNotify*(self: gen_qgroupbox_types.QGroupBox, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQGroupBox_virtualbase_connectNotify(self.h, signal.h)
 
-type QGroupBoxconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QGroupBox, slot: proc(super: QGroupBoxconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QGroupBoxconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QGroupBoxconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QGroupBoxconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGroupBox_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGroupBox_connectNotify(self: ptr cQGroupBox, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QGroupBox_connectNotify ".} =
-  type Cb = proc(super: QGroupBoxconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QGroupBox(h: self), signal)
+  var nimfunc = cast[ptr QGroupBoxconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QGroupBox, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QGroupBoxdisconnectNotify*(self: gen_qgroupbox_types.QGroupBox, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQGroupBox_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QGroupBoxdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QGroupBox, slot: proc(super: QGroupBoxdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QGroupBoxdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QGroupBoxdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QGroupBoxdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGroupBox_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGroupBox_disconnectNotify(self: ptr cQGroupBox, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QGroupBox_disconnectNotify ".} =
-  type Cb = proc(super: QGroupBoxdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QGroupBox(h: self), signal)
+  var nimfunc = cast[ptr QGroupBoxdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QGroupBox): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qgroupbox_types.QGroupBox): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQGroupBox_staticMetaObject())
-proc delete*(self: QGroupBox) =
+proc delete*(self: gen_qgroupbox_types.QGroupBox) =
   fcQGroupBox_delete(self.h)

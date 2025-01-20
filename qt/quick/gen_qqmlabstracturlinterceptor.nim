@@ -34,13 +34,11 @@ const cflags = gorge("pkg-config -cflags Qt5Quick")
 {.compile("gen_qqmlabstracturlinterceptor.cpp", cflags).}
 
 
-type QQmlAbstractUrlInterceptorDataType* = cint
-const
-  QQmlAbstractUrlInterceptorQmlFile* = 0
-  QQmlAbstractUrlInterceptorJavaScriptFile* = 1
-  QQmlAbstractUrlInterceptorQmldirFile* = 2
-  QQmlAbstractUrlInterceptorUrlString* = 4096
-
+type QQmlAbstractUrlInterceptorDataTypeEnum* = distinct cint
+template QmlFile*(_: type QQmlAbstractUrlInterceptorDataTypeEnum): untyped = 0
+template JavaScriptFile*(_: type QQmlAbstractUrlInterceptorDataTypeEnum): untyped = 1
+template QmldirFile*(_: type QQmlAbstractUrlInterceptorDataTypeEnum): untyped = 2
+template UrlString*(_: type QQmlAbstractUrlInterceptorDataTypeEnum): untyped = 4096
 
 
 import gen_qqmlabstracturlinterceptor_types
@@ -60,38 +58,36 @@ proc fcQQmlAbstractUrlInterceptor_override_virtual_intercept(self: pointer, slot
 proc fcQQmlAbstractUrlInterceptor_delete(self: pointer) {.importc: "QQmlAbstractUrlInterceptor_delete".}
 
 
-func init*(T: type QQmlAbstractUrlInterceptor, h: ptr cQQmlAbstractUrlInterceptor): QQmlAbstractUrlInterceptor =
+func init*(T: type gen_qqmlabstracturlinterceptor_types.QQmlAbstractUrlInterceptor, h: ptr cQQmlAbstractUrlInterceptor): gen_qqmlabstracturlinterceptor_types.QQmlAbstractUrlInterceptor =
   T(h: h)
-proc create*(T: type QQmlAbstractUrlInterceptor, ): QQmlAbstractUrlInterceptor =
+proc create*(T: type gen_qqmlabstracturlinterceptor_types.QQmlAbstractUrlInterceptor, ): gen_qqmlabstracturlinterceptor_types.QQmlAbstractUrlInterceptor =
 
-  QQmlAbstractUrlInterceptor.init(fcQQmlAbstractUrlInterceptor_new())
-proc intercept*(self: QQmlAbstractUrlInterceptor, path: gen_qurl.QUrl, typeVal: QQmlAbstractUrlInterceptorDataType): gen_qurl.QUrl =
+  gen_qqmlabstracturlinterceptor_types.QQmlAbstractUrlInterceptor.init(fcQQmlAbstractUrlInterceptor_new())
+proc intercept*(self: gen_qqmlabstracturlinterceptor_types.QQmlAbstractUrlInterceptor, path: gen_qurl.QUrl, typeVal: cint): gen_qurl.QUrl =
 
   gen_qurl.QUrl(h: fcQQmlAbstractUrlInterceptor_intercept(self.h, path.h, cint(typeVal)))
 
-proc operatorAssign*(self: QQmlAbstractUrlInterceptor, param1: QQmlAbstractUrlInterceptor): void =
+proc operatorAssign*(self: gen_qqmlabstracturlinterceptor_types.QQmlAbstractUrlInterceptor, param1: gen_qqmlabstracturlinterceptor_types.QQmlAbstractUrlInterceptor): void =
 
   fcQQmlAbstractUrlInterceptor_operatorAssign(self.h, param1.h)
 
-type QQmlAbstractUrlInterceptorinterceptBase* = proc(path: gen_qurl.QUrl, typeVal: QQmlAbstractUrlInterceptorDataType): gen_qurl.QUrl
-proc onintercept*(self: QQmlAbstractUrlInterceptor, slot: proc(path: gen_qurl.QUrl, typeVal: QQmlAbstractUrlInterceptorDataType): gen_qurl.QUrl) =
+type QQmlAbstractUrlInterceptorinterceptProc* = proc(path: gen_qurl.QUrl, typeVal: cint): gen_qurl.QUrl
+proc onintercept*(self: gen_qqmlabstracturlinterceptor_types.QQmlAbstractUrlInterceptor, slot: QQmlAbstractUrlInterceptorinterceptProc) =
   # TODO check subclass
-  type Cb = proc(path: gen_qurl.QUrl, typeVal: QQmlAbstractUrlInterceptorDataType): gen_qurl.QUrl
-  var tmp = new Cb
+  var tmp = new QQmlAbstractUrlInterceptorinterceptProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQmlAbstractUrlInterceptor_override_virtual_intercept(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQmlAbstractUrlInterceptor_intercept(self: ptr cQQmlAbstractUrlInterceptor, slot: int, path: pointer, typeVal: cint): pointer {.exportc: "miqt_exec_callback_QQmlAbstractUrlInterceptor_intercept ".} =
-  type Cb = proc(path: gen_qurl.QUrl, typeVal: QQmlAbstractUrlInterceptorDataType): gen_qurl.QUrl
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QQmlAbstractUrlInterceptorinterceptProc](cast[pointer](slot))
   let slotval1 = gen_qurl.QUrl(h: path)
 
-  let slotval2 = QQmlAbstractUrlInterceptorDataType(typeVal)
+  let slotval2 = cint(typeVal)
 
 
   let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn.h
-proc delete*(self: QQmlAbstractUrlInterceptor) =
+proc delete*(self: gen_qqmlabstracturlinterceptor_types.QQmlAbstractUrlInterceptor) =
   fcQQmlAbstractUrlInterceptor_delete(self.h)

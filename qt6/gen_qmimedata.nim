@@ -114,31 +114,31 @@ proc fcQMimeData_staticMetaObject(): pointer {.importc: "QMimeData_staticMetaObj
 proc fcQMimeData_delete(self: pointer) {.importc: "QMimeData_delete".}
 
 
-func init*(T: type QMimeData, h: ptr cQMimeData): QMimeData =
+func init*(T: type gen_qmimedata_types.QMimeData, h: ptr cQMimeData): gen_qmimedata_types.QMimeData =
   T(h: h)
-proc create*(T: type QMimeData, ): QMimeData =
+proc create*(T: type gen_qmimedata_types.QMimeData, ): gen_qmimedata_types.QMimeData =
 
-  QMimeData.init(fcQMimeData_new())
-proc metaObject*(self: QMimeData, ): gen_qobjectdefs.QMetaObject =
+  gen_qmimedata_types.QMimeData.init(fcQMimeData_new())
+proc metaObject*(self: gen_qmimedata_types.QMimeData, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQMimeData_metaObject(self.h))
 
-proc metacast*(self: QMimeData, param1: cstring): pointer =
+proc metacast*(self: gen_qmimedata_types.QMimeData, param1: cstring): pointer =
 
   fcQMimeData_metacast(self.h, param1)
 
-proc metacall*(self: QMimeData, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qmimedata_types.QMimeData, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQMimeData_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QMimeData, s: cstring): string =
+proc tr*(_: type gen_qmimedata_types.QMimeData, s: cstring): string =
 
   let v_ms = fcQMimeData_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc urls*(self: QMimeData, ): seq[gen_qurl.QUrl] =
+proc urls*(self: gen_qmimedata_types.QMimeData, ): seq[gen_qurl.QUrl] =
 
   var v_ma = fcQMimeData_urls(self.h)
   var vx_ret = newSeq[gen_qurl.QUrl](int(v_ma.len))
@@ -147,7 +147,7 @@ proc urls*(self: QMimeData, ): seq[gen_qurl.QUrl] =
     vx_ret[i] = gen_qurl.QUrl(h: v_outCast[i])
   vx_ret
 
-proc setUrls*(self: QMimeData, urls: seq[gen_qurl.QUrl]): void =
+proc setUrls*(self: gen_qmimedata_types.QMimeData, urls: seq[gen_qurl.QUrl]): void =
 
   var urls_CArray = newSeq[pointer](len(urls))
   for i in 0..<len(urls):
@@ -155,84 +155,84 @@ proc setUrls*(self: QMimeData, urls: seq[gen_qurl.QUrl]): void =
 
   fcQMimeData_setUrls(self.h, struct_miqt_array(len: csize_t(len(urls)), data: if len(urls) == 0: nil else: addr(urls_CArray[0])))
 
-proc hasUrls*(self: QMimeData, ): bool =
+proc hasUrls*(self: gen_qmimedata_types.QMimeData, ): bool =
 
   fcQMimeData_hasUrls(self.h)
 
-proc text*(self: QMimeData, ): string =
+proc text*(self: gen_qmimedata_types.QMimeData, ): string =
 
   let v_ms = fcQMimeData_text(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setText*(self: QMimeData, text: string): void =
+proc setText*(self: gen_qmimedata_types.QMimeData, text: string): void =
 
   fcQMimeData_setText(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
-proc hasText*(self: QMimeData, ): bool =
+proc hasText*(self: gen_qmimedata_types.QMimeData, ): bool =
 
   fcQMimeData_hasText(self.h)
 
-proc html*(self: QMimeData, ): string =
+proc html*(self: gen_qmimedata_types.QMimeData, ): string =
 
   let v_ms = fcQMimeData_html(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setHtml*(self: QMimeData, html: string): void =
+proc setHtml*(self: gen_qmimedata_types.QMimeData, html: string): void =
 
   fcQMimeData_setHtml(self.h, struct_miqt_string(data: html, len: csize_t(len(html))))
 
-proc hasHtml*(self: QMimeData, ): bool =
+proc hasHtml*(self: gen_qmimedata_types.QMimeData, ): bool =
 
   fcQMimeData_hasHtml(self.h)
 
-proc imageData*(self: QMimeData, ): gen_qvariant.QVariant =
+proc imageData*(self: gen_qmimedata_types.QMimeData, ): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fcQMimeData_imageData(self.h))
 
-proc setImageData*(self: QMimeData, image: gen_qvariant.QVariant): void =
+proc setImageData*(self: gen_qmimedata_types.QMimeData, image: gen_qvariant.QVariant): void =
 
   fcQMimeData_setImageData(self.h, image.h)
 
-proc hasImage*(self: QMimeData, ): bool =
+proc hasImage*(self: gen_qmimedata_types.QMimeData, ): bool =
 
   fcQMimeData_hasImage(self.h)
 
-proc colorData*(self: QMimeData, ): gen_qvariant.QVariant =
+proc colorData*(self: gen_qmimedata_types.QMimeData, ): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fcQMimeData_colorData(self.h))
 
-proc setColorData*(self: QMimeData, color: gen_qvariant.QVariant): void =
+proc setColorData*(self: gen_qmimedata_types.QMimeData, color: gen_qvariant.QVariant): void =
 
   fcQMimeData_setColorData(self.h, color.h)
 
-proc hasColor*(self: QMimeData, ): bool =
+proc hasColor*(self: gen_qmimedata_types.QMimeData, ): bool =
 
   fcQMimeData_hasColor(self.h)
 
-proc data*(self: QMimeData, mimetype: string): seq[byte] =
+proc data*(self: gen_qmimedata_types.QMimeData, mimetype: string): seq[byte] =
 
   var v_bytearray = fcQMimeData_data(self.h, struct_miqt_string(data: mimetype, len: csize_t(len(mimetype))))
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc setData*(self: QMimeData, mimetype: string, data: seq[byte]): void =
+proc setData*(self: gen_qmimedata_types.QMimeData, mimetype: string, data: seq[byte]): void =
 
   fcQMimeData_setData(self.h, struct_miqt_string(data: mimetype, len: csize_t(len(mimetype))), struct_miqt_string(data: cast[cstring](if len(data) == 0: nil else: unsafeAddr data[0]), len: csize_t(len(data))))
 
-proc removeFormat*(self: QMimeData, mimetype: string): void =
+proc removeFormat*(self: gen_qmimedata_types.QMimeData, mimetype: string): void =
 
   fcQMimeData_removeFormat(self.h, struct_miqt_string(data: mimetype, len: csize_t(len(mimetype))))
 
-proc hasFormat*(self: QMimeData, mimetype: string): bool =
+proc hasFormat*(self: gen_qmimedata_types.QMimeData, mimetype: string): bool =
 
   fcQMimeData_hasFormat(self.h, struct_miqt_string(data: mimetype, len: csize_t(len(mimetype))))
 
-proc formats*(self: QMimeData, ): seq[string] =
+proc formats*(self: gen_qmimedata_types.QMimeData, ): seq[string] =
 
   var v_ma = fcQMimeData_formats(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -244,131 +244,110 @@ proc formats*(self: QMimeData, ): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc clear*(self: QMimeData, ): void =
+proc clear*(self: gen_qmimedata_types.QMimeData, ): void =
 
   fcQMimeData_clear(self.h)
 
-proc tr2*(_: type QMimeData, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qmimedata_types.QMimeData, s: cstring, c: cstring): string =
 
   let v_ms = fcQMimeData_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QMimeData, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qmimedata_types.QMimeData, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQMimeData_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QMimeData, ): gen_qobjectdefs.QMetaObject =
-
+proc QMimeDatametaObject*(self: gen_qmimedata_types.QMimeData, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQMimeData_virtualbase_metaObject(self.h))
 
-type QMimeDatametaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QMimeData, slot: proc(super: QMimeDatametaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QMimeDatametaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qmimedata_types.QMimeData, slot: QMimeDatametaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QMimeDatametaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QMimeDatametaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMimeData_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMimeData_metaObject(self: ptr cQMimeData, slot: int): pointer {.exportc: "miqt_exec_callback_QMimeData_metaObject ".} =
-  type Cb = proc(super: QMimeDatametaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QMimeData(h: self), )
+  var nimfunc = cast[ptr QMimeDatametaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QMimeData, param1: cstring): pointer =
-
+proc QMimeDatametacast*(self: gen_qmimedata_types.QMimeData, param1: cstring): pointer =
 
   fQMimeData_virtualbase_metacast(self.h, param1)
 
-type QMimeDatametacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QMimeData, slot: proc(super: QMimeDatametacastBase, param1: cstring): pointer) =
+type QMimeDatametacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qmimedata_types.QMimeData, slot: QMimeDatametacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QMimeDatametacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QMimeDatametacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMimeData_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMimeData_metacast(self: ptr cQMimeData, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QMimeData_metacast ".} =
-  type Cb = proc(super: QMimeDatametacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QMimeData(h: self), param1)
+  var nimfunc = cast[ptr QMimeDatametacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QMimeData, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QMimeDatametacall*(self: gen_qmimedata_types.QMimeData, param1: cint, param2: cint, param3: pointer): cint =
 
   fQMimeData_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QMimeDatametacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QMimeData, slot: proc(super: QMimeDatametacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QMimeDatametacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qmimedata_types.QMimeData, slot: QMimeDatametacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QMimeDatametacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QMimeDatametacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMimeData_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMimeData_metacall(self: ptr cQMimeData, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QMimeData_metacall ".} =
-  type Cb = proc(super: QMimeDatametacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QMimeData(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QMimeDatametacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_hasFormat(self: QMimeData, mimetype: string): bool =
-
+proc QMimeDatahasFormat*(self: gen_qmimedata_types.QMimeData, mimetype: string): bool =
 
   fQMimeData_virtualbase_hasFormat(self.h, struct_miqt_string(data: mimetype, len: csize_t(len(mimetype))))
 
-type QMimeDatahasFormatBase* = proc(mimetype: string): bool
-proc onhasFormat*(self: QMimeData, slot: proc(super: QMimeDatahasFormatBase, mimetype: string): bool) =
+type QMimeDatahasFormatProc* = proc(mimetype: string): bool
+proc onhasFormat*(self: gen_qmimedata_types.QMimeData, slot: QMimeDatahasFormatProc) =
   # TODO check subclass
-  type Cb = proc(super: QMimeDatahasFormatBase, mimetype: string): bool
-  var tmp = new Cb
+  var tmp = new QMimeDatahasFormatProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMimeData_override_virtual_hasFormat(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMimeData_hasFormat(self: ptr cQMimeData, slot: int, mimetype: struct_miqt_string): bool {.exportc: "miqt_exec_callback_QMimeData_hasFormat ".} =
-  type Cb = proc(super: QMimeDatahasFormatBase, mimetype: string): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(mimetype: string): auto =
-    callVirtualBase_hasFormat(QMimeData(h: self), mimetype)
+  var nimfunc = cast[ptr QMimeDatahasFormatProc](cast[pointer](slot))
   let vmimetype_ms = mimetype
   let vmimetypex_ret = string.fromBytes(toOpenArrayByte(vmimetype_ms.data, 0, int(vmimetype_ms.len)-1))
   c_free(vmimetype_ms.data)
   let slotval1 = vmimetypex_ret
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_formats(self: QMimeData, ): seq[string] =
-
+proc QMimeDataformats*(self: gen_qmimedata_types.QMimeData, ): seq[string] =
 
   var v_ma = fQMimeData_virtualbase_formats(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -380,47 +359,38 @@ proc callVirtualBase_formats(self: QMimeData, ): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-type QMimeDataformatsBase* = proc(): seq[string]
-proc onformats*(self: QMimeData, slot: proc(super: QMimeDataformatsBase): seq[string]) =
+type QMimeDataformatsProc* = proc(): seq[string]
+proc onformats*(self: gen_qmimedata_types.QMimeData, slot: QMimeDataformatsProc) =
   # TODO check subclass
-  type Cb = proc(super: QMimeDataformatsBase): seq[string]
-  var tmp = new Cb
+  var tmp = new QMimeDataformatsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMimeData_override_virtual_formats(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMimeData_formats(self: ptr cQMimeData, slot: int): struct_miqt_array {.exportc: "miqt_exec_callback_QMimeData_formats ".} =
-  type Cb = proc(super: QMimeDataformatsBase): seq[string]
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_formats(QMimeData(h: self), )
+  var nimfunc = cast[ptr QMimeDataformatsProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
   var virtualReturn_CArray = newSeq[struct_miqt_string](len(virtualReturn))
   for i in 0..<len(virtualReturn):
     virtualReturn_CArray[i] = struct_miqt_string(data: virtualReturn[i], len: csize_t(len(virtualReturn[i])))
 
 
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
-proc callVirtualBase_retrieveData(self: QMimeData, mimetype: string, preferredType: gen_qmetatype.QMetaType): gen_qvariant.QVariant =
-
+proc QMimeDataretrieveData*(self: gen_qmimedata_types.QMimeData, mimetype: string, preferredType: gen_qmetatype.QMetaType): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQMimeData_virtualbase_retrieveData(self.h, struct_miqt_string(data: mimetype, len: csize_t(len(mimetype))), preferredType.h))
 
-type QMimeDataretrieveDataBase* = proc(mimetype: string, preferredType: gen_qmetatype.QMetaType): gen_qvariant.QVariant
-proc onretrieveData*(self: QMimeData, slot: proc(super: QMimeDataretrieveDataBase, mimetype: string, preferredType: gen_qmetatype.QMetaType): gen_qvariant.QVariant) =
+type QMimeDataretrieveDataProc* = proc(mimetype: string, preferredType: gen_qmetatype.QMetaType): gen_qvariant.QVariant
+proc onretrieveData*(self: gen_qmimedata_types.QMimeData, slot: QMimeDataretrieveDataProc) =
   # TODO check subclass
-  type Cb = proc(super: QMimeDataretrieveDataBase, mimetype: string, preferredType: gen_qmetatype.QMetaType): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QMimeDataretrieveDataProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMimeData_override_virtual_retrieveData(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMimeData_retrieveData(self: ptr cQMimeData, slot: int, mimetype: struct_miqt_string, preferredType: pointer): pointer {.exportc: "miqt_exec_callback_QMimeData_retrieveData ".} =
-  type Cb = proc(super: QMimeDataretrieveDataBase, mimetype: string, preferredType: gen_qmetatype.QMetaType): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(mimetype: string, preferredType: gen_qmetatype.QMetaType): auto =
-    callVirtualBase_retrieveData(QMimeData(h: self), mimetype, preferredType)
+  var nimfunc = cast[ptr QMimeDataretrieveDataProc](cast[pointer](slot))
   let vmimetype_ms = mimetype
   let vmimetypex_ret = string.fromBytes(toOpenArrayByte(vmimetype_ms.data, 0, int(vmimetype_ms.len)-1))
   c_free(vmimetype_ms.data)
@@ -429,177 +399,142 @@ proc miqt_exec_callback_QMimeData_retrieveData(self: ptr cQMimeData, slot: int, 
   let slotval2 = gen_qmetatype.QMetaType(h: preferredType)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn.h
-proc callVirtualBase_event(self: QMimeData, event: gen_qcoreevent.QEvent): bool =
-
+proc QMimeDataevent*(self: gen_qmimedata_types.QMimeData, event: gen_qcoreevent.QEvent): bool =
 
   fQMimeData_virtualbase_event(self.h, event.h)
 
-type QMimeDataeventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QMimeData, slot: proc(super: QMimeDataeventBase, event: gen_qcoreevent.QEvent): bool) =
+type QMimeDataeventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qmimedata_types.QMimeData, slot: QMimeDataeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMimeDataeventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QMimeDataeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMimeData_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMimeData_event(self: ptr cQMimeData, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QMimeData_event ".} =
-  type Cb = proc(super: QMimeDataeventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QMimeData(h: self), event)
+  var nimfunc = cast[ptr QMimeDataeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QMimeData, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QMimeDataeventFilter*(self: gen_qmimedata_types.QMimeData, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQMimeData_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QMimeDataeventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QMimeData, slot: proc(super: QMimeDataeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QMimeDataeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qmimedata_types.QMimeData, slot: QMimeDataeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QMimeDataeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QMimeDataeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMimeData_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMimeData_eventFilter(self: ptr cQMimeData, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QMimeData_eventFilter ".} =
-  type Cb = proc(super: QMimeDataeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QMimeData(h: self), watched, event)
+  var nimfunc = cast[ptr QMimeDataeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QMimeData, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QMimeDatatimerEvent*(self: gen_qmimedata_types.QMimeData, event: gen_qcoreevent.QTimerEvent): void =
 
   fQMimeData_virtualbase_timerEvent(self.h, event.h)
 
-type QMimeDatatimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QMimeData, slot: proc(super: QMimeDatatimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QMimeDatatimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qmimedata_types.QMimeData, slot: QMimeDatatimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMimeDatatimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QMimeDatatimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMimeData_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMimeData_timerEvent(self: ptr cQMimeData, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMimeData_timerEvent ".} =
-  type Cb = proc(super: QMimeDatatimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QMimeData(h: self), event)
+  var nimfunc = cast[ptr QMimeDatatimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QMimeData, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QMimeDatachildEvent*(self: gen_qmimedata_types.QMimeData, event: gen_qcoreevent.QChildEvent): void =
 
   fQMimeData_virtualbase_childEvent(self.h, event.h)
 
-type QMimeDatachildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QMimeData, slot: proc(super: QMimeDatachildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QMimeDatachildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qmimedata_types.QMimeData, slot: QMimeDatachildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMimeDatachildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QMimeDatachildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMimeData_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMimeData_childEvent(self: ptr cQMimeData, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMimeData_childEvent ".} =
-  type Cb = proc(super: QMimeDatachildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QMimeData(h: self), event)
+  var nimfunc = cast[ptr QMimeDatachildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QMimeData, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QMimeDatacustomEvent*(self: gen_qmimedata_types.QMimeData, event: gen_qcoreevent.QEvent): void =
 
   fQMimeData_virtualbase_customEvent(self.h, event.h)
 
-type QMimeDatacustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QMimeData, slot: proc(super: QMimeDatacustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QMimeDatacustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qmimedata_types.QMimeData, slot: QMimeDatacustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMimeDatacustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QMimeDatacustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMimeData_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMimeData_customEvent(self: ptr cQMimeData, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMimeData_customEvent ".} =
-  type Cb = proc(super: QMimeDatacustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QMimeData(h: self), event)
+  var nimfunc = cast[ptr QMimeDatacustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QMimeData, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QMimeDataconnectNotify*(self: gen_qmimedata_types.QMimeData, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQMimeData_virtualbase_connectNotify(self.h, signal.h)
 
-type QMimeDataconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QMimeData, slot: proc(super: QMimeDataconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QMimeDataconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qmimedata_types.QMimeData, slot: QMimeDataconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QMimeDataconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QMimeDataconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMimeData_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMimeData_connectNotify(self: ptr cQMimeData, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QMimeData_connectNotify ".} =
-  type Cb = proc(super: QMimeDataconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QMimeData(h: self), signal)
+  var nimfunc = cast[ptr QMimeDataconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QMimeData, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QMimeDatadisconnectNotify*(self: gen_qmimedata_types.QMimeData, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQMimeData_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QMimeDatadisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QMimeData, slot: proc(super: QMimeDatadisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QMimeDatadisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qmimedata_types.QMimeData, slot: QMimeDatadisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QMimeDatadisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QMimeDatadisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMimeData_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMimeData_disconnectNotify(self: ptr cQMimeData, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QMimeData_disconnectNotify ".} =
-  type Cb = proc(super: QMimeDatadisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QMimeData(h: self), signal)
+  var nimfunc = cast[ptr QMimeDatadisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QMimeData): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qmimedata_types.QMimeData): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQMimeData_staticMetaObject())
-proc delete*(self: QMimeData) =
+proc delete*(self: gen_qmimedata_types.QMimeData) =
   fcQMimeData_delete(self.h)

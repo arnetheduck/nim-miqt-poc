@@ -65,35 +65,35 @@ proc fcQMediaVideoProbeControl_staticMetaObject(): pointer {.importc: "QMediaVid
 proc fcQMediaVideoProbeControl_delete(self: pointer) {.importc: "QMediaVideoProbeControl_delete".}
 
 
-func init*(T: type QMediaVideoProbeControl, h: ptr cQMediaVideoProbeControl): QMediaVideoProbeControl =
+func init*(T: type gen_qmediavideoprobecontrol_types.QMediaVideoProbeControl, h: ptr cQMediaVideoProbeControl): gen_qmediavideoprobecontrol_types.QMediaVideoProbeControl =
   T(h: h)
-proc metaObject*(self: QMediaVideoProbeControl, ): gen_qobjectdefs.QMetaObject =
+proc metaObject*(self: gen_qmediavideoprobecontrol_types.QMediaVideoProbeControl, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQMediaVideoProbeControl_metaObject(self.h))
 
-proc metacast*(self: QMediaVideoProbeControl, param1: cstring): pointer =
+proc metacast*(self: gen_qmediavideoprobecontrol_types.QMediaVideoProbeControl, param1: cstring): pointer =
 
   fcQMediaVideoProbeControl_metacast(self.h, param1)
 
-proc metacall*(self: QMediaVideoProbeControl, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qmediavideoprobecontrol_types.QMediaVideoProbeControl, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQMediaVideoProbeControl_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QMediaVideoProbeControl, s: cstring): string =
+proc tr*(_: type gen_qmediavideoprobecontrol_types.QMediaVideoProbeControl, s: cstring): string =
 
   let v_ms = fcQMediaVideoProbeControl_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QMediaVideoProbeControl, s: cstring): string =
+proc trUtf8*(_: type gen_qmediavideoprobecontrol_types.QMediaVideoProbeControl, s: cstring): string =
 
   let v_ms = fcQMediaVideoProbeControl_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc videoFrameProbed*(self: QMediaVideoProbeControl, frame: gen_qvideoframe.QVideoFrame): void =
+proc videoFrameProbed*(self: gen_qmediavideoprobecontrol_types.QMediaVideoProbeControl, frame: gen_qvideoframe.QVideoFrame): void =
 
   fcQMediaVideoProbeControl_videoFrameProbed(self.h, frame.h)
 
@@ -105,13 +105,13 @@ proc miqt_exec_callback_QMediaVideoProbeControl_videoFrameProbed(slot: int, fram
 
   nimfunc[](slotval1)
 
-proc onvideoFrameProbed*(self: QMediaVideoProbeControl, slot: proc(frame: gen_qvideoframe.QVideoFrame)) =
+proc onvideoFrameProbed*(self: gen_qmediavideoprobecontrol_types.QMediaVideoProbeControl, slot: proc(frame: gen_qvideoframe.QVideoFrame)) =
   type Cb = proc(frame: gen_qvideoframe.QVideoFrame)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQMediaVideoProbeControl_connect_videoFrameProbed(self.h, cast[int](addr tmp[]))
-proc flush*(self: QMediaVideoProbeControl, ): void =
+proc flush*(self: gen_qmediavideoprobecontrol_types.QMediaVideoProbeControl, ): void =
 
   fcQMediaVideoProbeControl_flush(self.h)
 
@@ -121,41 +121,41 @@ proc miqt_exec_callback_QMediaVideoProbeControl_flush(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onflush*(self: QMediaVideoProbeControl, slot: proc()) =
+proc onflush*(self: gen_qmediavideoprobecontrol_types.QMediaVideoProbeControl, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQMediaVideoProbeControl_connect_flush(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QMediaVideoProbeControl, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qmediavideoprobecontrol_types.QMediaVideoProbeControl, s: cstring, c: cstring): string =
 
   let v_ms = fcQMediaVideoProbeControl_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QMediaVideoProbeControl, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qmediavideoprobecontrol_types.QMediaVideoProbeControl, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQMediaVideoProbeControl_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QMediaVideoProbeControl, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qmediavideoprobecontrol_types.QMediaVideoProbeControl, s: cstring, c: cstring): string =
 
   let v_ms = fcQMediaVideoProbeControl_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QMediaVideoProbeControl, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qmediavideoprobecontrol_types.QMediaVideoProbeControl, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQMediaVideoProbeControl_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc staticMetaObject*(_: type QMediaVideoProbeControl): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qmediavideoprobecontrol_types.QMediaVideoProbeControl): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQMediaVideoProbeControl_staticMetaObject())
-proc delete*(self: QMediaVideoProbeControl) =
+proc delete*(self: gen_qmediavideoprobecontrol_types.QMediaVideoProbeControl) =
   fcQMediaVideoProbeControl_delete(self.h)

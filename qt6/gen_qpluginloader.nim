@@ -40,7 +40,6 @@ export gen_qpluginloader_types
 import
   gen_qcoreevent,
   gen_qjsonobject,
-  gen_qlibrary,
   gen_qmetaobject,
   gen_qobject,
   gen_qobjectdefs,
@@ -48,7 +47,6 @@ import
 export
   gen_qcoreevent,
   gen_qjsonobject,
-  gen_qlibrary,
   gen_qmetaobject,
   gen_qobject,
   gen_qobjectdefs,
@@ -102,48 +100,48 @@ proc fcQPluginLoader_staticMetaObject(): pointer {.importc: "QPluginLoader_stati
 proc fcQPluginLoader_delete(self: pointer) {.importc: "QPluginLoader_delete".}
 
 
-func init*(T: type QPluginLoader, h: ptr cQPluginLoader): QPluginLoader =
+func init*(T: type gen_qpluginloader_types.QPluginLoader, h: ptr cQPluginLoader): gen_qpluginloader_types.QPluginLoader =
   T(h: h)
-proc create*(T: type QPluginLoader, ): QPluginLoader =
+proc create*(T: type gen_qpluginloader_types.QPluginLoader, ): gen_qpluginloader_types.QPluginLoader =
 
-  QPluginLoader.init(fcQPluginLoader_new())
-proc create*(T: type QPluginLoader, fileName: string): QPluginLoader =
+  gen_qpluginloader_types.QPluginLoader.init(fcQPluginLoader_new())
+proc create*(T: type gen_qpluginloader_types.QPluginLoader, fileName: string): gen_qpluginloader_types.QPluginLoader =
 
-  QPluginLoader.init(fcQPluginLoader_new2(struct_miqt_string(data: fileName, len: csize_t(len(fileName)))))
-proc create*(T: type QPluginLoader, parent: gen_qobject.QObject): QPluginLoader =
+  gen_qpluginloader_types.QPluginLoader.init(fcQPluginLoader_new2(struct_miqt_string(data: fileName, len: csize_t(len(fileName)))))
+proc create*(T: type gen_qpluginloader_types.QPluginLoader, parent: gen_qobject.QObject): gen_qpluginloader_types.QPluginLoader =
 
-  QPluginLoader.init(fcQPluginLoader_new3(parent.h))
-proc create*(T: type QPluginLoader, fileName: string, parent: gen_qobject.QObject): QPluginLoader =
+  gen_qpluginloader_types.QPluginLoader.init(fcQPluginLoader_new3(parent.h))
+proc create*(T: type gen_qpluginloader_types.QPluginLoader, fileName: string, parent: gen_qobject.QObject): gen_qpluginloader_types.QPluginLoader =
 
-  QPluginLoader.init(fcQPluginLoader_new4(struct_miqt_string(data: fileName, len: csize_t(len(fileName))), parent.h))
-proc metaObject*(self: QPluginLoader, ): gen_qobjectdefs.QMetaObject =
+  gen_qpluginloader_types.QPluginLoader.init(fcQPluginLoader_new4(struct_miqt_string(data: fileName, len: csize_t(len(fileName))), parent.h))
+proc metaObject*(self: gen_qpluginloader_types.QPluginLoader, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQPluginLoader_metaObject(self.h))
 
-proc metacast*(self: QPluginLoader, param1: cstring): pointer =
+proc metacast*(self: gen_qpluginloader_types.QPluginLoader, param1: cstring): pointer =
 
   fcQPluginLoader_metacast(self.h, param1)
 
-proc metacall*(self: QPluginLoader, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qpluginloader_types.QPluginLoader, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQPluginLoader_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QPluginLoader, s: cstring): string =
+proc tr*(_: type gen_qpluginloader_types.QPluginLoader, s: cstring): string =
 
   let v_ms = fcQPluginLoader_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc instance*(self: QPluginLoader, ): gen_qobject.QObject =
+proc instance*(self: gen_qpluginloader_types.QPluginLoader, ): gen_qobject.QObject =
 
   gen_qobject.QObject(h: fcQPluginLoader_instance(self.h))
 
-proc metaData*(self: QPluginLoader, ): gen_qjsonobject.QJsonObject =
+proc metaData*(self: gen_qpluginloader_types.QPluginLoader, ): gen_qjsonobject.QJsonObject =
 
   gen_qjsonobject.QJsonObject(h: fcQPluginLoader_metaData(self.h))
 
-proc staticInstances*(_: type QPluginLoader, ): seq[gen_qobject.QObject] =
+proc staticInstances*(_: type gen_qpluginloader_types.QPluginLoader, ): seq[gen_qobject.QObject] =
 
   var v_ma = fcQPluginLoader_staticInstances()
   var vx_ret = newSeq[gen_qobject.QObject](int(v_ma.len))
@@ -152,7 +150,7 @@ proc staticInstances*(_: type QPluginLoader, ): seq[gen_qobject.QObject] =
     vx_ret[i] = gen_qobject.QObject(h: v_outCast[i])
   vx_ret
 
-proc staticPlugins*(_: type QPluginLoader, ): seq[gen_qplugin.QStaticPlugin] =
+proc staticPlugins*(_: type gen_qpluginloader_types.QPluginLoader, ): seq[gen_qplugin.QStaticPlugin] =
 
   var v_ma = fcQPluginLoader_staticPlugins()
   var vx_ret = newSeq[gen_qplugin.QStaticPlugin](int(v_ma.len))
@@ -161,303 +159,253 @@ proc staticPlugins*(_: type QPluginLoader, ): seq[gen_qplugin.QStaticPlugin] =
     vx_ret[i] = gen_qplugin.QStaticPlugin(h: v_outCast[i])
   vx_ret
 
-proc load*(self: QPluginLoader, ): bool =
+proc load*(self: gen_qpluginloader_types.QPluginLoader, ): bool =
 
   fcQPluginLoader_load(self.h)
 
-proc unload*(self: QPluginLoader, ): bool =
+proc unload*(self: gen_qpluginloader_types.QPluginLoader, ): bool =
 
   fcQPluginLoader_unload(self.h)
 
-proc isLoaded*(self: QPluginLoader, ): bool =
+proc isLoaded*(self: gen_qpluginloader_types.QPluginLoader, ): bool =
 
   fcQPluginLoader_isLoaded(self.h)
 
-proc setFileName*(self: QPluginLoader, fileName: string): void =
+proc setFileName*(self: gen_qpluginloader_types.QPluginLoader, fileName: string): void =
 
   fcQPluginLoader_setFileName(self.h, struct_miqt_string(data: fileName, len: csize_t(len(fileName))))
 
-proc fileName*(self: QPluginLoader, ): string =
+proc fileName*(self: gen_qpluginloader_types.QPluginLoader, ): string =
 
   let v_ms = fcQPluginLoader_fileName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc errorString*(self: QPluginLoader, ): string =
+proc errorString*(self: gen_qpluginloader_types.QPluginLoader, ): string =
 
   let v_ms = fcQPluginLoader_errorString(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setLoadHints*(self: QPluginLoader, loadHints: gen_qlibrary.QLibraryLoadHint): void =
+proc setLoadHints*(self: gen_qpluginloader_types.QPluginLoader, loadHints: cint): void =
 
   fcQPluginLoader_setLoadHints(self.h, cint(loadHints))
 
-proc loadHints*(self: QPluginLoader, ): gen_qlibrary.QLibraryLoadHint =
+proc loadHints*(self: gen_qpluginloader_types.QPluginLoader, ): cint =
 
-  gen_qlibrary.QLibraryLoadHint(fcQPluginLoader_loadHints(self.h))
+  cint(fcQPluginLoader_loadHints(self.h))
 
-proc tr2*(_: type QPluginLoader, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qpluginloader_types.QPluginLoader, s: cstring, c: cstring): string =
 
   let v_ms = fcQPluginLoader_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QPluginLoader, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qpluginloader_types.QPluginLoader, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQPluginLoader_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QPluginLoader, ): gen_qobjectdefs.QMetaObject =
-
+proc QPluginLoadermetaObject*(self: gen_qpluginloader_types.QPluginLoader, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQPluginLoader_virtualbase_metaObject(self.h))
 
-type QPluginLoadermetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QPluginLoader, slot: proc(super: QPluginLoadermetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QPluginLoadermetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qpluginloader_types.QPluginLoader, slot: QPluginLoadermetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QPluginLoadermetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QPluginLoadermetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPluginLoader_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPluginLoader_metaObject(self: ptr cQPluginLoader, slot: int): pointer {.exportc: "miqt_exec_callback_QPluginLoader_metaObject ".} =
-  type Cb = proc(super: QPluginLoadermetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QPluginLoader(h: self), )
+  var nimfunc = cast[ptr QPluginLoadermetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QPluginLoader, param1: cstring): pointer =
-
+proc QPluginLoadermetacast*(self: gen_qpluginloader_types.QPluginLoader, param1: cstring): pointer =
 
   fQPluginLoader_virtualbase_metacast(self.h, param1)
 
-type QPluginLoadermetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QPluginLoader, slot: proc(super: QPluginLoadermetacastBase, param1: cstring): pointer) =
+type QPluginLoadermetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qpluginloader_types.QPluginLoader, slot: QPluginLoadermetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QPluginLoadermetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QPluginLoadermetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPluginLoader_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPluginLoader_metacast(self: ptr cQPluginLoader, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QPluginLoader_metacast ".} =
-  type Cb = proc(super: QPluginLoadermetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QPluginLoader(h: self), param1)
+  var nimfunc = cast[ptr QPluginLoadermetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QPluginLoader, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QPluginLoadermetacall*(self: gen_qpluginloader_types.QPluginLoader, param1: cint, param2: cint, param3: pointer): cint =
 
   fQPluginLoader_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QPluginLoadermetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QPluginLoader, slot: proc(super: QPluginLoadermetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QPluginLoadermetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qpluginloader_types.QPluginLoader, slot: QPluginLoadermetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QPluginLoadermetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QPluginLoadermetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPluginLoader_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPluginLoader_metacall(self: ptr cQPluginLoader, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QPluginLoader_metacall ".} =
-  type Cb = proc(super: QPluginLoadermetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QPluginLoader(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QPluginLoadermetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_event(self: QPluginLoader, event: gen_qcoreevent.QEvent): bool =
-
+proc QPluginLoaderevent*(self: gen_qpluginloader_types.QPluginLoader, event: gen_qcoreevent.QEvent): bool =
 
   fQPluginLoader_virtualbase_event(self.h, event.h)
 
-type QPluginLoadereventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QPluginLoader, slot: proc(super: QPluginLoadereventBase, event: gen_qcoreevent.QEvent): bool) =
+type QPluginLoadereventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qpluginloader_types.QPluginLoader, slot: QPluginLoadereventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPluginLoadereventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QPluginLoadereventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPluginLoader_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPluginLoader_event(self: ptr cQPluginLoader, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QPluginLoader_event ".} =
-  type Cb = proc(super: QPluginLoadereventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QPluginLoader(h: self), event)
+  var nimfunc = cast[ptr QPluginLoadereventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QPluginLoader, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QPluginLoadereventFilter*(self: gen_qpluginloader_types.QPluginLoader, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQPluginLoader_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QPluginLoadereventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QPluginLoader, slot: proc(super: QPluginLoadereventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QPluginLoadereventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qpluginloader_types.QPluginLoader, slot: QPluginLoadereventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QPluginLoadereventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QPluginLoadereventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPluginLoader_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPluginLoader_eventFilter(self: ptr cQPluginLoader, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QPluginLoader_eventFilter ".} =
-  type Cb = proc(super: QPluginLoadereventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QPluginLoader(h: self), watched, event)
+  var nimfunc = cast[ptr QPluginLoadereventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QPluginLoader, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QPluginLoadertimerEvent*(self: gen_qpluginloader_types.QPluginLoader, event: gen_qcoreevent.QTimerEvent): void =
 
   fQPluginLoader_virtualbase_timerEvent(self.h, event.h)
 
-type QPluginLoadertimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QPluginLoader, slot: proc(super: QPluginLoadertimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QPluginLoadertimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qpluginloader_types.QPluginLoader, slot: QPluginLoadertimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPluginLoadertimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QPluginLoadertimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPluginLoader_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPluginLoader_timerEvent(self: ptr cQPluginLoader, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPluginLoader_timerEvent ".} =
-  type Cb = proc(super: QPluginLoadertimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QPluginLoader(h: self), event)
+  var nimfunc = cast[ptr QPluginLoadertimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QPluginLoader, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QPluginLoaderchildEvent*(self: gen_qpluginloader_types.QPluginLoader, event: gen_qcoreevent.QChildEvent): void =
 
   fQPluginLoader_virtualbase_childEvent(self.h, event.h)
 
-type QPluginLoaderchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QPluginLoader, slot: proc(super: QPluginLoaderchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QPluginLoaderchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qpluginloader_types.QPluginLoader, slot: QPluginLoaderchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPluginLoaderchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QPluginLoaderchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPluginLoader_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPluginLoader_childEvent(self: ptr cQPluginLoader, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPluginLoader_childEvent ".} =
-  type Cb = proc(super: QPluginLoaderchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QPluginLoader(h: self), event)
+  var nimfunc = cast[ptr QPluginLoaderchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QPluginLoader, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QPluginLoadercustomEvent*(self: gen_qpluginloader_types.QPluginLoader, event: gen_qcoreevent.QEvent): void =
 
   fQPluginLoader_virtualbase_customEvent(self.h, event.h)
 
-type QPluginLoadercustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QPluginLoader, slot: proc(super: QPluginLoadercustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QPluginLoadercustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qpluginloader_types.QPluginLoader, slot: QPluginLoadercustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPluginLoadercustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QPluginLoadercustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPluginLoader_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPluginLoader_customEvent(self: ptr cQPluginLoader, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPluginLoader_customEvent ".} =
-  type Cb = proc(super: QPluginLoadercustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QPluginLoader(h: self), event)
+  var nimfunc = cast[ptr QPluginLoadercustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QPluginLoader, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QPluginLoaderconnectNotify*(self: gen_qpluginloader_types.QPluginLoader, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQPluginLoader_virtualbase_connectNotify(self.h, signal.h)
 
-type QPluginLoaderconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QPluginLoader, slot: proc(super: QPluginLoaderconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QPluginLoaderconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qpluginloader_types.QPluginLoader, slot: QPluginLoaderconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QPluginLoaderconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QPluginLoaderconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPluginLoader_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPluginLoader_connectNotify(self: ptr cQPluginLoader, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QPluginLoader_connectNotify ".} =
-  type Cb = proc(super: QPluginLoaderconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QPluginLoader(h: self), signal)
+  var nimfunc = cast[ptr QPluginLoaderconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QPluginLoader, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QPluginLoaderdisconnectNotify*(self: gen_qpluginloader_types.QPluginLoader, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQPluginLoader_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QPluginLoaderdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QPluginLoader, slot: proc(super: QPluginLoaderdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QPluginLoaderdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qpluginloader_types.QPluginLoader, slot: QPluginLoaderdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QPluginLoaderdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QPluginLoaderdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPluginLoader_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPluginLoader_disconnectNotify(self: ptr cQPluginLoader, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QPluginLoader_disconnectNotify ".} =
-  type Cb = proc(super: QPluginLoaderdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QPluginLoader(h: self), signal)
+  var nimfunc = cast[ptr QPluginLoaderdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QPluginLoader): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qpluginloader_types.QPluginLoader): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQPluginLoader_staticMetaObject())
-proc delete*(self: QPluginLoader) =
+proc delete*(self: gen_qpluginloader_types.QPluginLoader) =
   fcQPluginLoader_delete(self.h)

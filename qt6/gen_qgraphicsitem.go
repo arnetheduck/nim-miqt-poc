@@ -2308,7 +2308,7 @@ func (this *QGraphicsObject) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QGraphicsObject_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QGraphicsObject) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QGraphicsObject) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QGraphicsObject_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2335,7 +2335,7 @@ func (this *QGraphicsObject) callVirtualBase_Metacast(param1 string) unsafe.Poin
 	return (unsafe.Pointer)(C.QGraphicsObject_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QGraphicsObject) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QGraphicsObject) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QGraphicsObject_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -11381,7 +11381,7 @@ func (this *QGraphicsTextItem) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QGraphicsTextItem_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QGraphicsTextItem) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QGraphicsTextItem) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QGraphicsTextItem_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -11408,7 +11408,7 @@ func (this *QGraphicsTextItem) callVirtualBase_Metacast(param1 string) unsafe.Po
 	return (unsafe.Pointer)(C.QGraphicsTextItem_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QGraphicsTextItem) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QGraphicsTextItem) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QGraphicsTextItem_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

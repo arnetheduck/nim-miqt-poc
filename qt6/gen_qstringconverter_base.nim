@@ -34,30 +34,26 @@ const cflags = gorge("pkg-config -cflags Qt6Widgets")
 {.compile("gen_qstringconverter_base.cpp", cflags).}
 
 
-type QStringConverterBaseFlag* = cint
-const
-  QStringConverterBaseDefault* = 0
-  QStringConverterBaseStateless* = 1
-  QStringConverterBaseConvertInvalidToNull* = 2
-  QStringConverterBaseWriteBom* = 4
-  QStringConverterBaseConvertInitialBom* = 8
-  QStringConverterBaseUsesIcu* = 16
+type QStringConverterBaseFlagEnum* = distinct cint
+template Default*(_: type QStringConverterBaseFlagEnum): untyped = 0
+template Stateless*(_: type QStringConverterBaseFlagEnum): untyped = 1
+template ConvertInvalidToNull*(_: type QStringConverterBaseFlagEnum): untyped = 2
+template WriteBom*(_: type QStringConverterBaseFlagEnum): untyped = 4
+template ConvertInitialBom*(_: type QStringConverterBaseFlagEnum): untyped = 8
+template UsesIcu*(_: type QStringConverterBaseFlagEnum): untyped = 16
 
 
-
-type QStringConverterEncoding* = cint
-const
-  QStringConverterUtf8* = 0
-  QStringConverterUtf16* = 1
-  QStringConverterUtf16LE* = 2
-  QStringConverterUtf16BE* = 3
-  QStringConverterUtf32* = 4
-  QStringConverterUtf32LE* = 5
-  QStringConverterUtf32BE* = 6
-  QStringConverterLatin1* = 7
-  QStringConverterSystem* = 8
-  QStringConverterLastEncoding* = 8
-
+type QStringConverterEncodingEnum* = distinct cint
+template Utf8*(_: type QStringConverterEncodingEnum): untyped = 0
+template Utf16*(_: type QStringConverterEncodingEnum): untyped = 1
+template Utf16LE*(_: type QStringConverterEncodingEnum): untyped = 2
+template Utf16BE*(_: type QStringConverterEncodingEnum): untyped = 3
+template Utf32*(_: type QStringConverterEncodingEnum): untyped = 4
+template Utf32LE*(_: type QStringConverterEncodingEnum): untyped = 5
+template Utf32BE*(_: type QStringConverterEncodingEnum): untyped = 6
+template Latin1*(_: type QStringConverterEncodingEnum): untyped = 7
+template System*(_: type QStringConverterEncodingEnum): untyped = 8
+template LastEncoding*(_: type QStringConverterEncodingEnum): untyped = 8
 
 
 import gen_qstringconverter_base_types
@@ -82,53 +78,53 @@ proc fcQStringConverterBaseState_reset(self: pointer, ): void {.importc: "QStrin
 proc fcQStringConverterBaseState_delete(self: pointer) {.importc: "QStringConverterBase__State_delete".}
 
 
-func init*(T: type QStringConverterBase, h: ptr cQStringConverterBase): QStringConverterBase =
+func init*(T: type gen_qstringconverter_base_types.QStringConverterBase, h: ptr cQStringConverterBase): gen_qstringconverter_base_types.QStringConverterBase =
   T(h: h)
-proc create*(T: type QStringConverterBase, param1: QStringConverterBase): QStringConverterBase =
+proc create*(T: type gen_qstringconverter_base_types.QStringConverterBase, param1: gen_qstringconverter_base_types.QStringConverterBase): gen_qstringconverter_base_types.QStringConverterBase =
 
-  QStringConverterBase.init(fcQStringConverterBase_new(param1.h))
-proc create*(T: type QStringConverterBase, ): QStringConverterBase =
+  gen_qstringconverter_base_types.QStringConverterBase.init(fcQStringConverterBase_new(param1.h))
+proc create*(T: type gen_qstringconverter_base_types.QStringConverterBase, ): gen_qstringconverter_base_types.QStringConverterBase =
 
-  QStringConverterBase.init(fcQStringConverterBase_new2())
+  gen_qstringconverter_base_types.QStringConverterBase.init(fcQStringConverterBase_new2())
 
-func init*(T: type QStringConverter, h: ptr cQStringConverter): QStringConverter =
+func init*(T: type gen_qstringconverter_base_types.QStringConverter, h: ptr cQStringConverter): gen_qstringconverter_base_types.QStringConverter =
   T(h: h)
-proc isValid*(self: QStringConverter, ): bool =
+proc isValid*(self: gen_qstringconverter_base_types.QStringConverter, ): bool =
 
   fcQStringConverter_isValid(self.h)
 
-proc resetState*(self: QStringConverter, ): void =
+proc resetState*(self: gen_qstringconverter_base_types.QStringConverter, ): void =
 
   fcQStringConverter_resetState(self.h)
 
-proc hasError*(self: QStringConverter, ): bool =
+proc hasError*(self: gen_qstringconverter_base_types.QStringConverter, ): bool =
 
   fcQStringConverter_hasError(self.h)
 
-proc name*(self: QStringConverter, ): cstring =
+proc name*(self: gen_qstringconverter_base_types.QStringConverter, ): cstring =
 
   (fcQStringConverter_name(self.h))
 
-proc nameForEncoding*(_: type QStringConverter, e: QStringConverterEncoding): cstring =
+proc nameForEncoding*(_: type gen_qstringconverter_base_types.QStringConverter, e: cint): cstring =
 
   (fcQStringConverter_nameForEncoding(cint(e)))
 
 
-func init*(T: type QStringConverterBaseState, h: ptr cQStringConverterBaseState): QStringConverterBaseState =
+func init*(T: type gen_qstringconverter_base_types.QStringConverterBaseState, h: ptr cQStringConverterBaseState): gen_qstringconverter_base_types.QStringConverterBaseState =
   T(h: h)
-proc create*(T: type QStringConverterBaseState, ): QStringConverterBaseState =
+proc create*(T: type gen_qstringconverter_base_types.QStringConverterBaseState, ): gen_qstringconverter_base_types.QStringConverterBaseState =
 
-  QStringConverterBaseState.init(fcQStringConverterBaseState_new())
-proc create*(T: type QStringConverterBaseState, f: QStringConverterBaseFlag): QStringConverterBaseState =
+  gen_qstringconverter_base_types.QStringConverterBaseState.init(fcQStringConverterBaseState_new())
+proc create*(T: type gen_qstringconverter_base_types.QStringConverterBaseState, f: cint): gen_qstringconverter_base_types.QStringConverterBaseState =
 
-  QStringConverterBaseState.init(fcQStringConverterBaseState_new2(cint(f)))
-proc clear*(self: QStringConverterBaseState, ): void =
+  gen_qstringconverter_base_types.QStringConverterBaseState.init(fcQStringConverterBaseState_new2(cint(f)))
+proc clear*(self: gen_qstringconverter_base_types.QStringConverterBaseState, ): void =
 
   fcQStringConverterBaseState_clear(self.h)
 
-proc reset*(self: QStringConverterBaseState, ): void =
+proc reset*(self: gen_qstringconverter_base_types.QStringConverterBaseState, ): void =
 
   fcQStringConverterBaseState_reset(self.h)
 
-proc delete*(self: QStringConverterBaseState) =
+proc delete*(self: gen_qstringconverter_base_types.QStringConverterBaseState) =
   fcQStringConverterBaseState_delete(self.h)

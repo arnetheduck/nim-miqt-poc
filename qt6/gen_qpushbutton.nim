@@ -44,7 +44,6 @@ import
   gen_qicon,
   gen_qmenu,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -62,7 +61,6 @@ export
   gen_qicon,
   gen_qmenu,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -211,1075 +209,865 @@ proc fcQPushButton_staticMetaObject(): pointer {.importc: "QPushButton_staticMet
 proc fcQPushButton_delete(self: pointer) {.importc: "QPushButton_delete".}
 
 
-func init*(T: type QPushButton, h: ptr cQPushButton): QPushButton =
+func init*(T: type gen_qpushbutton_types.QPushButton, h: ptr cQPushButton): gen_qpushbutton_types.QPushButton =
   T(h: h)
-proc create*(T: type QPushButton, parent: gen_qwidget.QWidget): QPushButton =
+proc create*(T: type gen_qpushbutton_types.QPushButton, parent: gen_qwidget.QWidget): gen_qpushbutton_types.QPushButton =
 
-  QPushButton.init(fcQPushButton_new(parent.h))
-proc create*(T: type QPushButton, ): QPushButton =
+  gen_qpushbutton_types.QPushButton.init(fcQPushButton_new(parent.h))
+proc create*(T: type gen_qpushbutton_types.QPushButton, ): gen_qpushbutton_types.QPushButton =
 
-  QPushButton.init(fcQPushButton_new2())
-proc create*(T: type QPushButton, text: string): QPushButton =
+  gen_qpushbutton_types.QPushButton.init(fcQPushButton_new2())
+proc create*(T: type gen_qpushbutton_types.QPushButton, text: string): gen_qpushbutton_types.QPushButton =
 
-  QPushButton.init(fcQPushButton_new3(struct_miqt_string(data: text, len: csize_t(len(text)))))
-proc create*(T: type QPushButton, icon: gen_qicon.QIcon, text: string): QPushButton =
+  gen_qpushbutton_types.QPushButton.init(fcQPushButton_new3(struct_miqt_string(data: text, len: csize_t(len(text)))))
+proc create*(T: type gen_qpushbutton_types.QPushButton, icon: gen_qicon.QIcon, text: string): gen_qpushbutton_types.QPushButton =
 
-  QPushButton.init(fcQPushButton_new4(icon.h, struct_miqt_string(data: text, len: csize_t(len(text)))))
-proc create*(T: type QPushButton, text: string, parent: gen_qwidget.QWidget): QPushButton =
+  gen_qpushbutton_types.QPushButton.init(fcQPushButton_new4(icon.h, struct_miqt_string(data: text, len: csize_t(len(text)))))
+proc create*(T: type gen_qpushbutton_types.QPushButton, text: string, parent: gen_qwidget.QWidget): gen_qpushbutton_types.QPushButton =
 
-  QPushButton.init(fcQPushButton_new5(struct_miqt_string(data: text, len: csize_t(len(text))), parent.h))
-proc create*(T: type QPushButton, icon: gen_qicon.QIcon, text: string, parent: gen_qwidget.QWidget): QPushButton =
+  gen_qpushbutton_types.QPushButton.init(fcQPushButton_new5(struct_miqt_string(data: text, len: csize_t(len(text))), parent.h))
+proc create*(T: type gen_qpushbutton_types.QPushButton, icon: gen_qicon.QIcon, text: string, parent: gen_qwidget.QWidget): gen_qpushbutton_types.QPushButton =
 
-  QPushButton.init(fcQPushButton_new6(icon.h, struct_miqt_string(data: text, len: csize_t(len(text))), parent.h))
-proc metaObject*(self: QPushButton, ): gen_qobjectdefs.QMetaObject =
+  gen_qpushbutton_types.QPushButton.init(fcQPushButton_new6(icon.h, struct_miqt_string(data: text, len: csize_t(len(text))), parent.h))
+proc metaObject*(self: gen_qpushbutton_types.QPushButton, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQPushButton_metaObject(self.h))
 
-proc metacast*(self: QPushButton, param1: cstring): pointer =
+proc metacast*(self: gen_qpushbutton_types.QPushButton, param1: cstring): pointer =
 
   fcQPushButton_metacast(self.h, param1)
 
-proc metacall*(self: QPushButton, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qpushbutton_types.QPushButton, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQPushButton_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QPushButton, s: cstring): string =
+proc tr*(_: type gen_qpushbutton_types.QPushButton, s: cstring): string =
 
   let v_ms = fcQPushButton_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc sizeHint*(self: QPushButton, ): gen_qsize.QSize =
+proc sizeHint*(self: gen_qpushbutton_types.QPushButton, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQPushButton_sizeHint(self.h))
 
-proc minimumSizeHint*(self: QPushButton, ): gen_qsize.QSize =
+proc minimumSizeHint*(self: gen_qpushbutton_types.QPushButton, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQPushButton_minimumSizeHint(self.h))
 
-proc autoDefault*(self: QPushButton, ): bool =
+proc autoDefault*(self: gen_qpushbutton_types.QPushButton, ): bool =
 
   fcQPushButton_autoDefault(self.h)
 
-proc setAutoDefault*(self: QPushButton, autoDefault: bool): void =
+proc setAutoDefault*(self: gen_qpushbutton_types.QPushButton, autoDefault: bool): void =
 
   fcQPushButton_setAutoDefault(self.h, autoDefault)
 
-proc isDefault*(self: QPushButton, ): bool =
+proc isDefault*(self: gen_qpushbutton_types.QPushButton, ): bool =
 
   fcQPushButton_isDefault(self.h)
 
-proc setDefault*(self: QPushButton, default: bool): void =
+proc setDefault*(self: gen_qpushbutton_types.QPushButton, default: bool): void =
 
   fcQPushButton_setDefault(self.h, default)
 
-proc setMenu*(self: QPushButton, menu: gen_qmenu.QMenu): void =
+proc setMenu*(self: gen_qpushbutton_types.QPushButton, menu: gen_qmenu.QMenu): void =
 
   fcQPushButton_setMenu(self.h, menu.h)
 
-proc menu*(self: QPushButton, ): gen_qmenu.QMenu =
+proc menu*(self: gen_qpushbutton_types.QPushButton, ): gen_qmenu.QMenu =
 
   gen_qmenu.QMenu(h: fcQPushButton_menu(self.h))
 
-proc setFlat*(self: QPushButton, flat: bool): void =
+proc setFlat*(self: gen_qpushbutton_types.QPushButton, flat: bool): void =
 
   fcQPushButton_setFlat(self.h, flat)
 
-proc isFlat*(self: QPushButton, ): bool =
+proc isFlat*(self: gen_qpushbutton_types.QPushButton, ): bool =
 
   fcQPushButton_isFlat(self.h)
 
-proc showMenu*(self: QPushButton, ): void =
+proc showMenu*(self: gen_qpushbutton_types.QPushButton, ): void =
 
   fcQPushButton_showMenu(self.h)
 
-proc tr2*(_: type QPushButton, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qpushbutton_types.QPushButton, s: cstring, c: cstring): string =
 
   let v_ms = fcQPushButton_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QPushButton, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qpushbutton_types.QPushButton, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQPushButton_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QPushButton, ): gen_qobjectdefs.QMetaObject =
-
+proc QPushButtonmetaObject*(self: gen_qpushbutton_types.QPushButton, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQPushButton_virtualbase_metaObject(self.h))
 
-type QPushButtonmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QPushButton, slot: proc(super: QPushButtonmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QPushButtonmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtonmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QPushButtonmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QPushButtonmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPushButton_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPushButton_metaObject(self: ptr cQPushButton, slot: int): pointer {.exportc: "miqt_exec_callback_QPushButton_metaObject ".} =
-  type Cb = proc(super: QPushButtonmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QPushButton(h: self), )
+  var nimfunc = cast[ptr QPushButtonmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QPushButton, param1: cstring): pointer =
-
+proc QPushButtonmetacast*(self: gen_qpushbutton_types.QPushButton, param1: cstring): pointer =
 
   fQPushButton_virtualbase_metacast(self.h, param1)
 
-type QPushButtonmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QPushButton, slot: proc(super: QPushButtonmetacastBase, param1: cstring): pointer) =
+type QPushButtonmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtonmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QPushButtonmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QPushButtonmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPushButton_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPushButton_metacast(self: ptr cQPushButton, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QPushButton_metacast ".} =
-  type Cb = proc(super: QPushButtonmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QPushButton(h: self), param1)
+  var nimfunc = cast[ptr QPushButtonmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QPushButton, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QPushButtonmetacall*(self: gen_qpushbutton_types.QPushButton, param1: cint, param2: cint, param3: pointer): cint =
 
   fQPushButton_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QPushButtonmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QPushButton, slot: proc(super: QPushButtonmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QPushButtonmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtonmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QPushButtonmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QPushButtonmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPushButton_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPushButton_metacall(self: ptr cQPushButton, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QPushButton_metacall ".} =
-  type Cb = proc(super: QPushButtonmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QPushButton(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QPushButtonmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_sizeHint(self: QPushButton, ): gen_qsize.QSize =
-
+proc QPushButtonsizeHint*(self: gen_qpushbutton_types.QPushButton, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQPushButton_virtualbase_sizeHint(self.h))
 
-type QPushButtonsizeHintBase* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: QPushButton, slot: proc(super: QPushButtonsizeHintBase): gen_qsize.QSize) =
+type QPushButtonsizeHintProc* = proc(): gen_qsize.QSize
+proc onsizeHint*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtonsizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QPushButtonsizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QPushButtonsizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPushButton_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPushButton_sizeHint(self: ptr cQPushButton, slot: int): pointer {.exportc: "miqt_exec_callback_QPushButton_sizeHint ".} =
-  type Cb = proc(super: QPushButtonsizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sizeHint(QPushButton(h: self), )
+  var nimfunc = cast[ptr QPushButtonsizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_minimumSizeHint(self: QPushButton, ): gen_qsize.QSize =
-
+proc QPushButtonminimumSizeHint*(self: gen_qpushbutton_types.QPushButton, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQPushButton_virtualbase_minimumSizeHint(self.h))
 
-type QPushButtonminimumSizeHintBase* = proc(): gen_qsize.QSize
-proc onminimumSizeHint*(self: QPushButton, slot: proc(super: QPushButtonminimumSizeHintBase): gen_qsize.QSize) =
+type QPushButtonminimumSizeHintProc* = proc(): gen_qsize.QSize
+proc onminimumSizeHint*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtonminimumSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QPushButtonminimumSizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QPushButtonminimumSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPushButton_override_virtual_minimumSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPushButton_minimumSizeHint(self: ptr cQPushButton, slot: int): pointer {.exportc: "miqt_exec_callback_QPushButton_minimumSizeHint ".} =
-  type Cb = proc(super: QPushButtonminimumSizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_minimumSizeHint(QPushButton(h: self), )
+  var nimfunc = cast[ptr QPushButtonminimumSizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_event(self: QPushButton, e: gen_qcoreevent.QEvent): bool =
-
+proc QPushButtonevent*(self: gen_qpushbutton_types.QPushButton, e: gen_qcoreevent.QEvent): bool =
 
   fQPushButton_virtualbase_event(self.h, e.h)
 
-type QPushButtoneventBase* = proc(e: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QPushButton, slot: proc(super: QPushButtoneventBase, e: gen_qcoreevent.QEvent): bool) =
+type QPushButtoneventProc* = proc(e: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtoneventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPushButtoneventBase, e: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QPushButtoneventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPushButton_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPushButton_event(self: ptr cQPushButton, slot: int, e: pointer): bool {.exportc: "miqt_exec_callback_QPushButton_event ".} =
-  type Cb = proc(super: QPushButtoneventBase, e: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QPushButton(h: self), e)
+  var nimfunc = cast[ptr QPushButtoneventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: e)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_paintEvent(self: QPushButton, param1: gen_qevent.QPaintEvent): void =
-
+proc QPushButtonpaintEvent*(self: gen_qpushbutton_types.QPushButton, param1: gen_qevent.QPaintEvent): void =
 
   fQPushButton_virtualbase_paintEvent(self.h, param1.h)
 
-type QPushButtonpaintEventBase* = proc(param1: gen_qevent.QPaintEvent): void
-proc onpaintEvent*(self: QPushButton, slot: proc(super: QPushButtonpaintEventBase, param1: gen_qevent.QPaintEvent): void) =
+type QPushButtonpaintEventProc* = proc(param1: gen_qevent.QPaintEvent): void
+proc onpaintEvent*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtonpaintEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPushButtonpaintEventBase, param1: gen_qevent.QPaintEvent): void
-  var tmp = new Cb
+  var tmp = new QPushButtonpaintEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPushButton_override_virtual_paintEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPushButton_paintEvent(self: ptr cQPushButton, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QPushButton_paintEvent ".} =
-  type Cb = proc(super: QPushButtonpaintEventBase, param1: gen_qevent.QPaintEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QPaintEvent): auto =
-    callVirtualBase_paintEvent(QPushButton(h: self), param1)
+  var nimfunc = cast[ptr QPushButtonpaintEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QPaintEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyPressEvent(self: QPushButton, param1: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QPushButtonkeyPressEvent*(self: gen_qpushbutton_types.QPushButton, param1: gen_qevent.QKeyEvent): void =
 
   fQPushButton_virtualbase_keyPressEvent(self.h, param1.h)
 
-type QPushButtonkeyPressEventBase* = proc(param1: gen_qevent.QKeyEvent): void
-proc onkeyPressEvent*(self: QPushButton, slot: proc(super: QPushButtonkeyPressEventBase, param1: gen_qevent.QKeyEvent): void) =
+type QPushButtonkeyPressEventProc* = proc(param1: gen_qevent.QKeyEvent): void
+proc onkeyPressEvent*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtonkeyPressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPushButtonkeyPressEventBase, param1: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QPushButtonkeyPressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPushButton_override_virtual_keyPressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPushButton_keyPressEvent(self: ptr cQPushButton, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QPushButton_keyPressEvent ".} =
-  type Cb = proc(super: QPushButtonkeyPressEventBase, param1: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyPressEvent(QPushButton(h: self), param1)
+  var nimfunc = cast[ptr QPushButtonkeyPressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusInEvent(self: QPushButton, param1: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QPushButtonfocusInEvent*(self: gen_qpushbutton_types.QPushButton, param1: gen_qevent.QFocusEvent): void =
 
   fQPushButton_virtualbase_focusInEvent(self.h, param1.h)
 
-type QPushButtonfocusInEventBase* = proc(param1: gen_qevent.QFocusEvent): void
-proc onfocusInEvent*(self: QPushButton, slot: proc(super: QPushButtonfocusInEventBase, param1: gen_qevent.QFocusEvent): void) =
+type QPushButtonfocusInEventProc* = proc(param1: gen_qevent.QFocusEvent): void
+proc onfocusInEvent*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtonfocusInEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPushButtonfocusInEventBase, param1: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QPushButtonfocusInEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPushButton_override_virtual_focusInEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPushButton_focusInEvent(self: ptr cQPushButton, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QPushButton_focusInEvent ".} =
-  type Cb = proc(super: QPushButtonfocusInEventBase, param1: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusInEvent(QPushButton(h: self), param1)
+  var nimfunc = cast[ptr QPushButtonfocusInEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusOutEvent(self: QPushButton, param1: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QPushButtonfocusOutEvent*(self: gen_qpushbutton_types.QPushButton, param1: gen_qevent.QFocusEvent): void =
 
   fQPushButton_virtualbase_focusOutEvent(self.h, param1.h)
 
-type QPushButtonfocusOutEventBase* = proc(param1: gen_qevent.QFocusEvent): void
-proc onfocusOutEvent*(self: QPushButton, slot: proc(super: QPushButtonfocusOutEventBase, param1: gen_qevent.QFocusEvent): void) =
+type QPushButtonfocusOutEventProc* = proc(param1: gen_qevent.QFocusEvent): void
+proc onfocusOutEvent*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtonfocusOutEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPushButtonfocusOutEventBase, param1: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QPushButtonfocusOutEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPushButton_override_virtual_focusOutEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPushButton_focusOutEvent(self: ptr cQPushButton, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QPushButton_focusOutEvent ".} =
-  type Cb = proc(super: QPushButtonfocusOutEventBase, param1: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusOutEvent(QPushButton(h: self), param1)
+  var nimfunc = cast[ptr QPushButtonfocusOutEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseMoveEvent(self: QPushButton, param1: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QPushButtonmouseMoveEvent*(self: gen_qpushbutton_types.QPushButton, param1: gen_qevent.QMouseEvent): void =
 
   fQPushButton_virtualbase_mouseMoveEvent(self.h, param1.h)
 
-type QPushButtonmouseMoveEventBase* = proc(param1: gen_qevent.QMouseEvent): void
-proc onmouseMoveEvent*(self: QPushButton, slot: proc(super: QPushButtonmouseMoveEventBase, param1: gen_qevent.QMouseEvent): void) =
+type QPushButtonmouseMoveEventProc* = proc(param1: gen_qevent.QMouseEvent): void
+proc onmouseMoveEvent*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtonmouseMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPushButtonmouseMoveEventBase, param1: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QPushButtonmouseMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPushButton_override_virtual_mouseMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPushButton_mouseMoveEvent(self: ptr cQPushButton, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QPushButton_mouseMoveEvent ".} =
-  type Cb = proc(super: QPushButtonmouseMoveEventBase, param1: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseMoveEvent(QPushButton(h: self), param1)
+  var nimfunc = cast[ptr QPushButtonmouseMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_initStyleOption(self: QPushButton, option: gen_qstyleoption.QStyleOptionButton): void =
-
+  nimfunc[](slotval1)
+proc QPushButtoninitStyleOption*(self: gen_qpushbutton_types.QPushButton, option: gen_qstyleoption.QStyleOptionButton): void =
 
   fQPushButton_virtualbase_initStyleOption(self.h, option.h)
 
-type QPushButtoninitStyleOptionBase* = proc(option: gen_qstyleoption.QStyleOptionButton): void
-proc oninitStyleOption*(self: QPushButton, slot: proc(super: QPushButtoninitStyleOptionBase, option: gen_qstyleoption.QStyleOptionButton): void) =
+type QPushButtoninitStyleOptionProc* = proc(option: gen_qstyleoption.QStyleOptionButton): void
+proc oninitStyleOption*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtoninitStyleOptionProc) =
   # TODO check subclass
-  type Cb = proc(super: QPushButtoninitStyleOptionBase, option: gen_qstyleoption.QStyleOptionButton): void
-  var tmp = new Cb
+  var tmp = new QPushButtoninitStyleOptionProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPushButton_override_virtual_initStyleOption(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPushButton_initStyleOption(self: ptr cQPushButton, slot: int, option: pointer): void {.exportc: "miqt_exec_callback_QPushButton_initStyleOption ".} =
-  type Cb = proc(super: QPushButtoninitStyleOptionBase, option: gen_qstyleoption.QStyleOptionButton): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(option: gen_qstyleoption.QStyleOptionButton): auto =
-    callVirtualBase_initStyleOption(QPushButton(h: self), option)
+  var nimfunc = cast[ptr QPushButtoninitStyleOptionProc](cast[pointer](slot))
   let slotval1 = gen_qstyleoption.QStyleOptionButton(h: option)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hitButton(self: QPushButton, pos: gen_qpoint.QPoint): bool =
-
+  nimfunc[](slotval1)
+proc QPushButtonhitButton*(self: gen_qpushbutton_types.QPushButton, pos: gen_qpoint.QPoint): bool =
 
   fQPushButton_virtualbase_hitButton(self.h, pos.h)
 
-type QPushButtonhitButtonBase* = proc(pos: gen_qpoint.QPoint): bool
-proc onhitButton*(self: QPushButton, slot: proc(super: QPushButtonhitButtonBase, pos: gen_qpoint.QPoint): bool) =
+type QPushButtonhitButtonProc* = proc(pos: gen_qpoint.QPoint): bool
+proc onhitButton*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtonhitButtonProc) =
   # TODO check subclass
-  type Cb = proc(super: QPushButtonhitButtonBase, pos: gen_qpoint.QPoint): bool
-  var tmp = new Cb
+  var tmp = new QPushButtonhitButtonProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPushButton_override_virtual_hitButton(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPushButton_hitButton(self: ptr cQPushButton, slot: int, pos: pointer): bool {.exportc: "miqt_exec_callback_QPushButton_hitButton ".} =
-  type Cb = proc(super: QPushButtonhitButtonBase, pos: gen_qpoint.QPoint): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(pos: gen_qpoint.QPoint): auto =
-    callVirtualBase_hitButton(QPushButton(h: self), pos)
+  var nimfunc = cast[ptr QPushButtonhitButtonProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: pos)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_checkStateSet(self: QPushButton, ): void =
-
+proc QPushButtoncheckStateSet*(self: gen_qpushbutton_types.QPushButton, ): void =
 
   fQPushButton_virtualbase_checkStateSet(self.h)
 
-type QPushButtoncheckStateSetBase* = proc(): void
-proc oncheckStateSet*(self: QPushButton, slot: proc(super: QPushButtoncheckStateSetBase): void) =
+type QPushButtoncheckStateSetProc* = proc(): void
+proc oncheckStateSet*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtoncheckStateSetProc) =
   # TODO check subclass
-  type Cb = proc(super: QPushButtoncheckStateSetBase): void
-  var tmp = new Cb
+  var tmp = new QPushButtoncheckStateSetProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPushButton_override_virtual_checkStateSet(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPushButton_checkStateSet(self: ptr cQPushButton, slot: int): void {.exportc: "miqt_exec_callback_QPushButton_checkStateSet ".} =
-  type Cb = proc(super: QPushButtoncheckStateSetBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_checkStateSet(QPushButton(h: self), )
+  var nimfunc = cast[ptr QPushButtoncheckStateSetProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_nextCheckState(self: QPushButton, ): void =
-
+  nimfunc[]()
+proc QPushButtonnextCheckState*(self: gen_qpushbutton_types.QPushButton, ): void =
 
   fQPushButton_virtualbase_nextCheckState(self.h)
 
-type QPushButtonnextCheckStateBase* = proc(): void
-proc onnextCheckState*(self: QPushButton, slot: proc(super: QPushButtonnextCheckStateBase): void) =
+type QPushButtonnextCheckStateProc* = proc(): void
+proc onnextCheckState*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtonnextCheckStateProc) =
   # TODO check subclass
-  type Cb = proc(super: QPushButtonnextCheckStateBase): void
-  var tmp = new Cb
+  var tmp = new QPushButtonnextCheckStateProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPushButton_override_virtual_nextCheckState(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPushButton_nextCheckState(self: ptr cQPushButton, slot: int): void {.exportc: "miqt_exec_callback_QPushButton_nextCheckState ".} =
-  type Cb = proc(super: QPushButtonnextCheckStateBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_nextCheckState(QPushButton(h: self), )
+  var nimfunc = cast[ptr QPushButtonnextCheckStateProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_keyReleaseEvent(self: QPushButton, e: gen_qevent.QKeyEvent): void =
-
+  nimfunc[]()
+proc QPushButtonkeyReleaseEvent*(self: gen_qpushbutton_types.QPushButton, e: gen_qevent.QKeyEvent): void =
 
   fQPushButton_virtualbase_keyReleaseEvent(self.h, e.h)
 
-type QPushButtonkeyReleaseEventBase* = proc(e: gen_qevent.QKeyEvent): void
-proc onkeyReleaseEvent*(self: QPushButton, slot: proc(super: QPushButtonkeyReleaseEventBase, e: gen_qevent.QKeyEvent): void) =
+type QPushButtonkeyReleaseEventProc* = proc(e: gen_qevent.QKeyEvent): void
+proc onkeyReleaseEvent*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtonkeyReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPushButtonkeyReleaseEventBase, e: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QPushButtonkeyReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPushButton_override_virtual_keyReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPushButton_keyReleaseEvent(self: ptr cQPushButton, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QPushButton_keyReleaseEvent ".} =
-  type Cb = proc(super: QPushButtonkeyReleaseEventBase, e: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyReleaseEvent(QPushButton(h: self), e)
+  var nimfunc = cast[ptr QPushButtonkeyReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mousePressEvent(self: QPushButton, e: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QPushButtonmousePressEvent*(self: gen_qpushbutton_types.QPushButton, e: gen_qevent.QMouseEvent): void =
 
   fQPushButton_virtualbase_mousePressEvent(self.h, e.h)
 
-type QPushButtonmousePressEventBase* = proc(e: gen_qevent.QMouseEvent): void
-proc onmousePressEvent*(self: QPushButton, slot: proc(super: QPushButtonmousePressEventBase, e: gen_qevent.QMouseEvent): void) =
+type QPushButtonmousePressEventProc* = proc(e: gen_qevent.QMouseEvent): void
+proc onmousePressEvent*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtonmousePressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPushButtonmousePressEventBase, e: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QPushButtonmousePressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPushButton_override_virtual_mousePressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPushButton_mousePressEvent(self: ptr cQPushButton, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QPushButton_mousePressEvent ".} =
-  type Cb = proc(super: QPushButtonmousePressEventBase, e: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mousePressEvent(QPushButton(h: self), e)
+  var nimfunc = cast[ptr QPushButtonmousePressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseReleaseEvent(self: QPushButton, e: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QPushButtonmouseReleaseEvent*(self: gen_qpushbutton_types.QPushButton, e: gen_qevent.QMouseEvent): void =
 
   fQPushButton_virtualbase_mouseReleaseEvent(self.h, e.h)
 
-type QPushButtonmouseReleaseEventBase* = proc(e: gen_qevent.QMouseEvent): void
-proc onmouseReleaseEvent*(self: QPushButton, slot: proc(super: QPushButtonmouseReleaseEventBase, e: gen_qevent.QMouseEvent): void) =
+type QPushButtonmouseReleaseEventProc* = proc(e: gen_qevent.QMouseEvent): void
+proc onmouseReleaseEvent*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtonmouseReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPushButtonmouseReleaseEventBase, e: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QPushButtonmouseReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPushButton_override_virtual_mouseReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPushButton_mouseReleaseEvent(self: ptr cQPushButton, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QPushButton_mouseReleaseEvent ".} =
-  type Cb = proc(super: QPushButtonmouseReleaseEventBase, e: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseReleaseEvent(QPushButton(h: self), e)
+  var nimfunc = cast[ptr QPushButtonmouseReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_changeEvent(self: QPushButton, e: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QPushButtonchangeEvent*(self: gen_qpushbutton_types.QPushButton, e: gen_qcoreevent.QEvent): void =
 
   fQPushButton_virtualbase_changeEvent(self.h, e.h)
 
-type QPushButtonchangeEventBase* = proc(e: gen_qcoreevent.QEvent): void
-proc onchangeEvent*(self: QPushButton, slot: proc(super: QPushButtonchangeEventBase, e: gen_qcoreevent.QEvent): void) =
+type QPushButtonchangeEventProc* = proc(e: gen_qcoreevent.QEvent): void
+proc onchangeEvent*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtonchangeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPushButtonchangeEventBase, e: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QPushButtonchangeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPushButton_override_virtual_changeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPushButton_changeEvent(self: ptr cQPushButton, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QPushButton_changeEvent ".} =
-  type Cb = proc(super: QPushButtonchangeEventBase, e: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_changeEvent(QPushButton(h: self), e)
+  var nimfunc = cast[ptr QPushButtonchangeEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_timerEvent(self: QPushButton, e: gen_qcoreevent.QTimerEvent): void =
-
+  nimfunc[](slotval1)
+proc QPushButtontimerEvent*(self: gen_qpushbutton_types.QPushButton, e: gen_qcoreevent.QTimerEvent): void =
 
   fQPushButton_virtualbase_timerEvent(self.h, e.h)
 
-type QPushButtontimerEventBase* = proc(e: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QPushButton, slot: proc(super: QPushButtontimerEventBase, e: gen_qcoreevent.QTimerEvent): void) =
+type QPushButtontimerEventProc* = proc(e: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtontimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPushButtontimerEventBase, e: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QPushButtontimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPushButton_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPushButton_timerEvent(self: ptr cQPushButton, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QPushButton_timerEvent ".} =
-  type Cb = proc(super: QPushButtontimerEventBase, e: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QPushButton(h: self), e)
+  var nimfunc = cast[ptr QPushButtontimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_devType(self: QPushButton, ): cint =
-
+  nimfunc[](slotval1)
+proc QPushButtondevType*(self: gen_qpushbutton_types.QPushButton, ): cint =
 
   fQPushButton_virtualbase_devType(self.h)
 
-type QPushButtondevTypeBase* = proc(): cint
-proc ondevType*(self: QPushButton, slot: proc(super: QPushButtondevTypeBase): cint) =
+type QPushButtondevTypeProc* = proc(): cint
+proc ondevType*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtondevTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: QPushButtondevTypeBase): cint
-  var tmp = new Cb
+  var tmp = new QPushButtondevTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPushButton_override_virtual_devType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPushButton_devType(self: ptr cQPushButton, slot: int): cint {.exportc: "miqt_exec_callback_QPushButton_devType ".} =
-  type Cb = proc(super: QPushButtondevTypeBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_devType(QPushButton(h: self), )
+  var nimfunc = cast[ptr QPushButtondevTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setVisible(self: QPushButton, visible: bool): void =
-
+proc QPushButtonsetVisible*(self: gen_qpushbutton_types.QPushButton, visible: bool): void =
 
   fQPushButton_virtualbase_setVisible(self.h, visible)
 
-type QPushButtonsetVisibleBase* = proc(visible: bool): void
-proc onsetVisible*(self: QPushButton, slot: proc(super: QPushButtonsetVisibleBase, visible: bool): void) =
+type QPushButtonsetVisibleProc* = proc(visible: bool): void
+proc onsetVisible*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtonsetVisibleProc) =
   # TODO check subclass
-  type Cb = proc(super: QPushButtonsetVisibleBase, visible: bool): void
-  var tmp = new Cb
+  var tmp = new QPushButtonsetVisibleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPushButton_override_virtual_setVisible(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPushButton_setVisible(self: ptr cQPushButton, slot: int, visible: bool): void {.exportc: "miqt_exec_callback_QPushButton_setVisible ".} =
-  type Cb = proc(super: QPushButtonsetVisibleBase, visible: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(visible: bool): auto =
-    callVirtualBase_setVisible(QPushButton(h: self), visible)
+  var nimfunc = cast[ptr QPushButtonsetVisibleProc](cast[pointer](slot))
   let slotval1 = visible
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_heightForWidth(self: QPushButton, param1: cint): cint =
-
+  nimfunc[](slotval1)
+proc QPushButtonheightForWidth*(self: gen_qpushbutton_types.QPushButton, param1: cint): cint =
 
   fQPushButton_virtualbase_heightForWidth(self.h, param1)
 
-type QPushButtonheightForWidthBase* = proc(param1: cint): cint
-proc onheightForWidth*(self: QPushButton, slot: proc(super: QPushButtonheightForWidthBase, param1: cint): cint) =
+type QPushButtonheightForWidthProc* = proc(param1: cint): cint
+proc onheightForWidth*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtonheightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QPushButtonheightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QPushButtonheightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPushButton_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPushButton_heightForWidth(self: ptr cQPushButton, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QPushButton_heightForWidth ".} =
-  type Cb = proc(super: QPushButtonheightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_heightForWidth(QPushButton(h: self), param1)
+  var nimfunc = cast[ptr QPushButtonheightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_hasHeightForWidth(self: QPushButton, ): bool =
-
+proc QPushButtonhasHeightForWidth*(self: gen_qpushbutton_types.QPushButton, ): bool =
 
   fQPushButton_virtualbase_hasHeightForWidth(self.h)
 
-type QPushButtonhasHeightForWidthBase* = proc(): bool
-proc onhasHeightForWidth*(self: QPushButton, slot: proc(super: QPushButtonhasHeightForWidthBase): bool) =
+type QPushButtonhasHeightForWidthProc* = proc(): bool
+proc onhasHeightForWidth*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtonhasHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QPushButtonhasHeightForWidthBase): bool
-  var tmp = new Cb
+  var tmp = new QPushButtonhasHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPushButton_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPushButton_hasHeightForWidth(self: ptr cQPushButton, slot: int): bool {.exportc: "miqt_exec_callback_QPushButton_hasHeightForWidth ".} =
-  type Cb = proc(super: QPushButtonhasHeightForWidthBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasHeightForWidth(QPushButton(h: self), )
+  var nimfunc = cast[ptr QPushButtonhasHeightForWidthProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_paintEngine(self: QPushButton, ): gen_qpaintengine.QPaintEngine =
-
+proc QPushButtonpaintEngine*(self: gen_qpushbutton_types.QPushButton, ): gen_qpaintengine.QPaintEngine =
 
   gen_qpaintengine.QPaintEngine(h: fQPushButton_virtualbase_paintEngine(self.h))
 
-type QPushButtonpaintEngineBase* = proc(): gen_qpaintengine.QPaintEngine
-proc onpaintEngine*(self: QPushButton, slot: proc(super: QPushButtonpaintEngineBase): gen_qpaintengine.QPaintEngine) =
+type QPushButtonpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
+proc onpaintEngine*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtonpaintEngineProc) =
   # TODO check subclass
-  type Cb = proc(super: QPushButtonpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var tmp = new Cb
+  var tmp = new QPushButtonpaintEngineProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPushButton_override_virtual_paintEngine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPushButton_paintEngine(self: ptr cQPushButton, slot: int): pointer {.exportc: "miqt_exec_callback_QPushButton_paintEngine ".} =
-  type Cb = proc(super: QPushButtonpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_paintEngine(QPushButton(h: self), )
+  var nimfunc = cast[ptr QPushButtonpaintEngineProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_mouseDoubleClickEvent(self: QPushButton, event: gen_qevent.QMouseEvent): void =
-
+proc QPushButtonmouseDoubleClickEvent*(self: gen_qpushbutton_types.QPushButton, event: gen_qevent.QMouseEvent): void =
 
   fQPushButton_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
-type QPushButtonmouseDoubleClickEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseDoubleClickEvent*(self: QPushButton, slot: proc(super: QPushButtonmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void) =
+type QPushButtonmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseDoubleClickEvent*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtonmouseDoubleClickEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPushButtonmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QPushButtonmouseDoubleClickEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPushButton_override_virtual_mouseDoubleClickEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPushButton_mouseDoubleClickEvent(self: ptr cQPushButton, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPushButton_mouseDoubleClickEvent ".} =
-  type Cb = proc(super: QPushButtonmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseDoubleClickEvent(QPushButton(h: self), event)
+  var nimfunc = cast[ptr QPushButtonmouseDoubleClickEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_wheelEvent(self: QPushButton, event: gen_qevent.QWheelEvent): void =
-
+  nimfunc[](slotval1)
+proc QPushButtonwheelEvent*(self: gen_qpushbutton_types.QPushButton, event: gen_qevent.QWheelEvent): void =
 
   fQPushButton_virtualbase_wheelEvent(self.h, event.h)
 
-type QPushButtonwheelEventBase* = proc(event: gen_qevent.QWheelEvent): void
-proc onwheelEvent*(self: QPushButton, slot: proc(super: QPushButtonwheelEventBase, event: gen_qevent.QWheelEvent): void) =
+type QPushButtonwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
+proc onwheelEvent*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtonwheelEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPushButtonwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var tmp = new Cb
+  var tmp = new QPushButtonwheelEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPushButton_override_virtual_wheelEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPushButton_wheelEvent(self: ptr cQPushButton, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPushButton_wheelEvent ".} =
-  type Cb = proc(super: QPushButtonwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QWheelEvent): auto =
-    callVirtualBase_wheelEvent(QPushButton(h: self), event)
+  var nimfunc = cast[ptr QPushButtonwheelEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QWheelEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_enterEvent(self: QPushButton, event: gen_qevent.QEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QPushButtonenterEvent*(self: gen_qpushbutton_types.QPushButton, event: gen_qevent.QEnterEvent): void =
 
   fQPushButton_virtualbase_enterEvent(self.h, event.h)
 
-type QPushButtonenterEventBase* = proc(event: gen_qevent.QEnterEvent): void
-proc onenterEvent*(self: QPushButton, slot: proc(super: QPushButtonenterEventBase, event: gen_qevent.QEnterEvent): void) =
+type QPushButtonenterEventProc* = proc(event: gen_qevent.QEnterEvent): void
+proc onenterEvent*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtonenterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPushButtonenterEventBase, event: gen_qevent.QEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QPushButtonenterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPushButton_override_virtual_enterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPushButton_enterEvent(self: ptr cQPushButton, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPushButton_enterEvent ".} =
-  type Cb = proc(super: QPushButtonenterEventBase, event: gen_qevent.QEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QEnterEvent): auto =
-    callVirtualBase_enterEvent(QPushButton(h: self), event)
+  var nimfunc = cast[ptr QPushButtonenterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_leaveEvent(self: QPushButton, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QPushButtonleaveEvent*(self: gen_qpushbutton_types.QPushButton, event: gen_qcoreevent.QEvent): void =
 
   fQPushButton_virtualbase_leaveEvent(self.h, event.h)
 
-type QPushButtonleaveEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onleaveEvent*(self: QPushButton, slot: proc(super: QPushButtonleaveEventBase, event: gen_qcoreevent.QEvent): void) =
+type QPushButtonleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onleaveEvent*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtonleaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPushButtonleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QPushButtonleaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPushButton_override_virtual_leaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPushButton_leaveEvent(self: ptr cQPushButton, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPushButton_leaveEvent ".} =
-  type Cb = proc(super: QPushButtonleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_leaveEvent(QPushButton(h: self), event)
+  var nimfunc = cast[ptr QPushButtonleaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_moveEvent(self: QPushButton, event: gen_qevent.QMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QPushButtonmoveEvent*(self: gen_qpushbutton_types.QPushButton, event: gen_qevent.QMoveEvent): void =
 
   fQPushButton_virtualbase_moveEvent(self.h, event.h)
 
-type QPushButtonmoveEventBase* = proc(event: gen_qevent.QMoveEvent): void
-proc onmoveEvent*(self: QPushButton, slot: proc(super: QPushButtonmoveEventBase, event: gen_qevent.QMoveEvent): void) =
+type QPushButtonmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
+proc onmoveEvent*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtonmoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPushButtonmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QPushButtonmoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPushButton_override_virtual_moveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPushButton_moveEvent(self: ptr cQPushButton, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPushButton_moveEvent ".} =
-  type Cb = proc(super: QPushButtonmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMoveEvent): auto =
-    callVirtualBase_moveEvent(QPushButton(h: self), event)
+  var nimfunc = cast[ptr QPushButtonmoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_resizeEvent(self: QPushButton, event: gen_qevent.QResizeEvent): void =
-
+  nimfunc[](slotval1)
+proc QPushButtonresizeEvent*(self: gen_qpushbutton_types.QPushButton, event: gen_qevent.QResizeEvent): void =
 
   fQPushButton_virtualbase_resizeEvent(self.h, event.h)
 
-type QPushButtonresizeEventBase* = proc(event: gen_qevent.QResizeEvent): void
-proc onresizeEvent*(self: QPushButton, slot: proc(super: QPushButtonresizeEventBase, event: gen_qevent.QResizeEvent): void) =
+type QPushButtonresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
+proc onresizeEvent*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtonresizeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPushButtonresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var tmp = new Cb
+  var tmp = new QPushButtonresizeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPushButton_override_virtual_resizeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPushButton_resizeEvent(self: ptr cQPushButton, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPushButton_resizeEvent ".} =
-  type Cb = proc(super: QPushButtonresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QResizeEvent): auto =
-    callVirtualBase_resizeEvent(QPushButton(h: self), event)
+  var nimfunc = cast[ptr QPushButtonresizeEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QResizeEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_closeEvent(self: QPushButton, event: gen_qevent.QCloseEvent): void =
-
+  nimfunc[](slotval1)
+proc QPushButtoncloseEvent*(self: gen_qpushbutton_types.QPushButton, event: gen_qevent.QCloseEvent): void =
 
   fQPushButton_virtualbase_closeEvent(self.h, event.h)
 
-type QPushButtoncloseEventBase* = proc(event: gen_qevent.QCloseEvent): void
-proc oncloseEvent*(self: QPushButton, slot: proc(super: QPushButtoncloseEventBase, event: gen_qevent.QCloseEvent): void) =
+type QPushButtoncloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
+proc oncloseEvent*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtoncloseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPushButtoncloseEventBase, event: gen_qevent.QCloseEvent): void
-  var tmp = new Cb
+  var tmp = new QPushButtoncloseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPushButton_override_virtual_closeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPushButton_closeEvent(self: ptr cQPushButton, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPushButton_closeEvent ".} =
-  type Cb = proc(super: QPushButtoncloseEventBase, event: gen_qevent.QCloseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QCloseEvent): auto =
-    callVirtualBase_closeEvent(QPushButton(h: self), event)
+  var nimfunc = cast[ptr QPushButtoncloseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QCloseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_contextMenuEvent(self: QPushButton, event: gen_qevent.QContextMenuEvent): void =
-
+  nimfunc[](slotval1)
+proc QPushButtoncontextMenuEvent*(self: gen_qpushbutton_types.QPushButton, event: gen_qevent.QContextMenuEvent): void =
 
   fQPushButton_virtualbase_contextMenuEvent(self.h, event.h)
 
-type QPushButtoncontextMenuEventBase* = proc(event: gen_qevent.QContextMenuEvent): void
-proc oncontextMenuEvent*(self: QPushButton, slot: proc(super: QPushButtoncontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void) =
+type QPushButtoncontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
+proc oncontextMenuEvent*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtoncontextMenuEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPushButtoncontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var tmp = new Cb
+  var tmp = new QPushButtoncontextMenuEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPushButton_override_virtual_contextMenuEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPushButton_contextMenuEvent(self: ptr cQPushButton, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPushButton_contextMenuEvent ".} =
-  type Cb = proc(super: QPushButtoncontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QContextMenuEvent): auto =
-    callVirtualBase_contextMenuEvent(QPushButton(h: self), event)
+  var nimfunc = cast[ptr QPushButtoncontextMenuEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QContextMenuEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_tabletEvent(self: QPushButton, event: gen_qevent.QTabletEvent): void =
-
+  nimfunc[](slotval1)
+proc QPushButtontabletEvent*(self: gen_qpushbutton_types.QPushButton, event: gen_qevent.QTabletEvent): void =
 
   fQPushButton_virtualbase_tabletEvent(self.h, event.h)
 
-type QPushButtontabletEventBase* = proc(event: gen_qevent.QTabletEvent): void
-proc ontabletEvent*(self: QPushButton, slot: proc(super: QPushButtontabletEventBase, event: gen_qevent.QTabletEvent): void) =
+type QPushButtontabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
+proc ontabletEvent*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtontabletEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPushButtontabletEventBase, event: gen_qevent.QTabletEvent): void
-  var tmp = new Cb
+  var tmp = new QPushButtontabletEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPushButton_override_virtual_tabletEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPushButton_tabletEvent(self: ptr cQPushButton, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPushButton_tabletEvent ".} =
-  type Cb = proc(super: QPushButtontabletEventBase, event: gen_qevent.QTabletEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QTabletEvent): auto =
-    callVirtualBase_tabletEvent(QPushButton(h: self), event)
+  var nimfunc = cast[ptr QPushButtontabletEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QTabletEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_actionEvent(self: QPushButton, event: gen_qevent.QActionEvent): void =
-
+  nimfunc[](slotval1)
+proc QPushButtonactionEvent*(self: gen_qpushbutton_types.QPushButton, event: gen_qevent.QActionEvent): void =
 
   fQPushButton_virtualbase_actionEvent(self.h, event.h)
 
-type QPushButtonactionEventBase* = proc(event: gen_qevent.QActionEvent): void
-proc onactionEvent*(self: QPushButton, slot: proc(super: QPushButtonactionEventBase, event: gen_qevent.QActionEvent): void) =
+type QPushButtonactionEventProc* = proc(event: gen_qevent.QActionEvent): void
+proc onactionEvent*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtonactionEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPushButtonactionEventBase, event: gen_qevent.QActionEvent): void
-  var tmp = new Cb
+  var tmp = new QPushButtonactionEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPushButton_override_virtual_actionEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPushButton_actionEvent(self: ptr cQPushButton, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPushButton_actionEvent ".} =
-  type Cb = proc(super: QPushButtonactionEventBase, event: gen_qevent.QActionEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QActionEvent): auto =
-    callVirtualBase_actionEvent(QPushButton(h: self), event)
+  var nimfunc = cast[ptr QPushButtonactionEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QActionEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragEnterEvent(self: QPushButton, event: gen_qevent.QDragEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QPushButtondragEnterEvent*(self: gen_qpushbutton_types.QPushButton, event: gen_qevent.QDragEnterEvent): void =
 
   fQPushButton_virtualbase_dragEnterEvent(self.h, event.h)
 
-type QPushButtondragEnterEventBase* = proc(event: gen_qevent.QDragEnterEvent): void
-proc ondragEnterEvent*(self: QPushButton, slot: proc(super: QPushButtondragEnterEventBase, event: gen_qevent.QDragEnterEvent): void) =
+type QPushButtondragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
+proc ondragEnterEvent*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtondragEnterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPushButtondragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QPushButtondragEnterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPushButton_override_virtual_dragEnterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPushButton_dragEnterEvent(self: ptr cQPushButton, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPushButton_dragEnterEvent ".} =
-  type Cb = proc(super: QPushButtondragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragEnterEvent): auto =
-    callVirtualBase_dragEnterEvent(QPushButton(h: self), event)
+  var nimfunc = cast[ptr QPushButtondragEnterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragMoveEvent(self: QPushButton, event: gen_qevent.QDragMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QPushButtondragMoveEvent*(self: gen_qpushbutton_types.QPushButton, event: gen_qevent.QDragMoveEvent): void =
 
   fQPushButton_virtualbase_dragMoveEvent(self.h, event.h)
 
-type QPushButtondragMoveEventBase* = proc(event: gen_qevent.QDragMoveEvent): void
-proc ondragMoveEvent*(self: QPushButton, slot: proc(super: QPushButtondragMoveEventBase, event: gen_qevent.QDragMoveEvent): void) =
+type QPushButtondragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
+proc ondragMoveEvent*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtondragMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPushButtondragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QPushButtondragMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPushButton_override_virtual_dragMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPushButton_dragMoveEvent(self: ptr cQPushButton, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPushButton_dragMoveEvent ".} =
-  type Cb = proc(super: QPushButtondragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragMoveEvent): auto =
-    callVirtualBase_dragMoveEvent(QPushButton(h: self), event)
+  var nimfunc = cast[ptr QPushButtondragMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragLeaveEvent(self: QPushButton, event: gen_qevent.QDragLeaveEvent): void =
-
+  nimfunc[](slotval1)
+proc QPushButtondragLeaveEvent*(self: gen_qpushbutton_types.QPushButton, event: gen_qevent.QDragLeaveEvent): void =
 
   fQPushButton_virtualbase_dragLeaveEvent(self.h, event.h)
 
-type QPushButtondragLeaveEventBase* = proc(event: gen_qevent.QDragLeaveEvent): void
-proc ondragLeaveEvent*(self: QPushButton, slot: proc(super: QPushButtondragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void) =
+type QPushButtondragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
+proc ondragLeaveEvent*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtondragLeaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPushButtondragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var tmp = new Cb
+  var tmp = new QPushButtondragLeaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPushButton_override_virtual_dragLeaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPushButton_dragLeaveEvent(self: ptr cQPushButton, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPushButton_dragLeaveEvent ".} =
-  type Cb = proc(super: QPushButtondragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragLeaveEvent): auto =
-    callVirtualBase_dragLeaveEvent(QPushButton(h: self), event)
+  var nimfunc = cast[ptr QPushButtondragLeaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragLeaveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dropEvent(self: QPushButton, event: gen_qevent.QDropEvent): void =
-
+  nimfunc[](slotval1)
+proc QPushButtondropEvent*(self: gen_qpushbutton_types.QPushButton, event: gen_qevent.QDropEvent): void =
 
   fQPushButton_virtualbase_dropEvent(self.h, event.h)
 
-type QPushButtondropEventBase* = proc(event: gen_qevent.QDropEvent): void
-proc ondropEvent*(self: QPushButton, slot: proc(super: QPushButtondropEventBase, event: gen_qevent.QDropEvent): void) =
+type QPushButtondropEventProc* = proc(event: gen_qevent.QDropEvent): void
+proc ondropEvent*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtondropEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPushButtondropEventBase, event: gen_qevent.QDropEvent): void
-  var tmp = new Cb
+  var tmp = new QPushButtondropEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPushButton_override_virtual_dropEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPushButton_dropEvent(self: ptr cQPushButton, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPushButton_dropEvent ".} =
-  type Cb = proc(super: QPushButtondropEventBase, event: gen_qevent.QDropEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDropEvent): auto =
-    callVirtualBase_dropEvent(QPushButton(h: self), event)
+  var nimfunc = cast[ptr QPushButtondropEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDropEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_showEvent(self: QPushButton, event: gen_qevent.QShowEvent): void =
-
+  nimfunc[](slotval1)
+proc QPushButtonshowEvent*(self: gen_qpushbutton_types.QPushButton, event: gen_qevent.QShowEvent): void =
 
   fQPushButton_virtualbase_showEvent(self.h, event.h)
 
-type QPushButtonshowEventBase* = proc(event: gen_qevent.QShowEvent): void
-proc onshowEvent*(self: QPushButton, slot: proc(super: QPushButtonshowEventBase, event: gen_qevent.QShowEvent): void) =
+type QPushButtonshowEventProc* = proc(event: gen_qevent.QShowEvent): void
+proc onshowEvent*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtonshowEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPushButtonshowEventBase, event: gen_qevent.QShowEvent): void
-  var tmp = new Cb
+  var tmp = new QPushButtonshowEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPushButton_override_virtual_showEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPushButton_showEvent(self: ptr cQPushButton, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPushButton_showEvent ".} =
-  type Cb = proc(super: QPushButtonshowEventBase, event: gen_qevent.QShowEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QShowEvent): auto =
-    callVirtualBase_showEvent(QPushButton(h: self), event)
+  var nimfunc = cast[ptr QPushButtonshowEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QShowEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hideEvent(self: QPushButton, event: gen_qevent.QHideEvent): void =
-
+  nimfunc[](slotval1)
+proc QPushButtonhideEvent*(self: gen_qpushbutton_types.QPushButton, event: gen_qevent.QHideEvent): void =
 
   fQPushButton_virtualbase_hideEvent(self.h, event.h)
 
-type QPushButtonhideEventBase* = proc(event: gen_qevent.QHideEvent): void
-proc onhideEvent*(self: QPushButton, slot: proc(super: QPushButtonhideEventBase, event: gen_qevent.QHideEvent): void) =
+type QPushButtonhideEventProc* = proc(event: gen_qevent.QHideEvent): void
+proc onhideEvent*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtonhideEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPushButtonhideEventBase, event: gen_qevent.QHideEvent): void
-  var tmp = new Cb
+  var tmp = new QPushButtonhideEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPushButton_override_virtual_hideEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPushButton_hideEvent(self: ptr cQPushButton, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPushButton_hideEvent ".} =
-  type Cb = proc(super: QPushButtonhideEventBase, event: gen_qevent.QHideEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QHideEvent): auto =
-    callVirtualBase_hideEvent(QPushButton(h: self), event)
+  var nimfunc = cast[ptr QPushButtonhideEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QHideEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_nativeEvent(self: QPushButton, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
-
+  nimfunc[](slotval1)
+proc QPushButtonnativeEvent*(self: gen_qpushbutton_types.QPushButton, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
 
   fQPushButton_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
-type QPushButtonnativeEventBase* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-proc onnativeEvent*(self: QPushButton, slot: proc(super: QPushButtonnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool) =
+type QPushButtonnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
+proc onnativeEvent*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtonnativeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPushButtonnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-  var tmp = new Cb
+  var tmp = new QPushButtonnativeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPushButton_override_virtual_nativeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPushButton_nativeEvent(self: ptr cQPushButton, slot: int, eventType: struct_miqt_string, message: pointer, resultVal: ptr uint): bool {.exportc: "miqt_exec_callback_QPushButton_nativeEvent ".} =
-  type Cb = proc(super: QPushButtonnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(eventType: seq[byte], message: pointer, resultVal: ptr uint): auto =
-    callVirtualBase_nativeEvent(QPushButton(h: self), eventType, message, resultVal)
+  var nimfunc = cast[ptr QPushButtonnativeEventProc](cast[pointer](slot))
   var veventType_bytearray = eventType
   var veventTypex_ret = @(toOpenArrayByte(veventType_bytearray.data, 0, int(veventType_bytearray.len)-1))
   c_free(veventType_bytearray.data)
@@ -1290,298 +1078,238 @@ proc miqt_exec_callback_QPushButton_nativeEvent(self: ptr cQPushButton, slot: in
   let slotval3 = resultVal
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_metric(self: QPushButton, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint =
-
+proc QPushButtonmetric*(self: gen_qpushbutton_types.QPushButton, param1: cint): cint =
 
   fQPushButton_virtualbase_metric(self.h, cint(param1))
 
-type QPushButtonmetricBase* = proc(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-proc onmetric*(self: QPushButton, slot: proc(super: QPushButtonmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint) =
+type QPushButtonmetricProc* = proc(param1: cint): cint
+proc onmetric*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtonmetricProc) =
   # TODO check subclass
-  type Cb = proc(super: QPushButtonmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var tmp = new Cb
+  var tmp = new QPushButtonmetricProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPushButton_override_virtual_metric(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPushButton_metric(self: ptr cQPushButton, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QPushButton_metric ".} =
-  type Cb = proc(super: QPushButtonmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): auto =
-    callVirtualBase_metric(QPushButton(h: self), param1)
-  let slotval1 = gen_qpaintdevice.QPaintDevicePaintDeviceMetric(param1)
+  var nimfunc = cast[ptr QPushButtonmetricProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_initPainter(self: QPushButton, painter: gen_qpainter.QPainter): void =
-
+proc QPushButtoninitPainter*(self: gen_qpushbutton_types.QPushButton, painter: gen_qpainter.QPainter): void =
 
   fQPushButton_virtualbase_initPainter(self.h, painter.h)
 
-type QPushButtoninitPainterBase* = proc(painter: gen_qpainter.QPainter): void
-proc oninitPainter*(self: QPushButton, slot: proc(super: QPushButtoninitPainterBase, painter: gen_qpainter.QPainter): void) =
+type QPushButtoninitPainterProc* = proc(painter: gen_qpainter.QPainter): void
+proc oninitPainter*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtoninitPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QPushButtoninitPainterBase, painter: gen_qpainter.QPainter): void
-  var tmp = new Cb
+  var tmp = new QPushButtoninitPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPushButton_override_virtual_initPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPushButton_initPainter(self: ptr cQPushButton, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_QPushButton_initPainter ".} =
-  type Cb = proc(super: QPushButtoninitPainterBase, painter: gen_qpainter.QPainter): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter): auto =
-    callVirtualBase_initPainter(QPushButton(h: self), painter)
+  var nimfunc = cast[ptr QPushButtoninitPainterProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_redirected(self: QPushButton, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
+  nimfunc[](slotval1)
+proc QPushButtonredirected*(self: gen_qpushbutton_types.QPushButton, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
 
   gen_qpaintdevice.QPaintDevice(h: fQPushButton_virtualbase_redirected(self.h, offset.h))
 
-type QPushButtonredirectedBase* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-proc onredirected*(self: QPushButton, slot: proc(super: QPushButtonredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice) =
+type QPushButtonredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
+proc onredirected*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtonredirectedProc) =
   # TODO check subclass
-  type Cb = proc(super: QPushButtonredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var tmp = new Cb
+  var tmp = new QPushButtonredirectedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPushButton_override_virtual_redirected(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPushButton_redirected(self: ptr cQPushButton, slot: int, offset: pointer): pointer {.exportc: "miqt_exec_callback_QPushButton_redirected ".} =
-  type Cb = proc(super: QPushButtonredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(offset: gen_qpoint.QPoint): auto =
-    callVirtualBase_redirected(QPushButton(h: self), offset)
+  var nimfunc = cast[ptr QPushButtonredirectedProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: offset)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_sharedPainter(self: QPushButton, ): gen_qpainter.QPainter =
-
+proc QPushButtonsharedPainter*(self: gen_qpushbutton_types.QPushButton, ): gen_qpainter.QPainter =
 
   gen_qpainter.QPainter(h: fQPushButton_virtualbase_sharedPainter(self.h))
 
-type QPushButtonsharedPainterBase* = proc(): gen_qpainter.QPainter
-proc onsharedPainter*(self: QPushButton, slot: proc(super: QPushButtonsharedPainterBase): gen_qpainter.QPainter) =
+type QPushButtonsharedPainterProc* = proc(): gen_qpainter.QPainter
+proc onsharedPainter*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtonsharedPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QPushButtonsharedPainterBase): gen_qpainter.QPainter
-  var tmp = new Cb
+  var tmp = new QPushButtonsharedPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPushButton_override_virtual_sharedPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPushButton_sharedPainter(self: ptr cQPushButton, slot: int): pointer {.exportc: "miqt_exec_callback_QPushButton_sharedPainter ".} =
-  type Cb = proc(super: QPushButtonsharedPainterBase): gen_qpainter.QPainter
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sharedPainter(QPushButton(h: self), )
+  var nimfunc = cast[ptr QPushButtonsharedPainterProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_inputMethodEvent(self: QPushButton, param1: gen_qevent.QInputMethodEvent): void =
-
+proc QPushButtoninputMethodEvent*(self: gen_qpushbutton_types.QPushButton, param1: gen_qevent.QInputMethodEvent): void =
 
   fQPushButton_virtualbase_inputMethodEvent(self.h, param1.h)
 
-type QPushButtoninputMethodEventBase* = proc(param1: gen_qevent.QInputMethodEvent): void
-proc oninputMethodEvent*(self: QPushButton, slot: proc(super: QPushButtoninputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void) =
+type QPushButtoninputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
+proc oninputMethodEvent*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtoninputMethodEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPushButtoninputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var tmp = new Cb
+  var tmp = new QPushButtoninputMethodEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPushButton_override_virtual_inputMethodEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPushButton_inputMethodEvent(self: ptr cQPushButton, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QPushButton_inputMethodEvent ".} =
-  type Cb = proc(super: QPushButtoninputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QInputMethodEvent): auto =
-    callVirtualBase_inputMethodEvent(QPushButton(h: self), param1)
+  var nimfunc = cast[ptr QPushButtoninputMethodEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QInputMethodEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_inputMethodQuery(self: QPushButton, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant =
-
+  nimfunc[](slotval1)
+proc QPushButtoninputMethodQuery*(self: gen_qpushbutton_types.QPushButton, param1: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQPushButton_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
-type QPushButtoninputMethodQueryBase* = proc(param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-proc oninputMethodQuery*(self: QPushButton, slot: proc(super: QPushButtoninputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant) =
+type QPushButtoninputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
+proc oninputMethodQuery*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtoninputMethodQueryProc) =
   # TODO check subclass
-  type Cb = proc(super: QPushButtoninputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QPushButtoninputMethodQueryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPushButton_override_virtual_inputMethodQuery(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPushButton_inputMethodQuery(self: ptr cQPushButton, slot: int, param1: cint): pointer {.exportc: "miqt_exec_callback_QPushButton_inputMethodQuery ".} =
-  type Cb = proc(super: QPushButtoninputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qnamespace.InputMethodQuery): auto =
-    callVirtualBase_inputMethodQuery(QPushButton(h: self), param1)
-  let slotval1 = gen_qnamespace.InputMethodQuery(param1)
+  var nimfunc = cast[ptr QPushButtoninputMethodQueryProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_focusNextPrevChild(self: QPushButton, next: bool): bool =
-
+proc QPushButtonfocusNextPrevChild*(self: gen_qpushbutton_types.QPushButton, next: bool): bool =
 
   fQPushButton_virtualbase_focusNextPrevChild(self.h, next)
 
-type QPushButtonfocusNextPrevChildBase* = proc(next: bool): bool
-proc onfocusNextPrevChild*(self: QPushButton, slot: proc(super: QPushButtonfocusNextPrevChildBase, next: bool): bool) =
+type QPushButtonfocusNextPrevChildProc* = proc(next: bool): bool
+proc onfocusNextPrevChild*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtonfocusNextPrevChildProc) =
   # TODO check subclass
-  type Cb = proc(super: QPushButtonfocusNextPrevChildBase, next: bool): bool
-  var tmp = new Cb
+  var tmp = new QPushButtonfocusNextPrevChildProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPushButton_override_virtual_focusNextPrevChild(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPushButton_focusNextPrevChild(self: ptr cQPushButton, slot: int, next: bool): bool {.exportc: "miqt_exec_callback_QPushButton_focusNextPrevChild ".} =
-  type Cb = proc(super: QPushButtonfocusNextPrevChildBase, next: bool): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(next: bool): auto =
-    callVirtualBase_focusNextPrevChild(QPushButton(h: self), next)
+  var nimfunc = cast[ptr QPushButtonfocusNextPrevChildProc](cast[pointer](slot))
   let slotval1 = next
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QPushButton, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QPushButtoneventFilter*(self: gen_qpushbutton_types.QPushButton, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQPushButton_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QPushButtoneventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QPushButton, slot: proc(super: QPushButtoneventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QPushButtoneventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtoneventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QPushButtoneventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QPushButtoneventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPushButton_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPushButton_eventFilter(self: ptr cQPushButton, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QPushButton_eventFilter ".} =
-  type Cb = proc(super: QPushButtoneventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QPushButton(h: self), watched, event)
+  var nimfunc = cast[ptr QPushButtoneventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_childEvent(self: QPushButton, event: gen_qcoreevent.QChildEvent): void =
-
+proc QPushButtonchildEvent*(self: gen_qpushbutton_types.QPushButton, event: gen_qcoreevent.QChildEvent): void =
 
   fQPushButton_virtualbase_childEvent(self.h, event.h)
 
-type QPushButtonchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QPushButton, slot: proc(super: QPushButtonchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QPushButtonchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtonchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPushButtonchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QPushButtonchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPushButton_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPushButton_childEvent(self: ptr cQPushButton, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPushButton_childEvent ".} =
-  type Cb = proc(super: QPushButtonchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QPushButton(h: self), event)
+  var nimfunc = cast[ptr QPushButtonchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QPushButton, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QPushButtoncustomEvent*(self: gen_qpushbutton_types.QPushButton, event: gen_qcoreevent.QEvent): void =
 
   fQPushButton_virtualbase_customEvent(self.h, event.h)
 
-type QPushButtoncustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QPushButton, slot: proc(super: QPushButtoncustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QPushButtoncustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtoncustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPushButtoncustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QPushButtoncustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPushButton_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPushButton_customEvent(self: ptr cQPushButton, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPushButton_customEvent ".} =
-  type Cb = proc(super: QPushButtoncustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QPushButton(h: self), event)
+  var nimfunc = cast[ptr QPushButtoncustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QPushButton, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QPushButtonconnectNotify*(self: gen_qpushbutton_types.QPushButton, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQPushButton_virtualbase_connectNotify(self.h, signal.h)
 
-type QPushButtonconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QPushButton, slot: proc(super: QPushButtonconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QPushButtonconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtonconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QPushButtonconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QPushButtonconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPushButton_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPushButton_connectNotify(self: ptr cQPushButton, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QPushButton_connectNotify ".} =
-  type Cb = proc(super: QPushButtonconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QPushButton(h: self), signal)
+  var nimfunc = cast[ptr QPushButtonconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QPushButton, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QPushButtondisconnectNotify*(self: gen_qpushbutton_types.QPushButton, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQPushButton_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QPushButtondisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QPushButton, slot: proc(super: QPushButtondisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QPushButtondisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qpushbutton_types.QPushButton, slot: QPushButtondisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QPushButtondisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QPushButtondisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPushButton_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPushButton_disconnectNotify(self: ptr cQPushButton, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QPushButton_disconnectNotify ".} =
-  type Cb = proc(super: QPushButtondisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QPushButton(h: self), signal)
+  var nimfunc = cast[ptr QPushButtondisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QPushButton): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qpushbutton_types.QPushButton): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQPushButton_staticMetaObject())
-proc delete*(self: QPushButton) =
+proc delete*(self: gen_qpushbutton_types.QPushButton) =
   fcQPushButton_delete(self.h)

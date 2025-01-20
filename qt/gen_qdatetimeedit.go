@@ -487,7 +487,7 @@ func (this *QDateTimeEdit) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QDateTimeEdit_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QDateTimeEdit) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QDateTimeEdit) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QDateTimeEdit_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -514,7 +514,7 @@ func (this *QDateTimeEdit) callVirtualBase_Metacast(param1 string) unsafe.Pointe
 	return (unsafe.Pointer)(C.QDateTimeEdit_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QDateTimeEdit) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QDateTimeEdit) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QDateTimeEdit_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2212,7 +2212,7 @@ func (this *QTimeEdit) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QTimeEdit_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QTimeEdit) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QTimeEdit) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QTimeEdit_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2239,7 +2239,7 @@ func (this *QTimeEdit) callVirtualBase_Metacast(param1 string) unsafe.Pointer {
 	return (unsafe.Pointer)(C.QTimeEdit_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QTimeEdit) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QTimeEdit) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QTimeEdit_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -3937,7 +3937,7 @@ func (this *QDateEdit) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QDateEdit_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QDateEdit) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QDateEdit) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QDateEdit_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -3964,7 +3964,7 @@ func (this *QDateEdit) callVirtualBase_Metacast(param1 string) unsafe.Pointer {
 	return (unsafe.Pointer)(C.QDateEdit_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QDateEdit) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QDateEdit) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QDateEdit_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

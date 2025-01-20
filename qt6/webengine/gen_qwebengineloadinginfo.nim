@@ -34,26 +34,22 @@ const cflags = gorge("pkg-config -cflags Qt6WebEngineWidgets")
 {.compile("gen_qwebengineloadinginfo.cpp", cflags).}
 
 
-type QWebEngineLoadingInfoLoadStatus* = cint
-const
-  QWebEngineLoadingInfoLoadStartedStatus* = 0
-  QWebEngineLoadingInfoLoadStoppedStatus* = 1
-  QWebEngineLoadingInfoLoadSucceededStatus* = 2
-  QWebEngineLoadingInfoLoadFailedStatus* = 3
+type QWebEngineLoadingInfoLoadStatusEnum* = distinct cint
+template LoadStartedStatus*(_: type QWebEngineLoadingInfoLoadStatusEnum): untyped = 0
+template LoadStoppedStatus*(_: type QWebEngineLoadingInfoLoadStatusEnum): untyped = 1
+template LoadSucceededStatus*(_: type QWebEngineLoadingInfoLoadStatusEnum): untyped = 2
+template LoadFailedStatus*(_: type QWebEngineLoadingInfoLoadStatusEnum): untyped = 3
 
 
-
-type QWebEngineLoadingInfoErrorDomain* = cint
-const
-  QWebEngineLoadingInfoNoErrorDomain* = 0
-  QWebEngineLoadingInfoInternalErrorDomain* = 1
-  QWebEngineLoadingInfoConnectionErrorDomain* = 2
-  QWebEngineLoadingInfoCertificateErrorDomain* = 3
-  QWebEngineLoadingInfoHttpErrorDomain* = 4
-  QWebEngineLoadingInfoFtpErrorDomain* = 5
-  QWebEngineLoadingInfoDnsErrorDomain* = 6
-  QWebEngineLoadingInfoHttpStatusCodeDomain* = 7
-
+type QWebEngineLoadingInfoErrorDomainEnum* = distinct cint
+template NoErrorDomain*(_: type QWebEngineLoadingInfoErrorDomainEnum): untyped = 0
+template InternalErrorDomain*(_: type QWebEngineLoadingInfoErrorDomainEnum): untyped = 1
+template ConnectionErrorDomain*(_: type QWebEngineLoadingInfoErrorDomainEnum): untyped = 2
+template CertificateErrorDomain*(_: type QWebEngineLoadingInfoErrorDomainEnum): untyped = 3
+template HttpErrorDomain*(_: type QWebEngineLoadingInfoErrorDomainEnum): untyped = 4
+template FtpErrorDomain*(_: type QWebEngineLoadingInfoErrorDomainEnum): untyped = 5
+template DnsErrorDomain*(_: type QWebEngineLoadingInfoErrorDomainEnum): untyped = 6
+template HttpStatusCodeDomain*(_: type QWebEngineLoadingInfoErrorDomainEnum): untyped = 7
 
 
 import gen_qwebengineloadinginfo_types
@@ -80,43 +76,43 @@ proc fcQWebEngineLoadingInfo_staticMetaObject(): pointer {.importc: "QWebEngineL
 proc fcQWebEngineLoadingInfo_delete(self: pointer) {.importc: "QWebEngineLoadingInfo_delete".}
 
 
-func init*(T: type QWebEngineLoadingInfo, h: ptr cQWebEngineLoadingInfo): QWebEngineLoadingInfo =
+func init*(T: type gen_qwebengineloadinginfo_types.QWebEngineLoadingInfo, h: ptr cQWebEngineLoadingInfo): gen_qwebengineloadinginfo_types.QWebEngineLoadingInfo =
   T(h: h)
-proc create*(T: type QWebEngineLoadingInfo, other: QWebEngineLoadingInfo): QWebEngineLoadingInfo =
+proc create*(T: type gen_qwebengineloadinginfo_types.QWebEngineLoadingInfo, other: gen_qwebengineloadinginfo_types.QWebEngineLoadingInfo): gen_qwebengineloadinginfo_types.QWebEngineLoadingInfo =
 
-  QWebEngineLoadingInfo.init(fcQWebEngineLoadingInfo_new(other.h))
-proc operatorAssign*(self: QWebEngineLoadingInfo, other: QWebEngineLoadingInfo): void =
+  gen_qwebengineloadinginfo_types.QWebEngineLoadingInfo.init(fcQWebEngineLoadingInfo_new(other.h))
+proc operatorAssign*(self: gen_qwebengineloadinginfo_types.QWebEngineLoadingInfo, other: gen_qwebengineloadinginfo_types.QWebEngineLoadingInfo): void =
 
   fcQWebEngineLoadingInfo_operatorAssign(self.h, other.h)
 
-proc url*(self: QWebEngineLoadingInfo, ): gen_qurl.QUrl =
+proc url*(self: gen_qwebengineloadinginfo_types.QWebEngineLoadingInfo, ): gen_qurl.QUrl =
 
   gen_qurl.QUrl(h: fcQWebEngineLoadingInfo_url(self.h))
 
-proc isErrorPage*(self: QWebEngineLoadingInfo, ): bool =
+proc isErrorPage*(self: gen_qwebengineloadinginfo_types.QWebEngineLoadingInfo, ): bool =
 
   fcQWebEngineLoadingInfo_isErrorPage(self.h)
 
-proc status*(self: QWebEngineLoadingInfo, ): QWebEngineLoadingInfoLoadStatus =
+proc status*(self: gen_qwebengineloadinginfo_types.QWebEngineLoadingInfo, ): cint =
 
-  QWebEngineLoadingInfoLoadStatus(fcQWebEngineLoadingInfo_status(self.h))
+  cint(fcQWebEngineLoadingInfo_status(self.h))
 
-proc errorString*(self: QWebEngineLoadingInfo, ): string =
+proc errorString*(self: gen_qwebengineloadinginfo_types.QWebEngineLoadingInfo, ): string =
 
   let v_ms = fcQWebEngineLoadingInfo_errorString(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc errorDomain*(self: QWebEngineLoadingInfo, ): QWebEngineLoadingInfoErrorDomain =
+proc errorDomain*(self: gen_qwebengineloadinginfo_types.QWebEngineLoadingInfo, ): cint =
 
-  QWebEngineLoadingInfoErrorDomain(fcQWebEngineLoadingInfo_errorDomain(self.h))
+  cint(fcQWebEngineLoadingInfo_errorDomain(self.h))
 
-proc errorCode*(self: QWebEngineLoadingInfo, ): cint =
+proc errorCode*(self: gen_qwebengineloadinginfo_types.QWebEngineLoadingInfo, ): cint =
 
   fcQWebEngineLoadingInfo_errorCode(self.h)
 
-proc staticMetaObject*(_: type QWebEngineLoadingInfo): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qwebengineloadinginfo_types.QWebEngineLoadingInfo): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQWebEngineLoadingInfo_staticMetaObject())
-proc delete*(self: QWebEngineLoadingInfo) =
+proc delete*(self: gen_qwebengineloadinginfo_types.QWebEngineLoadingInfo) =
   fcQWebEngineLoadingInfo_delete(self.h)

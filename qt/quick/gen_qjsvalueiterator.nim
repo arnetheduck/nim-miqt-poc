@@ -53,33 +53,33 @@ proc fcQJSValueIterator_operatorAssign(self: pointer, value: pointer): void {.im
 proc fcQJSValueIterator_delete(self: pointer) {.importc: "QJSValueIterator_delete".}
 
 
-func init*(T: type QJSValueIterator, h: ptr cQJSValueIterator): QJSValueIterator =
+func init*(T: type gen_qjsvalueiterator_types.QJSValueIterator, h: ptr cQJSValueIterator): gen_qjsvalueiterator_types.QJSValueIterator =
   T(h: h)
-proc create*(T: type QJSValueIterator, value: gen_qjsvalue.QJSValue): QJSValueIterator =
+proc create*(T: type gen_qjsvalueiterator_types.QJSValueIterator, value: gen_qjsvalue.QJSValue): gen_qjsvalueiterator_types.QJSValueIterator =
 
-  QJSValueIterator.init(fcQJSValueIterator_new(value.h))
-proc hasNext*(self: QJSValueIterator, ): bool =
+  gen_qjsvalueiterator_types.QJSValueIterator.init(fcQJSValueIterator_new(value.h))
+proc hasNext*(self: gen_qjsvalueiterator_types.QJSValueIterator, ): bool =
 
   fcQJSValueIterator_hasNext(self.h)
 
-proc next*(self: QJSValueIterator, ): bool =
+proc next*(self: gen_qjsvalueiterator_types.QJSValueIterator, ): bool =
 
   fcQJSValueIterator_next(self.h)
 
-proc name*(self: QJSValueIterator, ): string =
+proc name*(self: gen_qjsvalueiterator_types.QJSValueIterator, ): string =
 
   let v_ms = fcQJSValueIterator_name(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc value*(self: QJSValueIterator, ): gen_qjsvalue.QJSValue =
+proc value*(self: gen_qjsvalueiterator_types.QJSValueIterator, ): gen_qjsvalue.QJSValue =
 
   gen_qjsvalue.QJSValue(h: fcQJSValueIterator_value(self.h))
 
-proc operatorAssign*(self: QJSValueIterator, value: gen_qjsvalue.QJSValue): void =
+proc operatorAssign*(self: gen_qjsvalueiterator_types.QJSValueIterator, value: gen_qjsvalue.QJSValue): void =
 
   fcQJSValueIterator_operatorAssign(self.h, value.h)
 
-proc delete*(self: QJSValueIterator) =
+proc delete*(self: gen_qjsvalueiterator_types.QJSValueIterator) =
   fcQJSValueIterator_delete(self.h)

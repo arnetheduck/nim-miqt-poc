@@ -38,12 +38,10 @@ import gen_qquaternion_types
 export gen_qquaternion_types
 
 import
-  gen_qnamespace,
   gen_qvariant,
   gen_qvector3d,
   gen_qvector4d
 export
-  gen_qnamespace,
   gen_qvariant,
   gen_qvector3d,
   gen_qvector4d
@@ -102,197 +100,197 @@ proc fcQQuaternion_nlerp(q1: pointer, q2: pointer, t: float32): pointer {.import
 proc fcQQuaternion_delete(self: pointer) {.importc: "QQuaternion_delete".}
 
 
-func init*(T: type QQuaternion, h: ptr cQQuaternion): QQuaternion =
+func init*(T: type gen_qquaternion_types.QQuaternion, h: ptr cQQuaternion): gen_qquaternion_types.QQuaternion =
   T(h: h)
-proc create*(T: type QQuaternion, ): QQuaternion =
+proc create*(T: type gen_qquaternion_types.QQuaternion, ): gen_qquaternion_types.QQuaternion =
 
-  QQuaternion.init(fcQQuaternion_new())
-proc create*(T: type QQuaternion, param1: gen_qnamespace.Initialization): QQuaternion =
+  gen_qquaternion_types.QQuaternion.init(fcQQuaternion_new())
+proc create*(T: type gen_qquaternion_types.QQuaternion, param1: cint): gen_qquaternion_types.QQuaternion =
 
-  QQuaternion.init(fcQQuaternion_new2(cint(param1)))
-proc create*(T: type QQuaternion, scalar: float32, xpos: float32, ypos: float32, zpos: float32): QQuaternion =
+  gen_qquaternion_types.QQuaternion.init(fcQQuaternion_new2(cint(param1)))
+proc create*(T: type gen_qquaternion_types.QQuaternion, scalar: float32, xpos: float32, ypos: float32, zpos: float32): gen_qquaternion_types.QQuaternion =
 
-  QQuaternion.init(fcQQuaternion_new3(scalar, xpos, ypos, zpos))
-proc create*(T: type QQuaternion, scalar: float32, vector: gen_qvector3d.QVector3D): QQuaternion =
+  gen_qquaternion_types.QQuaternion.init(fcQQuaternion_new3(scalar, xpos, ypos, zpos))
+proc create*(T: type gen_qquaternion_types.QQuaternion, scalar: float32, vector: gen_qvector3d.QVector3D): gen_qquaternion_types.QQuaternion =
 
-  QQuaternion.init(fcQQuaternion_new4(scalar, vector.h))
-proc create*(T: type QQuaternion, vector: gen_qvector4d.QVector4D): QQuaternion =
+  gen_qquaternion_types.QQuaternion.init(fcQQuaternion_new4(scalar, vector.h))
+proc create*(T: type gen_qquaternion_types.QQuaternion, vector: gen_qvector4d.QVector4D): gen_qquaternion_types.QQuaternion =
 
-  QQuaternion.init(fcQQuaternion_new5(vector.h))
-proc create2*(T: type QQuaternion, param1: QQuaternion): QQuaternion =
+  gen_qquaternion_types.QQuaternion.init(fcQQuaternion_new5(vector.h))
+proc create2*(T: type gen_qquaternion_types.QQuaternion, param1: gen_qquaternion_types.QQuaternion): gen_qquaternion_types.QQuaternion =
 
-  QQuaternion.init(fcQQuaternion_new6(param1.h))
-proc isNull*(self: QQuaternion, ): bool =
+  gen_qquaternion_types.QQuaternion.init(fcQQuaternion_new6(param1.h))
+proc isNull*(self: gen_qquaternion_types.QQuaternion, ): bool =
 
   fcQQuaternion_isNull(self.h)
 
-proc isIdentity*(self: QQuaternion, ): bool =
+proc isIdentity*(self: gen_qquaternion_types.QQuaternion, ): bool =
 
   fcQQuaternion_isIdentity(self.h)
 
-proc vector*(self: QQuaternion, ): gen_qvector3d.QVector3D =
+proc vector*(self: gen_qquaternion_types.QQuaternion, ): gen_qvector3d.QVector3D =
 
   gen_qvector3d.QVector3D(h: fcQQuaternion_vector(self.h))
 
-proc setVector*(self: QQuaternion, vector: gen_qvector3d.QVector3D): void =
+proc setVector*(self: gen_qquaternion_types.QQuaternion, vector: gen_qvector3d.QVector3D): void =
 
   fcQQuaternion_setVector(self.h, vector.h)
 
-proc setVector2*(self: QQuaternion, x: float32, y: float32, z: float32): void =
+proc setVector2*(self: gen_qquaternion_types.QQuaternion, x: float32, y: float32, z: float32): void =
 
   fcQQuaternion_setVector2(self.h, x, y, z)
 
-proc x*(self: QQuaternion, ): float32 =
+proc x*(self: gen_qquaternion_types.QQuaternion, ): float32 =
 
   fcQQuaternion_x(self.h)
 
-proc y*(self: QQuaternion, ): float32 =
+proc y*(self: gen_qquaternion_types.QQuaternion, ): float32 =
 
   fcQQuaternion_y(self.h)
 
-proc z*(self: QQuaternion, ): float32 =
+proc z*(self: gen_qquaternion_types.QQuaternion, ): float32 =
 
   fcQQuaternion_z(self.h)
 
-proc scalar*(self: QQuaternion, ): float32 =
+proc scalar*(self: gen_qquaternion_types.QQuaternion, ): float32 =
 
   fcQQuaternion_scalar(self.h)
 
-proc setX*(self: QQuaternion, x: float32): void =
+proc setX*(self: gen_qquaternion_types.QQuaternion, x: float32): void =
 
   fcQQuaternion_setX(self.h, x)
 
-proc setY*(self: QQuaternion, y: float32): void =
+proc setY*(self: gen_qquaternion_types.QQuaternion, y: float32): void =
 
   fcQQuaternion_setY(self.h, y)
 
-proc setZ*(self: QQuaternion, z: float32): void =
+proc setZ*(self: gen_qquaternion_types.QQuaternion, z: float32): void =
 
   fcQQuaternion_setZ(self.h, z)
 
-proc setScalar*(self: QQuaternion, scalar: float32): void =
+proc setScalar*(self: gen_qquaternion_types.QQuaternion, scalar: float32): void =
 
   fcQQuaternion_setScalar(self.h, scalar)
 
-proc dotProduct*(_: type QQuaternion, q1: QQuaternion, q2: QQuaternion): float32 =
+proc dotProduct*(_: type gen_qquaternion_types.QQuaternion, q1: gen_qquaternion_types.QQuaternion, q2: gen_qquaternion_types.QQuaternion): float32 =
 
   fcQQuaternion_dotProduct(q1.h, q2.h)
 
-proc length*(self: QQuaternion, ): float32 =
+proc length*(self: gen_qquaternion_types.QQuaternion, ): float32 =
 
   fcQQuaternion_length(self.h)
 
-proc lengthSquared*(self: QQuaternion, ): float32 =
+proc lengthSquared*(self: gen_qquaternion_types.QQuaternion, ): float32 =
 
   fcQQuaternion_lengthSquared(self.h)
 
-proc normalized*(self: QQuaternion, ): QQuaternion =
+proc normalized*(self: gen_qquaternion_types.QQuaternion, ): gen_qquaternion_types.QQuaternion =
 
-  QQuaternion(h: fcQQuaternion_normalized(self.h))
+  gen_qquaternion_types.QQuaternion(h: fcQQuaternion_normalized(self.h))
 
-proc normalize*(self: QQuaternion, ): void =
+proc normalize*(self: gen_qquaternion_types.QQuaternion, ): void =
 
   fcQQuaternion_normalize(self.h)
 
-proc inverted*(self: QQuaternion, ): QQuaternion =
+proc inverted*(self: gen_qquaternion_types.QQuaternion, ): gen_qquaternion_types.QQuaternion =
 
-  QQuaternion(h: fcQQuaternion_inverted(self.h))
+  gen_qquaternion_types.QQuaternion(h: fcQQuaternion_inverted(self.h))
 
-proc conjugated*(self: QQuaternion, ): QQuaternion =
+proc conjugated*(self: gen_qquaternion_types.QQuaternion, ): gen_qquaternion_types.QQuaternion =
 
-  QQuaternion(h: fcQQuaternion_conjugated(self.h))
+  gen_qquaternion_types.QQuaternion(h: fcQQuaternion_conjugated(self.h))
 
-proc conjugate*(self: QQuaternion, ): QQuaternion =
+proc conjugate*(self: gen_qquaternion_types.QQuaternion, ): gen_qquaternion_types.QQuaternion =
 
-  QQuaternion(h: fcQQuaternion_conjugate(self.h))
+  gen_qquaternion_types.QQuaternion(h: fcQQuaternion_conjugate(self.h))
 
-proc rotatedVector*(self: QQuaternion, vector: gen_qvector3d.QVector3D): gen_qvector3d.QVector3D =
+proc rotatedVector*(self: gen_qquaternion_types.QQuaternion, vector: gen_qvector3d.QVector3D): gen_qvector3d.QVector3D =
 
   gen_qvector3d.QVector3D(h: fcQQuaternion_rotatedVector(self.h, vector.h))
 
-proc operatorPlusAssign*(self: QQuaternion, quaternion: QQuaternion): QQuaternion =
+proc operatorPlusAssign*(self: gen_qquaternion_types.QQuaternion, quaternion: gen_qquaternion_types.QQuaternion): gen_qquaternion_types.QQuaternion =
 
-  QQuaternion(h: fcQQuaternion_operatorPlusAssign(self.h, quaternion.h))
+  gen_qquaternion_types.QQuaternion(h: fcQQuaternion_operatorPlusAssign(self.h, quaternion.h))
 
-proc operatorMinusAssign*(self: QQuaternion, quaternion: QQuaternion): QQuaternion =
+proc operatorMinusAssign*(self: gen_qquaternion_types.QQuaternion, quaternion: gen_qquaternion_types.QQuaternion): gen_qquaternion_types.QQuaternion =
 
-  QQuaternion(h: fcQQuaternion_operatorMinusAssign(self.h, quaternion.h))
+  gen_qquaternion_types.QQuaternion(h: fcQQuaternion_operatorMinusAssign(self.h, quaternion.h))
 
-proc operatorMultiplyAssign*(self: QQuaternion, factor: float32): QQuaternion =
+proc operatorMultiplyAssign*(self: gen_qquaternion_types.QQuaternion, factor: float32): gen_qquaternion_types.QQuaternion =
 
-  QQuaternion(h: fcQQuaternion_operatorMultiplyAssign(self.h, factor))
+  gen_qquaternion_types.QQuaternion(h: fcQQuaternion_operatorMultiplyAssign(self.h, factor))
 
-proc operatorMultiplyAssignWithQuaternion*(self: QQuaternion, quaternion: QQuaternion): QQuaternion =
+proc operatorMultiplyAssignWithQuaternion*(self: gen_qquaternion_types.QQuaternion, quaternion: gen_qquaternion_types.QQuaternion): gen_qquaternion_types.QQuaternion =
 
-  QQuaternion(h: fcQQuaternion_operatorMultiplyAssignWithQuaternion(self.h, quaternion.h))
+  gen_qquaternion_types.QQuaternion(h: fcQQuaternion_operatorMultiplyAssignWithQuaternion(self.h, quaternion.h))
 
-proc operatorDivideAssign*(self: QQuaternion, divisor: float32): QQuaternion =
+proc operatorDivideAssign*(self: gen_qquaternion_types.QQuaternion, divisor: float32): gen_qquaternion_types.QQuaternion =
 
-  QQuaternion(h: fcQQuaternion_operatorDivideAssign(self.h, divisor))
+  gen_qquaternion_types.QQuaternion(h: fcQQuaternion_operatorDivideAssign(self.h, divisor))
 
-proc toVector4D*(self: QQuaternion, ): gen_qvector4d.QVector4D =
+proc toVector4D*(self: gen_qquaternion_types.QQuaternion, ): gen_qvector4d.QVector4D =
 
   gen_qvector4d.QVector4D(h: fcQQuaternion_toVector4D(self.h))
 
-proc ToQVariant*(self: QQuaternion, ): gen_qvariant.QVariant =
+proc ToQVariant*(self: gen_qquaternion_types.QQuaternion, ): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fcQQuaternion_ToQVariant(self.h))
 
-proc getAxisAndAngle*(self: QQuaternion, axis: gen_qvector3d.QVector3D, angle: ptr float32): void =
+proc getAxisAndAngle*(self: gen_qquaternion_types.QQuaternion, axis: gen_qvector3d.QVector3D, angle: ptr float32): void =
 
   fcQQuaternion_getAxisAndAngle(self.h, axis.h, angle)
 
-proc fromAxisAndAngle*(_: type QQuaternion, axis: gen_qvector3d.QVector3D, angle: float32): QQuaternion =
+proc fromAxisAndAngle*(_: type gen_qquaternion_types.QQuaternion, axis: gen_qvector3d.QVector3D, angle: float32): gen_qquaternion_types.QQuaternion =
 
-  QQuaternion(h: fcQQuaternion_fromAxisAndAngle(axis.h, angle))
+  gen_qquaternion_types.QQuaternion(h: fcQQuaternion_fromAxisAndAngle(axis.h, angle))
 
-proc getAxisAndAngle2*(self: QQuaternion, x: ptr float32, y: ptr float32, z: ptr float32, angle: ptr float32): void =
+proc getAxisAndAngle2*(self: gen_qquaternion_types.QQuaternion, x: ptr float32, y: ptr float32, z: ptr float32, angle: ptr float32): void =
 
   fcQQuaternion_getAxisAndAngle2(self.h, x, y, z, angle)
 
-proc fromAxisAndAngle2*(_: type QQuaternion, x: float32, y: float32, z: float32, angle: float32): QQuaternion =
+proc fromAxisAndAngle2*(_: type gen_qquaternion_types.QQuaternion, x: float32, y: float32, z: float32, angle: float32): gen_qquaternion_types.QQuaternion =
 
-  QQuaternion(h: fcQQuaternion_fromAxisAndAngle2(x, y, z, angle))
+  gen_qquaternion_types.QQuaternion(h: fcQQuaternion_fromAxisAndAngle2(x, y, z, angle))
 
-proc toEulerAngles*(self: QQuaternion, ): gen_qvector3d.QVector3D =
+proc toEulerAngles*(self: gen_qquaternion_types.QQuaternion, ): gen_qvector3d.QVector3D =
 
   gen_qvector3d.QVector3D(h: fcQQuaternion_toEulerAngles(self.h))
 
-proc fromEulerAngles*(_: type QQuaternion, eulerAngles: gen_qvector3d.QVector3D): QQuaternion =
+proc fromEulerAngles*(_: type gen_qquaternion_types.QQuaternion, eulerAngles: gen_qvector3d.QVector3D): gen_qquaternion_types.QQuaternion =
 
-  QQuaternion(h: fcQQuaternion_fromEulerAngles(eulerAngles.h))
+  gen_qquaternion_types.QQuaternion(h: fcQQuaternion_fromEulerAngles(eulerAngles.h))
 
-proc getEulerAngles*(self: QQuaternion, pitch: ptr float32, yaw: ptr float32, roll: ptr float32): void =
+proc getEulerAngles*(self: gen_qquaternion_types.QQuaternion, pitch: ptr float32, yaw: ptr float32, roll: ptr float32): void =
 
   fcQQuaternion_getEulerAngles(self.h, pitch, yaw, roll)
 
-proc fromEulerAngles2*(_: type QQuaternion, pitch: float32, yaw: float32, roll: float32): QQuaternion =
+proc fromEulerAngles2*(_: type gen_qquaternion_types.QQuaternion, pitch: float32, yaw: float32, roll: float32): gen_qquaternion_types.QQuaternion =
 
-  QQuaternion(h: fcQQuaternion_fromEulerAngles2(pitch, yaw, roll))
+  gen_qquaternion_types.QQuaternion(h: fcQQuaternion_fromEulerAngles2(pitch, yaw, roll))
 
-proc getAxes*(self: QQuaternion, xAxis: gen_qvector3d.QVector3D, yAxis: gen_qvector3d.QVector3D, zAxis: gen_qvector3d.QVector3D): void =
+proc getAxes*(self: gen_qquaternion_types.QQuaternion, xAxis: gen_qvector3d.QVector3D, yAxis: gen_qvector3d.QVector3D, zAxis: gen_qvector3d.QVector3D): void =
 
   fcQQuaternion_getAxes(self.h, xAxis.h, yAxis.h, zAxis.h)
 
-proc fromAxes*(_: type QQuaternion, xAxis: gen_qvector3d.QVector3D, yAxis: gen_qvector3d.QVector3D, zAxis: gen_qvector3d.QVector3D): QQuaternion =
+proc fromAxes*(_: type gen_qquaternion_types.QQuaternion, xAxis: gen_qvector3d.QVector3D, yAxis: gen_qvector3d.QVector3D, zAxis: gen_qvector3d.QVector3D): gen_qquaternion_types.QQuaternion =
 
-  QQuaternion(h: fcQQuaternion_fromAxes(xAxis.h, yAxis.h, zAxis.h))
+  gen_qquaternion_types.QQuaternion(h: fcQQuaternion_fromAxes(xAxis.h, yAxis.h, zAxis.h))
 
-proc fromDirection*(_: type QQuaternion, direction: gen_qvector3d.QVector3D, up: gen_qvector3d.QVector3D): QQuaternion =
+proc fromDirection*(_: type gen_qquaternion_types.QQuaternion, direction: gen_qvector3d.QVector3D, up: gen_qvector3d.QVector3D): gen_qquaternion_types.QQuaternion =
 
-  QQuaternion(h: fcQQuaternion_fromDirection(direction.h, up.h))
+  gen_qquaternion_types.QQuaternion(h: fcQQuaternion_fromDirection(direction.h, up.h))
 
-proc rotationTo*(_: type QQuaternion, fromVal: gen_qvector3d.QVector3D, to: gen_qvector3d.QVector3D): QQuaternion =
+proc rotationTo*(_: type gen_qquaternion_types.QQuaternion, fromVal: gen_qvector3d.QVector3D, to: gen_qvector3d.QVector3D): gen_qquaternion_types.QQuaternion =
 
-  QQuaternion(h: fcQQuaternion_rotationTo(fromVal.h, to.h))
+  gen_qquaternion_types.QQuaternion(h: fcQQuaternion_rotationTo(fromVal.h, to.h))
 
-proc slerp*(_: type QQuaternion, q1: QQuaternion, q2: QQuaternion, t: float32): QQuaternion =
+proc slerp*(_: type gen_qquaternion_types.QQuaternion, q1: gen_qquaternion_types.QQuaternion, q2: gen_qquaternion_types.QQuaternion, t: float32): gen_qquaternion_types.QQuaternion =
 
-  QQuaternion(h: fcQQuaternion_slerp(q1.h, q2.h, t))
+  gen_qquaternion_types.QQuaternion(h: fcQQuaternion_slerp(q1.h, q2.h, t))
 
-proc nlerp*(_: type QQuaternion, q1: QQuaternion, q2: QQuaternion, t: float32): QQuaternion =
+proc nlerp*(_: type gen_qquaternion_types.QQuaternion, q1: gen_qquaternion_types.QQuaternion, q2: gen_qquaternion_types.QQuaternion, t: float32): gen_qquaternion_types.QQuaternion =
 
-  QQuaternion(h: fcQQuaternion_nlerp(q1.h, q2.h, t))
+  gen_qquaternion_types.QQuaternion(h: fcQQuaternion_nlerp(q1.h, q2.h, t))
 
-proc delete*(self: QQuaternion) =
+proc delete*(self: gen_qquaternion_types.QQuaternion) =
   fcQQuaternion_delete(self.h)

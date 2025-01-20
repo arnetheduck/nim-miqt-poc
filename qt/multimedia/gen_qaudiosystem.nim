@@ -38,13 +38,11 @@ import gen_qaudiosystem_types
 export gen_qaudiosystem_types
 
 import
-  gen_qaudio,
   gen_qaudioformat,
   gen_qiodevice,
   gen_qobject,
   gen_qobjectdefs
 export
-  gen_qaudio,
   gen_qaudioformat,
   gen_qiodevice,
   gen_qobject,
@@ -152,50 +150,50 @@ proc fcQAbstractAudioInput_staticMetaObject(): pointer {.importc: "QAbstractAudi
 proc fcQAbstractAudioInput_delete(self: pointer) {.importc: "QAbstractAudioInput_delete".}
 
 
-func init*(T: type QAbstractAudioDeviceInfo, h: ptr cQAbstractAudioDeviceInfo): QAbstractAudioDeviceInfo =
+func init*(T: type gen_qaudiosystem_types.QAbstractAudioDeviceInfo, h: ptr cQAbstractAudioDeviceInfo): gen_qaudiosystem_types.QAbstractAudioDeviceInfo =
   T(h: h)
-proc metaObject*(self: QAbstractAudioDeviceInfo, ): gen_qobjectdefs.QMetaObject =
+proc metaObject*(self: gen_qaudiosystem_types.QAbstractAudioDeviceInfo, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQAbstractAudioDeviceInfo_metaObject(self.h))
 
-proc metacast*(self: QAbstractAudioDeviceInfo, param1: cstring): pointer =
+proc metacast*(self: gen_qaudiosystem_types.QAbstractAudioDeviceInfo, param1: cstring): pointer =
 
   fcQAbstractAudioDeviceInfo_metacast(self.h, param1)
 
-proc metacall*(self: QAbstractAudioDeviceInfo, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qaudiosystem_types.QAbstractAudioDeviceInfo, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQAbstractAudioDeviceInfo_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QAbstractAudioDeviceInfo, s: cstring): string =
+proc tr*(_: type gen_qaudiosystem_types.QAbstractAudioDeviceInfo, s: cstring): string =
 
   let v_ms = fcQAbstractAudioDeviceInfo_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QAbstractAudioDeviceInfo, s: cstring): string =
+proc trUtf8*(_: type gen_qaudiosystem_types.QAbstractAudioDeviceInfo, s: cstring): string =
 
   let v_ms = fcQAbstractAudioDeviceInfo_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc preferredFormat*(self: QAbstractAudioDeviceInfo, ): gen_qaudioformat.QAudioFormat =
+proc preferredFormat*(self: gen_qaudiosystem_types.QAbstractAudioDeviceInfo, ): gen_qaudioformat.QAudioFormat =
 
   gen_qaudioformat.QAudioFormat(h: fcQAbstractAudioDeviceInfo_preferredFormat(self.h))
 
-proc isFormatSupported*(self: QAbstractAudioDeviceInfo, format: gen_qaudioformat.QAudioFormat): bool =
+proc isFormatSupported*(self: gen_qaudiosystem_types.QAbstractAudioDeviceInfo, format: gen_qaudioformat.QAudioFormat): bool =
 
   fcQAbstractAudioDeviceInfo_isFormatSupported(self.h, format.h)
 
-proc deviceName*(self: QAbstractAudioDeviceInfo, ): string =
+proc deviceName*(self: gen_qaudiosystem_types.QAbstractAudioDeviceInfo, ): string =
 
   let v_ms = fcQAbstractAudioDeviceInfo_deviceName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc supportedCodecs*(self: QAbstractAudioDeviceInfo, ): seq[string] =
+proc supportedCodecs*(self: gen_qaudiosystem_types.QAbstractAudioDeviceInfo, ): seq[string] =
 
   var v_ma = fcQAbstractAudioDeviceInfo_supportedCodecs(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -207,7 +205,7 @@ proc supportedCodecs*(self: QAbstractAudioDeviceInfo, ): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc supportedSampleRates*(self: QAbstractAudioDeviceInfo, ): seq[cint] =
+proc supportedSampleRates*(self: gen_qaudiosystem_types.QAbstractAudioDeviceInfo, ): seq[cint] =
 
   var v_ma = fcQAbstractAudioDeviceInfo_supportedSampleRates(self.h)
   var vx_ret = newSeq[cint](int(v_ma.len))
@@ -216,7 +214,7 @@ proc supportedSampleRates*(self: QAbstractAudioDeviceInfo, ): seq[cint] =
     vx_ret[i] = v_outCast[i]
   vx_ret
 
-proc supportedChannelCounts*(self: QAbstractAudioDeviceInfo, ): seq[cint] =
+proc supportedChannelCounts*(self: gen_qaudiosystem_types.QAbstractAudioDeviceInfo, ): seq[cint] =
 
   var v_ma = fcQAbstractAudioDeviceInfo_supportedChannelCounts(self.h)
   var vx_ret = newSeq[cint](int(v_ma.len))
@@ -225,7 +223,7 @@ proc supportedChannelCounts*(self: QAbstractAudioDeviceInfo, ): seq[cint] =
     vx_ret[i] = v_outCast[i]
   vx_ret
 
-proc supportedSampleSizes*(self: QAbstractAudioDeviceInfo, ): seq[cint] =
+proc supportedSampleSizes*(self: gen_qaudiosystem_types.QAbstractAudioDeviceInfo, ): seq[cint] =
 
   var v_ma = fcQAbstractAudioDeviceInfo_supportedSampleSizes(self.h)
   var vx_ret = newSeq[cint](int(v_ma.len))
@@ -234,213 +232,213 @@ proc supportedSampleSizes*(self: QAbstractAudioDeviceInfo, ): seq[cint] =
     vx_ret[i] = v_outCast[i]
   vx_ret
 
-proc supportedByteOrders*(self: QAbstractAudioDeviceInfo, ): seq[gen_qaudioformat.QAudioFormatEndian] =
+proc supportedByteOrders*(self: gen_qaudiosystem_types.QAbstractAudioDeviceInfo, ): seq[cint] =
 
   var v_ma = fcQAbstractAudioDeviceInfo_supportedByteOrders(self.h)
-  var vx_ret = newSeq[gen_qaudioformat.QAudioFormatEndian](int(v_ma.len))
+  var vx_ret = newSeq[cint](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[cint]](v_ma.data)
   for i in 0 ..< v_ma.len:
-    vx_ret[i] = gen_qaudioformat.QAudioFormatEndian(v_outCast[i])
+    vx_ret[i] = cint(v_outCast[i])
   vx_ret
 
-proc supportedSampleTypes*(self: QAbstractAudioDeviceInfo, ): seq[gen_qaudioformat.QAudioFormatSampleType] =
+proc supportedSampleTypes*(self: gen_qaudiosystem_types.QAbstractAudioDeviceInfo, ): seq[cint] =
 
   var v_ma = fcQAbstractAudioDeviceInfo_supportedSampleTypes(self.h)
-  var vx_ret = newSeq[gen_qaudioformat.QAudioFormatSampleType](int(v_ma.len))
+  var vx_ret = newSeq[cint](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[cint]](v_ma.data)
   for i in 0 ..< v_ma.len:
-    vx_ret[i] = gen_qaudioformat.QAudioFormatSampleType(v_outCast[i])
+    vx_ret[i] = cint(v_outCast[i])
   vx_ret
 
-proc tr2*(_: type QAbstractAudioDeviceInfo, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qaudiosystem_types.QAbstractAudioDeviceInfo, s: cstring, c: cstring): string =
 
   let v_ms = fcQAbstractAudioDeviceInfo_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QAbstractAudioDeviceInfo, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qaudiosystem_types.QAbstractAudioDeviceInfo, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQAbstractAudioDeviceInfo_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QAbstractAudioDeviceInfo, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qaudiosystem_types.QAbstractAudioDeviceInfo, s: cstring, c: cstring): string =
 
   let v_ms = fcQAbstractAudioDeviceInfo_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QAbstractAudioDeviceInfo, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qaudiosystem_types.QAbstractAudioDeviceInfo, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQAbstractAudioDeviceInfo_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc staticMetaObject*(_: type QAbstractAudioDeviceInfo): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qaudiosystem_types.QAbstractAudioDeviceInfo): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQAbstractAudioDeviceInfo_staticMetaObject())
-proc delete*(self: QAbstractAudioDeviceInfo) =
+proc delete*(self: gen_qaudiosystem_types.QAbstractAudioDeviceInfo) =
   fcQAbstractAudioDeviceInfo_delete(self.h)
 
-func init*(T: type QAbstractAudioOutput, h: ptr cQAbstractAudioOutput): QAbstractAudioOutput =
+func init*(T: type gen_qaudiosystem_types.QAbstractAudioOutput, h: ptr cQAbstractAudioOutput): gen_qaudiosystem_types.QAbstractAudioOutput =
   T(h: h)
-proc metaObject*(self: QAbstractAudioOutput, ): gen_qobjectdefs.QMetaObject =
+proc metaObject*(self: gen_qaudiosystem_types.QAbstractAudioOutput, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQAbstractAudioOutput_metaObject(self.h))
 
-proc metacast*(self: QAbstractAudioOutput, param1: cstring): pointer =
+proc metacast*(self: gen_qaudiosystem_types.QAbstractAudioOutput, param1: cstring): pointer =
 
   fcQAbstractAudioOutput_metacast(self.h, param1)
 
-proc metacall*(self: QAbstractAudioOutput, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qaudiosystem_types.QAbstractAudioOutput, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQAbstractAudioOutput_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QAbstractAudioOutput, s: cstring): string =
+proc tr*(_: type gen_qaudiosystem_types.QAbstractAudioOutput, s: cstring): string =
 
   let v_ms = fcQAbstractAudioOutput_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QAbstractAudioOutput, s: cstring): string =
+proc trUtf8*(_: type gen_qaudiosystem_types.QAbstractAudioOutput, s: cstring): string =
 
   let v_ms = fcQAbstractAudioOutput_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc start*(self: QAbstractAudioOutput, device: gen_qiodevice.QIODevice): void =
+proc start*(self: gen_qaudiosystem_types.QAbstractAudioOutput, device: gen_qiodevice.QIODevice): void =
 
   fcQAbstractAudioOutput_start(self.h, device.h)
 
-proc start2*(self: QAbstractAudioOutput, ): gen_qiodevice.QIODevice =
+proc start2*(self: gen_qaudiosystem_types.QAbstractAudioOutput, ): gen_qiodevice.QIODevice =
 
   gen_qiodevice.QIODevice(h: fcQAbstractAudioOutput_start2(self.h))
 
-proc stop*(self: QAbstractAudioOutput, ): void =
+proc stop*(self: gen_qaudiosystem_types.QAbstractAudioOutput, ): void =
 
   fcQAbstractAudioOutput_stop(self.h)
 
-proc reset*(self: QAbstractAudioOutput, ): void =
+proc reset*(self: gen_qaudiosystem_types.QAbstractAudioOutput, ): void =
 
   fcQAbstractAudioOutput_reset(self.h)
 
-proc suspend*(self: QAbstractAudioOutput, ): void =
+proc suspend*(self: gen_qaudiosystem_types.QAbstractAudioOutput, ): void =
 
   fcQAbstractAudioOutput_suspend(self.h)
 
-proc resume*(self: QAbstractAudioOutput, ): void =
+proc resume*(self: gen_qaudiosystem_types.QAbstractAudioOutput, ): void =
 
   fcQAbstractAudioOutput_resume(self.h)
 
-proc bytesFree*(self: QAbstractAudioOutput, ): cint =
+proc bytesFree*(self: gen_qaudiosystem_types.QAbstractAudioOutput, ): cint =
 
   fcQAbstractAudioOutput_bytesFree(self.h)
 
-proc periodSize*(self: QAbstractAudioOutput, ): cint =
+proc periodSize*(self: gen_qaudiosystem_types.QAbstractAudioOutput, ): cint =
 
   fcQAbstractAudioOutput_periodSize(self.h)
 
-proc setBufferSize*(self: QAbstractAudioOutput, value: cint): void =
+proc setBufferSize*(self: gen_qaudiosystem_types.QAbstractAudioOutput, value: cint): void =
 
   fcQAbstractAudioOutput_setBufferSize(self.h, value)
 
-proc bufferSize*(self: QAbstractAudioOutput, ): cint =
+proc bufferSize*(self: gen_qaudiosystem_types.QAbstractAudioOutput, ): cint =
 
   fcQAbstractAudioOutput_bufferSize(self.h)
 
-proc setNotifyInterval*(self: QAbstractAudioOutput, milliSeconds: cint): void =
+proc setNotifyInterval*(self: gen_qaudiosystem_types.QAbstractAudioOutput, milliSeconds: cint): void =
 
   fcQAbstractAudioOutput_setNotifyInterval(self.h, milliSeconds)
 
-proc notifyInterval*(self: QAbstractAudioOutput, ): cint =
+proc notifyInterval*(self: gen_qaudiosystem_types.QAbstractAudioOutput, ): cint =
 
   fcQAbstractAudioOutput_notifyInterval(self.h)
 
-proc processedUSecs*(self: QAbstractAudioOutput, ): clonglong =
+proc processedUSecs*(self: gen_qaudiosystem_types.QAbstractAudioOutput, ): clonglong =
 
   fcQAbstractAudioOutput_processedUSecs(self.h)
 
-proc elapsedUSecs*(self: QAbstractAudioOutput, ): clonglong =
+proc elapsedUSecs*(self: gen_qaudiosystem_types.QAbstractAudioOutput, ): clonglong =
 
   fcQAbstractAudioOutput_elapsedUSecs(self.h)
 
-proc error*(self: QAbstractAudioOutput, ): gen_qaudio.QAudioError =
+proc error*(self: gen_qaudiosystem_types.QAbstractAudioOutput, ): cint =
 
-  gen_qaudio.QAudioError(fcQAbstractAudioOutput_error(self.h))
+  cint(fcQAbstractAudioOutput_error(self.h))
 
-proc state*(self: QAbstractAudioOutput, ): gen_qaudio.QAudioState =
+proc state*(self: gen_qaudiosystem_types.QAbstractAudioOutput, ): cint =
 
-  gen_qaudio.QAudioState(fcQAbstractAudioOutput_state(self.h))
+  cint(fcQAbstractAudioOutput_state(self.h))
 
-proc setFormat*(self: QAbstractAudioOutput, fmt: gen_qaudioformat.QAudioFormat): void =
+proc setFormat*(self: gen_qaudiosystem_types.QAbstractAudioOutput, fmt: gen_qaudioformat.QAudioFormat): void =
 
   fcQAbstractAudioOutput_setFormat(self.h, fmt.h)
 
-proc format*(self: QAbstractAudioOutput, ): gen_qaudioformat.QAudioFormat =
+proc format*(self: gen_qaudiosystem_types.QAbstractAudioOutput, ): gen_qaudioformat.QAudioFormat =
 
   gen_qaudioformat.QAudioFormat(h: fcQAbstractAudioOutput_format(self.h))
 
-proc setVolume*(self: QAbstractAudioOutput, volume: float64): void =
+proc setVolume*(self: gen_qaudiosystem_types.QAbstractAudioOutput, volume: float64): void =
 
   fcQAbstractAudioOutput_setVolume(self.h, volume)
 
-proc volume*(self: QAbstractAudioOutput, ): float64 =
+proc volume*(self: gen_qaudiosystem_types.QAbstractAudioOutput, ): float64 =
 
   fcQAbstractAudioOutput_volume(self.h)
 
-proc category*(self: QAbstractAudioOutput, ): string =
+proc category*(self: gen_qaudiosystem_types.QAbstractAudioOutput, ): string =
 
   let v_ms = fcQAbstractAudioOutput_category(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setCategory*(self: QAbstractAudioOutput, category: string): void =
+proc setCategory*(self: gen_qaudiosystem_types.QAbstractAudioOutput, category: string): void =
 
   fcQAbstractAudioOutput_setCategory(self.h, struct_miqt_string(data: category, len: csize_t(len(category))))
 
-proc errorChanged*(self: QAbstractAudioOutput, error: gen_qaudio.QAudioError): void =
+proc errorChanged*(self: gen_qaudiosystem_types.QAbstractAudioOutput, error: cint): void =
 
   fcQAbstractAudioOutput_errorChanged(self.h, cint(error))
 
 proc miqt_exec_callback_QAbstractAudioOutput_errorChanged(slot: int, error: cint) {.exportc.} =
-  type Cb = proc(error: gen_qaudio.QAudioError)
+  type Cb = proc(error: cint)
   let nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = gen_qaudio.QAudioError(error)
+  let slotval1 = cint(error)
 
 
   nimfunc[](slotval1)
 
-proc onerrorChanged*(self: QAbstractAudioOutput, slot: proc(error: gen_qaudio.QAudioError)) =
-  type Cb = proc(error: gen_qaudio.QAudioError)
+proc onerrorChanged*(self: gen_qaudiosystem_types.QAbstractAudioOutput, slot: proc(error: cint)) =
+  type Cb = proc(error: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQAbstractAudioOutput_connect_errorChanged(self.h, cast[int](addr tmp[]))
-proc stateChanged*(self: QAbstractAudioOutput, state: gen_qaudio.QAudioState): void =
+proc stateChanged*(self: gen_qaudiosystem_types.QAbstractAudioOutput, state: cint): void =
 
   fcQAbstractAudioOutput_stateChanged(self.h, cint(state))
 
 proc miqt_exec_callback_QAbstractAudioOutput_stateChanged(slot: int, state: cint) {.exportc.} =
-  type Cb = proc(state: gen_qaudio.QAudioState)
+  type Cb = proc(state: cint)
   let nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = gen_qaudio.QAudioState(state)
+  let slotval1 = cint(state)
 
 
   nimfunc[](slotval1)
 
-proc onstateChanged*(self: QAbstractAudioOutput, slot: proc(state: gen_qaudio.QAudioState)) =
-  type Cb = proc(state: gen_qaudio.QAudioState)
+proc onstateChanged*(self: gen_qaudiosystem_types.QAbstractAudioOutput, slot: proc(state: cint)) =
+  type Cb = proc(state: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQAbstractAudioOutput_connect_stateChanged(self.h, cast[int](addr tmp[]))
-proc notify*(self: QAbstractAudioOutput, ): void =
+proc notify*(self: gen_qaudiosystem_types.QAbstractAudioOutput, ): void =
 
   fcQAbstractAudioOutput_notify(self.h)
 
@@ -450,190 +448,190 @@ proc miqt_exec_callback_QAbstractAudioOutput_notify(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onnotify*(self: QAbstractAudioOutput, slot: proc()) =
+proc onnotify*(self: gen_qaudiosystem_types.QAbstractAudioOutput, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQAbstractAudioOutput_connect_notify(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QAbstractAudioOutput, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qaudiosystem_types.QAbstractAudioOutput, s: cstring, c: cstring): string =
 
   let v_ms = fcQAbstractAudioOutput_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QAbstractAudioOutput, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qaudiosystem_types.QAbstractAudioOutput, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQAbstractAudioOutput_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QAbstractAudioOutput, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qaudiosystem_types.QAbstractAudioOutput, s: cstring, c: cstring): string =
 
   let v_ms = fcQAbstractAudioOutput_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QAbstractAudioOutput, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qaudiosystem_types.QAbstractAudioOutput, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQAbstractAudioOutput_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc staticMetaObject*(_: type QAbstractAudioOutput): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qaudiosystem_types.QAbstractAudioOutput): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQAbstractAudioOutput_staticMetaObject())
-proc delete*(self: QAbstractAudioOutput) =
+proc delete*(self: gen_qaudiosystem_types.QAbstractAudioOutput) =
   fcQAbstractAudioOutput_delete(self.h)
 
-func init*(T: type QAbstractAudioInput, h: ptr cQAbstractAudioInput): QAbstractAudioInput =
+func init*(T: type gen_qaudiosystem_types.QAbstractAudioInput, h: ptr cQAbstractAudioInput): gen_qaudiosystem_types.QAbstractAudioInput =
   T(h: h)
-proc metaObject*(self: QAbstractAudioInput, ): gen_qobjectdefs.QMetaObject =
+proc metaObject*(self: gen_qaudiosystem_types.QAbstractAudioInput, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQAbstractAudioInput_metaObject(self.h))
 
-proc metacast*(self: QAbstractAudioInput, param1: cstring): pointer =
+proc metacast*(self: gen_qaudiosystem_types.QAbstractAudioInput, param1: cstring): pointer =
 
   fcQAbstractAudioInput_metacast(self.h, param1)
 
-proc metacall*(self: QAbstractAudioInput, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qaudiosystem_types.QAbstractAudioInput, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQAbstractAudioInput_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QAbstractAudioInput, s: cstring): string =
+proc tr*(_: type gen_qaudiosystem_types.QAbstractAudioInput, s: cstring): string =
 
   let v_ms = fcQAbstractAudioInput_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QAbstractAudioInput, s: cstring): string =
+proc trUtf8*(_: type gen_qaudiosystem_types.QAbstractAudioInput, s: cstring): string =
 
   let v_ms = fcQAbstractAudioInput_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc start*(self: QAbstractAudioInput, device: gen_qiodevice.QIODevice): void =
+proc start*(self: gen_qaudiosystem_types.QAbstractAudioInput, device: gen_qiodevice.QIODevice): void =
 
   fcQAbstractAudioInput_start(self.h, device.h)
 
-proc start2*(self: QAbstractAudioInput, ): gen_qiodevice.QIODevice =
+proc start2*(self: gen_qaudiosystem_types.QAbstractAudioInput, ): gen_qiodevice.QIODevice =
 
   gen_qiodevice.QIODevice(h: fcQAbstractAudioInput_start2(self.h))
 
-proc stop*(self: QAbstractAudioInput, ): void =
+proc stop*(self: gen_qaudiosystem_types.QAbstractAudioInput, ): void =
 
   fcQAbstractAudioInput_stop(self.h)
 
-proc reset*(self: QAbstractAudioInput, ): void =
+proc reset*(self: gen_qaudiosystem_types.QAbstractAudioInput, ): void =
 
   fcQAbstractAudioInput_reset(self.h)
 
-proc suspend*(self: QAbstractAudioInput, ): void =
+proc suspend*(self: gen_qaudiosystem_types.QAbstractAudioInput, ): void =
 
   fcQAbstractAudioInput_suspend(self.h)
 
-proc resume*(self: QAbstractAudioInput, ): void =
+proc resume*(self: gen_qaudiosystem_types.QAbstractAudioInput, ): void =
 
   fcQAbstractAudioInput_resume(self.h)
 
-proc bytesReady*(self: QAbstractAudioInput, ): cint =
+proc bytesReady*(self: gen_qaudiosystem_types.QAbstractAudioInput, ): cint =
 
   fcQAbstractAudioInput_bytesReady(self.h)
 
-proc periodSize*(self: QAbstractAudioInput, ): cint =
+proc periodSize*(self: gen_qaudiosystem_types.QAbstractAudioInput, ): cint =
 
   fcQAbstractAudioInput_periodSize(self.h)
 
-proc setBufferSize*(self: QAbstractAudioInput, value: cint): void =
+proc setBufferSize*(self: gen_qaudiosystem_types.QAbstractAudioInput, value: cint): void =
 
   fcQAbstractAudioInput_setBufferSize(self.h, value)
 
-proc bufferSize*(self: QAbstractAudioInput, ): cint =
+proc bufferSize*(self: gen_qaudiosystem_types.QAbstractAudioInput, ): cint =
 
   fcQAbstractAudioInput_bufferSize(self.h)
 
-proc setNotifyInterval*(self: QAbstractAudioInput, milliSeconds: cint): void =
+proc setNotifyInterval*(self: gen_qaudiosystem_types.QAbstractAudioInput, milliSeconds: cint): void =
 
   fcQAbstractAudioInput_setNotifyInterval(self.h, milliSeconds)
 
-proc notifyInterval*(self: QAbstractAudioInput, ): cint =
+proc notifyInterval*(self: gen_qaudiosystem_types.QAbstractAudioInput, ): cint =
 
   fcQAbstractAudioInput_notifyInterval(self.h)
 
-proc processedUSecs*(self: QAbstractAudioInput, ): clonglong =
+proc processedUSecs*(self: gen_qaudiosystem_types.QAbstractAudioInput, ): clonglong =
 
   fcQAbstractAudioInput_processedUSecs(self.h)
 
-proc elapsedUSecs*(self: QAbstractAudioInput, ): clonglong =
+proc elapsedUSecs*(self: gen_qaudiosystem_types.QAbstractAudioInput, ): clonglong =
 
   fcQAbstractAudioInput_elapsedUSecs(self.h)
 
-proc error*(self: QAbstractAudioInput, ): gen_qaudio.QAudioError =
+proc error*(self: gen_qaudiosystem_types.QAbstractAudioInput, ): cint =
 
-  gen_qaudio.QAudioError(fcQAbstractAudioInput_error(self.h))
+  cint(fcQAbstractAudioInput_error(self.h))
 
-proc state*(self: QAbstractAudioInput, ): gen_qaudio.QAudioState =
+proc state*(self: gen_qaudiosystem_types.QAbstractAudioInput, ): cint =
 
-  gen_qaudio.QAudioState(fcQAbstractAudioInput_state(self.h))
+  cint(fcQAbstractAudioInput_state(self.h))
 
-proc setFormat*(self: QAbstractAudioInput, fmt: gen_qaudioformat.QAudioFormat): void =
+proc setFormat*(self: gen_qaudiosystem_types.QAbstractAudioInput, fmt: gen_qaudioformat.QAudioFormat): void =
 
   fcQAbstractAudioInput_setFormat(self.h, fmt.h)
 
-proc format*(self: QAbstractAudioInput, ): gen_qaudioformat.QAudioFormat =
+proc format*(self: gen_qaudiosystem_types.QAbstractAudioInput, ): gen_qaudioformat.QAudioFormat =
 
   gen_qaudioformat.QAudioFormat(h: fcQAbstractAudioInput_format(self.h))
 
-proc setVolume*(self: QAbstractAudioInput, volume: float64): void =
+proc setVolume*(self: gen_qaudiosystem_types.QAbstractAudioInput, volume: float64): void =
 
   fcQAbstractAudioInput_setVolume(self.h, volume)
 
-proc volume*(self: QAbstractAudioInput, ): float64 =
+proc volume*(self: gen_qaudiosystem_types.QAbstractAudioInput, ): float64 =
 
   fcQAbstractAudioInput_volume(self.h)
 
-proc errorChanged*(self: QAbstractAudioInput, error: gen_qaudio.QAudioError): void =
+proc errorChanged*(self: gen_qaudiosystem_types.QAbstractAudioInput, error: cint): void =
 
   fcQAbstractAudioInput_errorChanged(self.h, cint(error))
 
 proc miqt_exec_callback_QAbstractAudioInput_errorChanged(slot: int, error: cint) {.exportc.} =
-  type Cb = proc(error: gen_qaudio.QAudioError)
+  type Cb = proc(error: cint)
   let nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = gen_qaudio.QAudioError(error)
+  let slotval1 = cint(error)
 
 
   nimfunc[](slotval1)
 
-proc onerrorChanged*(self: QAbstractAudioInput, slot: proc(error: gen_qaudio.QAudioError)) =
-  type Cb = proc(error: gen_qaudio.QAudioError)
+proc onerrorChanged*(self: gen_qaudiosystem_types.QAbstractAudioInput, slot: proc(error: cint)) =
+  type Cb = proc(error: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQAbstractAudioInput_connect_errorChanged(self.h, cast[int](addr tmp[]))
-proc stateChanged*(self: QAbstractAudioInput, state: gen_qaudio.QAudioState): void =
+proc stateChanged*(self: gen_qaudiosystem_types.QAbstractAudioInput, state: cint): void =
 
   fcQAbstractAudioInput_stateChanged(self.h, cint(state))
 
 proc miqt_exec_callback_QAbstractAudioInput_stateChanged(slot: int, state: cint) {.exportc.} =
-  type Cb = proc(state: gen_qaudio.QAudioState)
+  type Cb = proc(state: cint)
   let nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = gen_qaudio.QAudioState(state)
+  let slotval1 = cint(state)
 
 
   nimfunc[](slotval1)
 
-proc onstateChanged*(self: QAbstractAudioInput, slot: proc(state: gen_qaudio.QAudioState)) =
-  type Cb = proc(state: gen_qaudio.QAudioState)
+proc onstateChanged*(self: gen_qaudiosystem_types.QAbstractAudioInput, slot: proc(state: cint)) =
+  type Cb = proc(state: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQAbstractAudioInput_connect_stateChanged(self.h, cast[int](addr tmp[]))
-proc notify*(self: QAbstractAudioInput, ): void =
+proc notify*(self: gen_qaudiosystem_types.QAbstractAudioInput, ): void =
 
   fcQAbstractAudioInput_notify(self.h)
 
@@ -643,41 +641,41 @@ proc miqt_exec_callback_QAbstractAudioInput_notify(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onnotify*(self: QAbstractAudioInput, slot: proc()) =
+proc onnotify*(self: gen_qaudiosystem_types.QAbstractAudioInput, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQAbstractAudioInput_connect_notify(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QAbstractAudioInput, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qaudiosystem_types.QAbstractAudioInput, s: cstring, c: cstring): string =
 
   let v_ms = fcQAbstractAudioInput_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QAbstractAudioInput, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qaudiosystem_types.QAbstractAudioInput, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQAbstractAudioInput_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QAbstractAudioInput, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qaudiosystem_types.QAbstractAudioInput, s: cstring, c: cstring): string =
 
   let v_ms = fcQAbstractAudioInput_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QAbstractAudioInput, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qaudiosystem_types.QAbstractAudioInput, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQAbstractAudioInput_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc staticMetaObject*(_: type QAbstractAudioInput): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qaudiosystem_types.QAbstractAudioInput): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQAbstractAudioInput_staticMetaObject())
-proc delete*(self: QAbstractAudioInput) =
+proc delete*(self: gen_qaudiosystem_types.QAbstractAudioInput) =
   fcQAbstractAudioInput_delete(self.h)

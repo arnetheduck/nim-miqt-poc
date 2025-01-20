@@ -38,11 +38,9 @@ import gen_qaudiorolecontrol_types
 export gen_qaudiorolecontrol_types
 
 import
-  gen_qaudio,
   gen_qmediacontrol,
   gen_qobjectdefs
 export
-  gen_qaudio,
   gen_qmediacontrol,
   gen_qobjectdefs
 
@@ -66,98 +64,98 @@ proc fcQAudioRoleControl_staticMetaObject(): pointer {.importc: "QAudioRoleContr
 proc fcQAudioRoleControl_delete(self: pointer) {.importc: "QAudioRoleControl_delete".}
 
 
-func init*(T: type QAudioRoleControl, h: ptr cQAudioRoleControl): QAudioRoleControl =
+func init*(T: type gen_qaudiorolecontrol_types.QAudioRoleControl, h: ptr cQAudioRoleControl): gen_qaudiorolecontrol_types.QAudioRoleControl =
   T(h: h)
-proc metaObject*(self: QAudioRoleControl, ): gen_qobjectdefs.QMetaObject =
+proc metaObject*(self: gen_qaudiorolecontrol_types.QAudioRoleControl, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQAudioRoleControl_metaObject(self.h))
 
-proc metacast*(self: QAudioRoleControl, param1: cstring): pointer =
+proc metacast*(self: gen_qaudiorolecontrol_types.QAudioRoleControl, param1: cstring): pointer =
 
   fcQAudioRoleControl_metacast(self.h, param1)
 
-proc metacall*(self: QAudioRoleControl, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qaudiorolecontrol_types.QAudioRoleControl, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQAudioRoleControl_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QAudioRoleControl, s: cstring): string =
+proc tr*(_: type gen_qaudiorolecontrol_types.QAudioRoleControl, s: cstring): string =
 
   let v_ms = fcQAudioRoleControl_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QAudioRoleControl, s: cstring): string =
+proc trUtf8*(_: type gen_qaudiorolecontrol_types.QAudioRoleControl, s: cstring): string =
 
   let v_ms = fcQAudioRoleControl_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc audioRole*(self: QAudioRoleControl, ): gen_qaudio.QAudioRole =
+proc audioRole*(self: gen_qaudiorolecontrol_types.QAudioRoleControl, ): cint =
 
-  gen_qaudio.QAudioRole(fcQAudioRoleControl_audioRole(self.h))
+  cint(fcQAudioRoleControl_audioRole(self.h))
 
-proc setAudioRole*(self: QAudioRoleControl, role: gen_qaudio.QAudioRole): void =
+proc setAudioRole*(self: gen_qaudiorolecontrol_types.QAudioRoleControl, role: cint): void =
 
   fcQAudioRoleControl_setAudioRole(self.h, cint(role))
 
-proc supportedAudioRoles*(self: QAudioRoleControl, ): seq[gen_qaudio.QAudioRole] =
+proc supportedAudioRoles*(self: gen_qaudiorolecontrol_types.QAudioRoleControl, ): seq[cint] =
 
   var v_ma = fcQAudioRoleControl_supportedAudioRoles(self.h)
-  var vx_ret = newSeq[gen_qaudio.QAudioRole](int(v_ma.len))
+  var vx_ret = newSeq[cint](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[cint]](v_ma.data)
   for i in 0 ..< v_ma.len:
-    vx_ret[i] = gen_qaudio.QAudioRole(v_outCast[i])
+    vx_ret[i] = cint(v_outCast[i])
   vx_ret
 
-proc audioRoleChanged*(self: QAudioRoleControl, role: gen_qaudio.QAudioRole): void =
+proc audioRoleChanged*(self: gen_qaudiorolecontrol_types.QAudioRoleControl, role: cint): void =
 
   fcQAudioRoleControl_audioRoleChanged(self.h, cint(role))
 
 proc miqt_exec_callback_QAudioRoleControl_audioRoleChanged(slot: int, role: cint) {.exportc.} =
-  type Cb = proc(role: gen_qaudio.QAudioRole)
+  type Cb = proc(role: cint)
   let nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = gen_qaudio.QAudioRole(role)
+  let slotval1 = cint(role)
 
 
   nimfunc[](slotval1)
 
-proc onaudioRoleChanged*(self: QAudioRoleControl, slot: proc(role: gen_qaudio.QAudioRole)) =
-  type Cb = proc(role: gen_qaudio.QAudioRole)
+proc onaudioRoleChanged*(self: gen_qaudiorolecontrol_types.QAudioRoleControl, slot: proc(role: cint)) =
+  type Cb = proc(role: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQAudioRoleControl_connect_audioRoleChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QAudioRoleControl, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qaudiorolecontrol_types.QAudioRoleControl, s: cstring, c: cstring): string =
 
   let v_ms = fcQAudioRoleControl_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QAudioRoleControl, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qaudiorolecontrol_types.QAudioRoleControl, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQAudioRoleControl_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QAudioRoleControl, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qaudiorolecontrol_types.QAudioRoleControl, s: cstring, c: cstring): string =
 
   let v_ms = fcQAudioRoleControl_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QAudioRoleControl, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qaudiorolecontrol_types.QAudioRoleControl, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQAudioRoleControl_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc staticMetaObject*(_: type QAudioRoleControl): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qaudiorolecontrol_types.QAudioRoleControl): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQAudioRoleControl_staticMetaObject())
-proc delete*(self: QAudioRoleControl) =
+proc delete*(self: gen_qaudiorolecontrol_types.QAudioRoleControl) =
   fcQAudioRoleControl_delete(self.h)

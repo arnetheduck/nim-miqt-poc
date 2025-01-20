@@ -34,44 +34,40 @@ const cflags = gorge("pkg-config -cflags Qt6WebEngineWidgets")
 {.compile("gen_qwebengineurlrequestinfo.cpp", cflags).}
 
 
-type QWebEngineUrlRequestInfoResourceType* = cint
-const
-  QWebEngineUrlRequestInfoResourceTypeMainFrame* = 0
-  QWebEngineUrlRequestInfoResourceTypeSubFrame* = 1
-  QWebEngineUrlRequestInfoResourceTypeStylesheet* = 2
-  QWebEngineUrlRequestInfoResourceTypeScript* = 3
-  QWebEngineUrlRequestInfoResourceTypeImage* = 4
-  QWebEngineUrlRequestInfoResourceTypeFontResource* = 5
-  QWebEngineUrlRequestInfoResourceTypeSubResource* = 6
-  QWebEngineUrlRequestInfoResourceTypeObject* = 7
-  QWebEngineUrlRequestInfoResourceTypeMedia* = 8
-  QWebEngineUrlRequestInfoResourceTypeWorker* = 9
-  QWebEngineUrlRequestInfoResourceTypeSharedWorker* = 10
-  QWebEngineUrlRequestInfoResourceTypePrefetch* = 11
-  QWebEngineUrlRequestInfoResourceTypeFavicon* = 12
-  QWebEngineUrlRequestInfoResourceTypeXhr* = 13
-  QWebEngineUrlRequestInfoResourceTypePing* = 14
-  QWebEngineUrlRequestInfoResourceTypeServiceWorker* = 15
-  QWebEngineUrlRequestInfoResourceTypeCspReport* = 16
-  QWebEngineUrlRequestInfoResourceTypePluginResource* = 17
-  QWebEngineUrlRequestInfoResourceTypeNavigationPreloadMainFrame* = 19
-  QWebEngineUrlRequestInfoResourceTypeNavigationPreloadSubFrame* = 20
-  QWebEngineUrlRequestInfoResourceTypeLast* = 20
-  QWebEngineUrlRequestInfoResourceTypeWebSocket* = 254
-  QWebEngineUrlRequestInfoResourceTypeUnknown* = 255
+type QWebEngineUrlRequestInfoResourceTypeEnum* = distinct cint
+template ResourceTypeMainFrame*(_: type QWebEngineUrlRequestInfoResourceTypeEnum): untyped = 0
+template ResourceTypeSubFrame*(_: type QWebEngineUrlRequestInfoResourceTypeEnum): untyped = 1
+template ResourceTypeStylesheet*(_: type QWebEngineUrlRequestInfoResourceTypeEnum): untyped = 2
+template ResourceTypeScript*(_: type QWebEngineUrlRequestInfoResourceTypeEnum): untyped = 3
+template ResourceTypeImage*(_: type QWebEngineUrlRequestInfoResourceTypeEnum): untyped = 4
+template ResourceTypeFontResource*(_: type QWebEngineUrlRequestInfoResourceTypeEnum): untyped = 5
+template ResourceTypeSubResource*(_: type QWebEngineUrlRequestInfoResourceTypeEnum): untyped = 6
+template ResourceTypeObject*(_: type QWebEngineUrlRequestInfoResourceTypeEnum): untyped = 7
+template ResourceTypeMedia*(_: type QWebEngineUrlRequestInfoResourceTypeEnum): untyped = 8
+template ResourceTypeWorker*(_: type QWebEngineUrlRequestInfoResourceTypeEnum): untyped = 9
+template ResourceTypeSharedWorker*(_: type QWebEngineUrlRequestInfoResourceTypeEnum): untyped = 10
+template ResourceTypePrefetch*(_: type QWebEngineUrlRequestInfoResourceTypeEnum): untyped = 11
+template ResourceTypeFavicon*(_: type QWebEngineUrlRequestInfoResourceTypeEnum): untyped = 12
+template ResourceTypeXhr*(_: type QWebEngineUrlRequestInfoResourceTypeEnum): untyped = 13
+template ResourceTypePing*(_: type QWebEngineUrlRequestInfoResourceTypeEnum): untyped = 14
+template ResourceTypeServiceWorker*(_: type QWebEngineUrlRequestInfoResourceTypeEnum): untyped = 15
+template ResourceTypeCspReport*(_: type QWebEngineUrlRequestInfoResourceTypeEnum): untyped = 16
+template ResourceTypePluginResource*(_: type QWebEngineUrlRequestInfoResourceTypeEnum): untyped = 17
+template ResourceTypeNavigationPreloadMainFrame*(_: type QWebEngineUrlRequestInfoResourceTypeEnum): untyped = 19
+template ResourceTypeNavigationPreloadSubFrame*(_: type QWebEngineUrlRequestInfoResourceTypeEnum): untyped = 20
+template ResourceTypeLast*(_: type QWebEngineUrlRequestInfoResourceTypeEnum): untyped = 20
+template ResourceTypeWebSocket*(_: type QWebEngineUrlRequestInfoResourceTypeEnum): untyped = 254
+template ResourceTypeUnknown*(_: type QWebEngineUrlRequestInfoResourceTypeEnum): untyped = 255
 
 
-
-type QWebEngineUrlRequestInfoNavigationType* = cint
-const
-  QWebEngineUrlRequestInfoNavigationTypeLink* = 0
-  QWebEngineUrlRequestInfoNavigationTypeTyped* = 1
-  QWebEngineUrlRequestInfoNavigationTypeFormSubmitted* = 2
-  QWebEngineUrlRequestInfoNavigationTypeBackForward* = 3
-  QWebEngineUrlRequestInfoNavigationTypeReload* = 4
-  QWebEngineUrlRequestInfoNavigationTypeOther* = 5
-  QWebEngineUrlRequestInfoNavigationTypeRedirect* = 6
-
+type QWebEngineUrlRequestInfoNavigationTypeEnum* = distinct cint
+template NavigationTypeLink*(_: type QWebEngineUrlRequestInfoNavigationTypeEnum): untyped = 0
+template NavigationTypeTyped*(_: type QWebEngineUrlRequestInfoNavigationTypeEnum): untyped = 1
+template NavigationTypeFormSubmitted*(_: type QWebEngineUrlRequestInfoNavigationTypeEnum): untyped = 2
+template NavigationTypeBackForward*(_: type QWebEngineUrlRequestInfoNavigationTypeEnum): untyped = 3
+template NavigationTypeReload*(_: type QWebEngineUrlRequestInfoNavigationTypeEnum): untyped = 4
+template NavigationTypeOther*(_: type QWebEngineUrlRequestInfoNavigationTypeEnum): untyped = 5
+template NavigationTypeRedirect*(_: type QWebEngineUrlRequestInfoNavigationTypeEnum): untyped = 6
 
 
 import gen_qwebengineurlrequestinfo_types
@@ -96,48 +92,48 @@ proc fcQWebEngineUrlRequestInfo_redirect(self: pointer, url: pointer): void {.im
 proc fcQWebEngineUrlRequestInfo_setHttpHeader(self: pointer, name: struct_miqt_string, value: struct_miqt_string): void {.importc: "QWebEngineUrlRequestInfo_setHttpHeader".}
 
 
-func init*(T: type QWebEngineUrlRequestInfo, h: ptr cQWebEngineUrlRequestInfo): QWebEngineUrlRequestInfo =
+func init*(T: type gen_qwebengineurlrequestinfo_types.QWebEngineUrlRequestInfo, h: ptr cQWebEngineUrlRequestInfo): gen_qwebengineurlrequestinfo_types.QWebEngineUrlRequestInfo =
   T(h: h)
-proc resourceType*(self: QWebEngineUrlRequestInfo, ): QWebEngineUrlRequestInfoResourceType =
+proc resourceType*(self: gen_qwebengineurlrequestinfo_types.QWebEngineUrlRequestInfo, ): cint =
 
-  QWebEngineUrlRequestInfoResourceType(fcQWebEngineUrlRequestInfo_resourceType(self.h))
+  cint(fcQWebEngineUrlRequestInfo_resourceType(self.h))
 
-proc navigationType*(self: QWebEngineUrlRequestInfo, ): QWebEngineUrlRequestInfoNavigationType =
+proc navigationType*(self: gen_qwebengineurlrequestinfo_types.QWebEngineUrlRequestInfo, ): cint =
 
-  QWebEngineUrlRequestInfoNavigationType(fcQWebEngineUrlRequestInfo_navigationType(self.h))
+  cint(fcQWebEngineUrlRequestInfo_navigationType(self.h))
 
-proc requestUrl*(self: QWebEngineUrlRequestInfo, ): gen_qurl.QUrl =
+proc requestUrl*(self: gen_qwebengineurlrequestinfo_types.QWebEngineUrlRequestInfo, ): gen_qurl.QUrl =
 
   gen_qurl.QUrl(h: fcQWebEngineUrlRequestInfo_requestUrl(self.h))
 
-proc firstPartyUrl*(self: QWebEngineUrlRequestInfo, ): gen_qurl.QUrl =
+proc firstPartyUrl*(self: gen_qwebengineurlrequestinfo_types.QWebEngineUrlRequestInfo, ): gen_qurl.QUrl =
 
   gen_qurl.QUrl(h: fcQWebEngineUrlRequestInfo_firstPartyUrl(self.h))
 
-proc initiator*(self: QWebEngineUrlRequestInfo, ): gen_qurl.QUrl =
+proc initiator*(self: gen_qwebengineurlrequestinfo_types.QWebEngineUrlRequestInfo, ): gen_qurl.QUrl =
 
   gen_qurl.QUrl(h: fcQWebEngineUrlRequestInfo_initiator(self.h))
 
-proc requestMethod*(self: QWebEngineUrlRequestInfo, ): seq[byte] =
+proc requestMethod*(self: gen_qwebengineurlrequestinfo_types.QWebEngineUrlRequestInfo, ): seq[byte] =
 
   var v_bytearray = fcQWebEngineUrlRequestInfo_requestMethod(self.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc changed*(self: QWebEngineUrlRequestInfo, ): bool =
+proc changed*(self: gen_qwebengineurlrequestinfo_types.QWebEngineUrlRequestInfo, ): bool =
 
   fcQWebEngineUrlRequestInfo_changed(self.h)
 
-proc blockX*(self: QWebEngineUrlRequestInfo, shouldBlock: bool): void =
+proc blockX*(self: gen_qwebengineurlrequestinfo_types.QWebEngineUrlRequestInfo, shouldBlock: bool): void =
 
   fcQWebEngineUrlRequestInfo_blockX(self.h, shouldBlock)
 
-proc redirect*(self: QWebEngineUrlRequestInfo, url: gen_qurl.QUrl): void =
+proc redirect*(self: gen_qwebengineurlrequestinfo_types.QWebEngineUrlRequestInfo, url: gen_qurl.QUrl): void =
 
   fcQWebEngineUrlRequestInfo_redirect(self.h, url.h)
 
-proc setHttpHeader*(self: QWebEngineUrlRequestInfo, name: seq[byte], value: seq[byte]): void =
+proc setHttpHeader*(self: gen_qwebengineurlrequestinfo_types.QWebEngineUrlRequestInfo, name: seq[byte], value: seq[byte]): void =
 
   fcQWebEngineUrlRequestInfo_setHttpHeader(self.h, struct_miqt_string(data: cast[cstring](if len(name) == 0: nil else: unsafeAddr name[0]), len: csize_t(len(name))), struct_miqt_string(data: cast[cstring](if len(value) == 0: nil else: unsafeAddr value[0]), len: csize_t(len(value))))
 

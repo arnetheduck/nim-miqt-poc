@@ -49,9 +49,9 @@ proc fcQGenericPluginFactory_create(param1: struct_miqt_string, param2: struct_m
 proc fcQGenericPluginFactory_delete(self: pointer) {.importc: "QGenericPluginFactory_delete".}
 
 
-func init*(T: type QGenericPluginFactory, h: ptr cQGenericPluginFactory): QGenericPluginFactory =
+func init*(T: type gen_qgenericpluginfactory_types.QGenericPluginFactory, h: ptr cQGenericPluginFactory): gen_qgenericpluginfactory_types.QGenericPluginFactory =
   T(h: h)
-proc keys*(_: type QGenericPluginFactory, ): seq[string] =
+proc keys*(_: type gen_qgenericpluginfactory_types.QGenericPluginFactory, ): seq[string] =
 
   var v_ma = fcQGenericPluginFactory_keys()
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -63,9 +63,9 @@ proc keys*(_: type QGenericPluginFactory, ): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc create*(_: type QGenericPluginFactory, param1: string, param2: string): gen_qobject.QObject =
+proc create*(_: type gen_qgenericpluginfactory_types.QGenericPluginFactory, param1: string, param2: string): gen_qobject.QObject =
 
   gen_qobject.QObject(h: fcQGenericPluginFactory_create(struct_miqt_string(data: param1, len: csize_t(len(param1))), struct_miqt_string(data: param2, len: csize_t(len(param2)))))
 
-proc delete*(self: QGenericPluginFactory) =
+proc delete*(self: gen_qgenericpluginfactory_types.QGenericPluginFactory) =
   fcQGenericPluginFactory_delete(self.h)

@@ -34,59 +34,49 @@ const cflags = gorge("pkg-config -cflags Qt5Quick")
 {.compile("gen_qsgrendererinterface.cpp", cflags).}
 
 
-type QSGRendererInterfaceGraphicsApi* = cint
-const
-  QSGRendererInterfaceUnknown* = 0
-  QSGRendererInterfaceSoftware* = 1
-  QSGRendererInterfaceOpenGL* = 2
-  QSGRendererInterfaceDirect3D12* = 3
-  QSGRendererInterfaceOpenVG* = 4
-  QSGRendererInterfaceOpenGLRhi* = 5
-  QSGRendererInterfaceDirect3D11Rhi* = 6
-  QSGRendererInterfaceVulkanRhi* = 7
-  QSGRendererInterfaceMetalRhi* = 8
-  QSGRendererInterfaceNullRhi* = 9
+type QSGRendererInterfaceGraphicsApiEnum* = distinct cint
+template Unknown*(_: type QSGRendererInterfaceGraphicsApiEnum): untyped = 0
+template Software*(_: type QSGRendererInterfaceGraphicsApiEnum): untyped = 1
+template OpenGL*(_: type QSGRendererInterfaceGraphicsApiEnum): untyped = 2
+template Direct3D12*(_: type QSGRendererInterfaceGraphicsApiEnum): untyped = 3
+template OpenVG*(_: type QSGRendererInterfaceGraphicsApiEnum): untyped = 4
+template OpenGLRhi*(_: type QSGRendererInterfaceGraphicsApiEnum): untyped = 5
+template Direct3D11Rhi*(_: type QSGRendererInterfaceGraphicsApiEnum): untyped = 6
+template VulkanRhi*(_: type QSGRendererInterfaceGraphicsApiEnum): untyped = 7
+template MetalRhi*(_: type QSGRendererInterfaceGraphicsApiEnum): untyped = 8
+template NullRhi*(_: type QSGRendererInterfaceGraphicsApiEnum): untyped = 9
 
 
-
-type QSGRendererInterfaceResource* = cint
-const
-  QSGRendererInterfaceDeviceResource* = 0
-  QSGRendererInterfaceCommandQueueResource* = 1
-  QSGRendererInterfaceCommandListResource* = 2
-  QSGRendererInterfacePainterResource* = 3
-  QSGRendererInterfaceRhiResource* = 4
-  QSGRendererInterfacePhysicalDeviceResource* = 5
-  QSGRendererInterfaceOpenGLContextResource* = 6
-  QSGRendererInterfaceDeviceContextResource* = 7
-  QSGRendererInterfaceCommandEncoderResource* = 8
-  QSGRendererInterfaceVulkanInstanceResource* = 9
-  QSGRendererInterfaceRenderPassResource* = 10
+type QSGRendererInterfaceResourceEnum* = distinct cint
+template DeviceResource*(_: type QSGRendererInterfaceResourceEnum): untyped = 0
+template CommandQueueResource*(_: type QSGRendererInterfaceResourceEnum): untyped = 1
+template CommandListResource*(_: type QSGRendererInterfaceResourceEnum): untyped = 2
+template PainterResource*(_: type QSGRendererInterfaceResourceEnum): untyped = 3
+template RhiResource*(_: type QSGRendererInterfaceResourceEnum): untyped = 4
+template PhysicalDeviceResource*(_: type QSGRendererInterfaceResourceEnum): untyped = 5
+template OpenGLContextResource*(_: type QSGRendererInterfaceResourceEnum): untyped = 6
+template DeviceContextResource*(_: type QSGRendererInterfaceResourceEnum): untyped = 7
+template CommandEncoderResource*(_: type QSGRendererInterfaceResourceEnum): untyped = 8
+template VulkanInstanceResource*(_: type QSGRendererInterfaceResourceEnum): untyped = 9
+template RenderPassResource*(_: type QSGRendererInterfaceResourceEnum): untyped = 10
 
 
-
-type QSGRendererInterfaceShaderType* = cint
-const
-  QSGRendererInterfaceUnknownShadingLanguage* = 0
-  QSGRendererInterfaceGLSL* = 1
-  QSGRendererInterfaceHLSL* = 2
-  QSGRendererInterfaceRhiShader* = 3
+type QSGRendererInterfaceShaderTypeEnum* = distinct cint
+template UnknownShadingLanguage*(_: type QSGRendererInterfaceShaderTypeEnum): untyped = 0
+template GLSL*(_: type QSGRendererInterfaceShaderTypeEnum): untyped = 1
+template HLSL*(_: type QSGRendererInterfaceShaderTypeEnum): untyped = 2
+template RhiShader*(_: type QSGRendererInterfaceShaderTypeEnum): untyped = 3
 
 
-
-type QSGRendererInterfaceShaderCompilationType* = cint
-const
-  QSGRendererInterfaceRuntimeCompilation* = 1
-  QSGRendererInterfaceOfflineCompilation* = 2
+type QSGRendererInterfaceShaderCompilationTypeEnum* = distinct cint
+template RuntimeCompilation*(_: type QSGRendererInterfaceShaderCompilationTypeEnum): untyped = 1
+template OfflineCompilation*(_: type QSGRendererInterfaceShaderCompilationTypeEnum): untyped = 2
 
 
-
-type QSGRendererInterfaceShaderSourceType* = cint
-const
-  QSGRendererInterfaceShaderSourceString* = 1
-  QSGRendererInterfaceShaderSourceFile* = 2
-  QSGRendererInterfaceShaderByteCode* = 4
-
+type QSGRendererInterfaceShaderSourceTypeEnum* = distinct cint
+template ShaderSourceString*(_: type QSGRendererInterfaceShaderSourceTypeEnum): untyped = 1
+template ShaderSourceFile*(_: type QSGRendererInterfaceShaderSourceTypeEnum): untyped = 2
+template ShaderByteCode*(_: type QSGRendererInterfaceShaderSourceTypeEnum): untyped = 4
 
 
 import gen_qsgrendererinterface_types
@@ -110,39 +100,39 @@ proc fcQSGRendererInterface_operatorAssign(self: pointer, param1: pointer): void
 proc fcQSGRendererInterface_delete(self: pointer) {.importc: "QSGRendererInterface_delete".}
 
 
-func init*(T: type QSGRendererInterface, h: ptr cQSGRendererInterface): QSGRendererInterface =
+func init*(T: type gen_qsgrendererinterface_types.QSGRendererInterface, h: ptr cQSGRendererInterface): gen_qsgrendererinterface_types.QSGRendererInterface =
   T(h: h)
-proc graphicsApi*(self: QSGRendererInterface, ): QSGRendererInterfaceGraphicsApi =
+proc graphicsApi*(self: gen_qsgrendererinterface_types.QSGRendererInterface, ): cint =
 
-  QSGRendererInterfaceGraphicsApi(fcQSGRendererInterface_graphicsApi(self.h))
+  cint(fcQSGRendererInterface_graphicsApi(self.h))
 
-proc getResource*(self: QSGRendererInterface, window: gen_qquickwindow.QQuickWindow, resource: QSGRendererInterfaceResource): pointer =
+proc getResource*(self: gen_qsgrendererinterface_types.QSGRendererInterface, window: gen_qquickwindow.QQuickWindow, resource: cint): pointer =
 
   fcQSGRendererInterface_getResource(self.h, window.h, cint(resource))
 
-proc getResource2*(self: QSGRendererInterface, window: gen_qquickwindow.QQuickWindow, resource: cstring): pointer =
+proc getResource2*(self: gen_qsgrendererinterface_types.QSGRendererInterface, window: gen_qquickwindow.QQuickWindow, resource: cstring): pointer =
 
   fcQSGRendererInterface_getResource2(self.h, window.h, resource)
 
-proc shaderType*(self: QSGRendererInterface, ): QSGRendererInterfaceShaderType =
+proc shaderType*(self: gen_qsgrendererinterface_types.QSGRendererInterface, ): cint =
 
-  QSGRendererInterfaceShaderType(fcQSGRendererInterface_shaderType(self.h))
+  cint(fcQSGRendererInterface_shaderType(self.h))
 
-proc shaderCompilationType*(self: QSGRendererInterface, ): QSGRendererInterfaceShaderCompilationType =
+proc shaderCompilationType*(self: gen_qsgrendererinterface_types.QSGRendererInterface, ): cint =
 
-  QSGRendererInterfaceShaderCompilationType(fcQSGRendererInterface_shaderCompilationType(self.h))
+  cint(fcQSGRendererInterface_shaderCompilationType(self.h))
 
-proc shaderSourceType*(self: QSGRendererInterface, ): QSGRendererInterfaceShaderSourceType =
+proc shaderSourceType*(self: gen_qsgrendererinterface_types.QSGRendererInterface, ): cint =
 
-  QSGRendererInterfaceShaderSourceType(fcQSGRendererInterface_shaderSourceType(self.h))
+  cint(fcQSGRendererInterface_shaderSourceType(self.h))
 
-proc isApiRhiBased*(_: type QSGRendererInterface, api: QSGRendererInterfaceGraphicsApi): bool =
+proc isApiRhiBased*(_: type gen_qsgrendererinterface_types.QSGRendererInterface, api: cint): bool =
 
   fcQSGRendererInterface_isApiRhiBased(cint(api))
 
-proc operatorAssign*(self: QSGRendererInterface, param1: QSGRendererInterface): void =
+proc operatorAssign*(self: gen_qsgrendererinterface_types.QSGRendererInterface, param1: gen_qsgrendererinterface_types.QSGRendererInterface): void =
 
   fcQSGRendererInterface_operatorAssign(self.h, param1.h)
 
-proc delete*(self: QSGRendererInterface) =
+proc delete*(self: gen_qsgrendererinterface_types.QSGRendererInterface) =
   fcQSGRendererInterface_delete(self.h)

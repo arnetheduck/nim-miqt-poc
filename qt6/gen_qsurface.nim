@@ -34,23 +34,19 @@ const cflags = gorge("pkg-config -cflags Qt6Widgets")
 {.compile("gen_qsurface.cpp", cflags).}
 
 
-type QSurfaceSurfaceClass* = cint
-const
-  QSurfaceWindow* = 0
-  QSurfaceOffscreen* = 1
+type QSurfaceSurfaceClassEnum* = distinct cint
+template Window*(_: type QSurfaceSurfaceClassEnum): untyped = 0
+template Offscreen*(_: type QSurfaceSurfaceClassEnum): untyped = 1
 
 
-
-type QSurfaceSurfaceType* = cint
-const
-  QSurfaceRasterSurface* = 0
-  QSurfaceOpenGLSurface* = 1
-  QSurfaceRasterGLSurface* = 2
-  QSurfaceOpenVGSurface* = 3
-  QSurfaceVulkanSurface* = 4
-  QSurfaceMetalSurface* = 5
-  QSurfaceDirect3DSurface* = 6
-
+type QSurfaceSurfaceTypeEnum* = distinct cint
+template RasterSurface*(_: type QSurfaceSurfaceTypeEnum): untyped = 0
+template OpenGLSurface*(_: type QSurfaceSurfaceTypeEnum): untyped = 1
+template RasterGLSurface*(_: type QSurfaceSurfaceTypeEnum): untyped = 2
+template OpenVGSurface*(_: type QSurfaceSurfaceTypeEnum): untyped = 3
+template VulkanSurface*(_: type QSurfaceSurfaceTypeEnum): untyped = 4
+template MetalSurface*(_: type QSurfaceSurfaceTypeEnum): untyped = 5
+template Direct3DSurface*(_: type QSurfaceSurfaceTypeEnum): untyped = 6
 
 
 import gen_qsurface_types
@@ -76,29 +72,29 @@ proc fcQSurface_staticMetaObject(): pointer {.importc: "QSurface_staticMetaObjec
 proc fcQSurface_delete(self: pointer) {.importc: "QSurface_delete".}
 
 
-func init*(T: type QSurface, h: ptr cQSurface): QSurface =
+func init*(T: type gen_qsurface_types.QSurface, h: ptr cQSurface): gen_qsurface_types.QSurface =
   T(h: h)
-proc surfaceClass*(self: QSurface, ): QSurfaceSurfaceClass =
+proc surfaceClass*(self: gen_qsurface_types.QSurface, ): cint =
 
-  QSurfaceSurfaceClass(fcQSurface_surfaceClass(self.h))
+  cint(fcQSurface_surfaceClass(self.h))
 
-proc format*(self: QSurface, ): gen_qsurfaceformat.QSurfaceFormat =
+proc format*(self: gen_qsurface_types.QSurface, ): gen_qsurfaceformat.QSurfaceFormat =
 
   gen_qsurfaceformat.QSurfaceFormat(h: fcQSurface_format(self.h))
 
-proc surfaceType*(self: QSurface, ): QSurfaceSurfaceType =
+proc surfaceType*(self: gen_qsurface_types.QSurface, ): cint =
 
-  QSurfaceSurfaceType(fcQSurface_surfaceType(self.h))
+  cint(fcQSurface_surfaceType(self.h))
 
-proc supportsOpenGL*(self: QSurface, ): bool =
+proc supportsOpenGL*(self: gen_qsurface_types.QSurface, ): bool =
 
   fcQSurface_supportsOpenGL(self.h)
 
-proc size*(self: QSurface, ): gen_qsize.QSize =
+proc size*(self: gen_qsurface_types.QSurface, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQSurface_size(self.h))
 
-proc staticMetaObject*(_: type QSurface): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qsurface_types.QSurface): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQSurface_staticMetaObject())
-proc delete*(self: QSurface) =
+proc delete*(self: gen_qsurface_types.QSurface) =
   fcQSurface_delete(self.h)

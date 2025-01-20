@@ -34,12 +34,10 @@ const cflags = gorge("pkg-config -cflags Qt6Widgets")
 {.compile("gen_qresource.cpp", cflags).}
 
 
-type QResourceCompression* = cint
-const
-  QResourceNoCompression* = 0
-  QResourceZlibCompression* = 1
-  QResourceZstdCompression* = 2
-
+type QResourceCompressionEnum* = distinct cint
+template NoCompression*(_: type QResourceCompressionEnum): untyped = 0
+template ZlibCompression*(_: type QResourceCompressionEnum): untyped = 1
+template ZstdCompression*(_: type QResourceCompressionEnum): untyped = 2
 
 
 import gen_qresource_types
@@ -80,105 +78,105 @@ proc fcQResource_unregisterResource22(rccData: ptr uint8, resourceRoot: struct_m
 proc fcQResource_delete(self: pointer) {.importc: "QResource_delete".}
 
 
-func init*(T: type QResource, h: ptr cQResource): QResource =
+func init*(T: type gen_qresource_types.QResource, h: ptr cQResource): gen_qresource_types.QResource =
   T(h: h)
-proc create*(T: type QResource, ): QResource =
+proc create*(T: type gen_qresource_types.QResource, ): gen_qresource_types.QResource =
 
-  QResource.init(fcQResource_new())
-proc create*(T: type QResource, file: string): QResource =
+  gen_qresource_types.QResource.init(fcQResource_new())
+proc create*(T: type gen_qresource_types.QResource, file: string): gen_qresource_types.QResource =
 
-  QResource.init(fcQResource_new2(struct_miqt_string(data: file, len: csize_t(len(file)))))
-proc create*(T: type QResource, file: string, locale: gen_qlocale.QLocale): QResource =
+  gen_qresource_types.QResource.init(fcQResource_new2(struct_miqt_string(data: file, len: csize_t(len(file)))))
+proc create*(T: type gen_qresource_types.QResource, file: string, locale: gen_qlocale.QLocale): gen_qresource_types.QResource =
 
-  QResource.init(fcQResource_new3(struct_miqt_string(data: file, len: csize_t(len(file))), locale.h))
-proc setFileName*(self: QResource, file: string): void =
+  gen_qresource_types.QResource.init(fcQResource_new3(struct_miqt_string(data: file, len: csize_t(len(file))), locale.h))
+proc setFileName*(self: gen_qresource_types.QResource, file: string): void =
 
   fcQResource_setFileName(self.h, struct_miqt_string(data: file, len: csize_t(len(file))))
 
-proc fileName*(self: QResource, ): string =
+proc fileName*(self: gen_qresource_types.QResource, ): string =
 
   let v_ms = fcQResource_fileName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc absoluteFilePath*(self: QResource, ): string =
+proc absoluteFilePath*(self: gen_qresource_types.QResource, ): string =
 
   let v_ms = fcQResource_absoluteFilePath(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setLocale*(self: QResource, locale: gen_qlocale.QLocale): void =
+proc setLocale*(self: gen_qresource_types.QResource, locale: gen_qlocale.QLocale): void =
 
   fcQResource_setLocale(self.h, locale.h)
 
-proc locale*(self: QResource, ): gen_qlocale.QLocale =
+proc locale*(self: gen_qresource_types.QResource, ): gen_qlocale.QLocale =
 
   gen_qlocale.QLocale(h: fcQResource_locale(self.h))
 
-proc isValid*(self: QResource, ): bool =
+proc isValid*(self: gen_qresource_types.QResource, ): bool =
 
   fcQResource_isValid(self.h)
 
-proc compressionAlgorithm*(self: QResource, ): QResourceCompression =
+proc compressionAlgorithm*(self: gen_qresource_types.QResource, ): cint =
 
-  QResourceCompression(fcQResource_compressionAlgorithm(self.h))
+  cint(fcQResource_compressionAlgorithm(self.h))
 
-proc size*(self: QResource, ): clonglong =
+proc size*(self: gen_qresource_types.QResource, ): clonglong =
 
   fcQResource_size(self.h)
 
-proc data*(self: QResource, ): ptr uint8 =
+proc data*(self: gen_qresource_types.QResource, ): ptr uint8 =
 
   fcQResource_data(self.h)
 
-proc uncompressedSize*(self: QResource, ): clonglong =
+proc uncompressedSize*(self: gen_qresource_types.QResource, ): clonglong =
 
   fcQResource_uncompressedSize(self.h)
 
-proc uncompressedData*(self: QResource, ): seq[byte] =
+proc uncompressedData*(self: gen_qresource_types.QResource, ): seq[byte] =
 
   var v_bytearray = fcQResource_uncompressedData(self.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc lastModified*(self: QResource, ): gen_qdatetime.QDateTime =
+proc lastModified*(self: gen_qresource_types.QResource, ): gen_qdatetime.QDateTime =
 
   gen_qdatetime.QDateTime(h: fcQResource_lastModified(self.h))
 
-proc registerResource*(_: type QResource, rccFilename: string): bool =
+proc registerResource*(_: type gen_qresource_types.QResource, rccFilename: string): bool =
 
   fcQResource_registerResource(struct_miqt_string(data: rccFilename, len: csize_t(len(rccFilename))))
 
-proc unregisterResource*(_: type QResource, rccFilename: string): bool =
+proc unregisterResource*(_: type gen_qresource_types.QResource, rccFilename: string): bool =
 
   fcQResource_unregisterResource(struct_miqt_string(data: rccFilename, len: csize_t(len(rccFilename))))
 
-proc registerResourceWithRccData*(_: type QResource, rccData: ptr uint8): bool =
+proc registerResourceWithRccData*(_: type gen_qresource_types.QResource, rccData: ptr uint8): bool =
 
   fcQResource_registerResourceWithRccData(rccData)
 
-proc unregisterResourceWithRccData*(_: type QResource, rccData: ptr uint8): bool =
+proc unregisterResourceWithRccData*(_: type gen_qresource_types.QResource, rccData: ptr uint8): bool =
 
   fcQResource_unregisterResourceWithRccData(rccData)
 
-proc registerResource2*(_: type QResource, rccFilename: string, resourceRoot: string): bool =
+proc registerResource2*(_: type gen_qresource_types.QResource, rccFilename: string, resourceRoot: string): bool =
 
   fcQResource_registerResource2(struct_miqt_string(data: rccFilename, len: csize_t(len(rccFilename))), struct_miqt_string(data: resourceRoot, len: csize_t(len(resourceRoot))))
 
-proc unregisterResource2*(_: type QResource, rccFilename: string, resourceRoot: string): bool =
+proc unregisterResource2*(_: type gen_qresource_types.QResource, rccFilename: string, resourceRoot: string): bool =
 
   fcQResource_unregisterResource2(struct_miqt_string(data: rccFilename, len: csize_t(len(rccFilename))), struct_miqt_string(data: resourceRoot, len: csize_t(len(resourceRoot))))
 
-proc registerResource22*(_: type QResource, rccData: ptr uint8, resourceRoot: string): bool =
+proc registerResource22*(_: type gen_qresource_types.QResource, rccData: ptr uint8, resourceRoot: string): bool =
 
   fcQResource_registerResource22(rccData, struct_miqt_string(data: resourceRoot, len: csize_t(len(resourceRoot))))
 
-proc unregisterResource22*(_: type QResource, rccData: ptr uint8, resourceRoot: string): bool =
+proc unregisterResource22*(_: type gen_qresource_types.QResource, rccData: ptr uint8, resourceRoot: string): bool =
 
   fcQResource_unregisterResource22(rccData, struct_miqt_string(data: resourceRoot, len: csize_t(len(resourceRoot))))
 
-proc delete*(self: QResource) =
+proc delete*(self: gen_qresource_types.QResource) =
   fcQResource_delete(self.h)

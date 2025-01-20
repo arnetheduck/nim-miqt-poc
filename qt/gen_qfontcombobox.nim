@@ -34,14 +34,12 @@ const cflags = gorge("pkg-config -cflags Qt5Widgets")
 {.compile("gen_qfontcombobox.cpp", cflags).}
 
 
-type QFontComboBoxFontFilter* = cint
-const
-  QFontComboBoxAllFonts* = 0
-  QFontComboBoxScalableFonts* = 1
-  QFontComboBoxNonScalableFonts* = 2
-  QFontComboBoxMonospacedFonts* = 4
-  QFontComboBoxProportionalFonts* = 8
-
+type QFontComboBoxFontFilterEnum* = distinct cint
+template AllFonts*(_: type QFontComboBoxFontFilterEnum): untyped = 0
+template ScalableFonts*(_: type QFontComboBoxFontFilterEnum): untyped = 1
+template NonScalableFonts*(_: type QFontComboBoxFontFilterEnum): untyped = 2
+template MonospacedFonts*(_: type QFontComboBoxFontFilterEnum): untyped = 4
+template ProportionalFonts*(_: type QFontComboBoxFontFilterEnum): untyped = 8
 
 
 import gen_qfontcombobox_types
@@ -52,9 +50,7 @@ import
   gen_qcoreevent,
   gen_qevent,
   gen_qfont,
-  gen_qfontdatabase,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -69,9 +65,7 @@ export
   gen_qcoreevent,
   gen_qevent,
   gen_qfont,
-  gen_qfontdatabase,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -212,69 +206,69 @@ proc fcQFontComboBox_staticMetaObject(): pointer {.importc: "QFontComboBox_stati
 proc fcQFontComboBox_delete(self: pointer) {.importc: "QFontComboBox_delete".}
 
 
-func init*(T: type QFontComboBox, h: ptr cQFontComboBox): QFontComboBox =
+func init*(T: type gen_qfontcombobox_types.QFontComboBox, h: ptr cQFontComboBox): gen_qfontcombobox_types.QFontComboBox =
   T(h: h)
-proc create*(T: type QFontComboBox, parent: gen_qwidget.QWidget): QFontComboBox =
+proc create*(T: type gen_qfontcombobox_types.QFontComboBox, parent: gen_qwidget.QWidget): gen_qfontcombobox_types.QFontComboBox =
 
-  QFontComboBox.init(fcQFontComboBox_new(parent.h))
-proc create*(T: type QFontComboBox, ): QFontComboBox =
+  gen_qfontcombobox_types.QFontComboBox.init(fcQFontComboBox_new(parent.h))
+proc create*(T: type gen_qfontcombobox_types.QFontComboBox, ): gen_qfontcombobox_types.QFontComboBox =
 
-  QFontComboBox.init(fcQFontComboBox_new2())
-proc metaObject*(self: QFontComboBox, ): gen_qobjectdefs.QMetaObject =
+  gen_qfontcombobox_types.QFontComboBox.init(fcQFontComboBox_new2())
+proc metaObject*(self: gen_qfontcombobox_types.QFontComboBox, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQFontComboBox_metaObject(self.h))
 
-proc metacast*(self: QFontComboBox, param1: cstring): pointer =
+proc metacast*(self: gen_qfontcombobox_types.QFontComboBox, param1: cstring): pointer =
 
   fcQFontComboBox_metacast(self.h, param1)
 
-proc metacall*(self: QFontComboBox, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qfontcombobox_types.QFontComboBox, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQFontComboBox_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QFontComboBox, s: cstring): string =
+proc tr*(_: type gen_qfontcombobox_types.QFontComboBox, s: cstring): string =
 
   let v_ms = fcQFontComboBox_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QFontComboBox, s: cstring): string =
+proc trUtf8*(_: type gen_qfontcombobox_types.QFontComboBox, s: cstring): string =
 
   let v_ms = fcQFontComboBox_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setWritingSystem*(self: QFontComboBox, writingSystem: gen_qfontdatabase.QFontDatabaseWritingSystem): void =
+proc setWritingSystem*(self: gen_qfontcombobox_types.QFontComboBox, writingSystem: cint): void =
 
   fcQFontComboBox_setWritingSystem(self.h, cint(writingSystem))
 
-proc writingSystem*(self: QFontComboBox, ): gen_qfontdatabase.QFontDatabaseWritingSystem =
+proc writingSystem*(self: gen_qfontcombobox_types.QFontComboBox, ): cint =
 
-  gen_qfontdatabase.QFontDatabaseWritingSystem(fcQFontComboBox_writingSystem(self.h))
+  cint(fcQFontComboBox_writingSystem(self.h))
 
-proc setFontFilters*(self: QFontComboBox, filters: QFontComboBoxFontFilter): void =
+proc setFontFilters*(self: gen_qfontcombobox_types.QFontComboBox, filters: cint): void =
 
   fcQFontComboBox_setFontFilters(self.h, cint(filters))
 
-proc fontFilters*(self: QFontComboBox, ): QFontComboBoxFontFilter =
+proc fontFilters*(self: gen_qfontcombobox_types.QFontComboBox, ): cint =
 
-  QFontComboBoxFontFilter(fcQFontComboBox_fontFilters(self.h))
+  cint(fcQFontComboBox_fontFilters(self.h))
 
-proc currentFont*(self: QFontComboBox, ): gen_qfont.QFont =
+proc currentFont*(self: gen_qfontcombobox_types.QFontComboBox, ): gen_qfont.QFont =
 
   gen_qfont.QFont(h: fcQFontComboBox_currentFont(self.h))
 
-proc sizeHint*(self: QFontComboBox, ): gen_qsize.QSize =
+proc sizeHint*(self: gen_qfontcombobox_types.QFontComboBox, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQFontComboBox_sizeHint(self.h))
 
-proc setCurrentFont*(self: QFontComboBox, f: gen_qfont.QFont): void =
+proc setCurrentFont*(self: gen_qfontcombobox_types.QFontComboBox, f: gen_qfont.QFont): void =
 
   fcQFontComboBox_setCurrentFont(self.h, f.h)
 
-proc currentFontChanged*(self: QFontComboBox, f: gen_qfont.QFont): void =
+proc currentFontChanged*(self: gen_qfontcombobox_types.QFontComboBox, f: gen_qfont.QFont): void =
 
   fcQFontComboBox_currentFontChanged(self.h, f.h)
 
@@ -286,989 +280,784 @@ proc miqt_exec_callback_QFontComboBox_currentFontChanged(slot: int, f: pointer) 
 
   nimfunc[](slotval1)
 
-proc oncurrentFontChanged*(self: QFontComboBox, slot: proc(f: gen_qfont.QFont)) =
+proc oncurrentFontChanged*(self: gen_qfontcombobox_types.QFontComboBox, slot: proc(f: gen_qfont.QFont)) =
   type Cb = proc(f: gen_qfont.QFont)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQFontComboBox_connect_currentFontChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QFontComboBox, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qfontcombobox_types.QFontComboBox, s: cstring, c: cstring): string =
 
   let v_ms = fcQFontComboBox_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QFontComboBox, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qfontcombobox_types.QFontComboBox, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQFontComboBox_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QFontComboBox, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qfontcombobox_types.QFontComboBox, s: cstring, c: cstring): string =
 
   let v_ms = fcQFontComboBox_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QFontComboBox, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qfontcombobox_types.QFontComboBox, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQFontComboBox_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QFontComboBox, ): gen_qobjectdefs.QMetaObject =
-
+proc QFontComboBoxmetaObject*(self: gen_qfontcombobox_types.QFontComboBox, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQFontComboBox_virtualbase_metaObject(self.h))
 
-type QFontComboBoxmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QFontComboBox, slot: proc(super: QFontComboBoxmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QFontComboBoxmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qfontcombobox_types.QFontComboBox, slot: QFontComboBoxmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontComboBoxmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QFontComboBoxmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontComboBox_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontComboBox_metaObject(self: ptr cQFontComboBox, slot: int): pointer {.exportc: "miqt_exec_callback_QFontComboBox_metaObject ".} =
-  type Cb = proc(super: QFontComboBoxmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QFontComboBox(h: self), )
+  var nimfunc = cast[ptr QFontComboBoxmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QFontComboBox, param1: cstring): pointer =
-
+proc QFontComboBoxmetacast*(self: gen_qfontcombobox_types.QFontComboBox, param1: cstring): pointer =
 
   fQFontComboBox_virtualbase_metacast(self.h, param1)
 
-type QFontComboBoxmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QFontComboBox, slot: proc(super: QFontComboBoxmetacastBase, param1: cstring): pointer) =
+type QFontComboBoxmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qfontcombobox_types.QFontComboBox, slot: QFontComboBoxmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontComboBoxmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QFontComboBoxmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontComboBox_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontComboBox_metacast(self: ptr cQFontComboBox, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QFontComboBox_metacast ".} =
-  type Cb = proc(super: QFontComboBoxmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QFontComboBox(h: self), param1)
+  var nimfunc = cast[ptr QFontComboBoxmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QFontComboBox, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QFontComboBoxmetacall*(self: gen_qfontcombobox_types.QFontComboBox, param1: cint, param2: cint, param3: pointer): cint =
 
   fQFontComboBox_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QFontComboBoxmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QFontComboBox, slot: proc(super: QFontComboBoxmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QFontComboBoxmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qfontcombobox_types.QFontComboBox, slot: QFontComboBoxmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontComboBoxmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QFontComboBoxmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontComboBox_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontComboBox_metacall(self: ptr cQFontComboBox, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QFontComboBox_metacall ".} =
-  type Cb = proc(super: QFontComboBoxmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QFontComboBox(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QFontComboBoxmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_sizeHint(self: QFontComboBox, ): gen_qsize.QSize =
-
+proc QFontComboBoxsizeHint*(self: gen_qfontcombobox_types.QFontComboBox, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQFontComboBox_virtualbase_sizeHint(self.h))
 
-type QFontComboBoxsizeHintBase* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: QFontComboBox, slot: proc(super: QFontComboBoxsizeHintBase): gen_qsize.QSize) =
+type QFontComboBoxsizeHintProc* = proc(): gen_qsize.QSize
+proc onsizeHint*(self: gen_qfontcombobox_types.QFontComboBox, slot: QFontComboBoxsizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontComboBoxsizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QFontComboBoxsizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontComboBox_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontComboBox_sizeHint(self: ptr cQFontComboBox, slot: int): pointer {.exportc: "miqt_exec_callback_QFontComboBox_sizeHint ".} =
-  type Cb = proc(super: QFontComboBoxsizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sizeHint(QFontComboBox(h: self), )
+  var nimfunc = cast[ptr QFontComboBoxsizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_event(self: QFontComboBox, e: gen_qcoreevent.QEvent): bool =
-
+proc QFontComboBoxevent*(self: gen_qfontcombobox_types.QFontComboBox, e: gen_qcoreevent.QEvent): bool =
 
   fQFontComboBox_virtualbase_event(self.h, e.h)
 
-type QFontComboBoxeventBase* = proc(e: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QFontComboBox, slot: proc(super: QFontComboBoxeventBase, e: gen_qcoreevent.QEvent): bool) =
+type QFontComboBoxeventProc* = proc(e: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qfontcombobox_types.QFontComboBox, slot: QFontComboBoxeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontComboBoxeventBase, e: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QFontComboBoxeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontComboBox_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontComboBox_event(self: ptr cQFontComboBox, slot: int, e: pointer): bool {.exportc: "miqt_exec_callback_QFontComboBox_event ".} =
-  type Cb = proc(super: QFontComboBoxeventBase, e: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QFontComboBox(h: self), e)
+  var nimfunc = cast[ptr QFontComboBoxeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: e)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_minimumSizeHint(self: QFontComboBox, ): gen_qsize.QSize =
-
+proc QFontComboBoxminimumSizeHint*(self: gen_qfontcombobox_types.QFontComboBox, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQFontComboBox_virtualbase_minimumSizeHint(self.h))
 
-type QFontComboBoxminimumSizeHintBase* = proc(): gen_qsize.QSize
-proc onminimumSizeHint*(self: QFontComboBox, slot: proc(super: QFontComboBoxminimumSizeHintBase): gen_qsize.QSize) =
+type QFontComboBoxminimumSizeHintProc* = proc(): gen_qsize.QSize
+proc onminimumSizeHint*(self: gen_qfontcombobox_types.QFontComboBox, slot: QFontComboBoxminimumSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontComboBoxminimumSizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QFontComboBoxminimumSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontComboBox_override_virtual_minimumSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontComboBox_minimumSizeHint(self: ptr cQFontComboBox, slot: int): pointer {.exportc: "miqt_exec_callback_QFontComboBox_minimumSizeHint ".} =
-  type Cb = proc(super: QFontComboBoxminimumSizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_minimumSizeHint(QFontComboBox(h: self), )
+  var nimfunc = cast[ptr QFontComboBoxminimumSizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_showPopup(self: QFontComboBox, ): void =
-
+proc QFontComboBoxshowPopup*(self: gen_qfontcombobox_types.QFontComboBox, ): void =
 
   fQFontComboBox_virtualbase_showPopup(self.h)
 
-type QFontComboBoxshowPopupBase* = proc(): void
-proc onshowPopup*(self: QFontComboBox, slot: proc(super: QFontComboBoxshowPopupBase): void) =
+type QFontComboBoxshowPopupProc* = proc(): void
+proc onshowPopup*(self: gen_qfontcombobox_types.QFontComboBox, slot: QFontComboBoxshowPopupProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontComboBoxshowPopupBase): void
-  var tmp = new Cb
+  var tmp = new QFontComboBoxshowPopupProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontComboBox_override_virtual_showPopup(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontComboBox_showPopup(self: ptr cQFontComboBox, slot: int): void {.exportc: "miqt_exec_callback_QFontComboBox_showPopup ".} =
-  type Cb = proc(super: QFontComboBoxshowPopupBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_showPopup(QFontComboBox(h: self), )
+  var nimfunc = cast[ptr QFontComboBoxshowPopupProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_hidePopup(self: QFontComboBox, ): void =
-
+  nimfunc[]()
+proc QFontComboBoxhidePopup*(self: gen_qfontcombobox_types.QFontComboBox, ): void =
 
   fQFontComboBox_virtualbase_hidePopup(self.h)
 
-type QFontComboBoxhidePopupBase* = proc(): void
-proc onhidePopup*(self: QFontComboBox, slot: proc(super: QFontComboBoxhidePopupBase): void) =
+type QFontComboBoxhidePopupProc* = proc(): void
+proc onhidePopup*(self: gen_qfontcombobox_types.QFontComboBox, slot: QFontComboBoxhidePopupProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontComboBoxhidePopupBase): void
-  var tmp = new Cb
+  var tmp = new QFontComboBoxhidePopupProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontComboBox_override_virtual_hidePopup(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontComboBox_hidePopup(self: ptr cQFontComboBox, slot: int): void {.exportc: "miqt_exec_callback_QFontComboBox_hidePopup ".} =
-  type Cb = proc(super: QFontComboBoxhidePopupBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hidePopup(QFontComboBox(h: self), )
+  var nimfunc = cast[ptr QFontComboBoxhidePopupProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_inputMethodQuery(self: QFontComboBox, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant =
-
+  nimfunc[]()
+proc QFontComboBoxinputMethodQuery*(self: gen_qfontcombobox_types.QFontComboBox, param1: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQFontComboBox_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
-type QFontComboBoxinputMethodQueryBase* = proc(param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-proc oninputMethodQuery*(self: QFontComboBox, slot: proc(super: QFontComboBoxinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant) =
+type QFontComboBoxinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
+proc oninputMethodQuery*(self: gen_qfontcombobox_types.QFontComboBox, slot: QFontComboBoxinputMethodQueryProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontComboBoxinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QFontComboBoxinputMethodQueryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontComboBox_override_virtual_inputMethodQuery(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontComboBox_inputMethodQuery(self: ptr cQFontComboBox, slot: int, param1: cint): pointer {.exportc: "miqt_exec_callback_QFontComboBox_inputMethodQuery ".} =
-  type Cb = proc(super: QFontComboBoxinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qnamespace.InputMethodQuery): auto =
-    callVirtualBase_inputMethodQuery(QFontComboBox(h: self), param1)
-  let slotval1 = gen_qnamespace.InputMethodQuery(param1)
+  var nimfunc = cast[ptr QFontComboBoxinputMethodQueryProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_focusInEvent(self: QFontComboBox, e: gen_qevent.QFocusEvent): void =
-
+proc QFontComboBoxfocusInEvent*(self: gen_qfontcombobox_types.QFontComboBox, e: gen_qevent.QFocusEvent): void =
 
   fQFontComboBox_virtualbase_focusInEvent(self.h, e.h)
 
-type QFontComboBoxfocusInEventBase* = proc(e: gen_qevent.QFocusEvent): void
-proc onfocusInEvent*(self: QFontComboBox, slot: proc(super: QFontComboBoxfocusInEventBase, e: gen_qevent.QFocusEvent): void) =
+type QFontComboBoxfocusInEventProc* = proc(e: gen_qevent.QFocusEvent): void
+proc onfocusInEvent*(self: gen_qfontcombobox_types.QFontComboBox, slot: QFontComboBoxfocusInEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontComboBoxfocusInEventBase, e: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QFontComboBoxfocusInEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontComboBox_override_virtual_focusInEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontComboBox_focusInEvent(self: ptr cQFontComboBox, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QFontComboBox_focusInEvent ".} =
-  type Cb = proc(super: QFontComboBoxfocusInEventBase, e: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusInEvent(QFontComboBox(h: self), e)
+  var nimfunc = cast[ptr QFontComboBoxfocusInEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusOutEvent(self: QFontComboBox, e: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QFontComboBoxfocusOutEvent*(self: gen_qfontcombobox_types.QFontComboBox, e: gen_qevent.QFocusEvent): void =
 
   fQFontComboBox_virtualbase_focusOutEvent(self.h, e.h)
 
-type QFontComboBoxfocusOutEventBase* = proc(e: gen_qevent.QFocusEvent): void
-proc onfocusOutEvent*(self: QFontComboBox, slot: proc(super: QFontComboBoxfocusOutEventBase, e: gen_qevent.QFocusEvent): void) =
+type QFontComboBoxfocusOutEventProc* = proc(e: gen_qevent.QFocusEvent): void
+proc onfocusOutEvent*(self: gen_qfontcombobox_types.QFontComboBox, slot: QFontComboBoxfocusOutEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontComboBoxfocusOutEventBase, e: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QFontComboBoxfocusOutEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontComboBox_override_virtual_focusOutEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontComboBox_focusOutEvent(self: ptr cQFontComboBox, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QFontComboBox_focusOutEvent ".} =
-  type Cb = proc(super: QFontComboBoxfocusOutEventBase, e: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusOutEvent(QFontComboBox(h: self), e)
+  var nimfunc = cast[ptr QFontComboBoxfocusOutEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_changeEvent(self: QFontComboBox, e: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QFontComboBoxchangeEvent*(self: gen_qfontcombobox_types.QFontComboBox, e: gen_qcoreevent.QEvent): void =
 
   fQFontComboBox_virtualbase_changeEvent(self.h, e.h)
 
-type QFontComboBoxchangeEventBase* = proc(e: gen_qcoreevent.QEvent): void
-proc onchangeEvent*(self: QFontComboBox, slot: proc(super: QFontComboBoxchangeEventBase, e: gen_qcoreevent.QEvent): void) =
+type QFontComboBoxchangeEventProc* = proc(e: gen_qcoreevent.QEvent): void
+proc onchangeEvent*(self: gen_qfontcombobox_types.QFontComboBox, slot: QFontComboBoxchangeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontComboBoxchangeEventBase, e: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QFontComboBoxchangeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontComboBox_override_virtual_changeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontComboBox_changeEvent(self: ptr cQFontComboBox, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QFontComboBox_changeEvent ".} =
-  type Cb = proc(super: QFontComboBoxchangeEventBase, e: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_changeEvent(QFontComboBox(h: self), e)
+  var nimfunc = cast[ptr QFontComboBoxchangeEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_resizeEvent(self: QFontComboBox, e: gen_qevent.QResizeEvent): void =
-
+  nimfunc[](slotval1)
+proc QFontComboBoxresizeEvent*(self: gen_qfontcombobox_types.QFontComboBox, e: gen_qevent.QResizeEvent): void =
 
   fQFontComboBox_virtualbase_resizeEvent(self.h, e.h)
 
-type QFontComboBoxresizeEventBase* = proc(e: gen_qevent.QResizeEvent): void
-proc onresizeEvent*(self: QFontComboBox, slot: proc(super: QFontComboBoxresizeEventBase, e: gen_qevent.QResizeEvent): void) =
+type QFontComboBoxresizeEventProc* = proc(e: gen_qevent.QResizeEvent): void
+proc onresizeEvent*(self: gen_qfontcombobox_types.QFontComboBox, slot: QFontComboBoxresizeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontComboBoxresizeEventBase, e: gen_qevent.QResizeEvent): void
-  var tmp = new Cb
+  var tmp = new QFontComboBoxresizeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontComboBox_override_virtual_resizeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontComboBox_resizeEvent(self: ptr cQFontComboBox, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QFontComboBox_resizeEvent ".} =
-  type Cb = proc(super: QFontComboBoxresizeEventBase, e: gen_qevent.QResizeEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qevent.QResizeEvent): auto =
-    callVirtualBase_resizeEvent(QFontComboBox(h: self), e)
+  var nimfunc = cast[ptr QFontComboBoxresizeEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QResizeEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_paintEvent(self: QFontComboBox, e: gen_qevent.QPaintEvent): void =
-
+  nimfunc[](slotval1)
+proc QFontComboBoxpaintEvent*(self: gen_qfontcombobox_types.QFontComboBox, e: gen_qevent.QPaintEvent): void =
 
   fQFontComboBox_virtualbase_paintEvent(self.h, e.h)
 
-type QFontComboBoxpaintEventBase* = proc(e: gen_qevent.QPaintEvent): void
-proc onpaintEvent*(self: QFontComboBox, slot: proc(super: QFontComboBoxpaintEventBase, e: gen_qevent.QPaintEvent): void) =
+type QFontComboBoxpaintEventProc* = proc(e: gen_qevent.QPaintEvent): void
+proc onpaintEvent*(self: gen_qfontcombobox_types.QFontComboBox, slot: QFontComboBoxpaintEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontComboBoxpaintEventBase, e: gen_qevent.QPaintEvent): void
-  var tmp = new Cb
+  var tmp = new QFontComboBoxpaintEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontComboBox_override_virtual_paintEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontComboBox_paintEvent(self: ptr cQFontComboBox, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QFontComboBox_paintEvent ".} =
-  type Cb = proc(super: QFontComboBoxpaintEventBase, e: gen_qevent.QPaintEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qevent.QPaintEvent): auto =
-    callVirtualBase_paintEvent(QFontComboBox(h: self), e)
+  var nimfunc = cast[ptr QFontComboBoxpaintEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QPaintEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_showEvent(self: QFontComboBox, e: gen_qevent.QShowEvent): void =
-
+  nimfunc[](slotval1)
+proc QFontComboBoxshowEvent*(self: gen_qfontcombobox_types.QFontComboBox, e: gen_qevent.QShowEvent): void =
 
   fQFontComboBox_virtualbase_showEvent(self.h, e.h)
 
-type QFontComboBoxshowEventBase* = proc(e: gen_qevent.QShowEvent): void
-proc onshowEvent*(self: QFontComboBox, slot: proc(super: QFontComboBoxshowEventBase, e: gen_qevent.QShowEvent): void) =
+type QFontComboBoxshowEventProc* = proc(e: gen_qevent.QShowEvent): void
+proc onshowEvent*(self: gen_qfontcombobox_types.QFontComboBox, slot: QFontComboBoxshowEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontComboBoxshowEventBase, e: gen_qevent.QShowEvent): void
-  var tmp = new Cb
+  var tmp = new QFontComboBoxshowEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontComboBox_override_virtual_showEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontComboBox_showEvent(self: ptr cQFontComboBox, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QFontComboBox_showEvent ".} =
-  type Cb = proc(super: QFontComboBoxshowEventBase, e: gen_qevent.QShowEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qevent.QShowEvent): auto =
-    callVirtualBase_showEvent(QFontComboBox(h: self), e)
+  var nimfunc = cast[ptr QFontComboBoxshowEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QShowEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hideEvent(self: QFontComboBox, e: gen_qevent.QHideEvent): void =
-
+  nimfunc[](slotval1)
+proc QFontComboBoxhideEvent*(self: gen_qfontcombobox_types.QFontComboBox, e: gen_qevent.QHideEvent): void =
 
   fQFontComboBox_virtualbase_hideEvent(self.h, e.h)
 
-type QFontComboBoxhideEventBase* = proc(e: gen_qevent.QHideEvent): void
-proc onhideEvent*(self: QFontComboBox, slot: proc(super: QFontComboBoxhideEventBase, e: gen_qevent.QHideEvent): void) =
+type QFontComboBoxhideEventProc* = proc(e: gen_qevent.QHideEvent): void
+proc onhideEvent*(self: gen_qfontcombobox_types.QFontComboBox, slot: QFontComboBoxhideEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontComboBoxhideEventBase, e: gen_qevent.QHideEvent): void
-  var tmp = new Cb
+  var tmp = new QFontComboBoxhideEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontComboBox_override_virtual_hideEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontComboBox_hideEvent(self: ptr cQFontComboBox, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QFontComboBox_hideEvent ".} =
-  type Cb = proc(super: QFontComboBoxhideEventBase, e: gen_qevent.QHideEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qevent.QHideEvent): auto =
-    callVirtualBase_hideEvent(QFontComboBox(h: self), e)
+  var nimfunc = cast[ptr QFontComboBoxhideEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QHideEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mousePressEvent(self: QFontComboBox, e: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QFontComboBoxmousePressEvent*(self: gen_qfontcombobox_types.QFontComboBox, e: gen_qevent.QMouseEvent): void =
 
   fQFontComboBox_virtualbase_mousePressEvent(self.h, e.h)
 
-type QFontComboBoxmousePressEventBase* = proc(e: gen_qevent.QMouseEvent): void
-proc onmousePressEvent*(self: QFontComboBox, slot: proc(super: QFontComboBoxmousePressEventBase, e: gen_qevent.QMouseEvent): void) =
+type QFontComboBoxmousePressEventProc* = proc(e: gen_qevent.QMouseEvent): void
+proc onmousePressEvent*(self: gen_qfontcombobox_types.QFontComboBox, slot: QFontComboBoxmousePressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontComboBoxmousePressEventBase, e: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QFontComboBoxmousePressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontComboBox_override_virtual_mousePressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontComboBox_mousePressEvent(self: ptr cQFontComboBox, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QFontComboBox_mousePressEvent ".} =
-  type Cb = proc(super: QFontComboBoxmousePressEventBase, e: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mousePressEvent(QFontComboBox(h: self), e)
+  var nimfunc = cast[ptr QFontComboBoxmousePressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseReleaseEvent(self: QFontComboBox, e: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QFontComboBoxmouseReleaseEvent*(self: gen_qfontcombobox_types.QFontComboBox, e: gen_qevent.QMouseEvent): void =
 
   fQFontComboBox_virtualbase_mouseReleaseEvent(self.h, e.h)
 
-type QFontComboBoxmouseReleaseEventBase* = proc(e: gen_qevent.QMouseEvent): void
-proc onmouseReleaseEvent*(self: QFontComboBox, slot: proc(super: QFontComboBoxmouseReleaseEventBase, e: gen_qevent.QMouseEvent): void) =
+type QFontComboBoxmouseReleaseEventProc* = proc(e: gen_qevent.QMouseEvent): void
+proc onmouseReleaseEvent*(self: gen_qfontcombobox_types.QFontComboBox, slot: QFontComboBoxmouseReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontComboBoxmouseReleaseEventBase, e: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QFontComboBoxmouseReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontComboBox_override_virtual_mouseReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontComboBox_mouseReleaseEvent(self: ptr cQFontComboBox, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QFontComboBox_mouseReleaseEvent ".} =
-  type Cb = proc(super: QFontComboBoxmouseReleaseEventBase, e: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseReleaseEvent(QFontComboBox(h: self), e)
+  var nimfunc = cast[ptr QFontComboBoxmouseReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyPressEvent(self: QFontComboBox, e: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QFontComboBoxkeyPressEvent*(self: gen_qfontcombobox_types.QFontComboBox, e: gen_qevent.QKeyEvent): void =
 
   fQFontComboBox_virtualbase_keyPressEvent(self.h, e.h)
 
-type QFontComboBoxkeyPressEventBase* = proc(e: gen_qevent.QKeyEvent): void
-proc onkeyPressEvent*(self: QFontComboBox, slot: proc(super: QFontComboBoxkeyPressEventBase, e: gen_qevent.QKeyEvent): void) =
+type QFontComboBoxkeyPressEventProc* = proc(e: gen_qevent.QKeyEvent): void
+proc onkeyPressEvent*(self: gen_qfontcombobox_types.QFontComboBox, slot: QFontComboBoxkeyPressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontComboBoxkeyPressEventBase, e: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QFontComboBoxkeyPressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontComboBox_override_virtual_keyPressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontComboBox_keyPressEvent(self: ptr cQFontComboBox, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QFontComboBox_keyPressEvent ".} =
-  type Cb = proc(super: QFontComboBoxkeyPressEventBase, e: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyPressEvent(QFontComboBox(h: self), e)
+  var nimfunc = cast[ptr QFontComboBoxkeyPressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyReleaseEvent(self: QFontComboBox, e: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QFontComboBoxkeyReleaseEvent*(self: gen_qfontcombobox_types.QFontComboBox, e: gen_qevent.QKeyEvent): void =
 
   fQFontComboBox_virtualbase_keyReleaseEvent(self.h, e.h)
 
-type QFontComboBoxkeyReleaseEventBase* = proc(e: gen_qevent.QKeyEvent): void
-proc onkeyReleaseEvent*(self: QFontComboBox, slot: proc(super: QFontComboBoxkeyReleaseEventBase, e: gen_qevent.QKeyEvent): void) =
+type QFontComboBoxkeyReleaseEventProc* = proc(e: gen_qevent.QKeyEvent): void
+proc onkeyReleaseEvent*(self: gen_qfontcombobox_types.QFontComboBox, slot: QFontComboBoxkeyReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontComboBoxkeyReleaseEventBase, e: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QFontComboBoxkeyReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontComboBox_override_virtual_keyReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontComboBox_keyReleaseEvent(self: ptr cQFontComboBox, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QFontComboBox_keyReleaseEvent ".} =
-  type Cb = proc(super: QFontComboBoxkeyReleaseEventBase, e: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyReleaseEvent(QFontComboBox(h: self), e)
+  var nimfunc = cast[ptr QFontComboBoxkeyReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_wheelEvent(self: QFontComboBox, e: gen_qevent.QWheelEvent): void =
-
+  nimfunc[](slotval1)
+proc QFontComboBoxwheelEvent*(self: gen_qfontcombobox_types.QFontComboBox, e: gen_qevent.QWheelEvent): void =
 
   fQFontComboBox_virtualbase_wheelEvent(self.h, e.h)
 
-type QFontComboBoxwheelEventBase* = proc(e: gen_qevent.QWheelEvent): void
-proc onwheelEvent*(self: QFontComboBox, slot: proc(super: QFontComboBoxwheelEventBase, e: gen_qevent.QWheelEvent): void) =
+type QFontComboBoxwheelEventProc* = proc(e: gen_qevent.QWheelEvent): void
+proc onwheelEvent*(self: gen_qfontcombobox_types.QFontComboBox, slot: QFontComboBoxwheelEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontComboBoxwheelEventBase, e: gen_qevent.QWheelEvent): void
-  var tmp = new Cb
+  var tmp = new QFontComboBoxwheelEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontComboBox_override_virtual_wheelEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontComboBox_wheelEvent(self: ptr cQFontComboBox, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QFontComboBox_wheelEvent ".} =
-  type Cb = proc(super: QFontComboBoxwheelEventBase, e: gen_qevent.QWheelEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qevent.QWheelEvent): auto =
-    callVirtualBase_wheelEvent(QFontComboBox(h: self), e)
+  var nimfunc = cast[ptr QFontComboBoxwheelEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QWheelEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_contextMenuEvent(self: QFontComboBox, e: gen_qevent.QContextMenuEvent): void =
-
+  nimfunc[](slotval1)
+proc QFontComboBoxcontextMenuEvent*(self: gen_qfontcombobox_types.QFontComboBox, e: gen_qevent.QContextMenuEvent): void =
 
   fQFontComboBox_virtualbase_contextMenuEvent(self.h, e.h)
 
-type QFontComboBoxcontextMenuEventBase* = proc(e: gen_qevent.QContextMenuEvent): void
-proc oncontextMenuEvent*(self: QFontComboBox, slot: proc(super: QFontComboBoxcontextMenuEventBase, e: gen_qevent.QContextMenuEvent): void) =
+type QFontComboBoxcontextMenuEventProc* = proc(e: gen_qevent.QContextMenuEvent): void
+proc oncontextMenuEvent*(self: gen_qfontcombobox_types.QFontComboBox, slot: QFontComboBoxcontextMenuEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontComboBoxcontextMenuEventBase, e: gen_qevent.QContextMenuEvent): void
-  var tmp = new Cb
+  var tmp = new QFontComboBoxcontextMenuEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontComboBox_override_virtual_contextMenuEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontComboBox_contextMenuEvent(self: ptr cQFontComboBox, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QFontComboBox_contextMenuEvent ".} =
-  type Cb = proc(super: QFontComboBoxcontextMenuEventBase, e: gen_qevent.QContextMenuEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qevent.QContextMenuEvent): auto =
-    callVirtualBase_contextMenuEvent(QFontComboBox(h: self), e)
+  var nimfunc = cast[ptr QFontComboBoxcontextMenuEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QContextMenuEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_inputMethodEvent(self: QFontComboBox, param1: gen_qevent.QInputMethodEvent): void =
-
+  nimfunc[](slotval1)
+proc QFontComboBoxinputMethodEvent*(self: gen_qfontcombobox_types.QFontComboBox, param1: gen_qevent.QInputMethodEvent): void =
 
   fQFontComboBox_virtualbase_inputMethodEvent(self.h, param1.h)
 
-type QFontComboBoxinputMethodEventBase* = proc(param1: gen_qevent.QInputMethodEvent): void
-proc oninputMethodEvent*(self: QFontComboBox, slot: proc(super: QFontComboBoxinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void) =
+type QFontComboBoxinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
+proc oninputMethodEvent*(self: gen_qfontcombobox_types.QFontComboBox, slot: QFontComboBoxinputMethodEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontComboBoxinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var tmp = new Cb
+  var tmp = new QFontComboBoxinputMethodEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontComboBox_override_virtual_inputMethodEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontComboBox_inputMethodEvent(self: ptr cQFontComboBox, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QFontComboBox_inputMethodEvent ".} =
-  type Cb = proc(super: QFontComboBoxinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QInputMethodEvent): auto =
-    callVirtualBase_inputMethodEvent(QFontComboBox(h: self), param1)
+  var nimfunc = cast[ptr QFontComboBoxinputMethodEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QInputMethodEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_devType(self: QFontComboBox, ): cint =
-
+  nimfunc[](slotval1)
+proc QFontComboBoxdevType*(self: gen_qfontcombobox_types.QFontComboBox, ): cint =
 
   fQFontComboBox_virtualbase_devType(self.h)
 
-type QFontComboBoxdevTypeBase* = proc(): cint
-proc ondevType*(self: QFontComboBox, slot: proc(super: QFontComboBoxdevTypeBase): cint) =
+type QFontComboBoxdevTypeProc* = proc(): cint
+proc ondevType*(self: gen_qfontcombobox_types.QFontComboBox, slot: QFontComboBoxdevTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontComboBoxdevTypeBase): cint
-  var tmp = new Cb
+  var tmp = new QFontComboBoxdevTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontComboBox_override_virtual_devType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontComboBox_devType(self: ptr cQFontComboBox, slot: int): cint {.exportc: "miqt_exec_callback_QFontComboBox_devType ".} =
-  type Cb = proc(super: QFontComboBoxdevTypeBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_devType(QFontComboBox(h: self), )
+  var nimfunc = cast[ptr QFontComboBoxdevTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setVisible(self: QFontComboBox, visible: bool): void =
-
+proc QFontComboBoxsetVisible*(self: gen_qfontcombobox_types.QFontComboBox, visible: bool): void =
 
   fQFontComboBox_virtualbase_setVisible(self.h, visible)
 
-type QFontComboBoxsetVisibleBase* = proc(visible: bool): void
-proc onsetVisible*(self: QFontComboBox, slot: proc(super: QFontComboBoxsetVisibleBase, visible: bool): void) =
+type QFontComboBoxsetVisibleProc* = proc(visible: bool): void
+proc onsetVisible*(self: gen_qfontcombobox_types.QFontComboBox, slot: QFontComboBoxsetVisibleProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontComboBoxsetVisibleBase, visible: bool): void
-  var tmp = new Cb
+  var tmp = new QFontComboBoxsetVisibleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontComboBox_override_virtual_setVisible(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontComboBox_setVisible(self: ptr cQFontComboBox, slot: int, visible: bool): void {.exportc: "miqt_exec_callback_QFontComboBox_setVisible ".} =
-  type Cb = proc(super: QFontComboBoxsetVisibleBase, visible: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(visible: bool): auto =
-    callVirtualBase_setVisible(QFontComboBox(h: self), visible)
+  var nimfunc = cast[ptr QFontComboBoxsetVisibleProc](cast[pointer](slot))
   let slotval1 = visible
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_heightForWidth(self: QFontComboBox, param1: cint): cint =
-
+  nimfunc[](slotval1)
+proc QFontComboBoxheightForWidth*(self: gen_qfontcombobox_types.QFontComboBox, param1: cint): cint =
 
   fQFontComboBox_virtualbase_heightForWidth(self.h, param1)
 
-type QFontComboBoxheightForWidthBase* = proc(param1: cint): cint
-proc onheightForWidth*(self: QFontComboBox, slot: proc(super: QFontComboBoxheightForWidthBase, param1: cint): cint) =
+type QFontComboBoxheightForWidthProc* = proc(param1: cint): cint
+proc onheightForWidth*(self: gen_qfontcombobox_types.QFontComboBox, slot: QFontComboBoxheightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontComboBoxheightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QFontComboBoxheightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontComboBox_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontComboBox_heightForWidth(self: ptr cQFontComboBox, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QFontComboBox_heightForWidth ".} =
-  type Cb = proc(super: QFontComboBoxheightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_heightForWidth(QFontComboBox(h: self), param1)
+  var nimfunc = cast[ptr QFontComboBoxheightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_hasHeightForWidth(self: QFontComboBox, ): bool =
-
+proc QFontComboBoxhasHeightForWidth*(self: gen_qfontcombobox_types.QFontComboBox, ): bool =
 
   fQFontComboBox_virtualbase_hasHeightForWidth(self.h)
 
-type QFontComboBoxhasHeightForWidthBase* = proc(): bool
-proc onhasHeightForWidth*(self: QFontComboBox, slot: proc(super: QFontComboBoxhasHeightForWidthBase): bool) =
+type QFontComboBoxhasHeightForWidthProc* = proc(): bool
+proc onhasHeightForWidth*(self: gen_qfontcombobox_types.QFontComboBox, slot: QFontComboBoxhasHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontComboBoxhasHeightForWidthBase): bool
-  var tmp = new Cb
+  var tmp = new QFontComboBoxhasHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontComboBox_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontComboBox_hasHeightForWidth(self: ptr cQFontComboBox, slot: int): bool {.exportc: "miqt_exec_callback_QFontComboBox_hasHeightForWidth ".} =
-  type Cb = proc(super: QFontComboBoxhasHeightForWidthBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasHeightForWidth(QFontComboBox(h: self), )
+  var nimfunc = cast[ptr QFontComboBoxhasHeightForWidthProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_paintEngine(self: QFontComboBox, ): gen_qpaintengine.QPaintEngine =
-
+proc QFontComboBoxpaintEngine*(self: gen_qfontcombobox_types.QFontComboBox, ): gen_qpaintengine.QPaintEngine =
 
   gen_qpaintengine.QPaintEngine(h: fQFontComboBox_virtualbase_paintEngine(self.h))
 
-type QFontComboBoxpaintEngineBase* = proc(): gen_qpaintengine.QPaintEngine
-proc onpaintEngine*(self: QFontComboBox, slot: proc(super: QFontComboBoxpaintEngineBase): gen_qpaintengine.QPaintEngine) =
+type QFontComboBoxpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
+proc onpaintEngine*(self: gen_qfontcombobox_types.QFontComboBox, slot: QFontComboBoxpaintEngineProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontComboBoxpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var tmp = new Cb
+  var tmp = new QFontComboBoxpaintEngineProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontComboBox_override_virtual_paintEngine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontComboBox_paintEngine(self: ptr cQFontComboBox, slot: int): pointer {.exportc: "miqt_exec_callback_QFontComboBox_paintEngine ".} =
-  type Cb = proc(super: QFontComboBoxpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_paintEngine(QFontComboBox(h: self), )
+  var nimfunc = cast[ptr QFontComboBoxpaintEngineProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_mouseDoubleClickEvent(self: QFontComboBox, event: gen_qevent.QMouseEvent): void =
-
+proc QFontComboBoxmouseDoubleClickEvent*(self: gen_qfontcombobox_types.QFontComboBox, event: gen_qevent.QMouseEvent): void =
 
   fQFontComboBox_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
-type QFontComboBoxmouseDoubleClickEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseDoubleClickEvent*(self: QFontComboBox, slot: proc(super: QFontComboBoxmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void) =
+type QFontComboBoxmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseDoubleClickEvent*(self: gen_qfontcombobox_types.QFontComboBox, slot: QFontComboBoxmouseDoubleClickEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontComboBoxmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QFontComboBoxmouseDoubleClickEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontComboBox_override_virtual_mouseDoubleClickEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontComboBox_mouseDoubleClickEvent(self: ptr cQFontComboBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFontComboBox_mouseDoubleClickEvent ".} =
-  type Cb = proc(super: QFontComboBoxmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseDoubleClickEvent(QFontComboBox(h: self), event)
+  var nimfunc = cast[ptr QFontComboBoxmouseDoubleClickEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseMoveEvent(self: QFontComboBox, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QFontComboBoxmouseMoveEvent*(self: gen_qfontcombobox_types.QFontComboBox, event: gen_qevent.QMouseEvent): void =
 
   fQFontComboBox_virtualbase_mouseMoveEvent(self.h, event.h)
 
-type QFontComboBoxmouseMoveEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseMoveEvent*(self: QFontComboBox, slot: proc(super: QFontComboBoxmouseMoveEventBase, event: gen_qevent.QMouseEvent): void) =
+type QFontComboBoxmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseMoveEvent*(self: gen_qfontcombobox_types.QFontComboBox, slot: QFontComboBoxmouseMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontComboBoxmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QFontComboBoxmouseMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontComboBox_override_virtual_mouseMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontComboBox_mouseMoveEvent(self: ptr cQFontComboBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFontComboBox_mouseMoveEvent ".} =
-  type Cb = proc(super: QFontComboBoxmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseMoveEvent(QFontComboBox(h: self), event)
+  var nimfunc = cast[ptr QFontComboBoxmouseMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_enterEvent(self: QFontComboBox, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QFontComboBoxenterEvent*(self: gen_qfontcombobox_types.QFontComboBox, event: gen_qcoreevent.QEvent): void =
 
   fQFontComboBox_virtualbase_enterEvent(self.h, event.h)
 
-type QFontComboBoxenterEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onenterEvent*(self: QFontComboBox, slot: proc(super: QFontComboBoxenterEventBase, event: gen_qcoreevent.QEvent): void) =
+type QFontComboBoxenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onenterEvent*(self: gen_qfontcombobox_types.QFontComboBox, slot: QFontComboBoxenterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontComboBoxenterEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QFontComboBoxenterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontComboBox_override_virtual_enterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontComboBox_enterEvent(self: ptr cQFontComboBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFontComboBox_enterEvent ".} =
-  type Cb = proc(super: QFontComboBoxenterEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_enterEvent(QFontComboBox(h: self), event)
+  var nimfunc = cast[ptr QFontComboBoxenterEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_leaveEvent(self: QFontComboBox, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QFontComboBoxleaveEvent*(self: gen_qfontcombobox_types.QFontComboBox, event: gen_qcoreevent.QEvent): void =
 
   fQFontComboBox_virtualbase_leaveEvent(self.h, event.h)
 
-type QFontComboBoxleaveEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onleaveEvent*(self: QFontComboBox, slot: proc(super: QFontComboBoxleaveEventBase, event: gen_qcoreevent.QEvent): void) =
+type QFontComboBoxleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onleaveEvent*(self: gen_qfontcombobox_types.QFontComboBox, slot: QFontComboBoxleaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontComboBoxleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QFontComboBoxleaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontComboBox_override_virtual_leaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontComboBox_leaveEvent(self: ptr cQFontComboBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFontComboBox_leaveEvent ".} =
-  type Cb = proc(super: QFontComboBoxleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_leaveEvent(QFontComboBox(h: self), event)
+  var nimfunc = cast[ptr QFontComboBoxleaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_moveEvent(self: QFontComboBox, event: gen_qevent.QMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QFontComboBoxmoveEvent*(self: gen_qfontcombobox_types.QFontComboBox, event: gen_qevent.QMoveEvent): void =
 
   fQFontComboBox_virtualbase_moveEvent(self.h, event.h)
 
-type QFontComboBoxmoveEventBase* = proc(event: gen_qevent.QMoveEvent): void
-proc onmoveEvent*(self: QFontComboBox, slot: proc(super: QFontComboBoxmoveEventBase, event: gen_qevent.QMoveEvent): void) =
+type QFontComboBoxmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
+proc onmoveEvent*(self: gen_qfontcombobox_types.QFontComboBox, slot: QFontComboBoxmoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontComboBoxmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QFontComboBoxmoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontComboBox_override_virtual_moveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontComboBox_moveEvent(self: ptr cQFontComboBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFontComboBox_moveEvent ".} =
-  type Cb = proc(super: QFontComboBoxmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMoveEvent): auto =
-    callVirtualBase_moveEvent(QFontComboBox(h: self), event)
+  var nimfunc = cast[ptr QFontComboBoxmoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_closeEvent(self: QFontComboBox, event: gen_qevent.QCloseEvent): void =
-
+  nimfunc[](slotval1)
+proc QFontComboBoxcloseEvent*(self: gen_qfontcombobox_types.QFontComboBox, event: gen_qevent.QCloseEvent): void =
 
   fQFontComboBox_virtualbase_closeEvent(self.h, event.h)
 
-type QFontComboBoxcloseEventBase* = proc(event: gen_qevent.QCloseEvent): void
-proc oncloseEvent*(self: QFontComboBox, slot: proc(super: QFontComboBoxcloseEventBase, event: gen_qevent.QCloseEvent): void) =
+type QFontComboBoxcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
+proc oncloseEvent*(self: gen_qfontcombobox_types.QFontComboBox, slot: QFontComboBoxcloseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontComboBoxcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var tmp = new Cb
+  var tmp = new QFontComboBoxcloseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontComboBox_override_virtual_closeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontComboBox_closeEvent(self: ptr cQFontComboBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFontComboBox_closeEvent ".} =
-  type Cb = proc(super: QFontComboBoxcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QCloseEvent): auto =
-    callVirtualBase_closeEvent(QFontComboBox(h: self), event)
+  var nimfunc = cast[ptr QFontComboBoxcloseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QCloseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_tabletEvent(self: QFontComboBox, event: gen_qevent.QTabletEvent): void =
-
+  nimfunc[](slotval1)
+proc QFontComboBoxtabletEvent*(self: gen_qfontcombobox_types.QFontComboBox, event: gen_qevent.QTabletEvent): void =
 
   fQFontComboBox_virtualbase_tabletEvent(self.h, event.h)
 
-type QFontComboBoxtabletEventBase* = proc(event: gen_qevent.QTabletEvent): void
-proc ontabletEvent*(self: QFontComboBox, slot: proc(super: QFontComboBoxtabletEventBase, event: gen_qevent.QTabletEvent): void) =
+type QFontComboBoxtabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
+proc ontabletEvent*(self: gen_qfontcombobox_types.QFontComboBox, slot: QFontComboBoxtabletEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontComboBoxtabletEventBase, event: gen_qevent.QTabletEvent): void
-  var tmp = new Cb
+  var tmp = new QFontComboBoxtabletEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontComboBox_override_virtual_tabletEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontComboBox_tabletEvent(self: ptr cQFontComboBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFontComboBox_tabletEvent ".} =
-  type Cb = proc(super: QFontComboBoxtabletEventBase, event: gen_qevent.QTabletEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QTabletEvent): auto =
-    callVirtualBase_tabletEvent(QFontComboBox(h: self), event)
+  var nimfunc = cast[ptr QFontComboBoxtabletEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QTabletEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_actionEvent(self: QFontComboBox, event: gen_qevent.QActionEvent): void =
-
+  nimfunc[](slotval1)
+proc QFontComboBoxactionEvent*(self: gen_qfontcombobox_types.QFontComboBox, event: gen_qevent.QActionEvent): void =
 
   fQFontComboBox_virtualbase_actionEvent(self.h, event.h)
 
-type QFontComboBoxactionEventBase* = proc(event: gen_qevent.QActionEvent): void
-proc onactionEvent*(self: QFontComboBox, slot: proc(super: QFontComboBoxactionEventBase, event: gen_qevent.QActionEvent): void) =
+type QFontComboBoxactionEventProc* = proc(event: gen_qevent.QActionEvent): void
+proc onactionEvent*(self: gen_qfontcombobox_types.QFontComboBox, slot: QFontComboBoxactionEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontComboBoxactionEventBase, event: gen_qevent.QActionEvent): void
-  var tmp = new Cb
+  var tmp = new QFontComboBoxactionEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontComboBox_override_virtual_actionEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontComboBox_actionEvent(self: ptr cQFontComboBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFontComboBox_actionEvent ".} =
-  type Cb = proc(super: QFontComboBoxactionEventBase, event: gen_qevent.QActionEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QActionEvent): auto =
-    callVirtualBase_actionEvent(QFontComboBox(h: self), event)
+  var nimfunc = cast[ptr QFontComboBoxactionEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QActionEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragEnterEvent(self: QFontComboBox, event: gen_qevent.QDragEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QFontComboBoxdragEnterEvent*(self: gen_qfontcombobox_types.QFontComboBox, event: gen_qevent.QDragEnterEvent): void =
 
   fQFontComboBox_virtualbase_dragEnterEvent(self.h, event.h)
 
-type QFontComboBoxdragEnterEventBase* = proc(event: gen_qevent.QDragEnterEvent): void
-proc ondragEnterEvent*(self: QFontComboBox, slot: proc(super: QFontComboBoxdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void) =
+type QFontComboBoxdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
+proc ondragEnterEvent*(self: gen_qfontcombobox_types.QFontComboBox, slot: QFontComboBoxdragEnterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontComboBoxdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QFontComboBoxdragEnterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontComboBox_override_virtual_dragEnterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontComboBox_dragEnterEvent(self: ptr cQFontComboBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFontComboBox_dragEnterEvent ".} =
-  type Cb = proc(super: QFontComboBoxdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragEnterEvent): auto =
-    callVirtualBase_dragEnterEvent(QFontComboBox(h: self), event)
+  var nimfunc = cast[ptr QFontComboBoxdragEnterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragMoveEvent(self: QFontComboBox, event: gen_qevent.QDragMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QFontComboBoxdragMoveEvent*(self: gen_qfontcombobox_types.QFontComboBox, event: gen_qevent.QDragMoveEvent): void =
 
   fQFontComboBox_virtualbase_dragMoveEvent(self.h, event.h)
 
-type QFontComboBoxdragMoveEventBase* = proc(event: gen_qevent.QDragMoveEvent): void
-proc ondragMoveEvent*(self: QFontComboBox, slot: proc(super: QFontComboBoxdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void) =
+type QFontComboBoxdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
+proc ondragMoveEvent*(self: gen_qfontcombobox_types.QFontComboBox, slot: QFontComboBoxdragMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontComboBoxdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QFontComboBoxdragMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontComboBox_override_virtual_dragMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontComboBox_dragMoveEvent(self: ptr cQFontComboBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFontComboBox_dragMoveEvent ".} =
-  type Cb = proc(super: QFontComboBoxdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragMoveEvent): auto =
-    callVirtualBase_dragMoveEvent(QFontComboBox(h: self), event)
+  var nimfunc = cast[ptr QFontComboBoxdragMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragLeaveEvent(self: QFontComboBox, event: gen_qevent.QDragLeaveEvent): void =
-
+  nimfunc[](slotval1)
+proc QFontComboBoxdragLeaveEvent*(self: gen_qfontcombobox_types.QFontComboBox, event: gen_qevent.QDragLeaveEvent): void =
 
   fQFontComboBox_virtualbase_dragLeaveEvent(self.h, event.h)
 
-type QFontComboBoxdragLeaveEventBase* = proc(event: gen_qevent.QDragLeaveEvent): void
-proc ondragLeaveEvent*(self: QFontComboBox, slot: proc(super: QFontComboBoxdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void) =
+type QFontComboBoxdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
+proc ondragLeaveEvent*(self: gen_qfontcombobox_types.QFontComboBox, slot: QFontComboBoxdragLeaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontComboBoxdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var tmp = new Cb
+  var tmp = new QFontComboBoxdragLeaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontComboBox_override_virtual_dragLeaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontComboBox_dragLeaveEvent(self: ptr cQFontComboBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFontComboBox_dragLeaveEvent ".} =
-  type Cb = proc(super: QFontComboBoxdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragLeaveEvent): auto =
-    callVirtualBase_dragLeaveEvent(QFontComboBox(h: self), event)
+  var nimfunc = cast[ptr QFontComboBoxdragLeaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragLeaveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dropEvent(self: QFontComboBox, event: gen_qevent.QDropEvent): void =
-
+  nimfunc[](slotval1)
+proc QFontComboBoxdropEvent*(self: gen_qfontcombobox_types.QFontComboBox, event: gen_qevent.QDropEvent): void =
 
   fQFontComboBox_virtualbase_dropEvent(self.h, event.h)
 
-type QFontComboBoxdropEventBase* = proc(event: gen_qevent.QDropEvent): void
-proc ondropEvent*(self: QFontComboBox, slot: proc(super: QFontComboBoxdropEventBase, event: gen_qevent.QDropEvent): void) =
+type QFontComboBoxdropEventProc* = proc(event: gen_qevent.QDropEvent): void
+proc ondropEvent*(self: gen_qfontcombobox_types.QFontComboBox, slot: QFontComboBoxdropEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontComboBoxdropEventBase, event: gen_qevent.QDropEvent): void
-  var tmp = new Cb
+  var tmp = new QFontComboBoxdropEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontComboBox_override_virtual_dropEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontComboBox_dropEvent(self: ptr cQFontComboBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFontComboBox_dropEvent ".} =
-  type Cb = proc(super: QFontComboBoxdropEventBase, event: gen_qevent.QDropEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDropEvent): auto =
-    callVirtualBase_dropEvent(QFontComboBox(h: self), event)
+  var nimfunc = cast[ptr QFontComboBoxdropEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDropEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_nativeEvent(self: QFontComboBox, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
+  nimfunc[](slotval1)
+proc QFontComboBoxnativeEvent*(self: gen_qfontcombobox_types.QFontComboBox, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
 
   fQFontComboBox_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
-type QFontComboBoxnativeEventBase* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-proc onnativeEvent*(self: QFontComboBox, slot: proc(super: QFontComboBoxnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool) =
+type QFontComboBoxnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
+proc onnativeEvent*(self: gen_qfontcombobox_types.QFontComboBox, slot: QFontComboBoxnativeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontComboBoxnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-  var tmp = new Cb
+  var tmp = new QFontComboBoxnativeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontComboBox_override_virtual_nativeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontComboBox_nativeEvent(self: ptr cQFontComboBox, slot: int, eventType: struct_miqt_string, message: pointer, resultVal: ptr clong): bool {.exportc: "miqt_exec_callback_QFontComboBox_nativeEvent ".} =
-  type Cb = proc(super: QFontComboBoxnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(eventType: seq[byte], message: pointer, resultVal: ptr clong): auto =
-    callVirtualBase_nativeEvent(QFontComboBox(h: self), eventType, message, resultVal)
+  var nimfunc = cast[ptr QFontComboBoxnativeEventProc](cast[pointer](slot))
   var veventType_bytearray = eventType
   var veventTypex_ret = @(toOpenArrayByte(veventType_bytearray.data, 0, int(veventType_bytearray.len)-1))
   c_free(veventType_bytearray.data)
@@ -1279,273 +1068,218 @@ proc miqt_exec_callback_QFontComboBox_nativeEvent(self: ptr cQFontComboBox, slot
   let slotval3 = resultVal
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_metric(self: QFontComboBox, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint =
-
+proc QFontComboBoxmetric*(self: gen_qfontcombobox_types.QFontComboBox, param1: cint): cint =
 
   fQFontComboBox_virtualbase_metric(self.h, cint(param1))
 
-type QFontComboBoxmetricBase* = proc(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-proc onmetric*(self: QFontComboBox, slot: proc(super: QFontComboBoxmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint) =
+type QFontComboBoxmetricProc* = proc(param1: cint): cint
+proc onmetric*(self: gen_qfontcombobox_types.QFontComboBox, slot: QFontComboBoxmetricProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontComboBoxmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var tmp = new Cb
+  var tmp = new QFontComboBoxmetricProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontComboBox_override_virtual_metric(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontComboBox_metric(self: ptr cQFontComboBox, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QFontComboBox_metric ".} =
-  type Cb = proc(super: QFontComboBoxmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): auto =
-    callVirtualBase_metric(QFontComboBox(h: self), param1)
-  let slotval1 = gen_qpaintdevice.QPaintDevicePaintDeviceMetric(param1)
+  var nimfunc = cast[ptr QFontComboBoxmetricProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_initPainter(self: QFontComboBox, painter: gen_qpainter.QPainter): void =
-
+proc QFontComboBoxinitPainter*(self: gen_qfontcombobox_types.QFontComboBox, painter: gen_qpainter.QPainter): void =
 
   fQFontComboBox_virtualbase_initPainter(self.h, painter.h)
 
-type QFontComboBoxinitPainterBase* = proc(painter: gen_qpainter.QPainter): void
-proc oninitPainter*(self: QFontComboBox, slot: proc(super: QFontComboBoxinitPainterBase, painter: gen_qpainter.QPainter): void) =
+type QFontComboBoxinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
+proc oninitPainter*(self: gen_qfontcombobox_types.QFontComboBox, slot: QFontComboBoxinitPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontComboBoxinitPainterBase, painter: gen_qpainter.QPainter): void
-  var tmp = new Cb
+  var tmp = new QFontComboBoxinitPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontComboBox_override_virtual_initPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontComboBox_initPainter(self: ptr cQFontComboBox, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_QFontComboBox_initPainter ".} =
-  type Cb = proc(super: QFontComboBoxinitPainterBase, painter: gen_qpainter.QPainter): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter): auto =
-    callVirtualBase_initPainter(QFontComboBox(h: self), painter)
+  var nimfunc = cast[ptr QFontComboBoxinitPainterProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_redirected(self: QFontComboBox, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
+  nimfunc[](slotval1)
+proc QFontComboBoxredirected*(self: gen_qfontcombobox_types.QFontComboBox, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
 
   gen_qpaintdevice.QPaintDevice(h: fQFontComboBox_virtualbase_redirected(self.h, offset.h))
 
-type QFontComboBoxredirectedBase* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-proc onredirected*(self: QFontComboBox, slot: proc(super: QFontComboBoxredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice) =
+type QFontComboBoxredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
+proc onredirected*(self: gen_qfontcombobox_types.QFontComboBox, slot: QFontComboBoxredirectedProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontComboBoxredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var tmp = new Cb
+  var tmp = new QFontComboBoxredirectedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontComboBox_override_virtual_redirected(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontComboBox_redirected(self: ptr cQFontComboBox, slot: int, offset: pointer): pointer {.exportc: "miqt_exec_callback_QFontComboBox_redirected ".} =
-  type Cb = proc(super: QFontComboBoxredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(offset: gen_qpoint.QPoint): auto =
-    callVirtualBase_redirected(QFontComboBox(h: self), offset)
+  var nimfunc = cast[ptr QFontComboBoxredirectedProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: offset)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_sharedPainter(self: QFontComboBox, ): gen_qpainter.QPainter =
-
+proc QFontComboBoxsharedPainter*(self: gen_qfontcombobox_types.QFontComboBox, ): gen_qpainter.QPainter =
 
   gen_qpainter.QPainter(h: fQFontComboBox_virtualbase_sharedPainter(self.h))
 
-type QFontComboBoxsharedPainterBase* = proc(): gen_qpainter.QPainter
-proc onsharedPainter*(self: QFontComboBox, slot: proc(super: QFontComboBoxsharedPainterBase): gen_qpainter.QPainter) =
+type QFontComboBoxsharedPainterProc* = proc(): gen_qpainter.QPainter
+proc onsharedPainter*(self: gen_qfontcombobox_types.QFontComboBox, slot: QFontComboBoxsharedPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontComboBoxsharedPainterBase): gen_qpainter.QPainter
-  var tmp = new Cb
+  var tmp = new QFontComboBoxsharedPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontComboBox_override_virtual_sharedPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontComboBox_sharedPainter(self: ptr cQFontComboBox, slot: int): pointer {.exportc: "miqt_exec_callback_QFontComboBox_sharedPainter ".} =
-  type Cb = proc(super: QFontComboBoxsharedPainterBase): gen_qpainter.QPainter
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sharedPainter(QFontComboBox(h: self), )
+  var nimfunc = cast[ptr QFontComboBoxsharedPainterProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_focusNextPrevChild(self: QFontComboBox, next: bool): bool =
-
+proc QFontComboBoxfocusNextPrevChild*(self: gen_qfontcombobox_types.QFontComboBox, next: bool): bool =
 
   fQFontComboBox_virtualbase_focusNextPrevChild(self.h, next)
 
-type QFontComboBoxfocusNextPrevChildBase* = proc(next: bool): bool
-proc onfocusNextPrevChild*(self: QFontComboBox, slot: proc(super: QFontComboBoxfocusNextPrevChildBase, next: bool): bool) =
+type QFontComboBoxfocusNextPrevChildProc* = proc(next: bool): bool
+proc onfocusNextPrevChild*(self: gen_qfontcombobox_types.QFontComboBox, slot: QFontComboBoxfocusNextPrevChildProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontComboBoxfocusNextPrevChildBase, next: bool): bool
-  var tmp = new Cb
+  var tmp = new QFontComboBoxfocusNextPrevChildProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontComboBox_override_virtual_focusNextPrevChild(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontComboBox_focusNextPrevChild(self: ptr cQFontComboBox, slot: int, next: bool): bool {.exportc: "miqt_exec_callback_QFontComboBox_focusNextPrevChild ".} =
-  type Cb = proc(super: QFontComboBoxfocusNextPrevChildBase, next: bool): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(next: bool): auto =
-    callVirtualBase_focusNextPrevChild(QFontComboBox(h: self), next)
+  var nimfunc = cast[ptr QFontComboBoxfocusNextPrevChildProc](cast[pointer](slot))
   let slotval1 = next
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QFontComboBox, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QFontComboBoxeventFilter*(self: gen_qfontcombobox_types.QFontComboBox, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQFontComboBox_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QFontComboBoxeventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QFontComboBox, slot: proc(super: QFontComboBoxeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QFontComboBoxeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qfontcombobox_types.QFontComboBox, slot: QFontComboBoxeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontComboBoxeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QFontComboBoxeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontComboBox_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontComboBox_eventFilter(self: ptr cQFontComboBox, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QFontComboBox_eventFilter ".} =
-  type Cb = proc(super: QFontComboBoxeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QFontComboBox(h: self), watched, event)
+  var nimfunc = cast[ptr QFontComboBoxeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QFontComboBox, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QFontComboBoxtimerEvent*(self: gen_qfontcombobox_types.QFontComboBox, event: gen_qcoreevent.QTimerEvent): void =
 
   fQFontComboBox_virtualbase_timerEvent(self.h, event.h)
 
-type QFontComboBoxtimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QFontComboBox, slot: proc(super: QFontComboBoxtimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QFontComboBoxtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qfontcombobox_types.QFontComboBox, slot: QFontComboBoxtimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontComboBoxtimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QFontComboBoxtimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontComboBox_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontComboBox_timerEvent(self: ptr cQFontComboBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFontComboBox_timerEvent ".} =
-  type Cb = proc(super: QFontComboBoxtimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QFontComboBox(h: self), event)
+  var nimfunc = cast[ptr QFontComboBoxtimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QFontComboBox, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QFontComboBoxchildEvent*(self: gen_qfontcombobox_types.QFontComboBox, event: gen_qcoreevent.QChildEvent): void =
 
   fQFontComboBox_virtualbase_childEvent(self.h, event.h)
 
-type QFontComboBoxchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QFontComboBox, slot: proc(super: QFontComboBoxchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QFontComboBoxchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qfontcombobox_types.QFontComboBox, slot: QFontComboBoxchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontComboBoxchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QFontComboBoxchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontComboBox_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontComboBox_childEvent(self: ptr cQFontComboBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFontComboBox_childEvent ".} =
-  type Cb = proc(super: QFontComboBoxchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QFontComboBox(h: self), event)
+  var nimfunc = cast[ptr QFontComboBoxchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QFontComboBox, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QFontComboBoxcustomEvent*(self: gen_qfontcombobox_types.QFontComboBox, event: gen_qcoreevent.QEvent): void =
 
   fQFontComboBox_virtualbase_customEvent(self.h, event.h)
 
-type QFontComboBoxcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QFontComboBox, slot: proc(super: QFontComboBoxcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QFontComboBoxcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qfontcombobox_types.QFontComboBox, slot: QFontComboBoxcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontComboBoxcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QFontComboBoxcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontComboBox_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontComboBox_customEvent(self: ptr cQFontComboBox, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFontComboBox_customEvent ".} =
-  type Cb = proc(super: QFontComboBoxcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QFontComboBox(h: self), event)
+  var nimfunc = cast[ptr QFontComboBoxcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QFontComboBox, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QFontComboBoxconnectNotify*(self: gen_qfontcombobox_types.QFontComboBox, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQFontComboBox_virtualbase_connectNotify(self.h, signal.h)
 
-type QFontComboBoxconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QFontComboBox, slot: proc(super: QFontComboBoxconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QFontComboBoxconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qfontcombobox_types.QFontComboBox, slot: QFontComboBoxconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontComboBoxconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QFontComboBoxconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontComboBox_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontComboBox_connectNotify(self: ptr cQFontComboBox, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QFontComboBox_connectNotify ".} =
-  type Cb = proc(super: QFontComboBoxconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QFontComboBox(h: self), signal)
+  var nimfunc = cast[ptr QFontComboBoxconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QFontComboBox, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QFontComboBoxdisconnectNotify*(self: gen_qfontcombobox_types.QFontComboBox, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQFontComboBox_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QFontComboBoxdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QFontComboBox, slot: proc(super: QFontComboBoxdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QFontComboBoxdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qfontcombobox_types.QFontComboBox, slot: QFontComboBoxdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontComboBoxdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QFontComboBoxdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontComboBox_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontComboBox_disconnectNotify(self: ptr cQFontComboBox, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QFontComboBox_disconnectNotify ".} =
-  type Cb = proc(super: QFontComboBoxdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QFontComboBox(h: self), signal)
+  var nimfunc = cast[ptr QFontComboBoxdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QFontComboBox): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qfontcombobox_types.QFontComboBox): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQFontComboBox_staticMetaObject())
-proc delete*(self: QFontComboBox) =
+proc delete*(self: gen_qfontcombobox_types.QFontComboBox) =
   fcQFontComboBox_delete(self.h)

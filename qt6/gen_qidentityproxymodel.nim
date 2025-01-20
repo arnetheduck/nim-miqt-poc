@@ -44,7 +44,6 @@ import
   gen_qitemselectionmodel,
   gen_qmetaobject,
   gen_qmimedata,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qsize,
@@ -57,7 +56,6 @@ export
   gen_qitemselectionmodel,
   gen_qmetaobject,
   gen_qmimedata,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qsize,
@@ -200,78 +198,78 @@ proc fcQIdentityProxyModel_staticMetaObject(): pointer {.importc: "QIdentityProx
 proc fcQIdentityProxyModel_delete(self: pointer) {.importc: "QIdentityProxyModel_delete".}
 
 
-func init*(T: type QIdentityProxyModel, h: ptr cQIdentityProxyModel): QIdentityProxyModel =
+func init*(T: type gen_qidentityproxymodel_types.QIdentityProxyModel, h: ptr cQIdentityProxyModel): gen_qidentityproxymodel_types.QIdentityProxyModel =
   T(h: h)
-proc create*(T: type QIdentityProxyModel, ): QIdentityProxyModel =
+proc create*(T: type gen_qidentityproxymodel_types.QIdentityProxyModel, ): gen_qidentityproxymodel_types.QIdentityProxyModel =
 
-  QIdentityProxyModel.init(fcQIdentityProxyModel_new())
-proc create*(T: type QIdentityProxyModel, parent: gen_qobject.QObject): QIdentityProxyModel =
+  gen_qidentityproxymodel_types.QIdentityProxyModel.init(fcQIdentityProxyModel_new())
+proc create*(T: type gen_qidentityproxymodel_types.QIdentityProxyModel, parent: gen_qobject.QObject): gen_qidentityproxymodel_types.QIdentityProxyModel =
 
-  QIdentityProxyModel.init(fcQIdentityProxyModel_new2(parent.h))
-proc metaObject*(self: QIdentityProxyModel, ): gen_qobjectdefs.QMetaObject =
+  gen_qidentityproxymodel_types.QIdentityProxyModel.init(fcQIdentityProxyModel_new2(parent.h))
+proc metaObject*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQIdentityProxyModel_metaObject(self.h))
 
-proc metacast*(self: QIdentityProxyModel, param1: cstring): pointer =
+proc metacast*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, param1: cstring): pointer =
 
   fcQIdentityProxyModel_metacast(self.h, param1)
 
-proc metacall*(self: QIdentityProxyModel, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQIdentityProxyModel_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QIdentityProxyModel, s: cstring): string =
+proc tr*(_: type gen_qidentityproxymodel_types.QIdentityProxyModel, s: cstring): string =
 
   let v_ms = fcQIdentityProxyModel_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc columnCount*(self: QIdentityProxyModel, parent: gen_qabstractitemmodel.QModelIndex): cint =
+proc columnCount*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, parent: gen_qabstractitemmodel.QModelIndex): cint =
 
   fcQIdentityProxyModel_columnCount(self.h, parent.h)
 
-proc index*(self: QIdentityProxyModel, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
+proc index*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
 
   gen_qabstractitemmodel.QModelIndex(h: fcQIdentityProxyModel_index(self.h, row, column, parent.h))
 
-proc mapFromSource*(self: QIdentityProxyModel, sourceIndex: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
+proc mapFromSource*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, sourceIndex: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
 
   gen_qabstractitemmodel.QModelIndex(h: fcQIdentityProxyModel_mapFromSource(self.h, sourceIndex.h))
 
-proc mapToSource*(self: QIdentityProxyModel, proxyIndex: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
+proc mapToSource*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, proxyIndex: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
 
   gen_qabstractitemmodel.QModelIndex(h: fcQIdentityProxyModel_mapToSource(self.h, proxyIndex.h))
 
-proc parent*(self: QIdentityProxyModel, child: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
+proc parent*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, child: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
 
   gen_qabstractitemmodel.QModelIndex(h: fcQIdentityProxyModel_parent(self.h, child.h))
 
-proc rowCount*(self: QIdentityProxyModel, parent: gen_qabstractitemmodel.QModelIndex): cint =
+proc rowCount*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, parent: gen_qabstractitemmodel.QModelIndex): cint =
 
   fcQIdentityProxyModel_rowCount(self.h, parent.h)
 
-proc headerData*(self: QIdentityProxyModel, section: cint, orientation: gen_qnamespace.Orientation, role: cint): gen_qvariant.QVariant =
+proc headerData*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, section: cint, orientation: cint, role: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fcQIdentityProxyModel_headerData(self.h, section, cint(orientation), role))
 
-proc dropMimeData*(self: QIdentityProxyModel, data: gen_qmimedata.QMimeData, action: gen_qnamespace.DropAction, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
+proc dropMimeData*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, data: gen_qmimedata.QMimeData, action: cint, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
 
   fcQIdentityProxyModel_dropMimeData(self.h, data.h, cint(action), row, column, parent.h)
 
-proc sibling*(self: QIdentityProxyModel, row: cint, column: cint, idx: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
+proc sibling*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, row: cint, column: cint, idx: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
 
   gen_qabstractitemmodel.QModelIndex(h: fcQIdentityProxyModel_sibling(self.h, row, column, idx.h))
 
-proc mapSelectionFromSource*(self: QIdentityProxyModel, selection: gen_qitemselectionmodel.QItemSelection): gen_qitemselectionmodel.QItemSelection =
+proc mapSelectionFromSource*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, selection: gen_qitemselectionmodel.QItemSelection): gen_qitemselectionmodel.QItemSelection =
 
   gen_qitemselectionmodel.QItemSelection(h: fcQIdentityProxyModel_mapSelectionFromSource(self.h, selection.h))
 
-proc mapSelectionToSource*(self: QIdentityProxyModel, selection: gen_qitemselectionmodel.QItemSelection): gen_qitemselectionmodel.QItemSelection =
+proc mapSelectionToSource*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, selection: gen_qitemselectionmodel.QItemSelection): gen_qitemselectionmodel.QItemSelection =
 
   gen_qitemselectionmodel.QItemSelection(h: fcQIdentityProxyModel_mapSelectionToSource(self.h, selection.h))
 
-proc match*(self: QIdentityProxyModel, start: gen_qabstractitemmodel.QModelIndex, role: cint, value: gen_qvariant.QVariant, hits: cint, flags: gen_qnamespace.MatchFlag): seq[gen_qabstractitemmodel.QModelIndex] =
+proc match*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, start: gen_qabstractitemmodel.QModelIndex, role: cint, value: gen_qvariant.QVariant, hits: cint, flags: cint): seq[gen_qabstractitemmodel.QModelIndex] =
 
   var v_ma = fcQIdentityProxyModel_match(self.h, start.h, role, value.h, hits, cint(flags))
   var vx_ret = newSeq[gen_qabstractitemmodel.QModelIndex](int(v_ma.len))
@@ -280,169 +278,144 @@ proc match*(self: QIdentityProxyModel, start: gen_qabstractitemmodel.QModelIndex
     vx_ret[i] = gen_qabstractitemmodel.QModelIndex(h: v_outCast[i])
   vx_ret
 
-proc setSourceModel*(self: QIdentityProxyModel, sourceModel: gen_qabstractitemmodel.QAbstractItemModel): void =
+proc setSourceModel*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, sourceModel: gen_qabstractitemmodel.QAbstractItemModel): void =
 
   fcQIdentityProxyModel_setSourceModel(self.h, sourceModel.h)
 
-proc insertColumns*(self: QIdentityProxyModel, column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
+proc insertColumns*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
 
   fcQIdentityProxyModel_insertColumns(self.h, column, count, parent.h)
 
-proc insertRows*(self: QIdentityProxyModel, row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
+proc insertRows*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
 
   fcQIdentityProxyModel_insertRows(self.h, row, count, parent.h)
 
-proc removeColumns*(self: QIdentityProxyModel, column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
+proc removeColumns*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
 
   fcQIdentityProxyModel_removeColumns(self.h, column, count, parent.h)
 
-proc removeRows*(self: QIdentityProxyModel, row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
+proc removeRows*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
 
   fcQIdentityProxyModel_removeRows(self.h, row, count, parent.h)
 
-proc moveRows*(self: QIdentityProxyModel, sourceParent: gen_qabstractitemmodel.QModelIndex, sourceRow: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool =
+proc moveRows*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, sourceParent: gen_qabstractitemmodel.QModelIndex, sourceRow: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool =
 
   fcQIdentityProxyModel_moveRows(self.h, sourceParent.h, sourceRow, count, destinationParent.h, destinationChild)
 
-proc moveColumns*(self: QIdentityProxyModel, sourceParent: gen_qabstractitemmodel.QModelIndex, sourceColumn: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool =
+proc moveColumns*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, sourceParent: gen_qabstractitemmodel.QModelIndex, sourceColumn: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool =
 
   fcQIdentityProxyModel_moveColumns(self.h, sourceParent.h, sourceColumn, count, destinationParent.h, destinationChild)
 
-proc tr2*(_: type QIdentityProxyModel, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qidentityproxymodel_types.QIdentityProxyModel, s: cstring, c: cstring): string =
 
   let v_ms = fcQIdentityProxyModel_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QIdentityProxyModel, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qidentityproxymodel_types.QIdentityProxyModel, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQIdentityProxyModel_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QIdentityProxyModel, ): gen_qobjectdefs.QMetaObject =
-
+proc QIdentityProxyModelmetaObject*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQIdentityProxyModel_virtualbase_metaObject(self.h))
 
-type QIdentityProxyModelmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QIdentityProxyModel, slot: proc(super: QIdentityProxyModelmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QIdentityProxyModelmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, slot: QIdentityProxyModelmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QIdentityProxyModelmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QIdentityProxyModelmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIdentityProxyModel_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIdentityProxyModel_metaObject(self: ptr cQIdentityProxyModel, slot: int): pointer {.exportc: "miqt_exec_callback_QIdentityProxyModel_metaObject ".} =
-  type Cb = proc(super: QIdentityProxyModelmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QIdentityProxyModel(h: self), )
+  var nimfunc = cast[ptr QIdentityProxyModelmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QIdentityProxyModel, param1: cstring): pointer =
-
+proc QIdentityProxyModelmetacast*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, param1: cstring): pointer =
 
   fQIdentityProxyModel_virtualbase_metacast(self.h, param1)
 
-type QIdentityProxyModelmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QIdentityProxyModel, slot: proc(super: QIdentityProxyModelmetacastBase, param1: cstring): pointer) =
+type QIdentityProxyModelmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, slot: QIdentityProxyModelmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QIdentityProxyModelmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QIdentityProxyModelmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIdentityProxyModel_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIdentityProxyModel_metacast(self: ptr cQIdentityProxyModel, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QIdentityProxyModel_metacast ".} =
-  type Cb = proc(super: QIdentityProxyModelmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QIdentityProxyModel(h: self), param1)
+  var nimfunc = cast[ptr QIdentityProxyModelmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QIdentityProxyModel, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QIdentityProxyModelmetacall*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, param1: cint, param2: cint, param3: pointer): cint =
 
   fQIdentityProxyModel_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QIdentityProxyModelmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QIdentityProxyModel, slot: proc(super: QIdentityProxyModelmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QIdentityProxyModelmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, slot: QIdentityProxyModelmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QIdentityProxyModelmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QIdentityProxyModelmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIdentityProxyModel_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIdentityProxyModel_metacall(self: ptr cQIdentityProxyModel, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QIdentityProxyModel_metacall ".} =
-  type Cb = proc(super: QIdentityProxyModelmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QIdentityProxyModel(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QIdentityProxyModelmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_columnCount(self: QIdentityProxyModel, parent: gen_qabstractitemmodel.QModelIndex): cint =
-
+proc QIdentityProxyModelcolumnCount*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, parent: gen_qabstractitemmodel.QModelIndex): cint =
 
   fQIdentityProxyModel_virtualbase_columnCount(self.h, parent.h)
 
-type QIdentityProxyModelcolumnCountBase* = proc(parent: gen_qabstractitemmodel.QModelIndex): cint
-proc oncolumnCount*(self: QIdentityProxyModel, slot: proc(super: QIdentityProxyModelcolumnCountBase, parent: gen_qabstractitemmodel.QModelIndex): cint) =
+type QIdentityProxyModelcolumnCountProc* = proc(parent: gen_qabstractitemmodel.QModelIndex): cint
+proc oncolumnCount*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, slot: QIdentityProxyModelcolumnCountProc) =
   # TODO check subclass
-  type Cb = proc(super: QIdentityProxyModelcolumnCountBase, parent: gen_qabstractitemmodel.QModelIndex): cint
-  var tmp = new Cb
+  var tmp = new QIdentityProxyModelcolumnCountProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIdentityProxyModel_override_virtual_columnCount(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIdentityProxyModel_columnCount(self: ptr cQIdentityProxyModel, slot: int, parent: pointer): cint {.exportc: "miqt_exec_callback_QIdentityProxyModel_columnCount ".} =
-  type Cb = proc(super: QIdentityProxyModelcolumnCountBase, parent: gen_qabstractitemmodel.QModelIndex): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(parent: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_columnCount(QIdentityProxyModel(h: self), parent)
+  var nimfunc = cast[ptr QIdentityProxyModelcolumnCountProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: parent)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_index(self: QIdentityProxyModel, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
-
+proc QIdentityProxyModelindex*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
 
   gen_qabstractitemmodel.QModelIndex(h: fQIdentityProxyModel_virtualbase_index(self.h, row, column, parent.h))
 
-type QIdentityProxyModelindexBase* = proc(row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
-proc onindex*(self: QIdentityProxyModel, slot: proc(super: QIdentityProxyModelindexBase, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex) =
+type QIdentityProxyModelindexProc* = proc(row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
+proc onindex*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, slot: QIdentityProxyModelindexProc) =
   # TODO check subclass
-  type Cb = proc(super: QIdentityProxyModelindexBase, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
-  var tmp = new Cb
+  var tmp = new QIdentityProxyModelindexProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIdentityProxyModel_override_virtual_index(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIdentityProxyModel_index(self: ptr cQIdentityProxyModel, slot: int, row: cint, column: cint, parent: pointer): pointer {.exportc: "miqt_exec_callback_QIdentityProxyModel_index ".} =
-  type Cb = proc(super: QIdentityProxyModelindexBase, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_index(QIdentityProxyModel(h: self), row, column, parent)
+  var nimfunc = cast[ptr QIdentityProxyModelindexProc](cast[pointer](slot))
   let slotval1 = row
 
   let slotval2 = column
@@ -450,160 +423,130 @@ proc miqt_exec_callback_QIdentityProxyModel_index(self: ptr cQIdentityProxyModel
   let slotval3 = gen_qabstractitemmodel.QModelIndex(h: parent)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn.h
-proc callVirtualBase_mapFromSource(self: QIdentityProxyModel, sourceIndex: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
-
+proc QIdentityProxyModelmapFromSource*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, sourceIndex: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
 
   gen_qabstractitemmodel.QModelIndex(h: fQIdentityProxyModel_virtualbase_mapFromSource(self.h, sourceIndex.h))
 
-type QIdentityProxyModelmapFromSourceBase* = proc(sourceIndex: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
-proc onmapFromSource*(self: QIdentityProxyModel, slot: proc(super: QIdentityProxyModelmapFromSourceBase, sourceIndex: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex) =
+type QIdentityProxyModelmapFromSourceProc* = proc(sourceIndex: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
+proc onmapFromSource*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, slot: QIdentityProxyModelmapFromSourceProc) =
   # TODO check subclass
-  type Cb = proc(super: QIdentityProxyModelmapFromSourceBase, sourceIndex: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
-  var tmp = new Cb
+  var tmp = new QIdentityProxyModelmapFromSourceProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIdentityProxyModel_override_virtual_mapFromSource(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIdentityProxyModel_mapFromSource(self: ptr cQIdentityProxyModel, slot: int, sourceIndex: pointer): pointer {.exportc: "miqt_exec_callback_QIdentityProxyModel_mapFromSource ".} =
-  type Cb = proc(super: QIdentityProxyModelmapFromSourceBase, sourceIndex: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(sourceIndex: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_mapFromSource(QIdentityProxyModel(h: self), sourceIndex)
+  var nimfunc = cast[ptr QIdentityProxyModelmapFromSourceProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: sourceIndex)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_mapToSource(self: QIdentityProxyModel, proxyIndex: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
-
+proc QIdentityProxyModelmapToSource*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, proxyIndex: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
 
   gen_qabstractitemmodel.QModelIndex(h: fQIdentityProxyModel_virtualbase_mapToSource(self.h, proxyIndex.h))
 
-type QIdentityProxyModelmapToSourceBase* = proc(proxyIndex: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
-proc onmapToSource*(self: QIdentityProxyModel, slot: proc(super: QIdentityProxyModelmapToSourceBase, proxyIndex: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex) =
+type QIdentityProxyModelmapToSourceProc* = proc(proxyIndex: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
+proc onmapToSource*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, slot: QIdentityProxyModelmapToSourceProc) =
   # TODO check subclass
-  type Cb = proc(super: QIdentityProxyModelmapToSourceBase, proxyIndex: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
-  var tmp = new Cb
+  var tmp = new QIdentityProxyModelmapToSourceProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIdentityProxyModel_override_virtual_mapToSource(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIdentityProxyModel_mapToSource(self: ptr cQIdentityProxyModel, slot: int, proxyIndex: pointer): pointer {.exportc: "miqt_exec_callback_QIdentityProxyModel_mapToSource ".} =
-  type Cb = proc(super: QIdentityProxyModelmapToSourceBase, proxyIndex: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(proxyIndex: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_mapToSource(QIdentityProxyModel(h: self), proxyIndex)
+  var nimfunc = cast[ptr QIdentityProxyModelmapToSourceProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: proxyIndex)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_parent(self: QIdentityProxyModel, child: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
-
+proc QIdentityProxyModelparent*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, child: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
 
   gen_qabstractitemmodel.QModelIndex(h: fQIdentityProxyModel_virtualbase_parent(self.h, child.h))
 
-type QIdentityProxyModelparentBase* = proc(child: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
-proc onparent*(self: QIdentityProxyModel, slot: proc(super: QIdentityProxyModelparentBase, child: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex) =
+type QIdentityProxyModelparentProc* = proc(child: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
+proc onparent*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, slot: QIdentityProxyModelparentProc) =
   # TODO check subclass
-  type Cb = proc(super: QIdentityProxyModelparentBase, child: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
-  var tmp = new Cb
+  var tmp = new QIdentityProxyModelparentProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIdentityProxyModel_override_virtual_parent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIdentityProxyModel_parent(self: ptr cQIdentityProxyModel, slot: int, child: pointer): pointer {.exportc: "miqt_exec_callback_QIdentityProxyModel_parent ".} =
-  type Cb = proc(super: QIdentityProxyModelparentBase, child: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(child: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_parent(QIdentityProxyModel(h: self), child)
+  var nimfunc = cast[ptr QIdentityProxyModelparentProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: child)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_rowCount(self: QIdentityProxyModel, parent: gen_qabstractitemmodel.QModelIndex): cint =
-
+proc QIdentityProxyModelrowCount*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, parent: gen_qabstractitemmodel.QModelIndex): cint =
 
   fQIdentityProxyModel_virtualbase_rowCount(self.h, parent.h)
 
-type QIdentityProxyModelrowCountBase* = proc(parent: gen_qabstractitemmodel.QModelIndex): cint
-proc onrowCount*(self: QIdentityProxyModel, slot: proc(super: QIdentityProxyModelrowCountBase, parent: gen_qabstractitemmodel.QModelIndex): cint) =
+type QIdentityProxyModelrowCountProc* = proc(parent: gen_qabstractitemmodel.QModelIndex): cint
+proc onrowCount*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, slot: QIdentityProxyModelrowCountProc) =
   # TODO check subclass
-  type Cb = proc(super: QIdentityProxyModelrowCountBase, parent: gen_qabstractitemmodel.QModelIndex): cint
-  var tmp = new Cb
+  var tmp = new QIdentityProxyModelrowCountProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIdentityProxyModel_override_virtual_rowCount(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIdentityProxyModel_rowCount(self: ptr cQIdentityProxyModel, slot: int, parent: pointer): cint {.exportc: "miqt_exec_callback_QIdentityProxyModel_rowCount ".} =
-  type Cb = proc(super: QIdentityProxyModelrowCountBase, parent: gen_qabstractitemmodel.QModelIndex): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(parent: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_rowCount(QIdentityProxyModel(h: self), parent)
+  var nimfunc = cast[ptr QIdentityProxyModelrowCountProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: parent)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_headerData(self: QIdentityProxyModel, section: cint, orientation: gen_qnamespace.Orientation, role: cint): gen_qvariant.QVariant =
-
+proc QIdentityProxyModelheaderData*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, section: cint, orientation: cint, role: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQIdentityProxyModel_virtualbase_headerData(self.h, section, cint(orientation), role))
 
-type QIdentityProxyModelheaderDataBase* = proc(section: cint, orientation: gen_qnamespace.Orientation, role: cint): gen_qvariant.QVariant
-proc onheaderData*(self: QIdentityProxyModel, slot: proc(super: QIdentityProxyModelheaderDataBase, section: cint, orientation: gen_qnamespace.Orientation, role: cint): gen_qvariant.QVariant) =
+type QIdentityProxyModelheaderDataProc* = proc(section: cint, orientation: cint, role: cint): gen_qvariant.QVariant
+proc onheaderData*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, slot: QIdentityProxyModelheaderDataProc) =
   # TODO check subclass
-  type Cb = proc(super: QIdentityProxyModelheaderDataBase, section: cint, orientation: gen_qnamespace.Orientation, role: cint): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QIdentityProxyModelheaderDataProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIdentityProxyModel_override_virtual_headerData(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIdentityProxyModel_headerData(self: ptr cQIdentityProxyModel, slot: int, section: cint, orientation: cint, role: cint): pointer {.exportc: "miqt_exec_callback_QIdentityProxyModel_headerData ".} =
-  type Cb = proc(super: QIdentityProxyModelheaderDataBase, section: cint, orientation: gen_qnamespace.Orientation, role: cint): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(section: cint, orientation: gen_qnamespace.Orientation, role: cint): auto =
-    callVirtualBase_headerData(QIdentityProxyModel(h: self), section, orientation, role)
+  var nimfunc = cast[ptr QIdentityProxyModelheaderDataProc](cast[pointer](slot))
   let slotval1 = section
 
-  let slotval2 = gen_qnamespace.Orientation(orientation)
+  let slotval2 = cint(orientation)
 
   let slotval3 = role
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn.h
-proc callVirtualBase_dropMimeData(self: QIdentityProxyModel, data: gen_qmimedata.QMimeData, action: gen_qnamespace.DropAction, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
+proc QIdentityProxyModeldropMimeData*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, data: gen_qmimedata.QMimeData, action: cint, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
 
   fQIdentityProxyModel_virtualbase_dropMimeData(self.h, data.h, cint(action), row, column, parent.h)
 
-type QIdentityProxyModeldropMimeDataBase* = proc(data: gen_qmimedata.QMimeData, action: gen_qnamespace.DropAction, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
-proc ondropMimeData*(self: QIdentityProxyModel, slot: proc(super: QIdentityProxyModeldropMimeDataBase, data: gen_qmimedata.QMimeData, action: gen_qnamespace.DropAction, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool) =
+type QIdentityProxyModeldropMimeDataProc* = proc(data: gen_qmimedata.QMimeData, action: cint, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
+proc ondropMimeData*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, slot: QIdentityProxyModeldropMimeDataProc) =
   # TODO check subclass
-  type Cb = proc(super: QIdentityProxyModeldropMimeDataBase, data: gen_qmimedata.QMimeData, action: gen_qnamespace.DropAction, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
-  var tmp = new Cb
+  var tmp = new QIdentityProxyModeldropMimeDataProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIdentityProxyModel_override_virtual_dropMimeData(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIdentityProxyModel_dropMimeData(self: ptr cQIdentityProxyModel, slot: int, data: pointer, action: cint, row: cint, column: cint, parent: pointer): bool {.exportc: "miqt_exec_callback_QIdentityProxyModel_dropMimeData ".} =
-  type Cb = proc(super: QIdentityProxyModeldropMimeDataBase, data: gen_qmimedata.QMimeData, action: gen_qnamespace.DropAction, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(data: gen_qmimedata.QMimeData, action: gen_qnamespace.DropAction, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_dropMimeData(QIdentityProxyModel(h: self), data, action, row, column, parent)
+  var nimfunc = cast[ptr QIdentityProxyModeldropMimeDataProc](cast[pointer](slot))
   let slotval1 = gen_qmimedata.QMimeData(h: data)
 
-  let slotval2 = gen_qnamespace.DropAction(action)
+  let slotval2 = cint(action)
 
   let slotval3 = row
 
@@ -612,28 +555,23 @@ proc miqt_exec_callback_QIdentityProxyModel_dropMimeData(self: ptr cQIdentityPro
   let slotval5 = gen_qabstractitemmodel.QModelIndex(h: parent)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3, slotval4, slotval5 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3, slotval4, slotval5 )
 
   virtualReturn
-proc callVirtualBase_sibling(self: QIdentityProxyModel, row: cint, column: cint, idx: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
-
+proc QIdentityProxyModelsibling*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, row: cint, column: cint, idx: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
 
   gen_qabstractitemmodel.QModelIndex(h: fQIdentityProxyModel_virtualbase_sibling(self.h, row, column, idx.h))
 
-type QIdentityProxyModelsiblingBase* = proc(row: cint, column: cint, idx: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
-proc onsibling*(self: QIdentityProxyModel, slot: proc(super: QIdentityProxyModelsiblingBase, row: cint, column: cint, idx: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex) =
+type QIdentityProxyModelsiblingProc* = proc(row: cint, column: cint, idx: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
+proc onsibling*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, slot: QIdentityProxyModelsiblingProc) =
   # TODO check subclass
-  type Cb = proc(super: QIdentityProxyModelsiblingBase, row: cint, column: cint, idx: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
-  var tmp = new Cb
+  var tmp = new QIdentityProxyModelsiblingProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIdentityProxyModel_override_virtual_sibling(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIdentityProxyModel_sibling(self: ptr cQIdentityProxyModel, slot: int, row: cint, column: cint, idx: pointer): pointer {.exportc: "miqt_exec_callback_QIdentityProxyModel_sibling ".} =
-  type Cb = proc(super: QIdentityProxyModelsiblingBase, row: cint, column: cint, idx: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(row: cint, column: cint, idx: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_sibling(QIdentityProxyModel(h: self), row, column, idx)
+  var nimfunc = cast[ptr QIdentityProxyModelsiblingProc](cast[pointer](slot))
   let slotval1 = row
 
   let slotval2 = column
@@ -641,61 +579,50 @@ proc miqt_exec_callback_QIdentityProxyModel_sibling(self: ptr cQIdentityProxyMod
   let slotval3 = gen_qabstractitemmodel.QModelIndex(h: idx)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn.h
-proc callVirtualBase_mapSelectionFromSource(self: QIdentityProxyModel, selection: gen_qitemselectionmodel.QItemSelection): gen_qitemselectionmodel.QItemSelection =
-
+proc QIdentityProxyModelmapSelectionFromSource*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, selection: gen_qitemselectionmodel.QItemSelection): gen_qitemselectionmodel.QItemSelection =
 
   gen_qitemselectionmodel.QItemSelection(h: fQIdentityProxyModel_virtualbase_mapSelectionFromSource(self.h, selection.h))
 
-type QIdentityProxyModelmapSelectionFromSourceBase* = proc(selection: gen_qitemselectionmodel.QItemSelection): gen_qitemselectionmodel.QItemSelection
-proc onmapSelectionFromSource*(self: QIdentityProxyModel, slot: proc(super: QIdentityProxyModelmapSelectionFromSourceBase, selection: gen_qitemselectionmodel.QItemSelection): gen_qitemselectionmodel.QItemSelection) =
+type QIdentityProxyModelmapSelectionFromSourceProc* = proc(selection: gen_qitemselectionmodel.QItemSelection): gen_qitemselectionmodel.QItemSelection
+proc onmapSelectionFromSource*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, slot: QIdentityProxyModelmapSelectionFromSourceProc) =
   # TODO check subclass
-  type Cb = proc(super: QIdentityProxyModelmapSelectionFromSourceBase, selection: gen_qitemselectionmodel.QItemSelection): gen_qitemselectionmodel.QItemSelection
-  var tmp = new Cb
+  var tmp = new QIdentityProxyModelmapSelectionFromSourceProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIdentityProxyModel_override_virtual_mapSelectionFromSource(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIdentityProxyModel_mapSelectionFromSource(self: ptr cQIdentityProxyModel, slot: int, selection: pointer): pointer {.exportc: "miqt_exec_callback_QIdentityProxyModel_mapSelectionFromSource ".} =
-  type Cb = proc(super: QIdentityProxyModelmapSelectionFromSourceBase, selection: gen_qitemselectionmodel.QItemSelection): gen_qitemselectionmodel.QItemSelection
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(selection: gen_qitemselectionmodel.QItemSelection): auto =
-    callVirtualBase_mapSelectionFromSource(QIdentityProxyModel(h: self), selection)
+  var nimfunc = cast[ptr QIdentityProxyModelmapSelectionFromSourceProc](cast[pointer](slot))
   let slotval1 = gen_qitemselectionmodel.QItemSelection(h: selection)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_mapSelectionToSource(self: QIdentityProxyModel, selection: gen_qitemselectionmodel.QItemSelection): gen_qitemselectionmodel.QItemSelection =
-
+proc QIdentityProxyModelmapSelectionToSource*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, selection: gen_qitemselectionmodel.QItemSelection): gen_qitemselectionmodel.QItemSelection =
 
   gen_qitemselectionmodel.QItemSelection(h: fQIdentityProxyModel_virtualbase_mapSelectionToSource(self.h, selection.h))
 
-type QIdentityProxyModelmapSelectionToSourceBase* = proc(selection: gen_qitemselectionmodel.QItemSelection): gen_qitemselectionmodel.QItemSelection
-proc onmapSelectionToSource*(self: QIdentityProxyModel, slot: proc(super: QIdentityProxyModelmapSelectionToSourceBase, selection: gen_qitemselectionmodel.QItemSelection): gen_qitemselectionmodel.QItemSelection) =
+type QIdentityProxyModelmapSelectionToSourceProc* = proc(selection: gen_qitemselectionmodel.QItemSelection): gen_qitemselectionmodel.QItemSelection
+proc onmapSelectionToSource*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, slot: QIdentityProxyModelmapSelectionToSourceProc) =
   # TODO check subclass
-  type Cb = proc(super: QIdentityProxyModelmapSelectionToSourceBase, selection: gen_qitemselectionmodel.QItemSelection): gen_qitemselectionmodel.QItemSelection
-  var tmp = new Cb
+  var tmp = new QIdentityProxyModelmapSelectionToSourceProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIdentityProxyModel_override_virtual_mapSelectionToSource(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIdentityProxyModel_mapSelectionToSource(self: ptr cQIdentityProxyModel, slot: int, selection: pointer): pointer {.exportc: "miqt_exec_callback_QIdentityProxyModel_mapSelectionToSource ".} =
-  type Cb = proc(super: QIdentityProxyModelmapSelectionToSourceBase, selection: gen_qitemselectionmodel.QItemSelection): gen_qitemselectionmodel.QItemSelection
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(selection: gen_qitemselectionmodel.QItemSelection): auto =
-    callVirtualBase_mapSelectionToSource(QIdentityProxyModel(h: self), selection)
+  var nimfunc = cast[ptr QIdentityProxyModelmapSelectionToSourceProc](cast[pointer](slot))
   let slotval1 = gen_qitemselectionmodel.QItemSelection(h: selection)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_match(self: QIdentityProxyModel, start: gen_qabstractitemmodel.QModelIndex, role: cint, value: gen_qvariant.QVariant, hits: cint, flags: gen_qnamespace.MatchFlag): seq[gen_qabstractitemmodel.QModelIndex] =
-
+proc QIdentityProxyModelmatch*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, start: gen_qabstractitemmodel.QModelIndex, role: cint, value: gen_qvariant.QVariant, hits: cint, flags: cint): seq[gen_qabstractitemmodel.QModelIndex] =
 
   var v_ma = fQIdentityProxyModel_virtualbase_match(self.h, start.h, role, value.h, hits, cint(flags))
   var vx_ret = newSeq[gen_qabstractitemmodel.QModelIndex](int(v_ma.len))
@@ -704,20 +631,16 @@ proc callVirtualBase_match(self: QIdentityProxyModel, start: gen_qabstractitemmo
     vx_ret[i] = gen_qabstractitemmodel.QModelIndex(h: v_outCast[i])
   vx_ret
 
-type QIdentityProxyModelmatchBase* = proc(start: gen_qabstractitemmodel.QModelIndex, role: cint, value: gen_qvariant.QVariant, hits: cint, flags: gen_qnamespace.MatchFlag): seq[gen_qabstractitemmodel.QModelIndex]
-proc onmatch*(self: QIdentityProxyModel, slot: proc(super: QIdentityProxyModelmatchBase, start: gen_qabstractitemmodel.QModelIndex, role: cint, value: gen_qvariant.QVariant, hits: cint, flags: gen_qnamespace.MatchFlag): seq[gen_qabstractitemmodel.QModelIndex]) =
+type QIdentityProxyModelmatchProc* = proc(start: gen_qabstractitemmodel.QModelIndex, role: cint, value: gen_qvariant.QVariant, hits: cint, flags: cint): seq[gen_qabstractitemmodel.QModelIndex]
+proc onmatch*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, slot: QIdentityProxyModelmatchProc) =
   # TODO check subclass
-  type Cb = proc(super: QIdentityProxyModelmatchBase, start: gen_qabstractitemmodel.QModelIndex, role: cint, value: gen_qvariant.QVariant, hits: cint, flags: gen_qnamespace.MatchFlag): seq[gen_qabstractitemmodel.QModelIndex]
-  var tmp = new Cb
+  var tmp = new QIdentityProxyModelmatchProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIdentityProxyModel_override_virtual_match(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIdentityProxyModel_match(self: ptr cQIdentityProxyModel, slot: int, start: pointer, role: cint, value: pointer, hits: cint, flags: cint): struct_miqt_array {.exportc: "miqt_exec_callback_QIdentityProxyModel_match ".} =
-  type Cb = proc(super: QIdentityProxyModelmatchBase, start: gen_qabstractitemmodel.QModelIndex, role: cint, value: gen_qvariant.QVariant, hits: cint, flags: gen_qnamespace.MatchFlag): seq[gen_qabstractitemmodel.QModelIndex]
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(start: gen_qabstractitemmodel.QModelIndex, role: cint, value: gen_qvariant.QVariant, hits: cint, flags: gen_qnamespace.MatchFlag): auto =
-    callVirtualBase_match(QIdentityProxyModel(h: self), start, role, value, hits, flags)
+  var nimfunc = cast[ptr QIdentityProxyModelmatchProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: start)
 
   let slotval2 = role
@@ -726,58 +649,48 @@ proc miqt_exec_callback_QIdentityProxyModel_match(self: ptr cQIdentityProxyModel
 
   let slotval4 = hits
 
-  let slotval5 = gen_qnamespace.MatchFlag(flags)
+  let slotval5 = cint(flags)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3, slotval4, slotval5 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3, slotval4, slotval5 )
   var virtualReturn_CArray = newSeq[pointer](len(virtualReturn))
   for i in 0..<len(virtualReturn):
     virtualReturn_CArray[i] = virtualReturn[i].h
 
 
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
-proc callVirtualBase_setSourceModel(self: QIdentityProxyModel, sourceModel: gen_qabstractitemmodel.QAbstractItemModel): void =
-
+proc QIdentityProxyModelsetSourceModel*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, sourceModel: gen_qabstractitemmodel.QAbstractItemModel): void =
 
   fQIdentityProxyModel_virtualbase_setSourceModel(self.h, sourceModel.h)
 
-type QIdentityProxyModelsetSourceModelBase* = proc(sourceModel: gen_qabstractitemmodel.QAbstractItemModel): void
-proc onsetSourceModel*(self: QIdentityProxyModel, slot: proc(super: QIdentityProxyModelsetSourceModelBase, sourceModel: gen_qabstractitemmodel.QAbstractItemModel): void) =
+type QIdentityProxyModelsetSourceModelProc* = proc(sourceModel: gen_qabstractitemmodel.QAbstractItemModel): void
+proc onsetSourceModel*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, slot: QIdentityProxyModelsetSourceModelProc) =
   # TODO check subclass
-  type Cb = proc(super: QIdentityProxyModelsetSourceModelBase, sourceModel: gen_qabstractitemmodel.QAbstractItemModel): void
-  var tmp = new Cb
+  var tmp = new QIdentityProxyModelsetSourceModelProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIdentityProxyModel_override_virtual_setSourceModel(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIdentityProxyModel_setSourceModel(self: ptr cQIdentityProxyModel, slot: int, sourceModel: pointer): void {.exportc: "miqt_exec_callback_QIdentityProxyModel_setSourceModel ".} =
-  type Cb = proc(super: QIdentityProxyModelsetSourceModelBase, sourceModel: gen_qabstractitemmodel.QAbstractItemModel): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(sourceModel: gen_qabstractitemmodel.QAbstractItemModel): auto =
-    callVirtualBase_setSourceModel(QIdentityProxyModel(h: self), sourceModel)
+  var nimfunc = cast[ptr QIdentityProxyModelsetSourceModelProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QAbstractItemModel(h: sourceModel)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_insertColumns(self: QIdentityProxyModel, column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
+  nimfunc[](slotval1)
+proc QIdentityProxyModelinsertColumns*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
 
   fQIdentityProxyModel_virtualbase_insertColumns(self.h, column, count, parent.h)
 
-type QIdentityProxyModelinsertColumnsBase* = proc(column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
-proc oninsertColumns*(self: QIdentityProxyModel, slot: proc(super: QIdentityProxyModelinsertColumnsBase, column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool) =
+type QIdentityProxyModelinsertColumnsProc* = proc(column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
+proc oninsertColumns*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, slot: QIdentityProxyModelinsertColumnsProc) =
   # TODO check subclass
-  type Cb = proc(super: QIdentityProxyModelinsertColumnsBase, column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
-  var tmp = new Cb
+  var tmp = new QIdentityProxyModelinsertColumnsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIdentityProxyModel_override_virtual_insertColumns(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIdentityProxyModel_insertColumns(self: ptr cQIdentityProxyModel, slot: int, column: cint, count: cint, parent: pointer): bool {.exportc: "miqt_exec_callback_QIdentityProxyModel_insertColumns ".} =
-  type Cb = proc(super: QIdentityProxyModelinsertColumnsBase, column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_insertColumns(QIdentityProxyModel(h: self), column, count, parent)
+  var nimfunc = cast[ptr QIdentityProxyModelinsertColumnsProc](cast[pointer](slot))
   let slotval1 = column
 
   let slotval2 = count
@@ -785,28 +698,23 @@ proc miqt_exec_callback_QIdentityProxyModel_insertColumns(self: ptr cQIdentityPr
   let slotval3 = gen_qabstractitemmodel.QModelIndex(h: parent)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_insertRows(self: QIdentityProxyModel, row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
+proc QIdentityProxyModelinsertRows*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
 
   fQIdentityProxyModel_virtualbase_insertRows(self.h, row, count, parent.h)
 
-type QIdentityProxyModelinsertRowsBase* = proc(row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
-proc oninsertRows*(self: QIdentityProxyModel, slot: proc(super: QIdentityProxyModelinsertRowsBase, row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool) =
+type QIdentityProxyModelinsertRowsProc* = proc(row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
+proc oninsertRows*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, slot: QIdentityProxyModelinsertRowsProc) =
   # TODO check subclass
-  type Cb = proc(super: QIdentityProxyModelinsertRowsBase, row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
-  var tmp = new Cb
+  var tmp = new QIdentityProxyModelinsertRowsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIdentityProxyModel_override_virtual_insertRows(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIdentityProxyModel_insertRows(self: ptr cQIdentityProxyModel, slot: int, row: cint, count: cint, parent: pointer): bool {.exportc: "miqt_exec_callback_QIdentityProxyModel_insertRows ".} =
-  type Cb = proc(super: QIdentityProxyModelinsertRowsBase, row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_insertRows(QIdentityProxyModel(h: self), row, count, parent)
+  var nimfunc = cast[ptr QIdentityProxyModelinsertRowsProc](cast[pointer](slot))
   let slotval1 = row
 
   let slotval2 = count
@@ -814,28 +722,23 @@ proc miqt_exec_callback_QIdentityProxyModel_insertRows(self: ptr cQIdentityProxy
   let slotval3 = gen_qabstractitemmodel.QModelIndex(h: parent)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_removeColumns(self: QIdentityProxyModel, column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
+proc QIdentityProxyModelremoveColumns*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
 
   fQIdentityProxyModel_virtualbase_removeColumns(self.h, column, count, parent.h)
 
-type QIdentityProxyModelremoveColumnsBase* = proc(column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
-proc onremoveColumns*(self: QIdentityProxyModel, slot: proc(super: QIdentityProxyModelremoveColumnsBase, column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool) =
+type QIdentityProxyModelremoveColumnsProc* = proc(column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
+proc onremoveColumns*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, slot: QIdentityProxyModelremoveColumnsProc) =
   # TODO check subclass
-  type Cb = proc(super: QIdentityProxyModelremoveColumnsBase, column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
-  var tmp = new Cb
+  var tmp = new QIdentityProxyModelremoveColumnsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIdentityProxyModel_override_virtual_removeColumns(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIdentityProxyModel_removeColumns(self: ptr cQIdentityProxyModel, slot: int, column: cint, count: cint, parent: pointer): bool {.exportc: "miqt_exec_callback_QIdentityProxyModel_removeColumns ".} =
-  type Cb = proc(super: QIdentityProxyModelremoveColumnsBase, column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_removeColumns(QIdentityProxyModel(h: self), column, count, parent)
+  var nimfunc = cast[ptr QIdentityProxyModelremoveColumnsProc](cast[pointer](slot))
   let slotval1 = column
 
   let slotval2 = count
@@ -843,28 +746,23 @@ proc miqt_exec_callback_QIdentityProxyModel_removeColumns(self: ptr cQIdentityPr
   let slotval3 = gen_qabstractitemmodel.QModelIndex(h: parent)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_removeRows(self: QIdentityProxyModel, row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
+proc QIdentityProxyModelremoveRows*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
 
   fQIdentityProxyModel_virtualbase_removeRows(self.h, row, count, parent.h)
 
-type QIdentityProxyModelremoveRowsBase* = proc(row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
-proc onremoveRows*(self: QIdentityProxyModel, slot: proc(super: QIdentityProxyModelremoveRowsBase, row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool) =
+type QIdentityProxyModelremoveRowsProc* = proc(row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
+proc onremoveRows*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, slot: QIdentityProxyModelremoveRowsProc) =
   # TODO check subclass
-  type Cb = proc(super: QIdentityProxyModelremoveRowsBase, row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
-  var tmp = new Cb
+  var tmp = new QIdentityProxyModelremoveRowsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIdentityProxyModel_override_virtual_removeRows(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIdentityProxyModel_removeRows(self: ptr cQIdentityProxyModel, slot: int, row: cint, count: cint, parent: pointer): bool {.exportc: "miqt_exec_callback_QIdentityProxyModel_removeRows ".} =
-  type Cb = proc(super: QIdentityProxyModelremoveRowsBase, row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_removeRows(QIdentityProxyModel(h: self), row, count, parent)
+  var nimfunc = cast[ptr QIdentityProxyModelremoveRowsProc](cast[pointer](slot))
   let slotval1 = row
 
   let slotval2 = count
@@ -872,28 +770,23 @@ proc miqt_exec_callback_QIdentityProxyModel_removeRows(self: ptr cQIdentityProxy
   let slotval3 = gen_qabstractitemmodel.QModelIndex(h: parent)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_moveRows(self: QIdentityProxyModel, sourceParent: gen_qabstractitemmodel.QModelIndex, sourceRow: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool =
-
+proc QIdentityProxyModelmoveRows*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, sourceParent: gen_qabstractitemmodel.QModelIndex, sourceRow: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool =
 
   fQIdentityProxyModel_virtualbase_moveRows(self.h, sourceParent.h, sourceRow, count, destinationParent.h, destinationChild)
 
-type QIdentityProxyModelmoveRowsBase* = proc(sourceParent: gen_qabstractitemmodel.QModelIndex, sourceRow: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool
-proc onmoveRows*(self: QIdentityProxyModel, slot: proc(super: QIdentityProxyModelmoveRowsBase, sourceParent: gen_qabstractitemmodel.QModelIndex, sourceRow: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool) =
+type QIdentityProxyModelmoveRowsProc* = proc(sourceParent: gen_qabstractitemmodel.QModelIndex, sourceRow: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool
+proc onmoveRows*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, slot: QIdentityProxyModelmoveRowsProc) =
   # TODO check subclass
-  type Cb = proc(super: QIdentityProxyModelmoveRowsBase, sourceParent: gen_qabstractitemmodel.QModelIndex, sourceRow: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool
-  var tmp = new Cb
+  var tmp = new QIdentityProxyModelmoveRowsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIdentityProxyModel_override_virtual_moveRows(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIdentityProxyModel_moveRows(self: ptr cQIdentityProxyModel, slot: int, sourceParent: pointer, sourceRow: cint, count: cint, destinationParent: pointer, destinationChild: cint): bool {.exportc: "miqt_exec_callback_QIdentityProxyModel_moveRows ".} =
-  type Cb = proc(super: QIdentityProxyModelmoveRowsBase, sourceParent: gen_qabstractitemmodel.QModelIndex, sourceRow: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(sourceParent: gen_qabstractitemmodel.QModelIndex, sourceRow: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): auto =
-    callVirtualBase_moveRows(QIdentityProxyModel(h: self), sourceParent, sourceRow, count, destinationParent, destinationChild)
+  var nimfunc = cast[ptr QIdentityProxyModelmoveRowsProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: sourceParent)
 
   let slotval2 = sourceRow
@@ -905,28 +798,23 @@ proc miqt_exec_callback_QIdentityProxyModel_moveRows(self: ptr cQIdentityProxyMo
   let slotval5 = destinationChild
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3, slotval4, slotval5 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3, slotval4, slotval5 )
 
   virtualReturn
-proc callVirtualBase_moveColumns(self: QIdentityProxyModel, sourceParent: gen_qabstractitemmodel.QModelIndex, sourceColumn: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool =
-
+proc QIdentityProxyModelmoveColumns*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, sourceParent: gen_qabstractitemmodel.QModelIndex, sourceColumn: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool =
 
   fQIdentityProxyModel_virtualbase_moveColumns(self.h, sourceParent.h, sourceColumn, count, destinationParent.h, destinationChild)
 
-type QIdentityProxyModelmoveColumnsBase* = proc(sourceParent: gen_qabstractitemmodel.QModelIndex, sourceColumn: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool
-proc onmoveColumns*(self: QIdentityProxyModel, slot: proc(super: QIdentityProxyModelmoveColumnsBase, sourceParent: gen_qabstractitemmodel.QModelIndex, sourceColumn: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool) =
+type QIdentityProxyModelmoveColumnsProc* = proc(sourceParent: gen_qabstractitemmodel.QModelIndex, sourceColumn: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool
+proc onmoveColumns*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, slot: QIdentityProxyModelmoveColumnsProc) =
   # TODO check subclass
-  type Cb = proc(super: QIdentityProxyModelmoveColumnsBase, sourceParent: gen_qabstractitemmodel.QModelIndex, sourceColumn: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool
-  var tmp = new Cb
+  var tmp = new QIdentityProxyModelmoveColumnsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIdentityProxyModel_override_virtual_moveColumns(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIdentityProxyModel_moveColumns(self: ptr cQIdentityProxyModel, slot: int, sourceParent: pointer, sourceColumn: cint, count: cint, destinationParent: pointer, destinationChild: cint): bool {.exportc: "miqt_exec_callback_QIdentityProxyModel_moveColumns ".} =
-  type Cb = proc(super: QIdentityProxyModelmoveColumnsBase, sourceParent: gen_qabstractitemmodel.QModelIndex, sourceColumn: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(sourceParent: gen_qabstractitemmodel.QModelIndex, sourceColumn: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): auto =
-    callVirtualBase_moveColumns(QIdentityProxyModel(h: self), sourceParent, sourceColumn, count, destinationParent, destinationChild)
+  var nimfunc = cast[ptr QIdentityProxyModelmoveColumnsProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: sourceParent)
 
   let slotval2 = sourceColumn
@@ -938,82 +826,66 @@ proc miqt_exec_callback_QIdentityProxyModel_moveColumns(self: ptr cQIdentityProx
   let slotval5 = destinationChild
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3, slotval4, slotval5 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3, slotval4, slotval5 )
 
   virtualReturn
-proc callVirtualBase_submit(self: QIdentityProxyModel, ): bool =
-
+proc QIdentityProxyModelsubmit*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, ): bool =
 
   fQIdentityProxyModel_virtualbase_submit(self.h)
 
-type QIdentityProxyModelsubmitBase* = proc(): bool
-proc onsubmit*(self: QIdentityProxyModel, slot: proc(super: QIdentityProxyModelsubmitBase): bool) =
+type QIdentityProxyModelsubmitProc* = proc(): bool
+proc onsubmit*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, slot: QIdentityProxyModelsubmitProc) =
   # TODO check subclass
-  type Cb = proc(super: QIdentityProxyModelsubmitBase): bool
-  var tmp = new Cb
+  var tmp = new QIdentityProxyModelsubmitProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIdentityProxyModel_override_virtual_submit(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIdentityProxyModel_submit(self: ptr cQIdentityProxyModel, slot: int): bool {.exportc: "miqt_exec_callback_QIdentityProxyModel_submit ".} =
-  type Cb = proc(super: QIdentityProxyModelsubmitBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_submit(QIdentityProxyModel(h: self), )
+  var nimfunc = cast[ptr QIdentityProxyModelsubmitProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_revert(self: QIdentityProxyModel, ): void =
-
+proc QIdentityProxyModelrevert*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, ): void =
 
   fQIdentityProxyModel_virtualbase_revert(self.h)
 
-type QIdentityProxyModelrevertBase* = proc(): void
-proc onrevert*(self: QIdentityProxyModel, slot: proc(super: QIdentityProxyModelrevertBase): void) =
+type QIdentityProxyModelrevertProc* = proc(): void
+proc onrevert*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, slot: QIdentityProxyModelrevertProc) =
   # TODO check subclass
-  type Cb = proc(super: QIdentityProxyModelrevertBase): void
-  var tmp = new Cb
+  var tmp = new QIdentityProxyModelrevertProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIdentityProxyModel_override_virtual_revert(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIdentityProxyModel_revert(self: ptr cQIdentityProxyModel, slot: int): void {.exportc: "miqt_exec_callback_QIdentityProxyModel_revert ".} =
-  type Cb = proc(super: QIdentityProxyModelrevertBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_revert(QIdentityProxyModel(h: self), )
+  var nimfunc = cast[ptr QIdentityProxyModelrevertProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_data(self: QIdentityProxyModel, proxyIndex: gen_qabstractitemmodel.QModelIndex, role: cint): gen_qvariant.QVariant =
-
+  nimfunc[]()
+proc QIdentityProxyModeldata*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, proxyIndex: gen_qabstractitemmodel.QModelIndex, role: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQIdentityProxyModel_virtualbase_data(self.h, proxyIndex.h, role))
 
-type QIdentityProxyModeldataBase* = proc(proxyIndex: gen_qabstractitemmodel.QModelIndex, role: cint): gen_qvariant.QVariant
-proc ondata*(self: QIdentityProxyModel, slot: proc(super: QIdentityProxyModeldataBase, proxyIndex: gen_qabstractitemmodel.QModelIndex, role: cint): gen_qvariant.QVariant) =
+type QIdentityProxyModeldataProc* = proc(proxyIndex: gen_qabstractitemmodel.QModelIndex, role: cint): gen_qvariant.QVariant
+proc ondata*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, slot: QIdentityProxyModeldataProc) =
   # TODO check subclass
-  type Cb = proc(super: QIdentityProxyModeldataBase, proxyIndex: gen_qabstractitemmodel.QModelIndex, role: cint): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QIdentityProxyModeldataProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIdentityProxyModel_override_virtual_data(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIdentityProxyModel_data(self: ptr cQIdentityProxyModel, slot: int, proxyIndex: pointer, role: cint): pointer {.exportc: "miqt_exec_callback_QIdentityProxyModel_data ".} =
-  type Cb = proc(super: QIdentityProxyModeldataBase, proxyIndex: gen_qabstractitemmodel.QModelIndex, role: cint): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(proxyIndex: gen_qabstractitemmodel.QModelIndex, role: cint): auto =
-    callVirtualBase_data(QIdentityProxyModel(h: self), proxyIndex, role)
+  var nimfunc = cast[ptr QIdentityProxyModeldataProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: proxyIndex)
 
   let slotval2 = role
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn.h
-proc callVirtualBase_itemData(self: QIdentityProxyModel, index: gen_qabstractitemmodel.QModelIndex): Table[cint,gen_qvariant.QVariant] =
-
+proc QIdentityProxyModelitemData*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, index: gen_qabstractitemmodel.QModelIndex): Table[cint,gen_qvariant.QVariant] =
 
   var v_mm = fQIdentityProxyModel_virtualbase_itemData(self.h, index.h)
   var vx_ret: Table[cint, gen_qvariant.QVariant]
@@ -1027,24 +899,20 @@ proc callVirtualBase_itemData(self: QIdentityProxyModel, index: gen_qabstractite
     vx_ret[v_entry_Key] = v_entry_Value
   vx_ret
 
-type QIdentityProxyModelitemDataBase* = proc(index: gen_qabstractitemmodel.QModelIndex): Table[cint,gen_qvariant.QVariant]
-proc onitemData*(self: QIdentityProxyModel, slot: proc(super: QIdentityProxyModelitemDataBase, index: gen_qabstractitemmodel.QModelIndex): Table[cint,gen_qvariant.QVariant]) =
+type QIdentityProxyModelitemDataProc* = proc(index: gen_qabstractitemmodel.QModelIndex): Table[cint,gen_qvariant.QVariant]
+proc onitemData*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, slot: QIdentityProxyModelitemDataProc) =
   # TODO check subclass
-  type Cb = proc(super: QIdentityProxyModelitemDataBase, index: gen_qabstractitemmodel.QModelIndex): Table[cint,gen_qvariant.QVariant]
-  var tmp = new Cb
+  var tmp = new QIdentityProxyModelitemDataProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIdentityProxyModel_override_virtual_itemData(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIdentityProxyModel_itemData(self: ptr cQIdentityProxyModel, slot: int, index: pointer): struct_miqt_map {.exportc: "miqt_exec_callback_QIdentityProxyModel_itemData ".} =
-  type Cb = proc(super: QIdentityProxyModelitemDataBase, index: gen_qabstractitemmodel.QModelIndex): Table[cint,gen_qvariant.QVariant]
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(index: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_itemData(QIdentityProxyModel(h: self), index)
+  var nimfunc = cast[ptr QIdentityProxyModelitemDataProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: index)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
   var virtualReturn_Keys_CArray = newSeq[cint](len(virtualReturn))
   var virtualReturn_Values_CArray = newSeq[pointer](len(virtualReturn))
   var virtualReturn_ctr = 0
@@ -1055,50 +923,40 @@ proc miqt_exec_callback_QIdentityProxyModel_itemData(self: ptr cQIdentityProxyMo
 
 
   struct_miqt_map(len: csize_t(len(virtualReturn)),keys: if len(virtualReturn) == 0: nil else: addr(virtualReturn_Keys_CArray[0]), values: if len(virtualReturn) == 0: nil else: addr(virtualReturn_Values_CArray[0]),)
-proc callVirtualBase_flags(self: QIdentityProxyModel, index: gen_qabstractitemmodel.QModelIndex): gen_qnamespace.ItemFlag =
+proc QIdentityProxyModelflags*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, index: gen_qabstractitemmodel.QModelIndex): cint =
 
+  cint(fQIdentityProxyModel_virtualbase_flags(self.h, index.h))
 
-  gen_qnamespace.ItemFlag(fQIdentityProxyModel_virtualbase_flags(self.h, index.h))
-
-type QIdentityProxyModelflagsBase* = proc(index: gen_qabstractitemmodel.QModelIndex): gen_qnamespace.ItemFlag
-proc onflags*(self: QIdentityProxyModel, slot: proc(super: QIdentityProxyModelflagsBase, index: gen_qabstractitemmodel.QModelIndex): gen_qnamespace.ItemFlag) =
+type QIdentityProxyModelflagsProc* = proc(index: gen_qabstractitemmodel.QModelIndex): cint
+proc onflags*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, slot: QIdentityProxyModelflagsProc) =
   # TODO check subclass
-  type Cb = proc(super: QIdentityProxyModelflagsBase, index: gen_qabstractitemmodel.QModelIndex): gen_qnamespace.ItemFlag
-  var tmp = new Cb
+  var tmp = new QIdentityProxyModelflagsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIdentityProxyModel_override_virtual_flags(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIdentityProxyModel_flags(self: ptr cQIdentityProxyModel, slot: int, index: pointer): cint {.exportc: "miqt_exec_callback_QIdentityProxyModel_flags ".} =
-  type Cb = proc(super: QIdentityProxyModelflagsBase, index: gen_qabstractitemmodel.QModelIndex): gen_qnamespace.ItemFlag
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(index: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_flags(QIdentityProxyModel(h: self), index)
+  var nimfunc = cast[ptr QIdentityProxyModelflagsProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: index)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   cint(virtualReturn)
-proc callVirtualBase_setData(self: QIdentityProxyModel, index: gen_qabstractitemmodel.QModelIndex, value: gen_qvariant.QVariant, role: cint): bool =
-
+proc QIdentityProxyModelsetData*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, index: gen_qabstractitemmodel.QModelIndex, value: gen_qvariant.QVariant, role: cint): bool =
 
   fQIdentityProxyModel_virtualbase_setData(self.h, index.h, value.h, role)
 
-type QIdentityProxyModelsetDataBase* = proc(index: gen_qabstractitemmodel.QModelIndex, value: gen_qvariant.QVariant, role: cint): bool
-proc onsetData*(self: QIdentityProxyModel, slot: proc(super: QIdentityProxyModelsetDataBase, index: gen_qabstractitemmodel.QModelIndex, value: gen_qvariant.QVariant, role: cint): bool) =
+type QIdentityProxyModelsetDataProc* = proc(index: gen_qabstractitemmodel.QModelIndex, value: gen_qvariant.QVariant, role: cint): bool
+proc onsetData*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, slot: QIdentityProxyModelsetDataProc) =
   # TODO check subclass
-  type Cb = proc(super: QIdentityProxyModelsetDataBase, index: gen_qabstractitemmodel.QModelIndex, value: gen_qvariant.QVariant, role: cint): bool
-  var tmp = new Cb
+  var tmp = new QIdentityProxyModelsetDataProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIdentityProxyModel_override_virtual_setData(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIdentityProxyModel_setData(self: ptr cQIdentityProxyModel, slot: int, index: pointer, value: pointer, role: cint): bool {.exportc: "miqt_exec_callback_QIdentityProxyModel_setData ".} =
-  type Cb = proc(super: QIdentityProxyModelsetDataBase, index: gen_qabstractitemmodel.QModelIndex, value: gen_qvariant.QVariant, role: cint): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(index: gen_qabstractitemmodel.QModelIndex, value: gen_qvariant.QVariant, role: cint): auto =
-    callVirtualBase_setData(QIdentityProxyModel(h: self), index, value, role)
+  var nimfunc = cast[ptr QIdentityProxyModelsetDataProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: index)
 
   let slotval2 = gen_qvariant.QVariant(h: value)
@@ -1106,10 +964,10 @@ proc miqt_exec_callback_QIdentityProxyModel_setData(self: ptr cQIdentityProxyMod
   let slotval3 = role
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_setItemData(self: QIdentityProxyModel, index: gen_qabstractitemmodel.QModelIndex, roles: Table[cint,gen_qvariant.QVariant]): bool =
+proc QIdentityProxyModelsetItemData*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, index: gen_qabstractitemmodel.QModelIndex, roles: Table[cint,gen_qvariant.QVariant]): bool =
 
   var roles_Keys_CArray = newSeq[cint](len(roles))
   var roles_Values_CArray = newSeq[pointer](len(roles))
@@ -1119,23 +977,18 @@ proc callVirtualBase_setItemData(self: QIdentityProxyModel, index: gen_qabstract
     roles_Values_CArray[roles_ctr] = roles_v.h
     roles_ctr += 1
 
-
   fQIdentityProxyModel_virtualbase_setItemData(self.h, index.h, struct_miqt_map(len: csize_t(len(roles)),keys: if len(roles) == 0: nil else: addr(roles_Keys_CArray[0]), values: if len(roles) == 0: nil else: addr(roles_Values_CArray[0]),))
 
-type QIdentityProxyModelsetItemDataBase* = proc(index: gen_qabstractitemmodel.QModelIndex, roles: Table[cint,gen_qvariant.QVariant]): bool
-proc onsetItemData*(self: QIdentityProxyModel, slot: proc(super: QIdentityProxyModelsetItemDataBase, index: gen_qabstractitemmodel.QModelIndex, roles: Table[cint,gen_qvariant.QVariant]): bool) =
+type QIdentityProxyModelsetItemDataProc* = proc(index: gen_qabstractitemmodel.QModelIndex, roles: Table[cint,gen_qvariant.QVariant]): bool
+proc onsetItemData*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, slot: QIdentityProxyModelsetItemDataProc) =
   # TODO check subclass
-  type Cb = proc(super: QIdentityProxyModelsetItemDataBase, index: gen_qabstractitemmodel.QModelIndex, roles: Table[cint,gen_qvariant.QVariant]): bool
-  var tmp = new Cb
+  var tmp = new QIdentityProxyModelsetItemDataProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIdentityProxyModel_override_virtual_setItemData(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIdentityProxyModel_setItemData(self: ptr cQIdentityProxyModel, slot: int, index: pointer, roles: struct_miqt_map): bool {.exportc: "miqt_exec_callback_QIdentityProxyModel_setItemData ".} =
-  type Cb = proc(super: QIdentityProxyModelsetItemDataBase, index: gen_qabstractitemmodel.QModelIndex, roles: Table[cint,gen_qvariant.QVariant]): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(index: gen_qabstractitemmodel.QModelIndex, roles: Table[cint,gen_qvariant.QVariant]): auto =
-    callVirtualBase_setItemData(QIdentityProxyModel(h: self), index, roles)
+  var nimfunc = cast[ptr QIdentityProxyModelsetItemDataProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: index)
 
   var vroles_mm = roles
@@ -1151,236 +1004,191 @@ proc miqt_exec_callback_QIdentityProxyModel_setItemData(self: ptr cQIdentityProx
   let slotval2 = vrolesx_ret
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_setHeaderData(self: QIdentityProxyModel, section: cint, orientation: gen_qnamespace.Orientation, value: gen_qvariant.QVariant, role: cint): bool =
-
+proc QIdentityProxyModelsetHeaderData*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, section: cint, orientation: cint, value: gen_qvariant.QVariant, role: cint): bool =
 
   fQIdentityProxyModel_virtualbase_setHeaderData(self.h, section, cint(orientation), value.h, role)
 
-type QIdentityProxyModelsetHeaderDataBase* = proc(section: cint, orientation: gen_qnamespace.Orientation, value: gen_qvariant.QVariant, role: cint): bool
-proc onsetHeaderData*(self: QIdentityProxyModel, slot: proc(super: QIdentityProxyModelsetHeaderDataBase, section: cint, orientation: gen_qnamespace.Orientation, value: gen_qvariant.QVariant, role: cint): bool) =
+type QIdentityProxyModelsetHeaderDataProc* = proc(section: cint, orientation: cint, value: gen_qvariant.QVariant, role: cint): bool
+proc onsetHeaderData*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, slot: QIdentityProxyModelsetHeaderDataProc) =
   # TODO check subclass
-  type Cb = proc(super: QIdentityProxyModelsetHeaderDataBase, section: cint, orientation: gen_qnamespace.Orientation, value: gen_qvariant.QVariant, role: cint): bool
-  var tmp = new Cb
+  var tmp = new QIdentityProxyModelsetHeaderDataProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIdentityProxyModel_override_virtual_setHeaderData(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIdentityProxyModel_setHeaderData(self: ptr cQIdentityProxyModel, slot: int, section: cint, orientation: cint, value: pointer, role: cint): bool {.exportc: "miqt_exec_callback_QIdentityProxyModel_setHeaderData ".} =
-  type Cb = proc(super: QIdentityProxyModelsetHeaderDataBase, section: cint, orientation: gen_qnamespace.Orientation, value: gen_qvariant.QVariant, role: cint): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(section: cint, orientation: gen_qnamespace.Orientation, value: gen_qvariant.QVariant, role: cint): auto =
-    callVirtualBase_setHeaderData(QIdentityProxyModel(h: self), section, orientation, value, role)
+  var nimfunc = cast[ptr QIdentityProxyModelsetHeaderDataProc](cast[pointer](slot))
   let slotval1 = section
 
-  let slotval2 = gen_qnamespace.Orientation(orientation)
+  let slotval2 = cint(orientation)
 
   let slotval3 = gen_qvariant.QVariant(h: value)
 
   let slotval4 = role
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3, slotval4 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3, slotval4 )
 
   virtualReturn
-proc callVirtualBase_clearItemData(self: QIdentityProxyModel, index: gen_qabstractitemmodel.QModelIndex): bool =
-
+proc QIdentityProxyModelclearItemData*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, index: gen_qabstractitemmodel.QModelIndex): bool =
 
   fQIdentityProxyModel_virtualbase_clearItemData(self.h, index.h)
 
-type QIdentityProxyModelclearItemDataBase* = proc(index: gen_qabstractitemmodel.QModelIndex): bool
-proc onclearItemData*(self: QIdentityProxyModel, slot: proc(super: QIdentityProxyModelclearItemDataBase, index: gen_qabstractitemmodel.QModelIndex): bool) =
+type QIdentityProxyModelclearItemDataProc* = proc(index: gen_qabstractitemmodel.QModelIndex): bool
+proc onclearItemData*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, slot: QIdentityProxyModelclearItemDataProc) =
   # TODO check subclass
-  type Cb = proc(super: QIdentityProxyModelclearItemDataBase, index: gen_qabstractitemmodel.QModelIndex): bool
-  var tmp = new Cb
+  var tmp = new QIdentityProxyModelclearItemDataProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIdentityProxyModel_override_virtual_clearItemData(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIdentityProxyModel_clearItemData(self: ptr cQIdentityProxyModel, slot: int, index: pointer): bool {.exportc: "miqt_exec_callback_QIdentityProxyModel_clearItemData ".} =
-  type Cb = proc(super: QIdentityProxyModelclearItemDataBase, index: gen_qabstractitemmodel.QModelIndex): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(index: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_clearItemData(QIdentityProxyModel(h: self), index)
+  var nimfunc = cast[ptr QIdentityProxyModelclearItemDataProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: index)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_buddy(self: QIdentityProxyModel, index: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
-
+proc QIdentityProxyModelbuddy*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, index: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
 
   gen_qabstractitemmodel.QModelIndex(h: fQIdentityProxyModel_virtualbase_buddy(self.h, index.h))
 
-type QIdentityProxyModelbuddyBase* = proc(index: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
-proc onbuddy*(self: QIdentityProxyModel, slot: proc(super: QIdentityProxyModelbuddyBase, index: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex) =
+type QIdentityProxyModelbuddyProc* = proc(index: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
+proc onbuddy*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, slot: QIdentityProxyModelbuddyProc) =
   # TODO check subclass
-  type Cb = proc(super: QIdentityProxyModelbuddyBase, index: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
-  var tmp = new Cb
+  var tmp = new QIdentityProxyModelbuddyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIdentityProxyModel_override_virtual_buddy(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIdentityProxyModel_buddy(self: ptr cQIdentityProxyModel, slot: int, index: pointer): pointer {.exportc: "miqt_exec_callback_QIdentityProxyModel_buddy ".} =
-  type Cb = proc(super: QIdentityProxyModelbuddyBase, index: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(index: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_buddy(QIdentityProxyModel(h: self), index)
+  var nimfunc = cast[ptr QIdentityProxyModelbuddyProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: index)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_canFetchMore(self: QIdentityProxyModel, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
+proc QIdentityProxyModelcanFetchMore*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, parent: gen_qabstractitemmodel.QModelIndex): bool =
 
   fQIdentityProxyModel_virtualbase_canFetchMore(self.h, parent.h)
 
-type QIdentityProxyModelcanFetchMoreBase* = proc(parent: gen_qabstractitemmodel.QModelIndex): bool
-proc oncanFetchMore*(self: QIdentityProxyModel, slot: proc(super: QIdentityProxyModelcanFetchMoreBase, parent: gen_qabstractitemmodel.QModelIndex): bool) =
+type QIdentityProxyModelcanFetchMoreProc* = proc(parent: gen_qabstractitemmodel.QModelIndex): bool
+proc oncanFetchMore*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, slot: QIdentityProxyModelcanFetchMoreProc) =
   # TODO check subclass
-  type Cb = proc(super: QIdentityProxyModelcanFetchMoreBase, parent: gen_qabstractitemmodel.QModelIndex): bool
-  var tmp = new Cb
+  var tmp = new QIdentityProxyModelcanFetchMoreProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIdentityProxyModel_override_virtual_canFetchMore(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIdentityProxyModel_canFetchMore(self: ptr cQIdentityProxyModel, slot: int, parent: pointer): bool {.exportc: "miqt_exec_callback_QIdentityProxyModel_canFetchMore ".} =
-  type Cb = proc(super: QIdentityProxyModelcanFetchMoreBase, parent: gen_qabstractitemmodel.QModelIndex): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(parent: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_canFetchMore(QIdentityProxyModel(h: self), parent)
+  var nimfunc = cast[ptr QIdentityProxyModelcanFetchMoreProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: parent)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_fetchMore(self: QIdentityProxyModel, parent: gen_qabstractitemmodel.QModelIndex): void =
-
+proc QIdentityProxyModelfetchMore*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, parent: gen_qabstractitemmodel.QModelIndex): void =
 
   fQIdentityProxyModel_virtualbase_fetchMore(self.h, parent.h)
 
-type QIdentityProxyModelfetchMoreBase* = proc(parent: gen_qabstractitemmodel.QModelIndex): void
-proc onfetchMore*(self: QIdentityProxyModel, slot: proc(super: QIdentityProxyModelfetchMoreBase, parent: gen_qabstractitemmodel.QModelIndex): void) =
+type QIdentityProxyModelfetchMoreProc* = proc(parent: gen_qabstractitemmodel.QModelIndex): void
+proc onfetchMore*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, slot: QIdentityProxyModelfetchMoreProc) =
   # TODO check subclass
-  type Cb = proc(super: QIdentityProxyModelfetchMoreBase, parent: gen_qabstractitemmodel.QModelIndex): void
-  var tmp = new Cb
+  var tmp = new QIdentityProxyModelfetchMoreProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIdentityProxyModel_override_virtual_fetchMore(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIdentityProxyModel_fetchMore(self: ptr cQIdentityProxyModel, slot: int, parent: pointer): void {.exportc: "miqt_exec_callback_QIdentityProxyModel_fetchMore ".} =
-  type Cb = proc(super: QIdentityProxyModelfetchMoreBase, parent: gen_qabstractitemmodel.QModelIndex): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(parent: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_fetchMore(QIdentityProxyModel(h: self), parent)
+  var nimfunc = cast[ptr QIdentityProxyModelfetchMoreProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: parent)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_sort(self: QIdentityProxyModel, column: cint, order: gen_qnamespace.SortOrder): void =
-
+  nimfunc[](slotval1)
+proc QIdentityProxyModelsort*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, column: cint, order: cint): void =
 
   fQIdentityProxyModel_virtualbase_sort(self.h, column, cint(order))
 
-type QIdentityProxyModelsortBase* = proc(column: cint, order: gen_qnamespace.SortOrder): void
-proc onsort*(self: QIdentityProxyModel, slot: proc(super: QIdentityProxyModelsortBase, column: cint, order: gen_qnamespace.SortOrder): void) =
+type QIdentityProxyModelsortProc* = proc(column: cint, order: cint): void
+proc onsort*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, slot: QIdentityProxyModelsortProc) =
   # TODO check subclass
-  type Cb = proc(super: QIdentityProxyModelsortBase, column: cint, order: gen_qnamespace.SortOrder): void
-  var tmp = new Cb
+  var tmp = new QIdentityProxyModelsortProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIdentityProxyModel_override_virtual_sort(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIdentityProxyModel_sort(self: ptr cQIdentityProxyModel, slot: int, column: cint, order: cint): void {.exportc: "miqt_exec_callback_QIdentityProxyModel_sort ".} =
-  type Cb = proc(super: QIdentityProxyModelsortBase, column: cint, order: gen_qnamespace.SortOrder): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(column: cint, order: gen_qnamespace.SortOrder): auto =
-    callVirtualBase_sort(QIdentityProxyModel(h: self), column, order)
+  var nimfunc = cast[ptr QIdentityProxyModelsortProc](cast[pointer](slot))
   let slotval1 = column
 
-  let slotval2 = gen_qnamespace.SortOrder(order)
+  let slotval2 = cint(order)
 
 
-  nimfunc[](superCall, slotval1, slotval2)
-proc callVirtualBase_span(self: QIdentityProxyModel, index: gen_qabstractitemmodel.QModelIndex): gen_qsize.QSize =
-
+  nimfunc[](slotval1, slotval2)
+proc QIdentityProxyModelspan*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, index: gen_qabstractitemmodel.QModelIndex): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQIdentityProxyModel_virtualbase_span(self.h, index.h))
 
-type QIdentityProxyModelspanBase* = proc(index: gen_qabstractitemmodel.QModelIndex): gen_qsize.QSize
-proc onspan*(self: QIdentityProxyModel, slot: proc(super: QIdentityProxyModelspanBase, index: gen_qabstractitemmodel.QModelIndex): gen_qsize.QSize) =
+type QIdentityProxyModelspanProc* = proc(index: gen_qabstractitemmodel.QModelIndex): gen_qsize.QSize
+proc onspan*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, slot: QIdentityProxyModelspanProc) =
   # TODO check subclass
-  type Cb = proc(super: QIdentityProxyModelspanBase, index: gen_qabstractitemmodel.QModelIndex): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QIdentityProxyModelspanProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIdentityProxyModel_override_virtual_span(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIdentityProxyModel_span(self: ptr cQIdentityProxyModel, slot: int, index: pointer): pointer {.exportc: "miqt_exec_callback_QIdentityProxyModel_span ".} =
-  type Cb = proc(super: QIdentityProxyModelspanBase, index: gen_qabstractitemmodel.QModelIndex): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(index: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_span(QIdentityProxyModel(h: self), index)
+  var nimfunc = cast[ptr QIdentityProxyModelspanProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: index)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_hasChildren(self: QIdentityProxyModel, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
+proc QIdentityProxyModelhasChildren*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, parent: gen_qabstractitemmodel.QModelIndex): bool =
 
   fQIdentityProxyModel_virtualbase_hasChildren(self.h, parent.h)
 
-type QIdentityProxyModelhasChildrenBase* = proc(parent: gen_qabstractitemmodel.QModelIndex): bool
-proc onhasChildren*(self: QIdentityProxyModel, slot: proc(super: QIdentityProxyModelhasChildrenBase, parent: gen_qabstractitemmodel.QModelIndex): bool) =
+type QIdentityProxyModelhasChildrenProc* = proc(parent: gen_qabstractitemmodel.QModelIndex): bool
+proc onhasChildren*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, slot: QIdentityProxyModelhasChildrenProc) =
   # TODO check subclass
-  type Cb = proc(super: QIdentityProxyModelhasChildrenBase, parent: gen_qabstractitemmodel.QModelIndex): bool
-  var tmp = new Cb
+  var tmp = new QIdentityProxyModelhasChildrenProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIdentityProxyModel_override_virtual_hasChildren(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIdentityProxyModel_hasChildren(self: ptr cQIdentityProxyModel, slot: int, parent: pointer): bool {.exportc: "miqt_exec_callback_QIdentityProxyModel_hasChildren ".} =
-  type Cb = proc(super: QIdentityProxyModelhasChildrenBase, parent: gen_qabstractitemmodel.QModelIndex): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(parent: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_hasChildren(QIdentityProxyModel(h: self), parent)
+  var nimfunc = cast[ptr QIdentityProxyModelhasChildrenProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: parent)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_mimeData(self: QIdentityProxyModel, indexes: seq[gen_qabstractitemmodel.QModelIndex]): gen_qmimedata.QMimeData =
+proc QIdentityProxyModelmimeData*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, indexes: seq[gen_qabstractitemmodel.QModelIndex]): gen_qmimedata.QMimeData =
 
   var indexes_CArray = newSeq[pointer](len(indexes))
   for i in 0..<len(indexes):
     indexes_CArray[i] = indexes[i].h
 
-
   gen_qmimedata.QMimeData(h: fQIdentityProxyModel_virtualbase_mimeData(self.h, struct_miqt_array(len: csize_t(len(indexes)), data: if len(indexes) == 0: nil else: addr(indexes_CArray[0]))))
 
-type QIdentityProxyModelmimeDataBase* = proc(indexes: seq[gen_qabstractitemmodel.QModelIndex]): gen_qmimedata.QMimeData
-proc onmimeData*(self: QIdentityProxyModel, slot: proc(super: QIdentityProxyModelmimeDataBase, indexes: seq[gen_qabstractitemmodel.QModelIndex]): gen_qmimedata.QMimeData) =
+type QIdentityProxyModelmimeDataProc* = proc(indexes: seq[gen_qabstractitemmodel.QModelIndex]): gen_qmimedata.QMimeData
+proc onmimeData*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, slot: QIdentityProxyModelmimeDataProc) =
   # TODO check subclass
-  type Cb = proc(super: QIdentityProxyModelmimeDataBase, indexes: seq[gen_qabstractitemmodel.QModelIndex]): gen_qmimedata.QMimeData
-  var tmp = new Cb
+  var tmp = new QIdentityProxyModelmimeDataProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIdentityProxyModel_override_virtual_mimeData(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIdentityProxyModel_mimeData(self: ptr cQIdentityProxyModel, slot: int, indexes: struct_miqt_array): pointer {.exportc: "miqt_exec_callback_QIdentityProxyModel_mimeData ".} =
-  type Cb = proc(super: QIdentityProxyModelmimeDataBase, indexes: seq[gen_qabstractitemmodel.QModelIndex]): gen_qmimedata.QMimeData
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(indexes: seq[gen_qabstractitemmodel.QModelIndex]): auto =
-    callVirtualBase_mimeData(QIdentityProxyModel(h: self), indexes)
+  var nimfunc = cast[ptr QIdentityProxyModelmimeDataProc](cast[pointer](slot))
   var vindexes_ma = indexes
   var vindexesx_ret = newSeq[gen_qabstractitemmodel.QModelIndex](int(vindexes_ma.len))
   let vindexes_outCast = cast[ptr UncheckedArray[pointer]](vindexes_ma.data)
@@ -1389,31 +1197,26 @@ proc miqt_exec_callback_QIdentityProxyModel_mimeData(self: ptr cQIdentityProxyMo
   let slotval1 = vindexesx_ret
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_canDropMimeData(self: QIdentityProxyModel, data: gen_qmimedata.QMimeData, action: gen_qnamespace.DropAction, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
+proc QIdentityProxyModelcanDropMimeData*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, data: gen_qmimedata.QMimeData, action: cint, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
 
   fQIdentityProxyModel_virtualbase_canDropMimeData(self.h, data.h, cint(action), row, column, parent.h)
 
-type QIdentityProxyModelcanDropMimeDataBase* = proc(data: gen_qmimedata.QMimeData, action: gen_qnamespace.DropAction, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
-proc oncanDropMimeData*(self: QIdentityProxyModel, slot: proc(super: QIdentityProxyModelcanDropMimeDataBase, data: gen_qmimedata.QMimeData, action: gen_qnamespace.DropAction, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool) =
+type QIdentityProxyModelcanDropMimeDataProc* = proc(data: gen_qmimedata.QMimeData, action: cint, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
+proc oncanDropMimeData*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, slot: QIdentityProxyModelcanDropMimeDataProc) =
   # TODO check subclass
-  type Cb = proc(super: QIdentityProxyModelcanDropMimeDataBase, data: gen_qmimedata.QMimeData, action: gen_qnamespace.DropAction, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
-  var tmp = new Cb
+  var tmp = new QIdentityProxyModelcanDropMimeDataProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIdentityProxyModel_override_virtual_canDropMimeData(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIdentityProxyModel_canDropMimeData(self: ptr cQIdentityProxyModel, slot: int, data: pointer, action: cint, row: cint, column: cint, parent: pointer): bool {.exportc: "miqt_exec_callback_QIdentityProxyModel_canDropMimeData ".} =
-  type Cb = proc(super: QIdentityProxyModelcanDropMimeDataBase, data: gen_qmimedata.QMimeData, action: gen_qnamespace.DropAction, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(data: gen_qmimedata.QMimeData, action: gen_qnamespace.DropAction, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_canDropMimeData(QIdentityProxyModel(h: self), data, action, row, column, parent)
+  var nimfunc = cast[ptr QIdentityProxyModelcanDropMimeDataProc](cast[pointer](slot))
   let slotval1 = gen_qmimedata.QMimeData(h: data)
 
-  let slotval2 = gen_qnamespace.DropAction(action)
+  let slotval2 = cint(action)
 
   let slotval3 = row
 
@@ -1422,11 +1225,10 @@ proc miqt_exec_callback_QIdentityProxyModel_canDropMimeData(self: ptr cQIdentity
   let slotval5 = gen_qabstractitemmodel.QModelIndex(h: parent)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3, slotval4, slotval5 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3, slotval4, slotval5 )
 
   virtualReturn
-proc callVirtualBase_mimeTypes(self: QIdentityProxyModel, ): seq[string] =
-
+proc QIdentityProxyModelmimeTypes*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, ): seq[string] =
 
   var v_ma = fQIdentityProxyModel_virtualbase_mimeTypes(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -1438,76 +1240,61 @@ proc callVirtualBase_mimeTypes(self: QIdentityProxyModel, ): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-type QIdentityProxyModelmimeTypesBase* = proc(): seq[string]
-proc onmimeTypes*(self: QIdentityProxyModel, slot: proc(super: QIdentityProxyModelmimeTypesBase): seq[string]) =
+type QIdentityProxyModelmimeTypesProc* = proc(): seq[string]
+proc onmimeTypes*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, slot: QIdentityProxyModelmimeTypesProc) =
   # TODO check subclass
-  type Cb = proc(super: QIdentityProxyModelmimeTypesBase): seq[string]
-  var tmp = new Cb
+  var tmp = new QIdentityProxyModelmimeTypesProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIdentityProxyModel_override_virtual_mimeTypes(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIdentityProxyModel_mimeTypes(self: ptr cQIdentityProxyModel, slot: int): struct_miqt_array {.exportc: "miqt_exec_callback_QIdentityProxyModel_mimeTypes ".} =
-  type Cb = proc(super: QIdentityProxyModelmimeTypesBase): seq[string]
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_mimeTypes(QIdentityProxyModel(h: self), )
+  var nimfunc = cast[ptr QIdentityProxyModelmimeTypesProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
   var virtualReturn_CArray = newSeq[struct_miqt_string](len(virtualReturn))
   for i in 0..<len(virtualReturn):
     virtualReturn_CArray[i] = struct_miqt_string(data: virtualReturn[i], len: csize_t(len(virtualReturn[i])))
 
 
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
-proc callVirtualBase_supportedDragActions(self: QIdentityProxyModel, ): gen_qnamespace.DropAction =
+proc QIdentityProxyModelsupportedDragActions*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, ): cint =
 
+  cint(fQIdentityProxyModel_virtualbase_supportedDragActions(self.h))
 
-  gen_qnamespace.DropAction(fQIdentityProxyModel_virtualbase_supportedDragActions(self.h))
-
-type QIdentityProxyModelsupportedDragActionsBase* = proc(): gen_qnamespace.DropAction
-proc onsupportedDragActions*(self: QIdentityProxyModel, slot: proc(super: QIdentityProxyModelsupportedDragActionsBase): gen_qnamespace.DropAction) =
+type QIdentityProxyModelsupportedDragActionsProc* = proc(): cint
+proc onsupportedDragActions*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, slot: QIdentityProxyModelsupportedDragActionsProc) =
   # TODO check subclass
-  type Cb = proc(super: QIdentityProxyModelsupportedDragActionsBase): gen_qnamespace.DropAction
-  var tmp = new Cb
+  var tmp = new QIdentityProxyModelsupportedDragActionsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIdentityProxyModel_override_virtual_supportedDragActions(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIdentityProxyModel_supportedDragActions(self: ptr cQIdentityProxyModel, slot: int): cint {.exportc: "miqt_exec_callback_QIdentityProxyModel_supportedDragActions ".} =
-  type Cb = proc(super: QIdentityProxyModelsupportedDragActionsBase): gen_qnamespace.DropAction
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_supportedDragActions(QIdentityProxyModel(h: self), )
+  var nimfunc = cast[ptr QIdentityProxyModelsupportedDragActionsProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   cint(virtualReturn)
-proc callVirtualBase_supportedDropActions(self: QIdentityProxyModel, ): gen_qnamespace.DropAction =
+proc QIdentityProxyModelsupportedDropActions*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, ): cint =
 
+  cint(fQIdentityProxyModel_virtualbase_supportedDropActions(self.h))
 
-  gen_qnamespace.DropAction(fQIdentityProxyModel_virtualbase_supportedDropActions(self.h))
-
-type QIdentityProxyModelsupportedDropActionsBase* = proc(): gen_qnamespace.DropAction
-proc onsupportedDropActions*(self: QIdentityProxyModel, slot: proc(super: QIdentityProxyModelsupportedDropActionsBase): gen_qnamespace.DropAction) =
+type QIdentityProxyModelsupportedDropActionsProc* = proc(): cint
+proc onsupportedDropActions*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, slot: QIdentityProxyModelsupportedDropActionsProc) =
   # TODO check subclass
-  type Cb = proc(super: QIdentityProxyModelsupportedDropActionsBase): gen_qnamespace.DropAction
-  var tmp = new Cb
+  var tmp = new QIdentityProxyModelsupportedDropActionsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIdentityProxyModel_override_virtual_supportedDropActions(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIdentityProxyModel_supportedDropActions(self: ptr cQIdentityProxyModel, slot: int): cint {.exportc: "miqt_exec_callback_QIdentityProxyModel_supportedDropActions ".} =
-  type Cb = proc(super: QIdentityProxyModelsupportedDropActionsBase): gen_qnamespace.DropAction
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_supportedDropActions(QIdentityProxyModel(h: self), )
+  var nimfunc = cast[ptr QIdentityProxyModelsupportedDropActionsProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   cint(virtualReturn)
-proc callVirtualBase_roleNames(self: QIdentityProxyModel, ): Table[cint,seq[byte]] =
-
+proc QIdentityProxyModelroleNames*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, ): Table[cint,seq[byte]] =
 
   var v_mm = fQIdentityProxyModel_virtualbase_roleNames(self.h)
   var vx_ret: Table[cint, seq[byte]]
@@ -1524,22 +1311,18 @@ proc callVirtualBase_roleNames(self: QIdentityProxyModel, ): Table[cint,seq[byte
     vx_ret[v_entry_Key] = v_entry_Value
   vx_ret
 
-type QIdentityProxyModelroleNamesBase* = proc(): Table[cint,seq[byte]]
-proc onroleNames*(self: QIdentityProxyModel, slot: proc(super: QIdentityProxyModelroleNamesBase): Table[cint,seq[byte]]) =
+type QIdentityProxyModelroleNamesProc* = proc(): Table[cint,seq[byte]]
+proc onroleNames*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, slot: QIdentityProxyModelroleNamesProc) =
   # TODO check subclass
-  type Cb = proc(super: QIdentityProxyModelroleNamesBase): Table[cint,seq[byte]]
-  var tmp = new Cb
+  var tmp = new QIdentityProxyModelroleNamesProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIdentityProxyModel_override_virtual_roleNames(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIdentityProxyModel_roleNames(self: ptr cQIdentityProxyModel, slot: int): struct_miqt_map {.exportc: "miqt_exec_callback_QIdentityProxyModel_roleNames ".} =
-  type Cb = proc(super: QIdentityProxyModelroleNamesBase): Table[cint,seq[byte]]
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_roleNames(QIdentityProxyModel(h: self), )
+  var nimfunc = cast[ptr QIdentityProxyModelroleNamesProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
   var virtualReturn_Keys_CArray = newSeq[cint](len(virtualReturn))
   var virtualReturn_Values_CArray = newSeq[struct_miqt_string](len(virtualReturn))
   var virtualReturn_ctr = 0
@@ -1550,220 +1333,175 @@ proc miqt_exec_callback_QIdentityProxyModel_roleNames(self: ptr cQIdentityProxyM
 
 
   struct_miqt_map(len: csize_t(len(virtualReturn)),keys: if len(virtualReturn) == 0: nil else: addr(virtualReturn_Keys_CArray[0]), values: if len(virtualReturn) == 0: nil else: addr(virtualReturn_Values_CArray[0]),)
-proc callVirtualBase_multiData(self: QIdentityProxyModel, index: gen_qabstractitemmodel.QModelIndex, roleDataSpan: gen_qabstractitemmodel.QModelRoleDataSpan): void =
-
+proc QIdentityProxyModelmultiData*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, index: gen_qabstractitemmodel.QModelIndex, roleDataSpan: gen_qabstractitemmodel.QModelRoleDataSpan): void =
 
   fQIdentityProxyModel_virtualbase_multiData(self.h, index.h, roleDataSpan.h)
 
-type QIdentityProxyModelmultiDataBase* = proc(index: gen_qabstractitemmodel.QModelIndex, roleDataSpan: gen_qabstractitemmodel.QModelRoleDataSpan): void
-proc onmultiData*(self: QIdentityProxyModel, slot: proc(super: QIdentityProxyModelmultiDataBase, index: gen_qabstractitemmodel.QModelIndex, roleDataSpan: gen_qabstractitemmodel.QModelRoleDataSpan): void) =
+type QIdentityProxyModelmultiDataProc* = proc(index: gen_qabstractitemmodel.QModelIndex, roleDataSpan: gen_qabstractitemmodel.QModelRoleDataSpan): void
+proc onmultiData*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, slot: QIdentityProxyModelmultiDataProc) =
   # TODO check subclass
-  type Cb = proc(super: QIdentityProxyModelmultiDataBase, index: gen_qabstractitemmodel.QModelIndex, roleDataSpan: gen_qabstractitemmodel.QModelRoleDataSpan): void
-  var tmp = new Cb
+  var tmp = new QIdentityProxyModelmultiDataProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIdentityProxyModel_override_virtual_multiData(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIdentityProxyModel_multiData(self: ptr cQIdentityProxyModel, slot: int, index: pointer, roleDataSpan: pointer): void {.exportc: "miqt_exec_callback_QIdentityProxyModel_multiData ".} =
-  type Cb = proc(super: QIdentityProxyModelmultiDataBase, index: gen_qabstractitemmodel.QModelIndex, roleDataSpan: gen_qabstractitemmodel.QModelRoleDataSpan): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(index: gen_qabstractitemmodel.QModelIndex, roleDataSpan: gen_qabstractitemmodel.QModelRoleDataSpan): auto =
-    callVirtualBase_multiData(QIdentityProxyModel(h: self), index, roleDataSpan)
+  var nimfunc = cast[ptr QIdentityProxyModelmultiDataProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: index)
 
   let slotval2 = gen_qabstractitemmodel.QModelRoleDataSpan(h: roleDataSpan)
 
 
-  nimfunc[](superCall, slotval1, slotval2)
-proc callVirtualBase_resetInternalData(self: QIdentityProxyModel, ): void =
-
+  nimfunc[](slotval1, slotval2)
+proc QIdentityProxyModelresetInternalData*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, ): void =
 
   fQIdentityProxyModel_virtualbase_resetInternalData(self.h)
 
-type QIdentityProxyModelresetInternalDataBase* = proc(): void
-proc onresetInternalData*(self: QIdentityProxyModel, slot: proc(super: QIdentityProxyModelresetInternalDataBase): void) =
+type QIdentityProxyModelresetInternalDataProc* = proc(): void
+proc onresetInternalData*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, slot: QIdentityProxyModelresetInternalDataProc) =
   # TODO check subclass
-  type Cb = proc(super: QIdentityProxyModelresetInternalDataBase): void
-  var tmp = new Cb
+  var tmp = new QIdentityProxyModelresetInternalDataProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIdentityProxyModel_override_virtual_resetInternalData(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIdentityProxyModel_resetInternalData(self: ptr cQIdentityProxyModel, slot: int): void {.exportc: "miqt_exec_callback_QIdentityProxyModel_resetInternalData ".} =
-  type Cb = proc(super: QIdentityProxyModelresetInternalDataBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_resetInternalData(QIdentityProxyModel(h: self), )
+  var nimfunc = cast[ptr QIdentityProxyModelresetInternalDataProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_event(self: QIdentityProxyModel, event: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[]()
+proc QIdentityProxyModelevent*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, event: gen_qcoreevent.QEvent): bool =
 
   fQIdentityProxyModel_virtualbase_event(self.h, event.h)
 
-type QIdentityProxyModeleventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QIdentityProxyModel, slot: proc(super: QIdentityProxyModeleventBase, event: gen_qcoreevent.QEvent): bool) =
+type QIdentityProxyModeleventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, slot: QIdentityProxyModeleventProc) =
   # TODO check subclass
-  type Cb = proc(super: QIdentityProxyModeleventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QIdentityProxyModeleventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIdentityProxyModel_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIdentityProxyModel_event(self: ptr cQIdentityProxyModel, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QIdentityProxyModel_event ".} =
-  type Cb = proc(super: QIdentityProxyModeleventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QIdentityProxyModel(h: self), event)
+  var nimfunc = cast[ptr QIdentityProxyModeleventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QIdentityProxyModel, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QIdentityProxyModeleventFilter*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQIdentityProxyModel_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QIdentityProxyModeleventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QIdentityProxyModel, slot: proc(super: QIdentityProxyModeleventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QIdentityProxyModeleventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, slot: QIdentityProxyModeleventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QIdentityProxyModeleventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QIdentityProxyModeleventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIdentityProxyModel_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIdentityProxyModel_eventFilter(self: ptr cQIdentityProxyModel, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QIdentityProxyModel_eventFilter ".} =
-  type Cb = proc(super: QIdentityProxyModeleventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QIdentityProxyModel(h: self), watched, event)
+  var nimfunc = cast[ptr QIdentityProxyModeleventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QIdentityProxyModel, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QIdentityProxyModeltimerEvent*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, event: gen_qcoreevent.QTimerEvent): void =
 
   fQIdentityProxyModel_virtualbase_timerEvent(self.h, event.h)
 
-type QIdentityProxyModeltimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QIdentityProxyModel, slot: proc(super: QIdentityProxyModeltimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QIdentityProxyModeltimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, slot: QIdentityProxyModeltimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QIdentityProxyModeltimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QIdentityProxyModeltimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIdentityProxyModel_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIdentityProxyModel_timerEvent(self: ptr cQIdentityProxyModel, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QIdentityProxyModel_timerEvent ".} =
-  type Cb = proc(super: QIdentityProxyModeltimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QIdentityProxyModel(h: self), event)
+  var nimfunc = cast[ptr QIdentityProxyModeltimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QIdentityProxyModel, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QIdentityProxyModelchildEvent*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, event: gen_qcoreevent.QChildEvent): void =
 
   fQIdentityProxyModel_virtualbase_childEvent(self.h, event.h)
 
-type QIdentityProxyModelchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QIdentityProxyModel, slot: proc(super: QIdentityProxyModelchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QIdentityProxyModelchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, slot: QIdentityProxyModelchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QIdentityProxyModelchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QIdentityProxyModelchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIdentityProxyModel_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIdentityProxyModel_childEvent(self: ptr cQIdentityProxyModel, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QIdentityProxyModel_childEvent ".} =
-  type Cb = proc(super: QIdentityProxyModelchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QIdentityProxyModel(h: self), event)
+  var nimfunc = cast[ptr QIdentityProxyModelchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QIdentityProxyModel, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QIdentityProxyModelcustomEvent*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, event: gen_qcoreevent.QEvent): void =
 
   fQIdentityProxyModel_virtualbase_customEvent(self.h, event.h)
 
-type QIdentityProxyModelcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QIdentityProxyModel, slot: proc(super: QIdentityProxyModelcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QIdentityProxyModelcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, slot: QIdentityProxyModelcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QIdentityProxyModelcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QIdentityProxyModelcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIdentityProxyModel_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIdentityProxyModel_customEvent(self: ptr cQIdentityProxyModel, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QIdentityProxyModel_customEvent ".} =
-  type Cb = proc(super: QIdentityProxyModelcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QIdentityProxyModel(h: self), event)
+  var nimfunc = cast[ptr QIdentityProxyModelcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QIdentityProxyModel, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QIdentityProxyModelconnectNotify*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQIdentityProxyModel_virtualbase_connectNotify(self.h, signal.h)
 
-type QIdentityProxyModelconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QIdentityProxyModel, slot: proc(super: QIdentityProxyModelconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QIdentityProxyModelconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, slot: QIdentityProxyModelconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QIdentityProxyModelconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QIdentityProxyModelconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIdentityProxyModel_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIdentityProxyModel_connectNotify(self: ptr cQIdentityProxyModel, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QIdentityProxyModel_connectNotify ".} =
-  type Cb = proc(super: QIdentityProxyModelconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QIdentityProxyModel(h: self), signal)
+  var nimfunc = cast[ptr QIdentityProxyModelconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QIdentityProxyModel, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QIdentityProxyModeldisconnectNotify*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQIdentityProxyModel_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QIdentityProxyModeldisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QIdentityProxyModel, slot: proc(super: QIdentityProxyModeldisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QIdentityProxyModeldisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, slot: QIdentityProxyModeldisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QIdentityProxyModeldisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QIdentityProxyModeldisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIdentityProxyModel_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIdentityProxyModel_disconnectNotify(self: ptr cQIdentityProxyModel, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QIdentityProxyModel_disconnectNotify ".} =
-  type Cb = proc(super: QIdentityProxyModeldisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QIdentityProxyModel(h: self), signal)
+  var nimfunc = cast[ptr QIdentityProxyModeldisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QIdentityProxyModel): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qidentityproxymodel_types.QIdentityProxyModel): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQIdentityProxyModel_staticMetaObject())
-proc delete*(self: QIdentityProxyModel) =
+proc delete*(self: gen_qidentityproxymodel_types.QIdentityProxyModel) =
   fcQIdentityProxyModel_delete(self.h)

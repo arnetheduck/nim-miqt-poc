@@ -488,7 +488,7 @@ func (this *QWizard) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QWizard_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QWizard) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QWizard) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QWizard_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -515,7 +515,7 @@ func (this *QWizard) callVirtualBase_Metacast(param1 string) unsafe.Pointer {
 	return (unsafe.Pointer)(C.QWizard_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QWizard) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QWizard) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QWizard_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2266,7 +2266,7 @@ func (this *QWizardPage) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QWizardPage_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QWizardPage) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QWizardPage) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QWizardPage_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2293,7 +2293,7 @@ func (this *QWizardPage) callVirtualBase_Metacast(param1 string) unsafe.Pointer 
 	return (unsafe.Pointer)(C.QWizardPage_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QWizardPage) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QWizardPage) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QWizardPage_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

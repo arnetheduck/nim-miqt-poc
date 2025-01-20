@@ -51,34 +51,32 @@ proc fcQQmlPropertyValueSource_override_virtual_setTarget(self: pointer, slot: i
 proc fcQQmlPropertyValueSource_delete(self: pointer) {.importc: "QQmlPropertyValueSource_delete".}
 
 
-func init*(T: type QQmlPropertyValueSource, h: ptr cQQmlPropertyValueSource): QQmlPropertyValueSource =
+func init*(T: type gen_qqmlpropertyvaluesource_types.QQmlPropertyValueSource, h: ptr cQQmlPropertyValueSource): gen_qqmlpropertyvaluesource_types.QQmlPropertyValueSource =
   T(h: h)
-proc create*(T: type QQmlPropertyValueSource, ): QQmlPropertyValueSource =
+proc create*(T: type gen_qqmlpropertyvaluesource_types.QQmlPropertyValueSource, ): gen_qqmlpropertyvaluesource_types.QQmlPropertyValueSource =
 
-  QQmlPropertyValueSource.init(fcQQmlPropertyValueSource_new())
-proc setTarget*(self: QQmlPropertyValueSource, target: gen_qqmlproperty.QQmlProperty): void =
+  gen_qqmlpropertyvaluesource_types.QQmlPropertyValueSource.init(fcQQmlPropertyValueSource_new())
+proc setTarget*(self: gen_qqmlpropertyvaluesource_types.QQmlPropertyValueSource, target: gen_qqmlproperty.QQmlProperty): void =
 
   fcQQmlPropertyValueSource_setTarget(self.h, target.h)
 
-proc operatorAssign*(self: QQmlPropertyValueSource, param1: QQmlPropertyValueSource): void =
+proc operatorAssign*(self: gen_qqmlpropertyvaluesource_types.QQmlPropertyValueSource, param1: gen_qqmlpropertyvaluesource_types.QQmlPropertyValueSource): void =
 
   fcQQmlPropertyValueSource_operatorAssign(self.h, param1.h)
 
-type QQmlPropertyValueSourcesetTargetBase* = proc(target: gen_qqmlproperty.QQmlProperty): void
-proc onsetTarget*(self: QQmlPropertyValueSource, slot: proc(target: gen_qqmlproperty.QQmlProperty): void) =
+type QQmlPropertyValueSourcesetTargetProc* = proc(target: gen_qqmlproperty.QQmlProperty): void
+proc onsetTarget*(self: gen_qqmlpropertyvaluesource_types.QQmlPropertyValueSource, slot: QQmlPropertyValueSourcesetTargetProc) =
   # TODO check subclass
-  type Cb = proc(target: gen_qqmlproperty.QQmlProperty): void
-  var tmp = new Cb
+  var tmp = new QQmlPropertyValueSourcesetTargetProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQmlPropertyValueSource_override_virtual_setTarget(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQmlPropertyValueSource_setTarget(self: ptr cQQmlPropertyValueSource, slot: int, target: pointer): void {.exportc: "miqt_exec_callback_QQmlPropertyValueSource_setTarget ".} =
-  type Cb = proc(target: gen_qqmlproperty.QQmlProperty): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QQmlPropertyValueSourcesetTargetProc](cast[pointer](slot))
   let slotval1 = gen_qqmlproperty.QQmlProperty(h: target)
 
 
   nimfunc[](slotval1)
-proc delete*(self: QQmlPropertyValueSource) =
+proc delete*(self: gen_qqmlpropertyvaluesource_types.QQmlPropertyValueSource) =
   fcQQmlPropertyValueSource_delete(self.h)

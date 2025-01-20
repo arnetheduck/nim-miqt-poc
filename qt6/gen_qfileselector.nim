@@ -89,45 +89,45 @@ proc fcQFileSelector_staticMetaObject(): pointer {.importc: "QFileSelector_stati
 proc fcQFileSelector_delete(self: pointer) {.importc: "QFileSelector_delete".}
 
 
-func init*(T: type QFileSelector, h: ptr cQFileSelector): QFileSelector =
+func init*(T: type gen_qfileselector_types.QFileSelector, h: ptr cQFileSelector): gen_qfileselector_types.QFileSelector =
   T(h: h)
-proc create*(T: type QFileSelector, ): QFileSelector =
+proc create*(T: type gen_qfileselector_types.QFileSelector, ): gen_qfileselector_types.QFileSelector =
 
-  QFileSelector.init(fcQFileSelector_new())
-proc create*(T: type QFileSelector, parent: gen_qobject.QObject): QFileSelector =
+  gen_qfileselector_types.QFileSelector.init(fcQFileSelector_new())
+proc create*(T: type gen_qfileselector_types.QFileSelector, parent: gen_qobject.QObject): gen_qfileselector_types.QFileSelector =
 
-  QFileSelector.init(fcQFileSelector_new2(parent.h))
-proc metaObject*(self: QFileSelector, ): gen_qobjectdefs.QMetaObject =
+  gen_qfileselector_types.QFileSelector.init(fcQFileSelector_new2(parent.h))
+proc metaObject*(self: gen_qfileselector_types.QFileSelector, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQFileSelector_metaObject(self.h))
 
-proc metacast*(self: QFileSelector, param1: cstring): pointer =
+proc metacast*(self: gen_qfileselector_types.QFileSelector, param1: cstring): pointer =
 
   fcQFileSelector_metacast(self.h, param1)
 
-proc metacall*(self: QFileSelector, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qfileselector_types.QFileSelector, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQFileSelector_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QFileSelector, s: cstring): string =
+proc tr*(_: type gen_qfileselector_types.QFileSelector, s: cstring): string =
 
   let v_ms = fcQFileSelector_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc select*(self: QFileSelector, filePath: string): string =
+proc select*(self: gen_qfileselector_types.QFileSelector, filePath: string): string =
 
   let v_ms = fcQFileSelector_select(self.h, struct_miqt_string(data: filePath, len: csize_t(len(filePath))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc selectWithFilePath*(self: QFileSelector, filePath: gen_qurl.QUrl): gen_qurl.QUrl =
+proc selectWithFilePath*(self: gen_qfileselector_types.QFileSelector, filePath: gen_qurl.QUrl): gen_qurl.QUrl =
 
   gen_qurl.QUrl(h: fcQFileSelector_selectWithFilePath(self.h, filePath.h))
 
-proc extraSelectors*(self: QFileSelector, ): seq[string] =
+proc extraSelectors*(self: gen_qfileselector_types.QFileSelector, ): seq[string] =
 
   var v_ma = fcQFileSelector_extraSelectors(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -139,7 +139,7 @@ proc extraSelectors*(self: QFileSelector, ): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc setExtraSelectors*(self: QFileSelector, list: seq[string]): void =
+proc setExtraSelectors*(self: gen_qfileselector_types.QFileSelector, list: seq[string]): void =
 
   var list_CArray = newSeq[struct_miqt_string](len(list))
   for i in 0..<len(list):
@@ -147,7 +147,7 @@ proc setExtraSelectors*(self: QFileSelector, list: seq[string]): void =
 
   fcQFileSelector_setExtraSelectors(self.h, struct_miqt_array(len: csize_t(len(list)), data: if len(list) == 0: nil else: addr(list_CArray[0])))
 
-proc allSelectors*(self: QFileSelector, ): seq[string] =
+proc allSelectors*(self: gen_qfileselector_types.QFileSelector, ): seq[string] =
 
   var v_ma = fcQFileSelector_allSelectors(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -159,265 +159,215 @@ proc allSelectors*(self: QFileSelector, ): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc tr2*(_: type QFileSelector, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qfileselector_types.QFileSelector, s: cstring, c: cstring): string =
 
   let v_ms = fcQFileSelector_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QFileSelector, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qfileselector_types.QFileSelector, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQFileSelector_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QFileSelector, ): gen_qobjectdefs.QMetaObject =
-
+proc QFileSelectormetaObject*(self: gen_qfileselector_types.QFileSelector, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQFileSelector_virtualbase_metaObject(self.h))
 
-type QFileSelectormetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QFileSelector, slot: proc(super: QFileSelectormetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QFileSelectormetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qfileselector_types.QFileSelector, slot: QFileSelectormetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileSelectormetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QFileSelectormetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileSelector_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileSelector_metaObject(self: ptr cQFileSelector, slot: int): pointer {.exportc: "miqt_exec_callback_QFileSelector_metaObject ".} =
-  type Cb = proc(super: QFileSelectormetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QFileSelector(h: self), )
+  var nimfunc = cast[ptr QFileSelectormetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QFileSelector, param1: cstring): pointer =
-
+proc QFileSelectormetacast*(self: gen_qfileselector_types.QFileSelector, param1: cstring): pointer =
 
   fQFileSelector_virtualbase_metacast(self.h, param1)
 
-type QFileSelectormetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QFileSelector, slot: proc(super: QFileSelectormetacastBase, param1: cstring): pointer) =
+type QFileSelectormetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qfileselector_types.QFileSelector, slot: QFileSelectormetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileSelectormetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QFileSelectormetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileSelector_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileSelector_metacast(self: ptr cQFileSelector, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QFileSelector_metacast ".} =
-  type Cb = proc(super: QFileSelectormetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QFileSelector(h: self), param1)
+  var nimfunc = cast[ptr QFileSelectormetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QFileSelector, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QFileSelectormetacall*(self: gen_qfileselector_types.QFileSelector, param1: cint, param2: cint, param3: pointer): cint =
 
   fQFileSelector_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QFileSelectormetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QFileSelector, slot: proc(super: QFileSelectormetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QFileSelectormetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qfileselector_types.QFileSelector, slot: QFileSelectormetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileSelectormetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QFileSelectormetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileSelector_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileSelector_metacall(self: ptr cQFileSelector, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QFileSelector_metacall ".} =
-  type Cb = proc(super: QFileSelectormetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QFileSelector(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QFileSelectormetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_event(self: QFileSelector, event: gen_qcoreevent.QEvent): bool =
-
+proc QFileSelectorevent*(self: gen_qfileselector_types.QFileSelector, event: gen_qcoreevent.QEvent): bool =
 
   fQFileSelector_virtualbase_event(self.h, event.h)
 
-type QFileSelectoreventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QFileSelector, slot: proc(super: QFileSelectoreventBase, event: gen_qcoreevent.QEvent): bool) =
+type QFileSelectoreventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qfileselector_types.QFileSelector, slot: QFileSelectoreventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileSelectoreventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QFileSelectoreventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileSelector_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileSelector_event(self: ptr cQFileSelector, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QFileSelector_event ".} =
-  type Cb = proc(super: QFileSelectoreventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QFileSelector(h: self), event)
+  var nimfunc = cast[ptr QFileSelectoreventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QFileSelector, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QFileSelectoreventFilter*(self: gen_qfileselector_types.QFileSelector, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQFileSelector_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QFileSelectoreventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QFileSelector, slot: proc(super: QFileSelectoreventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QFileSelectoreventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qfileselector_types.QFileSelector, slot: QFileSelectoreventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileSelectoreventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QFileSelectoreventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileSelector_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileSelector_eventFilter(self: ptr cQFileSelector, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QFileSelector_eventFilter ".} =
-  type Cb = proc(super: QFileSelectoreventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QFileSelector(h: self), watched, event)
+  var nimfunc = cast[ptr QFileSelectoreventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QFileSelector, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QFileSelectortimerEvent*(self: gen_qfileselector_types.QFileSelector, event: gen_qcoreevent.QTimerEvent): void =
 
   fQFileSelector_virtualbase_timerEvent(self.h, event.h)
 
-type QFileSelectortimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QFileSelector, slot: proc(super: QFileSelectortimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QFileSelectortimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qfileselector_types.QFileSelector, slot: QFileSelectortimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileSelectortimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QFileSelectortimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileSelector_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileSelector_timerEvent(self: ptr cQFileSelector, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFileSelector_timerEvent ".} =
-  type Cb = proc(super: QFileSelectortimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QFileSelector(h: self), event)
+  var nimfunc = cast[ptr QFileSelectortimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QFileSelector, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QFileSelectorchildEvent*(self: gen_qfileselector_types.QFileSelector, event: gen_qcoreevent.QChildEvent): void =
 
   fQFileSelector_virtualbase_childEvent(self.h, event.h)
 
-type QFileSelectorchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QFileSelector, slot: proc(super: QFileSelectorchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QFileSelectorchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qfileselector_types.QFileSelector, slot: QFileSelectorchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileSelectorchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QFileSelectorchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileSelector_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileSelector_childEvent(self: ptr cQFileSelector, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFileSelector_childEvent ".} =
-  type Cb = proc(super: QFileSelectorchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QFileSelector(h: self), event)
+  var nimfunc = cast[ptr QFileSelectorchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QFileSelector, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QFileSelectorcustomEvent*(self: gen_qfileselector_types.QFileSelector, event: gen_qcoreevent.QEvent): void =
 
   fQFileSelector_virtualbase_customEvent(self.h, event.h)
 
-type QFileSelectorcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QFileSelector, slot: proc(super: QFileSelectorcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QFileSelectorcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qfileselector_types.QFileSelector, slot: QFileSelectorcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileSelectorcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QFileSelectorcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileSelector_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileSelector_customEvent(self: ptr cQFileSelector, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFileSelector_customEvent ".} =
-  type Cb = proc(super: QFileSelectorcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QFileSelector(h: self), event)
+  var nimfunc = cast[ptr QFileSelectorcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QFileSelector, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QFileSelectorconnectNotify*(self: gen_qfileselector_types.QFileSelector, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQFileSelector_virtualbase_connectNotify(self.h, signal.h)
 
-type QFileSelectorconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QFileSelector, slot: proc(super: QFileSelectorconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QFileSelectorconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qfileselector_types.QFileSelector, slot: QFileSelectorconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileSelectorconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QFileSelectorconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileSelector_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileSelector_connectNotify(self: ptr cQFileSelector, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QFileSelector_connectNotify ".} =
-  type Cb = proc(super: QFileSelectorconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QFileSelector(h: self), signal)
+  var nimfunc = cast[ptr QFileSelectorconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QFileSelector, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QFileSelectordisconnectNotify*(self: gen_qfileselector_types.QFileSelector, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQFileSelector_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QFileSelectordisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QFileSelector, slot: proc(super: QFileSelectordisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QFileSelectordisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qfileselector_types.QFileSelector, slot: QFileSelectordisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileSelectordisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QFileSelectordisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileSelector_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileSelector_disconnectNotify(self: ptr cQFileSelector, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QFileSelector_disconnectNotify ".} =
-  type Cb = proc(super: QFileSelectordisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QFileSelector(h: self), signal)
+  var nimfunc = cast[ptr QFileSelectordisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QFileSelector): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qfileselector_types.QFileSelector): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQFileSelector_staticMetaObject())
-proc delete*(self: QFileSelector) =
+proc delete*(self: gen_qfileselector_types.QFileSelector) =
   fcQFileSelector_delete(self.h)

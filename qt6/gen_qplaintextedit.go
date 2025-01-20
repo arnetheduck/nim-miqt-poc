@@ -678,7 +678,7 @@ func (this *QPlainTextEdit) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QPlainTextEdit_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QPlainTextEdit) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QPlainTextEdit) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QPlainTextEdit_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -705,7 +705,7 @@ func (this *QPlainTextEdit) callVirtualBase_Metacast(param1 string) unsafe.Point
 	return (unsafe.Pointer)(C.QPlainTextEdit_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QPlainTextEdit) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QPlainTextEdit) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QPlainTextEdit_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2438,7 +2438,7 @@ func (this *QPlainTextDocumentLayout) callVirtualBase_MetaObject() *QMetaObject 
 	return newQMetaObject(C.QPlainTextDocumentLayout_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QPlainTextDocumentLayout) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QPlainTextDocumentLayout) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QPlainTextDocumentLayout_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2465,7 +2465,7 @@ func (this *QPlainTextDocumentLayout) callVirtualBase_Metacast(param1 string) un
 	return (unsafe.Pointer)(C.QPlainTextDocumentLayout_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QPlainTextDocumentLayout) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QPlainTextDocumentLayout) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QPlainTextDocumentLayout_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

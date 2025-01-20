@@ -53,27 +53,27 @@ proc fcQWebEngineFindTextResult_staticMetaObject(): pointer {.importc: "QWebEngi
 proc fcQWebEngineFindTextResult_delete(self: pointer) {.importc: "QWebEngineFindTextResult_delete".}
 
 
-func init*(T: type QWebEngineFindTextResult, h: ptr cQWebEngineFindTextResult): QWebEngineFindTextResult =
+func init*(T: type gen_qwebenginefindtextresult_types.QWebEngineFindTextResult, h: ptr cQWebEngineFindTextResult): gen_qwebenginefindtextresult_types.QWebEngineFindTextResult =
   T(h: h)
-proc create*(T: type QWebEngineFindTextResult, ): QWebEngineFindTextResult =
+proc create*(T: type gen_qwebenginefindtextresult_types.QWebEngineFindTextResult, ): gen_qwebenginefindtextresult_types.QWebEngineFindTextResult =
 
-  QWebEngineFindTextResult.init(fcQWebEngineFindTextResult_new())
-proc create*(T: type QWebEngineFindTextResult, other: QWebEngineFindTextResult): QWebEngineFindTextResult =
+  gen_qwebenginefindtextresult_types.QWebEngineFindTextResult.init(fcQWebEngineFindTextResult_new())
+proc create*(T: type gen_qwebenginefindtextresult_types.QWebEngineFindTextResult, other: gen_qwebenginefindtextresult_types.QWebEngineFindTextResult): gen_qwebenginefindtextresult_types.QWebEngineFindTextResult =
 
-  QWebEngineFindTextResult.init(fcQWebEngineFindTextResult_new2(other.h))
-proc numberOfMatches*(self: QWebEngineFindTextResult, ): cint =
+  gen_qwebenginefindtextresult_types.QWebEngineFindTextResult.init(fcQWebEngineFindTextResult_new2(other.h))
+proc numberOfMatches*(self: gen_qwebenginefindtextresult_types.QWebEngineFindTextResult, ): cint =
 
   fcQWebEngineFindTextResult_numberOfMatches(self.h)
 
-proc activeMatch*(self: QWebEngineFindTextResult, ): cint =
+proc activeMatch*(self: gen_qwebenginefindtextresult_types.QWebEngineFindTextResult, ): cint =
 
   fcQWebEngineFindTextResult_activeMatch(self.h)
 
-proc operatorAssign*(self: QWebEngineFindTextResult, other: QWebEngineFindTextResult): void =
+proc operatorAssign*(self: gen_qwebenginefindtextresult_types.QWebEngineFindTextResult, other: gen_qwebenginefindtextresult_types.QWebEngineFindTextResult): void =
 
   fcQWebEngineFindTextResult_operatorAssign(self.h, other.h)
 
-proc staticMetaObject*(_: type QWebEngineFindTextResult): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qwebenginefindtextresult_types.QWebEngineFindTextResult): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQWebEngineFindTextResult_staticMetaObject())
-proc delete*(self: QWebEngineFindTextResult) =
+proc delete*(self: gen_qwebenginefindtextresult_types.QWebEngineFindTextResult) =
   fcQWebEngineFindTextResult_delete(self.h)

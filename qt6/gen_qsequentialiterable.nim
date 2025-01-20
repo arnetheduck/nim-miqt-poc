@@ -34,12 +34,10 @@ const cflags = gorge("pkg-config -cflags Qt6Widgets")
 {.compile("gen_qsequentialiterable.cpp", cflags).}
 
 
-type QSequentialIterablePosition* = cint
-const
-  QSequentialIterableUnspecified* = 0
-  QSequentialIterableAtBegin* = 1
-  QSequentialIterableAtEnd* = 2
-
+type QSequentialIterablePositionEnum* = distinct cint
+template Unspecified*(_: type QSequentialIterablePositionEnum): untyped = 0
+template AtBegin*(_: type QSequentialIterablePositionEnum): untyped = 1
+template AtEnd*(_: type QSequentialIterablePositionEnum): untyped = 2
 
 
 import gen_qsequentialiterable_types

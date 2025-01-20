@@ -34,16 +34,14 @@ const cflags = gorge("pkg-config -cflags Qt5Widgets")
 {.compile("gen_qfutureinterface.cpp", cflags).}
 
 
-type QFutureInterfaceBaseState* = cint
-const
-  QFutureInterfaceBaseNoState* = 0
-  QFutureInterfaceBaseRunning* = 1
-  QFutureInterfaceBaseStarted* = 2
-  QFutureInterfaceBaseFinished* = 4
-  QFutureInterfaceBaseCanceled* = 8
-  QFutureInterfaceBasePaused* = 16
-  QFutureInterfaceBaseThrottled* = 32
-
+type QFutureInterfaceBaseStateEnum* = distinct cint
+template NoState*(_: type QFutureInterfaceBaseStateEnum): untyped = 0
+template Running*(_: type QFutureInterfaceBaseStateEnum): untyped = 1
+template Started*(_: type QFutureInterfaceBaseStateEnum): untyped = 2
+template Finished*(_: type QFutureInterfaceBaseStateEnum): untyped = 4
+template Canceled*(_: type QFutureInterfaceBaseStateEnum): untyped = 8
+template Paused*(_: type QFutureInterfaceBaseStateEnum): untyped = 16
+template Throttled*(_: type QFutureInterfaceBaseStateEnum): untyped = 32
 
 
 import gen_qfutureinterface_types
@@ -105,175 +103,175 @@ proc fcQFutureInterfaceBase_operatorAssign(self: pointer, other: pointer): void 
 proc fcQFutureInterfaceBase_delete(self: pointer) {.importc: "QFutureInterfaceBase_delete".}
 
 
-func init*(T: type QFutureInterfaceBase, h: ptr cQFutureInterfaceBase): QFutureInterfaceBase =
+func init*(T: type gen_qfutureinterface_types.QFutureInterfaceBase, h: ptr cQFutureInterfaceBase): gen_qfutureinterface_types.QFutureInterfaceBase =
   T(h: h)
-proc create*(T: type QFutureInterfaceBase, ): QFutureInterfaceBase =
+proc create*(T: type gen_qfutureinterface_types.QFutureInterfaceBase, ): gen_qfutureinterface_types.QFutureInterfaceBase =
 
-  QFutureInterfaceBase.init(fcQFutureInterfaceBase_new())
-proc create*(T: type QFutureInterfaceBase, other: QFutureInterfaceBase): QFutureInterfaceBase =
+  gen_qfutureinterface_types.QFutureInterfaceBase.init(fcQFutureInterfaceBase_new())
+proc create*(T: type gen_qfutureinterface_types.QFutureInterfaceBase, other: gen_qfutureinterface_types.QFutureInterfaceBase): gen_qfutureinterface_types.QFutureInterfaceBase =
 
-  QFutureInterfaceBase.init(fcQFutureInterfaceBase_new2(other.h))
-proc create*(T: type QFutureInterfaceBase, initialState: QFutureInterfaceBaseState): QFutureInterfaceBase =
+  gen_qfutureinterface_types.QFutureInterfaceBase.init(fcQFutureInterfaceBase_new2(other.h))
+proc create*(T: type gen_qfutureinterface_types.QFutureInterfaceBase, initialState: cint): gen_qfutureinterface_types.QFutureInterfaceBase =
 
-  QFutureInterfaceBase.init(fcQFutureInterfaceBase_new3(cint(initialState)))
-proc reportStarted*(self: QFutureInterfaceBase, ): void =
+  gen_qfutureinterface_types.QFutureInterfaceBase.init(fcQFutureInterfaceBase_new3(cint(initialState)))
+proc reportStarted*(self: gen_qfutureinterface_types.QFutureInterfaceBase, ): void =
 
   fcQFutureInterfaceBase_reportStarted(self.h)
 
-proc reportFinished*(self: QFutureInterfaceBase, ): void =
+proc reportFinished*(self: gen_qfutureinterface_types.QFutureInterfaceBase, ): void =
 
   fcQFutureInterfaceBase_reportFinished(self.h)
 
-proc reportCanceled*(self: QFutureInterfaceBase, ): void =
+proc reportCanceled*(self: gen_qfutureinterface_types.QFutureInterfaceBase, ): void =
 
   fcQFutureInterfaceBase_reportCanceled(self.h)
 
-proc reportResultsReady*(self: QFutureInterfaceBase, beginIndex: cint, endIndex: cint): void =
+proc reportResultsReady*(self: gen_qfutureinterface_types.QFutureInterfaceBase, beginIndex: cint, endIndex: cint): void =
 
   fcQFutureInterfaceBase_reportResultsReady(self.h, beginIndex, endIndex)
 
-proc setRunnable*(self: QFutureInterfaceBase, runnable: gen_qrunnable.QRunnable): void =
+proc setRunnable*(self: gen_qfutureinterface_types.QFutureInterfaceBase, runnable: gen_qrunnable.QRunnable): void =
 
   fcQFutureInterfaceBase_setRunnable(self.h, runnable.h)
 
-proc setThreadPool*(self: QFutureInterfaceBase, pool: gen_qthreadpool.QThreadPool): void =
+proc setThreadPool*(self: gen_qfutureinterface_types.QFutureInterfaceBase, pool: gen_qthreadpool.QThreadPool): void =
 
   fcQFutureInterfaceBase_setThreadPool(self.h, pool.h)
 
-proc setFilterMode*(self: QFutureInterfaceBase, enable: bool): void =
+proc setFilterMode*(self: gen_qfutureinterface_types.QFutureInterfaceBase, enable: bool): void =
 
   fcQFutureInterfaceBase_setFilterMode(self.h, enable)
 
-proc setProgressRange*(self: QFutureInterfaceBase, minimum: cint, maximum: cint): void =
+proc setProgressRange*(self: gen_qfutureinterface_types.QFutureInterfaceBase, minimum: cint, maximum: cint): void =
 
   fcQFutureInterfaceBase_setProgressRange(self.h, minimum, maximum)
 
-proc progressMinimum*(self: QFutureInterfaceBase, ): cint =
+proc progressMinimum*(self: gen_qfutureinterface_types.QFutureInterfaceBase, ): cint =
 
   fcQFutureInterfaceBase_progressMinimum(self.h)
 
-proc progressMaximum*(self: QFutureInterfaceBase, ): cint =
+proc progressMaximum*(self: gen_qfutureinterface_types.QFutureInterfaceBase, ): cint =
 
   fcQFutureInterfaceBase_progressMaximum(self.h)
 
-proc isProgressUpdateNeeded*(self: QFutureInterfaceBase, ): bool =
+proc isProgressUpdateNeeded*(self: gen_qfutureinterface_types.QFutureInterfaceBase, ): bool =
 
   fcQFutureInterfaceBase_isProgressUpdateNeeded(self.h)
 
-proc setProgressValue*(self: QFutureInterfaceBase, progressValue: cint): void =
+proc setProgressValue*(self: gen_qfutureinterface_types.QFutureInterfaceBase, progressValue: cint): void =
 
   fcQFutureInterfaceBase_setProgressValue(self.h, progressValue)
 
-proc progressValue*(self: QFutureInterfaceBase, ): cint =
+proc progressValue*(self: gen_qfutureinterface_types.QFutureInterfaceBase, ): cint =
 
   fcQFutureInterfaceBase_progressValue(self.h)
 
-proc setProgressValueAndText*(self: QFutureInterfaceBase, progressValue: cint, progressText: string): void =
+proc setProgressValueAndText*(self: gen_qfutureinterface_types.QFutureInterfaceBase, progressValue: cint, progressText: string): void =
 
   fcQFutureInterfaceBase_setProgressValueAndText(self.h, progressValue, struct_miqt_string(data: progressText, len: csize_t(len(progressText))))
 
-proc progressText*(self: QFutureInterfaceBase, ): string =
+proc progressText*(self: gen_qfutureinterface_types.QFutureInterfaceBase, ): string =
 
   let v_ms = fcQFutureInterfaceBase_progressText(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setExpectedResultCount*(self: QFutureInterfaceBase, resultCount: cint): void =
+proc setExpectedResultCount*(self: gen_qfutureinterface_types.QFutureInterfaceBase, resultCount: cint): void =
 
   fcQFutureInterfaceBase_setExpectedResultCount(self.h, resultCount)
 
-proc expectedResultCount*(self: QFutureInterfaceBase, ): cint =
+proc expectedResultCount*(self: gen_qfutureinterface_types.QFutureInterfaceBase, ): cint =
 
   fcQFutureInterfaceBase_expectedResultCount(self.h)
 
-proc resultCount*(self: QFutureInterfaceBase, ): cint =
+proc resultCount*(self: gen_qfutureinterface_types.QFutureInterfaceBase, ): cint =
 
   fcQFutureInterfaceBase_resultCount(self.h)
 
-proc queryState*(self: QFutureInterfaceBase, state: QFutureInterfaceBaseState): bool =
+proc queryState*(self: gen_qfutureinterface_types.QFutureInterfaceBase, state: cint): bool =
 
   fcQFutureInterfaceBase_queryState(self.h, cint(state))
 
-proc isRunning*(self: QFutureInterfaceBase, ): bool =
+proc isRunning*(self: gen_qfutureinterface_types.QFutureInterfaceBase, ): bool =
 
   fcQFutureInterfaceBase_isRunning(self.h)
 
-proc isStarted*(self: QFutureInterfaceBase, ): bool =
+proc isStarted*(self: gen_qfutureinterface_types.QFutureInterfaceBase, ): bool =
 
   fcQFutureInterfaceBase_isStarted(self.h)
 
-proc isCanceled*(self: QFutureInterfaceBase, ): bool =
+proc isCanceled*(self: gen_qfutureinterface_types.QFutureInterfaceBase, ): bool =
 
   fcQFutureInterfaceBase_isCanceled(self.h)
 
-proc isFinished*(self: QFutureInterfaceBase, ): bool =
+proc isFinished*(self: gen_qfutureinterface_types.QFutureInterfaceBase, ): bool =
 
   fcQFutureInterfaceBase_isFinished(self.h)
 
-proc isPaused*(self: QFutureInterfaceBase, ): bool =
+proc isPaused*(self: gen_qfutureinterface_types.QFutureInterfaceBase, ): bool =
 
   fcQFutureInterfaceBase_isPaused(self.h)
 
-proc isThrottled*(self: QFutureInterfaceBase, ): bool =
+proc isThrottled*(self: gen_qfutureinterface_types.QFutureInterfaceBase, ): bool =
 
   fcQFutureInterfaceBase_isThrottled(self.h)
 
-proc isResultReadyAt*(self: QFutureInterfaceBase, index: cint): bool =
+proc isResultReadyAt*(self: gen_qfutureinterface_types.QFutureInterfaceBase, index: cint): bool =
 
   fcQFutureInterfaceBase_isResultReadyAt(self.h, index)
 
-proc cancel*(self: QFutureInterfaceBase, ): void =
+proc cancel*(self: gen_qfutureinterface_types.QFutureInterfaceBase, ): void =
 
   fcQFutureInterfaceBase_cancel(self.h)
 
-proc setPaused*(self: QFutureInterfaceBase, paused: bool): void =
+proc setPaused*(self: gen_qfutureinterface_types.QFutureInterfaceBase, paused: bool): void =
 
   fcQFutureInterfaceBase_setPaused(self.h, paused)
 
-proc togglePaused*(self: QFutureInterfaceBase, ): void =
+proc togglePaused*(self: gen_qfutureinterface_types.QFutureInterfaceBase, ): void =
 
   fcQFutureInterfaceBase_togglePaused(self.h)
 
-proc setThrottled*(self: QFutureInterfaceBase, enable: bool): void =
+proc setThrottled*(self: gen_qfutureinterface_types.QFutureInterfaceBase, enable: bool): void =
 
   fcQFutureInterfaceBase_setThrottled(self.h, enable)
 
-proc waitForFinished*(self: QFutureInterfaceBase, ): void =
+proc waitForFinished*(self: gen_qfutureinterface_types.QFutureInterfaceBase, ): void =
 
   fcQFutureInterfaceBase_waitForFinished(self.h)
 
-proc waitForNextResult*(self: QFutureInterfaceBase, ): bool =
+proc waitForNextResult*(self: gen_qfutureinterface_types.QFutureInterfaceBase, ): bool =
 
   fcQFutureInterfaceBase_waitForNextResult(self.h)
 
-proc waitForResult*(self: QFutureInterfaceBase, resultIndex: cint): void =
+proc waitForResult*(self: gen_qfutureinterface_types.QFutureInterfaceBase, resultIndex: cint): void =
 
   fcQFutureInterfaceBase_waitForResult(self.h, resultIndex)
 
-proc waitForResume*(self: QFutureInterfaceBase, ): void =
+proc waitForResume*(self: gen_qfutureinterface_types.QFutureInterfaceBase, ): void =
 
   fcQFutureInterfaceBase_waitForResume(self.h)
 
-proc mutex*(self: QFutureInterfaceBase, ): gen_qmutex.QMutex =
+proc mutex*(self: gen_qfutureinterface_types.QFutureInterfaceBase, ): gen_qmutex.QMutex =
 
   gen_qmutex.QMutex(h: fcQFutureInterfaceBase_mutex(self.h))
 
-proc mutexWithInt*(self: QFutureInterfaceBase, param1: cint): gen_qmutex.QMutex =
+proc mutexWithInt*(self: gen_qfutureinterface_types.QFutureInterfaceBase, param1: cint): gen_qmutex.QMutex =
 
   gen_qmutex.QMutex(h: fcQFutureInterfaceBase_mutexWithInt(self.h, param1))
 
-proc operatorEqual*(self: QFutureInterfaceBase, other: QFutureInterfaceBase): bool =
+proc operatorEqual*(self: gen_qfutureinterface_types.QFutureInterfaceBase, other: gen_qfutureinterface_types.QFutureInterfaceBase): bool =
 
   fcQFutureInterfaceBase_operatorEqual(self.h, other.h)
 
-proc operatorNotEqual*(self: QFutureInterfaceBase, other: QFutureInterfaceBase): bool =
+proc operatorNotEqual*(self: gen_qfutureinterface_types.QFutureInterfaceBase, other: gen_qfutureinterface_types.QFutureInterfaceBase): bool =
 
   fcQFutureInterfaceBase_operatorNotEqual(self.h, other.h)
 
-proc operatorAssign*(self: QFutureInterfaceBase, other: QFutureInterfaceBase): void =
+proc operatorAssign*(self: gen_qfutureinterface_types.QFutureInterfaceBase, other: gen_qfutureinterface_types.QFutureInterfaceBase): void =
 
   fcQFutureInterfaceBase_operatorAssign(self.h, other.h)
 
-proc delete*(self: QFutureInterfaceBase) =
+proc delete*(self: gen_qfutureinterface_types.QFutureInterfaceBase) =
   fcQFutureInterfaceBase_delete(self.h)

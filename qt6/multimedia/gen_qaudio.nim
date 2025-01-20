@@ -34,32 +34,26 @@ const cflags = gorge("pkg-config -cflags Qt6MultimediaWidgets")
 {.compile("gen_qaudio.cpp", cflags).}
 
 
-type QAudioError* = cint
-const
-  QAudioNoError* = 0
-  QAudioOpenError* = 1
-  QAudioIOError* = 2
-  QAudioUnderrunError* = 3
-  QAudioFatalError* = 4
+type QAudioErrorEnum* = distinct cint
+template NoError*(_: type QAudioErrorEnum): untyped = 0
+template OpenError*(_: type QAudioErrorEnum): untyped = 1
+template IOError*(_: type QAudioErrorEnum): untyped = 2
+template UnderrunError*(_: type QAudioErrorEnum): untyped = 3
+template FatalError*(_: type QAudioErrorEnum): untyped = 4
 
 
-
-type QAudioState* = cint
-const
-  QAudioActiveState* = 0
-  QAudioSuspendedState* = 1
-  QAudioStoppedState* = 2
-  QAudioIdleState* = 3
+type QAudioStateEnum* = distinct cint
+template ActiveState*(_: type QAudioStateEnum): untyped = 0
+template SuspendedState*(_: type QAudioStateEnum): untyped = 1
+template StoppedState*(_: type QAudioStateEnum): untyped = 2
+template IdleState*(_: type QAudioStateEnum): untyped = 3
 
 
-
-type QAudioVolumeScale* = cint
-const
-  QAudioLinearVolumeScale* = 0
-  QAudioCubicVolumeScale* = 1
-  QAudioLogarithmicVolumeScale* = 2
-  QAudioDecibelVolumeScale* = 3
-
+type QAudioVolumeScaleEnum* = distinct cint
+template LinearVolumeScale*(_: type QAudioVolumeScaleEnum): untyped = 0
+template CubicVolumeScale*(_: type QAudioVolumeScaleEnum): untyped = 1
+template LogarithmicVolumeScale*(_: type QAudioVolumeScaleEnum): untyped = 2
+template DecibelVolumeScale*(_: type QAudioVolumeScaleEnum): untyped = 3
 
 
 import gen_qaudio_types

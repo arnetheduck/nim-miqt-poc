@@ -34,64 +34,56 @@ const cflags = gorge("pkg-config -cflags Qt6Widgets")
 {.compile("gen_qwizard.cpp", cflags).}
 
 
-type QWizardWizardButton* = cint
-const
-  QWizardBackButton* = 0
-  QWizardNextButton* = 1
-  QWizardCommitButton* = 2
-  QWizardFinishButton* = 3
-  QWizardCancelButton* = 4
-  QWizardHelpButton* = 5
-  QWizardCustomButton1* = 6
-  QWizardCustomButton2* = 7
-  QWizardCustomButton3* = 8
-  QWizardStretch* = 9
-  QWizardNoButton* = -1
-  QWizardNStandardButtons* = 6
-  QWizardNButtons* = 9
+type QWizardWizardButtonEnum* = distinct cint
+template BackButton*(_: type QWizardWizardButtonEnum): untyped = 0
+template NextButton*(_: type QWizardWizardButtonEnum): untyped = 1
+template CommitButton*(_: type QWizardWizardButtonEnum): untyped = 2
+template FinishButton*(_: type QWizardWizardButtonEnum): untyped = 3
+template CancelButton*(_: type QWizardWizardButtonEnum): untyped = 4
+template HelpButton*(_: type QWizardWizardButtonEnum): untyped = 5
+template CustomButton1*(_: type QWizardWizardButtonEnum): untyped = 6
+template CustomButton2*(_: type QWizardWizardButtonEnum): untyped = 7
+template CustomButton3*(_: type QWizardWizardButtonEnum): untyped = 8
+template Stretch*(_: type QWizardWizardButtonEnum): untyped = 9
+template NoButton*(_: type QWizardWizardButtonEnum): untyped = -1
+template NStandardButtons*(_: type QWizardWizardButtonEnum): untyped = 6
+template NButtons*(_: type QWizardWizardButtonEnum): untyped = 9
 
 
-
-type QWizardWizardPixmap* = cint
-const
-  QWizardWatermarkPixmap* = 0
-  QWizardLogoPixmap* = 1
-  QWizardBannerPixmap* = 2
-  QWizardBackgroundPixmap* = 3
-  QWizardNPixmaps* = 4
+type QWizardWizardPixmapEnum* = distinct cint
+template WatermarkPixmap*(_: type QWizardWizardPixmapEnum): untyped = 0
+template LogoPixmap*(_: type QWizardWizardPixmapEnum): untyped = 1
+template BannerPixmap*(_: type QWizardWizardPixmapEnum): untyped = 2
+template BackgroundPixmap*(_: type QWizardWizardPixmapEnum): untyped = 3
+template NPixmaps*(_: type QWizardWizardPixmapEnum): untyped = 4
 
 
-
-type QWizardWizardStyle* = cint
-const
-  QWizardClassicStyle* = 0
-  QWizardModernStyle* = 1
-  QWizardMacStyle* = 2
-  QWizardAeroStyle* = 3
-  QWizardNStyles* = 4
+type QWizardWizardStyleEnum* = distinct cint
+template ClassicStyle*(_: type QWizardWizardStyleEnum): untyped = 0
+template ModernStyle*(_: type QWizardWizardStyleEnum): untyped = 1
+template MacStyle*(_: type QWizardWizardStyleEnum): untyped = 2
+template AeroStyle*(_: type QWizardWizardStyleEnum): untyped = 3
+template NStyles*(_: type QWizardWizardStyleEnum): untyped = 4
 
 
-
-type QWizardWizardOption* = cint
-const
-  QWizardIndependentPages* = 1
-  QWizardIgnoreSubTitles* = 2
-  QWizardExtendedWatermarkPixmap* = 4
-  QWizardNoDefaultButton* = 8
-  QWizardNoBackButtonOnStartPage* = 16
-  QWizardNoBackButtonOnLastPage* = 32
-  QWizardDisabledBackButtonOnLastPage* = 64
-  QWizardHaveNextButtonOnLastPage* = 128
-  QWizardHaveFinishButtonOnEarlyPages* = 256
-  QWizardNoCancelButton* = 512
-  QWizardCancelButtonOnLeft* = 1024
-  QWizardHaveHelpButton* = 2048
-  QWizardHelpButtonOnRight* = 4096
-  QWizardHaveCustomButton1* = 8192
-  QWizardHaveCustomButton2* = 16384
-  QWizardHaveCustomButton3* = 32768
-  QWizardNoCancelButtonOnLastPage* = 65536
-
+type QWizardWizardOptionEnum* = distinct cint
+template IndependentPages*(_: type QWizardWizardOptionEnum): untyped = 1
+template IgnoreSubTitles*(_: type QWizardWizardOptionEnum): untyped = 2
+template ExtendedWatermarkPixmap*(_: type QWizardWizardOptionEnum): untyped = 4
+template NoDefaultButton*(_: type QWizardWizardOptionEnum): untyped = 8
+template NoBackButtonOnStartPage*(_: type QWizardWizardOptionEnum): untyped = 16
+template NoBackButtonOnLastPage*(_: type QWizardWizardOptionEnum): untyped = 32
+template DisabledBackButtonOnLastPage*(_: type QWizardWizardOptionEnum): untyped = 64
+template HaveNextButtonOnLastPage*(_: type QWizardWizardOptionEnum): untyped = 128
+template HaveFinishButtonOnEarlyPages*(_: type QWizardWizardOptionEnum): untyped = 256
+template NoCancelButton*(_: type QWizardWizardOptionEnum): untyped = 512
+template CancelButtonOnLeft*(_: type QWizardWizardOptionEnum): untyped = 1024
+template HaveHelpButton*(_: type QWizardWizardOptionEnum): untyped = 2048
+template HelpButtonOnRight*(_: type QWizardWizardOptionEnum): untyped = 4096
+template HaveCustomButton1*(_: type QWizardWizardOptionEnum): untyped = 8192
+template HaveCustomButton2*(_: type QWizardWizardOptionEnum): untyped = 16384
+template HaveCustomButton3*(_: type QWizardWizardOptionEnum): untyped = 32768
+template NoCancelButtonOnLastPage*(_: type QWizardWizardOptionEnum): untyped = 65536
 
 
 import gen_qwizard_types
@@ -103,7 +95,6 @@ import
   gen_qdialog,
   gen_qevent,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -120,7 +111,6 @@ export
   gen_qdialog,
   gen_qevent,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -457,57 +447,57 @@ proc fcQWizardPage_staticMetaObject(): pointer {.importc: "QWizardPage_staticMet
 proc fcQWizardPage_delete(self: pointer) {.importc: "QWizardPage_delete".}
 
 
-func init*(T: type QWizard, h: ptr cQWizard): QWizard =
+func init*(T: type gen_qwizard_types.QWizard, h: ptr cQWizard): gen_qwizard_types.QWizard =
   T(h: h)
-proc create*(T: type QWizard, parent: gen_qwidget.QWidget): QWizard =
+proc create*(T: type gen_qwizard_types.QWizard, parent: gen_qwidget.QWidget): gen_qwizard_types.QWizard =
 
-  QWizard.init(fcQWizard_new(parent.h))
-proc create*(T: type QWizard, ): QWizard =
+  gen_qwizard_types.QWizard.init(fcQWizard_new(parent.h))
+proc create*(T: type gen_qwizard_types.QWizard, ): gen_qwizard_types.QWizard =
 
-  QWizard.init(fcQWizard_new2())
-proc create*(T: type QWizard, parent: gen_qwidget.QWidget, flags: gen_qnamespace.WindowType): QWizard =
+  gen_qwizard_types.QWizard.init(fcQWizard_new2())
+proc create*(T: type gen_qwizard_types.QWizard, parent: gen_qwidget.QWidget, flags: cint): gen_qwizard_types.QWizard =
 
-  QWizard.init(fcQWizard_new3(parent.h, cint(flags)))
-proc metaObject*(self: QWizard, ): gen_qobjectdefs.QMetaObject =
+  gen_qwizard_types.QWizard.init(fcQWizard_new3(parent.h, cint(flags)))
+proc metaObject*(self: gen_qwizard_types.QWizard, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQWizard_metaObject(self.h))
 
-proc metacast*(self: QWizard, param1: cstring): pointer =
+proc metacast*(self: gen_qwizard_types.QWizard, param1: cstring): pointer =
 
   fcQWizard_metacast(self.h, param1)
 
-proc metacall*(self: QWizard, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qwizard_types.QWizard, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQWizard_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QWizard, s: cstring): string =
+proc tr*(_: type gen_qwizard_types.QWizard, s: cstring): string =
 
   let v_ms = fcQWizard_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc addPage*(self: QWizard, page: QWizardPage): cint =
+proc addPage*(self: gen_qwizard_types.QWizard, page: gen_qwizard_types.QWizardPage): cint =
 
   fcQWizard_addPage(self.h, page.h)
 
-proc setPage*(self: QWizard, id: cint, page: QWizardPage): void =
+proc setPage*(self: gen_qwizard_types.QWizard, id: cint, page: gen_qwizard_types.QWizardPage): void =
 
   fcQWizard_setPage(self.h, id, page.h)
 
-proc removePage*(self: QWizard, id: cint): void =
+proc removePage*(self: gen_qwizard_types.QWizard, id: cint): void =
 
   fcQWizard_removePage(self.h, id)
 
-proc page*(self: QWizard, id: cint): QWizardPage =
+proc page*(self: gen_qwizard_types.QWizard, id: cint): gen_qwizard_types.QWizardPage =
 
-  QWizardPage(h: fcQWizard_page(self.h, id))
+  gen_qwizard_types.QWizardPage(h: fcQWizard_page(self.h, id))
 
-proc hasVisitedPage*(self: QWizard, id: cint): bool =
+proc hasVisitedPage*(self: gen_qwizard_types.QWizard, id: cint): bool =
 
   fcQWizard_hasVisitedPage(self.h, id)
 
-proc visitedIds*(self: QWizard, ): seq[cint] =
+proc visitedIds*(self: gen_qwizard_types.QWizard, ): seq[cint] =
 
   var v_ma = fcQWizard_visitedIds(self.h)
   var vx_ret = newSeq[cint](int(v_ma.len))
@@ -516,7 +506,7 @@ proc visitedIds*(self: QWizard, ): seq[cint] =
     vx_ret[i] = v_outCast[i]
   vx_ret
 
-proc pageIds*(self: QWizard, ): seq[cint] =
+proc pageIds*(self: gen_qwizard_types.QWizard, ): seq[cint] =
 
   var v_ma = fcQWizard_pageIds(self.h)
   var vx_ret = newSeq[cint](int(v_ma.len))
@@ -525,74 +515,74 @@ proc pageIds*(self: QWizard, ): seq[cint] =
     vx_ret[i] = v_outCast[i]
   vx_ret
 
-proc setStartId*(self: QWizard, id: cint): void =
+proc setStartId*(self: gen_qwizard_types.QWizard, id: cint): void =
 
   fcQWizard_setStartId(self.h, id)
 
-proc startId*(self: QWizard, ): cint =
+proc startId*(self: gen_qwizard_types.QWizard, ): cint =
 
   fcQWizard_startId(self.h)
 
-proc currentPage*(self: QWizard, ): QWizardPage =
+proc currentPage*(self: gen_qwizard_types.QWizard, ): gen_qwizard_types.QWizardPage =
 
-  QWizardPage(h: fcQWizard_currentPage(self.h))
+  gen_qwizard_types.QWizardPage(h: fcQWizard_currentPage(self.h))
 
-proc currentId*(self: QWizard, ): cint =
+proc currentId*(self: gen_qwizard_types.QWizard, ): cint =
 
   fcQWizard_currentId(self.h)
 
-proc validateCurrentPage*(self: QWizard, ): bool =
+proc validateCurrentPage*(self: gen_qwizard_types.QWizard, ): bool =
 
   fcQWizard_validateCurrentPage(self.h)
 
-proc nextId*(self: QWizard, ): cint =
+proc nextId*(self: gen_qwizard_types.QWizard, ): cint =
 
   fcQWizard_nextId(self.h)
 
-proc setField*(self: QWizard, name: string, value: gen_qvariant.QVariant): void =
+proc setField*(self: gen_qwizard_types.QWizard, name: string, value: gen_qvariant.QVariant): void =
 
   fcQWizard_setField(self.h, struct_miqt_string(data: name, len: csize_t(len(name))), value.h)
 
-proc field*(self: QWizard, name: string): gen_qvariant.QVariant =
+proc field*(self: gen_qwizard_types.QWizard, name: string): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fcQWizard_field(self.h, struct_miqt_string(data: name, len: csize_t(len(name)))))
 
-proc setWizardStyle*(self: QWizard, style: QWizardWizardStyle): void =
+proc setWizardStyle*(self: gen_qwizard_types.QWizard, style: cint): void =
 
   fcQWizard_setWizardStyle(self.h, cint(style))
 
-proc wizardStyle*(self: QWizard, ): QWizardWizardStyle =
+proc wizardStyle*(self: gen_qwizard_types.QWizard, ): cint =
 
-  QWizardWizardStyle(fcQWizard_wizardStyle(self.h))
+  cint(fcQWizard_wizardStyle(self.h))
 
-proc setOption*(self: QWizard, option: QWizardWizardOption): void =
+proc setOption*(self: gen_qwizard_types.QWizard, option: cint): void =
 
   fcQWizard_setOption(self.h, cint(option))
 
-proc testOption*(self: QWizard, option: QWizardWizardOption): bool =
+proc testOption*(self: gen_qwizard_types.QWizard, option: cint): bool =
 
   fcQWizard_testOption(self.h, cint(option))
 
-proc setOptions*(self: QWizard, options: QWizardWizardOption): void =
+proc setOptions*(self: gen_qwizard_types.QWizard, options: cint): void =
 
   fcQWizard_setOptions(self.h, cint(options))
 
-proc options*(self: QWizard, ): QWizardWizardOption =
+proc options*(self: gen_qwizard_types.QWizard, ): cint =
 
-  QWizardWizardOption(fcQWizard_options(self.h))
+  cint(fcQWizard_options(self.h))
 
-proc setButtonText*(self: QWizard, which: QWizardWizardButton, text: string): void =
+proc setButtonText*(self: gen_qwizard_types.QWizard, which: cint, text: string): void =
 
   fcQWizard_setButtonText(self.h, cint(which), struct_miqt_string(data: text, len: csize_t(len(text))))
 
-proc buttonText*(self: QWizard, which: QWizardWizardButton): string =
+proc buttonText*(self: gen_qwizard_types.QWizard, which: cint): string =
 
   let v_ms = fcQWizard_buttonText(self.h, cint(which))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setButtonLayout*(self: QWizard, layout: seq[QWizardWizardButton]): void =
+proc setButtonLayout*(self: gen_qwizard_types.QWizard, layout: seq[cint]): void =
 
   var layout_CArray = newSeq[cint](len(layout))
   for i in 0..<len(layout):
@@ -600,59 +590,59 @@ proc setButtonLayout*(self: QWizard, layout: seq[QWizardWizardButton]): void =
 
   fcQWizard_setButtonLayout(self.h, struct_miqt_array(len: csize_t(len(layout)), data: if len(layout) == 0: nil else: addr(layout_CArray[0])))
 
-proc setButton*(self: QWizard, which: QWizardWizardButton, button: gen_qabstractbutton.QAbstractButton): void =
+proc setButton*(self: gen_qwizard_types.QWizard, which: cint, button: gen_qabstractbutton.QAbstractButton): void =
 
   fcQWizard_setButton(self.h, cint(which), button.h)
 
-proc button*(self: QWizard, which: QWizardWizardButton): gen_qabstractbutton.QAbstractButton =
+proc button*(self: gen_qwizard_types.QWizard, which: cint): gen_qabstractbutton.QAbstractButton =
 
   gen_qabstractbutton.QAbstractButton(h: fcQWizard_button(self.h, cint(which)))
 
-proc setTitleFormat*(self: QWizard, format: gen_qnamespace.TextFormat): void =
+proc setTitleFormat*(self: gen_qwizard_types.QWizard, format: cint): void =
 
   fcQWizard_setTitleFormat(self.h, cint(format))
 
-proc titleFormat*(self: QWizard, ): gen_qnamespace.TextFormat =
+proc titleFormat*(self: gen_qwizard_types.QWizard, ): cint =
 
-  gen_qnamespace.TextFormat(fcQWizard_titleFormat(self.h))
+  cint(fcQWizard_titleFormat(self.h))
 
-proc setSubTitleFormat*(self: QWizard, format: gen_qnamespace.TextFormat): void =
+proc setSubTitleFormat*(self: gen_qwizard_types.QWizard, format: cint): void =
 
   fcQWizard_setSubTitleFormat(self.h, cint(format))
 
-proc subTitleFormat*(self: QWizard, ): gen_qnamespace.TextFormat =
+proc subTitleFormat*(self: gen_qwizard_types.QWizard, ): cint =
 
-  gen_qnamespace.TextFormat(fcQWizard_subTitleFormat(self.h))
+  cint(fcQWizard_subTitleFormat(self.h))
 
-proc setPixmap*(self: QWizard, which: QWizardWizardPixmap, pixmap: gen_qpixmap.QPixmap): void =
+proc setPixmap*(self: gen_qwizard_types.QWizard, which: cint, pixmap: gen_qpixmap.QPixmap): void =
 
   fcQWizard_setPixmap(self.h, cint(which), pixmap.h)
 
-proc pixmap*(self: QWizard, which: QWizardWizardPixmap): gen_qpixmap.QPixmap =
+proc pixmap*(self: gen_qwizard_types.QWizard, which: cint): gen_qpixmap.QPixmap =
 
   gen_qpixmap.QPixmap(h: fcQWizard_pixmap(self.h, cint(which)))
 
-proc setSideWidget*(self: QWizard, widget: gen_qwidget.QWidget): void =
+proc setSideWidget*(self: gen_qwizard_types.QWizard, widget: gen_qwidget.QWidget): void =
 
   fcQWizard_setSideWidget(self.h, widget.h)
 
-proc sideWidget*(self: QWizard, ): gen_qwidget.QWidget =
+proc sideWidget*(self: gen_qwizard_types.QWizard, ): gen_qwidget.QWidget =
 
   gen_qwidget.QWidget(h: fcQWizard_sideWidget(self.h))
 
-proc setDefaultProperty*(self: QWizard, className: cstring, property: cstring, changedSignal: cstring): void =
+proc setDefaultProperty*(self: gen_qwizard_types.QWizard, className: cstring, property: cstring, changedSignal: cstring): void =
 
   fcQWizard_setDefaultProperty(self.h, className, property, changedSignal)
 
-proc setVisible*(self: QWizard, visible: bool): void =
+proc setVisible*(self: gen_qwizard_types.QWizard, visible: bool): void =
 
   fcQWizard_setVisible(self.h, visible)
 
-proc sizeHint*(self: QWizard, ): gen_qsize.QSize =
+proc sizeHint*(self: gen_qwizard_types.QWizard, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQWizard_sizeHint(self.h))
 
-proc currentIdChanged*(self: QWizard, id: cint): void =
+proc currentIdChanged*(self: gen_qwizard_types.QWizard, id: cint): void =
 
   fcQWizard_currentIdChanged(self.h, id)
 
@@ -664,13 +654,13 @@ proc miqt_exec_callback_QWizard_currentIdChanged(slot: int, id: cint) {.exportc.
 
   nimfunc[](slotval1)
 
-proc oncurrentIdChanged*(self: QWizard, slot: proc(id: cint)) =
+proc oncurrentIdChanged*(self: gen_qwizard_types.QWizard, slot: proc(id: cint)) =
   type Cb = proc(id: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQWizard_connect_currentIdChanged(self.h, cast[int](addr tmp[]))
-proc helpRequested*(self: QWizard, ): void =
+proc helpRequested*(self: gen_qwizard_types.QWizard, ): void =
 
   fcQWizard_helpRequested(self.h)
 
@@ -680,13 +670,13 @@ proc miqt_exec_callback_QWizard_helpRequested(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onhelpRequested*(self: QWizard, slot: proc()) =
+proc onhelpRequested*(self: gen_qwizard_types.QWizard, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQWizard_connect_helpRequested(self.h, cast[int](addr tmp[]))
-proc customButtonClicked*(self: QWizard, which: cint): void =
+proc customButtonClicked*(self: gen_qwizard_types.QWizard, which: cint): void =
 
   fcQWizard_customButtonClicked(self.h, which)
 
@@ -698,13 +688,13 @@ proc miqt_exec_callback_QWizard_customButtonClicked(slot: int, which: cint) {.ex
 
   nimfunc[](slotval1)
 
-proc oncustomButtonClicked*(self: QWizard, slot: proc(which: cint)) =
+proc oncustomButtonClicked*(self: gen_qwizard_types.QWizard, slot: proc(which: cint)) =
   type Cb = proc(which: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQWizard_connect_customButtonClicked(self.h, cast[int](addr tmp[]))
-proc pageAdded*(self: QWizard, id: cint): void =
+proc pageAdded*(self: gen_qwizard_types.QWizard, id: cint): void =
 
   fcQWizard_pageAdded(self.h, id)
 
@@ -716,13 +706,13 @@ proc miqt_exec_callback_QWizard_pageAdded(slot: int, id: cint) {.exportc.} =
 
   nimfunc[](slotval1)
 
-proc onpageAdded*(self: QWizard, slot: proc(id: cint)) =
+proc onpageAdded*(self: gen_qwizard_types.QWizard, slot: proc(id: cint)) =
   type Cb = proc(id: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQWizard_connect_pageAdded(self.h, cast[int](addr tmp[]))
-proc pageRemoved*(self: QWizard, id: cint): void =
+proc pageRemoved*(self: gen_qwizard_types.QWizard, id: cint): void =
 
   fcQWizard_pageRemoved(self.h, id)
 
@@ -734,1110 +724,880 @@ proc miqt_exec_callback_QWizard_pageRemoved(slot: int, id: cint) {.exportc.} =
 
   nimfunc[](slotval1)
 
-proc onpageRemoved*(self: QWizard, slot: proc(id: cint)) =
+proc onpageRemoved*(self: gen_qwizard_types.QWizard, slot: proc(id: cint)) =
   type Cb = proc(id: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQWizard_connect_pageRemoved(self.h, cast[int](addr tmp[]))
-proc back*(self: QWizard, ): void =
+proc back*(self: gen_qwizard_types.QWizard, ): void =
 
   fcQWizard_back(self.h)
 
-proc next*(self: QWizard, ): void =
+proc next*(self: gen_qwizard_types.QWizard, ): void =
 
   fcQWizard_next(self.h)
 
-proc setCurrentId*(self: QWizard, id: cint): void =
+proc setCurrentId*(self: gen_qwizard_types.QWizard, id: cint): void =
 
   fcQWizard_setCurrentId(self.h, id)
 
-proc restart*(self: QWizard, ): void =
+proc restart*(self: gen_qwizard_types.QWizard, ): void =
 
   fcQWizard_restart(self.h)
 
-proc tr2*(_: type QWizard, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qwizard_types.QWizard, s: cstring, c: cstring): string =
 
   let v_ms = fcQWizard_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QWizard, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qwizard_types.QWizard, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQWizard_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setOption2*(self: QWizard, option: QWizardWizardOption, on: bool): void =
+proc setOption2*(self: gen_qwizard_types.QWizard, option: cint, on: bool): void =
 
   fcQWizard_setOption2(self.h, cint(option), on)
 
-proc callVirtualBase_metaObject(self: QWizard, ): gen_qobjectdefs.QMetaObject =
-
+proc QWizardmetaObject*(self: gen_qwizard_types.QWizard, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQWizard_virtualbase_metaObject(self.h))
 
-type QWizardmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QWizard, slot: proc(super: QWizardmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QWizardmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qwizard_types.QWizard, slot: QWizardmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QWizardmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_metaObject(self: ptr cQWizard, slot: int): pointer {.exportc: "miqt_exec_callback_QWizard_metaObject ".} =
-  type Cb = proc(super: QWizardmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QWizard(h: self), )
+  var nimfunc = cast[ptr QWizardmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QWizard, param1: cstring): pointer =
-
+proc QWizardmetacast*(self: gen_qwizard_types.QWizard, param1: cstring): pointer =
 
   fQWizard_virtualbase_metacast(self.h, param1)
 
-type QWizardmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QWizard, slot: proc(super: QWizardmetacastBase, param1: cstring): pointer) =
+type QWizardmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qwizard_types.QWizard, slot: QWizardmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QWizardmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_metacast(self: ptr cQWizard, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QWizard_metacast ".} =
-  type Cb = proc(super: QWizardmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QWizard(h: self), param1)
+  var nimfunc = cast[ptr QWizardmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QWizard, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QWizardmetacall*(self: gen_qwizard_types.QWizard, param1: cint, param2: cint, param3: pointer): cint =
 
   fQWizard_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QWizardmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QWizard, slot: proc(super: QWizardmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QWizardmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qwizard_types.QWizard, slot: QWizardmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QWizardmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_metacall(self: ptr cQWizard, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QWizard_metacall ".} =
-  type Cb = proc(super: QWizardmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QWizard(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QWizardmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_validateCurrentPage(self: QWizard, ): bool =
-
+proc QWizardvalidateCurrentPage*(self: gen_qwizard_types.QWizard, ): bool =
 
   fQWizard_virtualbase_validateCurrentPage(self.h)
 
-type QWizardvalidateCurrentPageBase* = proc(): bool
-proc onvalidateCurrentPage*(self: QWizard, slot: proc(super: QWizardvalidateCurrentPageBase): bool) =
+type QWizardvalidateCurrentPageProc* = proc(): bool
+proc onvalidateCurrentPage*(self: gen_qwizard_types.QWizard, slot: QWizardvalidateCurrentPageProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardvalidateCurrentPageBase): bool
-  var tmp = new Cb
+  var tmp = new QWizardvalidateCurrentPageProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_validateCurrentPage(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_validateCurrentPage(self: ptr cQWizard, slot: int): bool {.exportc: "miqt_exec_callback_QWizard_validateCurrentPage ".} =
-  type Cb = proc(super: QWizardvalidateCurrentPageBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_validateCurrentPage(QWizard(h: self), )
+  var nimfunc = cast[ptr QWizardvalidateCurrentPageProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_nextId(self: QWizard, ): cint =
-
+proc QWizardnextId*(self: gen_qwizard_types.QWizard, ): cint =
 
   fQWizard_virtualbase_nextId(self.h)
 
-type QWizardnextIdBase* = proc(): cint
-proc onnextId*(self: QWizard, slot: proc(super: QWizardnextIdBase): cint) =
+type QWizardnextIdProc* = proc(): cint
+proc onnextId*(self: gen_qwizard_types.QWizard, slot: QWizardnextIdProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardnextIdBase): cint
-  var tmp = new Cb
+  var tmp = new QWizardnextIdProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_nextId(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_nextId(self: ptr cQWizard, slot: int): cint {.exportc: "miqt_exec_callback_QWizard_nextId ".} =
-  type Cb = proc(super: QWizardnextIdBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_nextId(QWizard(h: self), )
+  var nimfunc = cast[ptr QWizardnextIdProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setVisible(self: QWizard, visible: bool): void =
-
+proc QWizardsetVisible*(self: gen_qwizard_types.QWizard, visible: bool): void =
 
   fQWizard_virtualbase_setVisible(self.h, visible)
 
-type QWizardsetVisibleBase* = proc(visible: bool): void
-proc onsetVisible*(self: QWizard, slot: proc(super: QWizardsetVisibleBase, visible: bool): void) =
+type QWizardsetVisibleProc* = proc(visible: bool): void
+proc onsetVisible*(self: gen_qwizard_types.QWizard, slot: QWizardsetVisibleProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardsetVisibleBase, visible: bool): void
-  var tmp = new Cb
+  var tmp = new QWizardsetVisibleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_setVisible(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_setVisible(self: ptr cQWizard, slot: int, visible: bool): void {.exportc: "miqt_exec_callback_QWizard_setVisible ".} =
-  type Cb = proc(super: QWizardsetVisibleBase, visible: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(visible: bool): auto =
-    callVirtualBase_setVisible(QWizard(h: self), visible)
+  var nimfunc = cast[ptr QWizardsetVisibleProc](cast[pointer](slot))
   let slotval1 = visible
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_sizeHint(self: QWizard, ): gen_qsize.QSize =
-
+  nimfunc[](slotval1)
+proc QWizardsizeHint*(self: gen_qwizard_types.QWizard, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQWizard_virtualbase_sizeHint(self.h))
 
-type QWizardsizeHintBase* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: QWizard, slot: proc(super: QWizardsizeHintBase): gen_qsize.QSize) =
+type QWizardsizeHintProc* = proc(): gen_qsize.QSize
+proc onsizeHint*(self: gen_qwizard_types.QWizard, slot: QWizardsizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardsizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QWizardsizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_sizeHint(self: ptr cQWizard, slot: int): pointer {.exportc: "miqt_exec_callback_QWizard_sizeHint ".} =
-  type Cb = proc(super: QWizardsizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sizeHint(QWizard(h: self), )
+  var nimfunc = cast[ptr QWizardsizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_event(self: QWizard, event: gen_qcoreevent.QEvent): bool =
-
+proc QWizardevent*(self: gen_qwizard_types.QWizard, event: gen_qcoreevent.QEvent): bool =
 
   fQWizard_virtualbase_event(self.h, event.h)
 
-type QWizardeventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QWizard, slot: proc(super: QWizardeventBase, event: gen_qcoreevent.QEvent): bool) =
+type QWizardeventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qwizard_types.QWizard, slot: QWizardeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardeventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QWizardeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_event(self: ptr cQWizard, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QWizard_event ".} =
-  type Cb = proc(super: QWizardeventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QWizard(h: self), event)
+  var nimfunc = cast[ptr QWizardeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_resizeEvent(self: QWizard, event: gen_qevent.QResizeEvent): void =
-
+proc QWizardresizeEvent*(self: gen_qwizard_types.QWizard, event: gen_qevent.QResizeEvent): void =
 
   fQWizard_virtualbase_resizeEvent(self.h, event.h)
 
-type QWizardresizeEventBase* = proc(event: gen_qevent.QResizeEvent): void
-proc onresizeEvent*(self: QWizard, slot: proc(super: QWizardresizeEventBase, event: gen_qevent.QResizeEvent): void) =
+type QWizardresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
+proc onresizeEvent*(self: gen_qwizard_types.QWizard, slot: QWizardresizeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var tmp = new Cb
+  var tmp = new QWizardresizeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_resizeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_resizeEvent(self: ptr cQWizard, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWizard_resizeEvent ".} =
-  type Cb = proc(super: QWizardresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QResizeEvent): auto =
-    callVirtualBase_resizeEvent(QWizard(h: self), event)
+  var nimfunc = cast[ptr QWizardresizeEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QResizeEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_paintEvent(self: QWizard, event: gen_qevent.QPaintEvent): void =
-
+  nimfunc[](slotval1)
+proc QWizardpaintEvent*(self: gen_qwizard_types.QWizard, event: gen_qevent.QPaintEvent): void =
 
   fQWizard_virtualbase_paintEvent(self.h, event.h)
 
-type QWizardpaintEventBase* = proc(event: gen_qevent.QPaintEvent): void
-proc onpaintEvent*(self: QWizard, slot: proc(super: QWizardpaintEventBase, event: gen_qevent.QPaintEvent): void) =
+type QWizardpaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
+proc onpaintEvent*(self: gen_qwizard_types.QWizard, slot: QWizardpaintEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardpaintEventBase, event: gen_qevent.QPaintEvent): void
-  var tmp = new Cb
+  var tmp = new QWizardpaintEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_paintEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_paintEvent(self: ptr cQWizard, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWizard_paintEvent ".} =
-  type Cb = proc(super: QWizardpaintEventBase, event: gen_qevent.QPaintEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QPaintEvent): auto =
-    callVirtualBase_paintEvent(QWizard(h: self), event)
+  var nimfunc = cast[ptr QWizardpaintEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QPaintEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_done(self: QWizard, resultVal: cint): void =
-
+  nimfunc[](slotval1)
+proc QWizarddone*(self: gen_qwizard_types.QWizard, resultVal: cint): void =
 
   fQWizard_virtualbase_done(self.h, resultVal)
 
-type QWizarddoneBase* = proc(resultVal: cint): void
-proc ondone*(self: QWizard, slot: proc(super: QWizarddoneBase, resultVal: cint): void) =
+type QWizarddoneProc* = proc(resultVal: cint): void
+proc ondone*(self: gen_qwizard_types.QWizard, slot: QWizarddoneProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizarddoneBase, resultVal: cint): void
-  var tmp = new Cb
+  var tmp = new QWizarddoneProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_done(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_done(self: ptr cQWizard, slot: int, resultVal: cint): void {.exportc: "miqt_exec_callback_QWizard_done ".} =
-  type Cb = proc(super: QWizarddoneBase, resultVal: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(resultVal: cint): auto =
-    callVirtualBase_done(QWizard(h: self), resultVal)
+  var nimfunc = cast[ptr QWizarddoneProc](cast[pointer](slot))
   let slotval1 = resultVal
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_initializePage(self: QWizard, id: cint): void =
-
+  nimfunc[](slotval1)
+proc QWizardinitializePage*(self: gen_qwizard_types.QWizard, id: cint): void =
 
   fQWizard_virtualbase_initializePage(self.h, id)
 
-type QWizardinitializePageBase* = proc(id: cint): void
-proc oninitializePage*(self: QWizard, slot: proc(super: QWizardinitializePageBase, id: cint): void) =
+type QWizardinitializePageProc* = proc(id: cint): void
+proc oninitializePage*(self: gen_qwizard_types.QWizard, slot: QWizardinitializePageProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardinitializePageBase, id: cint): void
-  var tmp = new Cb
+  var tmp = new QWizardinitializePageProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_initializePage(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_initializePage(self: ptr cQWizard, slot: int, id: cint): void {.exportc: "miqt_exec_callback_QWizard_initializePage ".} =
-  type Cb = proc(super: QWizardinitializePageBase, id: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(id: cint): auto =
-    callVirtualBase_initializePage(QWizard(h: self), id)
+  var nimfunc = cast[ptr QWizardinitializePageProc](cast[pointer](slot))
   let slotval1 = id
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_cleanupPage(self: QWizard, id: cint): void =
-
+  nimfunc[](slotval1)
+proc QWizardcleanupPage*(self: gen_qwizard_types.QWizard, id: cint): void =
 
   fQWizard_virtualbase_cleanupPage(self.h, id)
 
-type QWizardcleanupPageBase* = proc(id: cint): void
-proc oncleanupPage*(self: QWizard, slot: proc(super: QWizardcleanupPageBase, id: cint): void) =
+type QWizardcleanupPageProc* = proc(id: cint): void
+proc oncleanupPage*(self: gen_qwizard_types.QWizard, slot: QWizardcleanupPageProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardcleanupPageBase, id: cint): void
-  var tmp = new Cb
+  var tmp = new QWizardcleanupPageProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_cleanupPage(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_cleanupPage(self: ptr cQWizard, slot: int, id: cint): void {.exportc: "miqt_exec_callback_QWizard_cleanupPage ".} =
-  type Cb = proc(super: QWizardcleanupPageBase, id: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(id: cint): auto =
-    callVirtualBase_cleanupPage(QWizard(h: self), id)
+  var nimfunc = cast[ptr QWizardcleanupPageProc](cast[pointer](slot))
   let slotval1 = id
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_minimumSizeHint(self: QWizard, ): gen_qsize.QSize =
-
+  nimfunc[](slotval1)
+proc QWizardminimumSizeHint*(self: gen_qwizard_types.QWizard, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQWizard_virtualbase_minimumSizeHint(self.h))
 
-type QWizardminimumSizeHintBase* = proc(): gen_qsize.QSize
-proc onminimumSizeHint*(self: QWizard, slot: proc(super: QWizardminimumSizeHintBase): gen_qsize.QSize) =
+type QWizardminimumSizeHintProc* = proc(): gen_qsize.QSize
+proc onminimumSizeHint*(self: gen_qwizard_types.QWizard, slot: QWizardminimumSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardminimumSizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QWizardminimumSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_minimumSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_minimumSizeHint(self: ptr cQWizard, slot: int): pointer {.exportc: "miqt_exec_callback_QWizard_minimumSizeHint ".} =
-  type Cb = proc(super: QWizardminimumSizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_minimumSizeHint(QWizard(h: self), )
+  var nimfunc = cast[ptr QWizardminimumSizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_open(self: QWizard, ): void =
-
+proc QWizardopen*(self: gen_qwizard_types.QWizard, ): void =
 
   fQWizard_virtualbase_open(self.h)
 
-type QWizardopenBase* = proc(): void
-proc onopen*(self: QWizard, slot: proc(super: QWizardopenBase): void) =
+type QWizardopenProc* = proc(): void
+proc onopen*(self: gen_qwizard_types.QWizard, slot: QWizardopenProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardopenBase): void
-  var tmp = new Cb
+  var tmp = new QWizardopenProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_open(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_open(self: ptr cQWizard, slot: int): void {.exportc: "miqt_exec_callback_QWizard_open ".} =
-  type Cb = proc(super: QWizardopenBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_open(QWizard(h: self), )
+  var nimfunc = cast[ptr QWizardopenProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_exec(self: QWizard, ): cint =
-
+  nimfunc[]()
+proc QWizardexec*(self: gen_qwizard_types.QWizard, ): cint =
 
   fQWizard_virtualbase_exec(self.h)
 
-type QWizardexecBase* = proc(): cint
-proc onexec*(self: QWizard, slot: proc(super: QWizardexecBase): cint) =
+type QWizardexecProc* = proc(): cint
+proc onexec*(self: gen_qwizard_types.QWizard, slot: QWizardexecProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardexecBase): cint
-  var tmp = new Cb
+  var tmp = new QWizardexecProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_exec(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_exec(self: ptr cQWizard, slot: int): cint {.exportc: "miqt_exec_callback_QWizard_exec ".} =
-  type Cb = proc(super: QWizardexecBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_exec(QWizard(h: self), )
+  var nimfunc = cast[ptr QWizardexecProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_accept(self: QWizard, ): void =
-
+proc QWizardaccept*(self: gen_qwizard_types.QWizard, ): void =
 
   fQWizard_virtualbase_accept(self.h)
 
-type QWizardacceptBase* = proc(): void
-proc onaccept*(self: QWizard, slot: proc(super: QWizardacceptBase): void) =
+type QWizardacceptProc* = proc(): void
+proc onaccept*(self: gen_qwizard_types.QWizard, slot: QWizardacceptProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardacceptBase): void
-  var tmp = new Cb
+  var tmp = new QWizardacceptProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_accept(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_accept(self: ptr cQWizard, slot: int): void {.exportc: "miqt_exec_callback_QWizard_accept ".} =
-  type Cb = proc(super: QWizardacceptBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_accept(QWizard(h: self), )
+  var nimfunc = cast[ptr QWizardacceptProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_reject(self: QWizard, ): void =
-
+  nimfunc[]()
+proc QWizardreject*(self: gen_qwizard_types.QWizard, ): void =
 
   fQWizard_virtualbase_reject(self.h)
 
-type QWizardrejectBase* = proc(): void
-proc onreject*(self: QWizard, slot: proc(super: QWizardrejectBase): void) =
+type QWizardrejectProc* = proc(): void
+proc onreject*(self: gen_qwizard_types.QWizard, slot: QWizardrejectProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardrejectBase): void
-  var tmp = new Cb
+  var tmp = new QWizardrejectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_reject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_reject(self: ptr cQWizard, slot: int): void {.exportc: "miqt_exec_callback_QWizard_reject ".} =
-  type Cb = proc(super: QWizardrejectBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_reject(QWizard(h: self), )
+  var nimfunc = cast[ptr QWizardrejectProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_keyPressEvent(self: QWizard, param1: gen_qevent.QKeyEvent): void =
-
+  nimfunc[]()
+proc QWizardkeyPressEvent*(self: gen_qwizard_types.QWizard, param1: gen_qevent.QKeyEvent): void =
 
   fQWizard_virtualbase_keyPressEvent(self.h, param1.h)
 
-type QWizardkeyPressEventBase* = proc(param1: gen_qevent.QKeyEvent): void
-proc onkeyPressEvent*(self: QWizard, slot: proc(super: QWizardkeyPressEventBase, param1: gen_qevent.QKeyEvent): void) =
+type QWizardkeyPressEventProc* = proc(param1: gen_qevent.QKeyEvent): void
+proc onkeyPressEvent*(self: gen_qwizard_types.QWizard, slot: QWizardkeyPressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardkeyPressEventBase, param1: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QWizardkeyPressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_keyPressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_keyPressEvent(self: ptr cQWizard, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QWizard_keyPressEvent ".} =
-  type Cb = proc(super: QWizardkeyPressEventBase, param1: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyPressEvent(QWizard(h: self), param1)
+  var nimfunc = cast[ptr QWizardkeyPressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_closeEvent(self: QWizard, param1: gen_qevent.QCloseEvent): void =
-
+  nimfunc[](slotval1)
+proc QWizardcloseEvent*(self: gen_qwizard_types.QWizard, param1: gen_qevent.QCloseEvent): void =
 
   fQWizard_virtualbase_closeEvent(self.h, param1.h)
 
-type QWizardcloseEventBase* = proc(param1: gen_qevent.QCloseEvent): void
-proc oncloseEvent*(self: QWizard, slot: proc(super: QWizardcloseEventBase, param1: gen_qevent.QCloseEvent): void) =
+type QWizardcloseEventProc* = proc(param1: gen_qevent.QCloseEvent): void
+proc oncloseEvent*(self: gen_qwizard_types.QWizard, slot: QWizardcloseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardcloseEventBase, param1: gen_qevent.QCloseEvent): void
-  var tmp = new Cb
+  var tmp = new QWizardcloseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_closeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_closeEvent(self: ptr cQWizard, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QWizard_closeEvent ".} =
-  type Cb = proc(super: QWizardcloseEventBase, param1: gen_qevent.QCloseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QCloseEvent): auto =
-    callVirtualBase_closeEvent(QWizard(h: self), param1)
+  var nimfunc = cast[ptr QWizardcloseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QCloseEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_showEvent(self: QWizard, param1: gen_qevent.QShowEvent): void =
-
+  nimfunc[](slotval1)
+proc QWizardshowEvent*(self: gen_qwizard_types.QWizard, param1: gen_qevent.QShowEvent): void =
 
   fQWizard_virtualbase_showEvent(self.h, param1.h)
 
-type QWizardshowEventBase* = proc(param1: gen_qevent.QShowEvent): void
-proc onshowEvent*(self: QWizard, slot: proc(super: QWizardshowEventBase, param1: gen_qevent.QShowEvent): void) =
+type QWizardshowEventProc* = proc(param1: gen_qevent.QShowEvent): void
+proc onshowEvent*(self: gen_qwizard_types.QWizard, slot: QWizardshowEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardshowEventBase, param1: gen_qevent.QShowEvent): void
-  var tmp = new Cb
+  var tmp = new QWizardshowEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_showEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_showEvent(self: ptr cQWizard, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QWizard_showEvent ".} =
-  type Cb = proc(super: QWizardshowEventBase, param1: gen_qevent.QShowEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QShowEvent): auto =
-    callVirtualBase_showEvent(QWizard(h: self), param1)
+  var nimfunc = cast[ptr QWizardshowEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QShowEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_contextMenuEvent(self: QWizard, param1: gen_qevent.QContextMenuEvent): void =
-
+  nimfunc[](slotval1)
+proc QWizardcontextMenuEvent*(self: gen_qwizard_types.QWizard, param1: gen_qevent.QContextMenuEvent): void =
 
   fQWizard_virtualbase_contextMenuEvent(self.h, param1.h)
 
-type QWizardcontextMenuEventBase* = proc(param1: gen_qevent.QContextMenuEvent): void
-proc oncontextMenuEvent*(self: QWizard, slot: proc(super: QWizardcontextMenuEventBase, param1: gen_qevent.QContextMenuEvent): void) =
+type QWizardcontextMenuEventProc* = proc(param1: gen_qevent.QContextMenuEvent): void
+proc oncontextMenuEvent*(self: gen_qwizard_types.QWizard, slot: QWizardcontextMenuEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardcontextMenuEventBase, param1: gen_qevent.QContextMenuEvent): void
-  var tmp = new Cb
+  var tmp = new QWizardcontextMenuEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_contextMenuEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_contextMenuEvent(self: ptr cQWizard, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QWizard_contextMenuEvent ".} =
-  type Cb = proc(super: QWizardcontextMenuEventBase, param1: gen_qevent.QContextMenuEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QContextMenuEvent): auto =
-    callVirtualBase_contextMenuEvent(QWizard(h: self), param1)
+  var nimfunc = cast[ptr QWizardcontextMenuEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QContextMenuEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_eventFilter(self: QWizard, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[](slotval1)
+proc QWizardeventFilter*(self: gen_qwizard_types.QWizard, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool =
 
   fQWizard_virtualbase_eventFilter(self.h, param1.h, param2.h)
 
-type QWizardeventFilterBase* = proc(param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QWizard, slot: proc(super: QWizardeventFilterBase, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool) =
+type QWizardeventFilterProc* = proc(param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qwizard_types.QWizard, slot: QWizardeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardeventFilterBase, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QWizardeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_eventFilter(self: ptr cQWizard, slot: int, param1: pointer, param2: pointer): bool {.exportc: "miqt_exec_callback_QWizard_eventFilter ".} =
-  type Cb = proc(super: QWizardeventFilterBase, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QWizard(h: self), param1, param2)
+  var nimfunc = cast[ptr QWizardeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: param1)
 
   let slotval2 = gen_qcoreevent.QEvent(h: param2)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_devType(self: QWizard, ): cint =
-
+proc QWizarddevType*(self: gen_qwizard_types.QWizard, ): cint =
 
   fQWizard_virtualbase_devType(self.h)
 
-type QWizarddevTypeBase* = proc(): cint
-proc ondevType*(self: QWizard, slot: proc(super: QWizarddevTypeBase): cint) =
+type QWizarddevTypeProc* = proc(): cint
+proc ondevType*(self: gen_qwizard_types.QWizard, slot: QWizarddevTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizarddevTypeBase): cint
-  var tmp = new Cb
+  var tmp = new QWizarddevTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_devType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_devType(self: ptr cQWizard, slot: int): cint {.exportc: "miqt_exec_callback_QWizard_devType ".} =
-  type Cb = proc(super: QWizarddevTypeBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_devType(QWizard(h: self), )
+  var nimfunc = cast[ptr QWizarddevTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_heightForWidth(self: QWizard, param1: cint): cint =
-
+proc QWizardheightForWidth*(self: gen_qwizard_types.QWizard, param1: cint): cint =
 
   fQWizard_virtualbase_heightForWidth(self.h, param1)
 
-type QWizardheightForWidthBase* = proc(param1: cint): cint
-proc onheightForWidth*(self: QWizard, slot: proc(super: QWizardheightForWidthBase, param1: cint): cint) =
+type QWizardheightForWidthProc* = proc(param1: cint): cint
+proc onheightForWidth*(self: gen_qwizard_types.QWizard, slot: QWizardheightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardheightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QWizardheightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_heightForWidth(self: ptr cQWizard, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QWizard_heightForWidth ".} =
-  type Cb = proc(super: QWizardheightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_heightForWidth(QWizard(h: self), param1)
+  var nimfunc = cast[ptr QWizardheightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_hasHeightForWidth(self: QWizard, ): bool =
-
+proc QWizardhasHeightForWidth*(self: gen_qwizard_types.QWizard, ): bool =
 
   fQWizard_virtualbase_hasHeightForWidth(self.h)
 
-type QWizardhasHeightForWidthBase* = proc(): bool
-proc onhasHeightForWidth*(self: QWizard, slot: proc(super: QWizardhasHeightForWidthBase): bool) =
+type QWizardhasHeightForWidthProc* = proc(): bool
+proc onhasHeightForWidth*(self: gen_qwizard_types.QWizard, slot: QWizardhasHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardhasHeightForWidthBase): bool
-  var tmp = new Cb
+  var tmp = new QWizardhasHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_hasHeightForWidth(self: ptr cQWizard, slot: int): bool {.exportc: "miqt_exec_callback_QWizard_hasHeightForWidth ".} =
-  type Cb = proc(super: QWizardhasHeightForWidthBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasHeightForWidth(QWizard(h: self), )
+  var nimfunc = cast[ptr QWizardhasHeightForWidthProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_paintEngine(self: QWizard, ): gen_qpaintengine.QPaintEngine =
-
+proc QWizardpaintEngine*(self: gen_qwizard_types.QWizard, ): gen_qpaintengine.QPaintEngine =
 
   gen_qpaintengine.QPaintEngine(h: fQWizard_virtualbase_paintEngine(self.h))
 
-type QWizardpaintEngineBase* = proc(): gen_qpaintengine.QPaintEngine
-proc onpaintEngine*(self: QWizard, slot: proc(super: QWizardpaintEngineBase): gen_qpaintengine.QPaintEngine) =
+type QWizardpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
+proc onpaintEngine*(self: gen_qwizard_types.QWizard, slot: QWizardpaintEngineProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var tmp = new Cb
+  var tmp = new QWizardpaintEngineProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_paintEngine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_paintEngine(self: ptr cQWizard, slot: int): pointer {.exportc: "miqt_exec_callback_QWizard_paintEngine ".} =
-  type Cb = proc(super: QWizardpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_paintEngine(QWizard(h: self), )
+  var nimfunc = cast[ptr QWizardpaintEngineProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_mousePressEvent(self: QWizard, event: gen_qevent.QMouseEvent): void =
-
+proc QWizardmousePressEvent*(self: gen_qwizard_types.QWizard, event: gen_qevent.QMouseEvent): void =
 
   fQWizard_virtualbase_mousePressEvent(self.h, event.h)
 
-type QWizardmousePressEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmousePressEvent*(self: QWizard, slot: proc(super: QWizardmousePressEventBase, event: gen_qevent.QMouseEvent): void) =
+type QWizardmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmousePressEvent*(self: gen_qwizard_types.QWizard, slot: QWizardmousePressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QWizardmousePressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_mousePressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_mousePressEvent(self: ptr cQWizard, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWizard_mousePressEvent ".} =
-  type Cb = proc(super: QWizardmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mousePressEvent(QWizard(h: self), event)
+  var nimfunc = cast[ptr QWizardmousePressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseReleaseEvent(self: QWizard, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QWizardmouseReleaseEvent*(self: gen_qwizard_types.QWizard, event: gen_qevent.QMouseEvent): void =
 
   fQWizard_virtualbase_mouseReleaseEvent(self.h, event.h)
 
-type QWizardmouseReleaseEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseReleaseEvent*(self: QWizard, slot: proc(super: QWizardmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void) =
+type QWizardmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseReleaseEvent*(self: gen_qwizard_types.QWizard, slot: QWizardmouseReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QWizardmouseReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_mouseReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_mouseReleaseEvent(self: ptr cQWizard, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWizard_mouseReleaseEvent ".} =
-  type Cb = proc(super: QWizardmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseReleaseEvent(QWizard(h: self), event)
+  var nimfunc = cast[ptr QWizardmouseReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseDoubleClickEvent(self: QWizard, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QWizardmouseDoubleClickEvent*(self: gen_qwizard_types.QWizard, event: gen_qevent.QMouseEvent): void =
 
   fQWizard_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
-type QWizardmouseDoubleClickEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseDoubleClickEvent*(self: QWizard, slot: proc(super: QWizardmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void) =
+type QWizardmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseDoubleClickEvent*(self: gen_qwizard_types.QWizard, slot: QWizardmouseDoubleClickEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QWizardmouseDoubleClickEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_mouseDoubleClickEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_mouseDoubleClickEvent(self: ptr cQWizard, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWizard_mouseDoubleClickEvent ".} =
-  type Cb = proc(super: QWizardmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseDoubleClickEvent(QWizard(h: self), event)
+  var nimfunc = cast[ptr QWizardmouseDoubleClickEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseMoveEvent(self: QWizard, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QWizardmouseMoveEvent*(self: gen_qwizard_types.QWizard, event: gen_qevent.QMouseEvent): void =
 
   fQWizard_virtualbase_mouseMoveEvent(self.h, event.h)
 
-type QWizardmouseMoveEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseMoveEvent*(self: QWizard, slot: proc(super: QWizardmouseMoveEventBase, event: gen_qevent.QMouseEvent): void) =
+type QWizardmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseMoveEvent*(self: gen_qwizard_types.QWizard, slot: QWizardmouseMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QWizardmouseMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_mouseMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_mouseMoveEvent(self: ptr cQWizard, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWizard_mouseMoveEvent ".} =
-  type Cb = proc(super: QWizardmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseMoveEvent(QWizard(h: self), event)
+  var nimfunc = cast[ptr QWizardmouseMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_wheelEvent(self: QWizard, event: gen_qevent.QWheelEvent): void =
-
+  nimfunc[](slotval1)
+proc QWizardwheelEvent*(self: gen_qwizard_types.QWizard, event: gen_qevent.QWheelEvent): void =
 
   fQWizard_virtualbase_wheelEvent(self.h, event.h)
 
-type QWizardwheelEventBase* = proc(event: gen_qevent.QWheelEvent): void
-proc onwheelEvent*(self: QWizard, slot: proc(super: QWizardwheelEventBase, event: gen_qevent.QWheelEvent): void) =
+type QWizardwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
+proc onwheelEvent*(self: gen_qwizard_types.QWizard, slot: QWizardwheelEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var tmp = new Cb
+  var tmp = new QWizardwheelEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_wheelEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_wheelEvent(self: ptr cQWizard, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWizard_wheelEvent ".} =
-  type Cb = proc(super: QWizardwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QWheelEvent): auto =
-    callVirtualBase_wheelEvent(QWizard(h: self), event)
+  var nimfunc = cast[ptr QWizardwheelEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QWheelEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyReleaseEvent(self: QWizard, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QWizardkeyReleaseEvent*(self: gen_qwizard_types.QWizard, event: gen_qevent.QKeyEvent): void =
 
   fQWizard_virtualbase_keyReleaseEvent(self.h, event.h)
 
-type QWizardkeyReleaseEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyReleaseEvent*(self: QWizard, slot: proc(super: QWizardkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void) =
+type QWizardkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyReleaseEvent*(self: gen_qwizard_types.QWizard, slot: QWizardkeyReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QWizardkeyReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_keyReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_keyReleaseEvent(self: ptr cQWizard, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWizard_keyReleaseEvent ".} =
-  type Cb = proc(super: QWizardkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyReleaseEvent(QWizard(h: self), event)
+  var nimfunc = cast[ptr QWizardkeyReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusInEvent(self: QWizard, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QWizardfocusInEvent*(self: gen_qwizard_types.QWizard, event: gen_qevent.QFocusEvent): void =
 
   fQWizard_virtualbase_focusInEvent(self.h, event.h)
 
-type QWizardfocusInEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusInEvent*(self: QWizard, slot: proc(super: QWizardfocusInEventBase, event: gen_qevent.QFocusEvent): void) =
+type QWizardfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusInEvent*(self: gen_qwizard_types.QWizard, slot: QWizardfocusInEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QWizardfocusInEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_focusInEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_focusInEvent(self: ptr cQWizard, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWizard_focusInEvent ".} =
-  type Cb = proc(super: QWizardfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusInEvent(QWizard(h: self), event)
+  var nimfunc = cast[ptr QWizardfocusInEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusOutEvent(self: QWizard, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QWizardfocusOutEvent*(self: gen_qwizard_types.QWizard, event: gen_qevent.QFocusEvent): void =
 
   fQWizard_virtualbase_focusOutEvent(self.h, event.h)
 
-type QWizardfocusOutEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusOutEvent*(self: QWizard, slot: proc(super: QWizardfocusOutEventBase, event: gen_qevent.QFocusEvent): void) =
+type QWizardfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusOutEvent*(self: gen_qwizard_types.QWizard, slot: QWizardfocusOutEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QWizardfocusOutEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_focusOutEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_focusOutEvent(self: ptr cQWizard, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWizard_focusOutEvent ".} =
-  type Cb = proc(super: QWizardfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusOutEvent(QWizard(h: self), event)
+  var nimfunc = cast[ptr QWizardfocusOutEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_enterEvent(self: QWizard, event: gen_qevent.QEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QWizardenterEvent*(self: gen_qwizard_types.QWizard, event: gen_qevent.QEnterEvent): void =
 
   fQWizard_virtualbase_enterEvent(self.h, event.h)
 
-type QWizardenterEventBase* = proc(event: gen_qevent.QEnterEvent): void
-proc onenterEvent*(self: QWizard, slot: proc(super: QWizardenterEventBase, event: gen_qevent.QEnterEvent): void) =
+type QWizardenterEventProc* = proc(event: gen_qevent.QEnterEvent): void
+proc onenterEvent*(self: gen_qwizard_types.QWizard, slot: QWizardenterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardenterEventBase, event: gen_qevent.QEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QWizardenterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_enterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_enterEvent(self: ptr cQWizard, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWizard_enterEvent ".} =
-  type Cb = proc(super: QWizardenterEventBase, event: gen_qevent.QEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QEnterEvent): auto =
-    callVirtualBase_enterEvent(QWizard(h: self), event)
+  var nimfunc = cast[ptr QWizardenterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_leaveEvent(self: QWizard, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QWizardleaveEvent*(self: gen_qwizard_types.QWizard, event: gen_qcoreevent.QEvent): void =
 
   fQWizard_virtualbase_leaveEvent(self.h, event.h)
 
-type QWizardleaveEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onleaveEvent*(self: QWizard, slot: proc(super: QWizardleaveEventBase, event: gen_qcoreevent.QEvent): void) =
+type QWizardleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onleaveEvent*(self: gen_qwizard_types.QWizard, slot: QWizardleaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QWizardleaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_leaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_leaveEvent(self: ptr cQWizard, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWizard_leaveEvent ".} =
-  type Cb = proc(super: QWizardleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_leaveEvent(QWizard(h: self), event)
+  var nimfunc = cast[ptr QWizardleaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_moveEvent(self: QWizard, event: gen_qevent.QMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QWizardmoveEvent*(self: gen_qwizard_types.QWizard, event: gen_qevent.QMoveEvent): void =
 
   fQWizard_virtualbase_moveEvent(self.h, event.h)
 
-type QWizardmoveEventBase* = proc(event: gen_qevent.QMoveEvent): void
-proc onmoveEvent*(self: QWizard, slot: proc(super: QWizardmoveEventBase, event: gen_qevent.QMoveEvent): void) =
+type QWizardmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
+proc onmoveEvent*(self: gen_qwizard_types.QWizard, slot: QWizardmoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QWizardmoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_moveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_moveEvent(self: ptr cQWizard, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWizard_moveEvent ".} =
-  type Cb = proc(super: QWizardmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMoveEvent): auto =
-    callVirtualBase_moveEvent(QWizard(h: self), event)
+  var nimfunc = cast[ptr QWizardmoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_tabletEvent(self: QWizard, event: gen_qevent.QTabletEvent): void =
-
+  nimfunc[](slotval1)
+proc QWizardtabletEvent*(self: gen_qwizard_types.QWizard, event: gen_qevent.QTabletEvent): void =
 
   fQWizard_virtualbase_tabletEvent(self.h, event.h)
 
-type QWizardtabletEventBase* = proc(event: gen_qevent.QTabletEvent): void
-proc ontabletEvent*(self: QWizard, slot: proc(super: QWizardtabletEventBase, event: gen_qevent.QTabletEvent): void) =
+type QWizardtabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
+proc ontabletEvent*(self: gen_qwizard_types.QWizard, slot: QWizardtabletEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardtabletEventBase, event: gen_qevent.QTabletEvent): void
-  var tmp = new Cb
+  var tmp = new QWizardtabletEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_tabletEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_tabletEvent(self: ptr cQWizard, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWizard_tabletEvent ".} =
-  type Cb = proc(super: QWizardtabletEventBase, event: gen_qevent.QTabletEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QTabletEvent): auto =
-    callVirtualBase_tabletEvent(QWizard(h: self), event)
+  var nimfunc = cast[ptr QWizardtabletEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QTabletEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_actionEvent(self: QWizard, event: gen_qevent.QActionEvent): void =
-
+  nimfunc[](slotval1)
+proc QWizardactionEvent*(self: gen_qwizard_types.QWizard, event: gen_qevent.QActionEvent): void =
 
   fQWizard_virtualbase_actionEvent(self.h, event.h)
 
-type QWizardactionEventBase* = proc(event: gen_qevent.QActionEvent): void
-proc onactionEvent*(self: QWizard, slot: proc(super: QWizardactionEventBase, event: gen_qevent.QActionEvent): void) =
+type QWizardactionEventProc* = proc(event: gen_qevent.QActionEvent): void
+proc onactionEvent*(self: gen_qwizard_types.QWizard, slot: QWizardactionEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardactionEventBase, event: gen_qevent.QActionEvent): void
-  var tmp = new Cb
+  var tmp = new QWizardactionEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_actionEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_actionEvent(self: ptr cQWizard, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWizard_actionEvent ".} =
-  type Cb = proc(super: QWizardactionEventBase, event: gen_qevent.QActionEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QActionEvent): auto =
-    callVirtualBase_actionEvent(QWizard(h: self), event)
+  var nimfunc = cast[ptr QWizardactionEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QActionEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragEnterEvent(self: QWizard, event: gen_qevent.QDragEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QWizarddragEnterEvent*(self: gen_qwizard_types.QWizard, event: gen_qevent.QDragEnterEvent): void =
 
   fQWizard_virtualbase_dragEnterEvent(self.h, event.h)
 
-type QWizarddragEnterEventBase* = proc(event: gen_qevent.QDragEnterEvent): void
-proc ondragEnterEvent*(self: QWizard, slot: proc(super: QWizarddragEnterEventBase, event: gen_qevent.QDragEnterEvent): void) =
+type QWizarddragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
+proc ondragEnterEvent*(self: gen_qwizard_types.QWizard, slot: QWizarddragEnterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizarddragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QWizarddragEnterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_dragEnterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_dragEnterEvent(self: ptr cQWizard, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWizard_dragEnterEvent ".} =
-  type Cb = proc(super: QWizarddragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragEnterEvent): auto =
-    callVirtualBase_dragEnterEvent(QWizard(h: self), event)
+  var nimfunc = cast[ptr QWizarddragEnterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragMoveEvent(self: QWizard, event: gen_qevent.QDragMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QWizarddragMoveEvent*(self: gen_qwizard_types.QWizard, event: gen_qevent.QDragMoveEvent): void =
 
   fQWizard_virtualbase_dragMoveEvent(self.h, event.h)
 
-type QWizarddragMoveEventBase* = proc(event: gen_qevent.QDragMoveEvent): void
-proc ondragMoveEvent*(self: QWizard, slot: proc(super: QWizarddragMoveEventBase, event: gen_qevent.QDragMoveEvent): void) =
+type QWizarddragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
+proc ondragMoveEvent*(self: gen_qwizard_types.QWizard, slot: QWizarddragMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizarddragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QWizarddragMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_dragMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_dragMoveEvent(self: ptr cQWizard, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWizard_dragMoveEvent ".} =
-  type Cb = proc(super: QWizarddragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragMoveEvent): auto =
-    callVirtualBase_dragMoveEvent(QWizard(h: self), event)
+  var nimfunc = cast[ptr QWizarddragMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragLeaveEvent(self: QWizard, event: gen_qevent.QDragLeaveEvent): void =
-
+  nimfunc[](slotval1)
+proc QWizarddragLeaveEvent*(self: gen_qwizard_types.QWizard, event: gen_qevent.QDragLeaveEvent): void =
 
   fQWizard_virtualbase_dragLeaveEvent(self.h, event.h)
 
-type QWizarddragLeaveEventBase* = proc(event: gen_qevent.QDragLeaveEvent): void
-proc ondragLeaveEvent*(self: QWizard, slot: proc(super: QWizarddragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void) =
+type QWizarddragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
+proc ondragLeaveEvent*(self: gen_qwizard_types.QWizard, slot: QWizarddragLeaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizarddragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var tmp = new Cb
+  var tmp = new QWizarddragLeaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_dragLeaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_dragLeaveEvent(self: ptr cQWizard, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWizard_dragLeaveEvent ".} =
-  type Cb = proc(super: QWizarddragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragLeaveEvent): auto =
-    callVirtualBase_dragLeaveEvent(QWizard(h: self), event)
+  var nimfunc = cast[ptr QWizarddragLeaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragLeaveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dropEvent(self: QWizard, event: gen_qevent.QDropEvent): void =
-
+  nimfunc[](slotval1)
+proc QWizarddropEvent*(self: gen_qwizard_types.QWizard, event: gen_qevent.QDropEvent): void =
 
   fQWizard_virtualbase_dropEvent(self.h, event.h)
 
-type QWizarddropEventBase* = proc(event: gen_qevent.QDropEvent): void
-proc ondropEvent*(self: QWizard, slot: proc(super: QWizarddropEventBase, event: gen_qevent.QDropEvent): void) =
+type QWizarddropEventProc* = proc(event: gen_qevent.QDropEvent): void
+proc ondropEvent*(self: gen_qwizard_types.QWizard, slot: QWizarddropEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizarddropEventBase, event: gen_qevent.QDropEvent): void
-  var tmp = new Cb
+  var tmp = new QWizarddropEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_dropEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_dropEvent(self: ptr cQWizard, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWizard_dropEvent ".} =
-  type Cb = proc(super: QWizarddropEventBase, event: gen_qevent.QDropEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDropEvent): auto =
-    callVirtualBase_dropEvent(QWizard(h: self), event)
+  var nimfunc = cast[ptr QWizarddropEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDropEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hideEvent(self: QWizard, event: gen_qevent.QHideEvent): void =
-
+  nimfunc[](slotval1)
+proc QWizardhideEvent*(self: gen_qwizard_types.QWizard, event: gen_qevent.QHideEvent): void =
 
   fQWizard_virtualbase_hideEvent(self.h, event.h)
 
-type QWizardhideEventBase* = proc(event: gen_qevent.QHideEvent): void
-proc onhideEvent*(self: QWizard, slot: proc(super: QWizardhideEventBase, event: gen_qevent.QHideEvent): void) =
+type QWizardhideEventProc* = proc(event: gen_qevent.QHideEvent): void
+proc onhideEvent*(self: gen_qwizard_types.QWizard, slot: QWizardhideEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardhideEventBase, event: gen_qevent.QHideEvent): void
-  var tmp = new Cb
+  var tmp = new QWizardhideEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_hideEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_hideEvent(self: ptr cQWizard, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWizard_hideEvent ".} =
-  type Cb = proc(super: QWizardhideEventBase, event: gen_qevent.QHideEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QHideEvent): auto =
-    callVirtualBase_hideEvent(QWizard(h: self), event)
+  var nimfunc = cast[ptr QWizardhideEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QHideEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_nativeEvent(self: QWizard, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
-
+  nimfunc[](slotval1)
+proc QWizardnativeEvent*(self: gen_qwizard_types.QWizard, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
 
   fQWizard_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
-type QWizardnativeEventBase* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-proc onnativeEvent*(self: QWizard, slot: proc(super: QWizardnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool) =
+type QWizardnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
+proc onnativeEvent*(self: gen_qwizard_types.QWizard, slot: QWizardnativeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-  var tmp = new Cb
+  var tmp = new QWizardnativeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_nativeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_nativeEvent(self: ptr cQWizard, slot: int, eventType: struct_miqt_string, message: pointer, resultVal: ptr uint): bool {.exportc: "miqt_exec_callback_QWizard_nativeEvent ".} =
-  type Cb = proc(super: QWizardnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(eventType: seq[byte], message: pointer, resultVal: ptr uint): auto =
-    callVirtualBase_nativeEvent(QWizard(h: self), eventType, message, resultVal)
+  var nimfunc = cast[ptr QWizardnativeEventProc](cast[pointer](slot))
   var veventType_bytearray = eventType
   var veventTypex_ret = @(toOpenArrayByte(veventType_bytearray.data, 0, int(veventType_bytearray.len)-1))
   c_free(veventType_bytearray.data)
@@ -1848,426 +1608,361 @@ proc miqt_exec_callback_QWizard_nativeEvent(self: ptr cQWizard, slot: int, event
   let slotval3 = resultVal
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_changeEvent(self: QWizard, param1: gen_qcoreevent.QEvent): void =
-
+proc QWizardchangeEvent*(self: gen_qwizard_types.QWizard, param1: gen_qcoreevent.QEvent): void =
 
   fQWizard_virtualbase_changeEvent(self.h, param1.h)
 
-type QWizardchangeEventBase* = proc(param1: gen_qcoreevent.QEvent): void
-proc onchangeEvent*(self: QWizard, slot: proc(super: QWizardchangeEventBase, param1: gen_qcoreevent.QEvent): void) =
+type QWizardchangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
+proc onchangeEvent*(self: gen_qwizard_types.QWizard, slot: QWizardchangeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardchangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QWizardchangeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_changeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_changeEvent(self: ptr cQWizard, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QWizard_changeEvent ".} =
-  type Cb = proc(super: QWizardchangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_changeEvent(QWizard(h: self), param1)
+  var nimfunc = cast[ptr QWizardchangeEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_metric(self: QWizard, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint =
-
+  nimfunc[](slotval1)
+proc QWizardmetric*(self: gen_qwizard_types.QWizard, param1: cint): cint =
 
   fQWizard_virtualbase_metric(self.h, cint(param1))
 
-type QWizardmetricBase* = proc(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-proc onmetric*(self: QWizard, slot: proc(super: QWizardmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint) =
+type QWizardmetricProc* = proc(param1: cint): cint
+proc onmetric*(self: gen_qwizard_types.QWizard, slot: QWizardmetricProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var tmp = new Cb
+  var tmp = new QWizardmetricProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_metric(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_metric(self: ptr cQWizard, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QWizard_metric ".} =
-  type Cb = proc(super: QWizardmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): auto =
-    callVirtualBase_metric(QWizard(h: self), param1)
-  let slotval1 = gen_qpaintdevice.QPaintDevicePaintDeviceMetric(param1)
+  var nimfunc = cast[ptr QWizardmetricProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_initPainter(self: QWizard, painter: gen_qpainter.QPainter): void =
-
+proc QWizardinitPainter*(self: gen_qwizard_types.QWizard, painter: gen_qpainter.QPainter): void =
 
   fQWizard_virtualbase_initPainter(self.h, painter.h)
 
-type QWizardinitPainterBase* = proc(painter: gen_qpainter.QPainter): void
-proc oninitPainter*(self: QWizard, slot: proc(super: QWizardinitPainterBase, painter: gen_qpainter.QPainter): void) =
+type QWizardinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
+proc oninitPainter*(self: gen_qwizard_types.QWizard, slot: QWizardinitPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardinitPainterBase, painter: gen_qpainter.QPainter): void
-  var tmp = new Cb
+  var tmp = new QWizardinitPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_initPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_initPainter(self: ptr cQWizard, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_QWizard_initPainter ".} =
-  type Cb = proc(super: QWizardinitPainterBase, painter: gen_qpainter.QPainter): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter): auto =
-    callVirtualBase_initPainter(QWizard(h: self), painter)
+  var nimfunc = cast[ptr QWizardinitPainterProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_redirected(self: QWizard, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
+  nimfunc[](slotval1)
+proc QWizardredirected*(self: gen_qwizard_types.QWizard, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
 
   gen_qpaintdevice.QPaintDevice(h: fQWizard_virtualbase_redirected(self.h, offset.h))
 
-type QWizardredirectedBase* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-proc onredirected*(self: QWizard, slot: proc(super: QWizardredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice) =
+type QWizardredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
+proc onredirected*(self: gen_qwizard_types.QWizard, slot: QWizardredirectedProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var tmp = new Cb
+  var tmp = new QWizardredirectedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_redirected(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_redirected(self: ptr cQWizard, slot: int, offset: pointer): pointer {.exportc: "miqt_exec_callback_QWizard_redirected ".} =
-  type Cb = proc(super: QWizardredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(offset: gen_qpoint.QPoint): auto =
-    callVirtualBase_redirected(QWizard(h: self), offset)
+  var nimfunc = cast[ptr QWizardredirectedProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: offset)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_sharedPainter(self: QWizard, ): gen_qpainter.QPainter =
-
+proc QWizardsharedPainter*(self: gen_qwizard_types.QWizard, ): gen_qpainter.QPainter =
 
   gen_qpainter.QPainter(h: fQWizard_virtualbase_sharedPainter(self.h))
 
-type QWizardsharedPainterBase* = proc(): gen_qpainter.QPainter
-proc onsharedPainter*(self: QWizard, slot: proc(super: QWizardsharedPainterBase): gen_qpainter.QPainter) =
+type QWizardsharedPainterProc* = proc(): gen_qpainter.QPainter
+proc onsharedPainter*(self: gen_qwizard_types.QWizard, slot: QWizardsharedPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardsharedPainterBase): gen_qpainter.QPainter
-  var tmp = new Cb
+  var tmp = new QWizardsharedPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_sharedPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_sharedPainter(self: ptr cQWizard, slot: int): pointer {.exportc: "miqt_exec_callback_QWizard_sharedPainter ".} =
-  type Cb = proc(super: QWizardsharedPainterBase): gen_qpainter.QPainter
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sharedPainter(QWizard(h: self), )
+  var nimfunc = cast[ptr QWizardsharedPainterProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_inputMethodEvent(self: QWizard, param1: gen_qevent.QInputMethodEvent): void =
-
+proc QWizardinputMethodEvent*(self: gen_qwizard_types.QWizard, param1: gen_qevent.QInputMethodEvent): void =
 
   fQWizard_virtualbase_inputMethodEvent(self.h, param1.h)
 
-type QWizardinputMethodEventBase* = proc(param1: gen_qevent.QInputMethodEvent): void
-proc oninputMethodEvent*(self: QWizard, slot: proc(super: QWizardinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void) =
+type QWizardinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
+proc oninputMethodEvent*(self: gen_qwizard_types.QWizard, slot: QWizardinputMethodEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var tmp = new Cb
+  var tmp = new QWizardinputMethodEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_inputMethodEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_inputMethodEvent(self: ptr cQWizard, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QWizard_inputMethodEvent ".} =
-  type Cb = proc(super: QWizardinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QInputMethodEvent): auto =
-    callVirtualBase_inputMethodEvent(QWizard(h: self), param1)
+  var nimfunc = cast[ptr QWizardinputMethodEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QInputMethodEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_inputMethodQuery(self: QWizard, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant =
-
+  nimfunc[](slotval1)
+proc QWizardinputMethodQuery*(self: gen_qwizard_types.QWizard, param1: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQWizard_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
-type QWizardinputMethodQueryBase* = proc(param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-proc oninputMethodQuery*(self: QWizard, slot: proc(super: QWizardinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant) =
+type QWizardinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
+proc oninputMethodQuery*(self: gen_qwizard_types.QWizard, slot: QWizardinputMethodQueryProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QWizardinputMethodQueryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_inputMethodQuery(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_inputMethodQuery(self: ptr cQWizard, slot: int, param1: cint): pointer {.exportc: "miqt_exec_callback_QWizard_inputMethodQuery ".} =
-  type Cb = proc(super: QWizardinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qnamespace.InputMethodQuery): auto =
-    callVirtualBase_inputMethodQuery(QWizard(h: self), param1)
-  let slotval1 = gen_qnamespace.InputMethodQuery(param1)
+  var nimfunc = cast[ptr QWizardinputMethodQueryProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_focusNextPrevChild(self: QWizard, next: bool): bool =
-
+proc QWizardfocusNextPrevChild*(self: gen_qwizard_types.QWizard, next: bool): bool =
 
   fQWizard_virtualbase_focusNextPrevChild(self.h, next)
 
-type QWizardfocusNextPrevChildBase* = proc(next: bool): bool
-proc onfocusNextPrevChild*(self: QWizard, slot: proc(super: QWizardfocusNextPrevChildBase, next: bool): bool) =
+type QWizardfocusNextPrevChildProc* = proc(next: bool): bool
+proc onfocusNextPrevChild*(self: gen_qwizard_types.QWizard, slot: QWizardfocusNextPrevChildProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardfocusNextPrevChildBase, next: bool): bool
-  var tmp = new Cb
+  var tmp = new QWizardfocusNextPrevChildProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_focusNextPrevChild(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_focusNextPrevChild(self: ptr cQWizard, slot: int, next: bool): bool {.exportc: "miqt_exec_callback_QWizard_focusNextPrevChild ".} =
-  type Cb = proc(super: QWizardfocusNextPrevChildBase, next: bool): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(next: bool): auto =
-    callVirtualBase_focusNextPrevChild(QWizard(h: self), next)
+  var nimfunc = cast[ptr QWizardfocusNextPrevChildProc](cast[pointer](slot))
   let slotval1 = next
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QWizard, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QWizardtimerEvent*(self: gen_qwizard_types.QWizard, event: gen_qcoreevent.QTimerEvent): void =
 
   fQWizard_virtualbase_timerEvent(self.h, event.h)
 
-type QWizardtimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QWizard, slot: proc(super: QWizardtimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QWizardtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qwizard_types.QWizard, slot: QWizardtimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardtimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QWizardtimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_timerEvent(self: ptr cQWizard, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWizard_timerEvent ".} =
-  type Cb = proc(super: QWizardtimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QWizard(h: self), event)
+  var nimfunc = cast[ptr QWizardtimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QWizard, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QWizardchildEvent*(self: gen_qwizard_types.QWizard, event: gen_qcoreevent.QChildEvent): void =
 
   fQWizard_virtualbase_childEvent(self.h, event.h)
 
-type QWizardchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QWizard, slot: proc(super: QWizardchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QWizardchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qwizard_types.QWizard, slot: QWizardchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QWizardchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_childEvent(self: ptr cQWizard, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWizard_childEvent ".} =
-  type Cb = proc(super: QWizardchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QWizard(h: self), event)
+  var nimfunc = cast[ptr QWizardchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QWizard, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QWizardcustomEvent*(self: gen_qwizard_types.QWizard, event: gen_qcoreevent.QEvent): void =
 
   fQWizard_virtualbase_customEvent(self.h, event.h)
 
-type QWizardcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QWizard, slot: proc(super: QWizardcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QWizardcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qwizard_types.QWizard, slot: QWizardcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QWizardcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_customEvent(self: ptr cQWizard, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWizard_customEvent ".} =
-  type Cb = proc(super: QWizardcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QWizard(h: self), event)
+  var nimfunc = cast[ptr QWizardcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QWizard, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QWizardconnectNotify*(self: gen_qwizard_types.QWizard, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQWizard_virtualbase_connectNotify(self.h, signal.h)
 
-type QWizardconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QWizard, slot: proc(super: QWizardconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QWizardconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qwizard_types.QWizard, slot: QWizardconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QWizardconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_connectNotify(self: ptr cQWizard, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QWizard_connectNotify ".} =
-  type Cb = proc(super: QWizardconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QWizard(h: self), signal)
+  var nimfunc = cast[ptr QWizardconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QWizard, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QWizarddisconnectNotify*(self: gen_qwizard_types.QWizard, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQWizard_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QWizarddisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QWizard, slot: proc(super: QWizarddisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QWizarddisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qwizard_types.QWizard, slot: QWizarddisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizarddisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QWizarddisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizard_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizard_disconnectNotify(self: ptr cQWizard, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QWizard_disconnectNotify ".} =
-  type Cb = proc(super: QWizarddisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QWizard(h: self), signal)
+  var nimfunc = cast[ptr QWizarddisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QWizard): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qwizard_types.QWizard): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQWizard_staticMetaObject())
-proc delete*(self: QWizard) =
+proc delete*(self: gen_qwizard_types.QWizard) =
   fcQWizard_delete(self.h)
 
-func init*(T: type QWizardPage, h: ptr cQWizardPage): QWizardPage =
+func init*(T: type gen_qwizard_types.QWizardPage, h: ptr cQWizardPage): gen_qwizard_types.QWizardPage =
   T(h: h)
-proc create*(T: type QWizardPage, parent: gen_qwidget.QWidget): QWizardPage =
+proc create*(T: type gen_qwizard_types.QWizardPage, parent: gen_qwidget.QWidget): gen_qwizard_types.QWizardPage =
 
-  QWizardPage.init(fcQWizardPage_new(parent.h))
-proc create*(T: type QWizardPage, ): QWizardPage =
+  gen_qwizard_types.QWizardPage.init(fcQWizardPage_new(parent.h))
+proc create*(T: type gen_qwizard_types.QWizardPage, ): gen_qwizard_types.QWizardPage =
 
-  QWizardPage.init(fcQWizardPage_new2())
-proc metaObject*(self: QWizardPage, ): gen_qobjectdefs.QMetaObject =
+  gen_qwizard_types.QWizardPage.init(fcQWizardPage_new2())
+proc metaObject*(self: gen_qwizard_types.QWizardPage, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQWizardPage_metaObject(self.h))
 
-proc metacast*(self: QWizardPage, param1: cstring): pointer =
+proc metacast*(self: gen_qwizard_types.QWizardPage, param1: cstring): pointer =
 
   fcQWizardPage_metacast(self.h, param1)
 
-proc metacall*(self: QWizardPage, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qwizard_types.QWizardPage, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQWizardPage_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QWizardPage, s: cstring): string =
+proc tr*(_: type gen_qwizard_types.QWizardPage, s: cstring): string =
 
   let v_ms = fcQWizardPage_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setTitle*(self: QWizardPage, title: string): void =
+proc setTitle*(self: gen_qwizard_types.QWizardPage, title: string): void =
 
   fcQWizardPage_setTitle(self.h, struct_miqt_string(data: title, len: csize_t(len(title))))
 
-proc title*(self: QWizardPage, ): string =
+proc title*(self: gen_qwizard_types.QWizardPage, ): string =
 
   let v_ms = fcQWizardPage_title(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setSubTitle*(self: QWizardPage, subTitle: string): void =
+proc setSubTitle*(self: gen_qwizard_types.QWizardPage, subTitle: string): void =
 
   fcQWizardPage_setSubTitle(self.h, struct_miqt_string(data: subTitle, len: csize_t(len(subTitle))))
 
-proc subTitle*(self: QWizardPage, ): string =
+proc subTitle*(self: gen_qwizard_types.QWizardPage, ): string =
 
   let v_ms = fcQWizardPage_subTitle(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setPixmap*(self: QWizardPage, which: QWizardWizardPixmap, pixmap: gen_qpixmap.QPixmap): void =
+proc setPixmap*(self: gen_qwizard_types.QWizardPage, which: cint, pixmap: gen_qpixmap.QPixmap): void =
 
   fcQWizardPage_setPixmap(self.h, cint(which), pixmap.h)
 
-proc pixmap*(self: QWizardPage, which: QWizardWizardPixmap): gen_qpixmap.QPixmap =
+proc pixmap*(self: gen_qwizard_types.QWizardPage, which: cint): gen_qpixmap.QPixmap =
 
   gen_qpixmap.QPixmap(h: fcQWizardPage_pixmap(self.h, cint(which)))
 
-proc setFinalPage*(self: QWizardPage, finalPage: bool): void =
+proc setFinalPage*(self: gen_qwizard_types.QWizardPage, finalPage: bool): void =
 
   fcQWizardPage_setFinalPage(self.h, finalPage)
 
-proc isFinalPage*(self: QWizardPage, ): bool =
+proc isFinalPage*(self: gen_qwizard_types.QWizardPage, ): bool =
 
   fcQWizardPage_isFinalPage(self.h)
 
-proc setCommitPage*(self: QWizardPage, commitPage: bool): void =
+proc setCommitPage*(self: gen_qwizard_types.QWizardPage, commitPage: bool): void =
 
   fcQWizardPage_setCommitPage(self.h, commitPage)
 
-proc isCommitPage*(self: QWizardPage, ): bool =
+proc isCommitPage*(self: gen_qwizard_types.QWizardPage, ): bool =
 
   fcQWizardPage_isCommitPage(self.h)
 
-proc setButtonText*(self: QWizardPage, which: QWizardWizardButton, text: string): void =
+proc setButtonText*(self: gen_qwizard_types.QWizardPage, which: cint, text: string): void =
 
   fcQWizardPage_setButtonText(self.h, cint(which), struct_miqt_string(data: text, len: csize_t(len(text))))
 
-proc buttonText*(self: QWizardPage, which: QWizardWizardButton): string =
+proc buttonText*(self: gen_qwizard_types.QWizardPage, which: cint): string =
 
   let v_ms = fcQWizardPage_buttonText(self.h, cint(which))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc initializePage*(self: QWizardPage, ): void =
+proc initializePage*(self: gen_qwizard_types.QWizardPage, ): void =
 
   fcQWizardPage_initializePage(self.h)
 
-proc cleanupPage*(self: QWizardPage, ): void =
+proc cleanupPage*(self: gen_qwizard_types.QWizardPage, ): void =
 
   fcQWizardPage_cleanupPage(self.h)
 
-proc validatePage*(self: QWizardPage, ): bool =
+proc validatePage*(self: gen_qwizard_types.QWizardPage, ): bool =
 
   fcQWizardPage_validatePage(self.h)
 
-proc isComplete*(self: QWizardPage, ): bool =
+proc isComplete*(self: gen_qwizard_types.QWizardPage, ): bool =
 
   fcQWizardPage_isComplete(self.h)
 
-proc nextId*(self: QWizardPage, ): cint =
+proc nextId*(self: gen_qwizard_types.QWizardPage, ): cint =
 
   fcQWizardPage_nextId(self.h)
 
-proc completeChanged*(self: QWizardPage, ): void =
+proc completeChanged*(self: gen_qwizard_types.QWizardPage, ): void =
 
   fcQWizardPage_completeChanged(self.h)
 
@@ -2277,973 +1972,768 @@ proc miqt_exec_callback_QWizardPage_completeChanged(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc oncompleteChanged*(self: QWizardPage, slot: proc()) =
+proc oncompleteChanged*(self: gen_qwizard_types.QWizardPage, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQWizardPage_connect_completeChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QWizardPage, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qwizard_types.QWizardPage, s: cstring, c: cstring): string =
 
   let v_ms = fcQWizardPage_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QWizardPage, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qwizard_types.QWizardPage, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQWizardPage_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QWizardPage, ): gen_qobjectdefs.QMetaObject =
-
+proc QWizardPagemetaObject*(self: gen_qwizard_types.QWizardPage, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQWizardPage_virtualbase_metaObject(self.h))
 
-type QWizardPagemetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QWizardPage, slot: proc(super: QWizardPagemetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QWizardPagemetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qwizard_types.QWizardPage, slot: QWizardPagemetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardPagemetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QWizardPagemetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizardPage_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizardPage_metaObject(self: ptr cQWizardPage, slot: int): pointer {.exportc: "miqt_exec_callback_QWizardPage_metaObject ".} =
-  type Cb = proc(super: QWizardPagemetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QWizardPage(h: self), )
+  var nimfunc = cast[ptr QWizardPagemetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QWizardPage, param1: cstring): pointer =
-
+proc QWizardPagemetacast*(self: gen_qwizard_types.QWizardPage, param1: cstring): pointer =
 
   fQWizardPage_virtualbase_metacast(self.h, param1)
 
-type QWizardPagemetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QWizardPage, slot: proc(super: QWizardPagemetacastBase, param1: cstring): pointer) =
+type QWizardPagemetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qwizard_types.QWizardPage, slot: QWizardPagemetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardPagemetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QWizardPagemetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizardPage_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizardPage_metacast(self: ptr cQWizardPage, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QWizardPage_metacast ".} =
-  type Cb = proc(super: QWizardPagemetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QWizardPage(h: self), param1)
+  var nimfunc = cast[ptr QWizardPagemetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QWizardPage, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QWizardPagemetacall*(self: gen_qwizard_types.QWizardPage, param1: cint, param2: cint, param3: pointer): cint =
 
   fQWizardPage_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QWizardPagemetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QWizardPage, slot: proc(super: QWizardPagemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QWizardPagemetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qwizard_types.QWizardPage, slot: QWizardPagemetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardPagemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QWizardPagemetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizardPage_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizardPage_metacall(self: ptr cQWizardPage, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QWizardPage_metacall ".} =
-  type Cb = proc(super: QWizardPagemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QWizardPage(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QWizardPagemetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_initializePage(self: QWizardPage, ): void =
-
+proc QWizardPageinitializePage*(self: gen_qwizard_types.QWizardPage, ): void =
 
   fQWizardPage_virtualbase_initializePage(self.h)
 
-type QWizardPageinitializePageBase* = proc(): void
-proc oninitializePage*(self: QWizardPage, slot: proc(super: QWizardPageinitializePageBase): void) =
+type QWizardPageinitializePageProc* = proc(): void
+proc oninitializePage*(self: gen_qwizard_types.QWizardPage, slot: QWizardPageinitializePageProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardPageinitializePageBase): void
-  var tmp = new Cb
+  var tmp = new QWizardPageinitializePageProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizardPage_override_virtual_initializePage(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizardPage_initializePage(self: ptr cQWizardPage, slot: int): void {.exportc: "miqt_exec_callback_QWizardPage_initializePage ".} =
-  type Cb = proc(super: QWizardPageinitializePageBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_initializePage(QWizardPage(h: self), )
+  var nimfunc = cast[ptr QWizardPageinitializePageProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_cleanupPage(self: QWizardPage, ): void =
-
+  nimfunc[]()
+proc QWizardPagecleanupPage*(self: gen_qwizard_types.QWizardPage, ): void =
 
   fQWizardPage_virtualbase_cleanupPage(self.h)
 
-type QWizardPagecleanupPageBase* = proc(): void
-proc oncleanupPage*(self: QWizardPage, slot: proc(super: QWizardPagecleanupPageBase): void) =
+type QWizardPagecleanupPageProc* = proc(): void
+proc oncleanupPage*(self: gen_qwizard_types.QWizardPage, slot: QWizardPagecleanupPageProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardPagecleanupPageBase): void
-  var tmp = new Cb
+  var tmp = new QWizardPagecleanupPageProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizardPage_override_virtual_cleanupPage(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizardPage_cleanupPage(self: ptr cQWizardPage, slot: int): void {.exportc: "miqt_exec_callback_QWizardPage_cleanupPage ".} =
-  type Cb = proc(super: QWizardPagecleanupPageBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_cleanupPage(QWizardPage(h: self), )
+  var nimfunc = cast[ptr QWizardPagecleanupPageProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_validatePage(self: QWizardPage, ): bool =
-
+  nimfunc[]()
+proc QWizardPagevalidatePage*(self: gen_qwizard_types.QWizardPage, ): bool =
 
   fQWizardPage_virtualbase_validatePage(self.h)
 
-type QWizardPagevalidatePageBase* = proc(): bool
-proc onvalidatePage*(self: QWizardPage, slot: proc(super: QWizardPagevalidatePageBase): bool) =
+type QWizardPagevalidatePageProc* = proc(): bool
+proc onvalidatePage*(self: gen_qwizard_types.QWizardPage, slot: QWizardPagevalidatePageProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardPagevalidatePageBase): bool
-  var tmp = new Cb
+  var tmp = new QWizardPagevalidatePageProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizardPage_override_virtual_validatePage(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizardPage_validatePage(self: ptr cQWizardPage, slot: int): bool {.exportc: "miqt_exec_callback_QWizardPage_validatePage ".} =
-  type Cb = proc(super: QWizardPagevalidatePageBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_validatePage(QWizardPage(h: self), )
+  var nimfunc = cast[ptr QWizardPagevalidatePageProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_isComplete(self: QWizardPage, ): bool =
-
+proc QWizardPageisComplete*(self: gen_qwizard_types.QWizardPage, ): bool =
 
   fQWizardPage_virtualbase_isComplete(self.h)
 
-type QWizardPageisCompleteBase* = proc(): bool
-proc onisComplete*(self: QWizardPage, slot: proc(super: QWizardPageisCompleteBase): bool) =
+type QWizardPageisCompleteProc* = proc(): bool
+proc onisComplete*(self: gen_qwizard_types.QWizardPage, slot: QWizardPageisCompleteProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardPageisCompleteBase): bool
-  var tmp = new Cb
+  var tmp = new QWizardPageisCompleteProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizardPage_override_virtual_isComplete(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizardPage_isComplete(self: ptr cQWizardPage, slot: int): bool {.exportc: "miqt_exec_callback_QWizardPage_isComplete ".} =
-  type Cb = proc(super: QWizardPageisCompleteBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_isComplete(QWizardPage(h: self), )
+  var nimfunc = cast[ptr QWizardPageisCompleteProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_nextId(self: QWizardPage, ): cint =
-
+proc QWizardPagenextId*(self: gen_qwizard_types.QWizardPage, ): cint =
 
   fQWizardPage_virtualbase_nextId(self.h)
 
-type QWizardPagenextIdBase* = proc(): cint
-proc onnextId*(self: QWizardPage, slot: proc(super: QWizardPagenextIdBase): cint) =
+type QWizardPagenextIdProc* = proc(): cint
+proc onnextId*(self: gen_qwizard_types.QWizardPage, slot: QWizardPagenextIdProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardPagenextIdBase): cint
-  var tmp = new Cb
+  var tmp = new QWizardPagenextIdProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizardPage_override_virtual_nextId(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizardPage_nextId(self: ptr cQWizardPage, slot: int): cint {.exportc: "miqt_exec_callback_QWizardPage_nextId ".} =
-  type Cb = proc(super: QWizardPagenextIdBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_nextId(QWizardPage(h: self), )
+  var nimfunc = cast[ptr QWizardPagenextIdProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_devType(self: QWizardPage, ): cint =
-
+proc QWizardPagedevType*(self: gen_qwizard_types.QWizardPage, ): cint =
 
   fQWizardPage_virtualbase_devType(self.h)
 
-type QWizardPagedevTypeBase* = proc(): cint
-proc ondevType*(self: QWizardPage, slot: proc(super: QWizardPagedevTypeBase): cint) =
+type QWizardPagedevTypeProc* = proc(): cint
+proc ondevType*(self: gen_qwizard_types.QWizardPage, slot: QWizardPagedevTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardPagedevTypeBase): cint
-  var tmp = new Cb
+  var tmp = new QWizardPagedevTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizardPage_override_virtual_devType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizardPage_devType(self: ptr cQWizardPage, slot: int): cint {.exportc: "miqt_exec_callback_QWizardPage_devType ".} =
-  type Cb = proc(super: QWizardPagedevTypeBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_devType(QWizardPage(h: self), )
+  var nimfunc = cast[ptr QWizardPagedevTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setVisible(self: QWizardPage, visible: bool): void =
-
+proc QWizardPagesetVisible*(self: gen_qwizard_types.QWizardPage, visible: bool): void =
 
   fQWizardPage_virtualbase_setVisible(self.h, visible)
 
-type QWizardPagesetVisibleBase* = proc(visible: bool): void
-proc onsetVisible*(self: QWizardPage, slot: proc(super: QWizardPagesetVisibleBase, visible: bool): void) =
+type QWizardPagesetVisibleProc* = proc(visible: bool): void
+proc onsetVisible*(self: gen_qwizard_types.QWizardPage, slot: QWizardPagesetVisibleProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardPagesetVisibleBase, visible: bool): void
-  var tmp = new Cb
+  var tmp = new QWizardPagesetVisibleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizardPage_override_virtual_setVisible(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizardPage_setVisible(self: ptr cQWizardPage, slot: int, visible: bool): void {.exportc: "miqt_exec_callback_QWizardPage_setVisible ".} =
-  type Cb = proc(super: QWizardPagesetVisibleBase, visible: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(visible: bool): auto =
-    callVirtualBase_setVisible(QWizardPage(h: self), visible)
+  var nimfunc = cast[ptr QWizardPagesetVisibleProc](cast[pointer](slot))
   let slotval1 = visible
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_sizeHint(self: QWizardPage, ): gen_qsize.QSize =
-
+  nimfunc[](slotval1)
+proc QWizardPagesizeHint*(self: gen_qwizard_types.QWizardPage, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQWizardPage_virtualbase_sizeHint(self.h))
 
-type QWizardPagesizeHintBase* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: QWizardPage, slot: proc(super: QWizardPagesizeHintBase): gen_qsize.QSize) =
+type QWizardPagesizeHintProc* = proc(): gen_qsize.QSize
+proc onsizeHint*(self: gen_qwizard_types.QWizardPage, slot: QWizardPagesizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardPagesizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QWizardPagesizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizardPage_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizardPage_sizeHint(self: ptr cQWizardPage, slot: int): pointer {.exportc: "miqt_exec_callback_QWizardPage_sizeHint ".} =
-  type Cb = proc(super: QWizardPagesizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sizeHint(QWizardPage(h: self), )
+  var nimfunc = cast[ptr QWizardPagesizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_minimumSizeHint(self: QWizardPage, ): gen_qsize.QSize =
-
+proc QWizardPageminimumSizeHint*(self: gen_qwizard_types.QWizardPage, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQWizardPage_virtualbase_minimumSizeHint(self.h))
 
-type QWizardPageminimumSizeHintBase* = proc(): gen_qsize.QSize
-proc onminimumSizeHint*(self: QWizardPage, slot: proc(super: QWizardPageminimumSizeHintBase): gen_qsize.QSize) =
+type QWizardPageminimumSizeHintProc* = proc(): gen_qsize.QSize
+proc onminimumSizeHint*(self: gen_qwizard_types.QWizardPage, slot: QWizardPageminimumSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardPageminimumSizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QWizardPageminimumSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizardPage_override_virtual_minimumSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizardPage_minimumSizeHint(self: ptr cQWizardPage, slot: int): pointer {.exportc: "miqt_exec_callback_QWizardPage_minimumSizeHint ".} =
-  type Cb = proc(super: QWizardPageminimumSizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_minimumSizeHint(QWizardPage(h: self), )
+  var nimfunc = cast[ptr QWizardPageminimumSizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_heightForWidth(self: QWizardPage, param1: cint): cint =
-
+proc QWizardPageheightForWidth*(self: gen_qwizard_types.QWizardPage, param1: cint): cint =
 
   fQWizardPage_virtualbase_heightForWidth(self.h, param1)
 
-type QWizardPageheightForWidthBase* = proc(param1: cint): cint
-proc onheightForWidth*(self: QWizardPage, slot: proc(super: QWizardPageheightForWidthBase, param1: cint): cint) =
+type QWizardPageheightForWidthProc* = proc(param1: cint): cint
+proc onheightForWidth*(self: gen_qwizard_types.QWizardPage, slot: QWizardPageheightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardPageheightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QWizardPageheightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizardPage_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizardPage_heightForWidth(self: ptr cQWizardPage, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QWizardPage_heightForWidth ".} =
-  type Cb = proc(super: QWizardPageheightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_heightForWidth(QWizardPage(h: self), param1)
+  var nimfunc = cast[ptr QWizardPageheightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_hasHeightForWidth(self: QWizardPage, ): bool =
-
+proc QWizardPagehasHeightForWidth*(self: gen_qwizard_types.QWizardPage, ): bool =
 
   fQWizardPage_virtualbase_hasHeightForWidth(self.h)
 
-type QWizardPagehasHeightForWidthBase* = proc(): bool
-proc onhasHeightForWidth*(self: QWizardPage, slot: proc(super: QWizardPagehasHeightForWidthBase): bool) =
+type QWizardPagehasHeightForWidthProc* = proc(): bool
+proc onhasHeightForWidth*(self: gen_qwizard_types.QWizardPage, slot: QWizardPagehasHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardPagehasHeightForWidthBase): bool
-  var tmp = new Cb
+  var tmp = new QWizardPagehasHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizardPage_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizardPage_hasHeightForWidth(self: ptr cQWizardPage, slot: int): bool {.exportc: "miqt_exec_callback_QWizardPage_hasHeightForWidth ".} =
-  type Cb = proc(super: QWizardPagehasHeightForWidthBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasHeightForWidth(QWizardPage(h: self), )
+  var nimfunc = cast[ptr QWizardPagehasHeightForWidthProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_paintEngine(self: QWizardPage, ): gen_qpaintengine.QPaintEngine =
-
+proc QWizardPagepaintEngine*(self: gen_qwizard_types.QWizardPage, ): gen_qpaintengine.QPaintEngine =
 
   gen_qpaintengine.QPaintEngine(h: fQWizardPage_virtualbase_paintEngine(self.h))
 
-type QWizardPagepaintEngineBase* = proc(): gen_qpaintengine.QPaintEngine
-proc onpaintEngine*(self: QWizardPage, slot: proc(super: QWizardPagepaintEngineBase): gen_qpaintengine.QPaintEngine) =
+type QWizardPagepaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
+proc onpaintEngine*(self: gen_qwizard_types.QWizardPage, slot: QWizardPagepaintEngineProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardPagepaintEngineBase): gen_qpaintengine.QPaintEngine
-  var tmp = new Cb
+  var tmp = new QWizardPagepaintEngineProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizardPage_override_virtual_paintEngine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizardPage_paintEngine(self: ptr cQWizardPage, slot: int): pointer {.exportc: "miqt_exec_callback_QWizardPage_paintEngine ".} =
-  type Cb = proc(super: QWizardPagepaintEngineBase): gen_qpaintengine.QPaintEngine
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_paintEngine(QWizardPage(h: self), )
+  var nimfunc = cast[ptr QWizardPagepaintEngineProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_event(self: QWizardPage, event: gen_qcoreevent.QEvent): bool =
-
+proc QWizardPageevent*(self: gen_qwizard_types.QWizardPage, event: gen_qcoreevent.QEvent): bool =
 
   fQWizardPage_virtualbase_event(self.h, event.h)
 
-type QWizardPageeventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QWizardPage, slot: proc(super: QWizardPageeventBase, event: gen_qcoreevent.QEvent): bool) =
+type QWizardPageeventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qwizard_types.QWizardPage, slot: QWizardPageeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardPageeventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QWizardPageeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizardPage_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizardPage_event(self: ptr cQWizardPage, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QWizardPage_event ".} =
-  type Cb = proc(super: QWizardPageeventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QWizardPage(h: self), event)
+  var nimfunc = cast[ptr QWizardPageeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_mousePressEvent(self: QWizardPage, event: gen_qevent.QMouseEvent): void =
-
+proc QWizardPagemousePressEvent*(self: gen_qwizard_types.QWizardPage, event: gen_qevent.QMouseEvent): void =
 
   fQWizardPage_virtualbase_mousePressEvent(self.h, event.h)
 
-type QWizardPagemousePressEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmousePressEvent*(self: QWizardPage, slot: proc(super: QWizardPagemousePressEventBase, event: gen_qevent.QMouseEvent): void) =
+type QWizardPagemousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmousePressEvent*(self: gen_qwizard_types.QWizardPage, slot: QWizardPagemousePressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardPagemousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QWizardPagemousePressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizardPage_override_virtual_mousePressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizardPage_mousePressEvent(self: ptr cQWizardPage, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWizardPage_mousePressEvent ".} =
-  type Cb = proc(super: QWizardPagemousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mousePressEvent(QWizardPage(h: self), event)
+  var nimfunc = cast[ptr QWizardPagemousePressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseReleaseEvent(self: QWizardPage, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QWizardPagemouseReleaseEvent*(self: gen_qwizard_types.QWizardPage, event: gen_qevent.QMouseEvent): void =
 
   fQWizardPage_virtualbase_mouseReleaseEvent(self.h, event.h)
 
-type QWizardPagemouseReleaseEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseReleaseEvent*(self: QWizardPage, slot: proc(super: QWizardPagemouseReleaseEventBase, event: gen_qevent.QMouseEvent): void) =
+type QWizardPagemouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseReleaseEvent*(self: gen_qwizard_types.QWizardPage, slot: QWizardPagemouseReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardPagemouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QWizardPagemouseReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizardPage_override_virtual_mouseReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizardPage_mouseReleaseEvent(self: ptr cQWizardPage, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWizardPage_mouseReleaseEvent ".} =
-  type Cb = proc(super: QWizardPagemouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseReleaseEvent(QWizardPage(h: self), event)
+  var nimfunc = cast[ptr QWizardPagemouseReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseDoubleClickEvent(self: QWizardPage, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QWizardPagemouseDoubleClickEvent*(self: gen_qwizard_types.QWizardPage, event: gen_qevent.QMouseEvent): void =
 
   fQWizardPage_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
-type QWizardPagemouseDoubleClickEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseDoubleClickEvent*(self: QWizardPage, slot: proc(super: QWizardPagemouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void) =
+type QWizardPagemouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseDoubleClickEvent*(self: gen_qwizard_types.QWizardPage, slot: QWizardPagemouseDoubleClickEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardPagemouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QWizardPagemouseDoubleClickEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizardPage_override_virtual_mouseDoubleClickEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizardPage_mouseDoubleClickEvent(self: ptr cQWizardPage, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWizardPage_mouseDoubleClickEvent ".} =
-  type Cb = proc(super: QWizardPagemouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseDoubleClickEvent(QWizardPage(h: self), event)
+  var nimfunc = cast[ptr QWizardPagemouseDoubleClickEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseMoveEvent(self: QWizardPage, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QWizardPagemouseMoveEvent*(self: gen_qwizard_types.QWizardPage, event: gen_qevent.QMouseEvent): void =
 
   fQWizardPage_virtualbase_mouseMoveEvent(self.h, event.h)
 
-type QWizardPagemouseMoveEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseMoveEvent*(self: QWizardPage, slot: proc(super: QWizardPagemouseMoveEventBase, event: gen_qevent.QMouseEvent): void) =
+type QWizardPagemouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseMoveEvent*(self: gen_qwizard_types.QWizardPage, slot: QWizardPagemouseMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardPagemouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QWizardPagemouseMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizardPage_override_virtual_mouseMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizardPage_mouseMoveEvent(self: ptr cQWizardPage, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWizardPage_mouseMoveEvent ".} =
-  type Cb = proc(super: QWizardPagemouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseMoveEvent(QWizardPage(h: self), event)
+  var nimfunc = cast[ptr QWizardPagemouseMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_wheelEvent(self: QWizardPage, event: gen_qevent.QWheelEvent): void =
-
+  nimfunc[](slotval1)
+proc QWizardPagewheelEvent*(self: gen_qwizard_types.QWizardPage, event: gen_qevent.QWheelEvent): void =
 
   fQWizardPage_virtualbase_wheelEvent(self.h, event.h)
 
-type QWizardPagewheelEventBase* = proc(event: gen_qevent.QWheelEvent): void
-proc onwheelEvent*(self: QWizardPage, slot: proc(super: QWizardPagewheelEventBase, event: gen_qevent.QWheelEvent): void) =
+type QWizardPagewheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
+proc onwheelEvent*(self: gen_qwizard_types.QWizardPage, slot: QWizardPagewheelEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardPagewheelEventBase, event: gen_qevent.QWheelEvent): void
-  var tmp = new Cb
+  var tmp = new QWizardPagewheelEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizardPage_override_virtual_wheelEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizardPage_wheelEvent(self: ptr cQWizardPage, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWizardPage_wheelEvent ".} =
-  type Cb = proc(super: QWizardPagewheelEventBase, event: gen_qevent.QWheelEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QWheelEvent): auto =
-    callVirtualBase_wheelEvent(QWizardPage(h: self), event)
+  var nimfunc = cast[ptr QWizardPagewheelEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QWheelEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyPressEvent(self: QWizardPage, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QWizardPagekeyPressEvent*(self: gen_qwizard_types.QWizardPage, event: gen_qevent.QKeyEvent): void =
 
   fQWizardPage_virtualbase_keyPressEvent(self.h, event.h)
 
-type QWizardPagekeyPressEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyPressEvent*(self: QWizardPage, slot: proc(super: QWizardPagekeyPressEventBase, event: gen_qevent.QKeyEvent): void) =
+type QWizardPagekeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyPressEvent*(self: gen_qwizard_types.QWizardPage, slot: QWizardPagekeyPressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardPagekeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QWizardPagekeyPressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizardPage_override_virtual_keyPressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizardPage_keyPressEvent(self: ptr cQWizardPage, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWizardPage_keyPressEvent ".} =
-  type Cb = proc(super: QWizardPagekeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyPressEvent(QWizardPage(h: self), event)
+  var nimfunc = cast[ptr QWizardPagekeyPressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyReleaseEvent(self: QWizardPage, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QWizardPagekeyReleaseEvent*(self: gen_qwizard_types.QWizardPage, event: gen_qevent.QKeyEvent): void =
 
   fQWizardPage_virtualbase_keyReleaseEvent(self.h, event.h)
 
-type QWizardPagekeyReleaseEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyReleaseEvent*(self: QWizardPage, slot: proc(super: QWizardPagekeyReleaseEventBase, event: gen_qevent.QKeyEvent): void) =
+type QWizardPagekeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyReleaseEvent*(self: gen_qwizard_types.QWizardPage, slot: QWizardPagekeyReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardPagekeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QWizardPagekeyReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizardPage_override_virtual_keyReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizardPage_keyReleaseEvent(self: ptr cQWizardPage, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWizardPage_keyReleaseEvent ".} =
-  type Cb = proc(super: QWizardPagekeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyReleaseEvent(QWizardPage(h: self), event)
+  var nimfunc = cast[ptr QWizardPagekeyReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusInEvent(self: QWizardPage, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QWizardPagefocusInEvent*(self: gen_qwizard_types.QWizardPage, event: gen_qevent.QFocusEvent): void =
 
   fQWizardPage_virtualbase_focusInEvent(self.h, event.h)
 
-type QWizardPagefocusInEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusInEvent*(self: QWizardPage, slot: proc(super: QWizardPagefocusInEventBase, event: gen_qevent.QFocusEvent): void) =
+type QWizardPagefocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusInEvent*(self: gen_qwizard_types.QWizardPage, slot: QWizardPagefocusInEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardPagefocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QWizardPagefocusInEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizardPage_override_virtual_focusInEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizardPage_focusInEvent(self: ptr cQWizardPage, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWizardPage_focusInEvent ".} =
-  type Cb = proc(super: QWizardPagefocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusInEvent(QWizardPage(h: self), event)
+  var nimfunc = cast[ptr QWizardPagefocusInEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusOutEvent(self: QWizardPage, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QWizardPagefocusOutEvent*(self: gen_qwizard_types.QWizardPage, event: gen_qevent.QFocusEvent): void =
 
   fQWizardPage_virtualbase_focusOutEvent(self.h, event.h)
 
-type QWizardPagefocusOutEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusOutEvent*(self: QWizardPage, slot: proc(super: QWizardPagefocusOutEventBase, event: gen_qevent.QFocusEvent): void) =
+type QWizardPagefocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusOutEvent*(self: gen_qwizard_types.QWizardPage, slot: QWizardPagefocusOutEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardPagefocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QWizardPagefocusOutEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizardPage_override_virtual_focusOutEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizardPage_focusOutEvent(self: ptr cQWizardPage, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWizardPage_focusOutEvent ".} =
-  type Cb = proc(super: QWizardPagefocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusOutEvent(QWizardPage(h: self), event)
+  var nimfunc = cast[ptr QWizardPagefocusOutEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_enterEvent(self: QWizardPage, event: gen_qevent.QEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QWizardPageenterEvent*(self: gen_qwizard_types.QWizardPage, event: gen_qevent.QEnterEvent): void =
 
   fQWizardPage_virtualbase_enterEvent(self.h, event.h)
 
-type QWizardPageenterEventBase* = proc(event: gen_qevent.QEnterEvent): void
-proc onenterEvent*(self: QWizardPage, slot: proc(super: QWizardPageenterEventBase, event: gen_qevent.QEnterEvent): void) =
+type QWizardPageenterEventProc* = proc(event: gen_qevent.QEnterEvent): void
+proc onenterEvent*(self: gen_qwizard_types.QWizardPage, slot: QWizardPageenterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardPageenterEventBase, event: gen_qevent.QEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QWizardPageenterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizardPage_override_virtual_enterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizardPage_enterEvent(self: ptr cQWizardPage, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWizardPage_enterEvent ".} =
-  type Cb = proc(super: QWizardPageenterEventBase, event: gen_qevent.QEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QEnterEvent): auto =
-    callVirtualBase_enterEvent(QWizardPage(h: self), event)
+  var nimfunc = cast[ptr QWizardPageenterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_leaveEvent(self: QWizardPage, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QWizardPageleaveEvent*(self: gen_qwizard_types.QWizardPage, event: gen_qcoreevent.QEvent): void =
 
   fQWizardPage_virtualbase_leaveEvent(self.h, event.h)
 
-type QWizardPageleaveEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onleaveEvent*(self: QWizardPage, slot: proc(super: QWizardPageleaveEventBase, event: gen_qcoreevent.QEvent): void) =
+type QWizardPageleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onleaveEvent*(self: gen_qwizard_types.QWizardPage, slot: QWizardPageleaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardPageleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QWizardPageleaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizardPage_override_virtual_leaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizardPage_leaveEvent(self: ptr cQWizardPage, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWizardPage_leaveEvent ".} =
-  type Cb = proc(super: QWizardPageleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_leaveEvent(QWizardPage(h: self), event)
+  var nimfunc = cast[ptr QWizardPageleaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_paintEvent(self: QWizardPage, event: gen_qevent.QPaintEvent): void =
-
+  nimfunc[](slotval1)
+proc QWizardPagepaintEvent*(self: gen_qwizard_types.QWizardPage, event: gen_qevent.QPaintEvent): void =
 
   fQWizardPage_virtualbase_paintEvent(self.h, event.h)
 
-type QWizardPagepaintEventBase* = proc(event: gen_qevent.QPaintEvent): void
-proc onpaintEvent*(self: QWizardPage, slot: proc(super: QWizardPagepaintEventBase, event: gen_qevent.QPaintEvent): void) =
+type QWizardPagepaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
+proc onpaintEvent*(self: gen_qwizard_types.QWizardPage, slot: QWizardPagepaintEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardPagepaintEventBase, event: gen_qevent.QPaintEvent): void
-  var tmp = new Cb
+  var tmp = new QWizardPagepaintEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizardPage_override_virtual_paintEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizardPage_paintEvent(self: ptr cQWizardPage, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWizardPage_paintEvent ".} =
-  type Cb = proc(super: QWizardPagepaintEventBase, event: gen_qevent.QPaintEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QPaintEvent): auto =
-    callVirtualBase_paintEvent(QWizardPage(h: self), event)
+  var nimfunc = cast[ptr QWizardPagepaintEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QPaintEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_moveEvent(self: QWizardPage, event: gen_qevent.QMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QWizardPagemoveEvent*(self: gen_qwizard_types.QWizardPage, event: gen_qevent.QMoveEvent): void =
 
   fQWizardPage_virtualbase_moveEvent(self.h, event.h)
 
-type QWizardPagemoveEventBase* = proc(event: gen_qevent.QMoveEvent): void
-proc onmoveEvent*(self: QWizardPage, slot: proc(super: QWizardPagemoveEventBase, event: gen_qevent.QMoveEvent): void) =
+type QWizardPagemoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
+proc onmoveEvent*(self: gen_qwizard_types.QWizardPage, slot: QWizardPagemoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardPagemoveEventBase, event: gen_qevent.QMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QWizardPagemoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizardPage_override_virtual_moveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizardPage_moveEvent(self: ptr cQWizardPage, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWizardPage_moveEvent ".} =
-  type Cb = proc(super: QWizardPagemoveEventBase, event: gen_qevent.QMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMoveEvent): auto =
-    callVirtualBase_moveEvent(QWizardPage(h: self), event)
+  var nimfunc = cast[ptr QWizardPagemoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_resizeEvent(self: QWizardPage, event: gen_qevent.QResizeEvent): void =
-
+  nimfunc[](slotval1)
+proc QWizardPageresizeEvent*(self: gen_qwizard_types.QWizardPage, event: gen_qevent.QResizeEvent): void =
 
   fQWizardPage_virtualbase_resizeEvent(self.h, event.h)
 
-type QWizardPageresizeEventBase* = proc(event: gen_qevent.QResizeEvent): void
-proc onresizeEvent*(self: QWizardPage, slot: proc(super: QWizardPageresizeEventBase, event: gen_qevent.QResizeEvent): void) =
+type QWizardPageresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
+proc onresizeEvent*(self: gen_qwizard_types.QWizardPage, slot: QWizardPageresizeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardPageresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var tmp = new Cb
+  var tmp = new QWizardPageresizeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizardPage_override_virtual_resizeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizardPage_resizeEvent(self: ptr cQWizardPage, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWizardPage_resizeEvent ".} =
-  type Cb = proc(super: QWizardPageresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QResizeEvent): auto =
-    callVirtualBase_resizeEvent(QWizardPage(h: self), event)
+  var nimfunc = cast[ptr QWizardPageresizeEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QResizeEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_closeEvent(self: QWizardPage, event: gen_qevent.QCloseEvent): void =
-
+  nimfunc[](slotval1)
+proc QWizardPagecloseEvent*(self: gen_qwizard_types.QWizardPage, event: gen_qevent.QCloseEvent): void =
 
   fQWizardPage_virtualbase_closeEvent(self.h, event.h)
 
-type QWizardPagecloseEventBase* = proc(event: gen_qevent.QCloseEvent): void
-proc oncloseEvent*(self: QWizardPage, slot: proc(super: QWizardPagecloseEventBase, event: gen_qevent.QCloseEvent): void) =
+type QWizardPagecloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
+proc oncloseEvent*(self: gen_qwizard_types.QWizardPage, slot: QWizardPagecloseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardPagecloseEventBase, event: gen_qevent.QCloseEvent): void
-  var tmp = new Cb
+  var tmp = new QWizardPagecloseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizardPage_override_virtual_closeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizardPage_closeEvent(self: ptr cQWizardPage, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWizardPage_closeEvent ".} =
-  type Cb = proc(super: QWizardPagecloseEventBase, event: gen_qevent.QCloseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QCloseEvent): auto =
-    callVirtualBase_closeEvent(QWizardPage(h: self), event)
+  var nimfunc = cast[ptr QWizardPagecloseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QCloseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_contextMenuEvent(self: QWizardPage, event: gen_qevent.QContextMenuEvent): void =
-
+  nimfunc[](slotval1)
+proc QWizardPagecontextMenuEvent*(self: gen_qwizard_types.QWizardPage, event: gen_qevent.QContextMenuEvent): void =
 
   fQWizardPage_virtualbase_contextMenuEvent(self.h, event.h)
 
-type QWizardPagecontextMenuEventBase* = proc(event: gen_qevent.QContextMenuEvent): void
-proc oncontextMenuEvent*(self: QWizardPage, slot: proc(super: QWizardPagecontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void) =
+type QWizardPagecontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
+proc oncontextMenuEvent*(self: gen_qwizard_types.QWizardPage, slot: QWizardPagecontextMenuEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardPagecontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var tmp = new Cb
+  var tmp = new QWizardPagecontextMenuEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizardPage_override_virtual_contextMenuEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizardPage_contextMenuEvent(self: ptr cQWizardPage, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWizardPage_contextMenuEvent ".} =
-  type Cb = proc(super: QWizardPagecontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QContextMenuEvent): auto =
-    callVirtualBase_contextMenuEvent(QWizardPage(h: self), event)
+  var nimfunc = cast[ptr QWizardPagecontextMenuEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QContextMenuEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_tabletEvent(self: QWizardPage, event: gen_qevent.QTabletEvent): void =
-
+  nimfunc[](slotval1)
+proc QWizardPagetabletEvent*(self: gen_qwizard_types.QWizardPage, event: gen_qevent.QTabletEvent): void =
 
   fQWizardPage_virtualbase_tabletEvent(self.h, event.h)
 
-type QWizardPagetabletEventBase* = proc(event: gen_qevent.QTabletEvent): void
-proc ontabletEvent*(self: QWizardPage, slot: proc(super: QWizardPagetabletEventBase, event: gen_qevent.QTabletEvent): void) =
+type QWizardPagetabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
+proc ontabletEvent*(self: gen_qwizard_types.QWizardPage, slot: QWizardPagetabletEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardPagetabletEventBase, event: gen_qevent.QTabletEvent): void
-  var tmp = new Cb
+  var tmp = new QWizardPagetabletEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizardPage_override_virtual_tabletEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizardPage_tabletEvent(self: ptr cQWizardPage, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWizardPage_tabletEvent ".} =
-  type Cb = proc(super: QWizardPagetabletEventBase, event: gen_qevent.QTabletEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QTabletEvent): auto =
-    callVirtualBase_tabletEvent(QWizardPage(h: self), event)
+  var nimfunc = cast[ptr QWizardPagetabletEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QTabletEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_actionEvent(self: QWizardPage, event: gen_qevent.QActionEvent): void =
-
+  nimfunc[](slotval1)
+proc QWizardPageactionEvent*(self: gen_qwizard_types.QWizardPage, event: gen_qevent.QActionEvent): void =
 
   fQWizardPage_virtualbase_actionEvent(self.h, event.h)
 
-type QWizardPageactionEventBase* = proc(event: gen_qevent.QActionEvent): void
-proc onactionEvent*(self: QWizardPage, slot: proc(super: QWizardPageactionEventBase, event: gen_qevent.QActionEvent): void) =
+type QWizardPageactionEventProc* = proc(event: gen_qevent.QActionEvent): void
+proc onactionEvent*(self: gen_qwizard_types.QWizardPage, slot: QWizardPageactionEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardPageactionEventBase, event: gen_qevent.QActionEvent): void
-  var tmp = new Cb
+  var tmp = new QWizardPageactionEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizardPage_override_virtual_actionEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizardPage_actionEvent(self: ptr cQWizardPage, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWizardPage_actionEvent ".} =
-  type Cb = proc(super: QWizardPageactionEventBase, event: gen_qevent.QActionEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QActionEvent): auto =
-    callVirtualBase_actionEvent(QWizardPage(h: self), event)
+  var nimfunc = cast[ptr QWizardPageactionEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QActionEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragEnterEvent(self: QWizardPage, event: gen_qevent.QDragEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QWizardPagedragEnterEvent*(self: gen_qwizard_types.QWizardPage, event: gen_qevent.QDragEnterEvent): void =
 
   fQWizardPage_virtualbase_dragEnterEvent(self.h, event.h)
 
-type QWizardPagedragEnterEventBase* = proc(event: gen_qevent.QDragEnterEvent): void
-proc ondragEnterEvent*(self: QWizardPage, slot: proc(super: QWizardPagedragEnterEventBase, event: gen_qevent.QDragEnterEvent): void) =
+type QWizardPagedragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
+proc ondragEnterEvent*(self: gen_qwizard_types.QWizardPage, slot: QWizardPagedragEnterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardPagedragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QWizardPagedragEnterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizardPage_override_virtual_dragEnterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizardPage_dragEnterEvent(self: ptr cQWizardPage, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWizardPage_dragEnterEvent ".} =
-  type Cb = proc(super: QWizardPagedragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragEnterEvent): auto =
-    callVirtualBase_dragEnterEvent(QWizardPage(h: self), event)
+  var nimfunc = cast[ptr QWizardPagedragEnterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragMoveEvent(self: QWizardPage, event: gen_qevent.QDragMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QWizardPagedragMoveEvent*(self: gen_qwizard_types.QWizardPage, event: gen_qevent.QDragMoveEvent): void =
 
   fQWizardPage_virtualbase_dragMoveEvent(self.h, event.h)
 
-type QWizardPagedragMoveEventBase* = proc(event: gen_qevent.QDragMoveEvent): void
-proc ondragMoveEvent*(self: QWizardPage, slot: proc(super: QWizardPagedragMoveEventBase, event: gen_qevent.QDragMoveEvent): void) =
+type QWizardPagedragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
+proc ondragMoveEvent*(self: gen_qwizard_types.QWizardPage, slot: QWizardPagedragMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardPagedragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QWizardPagedragMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizardPage_override_virtual_dragMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizardPage_dragMoveEvent(self: ptr cQWizardPage, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWizardPage_dragMoveEvent ".} =
-  type Cb = proc(super: QWizardPagedragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragMoveEvent): auto =
-    callVirtualBase_dragMoveEvent(QWizardPage(h: self), event)
+  var nimfunc = cast[ptr QWizardPagedragMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragLeaveEvent(self: QWizardPage, event: gen_qevent.QDragLeaveEvent): void =
-
+  nimfunc[](slotval1)
+proc QWizardPagedragLeaveEvent*(self: gen_qwizard_types.QWizardPage, event: gen_qevent.QDragLeaveEvent): void =
 
   fQWizardPage_virtualbase_dragLeaveEvent(self.h, event.h)
 
-type QWizardPagedragLeaveEventBase* = proc(event: gen_qevent.QDragLeaveEvent): void
-proc ondragLeaveEvent*(self: QWizardPage, slot: proc(super: QWizardPagedragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void) =
+type QWizardPagedragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
+proc ondragLeaveEvent*(self: gen_qwizard_types.QWizardPage, slot: QWizardPagedragLeaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardPagedragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var tmp = new Cb
+  var tmp = new QWizardPagedragLeaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizardPage_override_virtual_dragLeaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizardPage_dragLeaveEvent(self: ptr cQWizardPage, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWizardPage_dragLeaveEvent ".} =
-  type Cb = proc(super: QWizardPagedragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragLeaveEvent): auto =
-    callVirtualBase_dragLeaveEvent(QWizardPage(h: self), event)
+  var nimfunc = cast[ptr QWizardPagedragLeaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragLeaveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dropEvent(self: QWizardPage, event: gen_qevent.QDropEvent): void =
-
+  nimfunc[](slotval1)
+proc QWizardPagedropEvent*(self: gen_qwizard_types.QWizardPage, event: gen_qevent.QDropEvent): void =
 
   fQWizardPage_virtualbase_dropEvent(self.h, event.h)
 
-type QWizardPagedropEventBase* = proc(event: gen_qevent.QDropEvent): void
-proc ondropEvent*(self: QWizardPage, slot: proc(super: QWizardPagedropEventBase, event: gen_qevent.QDropEvent): void) =
+type QWizardPagedropEventProc* = proc(event: gen_qevent.QDropEvent): void
+proc ondropEvent*(self: gen_qwizard_types.QWizardPage, slot: QWizardPagedropEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardPagedropEventBase, event: gen_qevent.QDropEvent): void
-  var tmp = new Cb
+  var tmp = new QWizardPagedropEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizardPage_override_virtual_dropEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizardPage_dropEvent(self: ptr cQWizardPage, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWizardPage_dropEvent ".} =
-  type Cb = proc(super: QWizardPagedropEventBase, event: gen_qevent.QDropEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDropEvent): auto =
-    callVirtualBase_dropEvent(QWizardPage(h: self), event)
+  var nimfunc = cast[ptr QWizardPagedropEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDropEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_showEvent(self: QWizardPage, event: gen_qevent.QShowEvent): void =
-
+  nimfunc[](slotval1)
+proc QWizardPageshowEvent*(self: gen_qwizard_types.QWizardPage, event: gen_qevent.QShowEvent): void =
 
   fQWizardPage_virtualbase_showEvent(self.h, event.h)
 
-type QWizardPageshowEventBase* = proc(event: gen_qevent.QShowEvent): void
-proc onshowEvent*(self: QWizardPage, slot: proc(super: QWizardPageshowEventBase, event: gen_qevent.QShowEvent): void) =
+type QWizardPageshowEventProc* = proc(event: gen_qevent.QShowEvent): void
+proc onshowEvent*(self: gen_qwizard_types.QWizardPage, slot: QWizardPageshowEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardPageshowEventBase, event: gen_qevent.QShowEvent): void
-  var tmp = new Cb
+  var tmp = new QWizardPageshowEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizardPage_override_virtual_showEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizardPage_showEvent(self: ptr cQWizardPage, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWizardPage_showEvent ".} =
-  type Cb = proc(super: QWizardPageshowEventBase, event: gen_qevent.QShowEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QShowEvent): auto =
-    callVirtualBase_showEvent(QWizardPage(h: self), event)
+  var nimfunc = cast[ptr QWizardPageshowEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QShowEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hideEvent(self: QWizardPage, event: gen_qevent.QHideEvent): void =
-
+  nimfunc[](slotval1)
+proc QWizardPagehideEvent*(self: gen_qwizard_types.QWizardPage, event: gen_qevent.QHideEvent): void =
 
   fQWizardPage_virtualbase_hideEvent(self.h, event.h)
 
-type QWizardPagehideEventBase* = proc(event: gen_qevent.QHideEvent): void
-proc onhideEvent*(self: QWizardPage, slot: proc(super: QWizardPagehideEventBase, event: gen_qevent.QHideEvent): void) =
+type QWizardPagehideEventProc* = proc(event: gen_qevent.QHideEvent): void
+proc onhideEvent*(self: gen_qwizard_types.QWizardPage, slot: QWizardPagehideEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardPagehideEventBase, event: gen_qevent.QHideEvent): void
-  var tmp = new Cb
+  var tmp = new QWizardPagehideEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizardPage_override_virtual_hideEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizardPage_hideEvent(self: ptr cQWizardPage, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWizardPage_hideEvent ".} =
-  type Cb = proc(super: QWizardPagehideEventBase, event: gen_qevent.QHideEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QHideEvent): auto =
-    callVirtualBase_hideEvent(QWizardPage(h: self), event)
+  var nimfunc = cast[ptr QWizardPagehideEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QHideEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_nativeEvent(self: QWizardPage, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
-
+  nimfunc[](slotval1)
+proc QWizardPagenativeEvent*(self: gen_qwizard_types.QWizardPage, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
 
   fQWizardPage_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
-type QWizardPagenativeEventBase* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-proc onnativeEvent*(self: QWizardPage, slot: proc(super: QWizardPagenativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool) =
+type QWizardPagenativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
+proc onnativeEvent*(self: gen_qwizard_types.QWizardPage, slot: QWizardPagenativeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardPagenativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-  var tmp = new Cb
+  var tmp = new QWizardPagenativeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizardPage_override_virtual_nativeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizardPage_nativeEvent(self: ptr cQWizardPage, slot: int, eventType: struct_miqt_string, message: pointer, resultVal: ptr uint): bool {.exportc: "miqt_exec_callback_QWizardPage_nativeEvent ".} =
-  type Cb = proc(super: QWizardPagenativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(eventType: seq[byte], message: pointer, resultVal: ptr uint): auto =
-    callVirtualBase_nativeEvent(QWizardPage(h: self), eventType, message, resultVal)
+  var nimfunc = cast[ptr QWizardPagenativeEventProc](cast[pointer](slot))
   var veventType_bytearray = eventType
   var veventTypex_ret = @(toOpenArrayByte(veventType_bytearray.data, 0, int(veventType_bytearray.len)-1))
   c_free(veventType_bytearray.data)
@@ -3254,344 +2744,274 @@ proc miqt_exec_callback_QWizardPage_nativeEvent(self: ptr cQWizardPage, slot: in
   let slotval3 = resultVal
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_changeEvent(self: QWizardPage, param1: gen_qcoreevent.QEvent): void =
-
+proc QWizardPagechangeEvent*(self: gen_qwizard_types.QWizardPage, param1: gen_qcoreevent.QEvent): void =
 
   fQWizardPage_virtualbase_changeEvent(self.h, param1.h)
 
-type QWizardPagechangeEventBase* = proc(param1: gen_qcoreevent.QEvent): void
-proc onchangeEvent*(self: QWizardPage, slot: proc(super: QWizardPagechangeEventBase, param1: gen_qcoreevent.QEvent): void) =
+type QWizardPagechangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
+proc onchangeEvent*(self: gen_qwizard_types.QWizardPage, slot: QWizardPagechangeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardPagechangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QWizardPagechangeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizardPage_override_virtual_changeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizardPage_changeEvent(self: ptr cQWizardPage, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QWizardPage_changeEvent ".} =
-  type Cb = proc(super: QWizardPagechangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_changeEvent(QWizardPage(h: self), param1)
+  var nimfunc = cast[ptr QWizardPagechangeEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_metric(self: QWizardPage, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint =
-
+  nimfunc[](slotval1)
+proc QWizardPagemetric*(self: gen_qwizard_types.QWizardPage, param1: cint): cint =
 
   fQWizardPage_virtualbase_metric(self.h, cint(param1))
 
-type QWizardPagemetricBase* = proc(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-proc onmetric*(self: QWizardPage, slot: proc(super: QWizardPagemetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint) =
+type QWizardPagemetricProc* = proc(param1: cint): cint
+proc onmetric*(self: gen_qwizard_types.QWizardPage, slot: QWizardPagemetricProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardPagemetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var tmp = new Cb
+  var tmp = new QWizardPagemetricProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizardPage_override_virtual_metric(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizardPage_metric(self: ptr cQWizardPage, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QWizardPage_metric ".} =
-  type Cb = proc(super: QWizardPagemetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): auto =
-    callVirtualBase_metric(QWizardPage(h: self), param1)
-  let slotval1 = gen_qpaintdevice.QPaintDevicePaintDeviceMetric(param1)
+  var nimfunc = cast[ptr QWizardPagemetricProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_initPainter(self: QWizardPage, painter: gen_qpainter.QPainter): void =
-
+proc QWizardPageinitPainter*(self: gen_qwizard_types.QWizardPage, painter: gen_qpainter.QPainter): void =
 
   fQWizardPage_virtualbase_initPainter(self.h, painter.h)
 
-type QWizardPageinitPainterBase* = proc(painter: gen_qpainter.QPainter): void
-proc oninitPainter*(self: QWizardPage, slot: proc(super: QWizardPageinitPainterBase, painter: gen_qpainter.QPainter): void) =
+type QWizardPageinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
+proc oninitPainter*(self: gen_qwizard_types.QWizardPage, slot: QWizardPageinitPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardPageinitPainterBase, painter: gen_qpainter.QPainter): void
-  var tmp = new Cb
+  var tmp = new QWizardPageinitPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizardPage_override_virtual_initPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizardPage_initPainter(self: ptr cQWizardPage, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_QWizardPage_initPainter ".} =
-  type Cb = proc(super: QWizardPageinitPainterBase, painter: gen_qpainter.QPainter): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter): auto =
-    callVirtualBase_initPainter(QWizardPage(h: self), painter)
+  var nimfunc = cast[ptr QWizardPageinitPainterProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_redirected(self: QWizardPage, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
+  nimfunc[](slotval1)
+proc QWizardPageredirected*(self: gen_qwizard_types.QWizardPage, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
 
   gen_qpaintdevice.QPaintDevice(h: fQWizardPage_virtualbase_redirected(self.h, offset.h))
 
-type QWizardPageredirectedBase* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-proc onredirected*(self: QWizardPage, slot: proc(super: QWizardPageredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice) =
+type QWizardPageredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
+proc onredirected*(self: gen_qwizard_types.QWizardPage, slot: QWizardPageredirectedProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardPageredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var tmp = new Cb
+  var tmp = new QWizardPageredirectedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizardPage_override_virtual_redirected(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizardPage_redirected(self: ptr cQWizardPage, slot: int, offset: pointer): pointer {.exportc: "miqt_exec_callback_QWizardPage_redirected ".} =
-  type Cb = proc(super: QWizardPageredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(offset: gen_qpoint.QPoint): auto =
-    callVirtualBase_redirected(QWizardPage(h: self), offset)
+  var nimfunc = cast[ptr QWizardPageredirectedProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: offset)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_sharedPainter(self: QWizardPage, ): gen_qpainter.QPainter =
-
+proc QWizardPagesharedPainter*(self: gen_qwizard_types.QWizardPage, ): gen_qpainter.QPainter =
 
   gen_qpainter.QPainter(h: fQWizardPage_virtualbase_sharedPainter(self.h))
 
-type QWizardPagesharedPainterBase* = proc(): gen_qpainter.QPainter
-proc onsharedPainter*(self: QWizardPage, slot: proc(super: QWizardPagesharedPainterBase): gen_qpainter.QPainter) =
+type QWizardPagesharedPainterProc* = proc(): gen_qpainter.QPainter
+proc onsharedPainter*(self: gen_qwizard_types.QWizardPage, slot: QWizardPagesharedPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardPagesharedPainterBase): gen_qpainter.QPainter
-  var tmp = new Cb
+  var tmp = new QWizardPagesharedPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizardPage_override_virtual_sharedPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizardPage_sharedPainter(self: ptr cQWizardPage, slot: int): pointer {.exportc: "miqt_exec_callback_QWizardPage_sharedPainter ".} =
-  type Cb = proc(super: QWizardPagesharedPainterBase): gen_qpainter.QPainter
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sharedPainter(QWizardPage(h: self), )
+  var nimfunc = cast[ptr QWizardPagesharedPainterProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_inputMethodEvent(self: QWizardPage, param1: gen_qevent.QInputMethodEvent): void =
-
+proc QWizardPageinputMethodEvent*(self: gen_qwizard_types.QWizardPage, param1: gen_qevent.QInputMethodEvent): void =
 
   fQWizardPage_virtualbase_inputMethodEvent(self.h, param1.h)
 
-type QWizardPageinputMethodEventBase* = proc(param1: gen_qevent.QInputMethodEvent): void
-proc oninputMethodEvent*(self: QWizardPage, slot: proc(super: QWizardPageinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void) =
+type QWizardPageinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
+proc oninputMethodEvent*(self: gen_qwizard_types.QWizardPage, slot: QWizardPageinputMethodEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardPageinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var tmp = new Cb
+  var tmp = new QWizardPageinputMethodEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizardPage_override_virtual_inputMethodEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizardPage_inputMethodEvent(self: ptr cQWizardPage, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QWizardPage_inputMethodEvent ".} =
-  type Cb = proc(super: QWizardPageinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QInputMethodEvent): auto =
-    callVirtualBase_inputMethodEvent(QWizardPage(h: self), param1)
+  var nimfunc = cast[ptr QWizardPageinputMethodEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QInputMethodEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_inputMethodQuery(self: QWizardPage, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant =
-
+  nimfunc[](slotval1)
+proc QWizardPageinputMethodQuery*(self: gen_qwizard_types.QWizardPage, param1: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQWizardPage_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
-type QWizardPageinputMethodQueryBase* = proc(param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-proc oninputMethodQuery*(self: QWizardPage, slot: proc(super: QWizardPageinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant) =
+type QWizardPageinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
+proc oninputMethodQuery*(self: gen_qwizard_types.QWizardPage, slot: QWizardPageinputMethodQueryProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardPageinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QWizardPageinputMethodQueryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizardPage_override_virtual_inputMethodQuery(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizardPage_inputMethodQuery(self: ptr cQWizardPage, slot: int, param1: cint): pointer {.exportc: "miqt_exec_callback_QWizardPage_inputMethodQuery ".} =
-  type Cb = proc(super: QWizardPageinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qnamespace.InputMethodQuery): auto =
-    callVirtualBase_inputMethodQuery(QWizardPage(h: self), param1)
-  let slotval1 = gen_qnamespace.InputMethodQuery(param1)
+  var nimfunc = cast[ptr QWizardPageinputMethodQueryProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_focusNextPrevChild(self: QWizardPage, next: bool): bool =
-
+proc QWizardPagefocusNextPrevChild*(self: gen_qwizard_types.QWizardPage, next: bool): bool =
 
   fQWizardPage_virtualbase_focusNextPrevChild(self.h, next)
 
-type QWizardPagefocusNextPrevChildBase* = proc(next: bool): bool
-proc onfocusNextPrevChild*(self: QWizardPage, slot: proc(super: QWizardPagefocusNextPrevChildBase, next: bool): bool) =
+type QWizardPagefocusNextPrevChildProc* = proc(next: bool): bool
+proc onfocusNextPrevChild*(self: gen_qwizard_types.QWizardPage, slot: QWizardPagefocusNextPrevChildProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardPagefocusNextPrevChildBase, next: bool): bool
-  var tmp = new Cb
+  var tmp = new QWizardPagefocusNextPrevChildProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizardPage_override_virtual_focusNextPrevChild(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizardPage_focusNextPrevChild(self: ptr cQWizardPage, slot: int, next: bool): bool {.exportc: "miqt_exec_callback_QWizardPage_focusNextPrevChild ".} =
-  type Cb = proc(super: QWizardPagefocusNextPrevChildBase, next: bool): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(next: bool): auto =
-    callVirtualBase_focusNextPrevChild(QWizardPage(h: self), next)
+  var nimfunc = cast[ptr QWizardPagefocusNextPrevChildProc](cast[pointer](slot))
   let slotval1 = next
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QWizardPage, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QWizardPageeventFilter*(self: gen_qwizard_types.QWizardPage, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQWizardPage_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QWizardPageeventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QWizardPage, slot: proc(super: QWizardPageeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QWizardPageeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qwizard_types.QWizardPage, slot: QWizardPageeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardPageeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QWizardPageeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizardPage_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizardPage_eventFilter(self: ptr cQWizardPage, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QWizardPage_eventFilter ".} =
-  type Cb = proc(super: QWizardPageeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QWizardPage(h: self), watched, event)
+  var nimfunc = cast[ptr QWizardPageeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QWizardPage, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QWizardPagetimerEvent*(self: gen_qwizard_types.QWizardPage, event: gen_qcoreevent.QTimerEvent): void =
 
   fQWizardPage_virtualbase_timerEvent(self.h, event.h)
 
-type QWizardPagetimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QWizardPage, slot: proc(super: QWizardPagetimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QWizardPagetimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qwizard_types.QWizardPage, slot: QWizardPagetimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardPagetimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QWizardPagetimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizardPage_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizardPage_timerEvent(self: ptr cQWizardPage, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWizardPage_timerEvent ".} =
-  type Cb = proc(super: QWizardPagetimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QWizardPage(h: self), event)
+  var nimfunc = cast[ptr QWizardPagetimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QWizardPage, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QWizardPagechildEvent*(self: gen_qwizard_types.QWizardPage, event: gen_qcoreevent.QChildEvent): void =
 
   fQWizardPage_virtualbase_childEvent(self.h, event.h)
 
-type QWizardPagechildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QWizardPage, slot: proc(super: QWizardPagechildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QWizardPagechildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qwizard_types.QWizardPage, slot: QWizardPagechildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardPagechildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QWizardPagechildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizardPage_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizardPage_childEvent(self: ptr cQWizardPage, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWizardPage_childEvent ".} =
-  type Cb = proc(super: QWizardPagechildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QWizardPage(h: self), event)
+  var nimfunc = cast[ptr QWizardPagechildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QWizardPage, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QWizardPagecustomEvent*(self: gen_qwizard_types.QWizardPage, event: gen_qcoreevent.QEvent): void =
 
   fQWizardPage_virtualbase_customEvent(self.h, event.h)
 
-type QWizardPagecustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QWizardPage, slot: proc(super: QWizardPagecustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QWizardPagecustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qwizard_types.QWizardPage, slot: QWizardPagecustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardPagecustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QWizardPagecustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizardPage_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizardPage_customEvent(self: ptr cQWizardPage, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWizardPage_customEvent ".} =
-  type Cb = proc(super: QWizardPagecustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QWizardPage(h: self), event)
+  var nimfunc = cast[ptr QWizardPagecustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QWizardPage, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QWizardPageconnectNotify*(self: gen_qwizard_types.QWizardPage, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQWizardPage_virtualbase_connectNotify(self.h, signal.h)
 
-type QWizardPageconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QWizardPage, slot: proc(super: QWizardPageconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QWizardPageconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qwizard_types.QWizardPage, slot: QWizardPageconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardPageconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QWizardPageconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizardPage_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizardPage_connectNotify(self: ptr cQWizardPage, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QWizardPage_connectNotify ".} =
-  type Cb = proc(super: QWizardPageconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QWizardPage(h: self), signal)
+  var nimfunc = cast[ptr QWizardPageconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QWizardPage, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QWizardPagedisconnectNotify*(self: gen_qwizard_types.QWizardPage, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQWizardPage_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QWizardPagedisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QWizardPage, slot: proc(super: QWizardPagedisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QWizardPagedisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qwizard_types.QWizardPage, slot: QWizardPagedisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QWizardPagedisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QWizardPagedisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWizardPage_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWizardPage_disconnectNotify(self: ptr cQWizardPage, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QWizardPage_disconnectNotify ".} =
-  type Cb = proc(super: QWizardPagedisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QWizardPage(h: self), signal)
+  var nimfunc = cast[ptr QWizardPagedisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QWizardPage): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qwizard_types.QWizardPage): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQWizardPage_staticMetaObject())
-proc delete*(self: QWizardPage) =
+proc delete*(self: gen_qwizard_types.QWizardPage) =
   fcQWizardPage_delete(self.h)

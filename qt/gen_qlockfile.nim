@@ -34,13 +34,11 @@ const cflags = gorge("pkg-config -cflags Qt5Widgets")
 {.compile("gen_qlockfile.cpp", cflags).}
 
 
-type QLockFileLockError* = cint
-const
-  QLockFileNoError* = 0
-  QLockFileLockFailedError* = 1
-  QLockFilePermissionError* = 2
-  QLockFileUnknownError* = 3
-
+type QLockFileLockErrorEnum* = distinct cint
+template NoError*(_: type QLockFileLockErrorEnum): untyped = 0
+template LockFailedError*(_: type QLockFileLockErrorEnum): untyped = 1
+template PermissionError*(_: type QLockFileLockErrorEnum): untyped = 2
+template UnknownError*(_: type QLockFileLockErrorEnum): untyped = 3
 
 
 import gen_qlockfile_types
@@ -62,46 +60,46 @@ proc fcQLockFile_tryLock1(self: pointer, timeout: cint): bool {.importc: "QLockF
 proc fcQLockFile_delete(self: pointer) {.importc: "QLockFile_delete".}
 
 
-func init*(T: type QLockFile, h: ptr cQLockFile): QLockFile =
+func init*(T: type gen_qlockfile_types.QLockFile, h: ptr cQLockFile): gen_qlockfile_types.QLockFile =
   T(h: h)
-proc create*(T: type QLockFile, fileName: string): QLockFile =
+proc create*(T: type gen_qlockfile_types.QLockFile, fileName: string): gen_qlockfile_types.QLockFile =
 
-  QLockFile.init(fcQLockFile_new(struct_miqt_string(data: fileName, len: csize_t(len(fileName)))))
-proc lock*(self: QLockFile, ): bool =
+  gen_qlockfile_types.QLockFile.init(fcQLockFile_new(struct_miqt_string(data: fileName, len: csize_t(len(fileName)))))
+proc lock*(self: gen_qlockfile_types.QLockFile, ): bool =
 
   fcQLockFile_lock(self.h)
 
-proc tryLock*(self: QLockFile, ): bool =
+proc tryLock*(self: gen_qlockfile_types.QLockFile, ): bool =
 
   fcQLockFile_tryLock(self.h)
 
-proc unlock*(self: QLockFile, ): void =
+proc unlock*(self: gen_qlockfile_types.QLockFile, ): void =
 
   fcQLockFile_unlock(self.h)
 
-proc setStaleLockTime*(self: QLockFile, staleLockTime: cint): void =
+proc setStaleLockTime*(self: gen_qlockfile_types.QLockFile, staleLockTime: cint): void =
 
   fcQLockFile_setStaleLockTime(self.h, staleLockTime)
 
-proc staleLockTime*(self: QLockFile, ): cint =
+proc staleLockTime*(self: gen_qlockfile_types.QLockFile, ): cint =
 
   fcQLockFile_staleLockTime(self.h)
 
-proc isLocked*(self: QLockFile, ): bool =
+proc isLocked*(self: gen_qlockfile_types.QLockFile, ): bool =
 
   fcQLockFile_isLocked(self.h)
 
-proc removeStaleLockFile*(self: QLockFile, ): bool =
+proc removeStaleLockFile*(self: gen_qlockfile_types.QLockFile, ): bool =
 
   fcQLockFile_removeStaleLockFile(self.h)
 
-proc error*(self: QLockFile, ): QLockFileLockError =
+proc error*(self: gen_qlockfile_types.QLockFile, ): cint =
 
-  QLockFileLockError(fcQLockFile_error(self.h))
+  cint(fcQLockFile_error(self.h))
 
-proc tryLock1*(self: QLockFile, timeout: cint): bool =
+proc tryLock1*(self: gen_qlockfile_types.QLockFile, timeout: cint): bool =
 
   fcQLockFile_tryLock1(self.h, timeout)
 
-proc delete*(self: QLockFile) =
+proc delete*(self: gen_qlockfile_types.QLockFile) =
   fcQLockFile_delete(self.h)

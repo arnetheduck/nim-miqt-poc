@@ -34,26 +34,22 @@ const cflags = gorge("pkg-config -cflags Qt5MultimediaWidgets")
 {.compile("gen_qabstractvideobuffer.cpp", cflags).}
 
 
-type QAbstractVideoBufferHandleType* = cint
-const
-  QAbstractVideoBufferNoHandle* = 0
-  QAbstractVideoBufferGLTextureHandle* = 1
-  QAbstractVideoBufferXvShmImageHandle* = 2
-  QAbstractVideoBufferCoreImageHandle* = 3
-  QAbstractVideoBufferQPixmapHandle* = 4
-  QAbstractVideoBufferEGLImageHandle* = 5
-  QAbstractVideoBufferGLTextureRectangleHandle* = 6
-  QAbstractVideoBufferUserHandle* = 1000
+type QAbstractVideoBufferHandleTypeEnum* = distinct cint
+template NoHandle*(_: type QAbstractVideoBufferHandleTypeEnum): untyped = 0
+template GLTextureHandle*(_: type QAbstractVideoBufferHandleTypeEnum): untyped = 1
+template XvShmImageHandle*(_: type QAbstractVideoBufferHandleTypeEnum): untyped = 2
+template CoreImageHandle*(_: type QAbstractVideoBufferHandleTypeEnum): untyped = 3
+template QPixmapHandle*(_: type QAbstractVideoBufferHandleTypeEnum): untyped = 4
+template EGLImageHandle*(_: type QAbstractVideoBufferHandleTypeEnum): untyped = 5
+template GLTextureRectangleHandle*(_: type QAbstractVideoBufferHandleTypeEnum): untyped = 6
+template UserHandle*(_: type QAbstractVideoBufferHandleTypeEnum): untyped = 1000
 
 
-
-type QAbstractVideoBufferMapMode* = cint
-const
-  QAbstractVideoBufferNotMapped* = 0
-  QAbstractVideoBufferReadOnly* = 1
-  QAbstractVideoBufferWriteOnly* = 2
-  QAbstractVideoBufferReadWrite* = 3
-
+type QAbstractVideoBufferMapModeEnum* = distinct cint
+template NotMapped*(_: type QAbstractVideoBufferMapModeEnum): untyped = 0
+template ReadOnly*(_: type QAbstractVideoBufferMapModeEnum): untyped = 1
+template WriteOnly*(_: type QAbstractVideoBufferMapModeEnum): untyped = 2
+template ReadWrite*(_: type QAbstractVideoBufferMapModeEnum): untyped = 3
 
 
 import gen_qabstractvideobuffer_types
@@ -95,85 +91,76 @@ proc fcQAbstractPlanarVideoBuffer_override_virtual_handle(self: pointer, slot: i
 proc fcQAbstractPlanarVideoBuffer_delete(self: pointer) {.importc: "QAbstractPlanarVideoBuffer_delete".}
 
 
-func init*(T: type QAbstractVideoBuffer, h: ptr cQAbstractVideoBuffer): QAbstractVideoBuffer =
+func init*(T: type gen_qabstractvideobuffer_types.QAbstractVideoBuffer, h: ptr cQAbstractVideoBuffer): gen_qabstractvideobuffer_types.QAbstractVideoBuffer =
   T(h: h)
-proc create*(T: type QAbstractVideoBuffer, typeVal: QAbstractVideoBufferHandleType): QAbstractVideoBuffer =
+proc create*(T: type gen_qabstractvideobuffer_types.QAbstractVideoBuffer, typeVal: cint): gen_qabstractvideobuffer_types.QAbstractVideoBuffer =
 
-  QAbstractVideoBuffer.init(fcQAbstractVideoBuffer_new(cint(typeVal)))
-proc release*(self: QAbstractVideoBuffer, ): void =
+  gen_qabstractvideobuffer_types.QAbstractVideoBuffer.init(fcQAbstractVideoBuffer_new(cint(typeVal)))
+proc release*(self: gen_qabstractvideobuffer_types.QAbstractVideoBuffer, ): void =
 
   fcQAbstractVideoBuffer_release(self.h)
 
-proc handleType*(self: QAbstractVideoBuffer, ): QAbstractVideoBufferHandleType =
+proc handleType*(self: gen_qabstractvideobuffer_types.QAbstractVideoBuffer, ): cint =
 
-  QAbstractVideoBufferHandleType(fcQAbstractVideoBuffer_handleType(self.h))
+  cint(fcQAbstractVideoBuffer_handleType(self.h))
 
-proc mapMode*(self: QAbstractVideoBuffer, ): QAbstractVideoBufferMapMode =
+proc mapMode*(self: gen_qabstractvideobuffer_types.QAbstractVideoBuffer, ): cint =
 
-  QAbstractVideoBufferMapMode(fcQAbstractVideoBuffer_mapMode(self.h))
+  cint(fcQAbstractVideoBuffer_mapMode(self.h))
 
-proc map*(self: QAbstractVideoBuffer, mode: QAbstractVideoBufferMapMode, numBytes: ptr cint, bytesPerLine: ptr cint): ptr uint8 =
+proc map*(self: gen_qabstractvideobuffer_types.QAbstractVideoBuffer, mode: cint, numBytes: ptr cint, bytesPerLine: ptr cint): ptr uint8 =
 
   fcQAbstractVideoBuffer_map(self.h, cint(mode), numBytes, bytesPerLine)
 
-proc unmap*(self: QAbstractVideoBuffer, ): void =
+proc unmap*(self: gen_qabstractvideobuffer_types.QAbstractVideoBuffer, ): void =
 
   fcQAbstractVideoBuffer_unmap(self.h)
 
-proc handle*(self: QAbstractVideoBuffer, ): gen_qvariant.QVariant =
+proc handle*(self: gen_qabstractvideobuffer_types.QAbstractVideoBuffer, ): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fcQAbstractVideoBuffer_handle(self.h))
 
-proc callVirtualBase_release(self: QAbstractVideoBuffer, ): void =
-
+proc QAbstractVideoBufferrelease*(self: gen_qabstractvideobuffer_types.QAbstractVideoBuffer, ): void =
 
   fQAbstractVideoBuffer_virtualbase_release(self.h)
 
-type QAbstractVideoBufferreleaseBase* = proc(): void
-proc onrelease*(self: QAbstractVideoBuffer, slot: proc(super: QAbstractVideoBufferreleaseBase): void) =
+type QAbstractVideoBufferreleaseProc* = proc(): void
+proc onrelease*(self: gen_qabstractvideobuffer_types.QAbstractVideoBuffer, slot: QAbstractVideoBufferreleaseProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractVideoBufferreleaseBase): void
-  var tmp = new Cb
+  var tmp = new QAbstractVideoBufferreleaseProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractVideoBuffer_override_virtual_release(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractVideoBuffer_release(self: ptr cQAbstractVideoBuffer, slot: int): void {.exportc: "miqt_exec_callback_QAbstractVideoBuffer_release ".} =
-  type Cb = proc(super: QAbstractVideoBufferreleaseBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_release(QAbstractVideoBuffer(h: self), )
+  var nimfunc = cast[ptr QAbstractVideoBufferreleaseProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-type QAbstractVideoBuffermapModeBase* = proc(): QAbstractVideoBufferMapMode
-proc onmapMode*(self: QAbstractVideoBuffer, slot: proc(): QAbstractVideoBufferMapMode) =
+  nimfunc[]()
+type QAbstractVideoBuffermapModeProc* = proc(): cint
+proc onmapMode*(self: gen_qabstractvideobuffer_types.QAbstractVideoBuffer, slot: QAbstractVideoBuffermapModeProc) =
   # TODO check subclass
-  type Cb = proc(): QAbstractVideoBufferMapMode
-  var tmp = new Cb
+  var tmp = new QAbstractVideoBuffermapModeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractVideoBuffer_override_virtual_mapMode(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractVideoBuffer_mapMode(self: ptr cQAbstractVideoBuffer, slot: int): cint {.exportc: "miqt_exec_callback_QAbstractVideoBuffer_mapMode ".} =
-  type Cb = proc(): QAbstractVideoBufferMapMode
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QAbstractVideoBuffermapModeProc](cast[pointer](slot))
 
   let virtualReturn = nimfunc[]( )
 
   cint(virtualReturn)
-type QAbstractVideoBuffermapBase* = proc(mode: QAbstractVideoBufferMapMode, numBytes: ptr cint, bytesPerLine: ptr cint): ptr uint8
-proc onmap*(self: QAbstractVideoBuffer, slot: proc(mode: QAbstractVideoBufferMapMode, numBytes: ptr cint, bytesPerLine: ptr cint): ptr uint8) =
+type QAbstractVideoBuffermapProc* = proc(mode: cint, numBytes: ptr cint, bytesPerLine: ptr cint): ptr uint8
+proc onmap*(self: gen_qabstractvideobuffer_types.QAbstractVideoBuffer, slot: QAbstractVideoBuffermapProc) =
   # TODO check subclass
-  type Cb = proc(mode: QAbstractVideoBufferMapMode, numBytes: ptr cint, bytesPerLine: ptr cint): ptr uint8
-  var tmp = new Cb
+  var tmp = new QAbstractVideoBuffermapProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractVideoBuffer_override_virtual_map(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractVideoBuffer_map(self: ptr cQAbstractVideoBuffer, slot: int, mode: cint, numBytes: ptr cint, bytesPerLine: ptr cint): ptr uint8 {.exportc: "miqt_exec_callback_QAbstractVideoBuffer_map ".} =
-  type Cb = proc(mode: QAbstractVideoBufferMapMode, numBytes: ptr cint, bytesPerLine: ptr cint): ptr uint8
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = QAbstractVideoBufferMapMode(mode)
+  var nimfunc = cast[ptr QAbstractVideoBuffermapProc](cast[pointer](slot))
+  let slotval1 = cint(mode)
 
   let slotval2 = numBytes
 
@@ -183,157 +170,131 @@ proc miqt_exec_callback_QAbstractVideoBuffer_map(self: ptr cQAbstractVideoBuffer
   let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-type QAbstractVideoBufferunmapBase* = proc(): void
-proc onunmap*(self: QAbstractVideoBuffer, slot: proc(): void) =
+type QAbstractVideoBufferunmapProc* = proc(): void
+proc onunmap*(self: gen_qabstractvideobuffer_types.QAbstractVideoBuffer, slot: QAbstractVideoBufferunmapProc) =
   # TODO check subclass
-  type Cb = proc(): void
-  var tmp = new Cb
+  var tmp = new QAbstractVideoBufferunmapProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractVideoBuffer_override_virtual_unmap(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractVideoBuffer_unmap(self: ptr cQAbstractVideoBuffer, slot: int): void {.exportc: "miqt_exec_callback_QAbstractVideoBuffer_unmap ".} =
-  type Cb = proc(): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QAbstractVideoBufferunmapProc](cast[pointer](slot))
 
   nimfunc[]()
-proc callVirtualBase_handle(self: QAbstractVideoBuffer, ): gen_qvariant.QVariant =
-
+proc QAbstractVideoBufferhandle*(self: gen_qabstractvideobuffer_types.QAbstractVideoBuffer, ): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQAbstractVideoBuffer_virtualbase_handle(self.h))
 
-type QAbstractVideoBufferhandleBase* = proc(): gen_qvariant.QVariant
-proc onhandle*(self: QAbstractVideoBuffer, slot: proc(super: QAbstractVideoBufferhandleBase): gen_qvariant.QVariant) =
+type QAbstractVideoBufferhandleProc* = proc(): gen_qvariant.QVariant
+proc onhandle*(self: gen_qabstractvideobuffer_types.QAbstractVideoBuffer, slot: QAbstractVideoBufferhandleProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractVideoBufferhandleBase): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QAbstractVideoBufferhandleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractVideoBuffer_override_virtual_handle(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractVideoBuffer_handle(self: ptr cQAbstractVideoBuffer, slot: int): pointer {.exportc: "miqt_exec_callback_QAbstractVideoBuffer_handle ".} =
-  type Cb = proc(super: QAbstractVideoBufferhandleBase): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_handle(QAbstractVideoBuffer(h: self), )
+  var nimfunc = cast[ptr QAbstractVideoBufferhandleProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc delete*(self: QAbstractVideoBuffer) =
+proc delete*(self: gen_qabstractvideobuffer_types.QAbstractVideoBuffer) =
   fcQAbstractVideoBuffer_delete(self.h)
 
-func init*(T: type QAbstractPlanarVideoBuffer, h: ptr cQAbstractPlanarVideoBuffer): QAbstractPlanarVideoBuffer =
+func init*(T: type gen_qabstractvideobuffer_types.QAbstractPlanarVideoBuffer, h: ptr cQAbstractPlanarVideoBuffer): gen_qabstractvideobuffer_types.QAbstractPlanarVideoBuffer =
   T(h: h)
-proc create*(T: type QAbstractPlanarVideoBuffer, typeVal: QAbstractVideoBufferHandleType): QAbstractPlanarVideoBuffer =
+proc create*(T: type gen_qabstractvideobuffer_types.QAbstractPlanarVideoBuffer, typeVal: cint): gen_qabstractvideobuffer_types.QAbstractPlanarVideoBuffer =
 
-  QAbstractPlanarVideoBuffer.init(fcQAbstractPlanarVideoBuffer_new(cint(typeVal)))
-proc map*(self: QAbstractPlanarVideoBuffer, mode: QAbstractVideoBufferMapMode, numBytes: ptr cint, bytesPerLine: ptr cint): ptr uint8 =
+  gen_qabstractvideobuffer_types.QAbstractPlanarVideoBuffer.init(fcQAbstractPlanarVideoBuffer_new(cint(typeVal)))
+proc map*(self: gen_qabstractvideobuffer_types.QAbstractPlanarVideoBuffer, mode: cint, numBytes: ptr cint, bytesPerLine: ptr cint): ptr uint8 =
 
   fcQAbstractPlanarVideoBuffer_map(self.h, cint(mode), numBytes, bytesPerLine)
 
-proc callVirtualBase_map(self: QAbstractPlanarVideoBuffer, mode: QAbstractVideoBufferMapMode, numBytes: ptr cint, bytesPerLine: ptr cint): ptr uint8 =
-
+proc QAbstractPlanarVideoBuffermap*(self: gen_qabstractvideobuffer_types.QAbstractPlanarVideoBuffer, mode: cint, numBytes: ptr cint, bytesPerLine: ptr cint): ptr uint8 =
 
   fQAbstractPlanarVideoBuffer_virtualbase_map(self.h, cint(mode), numBytes, bytesPerLine)
 
-type QAbstractPlanarVideoBuffermapBase* = proc(mode: QAbstractVideoBufferMapMode, numBytes: ptr cint, bytesPerLine: ptr cint): ptr uint8
-proc onmap*(self: QAbstractPlanarVideoBuffer, slot: proc(super: QAbstractPlanarVideoBuffermapBase, mode: QAbstractVideoBufferMapMode, numBytes: ptr cint, bytesPerLine: ptr cint): ptr uint8) =
+type QAbstractPlanarVideoBuffermapProc* = proc(mode: cint, numBytes: ptr cint, bytesPerLine: ptr cint): ptr uint8
+proc onmap*(self: gen_qabstractvideobuffer_types.QAbstractPlanarVideoBuffer, slot: QAbstractPlanarVideoBuffermapProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractPlanarVideoBuffermapBase, mode: QAbstractVideoBufferMapMode, numBytes: ptr cint, bytesPerLine: ptr cint): ptr uint8
-  var tmp = new Cb
+  var tmp = new QAbstractPlanarVideoBuffermapProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractPlanarVideoBuffer_override_virtual_map(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractPlanarVideoBuffer_map(self: ptr cQAbstractPlanarVideoBuffer, slot: int, mode: cint, numBytes: ptr cint, bytesPerLine: ptr cint): ptr uint8 {.exportc: "miqt_exec_callback_QAbstractPlanarVideoBuffer_map ".} =
-  type Cb = proc(super: QAbstractPlanarVideoBuffermapBase, mode: QAbstractVideoBufferMapMode, numBytes: ptr cint, bytesPerLine: ptr cint): ptr uint8
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(mode: QAbstractVideoBufferMapMode, numBytes: ptr cint, bytesPerLine: ptr cint): auto =
-    callVirtualBase_map(QAbstractPlanarVideoBuffer(h: self), mode, numBytes, bytesPerLine)
-  let slotval1 = QAbstractVideoBufferMapMode(mode)
+  var nimfunc = cast[ptr QAbstractPlanarVideoBuffermapProc](cast[pointer](slot))
+  let slotval1 = cint(mode)
 
   let slotval2 = numBytes
 
   let slotval3 = bytesPerLine
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_release(self: QAbstractPlanarVideoBuffer, ): void =
-
+proc QAbstractPlanarVideoBufferrelease*(self: gen_qabstractvideobuffer_types.QAbstractPlanarVideoBuffer, ): void =
 
   fQAbstractPlanarVideoBuffer_virtualbase_release(self.h)
 
-type QAbstractPlanarVideoBufferreleaseBase* = proc(): void
-proc onrelease*(self: QAbstractPlanarVideoBuffer, slot: proc(super: QAbstractPlanarVideoBufferreleaseBase): void) =
+type QAbstractPlanarVideoBufferreleaseProc* = proc(): void
+proc onrelease*(self: gen_qabstractvideobuffer_types.QAbstractPlanarVideoBuffer, slot: QAbstractPlanarVideoBufferreleaseProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractPlanarVideoBufferreleaseBase): void
-  var tmp = new Cb
+  var tmp = new QAbstractPlanarVideoBufferreleaseProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractPlanarVideoBuffer_override_virtual_release(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractPlanarVideoBuffer_release(self: ptr cQAbstractPlanarVideoBuffer, slot: int): void {.exportc: "miqt_exec_callback_QAbstractPlanarVideoBuffer_release ".} =
-  type Cb = proc(super: QAbstractPlanarVideoBufferreleaseBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_release(QAbstractPlanarVideoBuffer(h: self), )
+  var nimfunc = cast[ptr QAbstractPlanarVideoBufferreleaseProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-type QAbstractPlanarVideoBuffermapModeBase* = proc(): QAbstractVideoBufferMapMode
-proc onmapMode*(self: QAbstractPlanarVideoBuffer, slot: proc(): QAbstractVideoBufferMapMode) =
+  nimfunc[]()
+type QAbstractPlanarVideoBuffermapModeProc* = proc(): cint
+proc onmapMode*(self: gen_qabstractvideobuffer_types.QAbstractPlanarVideoBuffer, slot: QAbstractPlanarVideoBuffermapModeProc) =
   # TODO check subclass
-  type Cb = proc(): QAbstractVideoBufferMapMode
-  var tmp = new Cb
+  var tmp = new QAbstractPlanarVideoBuffermapModeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractPlanarVideoBuffer_override_virtual_mapMode(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractPlanarVideoBuffer_mapMode(self: ptr cQAbstractPlanarVideoBuffer, slot: int): cint {.exportc: "miqt_exec_callback_QAbstractPlanarVideoBuffer_mapMode ".} =
-  type Cb = proc(): QAbstractVideoBufferMapMode
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QAbstractPlanarVideoBuffermapModeProc](cast[pointer](slot))
 
   let virtualReturn = nimfunc[]( )
 
   cint(virtualReturn)
-type QAbstractPlanarVideoBufferunmapBase* = proc(): void
-proc onunmap*(self: QAbstractPlanarVideoBuffer, slot: proc(): void) =
+type QAbstractPlanarVideoBufferunmapProc* = proc(): void
+proc onunmap*(self: gen_qabstractvideobuffer_types.QAbstractPlanarVideoBuffer, slot: QAbstractPlanarVideoBufferunmapProc) =
   # TODO check subclass
-  type Cb = proc(): void
-  var tmp = new Cb
+  var tmp = new QAbstractPlanarVideoBufferunmapProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractPlanarVideoBuffer_override_virtual_unmap(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractPlanarVideoBuffer_unmap(self: ptr cQAbstractPlanarVideoBuffer, slot: int): void {.exportc: "miqt_exec_callback_QAbstractPlanarVideoBuffer_unmap ".} =
-  type Cb = proc(): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QAbstractPlanarVideoBufferunmapProc](cast[pointer](slot))
 
   nimfunc[]()
-proc callVirtualBase_handle(self: QAbstractPlanarVideoBuffer, ): gen_qvariant.QVariant =
-
+proc QAbstractPlanarVideoBufferhandle*(self: gen_qabstractvideobuffer_types.QAbstractPlanarVideoBuffer, ): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQAbstractPlanarVideoBuffer_virtualbase_handle(self.h))
 
-type QAbstractPlanarVideoBufferhandleBase* = proc(): gen_qvariant.QVariant
-proc onhandle*(self: QAbstractPlanarVideoBuffer, slot: proc(super: QAbstractPlanarVideoBufferhandleBase): gen_qvariant.QVariant) =
+type QAbstractPlanarVideoBufferhandleProc* = proc(): gen_qvariant.QVariant
+proc onhandle*(self: gen_qabstractvideobuffer_types.QAbstractPlanarVideoBuffer, slot: QAbstractPlanarVideoBufferhandleProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractPlanarVideoBufferhandleBase): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QAbstractPlanarVideoBufferhandleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractPlanarVideoBuffer_override_virtual_handle(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractPlanarVideoBuffer_handle(self: ptr cQAbstractPlanarVideoBuffer, slot: int): pointer {.exportc: "miqt_exec_callback_QAbstractPlanarVideoBuffer_handle ".} =
-  type Cb = proc(super: QAbstractPlanarVideoBufferhandleBase): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_handle(QAbstractPlanarVideoBuffer(h: self), )
+  var nimfunc = cast[ptr QAbstractPlanarVideoBufferhandleProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc delete*(self: QAbstractPlanarVideoBuffer) =
+proc delete*(self: gen_qabstractvideobuffer_types.QAbstractPlanarVideoBuffer) =
   fcQAbstractPlanarVideoBuffer_delete(self.h)

@@ -40,12 +40,10 @@ export gen_qpen_types
 import
   gen_qbrush,
   gen_qcolor,
-  gen_qnamespace,
   gen_qvariant
 export
   gen_qbrush,
   gen_qcolor,
-  gen_qnamespace,
   gen_qvariant
 
 type cQPen*{.exportc: "QPen", incompleteStruct.} = object
@@ -90,49 +88,49 @@ proc fcQPen_isDetached(self: pointer, ): bool {.importc: "QPen_isDetached".}
 proc fcQPen_delete(self: pointer) {.importc: "QPen_delete".}
 
 
-func init*(T: type QPen, h: ptr cQPen): QPen =
+func init*(T: type gen_qpen_types.QPen, h: ptr cQPen): gen_qpen_types.QPen =
   T(h: h)
-proc create*(T: type QPen, ): QPen =
+proc create*(T: type gen_qpen_types.QPen, ): gen_qpen_types.QPen =
 
-  QPen.init(fcQPen_new())
-proc create*(T: type QPen, param1: gen_qnamespace.PenStyle): QPen =
+  gen_qpen_types.QPen.init(fcQPen_new())
+proc create*(T: type gen_qpen_types.QPen, param1: cint): gen_qpen_types.QPen =
 
-  QPen.init(fcQPen_new2(cint(param1)))
-proc create*(T: type QPen, color: gen_qcolor.QColor): QPen =
+  gen_qpen_types.QPen.init(fcQPen_new2(cint(param1)))
+proc create*(T: type gen_qpen_types.QPen, color: gen_qcolor.QColor): gen_qpen_types.QPen =
 
-  QPen.init(fcQPen_new3(color.h))
-proc create*(T: type QPen, brush: gen_qbrush.QBrush, width: float64): QPen =
+  gen_qpen_types.QPen.init(fcQPen_new3(color.h))
+proc create*(T: type gen_qpen_types.QPen, brush: gen_qbrush.QBrush, width: float64): gen_qpen_types.QPen =
 
-  QPen.init(fcQPen_new4(brush.h, width))
-proc create2*(T: type QPen, pen: QPen): QPen =
+  gen_qpen_types.QPen.init(fcQPen_new4(brush.h, width))
+proc create2*(T: type gen_qpen_types.QPen, pen: gen_qpen_types.QPen): gen_qpen_types.QPen =
 
-  QPen.init(fcQPen_new5(pen.h))
-proc create*(T: type QPen, brush: gen_qbrush.QBrush, width: float64, s: gen_qnamespace.PenStyle): QPen =
+  gen_qpen_types.QPen.init(fcQPen_new5(pen.h))
+proc create*(T: type gen_qpen_types.QPen, brush: gen_qbrush.QBrush, width: float64, s: cint): gen_qpen_types.QPen =
 
-  QPen.init(fcQPen_new6(brush.h, width, cint(s)))
-proc create*(T: type QPen, brush: gen_qbrush.QBrush, width: float64, s: gen_qnamespace.PenStyle, c: gen_qnamespace.PenCapStyle): QPen =
+  gen_qpen_types.QPen.init(fcQPen_new6(brush.h, width, cint(s)))
+proc create*(T: type gen_qpen_types.QPen, brush: gen_qbrush.QBrush, width: float64, s: cint, c: cint): gen_qpen_types.QPen =
 
-  QPen.init(fcQPen_new7(brush.h, width, cint(s), cint(c)))
-proc create*(T: type QPen, brush: gen_qbrush.QBrush, width: float64, s: gen_qnamespace.PenStyle, c: gen_qnamespace.PenCapStyle, j: gen_qnamespace.PenJoinStyle): QPen =
+  gen_qpen_types.QPen.init(fcQPen_new7(brush.h, width, cint(s), cint(c)))
+proc create*(T: type gen_qpen_types.QPen, brush: gen_qbrush.QBrush, width: float64, s: cint, c: cint, j: cint): gen_qpen_types.QPen =
 
-  QPen.init(fcQPen_new8(brush.h, width, cint(s), cint(c), cint(j)))
-proc operatorAssign*(self: QPen, pen: QPen): void =
+  gen_qpen_types.QPen.init(fcQPen_new8(brush.h, width, cint(s), cint(c), cint(j)))
+proc operatorAssign*(self: gen_qpen_types.QPen, pen: gen_qpen_types.QPen): void =
 
   fcQPen_operatorAssign(self.h, pen.h)
 
-proc swap*(self: QPen, other: QPen): void =
+proc swap*(self: gen_qpen_types.QPen, other: gen_qpen_types.QPen): void =
 
   fcQPen_swap(self.h, other.h)
 
-proc style*(self: QPen, ): gen_qnamespace.PenStyle =
+proc style*(self: gen_qpen_types.QPen, ): cint =
 
-  gen_qnamespace.PenStyle(fcQPen_style(self.h))
+  cint(fcQPen_style(self.h))
 
-proc setStyle*(self: QPen, style: gen_qnamespace.PenStyle): void =
+proc setStyle*(self: gen_qpen_types.QPen, style: cint): void =
 
   fcQPen_setStyle(self.h, cint(style))
 
-proc dashPattern*(self: QPen, ): seq[float64] =
+proc dashPattern*(self: gen_qpen_types.QPen, ): seq[float64] =
 
   var v_ma = fcQPen_dashPattern(self.h)
   var vx_ret = newSeq[float64](int(v_ma.len))
@@ -141,7 +139,7 @@ proc dashPattern*(self: QPen, ): seq[float64] =
     vx_ret[i] = v_outCast[i]
   vx_ret
 
-proc setDashPattern*(self: QPen, pattern: seq[float64]): void =
+proc setDashPattern*(self: gen_qpen_types.QPen, pattern: seq[float64]): void =
 
   var pattern_CArray = newSeq[float64](len(pattern))
   for i in 0..<len(pattern):
@@ -149,97 +147,97 @@ proc setDashPattern*(self: QPen, pattern: seq[float64]): void =
 
   fcQPen_setDashPattern(self.h, struct_miqt_array(len: csize_t(len(pattern)), data: if len(pattern) == 0: nil else: addr(pattern_CArray[0])))
 
-proc dashOffset*(self: QPen, ): float64 =
+proc dashOffset*(self: gen_qpen_types.QPen, ): float64 =
 
   fcQPen_dashOffset(self.h)
 
-proc setDashOffset*(self: QPen, doffset: float64): void =
+proc setDashOffset*(self: gen_qpen_types.QPen, doffset: float64): void =
 
   fcQPen_setDashOffset(self.h, doffset)
 
-proc miterLimit*(self: QPen, ): float64 =
+proc miterLimit*(self: gen_qpen_types.QPen, ): float64 =
 
   fcQPen_miterLimit(self.h)
 
-proc setMiterLimit*(self: QPen, limit: float64): void =
+proc setMiterLimit*(self: gen_qpen_types.QPen, limit: float64): void =
 
   fcQPen_setMiterLimit(self.h, limit)
 
-proc widthF*(self: QPen, ): float64 =
+proc widthF*(self: gen_qpen_types.QPen, ): float64 =
 
   fcQPen_widthF(self.h)
 
-proc setWidthF*(self: QPen, width: float64): void =
+proc setWidthF*(self: gen_qpen_types.QPen, width: float64): void =
 
   fcQPen_setWidthF(self.h, width)
 
-proc width*(self: QPen, ): cint =
+proc width*(self: gen_qpen_types.QPen, ): cint =
 
   fcQPen_width(self.h)
 
-proc setWidth*(self: QPen, width: cint): void =
+proc setWidth*(self: gen_qpen_types.QPen, width: cint): void =
 
   fcQPen_setWidth(self.h, width)
 
-proc color*(self: QPen, ): gen_qcolor.QColor =
+proc color*(self: gen_qpen_types.QPen, ): gen_qcolor.QColor =
 
   gen_qcolor.QColor(h: fcQPen_color(self.h))
 
-proc setColor*(self: QPen, color: gen_qcolor.QColor): void =
+proc setColor*(self: gen_qpen_types.QPen, color: gen_qcolor.QColor): void =
 
   fcQPen_setColor(self.h, color.h)
 
-proc brush*(self: QPen, ): gen_qbrush.QBrush =
+proc brush*(self: gen_qpen_types.QPen, ): gen_qbrush.QBrush =
 
   gen_qbrush.QBrush(h: fcQPen_brush(self.h))
 
-proc setBrush*(self: QPen, brush: gen_qbrush.QBrush): void =
+proc setBrush*(self: gen_qpen_types.QPen, brush: gen_qbrush.QBrush): void =
 
   fcQPen_setBrush(self.h, brush.h)
 
-proc isSolid*(self: QPen, ): bool =
+proc isSolid*(self: gen_qpen_types.QPen, ): bool =
 
   fcQPen_isSolid(self.h)
 
-proc capStyle*(self: QPen, ): gen_qnamespace.PenCapStyle =
+proc capStyle*(self: gen_qpen_types.QPen, ): cint =
 
-  gen_qnamespace.PenCapStyle(fcQPen_capStyle(self.h))
+  cint(fcQPen_capStyle(self.h))
 
-proc setCapStyle*(self: QPen, pcs: gen_qnamespace.PenCapStyle): void =
+proc setCapStyle*(self: gen_qpen_types.QPen, pcs: cint): void =
 
   fcQPen_setCapStyle(self.h, cint(pcs))
 
-proc joinStyle*(self: QPen, ): gen_qnamespace.PenJoinStyle =
+proc joinStyle*(self: gen_qpen_types.QPen, ): cint =
 
-  gen_qnamespace.PenJoinStyle(fcQPen_joinStyle(self.h))
+  cint(fcQPen_joinStyle(self.h))
 
-proc setJoinStyle*(self: QPen, pcs: gen_qnamespace.PenJoinStyle): void =
+proc setJoinStyle*(self: gen_qpen_types.QPen, pcs: cint): void =
 
   fcQPen_setJoinStyle(self.h, cint(pcs))
 
-proc isCosmetic*(self: QPen, ): bool =
+proc isCosmetic*(self: gen_qpen_types.QPen, ): bool =
 
   fcQPen_isCosmetic(self.h)
 
-proc setCosmetic*(self: QPen, cosmetic: bool): void =
+proc setCosmetic*(self: gen_qpen_types.QPen, cosmetic: bool): void =
 
   fcQPen_setCosmetic(self.h, cosmetic)
 
-proc operatorEqual*(self: QPen, p: QPen): bool =
+proc operatorEqual*(self: gen_qpen_types.QPen, p: gen_qpen_types.QPen): bool =
 
   fcQPen_operatorEqual(self.h, p.h)
 
-proc operatorNotEqual*(self: QPen, p: QPen): bool =
+proc operatorNotEqual*(self: gen_qpen_types.QPen, p: gen_qpen_types.QPen): bool =
 
   fcQPen_operatorNotEqual(self.h, p.h)
 
-proc ToQVariant*(self: QPen, ): gen_qvariant.QVariant =
+proc ToQVariant*(self: gen_qpen_types.QPen, ): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fcQPen_ToQVariant(self.h))
 
-proc isDetached*(self: QPen, ): bool =
+proc isDetached*(self: gen_qpen_types.QPen, ): bool =
 
   fcQPen_isDetached(self.h)
 
-proc delete*(self: QPen) =
+proc delete*(self: gen_qpen_types.QPen) =
   fcQPen_delete(self.h)

@@ -39,11 +39,9 @@ export gen_qstringview_types
 
 import
   gen_qchar,
-  gen_qnamespace,
   gen_qregularexpression
 export
   gen_qchar,
-  gen_qnamespace,
   gen_qregularexpression
 
 type cQStringView*{.exportc: "QStringView", incompleteStruct.} = object
@@ -133,56 +131,56 @@ proc fcQStringView_toDouble1(self: pointer, ok: ptr bool): float64 {.importc: "Q
 proc fcQStringView_delete(self: pointer) {.importc: "QStringView_delete".}
 
 
-func init*(T: type QStringView, h: ptr cQStringView): QStringView =
+func init*(T: type gen_qstringview_types.QStringView, h: ptr cQStringView): gen_qstringview_types.QStringView =
   T(h: h)
-proc create*(T: type QStringView, ): QStringView =
+proc create*(T: type gen_qstringview_types.QStringView, ): gen_qstringview_types.QStringView =
 
-  QStringView.init(fcQStringView_new())
-proc toString*(self: QStringView, ): string =
+  gen_qstringview_types.QStringView.init(fcQStringView_new())
+proc toString*(self: gen_qstringview_types.QStringView, ): string =
 
   let v_ms = fcQStringView_toString(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc size*(self: QStringView, ): int64 =
+proc size*(self: gen_qstringview_types.QStringView, ): int64 =
 
   fcQStringView_size(self.h)
 
-proc data*(self: QStringView, ): gen_qchar.QChar =
+proc data*(self: gen_qstringview_types.QStringView, ): gen_qchar.QChar =
 
   gen_qchar.QChar(h: fcQStringView_data(self.h))
 
-proc constData*(self: QStringView, ): gen_qchar.QChar =
+proc constData*(self: gen_qstringview_types.QStringView, ): gen_qchar.QChar =
 
   gen_qchar.QChar(h: fcQStringView_constData(self.h))
 
-proc operatorSubscript*(self: QStringView, n: int64): gen_qchar.QChar =
+proc operatorSubscript*(self: gen_qstringview_types.QStringView, n: int64): gen_qchar.QChar =
 
   gen_qchar.QChar(h: fcQStringView_operatorSubscript(self.h, n))
 
-proc toLatin1*(self: QStringView, ): seq[byte] =
+proc toLatin1*(self: gen_qstringview_types.QStringView, ): seq[byte] =
 
   var v_bytearray = fcQStringView_toLatin1(self.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc toUtf8*(self: QStringView, ): seq[byte] =
+proc toUtf8*(self: gen_qstringview_types.QStringView, ): seq[byte] =
 
   var v_bytearray = fcQStringView_toUtf8(self.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc toLocal8Bit*(self: QStringView, ): seq[byte] =
+proc toLocal8Bit*(self: gen_qstringview_types.QStringView, ): seq[byte] =
 
   var v_bytearray = fcQStringView_toLocal8Bit(self.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc toUcs4*(self: QStringView, ): seq[cuint] =
+proc toUcs4*(self: gen_qstringview_types.QStringView, ): seq[cuint] =
 
   var v_ma = fcQStringView_toUcs4(self.h)
   var vx_ret = newSeq[cuint](int(v_ma.len))
@@ -191,293 +189,293 @@ proc toUcs4*(self: QStringView, ): seq[cuint] =
     vx_ret[i] = v_outCast[i]
   vx_ret
 
-proc at*(self: QStringView, n: int64): gen_qchar.QChar =
+proc at*(self: gen_qstringview_types.QStringView, n: int64): gen_qchar.QChar =
 
   gen_qchar.QChar(h: fcQStringView_at(self.h, n))
 
-proc truncate*(self: QStringView, n: int64): void =
+proc truncate*(self: gen_qstringview_types.QStringView, n: int64): void =
 
   fcQStringView_truncate(self.h, n)
 
-proc chop*(self: QStringView, n: int64): void =
+proc chop*(self: gen_qstringview_types.QStringView, n: int64): void =
 
   fcQStringView_chop(self.h, n)
 
-proc compareWithQChar*(self: QStringView, c: gen_qchar.QChar): cint =
+proc compareWithQChar*(self: gen_qstringview_types.QStringView, c: gen_qchar.QChar): cint =
 
   fcQStringView_compareWithQChar(self.h, c.h)
 
-proc compare2*(self: QStringView, c: gen_qchar.QChar, cs: gen_qnamespace.CaseSensitivity): cint =
+proc compare2*(self: gen_qstringview_types.QStringView, c: gen_qchar.QChar, cs: cint): cint =
 
   fcQStringView_compare2(self.h, c.h, cint(cs))
 
-proc startsWithWithQChar*(self: QStringView, c: gen_qchar.QChar): bool =
+proc startsWithWithQChar*(self: gen_qstringview_types.QStringView, c: gen_qchar.QChar): bool =
 
   fcQStringView_startsWithWithQChar(self.h, c.h)
 
-proc startsWith2*(self: QStringView, c: gen_qchar.QChar, cs: gen_qnamespace.CaseSensitivity): bool =
+proc startsWith2*(self: gen_qstringview_types.QStringView, c: gen_qchar.QChar, cs: cint): bool =
 
   fcQStringView_startsWith2(self.h, c.h, cint(cs))
 
-proc endsWithWithQChar*(self: QStringView, c: gen_qchar.QChar): bool =
+proc endsWithWithQChar*(self: gen_qstringview_types.QStringView, c: gen_qchar.QChar): bool =
 
   fcQStringView_endsWithWithQChar(self.h, c.h)
 
-proc endsWith2*(self: QStringView, c: gen_qchar.QChar, cs: gen_qnamespace.CaseSensitivity): bool =
+proc endsWith2*(self: gen_qstringview_types.QStringView, c: gen_qchar.QChar, cs: cint): bool =
 
   fcQStringView_endsWith2(self.h, c.h, cint(cs))
 
-proc indexOf*(self: QStringView, c: gen_qchar.QChar): int64 =
+proc indexOf*(self: gen_qstringview_types.QStringView, c: gen_qchar.QChar): int64 =
 
   fcQStringView_indexOf(self.h, c.h)
 
-proc contains*(self: QStringView, c: gen_qchar.QChar): bool =
+proc contains*(self: gen_qstringview_types.QStringView, c: gen_qchar.QChar): bool =
 
   fcQStringView_contains(self.h, c.h)
 
-proc count*(self: QStringView, c: gen_qchar.QChar): int64 =
+proc count*(self: gen_qstringview_types.QStringView, c: gen_qchar.QChar): int64 =
 
   fcQStringView_count(self.h, c.h)
 
-proc lastIndexOf*(self: QStringView, c: gen_qchar.QChar): int64 =
+proc lastIndexOf*(self: gen_qstringview_types.QStringView, c: gen_qchar.QChar): int64 =
 
   fcQStringView_lastIndexOf(self.h, c.h)
 
-proc lastIndexOf2*(self: QStringView, c: gen_qchar.QChar, fromVal: int64): int64 =
+proc lastIndexOf2*(self: gen_qstringview_types.QStringView, c: gen_qchar.QChar, fromVal: int64): int64 =
 
   fcQStringView_lastIndexOf2(self.h, c.h, fromVal)
 
-proc indexOfWithRe*(self: QStringView, re: gen_qregularexpression.QRegularExpression): int64 =
+proc indexOfWithRe*(self: gen_qstringview_types.QStringView, re: gen_qregularexpression.QRegularExpression): int64 =
 
   fcQStringView_indexOfWithRe(self.h, re.h)
 
-proc lastIndexOf5*(self: QStringView, re: gen_qregularexpression.QRegularExpression, fromVal: int64): int64 =
+proc lastIndexOf5*(self: gen_qstringview_types.QStringView, re: gen_qregularexpression.QRegularExpression, fromVal: int64): int64 =
 
   fcQStringView_lastIndexOf5(self.h, re.h, fromVal)
 
-proc containsWithRe*(self: QStringView, re: gen_qregularexpression.QRegularExpression): bool =
+proc containsWithRe*(self: gen_qstringview_types.QStringView, re: gen_qregularexpression.QRegularExpression): bool =
 
   fcQStringView_containsWithRe(self.h, re.h)
 
-proc countWithRe*(self: QStringView, re: gen_qregularexpression.QRegularExpression): int64 =
+proc countWithRe*(self: gen_qstringview_types.QStringView, re: gen_qregularexpression.QRegularExpression): int64 =
 
   fcQStringView_countWithRe(self.h, re.h)
 
-proc isRightToLeft*(self: QStringView, ): bool =
+proc isRightToLeft*(self: gen_qstringview_types.QStringView, ): bool =
 
   fcQStringView_isRightToLeft(self.h)
 
-proc isValidUtf16*(self: QStringView, ): bool =
+proc isValidUtf16*(self: gen_qstringview_types.QStringView, ): bool =
 
   fcQStringView_isValidUtf16(self.h)
 
-proc toShort*(self: QStringView, ): cshort =
+proc toShort*(self: gen_qstringview_types.QStringView, ): cshort =
 
   fcQStringView_toShort(self.h)
 
-proc toUShort*(self: QStringView, ): cushort =
+proc toUShort*(self: gen_qstringview_types.QStringView, ): cushort =
 
   fcQStringView_toUShort(self.h)
 
-proc toInt*(self: QStringView, ): cint =
+proc toInt*(self: gen_qstringview_types.QStringView, ): cint =
 
   fcQStringView_toInt(self.h)
 
-proc toUInt*(self: QStringView, ): cuint =
+proc toUInt*(self: gen_qstringview_types.QStringView, ): cuint =
 
   fcQStringView_toUInt(self.h)
 
-proc toLong*(self: QStringView, ): clong =
+proc toLong*(self: gen_qstringview_types.QStringView, ): clong =
 
   fcQStringView_toLong(self.h)
 
-proc toULong*(self: QStringView, ): culong =
+proc toULong*(self: gen_qstringview_types.QStringView, ): culong =
 
   fcQStringView_toULong(self.h)
 
-proc toLongLong*(self: QStringView, ): clonglong =
+proc toLongLong*(self: gen_qstringview_types.QStringView, ): clonglong =
 
   fcQStringView_toLongLong(self.h)
 
-proc toULongLong*(self: QStringView, ): culonglong =
+proc toULongLong*(self: gen_qstringview_types.QStringView, ): culonglong =
 
   fcQStringView_toULongLong(self.h)
 
-proc toFloat*(self: QStringView, ): float32 =
+proc toFloat*(self: gen_qstringview_types.QStringView, ): float32 =
 
   fcQStringView_toFloat(self.h)
 
-proc toDouble*(self: QStringView, ): float64 =
+proc toDouble*(self: gen_qstringview_types.QStringView, ): float64 =
 
   fcQStringView_toDouble(self.h)
 
-proc begin*(self: QStringView, ): gen_qchar.QChar =
+proc begin*(self: gen_qstringview_types.QStringView, ): gen_qchar.QChar =
 
   gen_qchar.QChar(h: fcQStringView_begin(self.h))
 
-proc endX*(self: QStringView, ): gen_qchar.QChar =
+proc endX*(self: gen_qstringview_types.QStringView, ): gen_qchar.QChar =
 
   gen_qchar.QChar(h: fcQStringView_endX(self.h))
 
-proc cbegin*(self: QStringView, ): gen_qchar.QChar =
+proc cbegin*(self: gen_qstringview_types.QStringView, ): gen_qchar.QChar =
 
   gen_qchar.QChar(h: fcQStringView_cbegin(self.h))
 
-proc cend*(self: QStringView, ): gen_qchar.QChar =
+proc cend*(self: gen_qstringview_types.QStringView, ): gen_qchar.QChar =
 
   gen_qchar.QChar(h: fcQStringView_cend(self.h))
 
-proc empty*(self: QStringView, ): bool =
+proc empty*(self: gen_qstringview_types.QStringView, ): bool =
 
   fcQStringView_empty(self.h)
 
-proc front*(self: QStringView, ): gen_qchar.QChar =
+proc front*(self: gen_qstringview_types.QStringView, ): gen_qchar.QChar =
 
   gen_qchar.QChar(h: fcQStringView_front(self.h))
 
-proc back*(self: QStringView, ): gen_qchar.QChar =
+proc back*(self: gen_qstringview_types.QStringView, ): gen_qchar.QChar =
 
   gen_qchar.QChar(h: fcQStringView_back(self.h))
 
-proc constBegin*(self: QStringView, ): gen_qchar.QChar =
+proc constBegin*(self: gen_qstringview_types.QStringView, ): gen_qchar.QChar =
 
   gen_qchar.QChar(h: fcQStringView_constBegin(self.h))
 
-proc constEnd*(self: QStringView, ): gen_qchar.QChar =
+proc constEnd*(self: gen_qstringview_types.QStringView, ): gen_qchar.QChar =
 
   gen_qchar.QChar(h: fcQStringView_constEnd(self.h))
 
-proc isNull*(self: QStringView, ): bool =
+proc isNull*(self: gen_qstringview_types.QStringView, ): bool =
 
   fcQStringView_isNull(self.h)
 
-proc isEmpty*(self: QStringView, ): bool =
+proc isEmpty*(self: gen_qstringview_types.QStringView, ): bool =
 
   fcQStringView_isEmpty(self.h)
 
-proc length*(self: QStringView, ): int64 =
+proc length*(self: gen_qstringview_types.QStringView, ): int64 =
 
   fcQStringView_length(self.h)
 
-proc first2*(self: QStringView, ): gen_qchar.QChar =
+proc first2*(self: gen_qstringview_types.QStringView, ): gen_qchar.QChar =
 
   gen_qchar.QChar(h: fcQStringView_first2(self.h))
 
-proc last2*(self: QStringView, ): gen_qchar.QChar =
+proc last2*(self: gen_qstringview_types.QStringView, ): gen_qchar.QChar =
 
   gen_qchar.QChar(h: fcQStringView_last2(self.h))
 
-proc indexOf2*(self: QStringView, c: gen_qchar.QChar, fromVal: int64): int64 =
+proc indexOf2*(self: gen_qstringview_types.QStringView, c: gen_qchar.QChar, fromVal: int64): int64 =
 
   fcQStringView_indexOf2(self.h, c.h, fromVal)
 
-proc indexOf3*(self: QStringView, c: gen_qchar.QChar, fromVal: int64, cs: gen_qnamespace.CaseSensitivity): int64 =
+proc indexOf3*(self: gen_qstringview_types.QStringView, c: gen_qchar.QChar, fromVal: int64, cs: cint): int64 =
 
   fcQStringView_indexOf3(self.h, c.h, fromVal, cint(cs))
 
-proc contains2*(self: QStringView, c: gen_qchar.QChar, cs: gen_qnamespace.CaseSensitivity): bool =
+proc contains2*(self: gen_qstringview_types.QStringView, c: gen_qchar.QChar, cs: cint): bool =
 
   fcQStringView_contains2(self.h, c.h, cint(cs))
 
-proc count2*(self: QStringView, c: gen_qchar.QChar, cs: gen_qnamespace.CaseSensitivity): int64 =
+proc count2*(self: gen_qstringview_types.QStringView, c: gen_qchar.QChar, cs: cint): int64 =
 
   fcQStringView_count2(self.h, c.h, cint(cs))
 
-proc lastIndexOf22*(self: QStringView, c: gen_qchar.QChar, cs: gen_qnamespace.CaseSensitivity): int64 =
+proc lastIndexOf22*(self: gen_qstringview_types.QStringView, c: gen_qchar.QChar, cs: cint): int64 =
 
   fcQStringView_lastIndexOf22(self.h, c.h, cint(cs))
 
-proc lastIndexOf32*(self: QStringView, c: gen_qchar.QChar, fromVal: int64, cs: gen_qnamespace.CaseSensitivity): int64 =
+proc lastIndexOf32*(self: gen_qstringview_types.QStringView, c: gen_qchar.QChar, fromVal: int64, cs: cint): int64 =
 
   fcQStringView_lastIndexOf32(self.h, c.h, fromVal, cint(cs))
 
-proc indexOf24*(self: QStringView, re: gen_qregularexpression.QRegularExpression, fromVal: int64): int64 =
+proc indexOf24*(self: gen_qstringview_types.QStringView, re: gen_qregularexpression.QRegularExpression, fromVal: int64): int64 =
 
   fcQStringView_indexOf24(self.h, re.h, fromVal)
 
-proc indexOf34*(self: QStringView, re: gen_qregularexpression.QRegularExpression, fromVal: int64, rmatch: gen_qregularexpression.QRegularExpressionMatch): int64 =
+proc indexOf34*(self: gen_qstringview_types.QStringView, re: gen_qregularexpression.QRegularExpression, fromVal: int64, rmatch: gen_qregularexpression.QRegularExpressionMatch): int64 =
 
   fcQStringView_indexOf34(self.h, re.h, fromVal, rmatch.h)
 
-proc lastIndexOf35*(self: QStringView, re: gen_qregularexpression.QRegularExpression, fromVal: int64, rmatch: gen_qregularexpression.QRegularExpressionMatch): int64 =
+proc lastIndexOf35*(self: gen_qstringview_types.QStringView, re: gen_qregularexpression.QRegularExpression, fromVal: int64, rmatch: gen_qregularexpression.QRegularExpressionMatch): int64 =
 
   fcQStringView_lastIndexOf35(self.h, re.h, fromVal, rmatch.h)
 
-proc contains24*(self: QStringView, re: gen_qregularexpression.QRegularExpression, rmatch: gen_qregularexpression.QRegularExpressionMatch): bool =
+proc contains24*(self: gen_qstringview_types.QStringView, re: gen_qregularexpression.QRegularExpression, rmatch: gen_qregularexpression.QRegularExpressionMatch): bool =
 
   fcQStringView_contains24(self.h, re.h, rmatch.h)
 
-proc toShort1*(self: QStringView, ok: ptr bool): cshort =
+proc toShort1*(self: gen_qstringview_types.QStringView, ok: ptr bool): cshort =
 
   fcQStringView_toShort1(self.h, ok)
 
-proc toShort2*(self: QStringView, ok: ptr bool, base: cint): cshort =
+proc toShort2*(self: gen_qstringview_types.QStringView, ok: ptr bool, base: cint): cshort =
 
   fcQStringView_toShort2(self.h, ok, base)
 
-proc toUShort1*(self: QStringView, ok: ptr bool): cushort =
+proc toUShort1*(self: gen_qstringview_types.QStringView, ok: ptr bool): cushort =
 
   fcQStringView_toUShort1(self.h, ok)
 
-proc toUShort2*(self: QStringView, ok: ptr bool, base: cint): cushort =
+proc toUShort2*(self: gen_qstringview_types.QStringView, ok: ptr bool, base: cint): cushort =
 
   fcQStringView_toUShort2(self.h, ok, base)
 
-proc toInt1*(self: QStringView, ok: ptr bool): cint =
+proc toInt1*(self: gen_qstringview_types.QStringView, ok: ptr bool): cint =
 
   fcQStringView_toInt1(self.h, ok)
 
-proc toInt2*(self: QStringView, ok: ptr bool, base: cint): cint =
+proc toInt2*(self: gen_qstringview_types.QStringView, ok: ptr bool, base: cint): cint =
 
   fcQStringView_toInt2(self.h, ok, base)
 
-proc toUInt1*(self: QStringView, ok: ptr bool): cuint =
+proc toUInt1*(self: gen_qstringview_types.QStringView, ok: ptr bool): cuint =
 
   fcQStringView_toUInt1(self.h, ok)
 
-proc toUInt2*(self: QStringView, ok: ptr bool, base: cint): cuint =
+proc toUInt2*(self: gen_qstringview_types.QStringView, ok: ptr bool, base: cint): cuint =
 
   fcQStringView_toUInt2(self.h, ok, base)
 
-proc toLong1*(self: QStringView, ok: ptr bool): clong =
+proc toLong1*(self: gen_qstringview_types.QStringView, ok: ptr bool): clong =
 
   fcQStringView_toLong1(self.h, ok)
 
-proc toLong2*(self: QStringView, ok: ptr bool, base: cint): clong =
+proc toLong2*(self: gen_qstringview_types.QStringView, ok: ptr bool, base: cint): clong =
 
   fcQStringView_toLong2(self.h, ok, base)
 
-proc toULong1*(self: QStringView, ok: ptr bool): culong =
+proc toULong1*(self: gen_qstringview_types.QStringView, ok: ptr bool): culong =
 
   fcQStringView_toULong1(self.h, ok)
 
-proc toULong2*(self: QStringView, ok: ptr bool, base: cint): culong =
+proc toULong2*(self: gen_qstringview_types.QStringView, ok: ptr bool, base: cint): culong =
 
   fcQStringView_toULong2(self.h, ok, base)
 
-proc toLongLong1*(self: QStringView, ok: ptr bool): clonglong =
+proc toLongLong1*(self: gen_qstringview_types.QStringView, ok: ptr bool): clonglong =
 
   fcQStringView_toLongLong1(self.h, ok)
 
-proc toLongLong2*(self: QStringView, ok: ptr bool, base: cint): clonglong =
+proc toLongLong2*(self: gen_qstringview_types.QStringView, ok: ptr bool, base: cint): clonglong =
 
   fcQStringView_toLongLong2(self.h, ok, base)
 
-proc toULongLong1*(self: QStringView, ok: ptr bool): culonglong =
+proc toULongLong1*(self: gen_qstringview_types.QStringView, ok: ptr bool): culonglong =
 
   fcQStringView_toULongLong1(self.h, ok)
 
-proc toULongLong2*(self: QStringView, ok: ptr bool, base: cint): culonglong =
+proc toULongLong2*(self: gen_qstringview_types.QStringView, ok: ptr bool, base: cint): culonglong =
 
   fcQStringView_toULongLong2(self.h, ok, base)
 
-proc toFloat1*(self: QStringView, ok: ptr bool): float32 =
+proc toFloat1*(self: gen_qstringview_types.QStringView, ok: ptr bool): float32 =
 
   fcQStringView_toFloat1(self.h, ok)
 
-proc toDouble1*(self: QStringView, ok: ptr bool): float64 =
+proc toDouble1*(self: gen_qstringview_types.QStringView, ok: ptr bool): float64 =
 
   fcQStringView_toDouble1(self.h, ok)
 
-proc delete*(self: QStringView) =
+proc delete*(self: gen_qstringview_types.QStringView) =
   fcQStringView_delete(self.h)

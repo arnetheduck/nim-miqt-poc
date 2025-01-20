@@ -49,40 +49,38 @@ proc fcQRunnable_override_virtual_run(self: pointer, slot: int) {.importc: "QRun
 proc fcQRunnable_delete(self: pointer) {.importc: "QRunnable_delete".}
 
 
-func init*(T: type QRunnable, h: ptr cQRunnable): QRunnable =
+func init*(T: type gen_qrunnable_types.QRunnable, h: ptr cQRunnable): gen_qrunnable_types.QRunnable =
   T(h: h)
-proc create*(T: type QRunnable, ): QRunnable =
+proc create*(T: type gen_qrunnable_types.QRunnable, ): gen_qrunnable_types.QRunnable =
 
-  QRunnable.init(fcQRunnable_new())
-proc run*(self: QRunnable, ): void =
+  gen_qrunnable_types.QRunnable.init(fcQRunnable_new())
+proc run*(self: gen_qrunnable_types.QRunnable, ): void =
 
   fcQRunnable_run(self.h)
 
-proc autoDelete*(self: QRunnable, ): bool =
+proc autoDelete*(self: gen_qrunnable_types.QRunnable, ): bool =
 
   fcQRunnable_autoDelete(self.h)
 
-proc setAutoDelete*(self: QRunnable, x_autoDelete: bool): void =
+proc setAutoDelete*(self: gen_qrunnable_types.QRunnable, x_autoDelete: bool): void =
 
   fcQRunnable_setAutoDelete(self.h, x_autoDelete)
 
-proc operatorAssign*(self: QRunnable, param1: QRunnable): void =
+proc operatorAssign*(self: gen_qrunnable_types.QRunnable, param1: gen_qrunnable_types.QRunnable): void =
 
   fcQRunnable_operatorAssign(self.h, param1.h)
 
-type QRunnablerunBase* = proc(): void
-proc onrun*(self: QRunnable, slot: proc(): void) =
+type QRunnablerunProc* = proc(): void
+proc onrun*(self: gen_qrunnable_types.QRunnable, slot: QRunnablerunProc) =
   # TODO check subclass
-  type Cb = proc(): void
-  var tmp = new Cb
+  var tmp = new QRunnablerunProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRunnable_override_virtual_run(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRunnable_run(self: ptr cQRunnable, slot: int): void {.exportc: "miqt_exec_callback_QRunnable_run ".} =
-  type Cb = proc(): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QRunnablerunProc](cast[pointer](slot))
 
   nimfunc[]()
-proc delete*(self: QRunnable) =
+proc delete*(self: gen_qrunnable_types.QRunnable) =
   fcQRunnable_delete(self.h)

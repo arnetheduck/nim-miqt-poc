@@ -34,11 +34,9 @@ const cflags = gorge("pkg-config -cflags Qt5Widgets")
 {.compile("gen_qreadwritelock.cpp", cflags).}
 
 
-type QReadWriteLockRecursionMode* = cint
-const
-  QReadWriteLockNonRecursive* = 0
-  QReadWriteLockRecursive* = 1
-
+type QReadWriteLockRecursionModeEnum* = distinct cint
+template NonRecursive*(_: type QReadWriteLockRecursionModeEnum): untyped = 0
+template Recursive*(_: type QReadWriteLockRecursionModeEnum): untyped = 1
 
 
 import gen_qreadwritelock_types
@@ -71,81 +69,81 @@ proc fcQWriteLocker_readWriteLock(self: pointer, ): pointer {.importc: "QWriteLo
 proc fcQWriteLocker_delete(self: pointer) {.importc: "QWriteLocker_delete".}
 
 
-func init*(T: type QReadWriteLock, h: ptr cQReadWriteLock): QReadWriteLock =
+func init*(T: type gen_qreadwritelock_types.QReadWriteLock, h: ptr cQReadWriteLock): gen_qreadwritelock_types.QReadWriteLock =
   T(h: h)
-proc create*(T: type QReadWriteLock, ): QReadWriteLock =
+proc create*(T: type gen_qreadwritelock_types.QReadWriteLock, ): gen_qreadwritelock_types.QReadWriteLock =
 
-  QReadWriteLock.init(fcQReadWriteLock_new())
-proc create*(T: type QReadWriteLock, recursionMode: QReadWriteLockRecursionMode): QReadWriteLock =
+  gen_qreadwritelock_types.QReadWriteLock.init(fcQReadWriteLock_new())
+proc create*(T: type gen_qreadwritelock_types.QReadWriteLock, recursionMode: cint): gen_qreadwritelock_types.QReadWriteLock =
 
-  QReadWriteLock.init(fcQReadWriteLock_new2(cint(recursionMode)))
-proc lockForRead*(self: QReadWriteLock, ): void =
+  gen_qreadwritelock_types.QReadWriteLock.init(fcQReadWriteLock_new2(cint(recursionMode)))
+proc lockForRead*(self: gen_qreadwritelock_types.QReadWriteLock, ): void =
 
   fcQReadWriteLock_lockForRead(self.h)
 
-proc tryLockForRead*(self: QReadWriteLock, ): bool =
+proc tryLockForRead*(self: gen_qreadwritelock_types.QReadWriteLock, ): bool =
 
   fcQReadWriteLock_tryLockForRead(self.h)
 
-proc tryLockForReadWithTimeout*(self: QReadWriteLock, timeout: cint): bool =
+proc tryLockForReadWithTimeout*(self: gen_qreadwritelock_types.QReadWriteLock, timeout: cint): bool =
 
   fcQReadWriteLock_tryLockForReadWithTimeout(self.h, timeout)
 
-proc lockForWrite*(self: QReadWriteLock, ): void =
+proc lockForWrite*(self: gen_qreadwritelock_types.QReadWriteLock, ): void =
 
   fcQReadWriteLock_lockForWrite(self.h)
 
-proc tryLockForWrite*(self: QReadWriteLock, ): bool =
+proc tryLockForWrite*(self: gen_qreadwritelock_types.QReadWriteLock, ): bool =
 
   fcQReadWriteLock_tryLockForWrite(self.h)
 
-proc tryLockForWriteWithTimeout*(self: QReadWriteLock, timeout: cint): bool =
+proc tryLockForWriteWithTimeout*(self: gen_qreadwritelock_types.QReadWriteLock, timeout: cint): bool =
 
   fcQReadWriteLock_tryLockForWriteWithTimeout(self.h, timeout)
 
-proc unlock*(self: QReadWriteLock, ): void =
+proc unlock*(self: gen_qreadwritelock_types.QReadWriteLock, ): void =
 
   fcQReadWriteLock_unlock(self.h)
 
-proc delete*(self: QReadWriteLock) =
+proc delete*(self: gen_qreadwritelock_types.QReadWriteLock) =
   fcQReadWriteLock_delete(self.h)
 
-func init*(T: type QReadLocker, h: ptr cQReadLocker): QReadLocker =
+func init*(T: type gen_qreadwritelock_types.QReadLocker, h: ptr cQReadLocker): gen_qreadwritelock_types.QReadLocker =
   T(h: h)
-proc create*(T: type QReadLocker, readWriteLock: QReadWriteLock): QReadLocker =
+proc create*(T: type gen_qreadwritelock_types.QReadLocker, readWriteLock: gen_qreadwritelock_types.QReadWriteLock): gen_qreadwritelock_types.QReadLocker =
 
-  QReadLocker.init(fcQReadLocker_new(readWriteLock.h))
-proc unlock*(self: QReadLocker, ): void =
+  gen_qreadwritelock_types.QReadLocker.init(fcQReadLocker_new(readWriteLock.h))
+proc unlock*(self: gen_qreadwritelock_types.QReadLocker, ): void =
 
   fcQReadLocker_unlock(self.h)
 
-proc relock*(self: QReadLocker, ): void =
+proc relock*(self: gen_qreadwritelock_types.QReadLocker, ): void =
 
   fcQReadLocker_relock(self.h)
 
-proc readWriteLock*(self: QReadLocker, ): QReadWriteLock =
+proc readWriteLock*(self: gen_qreadwritelock_types.QReadLocker, ): gen_qreadwritelock_types.QReadWriteLock =
 
-  QReadWriteLock(h: fcQReadLocker_readWriteLock(self.h))
+  gen_qreadwritelock_types.QReadWriteLock(h: fcQReadLocker_readWriteLock(self.h))
 
-proc delete*(self: QReadLocker) =
+proc delete*(self: gen_qreadwritelock_types.QReadLocker) =
   fcQReadLocker_delete(self.h)
 
-func init*(T: type QWriteLocker, h: ptr cQWriteLocker): QWriteLocker =
+func init*(T: type gen_qreadwritelock_types.QWriteLocker, h: ptr cQWriteLocker): gen_qreadwritelock_types.QWriteLocker =
   T(h: h)
-proc create*(T: type QWriteLocker, readWriteLock: QReadWriteLock): QWriteLocker =
+proc create*(T: type gen_qreadwritelock_types.QWriteLocker, readWriteLock: gen_qreadwritelock_types.QReadWriteLock): gen_qreadwritelock_types.QWriteLocker =
 
-  QWriteLocker.init(fcQWriteLocker_new(readWriteLock.h))
-proc unlock*(self: QWriteLocker, ): void =
+  gen_qreadwritelock_types.QWriteLocker.init(fcQWriteLocker_new(readWriteLock.h))
+proc unlock*(self: gen_qreadwritelock_types.QWriteLocker, ): void =
 
   fcQWriteLocker_unlock(self.h)
 
-proc relock*(self: QWriteLocker, ): void =
+proc relock*(self: gen_qreadwritelock_types.QWriteLocker, ): void =
 
   fcQWriteLocker_relock(self.h)
 
-proc readWriteLock*(self: QWriteLocker, ): QReadWriteLock =
+proc readWriteLock*(self: gen_qreadwritelock_types.QWriteLocker, ): gen_qreadwritelock_types.QReadWriteLock =
 
-  QReadWriteLock(h: fcQWriteLocker_readWriteLock(self.h))
+  gen_qreadwritelock_types.QReadWriteLock(h: fcQWriteLocker_readWriteLock(self.h))
 
-proc delete*(self: QWriteLocker) =
+proc delete*(self: gen_qreadwritelock_types.QWriteLocker) =
   fcQWriteLocker_delete(self.h)

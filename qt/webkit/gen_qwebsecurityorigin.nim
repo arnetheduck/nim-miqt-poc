@@ -34,11 +34,9 @@ const cflags = gorge("pkg-config -cflags Qt5WebKitWidgets")
 {.compile("gen_qwebsecurityorigin.cpp", cflags).}
 
 
-type QWebSecurityOriginSubdomainSetting* = cint
-const
-  QWebSecurityOriginAllowSubdomains* = 0
-  QWebSecurityOriginDisallowSubdomains* = 1
-
+type QWebSecurityOriginSubdomainSettingEnum* = distinct cint
+template AllowSubdomains*(_: type QWebSecurityOriginSubdomainSettingEnum): untyped = 0
+template DisallowSubdomains*(_: type QWebSecurityOriginSubdomainSettingEnum): untyped = 1
 
 
 import gen_qwebsecurityorigin_types
@@ -73,32 +71,32 @@ proc fcQWebSecurityOrigin_operatorAssign(self: pointer, other: pointer): void {.
 proc fcQWebSecurityOrigin_delete(self: pointer) {.importc: "QWebSecurityOrigin_delete".}
 
 
-func init*(T: type QWebSecurityOrigin, h: ptr cQWebSecurityOrigin): QWebSecurityOrigin =
+func init*(T: type gen_qwebsecurityorigin_types.QWebSecurityOrigin, h: ptr cQWebSecurityOrigin): gen_qwebsecurityorigin_types.QWebSecurityOrigin =
   T(h: h)
-proc create*(T: type QWebSecurityOrigin, url: gen_qurl.QUrl): QWebSecurityOrigin =
+proc create*(T: type gen_qwebsecurityorigin_types.QWebSecurityOrigin, url: gen_qurl.QUrl): gen_qwebsecurityorigin_types.QWebSecurityOrigin =
 
-  QWebSecurityOrigin.init(fcQWebSecurityOrigin_new(url.h))
-proc create2*(T: type QWebSecurityOrigin, other: QWebSecurityOrigin): QWebSecurityOrigin =
+  gen_qwebsecurityorigin_types.QWebSecurityOrigin.init(fcQWebSecurityOrigin_new(url.h))
+proc create2*(T: type gen_qwebsecurityorigin_types.QWebSecurityOrigin, other: gen_qwebsecurityorigin_types.QWebSecurityOrigin): gen_qwebsecurityorigin_types.QWebSecurityOrigin =
 
-  QWebSecurityOrigin.init(fcQWebSecurityOrigin_new2(other.h))
-proc allOrigins*(_: type QWebSecurityOrigin, ): seq[QWebSecurityOrigin] =
+  gen_qwebsecurityorigin_types.QWebSecurityOrigin.init(fcQWebSecurityOrigin_new2(other.h))
+proc allOrigins*(_: type gen_qwebsecurityorigin_types.QWebSecurityOrigin, ): seq[gen_qwebsecurityorigin_types.QWebSecurityOrigin] =
 
   var v_ma = fcQWebSecurityOrigin_allOrigins()
-  var vx_ret = newSeq[QWebSecurityOrigin](int(v_ma.len))
+  var vx_ret = newSeq[gen_qwebsecurityorigin_types.QWebSecurityOrigin](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
-    vx_ret[i] = QWebSecurityOrigin(h: v_outCast[i])
+    vx_ret[i] = gen_qwebsecurityorigin_types.QWebSecurityOrigin(h: v_outCast[i])
   vx_ret
 
-proc addLocalScheme*(_: type QWebSecurityOrigin, scheme: string): void =
+proc addLocalScheme*(_: type gen_qwebsecurityorigin_types.QWebSecurityOrigin, scheme: string): void =
 
   fcQWebSecurityOrigin_addLocalScheme(struct_miqt_string(data: scheme, len: csize_t(len(scheme))))
 
-proc removeLocalScheme*(_: type QWebSecurityOrigin, scheme: string): void =
+proc removeLocalScheme*(_: type gen_qwebsecurityorigin_types.QWebSecurityOrigin, scheme: string): void =
 
   fcQWebSecurityOrigin_removeLocalScheme(struct_miqt_string(data: scheme, len: csize_t(len(scheme))))
 
-proc localSchemes*(_: type QWebSecurityOrigin, ): seq[string] =
+proc localSchemes*(_: type gen_qwebsecurityorigin_types.QWebSecurityOrigin, ): seq[string] =
 
   var v_ma = fcQWebSecurityOrigin_localSchemes()
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -110,49 +108,49 @@ proc localSchemes*(_: type QWebSecurityOrigin, ): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc addAccessWhitelistEntry*(self: QWebSecurityOrigin, scheme: string, host: string, subdomainSetting: QWebSecurityOriginSubdomainSetting): void =
+proc addAccessWhitelistEntry*(self: gen_qwebsecurityorigin_types.QWebSecurityOrigin, scheme: string, host: string, subdomainSetting: cint): void =
 
   fcQWebSecurityOrigin_addAccessWhitelistEntry(self.h, struct_miqt_string(data: scheme, len: csize_t(len(scheme))), struct_miqt_string(data: host, len: csize_t(len(host))), cint(subdomainSetting))
 
-proc removeAccessWhitelistEntry*(self: QWebSecurityOrigin, scheme: string, host: string, subdomainSetting: QWebSecurityOriginSubdomainSetting): void =
+proc removeAccessWhitelistEntry*(self: gen_qwebsecurityorigin_types.QWebSecurityOrigin, scheme: string, host: string, subdomainSetting: cint): void =
 
   fcQWebSecurityOrigin_removeAccessWhitelistEntry(self.h, struct_miqt_string(data: scheme, len: csize_t(len(scheme))), struct_miqt_string(data: host, len: csize_t(len(host))), cint(subdomainSetting))
 
-proc scheme*(self: QWebSecurityOrigin, ): string =
+proc scheme*(self: gen_qwebsecurityorigin_types.QWebSecurityOrigin, ): string =
 
   let v_ms = fcQWebSecurityOrigin_scheme(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc host*(self: QWebSecurityOrigin, ): string =
+proc host*(self: gen_qwebsecurityorigin_types.QWebSecurityOrigin, ): string =
 
   let v_ms = fcQWebSecurityOrigin_host(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc port*(self: QWebSecurityOrigin, ): cint =
+proc port*(self: gen_qwebsecurityorigin_types.QWebSecurityOrigin, ): cint =
 
   fcQWebSecurityOrigin_port(self.h)
 
-proc databaseUsage*(self: QWebSecurityOrigin, ): clonglong =
+proc databaseUsage*(self: gen_qwebsecurityorigin_types.QWebSecurityOrigin, ): clonglong =
 
   fcQWebSecurityOrigin_databaseUsage(self.h)
 
-proc databaseQuota*(self: QWebSecurityOrigin, ): clonglong =
+proc databaseQuota*(self: gen_qwebsecurityorigin_types.QWebSecurityOrigin, ): clonglong =
 
   fcQWebSecurityOrigin_databaseQuota(self.h)
 
-proc setDatabaseQuota*(self: QWebSecurityOrigin, quota: clonglong): void =
+proc setDatabaseQuota*(self: gen_qwebsecurityorigin_types.QWebSecurityOrigin, quota: clonglong): void =
 
   fcQWebSecurityOrigin_setDatabaseQuota(self.h, quota)
 
-proc setApplicationCacheQuota*(self: QWebSecurityOrigin, quota: clonglong): void =
+proc setApplicationCacheQuota*(self: gen_qwebsecurityorigin_types.QWebSecurityOrigin, quota: clonglong): void =
 
   fcQWebSecurityOrigin_setApplicationCacheQuota(self.h, quota)
 
-proc databases*(self: QWebSecurityOrigin, ): seq[gen_qwebdatabase.QWebDatabase] =
+proc databases*(self: gen_qwebsecurityorigin_types.QWebSecurityOrigin, ): seq[gen_qwebdatabase.QWebDatabase] =
 
   var v_ma = fcQWebSecurityOrigin_databases(self.h)
   var vx_ret = newSeq[gen_qwebdatabase.QWebDatabase](int(v_ma.len))
@@ -161,9 +159,9 @@ proc databases*(self: QWebSecurityOrigin, ): seq[gen_qwebdatabase.QWebDatabase] 
     vx_ret[i] = gen_qwebdatabase.QWebDatabase(h: v_outCast[i])
   vx_ret
 
-proc operatorAssign*(self: QWebSecurityOrigin, other: QWebSecurityOrigin): void =
+proc operatorAssign*(self: gen_qwebsecurityorigin_types.QWebSecurityOrigin, other: gen_qwebsecurityorigin_types.QWebSecurityOrigin): void =
 
   fcQWebSecurityOrigin_operatorAssign(self.h, other.h)
 
-proc delete*(self: QWebSecurityOrigin) =
+proc delete*(self: gen_qwebsecurityorigin_types.QWebSecurityOrigin) =
   fcQWebSecurityOrigin_delete(self.h)

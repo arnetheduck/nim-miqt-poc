@@ -44,7 +44,6 @@ import
   gen_qobjectdefs,
   gen_qscreen,
   gen_qsize,
-  gen_qsurface,
   gen_qsurfaceformat
 export
   gen_qcoreevent,
@@ -53,7 +52,6 @@ export
   gen_qobjectdefs,
   gen_qscreen,
   gen_qsize,
-  gen_qsurface,
   gen_qsurfaceformat
 
 type cQOffscreenSurface*{.exportc: "QOffscreenSurface", incompleteStruct.} = object
@@ -114,92 +112,92 @@ proc fcQOffscreenSurface_staticMetaObject(): pointer {.importc: "QOffscreenSurfa
 proc fcQOffscreenSurface_delete(self: pointer) {.importc: "QOffscreenSurface_delete".}
 
 
-func init*(T: type QOffscreenSurface, h: ptr cQOffscreenSurface): QOffscreenSurface =
+func init*(T: type gen_qoffscreensurface_types.QOffscreenSurface, h: ptr cQOffscreenSurface): gen_qoffscreensurface_types.QOffscreenSurface =
   T(h: h)
-proc create*(T: type QOffscreenSurface, screen: gen_qscreen.QScreen, parent: gen_qobject.QObject): QOffscreenSurface =
+proc create*(T: type gen_qoffscreensurface_types.QOffscreenSurface, screen: gen_qscreen.QScreen, parent: gen_qobject.QObject): gen_qoffscreensurface_types.QOffscreenSurface =
 
-  QOffscreenSurface.init(fcQOffscreenSurface_new(screen.h, parent.h))
-proc create*(T: type QOffscreenSurface, ): QOffscreenSurface =
+  gen_qoffscreensurface_types.QOffscreenSurface.init(fcQOffscreenSurface_new(screen.h, parent.h))
+proc create*(T: type gen_qoffscreensurface_types.QOffscreenSurface, ): gen_qoffscreensurface_types.QOffscreenSurface =
 
-  QOffscreenSurface.init(fcQOffscreenSurface_new2())
-proc create*(T: type QOffscreenSurface, screen: gen_qscreen.QScreen): QOffscreenSurface =
+  gen_qoffscreensurface_types.QOffscreenSurface.init(fcQOffscreenSurface_new2())
+proc create*(T: type gen_qoffscreensurface_types.QOffscreenSurface, screen: gen_qscreen.QScreen): gen_qoffscreensurface_types.QOffscreenSurface =
 
-  QOffscreenSurface.init(fcQOffscreenSurface_new3(screen.h))
-proc metaObject*(self: QOffscreenSurface, ): gen_qobjectdefs.QMetaObject =
+  gen_qoffscreensurface_types.QOffscreenSurface.init(fcQOffscreenSurface_new3(screen.h))
+proc metaObject*(self: gen_qoffscreensurface_types.QOffscreenSurface, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQOffscreenSurface_metaObject(self.h))
 
-proc metacast*(self: QOffscreenSurface, param1: cstring): pointer =
+proc metacast*(self: gen_qoffscreensurface_types.QOffscreenSurface, param1: cstring): pointer =
 
   fcQOffscreenSurface_metacast(self.h, param1)
 
-proc metacall*(self: QOffscreenSurface, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qoffscreensurface_types.QOffscreenSurface, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQOffscreenSurface_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QOffscreenSurface, s: cstring): string =
+proc tr*(_: type gen_qoffscreensurface_types.QOffscreenSurface, s: cstring): string =
 
   let v_ms = fcQOffscreenSurface_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QOffscreenSurface, s: cstring): string =
+proc trUtf8*(_: type gen_qoffscreensurface_types.QOffscreenSurface, s: cstring): string =
 
   let v_ms = fcQOffscreenSurface_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc surfaceType*(self: QOffscreenSurface, ): gen_qsurface.QSurfaceSurfaceType =
+proc surfaceType*(self: gen_qoffscreensurface_types.QOffscreenSurface, ): cint =
 
-  gen_qsurface.QSurfaceSurfaceType(fcQOffscreenSurface_surfaceType(self.h))
+  cint(fcQOffscreenSurface_surfaceType(self.h))
 
-proc create*(self: QOffscreenSurface, ): void =
+proc create*(self: gen_qoffscreensurface_types.QOffscreenSurface, ): void =
 
   fcQOffscreenSurface_create(self.h)
 
-proc destroy*(self: QOffscreenSurface, ): void =
+proc destroy*(self: gen_qoffscreensurface_types.QOffscreenSurface, ): void =
 
   fcQOffscreenSurface_destroy(self.h)
 
-proc isValid*(self: QOffscreenSurface, ): bool =
+proc isValid*(self: gen_qoffscreensurface_types.QOffscreenSurface, ): bool =
 
   fcQOffscreenSurface_isValid(self.h)
 
-proc setFormat*(self: QOffscreenSurface, format: gen_qsurfaceformat.QSurfaceFormat): void =
+proc setFormat*(self: gen_qoffscreensurface_types.QOffscreenSurface, format: gen_qsurfaceformat.QSurfaceFormat): void =
 
   fcQOffscreenSurface_setFormat(self.h, format.h)
 
-proc format*(self: QOffscreenSurface, ): gen_qsurfaceformat.QSurfaceFormat =
+proc format*(self: gen_qoffscreensurface_types.QOffscreenSurface, ): gen_qsurfaceformat.QSurfaceFormat =
 
   gen_qsurfaceformat.QSurfaceFormat(h: fcQOffscreenSurface_format(self.h))
 
-proc requestedFormat*(self: QOffscreenSurface, ): gen_qsurfaceformat.QSurfaceFormat =
+proc requestedFormat*(self: gen_qoffscreensurface_types.QOffscreenSurface, ): gen_qsurfaceformat.QSurfaceFormat =
 
   gen_qsurfaceformat.QSurfaceFormat(h: fcQOffscreenSurface_requestedFormat(self.h))
 
-proc size*(self: QOffscreenSurface, ): gen_qsize.QSize =
+proc size*(self: gen_qoffscreensurface_types.QOffscreenSurface, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQOffscreenSurface_size(self.h))
 
-proc screen*(self: QOffscreenSurface, ): gen_qscreen.QScreen =
+proc screen*(self: gen_qoffscreensurface_types.QOffscreenSurface, ): gen_qscreen.QScreen =
 
   gen_qscreen.QScreen(h: fcQOffscreenSurface_screen(self.h))
 
-proc setScreen*(self: QOffscreenSurface, screen: gen_qscreen.QScreen): void =
+proc setScreen*(self: gen_qoffscreensurface_types.QOffscreenSurface, screen: gen_qscreen.QScreen): void =
 
   fcQOffscreenSurface_setScreen(self.h, screen.h)
 
-proc nativeHandle*(self: QOffscreenSurface, ): pointer =
+proc nativeHandle*(self: gen_qoffscreensurface_types.QOffscreenSurface, ): pointer =
 
   fcQOffscreenSurface_nativeHandle(self.h)
 
-proc setNativeHandle*(self: QOffscreenSurface, handle: pointer): void =
+proc setNativeHandle*(self: gen_qoffscreensurface_types.QOffscreenSurface, handle: pointer): void =
 
   fcQOffscreenSurface_setNativeHandle(self.h, handle)
 
-proc screenChanged*(self: QOffscreenSurface, screen: gen_qscreen.QScreen): void =
+proc screenChanged*(self: gen_qoffscreensurface_types.QOffscreenSurface, screen: gen_qscreen.QScreen): void =
 
   fcQOffscreenSurface_screenChanged(self.h, screen.h)
 
@@ -211,354 +209,289 @@ proc miqt_exec_callback_QOffscreenSurface_screenChanged(slot: int, screen: point
 
   nimfunc[](slotval1)
 
-proc onscreenChanged*(self: QOffscreenSurface, slot: proc(screen: gen_qscreen.QScreen)) =
+proc onscreenChanged*(self: gen_qoffscreensurface_types.QOffscreenSurface, slot: proc(screen: gen_qscreen.QScreen)) =
   type Cb = proc(screen: gen_qscreen.QScreen)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQOffscreenSurface_connect_screenChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QOffscreenSurface, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qoffscreensurface_types.QOffscreenSurface, s: cstring, c: cstring): string =
 
   let v_ms = fcQOffscreenSurface_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QOffscreenSurface, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qoffscreensurface_types.QOffscreenSurface, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQOffscreenSurface_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QOffscreenSurface, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qoffscreensurface_types.QOffscreenSurface, s: cstring, c: cstring): string =
 
   let v_ms = fcQOffscreenSurface_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QOffscreenSurface, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qoffscreensurface_types.QOffscreenSurface, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQOffscreenSurface_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QOffscreenSurface, ): gen_qobjectdefs.QMetaObject =
-
+proc QOffscreenSurfacemetaObject*(self: gen_qoffscreensurface_types.QOffscreenSurface, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQOffscreenSurface_virtualbase_metaObject(self.h))
 
-type QOffscreenSurfacemetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QOffscreenSurface, slot: proc(super: QOffscreenSurfacemetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QOffscreenSurfacemetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qoffscreensurface_types.QOffscreenSurface, slot: QOffscreenSurfacemetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QOffscreenSurfacemetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QOffscreenSurfacemetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQOffscreenSurface_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QOffscreenSurface_metaObject(self: ptr cQOffscreenSurface, slot: int): pointer {.exportc: "miqt_exec_callback_QOffscreenSurface_metaObject ".} =
-  type Cb = proc(super: QOffscreenSurfacemetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QOffscreenSurface(h: self), )
+  var nimfunc = cast[ptr QOffscreenSurfacemetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QOffscreenSurface, param1: cstring): pointer =
-
+proc QOffscreenSurfacemetacast*(self: gen_qoffscreensurface_types.QOffscreenSurface, param1: cstring): pointer =
 
   fQOffscreenSurface_virtualbase_metacast(self.h, param1)
 
-type QOffscreenSurfacemetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QOffscreenSurface, slot: proc(super: QOffscreenSurfacemetacastBase, param1: cstring): pointer) =
+type QOffscreenSurfacemetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qoffscreensurface_types.QOffscreenSurface, slot: QOffscreenSurfacemetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QOffscreenSurfacemetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QOffscreenSurfacemetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQOffscreenSurface_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QOffscreenSurface_metacast(self: ptr cQOffscreenSurface, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QOffscreenSurface_metacast ".} =
-  type Cb = proc(super: QOffscreenSurfacemetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QOffscreenSurface(h: self), param1)
+  var nimfunc = cast[ptr QOffscreenSurfacemetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QOffscreenSurface, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QOffscreenSurfacemetacall*(self: gen_qoffscreensurface_types.QOffscreenSurface, param1: cint, param2: cint, param3: pointer): cint =
 
   fQOffscreenSurface_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QOffscreenSurfacemetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QOffscreenSurface, slot: proc(super: QOffscreenSurfacemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QOffscreenSurfacemetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qoffscreensurface_types.QOffscreenSurface, slot: QOffscreenSurfacemetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QOffscreenSurfacemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QOffscreenSurfacemetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQOffscreenSurface_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QOffscreenSurface_metacall(self: ptr cQOffscreenSurface, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QOffscreenSurface_metacall ".} =
-  type Cb = proc(super: QOffscreenSurfacemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QOffscreenSurface(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QOffscreenSurfacemetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_surfaceType(self: QOffscreenSurface, ): gen_qsurface.QSurfaceSurfaceType =
+proc QOffscreenSurfacesurfaceType*(self: gen_qoffscreensurface_types.QOffscreenSurface, ): cint =
 
+  cint(fQOffscreenSurface_virtualbase_surfaceType(self.h))
 
-  gen_qsurface.QSurfaceSurfaceType(fQOffscreenSurface_virtualbase_surfaceType(self.h))
-
-type QOffscreenSurfacesurfaceTypeBase* = proc(): gen_qsurface.QSurfaceSurfaceType
-proc onsurfaceType*(self: QOffscreenSurface, slot: proc(super: QOffscreenSurfacesurfaceTypeBase): gen_qsurface.QSurfaceSurfaceType) =
+type QOffscreenSurfacesurfaceTypeProc* = proc(): cint
+proc onsurfaceType*(self: gen_qoffscreensurface_types.QOffscreenSurface, slot: QOffscreenSurfacesurfaceTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: QOffscreenSurfacesurfaceTypeBase): gen_qsurface.QSurfaceSurfaceType
-  var tmp = new Cb
+  var tmp = new QOffscreenSurfacesurfaceTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQOffscreenSurface_override_virtual_surfaceType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QOffscreenSurface_surfaceType(self: ptr cQOffscreenSurface, slot: int): cint {.exportc: "miqt_exec_callback_QOffscreenSurface_surfaceType ".} =
-  type Cb = proc(super: QOffscreenSurfacesurfaceTypeBase): gen_qsurface.QSurfaceSurfaceType
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_surfaceType(QOffscreenSurface(h: self), )
+  var nimfunc = cast[ptr QOffscreenSurfacesurfaceTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   cint(virtualReturn)
-proc callVirtualBase_format(self: QOffscreenSurface, ): gen_qsurfaceformat.QSurfaceFormat =
-
+proc QOffscreenSurfaceformat*(self: gen_qoffscreensurface_types.QOffscreenSurface, ): gen_qsurfaceformat.QSurfaceFormat =
 
   gen_qsurfaceformat.QSurfaceFormat(h: fQOffscreenSurface_virtualbase_format(self.h))
 
-type QOffscreenSurfaceformatBase* = proc(): gen_qsurfaceformat.QSurfaceFormat
-proc onformat*(self: QOffscreenSurface, slot: proc(super: QOffscreenSurfaceformatBase): gen_qsurfaceformat.QSurfaceFormat) =
+type QOffscreenSurfaceformatProc* = proc(): gen_qsurfaceformat.QSurfaceFormat
+proc onformat*(self: gen_qoffscreensurface_types.QOffscreenSurface, slot: QOffscreenSurfaceformatProc) =
   # TODO check subclass
-  type Cb = proc(super: QOffscreenSurfaceformatBase): gen_qsurfaceformat.QSurfaceFormat
-  var tmp = new Cb
+  var tmp = new QOffscreenSurfaceformatProc
   tmp[] = slot
   GC_ref(tmp)
   fcQOffscreenSurface_override_virtual_format(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QOffscreenSurface_format(self: ptr cQOffscreenSurface, slot: int): pointer {.exportc: "miqt_exec_callback_QOffscreenSurface_format ".} =
-  type Cb = proc(super: QOffscreenSurfaceformatBase): gen_qsurfaceformat.QSurfaceFormat
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_format(QOffscreenSurface(h: self), )
+  var nimfunc = cast[ptr QOffscreenSurfaceformatProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_size(self: QOffscreenSurface, ): gen_qsize.QSize =
-
+proc QOffscreenSurfacesize*(self: gen_qoffscreensurface_types.QOffscreenSurface, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQOffscreenSurface_virtualbase_size(self.h))
 
-type QOffscreenSurfacesizeBase* = proc(): gen_qsize.QSize
-proc onsize*(self: QOffscreenSurface, slot: proc(super: QOffscreenSurfacesizeBase): gen_qsize.QSize) =
+type QOffscreenSurfacesizeProc* = proc(): gen_qsize.QSize
+proc onsize*(self: gen_qoffscreensurface_types.QOffscreenSurface, slot: QOffscreenSurfacesizeProc) =
   # TODO check subclass
-  type Cb = proc(super: QOffscreenSurfacesizeBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QOffscreenSurfacesizeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQOffscreenSurface_override_virtual_size(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QOffscreenSurface_size(self: ptr cQOffscreenSurface, slot: int): pointer {.exportc: "miqt_exec_callback_QOffscreenSurface_size ".} =
-  type Cb = proc(super: QOffscreenSurfacesizeBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_size(QOffscreenSurface(h: self), )
+  var nimfunc = cast[ptr QOffscreenSurfacesizeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_event(self: QOffscreenSurface, event: gen_qcoreevent.QEvent): bool =
-
+proc QOffscreenSurfaceevent*(self: gen_qoffscreensurface_types.QOffscreenSurface, event: gen_qcoreevent.QEvent): bool =
 
   fQOffscreenSurface_virtualbase_event(self.h, event.h)
 
-type QOffscreenSurfaceeventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QOffscreenSurface, slot: proc(super: QOffscreenSurfaceeventBase, event: gen_qcoreevent.QEvent): bool) =
+type QOffscreenSurfaceeventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qoffscreensurface_types.QOffscreenSurface, slot: QOffscreenSurfaceeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QOffscreenSurfaceeventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QOffscreenSurfaceeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQOffscreenSurface_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QOffscreenSurface_event(self: ptr cQOffscreenSurface, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QOffscreenSurface_event ".} =
-  type Cb = proc(super: QOffscreenSurfaceeventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QOffscreenSurface(h: self), event)
+  var nimfunc = cast[ptr QOffscreenSurfaceeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QOffscreenSurface, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QOffscreenSurfaceeventFilter*(self: gen_qoffscreensurface_types.QOffscreenSurface, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQOffscreenSurface_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QOffscreenSurfaceeventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QOffscreenSurface, slot: proc(super: QOffscreenSurfaceeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QOffscreenSurfaceeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qoffscreensurface_types.QOffscreenSurface, slot: QOffscreenSurfaceeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QOffscreenSurfaceeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QOffscreenSurfaceeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQOffscreenSurface_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QOffscreenSurface_eventFilter(self: ptr cQOffscreenSurface, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QOffscreenSurface_eventFilter ".} =
-  type Cb = proc(super: QOffscreenSurfaceeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QOffscreenSurface(h: self), watched, event)
+  var nimfunc = cast[ptr QOffscreenSurfaceeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QOffscreenSurface, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QOffscreenSurfacetimerEvent*(self: gen_qoffscreensurface_types.QOffscreenSurface, event: gen_qcoreevent.QTimerEvent): void =
 
   fQOffscreenSurface_virtualbase_timerEvent(self.h, event.h)
 
-type QOffscreenSurfacetimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QOffscreenSurface, slot: proc(super: QOffscreenSurfacetimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QOffscreenSurfacetimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qoffscreensurface_types.QOffscreenSurface, slot: QOffscreenSurfacetimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QOffscreenSurfacetimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QOffscreenSurfacetimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQOffscreenSurface_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QOffscreenSurface_timerEvent(self: ptr cQOffscreenSurface, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QOffscreenSurface_timerEvent ".} =
-  type Cb = proc(super: QOffscreenSurfacetimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QOffscreenSurface(h: self), event)
+  var nimfunc = cast[ptr QOffscreenSurfacetimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QOffscreenSurface, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QOffscreenSurfacechildEvent*(self: gen_qoffscreensurface_types.QOffscreenSurface, event: gen_qcoreevent.QChildEvent): void =
 
   fQOffscreenSurface_virtualbase_childEvent(self.h, event.h)
 
-type QOffscreenSurfacechildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QOffscreenSurface, slot: proc(super: QOffscreenSurfacechildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QOffscreenSurfacechildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qoffscreensurface_types.QOffscreenSurface, slot: QOffscreenSurfacechildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QOffscreenSurfacechildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QOffscreenSurfacechildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQOffscreenSurface_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QOffscreenSurface_childEvent(self: ptr cQOffscreenSurface, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QOffscreenSurface_childEvent ".} =
-  type Cb = proc(super: QOffscreenSurfacechildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QOffscreenSurface(h: self), event)
+  var nimfunc = cast[ptr QOffscreenSurfacechildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QOffscreenSurface, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QOffscreenSurfacecustomEvent*(self: gen_qoffscreensurface_types.QOffscreenSurface, event: gen_qcoreevent.QEvent): void =
 
   fQOffscreenSurface_virtualbase_customEvent(self.h, event.h)
 
-type QOffscreenSurfacecustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QOffscreenSurface, slot: proc(super: QOffscreenSurfacecustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QOffscreenSurfacecustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qoffscreensurface_types.QOffscreenSurface, slot: QOffscreenSurfacecustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QOffscreenSurfacecustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QOffscreenSurfacecustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQOffscreenSurface_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QOffscreenSurface_customEvent(self: ptr cQOffscreenSurface, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QOffscreenSurface_customEvent ".} =
-  type Cb = proc(super: QOffscreenSurfacecustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QOffscreenSurface(h: self), event)
+  var nimfunc = cast[ptr QOffscreenSurfacecustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QOffscreenSurface, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QOffscreenSurfaceconnectNotify*(self: gen_qoffscreensurface_types.QOffscreenSurface, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQOffscreenSurface_virtualbase_connectNotify(self.h, signal.h)
 
-type QOffscreenSurfaceconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QOffscreenSurface, slot: proc(super: QOffscreenSurfaceconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QOffscreenSurfaceconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qoffscreensurface_types.QOffscreenSurface, slot: QOffscreenSurfaceconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QOffscreenSurfaceconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QOffscreenSurfaceconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQOffscreenSurface_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QOffscreenSurface_connectNotify(self: ptr cQOffscreenSurface, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QOffscreenSurface_connectNotify ".} =
-  type Cb = proc(super: QOffscreenSurfaceconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QOffscreenSurface(h: self), signal)
+  var nimfunc = cast[ptr QOffscreenSurfaceconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QOffscreenSurface, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QOffscreenSurfacedisconnectNotify*(self: gen_qoffscreensurface_types.QOffscreenSurface, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQOffscreenSurface_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QOffscreenSurfacedisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QOffscreenSurface, slot: proc(super: QOffscreenSurfacedisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QOffscreenSurfacedisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qoffscreensurface_types.QOffscreenSurface, slot: QOffscreenSurfacedisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QOffscreenSurfacedisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QOffscreenSurfacedisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQOffscreenSurface_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QOffscreenSurface_disconnectNotify(self: ptr cQOffscreenSurface, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QOffscreenSurface_disconnectNotify ".} =
-  type Cb = proc(super: QOffscreenSurfacedisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QOffscreenSurface(h: self), signal)
+  var nimfunc = cast[ptr QOffscreenSurfacedisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QOffscreenSurface): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qoffscreensurface_types.QOffscreenSurface): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQOffscreenSurface_staticMetaObject())
-proc delete*(self: QOffscreenSurface) =
+proc delete*(self: gen_qoffscreensurface_types.QOffscreenSurface) =
   fcQOffscreenSurface_delete(self.h)

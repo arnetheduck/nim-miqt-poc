@@ -48,11 +48,11 @@ proc fcQStaticPlugin_metaData(self: pointer, ): pointer {.importc: "QStaticPlugi
 proc fcQStaticPlugin_delete(self: pointer) {.importc: "QStaticPlugin_delete".}
 
 
-func init*(T: type QStaticPlugin, h: ptr cQStaticPlugin): QStaticPlugin =
+func init*(T: type gen_qplugin_types.QStaticPlugin, h: ptr cQStaticPlugin): gen_qplugin_types.QStaticPlugin =
   T(h: h)
-proc metaData*(self: QStaticPlugin, ): gen_qjsonobject.QJsonObject =
+proc metaData*(self: gen_qplugin_types.QStaticPlugin, ): gen_qjsonobject.QJsonObject =
 
   gen_qjsonobject.QJsonObject(h: fcQStaticPlugin_metaData(self.h))
 
-proc delete*(self: QStaticPlugin) =
+proc delete*(self: gen_qplugin_types.QStaticPlugin) =
   fcQStaticPlugin_delete(self.h)

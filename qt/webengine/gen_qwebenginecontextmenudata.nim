@@ -34,45 +34,39 @@ const cflags = gorge("pkg-config -cflags Qt5WebEngineWidgets")
 {.compile("gen_qwebenginecontextmenudata.cpp", cflags).}
 
 
-type QWebEngineContextMenuDataMediaType* = cint
-const
-  QWebEngineContextMenuDataMediaTypeNone* = 0
-  QWebEngineContextMenuDataMediaTypeImage* = 1
-  QWebEngineContextMenuDataMediaTypeVideo* = 2
-  QWebEngineContextMenuDataMediaTypeAudio* = 3
-  QWebEngineContextMenuDataMediaTypeCanvas* = 4
-  QWebEngineContextMenuDataMediaTypeFile* = 5
-  QWebEngineContextMenuDataMediaTypePlugin* = 6
+type QWebEngineContextMenuDataMediaTypeEnum* = distinct cint
+template MediaTypeNone*(_: type QWebEngineContextMenuDataMediaTypeEnum): untyped = 0
+template MediaTypeImage*(_: type QWebEngineContextMenuDataMediaTypeEnum): untyped = 1
+template MediaTypeVideo*(_: type QWebEngineContextMenuDataMediaTypeEnum): untyped = 2
+template MediaTypeAudio*(_: type QWebEngineContextMenuDataMediaTypeEnum): untyped = 3
+template MediaTypeCanvas*(_: type QWebEngineContextMenuDataMediaTypeEnum): untyped = 4
+template MediaTypeFile*(_: type QWebEngineContextMenuDataMediaTypeEnum): untyped = 5
+template MediaTypePlugin*(_: type QWebEngineContextMenuDataMediaTypeEnum): untyped = 6
 
 
-
-type QWebEngineContextMenuDataMediaFlag* = cint
-const
-  QWebEngineContextMenuDataMediaInError* = 1
-  QWebEngineContextMenuDataMediaPaused* = 2
-  QWebEngineContextMenuDataMediaMuted* = 4
-  QWebEngineContextMenuDataMediaLoop* = 8
-  QWebEngineContextMenuDataMediaCanSave* = 16
-  QWebEngineContextMenuDataMediaHasAudio* = 32
-  QWebEngineContextMenuDataMediaCanToggleControls* = 64
-  QWebEngineContextMenuDataMediaControls* = 128
-  QWebEngineContextMenuDataMediaCanPrint* = 256
-  QWebEngineContextMenuDataMediaCanRotate* = 512
+type QWebEngineContextMenuDataMediaFlagEnum* = distinct cint
+template MediaInError*(_: type QWebEngineContextMenuDataMediaFlagEnum): untyped = 1
+template MediaPaused*(_: type QWebEngineContextMenuDataMediaFlagEnum): untyped = 2
+template MediaMuted*(_: type QWebEngineContextMenuDataMediaFlagEnum): untyped = 4
+template MediaLoop*(_: type QWebEngineContextMenuDataMediaFlagEnum): untyped = 8
+template MediaCanSave*(_: type QWebEngineContextMenuDataMediaFlagEnum): untyped = 16
+template MediaHasAudio*(_: type QWebEngineContextMenuDataMediaFlagEnum): untyped = 32
+template MediaCanToggleControls*(_: type QWebEngineContextMenuDataMediaFlagEnum): untyped = 64
+template MediaControls*(_: type QWebEngineContextMenuDataMediaFlagEnum): untyped = 128
+template MediaCanPrint*(_: type QWebEngineContextMenuDataMediaFlagEnum): untyped = 256
+template MediaCanRotate*(_: type QWebEngineContextMenuDataMediaFlagEnum): untyped = 512
 
 
-
-type QWebEngineContextMenuDataEditFlag* = cint
-const
-  QWebEngineContextMenuDataCanUndo* = 1
-  QWebEngineContextMenuDataCanRedo* = 2
-  QWebEngineContextMenuDataCanCut* = 4
-  QWebEngineContextMenuDataCanCopy* = 8
-  QWebEngineContextMenuDataCanPaste* = 16
-  QWebEngineContextMenuDataCanDelete* = 32
-  QWebEngineContextMenuDataCanSelectAll* = 64
-  QWebEngineContextMenuDataCanTranslate* = 128
-  QWebEngineContextMenuDataCanEditRichly* = 256
-
+type QWebEngineContextMenuDataEditFlagEnum* = distinct cint
+template CanUndo*(_: type QWebEngineContextMenuDataEditFlagEnum): untyped = 1
+template CanRedo*(_: type QWebEngineContextMenuDataEditFlagEnum): untyped = 2
+template CanCut*(_: type QWebEngineContextMenuDataEditFlagEnum): untyped = 4
+template CanCopy*(_: type QWebEngineContextMenuDataEditFlagEnum): untyped = 8
+template CanPaste*(_: type QWebEngineContextMenuDataEditFlagEnum): untyped = 16
+template CanDelete*(_: type QWebEngineContextMenuDataEditFlagEnum): untyped = 32
+template CanSelectAll*(_: type QWebEngineContextMenuDataEditFlagEnum): untyped = 64
+template CanTranslate*(_: type QWebEngineContextMenuDataEditFlagEnum): untyped = 128
+template CanEditRichly*(_: type QWebEngineContextMenuDataEditFlagEnum): untyped = 256
 
 
 import gen_qwebenginecontextmenudata_types
@@ -108,64 +102,64 @@ proc fcQWebEngineContextMenuData_staticMetaObject(): pointer {.importc: "QWebEng
 proc fcQWebEngineContextMenuData_delete(self: pointer) {.importc: "QWebEngineContextMenuData_delete".}
 
 
-func init*(T: type QWebEngineContextMenuData, h: ptr cQWebEngineContextMenuData): QWebEngineContextMenuData =
+func init*(T: type gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData, h: ptr cQWebEngineContextMenuData): gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData =
   T(h: h)
-proc create*(T: type QWebEngineContextMenuData, ): QWebEngineContextMenuData =
+proc create*(T: type gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData, ): gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData =
 
-  QWebEngineContextMenuData.init(fcQWebEngineContextMenuData_new())
-proc create*(T: type QWebEngineContextMenuData, other: QWebEngineContextMenuData): QWebEngineContextMenuData =
+  gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData.init(fcQWebEngineContextMenuData_new())
+proc create*(T: type gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData, other: gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData): gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData =
 
-  QWebEngineContextMenuData.init(fcQWebEngineContextMenuData_new2(other.h))
-proc operatorAssign*(self: QWebEngineContextMenuData, other: QWebEngineContextMenuData): void =
+  gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData.init(fcQWebEngineContextMenuData_new2(other.h))
+proc operatorAssign*(self: gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData, other: gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData): void =
 
   fcQWebEngineContextMenuData_operatorAssign(self.h, other.h)
 
-proc isValid*(self: QWebEngineContextMenuData, ): bool =
+proc isValid*(self: gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData, ): bool =
 
   fcQWebEngineContextMenuData_isValid(self.h)
 
-proc position*(self: QWebEngineContextMenuData, ): gen_qpoint.QPoint =
+proc position*(self: gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData, ): gen_qpoint.QPoint =
 
   gen_qpoint.QPoint(h: fcQWebEngineContextMenuData_position(self.h))
 
-proc selectedText*(self: QWebEngineContextMenuData, ): string =
+proc selectedText*(self: gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData, ): string =
 
   let v_ms = fcQWebEngineContextMenuData_selectedText(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc linkText*(self: QWebEngineContextMenuData, ): string =
+proc linkText*(self: gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData, ): string =
 
   let v_ms = fcQWebEngineContextMenuData_linkText(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc linkUrl*(self: QWebEngineContextMenuData, ): gen_qurl.QUrl =
+proc linkUrl*(self: gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData, ): gen_qurl.QUrl =
 
   gen_qurl.QUrl(h: fcQWebEngineContextMenuData_linkUrl(self.h))
 
-proc mediaUrl*(self: QWebEngineContextMenuData, ): gen_qurl.QUrl =
+proc mediaUrl*(self: gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData, ): gen_qurl.QUrl =
 
   gen_qurl.QUrl(h: fcQWebEngineContextMenuData_mediaUrl(self.h))
 
-proc mediaType*(self: QWebEngineContextMenuData, ): QWebEngineContextMenuDataMediaType =
+proc mediaType*(self: gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData, ): cint =
 
-  QWebEngineContextMenuDataMediaType(fcQWebEngineContextMenuData_mediaType(self.h))
+  cint(fcQWebEngineContextMenuData_mediaType(self.h))
 
-proc isContentEditable*(self: QWebEngineContextMenuData, ): bool =
+proc isContentEditable*(self: gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData, ): bool =
 
   fcQWebEngineContextMenuData_isContentEditable(self.h)
 
-proc misspelledWord*(self: QWebEngineContextMenuData, ): string =
+proc misspelledWord*(self: gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData, ): string =
 
   let v_ms = fcQWebEngineContextMenuData_misspelledWord(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc spellCheckerSuggestions*(self: QWebEngineContextMenuData, ): seq[string] =
+proc spellCheckerSuggestions*(self: gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData, ): seq[string] =
 
   var v_ma = fcQWebEngineContextMenuData_spellCheckerSuggestions(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -177,15 +171,15 @@ proc spellCheckerSuggestions*(self: QWebEngineContextMenuData, ): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc mediaFlags*(self: QWebEngineContextMenuData, ): QWebEngineContextMenuDataMediaFlag =
+proc mediaFlags*(self: gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData, ): cint =
 
-  QWebEngineContextMenuDataMediaFlag(fcQWebEngineContextMenuData_mediaFlags(self.h))
+  cint(fcQWebEngineContextMenuData_mediaFlags(self.h))
 
-proc editFlags*(self: QWebEngineContextMenuData, ): QWebEngineContextMenuDataEditFlag =
+proc editFlags*(self: gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData, ): cint =
 
-  QWebEngineContextMenuDataEditFlag(fcQWebEngineContextMenuData_editFlags(self.h))
+  cint(fcQWebEngineContextMenuData_editFlags(self.h))
 
-proc staticMetaObject*(_: type QWebEngineContextMenuData): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQWebEngineContextMenuData_staticMetaObject())
-proc delete*(self: QWebEngineContextMenuData) =
+proc delete*(self: gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData) =
   fcQWebEngineContextMenuData_delete(self.h)

@@ -34,20 +34,16 @@ const cflags = gorge("pkg-config -cflags Qt5WebEngineWidgets")
 {.compile("gen_qwebenginescript.cpp", cflags).}
 
 
-type QWebEngineScriptInjectionPoint* = cint
-const
-  QWebEngineScriptDeferred* = 0
-  QWebEngineScriptDocumentReady* = 1
-  QWebEngineScriptDocumentCreation* = 2
+type QWebEngineScriptInjectionPointEnum* = distinct cint
+template Deferred*(_: type QWebEngineScriptInjectionPointEnum): untyped = 0
+template DocumentReady*(_: type QWebEngineScriptInjectionPointEnum): untyped = 1
+template DocumentCreation*(_: type QWebEngineScriptInjectionPointEnum): untyped = 2
 
 
-
-type QWebEngineScriptScriptWorldId* = cint
-const
-  QWebEngineScriptMainWorld* = 0
-  QWebEngineScriptApplicationWorld* = 1
-  QWebEngineScriptUserWorld* = 2
-
+type QWebEngineScriptScriptWorldIdEnum* = distinct cint
+template MainWorld*(_: type QWebEngineScriptScriptWorldIdEnum): untyped = 0
+template ApplicationWorld*(_: type QWebEngineScriptScriptWorldIdEnum): untyped = 1
+template UserWorld*(_: type QWebEngineScriptScriptWorldIdEnum): untyped = 2
 
 
 import gen_qwebenginescript_types
@@ -76,79 +72,79 @@ proc fcQWebEngineScript_swap(self: pointer, other: pointer): void {.importc: "QW
 proc fcQWebEngineScript_delete(self: pointer) {.importc: "QWebEngineScript_delete".}
 
 
-func init*(T: type QWebEngineScript, h: ptr cQWebEngineScript): QWebEngineScript =
+func init*(T: type gen_qwebenginescript_types.QWebEngineScript, h: ptr cQWebEngineScript): gen_qwebenginescript_types.QWebEngineScript =
   T(h: h)
-proc create*(T: type QWebEngineScript, ): QWebEngineScript =
+proc create*(T: type gen_qwebenginescript_types.QWebEngineScript, ): gen_qwebenginescript_types.QWebEngineScript =
 
-  QWebEngineScript.init(fcQWebEngineScript_new())
-proc create*(T: type QWebEngineScript, other: QWebEngineScript): QWebEngineScript =
+  gen_qwebenginescript_types.QWebEngineScript.init(fcQWebEngineScript_new())
+proc create*(T: type gen_qwebenginescript_types.QWebEngineScript, other: gen_qwebenginescript_types.QWebEngineScript): gen_qwebenginescript_types.QWebEngineScript =
 
-  QWebEngineScript.init(fcQWebEngineScript_new2(other.h))
-proc operatorAssign*(self: QWebEngineScript, other: QWebEngineScript): void =
+  gen_qwebenginescript_types.QWebEngineScript.init(fcQWebEngineScript_new2(other.h))
+proc operatorAssign*(self: gen_qwebenginescript_types.QWebEngineScript, other: gen_qwebenginescript_types.QWebEngineScript): void =
 
   fcQWebEngineScript_operatorAssign(self.h, other.h)
 
-proc isNull*(self: QWebEngineScript, ): bool =
+proc isNull*(self: gen_qwebenginescript_types.QWebEngineScript, ): bool =
 
   fcQWebEngineScript_isNull(self.h)
 
-proc name*(self: QWebEngineScript, ): string =
+proc name*(self: gen_qwebenginescript_types.QWebEngineScript, ): string =
 
   let v_ms = fcQWebEngineScript_name(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setName*(self: QWebEngineScript, name: string): void =
+proc setName*(self: gen_qwebenginescript_types.QWebEngineScript, name: string): void =
 
   fcQWebEngineScript_setName(self.h, struct_miqt_string(data: name, len: csize_t(len(name))))
 
-proc sourceCode*(self: QWebEngineScript, ): string =
+proc sourceCode*(self: gen_qwebenginescript_types.QWebEngineScript, ): string =
 
   let v_ms = fcQWebEngineScript_sourceCode(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setSourceCode*(self: QWebEngineScript, sourceCode: string): void =
+proc setSourceCode*(self: gen_qwebenginescript_types.QWebEngineScript, sourceCode: string): void =
 
   fcQWebEngineScript_setSourceCode(self.h, struct_miqt_string(data: sourceCode, len: csize_t(len(sourceCode))))
 
-proc injectionPoint*(self: QWebEngineScript, ): QWebEngineScriptInjectionPoint =
+proc injectionPoint*(self: gen_qwebenginescript_types.QWebEngineScript, ): cint =
 
-  QWebEngineScriptInjectionPoint(fcQWebEngineScript_injectionPoint(self.h))
+  cint(fcQWebEngineScript_injectionPoint(self.h))
 
-proc setInjectionPoint*(self: QWebEngineScript, injectionPoint: QWebEngineScriptInjectionPoint): void =
+proc setInjectionPoint*(self: gen_qwebenginescript_types.QWebEngineScript, injectionPoint: cint): void =
 
   fcQWebEngineScript_setInjectionPoint(self.h, cint(injectionPoint))
 
-proc worldId*(self: QWebEngineScript, ): cuint =
+proc worldId*(self: gen_qwebenginescript_types.QWebEngineScript, ): cuint =
 
   fcQWebEngineScript_worldId(self.h)
 
-proc setWorldId*(self: QWebEngineScript, worldId: cuint): void =
+proc setWorldId*(self: gen_qwebenginescript_types.QWebEngineScript, worldId: cuint): void =
 
   fcQWebEngineScript_setWorldId(self.h, worldId)
 
-proc runsOnSubFrames*(self: QWebEngineScript, ): bool =
+proc runsOnSubFrames*(self: gen_qwebenginescript_types.QWebEngineScript, ): bool =
 
   fcQWebEngineScript_runsOnSubFrames(self.h)
 
-proc setRunsOnSubFrames*(self: QWebEngineScript, on: bool): void =
+proc setRunsOnSubFrames*(self: gen_qwebenginescript_types.QWebEngineScript, on: bool): void =
 
   fcQWebEngineScript_setRunsOnSubFrames(self.h, on)
 
-proc operatorEqual*(self: QWebEngineScript, other: QWebEngineScript): bool =
+proc operatorEqual*(self: gen_qwebenginescript_types.QWebEngineScript, other: gen_qwebenginescript_types.QWebEngineScript): bool =
 
   fcQWebEngineScript_operatorEqual(self.h, other.h)
 
-proc operatorNotEqual*(self: QWebEngineScript, other: QWebEngineScript): bool =
+proc operatorNotEqual*(self: gen_qwebenginescript_types.QWebEngineScript, other: gen_qwebenginescript_types.QWebEngineScript): bool =
 
   fcQWebEngineScript_operatorNotEqual(self.h, other.h)
 
-proc swap*(self: QWebEngineScript, other: QWebEngineScript): void =
+proc swap*(self: gen_qwebenginescript_types.QWebEngineScript, other: gen_qwebenginescript_types.QWebEngineScript): void =
 
   fcQWebEngineScript_swap(self.h, other.h)
 
-proc delete*(self: QWebEngineScript) =
+proc delete*(self: gen_qwebenginescript_types.QWebEngineScript) =
   fcQWebEngineScript_delete(self.h)

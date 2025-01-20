@@ -34,37 +34,35 @@ const cflags = gorge("pkg-config -cflags Qt6MultimediaWidgets")
 {.compile("gen_qmediametadata.cpp", cflags).}
 
 
-type QMediaMetaDataKey* = cint
-const
-  QMediaMetaDataTitle* = 0
-  QMediaMetaDataAuthor* = 1
-  QMediaMetaDataComment* = 2
-  QMediaMetaDataDescription* = 3
-  QMediaMetaDataGenre* = 4
-  QMediaMetaDataDate* = 5
-  QMediaMetaDataLanguage* = 6
-  QMediaMetaDataPublisher* = 7
-  QMediaMetaDataCopyright* = 8
-  QMediaMetaDataUrl* = 9
-  QMediaMetaDataDuration* = 10
-  QMediaMetaDataMediaType* = 11
-  QMediaMetaDataFileFormat* = 12
-  QMediaMetaDataAudioBitRate* = 13
-  QMediaMetaDataAudioCodec* = 14
-  QMediaMetaDataVideoBitRate* = 15
-  QMediaMetaDataVideoCodec* = 16
-  QMediaMetaDataVideoFrameRate* = 17
-  QMediaMetaDataAlbumTitle* = 18
-  QMediaMetaDataAlbumArtist* = 19
-  QMediaMetaDataContributingArtist* = 20
-  QMediaMetaDataTrackNumber* = 21
-  QMediaMetaDataComposer* = 22
-  QMediaMetaDataLeadPerformer* = 23
-  QMediaMetaDataThumbnailImage* = 24
-  QMediaMetaDataCoverArtImage* = 25
-  QMediaMetaDataOrientation* = 26
-  QMediaMetaDataResolution* = 27
-
+type QMediaMetaDataKeyEnum* = distinct cint
+template Title*(_: type QMediaMetaDataKeyEnum): untyped = 0
+template Author*(_: type QMediaMetaDataKeyEnum): untyped = 1
+template Comment*(_: type QMediaMetaDataKeyEnum): untyped = 2
+template Description*(_: type QMediaMetaDataKeyEnum): untyped = 3
+template Genre*(_: type QMediaMetaDataKeyEnum): untyped = 4
+template Date*(_: type QMediaMetaDataKeyEnum): untyped = 5
+template Language*(_: type QMediaMetaDataKeyEnum): untyped = 6
+template Publisher*(_: type QMediaMetaDataKeyEnum): untyped = 7
+template Copyright*(_: type QMediaMetaDataKeyEnum): untyped = 8
+template Url*(_: type QMediaMetaDataKeyEnum): untyped = 9
+template Duration*(_: type QMediaMetaDataKeyEnum): untyped = 10
+template MediaType*(_: type QMediaMetaDataKeyEnum): untyped = 11
+template FileFormat*(_: type QMediaMetaDataKeyEnum): untyped = 12
+template AudioBitRate*(_: type QMediaMetaDataKeyEnum): untyped = 13
+template AudioCodec*(_: type QMediaMetaDataKeyEnum): untyped = 14
+template VideoBitRate*(_: type QMediaMetaDataKeyEnum): untyped = 15
+template VideoCodec*(_: type QMediaMetaDataKeyEnum): untyped = 16
+template VideoFrameRate*(_: type QMediaMetaDataKeyEnum): untyped = 17
+template AlbumTitle*(_: type QMediaMetaDataKeyEnum): untyped = 18
+template AlbumArtist*(_: type QMediaMetaDataKeyEnum): untyped = 19
+template ContributingArtist*(_: type QMediaMetaDataKeyEnum): untyped = 20
+template TrackNumber*(_: type QMediaMetaDataKeyEnum): untyped = 21
+template Composer*(_: type QMediaMetaDataKeyEnum): untyped = 22
+template LeadPerformer*(_: type QMediaMetaDataKeyEnum): untyped = 23
+template ThumbnailImage*(_: type QMediaMetaDataKeyEnum): untyped = 24
+template CoverArtImage*(_: type QMediaMetaDataKeyEnum): untyped = 25
+template Orientation*(_: type QMediaMetaDataKeyEnum): untyped = 26
+template Resolution*(_: type QMediaMetaDataKeyEnum): untyped = 27
 
 
 import gen_qmediametadata_types
@@ -94,62 +92,62 @@ proc fcQMediaMetaData_staticMetaObject(): pointer {.importc: "QMediaMetaData_sta
 proc fcQMediaMetaData_delete(self: pointer) {.importc: "QMediaMetaData_delete".}
 
 
-func init*(T: type QMediaMetaData, h: ptr cQMediaMetaData): QMediaMetaData =
+func init*(T: type gen_qmediametadata_types.QMediaMetaData, h: ptr cQMediaMetaData): gen_qmediametadata_types.QMediaMetaData =
   T(h: h)
-proc create*(T: type QMediaMetaData, param1: QMediaMetaData): QMediaMetaData =
+proc create*(T: type gen_qmediametadata_types.QMediaMetaData, param1: gen_qmediametadata_types.QMediaMetaData): gen_qmediametadata_types.QMediaMetaData =
 
-  QMediaMetaData.init(fcQMediaMetaData_new(param1.h))
-proc create*(T: type QMediaMetaData, ): QMediaMetaData =
+  gen_qmediametadata_types.QMediaMetaData.init(fcQMediaMetaData_new(param1.h))
+proc create*(T: type gen_qmediametadata_types.QMediaMetaData, ): gen_qmediametadata_types.QMediaMetaData =
 
-  QMediaMetaData.init(fcQMediaMetaData_new2())
-proc value*(self: QMediaMetaData, k: QMediaMetaDataKey): gen_qvariant.QVariant =
+  gen_qmediametadata_types.QMediaMetaData.init(fcQMediaMetaData_new2())
+proc value*(self: gen_qmediametadata_types.QMediaMetaData, k: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fcQMediaMetaData_value(self.h, cint(k)))
 
-proc insert*(self: QMediaMetaData, k: QMediaMetaDataKey, value: gen_qvariant.QVariant): void =
+proc insert*(self: gen_qmediametadata_types.QMediaMetaData, k: cint, value: gen_qvariant.QVariant): void =
 
   fcQMediaMetaData_insert(self.h, cint(k), value.h)
 
-proc remove*(self: QMediaMetaData, k: QMediaMetaDataKey): void =
+proc remove*(self: gen_qmediametadata_types.QMediaMetaData, k: cint): void =
 
   fcQMediaMetaData_remove(self.h, cint(k))
 
-proc keys*(self: QMediaMetaData, ): seq[QMediaMetaDataKey] =
+proc keys*(self: gen_qmediametadata_types.QMediaMetaData, ): seq[cint] =
 
   var v_ma = fcQMediaMetaData_keys(self.h)
-  var vx_ret = newSeq[QMediaMetaDataKey](int(v_ma.len))
+  var vx_ret = newSeq[cint](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[cint]](v_ma.data)
   for i in 0 ..< v_ma.len:
-    vx_ret[i] = QMediaMetaDataKey(v_outCast[i])
+    vx_ret[i] = cint(v_outCast[i])
   vx_ret
 
-proc operatorSubscript*(self: QMediaMetaData, k: QMediaMetaDataKey): gen_qvariant.QVariant =
+proc operatorSubscript*(self: gen_qmediametadata_types.QMediaMetaData, k: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fcQMediaMetaData_operatorSubscript(self.h, cint(k)))
 
-proc clear*(self: QMediaMetaData, ): void =
+proc clear*(self: gen_qmediametadata_types.QMediaMetaData, ): void =
 
   fcQMediaMetaData_clear(self.h)
 
-proc isEmpty*(self: QMediaMetaData, ): bool =
+proc isEmpty*(self: gen_qmediametadata_types.QMediaMetaData, ): bool =
 
   fcQMediaMetaData_isEmpty(self.h)
 
-proc stringValue*(self: QMediaMetaData, k: QMediaMetaDataKey): string =
+proc stringValue*(self: gen_qmediametadata_types.QMediaMetaData, k: cint): string =
 
   let v_ms = fcQMediaMetaData_stringValue(self.h, cint(k))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc metaDataKeyToString*(_: type QMediaMetaData, k: QMediaMetaDataKey): string =
+proc metaDataKeyToString*(_: type gen_qmediametadata_types.QMediaMetaData, k: cint): string =
 
   let v_ms = fcQMediaMetaData_metaDataKeyToString(cint(k))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc staticMetaObject*(_: type QMediaMetaData): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qmediametadata_types.QMediaMetaData): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQMediaMetaData_staticMetaObject())
-proc delete*(self: QMediaMetaData) =
+proc delete*(self: gen_qmediametadata_types.QMediaMetaData) =
   fcQMediaMetaData_delete(self.h)

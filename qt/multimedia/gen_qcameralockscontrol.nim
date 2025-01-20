@@ -38,11 +38,9 @@ import gen_qcameralockscontrol_types
 export gen_qcameralockscontrol_types
 
 import
-  gen_qcamera,
   gen_qmediacontrol,
   gen_qobjectdefs
 export
-  gen_qcamera,
   gen_qmediacontrol,
   gen_qobjectdefs
 
@@ -67,101 +65,101 @@ proc fcQCameraLocksControl_staticMetaObject(): pointer {.importc: "QCameraLocksC
 proc fcQCameraLocksControl_delete(self: pointer) {.importc: "QCameraLocksControl_delete".}
 
 
-func init*(T: type QCameraLocksControl, h: ptr cQCameraLocksControl): QCameraLocksControl =
+func init*(T: type gen_qcameralockscontrol_types.QCameraLocksControl, h: ptr cQCameraLocksControl): gen_qcameralockscontrol_types.QCameraLocksControl =
   T(h: h)
-proc metaObject*(self: QCameraLocksControl, ): gen_qobjectdefs.QMetaObject =
+proc metaObject*(self: gen_qcameralockscontrol_types.QCameraLocksControl, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQCameraLocksControl_metaObject(self.h))
 
-proc metacast*(self: QCameraLocksControl, param1: cstring): pointer =
+proc metacast*(self: gen_qcameralockscontrol_types.QCameraLocksControl, param1: cstring): pointer =
 
   fcQCameraLocksControl_metacast(self.h, param1)
 
-proc metacall*(self: QCameraLocksControl, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qcameralockscontrol_types.QCameraLocksControl, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQCameraLocksControl_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QCameraLocksControl, s: cstring): string =
+proc tr*(_: type gen_qcameralockscontrol_types.QCameraLocksControl, s: cstring): string =
 
   let v_ms = fcQCameraLocksControl_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QCameraLocksControl, s: cstring): string =
+proc trUtf8*(_: type gen_qcameralockscontrol_types.QCameraLocksControl, s: cstring): string =
 
   let v_ms = fcQCameraLocksControl_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc supportedLocks*(self: QCameraLocksControl, ): gen_qcamera.QCameraLockType =
+proc supportedLocks*(self: gen_qcameralockscontrol_types.QCameraLocksControl, ): cint =
 
-  gen_qcamera.QCameraLockType(fcQCameraLocksControl_supportedLocks(self.h))
+  cint(fcQCameraLocksControl_supportedLocks(self.h))
 
-proc lockStatus*(self: QCameraLocksControl, lock: gen_qcamera.QCameraLockType): gen_qcamera.QCameraLockStatus =
+proc lockStatus*(self: gen_qcameralockscontrol_types.QCameraLocksControl, lock: cint): cint =
 
-  gen_qcamera.QCameraLockStatus(fcQCameraLocksControl_lockStatus(self.h, cint(lock)))
+  cint(fcQCameraLocksControl_lockStatus(self.h, cint(lock)))
 
-proc searchAndLock*(self: QCameraLocksControl, locks: gen_qcamera.QCameraLockType): void =
+proc searchAndLock*(self: gen_qcameralockscontrol_types.QCameraLocksControl, locks: cint): void =
 
   fcQCameraLocksControl_searchAndLock(self.h, cint(locks))
 
-proc unlock*(self: QCameraLocksControl, locks: gen_qcamera.QCameraLockType): void =
+proc unlock*(self: gen_qcameralockscontrol_types.QCameraLocksControl, locks: cint): void =
 
   fcQCameraLocksControl_unlock(self.h, cint(locks))
 
-proc lockStatusChanged*(self: QCameraLocksControl, typeVal: gen_qcamera.QCameraLockType, status: gen_qcamera.QCameraLockStatus, reason: gen_qcamera.QCameraLockChangeReason): void =
+proc lockStatusChanged*(self: gen_qcameralockscontrol_types.QCameraLocksControl, typeVal: cint, status: cint, reason: cint): void =
 
   fcQCameraLocksControl_lockStatusChanged(self.h, cint(typeVal), cint(status), cint(reason))
 
 proc miqt_exec_callback_QCameraLocksControl_lockStatusChanged(slot: int, typeVal: cint, status: cint, reason: cint) {.exportc.} =
-  type Cb = proc(typeVal: gen_qcamera.QCameraLockType, status: gen_qcamera.QCameraLockStatus, reason: gen_qcamera.QCameraLockChangeReason)
+  type Cb = proc(typeVal: cint, status: cint, reason: cint)
   let nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = gen_qcamera.QCameraLockType(typeVal)
+  let slotval1 = cint(typeVal)
 
-  let slotval2 = gen_qcamera.QCameraLockStatus(status)
+  let slotval2 = cint(status)
 
-  let slotval3 = gen_qcamera.QCameraLockChangeReason(reason)
+  let slotval3 = cint(reason)
 
 
   nimfunc[](slotval1, slotval2, slotval3)
 
-proc onlockStatusChanged*(self: QCameraLocksControl, slot: proc(typeVal: gen_qcamera.QCameraLockType, status: gen_qcamera.QCameraLockStatus, reason: gen_qcamera.QCameraLockChangeReason)) =
-  type Cb = proc(typeVal: gen_qcamera.QCameraLockType, status: gen_qcamera.QCameraLockStatus, reason: gen_qcamera.QCameraLockChangeReason)
+proc onlockStatusChanged*(self: gen_qcameralockscontrol_types.QCameraLocksControl, slot: proc(typeVal: cint, status: cint, reason: cint)) =
+  type Cb = proc(typeVal: cint, status: cint, reason: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQCameraLocksControl_connect_lockStatusChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QCameraLocksControl, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qcameralockscontrol_types.QCameraLocksControl, s: cstring, c: cstring): string =
 
   let v_ms = fcQCameraLocksControl_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QCameraLocksControl, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qcameralockscontrol_types.QCameraLocksControl, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQCameraLocksControl_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QCameraLocksControl, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qcameralockscontrol_types.QCameraLocksControl, s: cstring, c: cstring): string =
 
   let v_ms = fcQCameraLocksControl_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QCameraLocksControl, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qcameralockscontrol_types.QCameraLocksControl, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQCameraLocksControl_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc staticMetaObject*(_: type QCameraLocksControl): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qcameralockscontrol_types.QCameraLocksControl): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQCameraLocksControl_staticMetaObject())
-proc delete*(self: QCameraLocksControl) =
+proc delete*(self: gen_qcameralockscontrol_types.QCameraLocksControl) =
   fcQCameraLocksControl_delete(self.h)

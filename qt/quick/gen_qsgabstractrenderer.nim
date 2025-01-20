@@ -34,18 +34,14 @@ const cflags = gorge("pkg-config -cflags Qt5Quick")
 {.compile("gen_qsgabstractrenderer.cpp", cflags).}
 
 
-type QSGAbstractRendererClearModeBit* = cint
-const
-  QSGAbstractRendererClearColorBuffer* = 1
-  QSGAbstractRendererClearDepthBuffer* = 2
-  QSGAbstractRendererClearStencilBuffer* = 4
+type QSGAbstractRendererClearModeBitEnum* = distinct cint
+template ClearColorBuffer*(_: type QSGAbstractRendererClearModeBitEnum): untyped = 1
+template ClearDepthBuffer*(_: type QSGAbstractRendererClearModeBitEnum): untyped = 2
+template ClearStencilBuffer*(_: type QSGAbstractRendererClearModeBitEnum): untyped = 4
 
 
-
-type QSGAbstractRendererMatrixTransformFlag* = cint
-const
-  QSGAbstractRendererMatrixTransformFlipY* = 1
-
+type QSGAbstractRendererMatrixTransformFlagEnum* = distinct cint
+template MatrixTransformFlipY*(_: type QSGAbstractRendererMatrixTransformFlagEnum): untyped = 1
 
 
 import gen_qsgabstractrenderer_types
@@ -104,111 +100,111 @@ proc fcQSGAbstractRenderer_staticMetaObject(): pointer {.importc: "QSGAbstractRe
 proc fcQSGAbstractRenderer_delete(self: pointer) {.importc: "QSGAbstractRenderer_delete".}
 
 
-func init*(T: type QSGAbstractRenderer, h: ptr cQSGAbstractRenderer): QSGAbstractRenderer =
+func init*(T: type gen_qsgabstractrenderer_types.QSGAbstractRenderer, h: ptr cQSGAbstractRenderer): gen_qsgabstractrenderer_types.QSGAbstractRenderer =
   T(h: h)
-proc metaObject*(self: QSGAbstractRenderer, ): gen_qobjectdefs.QMetaObject =
+proc metaObject*(self: gen_qsgabstractrenderer_types.QSGAbstractRenderer, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQSGAbstractRenderer_metaObject(self.h))
 
-proc metacast*(self: QSGAbstractRenderer, param1: cstring): pointer =
+proc metacast*(self: gen_qsgabstractrenderer_types.QSGAbstractRenderer, param1: cstring): pointer =
 
   fcQSGAbstractRenderer_metacast(self.h, param1)
 
-proc metacall*(self: QSGAbstractRenderer, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qsgabstractrenderer_types.QSGAbstractRenderer, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQSGAbstractRenderer_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QSGAbstractRenderer, s: cstring): string =
+proc tr*(_: type gen_qsgabstractrenderer_types.QSGAbstractRenderer, s: cstring): string =
 
   let v_ms = fcQSGAbstractRenderer_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QSGAbstractRenderer, s: cstring): string =
+proc trUtf8*(_: type gen_qsgabstractrenderer_types.QSGAbstractRenderer, s: cstring): string =
 
   let v_ms = fcQSGAbstractRenderer_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setRootNode*(self: QSGAbstractRenderer, node: gen_qsgnode.QSGRootNode): void =
+proc setRootNode*(self: gen_qsgabstractrenderer_types.QSGAbstractRenderer, node: gen_qsgnode.QSGRootNode): void =
 
   fcQSGAbstractRenderer_setRootNode(self.h, node.h)
 
-proc rootNode*(self: QSGAbstractRenderer, ): gen_qsgnode.QSGRootNode =
+proc rootNode*(self: gen_qsgabstractrenderer_types.QSGAbstractRenderer, ): gen_qsgnode.QSGRootNode =
 
   gen_qsgnode.QSGRootNode(h: fcQSGAbstractRenderer_rootNode(self.h))
 
-proc setDeviceRect*(self: QSGAbstractRenderer, rect: gen_qrect.QRect): void =
+proc setDeviceRect*(self: gen_qsgabstractrenderer_types.QSGAbstractRenderer, rect: gen_qrect.QRect): void =
 
   fcQSGAbstractRenderer_setDeviceRect(self.h, rect.h)
 
-proc setDeviceRectWithSize*(self: QSGAbstractRenderer, size: gen_qsize.QSize): void =
+proc setDeviceRectWithSize*(self: gen_qsgabstractrenderer_types.QSGAbstractRenderer, size: gen_qsize.QSize): void =
 
   fcQSGAbstractRenderer_setDeviceRectWithSize(self.h, size.h)
 
-proc deviceRect*(self: QSGAbstractRenderer, ): gen_qrect.QRect =
+proc deviceRect*(self: gen_qsgabstractrenderer_types.QSGAbstractRenderer, ): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fcQSGAbstractRenderer_deviceRect(self.h))
 
-proc setViewportRect*(self: QSGAbstractRenderer, rect: gen_qrect.QRect): void =
+proc setViewportRect*(self: gen_qsgabstractrenderer_types.QSGAbstractRenderer, rect: gen_qrect.QRect): void =
 
   fcQSGAbstractRenderer_setViewportRect(self.h, rect.h)
 
-proc setViewportRectWithSize*(self: QSGAbstractRenderer, size: gen_qsize.QSize): void =
+proc setViewportRectWithSize*(self: gen_qsgabstractrenderer_types.QSGAbstractRenderer, size: gen_qsize.QSize): void =
 
   fcQSGAbstractRenderer_setViewportRectWithSize(self.h, size.h)
 
-proc viewportRect*(self: QSGAbstractRenderer, ): gen_qrect.QRect =
+proc viewportRect*(self: gen_qsgabstractrenderer_types.QSGAbstractRenderer, ): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fcQSGAbstractRenderer_viewportRect(self.h))
 
-proc setProjectionMatrixToRect*(self: QSGAbstractRenderer, rect: gen_qrect.QRectF): void =
+proc setProjectionMatrixToRect*(self: gen_qsgabstractrenderer_types.QSGAbstractRenderer, rect: gen_qrect.QRectF): void =
 
   fcQSGAbstractRenderer_setProjectionMatrixToRect(self.h, rect.h)
 
-proc setProjectionMatrixToRect2*(self: QSGAbstractRenderer, rect: gen_qrect.QRectF, flags: QSGAbstractRendererMatrixTransformFlag): void =
+proc setProjectionMatrixToRect2*(self: gen_qsgabstractrenderer_types.QSGAbstractRenderer, rect: gen_qrect.QRectF, flags: cint): void =
 
   fcQSGAbstractRenderer_setProjectionMatrixToRect2(self.h, rect.h, cint(flags))
 
-proc setProjectionMatrix*(self: QSGAbstractRenderer, matrix: gen_qmatrix4x4.QMatrix4x4): void =
+proc setProjectionMatrix*(self: gen_qsgabstractrenderer_types.QSGAbstractRenderer, matrix: gen_qmatrix4x4.QMatrix4x4): void =
 
   fcQSGAbstractRenderer_setProjectionMatrix(self.h, matrix.h)
 
-proc setProjectionMatrixWithNativeNDC*(self: QSGAbstractRenderer, matrix: gen_qmatrix4x4.QMatrix4x4): void =
+proc setProjectionMatrixWithNativeNDC*(self: gen_qsgabstractrenderer_types.QSGAbstractRenderer, matrix: gen_qmatrix4x4.QMatrix4x4): void =
 
   fcQSGAbstractRenderer_setProjectionMatrixWithNativeNDC(self.h, matrix.h)
 
-proc projectionMatrix*(self: QSGAbstractRenderer, ): gen_qmatrix4x4.QMatrix4x4 =
+proc projectionMatrix*(self: gen_qsgabstractrenderer_types.QSGAbstractRenderer, ): gen_qmatrix4x4.QMatrix4x4 =
 
   gen_qmatrix4x4.QMatrix4x4(h: fcQSGAbstractRenderer_projectionMatrix(self.h))
 
-proc projectionMatrixWithNativeNDC*(self: QSGAbstractRenderer, ): gen_qmatrix4x4.QMatrix4x4 =
+proc projectionMatrixWithNativeNDC*(self: gen_qsgabstractrenderer_types.QSGAbstractRenderer, ): gen_qmatrix4x4.QMatrix4x4 =
 
   gen_qmatrix4x4.QMatrix4x4(h: fcQSGAbstractRenderer_projectionMatrixWithNativeNDC(self.h))
 
-proc setClearColor*(self: QSGAbstractRenderer, color: gen_qcolor.QColor): void =
+proc setClearColor*(self: gen_qsgabstractrenderer_types.QSGAbstractRenderer, color: gen_qcolor.QColor): void =
 
   fcQSGAbstractRenderer_setClearColor(self.h, color.h)
 
-proc clearColor*(self: QSGAbstractRenderer, ): gen_qcolor.QColor =
+proc clearColor*(self: gen_qsgabstractrenderer_types.QSGAbstractRenderer, ): gen_qcolor.QColor =
 
   gen_qcolor.QColor(h: fcQSGAbstractRenderer_clearColor(self.h))
 
-proc setClearMode*(self: QSGAbstractRenderer, mode: QSGAbstractRendererClearModeBit): void =
+proc setClearMode*(self: gen_qsgabstractrenderer_types.QSGAbstractRenderer, mode: cint): void =
 
   fcQSGAbstractRenderer_setClearMode(self.h, cint(mode))
 
-proc clearMode*(self: QSGAbstractRenderer, ): QSGAbstractRendererClearModeBit =
+proc clearMode*(self: gen_qsgabstractrenderer_types.QSGAbstractRenderer, ): cint =
 
-  QSGAbstractRendererClearModeBit(fcQSGAbstractRenderer_clearMode(self.h))
+  cint(fcQSGAbstractRenderer_clearMode(self.h))
 
-proc renderScene*(self: QSGAbstractRenderer, fboId: cuint): void =
+proc renderScene*(self: gen_qsgabstractrenderer_types.QSGAbstractRenderer, fboId: cuint): void =
 
   fcQSGAbstractRenderer_renderScene(self.h, fboId)
 
-proc sceneGraphChanged*(self: QSGAbstractRenderer, ): void =
+proc sceneGraphChanged*(self: gen_qsgabstractrenderer_types.QSGAbstractRenderer, ): void =
 
   fcQSGAbstractRenderer_sceneGraphChanged(self.h)
 
@@ -218,41 +214,41 @@ proc miqt_exec_callback_QSGAbstractRenderer_sceneGraphChanged(slot: int) {.expor
 
   nimfunc[]()
 
-proc onsceneGraphChanged*(self: QSGAbstractRenderer, slot: proc()) =
+proc onsceneGraphChanged*(self: gen_qsgabstractrenderer_types.QSGAbstractRenderer, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQSGAbstractRenderer_connect_sceneGraphChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QSGAbstractRenderer, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qsgabstractrenderer_types.QSGAbstractRenderer, s: cstring, c: cstring): string =
 
   let v_ms = fcQSGAbstractRenderer_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QSGAbstractRenderer, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qsgabstractrenderer_types.QSGAbstractRenderer, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQSGAbstractRenderer_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QSGAbstractRenderer, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qsgabstractrenderer_types.QSGAbstractRenderer, s: cstring, c: cstring): string =
 
   let v_ms = fcQSGAbstractRenderer_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QSGAbstractRenderer, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qsgabstractrenderer_types.QSGAbstractRenderer, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQSGAbstractRenderer_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc staticMetaObject*(_: type QSGAbstractRenderer): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qsgabstractrenderer_types.QSGAbstractRenderer): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQSGAbstractRenderer_staticMetaObject())
-proc delete*(self: QSGAbstractRenderer) =
+proc delete*(self: gen_qsgabstractrenderer_types.QSGAbstractRenderer) =
   fcQSGAbstractRenderer_delete(self.h)

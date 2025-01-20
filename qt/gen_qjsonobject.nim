@@ -146,23 +146,23 @@ proc fcQJsonObjectconst_iterator_operatorGreaterOrEqualWithOther(self: pointer, 
 proc fcQJsonObjectconst_iterator_delete(self: pointer) {.importc: "QJsonObject__const_iterator_delete".}
 
 
-func init*(T: type QJsonObject, h: ptr cQJsonObject): QJsonObject =
+func init*(T: type gen_qjsonobject_types.QJsonObject, h: ptr cQJsonObject): gen_qjsonobject_types.QJsonObject =
   T(h: h)
-proc create*(T: type QJsonObject, ): QJsonObject =
+proc create*(T: type gen_qjsonobject_types.QJsonObject, ): gen_qjsonobject_types.QJsonObject =
 
-  QJsonObject.init(fcQJsonObject_new())
-proc create*(T: type QJsonObject, other: QJsonObject): QJsonObject =
+  gen_qjsonobject_types.QJsonObject.init(fcQJsonObject_new())
+proc create*(T: type gen_qjsonobject_types.QJsonObject, other: gen_qjsonobject_types.QJsonObject): gen_qjsonobject_types.QJsonObject =
 
-  QJsonObject.init(fcQJsonObject_new2(other.h))
-proc operatorAssign*(self: QJsonObject, other: QJsonObject): void =
+  gen_qjsonobject_types.QJsonObject.init(fcQJsonObject_new2(other.h))
+proc operatorAssign*(self: gen_qjsonobject_types.QJsonObject, other: gen_qjsonobject_types.QJsonObject): void =
 
   fcQJsonObject_operatorAssign(self.h, other.h)
 
-proc swap*(self: QJsonObject, other: QJsonObject): void =
+proc swap*(self: gen_qjsonobject_types.QJsonObject, other: gen_qjsonobject_types.QJsonObject): void =
 
   fcQJsonObject_swap(self.h, other.h)
 
-proc fromVariantMap*(_: type QJsonObject, map: Table[string,gen_qvariant.QVariant]): QJsonObject =
+proc fromVariantMap*(_: type gen_qjsonobject_types.QJsonObject, map: Table[string,gen_qvariant.QVariant]): gen_qjsonobject_types.QJsonObject =
 
   var map_Keys_CArray = newSeq[struct_miqt_string](len(map))
   var map_Values_CArray = newSeq[pointer](len(map))
@@ -172,9 +172,9 @@ proc fromVariantMap*(_: type QJsonObject, map: Table[string,gen_qvariant.QVarian
     map_Values_CArray[map_ctr] = map_v.h
     map_ctr += 1
 
-  QJsonObject(h: fcQJsonObject_fromVariantMap(struct_miqt_map(len: csize_t(len(map)),keys: if len(map) == 0: nil else: addr(map_Keys_CArray[0]), values: if len(map) == 0: nil else: addr(map_Values_CArray[0]),)))
+  gen_qjsonobject_types.QJsonObject(h: fcQJsonObject_fromVariantMap(struct_miqt_map(len: csize_t(len(map)),keys: if len(map) == 0: nil else: addr(map_Keys_CArray[0]), values: if len(map) == 0: nil else: addr(map_Values_CArray[0]),)))
 
-proc toVariantMap*(self: QJsonObject, ): Table[string,gen_qvariant.QVariant] =
+proc toVariantMap*(self: gen_qjsonobject_types.QJsonObject, ): Table[string,gen_qvariant.QVariant] =
 
   var v_mm = fcQJsonObject_toVariantMap(self.h)
   var vx_ret: Table[string, gen_qvariant.QVariant]
@@ -191,7 +191,7 @@ proc toVariantMap*(self: QJsonObject, ): Table[string,gen_qvariant.QVariant] =
     vx_ret[v_entry_Key] = v_entry_Value
   vx_ret
 
-proc fromVariantHash*(_: type QJsonObject, map: Table[string,gen_qvariant.QVariant]): QJsonObject =
+proc fromVariantHash*(_: type gen_qjsonobject_types.QJsonObject, map: Table[string,gen_qvariant.QVariant]): gen_qjsonobject_types.QJsonObject =
 
   var map_Keys_CArray = newSeq[struct_miqt_string](len(map))
   var map_Values_CArray = newSeq[pointer](len(map))
@@ -201,9 +201,9 @@ proc fromVariantHash*(_: type QJsonObject, map: Table[string,gen_qvariant.QVaria
     map_Values_CArray[map_ctr] = map_v.h
     map_ctr += 1
 
-  QJsonObject(h: fcQJsonObject_fromVariantHash(struct_miqt_map(len: csize_t(len(map)),keys: if len(map) == 0: nil else: addr(map_Keys_CArray[0]), values: if len(map) == 0: nil else: addr(map_Values_CArray[0]),)))
+  gen_qjsonobject_types.QJsonObject(h: fcQJsonObject_fromVariantHash(struct_miqt_map(len: csize_t(len(map)),keys: if len(map) == 0: nil else: addr(map_Keys_CArray[0]), values: if len(map) == 0: nil else: addr(map_Values_CArray[0]),)))
 
-proc toVariantHash*(self: QJsonObject, ): Table[string,gen_qvariant.QVariant] =
+proc toVariantHash*(self: gen_qjsonobject_types.QJsonObject, ): Table[string,gen_qvariant.QVariant] =
 
   var v_mm = fcQJsonObject_toVariantHash(self.h)
   var vx_ret: Table[string, gen_qvariant.QVariant]
@@ -220,7 +220,7 @@ proc toVariantHash*(self: QJsonObject, ): Table[string,gen_qvariant.QVariant] =
     vx_ret[v_entry_Key] = v_entry_Value
   vx_ret
 
-proc keys*(self: QJsonObject, ): seq[string] =
+proc keys*(self: gen_qjsonobject_types.QJsonObject, ): seq[string] =
 
   var v_ma = fcQJsonObject_keys(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -232,346 +232,346 @@ proc keys*(self: QJsonObject, ): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc size*(self: QJsonObject, ): cint =
+proc size*(self: gen_qjsonobject_types.QJsonObject, ): cint =
 
   fcQJsonObject_size(self.h)
 
-proc count*(self: QJsonObject, ): cint =
+proc count*(self: gen_qjsonobject_types.QJsonObject, ): cint =
 
   fcQJsonObject_count(self.h)
 
-proc length*(self: QJsonObject, ): cint =
+proc length*(self: gen_qjsonobject_types.QJsonObject, ): cint =
 
   fcQJsonObject_length(self.h)
 
-proc isEmpty*(self: QJsonObject, ): bool =
+proc isEmpty*(self: gen_qjsonobject_types.QJsonObject, ): bool =
 
   fcQJsonObject_isEmpty(self.h)
 
-proc value*(self: QJsonObject, key: string): gen_qjsonvalue.QJsonValue =
+proc value*(self: gen_qjsonobject_types.QJsonObject, key: string): gen_qjsonvalue.QJsonValue =
 
   gen_qjsonvalue.QJsonValue(h: fcQJsonObject_value(self.h, struct_miqt_string(data: key, len: csize_t(len(key)))))
 
-proc operatorSubscript*(self: QJsonObject, key: string): gen_qjsonvalue.QJsonValue =
+proc operatorSubscript*(self: gen_qjsonobject_types.QJsonObject, key: string): gen_qjsonvalue.QJsonValue =
 
   gen_qjsonvalue.QJsonValue(h: fcQJsonObject_operatorSubscript(self.h, struct_miqt_string(data: key, len: csize_t(len(key)))))
 
-proc operatorSubscriptWithKey*(self: QJsonObject, key: string): gen_qjsonvalue.QJsonValueRef =
+proc operatorSubscriptWithKey*(self: gen_qjsonobject_types.QJsonObject, key: string): gen_qjsonvalue.QJsonValueRef =
 
   gen_qjsonvalue.QJsonValueRef(h: fcQJsonObject_operatorSubscriptWithKey(self.h, struct_miqt_string(data: key, len: csize_t(len(key)))))
 
-proc remove*(self: QJsonObject, key: string): void =
+proc remove*(self: gen_qjsonobject_types.QJsonObject, key: string): void =
 
   fcQJsonObject_remove(self.h, struct_miqt_string(data: key, len: csize_t(len(key))))
 
-proc take*(self: QJsonObject, key: string): gen_qjsonvalue.QJsonValue =
+proc take*(self: gen_qjsonobject_types.QJsonObject, key: string): gen_qjsonvalue.QJsonValue =
 
   gen_qjsonvalue.QJsonValue(h: fcQJsonObject_take(self.h, struct_miqt_string(data: key, len: csize_t(len(key)))))
 
-proc contains*(self: QJsonObject, key: string): bool =
+proc contains*(self: gen_qjsonobject_types.QJsonObject, key: string): bool =
 
   fcQJsonObject_contains(self.h, struct_miqt_string(data: key, len: csize_t(len(key))))
 
-proc operatorEqual*(self: QJsonObject, other: QJsonObject): bool =
+proc operatorEqual*(self: gen_qjsonobject_types.QJsonObject, other: gen_qjsonobject_types.QJsonObject): bool =
 
   fcQJsonObject_operatorEqual(self.h, other.h)
 
-proc operatorNotEqual*(self: QJsonObject, other: QJsonObject): bool =
+proc operatorNotEqual*(self: gen_qjsonobject_types.QJsonObject, other: gen_qjsonobject_types.QJsonObject): bool =
 
   fcQJsonObject_operatorNotEqual(self.h, other.h)
 
-proc begin*(self: QJsonObject, ): QJsonObjectiterator =
+proc begin*(self: gen_qjsonobject_types.QJsonObject, ): gen_qjsonobject_types.QJsonObjectiterator =
 
-  QJsonObjectiterator(h: fcQJsonObject_begin(self.h))
+  gen_qjsonobject_types.QJsonObjectiterator(h: fcQJsonObject_begin(self.h))
 
-proc begin2*(self: QJsonObject, ): QJsonObjectconst_iterator =
+proc begin2*(self: gen_qjsonobject_types.QJsonObject, ): gen_qjsonobject_types.QJsonObjectconst_iterator =
 
-  QJsonObjectconst_iterator(h: fcQJsonObject_begin2(self.h))
+  gen_qjsonobject_types.QJsonObjectconst_iterator(h: fcQJsonObject_begin2(self.h))
 
-proc constBegin*(self: QJsonObject, ): QJsonObjectconst_iterator =
+proc constBegin*(self: gen_qjsonobject_types.QJsonObject, ): gen_qjsonobject_types.QJsonObjectconst_iterator =
 
-  QJsonObjectconst_iterator(h: fcQJsonObject_constBegin(self.h))
+  gen_qjsonobject_types.QJsonObjectconst_iterator(h: fcQJsonObject_constBegin(self.h))
 
-proc endX*(self: QJsonObject, ): QJsonObjectiterator =
+proc endX*(self: gen_qjsonobject_types.QJsonObject, ): gen_qjsonobject_types.QJsonObjectiterator =
 
-  QJsonObjectiterator(h: fcQJsonObject_endX(self.h))
+  gen_qjsonobject_types.QJsonObjectiterator(h: fcQJsonObject_endX(self.h))
 
-proc end2*(self: QJsonObject, ): QJsonObjectconst_iterator =
+proc end2*(self: gen_qjsonobject_types.QJsonObject, ): gen_qjsonobject_types.QJsonObjectconst_iterator =
 
-  QJsonObjectconst_iterator(h: fcQJsonObject_end2(self.h))
+  gen_qjsonobject_types.QJsonObjectconst_iterator(h: fcQJsonObject_end2(self.h))
 
-proc constEnd*(self: QJsonObject, ): QJsonObjectconst_iterator =
+proc constEnd*(self: gen_qjsonobject_types.QJsonObject, ): gen_qjsonobject_types.QJsonObjectconst_iterator =
 
-  QJsonObjectconst_iterator(h: fcQJsonObject_constEnd(self.h))
+  gen_qjsonobject_types.QJsonObjectconst_iterator(h: fcQJsonObject_constEnd(self.h))
 
-proc erase*(self: QJsonObject, it: QJsonObjectiterator): QJsonObjectiterator =
+proc erase*(self: gen_qjsonobject_types.QJsonObject, it: gen_qjsonobject_types.QJsonObjectiterator): gen_qjsonobject_types.QJsonObjectiterator =
 
-  QJsonObjectiterator(h: fcQJsonObject_erase(self.h, it.h))
+  gen_qjsonobject_types.QJsonObjectiterator(h: fcQJsonObject_erase(self.h, it.h))
 
-proc find*(self: QJsonObject, key: string): QJsonObjectiterator =
+proc find*(self: gen_qjsonobject_types.QJsonObject, key: string): gen_qjsonobject_types.QJsonObjectiterator =
 
-  QJsonObjectiterator(h: fcQJsonObject_find(self.h, struct_miqt_string(data: key, len: csize_t(len(key)))))
+  gen_qjsonobject_types.QJsonObjectiterator(h: fcQJsonObject_find(self.h, struct_miqt_string(data: key, len: csize_t(len(key)))))
 
-proc findWithKey*(self: QJsonObject, key: string): QJsonObjectconst_iterator =
+proc findWithKey*(self: gen_qjsonobject_types.QJsonObject, key: string): gen_qjsonobject_types.QJsonObjectconst_iterator =
 
-  QJsonObjectconst_iterator(h: fcQJsonObject_findWithKey(self.h, struct_miqt_string(data: key, len: csize_t(len(key)))))
+  gen_qjsonobject_types.QJsonObjectconst_iterator(h: fcQJsonObject_findWithKey(self.h, struct_miqt_string(data: key, len: csize_t(len(key)))))
 
-proc constFind*(self: QJsonObject, key: string): QJsonObjectconst_iterator =
+proc constFind*(self: gen_qjsonobject_types.QJsonObject, key: string): gen_qjsonobject_types.QJsonObjectconst_iterator =
 
-  QJsonObjectconst_iterator(h: fcQJsonObject_constFind(self.h, struct_miqt_string(data: key, len: csize_t(len(key)))))
+  gen_qjsonobject_types.QJsonObjectconst_iterator(h: fcQJsonObject_constFind(self.h, struct_miqt_string(data: key, len: csize_t(len(key)))))
 
-proc insert*(self: QJsonObject, key: string, value: gen_qjsonvalue.QJsonValue): QJsonObjectiterator =
+proc insert*(self: gen_qjsonobject_types.QJsonObject, key: string, value: gen_qjsonvalue.QJsonValue): gen_qjsonobject_types.QJsonObjectiterator =
 
-  QJsonObjectiterator(h: fcQJsonObject_insert(self.h, struct_miqt_string(data: key, len: csize_t(len(key))), value.h))
+  gen_qjsonobject_types.QJsonObjectiterator(h: fcQJsonObject_insert(self.h, struct_miqt_string(data: key, len: csize_t(len(key))), value.h))
 
-proc empty*(self: QJsonObject, ): bool =
+proc empty*(self: gen_qjsonobject_types.QJsonObject, ): bool =
 
   fcQJsonObject_empty(self.h)
 
-proc delete*(self: QJsonObject) =
+proc delete*(self: gen_qjsonobject_types.QJsonObject) =
   fcQJsonObject_delete(self.h)
 
-func init*(T: type QJsonObjectiterator, h: ptr cQJsonObjectiterator): QJsonObjectiterator =
+func init*(T: type gen_qjsonobject_types.QJsonObjectiterator, h: ptr cQJsonObjectiterator): gen_qjsonobject_types.QJsonObjectiterator =
   T(h: h)
-proc create*(T: type QJsonObjectiterator, ): QJsonObjectiterator =
+proc create*(T: type gen_qjsonobject_types.QJsonObjectiterator, ): gen_qjsonobject_types.QJsonObjectiterator =
 
-  QJsonObjectiterator.init(fcQJsonObjectiterator_new())
-proc create*(T: type QJsonObjectiterator, obj: QJsonObject, index: cint): QJsonObjectiterator =
+  gen_qjsonobject_types.QJsonObjectiterator.init(fcQJsonObjectiterator_new())
+proc create*(T: type gen_qjsonobject_types.QJsonObjectiterator, obj: gen_qjsonobject_types.QJsonObject, index: cint): gen_qjsonobject_types.QJsonObjectiterator =
 
-  QJsonObjectiterator.init(fcQJsonObjectiterator_new2(obj.h, index))
-proc create*(T: type QJsonObjectiterator, param1: QJsonObjectiterator): QJsonObjectiterator =
+  gen_qjsonobject_types.QJsonObjectiterator.init(fcQJsonObjectiterator_new2(obj.h, index))
+proc create*(T: type gen_qjsonobject_types.QJsonObjectiterator, param1: gen_qjsonobject_types.QJsonObjectiterator): gen_qjsonobject_types.QJsonObjectiterator =
 
-  QJsonObjectiterator.init(fcQJsonObjectiterator_new3(param1.h))
-proc key*(self: QJsonObjectiterator, ): string =
+  gen_qjsonobject_types.QJsonObjectiterator.init(fcQJsonObjectiterator_new3(param1.h))
+proc key*(self: gen_qjsonobject_types.QJsonObjectiterator, ): string =
 
   let v_ms = fcQJsonObjectiterator_key(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc value*(self: QJsonObjectiterator, ): gen_qjsonvalue.QJsonValueRef =
+proc value*(self: gen_qjsonobject_types.QJsonObjectiterator, ): gen_qjsonvalue.QJsonValueRef =
 
   gen_qjsonvalue.QJsonValueRef(h: fcQJsonObjectiterator_value(self.h))
 
-proc operatorMultiply*(self: QJsonObjectiterator, ): gen_qjsonvalue.QJsonValueRef =
+proc operatorMultiply*(self: gen_qjsonobject_types.QJsonObjectiterator, ): gen_qjsonvalue.QJsonValueRef =
 
   gen_qjsonvalue.QJsonValueRef(h: fcQJsonObjectiterator_operatorMultiply(self.h))
 
-proc operatorMinusGreater*(self: QJsonObjectiterator, ): gen_qjsonvalue.QJsonValueRefPtr =
+proc operatorMinusGreater*(self: gen_qjsonobject_types.QJsonObjectiterator, ): gen_qjsonvalue.QJsonValueRefPtr =
 
   gen_qjsonvalue.QJsonValueRefPtr(h: fcQJsonObjectiterator_operatorMinusGreater(self.h))
 
-proc operatorSubscript*(self: QJsonObjectiterator, j: cint): gen_qjsonvalue.QJsonValueRef =
+proc operatorSubscript*(self: gen_qjsonobject_types.QJsonObjectiterator, j: cint): gen_qjsonvalue.QJsonValueRef =
 
   gen_qjsonvalue.QJsonValueRef(h: fcQJsonObjectiterator_operatorSubscript(self.h, j))
 
-proc operatorEqual*(self: QJsonObjectiterator, other: QJsonObjectiterator): bool =
+proc operatorEqual*(self: gen_qjsonobject_types.QJsonObjectiterator, other: gen_qjsonobject_types.QJsonObjectiterator): bool =
 
   fcQJsonObjectiterator_operatorEqual(self.h, other.h)
 
-proc operatorNotEqual*(self: QJsonObjectiterator, other: QJsonObjectiterator): bool =
+proc operatorNotEqual*(self: gen_qjsonobject_types.QJsonObjectiterator, other: gen_qjsonobject_types.QJsonObjectiterator): bool =
 
   fcQJsonObjectiterator_operatorNotEqual(self.h, other.h)
 
-proc operatorLesser*(self: QJsonObjectiterator, other: QJsonObjectiterator): bool =
+proc operatorLesser*(self: gen_qjsonobject_types.QJsonObjectiterator, other: gen_qjsonobject_types.QJsonObjectiterator): bool =
 
   fcQJsonObjectiterator_operatorLesser(self.h, other.h)
 
-proc operatorLesserOrEqual*(self: QJsonObjectiterator, other: QJsonObjectiterator): bool =
+proc operatorLesserOrEqual*(self: gen_qjsonobject_types.QJsonObjectiterator, other: gen_qjsonobject_types.QJsonObjectiterator): bool =
 
   fcQJsonObjectiterator_operatorLesserOrEqual(self.h, other.h)
 
-proc operatorGreater*(self: QJsonObjectiterator, other: QJsonObjectiterator): bool =
+proc operatorGreater*(self: gen_qjsonobject_types.QJsonObjectiterator, other: gen_qjsonobject_types.QJsonObjectiterator): bool =
 
   fcQJsonObjectiterator_operatorGreater(self.h, other.h)
 
-proc operatorGreaterOrEqual*(self: QJsonObjectiterator, other: QJsonObjectiterator): bool =
+proc operatorGreaterOrEqual*(self: gen_qjsonobject_types.QJsonObjectiterator, other: gen_qjsonobject_types.QJsonObjectiterator): bool =
 
   fcQJsonObjectiterator_operatorGreaterOrEqual(self.h, other.h)
 
-proc operatorPlusPlus*(self: QJsonObjectiterator, ): QJsonObjectiterator =
+proc operatorPlusPlus*(self: gen_qjsonobject_types.QJsonObjectiterator, ): gen_qjsonobject_types.QJsonObjectiterator =
 
-  QJsonObjectiterator(h: fcQJsonObjectiterator_operatorPlusPlus(self.h))
+  gen_qjsonobject_types.QJsonObjectiterator(h: fcQJsonObjectiterator_operatorPlusPlus(self.h))
 
-proc operatorPlusPlusWithInt*(self: QJsonObjectiterator, param1: cint): QJsonObjectiterator =
+proc operatorPlusPlusWithInt*(self: gen_qjsonobject_types.QJsonObjectiterator, param1: cint): gen_qjsonobject_types.QJsonObjectiterator =
 
-  QJsonObjectiterator(h: fcQJsonObjectiterator_operatorPlusPlusWithInt(self.h, param1))
+  gen_qjsonobject_types.QJsonObjectiterator(h: fcQJsonObjectiterator_operatorPlusPlusWithInt(self.h, param1))
 
-proc operatorMinusMinus*(self: QJsonObjectiterator, ): QJsonObjectiterator =
+proc operatorMinusMinus*(self: gen_qjsonobject_types.QJsonObjectiterator, ): gen_qjsonobject_types.QJsonObjectiterator =
 
-  QJsonObjectiterator(h: fcQJsonObjectiterator_operatorMinusMinus(self.h))
+  gen_qjsonobject_types.QJsonObjectiterator(h: fcQJsonObjectiterator_operatorMinusMinus(self.h))
 
-proc operatorMinusMinusWithInt*(self: QJsonObjectiterator, param1: cint): QJsonObjectiterator =
+proc operatorMinusMinusWithInt*(self: gen_qjsonobject_types.QJsonObjectiterator, param1: cint): gen_qjsonobject_types.QJsonObjectiterator =
 
-  QJsonObjectiterator(h: fcQJsonObjectiterator_operatorMinusMinusWithInt(self.h, param1))
+  gen_qjsonobject_types.QJsonObjectiterator(h: fcQJsonObjectiterator_operatorMinusMinusWithInt(self.h, param1))
 
-proc operatorPlus*(self: QJsonObjectiterator, j: cint): QJsonObjectiterator =
+proc operatorPlus*(self: gen_qjsonobject_types.QJsonObjectiterator, j: cint): gen_qjsonobject_types.QJsonObjectiterator =
 
-  QJsonObjectiterator(h: fcQJsonObjectiterator_operatorPlus(self.h, j))
+  gen_qjsonobject_types.QJsonObjectiterator(h: fcQJsonObjectiterator_operatorPlus(self.h, j))
 
-proc operatorMinus*(self: QJsonObjectiterator, j: cint): QJsonObjectiterator =
+proc operatorMinus*(self: gen_qjsonobject_types.QJsonObjectiterator, j: cint): gen_qjsonobject_types.QJsonObjectiterator =
 
-  QJsonObjectiterator(h: fcQJsonObjectiterator_operatorMinus(self.h, j))
+  gen_qjsonobject_types.QJsonObjectiterator(h: fcQJsonObjectiterator_operatorMinus(self.h, j))
 
-proc operatorPlusAssign*(self: QJsonObjectiterator, j: cint): QJsonObjectiterator =
+proc operatorPlusAssign*(self: gen_qjsonobject_types.QJsonObjectiterator, j: cint): gen_qjsonobject_types.QJsonObjectiterator =
 
-  QJsonObjectiterator(h: fcQJsonObjectiterator_operatorPlusAssign(self.h, j))
+  gen_qjsonobject_types.QJsonObjectiterator(h: fcQJsonObjectiterator_operatorPlusAssign(self.h, j))
 
-proc operatorMinusAssign*(self: QJsonObjectiterator, j: cint): QJsonObjectiterator =
+proc operatorMinusAssign*(self: gen_qjsonobject_types.QJsonObjectiterator, j: cint): gen_qjsonobject_types.QJsonObjectiterator =
 
-  QJsonObjectiterator(h: fcQJsonObjectiterator_operatorMinusAssign(self.h, j))
+  gen_qjsonobject_types.QJsonObjectiterator(h: fcQJsonObjectiterator_operatorMinusAssign(self.h, j))
 
-proc operatorMinusWithQJsonObjectiterator*(self: QJsonObjectiterator, j: QJsonObjectiterator): cint =
+proc operatorMinusWithQJsonObjectiterator*(self: gen_qjsonobject_types.QJsonObjectiterator, j: gen_qjsonobject_types.QJsonObjectiterator): cint =
 
   fcQJsonObjectiterator_operatorMinusWithQJsonObjectiterator(self.h, j.h)
 
-proc operatorEqualWithOther*(self: QJsonObjectiterator, other: QJsonObjectconst_iterator): bool =
+proc operatorEqualWithOther*(self: gen_qjsonobject_types.QJsonObjectiterator, other: gen_qjsonobject_types.QJsonObjectconst_iterator): bool =
 
   fcQJsonObjectiterator_operatorEqualWithOther(self.h, other.h)
 
-proc operatorNotEqualWithOther*(self: QJsonObjectiterator, other: QJsonObjectconst_iterator): bool =
+proc operatorNotEqualWithOther*(self: gen_qjsonobject_types.QJsonObjectiterator, other: gen_qjsonobject_types.QJsonObjectconst_iterator): bool =
 
   fcQJsonObjectiterator_operatorNotEqualWithOther(self.h, other.h)
 
-proc operatorLesserWithOther*(self: QJsonObjectiterator, other: QJsonObjectconst_iterator): bool =
+proc operatorLesserWithOther*(self: gen_qjsonobject_types.QJsonObjectiterator, other: gen_qjsonobject_types.QJsonObjectconst_iterator): bool =
 
   fcQJsonObjectiterator_operatorLesserWithOther(self.h, other.h)
 
-proc operatorLesserOrEqualWithOther*(self: QJsonObjectiterator, other: QJsonObjectconst_iterator): bool =
+proc operatorLesserOrEqualWithOther*(self: gen_qjsonobject_types.QJsonObjectiterator, other: gen_qjsonobject_types.QJsonObjectconst_iterator): bool =
 
   fcQJsonObjectiterator_operatorLesserOrEqualWithOther(self.h, other.h)
 
-proc operatorGreaterWithOther*(self: QJsonObjectiterator, other: QJsonObjectconst_iterator): bool =
+proc operatorGreaterWithOther*(self: gen_qjsonobject_types.QJsonObjectiterator, other: gen_qjsonobject_types.QJsonObjectconst_iterator): bool =
 
   fcQJsonObjectiterator_operatorGreaterWithOther(self.h, other.h)
 
-proc operatorGreaterOrEqualWithOther*(self: QJsonObjectiterator, other: QJsonObjectconst_iterator): bool =
+proc operatorGreaterOrEqualWithOther*(self: gen_qjsonobject_types.QJsonObjectiterator, other: gen_qjsonobject_types.QJsonObjectconst_iterator): bool =
 
   fcQJsonObjectiterator_operatorGreaterOrEqualWithOther(self.h, other.h)
 
-proc delete*(self: QJsonObjectiterator) =
+proc delete*(self: gen_qjsonobject_types.QJsonObjectiterator) =
   fcQJsonObjectiterator_delete(self.h)
 
-func init*(T: type QJsonObjectconst_iterator, h: ptr cQJsonObjectconst_iterator): QJsonObjectconst_iterator =
+func init*(T: type gen_qjsonobject_types.QJsonObjectconst_iterator, h: ptr cQJsonObjectconst_iterator): gen_qjsonobject_types.QJsonObjectconst_iterator =
   T(h: h)
-proc create*(T: type QJsonObjectconst_iterator, ): QJsonObjectconst_iterator =
+proc create*(T: type gen_qjsonobject_types.QJsonObjectconst_iterator, ): gen_qjsonobject_types.QJsonObjectconst_iterator =
 
-  QJsonObjectconst_iterator.init(fcQJsonObjectconst_iterator_new())
-proc create*(T: type QJsonObjectconst_iterator, obj: QJsonObject, index: cint): QJsonObjectconst_iterator =
+  gen_qjsonobject_types.QJsonObjectconst_iterator.init(fcQJsonObjectconst_iterator_new())
+proc create*(T: type gen_qjsonobject_types.QJsonObjectconst_iterator, obj: gen_qjsonobject_types.QJsonObject, index: cint): gen_qjsonobject_types.QJsonObjectconst_iterator =
 
-  QJsonObjectconst_iterator.init(fcQJsonObjectconst_iterator_new2(obj.h, index))
-proc create*(T: type QJsonObjectconst_iterator, other: QJsonObjectiterator): QJsonObjectconst_iterator =
+  gen_qjsonobject_types.QJsonObjectconst_iterator.init(fcQJsonObjectconst_iterator_new2(obj.h, index))
+proc create*(T: type gen_qjsonobject_types.QJsonObjectconst_iterator, other: gen_qjsonobject_types.QJsonObjectiterator): gen_qjsonobject_types.QJsonObjectconst_iterator =
 
-  QJsonObjectconst_iterator.init(fcQJsonObjectconst_iterator_new3(other.h))
-proc create2*(T: type QJsonObjectconst_iterator, param1: QJsonObjectconst_iterator): QJsonObjectconst_iterator =
+  gen_qjsonobject_types.QJsonObjectconst_iterator.init(fcQJsonObjectconst_iterator_new3(other.h))
+proc create2*(T: type gen_qjsonobject_types.QJsonObjectconst_iterator, param1: gen_qjsonobject_types.QJsonObjectconst_iterator): gen_qjsonobject_types.QJsonObjectconst_iterator =
 
-  QJsonObjectconst_iterator.init(fcQJsonObjectconst_iterator_new4(param1.h))
-proc key*(self: QJsonObjectconst_iterator, ): string =
+  gen_qjsonobject_types.QJsonObjectconst_iterator.init(fcQJsonObjectconst_iterator_new4(param1.h))
+proc key*(self: gen_qjsonobject_types.QJsonObjectconst_iterator, ): string =
 
   let v_ms = fcQJsonObjectconst_iterator_key(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc value*(self: QJsonObjectconst_iterator, ): gen_qjsonvalue.QJsonValue =
+proc value*(self: gen_qjsonobject_types.QJsonObjectconst_iterator, ): gen_qjsonvalue.QJsonValue =
 
   gen_qjsonvalue.QJsonValue(h: fcQJsonObjectconst_iterator_value(self.h))
 
-proc operatorMultiply*(self: QJsonObjectconst_iterator, ): gen_qjsonvalue.QJsonValue =
+proc operatorMultiply*(self: gen_qjsonobject_types.QJsonObjectconst_iterator, ): gen_qjsonvalue.QJsonValue =
 
   gen_qjsonvalue.QJsonValue(h: fcQJsonObjectconst_iterator_operatorMultiply(self.h))
 
-proc operatorMinusGreater*(self: QJsonObjectconst_iterator, ): gen_qjsonvalue.QJsonValuePtr =
+proc operatorMinusGreater*(self: gen_qjsonobject_types.QJsonObjectconst_iterator, ): gen_qjsonvalue.QJsonValuePtr =
 
   gen_qjsonvalue.QJsonValuePtr(h: fcQJsonObjectconst_iterator_operatorMinusGreater(self.h))
 
-proc operatorSubscript*(self: QJsonObjectconst_iterator, j: cint): gen_qjsonvalue.QJsonValue =
+proc operatorSubscript*(self: gen_qjsonobject_types.QJsonObjectconst_iterator, j: cint): gen_qjsonvalue.QJsonValue =
 
   gen_qjsonvalue.QJsonValue(h: fcQJsonObjectconst_iterator_operatorSubscript(self.h, j))
 
-proc operatorEqual*(self: QJsonObjectconst_iterator, other: QJsonObjectconst_iterator): bool =
+proc operatorEqual*(self: gen_qjsonobject_types.QJsonObjectconst_iterator, other: gen_qjsonobject_types.QJsonObjectconst_iterator): bool =
 
   fcQJsonObjectconst_iterator_operatorEqual(self.h, other.h)
 
-proc operatorNotEqual*(self: QJsonObjectconst_iterator, other: QJsonObjectconst_iterator): bool =
+proc operatorNotEqual*(self: gen_qjsonobject_types.QJsonObjectconst_iterator, other: gen_qjsonobject_types.QJsonObjectconst_iterator): bool =
 
   fcQJsonObjectconst_iterator_operatorNotEqual(self.h, other.h)
 
-proc operatorLesser*(self: QJsonObjectconst_iterator, other: QJsonObjectconst_iterator): bool =
+proc operatorLesser*(self: gen_qjsonobject_types.QJsonObjectconst_iterator, other: gen_qjsonobject_types.QJsonObjectconst_iterator): bool =
 
   fcQJsonObjectconst_iterator_operatorLesser(self.h, other.h)
 
-proc operatorLesserOrEqual*(self: QJsonObjectconst_iterator, other: QJsonObjectconst_iterator): bool =
+proc operatorLesserOrEqual*(self: gen_qjsonobject_types.QJsonObjectconst_iterator, other: gen_qjsonobject_types.QJsonObjectconst_iterator): bool =
 
   fcQJsonObjectconst_iterator_operatorLesserOrEqual(self.h, other.h)
 
-proc operatorGreater*(self: QJsonObjectconst_iterator, other: QJsonObjectconst_iterator): bool =
+proc operatorGreater*(self: gen_qjsonobject_types.QJsonObjectconst_iterator, other: gen_qjsonobject_types.QJsonObjectconst_iterator): bool =
 
   fcQJsonObjectconst_iterator_operatorGreater(self.h, other.h)
 
-proc operatorGreaterOrEqual*(self: QJsonObjectconst_iterator, other: QJsonObjectconst_iterator): bool =
+proc operatorGreaterOrEqual*(self: gen_qjsonobject_types.QJsonObjectconst_iterator, other: gen_qjsonobject_types.QJsonObjectconst_iterator): bool =
 
   fcQJsonObjectconst_iterator_operatorGreaterOrEqual(self.h, other.h)
 
-proc operatorPlusPlus*(self: QJsonObjectconst_iterator, ): QJsonObjectconst_iterator =
+proc operatorPlusPlus*(self: gen_qjsonobject_types.QJsonObjectconst_iterator, ): gen_qjsonobject_types.QJsonObjectconst_iterator =
 
-  QJsonObjectconst_iterator(h: fcQJsonObjectconst_iterator_operatorPlusPlus(self.h))
+  gen_qjsonobject_types.QJsonObjectconst_iterator(h: fcQJsonObjectconst_iterator_operatorPlusPlus(self.h))
 
-proc operatorPlusPlusWithInt*(self: QJsonObjectconst_iterator, param1: cint): QJsonObjectconst_iterator =
+proc operatorPlusPlusWithInt*(self: gen_qjsonobject_types.QJsonObjectconst_iterator, param1: cint): gen_qjsonobject_types.QJsonObjectconst_iterator =
 
-  QJsonObjectconst_iterator(h: fcQJsonObjectconst_iterator_operatorPlusPlusWithInt(self.h, param1))
+  gen_qjsonobject_types.QJsonObjectconst_iterator(h: fcQJsonObjectconst_iterator_operatorPlusPlusWithInt(self.h, param1))
 
-proc operatorMinusMinus*(self: QJsonObjectconst_iterator, ): QJsonObjectconst_iterator =
+proc operatorMinusMinus*(self: gen_qjsonobject_types.QJsonObjectconst_iterator, ): gen_qjsonobject_types.QJsonObjectconst_iterator =
 
-  QJsonObjectconst_iterator(h: fcQJsonObjectconst_iterator_operatorMinusMinus(self.h))
+  gen_qjsonobject_types.QJsonObjectconst_iterator(h: fcQJsonObjectconst_iterator_operatorMinusMinus(self.h))
 
-proc operatorMinusMinusWithInt*(self: QJsonObjectconst_iterator, param1: cint): QJsonObjectconst_iterator =
+proc operatorMinusMinusWithInt*(self: gen_qjsonobject_types.QJsonObjectconst_iterator, param1: cint): gen_qjsonobject_types.QJsonObjectconst_iterator =
 
-  QJsonObjectconst_iterator(h: fcQJsonObjectconst_iterator_operatorMinusMinusWithInt(self.h, param1))
+  gen_qjsonobject_types.QJsonObjectconst_iterator(h: fcQJsonObjectconst_iterator_operatorMinusMinusWithInt(self.h, param1))
 
-proc operatorPlus*(self: QJsonObjectconst_iterator, j: cint): QJsonObjectconst_iterator =
+proc operatorPlus*(self: gen_qjsonobject_types.QJsonObjectconst_iterator, j: cint): gen_qjsonobject_types.QJsonObjectconst_iterator =
 
-  QJsonObjectconst_iterator(h: fcQJsonObjectconst_iterator_operatorPlus(self.h, j))
+  gen_qjsonobject_types.QJsonObjectconst_iterator(h: fcQJsonObjectconst_iterator_operatorPlus(self.h, j))
 
-proc operatorMinus*(self: QJsonObjectconst_iterator, j: cint): QJsonObjectconst_iterator =
+proc operatorMinus*(self: gen_qjsonobject_types.QJsonObjectconst_iterator, j: cint): gen_qjsonobject_types.QJsonObjectconst_iterator =
 
-  QJsonObjectconst_iterator(h: fcQJsonObjectconst_iterator_operatorMinus(self.h, j))
+  gen_qjsonobject_types.QJsonObjectconst_iterator(h: fcQJsonObjectconst_iterator_operatorMinus(self.h, j))
 
-proc operatorPlusAssign*(self: QJsonObjectconst_iterator, j: cint): QJsonObjectconst_iterator =
+proc operatorPlusAssign*(self: gen_qjsonobject_types.QJsonObjectconst_iterator, j: cint): gen_qjsonobject_types.QJsonObjectconst_iterator =
 
-  QJsonObjectconst_iterator(h: fcQJsonObjectconst_iterator_operatorPlusAssign(self.h, j))
+  gen_qjsonobject_types.QJsonObjectconst_iterator(h: fcQJsonObjectconst_iterator_operatorPlusAssign(self.h, j))
 
-proc operatorMinusAssign*(self: QJsonObjectconst_iterator, j: cint): QJsonObjectconst_iterator =
+proc operatorMinusAssign*(self: gen_qjsonobject_types.QJsonObjectconst_iterator, j: cint): gen_qjsonobject_types.QJsonObjectconst_iterator =
 
-  QJsonObjectconst_iterator(h: fcQJsonObjectconst_iterator_operatorMinusAssign(self.h, j))
+  gen_qjsonobject_types.QJsonObjectconst_iterator(h: fcQJsonObjectconst_iterator_operatorMinusAssign(self.h, j))
 
-proc operatorMinusWithQJsonObjectconstIterator*(self: QJsonObjectconst_iterator, j: QJsonObjectconst_iterator): cint =
+proc operatorMinusWithQJsonObjectconstIterator*(self: gen_qjsonobject_types.QJsonObjectconst_iterator, j: gen_qjsonobject_types.QJsonObjectconst_iterator): cint =
 
   fcQJsonObjectconst_iterator_operatorMinusWithQJsonObjectconstIterator(self.h, j.h)
 
-proc operatorEqualWithOther*(self: QJsonObjectconst_iterator, other: QJsonObjectiterator): bool =
+proc operatorEqualWithOther*(self: gen_qjsonobject_types.QJsonObjectconst_iterator, other: gen_qjsonobject_types.QJsonObjectiterator): bool =
 
   fcQJsonObjectconst_iterator_operatorEqualWithOther(self.h, other.h)
 
-proc operatorNotEqualWithOther*(self: QJsonObjectconst_iterator, other: QJsonObjectiterator): bool =
+proc operatorNotEqualWithOther*(self: gen_qjsonobject_types.QJsonObjectconst_iterator, other: gen_qjsonobject_types.QJsonObjectiterator): bool =
 
   fcQJsonObjectconst_iterator_operatorNotEqualWithOther(self.h, other.h)
 
-proc operatorLesserWithOther*(self: QJsonObjectconst_iterator, other: QJsonObjectiterator): bool =
+proc operatorLesserWithOther*(self: gen_qjsonobject_types.QJsonObjectconst_iterator, other: gen_qjsonobject_types.QJsonObjectiterator): bool =
 
   fcQJsonObjectconst_iterator_operatorLesserWithOther(self.h, other.h)
 
-proc operatorLesserOrEqualWithOther*(self: QJsonObjectconst_iterator, other: QJsonObjectiterator): bool =
+proc operatorLesserOrEqualWithOther*(self: gen_qjsonobject_types.QJsonObjectconst_iterator, other: gen_qjsonobject_types.QJsonObjectiterator): bool =
 
   fcQJsonObjectconst_iterator_operatorLesserOrEqualWithOther(self.h, other.h)
 
-proc operatorGreaterWithOther*(self: QJsonObjectconst_iterator, other: QJsonObjectiterator): bool =
+proc operatorGreaterWithOther*(self: gen_qjsonobject_types.QJsonObjectconst_iterator, other: gen_qjsonobject_types.QJsonObjectiterator): bool =
 
   fcQJsonObjectconst_iterator_operatorGreaterWithOther(self.h, other.h)
 
-proc operatorGreaterOrEqualWithOther*(self: QJsonObjectconst_iterator, other: QJsonObjectiterator): bool =
+proc operatorGreaterOrEqualWithOther*(self: gen_qjsonobject_types.QJsonObjectconst_iterator, other: gen_qjsonobject_types.QJsonObjectiterator): bool =
 
   fcQJsonObjectconst_iterator_operatorGreaterOrEqualWithOther(self.h, other.h)
 
-proc delete*(self: QJsonObjectconst_iterator) =
+proc delete*(self: gen_qjsonobject_types.QJsonObjectconst_iterator) =
   fcQJsonObjectconst_iterator_delete(self.h)

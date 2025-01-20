@@ -34,11 +34,9 @@ const cflags = gorge("pkg-config -cflags Qt5Widgets")
 {.compile("gen_qinputmethod.cpp", cflags).}
 
 
-type QInputMethodAction* = cint
-const
-  QInputMethodClick* = 0
-  QInputMethodContextMenu* = 1
-
+type QInputMethodActionEnum* = distinct cint
+template Click*(_: type QInputMethodActionEnum): untyped = 0
+template ContextMenu*(_: type QInputMethodActionEnum): untyped = 1
 
 
 import gen_qinputmethod_types
@@ -46,7 +44,6 @@ export gen_qinputmethod_types
 
 import
   gen_qlocale,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qrect,
@@ -54,7 +51,6 @@ import
   gen_qvariant
 export
   gen_qlocale,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qrect,
@@ -111,115 +107,115 @@ proc fcQInputMethod_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string
 proc fcQInputMethod_staticMetaObject(): pointer {.importc: "QInputMethod_staticMetaObject".}
 
 
-func init*(T: type QInputMethod, h: ptr cQInputMethod): QInputMethod =
+func init*(T: type gen_qinputmethod_types.QInputMethod, h: ptr cQInputMethod): gen_qinputmethod_types.QInputMethod =
   T(h: h)
-proc metaObject*(self: QInputMethod, ): gen_qobjectdefs.QMetaObject =
+proc metaObject*(self: gen_qinputmethod_types.QInputMethod, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQInputMethod_metaObject(self.h))
 
-proc metacast*(self: QInputMethod, param1: cstring): pointer =
+proc metacast*(self: gen_qinputmethod_types.QInputMethod, param1: cstring): pointer =
 
   fcQInputMethod_metacast(self.h, param1)
 
-proc metacall*(self: QInputMethod, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qinputmethod_types.QInputMethod, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQInputMethod_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QInputMethod, s: cstring): string =
+proc tr*(_: type gen_qinputmethod_types.QInputMethod, s: cstring): string =
 
   let v_ms = fcQInputMethod_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QInputMethod, s: cstring): string =
+proc trUtf8*(_: type gen_qinputmethod_types.QInputMethod, s: cstring): string =
 
   let v_ms = fcQInputMethod_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc inputItemTransform*(self: QInputMethod, ): gen_qtransform.QTransform =
+proc inputItemTransform*(self: gen_qinputmethod_types.QInputMethod, ): gen_qtransform.QTransform =
 
   gen_qtransform.QTransform(h: fcQInputMethod_inputItemTransform(self.h))
 
-proc setInputItemTransform*(self: QInputMethod, transform: gen_qtransform.QTransform): void =
+proc setInputItemTransform*(self: gen_qinputmethod_types.QInputMethod, transform: gen_qtransform.QTransform): void =
 
   fcQInputMethod_setInputItemTransform(self.h, transform.h)
 
-proc inputItemRectangle*(self: QInputMethod, ): gen_qrect.QRectF =
+proc inputItemRectangle*(self: gen_qinputmethod_types.QInputMethod, ): gen_qrect.QRectF =
 
   gen_qrect.QRectF(h: fcQInputMethod_inputItemRectangle(self.h))
 
-proc setInputItemRectangle*(self: QInputMethod, rect: gen_qrect.QRectF): void =
+proc setInputItemRectangle*(self: gen_qinputmethod_types.QInputMethod, rect: gen_qrect.QRectF): void =
 
   fcQInputMethod_setInputItemRectangle(self.h, rect.h)
 
-proc cursorRectangle*(self: QInputMethod, ): gen_qrect.QRectF =
+proc cursorRectangle*(self: gen_qinputmethod_types.QInputMethod, ): gen_qrect.QRectF =
 
   gen_qrect.QRectF(h: fcQInputMethod_cursorRectangle(self.h))
 
-proc anchorRectangle*(self: QInputMethod, ): gen_qrect.QRectF =
+proc anchorRectangle*(self: gen_qinputmethod_types.QInputMethod, ): gen_qrect.QRectF =
 
   gen_qrect.QRectF(h: fcQInputMethod_anchorRectangle(self.h))
 
-proc keyboardRectangle*(self: QInputMethod, ): gen_qrect.QRectF =
+proc keyboardRectangle*(self: gen_qinputmethod_types.QInputMethod, ): gen_qrect.QRectF =
 
   gen_qrect.QRectF(h: fcQInputMethod_keyboardRectangle(self.h))
 
-proc inputItemClipRectangle*(self: QInputMethod, ): gen_qrect.QRectF =
+proc inputItemClipRectangle*(self: gen_qinputmethod_types.QInputMethod, ): gen_qrect.QRectF =
 
   gen_qrect.QRectF(h: fcQInputMethod_inputItemClipRectangle(self.h))
 
-proc isVisible*(self: QInputMethod, ): bool =
+proc isVisible*(self: gen_qinputmethod_types.QInputMethod, ): bool =
 
   fcQInputMethod_isVisible(self.h)
 
-proc setVisible*(self: QInputMethod, visible: bool): void =
+proc setVisible*(self: gen_qinputmethod_types.QInputMethod, visible: bool): void =
 
   fcQInputMethod_setVisible(self.h, visible)
 
-proc isAnimating*(self: QInputMethod, ): bool =
+proc isAnimating*(self: gen_qinputmethod_types.QInputMethod, ): bool =
 
   fcQInputMethod_isAnimating(self.h)
 
-proc locale*(self: QInputMethod, ): gen_qlocale.QLocale =
+proc locale*(self: gen_qinputmethod_types.QInputMethod, ): gen_qlocale.QLocale =
 
   gen_qlocale.QLocale(h: fcQInputMethod_locale(self.h))
 
-proc inputDirection*(self: QInputMethod, ): gen_qnamespace.LayoutDirection =
+proc inputDirection*(self: gen_qinputmethod_types.QInputMethod, ): cint =
 
-  gen_qnamespace.LayoutDirection(fcQInputMethod_inputDirection(self.h))
+  cint(fcQInputMethod_inputDirection(self.h))
 
-proc queryFocusObject*(_: type QInputMethod, query: gen_qnamespace.InputMethodQuery, argument: gen_qvariant.QVariant): gen_qvariant.QVariant =
+proc queryFocusObject*(_: type gen_qinputmethod_types.QInputMethod, query: cint, argument: gen_qvariant.QVariant): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fcQInputMethod_queryFocusObject(cint(query), argument.h))
 
-proc show*(self: QInputMethod, ): void =
+proc show*(self: gen_qinputmethod_types.QInputMethod, ): void =
 
   fcQInputMethod_show(self.h)
 
-proc hide*(self: QInputMethod, ): void =
+proc hide*(self: gen_qinputmethod_types.QInputMethod, ): void =
 
   fcQInputMethod_hide(self.h)
 
-proc update*(self: QInputMethod, queries: gen_qnamespace.InputMethodQuery): void =
+proc update*(self: gen_qinputmethod_types.QInputMethod, queries: cint): void =
 
   fcQInputMethod_update(self.h, cint(queries))
 
-proc reset*(self: QInputMethod, ): void =
+proc reset*(self: gen_qinputmethod_types.QInputMethod, ): void =
 
   fcQInputMethod_reset(self.h)
 
-proc commit*(self: QInputMethod, ): void =
+proc commit*(self: gen_qinputmethod_types.QInputMethod, ): void =
 
   fcQInputMethod_commit(self.h)
 
-proc invokeAction*(self: QInputMethod, a: QInputMethodAction, cursorPosition: cint): void =
+proc invokeAction*(self: gen_qinputmethod_types.QInputMethod, a: cint, cursorPosition: cint): void =
 
   fcQInputMethod_invokeAction(self.h, cint(a), cursorPosition)
 
-proc cursorRectangleChanged*(self: QInputMethod, ): void =
+proc cursorRectangleChanged*(self: gen_qinputmethod_types.QInputMethod, ): void =
 
   fcQInputMethod_cursorRectangleChanged(self.h)
 
@@ -229,13 +225,13 @@ proc miqt_exec_callback_QInputMethod_cursorRectangleChanged(slot: int) {.exportc
 
   nimfunc[]()
 
-proc oncursorRectangleChanged*(self: QInputMethod, slot: proc()) =
+proc oncursorRectangleChanged*(self: gen_qinputmethod_types.QInputMethod, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQInputMethod_connect_cursorRectangleChanged(self.h, cast[int](addr tmp[]))
-proc anchorRectangleChanged*(self: QInputMethod, ): void =
+proc anchorRectangleChanged*(self: gen_qinputmethod_types.QInputMethod, ): void =
 
   fcQInputMethod_anchorRectangleChanged(self.h)
 
@@ -245,13 +241,13 @@ proc miqt_exec_callback_QInputMethod_anchorRectangleChanged(slot: int) {.exportc
 
   nimfunc[]()
 
-proc onanchorRectangleChanged*(self: QInputMethod, slot: proc()) =
+proc onanchorRectangleChanged*(self: gen_qinputmethod_types.QInputMethod, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQInputMethod_connect_anchorRectangleChanged(self.h, cast[int](addr tmp[]))
-proc keyboardRectangleChanged*(self: QInputMethod, ): void =
+proc keyboardRectangleChanged*(self: gen_qinputmethod_types.QInputMethod, ): void =
 
   fcQInputMethod_keyboardRectangleChanged(self.h)
 
@@ -261,13 +257,13 @@ proc miqt_exec_callback_QInputMethod_keyboardRectangleChanged(slot: int) {.expor
 
   nimfunc[]()
 
-proc onkeyboardRectangleChanged*(self: QInputMethod, slot: proc()) =
+proc onkeyboardRectangleChanged*(self: gen_qinputmethod_types.QInputMethod, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQInputMethod_connect_keyboardRectangleChanged(self.h, cast[int](addr tmp[]))
-proc inputItemClipRectangleChanged*(self: QInputMethod, ): void =
+proc inputItemClipRectangleChanged*(self: gen_qinputmethod_types.QInputMethod, ): void =
 
   fcQInputMethod_inputItemClipRectangleChanged(self.h)
 
@@ -277,13 +273,13 @@ proc miqt_exec_callback_QInputMethod_inputItemClipRectangleChanged(slot: int) {.
 
   nimfunc[]()
 
-proc oninputItemClipRectangleChanged*(self: QInputMethod, slot: proc()) =
+proc oninputItemClipRectangleChanged*(self: gen_qinputmethod_types.QInputMethod, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQInputMethod_connect_inputItemClipRectangleChanged(self.h, cast[int](addr tmp[]))
-proc visibleChanged*(self: QInputMethod, ): void =
+proc visibleChanged*(self: gen_qinputmethod_types.QInputMethod, ): void =
 
   fcQInputMethod_visibleChanged(self.h)
 
@@ -293,13 +289,13 @@ proc miqt_exec_callback_QInputMethod_visibleChanged(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onvisibleChanged*(self: QInputMethod, slot: proc()) =
+proc onvisibleChanged*(self: gen_qinputmethod_types.QInputMethod, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQInputMethod_connect_visibleChanged(self.h, cast[int](addr tmp[]))
-proc animatingChanged*(self: QInputMethod, ): void =
+proc animatingChanged*(self: gen_qinputmethod_types.QInputMethod, ): void =
 
   fcQInputMethod_animatingChanged(self.h)
 
@@ -309,13 +305,13 @@ proc miqt_exec_callback_QInputMethod_animatingChanged(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onanimatingChanged*(self: QInputMethod, slot: proc()) =
+proc onanimatingChanged*(self: gen_qinputmethod_types.QInputMethod, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQInputMethod_connect_animatingChanged(self.h, cast[int](addr tmp[]))
-proc localeChanged*(self: QInputMethod, ): void =
+proc localeChanged*(self: gen_qinputmethod_types.QInputMethod, ): void =
 
   fcQInputMethod_localeChanged(self.h)
 
@@ -325,57 +321,57 @@ proc miqt_exec_callback_QInputMethod_localeChanged(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onlocaleChanged*(self: QInputMethod, slot: proc()) =
+proc onlocaleChanged*(self: gen_qinputmethod_types.QInputMethod, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQInputMethod_connect_localeChanged(self.h, cast[int](addr tmp[]))
-proc inputDirectionChanged*(self: QInputMethod, newDirection: gen_qnamespace.LayoutDirection): void =
+proc inputDirectionChanged*(self: gen_qinputmethod_types.QInputMethod, newDirection: cint): void =
 
   fcQInputMethod_inputDirectionChanged(self.h, cint(newDirection))
 
 proc miqt_exec_callback_QInputMethod_inputDirectionChanged(slot: int, newDirection: cint) {.exportc.} =
-  type Cb = proc(newDirection: gen_qnamespace.LayoutDirection)
+  type Cb = proc(newDirection: cint)
   let nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = gen_qnamespace.LayoutDirection(newDirection)
+  let slotval1 = cint(newDirection)
 
 
   nimfunc[](slotval1)
 
-proc oninputDirectionChanged*(self: QInputMethod, slot: proc(newDirection: gen_qnamespace.LayoutDirection)) =
-  type Cb = proc(newDirection: gen_qnamespace.LayoutDirection)
+proc oninputDirectionChanged*(self: gen_qinputmethod_types.QInputMethod, slot: proc(newDirection: cint)) =
+  type Cb = proc(newDirection: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQInputMethod_connect_inputDirectionChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QInputMethod, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qinputmethod_types.QInputMethod, s: cstring, c: cstring): string =
 
   let v_ms = fcQInputMethod_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QInputMethod, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qinputmethod_types.QInputMethod, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQInputMethod_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QInputMethod, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qinputmethod_types.QInputMethod, s: cstring, c: cstring): string =
 
   let v_ms = fcQInputMethod_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QInputMethod, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qinputmethod_types.QInputMethod, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQInputMethod_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc staticMetaObject*(_: type QInputMethod): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qinputmethod_types.QInputMethod): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQInputMethod_staticMetaObject())

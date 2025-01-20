@@ -34,94 +34,76 @@ const cflags = gorge("pkg-config -cflags Qt6PrintSupport")
 {.compile("gen_qprinter.cpp", cflags).}
 
 
-type QPrinterPrinterMode* = cint
-const
-  QPrinterScreenResolution* = 0
-  QPrinterPrinterResolution* = 1
-  QPrinterHighResolution* = 2
+type QPrinterPrinterModeEnum* = distinct cint
+template ScreenResolution*(_: type QPrinterPrinterModeEnum): untyped = 0
+template PrinterResolution*(_: type QPrinterPrinterModeEnum): untyped = 1
+template HighResolution*(_: type QPrinterPrinterModeEnum): untyped = 2
 
 
-
-type QPrinterPageOrder* = cint
-const
-  QPrinterFirstPageFirst* = 0
-  QPrinterLastPageFirst* = 1
+type QPrinterPageOrderEnum* = distinct cint
+template FirstPageFirst*(_: type QPrinterPageOrderEnum): untyped = 0
+template LastPageFirst*(_: type QPrinterPageOrderEnum): untyped = 1
 
 
-
-type QPrinterColorMode* = cint
-const
-  QPrinterGrayScale* = 0
-  QPrinterColor* = 1
+type QPrinterColorModeEnum* = distinct cint
+template GrayScale*(_: type QPrinterColorModeEnum): untyped = 0
+template Color*(_: type QPrinterColorModeEnum): untyped = 1
 
 
-
-type QPrinterPaperSource* = cint
-const
-  QPrinterOnlyOne* = 0
-  QPrinterLower* = 1
-  QPrinterMiddle* = 2
-  QPrinterManual* = 3
-  QPrinterEnvelope* = 4
-  QPrinterEnvelopeManual* = 5
-  QPrinterAuto* = 6
-  QPrinterTractor* = 7
-  QPrinterSmallFormat* = 8
-  QPrinterLargeFormat* = 9
-  QPrinterLargeCapacity* = 10
-  QPrinterCassette* = 11
-  QPrinterFormSource* = 12
-  QPrinterMaxPageSource* = 13
-  QPrinterCustomSource* = 14
-  QPrinterLastPaperSource* = 14
-  QPrinterUpper* = 0
+type QPrinterPaperSourceEnum* = distinct cint
+template OnlyOne*(_: type QPrinterPaperSourceEnum): untyped = 0
+template Lower*(_: type QPrinterPaperSourceEnum): untyped = 1
+template Middle*(_: type QPrinterPaperSourceEnum): untyped = 2
+template Manual*(_: type QPrinterPaperSourceEnum): untyped = 3
+template Envelope*(_: type QPrinterPaperSourceEnum): untyped = 4
+template EnvelopeManual*(_: type QPrinterPaperSourceEnum): untyped = 5
+template Auto*(_: type QPrinterPaperSourceEnum): untyped = 6
+template Tractor*(_: type QPrinterPaperSourceEnum): untyped = 7
+template SmallFormat*(_: type QPrinterPaperSourceEnum): untyped = 8
+template LargeFormat*(_: type QPrinterPaperSourceEnum): untyped = 9
+template LargeCapacity*(_: type QPrinterPaperSourceEnum): untyped = 10
+template Cassette*(_: type QPrinterPaperSourceEnum): untyped = 11
+template FormSource*(_: type QPrinterPaperSourceEnum): untyped = 12
+template MaxPageSource*(_: type QPrinterPaperSourceEnum): untyped = 13
+template CustomSource*(_: type QPrinterPaperSourceEnum): untyped = 14
+template LastPaperSource*(_: type QPrinterPaperSourceEnum): untyped = 14
+template Upper*(_: type QPrinterPaperSourceEnum): untyped = 0
 
 
-
-type QPrinterPrinterState* = cint
-const
-  QPrinterIdle* = 0
-  QPrinterActive* = 1
-  QPrinterAborted* = 2
-  QPrinterError* = 3
+type QPrinterPrinterStateEnum* = distinct cint
+template Idle*(_: type QPrinterPrinterStateEnum): untyped = 0
+template Active*(_: type QPrinterPrinterStateEnum): untyped = 1
+template Aborted*(_: type QPrinterPrinterStateEnum): untyped = 2
+template Error*(_: type QPrinterPrinterStateEnum): untyped = 3
 
 
-
-type QPrinterOutputFormat* = cint
-const
-  QPrinterNativeFormat* = 0
-  QPrinterPdfFormat* = 1
+type QPrinterOutputFormatEnum* = distinct cint
+template NativeFormat*(_: type QPrinterOutputFormatEnum): untyped = 0
+template PdfFormat*(_: type QPrinterOutputFormatEnum): untyped = 1
 
 
-
-type QPrinterPrintRange* = cint
-const
-  QPrinterAllPages* = 0
-  QPrinterSelection* = 1
-  QPrinterPageRange* = 2
-  QPrinterCurrentPage* = 3
+type QPrinterPrintRangeEnum* = distinct cint
+template AllPages*(_: type QPrinterPrintRangeEnum): untyped = 0
+template Selection*(_: type QPrinterPrintRangeEnum): untyped = 1
+template PageRange*(_: type QPrinterPrintRangeEnum): untyped = 2
+template CurrentPage*(_: type QPrinterPrintRangeEnum): untyped = 3
 
 
-
-type QPrinterUnit* = cint
-const
-  QPrinterMillimeter* = 0
-  QPrinterPoint* = 1
-  QPrinterInch* = 2
-  QPrinterPica* = 3
-  QPrinterDidot* = 4
-  QPrinterCicero* = 5
-  QPrinterDevicePixel* = 6
+type QPrinterUnitEnum* = distinct cint
+template Millimeter*(_: type QPrinterUnitEnum): untyped = 0
+template Point*(_: type QPrinterUnitEnum): untyped = 1
+template Inch*(_: type QPrinterUnitEnum): untyped = 2
+template Pica*(_: type QPrinterUnitEnum): untyped = 3
+template Didot*(_: type QPrinterUnitEnum): untyped = 4
+template Cicero*(_: type QPrinterUnitEnum): untyped = 5
+template DevicePixel*(_: type QPrinterUnitEnum): untyped = 6
 
 
-
-type QPrinterDuplexMode* = cint
-const
-  QPrinterDuplexNone* = 0
-  QPrinterDuplexAuto* = 1
-  QPrinterDuplexLongSide* = 2
-  QPrinterDuplexShortSide* = 3
-
+type QPrinterDuplexModeEnum* = distinct cint
+template DuplexNone*(_: type QPrinterDuplexModeEnum): untyped = 0
+template DuplexAuto*(_: type QPrinterDuplexModeEnum): untyped = 1
+template DuplexLongSide*(_: type QPrinterDuplexModeEnum): untyped = 2
+template DuplexShortSide*(_: type QPrinterDuplexModeEnum): untyped = 3
 
 
 import gen_qprinter_types
@@ -237,168 +219,168 @@ proc fcQPrinter_override_virtual_sharedPainter(self: pointer, slot: int) {.impor
 proc fcQPrinter_delete(self: pointer) {.importc: "QPrinter_delete".}
 
 
-func init*(T: type QPrinter, h: ptr cQPrinter): QPrinter =
+func init*(T: type gen_qprinter_types.QPrinter, h: ptr cQPrinter): gen_qprinter_types.QPrinter =
   T(h: h)
-proc create*(T: type QPrinter, ): QPrinter =
+proc create*(T: type gen_qprinter_types.QPrinter, ): gen_qprinter_types.QPrinter =
 
-  QPrinter.init(fcQPrinter_new())
-proc create*(T: type QPrinter, printer: gen_qprinterinfo.QPrinterInfo): QPrinter =
+  gen_qprinter_types.QPrinter.init(fcQPrinter_new())
+proc create*(T: type gen_qprinter_types.QPrinter, printer: gen_qprinterinfo.QPrinterInfo): gen_qprinter_types.QPrinter =
 
-  QPrinter.init(fcQPrinter_new2(printer.h))
-proc create*(T: type QPrinter, mode: QPrinterPrinterMode): QPrinter =
+  gen_qprinter_types.QPrinter.init(fcQPrinter_new2(printer.h))
+proc create*(T: type gen_qprinter_types.QPrinter, mode: cint): gen_qprinter_types.QPrinter =
 
-  QPrinter.init(fcQPrinter_new3(cint(mode)))
-proc create*(T: type QPrinter, printer: gen_qprinterinfo.QPrinterInfo, mode: QPrinterPrinterMode): QPrinter =
+  gen_qprinter_types.QPrinter.init(fcQPrinter_new3(cint(mode)))
+proc create*(T: type gen_qprinter_types.QPrinter, printer: gen_qprinterinfo.QPrinterInfo, mode: cint): gen_qprinter_types.QPrinter =
 
-  QPrinter.init(fcQPrinter_new4(printer.h, cint(mode)))
-proc devType*(self: QPrinter, ): cint =
+  gen_qprinter_types.QPrinter.init(fcQPrinter_new4(printer.h, cint(mode)))
+proc devType*(self: gen_qprinter_types.QPrinter, ): cint =
 
   fcQPrinter_devType(self.h)
 
-proc setOutputFormat*(self: QPrinter, format: QPrinterOutputFormat): void =
+proc setOutputFormat*(self: gen_qprinter_types.QPrinter, format: cint): void =
 
   fcQPrinter_setOutputFormat(self.h, cint(format))
 
-proc outputFormat*(self: QPrinter, ): QPrinterOutputFormat =
+proc outputFormat*(self: gen_qprinter_types.QPrinter, ): cint =
 
-  QPrinterOutputFormat(fcQPrinter_outputFormat(self.h))
+  cint(fcQPrinter_outputFormat(self.h))
 
-proc setPdfVersion*(self: QPrinter, version: gen_qpagedpaintdevice.QPagedPaintDevicePdfVersion): void =
+proc setPdfVersion*(self: gen_qprinter_types.QPrinter, version: cint): void =
 
   fcQPrinter_setPdfVersion(self.h, cint(version))
 
-proc pdfVersion*(self: QPrinter, ): gen_qpagedpaintdevice.QPagedPaintDevicePdfVersion =
+proc pdfVersion*(self: gen_qprinter_types.QPrinter, ): cint =
 
-  gen_qpagedpaintdevice.QPagedPaintDevicePdfVersion(fcQPrinter_pdfVersion(self.h))
+  cint(fcQPrinter_pdfVersion(self.h))
 
-proc setPrinterName*(self: QPrinter, printerName: string): void =
+proc setPrinterName*(self: gen_qprinter_types.QPrinter, printerName: string): void =
 
   fcQPrinter_setPrinterName(self.h, struct_miqt_string(data: printerName, len: csize_t(len(printerName))))
 
-proc printerName*(self: QPrinter, ): string =
+proc printerName*(self: gen_qprinter_types.QPrinter, ): string =
 
   let v_ms = fcQPrinter_printerName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc isValid*(self: QPrinter, ): bool =
+proc isValid*(self: gen_qprinter_types.QPrinter, ): bool =
 
   fcQPrinter_isValid(self.h)
 
-proc setOutputFileName*(self: QPrinter, outputFileName: string): void =
+proc setOutputFileName*(self: gen_qprinter_types.QPrinter, outputFileName: string): void =
 
   fcQPrinter_setOutputFileName(self.h, struct_miqt_string(data: outputFileName, len: csize_t(len(outputFileName))))
 
-proc outputFileName*(self: QPrinter, ): string =
+proc outputFileName*(self: gen_qprinter_types.QPrinter, ): string =
 
   let v_ms = fcQPrinter_outputFileName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setPrintProgram*(self: QPrinter, printProgram: string): void =
+proc setPrintProgram*(self: gen_qprinter_types.QPrinter, printProgram: string): void =
 
   fcQPrinter_setPrintProgram(self.h, struct_miqt_string(data: printProgram, len: csize_t(len(printProgram))))
 
-proc printProgram*(self: QPrinter, ): string =
+proc printProgram*(self: gen_qprinter_types.QPrinter, ): string =
 
   let v_ms = fcQPrinter_printProgram(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setDocName*(self: QPrinter, docName: string): void =
+proc setDocName*(self: gen_qprinter_types.QPrinter, docName: string): void =
 
   fcQPrinter_setDocName(self.h, struct_miqt_string(data: docName, len: csize_t(len(docName))))
 
-proc docName*(self: QPrinter, ): string =
+proc docName*(self: gen_qprinter_types.QPrinter, ): string =
 
   let v_ms = fcQPrinter_docName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setCreator*(self: QPrinter, creator: string): void =
+proc setCreator*(self: gen_qprinter_types.QPrinter, creator: string): void =
 
   fcQPrinter_setCreator(self.h, struct_miqt_string(data: creator, len: csize_t(len(creator))))
 
-proc creator*(self: QPrinter, ): string =
+proc creator*(self: gen_qprinter_types.QPrinter, ): string =
 
   let v_ms = fcQPrinter_creator(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setPageOrder*(self: QPrinter, pageOrder: QPrinterPageOrder): void =
+proc setPageOrder*(self: gen_qprinter_types.QPrinter, pageOrder: cint): void =
 
   fcQPrinter_setPageOrder(self.h, cint(pageOrder))
 
-proc pageOrder*(self: QPrinter, ): QPrinterPageOrder =
+proc pageOrder*(self: gen_qprinter_types.QPrinter, ): cint =
 
-  QPrinterPageOrder(fcQPrinter_pageOrder(self.h))
+  cint(fcQPrinter_pageOrder(self.h))
 
-proc setResolution*(self: QPrinter, resolution: cint): void =
+proc setResolution*(self: gen_qprinter_types.QPrinter, resolution: cint): void =
 
   fcQPrinter_setResolution(self.h, resolution)
 
-proc resolution*(self: QPrinter, ): cint =
+proc resolution*(self: gen_qprinter_types.QPrinter, ): cint =
 
   fcQPrinter_resolution(self.h)
 
-proc setColorMode*(self: QPrinter, colorMode: QPrinterColorMode): void =
+proc setColorMode*(self: gen_qprinter_types.QPrinter, colorMode: cint): void =
 
   fcQPrinter_setColorMode(self.h, cint(colorMode))
 
-proc colorMode*(self: QPrinter, ): QPrinterColorMode =
+proc colorMode*(self: gen_qprinter_types.QPrinter, ): cint =
 
-  QPrinterColorMode(fcQPrinter_colorMode(self.h))
+  cint(fcQPrinter_colorMode(self.h))
 
-proc setCollateCopies*(self: QPrinter, collate: bool): void =
+proc setCollateCopies*(self: gen_qprinter_types.QPrinter, collate: bool): void =
 
   fcQPrinter_setCollateCopies(self.h, collate)
 
-proc collateCopies*(self: QPrinter, ): bool =
+proc collateCopies*(self: gen_qprinter_types.QPrinter, ): bool =
 
   fcQPrinter_collateCopies(self.h)
 
-proc setFullPage*(self: QPrinter, fullPage: bool): void =
+proc setFullPage*(self: gen_qprinter_types.QPrinter, fullPage: bool): void =
 
   fcQPrinter_setFullPage(self.h, fullPage)
 
-proc fullPage*(self: QPrinter, ): bool =
+proc fullPage*(self: gen_qprinter_types.QPrinter, ): bool =
 
   fcQPrinter_fullPage(self.h)
 
-proc setCopyCount*(self: QPrinter, copyCount: cint): void =
+proc setCopyCount*(self: gen_qprinter_types.QPrinter, copyCount: cint): void =
 
   fcQPrinter_setCopyCount(self.h, copyCount)
 
-proc copyCount*(self: QPrinter, ): cint =
+proc copyCount*(self: gen_qprinter_types.QPrinter, ): cint =
 
   fcQPrinter_copyCount(self.h)
 
-proc supportsMultipleCopies*(self: QPrinter, ): bool =
+proc supportsMultipleCopies*(self: gen_qprinter_types.QPrinter, ): bool =
 
   fcQPrinter_supportsMultipleCopies(self.h)
 
-proc setPaperSource*(self: QPrinter, paperSource: QPrinterPaperSource): void =
+proc setPaperSource*(self: gen_qprinter_types.QPrinter, paperSource: cint): void =
 
   fcQPrinter_setPaperSource(self.h, cint(paperSource))
 
-proc paperSource*(self: QPrinter, ): QPrinterPaperSource =
+proc paperSource*(self: gen_qprinter_types.QPrinter, ): cint =
 
-  QPrinterPaperSource(fcQPrinter_paperSource(self.h))
+  cint(fcQPrinter_paperSource(self.h))
 
-proc setDuplex*(self: QPrinter, duplex: QPrinterDuplexMode): void =
+proc setDuplex*(self: gen_qprinter_types.QPrinter, duplex: cint): void =
 
   fcQPrinter_setDuplex(self.h, cint(duplex))
 
-proc duplex*(self: QPrinter, ): QPrinterDuplexMode =
+proc duplex*(self: gen_qprinter_types.QPrinter, ): cint =
 
-  QPrinterDuplexMode(fcQPrinter_duplex(self.h))
+  cint(fcQPrinter_duplex(self.h))
 
-proc supportedResolutions*(self: QPrinter, ): seq[cint] =
+proc supportedResolutions*(self: gen_qprinter_types.QPrinter, ): seq[cint] =
 
   var v_ma = fcQPrinter_supportedResolutions(self.h)
   var vx_ret = newSeq[cint](int(v_ma.len))
@@ -407,362 +389,302 @@ proc supportedResolutions*(self: QPrinter, ): seq[cint] =
     vx_ret[i] = v_outCast[i]
   vx_ret
 
-proc setFontEmbeddingEnabled*(self: QPrinter, enable: bool): void =
+proc setFontEmbeddingEnabled*(self: gen_qprinter_types.QPrinter, enable: bool): void =
 
   fcQPrinter_setFontEmbeddingEnabled(self.h, enable)
 
-proc fontEmbeddingEnabled*(self: QPrinter, ): bool =
+proc fontEmbeddingEnabled*(self: gen_qprinter_types.QPrinter, ): bool =
 
   fcQPrinter_fontEmbeddingEnabled(self.h)
 
-proc paperRect*(self: QPrinter, param1: QPrinterUnit): gen_qrect.QRectF =
+proc paperRect*(self: gen_qprinter_types.QPrinter, param1: cint): gen_qrect.QRectF =
 
   gen_qrect.QRectF(h: fcQPrinter_paperRect(self.h, cint(param1)))
 
-proc pageRect*(self: QPrinter, param1: QPrinterUnit): gen_qrect.QRectF =
+proc pageRect*(self: gen_qprinter_types.QPrinter, param1: cint): gen_qrect.QRectF =
 
   gen_qrect.QRectF(h: fcQPrinter_pageRect(self.h, cint(param1)))
 
-proc printerSelectionOption*(self: QPrinter, ): string =
+proc printerSelectionOption*(self: gen_qprinter_types.QPrinter, ): string =
 
   let v_ms = fcQPrinter_printerSelectionOption(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setPrinterSelectionOption*(self: QPrinter, printerSelectionOption: string): void =
+proc setPrinterSelectionOption*(self: gen_qprinter_types.QPrinter, printerSelectionOption: string): void =
 
   fcQPrinter_setPrinterSelectionOption(self.h, struct_miqt_string(data: printerSelectionOption, len: csize_t(len(printerSelectionOption))))
 
-proc newPage*(self: QPrinter, ): bool =
+proc newPage*(self: gen_qprinter_types.QPrinter, ): bool =
 
   fcQPrinter_newPage(self.h)
 
-proc abort*(self: QPrinter, ): bool =
+proc abort*(self: gen_qprinter_types.QPrinter, ): bool =
 
   fcQPrinter_abort(self.h)
 
-proc printerState*(self: QPrinter, ): QPrinterPrinterState =
+proc printerState*(self: gen_qprinter_types.QPrinter, ): cint =
 
-  QPrinterPrinterState(fcQPrinter_printerState(self.h))
+  cint(fcQPrinter_printerState(self.h))
 
-proc paintEngine*(self: QPrinter, ): gen_qpaintengine.QPaintEngine =
+proc paintEngine*(self: gen_qprinter_types.QPrinter, ): gen_qpaintengine.QPaintEngine =
 
   gen_qpaintengine.QPaintEngine(h: fcQPrinter_paintEngine(self.h))
 
-proc printEngine*(self: QPrinter, ): gen_qprintengine.QPrintEngine =
+proc printEngine*(self: gen_qprinter_types.QPrinter, ): gen_qprintengine.QPrintEngine =
 
   gen_qprintengine.QPrintEngine(h: fcQPrinter_printEngine(self.h))
 
-proc setFromTo*(self: QPrinter, fromPage: cint, toPage: cint): void =
+proc setFromTo*(self: gen_qprinter_types.QPrinter, fromPage: cint, toPage: cint): void =
 
   fcQPrinter_setFromTo(self.h, fromPage, toPage)
 
-proc fromPage*(self: QPrinter, ): cint =
+proc fromPage*(self: gen_qprinter_types.QPrinter, ): cint =
 
   fcQPrinter_fromPage(self.h)
 
-proc toPage*(self: QPrinter, ): cint =
+proc toPage*(self: gen_qprinter_types.QPrinter, ): cint =
 
   fcQPrinter_toPage(self.h)
 
-proc setPrintRange*(self: QPrinter, range: QPrinterPrintRange): void =
+proc setPrintRange*(self: gen_qprinter_types.QPrinter, range: cint): void =
 
   fcQPrinter_setPrintRange(self.h, cint(range))
 
-proc printRange*(self: QPrinter, ): QPrinterPrintRange =
+proc printRange*(self: gen_qprinter_types.QPrinter, ): cint =
 
-  QPrinterPrintRange(fcQPrinter_printRange(self.h))
+  cint(fcQPrinter_printRange(self.h))
 
-proc callVirtualBase_devType(self: QPrinter, ): cint =
-
+proc QPrinterdevType*(self: gen_qprinter_types.QPrinter, ): cint =
 
   fQPrinter_virtualbase_devType(self.h)
 
-type QPrinterdevTypeBase* = proc(): cint
-proc ondevType*(self: QPrinter, slot: proc(super: QPrinterdevTypeBase): cint) =
+type QPrinterdevTypeProc* = proc(): cint
+proc ondevType*(self: gen_qprinter_types.QPrinter, slot: QPrinterdevTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrinterdevTypeBase): cint
-  var tmp = new Cb
+  var tmp = new QPrinterdevTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrinter_override_virtual_devType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrinter_devType(self: ptr cQPrinter, slot: int): cint {.exportc: "miqt_exec_callback_QPrinter_devType ".} =
-  type Cb = proc(super: QPrinterdevTypeBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_devType(QPrinter(h: self), )
+  var nimfunc = cast[ptr QPrinterdevTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_newPage(self: QPrinter, ): bool =
-
+proc QPrinternewPage*(self: gen_qprinter_types.QPrinter, ): bool =
 
   fQPrinter_virtualbase_newPage(self.h)
 
-type QPrinternewPageBase* = proc(): bool
-proc onnewPage*(self: QPrinter, slot: proc(super: QPrinternewPageBase): bool) =
+type QPrinternewPageProc* = proc(): bool
+proc onnewPage*(self: gen_qprinter_types.QPrinter, slot: QPrinternewPageProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrinternewPageBase): bool
-  var tmp = new Cb
+  var tmp = new QPrinternewPageProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrinter_override_virtual_newPage(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrinter_newPage(self: ptr cQPrinter, slot: int): bool {.exportc: "miqt_exec_callback_QPrinter_newPage ".} =
-  type Cb = proc(super: QPrinternewPageBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_newPage(QPrinter(h: self), )
+  var nimfunc = cast[ptr QPrinternewPageProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_paintEngine(self: QPrinter, ): gen_qpaintengine.QPaintEngine =
-
+proc QPrinterpaintEngine*(self: gen_qprinter_types.QPrinter, ): gen_qpaintengine.QPaintEngine =
 
   gen_qpaintengine.QPaintEngine(h: fQPrinter_virtualbase_paintEngine(self.h))
 
-type QPrinterpaintEngineBase* = proc(): gen_qpaintengine.QPaintEngine
-proc onpaintEngine*(self: QPrinter, slot: proc(super: QPrinterpaintEngineBase): gen_qpaintengine.QPaintEngine) =
+type QPrinterpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
+proc onpaintEngine*(self: gen_qprinter_types.QPrinter, slot: QPrinterpaintEngineProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrinterpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var tmp = new Cb
+  var tmp = new QPrinterpaintEngineProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrinter_override_virtual_paintEngine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrinter_paintEngine(self: ptr cQPrinter, slot: int): pointer {.exportc: "miqt_exec_callback_QPrinter_paintEngine ".} =
-  type Cb = proc(super: QPrinterpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_paintEngine(QPrinter(h: self), )
+  var nimfunc = cast[ptr QPrinterpaintEngineProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metric(self: QPrinter, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint =
-
+proc QPrintermetric*(self: gen_qprinter_types.QPrinter, param1: cint): cint =
 
   fQPrinter_virtualbase_metric(self.h, cint(param1))
 
-type QPrintermetricBase* = proc(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-proc onmetric*(self: QPrinter, slot: proc(super: QPrintermetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint) =
+type QPrintermetricProc* = proc(param1: cint): cint
+proc onmetric*(self: gen_qprinter_types.QPrinter, slot: QPrintermetricProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintermetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var tmp = new Cb
+  var tmp = new QPrintermetricProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrinter_override_virtual_metric(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrinter_metric(self: ptr cQPrinter, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QPrinter_metric ".} =
-  type Cb = proc(super: QPrintermetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): auto =
-    callVirtualBase_metric(QPrinter(h: self), param1)
-  let slotval1 = gen_qpaintdevice.QPaintDevicePaintDeviceMetric(param1)
+  var nimfunc = cast[ptr QPrintermetricProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_setPageLayout(self: QPrinter, pageLayout: gen_qpagelayout.QPageLayout): bool =
-
+proc QPrintersetPageLayout*(self: gen_qprinter_types.QPrinter, pageLayout: gen_qpagelayout.QPageLayout): bool =
 
   fQPrinter_virtualbase_setPageLayout(self.h, pageLayout.h)
 
-type QPrintersetPageLayoutBase* = proc(pageLayout: gen_qpagelayout.QPageLayout): bool
-proc onsetPageLayout*(self: QPrinter, slot: proc(super: QPrintersetPageLayoutBase, pageLayout: gen_qpagelayout.QPageLayout): bool) =
+type QPrintersetPageLayoutProc* = proc(pageLayout: gen_qpagelayout.QPageLayout): bool
+proc onsetPageLayout*(self: gen_qprinter_types.QPrinter, slot: QPrintersetPageLayoutProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintersetPageLayoutBase, pageLayout: gen_qpagelayout.QPageLayout): bool
-  var tmp = new Cb
+  var tmp = new QPrintersetPageLayoutProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrinter_override_virtual_setPageLayout(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrinter_setPageLayout(self: ptr cQPrinter, slot: int, pageLayout: pointer): bool {.exportc: "miqt_exec_callback_QPrinter_setPageLayout ".} =
-  type Cb = proc(super: QPrintersetPageLayoutBase, pageLayout: gen_qpagelayout.QPageLayout): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(pageLayout: gen_qpagelayout.QPageLayout): auto =
-    callVirtualBase_setPageLayout(QPrinter(h: self), pageLayout)
+  var nimfunc = cast[ptr QPrintersetPageLayoutProc](cast[pointer](slot))
   let slotval1 = gen_qpagelayout.QPageLayout(h: pageLayout)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_setPageSize(self: QPrinter, pageSize: gen_qpagesize.QPageSize): bool =
-
+proc QPrintersetPageSize*(self: gen_qprinter_types.QPrinter, pageSize: gen_qpagesize.QPageSize): bool =
 
   fQPrinter_virtualbase_setPageSize(self.h, pageSize.h)
 
-type QPrintersetPageSizeBase* = proc(pageSize: gen_qpagesize.QPageSize): bool
-proc onsetPageSize*(self: QPrinter, slot: proc(super: QPrintersetPageSizeBase, pageSize: gen_qpagesize.QPageSize): bool) =
+type QPrintersetPageSizeProc* = proc(pageSize: gen_qpagesize.QPageSize): bool
+proc onsetPageSize*(self: gen_qprinter_types.QPrinter, slot: QPrintersetPageSizeProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintersetPageSizeBase, pageSize: gen_qpagesize.QPageSize): bool
-  var tmp = new Cb
+  var tmp = new QPrintersetPageSizeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrinter_override_virtual_setPageSize(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrinter_setPageSize(self: ptr cQPrinter, slot: int, pageSize: pointer): bool {.exportc: "miqt_exec_callback_QPrinter_setPageSize ".} =
-  type Cb = proc(super: QPrintersetPageSizeBase, pageSize: gen_qpagesize.QPageSize): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(pageSize: gen_qpagesize.QPageSize): auto =
-    callVirtualBase_setPageSize(QPrinter(h: self), pageSize)
+  var nimfunc = cast[ptr QPrintersetPageSizeProc](cast[pointer](slot))
   let slotval1 = gen_qpagesize.QPageSize(h: pageSize)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_setPageOrientation(self: QPrinter, orientation: gen_qpagelayout.QPageLayoutOrientation): bool =
-
+proc QPrintersetPageOrientation*(self: gen_qprinter_types.QPrinter, orientation: cint): bool =
 
   fQPrinter_virtualbase_setPageOrientation(self.h, cint(orientation))
 
-type QPrintersetPageOrientationBase* = proc(orientation: gen_qpagelayout.QPageLayoutOrientation): bool
-proc onsetPageOrientation*(self: QPrinter, slot: proc(super: QPrintersetPageOrientationBase, orientation: gen_qpagelayout.QPageLayoutOrientation): bool) =
+type QPrintersetPageOrientationProc* = proc(orientation: cint): bool
+proc onsetPageOrientation*(self: gen_qprinter_types.QPrinter, slot: QPrintersetPageOrientationProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintersetPageOrientationBase, orientation: gen_qpagelayout.QPageLayoutOrientation): bool
-  var tmp = new Cb
+  var tmp = new QPrintersetPageOrientationProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrinter_override_virtual_setPageOrientation(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrinter_setPageOrientation(self: ptr cQPrinter, slot: int, orientation: cint): bool {.exportc: "miqt_exec_callback_QPrinter_setPageOrientation ".} =
-  type Cb = proc(super: QPrintersetPageOrientationBase, orientation: gen_qpagelayout.QPageLayoutOrientation): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(orientation: gen_qpagelayout.QPageLayoutOrientation): auto =
-    callVirtualBase_setPageOrientation(QPrinter(h: self), orientation)
-  let slotval1 = gen_qpagelayout.QPageLayoutOrientation(orientation)
+  var nimfunc = cast[ptr QPrintersetPageOrientationProc](cast[pointer](slot))
+  let slotval1 = cint(orientation)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_setPageMargins(self: QPrinter, margins: gen_qmargins.QMarginsF, units: gen_qpagelayout.QPageLayoutUnit): bool =
-
+proc QPrintersetPageMargins*(self: gen_qprinter_types.QPrinter, margins: gen_qmargins.QMarginsF, units: cint): bool =
 
   fQPrinter_virtualbase_setPageMargins(self.h, margins.h, cint(units))
 
-type QPrintersetPageMarginsBase* = proc(margins: gen_qmargins.QMarginsF, units: gen_qpagelayout.QPageLayoutUnit): bool
-proc onsetPageMargins*(self: QPrinter, slot: proc(super: QPrintersetPageMarginsBase, margins: gen_qmargins.QMarginsF, units: gen_qpagelayout.QPageLayoutUnit): bool) =
+type QPrintersetPageMarginsProc* = proc(margins: gen_qmargins.QMarginsF, units: cint): bool
+proc onsetPageMargins*(self: gen_qprinter_types.QPrinter, slot: QPrintersetPageMarginsProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintersetPageMarginsBase, margins: gen_qmargins.QMarginsF, units: gen_qpagelayout.QPageLayoutUnit): bool
-  var tmp = new Cb
+  var tmp = new QPrintersetPageMarginsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrinter_override_virtual_setPageMargins(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrinter_setPageMargins(self: ptr cQPrinter, slot: int, margins: pointer, units: cint): bool {.exportc: "miqt_exec_callback_QPrinter_setPageMargins ".} =
-  type Cb = proc(super: QPrintersetPageMarginsBase, margins: gen_qmargins.QMarginsF, units: gen_qpagelayout.QPageLayoutUnit): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(margins: gen_qmargins.QMarginsF, units: gen_qpagelayout.QPageLayoutUnit): auto =
-    callVirtualBase_setPageMargins(QPrinter(h: self), margins, units)
+  var nimfunc = cast[ptr QPrintersetPageMarginsProc](cast[pointer](slot))
   let slotval1 = gen_qmargins.QMarginsF(h: margins)
 
-  let slotval2 = gen_qpagelayout.QPageLayoutUnit(units)
+  let slotval2 = cint(units)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_setPageRanges(self: QPrinter, ranges: gen_qpageranges.QPageRanges): void =
-
+proc QPrintersetPageRanges*(self: gen_qprinter_types.QPrinter, ranges: gen_qpageranges.QPageRanges): void =
 
   fQPrinter_virtualbase_setPageRanges(self.h, ranges.h)
 
-type QPrintersetPageRangesBase* = proc(ranges: gen_qpageranges.QPageRanges): void
-proc onsetPageRanges*(self: QPrinter, slot: proc(super: QPrintersetPageRangesBase, ranges: gen_qpageranges.QPageRanges): void) =
+type QPrintersetPageRangesProc* = proc(ranges: gen_qpageranges.QPageRanges): void
+proc onsetPageRanges*(self: gen_qprinter_types.QPrinter, slot: QPrintersetPageRangesProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintersetPageRangesBase, ranges: gen_qpageranges.QPageRanges): void
-  var tmp = new Cb
+  var tmp = new QPrintersetPageRangesProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrinter_override_virtual_setPageRanges(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrinter_setPageRanges(self: ptr cQPrinter, slot: int, ranges: pointer): void {.exportc: "miqt_exec_callback_QPrinter_setPageRanges ".} =
-  type Cb = proc(super: QPrintersetPageRangesBase, ranges: gen_qpageranges.QPageRanges): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(ranges: gen_qpageranges.QPageRanges): auto =
-    callVirtualBase_setPageRanges(QPrinter(h: self), ranges)
+  var nimfunc = cast[ptr QPrintersetPageRangesProc](cast[pointer](slot))
   let slotval1 = gen_qpageranges.QPageRanges(h: ranges)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_initPainter(self: QPrinter, painter: gen_qpainter.QPainter): void =
-
+  nimfunc[](slotval1)
+proc QPrinterinitPainter*(self: gen_qprinter_types.QPrinter, painter: gen_qpainter.QPainter): void =
 
   fQPrinter_virtualbase_initPainter(self.h, painter.h)
 
-type QPrinterinitPainterBase* = proc(painter: gen_qpainter.QPainter): void
-proc oninitPainter*(self: QPrinter, slot: proc(super: QPrinterinitPainterBase, painter: gen_qpainter.QPainter): void) =
+type QPrinterinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
+proc oninitPainter*(self: gen_qprinter_types.QPrinter, slot: QPrinterinitPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrinterinitPainterBase, painter: gen_qpainter.QPainter): void
-  var tmp = new Cb
+  var tmp = new QPrinterinitPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrinter_override_virtual_initPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrinter_initPainter(self: ptr cQPrinter, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_QPrinter_initPainter ".} =
-  type Cb = proc(super: QPrinterinitPainterBase, painter: gen_qpainter.QPainter): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter): auto =
-    callVirtualBase_initPainter(QPrinter(h: self), painter)
+  var nimfunc = cast[ptr QPrinterinitPainterProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_redirected(self: QPrinter, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
+  nimfunc[](slotval1)
+proc QPrinterredirected*(self: gen_qprinter_types.QPrinter, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
 
   gen_qpaintdevice.QPaintDevice(h: fQPrinter_virtualbase_redirected(self.h, offset.h))
 
-type QPrinterredirectedBase* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-proc onredirected*(self: QPrinter, slot: proc(super: QPrinterredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice) =
+type QPrinterredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
+proc onredirected*(self: gen_qprinter_types.QPrinter, slot: QPrinterredirectedProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrinterredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var tmp = new Cb
+  var tmp = new QPrinterredirectedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrinter_override_virtual_redirected(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrinter_redirected(self: ptr cQPrinter, slot: int, offset: pointer): pointer {.exportc: "miqt_exec_callback_QPrinter_redirected ".} =
-  type Cb = proc(super: QPrinterredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(offset: gen_qpoint.QPoint): auto =
-    callVirtualBase_redirected(QPrinter(h: self), offset)
+  var nimfunc = cast[ptr QPrinterredirectedProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: offset)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_sharedPainter(self: QPrinter, ): gen_qpainter.QPainter =
-
+proc QPrintersharedPainter*(self: gen_qprinter_types.QPrinter, ): gen_qpainter.QPainter =
 
   gen_qpainter.QPainter(h: fQPrinter_virtualbase_sharedPainter(self.h))
 
-type QPrintersharedPainterBase* = proc(): gen_qpainter.QPainter
-proc onsharedPainter*(self: QPrinter, slot: proc(super: QPrintersharedPainterBase): gen_qpainter.QPainter) =
+type QPrintersharedPainterProc* = proc(): gen_qpainter.QPainter
+proc onsharedPainter*(self: gen_qprinter_types.QPrinter, slot: QPrintersharedPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QPrintersharedPainterBase): gen_qpainter.QPainter
-  var tmp = new Cb
+  var tmp = new QPrintersharedPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPrinter_override_virtual_sharedPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPrinter_sharedPainter(self: ptr cQPrinter, slot: int): pointer {.exportc: "miqt_exec_callback_QPrinter_sharedPainter ".} =
-  type Cb = proc(super: QPrintersharedPainterBase): gen_qpainter.QPainter
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sharedPainter(QPrinter(h: self), )
+  var nimfunc = cast[ptr QPrintersharedPainterProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc delete*(self: QPrinter) =
+proc delete*(self: gen_qprinter_types.QPrinter) =
   fcQPrinter_delete(self.h)

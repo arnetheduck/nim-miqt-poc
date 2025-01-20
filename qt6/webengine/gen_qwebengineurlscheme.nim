@@ -34,32 +34,26 @@ const cflags = gorge("pkg-config -cflags Qt6WebEngineWidgets")
 {.compile("gen_qwebengineurlscheme.cpp", cflags).}
 
 
-type QWebEngineUrlSchemeSyntax* = cint
-const
-  QWebEngineUrlSchemeHostPortAndUserInformation* = 0
-  QWebEngineUrlSchemeHostAndPort* = 1
-  QWebEngineUrlSchemeHost* = 2
-  QWebEngineUrlSchemePath* = 3
+type QWebEngineUrlSchemeSyntaxEnum* = distinct cint
+template HostPortAndUserInformation*(_: type QWebEngineUrlSchemeSyntaxEnum): untyped = 0
+template HostAndPort*(_: type QWebEngineUrlSchemeSyntaxEnum): untyped = 1
+template Host*(_: type QWebEngineUrlSchemeSyntaxEnum): untyped = 2
+template Path*(_: type QWebEngineUrlSchemeSyntaxEnum): untyped = 3
 
 
-
-type QWebEngineUrlSchemeSpecialPort* = cint
-const
-  QWebEngineUrlSchemePortUnspecified* = -1
+type QWebEngineUrlSchemeSpecialPortEnum* = distinct cint
+template PortUnspecified*(_: type QWebEngineUrlSchemeSpecialPortEnum): untyped = -1
 
 
-
-type QWebEngineUrlSchemeFlag* = cint
-const
-  QWebEngineUrlSchemeSecureScheme* = 1
-  QWebEngineUrlSchemeLocalScheme* = 2
-  QWebEngineUrlSchemeLocalAccessAllowed* = 4
-  QWebEngineUrlSchemeNoAccessAllowed* = 8
-  QWebEngineUrlSchemeServiceWorkersAllowed* = 16
-  QWebEngineUrlSchemeViewSourceAllowed* = 32
-  QWebEngineUrlSchemeContentSecurityPolicyIgnored* = 64
-  QWebEngineUrlSchemeCorsEnabled* = 128
-
+type QWebEngineUrlSchemeFlagEnum* = distinct cint
+template SecureScheme*(_: type QWebEngineUrlSchemeFlagEnum): untyped = 1
+template LocalScheme*(_: type QWebEngineUrlSchemeFlagEnum): untyped = 2
+template LocalAccessAllowed*(_: type QWebEngineUrlSchemeFlagEnum): untyped = 4
+template NoAccessAllowed*(_: type QWebEngineUrlSchemeFlagEnum): untyped = 8
+template ServiceWorkersAllowed*(_: type QWebEngineUrlSchemeFlagEnum): untyped = 16
+template ViewSourceAllowed*(_: type QWebEngineUrlSchemeFlagEnum): untyped = 32
+template ContentSecurityPolicyIgnored*(_: type QWebEngineUrlSchemeFlagEnum): untyped = 64
+template CorsEnabled*(_: type QWebEngineUrlSchemeFlagEnum): untyped = 128
 
 
 import gen_qwebengineurlscheme_types
@@ -92,73 +86,73 @@ proc fcQWebEngineUrlScheme_staticMetaObject(): pointer {.importc: "QWebEngineUrl
 proc fcQWebEngineUrlScheme_delete(self: pointer) {.importc: "QWebEngineUrlScheme_delete".}
 
 
-func init*(T: type QWebEngineUrlScheme, h: ptr cQWebEngineUrlScheme): QWebEngineUrlScheme =
+func init*(T: type gen_qwebengineurlscheme_types.QWebEngineUrlScheme, h: ptr cQWebEngineUrlScheme): gen_qwebengineurlscheme_types.QWebEngineUrlScheme =
   T(h: h)
-proc create*(T: type QWebEngineUrlScheme, ): QWebEngineUrlScheme =
+proc create*(T: type gen_qwebengineurlscheme_types.QWebEngineUrlScheme, ): gen_qwebengineurlscheme_types.QWebEngineUrlScheme =
 
-  QWebEngineUrlScheme.init(fcQWebEngineUrlScheme_new())
-proc create*(T: type QWebEngineUrlScheme, name: seq[byte]): QWebEngineUrlScheme =
+  gen_qwebengineurlscheme_types.QWebEngineUrlScheme.init(fcQWebEngineUrlScheme_new())
+proc create*(T: type gen_qwebengineurlscheme_types.QWebEngineUrlScheme, name: seq[byte]): gen_qwebengineurlscheme_types.QWebEngineUrlScheme =
 
-  QWebEngineUrlScheme.init(fcQWebEngineUrlScheme_new2(struct_miqt_string(data: cast[cstring](if len(name) == 0: nil else: unsafeAddr name[0]), len: csize_t(len(name)))))
-proc create*(T: type QWebEngineUrlScheme, that: QWebEngineUrlScheme): QWebEngineUrlScheme =
+  gen_qwebengineurlscheme_types.QWebEngineUrlScheme.init(fcQWebEngineUrlScheme_new2(struct_miqt_string(data: cast[cstring](if len(name) == 0: nil else: unsafeAddr name[0]), len: csize_t(len(name)))))
+proc create*(T: type gen_qwebengineurlscheme_types.QWebEngineUrlScheme, that: gen_qwebengineurlscheme_types.QWebEngineUrlScheme): gen_qwebengineurlscheme_types.QWebEngineUrlScheme =
 
-  QWebEngineUrlScheme.init(fcQWebEngineUrlScheme_new3(that.h))
-proc operatorAssign*(self: QWebEngineUrlScheme, that: QWebEngineUrlScheme): void =
+  gen_qwebengineurlscheme_types.QWebEngineUrlScheme.init(fcQWebEngineUrlScheme_new3(that.h))
+proc operatorAssign*(self: gen_qwebengineurlscheme_types.QWebEngineUrlScheme, that: gen_qwebengineurlscheme_types.QWebEngineUrlScheme): void =
 
   fcQWebEngineUrlScheme_operatorAssign(self.h, that.h)
 
-proc operatorEqual*(self: QWebEngineUrlScheme, that: QWebEngineUrlScheme): bool =
+proc operatorEqual*(self: gen_qwebengineurlscheme_types.QWebEngineUrlScheme, that: gen_qwebengineurlscheme_types.QWebEngineUrlScheme): bool =
 
   fcQWebEngineUrlScheme_operatorEqual(self.h, that.h)
 
-proc operatorNotEqual*(self: QWebEngineUrlScheme, that: QWebEngineUrlScheme): bool =
+proc operatorNotEqual*(self: gen_qwebengineurlscheme_types.QWebEngineUrlScheme, that: gen_qwebengineurlscheme_types.QWebEngineUrlScheme): bool =
 
   fcQWebEngineUrlScheme_operatorNotEqual(self.h, that.h)
 
-proc name*(self: QWebEngineUrlScheme, ): seq[byte] =
+proc name*(self: gen_qwebengineurlscheme_types.QWebEngineUrlScheme, ): seq[byte] =
 
   var v_bytearray = fcQWebEngineUrlScheme_name(self.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc setName*(self: QWebEngineUrlScheme, newValue: seq[byte]): void =
+proc setName*(self: gen_qwebengineurlscheme_types.QWebEngineUrlScheme, newValue: seq[byte]): void =
 
   fcQWebEngineUrlScheme_setName(self.h, struct_miqt_string(data: cast[cstring](if len(newValue) == 0: nil else: unsafeAddr newValue[0]), len: csize_t(len(newValue))))
 
-proc syntax*(self: QWebEngineUrlScheme, ): QWebEngineUrlSchemeSyntax =
+proc syntax*(self: gen_qwebengineurlscheme_types.QWebEngineUrlScheme, ): cint =
 
-  QWebEngineUrlSchemeSyntax(fcQWebEngineUrlScheme_syntax(self.h))
+  cint(fcQWebEngineUrlScheme_syntax(self.h))
 
-proc setSyntax*(self: QWebEngineUrlScheme, newValue: QWebEngineUrlSchemeSyntax): void =
+proc setSyntax*(self: gen_qwebengineurlscheme_types.QWebEngineUrlScheme, newValue: cint): void =
 
   fcQWebEngineUrlScheme_setSyntax(self.h, cint(newValue))
 
-proc defaultPort*(self: QWebEngineUrlScheme, ): cint =
+proc defaultPort*(self: gen_qwebengineurlscheme_types.QWebEngineUrlScheme, ): cint =
 
   fcQWebEngineUrlScheme_defaultPort(self.h)
 
-proc setDefaultPort*(self: QWebEngineUrlScheme, newValue: cint): void =
+proc setDefaultPort*(self: gen_qwebengineurlscheme_types.QWebEngineUrlScheme, newValue: cint): void =
 
   fcQWebEngineUrlScheme_setDefaultPort(self.h, newValue)
 
-proc flags*(self: QWebEngineUrlScheme, ): QWebEngineUrlSchemeFlag =
+proc flags*(self: gen_qwebengineurlscheme_types.QWebEngineUrlScheme, ): cint =
 
-  QWebEngineUrlSchemeFlag(fcQWebEngineUrlScheme_flags(self.h))
+  cint(fcQWebEngineUrlScheme_flags(self.h))
 
-proc setFlags*(self: QWebEngineUrlScheme, newValue: QWebEngineUrlSchemeFlag): void =
+proc setFlags*(self: gen_qwebengineurlscheme_types.QWebEngineUrlScheme, newValue: cint): void =
 
   fcQWebEngineUrlScheme_setFlags(self.h, cint(newValue))
 
-proc registerScheme*(_: type QWebEngineUrlScheme, scheme: QWebEngineUrlScheme): void =
+proc registerScheme*(_: type gen_qwebengineurlscheme_types.QWebEngineUrlScheme, scheme: gen_qwebengineurlscheme_types.QWebEngineUrlScheme): void =
 
   fcQWebEngineUrlScheme_registerScheme(scheme.h)
 
-proc schemeByName*(_: type QWebEngineUrlScheme, name: seq[byte]): QWebEngineUrlScheme =
+proc schemeByName*(_: type gen_qwebengineurlscheme_types.QWebEngineUrlScheme, name: seq[byte]): gen_qwebengineurlscheme_types.QWebEngineUrlScheme =
 
-  QWebEngineUrlScheme(h: fcQWebEngineUrlScheme_schemeByName(struct_miqt_string(data: cast[cstring](if len(name) == 0: nil else: unsafeAddr name[0]), len: csize_t(len(name)))))
+  gen_qwebengineurlscheme_types.QWebEngineUrlScheme(h: fcQWebEngineUrlScheme_schemeByName(struct_miqt_string(data: cast[cstring](if len(name) == 0: nil else: unsafeAddr name[0]), len: csize_t(len(name)))))
 
-proc staticMetaObject*(_: type QWebEngineUrlScheme): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qwebengineurlscheme_types.QWebEngineUrlScheme): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQWebEngineUrlScheme_staticMetaObject())
-proc delete*(self: QWebEngineUrlScheme) =
+proc delete*(self: gen_qwebengineurlscheme_types.QWebEngineUrlScheme) =
   fcQWebEngineUrlScheme_delete(self.h)

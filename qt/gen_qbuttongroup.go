@@ -439,7 +439,7 @@ func (this *QButtonGroup) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QButtonGroup_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QButtonGroup) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QButtonGroup) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QButtonGroup_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -466,7 +466,7 @@ func (this *QButtonGroup) callVirtualBase_Metacast(param1 string) unsafe.Pointer
 	return (unsafe.Pointer)(C.QButtonGroup_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QButtonGroup) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QButtonGroup) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QButtonGroup_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

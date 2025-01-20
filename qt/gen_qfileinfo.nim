@@ -40,13 +40,11 @@ export gen_qfileinfo_types
 import
   gen_qdatetime,
   gen_qdir,
-  gen_qfile,
-  gen_qfiledevice
+  gen_qfile
 export
   gen_qdatetime,
   gen_qdir,
-  gen_qfile,
-  gen_qfiledevice
+  gen_qfile
 
 type cQFileInfo*{.exportc: "QFileInfo", incompleteStruct.} = object
 
@@ -115,298 +113,298 @@ proc fcQFileInfo_setCaching(self: pointer, on: bool): void {.importc: "QFileInfo
 proc fcQFileInfo_delete(self: pointer) {.importc: "QFileInfo_delete".}
 
 
-func init*(T: type QFileInfo, h: ptr cQFileInfo): QFileInfo =
+func init*(T: type gen_qfileinfo_types.QFileInfo, h: ptr cQFileInfo): gen_qfileinfo_types.QFileInfo =
   T(h: h)
-proc create*(T: type QFileInfo, ): QFileInfo =
+proc create*(T: type gen_qfileinfo_types.QFileInfo, ): gen_qfileinfo_types.QFileInfo =
 
-  QFileInfo.init(fcQFileInfo_new())
-proc create*(T: type QFileInfo, file: string): QFileInfo =
+  gen_qfileinfo_types.QFileInfo.init(fcQFileInfo_new())
+proc create*(T: type gen_qfileinfo_types.QFileInfo, file: string): gen_qfileinfo_types.QFileInfo =
 
-  QFileInfo.init(fcQFileInfo_new2(struct_miqt_string(data: file, len: csize_t(len(file)))))
-proc create*(T: type QFileInfo, file: gen_qfile.QFile): QFileInfo =
+  gen_qfileinfo_types.QFileInfo.init(fcQFileInfo_new2(struct_miqt_string(data: file, len: csize_t(len(file)))))
+proc create*(T: type gen_qfileinfo_types.QFileInfo, file: gen_qfile.QFile): gen_qfileinfo_types.QFileInfo =
 
-  QFileInfo.init(fcQFileInfo_new3(file.h))
-proc create*(T: type QFileInfo, dir: gen_qdir.QDir, file: string): QFileInfo =
+  gen_qfileinfo_types.QFileInfo.init(fcQFileInfo_new3(file.h))
+proc create*(T: type gen_qfileinfo_types.QFileInfo, dir: gen_qdir.QDir, file: string): gen_qfileinfo_types.QFileInfo =
 
-  QFileInfo.init(fcQFileInfo_new4(dir.h, struct_miqt_string(data: file, len: csize_t(len(file)))))
-proc create2*(T: type QFileInfo, fileinfo: QFileInfo): QFileInfo =
+  gen_qfileinfo_types.QFileInfo.init(fcQFileInfo_new4(dir.h, struct_miqt_string(data: file, len: csize_t(len(file)))))
+proc create2*(T: type gen_qfileinfo_types.QFileInfo, fileinfo: gen_qfileinfo_types.QFileInfo): gen_qfileinfo_types.QFileInfo =
 
-  QFileInfo.init(fcQFileInfo_new5(fileinfo.h))
-proc operatorAssign*(self: QFileInfo, fileinfo: QFileInfo): void =
+  gen_qfileinfo_types.QFileInfo.init(fcQFileInfo_new5(fileinfo.h))
+proc operatorAssign*(self: gen_qfileinfo_types.QFileInfo, fileinfo: gen_qfileinfo_types.QFileInfo): void =
 
   fcQFileInfo_operatorAssign(self.h, fileinfo.h)
 
-proc swap*(self: QFileInfo, other: QFileInfo): void =
+proc swap*(self: gen_qfileinfo_types.QFileInfo, other: gen_qfileinfo_types.QFileInfo): void =
 
   fcQFileInfo_swap(self.h, other.h)
 
-proc operatorEqual*(self: QFileInfo, fileinfo: QFileInfo): bool =
+proc operatorEqual*(self: gen_qfileinfo_types.QFileInfo, fileinfo: gen_qfileinfo_types.QFileInfo): bool =
 
   fcQFileInfo_operatorEqual(self.h, fileinfo.h)
 
-proc operatorNotEqual*(self: QFileInfo, fileinfo: QFileInfo): bool =
+proc operatorNotEqual*(self: gen_qfileinfo_types.QFileInfo, fileinfo: gen_qfileinfo_types.QFileInfo): bool =
 
   fcQFileInfo_operatorNotEqual(self.h, fileinfo.h)
 
-proc setFile*(self: QFileInfo, file: string): void =
+proc setFile*(self: gen_qfileinfo_types.QFileInfo, file: string): void =
 
   fcQFileInfo_setFile(self.h, struct_miqt_string(data: file, len: csize_t(len(file))))
 
-proc setFileWithFile*(self: QFileInfo, file: gen_qfile.QFile): void =
+proc setFileWithFile*(self: gen_qfileinfo_types.QFileInfo, file: gen_qfile.QFile): void =
 
   fcQFileInfo_setFileWithFile(self.h, file.h)
 
-proc setFile2*(self: QFileInfo, dir: gen_qdir.QDir, file: string): void =
+proc setFile2*(self: gen_qfileinfo_types.QFileInfo, dir: gen_qdir.QDir, file: string): void =
 
   fcQFileInfo_setFile2(self.h, dir.h, struct_miqt_string(data: file, len: csize_t(len(file))))
 
-proc exists*(self: QFileInfo, ): bool =
+proc exists*(self: gen_qfileinfo_types.QFileInfo, ): bool =
 
   fcQFileInfo_exists(self.h)
 
-proc existsWithFile*(_: type QFileInfo, file: string): bool =
+proc existsWithFile*(_: type gen_qfileinfo_types.QFileInfo, file: string): bool =
 
   fcQFileInfo_existsWithFile(struct_miqt_string(data: file, len: csize_t(len(file))))
 
-proc refresh*(self: QFileInfo, ): void =
+proc refresh*(self: gen_qfileinfo_types.QFileInfo, ): void =
 
   fcQFileInfo_refresh(self.h)
 
-proc filePath*(self: QFileInfo, ): string =
+proc filePath*(self: gen_qfileinfo_types.QFileInfo, ): string =
 
   let v_ms = fcQFileInfo_filePath(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc absoluteFilePath*(self: QFileInfo, ): string =
+proc absoluteFilePath*(self: gen_qfileinfo_types.QFileInfo, ): string =
 
   let v_ms = fcQFileInfo_absoluteFilePath(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc canonicalFilePath*(self: QFileInfo, ): string =
+proc canonicalFilePath*(self: gen_qfileinfo_types.QFileInfo, ): string =
 
   let v_ms = fcQFileInfo_canonicalFilePath(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc fileName*(self: QFileInfo, ): string =
+proc fileName*(self: gen_qfileinfo_types.QFileInfo, ): string =
 
   let v_ms = fcQFileInfo_fileName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc baseName*(self: QFileInfo, ): string =
+proc baseName*(self: gen_qfileinfo_types.QFileInfo, ): string =
 
   let v_ms = fcQFileInfo_baseName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc completeBaseName*(self: QFileInfo, ): string =
+proc completeBaseName*(self: gen_qfileinfo_types.QFileInfo, ): string =
 
   let v_ms = fcQFileInfo_completeBaseName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc suffix*(self: QFileInfo, ): string =
+proc suffix*(self: gen_qfileinfo_types.QFileInfo, ): string =
 
   let v_ms = fcQFileInfo_suffix(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc bundleName*(self: QFileInfo, ): string =
+proc bundleName*(self: gen_qfileinfo_types.QFileInfo, ): string =
 
   let v_ms = fcQFileInfo_bundleName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc completeSuffix*(self: QFileInfo, ): string =
+proc completeSuffix*(self: gen_qfileinfo_types.QFileInfo, ): string =
 
   let v_ms = fcQFileInfo_completeSuffix(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc path*(self: QFileInfo, ): string =
+proc path*(self: gen_qfileinfo_types.QFileInfo, ): string =
 
   let v_ms = fcQFileInfo_path(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc absolutePath*(self: QFileInfo, ): string =
+proc absolutePath*(self: gen_qfileinfo_types.QFileInfo, ): string =
 
   let v_ms = fcQFileInfo_absolutePath(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc canonicalPath*(self: QFileInfo, ): string =
+proc canonicalPath*(self: gen_qfileinfo_types.QFileInfo, ): string =
 
   let v_ms = fcQFileInfo_canonicalPath(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc dir*(self: QFileInfo, ): gen_qdir.QDir =
+proc dir*(self: gen_qfileinfo_types.QFileInfo, ): gen_qdir.QDir =
 
   gen_qdir.QDir(h: fcQFileInfo_dir(self.h))
 
-proc absoluteDir*(self: QFileInfo, ): gen_qdir.QDir =
+proc absoluteDir*(self: gen_qfileinfo_types.QFileInfo, ): gen_qdir.QDir =
 
   gen_qdir.QDir(h: fcQFileInfo_absoluteDir(self.h))
 
-proc isReadable*(self: QFileInfo, ): bool =
+proc isReadable*(self: gen_qfileinfo_types.QFileInfo, ): bool =
 
   fcQFileInfo_isReadable(self.h)
 
-proc isWritable*(self: QFileInfo, ): bool =
+proc isWritable*(self: gen_qfileinfo_types.QFileInfo, ): bool =
 
   fcQFileInfo_isWritable(self.h)
 
-proc isExecutable*(self: QFileInfo, ): bool =
+proc isExecutable*(self: gen_qfileinfo_types.QFileInfo, ): bool =
 
   fcQFileInfo_isExecutable(self.h)
 
-proc isHidden*(self: QFileInfo, ): bool =
+proc isHidden*(self: gen_qfileinfo_types.QFileInfo, ): bool =
 
   fcQFileInfo_isHidden(self.h)
 
-proc isNativePath*(self: QFileInfo, ): bool =
+proc isNativePath*(self: gen_qfileinfo_types.QFileInfo, ): bool =
 
   fcQFileInfo_isNativePath(self.h)
 
-proc isRelative*(self: QFileInfo, ): bool =
+proc isRelative*(self: gen_qfileinfo_types.QFileInfo, ): bool =
 
   fcQFileInfo_isRelative(self.h)
 
-proc isAbsolute*(self: QFileInfo, ): bool =
+proc isAbsolute*(self: gen_qfileinfo_types.QFileInfo, ): bool =
 
   fcQFileInfo_isAbsolute(self.h)
 
-proc makeAbsolute*(self: QFileInfo, ): bool =
+proc makeAbsolute*(self: gen_qfileinfo_types.QFileInfo, ): bool =
 
   fcQFileInfo_makeAbsolute(self.h)
 
-proc isFile*(self: QFileInfo, ): bool =
+proc isFile*(self: gen_qfileinfo_types.QFileInfo, ): bool =
 
   fcQFileInfo_isFile(self.h)
 
-proc isDir*(self: QFileInfo, ): bool =
+proc isDir*(self: gen_qfileinfo_types.QFileInfo, ): bool =
 
   fcQFileInfo_isDir(self.h)
 
-proc isSymLink*(self: QFileInfo, ): bool =
+proc isSymLink*(self: gen_qfileinfo_types.QFileInfo, ): bool =
 
   fcQFileInfo_isSymLink(self.h)
 
-proc isSymbolicLink*(self: QFileInfo, ): bool =
+proc isSymbolicLink*(self: gen_qfileinfo_types.QFileInfo, ): bool =
 
   fcQFileInfo_isSymbolicLink(self.h)
 
-proc isShortcut*(self: QFileInfo, ): bool =
+proc isShortcut*(self: gen_qfileinfo_types.QFileInfo, ): bool =
 
   fcQFileInfo_isShortcut(self.h)
 
-proc isJunction*(self: QFileInfo, ): bool =
+proc isJunction*(self: gen_qfileinfo_types.QFileInfo, ): bool =
 
   fcQFileInfo_isJunction(self.h)
 
-proc isRoot*(self: QFileInfo, ): bool =
+proc isRoot*(self: gen_qfileinfo_types.QFileInfo, ): bool =
 
   fcQFileInfo_isRoot(self.h)
 
-proc isBundle*(self: QFileInfo, ): bool =
+proc isBundle*(self: gen_qfileinfo_types.QFileInfo, ): bool =
 
   fcQFileInfo_isBundle(self.h)
 
-proc readLink*(self: QFileInfo, ): string =
+proc readLink*(self: gen_qfileinfo_types.QFileInfo, ): string =
 
   let v_ms = fcQFileInfo_readLink(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc symLinkTarget*(self: QFileInfo, ): string =
+proc symLinkTarget*(self: gen_qfileinfo_types.QFileInfo, ): string =
 
   let v_ms = fcQFileInfo_symLinkTarget(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc owner*(self: QFileInfo, ): string =
+proc owner*(self: gen_qfileinfo_types.QFileInfo, ): string =
 
   let v_ms = fcQFileInfo_owner(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc ownerId*(self: QFileInfo, ): cuint =
+proc ownerId*(self: gen_qfileinfo_types.QFileInfo, ): cuint =
 
   fcQFileInfo_ownerId(self.h)
 
-proc group*(self: QFileInfo, ): string =
+proc group*(self: gen_qfileinfo_types.QFileInfo, ): string =
 
   let v_ms = fcQFileInfo_group(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc groupId*(self: QFileInfo, ): cuint =
+proc groupId*(self: gen_qfileinfo_types.QFileInfo, ): cuint =
 
   fcQFileInfo_groupId(self.h)
 
-proc permission*(self: QFileInfo, permissions: gen_qfiledevice.QFileDevicePermission): bool =
+proc permission*(self: gen_qfileinfo_types.QFileInfo, permissions: cint): bool =
 
   fcQFileInfo_permission(self.h, cint(permissions))
 
-proc permissions*(self: QFileInfo, ): gen_qfiledevice.QFileDevicePermission =
+proc permissions*(self: gen_qfileinfo_types.QFileInfo, ): cint =
 
-  gen_qfiledevice.QFileDevicePermission(fcQFileInfo_permissions(self.h))
+  cint(fcQFileInfo_permissions(self.h))
 
-proc size*(self: QFileInfo, ): clonglong =
+proc size*(self: gen_qfileinfo_types.QFileInfo, ): clonglong =
 
   fcQFileInfo_size(self.h)
 
-proc created*(self: QFileInfo, ): gen_qdatetime.QDateTime =
+proc created*(self: gen_qfileinfo_types.QFileInfo, ): gen_qdatetime.QDateTime =
 
   gen_qdatetime.QDateTime(h: fcQFileInfo_created(self.h))
 
-proc birthTime*(self: QFileInfo, ): gen_qdatetime.QDateTime =
+proc birthTime*(self: gen_qfileinfo_types.QFileInfo, ): gen_qdatetime.QDateTime =
 
   gen_qdatetime.QDateTime(h: fcQFileInfo_birthTime(self.h))
 
-proc metadataChangeTime*(self: QFileInfo, ): gen_qdatetime.QDateTime =
+proc metadataChangeTime*(self: gen_qfileinfo_types.QFileInfo, ): gen_qdatetime.QDateTime =
 
   gen_qdatetime.QDateTime(h: fcQFileInfo_metadataChangeTime(self.h))
 
-proc lastModified*(self: QFileInfo, ): gen_qdatetime.QDateTime =
+proc lastModified*(self: gen_qfileinfo_types.QFileInfo, ): gen_qdatetime.QDateTime =
 
   gen_qdatetime.QDateTime(h: fcQFileInfo_lastModified(self.h))
 
-proc lastRead*(self: QFileInfo, ): gen_qdatetime.QDateTime =
+proc lastRead*(self: gen_qfileinfo_types.QFileInfo, ): gen_qdatetime.QDateTime =
 
   gen_qdatetime.QDateTime(h: fcQFileInfo_lastRead(self.h))
 
-proc fileTime*(self: QFileInfo, time: gen_qfiledevice.QFileDeviceFileTime): gen_qdatetime.QDateTime =
+proc fileTime*(self: gen_qfileinfo_types.QFileInfo, time: cint): gen_qdatetime.QDateTime =
 
   gen_qdatetime.QDateTime(h: fcQFileInfo_fileTime(self.h, cint(time)))
 
-proc caching*(self: QFileInfo, ): bool =
+proc caching*(self: gen_qfileinfo_types.QFileInfo, ): bool =
 
   fcQFileInfo_caching(self.h)
 
-proc setCaching*(self: QFileInfo, on: bool): void =
+proc setCaching*(self: gen_qfileinfo_types.QFileInfo, on: bool): void =
 
   fcQFileInfo_setCaching(self.h, on)
 
-proc delete*(self: QFileInfo) =
+proc delete*(self: gen_qfileinfo_types.QFileInfo) =
   fcQFileInfo_delete(self.h)

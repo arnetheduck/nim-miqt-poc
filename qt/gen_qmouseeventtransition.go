@@ -181,7 +181,7 @@ func (this *QMouseEventTransition) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QMouseEventTransition_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QMouseEventTransition) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QMouseEventTransition) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QMouseEventTransition_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -208,7 +208,7 @@ func (this *QMouseEventTransition) callVirtualBase_Metacast(param1 string) unsaf
 	return (unsafe.Pointer)(C.QMouseEventTransition_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QMouseEventTransition) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QMouseEventTransition) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QMouseEventTransition_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

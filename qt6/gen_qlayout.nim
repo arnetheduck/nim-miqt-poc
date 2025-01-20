@@ -34,15 +34,13 @@ const cflags = gorge("pkg-config -cflags Qt6Widgets")
 {.compile("gen_qlayout.cpp", cflags).}
 
 
-type QLayoutSizeConstraint* = cint
-const
-  QLayoutSetDefaultConstraint* = 0
-  QLayoutSetNoConstraint* = 1
-  QLayoutSetMinimumSize* = 2
-  QLayoutSetFixedSize* = 3
-  QLayoutSetMaximumSize* = 4
-  QLayoutSetMinAndMaxSize* = 5
-
+type QLayoutSizeConstraintEnum* = distinct cint
+template SetDefaultConstraint*(_: type QLayoutSizeConstraintEnum): untyped = 0
+template SetNoConstraint*(_: type QLayoutSizeConstraintEnum): untyped = 1
+template SetMinimumSize*(_: type QLayoutSizeConstraintEnum): untyped = 2
+template SetFixedSize*(_: type QLayoutSizeConstraintEnum): untyped = 3
+template SetMaximumSize*(_: type QLayoutSizeConstraintEnum): untyped = 4
+template SetMinAndMaxSize*(_: type QLayoutSizeConstraintEnum): untyped = 5
 
 
 import gen_qlayout_types
@@ -53,24 +51,20 @@ import
   gen_qlayoutitem,
   gen_qmargins,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qrect,
   gen_qsize,
-  gen_qsizepolicy,
   gen_qwidget
 export
   gen_qcoreevent,
   gen_qlayoutitem,
   gen_qmargins,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qrect,
   gen_qsize,
-  gen_qsizepolicy,
   gen_qwidget
 
 type cQLayout*{.exportc: "QLayout", incompleteStruct.} = object
@@ -194,1001 +188,846 @@ proc fcQLayout_staticMetaObject(): pointer {.importc: "QLayout_staticMetaObject"
 proc fcQLayout_delete(self: pointer) {.importc: "QLayout_delete".}
 
 
-func init*(T: type QLayout, h: ptr cQLayout): QLayout =
+func init*(T: type gen_qlayout_types.QLayout, h: ptr cQLayout): gen_qlayout_types.QLayout =
   T(h: h)
-proc create*(T: type QLayout, parent: gen_qwidget.QWidget): QLayout =
+proc create*(T: type gen_qlayout_types.QLayout, parent: gen_qwidget.QWidget): gen_qlayout_types.QLayout =
 
-  QLayout.init(fcQLayout_new(parent.h))
-proc create*(T: type QLayout, ): QLayout =
+  gen_qlayout_types.QLayout.init(fcQLayout_new(parent.h))
+proc create*(T: type gen_qlayout_types.QLayout, ): gen_qlayout_types.QLayout =
 
-  QLayout.init(fcQLayout_new2())
-proc metaObject*(self: QLayout, ): gen_qobjectdefs.QMetaObject =
+  gen_qlayout_types.QLayout.init(fcQLayout_new2())
+proc metaObject*(self: gen_qlayout_types.QLayout, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQLayout_metaObject(self.h))
 
-proc metacast*(self: QLayout, param1: cstring): pointer =
+proc metacast*(self: gen_qlayout_types.QLayout, param1: cstring): pointer =
 
   fcQLayout_metacast(self.h, param1)
 
-proc metacall*(self: QLayout, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qlayout_types.QLayout, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQLayout_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QLayout, s: cstring): string =
+proc tr*(_: type gen_qlayout_types.QLayout, s: cstring): string =
 
   let v_ms = fcQLayout_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc spacing*(self: QLayout, ): cint =
+proc spacing*(self: gen_qlayout_types.QLayout, ): cint =
 
   fcQLayout_spacing(self.h)
 
-proc setSpacing*(self: QLayout, spacing: cint): void =
+proc setSpacing*(self: gen_qlayout_types.QLayout, spacing: cint): void =
 
   fcQLayout_setSpacing(self.h, spacing)
 
-proc setContentsMargins*(self: QLayout, left: cint, top: cint, right: cint, bottom: cint): void =
+proc setContentsMargins*(self: gen_qlayout_types.QLayout, left: cint, top: cint, right: cint, bottom: cint): void =
 
   fcQLayout_setContentsMargins(self.h, left, top, right, bottom)
 
-proc setContentsMarginsWithMargins*(self: QLayout, margins: gen_qmargins.QMargins): void =
+proc setContentsMarginsWithMargins*(self: gen_qlayout_types.QLayout, margins: gen_qmargins.QMargins): void =
 
   fcQLayout_setContentsMarginsWithMargins(self.h, margins.h)
 
-proc unsetContentsMargins*(self: QLayout, ): void =
+proc unsetContentsMargins*(self: gen_qlayout_types.QLayout, ): void =
 
   fcQLayout_unsetContentsMargins(self.h)
 
-proc getContentsMargins*(self: QLayout, left: ptr cint, top: ptr cint, right: ptr cint, bottom: ptr cint): void =
+proc getContentsMargins*(self: gen_qlayout_types.QLayout, left: ptr cint, top: ptr cint, right: ptr cint, bottom: ptr cint): void =
 
   fcQLayout_getContentsMargins(self.h, left, top, right, bottom)
 
-proc contentsMargins*(self: QLayout, ): gen_qmargins.QMargins =
+proc contentsMargins*(self: gen_qlayout_types.QLayout, ): gen_qmargins.QMargins =
 
   gen_qmargins.QMargins(h: fcQLayout_contentsMargins(self.h))
 
-proc contentsRect*(self: QLayout, ): gen_qrect.QRect =
+proc contentsRect*(self: gen_qlayout_types.QLayout, ): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fcQLayout_contentsRect(self.h))
 
-proc setAlignment*(self: QLayout, w: gen_qwidget.QWidget, alignment: gen_qnamespace.AlignmentFlag): bool =
+proc setAlignment*(self: gen_qlayout_types.QLayout, w: gen_qwidget.QWidget, alignment: cint): bool =
 
   fcQLayout_setAlignment(self.h, w.h, cint(alignment))
 
-proc setAlignment2*(self: QLayout, l: QLayout, alignment: gen_qnamespace.AlignmentFlag): bool =
+proc setAlignment2*(self: gen_qlayout_types.QLayout, l: gen_qlayout_types.QLayout, alignment: cint): bool =
 
   fcQLayout_setAlignment2(self.h, l.h, cint(alignment))
 
-proc setSizeConstraint*(self: QLayout, sizeConstraint: QLayoutSizeConstraint): void =
+proc setSizeConstraint*(self: gen_qlayout_types.QLayout, sizeConstraint: cint): void =
 
   fcQLayout_setSizeConstraint(self.h, cint(sizeConstraint))
 
-proc sizeConstraint*(self: QLayout, ): QLayoutSizeConstraint =
+proc sizeConstraint*(self: gen_qlayout_types.QLayout, ): cint =
 
-  QLayoutSizeConstraint(fcQLayout_sizeConstraint(self.h))
+  cint(fcQLayout_sizeConstraint(self.h))
 
-proc setMenuBar*(self: QLayout, w: gen_qwidget.QWidget): void =
+proc setMenuBar*(self: gen_qlayout_types.QLayout, w: gen_qwidget.QWidget): void =
 
   fcQLayout_setMenuBar(self.h, w.h)
 
-proc menuBar*(self: QLayout, ): gen_qwidget.QWidget =
+proc menuBar*(self: gen_qlayout_types.QLayout, ): gen_qwidget.QWidget =
 
   gen_qwidget.QWidget(h: fcQLayout_menuBar(self.h))
 
-proc parentWidget*(self: QLayout, ): gen_qwidget.QWidget =
+proc parentWidget*(self: gen_qlayout_types.QLayout, ): gen_qwidget.QWidget =
 
   gen_qwidget.QWidget(h: fcQLayout_parentWidget(self.h))
 
-proc invalidate*(self: QLayout, ): void =
+proc invalidate*(self: gen_qlayout_types.QLayout, ): void =
 
   fcQLayout_invalidate(self.h)
 
-proc geometry*(self: QLayout, ): gen_qrect.QRect =
+proc geometry*(self: gen_qlayout_types.QLayout, ): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fcQLayout_geometry(self.h))
 
-proc activate*(self: QLayout, ): bool =
+proc activate*(self: gen_qlayout_types.QLayout, ): bool =
 
   fcQLayout_activate(self.h)
 
-proc update*(self: QLayout, ): void =
+proc update*(self: gen_qlayout_types.QLayout, ): void =
 
   fcQLayout_update(self.h)
 
-proc addWidget*(self: QLayout, w: gen_qwidget.QWidget): void =
+proc addWidget*(self: gen_qlayout_types.QLayout, w: gen_qwidget.QWidget): void =
 
   fcQLayout_addWidget(self.h, w.h)
 
-proc addItem*(self: QLayout, param1: gen_qlayoutitem.QLayoutItem): void =
+proc addItem*(self: gen_qlayout_types.QLayout, param1: gen_qlayoutitem.QLayoutItem): void =
 
   fcQLayout_addItem(self.h, param1.h)
 
-proc removeWidget*(self: QLayout, w: gen_qwidget.QWidget): void =
+proc removeWidget*(self: gen_qlayout_types.QLayout, w: gen_qwidget.QWidget): void =
 
   fcQLayout_removeWidget(self.h, w.h)
 
-proc removeItem*(self: QLayout, param1: gen_qlayoutitem.QLayoutItem): void =
+proc removeItem*(self: gen_qlayout_types.QLayout, param1: gen_qlayoutitem.QLayoutItem): void =
 
   fcQLayout_removeItem(self.h, param1.h)
 
-proc expandingDirections*(self: QLayout, ): gen_qnamespace.Orientation =
+proc expandingDirections*(self: gen_qlayout_types.QLayout, ): cint =
 
-  gen_qnamespace.Orientation(fcQLayout_expandingDirections(self.h))
+  cint(fcQLayout_expandingDirections(self.h))
 
-proc minimumSize*(self: QLayout, ): gen_qsize.QSize =
+proc minimumSize*(self: gen_qlayout_types.QLayout, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQLayout_minimumSize(self.h))
 
-proc maximumSize*(self: QLayout, ): gen_qsize.QSize =
+proc maximumSize*(self: gen_qlayout_types.QLayout, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQLayout_maximumSize(self.h))
 
-proc setGeometry*(self: QLayout, geometry: gen_qrect.QRect): void =
+proc setGeometry*(self: gen_qlayout_types.QLayout, geometry: gen_qrect.QRect): void =
 
   fcQLayout_setGeometry(self.h, geometry.h)
 
-proc itemAt*(self: QLayout, index: cint): gen_qlayoutitem.QLayoutItem =
+proc itemAt*(self: gen_qlayout_types.QLayout, index: cint): gen_qlayoutitem.QLayoutItem =
 
   gen_qlayoutitem.QLayoutItem(h: fcQLayout_itemAt(self.h, index))
 
-proc takeAt*(self: QLayout, index: cint): gen_qlayoutitem.QLayoutItem =
+proc takeAt*(self: gen_qlayout_types.QLayout, index: cint): gen_qlayoutitem.QLayoutItem =
 
   gen_qlayoutitem.QLayoutItem(h: fcQLayout_takeAt(self.h, index))
 
-proc indexOf*(self: QLayout, param1: gen_qwidget.QWidget): cint =
+proc indexOf*(self: gen_qlayout_types.QLayout, param1: gen_qwidget.QWidget): cint =
 
   fcQLayout_indexOf(self.h, param1.h)
 
-proc indexOfWithQLayoutItem*(self: QLayout, param1: gen_qlayoutitem.QLayoutItem): cint =
+proc indexOfWithQLayoutItem*(self: gen_qlayout_types.QLayout, param1: gen_qlayoutitem.QLayoutItem): cint =
 
   fcQLayout_indexOfWithQLayoutItem(self.h, param1.h)
 
-proc count*(self: QLayout, ): cint =
+proc count*(self: gen_qlayout_types.QLayout, ): cint =
 
   fcQLayout_count(self.h)
 
-proc isEmpty*(self: QLayout, ): bool =
+proc isEmpty*(self: gen_qlayout_types.QLayout, ): bool =
 
   fcQLayout_isEmpty(self.h)
 
-proc controlTypes*(self: QLayout, ): gen_qsizepolicy.QSizePolicyControlType =
+proc controlTypes*(self: gen_qlayout_types.QLayout, ): cint =
 
-  gen_qsizepolicy.QSizePolicyControlType(fcQLayout_controlTypes(self.h))
+  cint(fcQLayout_controlTypes(self.h))
 
-proc replaceWidget*(self: QLayout, fromVal: gen_qwidget.QWidget, to: gen_qwidget.QWidget, options: gen_qnamespace.FindChildOption): gen_qlayoutitem.QLayoutItem =
+proc replaceWidget*(self: gen_qlayout_types.QLayout, fromVal: gen_qwidget.QWidget, to: gen_qwidget.QWidget, options: cint): gen_qlayoutitem.QLayoutItem =
 
   gen_qlayoutitem.QLayoutItem(h: fcQLayout_replaceWidget(self.h, fromVal.h, to.h, cint(options)))
 
-proc totalMinimumHeightForWidth*(self: QLayout, w: cint): cint =
+proc totalMinimumHeightForWidth*(self: gen_qlayout_types.QLayout, w: cint): cint =
 
   fcQLayout_totalMinimumHeightForWidth(self.h, w)
 
-proc totalHeightForWidth*(self: QLayout, w: cint): cint =
+proc totalHeightForWidth*(self: gen_qlayout_types.QLayout, w: cint): cint =
 
   fcQLayout_totalHeightForWidth(self.h, w)
 
-proc totalMinimumSize*(self: QLayout, ): gen_qsize.QSize =
+proc totalMinimumSize*(self: gen_qlayout_types.QLayout, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQLayout_totalMinimumSize(self.h))
 
-proc totalMaximumSize*(self: QLayout, ): gen_qsize.QSize =
+proc totalMaximumSize*(self: gen_qlayout_types.QLayout, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQLayout_totalMaximumSize(self.h))
 
-proc totalSizeHint*(self: QLayout, ): gen_qsize.QSize =
+proc totalSizeHint*(self: gen_qlayout_types.QLayout, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQLayout_totalSizeHint(self.h))
 
-proc layout*(self: QLayout, ): QLayout =
+proc layout*(self: gen_qlayout_types.QLayout, ): gen_qlayout_types.QLayout =
 
-  QLayout(h: fcQLayout_layout(self.h))
+  gen_qlayout_types.QLayout(h: fcQLayout_layout(self.h))
 
-proc setEnabled*(self: QLayout, enabled: bool): void =
+proc setEnabled*(self: gen_qlayout_types.QLayout, enabled: bool): void =
 
   fcQLayout_setEnabled(self.h, enabled)
 
-proc isEnabled*(self: QLayout, ): bool =
+proc isEnabled*(self: gen_qlayout_types.QLayout, ): bool =
 
   fcQLayout_isEnabled(self.h)
 
-proc closestAcceptableSize*(_: type QLayout, w: gen_qwidget.QWidget, s: gen_qsize.QSize): gen_qsize.QSize =
+proc closestAcceptableSize*(_: type gen_qlayout_types.QLayout, w: gen_qwidget.QWidget, s: gen_qsize.QSize): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQLayout_closestAcceptableSize(w.h, s.h))
 
-proc tr2*(_: type QLayout, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qlayout_types.QLayout, s: cstring, c: cstring): string =
 
   let v_ms = fcQLayout_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QLayout, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qlayout_types.QLayout, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQLayout_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QLayout, ): gen_qobjectdefs.QMetaObject =
-
+proc QLayoutmetaObject*(self: gen_qlayout_types.QLayout, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQLayout_virtualbase_metaObject(self.h))
 
-type QLayoutmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QLayout, slot: proc(super: QLayoutmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QLayoutmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qlayout_types.QLayout, slot: QLayoutmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QLayoutmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QLayoutmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLayout_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLayout_metaObject(self: ptr cQLayout, slot: int): pointer {.exportc: "miqt_exec_callback_QLayout_metaObject ".} =
-  type Cb = proc(super: QLayoutmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QLayout(h: self), )
+  var nimfunc = cast[ptr QLayoutmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QLayout, param1: cstring): pointer =
-
+proc QLayoutmetacast*(self: gen_qlayout_types.QLayout, param1: cstring): pointer =
 
   fQLayout_virtualbase_metacast(self.h, param1)
 
-type QLayoutmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QLayout, slot: proc(super: QLayoutmetacastBase, param1: cstring): pointer) =
+type QLayoutmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qlayout_types.QLayout, slot: QLayoutmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QLayoutmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QLayoutmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLayout_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLayout_metacast(self: ptr cQLayout, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QLayout_metacast ".} =
-  type Cb = proc(super: QLayoutmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QLayout(h: self), param1)
+  var nimfunc = cast[ptr QLayoutmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QLayout, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QLayoutmetacall*(self: gen_qlayout_types.QLayout, param1: cint, param2: cint, param3: pointer): cint =
 
   fQLayout_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QLayoutmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QLayout, slot: proc(super: QLayoutmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QLayoutmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qlayout_types.QLayout, slot: QLayoutmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QLayoutmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QLayoutmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLayout_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLayout_metacall(self: ptr cQLayout, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QLayout_metacall ".} =
-  type Cb = proc(super: QLayoutmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QLayout(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QLayoutmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_spacing(self: QLayout, ): cint =
-
+proc QLayoutspacing*(self: gen_qlayout_types.QLayout, ): cint =
 
   fQLayout_virtualbase_spacing(self.h)
 
-type QLayoutspacingBase* = proc(): cint
-proc onspacing*(self: QLayout, slot: proc(super: QLayoutspacingBase): cint) =
+type QLayoutspacingProc* = proc(): cint
+proc onspacing*(self: gen_qlayout_types.QLayout, slot: QLayoutspacingProc) =
   # TODO check subclass
-  type Cb = proc(super: QLayoutspacingBase): cint
-  var tmp = new Cb
+  var tmp = new QLayoutspacingProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLayout_override_virtual_spacing(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLayout_spacing(self: ptr cQLayout, slot: int): cint {.exportc: "miqt_exec_callback_QLayout_spacing ".} =
-  type Cb = proc(super: QLayoutspacingBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_spacing(QLayout(h: self), )
+  var nimfunc = cast[ptr QLayoutspacingProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setSpacing(self: QLayout, spacing: cint): void =
-
+proc QLayoutsetSpacing*(self: gen_qlayout_types.QLayout, spacing: cint): void =
 
   fQLayout_virtualbase_setSpacing(self.h, spacing)
 
-type QLayoutsetSpacingBase* = proc(spacing: cint): void
-proc onsetSpacing*(self: QLayout, slot: proc(super: QLayoutsetSpacingBase, spacing: cint): void) =
+type QLayoutsetSpacingProc* = proc(spacing: cint): void
+proc onsetSpacing*(self: gen_qlayout_types.QLayout, slot: QLayoutsetSpacingProc) =
   # TODO check subclass
-  type Cb = proc(super: QLayoutsetSpacingBase, spacing: cint): void
-  var tmp = new Cb
+  var tmp = new QLayoutsetSpacingProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLayout_override_virtual_setSpacing(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLayout_setSpacing(self: ptr cQLayout, slot: int, spacing: cint): void {.exportc: "miqt_exec_callback_QLayout_setSpacing ".} =
-  type Cb = proc(super: QLayoutsetSpacingBase, spacing: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(spacing: cint): auto =
-    callVirtualBase_setSpacing(QLayout(h: self), spacing)
+  var nimfunc = cast[ptr QLayoutsetSpacingProc](cast[pointer](slot))
   let slotval1 = spacing
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_invalidate(self: QLayout, ): void =
-
+  nimfunc[](slotval1)
+proc QLayoutinvalidate*(self: gen_qlayout_types.QLayout, ): void =
 
   fQLayout_virtualbase_invalidate(self.h)
 
-type QLayoutinvalidateBase* = proc(): void
-proc oninvalidate*(self: QLayout, slot: proc(super: QLayoutinvalidateBase): void) =
+type QLayoutinvalidateProc* = proc(): void
+proc oninvalidate*(self: gen_qlayout_types.QLayout, slot: QLayoutinvalidateProc) =
   # TODO check subclass
-  type Cb = proc(super: QLayoutinvalidateBase): void
-  var tmp = new Cb
+  var tmp = new QLayoutinvalidateProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLayout_override_virtual_invalidate(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLayout_invalidate(self: ptr cQLayout, slot: int): void {.exportc: "miqt_exec_callback_QLayout_invalidate ".} =
-  type Cb = proc(super: QLayoutinvalidateBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_invalidate(QLayout(h: self), )
+  var nimfunc = cast[ptr QLayoutinvalidateProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_geometry(self: QLayout, ): gen_qrect.QRect =
-
+  nimfunc[]()
+proc QLayoutgeometry*(self: gen_qlayout_types.QLayout, ): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fQLayout_virtualbase_geometry(self.h))
 
-type QLayoutgeometryBase* = proc(): gen_qrect.QRect
-proc ongeometry*(self: QLayout, slot: proc(super: QLayoutgeometryBase): gen_qrect.QRect) =
+type QLayoutgeometryProc* = proc(): gen_qrect.QRect
+proc ongeometry*(self: gen_qlayout_types.QLayout, slot: QLayoutgeometryProc) =
   # TODO check subclass
-  type Cb = proc(super: QLayoutgeometryBase): gen_qrect.QRect
-  var tmp = new Cb
+  var tmp = new QLayoutgeometryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLayout_override_virtual_geometry(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLayout_geometry(self: ptr cQLayout, slot: int): pointer {.exportc: "miqt_exec_callback_QLayout_geometry ".} =
-  type Cb = proc(super: QLayoutgeometryBase): gen_qrect.QRect
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_geometry(QLayout(h: self), )
+  var nimfunc = cast[ptr QLayoutgeometryProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-type QLayoutaddItemBase* = proc(param1: gen_qlayoutitem.QLayoutItem): void
-proc onaddItem*(self: QLayout, slot: proc(param1: gen_qlayoutitem.QLayoutItem): void) =
+type QLayoutaddItemProc* = proc(param1: gen_qlayoutitem.QLayoutItem): void
+proc onaddItem*(self: gen_qlayout_types.QLayout, slot: QLayoutaddItemProc) =
   # TODO check subclass
-  type Cb = proc(param1: gen_qlayoutitem.QLayoutItem): void
-  var tmp = new Cb
+  var tmp = new QLayoutaddItemProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLayout_override_virtual_addItem(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLayout_addItem(self: ptr cQLayout, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QLayout_addItem ".} =
-  type Cb = proc(param1: gen_qlayoutitem.QLayoutItem): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QLayoutaddItemProc](cast[pointer](slot))
   let slotval1 = gen_qlayoutitem.QLayoutItem(h: param1)
 
 
   nimfunc[](slotval1)
-proc callVirtualBase_expandingDirections(self: QLayout, ): gen_qnamespace.Orientation =
+proc QLayoutexpandingDirections*(self: gen_qlayout_types.QLayout, ): cint =
 
+  cint(fQLayout_virtualbase_expandingDirections(self.h))
 
-  gen_qnamespace.Orientation(fQLayout_virtualbase_expandingDirections(self.h))
-
-type QLayoutexpandingDirectionsBase* = proc(): gen_qnamespace.Orientation
-proc onexpandingDirections*(self: QLayout, slot: proc(super: QLayoutexpandingDirectionsBase): gen_qnamespace.Orientation) =
+type QLayoutexpandingDirectionsProc* = proc(): cint
+proc onexpandingDirections*(self: gen_qlayout_types.QLayout, slot: QLayoutexpandingDirectionsProc) =
   # TODO check subclass
-  type Cb = proc(super: QLayoutexpandingDirectionsBase): gen_qnamespace.Orientation
-  var tmp = new Cb
+  var tmp = new QLayoutexpandingDirectionsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLayout_override_virtual_expandingDirections(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLayout_expandingDirections(self: ptr cQLayout, slot: int): cint {.exportc: "miqt_exec_callback_QLayout_expandingDirections ".} =
-  type Cb = proc(super: QLayoutexpandingDirectionsBase): gen_qnamespace.Orientation
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_expandingDirections(QLayout(h: self), )
+  var nimfunc = cast[ptr QLayoutexpandingDirectionsProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   cint(virtualReturn)
-proc callVirtualBase_minimumSize(self: QLayout, ): gen_qsize.QSize =
-
+proc QLayoutminimumSize*(self: gen_qlayout_types.QLayout, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQLayout_virtualbase_minimumSize(self.h))
 
-type QLayoutminimumSizeBase* = proc(): gen_qsize.QSize
-proc onminimumSize*(self: QLayout, slot: proc(super: QLayoutminimumSizeBase): gen_qsize.QSize) =
+type QLayoutminimumSizeProc* = proc(): gen_qsize.QSize
+proc onminimumSize*(self: gen_qlayout_types.QLayout, slot: QLayoutminimumSizeProc) =
   # TODO check subclass
-  type Cb = proc(super: QLayoutminimumSizeBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QLayoutminimumSizeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLayout_override_virtual_minimumSize(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLayout_minimumSize(self: ptr cQLayout, slot: int): pointer {.exportc: "miqt_exec_callback_QLayout_minimumSize ".} =
-  type Cb = proc(super: QLayoutminimumSizeBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_minimumSize(QLayout(h: self), )
+  var nimfunc = cast[ptr QLayoutminimumSizeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_maximumSize(self: QLayout, ): gen_qsize.QSize =
-
+proc QLayoutmaximumSize*(self: gen_qlayout_types.QLayout, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQLayout_virtualbase_maximumSize(self.h))
 
-type QLayoutmaximumSizeBase* = proc(): gen_qsize.QSize
-proc onmaximumSize*(self: QLayout, slot: proc(super: QLayoutmaximumSizeBase): gen_qsize.QSize) =
+type QLayoutmaximumSizeProc* = proc(): gen_qsize.QSize
+proc onmaximumSize*(self: gen_qlayout_types.QLayout, slot: QLayoutmaximumSizeProc) =
   # TODO check subclass
-  type Cb = proc(super: QLayoutmaximumSizeBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QLayoutmaximumSizeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLayout_override_virtual_maximumSize(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLayout_maximumSize(self: ptr cQLayout, slot: int): pointer {.exportc: "miqt_exec_callback_QLayout_maximumSize ".} =
-  type Cb = proc(super: QLayoutmaximumSizeBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_maximumSize(QLayout(h: self), )
+  var nimfunc = cast[ptr QLayoutmaximumSizeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_setGeometry(self: QLayout, geometry: gen_qrect.QRect): void =
-
+proc QLayoutsetGeometry*(self: gen_qlayout_types.QLayout, geometry: gen_qrect.QRect): void =
 
   fQLayout_virtualbase_setGeometry(self.h, geometry.h)
 
-type QLayoutsetGeometryBase* = proc(geometry: gen_qrect.QRect): void
-proc onsetGeometry*(self: QLayout, slot: proc(super: QLayoutsetGeometryBase, geometry: gen_qrect.QRect): void) =
+type QLayoutsetGeometryProc* = proc(geometry: gen_qrect.QRect): void
+proc onsetGeometry*(self: gen_qlayout_types.QLayout, slot: QLayoutsetGeometryProc) =
   # TODO check subclass
-  type Cb = proc(super: QLayoutsetGeometryBase, geometry: gen_qrect.QRect): void
-  var tmp = new Cb
+  var tmp = new QLayoutsetGeometryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLayout_override_virtual_setGeometry(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLayout_setGeometry(self: ptr cQLayout, slot: int, geometry: pointer): void {.exportc: "miqt_exec_callback_QLayout_setGeometry ".} =
-  type Cb = proc(super: QLayoutsetGeometryBase, geometry: gen_qrect.QRect): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(geometry: gen_qrect.QRect): auto =
-    callVirtualBase_setGeometry(QLayout(h: self), geometry)
+  var nimfunc = cast[ptr QLayoutsetGeometryProc](cast[pointer](slot))
   let slotval1 = gen_qrect.QRect(h: geometry)
 
 
-  nimfunc[](superCall, slotval1)
-type QLayoutitemAtBase* = proc(index: cint): gen_qlayoutitem.QLayoutItem
-proc onitemAt*(self: QLayout, slot: proc(index: cint): gen_qlayoutitem.QLayoutItem) =
+  nimfunc[](slotval1)
+type QLayoutitemAtProc* = proc(index: cint): gen_qlayoutitem.QLayoutItem
+proc onitemAt*(self: gen_qlayout_types.QLayout, slot: QLayoutitemAtProc) =
   # TODO check subclass
-  type Cb = proc(index: cint): gen_qlayoutitem.QLayoutItem
-  var tmp = new Cb
+  var tmp = new QLayoutitemAtProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLayout_override_virtual_itemAt(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLayout_itemAt(self: ptr cQLayout, slot: int, index: cint): pointer {.exportc: "miqt_exec_callback_QLayout_itemAt ".} =
-  type Cb = proc(index: cint): gen_qlayoutitem.QLayoutItem
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QLayoutitemAtProc](cast[pointer](slot))
   let slotval1 = index
 
 
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-type QLayouttakeAtBase* = proc(index: cint): gen_qlayoutitem.QLayoutItem
-proc ontakeAt*(self: QLayout, slot: proc(index: cint): gen_qlayoutitem.QLayoutItem) =
+type QLayouttakeAtProc* = proc(index: cint): gen_qlayoutitem.QLayoutItem
+proc ontakeAt*(self: gen_qlayout_types.QLayout, slot: QLayouttakeAtProc) =
   # TODO check subclass
-  type Cb = proc(index: cint): gen_qlayoutitem.QLayoutItem
-  var tmp = new Cb
+  var tmp = new QLayouttakeAtProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLayout_override_virtual_takeAt(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLayout_takeAt(self: ptr cQLayout, slot: int, index: cint): pointer {.exportc: "miqt_exec_callback_QLayout_takeAt ".} =
-  type Cb = proc(index: cint): gen_qlayoutitem.QLayoutItem
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QLayouttakeAtProc](cast[pointer](slot))
   let slotval1 = index
 
 
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_indexOf(self: QLayout, param1: gen_qwidget.QWidget): cint =
-
+proc QLayoutindexOf*(self: gen_qlayout_types.QLayout, param1: gen_qwidget.QWidget): cint =
 
   fQLayout_virtualbase_indexOf(self.h, param1.h)
 
-type QLayoutindexOfBase* = proc(param1: gen_qwidget.QWidget): cint
-proc onindexOf*(self: QLayout, slot: proc(super: QLayoutindexOfBase, param1: gen_qwidget.QWidget): cint) =
+type QLayoutindexOfProc* = proc(param1: gen_qwidget.QWidget): cint
+proc onindexOf*(self: gen_qlayout_types.QLayout, slot: QLayoutindexOfProc) =
   # TODO check subclass
-  type Cb = proc(super: QLayoutindexOfBase, param1: gen_qwidget.QWidget): cint
-  var tmp = new Cb
+  var tmp = new QLayoutindexOfProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLayout_override_virtual_indexOf(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLayout_indexOf(self: ptr cQLayout, slot: int, param1: pointer): cint {.exportc: "miqt_exec_callback_QLayout_indexOf ".} =
-  type Cb = proc(super: QLayoutindexOfBase, param1: gen_qwidget.QWidget): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qwidget.QWidget): auto =
-    callVirtualBase_indexOf(QLayout(h: self), param1)
+  var nimfunc = cast[ptr QLayoutindexOfProc](cast[pointer](slot))
   let slotval1 = gen_qwidget.QWidget(h: param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_indexOfWithQLayoutItem(self: QLayout, param1: gen_qlayoutitem.QLayoutItem): cint =
-
+proc QLayoutindexOfWithQLayoutItem*(self: gen_qlayout_types.QLayout, param1: gen_qlayoutitem.QLayoutItem): cint =
 
   fQLayout_virtualbase_indexOfWithQLayoutItem(self.h, param1.h)
 
-type QLayoutindexOfWithQLayoutItemBase* = proc(param1: gen_qlayoutitem.QLayoutItem): cint
-proc onindexOfWithQLayoutItem*(self: QLayout, slot: proc(super: QLayoutindexOfWithQLayoutItemBase, param1: gen_qlayoutitem.QLayoutItem): cint) =
+type QLayoutindexOfWithQLayoutItemProc* = proc(param1: gen_qlayoutitem.QLayoutItem): cint
+proc onindexOfWithQLayoutItem*(self: gen_qlayout_types.QLayout, slot: QLayoutindexOfWithQLayoutItemProc) =
   # TODO check subclass
-  type Cb = proc(super: QLayoutindexOfWithQLayoutItemBase, param1: gen_qlayoutitem.QLayoutItem): cint
-  var tmp = new Cb
+  var tmp = new QLayoutindexOfWithQLayoutItemProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLayout_override_virtual_indexOfWithQLayoutItem(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLayout_indexOfWithQLayoutItem(self: ptr cQLayout, slot: int, param1: pointer): cint {.exportc: "miqt_exec_callback_QLayout_indexOfWithQLayoutItem ".} =
-  type Cb = proc(super: QLayoutindexOfWithQLayoutItemBase, param1: gen_qlayoutitem.QLayoutItem): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qlayoutitem.QLayoutItem): auto =
-    callVirtualBase_indexOfWithQLayoutItem(QLayout(h: self), param1)
+  var nimfunc = cast[ptr QLayoutindexOfWithQLayoutItemProc](cast[pointer](slot))
   let slotval1 = gen_qlayoutitem.QLayoutItem(h: param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-type QLayoutcountBase* = proc(): cint
-proc oncount*(self: QLayout, slot: proc(): cint) =
+type QLayoutcountProc* = proc(): cint
+proc oncount*(self: gen_qlayout_types.QLayout, slot: QLayoutcountProc) =
   # TODO check subclass
-  type Cb = proc(): cint
-  var tmp = new Cb
+  var tmp = new QLayoutcountProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLayout_override_virtual_count(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLayout_count(self: ptr cQLayout, slot: int): cint {.exportc: "miqt_exec_callback_QLayout_count ".} =
-  type Cb = proc(): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QLayoutcountProc](cast[pointer](slot))
 
   let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_isEmpty(self: QLayout, ): bool =
-
+proc QLayoutisEmpty*(self: gen_qlayout_types.QLayout, ): bool =
 
   fQLayout_virtualbase_isEmpty(self.h)
 
-type QLayoutisEmptyBase* = proc(): bool
-proc onisEmpty*(self: QLayout, slot: proc(super: QLayoutisEmptyBase): bool) =
+type QLayoutisEmptyProc* = proc(): bool
+proc onisEmpty*(self: gen_qlayout_types.QLayout, slot: QLayoutisEmptyProc) =
   # TODO check subclass
-  type Cb = proc(super: QLayoutisEmptyBase): bool
-  var tmp = new Cb
+  var tmp = new QLayoutisEmptyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLayout_override_virtual_isEmpty(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLayout_isEmpty(self: ptr cQLayout, slot: int): bool {.exportc: "miqt_exec_callback_QLayout_isEmpty ".} =
-  type Cb = proc(super: QLayoutisEmptyBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_isEmpty(QLayout(h: self), )
+  var nimfunc = cast[ptr QLayoutisEmptyProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_controlTypes(self: QLayout, ): gen_qsizepolicy.QSizePolicyControlType =
+proc QLayoutcontrolTypes*(self: gen_qlayout_types.QLayout, ): cint =
 
+  cint(fQLayout_virtualbase_controlTypes(self.h))
 
-  gen_qsizepolicy.QSizePolicyControlType(fQLayout_virtualbase_controlTypes(self.h))
-
-type QLayoutcontrolTypesBase* = proc(): gen_qsizepolicy.QSizePolicyControlType
-proc oncontrolTypes*(self: QLayout, slot: proc(super: QLayoutcontrolTypesBase): gen_qsizepolicy.QSizePolicyControlType) =
+type QLayoutcontrolTypesProc* = proc(): cint
+proc oncontrolTypes*(self: gen_qlayout_types.QLayout, slot: QLayoutcontrolTypesProc) =
   # TODO check subclass
-  type Cb = proc(super: QLayoutcontrolTypesBase): gen_qsizepolicy.QSizePolicyControlType
-  var tmp = new Cb
+  var tmp = new QLayoutcontrolTypesProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLayout_override_virtual_controlTypes(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLayout_controlTypes(self: ptr cQLayout, slot: int): cint {.exportc: "miqt_exec_callback_QLayout_controlTypes ".} =
-  type Cb = proc(super: QLayoutcontrolTypesBase): gen_qsizepolicy.QSizePolicyControlType
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_controlTypes(QLayout(h: self), )
+  var nimfunc = cast[ptr QLayoutcontrolTypesProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   cint(virtualReturn)
-proc callVirtualBase_replaceWidget(self: QLayout, fromVal: gen_qwidget.QWidget, to: gen_qwidget.QWidget, options: gen_qnamespace.FindChildOption): gen_qlayoutitem.QLayoutItem =
-
+proc QLayoutreplaceWidget*(self: gen_qlayout_types.QLayout, fromVal: gen_qwidget.QWidget, to: gen_qwidget.QWidget, options: cint): gen_qlayoutitem.QLayoutItem =
 
   gen_qlayoutitem.QLayoutItem(h: fQLayout_virtualbase_replaceWidget(self.h, fromVal.h, to.h, cint(options)))
 
-type QLayoutreplaceWidgetBase* = proc(fromVal: gen_qwidget.QWidget, to: gen_qwidget.QWidget, options: gen_qnamespace.FindChildOption): gen_qlayoutitem.QLayoutItem
-proc onreplaceWidget*(self: QLayout, slot: proc(super: QLayoutreplaceWidgetBase, fromVal: gen_qwidget.QWidget, to: gen_qwidget.QWidget, options: gen_qnamespace.FindChildOption): gen_qlayoutitem.QLayoutItem) =
+type QLayoutreplaceWidgetProc* = proc(fromVal: gen_qwidget.QWidget, to: gen_qwidget.QWidget, options: cint): gen_qlayoutitem.QLayoutItem
+proc onreplaceWidget*(self: gen_qlayout_types.QLayout, slot: QLayoutreplaceWidgetProc) =
   # TODO check subclass
-  type Cb = proc(super: QLayoutreplaceWidgetBase, fromVal: gen_qwidget.QWidget, to: gen_qwidget.QWidget, options: gen_qnamespace.FindChildOption): gen_qlayoutitem.QLayoutItem
-  var tmp = new Cb
+  var tmp = new QLayoutreplaceWidgetProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLayout_override_virtual_replaceWidget(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLayout_replaceWidget(self: ptr cQLayout, slot: int, fromVal: pointer, to: pointer, options: cint): pointer {.exportc: "miqt_exec_callback_QLayout_replaceWidget ".} =
-  type Cb = proc(super: QLayoutreplaceWidgetBase, fromVal: gen_qwidget.QWidget, to: gen_qwidget.QWidget, options: gen_qnamespace.FindChildOption): gen_qlayoutitem.QLayoutItem
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(fromVal: gen_qwidget.QWidget, to: gen_qwidget.QWidget, options: gen_qnamespace.FindChildOption): auto =
-    callVirtualBase_replaceWidget(QLayout(h: self), fromVal, to, options)
+  var nimfunc = cast[ptr QLayoutreplaceWidgetProc](cast[pointer](slot))
   let slotval1 = gen_qwidget.QWidget(h: fromVal)
 
   let slotval2 = gen_qwidget.QWidget(h: to)
 
-  let slotval3 = gen_qnamespace.FindChildOption(options)
+  let slotval3 = cint(options)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn.h
-proc callVirtualBase_layout(self: QLayout, ): QLayout =
+proc QLayoutlayout*(self: gen_qlayout_types.QLayout, ): gen_qlayout_types.QLayout =
 
+  gen_qlayout_types.QLayout(h: fQLayout_virtualbase_layout(self.h))
 
-  QLayout(h: fQLayout_virtualbase_layout(self.h))
-
-type QLayoutlayoutBase* = proc(): QLayout
-proc onlayout*(self: QLayout, slot: proc(super: QLayoutlayoutBase): QLayout) =
+type QLayoutlayoutProc* = proc(): gen_qlayout_types.QLayout
+proc onlayout*(self: gen_qlayout_types.QLayout, slot: QLayoutlayoutProc) =
   # TODO check subclass
-  type Cb = proc(super: QLayoutlayoutBase): QLayout
-  var tmp = new Cb
+  var tmp = new QLayoutlayoutProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLayout_override_virtual_layout(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLayout_layout(self: ptr cQLayout, slot: int): pointer {.exportc: "miqt_exec_callback_QLayout_layout ".} =
-  type Cb = proc(super: QLayoutlayoutBase): QLayout
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_layout(QLayout(h: self), )
+  var nimfunc = cast[ptr QLayoutlayoutProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_childEvent(self: QLayout, e: gen_qcoreevent.QChildEvent): void =
-
+proc QLayoutchildEvent*(self: gen_qlayout_types.QLayout, e: gen_qcoreevent.QChildEvent): void =
 
   fQLayout_virtualbase_childEvent(self.h, e.h)
 
-type QLayoutchildEventBase* = proc(e: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QLayout, slot: proc(super: QLayoutchildEventBase, e: gen_qcoreevent.QChildEvent): void) =
+type QLayoutchildEventProc* = proc(e: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qlayout_types.QLayout, slot: QLayoutchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QLayoutchildEventBase, e: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QLayoutchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLayout_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLayout_childEvent(self: ptr cQLayout, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QLayout_childEvent ".} =
-  type Cb = proc(super: QLayoutchildEventBase, e: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QLayout(h: self), e)
+  var nimfunc = cast[ptr QLayoutchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_event(self: QLayout, event: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[](slotval1)
+proc QLayoutevent*(self: gen_qlayout_types.QLayout, event: gen_qcoreevent.QEvent): bool =
 
   fQLayout_virtualbase_event(self.h, event.h)
 
-type QLayouteventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QLayout, slot: proc(super: QLayouteventBase, event: gen_qcoreevent.QEvent): bool) =
+type QLayouteventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qlayout_types.QLayout, slot: QLayouteventProc) =
   # TODO check subclass
-  type Cb = proc(super: QLayouteventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QLayouteventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLayout_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLayout_event(self: ptr cQLayout, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QLayout_event ".} =
-  type Cb = proc(super: QLayouteventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QLayout(h: self), event)
+  var nimfunc = cast[ptr QLayouteventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QLayout, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QLayouteventFilter*(self: gen_qlayout_types.QLayout, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQLayout_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QLayouteventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QLayout, slot: proc(super: QLayouteventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QLayouteventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qlayout_types.QLayout, slot: QLayouteventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QLayouteventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QLayouteventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLayout_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLayout_eventFilter(self: ptr cQLayout, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QLayout_eventFilter ".} =
-  type Cb = proc(super: QLayouteventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QLayout(h: self), watched, event)
+  var nimfunc = cast[ptr QLayouteventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QLayout, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QLayouttimerEvent*(self: gen_qlayout_types.QLayout, event: gen_qcoreevent.QTimerEvent): void =
 
   fQLayout_virtualbase_timerEvent(self.h, event.h)
 
-type QLayouttimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QLayout, slot: proc(super: QLayouttimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QLayouttimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qlayout_types.QLayout, slot: QLayouttimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QLayouttimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QLayouttimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLayout_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLayout_timerEvent(self: ptr cQLayout, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QLayout_timerEvent ".} =
-  type Cb = proc(super: QLayouttimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QLayout(h: self), event)
+  var nimfunc = cast[ptr QLayouttimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QLayout, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QLayoutcustomEvent*(self: gen_qlayout_types.QLayout, event: gen_qcoreevent.QEvent): void =
 
   fQLayout_virtualbase_customEvent(self.h, event.h)
 
-type QLayoutcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QLayout, slot: proc(super: QLayoutcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QLayoutcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qlayout_types.QLayout, slot: QLayoutcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QLayoutcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QLayoutcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLayout_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLayout_customEvent(self: ptr cQLayout, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QLayout_customEvent ".} =
-  type Cb = proc(super: QLayoutcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QLayout(h: self), event)
+  var nimfunc = cast[ptr QLayoutcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QLayout, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QLayoutconnectNotify*(self: gen_qlayout_types.QLayout, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQLayout_virtualbase_connectNotify(self.h, signal.h)
 
-type QLayoutconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QLayout, slot: proc(super: QLayoutconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QLayoutconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qlayout_types.QLayout, slot: QLayoutconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QLayoutconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QLayoutconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLayout_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLayout_connectNotify(self: ptr cQLayout, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QLayout_connectNotify ".} =
-  type Cb = proc(super: QLayoutconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QLayout(h: self), signal)
+  var nimfunc = cast[ptr QLayoutconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QLayout, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QLayoutdisconnectNotify*(self: gen_qlayout_types.QLayout, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQLayout_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QLayoutdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QLayout, slot: proc(super: QLayoutdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QLayoutdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qlayout_types.QLayout, slot: QLayoutdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QLayoutdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QLayoutdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLayout_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLayout_disconnectNotify(self: ptr cQLayout, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QLayout_disconnectNotify ".} =
-  type Cb = proc(super: QLayoutdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QLayout(h: self), signal)
+  var nimfunc = cast[ptr QLayoutdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-type QLayoutsizeHintBase* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: QLayout, slot: proc(): gen_qsize.QSize) =
+  nimfunc[](slotval1)
+type QLayoutsizeHintProc* = proc(): gen_qsize.QSize
+proc onsizeHint*(self: gen_qlayout_types.QLayout, slot: QLayoutsizeHintProc) =
   # TODO check subclass
-  type Cb = proc(): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QLayoutsizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLayout_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLayout_sizeHint(self: ptr cQLayout, slot: int): pointer {.exportc: "miqt_exec_callback_QLayout_sizeHint ".} =
-  type Cb = proc(): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QLayoutsizeHintProc](cast[pointer](slot))
 
   let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_hasHeightForWidth(self: QLayout, ): bool =
-
+proc QLayouthasHeightForWidth*(self: gen_qlayout_types.QLayout, ): bool =
 
   fQLayout_virtualbase_hasHeightForWidth(self.h)
 
-type QLayouthasHeightForWidthBase* = proc(): bool
-proc onhasHeightForWidth*(self: QLayout, slot: proc(super: QLayouthasHeightForWidthBase): bool) =
+type QLayouthasHeightForWidthProc* = proc(): bool
+proc onhasHeightForWidth*(self: gen_qlayout_types.QLayout, slot: QLayouthasHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QLayouthasHeightForWidthBase): bool
-  var tmp = new Cb
+  var tmp = new QLayouthasHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLayout_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLayout_hasHeightForWidth(self: ptr cQLayout, slot: int): bool {.exportc: "miqt_exec_callback_QLayout_hasHeightForWidth ".} =
-  type Cb = proc(super: QLayouthasHeightForWidthBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasHeightForWidth(QLayout(h: self), )
+  var nimfunc = cast[ptr QLayouthasHeightForWidthProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_heightForWidth(self: QLayout, param1: cint): cint =
-
+proc QLayoutheightForWidth*(self: gen_qlayout_types.QLayout, param1: cint): cint =
 
   fQLayout_virtualbase_heightForWidth(self.h, param1)
 
-type QLayoutheightForWidthBase* = proc(param1: cint): cint
-proc onheightForWidth*(self: QLayout, slot: proc(super: QLayoutheightForWidthBase, param1: cint): cint) =
+type QLayoutheightForWidthProc* = proc(param1: cint): cint
+proc onheightForWidth*(self: gen_qlayout_types.QLayout, slot: QLayoutheightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QLayoutheightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QLayoutheightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLayout_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLayout_heightForWidth(self: ptr cQLayout, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QLayout_heightForWidth ".} =
-  type Cb = proc(super: QLayoutheightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_heightForWidth(QLayout(h: self), param1)
+  var nimfunc = cast[ptr QLayoutheightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_minimumHeightForWidth(self: QLayout, param1: cint): cint =
-
+proc QLayoutminimumHeightForWidth*(self: gen_qlayout_types.QLayout, param1: cint): cint =
 
   fQLayout_virtualbase_minimumHeightForWidth(self.h, param1)
 
-type QLayoutminimumHeightForWidthBase* = proc(param1: cint): cint
-proc onminimumHeightForWidth*(self: QLayout, slot: proc(super: QLayoutminimumHeightForWidthBase, param1: cint): cint) =
+type QLayoutminimumHeightForWidthProc* = proc(param1: cint): cint
+proc onminimumHeightForWidth*(self: gen_qlayout_types.QLayout, slot: QLayoutminimumHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QLayoutminimumHeightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QLayoutminimumHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLayout_override_virtual_minimumHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLayout_minimumHeightForWidth(self: ptr cQLayout, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QLayout_minimumHeightForWidth ".} =
-  type Cb = proc(super: QLayoutminimumHeightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_minimumHeightForWidth(QLayout(h: self), param1)
+  var nimfunc = cast[ptr QLayoutminimumHeightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_widget(self: QLayout, ): gen_qwidget.QWidget =
-
+proc QLayoutwidget*(self: gen_qlayout_types.QLayout, ): gen_qwidget.QWidget =
 
   gen_qwidget.QWidget(h: fQLayout_virtualbase_widget(self.h))
 
-type QLayoutwidgetBase* = proc(): gen_qwidget.QWidget
-proc onwidget*(self: QLayout, slot: proc(super: QLayoutwidgetBase): gen_qwidget.QWidget) =
+type QLayoutwidgetProc* = proc(): gen_qwidget.QWidget
+proc onwidget*(self: gen_qlayout_types.QLayout, slot: QLayoutwidgetProc) =
   # TODO check subclass
-  type Cb = proc(super: QLayoutwidgetBase): gen_qwidget.QWidget
-  var tmp = new Cb
+  var tmp = new QLayoutwidgetProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLayout_override_virtual_widget(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLayout_widget(self: ptr cQLayout, slot: int): pointer {.exportc: "miqt_exec_callback_QLayout_widget ".} =
-  type Cb = proc(super: QLayoutwidgetBase): gen_qwidget.QWidget
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_widget(QLayout(h: self), )
+  var nimfunc = cast[ptr QLayoutwidgetProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_spacerItem(self: QLayout, ): gen_qlayoutitem.QSpacerItem =
-
+proc QLayoutspacerItem*(self: gen_qlayout_types.QLayout, ): gen_qlayoutitem.QSpacerItem =
 
   gen_qlayoutitem.QSpacerItem(h: fQLayout_virtualbase_spacerItem(self.h))
 
-type QLayoutspacerItemBase* = proc(): gen_qlayoutitem.QSpacerItem
-proc onspacerItem*(self: QLayout, slot: proc(super: QLayoutspacerItemBase): gen_qlayoutitem.QSpacerItem) =
+type QLayoutspacerItemProc* = proc(): gen_qlayoutitem.QSpacerItem
+proc onspacerItem*(self: gen_qlayout_types.QLayout, slot: QLayoutspacerItemProc) =
   # TODO check subclass
-  type Cb = proc(super: QLayoutspacerItemBase): gen_qlayoutitem.QSpacerItem
-  var tmp = new Cb
+  var tmp = new QLayoutspacerItemProc
   tmp[] = slot
   GC_ref(tmp)
   fcQLayout_override_virtual_spacerItem(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QLayout_spacerItem(self: ptr cQLayout, slot: int): pointer {.exportc: "miqt_exec_callback_QLayout_spacerItem ".} =
-  type Cb = proc(super: QLayoutspacerItemBase): gen_qlayoutitem.QSpacerItem
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_spacerItem(QLayout(h: self), )
+  var nimfunc = cast[ptr QLayoutspacerItemProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc staticMetaObject*(_: type QLayout): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qlayout_types.QLayout): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQLayout_staticMetaObject())
-proc delete*(self: QLayout) =
+proc delete*(self: gen_qlayout_types.QLayout) =
   fcQLayout_delete(self.h)

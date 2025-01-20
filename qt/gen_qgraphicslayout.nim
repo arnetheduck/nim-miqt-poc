@@ -40,13 +40,11 @@ export gen_qgraphicslayout_types
 import
   gen_qcoreevent,
   gen_qgraphicslayoutitem,
-  gen_qnamespace,
   gen_qrect,
   gen_qsize
 export
   gen_qcoreevent,
   gen_qgraphicslayoutitem,
-  gen_qnamespace,
   gen_qrect,
   gen_qsize
 
@@ -83,81 +81,76 @@ proc fcQGraphicsLayout_override_virtual_sizeHint(self: pointer, slot: int) {.imp
 proc fcQGraphicsLayout_delete(self: pointer) {.importc: "QGraphicsLayout_delete".}
 
 
-func init*(T: type QGraphicsLayout, h: ptr cQGraphicsLayout): QGraphicsLayout =
+func init*(T: type gen_qgraphicslayout_types.QGraphicsLayout, h: ptr cQGraphicsLayout): gen_qgraphicslayout_types.QGraphicsLayout =
   T(h: h)
-proc create*(T: type QGraphicsLayout, ): QGraphicsLayout =
+proc create*(T: type gen_qgraphicslayout_types.QGraphicsLayout, ): gen_qgraphicslayout_types.QGraphicsLayout =
 
-  QGraphicsLayout.init(fcQGraphicsLayout_new())
-proc create*(T: type QGraphicsLayout, parent: gen_qgraphicslayoutitem.QGraphicsLayoutItem): QGraphicsLayout =
+  gen_qgraphicslayout_types.QGraphicsLayout.init(fcQGraphicsLayout_new())
+proc create*(T: type gen_qgraphicslayout_types.QGraphicsLayout, parent: gen_qgraphicslayoutitem.QGraphicsLayoutItem): gen_qgraphicslayout_types.QGraphicsLayout =
 
-  QGraphicsLayout.init(fcQGraphicsLayout_new2(parent.h))
-proc setContentsMargins*(self: QGraphicsLayout, left: float64, top: float64, right: float64, bottom: float64): void =
+  gen_qgraphicslayout_types.QGraphicsLayout.init(fcQGraphicsLayout_new2(parent.h))
+proc setContentsMargins*(self: gen_qgraphicslayout_types.QGraphicsLayout, left: float64, top: float64, right: float64, bottom: float64): void =
 
   fcQGraphicsLayout_setContentsMargins(self.h, left, top, right, bottom)
 
-proc getContentsMargins*(self: QGraphicsLayout, left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): void =
+proc getContentsMargins*(self: gen_qgraphicslayout_types.QGraphicsLayout, left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): void =
 
   fcQGraphicsLayout_getContentsMargins(self.h, left, top, right, bottom)
 
-proc activate*(self: QGraphicsLayout, ): void =
+proc activate*(self: gen_qgraphicslayout_types.QGraphicsLayout, ): void =
 
   fcQGraphicsLayout_activate(self.h)
 
-proc isActivated*(self: QGraphicsLayout, ): bool =
+proc isActivated*(self: gen_qgraphicslayout_types.QGraphicsLayout, ): bool =
 
   fcQGraphicsLayout_isActivated(self.h)
 
-proc invalidate*(self: QGraphicsLayout, ): void =
+proc invalidate*(self: gen_qgraphicslayout_types.QGraphicsLayout, ): void =
 
   fcQGraphicsLayout_invalidate(self.h)
 
-proc updateGeometry*(self: QGraphicsLayout, ): void =
+proc updateGeometry*(self: gen_qgraphicslayout_types.QGraphicsLayout, ): void =
 
   fcQGraphicsLayout_updateGeometry(self.h)
 
-proc widgetEvent*(self: QGraphicsLayout, e: gen_qcoreevent.QEvent): void =
+proc widgetEvent*(self: gen_qgraphicslayout_types.QGraphicsLayout, e: gen_qcoreevent.QEvent): void =
 
   fcQGraphicsLayout_widgetEvent(self.h, e.h)
 
-proc count*(self: QGraphicsLayout, ): cint =
+proc count*(self: gen_qgraphicslayout_types.QGraphicsLayout, ): cint =
 
   fcQGraphicsLayout_count(self.h)
 
-proc itemAt*(self: QGraphicsLayout, i: cint): gen_qgraphicslayoutitem.QGraphicsLayoutItem =
+proc itemAt*(self: gen_qgraphicslayout_types.QGraphicsLayout, i: cint): gen_qgraphicslayoutitem.QGraphicsLayoutItem =
 
   gen_qgraphicslayoutitem.QGraphicsLayoutItem(h: fcQGraphicsLayout_itemAt(self.h, i))
 
-proc removeAt*(self: QGraphicsLayout, index: cint): void =
+proc removeAt*(self: gen_qgraphicslayout_types.QGraphicsLayout, index: cint): void =
 
   fcQGraphicsLayout_removeAt(self.h, index)
 
-proc setInstantInvalidatePropagation*(_: type QGraphicsLayout, enable: bool): void =
+proc setInstantInvalidatePropagation*(_: type gen_qgraphicslayout_types.QGraphicsLayout, enable: bool): void =
 
   fcQGraphicsLayout_setInstantInvalidatePropagation(enable)
 
-proc instantInvalidatePropagation*(_: type QGraphicsLayout, ): bool =
+proc instantInvalidatePropagation*(_: type gen_qgraphicslayout_types.QGraphicsLayout, ): bool =
 
   fcQGraphicsLayout_instantInvalidatePropagation()
 
-proc callVirtualBase_getContentsMargins(self: QGraphicsLayout, left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): void =
-
+proc QGraphicsLayoutgetContentsMargins*(self: gen_qgraphicslayout_types.QGraphicsLayout, left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): void =
 
   fQGraphicsLayout_virtualbase_getContentsMargins(self.h, left, top, right, bottom)
 
-type QGraphicsLayoutgetContentsMarginsBase* = proc(left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): void
-proc ongetContentsMargins*(self: QGraphicsLayout, slot: proc(super: QGraphicsLayoutgetContentsMarginsBase, left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): void) =
+type QGraphicsLayoutgetContentsMarginsProc* = proc(left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): void
+proc ongetContentsMargins*(self: gen_qgraphicslayout_types.QGraphicsLayout, slot: QGraphicsLayoutgetContentsMarginsProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsLayoutgetContentsMarginsBase, left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): void
-  var tmp = new Cb
+  var tmp = new QGraphicsLayoutgetContentsMarginsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsLayout_override_virtual_getContentsMargins(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsLayout_getContentsMargins(self: ptr cQGraphicsLayout, slot: int, left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): void {.exportc: "miqt_exec_callback_QGraphicsLayout_getContentsMargins ".} =
-  type Cb = proc(super: QGraphicsLayoutgetContentsMarginsBase, left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): auto =
-    callVirtualBase_getContentsMargins(QGraphicsLayout(h: self), left, top, right, bottom)
+  var nimfunc = cast[ptr QGraphicsLayoutgetContentsMarginsProc](cast[pointer](slot))
   let slotval1 = left
 
   let slotval2 = top
@@ -167,158 +160,130 @@ proc miqt_exec_callback_QGraphicsLayout_getContentsMargins(self: ptr cQGraphicsL
   let slotval4 = bottom
 
 
-  nimfunc[](superCall, slotval1, slotval2, slotval3, slotval4)
-proc callVirtualBase_invalidate(self: QGraphicsLayout, ): void =
-
+  nimfunc[](slotval1, slotval2, slotval3, slotval4)
+proc QGraphicsLayoutinvalidate*(self: gen_qgraphicslayout_types.QGraphicsLayout, ): void =
 
   fQGraphicsLayout_virtualbase_invalidate(self.h)
 
-type QGraphicsLayoutinvalidateBase* = proc(): void
-proc oninvalidate*(self: QGraphicsLayout, slot: proc(super: QGraphicsLayoutinvalidateBase): void) =
+type QGraphicsLayoutinvalidateProc* = proc(): void
+proc oninvalidate*(self: gen_qgraphicslayout_types.QGraphicsLayout, slot: QGraphicsLayoutinvalidateProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsLayoutinvalidateBase): void
-  var tmp = new Cb
+  var tmp = new QGraphicsLayoutinvalidateProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsLayout_override_virtual_invalidate(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsLayout_invalidate(self: ptr cQGraphicsLayout, slot: int): void {.exportc: "miqt_exec_callback_QGraphicsLayout_invalidate ".} =
-  type Cb = proc(super: QGraphicsLayoutinvalidateBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_invalidate(QGraphicsLayout(h: self), )
+  var nimfunc = cast[ptr QGraphicsLayoutinvalidateProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_updateGeometry(self: QGraphicsLayout, ): void =
-
+  nimfunc[]()
+proc QGraphicsLayoutupdateGeometry*(self: gen_qgraphicslayout_types.QGraphicsLayout, ): void =
 
   fQGraphicsLayout_virtualbase_updateGeometry(self.h)
 
-type QGraphicsLayoutupdateGeometryBase* = proc(): void
-proc onupdateGeometry*(self: QGraphicsLayout, slot: proc(super: QGraphicsLayoutupdateGeometryBase): void) =
+type QGraphicsLayoutupdateGeometryProc* = proc(): void
+proc onupdateGeometry*(self: gen_qgraphicslayout_types.QGraphicsLayout, slot: QGraphicsLayoutupdateGeometryProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsLayoutupdateGeometryBase): void
-  var tmp = new Cb
+  var tmp = new QGraphicsLayoutupdateGeometryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsLayout_override_virtual_updateGeometry(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsLayout_updateGeometry(self: ptr cQGraphicsLayout, slot: int): void {.exportc: "miqt_exec_callback_QGraphicsLayout_updateGeometry ".} =
-  type Cb = proc(super: QGraphicsLayoutupdateGeometryBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_updateGeometry(QGraphicsLayout(h: self), )
+  var nimfunc = cast[ptr QGraphicsLayoutupdateGeometryProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_widgetEvent(self: QGraphicsLayout, e: gen_qcoreevent.QEvent): void =
-
+  nimfunc[]()
+proc QGraphicsLayoutwidgetEvent*(self: gen_qgraphicslayout_types.QGraphicsLayout, e: gen_qcoreevent.QEvent): void =
 
   fQGraphicsLayout_virtualbase_widgetEvent(self.h, e.h)
 
-type QGraphicsLayoutwidgetEventBase* = proc(e: gen_qcoreevent.QEvent): void
-proc onwidgetEvent*(self: QGraphicsLayout, slot: proc(super: QGraphicsLayoutwidgetEventBase, e: gen_qcoreevent.QEvent): void) =
+type QGraphicsLayoutwidgetEventProc* = proc(e: gen_qcoreevent.QEvent): void
+proc onwidgetEvent*(self: gen_qgraphicslayout_types.QGraphicsLayout, slot: QGraphicsLayoutwidgetEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsLayoutwidgetEventBase, e: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QGraphicsLayoutwidgetEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsLayout_override_virtual_widgetEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsLayout_widgetEvent(self: ptr cQGraphicsLayout, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QGraphicsLayout_widgetEvent ".} =
-  type Cb = proc(super: QGraphicsLayoutwidgetEventBase, e: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_widgetEvent(QGraphicsLayout(h: self), e)
+  var nimfunc = cast[ptr QGraphicsLayoutwidgetEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-type QGraphicsLayoutcountBase* = proc(): cint
-proc oncount*(self: QGraphicsLayout, slot: proc(): cint) =
+  nimfunc[](slotval1)
+type QGraphicsLayoutcountProc* = proc(): cint
+proc oncount*(self: gen_qgraphicslayout_types.QGraphicsLayout, slot: QGraphicsLayoutcountProc) =
   # TODO check subclass
-  type Cb = proc(): cint
-  var tmp = new Cb
+  var tmp = new QGraphicsLayoutcountProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsLayout_override_virtual_count(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsLayout_count(self: ptr cQGraphicsLayout, slot: int): cint {.exportc: "miqt_exec_callback_QGraphicsLayout_count ".} =
-  type Cb = proc(): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QGraphicsLayoutcountProc](cast[pointer](slot))
 
   let virtualReturn = nimfunc[]( )
 
   virtualReturn
-type QGraphicsLayoutitemAtBase* = proc(i: cint): gen_qgraphicslayoutitem.QGraphicsLayoutItem
-proc onitemAt*(self: QGraphicsLayout, slot: proc(i: cint): gen_qgraphicslayoutitem.QGraphicsLayoutItem) =
+type QGraphicsLayoutitemAtProc* = proc(i: cint): gen_qgraphicslayoutitem.QGraphicsLayoutItem
+proc onitemAt*(self: gen_qgraphicslayout_types.QGraphicsLayout, slot: QGraphicsLayoutitemAtProc) =
   # TODO check subclass
-  type Cb = proc(i: cint): gen_qgraphicslayoutitem.QGraphicsLayoutItem
-  var tmp = new Cb
+  var tmp = new QGraphicsLayoutitemAtProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsLayout_override_virtual_itemAt(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsLayout_itemAt(self: ptr cQGraphicsLayout, slot: int, i: cint): pointer {.exportc: "miqt_exec_callback_QGraphicsLayout_itemAt ".} =
-  type Cb = proc(i: cint): gen_qgraphicslayoutitem.QGraphicsLayoutItem
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QGraphicsLayoutitemAtProc](cast[pointer](slot))
   let slotval1 = i
 
 
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-type QGraphicsLayoutremoveAtBase* = proc(index: cint): void
-proc onremoveAt*(self: QGraphicsLayout, slot: proc(index: cint): void) =
+type QGraphicsLayoutremoveAtProc* = proc(index: cint): void
+proc onremoveAt*(self: gen_qgraphicslayout_types.QGraphicsLayout, slot: QGraphicsLayoutremoveAtProc) =
   # TODO check subclass
-  type Cb = proc(index: cint): void
-  var tmp = new Cb
+  var tmp = new QGraphicsLayoutremoveAtProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsLayout_override_virtual_removeAt(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsLayout_removeAt(self: ptr cQGraphicsLayout, slot: int, index: cint): void {.exportc: "miqt_exec_callback_QGraphicsLayout_removeAt ".} =
-  type Cb = proc(index: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QGraphicsLayoutremoveAtProc](cast[pointer](slot))
   let slotval1 = index
 
 
   nimfunc[](slotval1)
-proc callVirtualBase_setGeometry(self: QGraphicsLayout, rect: gen_qrect.QRectF): void =
-
+proc QGraphicsLayoutsetGeometry*(self: gen_qgraphicslayout_types.QGraphicsLayout, rect: gen_qrect.QRectF): void =
 
   fQGraphicsLayout_virtualbase_setGeometry(self.h, rect.h)
 
-type QGraphicsLayoutsetGeometryBase* = proc(rect: gen_qrect.QRectF): void
-proc onsetGeometry*(self: QGraphicsLayout, slot: proc(super: QGraphicsLayoutsetGeometryBase, rect: gen_qrect.QRectF): void) =
+type QGraphicsLayoutsetGeometryProc* = proc(rect: gen_qrect.QRectF): void
+proc onsetGeometry*(self: gen_qgraphicslayout_types.QGraphicsLayout, slot: QGraphicsLayoutsetGeometryProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsLayoutsetGeometryBase, rect: gen_qrect.QRectF): void
-  var tmp = new Cb
+  var tmp = new QGraphicsLayoutsetGeometryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsLayout_override_virtual_setGeometry(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsLayout_setGeometry(self: ptr cQGraphicsLayout, slot: int, rect: pointer): void {.exportc: "miqt_exec_callback_QGraphicsLayout_setGeometry ".} =
-  type Cb = proc(super: QGraphicsLayoutsetGeometryBase, rect: gen_qrect.QRectF): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(rect: gen_qrect.QRectF): auto =
-    callVirtualBase_setGeometry(QGraphicsLayout(h: self), rect)
+  var nimfunc = cast[ptr QGraphicsLayoutsetGeometryProc](cast[pointer](slot))
   let slotval1 = gen_qrect.QRectF(h: rect)
 
 
-  nimfunc[](superCall, slotval1)
-type QGraphicsLayoutsizeHintBase* = proc(which: gen_qnamespace.SizeHint, constraint: gen_qsize.QSizeF): gen_qsize.QSizeF
-proc onsizeHint*(self: QGraphicsLayout, slot: proc(which: gen_qnamespace.SizeHint, constraint: gen_qsize.QSizeF): gen_qsize.QSizeF) =
+  nimfunc[](slotval1)
+type QGraphicsLayoutsizeHintProc* = proc(which: cint, constraint: gen_qsize.QSizeF): gen_qsize.QSizeF
+proc onsizeHint*(self: gen_qgraphicslayout_types.QGraphicsLayout, slot: QGraphicsLayoutsizeHintProc) =
   # TODO check subclass
-  type Cb = proc(which: gen_qnamespace.SizeHint, constraint: gen_qsize.QSizeF): gen_qsize.QSizeF
-  var tmp = new Cb
+  var tmp = new QGraphicsLayoutsizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsLayout_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsLayout_sizeHint(self: ptr cQGraphicsLayout, slot: int, which: cint, constraint: pointer): pointer {.exportc: "miqt_exec_callback_QGraphicsLayout_sizeHint ".} =
-  type Cb = proc(which: gen_qnamespace.SizeHint, constraint: gen_qsize.QSizeF): gen_qsize.QSizeF
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = gen_qnamespace.SizeHint(which)
+  var nimfunc = cast[ptr QGraphicsLayoutsizeHintProc](cast[pointer](slot))
+  let slotval1 = cint(which)
 
   let slotval2 = gen_qsize.QSizeF(h: constraint)
 
@@ -326,5 +291,5 @@ proc miqt_exec_callback_QGraphicsLayout_sizeHint(self: ptr cQGraphicsLayout, slo
   let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn.h
-proc delete*(self: QGraphicsLayout) =
+proc delete*(self: gen_qgraphicslayout_types.QGraphicsLayout) =
   fcQGraphicsLayout_delete(self.h)

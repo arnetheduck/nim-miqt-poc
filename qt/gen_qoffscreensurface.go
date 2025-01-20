@@ -226,7 +226,7 @@ func (this *QOffscreenSurface) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QOffscreenSurface_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QOffscreenSurface) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QOffscreenSurface) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QOffscreenSurface_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -253,7 +253,7 @@ func (this *QOffscreenSurface) callVirtualBase_Metacast(param1 string) unsafe.Po
 	return (unsafe.Pointer)(C.QOffscreenSurface_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QOffscreenSurface) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QOffscreenSurface) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QOffscreenSurface_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

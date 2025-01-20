@@ -42,7 +42,6 @@ import
   gen_qdialog,
   gen_qevent,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -57,7 +56,6 @@ export
   gen_qdialog,
   gen_qevent,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -195,1054 +193,839 @@ proc fcQErrorMessage_staticMetaObject(): pointer {.importc: "QErrorMessage_stati
 proc fcQErrorMessage_delete(self: pointer) {.importc: "QErrorMessage_delete".}
 
 
-func init*(T: type QErrorMessage, h: ptr cQErrorMessage): QErrorMessage =
+func init*(T: type gen_qerrormessage_types.QErrorMessage, h: ptr cQErrorMessage): gen_qerrormessage_types.QErrorMessage =
   T(h: h)
-proc create*(T: type QErrorMessage, parent: gen_qwidget.QWidget): QErrorMessage =
+proc create*(T: type gen_qerrormessage_types.QErrorMessage, parent: gen_qwidget.QWidget): gen_qerrormessage_types.QErrorMessage =
 
-  QErrorMessage.init(fcQErrorMessage_new(parent.h))
-proc create*(T: type QErrorMessage, ): QErrorMessage =
+  gen_qerrormessage_types.QErrorMessage.init(fcQErrorMessage_new(parent.h))
+proc create*(T: type gen_qerrormessage_types.QErrorMessage, ): gen_qerrormessage_types.QErrorMessage =
 
-  QErrorMessage.init(fcQErrorMessage_new2())
-proc metaObject*(self: QErrorMessage, ): gen_qobjectdefs.QMetaObject =
+  gen_qerrormessage_types.QErrorMessage.init(fcQErrorMessage_new2())
+proc metaObject*(self: gen_qerrormessage_types.QErrorMessage, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQErrorMessage_metaObject(self.h))
 
-proc metacast*(self: QErrorMessage, param1: cstring): pointer =
+proc metacast*(self: gen_qerrormessage_types.QErrorMessage, param1: cstring): pointer =
 
   fcQErrorMessage_metacast(self.h, param1)
 
-proc metacall*(self: QErrorMessage, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qerrormessage_types.QErrorMessage, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQErrorMessage_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QErrorMessage, s: cstring): string =
+proc tr*(_: type gen_qerrormessage_types.QErrorMessage, s: cstring): string =
 
   let v_ms = fcQErrorMessage_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc qtHandler*(_: type QErrorMessage, ): QErrorMessage =
+proc qtHandler*(_: type gen_qerrormessage_types.QErrorMessage, ): gen_qerrormessage_types.QErrorMessage =
 
-  QErrorMessage(h: fcQErrorMessage_qtHandler())
+  gen_qerrormessage_types.QErrorMessage(h: fcQErrorMessage_qtHandler())
 
-proc showMessage*(self: QErrorMessage, message: string): void =
+proc showMessage*(self: gen_qerrormessage_types.QErrorMessage, message: string): void =
 
   fcQErrorMessage_showMessage(self.h, struct_miqt_string(data: message, len: csize_t(len(message))))
 
-proc showMessage2*(self: QErrorMessage, message: string, typeVal: string): void =
+proc showMessage2*(self: gen_qerrormessage_types.QErrorMessage, message: string, typeVal: string): void =
 
   fcQErrorMessage_showMessage2(self.h, struct_miqt_string(data: message, len: csize_t(len(message))), struct_miqt_string(data: typeVal, len: csize_t(len(typeVal))))
 
-proc tr2*(_: type QErrorMessage, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qerrormessage_types.QErrorMessage, s: cstring, c: cstring): string =
 
   let v_ms = fcQErrorMessage_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QErrorMessage, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qerrormessage_types.QErrorMessage, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQErrorMessage_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QErrorMessage, ): gen_qobjectdefs.QMetaObject =
-
+proc QErrorMessagemetaObject*(self: gen_qerrormessage_types.QErrorMessage, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQErrorMessage_virtualbase_metaObject(self.h))
 
-type QErrorMessagemetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QErrorMessage, slot: proc(super: QErrorMessagemetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QErrorMessagemetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qerrormessage_types.QErrorMessage, slot: QErrorMessagemetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QErrorMessagemetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QErrorMessagemetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQErrorMessage_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QErrorMessage_metaObject(self: ptr cQErrorMessage, slot: int): pointer {.exportc: "miqt_exec_callback_QErrorMessage_metaObject ".} =
-  type Cb = proc(super: QErrorMessagemetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QErrorMessage(h: self), )
+  var nimfunc = cast[ptr QErrorMessagemetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QErrorMessage, param1: cstring): pointer =
-
+proc QErrorMessagemetacast*(self: gen_qerrormessage_types.QErrorMessage, param1: cstring): pointer =
 
   fQErrorMessage_virtualbase_metacast(self.h, param1)
 
-type QErrorMessagemetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QErrorMessage, slot: proc(super: QErrorMessagemetacastBase, param1: cstring): pointer) =
+type QErrorMessagemetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qerrormessage_types.QErrorMessage, slot: QErrorMessagemetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QErrorMessagemetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QErrorMessagemetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQErrorMessage_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QErrorMessage_metacast(self: ptr cQErrorMessage, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QErrorMessage_metacast ".} =
-  type Cb = proc(super: QErrorMessagemetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QErrorMessage(h: self), param1)
+  var nimfunc = cast[ptr QErrorMessagemetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QErrorMessage, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QErrorMessagemetacall*(self: gen_qerrormessage_types.QErrorMessage, param1: cint, param2: cint, param3: pointer): cint =
 
   fQErrorMessage_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QErrorMessagemetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QErrorMessage, slot: proc(super: QErrorMessagemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QErrorMessagemetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qerrormessage_types.QErrorMessage, slot: QErrorMessagemetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QErrorMessagemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QErrorMessagemetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQErrorMessage_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QErrorMessage_metacall(self: ptr cQErrorMessage, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QErrorMessage_metacall ".} =
-  type Cb = proc(super: QErrorMessagemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QErrorMessage(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QErrorMessagemetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_done(self: QErrorMessage, param1: cint): void =
-
+proc QErrorMessagedone*(self: gen_qerrormessage_types.QErrorMessage, param1: cint): void =
 
   fQErrorMessage_virtualbase_done(self.h, param1)
 
-type QErrorMessagedoneBase* = proc(param1: cint): void
-proc ondone*(self: QErrorMessage, slot: proc(super: QErrorMessagedoneBase, param1: cint): void) =
+type QErrorMessagedoneProc* = proc(param1: cint): void
+proc ondone*(self: gen_qerrormessage_types.QErrorMessage, slot: QErrorMessagedoneProc) =
   # TODO check subclass
-  type Cb = proc(super: QErrorMessagedoneBase, param1: cint): void
-  var tmp = new Cb
+  var tmp = new QErrorMessagedoneProc
   tmp[] = slot
   GC_ref(tmp)
   fcQErrorMessage_override_virtual_done(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QErrorMessage_done(self: ptr cQErrorMessage, slot: int, param1: cint): void {.exportc: "miqt_exec_callback_QErrorMessage_done ".} =
-  type Cb = proc(super: QErrorMessagedoneBase, param1: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_done(QErrorMessage(h: self), param1)
+  var nimfunc = cast[ptr QErrorMessagedoneProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_changeEvent(self: QErrorMessage, e: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QErrorMessagechangeEvent*(self: gen_qerrormessage_types.QErrorMessage, e: gen_qcoreevent.QEvent): void =
 
   fQErrorMessage_virtualbase_changeEvent(self.h, e.h)
 
-type QErrorMessagechangeEventBase* = proc(e: gen_qcoreevent.QEvent): void
-proc onchangeEvent*(self: QErrorMessage, slot: proc(super: QErrorMessagechangeEventBase, e: gen_qcoreevent.QEvent): void) =
+type QErrorMessagechangeEventProc* = proc(e: gen_qcoreevent.QEvent): void
+proc onchangeEvent*(self: gen_qerrormessage_types.QErrorMessage, slot: QErrorMessagechangeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QErrorMessagechangeEventBase, e: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QErrorMessagechangeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQErrorMessage_override_virtual_changeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QErrorMessage_changeEvent(self: ptr cQErrorMessage, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QErrorMessage_changeEvent ".} =
-  type Cb = proc(super: QErrorMessagechangeEventBase, e: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_changeEvent(QErrorMessage(h: self), e)
+  var nimfunc = cast[ptr QErrorMessagechangeEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_setVisible(self: QErrorMessage, visible: bool): void =
-
+  nimfunc[](slotval1)
+proc QErrorMessagesetVisible*(self: gen_qerrormessage_types.QErrorMessage, visible: bool): void =
 
   fQErrorMessage_virtualbase_setVisible(self.h, visible)
 
-type QErrorMessagesetVisibleBase* = proc(visible: bool): void
-proc onsetVisible*(self: QErrorMessage, slot: proc(super: QErrorMessagesetVisibleBase, visible: bool): void) =
+type QErrorMessagesetVisibleProc* = proc(visible: bool): void
+proc onsetVisible*(self: gen_qerrormessage_types.QErrorMessage, slot: QErrorMessagesetVisibleProc) =
   # TODO check subclass
-  type Cb = proc(super: QErrorMessagesetVisibleBase, visible: bool): void
-  var tmp = new Cb
+  var tmp = new QErrorMessagesetVisibleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQErrorMessage_override_virtual_setVisible(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QErrorMessage_setVisible(self: ptr cQErrorMessage, slot: int, visible: bool): void {.exportc: "miqt_exec_callback_QErrorMessage_setVisible ".} =
-  type Cb = proc(super: QErrorMessagesetVisibleBase, visible: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(visible: bool): auto =
-    callVirtualBase_setVisible(QErrorMessage(h: self), visible)
+  var nimfunc = cast[ptr QErrorMessagesetVisibleProc](cast[pointer](slot))
   let slotval1 = visible
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_sizeHint(self: QErrorMessage, ): gen_qsize.QSize =
-
+  nimfunc[](slotval1)
+proc QErrorMessagesizeHint*(self: gen_qerrormessage_types.QErrorMessage, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQErrorMessage_virtualbase_sizeHint(self.h))
 
-type QErrorMessagesizeHintBase* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: QErrorMessage, slot: proc(super: QErrorMessagesizeHintBase): gen_qsize.QSize) =
+type QErrorMessagesizeHintProc* = proc(): gen_qsize.QSize
+proc onsizeHint*(self: gen_qerrormessage_types.QErrorMessage, slot: QErrorMessagesizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QErrorMessagesizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QErrorMessagesizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQErrorMessage_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QErrorMessage_sizeHint(self: ptr cQErrorMessage, slot: int): pointer {.exportc: "miqt_exec_callback_QErrorMessage_sizeHint ".} =
-  type Cb = proc(super: QErrorMessagesizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sizeHint(QErrorMessage(h: self), )
+  var nimfunc = cast[ptr QErrorMessagesizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_minimumSizeHint(self: QErrorMessage, ): gen_qsize.QSize =
-
+proc QErrorMessageminimumSizeHint*(self: gen_qerrormessage_types.QErrorMessage, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQErrorMessage_virtualbase_minimumSizeHint(self.h))
 
-type QErrorMessageminimumSizeHintBase* = proc(): gen_qsize.QSize
-proc onminimumSizeHint*(self: QErrorMessage, slot: proc(super: QErrorMessageminimumSizeHintBase): gen_qsize.QSize) =
+type QErrorMessageminimumSizeHintProc* = proc(): gen_qsize.QSize
+proc onminimumSizeHint*(self: gen_qerrormessage_types.QErrorMessage, slot: QErrorMessageminimumSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QErrorMessageminimumSizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QErrorMessageminimumSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQErrorMessage_override_virtual_minimumSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QErrorMessage_minimumSizeHint(self: ptr cQErrorMessage, slot: int): pointer {.exportc: "miqt_exec_callback_QErrorMessage_minimumSizeHint ".} =
-  type Cb = proc(super: QErrorMessageminimumSizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_minimumSizeHint(QErrorMessage(h: self), )
+  var nimfunc = cast[ptr QErrorMessageminimumSizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_open(self: QErrorMessage, ): void =
-
+proc QErrorMessageopen*(self: gen_qerrormessage_types.QErrorMessage, ): void =
 
   fQErrorMessage_virtualbase_open(self.h)
 
-type QErrorMessageopenBase* = proc(): void
-proc onopen*(self: QErrorMessage, slot: proc(super: QErrorMessageopenBase): void) =
+type QErrorMessageopenProc* = proc(): void
+proc onopen*(self: gen_qerrormessage_types.QErrorMessage, slot: QErrorMessageopenProc) =
   # TODO check subclass
-  type Cb = proc(super: QErrorMessageopenBase): void
-  var tmp = new Cb
+  var tmp = new QErrorMessageopenProc
   tmp[] = slot
   GC_ref(tmp)
   fcQErrorMessage_override_virtual_open(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QErrorMessage_open(self: ptr cQErrorMessage, slot: int): void {.exportc: "miqt_exec_callback_QErrorMessage_open ".} =
-  type Cb = proc(super: QErrorMessageopenBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_open(QErrorMessage(h: self), )
+  var nimfunc = cast[ptr QErrorMessageopenProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_exec(self: QErrorMessage, ): cint =
-
+  nimfunc[]()
+proc QErrorMessageexec*(self: gen_qerrormessage_types.QErrorMessage, ): cint =
 
   fQErrorMessage_virtualbase_exec(self.h)
 
-type QErrorMessageexecBase* = proc(): cint
-proc onexec*(self: QErrorMessage, slot: proc(super: QErrorMessageexecBase): cint) =
+type QErrorMessageexecProc* = proc(): cint
+proc onexec*(self: gen_qerrormessage_types.QErrorMessage, slot: QErrorMessageexecProc) =
   # TODO check subclass
-  type Cb = proc(super: QErrorMessageexecBase): cint
-  var tmp = new Cb
+  var tmp = new QErrorMessageexecProc
   tmp[] = slot
   GC_ref(tmp)
   fcQErrorMessage_override_virtual_exec(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QErrorMessage_exec(self: ptr cQErrorMessage, slot: int): cint {.exportc: "miqt_exec_callback_QErrorMessage_exec ".} =
-  type Cb = proc(super: QErrorMessageexecBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_exec(QErrorMessage(h: self), )
+  var nimfunc = cast[ptr QErrorMessageexecProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_accept(self: QErrorMessage, ): void =
-
+proc QErrorMessageaccept*(self: gen_qerrormessage_types.QErrorMessage, ): void =
 
   fQErrorMessage_virtualbase_accept(self.h)
 
-type QErrorMessageacceptBase* = proc(): void
-proc onaccept*(self: QErrorMessage, slot: proc(super: QErrorMessageacceptBase): void) =
+type QErrorMessageacceptProc* = proc(): void
+proc onaccept*(self: gen_qerrormessage_types.QErrorMessage, slot: QErrorMessageacceptProc) =
   # TODO check subclass
-  type Cb = proc(super: QErrorMessageacceptBase): void
-  var tmp = new Cb
+  var tmp = new QErrorMessageacceptProc
   tmp[] = slot
   GC_ref(tmp)
   fcQErrorMessage_override_virtual_accept(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QErrorMessage_accept(self: ptr cQErrorMessage, slot: int): void {.exportc: "miqt_exec_callback_QErrorMessage_accept ".} =
-  type Cb = proc(super: QErrorMessageacceptBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_accept(QErrorMessage(h: self), )
+  var nimfunc = cast[ptr QErrorMessageacceptProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_reject(self: QErrorMessage, ): void =
-
+  nimfunc[]()
+proc QErrorMessagereject*(self: gen_qerrormessage_types.QErrorMessage, ): void =
 
   fQErrorMessage_virtualbase_reject(self.h)
 
-type QErrorMessagerejectBase* = proc(): void
-proc onreject*(self: QErrorMessage, slot: proc(super: QErrorMessagerejectBase): void) =
+type QErrorMessagerejectProc* = proc(): void
+proc onreject*(self: gen_qerrormessage_types.QErrorMessage, slot: QErrorMessagerejectProc) =
   # TODO check subclass
-  type Cb = proc(super: QErrorMessagerejectBase): void
-  var tmp = new Cb
+  var tmp = new QErrorMessagerejectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQErrorMessage_override_virtual_reject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QErrorMessage_reject(self: ptr cQErrorMessage, slot: int): void {.exportc: "miqt_exec_callback_QErrorMessage_reject ".} =
-  type Cb = proc(super: QErrorMessagerejectBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_reject(QErrorMessage(h: self), )
+  var nimfunc = cast[ptr QErrorMessagerejectProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_keyPressEvent(self: QErrorMessage, param1: gen_qevent.QKeyEvent): void =
-
+  nimfunc[]()
+proc QErrorMessagekeyPressEvent*(self: gen_qerrormessage_types.QErrorMessage, param1: gen_qevent.QKeyEvent): void =
 
   fQErrorMessage_virtualbase_keyPressEvent(self.h, param1.h)
 
-type QErrorMessagekeyPressEventBase* = proc(param1: gen_qevent.QKeyEvent): void
-proc onkeyPressEvent*(self: QErrorMessage, slot: proc(super: QErrorMessagekeyPressEventBase, param1: gen_qevent.QKeyEvent): void) =
+type QErrorMessagekeyPressEventProc* = proc(param1: gen_qevent.QKeyEvent): void
+proc onkeyPressEvent*(self: gen_qerrormessage_types.QErrorMessage, slot: QErrorMessagekeyPressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QErrorMessagekeyPressEventBase, param1: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QErrorMessagekeyPressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQErrorMessage_override_virtual_keyPressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QErrorMessage_keyPressEvent(self: ptr cQErrorMessage, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QErrorMessage_keyPressEvent ".} =
-  type Cb = proc(super: QErrorMessagekeyPressEventBase, param1: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyPressEvent(QErrorMessage(h: self), param1)
+  var nimfunc = cast[ptr QErrorMessagekeyPressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_closeEvent(self: QErrorMessage, param1: gen_qevent.QCloseEvent): void =
-
+  nimfunc[](slotval1)
+proc QErrorMessagecloseEvent*(self: gen_qerrormessage_types.QErrorMessage, param1: gen_qevent.QCloseEvent): void =
 
   fQErrorMessage_virtualbase_closeEvent(self.h, param1.h)
 
-type QErrorMessagecloseEventBase* = proc(param1: gen_qevent.QCloseEvent): void
-proc oncloseEvent*(self: QErrorMessage, slot: proc(super: QErrorMessagecloseEventBase, param1: gen_qevent.QCloseEvent): void) =
+type QErrorMessagecloseEventProc* = proc(param1: gen_qevent.QCloseEvent): void
+proc oncloseEvent*(self: gen_qerrormessage_types.QErrorMessage, slot: QErrorMessagecloseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QErrorMessagecloseEventBase, param1: gen_qevent.QCloseEvent): void
-  var tmp = new Cb
+  var tmp = new QErrorMessagecloseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQErrorMessage_override_virtual_closeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QErrorMessage_closeEvent(self: ptr cQErrorMessage, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QErrorMessage_closeEvent ".} =
-  type Cb = proc(super: QErrorMessagecloseEventBase, param1: gen_qevent.QCloseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QCloseEvent): auto =
-    callVirtualBase_closeEvent(QErrorMessage(h: self), param1)
+  var nimfunc = cast[ptr QErrorMessagecloseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QCloseEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_showEvent(self: QErrorMessage, param1: gen_qevent.QShowEvent): void =
-
+  nimfunc[](slotval1)
+proc QErrorMessageshowEvent*(self: gen_qerrormessage_types.QErrorMessage, param1: gen_qevent.QShowEvent): void =
 
   fQErrorMessage_virtualbase_showEvent(self.h, param1.h)
 
-type QErrorMessageshowEventBase* = proc(param1: gen_qevent.QShowEvent): void
-proc onshowEvent*(self: QErrorMessage, slot: proc(super: QErrorMessageshowEventBase, param1: gen_qevent.QShowEvent): void) =
+type QErrorMessageshowEventProc* = proc(param1: gen_qevent.QShowEvent): void
+proc onshowEvent*(self: gen_qerrormessage_types.QErrorMessage, slot: QErrorMessageshowEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QErrorMessageshowEventBase, param1: gen_qevent.QShowEvent): void
-  var tmp = new Cb
+  var tmp = new QErrorMessageshowEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQErrorMessage_override_virtual_showEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QErrorMessage_showEvent(self: ptr cQErrorMessage, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QErrorMessage_showEvent ".} =
-  type Cb = proc(super: QErrorMessageshowEventBase, param1: gen_qevent.QShowEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QShowEvent): auto =
-    callVirtualBase_showEvent(QErrorMessage(h: self), param1)
+  var nimfunc = cast[ptr QErrorMessageshowEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QShowEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_resizeEvent(self: QErrorMessage, param1: gen_qevent.QResizeEvent): void =
-
+  nimfunc[](slotval1)
+proc QErrorMessageresizeEvent*(self: gen_qerrormessage_types.QErrorMessage, param1: gen_qevent.QResizeEvent): void =
 
   fQErrorMessage_virtualbase_resizeEvent(self.h, param1.h)
 
-type QErrorMessageresizeEventBase* = proc(param1: gen_qevent.QResizeEvent): void
-proc onresizeEvent*(self: QErrorMessage, slot: proc(super: QErrorMessageresizeEventBase, param1: gen_qevent.QResizeEvent): void) =
+type QErrorMessageresizeEventProc* = proc(param1: gen_qevent.QResizeEvent): void
+proc onresizeEvent*(self: gen_qerrormessage_types.QErrorMessage, slot: QErrorMessageresizeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QErrorMessageresizeEventBase, param1: gen_qevent.QResizeEvent): void
-  var tmp = new Cb
+  var tmp = new QErrorMessageresizeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQErrorMessage_override_virtual_resizeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QErrorMessage_resizeEvent(self: ptr cQErrorMessage, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QErrorMessage_resizeEvent ".} =
-  type Cb = proc(super: QErrorMessageresizeEventBase, param1: gen_qevent.QResizeEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QResizeEvent): auto =
-    callVirtualBase_resizeEvent(QErrorMessage(h: self), param1)
+  var nimfunc = cast[ptr QErrorMessageresizeEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QResizeEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_contextMenuEvent(self: QErrorMessage, param1: gen_qevent.QContextMenuEvent): void =
-
+  nimfunc[](slotval1)
+proc QErrorMessagecontextMenuEvent*(self: gen_qerrormessage_types.QErrorMessage, param1: gen_qevent.QContextMenuEvent): void =
 
   fQErrorMessage_virtualbase_contextMenuEvent(self.h, param1.h)
 
-type QErrorMessagecontextMenuEventBase* = proc(param1: gen_qevent.QContextMenuEvent): void
-proc oncontextMenuEvent*(self: QErrorMessage, slot: proc(super: QErrorMessagecontextMenuEventBase, param1: gen_qevent.QContextMenuEvent): void) =
+type QErrorMessagecontextMenuEventProc* = proc(param1: gen_qevent.QContextMenuEvent): void
+proc oncontextMenuEvent*(self: gen_qerrormessage_types.QErrorMessage, slot: QErrorMessagecontextMenuEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QErrorMessagecontextMenuEventBase, param1: gen_qevent.QContextMenuEvent): void
-  var tmp = new Cb
+  var tmp = new QErrorMessagecontextMenuEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQErrorMessage_override_virtual_contextMenuEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QErrorMessage_contextMenuEvent(self: ptr cQErrorMessage, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QErrorMessage_contextMenuEvent ".} =
-  type Cb = proc(super: QErrorMessagecontextMenuEventBase, param1: gen_qevent.QContextMenuEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QContextMenuEvent): auto =
-    callVirtualBase_contextMenuEvent(QErrorMessage(h: self), param1)
+  var nimfunc = cast[ptr QErrorMessagecontextMenuEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QContextMenuEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_eventFilter(self: QErrorMessage, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[](slotval1)
+proc QErrorMessageeventFilter*(self: gen_qerrormessage_types.QErrorMessage, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool =
 
   fQErrorMessage_virtualbase_eventFilter(self.h, param1.h, param2.h)
 
-type QErrorMessageeventFilterBase* = proc(param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QErrorMessage, slot: proc(super: QErrorMessageeventFilterBase, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool) =
+type QErrorMessageeventFilterProc* = proc(param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qerrormessage_types.QErrorMessage, slot: QErrorMessageeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QErrorMessageeventFilterBase, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QErrorMessageeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQErrorMessage_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QErrorMessage_eventFilter(self: ptr cQErrorMessage, slot: int, param1: pointer, param2: pointer): bool {.exportc: "miqt_exec_callback_QErrorMessage_eventFilter ".} =
-  type Cb = proc(super: QErrorMessageeventFilterBase, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QErrorMessage(h: self), param1, param2)
+  var nimfunc = cast[ptr QErrorMessageeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: param1)
 
   let slotval2 = gen_qcoreevent.QEvent(h: param2)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_devType(self: QErrorMessage, ): cint =
-
+proc QErrorMessagedevType*(self: gen_qerrormessage_types.QErrorMessage, ): cint =
 
   fQErrorMessage_virtualbase_devType(self.h)
 
-type QErrorMessagedevTypeBase* = proc(): cint
-proc ondevType*(self: QErrorMessage, slot: proc(super: QErrorMessagedevTypeBase): cint) =
+type QErrorMessagedevTypeProc* = proc(): cint
+proc ondevType*(self: gen_qerrormessage_types.QErrorMessage, slot: QErrorMessagedevTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: QErrorMessagedevTypeBase): cint
-  var tmp = new Cb
+  var tmp = new QErrorMessagedevTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQErrorMessage_override_virtual_devType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QErrorMessage_devType(self: ptr cQErrorMessage, slot: int): cint {.exportc: "miqt_exec_callback_QErrorMessage_devType ".} =
-  type Cb = proc(super: QErrorMessagedevTypeBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_devType(QErrorMessage(h: self), )
+  var nimfunc = cast[ptr QErrorMessagedevTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_heightForWidth(self: QErrorMessage, param1: cint): cint =
-
+proc QErrorMessageheightForWidth*(self: gen_qerrormessage_types.QErrorMessage, param1: cint): cint =
 
   fQErrorMessage_virtualbase_heightForWidth(self.h, param1)
 
-type QErrorMessageheightForWidthBase* = proc(param1: cint): cint
-proc onheightForWidth*(self: QErrorMessage, slot: proc(super: QErrorMessageheightForWidthBase, param1: cint): cint) =
+type QErrorMessageheightForWidthProc* = proc(param1: cint): cint
+proc onheightForWidth*(self: gen_qerrormessage_types.QErrorMessage, slot: QErrorMessageheightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QErrorMessageheightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QErrorMessageheightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQErrorMessage_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QErrorMessage_heightForWidth(self: ptr cQErrorMessage, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QErrorMessage_heightForWidth ".} =
-  type Cb = proc(super: QErrorMessageheightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_heightForWidth(QErrorMessage(h: self), param1)
+  var nimfunc = cast[ptr QErrorMessageheightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_hasHeightForWidth(self: QErrorMessage, ): bool =
-
+proc QErrorMessagehasHeightForWidth*(self: gen_qerrormessage_types.QErrorMessage, ): bool =
 
   fQErrorMessage_virtualbase_hasHeightForWidth(self.h)
 
-type QErrorMessagehasHeightForWidthBase* = proc(): bool
-proc onhasHeightForWidth*(self: QErrorMessage, slot: proc(super: QErrorMessagehasHeightForWidthBase): bool) =
+type QErrorMessagehasHeightForWidthProc* = proc(): bool
+proc onhasHeightForWidth*(self: gen_qerrormessage_types.QErrorMessage, slot: QErrorMessagehasHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QErrorMessagehasHeightForWidthBase): bool
-  var tmp = new Cb
+  var tmp = new QErrorMessagehasHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQErrorMessage_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QErrorMessage_hasHeightForWidth(self: ptr cQErrorMessage, slot: int): bool {.exportc: "miqt_exec_callback_QErrorMessage_hasHeightForWidth ".} =
-  type Cb = proc(super: QErrorMessagehasHeightForWidthBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasHeightForWidth(QErrorMessage(h: self), )
+  var nimfunc = cast[ptr QErrorMessagehasHeightForWidthProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_paintEngine(self: QErrorMessage, ): gen_qpaintengine.QPaintEngine =
-
+proc QErrorMessagepaintEngine*(self: gen_qerrormessage_types.QErrorMessage, ): gen_qpaintengine.QPaintEngine =
 
   gen_qpaintengine.QPaintEngine(h: fQErrorMessage_virtualbase_paintEngine(self.h))
 
-type QErrorMessagepaintEngineBase* = proc(): gen_qpaintengine.QPaintEngine
-proc onpaintEngine*(self: QErrorMessage, slot: proc(super: QErrorMessagepaintEngineBase): gen_qpaintengine.QPaintEngine) =
+type QErrorMessagepaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
+proc onpaintEngine*(self: gen_qerrormessage_types.QErrorMessage, slot: QErrorMessagepaintEngineProc) =
   # TODO check subclass
-  type Cb = proc(super: QErrorMessagepaintEngineBase): gen_qpaintengine.QPaintEngine
-  var tmp = new Cb
+  var tmp = new QErrorMessagepaintEngineProc
   tmp[] = slot
   GC_ref(tmp)
   fcQErrorMessage_override_virtual_paintEngine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QErrorMessage_paintEngine(self: ptr cQErrorMessage, slot: int): pointer {.exportc: "miqt_exec_callback_QErrorMessage_paintEngine ".} =
-  type Cb = proc(super: QErrorMessagepaintEngineBase): gen_qpaintengine.QPaintEngine
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_paintEngine(QErrorMessage(h: self), )
+  var nimfunc = cast[ptr QErrorMessagepaintEngineProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_event(self: QErrorMessage, event: gen_qcoreevent.QEvent): bool =
-
+proc QErrorMessageevent*(self: gen_qerrormessage_types.QErrorMessage, event: gen_qcoreevent.QEvent): bool =
 
   fQErrorMessage_virtualbase_event(self.h, event.h)
 
-type QErrorMessageeventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QErrorMessage, slot: proc(super: QErrorMessageeventBase, event: gen_qcoreevent.QEvent): bool) =
+type QErrorMessageeventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qerrormessage_types.QErrorMessage, slot: QErrorMessageeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QErrorMessageeventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QErrorMessageeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQErrorMessage_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QErrorMessage_event(self: ptr cQErrorMessage, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QErrorMessage_event ".} =
-  type Cb = proc(super: QErrorMessageeventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QErrorMessage(h: self), event)
+  var nimfunc = cast[ptr QErrorMessageeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_mousePressEvent(self: QErrorMessage, event: gen_qevent.QMouseEvent): void =
-
+proc QErrorMessagemousePressEvent*(self: gen_qerrormessage_types.QErrorMessage, event: gen_qevent.QMouseEvent): void =
 
   fQErrorMessage_virtualbase_mousePressEvent(self.h, event.h)
 
-type QErrorMessagemousePressEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmousePressEvent*(self: QErrorMessage, slot: proc(super: QErrorMessagemousePressEventBase, event: gen_qevent.QMouseEvent): void) =
+type QErrorMessagemousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmousePressEvent*(self: gen_qerrormessage_types.QErrorMessage, slot: QErrorMessagemousePressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QErrorMessagemousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QErrorMessagemousePressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQErrorMessage_override_virtual_mousePressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QErrorMessage_mousePressEvent(self: ptr cQErrorMessage, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QErrorMessage_mousePressEvent ".} =
-  type Cb = proc(super: QErrorMessagemousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mousePressEvent(QErrorMessage(h: self), event)
+  var nimfunc = cast[ptr QErrorMessagemousePressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseReleaseEvent(self: QErrorMessage, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QErrorMessagemouseReleaseEvent*(self: gen_qerrormessage_types.QErrorMessage, event: gen_qevent.QMouseEvent): void =
 
   fQErrorMessage_virtualbase_mouseReleaseEvent(self.h, event.h)
 
-type QErrorMessagemouseReleaseEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseReleaseEvent*(self: QErrorMessage, slot: proc(super: QErrorMessagemouseReleaseEventBase, event: gen_qevent.QMouseEvent): void) =
+type QErrorMessagemouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseReleaseEvent*(self: gen_qerrormessage_types.QErrorMessage, slot: QErrorMessagemouseReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QErrorMessagemouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QErrorMessagemouseReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQErrorMessage_override_virtual_mouseReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QErrorMessage_mouseReleaseEvent(self: ptr cQErrorMessage, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QErrorMessage_mouseReleaseEvent ".} =
-  type Cb = proc(super: QErrorMessagemouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseReleaseEvent(QErrorMessage(h: self), event)
+  var nimfunc = cast[ptr QErrorMessagemouseReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseDoubleClickEvent(self: QErrorMessage, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QErrorMessagemouseDoubleClickEvent*(self: gen_qerrormessage_types.QErrorMessage, event: gen_qevent.QMouseEvent): void =
 
   fQErrorMessage_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
-type QErrorMessagemouseDoubleClickEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseDoubleClickEvent*(self: QErrorMessage, slot: proc(super: QErrorMessagemouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void) =
+type QErrorMessagemouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseDoubleClickEvent*(self: gen_qerrormessage_types.QErrorMessage, slot: QErrorMessagemouseDoubleClickEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QErrorMessagemouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QErrorMessagemouseDoubleClickEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQErrorMessage_override_virtual_mouseDoubleClickEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QErrorMessage_mouseDoubleClickEvent(self: ptr cQErrorMessage, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QErrorMessage_mouseDoubleClickEvent ".} =
-  type Cb = proc(super: QErrorMessagemouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseDoubleClickEvent(QErrorMessage(h: self), event)
+  var nimfunc = cast[ptr QErrorMessagemouseDoubleClickEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseMoveEvent(self: QErrorMessage, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QErrorMessagemouseMoveEvent*(self: gen_qerrormessage_types.QErrorMessage, event: gen_qevent.QMouseEvent): void =
 
   fQErrorMessage_virtualbase_mouseMoveEvent(self.h, event.h)
 
-type QErrorMessagemouseMoveEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseMoveEvent*(self: QErrorMessage, slot: proc(super: QErrorMessagemouseMoveEventBase, event: gen_qevent.QMouseEvent): void) =
+type QErrorMessagemouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseMoveEvent*(self: gen_qerrormessage_types.QErrorMessage, slot: QErrorMessagemouseMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QErrorMessagemouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QErrorMessagemouseMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQErrorMessage_override_virtual_mouseMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QErrorMessage_mouseMoveEvent(self: ptr cQErrorMessage, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QErrorMessage_mouseMoveEvent ".} =
-  type Cb = proc(super: QErrorMessagemouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseMoveEvent(QErrorMessage(h: self), event)
+  var nimfunc = cast[ptr QErrorMessagemouseMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_wheelEvent(self: QErrorMessage, event: gen_qevent.QWheelEvent): void =
-
+  nimfunc[](slotval1)
+proc QErrorMessagewheelEvent*(self: gen_qerrormessage_types.QErrorMessage, event: gen_qevent.QWheelEvent): void =
 
   fQErrorMessage_virtualbase_wheelEvent(self.h, event.h)
 
-type QErrorMessagewheelEventBase* = proc(event: gen_qevent.QWheelEvent): void
-proc onwheelEvent*(self: QErrorMessage, slot: proc(super: QErrorMessagewheelEventBase, event: gen_qevent.QWheelEvent): void) =
+type QErrorMessagewheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
+proc onwheelEvent*(self: gen_qerrormessage_types.QErrorMessage, slot: QErrorMessagewheelEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QErrorMessagewheelEventBase, event: gen_qevent.QWheelEvent): void
-  var tmp = new Cb
+  var tmp = new QErrorMessagewheelEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQErrorMessage_override_virtual_wheelEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QErrorMessage_wheelEvent(self: ptr cQErrorMessage, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QErrorMessage_wheelEvent ".} =
-  type Cb = proc(super: QErrorMessagewheelEventBase, event: gen_qevent.QWheelEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QWheelEvent): auto =
-    callVirtualBase_wheelEvent(QErrorMessage(h: self), event)
+  var nimfunc = cast[ptr QErrorMessagewheelEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QWheelEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyReleaseEvent(self: QErrorMessage, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QErrorMessagekeyReleaseEvent*(self: gen_qerrormessage_types.QErrorMessage, event: gen_qevent.QKeyEvent): void =
 
   fQErrorMessage_virtualbase_keyReleaseEvent(self.h, event.h)
 
-type QErrorMessagekeyReleaseEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyReleaseEvent*(self: QErrorMessage, slot: proc(super: QErrorMessagekeyReleaseEventBase, event: gen_qevent.QKeyEvent): void) =
+type QErrorMessagekeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyReleaseEvent*(self: gen_qerrormessage_types.QErrorMessage, slot: QErrorMessagekeyReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QErrorMessagekeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QErrorMessagekeyReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQErrorMessage_override_virtual_keyReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QErrorMessage_keyReleaseEvent(self: ptr cQErrorMessage, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QErrorMessage_keyReleaseEvent ".} =
-  type Cb = proc(super: QErrorMessagekeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyReleaseEvent(QErrorMessage(h: self), event)
+  var nimfunc = cast[ptr QErrorMessagekeyReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusInEvent(self: QErrorMessage, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QErrorMessagefocusInEvent*(self: gen_qerrormessage_types.QErrorMessage, event: gen_qevent.QFocusEvent): void =
 
   fQErrorMessage_virtualbase_focusInEvent(self.h, event.h)
 
-type QErrorMessagefocusInEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusInEvent*(self: QErrorMessage, slot: proc(super: QErrorMessagefocusInEventBase, event: gen_qevent.QFocusEvent): void) =
+type QErrorMessagefocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusInEvent*(self: gen_qerrormessage_types.QErrorMessage, slot: QErrorMessagefocusInEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QErrorMessagefocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QErrorMessagefocusInEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQErrorMessage_override_virtual_focusInEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QErrorMessage_focusInEvent(self: ptr cQErrorMessage, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QErrorMessage_focusInEvent ".} =
-  type Cb = proc(super: QErrorMessagefocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusInEvent(QErrorMessage(h: self), event)
+  var nimfunc = cast[ptr QErrorMessagefocusInEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusOutEvent(self: QErrorMessage, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QErrorMessagefocusOutEvent*(self: gen_qerrormessage_types.QErrorMessage, event: gen_qevent.QFocusEvent): void =
 
   fQErrorMessage_virtualbase_focusOutEvent(self.h, event.h)
 
-type QErrorMessagefocusOutEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusOutEvent*(self: QErrorMessage, slot: proc(super: QErrorMessagefocusOutEventBase, event: gen_qevent.QFocusEvent): void) =
+type QErrorMessagefocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusOutEvent*(self: gen_qerrormessage_types.QErrorMessage, slot: QErrorMessagefocusOutEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QErrorMessagefocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QErrorMessagefocusOutEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQErrorMessage_override_virtual_focusOutEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QErrorMessage_focusOutEvent(self: ptr cQErrorMessage, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QErrorMessage_focusOutEvent ".} =
-  type Cb = proc(super: QErrorMessagefocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusOutEvent(QErrorMessage(h: self), event)
+  var nimfunc = cast[ptr QErrorMessagefocusOutEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_enterEvent(self: QErrorMessage, event: gen_qevent.QEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QErrorMessageenterEvent*(self: gen_qerrormessage_types.QErrorMessage, event: gen_qevent.QEnterEvent): void =
 
   fQErrorMessage_virtualbase_enterEvent(self.h, event.h)
 
-type QErrorMessageenterEventBase* = proc(event: gen_qevent.QEnterEvent): void
-proc onenterEvent*(self: QErrorMessage, slot: proc(super: QErrorMessageenterEventBase, event: gen_qevent.QEnterEvent): void) =
+type QErrorMessageenterEventProc* = proc(event: gen_qevent.QEnterEvent): void
+proc onenterEvent*(self: gen_qerrormessage_types.QErrorMessage, slot: QErrorMessageenterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QErrorMessageenterEventBase, event: gen_qevent.QEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QErrorMessageenterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQErrorMessage_override_virtual_enterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QErrorMessage_enterEvent(self: ptr cQErrorMessage, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QErrorMessage_enterEvent ".} =
-  type Cb = proc(super: QErrorMessageenterEventBase, event: gen_qevent.QEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QEnterEvent): auto =
-    callVirtualBase_enterEvent(QErrorMessage(h: self), event)
+  var nimfunc = cast[ptr QErrorMessageenterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_leaveEvent(self: QErrorMessage, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QErrorMessageleaveEvent*(self: gen_qerrormessage_types.QErrorMessage, event: gen_qcoreevent.QEvent): void =
 
   fQErrorMessage_virtualbase_leaveEvent(self.h, event.h)
 
-type QErrorMessageleaveEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onleaveEvent*(self: QErrorMessage, slot: proc(super: QErrorMessageleaveEventBase, event: gen_qcoreevent.QEvent): void) =
+type QErrorMessageleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onleaveEvent*(self: gen_qerrormessage_types.QErrorMessage, slot: QErrorMessageleaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QErrorMessageleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QErrorMessageleaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQErrorMessage_override_virtual_leaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QErrorMessage_leaveEvent(self: ptr cQErrorMessage, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QErrorMessage_leaveEvent ".} =
-  type Cb = proc(super: QErrorMessageleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_leaveEvent(QErrorMessage(h: self), event)
+  var nimfunc = cast[ptr QErrorMessageleaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_paintEvent(self: QErrorMessage, event: gen_qevent.QPaintEvent): void =
-
+  nimfunc[](slotval1)
+proc QErrorMessagepaintEvent*(self: gen_qerrormessage_types.QErrorMessage, event: gen_qevent.QPaintEvent): void =
 
   fQErrorMessage_virtualbase_paintEvent(self.h, event.h)
 
-type QErrorMessagepaintEventBase* = proc(event: gen_qevent.QPaintEvent): void
-proc onpaintEvent*(self: QErrorMessage, slot: proc(super: QErrorMessagepaintEventBase, event: gen_qevent.QPaintEvent): void) =
+type QErrorMessagepaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
+proc onpaintEvent*(self: gen_qerrormessage_types.QErrorMessage, slot: QErrorMessagepaintEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QErrorMessagepaintEventBase, event: gen_qevent.QPaintEvent): void
-  var tmp = new Cb
+  var tmp = new QErrorMessagepaintEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQErrorMessage_override_virtual_paintEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QErrorMessage_paintEvent(self: ptr cQErrorMessage, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QErrorMessage_paintEvent ".} =
-  type Cb = proc(super: QErrorMessagepaintEventBase, event: gen_qevent.QPaintEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QPaintEvent): auto =
-    callVirtualBase_paintEvent(QErrorMessage(h: self), event)
+  var nimfunc = cast[ptr QErrorMessagepaintEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QPaintEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_moveEvent(self: QErrorMessage, event: gen_qevent.QMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QErrorMessagemoveEvent*(self: gen_qerrormessage_types.QErrorMessage, event: gen_qevent.QMoveEvent): void =
 
   fQErrorMessage_virtualbase_moveEvent(self.h, event.h)
 
-type QErrorMessagemoveEventBase* = proc(event: gen_qevent.QMoveEvent): void
-proc onmoveEvent*(self: QErrorMessage, slot: proc(super: QErrorMessagemoveEventBase, event: gen_qevent.QMoveEvent): void) =
+type QErrorMessagemoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
+proc onmoveEvent*(self: gen_qerrormessage_types.QErrorMessage, slot: QErrorMessagemoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QErrorMessagemoveEventBase, event: gen_qevent.QMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QErrorMessagemoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQErrorMessage_override_virtual_moveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QErrorMessage_moveEvent(self: ptr cQErrorMessage, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QErrorMessage_moveEvent ".} =
-  type Cb = proc(super: QErrorMessagemoveEventBase, event: gen_qevent.QMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMoveEvent): auto =
-    callVirtualBase_moveEvent(QErrorMessage(h: self), event)
+  var nimfunc = cast[ptr QErrorMessagemoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_tabletEvent(self: QErrorMessage, event: gen_qevent.QTabletEvent): void =
-
+  nimfunc[](slotval1)
+proc QErrorMessagetabletEvent*(self: gen_qerrormessage_types.QErrorMessage, event: gen_qevent.QTabletEvent): void =
 
   fQErrorMessage_virtualbase_tabletEvent(self.h, event.h)
 
-type QErrorMessagetabletEventBase* = proc(event: gen_qevent.QTabletEvent): void
-proc ontabletEvent*(self: QErrorMessage, slot: proc(super: QErrorMessagetabletEventBase, event: gen_qevent.QTabletEvent): void) =
+type QErrorMessagetabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
+proc ontabletEvent*(self: gen_qerrormessage_types.QErrorMessage, slot: QErrorMessagetabletEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QErrorMessagetabletEventBase, event: gen_qevent.QTabletEvent): void
-  var tmp = new Cb
+  var tmp = new QErrorMessagetabletEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQErrorMessage_override_virtual_tabletEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QErrorMessage_tabletEvent(self: ptr cQErrorMessage, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QErrorMessage_tabletEvent ".} =
-  type Cb = proc(super: QErrorMessagetabletEventBase, event: gen_qevent.QTabletEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QTabletEvent): auto =
-    callVirtualBase_tabletEvent(QErrorMessage(h: self), event)
+  var nimfunc = cast[ptr QErrorMessagetabletEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QTabletEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_actionEvent(self: QErrorMessage, event: gen_qevent.QActionEvent): void =
-
+  nimfunc[](slotval1)
+proc QErrorMessageactionEvent*(self: gen_qerrormessage_types.QErrorMessage, event: gen_qevent.QActionEvent): void =
 
   fQErrorMessage_virtualbase_actionEvent(self.h, event.h)
 
-type QErrorMessageactionEventBase* = proc(event: gen_qevent.QActionEvent): void
-proc onactionEvent*(self: QErrorMessage, slot: proc(super: QErrorMessageactionEventBase, event: gen_qevent.QActionEvent): void) =
+type QErrorMessageactionEventProc* = proc(event: gen_qevent.QActionEvent): void
+proc onactionEvent*(self: gen_qerrormessage_types.QErrorMessage, slot: QErrorMessageactionEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QErrorMessageactionEventBase, event: gen_qevent.QActionEvent): void
-  var tmp = new Cb
+  var tmp = new QErrorMessageactionEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQErrorMessage_override_virtual_actionEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QErrorMessage_actionEvent(self: ptr cQErrorMessage, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QErrorMessage_actionEvent ".} =
-  type Cb = proc(super: QErrorMessageactionEventBase, event: gen_qevent.QActionEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QActionEvent): auto =
-    callVirtualBase_actionEvent(QErrorMessage(h: self), event)
+  var nimfunc = cast[ptr QErrorMessageactionEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QActionEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragEnterEvent(self: QErrorMessage, event: gen_qevent.QDragEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QErrorMessagedragEnterEvent*(self: gen_qerrormessage_types.QErrorMessage, event: gen_qevent.QDragEnterEvent): void =
 
   fQErrorMessage_virtualbase_dragEnterEvent(self.h, event.h)
 
-type QErrorMessagedragEnterEventBase* = proc(event: gen_qevent.QDragEnterEvent): void
-proc ondragEnterEvent*(self: QErrorMessage, slot: proc(super: QErrorMessagedragEnterEventBase, event: gen_qevent.QDragEnterEvent): void) =
+type QErrorMessagedragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
+proc ondragEnterEvent*(self: gen_qerrormessage_types.QErrorMessage, slot: QErrorMessagedragEnterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QErrorMessagedragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QErrorMessagedragEnterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQErrorMessage_override_virtual_dragEnterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QErrorMessage_dragEnterEvent(self: ptr cQErrorMessage, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QErrorMessage_dragEnterEvent ".} =
-  type Cb = proc(super: QErrorMessagedragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragEnterEvent): auto =
-    callVirtualBase_dragEnterEvent(QErrorMessage(h: self), event)
+  var nimfunc = cast[ptr QErrorMessagedragEnterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragMoveEvent(self: QErrorMessage, event: gen_qevent.QDragMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QErrorMessagedragMoveEvent*(self: gen_qerrormessage_types.QErrorMessage, event: gen_qevent.QDragMoveEvent): void =
 
   fQErrorMessage_virtualbase_dragMoveEvent(self.h, event.h)
 
-type QErrorMessagedragMoveEventBase* = proc(event: gen_qevent.QDragMoveEvent): void
-proc ondragMoveEvent*(self: QErrorMessage, slot: proc(super: QErrorMessagedragMoveEventBase, event: gen_qevent.QDragMoveEvent): void) =
+type QErrorMessagedragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
+proc ondragMoveEvent*(self: gen_qerrormessage_types.QErrorMessage, slot: QErrorMessagedragMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QErrorMessagedragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QErrorMessagedragMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQErrorMessage_override_virtual_dragMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QErrorMessage_dragMoveEvent(self: ptr cQErrorMessage, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QErrorMessage_dragMoveEvent ".} =
-  type Cb = proc(super: QErrorMessagedragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragMoveEvent): auto =
-    callVirtualBase_dragMoveEvent(QErrorMessage(h: self), event)
+  var nimfunc = cast[ptr QErrorMessagedragMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragLeaveEvent(self: QErrorMessage, event: gen_qevent.QDragLeaveEvent): void =
-
+  nimfunc[](slotval1)
+proc QErrorMessagedragLeaveEvent*(self: gen_qerrormessage_types.QErrorMessage, event: gen_qevent.QDragLeaveEvent): void =
 
   fQErrorMessage_virtualbase_dragLeaveEvent(self.h, event.h)
 
-type QErrorMessagedragLeaveEventBase* = proc(event: gen_qevent.QDragLeaveEvent): void
-proc ondragLeaveEvent*(self: QErrorMessage, slot: proc(super: QErrorMessagedragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void) =
+type QErrorMessagedragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
+proc ondragLeaveEvent*(self: gen_qerrormessage_types.QErrorMessage, slot: QErrorMessagedragLeaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QErrorMessagedragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var tmp = new Cb
+  var tmp = new QErrorMessagedragLeaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQErrorMessage_override_virtual_dragLeaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QErrorMessage_dragLeaveEvent(self: ptr cQErrorMessage, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QErrorMessage_dragLeaveEvent ".} =
-  type Cb = proc(super: QErrorMessagedragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragLeaveEvent): auto =
-    callVirtualBase_dragLeaveEvent(QErrorMessage(h: self), event)
+  var nimfunc = cast[ptr QErrorMessagedragLeaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragLeaveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dropEvent(self: QErrorMessage, event: gen_qevent.QDropEvent): void =
-
+  nimfunc[](slotval1)
+proc QErrorMessagedropEvent*(self: gen_qerrormessage_types.QErrorMessage, event: gen_qevent.QDropEvent): void =
 
   fQErrorMessage_virtualbase_dropEvent(self.h, event.h)
 
-type QErrorMessagedropEventBase* = proc(event: gen_qevent.QDropEvent): void
-proc ondropEvent*(self: QErrorMessage, slot: proc(super: QErrorMessagedropEventBase, event: gen_qevent.QDropEvent): void) =
+type QErrorMessagedropEventProc* = proc(event: gen_qevent.QDropEvent): void
+proc ondropEvent*(self: gen_qerrormessage_types.QErrorMessage, slot: QErrorMessagedropEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QErrorMessagedropEventBase, event: gen_qevent.QDropEvent): void
-  var tmp = new Cb
+  var tmp = new QErrorMessagedropEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQErrorMessage_override_virtual_dropEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QErrorMessage_dropEvent(self: ptr cQErrorMessage, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QErrorMessage_dropEvent ".} =
-  type Cb = proc(super: QErrorMessagedropEventBase, event: gen_qevent.QDropEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDropEvent): auto =
-    callVirtualBase_dropEvent(QErrorMessage(h: self), event)
+  var nimfunc = cast[ptr QErrorMessagedropEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDropEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hideEvent(self: QErrorMessage, event: gen_qevent.QHideEvent): void =
-
+  nimfunc[](slotval1)
+proc QErrorMessagehideEvent*(self: gen_qerrormessage_types.QErrorMessage, event: gen_qevent.QHideEvent): void =
 
   fQErrorMessage_virtualbase_hideEvent(self.h, event.h)
 
-type QErrorMessagehideEventBase* = proc(event: gen_qevent.QHideEvent): void
-proc onhideEvent*(self: QErrorMessage, slot: proc(super: QErrorMessagehideEventBase, event: gen_qevent.QHideEvent): void) =
+type QErrorMessagehideEventProc* = proc(event: gen_qevent.QHideEvent): void
+proc onhideEvent*(self: gen_qerrormessage_types.QErrorMessage, slot: QErrorMessagehideEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QErrorMessagehideEventBase, event: gen_qevent.QHideEvent): void
-  var tmp = new Cb
+  var tmp = new QErrorMessagehideEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQErrorMessage_override_virtual_hideEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QErrorMessage_hideEvent(self: ptr cQErrorMessage, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QErrorMessage_hideEvent ".} =
-  type Cb = proc(super: QErrorMessagehideEventBase, event: gen_qevent.QHideEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QHideEvent): auto =
-    callVirtualBase_hideEvent(QErrorMessage(h: self), event)
+  var nimfunc = cast[ptr QErrorMessagehideEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QHideEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_nativeEvent(self: QErrorMessage, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
-
+  nimfunc[](slotval1)
+proc QErrorMessagenativeEvent*(self: gen_qerrormessage_types.QErrorMessage, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
 
   fQErrorMessage_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
-type QErrorMessagenativeEventBase* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-proc onnativeEvent*(self: QErrorMessage, slot: proc(super: QErrorMessagenativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool) =
+type QErrorMessagenativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
+proc onnativeEvent*(self: gen_qerrormessage_types.QErrorMessage, slot: QErrorMessagenativeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QErrorMessagenativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-  var tmp = new Cb
+  var tmp = new QErrorMessagenativeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQErrorMessage_override_virtual_nativeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QErrorMessage_nativeEvent(self: ptr cQErrorMessage, slot: int, eventType: struct_miqt_string, message: pointer, resultVal: ptr uint): bool {.exportc: "miqt_exec_callback_QErrorMessage_nativeEvent ".} =
-  type Cb = proc(super: QErrorMessagenativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(eventType: seq[byte], message: pointer, resultVal: ptr uint): auto =
-    callVirtualBase_nativeEvent(QErrorMessage(h: self), eventType, message, resultVal)
+  var nimfunc = cast[ptr QErrorMessagenativeEventProc](cast[pointer](slot))
   var veventType_bytearray = eventType
   var veventTypex_ret = @(toOpenArrayByte(veventType_bytearray.data, 0, int(veventType_bytearray.len)-1))
   c_free(veventType_bytearray.data)
@@ -1253,294 +1036,234 @@ proc miqt_exec_callback_QErrorMessage_nativeEvent(self: ptr cQErrorMessage, slot
   let slotval3 = resultVal
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_metric(self: QErrorMessage, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint =
-
+proc QErrorMessagemetric*(self: gen_qerrormessage_types.QErrorMessage, param1: cint): cint =
 
   fQErrorMessage_virtualbase_metric(self.h, cint(param1))
 
-type QErrorMessagemetricBase* = proc(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-proc onmetric*(self: QErrorMessage, slot: proc(super: QErrorMessagemetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint) =
+type QErrorMessagemetricProc* = proc(param1: cint): cint
+proc onmetric*(self: gen_qerrormessage_types.QErrorMessage, slot: QErrorMessagemetricProc) =
   # TODO check subclass
-  type Cb = proc(super: QErrorMessagemetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var tmp = new Cb
+  var tmp = new QErrorMessagemetricProc
   tmp[] = slot
   GC_ref(tmp)
   fcQErrorMessage_override_virtual_metric(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QErrorMessage_metric(self: ptr cQErrorMessage, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QErrorMessage_metric ".} =
-  type Cb = proc(super: QErrorMessagemetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): auto =
-    callVirtualBase_metric(QErrorMessage(h: self), param1)
-  let slotval1 = gen_qpaintdevice.QPaintDevicePaintDeviceMetric(param1)
+  var nimfunc = cast[ptr QErrorMessagemetricProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_initPainter(self: QErrorMessage, painter: gen_qpainter.QPainter): void =
-
+proc QErrorMessageinitPainter*(self: gen_qerrormessage_types.QErrorMessage, painter: gen_qpainter.QPainter): void =
 
   fQErrorMessage_virtualbase_initPainter(self.h, painter.h)
 
-type QErrorMessageinitPainterBase* = proc(painter: gen_qpainter.QPainter): void
-proc oninitPainter*(self: QErrorMessage, slot: proc(super: QErrorMessageinitPainterBase, painter: gen_qpainter.QPainter): void) =
+type QErrorMessageinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
+proc oninitPainter*(self: gen_qerrormessage_types.QErrorMessage, slot: QErrorMessageinitPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QErrorMessageinitPainterBase, painter: gen_qpainter.QPainter): void
-  var tmp = new Cb
+  var tmp = new QErrorMessageinitPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQErrorMessage_override_virtual_initPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QErrorMessage_initPainter(self: ptr cQErrorMessage, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_QErrorMessage_initPainter ".} =
-  type Cb = proc(super: QErrorMessageinitPainterBase, painter: gen_qpainter.QPainter): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter): auto =
-    callVirtualBase_initPainter(QErrorMessage(h: self), painter)
+  var nimfunc = cast[ptr QErrorMessageinitPainterProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_redirected(self: QErrorMessage, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
+  nimfunc[](slotval1)
+proc QErrorMessageredirected*(self: gen_qerrormessage_types.QErrorMessage, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
 
   gen_qpaintdevice.QPaintDevice(h: fQErrorMessage_virtualbase_redirected(self.h, offset.h))
 
-type QErrorMessageredirectedBase* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-proc onredirected*(self: QErrorMessage, slot: proc(super: QErrorMessageredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice) =
+type QErrorMessageredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
+proc onredirected*(self: gen_qerrormessage_types.QErrorMessage, slot: QErrorMessageredirectedProc) =
   # TODO check subclass
-  type Cb = proc(super: QErrorMessageredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var tmp = new Cb
+  var tmp = new QErrorMessageredirectedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQErrorMessage_override_virtual_redirected(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QErrorMessage_redirected(self: ptr cQErrorMessage, slot: int, offset: pointer): pointer {.exportc: "miqt_exec_callback_QErrorMessage_redirected ".} =
-  type Cb = proc(super: QErrorMessageredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(offset: gen_qpoint.QPoint): auto =
-    callVirtualBase_redirected(QErrorMessage(h: self), offset)
+  var nimfunc = cast[ptr QErrorMessageredirectedProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: offset)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_sharedPainter(self: QErrorMessage, ): gen_qpainter.QPainter =
-
+proc QErrorMessagesharedPainter*(self: gen_qerrormessage_types.QErrorMessage, ): gen_qpainter.QPainter =
 
   gen_qpainter.QPainter(h: fQErrorMessage_virtualbase_sharedPainter(self.h))
 
-type QErrorMessagesharedPainterBase* = proc(): gen_qpainter.QPainter
-proc onsharedPainter*(self: QErrorMessage, slot: proc(super: QErrorMessagesharedPainterBase): gen_qpainter.QPainter) =
+type QErrorMessagesharedPainterProc* = proc(): gen_qpainter.QPainter
+proc onsharedPainter*(self: gen_qerrormessage_types.QErrorMessage, slot: QErrorMessagesharedPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QErrorMessagesharedPainterBase): gen_qpainter.QPainter
-  var tmp = new Cb
+  var tmp = new QErrorMessagesharedPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQErrorMessage_override_virtual_sharedPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QErrorMessage_sharedPainter(self: ptr cQErrorMessage, slot: int): pointer {.exportc: "miqt_exec_callback_QErrorMessage_sharedPainter ".} =
-  type Cb = proc(super: QErrorMessagesharedPainterBase): gen_qpainter.QPainter
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sharedPainter(QErrorMessage(h: self), )
+  var nimfunc = cast[ptr QErrorMessagesharedPainterProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_inputMethodEvent(self: QErrorMessage, param1: gen_qevent.QInputMethodEvent): void =
-
+proc QErrorMessageinputMethodEvent*(self: gen_qerrormessage_types.QErrorMessage, param1: gen_qevent.QInputMethodEvent): void =
 
   fQErrorMessage_virtualbase_inputMethodEvent(self.h, param1.h)
 
-type QErrorMessageinputMethodEventBase* = proc(param1: gen_qevent.QInputMethodEvent): void
-proc oninputMethodEvent*(self: QErrorMessage, slot: proc(super: QErrorMessageinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void) =
+type QErrorMessageinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
+proc oninputMethodEvent*(self: gen_qerrormessage_types.QErrorMessage, slot: QErrorMessageinputMethodEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QErrorMessageinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var tmp = new Cb
+  var tmp = new QErrorMessageinputMethodEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQErrorMessage_override_virtual_inputMethodEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QErrorMessage_inputMethodEvent(self: ptr cQErrorMessage, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QErrorMessage_inputMethodEvent ".} =
-  type Cb = proc(super: QErrorMessageinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QInputMethodEvent): auto =
-    callVirtualBase_inputMethodEvent(QErrorMessage(h: self), param1)
+  var nimfunc = cast[ptr QErrorMessageinputMethodEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QInputMethodEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_inputMethodQuery(self: QErrorMessage, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant =
-
+  nimfunc[](slotval1)
+proc QErrorMessageinputMethodQuery*(self: gen_qerrormessage_types.QErrorMessage, param1: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQErrorMessage_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
-type QErrorMessageinputMethodQueryBase* = proc(param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-proc oninputMethodQuery*(self: QErrorMessage, slot: proc(super: QErrorMessageinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant) =
+type QErrorMessageinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
+proc oninputMethodQuery*(self: gen_qerrormessage_types.QErrorMessage, slot: QErrorMessageinputMethodQueryProc) =
   # TODO check subclass
-  type Cb = proc(super: QErrorMessageinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QErrorMessageinputMethodQueryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQErrorMessage_override_virtual_inputMethodQuery(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QErrorMessage_inputMethodQuery(self: ptr cQErrorMessage, slot: int, param1: cint): pointer {.exportc: "miqt_exec_callback_QErrorMessage_inputMethodQuery ".} =
-  type Cb = proc(super: QErrorMessageinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qnamespace.InputMethodQuery): auto =
-    callVirtualBase_inputMethodQuery(QErrorMessage(h: self), param1)
-  let slotval1 = gen_qnamespace.InputMethodQuery(param1)
+  var nimfunc = cast[ptr QErrorMessageinputMethodQueryProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_focusNextPrevChild(self: QErrorMessage, next: bool): bool =
-
+proc QErrorMessagefocusNextPrevChild*(self: gen_qerrormessage_types.QErrorMessage, next: bool): bool =
 
   fQErrorMessage_virtualbase_focusNextPrevChild(self.h, next)
 
-type QErrorMessagefocusNextPrevChildBase* = proc(next: bool): bool
-proc onfocusNextPrevChild*(self: QErrorMessage, slot: proc(super: QErrorMessagefocusNextPrevChildBase, next: bool): bool) =
+type QErrorMessagefocusNextPrevChildProc* = proc(next: bool): bool
+proc onfocusNextPrevChild*(self: gen_qerrormessage_types.QErrorMessage, slot: QErrorMessagefocusNextPrevChildProc) =
   # TODO check subclass
-  type Cb = proc(super: QErrorMessagefocusNextPrevChildBase, next: bool): bool
-  var tmp = new Cb
+  var tmp = new QErrorMessagefocusNextPrevChildProc
   tmp[] = slot
   GC_ref(tmp)
   fcQErrorMessage_override_virtual_focusNextPrevChild(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QErrorMessage_focusNextPrevChild(self: ptr cQErrorMessage, slot: int, next: bool): bool {.exportc: "miqt_exec_callback_QErrorMessage_focusNextPrevChild ".} =
-  type Cb = proc(super: QErrorMessagefocusNextPrevChildBase, next: bool): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(next: bool): auto =
-    callVirtualBase_focusNextPrevChild(QErrorMessage(h: self), next)
+  var nimfunc = cast[ptr QErrorMessagefocusNextPrevChildProc](cast[pointer](slot))
   let slotval1 = next
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QErrorMessage, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QErrorMessagetimerEvent*(self: gen_qerrormessage_types.QErrorMessage, event: gen_qcoreevent.QTimerEvent): void =
 
   fQErrorMessage_virtualbase_timerEvent(self.h, event.h)
 
-type QErrorMessagetimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QErrorMessage, slot: proc(super: QErrorMessagetimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QErrorMessagetimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qerrormessage_types.QErrorMessage, slot: QErrorMessagetimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QErrorMessagetimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QErrorMessagetimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQErrorMessage_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QErrorMessage_timerEvent(self: ptr cQErrorMessage, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QErrorMessage_timerEvent ".} =
-  type Cb = proc(super: QErrorMessagetimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QErrorMessage(h: self), event)
+  var nimfunc = cast[ptr QErrorMessagetimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QErrorMessage, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QErrorMessagechildEvent*(self: gen_qerrormessage_types.QErrorMessage, event: gen_qcoreevent.QChildEvent): void =
 
   fQErrorMessage_virtualbase_childEvent(self.h, event.h)
 
-type QErrorMessagechildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QErrorMessage, slot: proc(super: QErrorMessagechildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QErrorMessagechildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qerrormessage_types.QErrorMessage, slot: QErrorMessagechildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QErrorMessagechildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QErrorMessagechildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQErrorMessage_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QErrorMessage_childEvent(self: ptr cQErrorMessage, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QErrorMessage_childEvent ".} =
-  type Cb = proc(super: QErrorMessagechildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QErrorMessage(h: self), event)
+  var nimfunc = cast[ptr QErrorMessagechildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QErrorMessage, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QErrorMessagecustomEvent*(self: gen_qerrormessage_types.QErrorMessage, event: gen_qcoreevent.QEvent): void =
 
   fQErrorMessage_virtualbase_customEvent(self.h, event.h)
 
-type QErrorMessagecustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QErrorMessage, slot: proc(super: QErrorMessagecustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QErrorMessagecustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qerrormessage_types.QErrorMessage, slot: QErrorMessagecustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QErrorMessagecustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QErrorMessagecustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQErrorMessage_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QErrorMessage_customEvent(self: ptr cQErrorMessage, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QErrorMessage_customEvent ".} =
-  type Cb = proc(super: QErrorMessagecustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QErrorMessage(h: self), event)
+  var nimfunc = cast[ptr QErrorMessagecustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QErrorMessage, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QErrorMessageconnectNotify*(self: gen_qerrormessage_types.QErrorMessage, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQErrorMessage_virtualbase_connectNotify(self.h, signal.h)
 
-type QErrorMessageconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QErrorMessage, slot: proc(super: QErrorMessageconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QErrorMessageconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qerrormessage_types.QErrorMessage, slot: QErrorMessageconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QErrorMessageconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QErrorMessageconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQErrorMessage_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QErrorMessage_connectNotify(self: ptr cQErrorMessage, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QErrorMessage_connectNotify ".} =
-  type Cb = proc(super: QErrorMessageconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QErrorMessage(h: self), signal)
+  var nimfunc = cast[ptr QErrorMessageconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QErrorMessage, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QErrorMessagedisconnectNotify*(self: gen_qerrormessage_types.QErrorMessage, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQErrorMessage_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QErrorMessagedisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QErrorMessage, slot: proc(super: QErrorMessagedisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QErrorMessagedisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qerrormessage_types.QErrorMessage, slot: QErrorMessagedisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QErrorMessagedisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QErrorMessagedisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQErrorMessage_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QErrorMessage_disconnectNotify(self: ptr cQErrorMessage, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QErrorMessage_disconnectNotify ".} =
-  type Cb = proc(super: QErrorMessagedisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QErrorMessage(h: self), signal)
+  var nimfunc = cast[ptr QErrorMessagedisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QErrorMessage): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qerrormessage_types.QErrorMessage): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQErrorMessage_staticMetaObject())
-proc delete*(self: QErrorMessage) =
+proc delete*(self: gen_qerrormessage_types.QErrorMessage) =
   fcQErrorMessage_delete(self.h)

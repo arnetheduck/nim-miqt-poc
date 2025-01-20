@@ -42,7 +42,6 @@ import
   gen_qevent,
   gen_qkeysequence,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -57,7 +56,6 @@ export
   gen_qevent,
   gen_qkeysequence,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -193,60 +191,60 @@ proc fcQKeySequenceEdit_staticMetaObject(): pointer {.importc: "QKeySequenceEdit
 proc fcQKeySequenceEdit_delete(self: pointer) {.importc: "QKeySequenceEdit_delete".}
 
 
-func init*(T: type QKeySequenceEdit, h: ptr cQKeySequenceEdit): QKeySequenceEdit =
+func init*(T: type gen_qkeysequenceedit_types.QKeySequenceEdit, h: ptr cQKeySequenceEdit): gen_qkeysequenceedit_types.QKeySequenceEdit =
   T(h: h)
-proc create*(T: type QKeySequenceEdit, parent: gen_qwidget.QWidget): QKeySequenceEdit =
+proc create*(T: type gen_qkeysequenceedit_types.QKeySequenceEdit, parent: gen_qwidget.QWidget): gen_qkeysequenceedit_types.QKeySequenceEdit =
 
-  QKeySequenceEdit.init(fcQKeySequenceEdit_new(parent.h))
-proc create*(T: type QKeySequenceEdit, ): QKeySequenceEdit =
+  gen_qkeysequenceedit_types.QKeySequenceEdit.init(fcQKeySequenceEdit_new(parent.h))
+proc create*(T: type gen_qkeysequenceedit_types.QKeySequenceEdit, ): gen_qkeysequenceedit_types.QKeySequenceEdit =
 
-  QKeySequenceEdit.init(fcQKeySequenceEdit_new2())
-proc create2*(T: type QKeySequenceEdit, keySequence: gen_qkeysequence.QKeySequence): QKeySequenceEdit =
+  gen_qkeysequenceedit_types.QKeySequenceEdit.init(fcQKeySequenceEdit_new2())
+proc create2*(T: type gen_qkeysequenceedit_types.QKeySequenceEdit, keySequence: gen_qkeysequence.QKeySequence): gen_qkeysequenceedit_types.QKeySequenceEdit =
 
-  QKeySequenceEdit.init(fcQKeySequenceEdit_new3(keySequence.h))
-proc create*(T: type QKeySequenceEdit, keySequence: gen_qkeysequence.QKeySequence, parent: gen_qwidget.QWidget): QKeySequenceEdit =
+  gen_qkeysequenceedit_types.QKeySequenceEdit.init(fcQKeySequenceEdit_new3(keySequence.h))
+proc create*(T: type gen_qkeysequenceedit_types.QKeySequenceEdit, keySequence: gen_qkeysequence.QKeySequence, parent: gen_qwidget.QWidget): gen_qkeysequenceedit_types.QKeySequenceEdit =
 
-  QKeySequenceEdit.init(fcQKeySequenceEdit_new4(keySequence.h, parent.h))
-proc metaObject*(self: QKeySequenceEdit, ): gen_qobjectdefs.QMetaObject =
+  gen_qkeysequenceedit_types.QKeySequenceEdit.init(fcQKeySequenceEdit_new4(keySequence.h, parent.h))
+proc metaObject*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQKeySequenceEdit_metaObject(self.h))
 
-proc metacast*(self: QKeySequenceEdit, param1: cstring): pointer =
+proc metacast*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, param1: cstring): pointer =
 
   fcQKeySequenceEdit_metacast(self.h, param1)
 
-proc metacall*(self: QKeySequenceEdit, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQKeySequenceEdit_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QKeySequenceEdit, s: cstring): string =
+proc tr*(_: type gen_qkeysequenceedit_types.QKeySequenceEdit, s: cstring): string =
 
   let v_ms = fcQKeySequenceEdit_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc keySequence*(self: QKeySequenceEdit, ): gen_qkeysequence.QKeySequence =
+proc keySequence*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, ): gen_qkeysequence.QKeySequence =
 
   gen_qkeysequence.QKeySequence(h: fcQKeySequenceEdit_keySequence(self.h))
 
-proc setClearButtonEnabled*(self: QKeySequenceEdit, enable: bool): void =
+proc setClearButtonEnabled*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, enable: bool): void =
 
   fcQKeySequenceEdit_setClearButtonEnabled(self.h, enable)
 
-proc isClearButtonEnabled*(self: QKeySequenceEdit, ): bool =
+proc isClearButtonEnabled*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, ): bool =
 
   fcQKeySequenceEdit_isClearButtonEnabled(self.h)
 
-proc setKeySequence*(self: QKeySequenceEdit, keySequence: gen_qkeysequence.QKeySequence): void =
+proc setKeySequence*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, keySequence: gen_qkeysequence.QKeySequence): void =
 
   fcQKeySequenceEdit_setKeySequence(self.h, keySequence.h)
 
-proc clear*(self: QKeySequenceEdit, ): void =
+proc clear*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, ): void =
 
   fcQKeySequenceEdit_clear(self.h)
 
-proc editingFinished*(self: QKeySequenceEdit, ): void =
+proc editingFinished*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, ): void =
 
   fcQKeySequenceEdit_editingFinished(self.h)
 
@@ -256,13 +254,13 @@ proc miqt_exec_callback_QKeySequenceEdit_editingFinished(slot: int) {.exportc.} 
 
   nimfunc[]()
 
-proc oneditingFinished*(self: QKeySequenceEdit, slot: proc()) =
+proc oneditingFinished*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQKeySequenceEdit_connect_editingFinished(self.h, cast[int](addr tmp[]))
-proc keySequenceChanged*(self: QKeySequenceEdit, keySequence: gen_qkeysequence.QKeySequence): void =
+proc keySequenceChanged*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, keySequence: gen_qkeysequence.QKeySequence): void =
 
   fcQKeySequenceEdit_keySequenceChanged(self.h, keySequence.h)
 
@@ -274,885 +272,700 @@ proc miqt_exec_callback_QKeySequenceEdit_keySequenceChanged(slot: int, keySequen
 
   nimfunc[](slotval1)
 
-proc onkeySequenceChanged*(self: QKeySequenceEdit, slot: proc(keySequence: gen_qkeysequence.QKeySequence)) =
+proc onkeySequenceChanged*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: proc(keySequence: gen_qkeysequence.QKeySequence)) =
   type Cb = proc(keySequence: gen_qkeysequence.QKeySequence)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQKeySequenceEdit_connect_keySequenceChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QKeySequenceEdit, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qkeysequenceedit_types.QKeySequenceEdit, s: cstring, c: cstring): string =
 
   let v_ms = fcQKeySequenceEdit_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QKeySequenceEdit, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qkeysequenceedit_types.QKeySequenceEdit, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQKeySequenceEdit_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QKeySequenceEdit, ): gen_qobjectdefs.QMetaObject =
-
+proc QKeySequenceEditmetaObject*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQKeySequenceEdit_virtualbase_metaObject(self.h))
 
-type QKeySequenceEditmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QKeySequenceEdit, slot: proc(super: QKeySequenceEditmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QKeySequenceEditmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: QKeySequenceEditmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QKeySequenceEditmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QKeySequenceEditmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQKeySequenceEdit_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QKeySequenceEdit_metaObject(self: ptr cQKeySequenceEdit, slot: int): pointer {.exportc: "miqt_exec_callback_QKeySequenceEdit_metaObject ".} =
-  type Cb = proc(super: QKeySequenceEditmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QKeySequenceEdit(h: self), )
+  var nimfunc = cast[ptr QKeySequenceEditmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QKeySequenceEdit, param1: cstring): pointer =
-
+proc QKeySequenceEditmetacast*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, param1: cstring): pointer =
 
   fQKeySequenceEdit_virtualbase_metacast(self.h, param1)
 
-type QKeySequenceEditmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QKeySequenceEdit, slot: proc(super: QKeySequenceEditmetacastBase, param1: cstring): pointer) =
+type QKeySequenceEditmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: QKeySequenceEditmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QKeySequenceEditmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QKeySequenceEditmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQKeySequenceEdit_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QKeySequenceEdit_metacast(self: ptr cQKeySequenceEdit, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QKeySequenceEdit_metacast ".} =
-  type Cb = proc(super: QKeySequenceEditmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QKeySequenceEdit(h: self), param1)
+  var nimfunc = cast[ptr QKeySequenceEditmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QKeySequenceEdit, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QKeySequenceEditmetacall*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, param1: cint, param2: cint, param3: pointer): cint =
 
   fQKeySequenceEdit_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QKeySequenceEditmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QKeySequenceEdit, slot: proc(super: QKeySequenceEditmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QKeySequenceEditmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: QKeySequenceEditmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QKeySequenceEditmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QKeySequenceEditmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQKeySequenceEdit_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QKeySequenceEdit_metacall(self: ptr cQKeySequenceEdit, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QKeySequenceEdit_metacall ".} =
-  type Cb = proc(super: QKeySequenceEditmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QKeySequenceEdit(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QKeySequenceEditmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_event(self: QKeySequenceEdit, param1: gen_qcoreevent.QEvent): bool =
-
+proc QKeySequenceEditevent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, param1: gen_qcoreevent.QEvent): bool =
 
   fQKeySequenceEdit_virtualbase_event(self.h, param1.h)
 
-type QKeySequenceEditeventBase* = proc(param1: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QKeySequenceEdit, slot: proc(super: QKeySequenceEditeventBase, param1: gen_qcoreevent.QEvent): bool) =
+type QKeySequenceEditeventProc* = proc(param1: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: QKeySequenceEditeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QKeySequenceEditeventBase, param1: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QKeySequenceEditeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQKeySequenceEdit_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QKeySequenceEdit_event(self: ptr cQKeySequenceEdit, slot: int, param1: pointer): bool {.exportc: "miqt_exec_callback_QKeySequenceEdit_event ".} =
-  type Cb = proc(super: QKeySequenceEditeventBase, param1: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QKeySequenceEdit(h: self), param1)
+  var nimfunc = cast[ptr QKeySequenceEditeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_keyPressEvent(self: QKeySequenceEdit, param1: gen_qevent.QKeyEvent): void =
-
+proc QKeySequenceEditkeyPressEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, param1: gen_qevent.QKeyEvent): void =
 
   fQKeySequenceEdit_virtualbase_keyPressEvent(self.h, param1.h)
 
-type QKeySequenceEditkeyPressEventBase* = proc(param1: gen_qevent.QKeyEvent): void
-proc onkeyPressEvent*(self: QKeySequenceEdit, slot: proc(super: QKeySequenceEditkeyPressEventBase, param1: gen_qevent.QKeyEvent): void) =
+type QKeySequenceEditkeyPressEventProc* = proc(param1: gen_qevent.QKeyEvent): void
+proc onkeyPressEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: QKeySequenceEditkeyPressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QKeySequenceEditkeyPressEventBase, param1: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QKeySequenceEditkeyPressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQKeySequenceEdit_override_virtual_keyPressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QKeySequenceEdit_keyPressEvent(self: ptr cQKeySequenceEdit, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QKeySequenceEdit_keyPressEvent ".} =
-  type Cb = proc(super: QKeySequenceEditkeyPressEventBase, param1: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyPressEvent(QKeySequenceEdit(h: self), param1)
+  var nimfunc = cast[ptr QKeySequenceEditkeyPressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyReleaseEvent(self: QKeySequenceEdit, param1: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QKeySequenceEditkeyReleaseEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, param1: gen_qevent.QKeyEvent): void =
 
   fQKeySequenceEdit_virtualbase_keyReleaseEvent(self.h, param1.h)
 
-type QKeySequenceEditkeyReleaseEventBase* = proc(param1: gen_qevent.QKeyEvent): void
-proc onkeyReleaseEvent*(self: QKeySequenceEdit, slot: proc(super: QKeySequenceEditkeyReleaseEventBase, param1: gen_qevent.QKeyEvent): void) =
+type QKeySequenceEditkeyReleaseEventProc* = proc(param1: gen_qevent.QKeyEvent): void
+proc onkeyReleaseEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: QKeySequenceEditkeyReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QKeySequenceEditkeyReleaseEventBase, param1: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QKeySequenceEditkeyReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQKeySequenceEdit_override_virtual_keyReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QKeySequenceEdit_keyReleaseEvent(self: ptr cQKeySequenceEdit, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QKeySequenceEdit_keyReleaseEvent ".} =
-  type Cb = proc(super: QKeySequenceEditkeyReleaseEventBase, param1: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyReleaseEvent(QKeySequenceEdit(h: self), param1)
+  var nimfunc = cast[ptr QKeySequenceEditkeyReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_timerEvent(self: QKeySequenceEdit, param1: gen_qcoreevent.QTimerEvent): void =
-
+  nimfunc[](slotval1)
+proc QKeySequenceEdittimerEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, param1: gen_qcoreevent.QTimerEvent): void =
 
   fQKeySequenceEdit_virtualbase_timerEvent(self.h, param1.h)
 
-type QKeySequenceEdittimerEventBase* = proc(param1: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QKeySequenceEdit, slot: proc(super: QKeySequenceEdittimerEventBase, param1: gen_qcoreevent.QTimerEvent): void) =
+type QKeySequenceEdittimerEventProc* = proc(param1: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: QKeySequenceEdittimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QKeySequenceEdittimerEventBase, param1: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QKeySequenceEdittimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQKeySequenceEdit_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QKeySequenceEdit_timerEvent(self: ptr cQKeySequenceEdit, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QKeySequenceEdit_timerEvent ".} =
-  type Cb = proc(super: QKeySequenceEdittimerEventBase, param1: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QKeySequenceEdit(h: self), param1)
+  var nimfunc = cast[ptr QKeySequenceEdittimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusOutEvent(self: QKeySequenceEdit, param1: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QKeySequenceEditfocusOutEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, param1: gen_qevent.QFocusEvent): void =
 
   fQKeySequenceEdit_virtualbase_focusOutEvent(self.h, param1.h)
 
-type QKeySequenceEditfocusOutEventBase* = proc(param1: gen_qevent.QFocusEvent): void
-proc onfocusOutEvent*(self: QKeySequenceEdit, slot: proc(super: QKeySequenceEditfocusOutEventBase, param1: gen_qevent.QFocusEvent): void) =
+type QKeySequenceEditfocusOutEventProc* = proc(param1: gen_qevent.QFocusEvent): void
+proc onfocusOutEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: QKeySequenceEditfocusOutEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QKeySequenceEditfocusOutEventBase, param1: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QKeySequenceEditfocusOutEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQKeySequenceEdit_override_virtual_focusOutEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QKeySequenceEdit_focusOutEvent(self: ptr cQKeySequenceEdit, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QKeySequenceEdit_focusOutEvent ".} =
-  type Cb = proc(super: QKeySequenceEditfocusOutEventBase, param1: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusOutEvent(QKeySequenceEdit(h: self), param1)
+  var nimfunc = cast[ptr QKeySequenceEditfocusOutEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_devType(self: QKeySequenceEdit, ): cint =
-
+  nimfunc[](slotval1)
+proc QKeySequenceEditdevType*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, ): cint =
 
   fQKeySequenceEdit_virtualbase_devType(self.h)
 
-type QKeySequenceEditdevTypeBase* = proc(): cint
-proc ondevType*(self: QKeySequenceEdit, slot: proc(super: QKeySequenceEditdevTypeBase): cint) =
+type QKeySequenceEditdevTypeProc* = proc(): cint
+proc ondevType*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: QKeySequenceEditdevTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: QKeySequenceEditdevTypeBase): cint
-  var tmp = new Cb
+  var tmp = new QKeySequenceEditdevTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQKeySequenceEdit_override_virtual_devType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QKeySequenceEdit_devType(self: ptr cQKeySequenceEdit, slot: int): cint {.exportc: "miqt_exec_callback_QKeySequenceEdit_devType ".} =
-  type Cb = proc(super: QKeySequenceEditdevTypeBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_devType(QKeySequenceEdit(h: self), )
+  var nimfunc = cast[ptr QKeySequenceEditdevTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setVisible(self: QKeySequenceEdit, visible: bool): void =
-
+proc QKeySequenceEditsetVisible*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, visible: bool): void =
 
   fQKeySequenceEdit_virtualbase_setVisible(self.h, visible)
 
-type QKeySequenceEditsetVisibleBase* = proc(visible: bool): void
-proc onsetVisible*(self: QKeySequenceEdit, slot: proc(super: QKeySequenceEditsetVisibleBase, visible: bool): void) =
+type QKeySequenceEditsetVisibleProc* = proc(visible: bool): void
+proc onsetVisible*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: QKeySequenceEditsetVisibleProc) =
   # TODO check subclass
-  type Cb = proc(super: QKeySequenceEditsetVisibleBase, visible: bool): void
-  var tmp = new Cb
+  var tmp = new QKeySequenceEditsetVisibleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQKeySequenceEdit_override_virtual_setVisible(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QKeySequenceEdit_setVisible(self: ptr cQKeySequenceEdit, slot: int, visible: bool): void {.exportc: "miqt_exec_callback_QKeySequenceEdit_setVisible ".} =
-  type Cb = proc(super: QKeySequenceEditsetVisibleBase, visible: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(visible: bool): auto =
-    callVirtualBase_setVisible(QKeySequenceEdit(h: self), visible)
+  var nimfunc = cast[ptr QKeySequenceEditsetVisibleProc](cast[pointer](slot))
   let slotval1 = visible
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_sizeHint(self: QKeySequenceEdit, ): gen_qsize.QSize =
-
+  nimfunc[](slotval1)
+proc QKeySequenceEditsizeHint*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQKeySequenceEdit_virtualbase_sizeHint(self.h))
 
-type QKeySequenceEditsizeHintBase* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: QKeySequenceEdit, slot: proc(super: QKeySequenceEditsizeHintBase): gen_qsize.QSize) =
+type QKeySequenceEditsizeHintProc* = proc(): gen_qsize.QSize
+proc onsizeHint*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: QKeySequenceEditsizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QKeySequenceEditsizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QKeySequenceEditsizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQKeySequenceEdit_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QKeySequenceEdit_sizeHint(self: ptr cQKeySequenceEdit, slot: int): pointer {.exportc: "miqt_exec_callback_QKeySequenceEdit_sizeHint ".} =
-  type Cb = proc(super: QKeySequenceEditsizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sizeHint(QKeySequenceEdit(h: self), )
+  var nimfunc = cast[ptr QKeySequenceEditsizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_minimumSizeHint(self: QKeySequenceEdit, ): gen_qsize.QSize =
-
+proc QKeySequenceEditminimumSizeHint*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQKeySequenceEdit_virtualbase_minimumSizeHint(self.h))
 
-type QKeySequenceEditminimumSizeHintBase* = proc(): gen_qsize.QSize
-proc onminimumSizeHint*(self: QKeySequenceEdit, slot: proc(super: QKeySequenceEditminimumSizeHintBase): gen_qsize.QSize) =
+type QKeySequenceEditminimumSizeHintProc* = proc(): gen_qsize.QSize
+proc onminimumSizeHint*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: QKeySequenceEditminimumSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QKeySequenceEditminimumSizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QKeySequenceEditminimumSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQKeySequenceEdit_override_virtual_minimumSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QKeySequenceEdit_minimumSizeHint(self: ptr cQKeySequenceEdit, slot: int): pointer {.exportc: "miqt_exec_callback_QKeySequenceEdit_minimumSizeHint ".} =
-  type Cb = proc(super: QKeySequenceEditminimumSizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_minimumSizeHint(QKeySequenceEdit(h: self), )
+  var nimfunc = cast[ptr QKeySequenceEditminimumSizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_heightForWidth(self: QKeySequenceEdit, param1: cint): cint =
-
+proc QKeySequenceEditheightForWidth*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, param1: cint): cint =
 
   fQKeySequenceEdit_virtualbase_heightForWidth(self.h, param1)
 
-type QKeySequenceEditheightForWidthBase* = proc(param1: cint): cint
-proc onheightForWidth*(self: QKeySequenceEdit, slot: proc(super: QKeySequenceEditheightForWidthBase, param1: cint): cint) =
+type QKeySequenceEditheightForWidthProc* = proc(param1: cint): cint
+proc onheightForWidth*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: QKeySequenceEditheightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QKeySequenceEditheightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QKeySequenceEditheightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQKeySequenceEdit_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QKeySequenceEdit_heightForWidth(self: ptr cQKeySequenceEdit, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QKeySequenceEdit_heightForWidth ".} =
-  type Cb = proc(super: QKeySequenceEditheightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_heightForWidth(QKeySequenceEdit(h: self), param1)
+  var nimfunc = cast[ptr QKeySequenceEditheightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_hasHeightForWidth(self: QKeySequenceEdit, ): bool =
-
+proc QKeySequenceEdithasHeightForWidth*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, ): bool =
 
   fQKeySequenceEdit_virtualbase_hasHeightForWidth(self.h)
 
-type QKeySequenceEdithasHeightForWidthBase* = proc(): bool
-proc onhasHeightForWidth*(self: QKeySequenceEdit, slot: proc(super: QKeySequenceEdithasHeightForWidthBase): bool) =
+type QKeySequenceEdithasHeightForWidthProc* = proc(): bool
+proc onhasHeightForWidth*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: QKeySequenceEdithasHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QKeySequenceEdithasHeightForWidthBase): bool
-  var tmp = new Cb
+  var tmp = new QKeySequenceEdithasHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQKeySequenceEdit_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QKeySequenceEdit_hasHeightForWidth(self: ptr cQKeySequenceEdit, slot: int): bool {.exportc: "miqt_exec_callback_QKeySequenceEdit_hasHeightForWidth ".} =
-  type Cb = proc(super: QKeySequenceEdithasHeightForWidthBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasHeightForWidth(QKeySequenceEdit(h: self), )
+  var nimfunc = cast[ptr QKeySequenceEdithasHeightForWidthProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_paintEngine(self: QKeySequenceEdit, ): gen_qpaintengine.QPaintEngine =
-
+proc QKeySequenceEditpaintEngine*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, ): gen_qpaintengine.QPaintEngine =
 
   gen_qpaintengine.QPaintEngine(h: fQKeySequenceEdit_virtualbase_paintEngine(self.h))
 
-type QKeySequenceEditpaintEngineBase* = proc(): gen_qpaintengine.QPaintEngine
-proc onpaintEngine*(self: QKeySequenceEdit, slot: proc(super: QKeySequenceEditpaintEngineBase): gen_qpaintengine.QPaintEngine) =
+type QKeySequenceEditpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
+proc onpaintEngine*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: QKeySequenceEditpaintEngineProc) =
   # TODO check subclass
-  type Cb = proc(super: QKeySequenceEditpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var tmp = new Cb
+  var tmp = new QKeySequenceEditpaintEngineProc
   tmp[] = slot
   GC_ref(tmp)
   fcQKeySequenceEdit_override_virtual_paintEngine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QKeySequenceEdit_paintEngine(self: ptr cQKeySequenceEdit, slot: int): pointer {.exportc: "miqt_exec_callback_QKeySequenceEdit_paintEngine ".} =
-  type Cb = proc(super: QKeySequenceEditpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_paintEngine(QKeySequenceEdit(h: self), )
+  var nimfunc = cast[ptr QKeySequenceEditpaintEngineProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_mousePressEvent(self: QKeySequenceEdit, event: gen_qevent.QMouseEvent): void =
-
+proc QKeySequenceEditmousePressEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, event: gen_qevent.QMouseEvent): void =
 
   fQKeySequenceEdit_virtualbase_mousePressEvent(self.h, event.h)
 
-type QKeySequenceEditmousePressEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmousePressEvent*(self: QKeySequenceEdit, slot: proc(super: QKeySequenceEditmousePressEventBase, event: gen_qevent.QMouseEvent): void) =
+type QKeySequenceEditmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmousePressEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: QKeySequenceEditmousePressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QKeySequenceEditmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QKeySequenceEditmousePressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQKeySequenceEdit_override_virtual_mousePressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QKeySequenceEdit_mousePressEvent(self: ptr cQKeySequenceEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QKeySequenceEdit_mousePressEvent ".} =
-  type Cb = proc(super: QKeySequenceEditmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mousePressEvent(QKeySequenceEdit(h: self), event)
+  var nimfunc = cast[ptr QKeySequenceEditmousePressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseReleaseEvent(self: QKeySequenceEdit, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QKeySequenceEditmouseReleaseEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, event: gen_qevent.QMouseEvent): void =
 
   fQKeySequenceEdit_virtualbase_mouseReleaseEvent(self.h, event.h)
 
-type QKeySequenceEditmouseReleaseEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseReleaseEvent*(self: QKeySequenceEdit, slot: proc(super: QKeySequenceEditmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void) =
+type QKeySequenceEditmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseReleaseEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: QKeySequenceEditmouseReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QKeySequenceEditmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QKeySequenceEditmouseReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQKeySequenceEdit_override_virtual_mouseReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QKeySequenceEdit_mouseReleaseEvent(self: ptr cQKeySequenceEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QKeySequenceEdit_mouseReleaseEvent ".} =
-  type Cb = proc(super: QKeySequenceEditmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseReleaseEvent(QKeySequenceEdit(h: self), event)
+  var nimfunc = cast[ptr QKeySequenceEditmouseReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseDoubleClickEvent(self: QKeySequenceEdit, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QKeySequenceEditmouseDoubleClickEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, event: gen_qevent.QMouseEvent): void =
 
   fQKeySequenceEdit_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
-type QKeySequenceEditmouseDoubleClickEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseDoubleClickEvent*(self: QKeySequenceEdit, slot: proc(super: QKeySequenceEditmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void) =
+type QKeySequenceEditmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseDoubleClickEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: QKeySequenceEditmouseDoubleClickEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QKeySequenceEditmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QKeySequenceEditmouseDoubleClickEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQKeySequenceEdit_override_virtual_mouseDoubleClickEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QKeySequenceEdit_mouseDoubleClickEvent(self: ptr cQKeySequenceEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QKeySequenceEdit_mouseDoubleClickEvent ".} =
-  type Cb = proc(super: QKeySequenceEditmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseDoubleClickEvent(QKeySequenceEdit(h: self), event)
+  var nimfunc = cast[ptr QKeySequenceEditmouseDoubleClickEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseMoveEvent(self: QKeySequenceEdit, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QKeySequenceEditmouseMoveEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, event: gen_qevent.QMouseEvent): void =
 
   fQKeySequenceEdit_virtualbase_mouseMoveEvent(self.h, event.h)
 
-type QKeySequenceEditmouseMoveEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseMoveEvent*(self: QKeySequenceEdit, slot: proc(super: QKeySequenceEditmouseMoveEventBase, event: gen_qevent.QMouseEvent): void) =
+type QKeySequenceEditmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseMoveEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: QKeySequenceEditmouseMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QKeySequenceEditmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QKeySequenceEditmouseMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQKeySequenceEdit_override_virtual_mouseMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QKeySequenceEdit_mouseMoveEvent(self: ptr cQKeySequenceEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QKeySequenceEdit_mouseMoveEvent ".} =
-  type Cb = proc(super: QKeySequenceEditmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseMoveEvent(QKeySequenceEdit(h: self), event)
+  var nimfunc = cast[ptr QKeySequenceEditmouseMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_wheelEvent(self: QKeySequenceEdit, event: gen_qevent.QWheelEvent): void =
-
+  nimfunc[](slotval1)
+proc QKeySequenceEditwheelEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, event: gen_qevent.QWheelEvent): void =
 
   fQKeySequenceEdit_virtualbase_wheelEvent(self.h, event.h)
 
-type QKeySequenceEditwheelEventBase* = proc(event: gen_qevent.QWheelEvent): void
-proc onwheelEvent*(self: QKeySequenceEdit, slot: proc(super: QKeySequenceEditwheelEventBase, event: gen_qevent.QWheelEvent): void) =
+type QKeySequenceEditwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
+proc onwheelEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: QKeySequenceEditwheelEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QKeySequenceEditwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var tmp = new Cb
+  var tmp = new QKeySequenceEditwheelEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQKeySequenceEdit_override_virtual_wheelEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QKeySequenceEdit_wheelEvent(self: ptr cQKeySequenceEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QKeySequenceEdit_wheelEvent ".} =
-  type Cb = proc(super: QKeySequenceEditwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QWheelEvent): auto =
-    callVirtualBase_wheelEvent(QKeySequenceEdit(h: self), event)
+  var nimfunc = cast[ptr QKeySequenceEditwheelEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QWheelEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusInEvent(self: QKeySequenceEdit, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QKeySequenceEditfocusInEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, event: gen_qevent.QFocusEvent): void =
 
   fQKeySequenceEdit_virtualbase_focusInEvent(self.h, event.h)
 
-type QKeySequenceEditfocusInEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusInEvent*(self: QKeySequenceEdit, slot: proc(super: QKeySequenceEditfocusInEventBase, event: gen_qevent.QFocusEvent): void) =
+type QKeySequenceEditfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusInEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: QKeySequenceEditfocusInEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QKeySequenceEditfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QKeySequenceEditfocusInEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQKeySequenceEdit_override_virtual_focusInEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QKeySequenceEdit_focusInEvent(self: ptr cQKeySequenceEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QKeySequenceEdit_focusInEvent ".} =
-  type Cb = proc(super: QKeySequenceEditfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusInEvent(QKeySequenceEdit(h: self), event)
+  var nimfunc = cast[ptr QKeySequenceEditfocusInEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_enterEvent(self: QKeySequenceEdit, event: gen_qevent.QEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QKeySequenceEditenterEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, event: gen_qevent.QEnterEvent): void =
 
   fQKeySequenceEdit_virtualbase_enterEvent(self.h, event.h)
 
-type QKeySequenceEditenterEventBase* = proc(event: gen_qevent.QEnterEvent): void
-proc onenterEvent*(self: QKeySequenceEdit, slot: proc(super: QKeySequenceEditenterEventBase, event: gen_qevent.QEnterEvent): void) =
+type QKeySequenceEditenterEventProc* = proc(event: gen_qevent.QEnterEvent): void
+proc onenterEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: QKeySequenceEditenterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QKeySequenceEditenterEventBase, event: gen_qevent.QEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QKeySequenceEditenterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQKeySequenceEdit_override_virtual_enterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QKeySequenceEdit_enterEvent(self: ptr cQKeySequenceEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QKeySequenceEdit_enterEvent ".} =
-  type Cb = proc(super: QKeySequenceEditenterEventBase, event: gen_qevent.QEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QEnterEvent): auto =
-    callVirtualBase_enterEvent(QKeySequenceEdit(h: self), event)
+  var nimfunc = cast[ptr QKeySequenceEditenterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_leaveEvent(self: QKeySequenceEdit, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QKeySequenceEditleaveEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, event: gen_qcoreevent.QEvent): void =
 
   fQKeySequenceEdit_virtualbase_leaveEvent(self.h, event.h)
 
-type QKeySequenceEditleaveEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onleaveEvent*(self: QKeySequenceEdit, slot: proc(super: QKeySequenceEditleaveEventBase, event: gen_qcoreevent.QEvent): void) =
+type QKeySequenceEditleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onleaveEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: QKeySequenceEditleaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QKeySequenceEditleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QKeySequenceEditleaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQKeySequenceEdit_override_virtual_leaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QKeySequenceEdit_leaveEvent(self: ptr cQKeySequenceEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QKeySequenceEdit_leaveEvent ".} =
-  type Cb = proc(super: QKeySequenceEditleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_leaveEvent(QKeySequenceEdit(h: self), event)
+  var nimfunc = cast[ptr QKeySequenceEditleaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_paintEvent(self: QKeySequenceEdit, event: gen_qevent.QPaintEvent): void =
-
+  nimfunc[](slotval1)
+proc QKeySequenceEditpaintEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, event: gen_qevent.QPaintEvent): void =
 
   fQKeySequenceEdit_virtualbase_paintEvent(self.h, event.h)
 
-type QKeySequenceEditpaintEventBase* = proc(event: gen_qevent.QPaintEvent): void
-proc onpaintEvent*(self: QKeySequenceEdit, slot: proc(super: QKeySequenceEditpaintEventBase, event: gen_qevent.QPaintEvent): void) =
+type QKeySequenceEditpaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
+proc onpaintEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: QKeySequenceEditpaintEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QKeySequenceEditpaintEventBase, event: gen_qevent.QPaintEvent): void
-  var tmp = new Cb
+  var tmp = new QKeySequenceEditpaintEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQKeySequenceEdit_override_virtual_paintEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QKeySequenceEdit_paintEvent(self: ptr cQKeySequenceEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QKeySequenceEdit_paintEvent ".} =
-  type Cb = proc(super: QKeySequenceEditpaintEventBase, event: gen_qevent.QPaintEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QPaintEvent): auto =
-    callVirtualBase_paintEvent(QKeySequenceEdit(h: self), event)
+  var nimfunc = cast[ptr QKeySequenceEditpaintEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QPaintEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_moveEvent(self: QKeySequenceEdit, event: gen_qevent.QMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QKeySequenceEditmoveEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, event: gen_qevent.QMoveEvent): void =
 
   fQKeySequenceEdit_virtualbase_moveEvent(self.h, event.h)
 
-type QKeySequenceEditmoveEventBase* = proc(event: gen_qevent.QMoveEvent): void
-proc onmoveEvent*(self: QKeySequenceEdit, slot: proc(super: QKeySequenceEditmoveEventBase, event: gen_qevent.QMoveEvent): void) =
+type QKeySequenceEditmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
+proc onmoveEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: QKeySequenceEditmoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QKeySequenceEditmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QKeySequenceEditmoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQKeySequenceEdit_override_virtual_moveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QKeySequenceEdit_moveEvent(self: ptr cQKeySequenceEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QKeySequenceEdit_moveEvent ".} =
-  type Cb = proc(super: QKeySequenceEditmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMoveEvent): auto =
-    callVirtualBase_moveEvent(QKeySequenceEdit(h: self), event)
+  var nimfunc = cast[ptr QKeySequenceEditmoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_resizeEvent(self: QKeySequenceEdit, event: gen_qevent.QResizeEvent): void =
-
+  nimfunc[](slotval1)
+proc QKeySequenceEditresizeEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, event: gen_qevent.QResizeEvent): void =
 
   fQKeySequenceEdit_virtualbase_resizeEvent(self.h, event.h)
 
-type QKeySequenceEditresizeEventBase* = proc(event: gen_qevent.QResizeEvent): void
-proc onresizeEvent*(self: QKeySequenceEdit, slot: proc(super: QKeySequenceEditresizeEventBase, event: gen_qevent.QResizeEvent): void) =
+type QKeySequenceEditresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
+proc onresizeEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: QKeySequenceEditresizeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QKeySequenceEditresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var tmp = new Cb
+  var tmp = new QKeySequenceEditresizeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQKeySequenceEdit_override_virtual_resizeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QKeySequenceEdit_resizeEvent(self: ptr cQKeySequenceEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QKeySequenceEdit_resizeEvent ".} =
-  type Cb = proc(super: QKeySequenceEditresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QResizeEvent): auto =
-    callVirtualBase_resizeEvent(QKeySequenceEdit(h: self), event)
+  var nimfunc = cast[ptr QKeySequenceEditresizeEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QResizeEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_closeEvent(self: QKeySequenceEdit, event: gen_qevent.QCloseEvent): void =
-
+  nimfunc[](slotval1)
+proc QKeySequenceEditcloseEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, event: gen_qevent.QCloseEvent): void =
 
   fQKeySequenceEdit_virtualbase_closeEvent(self.h, event.h)
 
-type QKeySequenceEditcloseEventBase* = proc(event: gen_qevent.QCloseEvent): void
-proc oncloseEvent*(self: QKeySequenceEdit, slot: proc(super: QKeySequenceEditcloseEventBase, event: gen_qevent.QCloseEvent): void) =
+type QKeySequenceEditcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
+proc oncloseEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: QKeySequenceEditcloseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QKeySequenceEditcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var tmp = new Cb
+  var tmp = new QKeySequenceEditcloseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQKeySequenceEdit_override_virtual_closeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QKeySequenceEdit_closeEvent(self: ptr cQKeySequenceEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QKeySequenceEdit_closeEvent ".} =
-  type Cb = proc(super: QKeySequenceEditcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QCloseEvent): auto =
-    callVirtualBase_closeEvent(QKeySequenceEdit(h: self), event)
+  var nimfunc = cast[ptr QKeySequenceEditcloseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QCloseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_contextMenuEvent(self: QKeySequenceEdit, event: gen_qevent.QContextMenuEvent): void =
-
+  nimfunc[](slotval1)
+proc QKeySequenceEditcontextMenuEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, event: gen_qevent.QContextMenuEvent): void =
 
   fQKeySequenceEdit_virtualbase_contextMenuEvent(self.h, event.h)
 
-type QKeySequenceEditcontextMenuEventBase* = proc(event: gen_qevent.QContextMenuEvent): void
-proc oncontextMenuEvent*(self: QKeySequenceEdit, slot: proc(super: QKeySequenceEditcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void) =
+type QKeySequenceEditcontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
+proc oncontextMenuEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: QKeySequenceEditcontextMenuEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QKeySequenceEditcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var tmp = new Cb
+  var tmp = new QKeySequenceEditcontextMenuEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQKeySequenceEdit_override_virtual_contextMenuEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QKeySequenceEdit_contextMenuEvent(self: ptr cQKeySequenceEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QKeySequenceEdit_contextMenuEvent ".} =
-  type Cb = proc(super: QKeySequenceEditcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QContextMenuEvent): auto =
-    callVirtualBase_contextMenuEvent(QKeySequenceEdit(h: self), event)
+  var nimfunc = cast[ptr QKeySequenceEditcontextMenuEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QContextMenuEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_tabletEvent(self: QKeySequenceEdit, event: gen_qevent.QTabletEvent): void =
-
+  nimfunc[](slotval1)
+proc QKeySequenceEdittabletEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, event: gen_qevent.QTabletEvent): void =
 
   fQKeySequenceEdit_virtualbase_tabletEvent(self.h, event.h)
 
-type QKeySequenceEdittabletEventBase* = proc(event: gen_qevent.QTabletEvent): void
-proc ontabletEvent*(self: QKeySequenceEdit, slot: proc(super: QKeySequenceEdittabletEventBase, event: gen_qevent.QTabletEvent): void) =
+type QKeySequenceEdittabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
+proc ontabletEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: QKeySequenceEdittabletEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QKeySequenceEdittabletEventBase, event: gen_qevent.QTabletEvent): void
-  var tmp = new Cb
+  var tmp = new QKeySequenceEdittabletEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQKeySequenceEdit_override_virtual_tabletEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QKeySequenceEdit_tabletEvent(self: ptr cQKeySequenceEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QKeySequenceEdit_tabletEvent ".} =
-  type Cb = proc(super: QKeySequenceEdittabletEventBase, event: gen_qevent.QTabletEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QTabletEvent): auto =
-    callVirtualBase_tabletEvent(QKeySequenceEdit(h: self), event)
+  var nimfunc = cast[ptr QKeySequenceEdittabletEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QTabletEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_actionEvent(self: QKeySequenceEdit, event: gen_qevent.QActionEvent): void =
-
+  nimfunc[](slotval1)
+proc QKeySequenceEditactionEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, event: gen_qevent.QActionEvent): void =
 
   fQKeySequenceEdit_virtualbase_actionEvent(self.h, event.h)
 
-type QKeySequenceEditactionEventBase* = proc(event: gen_qevent.QActionEvent): void
-proc onactionEvent*(self: QKeySequenceEdit, slot: proc(super: QKeySequenceEditactionEventBase, event: gen_qevent.QActionEvent): void) =
+type QKeySequenceEditactionEventProc* = proc(event: gen_qevent.QActionEvent): void
+proc onactionEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: QKeySequenceEditactionEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QKeySequenceEditactionEventBase, event: gen_qevent.QActionEvent): void
-  var tmp = new Cb
+  var tmp = new QKeySequenceEditactionEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQKeySequenceEdit_override_virtual_actionEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QKeySequenceEdit_actionEvent(self: ptr cQKeySequenceEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QKeySequenceEdit_actionEvent ".} =
-  type Cb = proc(super: QKeySequenceEditactionEventBase, event: gen_qevent.QActionEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QActionEvent): auto =
-    callVirtualBase_actionEvent(QKeySequenceEdit(h: self), event)
+  var nimfunc = cast[ptr QKeySequenceEditactionEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QActionEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragEnterEvent(self: QKeySequenceEdit, event: gen_qevent.QDragEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QKeySequenceEditdragEnterEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, event: gen_qevent.QDragEnterEvent): void =
 
   fQKeySequenceEdit_virtualbase_dragEnterEvent(self.h, event.h)
 
-type QKeySequenceEditdragEnterEventBase* = proc(event: gen_qevent.QDragEnterEvent): void
-proc ondragEnterEvent*(self: QKeySequenceEdit, slot: proc(super: QKeySequenceEditdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void) =
+type QKeySequenceEditdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
+proc ondragEnterEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: QKeySequenceEditdragEnterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QKeySequenceEditdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QKeySequenceEditdragEnterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQKeySequenceEdit_override_virtual_dragEnterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QKeySequenceEdit_dragEnterEvent(self: ptr cQKeySequenceEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QKeySequenceEdit_dragEnterEvent ".} =
-  type Cb = proc(super: QKeySequenceEditdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragEnterEvent): auto =
-    callVirtualBase_dragEnterEvent(QKeySequenceEdit(h: self), event)
+  var nimfunc = cast[ptr QKeySequenceEditdragEnterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragMoveEvent(self: QKeySequenceEdit, event: gen_qevent.QDragMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QKeySequenceEditdragMoveEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, event: gen_qevent.QDragMoveEvent): void =
 
   fQKeySequenceEdit_virtualbase_dragMoveEvent(self.h, event.h)
 
-type QKeySequenceEditdragMoveEventBase* = proc(event: gen_qevent.QDragMoveEvent): void
-proc ondragMoveEvent*(self: QKeySequenceEdit, slot: proc(super: QKeySequenceEditdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void) =
+type QKeySequenceEditdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
+proc ondragMoveEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: QKeySequenceEditdragMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QKeySequenceEditdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QKeySequenceEditdragMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQKeySequenceEdit_override_virtual_dragMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QKeySequenceEdit_dragMoveEvent(self: ptr cQKeySequenceEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QKeySequenceEdit_dragMoveEvent ".} =
-  type Cb = proc(super: QKeySequenceEditdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragMoveEvent): auto =
-    callVirtualBase_dragMoveEvent(QKeySequenceEdit(h: self), event)
+  var nimfunc = cast[ptr QKeySequenceEditdragMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragLeaveEvent(self: QKeySequenceEdit, event: gen_qevent.QDragLeaveEvent): void =
-
+  nimfunc[](slotval1)
+proc QKeySequenceEditdragLeaveEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, event: gen_qevent.QDragLeaveEvent): void =
 
   fQKeySequenceEdit_virtualbase_dragLeaveEvent(self.h, event.h)
 
-type QKeySequenceEditdragLeaveEventBase* = proc(event: gen_qevent.QDragLeaveEvent): void
-proc ondragLeaveEvent*(self: QKeySequenceEdit, slot: proc(super: QKeySequenceEditdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void) =
+type QKeySequenceEditdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
+proc ondragLeaveEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: QKeySequenceEditdragLeaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QKeySequenceEditdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var tmp = new Cb
+  var tmp = new QKeySequenceEditdragLeaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQKeySequenceEdit_override_virtual_dragLeaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QKeySequenceEdit_dragLeaveEvent(self: ptr cQKeySequenceEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QKeySequenceEdit_dragLeaveEvent ".} =
-  type Cb = proc(super: QKeySequenceEditdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragLeaveEvent): auto =
-    callVirtualBase_dragLeaveEvent(QKeySequenceEdit(h: self), event)
+  var nimfunc = cast[ptr QKeySequenceEditdragLeaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragLeaveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dropEvent(self: QKeySequenceEdit, event: gen_qevent.QDropEvent): void =
-
+  nimfunc[](slotval1)
+proc QKeySequenceEditdropEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, event: gen_qevent.QDropEvent): void =
 
   fQKeySequenceEdit_virtualbase_dropEvent(self.h, event.h)
 
-type QKeySequenceEditdropEventBase* = proc(event: gen_qevent.QDropEvent): void
-proc ondropEvent*(self: QKeySequenceEdit, slot: proc(super: QKeySequenceEditdropEventBase, event: gen_qevent.QDropEvent): void) =
+type QKeySequenceEditdropEventProc* = proc(event: gen_qevent.QDropEvent): void
+proc ondropEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: QKeySequenceEditdropEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QKeySequenceEditdropEventBase, event: gen_qevent.QDropEvent): void
-  var tmp = new Cb
+  var tmp = new QKeySequenceEditdropEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQKeySequenceEdit_override_virtual_dropEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QKeySequenceEdit_dropEvent(self: ptr cQKeySequenceEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QKeySequenceEdit_dropEvent ".} =
-  type Cb = proc(super: QKeySequenceEditdropEventBase, event: gen_qevent.QDropEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDropEvent): auto =
-    callVirtualBase_dropEvent(QKeySequenceEdit(h: self), event)
+  var nimfunc = cast[ptr QKeySequenceEditdropEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDropEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_showEvent(self: QKeySequenceEdit, event: gen_qevent.QShowEvent): void =
-
+  nimfunc[](slotval1)
+proc QKeySequenceEditshowEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, event: gen_qevent.QShowEvent): void =
 
   fQKeySequenceEdit_virtualbase_showEvent(self.h, event.h)
 
-type QKeySequenceEditshowEventBase* = proc(event: gen_qevent.QShowEvent): void
-proc onshowEvent*(self: QKeySequenceEdit, slot: proc(super: QKeySequenceEditshowEventBase, event: gen_qevent.QShowEvent): void) =
+type QKeySequenceEditshowEventProc* = proc(event: gen_qevent.QShowEvent): void
+proc onshowEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: QKeySequenceEditshowEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QKeySequenceEditshowEventBase, event: gen_qevent.QShowEvent): void
-  var tmp = new Cb
+  var tmp = new QKeySequenceEditshowEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQKeySequenceEdit_override_virtual_showEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QKeySequenceEdit_showEvent(self: ptr cQKeySequenceEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QKeySequenceEdit_showEvent ".} =
-  type Cb = proc(super: QKeySequenceEditshowEventBase, event: gen_qevent.QShowEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QShowEvent): auto =
-    callVirtualBase_showEvent(QKeySequenceEdit(h: self), event)
+  var nimfunc = cast[ptr QKeySequenceEditshowEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QShowEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hideEvent(self: QKeySequenceEdit, event: gen_qevent.QHideEvent): void =
-
+  nimfunc[](slotval1)
+proc QKeySequenceEdithideEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, event: gen_qevent.QHideEvent): void =
 
   fQKeySequenceEdit_virtualbase_hideEvent(self.h, event.h)
 
-type QKeySequenceEdithideEventBase* = proc(event: gen_qevent.QHideEvent): void
-proc onhideEvent*(self: QKeySequenceEdit, slot: proc(super: QKeySequenceEdithideEventBase, event: gen_qevent.QHideEvent): void) =
+type QKeySequenceEdithideEventProc* = proc(event: gen_qevent.QHideEvent): void
+proc onhideEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: QKeySequenceEdithideEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QKeySequenceEdithideEventBase, event: gen_qevent.QHideEvent): void
-  var tmp = new Cb
+  var tmp = new QKeySequenceEdithideEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQKeySequenceEdit_override_virtual_hideEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QKeySequenceEdit_hideEvent(self: ptr cQKeySequenceEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QKeySequenceEdit_hideEvent ".} =
-  type Cb = proc(super: QKeySequenceEdithideEventBase, event: gen_qevent.QHideEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QHideEvent): auto =
-    callVirtualBase_hideEvent(QKeySequenceEdit(h: self), event)
+  var nimfunc = cast[ptr QKeySequenceEdithideEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QHideEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_nativeEvent(self: QKeySequenceEdit, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
-
+  nimfunc[](slotval1)
+proc QKeySequenceEditnativeEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
 
   fQKeySequenceEdit_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
-type QKeySequenceEditnativeEventBase* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-proc onnativeEvent*(self: QKeySequenceEdit, slot: proc(super: QKeySequenceEditnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool) =
+type QKeySequenceEditnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
+proc onnativeEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: QKeySequenceEditnativeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QKeySequenceEditnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-  var tmp = new Cb
+  var tmp = new QKeySequenceEditnativeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQKeySequenceEdit_override_virtual_nativeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QKeySequenceEdit_nativeEvent(self: ptr cQKeySequenceEdit, slot: int, eventType: struct_miqt_string, message: pointer, resultVal: ptr uint): bool {.exportc: "miqt_exec_callback_QKeySequenceEdit_nativeEvent ".} =
-  type Cb = proc(super: QKeySequenceEditnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(eventType: seq[byte], message: pointer, resultVal: ptr uint): auto =
-    callVirtualBase_nativeEvent(QKeySequenceEdit(h: self), eventType, message, resultVal)
+  var nimfunc = cast[ptr QKeySequenceEditnativeEventProc](cast[pointer](slot))
   var veventType_bytearray = eventType
   var veventTypex_ret = @(toOpenArrayByte(veventType_bytearray.data, 0, int(veventType_bytearray.len)-1))
   c_free(veventType_bytearray.data)
@@ -1163,321 +976,256 @@ proc miqt_exec_callback_QKeySequenceEdit_nativeEvent(self: ptr cQKeySequenceEdit
   let slotval3 = resultVal
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_changeEvent(self: QKeySequenceEdit, param1: gen_qcoreevent.QEvent): void =
-
+proc QKeySequenceEditchangeEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, param1: gen_qcoreevent.QEvent): void =
 
   fQKeySequenceEdit_virtualbase_changeEvent(self.h, param1.h)
 
-type QKeySequenceEditchangeEventBase* = proc(param1: gen_qcoreevent.QEvent): void
-proc onchangeEvent*(self: QKeySequenceEdit, slot: proc(super: QKeySequenceEditchangeEventBase, param1: gen_qcoreevent.QEvent): void) =
+type QKeySequenceEditchangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
+proc onchangeEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: QKeySequenceEditchangeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QKeySequenceEditchangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QKeySequenceEditchangeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQKeySequenceEdit_override_virtual_changeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QKeySequenceEdit_changeEvent(self: ptr cQKeySequenceEdit, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QKeySequenceEdit_changeEvent ".} =
-  type Cb = proc(super: QKeySequenceEditchangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_changeEvent(QKeySequenceEdit(h: self), param1)
+  var nimfunc = cast[ptr QKeySequenceEditchangeEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_metric(self: QKeySequenceEdit, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint =
-
+  nimfunc[](slotval1)
+proc QKeySequenceEditmetric*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, param1: cint): cint =
 
   fQKeySequenceEdit_virtualbase_metric(self.h, cint(param1))
 
-type QKeySequenceEditmetricBase* = proc(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-proc onmetric*(self: QKeySequenceEdit, slot: proc(super: QKeySequenceEditmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint) =
+type QKeySequenceEditmetricProc* = proc(param1: cint): cint
+proc onmetric*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: QKeySequenceEditmetricProc) =
   # TODO check subclass
-  type Cb = proc(super: QKeySequenceEditmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var tmp = new Cb
+  var tmp = new QKeySequenceEditmetricProc
   tmp[] = slot
   GC_ref(tmp)
   fcQKeySequenceEdit_override_virtual_metric(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QKeySequenceEdit_metric(self: ptr cQKeySequenceEdit, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QKeySequenceEdit_metric ".} =
-  type Cb = proc(super: QKeySequenceEditmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): auto =
-    callVirtualBase_metric(QKeySequenceEdit(h: self), param1)
-  let slotval1 = gen_qpaintdevice.QPaintDevicePaintDeviceMetric(param1)
+  var nimfunc = cast[ptr QKeySequenceEditmetricProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_initPainter(self: QKeySequenceEdit, painter: gen_qpainter.QPainter): void =
-
+proc QKeySequenceEditinitPainter*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, painter: gen_qpainter.QPainter): void =
 
   fQKeySequenceEdit_virtualbase_initPainter(self.h, painter.h)
 
-type QKeySequenceEditinitPainterBase* = proc(painter: gen_qpainter.QPainter): void
-proc oninitPainter*(self: QKeySequenceEdit, slot: proc(super: QKeySequenceEditinitPainterBase, painter: gen_qpainter.QPainter): void) =
+type QKeySequenceEditinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
+proc oninitPainter*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: QKeySequenceEditinitPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QKeySequenceEditinitPainterBase, painter: gen_qpainter.QPainter): void
-  var tmp = new Cb
+  var tmp = new QKeySequenceEditinitPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQKeySequenceEdit_override_virtual_initPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QKeySequenceEdit_initPainter(self: ptr cQKeySequenceEdit, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_QKeySequenceEdit_initPainter ".} =
-  type Cb = proc(super: QKeySequenceEditinitPainterBase, painter: gen_qpainter.QPainter): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter): auto =
-    callVirtualBase_initPainter(QKeySequenceEdit(h: self), painter)
+  var nimfunc = cast[ptr QKeySequenceEditinitPainterProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_redirected(self: QKeySequenceEdit, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
+  nimfunc[](slotval1)
+proc QKeySequenceEditredirected*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
 
   gen_qpaintdevice.QPaintDevice(h: fQKeySequenceEdit_virtualbase_redirected(self.h, offset.h))
 
-type QKeySequenceEditredirectedBase* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-proc onredirected*(self: QKeySequenceEdit, slot: proc(super: QKeySequenceEditredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice) =
+type QKeySequenceEditredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
+proc onredirected*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: QKeySequenceEditredirectedProc) =
   # TODO check subclass
-  type Cb = proc(super: QKeySequenceEditredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var tmp = new Cb
+  var tmp = new QKeySequenceEditredirectedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQKeySequenceEdit_override_virtual_redirected(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QKeySequenceEdit_redirected(self: ptr cQKeySequenceEdit, slot: int, offset: pointer): pointer {.exportc: "miqt_exec_callback_QKeySequenceEdit_redirected ".} =
-  type Cb = proc(super: QKeySequenceEditredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(offset: gen_qpoint.QPoint): auto =
-    callVirtualBase_redirected(QKeySequenceEdit(h: self), offset)
+  var nimfunc = cast[ptr QKeySequenceEditredirectedProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: offset)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_sharedPainter(self: QKeySequenceEdit, ): gen_qpainter.QPainter =
-
+proc QKeySequenceEditsharedPainter*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, ): gen_qpainter.QPainter =
 
   gen_qpainter.QPainter(h: fQKeySequenceEdit_virtualbase_sharedPainter(self.h))
 
-type QKeySequenceEditsharedPainterBase* = proc(): gen_qpainter.QPainter
-proc onsharedPainter*(self: QKeySequenceEdit, slot: proc(super: QKeySequenceEditsharedPainterBase): gen_qpainter.QPainter) =
+type QKeySequenceEditsharedPainterProc* = proc(): gen_qpainter.QPainter
+proc onsharedPainter*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: QKeySequenceEditsharedPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QKeySequenceEditsharedPainterBase): gen_qpainter.QPainter
-  var tmp = new Cb
+  var tmp = new QKeySequenceEditsharedPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQKeySequenceEdit_override_virtual_sharedPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QKeySequenceEdit_sharedPainter(self: ptr cQKeySequenceEdit, slot: int): pointer {.exportc: "miqt_exec_callback_QKeySequenceEdit_sharedPainter ".} =
-  type Cb = proc(super: QKeySequenceEditsharedPainterBase): gen_qpainter.QPainter
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sharedPainter(QKeySequenceEdit(h: self), )
+  var nimfunc = cast[ptr QKeySequenceEditsharedPainterProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_inputMethodEvent(self: QKeySequenceEdit, param1: gen_qevent.QInputMethodEvent): void =
-
+proc QKeySequenceEditinputMethodEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, param1: gen_qevent.QInputMethodEvent): void =
 
   fQKeySequenceEdit_virtualbase_inputMethodEvent(self.h, param1.h)
 
-type QKeySequenceEditinputMethodEventBase* = proc(param1: gen_qevent.QInputMethodEvent): void
-proc oninputMethodEvent*(self: QKeySequenceEdit, slot: proc(super: QKeySequenceEditinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void) =
+type QKeySequenceEditinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
+proc oninputMethodEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: QKeySequenceEditinputMethodEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QKeySequenceEditinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var tmp = new Cb
+  var tmp = new QKeySequenceEditinputMethodEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQKeySequenceEdit_override_virtual_inputMethodEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QKeySequenceEdit_inputMethodEvent(self: ptr cQKeySequenceEdit, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QKeySequenceEdit_inputMethodEvent ".} =
-  type Cb = proc(super: QKeySequenceEditinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QInputMethodEvent): auto =
-    callVirtualBase_inputMethodEvent(QKeySequenceEdit(h: self), param1)
+  var nimfunc = cast[ptr QKeySequenceEditinputMethodEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QInputMethodEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_inputMethodQuery(self: QKeySequenceEdit, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant =
-
+  nimfunc[](slotval1)
+proc QKeySequenceEditinputMethodQuery*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, param1: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQKeySequenceEdit_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
-type QKeySequenceEditinputMethodQueryBase* = proc(param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-proc oninputMethodQuery*(self: QKeySequenceEdit, slot: proc(super: QKeySequenceEditinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant) =
+type QKeySequenceEditinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
+proc oninputMethodQuery*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: QKeySequenceEditinputMethodQueryProc) =
   # TODO check subclass
-  type Cb = proc(super: QKeySequenceEditinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QKeySequenceEditinputMethodQueryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQKeySequenceEdit_override_virtual_inputMethodQuery(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QKeySequenceEdit_inputMethodQuery(self: ptr cQKeySequenceEdit, slot: int, param1: cint): pointer {.exportc: "miqt_exec_callback_QKeySequenceEdit_inputMethodQuery ".} =
-  type Cb = proc(super: QKeySequenceEditinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qnamespace.InputMethodQuery): auto =
-    callVirtualBase_inputMethodQuery(QKeySequenceEdit(h: self), param1)
-  let slotval1 = gen_qnamespace.InputMethodQuery(param1)
+  var nimfunc = cast[ptr QKeySequenceEditinputMethodQueryProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_focusNextPrevChild(self: QKeySequenceEdit, next: bool): bool =
-
+proc QKeySequenceEditfocusNextPrevChild*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, next: bool): bool =
 
   fQKeySequenceEdit_virtualbase_focusNextPrevChild(self.h, next)
 
-type QKeySequenceEditfocusNextPrevChildBase* = proc(next: bool): bool
-proc onfocusNextPrevChild*(self: QKeySequenceEdit, slot: proc(super: QKeySequenceEditfocusNextPrevChildBase, next: bool): bool) =
+type QKeySequenceEditfocusNextPrevChildProc* = proc(next: bool): bool
+proc onfocusNextPrevChild*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: QKeySequenceEditfocusNextPrevChildProc) =
   # TODO check subclass
-  type Cb = proc(super: QKeySequenceEditfocusNextPrevChildBase, next: bool): bool
-  var tmp = new Cb
+  var tmp = new QKeySequenceEditfocusNextPrevChildProc
   tmp[] = slot
   GC_ref(tmp)
   fcQKeySequenceEdit_override_virtual_focusNextPrevChild(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QKeySequenceEdit_focusNextPrevChild(self: ptr cQKeySequenceEdit, slot: int, next: bool): bool {.exportc: "miqt_exec_callback_QKeySequenceEdit_focusNextPrevChild ".} =
-  type Cb = proc(super: QKeySequenceEditfocusNextPrevChildBase, next: bool): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(next: bool): auto =
-    callVirtualBase_focusNextPrevChild(QKeySequenceEdit(h: self), next)
+  var nimfunc = cast[ptr QKeySequenceEditfocusNextPrevChildProc](cast[pointer](slot))
   let slotval1 = next
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QKeySequenceEdit, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QKeySequenceEditeventFilter*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQKeySequenceEdit_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QKeySequenceEditeventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QKeySequenceEdit, slot: proc(super: QKeySequenceEditeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QKeySequenceEditeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: QKeySequenceEditeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QKeySequenceEditeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QKeySequenceEditeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQKeySequenceEdit_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QKeySequenceEdit_eventFilter(self: ptr cQKeySequenceEdit, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QKeySequenceEdit_eventFilter ".} =
-  type Cb = proc(super: QKeySequenceEditeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QKeySequenceEdit(h: self), watched, event)
+  var nimfunc = cast[ptr QKeySequenceEditeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_childEvent(self: QKeySequenceEdit, event: gen_qcoreevent.QChildEvent): void =
-
+proc QKeySequenceEditchildEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, event: gen_qcoreevent.QChildEvent): void =
 
   fQKeySequenceEdit_virtualbase_childEvent(self.h, event.h)
 
-type QKeySequenceEditchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QKeySequenceEdit, slot: proc(super: QKeySequenceEditchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QKeySequenceEditchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: QKeySequenceEditchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QKeySequenceEditchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QKeySequenceEditchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQKeySequenceEdit_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QKeySequenceEdit_childEvent(self: ptr cQKeySequenceEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QKeySequenceEdit_childEvent ".} =
-  type Cb = proc(super: QKeySequenceEditchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QKeySequenceEdit(h: self), event)
+  var nimfunc = cast[ptr QKeySequenceEditchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QKeySequenceEdit, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QKeySequenceEditcustomEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, event: gen_qcoreevent.QEvent): void =
 
   fQKeySequenceEdit_virtualbase_customEvent(self.h, event.h)
 
-type QKeySequenceEditcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QKeySequenceEdit, slot: proc(super: QKeySequenceEditcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QKeySequenceEditcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: QKeySequenceEditcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QKeySequenceEditcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QKeySequenceEditcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQKeySequenceEdit_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QKeySequenceEdit_customEvent(self: ptr cQKeySequenceEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QKeySequenceEdit_customEvent ".} =
-  type Cb = proc(super: QKeySequenceEditcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QKeySequenceEdit(h: self), event)
+  var nimfunc = cast[ptr QKeySequenceEditcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QKeySequenceEdit, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QKeySequenceEditconnectNotify*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQKeySequenceEdit_virtualbase_connectNotify(self.h, signal.h)
 
-type QKeySequenceEditconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QKeySequenceEdit, slot: proc(super: QKeySequenceEditconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QKeySequenceEditconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: QKeySequenceEditconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QKeySequenceEditconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QKeySequenceEditconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQKeySequenceEdit_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QKeySequenceEdit_connectNotify(self: ptr cQKeySequenceEdit, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QKeySequenceEdit_connectNotify ".} =
-  type Cb = proc(super: QKeySequenceEditconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QKeySequenceEdit(h: self), signal)
+  var nimfunc = cast[ptr QKeySequenceEditconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QKeySequenceEdit, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QKeySequenceEditdisconnectNotify*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQKeySequenceEdit_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QKeySequenceEditdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QKeySequenceEdit, slot: proc(super: QKeySequenceEditdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QKeySequenceEditdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: QKeySequenceEditdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QKeySequenceEditdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QKeySequenceEditdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQKeySequenceEdit_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QKeySequenceEdit_disconnectNotify(self: ptr cQKeySequenceEdit, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QKeySequenceEdit_disconnectNotify ".} =
-  type Cb = proc(super: QKeySequenceEditdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QKeySequenceEdit(h: self), signal)
+  var nimfunc = cast[ptr QKeySequenceEditdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QKeySequenceEdit): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qkeysequenceedit_types.QKeySequenceEdit): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQKeySequenceEdit_staticMetaObject())
-proc delete*(self: QKeySequenceEdit) =
+proc delete*(self: gen_qkeysequenceedit_types.QKeySequenceEdit) =
   fcQKeySequenceEdit_delete(self.h)

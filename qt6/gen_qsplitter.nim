@@ -42,7 +42,6 @@ import
   gen_qevent,
   gen_qframe,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -58,7 +57,6 @@ export
   gen_qevent,
   gen_qframe,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -334,96 +332,96 @@ proc fcQSplitterHandle_staticMetaObject(): pointer {.importc: "QSplitterHandle_s
 proc fcQSplitterHandle_delete(self: pointer) {.importc: "QSplitterHandle_delete".}
 
 
-func init*(T: type QSplitter, h: ptr cQSplitter): QSplitter =
+func init*(T: type gen_qsplitter_types.QSplitter, h: ptr cQSplitter): gen_qsplitter_types.QSplitter =
   T(h: h)
-proc create*(T: type QSplitter, parent: gen_qwidget.QWidget): QSplitter =
+proc create*(T: type gen_qsplitter_types.QSplitter, parent: gen_qwidget.QWidget): gen_qsplitter_types.QSplitter =
 
-  QSplitter.init(fcQSplitter_new(parent.h))
-proc create*(T: type QSplitter, ): QSplitter =
+  gen_qsplitter_types.QSplitter.init(fcQSplitter_new(parent.h))
+proc create*(T: type gen_qsplitter_types.QSplitter, ): gen_qsplitter_types.QSplitter =
 
-  QSplitter.init(fcQSplitter_new2())
-proc create*(T: type QSplitter, param1: gen_qnamespace.Orientation): QSplitter =
+  gen_qsplitter_types.QSplitter.init(fcQSplitter_new2())
+proc create*(T: type gen_qsplitter_types.QSplitter, param1: cint): gen_qsplitter_types.QSplitter =
 
-  QSplitter.init(fcQSplitter_new3(cint(param1)))
-proc create*(T: type QSplitter, param1: gen_qnamespace.Orientation, parent: gen_qwidget.QWidget): QSplitter =
+  gen_qsplitter_types.QSplitter.init(fcQSplitter_new3(cint(param1)))
+proc create*(T: type gen_qsplitter_types.QSplitter, param1: cint, parent: gen_qwidget.QWidget): gen_qsplitter_types.QSplitter =
 
-  QSplitter.init(fcQSplitter_new4(cint(param1), parent.h))
-proc metaObject*(self: QSplitter, ): gen_qobjectdefs.QMetaObject =
+  gen_qsplitter_types.QSplitter.init(fcQSplitter_new4(cint(param1), parent.h))
+proc metaObject*(self: gen_qsplitter_types.QSplitter, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQSplitter_metaObject(self.h))
 
-proc metacast*(self: QSplitter, param1: cstring): pointer =
+proc metacast*(self: gen_qsplitter_types.QSplitter, param1: cstring): pointer =
 
   fcQSplitter_metacast(self.h, param1)
 
-proc metacall*(self: QSplitter, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qsplitter_types.QSplitter, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQSplitter_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QSplitter, s: cstring): string =
+proc tr*(_: type gen_qsplitter_types.QSplitter, s: cstring): string =
 
   let v_ms = fcQSplitter_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc addWidget*(self: QSplitter, widget: gen_qwidget.QWidget): void =
+proc addWidget*(self: gen_qsplitter_types.QSplitter, widget: gen_qwidget.QWidget): void =
 
   fcQSplitter_addWidget(self.h, widget.h)
 
-proc insertWidget*(self: QSplitter, index: cint, widget: gen_qwidget.QWidget): void =
+proc insertWidget*(self: gen_qsplitter_types.QSplitter, index: cint, widget: gen_qwidget.QWidget): void =
 
   fcQSplitter_insertWidget(self.h, index, widget.h)
 
-proc replaceWidget*(self: QSplitter, index: cint, widget: gen_qwidget.QWidget): gen_qwidget.QWidget =
+proc replaceWidget*(self: gen_qsplitter_types.QSplitter, index: cint, widget: gen_qwidget.QWidget): gen_qwidget.QWidget =
 
   gen_qwidget.QWidget(h: fcQSplitter_replaceWidget(self.h, index, widget.h))
 
-proc setOrientation*(self: QSplitter, orientation: gen_qnamespace.Orientation): void =
+proc setOrientation*(self: gen_qsplitter_types.QSplitter, orientation: cint): void =
 
   fcQSplitter_setOrientation(self.h, cint(orientation))
 
-proc orientation*(self: QSplitter, ): gen_qnamespace.Orientation =
+proc orientation*(self: gen_qsplitter_types.QSplitter, ): cint =
 
-  gen_qnamespace.Orientation(fcQSplitter_orientation(self.h))
+  cint(fcQSplitter_orientation(self.h))
 
-proc setChildrenCollapsible*(self: QSplitter, childrenCollapsible: bool): void =
+proc setChildrenCollapsible*(self: gen_qsplitter_types.QSplitter, childrenCollapsible: bool): void =
 
   fcQSplitter_setChildrenCollapsible(self.h, childrenCollapsible)
 
-proc childrenCollapsible*(self: QSplitter, ): bool =
+proc childrenCollapsible*(self: gen_qsplitter_types.QSplitter, ): bool =
 
   fcQSplitter_childrenCollapsible(self.h)
 
-proc setCollapsible*(self: QSplitter, index: cint, param2: bool): void =
+proc setCollapsible*(self: gen_qsplitter_types.QSplitter, index: cint, param2: bool): void =
 
   fcQSplitter_setCollapsible(self.h, index, param2)
 
-proc isCollapsible*(self: QSplitter, index: cint): bool =
+proc isCollapsible*(self: gen_qsplitter_types.QSplitter, index: cint): bool =
 
   fcQSplitter_isCollapsible(self.h, index)
 
-proc setOpaqueResize*(self: QSplitter, ): void =
+proc setOpaqueResize*(self: gen_qsplitter_types.QSplitter, ): void =
 
   fcQSplitter_setOpaqueResize(self.h)
 
-proc opaqueResize*(self: QSplitter, ): bool =
+proc opaqueResize*(self: gen_qsplitter_types.QSplitter, ): bool =
 
   fcQSplitter_opaqueResize(self.h)
 
-proc refresh*(self: QSplitter, ): void =
+proc refresh*(self: gen_qsplitter_types.QSplitter, ): void =
 
   fcQSplitter_refresh(self.h)
 
-proc sizeHint*(self: QSplitter, ): gen_qsize.QSize =
+proc sizeHint*(self: gen_qsplitter_types.QSplitter, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQSplitter_sizeHint(self.h))
 
-proc minimumSizeHint*(self: QSplitter, ): gen_qsize.QSize =
+proc minimumSizeHint*(self: gen_qsplitter_types.QSplitter, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQSplitter_minimumSizeHint(self.h))
 
-proc sizes*(self: QSplitter, ): seq[cint] =
+proc sizes*(self: gen_qsplitter_types.QSplitter, ): seq[cint] =
 
   var v_ma = fcQSplitter_sizes(self.h)
   var vx_ret = newSeq[cint](int(v_ma.len))
@@ -432,7 +430,7 @@ proc sizes*(self: QSplitter, ): seq[cint] =
     vx_ret[i] = v_outCast[i]
   vx_ret
 
-proc setSizes*(self: QSplitter, list: seq[cint]): void =
+proc setSizes*(self: gen_qsplitter_types.QSplitter, list: seq[cint]): void =
 
   var list_CArray = newSeq[cint](len(list))
   for i in 0..<len(list):
@@ -440,50 +438,50 @@ proc setSizes*(self: QSplitter, list: seq[cint]): void =
 
   fcQSplitter_setSizes(self.h, struct_miqt_array(len: csize_t(len(list)), data: if len(list) == 0: nil else: addr(list_CArray[0])))
 
-proc saveState*(self: QSplitter, ): seq[byte] =
+proc saveState*(self: gen_qsplitter_types.QSplitter, ): seq[byte] =
 
   var v_bytearray = fcQSplitter_saveState(self.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc restoreState*(self: QSplitter, state: seq[byte]): bool =
+proc restoreState*(self: gen_qsplitter_types.QSplitter, state: seq[byte]): bool =
 
   fcQSplitter_restoreState(self.h, struct_miqt_string(data: cast[cstring](if len(state) == 0: nil else: unsafeAddr state[0]), len: csize_t(len(state))))
 
-proc handleWidth*(self: QSplitter, ): cint =
+proc handleWidth*(self: gen_qsplitter_types.QSplitter, ): cint =
 
   fcQSplitter_handleWidth(self.h)
 
-proc setHandleWidth*(self: QSplitter, handleWidth: cint): void =
+proc setHandleWidth*(self: gen_qsplitter_types.QSplitter, handleWidth: cint): void =
 
   fcQSplitter_setHandleWidth(self.h, handleWidth)
 
-proc indexOf*(self: QSplitter, w: gen_qwidget.QWidget): cint =
+proc indexOf*(self: gen_qsplitter_types.QSplitter, w: gen_qwidget.QWidget): cint =
 
   fcQSplitter_indexOf(self.h, w.h)
 
-proc widget*(self: QSplitter, index: cint): gen_qwidget.QWidget =
+proc widget*(self: gen_qsplitter_types.QSplitter, index: cint): gen_qwidget.QWidget =
 
   gen_qwidget.QWidget(h: fcQSplitter_widget(self.h, index))
 
-proc count*(self: QSplitter, ): cint =
+proc count*(self: gen_qsplitter_types.QSplitter, ): cint =
 
   fcQSplitter_count(self.h)
 
-proc getRange*(self: QSplitter, index: cint, param2: ptr cint, param3: ptr cint): void =
+proc getRange*(self: gen_qsplitter_types.QSplitter, index: cint, param2: ptr cint, param3: ptr cint): void =
 
   fcQSplitter_getRange(self.h, index, param2, param3)
 
-proc handle*(self: QSplitter, index: cint): QSplitterHandle =
+proc handle*(self: gen_qsplitter_types.QSplitter, index: cint): gen_qsplitter_types.QSplitterHandle =
 
-  QSplitterHandle(h: fcQSplitter_handle(self.h, index))
+  gen_qsplitter_types.QSplitterHandle(h: fcQSplitter_handle(self.h, index))
 
-proc setStretchFactor*(self: QSplitter, index: cint, stretch: cint): void =
+proc setStretchFactor*(self: gen_qsplitter_types.QSplitter, index: cint, stretch: cint): void =
 
   fcQSplitter_setStretchFactor(self.h, index, stretch)
 
-proc splitterMoved*(self: QSplitter, pos: cint, index: cint): void =
+proc splitterMoved*(self: gen_qsplitter_types.QSplitter, pos: cint, index: cint): void =
 
   fcQSplitter_splitterMoved(self.h, pos, index)
 
@@ -497,958 +495,758 @@ proc miqt_exec_callback_QSplitter_splitterMoved(slot: int, pos: cint, index: cin
 
   nimfunc[](slotval1, slotval2)
 
-proc onsplitterMoved*(self: QSplitter, slot: proc(pos: cint, index: cint)) =
+proc onsplitterMoved*(self: gen_qsplitter_types.QSplitter, slot: proc(pos: cint, index: cint)) =
   type Cb = proc(pos: cint, index: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQSplitter_connect_splitterMoved(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QSplitter, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qsplitter_types.QSplitter, s: cstring, c: cstring): string =
 
   let v_ms = fcQSplitter_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QSplitter, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qsplitter_types.QSplitter, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQSplitter_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setOpaqueResize1*(self: QSplitter, opaque: bool): void =
+proc setOpaqueResize1*(self: gen_qsplitter_types.QSplitter, opaque: bool): void =
 
   fcQSplitter_setOpaqueResize1(self.h, opaque)
 
-proc callVirtualBase_metaObject(self: QSplitter, ): gen_qobjectdefs.QMetaObject =
-
+proc QSplittermetaObject*(self: gen_qsplitter_types.QSplitter, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQSplitter_virtualbase_metaObject(self.h))
 
-type QSplittermetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QSplitter, slot: proc(super: QSplittermetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QSplittermetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qsplitter_types.QSplitter, slot: QSplittermetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplittermetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QSplittermetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitter_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitter_metaObject(self: ptr cQSplitter, slot: int): pointer {.exportc: "miqt_exec_callback_QSplitter_metaObject ".} =
-  type Cb = proc(super: QSplittermetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QSplitter(h: self), )
+  var nimfunc = cast[ptr QSplittermetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QSplitter, param1: cstring): pointer =
-
+proc QSplittermetacast*(self: gen_qsplitter_types.QSplitter, param1: cstring): pointer =
 
   fQSplitter_virtualbase_metacast(self.h, param1)
 
-type QSplittermetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QSplitter, slot: proc(super: QSplittermetacastBase, param1: cstring): pointer) =
+type QSplittermetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qsplitter_types.QSplitter, slot: QSplittermetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplittermetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QSplittermetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitter_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitter_metacast(self: ptr cQSplitter, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QSplitter_metacast ".} =
-  type Cb = proc(super: QSplittermetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QSplitter(h: self), param1)
+  var nimfunc = cast[ptr QSplittermetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QSplitter, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QSplittermetacall*(self: gen_qsplitter_types.QSplitter, param1: cint, param2: cint, param3: pointer): cint =
 
   fQSplitter_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QSplittermetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QSplitter, slot: proc(super: QSplittermetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QSplittermetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qsplitter_types.QSplitter, slot: QSplittermetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplittermetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QSplittermetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitter_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitter_metacall(self: ptr cQSplitter, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QSplitter_metacall ".} =
-  type Cb = proc(super: QSplittermetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QSplitter(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QSplittermetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_sizeHint(self: QSplitter, ): gen_qsize.QSize =
-
+proc QSplittersizeHint*(self: gen_qsplitter_types.QSplitter, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQSplitter_virtualbase_sizeHint(self.h))
 
-type QSplittersizeHintBase* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: QSplitter, slot: proc(super: QSplittersizeHintBase): gen_qsize.QSize) =
+type QSplittersizeHintProc* = proc(): gen_qsize.QSize
+proc onsizeHint*(self: gen_qsplitter_types.QSplitter, slot: QSplittersizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplittersizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QSplittersizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitter_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitter_sizeHint(self: ptr cQSplitter, slot: int): pointer {.exportc: "miqt_exec_callback_QSplitter_sizeHint ".} =
-  type Cb = proc(super: QSplittersizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sizeHint(QSplitter(h: self), )
+  var nimfunc = cast[ptr QSplittersizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_minimumSizeHint(self: QSplitter, ): gen_qsize.QSize =
-
+proc QSplitterminimumSizeHint*(self: gen_qsplitter_types.QSplitter, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQSplitter_virtualbase_minimumSizeHint(self.h))
 
-type QSplitterminimumSizeHintBase* = proc(): gen_qsize.QSize
-proc onminimumSizeHint*(self: QSplitter, slot: proc(super: QSplitterminimumSizeHintBase): gen_qsize.QSize) =
+type QSplitterminimumSizeHintProc* = proc(): gen_qsize.QSize
+proc onminimumSizeHint*(self: gen_qsplitter_types.QSplitter, slot: QSplitterminimumSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterminimumSizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QSplitterminimumSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitter_override_virtual_minimumSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitter_minimumSizeHint(self: ptr cQSplitter, slot: int): pointer {.exportc: "miqt_exec_callback_QSplitter_minimumSizeHint ".} =
-  type Cb = proc(super: QSplitterminimumSizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_minimumSizeHint(QSplitter(h: self), )
+  var nimfunc = cast[ptr QSplitterminimumSizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_createHandle(self: QSplitter, ): QSplitterHandle =
+proc QSplittercreateHandle*(self: gen_qsplitter_types.QSplitter, ): gen_qsplitter_types.QSplitterHandle =
 
+  gen_qsplitter_types.QSplitterHandle(h: fQSplitter_virtualbase_createHandle(self.h))
 
-  QSplitterHandle(h: fQSplitter_virtualbase_createHandle(self.h))
-
-type QSplittercreateHandleBase* = proc(): QSplitterHandle
-proc oncreateHandle*(self: QSplitter, slot: proc(super: QSplittercreateHandleBase): QSplitterHandle) =
+type QSplittercreateHandleProc* = proc(): gen_qsplitter_types.QSplitterHandle
+proc oncreateHandle*(self: gen_qsplitter_types.QSplitter, slot: QSplittercreateHandleProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplittercreateHandleBase): QSplitterHandle
-  var tmp = new Cb
+  var tmp = new QSplittercreateHandleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitter_override_virtual_createHandle(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitter_createHandle(self: ptr cQSplitter, slot: int): pointer {.exportc: "miqt_exec_callback_QSplitter_createHandle ".} =
-  type Cb = proc(super: QSplittercreateHandleBase): QSplitterHandle
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_createHandle(QSplitter(h: self), )
+  var nimfunc = cast[ptr QSplittercreateHandleProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_childEvent(self: QSplitter, param1: gen_qcoreevent.QChildEvent): void =
-
+proc QSplitterchildEvent*(self: gen_qsplitter_types.QSplitter, param1: gen_qcoreevent.QChildEvent): void =
 
   fQSplitter_virtualbase_childEvent(self.h, param1.h)
 
-type QSplitterchildEventBase* = proc(param1: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QSplitter, slot: proc(super: QSplitterchildEventBase, param1: gen_qcoreevent.QChildEvent): void) =
+type QSplitterchildEventProc* = proc(param1: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qsplitter_types.QSplitter, slot: QSplitterchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterchildEventBase, param1: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QSplitterchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitter_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitter_childEvent(self: ptr cQSplitter, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QSplitter_childEvent ".} =
-  type Cb = proc(super: QSplitterchildEventBase, param1: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QSplitter(h: self), param1)
+  var nimfunc = cast[ptr QSplitterchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_event(self: QSplitter, param1: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[](slotval1)
+proc QSplitterevent*(self: gen_qsplitter_types.QSplitter, param1: gen_qcoreevent.QEvent): bool =
 
   fQSplitter_virtualbase_event(self.h, param1.h)
 
-type QSplittereventBase* = proc(param1: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QSplitter, slot: proc(super: QSplittereventBase, param1: gen_qcoreevent.QEvent): bool) =
+type QSplittereventProc* = proc(param1: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qsplitter_types.QSplitter, slot: QSplittereventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplittereventBase, param1: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QSplittereventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitter_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitter_event(self: ptr cQSplitter, slot: int, param1: pointer): bool {.exportc: "miqt_exec_callback_QSplitter_event ".} =
-  type Cb = proc(super: QSplittereventBase, param1: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QSplitter(h: self), param1)
+  var nimfunc = cast[ptr QSplittereventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_resizeEvent(self: QSplitter, param1: gen_qevent.QResizeEvent): void =
-
+proc QSplitterresizeEvent*(self: gen_qsplitter_types.QSplitter, param1: gen_qevent.QResizeEvent): void =
 
   fQSplitter_virtualbase_resizeEvent(self.h, param1.h)
 
-type QSplitterresizeEventBase* = proc(param1: gen_qevent.QResizeEvent): void
-proc onresizeEvent*(self: QSplitter, slot: proc(super: QSplitterresizeEventBase, param1: gen_qevent.QResizeEvent): void) =
+type QSplitterresizeEventProc* = proc(param1: gen_qevent.QResizeEvent): void
+proc onresizeEvent*(self: gen_qsplitter_types.QSplitter, slot: QSplitterresizeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterresizeEventBase, param1: gen_qevent.QResizeEvent): void
-  var tmp = new Cb
+  var tmp = new QSplitterresizeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitter_override_virtual_resizeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitter_resizeEvent(self: ptr cQSplitter, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QSplitter_resizeEvent ".} =
-  type Cb = proc(super: QSplitterresizeEventBase, param1: gen_qevent.QResizeEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QResizeEvent): auto =
-    callVirtualBase_resizeEvent(QSplitter(h: self), param1)
+  var nimfunc = cast[ptr QSplitterresizeEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QResizeEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_changeEvent(self: QSplitter, param1: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplitterchangeEvent*(self: gen_qsplitter_types.QSplitter, param1: gen_qcoreevent.QEvent): void =
 
   fQSplitter_virtualbase_changeEvent(self.h, param1.h)
 
-type QSplitterchangeEventBase* = proc(param1: gen_qcoreevent.QEvent): void
-proc onchangeEvent*(self: QSplitter, slot: proc(super: QSplitterchangeEventBase, param1: gen_qcoreevent.QEvent): void) =
+type QSplitterchangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
+proc onchangeEvent*(self: gen_qsplitter_types.QSplitter, slot: QSplitterchangeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterchangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QSplitterchangeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitter_override_virtual_changeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitter_changeEvent(self: ptr cQSplitter, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QSplitter_changeEvent ".} =
-  type Cb = proc(super: QSplitterchangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_changeEvent(QSplitter(h: self), param1)
+  var nimfunc = cast[ptr QSplitterchangeEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_paintEvent(self: QSplitter, param1: gen_qevent.QPaintEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplitterpaintEvent*(self: gen_qsplitter_types.QSplitter, param1: gen_qevent.QPaintEvent): void =
 
   fQSplitter_virtualbase_paintEvent(self.h, param1.h)
 
-type QSplitterpaintEventBase* = proc(param1: gen_qevent.QPaintEvent): void
-proc onpaintEvent*(self: QSplitter, slot: proc(super: QSplitterpaintEventBase, param1: gen_qevent.QPaintEvent): void) =
+type QSplitterpaintEventProc* = proc(param1: gen_qevent.QPaintEvent): void
+proc onpaintEvent*(self: gen_qsplitter_types.QSplitter, slot: QSplitterpaintEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterpaintEventBase, param1: gen_qevent.QPaintEvent): void
-  var tmp = new Cb
+  var tmp = new QSplitterpaintEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitter_override_virtual_paintEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitter_paintEvent(self: ptr cQSplitter, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QSplitter_paintEvent ".} =
-  type Cb = proc(super: QSplitterpaintEventBase, param1: gen_qevent.QPaintEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QPaintEvent): auto =
-    callVirtualBase_paintEvent(QSplitter(h: self), param1)
+  var nimfunc = cast[ptr QSplitterpaintEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QPaintEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_initStyleOption(self: QSplitter, option: gen_qstyleoption.QStyleOptionFrame): void =
-
+  nimfunc[](slotval1)
+proc QSplitterinitStyleOption*(self: gen_qsplitter_types.QSplitter, option: gen_qstyleoption.QStyleOptionFrame): void =
 
   fQSplitter_virtualbase_initStyleOption(self.h, option.h)
 
-type QSplitterinitStyleOptionBase* = proc(option: gen_qstyleoption.QStyleOptionFrame): void
-proc oninitStyleOption*(self: QSplitter, slot: proc(super: QSplitterinitStyleOptionBase, option: gen_qstyleoption.QStyleOptionFrame): void) =
+type QSplitterinitStyleOptionProc* = proc(option: gen_qstyleoption.QStyleOptionFrame): void
+proc oninitStyleOption*(self: gen_qsplitter_types.QSplitter, slot: QSplitterinitStyleOptionProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterinitStyleOptionBase, option: gen_qstyleoption.QStyleOptionFrame): void
-  var tmp = new Cb
+  var tmp = new QSplitterinitStyleOptionProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitter_override_virtual_initStyleOption(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitter_initStyleOption(self: ptr cQSplitter, slot: int, option: pointer): void {.exportc: "miqt_exec_callback_QSplitter_initStyleOption ".} =
-  type Cb = proc(super: QSplitterinitStyleOptionBase, option: gen_qstyleoption.QStyleOptionFrame): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(option: gen_qstyleoption.QStyleOptionFrame): auto =
-    callVirtualBase_initStyleOption(QSplitter(h: self), option)
+  var nimfunc = cast[ptr QSplitterinitStyleOptionProc](cast[pointer](slot))
   let slotval1 = gen_qstyleoption.QStyleOptionFrame(h: option)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_devType(self: QSplitter, ): cint =
-
+  nimfunc[](slotval1)
+proc QSplitterdevType*(self: gen_qsplitter_types.QSplitter, ): cint =
 
   fQSplitter_virtualbase_devType(self.h)
 
-type QSplitterdevTypeBase* = proc(): cint
-proc ondevType*(self: QSplitter, slot: proc(super: QSplitterdevTypeBase): cint) =
+type QSplitterdevTypeProc* = proc(): cint
+proc ondevType*(self: gen_qsplitter_types.QSplitter, slot: QSplitterdevTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterdevTypeBase): cint
-  var tmp = new Cb
+  var tmp = new QSplitterdevTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitter_override_virtual_devType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitter_devType(self: ptr cQSplitter, slot: int): cint {.exportc: "miqt_exec_callback_QSplitter_devType ".} =
-  type Cb = proc(super: QSplitterdevTypeBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_devType(QSplitter(h: self), )
+  var nimfunc = cast[ptr QSplitterdevTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setVisible(self: QSplitter, visible: bool): void =
-
+proc QSplittersetVisible*(self: gen_qsplitter_types.QSplitter, visible: bool): void =
 
   fQSplitter_virtualbase_setVisible(self.h, visible)
 
-type QSplittersetVisibleBase* = proc(visible: bool): void
-proc onsetVisible*(self: QSplitter, slot: proc(super: QSplittersetVisibleBase, visible: bool): void) =
+type QSplittersetVisibleProc* = proc(visible: bool): void
+proc onsetVisible*(self: gen_qsplitter_types.QSplitter, slot: QSplittersetVisibleProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplittersetVisibleBase, visible: bool): void
-  var tmp = new Cb
+  var tmp = new QSplittersetVisibleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitter_override_virtual_setVisible(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitter_setVisible(self: ptr cQSplitter, slot: int, visible: bool): void {.exportc: "miqt_exec_callback_QSplitter_setVisible ".} =
-  type Cb = proc(super: QSplittersetVisibleBase, visible: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(visible: bool): auto =
-    callVirtualBase_setVisible(QSplitter(h: self), visible)
+  var nimfunc = cast[ptr QSplittersetVisibleProc](cast[pointer](slot))
   let slotval1 = visible
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_heightForWidth(self: QSplitter, param1: cint): cint =
-
+  nimfunc[](slotval1)
+proc QSplitterheightForWidth*(self: gen_qsplitter_types.QSplitter, param1: cint): cint =
 
   fQSplitter_virtualbase_heightForWidth(self.h, param1)
 
-type QSplitterheightForWidthBase* = proc(param1: cint): cint
-proc onheightForWidth*(self: QSplitter, slot: proc(super: QSplitterheightForWidthBase, param1: cint): cint) =
+type QSplitterheightForWidthProc* = proc(param1: cint): cint
+proc onheightForWidth*(self: gen_qsplitter_types.QSplitter, slot: QSplitterheightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterheightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QSplitterheightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitter_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitter_heightForWidth(self: ptr cQSplitter, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QSplitter_heightForWidth ".} =
-  type Cb = proc(super: QSplitterheightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_heightForWidth(QSplitter(h: self), param1)
+  var nimfunc = cast[ptr QSplitterheightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_hasHeightForWidth(self: QSplitter, ): bool =
-
+proc QSplitterhasHeightForWidth*(self: gen_qsplitter_types.QSplitter, ): bool =
 
   fQSplitter_virtualbase_hasHeightForWidth(self.h)
 
-type QSplitterhasHeightForWidthBase* = proc(): bool
-proc onhasHeightForWidth*(self: QSplitter, slot: proc(super: QSplitterhasHeightForWidthBase): bool) =
+type QSplitterhasHeightForWidthProc* = proc(): bool
+proc onhasHeightForWidth*(self: gen_qsplitter_types.QSplitter, slot: QSplitterhasHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterhasHeightForWidthBase): bool
-  var tmp = new Cb
+  var tmp = new QSplitterhasHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitter_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitter_hasHeightForWidth(self: ptr cQSplitter, slot: int): bool {.exportc: "miqt_exec_callback_QSplitter_hasHeightForWidth ".} =
-  type Cb = proc(super: QSplitterhasHeightForWidthBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasHeightForWidth(QSplitter(h: self), )
+  var nimfunc = cast[ptr QSplitterhasHeightForWidthProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_paintEngine(self: QSplitter, ): gen_qpaintengine.QPaintEngine =
-
+proc QSplitterpaintEngine*(self: gen_qsplitter_types.QSplitter, ): gen_qpaintengine.QPaintEngine =
 
   gen_qpaintengine.QPaintEngine(h: fQSplitter_virtualbase_paintEngine(self.h))
 
-type QSplitterpaintEngineBase* = proc(): gen_qpaintengine.QPaintEngine
-proc onpaintEngine*(self: QSplitter, slot: proc(super: QSplitterpaintEngineBase): gen_qpaintengine.QPaintEngine) =
+type QSplitterpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
+proc onpaintEngine*(self: gen_qsplitter_types.QSplitter, slot: QSplitterpaintEngineProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var tmp = new Cb
+  var tmp = new QSplitterpaintEngineProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitter_override_virtual_paintEngine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitter_paintEngine(self: ptr cQSplitter, slot: int): pointer {.exportc: "miqt_exec_callback_QSplitter_paintEngine ".} =
-  type Cb = proc(super: QSplitterpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_paintEngine(QSplitter(h: self), )
+  var nimfunc = cast[ptr QSplitterpaintEngineProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_mousePressEvent(self: QSplitter, event: gen_qevent.QMouseEvent): void =
-
+proc QSplittermousePressEvent*(self: gen_qsplitter_types.QSplitter, event: gen_qevent.QMouseEvent): void =
 
   fQSplitter_virtualbase_mousePressEvent(self.h, event.h)
 
-type QSplittermousePressEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmousePressEvent*(self: QSplitter, slot: proc(super: QSplittermousePressEventBase, event: gen_qevent.QMouseEvent): void) =
+type QSplittermousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmousePressEvent*(self: gen_qsplitter_types.QSplitter, slot: QSplittermousePressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplittermousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QSplittermousePressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitter_override_virtual_mousePressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitter_mousePressEvent(self: ptr cQSplitter, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplitter_mousePressEvent ".} =
-  type Cb = proc(super: QSplittermousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mousePressEvent(QSplitter(h: self), event)
+  var nimfunc = cast[ptr QSplittermousePressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseReleaseEvent(self: QSplitter, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplittermouseReleaseEvent*(self: gen_qsplitter_types.QSplitter, event: gen_qevent.QMouseEvent): void =
 
   fQSplitter_virtualbase_mouseReleaseEvent(self.h, event.h)
 
-type QSplittermouseReleaseEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseReleaseEvent*(self: QSplitter, slot: proc(super: QSplittermouseReleaseEventBase, event: gen_qevent.QMouseEvent): void) =
+type QSplittermouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseReleaseEvent*(self: gen_qsplitter_types.QSplitter, slot: QSplittermouseReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplittermouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QSplittermouseReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitter_override_virtual_mouseReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitter_mouseReleaseEvent(self: ptr cQSplitter, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplitter_mouseReleaseEvent ".} =
-  type Cb = proc(super: QSplittermouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseReleaseEvent(QSplitter(h: self), event)
+  var nimfunc = cast[ptr QSplittermouseReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseDoubleClickEvent(self: QSplitter, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplittermouseDoubleClickEvent*(self: gen_qsplitter_types.QSplitter, event: gen_qevent.QMouseEvent): void =
 
   fQSplitter_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
-type QSplittermouseDoubleClickEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseDoubleClickEvent*(self: QSplitter, slot: proc(super: QSplittermouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void) =
+type QSplittermouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseDoubleClickEvent*(self: gen_qsplitter_types.QSplitter, slot: QSplittermouseDoubleClickEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplittermouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QSplittermouseDoubleClickEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitter_override_virtual_mouseDoubleClickEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitter_mouseDoubleClickEvent(self: ptr cQSplitter, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplitter_mouseDoubleClickEvent ".} =
-  type Cb = proc(super: QSplittermouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseDoubleClickEvent(QSplitter(h: self), event)
+  var nimfunc = cast[ptr QSplittermouseDoubleClickEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseMoveEvent(self: QSplitter, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplittermouseMoveEvent*(self: gen_qsplitter_types.QSplitter, event: gen_qevent.QMouseEvent): void =
 
   fQSplitter_virtualbase_mouseMoveEvent(self.h, event.h)
 
-type QSplittermouseMoveEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseMoveEvent*(self: QSplitter, slot: proc(super: QSplittermouseMoveEventBase, event: gen_qevent.QMouseEvent): void) =
+type QSplittermouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseMoveEvent*(self: gen_qsplitter_types.QSplitter, slot: QSplittermouseMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplittermouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QSplittermouseMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitter_override_virtual_mouseMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitter_mouseMoveEvent(self: ptr cQSplitter, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplitter_mouseMoveEvent ".} =
-  type Cb = proc(super: QSplittermouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseMoveEvent(QSplitter(h: self), event)
+  var nimfunc = cast[ptr QSplittermouseMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_wheelEvent(self: QSplitter, event: gen_qevent.QWheelEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplitterwheelEvent*(self: gen_qsplitter_types.QSplitter, event: gen_qevent.QWheelEvent): void =
 
   fQSplitter_virtualbase_wheelEvent(self.h, event.h)
 
-type QSplitterwheelEventBase* = proc(event: gen_qevent.QWheelEvent): void
-proc onwheelEvent*(self: QSplitter, slot: proc(super: QSplitterwheelEventBase, event: gen_qevent.QWheelEvent): void) =
+type QSplitterwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
+proc onwheelEvent*(self: gen_qsplitter_types.QSplitter, slot: QSplitterwheelEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var tmp = new Cb
+  var tmp = new QSplitterwheelEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitter_override_virtual_wheelEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitter_wheelEvent(self: ptr cQSplitter, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplitter_wheelEvent ".} =
-  type Cb = proc(super: QSplitterwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QWheelEvent): auto =
-    callVirtualBase_wheelEvent(QSplitter(h: self), event)
+  var nimfunc = cast[ptr QSplitterwheelEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QWheelEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyPressEvent(self: QSplitter, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplitterkeyPressEvent*(self: gen_qsplitter_types.QSplitter, event: gen_qevent.QKeyEvent): void =
 
   fQSplitter_virtualbase_keyPressEvent(self.h, event.h)
 
-type QSplitterkeyPressEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyPressEvent*(self: QSplitter, slot: proc(super: QSplitterkeyPressEventBase, event: gen_qevent.QKeyEvent): void) =
+type QSplitterkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyPressEvent*(self: gen_qsplitter_types.QSplitter, slot: QSplitterkeyPressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QSplitterkeyPressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitter_override_virtual_keyPressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitter_keyPressEvent(self: ptr cQSplitter, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplitter_keyPressEvent ".} =
-  type Cb = proc(super: QSplitterkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyPressEvent(QSplitter(h: self), event)
+  var nimfunc = cast[ptr QSplitterkeyPressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyReleaseEvent(self: QSplitter, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplitterkeyReleaseEvent*(self: gen_qsplitter_types.QSplitter, event: gen_qevent.QKeyEvent): void =
 
   fQSplitter_virtualbase_keyReleaseEvent(self.h, event.h)
 
-type QSplitterkeyReleaseEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyReleaseEvent*(self: QSplitter, slot: proc(super: QSplitterkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void) =
+type QSplitterkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyReleaseEvent*(self: gen_qsplitter_types.QSplitter, slot: QSplitterkeyReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QSplitterkeyReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitter_override_virtual_keyReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitter_keyReleaseEvent(self: ptr cQSplitter, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplitter_keyReleaseEvent ".} =
-  type Cb = proc(super: QSplitterkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyReleaseEvent(QSplitter(h: self), event)
+  var nimfunc = cast[ptr QSplitterkeyReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusInEvent(self: QSplitter, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplitterfocusInEvent*(self: gen_qsplitter_types.QSplitter, event: gen_qevent.QFocusEvent): void =
 
   fQSplitter_virtualbase_focusInEvent(self.h, event.h)
 
-type QSplitterfocusInEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusInEvent*(self: QSplitter, slot: proc(super: QSplitterfocusInEventBase, event: gen_qevent.QFocusEvent): void) =
+type QSplitterfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusInEvent*(self: gen_qsplitter_types.QSplitter, slot: QSplitterfocusInEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QSplitterfocusInEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitter_override_virtual_focusInEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitter_focusInEvent(self: ptr cQSplitter, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplitter_focusInEvent ".} =
-  type Cb = proc(super: QSplitterfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusInEvent(QSplitter(h: self), event)
+  var nimfunc = cast[ptr QSplitterfocusInEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusOutEvent(self: QSplitter, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplitterfocusOutEvent*(self: gen_qsplitter_types.QSplitter, event: gen_qevent.QFocusEvent): void =
 
   fQSplitter_virtualbase_focusOutEvent(self.h, event.h)
 
-type QSplitterfocusOutEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusOutEvent*(self: QSplitter, slot: proc(super: QSplitterfocusOutEventBase, event: gen_qevent.QFocusEvent): void) =
+type QSplitterfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusOutEvent*(self: gen_qsplitter_types.QSplitter, slot: QSplitterfocusOutEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QSplitterfocusOutEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitter_override_virtual_focusOutEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitter_focusOutEvent(self: ptr cQSplitter, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplitter_focusOutEvent ".} =
-  type Cb = proc(super: QSplitterfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusOutEvent(QSplitter(h: self), event)
+  var nimfunc = cast[ptr QSplitterfocusOutEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_enterEvent(self: QSplitter, event: gen_qevent.QEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplitterenterEvent*(self: gen_qsplitter_types.QSplitter, event: gen_qevent.QEnterEvent): void =
 
   fQSplitter_virtualbase_enterEvent(self.h, event.h)
 
-type QSplitterenterEventBase* = proc(event: gen_qevent.QEnterEvent): void
-proc onenterEvent*(self: QSplitter, slot: proc(super: QSplitterenterEventBase, event: gen_qevent.QEnterEvent): void) =
+type QSplitterenterEventProc* = proc(event: gen_qevent.QEnterEvent): void
+proc onenterEvent*(self: gen_qsplitter_types.QSplitter, slot: QSplitterenterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterenterEventBase, event: gen_qevent.QEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QSplitterenterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitter_override_virtual_enterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitter_enterEvent(self: ptr cQSplitter, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplitter_enterEvent ".} =
-  type Cb = proc(super: QSplitterenterEventBase, event: gen_qevent.QEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QEnterEvent): auto =
-    callVirtualBase_enterEvent(QSplitter(h: self), event)
+  var nimfunc = cast[ptr QSplitterenterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_leaveEvent(self: QSplitter, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplitterleaveEvent*(self: gen_qsplitter_types.QSplitter, event: gen_qcoreevent.QEvent): void =
 
   fQSplitter_virtualbase_leaveEvent(self.h, event.h)
 
-type QSplitterleaveEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onleaveEvent*(self: QSplitter, slot: proc(super: QSplitterleaveEventBase, event: gen_qcoreevent.QEvent): void) =
+type QSplitterleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onleaveEvent*(self: gen_qsplitter_types.QSplitter, slot: QSplitterleaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QSplitterleaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitter_override_virtual_leaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitter_leaveEvent(self: ptr cQSplitter, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplitter_leaveEvent ".} =
-  type Cb = proc(super: QSplitterleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_leaveEvent(QSplitter(h: self), event)
+  var nimfunc = cast[ptr QSplitterleaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_moveEvent(self: QSplitter, event: gen_qevent.QMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplittermoveEvent*(self: gen_qsplitter_types.QSplitter, event: gen_qevent.QMoveEvent): void =
 
   fQSplitter_virtualbase_moveEvent(self.h, event.h)
 
-type QSplittermoveEventBase* = proc(event: gen_qevent.QMoveEvent): void
-proc onmoveEvent*(self: QSplitter, slot: proc(super: QSplittermoveEventBase, event: gen_qevent.QMoveEvent): void) =
+type QSplittermoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
+proc onmoveEvent*(self: gen_qsplitter_types.QSplitter, slot: QSplittermoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplittermoveEventBase, event: gen_qevent.QMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QSplittermoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitter_override_virtual_moveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitter_moveEvent(self: ptr cQSplitter, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplitter_moveEvent ".} =
-  type Cb = proc(super: QSplittermoveEventBase, event: gen_qevent.QMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMoveEvent): auto =
-    callVirtualBase_moveEvent(QSplitter(h: self), event)
+  var nimfunc = cast[ptr QSplittermoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_closeEvent(self: QSplitter, event: gen_qevent.QCloseEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplittercloseEvent*(self: gen_qsplitter_types.QSplitter, event: gen_qevent.QCloseEvent): void =
 
   fQSplitter_virtualbase_closeEvent(self.h, event.h)
 
-type QSplittercloseEventBase* = proc(event: gen_qevent.QCloseEvent): void
-proc oncloseEvent*(self: QSplitter, slot: proc(super: QSplittercloseEventBase, event: gen_qevent.QCloseEvent): void) =
+type QSplittercloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
+proc oncloseEvent*(self: gen_qsplitter_types.QSplitter, slot: QSplittercloseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplittercloseEventBase, event: gen_qevent.QCloseEvent): void
-  var tmp = new Cb
+  var tmp = new QSplittercloseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitter_override_virtual_closeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitter_closeEvent(self: ptr cQSplitter, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplitter_closeEvent ".} =
-  type Cb = proc(super: QSplittercloseEventBase, event: gen_qevent.QCloseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QCloseEvent): auto =
-    callVirtualBase_closeEvent(QSplitter(h: self), event)
+  var nimfunc = cast[ptr QSplittercloseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QCloseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_contextMenuEvent(self: QSplitter, event: gen_qevent.QContextMenuEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplittercontextMenuEvent*(self: gen_qsplitter_types.QSplitter, event: gen_qevent.QContextMenuEvent): void =
 
   fQSplitter_virtualbase_contextMenuEvent(self.h, event.h)
 
-type QSplittercontextMenuEventBase* = proc(event: gen_qevent.QContextMenuEvent): void
-proc oncontextMenuEvent*(self: QSplitter, slot: proc(super: QSplittercontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void) =
+type QSplittercontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
+proc oncontextMenuEvent*(self: gen_qsplitter_types.QSplitter, slot: QSplittercontextMenuEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplittercontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var tmp = new Cb
+  var tmp = new QSplittercontextMenuEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitter_override_virtual_contextMenuEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitter_contextMenuEvent(self: ptr cQSplitter, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplitter_contextMenuEvent ".} =
-  type Cb = proc(super: QSplittercontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QContextMenuEvent): auto =
-    callVirtualBase_contextMenuEvent(QSplitter(h: self), event)
+  var nimfunc = cast[ptr QSplittercontextMenuEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QContextMenuEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_tabletEvent(self: QSplitter, event: gen_qevent.QTabletEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplittertabletEvent*(self: gen_qsplitter_types.QSplitter, event: gen_qevent.QTabletEvent): void =
 
   fQSplitter_virtualbase_tabletEvent(self.h, event.h)
 
-type QSplittertabletEventBase* = proc(event: gen_qevent.QTabletEvent): void
-proc ontabletEvent*(self: QSplitter, slot: proc(super: QSplittertabletEventBase, event: gen_qevent.QTabletEvent): void) =
+type QSplittertabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
+proc ontabletEvent*(self: gen_qsplitter_types.QSplitter, slot: QSplittertabletEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplittertabletEventBase, event: gen_qevent.QTabletEvent): void
-  var tmp = new Cb
+  var tmp = new QSplittertabletEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitter_override_virtual_tabletEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitter_tabletEvent(self: ptr cQSplitter, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplitter_tabletEvent ".} =
-  type Cb = proc(super: QSplittertabletEventBase, event: gen_qevent.QTabletEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QTabletEvent): auto =
-    callVirtualBase_tabletEvent(QSplitter(h: self), event)
+  var nimfunc = cast[ptr QSplittertabletEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QTabletEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_actionEvent(self: QSplitter, event: gen_qevent.QActionEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplitteractionEvent*(self: gen_qsplitter_types.QSplitter, event: gen_qevent.QActionEvent): void =
 
   fQSplitter_virtualbase_actionEvent(self.h, event.h)
 
-type QSplitteractionEventBase* = proc(event: gen_qevent.QActionEvent): void
-proc onactionEvent*(self: QSplitter, slot: proc(super: QSplitteractionEventBase, event: gen_qevent.QActionEvent): void) =
+type QSplitteractionEventProc* = proc(event: gen_qevent.QActionEvent): void
+proc onactionEvent*(self: gen_qsplitter_types.QSplitter, slot: QSplitteractionEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitteractionEventBase, event: gen_qevent.QActionEvent): void
-  var tmp = new Cb
+  var tmp = new QSplitteractionEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitter_override_virtual_actionEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitter_actionEvent(self: ptr cQSplitter, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplitter_actionEvent ".} =
-  type Cb = proc(super: QSplitteractionEventBase, event: gen_qevent.QActionEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QActionEvent): auto =
-    callVirtualBase_actionEvent(QSplitter(h: self), event)
+  var nimfunc = cast[ptr QSplitteractionEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QActionEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragEnterEvent(self: QSplitter, event: gen_qevent.QDragEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplitterdragEnterEvent*(self: gen_qsplitter_types.QSplitter, event: gen_qevent.QDragEnterEvent): void =
 
   fQSplitter_virtualbase_dragEnterEvent(self.h, event.h)
 
-type QSplitterdragEnterEventBase* = proc(event: gen_qevent.QDragEnterEvent): void
-proc ondragEnterEvent*(self: QSplitter, slot: proc(super: QSplitterdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void) =
+type QSplitterdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
+proc ondragEnterEvent*(self: gen_qsplitter_types.QSplitter, slot: QSplitterdragEnterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QSplitterdragEnterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitter_override_virtual_dragEnterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitter_dragEnterEvent(self: ptr cQSplitter, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplitter_dragEnterEvent ".} =
-  type Cb = proc(super: QSplitterdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragEnterEvent): auto =
-    callVirtualBase_dragEnterEvent(QSplitter(h: self), event)
+  var nimfunc = cast[ptr QSplitterdragEnterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragMoveEvent(self: QSplitter, event: gen_qevent.QDragMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplitterdragMoveEvent*(self: gen_qsplitter_types.QSplitter, event: gen_qevent.QDragMoveEvent): void =
 
   fQSplitter_virtualbase_dragMoveEvent(self.h, event.h)
 
-type QSplitterdragMoveEventBase* = proc(event: gen_qevent.QDragMoveEvent): void
-proc ondragMoveEvent*(self: QSplitter, slot: proc(super: QSplitterdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void) =
+type QSplitterdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
+proc ondragMoveEvent*(self: gen_qsplitter_types.QSplitter, slot: QSplitterdragMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QSplitterdragMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitter_override_virtual_dragMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitter_dragMoveEvent(self: ptr cQSplitter, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplitter_dragMoveEvent ".} =
-  type Cb = proc(super: QSplitterdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragMoveEvent): auto =
-    callVirtualBase_dragMoveEvent(QSplitter(h: self), event)
+  var nimfunc = cast[ptr QSplitterdragMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragLeaveEvent(self: QSplitter, event: gen_qevent.QDragLeaveEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplitterdragLeaveEvent*(self: gen_qsplitter_types.QSplitter, event: gen_qevent.QDragLeaveEvent): void =
 
   fQSplitter_virtualbase_dragLeaveEvent(self.h, event.h)
 
-type QSplitterdragLeaveEventBase* = proc(event: gen_qevent.QDragLeaveEvent): void
-proc ondragLeaveEvent*(self: QSplitter, slot: proc(super: QSplitterdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void) =
+type QSplitterdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
+proc ondragLeaveEvent*(self: gen_qsplitter_types.QSplitter, slot: QSplitterdragLeaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var tmp = new Cb
+  var tmp = new QSplitterdragLeaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitter_override_virtual_dragLeaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitter_dragLeaveEvent(self: ptr cQSplitter, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplitter_dragLeaveEvent ".} =
-  type Cb = proc(super: QSplitterdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragLeaveEvent): auto =
-    callVirtualBase_dragLeaveEvent(QSplitter(h: self), event)
+  var nimfunc = cast[ptr QSplitterdragLeaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragLeaveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dropEvent(self: QSplitter, event: gen_qevent.QDropEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplitterdropEvent*(self: gen_qsplitter_types.QSplitter, event: gen_qevent.QDropEvent): void =
 
   fQSplitter_virtualbase_dropEvent(self.h, event.h)
 
-type QSplitterdropEventBase* = proc(event: gen_qevent.QDropEvent): void
-proc ondropEvent*(self: QSplitter, slot: proc(super: QSplitterdropEventBase, event: gen_qevent.QDropEvent): void) =
+type QSplitterdropEventProc* = proc(event: gen_qevent.QDropEvent): void
+proc ondropEvent*(self: gen_qsplitter_types.QSplitter, slot: QSplitterdropEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterdropEventBase, event: gen_qevent.QDropEvent): void
-  var tmp = new Cb
+  var tmp = new QSplitterdropEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitter_override_virtual_dropEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitter_dropEvent(self: ptr cQSplitter, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplitter_dropEvent ".} =
-  type Cb = proc(super: QSplitterdropEventBase, event: gen_qevent.QDropEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDropEvent): auto =
-    callVirtualBase_dropEvent(QSplitter(h: self), event)
+  var nimfunc = cast[ptr QSplitterdropEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDropEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_showEvent(self: QSplitter, event: gen_qevent.QShowEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplittershowEvent*(self: gen_qsplitter_types.QSplitter, event: gen_qevent.QShowEvent): void =
 
   fQSplitter_virtualbase_showEvent(self.h, event.h)
 
-type QSplittershowEventBase* = proc(event: gen_qevent.QShowEvent): void
-proc onshowEvent*(self: QSplitter, slot: proc(super: QSplittershowEventBase, event: gen_qevent.QShowEvent): void) =
+type QSplittershowEventProc* = proc(event: gen_qevent.QShowEvent): void
+proc onshowEvent*(self: gen_qsplitter_types.QSplitter, slot: QSplittershowEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplittershowEventBase, event: gen_qevent.QShowEvent): void
-  var tmp = new Cb
+  var tmp = new QSplittershowEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitter_override_virtual_showEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitter_showEvent(self: ptr cQSplitter, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplitter_showEvent ".} =
-  type Cb = proc(super: QSplittershowEventBase, event: gen_qevent.QShowEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QShowEvent): auto =
-    callVirtualBase_showEvent(QSplitter(h: self), event)
+  var nimfunc = cast[ptr QSplittershowEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QShowEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hideEvent(self: QSplitter, event: gen_qevent.QHideEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplitterhideEvent*(self: gen_qsplitter_types.QSplitter, event: gen_qevent.QHideEvent): void =
 
   fQSplitter_virtualbase_hideEvent(self.h, event.h)
 
-type QSplitterhideEventBase* = proc(event: gen_qevent.QHideEvent): void
-proc onhideEvent*(self: QSplitter, slot: proc(super: QSplitterhideEventBase, event: gen_qevent.QHideEvent): void) =
+type QSplitterhideEventProc* = proc(event: gen_qevent.QHideEvent): void
+proc onhideEvent*(self: gen_qsplitter_types.QSplitter, slot: QSplitterhideEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterhideEventBase, event: gen_qevent.QHideEvent): void
-  var tmp = new Cb
+  var tmp = new QSplitterhideEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitter_override_virtual_hideEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitter_hideEvent(self: ptr cQSplitter, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplitter_hideEvent ".} =
-  type Cb = proc(super: QSplitterhideEventBase, event: gen_qevent.QHideEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QHideEvent): auto =
-    callVirtualBase_hideEvent(QSplitter(h: self), event)
+  var nimfunc = cast[ptr QSplitterhideEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QHideEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_nativeEvent(self: QSplitter, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
-
+  nimfunc[](slotval1)
+proc QSplitternativeEvent*(self: gen_qsplitter_types.QSplitter, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
 
   fQSplitter_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
-type QSplitternativeEventBase* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-proc onnativeEvent*(self: QSplitter, slot: proc(super: QSplitternativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool) =
+type QSplitternativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
+proc onnativeEvent*(self: gen_qsplitter_types.QSplitter, slot: QSplitternativeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitternativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-  var tmp = new Cb
+  var tmp = new QSplitternativeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitter_override_virtual_nativeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitter_nativeEvent(self: ptr cQSplitter, slot: int, eventType: struct_miqt_string, message: pointer, resultVal: ptr uint): bool {.exportc: "miqt_exec_callback_QSplitter_nativeEvent ".} =
-  type Cb = proc(super: QSplitternativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(eventType: seq[byte], message: pointer, resultVal: ptr uint): auto =
-    callVirtualBase_nativeEvent(QSplitter(h: self), eventType, message, resultVal)
+  var nimfunc = cast[ptr QSplitternativeEventProc](cast[pointer](slot))
   var veventType_bytearray = eventType
   var veventTypex_ret = @(toOpenArrayByte(veventType_bytearray.data, 0, int(veventType_bytearray.len)-1))
   c_free(veventType_bytearray.data)
@@ -1459,1196 +1257,956 @@ proc miqt_exec_callback_QSplitter_nativeEvent(self: ptr cQSplitter, slot: int, e
   let slotval3 = resultVal
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_metric(self: QSplitter, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint =
-
+proc QSplittermetric*(self: gen_qsplitter_types.QSplitter, param1: cint): cint =
 
   fQSplitter_virtualbase_metric(self.h, cint(param1))
 
-type QSplittermetricBase* = proc(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-proc onmetric*(self: QSplitter, slot: proc(super: QSplittermetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint) =
+type QSplittermetricProc* = proc(param1: cint): cint
+proc onmetric*(self: gen_qsplitter_types.QSplitter, slot: QSplittermetricProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplittermetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var tmp = new Cb
+  var tmp = new QSplittermetricProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitter_override_virtual_metric(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitter_metric(self: ptr cQSplitter, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QSplitter_metric ".} =
-  type Cb = proc(super: QSplittermetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): auto =
-    callVirtualBase_metric(QSplitter(h: self), param1)
-  let slotval1 = gen_qpaintdevice.QPaintDevicePaintDeviceMetric(param1)
+  var nimfunc = cast[ptr QSplittermetricProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_initPainter(self: QSplitter, painter: gen_qpainter.QPainter): void =
-
+proc QSplitterinitPainter*(self: gen_qsplitter_types.QSplitter, painter: gen_qpainter.QPainter): void =
 
   fQSplitter_virtualbase_initPainter(self.h, painter.h)
 
-type QSplitterinitPainterBase* = proc(painter: gen_qpainter.QPainter): void
-proc oninitPainter*(self: QSplitter, slot: proc(super: QSplitterinitPainterBase, painter: gen_qpainter.QPainter): void) =
+type QSplitterinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
+proc oninitPainter*(self: gen_qsplitter_types.QSplitter, slot: QSplitterinitPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterinitPainterBase, painter: gen_qpainter.QPainter): void
-  var tmp = new Cb
+  var tmp = new QSplitterinitPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitter_override_virtual_initPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitter_initPainter(self: ptr cQSplitter, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_QSplitter_initPainter ".} =
-  type Cb = proc(super: QSplitterinitPainterBase, painter: gen_qpainter.QPainter): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter): auto =
-    callVirtualBase_initPainter(QSplitter(h: self), painter)
+  var nimfunc = cast[ptr QSplitterinitPainterProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_redirected(self: QSplitter, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
+  nimfunc[](slotval1)
+proc QSplitterredirected*(self: gen_qsplitter_types.QSplitter, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
 
   gen_qpaintdevice.QPaintDevice(h: fQSplitter_virtualbase_redirected(self.h, offset.h))
 
-type QSplitterredirectedBase* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-proc onredirected*(self: QSplitter, slot: proc(super: QSplitterredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice) =
+type QSplitterredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
+proc onredirected*(self: gen_qsplitter_types.QSplitter, slot: QSplitterredirectedProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var tmp = new Cb
+  var tmp = new QSplitterredirectedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitter_override_virtual_redirected(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitter_redirected(self: ptr cQSplitter, slot: int, offset: pointer): pointer {.exportc: "miqt_exec_callback_QSplitter_redirected ".} =
-  type Cb = proc(super: QSplitterredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(offset: gen_qpoint.QPoint): auto =
-    callVirtualBase_redirected(QSplitter(h: self), offset)
+  var nimfunc = cast[ptr QSplitterredirectedProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: offset)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_sharedPainter(self: QSplitter, ): gen_qpainter.QPainter =
-
+proc QSplittersharedPainter*(self: gen_qsplitter_types.QSplitter, ): gen_qpainter.QPainter =
 
   gen_qpainter.QPainter(h: fQSplitter_virtualbase_sharedPainter(self.h))
 
-type QSplittersharedPainterBase* = proc(): gen_qpainter.QPainter
-proc onsharedPainter*(self: QSplitter, slot: proc(super: QSplittersharedPainterBase): gen_qpainter.QPainter) =
+type QSplittersharedPainterProc* = proc(): gen_qpainter.QPainter
+proc onsharedPainter*(self: gen_qsplitter_types.QSplitter, slot: QSplittersharedPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplittersharedPainterBase): gen_qpainter.QPainter
-  var tmp = new Cb
+  var tmp = new QSplittersharedPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitter_override_virtual_sharedPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitter_sharedPainter(self: ptr cQSplitter, slot: int): pointer {.exportc: "miqt_exec_callback_QSplitter_sharedPainter ".} =
-  type Cb = proc(super: QSplittersharedPainterBase): gen_qpainter.QPainter
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sharedPainter(QSplitter(h: self), )
+  var nimfunc = cast[ptr QSplittersharedPainterProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_inputMethodEvent(self: QSplitter, param1: gen_qevent.QInputMethodEvent): void =
-
+proc QSplitterinputMethodEvent*(self: gen_qsplitter_types.QSplitter, param1: gen_qevent.QInputMethodEvent): void =
 
   fQSplitter_virtualbase_inputMethodEvent(self.h, param1.h)
 
-type QSplitterinputMethodEventBase* = proc(param1: gen_qevent.QInputMethodEvent): void
-proc oninputMethodEvent*(self: QSplitter, slot: proc(super: QSplitterinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void) =
+type QSplitterinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
+proc oninputMethodEvent*(self: gen_qsplitter_types.QSplitter, slot: QSplitterinputMethodEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var tmp = new Cb
+  var tmp = new QSplitterinputMethodEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitter_override_virtual_inputMethodEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitter_inputMethodEvent(self: ptr cQSplitter, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QSplitter_inputMethodEvent ".} =
-  type Cb = proc(super: QSplitterinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QInputMethodEvent): auto =
-    callVirtualBase_inputMethodEvent(QSplitter(h: self), param1)
+  var nimfunc = cast[ptr QSplitterinputMethodEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QInputMethodEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_inputMethodQuery(self: QSplitter, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant =
-
+  nimfunc[](slotval1)
+proc QSplitterinputMethodQuery*(self: gen_qsplitter_types.QSplitter, param1: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQSplitter_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
-type QSplitterinputMethodQueryBase* = proc(param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-proc oninputMethodQuery*(self: QSplitter, slot: proc(super: QSplitterinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant) =
+type QSplitterinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
+proc oninputMethodQuery*(self: gen_qsplitter_types.QSplitter, slot: QSplitterinputMethodQueryProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QSplitterinputMethodQueryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitter_override_virtual_inputMethodQuery(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitter_inputMethodQuery(self: ptr cQSplitter, slot: int, param1: cint): pointer {.exportc: "miqt_exec_callback_QSplitter_inputMethodQuery ".} =
-  type Cb = proc(super: QSplitterinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qnamespace.InputMethodQuery): auto =
-    callVirtualBase_inputMethodQuery(QSplitter(h: self), param1)
-  let slotval1 = gen_qnamespace.InputMethodQuery(param1)
+  var nimfunc = cast[ptr QSplitterinputMethodQueryProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_focusNextPrevChild(self: QSplitter, next: bool): bool =
-
+proc QSplitterfocusNextPrevChild*(self: gen_qsplitter_types.QSplitter, next: bool): bool =
 
   fQSplitter_virtualbase_focusNextPrevChild(self.h, next)
 
-type QSplitterfocusNextPrevChildBase* = proc(next: bool): bool
-proc onfocusNextPrevChild*(self: QSplitter, slot: proc(super: QSplitterfocusNextPrevChildBase, next: bool): bool) =
+type QSplitterfocusNextPrevChildProc* = proc(next: bool): bool
+proc onfocusNextPrevChild*(self: gen_qsplitter_types.QSplitter, slot: QSplitterfocusNextPrevChildProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterfocusNextPrevChildBase, next: bool): bool
-  var tmp = new Cb
+  var tmp = new QSplitterfocusNextPrevChildProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitter_override_virtual_focusNextPrevChild(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitter_focusNextPrevChild(self: ptr cQSplitter, slot: int, next: bool): bool {.exportc: "miqt_exec_callback_QSplitter_focusNextPrevChild ".} =
-  type Cb = proc(super: QSplitterfocusNextPrevChildBase, next: bool): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(next: bool): auto =
-    callVirtualBase_focusNextPrevChild(QSplitter(h: self), next)
+  var nimfunc = cast[ptr QSplitterfocusNextPrevChildProc](cast[pointer](slot))
   let slotval1 = next
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QSplitter, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QSplittereventFilter*(self: gen_qsplitter_types.QSplitter, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQSplitter_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QSplittereventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QSplitter, slot: proc(super: QSplittereventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QSplittereventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qsplitter_types.QSplitter, slot: QSplittereventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplittereventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QSplittereventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitter_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitter_eventFilter(self: ptr cQSplitter, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QSplitter_eventFilter ".} =
-  type Cb = proc(super: QSplittereventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QSplitter(h: self), watched, event)
+  var nimfunc = cast[ptr QSplittereventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QSplitter, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QSplittertimerEvent*(self: gen_qsplitter_types.QSplitter, event: gen_qcoreevent.QTimerEvent): void =
 
   fQSplitter_virtualbase_timerEvent(self.h, event.h)
 
-type QSplittertimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QSplitter, slot: proc(super: QSplittertimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QSplittertimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qsplitter_types.QSplitter, slot: QSplittertimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplittertimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QSplittertimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitter_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitter_timerEvent(self: ptr cQSplitter, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplitter_timerEvent ".} =
-  type Cb = proc(super: QSplittertimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QSplitter(h: self), event)
+  var nimfunc = cast[ptr QSplittertimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QSplitter, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplittercustomEvent*(self: gen_qsplitter_types.QSplitter, event: gen_qcoreevent.QEvent): void =
 
   fQSplitter_virtualbase_customEvent(self.h, event.h)
 
-type QSplittercustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QSplitter, slot: proc(super: QSplittercustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QSplittercustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qsplitter_types.QSplitter, slot: QSplittercustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplittercustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QSplittercustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitter_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitter_customEvent(self: ptr cQSplitter, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplitter_customEvent ".} =
-  type Cb = proc(super: QSplittercustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QSplitter(h: self), event)
+  var nimfunc = cast[ptr QSplittercustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QSplitter, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QSplitterconnectNotify*(self: gen_qsplitter_types.QSplitter, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQSplitter_virtualbase_connectNotify(self.h, signal.h)
 
-type QSplitterconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QSplitter, slot: proc(super: QSplitterconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QSplitterconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qsplitter_types.QSplitter, slot: QSplitterconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QSplitterconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitter_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitter_connectNotify(self: ptr cQSplitter, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QSplitter_connectNotify ".} =
-  type Cb = proc(super: QSplitterconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QSplitter(h: self), signal)
+  var nimfunc = cast[ptr QSplitterconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QSplitter, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QSplitterdisconnectNotify*(self: gen_qsplitter_types.QSplitter, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQSplitter_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QSplitterdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QSplitter, slot: proc(super: QSplitterdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QSplitterdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qsplitter_types.QSplitter, slot: QSplitterdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QSplitterdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitter_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitter_disconnectNotify(self: ptr cQSplitter, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QSplitter_disconnectNotify ".} =
-  type Cb = proc(super: QSplitterdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QSplitter(h: self), signal)
+  var nimfunc = cast[ptr QSplitterdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QSplitter): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qsplitter_types.QSplitter): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQSplitter_staticMetaObject())
-proc delete*(self: QSplitter) =
+proc delete*(self: gen_qsplitter_types.QSplitter) =
   fcQSplitter_delete(self.h)
 
-func init*(T: type QSplitterHandle, h: ptr cQSplitterHandle): QSplitterHandle =
+func init*(T: type gen_qsplitter_types.QSplitterHandle, h: ptr cQSplitterHandle): gen_qsplitter_types.QSplitterHandle =
   T(h: h)
-proc create*(T: type QSplitterHandle, o: gen_qnamespace.Orientation, parent: QSplitter): QSplitterHandle =
+proc create*(T: type gen_qsplitter_types.QSplitterHandle, o: cint, parent: gen_qsplitter_types.QSplitter): gen_qsplitter_types.QSplitterHandle =
 
-  QSplitterHandle.init(fcQSplitterHandle_new(cint(o), parent.h))
-proc metaObject*(self: QSplitterHandle, ): gen_qobjectdefs.QMetaObject =
+  gen_qsplitter_types.QSplitterHandle.init(fcQSplitterHandle_new(cint(o), parent.h))
+proc metaObject*(self: gen_qsplitter_types.QSplitterHandle, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQSplitterHandle_metaObject(self.h))
 
-proc metacast*(self: QSplitterHandle, param1: cstring): pointer =
+proc metacast*(self: gen_qsplitter_types.QSplitterHandle, param1: cstring): pointer =
 
   fcQSplitterHandle_metacast(self.h, param1)
 
-proc metacall*(self: QSplitterHandle, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qsplitter_types.QSplitterHandle, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQSplitterHandle_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QSplitterHandle, s: cstring): string =
+proc tr*(_: type gen_qsplitter_types.QSplitterHandle, s: cstring): string =
 
   let v_ms = fcQSplitterHandle_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setOrientation*(self: QSplitterHandle, o: gen_qnamespace.Orientation): void =
+proc setOrientation*(self: gen_qsplitter_types.QSplitterHandle, o: cint): void =
 
   fcQSplitterHandle_setOrientation(self.h, cint(o))
 
-proc orientation*(self: QSplitterHandle, ): gen_qnamespace.Orientation =
+proc orientation*(self: gen_qsplitter_types.QSplitterHandle, ): cint =
 
-  gen_qnamespace.Orientation(fcQSplitterHandle_orientation(self.h))
+  cint(fcQSplitterHandle_orientation(self.h))
 
-proc opaqueResize*(self: QSplitterHandle, ): bool =
+proc opaqueResize*(self: gen_qsplitter_types.QSplitterHandle, ): bool =
 
   fcQSplitterHandle_opaqueResize(self.h)
 
-proc splitter*(self: QSplitterHandle, ): QSplitter =
+proc splitter*(self: gen_qsplitter_types.QSplitterHandle, ): gen_qsplitter_types.QSplitter =
 
-  QSplitter(h: fcQSplitterHandle_splitter(self.h))
+  gen_qsplitter_types.QSplitter(h: fcQSplitterHandle_splitter(self.h))
 
-proc sizeHint*(self: QSplitterHandle, ): gen_qsize.QSize =
+proc sizeHint*(self: gen_qsplitter_types.QSplitterHandle, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQSplitterHandle_sizeHint(self.h))
 
-proc tr2*(_: type QSplitterHandle, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qsplitter_types.QSplitterHandle, s: cstring, c: cstring): string =
 
   let v_ms = fcQSplitterHandle_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QSplitterHandle, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qsplitter_types.QSplitterHandle, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQSplitterHandle_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QSplitterHandle, ): gen_qobjectdefs.QMetaObject =
-
+proc QSplitterHandlemetaObject*(self: gen_qsplitter_types.QSplitterHandle, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQSplitterHandle_virtualbase_metaObject(self.h))
 
-type QSplitterHandlemetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QSplitterHandle, slot: proc(super: QSplitterHandlemetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QSplitterHandlemetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qsplitter_types.QSplitterHandle, slot: QSplitterHandlemetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterHandlemetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QSplitterHandlemetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitterHandle_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitterHandle_metaObject(self: ptr cQSplitterHandle, slot: int): pointer {.exportc: "miqt_exec_callback_QSplitterHandle_metaObject ".} =
-  type Cb = proc(super: QSplitterHandlemetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QSplitterHandle(h: self), )
+  var nimfunc = cast[ptr QSplitterHandlemetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QSplitterHandle, param1: cstring): pointer =
-
+proc QSplitterHandlemetacast*(self: gen_qsplitter_types.QSplitterHandle, param1: cstring): pointer =
 
   fQSplitterHandle_virtualbase_metacast(self.h, param1)
 
-type QSplitterHandlemetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QSplitterHandle, slot: proc(super: QSplitterHandlemetacastBase, param1: cstring): pointer) =
+type QSplitterHandlemetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qsplitter_types.QSplitterHandle, slot: QSplitterHandlemetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterHandlemetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QSplitterHandlemetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitterHandle_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitterHandle_metacast(self: ptr cQSplitterHandle, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QSplitterHandle_metacast ".} =
-  type Cb = proc(super: QSplitterHandlemetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QSplitterHandle(h: self), param1)
+  var nimfunc = cast[ptr QSplitterHandlemetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QSplitterHandle, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QSplitterHandlemetacall*(self: gen_qsplitter_types.QSplitterHandle, param1: cint, param2: cint, param3: pointer): cint =
 
   fQSplitterHandle_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QSplitterHandlemetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QSplitterHandle, slot: proc(super: QSplitterHandlemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QSplitterHandlemetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qsplitter_types.QSplitterHandle, slot: QSplitterHandlemetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterHandlemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QSplitterHandlemetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitterHandle_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitterHandle_metacall(self: ptr cQSplitterHandle, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QSplitterHandle_metacall ".} =
-  type Cb = proc(super: QSplitterHandlemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QSplitterHandle(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QSplitterHandlemetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_sizeHint(self: QSplitterHandle, ): gen_qsize.QSize =
-
+proc QSplitterHandlesizeHint*(self: gen_qsplitter_types.QSplitterHandle, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQSplitterHandle_virtualbase_sizeHint(self.h))
 
-type QSplitterHandlesizeHintBase* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: QSplitterHandle, slot: proc(super: QSplitterHandlesizeHintBase): gen_qsize.QSize) =
+type QSplitterHandlesizeHintProc* = proc(): gen_qsize.QSize
+proc onsizeHint*(self: gen_qsplitter_types.QSplitterHandle, slot: QSplitterHandlesizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterHandlesizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QSplitterHandlesizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitterHandle_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitterHandle_sizeHint(self: ptr cQSplitterHandle, slot: int): pointer {.exportc: "miqt_exec_callback_QSplitterHandle_sizeHint ".} =
-  type Cb = proc(super: QSplitterHandlesizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sizeHint(QSplitterHandle(h: self), )
+  var nimfunc = cast[ptr QSplitterHandlesizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_paintEvent(self: QSplitterHandle, param1: gen_qevent.QPaintEvent): void =
-
+proc QSplitterHandlepaintEvent*(self: gen_qsplitter_types.QSplitterHandle, param1: gen_qevent.QPaintEvent): void =
 
   fQSplitterHandle_virtualbase_paintEvent(self.h, param1.h)
 
-type QSplitterHandlepaintEventBase* = proc(param1: gen_qevent.QPaintEvent): void
-proc onpaintEvent*(self: QSplitterHandle, slot: proc(super: QSplitterHandlepaintEventBase, param1: gen_qevent.QPaintEvent): void) =
+type QSplitterHandlepaintEventProc* = proc(param1: gen_qevent.QPaintEvent): void
+proc onpaintEvent*(self: gen_qsplitter_types.QSplitterHandle, slot: QSplitterHandlepaintEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterHandlepaintEventBase, param1: gen_qevent.QPaintEvent): void
-  var tmp = new Cb
+  var tmp = new QSplitterHandlepaintEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitterHandle_override_virtual_paintEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitterHandle_paintEvent(self: ptr cQSplitterHandle, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QSplitterHandle_paintEvent ".} =
-  type Cb = proc(super: QSplitterHandlepaintEventBase, param1: gen_qevent.QPaintEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QPaintEvent): auto =
-    callVirtualBase_paintEvent(QSplitterHandle(h: self), param1)
+  var nimfunc = cast[ptr QSplitterHandlepaintEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QPaintEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseMoveEvent(self: QSplitterHandle, param1: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplitterHandlemouseMoveEvent*(self: gen_qsplitter_types.QSplitterHandle, param1: gen_qevent.QMouseEvent): void =
 
   fQSplitterHandle_virtualbase_mouseMoveEvent(self.h, param1.h)
 
-type QSplitterHandlemouseMoveEventBase* = proc(param1: gen_qevent.QMouseEvent): void
-proc onmouseMoveEvent*(self: QSplitterHandle, slot: proc(super: QSplitterHandlemouseMoveEventBase, param1: gen_qevent.QMouseEvent): void) =
+type QSplitterHandlemouseMoveEventProc* = proc(param1: gen_qevent.QMouseEvent): void
+proc onmouseMoveEvent*(self: gen_qsplitter_types.QSplitterHandle, slot: QSplitterHandlemouseMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterHandlemouseMoveEventBase, param1: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QSplitterHandlemouseMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitterHandle_override_virtual_mouseMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitterHandle_mouseMoveEvent(self: ptr cQSplitterHandle, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QSplitterHandle_mouseMoveEvent ".} =
-  type Cb = proc(super: QSplitterHandlemouseMoveEventBase, param1: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseMoveEvent(QSplitterHandle(h: self), param1)
+  var nimfunc = cast[ptr QSplitterHandlemouseMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mousePressEvent(self: QSplitterHandle, param1: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplitterHandlemousePressEvent*(self: gen_qsplitter_types.QSplitterHandle, param1: gen_qevent.QMouseEvent): void =
 
   fQSplitterHandle_virtualbase_mousePressEvent(self.h, param1.h)
 
-type QSplitterHandlemousePressEventBase* = proc(param1: gen_qevent.QMouseEvent): void
-proc onmousePressEvent*(self: QSplitterHandle, slot: proc(super: QSplitterHandlemousePressEventBase, param1: gen_qevent.QMouseEvent): void) =
+type QSplitterHandlemousePressEventProc* = proc(param1: gen_qevent.QMouseEvent): void
+proc onmousePressEvent*(self: gen_qsplitter_types.QSplitterHandle, slot: QSplitterHandlemousePressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterHandlemousePressEventBase, param1: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QSplitterHandlemousePressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitterHandle_override_virtual_mousePressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitterHandle_mousePressEvent(self: ptr cQSplitterHandle, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QSplitterHandle_mousePressEvent ".} =
-  type Cb = proc(super: QSplitterHandlemousePressEventBase, param1: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mousePressEvent(QSplitterHandle(h: self), param1)
+  var nimfunc = cast[ptr QSplitterHandlemousePressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseReleaseEvent(self: QSplitterHandle, param1: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplitterHandlemouseReleaseEvent*(self: gen_qsplitter_types.QSplitterHandle, param1: gen_qevent.QMouseEvent): void =
 
   fQSplitterHandle_virtualbase_mouseReleaseEvent(self.h, param1.h)
 
-type QSplitterHandlemouseReleaseEventBase* = proc(param1: gen_qevent.QMouseEvent): void
-proc onmouseReleaseEvent*(self: QSplitterHandle, slot: proc(super: QSplitterHandlemouseReleaseEventBase, param1: gen_qevent.QMouseEvent): void) =
+type QSplitterHandlemouseReleaseEventProc* = proc(param1: gen_qevent.QMouseEvent): void
+proc onmouseReleaseEvent*(self: gen_qsplitter_types.QSplitterHandle, slot: QSplitterHandlemouseReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterHandlemouseReleaseEventBase, param1: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QSplitterHandlemouseReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitterHandle_override_virtual_mouseReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitterHandle_mouseReleaseEvent(self: ptr cQSplitterHandle, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QSplitterHandle_mouseReleaseEvent ".} =
-  type Cb = proc(super: QSplitterHandlemouseReleaseEventBase, param1: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseReleaseEvent(QSplitterHandle(h: self), param1)
+  var nimfunc = cast[ptr QSplitterHandlemouseReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_resizeEvent(self: QSplitterHandle, param1: gen_qevent.QResizeEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplitterHandleresizeEvent*(self: gen_qsplitter_types.QSplitterHandle, param1: gen_qevent.QResizeEvent): void =
 
   fQSplitterHandle_virtualbase_resizeEvent(self.h, param1.h)
 
-type QSplitterHandleresizeEventBase* = proc(param1: gen_qevent.QResizeEvent): void
-proc onresizeEvent*(self: QSplitterHandle, slot: proc(super: QSplitterHandleresizeEventBase, param1: gen_qevent.QResizeEvent): void) =
+type QSplitterHandleresizeEventProc* = proc(param1: gen_qevent.QResizeEvent): void
+proc onresizeEvent*(self: gen_qsplitter_types.QSplitterHandle, slot: QSplitterHandleresizeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterHandleresizeEventBase, param1: gen_qevent.QResizeEvent): void
-  var tmp = new Cb
+  var tmp = new QSplitterHandleresizeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitterHandle_override_virtual_resizeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitterHandle_resizeEvent(self: ptr cQSplitterHandle, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QSplitterHandle_resizeEvent ".} =
-  type Cb = proc(super: QSplitterHandleresizeEventBase, param1: gen_qevent.QResizeEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QResizeEvent): auto =
-    callVirtualBase_resizeEvent(QSplitterHandle(h: self), param1)
+  var nimfunc = cast[ptr QSplitterHandleresizeEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QResizeEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_event(self: QSplitterHandle, param1: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[](slotval1)
+proc QSplitterHandleevent*(self: gen_qsplitter_types.QSplitterHandle, param1: gen_qcoreevent.QEvent): bool =
 
   fQSplitterHandle_virtualbase_event(self.h, param1.h)
 
-type QSplitterHandleeventBase* = proc(param1: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QSplitterHandle, slot: proc(super: QSplitterHandleeventBase, param1: gen_qcoreevent.QEvent): bool) =
+type QSplitterHandleeventProc* = proc(param1: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qsplitter_types.QSplitterHandle, slot: QSplitterHandleeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterHandleeventBase, param1: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QSplitterHandleeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitterHandle_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitterHandle_event(self: ptr cQSplitterHandle, slot: int, param1: pointer): bool {.exportc: "miqt_exec_callback_QSplitterHandle_event ".} =
-  type Cb = proc(super: QSplitterHandleeventBase, param1: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QSplitterHandle(h: self), param1)
+  var nimfunc = cast[ptr QSplitterHandleeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_devType(self: QSplitterHandle, ): cint =
-
+proc QSplitterHandledevType*(self: gen_qsplitter_types.QSplitterHandle, ): cint =
 
   fQSplitterHandle_virtualbase_devType(self.h)
 
-type QSplitterHandledevTypeBase* = proc(): cint
-proc ondevType*(self: QSplitterHandle, slot: proc(super: QSplitterHandledevTypeBase): cint) =
+type QSplitterHandledevTypeProc* = proc(): cint
+proc ondevType*(self: gen_qsplitter_types.QSplitterHandle, slot: QSplitterHandledevTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterHandledevTypeBase): cint
-  var tmp = new Cb
+  var tmp = new QSplitterHandledevTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitterHandle_override_virtual_devType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitterHandle_devType(self: ptr cQSplitterHandle, slot: int): cint {.exportc: "miqt_exec_callback_QSplitterHandle_devType ".} =
-  type Cb = proc(super: QSplitterHandledevTypeBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_devType(QSplitterHandle(h: self), )
+  var nimfunc = cast[ptr QSplitterHandledevTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setVisible(self: QSplitterHandle, visible: bool): void =
-
+proc QSplitterHandlesetVisible*(self: gen_qsplitter_types.QSplitterHandle, visible: bool): void =
 
   fQSplitterHandle_virtualbase_setVisible(self.h, visible)
 
-type QSplitterHandlesetVisibleBase* = proc(visible: bool): void
-proc onsetVisible*(self: QSplitterHandle, slot: proc(super: QSplitterHandlesetVisibleBase, visible: bool): void) =
+type QSplitterHandlesetVisibleProc* = proc(visible: bool): void
+proc onsetVisible*(self: gen_qsplitter_types.QSplitterHandle, slot: QSplitterHandlesetVisibleProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterHandlesetVisibleBase, visible: bool): void
-  var tmp = new Cb
+  var tmp = new QSplitterHandlesetVisibleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitterHandle_override_virtual_setVisible(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitterHandle_setVisible(self: ptr cQSplitterHandle, slot: int, visible: bool): void {.exportc: "miqt_exec_callback_QSplitterHandle_setVisible ".} =
-  type Cb = proc(super: QSplitterHandlesetVisibleBase, visible: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(visible: bool): auto =
-    callVirtualBase_setVisible(QSplitterHandle(h: self), visible)
+  var nimfunc = cast[ptr QSplitterHandlesetVisibleProc](cast[pointer](slot))
   let slotval1 = visible
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_minimumSizeHint(self: QSplitterHandle, ): gen_qsize.QSize =
-
+  nimfunc[](slotval1)
+proc QSplitterHandleminimumSizeHint*(self: gen_qsplitter_types.QSplitterHandle, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQSplitterHandle_virtualbase_minimumSizeHint(self.h))
 
-type QSplitterHandleminimumSizeHintBase* = proc(): gen_qsize.QSize
-proc onminimumSizeHint*(self: QSplitterHandle, slot: proc(super: QSplitterHandleminimumSizeHintBase): gen_qsize.QSize) =
+type QSplitterHandleminimumSizeHintProc* = proc(): gen_qsize.QSize
+proc onminimumSizeHint*(self: gen_qsplitter_types.QSplitterHandle, slot: QSplitterHandleminimumSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterHandleminimumSizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QSplitterHandleminimumSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitterHandle_override_virtual_minimumSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitterHandle_minimumSizeHint(self: ptr cQSplitterHandle, slot: int): pointer {.exportc: "miqt_exec_callback_QSplitterHandle_minimumSizeHint ".} =
-  type Cb = proc(super: QSplitterHandleminimumSizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_minimumSizeHint(QSplitterHandle(h: self), )
+  var nimfunc = cast[ptr QSplitterHandleminimumSizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_heightForWidth(self: QSplitterHandle, param1: cint): cint =
-
+proc QSplitterHandleheightForWidth*(self: gen_qsplitter_types.QSplitterHandle, param1: cint): cint =
 
   fQSplitterHandle_virtualbase_heightForWidth(self.h, param1)
 
-type QSplitterHandleheightForWidthBase* = proc(param1: cint): cint
-proc onheightForWidth*(self: QSplitterHandle, slot: proc(super: QSplitterHandleheightForWidthBase, param1: cint): cint) =
+type QSplitterHandleheightForWidthProc* = proc(param1: cint): cint
+proc onheightForWidth*(self: gen_qsplitter_types.QSplitterHandle, slot: QSplitterHandleheightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterHandleheightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QSplitterHandleheightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitterHandle_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitterHandle_heightForWidth(self: ptr cQSplitterHandle, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QSplitterHandle_heightForWidth ".} =
-  type Cb = proc(super: QSplitterHandleheightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_heightForWidth(QSplitterHandle(h: self), param1)
+  var nimfunc = cast[ptr QSplitterHandleheightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_hasHeightForWidth(self: QSplitterHandle, ): bool =
-
+proc QSplitterHandlehasHeightForWidth*(self: gen_qsplitter_types.QSplitterHandle, ): bool =
 
   fQSplitterHandle_virtualbase_hasHeightForWidth(self.h)
 
-type QSplitterHandlehasHeightForWidthBase* = proc(): bool
-proc onhasHeightForWidth*(self: QSplitterHandle, slot: proc(super: QSplitterHandlehasHeightForWidthBase): bool) =
+type QSplitterHandlehasHeightForWidthProc* = proc(): bool
+proc onhasHeightForWidth*(self: gen_qsplitter_types.QSplitterHandle, slot: QSplitterHandlehasHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterHandlehasHeightForWidthBase): bool
-  var tmp = new Cb
+  var tmp = new QSplitterHandlehasHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitterHandle_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitterHandle_hasHeightForWidth(self: ptr cQSplitterHandle, slot: int): bool {.exportc: "miqt_exec_callback_QSplitterHandle_hasHeightForWidth ".} =
-  type Cb = proc(super: QSplitterHandlehasHeightForWidthBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasHeightForWidth(QSplitterHandle(h: self), )
+  var nimfunc = cast[ptr QSplitterHandlehasHeightForWidthProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_paintEngine(self: QSplitterHandle, ): gen_qpaintengine.QPaintEngine =
-
+proc QSplitterHandlepaintEngine*(self: gen_qsplitter_types.QSplitterHandle, ): gen_qpaintengine.QPaintEngine =
 
   gen_qpaintengine.QPaintEngine(h: fQSplitterHandle_virtualbase_paintEngine(self.h))
 
-type QSplitterHandlepaintEngineBase* = proc(): gen_qpaintengine.QPaintEngine
-proc onpaintEngine*(self: QSplitterHandle, slot: proc(super: QSplitterHandlepaintEngineBase): gen_qpaintengine.QPaintEngine) =
+type QSplitterHandlepaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
+proc onpaintEngine*(self: gen_qsplitter_types.QSplitterHandle, slot: QSplitterHandlepaintEngineProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterHandlepaintEngineBase): gen_qpaintengine.QPaintEngine
-  var tmp = new Cb
+  var tmp = new QSplitterHandlepaintEngineProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitterHandle_override_virtual_paintEngine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitterHandle_paintEngine(self: ptr cQSplitterHandle, slot: int): pointer {.exportc: "miqt_exec_callback_QSplitterHandle_paintEngine ".} =
-  type Cb = proc(super: QSplitterHandlepaintEngineBase): gen_qpaintengine.QPaintEngine
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_paintEngine(QSplitterHandle(h: self), )
+  var nimfunc = cast[ptr QSplitterHandlepaintEngineProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_mouseDoubleClickEvent(self: QSplitterHandle, event: gen_qevent.QMouseEvent): void =
-
+proc QSplitterHandlemouseDoubleClickEvent*(self: gen_qsplitter_types.QSplitterHandle, event: gen_qevent.QMouseEvent): void =
 
   fQSplitterHandle_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
-type QSplitterHandlemouseDoubleClickEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseDoubleClickEvent*(self: QSplitterHandle, slot: proc(super: QSplitterHandlemouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void) =
+type QSplitterHandlemouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseDoubleClickEvent*(self: gen_qsplitter_types.QSplitterHandle, slot: QSplitterHandlemouseDoubleClickEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterHandlemouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QSplitterHandlemouseDoubleClickEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitterHandle_override_virtual_mouseDoubleClickEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitterHandle_mouseDoubleClickEvent(self: ptr cQSplitterHandle, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplitterHandle_mouseDoubleClickEvent ".} =
-  type Cb = proc(super: QSplitterHandlemouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseDoubleClickEvent(QSplitterHandle(h: self), event)
+  var nimfunc = cast[ptr QSplitterHandlemouseDoubleClickEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_wheelEvent(self: QSplitterHandle, event: gen_qevent.QWheelEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplitterHandlewheelEvent*(self: gen_qsplitter_types.QSplitterHandle, event: gen_qevent.QWheelEvent): void =
 
   fQSplitterHandle_virtualbase_wheelEvent(self.h, event.h)
 
-type QSplitterHandlewheelEventBase* = proc(event: gen_qevent.QWheelEvent): void
-proc onwheelEvent*(self: QSplitterHandle, slot: proc(super: QSplitterHandlewheelEventBase, event: gen_qevent.QWheelEvent): void) =
+type QSplitterHandlewheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
+proc onwheelEvent*(self: gen_qsplitter_types.QSplitterHandle, slot: QSplitterHandlewheelEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterHandlewheelEventBase, event: gen_qevent.QWheelEvent): void
-  var tmp = new Cb
+  var tmp = new QSplitterHandlewheelEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitterHandle_override_virtual_wheelEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitterHandle_wheelEvent(self: ptr cQSplitterHandle, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplitterHandle_wheelEvent ".} =
-  type Cb = proc(super: QSplitterHandlewheelEventBase, event: gen_qevent.QWheelEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QWheelEvent): auto =
-    callVirtualBase_wheelEvent(QSplitterHandle(h: self), event)
+  var nimfunc = cast[ptr QSplitterHandlewheelEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QWheelEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyPressEvent(self: QSplitterHandle, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplitterHandlekeyPressEvent*(self: gen_qsplitter_types.QSplitterHandle, event: gen_qevent.QKeyEvent): void =
 
   fQSplitterHandle_virtualbase_keyPressEvent(self.h, event.h)
 
-type QSplitterHandlekeyPressEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyPressEvent*(self: QSplitterHandle, slot: proc(super: QSplitterHandlekeyPressEventBase, event: gen_qevent.QKeyEvent): void) =
+type QSplitterHandlekeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyPressEvent*(self: gen_qsplitter_types.QSplitterHandle, slot: QSplitterHandlekeyPressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterHandlekeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QSplitterHandlekeyPressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitterHandle_override_virtual_keyPressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitterHandle_keyPressEvent(self: ptr cQSplitterHandle, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplitterHandle_keyPressEvent ".} =
-  type Cb = proc(super: QSplitterHandlekeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyPressEvent(QSplitterHandle(h: self), event)
+  var nimfunc = cast[ptr QSplitterHandlekeyPressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyReleaseEvent(self: QSplitterHandle, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplitterHandlekeyReleaseEvent*(self: gen_qsplitter_types.QSplitterHandle, event: gen_qevent.QKeyEvent): void =
 
   fQSplitterHandle_virtualbase_keyReleaseEvent(self.h, event.h)
 
-type QSplitterHandlekeyReleaseEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyReleaseEvent*(self: QSplitterHandle, slot: proc(super: QSplitterHandlekeyReleaseEventBase, event: gen_qevent.QKeyEvent): void) =
+type QSplitterHandlekeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyReleaseEvent*(self: gen_qsplitter_types.QSplitterHandle, slot: QSplitterHandlekeyReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterHandlekeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QSplitterHandlekeyReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitterHandle_override_virtual_keyReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitterHandle_keyReleaseEvent(self: ptr cQSplitterHandle, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplitterHandle_keyReleaseEvent ".} =
-  type Cb = proc(super: QSplitterHandlekeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyReleaseEvent(QSplitterHandle(h: self), event)
+  var nimfunc = cast[ptr QSplitterHandlekeyReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusInEvent(self: QSplitterHandle, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplitterHandlefocusInEvent*(self: gen_qsplitter_types.QSplitterHandle, event: gen_qevent.QFocusEvent): void =
 
   fQSplitterHandle_virtualbase_focusInEvent(self.h, event.h)
 
-type QSplitterHandlefocusInEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusInEvent*(self: QSplitterHandle, slot: proc(super: QSplitterHandlefocusInEventBase, event: gen_qevent.QFocusEvent): void) =
+type QSplitterHandlefocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusInEvent*(self: gen_qsplitter_types.QSplitterHandle, slot: QSplitterHandlefocusInEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterHandlefocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QSplitterHandlefocusInEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitterHandle_override_virtual_focusInEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitterHandle_focusInEvent(self: ptr cQSplitterHandle, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplitterHandle_focusInEvent ".} =
-  type Cb = proc(super: QSplitterHandlefocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusInEvent(QSplitterHandle(h: self), event)
+  var nimfunc = cast[ptr QSplitterHandlefocusInEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusOutEvent(self: QSplitterHandle, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplitterHandlefocusOutEvent*(self: gen_qsplitter_types.QSplitterHandle, event: gen_qevent.QFocusEvent): void =
 
   fQSplitterHandle_virtualbase_focusOutEvent(self.h, event.h)
 
-type QSplitterHandlefocusOutEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusOutEvent*(self: QSplitterHandle, slot: proc(super: QSplitterHandlefocusOutEventBase, event: gen_qevent.QFocusEvent): void) =
+type QSplitterHandlefocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusOutEvent*(self: gen_qsplitter_types.QSplitterHandle, slot: QSplitterHandlefocusOutEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterHandlefocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QSplitterHandlefocusOutEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitterHandle_override_virtual_focusOutEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitterHandle_focusOutEvent(self: ptr cQSplitterHandle, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplitterHandle_focusOutEvent ".} =
-  type Cb = proc(super: QSplitterHandlefocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusOutEvent(QSplitterHandle(h: self), event)
+  var nimfunc = cast[ptr QSplitterHandlefocusOutEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_enterEvent(self: QSplitterHandle, event: gen_qevent.QEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplitterHandleenterEvent*(self: gen_qsplitter_types.QSplitterHandle, event: gen_qevent.QEnterEvent): void =
 
   fQSplitterHandle_virtualbase_enterEvent(self.h, event.h)
 
-type QSplitterHandleenterEventBase* = proc(event: gen_qevent.QEnterEvent): void
-proc onenterEvent*(self: QSplitterHandle, slot: proc(super: QSplitterHandleenterEventBase, event: gen_qevent.QEnterEvent): void) =
+type QSplitterHandleenterEventProc* = proc(event: gen_qevent.QEnterEvent): void
+proc onenterEvent*(self: gen_qsplitter_types.QSplitterHandle, slot: QSplitterHandleenterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterHandleenterEventBase, event: gen_qevent.QEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QSplitterHandleenterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitterHandle_override_virtual_enterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitterHandle_enterEvent(self: ptr cQSplitterHandle, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplitterHandle_enterEvent ".} =
-  type Cb = proc(super: QSplitterHandleenterEventBase, event: gen_qevent.QEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QEnterEvent): auto =
-    callVirtualBase_enterEvent(QSplitterHandle(h: self), event)
+  var nimfunc = cast[ptr QSplitterHandleenterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_leaveEvent(self: QSplitterHandle, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplitterHandleleaveEvent*(self: gen_qsplitter_types.QSplitterHandle, event: gen_qcoreevent.QEvent): void =
 
   fQSplitterHandle_virtualbase_leaveEvent(self.h, event.h)
 
-type QSplitterHandleleaveEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onleaveEvent*(self: QSplitterHandle, slot: proc(super: QSplitterHandleleaveEventBase, event: gen_qcoreevent.QEvent): void) =
+type QSplitterHandleleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onleaveEvent*(self: gen_qsplitter_types.QSplitterHandle, slot: QSplitterHandleleaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterHandleleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QSplitterHandleleaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitterHandle_override_virtual_leaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitterHandle_leaveEvent(self: ptr cQSplitterHandle, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplitterHandle_leaveEvent ".} =
-  type Cb = proc(super: QSplitterHandleleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_leaveEvent(QSplitterHandle(h: self), event)
+  var nimfunc = cast[ptr QSplitterHandleleaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_moveEvent(self: QSplitterHandle, event: gen_qevent.QMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplitterHandlemoveEvent*(self: gen_qsplitter_types.QSplitterHandle, event: gen_qevent.QMoveEvent): void =
 
   fQSplitterHandle_virtualbase_moveEvent(self.h, event.h)
 
-type QSplitterHandlemoveEventBase* = proc(event: gen_qevent.QMoveEvent): void
-proc onmoveEvent*(self: QSplitterHandle, slot: proc(super: QSplitterHandlemoveEventBase, event: gen_qevent.QMoveEvent): void) =
+type QSplitterHandlemoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
+proc onmoveEvent*(self: gen_qsplitter_types.QSplitterHandle, slot: QSplitterHandlemoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterHandlemoveEventBase, event: gen_qevent.QMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QSplitterHandlemoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitterHandle_override_virtual_moveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitterHandle_moveEvent(self: ptr cQSplitterHandle, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplitterHandle_moveEvent ".} =
-  type Cb = proc(super: QSplitterHandlemoveEventBase, event: gen_qevent.QMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMoveEvent): auto =
-    callVirtualBase_moveEvent(QSplitterHandle(h: self), event)
+  var nimfunc = cast[ptr QSplitterHandlemoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_closeEvent(self: QSplitterHandle, event: gen_qevent.QCloseEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplitterHandlecloseEvent*(self: gen_qsplitter_types.QSplitterHandle, event: gen_qevent.QCloseEvent): void =
 
   fQSplitterHandle_virtualbase_closeEvent(self.h, event.h)
 
-type QSplitterHandlecloseEventBase* = proc(event: gen_qevent.QCloseEvent): void
-proc oncloseEvent*(self: QSplitterHandle, slot: proc(super: QSplitterHandlecloseEventBase, event: gen_qevent.QCloseEvent): void) =
+type QSplitterHandlecloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
+proc oncloseEvent*(self: gen_qsplitter_types.QSplitterHandle, slot: QSplitterHandlecloseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterHandlecloseEventBase, event: gen_qevent.QCloseEvent): void
-  var tmp = new Cb
+  var tmp = new QSplitterHandlecloseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitterHandle_override_virtual_closeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitterHandle_closeEvent(self: ptr cQSplitterHandle, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplitterHandle_closeEvent ".} =
-  type Cb = proc(super: QSplitterHandlecloseEventBase, event: gen_qevent.QCloseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QCloseEvent): auto =
-    callVirtualBase_closeEvent(QSplitterHandle(h: self), event)
+  var nimfunc = cast[ptr QSplitterHandlecloseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QCloseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_contextMenuEvent(self: QSplitterHandle, event: gen_qevent.QContextMenuEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplitterHandlecontextMenuEvent*(self: gen_qsplitter_types.QSplitterHandle, event: gen_qevent.QContextMenuEvent): void =
 
   fQSplitterHandle_virtualbase_contextMenuEvent(self.h, event.h)
 
-type QSplitterHandlecontextMenuEventBase* = proc(event: gen_qevent.QContextMenuEvent): void
-proc oncontextMenuEvent*(self: QSplitterHandle, slot: proc(super: QSplitterHandlecontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void) =
+type QSplitterHandlecontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
+proc oncontextMenuEvent*(self: gen_qsplitter_types.QSplitterHandle, slot: QSplitterHandlecontextMenuEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterHandlecontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var tmp = new Cb
+  var tmp = new QSplitterHandlecontextMenuEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitterHandle_override_virtual_contextMenuEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitterHandle_contextMenuEvent(self: ptr cQSplitterHandle, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplitterHandle_contextMenuEvent ".} =
-  type Cb = proc(super: QSplitterHandlecontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QContextMenuEvent): auto =
-    callVirtualBase_contextMenuEvent(QSplitterHandle(h: self), event)
+  var nimfunc = cast[ptr QSplitterHandlecontextMenuEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QContextMenuEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_tabletEvent(self: QSplitterHandle, event: gen_qevent.QTabletEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplitterHandletabletEvent*(self: gen_qsplitter_types.QSplitterHandle, event: gen_qevent.QTabletEvent): void =
 
   fQSplitterHandle_virtualbase_tabletEvent(self.h, event.h)
 
-type QSplitterHandletabletEventBase* = proc(event: gen_qevent.QTabletEvent): void
-proc ontabletEvent*(self: QSplitterHandle, slot: proc(super: QSplitterHandletabletEventBase, event: gen_qevent.QTabletEvent): void) =
+type QSplitterHandletabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
+proc ontabletEvent*(self: gen_qsplitter_types.QSplitterHandle, slot: QSplitterHandletabletEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterHandletabletEventBase, event: gen_qevent.QTabletEvent): void
-  var tmp = new Cb
+  var tmp = new QSplitterHandletabletEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitterHandle_override_virtual_tabletEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitterHandle_tabletEvent(self: ptr cQSplitterHandle, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplitterHandle_tabletEvent ".} =
-  type Cb = proc(super: QSplitterHandletabletEventBase, event: gen_qevent.QTabletEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QTabletEvent): auto =
-    callVirtualBase_tabletEvent(QSplitterHandle(h: self), event)
+  var nimfunc = cast[ptr QSplitterHandletabletEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QTabletEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_actionEvent(self: QSplitterHandle, event: gen_qevent.QActionEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplitterHandleactionEvent*(self: gen_qsplitter_types.QSplitterHandle, event: gen_qevent.QActionEvent): void =
 
   fQSplitterHandle_virtualbase_actionEvent(self.h, event.h)
 
-type QSplitterHandleactionEventBase* = proc(event: gen_qevent.QActionEvent): void
-proc onactionEvent*(self: QSplitterHandle, slot: proc(super: QSplitterHandleactionEventBase, event: gen_qevent.QActionEvent): void) =
+type QSplitterHandleactionEventProc* = proc(event: gen_qevent.QActionEvent): void
+proc onactionEvent*(self: gen_qsplitter_types.QSplitterHandle, slot: QSplitterHandleactionEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterHandleactionEventBase, event: gen_qevent.QActionEvent): void
-  var tmp = new Cb
+  var tmp = new QSplitterHandleactionEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitterHandle_override_virtual_actionEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitterHandle_actionEvent(self: ptr cQSplitterHandle, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplitterHandle_actionEvent ".} =
-  type Cb = proc(super: QSplitterHandleactionEventBase, event: gen_qevent.QActionEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QActionEvent): auto =
-    callVirtualBase_actionEvent(QSplitterHandle(h: self), event)
+  var nimfunc = cast[ptr QSplitterHandleactionEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QActionEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragEnterEvent(self: QSplitterHandle, event: gen_qevent.QDragEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplitterHandledragEnterEvent*(self: gen_qsplitter_types.QSplitterHandle, event: gen_qevent.QDragEnterEvent): void =
 
   fQSplitterHandle_virtualbase_dragEnterEvent(self.h, event.h)
 
-type QSplitterHandledragEnterEventBase* = proc(event: gen_qevent.QDragEnterEvent): void
-proc ondragEnterEvent*(self: QSplitterHandle, slot: proc(super: QSplitterHandledragEnterEventBase, event: gen_qevent.QDragEnterEvent): void) =
+type QSplitterHandledragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
+proc ondragEnterEvent*(self: gen_qsplitter_types.QSplitterHandle, slot: QSplitterHandledragEnterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterHandledragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QSplitterHandledragEnterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitterHandle_override_virtual_dragEnterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitterHandle_dragEnterEvent(self: ptr cQSplitterHandle, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplitterHandle_dragEnterEvent ".} =
-  type Cb = proc(super: QSplitterHandledragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragEnterEvent): auto =
-    callVirtualBase_dragEnterEvent(QSplitterHandle(h: self), event)
+  var nimfunc = cast[ptr QSplitterHandledragEnterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragMoveEvent(self: QSplitterHandle, event: gen_qevent.QDragMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplitterHandledragMoveEvent*(self: gen_qsplitter_types.QSplitterHandle, event: gen_qevent.QDragMoveEvent): void =
 
   fQSplitterHandle_virtualbase_dragMoveEvent(self.h, event.h)
 
-type QSplitterHandledragMoveEventBase* = proc(event: gen_qevent.QDragMoveEvent): void
-proc ondragMoveEvent*(self: QSplitterHandle, slot: proc(super: QSplitterHandledragMoveEventBase, event: gen_qevent.QDragMoveEvent): void) =
+type QSplitterHandledragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
+proc ondragMoveEvent*(self: gen_qsplitter_types.QSplitterHandle, slot: QSplitterHandledragMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterHandledragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QSplitterHandledragMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitterHandle_override_virtual_dragMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitterHandle_dragMoveEvent(self: ptr cQSplitterHandle, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplitterHandle_dragMoveEvent ".} =
-  type Cb = proc(super: QSplitterHandledragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragMoveEvent): auto =
-    callVirtualBase_dragMoveEvent(QSplitterHandle(h: self), event)
+  var nimfunc = cast[ptr QSplitterHandledragMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragLeaveEvent(self: QSplitterHandle, event: gen_qevent.QDragLeaveEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplitterHandledragLeaveEvent*(self: gen_qsplitter_types.QSplitterHandle, event: gen_qevent.QDragLeaveEvent): void =
 
   fQSplitterHandle_virtualbase_dragLeaveEvent(self.h, event.h)
 
-type QSplitterHandledragLeaveEventBase* = proc(event: gen_qevent.QDragLeaveEvent): void
-proc ondragLeaveEvent*(self: QSplitterHandle, slot: proc(super: QSplitterHandledragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void) =
+type QSplitterHandledragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
+proc ondragLeaveEvent*(self: gen_qsplitter_types.QSplitterHandle, slot: QSplitterHandledragLeaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterHandledragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var tmp = new Cb
+  var tmp = new QSplitterHandledragLeaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitterHandle_override_virtual_dragLeaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitterHandle_dragLeaveEvent(self: ptr cQSplitterHandle, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplitterHandle_dragLeaveEvent ".} =
-  type Cb = proc(super: QSplitterHandledragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragLeaveEvent): auto =
-    callVirtualBase_dragLeaveEvent(QSplitterHandle(h: self), event)
+  var nimfunc = cast[ptr QSplitterHandledragLeaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragLeaveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dropEvent(self: QSplitterHandle, event: gen_qevent.QDropEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplitterHandledropEvent*(self: gen_qsplitter_types.QSplitterHandle, event: gen_qevent.QDropEvent): void =
 
   fQSplitterHandle_virtualbase_dropEvent(self.h, event.h)
 
-type QSplitterHandledropEventBase* = proc(event: gen_qevent.QDropEvent): void
-proc ondropEvent*(self: QSplitterHandle, slot: proc(super: QSplitterHandledropEventBase, event: gen_qevent.QDropEvent): void) =
+type QSplitterHandledropEventProc* = proc(event: gen_qevent.QDropEvent): void
+proc ondropEvent*(self: gen_qsplitter_types.QSplitterHandle, slot: QSplitterHandledropEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterHandledropEventBase, event: gen_qevent.QDropEvent): void
-  var tmp = new Cb
+  var tmp = new QSplitterHandledropEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitterHandle_override_virtual_dropEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitterHandle_dropEvent(self: ptr cQSplitterHandle, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplitterHandle_dropEvent ".} =
-  type Cb = proc(super: QSplitterHandledropEventBase, event: gen_qevent.QDropEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDropEvent): auto =
-    callVirtualBase_dropEvent(QSplitterHandle(h: self), event)
+  var nimfunc = cast[ptr QSplitterHandledropEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDropEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_showEvent(self: QSplitterHandle, event: gen_qevent.QShowEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplitterHandleshowEvent*(self: gen_qsplitter_types.QSplitterHandle, event: gen_qevent.QShowEvent): void =
 
   fQSplitterHandle_virtualbase_showEvent(self.h, event.h)
 
-type QSplitterHandleshowEventBase* = proc(event: gen_qevent.QShowEvent): void
-proc onshowEvent*(self: QSplitterHandle, slot: proc(super: QSplitterHandleshowEventBase, event: gen_qevent.QShowEvent): void) =
+type QSplitterHandleshowEventProc* = proc(event: gen_qevent.QShowEvent): void
+proc onshowEvent*(self: gen_qsplitter_types.QSplitterHandle, slot: QSplitterHandleshowEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterHandleshowEventBase, event: gen_qevent.QShowEvent): void
-  var tmp = new Cb
+  var tmp = new QSplitterHandleshowEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitterHandle_override_virtual_showEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitterHandle_showEvent(self: ptr cQSplitterHandle, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplitterHandle_showEvent ".} =
-  type Cb = proc(super: QSplitterHandleshowEventBase, event: gen_qevent.QShowEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QShowEvent): auto =
-    callVirtualBase_showEvent(QSplitterHandle(h: self), event)
+  var nimfunc = cast[ptr QSplitterHandleshowEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QShowEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hideEvent(self: QSplitterHandle, event: gen_qevent.QHideEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplitterHandlehideEvent*(self: gen_qsplitter_types.QSplitterHandle, event: gen_qevent.QHideEvent): void =
 
   fQSplitterHandle_virtualbase_hideEvent(self.h, event.h)
 
-type QSplitterHandlehideEventBase* = proc(event: gen_qevent.QHideEvent): void
-proc onhideEvent*(self: QSplitterHandle, slot: proc(super: QSplitterHandlehideEventBase, event: gen_qevent.QHideEvent): void) =
+type QSplitterHandlehideEventProc* = proc(event: gen_qevent.QHideEvent): void
+proc onhideEvent*(self: gen_qsplitter_types.QSplitterHandle, slot: QSplitterHandlehideEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterHandlehideEventBase, event: gen_qevent.QHideEvent): void
-  var tmp = new Cb
+  var tmp = new QSplitterHandlehideEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitterHandle_override_virtual_hideEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitterHandle_hideEvent(self: ptr cQSplitterHandle, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplitterHandle_hideEvent ".} =
-  type Cb = proc(super: QSplitterHandlehideEventBase, event: gen_qevent.QHideEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QHideEvent): auto =
-    callVirtualBase_hideEvent(QSplitterHandle(h: self), event)
+  var nimfunc = cast[ptr QSplitterHandlehideEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QHideEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_nativeEvent(self: QSplitterHandle, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
-
+  nimfunc[](slotval1)
+proc QSplitterHandlenativeEvent*(self: gen_qsplitter_types.QSplitterHandle, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
 
   fQSplitterHandle_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
-type QSplitterHandlenativeEventBase* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-proc onnativeEvent*(self: QSplitterHandle, slot: proc(super: QSplitterHandlenativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool) =
+type QSplitterHandlenativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
+proc onnativeEvent*(self: gen_qsplitter_types.QSplitterHandle, slot: QSplitterHandlenativeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterHandlenativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-  var tmp = new Cb
+  var tmp = new QSplitterHandlenativeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitterHandle_override_virtual_nativeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitterHandle_nativeEvent(self: ptr cQSplitterHandle, slot: int, eventType: struct_miqt_string, message: pointer, resultVal: ptr uint): bool {.exportc: "miqt_exec_callback_QSplitterHandle_nativeEvent ".} =
-  type Cb = proc(super: QSplitterHandlenativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(eventType: seq[byte], message: pointer, resultVal: ptr uint): auto =
-    callVirtualBase_nativeEvent(QSplitterHandle(h: self), eventType, message, resultVal)
+  var nimfunc = cast[ptr QSplitterHandlenativeEventProc](cast[pointer](slot))
   var veventType_bytearray = eventType
   var veventTypex_ret = @(toOpenArrayByte(veventType_bytearray.data, 0, int(veventType_bytearray.len)-1))
   c_free(veventType_bytearray.data)
@@ -2659,344 +2217,274 @@ proc miqt_exec_callback_QSplitterHandle_nativeEvent(self: ptr cQSplitterHandle, 
   let slotval3 = resultVal
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_changeEvent(self: QSplitterHandle, param1: gen_qcoreevent.QEvent): void =
-
+proc QSplitterHandlechangeEvent*(self: gen_qsplitter_types.QSplitterHandle, param1: gen_qcoreevent.QEvent): void =
 
   fQSplitterHandle_virtualbase_changeEvent(self.h, param1.h)
 
-type QSplitterHandlechangeEventBase* = proc(param1: gen_qcoreevent.QEvent): void
-proc onchangeEvent*(self: QSplitterHandle, slot: proc(super: QSplitterHandlechangeEventBase, param1: gen_qcoreevent.QEvent): void) =
+type QSplitterHandlechangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
+proc onchangeEvent*(self: gen_qsplitter_types.QSplitterHandle, slot: QSplitterHandlechangeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterHandlechangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QSplitterHandlechangeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitterHandle_override_virtual_changeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitterHandle_changeEvent(self: ptr cQSplitterHandle, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QSplitterHandle_changeEvent ".} =
-  type Cb = proc(super: QSplitterHandlechangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_changeEvent(QSplitterHandle(h: self), param1)
+  var nimfunc = cast[ptr QSplitterHandlechangeEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_metric(self: QSplitterHandle, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint =
-
+  nimfunc[](slotval1)
+proc QSplitterHandlemetric*(self: gen_qsplitter_types.QSplitterHandle, param1: cint): cint =
 
   fQSplitterHandle_virtualbase_metric(self.h, cint(param1))
 
-type QSplitterHandlemetricBase* = proc(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-proc onmetric*(self: QSplitterHandle, slot: proc(super: QSplitterHandlemetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint) =
+type QSplitterHandlemetricProc* = proc(param1: cint): cint
+proc onmetric*(self: gen_qsplitter_types.QSplitterHandle, slot: QSplitterHandlemetricProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterHandlemetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var tmp = new Cb
+  var tmp = new QSplitterHandlemetricProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitterHandle_override_virtual_metric(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitterHandle_metric(self: ptr cQSplitterHandle, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QSplitterHandle_metric ".} =
-  type Cb = proc(super: QSplitterHandlemetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): auto =
-    callVirtualBase_metric(QSplitterHandle(h: self), param1)
-  let slotval1 = gen_qpaintdevice.QPaintDevicePaintDeviceMetric(param1)
+  var nimfunc = cast[ptr QSplitterHandlemetricProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_initPainter(self: QSplitterHandle, painter: gen_qpainter.QPainter): void =
-
+proc QSplitterHandleinitPainter*(self: gen_qsplitter_types.QSplitterHandle, painter: gen_qpainter.QPainter): void =
 
   fQSplitterHandle_virtualbase_initPainter(self.h, painter.h)
 
-type QSplitterHandleinitPainterBase* = proc(painter: gen_qpainter.QPainter): void
-proc oninitPainter*(self: QSplitterHandle, slot: proc(super: QSplitterHandleinitPainterBase, painter: gen_qpainter.QPainter): void) =
+type QSplitterHandleinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
+proc oninitPainter*(self: gen_qsplitter_types.QSplitterHandle, slot: QSplitterHandleinitPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterHandleinitPainterBase, painter: gen_qpainter.QPainter): void
-  var tmp = new Cb
+  var tmp = new QSplitterHandleinitPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitterHandle_override_virtual_initPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitterHandle_initPainter(self: ptr cQSplitterHandle, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_QSplitterHandle_initPainter ".} =
-  type Cb = proc(super: QSplitterHandleinitPainterBase, painter: gen_qpainter.QPainter): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter): auto =
-    callVirtualBase_initPainter(QSplitterHandle(h: self), painter)
+  var nimfunc = cast[ptr QSplitterHandleinitPainterProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_redirected(self: QSplitterHandle, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
+  nimfunc[](slotval1)
+proc QSplitterHandleredirected*(self: gen_qsplitter_types.QSplitterHandle, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
 
   gen_qpaintdevice.QPaintDevice(h: fQSplitterHandle_virtualbase_redirected(self.h, offset.h))
 
-type QSplitterHandleredirectedBase* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-proc onredirected*(self: QSplitterHandle, slot: proc(super: QSplitterHandleredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice) =
+type QSplitterHandleredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
+proc onredirected*(self: gen_qsplitter_types.QSplitterHandle, slot: QSplitterHandleredirectedProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterHandleredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var tmp = new Cb
+  var tmp = new QSplitterHandleredirectedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitterHandle_override_virtual_redirected(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitterHandle_redirected(self: ptr cQSplitterHandle, slot: int, offset: pointer): pointer {.exportc: "miqt_exec_callback_QSplitterHandle_redirected ".} =
-  type Cb = proc(super: QSplitterHandleredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(offset: gen_qpoint.QPoint): auto =
-    callVirtualBase_redirected(QSplitterHandle(h: self), offset)
+  var nimfunc = cast[ptr QSplitterHandleredirectedProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: offset)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_sharedPainter(self: QSplitterHandle, ): gen_qpainter.QPainter =
-
+proc QSplitterHandlesharedPainter*(self: gen_qsplitter_types.QSplitterHandle, ): gen_qpainter.QPainter =
 
   gen_qpainter.QPainter(h: fQSplitterHandle_virtualbase_sharedPainter(self.h))
 
-type QSplitterHandlesharedPainterBase* = proc(): gen_qpainter.QPainter
-proc onsharedPainter*(self: QSplitterHandle, slot: proc(super: QSplitterHandlesharedPainterBase): gen_qpainter.QPainter) =
+type QSplitterHandlesharedPainterProc* = proc(): gen_qpainter.QPainter
+proc onsharedPainter*(self: gen_qsplitter_types.QSplitterHandle, slot: QSplitterHandlesharedPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterHandlesharedPainterBase): gen_qpainter.QPainter
-  var tmp = new Cb
+  var tmp = new QSplitterHandlesharedPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitterHandle_override_virtual_sharedPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitterHandle_sharedPainter(self: ptr cQSplitterHandle, slot: int): pointer {.exportc: "miqt_exec_callback_QSplitterHandle_sharedPainter ".} =
-  type Cb = proc(super: QSplitterHandlesharedPainterBase): gen_qpainter.QPainter
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sharedPainter(QSplitterHandle(h: self), )
+  var nimfunc = cast[ptr QSplitterHandlesharedPainterProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_inputMethodEvent(self: QSplitterHandle, param1: gen_qevent.QInputMethodEvent): void =
-
+proc QSplitterHandleinputMethodEvent*(self: gen_qsplitter_types.QSplitterHandle, param1: gen_qevent.QInputMethodEvent): void =
 
   fQSplitterHandle_virtualbase_inputMethodEvent(self.h, param1.h)
 
-type QSplitterHandleinputMethodEventBase* = proc(param1: gen_qevent.QInputMethodEvent): void
-proc oninputMethodEvent*(self: QSplitterHandle, slot: proc(super: QSplitterHandleinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void) =
+type QSplitterHandleinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
+proc oninputMethodEvent*(self: gen_qsplitter_types.QSplitterHandle, slot: QSplitterHandleinputMethodEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterHandleinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var tmp = new Cb
+  var tmp = new QSplitterHandleinputMethodEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitterHandle_override_virtual_inputMethodEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitterHandle_inputMethodEvent(self: ptr cQSplitterHandle, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QSplitterHandle_inputMethodEvent ".} =
-  type Cb = proc(super: QSplitterHandleinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QInputMethodEvent): auto =
-    callVirtualBase_inputMethodEvent(QSplitterHandle(h: self), param1)
+  var nimfunc = cast[ptr QSplitterHandleinputMethodEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QInputMethodEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_inputMethodQuery(self: QSplitterHandle, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant =
-
+  nimfunc[](slotval1)
+proc QSplitterHandleinputMethodQuery*(self: gen_qsplitter_types.QSplitterHandle, param1: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQSplitterHandle_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
-type QSplitterHandleinputMethodQueryBase* = proc(param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-proc oninputMethodQuery*(self: QSplitterHandle, slot: proc(super: QSplitterHandleinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant) =
+type QSplitterHandleinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
+proc oninputMethodQuery*(self: gen_qsplitter_types.QSplitterHandle, slot: QSplitterHandleinputMethodQueryProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterHandleinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QSplitterHandleinputMethodQueryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitterHandle_override_virtual_inputMethodQuery(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitterHandle_inputMethodQuery(self: ptr cQSplitterHandle, slot: int, param1: cint): pointer {.exportc: "miqt_exec_callback_QSplitterHandle_inputMethodQuery ".} =
-  type Cb = proc(super: QSplitterHandleinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qnamespace.InputMethodQuery): auto =
-    callVirtualBase_inputMethodQuery(QSplitterHandle(h: self), param1)
-  let slotval1 = gen_qnamespace.InputMethodQuery(param1)
+  var nimfunc = cast[ptr QSplitterHandleinputMethodQueryProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_focusNextPrevChild(self: QSplitterHandle, next: bool): bool =
-
+proc QSplitterHandlefocusNextPrevChild*(self: gen_qsplitter_types.QSplitterHandle, next: bool): bool =
 
   fQSplitterHandle_virtualbase_focusNextPrevChild(self.h, next)
 
-type QSplitterHandlefocusNextPrevChildBase* = proc(next: bool): bool
-proc onfocusNextPrevChild*(self: QSplitterHandle, slot: proc(super: QSplitterHandlefocusNextPrevChildBase, next: bool): bool) =
+type QSplitterHandlefocusNextPrevChildProc* = proc(next: bool): bool
+proc onfocusNextPrevChild*(self: gen_qsplitter_types.QSplitterHandle, slot: QSplitterHandlefocusNextPrevChildProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterHandlefocusNextPrevChildBase, next: bool): bool
-  var tmp = new Cb
+  var tmp = new QSplitterHandlefocusNextPrevChildProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitterHandle_override_virtual_focusNextPrevChild(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitterHandle_focusNextPrevChild(self: ptr cQSplitterHandle, slot: int, next: bool): bool {.exportc: "miqt_exec_callback_QSplitterHandle_focusNextPrevChild ".} =
-  type Cb = proc(super: QSplitterHandlefocusNextPrevChildBase, next: bool): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(next: bool): auto =
-    callVirtualBase_focusNextPrevChild(QSplitterHandle(h: self), next)
+  var nimfunc = cast[ptr QSplitterHandlefocusNextPrevChildProc](cast[pointer](slot))
   let slotval1 = next
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QSplitterHandle, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QSplitterHandleeventFilter*(self: gen_qsplitter_types.QSplitterHandle, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQSplitterHandle_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QSplitterHandleeventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QSplitterHandle, slot: proc(super: QSplitterHandleeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QSplitterHandleeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qsplitter_types.QSplitterHandle, slot: QSplitterHandleeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterHandleeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QSplitterHandleeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitterHandle_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitterHandle_eventFilter(self: ptr cQSplitterHandle, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QSplitterHandle_eventFilter ".} =
-  type Cb = proc(super: QSplitterHandleeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QSplitterHandle(h: self), watched, event)
+  var nimfunc = cast[ptr QSplitterHandleeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QSplitterHandle, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QSplitterHandletimerEvent*(self: gen_qsplitter_types.QSplitterHandle, event: gen_qcoreevent.QTimerEvent): void =
 
   fQSplitterHandle_virtualbase_timerEvent(self.h, event.h)
 
-type QSplitterHandletimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QSplitterHandle, slot: proc(super: QSplitterHandletimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QSplitterHandletimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qsplitter_types.QSplitterHandle, slot: QSplitterHandletimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterHandletimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QSplitterHandletimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitterHandle_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitterHandle_timerEvent(self: ptr cQSplitterHandle, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplitterHandle_timerEvent ".} =
-  type Cb = proc(super: QSplitterHandletimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QSplitterHandle(h: self), event)
+  var nimfunc = cast[ptr QSplitterHandletimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QSplitterHandle, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplitterHandlechildEvent*(self: gen_qsplitter_types.QSplitterHandle, event: gen_qcoreevent.QChildEvent): void =
 
   fQSplitterHandle_virtualbase_childEvent(self.h, event.h)
 
-type QSplitterHandlechildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QSplitterHandle, slot: proc(super: QSplitterHandlechildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QSplitterHandlechildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qsplitter_types.QSplitterHandle, slot: QSplitterHandlechildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterHandlechildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QSplitterHandlechildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitterHandle_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitterHandle_childEvent(self: ptr cQSplitterHandle, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplitterHandle_childEvent ".} =
-  type Cb = proc(super: QSplitterHandlechildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QSplitterHandle(h: self), event)
+  var nimfunc = cast[ptr QSplitterHandlechildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QSplitterHandle, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QSplitterHandlecustomEvent*(self: gen_qsplitter_types.QSplitterHandle, event: gen_qcoreevent.QEvent): void =
 
   fQSplitterHandle_virtualbase_customEvent(self.h, event.h)
 
-type QSplitterHandlecustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QSplitterHandle, slot: proc(super: QSplitterHandlecustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QSplitterHandlecustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qsplitter_types.QSplitterHandle, slot: QSplitterHandlecustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterHandlecustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QSplitterHandlecustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitterHandle_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitterHandle_customEvent(self: ptr cQSplitterHandle, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSplitterHandle_customEvent ".} =
-  type Cb = proc(super: QSplitterHandlecustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QSplitterHandle(h: self), event)
+  var nimfunc = cast[ptr QSplitterHandlecustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QSplitterHandle, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QSplitterHandleconnectNotify*(self: gen_qsplitter_types.QSplitterHandle, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQSplitterHandle_virtualbase_connectNotify(self.h, signal.h)
 
-type QSplitterHandleconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QSplitterHandle, slot: proc(super: QSplitterHandleconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QSplitterHandleconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qsplitter_types.QSplitterHandle, slot: QSplitterHandleconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterHandleconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QSplitterHandleconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitterHandle_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitterHandle_connectNotify(self: ptr cQSplitterHandle, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QSplitterHandle_connectNotify ".} =
-  type Cb = proc(super: QSplitterHandleconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QSplitterHandle(h: self), signal)
+  var nimfunc = cast[ptr QSplitterHandleconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QSplitterHandle, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QSplitterHandledisconnectNotify*(self: gen_qsplitter_types.QSplitterHandle, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQSplitterHandle_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QSplitterHandledisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QSplitterHandle, slot: proc(super: QSplitterHandledisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QSplitterHandledisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qsplitter_types.QSplitterHandle, slot: QSplitterHandledisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QSplitterHandledisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QSplitterHandledisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSplitterHandle_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSplitterHandle_disconnectNotify(self: ptr cQSplitterHandle, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QSplitterHandle_disconnectNotify ".} =
-  type Cb = proc(super: QSplitterHandledisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QSplitterHandle(h: self), signal)
+  var nimfunc = cast[ptr QSplitterHandledisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QSplitterHandle): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qsplitter_types.QSplitterHandle): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQSplitterHandle_staticMetaObject())
-proc delete*(self: QSplitterHandle) =
+proc delete*(self: gen_qsplitter_types.QSplitterHandle) =
   fcQSplitterHandle_delete(self.h)

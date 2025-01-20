@@ -89,314 +89,264 @@ proc fcQQuickTextDocument_staticMetaObject(): pointer {.importc: "QQuickTextDocu
 proc fcQQuickTextDocument_delete(self: pointer) {.importc: "QQuickTextDocument_delete".}
 
 
-func init*(T: type QQuickTextDocument, h: ptr cQQuickTextDocument): QQuickTextDocument =
+func init*(T: type gen_qquicktextdocument_types.QQuickTextDocument, h: ptr cQQuickTextDocument): gen_qquicktextdocument_types.QQuickTextDocument =
   T(h: h)
-proc create*(T: type QQuickTextDocument, parent: gen_qquickitem.QQuickItem): QQuickTextDocument =
+proc create*(T: type gen_qquicktextdocument_types.QQuickTextDocument, parent: gen_qquickitem.QQuickItem): gen_qquicktextdocument_types.QQuickTextDocument =
 
-  QQuickTextDocument.init(fcQQuickTextDocument_new(parent.h))
-proc metaObject*(self: QQuickTextDocument, ): gen_qobjectdefs.QMetaObject =
+  gen_qquicktextdocument_types.QQuickTextDocument.init(fcQQuickTextDocument_new(parent.h))
+proc metaObject*(self: gen_qquicktextdocument_types.QQuickTextDocument, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQQuickTextDocument_metaObject(self.h))
 
-proc metacast*(self: QQuickTextDocument, param1: cstring): pointer =
+proc metacast*(self: gen_qquicktextdocument_types.QQuickTextDocument, param1: cstring): pointer =
 
   fcQQuickTextDocument_metacast(self.h, param1)
 
-proc metacall*(self: QQuickTextDocument, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qquicktextdocument_types.QQuickTextDocument, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQQuickTextDocument_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QQuickTextDocument, s: cstring): string =
+proc tr*(_: type gen_qquicktextdocument_types.QQuickTextDocument, s: cstring): string =
 
   let v_ms = fcQQuickTextDocument_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QQuickTextDocument, s: cstring): string =
+proc trUtf8*(_: type gen_qquicktextdocument_types.QQuickTextDocument, s: cstring): string =
 
   let v_ms = fcQQuickTextDocument_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc textDocument*(self: QQuickTextDocument, ): gen_qtextdocument.QTextDocument =
+proc textDocument*(self: gen_qquicktextdocument_types.QQuickTextDocument, ): gen_qtextdocument.QTextDocument =
 
   gen_qtextdocument.QTextDocument(h: fcQQuickTextDocument_textDocument(self.h))
 
-proc tr2*(_: type QQuickTextDocument, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qquicktextdocument_types.QQuickTextDocument, s: cstring, c: cstring): string =
 
   let v_ms = fcQQuickTextDocument_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QQuickTextDocument, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qquicktextdocument_types.QQuickTextDocument, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQQuickTextDocument_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QQuickTextDocument, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qquicktextdocument_types.QQuickTextDocument, s: cstring, c: cstring): string =
 
   let v_ms = fcQQuickTextDocument_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QQuickTextDocument, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qquicktextdocument_types.QQuickTextDocument, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQQuickTextDocument_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QQuickTextDocument, ): gen_qobjectdefs.QMetaObject =
-
+proc QQuickTextDocumentmetaObject*(self: gen_qquicktextdocument_types.QQuickTextDocument, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQQuickTextDocument_virtualbase_metaObject(self.h))
 
-type QQuickTextDocumentmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QQuickTextDocument, slot: proc(super: QQuickTextDocumentmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QQuickTextDocumentmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qquicktextdocument_types.QQuickTextDocument, slot: QQuickTextDocumentmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickTextDocumentmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QQuickTextDocumentmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickTextDocument_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickTextDocument_metaObject(self: ptr cQQuickTextDocument, slot: int): pointer {.exportc: "miqt_exec_callback_QQuickTextDocument_metaObject ".} =
-  type Cb = proc(super: QQuickTextDocumentmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QQuickTextDocument(h: self), )
+  var nimfunc = cast[ptr QQuickTextDocumentmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QQuickTextDocument, param1: cstring): pointer =
-
+proc QQuickTextDocumentmetacast*(self: gen_qquicktextdocument_types.QQuickTextDocument, param1: cstring): pointer =
 
   fQQuickTextDocument_virtualbase_metacast(self.h, param1)
 
-type QQuickTextDocumentmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QQuickTextDocument, slot: proc(super: QQuickTextDocumentmetacastBase, param1: cstring): pointer) =
+type QQuickTextDocumentmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qquicktextdocument_types.QQuickTextDocument, slot: QQuickTextDocumentmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickTextDocumentmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QQuickTextDocumentmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickTextDocument_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickTextDocument_metacast(self: ptr cQQuickTextDocument, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QQuickTextDocument_metacast ".} =
-  type Cb = proc(super: QQuickTextDocumentmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QQuickTextDocument(h: self), param1)
+  var nimfunc = cast[ptr QQuickTextDocumentmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QQuickTextDocument, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QQuickTextDocumentmetacall*(self: gen_qquicktextdocument_types.QQuickTextDocument, param1: cint, param2: cint, param3: pointer): cint =
 
   fQQuickTextDocument_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QQuickTextDocumentmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QQuickTextDocument, slot: proc(super: QQuickTextDocumentmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QQuickTextDocumentmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qquicktextdocument_types.QQuickTextDocument, slot: QQuickTextDocumentmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickTextDocumentmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QQuickTextDocumentmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickTextDocument_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickTextDocument_metacall(self: ptr cQQuickTextDocument, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QQuickTextDocument_metacall ".} =
-  type Cb = proc(super: QQuickTextDocumentmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QQuickTextDocument(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QQuickTextDocumentmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_event(self: QQuickTextDocument, event: gen_qcoreevent.QEvent): bool =
-
+proc QQuickTextDocumentevent*(self: gen_qquicktextdocument_types.QQuickTextDocument, event: gen_qcoreevent.QEvent): bool =
 
   fQQuickTextDocument_virtualbase_event(self.h, event.h)
 
-type QQuickTextDocumenteventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QQuickTextDocument, slot: proc(super: QQuickTextDocumenteventBase, event: gen_qcoreevent.QEvent): bool) =
+type QQuickTextDocumenteventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qquicktextdocument_types.QQuickTextDocument, slot: QQuickTextDocumenteventProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickTextDocumenteventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QQuickTextDocumenteventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickTextDocument_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickTextDocument_event(self: ptr cQQuickTextDocument, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QQuickTextDocument_event ".} =
-  type Cb = proc(super: QQuickTextDocumenteventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QQuickTextDocument(h: self), event)
+  var nimfunc = cast[ptr QQuickTextDocumenteventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QQuickTextDocument, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QQuickTextDocumenteventFilter*(self: gen_qquicktextdocument_types.QQuickTextDocument, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQQuickTextDocument_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QQuickTextDocumenteventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QQuickTextDocument, slot: proc(super: QQuickTextDocumenteventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QQuickTextDocumenteventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qquicktextdocument_types.QQuickTextDocument, slot: QQuickTextDocumenteventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickTextDocumenteventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QQuickTextDocumenteventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickTextDocument_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickTextDocument_eventFilter(self: ptr cQQuickTextDocument, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QQuickTextDocument_eventFilter ".} =
-  type Cb = proc(super: QQuickTextDocumenteventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QQuickTextDocument(h: self), watched, event)
+  var nimfunc = cast[ptr QQuickTextDocumenteventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QQuickTextDocument, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QQuickTextDocumenttimerEvent*(self: gen_qquicktextdocument_types.QQuickTextDocument, event: gen_qcoreevent.QTimerEvent): void =
 
   fQQuickTextDocument_virtualbase_timerEvent(self.h, event.h)
 
-type QQuickTextDocumenttimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QQuickTextDocument, slot: proc(super: QQuickTextDocumenttimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QQuickTextDocumenttimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qquicktextdocument_types.QQuickTextDocument, slot: QQuickTextDocumenttimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickTextDocumenttimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QQuickTextDocumenttimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickTextDocument_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickTextDocument_timerEvent(self: ptr cQQuickTextDocument, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QQuickTextDocument_timerEvent ".} =
-  type Cb = proc(super: QQuickTextDocumenttimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QQuickTextDocument(h: self), event)
+  var nimfunc = cast[ptr QQuickTextDocumenttimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QQuickTextDocument, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QQuickTextDocumentchildEvent*(self: gen_qquicktextdocument_types.QQuickTextDocument, event: gen_qcoreevent.QChildEvent): void =
 
   fQQuickTextDocument_virtualbase_childEvent(self.h, event.h)
 
-type QQuickTextDocumentchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QQuickTextDocument, slot: proc(super: QQuickTextDocumentchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QQuickTextDocumentchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qquicktextdocument_types.QQuickTextDocument, slot: QQuickTextDocumentchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickTextDocumentchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QQuickTextDocumentchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickTextDocument_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickTextDocument_childEvent(self: ptr cQQuickTextDocument, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QQuickTextDocument_childEvent ".} =
-  type Cb = proc(super: QQuickTextDocumentchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QQuickTextDocument(h: self), event)
+  var nimfunc = cast[ptr QQuickTextDocumentchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QQuickTextDocument, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QQuickTextDocumentcustomEvent*(self: gen_qquicktextdocument_types.QQuickTextDocument, event: gen_qcoreevent.QEvent): void =
 
   fQQuickTextDocument_virtualbase_customEvent(self.h, event.h)
 
-type QQuickTextDocumentcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QQuickTextDocument, slot: proc(super: QQuickTextDocumentcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QQuickTextDocumentcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qquicktextdocument_types.QQuickTextDocument, slot: QQuickTextDocumentcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickTextDocumentcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QQuickTextDocumentcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickTextDocument_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickTextDocument_customEvent(self: ptr cQQuickTextDocument, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QQuickTextDocument_customEvent ".} =
-  type Cb = proc(super: QQuickTextDocumentcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QQuickTextDocument(h: self), event)
+  var nimfunc = cast[ptr QQuickTextDocumentcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QQuickTextDocument, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QQuickTextDocumentconnectNotify*(self: gen_qquicktextdocument_types.QQuickTextDocument, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQQuickTextDocument_virtualbase_connectNotify(self.h, signal.h)
 
-type QQuickTextDocumentconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QQuickTextDocument, slot: proc(super: QQuickTextDocumentconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QQuickTextDocumentconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qquicktextdocument_types.QQuickTextDocument, slot: QQuickTextDocumentconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickTextDocumentconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QQuickTextDocumentconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickTextDocument_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickTextDocument_connectNotify(self: ptr cQQuickTextDocument, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QQuickTextDocument_connectNotify ".} =
-  type Cb = proc(super: QQuickTextDocumentconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QQuickTextDocument(h: self), signal)
+  var nimfunc = cast[ptr QQuickTextDocumentconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QQuickTextDocument, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QQuickTextDocumentdisconnectNotify*(self: gen_qquicktextdocument_types.QQuickTextDocument, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQQuickTextDocument_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QQuickTextDocumentdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QQuickTextDocument, slot: proc(super: QQuickTextDocumentdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QQuickTextDocumentdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qquicktextdocument_types.QQuickTextDocument, slot: QQuickTextDocumentdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickTextDocumentdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QQuickTextDocumentdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickTextDocument_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickTextDocument_disconnectNotify(self: ptr cQQuickTextDocument, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QQuickTextDocument_disconnectNotify ".} =
-  type Cb = proc(super: QQuickTextDocumentdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QQuickTextDocument(h: self), signal)
+  var nimfunc = cast[ptr QQuickTextDocumentdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QQuickTextDocument): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qquicktextdocument_types.QQuickTextDocument): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQQuickTextDocument_staticMetaObject())
-proc delete*(self: QQuickTextDocument) =
+proc delete*(self: gen_qquicktextdocument_types.QQuickTextDocument) =
   fcQQuickTextDocument_delete(self.h)

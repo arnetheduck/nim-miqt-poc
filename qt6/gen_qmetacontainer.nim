@@ -34,30 +34,24 @@ const cflags = gorge("pkg-config -cflags Qt6Widgets")
 {.compile("gen_qmetacontainer.cpp", cflags).}
 
 
-type QtMetaContainerPrivateIteratorCapability* = uint8
-const
-  QtMetaContainerPrivateInputCapability* = 1
-  QtMetaContainerPrivateForwardCapability* = 2
-  QtMetaContainerPrivateBiDirectionalCapability* = 4
-  QtMetaContainerPrivateRandomAccessCapability* = 8
+type QtMetaContainerPrivateIteratorCapabilityEnum* = distinct uint8
+template InputCapability*(_: type QtMetaContainerPrivateIteratorCapabilityEnum): untyped = 1
+template ForwardCapability*(_: type QtMetaContainerPrivateIteratorCapabilityEnum): untyped = 2
+template BiDirectionalCapability*(_: type QtMetaContainerPrivateIteratorCapabilityEnum): untyped = 4
+template RandomAccessCapability*(_: type QtMetaContainerPrivateIteratorCapabilityEnum): untyped = 8
 
 
-
-type QtMetaContainerPrivateAddRemoveCapability* = uint8
-const
-  QtMetaContainerPrivateCanAddAtBegin* = 1
-  QtMetaContainerPrivateCanRemoveAtBegin* = 2
-  QtMetaContainerPrivateCanAddAtEnd* = 4
-  QtMetaContainerPrivateCanRemoveAtEnd* = 8
+type QtMetaContainerPrivateAddRemoveCapabilityEnum* = distinct uint8
+template CanAddAtBegin*(_: type QtMetaContainerPrivateAddRemoveCapabilityEnum): untyped = 1
+template CanRemoveAtBegin*(_: type QtMetaContainerPrivateAddRemoveCapabilityEnum): untyped = 2
+template CanAddAtEnd*(_: type QtMetaContainerPrivateAddRemoveCapabilityEnum): untyped = 4
+template CanRemoveAtEnd*(_: type QtMetaContainerPrivateAddRemoveCapabilityEnum): untyped = 8
 
 
-
-type QtMetaContainerPrivateQMetaContainerInterfacePosition* = uint8
-const
-  QtMetaContainerPrivateQMetaContainerInterfaceAtBegin* = 0
-  QtMetaContainerPrivateQMetaContainerInterfaceAtEnd* = 1
-  QtMetaContainerPrivateQMetaContainerInterfaceUnspecified* = 2
-
+type QtMetaContainerPrivateQMetaContainerInterfacePositionEnum* = distinct uint8
+template AtBegin*(_: type QtMetaContainerPrivateQMetaContainerInterfacePositionEnum): untyped = 0
+template AtEnd*(_: type QtMetaContainerPrivateQMetaContainerInterfacePositionEnum): untyped = 1
+template Unspecified*(_: type QtMetaContainerPrivateQMetaContainerInterfacePositionEnum): untyped = 2
 
 
 import gen_qmetacontainer_types
@@ -161,349 +155,349 @@ proc fcQMetaAssociation_createConstIteratorAtKey(self: pointer, container: point
 proc fcQMetaAssociation_delete(self: pointer) {.importc: "QMetaAssociation_delete".}
 
 
-func init*(T: type QMetaContainer, h: ptr cQMetaContainer): QMetaContainer =
+func init*(T: type gen_qmetacontainer_types.QMetaContainer, h: ptr cQMetaContainer): gen_qmetacontainer_types.QMetaContainer =
   T(h: h)
-proc create*(T: type QMetaContainer, ): QMetaContainer =
+proc create*(T: type gen_qmetacontainer_types.QMetaContainer, ): gen_qmetacontainer_types.QMetaContainer =
 
-  QMetaContainer.init(fcQMetaContainer_new())
-proc create*(T: type QMetaContainer, param1: QMetaContainer): QMetaContainer =
+  gen_qmetacontainer_types.QMetaContainer.init(fcQMetaContainer_new())
+proc create*(T: type gen_qmetacontainer_types.QMetaContainer, param1: gen_qmetacontainer_types.QMetaContainer): gen_qmetacontainer_types.QMetaContainer =
 
-  QMetaContainer.init(fcQMetaContainer_new2(param1.h))
-proc hasInputIterator*(self: QMetaContainer, ): bool =
+  gen_qmetacontainer_types.QMetaContainer.init(fcQMetaContainer_new2(param1.h))
+proc hasInputIterator*(self: gen_qmetacontainer_types.QMetaContainer, ): bool =
 
   fcQMetaContainer_hasInputIterator(self.h)
 
-proc hasForwardIterator*(self: QMetaContainer, ): bool =
+proc hasForwardIterator*(self: gen_qmetacontainer_types.QMetaContainer, ): bool =
 
   fcQMetaContainer_hasForwardIterator(self.h)
 
-proc hasBidirectionalIterator*(self: QMetaContainer, ): bool =
+proc hasBidirectionalIterator*(self: gen_qmetacontainer_types.QMetaContainer, ): bool =
 
   fcQMetaContainer_hasBidirectionalIterator(self.h)
 
-proc hasRandomAccessIterator*(self: QMetaContainer, ): bool =
+proc hasRandomAccessIterator*(self: gen_qmetacontainer_types.QMetaContainer, ): bool =
 
   fcQMetaContainer_hasRandomAccessIterator(self.h)
 
-proc hasSize*(self: QMetaContainer, ): bool =
+proc hasSize*(self: gen_qmetacontainer_types.QMetaContainer, ): bool =
 
   fcQMetaContainer_hasSize(self.h)
 
-proc size*(self: QMetaContainer, container: pointer): int64 =
+proc size*(self: gen_qmetacontainer_types.QMetaContainer, container: pointer): int64 =
 
   fcQMetaContainer_size(self.h, container)
 
-proc canClear*(self: QMetaContainer, ): bool =
+proc canClear*(self: gen_qmetacontainer_types.QMetaContainer, ): bool =
 
   fcQMetaContainer_canClear(self.h)
 
-proc clear*(self: QMetaContainer, container: pointer): void =
+proc clear*(self: gen_qmetacontainer_types.QMetaContainer, container: pointer): void =
 
   fcQMetaContainer_clear(self.h, container)
 
-proc hasIterator*(self: QMetaContainer, ): bool =
+proc hasIterator*(self: gen_qmetacontainer_types.QMetaContainer, ): bool =
 
   fcQMetaContainer_hasIterator(self.h)
 
-proc begin*(self: QMetaContainer, container: pointer): pointer =
+proc begin*(self: gen_qmetacontainer_types.QMetaContainer, container: pointer): pointer =
 
   fcQMetaContainer_begin(self.h, container)
 
-proc endX*(self: QMetaContainer, container: pointer): pointer =
+proc endX*(self: gen_qmetacontainer_types.QMetaContainer, container: pointer): pointer =
 
   fcQMetaContainer_endX(self.h, container)
 
-proc destroyIterator*(self: QMetaContainer, iteratorVal: pointer): void =
+proc destroyIterator*(self: gen_qmetacontainer_types.QMetaContainer, iteratorVal: pointer): void =
 
   fcQMetaContainer_destroyIterator(self.h, iteratorVal)
 
-proc compareIterator*(self: QMetaContainer, i: pointer, j: pointer): bool =
+proc compareIterator*(self: gen_qmetacontainer_types.QMetaContainer, i: pointer, j: pointer): bool =
 
   fcQMetaContainer_compareIterator(self.h, i, j)
 
-proc copyIterator*(self: QMetaContainer, target: pointer, source: pointer): void =
+proc copyIterator*(self: gen_qmetacontainer_types.QMetaContainer, target: pointer, source: pointer): void =
 
   fcQMetaContainer_copyIterator(self.h, target, source)
 
-proc advanceIterator*(self: QMetaContainer, iteratorVal: pointer, step: int64): void =
+proc advanceIterator*(self: gen_qmetacontainer_types.QMetaContainer, iteratorVal: pointer, step: int64): void =
 
   fcQMetaContainer_advanceIterator(self.h, iteratorVal, step)
 
-proc diffIterator*(self: QMetaContainer, i: pointer, j: pointer): int64 =
+proc diffIterator*(self: gen_qmetacontainer_types.QMetaContainer, i: pointer, j: pointer): int64 =
 
   fcQMetaContainer_diffIterator(self.h, i, j)
 
-proc hasConstIterator*(self: QMetaContainer, ): bool =
+proc hasConstIterator*(self: gen_qmetacontainer_types.QMetaContainer, ): bool =
 
   fcQMetaContainer_hasConstIterator(self.h)
 
-proc constBegin*(self: QMetaContainer, container: pointer): pointer =
+proc constBegin*(self: gen_qmetacontainer_types.QMetaContainer, container: pointer): pointer =
 
   fcQMetaContainer_constBegin(self.h, container)
 
-proc constEnd*(self: QMetaContainer, container: pointer): pointer =
+proc constEnd*(self: gen_qmetacontainer_types.QMetaContainer, container: pointer): pointer =
 
   fcQMetaContainer_constEnd(self.h, container)
 
-proc destroyConstIterator*(self: QMetaContainer, iteratorVal: pointer): void =
+proc destroyConstIterator*(self: gen_qmetacontainer_types.QMetaContainer, iteratorVal: pointer): void =
 
   fcQMetaContainer_destroyConstIterator(self.h, iteratorVal)
 
-proc compareConstIterator*(self: QMetaContainer, i: pointer, j: pointer): bool =
+proc compareConstIterator*(self: gen_qmetacontainer_types.QMetaContainer, i: pointer, j: pointer): bool =
 
   fcQMetaContainer_compareConstIterator(self.h, i, j)
 
-proc copyConstIterator*(self: QMetaContainer, target: pointer, source: pointer): void =
+proc copyConstIterator*(self: gen_qmetacontainer_types.QMetaContainer, target: pointer, source: pointer): void =
 
   fcQMetaContainer_copyConstIterator(self.h, target, source)
 
-proc advanceConstIterator*(self: QMetaContainer, iteratorVal: pointer, step: int64): void =
+proc advanceConstIterator*(self: gen_qmetacontainer_types.QMetaContainer, iteratorVal: pointer, step: int64): void =
 
   fcQMetaContainer_advanceConstIterator(self.h, iteratorVal, step)
 
-proc diffConstIterator*(self: QMetaContainer, i: pointer, j: pointer): int64 =
+proc diffConstIterator*(self: gen_qmetacontainer_types.QMetaContainer, i: pointer, j: pointer): int64 =
 
   fcQMetaContainer_diffConstIterator(self.h, i, j)
 
-proc delete*(self: QMetaContainer) =
+proc delete*(self: gen_qmetacontainer_types.QMetaContainer) =
   fcQMetaContainer_delete(self.h)
 
-func init*(T: type QMetaSequence, h: ptr cQMetaSequence): QMetaSequence =
+func init*(T: type gen_qmetacontainer_types.QMetaSequence, h: ptr cQMetaSequence): gen_qmetacontainer_types.QMetaSequence =
   T(h: h)
-proc create*(T: type QMetaSequence, ): QMetaSequence =
+proc create*(T: type gen_qmetacontainer_types.QMetaSequence, ): gen_qmetacontainer_types.QMetaSequence =
 
-  QMetaSequence.init(fcQMetaSequence_new())
-proc valueMetaType*(self: QMetaSequence, ): gen_qmetatype.QMetaType =
+  gen_qmetacontainer_types.QMetaSequence.init(fcQMetaSequence_new())
+proc valueMetaType*(self: gen_qmetacontainer_types.QMetaSequence, ): gen_qmetatype.QMetaType =
 
   gen_qmetatype.QMetaType(h: fcQMetaSequence_valueMetaType(self.h))
 
-proc isSortable*(self: QMetaSequence, ): bool =
+proc isSortable*(self: gen_qmetacontainer_types.QMetaSequence, ): bool =
 
   fcQMetaSequence_isSortable(self.h)
 
-proc canAddValueAtBegin*(self: QMetaSequence, ): bool =
+proc canAddValueAtBegin*(self: gen_qmetacontainer_types.QMetaSequence, ): bool =
 
   fcQMetaSequence_canAddValueAtBegin(self.h)
 
-proc addValueAtBegin*(self: QMetaSequence, container: pointer, value: pointer): void =
+proc addValueAtBegin*(self: gen_qmetacontainer_types.QMetaSequence, container: pointer, value: pointer): void =
 
   fcQMetaSequence_addValueAtBegin(self.h, container, value)
 
-proc canAddValueAtEnd*(self: QMetaSequence, ): bool =
+proc canAddValueAtEnd*(self: gen_qmetacontainer_types.QMetaSequence, ): bool =
 
   fcQMetaSequence_canAddValueAtEnd(self.h)
 
-proc addValueAtEnd*(self: QMetaSequence, container: pointer, value: pointer): void =
+proc addValueAtEnd*(self: gen_qmetacontainer_types.QMetaSequence, container: pointer, value: pointer): void =
 
   fcQMetaSequence_addValueAtEnd(self.h, container, value)
 
-proc canRemoveValueAtBegin*(self: QMetaSequence, ): bool =
+proc canRemoveValueAtBegin*(self: gen_qmetacontainer_types.QMetaSequence, ): bool =
 
   fcQMetaSequence_canRemoveValueAtBegin(self.h)
 
-proc removeValueAtBegin*(self: QMetaSequence, container: pointer): void =
+proc removeValueAtBegin*(self: gen_qmetacontainer_types.QMetaSequence, container: pointer): void =
 
   fcQMetaSequence_removeValueAtBegin(self.h, container)
 
-proc canRemoveValueAtEnd*(self: QMetaSequence, ): bool =
+proc canRemoveValueAtEnd*(self: gen_qmetacontainer_types.QMetaSequence, ): bool =
 
   fcQMetaSequence_canRemoveValueAtEnd(self.h)
 
-proc removeValueAtEnd*(self: QMetaSequence, container: pointer): void =
+proc removeValueAtEnd*(self: gen_qmetacontainer_types.QMetaSequence, container: pointer): void =
 
   fcQMetaSequence_removeValueAtEnd(self.h, container)
 
-proc canGetValueAtIndex*(self: QMetaSequence, ): bool =
+proc canGetValueAtIndex*(self: gen_qmetacontainer_types.QMetaSequence, ): bool =
 
   fcQMetaSequence_canGetValueAtIndex(self.h)
 
-proc valueAtIndex*(self: QMetaSequence, container: pointer, index: int64, resultVal: pointer): void =
+proc valueAtIndex*(self: gen_qmetacontainer_types.QMetaSequence, container: pointer, index: int64, resultVal: pointer): void =
 
   fcQMetaSequence_valueAtIndex(self.h, container, index, resultVal)
 
-proc canSetValueAtIndex*(self: QMetaSequence, ): bool =
+proc canSetValueAtIndex*(self: gen_qmetacontainer_types.QMetaSequence, ): bool =
 
   fcQMetaSequence_canSetValueAtIndex(self.h)
 
-proc setValueAtIndex*(self: QMetaSequence, container: pointer, index: int64, value: pointer): void =
+proc setValueAtIndex*(self: gen_qmetacontainer_types.QMetaSequence, container: pointer, index: int64, value: pointer): void =
 
   fcQMetaSequence_setValueAtIndex(self.h, container, index, value)
 
-proc canAddValue*(self: QMetaSequence, ): bool =
+proc canAddValue*(self: gen_qmetacontainer_types.QMetaSequence, ): bool =
 
   fcQMetaSequence_canAddValue(self.h)
 
-proc addValue*(self: QMetaSequence, container: pointer, value: pointer): void =
+proc addValue*(self: gen_qmetacontainer_types.QMetaSequence, container: pointer, value: pointer): void =
 
   fcQMetaSequence_addValue(self.h, container, value)
 
-proc canRemoveValue*(self: QMetaSequence, ): bool =
+proc canRemoveValue*(self: gen_qmetacontainer_types.QMetaSequence, ): bool =
 
   fcQMetaSequence_canRemoveValue(self.h)
 
-proc removeValue*(self: QMetaSequence, container: pointer): void =
+proc removeValue*(self: gen_qmetacontainer_types.QMetaSequence, container: pointer): void =
 
   fcQMetaSequence_removeValue(self.h, container)
 
-proc canGetValueAtIterator*(self: QMetaSequence, ): bool =
+proc canGetValueAtIterator*(self: gen_qmetacontainer_types.QMetaSequence, ): bool =
 
   fcQMetaSequence_canGetValueAtIterator(self.h)
 
-proc valueAtIterator*(self: QMetaSequence, iteratorVal: pointer, resultVal: pointer): void =
+proc valueAtIterator*(self: gen_qmetacontainer_types.QMetaSequence, iteratorVal: pointer, resultVal: pointer): void =
 
   fcQMetaSequence_valueAtIterator(self.h, iteratorVal, resultVal)
 
-proc canSetValueAtIterator*(self: QMetaSequence, ): bool =
+proc canSetValueAtIterator*(self: gen_qmetacontainer_types.QMetaSequence, ): bool =
 
   fcQMetaSequence_canSetValueAtIterator(self.h)
 
-proc setValueAtIterator*(self: QMetaSequence, iteratorVal: pointer, value: pointer): void =
+proc setValueAtIterator*(self: gen_qmetacontainer_types.QMetaSequence, iteratorVal: pointer, value: pointer): void =
 
   fcQMetaSequence_setValueAtIterator(self.h, iteratorVal, value)
 
-proc canInsertValueAtIterator*(self: QMetaSequence, ): bool =
+proc canInsertValueAtIterator*(self: gen_qmetacontainer_types.QMetaSequence, ): bool =
 
   fcQMetaSequence_canInsertValueAtIterator(self.h)
 
-proc insertValueAtIterator*(self: QMetaSequence, container: pointer, iteratorVal: pointer, value: pointer): void =
+proc insertValueAtIterator*(self: gen_qmetacontainer_types.QMetaSequence, container: pointer, iteratorVal: pointer, value: pointer): void =
 
   fcQMetaSequence_insertValueAtIterator(self.h, container, iteratorVal, value)
 
-proc canEraseValueAtIterator*(self: QMetaSequence, ): bool =
+proc canEraseValueAtIterator*(self: gen_qmetacontainer_types.QMetaSequence, ): bool =
 
   fcQMetaSequence_canEraseValueAtIterator(self.h)
 
-proc eraseValueAtIterator*(self: QMetaSequence, container: pointer, iteratorVal: pointer): void =
+proc eraseValueAtIterator*(self: gen_qmetacontainer_types.QMetaSequence, container: pointer, iteratorVal: pointer): void =
 
   fcQMetaSequence_eraseValueAtIterator(self.h, container, iteratorVal)
 
-proc canEraseRangeAtIterator*(self: QMetaSequence, ): bool =
+proc canEraseRangeAtIterator*(self: gen_qmetacontainer_types.QMetaSequence, ): bool =
 
   fcQMetaSequence_canEraseRangeAtIterator(self.h)
 
-proc eraseRangeAtIterator*(self: QMetaSequence, container: pointer, iterator1: pointer, iterator2: pointer): void =
+proc eraseRangeAtIterator*(self: gen_qmetacontainer_types.QMetaSequence, container: pointer, iterator1: pointer, iterator2: pointer): void =
 
   fcQMetaSequence_eraseRangeAtIterator(self.h, container, iterator1, iterator2)
 
-proc canGetValueAtConstIterator*(self: QMetaSequence, ): bool =
+proc canGetValueAtConstIterator*(self: gen_qmetacontainer_types.QMetaSequence, ): bool =
 
   fcQMetaSequence_canGetValueAtConstIterator(self.h)
 
-proc valueAtConstIterator*(self: QMetaSequence, iteratorVal: pointer, resultVal: pointer): void =
+proc valueAtConstIterator*(self: gen_qmetacontainer_types.QMetaSequence, iteratorVal: pointer, resultVal: pointer): void =
 
   fcQMetaSequence_valueAtConstIterator(self.h, iteratorVal, resultVal)
 
-proc delete*(self: QMetaSequence) =
+proc delete*(self: gen_qmetacontainer_types.QMetaSequence) =
   fcQMetaSequence_delete(self.h)
 
-func init*(T: type QMetaAssociation, h: ptr cQMetaAssociation): QMetaAssociation =
+func init*(T: type gen_qmetacontainer_types.QMetaAssociation, h: ptr cQMetaAssociation): gen_qmetacontainer_types.QMetaAssociation =
   T(h: h)
-proc create*(T: type QMetaAssociation, ): QMetaAssociation =
+proc create*(T: type gen_qmetacontainer_types.QMetaAssociation, ): gen_qmetacontainer_types.QMetaAssociation =
 
-  QMetaAssociation.init(fcQMetaAssociation_new())
-proc keyMetaType*(self: QMetaAssociation, ): gen_qmetatype.QMetaType =
+  gen_qmetacontainer_types.QMetaAssociation.init(fcQMetaAssociation_new())
+proc keyMetaType*(self: gen_qmetacontainer_types.QMetaAssociation, ): gen_qmetatype.QMetaType =
 
   gen_qmetatype.QMetaType(h: fcQMetaAssociation_keyMetaType(self.h))
 
-proc mappedMetaType*(self: QMetaAssociation, ): gen_qmetatype.QMetaType =
+proc mappedMetaType*(self: gen_qmetacontainer_types.QMetaAssociation, ): gen_qmetatype.QMetaType =
 
   gen_qmetatype.QMetaType(h: fcQMetaAssociation_mappedMetaType(self.h))
 
-proc canInsertKey*(self: QMetaAssociation, ): bool =
+proc canInsertKey*(self: gen_qmetacontainer_types.QMetaAssociation, ): bool =
 
   fcQMetaAssociation_canInsertKey(self.h)
 
-proc insertKey*(self: QMetaAssociation, container: pointer, key: pointer): void =
+proc insertKey*(self: gen_qmetacontainer_types.QMetaAssociation, container: pointer, key: pointer): void =
 
   fcQMetaAssociation_insertKey(self.h, container, key)
 
-proc canRemoveKey*(self: QMetaAssociation, ): bool =
+proc canRemoveKey*(self: gen_qmetacontainer_types.QMetaAssociation, ): bool =
 
   fcQMetaAssociation_canRemoveKey(self.h)
 
-proc removeKey*(self: QMetaAssociation, container: pointer, key: pointer): void =
+proc removeKey*(self: gen_qmetacontainer_types.QMetaAssociation, container: pointer, key: pointer): void =
 
   fcQMetaAssociation_removeKey(self.h, container, key)
 
-proc canContainsKey*(self: QMetaAssociation, ): bool =
+proc canContainsKey*(self: gen_qmetacontainer_types.QMetaAssociation, ): bool =
 
   fcQMetaAssociation_canContainsKey(self.h)
 
-proc containsKey*(self: QMetaAssociation, container: pointer, key: pointer): bool =
+proc containsKey*(self: gen_qmetacontainer_types.QMetaAssociation, container: pointer, key: pointer): bool =
 
   fcQMetaAssociation_containsKey(self.h, container, key)
 
-proc canGetMappedAtKey*(self: QMetaAssociation, ): bool =
+proc canGetMappedAtKey*(self: gen_qmetacontainer_types.QMetaAssociation, ): bool =
 
   fcQMetaAssociation_canGetMappedAtKey(self.h)
 
-proc mappedAtKey*(self: QMetaAssociation, container: pointer, key: pointer, mapped: pointer): void =
+proc mappedAtKey*(self: gen_qmetacontainer_types.QMetaAssociation, container: pointer, key: pointer, mapped: pointer): void =
 
   fcQMetaAssociation_mappedAtKey(self.h, container, key, mapped)
 
-proc canSetMappedAtKey*(self: QMetaAssociation, ): bool =
+proc canSetMappedAtKey*(self: gen_qmetacontainer_types.QMetaAssociation, ): bool =
 
   fcQMetaAssociation_canSetMappedAtKey(self.h)
 
-proc setMappedAtKey*(self: QMetaAssociation, container: pointer, key: pointer, mapped: pointer): void =
+proc setMappedAtKey*(self: gen_qmetacontainer_types.QMetaAssociation, container: pointer, key: pointer, mapped: pointer): void =
 
   fcQMetaAssociation_setMappedAtKey(self.h, container, key, mapped)
 
-proc canGetKeyAtIterator*(self: QMetaAssociation, ): bool =
+proc canGetKeyAtIterator*(self: gen_qmetacontainer_types.QMetaAssociation, ): bool =
 
   fcQMetaAssociation_canGetKeyAtIterator(self.h)
 
-proc keyAtIterator*(self: QMetaAssociation, iteratorVal: pointer, key: pointer): void =
+proc keyAtIterator*(self: gen_qmetacontainer_types.QMetaAssociation, iteratorVal: pointer, key: pointer): void =
 
   fcQMetaAssociation_keyAtIterator(self.h, iteratorVal, key)
 
-proc canGetKeyAtConstIterator*(self: QMetaAssociation, ): bool =
+proc canGetKeyAtConstIterator*(self: gen_qmetacontainer_types.QMetaAssociation, ): bool =
 
   fcQMetaAssociation_canGetKeyAtConstIterator(self.h)
 
-proc keyAtConstIterator*(self: QMetaAssociation, iteratorVal: pointer, key: pointer): void =
+proc keyAtConstIterator*(self: gen_qmetacontainer_types.QMetaAssociation, iteratorVal: pointer, key: pointer): void =
 
   fcQMetaAssociation_keyAtConstIterator(self.h, iteratorVal, key)
 
-proc canGetMappedAtIterator*(self: QMetaAssociation, ): bool =
+proc canGetMappedAtIterator*(self: gen_qmetacontainer_types.QMetaAssociation, ): bool =
 
   fcQMetaAssociation_canGetMappedAtIterator(self.h)
 
-proc mappedAtIterator*(self: QMetaAssociation, iteratorVal: pointer, mapped: pointer): void =
+proc mappedAtIterator*(self: gen_qmetacontainer_types.QMetaAssociation, iteratorVal: pointer, mapped: pointer): void =
 
   fcQMetaAssociation_mappedAtIterator(self.h, iteratorVal, mapped)
 
-proc canGetMappedAtConstIterator*(self: QMetaAssociation, ): bool =
+proc canGetMappedAtConstIterator*(self: gen_qmetacontainer_types.QMetaAssociation, ): bool =
 
   fcQMetaAssociation_canGetMappedAtConstIterator(self.h)
 
-proc mappedAtConstIterator*(self: QMetaAssociation, iteratorVal: pointer, mapped: pointer): void =
+proc mappedAtConstIterator*(self: gen_qmetacontainer_types.QMetaAssociation, iteratorVal: pointer, mapped: pointer): void =
 
   fcQMetaAssociation_mappedAtConstIterator(self.h, iteratorVal, mapped)
 
-proc canSetMappedAtIterator*(self: QMetaAssociation, ): bool =
+proc canSetMappedAtIterator*(self: gen_qmetacontainer_types.QMetaAssociation, ): bool =
 
   fcQMetaAssociation_canSetMappedAtIterator(self.h)
 
-proc setMappedAtIterator*(self: QMetaAssociation, iteratorVal: pointer, mapped: pointer): void =
+proc setMappedAtIterator*(self: gen_qmetacontainer_types.QMetaAssociation, iteratorVal: pointer, mapped: pointer): void =
 
   fcQMetaAssociation_setMappedAtIterator(self.h, iteratorVal, mapped)
 
-proc canCreateIteratorAtKey*(self: QMetaAssociation, ): bool =
+proc canCreateIteratorAtKey*(self: gen_qmetacontainer_types.QMetaAssociation, ): bool =
 
   fcQMetaAssociation_canCreateIteratorAtKey(self.h)
 
-proc createIteratorAtKey*(self: QMetaAssociation, container: pointer, key: pointer): pointer =
+proc createIteratorAtKey*(self: gen_qmetacontainer_types.QMetaAssociation, container: pointer, key: pointer): pointer =
 
   fcQMetaAssociation_createIteratorAtKey(self.h, container, key)
 
-proc canCreateConstIteratorAtKey*(self: QMetaAssociation, ): bool =
+proc canCreateConstIteratorAtKey*(self: gen_qmetacontainer_types.QMetaAssociation, ): bool =
 
   fcQMetaAssociation_canCreateConstIteratorAtKey(self.h)
 
-proc createConstIteratorAtKey*(self: QMetaAssociation, container: pointer, key: pointer): pointer =
+proc createConstIteratorAtKey*(self: gen_qmetacontainer_types.QMetaAssociation, container: pointer, key: pointer): pointer =
 
   fcQMetaAssociation_createConstIteratorAtKey(self.h, container, key)
 
-proc delete*(self: QMetaAssociation) =
+proc delete*(self: gen_qmetacontainer_types.QMetaAssociation) =
   fcQMetaAssociation_delete(self.h)

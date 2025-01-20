@@ -34,23 +34,19 @@ const cflags = gorge("pkg-config -cflags Qt5Widgets")
 {.compile("gen_qtouchdevice.cpp", cflags).}
 
 
-type QTouchDeviceDeviceType* = cint
-const
-  QTouchDeviceTouchScreen* = 0
-  QTouchDeviceTouchPad* = 1
+type QTouchDeviceDeviceTypeEnum* = distinct cint
+template TouchScreen*(_: type QTouchDeviceDeviceTypeEnum): untyped = 0
+template TouchPad*(_: type QTouchDeviceDeviceTypeEnum): untyped = 1
 
 
-
-type QTouchDeviceCapabilityFlag* = cint
-const
-  QTouchDevicePosition* = 1
-  QTouchDeviceArea* = 2
-  QTouchDevicePressure* = 4
-  QTouchDeviceVelocity* = 8
-  QTouchDeviceRawPositions* = 16
-  QTouchDeviceNormalizedPosition* = 32
-  QTouchDeviceMouseEmulation* = 64
-
+type QTouchDeviceCapabilityFlagEnum* = distinct cint
+template Position*(_: type QTouchDeviceCapabilityFlagEnum): untyped = 1
+template Area*(_: type QTouchDeviceCapabilityFlagEnum): untyped = 2
+template Pressure*(_: type QTouchDeviceCapabilityFlagEnum): untyped = 4
+template Velocity*(_: type QTouchDeviceCapabilityFlagEnum): untyped = 8
+template RawPositions*(_: type QTouchDeviceCapabilityFlagEnum): untyped = 16
+template NormalizedPosition*(_: type QTouchDeviceCapabilityFlagEnum): untyped = 32
+template MouseEmulation*(_: type QTouchDeviceCapabilityFlagEnum): untyped = 64
 
 
 import gen_qtouchdevice_types
@@ -77,56 +73,56 @@ proc fcQTouchDevice_staticMetaObject(): pointer {.importc: "QTouchDevice_staticM
 proc fcQTouchDevice_delete(self: pointer) {.importc: "QTouchDevice_delete".}
 
 
-func init*(T: type QTouchDevice, h: ptr cQTouchDevice): QTouchDevice =
+func init*(T: type gen_qtouchdevice_types.QTouchDevice, h: ptr cQTouchDevice): gen_qtouchdevice_types.QTouchDevice =
   T(h: h)
-proc create*(T: type QTouchDevice, ): QTouchDevice =
+proc create*(T: type gen_qtouchdevice_types.QTouchDevice, ): gen_qtouchdevice_types.QTouchDevice =
 
-  QTouchDevice.init(fcQTouchDevice_new())
-proc devices*(_: type QTouchDevice, ): seq[QTouchDevice] =
+  gen_qtouchdevice_types.QTouchDevice.init(fcQTouchDevice_new())
+proc devices*(_: type gen_qtouchdevice_types.QTouchDevice, ): seq[gen_qtouchdevice_types.QTouchDevice] =
 
   var v_ma = fcQTouchDevice_devices()
-  var vx_ret = newSeq[QTouchDevice](int(v_ma.len))
+  var vx_ret = newSeq[gen_qtouchdevice_types.QTouchDevice](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
-    vx_ret[i] = QTouchDevice(h: v_outCast[i])
+    vx_ret[i] = gen_qtouchdevice_types.QTouchDevice(h: v_outCast[i])
   vx_ret
 
-proc name*(self: QTouchDevice, ): string =
+proc name*(self: gen_qtouchdevice_types.QTouchDevice, ): string =
 
   let v_ms = fcQTouchDevice_name(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc typeX*(self: QTouchDevice, ): QTouchDeviceDeviceType =
+proc typeX*(self: gen_qtouchdevice_types.QTouchDevice, ): cint =
 
-  QTouchDeviceDeviceType(fcQTouchDevice_typeX(self.h))
+  cint(fcQTouchDevice_typeX(self.h))
 
-proc capabilities*(self: QTouchDevice, ): QTouchDeviceCapabilityFlag =
+proc capabilities*(self: gen_qtouchdevice_types.QTouchDevice, ): cint =
 
-  QTouchDeviceCapabilityFlag(fcQTouchDevice_capabilities(self.h))
+  cint(fcQTouchDevice_capabilities(self.h))
 
-proc maximumTouchPoints*(self: QTouchDevice, ): cint =
+proc maximumTouchPoints*(self: gen_qtouchdevice_types.QTouchDevice, ): cint =
 
   fcQTouchDevice_maximumTouchPoints(self.h)
 
-proc setName*(self: QTouchDevice, name: string): void =
+proc setName*(self: gen_qtouchdevice_types.QTouchDevice, name: string): void =
 
   fcQTouchDevice_setName(self.h, struct_miqt_string(data: name, len: csize_t(len(name))))
 
-proc setType*(self: QTouchDevice, devType: QTouchDeviceDeviceType): void =
+proc setType*(self: gen_qtouchdevice_types.QTouchDevice, devType: cint): void =
 
   fcQTouchDevice_setType(self.h, cint(devType))
 
-proc setCapabilities*(self: QTouchDevice, caps: QTouchDeviceCapabilityFlag): void =
+proc setCapabilities*(self: gen_qtouchdevice_types.QTouchDevice, caps: cint): void =
 
   fcQTouchDevice_setCapabilities(self.h, cint(caps))
 
-proc setMaximumTouchPoints*(self: QTouchDevice, max: cint): void =
+proc setMaximumTouchPoints*(self: gen_qtouchdevice_types.QTouchDevice, max: cint): void =
 
   fcQTouchDevice_setMaximumTouchPoints(self.h, max)
 
-proc staticMetaObject*(_: type QTouchDevice): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qtouchdevice_types.QTouchDevice): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQTouchDevice_staticMetaObject())
-proc delete*(self: QTouchDevice) =
+proc delete*(self: gen_qtouchdevice_types.QTouchDevice) =
   fcQTouchDevice_delete(self.h)

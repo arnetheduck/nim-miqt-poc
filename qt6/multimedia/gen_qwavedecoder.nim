@@ -41,7 +41,6 @@ import
   gen_qaudioformat,
   gen_qcoreevent,
   gen_qiodevice,
-  gen_qiodevicebase,
   gen_qmetaobject,
   gen_qobject,
   gen_qobjectdefs
@@ -49,7 +48,6 @@ export
   gen_qaudioformat,
   gen_qcoreevent,
   gen_qiodevice,
-  gen_qiodevicebase,
   gen_qmetaobject,
   gen_qobject,
   gen_qobjectdefs
@@ -135,84 +133,84 @@ proc fcQWaveDecoder_staticMetaObject(): pointer {.importc: "QWaveDecoder_staticM
 proc fcQWaveDecoder_delete(self: pointer) {.importc: "QWaveDecoder_delete".}
 
 
-func init*(T: type QWaveDecoder, h: ptr cQWaveDecoder): QWaveDecoder =
+func init*(T: type gen_qwavedecoder_types.QWaveDecoder, h: ptr cQWaveDecoder): gen_qwavedecoder_types.QWaveDecoder =
   T(h: h)
-proc create*(T: type QWaveDecoder, device: gen_qiodevice.QIODevice): QWaveDecoder =
+proc create*(T: type gen_qwavedecoder_types.QWaveDecoder, device: gen_qiodevice.QIODevice): gen_qwavedecoder_types.QWaveDecoder =
 
-  QWaveDecoder.init(fcQWaveDecoder_new(device.h))
-proc create*(T: type QWaveDecoder, device: gen_qiodevice.QIODevice, format: gen_qaudioformat.QAudioFormat): QWaveDecoder =
+  gen_qwavedecoder_types.QWaveDecoder.init(fcQWaveDecoder_new(device.h))
+proc create*(T: type gen_qwavedecoder_types.QWaveDecoder, device: gen_qiodevice.QIODevice, format: gen_qaudioformat.QAudioFormat): gen_qwavedecoder_types.QWaveDecoder =
 
-  QWaveDecoder.init(fcQWaveDecoder_new2(device.h, format.h))
-proc create2*(T: type QWaveDecoder, device: gen_qiodevice.QIODevice, parent: gen_qobject.QObject): QWaveDecoder =
+  gen_qwavedecoder_types.QWaveDecoder.init(fcQWaveDecoder_new2(device.h, format.h))
+proc create2*(T: type gen_qwavedecoder_types.QWaveDecoder, device: gen_qiodevice.QIODevice, parent: gen_qobject.QObject): gen_qwavedecoder_types.QWaveDecoder =
 
-  QWaveDecoder.init(fcQWaveDecoder_new3(device.h, parent.h))
-proc create*(T: type QWaveDecoder, device: gen_qiodevice.QIODevice, format: gen_qaudioformat.QAudioFormat, parent: gen_qobject.QObject): QWaveDecoder =
+  gen_qwavedecoder_types.QWaveDecoder.init(fcQWaveDecoder_new3(device.h, parent.h))
+proc create*(T: type gen_qwavedecoder_types.QWaveDecoder, device: gen_qiodevice.QIODevice, format: gen_qaudioformat.QAudioFormat, parent: gen_qobject.QObject): gen_qwavedecoder_types.QWaveDecoder =
 
-  QWaveDecoder.init(fcQWaveDecoder_new4(device.h, format.h, parent.h))
-proc metaObject*(self: QWaveDecoder, ): gen_qobjectdefs.QMetaObject =
+  gen_qwavedecoder_types.QWaveDecoder.init(fcQWaveDecoder_new4(device.h, format.h, parent.h))
+proc metaObject*(self: gen_qwavedecoder_types.QWaveDecoder, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQWaveDecoder_metaObject(self.h))
 
-proc metacast*(self: QWaveDecoder, param1: cstring): pointer =
+proc metacast*(self: gen_qwavedecoder_types.QWaveDecoder, param1: cstring): pointer =
 
   fcQWaveDecoder_metacast(self.h, param1)
 
-proc metacall*(self: QWaveDecoder, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qwavedecoder_types.QWaveDecoder, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQWaveDecoder_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QWaveDecoder, s: cstring): string =
+proc tr*(_: type gen_qwavedecoder_types.QWaveDecoder, s: cstring): string =
 
   let v_ms = fcQWaveDecoder_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc audioFormat*(self: QWaveDecoder, ): gen_qaudioformat.QAudioFormat =
+proc audioFormat*(self: gen_qwavedecoder_types.QWaveDecoder, ): gen_qaudioformat.QAudioFormat =
 
   gen_qaudioformat.QAudioFormat(h: fcQWaveDecoder_audioFormat(self.h))
 
-proc getDevice*(self: QWaveDecoder, ): gen_qiodevice.QIODevice =
+proc getDevice*(self: gen_qwavedecoder_types.QWaveDecoder, ): gen_qiodevice.QIODevice =
 
   gen_qiodevice.QIODevice(h: fcQWaveDecoder_getDevice(self.h))
 
-proc duration*(self: QWaveDecoder, ): cint =
+proc duration*(self: gen_qwavedecoder_types.QWaveDecoder, ): cint =
 
   fcQWaveDecoder_duration(self.h)
 
-proc headerLength*(_: type QWaveDecoder, ): clonglong =
+proc headerLength*(_: type gen_qwavedecoder_types.QWaveDecoder, ): clonglong =
 
   fcQWaveDecoder_headerLength()
 
-proc open*(self: QWaveDecoder, mode: gen_qiodevicebase.QIODeviceBaseOpenModeFlag): bool =
+proc open*(self: gen_qwavedecoder_types.QWaveDecoder, mode: cint): bool =
 
   fcQWaveDecoder_open(self.h, cint(mode))
 
-proc close*(self: QWaveDecoder, ): void =
+proc close*(self: gen_qwavedecoder_types.QWaveDecoder, ): void =
 
   fcQWaveDecoder_close(self.h)
 
-proc seek*(self: QWaveDecoder, pos: clonglong): bool =
+proc seek*(self: gen_qwavedecoder_types.QWaveDecoder, pos: clonglong): bool =
 
   fcQWaveDecoder_seek(self.h, pos)
 
-proc pos*(self: QWaveDecoder, ): clonglong =
+proc pos*(self: gen_qwavedecoder_types.QWaveDecoder, ): clonglong =
 
   fcQWaveDecoder_pos(self.h)
 
-proc size*(self: QWaveDecoder, ): clonglong =
+proc size*(self: gen_qwavedecoder_types.QWaveDecoder, ): clonglong =
 
   fcQWaveDecoder_size(self.h)
 
-proc isSequential*(self: QWaveDecoder, ): bool =
+proc isSequential*(self: gen_qwavedecoder_types.QWaveDecoder, ): bool =
 
   fcQWaveDecoder_isSequential(self.h)
 
-proc bytesAvailable*(self: QWaveDecoder, ): clonglong =
+proc bytesAvailable*(self: gen_qwavedecoder_types.QWaveDecoder, ): clonglong =
 
   fcQWaveDecoder_bytesAvailable(self.h)
 
-proc formatKnown*(self: QWaveDecoder, ): void =
+proc formatKnown*(self: gen_qwavedecoder_types.QWaveDecoder, ): void =
 
   fcQWaveDecoder_formatKnown(self.h)
 
@@ -222,13 +220,13 @@ proc miqt_exec_callback_QWaveDecoder_formatKnown(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onformatKnown*(self: QWaveDecoder, slot: proc()) =
+proc onformatKnown*(self: gen_qwavedecoder_types.QWaveDecoder, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQWaveDecoder_connect_formatKnown(self.h, cast[int](addr tmp[]))
-proc parsingError*(self: QWaveDecoder, ): void =
+proc parsingError*(self: gen_qwavedecoder_types.QWaveDecoder, ): void =
 
   fcQWaveDecoder_parsingError(self.h)
 
@@ -238,628 +236,503 @@ proc miqt_exec_callback_QWaveDecoder_parsingError(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onparsingError*(self: QWaveDecoder, slot: proc()) =
+proc onparsingError*(self: gen_qwavedecoder_types.QWaveDecoder, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQWaveDecoder_connect_parsingError(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QWaveDecoder, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qwavedecoder_types.QWaveDecoder, s: cstring, c: cstring): string =
 
   let v_ms = fcQWaveDecoder_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QWaveDecoder, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qwavedecoder_types.QWaveDecoder, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQWaveDecoder_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QWaveDecoder, ): gen_qobjectdefs.QMetaObject =
-
+proc QWaveDecodermetaObject*(self: gen_qwavedecoder_types.QWaveDecoder, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQWaveDecoder_virtualbase_metaObject(self.h))
 
-type QWaveDecodermetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QWaveDecoder, slot: proc(super: QWaveDecodermetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QWaveDecodermetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qwavedecoder_types.QWaveDecoder, slot: QWaveDecodermetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QWaveDecodermetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QWaveDecodermetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWaveDecoder_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWaveDecoder_metaObject(self: ptr cQWaveDecoder, slot: int): pointer {.exportc: "miqt_exec_callback_QWaveDecoder_metaObject ".} =
-  type Cb = proc(super: QWaveDecodermetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QWaveDecoder(h: self), )
+  var nimfunc = cast[ptr QWaveDecodermetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QWaveDecoder, param1: cstring): pointer =
-
+proc QWaveDecodermetacast*(self: gen_qwavedecoder_types.QWaveDecoder, param1: cstring): pointer =
 
   fQWaveDecoder_virtualbase_metacast(self.h, param1)
 
-type QWaveDecodermetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QWaveDecoder, slot: proc(super: QWaveDecodermetacastBase, param1: cstring): pointer) =
+type QWaveDecodermetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qwavedecoder_types.QWaveDecoder, slot: QWaveDecodermetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QWaveDecodermetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QWaveDecodermetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWaveDecoder_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWaveDecoder_metacast(self: ptr cQWaveDecoder, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QWaveDecoder_metacast ".} =
-  type Cb = proc(super: QWaveDecodermetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QWaveDecoder(h: self), param1)
+  var nimfunc = cast[ptr QWaveDecodermetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QWaveDecoder, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QWaveDecodermetacall*(self: gen_qwavedecoder_types.QWaveDecoder, param1: cint, param2: cint, param3: pointer): cint =
 
   fQWaveDecoder_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QWaveDecodermetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QWaveDecoder, slot: proc(super: QWaveDecodermetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QWaveDecodermetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qwavedecoder_types.QWaveDecoder, slot: QWaveDecodermetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QWaveDecodermetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QWaveDecodermetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWaveDecoder_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWaveDecoder_metacall(self: ptr cQWaveDecoder, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QWaveDecoder_metacall ".} =
-  type Cb = proc(super: QWaveDecodermetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QWaveDecoder(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QWaveDecodermetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_open(self: QWaveDecoder, mode: gen_qiodevicebase.QIODeviceBaseOpenModeFlag): bool =
-
+proc QWaveDecoderopen*(self: gen_qwavedecoder_types.QWaveDecoder, mode: cint): bool =
 
   fQWaveDecoder_virtualbase_open(self.h, cint(mode))
 
-type QWaveDecoderopenBase* = proc(mode: gen_qiodevicebase.QIODeviceBaseOpenModeFlag): bool
-proc onopen*(self: QWaveDecoder, slot: proc(super: QWaveDecoderopenBase, mode: gen_qiodevicebase.QIODeviceBaseOpenModeFlag): bool) =
+type QWaveDecoderopenProc* = proc(mode: cint): bool
+proc onopen*(self: gen_qwavedecoder_types.QWaveDecoder, slot: QWaveDecoderopenProc) =
   # TODO check subclass
-  type Cb = proc(super: QWaveDecoderopenBase, mode: gen_qiodevicebase.QIODeviceBaseOpenModeFlag): bool
-  var tmp = new Cb
+  var tmp = new QWaveDecoderopenProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWaveDecoder_override_virtual_open(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWaveDecoder_open(self: ptr cQWaveDecoder, slot: int, mode: cint): bool {.exportc: "miqt_exec_callback_QWaveDecoder_open ".} =
-  type Cb = proc(super: QWaveDecoderopenBase, mode: gen_qiodevicebase.QIODeviceBaseOpenModeFlag): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(mode: gen_qiodevicebase.QIODeviceBaseOpenModeFlag): auto =
-    callVirtualBase_open(QWaveDecoder(h: self), mode)
-  let slotval1 = gen_qiodevicebase.QIODeviceBaseOpenModeFlag(mode)
+  var nimfunc = cast[ptr QWaveDecoderopenProc](cast[pointer](slot))
+  let slotval1 = cint(mode)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_close(self: QWaveDecoder, ): void =
-
+proc QWaveDecoderclose*(self: gen_qwavedecoder_types.QWaveDecoder, ): void =
 
   fQWaveDecoder_virtualbase_close(self.h)
 
-type QWaveDecodercloseBase* = proc(): void
-proc onclose*(self: QWaveDecoder, slot: proc(super: QWaveDecodercloseBase): void) =
+type QWaveDecodercloseProc* = proc(): void
+proc onclose*(self: gen_qwavedecoder_types.QWaveDecoder, slot: QWaveDecodercloseProc) =
   # TODO check subclass
-  type Cb = proc(super: QWaveDecodercloseBase): void
-  var tmp = new Cb
+  var tmp = new QWaveDecodercloseProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWaveDecoder_override_virtual_close(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWaveDecoder_close(self: ptr cQWaveDecoder, slot: int): void {.exportc: "miqt_exec_callback_QWaveDecoder_close ".} =
-  type Cb = proc(super: QWaveDecodercloseBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_close(QWaveDecoder(h: self), )
+  var nimfunc = cast[ptr QWaveDecodercloseProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_seek(self: QWaveDecoder, pos: clonglong): bool =
-
+  nimfunc[]()
+proc QWaveDecoderseek*(self: gen_qwavedecoder_types.QWaveDecoder, pos: clonglong): bool =
 
   fQWaveDecoder_virtualbase_seek(self.h, pos)
 
-type QWaveDecoderseekBase* = proc(pos: clonglong): bool
-proc onseek*(self: QWaveDecoder, slot: proc(super: QWaveDecoderseekBase, pos: clonglong): bool) =
+type QWaveDecoderseekProc* = proc(pos: clonglong): bool
+proc onseek*(self: gen_qwavedecoder_types.QWaveDecoder, slot: QWaveDecoderseekProc) =
   # TODO check subclass
-  type Cb = proc(super: QWaveDecoderseekBase, pos: clonglong): bool
-  var tmp = new Cb
+  var tmp = new QWaveDecoderseekProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWaveDecoder_override_virtual_seek(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWaveDecoder_seek(self: ptr cQWaveDecoder, slot: int, pos: clonglong): bool {.exportc: "miqt_exec_callback_QWaveDecoder_seek ".} =
-  type Cb = proc(super: QWaveDecoderseekBase, pos: clonglong): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(pos: clonglong): auto =
-    callVirtualBase_seek(QWaveDecoder(h: self), pos)
+  var nimfunc = cast[ptr QWaveDecoderseekProc](cast[pointer](slot))
   let slotval1 = pos
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_pos(self: QWaveDecoder, ): clonglong =
-
+proc QWaveDecoderpos*(self: gen_qwavedecoder_types.QWaveDecoder, ): clonglong =
 
   fQWaveDecoder_virtualbase_pos(self.h)
 
-type QWaveDecoderposBase* = proc(): clonglong
-proc onpos*(self: QWaveDecoder, slot: proc(super: QWaveDecoderposBase): clonglong) =
+type QWaveDecoderposProc* = proc(): clonglong
+proc onpos*(self: gen_qwavedecoder_types.QWaveDecoder, slot: QWaveDecoderposProc) =
   # TODO check subclass
-  type Cb = proc(super: QWaveDecoderposBase): clonglong
-  var tmp = new Cb
+  var tmp = new QWaveDecoderposProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWaveDecoder_override_virtual_pos(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWaveDecoder_pos(self: ptr cQWaveDecoder, slot: int): clonglong {.exportc: "miqt_exec_callback_QWaveDecoder_pos ".} =
-  type Cb = proc(super: QWaveDecoderposBase): clonglong
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_pos(QWaveDecoder(h: self), )
+  var nimfunc = cast[ptr QWaveDecoderposProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_size(self: QWaveDecoder, ): clonglong =
-
+proc QWaveDecodersize*(self: gen_qwavedecoder_types.QWaveDecoder, ): clonglong =
 
   fQWaveDecoder_virtualbase_size(self.h)
 
-type QWaveDecodersizeBase* = proc(): clonglong
-proc onsize*(self: QWaveDecoder, slot: proc(super: QWaveDecodersizeBase): clonglong) =
+type QWaveDecodersizeProc* = proc(): clonglong
+proc onsize*(self: gen_qwavedecoder_types.QWaveDecoder, slot: QWaveDecodersizeProc) =
   # TODO check subclass
-  type Cb = proc(super: QWaveDecodersizeBase): clonglong
-  var tmp = new Cb
+  var tmp = new QWaveDecodersizeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWaveDecoder_override_virtual_size(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWaveDecoder_size(self: ptr cQWaveDecoder, slot: int): clonglong {.exportc: "miqt_exec_callback_QWaveDecoder_size ".} =
-  type Cb = proc(super: QWaveDecodersizeBase): clonglong
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_size(QWaveDecoder(h: self), )
+  var nimfunc = cast[ptr QWaveDecodersizeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_isSequential(self: QWaveDecoder, ): bool =
-
+proc QWaveDecoderisSequential*(self: gen_qwavedecoder_types.QWaveDecoder, ): bool =
 
   fQWaveDecoder_virtualbase_isSequential(self.h)
 
-type QWaveDecoderisSequentialBase* = proc(): bool
-proc onisSequential*(self: QWaveDecoder, slot: proc(super: QWaveDecoderisSequentialBase): bool) =
+type QWaveDecoderisSequentialProc* = proc(): bool
+proc onisSequential*(self: gen_qwavedecoder_types.QWaveDecoder, slot: QWaveDecoderisSequentialProc) =
   # TODO check subclass
-  type Cb = proc(super: QWaveDecoderisSequentialBase): bool
-  var tmp = new Cb
+  var tmp = new QWaveDecoderisSequentialProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWaveDecoder_override_virtual_isSequential(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWaveDecoder_isSequential(self: ptr cQWaveDecoder, slot: int): bool {.exportc: "miqt_exec_callback_QWaveDecoder_isSequential ".} =
-  type Cb = proc(super: QWaveDecoderisSequentialBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_isSequential(QWaveDecoder(h: self), )
+  var nimfunc = cast[ptr QWaveDecoderisSequentialProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_bytesAvailable(self: QWaveDecoder, ): clonglong =
-
+proc QWaveDecoderbytesAvailable*(self: gen_qwavedecoder_types.QWaveDecoder, ): clonglong =
 
   fQWaveDecoder_virtualbase_bytesAvailable(self.h)
 
-type QWaveDecoderbytesAvailableBase* = proc(): clonglong
-proc onbytesAvailable*(self: QWaveDecoder, slot: proc(super: QWaveDecoderbytesAvailableBase): clonglong) =
+type QWaveDecoderbytesAvailableProc* = proc(): clonglong
+proc onbytesAvailable*(self: gen_qwavedecoder_types.QWaveDecoder, slot: QWaveDecoderbytesAvailableProc) =
   # TODO check subclass
-  type Cb = proc(super: QWaveDecoderbytesAvailableBase): clonglong
-  var tmp = new Cb
+  var tmp = new QWaveDecoderbytesAvailableProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWaveDecoder_override_virtual_bytesAvailable(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWaveDecoder_bytesAvailable(self: ptr cQWaveDecoder, slot: int): clonglong {.exportc: "miqt_exec_callback_QWaveDecoder_bytesAvailable ".} =
-  type Cb = proc(super: QWaveDecoderbytesAvailableBase): clonglong
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_bytesAvailable(QWaveDecoder(h: self), )
+  var nimfunc = cast[ptr QWaveDecoderbytesAvailableProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_atEnd(self: QWaveDecoder, ): bool =
-
+proc QWaveDecoderatEnd*(self: gen_qwavedecoder_types.QWaveDecoder, ): bool =
 
   fQWaveDecoder_virtualbase_atEnd(self.h)
 
-type QWaveDecoderatEndBase* = proc(): bool
-proc onatEnd*(self: QWaveDecoder, slot: proc(super: QWaveDecoderatEndBase): bool) =
+type QWaveDecoderatEndProc* = proc(): bool
+proc onatEnd*(self: gen_qwavedecoder_types.QWaveDecoder, slot: QWaveDecoderatEndProc) =
   # TODO check subclass
-  type Cb = proc(super: QWaveDecoderatEndBase): bool
-  var tmp = new Cb
+  var tmp = new QWaveDecoderatEndProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWaveDecoder_override_virtual_atEnd(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWaveDecoder_atEnd(self: ptr cQWaveDecoder, slot: int): bool {.exportc: "miqt_exec_callback_QWaveDecoder_atEnd ".} =
-  type Cb = proc(super: QWaveDecoderatEndBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_atEnd(QWaveDecoder(h: self), )
+  var nimfunc = cast[ptr QWaveDecoderatEndProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_reset(self: QWaveDecoder, ): bool =
-
+proc QWaveDecoderreset*(self: gen_qwavedecoder_types.QWaveDecoder, ): bool =
 
   fQWaveDecoder_virtualbase_reset(self.h)
 
-type QWaveDecoderresetBase* = proc(): bool
-proc onreset*(self: QWaveDecoder, slot: proc(super: QWaveDecoderresetBase): bool) =
+type QWaveDecoderresetProc* = proc(): bool
+proc onreset*(self: gen_qwavedecoder_types.QWaveDecoder, slot: QWaveDecoderresetProc) =
   # TODO check subclass
-  type Cb = proc(super: QWaveDecoderresetBase): bool
-  var tmp = new Cb
+  var tmp = new QWaveDecoderresetProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWaveDecoder_override_virtual_reset(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWaveDecoder_reset(self: ptr cQWaveDecoder, slot: int): bool {.exportc: "miqt_exec_callback_QWaveDecoder_reset ".} =
-  type Cb = proc(super: QWaveDecoderresetBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_reset(QWaveDecoder(h: self), )
+  var nimfunc = cast[ptr QWaveDecoderresetProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_bytesToWrite(self: QWaveDecoder, ): clonglong =
-
+proc QWaveDecoderbytesToWrite*(self: gen_qwavedecoder_types.QWaveDecoder, ): clonglong =
 
   fQWaveDecoder_virtualbase_bytesToWrite(self.h)
 
-type QWaveDecoderbytesToWriteBase* = proc(): clonglong
-proc onbytesToWrite*(self: QWaveDecoder, slot: proc(super: QWaveDecoderbytesToWriteBase): clonglong) =
+type QWaveDecoderbytesToWriteProc* = proc(): clonglong
+proc onbytesToWrite*(self: gen_qwavedecoder_types.QWaveDecoder, slot: QWaveDecoderbytesToWriteProc) =
   # TODO check subclass
-  type Cb = proc(super: QWaveDecoderbytesToWriteBase): clonglong
-  var tmp = new Cb
+  var tmp = new QWaveDecoderbytesToWriteProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWaveDecoder_override_virtual_bytesToWrite(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWaveDecoder_bytesToWrite(self: ptr cQWaveDecoder, slot: int): clonglong {.exportc: "miqt_exec_callback_QWaveDecoder_bytesToWrite ".} =
-  type Cb = proc(super: QWaveDecoderbytesToWriteBase): clonglong
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_bytesToWrite(QWaveDecoder(h: self), )
+  var nimfunc = cast[ptr QWaveDecoderbytesToWriteProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_canReadLine(self: QWaveDecoder, ): bool =
-
+proc QWaveDecodercanReadLine*(self: gen_qwavedecoder_types.QWaveDecoder, ): bool =
 
   fQWaveDecoder_virtualbase_canReadLine(self.h)
 
-type QWaveDecodercanReadLineBase* = proc(): bool
-proc oncanReadLine*(self: QWaveDecoder, slot: proc(super: QWaveDecodercanReadLineBase): bool) =
+type QWaveDecodercanReadLineProc* = proc(): bool
+proc oncanReadLine*(self: gen_qwavedecoder_types.QWaveDecoder, slot: QWaveDecodercanReadLineProc) =
   # TODO check subclass
-  type Cb = proc(super: QWaveDecodercanReadLineBase): bool
-  var tmp = new Cb
+  var tmp = new QWaveDecodercanReadLineProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWaveDecoder_override_virtual_canReadLine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWaveDecoder_canReadLine(self: ptr cQWaveDecoder, slot: int): bool {.exportc: "miqt_exec_callback_QWaveDecoder_canReadLine ".} =
-  type Cb = proc(super: QWaveDecodercanReadLineBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_canReadLine(QWaveDecoder(h: self), )
+  var nimfunc = cast[ptr QWaveDecodercanReadLineProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_waitForReadyRead(self: QWaveDecoder, msecs: cint): bool =
-
+proc QWaveDecoderwaitForReadyRead*(self: gen_qwavedecoder_types.QWaveDecoder, msecs: cint): bool =
 
   fQWaveDecoder_virtualbase_waitForReadyRead(self.h, msecs)
 
-type QWaveDecoderwaitForReadyReadBase* = proc(msecs: cint): bool
-proc onwaitForReadyRead*(self: QWaveDecoder, slot: proc(super: QWaveDecoderwaitForReadyReadBase, msecs: cint): bool) =
+type QWaveDecoderwaitForReadyReadProc* = proc(msecs: cint): bool
+proc onwaitForReadyRead*(self: gen_qwavedecoder_types.QWaveDecoder, slot: QWaveDecoderwaitForReadyReadProc) =
   # TODO check subclass
-  type Cb = proc(super: QWaveDecoderwaitForReadyReadBase, msecs: cint): bool
-  var tmp = new Cb
+  var tmp = new QWaveDecoderwaitForReadyReadProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWaveDecoder_override_virtual_waitForReadyRead(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWaveDecoder_waitForReadyRead(self: ptr cQWaveDecoder, slot: int, msecs: cint): bool {.exportc: "miqt_exec_callback_QWaveDecoder_waitForReadyRead ".} =
-  type Cb = proc(super: QWaveDecoderwaitForReadyReadBase, msecs: cint): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(msecs: cint): auto =
-    callVirtualBase_waitForReadyRead(QWaveDecoder(h: self), msecs)
+  var nimfunc = cast[ptr QWaveDecoderwaitForReadyReadProc](cast[pointer](slot))
   let slotval1 = msecs
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_waitForBytesWritten(self: QWaveDecoder, msecs: cint): bool =
-
+proc QWaveDecoderwaitForBytesWritten*(self: gen_qwavedecoder_types.QWaveDecoder, msecs: cint): bool =
 
   fQWaveDecoder_virtualbase_waitForBytesWritten(self.h, msecs)
 
-type QWaveDecoderwaitForBytesWrittenBase* = proc(msecs: cint): bool
-proc onwaitForBytesWritten*(self: QWaveDecoder, slot: proc(super: QWaveDecoderwaitForBytesWrittenBase, msecs: cint): bool) =
+type QWaveDecoderwaitForBytesWrittenProc* = proc(msecs: cint): bool
+proc onwaitForBytesWritten*(self: gen_qwavedecoder_types.QWaveDecoder, slot: QWaveDecoderwaitForBytesWrittenProc) =
   # TODO check subclass
-  type Cb = proc(super: QWaveDecoderwaitForBytesWrittenBase, msecs: cint): bool
-  var tmp = new Cb
+  var tmp = new QWaveDecoderwaitForBytesWrittenProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWaveDecoder_override_virtual_waitForBytesWritten(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWaveDecoder_waitForBytesWritten(self: ptr cQWaveDecoder, slot: int, msecs: cint): bool {.exportc: "miqt_exec_callback_QWaveDecoder_waitForBytesWritten ".} =
-  type Cb = proc(super: QWaveDecoderwaitForBytesWrittenBase, msecs: cint): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(msecs: cint): auto =
-    callVirtualBase_waitForBytesWritten(QWaveDecoder(h: self), msecs)
+  var nimfunc = cast[ptr QWaveDecoderwaitForBytesWrittenProc](cast[pointer](slot))
   let slotval1 = msecs
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_readLineData(self: QWaveDecoder, data: cstring, maxlen: clonglong): clonglong =
-
+proc QWaveDecoderreadLineData*(self: gen_qwavedecoder_types.QWaveDecoder, data: cstring, maxlen: clonglong): clonglong =
 
   fQWaveDecoder_virtualbase_readLineData(self.h, data, maxlen)
 
-type QWaveDecoderreadLineDataBase* = proc(data: cstring, maxlen: clonglong): clonglong
-proc onreadLineData*(self: QWaveDecoder, slot: proc(super: QWaveDecoderreadLineDataBase, data: cstring, maxlen: clonglong): clonglong) =
+type QWaveDecoderreadLineDataProc* = proc(data: cstring, maxlen: clonglong): clonglong
+proc onreadLineData*(self: gen_qwavedecoder_types.QWaveDecoder, slot: QWaveDecoderreadLineDataProc) =
   # TODO check subclass
-  type Cb = proc(super: QWaveDecoderreadLineDataBase, data: cstring, maxlen: clonglong): clonglong
-  var tmp = new Cb
+  var tmp = new QWaveDecoderreadLineDataProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWaveDecoder_override_virtual_readLineData(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWaveDecoder_readLineData(self: ptr cQWaveDecoder, slot: int, data: cstring, maxlen: clonglong): clonglong {.exportc: "miqt_exec_callback_QWaveDecoder_readLineData ".} =
-  type Cb = proc(super: QWaveDecoderreadLineDataBase, data: cstring, maxlen: clonglong): clonglong
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(data: cstring, maxlen: clonglong): auto =
-    callVirtualBase_readLineData(QWaveDecoder(h: self), data, maxlen)
+  var nimfunc = cast[ptr QWaveDecoderreadLineDataProc](cast[pointer](slot))
   let slotval1 = (data)
 
   let slotval2 = maxlen
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_skipData(self: QWaveDecoder, maxSize: clonglong): clonglong =
-
+proc QWaveDecoderskipData*(self: gen_qwavedecoder_types.QWaveDecoder, maxSize: clonglong): clonglong =
 
   fQWaveDecoder_virtualbase_skipData(self.h, maxSize)
 
-type QWaveDecoderskipDataBase* = proc(maxSize: clonglong): clonglong
-proc onskipData*(self: QWaveDecoder, slot: proc(super: QWaveDecoderskipDataBase, maxSize: clonglong): clonglong) =
+type QWaveDecoderskipDataProc* = proc(maxSize: clonglong): clonglong
+proc onskipData*(self: gen_qwavedecoder_types.QWaveDecoder, slot: QWaveDecoderskipDataProc) =
   # TODO check subclass
-  type Cb = proc(super: QWaveDecoderskipDataBase, maxSize: clonglong): clonglong
-  var tmp = new Cb
+  var tmp = new QWaveDecoderskipDataProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWaveDecoder_override_virtual_skipData(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWaveDecoder_skipData(self: ptr cQWaveDecoder, slot: int, maxSize: clonglong): clonglong {.exportc: "miqt_exec_callback_QWaveDecoder_skipData ".} =
-  type Cb = proc(super: QWaveDecoderskipDataBase, maxSize: clonglong): clonglong
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(maxSize: clonglong): auto =
-    callVirtualBase_skipData(QWaveDecoder(h: self), maxSize)
+  var nimfunc = cast[ptr QWaveDecoderskipDataProc](cast[pointer](slot))
   let slotval1 = maxSize
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_event(self: QWaveDecoder, event: gen_qcoreevent.QEvent): bool =
-
+proc QWaveDecoderevent*(self: gen_qwavedecoder_types.QWaveDecoder, event: gen_qcoreevent.QEvent): bool =
 
   fQWaveDecoder_virtualbase_event(self.h, event.h)
 
-type QWaveDecodereventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QWaveDecoder, slot: proc(super: QWaveDecodereventBase, event: gen_qcoreevent.QEvent): bool) =
+type QWaveDecodereventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qwavedecoder_types.QWaveDecoder, slot: QWaveDecodereventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWaveDecodereventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QWaveDecodereventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWaveDecoder_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWaveDecoder_event(self: ptr cQWaveDecoder, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QWaveDecoder_event ".} =
-  type Cb = proc(super: QWaveDecodereventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QWaveDecoder(h: self), event)
+  var nimfunc = cast[ptr QWaveDecodereventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QWaveDecoder, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QWaveDecodereventFilter*(self: gen_qwavedecoder_types.QWaveDecoder, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQWaveDecoder_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QWaveDecodereventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QWaveDecoder, slot: proc(super: QWaveDecodereventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QWaveDecodereventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qwavedecoder_types.QWaveDecoder, slot: QWaveDecodereventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QWaveDecodereventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QWaveDecodereventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWaveDecoder_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWaveDecoder_eventFilter(self: ptr cQWaveDecoder, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QWaveDecoder_eventFilter ".} =
-  type Cb = proc(super: QWaveDecodereventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QWaveDecoder(h: self), watched, event)
+  var nimfunc = cast[ptr QWaveDecodereventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QWaveDecoder, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QWaveDecodertimerEvent*(self: gen_qwavedecoder_types.QWaveDecoder, event: gen_qcoreevent.QTimerEvent): void =
 
   fQWaveDecoder_virtualbase_timerEvent(self.h, event.h)
 
-type QWaveDecodertimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QWaveDecoder, slot: proc(super: QWaveDecodertimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QWaveDecodertimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qwavedecoder_types.QWaveDecoder, slot: QWaveDecodertimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWaveDecodertimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QWaveDecodertimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWaveDecoder_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWaveDecoder_timerEvent(self: ptr cQWaveDecoder, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWaveDecoder_timerEvent ".} =
-  type Cb = proc(super: QWaveDecodertimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QWaveDecoder(h: self), event)
+  var nimfunc = cast[ptr QWaveDecodertimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QWaveDecoder, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QWaveDecoderchildEvent*(self: gen_qwavedecoder_types.QWaveDecoder, event: gen_qcoreevent.QChildEvent): void =
 
   fQWaveDecoder_virtualbase_childEvent(self.h, event.h)
 
-type QWaveDecoderchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QWaveDecoder, slot: proc(super: QWaveDecoderchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QWaveDecoderchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qwavedecoder_types.QWaveDecoder, slot: QWaveDecoderchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWaveDecoderchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QWaveDecoderchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWaveDecoder_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWaveDecoder_childEvent(self: ptr cQWaveDecoder, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWaveDecoder_childEvent ".} =
-  type Cb = proc(super: QWaveDecoderchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QWaveDecoder(h: self), event)
+  var nimfunc = cast[ptr QWaveDecoderchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QWaveDecoder, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QWaveDecodercustomEvent*(self: gen_qwavedecoder_types.QWaveDecoder, event: gen_qcoreevent.QEvent): void =
 
   fQWaveDecoder_virtualbase_customEvent(self.h, event.h)
 
-type QWaveDecodercustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QWaveDecoder, slot: proc(super: QWaveDecodercustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QWaveDecodercustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qwavedecoder_types.QWaveDecoder, slot: QWaveDecodercustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWaveDecodercustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QWaveDecodercustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWaveDecoder_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWaveDecoder_customEvent(self: ptr cQWaveDecoder, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWaveDecoder_customEvent ".} =
-  type Cb = proc(super: QWaveDecodercustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QWaveDecoder(h: self), event)
+  var nimfunc = cast[ptr QWaveDecodercustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QWaveDecoder, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QWaveDecoderconnectNotify*(self: gen_qwavedecoder_types.QWaveDecoder, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQWaveDecoder_virtualbase_connectNotify(self.h, signal.h)
 
-type QWaveDecoderconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QWaveDecoder, slot: proc(super: QWaveDecoderconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QWaveDecoderconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qwavedecoder_types.QWaveDecoder, slot: QWaveDecoderconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QWaveDecoderconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QWaveDecoderconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWaveDecoder_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWaveDecoder_connectNotify(self: ptr cQWaveDecoder, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QWaveDecoder_connectNotify ".} =
-  type Cb = proc(super: QWaveDecoderconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QWaveDecoder(h: self), signal)
+  var nimfunc = cast[ptr QWaveDecoderconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QWaveDecoder, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QWaveDecoderdisconnectNotify*(self: gen_qwavedecoder_types.QWaveDecoder, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQWaveDecoder_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QWaveDecoderdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QWaveDecoder, slot: proc(super: QWaveDecoderdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QWaveDecoderdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qwavedecoder_types.QWaveDecoder, slot: QWaveDecoderdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QWaveDecoderdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QWaveDecoderdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWaveDecoder_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWaveDecoder_disconnectNotify(self: ptr cQWaveDecoder, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QWaveDecoder_disconnectNotify ".} =
-  type Cb = proc(super: QWaveDecoderdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QWaveDecoder(h: self), signal)
+  var nimfunc = cast[ptr QWaveDecoderdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QWaveDecoder): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qwavedecoder_types.QWaveDecoder): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQWaveDecoder_staticMetaObject())
-proc delete*(self: QWaveDecoder) =
+proc delete*(self: gen_qwavedecoder_types.QWaveDecoder) =
   fcQWaveDecoder_delete(self.h)

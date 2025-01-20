@@ -34,129 +34,111 @@ const cflags = gorge("pkg-config -cflags Qt5Widgets")
 {.compile("gen_qfont.cpp", cflags).}
 
 
-type QFontStyleHint* = cint
-const
-  QFontHelvetica* = 0
-  QFontSansSerif* = 0
-  QFontTimes* = 1
-  QFontSerif* = 1
-  QFontCourier* = 2
-  QFontTypeWriter* = 2
-  QFontOldEnglish* = 3
-  QFontDecorative* = 3
-  QFontSystem* = 4
-  QFontAnyStyle* = 5
-  QFontCursive* = 6
-  QFontMonospace* = 7
-  QFontFantasy* = 8
+type QFontStyleHintEnum* = distinct cint
+template Helvetica*(_: type QFontStyleHintEnum): untyped = 0
+template SansSerif*(_: type QFontStyleHintEnum): untyped = 0
+template Times*(_: type QFontStyleHintEnum): untyped = 1
+template Serif*(_: type QFontStyleHintEnum): untyped = 1
+template Courier*(_: type QFontStyleHintEnum): untyped = 2
+template TypeWriter*(_: type QFontStyleHintEnum): untyped = 2
+template OldEnglish*(_: type QFontStyleHintEnum): untyped = 3
+template Decorative*(_: type QFontStyleHintEnum): untyped = 3
+template System*(_: type QFontStyleHintEnum): untyped = 4
+template AnyStyle*(_: type QFontStyleHintEnum): untyped = 5
+template Cursive*(_: type QFontStyleHintEnum): untyped = 6
+template Monospace*(_: type QFontStyleHintEnum): untyped = 7
+template Fantasy*(_: type QFontStyleHintEnum): untyped = 8
 
 
-
-type QFontStyleStrategy* = cint
-const
-  QFontPreferDefault* = 1
-  QFontPreferBitmap* = 2
-  QFontPreferDevice* = 4
-  QFontPreferOutline* = 8
-  QFontForceOutline* = 16
-  QFontPreferMatch* = 32
-  QFontPreferQuality* = 64
-  QFontPreferAntialias* = 128
-  QFontNoAntialias* = 256
-  QFontOpenGLCompatible* = 512
-  QFontForceIntegerMetrics* = 1024
-  QFontNoSubpixelAntialias* = 2048
-  QFontPreferNoShaping* = 4096
-  QFontNoFontMerging* = 32768
+type QFontStyleStrategyEnum* = distinct cint
+template PreferDefault*(_: type QFontStyleStrategyEnum): untyped = 1
+template PreferBitmap*(_: type QFontStyleStrategyEnum): untyped = 2
+template PreferDevice*(_: type QFontStyleStrategyEnum): untyped = 4
+template PreferOutline*(_: type QFontStyleStrategyEnum): untyped = 8
+template ForceOutline*(_: type QFontStyleStrategyEnum): untyped = 16
+template PreferMatch*(_: type QFontStyleStrategyEnum): untyped = 32
+template PreferQuality*(_: type QFontStyleStrategyEnum): untyped = 64
+template PreferAntialias*(_: type QFontStyleStrategyEnum): untyped = 128
+template NoAntialias*(_: type QFontStyleStrategyEnum): untyped = 256
+template OpenGLCompatible*(_: type QFontStyleStrategyEnum): untyped = 512
+template ForceIntegerMetrics*(_: type QFontStyleStrategyEnum): untyped = 1024
+template NoSubpixelAntialias*(_: type QFontStyleStrategyEnum): untyped = 2048
+template PreferNoShaping*(_: type QFontStyleStrategyEnum): untyped = 4096
+template NoFontMerging*(_: type QFontStyleStrategyEnum): untyped = 32768
 
 
-
-type QFontHintingPreference* = cint
-const
-  QFontPreferDefaultHinting* = 0
-  QFontPreferNoHinting* = 1
-  QFontPreferVerticalHinting* = 2
-  QFontPreferFullHinting* = 3
+type QFontHintingPreferenceEnum* = distinct cint
+template PreferDefaultHinting*(_: type QFontHintingPreferenceEnum): untyped = 0
+template PreferNoHinting*(_: type QFontHintingPreferenceEnum): untyped = 1
+template PreferVerticalHinting*(_: type QFontHintingPreferenceEnum): untyped = 2
+template PreferFullHinting*(_: type QFontHintingPreferenceEnum): untyped = 3
 
 
-
-type QFontWeight* = cint
-const
-  QFontThin* = 0
-  QFontExtraLight* = 12
-  QFontLight* = 25
-  QFontNormal* = 50
-  QFontMedium* = 57
-  QFontDemiBold* = 63
-  QFontBold* = 75
-  QFontExtraBold* = 81
-  QFontBlack* = 87
+type QFontWeightEnum* = distinct cint
+template Thin*(_: type QFontWeightEnum): untyped = 0
+template ExtraLight*(_: type QFontWeightEnum): untyped = 12
+template Light*(_: type QFontWeightEnum): untyped = 25
+template Normal*(_: type QFontWeightEnum): untyped = 50
+template Medium*(_: type QFontWeightEnum): untyped = 57
+template DemiBold*(_: type QFontWeightEnum): untyped = 63
+template Bold*(_: type QFontWeightEnum): untyped = 75
+template ExtraBold*(_: type QFontWeightEnum): untyped = 81
+template Black*(_: type QFontWeightEnum): untyped = 87
 
 
-
-type QFontStyle* = cint
-const
-  QFontStyleNormal* = 0
-  QFontStyleItalic* = 1
-  QFontStyleOblique* = 2
+type QFontStyleEnum* = distinct cint
+template StyleNormal*(_: type QFontStyleEnum): untyped = 0
+template StyleItalic*(_: type QFontStyleEnum): untyped = 1
+template StyleOblique*(_: type QFontStyleEnum): untyped = 2
 
 
-
-type QFontStretch* = cint
-const
-  QFontAnyStretch* = 0
-  QFontUltraCondensed* = 50
-  QFontExtraCondensed* = 62
-  QFontCondensed* = 75
-  QFontSemiCondensed* = 87
-  QFontUnstretched* = 100
-  QFontSemiExpanded* = 112
-  QFontExpanded* = 125
-  QFontExtraExpanded* = 150
-  QFontUltraExpanded* = 200
+type QFontStretchEnum* = distinct cint
+template AnyStretch*(_: type QFontStretchEnum): untyped = 0
+template UltraCondensed*(_: type QFontStretchEnum): untyped = 50
+template ExtraCondensed*(_: type QFontStretchEnum): untyped = 62
+template Condensed*(_: type QFontStretchEnum): untyped = 75
+template SemiCondensed*(_: type QFontStretchEnum): untyped = 87
+template Unstretched*(_: type QFontStretchEnum): untyped = 100
+template SemiExpanded*(_: type QFontStretchEnum): untyped = 112
+template Expanded*(_: type QFontStretchEnum): untyped = 125
+template ExtraExpanded*(_: type QFontStretchEnum): untyped = 150
+template UltraExpanded*(_: type QFontStretchEnum): untyped = 200
 
 
-
-type QFontCapitalization* = cint
-const
-  QFontMixedCase* = 0
-  QFontAllUppercase* = 1
-  QFontAllLowercase* = 2
-  QFontSmallCaps* = 3
-  QFontCapitalize* = 4
+type QFontCapitalizationEnum* = distinct cint
+template MixedCase*(_: type QFontCapitalizationEnum): untyped = 0
+template AllUppercase*(_: type QFontCapitalizationEnum): untyped = 1
+template AllLowercase*(_: type QFontCapitalizationEnum): untyped = 2
+template SmallCaps*(_: type QFontCapitalizationEnum): untyped = 3
+template Capitalize*(_: type QFontCapitalizationEnum): untyped = 4
 
 
-
-type QFontSpacingType* = cint
-const
-  QFontPercentageSpacing* = 0
-  QFontAbsoluteSpacing* = 1
+type QFontSpacingTypeEnum* = distinct cint
+template PercentageSpacing*(_: type QFontSpacingTypeEnum): untyped = 0
+template AbsoluteSpacing*(_: type QFontSpacingTypeEnum): untyped = 1
 
 
-
-type QFontResolveProperties* = cint
-const
-  QFontNoPropertiesResolved* = 0
-  QFontFamilyResolved* = 1
-  QFontSizeResolved* = 2
-  QFontStyleHintResolved* = 4
-  QFontStyleStrategyResolved* = 8
-  QFontWeightResolved* = 16
-  QFontStyleResolved* = 32
-  QFontUnderlineResolved* = 64
-  QFontOverlineResolved* = 128
-  QFontStrikeOutResolved* = 256
-  QFontFixedPitchResolved* = 512
-  QFontStretchResolved* = 1024
-  QFontKerningResolved* = 2048
-  QFontCapitalizationResolved* = 4096
-  QFontLetterSpacingResolved* = 8192
-  QFontWordSpacingResolved* = 16384
-  QFontHintingPreferenceResolved* = 32768
-  QFontStyleNameResolved* = 65536
-  QFontFamiliesResolved* = 131072
-  QFontAllPropertiesResolved* = 262143
-
+type QFontResolvePropertiesEnum* = distinct cint
+template NoPropertiesResolved*(_: type QFontResolvePropertiesEnum): untyped = 0
+template FamilyResolved*(_: type QFontResolvePropertiesEnum): untyped = 1
+template SizeResolved*(_: type QFontResolvePropertiesEnum): untyped = 2
+template StyleHintResolved*(_: type QFontResolvePropertiesEnum): untyped = 4
+template StyleStrategyResolved*(_: type QFontResolvePropertiesEnum): untyped = 8
+template WeightResolved*(_: type QFontResolvePropertiesEnum): untyped = 16
+template StyleResolved*(_: type QFontResolvePropertiesEnum): untyped = 32
+template UnderlineResolved*(_: type QFontResolvePropertiesEnum): untyped = 64
+template OverlineResolved*(_: type QFontResolvePropertiesEnum): untyped = 128
+template StrikeOutResolved*(_: type QFontResolvePropertiesEnum): untyped = 256
+template FixedPitchResolved*(_: type QFontResolvePropertiesEnum): untyped = 512
+template StretchResolved*(_: type QFontResolvePropertiesEnum): untyped = 1024
+template KerningResolved*(_: type QFontResolvePropertiesEnum): untyped = 2048
+template CapitalizationResolved*(_: type QFontResolvePropertiesEnum): untyped = 4096
+template LetterSpacingResolved*(_: type QFontResolvePropertiesEnum): untyped = 8192
+template WordSpacingResolved*(_: type QFontResolvePropertiesEnum): untyped = 16384
+template HintingPreferenceResolved*(_: type QFontResolvePropertiesEnum): untyped = 32768
+template StyleNameResolved*(_: type QFontResolvePropertiesEnum): untyped = 65536
+template FamiliesResolved*(_: type QFontResolvePropertiesEnum): untyped = 131072
+template AllPropertiesResolved*(_: type QFontResolvePropertiesEnum): untyped = 262143
 
 
 import gen_qfont_types
@@ -261,48 +243,48 @@ proc fcQFont_staticMetaObject(): pointer {.importc: "QFont_staticMetaObject".}
 proc fcQFont_delete(self: pointer) {.importc: "QFont_delete".}
 
 
-func init*(T: type QFont, h: ptr cQFont): QFont =
+func init*(T: type gen_qfont_types.QFont, h: ptr cQFont): gen_qfont_types.QFont =
   T(h: h)
-proc create*(T: type QFont, ): QFont =
+proc create*(T: type gen_qfont_types.QFont, ): gen_qfont_types.QFont =
 
-  QFont.init(fcQFont_new())
-proc create*(T: type QFont, family: string): QFont =
+  gen_qfont_types.QFont.init(fcQFont_new())
+proc create*(T: type gen_qfont_types.QFont, family: string): gen_qfont_types.QFont =
 
-  QFont.init(fcQFont_new2(struct_miqt_string(data: family, len: csize_t(len(family)))))
-proc create*(T: type QFont, font: QFont, pd: gen_qpaintdevice.QPaintDevice): QFont =
+  gen_qfont_types.QFont.init(fcQFont_new2(struct_miqt_string(data: family, len: csize_t(len(family)))))
+proc create*(T: type gen_qfont_types.QFont, font: gen_qfont_types.QFont, pd: gen_qpaintdevice.QPaintDevice): gen_qfont_types.QFont =
 
-  QFont.init(fcQFont_new3(font.h, pd.h))
-proc create2*(T: type QFont, font: QFont, pd: gen_qpaintdevice.QPaintDevice): QFont =
+  gen_qfont_types.QFont.init(fcQFont_new3(font.h, pd.h))
+proc create2*(T: type gen_qfont_types.QFont, font: gen_qfont_types.QFont, pd: gen_qpaintdevice.QPaintDevice): gen_qfont_types.QFont =
 
-  QFont.init(fcQFont_new4(font.h, pd.h))
-proc create*(T: type QFont, font: QFont): QFont =
+  gen_qfont_types.QFont.init(fcQFont_new4(font.h, pd.h))
+proc create*(T: type gen_qfont_types.QFont, font: gen_qfont_types.QFont): gen_qfont_types.QFont =
 
-  QFont.init(fcQFont_new5(font.h))
-proc create*(T: type QFont, family: string, pointSize: cint): QFont =
+  gen_qfont_types.QFont.init(fcQFont_new5(font.h))
+proc create*(T: type gen_qfont_types.QFont, family: string, pointSize: cint): gen_qfont_types.QFont =
 
-  QFont.init(fcQFont_new6(struct_miqt_string(data: family, len: csize_t(len(family))), pointSize))
-proc create*(T: type QFont, family: string, pointSize: cint, weight: cint): QFont =
+  gen_qfont_types.QFont.init(fcQFont_new6(struct_miqt_string(data: family, len: csize_t(len(family))), pointSize))
+proc create*(T: type gen_qfont_types.QFont, family: string, pointSize: cint, weight: cint): gen_qfont_types.QFont =
 
-  QFont.init(fcQFont_new7(struct_miqt_string(data: family, len: csize_t(len(family))), pointSize, weight))
-proc create*(T: type QFont, family: string, pointSize: cint, weight: cint, italic: bool): QFont =
+  gen_qfont_types.QFont.init(fcQFont_new7(struct_miqt_string(data: family, len: csize_t(len(family))), pointSize, weight))
+proc create*(T: type gen_qfont_types.QFont, family: string, pointSize: cint, weight: cint, italic: bool): gen_qfont_types.QFont =
 
-  QFont.init(fcQFont_new8(struct_miqt_string(data: family, len: csize_t(len(family))), pointSize, weight, italic))
-proc swap*(self: QFont, other: QFont): void =
+  gen_qfont_types.QFont.init(fcQFont_new8(struct_miqt_string(data: family, len: csize_t(len(family))), pointSize, weight, italic))
+proc swap*(self: gen_qfont_types.QFont, other: gen_qfont_types.QFont): void =
 
   fcQFont_swap(self.h, other.h)
 
-proc family*(self: QFont, ): string =
+proc family*(self: gen_qfont_types.QFont, ): string =
 
   let v_ms = fcQFont_family(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setFamily*(self: QFont, family: string): void =
+proc setFamily*(self: gen_qfont_types.QFont, family: string): void =
 
   fcQFont_setFamily(self.h, struct_miqt_string(data: family, len: csize_t(len(family))))
 
-proc families*(self: QFont, ): seq[string] =
+proc families*(self: gen_qfont_types.QFont, ): seq[string] =
 
   var v_ma = fcQFont_families(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -314,7 +296,7 @@ proc families*(self: QFont, ): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc setFamilies*(self: QFont, families: seq[string]): void =
+proc setFamilies*(self: gen_qfont_types.QFont, families: seq[string]): void =
 
   var families_CArray = newSeq[struct_miqt_string](len(families))
   for i in 0..<len(families):
@@ -322,246 +304,246 @@ proc setFamilies*(self: QFont, families: seq[string]): void =
 
   fcQFont_setFamilies(self.h, struct_miqt_array(len: csize_t(len(families)), data: if len(families) == 0: nil else: addr(families_CArray[0])))
 
-proc styleName*(self: QFont, ): string =
+proc styleName*(self: gen_qfont_types.QFont, ): string =
 
   let v_ms = fcQFont_styleName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setStyleName*(self: QFont, styleName: string): void =
+proc setStyleName*(self: gen_qfont_types.QFont, styleName: string): void =
 
   fcQFont_setStyleName(self.h, struct_miqt_string(data: styleName, len: csize_t(len(styleName))))
 
-proc pointSize*(self: QFont, ): cint =
+proc pointSize*(self: gen_qfont_types.QFont, ): cint =
 
   fcQFont_pointSize(self.h)
 
-proc setPointSize*(self: QFont, pointSize: cint): void =
+proc setPointSize*(self: gen_qfont_types.QFont, pointSize: cint): void =
 
   fcQFont_setPointSize(self.h, pointSize)
 
-proc pointSizeF*(self: QFont, ): float64 =
+proc pointSizeF*(self: gen_qfont_types.QFont, ): float64 =
 
   fcQFont_pointSizeF(self.h)
 
-proc setPointSizeF*(self: QFont, pointSizeF: float64): void =
+proc setPointSizeF*(self: gen_qfont_types.QFont, pointSizeF: float64): void =
 
   fcQFont_setPointSizeF(self.h, pointSizeF)
 
-proc pixelSize*(self: QFont, ): cint =
+proc pixelSize*(self: gen_qfont_types.QFont, ): cint =
 
   fcQFont_pixelSize(self.h)
 
-proc setPixelSize*(self: QFont, pixelSize: cint): void =
+proc setPixelSize*(self: gen_qfont_types.QFont, pixelSize: cint): void =
 
   fcQFont_setPixelSize(self.h, pixelSize)
 
-proc weight*(self: QFont, ): cint =
+proc weight*(self: gen_qfont_types.QFont, ): cint =
 
   fcQFont_weight(self.h)
 
-proc setWeight*(self: QFont, weight: cint): void =
+proc setWeight*(self: gen_qfont_types.QFont, weight: cint): void =
 
   fcQFont_setWeight(self.h, weight)
 
-proc bold*(self: QFont, ): bool =
+proc bold*(self: gen_qfont_types.QFont, ): bool =
 
   fcQFont_bold(self.h)
 
-proc setBold*(self: QFont, bold: bool): void =
+proc setBold*(self: gen_qfont_types.QFont, bold: bool): void =
 
   fcQFont_setBold(self.h, bold)
 
-proc setStyle*(self: QFont, style: QFontStyle): void =
+proc setStyle*(self: gen_qfont_types.QFont, style: cint): void =
 
   fcQFont_setStyle(self.h, cint(style))
 
-proc style*(self: QFont, ): QFontStyle =
+proc style*(self: gen_qfont_types.QFont, ): cint =
 
-  QFontStyle(fcQFont_style(self.h))
+  cint(fcQFont_style(self.h))
 
-proc italic*(self: QFont, ): bool =
+proc italic*(self: gen_qfont_types.QFont, ): bool =
 
   fcQFont_italic(self.h)
 
-proc setItalic*(self: QFont, b: bool): void =
+proc setItalic*(self: gen_qfont_types.QFont, b: bool): void =
 
   fcQFont_setItalic(self.h, b)
 
-proc underline*(self: QFont, ): bool =
+proc underline*(self: gen_qfont_types.QFont, ): bool =
 
   fcQFont_underline(self.h)
 
-proc setUnderline*(self: QFont, underline: bool): void =
+proc setUnderline*(self: gen_qfont_types.QFont, underline: bool): void =
 
   fcQFont_setUnderline(self.h, underline)
 
-proc overline*(self: QFont, ): bool =
+proc overline*(self: gen_qfont_types.QFont, ): bool =
 
   fcQFont_overline(self.h)
 
-proc setOverline*(self: QFont, overline: bool): void =
+proc setOverline*(self: gen_qfont_types.QFont, overline: bool): void =
 
   fcQFont_setOverline(self.h, overline)
 
-proc strikeOut*(self: QFont, ): bool =
+proc strikeOut*(self: gen_qfont_types.QFont, ): bool =
 
   fcQFont_strikeOut(self.h)
 
-proc setStrikeOut*(self: QFont, strikeOut: bool): void =
+proc setStrikeOut*(self: gen_qfont_types.QFont, strikeOut: bool): void =
 
   fcQFont_setStrikeOut(self.h, strikeOut)
 
-proc fixedPitch*(self: QFont, ): bool =
+proc fixedPitch*(self: gen_qfont_types.QFont, ): bool =
 
   fcQFont_fixedPitch(self.h)
 
-proc setFixedPitch*(self: QFont, fixedPitch: bool): void =
+proc setFixedPitch*(self: gen_qfont_types.QFont, fixedPitch: bool): void =
 
   fcQFont_setFixedPitch(self.h, fixedPitch)
 
-proc kerning*(self: QFont, ): bool =
+proc kerning*(self: gen_qfont_types.QFont, ): bool =
 
   fcQFont_kerning(self.h)
 
-proc setKerning*(self: QFont, kerning: bool): void =
+proc setKerning*(self: gen_qfont_types.QFont, kerning: bool): void =
 
   fcQFont_setKerning(self.h, kerning)
 
-proc styleHint*(self: QFont, ): QFontStyleHint =
+proc styleHint*(self: gen_qfont_types.QFont, ): cint =
 
-  QFontStyleHint(fcQFont_styleHint(self.h))
+  cint(fcQFont_styleHint(self.h))
 
-proc styleStrategy*(self: QFont, ): QFontStyleStrategy =
+proc styleStrategy*(self: gen_qfont_types.QFont, ): cint =
 
-  QFontStyleStrategy(fcQFont_styleStrategy(self.h))
+  cint(fcQFont_styleStrategy(self.h))
 
-proc setStyleHint*(self: QFont, param1: QFontStyleHint): void =
+proc setStyleHint*(self: gen_qfont_types.QFont, param1: cint): void =
 
   fcQFont_setStyleHint(self.h, cint(param1))
 
-proc setStyleStrategy*(self: QFont, s: QFontStyleStrategy): void =
+proc setStyleStrategy*(self: gen_qfont_types.QFont, s: cint): void =
 
   fcQFont_setStyleStrategy(self.h, cint(s))
 
-proc stretch*(self: QFont, ): cint =
+proc stretch*(self: gen_qfont_types.QFont, ): cint =
 
   fcQFont_stretch(self.h)
 
-proc setStretch*(self: QFont, stretch: cint): void =
+proc setStretch*(self: gen_qfont_types.QFont, stretch: cint): void =
 
   fcQFont_setStretch(self.h, stretch)
 
-proc letterSpacing*(self: QFont, ): float64 =
+proc letterSpacing*(self: gen_qfont_types.QFont, ): float64 =
 
   fcQFont_letterSpacing(self.h)
 
-proc letterSpacingType*(self: QFont, ): QFontSpacingType =
+proc letterSpacingType*(self: gen_qfont_types.QFont, ): cint =
 
-  QFontSpacingType(fcQFont_letterSpacingType(self.h))
+  cint(fcQFont_letterSpacingType(self.h))
 
-proc setLetterSpacing*(self: QFont, typeVal: QFontSpacingType, spacing: float64): void =
+proc setLetterSpacing*(self: gen_qfont_types.QFont, typeVal: cint, spacing: float64): void =
 
   fcQFont_setLetterSpacing(self.h, cint(typeVal), spacing)
 
-proc wordSpacing*(self: QFont, ): float64 =
+proc wordSpacing*(self: gen_qfont_types.QFont, ): float64 =
 
   fcQFont_wordSpacing(self.h)
 
-proc setWordSpacing*(self: QFont, spacing: float64): void =
+proc setWordSpacing*(self: gen_qfont_types.QFont, spacing: float64): void =
 
   fcQFont_setWordSpacing(self.h, spacing)
 
-proc setCapitalization*(self: QFont, capitalization: QFontCapitalization): void =
+proc setCapitalization*(self: gen_qfont_types.QFont, capitalization: cint): void =
 
   fcQFont_setCapitalization(self.h, cint(capitalization))
 
-proc capitalization*(self: QFont, ): QFontCapitalization =
+proc capitalization*(self: gen_qfont_types.QFont, ): cint =
 
-  QFontCapitalization(fcQFont_capitalization(self.h))
+  cint(fcQFont_capitalization(self.h))
 
-proc setHintingPreference*(self: QFont, hintingPreference: QFontHintingPreference): void =
+proc setHintingPreference*(self: gen_qfont_types.QFont, hintingPreference: cint): void =
 
   fcQFont_setHintingPreference(self.h, cint(hintingPreference))
 
-proc hintingPreference*(self: QFont, ): QFontHintingPreference =
+proc hintingPreference*(self: gen_qfont_types.QFont, ): cint =
 
-  QFontHintingPreference(fcQFont_hintingPreference(self.h))
+  cint(fcQFont_hintingPreference(self.h))
 
-proc rawMode*(self: QFont, ): bool =
+proc rawMode*(self: gen_qfont_types.QFont, ): bool =
 
   fcQFont_rawMode(self.h)
 
-proc setRawMode*(self: QFont, rawMode: bool): void =
+proc setRawMode*(self: gen_qfont_types.QFont, rawMode: bool): void =
 
   fcQFont_setRawMode(self.h, rawMode)
 
-proc exactMatch*(self: QFont, ): bool =
+proc exactMatch*(self: gen_qfont_types.QFont, ): bool =
 
   fcQFont_exactMatch(self.h)
 
-proc operatorAssign*(self: QFont, param1: QFont): void =
+proc operatorAssign*(self: gen_qfont_types.QFont, param1: gen_qfont_types.QFont): void =
 
   fcQFont_operatorAssign(self.h, param1.h)
 
-proc operatorEqual*(self: QFont, param1: QFont): bool =
+proc operatorEqual*(self: gen_qfont_types.QFont, param1: gen_qfont_types.QFont): bool =
 
   fcQFont_operatorEqual(self.h, param1.h)
 
-proc operatorNotEqual*(self: QFont, param1: QFont): bool =
+proc operatorNotEqual*(self: gen_qfont_types.QFont, param1: gen_qfont_types.QFont): bool =
 
   fcQFont_operatorNotEqual(self.h, param1.h)
 
-proc operatorLesser*(self: QFont, param1: QFont): bool =
+proc operatorLesser*(self: gen_qfont_types.QFont, param1: gen_qfont_types.QFont): bool =
 
   fcQFont_operatorLesser(self.h, param1.h)
 
-proc ToQVariant*(self: QFont, ): gen_qvariant.QVariant =
+proc ToQVariant*(self: gen_qfont_types.QFont, ): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fcQFont_ToQVariant(self.h))
 
-proc isCopyOf*(self: QFont, param1: QFont): bool =
+proc isCopyOf*(self: gen_qfont_types.QFont, param1: gen_qfont_types.QFont): bool =
 
   fcQFont_isCopyOf(self.h, param1.h)
 
-proc setRawName*(self: QFont, rawName: string): void =
+proc setRawName*(self: gen_qfont_types.QFont, rawName: string): void =
 
   fcQFont_setRawName(self.h, struct_miqt_string(data: rawName, len: csize_t(len(rawName))))
 
-proc rawName*(self: QFont, ): string =
+proc rawName*(self: gen_qfont_types.QFont, ): string =
 
   let v_ms = fcQFont_rawName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc key*(self: QFont, ): string =
+proc key*(self: gen_qfont_types.QFont, ): string =
 
   let v_ms = fcQFont_key(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc toString*(self: QFont, ): string =
+proc toString*(self: gen_qfont_types.QFont, ): string =
 
   let v_ms = fcQFont_toString(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc fromString*(self: QFont, param1: string): bool =
+proc fromString*(self: gen_qfont_types.QFont, param1: string): bool =
 
   fcQFont_fromString(self.h, struct_miqt_string(data: param1, len: csize_t(len(param1))))
 
-proc substitute*(_: type QFont, param1: string): string =
+proc substitute*(_: type gen_qfont_types.QFont, param1: string): string =
 
   let v_ms = fcQFont_substitute(struct_miqt_string(data: param1, len: csize_t(len(param1))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc substitutes*(_: type QFont, param1: string): seq[string] =
+proc substitutes*(_: type gen_qfont_types.QFont, param1: string): seq[string] =
 
   var v_ma = fcQFont_substitutes(struct_miqt_string(data: param1, len: csize_t(len(param1))))
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -573,7 +555,7 @@ proc substitutes*(_: type QFont, param1: string): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc substitutions*(_: type QFont, ): seq[string] =
+proc substitutions*(_: type gen_qfont_types.QFont, ): seq[string] =
 
   var v_ma = fcQFont_substitutions()
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -585,11 +567,11 @@ proc substitutions*(_: type QFont, ): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc insertSubstitution*(_: type QFont, param1: string, param2: string): void =
+proc insertSubstitution*(_: type gen_qfont_types.QFont, param1: string, param2: string): void =
 
   fcQFont_insertSubstitution(struct_miqt_string(data: param1, len: csize_t(len(param1))), struct_miqt_string(data: param2, len: csize_t(len(param2))))
 
-proc insertSubstitutions*(_: type QFont, param1: string, param2: seq[string]): void =
+proc insertSubstitutions*(_: type gen_qfont_types.QFont, param1: string, param2: seq[string]): void =
 
   var param2_CArray = newSeq[struct_miqt_string](len(param2))
   for i in 0..<len(param2):
@@ -597,60 +579,60 @@ proc insertSubstitutions*(_: type QFont, param1: string, param2: seq[string]): v
 
   fcQFont_insertSubstitutions(struct_miqt_string(data: param1, len: csize_t(len(param1))), struct_miqt_array(len: csize_t(len(param2)), data: if len(param2) == 0: nil else: addr(param2_CArray[0])))
 
-proc removeSubstitutions*(_: type QFont, param1: string): void =
+proc removeSubstitutions*(_: type gen_qfont_types.QFont, param1: string): void =
 
   fcQFont_removeSubstitutions(struct_miqt_string(data: param1, len: csize_t(len(param1))))
 
-proc initialize*(_: type QFont, ): void =
+proc initialize*(_: type gen_qfont_types.QFont, ): void =
 
   fcQFont_initialize()
 
-proc cleanup*(_: type QFont, ): void =
+proc cleanup*(_: type gen_qfont_types.QFont, ): void =
 
   fcQFont_cleanup()
 
-proc cacheStatistics*(_: type QFont, ): void =
+proc cacheStatistics*(_: type gen_qfont_types.QFont, ): void =
 
   fcQFont_cacheStatistics()
 
-proc defaultFamily*(self: QFont, ): string =
+proc defaultFamily*(self: gen_qfont_types.QFont, ): string =
 
   let v_ms = fcQFont_defaultFamily(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc lastResortFamily*(self: QFont, ): string =
+proc lastResortFamily*(self: gen_qfont_types.QFont, ): string =
 
   let v_ms = fcQFont_lastResortFamily(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc lastResortFont*(self: QFont, ): string =
+proc lastResortFont*(self: gen_qfont_types.QFont, ): string =
 
   let v_ms = fcQFont_lastResortFont(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc resolve*(self: QFont, param1: QFont): QFont =
+proc resolve*(self: gen_qfont_types.QFont, param1: gen_qfont_types.QFont): gen_qfont_types.QFont =
 
-  QFont(h: fcQFont_resolve(self.h, param1.h))
+  gen_qfont_types.QFont(h: fcQFont_resolve(self.h, param1.h))
 
-proc resolve2*(self: QFont, ): cuint =
+proc resolve2*(self: gen_qfont_types.QFont, ): cuint =
 
   fcQFont_resolve2(self.h)
 
-proc resolveWithMask*(self: QFont, mask: cuint): void =
+proc resolveWithMask*(self: gen_qfont_types.QFont, mask: cuint): void =
 
   fcQFont_resolveWithMask(self.h, mask)
 
-proc setStyleHint2*(self: QFont, param1: QFontStyleHint, param2: QFontStyleStrategy): void =
+proc setStyleHint2*(self: gen_qfont_types.QFont, param1: cint, param2: cint): void =
 
   fcQFont_setStyleHint2(self.h, cint(param1), cint(param2))
 
-proc staticMetaObject*(_: type QFont): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qfont_types.QFont): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQFont_staticMetaObject())
-proc delete*(self: QFont) =
+proc delete*(self: gen_qfont_types.QFont) =
   fcQFont_delete(self.h)

@@ -45,7 +45,6 @@ import
   gen_qpoint,
   gen_qprinter,
   gen_qrect,
-  gen_qsciscintilla,
   gen_qsciscintillabase,
   gen_qsize
 export
@@ -56,7 +55,6 @@ export
   gen_qpoint,
   gen_qprinter,
   gen_qrect,
-  gen_qsciscintilla,
   gen_qsciscintillabase,
   gen_qsize
 
@@ -104,61 +102,56 @@ proc fcQsciPrinter_override_virtual_sharedPainter(self: pointer, slot: int) {.im
 proc fcQsciPrinter_delete(self: pointer) {.importc: "QsciPrinter_delete".}
 
 
-func init*(T: type QsciPrinter, h: ptr cQsciPrinter): QsciPrinter =
+func init*(T: type gen_qsciprinter_types.QsciPrinter, h: ptr cQsciPrinter): gen_qsciprinter_types.QsciPrinter =
   T(h: h)
-proc create*(T: type QsciPrinter, ): QsciPrinter =
+proc create*(T: type gen_qsciprinter_types.QsciPrinter, ): gen_qsciprinter_types.QsciPrinter =
 
-  QsciPrinter.init(fcQsciPrinter_new())
-proc create*(T: type QsciPrinter, mode: gen_qprinter.QPrinterPrinterMode): QsciPrinter =
+  gen_qsciprinter_types.QsciPrinter.init(fcQsciPrinter_new())
+proc create*(T: type gen_qsciprinter_types.QsciPrinter, mode: cint): gen_qsciprinter_types.QsciPrinter =
 
-  QsciPrinter.init(fcQsciPrinter_new2(cint(mode)))
-proc formatPage*(self: QsciPrinter, painter: gen_qpainter.QPainter, drawing: bool, area: gen_qrect.QRect, pagenr: cint): void =
+  gen_qsciprinter_types.QsciPrinter.init(fcQsciPrinter_new2(cint(mode)))
+proc formatPage*(self: gen_qsciprinter_types.QsciPrinter, painter: gen_qpainter.QPainter, drawing: bool, area: gen_qrect.QRect, pagenr: cint): void =
 
   fcQsciPrinter_formatPage(self.h, painter.h, drawing, area.h, pagenr)
 
-proc magnification*(self: QsciPrinter, ): cint =
+proc magnification*(self: gen_qsciprinter_types.QsciPrinter, ): cint =
 
   fcQsciPrinter_magnification(self.h)
 
-proc setMagnification*(self: QsciPrinter, magnification: cint): void =
+proc setMagnification*(self: gen_qsciprinter_types.QsciPrinter, magnification: cint): void =
 
   fcQsciPrinter_setMagnification(self.h, magnification)
 
-proc printRange*(self: QsciPrinter, qsb: gen_qsciscintillabase.QsciScintillaBase, painter: gen_qpainter.QPainter, fromVal: cint, to: cint): cint =
+proc printRange*(self: gen_qsciprinter_types.QsciPrinter, qsb: gen_qsciscintillabase.QsciScintillaBase, painter: gen_qpainter.QPainter, fromVal: cint, to: cint): cint =
 
   fcQsciPrinter_printRange(self.h, qsb.h, painter.h, fromVal, to)
 
-proc printRange2*(self: QsciPrinter, qsb: gen_qsciscintillabase.QsciScintillaBase, fromVal: cint, to: cint): cint =
+proc printRange2*(self: gen_qsciprinter_types.QsciPrinter, qsb: gen_qsciscintillabase.QsciScintillaBase, fromVal: cint, to: cint): cint =
 
   fcQsciPrinter_printRange2(self.h, qsb.h, fromVal, to)
 
-proc wrapMode*(self: QsciPrinter, ): gen_qsciscintilla.QsciScintillaWrapMode =
+proc wrapMode*(self: gen_qsciprinter_types.QsciPrinter, ): cint =
 
-  gen_qsciscintilla.QsciScintillaWrapMode(fcQsciPrinter_wrapMode(self.h))
+  cint(fcQsciPrinter_wrapMode(self.h))
 
-proc setWrapMode*(self: QsciPrinter, wmode: gen_qsciscintilla.QsciScintillaWrapMode): void =
+proc setWrapMode*(self: gen_qsciprinter_types.QsciPrinter, wmode: cint): void =
 
   fcQsciPrinter_setWrapMode(self.h, cint(wmode))
 
-proc callVirtualBase_formatPage(self: QsciPrinter, painter: gen_qpainter.QPainter, drawing: bool, area: gen_qrect.QRect, pagenr: cint): void =
-
+proc QsciPrinterformatPage*(self: gen_qsciprinter_types.QsciPrinter, painter: gen_qpainter.QPainter, drawing: bool, area: gen_qrect.QRect, pagenr: cint): void =
 
   fQsciPrinter_virtualbase_formatPage(self.h, painter.h, drawing, area.h, pagenr)
 
-type QsciPrinterformatPageBase* = proc(painter: gen_qpainter.QPainter, drawing: bool, area: gen_qrect.QRect, pagenr: cint): void
-proc onformatPage*(self: QsciPrinter, slot: proc(super: QsciPrinterformatPageBase, painter: gen_qpainter.QPainter, drawing: bool, area: gen_qrect.QRect, pagenr: cint): void) =
+type QsciPrinterformatPageProc* = proc(painter: gen_qpainter.QPainter, drawing: bool, area: gen_qrect.QRect, pagenr: cint): void
+proc onformatPage*(self: gen_qsciprinter_types.QsciPrinter, slot: QsciPrinterformatPageProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciPrinterformatPageBase, painter: gen_qpainter.QPainter, drawing: bool, area: gen_qrect.QRect, pagenr: cint): void
-  var tmp = new Cb
+  var tmp = new QsciPrinterformatPageProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciPrinter_override_virtual_formatPage(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciPrinter_formatPage(self: ptr cQsciPrinter, slot: int, painter: pointer, drawing: bool, area: pointer, pagenr: cint): void {.exportc: "miqt_exec_callback_QsciPrinter_formatPage ".} =
-  type Cb = proc(super: QsciPrinterformatPageBase, painter: gen_qpainter.QPainter, drawing: bool, area: gen_qrect.QRect, pagenr: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter, drawing: bool, area: gen_qrect.QRect, pagenr: cint): auto =
-    callVirtualBase_formatPage(QsciPrinter(h: self), painter, drawing, area, pagenr)
+  var nimfunc = cast[ptr QsciPrinterformatPageProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
   let slotval2 = drawing
@@ -168,49 +161,39 @@ proc miqt_exec_callback_QsciPrinter_formatPage(self: ptr cQsciPrinter, slot: int
   let slotval4 = pagenr
 
 
-  nimfunc[](superCall, slotval1, slotval2, slotval3, slotval4)
-proc callVirtualBase_setMagnification(self: QsciPrinter, magnification: cint): void =
-
+  nimfunc[](slotval1, slotval2, slotval3, slotval4)
+proc QsciPrintersetMagnification*(self: gen_qsciprinter_types.QsciPrinter, magnification: cint): void =
 
   fQsciPrinter_virtualbase_setMagnification(self.h, magnification)
 
-type QsciPrintersetMagnificationBase* = proc(magnification: cint): void
-proc onsetMagnification*(self: QsciPrinter, slot: proc(super: QsciPrintersetMagnificationBase, magnification: cint): void) =
+type QsciPrintersetMagnificationProc* = proc(magnification: cint): void
+proc onsetMagnification*(self: gen_qsciprinter_types.QsciPrinter, slot: QsciPrintersetMagnificationProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciPrintersetMagnificationBase, magnification: cint): void
-  var tmp = new Cb
+  var tmp = new QsciPrintersetMagnificationProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciPrinter_override_virtual_setMagnification(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciPrinter_setMagnification(self: ptr cQsciPrinter, slot: int, magnification: cint): void {.exportc: "miqt_exec_callback_QsciPrinter_setMagnification ".} =
-  type Cb = proc(super: QsciPrintersetMagnificationBase, magnification: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(magnification: cint): auto =
-    callVirtualBase_setMagnification(QsciPrinter(h: self), magnification)
+  var nimfunc = cast[ptr QsciPrintersetMagnificationProc](cast[pointer](slot))
   let slotval1 = magnification
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_printRange(self: QsciPrinter, qsb: gen_qsciscintillabase.QsciScintillaBase, painter: gen_qpainter.QPainter, fromVal: cint, to: cint): cint =
-
+  nimfunc[](slotval1)
+proc QsciPrinterprintRange*(self: gen_qsciprinter_types.QsciPrinter, qsb: gen_qsciscintillabase.QsciScintillaBase, painter: gen_qpainter.QPainter, fromVal: cint, to: cint): cint =
 
   fQsciPrinter_virtualbase_printRange(self.h, qsb.h, painter.h, fromVal, to)
 
-type QsciPrinterprintRangeBase* = proc(qsb: gen_qsciscintillabase.QsciScintillaBase, painter: gen_qpainter.QPainter, fromVal: cint, to: cint): cint
-proc onprintRange*(self: QsciPrinter, slot: proc(super: QsciPrinterprintRangeBase, qsb: gen_qsciscintillabase.QsciScintillaBase, painter: gen_qpainter.QPainter, fromVal: cint, to: cint): cint) =
+type QsciPrinterprintRangeProc* = proc(qsb: gen_qsciscintillabase.QsciScintillaBase, painter: gen_qpainter.QPainter, fromVal: cint, to: cint): cint
+proc onprintRange*(self: gen_qsciprinter_types.QsciPrinter, slot: QsciPrinterprintRangeProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciPrinterprintRangeBase, qsb: gen_qsciscintillabase.QsciScintillaBase, painter: gen_qpainter.QPainter, fromVal: cint, to: cint): cint
-  var tmp = new Cb
+  var tmp = new QsciPrinterprintRangeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciPrinter_override_virtual_printRange(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciPrinter_printRange(self: ptr cQsciPrinter, slot: int, qsb: pointer, painter: pointer, fromVal: cint, to: cint): cint {.exportc: "miqt_exec_callback_QsciPrinter_printRange ".} =
-  type Cb = proc(super: QsciPrinterprintRangeBase, qsb: gen_qsciscintillabase.QsciScintillaBase, painter: gen_qpainter.QPainter, fromVal: cint, to: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(qsb: gen_qsciscintillabase.QsciScintillaBase, painter: gen_qpainter.QPainter, fromVal: cint, to: cint): auto =
-    callVirtualBase_printRange(QsciPrinter(h: self), qsb, painter, fromVal, to)
+  var nimfunc = cast[ptr QsciPrinterprintRangeProc](cast[pointer](slot))
   let slotval1 = gen_qsciscintillabase.QsciScintillaBase(h: qsb)
 
   let slotval2 = gen_qpainter.QPainter(h: painter)
@@ -220,28 +203,23 @@ proc miqt_exec_callback_QsciPrinter_printRange(self: ptr cQsciPrinter, slot: int
   let slotval4 = to
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3, slotval4 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3, slotval4 )
 
   virtualReturn
-proc callVirtualBase_printRange2(self: QsciPrinter, qsb: gen_qsciscintillabase.QsciScintillaBase, fromVal: cint, to: cint): cint =
-
+proc QsciPrinterprintRange2*(self: gen_qsciprinter_types.QsciPrinter, qsb: gen_qsciscintillabase.QsciScintillaBase, fromVal: cint, to: cint): cint =
 
   fQsciPrinter_virtualbase_printRange2(self.h, qsb.h, fromVal, to)
 
-type QsciPrinterprintRange2Base* = proc(qsb: gen_qsciscintillabase.QsciScintillaBase, fromVal: cint, to: cint): cint
-proc onprintRange2*(self: QsciPrinter, slot: proc(super: QsciPrinterprintRange2Base, qsb: gen_qsciscintillabase.QsciScintillaBase, fromVal: cint, to: cint): cint) =
+type QsciPrinterprintRange2Proc* = proc(qsb: gen_qsciscintillabase.QsciScintillaBase, fromVal: cint, to: cint): cint
+proc onprintRange2*(self: gen_qsciprinter_types.QsciPrinter, slot: QsciPrinterprintRange2Proc) =
   # TODO check subclass
-  type Cb = proc(super: QsciPrinterprintRange2Base, qsb: gen_qsciscintillabase.QsciScintillaBase, fromVal: cint, to: cint): cint
-  var tmp = new Cb
+  var tmp = new QsciPrinterprintRange2Proc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciPrinter_override_virtual_printRange2(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciPrinter_printRange2(self: ptr cQsciPrinter, slot: int, qsb: pointer, fromVal: cint, to: cint): cint {.exportc: "miqt_exec_callback_QsciPrinter_printRange2 ".} =
-  type Cb = proc(super: QsciPrinterprintRange2Base, qsb: gen_qsciscintillabase.QsciScintillaBase, fromVal: cint, to: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(qsb: gen_qsciscintillabase.QsciScintillaBase, fromVal: cint, to: cint): auto =
-    callVirtualBase_printRange2(QsciPrinter(h: self), qsb, fromVal, to)
+  var nimfunc = cast[ptr QsciPrinterprintRange2Proc](cast[pointer](slot))
   let slotval1 = gen_qsciscintillabase.QsciScintillaBase(h: qsb)
 
   let slotval2 = fromVal
@@ -249,265 +227,210 @@ proc miqt_exec_callback_QsciPrinter_printRange2(self: ptr cQsciPrinter, slot: in
   let slotval3 = to
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_setWrapMode(self: QsciPrinter, wmode: gen_qsciscintilla.QsciScintillaWrapMode): void =
-
+proc QsciPrintersetWrapMode*(self: gen_qsciprinter_types.QsciPrinter, wmode: cint): void =
 
   fQsciPrinter_virtualbase_setWrapMode(self.h, cint(wmode))
 
-type QsciPrintersetWrapModeBase* = proc(wmode: gen_qsciscintilla.QsciScintillaWrapMode): void
-proc onsetWrapMode*(self: QsciPrinter, slot: proc(super: QsciPrintersetWrapModeBase, wmode: gen_qsciscintilla.QsciScintillaWrapMode): void) =
+type QsciPrintersetWrapModeProc* = proc(wmode: cint): void
+proc onsetWrapMode*(self: gen_qsciprinter_types.QsciPrinter, slot: QsciPrintersetWrapModeProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciPrintersetWrapModeBase, wmode: gen_qsciscintilla.QsciScintillaWrapMode): void
-  var tmp = new Cb
+  var tmp = new QsciPrintersetWrapModeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciPrinter_override_virtual_setWrapMode(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciPrinter_setWrapMode(self: ptr cQsciPrinter, slot: int, wmode: cint): void {.exportc: "miqt_exec_callback_QsciPrinter_setWrapMode ".} =
-  type Cb = proc(super: QsciPrintersetWrapModeBase, wmode: gen_qsciscintilla.QsciScintillaWrapMode): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(wmode: gen_qsciscintilla.QsciScintillaWrapMode): auto =
-    callVirtualBase_setWrapMode(QsciPrinter(h: self), wmode)
-  let slotval1 = gen_qsciscintilla.QsciScintillaWrapMode(wmode)
+  var nimfunc = cast[ptr QsciPrintersetWrapModeProc](cast[pointer](slot))
+  let slotval1 = cint(wmode)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_devType(self: QsciPrinter, ): cint =
-
+  nimfunc[](slotval1)
+proc QsciPrinterdevType*(self: gen_qsciprinter_types.QsciPrinter, ): cint =
 
   fQsciPrinter_virtualbase_devType(self.h)
 
-type QsciPrinterdevTypeBase* = proc(): cint
-proc ondevType*(self: QsciPrinter, slot: proc(super: QsciPrinterdevTypeBase): cint) =
+type QsciPrinterdevTypeProc* = proc(): cint
+proc ondevType*(self: gen_qsciprinter_types.QsciPrinter, slot: QsciPrinterdevTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciPrinterdevTypeBase): cint
-  var tmp = new Cb
+  var tmp = new QsciPrinterdevTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciPrinter_override_virtual_devType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciPrinter_devType(self: ptr cQsciPrinter, slot: int): cint {.exportc: "miqt_exec_callback_QsciPrinter_devType ".} =
-  type Cb = proc(super: QsciPrinterdevTypeBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_devType(QsciPrinter(h: self), )
+  var nimfunc = cast[ptr QsciPrinterdevTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setPageSize(self: QsciPrinter, pageSize: gen_qpagedpaintdevice.QPagedPaintDevicePageSize): void =
-
+proc QsciPrintersetPageSize*(self: gen_qsciprinter_types.QsciPrinter, pageSize: cint): void =
 
   fQsciPrinter_virtualbase_setPageSize(self.h, cint(pageSize))
 
-type QsciPrintersetPageSizeBase* = proc(pageSize: gen_qpagedpaintdevice.QPagedPaintDevicePageSize): void
-proc onsetPageSize*(self: QsciPrinter, slot: proc(super: QsciPrintersetPageSizeBase, pageSize: gen_qpagedpaintdevice.QPagedPaintDevicePageSize): void) =
+type QsciPrintersetPageSizeProc* = proc(pageSize: cint): void
+proc onsetPageSize*(self: gen_qsciprinter_types.QsciPrinter, slot: QsciPrintersetPageSizeProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciPrintersetPageSizeBase, pageSize: gen_qpagedpaintdevice.QPagedPaintDevicePageSize): void
-  var tmp = new Cb
+  var tmp = new QsciPrintersetPageSizeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciPrinter_override_virtual_setPageSize(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciPrinter_setPageSize(self: ptr cQsciPrinter, slot: int, pageSize: cint): void {.exportc: "miqt_exec_callback_QsciPrinter_setPageSize ".} =
-  type Cb = proc(super: QsciPrintersetPageSizeBase, pageSize: gen_qpagedpaintdevice.QPagedPaintDevicePageSize): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(pageSize: gen_qpagedpaintdevice.QPagedPaintDevicePageSize): auto =
-    callVirtualBase_setPageSize(QsciPrinter(h: self), pageSize)
-  let slotval1 = gen_qpagedpaintdevice.QPagedPaintDevicePageSize(pageSize)
+  var nimfunc = cast[ptr QsciPrintersetPageSizeProc](cast[pointer](slot))
+  let slotval1 = cint(pageSize)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_setPageSizeMM(self: QsciPrinter, size: gen_qsize.QSizeF): void =
-
+  nimfunc[](slotval1)
+proc QsciPrintersetPageSizeMM*(self: gen_qsciprinter_types.QsciPrinter, size: gen_qsize.QSizeF): void =
 
   fQsciPrinter_virtualbase_setPageSizeMM(self.h, size.h)
 
-type QsciPrintersetPageSizeMMBase* = proc(size: gen_qsize.QSizeF): void
-proc onsetPageSizeMM*(self: QsciPrinter, slot: proc(super: QsciPrintersetPageSizeMMBase, size: gen_qsize.QSizeF): void) =
+type QsciPrintersetPageSizeMMProc* = proc(size: gen_qsize.QSizeF): void
+proc onsetPageSizeMM*(self: gen_qsciprinter_types.QsciPrinter, slot: QsciPrintersetPageSizeMMProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciPrintersetPageSizeMMBase, size: gen_qsize.QSizeF): void
-  var tmp = new Cb
+  var tmp = new QsciPrintersetPageSizeMMProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciPrinter_override_virtual_setPageSizeMM(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciPrinter_setPageSizeMM(self: ptr cQsciPrinter, slot: int, size: pointer): void {.exportc: "miqt_exec_callback_QsciPrinter_setPageSizeMM ".} =
-  type Cb = proc(super: QsciPrintersetPageSizeMMBase, size: gen_qsize.QSizeF): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(size: gen_qsize.QSizeF): auto =
-    callVirtualBase_setPageSizeMM(QsciPrinter(h: self), size)
+  var nimfunc = cast[ptr QsciPrintersetPageSizeMMProc](cast[pointer](slot))
   let slotval1 = gen_qsize.QSizeF(h: size)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_newPage(self: QsciPrinter, ): bool =
-
+  nimfunc[](slotval1)
+proc QsciPrinternewPage*(self: gen_qsciprinter_types.QsciPrinter, ): bool =
 
   fQsciPrinter_virtualbase_newPage(self.h)
 
-type QsciPrinternewPageBase* = proc(): bool
-proc onnewPage*(self: QsciPrinter, slot: proc(super: QsciPrinternewPageBase): bool) =
+type QsciPrinternewPageProc* = proc(): bool
+proc onnewPage*(self: gen_qsciprinter_types.QsciPrinter, slot: QsciPrinternewPageProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciPrinternewPageBase): bool
-  var tmp = new Cb
+  var tmp = new QsciPrinternewPageProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciPrinter_override_virtual_newPage(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciPrinter_newPage(self: ptr cQsciPrinter, slot: int): bool {.exportc: "miqt_exec_callback_QsciPrinter_newPage ".} =
-  type Cb = proc(super: QsciPrinternewPageBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_newPage(QsciPrinter(h: self), )
+  var nimfunc = cast[ptr QsciPrinternewPageProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_paintEngine(self: QsciPrinter, ): gen_qpaintengine.QPaintEngine =
-
+proc QsciPrinterpaintEngine*(self: gen_qsciprinter_types.QsciPrinter, ): gen_qpaintengine.QPaintEngine =
 
   gen_qpaintengine.QPaintEngine(h: fQsciPrinter_virtualbase_paintEngine(self.h))
 
-type QsciPrinterpaintEngineBase* = proc(): gen_qpaintengine.QPaintEngine
-proc onpaintEngine*(self: QsciPrinter, slot: proc(super: QsciPrinterpaintEngineBase): gen_qpaintengine.QPaintEngine) =
+type QsciPrinterpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
+proc onpaintEngine*(self: gen_qsciprinter_types.QsciPrinter, slot: QsciPrinterpaintEngineProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciPrinterpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var tmp = new Cb
+  var tmp = new QsciPrinterpaintEngineProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciPrinter_override_virtual_paintEngine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciPrinter_paintEngine(self: ptr cQsciPrinter, slot: int): pointer {.exportc: "miqt_exec_callback_QsciPrinter_paintEngine ".} =
-  type Cb = proc(super: QsciPrinterpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_paintEngine(QsciPrinter(h: self), )
+  var nimfunc = cast[ptr QsciPrinterpaintEngineProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_setMargins(self: QsciPrinter, m: gen_qpagedpaintdevice.QPagedPaintDeviceMargins): void =
-
+proc QsciPrintersetMargins*(self: gen_qsciprinter_types.QsciPrinter, m: gen_qpagedpaintdevice.QPagedPaintDeviceMargins): void =
 
   fQsciPrinter_virtualbase_setMargins(self.h, m.h)
 
-type QsciPrintersetMarginsBase* = proc(m: gen_qpagedpaintdevice.QPagedPaintDeviceMargins): void
-proc onsetMargins*(self: QsciPrinter, slot: proc(super: QsciPrintersetMarginsBase, m: gen_qpagedpaintdevice.QPagedPaintDeviceMargins): void) =
+type QsciPrintersetMarginsProc* = proc(m: gen_qpagedpaintdevice.QPagedPaintDeviceMargins): void
+proc onsetMargins*(self: gen_qsciprinter_types.QsciPrinter, slot: QsciPrintersetMarginsProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciPrintersetMarginsBase, m: gen_qpagedpaintdevice.QPagedPaintDeviceMargins): void
-  var tmp = new Cb
+  var tmp = new QsciPrintersetMarginsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciPrinter_override_virtual_setMargins(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciPrinter_setMargins(self: ptr cQsciPrinter, slot: int, m: pointer): void {.exportc: "miqt_exec_callback_QsciPrinter_setMargins ".} =
-  type Cb = proc(super: QsciPrintersetMarginsBase, m: gen_qpagedpaintdevice.QPagedPaintDeviceMargins): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(m: gen_qpagedpaintdevice.QPagedPaintDeviceMargins): auto =
-    callVirtualBase_setMargins(QsciPrinter(h: self), m)
+  var nimfunc = cast[ptr QsciPrintersetMarginsProc](cast[pointer](slot))
   let slotval1 = gen_qpagedpaintdevice.QPagedPaintDeviceMargins(h: m)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_metric(self: QsciPrinter, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint =
-
+  nimfunc[](slotval1)
+proc QsciPrintermetric*(self: gen_qsciprinter_types.QsciPrinter, param1: cint): cint =
 
   fQsciPrinter_virtualbase_metric(self.h, cint(param1))
 
-type QsciPrintermetricBase* = proc(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-proc onmetric*(self: QsciPrinter, slot: proc(super: QsciPrintermetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint) =
+type QsciPrintermetricProc* = proc(param1: cint): cint
+proc onmetric*(self: gen_qsciprinter_types.QsciPrinter, slot: QsciPrintermetricProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciPrintermetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var tmp = new Cb
+  var tmp = new QsciPrintermetricProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciPrinter_override_virtual_metric(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciPrinter_metric(self: ptr cQsciPrinter, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QsciPrinter_metric ".} =
-  type Cb = proc(super: QsciPrintermetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): auto =
-    callVirtualBase_metric(QsciPrinter(h: self), param1)
-  let slotval1 = gen_qpaintdevice.QPaintDevicePaintDeviceMetric(param1)
+  var nimfunc = cast[ptr QsciPrintermetricProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_initPainter(self: QsciPrinter, painter: gen_qpainter.QPainter): void =
-
+proc QsciPrinterinitPainter*(self: gen_qsciprinter_types.QsciPrinter, painter: gen_qpainter.QPainter): void =
 
   fQsciPrinter_virtualbase_initPainter(self.h, painter.h)
 
-type QsciPrinterinitPainterBase* = proc(painter: gen_qpainter.QPainter): void
-proc oninitPainter*(self: QsciPrinter, slot: proc(super: QsciPrinterinitPainterBase, painter: gen_qpainter.QPainter): void) =
+type QsciPrinterinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
+proc oninitPainter*(self: gen_qsciprinter_types.QsciPrinter, slot: QsciPrinterinitPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciPrinterinitPainterBase, painter: gen_qpainter.QPainter): void
-  var tmp = new Cb
+  var tmp = new QsciPrinterinitPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciPrinter_override_virtual_initPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciPrinter_initPainter(self: ptr cQsciPrinter, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_QsciPrinter_initPainter ".} =
-  type Cb = proc(super: QsciPrinterinitPainterBase, painter: gen_qpainter.QPainter): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter): auto =
-    callVirtualBase_initPainter(QsciPrinter(h: self), painter)
+  var nimfunc = cast[ptr QsciPrinterinitPainterProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_redirected(self: QsciPrinter, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
+  nimfunc[](slotval1)
+proc QsciPrinterredirected*(self: gen_qsciprinter_types.QsciPrinter, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
 
   gen_qpaintdevice.QPaintDevice(h: fQsciPrinter_virtualbase_redirected(self.h, offset.h))
 
-type QsciPrinterredirectedBase* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-proc onredirected*(self: QsciPrinter, slot: proc(super: QsciPrinterredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice) =
+type QsciPrinterredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
+proc onredirected*(self: gen_qsciprinter_types.QsciPrinter, slot: QsciPrinterredirectedProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciPrinterredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var tmp = new Cb
+  var tmp = new QsciPrinterredirectedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciPrinter_override_virtual_redirected(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciPrinter_redirected(self: ptr cQsciPrinter, slot: int, offset: pointer): pointer {.exportc: "miqt_exec_callback_QsciPrinter_redirected ".} =
-  type Cb = proc(super: QsciPrinterredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(offset: gen_qpoint.QPoint): auto =
-    callVirtualBase_redirected(QsciPrinter(h: self), offset)
+  var nimfunc = cast[ptr QsciPrinterredirectedProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: offset)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_sharedPainter(self: QsciPrinter, ): gen_qpainter.QPainter =
-
+proc QsciPrintersharedPainter*(self: gen_qsciprinter_types.QsciPrinter, ): gen_qpainter.QPainter =
 
   gen_qpainter.QPainter(h: fQsciPrinter_virtualbase_sharedPainter(self.h))
 
-type QsciPrintersharedPainterBase* = proc(): gen_qpainter.QPainter
-proc onsharedPainter*(self: QsciPrinter, slot: proc(super: QsciPrintersharedPainterBase): gen_qpainter.QPainter) =
+type QsciPrintersharedPainterProc* = proc(): gen_qpainter.QPainter
+proc onsharedPainter*(self: gen_qsciprinter_types.QsciPrinter, slot: QsciPrintersharedPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QsciPrintersharedPainterBase): gen_qpainter.QPainter
-  var tmp = new Cb
+  var tmp = new QsciPrintersharedPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQsciPrinter_override_virtual_sharedPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QsciPrinter_sharedPainter(self: ptr cQsciPrinter, slot: int): pointer {.exportc: "miqt_exec_callback_QsciPrinter_sharedPainter ".} =
-  type Cb = proc(super: QsciPrintersharedPainterBase): gen_qpainter.QPainter
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sharedPainter(QsciPrinter(h: self), )
+  var nimfunc = cast[ptr QsciPrintersharedPainterProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc delete*(self: QsciPrinter) =
+proc delete*(self: gen_qsciprinter_types.QsciPrinter) =
   fcQsciPrinter_delete(self.h)

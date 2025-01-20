@@ -55,56 +55,56 @@ proc fcQScriptProgram_operatorNotEqual(self: pointer, other: pointer): bool {.im
 proc fcQScriptProgram_delete(self: pointer) {.importc: "QScriptProgram_delete".}
 
 
-func init*(T: type QScriptProgram, h: ptr cQScriptProgram): QScriptProgram =
+func init*(T: type gen_qscriptprogram_types.QScriptProgram, h: ptr cQScriptProgram): gen_qscriptprogram_types.QScriptProgram =
   T(h: h)
-proc create*(T: type QScriptProgram, ): QScriptProgram =
+proc create*(T: type gen_qscriptprogram_types.QScriptProgram, ): gen_qscriptprogram_types.QScriptProgram =
 
-  QScriptProgram.init(fcQScriptProgram_new())
-proc create*(T: type QScriptProgram, sourceCode: string): QScriptProgram =
+  gen_qscriptprogram_types.QScriptProgram.init(fcQScriptProgram_new())
+proc create*(T: type gen_qscriptprogram_types.QScriptProgram, sourceCode: string): gen_qscriptprogram_types.QScriptProgram =
 
-  QScriptProgram.init(fcQScriptProgram_new2(struct_miqt_string(data: sourceCode, len: csize_t(len(sourceCode)))))
-proc create*(T: type QScriptProgram, other: QScriptProgram): QScriptProgram =
+  gen_qscriptprogram_types.QScriptProgram.init(fcQScriptProgram_new2(struct_miqt_string(data: sourceCode, len: csize_t(len(sourceCode)))))
+proc create*(T: type gen_qscriptprogram_types.QScriptProgram, other: gen_qscriptprogram_types.QScriptProgram): gen_qscriptprogram_types.QScriptProgram =
 
-  QScriptProgram.init(fcQScriptProgram_new3(other.h))
-proc create*(T: type QScriptProgram, sourceCode: string, fileName: string): QScriptProgram =
+  gen_qscriptprogram_types.QScriptProgram.init(fcQScriptProgram_new3(other.h))
+proc create*(T: type gen_qscriptprogram_types.QScriptProgram, sourceCode: string, fileName: string): gen_qscriptprogram_types.QScriptProgram =
 
-  QScriptProgram.init(fcQScriptProgram_new4(struct_miqt_string(data: sourceCode, len: csize_t(len(sourceCode))), struct_miqt_string(data: fileName, len: csize_t(len(fileName)))))
-proc create*(T: type QScriptProgram, sourceCode: string, fileName: string, firstLineNumber: cint): QScriptProgram =
+  gen_qscriptprogram_types.QScriptProgram.init(fcQScriptProgram_new4(struct_miqt_string(data: sourceCode, len: csize_t(len(sourceCode))), struct_miqt_string(data: fileName, len: csize_t(len(fileName)))))
+proc create*(T: type gen_qscriptprogram_types.QScriptProgram, sourceCode: string, fileName: string, firstLineNumber: cint): gen_qscriptprogram_types.QScriptProgram =
 
-  QScriptProgram.init(fcQScriptProgram_new5(struct_miqt_string(data: sourceCode, len: csize_t(len(sourceCode))), struct_miqt_string(data: fileName, len: csize_t(len(fileName))), firstLineNumber))
-proc operatorAssign*(self: QScriptProgram, other: QScriptProgram): void =
+  gen_qscriptprogram_types.QScriptProgram.init(fcQScriptProgram_new5(struct_miqt_string(data: sourceCode, len: csize_t(len(sourceCode))), struct_miqt_string(data: fileName, len: csize_t(len(fileName))), firstLineNumber))
+proc operatorAssign*(self: gen_qscriptprogram_types.QScriptProgram, other: gen_qscriptprogram_types.QScriptProgram): void =
 
   fcQScriptProgram_operatorAssign(self.h, other.h)
 
-proc isNull*(self: QScriptProgram, ): bool =
+proc isNull*(self: gen_qscriptprogram_types.QScriptProgram, ): bool =
 
   fcQScriptProgram_isNull(self.h)
 
-proc sourceCode*(self: QScriptProgram, ): string =
+proc sourceCode*(self: gen_qscriptprogram_types.QScriptProgram, ): string =
 
   let v_ms = fcQScriptProgram_sourceCode(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc fileName*(self: QScriptProgram, ): string =
+proc fileName*(self: gen_qscriptprogram_types.QScriptProgram, ): string =
 
   let v_ms = fcQScriptProgram_fileName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc firstLineNumber*(self: QScriptProgram, ): cint =
+proc firstLineNumber*(self: gen_qscriptprogram_types.QScriptProgram, ): cint =
 
   fcQScriptProgram_firstLineNumber(self.h)
 
-proc operatorEqual*(self: QScriptProgram, other: QScriptProgram): bool =
+proc operatorEqual*(self: gen_qscriptprogram_types.QScriptProgram, other: gen_qscriptprogram_types.QScriptProgram): bool =
 
   fcQScriptProgram_operatorEqual(self.h, other.h)
 
-proc operatorNotEqual*(self: QScriptProgram, other: QScriptProgram): bool =
+proc operatorNotEqual*(self: gen_qscriptprogram_types.QScriptProgram, other: gen_qscriptprogram_types.QScriptProgram): bool =
 
   fcQScriptProgram_operatorNotEqual(self.h, other.h)
 
-proc delete*(self: QScriptProgram) =
+proc delete*(self: gen_qscriptprogram_types.QScriptProgram) =
   fcQScriptProgram_delete(self.h)

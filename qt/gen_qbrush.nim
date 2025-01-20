@@ -34,211 +34,201 @@ const cflags = gorge("pkg-config -cflags Qt5Widgets")
 {.compile("gen_qbrush.cpp", cflags).}
 
 
-type QGradientType* = cint
-const
-  QGradientLinearGradient* = 0
-  QGradientRadialGradient* = 1
-  QGradientConicalGradient* = 2
-  QGradientNoGradient* = 3
+type QGradientTypeEnum* = distinct cint
+template LinearGradient*(_: type QGradientTypeEnum): untyped = 0
+template RadialGradient*(_: type QGradientTypeEnum): untyped = 1
+template ConicalGradient*(_: type QGradientTypeEnum): untyped = 2
+template NoGradient*(_: type QGradientTypeEnum): untyped = 3
 
 
-
-type QGradientSpread* = cint
-const
-  QGradientPadSpread* = 0
-  QGradientReflectSpread* = 1
-  QGradientRepeatSpread* = 2
+type QGradientSpreadEnum* = distinct cint
+template PadSpread*(_: type QGradientSpreadEnum): untyped = 0
+template ReflectSpread*(_: type QGradientSpreadEnum): untyped = 1
+template RepeatSpread*(_: type QGradientSpreadEnum): untyped = 2
 
 
-
-type QGradientCoordinateMode* = cint
-const
-  QGradientLogicalMode* = 0
-  QGradientStretchToDeviceMode* = 1
-  QGradientObjectBoundingMode* = 2
-  QGradientObjectMode* = 3
+type QGradientCoordinateModeEnum* = distinct cint
+template LogicalMode*(_: type QGradientCoordinateModeEnum): untyped = 0
+template StretchToDeviceMode*(_: type QGradientCoordinateModeEnum): untyped = 1
+template ObjectBoundingMode*(_: type QGradientCoordinateModeEnum): untyped = 2
+template ObjectMode*(_: type QGradientCoordinateModeEnum): untyped = 3
 
 
-
-type QGradientInterpolationMode* = cint
-const
-  QGradientColorInterpolation* = 0
-  QGradientComponentInterpolation* = 1
+type QGradientInterpolationModeEnum* = distinct cint
+template ColorInterpolation*(_: type QGradientInterpolationModeEnum): untyped = 0
+template ComponentInterpolation*(_: type QGradientInterpolationModeEnum): untyped = 1
 
 
-
-type QGradientPreset* = cint
-const
-  QGradientWarmFlame* = 1
-  QGradientNightFade* = 2
-  QGradientSpringWarmth* = 3
-  QGradientJuicyPeach* = 4
-  QGradientYoungPassion* = 5
-  QGradientLadyLips* = 6
-  QGradientSunnyMorning* = 7
-  QGradientRainyAshville* = 8
-  QGradientFrozenDreams* = 9
-  QGradientWinterNeva* = 10
-  QGradientDustyGrass* = 11
-  QGradientTemptingAzure* = 12
-  QGradientHeavyRain* = 13
-  QGradientAmyCrisp* = 14
-  QGradientMeanFruit* = 15
-  QGradientDeepBlue* = 16
-  QGradientRipeMalinka* = 17
-  QGradientCloudyKnoxville* = 18
-  QGradientMalibuBeach* = 19
-  QGradientNewLife* = 20
-  QGradientTrueSunset* = 21
-  QGradientMorpheusDen* = 22
-  QGradientRareWind* = 23
-  QGradientNearMoon* = 24
-  QGradientWildApple* = 25
-  QGradientSaintPetersburg* = 26
-  QGradientPlumPlate* = 28
-  QGradientEverlastingSky* = 29
-  QGradientHappyFisher* = 30
-  QGradientBlessing* = 31
-  QGradientSharpeyeEagle* = 32
-  QGradientLadogaBottom* = 33
-  QGradientLemonGate* = 34
-  QGradientItmeoBranding* = 35
-  QGradientZeusMiracle* = 36
-  QGradientOldHat* = 37
-  QGradientStarWine* = 38
-  QGradientHappyAcid* = 41
-  QGradientAwesomePine* = 42
-  QGradientNewYork* = 43
-  QGradientShyRainbow* = 44
-  QGradientMixedHopes* = 46
-  QGradientFlyHigh* = 47
-  QGradientStrongBliss* = 48
-  QGradientFreshMilk* = 49
-  QGradientSnowAgain* = 50
-  QGradientFebruaryInk* = 51
-  QGradientKindSteel* = 52
-  QGradientSoftGrass* = 53
-  QGradientGrownEarly* = 54
-  QGradientSharpBlues* = 55
-  QGradientShadyWater* = 56
-  QGradientDirtyBeauty* = 57
-  QGradientGreatWhale* = 58
-  QGradientTeenNotebook* = 59
-  QGradientPoliteRumors* = 60
-  QGradientSweetPeriod* = 61
-  QGradientWideMatrix* = 62
-  QGradientSoftCherish* = 63
-  QGradientRedSalvation* = 64
-  QGradientBurningSpring* = 65
-  QGradientNightParty* = 66
-  QGradientSkyGlider* = 67
-  QGradientHeavenPeach* = 68
-  QGradientPurpleDivision* = 69
-  QGradientAquaSplash* = 70
-  QGradientSpikyNaga* = 72
-  QGradientLoveKiss* = 73
-  QGradientCleanMirror* = 75
-  QGradientPremiumDark* = 76
-  QGradientColdEvening* = 77
-  QGradientCochitiLake* = 78
-  QGradientSummerGames* = 79
-  QGradientPassionateBed* = 80
-  QGradientMountainRock* = 81
-  QGradientDesertHump* = 82
-  QGradientJungleDay* = 83
-  QGradientPhoenixStart* = 84
-  QGradientOctoberSilence* = 85
-  QGradientFarawayRiver* = 86
-  QGradientAlchemistLab* = 87
-  QGradientOverSun* = 88
-  QGradientPremiumWhite* = 89
-  QGradientMarsParty* = 90
-  QGradientEternalConstance* = 91
-  QGradientJapanBlush* = 92
-  QGradientSmilingRain* = 93
-  QGradientCloudyApple* = 94
-  QGradientBigMango* = 95
-  QGradientHealthyWater* = 96
-  QGradientAmourAmour* = 97
-  QGradientRiskyConcrete* = 98
-  QGradientStrongStick* = 99
-  QGradientViciousStance* = 100
-  QGradientPaloAlto* = 101
-  QGradientHappyMemories* = 102
-  QGradientMidnightBloom* = 103
-  QGradientCrystalline* = 104
-  QGradientPartyBliss* = 106
-  QGradientConfidentCloud* = 107
-  QGradientLeCocktail* = 108
-  QGradientRiverCity* = 109
-  QGradientFrozenBerry* = 110
-  QGradientChildCare* = 112
-  QGradientFlyingLemon* = 113
-  QGradientNewRetrowave* = 114
-  QGradientHiddenJaguar* = 115
-  QGradientAboveTheSky* = 116
-  QGradientNega* = 117
-  QGradientDenseWater* = 118
-  QGradientSeashore* = 120
-  QGradientMarbleWall* = 121
-  QGradientCheerfulCaramel* = 122
-  QGradientNightSky* = 123
-  QGradientMagicLake* = 124
-  QGradientYoungGrass* = 125
-  QGradientColorfulPeach* = 126
-  QGradientGentleCare* = 127
-  QGradientPlumBath* = 128
-  QGradientHappyUnicorn* = 129
-  QGradientAfricanField* = 131
-  QGradientSolidStone* = 132
-  QGradientOrangeJuice* = 133
-  QGradientGlassWater* = 134
-  QGradientNorthMiracle* = 136
-  QGradientFruitBlend* = 137
-  QGradientMillenniumPine* = 138
-  QGradientHighFlight* = 139
-  QGradientMoleHall* = 140
-  QGradientSpaceShift* = 142
-  QGradientForestInei* = 143
-  QGradientRoyalGarden* = 144
-  QGradientRichMetal* = 145
-  QGradientJuicyCake* = 146
-  QGradientSmartIndigo* = 147
-  QGradientSandStrike* = 148
-  QGradientNorseBeauty* = 149
-  QGradientAquaGuidance* = 150
-  QGradientSunVeggie* = 151
-  QGradientSeaLord* = 152
-  QGradientBlackSea* = 153
-  QGradientGrassShampoo* = 154
-  QGradientLandingAircraft* = 155
-  QGradientWitchDance* = 156
-  QGradientSleeplessNight* = 157
-  QGradientAngelCare* = 158
-  QGradientCrystalRiver* = 159
-  QGradientSoftLipstick* = 160
-  QGradientSaltMountain* = 161
-  QGradientPerfectWhite* = 162
-  QGradientFreshOasis* = 163
-  QGradientStrictNovember* = 164
-  QGradientMorningSalad* = 165
-  QGradientDeepRelief* = 166
-  QGradientSeaStrike* = 167
-  QGradientNightCall* = 168
-  QGradientSupremeSky* = 169
-  QGradientLightBlue* = 170
-  QGradientMindCrawl* = 171
-  QGradientLilyMeadow* = 172
-  QGradientSugarLollipop* = 173
-  QGradientSweetDessert* = 174
-  QGradientMagicRay* = 175
-  QGradientTeenParty* = 176
-  QGradientFrozenHeat* = 177
-  QGradientGagarinView* = 178
-  QGradientFabledSunset* = 179
-  QGradientPerfectBlue* = 180
-  QGradientNumPresets* = 181
-
+type QGradientPresetEnum* = distinct cint
+template WarmFlame*(_: type QGradientPresetEnum): untyped = 1
+template NightFade*(_: type QGradientPresetEnum): untyped = 2
+template SpringWarmth*(_: type QGradientPresetEnum): untyped = 3
+template JuicyPeach*(_: type QGradientPresetEnum): untyped = 4
+template YoungPassion*(_: type QGradientPresetEnum): untyped = 5
+template LadyLips*(_: type QGradientPresetEnum): untyped = 6
+template SunnyMorning*(_: type QGradientPresetEnum): untyped = 7
+template RainyAshville*(_: type QGradientPresetEnum): untyped = 8
+template FrozenDreams*(_: type QGradientPresetEnum): untyped = 9
+template WinterNeva*(_: type QGradientPresetEnum): untyped = 10
+template DustyGrass*(_: type QGradientPresetEnum): untyped = 11
+template TemptingAzure*(_: type QGradientPresetEnum): untyped = 12
+template HeavyRain*(_: type QGradientPresetEnum): untyped = 13
+template AmyCrisp*(_: type QGradientPresetEnum): untyped = 14
+template MeanFruit*(_: type QGradientPresetEnum): untyped = 15
+template DeepBlue*(_: type QGradientPresetEnum): untyped = 16
+template RipeMalinka*(_: type QGradientPresetEnum): untyped = 17
+template CloudyKnoxville*(_: type QGradientPresetEnum): untyped = 18
+template MalibuBeach*(_: type QGradientPresetEnum): untyped = 19
+template NewLife*(_: type QGradientPresetEnum): untyped = 20
+template TrueSunset*(_: type QGradientPresetEnum): untyped = 21
+template MorpheusDen*(_: type QGradientPresetEnum): untyped = 22
+template RareWind*(_: type QGradientPresetEnum): untyped = 23
+template NearMoon*(_: type QGradientPresetEnum): untyped = 24
+template WildApple*(_: type QGradientPresetEnum): untyped = 25
+template SaintPetersburg*(_: type QGradientPresetEnum): untyped = 26
+template PlumPlate*(_: type QGradientPresetEnum): untyped = 28
+template EverlastingSky*(_: type QGradientPresetEnum): untyped = 29
+template HappyFisher*(_: type QGradientPresetEnum): untyped = 30
+template Blessing*(_: type QGradientPresetEnum): untyped = 31
+template SharpeyeEagle*(_: type QGradientPresetEnum): untyped = 32
+template LadogaBottom*(_: type QGradientPresetEnum): untyped = 33
+template LemonGate*(_: type QGradientPresetEnum): untyped = 34
+template ItmeoBranding*(_: type QGradientPresetEnum): untyped = 35
+template ZeusMiracle*(_: type QGradientPresetEnum): untyped = 36
+template OldHat*(_: type QGradientPresetEnum): untyped = 37
+template StarWine*(_: type QGradientPresetEnum): untyped = 38
+template HappyAcid*(_: type QGradientPresetEnum): untyped = 41
+template AwesomePine*(_: type QGradientPresetEnum): untyped = 42
+template NewYork*(_: type QGradientPresetEnum): untyped = 43
+template ShyRainbow*(_: type QGradientPresetEnum): untyped = 44
+template MixedHopes*(_: type QGradientPresetEnum): untyped = 46
+template FlyHigh*(_: type QGradientPresetEnum): untyped = 47
+template StrongBliss*(_: type QGradientPresetEnum): untyped = 48
+template FreshMilk*(_: type QGradientPresetEnum): untyped = 49
+template SnowAgain*(_: type QGradientPresetEnum): untyped = 50
+template FebruaryInk*(_: type QGradientPresetEnum): untyped = 51
+template KindSteel*(_: type QGradientPresetEnum): untyped = 52
+template SoftGrass*(_: type QGradientPresetEnum): untyped = 53
+template GrownEarly*(_: type QGradientPresetEnum): untyped = 54
+template SharpBlues*(_: type QGradientPresetEnum): untyped = 55
+template ShadyWater*(_: type QGradientPresetEnum): untyped = 56
+template DirtyBeauty*(_: type QGradientPresetEnum): untyped = 57
+template GreatWhale*(_: type QGradientPresetEnum): untyped = 58
+template TeenNotebook*(_: type QGradientPresetEnum): untyped = 59
+template PoliteRumors*(_: type QGradientPresetEnum): untyped = 60
+template SweetPeriod*(_: type QGradientPresetEnum): untyped = 61
+template WideMatrix*(_: type QGradientPresetEnum): untyped = 62
+template SoftCherish*(_: type QGradientPresetEnum): untyped = 63
+template RedSalvation*(_: type QGradientPresetEnum): untyped = 64
+template BurningSpring*(_: type QGradientPresetEnum): untyped = 65
+template NightParty*(_: type QGradientPresetEnum): untyped = 66
+template SkyGlider*(_: type QGradientPresetEnum): untyped = 67
+template HeavenPeach*(_: type QGradientPresetEnum): untyped = 68
+template PurpleDivision*(_: type QGradientPresetEnum): untyped = 69
+template AquaSplash*(_: type QGradientPresetEnum): untyped = 70
+template SpikyNaga*(_: type QGradientPresetEnum): untyped = 72
+template LoveKiss*(_: type QGradientPresetEnum): untyped = 73
+template CleanMirror*(_: type QGradientPresetEnum): untyped = 75
+template PremiumDark*(_: type QGradientPresetEnum): untyped = 76
+template ColdEvening*(_: type QGradientPresetEnum): untyped = 77
+template CochitiLake*(_: type QGradientPresetEnum): untyped = 78
+template SummerGames*(_: type QGradientPresetEnum): untyped = 79
+template PassionateBed*(_: type QGradientPresetEnum): untyped = 80
+template MountainRock*(_: type QGradientPresetEnum): untyped = 81
+template DesertHump*(_: type QGradientPresetEnum): untyped = 82
+template JungleDay*(_: type QGradientPresetEnum): untyped = 83
+template PhoenixStart*(_: type QGradientPresetEnum): untyped = 84
+template OctoberSilence*(_: type QGradientPresetEnum): untyped = 85
+template FarawayRiver*(_: type QGradientPresetEnum): untyped = 86
+template AlchemistLab*(_: type QGradientPresetEnum): untyped = 87
+template OverSun*(_: type QGradientPresetEnum): untyped = 88
+template PremiumWhite*(_: type QGradientPresetEnum): untyped = 89
+template MarsParty*(_: type QGradientPresetEnum): untyped = 90
+template EternalConstance*(_: type QGradientPresetEnum): untyped = 91
+template JapanBlush*(_: type QGradientPresetEnum): untyped = 92
+template SmilingRain*(_: type QGradientPresetEnum): untyped = 93
+template CloudyApple*(_: type QGradientPresetEnum): untyped = 94
+template BigMango*(_: type QGradientPresetEnum): untyped = 95
+template HealthyWater*(_: type QGradientPresetEnum): untyped = 96
+template AmourAmour*(_: type QGradientPresetEnum): untyped = 97
+template RiskyConcrete*(_: type QGradientPresetEnum): untyped = 98
+template StrongStick*(_: type QGradientPresetEnum): untyped = 99
+template ViciousStance*(_: type QGradientPresetEnum): untyped = 100
+template PaloAlto*(_: type QGradientPresetEnum): untyped = 101
+template HappyMemories*(_: type QGradientPresetEnum): untyped = 102
+template MidnightBloom*(_: type QGradientPresetEnum): untyped = 103
+template Crystalline*(_: type QGradientPresetEnum): untyped = 104
+template PartyBliss*(_: type QGradientPresetEnum): untyped = 106
+template ConfidentCloud*(_: type QGradientPresetEnum): untyped = 107
+template LeCocktail*(_: type QGradientPresetEnum): untyped = 108
+template RiverCity*(_: type QGradientPresetEnum): untyped = 109
+template FrozenBerry*(_: type QGradientPresetEnum): untyped = 110
+template ChildCare*(_: type QGradientPresetEnum): untyped = 112
+template FlyingLemon*(_: type QGradientPresetEnum): untyped = 113
+template NewRetrowave*(_: type QGradientPresetEnum): untyped = 114
+template HiddenJaguar*(_: type QGradientPresetEnum): untyped = 115
+template AboveTheSky*(_: type QGradientPresetEnum): untyped = 116
+template Nega*(_: type QGradientPresetEnum): untyped = 117
+template DenseWater*(_: type QGradientPresetEnum): untyped = 118
+template Seashore*(_: type QGradientPresetEnum): untyped = 120
+template MarbleWall*(_: type QGradientPresetEnum): untyped = 121
+template CheerfulCaramel*(_: type QGradientPresetEnum): untyped = 122
+template NightSky*(_: type QGradientPresetEnum): untyped = 123
+template MagicLake*(_: type QGradientPresetEnum): untyped = 124
+template YoungGrass*(_: type QGradientPresetEnum): untyped = 125
+template ColorfulPeach*(_: type QGradientPresetEnum): untyped = 126
+template GentleCare*(_: type QGradientPresetEnum): untyped = 127
+template PlumBath*(_: type QGradientPresetEnum): untyped = 128
+template HappyUnicorn*(_: type QGradientPresetEnum): untyped = 129
+template AfricanField*(_: type QGradientPresetEnum): untyped = 131
+template SolidStone*(_: type QGradientPresetEnum): untyped = 132
+template OrangeJuice*(_: type QGradientPresetEnum): untyped = 133
+template GlassWater*(_: type QGradientPresetEnum): untyped = 134
+template NorthMiracle*(_: type QGradientPresetEnum): untyped = 136
+template FruitBlend*(_: type QGradientPresetEnum): untyped = 137
+template MillenniumPine*(_: type QGradientPresetEnum): untyped = 138
+template HighFlight*(_: type QGradientPresetEnum): untyped = 139
+template MoleHall*(_: type QGradientPresetEnum): untyped = 140
+template SpaceShift*(_: type QGradientPresetEnum): untyped = 142
+template ForestInei*(_: type QGradientPresetEnum): untyped = 143
+template RoyalGarden*(_: type QGradientPresetEnum): untyped = 144
+template RichMetal*(_: type QGradientPresetEnum): untyped = 145
+template JuicyCake*(_: type QGradientPresetEnum): untyped = 146
+template SmartIndigo*(_: type QGradientPresetEnum): untyped = 147
+template SandStrike*(_: type QGradientPresetEnum): untyped = 148
+template NorseBeauty*(_: type QGradientPresetEnum): untyped = 149
+template AquaGuidance*(_: type QGradientPresetEnum): untyped = 150
+template SunVeggie*(_: type QGradientPresetEnum): untyped = 151
+template SeaLord*(_: type QGradientPresetEnum): untyped = 152
+template BlackSea*(_: type QGradientPresetEnum): untyped = 153
+template GrassShampoo*(_: type QGradientPresetEnum): untyped = 154
+template LandingAircraft*(_: type QGradientPresetEnum): untyped = 155
+template WitchDance*(_: type QGradientPresetEnum): untyped = 156
+template SleeplessNight*(_: type QGradientPresetEnum): untyped = 157
+template AngelCare*(_: type QGradientPresetEnum): untyped = 158
+template CrystalRiver*(_: type QGradientPresetEnum): untyped = 159
+template SoftLipstick*(_: type QGradientPresetEnum): untyped = 160
+template SaltMountain*(_: type QGradientPresetEnum): untyped = 161
+template PerfectWhite*(_: type QGradientPresetEnum): untyped = 162
+template FreshOasis*(_: type QGradientPresetEnum): untyped = 163
+template StrictNovember*(_: type QGradientPresetEnum): untyped = 164
+template MorningSalad*(_: type QGradientPresetEnum): untyped = 165
+template DeepRelief*(_: type QGradientPresetEnum): untyped = 166
+template SeaStrike*(_: type QGradientPresetEnum): untyped = 167
+template NightCall*(_: type QGradientPresetEnum): untyped = 168
+template SupremeSky*(_: type QGradientPresetEnum): untyped = 169
+template LightBlue*(_: type QGradientPresetEnum): untyped = 170
+template MindCrawl*(_: type QGradientPresetEnum): untyped = 171
+template LilyMeadow*(_: type QGradientPresetEnum): untyped = 172
+template SugarLollipop*(_: type QGradientPresetEnum): untyped = 173
+template SweetDessert*(_: type QGradientPresetEnum): untyped = 174
+template MagicRay*(_: type QGradientPresetEnum): untyped = 175
+template TeenParty*(_: type QGradientPresetEnum): untyped = 176
+template FrozenHeat*(_: type QGradientPresetEnum): untyped = 177
+template GagarinView*(_: type QGradientPresetEnum): untyped = 178
+template FabledSunset*(_: type QGradientPresetEnum): untyped = 179
+template PerfectBlue*(_: type QGradientPresetEnum): untyped = 180
+template NumPresets*(_: type QGradientPresetEnum): untyped = 181
 
 
 import gen_qbrush_types
@@ -248,7 +238,6 @@ import
   gen_qcolor,
   gen_qimage,
   gen_qmatrix,
-  gen_qnamespace,
   gen_qobjectdefs,
   gen_qpixmap,
   gen_qpoint,
@@ -258,7 +247,6 @@ export
   gen_qcolor,
   gen_qimage,
   gen_qmatrix,
-  gen_qnamespace,
   gen_qobjectdefs,
   gen_qpixmap,
   gen_qpoint,
@@ -374,171 +362,171 @@ proc fcQGradientQGradientData_operatorAssign(self: pointer, param1: pointer): vo
 proc fcQGradientQGradientData_delete(self: pointer) {.importc: "QGradient__QGradientData_delete".}
 
 
-func init*(T: type QBrush, h: ptr cQBrush): QBrush =
+func init*(T: type gen_qbrush_types.QBrush, h: ptr cQBrush): gen_qbrush_types.QBrush =
   T(h: h)
-proc create*(T: type QBrush, ): QBrush =
+proc create*(T: type gen_qbrush_types.QBrush, ): gen_qbrush_types.QBrush =
 
-  QBrush.init(fcQBrush_new())
-proc create*(T: type QBrush, bs: gen_qnamespace.BrushStyle): QBrush =
+  gen_qbrush_types.QBrush.init(fcQBrush_new())
+proc create*(T: type gen_qbrush_types.QBrush, bs: cint): gen_qbrush_types.QBrush =
 
-  QBrush.init(fcQBrush_new2(cint(bs)))
-proc create*(T: type QBrush, color: gen_qcolor.QColor): QBrush =
+  gen_qbrush_types.QBrush.init(fcQBrush_new2(cint(bs)))
+proc create*(T: type gen_qbrush_types.QBrush, color: gen_qcolor.QColor): gen_qbrush_types.QBrush =
 
-  QBrush.init(fcQBrush_new3(color.h))
-proc create2*(T: type QBrush, color: gen_qnamespace.GlobalColor): QBrush =
+  gen_qbrush_types.QBrush.init(fcQBrush_new3(color.h))
+proc create2*(T: type gen_qbrush_types.QBrush, color: cint): gen_qbrush_types.QBrush =
 
-  QBrush.init(fcQBrush_new4(cint(color)))
-proc create*(T: type QBrush, color: gen_qcolor.QColor, pixmap: gen_qpixmap.QPixmap): QBrush =
+  gen_qbrush_types.QBrush.init(fcQBrush_new4(cint(color)))
+proc create*(T: type gen_qbrush_types.QBrush, color: gen_qcolor.QColor, pixmap: gen_qpixmap.QPixmap): gen_qbrush_types.QBrush =
 
-  QBrush.init(fcQBrush_new5(color.h, pixmap.h))
-proc create*(T: type QBrush, color: gen_qnamespace.GlobalColor, pixmap: gen_qpixmap.QPixmap): QBrush =
+  gen_qbrush_types.QBrush.init(fcQBrush_new5(color.h, pixmap.h))
+proc create*(T: type gen_qbrush_types.QBrush, color: cint, pixmap: gen_qpixmap.QPixmap): gen_qbrush_types.QBrush =
 
-  QBrush.init(fcQBrush_new6(cint(color), pixmap.h))
-proc create2*(T: type QBrush, pixmap: gen_qpixmap.QPixmap): QBrush =
+  gen_qbrush_types.QBrush.init(fcQBrush_new6(cint(color), pixmap.h))
+proc create2*(T: type gen_qbrush_types.QBrush, pixmap: gen_qpixmap.QPixmap): gen_qbrush_types.QBrush =
 
-  QBrush.init(fcQBrush_new7(pixmap.h))
-proc create2*(T: type QBrush, image: gen_qimage.QImage): QBrush =
+  gen_qbrush_types.QBrush.init(fcQBrush_new7(pixmap.h))
+proc create2*(T: type gen_qbrush_types.QBrush, image: gen_qimage.QImage): gen_qbrush_types.QBrush =
 
-  QBrush.init(fcQBrush_new8(image.h))
-proc create2*(T: type QBrush, brush: QBrush): QBrush =
+  gen_qbrush_types.QBrush.init(fcQBrush_new8(image.h))
+proc create2*(T: type gen_qbrush_types.QBrush, brush: gen_qbrush_types.QBrush): gen_qbrush_types.QBrush =
 
-  QBrush.init(fcQBrush_new9(brush.h))
-proc create2*(T: type QBrush, gradient: QGradient): QBrush =
+  gen_qbrush_types.QBrush.init(fcQBrush_new9(brush.h))
+proc create2*(T: type gen_qbrush_types.QBrush, gradient: gen_qbrush_types.QGradient): gen_qbrush_types.QBrush =
 
-  QBrush.init(fcQBrush_new10(gradient.h))
-proc create*(T: type QBrush, color: gen_qcolor.QColor, bs: gen_qnamespace.BrushStyle): QBrush =
+  gen_qbrush_types.QBrush.init(fcQBrush_new10(gradient.h))
+proc create*(T: type gen_qbrush_types.QBrush, color: gen_qcolor.QColor, bs: cint): gen_qbrush_types.QBrush =
 
-  QBrush.init(fcQBrush_new11(color.h, cint(bs)))
-proc create*(T: type QBrush, color: gen_qnamespace.GlobalColor, bs: gen_qnamespace.BrushStyle): QBrush =
+  gen_qbrush_types.QBrush.init(fcQBrush_new11(color.h, cint(bs)))
+proc create*(T: type gen_qbrush_types.QBrush, color: cint, bs: cint): gen_qbrush_types.QBrush =
 
-  QBrush.init(fcQBrush_new12(cint(color), cint(bs)))
-proc operatorAssign*(self: QBrush, brush: QBrush): void =
+  gen_qbrush_types.QBrush.init(fcQBrush_new12(cint(color), cint(bs)))
+proc operatorAssign*(self: gen_qbrush_types.QBrush, brush: gen_qbrush_types.QBrush): void =
 
   fcQBrush_operatorAssign(self.h, brush.h)
 
-proc swap*(self: QBrush, other: QBrush): void =
+proc swap*(self: gen_qbrush_types.QBrush, other: gen_qbrush_types.QBrush): void =
 
   fcQBrush_swap(self.h, other.h)
 
-proc ToQVariant*(self: QBrush, ): gen_qvariant.QVariant =
+proc ToQVariant*(self: gen_qbrush_types.QBrush, ): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fcQBrush_ToQVariant(self.h))
 
-proc style*(self: QBrush, ): gen_qnamespace.BrushStyle =
+proc style*(self: gen_qbrush_types.QBrush, ): cint =
 
-  gen_qnamespace.BrushStyle(fcQBrush_style(self.h))
+  cint(fcQBrush_style(self.h))
 
-proc setStyle*(self: QBrush, style: gen_qnamespace.BrushStyle): void =
+proc setStyle*(self: gen_qbrush_types.QBrush, style: cint): void =
 
   fcQBrush_setStyle(self.h, cint(style))
 
-proc matrix*(self: QBrush, ): gen_qmatrix.QMatrix =
+proc matrix*(self: gen_qbrush_types.QBrush, ): gen_qmatrix.QMatrix =
 
   gen_qmatrix.QMatrix(h: fcQBrush_matrix(self.h))
 
-proc setMatrix*(self: QBrush, mat: gen_qmatrix.QMatrix): void =
+proc setMatrix*(self: gen_qbrush_types.QBrush, mat: gen_qmatrix.QMatrix): void =
 
   fcQBrush_setMatrix(self.h, mat.h)
 
-proc transform*(self: QBrush, ): gen_qtransform.QTransform =
+proc transform*(self: gen_qbrush_types.QBrush, ): gen_qtransform.QTransform =
 
   gen_qtransform.QTransform(h: fcQBrush_transform(self.h))
 
-proc setTransform*(self: QBrush, transform: gen_qtransform.QTransform): void =
+proc setTransform*(self: gen_qbrush_types.QBrush, transform: gen_qtransform.QTransform): void =
 
   fcQBrush_setTransform(self.h, transform.h)
 
-proc texture*(self: QBrush, ): gen_qpixmap.QPixmap =
+proc texture*(self: gen_qbrush_types.QBrush, ): gen_qpixmap.QPixmap =
 
   gen_qpixmap.QPixmap(h: fcQBrush_texture(self.h))
 
-proc setTexture*(self: QBrush, pixmap: gen_qpixmap.QPixmap): void =
+proc setTexture*(self: gen_qbrush_types.QBrush, pixmap: gen_qpixmap.QPixmap): void =
 
   fcQBrush_setTexture(self.h, pixmap.h)
 
-proc textureImage*(self: QBrush, ): gen_qimage.QImage =
+proc textureImage*(self: gen_qbrush_types.QBrush, ): gen_qimage.QImage =
 
   gen_qimage.QImage(h: fcQBrush_textureImage(self.h))
 
-proc setTextureImage*(self: QBrush, image: gen_qimage.QImage): void =
+proc setTextureImage*(self: gen_qbrush_types.QBrush, image: gen_qimage.QImage): void =
 
   fcQBrush_setTextureImage(self.h, image.h)
 
-proc color*(self: QBrush, ): gen_qcolor.QColor =
+proc color*(self: gen_qbrush_types.QBrush, ): gen_qcolor.QColor =
 
   gen_qcolor.QColor(h: fcQBrush_color(self.h))
 
-proc setColor*(self: QBrush, color: gen_qcolor.QColor): void =
+proc setColor*(self: gen_qbrush_types.QBrush, color: gen_qcolor.QColor): void =
 
   fcQBrush_setColor(self.h, color.h)
 
-proc setColorWithColor*(self: QBrush, color: gen_qnamespace.GlobalColor): void =
+proc setColorWithColor*(self: gen_qbrush_types.QBrush, color: cint): void =
 
   fcQBrush_setColorWithColor(self.h, cint(color))
 
-proc gradient*(self: QBrush, ): QGradient =
+proc gradient*(self: gen_qbrush_types.QBrush, ): gen_qbrush_types.QGradient =
 
-  QGradient(h: fcQBrush_gradient(self.h))
+  gen_qbrush_types.QGradient(h: fcQBrush_gradient(self.h))
 
-proc isOpaque*(self: QBrush, ): bool =
+proc isOpaque*(self: gen_qbrush_types.QBrush, ): bool =
 
   fcQBrush_isOpaque(self.h)
 
-proc operatorEqual*(self: QBrush, b: QBrush): bool =
+proc operatorEqual*(self: gen_qbrush_types.QBrush, b: gen_qbrush_types.QBrush): bool =
 
   fcQBrush_operatorEqual(self.h, b.h)
 
-proc operatorNotEqual*(self: QBrush, b: QBrush): bool =
+proc operatorNotEqual*(self: gen_qbrush_types.QBrush, b: gen_qbrush_types.QBrush): bool =
 
   fcQBrush_operatorNotEqual(self.h, b.h)
 
-proc isDetached*(self: QBrush, ): bool =
+proc isDetached*(self: gen_qbrush_types.QBrush, ): bool =
 
   fcQBrush_isDetached(self.h)
 
-proc delete*(self: QBrush) =
+proc delete*(self: gen_qbrush_types.QBrush) =
   fcQBrush_delete(self.h)
 
-func init*(T: type QBrushData, h: ptr cQBrushData): QBrushData =
+func init*(T: type gen_qbrush_types.QBrushData, h: ptr cQBrushData): gen_qbrush_types.QBrushData =
   T(h: h)
-proc create*(T: type QBrushData, param1: QBrushData): QBrushData =
+proc create*(T: type gen_qbrush_types.QBrushData, param1: gen_qbrush_types.QBrushData): gen_qbrush_types.QBrushData =
 
-  QBrushData.init(fcQBrushData_new(param1.h))
-proc operatorAssign*(self: QBrushData, param1: QBrushData): void =
+  gen_qbrush_types.QBrushData.init(fcQBrushData_new(param1.h))
+proc operatorAssign*(self: gen_qbrush_types.QBrushData, param1: gen_qbrush_types.QBrushData): void =
 
   fcQBrushData_operatorAssign(self.h, param1.h)
 
-proc delete*(self: QBrushData) =
+proc delete*(self: gen_qbrush_types.QBrushData) =
   fcQBrushData_delete(self.h)
 
-func init*(T: type QGradient, h: ptr cQGradient): QGradient =
+func init*(T: type gen_qbrush_types.QGradient, h: ptr cQGradient): gen_qbrush_types.QGradient =
   T(h: h)
-proc create*(T: type QGradient, ): QGradient =
+proc create*(T: type gen_qbrush_types.QGradient, ): gen_qbrush_types.QGradient =
 
-  QGradient.init(fcQGradient_new())
-proc create*(T: type QGradient, param1: QGradientPreset): QGradient =
+  gen_qbrush_types.QGradient.init(fcQGradient_new())
+proc create*(T: type gen_qbrush_types.QGradient, param1: cint): gen_qbrush_types.QGradient =
 
-  QGradient.init(fcQGradient_new2(cint(param1)))
-proc create*(T: type QGradient, param1: QGradient): QGradient =
+  gen_qbrush_types.QGradient.init(fcQGradient_new2(cint(param1)))
+proc create*(T: type gen_qbrush_types.QGradient, param1: gen_qbrush_types.QGradient): gen_qbrush_types.QGradient =
 
-  QGradient.init(fcQGradient_new3(param1.h))
-proc typeX*(self: QGradient, ): QGradientType =
+  gen_qbrush_types.QGradient.init(fcQGradient_new3(param1.h))
+proc typeX*(self: gen_qbrush_types.QGradient, ): cint =
 
-  QGradientType(fcQGradient_typeX(self.h))
+  cint(fcQGradient_typeX(self.h))
 
-proc setSpread*(self: QGradient, spread: QGradientSpread): void =
+proc setSpread*(self: gen_qbrush_types.QGradient, spread: cint): void =
 
   fcQGradient_setSpread(self.h, cint(spread))
 
-proc spread*(self: QGradient, ): QGradientSpread =
+proc spread*(self: gen_qbrush_types.QGradient, ): cint =
 
-  QGradientSpread(fcQGradient_spread(self.h))
+  cint(fcQGradient_spread(self.h))
 
-proc setColorAt*(self: QGradient, pos: float64, color: gen_qcolor.QColor): void =
+proc setColorAt*(self: gen_qbrush_types.QGradient, pos: float64, color: gen_qcolor.QColor): void =
 
   fcQGradient_setColorAt(self.h, pos, color.h)
 
-proc setStops*(self: QGradient, stops: seq[tuple[first: float64, second: gen_qcolor.QColor]]): void =
+proc setStops*(self: gen_qbrush_types.QGradient, stops: seq[tuple[first: float64, second: gen_qcolor.QColor]]): void =
 
   var stops_CArray = newSeq[struct_miqt_map](len(stops))
   for i in 0..<len(stops):
@@ -550,7 +538,7 @@ proc setStops*(self: QGradient, stops: seq[tuple[first: float64, second: gen_qco
 
   fcQGradient_setStops(self.h, struct_miqt_array(len: csize_t(len(stops)), data: if len(stops) == 0: nil else: addr(stops_CArray[0])))
 
-proc stops*(self: QGradient, ): seq[tuple[first: float64, second: gen_qcolor.QColor]] =
+proc stops*(self: gen_qbrush_types.QGradient, ): seq[tuple[first: float64, second: gen_qcolor.QColor]] =
 
   var v_ma = fcQGradient_stops(self.h)
   var vx_ret = newSeq[tuple[first: float64, second: gen_qcolor.QColor]](int(v_ma.len))
@@ -566,198 +554,198 @@ proc stops*(self: QGradient, ): seq[tuple[first: float64, second: gen_qcolor.QCo
     vx_ret[i] = (first: vx_vv_entry_First , second: vx_vv_entry_Second )
   vx_ret
 
-proc coordinateMode*(self: QGradient, ): QGradientCoordinateMode =
+proc coordinateMode*(self: gen_qbrush_types.QGradient, ): cint =
 
-  QGradientCoordinateMode(fcQGradient_coordinateMode(self.h))
+  cint(fcQGradient_coordinateMode(self.h))
 
-proc setCoordinateMode*(self: QGradient, mode: QGradientCoordinateMode): void =
+proc setCoordinateMode*(self: gen_qbrush_types.QGradient, mode: cint): void =
 
   fcQGradient_setCoordinateMode(self.h, cint(mode))
 
-proc interpolationMode*(self: QGradient, ): QGradientInterpolationMode =
+proc interpolationMode*(self: gen_qbrush_types.QGradient, ): cint =
 
-  QGradientInterpolationMode(fcQGradient_interpolationMode(self.h))
+  cint(fcQGradient_interpolationMode(self.h))
 
-proc setInterpolationMode*(self: QGradient, mode: QGradientInterpolationMode): void =
+proc setInterpolationMode*(self: gen_qbrush_types.QGradient, mode: cint): void =
 
   fcQGradient_setInterpolationMode(self.h, cint(mode))
 
-proc operatorEqual*(self: QGradient, gradient: QGradient): bool =
+proc operatorEqual*(self: gen_qbrush_types.QGradient, gradient: gen_qbrush_types.QGradient): bool =
 
   fcQGradient_operatorEqual(self.h, gradient.h)
 
-proc operatorNotEqual*(self: QGradient, other: QGradient): bool =
+proc operatorNotEqual*(self: gen_qbrush_types.QGradient, other: gen_qbrush_types.QGradient): bool =
 
   fcQGradient_operatorNotEqual(self.h, other.h)
 
-proc staticMetaObject*(_: type QGradient): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qbrush_types.QGradient): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQGradient_staticMetaObject())
-proc delete*(self: QGradient) =
+proc delete*(self: gen_qbrush_types.QGradient) =
   fcQGradient_delete(self.h)
 
-func init*(T: type QLinearGradient, h: ptr cQLinearGradient): QLinearGradient =
+func init*(T: type gen_qbrush_types.QLinearGradient, h: ptr cQLinearGradient): gen_qbrush_types.QLinearGradient =
   T(h: h)
-proc create*(T: type QLinearGradient, ): QLinearGradient =
+proc create*(T: type gen_qbrush_types.QLinearGradient, ): gen_qbrush_types.QLinearGradient =
 
-  QLinearGradient.init(fcQLinearGradient_new())
-proc create*(T: type QLinearGradient, start: gen_qpoint.QPointF, finalStop: gen_qpoint.QPointF): QLinearGradient =
+  gen_qbrush_types.QLinearGradient.init(fcQLinearGradient_new())
+proc create*(T: type gen_qbrush_types.QLinearGradient, start: gen_qpoint.QPointF, finalStop: gen_qpoint.QPointF): gen_qbrush_types.QLinearGradient =
 
-  QLinearGradient.init(fcQLinearGradient_new2(start.h, finalStop.h))
-proc create*(T: type QLinearGradient, xStart: float64, yStart: float64, xFinalStop: float64, yFinalStop: float64): QLinearGradient =
+  gen_qbrush_types.QLinearGradient.init(fcQLinearGradient_new2(start.h, finalStop.h))
+proc create*(T: type gen_qbrush_types.QLinearGradient, xStart: float64, yStart: float64, xFinalStop: float64, yFinalStop: float64): gen_qbrush_types.QLinearGradient =
 
-  QLinearGradient.init(fcQLinearGradient_new3(xStart, yStart, xFinalStop, yFinalStop))
-proc create*(T: type QLinearGradient, param1: QLinearGradient): QLinearGradient =
+  gen_qbrush_types.QLinearGradient.init(fcQLinearGradient_new3(xStart, yStart, xFinalStop, yFinalStop))
+proc create*(T: type gen_qbrush_types.QLinearGradient, param1: gen_qbrush_types.QLinearGradient): gen_qbrush_types.QLinearGradient =
 
-  QLinearGradient.init(fcQLinearGradient_new4(param1.h))
-proc start*(self: QLinearGradient, ): gen_qpoint.QPointF =
+  gen_qbrush_types.QLinearGradient.init(fcQLinearGradient_new4(param1.h))
+proc start*(self: gen_qbrush_types.QLinearGradient, ): gen_qpoint.QPointF =
 
   gen_qpoint.QPointF(h: fcQLinearGradient_start(self.h))
 
-proc setStart*(self: QLinearGradient, start: gen_qpoint.QPointF): void =
+proc setStart*(self: gen_qbrush_types.QLinearGradient, start: gen_qpoint.QPointF): void =
 
   fcQLinearGradient_setStart(self.h, start.h)
 
-proc setStart2*(self: QLinearGradient, x: float64, y: float64): void =
+proc setStart2*(self: gen_qbrush_types.QLinearGradient, x: float64, y: float64): void =
 
   fcQLinearGradient_setStart2(self.h, x, y)
 
-proc finalStop*(self: QLinearGradient, ): gen_qpoint.QPointF =
+proc finalStop*(self: gen_qbrush_types.QLinearGradient, ): gen_qpoint.QPointF =
 
   gen_qpoint.QPointF(h: fcQLinearGradient_finalStop(self.h))
 
-proc setFinalStop*(self: QLinearGradient, stop: gen_qpoint.QPointF): void =
+proc setFinalStop*(self: gen_qbrush_types.QLinearGradient, stop: gen_qpoint.QPointF): void =
 
   fcQLinearGradient_setFinalStop(self.h, stop.h)
 
-proc setFinalStop2*(self: QLinearGradient, x: float64, y: float64): void =
+proc setFinalStop2*(self: gen_qbrush_types.QLinearGradient, x: float64, y: float64): void =
 
   fcQLinearGradient_setFinalStop2(self.h, x, y)
 
-proc delete*(self: QLinearGradient) =
+proc delete*(self: gen_qbrush_types.QLinearGradient) =
   fcQLinearGradient_delete(self.h)
 
-func init*(T: type QRadialGradient, h: ptr cQRadialGradient): QRadialGradient =
+func init*(T: type gen_qbrush_types.QRadialGradient, h: ptr cQRadialGradient): gen_qbrush_types.QRadialGradient =
   T(h: h)
-proc create*(T: type QRadialGradient, ): QRadialGradient =
+proc create*(T: type gen_qbrush_types.QRadialGradient, ): gen_qbrush_types.QRadialGradient =
 
-  QRadialGradient.init(fcQRadialGradient_new())
-proc create*(T: type QRadialGradient, center: gen_qpoint.QPointF, radius: float64, focalPoint: gen_qpoint.QPointF): QRadialGradient =
+  gen_qbrush_types.QRadialGradient.init(fcQRadialGradient_new())
+proc create*(T: type gen_qbrush_types.QRadialGradient, center: gen_qpoint.QPointF, radius: float64, focalPoint: gen_qpoint.QPointF): gen_qbrush_types.QRadialGradient =
 
-  QRadialGradient.init(fcQRadialGradient_new2(center.h, radius, focalPoint.h))
-proc create*(T: type QRadialGradient, cx: float64, cy: float64, radius: float64, fx: float64, fy: float64): QRadialGradient =
+  gen_qbrush_types.QRadialGradient.init(fcQRadialGradient_new2(center.h, radius, focalPoint.h))
+proc create*(T: type gen_qbrush_types.QRadialGradient, cx: float64, cy: float64, radius: float64, fx: float64, fy: float64): gen_qbrush_types.QRadialGradient =
 
-  QRadialGradient.init(fcQRadialGradient_new3(cx, cy, radius, fx, fy))
-proc create*(T: type QRadialGradient, center: gen_qpoint.QPointF, radius: float64): QRadialGradient =
+  gen_qbrush_types.QRadialGradient.init(fcQRadialGradient_new3(cx, cy, radius, fx, fy))
+proc create*(T: type gen_qbrush_types.QRadialGradient, center: gen_qpoint.QPointF, radius: float64): gen_qbrush_types.QRadialGradient =
 
-  QRadialGradient.init(fcQRadialGradient_new4(center.h, radius))
-proc create*(T: type QRadialGradient, cx: float64, cy: float64, radius: float64): QRadialGradient =
+  gen_qbrush_types.QRadialGradient.init(fcQRadialGradient_new4(center.h, radius))
+proc create*(T: type gen_qbrush_types.QRadialGradient, cx: float64, cy: float64, radius: float64): gen_qbrush_types.QRadialGradient =
 
-  QRadialGradient.init(fcQRadialGradient_new5(cx, cy, radius))
-proc create*(T: type QRadialGradient, center: gen_qpoint.QPointF, centerRadius: float64, focalPoint: gen_qpoint.QPointF, focalRadius: float64): QRadialGradient =
+  gen_qbrush_types.QRadialGradient.init(fcQRadialGradient_new5(cx, cy, radius))
+proc create*(T: type gen_qbrush_types.QRadialGradient, center: gen_qpoint.QPointF, centerRadius: float64, focalPoint: gen_qpoint.QPointF, focalRadius: float64): gen_qbrush_types.QRadialGradient =
 
-  QRadialGradient.init(fcQRadialGradient_new6(center.h, centerRadius, focalPoint.h, focalRadius))
-proc create*(T: type QRadialGradient, cx: float64, cy: float64, centerRadius: float64, fx: float64, fy: float64, focalRadius: float64): QRadialGradient =
+  gen_qbrush_types.QRadialGradient.init(fcQRadialGradient_new6(center.h, centerRadius, focalPoint.h, focalRadius))
+proc create*(T: type gen_qbrush_types.QRadialGradient, cx: float64, cy: float64, centerRadius: float64, fx: float64, fy: float64, focalRadius: float64): gen_qbrush_types.QRadialGradient =
 
-  QRadialGradient.init(fcQRadialGradient_new7(cx, cy, centerRadius, fx, fy, focalRadius))
-proc create*(T: type QRadialGradient, param1: QRadialGradient): QRadialGradient =
+  gen_qbrush_types.QRadialGradient.init(fcQRadialGradient_new7(cx, cy, centerRadius, fx, fy, focalRadius))
+proc create*(T: type gen_qbrush_types.QRadialGradient, param1: gen_qbrush_types.QRadialGradient): gen_qbrush_types.QRadialGradient =
 
-  QRadialGradient.init(fcQRadialGradient_new8(param1.h))
-proc center*(self: QRadialGradient, ): gen_qpoint.QPointF =
+  gen_qbrush_types.QRadialGradient.init(fcQRadialGradient_new8(param1.h))
+proc center*(self: gen_qbrush_types.QRadialGradient, ): gen_qpoint.QPointF =
 
   gen_qpoint.QPointF(h: fcQRadialGradient_center(self.h))
 
-proc setCenter*(self: QRadialGradient, center: gen_qpoint.QPointF): void =
+proc setCenter*(self: gen_qbrush_types.QRadialGradient, center: gen_qpoint.QPointF): void =
 
   fcQRadialGradient_setCenter(self.h, center.h)
 
-proc setCenter2*(self: QRadialGradient, x: float64, y: float64): void =
+proc setCenter2*(self: gen_qbrush_types.QRadialGradient, x: float64, y: float64): void =
 
   fcQRadialGradient_setCenter2(self.h, x, y)
 
-proc focalPoint*(self: QRadialGradient, ): gen_qpoint.QPointF =
+proc focalPoint*(self: gen_qbrush_types.QRadialGradient, ): gen_qpoint.QPointF =
 
   gen_qpoint.QPointF(h: fcQRadialGradient_focalPoint(self.h))
 
-proc setFocalPoint*(self: QRadialGradient, focalPoint: gen_qpoint.QPointF): void =
+proc setFocalPoint*(self: gen_qbrush_types.QRadialGradient, focalPoint: gen_qpoint.QPointF): void =
 
   fcQRadialGradient_setFocalPoint(self.h, focalPoint.h)
 
-proc setFocalPoint2*(self: QRadialGradient, x: float64, y: float64): void =
+proc setFocalPoint2*(self: gen_qbrush_types.QRadialGradient, x: float64, y: float64): void =
 
   fcQRadialGradient_setFocalPoint2(self.h, x, y)
 
-proc radius*(self: QRadialGradient, ): float64 =
+proc radius*(self: gen_qbrush_types.QRadialGradient, ): float64 =
 
   fcQRadialGradient_radius(self.h)
 
-proc setRadius*(self: QRadialGradient, radius: float64): void =
+proc setRadius*(self: gen_qbrush_types.QRadialGradient, radius: float64): void =
 
   fcQRadialGradient_setRadius(self.h, radius)
 
-proc centerRadius*(self: QRadialGradient, ): float64 =
+proc centerRadius*(self: gen_qbrush_types.QRadialGradient, ): float64 =
 
   fcQRadialGradient_centerRadius(self.h)
 
-proc setCenterRadius*(self: QRadialGradient, radius: float64): void =
+proc setCenterRadius*(self: gen_qbrush_types.QRadialGradient, radius: float64): void =
 
   fcQRadialGradient_setCenterRadius(self.h, radius)
 
-proc focalRadius*(self: QRadialGradient, ): float64 =
+proc focalRadius*(self: gen_qbrush_types.QRadialGradient, ): float64 =
 
   fcQRadialGradient_focalRadius(self.h)
 
-proc setFocalRadius*(self: QRadialGradient, radius: float64): void =
+proc setFocalRadius*(self: gen_qbrush_types.QRadialGradient, radius: float64): void =
 
   fcQRadialGradient_setFocalRadius(self.h, radius)
 
-proc delete*(self: QRadialGradient) =
+proc delete*(self: gen_qbrush_types.QRadialGradient) =
   fcQRadialGradient_delete(self.h)
 
-func init*(T: type QConicalGradient, h: ptr cQConicalGradient): QConicalGradient =
+func init*(T: type gen_qbrush_types.QConicalGradient, h: ptr cQConicalGradient): gen_qbrush_types.QConicalGradient =
   T(h: h)
-proc create*(T: type QConicalGradient, ): QConicalGradient =
+proc create*(T: type gen_qbrush_types.QConicalGradient, ): gen_qbrush_types.QConicalGradient =
 
-  QConicalGradient.init(fcQConicalGradient_new())
-proc create*(T: type QConicalGradient, center: gen_qpoint.QPointF, startAngle: float64): QConicalGradient =
+  gen_qbrush_types.QConicalGradient.init(fcQConicalGradient_new())
+proc create*(T: type gen_qbrush_types.QConicalGradient, center: gen_qpoint.QPointF, startAngle: float64): gen_qbrush_types.QConicalGradient =
 
-  QConicalGradient.init(fcQConicalGradient_new2(center.h, startAngle))
-proc create*(T: type QConicalGradient, cx: float64, cy: float64, startAngle: float64): QConicalGradient =
+  gen_qbrush_types.QConicalGradient.init(fcQConicalGradient_new2(center.h, startAngle))
+proc create*(T: type gen_qbrush_types.QConicalGradient, cx: float64, cy: float64, startAngle: float64): gen_qbrush_types.QConicalGradient =
 
-  QConicalGradient.init(fcQConicalGradient_new3(cx, cy, startAngle))
-proc create*(T: type QConicalGradient, param1: QConicalGradient): QConicalGradient =
+  gen_qbrush_types.QConicalGradient.init(fcQConicalGradient_new3(cx, cy, startAngle))
+proc create*(T: type gen_qbrush_types.QConicalGradient, param1: gen_qbrush_types.QConicalGradient): gen_qbrush_types.QConicalGradient =
 
-  QConicalGradient.init(fcQConicalGradient_new4(param1.h))
-proc center*(self: QConicalGradient, ): gen_qpoint.QPointF =
+  gen_qbrush_types.QConicalGradient.init(fcQConicalGradient_new4(param1.h))
+proc center*(self: gen_qbrush_types.QConicalGradient, ): gen_qpoint.QPointF =
 
   gen_qpoint.QPointF(h: fcQConicalGradient_center(self.h))
 
-proc setCenter*(self: QConicalGradient, center: gen_qpoint.QPointF): void =
+proc setCenter*(self: gen_qbrush_types.QConicalGradient, center: gen_qpoint.QPointF): void =
 
   fcQConicalGradient_setCenter(self.h, center.h)
 
-proc setCenter2*(self: QConicalGradient, x: float64, y: float64): void =
+proc setCenter2*(self: gen_qbrush_types.QConicalGradient, x: float64, y: float64): void =
 
   fcQConicalGradient_setCenter2(self.h, x, y)
 
-proc angle*(self: QConicalGradient, ): float64 =
+proc angle*(self: gen_qbrush_types.QConicalGradient, ): float64 =
 
   fcQConicalGradient_angle(self.h)
 
-proc setAngle*(self: QConicalGradient, angle: float64): void =
+proc setAngle*(self: gen_qbrush_types.QConicalGradient, angle: float64): void =
 
   fcQConicalGradient_setAngle(self.h, angle)
 
-proc delete*(self: QConicalGradient) =
+proc delete*(self: gen_qbrush_types.QConicalGradient) =
   fcQConicalGradient_delete(self.h)
 
-func init*(T: type QGradientQGradientData, h: ptr cQGradientQGradientData): QGradientQGradientData =
+func init*(T: type gen_qbrush_types.QGradientQGradientData, h: ptr cQGradientQGradientData): gen_qbrush_types.QGradientQGradientData =
   T(h: h)
-proc create*(T: type QGradientQGradientData, param1: QGradientQGradientData): QGradientQGradientData =
+proc create*(T: type gen_qbrush_types.QGradientQGradientData, param1: gen_qbrush_types.QGradientQGradientData): gen_qbrush_types.QGradientQGradientData =
 
-  QGradientQGradientData.init(fcQGradientQGradientData_new(param1.h))
-proc operatorAssign*(self: QGradientQGradientData, param1: QGradientQGradientData): void =
+  gen_qbrush_types.QGradientQGradientData.init(fcQGradientQGradientData_new(param1.h))
+proc operatorAssign*(self: gen_qbrush_types.QGradientQGradientData, param1: gen_qbrush_types.QGradientQGradientData): void =
 
   fcQGradientQGradientData_operatorAssign(self.h, param1.h)
 
-proc delete*(self: QGradientQGradientData) =
+proc delete*(self: gen_qbrush_types.QGradientQGradientData) =
   fcQGradientQGradientData_delete(self.h)

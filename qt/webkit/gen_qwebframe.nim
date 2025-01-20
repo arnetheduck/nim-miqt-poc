@@ -34,21 +34,17 @@ const cflags = gorge("pkg-config -cflags Qt5WebKitWidgets")
 {.compile("gen_qwebframe.cpp", cflags).}
 
 
-type QWebFrameValueOwnership* = cint
-const
-  QWebFrameQtOwnership* = 0
-  QWebFrameScriptOwnership* = 1
-  QWebFrameAutoOwnership* = 2
+type QWebFrameValueOwnershipEnum* = distinct cint
+template QtOwnership*(_: type QWebFrameValueOwnershipEnum): untyped = 0
+template ScriptOwnership*(_: type QWebFrameValueOwnershipEnum): untyped = 1
+template AutoOwnership*(_: type QWebFrameValueOwnershipEnum): untyped = 2
 
 
-
-type QWebFrameRenderLayer* = cint
-const
-  QWebFrameContentsLayer* = 16
-  QWebFrameScrollBarLayer* = 32
-  QWebFramePanIconLayer* = 64
-  QWebFrameAllLayers* = 255
-
+type QWebFrameRenderLayerEnum* = distinct cint
+template ContentsLayer*(_: type QWebFrameRenderLayerEnum): untyped = 16
+template ScrollBarLayer*(_: type QWebFrameRenderLayerEnum): untyped = 32
+template PanIconLayer*(_: type QWebFrameRenderLayerEnum): untyped = 64
+template AllLayers*(_: type QWebFrameRenderLayerEnum): untyped = 255
 
 
 import gen_qwebframe_types
@@ -57,8 +53,6 @@ export gen_qwebframe_types
 import
   gen_qcoreevent,
   gen_qicon,
-  gen_qnamespace,
-  gen_qnetworkaccessmanager,
   gen_qnetworkrequest,
   gen_qobject,
   gen_qobjectdefs,
@@ -77,8 +71,6 @@ import
 export
   gen_qcoreevent,
   gen_qicon,
-  gen_qnamespace,
-  gen_qnetworkaccessmanager,
   gen_qnetworkrequest,
   gen_qobject,
   gen_qobjectdefs,
@@ -209,347 +201,347 @@ proc fcQWebFrame_render3(self: pointer, param1: pointer, layer: cint, clip: poin
 proc fcQWebFrame_staticMetaObject(): pointer {.importc: "QWebFrame_staticMetaObject".}
 
 
-func init*(T: type QWebHitTestResult, h: ptr cQWebHitTestResult): QWebHitTestResult =
+func init*(T: type gen_qwebframe_types.QWebHitTestResult, h: ptr cQWebHitTestResult): gen_qwebframe_types.QWebHitTestResult =
   T(h: h)
-proc create*(T: type QWebHitTestResult, ): QWebHitTestResult =
+proc create*(T: type gen_qwebframe_types.QWebHitTestResult, ): gen_qwebframe_types.QWebHitTestResult =
 
-  QWebHitTestResult.init(fcQWebHitTestResult_new())
-proc create*(T: type QWebHitTestResult, other: QWebHitTestResult): QWebHitTestResult =
+  gen_qwebframe_types.QWebHitTestResult.init(fcQWebHitTestResult_new())
+proc create*(T: type gen_qwebframe_types.QWebHitTestResult, other: gen_qwebframe_types.QWebHitTestResult): gen_qwebframe_types.QWebHitTestResult =
 
-  QWebHitTestResult.init(fcQWebHitTestResult_new2(other.h))
-proc operatorAssign*(self: QWebHitTestResult, other: QWebHitTestResult): void =
+  gen_qwebframe_types.QWebHitTestResult.init(fcQWebHitTestResult_new2(other.h))
+proc operatorAssign*(self: gen_qwebframe_types.QWebHitTestResult, other: gen_qwebframe_types.QWebHitTestResult): void =
 
   fcQWebHitTestResult_operatorAssign(self.h, other.h)
 
-proc isNull*(self: QWebHitTestResult, ): bool =
+proc isNull*(self: gen_qwebframe_types.QWebHitTestResult, ): bool =
 
   fcQWebHitTestResult_isNull(self.h)
 
-proc pos*(self: QWebHitTestResult, ): gen_qpoint.QPoint =
+proc pos*(self: gen_qwebframe_types.QWebHitTestResult, ): gen_qpoint.QPoint =
 
   gen_qpoint.QPoint(h: fcQWebHitTestResult_pos(self.h))
 
-proc boundingRect*(self: QWebHitTestResult, ): gen_qrect.QRect =
+proc boundingRect*(self: gen_qwebframe_types.QWebHitTestResult, ): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fcQWebHitTestResult_boundingRect(self.h))
 
-proc enclosingBlockElement*(self: QWebHitTestResult, ): gen_qwebelement.QWebElement =
+proc enclosingBlockElement*(self: gen_qwebframe_types.QWebHitTestResult, ): gen_qwebelement.QWebElement =
 
   gen_qwebelement.QWebElement(h: fcQWebHitTestResult_enclosingBlockElement(self.h))
 
-proc title*(self: QWebHitTestResult, ): string =
+proc title*(self: gen_qwebframe_types.QWebHitTestResult, ): string =
 
   let v_ms = fcQWebHitTestResult_title(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc linkText*(self: QWebHitTestResult, ): string =
+proc linkText*(self: gen_qwebframe_types.QWebHitTestResult, ): string =
 
   let v_ms = fcQWebHitTestResult_linkText(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc linkUrl*(self: QWebHitTestResult, ): gen_qurl.QUrl =
+proc linkUrl*(self: gen_qwebframe_types.QWebHitTestResult, ): gen_qurl.QUrl =
 
   gen_qurl.QUrl(h: fcQWebHitTestResult_linkUrl(self.h))
 
-proc linkTitle*(self: QWebHitTestResult, ): gen_qurl.QUrl =
+proc linkTitle*(self: gen_qwebframe_types.QWebHitTestResult, ): gen_qurl.QUrl =
 
   gen_qurl.QUrl(h: fcQWebHitTestResult_linkTitle(self.h))
 
-proc linkTitleString*(self: QWebHitTestResult, ): string =
+proc linkTitleString*(self: gen_qwebframe_types.QWebHitTestResult, ): string =
 
   let v_ms = fcQWebHitTestResult_linkTitleString(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc linkTargetFrame*(self: QWebHitTestResult, ): QWebFrame =
+proc linkTargetFrame*(self: gen_qwebframe_types.QWebHitTestResult, ): gen_qwebframe_types.QWebFrame =
 
-  QWebFrame(h: fcQWebHitTestResult_linkTargetFrame(self.h))
+  gen_qwebframe_types.QWebFrame(h: fcQWebHitTestResult_linkTargetFrame(self.h))
 
-proc linkElement*(self: QWebHitTestResult, ): gen_qwebelement.QWebElement =
+proc linkElement*(self: gen_qwebframe_types.QWebHitTestResult, ): gen_qwebelement.QWebElement =
 
   gen_qwebelement.QWebElement(h: fcQWebHitTestResult_linkElement(self.h))
 
-proc alternateText*(self: QWebHitTestResult, ): string =
+proc alternateText*(self: gen_qwebframe_types.QWebHitTestResult, ): string =
 
   let v_ms = fcQWebHitTestResult_alternateText(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc imageUrl*(self: QWebHitTestResult, ): gen_qurl.QUrl =
+proc imageUrl*(self: gen_qwebframe_types.QWebHitTestResult, ): gen_qurl.QUrl =
 
   gen_qurl.QUrl(h: fcQWebHitTestResult_imageUrl(self.h))
 
-proc pixmap*(self: QWebHitTestResult, ): gen_qpixmap.QPixmap =
+proc pixmap*(self: gen_qwebframe_types.QWebHitTestResult, ): gen_qpixmap.QPixmap =
 
   gen_qpixmap.QPixmap(h: fcQWebHitTestResult_pixmap(self.h))
 
-proc mediaUrl*(self: QWebHitTestResult, ): gen_qurl.QUrl =
+proc mediaUrl*(self: gen_qwebframe_types.QWebHitTestResult, ): gen_qurl.QUrl =
 
   gen_qurl.QUrl(h: fcQWebHitTestResult_mediaUrl(self.h))
 
-proc isContentEditable*(self: QWebHitTestResult, ): bool =
+proc isContentEditable*(self: gen_qwebframe_types.QWebHitTestResult, ): bool =
 
   fcQWebHitTestResult_isContentEditable(self.h)
 
-proc isContentSelected*(self: QWebHitTestResult, ): bool =
+proc isContentSelected*(self: gen_qwebframe_types.QWebHitTestResult, ): bool =
 
   fcQWebHitTestResult_isContentSelected(self.h)
 
-proc element*(self: QWebHitTestResult, ): gen_qwebelement.QWebElement =
+proc element*(self: gen_qwebframe_types.QWebHitTestResult, ): gen_qwebelement.QWebElement =
 
   gen_qwebelement.QWebElement(h: fcQWebHitTestResult_element(self.h))
 
-proc frame*(self: QWebHitTestResult, ): QWebFrame =
+proc frame*(self: gen_qwebframe_types.QWebHitTestResult, ): gen_qwebframe_types.QWebFrame =
 
-  QWebFrame(h: fcQWebHitTestResult_frame(self.h))
+  gen_qwebframe_types.QWebFrame(h: fcQWebHitTestResult_frame(self.h))
 
-proc delete*(self: QWebHitTestResult) =
+proc delete*(self: gen_qwebframe_types.QWebHitTestResult) =
   fcQWebHitTestResult_delete(self.h)
 
-func init*(T: type QWebFrame, h: ptr cQWebFrame): QWebFrame =
+func init*(T: type gen_qwebframe_types.QWebFrame, h: ptr cQWebFrame): gen_qwebframe_types.QWebFrame =
   T(h: h)
-proc metaObject*(self: QWebFrame, ): gen_qobjectdefs.QMetaObject =
+proc metaObject*(self: gen_qwebframe_types.QWebFrame, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQWebFrame_metaObject(self.h))
 
-proc metacast*(self: QWebFrame, param1: cstring): pointer =
+proc metacast*(self: gen_qwebframe_types.QWebFrame, param1: cstring): pointer =
 
   fcQWebFrame_metacast(self.h, param1)
 
-proc metacall*(self: QWebFrame, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qwebframe_types.QWebFrame, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQWebFrame_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QWebFrame, s: cstring): string =
+proc tr*(_: type gen_qwebframe_types.QWebFrame, s: cstring): string =
 
   let v_ms = fcQWebFrame_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QWebFrame, s: cstring): string =
+proc trUtf8*(_: type gen_qwebframe_types.QWebFrame, s: cstring): string =
 
   let v_ms = fcQWebFrame_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc page*(self: QWebFrame, ): gen_qwebpage.QWebPage =
+proc page*(self: gen_qwebframe_types.QWebFrame, ): gen_qwebpage.QWebPage =
 
   gen_qwebpage.QWebPage(h: fcQWebFrame_page(self.h))
 
-proc load*(self: QWebFrame, url: gen_qurl.QUrl): void =
+proc load*(self: gen_qwebframe_types.QWebFrame, url: gen_qurl.QUrl): void =
 
   fcQWebFrame_load(self.h, url.h)
 
-proc loadWithRequest*(self: QWebFrame, request: gen_qnetworkrequest.QNetworkRequest): void =
+proc loadWithRequest*(self: gen_qwebframe_types.QWebFrame, request: gen_qnetworkrequest.QNetworkRequest): void =
 
   fcQWebFrame_loadWithRequest(self.h, request.h)
 
-proc setHtml*(self: QWebFrame, html: string): void =
+proc setHtml*(self: gen_qwebframe_types.QWebFrame, html: string): void =
 
   fcQWebFrame_setHtml(self.h, struct_miqt_string(data: html, len: csize_t(len(html))))
 
-proc setContent*(self: QWebFrame, data: seq[byte]): void =
+proc setContent*(self: gen_qwebframe_types.QWebFrame, data: seq[byte]): void =
 
   fcQWebFrame_setContent(self.h, struct_miqt_string(data: cast[cstring](if len(data) == 0: nil else: unsafeAddr data[0]), len: csize_t(len(data))))
 
-proc addToJavaScriptWindowObject*(self: QWebFrame, name: string, objectVal: gen_qobject.QObject): void =
+proc addToJavaScriptWindowObject*(self: gen_qwebframe_types.QWebFrame, name: string, objectVal: gen_qobject.QObject): void =
 
   fcQWebFrame_addToJavaScriptWindowObject(self.h, struct_miqt_string(data: name, len: csize_t(len(name))), objectVal.h)
 
-proc toHtml*(self: QWebFrame, ): string =
+proc toHtml*(self: gen_qwebframe_types.QWebFrame, ): string =
 
   let v_ms = fcQWebFrame_toHtml(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc toPlainText*(self: QWebFrame, ): string =
+proc toPlainText*(self: gen_qwebframe_types.QWebFrame, ): string =
 
   let v_ms = fcQWebFrame_toPlainText(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc title*(self: QWebFrame, ): string =
+proc title*(self: gen_qwebframe_types.QWebFrame, ): string =
 
   let v_ms = fcQWebFrame_title(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setUrl*(self: QWebFrame, url: gen_qurl.QUrl): void =
+proc setUrl*(self: gen_qwebframe_types.QWebFrame, url: gen_qurl.QUrl): void =
 
   fcQWebFrame_setUrl(self.h, url.h)
 
-proc url*(self: QWebFrame, ): gen_qurl.QUrl =
+proc url*(self: gen_qwebframe_types.QWebFrame, ): gen_qurl.QUrl =
 
   gen_qurl.QUrl(h: fcQWebFrame_url(self.h))
 
-proc requestedUrl*(self: QWebFrame, ): gen_qurl.QUrl =
+proc requestedUrl*(self: gen_qwebframe_types.QWebFrame, ): gen_qurl.QUrl =
 
   gen_qurl.QUrl(h: fcQWebFrame_requestedUrl(self.h))
 
-proc baseUrl*(self: QWebFrame, ): gen_qurl.QUrl =
+proc baseUrl*(self: gen_qwebframe_types.QWebFrame, ): gen_qurl.QUrl =
 
   gen_qurl.QUrl(h: fcQWebFrame_baseUrl(self.h))
 
-proc icon*(self: QWebFrame, ): gen_qicon.QIcon =
+proc icon*(self: gen_qwebframe_types.QWebFrame, ): gen_qicon.QIcon =
 
   gen_qicon.QIcon(h: fcQWebFrame_icon(self.h))
 
-proc frameName*(self: QWebFrame, ): string =
+proc frameName*(self: gen_qwebframe_types.QWebFrame, ): string =
 
   let v_ms = fcQWebFrame_frameName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc parentFrame*(self: QWebFrame, ): QWebFrame =
+proc parentFrame*(self: gen_qwebframe_types.QWebFrame, ): gen_qwebframe_types.QWebFrame =
 
-  QWebFrame(h: fcQWebFrame_parentFrame(self.h))
+  gen_qwebframe_types.QWebFrame(h: fcQWebFrame_parentFrame(self.h))
 
-proc childFrames*(self: QWebFrame, ): seq[QWebFrame] =
+proc childFrames*(self: gen_qwebframe_types.QWebFrame, ): seq[gen_qwebframe_types.QWebFrame] =
 
   var v_ma = fcQWebFrame_childFrames(self.h)
-  var vx_ret = newSeq[QWebFrame](int(v_ma.len))
+  var vx_ret = newSeq[gen_qwebframe_types.QWebFrame](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
-    vx_ret[i] = QWebFrame(h: v_outCast[i])
+    vx_ret[i] = gen_qwebframe_types.QWebFrame(h: v_outCast[i])
   vx_ret
 
-proc scrollBarPolicy*(self: QWebFrame, orientation: gen_qnamespace.Orientation): gen_qnamespace.ScrollBarPolicy =
+proc scrollBarPolicy*(self: gen_qwebframe_types.QWebFrame, orientation: cint): cint =
 
-  gen_qnamespace.ScrollBarPolicy(fcQWebFrame_scrollBarPolicy(self.h, cint(orientation)))
+  cint(fcQWebFrame_scrollBarPolicy(self.h, cint(orientation)))
 
-proc setScrollBarPolicy*(self: QWebFrame, orientation: gen_qnamespace.Orientation, policy: gen_qnamespace.ScrollBarPolicy): void =
+proc setScrollBarPolicy*(self: gen_qwebframe_types.QWebFrame, orientation: cint, policy: cint): void =
 
   fcQWebFrame_setScrollBarPolicy(self.h, cint(orientation), cint(policy))
 
-proc setScrollBarValue*(self: QWebFrame, orientation: gen_qnamespace.Orientation, value: cint): void =
+proc setScrollBarValue*(self: gen_qwebframe_types.QWebFrame, orientation: cint, value: cint): void =
 
   fcQWebFrame_setScrollBarValue(self.h, cint(orientation), value)
 
-proc scrollBarValue*(self: QWebFrame, orientation: gen_qnamespace.Orientation): cint =
+proc scrollBarValue*(self: gen_qwebframe_types.QWebFrame, orientation: cint): cint =
 
   fcQWebFrame_scrollBarValue(self.h, cint(orientation))
 
-proc scrollBarMinimum*(self: QWebFrame, orientation: gen_qnamespace.Orientation): cint =
+proc scrollBarMinimum*(self: gen_qwebframe_types.QWebFrame, orientation: cint): cint =
 
   fcQWebFrame_scrollBarMinimum(self.h, cint(orientation))
 
-proc scrollBarMaximum*(self: QWebFrame, orientation: gen_qnamespace.Orientation): cint =
+proc scrollBarMaximum*(self: gen_qwebframe_types.QWebFrame, orientation: cint): cint =
 
   fcQWebFrame_scrollBarMaximum(self.h, cint(orientation))
 
-proc scrollBarGeometry*(self: QWebFrame, orientation: gen_qnamespace.Orientation): gen_qrect.QRect =
+proc scrollBarGeometry*(self: gen_qwebframe_types.QWebFrame, orientation: cint): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fcQWebFrame_scrollBarGeometry(self.h, cint(orientation)))
 
-proc scroll*(self: QWebFrame, param1: cint, param2: cint): void =
+proc scroll*(self: gen_qwebframe_types.QWebFrame, param1: cint, param2: cint): void =
 
   fcQWebFrame_scroll(self.h, param1, param2)
 
-proc scrollPosition*(self: QWebFrame, ): gen_qpoint.QPoint =
+proc scrollPosition*(self: gen_qwebframe_types.QWebFrame, ): gen_qpoint.QPoint =
 
   gen_qpoint.QPoint(h: fcQWebFrame_scrollPosition(self.h))
 
-proc setScrollPosition*(self: QWebFrame, pos: gen_qpoint.QPoint): void =
+proc setScrollPosition*(self: gen_qwebframe_types.QWebFrame, pos: gen_qpoint.QPoint): void =
 
   fcQWebFrame_setScrollPosition(self.h, pos.h)
 
-proc scrollToAnchor*(self: QWebFrame, anchor: string): void =
+proc scrollToAnchor*(self: gen_qwebframe_types.QWebFrame, anchor: string): void =
 
   fcQWebFrame_scrollToAnchor(self.h, struct_miqt_string(data: anchor, len: csize_t(len(anchor))))
 
-proc render*(self: QWebFrame, param1: gen_qpainter.QPainter): void =
+proc render*(self: gen_qwebframe_types.QWebFrame, param1: gen_qpainter.QPainter): void =
 
   fcQWebFrame_render(self.h, param1.h)
 
-proc render2*(self: QWebFrame, param1: gen_qpainter.QPainter, layer: QWebFrameRenderLayer): void =
+proc render2*(self: gen_qwebframe_types.QWebFrame, param1: gen_qpainter.QPainter, layer: cint): void =
 
   fcQWebFrame_render2(self.h, param1.h, cint(layer))
 
-proc setTextSizeMultiplier*(self: QWebFrame, factor: float64): void =
+proc setTextSizeMultiplier*(self: gen_qwebframe_types.QWebFrame, factor: float64): void =
 
   fcQWebFrame_setTextSizeMultiplier(self.h, factor)
 
-proc textSizeMultiplier*(self: QWebFrame, ): float64 =
+proc textSizeMultiplier*(self: gen_qwebframe_types.QWebFrame, ): float64 =
 
   fcQWebFrame_textSizeMultiplier(self.h)
 
-proc zoomFactor*(self: QWebFrame, ): float64 =
+proc zoomFactor*(self: gen_qwebframe_types.QWebFrame, ): float64 =
 
   fcQWebFrame_zoomFactor(self.h)
 
-proc setZoomFactor*(self: QWebFrame, factor: float64): void =
+proc setZoomFactor*(self: gen_qwebframe_types.QWebFrame, factor: float64): void =
 
   fcQWebFrame_setZoomFactor(self.h, factor)
 
-proc hasFocus*(self: QWebFrame, ): bool =
+proc hasFocus*(self: gen_qwebframe_types.QWebFrame, ): bool =
 
   fcQWebFrame_hasFocus(self.h)
 
-proc setFocus*(self: QWebFrame, ): void =
+proc setFocus*(self: gen_qwebframe_types.QWebFrame, ): void =
 
   fcQWebFrame_setFocus(self.h)
 
-proc pos*(self: QWebFrame, ): gen_qpoint.QPoint =
+proc pos*(self: gen_qwebframe_types.QWebFrame, ): gen_qpoint.QPoint =
 
   gen_qpoint.QPoint(h: fcQWebFrame_pos(self.h))
 
-proc geometry*(self: QWebFrame, ): gen_qrect.QRect =
+proc geometry*(self: gen_qwebframe_types.QWebFrame, ): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fcQWebFrame_geometry(self.h))
 
-proc contentsSize*(self: QWebFrame, ): gen_qsize.QSize =
+proc contentsSize*(self: gen_qwebframe_types.QWebFrame, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQWebFrame_contentsSize(self.h))
 
-proc documentElement*(self: QWebFrame, ): gen_qwebelement.QWebElement =
+proc documentElement*(self: gen_qwebframe_types.QWebFrame, ): gen_qwebelement.QWebElement =
 
   gen_qwebelement.QWebElement(h: fcQWebFrame_documentElement(self.h))
 
-proc ownerElement*(self: QWebFrame, ): gen_qwebelement.QWebElement =
+proc ownerElement*(self: gen_qwebframe_types.QWebFrame, ): gen_qwebelement.QWebElement =
 
   gen_qwebelement.QWebElement(h: fcQWebFrame_ownerElement(self.h))
 
-proc findAllElements*(self: QWebFrame, selectorQuery: string): gen_qwebelement.QWebElementCollection =
+proc findAllElements*(self: gen_qwebframe_types.QWebFrame, selectorQuery: string): gen_qwebelement.QWebElementCollection =
 
   gen_qwebelement.QWebElementCollection(h: fcQWebFrame_findAllElements(self.h, struct_miqt_string(data: selectorQuery, len: csize_t(len(selectorQuery)))))
 
-proc findFirstElement*(self: QWebFrame, selectorQuery: string): gen_qwebelement.QWebElement =
+proc findFirstElement*(self: gen_qwebframe_types.QWebFrame, selectorQuery: string): gen_qwebelement.QWebElement =
 
   gen_qwebelement.QWebElement(h: fcQWebFrame_findFirstElement(self.h, struct_miqt_string(data: selectorQuery, len: csize_t(len(selectorQuery)))))
 
-proc hitTestContent*(self: QWebFrame, pos: gen_qpoint.QPoint): QWebHitTestResult =
+proc hitTestContent*(self: gen_qwebframe_types.QWebFrame, pos: gen_qpoint.QPoint): gen_qwebframe_types.QWebHitTestResult =
 
-  QWebHitTestResult(h: fcQWebFrame_hitTestContent(self.h, pos.h))
+  gen_qwebframe_types.QWebHitTestResult(h: fcQWebFrame_hitTestContent(self.h, pos.h))
 
-proc event*(self: QWebFrame, param1: gen_qcoreevent.QEvent): bool =
+proc event*(self: gen_qwebframe_types.QWebFrame, param1: gen_qcoreevent.QEvent): bool =
 
   fcQWebFrame_event(self.h, param1.h)
 
-proc securityOrigin*(self: QWebFrame, ): gen_qwebsecurityorigin.QWebSecurityOrigin =
+proc securityOrigin*(self: gen_qwebframe_types.QWebFrame, ): gen_qwebsecurityorigin.QWebSecurityOrigin =
 
   gen_qwebsecurityorigin.QWebSecurityOrigin(h: fcQWebFrame_securityOrigin(self.h))
 
-proc evaluateJavaScript*(self: QWebFrame, scriptSource: string): gen_qvariant.QVariant =
+proc evaluateJavaScript*(self: gen_qwebframe_types.QWebFrame, scriptSource: string): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fcQWebFrame_evaluateJavaScript(self.h, struct_miqt_string(data: scriptSource, len: csize_t(len(scriptSource)))))
 
-proc print*(self: QWebFrame, printer: gen_qprinter.QPrinter): void =
+proc print*(self: gen_qwebframe_types.QWebFrame, printer: gen_qprinter.QPrinter): void =
 
   fcQWebFrame_print(self.h, printer.h)
 
-proc javaScriptWindowObjectCleared*(self: QWebFrame, ): void =
+proc javaScriptWindowObjectCleared*(self: gen_qwebframe_types.QWebFrame, ): void =
 
   fcQWebFrame_javaScriptWindowObjectCleared(self.h)
 
@@ -559,13 +551,13 @@ proc miqt_exec_callback_QWebFrame_javaScriptWindowObjectCleared(slot: int) {.exp
 
   nimfunc[]()
 
-proc onjavaScriptWindowObjectCleared*(self: QWebFrame, slot: proc()) =
+proc onjavaScriptWindowObjectCleared*(self: gen_qwebframe_types.QWebFrame, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQWebFrame_connect_javaScriptWindowObjectCleared(self.h, cast[int](addr tmp[]))
-proc provisionalLoad*(self: QWebFrame, ): void =
+proc provisionalLoad*(self: gen_qwebframe_types.QWebFrame, ): void =
 
   fcQWebFrame_provisionalLoad(self.h)
 
@@ -575,13 +567,13 @@ proc miqt_exec_callback_QWebFrame_provisionalLoad(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onprovisionalLoad*(self: QWebFrame, slot: proc()) =
+proc onprovisionalLoad*(self: gen_qwebframe_types.QWebFrame, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQWebFrame_connect_provisionalLoad(self.h, cast[int](addr tmp[]))
-proc titleChanged*(self: QWebFrame, title: string): void =
+proc titleChanged*(self: gen_qwebframe_types.QWebFrame, title: string): void =
 
   fcQWebFrame_titleChanged(self.h, struct_miqt_string(data: title, len: csize_t(len(title))))
 
@@ -596,13 +588,13 @@ proc miqt_exec_callback_QWebFrame_titleChanged(slot: int, title: struct_miqt_str
 
   nimfunc[](slotval1)
 
-proc ontitleChanged*(self: QWebFrame, slot: proc(title: string)) =
+proc ontitleChanged*(self: gen_qwebframe_types.QWebFrame, slot: proc(title: string)) =
   type Cb = proc(title: string)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQWebFrame_connect_titleChanged(self.h, cast[int](addr tmp[]))
-proc urlChanged*(self: QWebFrame, url: gen_qurl.QUrl): void =
+proc urlChanged*(self: gen_qwebframe_types.QWebFrame, url: gen_qurl.QUrl): void =
 
   fcQWebFrame_urlChanged(self.h, url.h)
 
@@ -614,13 +606,13 @@ proc miqt_exec_callback_QWebFrame_urlChanged(slot: int, url: pointer) {.exportc.
 
   nimfunc[](slotval1)
 
-proc onurlChanged*(self: QWebFrame, slot: proc(url: gen_qurl.QUrl)) =
+proc onurlChanged*(self: gen_qwebframe_types.QWebFrame, slot: proc(url: gen_qurl.QUrl)) =
   type Cb = proc(url: gen_qurl.QUrl)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQWebFrame_connect_urlChanged(self.h, cast[int](addr tmp[]))
-proc initialLayoutCompleted*(self: QWebFrame, ): void =
+proc initialLayoutCompleted*(self: gen_qwebframe_types.QWebFrame, ): void =
 
   fcQWebFrame_initialLayoutCompleted(self.h)
 
@@ -630,13 +622,13 @@ proc miqt_exec_callback_QWebFrame_initialLayoutCompleted(slot: int) {.exportc.} 
 
   nimfunc[]()
 
-proc oninitialLayoutCompleted*(self: QWebFrame, slot: proc()) =
+proc oninitialLayoutCompleted*(self: gen_qwebframe_types.QWebFrame, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQWebFrame_connect_initialLayoutCompleted(self.h, cast[int](addr tmp[]))
-proc iconChanged*(self: QWebFrame, ): void =
+proc iconChanged*(self: gen_qwebframe_types.QWebFrame, ): void =
 
   fcQWebFrame_iconChanged(self.h)
 
@@ -646,13 +638,13 @@ proc miqt_exec_callback_QWebFrame_iconChanged(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc oniconChanged*(self: QWebFrame, slot: proc()) =
+proc oniconChanged*(self: gen_qwebframe_types.QWebFrame, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQWebFrame_connect_iconChanged(self.h, cast[int](addr tmp[]))
-proc contentsSizeChanged*(self: QWebFrame, size: gen_qsize.QSize): void =
+proc contentsSizeChanged*(self: gen_qwebframe_types.QWebFrame, size: gen_qsize.QSize): void =
 
   fcQWebFrame_contentsSizeChanged(self.h, size.h)
 
@@ -664,13 +656,13 @@ proc miqt_exec_callback_QWebFrame_contentsSizeChanged(slot: int, size: pointer) 
 
   nimfunc[](slotval1)
 
-proc oncontentsSizeChanged*(self: QWebFrame, slot: proc(size: gen_qsize.QSize)) =
+proc oncontentsSizeChanged*(self: gen_qwebframe_types.QWebFrame, slot: proc(size: gen_qsize.QSize)) =
   type Cb = proc(size: gen_qsize.QSize)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQWebFrame_connect_contentsSizeChanged(self.h, cast[int](addr tmp[]))
-proc loadStarted*(self: QWebFrame, ): void =
+proc loadStarted*(self: gen_qwebframe_types.QWebFrame, ): void =
 
   fcQWebFrame_loadStarted(self.h)
 
@@ -680,13 +672,13 @@ proc miqt_exec_callback_QWebFrame_loadStarted(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onloadStarted*(self: QWebFrame, slot: proc()) =
+proc onloadStarted*(self: gen_qwebframe_types.QWebFrame, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQWebFrame_connect_loadStarted(self.h, cast[int](addr tmp[]))
-proc loadFinished*(self: QWebFrame, ok: bool): void =
+proc loadFinished*(self: gen_qwebframe_types.QWebFrame, ok: bool): void =
 
   fcQWebFrame_loadFinished(self.h, ok)
 
@@ -698,13 +690,13 @@ proc miqt_exec_callback_QWebFrame_loadFinished(slot: int, ok: bool) {.exportc.} 
 
   nimfunc[](slotval1)
 
-proc onloadFinished*(self: QWebFrame, slot: proc(ok: bool)) =
+proc onloadFinished*(self: gen_qwebframe_types.QWebFrame, slot: proc(ok: bool)) =
   type Cb = proc(ok: bool)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQWebFrame_connect_loadFinished(self.h, cast[int](addr tmp[]))
-proc pageChanged*(self: QWebFrame, ): void =
+proc pageChanged*(self: gen_qwebframe_types.QWebFrame, ): void =
 
   fcQWebFrame_pageChanged(self.h)
 
@@ -714,71 +706,71 @@ proc miqt_exec_callback_QWebFrame_pageChanged(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onpageChanged*(self: QWebFrame, slot: proc()) =
+proc onpageChanged*(self: gen_qwebframe_types.QWebFrame, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQWebFrame_connect_pageChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QWebFrame, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qwebframe_types.QWebFrame, s: cstring, c: cstring): string =
 
   let v_ms = fcQWebFrame_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QWebFrame, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qwebframe_types.QWebFrame, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQWebFrame_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QWebFrame, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qwebframe_types.QWebFrame, s: cstring, c: cstring): string =
 
   let v_ms = fcQWebFrame_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QWebFrame, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qwebframe_types.QWebFrame, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQWebFrame_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc load2*(self: QWebFrame, request: gen_qnetworkrequest.QNetworkRequest, operation: gen_qnetworkaccessmanager.QNetworkAccessManagerOperation): void =
+proc load2*(self: gen_qwebframe_types.QWebFrame, request: gen_qnetworkrequest.QNetworkRequest, operation: cint): void =
 
   fcQWebFrame_load2(self.h, request.h, cint(operation))
 
-proc load3*(self: QWebFrame, request: gen_qnetworkrequest.QNetworkRequest, operation: gen_qnetworkaccessmanager.QNetworkAccessManagerOperation, body: seq[byte]): void =
+proc load3*(self: gen_qwebframe_types.QWebFrame, request: gen_qnetworkrequest.QNetworkRequest, operation: cint, body: seq[byte]): void =
 
   fcQWebFrame_load3(self.h, request.h, cint(operation), struct_miqt_string(data: cast[cstring](if len(body) == 0: nil else: unsafeAddr body[0]), len: csize_t(len(body))))
 
-proc setHtml2*(self: QWebFrame, html: string, baseUrl: gen_qurl.QUrl): void =
+proc setHtml2*(self: gen_qwebframe_types.QWebFrame, html: string, baseUrl: gen_qurl.QUrl): void =
 
   fcQWebFrame_setHtml2(self.h, struct_miqt_string(data: html, len: csize_t(len(html))), baseUrl.h)
 
-proc setContent2*(self: QWebFrame, data: seq[byte], mimeType: string): void =
+proc setContent2*(self: gen_qwebframe_types.QWebFrame, data: seq[byte], mimeType: string): void =
 
   fcQWebFrame_setContent2(self.h, struct_miqt_string(data: cast[cstring](if len(data) == 0: nil else: unsafeAddr data[0]), len: csize_t(len(data))), struct_miqt_string(data: mimeType, len: csize_t(len(mimeType))))
 
-proc setContent3*(self: QWebFrame, data: seq[byte], mimeType: string, baseUrl: gen_qurl.QUrl): void =
+proc setContent3*(self: gen_qwebframe_types.QWebFrame, data: seq[byte], mimeType: string, baseUrl: gen_qurl.QUrl): void =
 
   fcQWebFrame_setContent3(self.h, struct_miqt_string(data: cast[cstring](if len(data) == 0: nil else: unsafeAddr data[0]), len: csize_t(len(data))), struct_miqt_string(data: mimeType, len: csize_t(len(mimeType))), baseUrl.h)
 
-proc addToJavaScriptWindowObject3*(self: QWebFrame, name: string, objectVal: gen_qobject.QObject, ownership: QWebFrameValueOwnership): void =
+proc addToJavaScriptWindowObject3*(self: gen_qwebframe_types.QWebFrame, name: string, objectVal: gen_qobject.QObject, ownership: cint): void =
 
   fcQWebFrame_addToJavaScriptWindowObject3(self.h, struct_miqt_string(data: name, len: csize_t(len(name))), objectVal.h, cint(ownership))
 
-proc render22*(self: QWebFrame, param1: gen_qpainter.QPainter, clip: gen_qregion.QRegion): void =
+proc render22*(self: gen_qwebframe_types.QWebFrame, param1: gen_qpainter.QPainter, clip: gen_qregion.QRegion): void =
 
   fcQWebFrame_render22(self.h, param1.h, clip.h)
 
-proc render3*(self: QWebFrame, param1: gen_qpainter.QPainter, layer: QWebFrameRenderLayer, clip: gen_qregion.QRegion): void =
+proc render3*(self: gen_qwebframe_types.QWebFrame, param1: gen_qpainter.QPainter, layer: cint, clip: gen_qregion.QRegion): void =
 
   fcQWebFrame_render3(self.h, param1.h, cint(layer), clip.h)
 
-proc staticMetaObject*(_: type QWebFrame): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qwebframe_types.QWebFrame): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQWebFrame_staticMetaObject())

@@ -293,7 +293,7 @@ func (this *QBoxLayout) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QBoxLayout_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QBoxLayout) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QBoxLayout) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QBoxLayout_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -320,7 +320,7 @@ func (this *QBoxLayout) callVirtualBase_Metacast(param1 string) unsafe.Pointer {
 	return (unsafe.Pointer)(C.QBoxLayout_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QBoxLayout) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QBoxLayout) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QBoxLayout_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1282,7 +1282,7 @@ func (this *QHBoxLayout) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QHBoxLayout_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QHBoxLayout) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QHBoxLayout) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QHBoxLayout_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1309,7 +1309,7 @@ func (this *QHBoxLayout) callVirtualBase_Metacast(param1 string) unsafe.Pointer 
 	return (unsafe.Pointer)(C.QHBoxLayout_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QHBoxLayout) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QHBoxLayout) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QHBoxLayout_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2271,7 +2271,7 @@ func (this *QVBoxLayout) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QVBoxLayout_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QVBoxLayout) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QVBoxLayout) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QVBoxLayout_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2298,7 +2298,7 @@ func (this *QVBoxLayout) callVirtualBase_Metacast(param1 string) unsafe.Pointer 
 	return (unsafe.Pointer)(C.QVBoxLayout_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QVBoxLayout) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QVBoxLayout) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QVBoxLayout_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

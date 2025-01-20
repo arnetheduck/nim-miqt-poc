@@ -34,12 +34,10 @@ const cflags = gorge("pkg-config -cflags Qt6Widgets")
 {.compile("gen_qcolordialog.cpp", cflags).}
 
 
-type QColorDialogColorDialogOption* = cint
-const
-  QColorDialogShowAlphaChannel* = 1
-  QColorDialogNoButtons* = 2
-  QColorDialogDontUseNativeDialog* = 4
-
+type QColorDialogColorDialogOptionEnum* = distinct cint
+template ShowAlphaChannel*(_: type QColorDialogColorDialogOptionEnum): untyped = 1
+template NoButtons*(_: type QColorDialogColorDialogOptionEnum): untyped = 2
+template DontUseNativeDialog*(_: type QColorDialogColorDialogOptionEnum): untyped = 4
 
 
 import gen_qcolordialog_types
@@ -51,7 +49,6 @@ import
   gen_qdialog,
   gen_qevent,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -67,7 +64,6 @@ export
   gen_qdialog,
   gen_qevent,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -227,96 +223,96 @@ proc fcQColorDialog_staticMetaObject(): pointer {.importc: "QColorDialog_staticM
 proc fcQColorDialog_delete(self: pointer) {.importc: "QColorDialog_delete".}
 
 
-func init*(T: type QColorDialog, h: ptr cQColorDialog): QColorDialog =
+func init*(T: type gen_qcolordialog_types.QColorDialog, h: ptr cQColorDialog): gen_qcolordialog_types.QColorDialog =
   T(h: h)
-proc create*(T: type QColorDialog, parent: gen_qwidget.QWidget): QColorDialog =
+proc create*(T: type gen_qcolordialog_types.QColorDialog, parent: gen_qwidget.QWidget): gen_qcolordialog_types.QColorDialog =
 
-  QColorDialog.init(fcQColorDialog_new(parent.h))
-proc create*(T: type QColorDialog, ): QColorDialog =
+  gen_qcolordialog_types.QColorDialog.init(fcQColorDialog_new(parent.h))
+proc create*(T: type gen_qcolordialog_types.QColorDialog, ): gen_qcolordialog_types.QColorDialog =
 
-  QColorDialog.init(fcQColorDialog_new2())
-proc create2*(T: type QColorDialog, initial: gen_qcolor.QColor): QColorDialog =
+  gen_qcolordialog_types.QColorDialog.init(fcQColorDialog_new2())
+proc create2*(T: type gen_qcolordialog_types.QColorDialog, initial: gen_qcolor.QColor): gen_qcolordialog_types.QColorDialog =
 
-  QColorDialog.init(fcQColorDialog_new3(initial.h))
-proc create*(T: type QColorDialog, initial: gen_qcolor.QColor, parent: gen_qwidget.QWidget): QColorDialog =
+  gen_qcolordialog_types.QColorDialog.init(fcQColorDialog_new3(initial.h))
+proc create*(T: type gen_qcolordialog_types.QColorDialog, initial: gen_qcolor.QColor, parent: gen_qwidget.QWidget): gen_qcolordialog_types.QColorDialog =
 
-  QColorDialog.init(fcQColorDialog_new4(initial.h, parent.h))
-proc metaObject*(self: QColorDialog, ): gen_qobjectdefs.QMetaObject =
+  gen_qcolordialog_types.QColorDialog.init(fcQColorDialog_new4(initial.h, parent.h))
+proc metaObject*(self: gen_qcolordialog_types.QColorDialog, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQColorDialog_metaObject(self.h))
 
-proc metacast*(self: QColorDialog, param1: cstring): pointer =
+proc metacast*(self: gen_qcolordialog_types.QColorDialog, param1: cstring): pointer =
 
   fcQColorDialog_metacast(self.h, param1)
 
-proc metacall*(self: QColorDialog, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qcolordialog_types.QColorDialog, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQColorDialog_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QColorDialog, s: cstring): string =
+proc tr*(_: type gen_qcolordialog_types.QColorDialog, s: cstring): string =
 
   let v_ms = fcQColorDialog_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setCurrentColor*(self: QColorDialog, color: gen_qcolor.QColor): void =
+proc setCurrentColor*(self: gen_qcolordialog_types.QColorDialog, color: gen_qcolor.QColor): void =
 
   fcQColorDialog_setCurrentColor(self.h, color.h)
 
-proc currentColor*(self: QColorDialog, ): gen_qcolor.QColor =
+proc currentColor*(self: gen_qcolordialog_types.QColorDialog, ): gen_qcolor.QColor =
 
   gen_qcolor.QColor(h: fcQColorDialog_currentColor(self.h))
 
-proc selectedColor*(self: QColorDialog, ): gen_qcolor.QColor =
+proc selectedColor*(self: gen_qcolordialog_types.QColorDialog, ): gen_qcolor.QColor =
 
   gen_qcolor.QColor(h: fcQColorDialog_selectedColor(self.h))
 
-proc setOption*(self: QColorDialog, option: QColorDialogColorDialogOption): void =
+proc setOption*(self: gen_qcolordialog_types.QColorDialog, option: cint): void =
 
   fcQColorDialog_setOption(self.h, cint(option))
 
-proc testOption*(self: QColorDialog, option: QColorDialogColorDialogOption): bool =
+proc testOption*(self: gen_qcolordialog_types.QColorDialog, option: cint): bool =
 
   fcQColorDialog_testOption(self.h, cint(option))
 
-proc setOptions*(self: QColorDialog, options: QColorDialogColorDialogOption): void =
+proc setOptions*(self: gen_qcolordialog_types.QColorDialog, options: cint): void =
 
   fcQColorDialog_setOptions(self.h, cint(options))
 
-proc options*(self: QColorDialog, ): QColorDialogColorDialogOption =
+proc options*(self: gen_qcolordialog_types.QColorDialog, ): cint =
 
-  QColorDialogColorDialogOption(fcQColorDialog_options(self.h))
+  cint(fcQColorDialog_options(self.h))
 
-proc setVisible*(self: QColorDialog, visible: bool): void =
+proc setVisible*(self: gen_qcolordialog_types.QColorDialog, visible: bool): void =
 
   fcQColorDialog_setVisible(self.h, visible)
 
-proc getColor*(_: type QColorDialog, ): gen_qcolor.QColor =
+proc getColor*(_: type gen_qcolordialog_types.QColorDialog, ): gen_qcolor.QColor =
 
   gen_qcolor.QColor(h: fcQColorDialog_getColor())
 
-proc customCount*(_: type QColorDialog, ): cint =
+proc customCount*(_: type gen_qcolordialog_types.QColorDialog, ): cint =
 
   fcQColorDialog_customCount()
 
-proc customColor*(_: type QColorDialog, index: cint): gen_qcolor.QColor =
+proc customColor*(_: type gen_qcolordialog_types.QColorDialog, index: cint): gen_qcolor.QColor =
 
   gen_qcolor.QColor(h: fcQColorDialog_customColor(index))
 
-proc setCustomColor*(_: type QColorDialog, index: cint, color: gen_qcolor.QColor): void =
+proc setCustomColor*(_: type gen_qcolordialog_types.QColorDialog, index: cint, color: gen_qcolor.QColor): void =
 
   fcQColorDialog_setCustomColor(index, color.h)
 
-proc standardColor*(_: type QColorDialog, index: cint): gen_qcolor.QColor =
+proc standardColor*(_: type gen_qcolordialog_types.QColorDialog, index: cint): gen_qcolor.QColor =
 
   gen_qcolor.QColor(h: fcQColorDialog_standardColor(index))
 
-proc setStandardColor*(_: type QColorDialog, index: cint, color: gen_qcolor.QColor): void =
+proc setStandardColor*(_: type gen_qcolordialog_types.QColorDialog, index: cint, color: gen_qcolor.QColor): void =
 
   fcQColorDialog_setStandardColor(index, color.h)
 
-proc currentColorChanged*(self: QColorDialog, color: gen_qcolor.QColor): void =
+proc currentColorChanged*(self: gen_qcolordialog_types.QColorDialog, color: gen_qcolor.QColor): void =
 
   fcQColorDialog_currentColorChanged(self.h, color.h)
 
@@ -328,13 +324,13 @@ proc miqt_exec_callback_QColorDialog_currentColorChanged(slot: int, color: point
 
   nimfunc[](slotval1)
 
-proc oncurrentColorChanged*(self: QColorDialog, slot: proc(color: gen_qcolor.QColor)) =
+proc oncurrentColorChanged*(self: gen_qcolordialog_types.QColorDialog, slot: proc(color: gen_qcolor.QColor)) =
   type Cb = proc(color: gen_qcolor.QColor)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQColorDialog_connect_currentColorChanged(self.h, cast[int](addr tmp[]))
-proc colorSelected*(self: QColorDialog, color: gen_qcolor.QColor): void =
+proc colorSelected*(self: gen_qcolordialog_types.QColorDialog, color: gen_qcolor.QColor): void =
 
   fcQColorDialog_colorSelected(self.h, color.h)
 
@@ -346,1041 +342,826 @@ proc miqt_exec_callback_QColorDialog_colorSelected(slot: int, color: pointer) {.
 
   nimfunc[](slotval1)
 
-proc oncolorSelected*(self: QColorDialog, slot: proc(color: gen_qcolor.QColor)) =
+proc oncolorSelected*(self: gen_qcolordialog_types.QColorDialog, slot: proc(color: gen_qcolor.QColor)) =
   type Cb = proc(color: gen_qcolor.QColor)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQColorDialog_connect_colorSelected(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QColorDialog, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qcolordialog_types.QColorDialog, s: cstring, c: cstring): string =
 
   let v_ms = fcQColorDialog_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QColorDialog, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qcolordialog_types.QColorDialog, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQColorDialog_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setOption2*(self: QColorDialog, option: QColorDialogColorDialogOption, on: bool): void =
+proc setOption2*(self: gen_qcolordialog_types.QColorDialog, option: cint, on: bool): void =
 
   fcQColorDialog_setOption2(self.h, cint(option), on)
 
-proc getColor1*(_: type QColorDialog, initial: gen_qcolor.QColor): gen_qcolor.QColor =
+proc getColor1*(_: type gen_qcolordialog_types.QColorDialog, initial: gen_qcolor.QColor): gen_qcolor.QColor =
 
   gen_qcolor.QColor(h: fcQColorDialog_getColor1(initial.h))
 
-proc getColor2*(_: type QColorDialog, initial: gen_qcolor.QColor, parent: gen_qwidget.QWidget): gen_qcolor.QColor =
+proc getColor2*(_: type gen_qcolordialog_types.QColorDialog, initial: gen_qcolor.QColor, parent: gen_qwidget.QWidget): gen_qcolor.QColor =
 
   gen_qcolor.QColor(h: fcQColorDialog_getColor2(initial.h, parent.h))
 
-proc getColor3*(_: type QColorDialog, initial: gen_qcolor.QColor, parent: gen_qwidget.QWidget, title: string): gen_qcolor.QColor =
+proc getColor3*(_: type gen_qcolordialog_types.QColorDialog, initial: gen_qcolor.QColor, parent: gen_qwidget.QWidget, title: string): gen_qcolor.QColor =
 
   gen_qcolor.QColor(h: fcQColorDialog_getColor3(initial.h, parent.h, struct_miqt_string(data: title, len: csize_t(len(title)))))
 
-proc getColor4*(_: type QColorDialog, initial: gen_qcolor.QColor, parent: gen_qwidget.QWidget, title: string, options: QColorDialogColorDialogOption): gen_qcolor.QColor =
+proc getColor4*(_: type gen_qcolordialog_types.QColorDialog, initial: gen_qcolor.QColor, parent: gen_qwidget.QWidget, title: string, options: cint): gen_qcolor.QColor =
 
   gen_qcolor.QColor(h: fcQColorDialog_getColor4(initial.h, parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), cint(options)))
 
-proc callVirtualBase_metaObject(self: QColorDialog, ): gen_qobjectdefs.QMetaObject =
-
+proc QColorDialogmetaObject*(self: gen_qcolordialog_types.QColorDialog, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQColorDialog_virtualbase_metaObject(self.h))
 
-type QColorDialogmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QColorDialog, slot: proc(super: QColorDialogmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QColorDialogmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialogmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QColorDialogmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QColorDialogmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQColorDialog_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QColorDialog_metaObject(self: ptr cQColorDialog, slot: int): pointer {.exportc: "miqt_exec_callback_QColorDialog_metaObject ".} =
-  type Cb = proc(super: QColorDialogmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QColorDialog(h: self), )
+  var nimfunc = cast[ptr QColorDialogmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QColorDialog, param1: cstring): pointer =
-
+proc QColorDialogmetacast*(self: gen_qcolordialog_types.QColorDialog, param1: cstring): pointer =
 
   fQColorDialog_virtualbase_metacast(self.h, param1)
 
-type QColorDialogmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QColorDialog, slot: proc(super: QColorDialogmetacastBase, param1: cstring): pointer) =
+type QColorDialogmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialogmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QColorDialogmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QColorDialogmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQColorDialog_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QColorDialog_metacast(self: ptr cQColorDialog, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QColorDialog_metacast ".} =
-  type Cb = proc(super: QColorDialogmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QColorDialog(h: self), param1)
+  var nimfunc = cast[ptr QColorDialogmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QColorDialog, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QColorDialogmetacall*(self: gen_qcolordialog_types.QColorDialog, param1: cint, param2: cint, param3: pointer): cint =
 
   fQColorDialog_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QColorDialogmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QColorDialog, slot: proc(super: QColorDialogmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QColorDialogmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialogmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QColorDialogmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QColorDialogmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQColorDialog_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QColorDialog_metacall(self: ptr cQColorDialog, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QColorDialog_metacall ".} =
-  type Cb = proc(super: QColorDialogmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QColorDialog(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QColorDialogmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_setVisible(self: QColorDialog, visible: bool): void =
-
+proc QColorDialogsetVisible*(self: gen_qcolordialog_types.QColorDialog, visible: bool): void =
 
   fQColorDialog_virtualbase_setVisible(self.h, visible)
 
-type QColorDialogsetVisibleBase* = proc(visible: bool): void
-proc onsetVisible*(self: QColorDialog, slot: proc(super: QColorDialogsetVisibleBase, visible: bool): void) =
+type QColorDialogsetVisibleProc* = proc(visible: bool): void
+proc onsetVisible*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialogsetVisibleProc) =
   # TODO check subclass
-  type Cb = proc(super: QColorDialogsetVisibleBase, visible: bool): void
-  var tmp = new Cb
+  var tmp = new QColorDialogsetVisibleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQColorDialog_override_virtual_setVisible(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QColorDialog_setVisible(self: ptr cQColorDialog, slot: int, visible: bool): void {.exportc: "miqt_exec_callback_QColorDialog_setVisible ".} =
-  type Cb = proc(super: QColorDialogsetVisibleBase, visible: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(visible: bool): auto =
-    callVirtualBase_setVisible(QColorDialog(h: self), visible)
+  var nimfunc = cast[ptr QColorDialogsetVisibleProc](cast[pointer](slot))
   let slotval1 = visible
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_changeEvent(self: QColorDialog, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QColorDialogchangeEvent*(self: gen_qcolordialog_types.QColorDialog, event: gen_qcoreevent.QEvent): void =
 
   fQColorDialog_virtualbase_changeEvent(self.h, event.h)
 
-type QColorDialogchangeEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onchangeEvent*(self: QColorDialog, slot: proc(super: QColorDialogchangeEventBase, event: gen_qcoreevent.QEvent): void) =
+type QColorDialogchangeEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onchangeEvent*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialogchangeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QColorDialogchangeEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QColorDialogchangeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQColorDialog_override_virtual_changeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QColorDialog_changeEvent(self: ptr cQColorDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QColorDialog_changeEvent ".} =
-  type Cb = proc(super: QColorDialogchangeEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_changeEvent(QColorDialog(h: self), event)
+  var nimfunc = cast[ptr QColorDialogchangeEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_done(self: QColorDialog, resultVal: cint): void =
-
+  nimfunc[](slotval1)
+proc QColorDialogdone*(self: gen_qcolordialog_types.QColorDialog, resultVal: cint): void =
 
   fQColorDialog_virtualbase_done(self.h, resultVal)
 
-type QColorDialogdoneBase* = proc(resultVal: cint): void
-proc ondone*(self: QColorDialog, slot: proc(super: QColorDialogdoneBase, resultVal: cint): void) =
+type QColorDialogdoneProc* = proc(resultVal: cint): void
+proc ondone*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialogdoneProc) =
   # TODO check subclass
-  type Cb = proc(super: QColorDialogdoneBase, resultVal: cint): void
-  var tmp = new Cb
+  var tmp = new QColorDialogdoneProc
   tmp[] = slot
   GC_ref(tmp)
   fcQColorDialog_override_virtual_done(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QColorDialog_done(self: ptr cQColorDialog, slot: int, resultVal: cint): void {.exportc: "miqt_exec_callback_QColorDialog_done ".} =
-  type Cb = proc(super: QColorDialogdoneBase, resultVal: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(resultVal: cint): auto =
-    callVirtualBase_done(QColorDialog(h: self), resultVal)
+  var nimfunc = cast[ptr QColorDialogdoneProc](cast[pointer](slot))
   let slotval1 = resultVal
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_sizeHint(self: QColorDialog, ): gen_qsize.QSize =
-
+  nimfunc[](slotval1)
+proc QColorDialogsizeHint*(self: gen_qcolordialog_types.QColorDialog, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQColorDialog_virtualbase_sizeHint(self.h))
 
-type QColorDialogsizeHintBase* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: QColorDialog, slot: proc(super: QColorDialogsizeHintBase): gen_qsize.QSize) =
+type QColorDialogsizeHintProc* = proc(): gen_qsize.QSize
+proc onsizeHint*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialogsizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QColorDialogsizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QColorDialogsizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQColorDialog_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QColorDialog_sizeHint(self: ptr cQColorDialog, slot: int): pointer {.exportc: "miqt_exec_callback_QColorDialog_sizeHint ".} =
-  type Cb = proc(super: QColorDialogsizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sizeHint(QColorDialog(h: self), )
+  var nimfunc = cast[ptr QColorDialogsizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_minimumSizeHint(self: QColorDialog, ): gen_qsize.QSize =
-
+proc QColorDialogminimumSizeHint*(self: gen_qcolordialog_types.QColorDialog, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQColorDialog_virtualbase_minimumSizeHint(self.h))
 
-type QColorDialogminimumSizeHintBase* = proc(): gen_qsize.QSize
-proc onminimumSizeHint*(self: QColorDialog, slot: proc(super: QColorDialogminimumSizeHintBase): gen_qsize.QSize) =
+type QColorDialogminimumSizeHintProc* = proc(): gen_qsize.QSize
+proc onminimumSizeHint*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialogminimumSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QColorDialogminimumSizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QColorDialogminimumSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQColorDialog_override_virtual_minimumSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QColorDialog_minimumSizeHint(self: ptr cQColorDialog, slot: int): pointer {.exportc: "miqt_exec_callback_QColorDialog_minimumSizeHint ".} =
-  type Cb = proc(super: QColorDialogminimumSizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_minimumSizeHint(QColorDialog(h: self), )
+  var nimfunc = cast[ptr QColorDialogminimumSizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_open(self: QColorDialog, ): void =
-
+proc QColorDialogopen*(self: gen_qcolordialog_types.QColorDialog, ): void =
 
   fQColorDialog_virtualbase_open(self.h)
 
-type QColorDialogopenBase* = proc(): void
-proc onopen*(self: QColorDialog, slot: proc(super: QColorDialogopenBase): void) =
+type QColorDialogopenProc* = proc(): void
+proc onopen*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialogopenProc) =
   # TODO check subclass
-  type Cb = proc(super: QColorDialogopenBase): void
-  var tmp = new Cb
+  var tmp = new QColorDialogopenProc
   tmp[] = slot
   GC_ref(tmp)
   fcQColorDialog_override_virtual_open(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QColorDialog_open(self: ptr cQColorDialog, slot: int): void {.exportc: "miqt_exec_callback_QColorDialog_open ".} =
-  type Cb = proc(super: QColorDialogopenBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_open(QColorDialog(h: self), )
+  var nimfunc = cast[ptr QColorDialogopenProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_exec(self: QColorDialog, ): cint =
-
+  nimfunc[]()
+proc QColorDialogexec*(self: gen_qcolordialog_types.QColorDialog, ): cint =
 
   fQColorDialog_virtualbase_exec(self.h)
 
-type QColorDialogexecBase* = proc(): cint
-proc onexec*(self: QColorDialog, slot: proc(super: QColorDialogexecBase): cint) =
+type QColorDialogexecProc* = proc(): cint
+proc onexec*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialogexecProc) =
   # TODO check subclass
-  type Cb = proc(super: QColorDialogexecBase): cint
-  var tmp = new Cb
+  var tmp = new QColorDialogexecProc
   tmp[] = slot
   GC_ref(tmp)
   fcQColorDialog_override_virtual_exec(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QColorDialog_exec(self: ptr cQColorDialog, slot: int): cint {.exportc: "miqt_exec_callback_QColorDialog_exec ".} =
-  type Cb = proc(super: QColorDialogexecBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_exec(QColorDialog(h: self), )
+  var nimfunc = cast[ptr QColorDialogexecProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_accept(self: QColorDialog, ): void =
-
+proc QColorDialogaccept*(self: gen_qcolordialog_types.QColorDialog, ): void =
 
   fQColorDialog_virtualbase_accept(self.h)
 
-type QColorDialogacceptBase* = proc(): void
-proc onaccept*(self: QColorDialog, slot: proc(super: QColorDialogacceptBase): void) =
+type QColorDialogacceptProc* = proc(): void
+proc onaccept*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialogacceptProc) =
   # TODO check subclass
-  type Cb = proc(super: QColorDialogacceptBase): void
-  var tmp = new Cb
+  var tmp = new QColorDialogacceptProc
   tmp[] = slot
   GC_ref(tmp)
   fcQColorDialog_override_virtual_accept(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QColorDialog_accept(self: ptr cQColorDialog, slot: int): void {.exportc: "miqt_exec_callback_QColorDialog_accept ".} =
-  type Cb = proc(super: QColorDialogacceptBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_accept(QColorDialog(h: self), )
+  var nimfunc = cast[ptr QColorDialogacceptProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_reject(self: QColorDialog, ): void =
-
+  nimfunc[]()
+proc QColorDialogreject*(self: gen_qcolordialog_types.QColorDialog, ): void =
 
   fQColorDialog_virtualbase_reject(self.h)
 
-type QColorDialogrejectBase* = proc(): void
-proc onreject*(self: QColorDialog, slot: proc(super: QColorDialogrejectBase): void) =
+type QColorDialogrejectProc* = proc(): void
+proc onreject*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialogrejectProc) =
   # TODO check subclass
-  type Cb = proc(super: QColorDialogrejectBase): void
-  var tmp = new Cb
+  var tmp = new QColorDialogrejectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQColorDialog_override_virtual_reject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QColorDialog_reject(self: ptr cQColorDialog, slot: int): void {.exportc: "miqt_exec_callback_QColorDialog_reject ".} =
-  type Cb = proc(super: QColorDialogrejectBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_reject(QColorDialog(h: self), )
+  var nimfunc = cast[ptr QColorDialogrejectProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_keyPressEvent(self: QColorDialog, param1: gen_qevent.QKeyEvent): void =
-
+  nimfunc[]()
+proc QColorDialogkeyPressEvent*(self: gen_qcolordialog_types.QColorDialog, param1: gen_qevent.QKeyEvent): void =
 
   fQColorDialog_virtualbase_keyPressEvent(self.h, param1.h)
 
-type QColorDialogkeyPressEventBase* = proc(param1: gen_qevent.QKeyEvent): void
-proc onkeyPressEvent*(self: QColorDialog, slot: proc(super: QColorDialogkeyPressEventBase, param1: gen_qevent.QKeyEvent): void) =
+type QColorDialogkeyPressEventProc* = proc(param1: gen_qevent.QKeyEvent): void
+proc onkeyPressEvent*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialogkeyPressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QColorDialogkeyPressEventBase, param1: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QColorDialogkeyPressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQColorDialog_override_virtual_keyPressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QColorDialog_keyPressEvent(self: ptr cQColorDialog, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QColorDialog_keyPressEvent ".} =
-  type Cb = proc(super: QColorDialogkeyPressEventBase, param1: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyPressEvent(QColorDialog(h: self), param1)
+  var nimfunc = cast[ptr QColorDialogkeyPressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_closeEvent(self: QColorDialog, param1: gen_qevent.QCloseEvent): void =
-
+  nimfunc[](slotval1)
+proc QColorDialogcloseEvent*(self: gen_qcolordialog_types.QColorDialog, param1: gen_qevent.QCloseEvent): void =
 
   fQColorDialog_virtualbase_closeEvent(self.h, param1.h)
 
-type QColorDialogcloseEventBase* = proc(param1: gen_qevent.QCloseEvent): void
-proc oncloseEvent*(self: QColorDialog, slot: proc(super: QColorDialogcloseEventBase, param1: gen_qevent.QCloseEvent): void) =
+type QColorDialogcloseEventProc* = proc(param1: gen_qevent.QCloseEvent): void
+proc oncloseEvent*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialogcloseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QColorDialogcloseEventBase, param1: gen_qevent.QCloseEvent): void
-  var tmp = new Cb
+  var tmp = new QColorDialogcloseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQColorDialog_override_virtual_closeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QColorDialog_closeEvent(self: ptr cQColorDialog, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QColorDialog_closeEvent ".} =
-  type Cb = proc(super: QColorDialogcloseEventBase, param1: gen_qevent.QCloseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QCloseEvent): auto =
-    callVirtualBase_closeEvent(QColorDialog(h: self), param1)
+  var nimfunc = cast[ptr QColorDialogcloseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QCloseEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_showEvent(self: QColorDialog, param1: gen_qevent.QShowEvent): void =
-
+  nimfunc[](slotval1)
+proc QColorDialogshowEvent*(self: gen_qcolordialog_types.QColorDialog, param1: gen_qevent.QShowEvent): void =
 
   fQColorDialog_virtualbase_showEvent(self.h, param1.h)
 
-type QColorDialogshowEventBase* = proc(param1: gen_qevent.QShowEvent): void
-proc onshowEvent*(self: QColorDialog, slot: proc(super: QColorDialogshowEventBase, param1: gen_qevent.QShowEvent): void) =
+type QColorDialogshowEventProc* = proc(param1: gen_qevent.QShowEvent): void
+proc onshowEvent*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialogshowEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QColorDialogshowEventBase, param1: gen_qevent.QShowEvent): void
-  var tmp = new Cb
+  var tmp = new QColorDialogshowEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQColorDialog_override_virtual_showEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QColorDialog_showEvent(self: ptr cQColorDialog, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QColorDialog_showEvent ".} =
-  type Cb = proc(super: QColorDialogshowEventBase, param1: gen_qevent.QShowEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QShowEvent): auto =
-    callVirtualBase_showEvent(QColorDialog(h: self), param1)
+  var nimfunc = cast[ptr QColorDialogshowEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QShowEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_resizeEvent(self: QColorDialog, param1: gen_qevent.QResizeEvent): void =
-
+  nimfunc[](slotval1)
+proc QColorDialogresizeEvent*(self: gen_qcolordialog_types.QColorDialog, param1: gen_qevent.QResizeEvent): void =
 
   fQColorDialog_virtualbase_resizeEvent(self.h, param1.h)
 
-type QColorDialogresizeEventBase* = proc(param1: gen_qevent.QResizeEvent): void
-proc onresizeEvent*(self: QColorDialog, slot: proc(super: QColorDialogresizeEventBase, param1: gen_qevent.QResizeEvent): void) =
+type QColorDialogresizeEventProc* = proc(param1: gen_qevent.QResizeEvent): void
+proc onresizeEvent*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialogresizeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QColorDialogresizeEventBase, param1: gen_qevent.QResizeEvent): void
-  var tmp = new Cb
+  var tmp = new QColorDialogresizeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQColorDialog_override_virtual_resizeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QColorDialog_resizeEvent(self: ptr cQColorDialog, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QColorDialog_resizeEvent ".} =
-  type Cb = proc(super: QColorDialogresizeEventBase, param1: gen_qevent.QResizeEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QResizeEvent): auto =
-    callVirtualBase_resizeEvent(QColorDialog(h: self), param1)
+  var nimfunc = cast[ptr QColorDialogresizeEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QResizeEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_contextMenuEvent(self: QColorDialog, param1: gen_qevent.QContextMenuEvent): void =
-
+  nimfunc[](slotval1)
+proc QColorDialogcontextMenuEvent*(self: gen_qcolordialog_types.QColorDialog, param1: gen_qevent.QContextMenuEvent): void =
 
   fQColorDialog_virtualbase_contextMenuEvent(self.h, param1.h)
 
-type QColorDialogcontextMenuEventBase* = proc(param1: gen_qevent.QContextMenuEvent): void
-proc oncontextMenuEvent*(self: QColorDialog, slot: proc(super: QColorDialogcontextMenuEventBase, param1: gen_qevent.QContextMenuEvent): void) =
+type QColorDialogcontextMenuEventProc* = proc(param1: gen_qevent.QContextMenuEvent): void
+proc oncontextMenuEvent*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialogcontextMenuEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QColorDialogcontextMenuEventBase, param1: gen_qevent.QContextMenuEvent): void
-  var tmp = new Cb
+  var tmp = new QColorDialogcontextMenuEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQColorDialog_override_virtual_contextMenuEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QColorDialog_contextMenuEvent(self: ptr cQColorDialog, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QColorDialog_contextMenuEvent ".} =
-  type Cb = proc(super: QColorDialogcontextMenuEventBase, param1: gen_qevent.QContextMenuEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QContextMenuEvent): auto =
-    callVirtualBase_contextMenuEvent(QColorDialog(h: self), param1)
+  var nimfunc = cast[ptr QColorDialogcontextMenuEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QContextMenuEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_eventFilter(self: QColorDialog, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[](slotval1)
+proc QColorDialogeventFilter*(self: gen_qcolordialog_types.QColorDialog, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool =
 
   fQColorDialog_virtualbase_eventFilter(self.h, param1.h, param2.h)
 
-type QColorDialogeventFilterBase* = proc(param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QColorDialog, slot: proc(super: QColorDialogeventFilterBase, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool) =
+type QColorDialogeventFilterProc* = proc(param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialogeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QColorDialogeventFilterBase, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QColorDialogeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQColorDialog_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QColorDialog_eventFilter(self: ptr cQColorDialog, slot: int, param1: pointer, param2: pointer): bool {.exportc: "miqt_exec_callback_QColorDialog_eventFilter ".} =
-  type Cb = proc(super: QColorDialogeventFilterBase, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QColorDialog(h: self), param1, param2)
+  var nimfunc = cast[ptr QColorDialogeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: param1)
 
   let slotval2 = gen_qcoreevent.QEvent(h: param2)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_devType(self: QColorDialog, ): cint =
-
+proc QColorDialogdevType*(self: gen_qcolordialog_types.QColorDialog, ): cint =
 
   fQColorDialog_virtualbase_devType(self.h)
 
-type QColorDialogdevTypeBase* = proc(): cint
-proc ondevType*(self: QColorDialog, slot: proc(super: QColorDialogdevTypeBase): cint) =
+type QColorDialogdevTypeProc* = proc(): cint
+proc ondevType*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialogdevTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: QColorDialogdevTypeBase): cint
-  var tmp = new Cb
+  var tmp = new QColorDialogdevTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQColorDialog_override_virtual_devType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QColorDialog_devType(self: ptr cQColorDialog, slot: int): cint {.exportc: "miqt_exec_callback_QColorDialog_devType ".} =
-  type Cb = proc(super: QColorDialogdevTypeBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_devType(QColorDialog(h: self), )
+  var nimfunc = cast[ptr QColorDialogdevTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_heightForWidth(self: QColorDialog, param1: cint): cint =
-
+proc QColorDialogheightForWidth*(self: gen_qcolordialog_types.QColorDialog, param1: cint): cint =
 
   fQColorDialog_virtualbase_heightForWidth(self.h, param1)
 
-type QColorDialogheightForWidthBase* = proc(param1: cint): cint
-proc onheightForWidth*(self: QColorDialog, slot: proc(super: QColorDialogheightForWidthBase, param1: cint): cint) =
+type QColorDialogheightForWidthProc* = proc(param1: cint): cint
+proc onheightForWidth*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialogheightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QColorDialogheightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QColorDialogheightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQColorDialog_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QColorDialog_heightForWidth(self: ptr cQColorDialog, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QColorDialog_heightForWidth ".} =
-  type Cb = proc(super: QColorDialogheightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_heightForWidth(QColorDialog(h: self), param1)
+  var nimfunc = cast[ptr QColorDialogheightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_hasHeightForWidth(self: QColorDialog, ): bool =
-
+proc QColorDialoghasHeightForWidth*(self: gen_qcolordialog_types.QColorDialog, ): bool =
 
   fQColorDialog_virtualbase_hasHeightForWidth(self.h)
 
-type QColorDialoghasHeightForWidthBase* = proc(): bool
-proc onhasHeightForWidth*(self: QColorDialog, slot: proc(super: QColorDialoghasHeightForWidthBase): bool) =
+type QColorDialoghasHeightForWidthProc* = proc(): bool
+proc onhasHeightForWidth*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialoghasHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QColorDialoghasHeightForWidthBase): bool
-  var tmp = new Cb
+  var tmp = new QColorDialoghasHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQColorDialog_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QColorDialog_hasHeightForWidth(self: ptr cQColorDialog, slot: int): bool {.exportc: "miqt_exec_callback_QColorDialog_hasHeightForWidth ".} =
-  type Cb = proc(super: QColorDialoghasHeightForWidthBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasHeightForWidth(QColorDialog(h: self), )
+  var nimfunc = cast[ptr QColorDialoghasHeightForWidthProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_paintEngine(self: QColorDialog, ): gen_qpaintengine.QPaintEngine =
-
+proc QColorDialogpaintEngine*(self: gen_qcolordialog_types.QColorDialog, ): gen_qpaintengine.QPaintEngine =
 
   gen_qpaintengine.QPaintEngine(h: fQColorDialog_virtualbase_paintEngine(self.h))
 
-type QColorDialogpaintEngineBase* = proc(): gen_qpaintengine.QPaintEngine
-proc onpaintEngine*(self: QColorDialog, slot: proc(super: QColorDialogpaintEngineBase): gen_qpaintengine.QPaintEngine) =
+type QColorDialogpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
+proc onpaintEngine*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialogpaintEngineProc) =
   # TODO check subclass
-  type Cb = proc(super: QColorDialogpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var tmp = new Cb
+  var tmp = new QColorDialogpaintEngineProc
   tmp[] = slot
   GC_ref(tmp)
   fcQColorDialog_override_virtual_paintEngine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QColorDialog_paintEngine(self: ptr cQColorDialog, slot: int): pointer {.exportc: "miqt_exec_callback_QColorDialog_paintEngine ".} =
-  type Cb = proc(super: QColorDialogpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_paintEngine(QColorDialog(h: self), )
+  var nimfunc = cast[ptr QColorDialogpaintEngineProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_event(self: QColorDialog, event: gen_qcoreevent.QEvent): bool =
-
+proc QColorDialogevent*(self: gen_qcolordialog_types.QColorDialog, event: gen_qcoreevent.QEvent): bool =
 
   fQColorDialog_virtualbase_event(self.h, event.h)
 
-type QColorDialogeventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QColorDialog, slot: proc(super: QColorDialogeventBase, event: gen_qcoreevent.QEvent): bool) =
+type QColorDialogeventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialogeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QColorDialogeventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QColorDialogeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQColorDialog_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QColorDialog_event(self: ptr cQColorDialog, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QColorDialog_event ".} =
-  type Cb = proc(super: QColorDialogeventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QColorDialog(h: self), event)
+  var nimfunc = cast[ptr QColorDialogeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_mousePressEvent(self: QColorDialog, event: gen_qevent.QMouseEvent): void =
-
+proc QColorDialogmousePressEvent*(self: gen_qcolordialog_types.QColorDialog, event: gen_qevent.QMouseEvent): void =
 
   fQColorDialog_virtualbase_mousePressEvent(self.h, event.h)
 
-type QColorDialogmousePressEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmousePressEvent*(self: QColorDialog, slot: proc(super: QColorDialogmousePressEventBase, event: gen_qevent.QMouseEvent): void) =
+type QColorDialogmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmousePressEvent*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialogmousePressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QColorDialogmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QColorDialogmousePressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQColorDialog_override_virtual_mousePressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QColorDialog_mousePressEvent(self: ptr cQColorDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QColorDialog_mousePressEvent ".} =
-  type Cb = proc(super: QColorDialogmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mousePressEvent(QColorDialog(h: self), event)
+  var nimfunc = cast[ptr QColorDialogmousePressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseReleaseEvent(self: QColorDialog, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QColorDialogmouseReleaseEvent*(self: gen_qcolordialog_types.QColorDialog, event: gen_qevent.QMouseEvent): void =
 
   fQColorDialog_virtualbase_mouseReleaseEvent(self.h, event.h)
 
-type QColorDialogmouseReleaseEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseReleaseEvent*(self: QColorDialog, slot: proc(super: QColorDialogmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void) =
+type QColorDialogmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseReleaseEvent*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialogmouseReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QColorDialogmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QColorDialogmouseReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQColorDialog_override_virtual_mouseReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QColorDialog_mouseReleaseEvent(self: ptr cQColorDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QColorDialog_mouseReleaseEvent ".} =
-  type Cb = proc(super: QColorDialogmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseReleaseEvent(QColorDialog(h: self), event)
+  var nimfunc = cast[ptr QColorDialogmouseReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseDoubleClickEvent(self: QColorDialog, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QColorDialogmouseDoubleClickEvent*(self: gen_qcolordialog_types.QColorDialog, event: gen_qevent.QMouseEvent): void =
 
   fQColorDialog_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
-type QColorDialogmouseDoubleClickEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseDoubleClickEvent*(self: QColorDialog, slot: proc(super: QColorDialogmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void) =
+type QColorDialogmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseDoubleClickEvent*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialogmouseDoubleClickEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QColorDialogmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QColorDialogmouseDoubleClickEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQColorDialog_override_virtual_mouseDoubleClickEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QColorDialog_mouseDoubleClickEvent(self: ptr cQColorDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QColorDialog_mouseDoubleClickEvent ".} =
-  type Cb = proc(super: QColorDialogmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseDoubleClickEvent(QColorDialog(h: self), event)
+  var nimfunc = cast[ptr QColorDialogmouseDoubleClickEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseMoveEvent(self: QColorDialog, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QColorDialogmouseMoveEvent*(self: gen_qcolordialog_types.QColorDialog, event: gen_qevent.QMouseEvent): void =
 
   fQColorDialog_virtualbase_mouseMoveEvent(self.h, event.h)
 
-type QColorDialogmouseMoveEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseMoveEvent*(self: QColorDialog, slot: proc(super: QColorDialogmouseMoveEventBase, event: gen_qevent.QMouseEvent): void) =
+type QColorDialogmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseMoveEvent*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialogmouseMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QColorDialogmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QColorDialogmouseMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQColorDialog_override_virtual_mouseMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QColorDialog_mouseMoveEvent(self: ptr cQColorDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QColorDialog_mouseMoveEvent ".} =
-  type Cb = proc(super: QColorDialogmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseMoveEvent(QColorDialog(h: self), event)
+  var nimfunc = cast[ptr QColorDialogmouseMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_wheelEvent(self: QColorDialog, event: gen_qevent.QWheelEvent): void =
-
+  nimfunc[](slotval1)
+proc QColorDialogwheelEvent*(self: gen_qcolordialog_types.QColorDialog, event: gen_qevent.QWheelEvent): void =
 
   fQColorDialog_virtualbase_wheelEvent(self.h, event.h)
 
-type QColorDialogwheelEventBase* = proc(event: gen_qevent.QWheelEvent): void
-proc onwheelEvent*(self: QColorDialog, slot: proc(super: QColorDialogwheelEventBase, event: gen_qevent.QWheelEvent): void) =
+type QColorDialogwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
+proc onwheelEvent*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialogwheelEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QColorDialogwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var tmp = new Cb
+  var tmp = new QColorDialogwheelEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQColorDialog_override_virtual_wheelEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QColorDialog_wheelEvent(self: ptr cQColorDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QColorDialog_wheelEvent ".} =
-  type Cb = proc(super: QColorDialogwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QWheelEvent): auto =
-    callVirtualBase_wheelEvent(QColorDialog(h: self), event)
+  var nimfunc = cast[ptr QColorDialogwheelEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QWheelEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyReleaseEvent(self: QColorDialog, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QColorDialogkeyReleaseEvent*(self: gen_qcolordialog_types.QColorDialog, event: gen_qevent.QKeyEvent): void =
 
   fQColorDialog_virtualbase_keyReleaseEvent(self.h, event.h)
 
-type QColorDialogkeyReleaseEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyReleaseEvent*(self: QColorDialog, slot: proc(super: QColorDialogkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void) =
+type QColorDialogkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyReleaseEvent*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialogkeyReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QColorDialogkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QColorDialogkeyReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQColorDialog_override_virtual_keyReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QColorDialog_keyReleaseEvent(self: ptr cQColorDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QColorDialog_keyReleaseEvent ".} =
-  type Cb = proc(super: QColorDialogkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyReleaseEvent(QColorDialog(h: self), event)
+  var nimfunc = cast[ptr QColorDialogkeyReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusInEvent(self: QColorDialog, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QColorDialogfocusInEvent*(self: gen_qcolordialog_types.QColorDialog, event: gen_qevent.QFocusEvent): void =
 
   fQColorDialog_virtualbase_focusInEvent(self.h, event.h)
 
-type QColorDialogfocusInEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusInEvent*(self: QColorDialog, slot: proc(super: QColorDialogfocusInEventBase, event: gen_qevent.QFocusEvent): void) =
+type QColorDialogfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusInEvent*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialogfocusInEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QColorDialogfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QColorDialogfocusInEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQColorDialog_override_virtual_focusInEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QColorDialog_focusInEvent(self: ptr cQColorDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QColorDialog_focusInEvent ".} =
-  type Cb = proc(super: QColorDialogfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusInEvent(QColorDialog(h: self), event)
+  var nimfunc = cast[ptr QColorDialogfocusInEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusOutEvent(self: QColorDialog, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QColorDialogfocusOutEvent*(self: gen_qcolordialog_types.QColorDialog, event: gen_qevent.QFocusEvent): void =
 
   fQColorDialog_virtualbase_focusOutEvent(self.h, event.h)
 
-type QColorDialogfocusOutEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusOutEvent*(self: QColorDialog, slot: proc(super: QColorDialogfocusOutEventBase, event: gen_qevent.QFocusEvent): void) =
+type QColorDialogfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusOutEvent*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialogfocusOutEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QColorDialogfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QColorDialogfocusOutEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQColorDialog_override_virtual_focusOutEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QColorDialog_focusOutEvent(self: ptr cQColorDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QColorDialog_focusOutEvent ".} =
-  type Cb = proc(super: QColorDialogfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusOutEvent(QColorDialog(h: self), event)
+  var nimfunc = cast[ptr QColorDialogfocusOutEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_enterEvent(self: QColorDialog, event: gen_qevent.QEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QColorDialogenterEvent*(self: gen_qcolordialog_types.QColorDialog, event: gen_qevent.QEnterEvent): void =
 
   fQColorDialog_virtualbase_enterEvent(self.h, event.h)
 
-type QColorDialogenterEventBase* = proc(event: gen_qevent.QEnterEvent): void
-proc onenterEvent*(self: QColorDialog, slot: proc(super: QColorDialogenterEventBase, event: gen_qevent.QEnterEvent): void) =
+type QColorDialogenterEventProc* = proc(event: gen_qevent.QEnterEvent): void
+proc onenterEvent*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialogenterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QColorDialogenterEventBase, event: gen_qevent.QEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QColorDialogenterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQColorDialog_override_virtual_enterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QColorDialog_enterEvent(self: ptr cQColorDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QColorDialog_enterEvent ".} =
-  type Cb = proc(super: QColorDialogenterEventBase, event: gen_qevent.QEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QEnterEvent): auto =
-    callVirtualBase_enterEvent(QColorDialog(h: self), event)
+  var nimfunc = cast[ptr QColorDialogenterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_leaveEvent(self: QColorDialog, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QColorDialogleaveEvent*(self: gen_qcolordialog_types.QColorDialog, event: gen_qcoreevent.QEvent): void =
 
   fQColorDialog_virtualbase_leaveEvent(self.h, event.h)
 
-type QColorDialogleaveEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onleaveEvent*(self: QColorDialog, slot: proc(super: QColorDialogleaveEventBase, event: gen_qcoreevent.QEvent): void) =
+type QColorDialogleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onleaveEvent*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialogleaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QColorDialogleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QColorDialogleaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQColorDialog_override_virtual_leaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QColorDialog_leaveEvent(self: ptr cQColorDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QColorDialog_leaveEvent ".} =
-  type Cb = proc(super: QColorDialogleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_leaveEvent(QColorDialog(h: self), event)
+  var nimfunc = cast[ptr QColorDialogleaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_paintEvent(self: QColorDialog, event: gen_qevent.QPaintEvent): void =
-
+  nimfunc[](slotval1)
+proc QColorDialogpaintEvent*(self: gen_qcolordialog_types.QColorDialog, event: gen_qevent.QPaintEvent): void =
 
   fQColorDialog_virtualbase_paintEvent(self.h, event.h)
 
-type QColorDialogpaintEventBase* = proc(event: gen_qevent.QPaintEvent): void
-proc onpaintEvent*(self: QColorDialog, slot: proc(super: QColorDialogpaintEventBase, event: gen_qevent.QPaintEvent): void) =
+type QColorDialogpaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
+proc onpaintEvent*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialogpaintEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QColorDialogpaintEventBase, event: gen_qevent.QPaintEvent): void
-  var tmp = new Cb
+  var tmp = new QColorDialogpaintEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQColorDialog_override_virtual_paintEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QColorDialog_paintEvent(self: ptr cQColorDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QColorDialog_paintEvent ".} =
-  type Cb = proc(super: QColorDialogpaintEventBase, event: gen_qevent.QPaintEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QPaintEvent): auto =
-    callVirtualBase_paintEvent(QColorDialog(h: self), event)
+  var nimfunc = cast[ptr QColorDialogpaintEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QPaintEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_moveEvent(self: QColorDialog, event: gen_qevent.QMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QColorDialogmoveEvent*(self: gen_qcolordialog_types.QColorDialog, event: gen_qevent.QMoveEvent): void =
 
   fQColorDialog_virtualbase_moveEvent(self.h, event.h)
 
-type QColorDialogmoveEventBase* = proc(event: gen_qevent.QMoveEvent): void
-proc onmoveEvent*(self: QColorDialog, slot: proc(super: QColorDialogmoveEventBase, event: gen_qevent.QMoveEvent): void) =
+type QColorDialogmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
+proc onmoveEvent*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialogmoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QColorDialogmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QColorDialogmoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQColorDialog_override_virtual_moveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QColorDialog_moveEvent(self: ptr cQColorDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QColorDialog_moveEvent ".} =
-  type Cb = proc(super: QColorDialogmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMoveEvent): auto =
-    callVirtualBase_moveEvent(QColorDialog(h: self), event)
+  var nimfunc = cast[ptr QColorDialogmoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_tabletEvent(self: QColorDialog, event: gen_qevent.QTabletEvent): void =
-
+  nimfunc[](slotval1)
+proc QColorDialogtabletEvent*(self: gen_qcolordialog_types.QColorDialog, event: gen_qevent.QTabletEvent): void =
 
   fQColorDialog_virtualbase_tabletEvent(self.h, event.h)
 
-type QColorDialogtabletEventBase* = proc(event: gen_qevent.QTabletEvent): void
-proc ontabletEvent*(self: QColorDialog, slot: proc(super: QColorDialogtabletEventBase, event: gen_qevent.QTabletEvent): void) =
+type QColorDialogtabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
+proc ontabletEvent*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialogtabletEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QColorDialogtabletEventBase, event: gen_qevent.QTabletEvent): void
-  var tmp = new Cb
+  var tmp = new QColorDialogtabletEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQColorDialog_override_virtual_tabletEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QColorDialog_tabletEvent(self: ptr cQColorDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QColorDialog_tabletEvent ".} =
-  type Cb = proc(super: QColorDialogtabletEventBase, event: gen_qevent.QTabletEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QTabletEvent): auto =
-    callVirtualBase_tabletEvent(QColorDialog(h: self), event)
+  var nimfunc = cast[ptr QColorDialogtabletEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QTabletEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_actionEvent(self: QColorDialog, event: gen_qevent.QActionEvent): void =
-
+  nimfunc[](slotval1)
+proc QColorDialogactionEvent*(self: gen_qcolordialog_types.QColorDialog, event: gen_qevent.QActionEvent): void =
 
   fQColorDialog_virtualbase_actionEvent(self.h, event.h)
 
-type QColorDialogactionEventBase* = proc(event: gen_qevent.QActionEvent): void
-proc onactionEvent*(self: QColorDialog, slot: proc(super: QColorDialogactionEventBase, event: gen_qevent.QActionEvent): void) =
+type QColorDialogactionEventProc* = proc(event: gen_qevent.QActionEvent): void
+proc onactionEvent*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialogactionEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QColorDialogactionEventBase, event: gen_qevent.QActionEvent): void
-  var tmp = new Cb
+  var tmp = new QColorDialogactionEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQColorDialog_override_virtual_actionEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QColorDialog_actionEvent(self: ptr cQColorDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QColorDialog_actionEvent ".} =
-  type Cb = proc(super: QColorDialogactionEventBase, event: gen_qevent.QActionEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QActionEvent): auto =
-    callVirtualBase_actionEvent(QColorDialog(h: self), event)
+  var nimfunc = cast[ptr QColorDialogactionEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QActionEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragEnterEvent(self: QColorDialog, event: gen_qevent.QDragEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QColorDialogdragEnterEvent*(self: gen_qcolordialog_types.QColorDialog, event: gen_qevent.QDragEnterEvent): void =
 
   fQColorDialog_virtualbase_dragEnterEvent(self.h, event.h)
 
-type QColorDialogdragEnterEventBase* = proc(event: gen_qevent.QDragEnterEvent): void
-proc ondragEnterEvent*(self: QColorDialog, slot: proc(super: QColorDialogdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void) =
+type QColorDialogdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
+proc ondragEnterEvent*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialogdragEnterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QColorDialogdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QColorDialogdragEnterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQColorDialog_override_virtual_dragEnterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QColorDialog_dragEnterEvent(self: ptr cQColorDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QColorDialog_dragEnterEvent ".} =
-  type Cb = proc(super: QColorDialogdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragEnterEvent): auto =
-    callVirtualBase_dragEnterEvent(QColorDialog(h: self), event)
+  var nimfunc = cast[ptr QColorDialogdragEnterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragMoveEvent(self: QColorDialog, event: gen_qevent.QDragMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QColorDialogdragMoveEvent*(self: gen_qcolordialog_types.QColorDialog, event: gen_qevent.QDragMoveEvent): void =
 
   fQColorDialog_virtualbase_dragMoveEvent(self.h, event.h)
 
-type QColorDialogdragMoveEventBase* = proc(event: gen_qevent.QDragMoveEvent): void
-proc ondragMoveEvent*(self: QColorDialog, slot: proc(super: QColorDialogdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void) =
+type QColorDialogdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
+proc ondragMoveEvent*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialogdragMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QColorDialogdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QColorDialogdragMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQColorDialog_override_virtual_dragMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QColorDialog_dragMoveEvent(self: ptr cQColorDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QColorDialog_dragMoveEvent ".} =
-  type Cb = proc(super: QColorDialogdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragMoveEvent): auto =
-    callVirtualBase_dragMoveEvent(QColorDialog(h: self), event)
+  var nimfunc = cast[ptr QColorDialogdragMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragLeaveEvent(self: QColorDialog, event: gen_qevent.QDragLeaveEvent): void =
-
+  nimfunc[](slotval1)
+proc QColorDialogdragLeaveEvent*(self: gen_qcolordialog_types.QColorDialog, event: gen_qevent.QDragLeaveEvent): void =
 
   fQColorDialog_virtualbase_dragLeaveEvent(self.h, event.h)
 
-type QColorDialogdragLeaveEventBase* = proc(event: gen_qevent.QDragLeaveEvent): void
-proc ondragLeaveEvent*(self: QColorDialog, slot: proc(super: QColorDialogdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void) =
+type QColorDialogdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
+proc ondragLeaveEvent*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialogdragLeaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QColorDialogdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var tmp = new Cb
+  var tmp = new QColorDialogdragLeaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQColorDialog_override_virtual_dragLeaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QColorDialog_dragLeaveEvent(self: ptr cQColorDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QColorDialog_dragLeaveEvent ".} =
-  type Cb = proc(super: QColorDialogdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragLeaveEvent): auto =
-    callVirtualBase_dragLeaveEvent(QColorDialog(h: self), event)
+  var nimfunc = cast[ptr QColorDialogdragLeaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragLeaveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dropEvent(self: QColorDialog, event: gen_qevent.QDropEvent): void =
-
+  nimfunc[](slotval1)
+proc QColorDialogdropEvent*(self: gen_qcolordialog_types.QColorDialog, event: gen_qevent.QDropEvent): void =
 
   fQColorDialog_virtualbase_dropEvent(self.h, event.h)
 
-type QColorDialogdropEventBase* = proc(event: gen_qevent.QDropEvent): void
-proc ondropEvent*(self: QColorDialog, slot: proc(super: QColorDialogdropEventBase, event: gen_qevent.QDropEvent): void) =
+type QColorDialogdropEventProc* = proc(event: gen_qevent.QDropEvent): void
+proc ondropEvent*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialogdropEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QColorDialogdropEventBase, event: gen_qevent.QDropEvent): void
-  var tmp = new Cb
+  var tmp = new QColorDialogdropEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQColorDialog_override_virtual_dropEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QColorDialog_dropEvent(self: ptr cQColorDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QColorDialog_dropEvent ".} =
-  type Cb = proc(super: QColorDialogdropEventBase, event: gen_qevent.QDropEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDropEvent): auto =
-    callVirtualBase_dropEvent(QColorDialog(h: self), event)
+  var nimfunc = cast[ptr QColorDialogdropEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDropEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hideEvent(self: QColorDialog, event: gen_qevent.QHideEvent): void =
-
+  nimfunc[](slotval1)
+proc QColorDialoghideEvent*(self: gen_qcolordialog_types.QColorDialog, event: gen_qevent.QHideEvent): void =
 
   fQColorDialog_virtualbase_hideEvent(self.h, event.h)
 
-type QColorDialoghideEventBase* = proc(event: gen_qevent.QHideEvent): void
-proc onhideEvent*(self: QColorDialog, slot: proc(super: QColorDialoghideEventBase, event: gen_qevent.QHideEvent): void) =
+type QColorDialoghideEventProc* = proc(event: gen_qevent.QHideEvent): void
+proc onhideEvent*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialoghideEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QColorDialoghideEventBase, event: gen_qevent.QHideEvent): void
-  var tmp = new Cb
+  var tmp = new QColorDialoghideEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQColorDialog_override_virtual_hideEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QColorDialog_hideEvent(self: ptr cQColorDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QColorDialog_hideEvent ".} =
-  type Cb = proc(super: QColorDialoghideEventBase, event: gen_qevent.QHideEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QHideEvent): auto =
-    callVirtualBase_hideEvent(QColorDialog(h: self), event)
+  var nimfunc = cast[ptr QColorDialoghideEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QHideEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_nativeEvent(self: QColorDialog, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
-
+  nimfunc[](slotval1)
+proc QColorDialognativeEvent*(self: gen_qcolordialog_types.QColorDialog, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
 
   fQColorDialog_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
-type QColorDialognativeEventBase* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-proc onnativeEvent*(self: QColorDialog, slot: proc(super: QColorDialognativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool) =
+type QColorDialognativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
+proc onnativeEvent*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialognativeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QColorDialognativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-  var tmp = new Cb
+  var tmp = new QColorDialognativeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQColorDialog_override_virtual_nativeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QColorDialog_nativeEvent(self: ptr cQColorDialog, slot: int, eventType: struct_miqt_string, message: pointer, resultVal: ptr uint): bool {.exportc: "miqt_exec_callback_QColorDialog_nativeEvent ".} =
-  type Cb = proc(super: QColorDialognativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(eventType: seq[byte], message: pointer, resultVal: ptr uint): auto =
-    callVirtualBase_nativeEvent(QColorDialog(h: self), eventType, message, resultVal)
+  var nimfunc = cast[ptr QColorDialognativeEventProc](cast[pointer](slot))
   var veventType_bytearray = eventType
   var veventTypex_ret = @(toOpenArrayByte(veventType_bytearray.data, 0, int(veventType_bytearray.len)-1))
   c_free(veventType_bytearray.data)
@@ -1391,294 +1172,234 @@ proc miqt_exec_callback_QColorDialog_nativeEvent(self: ptr cQColorDialog, slot: 
   let slotval3 = resultVal
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_metric(self: QColorDialog, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint =
-
+proc QColorDialogmetric*(self: gen_qcolordialog_types.QColorDialog, param1: cint): cint =
 
   fQColorDialog_virtualbase_metric(self.h, cint(param1))
 
-type QColorDialogmetricBase* = proc(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-proc onmetric*(self: QColorDialog, slot: proc(super: QColorDialogmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint) =
+type QColorDialogmetricProc* = proc(param1: cint): cint
+proc onmetric*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialogmetricProc) =
   # TODO check subclass
-  type Cb = proc(super: QColorDialogmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var tmp = new Cb
+  var tmp = new QColorDialogmetricProc
   tmp[] = slot
   GC_ref(tmp)
   fcQColorDialog_override_virtual_metric(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QColorDialog_metric(self: ptr cQColorDialog, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QColorDialog_metric ".} =
-  type Cb = proc(super: QColorDialogmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): auto =
-    callVirtualBase_metric(QColorDialog(h: self), param1)
-  let slotval1 = gen_qpaintdevice.QPaintDevicePaintDeviceMetric(param1)
+  var nimfunc = cast[ptr QColorDialogmetricProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_initPainter(self: QColorDialog, painter: gen_qpainter.QPainter): void =
-
+proc QColorDialoginitPainter*(self: gen_qcolordialog_types.QColorDialog, painter: gen_qpainter.QPainter): void =
 
   fQColorDialog_virtualbase_initPainter(self.h, painter.h)
 
-type QColorDialoginitPainterBase* = proc(painter: gen_qpainter.QPainter): void
-proc oninitPainter*(self: QColorDialog, slot: proc(super: QColorDialoginitPainterBase, painter: gen_qpainter.QPainter): void) =
+type QColorDialoginitPainterProc* = proc(painter: gen_qpainter.QPainter): void
+proc oninitPainter*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialoginitPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QColorDialoginitPainterBase, painter: gen_qpainter.QPainter): void
-  var tmp = new Cb
+  var tmp = new QColorDialoginitPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQColorDialog_override_virtual_initPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QColorDialog_initPainter(self: ptr cQColorDialog, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_QColorDialog_initPainter ".} =
-  type Cb = proc(super: QColorDialoginitPainterBase, painter: gen_qpainter.QPainter): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter): auto =
-    callVirtualBase_initPainter(QColorDialog(h: self), painter)
+  var nimfunc = cast[ptr QColorDialoginitPainterProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_redirected(self: QColorDialog, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
+  nimfunc[](slotval1)
+proc QColorDialogredirected*(self: gen_qcolordialog_types.QColorDialog, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
 
   gen_qpaintdevice.QPaintDevice(h: fQColorDialog_virtualbase_redirected(self.h, offset.h))
 
-type QColorDialogredirectedBase* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-proc onredirected*(self: QColorDialog, slot: proc(super: QColorDialogredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice) =
+type QColorDialogredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
+proc onredirected*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialogredirectedProc) =
   # TODO check subclass
-  type Cb = proc(super: QColorDialogredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var tmp = new Cb
+  var tmp = new QColorDialogredirectedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQColorDialog_override_virtual_redirected(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QColorDialog_redirected(self: ptr cQColorDialog, slot: int, offset: pointer): pointer {.exportc: "miqt_exec_callback_QColorDialog_redirected ".} =
-  type Cb = proc(super: QColorDialogredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(offset: gen_qpoint.QPoint): auto =
-    callVirtualBase_redirected(QColorDialog(h: self), offset)
+  var nimfunc = cast[ptr QColorDialogredirectedProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: offset)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_sharedPainter(self: QColorDialog, ): gen_qpainter.QPainter =
-
+proc QColorDialogsharedPainter*(self: gen_qcolordialog_types.QColorDialog, ): gen_qpainter.QPainter =
 
   gen_qpainter.QPainter(h: fQColorDialog_virtualbase_sharedPainter(self.h))
 
-type QColorDialogsharedPainterBase* = proc(): gen_qpainter.QPainter
-proc onsharedPainter*(self: QColorDialog, slot: proc(super: QColorDialogsharedPainterBase): gen_qpainter.QPainter) =
+type QColorDialogsharedPainterProc* = proc(): gen_qpainter.QPainter
+proc onsharedPainter*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialogsharedPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QColorDialogsharedPainterBase): gen_qpainter.QPainter
-  var tmp = new Cb
+  var tmp = new QColorDialogsharedPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQColorDialog_override_virtual_sharedPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QColorDialog_sharedPainter(self: ptr cQColorDialog, slot: int): pointer {.exportc: "miqt_exec_callback_QColorDialog_sharedPainter ".} =
-  type Cb = proc(super: QColorDialogsharedPainterBase): gen_qpainter.QPainter
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sharedPainter(QColorDialog(h: self), )
+  var nimfunc = cast[ptr QColorDialogsharedPainterProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_inputMethodEvent(self: QColorDialog, param1: gen_qevent.QInputMethodEvent): void =
-
+proc QColorDialoginputMethodEvent*(self: gen_qcolordialog_types.QColorDialog, param1: gen_qevent.QInputMethodEvent): void =
 
   fQColorDialog_virtualbase_inputMethodEvent(self.h, param1.h)
 
-type QColorDialoginputMethodEventBase* = proc(param1: gen_qevent.QInputMethodEvent): void
-proc oninputMethodEvent*(self: QColorDialog, slot: proc(super: QColorDialoginputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void) =
+type QColorDialoginputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
+proc oninputMethodEvent*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialoginputMethodEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QColorDialoginputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var tmp = new Cb
+  var tmp = new QColorDialoginputMethodEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQColorDialog_override_virtual_inputMethodEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QColorDialog_inputMethodEvent(self: ptr cQColorDialog, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QColorDialog_inputMethodEvent ".} =
-  type Cb = proc(super: QColorDialoginputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QInputMethodEvent): auto =
-    callVirtualBase_inputMethodEvent(QColorDialog(h: self), param1)
+  var nimfunc = cast[ptr QColorDialoginputMethodEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QInputMethodEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_inputMethodQuery(self: QColorDialog, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant =
-
+  nimfunc[](slotval1)
+proc QColorDialoginputMethodQuery*(self: gen_qcolordialog_types.QColorDialog, param1: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQColorDialog_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
-type QColorDialoginputMethodQueryBase* = proc(param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-proc oninputMethodQuery*(self: QColorDialog, slot: proc(super: QColorDialoginputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant) =
+type QColorDialoginputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
+proc oninputMethodQuery*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialoginputMethodQueryProc) =
   # TODO check subclass
-  type Cb = proc(super: QColorDialoginputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QColorDialoginputMethodQueryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQColorDialog_override_virtual_inputMethodQuery(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QColorDialog_inputMethodQuery(self: ptr cQColorDialog, slot: int, param1: cint): pointer {.exportc: "miqt_exec_callback_QColorDialog_inputMethodQuery ".} =
-  type Cb = proc(super: QColorDialoginputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qnamespace.InputMethodQuery): auto =
-    callVirtualBase_inputMethodQuery(QColorDialog(h: self), param1)
-  let slotval1 = gen_qnamespace.InputMethodQuery(param1)
+  var nimfunc = cast[ptr QColorDialoginputMethodQueryProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_focusNextPrevChild(self: QColorDialog, next: bool): bool =
-
+proc QColorDialogfocusNextPrevChild*(self: gen_qcolordialog_types.QColorDialog, next: bool): bool =
 
   fQColorDialog_virtualbase_focusNextPrevChild(self.h, next)
 
-type QColorDialogfocusNextPrevChildBase* = proc(next: bool): bool
-proc onfocusNextPrevChild*(self: QColorDialog, slot: proc(super: QColorDialogfocusNextPrevChildBase, next: bool): bool) =
+type QColorDialogfocusNextPrevChildProc* = proc(next: bool): bool
+proc onfocusNextPrevChild*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialogfocusNextPrevChildProc) =
   # TODO check subclass
-  type Cb = proc(super: QColorDialogfocusNextPrevChildBase, next: bool): bool
-  var tmp = new Cb
+  var tmp = new QColorDialogfocusNextPrevChildProc
   tmp[] = slot
   GC_ref(tmp)
   fcQColorDialog_override_virtual_focusNextPrevChild(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QColorDialog_focusNextPrevChild(self: ptr cQColorDialog, slot: int, next: bool): bool {.exportc: "miqt_exec_callback_QColorDialog_focusNextPrevChild ".} =
-  type Cb = proc(super: QColorDialogfocusNextPrevChildBase, next: bool): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(next: bool): auto =
-    callVirtualBase_focusNextPrevChild(QColorDialog(h: self), next)
+  var nimfunc = cast[ptr QColorDialogfocusNextPrevChildProc](cast[pointer](slot))
   let slotval1 = next
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QColorDialog, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QColorDialogtimerEvent*(self: gen_qcolordialog_types.QColorDialog, event: gen_qcoreevent.QTimerEvent): void =
 
   fQColorDialog_virtualbase_timerEvent(self.h, event.h)
 
-type QColorDialogtimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QColorDialog, slot: proc(super: QColorDialogtimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QColorDialogtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialogtimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QColorDialogtimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QColorDialogtimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQColorDialog_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QColorDialog_timerEvent(self: ptr cQColorDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QColorDialog_timerEvent ".} =
-  type Cb = proc(super: QColorDialogtimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QColorDialog(h: self), event)
+  var nimfunc = cast[ptr QColorDialogtimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QColorDialog, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QColorDialogchildEvent*(self: gen_qcolordialog_types.QColorDialog, event: gen_qcoreevent.QChildEvent): void =
 
   fQColorDialog_virtualbase_childEvent(self.h, event.h)
 
-type QColorDialogchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QColorDialog, slot: proc(super: QColorDialogchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QColorDialogchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialogchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QColorDialogchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QColorDialogchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQColorDialog_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QColorDialog_childEvent(self: ptr cQColorDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QColorDialog_childEvent ".} =
-  type Cb = proc(super: QColorDialogchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QColorDialog(h: self), event)
+  var nimfunc = cast[ptr QColorDialogchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QColorDialog, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QColorDialogcustomEvent*(self: gen_qcolordialog_types.QColorDialog, event: gen_qcoreevent.QEvent): void =
 
   fQColorDialog_virtualbase_customEvent(self.h, event.h)
 
-type QColorDialogcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QColorDialog, slot: proc(super: QColorDialogcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QColorDialogcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialogcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QColorDialogcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QColorDialogcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQColorDialog_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QColorDialog_customEvent(self: ptr cQColorDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QColorDialog_customEvent ".} =
-  type Cb = proc(super: QColorDialogcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QColorDialog(h: self), event)
+  var nimfunc = cast[ptr QColorDialogcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QColorDialog, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QColorDialogconnectNotify*(self: gen_qcolordialog_types.QColorDialog, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQColorDialog_virtualbase_connectNotify(self.h, signal.h)
 
-type QColorDialogconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QColorDialog, slot: proc(super: QColorDialogconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QColorDialogconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialogconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QColorDialogconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QColorDialogconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQColorDialog_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QColorDialog_connectNotify(self: ptr cQColorDialog, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QColorDialog_connectNotify ".} =
-  type Cb = proc(super: QColorDialogconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QColorDialog(h: self), signal)
+  var nimfunc = cast[ptr QColorDialogconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QColorDialog, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QColorDialogdisconnectNotify*(self: gen_qcolordialog_types.QColorDialog, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQColorDialog_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QColorDialogdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QColorDialog, slot: proc(super: QColorDialogdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QColorDialogdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialogdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QColorDialogdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QColorDialogdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQColorDialog_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QColorDialog_disconnectNotify(self: ptr cQColorDialog, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QColorDialog_disconnectNotify ".} =
-  type Cb = proc(super: QColorDialogdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QColorDialog(h: self), signal)
+  var nimfunc = cast[ptr QColorDialogdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QColorDialog): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qcolordialog_types.QColorDialog): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQColorDialog_staticMetaObject())
-proc delete*(self: QColorDialog) =
+proc delete*(self: gen_qcolordialog_types.QColorDialog) =
   fcQColorDialog_delete(self.h)

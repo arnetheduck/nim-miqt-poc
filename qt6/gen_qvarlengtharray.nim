@@ -45,17 +45,17 @@ proc fcQVLABaseBase_size(self: pointer, ): int64 {.importc: "QVLABaseBase_size".
 proc fcQVLABaseBase_empty(self: pointer, ): bool {.importc: "QVLABaseBase_empty".}
 
 
-func init*(T: type QVLABaseBase, h: ptr cQVLABaseBase): QVLABaseBase =
+func init*(T: type gen_qvarlengtharray_types.QVLABaseBase, h: ptr cQVLABaseBase): gen_qvarlengtharray_types.QVLABaseBase =
   T(h: h)
-proc capacity*(self: QVLABaseBase, ): int64 =
+proc capacity*(self: gen_qvarlengtharray_types.QVLABaseBase, ): int64 =
 
   fcQVLABaseBase_capacity(self.h)
 
-proc size*(self: QVLABaseBase, ): int64 =
+proc size*(self: gen_qvarlengtharray_types.QVLABaseBase, ): int64 =
 
   fcQVLABaseBase_size(self.h)
 
-proc empty*(self: QVLABaseBase, ): bool =
+proc empty*(self: gen_qvarlengtharray_types.QVLABaseBase, ): bool =
 
   fcQVLABaseBase_empty(self.h)
 

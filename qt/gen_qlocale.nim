@@ -34,882 +34,862 @@ const cflags = gorge("pkg-config -cflags Qt5Widgets")
 {.compile("gen_qlocale.cpp", cflags).}
 
 
-type QLocaleLanguage* = cint
-const
-  QLocaleAnyLanguage* = 0
-  QLocaleC* = 1
-  QLocaleAbkhazian* = 2
-  QLocaleOromo* = 3
-  QLocaleAfar* = 4
-  QLocaleAfrikaans* = 5
-  QLocaleAlbanian* = 6
-  QLocaleAmharic* = 7
-  QLocaleArabic* = 8
-  QLocaleArmenian* = 9
-  QLocaleAssamese* = 10
-  QLocaleAymara* = 11
-  QLocaleAzerbaijani* = 12
-  QLocaleBashkir* = 13
-  QLocaleBasque* = 14
-  QLocaleBengali* = 15
-  QLocaleDzongkha* = 16
-  QLocaleBihari* = 17
-  QLocaleBislama* = 18
-  QLocaleBreton* = 19
-  QLocaleBulgarian* = 20
-  QLocaleBurmese* = 21
-  QLocaleBelarusian* = 22
-  QLocaleKhmer* = 23
-  QLocaleCatalan* = 24
-  QLocaleChinese* = 25
-  QLocaleCorsican* = 26
-  QLocaleCroatian* = 27
-  QLocaleCzech* = 28
-  QLocaleDanish* = 29
-  QLocaleDutch* = 30
-  QLocaleEnglish* = 31
-  QLocaleEsperanto* = 32
-  QLocaleEstonian* = 33
-  QLocaleFaroese* = 34
-  QLocaleFijian* = 35
-  QLocaleFinnish* = 36
-  QLocaleFrench* = 37
-  QLocaleWesternFrisian* = 38
-  QLocaleGaelic* = 39
-  QLocaleGalician* = 40
-  QLocaleGeorgian* = 41
-  QLocaleGerman* = 42
-  QLocaleGreek* = 43
-  QLocaleGreenlandic* = 44
-  QLocaleGuarani* = 45
-  QLocaleGujarati* = 46
-  QLocaleHausa* = 47
-  QLocaleHebrew* = 48
-  QLocaleHindi* = 49
-  QLocaleHungarian* = 50
-  QLocaleIcelandic* = 51
-  QLocaleIndonesian* = 52
-  QLocaleInterlingua* = 53
-  QLocaleInterlingue* = 54
-  QLocaleInuktitut* = 55
-  QLocaleInupiak* = 56
-  QLocaleIrish* = 57
-  QLocaleItalian* = 58
-  QLocaleJapanese* = 59
-  QLocaleJavanese* = 60
-  QLocaleKannada* = 61
-  QLocaleKashmiri* = 62
-  QLocaleKazakh* = 63
-  QLocaleKinyarwanda* = 64
-  QLocaleKirghiz* = 65
-  QLocaleKorean* = 66
-  QLocaleKurdish* = 67
-  QLocaleRundi* = 68
-  QLocaleLao* = 69
-  QLocaleLatin* = 70
-  QLocaleLatvian* = 71
-  QLocaleLingala* = 72
-  QLocaleLithuanian* = 73
-  QLocaleMacedonian* = 74
-  QLocaleMalagasy* = 75
-  QLocaleMalay* = 76
-  QLocaleMalayalam* = 77
-  QLocaleMaltese* = 78
-  QLocaleMaori* = 79
-  QLocaleMarathi* = 80
-  QLocaleMarshallese* = 81
-  QLocaleMongolian* = 82
-  QLocaleNauruLanguage* = 83
-  QLocaleNepali* = 84
-  QLocaleNorwegianBokmal* = 85
-  QLocaleOccitan* = 86
-  QLocaleOriya* = 87
-  QLocalePashto* = 88
-  QLocalePersian* = 89
-  QLocalePolish* = 90
-  QLocalePortuguese* = 91
-  QLocalePunjabi* = 92
-  QLocaleQuechua* = 93
-  QLocaleRomansh* = 94
-  QLocaleRomanian* = 95
-  QLocaleRussian* = 96
-  QLocaleSamoan* = 97
-  QLocaleSango* = 98
-  QLocaleSanskrit* = 99
-  QLocaleSerbian* = 100
-  QLocaleOssetic* = 101
-  QLocaleSouthernSotho* = 102
-  QLocaleTswana* = 103
-  QLocaleShona* = 104
-  QLocaleSindhi* = 105
-  QLocaleSinhala* = 106
-  QLocaleSwati* = 107
-  QLocaleSlovak* = 108
-  QLocaleSlovenian* = 109
-  QLocaleSomali* = 110
-  QLocaleSpanish* = 111
-  QLocaleSundanese* = 112
-  QLocaleSwahili* = 113
-  QLocaleSwedish* = 114
-  QLocaleSardinian* = 115
-  QLocaleTajik* = 116
-  QLocaleTamil* = 117
-  QLocaleTatar* = 118
-  QLocaleTelugu* = 119
-  QLocaleThai* = 120
-  QLocaleTibetan* = 121
-  QLocaleTigrinya* = 122
-  QLocaleTongan* = 123
-  QLocaleTsonga* = 124
-  QLocaleTurkish* = 125
-  QLocaleTurkmen* = 126
-  QLocaleTahitian* = 127
-  QLocaleUighur* = 128
-  QLocaleUkrainian* = 129
-  QLocaleUrdu* = 130
-  QLocaleUzbek* = 131
-  QLocaleVietnamese* = 132
-  QLocaleVolapuk* = 133
-  QLocaleWelsh* = 134
-  QLocaleWolof* = 135
-  QLocaleXhosa* = 136
-  QLocaleYiddish* = 137
-  QLocaleYoruba* = 138
-  QLocaleZhuang* = 139
-  QLocaleZulu* = 140
-  QLocaleNorwegianNynorsk* = 141
-  QLocaleBosnian* = 142
-  QLocaleDivehi* = 143
-  QLocaleManx* = 144
-  QLocaleCornish* = 145
-  QLocaleAkan* = 146
-  QLocaleKonkani* = 147
-  QLocaleGa* = 148
-  QLocaleIgbo* = 149
-  QLocaleKamba* = 150
-  QLocaleSyriac* = 151
-  QLocaleBlin* = 152
-  QLocaleGeez* = 153
-  QLocaleKoro* = 154
-  QLocaleSidamo* = 155
-  QLocaleAtsam* = 156
-  QLocaleTigre* = 157
-  QLocaleJju* = 158
-  QLocaleFriulian* = 159
-  QLocaleVenda* = 160
-  QLocaleEwe* = 161
-  QLocaleWalamo* = 162
-  QLocaleHawaiian* = 163
-  QLocaleTyap* = 164
-  QLocaleNyanja* = 165
-  QLocaleFilipino* = 166
-  QLocaleSwissGerman* = 167
-  QLocaleSichuanYi* = 168
-  QLocaleKpelle* = 169
-  QLocaleLowGerman* = 170
-  QLocaleSouthNdebele* = 171
-  QLocaleNorthernSotho* = 172
-  QLocaleNorthernSami* = 173
-  QLocaleTaroko* = 174
-  QLocaleGusii* = 175
-  QLocaleTaita* = 176
-  QLocaleFulah* = 177
-  QLocaleKikuyu* = 178
-  QLocaleSamburu* = 179
-  QLocaleSena* = 180
-  QLocaleNorthNdebele* = 181
-  QLocaleRombo* = 182
-  QLocaleTachelhit* = 183
-  QLocaleKabyle* = 184
-  QLocaleNyankole* = 185
-  QLocaleBena* = 186
-  QLocaleVunjo* = 187
-  QLocaleBambara* = 188
-  QLocaleEmbu* = 189
-  QLocaleCherokee* = 190
-  QLocaleMorisyen* = 191
-  QLocaleMakonde* = 192
-  QLocaleLangi* = 193
-  QLocaleGanda* = 194
-  QLocaleBemba* = 195
-  QLocaleKabuverdianu* = 196
-  QLocaleMeru* = 197
-  QLocaleKalenjin* = 198
-  QLocaleNama* = 199
-  QLocaleMachame* = 200
-  QLocaleColognian* = 201
-  QLocaleMasai* = 202
-  QLocaleSoga* = 203
-  QLocaleLuyia* = 204
-  QLocaleAsu* = 205
-  QLocaleTeso* = 206
-  QLocaleSaho* = 207
-  QLocaleKoyraChiini* = 208
-  QLocaleRwa* = 209
-  QLocaleLuo* = 210
-  QLocaleChiga* = 211
-  QLocaleCentralMoroccoTamazight* = 212
-  QLocaleKoyraboroSenni* = 213
-  QLocaleShambala* = 214
-  QLocaleBodo* = 215
-  QLocaleAvaric* = 216
-  QLocaleChamorro* = 217
-  QLocaleChechen* = 218
-  QLocaleChurch* = 219
-  QLocaleChuvash* = 220
-  QLocaleCree* = 221
-  QLocaleHaitian* = 222
-  QLocaleHerero* = 223
-  QLocaleHiriMotu* = 224
-  QLocaleKanuri* = 225
-  QLocaleKomi* = 226
-  QLocaleKongo* = 227
-  QLocaleKwanyama* = 228
-  QLocaleLimburgish* = 229
-  QLocaleLubaKatanga* = 230
-  QLocaleLuxembourgish* = 231
-  QLocaleNavaho* = 232
-  QLocaleNdonga* = 233
-  QLocaleOjibwa* = 234
-  QLocalePali* = 235
-  QLocaleWalloon* = 236
-  QLocaleAghem* = 237
-  QLocaleBasaa* = 238
-  QLocaleZarma* = 239
-  QLocaleDuala* = 240
-  QLocaleJolaFonyi* = 241
-  QLocaleEwondo* = 242
-  QLocaleBafia* = 243
-  QLocaleMakhuwaMeetto* = 244
-  QLocaleMundang* = 245
-  QLocaleKwasio* = 246
-  QLocaleNuer* = 247
-  QLocaleSakha* = 248
-  QLocaleSangu* = 249
-  QLocaleCongoSwahili* = 250
-  QLocaleTasawaq* = 251
-  QLocaleVai* = 252
-  QLocaleWalser* = 253
-  QLocaleYangben* = 254
-  QLocaleAvestan* = 255
-  QLocaleAsturian* = 256
-  QLocaleNgomba* = 257
-  QLocaleKako* = 258
-  QLocaleMeta* = 259
-  QLocaleNgiemboon* = 260
-  QLocaleAragonese* = 261
-  QLocaleAkkadian* = 262
-  QLocaleAncientEgyptian* = 263
-  QLocaleAncientGreek* = 264
-  QLocaleAramaic* = 265
-  QLocaleBalinese* = 266
-  QLocaleBamun* = 267
-  QLocaleBatakToba* = 268
-  QLocaleBuginese* = 269
-  QLocaleBuhid* = 270
-  QLocaleCarian* = 271
-  QLocaleChakma* = 272
-  QLocaleClassicalMandaic* = 273
-  QLocaleCoptic* = 274
-  QLocaleDogri* = 275
-  QLocaleEasternCham* = 276
-  QLocaleEasternKayah* = 277
-  QLocaleEtruscan* = 278
-  QLocaleGothic* = 279
-  QLocaleHanunoo* = 280
-  QLocaleIngush* = 281
-  QLocaleLargeFloweryMiao* = 282
-  QLocaleLepcha* = 283
-  QLocaleLimbu* = 284
-  QLocaleLisu* = 285
-  QLocaleLu* = 286
-  QLocaleLycian* = 287
-  QLocaleLydian* = 288
-  QLocaleMandingo* = 289
-  QLocaleManipuri* = 290
-  QLocaleMeroitic* = 291
-  QLocaleNorthernThai* = 292
-  QLocaleOldIrish* = 293
-  QLocaleOldNorse* = 294
-  QLocaleOldPersian* = 295
-  QLocaleOldTurkish* = 296
-  QLocalePahlavi* = 297
-  QLocaleParthian* = 298
-  QLocalePhoenician* = 299
-  QLocalePrakritLanguage* = 300
-  QLocaleRejang* = 301
-  QLocaleSabaean* = 302
-  QLocaleSamaritan* = 303
-  QLocaleSantali* = 304
-  QLocaleSaurashtra* = 305
-  QLocaleSora* = 306
-  QLocaleSylheti* = 307
-  QLocaleTagbanwa* = 308
-  QLocaleTaiDam* = 309
-  QLocaleTaiNua* = 310
-  QLocaleUgaritic* = 311
-  QLocaleAkoose* = 312
-  QLocaleLakota* = 313
-  QLocaleStandardMoroccanTamazight* = 314
-  QLocaleMapuche* = 315
-  QLocaleCentralKurdish* = 316
-  QLocaleLowerSorbian* = 317
-  QLocaleUpperSorbian* = 318
-  QLocaleKenyang* = 319
-  QLocaleMohawk* = 320
-  QLocaleNko* = 321
-  QLocalePrussian* = 322
-  QLocaleKiche* = 323
-  QLocaleSouthernSami* = 324
-  QLocaleLuleSami* = 325
-  QLocaleInariSami* = 326
-  QLocaleSkoltSami* = 327
-  QLocaleWarlpiri* = 328
-  QLocaleManichaeanMiddlePersian* = 329
-  QLocaleMende* = 330
-  QLocaleAncientNorthArabian* = 331
-  QLocaleLinearA* = 332
-  QLocaleHmongNjua* = 333
-  QLocaleHo* = 334
-  QLocaleLezghian* = 335
-  QLocaleBassa* = 336
-  QLocaleMono* = 337
-  QLocaleTedimChin* = 338
-  QLocaleMaithili* = 339
-  QLocaleAhom* = 340
-  QLocaleAmericanSignLanguage* = 341
-  QLocaleArdhamagadhiPrakrit* = 342
-  QLocaleBhojpuri* = 343
-  QLocaleHieroglyphicLuwian* = 344
-  QLocaleLiteraryChinese* = 345
-  QLocaleMazanderani* = 346
-  QLocaleMru* = 347
-  QLocaleNewari* = 348
-  QLocaleNorthernLuri* = 349
-  QLocalePalauan* = 350
-  QLocalePapiamento* = 351
-  QLocaleSaraiki* = 352
-  QLocaleTokelauLanguage* = 353
-  QLocaleTokPisin* = 354
-  QLocaleTuvaluLanguage* = 355
-  QLocaleUncodedLanguages* = 356
-  QLocaleCantonese* = 357
-  QLocaleOsage* = 358
-  QLocaleTangut* = 359
-  QLocaleIdo* = 360
-  QLocaleLojban* = 361
-  QLocaleSicilian* = 362
-  QLocaleSouthernKurdish* = 363
-  QLocaleWesternBalochi* = 364
-  QLocaleCebuano* = 365
-  QLocaleErzya* = 366
-  QLocaleChickasaw* = 367
-  QLocaleMuscogee* = 368
-  QLocaleSilesian* = 369
-  QLocaleNigerianPidgin* = 370
-  QLocaleAfan* = 3
-  QLocaleBhutani* = 16
-  QLocaleByelorussian* = 22
-  QLocaleCambodian* = 23
-  QLocaleChewa* = 165
-  QLocaleFrisian* = 38
-  QLocaleKurundi* = 68
-  QLocaleMoldavian* = 95
-  QLocaleNorwegian* = 85
-  QLocaleRhaetoRomance* = 94
-  QLocaleSerboCroatian* = 100
-  QLocaleTagalog* = 166
-  QLocaleTwi* = 146
-  QLocaleUigur* = 128
-  QLocaleLastLanguage* = 370
+type QLocaleLanguageEnum* = distinct cint
+template AnyLanguage*(_: type QLocaleLanguageEnum): untyped = 0
+template C*(_: type QLocaleLanguageEnum): untyped = 1
+template Abkhazian*(_: type QLocaleLanguageEnum): untyped = 2
+template Oromo*(_: type QLocaleLanguageEnum): untyped = 3
+template Afar*(_: type QLocaleLanguageEnum): untyped = 4
+template Afrikaans*(_: type QLocaleLanguageEnum): untyped = 5
+template Albanian*(_: type QLocaleLanguageEnum): untyped = 6
+template Amharic*(_: type QLocaleLanguageEnum): untyped = 7
+template Arabic*(_: type QLocaleLanguageEnum): untyped = 8
+template Armenian*(_: type QLocaleLanguageEnum): untyped = 9
+template Assamese*(_: type QLocaleLanguageEnum): untyped = 10
+template Aymara*(_: type QLocaleLanguageEnum): untyped = 11
+template Azerbaijani*(_: type QLocaleLanguageEnum): untyped = 12
+template Bashkir*(_: type QLocaleLanguageEnum): untyped = 13
+template Basque*(_: type QLocaleLanguageEnum): untyped = 14
+template Bengali*(_: type QLocaleLanguageEnum): untyped = 15
+template Dzongkha*(_: type QLocaleLanguageEnum): untyped = 16
+template Bihari*(_: type QLocaleLanguageEnum): untyped = 17
+template Bislama*(_: type QLocaleLanguageEnum): untyped = 18
+template Breton*(_: type QLocaleLanguageEnum): untyped = 19
+template Bulgarian*(_: type QLocaleLanguageEnum): untyped = 20
+template Burmese*(_: type QLocaleLanguageEnum): untyped = 21
+template Belarusian*(_: type QLocaleLanguageEnum): untyped = 22
+template Khmer*(_: type QLocaleLanguageEnum): untyped = 23
+template Catalan*(_: type QLocaleLanguageEnum): untyped = 24
+template Chinese*(_: type QLocaleLanguageEnum): untyped = 25
+template Corsican*(_: type QLocaleLanguageEnum): untyped = 26
+template Croatian*(_: type QLocaleLanguageEnum): untyped = 27
+template Czech*(_: type QLocaleLanguageEnum): untyped = 28
+template Danish*(_: type QLocaleLanguageEnum): untyped = 29
+template Dutch*(_: type QLocaleLanguageEnum): untyped = 30
+template English*(_: type QLocaleLanguageEnum): untyped = 31
+template Esperanto*(_: type QLocaleLanguageEnum): untyped = 32
+template Estonian*(_: type QLocaleLanguageEnum): untyped = 33
+template Faroese*(_: type QLocaleLanguageEnum): untyped = 34
+template Fijian*(_: type QLocaleLanguageEnum): untyped = 35
+template Finnish*(_: type QLocaleLanguageEnum): untyped = 36
+template French*(_: type QLocaleLanguageEnum): untyped = 37
+template WesternFrisian*(_: type QLocaleLanguageEnum): untyped = 38
+template Gaelic*(_: type QLocaleLanguageEnum): untyped = 39
+template Galician*(_: type QLocaleLanguageEnum): untyped = 40
+template Georgian*(_: type QLocaleLanguageEnum): untyped = 41
+template German*(_: type QLocaleLanguageEnum): untyped = 42
+template Greek*(_: type QLocaleLanguageEnum): untyped = 43
+template Greenlandic*(_: type QLocaleLanguageEnum): untyped = 44
+template Guarani*(_: type QLocaleLanguageEnum): untyped = 45
+template Gujarati*(_: type QLocaleLanguageEnum): untyped = 46
+template Hausa*(_: type QLocaleLanguageEnum): untyped = 47
+template Hebrew*(_: type QLocaleLanguageEnum): untyped = 48
+template Hindi*(_: type QLocaleLanguageEnum): untyped = 49
+template Hungarian*(_: type QLocaleLanguageEnum): untyped = 50
+template Icelandic*(_: type QLocaleLanguageEnum): untyped = 51
+template Indonesian*(_: type QLocaleLanguageEnum): untyped = 52
+template Interlingua*(_: type QLocaleLanguageEnum): untyped = 53
+template Interlingue*(_: type QLocaleLanguageEnum): untyped = 54
+template Inuktitut*(_: type QLocaleLanguageEnum): untyped = 55
+template Inupiak*(_: type QLocaleLanguageEnum): untyped = 56
+template Irish*(_: type QLocaleLanguageEnum): untyped = 57
+template Italian*(_: type QLocaleLanguageEnum): untyped = 58
+template Japanese*(_: type QLocaleLanguageEnum): untyped = 59
+template Javanese*(_: type QLocaleLanguageEnum): untyped = 60
+template Kannada*(_: type QLocaleLanguageEnum): untyped = 61
+template Kashmiri*(_: type QLocaleLanguageEnum): untyped = 62
+template Kazakh*(_: type QLocaleLanguageEnum): untyped = 63
+template Kinyarwanda*(_: type QLocaleLanguageEnum): untyped = 64
+template Kirghiz*(_: type QLocaleLanguageEnum): untyped = 65
+template Korean*(_: type QLocaleLanguageEnum): untyped = 66
+template Kurdish*(_: type QLocaleLanguageEnum): untyped = 67
+template Rundi*(_: type QLocaleLanguageEnum): untyped = 68
+template Lao*(_: type QLocaleLanguageEnum): untyped = 69
+template Latin*(_: type QLocaleLanguageEnum): untyped = 70
+template Latvian*(_: type QLocaleLanguageEnum): untyped = 71
+template Lingala*(_: type QLocaleLanguageEnum): untyped = 72
+template Lithuanian*(_: type QLocaleLanguageEnum): untyped = 73
+template Macedonian*(_: type QLocaleLanguageEnum): untyped = 74
+template Malagasy*(_: type QLocaleLanguageEnum): untyped = 75
+template Malay*(_: type QLocaleLanguageEnum): untyped = 76
+template Malayalam*(_: type QLocaleLanguageEnum): untyped = 77
+template Maltese*(_: type QLocaleLanguageEnum): untyped = 78
+template Maori*(_: type QLocaleLanguageEnum): untyped = 79
+template Marathi*(_: type QLocaleLanguageEnum): untyped = 80
+template Marshallese*(_: type QLocaleLanguageEnum): untyped = 81
+template Mongolian*(_: type QLocaleLanguageEnum): untyped = 82
+template NauruLanguage*(_: type QLocaleLanguageEnum): untyped = 83
+template Nepali*(_: type QLocaleLanguageEnum): untyped = 84
+template NorwegianBokmal*(_: type QLocaleLanguageEnum): untyped = 85
+template Occitan*(_: type QLocaleLanguageEnum): untyped = 86
+template Oriya*(_: type QLocaleLanguageEnum): untyped = 87
+template Pashto*(_: type QLocaleLanguageEnum): untyped = 88
+template Persian*(_: type QLocaleLanguageEnum): untyped = 89
+template Polish*(_: type QLocaleLanguageEnum): untyped = 90
+template Portuguese*(_: type QLocaleLanguageEnum): untyped = 91
+template Punjabi*(_: type QLocaleLanguageEnum): untyped = 92
+template Quechua*(_: type QLocaleLanguageEnum): untyped = 93
+template Romansh*(_: type QLocaleLanguageEnum): untyped = 94
+template Romanian*(_: type QLocaleLanguageEnum): untyped = 95
+template Russian*(_: type QLocaleLanguageEnum): untyped = 96
+template Samoan*(_: type QLocaleLanguageEnum): untyped = 97
+template Sango*(_: type QLocaleLanguageEnum): untyped = 98
+template Sanskrit*(_: type QLocaleLanguageEnum): untyped = 99
+template Serbian*(_: type QLocaleLanguageEnum): untyped = 100
+template Ossetic*(_: type QLocaleLanguageEnum): untyped = 101
+template SouthernSotho*(_: type QLocaleLanguageEnum): untyped = 102
+template Tswana*(_: type QLocaleLanguageEnum): untyped = 103
+template Shona*(_: type QLocaleLanguageEnum): untyped = 104
+template Sindhi*(_: type QLocaleLanguageEnum): untyped = 105
+template Sinhala*(_: type QLocaleLanguageEnum): untyped = 106
+template Swati*(_: type QLocaleLanguageEnum): untyped = 107
+template Slovak*(_: type QLocaleLanguageEnum): untyped = 108
+template Slovenian*(_: type QLocaleLanguageEnum): untyped = 109
+template Somali*(_: type QLocaleLanguageEnum): untyped = 110
+template Spanish*(_: type QLocaleLanguageEnum): untyped = 111
+template Sundanese*(_: type QLocaleLanguageEnum): untyped = 112
+template Swahili*(_: type QLocaleLanguageEnum): untyped = 113
+template Swedish*(_: type QLocaleLanguageEnum): untyped = 114
+template Sardinian*(_: type QLocaleLanguageEnum): untyped = 115
+template Tajik*(_: type QLocaleLanguageEnum): untyped = 116
+template Tamil*(_: type QLocaleLanguageEnum): untyped = 117
+template Tatar*(_: type QLocaleLanguageEnum): untyped = 118
+template Telugu*(_: type QLocaleLanguageEnum): untyped = 119
+template Thai*(_: type QLocaleLanguageEnum): untyped = 120
+template Tibetan*(_: type QLocaleLanguageEnum): untyped = 121
+template Tigrinya*(_: type QLocaleLanguageEnum): untyped = 122
+template Tongan*(_: type QLocaleLanguageEnum): untyped = 123
+template Tsonga*(_: type QLocaleLanguageEnum): untyped = 124
+template Turkish*(_: type QLocaleLanguageEnum): untyped = 125
+template Turkmen*(_: type QLocaleLanguageEnum): untyped = 126
+template Tahitian*(_: type QLocaleLanguageEnum): untyped = 127
+template Uighur*(_: type QLocaleLanguageEnum): untyped = 128
+template Ukrainian*(_: type QLocaleLanguageEnum): untyped = 129
+template Urdu*(_: type QLocaleLanguageEnum): untyped = 130
+template Uzbek*(_: type QLocaleLanguageEnum): untyped = 131
+template Vietnamese*(_: type QLocaleLanguageEnum): untyped = 132
+template Volapuk*(_: type QLocaleLanguageEnum): untyped = 133
+template Welsh*(_: type QLocaleLanguageEnum): untyped = 134
+template Wolof*(_: type QLocaleLanguageEnum): untyped = 135
+template Xhosa*(_: type QLocaleLanguageEnum): untyped = 136
+template Yiddish*(_: type QLocaleLanguageEnum): untyped = 137
+template Yoruba*(_: type QLocaleLanguageEnum): untyped = 138
+template Zhuang*(_: type QLocaleLanguageEnum): untyped = 139
+template Zulu*(_: type QLocaleLanguageEnum): untyped = 140
+template NorwegianNynorsk*(_: type QLocaleLanguageEnum): untyped = 141
+template Bosnian*(_: type QLocaleLanguageEnum): untyped = 142
+template Divehi*(_: type QLocaleLanguageEnum): untyped = 143
+template Manx*(_: type QLocaleLanguageEnum): untyped = 144
+template Cornish*(_: type QLocaleLanguageEnum): untyped = 145
+template Akan*(_: type QLocaleLanguageEnum): untyped = 146
+template Konkani*(_: type QLocaleLanguageEnum): untyped = 147
+template Ga*(_: type QLocaleLanguageEnum): untyped = 148
+template Igbo*(_: type QLocaleLanguageEnum): untyped = 149
+template Kamba*(_: type QLocaleLanguageEnum): untyped = 150
+template Syriac*(_: type QLocaleLanguageEnum): untyped = 151
+template Blin*(_: type QLocaleLanguageEnum): untyped = 152
+template Geez*(_: type QLocaleLanguageEnum): untyped = 153
+template Koro*(_: type QLocaleLanguageEnum): untyped = 154
+template Sidamo*(_: type QLocaleLanguageEnum): untyped = 155
+template Atsam*(_: type QLocaleLanguageEnum): untyped = 156
+template Tigre*(_: type QLocaleLanguageEnum): untyped = 157
+template Jju*(_: type QLocaleLanguageEnum): untyped = 158
+template Friulian*(_: type QLocaleLanguageEnum): untyped = 159
+template Venda*(_: type QLocaleLanguageEnum): untyped = 160
+template Ewe*(_: type QLocaleLanguageEnum): untyped = 161
+template Walamo*(_: type QLocaleLanguageEnum): untyped = 162
+template Hawaiian*(_: type QLocaleLanguageEnum): untyped = 163
+template Tyap*(_: type QLocaleLanguageEnum): untyped = 164
+template Nyanja*(_: type QLocaleLanguageEnum): untyped = 165
+template Filipino*(_: type QLocaleLanguageEnum): untyped = 166
+template SwissGerman*(_: type QLocaleLanguageEnum): untyped = 167
+template SichuanYi*(_: type QLocaleLanguageEnum): untyped = 168
+template Kpelle*(_: type QLocaleLanguageEnum): untyped = 169
+template LowGerman*(_: type QLocaleLanguageEnum): untyped = 170
+template SouthNdebele*(_: type QLocaleLanguageEnum): untyped = 171
+template NorthernSotho*(_: type QLocaleLanguageEnum): untyped = 172
+template NorthernSami*(_: type QLocaleLanguageEnum): untyped = 173
+template Taroko*(_: type QLocaleLanguageEnum): untyped = 174
+template Gusii*(_: type QLocaleLanguageEnum): untyped = 175
+template Taita*(_: type QLocaleLanguageEnum): untyped = 176
+template Fulah*(_: type QLocaleLanguageEnum): untyped = 177
+template Kikuyu*(_: type QLocaleLanguageEnum): untyped = 178
+template Samburu*(_: type QLocaleLanguageEnum): untyped = 179
+template Sena*(_: type QLocaleLanguageEnum): untyped = 180
+template NorthNdebele*(_: type QLocaleLanguageEnum): untyped = 181
+template Rombo*(_: type QLocaleLanguageEnum): untyped = 182
+template Tachelhit*(_: type QLocaleLanguageEnum): untyped = 183
+template Kabyle*(_: type QLocaleLanguageEnum): untyped = 184
+template Nyankole*(_: type QLocaleLanguageEnum): untyped = 185
+template Bena*(_: type QLocaleLanguageEnum): untyped = 186
+template Vunjo*(_: type QLocaleLanguageEnum): untyped = 187
+template Bambara*(_: type QLocaleLanguageEnum): untyped = 188
+template Embu*(_: type QLocaleLanguageEnum): untyped = 189
+template Cherokee*(_: type QLocaleLanguageEnum): untyped = 190
+template Morisyen*(_: type QLocaleLanguageEnum): untyped = 191
+template Makonde*(_: type QLocaleLanguageEnum): untyped = 192
+template Langi*(_: type QLocaleLanguageEnum): untyped = 193
+template Ganda*(_: type QLocaleLanguageEnum): untyped = 194
+template Bemba*(_: type QLocaleLanguageEnum): untyped = 195
+template Kabuverdianu*(_: type QLocaleLanguageEnum): untyped = 196
+template Meru*(_: type QLocaleLanguageEnum): untyped = 197
+template Kalenjin*(_: type QLocaleLanguageEnum): untyped = 198
+template Nama*(_: type QLocaleLanguageEnum): untyped = 199
+template Machame*(_: type QLocaleLanguageEnum): untyped = 200
+template Colognian*(_: type QLocaleLanguageEnum): untyped = 201
+template Masai*(_: type QLocaleLanguageEnum): untyped = 202
+template Soga*(_: type QLocaleLanguageEnum): untyped = 203
+template Luyia*(_: type QLocaleLanguageEnum): untyped = 204
+template Asu*(_: type QLocaleLanguageEnum): untyped = 205
+template Teso*(_: type QLocaleLanguageEnum): untyped = 206
+template Saho*(_: type QLocaleLanguageEnum): untyped = 207
+template KoyraChiini*(_: type QLocaleLanguageEnum): untyped = 208
+template Rwa*(_: type QLocaleLanguageEnum): untyped = 209
+template Luo*(_: type QLocaleLanguageEnum): untyped = 210
+template Chiga*(_: type QLocaleLanguageEnum): untyped = 211
+template CentralMoroccoTamazight*(_: type QLocaleLanguageEnum): untyped = 212
+template KoyraboroSenni*(_: type QLocaleLanguageEnum): untyped = 213
+template Shambala*(_: type QLocaleLanguageEnum): untyped = 214
+template Bodo*(_: type QLocaleLanguageEnum): untyped = 215
+template Avaric*(_: type QLocaleLanguageEnum): untyped = 216
+template Chamorro*(_: type QLocaleLanguageEnum): untyped = 217
+template Chechen*(_: type QLocaleLanguageEnum): untyped = 218
+template Church*(_: type QLocaleLanguageEnum): untyped = 219
+template Chuvash*(_: type QLocaleLanguageEnum): untyped = 220
+template Cree*(_: type QLocaleLanguageEnum): untyped = 221
+template Haitian*(_: type QLocaleLanguageEnum): untyped = 222
+template Herero*(_: type QLocaleLanguageEnum): untyped = 223
+template HiriMotu*(_: type QLocaleLanguageEnum): untyped = 224
+template Kanuri*(_: type QLocaleLanguageEnum): untyped = 225
+template Komi*(_: type QLocaleLanguageEnum): untyped = 226
+template Kongo*(_: type QLocaleLanguageEnum): untyped = 227
+template Kwanyama*(_: type QLocaleLanguageEnum): untyped = 228
+template Limburgish*(_: type QLocaleLanguageEnum): untyped = 229
+template LubaKatanga*(_: type QLocaleLanguageEnum): untyped = 230
+template Luxembourgish*(_: type QLocaleLanguageEnum): untyped = 231
+template Navaho*(_: type QLocaleLanguageEnum): untyped = 232
+template Ndonga*(_: type QLocaleLanguageEnum): untyped = 233
+template Ojibwa*(_: type QLocaleLanguageEnum): untyped = 234
+template Pali*(_: type QLocaleLanguageEnum): untyped = 235
+template Walloon*(_: type QLocaleLanguageEnum): untyped = 236
+template Aghem*(_: type QLocaleLanguageEnum): untyped = 237
+template Basaa*(_: type QLocaleLanguageEnum): untyped = 238
+template Zarma*(_: type QLocaleLanguageEnum): untyped = 239
+template Duala*(_: type QLocaleLanguageEnum): untyped = 240
+template JolaFonyi*(_: type QLocaleLanguageEnum): untyped = 241
+template Ewondo*(_: type QLocaleLanguageEnum): untyped = 242
+template Bafia*(_: type QLocaleLanguageEnum): untyped = 243
+template MakhuwaMeetto*(_: type QLocaleLanguageEnum): untyped = 244
+template Mundang*(_: type QLocaleLanguageEnum): untyped = 245
+template Kwasio*(_: type QLocaleLanguageEnum): untyped = 246
+template Nuer*(_: type QLocaleLanguageEnum): untyped = 247
+template Sakha*(_: type QLocaleLanguageEnum): untyped = 248
+template Sangu*(_: type QLocaleLanguageEnum): untyped = 249
+template CongoSwahili*(_: type QLocaleLanguageEnum): untyped = 250
+template Tasawaq*(_: type QLocaleLanguageEnum): untyped = 251
+template Vai*(_: type QLocaleLanguageEnum): untyped = 252
+template Walser*(_: type QLocaleLanguageEnum): untyped = 253
+template Yangben*(_: type QLocaleLanguageEnum): untyped = 254
+template Avestan*(_: type QLocaleLanguageEnum): untyped = 255
+template Asturian*(_: type QLocaleLanguageEnum): untyped = 256
+template Ngomba*(_: type QLocaleLanguageEnum): untyped = 257
+template Kako*(_: type QLocaleLanguageEnum): untyped = 258
+template Meta*(_: type QLocaleLanguageEnum): untyped = 259
+template Ngiemboon*(_: type QLocaleLanguageEnum): untyped = 260
+template Aragonese*(_: type QLocaleLanguageEnum): untyped = 261
+template Akkadian*(_: type QLocaleLanguageEnum): untyped = 262
+template AncientEgyptian*(_: type QLocaleLanguageEnum): untyped = 263
+template AncientGreek*(_: type QLocaleLanguageEnum): untyped = 264
+template Aramaic*(_: type QLocaleLanguageEnum): untyped = 265
+template Balinese*(_: type QLocaleLanguageEnum): untyped = 266
+template Bamun*(_: type QLocaleLanguageEnum): untyped = 267
+template BatakToba*(_: type QLocaleLanguageEnum): untyped = 268
+template Buginese*(_: type QLocaleLanguageEnum): untyped = 269
+template Buhid*(_: type QLocaleLanguageEnum): untyped = 270
+template Carian*(_: type QLocaleLanguageEnum): untyped = 271
+template Chakma*(_: type QLocaleLanguageEnum): untyped = 272
+template ClassicalMandaic*(_: type QLocaleLanguageEnum): untyped = 273
+template Coptic*(_: type QLocaleLanguageEnum): untyped = 274
+template Dogri*(_: type QLocaleLanguageEnum): untyped = 275
+template EasternCham*(_: type QLocaleLanguageEnum): untyped = 276
+template EasternKayah*(_: type QLocaleLanguageEnum): untyped = 277
+template Etruscan*(_: type QLocaleLanguageEnum): untyped = 278
+template Gothic*(_: type QLocaleLanguageEnum): untyped = 279
+template Hanunoo*(_: type QLocaleLanguageEnum): untyped = 280
+template Ingush*(_: type QLocaleLanguageEnum): untyped = 281
+template LargeFloweryMiao*(_: type QLocaleLanguageEnum): untyped = 282
+template Lepcha*(_: type QLocaleLanguageEnum): untyped = 283
+template Limbu*(_: type QLocaleLanguageEnum): untyped = 284
+template Lisu*(_: type QLocaleLanguageEnum): untyped = 285
+template Lu*(_: type QLocaleLanguageEnum): untyped = 286
+template Lycian*(_: type QLocaleLanguageEnum): untyped = 287
+template Lydian*(_: type QLocaleLanguageEnum): untyped = 288
+template Mandingo*(_: type QLocaleLanguageEnum): untyped = 289
+template Manipuri*(_: type QLocaleLanguageEnum): untyped = 290
+template Meroitic*(_: type QLocaleLanguageEnum): untyped = 291
+template NorthernThai*(_: type QLocaleLanguageEnum): untyped = 292
+template OldIrish*(_: type QLocaleLanguageEnum): untyped = 293
+template OldNorse*(_: type QLocaleLanguageEnum): untyped = 294
+template OldPersian*(_: type QLocaleLanguageEnum): untyped = 295
+template OldTurkish*(_: type QLocaleLanguageEnum): untyped = 296
+template Pahlavi*(_: type QLocaleLanguageEnum): untyped = 297
+template Parthian*(_: type QLocaleLanguageEnum): untyped = 298
+template Phoenician*(_: type QLocaleLanguageEnum): untyped = 299
+template PrakritLanguage*(_: type QLocaleLanguageEnum): untyped = 300
+template Rejang*(_: type QLocaleLanguageEnum): untyped = 301
+template Sabaean*(_: type QLocaleLanguageEnum): untyped = 302
+template Samaritan*(_: type QLocaleLanguageEnum): untyped = 303
+template Santali*(_: type QLocaleLanguageEnum): untyped = 304
+template Saurashtra*(_: type QLocaleLanguageEnum): untyped = 305
+template Sora*(_: type QLocaleLanguageEnum): untyped = 306
+template Sylheti*(_: type QLocaleLanguageEnum): untyped = 307
+template Tagbanwa*(_: type QLocaleLanguageEnum): untyped = 308
+template TaiDam*(_: type QLocaleLanguageEnum): untyped = 309
+template TaiNua*(_: type QLocaleLanguageEnum): untyped = 310
+template Ugaritic*(_: type QLocaleLanguageEnum): untyped = 311
+template Akoose*(_: type QLocaleLanguageEnum): untyped = 312
+template Lakota*(_: type QLocaleLanguageEnum): untyped = 313
+template StandardMoroccanTamazight*(_: type QLocaleLanguageEnum): untyped = 314
+template Mapuche*(_: type QLocaleLanguageEnum): untyped = 315
+template CentralKurdish*(_: type QLocaleLanguageEnum): untyped = 316
+template LowerSorbian*(_: type QLocaleLanguageEnum): untyped = 317
+template UpperSorbian*(_: type QLocaleLanguageEnum): untyped = 318
+template Kenyang*(_: type QLocaleLanguageEnum): untyped = 319
+template Mohawk*(_: type QLocaleLanguageEnum): untyped = 320
+template Nko*(_: type QLocaleLanguageEnum): untyped = 321
+template Prussian*(_: type QLocaleLanguageEnum): untyped = 322
+template Kiche*(_: type QLocaleLanguageEnum): untyped = 323
+template SouthernSami*(_: type QLocaleLanguageEnum): untyped = 324
+template LuleSami*(_: type QLocaleLanguageEnum): untyped = 325
+template InariSami*(_: type QLocaleLanguageEnum): untyped = 326
+template SkoltSami*(_: type QLocaleLanguageEnum): untyped = 327
+template Warlpiri*(_: type QLocaleLanguageEnum): untyped = 328
+template ManichaeanMiddlePersian*(_: type QLocaleLanguageEnum): untyped = 329
+template Mende*(_: type QLocaleLanguageEnum): untyped = 330
+template AncientNorthArabian*(_: type QLocaleLanguageEnum): untyped = 331
+template LinearA*(_: type QLocaleLanguageEnum): untyped = 332
+template HmongNjua*(_: type QLocaleLanguageEnum): untyped = 333
+template Ho*(_: type QLocaleLanguageEnum): untyped = 334
+template Lezghian*(_: type QLocaleLanguageEnum): untyped = 335
+template Bassa*(_: type QLocaleLanguageEnum): untyped = 336
+template Mono*(_: type QLocaleLanguageEnum): untyped = 337
+template TedimChin*(_: type QLocaleLanguageEnum): untyped = 338
+template Maithili*(_: type QLocaleLanguageEnum): untyped = 339
+template Ahom*(_: type QLocaleLanguageEnum): untyped = 340
+template AmericanSignLanguage*(_: type QLocaleLanguageEnum): untyped = 341
+template ArdhamagadhiPrakrit*(_: type QLocaleLanguageEnum): untyped = 342
+template Bhojpuri*(_: type QLocaleLanguageEnum): untyped = 343
+template HieroglyphicLuwian*(_: type QLocaleLanguageEnum): untyped = 344
+template LiteraryChinese*(_: type QLocaleLanguageEnum): untyped = 345
+template Mazanderani*(_: type QLocaleLanguageEnum): untyped = 346
+template Mru*(_: type QLocaleLanguageEnum): untyped = 347
+template Newari*(_: type QLocaleLanguageEnum): untyped = 348
+template NorthernLuri*(_: type QLocaleLanguageEnum): untyped = 349
+template Palauan*(_: type QLocaleLanguageEnum): untyped = 350
+template Papiamento*(_: type QLocaleLanguageEnum): untyped = 351
+template Saraiki*(_: type QLocaleLanguageEnum): untyped = 352
+template TokelauLanguage*(_: type QLocaleLanguageEnum): untyped = 353
+template TokPisin*(_: type QLocaleLanguageEnum): untyped = 354
+template TuvaluLanguage*(_: type QLocaleLanguageEnum): untyped = 355
+template UncodedLanguages*(_: type QLocaleLanguageEnum): untyped = 356
+template Cantonese*(_: type QLocaleLanguageEnum): untyped = 357
+template Osage*(_: type QLocaleLanguageEnum): untyped = 358
+template Tangut*(_: type QLocaleLanguageEnum): untyped = 359
+template Ido*(_: type QLocaleLanguageEnum): untyped = 360
+template Lojban*(_: type QLocaleLanguageEnum): untyped = 361
+template Sicilian*(_: type QLocaleLanguageEnum): untyped = 362
+template SouthernKurdish*(_: type QLocaleLanguageEnum): untyped = 363
+template WesternBalochi*(_: type QLocaleLanguageEnum): untyped = 364
+template Cebuano*(_: type QLocaleLanguageEnum): untyped = 365
+template Erzya*(_: type QLocaleLanguageEnum): untyped = 366
+template Chickasaw*(_: type QLocaleLanguageEnum): untyped = 367
+template Muscogee*(_: type QLocaleLanguageEnum): untyped = 368
+template Silesian*(_: type QLocaleLanguageEnum): untyped = 369
+template NigerianPidgin*(_: type QLocaleLanguageEnum): untyped = 370
+template Afan*(_: type QLocaleLanguageEnum): untyped = 3
+template Bhutani*(_: type QLocaleLanguageEnum): untyped = 16
+template Byelorussian*(_: type QLocaleLanguageEnum): untyped = 22
+template Cambodian*(_: type QLocaleLanguageEnum): untyped = 23
+template Chewa*(_: type QLocaleLanguageEnum): untyped = 165
+template Frisian*(_: type QLocaleLanguageEnum): untyped = 38
+template Kurundi*(_: type QLocaleLanguageEnum): untyped = 68
+template Moldavian*(_: type QLocaleLanguageEnum): untyped = 95
+template Norwegian*(_: type QLocaleLanguageEnum): untyped = 85
+template RhaetoRomance*(_: type QLocaleLanguageEnum): untyped = 94
+template SerboCroatian*(_: type QLocaleLanguageEnum): untyped = 100
+template Tagalog*(_: type QLocaleLanguageEnum): untyped = 166
+template Twi*(_: type QLocaleLanguageEnum): untyped = 146
+template Uigur*(_: type QLocaleLanguageEnum): untyped = 128
+template LastLanguage*(_: type QLocaleLanguageEnum): untyped = 370
 
 
-
-type QLocaleScript* = cint
-const
-  QLocaleAnyScript* = 0
-  QLocaleArabicScript* = 1
-  QLocaleCyrillicScript* = 2
-  QLocaleDeseretScript* = 3
-  QLocaleGurmukhiScript* = 4
-  QLocaleSimplifiedHanScript* = 5
-  QLocaleTraditionalHanScript* = 6
-  QLocaleLatinScript* = 7
-  QLocaleMongolianScript* = 8
-  QLocaleTifinaghScript* = 9
-  QLocaleArmenianScript* = 10
-  QLocaleBengaliScript* = 11
-  QLocaleCherokeeScript* = 12
-  QLocaleDevanagariScript* = 13
-  QLocaleEthiopicScript* = 14
-  QLocaleGeorgianScript* = 15
-  QLocaleGreekScript* = 16
-  QLocaleGujaratiScript* = 17
-  QLocaleHebrewScript* = 18
-  QLocaleJapaneseScript* = 19
-  QLocaleKhmerScript* = 20
-  QLocaleKannadaScript* = 21
-  QLocaleKoreanScript* = 22
-  QLocaleLaoScript* = 23
-  QLocaleMalayalamScript* = 24
-  QLocaleMyanmarScript* = 25
-  QLocaleOriyaScript* = 26
-  QLocaleTamilScript* = 27
-  QLocaleTeluguScript* = 28
-  QLocaleThaanaScript* = 29
-  QLocaleThaiScript* = 30
-  QLocaleTibetanScript* = 31
-  QLocaleSinhalaScript* = 32
-  QLocaleSyriacScript* = 33
-  QLocaleYiScript* = 34
-  QLocaleVaiScript* = 35
-  QLocaleAvestanScript* = 36
-  QLocaleBalineseScript* = 37
-  QLocaleBamumScript* = 38
-  QLocaleBatakScript* = 39
-  QLocaleBopomofoScript* = 40
-  QLocaleBrahmiScript* = 41
-  QLocaleBugineseScript* = 42
-  QLocaleBuhidScript* = 43
-  QLocaleCanadianAboriginalScript* = 44
-  QLocaleCarianScript* = 45
-  QLocaleChakmaScript* = 46
-  QLocaleChamScript* = 47
-  QLocaleCopticScript* = 48
-  QLocaleCypriotScript* = 49
-  QLocaleEgyptianHieroglyphsScript* = 50
-  QLocaleFraserScript* = 51
-  QLocaleGlagoliticScript* = 52
-  QLocaleGothicScript* = 53
-  QLocaleHanScript* = 54
-  QLocaleHangulScript* = 55
-  QLocaleHanunooScript* = 56
-  QLocaleImperialAramaicScript* = 57
-  QLocaleInscriptionalPahlaviScript* = 58
-  QLocaleInscriptionalParthianScript* = 59
-  QLocaleJavaneseScript* = 60
-  QLocaleKaithiScript* = 61
-  QLocaleKatakanaScript* = 62
-  QLocaleKayahLiScript* = 63
-  QLocaleKharoshthiScript* = 64
-  QLocaleLannaScript* = 65
-  QLocaleLepchaScript* = 66
-  QLocaleLimbuScript* = 67
-  QLocaleLinearBScript* = 68
-  QLocaleLycianScript* = 69
-  QLocaleLydianScript* = 70
-  QLocaleMandaeanScript* = 71
-  QLocaleMeiteiMayekScript* = 72
-  QLocaleMeroiticScript* = 73
-  QLocaleMeroiticCursiveScript* = 74
-  QLocaleNkoScript* = 75
-  QLocaleNewTaiLueScript* = 76
-  QLocaleOghamScript* = 77
-  QLocaleOlChikiScript* = 78
-  QLocaleOldItalicScript* = 79
-  QLocaleOldPersianScript* = 80
-  QLocaleOldSouthArabianScript* = 81
-  QLocaleOrkhonScript* = 82
-  QLocaleOsmanyaScript* = 83
-  QLocalePhagsPaScript* = 84
-  QLocalePhoenicianScript* = 85
-  QLocalePollardPhoneticScript* = 86
-  QLocaleRejangScript* = 87
-  QLocaleRunicScript* = 88
-  QLocaleSamaritanScript* = 89
-  QLocaleSaurashtraScript* = 90
-  QLocaleSharadaScript* = 91
-  QLocaleShavianScript* = 92
-  QLocaleSoraSompengScript* = 93
-  QLocaleCuneiformScript* = 94
-  QLocaleSundaneseScript* = 95
-  QLocaleSylotiNagriScript* = 96
-  QLocaleTagalogScript* = 97
-  QLocaleTagbanwaScript* = 98
-  QLocaleTaiLeScript* = 99
-  QLocaleTaiVietScript* = 100
-  QLocaleTakriScript* = 101
-  QLocaleUgariticScript* = 102
-  QLocaleBrailleScript* = 103
-  QLocaleHiraganaScript* = 104
-  QLocaleCaucasianAlbanianScript* = 105
-  QLocaleBassaVahScript* = 106
-  QLocaleDuployanScript* = 107
-  QLocaleElbasanScript* = 108
-  QLocaleGranthaScript* = 109
-  QLocalePahawhHmongScript* = 110
-  QLocaleKhojkiScript* = 111
-  QLocaleLinearAScript* = 112
-  QLocaleMahajaniScript* = 113
-  QLocaleManichaeanScript* = 114
-  QLocaleMendeKikakuiScript* = 115
-  QLocaleModiScript* = 116
-  QLocaleMroScript* = 117
-  QLocaleOldNorthArabianScript* = 118
-  QLocaleNabataeanScript* = 119
-  QLocalePalmyreneScript* = 120
-  QLocalePauCinHauScript* = 121
-  QLocaleOldPermicScript* = 122
-  QLocalePsalterPahlaviScript* = 123
-  QLocaleSiddhamScript* = 124
-  QLocaleKhudawadiScript* = 125
-  QLocaleTirhutaScript* = 126
-  QLocaleVarangKshitiScript* = 127
-  QLocaleAhomScript* = 128
-  QLocaleAnatolianHieroglyphsScript* = 129
-  QLocaleHatranScript* = 130
-  QLocaleMultaniScript* = 131
-  QLocaleOldHungarianScript* = 132
-  QLocaleSignWritingScript* = 133
-  QLocaleAdlamScript* = 134
-  QLocaleBhaiksukiScript* = 135
-  QLocaleMarchenScript* = 136
-  QLocaleNewaScript* = 137
-  QLocaleOsageScript* = 138
-  QLocaleTangutScript* = 139
-  QLocaleHanWithBopomofoScript* = 140
-  QLocaleJamoScript* = 141
-  QLocaleSimplifiedChineseScript* = 5
-  QLocaleTraditionalChineseScript* = 6
-  QLocaleLastScript* = 141
+type QLocaleScriptEnum* = distinct cint
+template AnyScript*(_: type QLocaleScriptEnum): untyped = 0
+template ArabicScript*(_: type QLocaleScriptEnum): untyped = 1
+template CyrillicScript*(_: type QLocaleScriptEnum): untyped = 2
+template DeseretScript*(_: type QLocaleScriptEnum): untyped = 3
+template GurmukhiScript*(_: type QLocaleScriptEnum): untyped = 4
+template SimplifiedHanScript*(_: type QLocaleScriptEnum): untyped = 5
+template TraditionalHanScript*(_: type QLocaleScriptEnum): untyped = 6
+template LatinScript*(_: type QLocaleScriptEnum): untyped = 7
+template MongolianScript*(_: type QLocaleScriptEnum): untyped = 8
+template TifinaghScript*(_: type QLocaleScriptEnum): untyped = 9
+template ArmenianScript*(_: type QLocaleScriptEnum): untyped = 10
+template BengaliScript*(_: type QLocaleScriptEnum): untyped = 11
+template CherokeeScript*(_: type QLocaleScriptEnum): untyped = 12
+template DevanagariScript*(_: type QLocaleScriptEnum): untyped = 13
+template EthiopicScript*(_: type QLocaleScriptEnum): untyped = 14
+template GeorgianScript*(_: type QLocaleScriptEnum): untyped = 15
+template GreekScript*(_: type QLocaleScriptEnum): untyped = 16
+template GujaratiScript*(_: type QLocaleScriptEnum): untyped = 17
+template HebrewScript*(_: type QLocaleScriptEnum): untyped = 18
+template JapaneseScript*(_: type QLocaleScriptEnum): untyped = 19
+template KhmerScript*(_: type QLocaleScriptEnum): untyped = 20
+template KannadaScript*(_: type QLocaleScriptEnum): untyped = 21
+template KoreanScript*(_: type QLocaleScriptEnum): untyped = 22
+template LaoScript*(_: type QLocaleScriptEnum): untyped = 23
+template MalayalamScript*(_: type QLocaleScriptEnum): untyped = 24
+template MyanmarScript*(_: type QLocaleScriptEnum): untyped = 25
+template OriyaScript*(_: type QLocaleScriptEnum): untyped = 26
+template TamilScript*(_: type QLocaleScriptEnum): untyped = 27
+template TeluguScript*(_: type QLocaleScriptEnum): untyped = 28
+template ThaanaScript*(_: type QLocaleScriptEnum): untyped = 29
+template ThaiScript*(_: type QLocaleScriptEnum): untyped = 30
+template TibetanScript*(_: type QLocaleScriptEnum): untyped = 31
+template SinhalaScript*(_: type QLocaleScriptEnum): untyped = 32
+template SyriacScript*(_: type QLocaleScriptEnum): untyped = 33
+template YiScript*(_: type QLocaleScriptEnum): untyped = 34
+template VaiScript*(_: type QLocaleScriptEnum): untyped = 35
+template AvestanScript*(_: type QLocaleScriptEnum): untyped = 36
+template BalineseScript*(_: type QLocaleScriptEnum): untyped = 37
+template BamumScript*(_: type QLocaleScriptEnum): untyped = 38
+template BatakScript*(_: type QLocaleScriptEnum): untyped = 39
+template BopomofoScript*(_: type QLocaleScriptEnum): untyped = 40
+template BrahmiScript*(_: type QLocaleScriptEnum): untyped = 41
+template BugineseScript*(_: type QLocaleScriptEnum): untyped = 42
+template BuhidScript*(_: type QLocaleScriptEnum): untyped = 43
+template CanadianAboriginalScript*(_: type QLocaleScriptEnum): untyped = 44
+template CarianScript*(_: type QLocaleScriptEnum): untyped = 45
+template ChakmaScript*(_: type QLocaleScriptEnum): untyped = 46
+template ChamScript*(_: type QLocaleScriptEnum): untyped = 47
+template CopticScript*(_: type QLocaleScriptEnum): untyped = 48
+template CypriotScript*(_: type QLocaleScriptEnum): untyped = 49
+template EgyptianHieroglyphsScript*(_: type QLocaleScriptEnum): untyped = 50
+template FraserScript*(_: type QLocaleScriptEnum): untyped = 51
+template GlagoliticScript*(_: type QLocaleScriptEnum): untyped = 52
+template GothicScript*(_: type QLocaleScriptEnum): untyped = 53
+template HanScript*(_: type QLocaleScriptEnum): untyped = 54
+template HangulScript*(_: type QLocaleScriptEnum): untyped = 55
+template HanunooScript*(_: type QLocaleScriptEnum): untyped = 56
+template ImperialAramaicScript*(_: type QLocaleScriptEnum): untyped = 57
+template InscriptionalPahlaviScript*(_: type QLocaleScriptEnum): untyped = 58
+template InscriptionalParthianScript*(_: type QLocaleScriptEnum): untyped = 59
+template JavaneseScript*(_: type QLocaleScriptEnum): untyped = 60
+template KaithiScript*(_: type QLocaleScriptEnum): untyped = 61
+template KatakanaScript*(_: type QLocaleScriptEnum): untyped = 62
+template KayahLiScript*(_: type QLocaleScriptEnum): untyped = 63
+template KharoshthiScript*(_: type QLocaleScriptEnum): untyped = 64
+template LannaScript*(_: type QLocaleScriptEnum): untyped = 65
+template LepchaScript*(_: type QLocaleScriptEnum): untyped = 66
+template LimbuScript*(_: type QLocaleScriptEnum): untyped = 67
+template LinearBScript*(_: type QLocaleScriptEnum): untyped = 68
+template LycianScript*(_: type QLocaleScriptEnum): untyped = 69
+template LydianScript*(_: type QLocaleScriptEnum): untyped = 70
+template MandaeanScript*(_: type QLocaleScriptEnum): untyped = 71
+template MeiteiMayekScript*(_: type QLocaleScriptEnum): untyped = 72
+template MeroiticScript*(_: type QLocaleScriptEnum): untyped = 73
+template MeroiticCursiveScript*(_: type QLocaleScriptEnum): untyped = 74
+template NkoScript*(_: type QLocaleScriptEnum): untyped = 75
+template NewTaiLueScript*(_: type QLocaleScriptEnum): untyped = 76
+template OghamScript*(_: type QLocaleScriptEnum): untyped = 77
+template OlChikiScript*(_: type QLocaleScriptEnum): untyped = 78
+template OldItalicScript*(_: type QLocaleScriptEnum): untyped = 79
+template OldPersianScript*(_: type QLocaleScriptEnum): untyped = 80
+template OldSouthArabianScript*(_: type QLocaleScriptEnum): untyped = 81
+template OrkhonScript*(_: type QLocaleScriptEnum): untyped = 82
+template OsmanyaScript*(_: type QLocaleScriptEnum): untyped = 83
+template PhagsPaScript*(_: type QLocaleScriptEnum): untyped = 84
+template PhoenicianScript*(_: type QLocaleScriptEnum): untyped = 85
+template PollardPhoneticScript*(_: type QLocaleScriptEnum): untyped = 86
+template RejangScript*(_: type QLocaleScriptEnum): untyped = 87
+template RunicScript*(_: type QLocaleScriptEnum): untyped = 88
+template SamaritanScript*(_: type QLocaleScriptEnum): untyped = 89
+template SaurashtraScript*(_: type QLocaleScriptEnum): untyped = 90
+template SharadaScript*(_: type QLocaleScriptEnum): untyped = 91
+template ShavianScript*(_: type QLocaleScriptEnum): untyped = 92
+template SoraSompengScript*(_: type QLocaleScriptEnum): untyped = 93
+template CuneiformScript*(_: type QLocaleScriptEnum): untyped = 94
+template SundaneseScript*(_: type QLocaleScriptEnum): untyped = 95
+template SylotiNagriScript*(_: type QLocaleScriptEnum): untyped = 96
+template TagalogScript*(_: type QLocaleScriptEnum): untyped = 97
+template TagbanwaScript*(_: type QLocaleScriptEnum): untyped = 98
+template TaiLeScript*(_: type QLocaleScriptEnum): untyped = 99
+template TaiVietScript*(_: type QLocaleScriptEnum): untyped = 100
+template TakriScript*(_: type QLocaleScriptEnum): untyped = 101
+template UgariticScript*(_: type QLocaleScriptEnum): untyped = 102
+template BrailleScript*(_: type QLocaleScriptEnum): untyped = 103
+template HiraganaScript*(_: type QLocaleScriptEnum): untyped = 104
+template CaucasianAlbanianScript*(_: type QLocaleScriptEnum): untyped = 105
+template BassaVahScript*(_: type QLocaleScriptEnum): untyped = 106
+template DuployanScript*(_: type QLocaleScriptEnum): untyped = 107
+template ElbasanScript*(_: type QLocaleScriptEnum): untyped = 108
+template GranthaScript*(_: type QLocaleScriptEnum): untyped = 109
+template PahawhHmongScript*(_: type QLocaleScriptEnum): untyped = 110
+template KhojkiScript*(_: type QLocaleScriptEnum): untyped = 111
+template LinearAScript*(_: type QLocaleScriptEnum): untyped = 112
+template MahajaniScript*(_: type QLocaleScriptEnum): untyped = 113
+template ManichaeanScript*(_: type QLocaleScriptEnum): untyped = 114
+template MendeKikakuiScript*(_: type QLocaleScriptEnum): untyped = 115
+template ModiScript*(_: type QLocaleScriptEnum): untyped = 116
+template MroScript*(_: type QLocaleScriptEnum): untyped = 117
+template OldNorthArabianScript*(_: type QLocaleScriptEnum): untyped = 118
+template NabataeanScript*(_: type QLocaleScriptEnum): untyped = 119
+template PalmyreneScript*(_: type QLocaleScriptEnum): untyped = 120
+template PauCinHauScript*(_: type QLocaleScriptEnum): untyped = 121
+template OldPermicScript*(_: type QLocaleScriptEnum): untyped = 122
+template PsalterPahlaviScript*(_: type QLocaleScriptEnum): untyped = 123
+template SiddhamScript*(_: type QLocaleScriptEnum): untyped = 124
+template KhudawadiScript*(_: type QLocaleScriptEnum): untyped = 125
+template TirhutaScript*(_: type QLocaleScriptEnum): untyped = 126
+template VarangKshitiScript*(_: type QLocaleScriptEnum): untyped = 127
+template AhomScript*(_: type QLocaleScriptEnum): untyped = 128
+template AnatolianHieroglyphsScript*(_: type QLocaleScriptEnum): untyped = 129
+template HatranScript*(_: type QLocaleScriptEnum): untyped = 130
+template MultaniScript*(_: type QLocaleScriptEnum): untyped = 131
+template OldHungarianScript*(_: type QLocaleScriptEnum): untyped = 132
+template SignWritingScript*(_: type QLocaleScriptEnum): untyped = 133
+template AdlamScript*(_: type QLocaleScriptEnum): untyped = 134
+template BhaiksukiScript*(_: type QLocaleScriptEnum): untyped = 135
+template MarchenScript*(_: type QLocaleScriptEnum): untyped = 136
+template NewaScript*(_: type QLocaleScriptEnum): untyped = 137
+template OsageScript*(_: type QLocaleScriptEnum): untyped = 138
+template TangutScript*(_: type QLocaleScriptEnum): untyped = 139
+template HanWithBopomofoScript*(_: type QLocaleScriptEnum): untyped = 140
+template JamoScript*(_: type QLocaleScriptEnum): untyped = 141
+template SimplifiedChineseScript*(_: type QLocaleScriptEnum): untyped = 5
+template TraditionalChineseScript*(_: type QLocaleScriptEnum): untyped = 6
+template LastScript*(_: type QLocaleScriptEnum): untyped = 141
 
 
-
-type QLocaleCountry* = cint
-const
-  QLocaleAnyCountry* = 0
-  QLocaleAfghanistan* = 1
-  QLocaleAlbania* = 2
-  QLocaleAlgeria* = 3
-  QLocaleAmericanSamoa* = 4
-  QLocaleAndorra* = 5
-  QLocaleAngola* = 6
-  QLocaleAnguilla* = 7
-  QLocaleAntarctica* = 8
-  QLocaleAntiguaAndBarbuda* = 9
-  QLocaleArgentina* = 10
-  QLocaleArmenia* = 11
-  QLocaleAruba* = 12
-  QLocaleAustralia* = 13
-  QLocaleAustria* = 14
-  QLocaleAzerbaijan* = 15
-  QLocaleBahamas* = 16
-  QLocaleBahrain* = 17
-  QLocaleBangladesh* = 18
-  QLocaleBarbados* = 19
-  QLocaleBelarus* = 20
-  QLocaleBelgium* = 21
-  QLocaleBelize* = 22
-  QLocaleBenin* = 23
-  QLocaleBermuda* = 24
-  QLocaleBhutan* = 25
-  QLocaleBolivia* = 26
-  QLocaleBosniaAndHerzegowina* = 27
-  QLocaleBotswana* = 28
-  QLocaleBouvetIsland* = 29
-  QLocaleBrazil* = 30
-  QLocaleBritishIndianOceanTerritory* = 31
-  QLocaleBrunei* = 32
-  QLocaleBulgaria* = 33
-  QLocaleBurkinaFaso* = 34
-  QLocaleBurundi* = 35
-  QLocaleCambodia* = 36
-  QLocaleCameroon* = 37
-  QLocaleCanada* = 38
-  QLocaleCapeVerde* = 39
-  QLocaleCaymanIslands* = 40
-  QLocaleCentralAfricanRepublic* = 41
-  QLocaleChad* = 42
-  QLocaleChile* = 43
-  QLocaleChina* = 44
-  QLocaleChristmasIsland* = 45
-  QLocaleCocosIslands* = 46
-  QLocaleColombia* = 47
-  QLocaleComoros* = 48
-  QLocaleCongoKinshasa* = 49
-  QLocaleCongoBrazzaville* = 50
-  QLocaleCookIslands* = 51
-  QLocaleCostaRica* = 52
-  QLocaleIvoryCoast* = 53
-  QLocaleCroatia* = 54
-  QLocaleCuba* = 55
-  QLocaleCyprus* = 56
-  QLocaleCzechRepublic* = 57
-  QLocaleDenmark* = 58
-  QLocaleDjibouti* = 59
-  QLocaleDominica* = 60
-  QLocaleDominicanRepublic* = 61
-  QLocaleEastTimor* = 62
-  QLocaleEcuador* = 63
-  QLocaleEgypt* = 64
-  QLocaleElSalvador* = 65
-  QLocaleEquatorialGuinea* = 66
-  QLocaleEritrea* = 67
-  QLocaleEstonia* = 68
-  QLocaleEthiopia* = 69
-  QLocaleFalklandIslands* = 70
-  QLocaleFaroeIslands* = 71
-  QLocaleFiji* = 72
-  QLocaleFinland* = 73
-  QLocaleFrance* = 74
-  QLocaleGuernsey* = 75
-  QLocaleFrenchGuiana* = 76
-  QLocaleFrenchPolynesia* = 77
-  QLocaleFrenchSouthernTerritories* = 78
-  QLocaleGabon* = 79
-  QLocaleGambia* = 80
-  QLocaleGeorgia* = 81
-  QLocaleGermany* = 82
-  QLocaleGhana* = 83
-  QLocaleGibraltar* = 84
-  QLocaleGreece* = 85
-  QLocaleGreenland* = 86
-  QLocaleGrenada* = 87
-  QLocaleGuadeloupe* = 88
-  QLocaleGuam* = 89
-  QLocaleGuatemala* = 90
-  QLocaleGuinea* = 91
-  QLocaleGuineaBissau* = 92
-  QLocaleGuyana* = 93
-  QLocaleHaiti* = 94
-  QLocaleHeardAndMcDonaldIslands* = 95
-  QLocaleHonduras* = 96
-  QLocaleHongKong* = 97
-  QLocaleHungary* = 98
-  QLocaleIceland* = 99
-  QLocaleIndia* = 100
-  QLocaleIndonesia* = 101
-  QLocaleIran* = 102
-  QLocaleIraq* = 103
-  QLocaleIreland* = 104
-  QLocaleIsrael* = 105
-  QLocaleItaly* = 106
-  QLocaleJamaica* = 107
-  QLocaleJapan* = 108
-  QLocaleJordan* = 109
-  QLocaleKazakhstan* = 110
-  QLocaleKenya* = 111
-  QLocaleKiribati* = 112
-  QLocaleNorthKorea* = 113
-  QLocaleSouthKorea* = 114
-  QLocaleKuwait* = 115
-  QLocaleKyrgyzstan* = 116
-  QLocaleLaos* = 117
-  QLocaleLatvia* = 118
-  QLocaleLebanon* = 119
-  QLocaleLesotho* = 120
-  QLocaleLiberia* = 121
-  QLocaleLibya* = 122
-  QLocaleLiechtenstein* = 123
-  QLocaleLithuania* = 124
-  QLocaleLuxembourg* = 125
-  QLocaleMacau* = 126
-  QLocaleMacedonia* = 127
-  QLocaleMadagascar* = 128
-  QLocaleMalawi* = 129
-  QLocaleMalaysia* = 130
-  QLocaleMaldives* = 131
-  QLocaleMali* = 132
-  QLocaleMalta* = 133
-  QLocaleMarshallIslands* = 134
-  QLocaleMartinique* = 135
-  QLocaleMauritania* = 136
-  QLocaleMauritius* = 137
-  QLocaleMayotte* = 138
-  QLocaleMexico* = 139
-  QLocaleMicronesia* = 140
-  QLocaleMoldova* = 141
-  QLocaleMonaco* = 142
-  QLocaleMongolia* = 143
-  QLocaleMontserrat* = 144
-  QLocaleMorocco* = 145
-  QLocaleMozambique* = 146
-  QLocaleMyanmar* = 147
-  QLocaleNamibia* = 148
-  QLocaleNauruCountry* = 149
-  QLocaleNepal* = 150
-  QLocaleNetherlands* = 151
-  QLocaleCuraSao* = 152
-  QLocaleNewCaledonia* = 153
-  QLocaleNewZealand* = 154
-  QLocaleNicaragua* = 155
-  QLocaleNiger* = 156
-  QLocaleNigeria* = 157
-  QLocaleNiue* = 158
-  QLocaleNorfolkIsland* = 159
-  QLocaleNorthernMarianaIslands* = 160
-  QLocaleNorway* = 161
-  QLocaleOman* = 162
-  QLocalePakistan* = 163
-  QLocalePalau* = 164
-  QLocalePalestinianTerritories* = 165
-  QLocalePanama* = 166
-  QLocalePapuaNewGuinea* = 167
-  QLocaleParaguay* = 168
-  QLocalePeru* = 169
-  QLocalePhilippines* = 170
-  QLocalePitcairn* = 171
-  QLocalePoland* = 172
-  QLocalePortugal* = 173
-  QLocalePuertoRico* = 174
-  QLocaleQatar* = 175
-  QLocaleReunion* = 176
-  QLocaleRomania* = 177
-  QLocaleRussia* = 178
-  QLocaleRwanda* = 179
-  QLocaleSaintKittsAndNevis* = 180
-  QLocaleSaintLucia* = 181
-  QLocaleSaintVincentAndTheGrenadines* = 182
-  QLocaleSamoa* = 183
-  QLocaleSanMarino* = 184
-  QLocaleSaoTomeAndPrincipe* = 185
-  QLocaleSaudiArabia* = 186
-  QLocaleSenegal* = 187
-  QLocaleSeychelles* = 188
-  QLocaleSierraLeone* = 189
-  QLocaleSingapore* = 190
-  QLocaleSlovakia* = 191
-  QLocaleSlovenia* = 192
-  QLocaleSolomonIslands* = 193
-  QLocaleSomalia* = 194
-  QLocaleSouthAfrica* = 195
-  QLocaleSouthGeorgiaAndTheSouthSandwichIslands* = 196
-  QLocaleSpain* = 197
-  QLocaleSriLanka* = 198
-  QLocaleSaintHelena* = 199
-  QLocaleSaintPierreAndMiquelon* = 200
-  QLocaleSudan* = 201
-  QLocaleSuriname* = 202
-  QLocaleSvalbardAndJanMayenIslands* = 203
-  QLocaleSwaziland* = 204
-  QLocaleSweden* = 205
-  QLocaleSwitzerland* = 206
-  QLocaleSyria* = 207
-  QLocaleTaiwan* = 208
-  QLocaleTajikistan* = 209
-  QLocaleTanzania* = 210
-  QLocaleThailand* = 211
-  QLocaleTogo* = 212
-  QLocaleTokelauCountry* = 213
-  QLocaleTonga* = 214
-  QLocaleTrinidadAndTobago* = 215
-  QLocaleTunisia* = 216
-  QLocaleTurkey* = 217
-  QLocaleTurkmenistan* = 218
-  QLocaleTurksAndCaicosIslands* = 219
-  QLocaleTuvaluCountry* = 220
-  QLocaleUganda* = 221
-  QLocaleUkraine* = 222
-  QLocaleUnitedArabEmirates* = 223
-  QLocaleUnitedKingdom* = 224
-  QLocaleUnitedStates* = 225
-  QLocaleUnitedStatesMinorOutlyingIslands* = 226
-  QLocaleUruguay* = 227
-  QLocaleUzbekistan* = 228
-  QLocaleVanuatu* = 229
-  QLocaleVaticanCityState* = 230
-  QLocaleVenezuela* = 231
-  QLocaleVietnam* = 232
-  QLocaleBritishVirginIslands* = 233
-  QLocaleUnitedStatesVirginIslands* = 234
-  QLocaleWallisAndFutunaIslands* = 235
-  QLocaleWesternSahara* = 236
-  QLocaleYemen* = 237
-  QLocaleCanaryIslands* = 238
-  QLocaleZambia* = 239
-  QLocaleZimbabwe* = 240
-  QLocaleClippertonIsland* = 241
-  QLocaleMontenegro* = 242
-  QLocaleSerbia* = 243
-  QLocaleSaintBarthelemy* = 244
-  QLocaleSaintMartin* = 245
-  QLocaleLatinAmerica* = 246
-  QLocaleAscensionIsland* = 247
-  QLocaleAlandIslands* = 248
-  QLocaleDiegoGarcia* = 249
-  QLocaleCeutaAndMelilla* = 250
-  QLocaleIsleOfMan* = 251
-  QLocaleJersey* = 252
-  QLocaleTristanDaCunha* = 253
-  QLocaleSouthSudan* = 254
-  QLocaleBonaire* = 255
-  QLocaleSintMaarten* = 256
-  QLocaleKosovo* = 257
-  QLocaleEuropeanUnion* = 258
-  QLocaleOutlyingOceania* = 259
-  QLocaleWorld* = 260
-  QLocaleEurope* = 261
-  QLocaleDemocraticRepublicOfCongo* = 49
-  QLocaleDemocraticRepublicOfKorea* = 113
-  QLocaleLatinAmericaAndTheCaribbean* = 246
-  QLocalePeoplesRepublicOfCongo* = 50
-  QLocaleRepublicOfKorea* = 114
-  QLocaleRussianFederation* = 178
-  QLocaleSyrianArabRepublic* = 207
-  QLocaleTokelau* = 213
-  QLocaleTuvalu* = 220
-  QLocaleLastCountry* = 261
+type QLocaleCountryEnum* = distinct cint
+template AnyCountry*(_: type QLocaleCountryEnum): untyped = 0
+template Afghanistan*(_: type QLocaleCountryEnum): untyped = 1
+template Albania*(_: type QLocaleCountryEnum): untyped = 2
+template Algeria*(_: type QLocaleCountryEnum): untyped = 3
+template AmericanSamoa*(_: type QLocaleCountryEnum): untyped = 4
+template Andorra*(_: type QLocaleCountryEnum): untyped = 5
+template Angola*(_: type QLocaleCountryEnum): untyped = 6
+template Anguilla*(_: type QLocaleCountryEnum): untyped = 7
+template Antarctica*(_: type QLocaleCountryEnum): untyped = 8
+template AntiguaAndBarbuda*(_: type QLocaleCountryEnum): untyped = 9
+template Argentina*(_: type QLocaleCountryEnum): untyped = 10
+template Armenia*(_: type QLocaleCountryEnum): untyped = 11
+template Aruba*(_: type QLocaleCountryEnum): untyped = 12
+template Australia*(_: type QLocaleCountryEnum): untyped = 13
+template Austria*(_: type QLocaleCountryEnum): untyped = 14
+template Azerbaijan*(_: type QLocaleCountryEnum): untyped = 15
+template Bahamas*(_: type QLocaleCountryEnum): untyped = 16
+template Bahrain*(_: type QLocaleCountryEnum): untyped = 17
+template Bangladesh*(_: type QLocaleCountryEnum): untyped = 18
+template Barbados*(_: type QLocaleCountryEnum): untyped = 19
+template Belarus*(_: type QLocaleCountryEnum): untyped = 20
+template Belgium*(_: type QLocaleCountryEnum): untyped = 21
+template Belize*(_: type QLocaleCountryEnum): untyped = 22
+template Benin*(_: type QLocaleCountryEnum): untyped = 23
+template Bermuda*(_: type QLocaleCountryEnum): untyped = 24
+template Bhutan*(_: type QLocaleCountryEnum): untyped = 25
+template Bolivia*(_: type QLocaleCountryEnum): untyped = 26
+template BosniaAndHerzegowina*(_: type QLocaleCountryEnum): untyped = 27
+template Botswana*(_: type QLocaleCountryEnum): untyped = 28
+template BouvetIsland*(_: type QLocaleCountryEnum): untyped = 29
+template Brazil*(_: type QLocaleCountryEnum): untyped = 30
+template BritishIndianOceanTerritory*(_: type QLocaleCountryEnum): untyped = 31
+template Brunei*(_: type QLocaleCountryEnum): untyped = 32
+template Bulgaria*(_: type QLocaleCountryEnum): untyped = 33
+template BurkinaFaso*(_: type QLocaleCountryEnum): untyped = 34
+template Burundi*(_: type QLocaleCountryEnum): untyped = 35
+template Cambodia*(_: type QLocaleCountryEnum): untyped = 36
+template Cameroon*(_: type QLocaleCountryEnum): untyped = 37
+template Canada*(_: type QLocaleCountryEnum): untyped = 38
+template CapeVerde*(_: type QLocaleCountryEnum): untyped = 39
+template CaymanIslands*(_: type QLocaleCountryEnum): untyped = 40
+template CentralAfricanRepublic*(_: type QLocaleCountryEnum): untyped = 41
+template Chad*(_: type QLocaleCountryEnum): untyped = 42
+template Chile*(_: type QLocaleCountryEnum): untyped = 43
+template China*(_: type QLocaleCountryEnum): untyped = 44
+template ChristmasIsland*(_: type QLocaleCountryEnum): untyped = 45
+template CocosIslands*(_: type QLocaleCountryEnum): untyped = 46
+template Colombia*(_: type QLocaleCountryEnum): untyped = 47
+template Comoros*(_: type QLocaleCountryEnum): untyped = 48
+template CongoKinshasa*(_: type QLocaleCountryEnum): untyped = 49
+template CongoBrazzaville*(_: type QLocaleCountryEnum): untyped = 50
+template CookIslands*(_: type QLocaleCountryEnum): untyped = 51
+template CostaRica*(_: type QLocaleCountryEnum): untyped = 52
+template IvoryCoast*(_: type QLocaleCountryEnum): untyped = 53
+template Croatia*(_: type QLocaleCountryEnum): untyped = 54
+template Cuba*(_: type QLocaleCountryEnum): untyped = 55
+template Cyprus*(_: type QLocaleCountryEnum): untyped = 56
+template CzechRepublic*(_: type QLocaleCountryEnum): untyped = 57
+template Denmark*(_: type QLocaleCountryEnum): untyped = 58
+template Djibouti*(_: type QLocaleCountryEnum): untyped = 59
+template Dominica*(_: type QLocaleCountryEnum): untyped = 60
+template DominicanRepublic*(_: type QLocaleCountryEnum): untyped = 61
+template EastTimor*(_: type QLocaleCountryEnum): untyped = 62
+template Ecuador*(_: type QLocaleCountryEnum): untyped = 63
+template Egypt*(_: type QLocaleCountryEnum): untyped = 64
+template ElSalvador*(_: type QLocaleCountryEnum): untyped = 65
+template EquatorialGuinea*(_: type QLocaleCountryEnum): untyped = 66
+template Eritrea*(_: type QLocaleCountryEnum): untyped = 67
+template Estonia*(_: type QLocaleCountryEnum): untyped = 68
+template Ethiopia*(_: type QLocaleCountryEnum): untyped = 69
+template FalklandIslands*(_: type QLocaleCountryEnum): untyped = 70
+template FaroeIslands*(_: type QLocaleCountryEnum): untyped = 71
+template Fiji*(_: type QLocaleCountryEnum): untyped = 72
+template Finland*(_: type QLocaleCountryEnum): untyped = 73
+template France*(_: type QLocaleCountryEnum): untyped = 74
+template Guernsey*(_: type QLocaleCountryEnum): untyped = 75
+template FrenchGuiana*(_: type QLocaleCountryEnum): untyped = 76
+template FrenchPolynesia*(_: type QLocaleCountryEnum): untyped = 77
+template FrenchSouthernTerritories*(_: type QLocaleCountryEnum): untyped = 78
+template Gabon*(_: type QLocaleCountryEnum): untyped = 79
+template Gambia*(_: type QLocaleCountryEnum): untyped = 80
+template Georgia*(_: type QLocaleCountryEnum): untyped = 81
+template Germany*(_: type QLocaleCountryEnum): untyped = 82
+template Ghana*(_: type QLocaleCountryEnum): untyped = 83
+template Gibraltar*(_: type QLocaleCountryEnum): untyped = 84
+template Greece*(_: type QLocaleCountryEnum): untyped = 85
+template Greenland*(_: type QLocaleCountryEnum): untyped = 86
+template Grenada*(_: type QLocaleCountryEnum): untyped = 87
+template Guadeloupe*(_: type QLocaleCountryEnum): untyped = 88
+template Guam*(_: type QLocaleCountryEnum): untyped = 89
+template Guatemala*(_: type QLocaleCountryEnum): untyped = 90
+template Guinea*(_: type QLocaleCountryEnum): untyped = 91
+template GuineaBissau*(_: type QLocaleCountryEnum): untyped = 92
+template Guyana*(_: type QLocaleCountryEnum): untyped = 93
+template Haiti*(_: type QLocaleCountryEnum): untyped = 94
+template HeardAndMcDonaldIslands*(_: type QLocaleCountryEnum): untyped = 95
+template Honduras*(_: type QLocaleCountryEnum): untyped = 96
+template HongKong*(_: type QLocaleCountryEnum): untyped = 97
+template Hungary*(_: type QLocaleCountryEnum): untyped = 98
+template Iceland*(_: type QLocaleCountryEnum): untyped = 99
+template India*(_: type QLocaleCountryEnum): untyped = 100
+template Indonesia*(_: type QLocaleCountryEnum): untyped = 101
+template Iran*(_: type QLocaleCountryEnum): untyped = 102
+template Iraq*(_: type QLocaleCountryEnum): untyped = 103
+template Ireland*(_: type QLocaleCountryEnum): untyped = 104
+template Israel*(_: type QLocaleCountryEnum): untyped = 105
+template Italy*(_: type QLocaleCountryEnum): untyped = 106
+template Jamaica*(_: type QLocaleCountryEnum): untyped = 107
+template Japan*(_: type QLocaleCountryEnum): untyped = 108
+template Jordan*(_: type QLocaleCountryEnum): untyped = 109
+template Kazakhstan*(_: type QLocaleCountryEnum): untyped = 110
+template Kenya*(_: type QLocaleCountryEnum): untyped = 111
+template Kiribati*(_: type QLocaleCountryEnum): untyped = 112
+template NorthKorea*(_: type QLocaleCountryEnum): untyped = 113
+template SouthKorea*(_: type QLocaleCountryEnum): untyped = 114
+template Kuwait*(_: type QLocaleCountryEnum): untyped = 115
+template Kyrgyzstan*(_: type QLocaleCountryEnum): untyped = 116
+template Laos*(_: type QLocaleCountryEnum): untyped = 117
+template Latvia*(_: type QLocaleCountryEnum): untyped = 118
+template Lebanon*(_: type QLocaleCountryEnum): untyped = 119
+template Lesotho*(_: type QLocaleCountryEnum): untyped = 120
+template Liberia*(_: type QLocaleCountryEnum): untyped = 121
+template Libya*(_: type QLocaleCountryEnum): untyped = 122
+template Liechtenstein*(_: type QLocaleCountryEnum): untyped = 123
+template Lithuania*(_: type QLocaleCountryEnum): untyped = 124
+template Luxembourg*(_: type QLocaleCountryEnum): untyped = 125
+template Macau*(_: type QLocaleCountryEnum): untyped = 126
+template Macedonia*(_: type QLocaleCountryEnum): untyped = 127
+template Madagascar*(_: type QLocaleCountryEnum): untyped = 128
+template Malawi*(_: type QLocaleCountryEnum): untyped = 129
+template Malaysia*(_: type QLocaleCountryEnum): untyped = 130
+template Maldives*(_: type QLocaleCountryEnum): untyped = 131
+template Mali*(_: type QLocaleCountryEnum): untyped = 132
+template Malta*(_: type QLocaleCountryEnum): untyped = 133
+template MarshallIslands*(_: type QLocaleCountryEnum): untyped = 134
+template Martinique*(_: type QLocaleCountryEnum): untyped = 135
+template Mauritania*(_: type QLocaleCountryEnum): untyped = 136
+template Mauritius*(_: type QLocaleCountryEnum): untyped = 137
+template Mayotte*(_: type QLocaleCountryEnum): untyped = 138
+template Mexico*(_: type QLocaleCountryEnum): untyped = 139
+template Micronesia*(_: type QLocaleCountryEnum): untyped = 140
+template Moldova*(_: type QLocaleCountryEnum): untyped = 141
+template Monaco*(_: type QLocaleCountryEnum): untyped = 142
+template Mongolia*(_: type QLocaleCountryEnum): untyped = 143
+template Montserrat*(_: type QLocaleCountryEnum): untyped = 144
+template Morocco*(_: type QLocaleCountryEnum): untyped = 145
+template Mozambique*(_: type QLocaleCountryEnum): untyped = 146
+template Myanmar*(_: type QLocaleCountryEnum): untyped = 147
+template Namibia*(_: type QLocaleCountryEnum): untyped = 148
+template NauruCountry*(_: type QLocaleCountryEnum): untyped = 149
+template Nepal*(_: type QLocaleCountryEnum): untyped = 150
+template Netherlands*(_: type QLocaleCountryEnum): untyped = 151
+template CuraSao*(_: type QLocaleCountryEnum): untyped = 152
+template NewCaledonia*(_: type QLocaleCountryEnum): untyped = 153
+template NewZealand*(_: type QLocaleCountryEnum): untyped = 154
+template Nicaragua*(_: type QLocaleCountryEnum): untyped = 155
+template Niger*(_: type QLocaleCountryEnum): untyped = 156
+template Nigeria*(_: type QLocaleCountryEnum): untyped = 157
+template Niue*(_: type QLocaleCountryEnum): untyped = 158
+template NorfolkIsland*(_: type QLocaleCountryEnum): untyped = 159
+template NorthernMarianaIslands*(_: type QLocaleCountryEnum): untyped = 160
+template Norway*(_: type QLocaleCountryEnum): untyped = 161
+template Oman*(_: type QLocaleCountryEnum): untyped = 162
+template Pakistan*(_: type QLocaleCountryEnum): untyped = 163
+template Palau*(_: type QLocaleCountryEnum): untyped = 164
+template PalestinianTerritories*(_: type QLocaleCountryEnum): untyped = 165
+template Panama*(_: type QLocaleCountryEnum): untyped = 166
+template PapuaNewGuinea*(_: type QLocaleCountryEnum): untyped = 167
+template Paraguay*(_: type QLocaleCountryEnum): untyped = 168
+template Peru*(_: type QLocaleCountryEnum): untyped = 169
+template Philippines*(_: type QLocaleCountryEnum): untyped = 170
+template Pitcairn*(_: type QLocaleCountryEnum): untyped = 171
+template Poland*(_: type QLocaleCountryEnum): untyped = 172
+template Portugal*(_: type QLocaleCountryEnum): untyped = 173
+template PuertoRico*(_: type QLocaleCountryEnum): untyped = 174
+template Qatar*(_: type QLocaleCountryEnum): untyped = 175
+template Reunion*(_: type QLocaleCountryEnum): untyped = 176
+template Romania*(_: type QLocaleCountryEnum): untyped = 177
+template Russia*(_: type QLocaleCountryEnum): untyped = 178
+template Rwanda*(_: type QLocaleCountryEnum): untyped = 179
+template SaintKittsAndNevis*(_: type QLocaleCountryEnum): untyped = 180
+template SaintLucia*(_: type QLocaleCountryEnum): untyped = 181
+template SaintVincentAndTheGrenadines*(_: type QLocaleCountryEnum): untyped = 182
+template Samoa*(_: type QLocaleCountryEnum): untyped = 183
+template SanMarino*(_: type QLocaleCountryEnum): untyped = 184
+template SaoTomeAndPrincipe*(_: type QLocaleCountryEnum): untyped = 185
+template SaudiArabia*(_: type QLocaleCountryEnum): untyped = 186
+template Senegal*(_: type QLocaleCountryEnum): untyped = 187
+template Seychelles*(_: type QLocaleCountryEnum): untyped = 188
+template SierraLeone*(_: type QLocaleCountryEnum): untyped = 189
+template Singapore*(_: type QLocaleCountryEnum): untyped = 190
+template Slovakia*(_: type QLocaleCountryEnum): untyped = 191
+template Slovenia*(_: type QLocaleCountryEnum): untyped = 192
+template SolomonIslands*(_: type QLocaleCountryEnum): untyped = 193
+template Somalia*(_: type QLocaleCountryEnum): untyped = 194
+template SouthAfrica*(_: type QLocaleCountryEnum): untyped = 195
+template SouthGeorgiaAndTheSouthSandwichIslands*(_: type QLocaleCountryEnum): untyped = 196
+template Spain*(_: type QLocaleCountryEnum): untyped = 197
+template SriLanka*(_: type QLocaleCountryEnum): untyped = 198
+template SaintHelena*(_: type QLocaleCountryEnum): untyped = 199
+template SaintPierreAndMiquelon*(_: type QLocaleCountryEnum): untyped = 200
+template Sudan*(_: type QLocaleCountryEnum): untyped = 201
+template Suriname*(_: type QLocaleCountryEnum): untyped = 202
+template SvalbardAndJanMayenIslands*(_: type QLocaleCountryEnum): untyped = 203
+template Swaziland*(_: type QLocaleCountryEnum): untyped = 204
+template Sweden*(_: type QLocaleCountryEnum): untyped = 205
+template Switzerland*(_: type QLocaleCountryEnum): untyped = 206
+template Syria*(_: type QLocaleCountryEnum): untyped = 207
+template Taiwan*(_: type QLocaleCountryEnum): untyped = 208
+template Tajikistan*(_: type QLocaleCountryEnum): untyped = 209
+template Tanzania*(_: type QLocaleCountryEnum): untyped = 210
+template Thailand*(_: type QLocaleCountryEnum): untyped = 211
+template Togo*(_: type QLocaleCountryEnum): untyped = 212
+template TokelauCountry*(_: type QLocaleCountryEnum): untyped = 213
+template Tonga*(_: type QLocaleCountryEnum): untyped = 214
+template TrinidadAndTobago*(_: type QLocaleCountryEnum): untyped = 215
+template Tunisia*(_: type QLocaleCountryEnum): untyped = 216
+template Turkey*(_: type QLocaleCountryEnum): untyped = 217
+template Turkmenistan*(_: type QLocaleCountryEnum): untyped = 218
+template TurksAndCaicosIslands*(_: type QLocaleCountryEnum): untyped = 219
+template TuvaluCountry*(_: type QLocaleCountryEnum): untyped = 220
+template Uganda*(_: type QLocaleCountryEnum): untyped = 221
+template Ukraine*(_: type QLocaleCountryEnum): untyped = 222
+template UnitedArabEmirates*(_: type QLocaleCountryEnum): untyped = 223
+template UnitedKingdom*(_: type QLocaleCountryEnum): untyped = 224
+template UnitedStates*(_: type QLocaleCountryEnum): untyped = 225
+template UnitedStatesMinorOutlyingIslands*(_: type QLocaleCountryEnum): untyped = 226
+template Uruguay*(_: type QLocaleCountryEnum): untyped = 227
+template Uzbekistan*(_: type QLocaleCountryEnum): untyped = 228
+template Vanuatu*(_: type QLocaleCountryEnum): untyped = 229
+template VaticanCityState*(_: type QLocaleCountryEnum): untyped = 230
+template Venezuela*(_: type QLocaleCountryEnum): untyped = 231
+template Vietnam*(_: type QLocaleCountryEnum): untyped = 232
+template BritishVirginIslands*(_: type QLocaleCountryEnum): untyped = 233
+template UnitedStatesVirginIslands*(_: type QLocaleCountryEnum): untyped = 234
+template WallisAndFutunaIslands*(_: type QLocaleCountryEnum): untyped = 235
+template WesternSahara*(_: type QLocaleCountryEnum): untyped = 236
+template Yemen*(_: type QLocaleCountryEnum): untyped = 237
+template CanaryIslands*(_: type QLocaleCountryEnum): untyped = 238
+template Zambia*(_: type QLocaleCountryEnum): untyped = 239
+template Zimbabwe*(_: type QLocaleCountryEnum): untyped = 240
+template ClippertonIsland*(_: type QLocaleCountryEnum): untyped = 241
+template Montenegro*(_: type QLocaleCountryEnum): untyped = 242
+template Serbia*(_: type QLocaleCountryEnum): untyped = 243
+template SaintBarthelemy*(_: type QLocaleCountryEnum): untyped = 244
+template SaintMartin*(_: type QLocaleCountryEnum): untyped = 245
+template LatinAmerica*(_: type QLocaleCountryEnum): untyped = 246
+template AscensionIsland*(_: type QLocaleCountryEnum): untyped = 247
+template AlandIslands*(_: type QLocaleCountryEnum): untyped = 248
+template DiegoGarcia*(_: type QLocaleCountryEnum): untyped = 249
+template CeutaAndMelilla*(_: type QLocaleCountryEnum): untyped = 250
+template IsleOfMan*(_: type QLocaleCountryEnum): untyped = 251
+template Jersey*(_: type QLocaleCountryEnum): untyped = 252
+template TristanDaCunha*(_: type QLocaleCountryEnum): untyped = 253
+template SouthSudan*(_: type QLocaleCountryEnum): untyped = 254
+template Bonaire*(_: type QLocaleCountryEnum): untyped = 255
+template SintMaarten*(_: type QLocaleCountryEnum): untyped = 256
+template Kosovo*(_: type QLocaleCountryEnum): untyped = 257
+template EuropeanUnion*(_: type QLocaleCountryEnum): untyped = 258
+template OutlyingOceania*(_: type QLocaleCountryEnum): untyped = 259
+template World*(_: type QLocaleCountryEnum): untyped = 260
+template Europe*(_: type QLocaleCountryEnum): untyped = 261
+template DemocraticRepublicOfCongo*(_: type QLocaleCountryEnum): untyped = 49
+template DemocraticRepublicOfKorea*(_: type QLocaleCountryEnum): untyped = 113
+template LatinAmericaAndTheCaribbean*(_: type QLocaleCountryEnum): untyped = 246
+template PeoplesRepublicOfCongo*(_: type QLocaleCountryEnum): untyped = 50
+template RepublicOfKorea*(_: type QLocaleCountryEnum): untyped = 114
+template RussianFederation*(_: type QLocaleCountryEnum): untyped = 178
+template SyrianArabRepublic*(_: type QLocaleCountryEnum): untyped = 207
+template Tokelau*(_: type QLocaleCountryEnum): untyped = 213
+template Tuvalu*(_: type QLocaleCountryEnum): untyped = 220
+template LastCountry*(_: type QLocaleCountryEnum): untyped = 261
 
 
-
-type QLocaleMeasurementSystem* = cint
-const
-  QLocaleMetricSystem* = 0
-  QLocaleImperialUSSystem* = 1
-  QLocaleImperialUKSystem* = 2
-  QLocaleImperialSystem* = 1
+type QLocaleMeasurementSystemEnum* = distinct cint
+template MetricSystem*(_: type QLocaleMeasurementSystemEnum): untyped = 0
+template ImperialUSSystem*(_: type QLocaleMeasurementSystemEnum): untyped = 1
+template ImperialUKSystem*(_: type QLocaleMeasurementSystemEnum): untyped = 2
+template ImperialSystem*(_: type QLocaleMeasurementSystemEnum): untyped = 1
 
 
-
-type QLocaleFormatType* = cint
-const
-  QLocaleLongFormat* = 0
-  QLocaleShortFormat* = 1
-  QLocaleNarrowFormat* = 2
+type QLocaleFormatTypeEnum* = distinct cint
+template LongFormat*(_: type QLocaleFormatTypeEnum): untyped = 0
+template ShortFormat*(_: type QLocaleFormatTypeEnum): untyped = 1
+template NarrowFormat*(_: type QLocaleFormatTypeEnum): untyped = 2
 
 
-
-type QLocaleNumberOption* = cint
-const
-  QLocaleDefaultNumberOptions* = 0
-  QLocaleOmitGroupSeparator* = 1
-  QLocaleRejectGroupSeparator* = 2
-  QLocaleOmitLeadingZeroInExponent* = 4
-  QLocaleRejectLeadingZeroInExponent* = 8
-  QLocaleIncludeTrailingZeroesAfterDot* = 16
-  QLocaleRejectTrailingZeroesAfterDot* = 32
+type QLocaleNumberOptionEnum* = distinct cint
+template DefaultNumberOptions*(_: type QLocaleNumberOptionEnum): untyped = 0
+template OmitGroupSeparator*(_: type QLocaleNumberOptionEnum): untyped = 1
+template RejectGroupSeparator*(_: type QLocaleNumberOptionEnum): untyped = 2
+template OmitLeadingZeroInExponent*(_: type QLocaleNumberOptionEnum): untyped = 4
+template RejectLeadingZeroInExponent*(_: type QLocaleNumberOptionEnum): untyped = 8
+template IncludeTrailingZeroesAfterDot*(_: type QLocaleNumberOptionEnum): untyped = 16
+template RejectTrailingZeroesAfterDot*(_: type QLocaleNumberOptionEnum): untyped = 32
 
 
-
-type QLocaleFloatingPointPrecisionOption* = cint
-const
-  QLocaleFloatingPointShortest* = -128
+type QLocaleFloatingPointPrecisionOptionEnum* = distinct cint
+template FloatingPointShortest*(_: type QLocaleFloatingPointPrecisionOptionEnum): untyped = -128
 
 
-
-type QLocaleCurrencySymbolFormat* = cint
-const
-  QLocaleCurrencyIsoCode* = 0
-  QLocaleCurrencySymbol* = 1
-  QLocaleCurrencyDisplayName* = 2
+type QLocaleCurrencySymbolFormatEnum* = distinct cint
+template CurrencyIsoCode*(_: type QLocaleCurrencySymbolFormatEnum): untyped = 0
+template CurrencySymbol*(_: type QLocaleCurrencySymbolFormatEnum): untyped = 1
+template CurrencyDisplayName*(_: type QLocaleCurrencySymbolFormatEnum): untyped = 2
 
 
-
-type QLocaleDataSizeFormat* = cint
-const
-  QLocaleDataSizeBase1000* = 1
-  QLocaleDataSizeSIQuantifiers* = 2
-  QLocaleDataSizeIecFormat* = 0
-  QLocaleDataSizeTraditionalFormat* = 2
-  QLocaleDataSizeSIFormat* = 3
+type QLocaleDataSizeFormatEnum* = distinct cint
+template DataSizeBase1000*(_: type QLocaleDataSizeFormatEnum): untyped = 1
+template DataSizeSIQuantifiers*(_: type QLocaleDataSizeFormatEnum): untyped = 2
+template DataSizeIecFormat*(_: type QLocaleDataSizeFormatEnum): untyped = 0
+template DataSizeTraditionalFormat*(_: type QLocaleDataSizeFormatEnum): untyped = 2
+template DataSizeSIFormat*(_: type QLocaleDataSizeFormatEnum): untyped = 3
 
 
-
-type QLocaleQuotationStyle* = cint
-const
-  QLocaleStandardQuotation* = 0
-  QLocaleAlternateQuotation* = 1
-
+type QLocaleQuotationStyleEnum* = distinct cint
+template StandardQuotation*(_: type QLocaleQuotationStyleEnum): untyped = 0
+template AlternateQuotation*(_: type QLocaleQuotationStyleEnum): untyped = 1
 
 
 import gen_qlocale_types
@@ -919,13 +899,11 @@ import
   gen_qcalendar,
   gen_qchar,
   gen_qdatetime,
-  gen_qnamespace,
   gen_qobjectdefs
 export
   gen_qcalendar,
   gen_qchar,
   gen_qdatetime,
-  gen_qnamespace,
   gen_qobjectdefs
 
 type cQLocale*{.exportc: "QLocale", incompleteStruct.} = object
@@ -1081,510 +1059,510 @@ proc fcQLocale_staticMetaObject(): pointer {.importc: "QLocale_staticMetaObject"
 proc fcQLocale_delete(self: pointer) {.importc: "QLocale_delete".}
 
 
-func init*(T: type QLocale, h: ptr cQLocale): QLocale =
+func init*(T: type gen_qlocale_types.QLocale, h: ptr cQLocale): gen_qlocale_types.QLocale =
   T(h: h)
-proc create*(T: type QLocale, ): QLocale =
+proc create*(T: type gen_qlocale_types.QLocale, ): gen_qlocale_types.QLocale =
 
-  QLocale.init(fcQLocale_new())
-proc create*(T: type QLocale, name: string): QLocale =
+  gen_qlocale_types.QLocale.init(fcQLocale_new())
+proc create*(T: type gen_qlocale_types.QLocale, name: string): gen_qlocale_types.QLocale =
 
-  QLocale.init(fcQLocale_new2(struct_miqt_string(data: name, len: csize_t(len(name)))))
-proc create*(T: type QLocale, language: QLocaleLanguage): QLocale =
+  gen_qlocale_types.QLocale.init(fcQLocale_new2(struct_miqt_string(data: name, len: csize_t(len(name)))))
+proc create*(T: type gen_qlocale_types.QLocale, language: cint): gen_qlocale_types.QLocale =
 
-  QLocale.init(fcQLocale_new3(cint(language)))
-proc create*(T: type QLocale, language: QLocaleLanguage, script: QLocaleScript, country: QLocaleCountry): QLocale =
+  gen_qlocale_types.QLocale.init(fcQLocale_new3(cint(language)))
+proc create*(T: type gen_qlocale_types.QLocale, language: cint, script: cint, country: cint): gen_qlocale_types.QLocale =
 
-  QLocale.init(fcQLocale_new4(cint(language), cint(script), cint(country)))
-proc create*(T: type QLocale, other: QLocale): QLocale =
+  gen_qlocale_types.QLocale.init(fcQLocale_new4(cint(language), cint(script), cint(country)))
+proc create*(T: type gen_qlocale_types.QLocale, other: gen_qlocale_types.QLocale): gen_qlocale_types.QLocale =
 
-  QLocale.init(fcQLocale_new5(other.h))
-proc create*(T: type QLocale, language: QLocaleLanguage, country: QLocaleCountry): QLocale =
+  gen_qlocale_types.QLocale.init(fcQLocale_new5(other.h))
+proc create*(T: type gen_qlocale_types.QLocale, language: cint, country: cint): gen_qlocale_types.QLocale =
 
-  QLocale.init(fcQLocale_new6(cint(language), cint(country)))
-proc operatorAssign*(self: QLocale, other: QLocale): void =
+  gen_qlocale_types.QLocale.init(fcQLocale_new6(cint(language), cint(country)))
+proc operatorAssign*(self: gen_qlocale_types.QLocale, other: gen_qlocale_types.QLocale): void =
 
   fcQLocale_operatorAssign(self.h, other.h)
 
-proc swap*(self: QLocale, other: QLocale): void =
+proc swap*(self: gen_qlocale_types.QLocale, other: gen_qlocale_types.QLocale): void =
 
   fcQLocale_swap(self.h, other.h)
 
-proc language*(self: QLocale, ): QLocaleLanguage =
+proc language*(self: gen_qlocale_types.QLocale, ): cint =
 
-  QLocaleLanguage(fcQLocale_language(self.h))
+  cint(fcQLocale_language(self.h))
 
-proc script*(self: QLocale, ): QLocaleScript =
+proc script*(self: gen_qlocale_types.QLocale, ): cint =
 
-  QLocaleScript(fcQLocale_script(self.h))
+  cint(fcQLocale_script(self.h))
 
-proc country*(self: QLocale, ): QLocaleCountry =
+proc country*(self: gen_qlocale_types.QLocale, ): cint =
 
-  QLocaleCountry(fcQLocale_country(self.h))
+  cint(fcQLocale_country(self.h))
 
-proc name*(self: QLocale, ): string =
+proc name*(self: gen_qlocale_types.QLocale, ): string =
 
   let v_ms = fcQLocale_name(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc bcp47Name*(self: QLocale, ): string =
+proc bcp47Name*(self: gen_qlocale_types.QLocale, ): string =
 
   let v_ms = fcQLocale_bcp47Name(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc nativeLanguageName*(self: QLocale, ): string =
+proc nativeLanguageName*(self: gen_qlocale_types.QLocale, ): string =
 
   let v_ms = fcQLocale_nativeLanguageName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc nativeCountryName*(self: QLocale, ): string =
+proc nativeCountryName*(self: gen_qlocale_types.QLocale, ): string =
 
   let v_ms = fcQLocale_nativeCountryName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc toShort*(self: QLocale, s: string): cshort =
+proc toShort*(self: gen_qlocale_types.QLocale, s: string): cshort =
 
   fcQLocale_toShort(self.h, struct_miqt_string(data: s, len: csize_t(len(s))))
 
-proc toUShort*(self: QLocale, s: string): cushort =
+proc toUShort*(self: gen_qlocale_types.QLocale, s: string): cushort =
 
   fcQLocale_toUShort(self.h, struct_miqt_string(data: s, len: csize_t(len(s))))
 
-proc toInt*(self: QLocale, s: string): cint =
+proc toInt*(self: gen_qlocale_types.QLocale, s: string): cint =
 
   fcQLocale_toInt(self.h, struct_miqt_string(data: s, len: csize_t(len(s))))
 
-proc toUInt*(self: QLocale, s: string): cuint =
+proc toUInt*(self: gen_qlocale_types.QLocale, s: string): cuint =
 
   fcQLocale_toUInt(self.h, struct_miqt_string(data: s, len: csize_t(len(s))))
 
-proc toLong*(self: QLocale, s: string): clong =
+proc toLong*(self: gen_qlocale_types.QLocale, s: string): clong =
 
   fcQLocale_toLong(self.h, struct_miqt_string(data: s, len: csize_t(len(s))))
 
-proc toULong*(self: QLocale, s: string): culong =
+proc toULong*(self: gen_qlocale_types.QLocale, s: string): culong =
 
   fcQLocale_toULong(self.h, struct_miqt_string(data: s, len: csize_t(len(s))))
 
-proc toLongLong*(self: QLocale, s: string): clonglong =
+proc toLongLong*(self: gen_qlocale_types.QLocale, s: string): clonglong =
 
   fcQLocale_toLongLong(self.h, struct_miqt_string(data: s, len: csize_t(len(s))))
 
-proc toULongLong*(self: QLocale, s: string): culonglong =
+proc toULongLong*(self: gen_qlocale_types.QLocale, s: string): culonglong =
 
   fcQLocale_toULongLong(self.h, struct_miqt_string(data: s, len: csize_t(len(s))))
 
-proc toFloat*(self: QLocale, s: string): float32 =
+proc toFloat*(self: gen_qlocale_types.QLocale, s: string): float32 =
 
   fcQLocale_toFloat(self.h, struct_miqt_string(data: s, len: csize_t(len(s))))
 
-proc toDouble*(self: QLocale, s: string): float64 =
+proc toDouble*(self: gen_qlocale_types.QLocale, s: string): float64 =
 
   fcQLocale_toDouble(self.h, struct_miqt_string(data: s, len: csize_t(len(s))))
 
-proc toString*(self: QLocale, i: clonglong): string =
+proc toString*(self: gen_qlocale_types.QLocale, i: clonglong): string =
 
   let v_ms = fcQLocale_toString(self.h, i)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc toStringWithQulonglong*(self: QLocale, i: culonglong): string =
+proc toStringWithQulonglong*(self: gen_qlocale_types.QLocale, i: culonglong): string =
 
   let v_ms = fcQLocale_toStringWithQulonglong(self.h, i)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc toStringWithLong*(self: QLocale, i: clong): string =
+proc toStringWithLong*(self: gen_qlocale_types.QLocale, i: clong): string =
 
   let v_ms = fcQLocale_toStringWithLong(self.h, i)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc toStringWithUlong*(self: QLocale, i: culong): string =
+proc toStringWithUlong*(self: gen_qlocale_types.QLocale, i: culong): string =
 
   let v_ms = fcQLocale_toStringWithUlong(self.h, i)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc toStringWithShort*(self: QLocale, i: cshort): string =
+proc toStringWithShort*(self: gen_qlocale_types.QLocale, i: cshort): string =
 
   let v_ms = fcQLocale_toStringWithShort(self.h, i)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc toStringWithUshort*(self: QLocale, i: cushort): string =
+proc toStringWithUshort*(self: gen_qlocale_types.QLocale, i: cushort): string =
 
   let v_ms = fcQLocale_toStringWithUshort(self.h, i)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc toStringWithInt*(self: QLocale, i: cint): string =
+proc toStringWithInt*(self: gen_qlocale_types.QLocale, i: cint): string =
 
   let v_ms = fcQLocale_toStringWithInt(self.h, i)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc toStringWithUint*(self: QLocale, i: cuint): string =
+proc toStringWithUint*(self: gen_qlocale_types.QLocale, i: cuint): string =
 
   let v_ms = fcQLocale_toStringWithUint(self.h, i)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc toStringWithDouble*(self: QLocale, i: float64): string =
+proc toStringWithDouble*(self: gen_qlocale_types.QLocale, i: float64): string =
 
   let v_ms = fcQLocale_toStringWithDouble(self.h, i)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc toStringWithFloat*(self: QLocale, i: float32): string =
+proc toStringWithFloat*(self: gen_qlocale_types.QLocale, i: float32): string =
 
   let v_ms = fcQLocale_toStringWithFloat(self.h, i)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc toString2*(self: QLocale, date: gen_qdatetime.QDate, formatStr: string): string =
+proc toString2*(self: gen_qlocale_types.QLocale, date: gen_qdatetime.QDate, formatStr: string): string =
 
   let v_ms = fcQLocale_toString2(self.h, date.h, struct_miqt_string(data: formatStr, len: csize_t(len(formatStr))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc toString3*(self: QLocale, time: gen_qdatetime.QTime, formatStr: string): string =
+proc toString3*(self: gen_qlocale_types.QLocale, time: gen_qdatetime.QTime, formatStr: string): string =
 
   let v_ms = fcQLocale_toString3(self.h, time.h, struct_miqt_string(data: formatStr, len: csize_t(len(formatStr))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc toString4*(self: QLocale, dateTime: gen_qdatetime.QDateTime, format: string): string =
+proc toString4*(self: gen_qlocale_types.QLocale, dateTime: gen_qdatetime.QDateTime, format: string): string =
 
   let v_ms = fcQLocale_toString4(self.h, dateTime.h, struct_miqt_string(data: format, len: csize_t(len(format))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc toStringWithDate*(self: QLocale, date: gen_qdatetime.QDate): string =
+proc toStringWithDate*(self: gen_qlocale_types.QLocale, date: gen_qdatetime.QDate): string =
 
   let v_ms = fcQLocale_toStringWithDate(self.h, date.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc toStringWithTime*(self: QLocale, time: gen_qdatetime.QTime): string =
+proc toStringWithTime*(self: gen_qlocale_types.QLocale, time: gen_qdatetime.QTime): string =
 
   let v_ms = fcQLocale_toStringWithTime(self.h, time.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc toStringWithDateTime*(self: QLocale, dateTime: gen_qdatetime.QDateTime): string =
+proc toStringWithDateTime*(self: gen_qlocale_types.QLocale, dateTime: gen_qdatetime.QDateTime): string =
 
   let v_ms = fcQLocale_toStringWithDateTime(self.h, dateTime.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc toString9*(self: QLocale, date: gen_qdatetime.QDate, format: QLocaleFormatType, cal: gen_qcalendar.QCalendar): string =
+proc toString9*(self: gen_qlocale_types.QLocale, date: gen_qdatetime.QDate, format: cint, cal: gen_qcalendar.QCalendar): string =
 
   let v_ms = fcQLocale_toString9(self.h, date.h, cint(format), cal.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc toString10*(self: QLocale, dateTime: gen_qdatetime.QDateTime, format: QLocaleFormatType, cal: gen_qcalendar.QCalendar): string =
+proc toString10*(self: gen_qlocale_types.QLocale, dateTime: gen_qdatetime.QDateTime, format: cint, cal: gen_qcalendar.QCalendar): string =
 
   let v_ms = fcQLocale_toString10(self.h, dateTime.h, cint(format), cal.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc dateFormat*(self: QLocale, ): string =
+proc dateFormat*(self: gen_qlocale_types.QLocale, ): string =
 
   let v_ms = fcQLocale_dateFormat(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc timeFormat*(self: QLocale, ): string =
+proc timeFormat*(self: gen_qlocale_types.QLocale, ): string =
 
   let v_ms = fcQLocale_timeFormat(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc dateTimeFormat*(self: QLocale, ): string =
+proc dateTimeFormat*(self: gen_qlocale_types.QLocale, ): string =
 
   let v_ms = fcQLocale_dateTimeFormat(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc toDate*(self: QLocale, string: string): gen_qdatetime.QDate =
+proc toDate*(self: gen_qlocale_types.QLocale, string: string): gen_qdatetime.QDate =
 
   gen_qdatetime.QDate(h: fcQLocale_toDate(self.h, struct_miqt_string(data: string, len: csize_t(len(string)))))
 
-proc toTime*(self: QLocale, string: string): gen_qdatetime.QTime =
+proc toTime*(self: gen_qlocale_types.QLocale, string: string): gen_qdatetime.QTime =
 
   gen_qdatetime.QTime(h: fcQLocale_toTime(self.h, struct_miqt_string(data: string, len: csize_t(len(string)))))
 
-proc toDateTime*(self: QLocale, string: string): gen_qdatetime.QDateTime =
+proc toDateTime*(self: gen_qlocale_types.QLocale, string: string): gen_qdatetime.QDateTime =
 
   gen_qdatetime.QDateTime(h: fcQLocale_toDateTime(self.h, struct_miqt_string(data: string, len: csize_t(len(string)))))
 
-proc toDate2*(self: QLocale, string: string, format: string): gen_qdatetime.QDate =
+proc toDate2*(self: gen_qlocale_types.QLocale, string: string, format: string): gen_qdatetime.QDate =
 
   gen_qdatetime.QDate(h: fcQLocale_toDate2(self.h, struct_miqt_string(data: string, len: csize_t(len(string))), struct_miqt_string(data: format, len: csize_t(len(format)))))
 
-proc toTime2*(self: QLocale, string: string, format: string): gen_qdatetime.QTime =
+proc toTime2*(self: gen_qlocale_types.QLocale, string: string, format: string): gen_qdatetime.QTime =
 
   gen_qdatetime.QTime(h: fcQLocale_toTime2(self.h, struct_miqt_string(data: string, len: csize_t(len(string))), struct_miqt_string(data: format, len: csize_t(len(format)))))
 
-proc toDateTime2*(self: QLocale, string: string, format: string): gen_qdatetime.QDateTime =
+proc toDateTime2*(self: gen_qlocale_types.QLocale, string: string, format: string): gen_qdatetime.QDateTime =
 
   gen_qdatetime.QDateTime(h: fcQLocale_toDateTime2(self.h, struct_miqt_string(data: string, len: csize_t(len(string))), struct_miqt_string(data: format, len: csize_t(len(format)))))
 
-proc toDate3*(self: QLocale, string: string, format: QLocaleFormatType, cal: gen_qcalendar.QCalendar): gen_qdatetime.QDate =
+proc toDate3*(self: gen_qlocale_types.QLocale, string: string, format: cint, cal: gen_qcalendar.QCalendar): gen_qdatetime.QDate =
 
   gen_qdatetime.QDate(h: fcQLocale_toDate3(self.h, struct_miqt_string(data: string, len: csize_t(len(string))), cint(format), cal.h))
 
-proc toDateTime3*(self: QLocale, string: string, format: QLocaleFormatType, cal: gen_qcalendar.QCalendar): gen_qdatetime.QDateTime =
+proc toDateTime3*(self: gen_qlocale_types.QLocale, string: string, format: cint, cal: gen_qcalendar.QCalendar): gen_qdatetime.QDateTime =
 
   gen_qdatetime.QDateTime(h: fcQLocale_toDateTime3(self.h, struct_miqt_string(data: string, len: csize_t(len(string))), cint(format), cal.h))
 
-proc toDate4*(self: QLocale, string: string, format: string, cal: gen_qcalendar.QCalendar): gen_qdatetime.QDate =
+proc toDate4*(self: gen_qlocale_types.QLocale, string: string, format: string, cal: gen_qcalendar.QCalendar): gen_qdatetime.QDate =
 
   gen_qdatetime.QDate(h: fcQLocale_toDate4(self.h, struct_miqt_string(data: string, len: csize_t(len(string))), struct_miqt_string(data: format, len: csize_t(len(format))), cal.h))
 
-proc toDateTime4*(self: QLocale, string: string, format: string, cal: gen_qcalendar.QCalendar): gen_qdatetime.QDateTime =
+proc toDateTime4*(self: gen_qlocale_types.QLocale, string: string, format: string, cal: gen_qcalendar.QCalendar): gen_qdatetime.QDateTime =
 
   gen_qdatetime.QDateTime(h: fcQLocale_toDateTime4(self.h, struct_miqt_string(data: string, len: csize_t(len(string))), struct_miqt_string(data: format, len: csize_t(len(format))), cal.h))
 
-proc toTime3*(self: QLocale, string: string, format: QLocaleFormatType, cal: gen_qcalendar.QCalendar): gen_qdatetime.QTime =
+proc toTime3*(self: gen_qlocale_types.QLocale, string: string, format: cint, cal: gen_qcalendar.QCalendar): gen_qdatetime.QTime =
 
   gen_qdatetime.QTime(h: fcQLocale_toTime3(self.h, struct_miqt_string(data: string, len: csize_t(len(string))), cint(format), cal.h))
 
-proc toTime4*(self: QLocale, string: string, format: string, cal: gen_qcalendar.QCalendar): gen_qdatetime.QTime =
+proc toTime4*(self: gen_qlocale_types.QLocale, string: string, format: string, cal: gen_qcalendar.QCalendar): gen_qdatetime.QTime =
 
   gen_qdatetime.QTime(h: fcQLocale_toTime4(self.h, struct_miqt_string(data: string, len: csize_t(len(string))), struct_miqt_string(data: format, len: csize_t(len(format))), cal.h))
 
-proc decimalPoint*(self: QLocale, ): gen_qchar.QChar =
+proc decimalPoint*(self: gen_qlocale_types.QLocale, ): gen_qchar.QChar =
 
   gen_qchar.QChar(h: fcQLocale_decimalPoint(self.h))
 
-proc groupSeparator*(self: QLocale, ): gen_qchar.QChar =
+proc groupSeparator*(self: gen_qlocale_types.QLocale, ): gen_qchar.QChar =
 
   gen_qchar.QChar(h: fcQLocale_groupSeparator(self.h))
 
-proc percent*(self: QLocale, ): gen_qchar.QChar =
+proc percent*(self: gen_qlocale_types.QLocale, ): gen_qchar.QChar =
 
   gen_qchar.QChar(h: fcQLocale_percent(self.h))
 
-proc zeroDigit*(self: QLocale, ): gen_qchar.QChar =
+proc zeroDigit*(self: gen_qlocale_types.QLocale, ): gen_qchar.QChar =
 
   gen_qchar.QChar(h: fcQLocale_zeroDigit(self.h))
 
-proc negativeSign*(self: QLocale, ): gen_qchar.QChar =
+proc negativeSign*(self: gen_qlocale_types.QLocale, ): gen_qchar.QChar =
 
   gen_qchar.QChar(h: fcQLocale_negativeSign(self.h))
 
-proc positiveSign*(self: QLocale, ): gen_qchar.QChar =
+proc positiveSign*(self: gen_qlocale_types.QLocale, ): gen_qchar.QChar =
 
   gen_qchar.QChar(h: fcQLocale_positiveSign(self.h))
 
-proc exponential*(self: QLocale, ): gen_qchar.QChar =
+proc exponential*(self: gen_qlocale_types.QLocale, ): gen_qchar.QChar =
 
   gen_qchar.QChar(h: fcQLocale_exponential(self.h))
 
-proc monthName*(self: QLocale, param1: cint): string =
+proc monthName*(self: gen_qlocale_types.QLocale, param1: cint): string =
 
   let v_ms = fcQLocale_monthName(self.h, param1)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc standaloneMonthName*(self: QLocale, param1: cint): string =
+proc standaloneMonthName*(self: gen_qlocale_types.QLocale, param1: cint): string =
 
   let v_ms = fcQLocale_standaloneMonthName(self.h, param1)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc dayName*(self: QLocale, param1: cint): string =
+proc dayName*(self: gen_qlocale_types.QLocale, param1: cint): string =
 
   let v_ms = fcQLocale_dayName(self.h, param1)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc standaloneDayName*(self: QLocale, param1: cint): string =
+proc standaloneDayName*(self: gen_qlocale_types.QLocale, param1: cint): string =
 
   let v_ms = fcQLocale_standaloneDayName(self.h, param1)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc firstDayOfWeek*(self: QLocale, ): gen_qnamespace.DayOfWeek =
+proc firstDayOfWeek*(self: gen_qlocale_types.QLocale, ): cint =
 
-  gen_qnamespace.DayOfWeek(fcQLocale_firstDayOfWeek(self.h))
+  cint(fcQLocale_firstDayOfWeek(self.h))
 
-proc weekdays*(self: QLocale, ): seq[gen_qnamespace.DayOfWeek] =
+proc weekdays*(self: gen_qlocale_types.QLocale, ): seq[cint] =
 
   var v_ma = fcQLocale_weekdays(self.h)
-  var vx_ret = newSeq[gen_qnamespace.DayOfWeek](int(v_ma.len))
+  var vx_ret = newSeq[cint](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[cint]](v_ma.data)
   for i in 0 ..< v_ma.len:
-    vx_ret[i] = gen_qnamespace.DayOfWeek(v_outCast[i])
+    vx_ret[i] = cint(v_outCast[i])
   vx_ret
 
-proc amText*(self: QLocale, ): string =
+proc amText*(self: gen_qlocale_types.QLocale, ): string =
 
   let v_ms = fcQLocale_amText(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc pmText*(self: QLocale, ): string =
+proc pmText*(self: gen_qlocale_types.QLocale, ): string =
 
   let v_ms = fcQLocale_pmText(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc measurementSystem*(self: QLocale, ): QLocaleMeasurementSystem =
+proc measurementSystem*(self: gen_qlocale_types.QLocale, ): cint =
 
-  QLocaleMeasurementSystem(fcQLocale_measurementSystem(self.h))
+  cint(fcQLocale_measurementSystem(self.h))
 
-proc collation*(self: QLocale, ): QLocale =
+proc collation*(self: gen_qlocale_types.QLocale, ): gen_qlocale_types.QLocale =
 
-  QLocale(h: fcQLocale_collation(self.h))
+  gen_qlocale_types.QLocale(h: fcQLocale_collation(self.h))
 
-proc textDirection*(self: QLocale, ): gen_qnamespace.LayoutDirection =
+proc textDirection*(self: gen_qlocale_types.QLocale, ): cint =
 
-  gen_qnamespace.LayoutDirection(fcQLocale_textDirection(self.h))
+  cint(fcQLocale_textDirection(self.h))
 
-proc toUpper*(self: QLocale, str: string): string =
+proc toUpper*(self: gen_qlocale_types.QLocale, str: string): string =
 
   let v_ms = fcQLocale_toUpper(self.h, struct_miqt_string(data: str, len: csize_t(len(str))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc toLower*(self: QLocale, str: string): string =
+proc toLower*(self: gen_qlocale_types.QLocale, str: string): string =
 
   let v_ms = fcQLocale_toLower(self.h, struct_miqt_string(data: str, len: csize_t(len(str))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc currencySymbol*(self: QLocale, ): string =
+proc currencySymbol*(self: gen_qlocale_types.QLocale, ): string =
 
   let v_ms = fcQLocale_currencySymbol(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc toCurrencyString*(self: QLocale, param1: clonglong): string =
+proc toCurrencyString*(self: gen_qlocale_types.QLocale, param1: clonglong): string =
 
   let v_ms = fcQLocale_toCurrencyString(self.h, param1)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc toCurrencyStringWithQulonglong*(self: QLocale, param1: culonglong): string =
+proc toCurrencyStringWithQulonglong*(self: gen_qlocale_types.QLocale, param1: culonglong): string =
 
   let v_ms = fcQLocale_toCurrencyStringWithQulonglong(self.h, param1)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc toCurrencyStringWithShort*(self: QLocale, param1: cshort): string =
+proc toCurrencyStringWithShort*(self: gen_qlocale_types.QLocale, param1: cshort): string =
 
   let v_ms = fcQLocale_toCurrencyStringWithShort(self.h, param1)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc toCurrencyStringWithUshort*(self: QLocale, param1: cushort): string =
+proc toCurrencyStringWithUshort*(self: gen_qlocale_types.QLocale, param1: cushort): string =
 
   let v_ms = fcQLocale_toCurrencyStringWithUshort(self.h, param1)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc toCurrencyStringWithInt*(self: QLocale, param1: cint): string =
+proc toCurrencyStringWithInt*(self: gen_qlocale_types.QLocale, param1: cint): string =
 
   let v_ms = fcQLocale_toCurrencyStringWithInt(self.h, param1)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc toCurrencyStringWithUint*(self: QLocale, param1: cuint): string =
+proc toCurrencyStringWithUint*(self: gen_qlocale_types.QLocale, param1: cuint): string =
 
   let v_ms = fcQLocale_toCurrencyStringWithUint(self.h, param1)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc toCurrencyStringWithDouble*(self: QLocale, param1: float64): string =
+proc toCurrencyStringWithDouble*(self: gen_qlocale_types.QLocale, param1: float64): string =
 
   let v_ms = fcQLocale_toCurrencyStringWithDouble(self.h, param1)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc toCurrencyString2*(self: QLocale, param1: float64, symbol: string, precision: cint): string =
+proc toCurrencyString2*(self: gen_qlocale_types.QLocale, param1: float64, symbol: string, precision: cint): string =
 
   let v_ms = fcQLocale_toCurrencyString2(self.h, param1, struct_miqt_string(data: symbol, len: csize_t(len(symbol))), precision)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc toCurrencyStringWithFloat*(self: QLocale, i: float32): string =
+proc toCurrencyStringWithFloat*(self: gen_qlocale_types.QLocale, i: float32): string =
 
   let v_ms = fcQLocale_toCurrencyStringWithFloat(self.h, i)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc toCurrencyString3*(self: QLocale, i: float32, symbol: string, precision: cint): string =
+proc toCurrencyString3*(self: gen_qlocale_types.QLocale, i: float32, symbol: string, precision: cint): string =
 
   let v_ms = fcQLocale_toCurrencyString3(self.h, i, struct_miqt_string(data: symbol, len: csize_t(len(symbol))), precision)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc formattedDataSize*(self: QLocale, bytes: clonglong): string =
+proc formattedDataSize*(self: gen_qlocale_types.QLocale, bytes: clonglong): string =
 
   let v_ms = fcQLocale_formattedDataSize(self.h, bytes)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc formattedDataSizeWithBytes*(self: QLocale, bytes: clonglong): string =
+proc formattedDataSizeWithBytes*(self: gen_qlocale_types.QLocale, bytes: clonglong): string =
 
   let v_ms = fcQLocale_formattedDataSizeWithBytes(self.h, bytes)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc uiLanguages*(self: QLocale, ): seq[string] =
+proc uiLanguages*(self: gen_qlocale_types.QLocale, ): seq[string] =
 
   var v_ma = fcQLocale_uiLanguages(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -1596,81 +1574,81 @@ proc uiLanguages*(self: QLocale, ): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc operatorEqual*(self: QLocale, other: QLocale): bool =
+proc operatorEqual*(self: gen_qlocale_types.QLocale, other: gen_qlocale_types.QLocale): bool =
 
   fcQLocale_operatorEqual(self.h, other.h)
 
-proc operatorNotEqual*(self: QLocale, other: QLocale): bool =
+proc operatorNotEqual*(self: gen_qlocale_types.QLocale, other: gen_qlocale_types.QLocale): bool =
 
   fcQLocale_operatorNotEqual(self.h, other.h)
 
-proc languageToString*(_: type QLocale, language: QLocaleLanguage): string =
+proc languageToString*(_: type gen_qlocale_types.QLocale, language: cint): string =
 
   let v_ms = fcQLocale_languageToString(cint(language))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc countryToString*(_: type QLocale, country: QLocaleCountry): string =
+proc countryToString*(_: type gen_qlocale_types.QLocale, country: cint): string =
 
   let v_ms = fcQLocale_countryToString(cint(country))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc scriptToString*(_: type QLocale, script: QLocaleScript): string =
+proc scriptToString*(_: type gen_qlocale_types.QLocale, script: cint): string =
 
   let v_ms = fcQLocale_scriptToString(cint(script))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setDefault*(_: type QLocale, locale: QLocale): void =
+proc setDefault*(_: type gen_qlocale_types.QLocale, locale: gen_qlocale_types.QLocale): void =
 
   fcQLocale_setDefault(locale.h)
 
-proc c*(_: type QLocale, ): QLocale =
+proc c*(_: type gen_qlocale_types.QLocale, ): gen_qlocale_types.QLocale =
 
-  QLocale(h: fcQLocale_c())
+  gen_qlocale_types.QLocale(h: fcQLocale_c())
 
-proc system*(_: type QLocale, ): QLocale =
+proc system*(_: type gen_qlocale_types.QLocale, ): gen_qlocale_types.QLocale =
 
-  QLocale(h: fcQLocale_system())
+  gen_qlocale_types.QLocale(h: fcQLocale_system())
 
-proc matchingLocales*(_: type QLocale, language: QLocaleLanguage, script: QLocaleScript, country: QLocaleCountry): seq[QLocale] =
+proc matchingLocales*(_: type gen_qlocale_types.QLocale, language: cint, script: cint, country: cint): seq[gen_qlocale_types.QLocale] =
 
   var v_ma = fcQLocale_matchingLocales(cint(language), cint(script), cint(country))
-  var vx_ret = newSeq[QLocale](int(v_ma.len))
+  var vx_ret = newSeq[gen_qlocale_types.QLocale](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
-    vx_ret[i] = QLocale(h: v_outCast[i])
+    vx_ret[i] = gen_qlocale_types.QLocale(h: v_outCast[i])
   vx_ret
 
-proc countriesForLanguage*(_: type QLocale, lang: QLocaleLanguage): seq[QLocaleCountry] =
+proc countriesForLanguage*(_: type gen_qlocale_types.QLocale, lang: cint): seq[cint] =
 
   var v_ma = fcQLocale_countriesForLanguage(cint(lang))
-  var vx_ret = newSeq[QLocaleCountry](int(v_ma.len))
+  var vx_ret = newSeq[cint](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[cint]](v_ma.data)
   for i in 0 ..< v_ma.len:
-    vx_ret[i] = QLocaleCountry(v_outCast[i])
+    vx_ret[i] = cint(v_outCast[i])
   vx_ret
 
-proc setNumberOptions*(self: QLocale, options: QLocaleNumberOption): void =
+proc setNumberOptions*(self: gen_qlocale_types.QLocale, options: cint): void =
 
   fcQLocale_setNumberOptions(self.h, cint(options))
 
-proc numberOptions*(self: QLocale, ): QLocaleNumberOption =
+proc numberOptions*(self: gen_qlocale_types.QLocale, ): cint =
 
-  QLocaleNumberOption(fcQLocale_numberOptions(self.h))
+  cint(fcQLocale_numberOptions(self.h))
 
-proc quoteString*(self: QLocale, str: string): string =
+proc quoteString*(self: gen_qlocale_types.QLocale, str: string): string =
 
   let v_ms = fcQLocale_quoteString(self.h, struct_miqt_string(data: str, len: csize_t(len(str))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc createSeparatedList*(self: QLocale, strl: seq[string]): string =
+proc createSeparatedList*(self: gen_qlocale_types.QLocale, strl: seq[string]): string =
 
   var strl_CArray = newSeq[struct_miqt_string](len(strl))
   for i in 0..<len(strl):
@@ -1681,255 +1659,255 @@ proc createSeparatedList*(self: QLocale, strl: seq[string]): string =
   c_free(v_ms.data)
   vx_ret
 
-proc toShort2*(self: QLocale, s: string, ok: ptr bool): cshort =
+proc toShort2*(self: gen_qlocale_types.QLocale, s: string, ok: ptr bool): cshort =
 
   fcQLocale_toShort2(self.h, struct_miqt_string(data: s, len: csize_t(len(s))), ok)
 
-proc toUShort2*(self: QLocale, s: string, ok: ptr bool): cushort =
+proc toUShort2*(self: gen_qlocale_types.QLocale, s: string, ok: ptr bool): cushort =
 
   fcQLocale_toUShort2(self.h, struct_miqt_string(data: s, len: csize_t(len(s))), ok)
 
-proc toInt2*(self: QLocale, s: string, ok: ptr bool): cint =
+proc toInt2*(self: gen_qlocale_types.QLocale, s: string, ok: ptr bool): cint =
 
   fcQLocale_toInt2(self.h, struct_miqt_string(data: s, len: csize_t(len(s))), ok)
 
-proc toUInt2*(self: QLocale, s: string, ok: ptr bool): cuint =
+proc toUInt2*(self: gen_qlocale_types.QLocale, s: string, ok: ptr bool): cuint =
 
   fcQLocale_toUInt2(self.h, struct_miqt_string(data: s, len: csize_t(len(s))), ok)
 
-proc toLong2*(self: QLocale, s: string, ok: ptr bool): clong =
+proc toLong2*(self: gen_qlocale_types.QLocale, s: string, ok: ptr bool): clong =
 
   fcQLocale_toLong2(self.h, struct_miqt_string(data: s, len: csize_t(len(s))), ok)
 
-proc toULong2*(self: QLocale, s: string, ok: ptr bool): culong =
+proc toULong2*(self: gen_qlocale_types.QLocale, s: string, ok: ptr bool): culong =
 
   fcQLocale_toULong2(self.h, struct_miqt_string(data: s, len: csize_t(len(s))), ok)
 
-proc toLongLong2*(self: QLocale, s: string, ok: ptr bool): clonglong =
+proc toLongLong2*(self: gen_qlocale_types.QLocale, s: string, ok: ptr bool): clonglong =
 
   fcQLocale_toLongLong2(self.h, struct_miqt_string(data: s, len: csize_t(len(s))), ok)
 
-proc toULongLong2*(self: QLocale, s: string, ok: ptr bool): culonglong =
+proc toULongLong2*(self: gen_qlocale_types.QLocale, s: string, ok: ptr bool): culonglong =
 
   fcQLocale_toULongLong2(self.h, struct_miqt_string(data: s, len: csize_t(len(s))), ok)
 
-proc toFloat2*(self: QLocale, s: string, ok: ptr bool): float32 =
+proc toFloat2*(self: gen_qlocale_types.QLocale, s: string, ok: ptr bool): float32 =
 
   fcQLocale_toFloat2(self.h, struct_miqt_string(data: s, len: csize_t(len(s))), ok)
 
-proc toDouble2*(self: QLocale, s: string, ok: ptr bool): float64 =
+proc toDouble2*(self: gen_qlocale_types.QLocale, s: string, ok: ptr bool): float64 =
 
   fcQLocale_toDouble2(self.h, struct_miqt_string(data: s, len: csize_t(len(s))), ok)
 
-proc toString22*(self: QLocale, i: float64, f: cchar): string =
+proc toString22*(self: gen_qlocale_types.QLocale, i: float64, f: cchar): string =
 
   let v_ms = fcQLocale_toString22(self.h, i, f)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc toString32*(self: QLocale, i: float64, f: cchar, prec: cint): string =
+proc toString32*(self: gen_qlocale_types.QLocale, i: float64, f: cchar, prec: cint): string =
 
   let v_ms = fcQLocale_toString32(self.h, i, f, prec)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc toString23*(self: QLocale, i: float32, f: cchar): string =
+proc toString23*(self: gen_qlocale_types.QLocale, i: float32, f: cchar): string =
 
   let v_ms = fcQLocale_toString23(self.h, i, f)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc toString33*(self: QLocale, i: float32, f: cchar, prec: cint): string =
+proc toString33*(self: gen_qlocale_types.QLocale, i: float32, f: cchar, prec: cint): string =
 
   let v_ms = fcQLocale_toString33(self.h, i, f, prec)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc toString24*(self: QLocale, date: gen_qdatetime.QDate, format: QLocaleFormatType): string =
+proc toString24*(self: gen_qlocale_types.QLocale, date: gen_qdatetime.QDate, format: cint): string =
 
   let v_ms = fcQLocale_toString24(self.h, date.h, cint(format))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc toString25*(self: QLocale, time: gen_qdatetime.QTime, format: QLocaleFormatType): string =
+proc toString25*(self: gen_qlocale_types.QLocale, time: gen_qdatetime.QTime, format: cint): string =
 
   let v_ms = fcQLocale_toString25(self.h, time.h, cint(format))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc toString26*(self: QLocale, dateTime: gen_qdatetime.QDateTime, format: QLocaleFormatType): string =
+proc toString26*(self: gen_qlocale_types.QLocale, dateTime: gen_qdatetime.QDateTime, format: cint): string =
 
   let v_ms = fcQLocale_toString26(self.h, dateTime.h, cint(format))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc dateFormat1*(self: QLocale, format: QLocaleFormatType): string =
+proc dateFormat1*(self: gen_qlocale_types.QLocale, format: cint): string =
 
   let v_ms = fcQLocale_dateFormat1(self.h, cint(format))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc timeFormat1*(self: QLocale, format: QLocaleFormatType): string =
+proc timeFormat1*(self: gen_qlocale_types.QLocale, format: cint): string =
 
   let v_ms = fcQLocale_timeFormat1(self.h, cint(format))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc dateTimeFormat1*(self: QLocale, format: QLocaleFormatType): string =
+proc dateTimeFormat1*(self: gen_qlocale_types.QLocale, format: cint): string =
 
   let v_ms = fcQLocale_dateTimeFormat1(self.h, cint(format))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc toDate22*(self: QLocale, string: string, param2: QLocaleFormatType): gen_qdatetime.QDate =
+proc toDate22*(self: gen_qlocale_types.QLocale, string: string, param2: cint): gen_qdatetime.QDate =
 
   gen_qdatetime.QDate(h: fcQLocale_toDate22(self.h, struct_miqt_string(data: string, len: csize_t(len(string))), cint(param2)))
 
-proc toTime22*(self: QLocale, string: string, param2: QLocaleFormatType): gen_qdatetime.QTime =
+proc toTime22*(self: gen_qlocale_types.QLocale, string: string, param2: cint): gen_qdatetime.QTime =
 
   gen_qdatetime.QTime(h: fcQLocale_toTime22(self.h, struct_miqt_string(data: string, len: csize_t(len(string))), cint(param2)))
 
-proc toDateTime22*(self: QLocale, string: string, format: QLocaleFormatType): gen_qdatetime.QDateTime =
+proc toDateTime22*(self: gen_qlocale_types.QLocale, string: string, format: cint): gen_qdatetime.QDateTime =
 
   gen_qdatetime.QDateTime(h: fcQLocale_toDateTime22(self.h, struct_miqt_string(data: string, len: csize_t(len(string))), cint(format)))
 
-proc monthName2*(self: QLocale, param1: cint, format: QLocaleFormatType): string =
+proc monthName2*(self: gen_qlocale_types.QLocale, param1: cint, format: cint): string =
 
   let v_ms = fcQLocale_monthName2(self.h, param1, cint(format))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc standaloneMonthName2*(self: QLocale, param1: cint, format: QLocaleFormatType): string =
+proc standaloneMonthName2*(self: gen_qlocale_types.QLocale, param1: cint, format: cint): string =
 
   let v_ms = fcQLocale_standaloneMonthName2(self.h, param1, cint(format))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc dayName2*(self: QLocale, param1: cint, format: QLocaleFormatType): string =
+proc dayName2*(self: gen_qlocale_types.QLocale, param1: cint, format: cint): string =
 
   let v_ms = fcQLocale_dayName2(self.h, param1, cint(format))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc standaloneDayName2*(self: QLocale, param1: cint, format: QLocaleFormatType): string =
+proc standaloneDayName2*(self: gen_qlocale_types.QLocale, param1: cint, format: cint): string =
 
   let v_ms = fcQLocale_standaloneDayName2(self.h, param1, cint(format))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc currencySymbol1*(self: QLocale, param1: QLocaleCurrencySymbolFormat): string =
+proc currencySymbol1*(self: gen_qlocale_types.QLocale, param1: cint): string =
 
   let v_ms = fcQLocale_currencySymbol1(self.h, cint(param1))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc toCurrencyString22*(self: QLocale, param1: clonglong, symbol: string): string =
+proc toCurrencyString22*(self: gen_qlocale_types.QLocale, param1: clonglong, symbol: string): string =
 
   let v_ms = fcQLocale_toCurrencyString22(self.h, param1, struct_miqt_string(data: symbol, len: csize_t(len(symbol))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc toCurrencyString23*(self: QLocale, param1: culonglong, symbol: string): string =
+proc toCurrencyString23*(self: gen_qlocale_types.QLocale, param1: culonglong, symbol: string): string =
 
   let v_ms = fcQLocale_toCurrencyString23(self.h, param1, struct_miqt_string(data: symbol, len: csize_t(len(symbol))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc toCurrencyString24*(self: QLocale, param1: cshort, symbol: string): string =
+proc toCurrencyString24*(self: gen_qlocale_types.QLocale, param1: cshort, symbol: string): string =
 
   let v_ms = fcQLocale_toCurrencyString24(self.h, param1, struct_miqt_string(data: symbol, len: csize_t(len(symbol))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc toCurrencyString25*(self: QLocale, param1: cushort, symbol: string): string =
+proc toCurrencyString25*(self: gen_qlocale_types.QLocale, param1: cushort, symbol: string): string =
 
   let v_ms = fcQLocale_toCurrencyString25(self.h, param1, struct_miqt_string(data: symbol, len: csize_t(len(symbol))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc toCurrencyString26*(self: QLocale, param1: cint, symbol: string): string =
+proc toCurrencyString26*(self: gen_qlocale_types.QLocale, param1: cint, symbol: string): string =
 
   let v_ms = fcQLocale_toCurrencyString26(self.h, param1, struct_miqt_string(data: symbol, len: csize_t(len(symbol))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc toCurrencyString27*(self: QLocale, param1: cuint, symbol: string): string =
+proc toCurrencyString27*(self: gen_qlocale_types.QLocale, param1: cuint, symbol: string): string =
 
   let v_ms = fcQLocale_toCurrencyString27(self.h, param1, struct_miqt_string(data: symbol, len: csize_t(len(symbol))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc toCurrencyString28*(self: QLocale, param1: float64, symbol: string): string =
+proc toCurrencyString28*(self: gen_qlocale_types.QLocale, param1: float64, symbol: string): string =
 
   let v_ms = fcQLocale_toCurrencyString28(self.h, param1, struct_miqt_string(data: symbol, len: csize_t(len(symbol))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc toCurrencyString29*(self: QLocale, i: float32, symbol: string): string =
+proc toCurrencyString29*(self: gen_qlocale_types.QLocale, i: float32, symbol: string): string =
 
   let v_ms = fcQLocale_toCurrencyString29(self.h, i, struct_miqt_string(data: symbol, len: csize_t(len(symbol))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc formattedDataSize2*(self: QLocale, bytes: clonglong, precision: cint): string =
+proc formattedDataSize2*(self: gen_qlocale_types.QLocale, bytes: clonglong, precision: cint): string =
 
   let v_ms = fcQLocale_formattedDataSize2(self.h, bytes, precision)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc formattedDataSize3*(self: QLocale, bytes: clonglong, precision: cint, format: QLocaleDataSizeFormat): string =
+proc formattedDataSize3*(self: gen_qlocale_types.QLocale, bytes: clonglong, precision: cint, format: cint): string =
 
   let v_ms = fcQLocale_formattedDataSize3(self.h, bytes, precision, cint(format))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc formattedDataSize22*(self: QLocale, bytes: clonglong, precision: cint): string =
+proc formattedDataSize22*(self: gen_qlocale_types.QLocale, bytes: clonglong, precision: cint): string =
 
   let v_ms = fcQLocale_formattedDataSize22(self.h, bytes, precision)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc formattedDataSize32*(self: QLocale, bytes: clonglong, precision: cint, format: QLocaleDataSizeFormat): string =
+proc formattedDataSize32*(self: gen_qlocale_types.QLocale, bytes: clonglong, precision: cint, format: cint): string =
 
   let v_ms = fcQLocale_formattedDataSize32(self.h, bytes, precision, cint(format))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc quoteString2*(self: QLocale, str: string, style: QLocaleQuotationStyle): string =
+proc quoteString2*(self: gen_qlocale_types.QLocale, str: string, style: cint): string =
 
   let v_ms = fcQLocale_quoteString2(self.h, struct_miqt_string(data: str, len: csize_t(len(str))), cint(style))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc staticMetaObject*(_: type QLocale): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qlocale_types.QLocale): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQLocale_staticMetaObject())
-proc delete*(self: QLocale) =
+proc delete*(self: gen_qlocale_types.QLocale) =
   fcQLocale_delete(self.h)

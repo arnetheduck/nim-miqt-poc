@@ -34,43 +34,37 @@ const cflags = gorge("pkg-config -cflags Qt6Network")
 {.compile("gen_qnetworkinterface.cpp", cflags).}
 
 
-type QNetworkAddressEntryDnsEligibilityStatus* = cschar
-const
-  QNetworkAddressEntryDnsEligibilityUnknown* = -1
-  QNetworkAddressEntryDnsIneligible* = 0
-  QNetworkAddressEntryDnsEligible* = 1
+type QNetworkAddressEntryDnsEligibilityStatusEnum* = distinct cschar
+template DnsEligibilityUnknown*(_: type QNetworkAddressEntryDnsEligibilityStatusEnum): untyped = -1
+template DnsIneligible*(_: type QNetworkAddressEntryDnsEligibilityStatusEnum): untyped = 0
+template DnsEligible*(_: type QNetworkAddressEntryDnsEligibilityStatusEnum): untyped = 1
 
 
-
-type QNetworkInterfaceInterfaceFlag* = cint
-const
-  QNetworkInterfaceIsUp* = 1
-  QNetworkInterfaceIsRunning* = 2
-  QNetworkInterfaceCanBroadcast* = 4
-  QNetworkInterfaceIsLoopBack* = 8
-  QNetworkInterfaceIsPointToPoint* = 16
-  QNetworkInterfaceCanMulticast* = 32
+type QNetworkInterfaceInterfaceFlagEnum* = distinct cint
+template IsUp*(_: type QNetworkInterfaceInterfaceFlagEnum): untyped = 1
+template IsRunning*(_: type QNetworkInterfaceInterfaceFlagEnum): untyped = 2
+template CanBroadcast*(_: type QNetworkInterfaceInterfaceFlagEnum): untyped = 4
+template IsLoopBack*(_: type QNetworkInterfaceInterfaceFlagEnum): untyped = 8
+template IsPointToPoint*(_: type QNetworkInterfaceInterfaceFlagEnum): untyped = 16
+template CanMulticast*(_: type QNetworkInterfaceInterfaceFlagEnum): untyped = 32
 
 
-
-type QNetworkInterfaceInterfaceType* = cint
-const
-  QNetworkInterfaceLoopback* = 1
-  QNetworkInterfaceVirtual* = 2
-  QNetworkInterfaceEthernet* = 3
-  QNetworkInterfaceSlip* = 4
-  QNetworkInterfaceCanBus* = 5
-  QNetworkInterfacePpp* = 6
-  QNetworkInterfaceFddi* = 7
-  QNetworkInterfaceWifi* = 8
-  QNetworkInterfaceIeee80211* = 8
-  QNetworkInterfacePhonet* = 9
-  QNetworkInterfaceIeee802154* = 10
-  QNetworkInterfaceSixLoWPAN* = 11
-  QNetworkInterfaceIeee80216* = 12
-  QNetworkInterfaceIeee1394* = 13
-  QNetworkInterfaceUnknown* = 0
-
+type QNetworkInterfaceInterfaceTypeEnum* = distinct cint
+template Loopback*(_: type QNetworkInterfaceInterfaceTypeEnum): untyped = 1
+template Virtual*(_: type QNetworkInterfaceInterfaceTypeEnum): untyped = 2
+template Ethernet*(_: type QNetworkInterfaceInterfaceTypeEnum): untyped = 3
+template Slip*(_: type QNetworkInterfaceInterfaceTypeEnum): untyped = 4
+template CanBus*(_: type QNetworkInterfaceInterfaceTypeEnum): untyped = 5
+template Ppp*(_: type QNetworkInterfaceInterfaceTypeEnum): untyped = 6
+template Fddi*(_: type QNetworkInterfaceInterfaceTypeEnum): untyped = 7
+template Wifi*(_: type QNetworkInterfaceInterfaceTypeEnum): untyped = 8
+template Ieee80211*(_: type QNetworkInterfaceInterfaceTypeEnum): untyped = 8
+template Phonet*(_: type QNetworkInterfaceInterfaceTypeEnum): untyped = 9
+template Ieee802154*(_: type QNetworkInterfaceInterfaceTypeEnum): untyped = 10
+template SixLoWPAN*(_: type QNetworkInterfaceInterfaceTypeEnum): untyped = 11
+template Ieee80216*(_: type QNetworkInterfaceInterfaceTypeEnum): untyped = 12
+template Ieee1394*(_: type QNetworkInterfaceInterfaceTypeEnum): untyped = 13
+template Unknown*(_: type QNetworkInterfaceInterfaceTypeEnum): untyped = 0
 
 
 import gen_qnetworkinterface_types
@@ -135,196 +129,196 @@ proc fcQNetworkInterface_staticMetaObject(): pointer {.importc: "QNetworkInterfa
 proc fcQNetworkInterface_delete(self: pointer) {.importc: "QNetworkInterface_delete".}
 
 
-func init*(T: type QNetworkAddressEntry, h: ptr cQNetworkAddressEntry): QNetworkAddressEntry =
+func init*(T: type gen_qnetworkinterface_types.QNetworkAddressEntry, h: ptr cQNetworkAddressEntry): gen_qnetworkinterface_types.QNetworkAddressEntry =
   T(h: h)
-proc create*(T: type QNetworkAddressEntry, ): QNetworkAddressEntry =
+proc create*(T: type gen_qnetworkinterface_types.QNetworkAddressEntry, ): gen_qnetworkinterface_types.QNetworkAddressEntry =
 
-  QNetworkAddressEntry.init(fcQNetworkAddressEntry_new())
-proc create*(T: type QNetworkAddressEntry, other: QNetworkAddressEntry): QNetworkAddressEntry =
+  gen_qnetworkinterface_types.QNetworkAddressEntry.init(fcQNetworkAddressEntry_new())
+proc create*(T: type gen_qnetworkinterface_types.QNetworkAddressEntry, other: gen_qnetworkinterface_types.QNetworkAddressEntry): gen_qnetworkinterface_types.QNetworkAddressEntry =
 
-  QNetworkAddressEntry.init(fcQNetworkAddressEntry_new2(other.h))
-proc operatorAssign*(self: QNetworkAddressEntry, other: QNetworkAddressEntry): void =
+  gen_qnetworkinterface_types.QNetworkAddressEntry.init(fcQNetworkAddressEntry_new2(other.h))
+proc operatorAssign*(self: gen_qnetworkinterface_types.QNetworkAddressEntry, other: gen_qnetworkinterface_types.QNetworkAddressEntry): void =
 
   fcQNetworkAddressEntry_operatorAssign(self.h, other.h)
 
-proc swap*(self: QNetworkAddressEntry, other: QNetworkAddressEntry): void =
+proc swap*(self: gen_qnetworkinterface_types.QNetworkAddressEntry, other: gen_qnetworkinterface_types.QNetworkAddressEntry): void =
 
   fcQNetworkAddressEntry_swap(self.h, other.h)
 
-proc operatorEqual*(self: QNetworkAddressEntry, other: QNetworkAddressEntry): bool =
+proc operatorEqual*(self: gen_qnetworkinterface_types.QNetworkAddressEntry, other: gen_qnetworkinterface_types.QNetworkAddressEntry): bool =
 
   fcQNetworkAddressEntry_operatorEqual(self.h, other.h)
 
-proc operatorNotEqual*(self: QNetworkAddressEntry, other: QNetworkAddressEntry): bool =
+proc operatorNotEqual*(self: gen_qnetworkinterface_types.QNetworkAddressEntry, other: gen_qnetworkinterface_types.QNetworkAddressEntry): bool =
 
   fcQNetworkAddressEntry_operatorNotEqual(self.h, other.h)
 
-proc dnsEligibility*(self: QNetworkAddressEntry, ): QNetworkAddressEntryDnsEligibilityStatus =
+proc dnsEligibility*(self: gen_qnetworkinterface_types.QNetworkAddressEntry, ): cint =
 
-  QNetworkAddressEntryDnsEligibilityStatus(fcQNetworkAddressEntry_dnsEligibility(self.h))
+  cint(fcQNetworkAddressEntry_dnsEligibility(self.h))
 
-proc setDnsEligibility*(self: QNetworkAddressEntry, status: QNetworkAddressEntryDnsEligibilityStatus): void =
+proc setDnsEligibility*(self: gen_qnetworkinterface_types.QNetworkAddressEntry, status: cint): void =
 
   fcQNetworkAddressEntry_setDnsEligibility(self.h, cint(status))
 
-proc ip*(self: QNetworkAddressEntry, ): gen_qhostaddress.QHostAddress =
+proc ip*(self: gen_qnetworkinterface_types.QNetworkAddressEntry, ): gen_qhostaddress.QHostAddress =
 
   gen_qhostaddress.QHostAddress(h: fcQNetworkAddressEntry_ip(self.h))
 
-proc setIp*(self: QNetworkAddressEntry, newIp: gen_qhostaddress.QHostAddress): void =
+proc setIp*(self: gen_qnetworkinterface_types.QNetworkAddressEntry, newIp: gen_qhostaddress.QHostAddress): void =
 
   fcQNetworkAddressEntry_setIp(self.h, newIp.h)
 
-proc netmask*(self: QNetworkAddressEntry, ): gen_qhostaddress.QHostAddress =
+proc netmask*(self: gen_qnetworkinterface_types.QNetworkAddressEntry, ): gen_qhostaddress.QHostAddress =
 
   gen_qhostaddress.QHostAddress(h: fcQNetworkAddressEntry_netmask(self.h))
 
-proc setNetmask*(self: QNetworkAddressEntry, newNetmask: gen_qhostaddress.QHostAddress): void =
+proc setNetmask*(self: gen_qnetworkinterface_types.QNetworkAddressEntry, newNetmask: gen_qhostaddress.QHostAddress): void =
 
   fcQNetworkAddressEntry_setNetmask(self.h, newNetmask.h)
 
-proc prefixLength*(self: QNetworkAddressEntry, ): cint =
+proc prefixLength*(self: gen_qnetworkinterface_types.QNetworkAddressEntry, ): cint =
 
   fcQNetworkAddressEntry_prefixLength(self.h)
 
-proc setPrefixLength*(self: QNetworkAddressEntry, length: cint): void =
+proc setPrefixLength*(self: gen_qnetworkinterface_types.QNetworkAddressEntry, length: cint): void =
 
   fcQNetworkAddressEntry_setPrefixLength(self.h, length)
 
-proc broadcast*(self: QNetworkAddressEntry, ): gen_qhostaddress.QHostAddress =
+proc broadcast*(self: gen_qnetworkinterface_types.QNetworkAddressEntry, ): gen_qhostaddress.QHostAddress =
 
   gen_qhostaddress.QHostAddress(h: fcQNetworkAddressEntry_broadcast(self.h))
 
-proc setBroadcast*(self: QNetworkAddressEntry, newBroadcast: gen_qhostaddress.QHostAddress): void =
+proc setBroadcast*(self: gen_qnetworkinterface_types.QNetworkAddressEntry, newBroadcast: gen_qhostaddress.QHostAddress): void =
 
   fcQNetworkAddressEntry_setBroadcast(self.h, newBroadcast.h)
 
-proc isLifetimeKnown*(self: QNetworkAddressEntry, ): bool =
+proc isLifetimeKnown*(self: gen_qnetworkinterface_types.QNetworkAddressEntry, ): bool =
 
   fcQNetworkAddressEntry_isLifetimeKnown(self.h)
 
-proc preferredLifetime*(self: QNetworkAddressEntry, ): gen_qdeadlinetimer.QDeadlineTimer =
+proc preferredLifetime*(self: gen_qnetworkinterface_types.QNetworkAddressEntry, ): gen_qdeadlinetimer.QDeadlineTimer =
 
   gen_qdeadlinetimer.QDeadlineTimer(h: fcQNetworkAddressEntry_preferredLifetime(self.h))
 
-proc validityLifetime*(self: QNetworkAddressEntry, ): gen_qdeadlinetimer.QDeadlineTimer =
+proc validityLifetime*(self: gen_qnetworkinterface_types.QNetworkAddressEntry, ): gen_qdeadlinetimer.QDeadlineTimer =
 
   gen_qdeadlinetimer.QDeadlineTimer(h: fcQNetworkAddressEntry_validityLifetime(self.h))
 
-proc setAddressLifetime*(self: QNetworkAddressEntry, preferred: gen_qdeadlinetimer.QDeadlineTimer, validity: gen_qdeadlinetimer.QDeadlineTimer): void =
+proc setAddressLifetime*(self: gen_qnetworkinterface_types.QNetworkAddressEntry, preferred: gen_qdeadlinetimer.QDeadlineTimer, validity: gen_qdeadlinetimer.QDeadlineTimer): void =
 
   fcQNetworkAddressEntry_setAddressLifetime(self.h, preferred.h, validity.h)
 
-proc clearAddressLifetime*(self: QNetworkAddressEntry, ): void =
+proc clearAddressLifetime*(self: gen_qnetworkinterface_types.QNetworkAddressEntry, ): void =
 
   fcQNetworkAddressEntry_clearAddressLifetime(self.h)
 
-proc isPermanent*(self: QNetworkAddressEntry, ): bool =
+proc isPermanent*(self: gen_qnetworkinterface_types.QNetworkAddressEntry, ): bool =
 
   fcQNetworkAddressEntry_isPermanent(self.h)
 
-proc isTemporary*(self: QNetworkAddressEntry, ): bool =
+proc isTemporary*(self: gen_qnetworkinterface_types.QNetworkAddressEntry, ): bool =
 
   fcQNetworkAddressEntry_isTemporary(self.h)
 
-proc delete*(self: QNetworkAddressEntry) =
+proc delete*(self: gen_qnetworkinterface_types.QNetworkAddressEntry) =
   fcQNetworkAddressEntry_delete(self.h)
 
-func init*(T: type QNetworkInterface, h: ptr cQNetworkInterface): QNetworkInterface =
+func init*(T: type gen_qnetworkinterface_types.QNetworkInterface, h: ptr cQNetworkInterface): gen_qnetworkinterface_types.QNetworkInterface =
   T(h: h)
-proc create*(T: type QNetworkInterface, ): QNetworkInterface =
+proc create*(T: type gen_qnetworkinterface_types.QNetworkInterface, ): gen_qnetworkinterface_types.QNetworkInterface =
 
-  QNetworkInterface.init(fcQNetworkInterface_new())
-proc create*(T: type QNetworkInterface, other: QNetworkInterface): QNetworkInterface =
+  gen_qnetworkinterface_types.QNetworkInterface.init(fcQNetworkInterface_new())
+proc create*(T: type gen_qnetworkinterface_types.QNetworkInterface, other: gen_qnetworkinterface_types.QNetworkInterface): gen_qnetworkinterface_types.QNetworkInterface =
 
-  QNetworkInterface.init(fcQNetworkInterface_new2(other.h))
-proc operatorAssign*(self: QNetworkInterface, other: QNetworkInterface): void =
+  gen_qnetworkinterface_types.QNetworkInterface.init(fcQNetworkInterface_new2(other.h))
+proc operatorAssign*(self: gen_qnetworkinterface_types.QNetworkInterface, other: gen_qnetworkinterface_types.QNetworkInterface): void =
 
   fcQNetworkInterface_operatorAssign(self.h, other.h)
 
-proc swap*(self: QNetworkInterface, other: QNetworkInterface): void =
+proc swap*(self: gen_qnetworkinterface_types.QNetworkInterface, other: gen_qnetworkinterface_types.QNetworkInterface): void =
 
   fcQNetworkInterface_swap(self.h, other.h)
 
-proc isValid*(self: QNetworkInterface, ): bool =
+proc isValid*(self: gen_qnetworkinterface_types.QNetworkInterface, ): bool =
 
   fcQNetworkInterface_isValid(self.h)
 
-proc index*(self: QNetworkInterface, ): cint =
+proc index*(self: gen_qnetworkinterface_types.QNetworkInterface, ): cint =
 
   fcQNetworkInterface_index(self.h)
 
-proc maximumTransmissionUnit*(self: QNetworkInterface, ): cint =
+proc maximumTransmissionUnit*(self: gen_qnetworkinterface_types.QNetworkInterface, ): cint =
 
   fcQNetworkInterface_maximumTransmissionUnit(self.h)
 
-proc name*(self: QNetworkInterface, ): string =
+proc name*(self: gen_qnetworkinterface_types.QNetworkInterface, ): string =
 
   let v_ms = fcQNetworkInterface_name(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc humanReadableName*(self: QNetworkInterface, ): string =
+proc humanReadableName*(self: gen_qnetworkinterface_types.QNetworkInterface, ): string =
 
   let v_ms = fcQNetworkInterface_humanReadableName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc flags*(self: QNetworkInterface, ): QNetworkInterfaceInterfaceFlag =
+proc flags*(self: gen_qnetworkinterface_types.QNetworkInterface, ): cint =
 
-  QNetworkInterfaceInterfaceFlag(fcQNetworkInterface_flags(self.h))
+  cint(fcQNetworkInterface_flags(self.h))
 
-proc typeX*(self: QNetworkInterface, ): QNetworkInterfaceInterfaceType =
+proc typeX*(self: gen_qnetworkinterface_types.QNetworkInterface, ): cint =
 
-  QNetworkInterfaceInterfaceType(fcQNetworkInterface_typeX(self.h))
+  cint(fcQNetworkInterface_typeX(self.h))
 
-proc hardwareAddress*(self: QNetworkInterface, ): string =
+proc hardwareAddress*(self: gen_qnetworkinterface_types.QNetworkInterface, ): string =
 
   let v_ms = fcQNetworkInterface_hardwareAddress(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc addressEntries*(self: QNetworkInterface, ): seq[QNetworkAddressEntry] =
+proc addressEntries*(self: gen_qnetworkinterface_types.QNetworkInterface, ): seq[gen_qnetworkinterface_types.QNetworkAddressEntry] =
 
   var v_ma = fcQNetworkInterface_addressEntries(self.h)
-  var vx_ret = newSeq[QNetworkAddressEntry](int(v_ma.len))
+  var vx_ret = newSeq[gen_qnetworkinterface_types.QNetworkAddressEntry](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
-    vx_ret[i] = QNetworkAddressEntry(h: v_outCast[i])
+    vx_ret[i] = gen_qnetworkinterface_types.QNetworkAddressEntry(h: v_outCast[i])
   vx_ret
 
-proc interfaceIndexFromName*(_: type QNetworkInterface, name: string): cint =
+proc interfaceIndexFromName*(_: type gen_qnetworkinterface_types.QNetworkInterface, name: string): cint =
 
   fcQNetworkInterface_interfaceIndexFromName(struct_miqt_string(data: name, len: csize_t(len(name))))
 
-proc interfaceFromName*(_: type QNetworkInterface, name: string): QNetworkInterface =
+proc interfaceFromName*(_: type gen_qnetworkinterface_types.QNetworkInterface, name: string): gen_qnetworkinterface_types.QNetworkInterface =
 
-  QNetworkInterface(h: fcQNetworkInterface_interfaceFromName(struct_miqt_string(data: name, len: csize_t(len(name)))))
+  gen_qnetworkinterface_types.QNetworkInterface(h: fcQNetworkInterface_interfaceFromName(struct_miqt_string(data: name, len: csize_t(len(name)))))
 
-proc interfaceFromIndex*(_: type QNetworkInterface, index: cint): QNetworkInterface =
+proc interfaceFromIndex*(_: type gen_qnetworkinterface_types.QNetworkInterface, index: cint): gen_qnetworkinterface_types.QNetworkInterface =
 
-  QNetworkInterface(h: fcQNetworkInterface_interfaceFromIndex(index))
+  gen_qnetworkinterface_types.QNetworkInterface(h: fcQNetworkInterface_interfaceFromIndex(index))
 
-proc interfaceNameFromIndex*(_: type QNetworkInterface, index: cint): string =
+proc interfaceNameFromIndex*(_: type gen_qnetworkinterface_types.QNetworkInterface, index: cint): string =
 
   let v_ms = fcQNetworkInterface_interfaceNameFromIndex(index)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc allInterfaces*(_: type QNetworkInterface, ): seq[QNetworkInterface] =
+proc allInterfaces*(_: type gen_qnetworkinterface_types.QNetworkInterface, ): seq[gen_qnetworkinterface_types.QNetworkInterface] =
 
   var v_ma = fcQNetworkInterface_allInterfaces()
-  var vx_ret = newSeq[QNetworkInterface](int(v_ma.len))
+  var vx_ret = newSeq[gen_qnetworkinterface_types.QNetworkInterface](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
-    vx_ret[i] = QNetworkInterface(h: v_outCast[i])
+    vx_ret[i] = gen_qnetworkinterface_types.QNetworkInterface(h: v_outCast[i])
   vx_ret
 
-proc allAddresses*(_: type QNetworkInterface, ): seq[gen_qhostaddress.QHostAddress] =
+proc allAddresses*(_: type gen_qnetworkinterface_types.QNetworkInterface, ): seq[gen_qhostaddress.QHostAddress] =
 
   var v_ma = fcQNetworkInterface_allAddresses()
   var vx_ret = newSeq[gen_qhostaddress.QHostAddress](int(v_ma.len))
@@ -333,7 +327,7 @@ proc allAddresses*(_: type QNetworkInterface, ): seq[gen_qhostaddress.QHostAddre
     vx_ret[i] = gen_qhostaddress.QHostAddress(h: v_outCast[i])
   vx_ret
 
-proc staticMetaObject*(_: type QNetworkInterface): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qnetworkinterface_types.QNetworkInterface): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQNetworkInterface_staticMetaObject())
-proc delete*(self: QNetworkInterface) =
+proc delete*(self: gen_qnetworkinterface_types.QNetworkInterface) =
   fcQNetworkInterface_delete(self.h)

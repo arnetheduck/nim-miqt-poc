@@ -59,85 +59,70 @@ proc fcQSGVertexColorMaterial_override_virtual_createShader(self: pointer, slot:
 proc fcQSGVertexColorMaterial_delete(self: pointer) {.importc: "QSGVertexColorMaterial_delete".}
 
 
-func init*(T: type QSGVertexColorMaterial, h: ptr cQSGVertexColorMaterial): QSGVertexColorMaterial =
+func init*(T: type gen_qsgvertexcolormaterial_types.QSGVertexColorMaterial, h: ptr cQSGVertexColorMaterial): gen_qsgvertexcolormaterial_types.QSGVertexColorMaterial =
   T(h: h)
-proc create*(T: type QSGVertexColorMaterial, ): QSGVertexColorMaterial =
+proc create*(T: type gen_qsgvertexcolormaterial_types.QSGVertexColorMaterial, ): gen_qsgvertexcolormaterial_types.QSGVertexColorMaterial =
 
-  QSGVertexColorMaterial.init(fcQSGVertexColorMaterial_new())
-proc compare*(self: QSGVertexColorMaterial, other: gen_qsgmaterial.QSGMaterial): cint =
+  gen_qsgvertexcolormaterial_types.QSGVertexColorMaterial.init(fcQSGVertexColorMaterial_new())
+proc compare*(self: gen_qsgvertexcolormaterial_types.QSGVertexColorMaterial, other: gen_qsgmaterial.QSGMaterial): cint =
 
   fcQSGVertexColorMaterial_compare(self.h, other.h)
 
-proc callVirtualBase_compare(self: QSGVertexColorMaterial, other: gen_qsgmaterial.QSGMaterial): cint =
-
+proc QSGVertexColorMaterialcompare*(self: gen_qsgvertexcolormaterial_types.QSGVertexColorMaterial, other: gen_qsgmaterial.QSGMaterial): cint =
 
   fQSGVertexColorMaterial_virtualbase_compare(self.h, other.h)
 
-type QSGVertexColorMaterialcompareBase* = proc(other: gen_qsgmaterial.QSGMaterial): cint
-proc oncompare*(self: QSGVertexColorMaterial, slot: proc(super: QSGVertexColorMaterialcompareBase, other: gen_qsgmaterial.QSGMaterial): cint) =
+type QSGVertexColorMaterialcompareProc* = proc(other: gen_qsgmaterial.QSGMaterial): cint
+proc oncompare*(self: gen_qsgvertexcolormaterial_types.QSGVertexColorMaterial, slot: QSGVertexColorMaterialcompareProc) =
   # TODO check subclass
-  type Cb = proc(super: QSGVertexColorMaterialcompareBase, other: gen_qsgmaterial.QSGMaterial): cint
-  var tmp = new Cb
+  var tmp = new QSGVertexColorMaterialcompareProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSGVertexColorMaterial_override_virtual_compare(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSGVertexColorMaterial_compare(self: ptr cQSGVertexColorMaterial, slot: int, other: pointer): cint {.exportc: "miqt_exec_callback_QSGVertexColorMaterial_compare ".} =
-  type Cb = proc(super: QSGVertexColorMaterialcompareBase, other: gen_qsgmaterial.QSGMaterial): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(other: gen_qsgmaterial.QSGMaterial): auto =
-    callVirtualBase_compare(QSGVertexColorMaterial(h: self), other)
+  var nimfunc = cast[ptr QSGVertexColorMaterialcompareProc](cast[pointer](slot))
   let slotval1 = gen_qsgmaterial.QSGMaterial(h: other)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_typeX(self: QSGVertexColorMaterial, ): gen_qsgmaterialtype.QSGMaterialType =
-
+proc QSGVertexColorMaterialtypeX*(self: gen_qsgvertexcolormaterial_types.QSGVertexColorMaterial, ): gen_qsgmaterialtype.QSGMaterialType =
 
   gen_qsgmaterialtype.QSGMaterialType(h: fQSGVertexColorMaterial_virtualbase_type(self.h))
 
-type QSGVertexColorMaterialtypeXBase* = proc(): gen_qsgmaterialtype.QSGMaterialType
-proc ontypeX*(self: QSGVertexColorMaterial, slot: proc(super: QSGVertexColorMaterialtypeXBase): gen_qsgmaterialtype.QSGMaterialType) =
+type QSGVertexColorMaterialtypeXProc* = proc(): gen_qsgmaterialtype.QSGMaterialType
+proc ontypeX*(self: gen_qsgvertexcolormaterial_types.QSGVertexColorMaterial, slot: QSGVertexColorMaterialtypeXProc) =
   # TODO check subclass
-  type Cb = proc(super: QSGVertexColorMaterialtypeXBase): gen_qsgmaterialtype.QSGMaterialType
-  var tmp = new Cb
+  var tmp = new QSGVertexColorMaterialtypeXProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSGVertexColorMaterial_override_virtual_typeX(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSGVertexColorMaterial_type(self: ptr cQSGVertexColorMaterial, slot: int): pointer {.exportc: "miqt_exec_callback_QSGVertexColorMaterial_type ".} =
-  type Cb = proc(super: QSGVertexColorMaterialtypeXBase): gen_qsgmaterialtype.QSGMaterialType
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_typeX(QSGVertexColorMaterial(h: self), )
+  var nimfunc = cast[ptr QSGVertexColorMaterialtypeXProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_createShader(self: QSGVertexColorMaterial, ): gen_qsgmaterialshader.QSGMaterialShader =
-
+proc QSGVertexColorMaterialcreateShader*(self: gen_qsgvertexcolormaterial_types.QSGVertexColorMaterial, ): gen_qsgmaterialshader.QSGMaterialShader =
 
   gen_qsgmaterialshader.QSGMaterialShader(h: fQSGVertexColorMaterial_virtualbase_createShader(self.h))
 
-type QSGVertexColorMaterialcreateShaderBase* = proc(): gen_qsgmaterialshader.QSGMaterialShader
-proc oncreateShader*(self: QSGVertexColorMaterial, slot: proc(super: QSGVertexColorMaterialcreateShaderBase): gen_qsgmaterialshader.QSGMaterialShader) =
+type QSGVertexColorMaterialcreateShaderProc* = proc(): gen_qsgmaterialshader.QSGMaterialShader
+proc oncreateShader*(self: gen_qsgvertexcolormaterial_types.QSGVertexColorMaterial, slot: QSGVertexColorMaterialcreateShaderProc) =
   # TODO check subclass
-  type Cb = proc(super: QSGVertexColorMaterialcreateShaderBase): gen_qsgmaterialshader.QSGMaterialShader
-  var tmp = new Cb
+  var tmp = new QSGVertexColorMaterialcreateShaderProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSGVertexColorMaterial_override_virtual_createShader(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSGVertexColorMaterial_createShader(self: ptr cQSGVertexColorMaterial, slot: int): pointer {.exportc: "miqt_exec_callback_QSGVertexColorMaterial_createShader ".} =
-  type Cb = proc(super: QSGVertexColorMaterialcreateShaderBase): gen_qsgmaterialshader.QSGMaterialShader
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_createShader(QSGVertexColorMaterial(h: self), )
+  var nimfunc = cast[ptr QSGVertexColorMaterialcreateShaderProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc delete*(self: QSGVertexColorMaterial) =
+proc delete*(self: gen_qsgvertexcolormaterial_types.QSGVertexColorMaterial) =
   fcQSGVertexColorMaterial_delete(self.h)

@@ -34,54 +34,42 @@ const cflags = gorge("pkg-config -cflags Qt5Widgets")
 {.compile("gen_qlistview.cpp", cflags).}
 
 
-type QListViewMovement* = cint
-const
-  QListViewStatic* = 0
-  QListViewFree* = 1
-  QListViewSnap* = 2
+type QListViewMovementEnum* = distinct cint
+template Static*(_: type QListViewMovementEnum): untyped = 0
+template Free*(_: type QListViewMovementEnum): untyped = 1
+template Snap*(_: type QListViewMovementEnum): untyped = 2
 
 
-
-type QListViewFlow* = cint
-const
-  QListViewLeftToRight* = 0
-  QListViewTopToBottom* = 1
+type QListViewFlowEnum* = distinct cint
+template LeftToRight*(_: type QListViewFlowEnum): untyped = 0
+template TopToBottom*(_: type QListViewFlowEnum): untyped = 1
 
 
-
-type QListViewResizeMode* = cint
-const
-  QListViewFixed* = 0
-  QListViewAdjust* = 1
+type QListViewResizeModeEnum* = distinct cint
+template Fixed*(_: type QListViewResizeModeEnum): untyped = 0
+template Adjust*(_: type QListViewResizeModeEnum): untyped = 1
 
 
-
-type QListViewLayoutMode* = cint
-const
-  QListViewSinglePass* = 0
-  QListViewBatched* = 1
+type QListViewLayoutModeEnum* = distinct cint
+template SinglePass*(_: type QListViewLayoutModeEnum): untyped = 0
+template Batched*(_: type QListViewLayoutModeEnum): untyped = 1
 
 
-
-type QListViewViewMode* = cint
-const
-  QListViewListMode* = 0
-  QListViewIconMode* = 1
-
+type QListViewViewModeEnum* = distinct cint
+template ListMode*(_: type QListViewViewModeEnum): untyped = 0
+template IconMode*(_: type QListViewViewModeEnum): untyped = 1
 
 
 import gen_qlistview_types
 export gen_qlistview_types
 
 import
-  gen_qabstractitemdelegate,
   gen_qabstractitemmodel,
   gen_qabstractitemview,
   gen_qcoreevent,
   gen_qevent,
   gen_qitemselectionmodel,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -95,14 +83,12 @@ import
   gen_qvariant,
   gen_qwidget
 export
-  gen_qabstractitemdelegate,
   gen_qabstractitemmodel,
   gen_qabstractitemview,
   gen_qcoreevent,
   gen_qevent,
   gen_qitemselectionmodel,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -356,189 +342,189 @@ proc fcQListView_staticMetaObject(): pointer {.importc: "QListView_staticMetaObj
 proc fcQListView_delete(self: pointer) {.importc: "QListView_delete".}
 
 
-func init*(T: type QListView, h: ptr cQListView): QListView =
+func init*(T: type gen_qlistview_types.QListView, h: ptr cQListView): gen_qlistview_types.QListView =
   T(h: h)
-proc create*(T: type QListView, parent: gen_qwidget.QWidget): QListView =
+proc create*(T: type gen_qlistview_types.QListView, parent: gen_qwidget.QWidget): gen_qlistview_types.QListView =
 
-  QListView.init(fcQListView_new(parent.h))
-proc create*(T: type QListView, ): QListView =
+  gen_qlistview_types.QListView.init(fcQListView_new(parent.h))
+proc create*(T: type gen_qlistview_types.QListView, ): gen_qlistview_types.QListView =
 
-  QListView.init(fcQListView_new2())
-proc metaObject*(self: QListView, ): gen_qobjectdefs.QMetaObject =
+  gen_qlistview_types.QListView.init(fcQListView_new2())
+proc metaObject*(self: gen_qlistview_types.QListView, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQListView_metaObject(self.h))
 
-proc metacast*(self: QListView, param1: cstring): pointer =
+proc metacast*(self: gen_qlistview_types.QListView, param1: cstring): pointer =
 
   fcQListView_metacast(self.h, param1)
 
-proc metacall*(self: QListView, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qlistview_types.QListView, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQListView_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QListView, s: cstring): string =
+proc tr*(_: type gen_qlistview_types.QListView, s: cstring): string =
 
   let v_ms = fcQListView_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QListView, s: cstring): string =
+proc trUtf8*(_: type gen_qlistview_types.QListView, s: cstring): string =
 
   let v_ms = fcQListView_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setMovement*(self: QListView, movement: QListViewMovement): void =
+proc setMovement*(self: gen_qlistview_types.QListView, movement: cint): void =
 
   fcQListView_setMovement(self.h, cint(movement))
 
-proc movement*(self: QListView, ): QListViewMovement =
+proc movement*(self: gen_qlistview_types.QListView, ): cint =
 
-  QListViewMovement(fcQListView_movement(self.h))
+  cint(fcQListView_movement(self.h))
 
-proc setFlow*(self: QListView, flow: QListViewFlow): void =
+proc setFlow*(self: gen_qlistview_types.QListView, flow: cint): void =
 
   fcQListView_setFlow(self.h, cint(flow))
 
-proc flow*(self: QListView, ): QListViewFlow =
+proc flow*(self: gen_qlistview_types.QListView, ): cint =
 
-  QListViewFlow(fcQListView_flow(self.h))
+  cint(fcQListView_flow(self.h))
 
-proc setWrapping*(self: QListView, enable: bool): void =
+proc setWrapping*(self: gen_qlistview_types.QListView, enable: bool): void =
 
   fcQListView_setWrapping(self.h, enable)
 
-proc isWrapping*(self: QListView, ): bool =
+proc isWrapping*(self: gen_qlistview_types.QListView, ): bool =
 
   fcQListView_isWrapping(self.h)
 
-proc setResizeMode*(self: QListView, mode: QListViewResizeMode): void =
+proc setResizeMode*(self: gen_qlistview_types.QListView, mode: cint): void =
 
   fcQListView_setResizeMode(self.h, cint(mode))
 
-proc resizeMode*(self: QListView, ): QListViewResizeMode =
+proc resizeMode*(self: gen_qlistview_types.QListView, ): cint =
 
-  QListViewResizeMode(fcQListView_resizeMode(self.h))
+  cint(fcQListView_resizeMode(self.h))
 
-proc setLayoutMode*(self: QListView, mode: QListViewLayoutMode): void =
+proc setLayoutMode*(self: gen_qlistview_types.QListView, mode: cint): void =
 
   fcQListView_setLayoutMode(self.h, cint(mode))
 
-proc layoutMode*(self: QListView, ): QListViewLayoutMode =
+proc layoutMode*(self: gen_qlistview_types.QListView, ): cint =
 
-  QListViewLayoutMode(fcQListView_layoutMode(self.h))
+  cint(fcQListView_layoutMode(self.h))
 
-proc setSpacing*(self: QListView, space: cint): void =
+proc setSpacing*(self: gen_qlistview_types.QListView, space: cint): void =
 
   fcQListView_setSpacing(self.h, space)
 
-proc spacing*(self: QListView, ): cint =
+proc spacing*(self: gen_qlistview_types.QListView, ): cint =
 
   fcQListView_spacing(self.h)
 
-proc setBatchSize*(self: QListView, batchSize: cint): void =
+proc setBatchSize*(self: gen_qlistview_types.QListView, batchSize: cint): void =
 
   fcQListView_setBatchSize(self.h, batchSize)
 
-proc batchSize*(self: QListView, ): cint =
+proc batchSize*(self: gen_qlistview_types.QListView, ): cint =
 
   fcQListView_batchSize(self.h)
 
-proc setGridSize*(self: QListView, size: gen_qsize.QSize): void =
+proc setGridSize*(self: gen_qlistview_types.QListView, size: gen_qsize.QSize): void =
 
   fcQListView_setGridSize(self.h, size.h)
 
-proc gridSize*(self: QListView, ): gen_qsize.QSize =
+proc gridSize*(self: gen_qlistview_types.QListView, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQListView_gridSize(self.h))
 
-proc setViewMode*(self: QListView, mode: QListViewViewMode): void =
+proc setViewMode*(self: gen_qlistview_types.QListView, mode: cint): void =
 
   fcQListView_setViewMode(self.h, cint(mode))
 
-proc viewMode*(self: QListView, ): QListViewViewMode =
+proc viewMode*(self: gen_qlistview_types.QListView, ): cint =
 
-  QListViewViewMode(fcQListView_viewMode(self.h))
+  cint(fcQListView_viewMode(self.h))
 
-proc clearPropertyFlags*(self: QListView, ): void =
+proc clearPropertyFlags*(self: gen_qlistview_types.QListView, ): void =
 
   fcQListView_clearPropertyFlags(self.h)
 
-proc isRowHidden*(self: QListView, row: cint): bool =
+proc isRowHidden*(self: gen_qlistview_types.QListView, row: cint): bool =
 
   fcQListView_isRowHidden(self.h, row)
 
-proc setRowHidden*(self: QListView, row: cint, hide: bool): void =
+proc setRowHidden*(self: gen_qlistview_types.QListView, row: cint, hide: bool): void =
 
   fcQListView_setRowHidden(self.h, row, hide)
 
-proc setModelColumn*(self: QListView, column: cint): void =
+proc setModelColumn*(self: gen_qlistview_types.QListView, column: cint): void =
 
   fcQListView_setModelColumn(self.h, column)
 
-proc modelColumn*(self: QListView, ): cint =
+proc modelColumn*(self: gen_qlistview_types.QListView, ): cint =
 
   fcQListView_modelColumn(self.h)
 
-proc setUniformItemSizes*(self: QListView, enable: bool): void =
+proc setUniformItemSizes*(self: gen_qlistview_types.QListView, enable: bool): void =
 
   fcQListView_setUniformItemSizes(self.h, enable)
 
-proc uniformItemSizes*(self: QListView, ): bool =
+proc uniformItemSizes*(self: gen_qlistview_types.QListView, ): bool =
 
   fcQListView_uniformItemSizes(self.h)
 
-proc setWordWrap*(self: QListView, on: bool): void =
+proc setWordWrap*(self: gen_qlistview_types.QListView, on: bool): void =
 
   fcQListView_setWordWrap(self.h, on)
 
-proc wordWrap*(self: QListView, ): bool =
+proc wordWrap*(self: gen_qlistview_types.QListView, ): bool =
 
   fcQListView_wordWrap(self.h)
 
-proc setSelectionRectVisible*(self: QListView, show: bool): void =
+proc setSelectionRectVisible*(self: gen_qlistview_types.QListView, show: bool): void =
 
   fcQListView_setSelectionRectVisible(self.h, show)
 
-proc isSelectionRectVisible*(self: QListView, ): bool =
+proc isSelectionRectVisible*(self: gen_qlistview_types.QListView, ): bool =
 
   fcQListView_isSelectionRectVisible(self.h)
 
-proc setItemAlignment*(self: QListView, alignment: gen_qnamespace.AlignmentFlag): void =
+proc setItemAlignment*(self: gen_qlistview_types.QListView, alignment: cint): void =
 
   fcQListView_setItemAlignment(self.h, cint(alignment))
 
-proc itemAlignment*(self: QListView, ): gen_qnamespace.AlignmentFlag =
+proc itemAlignment*(self: gen_qlistview_types.QListView, ): cint =
 
-  gen_qnamespace.AlignmentFlag(fcQListView_itemAlignment(self.h))
+  cint(fcQListView_itemAlignment(self.h))
 
-proc visualRect*(self: QListView, index: gen_qabstractitemmodel.QModelIndex): gen_qrect.QRect =
+proc visualRect*(self: gen_qlistview_types.QListView, index: gen_qabstractitemmodel.QModelIndex): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fcQListView_visualRect(self.h, index.h))
 
-proc scrollTo*(self: QListView, index: gen_qabstractitemmodel.QModelIndex, hint: gen_qabstractitemview.QAbstractItemViewScrollHint): void =
+proc scrollTo*(self: gen_qlistview_types.QListView, index: gen_qabstractitemmodel.QModelIndex, hint: cint): void =
 
   fcQListView_scrollTo(self.h, index.h, cint(hint))
 
-proc indexAt*(self: QListView, p: gen_qpoint.QPoint): gen_qabstractitemmodel.QModelIndex =
+proc indexAt*(self: gen_qlistview_types.QListView, p: gen_qpoint.QPoint): gen_qabstractitemmodel.QModelIndex =
 
   gen_qabstractitemmodel.QModelIndex(h: fcQListView_indexAt(self.h, p.h))
 
-proc doItemsLayout*(self: QListView, ): void =
+proc doItemsLayout*(self: gen_qlistview_types.QListView, ): void =
 
   fcQListView_doItemsLayout(self.h)
 
-proc reset*(self: QListView, ): void =
+proc reset*(self: gen_qlistview_types.QListView, ): void =
 
   fcQListView_reset(self.h)
 
-proc setRootIndex*(self: QListView, index: gen_qabstractitemmodel.QModelIndex): void =
+proc setRootIndex*(self: gen_qlistview_types.QListView, index: gen_qabstractitemmodel.QModelIndex): void =
 
   fcQListView_setRootIndex(self.h, index.h)
 
-proc indexesMoved*(self: QListView, indexes: seq[gen_qabstractitemmodel.QModelIndex]): void =
+proc indexesMoved*(self: gen_qlistview_types.QListView, indexes: seq[gen_qabstractitemmodel.QModelIndex]): void =
 
   var indexes_CArray = newSeq[pointer](len(indexes))
   for i in 0..<len(indexes):
@@ -559,330 +545,270 @@ proc miqt_exec_callback_QListView_indexesMoved(slot: int, indexes: struct_miqt_a
 
   nimfunc[](slotval1)
 
-proc onindexesMoved*(self: QListView, slot: proc(indexes: seq[gen_qabstractitemmodel.QModelIndex])) =
+proc onindexesMoved*(self: gen_qlistview_types.QListView, slot: proc(indexes: seq[gen_qabstractitemmodel.QModelIndex])) =
   type Cb = proc(indexes: seq[gen_qabstractitemmodel.QModelIndex])
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQListView_connect_indexesMoved(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QListView, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qlistview_types.QListView, s: cstring, c: cstring): string =
 
   let v_ms = fcQListView_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QListView, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qlistview_types.QListView, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQListView_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QListView, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qlistview_types.QListView, s: cstring, c: cstring): string =
 
   let v_ms = fcQListView_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QListView, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qlistview_types.QListView, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQListView_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QListView, ): gen_qobjectdefs.QMetaObject =
-
+proc QListViewmetaObject*(self: gen_qlistview_types.QListView, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQListView_virtualbase_metaObject(self.h))
 
-type QListViewmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QListView, slot: proc(super: QListViewmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QListViewmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qlistview_types.QListView, slot: QListViewmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QListViewmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_metaObject(self: ptr cQListView, slot: int): pointer {.exportc: "miqt_exec_callback_QListView_metaObject ".} =
-  type Cb = proc(super: QListViewmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QListView(h: self), )
+  var nimfunc = cast[ptr QListViewmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QListView, param1: cstring): pointer =
-
+proc QListViewmetacast*(self: gen_qlistview_types.QListView, param1: cstring): pointer =
 
   fQListView_virtualbase_metacast(self.h, param1)
 
-type QListViewmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QListView, slot: proc(super: QListViewmetacastBase, param1: cstring): pointer) =
+type QListViewmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qlistview_types.QListView, slot: QListViewmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QListViewmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_metacast(self: ptr cQListView, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QListView_metacast ".} =
-  type Cb = proc(super: QListViewmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QListView(h: self), param1)
+  var nimfunc = cast[ptr QListViewmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QListView, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QListViewmetacall*(self: gen_qlistview_types.QListView, param1: cint, param2: cint, param3: pointer): cint =
 
   fQListView_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QListViewmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QListView, slot: proc(super: QListViewmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QListViewmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qlistview_types.QListView, slot: QListViewmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QListViewmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_metacall(self: ptr cQListView, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QListView_metacall ".} =
-  type Cb = proc(super: QListViewmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QListView(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QListViewmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_visualRect(self: QListView, index: gen_qabstractitemmodel.QModelIndex): gen_qrect.QRect =
-
+proc QListViewvisualRect*(self: gen_qlistview_types.QListView, index: gen_qabstractitemmodel.QModelIndex): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fQListView_virtualbase_visualRect(self.h, index.h))
 
-type QListViewvisualRectBase* = proc(index: gen_qabstractitemmodel.QModelIndex): gen_qrect.QRect
-proc onvisualRect*(self: QListView, slot: proc(super: QListViewvisualRectBase, index: gen_qabstractitemmodel.QModelIndex): gen_qrect.QRect) =
+type QListViewvisualRectProc* = proc(index: gen_qabstractitemmodel.QModelIndex): gen_qrect.QRect
+proc onvisualRect*(self: gen_qlistview_types.QListView, slot: QListViewvisualRectProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewvisualRectBase, index: gen_qabstractitemmodel.QModelIndex): gen_qrect.QRect
-  var tmp = new Cb
+  var tmp = new QListViewvisualRectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_visualRect(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_visualRect(self: ptr cQListView, slot: int, index: pointer): pointer {.exportc: "miqt_exec_callback_QListView_visualRect ".} =
-  type Cb = proc(super: QListViewvisualRectBase, index: gen_qabstractitemmodel.QModelIndex): gen_qrect.QRect
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(index: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_visualRect(QListView(h: self), index)
+  var nimfunc = cast[ptr QListViewvisualRectProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: index)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_scrollTo(self: QListView, index: gen_qabstractitemmodel.QModelIndex, hint: gen_qabstractitemview.QAbstractItemViewScrollHint): void =
-
+proc QListViewscrollTo*(self: gen_qlistview_types.QListView, index: gen_qabstractitemmodel.QModelIndex, hint: cint): void =
 
   fQListView_virtualbase_scrollTo(self.h, index.h, cint(hint))
 
-type QListViewscrollToBase* = proc(index: gen_qabstractitemmodel.QModelIndex, hint: gen_qabstractitemview.QAbstractItemViewScrollHint): void
-proc onscrollTo*(self: QListView, slot: proc(super: QListViewscrollToBase, index: gen_qabstractitemmodel.QModelIndex, hint: gen_qabstractitemview.QAbstractItemViewScrollHint): void) =
+type QListViewscrollToProc* = proc(index: gen_qabstractitemmodel.QModelIndex, hint: cint): void
+proc onscrollTo*(self: gen_qlistview_types.QListView, slot: QListViewscrollToProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewscrollToBase, index: gen_qabstractitemmodel.QModelIndex, hint: gen_qabstractitemview.QAbstractItemViewScrollHint): void
-  var tmp = new Cb
+  var tmp = new QListViewscrollToProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_scrollTo(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_scrollTo(self: ptr cQListView, slot: int, index: pointer, hint: cint): void {.exportc: "miqt_exec_callback_QListView_scrollTo ".} =
-  type Cb = proc(super: QListViewscrollToBase, index: gen_qabstractitemmodel.QModelIndex, hint: gen_qabstractitemview.QAbstractItemViewScrollHint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(index: gen_qabstractitemmodel.QModelIndex, hint: gen_qabstractitemview.QAbstractItemViewScrollHint): auto =
-    callVirtualBase_scrollTo(QListView(h: self), index, hint)
+  var nimfunc = cast[ptr QListViewscrollToProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: index)
 
-  let slotval2 = gen_qabstractitemview.QAbstractItemViewScrollHint(hint)
+  let slotval2 = cint(hint)
 
 
-  nimfunc[](superCall, slotval1, slotval2)
-proc callVirtualBase_indexAt(self: QListView, p: gen_qpoint.QPoint): gen_qabstractitemmodel.QModelIndex =
-
+  nimfunc[](slotval1, slotval2)
+proc QListViewindexAt*(self: gen_qlistview_types.QListView, p: gen_qpoint.QPoint): gen_qabstractitemmodel.QModelIndex =
 
   gen_qabstractitemmodel.QModelIndex(h: fQListView_virtualbase_indexAt(self.h, p.h))
 
-type QListViewindexAtBase* = proc(p: gen_qpoint.QPoint): gen_qabstractitemmodel.QModelIndex
-proc onindexAt*(self: QListView, slot: proc(super: QListViewindexAtBase, p: gen_qpoint.QPoint): gen_qabstractitemmodel.QModelIndex) =
+type QListViewindexAtProc* = proc(p: gen_qpoint.QPoint): gen_qabstractitemmodel.QModelIndex
+proc onindexAt*(self: gen_qlistview_types.QListView, slot: QListViewindexAtProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewindexAtBase, p: gen_qpoint.QPoint): gen_qabstractitemmodel.QModelIndex
-  var tmp = new Cb
+  var tmp = new QListViewindexAtProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_indexAt(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_indexAt(self: ptr cQListView, slot: int, p: pointer): pointer {.exportc: "miqt_exec_callback_QListView_indexAt ".} =
-  type Cb = proc(super: QListViewindexAtBase, p: gen_qpoint.QPoint): gen_qabstractitemmodel.QModelIndex
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(p: gen_qpoint.QPoint): auto =
-    callVirtualBase_indexAt(QListView(h: self), p)
+  var nimfunc = cast[ptr QListViewindexAtProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: p)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_doItemsLayout(self: QListView, ): void =
-
+proc QListViewdoItemsLayout*(self: gen_qlistview_types.QListView, ): void =
 
   fQListView_virtualbase_doItemsLayout(self.h)
 
-type QListViewdoItemsLayoutBase* = proc(): void
-proc ondoItemsLayout*(self: QListView, slot: proc(super: QListViewdoItemsLayoutBase): void) =
+type QListViewdoItemsLayoutProc* = proc(): void
+proc ondoItemsLayout*(self: gen_qlistview_types.QListView, slot: QListViewdoItemsLayoutProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewdoItemsLayoutBase): void
-  var tmp = new Cb
+  var tmp = new QListViewdoItemsLayoutProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_doItemsLayout(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_doItemsLayout(self: ptr cQListView, slot: int): void {.exportc: "miqt_exec_callback_QListView_doItemsLayout ".} =
-  type Cb = proc(super: QListViewdoItemsLayoutBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_doItemsLayout(QListView(h: self), )
+  var nimfunc = cast[ptr QListViewdoItemsLayoutProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_reset(self: QListView, ): void =
-
+  nimfunc[]()
+proc QListViewreset*(self: gen_qlistview_types.QListView, ): void =
 
   fQListView_virtualbase_reset(self.h)
 
-type QListViewresetBase* = proc(): void
-proc onreset*(self: QListView, slot: proc(super: QListViewresetBase): void) =
+type QListViewresetProc* = proc(): void
+proc onreset*(self: gen_qlistview_types.QListView, slot: QListViewresetProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewresetBase): void
-  var tmp = new Cb
+  var tmp = new QListViewresetProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_reset(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_reset(self: ptr cQListView, slot: int): void {.exportc: "miqt_exec_callback_QListView_reset ".} =
-  type Cb = proc(super: QListViewresetBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_reset(QListView(h: self), )
+  var nimfunc = cast[ptr QListViewresetProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_setRootIndex(self: QListView, index: gen_qabstractitemmodel.QModelIndex): void =
-
+  nimfunc[]()
+proc QListViewsetRootIndex*(self: gen_qlistview_types.QListView, index: gen_qabstractitemmodel.QModelIndex): void =
 
   fQListView_virtualbase_setRootIndex(self.h, index.h)
 
-type QListViewsetRootIndexBase* = proc(index: gen_qabstractitemmodel.QModelIndex): void
-proc onsetRootIndex*(self: QListView, slot: proc(super: QListViewsetRootIndexBase, index: gen_qabstractitemmodel.QModelIndex): void) =
+type QListViewsetRootIndexProc* = proc(index: gen_qabstractitemmodel.QModelIndex): void
+proc onsetRootIndex*(self: gen_qlistview_types.QListView, slot: QListViewsetRootIndexProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewsetRootIndexBase, index: gen_qabstractitemmodel.QModelIndex): void
-  var tmp = new Cb
+  var tmp = new QListViewsetRootIndexProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_setRootIndex(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_setRootIndex(self: ptr cQListView, slot: int, index: pointer): void {.exportc: "miqt_exec_callback_QListView_setRootIndex ".} =
-  type Cb = proc(super: QListViewsetRootIndexBase, index: gen_qabstractitemmodel.QModelIndex): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(index: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_setRootIndex(QListView(h: self), index)
+  var nimfunc = cast[ptr QListViewsetRootIndexProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: index)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_event(self: QListView, e: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[](slotval1)
+proc QListViewevent*(self: gen_qlistview_types.QListView, e: gen_qcoreevent.QEvent): bool =
 
   fQListView_virtualbase_event(self.h, e.h)
 
-type QListVieweventBase* = proc(e: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QListView, slot: proc(super: QListVieweventBase, e: gen_qcoreevent.QEvent): bool) =
+type QListVieweventProc* = proc(e: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qlistview_types.QListView, slot: QListVieweventProc) =
   # TODO check subclass
-  type Cb = proc(super: QListVieweventBase, e: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QListVieweventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_event(self: ptr cQListView, slot: int, e: pointer): bool {.exportc: "miqt_exec_callback_QListView_event ".} =
-  type Cb = proc(super: QListVieweventBase, e: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QListView(h: self), e)
+  var nimfunc = cast[ptr QListVieweventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: e)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_scrollContentsBy(self: QListView, dx: cint, dy: cint): void =
-
+proc QListViewscrollContentsBy*(self: gen_qlistview_types.QListView, dx: cint, dy: cint): void =
 
   fQListView_virtualbase_scrollContentsBy(self.h, dx, dy)
 
-type QListViewscrollContentsByBase* = proc(dx: cint, dy: cint): void
-proc onscrollContentsBy*(self: QListView, slot: proc(super: QListViewscrollContentsByBase, dx: cint, dy: cint): void) =
+type QListViewscrollContentsByProc* = proc(dx: cint, dy: cint): void
+proc onscrollContentsBy*(self: gen_qlistview_types.QListView, slot: QListViewscrollContentsByProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewscrollContentsByBase, dx: cint, dy: cint): void
-  var tmp = new Cb
+  var tmp = new QListViewscrollContentsByProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_scrollContentsBy(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_scrollContentsBy(self: ptr cQListView, slot: int, dx: cint, dy: cint): void {.exportc: "miqt_exec_callback_QListView_scrollContentsBy ".} =
-  type Cb = proc(super: QListViewscrollContentsByBase, dx: cint, dy: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(dx: cint, dy: cint): auto =
-    callVirtualBase_scrollContentsBy(QListView(h: self), dx, dy)
+  var nimfunc = cast[ptr QListViewscrollContentsByProc](cast[pointer](slot))
   let slotval1 = dx
 
   let slotval2 = dy
 
 
-  nimfunc[](superCall, slotval1, slotval2)
-proc callVirtualBase_dataChanged(self: QListView, topLeft: gen_qabstractitemmodel.QModelIndex, bottomRight: gen_qabstractitemmodel.QModelIndex, roles: seq[cint]): void =
+  nimfunc[](slotval1, slotval2)
+proc QListViewdataChanged*(self: gen_qlistview_types.QListView, topLeft: gen_qabstractitemmodel.QModelIndex, bottomRight: gen_qabstractitemmodel.QModelIndex, roles: seq[cint]): void =
 
   var roles_CArray = newSeq[cint](len(roles))
   for i in 0..<len(roles):
     roles_CArray[i] = roles[i]
 
-
   fQListView_virtualbase_dataChanged(self.h, topLeft.h, bottomRight.h, struct_miqt_array(len: csize_t(len(roles)), data: if len(roles) == 0: nil else: addr(roles_CArray[0])))
 
-type QListViewdataChangedBase* = proc(topLeft: gen_qabstractitemmodel.QModelIndex, bottomRight: gen_qabstractitemmodel.QModelIndex, roles: seq[cint]): void
-proc ondataChanged*(self: QListView, slot: proc(super: QListViewdataChangedBase, topLeft: gen_qabstractitemmodel.QModelIndex, bottomRight: gen_qabstractitemmodel.QModelIndex, roles: seq[cint]): void) =
+type QListViewdataChangedProc* = proc(topLeft: gen_qabstractitemmodel.QModelIndex, bottomRight: gen_qabstractitemmodel.QModelIndex, roles: seq[cint]): void
+proc ondataChanged*(self: gen_qlistview_types.QListView, slot: QListViewdataChangedProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewdataChangedBase, topLeft: gen_qabstractitemmodel.QModelIndex, bottomRight: gen_qabstractitemmodel.QModelIndex, roles: seq[cint]): void
-  var tmp = new Cb
+  var tmp = new QListViewdataChangedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_dataChanged(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_dataChanged(self: ptr cQListView, slot: int, topLeft: pointer, bottomRight: pointer, roles: struct_miqt_array): void {.exportc: "miqt_exec_callback_QListView_dataChanged ".} =
-  type Cb = proc(super: QListViewdataChangedBase, topLeft: gen_qabstractitemmodel.QModelIndex, bottomRight: gen_qabstractitemmodel.QModelIndex, roles: seq[cint]): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(topLeft: gen_qabstractitemmodel.QModelIndex, bottomRight: gen_qabstractitemmodel.QModelIndex, roles: seq[cint]): auto =
-    callVirtualBase_dataChanged(QListView(h: self), topLeft, bottomRight, roles)
+  var nimfunc = cast[ptr QListViewdataChangedProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: topLeft)
 
   let slotval2 = gen_qabstractitemmodel.QModelIndex(h: bottomRight)
@@ -895,26 +821,21 @@ proc miqt_exec_callback_QListView_dataChanged(self: ptr cQListView, slot: int, t
   let slotval3 = vrolesx_ret
 
 
-  nimfunc[](superCall, slotval1, slotval2, slotval3)
-proc callVirtualBase_rowsInserted(self: QListView, parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void =
-
+  nimfunc[](slotval1, slotval2, slotval3)
+proc QListViewrowsInserted*(self: gen_qlistview_types.QListView, parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void =
 
   fQListView_virtualbase_rowsInserted(self.h, parent.h, start, endVal)
 
-type QListViewrowsInsertedBase* = proc(parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void
-proc onrowsInserted*(self: QListView, slot: proc(super: QListViewrowsInsertedBase, parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void) =
+type QListViewrowsInsertedProc* = proc(parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void
+proc onrowsInserted*(self: gen_qlistview_types.QListView, slot: QListViewrowsInsertedProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewrowsInsertedBase, parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void
-  var tmp = new Cb
+  var tmp = new QListViewrowsInsertedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_rowsInserted(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_rowsInserted(self: ptr cQListView, slot: int, parent: pointer, start: cint, endVal: cint): void {.exportc: "miqt_exec_callback_QListView_rowsInserted ".} =
-  type Cb = proc(super: QListViewrowsInsertedBase, parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): auto =
-    callVirtualBase_rowsInserted(QListView(h: self), parent, start, endVal)
+  var nimfunc = cast[ptr QListViewrowsInsertedProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: parent)
 
   let slotval2 = start
@@ -922,26 +843,21 @@ proc miqt_exec_callback_QListView_rowsInserted(self: ptr cQListView, slot: int, 
   let slotval3 = endVal
 
 
-  nimfunc[](superCall, slotval1, slotval2, slotval3)
-proc callVirtualBase_rowsAboutToBeRemoved(self: QListView, parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void =
-
+  nimfunc[](slotval1, slotval2, slotval3)
+proc QListViewrowsAboutToBeRemoved*(self: gen_qlistview_types.QListView, parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void =
 
   fQListView_virtualbase_rowsAboutToBeRemoved(self.h, parent.h, start, endVal)
 
-type QListViewrowsAboutToBeRemovedBase* = proc(parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void
-proc onrowsAboutToBeRemoved*(self: QListView, slot: proc(super: QListViewrowsAboutToBeRemovedBase, parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void) =
+type QListViewrowsAboutToBeRemovedProc* = proc(parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void
+proc onrowsAboutToBeRemoved*(self: gen_qlistview_types.QListView, slot: QListViewrowsAboutToBeRemovedProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewrowsAboutToBeRemovedBase, parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void
-  var tmp = new Cb
+  var tmp = new QListViewrowsAboutToBeRemovedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_rowsAboutToBeRemoved(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_rowsAboutToBeRemoved(self: ptr cQListView, slot: int, parent: pointer, start: cint, endVal: cint): void {.exportc: "miqt_exec_callback_QListView_rowsAboutToBeRemoved ".} =
-  type Cb = proc(super: QListViewrowsAboutToBeRemovedBase, parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): auto =
-    callVirtualBase_rowsAboutToBeRemoved(QListView(h: self), parent, start, endVal)
+  var nimfunc = cast[ptr QListViewrowsAboutToBeRemovedProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: parent)
 
   let slotval2 = start
@@ -949,385 +865,304 @@ proc miqt_exec_callback_QListView_rowsAboutToBeRemoved(self: ptr cQListView, slo
   let slotval3 = endVal
 
 
-  nimfunc[](superCall, slotval1, slotval2, slotval3)
-proc callVirtualBase_mouseMoveEvent(self: QListView, e: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1, slotval2, slotval3)
+proc QListViewmouseMoveEvent*(self: gen_qlistview_types.QListView, e: gen_qevent.QMouseEvent): void =
 
   fQListView_virtualbase_mouseMoveEvent(self.h, e.h)
 
-type QListViewmouseMoveEventBase* = proc(e: gen_qevent.QMouseEvent): void
-proc onmouseMoveEvent*(self: QListView, slot: proc(super: QListViewmouseMoveEventBase, e: gen_qevent.QMouseEvent): void) =
+type QListViewmouseMoveEventProc* = proc(e: gen_qevent.QMouseEvent): void
+proc onmouseMoveEvent*(self: gen_qlistview_types.QListView, slot: QListViewmouseMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewmouseMoveEventBase, e: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QListViewmouseMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_mouseMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_mouseMoveEvent(self: ptr cQListView, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QListView_mouseMoveEvent ".} =
-  type Cb = proc(super: QListViewmouseMoveEventBase, e: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseMoveEvent(QListView(h: self), e)
+  var nimfunc = cast[ptr QListViewmouseMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseReleaseEvent(self: QListView, e: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QListViewmouseReleaseEvent*(self: gen_qlistview_types.QListView, e: gen_qevent.QMouseEvent): void =
 
   fQListView_virtualbase_mouseReleaseEvent(self.h, e.h)
 
-type QListViewmouseReleaseEventBase* = proc(e: gen_qevent.QMouseEvent): void
-proc onmouseReleaseEvent*(self: QListView, slot: proc(super: QListViewmouseReleaseEventBase, e: gen_qevent.QMouseEvent): void) =
+type QListViewmouseReleaseEventProc* = proc(e: gen_qevent.QMouseEvent): void
+proc onmouseReleaseEvent*(self: gen_qlistview_types.QListView, slot: QListViewmouseReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewmouseReleaseEventBase, e: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QListViewmouseReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_mouseReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_mouseReleaseEvent(self: ptr cQListView, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QListView_mouseReleaseEvent ".} =
-  type Cb = proc(super: QListViewmouseReleaseEventBase, e: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseReleaseEvent(QListView(h: self), e)
+  var nimfunc = cast[ptr QListViewmouseReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_wheelEvent(self: QListView, e: gen_qevent.QWheelEvent): void =
-
+  nimfunc[](slotval1)
+proc QListViewwheelEvent*(self: gen_qlistview_types.QListView, e: gen_qevent.QWheelEvent): void =
 
   fQListView_virtualbase_wheelEvent(self.h, e.h)
 
-type QListViewwheelEventBase* = proc(e: gen_qevent.QWheelEvent): void
-proc onwheelEvent*(self: QListView, slot: proc(super: QListViewwheelEventBase, e: gen_qevent.QWheelEvent): void) =
+type QListViewwheelEventProc* = proc(e: gen_qevent.QWheelEvent): void
+proc onwheelEvent*(self: gen_qlistview_types.QListView, slot: QListViewwheelEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewwheelEventBase, e: gen_qevent.QWheelEvent): void
-  var tmp = new Cb
+  var tmp = new QListViewwheelEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_wheelEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_wheelEvent(self: ptr cQListView, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QListView_wheelEvent ".} =
-  type Cb = proc(super: QListViewwheelEventBase, e: gen_qevent.QWheelEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qevent.QWheelEvent): auto =
-    callVirtualBase_wheelEvent(QListView(h: self), e)
+  var nimfunc = cast[ptr QListViewwheelEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QWheelEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_timerEvent(self: QListView, e: gen_qcoreevent.QTimerEvent): void =
-
+  nimfunc[](slotval1)
+proc QListViewtimerEvent*(self: gen_qlistview_types.QListView, e: gen_qcoreevent.QTimerEvent): void =
 
   fQListView_virtualbase_timerEvent(self.h, e.h)
 
-type QListViewtimerEventBase* = proc(e: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QListView, slot: proc(super: QListViewtimerEventBase, e: gen_qcoreevent.QTimerEvent): void) =
+type QListViewtimerEventProc* = proc(e: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qlistview_types.QListView, slot: QListViewtimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewtimerEventBase, e: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QListViewtimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_timerEvent(self: ptr cQListView, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QListView_timerEvent ".} =
-  type Cb = proc(super: QListViewtimerEventBase, e: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QListView(h: self), e)
+  var nimfunc = cast[ptr QListViewtimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_resizeEvent(self: QListView, e: gen_qevent.QResizeEvent): void =
-
+  nimfunc[](slotval1)
+proc QListViewresizeEvent*(self: gen_qlistview_types.QListView, e: gen_qevent.QResizeEvent): void =
 
   fQListView_virtualbase_resizeEvent(self.h, e.h)
 
-type QListViewresizeEventBase* = proc(e: gen_qevent.QResizeEvent): void
-proc onresizeEvent*(self: QListView, slot: proc(super: QListViewresizeEventBase, e: gen_qevent.QResizeEvent): void) =
+type QListViewresizeEventProc* = proc(e: gen_qevent.QResizeEvent): void
+proc onresizeEvent*(self: gen_qlistview_types.QListView, slot: QListViewresizeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewresizeEventBase, e: gen_qevent.QResizeEvent): void
-  var tmp = new Cb
+  var tmp = new QListViewresizeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_resizeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_resizeEvent(self: ptr cQListView, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QListView_resizeEvent ".} =
-  type Cb = proc(super: QListViewresizeEventBase, e: gen_qevent.QResizeEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qevent.QResizeEvent): auto =
-    callVirtualBase_resizeEvent(QListView(h: self), e)
+  var nimfunc = cast[ptr QListViewresizeEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QResizeEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragMoveEvent(self: QListView, e: gen_qevent.QDragMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QListViewdragMoveEvent*(self: gen_qlistview_types.QListView, e: gen_qevent.QDragMoveEvent): void =
 
   fQListView_virtualbase_dragMoveEvent(self.h, e.h)
 
-type QListViewdragMoveEventBase* = proc(e: gen_qevent.QDragMoveEvent): void
-proc ondragMoveEvent*(self: QListView, slot: proc(super: QListViewdragMoveEventBase, e: gen_qevent.QDragMoveEvent): void) =
+type QListViewdragMoveEventProc* = proc(e: gen_qevent.QDragMoveEvent): void
+proc ondragMoveEvent*(self: gen_qlistview_types.QListView, slot: QListViewdragMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewdragMoveEventBase, e: gen_qevent.QDragMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QListViewdragMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_dragMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_dragMoveEvent(self: ptr cQListView, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QListView_dragMoveEvent ".} =
-  type Cb = proc(super: QListViewdragMoveEventBase, e: gen_qevent.QDragMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qevent.QDragMoveEvent): auto =
-    callVirtualBase_dragMoveEvent(QListView(h: self), e)
+  var nimfunc = cast[ptr QListViewdragMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragMoveEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragLeaveEvent(self: QListView, e: gen_qevent.QDragLeaveEvent): void =
-
+  nimfunc[](slotval1)
+proc QListViewdragLeaveEvent*(self: gen_qlistview_types.QListView, e: gen_qevent.QDragLeaveEvent): void =
 
   fQListView_virtualbase_dragLeaveEvent(self.h, e.h)
 
-type QListViewdragLeaveEventBase* = proc(e: gen_qevent.QDragLeaveEvent): void
-proc ondragLeaveEvent*(self: QListView, slot: proc(super: QListViewdragLeaveEventBase, e: gen_qevent.QDragLeaveEvent): void) =
+type QListViewdragLeaveEventProc* = proc(e: gen_qevent.QDragLeaveEvent): void
+proc ondragLeaveEvent*(self: gen_qlistview_types.QListView, slot: QListViewdragLeaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewdragLeaveEventBase, e: gen_qevent.QDragLeaveEvent): void
-  var tmp = new Cb
+  var tmp = new QListViewdragLeaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_dragLeaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_dragLeaveEvent(self: ptr cQListView, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QListView_dragLeaveEvent ".} =
-  type Cb = proc(super: QListViewdragLeaveEventBase, e: gen_qevent.QDragLeaveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qevent.QDragLeaveEvent): auto =
-    callVirtualBase_dragLeaveEvent(QListView(h: self), e)
+  var nimfunc = cast[ptr QListViewdragLeaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragLeaveEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dropEvent(self: QListView, e: gen_qevent.QDropEvent): void =
-
+  nimfunc[](slotval1)
+proc QListViewdropEvent*(self: gen_qlistview_types.QListView, e: gen_qevent.QDropEvent): void =
 
   fQListView_virtualbase_dropEvent(self.h, e.h)
 
-type QListViewdropEventBase* = proc(e: gen_qevent.QDropEvent): void
-proc ondropEvent*(self: QListView, slot: proc(super: QListViewdropEventBase, e: gen_qevent.QDropEvent): void) =
+type QListViewdropEventProc* = proc(e: gen_qevent.QDropEvent): void
+proc ondropEvent*(self: gen_qlistview_types.QListView, slot: QListViewdropEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewdropEventBase, e: gen_qevent.QDropEvent): void
-  var tmp = new Cb
+  var tmp = new QListViewdropEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_dropEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_dropEvent(self: ptr cQListView, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QListView_dropEvent ".} =
-  type Cb = proc(super: QListViewdropEventBase, e: gen_qevent.QDropEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qevent.QDropEvent): auto =
-    callVirtualBase_dropEvent(QListView(h: self), e)
+  var nimfunc = cast[ptr QListViewdropEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDropEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_startDrag(self: QListView, supportedActions: gen_qnamespace.DropAction): void =
-
+  nimfunc[](slotval1)
+proc QListViewstartDrag*(self: gen_qlistview_types.QListView, supportedActions: cint): void =
 
   fQListView_virtualbase_startDrag(self.h, cint(supportedActions))
 
-type QListViewstartDragBase* = proc(supportedActions: gen_qnamespace.DropAction): void
-proc onstartDrag*(self: QListView, slot: proc(super: QListViewstartDragBase, supportedActions: gen_qnamespace.DropAction): void) =
+type QListViewstartDragProc* = proc(supportedActions: cint): void
+proc onstartDrag*(self: gen_qlistview_types.QListView, slot: QListViewstartDragProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewstartDragBase, supportedActions: gen_qnamespace.DropAction): void
-  var tmp = new Cb
+  var tmp = new QListViewstartDragProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_startDrag(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_startDrag(self: ptr cQListView, slot: int, supportedActions: cint): void {.exportc: "miqt_exec_callback_QListView_startDrag ".} =
-  type Cb = proc(super: QListViewstartDragBase, supportedActions: gen_qnamespace.DropAction): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(supportedActions: gen_qnamespace.DropAction): auto =
-    callVirtualBase_startDrag(QListView(h: self), supportedActions)
-  let slotval1 = gen_qnamespace.DropAction(supportedActions)
+  var nimfunc = cast[ptr QListViewstartDragProc](cast[pointer](slot))
+  let slotval1 = cint(supportedActions)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_viewOptions(self: QListView, ): gen_qstyleoption.QStyleOptionViewItem =
-
+  nimfunc[](slotval1)
+proc QListViewviewOptions*(self: gen_qlistview_types.QListView, ): gen_qstyleoption.QStyleOptionViewItem =
 
   gen_qstyleoption.QStyleOptionViewItem(h: fQListView_virtualbase_viewOptions(self.h))
 
-type QListViewviewOptionsBase* = proc(): gen_qstyleoption.QStyleOptionViewItem
-proc onviewOptions*(self: QListView, slot: proc(super: QListViewviewOptionsBase): gen_qstyleoption.QStyleOptionViewItem) =
+type QListViewviewOptionsProc* = proc(): gen_qstyleoption.QStyleOptionViewItem
+proc onviewOptions*(self: gen_qlistview_types.QListView, slot: QListViewviewOptionsProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewviewOptionsBase): gen_qstyleoption.QStyleOptionViewItem
-  var tmp = new Cb
+  var tmp = new QListViewviewOptionsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_viewOptions(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_viewOptions(self: ptr cQListView, slot: int): pointer {.exportc: "miqt_exec_callback_QListView_viewOptions ".} =
-  type Cb = proc(super: QListViewviewOptionsBase): gen_qstyleoption.QStyleOptionViewItem
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_viewOptions(QListView(h: self), )
+  var nimfunc = cast[ptr QListViewviewOptionsProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_paintEvent(self: QListView, e: gen_qevent.QPaintEvent): void =
-
+proc QListViewpaintEvent*(self: gen_qlistview_types.QListView, e: gen_qevent.QPaintEvent): void =
 
   fQListView_virtualbase_paintEvent(self.h, e.h)
 
-type QListViewpaintEventBase* = proc(e: gen_qevent.QPaintEvent): void
-proc onpaintEvent*(self: QListView, slot: proc(super: QListViewpaintEventBase, e: gen_qevent.QPaintEvent): void) =
+type QListViewpaintEventProc* = proc(e: gen_qevent.QPaintEvent): void
+proc onpaintEvent*(self: gen_qlistview_types.QListView, slot: QListViewpaintEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewpaintEventBase, e: gen_qevent.QPaintEvent): void
-  var tmp = new Cb
+  var tmp = new QListViewpaintEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_paintEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_paintEvent(self: ptr cQListView, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QListView_paintEvent ".} =
-  type Cb = proc(super: QListViewpaintEventBase, e: gen_qevent.QPaintEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qevent.QPaintEvent): auto =
-    callVirtualBase_paintEvent(QListView(h: self), e)
+  var nimfunc = cast[ptr QListViewpaintEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QPaintEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_horizontalOffset(self: QListView, ): cint =
-
+  nimfunc[](slotval1)
+proc QListViewhorizontalOffset*(self: gen_qlistview_types.QListView, ): cint =
 
   fQListView_virtualbase_horizontalOffset(self.h)
 
-type QListViewhorizontalOffsetBase* = proc(): cint
-proc onhorizontalOffset*(self: QListView, slot: proc(super: QListViewhorizontalOffsetBase): cint) =
+type QListViewhorizontalOffsetProc* = proc(): cint
+proc onhorizontalOffset*(self: gen_qlistview_types.QListView, slot: QListViewhorizontalOffsetProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewhorizontalOffsetBase): cint
-  var tmp = new Cb
+  var tmp = new QListViewhorizontalOffsetProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_horizontalOffset(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_horizontalOffset(self: ptr cQListView, slot: int): cint {.exportc: "miqt_exec_callback_QListView_horizontalOffset ".} =
-  type Cb = proc(super: QListViewhorizontalOffsetBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_horizontalOffset(QListView(h: self), )
+  var nimfunc = cast[ptr QListViewhorizontalOffsetProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_verticalOffset(self: QListView, ): cint =
-
+proc QListViewverticalOffset*(self: gen_qlistview_types.QListView, ): cint =
 
   fQListView_virtualbase_verticalOffset(self.h)
 
-type QListViewverticalOffsetBase* = proc(): cint
-proc onverticalOffset*(self: QListView, slot: proc(super: QListViewverticalOffsetBase): cint) =
+type QListViewverticalOffsetProc* = proc(): cint
+proc onverticalOffset*(self: gen_qlistview_types.QListView, slot: QListViewverticalOffsetProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewverticalOffsetBase): cint
-  var tmp = new Cb
+  var tmp = new QListViewverticalOffsetProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_verticalOffset(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_verticalOffset(self: ptr cQListView, slot: int): cint {.exportc: "miqt_exec_callback_QListView_verticalOffset ".} =
-  type Cb = proc(super: QListViewverticalOffsetBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_verticalOffset(QListView(h: self), )
+  var nimfunc = cast[ptr QListViewverticalOffsetProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_moveCursor(self: QListView, cursorAction: gen_qabstractitemview.QAbstractItemViewCursorAction, modifiers: gen_qnamespace.KeyboardModifier): gen_qabstractitemmodel.QModelIndex =
-
+proc QListViewmoveCursor*(self: gen_qlistview_types.QListView, cursorAction: cint, modifiers: cint): gen_qabstractitemmodel.QModelIndex =
 
   gen_qabstractitemmodel.QModelIndex(h: fQListView_virtualbase_moveCursor(self.h, cint(cursorAction), cint(modifiers)))
 
-type QListViewmoveCursorBase* = proc(cursorAction: gen_qabstractitemview.QAbstractItemViewCursorAction, modifiers: gen_qnamespace.KeyboardModifier): gen_qabstractitemmodel.QModelIndex
-proc onmoveCursor*(self: QListView, slot: proc(super: QListViewmoveCursorBase, cursorAction: gen_qabstractitemview.QAbstractItemViewCursorAction, modifiers: gen_qnamespace.KeyboardModifier): gen_qabstractitemmodel.QModelIndex) =
+type QListViewmoveCursorProc* = proc(cursorAction: cint, modifiers: cint): gen_qabstractitemmodel.QModelIndex
+proc onmoveCursor*(self: gen_qlistview_types.QListView, slot: QListViewmoveCursorProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewmoveCursorBase, cursorAction: gen_qabstractitemview.QAbstractItemViewCursorAction, modifiers: gen_qnamespace.KeyboardModifier): gen_qabstractitemmodel.QModelIndex
-  var tmp = new Cb
+  var tmp = new QListViewmoveCursorProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_moveCursor(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_moveCursor(self: ptr cQListView, slot: int, cursorAction: cint, modifiers: cint): pointer {.exportc: "miqt_exec_callback_QListView_moveCursor ".} =
-  type Cb = proc(super: QListViewmoveCursorBase, cursorAction: gen_qabstractitemview.QAbstractItemViewCursorAction, modifiers: gen_qnamespace.KeyboardModifier): gen_qabstractitemmodel.QModelIndex
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(cursorAction: gen_qabstractitemview.QAbstractItemViewCursorAction, modifiers: gen_qnamespace.KeyboardModifier): auto =
-    callVirtualBase_moveCursor(QListView(h: self), cursorAction, modifiers)
-  let slotval1 = gen_qabstractitemview.QAbstractItemViewCursorAction(cursorAction)
+  var nimfunc = cast[ptr QListViewmoveCursorProc](cast[pointer](slot))
+  let slotval1 = cint(cursorAction)
 
-  let slotval2 = gen_qnamespace.KeyboardModifier(modifiers)
+  let slotval2 = cint(modifiers)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn.h
-proc callVirtualBase_setSelection(self: QListView, rect: gen_qrect.QRect, command: gen_qitemselectionmodel.QItemSelectionModelSelectionFlag): void =
-
+proc QListViewsetSelection*(self: gen_qlistview_types.QListView, rect: gen_qrect.QRect, command: cint): void =
 
   fQListView_virtualbase_setSelection(self.h, rect.h, cint(command))
 
-type QListViewsetSelectionBase* = proc(rect: gen_qrect.QRect, command: gen_qitemselectionmodel.QItemSelectionModelSelectionFlag): void
-proc onsetSelection*(self: QListView, slot: proc(super: QListViewsetSelectionBase, rect: gen_qrect.QRect, command: gen_qitemselectionmodel.QItemSelectionModelSelectionFlag): void) =
+type QListViewsetSelectionProc* = proc(rect: gen_qrect.QRect, command: cint): void
+proc onsetSelection*(self: gen_qlistview_types.QListView, slot: QListViewsetSelectionProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewsetSelectionBase, rect: gen_qrect.QRect, command: gen_qitemselectionmodel.QItemSelectionModelSelectionFlag): void
-  var tmp = new Cb
+  var tmp = new QListViewsetSelectionProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_setSelection(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_setSelection(self: ptr cQListView, slot: int, rect: pointer, command: cint): void {.exportc: "miqt_exec_callback_QListView_setSelection ".} =
-  type Cb = proc(super: QListViewsetSelectionBase, rect: gen_qrect.QRect, command: gen_qitemselectionmodel.QItemSelectionModelSelectionFlag): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(rect: gen_qrect.QRect, command: gen_qitemselectionmodel.QItemSelectionModelSelectionFlag): auto =
-    callVirtualBase_setSelection(QListView(h: self), rect, command)
+  var nimfunc = cast[ptr QListViewsetSelectionProc](cast[pointer](slot))
   let slotval1 = gen_qrect.QRect(h: rect)
 
-  let slotval2 = gen_qitemselectionmodel.QItemSelectionModelSelectionFlag(command)
+  let slotval2 = cint(command)
 
 
-  nimfunc[](superCall, slotval1, slotval2)
-proc callVirtualBase_visualRegionForSelection(self: QListView, selection: gen_qitemselectionmodel.QItemSelection): gen_qregion.QRegion =
-
+  nimfunc[](slotval1, slotval2)
+proc QListViewvisualRegionForSelection*(self: gen_qlistview_types.QListView, selection: gen_qitemselectionmodel.QItemSelection): gen_qregion.QRegion =
 
   gen_qregion.QRegion(h: fQListView_virtualbase_visualRegionForSelection(self.h, selection.h))
 
-type QListViewvisualRegionForSelectionBase* = proc(selection: gen_qitemselectionmodel.QItemSelection): gen_qregion.QRegion
-proc onvisualRegionForSelection*(self: QListView, slot: proc(super: QListViewvisualRegionForSelectionBase, selection: gen_qitemselectionmodel.QItemSelection): gen_qregion.QRegion) =
+type QListViewvisualRegionForSelectionProc* = proc(selection: gen_qitemselectionmodel.QItemSelection): gen_qregion.QRegion
+proc onvisualRegionForSelection*(self: gen_qlistview_types.QListView, slot: QListViewvisualRegionForSelectionProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewvisualRegionForSelectionBase, selection: gen_qitemselectionmodel.QItemSelection): gen_qregion.QRegion
-  var tmp = new Cb
+  var tmp = new QListViewvisualRegionForSelectionProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_visualRegionForSelection(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_visualRegionForSelection(self: ptr cQListView, slot: int, selection: pointer): pointer {.exportc: "miqt_exec_callback_QListView_visualRegionForSelection ".} =
-  type Cb = proc(super: QListViewvisualRegionForSelectionBase, selection: gen_qitemselectionmodel.QItemSelection): gen_qregion.QRegion
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(selection: gen_qitemselectionmodel.QItemSelection): auto =
-    callVirtualBase_visualRegionForSelection(QListView(h: self), selection)
+  var nimfunc = cast[ptr QListViewvisualRegionForSelectionProc](cast[pointer](slot))
   let slotval1 = gen_qitemselectionmodel.QItemSelection(h: selection)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_selectedIndexes(self: QListView, ): seq[gen_qabstractitemmodel.QModelIndex] =
-
+proc QListViewselectedIndexes*(self: gen_qlistview_types.QListView, ): seq[gen_qabstractitemmodel.QModelIndex] =
 
   var v_ma = fQListView_virtualbase_selectedIndexes(self.h)
   var vx_ret = newSeq[gen_qabstractitemmodel.QModelIndex](int(v_ma.len))
@@ -1336,1272 +1171,1003 @@ proc callVirtualBase_selectedIndexes(self: QListView, ): seq[gen_qabstractitemmo
     vx_ret[i] = gen_qabstractitemmodel.QModelIndex(h: v_outCast[i])
   vx_ret
 
-type QListViewselectedIndexesBase* = proc(): seq[gen_qabstractitemmodel.QModelIndex]
-proc onselectedIndexes*(self: QListView, slot: proc(super: QListViewselectedIndexesBase): seq[gen_qabstractitemmodel.QModelIndex]) =
+type QListViewselectedIndexesProc* = proc(): seq[gen_qabstractitemmodel.QModelIndex]
+proc onselectedIndexes*(self: gen_qlistview_types.QListView, slot: QListViewselectedIndexesProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewselectedIndexesBase): seq[gen_qabstractitemmodel.QModelIndex]
-  var tmp = new Cb
+  var tmp = new QListViewselectedIndexesProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_selectedIndexes(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_selectedIndexes(self: ptr cQListView, slot: int): struct_miqt_array {.exportc: "miqt_exec_callback_QListView_selectedIndexes ".} =
-  type Cb = proc(super: QListViewselectedIndexesBase): seq[gen_qabstractitemmodel.QModelIndex]
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_selectedIndexes(QListView(h: self), )
+  var nimfunc = cast[ptr QListViewselectedIndexesProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
   var virtualReturn_CArray = newSeq[pointer](len(virtualReturn))
   for i in 0..<len(virtualReturn):
     virtualReturn_CArray[i] = virtualReturn[i].h
 
 
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
-proc callVirtualBase_updateGeometries(self: QListView, ): void =
-
+proc QListViewupdateGeometries*(self: gen_qlistview_types.QListView, ): void =
 
   fQListView_virtualbase_updateGeometries(self.h)
 
-type QListViewupdateGeometriesBase* = proc(): void
-proc onupdateGeometries*(self: QListView, slot: proc(super: QListViewupdateGeometriesBase): void) =
+type QListViewupdateGeometriesProc* = proc(): void
+proc onupdateGeometries*(self: gen_qlistview_types.QListView, slot: QListViewupdateGeometriesProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewupdateGeometriesBase): void
-  var tmp = new Cb
+  var tmp = new QListViewupdateGeometriesProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_updateGeometries(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_updateGeometries(self: ptr cQListView, slot: int): void {.exportc: "miqt_exec_callback_QListView_updateGeometries ".} =
-  type Cb = proc(super: QListViewupdateGeometriesBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_updateGeometries(QListView(h: self), )
+  var nimfunc = cast[ptr QListViewupdateGeometriesProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_isIndexHidden(self: QListView, index: gen_qabstractitemmodel.QModelIndex): bool =
-
+  nimfunc[]()
+proc QListViewisIndexHidden*(self: gen_qlistview_types.QListView, index: gen_qabstractitemmodel.QModelIndex): bool =
 
   fQListView_virtualbase_isIndexHidden(self.h, index.h)
 
-type QListViewisIndexHiddenBase* = proc(index: gen_qabstractitemmodel.QModelIndex): bool
-proc onisIndexHidden*(self: QListView, slot: proc(super: QListViewisIndexHiddenBase, index: gen_qabstractitemmodel.QModelIndex): bool) =
+type QListViewisIndexHiddenProc* = proc(index: gen_qabstractitemmodel.QModelIndex): bool
+proc onisIndexHidden*(self: gen_qlistview_types.QListView, slot: QListViewisIndexHiddenProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewisIndexHiddenBase, index: gen_qabstractitemmodel.QModelIndex): bool
-  var tmp = new Cb
+  var tmp = new QListViewisIndexHiddenProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_isIndexHidden(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_isIndexHidden(self: ptr cQListView, slot: int, index: pointer): bool {.exportc: "miqt_exec_callback_QListView_isIndexHidden ".} =
-  type Cb = proc(super: QListViewisIndexHiddenBase, index: gen_qabstractitemmodel.QModelIndex): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(index: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_isIndexHidden(QListView(h: self), index)
+  var nimfunc = cast[ptr QListViewisIndexHiddenProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: index)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_selectionChanged(self: QListView, selected: gen_qitemselectionmodel.QItemSelection, deselected: gen_qitemselectionmodel.QItemSelection): void =
-
+proc QListViewselectionChanged*(self: gen_qlistview_types.QListView, selected: gen_qitemselectionmodel.QItemSelection, deselected: gen_qitemselectionmodel.QItemSelection): void =
 
   fQListView_virtualbase_selectionChanged(self.h, selected.h, deselected.h)
 
-type QListViewselectionChangedBase* = proc(selected: gen_qitemselectionmodel.QItemSelection, deselected: gen_qitemselectionmodel.QItemSelection): void
-proc onselectionChanged*(self: QListView, slot: proc(super: QListViewselectionChangedBase, selected: gen_qitemselectionmodel.QItemSelection, deselected: gen_qitemselectionmodel.QItemSelection): void) =
+type QListViewselectionChangedProc* = proc(selected: gen_qitemselectionmodel.QItemSelection, deselected: gen_qitemselectionmodel.QItemSelection): void
+proc onselectionChanged*(self: gen_qlistview_types.QListView, slot: QListViewselectionChangedProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewselectionChangedBase, selected: gen_qitemselectionmodel.QItemSelection, deselected: gen_qitemselectionmodel.QItemSelection): void
-  var tmp = new Cb
+  var tmp = new QListViewselectionChangedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_selectionChanged(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_selectionChanged(self: ptr cQListView, slot: int, selected: pointer, deselected: pointer): void {.exportc: "miqt_exec_callback_QListView_selectionChanged ".} =
-  type Cb = proc(super: QListViewselectionChangedBase, selected: gen_qitemselectionmodel.QItemSelection, deselected: gen_qitemselectionmodel.QItemSelection): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(selected: gen_qitemselectionmodel.QItemSelection, deselected: gen_qitemselectionmodel.QItemSelection): auto =
-    callVirtualBase_selectionChanged(QListView(h: self), selected, deselected)
+  var nimfunc = cast[ptr QListViewselectionChangedProc](cast[pointer](slot))
   let slotval1 = gen_qitemselectionmodel.QItemSelection(h: selected)
 
   let slotval2 = gen_qitemselectionmodel.QItemSelection(h: deselected)
 
 
-  nimfunc[](superCall, slotval1, slotval2)
-proc callVirtualBase_currentChanged(self: QListView, current: gen_qabstractitemmodel.QModelIndex, previous: gen_qabstractitemmodel.QModelIndex): void =
-
+  nimfunc[](slotval1, slotval2)
+proc QListViewcurrentChanged*(self: gen_qlistview_types.QListView, current: gen_qabstractitemmodel.QModelIndex, previous: gen_qabstractitemmodel.QModelIndex): void =
 
   fQListView_virtualbase_currentChanged(self.h, current.h, previous.h)
 
-type QListViewcurrentChangedBase* = proc(current: gen_qabstractitemmodel.QModelIndex, previous: gen_qabstractitemmodel.QModelIndex): void
-proc oncurrentChanged*(self: QListView, slot: proc(super: QListViewcurrentChangedBase, current: gen_qabstractitemmodel.QModelIndex, previous: gen_qabstractitemmodel.QModelIndex): void) =
+type QListViewcurrentChangedProc* = proc(current: gen_qabstractitemmodel.QModelIndex, previous: gen_qabstractitemmodel.QModelIndex): void
+proc oncurrentChanged*(self: gen_qlistview_types.QListView, slot: QListViewcurrentChangedProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewcurrentChangedBase, current: gen_qabstractitemmodel.QModelIndex, previous: gen_qabstractitemmodel.QModelIndex): void
-  var tmp = new Cb
+  var tmp = new QListViewcurrentChangedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_currentChanged(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_currentChanged(self: ptr cQListView, slot: int, current: pointer, previous: pointer): void {.exportc: "miqt_exec_callback_QListView_currentChanged ".} =
-  type Cb = proc(super: QListViewcurrentChangedBase, current: gen_qabstractitemmodel.QModelIndex, previous: gen_qabstractitemmodel.QModelIndex): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(current: gen_qabstractitemmodel.QModelIndex, previous: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_currentChanged(QListView(h: self), current, previous)
+  var nimfunc = cast[ptr QListViewcurrentChangedProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: current)
 
   let slotval2 = gen_qabstractitemmodel.QModelIndex(h: previous)
 
 
-  nimfunc[](superCall, slotval1, slotval2)
-proc callVirtualBase_viewportSizeHint(self: QListView, ): gen_qsize.QSize =
-
+  nimfunc[](slotval1, slotval2)
+proc QListViewviewportSizeHint*(self: gen_qlistview_types.QListView, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQListView_virtualbase_viewportSizeHint(self.h))
 
-type QListViewviewportSizeHintBase* = proc(): gen_qsize.QSize
-proc onviewportSizeHint*(self: QListView, slot: proc(super: QListViewviewportSizeHintBase): gen_qsize.QSize) =
+type QListViewviewportSizeHintProc* = proc(): gen_qsize.QSize
+proc onviewportSizeHint*(self: gen_qlistview_types.QListView, slot: QListViewviewportSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewviewportSizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QListViewviewportSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_viewportSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_viewportSizeHint(self: ptr cQListView, slot: int): pointer {.exportc: "miqt_exec_callback_QListView_viewportSizeHint ".} =
-  type Cb = proc(super: QListViewviewportSizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_viewportSizeHint(QListView(h: self), )
+  var nimfunc = cast[ptr QListViewviewportSizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_setModel(self: QListView, model: gen_qabstractitemmodel.QAbstractItemModel): void =
-
+proc QListViewsetModel*(self: gen_qlistview_types.QListView, model: gen_qabstractitemmodel.QAbstractItemModel): void =
 
   fQListView_virtualbase_setModel(self.h, model.h)
 
-type QListViewsetModelBase* = proc(model: gen_qabstractitemmodel.QAbstractItemModel): void
-proc onsetModel*(self: QListView, slot: proc(super: QListViewsetModelBase, model: gen_qabstractitemmodel.QAbstractItemModel): void) =
+type QListViewsetModelProc* = proc(model: gen_qabstractitemmodel.QAbstractItemModel): void
+proc onsetModel*(self: gen_qlistview_types.QListView, slot: QListViewsetModelProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewsetModelBase, model: gen_qabstractitemmodel.QAbstractItemModel): void
-  var tmp = new Cb
+  var tmp = new QListViewsetModelProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_setModel(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_setModel(self: ptr cQListView, slot: int, model: pointer): void {.exportc: "miqt_exec_callback_QListView_setModel ".} =
-  type Cb = proc(super: QListViewsetModelBase, model: gen_qabstractitemmodel.QAbstractItemModel): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(model: gen_qabstractitemmodel.QAbstractItemModel): auto =
-    callVirtualBase_setModel(QListView(h: self), model)
+  var nimfunc = cast[ptr QListViewsetModelProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QAbstractItemModel(h: model)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_setSelectionModel(self: QListView, selectionModel: gen_qitemselectionmodel.QItemSelectionModel): void =
-
+  nimfunc[](slotval1)
+proc QListViewsetSelectionModel*(self: gen_qlistview_types.QListView, selectionModel: gen_qitemselectionmodel.QItemSelectionModel): void =
 
   fQListView_virtualbase_setSelectionModel(self.h, selectionModel.h)
 
-type QListViewsetSelectionModelBase* = proc(selectionModel: gen_qitemselectionmodel.QItemSelectionModel): void
-proc onsetSelectionModel*(self: QListView, slot: proc(super: QListViewsetSelectionModelBase, selectionModel: gen_qitemselectionmodel.QItemSelectionModel): void) =
+type QListViewsetSelectionModelProc* = proc(selectionModel: gen_qitemselectionmodel.QItemSelectionModel): void
+proc onsetSelectionModel*(self: gen_qlistview_types.QListView, slot: QListViewsetSelectionModelProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewsetSelectionModelBase, selectionModel: gen_qitemselectionmodel.QItemSelectionModel): void
-  var tmp = new Cb
+  var tmp = new QListViewsetSelectionModelProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_setSelectionModel(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_setSelectionModel(self: ptr cQListView, slot: int, selectionModel: pointer): void {.exportc: "miqt_exec_callback_QListView_setSelectionModel ".} =
-  type Cb = proc(super: QListViewsetSelectionModelBase, selectionModel: gen_qitemselectionmodel.QItemSelectionModel): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(selectionModel: gen_qitemselectionmodel.QItemSelectionModel): auto =
-    callVirtualBase_setSelectionModel(QListView(h: self), selectionModel)
+  var nimfunc = cast[ptr QListViewsetSelectionModelProc](cast[pointer](slot))
   let slotval1 = gen_qitemselectionmodel.QItemSelectionModel(h: selectionModel)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyboardSearch(self: QListView, search: string): void =
-
+  nimfunc[](slotval1)
+proc QListViewkeyboardSearch*(self: gen_qlistview_types.QListView, search: string): void =
 
   fQListView_virtualbase_keyboardSearch(self.h, struct_miqt_string(data: search, len: csize_t(len(search))))
 
-type QListViewkeyboardSearchBase* = proc(search: string): void
-proc onkeyboardSearch*(self: QListView, slot: proc(super: QListViewkeyboardSearchBase, search: string): void) =
+type QListViewkeyboardSearchProc* = proc(search: string): void
+proc onkeyboardSearch*(self: gen_qlistview_types.QListView, slot: QListViewkeyboardSearchProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewkeyboardSearchBase, search: string): void
-  var tmp = new Cb
+  var tmp = new QListViewkeyboardSearchProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_keyboardSearch(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_keyboardSearch(self: ptr cQListView, slot: int, search: struct_miqt_string): void {.exportc: "miqt_exec_callback_QListView_keyboardSearch ".} =
-  type Cb = proc(super: QListViewkeyboardSearchBase, search: string): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(search: string): auto =
-    callVirtualBase_keyboardSearch(QListView(h: self), search)
+  var nimfunc = cast[ptr QListViewkeyboardSearchProc](cast[pointer](slot))
   let vsearch_ms = search
   let vsearchx_ret = string.fromBytes(toOpenArrayByte(vsearch_ms.data, 0, int(vsearch_ms.len)-1))
   c_free(vsearch_ms.data)
   let slotval1 = vsearchx_ret
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_sizeHintForRow(self: QListView, row: cint): cint =
-
+  nimfunc[](slotval1)
+proc QListViewsizeHintForRow*(self: gen_qlistview_types.QListView, row: cint): cint =
 
   fQListView_virtualbase_sizeHintForRow(self.h, row)
 
-type QListViewsizeHintForRowBase* = proc(row: cint): cint
-proc onsizeHintForRow*(self: QListView, slot: proc(super: QListViewsizeHintForRowBase, row: cint): cint) =
+type QListViewsizeHintForRowProc* = proc(row: cint): cint
+proc onsizeHintForRow*(self: gen_qlistview_types.QListView, slot: QListViewsizeHintForRowProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewsizeHintForRowBase, row: cint): cint
-  var tmp = new Cb
+  var tmp = new QListViewsizeHintForRowProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_sizeHintForRow(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_sizeHintForRow(self: ptr cQListView, slot: int, row: cint): cint {.exportc: "miqt_exec_callback_QListView_sizeHintForRow ".} =
-  type Cb = proc(super: QListViewsizeHintForRowBase, row: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(row: cint): auto =
-    callVirtualBase_sizeHintForRow(QListView(h: self), row)
+  var nimfunc = cast[ptr QListViewsizeHintForRowProc](cast[pointer](slot))
   let slotval1 = row
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_sizeHintForColumn(self: QListView, column: cint): cint =
-
+proc QListViewsizeHintForColumn*(self: gen_qlistview_types.QListView, column: cint): cint =
 
   fQListView_virtualbase_sizeHintForColumn(self.h, column)
 
-type QListViewsizeHintForColumnBase* = proc(column: cint): cint
-proc onsizeHintForColumn*(self: QListView, slot: proc(super: QListViewsizeHintForColumnBase, column: cint): cint) =
+type QListViewsizeHintForColumnProc* = proc(column: cint): cint
+proc onsizeHintForColumn*(self: gen_qlistview_types.QListView, slot: QListViewsizeHintForColumnProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewsizeHintForColumnBase, column: cint): cint
-  var tmp = new Cb
+  var tmp = new QListViewsizeHintForColumnProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_sizeHintForColumn(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_sizeHintForColumn(self: ptr cQListView, slot: int, column: cint): cint {.exportc: "miqt_exec_callback_QListView_sizeHintForColumn ".} =
-  type Cb = proc(super: QListViewsizeHintForColumnBase, column: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(column: cint): auto =
-    callVirtualBase_sizeHintForColumn(QListView(h: self), column)
+  var nimfunc = cast[ptr QListViewsizeHintForColumnProc](cast[pointer](slot))
   let slotval1 = column
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_inputMethodQuery(self: QListView, query: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant =
-
+proc QListViewinputMethodQuery*(self: gen_qlistview_types.QListView, query: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQListView_virtualbase_inputMethodQuery(self.h, cint(query)))
 
-type QListViewinputMethodQueryBase* = proc(query: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-proc oninputMethodQuery*(self: QListView, slot: proc(super: QListViewinputMethodQueryBase, query: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant) =
+type QListViewinputMethodQueryProc* = proc(query: cint): gen_qvariant.QVariant
+proc oninputMethodQuery*(self: gen_qlistview_types.QListView, slot: QListViewinputMethodQueryProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewinputMethodQueryBase, query: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QListViewinputMethodQueryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_inputMethodQuery(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_inputMethodQuery(self: ptr cQListView, slot: int, query: cint): pointer {.exportc: "miqt_exec_callback_QListView_inputMethodQuery ".} =
-  type Cb = proc(super: QListViewinputMethodQueryBase, query: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(query: gen_qnamespace.InputMethodQuery): auto =
-    callVirtualBase_inputMethodQuery(QListView(h: self), query)
-  let slotval1 = gen_qnamespace.InputMethodQuery(query)
+  var nimfunc = cast[ptr QListViewinputMethodQueryProc](cast[pointer](slot))
+  let slotval1 = cint(query)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_selectAll(self: QListView, ): void =
-
+proc QListViewselectAll*(self: gen_qlistview_types.QListView, ): void =
 
   fQListView_virtualbase_selectAll(self.h)
 
-type QListViewselectAllBase* = proc(): void
-proc onselectAll*(self: QListView, slot: proc(super: QListViewselectAllBase): void) =
+type QListViewselectAllProc* = proc(): void
+proc onselectAll*(self: gen_qlistview_types.QListView, slot: QListViewselectAllProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewselectAllBase): void
-  var tmp = new Cb
+  var tmp = new QListViewselectAllProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_selectAll(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_selectAll(self: ptr cQListView, slot: int): void {.exportc: "miqt_exec_callback_QListView_selectAll ".} =
-  type Cb = proc(super: QListViewselectAllBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_selectAll(QListView(h: self), )
+  var nimfunc = cast[ptr QListViewselectAllProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_updateEditorData(self: QListView, ): void =
-
+  nimfunc[]()
+proc QListViewupdateEditorData*(self: gen_qlistview_types.QListView, ): void =
 
   fQListView_virtualbase_updateEditorData(self.h)
 
-type QListViewupdateEditorDataBase* = proc(): void
-proc onupdateEditorData*(self: QListView, slot: proc(super: QListViewupdateEditorDataBase): void) =
+type QListViewupdateEditorDataProc* = proc(): void
+proc onupdateEditorData*(self: gen_qlistview_types.QListView, slot: QListViewupdateEditorDataProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewupdateEditorDataBase): void
-  var tmp = new Cb
+  var tmp = new QListViewupdateEditorDataProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_updateEditorData(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_updateEditorData(self: ptr cQListView, slot: int): void {.exportc: "miqt_exec_callback_QListView_updateEditorData ".} =
-  type Cb = proc(super: QListViewupdateEditorDataBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_updateEditorData(QListView(h: self), )
+  var nimfunc = cast[ptr QListViewupdateEditorDataProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_updateEditorGeometries(self: QListView, ): void =
-
+  nimfunc[]()
+proc QListViewupdateEditorGeometries*(self: gen_qlistview_types.QListView, ): void =
 
   fQListView_virtualbase_updateEditorGeometries(self.h)
 
-type QListViewupdateEditorGeometriesBase* = proc(): void
-proc onupdateEditorGeometries*(self: QListView, slot: proc(super: QListViewupdateEditorGeometriesBase): void) =
+type QListViewupdateEditorGeometriesProc* = proc(): void
+proc onupdateEditorGeometries*(self: gen_qlistview_types.QListView, slot: QListViewupdateEditorGeometriesProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewupdateEditorGeometriesBase): void
-  var tmp = new Cb
+  var tmp = new QListViewupdateEditorGeometriesProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_updateEditorGeometries(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_updateEditorGeometries(self: ptr cQListView, slot: int): void {.exportc: "miqt_exec_callback_QListView_updateEditorGeometries ".} =
-  type Cb = proc(super: QListViewupdateEditorGeometriesBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_updateEditorGeometries(QListView(h: self), )
+  var nimfunc = cast[ptr QListViewupdateEditorGeometriesProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_verticalScrollbarAction(self: QListView, action: cint): void =
-
+  nimfunc[]()
+proc QListViewverticalScrollbarAction*(self: gen_qlistview_types.QListView, action: cint): void =
 
   fQListView_virtualbase_verticalScrollbarAction(self.h, action)
 
-type QListViewverticalScrollbarActionBase* = proc(action: cint): void
-proc onverticalScrollbarAction*(self: QListView, slot: proc(super: QListViewverticalScrollbarActionBase, action: cint): void) =
+type QListViewverticalScrollbarActionProc* = proc(action: cint): void
+proc onverticalScrollbarAction*(self: gen_qlistview_types.QListView, slot: QListViewverticalScrollbarActionProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewverticalScrollbarActionBase, action: cint): void
-  var tmp = new Cb
+  var tmp = new QListViewverticalScrollbarActionProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_verticalScrollbarAction(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_verticalScrollbarAction(self: ptr cQListView, slot: int, action: cint): void {.exportc: "miqt_exec_callback_QListView_verticalScrollbarAction ".} =
-  type Cb = proc(super: QListViewverticalScrollbarActionBase, action: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(action: cint): auto =
-    callVirtualBase_verticalScrollbarAction(QListView(h: self), action)
+  var nimfunc = cast[ptr QListViewverticalScrollbarActionProc](cast[pointer](slot))
   let slotval1 = action
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_horizontalScrollbarAction(self: QListView, action: cint): void =
-
+  nimfunc[](slotval1)
+proc QListViewhorizontalScrollbarAction*(self: gen_qlistview_types.QListView, action: cint): void =
 
   fQListView_virtualbase_horizontalScrollbarAction(self.h, action)
 
-type QListViewhorizontalScrollbarActionBase* = proc(action: cint): void
-proc onhorizontalScrollbarAction*(self: QListView, slot: proc(super: QListViewhorizontalScrollbarActionBase, action: cint): void) =
+type QListViewhorizontalScrollbarActionProc* = proc(action: cint): void
+proc onhorizontalScrollbarAction*(self: gen_qlistview_types.QListView, slot: QListViewhorizontalScrollbarActionProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewhorizontalScrollbarActionBase, action: cint): void
-  var tmp = new Cb
+  var tmp = new QListViewhorizontalScrollbarActionProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_horizontalScrollbarAction(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_horizontalScrollbarAction(self: ptr cQListView, slot: int, action: cint): void {.exportc: "miqt_exec_callback_QListView_horizontalScrollbarAction ".} =
-  type Cb = proc(super: QListViewhorizontalScrollbarActionBase, action: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(action: cint): auto =
-    callVirtualBase_horizontalScrollbarAction(QListView(h: self), action)
+  var nimfunc = cast[ptr QListViewhorizontalScrollbarActionProc](cast[pointer](slot))
   let slotval1 = action
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_verticalScrollbarValueChanged(self: QListView, value: cint): void =
-
+  nimfunc[](slotval1)
+proc QListViewverticalScrollbarValueChanged*(self: gen_qlistview_types.QListView, value: cint): void =
 
   fQListView_virtualbase_verticalScrollbarValueChanged(self.h, value)
 
-type QListViewverticalScrollbarValueChangedBase* = proc(value: cint): void
-proc onverticalScrollbarValueChanged*(self: QListView, slot: proc(super: QListViewverticalScrollbarValueChangedBase, value: cint): void) =
+type QListViewverticalScrollbarValueChangedProc* = proc(value: cint): void
+proc onverticalScrollbarValueChanged*(self: gen_qlistview_types.QListView, slot: QListViewverticalScrollbarValueChangedProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewverticalScrollbarValueChangedBase, value: cint): void
-  var tmp = new Cb
+  var tmp = new QListViewverticalScrollbarValueChangedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_verticalScrollbarValueChanged(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_verticalScrollbarValueChanged(self: ptr cQListView, slot: int, value: cint): void {.exportc: "miqt_exec_callback_QListView_verticalScrollbarValueChanged ".} =
-  type Cb = proc(super: QListViewverticalScrollbarValueChangedBase, value: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(value: cint): auto =
-    callVirtualBase_verticalScrollbarValueChanged(QListView(h: self), value)
+  var nimfunc = cast[ptr QListViewverticalScrollbarValueChangedProc](cast[pointer](slot))
   let slotval1 = value
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_horizontalScrollbarValueChanged(self: QListView, value: cint): void =
-
+  nimfunc[](slotval1)
+proc QListViewhorizontalScrollbarValueChanged*(self: gen_qlistview_types.QListView, value: cint): void =
 
   fQListView_virtualbase_horizontalScrollbarValueChanged(self.h, value)
 
-type QListViewhorizontalScrollbarValueChangedBase* = proc(value: cint): void
-proc onhorizontalScrollbarValueChanged*(self: QListView, slot: proc(super: QListViewhorizontalScrollbarValueChangedBase, value: cint): void) =
+type QListViewhorizontalScrollbarValueChangedProc* = proc(value: cint): void
+proc onhorizontalScrollbarValueChanged*(self: gen_qlistview_types.QListView, slot: QListViewhorizontalScrollbarValueChangedProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewhorizontalScrollbarValueChangedBase, value: cint): void
-  var tmp = new Cb
+  var tmp = new QListViewhorizontalScrollbarValueChangedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_horizontalScrollbarValueChanged(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_horizontalScrollbarValueChanged(self: ptr cQListView, slot: int, value: cint): void {.exportc: "miqt_exec_callback_QListView_horizontalScrollbarValueChanged ".} =
-  type Cb = proc(super: QListViewhorizontalScrollbarValueChangedBase, value: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(value: cint): auto =
-    callVirtualBase_horizontalScrollbarValueChanged(QListView(h: self), value)
+  var nimfunc = cast[ptr QListViewhorizontalScrollbarValueChangedProc](cast[pointer](slot))
   let slotval1 = value
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_closeEditor(self: QListView, editor: gen_qwidget.QWidget, hint: gen_qabstractitemdelegate.QAbstractItemDelegateEndEditHint): void =
-
+  nimfunc[](slotval1)
+proc QListViewcloseEditor*(self: gen_qlistview_types.QListView, editor: gen_qwidget.QWidget, hint: cint): void =
 
   fQListView_virtualbase_closeEditor(self.h, editor.h, cint(hint))
 
-type QListViewcloseEditorBase* = proc(editor: gen_qwidget.QWidget, hint: gen_qabstractitemdelegate.QAbstractItemDelegateEndEditHint): void
-proc oncloseEditor*(self: QListView, slot: proc(super: QListViewcloseEditorBase, editor: gen_qwidget.QWidget, hint: gen_qabstractitemdelegate.QAbstractItemDelegateEndEditHint): void) =
+type QListViewcloseEditorProc* = proc(editor: gen_qwidget.QWidget, hint: cint): void
+proc oncloseEditor*(self: gen_qlistview_types.QListView, slot: QListViewcloseEditorProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewcloseEditorBase, editor: gen_qwidget.QWidget, hint: gen_qabstractitemdelegate.QAbstractItemDelegateEndEditHint): void
-  var tmp = new Cb
+  var tmp = new QListViewcloseEditorProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_closeEditor(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_closeEditor(self: ptr cQListView, slot: int, editor: pointer, hint: cint): void {.exportc: "miqt_exec_callback_QListView_closeEditor ".} =
-  type Cb = proc(super: QListViewcloseEditorBase, editor: gen_qwidget.QWidget, hint: gen_qabstractitemdelegate.QAbstractItemDelegateEndEditHint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(editor: gen_qwidget.QWidget, hint: gen_qabstractitemdelegate.QAbstractItemDelegateEndEditHint): auto =
-    callVirtualBase_closeEditor(QListView(h: self), editor, hint)
+  var nimfunc = cast[ptr QListViewcloseEditorProc](cast[pointer](slot))
   let slotval1 = gen_qwidget.QWidget(h: editor)
 
-  let slotval2 = gen_qabstractitemdelegate.QAbstractItemDelegateEndEditHint(hint)
+  let slotval2 = cint(hint)
 
 
-  nimfunc[](superCall, slotval1, slotval2)
-proc callVirtualBase_commitData(self: QListView, editor: gen_qwidget.QWidget): void =
-
+  nimfunc[](slotval1, slotval2)
+proc QListViewcommitData*(self: gen_qlistview_types.QListView, editor: gen_qwidget.QWidget): void =
 
   fQListView_virtualbase_commitData(self.h, editor.h)
 
-type QListViewcommitDataBase* = proc(editor: gen_qwidget.QWidget): void
-proc oncommitData*(self: QListView, slot: proc(super: QListViewcommitDataBase, editor: gen_qwidget.QWidget): void) =
+type QListViewcommitDataProc* = proc(editor: gen_qwidget.QWidget): void
+proc oncommitData*(self: gen_qlistview_types.QListView, slot: QListViewcommitDataProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewcommitDataBase, editor: gen_qwidget.QWidget): void
-  var tmp = new Cb
+  var tmp = new QListViewcommitDataProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_commitData(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_commitData(self: ptr cQListView, slot: int, editor: pointer): void {.exportc: "miqt_exec_callback_QListView_commitData ".} =
-  type Cb = proc(super: QListViewcommitDataBase, editor: gen_qwidget.QWidget): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(editor: gen_qwidget.QWidget): auto =
-    callVirtualBase_commitData(QListView(h: self), editor)
+  var nimfunc = cast[ptr QListViewcommitDataProc](cast[pointer](slot))
   let slotval1 = gen_qwidget.QWidget(h: editor)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_editorDestroyed(self: QListView, editor: gen_qobject.QObject): void =
-
+  nimfunc[](slotval1)
+proc QListVieweditorDestroyed*(self: gen_qlistview_types.QListView, editor: gen_qobject.QObject): void =
 
   fQListView_virtualbase_editorDestroyed(self.h, editor.h)
 
-type QListVieweditorDestroyedBase* = proc(editor: gen_qobject.QObject): void
-proc oneditorDestroyed*(self: QListView, slot: proc(super: QListVieweditorDestroyedBase, editor: gen_qobject.QObject): void) =
+type QListVieweditorDestroyedProc* = proc(editor: gen_qobject.QObject): void
+proc oneditorDestroyed*(self: gen_qlistview_types.QListView, slot: QListVieweditorDestroyedProc) =
   # TODO check subclass
-  type Cb = proc(super: QListVieweditorDestroyedBase, editor: gen_qobject.QObject): void
-  var tmp = new Cb
+  var tmp = new QListVieweditorDestroyedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_editorDestroyed(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_editorDestroyed(self: ptr cQListView, slot: int, editor: pointer): void {.exportc: "miqt_exec_callback_QListView_editorDestroyed ".} =
-  type Cb = proc(super: QListVieweditorDestroyedBase, editor: gen_qobject.QObject): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(editor: gen_qobject.QObject): auto =
-    callVirtualBase_editorDestroyed(QListView(h: self), editor)
+  var nimfunc = cast[ptr QListVieweditorDestroyedProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: editor)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_edit2(self: QListView, index: gen_qabstractitemmodel.QModelIndex, trigger: gen_qabstractitemview.QAbstractItemViewEditTrigger, event: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[](slotval1)
+proc QListViewedit2*(self: gen_qlistview_types.QListView, index: gen_qabstractitemmodel.QModelIndex, trigger: cint, event: gen_qcoreevent.QEvent): bool =
 
   fQListView_virtualbase_edit2(self.h, index.h, cint(trigger), event.h)
 
-type QListViewedit2Base* = proc(index: gen_qabstractitemmodel.QModelIndex, trigger: gen_qabstractitemview.QAbstractItemViewEditTrigger, event: gen_qcoreevent.QEvent): bool
-proc onedit2*(self: QListView, slot: proc(super: QListViewedit2Base, index: gen_qabstractitemmodel.QModelIndex, trigger: gen_qabstractitemview.QAbstractItemViewEditTrigger, event: gen_qcoreevent.QEvent): bool) =
+type QListViewedit2Proc* = proc(index: gen_qabstractitemmodel.QModelIndex, trigger: cint, event: gen_qcoreevent.QEvent): bool
+proc onedit2*(self: gen_qlistview_types.QListView, slot: QListViewedit2Proc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewedit2Base, index: gen_qabstractitemmodel.QModelIndex, trigger: gen_qabstractitemview.QAbstractItemViewEditTrigger, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QListViewedit2Proc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_edit2(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_edit2(self: ptr cQListView, slot: int, index: pointer, trigger: cint, event: pointer): bool {.exportc: "miqt_exec_callback_QListView_edit2 ".} =
-  type Cb = proc(super: QListViewedit2Base, index: gen_qabstractitemmodel.QModelIndex, trigger: gen_qabstractitemview.QAbstractItemViewEditTrigger, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(index: gen_qabstractitemmodel.QModelIndex, trigger: gen_qabstractitemview.QAbstractItemViewEditTrigger, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_edit2(QListView(h: self), index, trigger, event)
+  var nimfunc = cast[ptr QListViewedit2Proc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: index)
 
-  let slotval2 = gen_qabstractitemview.QAbstractItemViewEditTrigger(trigger)
+  let slotval2 = cint(trigger)
 
   let slotval3 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_selectionCommand(self: QListView, index: gen_qabstractitemmodel.QModelIndex, event: gen_qcoreevent.QEvent): gen_qitemselectionmodel.QItemSelectionModelSelectionFlag =
+proc QListViewselectionCommand*(self: gen_qlistview_types.QListView, index: gen_qabstractitemmodel.QModelIndex, event: gen_qcoreevent.QEvent): cint =
 
+  cint(fQListView_virtualbase_selectionCommand(self.h, index.h, event.h))
 
-  gen_qitemselectionmodel.QItemSelectionModelSelectionFlag(fQListView_virtualbase_selectionCommand(self.h, index.h, event.h))
-
-type QListViewselectionCommandBase* = proc(index: gen_qabstractitemmodel.QModelIndex, event: gen_qcoreevent.QEvent): gen_qitemselectionmodel.QItemSelectionModelSelectionFlag
-proc onselectionCommand*(self: QListView, slot: proc(super: QListViewselectionCommandBase, index: gen_qabstractitemmodel.QModelIndex, event: gen_qcoreevent.QEvent): gen_qitemselectionmodel.QItemSelectionModelSelectionFlag) =
+type QListViewselectionCommandProc* = proc(index: gen_qabstractitemmodel.QModelIndex, event: gen_qcoreevent.QEvent): cint
+proc onselectionCommand*(self: gen_qlistview_types.QListView, slot: QListViewselectionCommandProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewselectionCommandBase, index: gen_qabstractitemmodel.QModelIndex, event: gen_qcoreevent.QEvent): gen_qitemselectionmodel.QItemSelectionModelSelectionFlag
-  var tmp = new Cb
+  var tmp = new QListViewselectionCommandProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_selectionCommand(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_selectionCommand(self: ptr cQListView, slot: int, index: pointer, event: pointer): cint {.exportc: "miqt_exec_callback_QListView_selectionCommand ".} =
-  type Cb = proc(super: QListViewselectionCommandBase, index: gen_qabstractitemmodel.QModelIndex, event: gen_qcoreevent.QEvent): gen_qitemselectionmodel.QItemSelectionModelSelectionFlag
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(index: gen_qabstractitemmodel.QModelIndex, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_selectionCommand(QListView(h: self), index, event)
+  var nimfunc = cast[ptr QListViewselectionCommandProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: index)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   cint(virtualReturn)
-proc callVirtualBase_focusNextPrevChild(self: QListView, next: bool): bool =
-
+proc QListViewfocusNextPrevChild*(self: gen_qlistview_types.QListView, next: bool): bool =
 
   fQListView_virtualbase_focusNextPrevChild(self.h, next)
 
-type QListViewfocusNextPrevChildBase* = proc(next: bool): bool
-proc onfocusNextPrevChild*(self: QListView, slot: proc(super: QListViewfocusNextPrevChildBase, next: bool): bool) =
+type QListViewfocusNextPrevChildProc* = proc(next: bool): bool
+proc onfocusNextPrevChild*(self: gen_qlistview_types.QListView, slot: QListViewfocusNextPrevChildProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewfocusNextPrevChildBase, next: bool): bool
-  var tmp = new Cb
+  var tmp = new QListViewfocusNextPrevChildProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_focusNextPrevChild(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_focusNextPrevChild(self: ptr cQListView, slot: int, next: bool): bool {.exportc: "miqt_exec_callback_QListView_focusNextPrevChild ".} =
-  type Cb = proc(super: QListViewfocusNextPrevChildBase, next: bool): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(next: bool): auto =
-    callVirtualBase_focusNextPrevChild(QListView(h: self), next)
+  var nimfunc = cast[ptr QListViewfocusNextPrevChildProc](cast[pointer](slot))
   let slotval1 = next
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_viewportEvent(self: QListView, event: gen_qcoreevent.QEvent): bool =
-
+proc QListViewviewportEvent*(self: gen_qlistview_types.QListView, event: gen_qcoreevent.QEvent): bool =
 
   fQListView_virtualbase_viewportEvent(self.h, event.h)
 
-type QListViewviewportEventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onviewportEvent*(self: QListView, slot: proc(super: QListViewviewportEventBase, event: gen_qcoreevent.QEvent): bool) =
+type QListViewviewportEventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onviewportEvent*(self: gen_qlistview_types.QListView, slot: QListViewviewportEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewviewportEventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QListViewviewportEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_viewportEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_viewportEvent(self: ptr cQListView, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QListView_viewportEvent ".} =
-  type Cb = proc(super: QListViewviewportEventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_viewportEvent(QListView(h: self), event)
+  var nimfunc = cast[ptr QListViewviewportEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_mousePressEvent(self: QListView, event: gen_qevent.QMouseEvent): void =
-
+proc QListViewmousePressEvent*(self: gen_qlistview_types.QListView, event: gen_qevent.QMouseEvent): void =
 
   fQListView_virtualbase_mousePressEvent(self.h, event.h)
 
-type QListViewmousePressEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmousePressEvent*(self: QListView, slot: proc(super: QListViewmousePressEventBase, event: gen_qevent.QMouseEvent): void) =
+type QListViewmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmousePressEvent*(self: gen_qlistview_types.QListView, slot: QListViewmousePressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QListViewmousePressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_mousePressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_mousePressEvent(self: ptr cQListView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QListView_mousePressEvent ".} =
-  type Cb = proc(super: QListViewmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mousePressEvent(QListView(h: self), event)
+  var nimfunc = cast[ptr QListViewmousePressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseDoubleClickEvent(self: QListView, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QListViewmouseDoubleClickEvent*(self: gen_qlistview_types.QListView, event: gen_qevent.QMouseEvent): void =
 
   fQListView_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
-type QListViewmouseDoubleClickEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseDoubleClickEvent*(self: QListView, slot: proc(super: QListViewmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void) =
+type QListViewmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseDoubleClickEvent*(self: gen_qlistview_types.QListView, slot: QListViewmouseDoubleClickEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QListViewmouseDoubleClickEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_mouseDoubleClickEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_mouseDoubleClickEvent(self: ptr cQListView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QListView_mouseDoubleClickEvent ".} =
-  type Cb = proc(super: QListViewmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseDoubleClickEvent(QListView(h: self), event)
+  var nimfunc = cast[ptr QListViewmouseDoubleClickEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragEnterEvent(self: QListView, event: gen_qevent.QDragEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QListViewdragEnterEvent*(self: gen_qlistview_types.QListView, event: gen_qevent.QDragEnterEvent): void =
 
   fQListView_virtualbase_dragEnterEvent(self.h, event.h)
 
-type QListViewdragEnterEventBase* = proc(event: gen_qevent.QDragEnterEvent): void
-proc ondragEnterEvent*(self: QListView, slot: proc(super: QListViewdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void) =
+type QListViewdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
+proc ondragEnterEvent*(self: gen_qlistview_types.QListView, slot: QListViewdragEnterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QListViewdragEnterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_dragEnterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_dragEnterEvent(self: ptr cQListView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QListView_dragEnterEvent ".} =
-  type Cb = proc(super: QListViewdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragEnterEvent): auto =
-    callVirtualBase_dragEnterEvent(QListView(h: self), event)
+  var nimfunc = cast[ptr QListViewdragEnterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusInEvent(self: QListView, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QListViewfocusInEvent*(self: gen_qlistview_types.QListView, event: gen_qevent.QFocusEvent): void =
 
   fQListView_virtualbase_focusInEvent(self.h, event.h)
 
-type QListViewfocusInEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusInEvent*(self: QListView, slot: proc(super: QListViewfocusInEventBase, event: gen_qevent.QFocusEvent): void) =
+type QListViewfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusInEvent*(self: gen_qlistview_types.QListView, slot: QListViewfocusInEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QListViewfocusInEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_focusInEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_focusInEvent(self: ptr cQListView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QListView_focusInEvent ".} =
-  type Cb = proc(super: QListViewfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusInEvent(QListView(h: self), event)
+  var nimfunc = cast[ptr QListViewfocusInEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusOutEvent(self: QListView, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QListViewfocusOutEvent*(self: gen_qlistview_types.QListView, event: gen_qevent.QFocusEvent): void =
 
   fQListView_virtualbase_focusOutEvent(self.h, event.h)
 
-type QListViewfocusOutEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusOutEvent*(self: QListView, slot: proc(super: QListViewfocusOutEventBase, event: gen_qevent.QFocusEvent): void) =
+type QListViewfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusOutEvent*(self: gen_qlistview_types.QListView, slot: QListViewfocusOutEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QListViewfocusOutEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_focusOutEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_focusOutEvent(self: ptr cQListView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QListView_focusOutEvent ".} =
-  type Cb = proc(super: QListViewfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusOutEvent(QListView(h: self), event)
+  var nimfunc = cast[ptr QListViewfocusOutEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyPressEvent(self: QListView, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QListViewkeyPressEvent*(self: gen_qlistview_types.QListView, event: gen_qevent.QKeyEvent): void =
 
   fQListView_virtualbase_keyPressEvent(self.h, event.h)
 
-type QListViewkeyPressEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyPressEvent*(self: QListView, slot: proc(super: QListViewkeyPressEventBase, event: gen_qevent.QKeyEvent): void) =
+type QListViewkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyPressEvent*(self: gen_qlistview_types.QListView, slot: QListViewkeyPressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QListViewkeyPressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_keyPressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_keyPressEvent(self: ptr cQListView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QListView_keyPressEvent ".} =
-  type Cb = proc(super: QListViewkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyPressEvent(QListView(h: self), event)
+  var nimfunc = cast[ptr QListViewkeyPressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_inputMethodEvent(self: QListView, event: gen_qevent.QInputMethodEvent): void =
-
+  nimfunc[](slotval1)
+proc QListViewinputMethodEvent*(self: gen_qlistview_types.QListView, event: gen_qevent.QInputMethodEvent): void =
 
   fQListView_virtualbase_inputMethodEvent(self.h, event.h)
 
-type QListViewinputMethodEventBase* = proc(event: gen_qevent.QInputMethodEvent): void
-proc oninputMethodEvent*(self: QListView, slot: proc(super: QListViewinputMethodEventBase, event: gen_qevent.QInputMethodEvent): void) =
+type QListViewinputMethodEventProc* = proc(event: gen_qevent.QInputMethodEvent): void
+proc oninputMethodEvent*(self: gen_qlistview_types.QListView, slot: QListViewinputMethodEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewinputMethodEventBase, event: gen_qevent.QInputMethodEvent): void
-  var tmp = new Cb
+  var tmp = new QListViewinputMethodEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_inputMethodEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_inputMethodEvent(self: ptr cQListView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QListView_inputMethodEvent ".} =
-  type Cb = proc(super: QListViewinputMethodEventBase, event: gen_qevent.QInputMethodEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QInputMethodEvent): auto =
-    callVirtualBase_inputMethodEvent(QListView(h: self), event)
+  var nimfunc = cast[ptr QListViewinputMethodEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QInputMethodEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_eventFilter(self: QListView, objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[](slotval1)
+proc QListVieweventFilter*(self: gen_qlistview_types.QListView, objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQListView_virtualbase_eventFilter(self.h, objectVal.h, event.h)
 
-type QListVieweventFilterBase* = proc(objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QListView, slot: proc(super: QListVieweventFilterBase, objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QListVieweventFilterProc* = proc(objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qlistview_types.QListView, slot: QListVieweventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QListVieweventFilterBase, objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QListVieweventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_eventFilter(self: ptr cQListView, slot: int, objectVal: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QListView_eventFilter ".} =
-  type Cb = proc(super: QListVieweventFilterBase, objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QListView(h: self), objectVal, event)
+  var nimfunc = cast[ptr QListVieweventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: objectVal)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_minimumSizeHint(self: QListView, ): gen_qsize.QSize =
-
+proc QListViewminimumSizeHint*(self: gen_qlistview_types.QListView, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQListView_virtualbase_minimumSizeHint(self.h))
 
-type QListViewminimumSizeHintBase* = proc(): gen_qsize.QSize
-proc onminimumSizeHint*(self: QListView, slot: proc(super: QListViewminimumSizeHintBase): gen_qsize.QSize) =
+type QListViewminimumSizeHintProc* = proc(): gen_qsize.QSize
+proc onminimumSizeHint*(self: gen_qlistview_types.QListView, slot: QListViewminimumSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewminimumSizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QListViewminimumSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_minimumSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_minimumSizeHint(self: ptr cQListView, slot: int): pointer {.exportc: "miqt_exec_callback_QListView_minimumSizeHint ".} =
-  type Cb = proc(super: QListViewminimumSizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_minimumSizeHint(QListView(h: self), )
+  var nimfunc = cast[ptr QListViewminimumSizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_sizeHint(self: QListView, ): gen_qsize.QSize =
-
+proc QListViewsizeHint*(self: gen_qlistview_types.QListView, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQListView_virtualbase_sizeHint(self.h))
 
-type QListViewsizeHintBase* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: QListView, slot: proc(super: QListViewsizeHintBase): gen_qsize.QSize) =
+type QListViewsizeHintProc* = proc(): gen_qsize.QSize
+proc onsizeHint*(self: gen_qlistview_types.QListView, slot: QListViewsizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewsizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QListViewsizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_sizeHint(self: ptr cQListView, slot: int): pointer {.exportc: "miqt_exec_callback_QListView_sizeHint ".} =
-  type Cb = proc(super: QListViewsizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sizeHint(QListView(h: self), )
+  var nimfunc = cast[ptr QListViewsizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_setupViewport(self: QListView, viewport: gen_qwidget.QWidget): void =
-
+proc QListViewsetupViewport*(self: gen_qlistview_types.QListView, viewport: gen_qwidget.QWidget): void =
 
   fQListView_virtualbase_setupViewport(self.h, viewport.h)
 
-type QListViewsetupViewportBase* = proc(viewport: gen_qwidget.QWidget): void
-proc onsetupViewport*(self: QListView, slot: proc(super: QListViewsetupViewportBase, viewport: gen_qwidget.QWidget): void) =
+type QListViewsetupViewportProc* = proc(viewport: gen_qwidget.QWidget): void
+proc onsetupViewport*(self: gen_qlistview_types.QListView, slot: QListViewsetupViewportProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewsetupViewportBase, viewport: gen_qwidget.QWidget): void
-  var tmp = new Cb
+  var tmp = new QListViewsetupViewportProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_setupViewport(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_setupViewport(self: ptr cQListView, slot: int, viewport: pointer): void {.exportc: "miqt_exec_callback_QListView_setupViewport ".} =
-  type Cb = proc(super: QListViewsetupViewportBase, viewport: gen_qwidget.QWidget): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(viewport: gen_qwidget.QWidget): auto =
-    callVirtualBase_setupViewport(QListView(h: self), viewport)
+  var nimfunc = cast[ptr QListViewsetupViewportProc](cast[pointer](slot))
   let slotval1 = gen_qwidget.QWidget(h: viewport)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_contextMenuEvent(self: QListView, param1: gen_qevent.QContextMenuEvent): void =
-
+  nimfunc[](slotval1)
+proc QListViewcontextMenuEvent*(self: gen_qlistview_types.QListView, param1: gen_qevent.QContextMenuEvent): void =
 
   fQListView_virtualbase_contextMenuEvent(self.h, param1.h)
 
-type QListViewcontextMenuEventBase* = proc(param1: gen_qevent.QContextMenuEvent): void
-proc oncontextMenuEvent*(self: QListView, slot: proc(super: QListViewcontextMenuEventBase, param1: gen_qevent.QContextMenuEvent): void) =
+type QListViewcontextMenuEventProc* = proc(param1: gen_qevent.QContextMenuEvent): void
+proc oncontextMenuEvent*(self: gen_qlistview_types.QListView, slot: QListViewcontextMenuEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewcontextMenuEventBase, param1: gen_qevent.QContextMenuEvent): void
-  var tmp = new Cb
+  var tmp = new QListViewcontextMenuEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_contextMenuEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_contextMenuEvent(self: ptr cQListView, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QListView_contextMenuEvent ".} =
-  type Cb = proc(super: QListViewcontextMenuEventBase, param1: gen_qevent.QContextMenuEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QContextMenuEvent): auto =
-    callVirtualBase_contextMenuEvent(QListView(h: self), param1)
+  var nimfunc = cast[ptr QListViewcontextMenuEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QContextMenuEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_changeEvent(self: QListView, param1: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QListViewchangeEvent*(self: gen_qlistview_types.QListView, param1: gen_qcoreevent.QEvent): void =
 
   fQListView_virtualbase_changeEvent(self.h, param1.h)
 
-type QListViewchangeEventBase* = proc(param1: gen_qcoreevent.QEvent): void
-proc onchangeEvent*(self: QListView, slot: proc(super: QListViewchangeEventBase, param1: gen_qcoreevent.QEvent): void) =
+type QListViewchangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
+proc onchangeEvent*(self: gen_qlistview_types.QListView, slot: QListViewchangeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewchangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QListViewchangeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_changeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_changeEvent(self: ptr cQListView, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QListView_changeEvent ".} =
-  type Cb = proc(super: QListViewchangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_changeEvent(QListView(h: self), param1)
+  var nimfunc = cast[ptr QListViewchangeEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_devType(self: QListView, ): cint =
-
+  nimfunc[](slotval1)
+proc QListViewdevType*(self: gen_qlistview_types.QListView, ): cint =
 
   fQListView_virtualbase_devType(self.h)
 
-type QListViewdevTypeBase* = proc(): cint
-proc ondevType*(self: QListView, slot: proc(super: QListViewdevTypeBase): cint) =
+type QListViewdevTypeProc* = proc(): cint
+proc ondevType*(self: gen_qlistview_types.QListView, slot: QListViewdevTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewdevTypeBase): cint
-  var tmp = new Cb
+  var tmp = new QListViewdevTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_devType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_devType(self: ptr cQListView, slot: int): cint {.exportc: "miqt_exec_callback_QListView_devType ".} =
-  type Cb = proc(super: QListViewdevTypeBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_devType(QListView(h: self), )
+  var nimfunc = cast[ptr QListViewdevTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setVisible(self: QListView, visible: bool): void =
-
+proc QListViewsetVisible*(self: gen_qlistview_types.QListView, visible: bool): void =
 
   fQListView_virtualbase_setVisible(self.h, visible)
 
-type QListViewsetVisibleBase* = proc(visible: bool): void
-proc onsetVisible*(self: QListView, slot: proc(super: QListViewsetVisibleBase, visible: bool): void) =
+type QListViewsetVisibleProc* = proc(visible: bool): void
+proc onsetVisible*(self: gen_qlistview_types.QListView, slot: QListViewsetVisibleProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewsetVisibleBase, visible: bool): void
-  var tmp = new Cb
+  var tmp = new QListViewsetVisibleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_setVisible(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_setVisible(self: ptr cQListView, slot: int, visible: bool): void {.exportc: "miqt_exec_callback_QListView_setVisible ".} =
-  type Cb = proc(super: QListViewsetVisibleBase, visible: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(visible: bool): auto =
-    callVirtualBase_setVisible(QListView(h: self), visible)
+  var nimfunc = cast[ptr QListViewsetVisibleProc](cast[pointer](slot))
   let slotval1 = visible
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_heightForWidth(self: QListView, param1: cint): cint =
-
+  nimfunc[](slotval1)
+proc QListViewheightForWidth*(self: gen_qlistview_types.QListView, param1: cint): cint =
 
   fQListView_virtualbase_heightForWidth(self.h, param1)
 
-type QListViewheightForWidthBase* = proc(param1: cint): cint
-proc onheightForWidth*(self: QListView, slot: proc(super: QListViewheightForWidthBase, param1: cint): cint) =
+type QListViewheightForWidthProc* = proc(param1: cint): cint
+proc onheightForWidth*(self: gen_qlistview_types.QListView, slot: QListViewheightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewheightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QListViewheightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_heightForWidth(self: ptr cQListView, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QListView_heightForWidth ".} =
-  type Cb = proc(super: QListViewheightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_heightForWidth(QListView(h: self), param1)
+  var nimfunc = cast[ptr QListViewheightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_hasHeightForWidth(self: QListView, ): bool =
-
+proc QListViewhasHeightForWidth*(self: gen_qlistview_types.QListView, ): bool =
 
   fQListView_virtualbase_hasHeightForWidth(self.h)
 
-type QListViewhasHeightForWidthBase* = proc(): bool
-proc onhasHeightForWidth*(self: QListView, slot: proc(super: QListViewhasHeightForWidthBase): bool) =
+type QListViewhasHeightForWidthProc* = proc(): bool
+proc onhasHeightForWidth*(self: gen_qlistview_types.QListView, slot: QListViewhasHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewhasHeightForWidthBase): bool
-  var tmp = new Cb
+  var tmp = new QListViewhasHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_hasHeightForWidth(self: ptr cQListView, slot: int): bool {.exportc: "miqt_exec_callback_QListView_hasHeightForWidth ".} =
-  type Cb = proc(super: QListViewhasHeightForWidthBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasHeightForWidth(QListView(h: self), )
+  var nimfunc = cast[ptr QListViewhasHeightForWidthProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_paintEngine(self: QListView, ): gen_qpaintengine.QPaintEngine =
-
+proc QListViewpaintEngine*(self: gen_qlistview_types.QListView, ): gen_qpaintengine.QPaintEngine =
 
   gen_qpaintengine.QPaintEngine(h: fQListView_virtualbase_paintEngine(self.h))
 
-type QListViewpaintEngineBase* = proc(): gen_qpaintengine.QPaintEngine
-proc onpaintEngine*(self: QListView, slot: proc(super: QListViewpaintEngineBase): gen_qpaintengine.QPaintEngine) =
+type QListViewpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
+proc onpaintEngine*(self: gen_qlistview_types.QListView, slot: QListViewpaintEngineProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var tmp = new Cb
+  var tmp = new QListViewpaintEngineProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_paintEngine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_paintEngine(self: ptr cQListView, slot: int): pointer {.exportc: "miqt_exec_callback_QListView_paintEngine ".} =
-  type Cb = proc(super: QListViewpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_paintEngine(QListView(h: self), )
+  var nimfunc = cast[ptr QListViewpaintEngineProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_keyReleaseEvent(self: QListView, event: gen_qevent.QKeyEvent): void =
-
+proc QListViewkeyReleaseEvent*(self: gen_qlistview_types.QListView, event: gen_qevent.QKeyEvent): void =
 
   fQListView_virtualbase_keyReleaseEvent(self.h, event.h)
 
-type QListViewkeyReleaseEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyReleaseEvent*(self: QListView, slot: proc(super: QListViewkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void) =
+type QListViewkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyReleaseEvent*(self: gen_qlistview_types.QListView, slot: QListViewkeyReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QListViewkeyReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_keyReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_keyReleaseEvent(self: ptr cQListView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QListView_keyReleaseEvent ".} =
-  type Cb = proc(super: QListViewkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyReleaseEvent(QListView(h: self), event)
+  var nimfunc = cast[ptr QListViewkeyReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_enterEvent(self: QListView, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QListViewenterEvent*(self: gen_qlistview_types.QListView, event: gen_qcoreevent.QEvent): void =
 
   fQListView_virtualbase_enterEvent(self.h, event.h)
 
-type QListViewenterEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onenterEvent*(self: QListView, slot: proc(super: QListViewenterEventBase, event: gen_qcoreevent.QEvent): void) =
+type QListViewenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onenterEvent*(self: gen_qlistview_types.QListView, slot: QListViewenterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewenterEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QListViewenterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_enterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_enterEvent(self: ptr cQListView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QListView_enterEvent ".} =
-  type Cb = proc(super: QListViewenterEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_enterEvent(QListView(h: self), event)
+  var nimfunc = cast[ptr QListViewenterEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_leaveEvent(self: QListView, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QListViewleaveEvent*(self: gen_qlistview_types.QListView, event: gen_qcoreevent.QEvent): void =
 
   fQListView_virtualbase_leaveEvent(self.h, event.h)
 
-type QListViewleaveEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onleaveEvent*(self: QListView, slot: proc(super: QListViewleaveEventBase, event: gen_qcoreevent.QEvent): void) =
+type QListViewleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onleaveEvent*(self: gen_qlistview_types.QListView, slot: QListViewleaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QListViewleaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_leaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_leaveEvent(self: ptr cQListView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QListView_leaveEvent ".} =
-  type Cb = proc(super: QListViewleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_leaveEvent(QListView(h: self), event)
+  var nimfunc = cast[ptr QListViewleaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_moveEvent(self: QListView, event: gen_qevent.QMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QListViewmoveEvent*(self: gen_qlistview_types.QListView, event: gen_qevent.QMoveEvent): void =
 
   fQListView_virtualbase_moveEvent(self.h, event.h)
 
-type QListViewmoveEventBase* = proc(event: gen_qevent.QMoveEvent): void
-proc onmoveEvent*(self: QListView, slot: proc(super: QListViewmoveEventBase, event: gen_qevent.QMoveEvent): void) =
+type QListViewmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
+proc onmoveEvent*(self: gen_qlistview_types.QListView, slot: QListViewmoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QListViewmoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_moveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_moveEvent(self: ptr cQListView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QListView_moveEvent ".} =
-  type Cb = proc(super: QListViewmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMoveEvent): auto =
-    callVirtualBase_moveEvent(QListView(h: self), event)
+  var nimfunc = cast[ptr QListViewmoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_closeEvent(self: QListView, event: gen_qevent.QCloseEvent): void =
-
+  nimfunc[](slotval1)
+proc QListViewcloseEvent*(self: gen_qlistview_types.QListView, event: gen_qevent.QCloseEvent): void =
 
   fQListView_virtualbase_closeEvent(self.h, event.h)
 
-type QListViewcloseEventBase* = proc(event: gen_qevent.QCloseEvent): void
-proc oncloseEvent*(self: QListView, slot: proc(super: QListViewcloseEventBase, event: gen_qevent.QCloseEvent): void) =
+type QListViewcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
+proc oncloseEvent*(self: gen_qlistview_types.QListView, slot: QListViewcloseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var tmp = new Cb
+  var tmp = new QListViewcloseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_closeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_closeEvent(self: ptr cQListView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QListView_closeEvent ".} =
-  type Cb = proc(super: QListViewcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QCloseEvent): auto =
-    callVirtualBase_closeEvent(QListView(h: self), event)
+  var nimfunc = cast[ptr QListViewcloseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QCloseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_tabletEvent(self: QListView, event: gen_qevent.QTabletEvent): void =
-
+  nimfunc[](slotval1)
+proc QListViewtabletEvent*(self: gen_qlistview_types.QListView, event: gen_qevent.QTabletEvent): void =
 
   fQListView_virtualbase_tabletEvent(self.h, event.h)
 
-type QListViewtabletEventBase* = proc(event: gen_qevent.QTabletEvent): void
-proc ontabletEvent*(self: QListView, slot: proc(super: QListViewtabletEventBase, event: gen_qevent.QTabletEvent): void) =
+type QListViewtabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
+proc ontabletEvent*(self: gen_qlistview_types.QListView, slot: QListViewtabletEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewtabletEventBase, event: gen_qevent.QTabletEvent): void
-  var tmp = new Cb
+  var tmp = new QListViewtabletEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_tabletEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_tabletEvent(self: ptr cQListView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QListView_tabletEvent ".} =
-  type Cb = proc(super: QListViewtabletEventBase, event: gen_qevent.QTabletEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QTabletEvent): auto =
-    callVirtualBase_tabletEvent(QListView(h: self), event)
+  var nimfunc = cast[ptr QListViewtabletEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QTabletEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_actionEvent(self: QListView, event: gen_qevent.QActionEvent): void =
-
+  nimfunc[](slotval1)
+proc QListViewactionEvent*(self: gen_qlistview_types.QListView, event: gen_qevent.QActionEvent): void =
 
   fQListView_virtualbase_actionEvent(self.h, event.h)
 
-type QListViewactionEventBase* = proc(event: gen_qevent.QActionEvent): void
-proc onactionEvent*(self: QListView, slot: proc(super: QListViewactionEventBase, event: gen_qevent.QActionEvent): void) =
+type QListViewactionEventProc* = proc(event: gen_qevent.QActionEvent): void
+proc onactionEvent*(self: gen_qlistview_types.QListView, slot: QListViewactionEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewactionEventBase, event: gen_qevent.QActionEvent): void
-  var tmp = new Cb
+  var tmp = new QListViewactionEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_actionEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_actionEvent(self: ptr cQListView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QListView_actionEvent ".} =
-  type Cb = proc(super: QListViewactionEventBase, event: gen_qevent.QActionEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QActionEvent): auto =
-    callVirtualBase_actionEvent(QListView(h: self), event)
+  var nimfunc = cast[ptr QListViewactionEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QActionEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_showEvent(self: QListView, event: gen_qevent.QShowEvent): void =
-
+  nimfunc[](slotval1)
+proc QListViewshowEvent*(self: gen_qlistview_types.QListView, event: gen_qevent.QShowEvent): void =
 
   fQListView_virtualbase_showEvent(self.h, event.h)
 
-type QListViewshowEventBase* = proc(event: gen_qevent.QShowEvent): void
-proc onshowEvent*(self: QListView, slot: proc(super: QListViewshowEventBase, event: gen_qevent.QShowEvent): void) =
+type QListViewshowEventProc* = proc(event: gen_qevent.QShowEvent): void
+proc onshowEvent*(self: gen_qlistview_types.QListView, slot: QListViewshowEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewshowEventBase, event: gen_qevent.QShowEvent): void
-  var tmp = new Cb
+  var tmp = new QListViewshowEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_showEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_showEvent(self: ptr cQListView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QListView_showEvent ".} =
-  type Cb = proc(super: QListViewshowEventBase, event: gen_qevent.QShowEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QShowEvent): auto =
-    callVirtualBase_showEvent(QListView(h: self), event)
+  var nimfunc = cast[ptr QListViewshowEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QShowEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hideEvent(self: QListView, event: gen_qevent.QHideEvent): void =
-
+  nimfunc[](slotval1)
+proc QListViewhideEvent*(self: gen_qlistview_types.QListView, event: gen_qevent.QHideEvent): void =
 
   fQListView_virtualbase_hideEvent(self.h, event.h)
 
-type QListViewhideEventBase* = proc(event: gen_qevent.QHideEvent): void
-proc onhideEvent*(self: QListView, slot: proc(super: QListViewhideEventBase, event: gen_qevent.QHideEvent): void) =
+type QListViewhideEventProc* = proc(event: gen_qevent.QHideEvent): void
+proc onhideEvent*(self: gen_qlistview_types.QListView, slot: QListViewhideEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewhideEventBase, event: gen_qevent.QHideEvent): void
-  var tmp = new Cb
+  var tmp = new QListViewhideEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_hideEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_hideEvent(self: ptr cQListView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QListView_hideEvent ".} =
-  type Cb = proc(super: QListViewhideEventBase, event: gen_qevent.QHideEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QHideEvent): auto =
-    callVirtualBase_hideEvent(QListView(h: self), event)
+  var nimfunc = cast[ptr QListViewhideEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QHideEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_nativeEvent(self: QListView, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
+  nimfunc[](slotval1)
+proc QListViewnativeEvent*(self: gen_qlistview_types.QListView, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
 
   fQListView_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
-type QListViewnativeEventBase* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-proc onnativeEvent*(self: QListView, slot: proc(super: QListViewnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool) =
+type QListViewnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
+proc onnativeEvent*(self: gen_qlistview_types.QListView, slot: QListViewnativeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-  var tmp = new Cb
+  var tmp = new QListViewnativeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_nativeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_nativeEvent(self: ptr cQListView, slot: int, eventType: struct_miqt_string, message: pointer, resultVal: ptr clong): bool {.exportc: "miqt_exec_callback_QListView_nativeEvent ".} =
-  type Cb = proc(super: QListViewnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(eventType: seq[byte], message: pointer, resultVal: ptr clong): auto =
-    callVirtualBase_nativeEvent(QListView(h: self), eventType, message, resultVal)
+  var nimfunc = cast[ptr QListViewnativeEventProc](cast[pointer](slot))
   var veventType_bytearray = eventType
   var veventTypex_ret = @(toOpenArrayByte(veventType_bytearray.data, 0, int(veventType_bytearray.len)-1))
   c_free(veventType_bytearray.data)
@@ -2612,198 +2178,158 @@ proc miqt_exec_callback_QListView_nativeEvent(self: ptr cQListView, slot: int, e
   let slotval3 = resultVal
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_metric(self: QListView, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint =
-
+proc QListViewmetric*(self: gen_qlistview_types.QListView, param1: cint): cint =
 
   fQListView_virtualbase_metric(self.h, cint(param1))
 
-type QListViewmetricBase* = proc(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-proc onmetric*(self: QListView, slot: proc(super: QListViewmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint) =
+type QListViewmetricProc* = proc(param1: cint): cint
+proc onmetric*(self: gen_qlistview_types.QListView, slot: QListViewmetricProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var tmp = new Cb
+  var tmp = new QListViewmetricProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_metric(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_metric(self: ptr cQListView, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QListView_metric ".} =
-  type Cb = proc(super: QListViewmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): auto =
-    callVirtualBase_metric(QListView(h: self), param1)
-  let slotval1 = gen_qpaintdevice.QPaintDevicePaintDeviceMetric(param1)
+  var nimfunc = cast[ptr QListViewmetricProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_initPainter(self: QListView, painter: gen_qpainter.QPainter): void =
-
+proc QListViewinitPainter*(self: gen_qlistview_types.QListView, painter: gen_qpainter.QPainter): void =
 
   fQListView_virtualbase_initPainter(self.h, painter.h)
 
-type QListViewinitPainterBase* = proc(painter: gen_qpainter.QPainter): void
-proc oninitPainter*(self: QListView, slot: proc(super: QListViewinitPainterBase, painter: gen_qpainter.QPainter): void) =
+type QListViewinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
+proc oninitPainter*(self: gen_qlistview_types.QListView, slot: QListViewinitPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewinitPainterBase, painter: gen_qpainter.QPainter): void
-  var tmp = new Cb
+  var tmp = new QListViewinitPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_initPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_initPainter(self: ptr cQListView, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_QListView_initPainter ".} =
-  type Cb = proc(super: QListViewinitPainterBase, painter: gen_qpainter.QPainter): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter): auto =
-    callVirtualBase_initPainter(QListView(h: self), painter)
+  var nimfunc = cast[ptr QListViewinitPainterProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_redirected(self: QListView, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
+  nimfunc[](slotval1)
+proc QListViewredirected*(self: gen_qlistview_types.QListView, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
 
   gen_qpaintdevice.QPaintDevice(h: fQListView_virtualbase_redirected(self.h, offset.h))
 
-type QListViewredirectedBase* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-proc onredirected*(self: QListView, slot: proc(super: QListViewredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice) =
+type QListViewredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
+proc onredirected*(self: gen_qlistview_types.QListView, slot: QListViewredirectedProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var tmp = new Cb
+  var tmp = new QListViewredirectedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_redirected(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_redirected(self: ptr cQListView, slot: int, offset: pointer): pointer {.exportc: "miqt_exec_callback_QListView_redirected ".} =
-  type Cb = proc(super: QListViewredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(offset: gen_qpoint.QPoint): auto =
-    callVirtualBase_redirected(QListView(h: self), offset)
+  var nimfunc = cast[ptr QListViewredirectedProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: offset)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_sharedPainter(self: QListView, ): gen_qpainter.QPainter =
-
+proc QListViewsharedPainter*(self: gen_qlistview_types.QListView, ): gen_qpainter.QPainter =
 
   gen_qpainter.QPainter(h: fQListView_virtualbase_sharedPainter(self.h))
 
-type QListViewsharedPainterBase* = proc(): gen_qpainter.QPainter
-proc onsharedPainter*(self: QListView, slot: proc(super: QListViewsharedPainterBase): gen_qpainter.QPainter) =
+type QListViewsharedPainterProc* = proc(): gen_qpainter.QPainter
+proc onsharedPainter*(self: gen_qlistview_types.QListView, slot: QListViewsharedPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewsharedPainterBase): gen_qpainter.QPainter
-  var tmp = new Cb
+  var tmp = new QListViewsharedPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_sharedPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_sharedPainter(self: ptr cQListView, slot: int): pointer {.exportc: "miqt_exec_callback_QListView_sharedPainter ".} =
-  type Cb = proc(super: QListViewsharedPainterBase): gen_qpainter.QPainter
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sharedPainter(QListView(h: self), )
+  var nimfunc = cast[ptr QListViewsharedPainterProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_childEvent(self: QListView, event: gen_qcoreevent.QChildEvent): void =
-
+proc QListViewchildEvent*(self: gen_qlistview_types.QListView, event: gen_qcoreevent.QChildEvent): void =
 
   fQListView_virtualbase_childEvent(self.h, event.h)
 
-type QListViewchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QListView, slot: proc(super: QListViewchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QListViewchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qlistview_types.QListView, slot: QListViewchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QListViewchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_childEvent(self: ptr cQListView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QListView_childEvent ".} =
-  type Cb = proc(super: QListViewchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QListView(h: self), event)
+  var nimfunc = cast[ptr QListViewchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QListView, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QListViewcustomEvent*(self: gen_qlistview_types.QListView, event: gen_qcoreevent.QEvent): void =
 
   fQListView_virtualbase_customEvent(self.h, event.h)
 
-type QListViewcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QListView, slot: proc(super: QListViewcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QListViewcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qlistview_types.QListView, slot: QListViewcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QListViewcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_customEvent(self: ptr cQListView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QListView_customEvent ".} =
-  type Cb = proc(super: QListViewcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QListView(h: self), event)
+  var nimfunc = cast[ptr QListViewcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QListView, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QListViewconnectNotify*(self: gen_qlistview_types.QListView, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQListView_virtualbase_connectNotify(self.h, signal.h)
 
-type QListViewconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QListView, slot: proc(super: QListViewconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QListViewconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qlistview_types.QListView, slot: QListViewconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QListViewconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_connectNotify(self: ptr cQListView, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QListView_connectNotify ".} =
-  type Cb = proc(super: QListViewconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QListView(h: self), signal)
+  var nimfunc = cast[ptr QListViewconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QListView, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QListViewdisconnectNotify*(self: gen_qlistview_types.QListView, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQListView_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QListViewdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QListView, slot: proc(super: QListViewdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QListViewdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qlistview_types.QListView, slot: QListViewdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QListViewdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QListViewdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQListView_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QListView_disconnectNotify(self: ptr cQListView, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QListView_disconnectNotify ".} =
-  type Cb = proc(super: QListViewdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QListView(h: self), signal)
+  var nimfunc = cast[ptr QListViewdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QListView): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qlistview_types.QListView): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQListView_staticMetaObject())
-proc delete*(self: QListView) =
+proc delete*(self: gen_qlistview_types.QListView) =
   fcQListView_delete(self.h)

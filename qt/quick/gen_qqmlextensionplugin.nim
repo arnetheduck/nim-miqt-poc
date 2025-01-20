@@ -132,706 +132,594 @@ proc fcQQmlEngineExtensionPlugin_staticMetaObject(): pointer {.importc: "QQmlEng
 proc fcQQmlEngineExtensionPlugin_delete(self: pointer) {.importc: "QQmlEngineExtensionPlugin_delete".}
 
 
-func init*(T: type QQmlExtensionPlugin, h: ptr cQQmlExtensionPlugin): QQmlExtensionPlugin =
+func init*(T: type gen_qqmlextensionplugin_types.QQmlExtensionPlugin, h: ptr cQQmlExtensionPlugin): gen_qqmlextensionplugin_types.QQmlExtensionPlugin =
   T(h: h)
-proc create*(T: type QQmlExtensionPlugin, ): QQmlExtensionPlugin =
+proc create*(T: type gen_qqmlextensionplugin_types.QQmlExtensionPlugin, ): gen_qqmlextensionplugin_types.QQmlExtensionPlugin =
 
-  QQmlExtensionPlugin.init(fcQQmlExtensionPlugin_new())
-proc create*(T: type QQmlExtensionPlugin, parent: gen_qobject.QObject): QQmlExtensionPlugin =
+  gen_qqmlextensionplugin_types.QQmlExtensionPlugin.init(fcQQmlExtensionPlugin_new())
+proc create*(T: type gen_qqmlextensionplugin_types.QQmlExtensionPlugin, parent: gen_qobject.QObject): gen_qqmlextensionplugin_types.QQmlExtensionPlugin =
 
-  QQmlExtensionPlugin.init(fcQQmlExtensionPlugin_new2(parent.h))
-proc metaObject*(self: QQmlExtensionPlugin, ): gen_qobjectdefs.QMetaObject =
+  gen_qqmlextensionplugin_types.QQmlExtensionPlugin.init(fcQQmlExtensionPlugin_new2(parent.h))
+proc metaObject*(self: gen_qqmlextensionplugin_types.QQmlExtensionPlugin, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQQmlExtensionPlugin_metaObject(self.h))
 
-proc metacast*(self: QQmlExtensionPlugin, param1: cstring): pointer =
+proc metacast*(self: gen_qqmlextensionplugin_types.QQmlExtensionPlugin, param1: cstring): pointer =
 
   fcQQmlExtensionPlugin_metacast(self.h, param1)
 
-proc metacall*(self: QQmlExtensionPlugin, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qqmlextensionplugin_types.QQmlExtensionPlugin, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQQmlExtensionPlugin_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QQmlExtensionPlugin, s: cstring): string =
+proc tr*(_: type gen_qqmlextensionplugin_types.QQmlExtensionPlugin, s: cstring): string =
 
   let v_ms = fcQQmlExtensionPlugin_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QQmlExtensionPlugin, s: cstring): string =
+proc trUtf8*(_: type gen_qqmlextensionplugin_types.QQmlExtensionPlugin, s: cstring): string =
 
   let v_ms = fcQQmlExtensionPlugin_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc baseUrl*(self: QQmlExtensionPlugin, ): gen_qurl.QUrl =
+proc baseUrl*(self: gen_qqmlextensionplugin_types.QQmlExtensionPlugin, ): gen_qurl.QUrl =
 
   gen_qurl.QUrl(h: fcQQmlExtensionPlugin_baseUrl(self.h))
 
-proc registerTypes*(self: QQmlExtensionPlugin, uri: cstring): void =
+proc registerTypes*(self: gen_qqmlextensionplugin_types.QQmlExtensionPlugin, uri: cstring): void =
 
   fcQQmlExtensionPlugin_registerTypes(self.h, uri)
 
-proc initializeEngine*(self: QQmlExtensionPlugin, engine: gen_qqmlengine.QQmlEngine, uri: cstring): void =
+proc initializeEngine*(self: gen_qqmlextensionplugin_types.QQmlExtensionPlugin, engine: gen_qqmlengine.QQmlEngine, uri: cstring): void =
 
   fcQQmlExtensionPlugin_initializeEngine(self.h, engine.h, uri)
 
-proc tr2*(_: type QQmlExtensionPlugin, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qqmlextensionplugin_types.QQmlExtensionPlugin, s: cstring, c: cstring): string =
 
   let v_ms = fcQQmlExtensionPlugin_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QQmlExtensionPlugin, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qqmlextensionplugin_types.QQmlExtensionPlugin, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQQmlExtensionPlugin_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QQmlExtensionPlugin, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qqmlextensionplugin_types.QQmlExtensionPlugin, s: cstring, c: cstring): string =
 
   let v_ms = fcQQmlExtensionPlugin_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QQmlExtensionPlugin, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qqmlextensionplugin_types.QQmlExtensionPlugin, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQQmlExtensionPlugin_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QQmlExtensionPlugin, ): gen_qobjectdefs.QMetaObject =
-
+proc QQmlExtensionPluginmetaObject*(self: gen_qqmlextensionplugin_types.QQmlExtensionPlugin, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQQmlExtensionPlugin_virtualbase_metaObject(self.h))
 
-type QQmlExtensionPluginmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QQmlExtensionPlugin, slot: proc(super: QQmlExtensionPluginmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QQmlExtensionPluginmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qqmlextensionplugin_types.QQmlExtensionPlugin, slot: QQmlExtensionPluginmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QQmlExtensionPluginmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QQmlExtensionPluginmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQmlExtensionPlugin_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQmlExtensionPlugin_metaObject(self: ptr cQQmlExtensionPlugin, slot: int): pointer {.exportc: "miqt_exec_callback_QQmlExtensionPlugin_metaObject ".} =
-  type Cb = proc(super: QQmlExtensionPluginmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QQmlExtensionPlugin(h: self), )
+  var nimfunc = cast[ptr QQmlExtensionPluginmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QQmlExtensionPlugin, param1: cstring): pointer =
-
+proc QQmlExtensionPluginmetacast*(self: gen_qqmlextensionplugin_types.QQmlExtensionPlugin, param1: cstring): pointer =
 
   fQQmlExtensionPlugin_virtualbase_metacast(self.h, param1)
 
-type QQmlExtensionPluginmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QQmlExtensionPlugin, slot: proc(super: QQmlExtensionPluginmetacastBase, param1: cstring): pointer) =
+type QQmlExtensionPluginmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qqmlextensionplugin_types.QQmlExtensionPlugin, slot: QQmlExtensionPluginmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QQmlExtensionPluginmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QQmlExtensionPluginmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQmlExtensionPlugin_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQmlExtensionPlugin_metacast(self: ptr cQQmlExtensionPlugin, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QQmlExtensionPlugin_metacast ".} =
-  type Cb = proc(super: QQmlExtensionPluginmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QQmlExtensionPlugin(h: self), param1)
+  var nimfunc = cast[ptr QQmlExtensionPluginmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QQmlExtensionPlugin, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QQmlExtensionPluginmetacall*(self: gen_qqmlextensionplugin_types.QQmlExtensionPlugin, param1: cint, param2: cint, param3: pointer): cint =
 
   fQQmlExtensionPlugin_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QQmlExtensionPluginmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QQmlExtensionPlugin, slot: proc(super: QQmlExtensionPluginmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QQmlExtensionPluginmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qqmlextensionplugin_types.QQmlExtensionPlugin, slot: QQmlExtensionPluginmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QQmlExtensionPluginmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QQmlExtensionPluginmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQmlExtensionPlugin_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQmlExtensionPlugin_metacall(self: ptr cQQmlExtensionPlugin, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QQmlExtensionPlugin_metacall ".} =
-  type Cb = proc(super: QQmlExtensionPluginmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QQmlExtensionPlugin(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QQmlExtensionPluginmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-type QQmlExtensionPluginregisterTypesBase* = proc(uri: cstring): void
-proc onregisterTypes*(self: QQmlExtensionPlugin, slot: proc(uri: cstring): void) =
+type QQmlExtensionPluginregisterTypesProc* = proc(uri: cstring): void
+proc onregisterTypes*(self: gen_qqmlextensionplugin_types.QQmlExtensionPlugin, slot: QQmlExtensionPluginregisterTypesProc) =
   # TODO check subclass
-  type Cb = proc(uri: cstring): void
-  var tmp = new Cb
+  var tmp = new QQmlExtensionPluginregisterTypesProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQmlExtensionPlugin_override_virtual_registerTypes(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQmlExtensionPlugin_registerTypes(self: ptr cQQmlExtensionPlugin, slot: int, uri: cstring): void {.exportc: "miqt_exec_callback_QQmlExtensionPlugin_registerTypes ".} =
-  type Cb = proc(uri: cstring): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QQmlExtensionPluginregisterTypesProc](cast[pointer](slot))
   let slotval1 = (uri)
 
 
   nimfunc[](slotval1)
-proc callVirtualBase_initializeEngine(self: QQmlExtensionPlugin, engine: gen_qqmlengine.QQmlEngine, uri: cstring): void =
-
+proc QQmlExtensionPlugininitializeEngine*(self: gen_qqmlextensionplugin_types.QQmlExtensionPlugin, engine: gen_qqmlengine.QQmlEngine, uri: cstring): void =
 
   fQQmlExtensionPlugin_virtualbase_initializeEngine(self.h, engine.h, uri)
 
-type QQmlExtensionPlugininitializeEngineBase* = proc(engine: gen_qqmlengine.QQmlEngine, uri: cstring): void
-proc oninitializeEngine*(self: QQmlExtensionPlugin, slot: proc(super: QQmlExtensionPlugininitializeEngineBase, engine: gen_qqmlengine.QQmlEngine, uri: cstring): void) =
+type QQmlExtensionPlugininitializeEngineProc* = proc(engine: gen_qqmlengine.QQmlEngine, uri: cstring): void
+proc oninitializeEngine*(self: gen_qqmlextensionplugin_types.QQmlExtensionPlugin, slot: QQmlExtensionPlugininitializeEngineProc) =
   # TODO check subclass
-  type Cb = proc(super: QQmlExtensionPlugininitializeEngineBase, engine: gen_qqmlengine.QQmlEngine, uri: cstring): void
-  var tmp = new Cb
+  var tmp = new QQmlExtensionPlugininitializeEngineProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQmlExtensionPlugin_override_virtual_initializeEngine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQmlExtensionPlugin_initializeEngine(self: ptr cQQmlExtensionPlugin, slot: int, engine: pointer, uri: cstring): void {.exportc: "miqt_exec_callback_QQmlExtensionPlugin_initializeEngine ".} =
-  type Cb = proc(super: QQmlExtensionPlugininitializeEngineBase, engine: gen_qqmlengine.QQmlEngine, uri: cstring): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(engine: gen_qqmlengine.QQmlEngine, uri: cstring): auto =
-    callVirtualBase_initializeEngine(QQmlExtensionPlugin(h: self), engine, uri)
+  var nimfunc = cast[ptr QQmlExtensionPlugininitializeEngineProc](cast[pointer](slot))
   let slotval1 = gen_qqmlengine.QQmlEngine(h: engine)
 
   let slotval2 = (uri)
 
 
-  nimfunc[](superCall, slotval1, slotval2)
-proc callVirtualBase_event(self: QQmlExtensionPlugin, event: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[](slotval1, slotval2)
+proc QQmlExtensionPluginevent*(self: gen_qqmlextensionplugin_types.QQmlExtensionPlugin, event: gen_qcoreevent.QEvent): bool =
 
   fQQmlExtensionPlugin_virtualbase_event(self.h, event.h)
 
-type QQmlExtensionPlugineventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QQmlExtensionPlugin, slot: proc(super: QQmlExtensionPlugineventBase, event: gen_qcoreevent.QEvent): bool) =
+type QQmlExtensionPlugineventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qqmlextensionplugin_types.QQmlExtensionPlugin, slot: QQmlExtensionPlugineventProc) =
   # TODO check subclass
-  type Cb = proc(super: QQmlExtensionPlugineventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QQmlExtensionPlugineventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQmlExtensionPlugin_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQmlExtensionPlugin_event(self: ptr cQQmlExtensionPlugin, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QQmlExtensionPlugin_event ".} =
-  type Cb = proc(super: QQmlExtensionPlugineventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QQmlExtensionPlugin(h: self), event)
+  var nimfunc = cast[ptr QQmlExtensionPlugineventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QQmlExtensionPlugin, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QQmlExtensionPlugineventFilter*(self: gen_qqmlextensionplugin_types.QQmlExtensionPlugin, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQQmlExtensionPlugin_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QQmlExtensionPlugineventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QQmlExtensionPlugin, slot: proc(super: QQmlExtensionPlugineventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QQmlExtensionPlugineventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qqmlextensionplugin_types.QQmlExtensionPlugin, slot: QQmlExtensionPlugineventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QQmlExtensionPlugineventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QQmlExtensionPlugineventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQmlExtensionPlugin_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQmlExtensionPlugin_eventFilter(self: ptr cQQmlExtensionPlugin, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QQmlExtensionPlugin_eventFilter ".} =
-  type Cb = proc(super: QQmlExtensionPlugineventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QQmlExtensionPlugin(h: self), watched, event)
+  var nimfunc = cast[ptr QQmlExtensionPlugineventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QQmlExtensionPlugin, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QQmlExtensionPlugintimerEvent*(self: gen_qqmlextensionplugin_types.QQmlExtensionPlugin, event: gen_qcoreevent.QTimerEvent): void =
 
   fQQmlExtensionPlugin_virtualbase_timerEvent(self.h, event.h)
 
-type QQmlExtensionPlugintimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QQmlExtensionPlugin, slot: proc(super: QQmlExtensionPlugintimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QQmlExtensionPlugintimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qqmlextensionplugin_types.QQmlExtensionPlugin, slot: QQmlExtensionPlugintimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QQmlExtensionPlugintimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QQmlExtensionPlugintimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQmlExtensionPlugin_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQmlExtensionPlugin_timerEvent(self: ptr cQQmlExtensionPlugin, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QQmlExtensionPlugin_timerEvent ".} =
-  type Cb = proc(super: QQmlExtensionPlugintimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QQmlExtensionPlugin(h: self), event)
+  var nimfunc = cast[ptr QQmlExtensionPlugintimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QQmlExtensionPlugin, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QQmlExtensionPluginchildEvent*(self: gen_qqmlextensionplugin_types.QQmlExtensionPlugin, event: gen_qcoreevent.QChildEvent): void =
 
   fQQmlExtensionPlugin_virtualbase_childEvent(self.h, event.h)
 
-type QQmlExtensionPluginchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QQmlExtensionPlugin, slot: proc(super: QQmlExtensionPluginchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QQmlExtensionPluginchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qqmlextensionplugin_types.QQmlExtensionPlugin, slot: QQmlExtensionPluginchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QQmlExtensionPluginchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QQmlExtensionPluginchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQmlExtensionPlugin_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQmlExtensionPlugin_childEvent(self: ptr cQQmlExtensionPlugin, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QQmlExtensionPlugin_childEvent ".} =
-  type Cb = proc(super: QQmlExtensionPluginchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QQmlExtensionPlugin(h: self), event)
+  var nimfunc = cast[ptr QQmlExtensionPluginchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QQmlExtensionPlugin, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QQmlExtensionPlugincustomEvent*(self: gen_qqmlextensionplugin_types.QQmlExtensionPlugin, event: gen_qcoreevent.QEvent): void =
 
   fQQmlExtensionPlugin_virtualbase_customEvent(self.h, event.h)
 
-type QQmlExtensionPlugincustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QQmlExtensionPlugin, slot: proc(super: QQmlExtensionPlugincustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QQmlExtensionPlugincustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qqmlextensionplugin_types.QQmlExtensionPlugin, slot: QQmlExtensionPlugincustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QQmlExtensionPlugincustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QQmlExtensionPlugincustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQmlExtensionPlugin_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQmlExtensionPlugin_customEvent(self: ptr cQQmlExtensionPlugin, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QQmlExtensionPlugin_customEvent ".} =
-  type Cb = proc(super: QQmlExtensionPlugincustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QQmlExtensionPlugin(h: self), event)
+  var nimfunc = cast[ptr QQmlExtensionPlugincustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QQmlExtensionPlugin, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QQmlExtensionPluginconnectNotify*(self: gen_qqmlextensionplugin_types.QQmlExtensionPlugin, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQQmlExtensionPlugin_virtualbase_connectNotify(self.h, signal.h)
 
-type QQmlExtensionPluginconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QQmlExtensionPlugin, slot: proc(super: QQmlExtensionPluginconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QQmlExtensionPluginconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qqmlextensionplugin_types.QQmlExtensionPlugin, slot: QQmlExtensionPluginconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QQmlExtensionPluginconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QQmlExtensionPluginconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQmlExtensionPlugin_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQmlExtensionPlugin_connectNotify(self: ptr cQQmlExtensionPlugin, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QQmlExtensionPlugin_connectNotify ".} =
-  type Cb = proc(super: QQmlExtensionPluginconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QQmlExtensionPlugin(h: self), signal)
+  var nimfunc = cast[ptr QQmlExtensionPluginconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QQmlExtensionPlugin, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QQmlExtensionPlugindisconnectNotify*(self: gen_qqmlextensionplugin_types.QQmlExtensionPlugin, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQQmlExtensionPlugin_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QQmlExtensionPlugindisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QQmlExtensionPlugin, slot: proc(super: QQmlExtensionPlugindisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QQmlExtensionPlugindisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qqmlextensionplugin_types.QQmlExtensionPlugin, slot: QQmlExtensionPlugindisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QQmlExtensionPlugindisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QQmlExtensionPlugindisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQmlExtensionPlugin_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQmlExtensionPlugin_disconnectNotify(self: ptr cQQmlExtensionPlugin, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QQmlExtensionPlugin_disconnectNotify ".} =
-  type Cb = proc(super: QQmlExtensionPlugindisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QQmlExtensionPlugin(h: self), signal)
+  var nimfunc = cast[ptr QQmlExtensionPlugindisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QQmlExtensionPlugin): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qqmlextensionplugin_types.QQmlExtensionPlugin): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQQmlExtensionPlugin_staticMetaObject())
-proc delete*(self: QQmlExtensionPlugin) =
+proc delete*(self: gen_qqmlextensionplugin_types.QQmlExtensionPlugin) =
   fcQQmlExtensionPlugin_delete(self.h)
 
-func init*(T: type QQmlEngineExtensionPlugin, h: ptr cQQmlEngineExtensionPlugin): QQmlEngineExtensionPlugin =
+func init*(T: type gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, h: ptr cQQmlEngineExtensionPlugin): gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin =
   T(h: h)
-proc create*(T: type QQmlEngineExtensionPlugin, ): QQmlEngineExtensionPlugin =
+proc create*(T: type gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, ): gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin =
 
-  QQmlEngineExtensionPlugin.init(fcQQmlEngineExtensionPlugin_new())
-proc create*(T: type QQmlEngineExtensionPlugin, parent: gen_qobject.QObject): QQmlEngineExtensionPlugin =
+  gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin.init(fcQQmlEngineExtensionPlugin_new())
+proc create*(T: type gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, parent: gen_qobject.QObject): gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin =
 
-  QQmlEngineExtensionPlugin.init(fcQQmlEngineExtensionPlugin_new2(parent.h))
-proc metaObject*(self: QQmlEngineExtensionPlugin, ): gen_qobjectdefs.QMetaObject =
+  gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin.init(fcQQmlEngineExtensionPlugin_new2(parent.h))
+proc metaObject*(self: gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQQmlEngineExtensionPlugin_metaObject(self.h))
 
-proc metacast*(self: QQmlEngineExtensionPlugin, param1: cstring): pointer =
+proc metacast*(self: gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, param1: cstring): pointer =
 
   fcQQmlEngineExtensionPlugin_metacast(self.h, param1)
 
-proc metacall*(self: QQmlEngineExtensionPlugin, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQQmlEngineExtensionPlugin_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QQmlEngineExtensionPlugin, s: cstring): string =
+proc tr*(_: type gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, s: cstring): string =
 
   let v_ms = fcQQmlEngineExtensionPlugin_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QQmlEngineExtensionPlugin, s: cstring): string =
+proc trUtf8*(_: type gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, s: cstring): string =
 
   let v_ms = fcQQmlEngineExtensionPlugin_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc initializeEngine*(self: QQmlEngineExtensionPlugin, engine: gen_qqmlengine.QQmlEngine, uri: cstring): void =
+proc initializeEngine*(self: gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, engine: gen_qqmlengine.QQmlEngine, uri: cstring): void =
 
   fcQQmlEngineExtensionPlugin_initializeEngine(self.h, engine.h, uri)
 
-proc tr2*(_: type QQmlEngineExtensionPlugin, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, s: cstring, c: cstring): string =
 
   let v_ms = fcQQmlEngineExtensionPlugin_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QQmlEngineExtensionPlugin, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQQmlEngineExtensionPlugin_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QQmlEngineExtensionPlugin, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, s: cstring, c: cstring): string =
 
   let v_ms = fcQQmlEngineExtensionPlugin_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QQmlEngineExtensionPlugin, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQQmlEngineExtensionPlugin_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QQmlEngineExtensionPlugin, ): gen_qobjectdefs.QMetaObject =
-
+proc QQmlEngineExtensionPluginmetaObject*(self: gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQQmlEngineExtensionPlugin_virtualbase_metaObject(self.h))
 
-type QQmlEngineExtensionPluginmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QQmlEngineExtensionPlugin, slot: proc(super: QQmlEngineExtensionPluginmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QQmlEngineExtensionPluginmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, slot: QQmlEngineExtensionPluginmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QQmlEngineExtensionPluginmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QQmlEngineExtensionPluginmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQmlEngineExtensionPlugin_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQmlEngineExtensionPlugin_metaObject(self: ptr cQQmlEngineExtensionPlugin, slot: int): pointer {.exportc: "miqt_exec_callback_QQmlEngineExtensionPlugin_metaObject ".} =
-  type Cb = proc(super: QQmlEngineExtensionPluginmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QQmlEngineExtensionPlugin(h: self), )
+  var nimfunc = cast[ptr QQmlEngineExtensionPluginmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QQmlEngineExtensionPlugin, param1: cstring): pointer =
-
+proc QQmlEngineExtensionPluginmetacast*(self: gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, param1: cstring): pointer =
 
   fQQmlEngineExtensionPlugin_virtualbase_metacast(self.h, param1)
 
-type QQmlEngineExtensionPluginmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QQmlEngineExtensionPlugin, slot: proc(super: QQmlEngineExtensionPluginmetacastBase, param1: cstring): pointer) =
+type QQmlEngineExtensionPluginmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, slot: QQmlEngineExtensionPluginmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QQmlEngineExtensionPluginmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QQmlEngineExtensionPluginmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQmlEngineExtensionPlugin_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQmlEngineExtensionPlugin_metacast(self: ptr cQQmlEngineExtensionPlugin, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QQmlEngineExtensionPlugin_metacast ".} =
-  type Cb = proc(super: QQmlEngineExtensionPluginmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QQmlEngineExtensionPlugin(h: self), param1)
+  var nimfunc = cast[ptr QQmlEngineExtensionPluginmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QQmlEngineExtensionPlugin, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QQmlEngineExtensionPluginmetacall*(self: gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, param1: cint, param2: cint, param3: pointer): cint =
 
   fQQmlEngineExtensionPlugin_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QQmlEngineExtensionPluginmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QQmlEngineExtensionPlugin, slot: proc(super: QQmlEngineExtensionPluginmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QQmlEngineExtensionPluginmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, slot: QQmlEngineExtensionPluginmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QQmlEngineExtensionPluginmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QQmlEngineExtensionPluginmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQmlEngineExtensionPlugin_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQmlEngineExtensionPlugin_metacall(self: ptr cQQmlEngineExtensionPlugin, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QQmlEngineExtensionPlugin_metacall ".} =
-  type Cb = proc(super: QQmlEngineExtensionPluginmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QQmlEngineExtensionPlugin(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QQmlEngineExtensionPluginmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_initializeEngine(self: QQmlEngineExtensionPlugin, engine: gen_qqmlengine.QQmlEngine, uri: cstring): void =
-
+proc QQmlEngineExtensionPlugininitializeEngine*(self: gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, engine: gen_qqmlengine.QQmlEngine, uri: cstring): void =
 
   fQQmlEngineExtensionPlugin_virtualbase_initializeEngine(self.h, engine.h, uri)
 
-type QQmlEngineExtensionPlugininitializeEngineBase* = proc(engine: gen_qqmlengine.QQmlEngine, uri: cstring): void
-proc oninitializeEngine*(self: QQmlEngineExtensionPlugin, slot: proc(super: QQmlEngineExtensionPlugininitializeEngineBase, engine: gen_qqmlengine.QQmlEngine, uri: cstring): void) =
+type QQmlEngineExtensionPlugininitializeEngineProc* = proc(engine: gen_qqmlengine.QQmlEngine, uri: cstring): void
+proc oninitializeEngine*(self: gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, slot: QQmlEngineExtensionPlugininitializeEngineProc) =
   # TODO check subclass
-  type Cb = proc(super: QQmlEngineExtensionPlugininitializeEngineBase, engine: gen_qqmlengine.QQmlEngine, uri: cstring): void
-  var tmp = new Cb
+  var tmp = new QQmlEngineExtensionPlugininitializeEngineProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQmlEngineExtensionPlugin_override_virtual_initializeEngine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQmlEngineExtensionPlugin_initializeEngine(self: ptr cQQmlEngineExtensionPlugin, slot: int, engine: pointer, uri: cstring): void {.exportc: "miqt_exec_callback_QQmlEngineExtensionPlugin_initializeEngine ".} =
-  type Cb = proc(super: QQmlEngineExtensionPlugininitializeEngineBase, engine: gen_qqmlengine.QQmlEngine, uri: cstring): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(engine: gen_qqmlengine.QQmlEngine, uri: cstring): auto =
-    callVirtualBase_initializeEngine(QQmlEngineExtensionPlugin(h: self), engine, uri)
+  var nimfunc = cast[ptr QQmlEngineExtensionPlugininitializeEngineProc](cast[pointer](slot))
   let slotval1 = gen_qqmlengine.QQmlEngine(h: engine)
 
   let slotval2 = (uri)
 
 
-  nimfunc[](superCall, slotval1, slotval2)
-proc callVirtualBase_event(self: QQmlEngineExtensionPlugin, event: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[](slotval1, slotval2)
+proc QQmlEngineExtensionPluginevent*(self: gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, event: gen_qcoreevent.QEvent): bool =
 
   fQQmlEngineExtensionPlugin_virtualbase_event(self.h, event.h)
 
-type QQmlEngineExtensionPlugineventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QQmlEngineExtensionPlugin, slot: proc(super: QQmlEngineExtensionPlugineventBase, event: gen_qcoreevent.QEvent): bool) =
+type QQmlEngineExtensionPlugineventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, slot: QQmlEngineExtensionPlugineventProc) =
   # TODO check subclass
-  type Cb = proc(super: QQmlEngineExtensionPlugineventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QQmlEngineExtensionPlugineventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQmlEngineExtensionPlugin_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQmlEngineExtensionPlugin_event(self: ptr cQQmlEngineExtensionPlugin, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QQmlEngineExtensionPlugin_event ".} =
-  type Cb = proc(super: QQmlEngineExtensionPlugineventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QQmlEngineExtensionPlugin(h: self), event)
+  var nimfunc = cast[ptr QQmlEngineExtensionPlugineventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QQmlEngineExtensionPlugin, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QQmlEngineExtensionPlugineventFilter*(self: gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQQmlEngineExtensionPlugin_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QQmlEngineExtensionPlugineventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QQmlEngineExtensionPlugin, slot: proc(super: QQmlEngineExtensionPlugineventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QQmlEngineExtensionPlugineventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, slot: QQmlEngineExtensionPlugineventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QQmlEngineExtensionPlugineventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QQmlEngineExtensionPlugineventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQmlEngineExtensionPlugin_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQmlEngineExtensionPlugin_eventFilter(self: ptr cQQmlEngineExtensionPlugin, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QQmlEngineExtensionPlugin_eventFilter ".} =
-  type Cb = proc(super: QQmlEngineExtensionPlugineventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QQmlEngineExtensionPlugin(h: self), watched, event)
+  var nimfunc = cast[ptr QQmlEngineExtensionPlugineventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QQmlEngineExtensionPlugin, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QQmlEngineExtensionPlugintimerEvent*(self: gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, event: gen_qcoreevent.QTimerEvent): void =
 
   fQQmlEngineExtensionPlugin_virtualbase_timerEvent(self.h, event.h)
 
-type QQmlEngineExtensionPlugintimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QQmlEngineExtensionPlugin, slot: proc(super: QQmlEngineExtensionPlugintimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QQmlEngineExtensionPlugintimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, slot: QQmlEngineExtensionPlugintimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QQmlEngineExtensionPlugintimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QQmlEngineExtensionPlugintimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQmlEngineExtensionPlugin_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQmlEngineExtensionPlugin_timerEvent(self: ptr cQQmlEngineExtensionPlugin, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QQmlEngineExtensionPlugin_timerEvent ".} =
-  type Cb = proc(super: QQmlEngineExtensionPlugintimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QQmlEngineExtensionPlugin(h: self), event)
+  var nimfunc = cast[ptr QQmlEngineExtensionPlugintimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QQmlEngineExtensionPlugin, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QQmlEngineExtensionPluginchildEvent*(self: gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, event: gen_qcoreevent.QChildEvent): void =
 
   fQQmlEngineExtensionPlugin_virtualbase_childEvent(self.h, event.h)
 
-type QQmlEngineExtensionPluginchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QQmlEngineExtensionPlugin, slot: proc(super: QQmlEngineExtensionPluginchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QQmlEngineExtensionPluginchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, slot: QQmlEngineExtensionPluginchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QQmlEngineExtensionPluginchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QQmlEngineExtensionPluginchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQmlEngineExtensionPlugin_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQmlEngineExtensionPlugin_childEvent(self: ptr cQQmlEngineExtensionPlugin, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QQmlEngineExtensionPlugin_childEvent ".} =
-  type Cb = proc(super: QQmlEngineExtensionPluginchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QQmlEngineExtensionPlugin(h: self), event)
+  var nimfunc = cast[ptr QQmlEngineExtensionPluginchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QQmlEngineExtensionPlugin, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QQmlEngineExtensionPlugincustomEvent*(self: gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, event: gen_qcoreevent.QEvent): void =
 
   fQQmlEngineExtensionPlugin_virtualbase_customEvent(self.h, event.h)
 
-type QQmlEngineExtensionPlugincustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QQmlEngineExtensionPlugin, slot: proc(super: QQmlEngineExtensionPlugincustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QQmlEngineExtensionPlugincustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, slot: QQmlEngineExtensionPlugincustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QQmlEngineExtensionPlugincustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QQmlEngineExtensionPlugincustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQmlEngineExtensionPlugin_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQmlEngineExtensionPlugin_customEvent(self: ptr cQQmlEngineExtensionPlugin, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QQmlEngineExtensionPlugin_customEvent ".} =
-  type Cb = proc(super: QQmlEngineExtensionPlugincustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QQmlEngineExtensionPlugin(h: self), event)
+  var nimfunc = cast[ptr QQmlEngineExtensionPlugincustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QQmlEngineExtensionPlugin, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QQmlEngineExtensionPluginconnectNotify*(self: gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQQmlEngineExtensionPlugin_virtualbase_connectNotify(self.h, signal.h)
 
-type QQmlEngineExtensionPluginconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QQmlEngineExtensionPlugin, slot: proc(super: QQmlEngineExtensionPluginconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QQmlEngineExtensionPluginconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, slot: QQmlEngineExtensionPluginconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QQmlEngineExtensionPluginconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QQmlEngineExtensionPluginconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQmlEngineExtensionPlugin_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQmlEngineExtensionPlugin_connectNotify(self: ptr cQQmlEngineExtensionPlugin, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QQmlEngineExtensionPlugin_connectNotify ".} =
-  type Cb = proc(super: QQmlEngineExtensionPluginconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QQmlEngineExtensionPlugin(h: self), signal)
+  var nimfunc = cast[ptr QQmlEngineExtensionPluginconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QQmlEngineExtensionPlugin, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QQmlEngineExtensionPlugindisconnectNotify*(self: gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQQmlEngineExtensionPlugin_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QQmlEngineExtensionPlugindisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QQmlEngineExtensionPlugin, slot: proc(super: QQmlEngineExtensionPlugindisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QQmlEngineExtensionPlugindisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, slot: QQmlEngineExtensionPlugindisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QQmlEngineExtensionPlugindisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QQmlEngineExtensionPlugindisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQmlEngineExtensionPlugin_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQmlEngineExtensionPlugin_disconnectNotify(self: ptr cQQmlEngineExtensionPlugin, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QQmlEngineExtensionPlugin_disconnectNotify ".} =
-  type Cb = proc(super: QQmlEngineExtensionPlugindisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QQmlEngineExtensionPlugin(h: self), signal)
+  var nimfunc = cast[ptr QQmlEngineExtensionPlugindisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QQmlEngineExtensionPlugin): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQQmlEngineExtensionPlugin_staticMetaObject())
-proc delete*(self: QQmlEngineExtensionPlugin) =
+proc delete*(self: gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin) =
   fcQQmlEngineExtensionPlugin_delete(self.h)

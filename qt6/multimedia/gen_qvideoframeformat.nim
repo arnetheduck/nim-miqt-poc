@@ -34,102 +34,88 @@ const cflags = gorge("pkg-config -cflags Qt6MultimediaWidgets")
 {.compile("gen_qvideoframeformat.cpp", cflags).}
 
 
-type QVideoFrameFormatPixelFormat* = cint
-const
-  QVideoFrameFormatFormat_Invalid* = 0
-  QVideoFrameFormatFormat_ARGB8888* = 1
-  QVideoFrameFormatFormat_ARGB8888_Premultiplied* = 2
-  QVideoFrameFormatFormat_XRGB8888* = 3
-  QVideoFrameFormatFormat_BGRA8888* = 4
-  QVideoFrameFormatFormat_BGRA8888_Premultiplied* = 5
-  QVideoFrameFormatFormat_BGRX8888* = 6
-  QVideoFrameFormatFormat_ABGR8888* = 7
-  QVideoFrameFormatFormat_XBGR8888* = 8
-  QVideoFrameFormatFormat_RGBA8888* = 9
-  QVideoFrameFormatFormat_RGBX8888* = 10
-  QVideoFrameFormatFormat_AYUV* = 11
-  QVideoFrameFormatFormat_AYUV_Premultiplied* = 12
-  QVideoFrameFormatFormat_YUV420P* = 13
-  QVideoFrameFormatFormat_YUV422P* = 14
-  QVideoFrameFormatFormat_YV12* = 15
-  QVideoFrameFormatFormat_UYVY* = 16
-  QVideoFrameFormatFormat_YUYV* = 17
-  QVideoFrameFormatFormat_NV12* = 18
-  QVideoFrameFormatFormat_NV21* = 19
-  QVideoFrameFormatFormat_IMC1* = 20
-  QVideoFrameFormatFormat_IMC2* = 21
-  QVideoFrameFormatFormat_IMC3* = 22
-  QVideoFrameFormatFormat_IMC4* = 23
-  QVideoFrameFormatFormat_Y8* = 24
-  QVideoFrameFormatFormat_Y16* = 25
-  QVideoFrameFormatFormat_P010* = 26
-  QVideoFrameFormatFormat_P016* = 27
-  QVideoFrameFormatFormat_SamplerExternalOES* = 28
-  QVideoFrameFormatFormat_Jpeg* = 29
-  QVideoFrameFormatFormat_SamplerRect* = 30
-  QVideoFrameFormatFormat_YUV420P10* = 31
+type QVideoFrameFormatPixelFormatEnum* = distinct cint
+template Format_Invalid*(_: type QVideoFrameFormatPixelFormatEnum): untyped = 0
+template Format_ARGB8888*(_: type QVideoFrameFormatPixelFormatEnum): untyped = 1
+template Format_ARGB8888_Premultiplied*(_: type QVideoFrameFormatPixelFormatEnum): untyped = 2
+template Format_XRGB8888*(_: type QVideoFrameFormatPixelFormatEnum): untyped = 3
+template Format_BGRA8888*(_: type QVideoFrameFormatPixelFormatEnum): untyped = 4
+template Format_BGRA8888_Premultiplied*(_: type QVideoFrameFormatPixelFormatEnum): untyped = 5
+template Format_BGRX8888*(_: type QVideoFrameFormatPixelFormatEnum): untyped = 6
+template Format_ABGR8888*(_: type QVideoFrameFormatPixelFormatEnum): untyped = 7
+template Format_XBGR8888*(_: type QVideoFrameFormatPixelFormatEnum): untyped = 8
+template Format_RGBA8888*(_: type QVideoFrameFormatPixelFormatEnum): untyped = 9
+template Format_RGBX8888*(_: type QVideoFrameFormatPixelFormatEnum): untyped = 10
+template Format_AYUV*(_: type QVideoFrameFormatPixelFormatEnum): untyped = 11
+template Format_AYUV_Premultiplied*(_: type QVideoFrameFormatPixelFormatEnum): untyped = 12
+template Format_YUV420P*(_: type QVideoFrameFormatPixelFormatEnum): untyped = 13
+template Format_YUV422P*(_: type QVideoFrameFormatPixelFormatEnum): untyped = 14
+template Format_YV12*(_: type QVideoFrameFormatPixelFormatEnum): untyped = 15
+template Format_UYVY*(_: type QVideoFrameFormatPixelFormatEnum): untyped = 16
+template Format_YUYV*(_: type QVideoFrameFormatPixelFormatEnum): untyped = 17
+template Format_NV12*(_: type QVideoFrameFormatPixelFormatEnum): untyped = 18
+template Format_NV21*(_: type QVideoFrameFormatPixelFormatEnum): untyped = 19
+template Format_IMC1*(_: type QVideoFrameFormatPixelFormatEnum): untyped = 20
+template Format_IMC2*(_: type QVideoFrameFormatPixelFormatEnum): untyped = 21
+template Format_IMC3*(_: type QVideoFrameFormatPixelFormatEnum): untyped = 22
+template Format_IMC4*(_: type QVideoFrameFormatPixelFormatEnum): untyped = 23
+template Format_Y8*(_: type QVideoFrameFormatPixelFormatEnum): untyped = 24
+template Format_Y16*(_: type QVideoFrameFormatPixelFormatEnum): untyped = 25
+template Format_P010*(_: type QVideoFrameFormatPixelFormatEnum): untyped = 26
+template Format_P016*(_: type QVideoFrameFormatPixelFormatEnum): untyped = 27
+template Format_SamplerExternalOES*(_: type QVideoFrameFormatPixelFormatEnum): untyped = 28
+template Format_Jpeg*(_: type QVideoFrameFormatPixelFormatEnum): untyped = 29
+template Format_SamplerRect*(_: type QVideoFrameFormatPixelFormatEnum): untyped = 30
+template Format_YUV420P10*(_: type QVideoFrameFormatPixelFormatEnum): untyped = 31
 
 
-
-type QVideoFrameFormatDirection* = cint
-const
-  QVideoFrameFormatTopToBottom* = 0
-  QVideoFrameFormatBottomToTop* = 1
+type QVideoFrameFormatDirectionEnum* = distinct cint
+template TopToBottom*(_: type QVideoFrameFormatDirectionEnum): untyped = 0
+template BottomToTop*(_: type QVideoFrameFormatDirectionEnum): untyped = 1
 
 
-
-type QVideoFrameFormatYCbCrColorSpace* = cint
-const
-  QVideoFrameFormatYCbCr_Undefined* = 0
-  QVideoFrameFormatYCbCr_BT601* = 1
-  QVideoFrameFormatYCbCr_BT709* = 2
-  QVideoFrameFormatYCbCr_xvYCC601* = 3
-  QVideoFrameFormatYCbCr_xvYCC709* = 4
-  QVideoFrameFormatYCbCr_JPEG* = 5
-  QVideoFrameFormatYCbCr_BT2020* = 6
+type QVideoFrameFormatYCbCrColorSpaceEnum* = distinct cint
+template YCbCr_Undefined*(_: type QVideoFrameFormatYCbCrColorSpaceEnum): untyped = 0
+template YCbCr_BT601*(_: type QVideoFrameFormatYCbCrColorSpaceEnum): untyped = 1
+template YCbCr_BT709*(_: type QVideoFrameFormatYCbCrColorSpaceEnum): untyped = 2
+template YCbCr_xvYCC601*(_: type QVideoFrameFormatYCbCrColorSpaceEnum): untyped = 3
+template YCbCr_xvYCC709*(_: type QVideoFrameFormatYCbCrColorSpaceEnum): untyped = 4
+template YCbCr_JPEG*(_: type QVideoFrameFormatYCbCrColorSpaceEnum): untyped = 5
+template YCbCr_BT2020*(_: type QVideoFrameFormatYCbCrColorSpaceEnum): untyped = 6
 
 
-
-type QVideoFrameFormatColorSpace* = cint
-const
-  QVideoFrameFormatColorSpace_Undefined* = 0
-  QVideoFrameFormatColorSpace_BT601* = 1
-  QVideoFrameFormatColorSpace_BT709* = 2
-  QVideoFrameFormatColorSpace_AdobeRgb* = 5
-  QVideoFrameFormatColorSpace_BT2020* = 6
+type QVideoFrameFormatColorSpaceEnum* = distinct cint
+template ColorSpace_Undefined*(_: type QVideoFrameFormatColorSpaceEnum): untyped = 0
+template ColorSpace_BT601*(_: type QVideoFrameFormatColorSpaceEnum): untyped = 1
+template ColorSpace_BT709*(_: type QVideoFrameFormatColorSpaceEnum): untyped = 2
+template ColorSpace_AdobeRgb*(_: type QVideoFrameFormatColorSpaceEnum): untyped = 5
+template ColorSpace_BT2020*(_: type QVideoFrameFormatColorSpaceEnum): untyped = 6
 
 
-
-type QVideoFrameFormatColorTransfer* = cint
-const
-  QVideoFrameFormatColorTransfer_Unknown* = 0
-  QVideoFrameFormatColorTransfer_BT709* = 1
-  QVideoFrameFormatColorTransfer_BT601* = 2
-  QVideoFrameFormatColorTransfer_Linear* = 3
-  QVideoFrameFormatColorTransfer_Gamma22* = 4
-  QVideoFrameFormatColorTransfer_Gamma28* = 5
-  QVideoFrameFormatColorTransfer_ST2084* = 6
-  QVideoFrameFormatColorTransfer_STD_B67* = 7
+type QVideoFrameFormatColorTransferEnum* = distinct cint
+template ColorTransfer_Unknown*(_: type QVideoFrameFormatColorTransferEnum): untyped = 0
+template ColorTransfer_BT709*(_: type QVideoFrameFormatColorTransferEnum): untyped = 1
+template ColorTransfer_BT601*(_: type QVideoFrameFormatColorTransferEnum): untyped = 2
+template ColorTransfer_Linear*(_: type QVideoFrameFormatColorTransferEnum): untyped = 3
+template ColorTransfer_Gamma22*(_: type QVideoFrameFormatColorTransferEnum): untyped = 4
+template ColorTransfer_Gamma28*(_: type QVideoFrameFormatColorTransferEnum): untyped = 5
+template ColorTransfer_ST2084*(_: type QVideoFrameFormatColorTransferEnum): untyped = 6
+template ColorTransfer_STD_B67*(_: type QVideoFrameFormatColorTransferEnum): untyped = 7
 
 
-
-type QVideoFrameFormatColorRange* = cint
-const
-  QVideoFrameFormatColorRange_Unknown* = 0
-  QVideoFrameFormatColorRange_Video* = 1
-  QVideoFrameFormatColorRange_Full* = 2
-
+type QVideoFrameFormatColorRangeEnum* = distinct cint
+template ColorRange_Unknown*(_: type QVideoFrameFormatColorRangeEnum): untyped = 0
+template ColorRange_Video*(_: type QVideoFrameFormatColorRangeEnum): untyped = 1
+template ColorRange_Full*(_: type QVideoFrameFormatColorRangeEnum): untyped = 2
 
 
 import gen_qvideoframeformat_types
 export gen_qvideoframeformat_types
 
 import
-  gen_qimage,
   gen_qrect,
   gen_qsize
 export
-  gen_qimage,
   gen_qrect,
   gen_qsize
 
@@ -177,169 +163,169 @@ proc fcQVideoFrameFormat_pixelFormatToString(pixelFormat: cint): struct_miqt_str
 proc fcQVideoFrameFormat_delete(self: pointer) {.importc: "QVideoFrameFormat_delete".}
 
 
-func init*(T: type QVideoFrameFormat, h: ptr cQVideoFrameFormat): QVideoFrameFormat =
+func init*(T: type gen_qvideoframeformat_types.QVideoFrameFormat, h: ptr cQVideoFrameFormat): gen_qvideoframeformat_types.QVideoFrameFormat =
   T(h: h)
-proc create*(T: type QVideoFrameFormat, ): QVideoFrameFormat =
+proc create*(T: type gen_qvideoframeformat_types.QVideoFrameFormat, ): gen_qvideoframeformat_types.QVideoFrameFormat =
 
-  QVideoFrameFormat.init(fcQVideoFrameFormat_new())
-proc create*(T: type QVideoFrameFormat, size: gen_qsize.QSize, pixelFormat: QVideoFrameFormatPixelFormat): QVideoFrameFormat =
+  gen_qvideoframeformat_types.QVideoFrameFormat.init(fcQVideoFrameFormat_new())
+proc create*(T: type gen_qvideoframeformat_types.QVideoFrameFormat, size: gen_qsize.QSize, pixelFormat: cint): gen_qvideoframeformat_types.QVideoFrameFormat =
 
-  QVideoFrameFormat.init(fcQVideoFrameFormat_new2(size.h, cint(pixelFormat)))
-proc create*(T: type QVideoFrameFormat, format: QVideoFrameFormat): QVideoFrameFormat =
+  gen_qvideoframeformat_types.QVideoFrameFormat.init(fcQVideoFrameFormat_new2(size.h, cint(pixelFormat)))
+proc create*(T: type gen_qvideoframeformat_types.QVideoFrameFormat, format: gen_qvideoframeformat_types.QVideoFrameFormat): gen_qvideoframeformat_types.QVideoFrameFormat =
 
-  QVideoFrameFormat.init(fcQVideoFrameFormat_new3(format.h))
-proc swap*(self: QVideoFrameFormat, other: QVideoFrameFormat): void =
+  gen_qvideoframeformat_types.QVideoFrameFormat.init(fcQVideoFrameFormat_new3(format.h))
+proc swap*(self: gen_qvideoframeformat_types.QVideoFrameFormat, other: gen_qvideoframeformat_types.QVideoFrameFormat): void =
 
   fcQVideoFrameFormat_swap(self.h, other.h)
 
-proc detach*(self: QVideoFrameFormat, ): void =
+proc detach*(self: gen_qvideoframeformat_types.QVideoFrameFormat, ): void =
 
   fcQVideoFrameFormat_detach(self.h)
 
-proc operatorAssign*(self: QVideoFrameFormat, format: QVideoFrameFormat): void =
+proc operatorAssign*(self: gen_qvideoframeformat_types.QVideoFrameFormat, format: gen_qvideoframeformat_types.QVideoFrameFormat): void =
 
   fcQVideoFrameFormat_operatorAssign(self.h, format.h)
 
-proc operatorEqual*(self: QVideoFrameFormat, format: QVideoFrameFormat): bool =
+proc operatorEqual*(self: gen_qvideoframeformat_types.QVideoFrameFormat, format: gen_qvideoframeformat_types.QVideoFrameFormat): bool =
 
   fcQVideoFrameFormat_operatorEqual(self.h, format.h)
 
-proc operatorNotEqual*(self: QVideoFrameFormat, format: QVideoFrameFormat): bool =
+proc operatorNotEqual*(self: gen_qvideoframeformat_types.QVideoFrameFormat, format: gen_qvideoframeformat_types.QVideoFrameFormat): bool =
 
   fcQVideoFrameFormat_operatorNotEqual(self.h, format.h)
 
-proc isValid*(self: QVideoFrameFormat, ): bool =
+proc isValid*(self: gen_qvideoframeformat_types.QVideoFrameFormat, ): bool =
 
   fcQVideoFrameFormat_isValid(self.h)
 
-proc pixelFormat*(self: QVideoFrameFormat, ): QVideoFrameFormatPixelFormat =
+proc pixelFormat*(self: gen_qvideoframeformat_types.QVideoFrameFormat, ): cint =
 
-  QVideoFrameFormatPixelFormat(fcQVideoFrameFormat_pixelFormat(self.h))
+  cint(fcQVideoFrameFormat_pixelFormat(self.h))
 
-proc frameSize*(self: QVideoFrameFormat, ): gen_qsize.QSize =
+proc frameSize*(self: gen_qvideoframeformat_types.QVideoFrameFormat, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQVideoFrameFormat_frameSize(self.h))
 
-proc setFrameSize*(self: QVideoFrameFormat, size: gen_qsize.QSize): void =
+proc setFrameSize*(self: gen_qvideoframeformat_types.QVideoFrameFormat, size: gen_qsize.QSize): void =
 
   fcQVideoFrameFormat_setFrameSize(self.h, size.h)
 
-proc setFrameSize2*(self: QVideoFrameFormat, width: cint, height: cint): void =
+proc setFrameSize2*(self: gen_qvideoframeformat_types.QVideoFrameFormat, width: cint, height: cint): void =
 
   fcQVideoFrameFormat_setFrameSize2(self.h, width, height)
 
-proc frameWidth*(self: QVideoFrameFormat, ): cint =
+proc frameWidth*(self: gen_qvideoframeformat_types.QVideoFrameFormat, ): cint =
 
   fcQVideoFrameFormat_frameWidth(self.h)
 
-proc frameHeight*(self: QVideoFrameFormat, ): cint =
+proc frameHeight*(self: gen_qvideoframeformat_types.QVideoFrameFormat, ): cint =
 
   fcQVideoFrameFormat_frameHeight(self.h)
 
-proc planeCount*(self: QVideoFrameFormat, ): cint =
+proc planeCount*(self: gen_qvideoframeformat_types.QVideoFrameFormat, ): cint =
 
   fcQVideoFrameFormat_planeCount(self.h)
 
-proc viewport*(self: QVideoFrameFormat, ): gen_qrect.QRect =
+proc viewport*(self: gen_qvideoframeformat_types.QVideoFrameFormat, ): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fcQVideoFrameFormat_viewport(self.h))
 
-proc setViewport*(self: QVideoFrameFormat, viewport: gen_qrect.QRect): void =
+proc setViewport*(self: gen_qvideoframeformat_types.QVideoFrameFormat, viewport: gen_qrect.QRect): void =
 
   fcQVideoFrameFormat_setViewport(self.h, viewport.h)
 
-proc scanLineDirection*(self: QVideoFrameFormat, ): QVideoFrameFormatDirection =
+proc scanLineDirection*(self: gen_qvideoframeformat_types.QVideoFrameFormat, ): cint =
 
-  QVideoFrameFormatDirection(fcQVideoFrameFormat_scanLineDirection(self.h))
+  cint(fcQVideoFrameFormat_scanLineDirection(self.h))
 
-proc setScanLineDirection*(self: QVideoFrameFormat, direction: QVideoFrameFormatDirection): void =
+proc setScanLineDirection*(self: gen_qvideoframeformat_types.QVideoFrameFormat, direction: cint): void =
 
   fcQVideoFrameFormat_setScanLineDirection(self.h, cint(direction))
 
-proc frameRate*(self: QVideoFrameFormat, ): float64 =
+proc frameRate*(self: gen_qvideoframeformat_types.QVideoFrameFormat, ): float64 =
 
   fcQVideoFrameFormat_frameRate(self.h)
 
-proc setFrameRate*(self: QVideoFrameFormat, rate: float64): void =
+proc setFrameRate*(self: gen_qvideoframeformat_types.QVideoFrameFormat, rate: float64): void =
 
   fcQVideoFrameFormat_setFrameRate(self.h, rate)
 
-proc yCbCrColorSpace*(self: QVideoFrameFormat, ): QVideoFrameFormatYCbCrColorSpace =
+proc yCbCrColorSpace*(self: gen_qvideoframeformat_types.QVideoFrameFormat, ): cint =
 
-  QVideoFrameFormatYCbCrColorSpace(fcQVideoFrameFormat_yCbCrColorSpace(self.h))
+  cint(fcQVideoFrameFormat_yCbCrColorSpace(self.h))
 
-proc setYCbCrColorSpace*(self: QVideoFrameFormat, colorSpace: QVideoFrameFormatYCbCrColorSpace): void =
+proc setYCbCrColorSpace*(self: gen_qvideoframeformat_types.QVideoFrameFormat, colorSpace: cint): void =
 
   fcQVideoFrameFormat_setYCbCrColorSpace(self.h, cint(colorSpace))
 
-proc colorSpace*(self: QVideoFrameFormat, ): QVideoFrameFormatColorSpace =
+proc colorSpace*(self: gen_qvideoframeformat_types.QVideoFrameFormat, ): cint =
 
-  QVideoFrameFormatColorSpace(fcQVideoFrameFormat_colorSpace(self.h))
+  cint(fcQVideoFrameFormat_colorSpace(self.h))
 
-proc setColorSpace*(self: QVideoFrameFormat, colorSpace: QVideoFrameFormatColorSpace): void =
+proc setColorSpace*(self: gen_qvideoframeformat_types.QVideoFrameFormat, colorSpace: cint): void =
 
   fcQVideoFrameFormat_setColorSpace(self.h, cint(colorSpace))
 
-proc colorTransfer*(self: QVideoFrameFormat, ): QVideoFrameFormatColorTransfer =
+proc colorTransfer*(self: gen_qvideoframeformat_types.QVideoFrameFormat, ): cint =
 
-  QVideoFrameFormatColorTransfer(fcQVideoFrameFormat_colorTransfer(self.h))
+  cint(fcQVideoFrameFormat_colorTransfer(self.h))
 
-proc setColorTransfer*(self: QVideoFrameFormat, colorTransfer: QVideoFrameFormatColorTransfer): void =
+proc setColorTransfer*(self: gen_qvideoframeformat_types.QVideoFrameFormat, colorTransfer: cint): void =
 
   fcQVideoFrameFormat_setColorTransfer(self.h, cint(colorTransfer))
 
-proc colorRange*(self: QVideoFrameFormat, ): QVideoFrameFormatColorRange =
+proc colorRange*(self: gen_qvideoframeformat_types.QVideoFrameFormat, ): cint =
 
-  QVideoFrameFormatColorRange(fcQVideoFrameFormat_colorRange(self.h))
+  cint(fcQVideoFrameFormat_colorRange(self.h))
 
-proc setColorRange*(self: QVideoFrameFormat, range: QVideoFrameFormatColorRange): void =
+proc setColorRange*(self: gen_qvideoframeformat_types.QVideoFrameFormat, range: cint): void =
 
   fcQVideoFrameFormat_setColorRange(self.h, cint(range))
 
-proc isMirrored*(self: QVideoFrameFormat, ): bool =
+proc isMirrored*(self: gen_qvideoframeformat_types.QVideoFrameFormat, ): bool =
 
   fcQVideoFrameFormat_isMirrored(self.h)
 
-proc setMirrored*(self: QVideoFrameFormat, mirrored: bool): void =
+proc setMirrored*(self: gen_qvideoframeformat_types.QVideoFrameFormat, mirrored: bool): void =
 
   fcQVideoFrameFormat_setMirrored(self.h, mirrored)
 
-proc vertexShaderFileName*(self: QVideoFrameFormat, ): string =
+proc vertexShaderFileName*(self: gen_qvideoframeformat_types.QVideoFrameFormat, ): string =
 
   let v_ms = fcQVideoFrameFormat_vertexShaderFileName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc fragmentShaderFileName*(self: QVideoFrameFormat, ): string =
+proc fragmentShaderFileName*(self: gen_qvideoframeformat_types.QVideoFrameFormat, ): string =
 
   let v_ms = fcQVideoFrameFormat_fragmentShaderFileName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc maxLuminance*(self: QVideoFrameFormat, ): float32 =
+proc maxLuminance*(self: gen_qvideoframeformat_types.QVideoFrameFormat, ): float32 =
 
   fcQVideoFrameFormat_maxLuminance(self.h)
 
-proc setMaxLuminance*(self: QVideoFrameFormat, lum: float32): void =
+proc setMaxLuminance*(self: gen_qvideoframeformat_types.QVideoFrameFormat, lum: float32): void =
 
   fcQVideoFrameFormat_setMaxLuminance(self.h, lum)
 
-proc pixelFormatFromImageFormat*(_: type QVideoFrameFormat, format: gen_qimage.QImageFormat): QVideoFrameFormatPixelFormat =
+proc pixelFormatFromImageFormat*(_: type gen_qvideoframeformat_types.QVideoFrameFormat, format: cint): cint =
 
-  QVideoFrameFormatPixelFormat(fcQVideoFrameFormat_pixelFormatFromImageFormat(cint(format)))
+  cint(fcQVideoFrameFormat_pixelFormatFromImageFormat(cint(format)))
 
-proc imageFormatFromPixelFormat*(_: type QVideoFrameFormat, format: QVideoFrameFormatPixelFormat): gen_qimage.QImageFormat =
+proc imageFormatFromPixelFormat*(_: type gen_qvideoframeformat_types.QVideoFrameFormat, format: cint): cint =
 
-  gen_qimage.QImageFormat(fcQVideoFrameFormat_imageFormatFromPixelFormat(cint(format)))
+  cint(fcQVideoFrameFormat_imageFormatFromPixelFormat(cint(format)))
 
-proc pixelFormatToString*(_: type QVideoFrameFormat, pixelFormat: QVideoFrameFormatPixelFormat): string =
+proc pixelFormatToString*(_: type gen_qvideoframeformat_types.QVideoFrameFormat, pixelFormat: cint): string =
 
   let v_ms = fcQVideoFrameFormat_pixelFormatToString(cint(pixelFormat))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc delete*(self: QVideoFrameFormat) =
+proc delete*(self: gen_qvideoframeformat_types.QVideoFrameFormat) =
   fcQVideoFrameFormat_delete(self.h)

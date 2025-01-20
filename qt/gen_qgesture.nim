@@ -34,29 +34,23 @@ const cflags = gorge("pkg-config -cflags Qt5Widgets")
 {.compile("gen_qgesture.cpp", cflags).}
 
 
-type QGestureGestureCancelPolicy* = cint
-const
-  QGestureCancelNone* = 0
-  QGestureCancelAllInContext* = 1
+type QGestureGestureCancelPolicyEnum* = distinct cint
+template CancelNone*(_: type QGestureGestureCancelPolicyEnum): untyped = 0
+template CancelAllInContext*(_: type QGestureGestureCancelPolicyEnum): untyped = 1
 
 
-
-type QPinchGestureChangeFlag* = cint
-const
-  QPinchGestureScaleFactorChanged* = 1
-  QPinchGestureRotationAngleChanged* = 2
-  QPinchGestureCenterPointChanged* = 4
+type QPinchGestureChangeFlagEnum* = distinct cint
+template ScaleFactorChanged*(_: type QPinchGestureChangeFlagEnum): untyped = 1
+template RotationAngleChanged*(_: type QPinchGestureChangeFlagEnum): untyped = 2
+template CenterPointChanged*(_: type QPinchGestureChangeFlagEnum): untyped = 4
 
 
-
-type QSwipeGestureSwipeDirection* = cint
-const
-  QSwipeGestureNoDirection* = 0
-  QSwipeGestureLeft* = 1
-  QSwipeGestureRight* = 2
-  QSwipeGestureUp* = 3
-  QSwipeGestureDown* = 4
-
+type QSwipeGestureSwipeDirectionEnum* = distinct cint
+template NoDirection*(_: type QSwipeGestureSwipeDirectionEnum): untyped = 0
+template Left*(_: type QSwipeGestureSwipeDirectionEnum): untyped = 1
+template Right*(_: type QSwipeGestureSwipeDirectionEnum): untyped = 2
+template Up*(_: type QSwipeGestureSwipeDirectionEnum): untyped = 3
+template Down*(_: type QSwipeGestureSwipeDirectionEnum): untyped = 4
 
 
 import gen_qgesture_types
@@ -65,7 +59,6 @@ export gen_qgesture_types
 import
   gen_qcoreevent,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpoint,
@@ -73,7 +66,6 @@ import
 export
   gen_qcoreevent,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpoint,
@@ -352,2146 +344,1846 @@ proc fcQGestureEvent_mapToGraphicsScene(self: pointer, gesturePoint: pointer): p
 proc fcQGestureEvent_delete(self: pointer) {.importc: "QGestureEvent_delete".}
 
 
-func init*(T: type QGesture, h: ptr cQGesture): QGesture =
+func init*(T: type gen_qgesture_types.QGesture, h: ptr cQGesture): gen_qgesture_types.QGesture =
   T(h: h)
-proc create*(T: type QGesture, ): QGesture =
+proc create*(T: type gen_qgesture_types.QGesture, ): gen_qgesture_types.QGesture =
 
-  QGesture.init(fcQGesture_new())
-proc create*(T: type QGesture, parent: gen_qobject.QObject): QGesture =
+  gen_qgesture_types.QGesture.init(fcQGesture_new())
+proc create*(T: type gen_qgesture_types.QGesture, parent: gen_qobject.QObject): gen_qgesture_types.QGesture =
 
-  QGesture.init(fcQGesture_new2(parent.h))
-proc metaObject*(self: QGesture, ): gen_qobjectdefs.QMetaObject =
+  gen_qgesture_types.QGesture.init(fcQGesture_new2(parent.h))
+proc metaObject*(self: gen_qgesture_types.QGesture, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQGesture_metaObject(self.h))
 
-proc metacast*(self: QGesture, param1: cstring): pointer =
+proc metacast*(self: gen_qgesture_types.QGesture, param1: cstring): pointer =
 
   fcQGesture_metacast(self.h, param1)
 
-proc metacall*(self: QGesture, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qgesture_types.QGesture, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQGesture_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QGesture, s: cstring): string =
+proc tr*(_: type gen_qgesture_types.QGesture, s: cstring): string =
 
   let v_ms = fcQGesture_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QGesture, s: cstring): string =
+proc trUtf8*(_: type gen_qgesture_types.QGesture, s: cstring): string =
 
   let v_ms = fcQGesture_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc gestureType*(self: QGesture, ): gen_qnamespace.GestureType =
+proc gestureType*(self: gen_qgesture_types.QGesture, ): cint =
 
-  gen_qnamespace.GestureType(fcQGesture_gestureType(self.h))
+  cint(fcQGesture_gestureType(self.h))
 
-proc state*(self: QGesture, ): gen_qnamespace.GestureState =
+proc state*(self: gen_qgesture_types.QGesture, ): cint =
 
-  gen_qnamespace.GestureState(fcQGesture_state(self.h))
+  cint(fcQGesture_state(self.h))
 
-proc hotSpot*(self: QGesture, ): gen_qpoint.QPointF =
+proc hotSpot*(self: gen_qgesture_types.QGesture, ): gen_qpoint.QPointF =
 
   gen_qpoint.QPointF(h: fcQGesture_hotSpot(self.h))
 
-proc setHotSpot*(self: QGesture, value: gen_qpoint.QPointF): void =
+proc setHotSpot*(self: gen_qgesture_types.QGesture, value: gen_qpoint.QPointF): void =
 
   fcQGesture_setHotSpot(self.h, value.h)
 
-proc hasHotSpot*(self: QGesture, ): bool =
+proc hasHotSpot*(self: gen_qgesture_types.QGesture, ): bool =
 
   fcQGesture_hasHotSpot(self.h)
 
-proc unsetHotSpot*(self: QGesture, ): void =
+proc unsetHotSpot*(self: gen_qgesture_types.QGesture, ): void =
 
   fcQGesture_unsetHotSpot(self.h)
 
-proc setGestureCancelPolicy*(self: QGesture, policy: QGestureGestureCancelPolicy): void =
+proc setGestureCancelPolicy*(self: gen_qgesture_types.QGesture, policy: cint): void =
 
   fcQGesture_setGestureCancelPolicy(self.h, cint(policy))
 
-proc gestureCancelPolicy*(self: QGesture, ): QGestureGestureCancelPolicy =
+proc gestureCancelPolicy*(self: gen_qgesture_types.QGesture, ): cint =
 
-  QGestureGestureCancelPolicy(fcQGesture_gestureCancelPolicy(self.h))
+  cint(fcQGesture_gestureCancelPolicy(self.h))
 
-proc tr2*(_: type QGesture, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qgesture_types.QGesture, s: cstring, c: cstring): string =
 
   let v_ms = fcQGesture_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QGesture, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qgesture_types.QGesture, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQGesture_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QGesture, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qgesture_types.QGesture, s: cstring, c: cstring): string =
 
   let v_ms = fcQGesture_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QGesture, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qgesture_types.QGesture, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQGesture_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QGesture, ): gen_qobjectdefs.QMetaObject =
-
+proc QGesturemetaObject*(self: gen_qgesture_types.QGesture, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQGesture_virtualbase_metaObject(self.h))
 
-type QGesturemetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QGesture, slot: proc(super: QGesturemetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QGesturemetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qgesture_types.QGesture, slot: QGesturemetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QGesturemetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QGesturemetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGesture_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGesture_metaObject(self: ptr cQGesture, slot: int): pointer {.exportc: "miqt_exec_callback_QGesture_metaObject ".} =
-  type Cb = proc(super: QGesturemetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QGesture(h: self), )
+  var nimfunc = cast[ptr QGesturemetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QGesture, param1: cstring): pointer =
-
+proc QGesturemetacast*(self: gen_qgesture_types.QGesture, param1: cstring): pointer =
 
   fQGesture_virtualbase_metacast(self.h, param1)
 
-type QGesturemetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QGesture, slot: proc(super: QGesturemetacastBase, param1: cstring): pointer) =
+type QGesturemetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qgesture_types.QGesture, slot: QGesturemetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QGesturemetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QGesturemetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGesture_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGesture_metacast(self: ptr cQGesture, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QGesture_metacast ".} =
-  type Cb = proc(super: QGesturemetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QGesture(h: self), param1)
+  var nimfunc = cast[ptr QGesturemetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QGesture, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QGesturemetacall*(self: gen_qgesture_types.QGesture, param1: cint, param2: cint, param3: pointer): cint =
 
   fQGesture_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QGesturemetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QGesture, slot: proc(super: QGesturemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QGesturemetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qgesture_types.QGesture, slot: QGesturemetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QGesturemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QGesturemetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGesture_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGesture_metacall(self: ptr cQGesture, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QGesture_metacall ".} =
-  type Cb = proc(super: QGesturemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QGesture(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QGesturemetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_event(self: QGesture, event: gen_qcoreevent.QEvent): bool =
-
+proc QGestureevent*(self: gen_qgesture_types.QGesture, event: gen_qcoreevent.QEvent): bool =
 
   fQGesture_virtualbase_event(self.h, event.h)
 
-type QGestureeventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QGesture, slot: proc(super: QGestureeventBase, event: gen_qcoreevent.QEvent): bool) =
+type QGestureeventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qgesture_types.QGesture, slot: QGestureeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGestureeventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QGestureeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGesture_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGesture_event(self: ptr cQGesture, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QGesture_event ".} =
-  type Cb = proc(super: QGestureeventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QGesture(h: self), event)
+  var nimfunc = cast[ptr QGestureeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QGesture, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QGestureeventFilter*(self: gen_qgesture_types.QGesture, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQGesture_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QGestureeventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QGesture, slot: proc(super: QGestureeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QGestureeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qgesture_types.QGesture, slot: QGestureeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QGestureeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QGestureeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGesture_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGesture_eventFilter(self: ptr cQGesture, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QGesture_eventFilter ".} =
-  type Cb = proc(super: QGestureeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QGesture(h: self), watched, event)
+  var nimfunc = cast[ptr QGestureeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QGesture, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QGesturetimerEvent*(self: gen_qgesture_types.QGesture, event: gen_qcoreevent.QTimerEvent): void =
 
   fQGesture_virtualbase_timerEvent(self.h, event.h)
 
-type QGesturetimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QGesture, slot: proc(super: QGesturetimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QGesturetimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qgesture_types.QGesture, slot: QGesturetimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGesturetimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QGesturetimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGesture_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGesture_timerEvent(self: ptr cQGesture, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGesture_timerEvent ".} =
-  type Cb = proc(super: QGesturetimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QGesture(h: self), event)
+  var nimfunc = cast[ptr QGesturetimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QGesture, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QGesturechildEvent*(self: gen_qgesture_types.QGesture, event: gen_qcoreevent.QChildEvent): void =
 
   fQGesture_virtualbase_childEvent(self.h, event.h)
 
-type QGesturechildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QGesture, slot: proc(super: QGesturechildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QGesturechildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qgesture_types.QGesture, slot: QGesturechildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGesturechildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QGesturechildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGesture_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGesture_childEvent(self: ptr cQGesture, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGesture_childEvent ".} =
-  type Cb = proc(super: QGesturechildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QGesture(h: self), event)
+  var nimfunc = cast[ptr QGesturechildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QGesture, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QGesturecustomEvent*(self: gen_qgesture_types.QGesture, event: gen_qcoreevent.QEvent): void =
 
   fQGesture_virtualbase_customEvent(self.h, event.h)
 
-type QGesturecustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QGesture, slot: proc(super: QGesturecustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QGesturecustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qgesture_types.QGesture, slot: QGesturecustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGesturecustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QGesturecustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGesture_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGesture_customEvent(self: ptr cQGesture, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGesture_customEvent ".} =
-  type Cb = proc(super: QGesturecustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QGesture(h: self), event)
+  var nimfunc = cast[ptr QGesturecustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QGesture, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QGestureconnectNotify*(self: gen_qgesture_types.QGesture, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQGesture_virtualbase_connectNotify(self.h, signal.h)
 
-type QGestureconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QGesture, slot: proc(super: QGestureconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QGestureconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qgesture_types.QGesture, slot: QGestureconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QGestureconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QGestureconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGesture_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGesture_connectNotify(self: ptr cQGesture, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QGesture_connectNotify ".} =
-  type Cb = proc(super: QGestureconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QGesture(h: self), signal)
+  var nimfunc = cast[ptr QGestureconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QGesture, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QGesturedisconnectNotify*(self: gen_qgesture_types.QGesture, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQGesture_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QGesturedisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QGesture, slot: proc(super: QGesturedisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QGesturedisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qgesture_types.QGesture, slot: QGesturedisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QGesturedisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QGesturedisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGesture_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGesture_disconnectNotify(self: ptr cQGesture, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QGesture_disconnectNotify ".} =
-  type Cb = proc(super: QGesturedisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QGesture(h: self), signal)
+  var nimfunc = cast[ptr QGesturedisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QGesture): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qgesture_types.QGesture): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQGesture_staticMetaObject())
-proc delete*(self: QGesture) =
+proc delete*(self: gen_qgesture_types.QGesture) =
   fcQGesture_delete(self.h)
 
-func init*(T: type QPanGesture, h: ptr cQPanGesture): QPanGesture =
+func init*(T: type gen_qgesture_types.QPanGesture, h: ptr cQPanGesture): gen_qgesture_types.QPanGesture =
   T(h: h)
-proc create*(T: type QPanGesture, ): QPanGesture =
+proc create*(T: type gen_qgesture_types.QPanGesture, ): gen_qgesture_types.QPanGesture =
 
-  QPanGesture.init(fcQPanGesture_new())
-proc create*(T: type QPanGesture, parent: gen_qobject.QObject): QPanGesture =
+  gen_qgesture_types.QPanGesture.init(fcQPanGesture_new())
+proc create*(T: type gen_qgesture_types.QPanGesture, parent: gen_qobject.QObject): gen_qgesture_types.QPanGesture =
 
-  QPanGesture.init(fcQPanGesture_new2(parent.h))
-proc metaObject*(self: QPanGesture, ): gen_qobjectdefs.QMetaObject =
+  gen_qgesture_types.QPanGesture.init(fcQPanGesture_new2(parent.h))
+proc metaObject*(self: gen_qgesture_types.QPanGesture, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQPanGesture_metaObject(self.h))
 
-proc metacast*(self: QPanGesture, param1: cstring): pointer =
+proc metacast*(self: gen_qgesture_types.QPanGesture, param1: cstring): pointer =
 
   fcQPanGesture_metacast(self.h, param1)
 
-proc metacall*(self: QPanGesture, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qgesture_types.QPanGesture, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQPanGesture_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QPanGesture, s: cstring): string =
+proc tr*(_: type gen_qgesture_types.QPanGesture, s: cstring): string =
 
   let v_ms = fcQPanGesture_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QPanGesture, s: cstring): string =
+proc trUtf8*(_: type gen_qgesture_types.QPanGesture, s: cstring): string =
 
   let v_ms = fcQPanGesture_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc lastOffset*(self: QPanGesture, ): gen_qpoint.QPointF =
+proc lastOffset*(self: gen_qgesture_types.QPanGesture, ): gen_qpoint.QPointF =
 
   gen_qpoint.QPointF(h: fcQPanGesture_lastOffset(self.h))
 
-proc offset*(self: QPanGesture, ): gen_qpoint.QPointF =
+proc offset*(self: gen_qgesture_types.QPanGesture, ): gen_qpoint.QPointF =
 
   gen_qpoint.QPointF(h: fcQPanGesture_offset(self.h))
 
-proc delta*(self: QPanGesture, ): gen_qpoint.QPointF =
+proc delta*(self: gen_qgesture_types.QPanGesture, ): gen_qpoint.QPointF =
 
   gen_qpoint.QPointF(h: fcQPanGesture_delta(self.h))
 
-proc acceleration*(self: QPanGesture, ): float64 =
+proc acceleration*(self: gen_qgesture_types.QPanGesture, ): float64 =
 
   fcQPanGesture_acceleration(self.h)
 
-proc setLastOffset*(self: QPanGesture, value: gen_qpoint.QPointF): void =
+proc setLastOffset*(self: gen_qgesture_types.QPanGesture, value: gen_qpoint.QPointF): void =
 
   fcQPanGesture_setLastOffset(self.h, value.h)
 
-proc setOffset*(self: QPanGesture, value: gen_qpoint.QPointF): void =
+proc setOffset*(self: gen_qgesture_types.QPanGesture, value: gen_qpoint.QPointF): void =
 
   fcQPanGesture_setOffset(self.h, value.h)
 
-proc setAcceleration*(self: QPanGesture, value: float64): void =
+proc setAcceleration*(self: gen_qgesture_types.QPanGesture, value: float64): void =
 
   fcQPanGesture_setAcceleration(self.h, value)
 
-proc tr2*(_: type QPanGesture, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qgesture_types.QPanGesture, s: cstring, c: cstring): string =
 
   let v_ms = fcQPanGesture_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QPanGesture, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qgesture_types.QPanGesture, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQPanGesture_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QPanGesture, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qgesture_types.QPanGesture, s: cstring, c: cstring): string =
 
   let v_ms = fcQPanGesture_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QPanGesture, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qgesture_types.QPanGesture, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQPanGesture_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QPanGesture, ): gen_qobjectdefs.QMetaObject =
-
+proc QPanGesturemetaObject*(self: gen_qgesture_types.QPanGesture, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQPanGesture_virtualbase_metaObject(self.h))
 
-type QPanGesturemetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QPanGesture, slot: proc(super: QPanGesturemetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QPanGesturemetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qgesture_types.QPanGesture, slot: QPanGesturemetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QPanGesturemetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QPanGesturemetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPanGesture_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPanGesture_metaObject(self: ptr cQPanGesture, slot: int): pointer {.exportc: "miqt_exec_callback_QPanGesture_metaObject ".} =
-  type Cb = proc(super: QPanGesturemetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QPanGesture(h: self), )
+  var nimfunc = cast[ptr QPanGesturemetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QPanGesture, param1: cstring): pointer =
-
+proc QPanGesturemetacast*(self: gen_qgesture_types.QPanGesture, param1: cstring): pointer =
 
   fQPanGesture_virtualbase_metacast(self.h, param1)
 
-type QPanGesturemetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QPanGesture, slot: proc(super: QPanGesturemetacastBase, param1: cstring): pointer) =
+type QPanGesturemetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qgesture_types.QPanGesture, slot: QPanGesturemetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QPanGesturemetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QPanGesturemetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPanGesture_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPanGesture_metacast(self: ptr cQPanGesture, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QPanGesture_metacast ".} =
-  type Cb = proc(super: QPanGesturemetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QPanGesture(h: self), param1)
+  var nimfunc = cast[ptr QPanGesturemetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QPanGesture, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QPanGesturemetacall*(self: gen_qgesture_types.QPanGesture, param1: cint, param2: cint, param3: pointer): cint =
 
   fQPanGesture_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QPanGesturemetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QPanGesture, slot: proc(super: QPanGesturemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QPanGesturemetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qgesture_types.QPanGesture, slot: QPanGesturemetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QPanGesturemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QPanGesturemetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPanGesture_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPanGesture_metacall(self: ptr cQPanGesture, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QPanGesture_metacall ".} =
-  type Cb = proc(super: QPanGesturemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QPanGesture(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QPanGesturemetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_event(self: QPanGesture, event: gen_qcoreevent.QEvent): bool =
-
+proc QPanGestureevent*(self: gen_qgesture_types.QPanGesture, event: gen_qcoreevent.QEvent): bool =
 
   fQPanGesture_virtualbase_event(self.h, event.h)
 
-type QPanGestureeventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QPanGesture, slot: proc(super: QPanGestureeventBase, event: gen_qcoreevent.QEvent): bool) =
+type QPanGestureeventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qgesture_types.QPanGesture, slot: QPanGestureeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPanGestureeventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QPanGestureeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPanGesture_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPanGesture_event(self: ptr cQPanGesture, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QPanGesture_event ".} =
-  type Cb = proc(super: QPanGestureeventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QPanGesture(h: self), event)
+  var nimfunc = cast[ptr QPanGestureeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QPanGesture, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QPanGestureeventFilter*(self: gen_qgesture_types.QPanGesture, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQPanGesture_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QPanGestureeventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QPanGesture, slot: proc(super: QPanGestureeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QPanGestureeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qgesture_types.QPanGesture, slot: QPanGestureeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QPanGestureeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QPanGestureeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPanGesture_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPanGesture_eventFilter(self: ptr cQPanGesture, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QPanGesture_eventFilter ".} =
-  type Cb = proc(super: QPanGestureeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QPanGesture(h: self), watched, event)
+  var nimfunc = cast[ptr QPanGestureeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QPanGesture, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QPanGesturetimerEvent*(self: gen_qgesture_types.QPanGesture, event: gen_qcoreevent.QTimerEvent): void =
 
   fQPanGesture_virtualbase_timerEvent(self.h, event.h)
 
-type QPanGesturetimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QPanGesture, slot: proc(super: QPanGesturetimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QPanGesturetimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qgesture_types.QPanGesture, slot: QPanGesturetimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPanGesturetimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QPanGesturetimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPanGesture_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPanGesture_timerEvent(self: ptr cQPanGesture, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPanGesture_timerEvent ".} =
-  type Cb = proc(super: QPanGesturetimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QPanGesture(h: self), event)
+  var nimfunc = cast[ptr QPanGesturetimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QPanGesture, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QPanGesturechildEvent*(self: gen_qgesture_types.QPanGesture, event: gen_qcoreevent.QChildEvent): void =
 
   fQPanGesture_virtualbase_childEvent(self.h, event.h)
 
-type QPanGesturechildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QPanGesture, slot: proc(super: QPanGesturechildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QPanGesturechildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qgesture_types.QPanGesture, slot: QPanGesturechildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPanGesturechildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QPanGesturechildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPanGesture_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPanGesture_childEvent(self: ptr cQPanGesture, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPanGesture_childEvent ".} =
-  type Cb = proc(super: QPanGesturechildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QPanGesture(h: self), event)
+  var nimfunc = cast[ptr QPanGesturechildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QPanGesture, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QPanGesturecustomEvent*(self: gen_qgesture_types.QPanGesture, event: gen_qcoreevent.QEvent): void =
 
   fQPanGesture_virtualbase_customEvent(self.h, event.h)
 
-type QPanGesturecustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QPanGesture, slot: proc(super: QPanGesturecustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QPanGesturecustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qgesture_types.QPanGesture, slot: QPanGesturecustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPanGesturecustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QPanGesturecustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPanGesture_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPanGesture_customEvent(self: ptr cQPanGesture, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPanGesture_customEvent ".} =
-  type Cb = proc(super: QPanGesturecustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QPanGesture(h: self), event)
+  var nimfunc = cast[ptr QPanGesturecustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QPanGesture, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QPanGestureconnectNotify*(self: gen_qgesture_types.QPanGesture, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQPanGesture_virtualbase_connectNotify(self.h, signal.h)
 
-type QPanGestureconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QPanGesture, slot: proc(super: QPanGestureconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QPanGestureconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qgesture_types.QPanGesture, slot: QPanGestureconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QPanGestureconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QPanGestureconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPanGesture_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPanGesture_connectNotify(self: ptr cQPanGesture, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QPanGesture_connectNotify ".} =
-  type Cb = proc(super: QPanGestureconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QPanGesture(h: self), signal)
+  var nimfunc = cast[ptr QPanGestureconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QPanGesture, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QPanGesturedisconnectNotify*(self: gen_qgesture_types.QPanGesture, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQPanGesture_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QPanGesturedisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QPanGesture, slot: proc(super: QPanGesturedisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QPanGesturedisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qgesture_types.QPanGesture, slot: QPanGesturedisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QPanGesturedisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QPanGesturedisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPanGesture_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPanGesture_disconnectNotify(self: ptr cQPanGesture, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QPanGesture_disconnectNotify ".} =
-  type Cb = proc(super: QPanGesturedisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QPanGesture(h: self), signal)
+  var nimfunc = cast[ptr QPanGesturedisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QPanGesture): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qgesture_types.QPanGesture): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQPanGesture_staticMetaObject())
-proc delete*(self: QPanGesture) =
+proc delete*(self: gen_qgesture_types.QPanGesture) =
   fcQPanGesture_delete(self.h)
 
-func init*(T: type QPinchGesture, h: ptr cQPinchGesture): QPinchGesture =
+func init*(T: type gen_qgesture_types.QPinchGesture, h: ptr cQPinchGesture): gen_qgesture_types.QPinchGesture =
   T(h: h)
-proc create*(T: type QPinchGesture, ): QPinchGesture =
+proc create*(T: type gen_qgesture_types.QPinchGesture, ): gen_qgesture_types.QPinchGesture =
 
-  QPinchGesture.init(fcQPinchGesture_new())
-proc create*(T: type QPinchGesture, parent: gen_qobject.QObject): QPinchGesture =
+  gen_qgesture_types.QPinchGesture.init(fcQPinchGesture_new())
+proc create*(T: type gen_qgesture_types.QPinchGesture, parent: gen_qobject.QObject): gen_qgesture_types.QPinchGesture =
 
-  QPinchGesture.init(fcQPinchGesture_new2(parent.h))
-proc metaObject*(self: QPinchGesture, ): gen_qobjectdefs.QMetaObject =
+  gen_qgesture_types.QPinchGesture.init(fcQPinchGesture_new2(parent.h))
+proc metaObject*(self: gen_qgesture_types.QPinchGesture, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQPinchGesture_metaObject(self.h))
 
-proc metacast*(self: QPinchGesture, param1: cstring): pointer =
+proc metacast*(self: gen_qgesture_types.QPinchGesture, param1: cstring): pointer =
 
   fcQPinchGesture_metacast(self.h, param1)
 
-proc metacall*(self: QPinchGesture, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qgesture_types.QPinchGesture, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQPinchGesture_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QPinchGesture, s: cstring): string =
+proc tr*(_: type gen_qgesture_types.QPinchGesture, s: cstring): string =
 
   let v_ms = fcQPinchGesture_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QPinchGesture, s: cstring): string =
+proc trUtf8*(_: type gen_qgesture_types.QPinchGesture, s: cstring): string =
 
   let v_ms = fcQPinchGesture_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc totalChangeFlags*(self: QPinchGesture, ): QPinchGestureChangeFlag =
+proc totalChangeFlags*(self: gen_qgesture_types.QPinchGesture, ): cint =
 
-  QPinchGestureChangeFlag(fcQPinchGesture_totalChangeFlags(self.h))
+  cint(fcQPinchGesture_totalChangeFlags(self.h))
 
-proc setTotalChangeFlags*(self: QPinchGesture, value: QPinchGestureChangeFlag): void =
+proc setTotalChangeFlags*(self: gen_qgesture_types.QPinchGesture, value: cint): void =
 
   fcQPinchGesture_setTotalChangeFlags(self.h, cint(value))
 
-proc changeFlags*(self: QPinchGesture, ): QPinchGestureChangeFlag =
+proc changeFlags*(self: gen_qgesture_types.QPinchGesture, ): cint =
 
-  QPinchGestureChangeFlag(fcQPinchGesture_changeFlags(self.h))
+  cint(fcQPinchGesture_changeFlags(self.h))
 
-proc setChangeFlags*(self: QPinchGesture, value: QPinchGestureChangeFlag): void =
+proc setChangeFlags*(self: gen_qgesture_types.QPinchGesture, value: cint): void =
 
   fcQPinchGesture_setChangeFlags(self.h, cint(value))
 
-proc startCenterPoint*(self: QPinchGesture, ): gen_qpoint.QPointF =
+proc startCenterPoint*(self: gen_qgesture_types.QPinchGesture, ): gen_qpoint.QPointF =
 
   gen_qpoint.QPointF(h: fcQPinchGesture_startCenterPoint(self.h))
 
-proc lastCenterPoint*(self: QPinchGesture, ): gen_qpoint.QPointF =
+proc lastCenterPoint*(self: gen_qgesture_types.QPinchGesture, ): gen_qpoint.QPointF =
 
   gen_qpoint.QPointF(h: fcQPinchGesture_lastCenterPoint(self.h))
 
-proc centerPoint*(self: QPinchGesture, ): gen_qpoint.QPointF =
+proc centerPoint*(self: gen_qgesture_types.QPinchGesture, ): gen_qpoint.QPointF =
 
   gen_qpoint.QPointF(h: fcQPinchGesture_centerPoint(self.h))
 
-proc setStartCenterPoint*(self: QPinchGesture, value: gen_qpoint.QPointF): void =
+proc setStartCenterPoint*(self: gen_qgesture_types.QPinchGesture, value: gen_qpoint.QPointF): void =
 
   fcQPinchGesture_setStartCenterPoint(self.h, value.h)
 
-proc setLastCenterPoint*(self: QPinchGesture, value: gen_qpoint.QPointF): void =
+proc setLastCenterPoint*(self: gen_qgesture_types.QPinchGesture, value: gen_qpoint.QPointF): void =
 
   fcQPinchGesture_setLastCenterPoint(self.h, value.h)
 
-proc setCenterPoint*(self: QPinchGesture, value: gen_qpoint.QPointF): void =
+proc setCenterPoint*(self: gen_qgesture_types.QPinchGesture, value: gen_qpoint.QPointF): void =
 
   fcQPinchGesture_setCenterPoint(self.h, value.h)
 
-proc totalScaleFactor*(self: QPinchGesture, ): float64 =
+proc totalScaleFactor*(self: gen_qgesture_types.QPinchGesture, ): float64 =
 
   fcQPinchGesture_totalScaleFactor(self.h)
 
-proc lastScaleFactor*(self: QPinchGesture, ): float64 =
+proc lastScaleFactor*(self: gen_qgesture_types.QPinchGesture, ): float64 =
 
   fcQPinchGesture_lastScaleFactor(self.h)
 
-proc scaleFactor*(self: QPinchGesture, ): float64 =
+proc scaleFactor*(self: gen_qgesture_types.QPinchGesture, ): float64 =
 
   fcQPinchGesture_scaleFactor(self.h)
 
-proc setTotalScaleFactor*(self: QPinchGesture, value: float64): void =
+proc setTotalScaleFactor*(self: gen_qgesture_types.QPinchGesture, value: float64): void =
 
   fcQPinchGesture_setTotalScaleFactor(self.h, value)
 
-proc setLastScaleFactor*(self: QPinchGesture, value: float64): void =
+proc setLastScaleFactor*(self: gen_qgesture_types.QPinchGesture, value: float64): void =
 
   fcQPinchGesture_setLastScaleFactor(self.h, value)
 
-proc setScaleFactor*(self: QPinchGesture, value: float64): void =
+proc setScaleFactor*(self: gen_qgesture_types.QPinchGesture, value: float64): void =
 
   fcQPinchGesture_setScaleFactor(self.h, value)
 
-proc totalRotationAngle*(self: QPinchGesture, ): float64 =
+proc totalRotationAngle*(self: gen_qgesture_types.QPinchGesture, ): float64 =
 
   fcQPinchGesture_totalRotationAngle(self.h)
 
-proc lastRotationAngle*(self: QPinchGesture, ): float64 =
+proc lastRotationAngle*(self: gen_qgesture_types.QPinchGesture, ): float64 =
 
   fcQPinchGesture_lastRotationAngle(self.h)
 
-proc rotationAngle*(self: QPinchGesture, ): float64 =
+proc rotationAngle*(self: gen_qgesture_types.QPinchGesture, ): float64 =
 
   fcQPinchGesture_rotationAngle(self.h)
 
-proc setTotalRotationAngle*(self: QPinchGesture, value: float64): void =
+proc setTotalRotationAngle*(self: gen_qgesture_types.QPinchGesture, value: float64): void =
 
   fcQPinchGesture_setTotalRotationAngle(self.h, value)
 
-proc setLastRotationAngle*(self: QPinchGesture, value: float64): void =
+proc setLastRotationAngle*(self: gen_qgesture_types.QPinchGesture, value: float64): void =
 
   fcQPinchGesture_setLastRotationAngle(self.h, value)
 
-proc setRotationAngle*(self: QPinchGesture, value: float64): void =
+proc setRotationAngle*(self: gen_qgesture_types.QPinchGesture, value: float64): void =
 
   fcQPinchGesture_setRotationAngle(self.h, value)
 
-proc tr2*(_: type QPinchGesture, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qgesture_types.QPinchGesture, s: cstring, c: cstring): string =
 
   let v_ms = fcQPinchGesture_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QPinchGesture, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qgesture_types.QPinchGesture, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQPinchGesture_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QPinchGesture, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qgesture_types.QPinchGesture, s: cstring, c: cstring): string =
 
   let v_ms = fcQPinchGesture_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QPinchGesture, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qgesture_types.QPinchGesture, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQPinchGesture_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QPinchGesture, ): gen_qobjectdefs.QMetaObject =
-
+proc QPinchGesturemetaObject*(self: gen_qgesture_types.QPinchGesture, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQPinchGesture_virtualbase_metaObject(self.h))
 
-type QPinchGesturemetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QPinchGesture, slot: proc(super: QPinchGesturemetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QPinchGesturemetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qgesture_types.QPinchGesture, slot: QPinchGesturemetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QPinchGesturemetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QPinchGesturemetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPinchGesture_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPinchGesture_metaObject(self: ptr cQPinchGesture, slot: int): pointer {.exportc: "miqt_exec_callback_QPinchGesture_metaObject ".} =
-  type Cb = proc(super: QPinchGesturemetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QPinchGesture(h: self), )
+  var nimfunc = cast[ptr QPinchGesturemetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QPinchGesture, param1: cstring): pointer =
-
+proc QPinchGesturemetacast*(self: gen_qgesture_types.QPinchGesture, param1: cstring): pointer =
 
   fQPinchGesture_virtualbase_metacast(self.h, param1)
 
-type QPinchGesturemetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QPinchGesture, slot: proc(super: QPinchGesturemetacastBase, param1: cstring): pointer) =
+type QPinchGesturemetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qgesture_types.QPinchGesture, slot: QPinchGesturemetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QPinchGesturemetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QPinchGesturemetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPinchGesture_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPinchGesture_metacast(self: ptr cQPinchGesture, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QPinchGesture_metacast ".} =
-  type Cb = proc(super: QPinchGesturemetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QPinchGesture(h: self), param1)
+  var nimfunc = cast[ptr QPinchGesturemetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QPinchGesture, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QPinchGesturemetacall*(self: gen_qgesture_types.QPinchGesture, param1: cint, param2: cint, param3: pointer): cint =
 
   fQPinchGesture_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QPinchGesturemetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QPinchGesture, slot: proc(super: QPinchGesturemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QPinchGesturemetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qgesture_types.QPinchGesture, slot: QPinchGesturemetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QPinchGesturemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QPinchGesturemetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPinchGesture_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPinchGesture_metacall(self: ptr cQPinchGesture, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QPinchGesture_metacall ".} =
-  type Cb = proc(super: QPinchGesturemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QPinchGesture(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QPinchGesturemetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_event(self: QPinchGesture, event: gen_qcoreevent.QEvent): bool =
-
+proc QPinchGestureevent*(self: gen_qgesture_types.QPinchGesture, event: gen_qcoreevent.QEvent): bool =
 
   fQPinchGesture_virtualbase_event(self.h, event.h)
 
-type QPinchGestureeventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QPinchGesture, slot: proc(super: QPinchGestureeventBase, event: gen_qcoreevent.QEvent): bool) =
+type QPinchGestureeventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qgesture_types.QPinchGesture, slot: QPinchGestureeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPinchGestureeventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QPinchGestureeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPinchGesture_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPinchGesture_event(self: ptr cQPinchGesture, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QPinchGesture_event ".} =
-  type Cb = proc(super: QPinchGestureeventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QPinchGesture(h: self), event)
+  var nimfunc = cast[ptr QPinchGestureeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QPinchGesture, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QPinchGestureeventFilter*(self: gen_qgesture_types.QPinchGesture, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQPinchGesture_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QPinchGestureeventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QPinchGesture, slot: proc(super: QPinchGestureeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QPinchGestureeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qgesture_types.QPinchGesture, slot: QPinchGestureeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QPinchGestureeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QPinchGestureeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPinchGesture_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPinchGesture_eventFilter(self: ptr cQPinchGesture, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QPinchGesture_eventFilter ".} =
-  type Cb = proc(super: QPinchGestureeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QPinchGesture(h: self), watched, event)
+  var nimfunc = cast[ptr QPinchGestureeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QPinchGesture, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QPinchGesturetimerEvent*(self: gen_qgesture_types.QPinchGesture, event: gen_qcoreevent.QTimerEvent): void =
 
   fQPinchGesture_virtualbase_timerEvent(self.h, event.h)
 
-type QPinchGesturetimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QPinchGesture, slot: proc(super: QPinchGesturetimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QPinchGesturetimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qgesture_types.QPinchGesture, slot: QPinchGesturetimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPinchGesturetimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QPinchGesturetimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPinchGesture_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPinchGesture_timerEvent(self: ptr cQPinchGesture, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPinchGesture_timerEvent ".} =
-  type Cb = proc(super: QPinchGesturetimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QPinchGesture(h: self), event)
+  var nimfunc = cast[ptr QPinchGesturetimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QPinchGesture, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QPinchGesturechildEvent*(self: gen_qgesture_types.QPinchGesture, event: gen_qcoreevent.QChildEvent): void =
 
   fQPinchGesture_virtualbase_childEvent(self.h, event.h)
 
-type QPinchGesturechildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QPinchGesture, slot: proc(super: QPinchGesturechildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QPinchGesturechildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qgesture_types.QPinchGesture, slot: QPinchGesturechildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPinchGesturechildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QPinchGesturechildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPinchGesture_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPinchGesture_childEvent(self: ptr cQPinchGesture, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPinchGesture_childEvent ".} =
-  type Cb = proc(super: QPinchGesturechildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QPinchGesture(h: self), event)
+  var nimfunc = cast[ptr QPinchGesturechildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QPinchGesture, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QPinchGesturecustomEvent*(self: gen_qgesture_types.QPinchGesture, event: gen_qcoreevent.QEvent): void =
 
   fQPinchGesture_virtualbase_customEvent(self.h, event.h)
 
-type QPinchGesturecustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QPinchGesture, slot: proc(super: QPinchGesturecustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QPinchGesturecustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qgesture_types.QPinchGesture, slot: QPinchGesturecustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPinchGesturecustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QPinchGesturecustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPinchGesture_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPinchGesture_customEvent(self: ptr cQPinchGesture, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPinchGesture_customEvent ".} =
-  type Cb = proc(super: QPinchGesturecustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QPinchGesture(h: self), event)
+  var nimfunc = cast[ptr QPinchGesturecustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QPinchGesture, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QPinchGestureconnectNotify*(self: gen_qgesture_types.QPinchGesture, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQPinchGesture_virtualbase_connectNotify(self.h, signal.h)
 
-type QPinchGestureconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QPinchGesture, slot: proc(super: QPinchGestureconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QPinchGestureconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qgesture_types.QPinchGesture, slot: QPinchGestureconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QPinchGestureconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QPinchGestureconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPinchGesture_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPinchGesture_connectNotify(self: ptr cQPinchGesture, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QPinchGesture_connectNotify ".} =
-  type Cb = proc(super: QPinchGestureconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QPinchGesture(h: self), signal)
+  var nimfunc = cast[ptr QPinchGestureconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QPinchGesture, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QPinchGesturedisconnectNotify*(self: gen_qgesture_types.QPinchGesture, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQPinchGesture_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QPinchGesturedisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QPinchGesture, slot: proc(super: QPinchGesturedisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QPinchGesturedisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qgesture_types.QPinchGesture, slot: QPinchGesturedisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QPinchGesturedisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QPinchGesturedisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPinchGesture_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPinchGesture_disconnectNotify(self: ptr cQPinchGesture, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QPinchGesture_disconnectNotify ".} =
-  type Cb = proc(super: QPinchGesturedisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QPinchGesture(h: self), signal)
+  var nimfunc = cast[ptr QPinchGesturedisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QPinchGesture): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qgesture_types.QPinchGesture): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQPinchGesture_staticMetaObject())
-proc delete*(self: QPinchGesture) =
+proc delete*(self: gen_qgesture_types.QPinchGesture) =
   fcQPinchGesture_delete(self.h)
 
-func init*(T: type QSwipeGesture, h: ptr cQSwipeGesture): QSwipeGesture =
+func init*(T: type gen_qgesture_types.QSwipeGesture, h: ptr cQSwipeGesture): gen_qgesture_types.QSwipeGesture =
   T(h: h)
-proc create*(T: type QSwipeGesture, ): QSwipeGesture =
+proc create*(T: type gen_qgesture_types.QSwipeGesture, ): gen_qgesture_types.QSwipeGesture =
 
-  QSwipeGesture.init(fcQSwipeGesture_new())
-proc create*(T: type QSwipeGesture, parent: gen_qobject.QObject): QSwipeGesture =
+  gen_qgesture_types.QSwipeGesture.init(fcQSwipeGesture_new())
+proc create*(T: type gen_qgesture_types.QSwipeGesture, parent: gen_qobject.QObject): gen_qgesture_types.QSwipeGesture =
 
-  QSwipeGesture.init(fcQSwipeGesture_new2(parent.h))
-proc metaObject*(self: QSwipeGesture, ): gen_qobjectdefs.QMetaObject =
+  gen_qgesture_types.QSwipeGesture.init(fcQSwipeGesture_new2(parent.h))
+proc metaObject*(self: gen_qgesture_types.QSwipeGesture, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQSwipeGesture_metaObject(self.h))
 
-proc metacast*(self: QSwipeGesture, param1: cstring): pointer =
+proc metacast*(self: gen_qgesture_types.QSwipeGesture, param1: cstring): pointer =
 
   fcQSwipeGesture_metacast(self.h, param1)
 
-proc metacall*(self: QSwipeGesture, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qgesture_types.QSwipeGesture, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQSwipeGesture_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QSwipeGesture, s: cstring): string =
+proc tr*(_: type gen_qgesture_types.QSwipeGesture, s: cstring): string =
 
   let v_ms = fcQSwipeGesture_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QSwipeGesture, s: cstring): string =
+proc trUtf8*(_: type gen_qgesture_types.QSwipeGesture, s: cstring): string =
 
   let v_ms = fcQSwipeGesture_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc horizontalDirection*(self: QSwipeGesture, ): QSwipeGestureSwipeDirection =
+proc horizontalDirection*(self: gen_qgesture_types.QSwipeGesture, ): cint =
 
-  QSwipeGestureSwipeDirection(fcQSwipeGesture_horizontalDirection(self.h))
+  cint(fcQSwipeGesture_horizontalDirection(self.h))
 
-proc verticalDirection*(self: QSwipeGesture, ): QSwipeGestureSwipeDirection =
+proc verticalDirection*(self: gen_qgesture_types.QSwipeGesture, ): cint =
 
-  QSwipeGestureSwipeDirection(fcQSwipeGesture_verticalDirection(self.h))
+  cint(fcQSwipeGesture_verticalDirection(self.h))
 
-proc swipeAngle*(self: QSwipeGesture, ): float64 =
+proc swipeAngle*(self: gen_qgesture_types.QSwipeGesture, ): float64 =
 
   fcQSwipeGesture_swipeAngle(self.h)
 
-proc setSwipeAngle*(self: QSwipeGesture, value: float64): void =
+proc setSwipeAngle*(self: gen_qgesture_types.QSwipeGesture, value: float64): void =
 
   fcQSwipeGesture_setSwipeAngle(self.h, value)
 
-proc tr2*(_: type QSwipeGesture, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qgesture_types.QSwipeGesture, s: cstring, c: cstring): string =
 
   let v_ms = fcQSwipeGesture_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QSwipeGesture, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qgesture_types.QSwipeGesture, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQSwipeGesture_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QSwipeGesture, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qgesture_types.QSwipeGesture, s: cstring, c: cstring): string =
 
   let v_ms = fcQSwipeGesture_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QSwipeGesture, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qgesture_types.QSwipeGesture, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQSwipeGesture_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QSwipeGesture, ): gen_qobjectdefs.QMetaObject =
-
+proc QSwipeGesturemetaObject*(self: gen_qgesture_types.QSwipeGesture, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQSwipeGesture_virtualbase_metaObject(self.h))
 
-type QSwipeGesturemetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QSwipeGesture, slot: proc(super: QSwipeGesturemetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QSwipeGesturemetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qgesture_types.QSwipeGesture, slot: QSwipeGesturemetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QSwipeGesturemetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QSwipeGesturemetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSwipeGesture_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSwipeGesture_metaObject(self: ptr cQSwipeGesture, slot: int): pointer {.exportc: "miqt_exec_callback_QSwipeGesture_metaObject ".} =
-  type Cb = proc(super: QSwipeGesturemetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QSwipeGesture(h: self), )
+  var nimfunc = cast[ptr QSwipeGesturemetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QSwipeGesture, param1: cstring): pointer =
-
+proc QSwipeGesturemetacast*(self: gen_qgesture_types.QSwipeGesture, param1: cstring): pointer =
 
   fQSwipeGesture_virtualbase_metacast(self.h, param1)
 
-type QSwipeGesturemetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QSwipeGesture, slot: proc(super: QSwipeGesturemetacastBase, param1: cstring): pointer) =
+type QSwipeGesturemetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qgesture_types.QSwipeGesture, slot: QSwipeGesturemetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QSwipeGesturemetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QSwipeGesturemetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSwipeGesture_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSwipeGesture_metacast(self: ptr cQSwipeGesture, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QSwipeGesture_metacast ".} =
-  type Cb = proc(super: QSwipeGesturemetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QSwipeGesture(h: self), param1)
+  var nimfunc = cast[ptr QSwipeGesturemetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QSwipeGesture, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QSwipeGesturemetacall*(self: gen_qgesture_types.QSwipeGesture, param1: cint, param2: cint, param3: pointer): cint =
 
   fQSwipeGesture_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QSwipeGesturemetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QSwipeGesture, slot: proc(super: QSwipeGesturemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QSwipeGesturemetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qgesture_types.QSwipeGesture, slot: QSwipeGesturemetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QSwipeGesturemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QSwipeGesturemetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSwipeGesture_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSwipeGesture_metacall(self: ptr cQSwipeGesture, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QSwipeGesture_metacall ".} =
-  type Cb = proc(super: QSwipeGesturemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QSwipeGesture(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QSwipeGesturemetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_event(self: QSwipeGesture, event: gen_qcoreevent.QEvent): bool =
-
+proc QSwipeGestureevent*(self: gen_qgesture_types.QSwipeGesture, event: gen_qcoreevent.QEvent): bool =
 
   fQSwipeGesture_virtualbase_event(self.h, event.h)
 
-type QSwipeGestureeventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QSwipeGesture, slot: proc(super: QSwipeGestureeventBase, event: gen_qcoreevent.QEvent): bool) =
+type QSwipeGestureeventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qgesture_types.QSwipeGesture, slot: QSwipeGestureeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSwipeGestureeventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QSwipeGestureeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSwipeGesture_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSwipeGesture_event(self: ptr cQSwipeGesture, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QSwipeGesture_event ".} =
-  type Cb = proc(super: QSwipeGestureeventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QSwipeGesture(h: self), event)
+  var nimfunc = cast[ptr QSwipeGestureeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QSwipeGesture, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QSwipeGestureeventFilter*(self: gen_qgesture_types.QSwipeGesture, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQSwipeGesture_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QSwipeGestureeventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QSwipeGesture, slot: proc(super: QSwipeGestureeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QSwipeGestureeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qgesture_types.QSwipeGesture, slot: QSwipeGestureeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QSwipeGestureeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QSwipeGestureeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSwipeGesture_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSwipeGesture_eventFilter(self: ptr cQSwipeGesture, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QSwipeGesture_eventFilter ".} =
-  type Cb = proc(super: QSwipeGestureeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QSwipeGesture(h: self), watched, event)
+  var nimfunc = cast[ptr QSwipeGestureeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QSwipeGesture, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QSwipeGesturetimerEvent*(self: gen_qgesture_types.QSwipeGesture, event: gen_qcoreevent.QTimerEvent): void =
 
   fQSwipeGesture_virtualbase_timerEvent(self.h, event.h)
 
-type QSwipeGesturetimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QSwipeGesture, slot: proc(super: QSwipeGesturetimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QSwipeGesturetimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qgesture_types.QSwipeGesture, slot: QSwipeGesturetimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSwipeGesturetimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QSwipeGesturetimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSwipeGesture_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSwipeGesture_timerEvent(self: ptr cQSwipeGesture, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSwipeGesture_timerEvent ".} =
-  type Cb = proc(super: QSwipeGesturetimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QSwipeGesture(h: self), event)
+  var nimfunc = cast[ptr QSwipeGesturetimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QSwipeGesture, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QSwipeGesturechildEvent*(self: gen_qgesture_types.QSwipeGesture, event: gen_qcoreevent.QChildEvent): void =
 
   fQSwipeGesture_virtualbase_childEvent(self.h, event.h)
 
-type QSwipeGesturechildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QSwipeGesture, slot: proc(super: QSwipeGesturechildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QSwipeGesturechildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qgesture_types.QSwipeGesture, slot: QSwipeGesturechildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSwipeGesturechildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QSwipeGesturechildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSwipeGesture_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSwipeGesture_childEvent(self: ptr cQSwipeGesture, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSwipeGesture_childEvent ".} =
-  type Cb = proc(super: QSwipeGesturechildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QSwipeGesture(h: self), event)
+  var nimfunc = cast[ptr QSwipeGesturechildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QSwipeGesture, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QSwipeGesturecustomEvent*(self: gen_qgesture_types.QSwipeGesture, event: gen_qcoreevent.QEvent): void =
 
   fQSwipeGesture_virtualbase_customEvent(self.h, event.h)
 
-type QSwipeGesturecustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QSwipeGesture, slot: proc(super: QSwipeGesturecustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QSwipeGesturecustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qgesture_types.QSwipeGesture, slot: QSwipeGesturecustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSwipeGesturecustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QSwipeGesturecustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSwipeGesture_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSwipeGesture_customEvent(self: ptr cQSwipeGesture, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSwipeGesture_customEvent ".} =
-  type Cb = proc(super: QSwipeGesturecustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QSwipeGesture(h: self), event)
+  var nimfunc = cast[ptr QSwipeGesturecustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QSwipeGesture, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QSwipeGestureconnectNotify*(self: gen_qgesture_types.QSwipeGesture, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQSwipeGesture_virtualbase_connectNotify(self.h, signal.h)
 
-type QSwipeGestureconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QSwipeGesture, slot: proc(super: QSwipeGestureconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QSwipeGestureconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qgesture_types.QSwipeGesture, slot: QSwipeGestureconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QSwipeGestureconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QSwipeGestureconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSwipeGesture_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSwipeGesture_connectNotify(self: ptr cQSwipeGesture, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QSwipeGesture_connectNotify ".} =
-  type Cb = proc(super: QSwipeGestureconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QSwipeGesture(h: self), signal)
+  var nimfunc = cast[ptr QSwipeGestureconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QSwipeGesture, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QSwipeGesturedisconnectNotify*(self: gen_qgesture_types.QSwipeGesture, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQSwipeGesture_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QSwipeGesturedisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QSwipeGesture, slot: proc(super: QSwipeGesturedisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QSwipeGesturedisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qgesture_types.QSwipeGesture, slot: QSwipeGesturedisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QSwipeGesturedisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QSwipeGesturedisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSwipeGesture_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSwipeGesture_disconnectNotify(self: ptr cQSwipeGesture, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QSwipeGesture_disconnectNotify ".} =
-  type Cb = proc(super: QSwipeGesturedisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QSwipeGesture(h: self), signal)
+  var nimfunc = cast[ptr QSwipeGesturedisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QSwipeGesture): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qgesture_types.QSwipeGesture): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQSwipeGesture_staticMetaObject())
-proc delete*(self: QSwipeGesture) =
+proc delete*(self: gen_qgesture_types.QSwipeGesture) =
   fcQSwipeGesture_delete(self.h)
 
-func init*(T: type QTapGesture, h: ptr cQTapGesture): QTapGesture =
+func init*(T: type gen_qgesture_types.QTapGesture, h: ptr cQTapGesture): gen_qgesture_types.QTapGesture =
   T(h: h)
-proc create*(T: type QTapGesture, ): QTapGesture =
+proc create*(T: type gen_qgesture_types.QTapGesture, ): gen_qgesture_types.QTapGesture =
 
-  QTapGesture.init(fcQTapGesture_new())
-proc create*(T: type QTapGesture, parent: gen_qobject.QObject): QTapGesture =
+  gen_qgesture_types.QTapGesture.init(fcQTapGesture_new())
+proc create*(T: type gen_qgesture_types.QTapGesture, parent: gen_qobject.QObject): gen_qgesture_types.QTapGesture =
 
-  QTapGesture.init(fcQTapGesture_new2(parent.h))
-proc metaObject*(self: QTapGesture, ): gen_qobjectdefs.QMetaObject =
+  gen_qgesture_types.QTapGesture.init(fcQTapGesture_new2(parent.h))
+proc metaObject*(self: gen_qgesture_types.QTapGesture, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQTapGesture_metaObject(self.h))
 
-proc metacast*(self: QTapGesture, param1: cstring): pointer =
+proc metacast*(self: gen_qgesture_types.QTapGesture, param1: cstring): pointer =
 
   fcQTapGesture_metacast(self.h, param1)
 
-proc metacall*(self: QTapGesture, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qgesture_types.QTapGesture, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQTapGesture_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QTapGesture, s: cstring): string =
+proc tr*(_: type gen_qgesture_types.QTapGesture, s: cstring): string =
 
   let v_ms = fcQTapGesture_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QTapGesture, s: cstring): string =
+proc trUtf8*(_: type gen_qgesture_types.QTapGesture, s: cstring): string =
 
   let v_ms = fcQTapGesture_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc position*(self: QTapGesture, ): gen_qpoint.QPointF =
+proc position*(self: gen_qgesture_types.QTapGesture, ): gen_qpoint.QPointF =
 
   gen_qpoint.QPointF(h: fcQTapGesture_position(self.h))
 
-proc setPosition*(self: QTapGesture, pos: gen_qpoint.QPointF): void =
+proc setPosition*(self: gen_qgesture_types.QTapGesture, pos: gen_qpoint.QPointF): void =
 
   fcQTapGesture_setPosition(self.h, pos.h)
 
-proc tr2*(_: type QTapGesture, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qgesture_types.QTapGesture, s: cstring, c: cstring): string =
 
   let v_ms = fcQTapGesture_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QTapGesture, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qgesture_types.QTapGesture, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQTapGesture_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QTapGesture, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qgesture_types.QTapGesture, s: cstring, c: cstring): string =
 
   let v_ms = fcQTapGesture_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QTapGesture, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qgesture_types.QTapGesture, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQTapGesture_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QTapGesture, ): gen_qobjectdefs.QMetaObject =
-
+proc QTapGesturemetaObject*(self: gen_qgesture_types.QTapGesture, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQTapGesture_virtualbase_metaObject(self.h))
 
-type QTapGesturemetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QTapGesture, slot: proc(super: QTapGesturemetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QTapGesturemetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qgesture_types.QTapGesture, slot: QTapGesturemetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QTapGesturemetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QTapGesturemetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTapGesture_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTapGesture_metaObject(self: ptr cQTapGesture, slot: int): pointer {.exportc: "miqt_exec_callback_QTapGesture_metaObject ".} =
-  type Cb = proc(super: QTapGesturemetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QTapGesture(h: self), )
+  var nimfunc = cast[ptr QTapGesturemetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QTapGesture, param1: cstring): pointer =
-
+proc QTapGesturemetacast*(self: gen_qgesture_types.QTapGesture, param1: cstring): pointer =
 
   fQTapGesture_virtualbase_metacast(self.h, param1)
 
-type QTapGesturemetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QTapGesture, slot: proc(super: QTapGesturemetacastBase, param1: cstring): pointer) =
+type QTapGesturemetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qgesture_types.QTapGesture, slot: QTapGesturemetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QTapGesturemetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QTapGesturemetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTapGesture_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTapGesture_metacast(self: ptr cQTapGesture, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QTapGesture_metacast ".} =
-  type Cb = proc(super: QTapGesturemetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QTapGesture(h: self), param1)
+  var nimfunc = cast[ptr QTapGesturemetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QTapGesture, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QTapGesturemetacall*(self: gen_qgesture_types.QTapGesture, param1: cint, param2: cint, param3: pointer): cint =
 
   fQTapGesture_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QTapGesturemetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QTapGesture, slot: proc(super: QTapGesturemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QTapGesturemetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qgesture_types.QTapGesture, slot: QTapGesturemetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QTapGesturemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QTapGesturemetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTapGesture_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTapGesture_metacall(self: ptr cQTapGesture, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QTapGesture_metacall ".} =
-  type Cb = proc(super: QTapGesturemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QTapGesture(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QTapGesturemetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_event(self: QTapGesture, event: gen_qcoreevent.QEvent): bool =
-
+proc QTapGestureevent*(self: gen_qgesture_types.QTapGesture, event: gen_qcoreevent.QEvent): bool =
 
   fQTapGesture_virtualbase_event(self.h, event.h)
 
-type QTapGestureeventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QTapGesture, slot: proc(super: QTapGestureeventBase, event: gen_qcoreevent.QEvent): bool) =
+type QTapGestureeventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qgesture_types.QTapGesture, slot: QTapGestureeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTapGestureeventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QTapGestureeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTapGesture_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTapGesture_event(self: ptr cQTapGesture, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QTapGesture_event ".} =
-  type Cb = proc(super: QTapGestureeventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QTapGesture(h: self), event)
+  var nimfunc = cast[ptr QTapGestureeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QTapGesture, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QTapGestureeventFilter*(self: gen_qgesture_types.QTapGesture, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQTapGesture_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QTapGestureeventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QTapGesture, slot: proc(super: QTapGestureeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QTapGestureeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qgesture_types.QTapGesture, slot: QTapGestureeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QTapGestureeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QTapGestureeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTapGesture_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTapGesture_eventFilter(self: ptr cQTapGesture, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QTapGesture_eventFilter ".} =
-  type Cb = proc(super: QTapGestureeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QTapGesture(h: self), watched, event)
+  var nimfunc = cast[ptr QTapGestureeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QTapGesture, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QTapGesturetimerEvent*(self: gen_qgesture_types.QTapGesture, event: gen_qcoreevent.QTimerEvent): void =
 
   fQTapGesture_virtualbase_timerEvent(self.h, event.h)
 
-type QTapGesturetimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QTapGesture, slot: proc(super: QTapGesturetimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QTapGesturetimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qgesture_types.QTapGesture, slot: QTapGesturetimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTapGesturetimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QTapGesturetimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTapGesture_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTapGesture_timerEvent(self: ptr cQTapGesture, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTapGesture_timerEvent ".} =
-  type Cb = proc(super: QTapGesturetimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QTapGesture(h: self), event)
+  var nimfunc = cast[ptr QTapGesturetimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QTapGesture, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QTapGesturechildEvent*(self: gen_qgesture_types.QTapGesture, event: gen_qcoreevent.QChildEvent): void =
 
   fQTapGesture_virtualbase_childEvent(self.h, event.h)
 
-type QTapGesturechildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QTapGesture, slot: proc(super: QTapGesturechildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QTapGesturechildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qgesture_types.QTapGesture, slot: QTapGesturechildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTapGesturechildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QTapGesturechildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTapGesture_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTapGesture_childEvent(self: ptr cQTapGesture, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTapGesture_childEvent ".} =
-  type Cb = proc(super: QTapGesturechildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QTapGesture(h: self), event)
+  var nimfunc = cast[ptr QTapGesturechildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QTapGesture, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QTapGesturecustomEvent*(self: gen_qgesture_types.QTapGesture, event: gen_qcoreevent.QEvent): void =
 
   fQTapGesture_virtualbase_customEvent(self.h, event.h)
 
-type QTapGesturecustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QTapGesture, slot: proc(super: QTapGesturecustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QTapGesturecustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qgesture_types.QTapGesture, slot: QTapGesturecustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTapGesturecustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QTapGesturecustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTapGesture_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTapGesture_customEvent(self: ptr cQTapGesture, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTapGesture_customEvent ".} =
-  type Cb = proc(super: QTapGesturecustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QTapGesture(h: self), event)
+  var nimfunc = cast[ptr QTapGesturecustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QTapGesture, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QTapGestureconnectNotify*(self: gen_qgesture_types.QTapGesture, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQTapGesture_virtualbase_connectNotify(self.h, signal.h)
 
-type QTapGestureconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QTapGesture, slot: proc(super: QTapGestureconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QTapGestureconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qgesture_types.QTapGesture, slot: QTapGestureconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QTapGestureconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QTapGestureconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTapGesture_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTapGesture_connectNotify(self: ptr cQTapGesture, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QTapGesture_connectNotify ".} =
-  type Cb = proc(super: QTapGestureconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QTapGesture(h: self), signal)
+  var nimfunc = cast[ptr QTapGestureconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QTapGesture, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QTapGesturedisconnectNotify*(self: gen_qgesture_types.QTapGesture, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQTapGesture_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QTapGesturedisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QTapGesture, slot: proc(super: QTapGesturedisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QTapGesturedisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qgesture_types.QTapGesture, slot: QTapGesturedisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QTapGesturedisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QTapGesturedisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTapGesture_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTapGesture_disconnectNotify(self: ptr cQTapGesture, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QTapGesture_disconnectNotify ".} =
-  type Cb = proc(super: QTapGesturedisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QTapGesture(h: self), signal)
+  var nimfunc = cast[ptr QTapGesturedisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QTapGesture): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qgesture_types.QTapGesture): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQTapGesture_staticMetaObject())
-proc delete*(self: QTapGesture) =
+proc delete*(self: gen_qgesture_types.QTapGesture) =
   fcQTapGesture_delete(self.h)
 
-func init*(T: type QTapAndHoldGesture, h: ptr cQTapAndHoldGesture): QTapAndHoldGesture =
+func init*(T: type gen_qgesture_types.QTapAndHoldGesture, h: ptr cQTapAndHoldGesture): gen_qgesture_types.QTapAndHoldGesture =
   T(h: h)
-proc create*(T: type QTapAndHoldGesture, ): QTapAndHoldGesture =
+proc create*(T: type gen_qgesture_types.QTapAndHoldGesture, ): gen_qgesture_types.QTapAndHoldGesture =
 
-  QTapAndHoldGesture.init(fcQTapAndHoldGesture_new())
-proc create*(T: type QTapAndHoldGesture, parent: gen_qobject.QObject): QTapAndHoldGesture =
+  gen_qgesture_types.QTapAndHoldGesture.init(fcQTapAndHoldGesture_new())
+proc create*(T: type gen_qgesture_types.QTapAndHoldGesture, parent: gen_qobject.QObject): gen_qgesture_types.QTapAndHoldGesture =
 
-  QTapAndHoldGesture.init(fcQTapAndHoldGesture_new2(parent.h))
-proc metaObject*(self: QTapAndHoldGesture, ): gen_qobjectdefs.QMetaObject =
+  gen_qgesture_types.QTapAndHoldGesture.init(fcQTapAndHoldGesture_new2(parent.h))
+proc metaObject*(self: gen_qgesture_types.QTapAndHoldGesture, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQTapAndHoldGesture_metaObject(self.h))
 
-proc metacast*(self: QTapAndHoldGesture, param1: cstring): pointer =
+proc metacast*(self: gen_qgesture_types.QTapAndHoldGesture, param1: cstring): pointer =
 
   fcQTapAndHoldGesture_metacast(self.h, param1)
 
-proc metacall*(self: QTapAndHoldGesture, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qgesture_types.QTapAndHoldGesture, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQTapAndHoldGesture_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QTapAndHoldGesture, s: cstring): string =
+proc tr*(_: type gen_qgesture_types.QTapAndHoldGesture, s: cstring): string =
 
   let v_ms = fcQTapAndHoldGesture_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QTapAndHoldGesture, s: cstring): string =
+proc trUtf8*(_: type gen_qgesture_types.QTapAndHoldGesture, s: cstring): string =
 
   let v_ms = fcQTapAndHoldGesture_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc position*(self: QTapAndHoldGesture, ): gen_qpoint.QPointF =
+proc position*(self: gen_qgesture_types.QTapAndHoldGesture, ): gen_qpoint.QPointF =
 
   gen_qpoint.QPointF(h: fcQTapAndHoldGesture_position(self.h))
 
-proc setPosition*(self: QTapAndHoldGesture, pos: gen_qpoint.QPointF): void =
+proc setPosition*(self: gen_qgesture_types.QTapAndHoldGesture, pos: gen_qpoint.QPointF): void =
 
   fcQTapAndHoldGesture_setPosition(self.h, pos.h)
 
-proc setTimeout*(_: type QTapAndHoldGesture, msecs: cint): void =
+proc setTimeout*(_: type gen_qgesture_types.QTapAndHoldGesture, msecs: cint): void =
 
   fcQTapAndHoldGesture_setTimeout(msecs)
 
-proc timeout*(_: type QTapAndHoldGesture, ): cint =
+proc timeout*(_: type gen_qgesture_types.QTapAndHoldGesture, ): cint =
 
   fcQTapAndHoldGesture_timeout()
 
-proc tr2*(_: type QTapAndHoldGesture, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qgesture_types.QTapAndHoldGesture, s: cstring, c: cstring): string =
 
   let v_ms = fcQTapAndHoldGesture_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QTapAndHoldGesture, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qgesture_types.QTapAndHoldGesture, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQTapAndHoldGesture_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QTapAndHoldGesture, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qgesture_types.QTapAndHoldGesture, s: cstring, c: cstring): string =
 
   let v_ms = fcQTapAndHoldGesture_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QTapAndHoldGesture, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qgesture_types.QTapAndHoldGesture, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQTapAndHoldGesture_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QTapAndHoldGesture, ): gen_qobjectdefs.QMetaObject =
-
+proc QTapAndHoldGesturemetaObject*(self: gen_qgesture_types.QTapAndHoldGesture, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQTapAndHoldGesture_virtualbase_metaObject(self.h))
 
-type QTapAndHoldGesturemetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QTapAndHoldGesture, slot: proc(super: QTapAndHoldGesturemetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QTapAndHoldGesturemetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qgesture_types.QTapAndHoldGesture, slot: QTapAndHoldGesturemetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QTapAndHoldGesturemetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QTapAndHoldGesturemetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTapAndHoldGesture_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTapAndHoldGesture_metaObject(self: ptr cQTapAndHoldGesture, slot: int): pointer {.exportc: "miqt_exec_callback_QTapAndHoldGesture_metaObject ".} =
-  type Cb = proc(super: QTapAndHoldGesturemetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QTapAndHoldGesture(h: self), )
+  var nimfunc = cast[ptr QTapAndHoldGesturemetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QTapAndHoldGesture, param1: cstring): pointer =
-
+proc QTapAndHoldGesturemetacast*(self: gen_qgesture_types.QTapAndHoldGesture, param1: cstring): pointer =
 
   fQTapAndHoldGesture_virtualbase_metacast(self.h, param1)
 
-type QTapAndHoldGesturemetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QTapAndHoldGesture, slot: proc(super: QTapAndHoldGesturemetacastBase, param1: cstring): pointer) =
+type QTapAndHoldGesturemetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qgesture_types.QTapAndHoldGesture, slot: QTapAndHoldGesturemetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QTapAndHoldGesturemetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QTapAndHoldGesturemetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTapAndHoldGesture_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTapAndHoldGesture_metacast(self: ptr cQTapAndHoldGesture, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QTapAndHoldGesture_metacast ".} =
-  type Cb = proc(super: QTapAndHoldGesturemetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QTapAndHoldGesture(h: self), param1)
+  var nimfunc = cast[ptr QTapAndHoldGesturemetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QTapAndHoldGesture, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QTapAndHoldGesturemetacall*(self: gen_qgesture_types.QTapAndHoldGesture, param1: cint, param2: cint, param3: pointer): cint =
 
   fQTapAndHoldGesture_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QTapAndHoldGesturemetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QTapAndHoldGesture, slot: proc(super: QTapAndHoldGesturemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QTapAndHoldGesturemetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qgesture_types.QTapAndHoldGesture, slot: QTapAndHoldGesturemetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QTapAndHoldGesturemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QTapAndHoldGesturemetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTapAndHoldGesture_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTapAndHoldGesture_metacall(self: ptr cQTapAndHoldGesture, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QTapAndHoldGesture_metacall ".} =
-  type Cb = proc(super: QTapAndHoldGesturemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QTapAndHoldGesture(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QTapAndHoldGesturemetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_event(self: QTapAndHoldGesture, event: gen_qcoreevent.QEvent): bool =
-
+proc QTapAndHoldGestureevent*(self: gen_qgesture_types.QTapAndHoldGesture, event: gen_qcoreevent.QEvent): bool =
 
   fQTapAndHoldGesture_virtualbase_event(self.h, event.h)
 
-type QTapAndHoldGestureeventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QTapAndHoldGesture, slot: proc(super: QTapAndHoldGestureeventBase, event: gen_qcoreevent.QEvent): bool) =
+type QTapAndHoldGestureeventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qgesture_types.QTapAndHoldGesture, slot: QTapAndHoldGestureeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTapAndHoldGestureeventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QTapAndHoldGestureeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTapAndHoldGesture_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTapAndHoldGesture_event(self: ptr cQTapAndHoldGesture, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QTapAndHoldGesture_event ".} =
-  type Cb = proc(super: QTapAndHoldGestureeventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QTapAndHoldGesture(h: self), event)
+  var nimfunc = cast[ptr QTapAndHoldGestureeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QTapAndHoldGesture, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QTapAndHoldGestureeventFilter*(self: gen_qgesture_types.QTapAndHoldGesture, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQTapAndHoldGesture_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QTapAndHoldGestureeventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QTapAndHoldGesture, slot: proc(super: QTapAndHoldGestureeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QTapAndHoldGestureeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qgesture_types.QTapAndHoldGesture, slot: QTapAndHoldGestureeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QTapAndHoldGestureeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QTapAndHoldGestureeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTapAndHoldGesture_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTapAndHoldGesture_eventFilter(self: ptr cQTapAndHoldGesture, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QTapAndHoldGesture_eventFilter ".} =
-  type Cb = proc(super: QTapAndHoldGestureeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QTapAndHoldGesture(h: self), watched, event)
+  var nimfunc = cast[ptr QTapAndHoldGestureeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QTapAndHoldGesture, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QTapAndHoldGesturetimerEvent*(self: gen_qgesture_types.QTapAndHoldGesture, event: gen_qcoreevent.QTimerEvent): void =
 
   fQTapAndHoldGesture_virtualbase_timerEvent(self.h, event.h)
 
-type QTapAndHoldGesturetimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QTapAndHoldGesture, slot: proc(super: QTapAndHoldGesturetimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QTapAndHoldGesturetimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qgesture_types.QTapAndHoldGesture, slot: QTapAndHoldGesturetimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTapAndHoldGesturetimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QTapAndHoldGesturetimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTapAndHoldGesture_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTapAndHoldGesture_timerEvent(self: ptr cQTapAndHoldGesture, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTapAndHoldGesture_timerEvent ".} =
-  type Cb = proc(super: QTapAndHoldGesturetimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QTapAndHoldGesture(h: self), event)
+  var nimfunc = cast[ptr QTapAndHoldGesturetimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QTapAndHoldGesture, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QTapAndHoldGesturechildEvent*(self: gen_qgesture_types.QTapAndHoldGesture, event: gen_qcoreevent.QChildEvent): void =
 
   fQTapAndHoldGesture_virtualbase_childEvent(self.h, event.h)
 
-type QTapAndHoldGesturechildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QTapAndHoldGesture, slot: proc(super: QTapAndHoldGesturechildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QTapAndHoldGesturechildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qgesture_types.QTapAndHoldGesture, slot: QTapAndHoldGesturechildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTapAndHoldGesturechildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QTapAndHoldGesturechildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTapAndHoldGesture_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTapAndHoldGesture_childEvent(self: ptr cQTapAndHoldGesture, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTapAndHoldGesture_childEvent ".} =
-  type Cb = proc(super: QTapAndHoldGesturechildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QTapAndHoldGesture(h: self), event)
+  var nimfunc = cast[ptr QTapAndHoldGesturechildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QTapAndHoldGesture, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QTapAndHoldGesturecustomEvent*(self: gen_qgesture_types.QTapAndHoldGesture, event: gen_qcoreevent.QEvent): void =
 
   fQTapAndHoldGesture_virtualbase_customEvent(self.h, event.h)
 
-type QTapAndHoldGesturecustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QTapAndHoldGesture, slot: proc(super: QTapAndHoldGesturecustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QTapAndHoldGesturecustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qgesture_types.QTapAndHoldGesture, slot: QTapAndHoldGesturecustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTapAndHoldGesturecustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QTapAndHoldGesturecustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTapAndHoldGesture_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTapAndHoldGesture_customEvent(self: ptr cQTapAndHoldGesture, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTapAndHoldGesture_customEvent ".} =
-  type Cb = proc(super: QTapAndHoldGesturecustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QTapAndHoldGesture(h: self), event)
+  var nimfunc = cast[ptr QTapAndHoldGesturecustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QTapAndHoldGesture, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QTapAndHoldGestureconnectNotify*(self: gen_qgesture_types.QTapAndHoldGesture, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQTapAndHoldGesture_virtualbase_connectNotify(self.h, signal.h)
 
-type QTapAndHoldGestureconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QTapAndHoldGesture, slot: proc(super: QTapAndHoldGestureconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QTapAndHoldGestureconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qgesture_types.QTapAndHoldGesture, slot: QTapAndHoldGestureconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QTapAndHoldGestureconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QTapAndHoldGestureconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTapAndHoldGesture_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTapAndHoldGesture_connectNotify(self: ptr cQTapAndHoldGesture, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QTapAndHoldGesture_connectNotify ".} =
-  type Cb = proc(super: QTapAndHoldGestureconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QTapAndHoldGesture(h: self), signal)
+  var nimfunc = cast[ptr QTapAndHoldGestureconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QTapAndHoldGesture, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QTapAndHoldGesturedisconnectNotify*(self: gen_qgesture_types.QTapAndHoldGesture, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQTapAndHoldGesture_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QTapAndHoldGesturedisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QTapAndHoldGesture, slot: proc(super: QTapAndHoldGesturedisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QTapAndHoldGesturedisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qgesture_types.QTapAndHoldGesture, slot: QTapAndHoldGesturedisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QTapAndHoldGesturedisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QTapAndHoldGesturedisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTapAndHoldGesture_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTapAndHoldGesture_disconnectNotify(self: ptr cQTapAndHoldGesture, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QTapAndHoldGesture_disconnectNotify ".} =
-  type Cb = proc(super: QTapAndHoldGesturedisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QTapAndHoldGesture(h: self), signal)
+  var nimfunc = cast[ptr QTapAndHoldGesturedisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QTapAndHoldGesture): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qgesture_types.QTapAndHoldGesture): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQTapAndHoldGesture_staticMetaObject())
-proc delete*(self: QTapAndHoldGesture) =
+proc delete*(self: gen_qgesture_types.QTapAndHoldGesture) =
   fcQTapAndHoldGesture_delete(self.h)
 
-func init*(T: type QGestureEvent, h: ptr cQGestureEvent): QGestureEvent =
+func init*(T: type gen_qgesture_types.QGestureEvent, h: ptr cQGestureEvent): gen_qgesture_types.QGestureEvent =
   T(h: h)
-proc create*(T: type QGestureEvent, gestures: seq[QGesture]): QGestureEvent =
+proc create*(T: type gen_qgesture_types.QGestureEvent, gestures: seq[gen_qgesture_types.QGesture]): gen_qgesture_types.QGestureEvent =
 
   var gestures_CArray = newSeq[pointer](len(gestures))
   for i in 0..<len(gestures):
     gestures_CArray[i] = gestures[i].h
 
-  QGestureEvent.init(fcQGestureEvent_new(struct_miqt_array(len: csize_t(len(gestures)), data: if len(gestures) == 0: nil else: addr(gestures_CArray[0]))))
-proc create*(T: type QGestureEvent, param1: QGestureEvent): QGestureEvent =
+  gen_qgesture_types.QGestureEvent.init(fcQGestureEvent_new(struct_miqt_array(len: csize_t(len(gestures)), data: if len(gestures) == 0: nil else: addr(gestures_CArray[0]))))
+proc create*(T: type gen_qgesture_types.QGestureEvent, param1: gen_qgesture_types.QGestureEvent): gen_qgesture_types.QGestureEvent =
 
-  QGestureEvent.init(fcQGestureEvent_new2(param1.h))
-proc gestures*(self: QGestureEvent, ): seq[QGesture] =
+  gen_qgesture_types.QGestureEvent.init(fcQGestureEvent_new2(param1.h))
+proc gestures*(self: gen_qgesture_types.QGestureEvent, ): seq[gen_qgesture_types.QGesture] =
 
   var v_ma = fcQGestureEvent_gestures(self.h)
-  var vx_ret = newSeq[QGesture](int(v_ma.len))
+  var vx_ret = newSeq[gen_qgesture_types.QGesture](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
-    vx_ret[i] = QGesture(h: v_outCast[i])
+    vx_ret[i] = gen_qgesture_types.QGesture(h: v_outCast[i])
   vx_ret
 
-proc gesture*(self: QGestureEvent, typeVal: gen_qnamespace.GestureType): QGesture =
+proc gesture*(self: gen_qgesture_types.QGestureEvent, typeVal: cint): gen_qgesture_types.QGesture =
 
-  QGesture(h: fcQGestureEvent_gesture(self.h, cint(typeVal)))
+  gen_qgesture_types.QGesture(h: fcQGestureEvent_gesture(self.h, cint(typeVal)))
 
-proc activeGestures*(self: QGestureEvent, ): seq[QGesture] =
+proc activeGestures*(self: gen_qgesture_types.QGestureEvent, ): seq[gen_qgesture_types.QGesture] =
 
   var v_ma = fcQGestureEvent_activeGestures(self.h)
-  var vx_ret = newSeq[QGesture](int(v_ma.len))
+  var vx_ret = newSeq[gen_qgesture_types.QGesture](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
-    vx_ret[i] = QGesture(h: v_outCast[i])
+    vx_ret[i] = gen_qgesture_types.QGesture(h: v_outCast[i])
   vx_ret
 
-proc canceledGestures*(self: QGestureEvent, ): seq[QGesture] =
+proc canceledGestures*(self: gen_qgesture_types.QGestureEvent, ): seq[gen_qgesture_types.QGesture] =
 
   var v_ma = fcQGestureEvent_canceledGestures(self.h)
-  var vx_ret = newSeq[QGesture](int(v_ma.len))
+  var vx_ret = newSeq[gen_qgesture_types.QGesture](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
-    vx_ret[i] = QGesture(h: v_outCast[i])
+    vx_ret[i] = gen_qgesture_types.QGesture(h: v_outCast[i])
   vx_ret
 
-proc setAccepted*(self: QGestureEvent, param1: QGesture, param2: bool): void =
+proc setAccepted*(self: gen_qgesture_types.QGestureEvent, param1: gen_qgesture_types.QGesture, param2: bool): void =
 
   fcQGestureEvent_setAccepted(self.h, param1.h, param2)
 
-proc accept*(self: QGestureEvent, param1: QGesture): void =
+proc accept*(self: gen_qgesture_types.QGestureEvent, param1: gen_qgesture_types.QGesture): void =
 
   fcQGestureEvent_accept(self.h, param1.h)
 
-proc ignore*(self: QGestureEvent, param1: QGesture): void =
+proc ignore*(self: gen_qgesture_types.QGestureEvent, param1: gen_qgesture_types.QGesture): void =
 
   fcQGestureEvent_ignore(self.h, param1.h)
 
-proc isAccepted*(self: QGestureEvent, param1: QGesture): bool =
+proc isAccepted*(self: gen_qgesture_types.QGestureEvent, param1: gen_qgesture_types.QGesture): bool =
 
   fcQGestureEvent_isAccepted(self.h, param1.h)
 
-proc setAccepted2*(self: QGestureEvent, param1: gen_qnamespace.GestureType, param2: bool): void =
+proc setAccepted2*(self: gen_qgesture_types.QGestureEvent, param1: cint, param2: bool): void =
 
   fcQGestureEvent_setAccepted2(self.h, cint(param1), param2)
 
-proc acceptWithQtGestureType*(self: QGestureEvent, param1: gen_qnamespace.GestureType): void =
+proc acceptWithQtGestureType*(self: gen_qgesture_types.QGestureEvent, param1: cint): void =
 
   fcQGestureEvent_acceptWithQtGestureType(self.h, cint(param1))
 
-proc ignoreWithQtGestureType*(self: QGestureEvent, param1: gen_qnamespace.GestureType): void =
+proc ignoreWithQtGestureType*(self: gen_qgesture_types.QGestureEvent, param1: cint): void =
 
   fcQGestureEvent_ignoreWithQtGestureType(self.h, cint(param1))
 
-proc isAcceptedWithQtGestureType*(self: QGestureEvent, param1: gen_qnamespace.GestureType): bool =
+proc isAcceptedWithQtGestureType*(self: gen_qgesture_types.QGestureEvent, param1: cint): bool =
 
   fcQGestureEvent_isAcceptedWithQtGestureType(self.h, cint(param1))
 
-proc setWidget*(self: QGestureEvent, widget: gen_qwidget.QWidget): void =
+proc setWidget*(self: gen_qgesture_types.QGestureEvent, widget: gen_qwidget.QWidget): void =
 
   fcQGestureEvent_setWidget(self.h, widget.h)
 
-proc widget*(self: QGestureEvent, ): gen_qwidget.QWidget =
+proc widget*(self: gen_qgesture_types.QGestureEvent, ): gen_qwidget.QWidget =
 
   gen_qwidget.QWidget(h: fcQGestureEvent_widget(self.h))
 
-proc mapToGraphicsScene*(self: QGestureEvent, gesturePoint: gen_qpoint.QPointF): gen_qpoint.QPointF =
+proc mapToGraphicsScene*(self: gen_qgesture_types.QGestureEvent, gesturePoint: gen_qpoint.QPointF): gen_qpoint.QPointF =
 
   gen_qpoint.QPointF(h: fcQGestureEvent_mapToGraphicsScene(self.h, gesturePoint.h))
 
-proc delete*(self: QGestureEvent) =
+proc delete*(self: gen_qgesture_types.QGestureEvent) =
   fcQGestureEvent_delete(self.h)

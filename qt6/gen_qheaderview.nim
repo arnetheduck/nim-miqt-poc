@@ -34,14 +34,12 @@ const cflags = gorge("pkg-config -cflags Qt6Widgets")
 {.compile("gen_qheaderview.cpp", cflags).}
 
 
-type QHeaderViewResizeMode* = cint
-const
-  QHeaderViewInteractive* = 0
-  QHeaderViewStretch* = 1
-  QHeaderViewFixed* = 2
-  QHeaderViewResizeToContents* = 3
-  QHeaderViewCustom* = 2
-
+type QHeaderViewResizeModeEnum* = distinct cint
+template Interactive*(_: type QHeaderViewResizeModeEnum): untyped = 0
+template Stretch*(_: type QHeaderViewResizeModeEnum): untyped = 1
+template Fixed*(_: type QHeaderViewResizeModeEnum): untyped = 2
+template ResizeToContents*(_: type QHeaderViewResizeModeEnum): untyped = 3
+template Custom*(_: type QHeaderViewResizeModeEnum): untyped = 2
 
 
 import gen_qheaderview_types
@@ -55,7 +53,6 @@ import
   gen_qevent,
   gen_qitemselectionmodel,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -76,7 +73,6 @@ export
   gen_qevent,
   gen_qitemselectionmodel,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -390,317 +386,317 @@ proc fcQHeaderView_staticMetaObject(): pointer {.importc: "QHeaderView_staticMet
 proc fcQHeaderView_delete(self: pointer) {.importc: "QHeaderView_delete".}
 
 
-func init*(T: type QHeaderView, h: ptr cQHeaderView): QHeaderView =
+func init*(T: type gen_qheaderview_types.QHeaderView, h: ptr cQHeaderView): gen_qheaderview_types.QHeaderView =
   T(h: h)
-proc create*(T: type QHeaderView, orientation: gen_qnamespace.Orientation): QHeaderView =
+proc create*(T: type gen_qheaderview_types.QHeaderView, orientation: cint): gen_qheaderview_types.QHeaderView =
 
-  QHeaderView.init(fcQHeaderView_new(cint(orientation)))
-proc create*(T: type QHeaderView, orientation: gen_qnamespace.Orientation, parent: gen_qwidget.QWidget): QHeaderView =
+  gen_qheaderview_types.QHeaderView.init(fcQHeaderView_new(cint(orientation)))
+proc create*(T: type gen_qheaderview_types.QHeaderView, orientation: cint, parent: gen_qwidget.QWidget): gen_qheaderview_types.QHeaderView =
 
-  QHeaderView.init(fcQHeaderView_new2(cint(orientation), parent.h))
-proc metaObject*(self: QHeaderView, ): gen_qobjectdefs.QMetaObject =
+  gen_qheaderview_types.QHeaderView.init(fcQHeaderView_new2(cint(orientation), parent.h))
+proc metaObject*(self: gen_qheaderview_types.QHeaderView, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQHeaderView_metaObject(self.h))
 
-proc metacast*(self: QHeaderView, param1: cstring): pointer =
+proc metacast*(self: gen_qheaderview_types.QHeaderView, param1: cstring): pointer =
 
   fcQHeaderView_metacast(self.h, param1)
 
-proc metacall*(self: QHeaderView, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qheaderview_types.QHeaderView, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQHeaderView_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QHeaderView, s: cstring): string =
+proc tr*(_: type gen_qheaderview_types.QHeaderView, s: cstring): string =
 
   let v_ms = fcQHeaderView_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setModel*(self: QHeaderView, model: gen_qabstractitemmodel.QAbstractItemModel): void =
+proc setModel*(self: gen_qheaderview_types.QHeaderView, model: gen_qabstractitemmodel.QAbstractItemModel): void =
 
   fcQHeaderView_setModel(self.h, model.h)
 
-proc orientation*(self: QHeaderView, ): gen_qnamespace.Orientation =
+proc orientation*(self: gen_qheaderview_types.QHeaderView, ): cint =
 
-  gen_qnamespace.Orientation(fcQHeaderView_orientation(self.h))
+  cint(fcQHeaderView_orientation(self.h))
 
-proc offset*(self: QHeaderView, ): cint =
+proc offset*(self: gen_qheaderview_types.QHeaderView, ): cint =
 
   fcQHeaderView_offset(self.h)
 
-proc length*(self: QHeaderView, ): cint =
+proc length*(self: gen_qheaderview_types.QHeaderView, ): cint =
 
   fcQHeaderView_length(self.h)
 
-proc sizeHint*(self: QHeaderView, ): gen_qsize.QSize =
+proc sizeHint*(self: gen_qheaderview_types.QHeaderView, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQHeaderView_sizeHint(self.h))
 
-proc setVisible*(self: QHeaderView, v: bool): void =
+proc setVisible*(self: gen_qheaderview_types.QHeaderView, v: bool): void =
 
   fcQHeaderView_setVisible(self.h, v)
 
-proc sectionSizeHint*(self: QHeaderView, logicalIndex: cint): cint =
+proc sectionSizeHint*(self: gen_qheaderview_types.QHeaderView, logicalIndex: cint): cint =
 
   fcQHeaderView_sectionSizeHint(self.h, logicalIndex)
 
-proc visualIndexAt*(self: QHeaderView, position: cint): cint =
+proc visualIndexAt*(self: gen_qheaderview_types.QHeaderView, position: cint): cint =
 
   fcQHeaderView_visualIndexAt(self.h, position)
 
-proc logicalIndexAt*(self: QHeaderView, position: cint): cint =
+proc logicalIndexAt*(self: gen_qheaderview_types.QHeaderView, position: cint): cint =
 
   fcQHeaderView_logicalIndexAt(self.h, position)
 
-proc logicalIndexAt2*(self: QHeaderView, x: cint, y: cint): cint =
+proc logicalIndexAt2*(self: gen_qheaderview_types.QHeaderView, x: cint, y: cint): cint =
 
   fcQHeaderView_logicalIndexAt2(self.h, x, y)
 
-proc logicalIndexAtWithPos*(self: QHeaderView, pos: gen_qpoint.QPoint): cint =
+proc logicalIndexAtWithPos*(self: gen_qheaderview_types.QHeaderView, pos: gen_qpoint.QPoint): cint =
 
   fcQHeaderView_logicalIndexAtWithPos(self.h, pos.h)
 
-proc sectionSize*(self: QHeaderView, logicalIndex: cint): cint =
+proc sectionSize*(self: gen_qheaderview_types.QHeaderView, logicalIndex: cint): cint =
 
   fcQHeaderView_sectionSize(self.h, logicalIndex)
 
-proc sectionPosition*(self: QHeaderView, logicalIndex: cint): cint =
+proc sectionPosition*(self: gen_qheaderview_types.QHeaderView, logicalIndex: cint): cint =
 
   fcQHeaderView_sectionPosition(self.h, logicalIndex)
 
-proc sectionViewportPosition*(self: QHeaderView, logicalIndex: cint): cint =
+proc sectionViewportPosition*(self: gen_qheaderview_types.QHeaderView, logicalIndex: cint): cint =
 
   fcQHeaderView_sectionViewportPosition(self.h, logicalIndex)
 
-proc moveSection*(self: QHeaderView, fromVal: cint, to: cint): void =
+proc moveSection*(self: gen_qheaderview_types.QHeaderView, fromVal: cint, to: cint): void =
 
   fcQHeaderView_moveSection(self.h, fromVal, to)
 
-proc swapSections*(self: QHeaderView, first: cint, second: cint): void =
+proc swapSections*(self: gen_qheaderview_types.QHeaderView, first: cint, second: cint): void =
 
   fcQHeaderView_swapSections(self.h, first, second)
 
-proc resizeSection*(self: QHeaderView, logicalIndex: cint, size: cint): void =
+proc resizeSection*(self: gen_qheaderview_types.QHeaderView, logicalIndex: cint, size: cint): void =
 
   fcQHeaderView_resizeSection(self.h, logicalIndex, size)
 
-proc resizeSections*(self: QHeaderView, mode: QHeaderViewResizeMode): void =
+proc resizeSections*(self: gen_qheaderview_types.QHeaderView, mode: cint): void =
 
   fcQHeaderView_resizeSections(self.h, cint(mode))
 
-proc isSectionHidden*(self: QHeaderView, logicalIndex: cint): bool =
+proc isSectionHidden*(self: gen_qheaderview_types.QHeaderView, logicalIndex: cint): bool =
 
   fcQHeaderView_isSectionHidden(self.h, logicalIndex)
 
-proc setSectionHidden*(self: QHeaderView, logicalIndex: cint, hide: bool): void =
+proc setSectionHidden*(self: gen_qheaderview_types.QHeaderView, logicalIndex: cint, hide: bool): void =
 
   fcQHeaderView_setSectionHidden(self.h, logicalIndex, hide)
 
-proc hiddenSectionCount*(self: QHeaderView, ): cint =
+proc hiddenSectionCount*(self: gen_qheaderview_types.QHeaderView, ): cint =
 
   fcQHeaderView_hiddenSectionCount(self.h)
 
-proc hideSection*(self: QHeaderView, logicalIndex: cint): void =
+proc hideSection*(self: gen_qheaderview_types.QHeaderView, logicalIndex: cint): void =
 
   fcQHeaderView_hideSection(self.h, logicalIndex)
 
-proc showSection*(self: QHeaderView, logicalIndex: cint): void =
+proc showSection*(self: gen_qheaderview_types.QHeaderView, logicalIndex: cint): void =
 
   fcQHeaderView_showSection(self.h, logicalIndex)
 
-proc count*(self: QHeaderView, ): cint =
+proc count*(self: gen_qheaderview_types.QHeaderView, ): cint =
 
   fcQHeaderView_count(self.h)
 
-proc visualIndex*(self: QHeaderView, logicalIndex: cint): cint =
+proc visualIndex*(self: gen_qheaderview_types.QHeaderView, logicalIndex: cint): cint =
 
   fcQHeaderView_visualIndex(self.h, logicalIndex)
 
-proc logicalIndex*(self: QHeaderView, visualIndex: cint): cint =
+proc logicalIndex*(self: gen_qheaderview_types.QHeaderView, visualIndex: cint): cint =
 
   fcQHeaderView_logicalIndex(self.h, visualIndex)
 
-proc setSectionsMovable*(self: QHeaderView, movable: bool): void =
+proc setSectionsMovable*(self: gen_qheaderview_types.QHeaderView, movable: bool): void =
 
   fcQHeaderView_setSectionsMovable(self.h, movable)
 
-proc sectionsMovable*(self: QHeaderView, ): bool =
+proc sectionsMovable*(self: gen_qheaderview_types.QHeaderView, ): bool =
 
   fcQHeaderView_sectionsMovable(self.h)
 
-proc setFirstSectionMovable*(self: QHeaderView, movable: bool): void =
+proc setFirstSectionMovable*(self: gen_qheaderview_types.QHeaderView, movable: bool): void =
 
   fcQHeaderView_setFirstSectionMovable(self.h, movable)
 
-proc isFirstSectionMovable*(self: QHeaderView, ): bool =
+proc isFirstSectionMovable*(self: gen_qheaderview_types.QHeaderView, ): bool =
 
   fcQHeaderView_isFirstSectionMovable(self.h)
 
-proc setSectionsClickable*(self: QHeaderView, clickable: bool): void =
+proc setSectionsClickable*(self: gen_qheaderview_types.QHeaderView, clickable: bool): void =
 
   fcQHeaderView_setSectionsClickable(self.h, clickable)
 
-proc sectionsClickable*(self: QHeaderView, ): bool =
+proc sectionsClickable*(self: gen_qheaderview_types.QHeaderView, ): bool =
 
   fcQHeaderView_sectionsClickable(self.h)
 
-proc setHighlightSections*(self: QHeaderView, highlight: bool): void =
+proc setHighlightSections*(self: gen_qheaderview_types.QHeaderView, highlight: bool): void =
 
   fcQHeaderView_setHighlightSections(self.h, highlight)
 
-proc highlightSections*(self: QHeaderView, ): bool =
+proc highlightSections*(self: gen_qheaderview_types.QHeaderView, ): bool =
 
   fcQHeaderView_highlightSections(self.h)
 
-proc sectionResizeMode*(self: QHeaderView, logicalIndex: cint): QHeaderViewResizeMode =
+proc sectionResizeMode*(self: gen_qheaderview_types.QHeaderView, logicalIndex: cint): cint =
 
-  QHeaderViewResizeMode(fcQHeaderView_sectionResizeMode(self.h, logicalIndex))
+  cint(fcQHeaderView_sectionResizeMode(self.h, logicalIndex))
 
-proc setSectionResizeMode*(self: QHeaderView, mode: QHeaderViewResizeMode): void =
+proc setSectionResizeMode*(self: gen_qheaderview_types.QHeaderView, mode: cint): void =
 
   fcQHeaderView_setSectionResizeMode(self.h, cint(mode))
 
-proc setSectionResizeMode2*(self: QHeaderView, logicalIndex: cint, mode: QHeaderViewResizeMode): void =
+proc setSectionResizeMode2*(self: gen_qheaderview_types.QHeaderView, logicalIndex: cint, mode: cint): void =
 
   fcQHeaderView_setSectionResizeMode2(self.h, logicalIndex, cint(mode))
 
-proc setResizeContentsPrecision*(self: QHeaderView, precision: cint): void =
+proc setResizeContentsPrecision*(self: gen_qheaderview_types.QHeaderView, precision: cint): void =
 
   fcQHeaderView_setResizeContentsPrecision(self.h, precision)
 
-proc resizeContentsPrecision*(self: QHeaderView, ): cint =
+proc resizeContentsPrecision*(self: gen_qheaderview_types.QHeaderView, ): cint =
 
   fcQHeaderView_resizeContentsPrecision(self.h)
 
-proc stretchSectionCount*(self: QHeaderView, ): cint =
+proc stretchSectionCount*(self: gen_qheaderview_types.QHeaderView, ): cint =
 
   fcQHeaderView_stretchSectionCount(self.h)
 
-proc setSortIndicatorShown*(self: QHeaderView, show: bool): void =
+proc setSortIndicatorShown*(self: gen_qheaderview_types.QHeaderView, show: bool): void =
 
   fcQHeaderView_setSortIndicatorShown(self.h, show)
 
-proc isSortIndicatorShown*(self: QHeaderView, ): bool =
+proc isSortIndicatorShown*(self: gen_qheaderview_types.QHeaderView, ): bool =
 
   fcQHeaderView_isSortIndicatorShown(self.h)
 
-proc setSortIndicator*(self: QHeaderView, logicalIndex: cint, order: gen_qnamespace.SortOrder): void =
+proc setSortIndicator*(self: gen_qheaderview_types.QHeaderView, logicalIndex: cint, order: cint): void =
 
   fcQHeaderView_setSortIndicator(self.h, logicalIndex, cint(order))
 
-proc sortIndicatorSection*(self: QHeaderView, ): cint =
+proc sortIndicatorSection*(self: gen_qheaderview_types.QHeaderView, ): cint =
 
   fcQHeaderView_sortIndicatorSection(self.h)
 
-proc sortIndicatorOrder*(self: QHeaderView, ): gen_qnamespace.SortOrder =
+proc sortIndicatorOrder*(self: gen_qheaderview_types.QHeaderView, ): cint =
 
-  gen_qnamespace.SortOrder(fcQHeaderView_sortIndicatorOrder(self.h))
+  cint(fcQHeaderView_sortIndicatorOrder(self.h))
 
-proc setSortIndicatorClearable*(self: QHeaderView, clearable: bool): void =
+proc setSortIndicatorClearable*(self: gen_qheaderview_types.QHeaderView, clearable: bool): void =
 
   fcQHeaderView_setSortIndicatorClearable(self.h, clearable)
 
-proc isSortIndicatorClearable*(self: QHeaderView, ): bool =
+proc isSortIndicatorClearable*(self: gen_qheaderview_types.QHeaderView, ): bool =
 
   fcQHeaderView_isSortIndicatorClearable(self.h)
 
-proc stretchLastSection*(self: QHeaderView, ): bool =
+proc stretchLastSection*(self: gen_qheaderview_types.QHeaderView, ): bool =
 
   fcQHeaderView_stretchLastSection(self.h)
 
-proc setStretchLastSection*(self: QHeaderView, stretch: bool): void =
+proc setStretchLastSection*(self: gen_qheaderview_types.QHeaderView, stretch: bool): void =
 
   fcQHeaderView_setStretchLastSection(self.h, stretch)
 
-proc cascadingSectionResizes*(self: QHeaderView, ): bool =
+proc cascadingSectionResizes*(self: gen_qheaderview_types.QHeaderView, ): bool =
 
   fcQHeaderView_cascadingSectionResizes(self.h)
 
-proc setCascadingSectionResizes*(self: QHeaderView, enable: bool): void =
+proc setCascadingSectionResizes*(self: gen_qheaderview_types.QHeaderView, enable: bool): void =
 
   fcQHeaderView_setCascadingSectionResizes(self.h, enable)
 
-proc defaultSectionSize*(self: QHeaderView, ): cint =
+proc defaultSectionSize*(self: gen_qheaderview_types.QHeaderView, ): cint =
 
   fcQHeaderView_defaultSectionSize(self.h)
 
-proc setDefaultSectionSize*(self: QHeaderView, size: cint): void =
+proc setDefaultSectionSize*(self: gen_qheaderview_types.QHeaderView, size: cint): void =
 
   fcQHeaderView_setDefaultSectionSize(self.h, size)
 
-proc resetDefaultSectionSize*(self: QHeaderView, ): void =
+proc resetDefaultSectionSize*(self: gen_qheaderview_types.QHeaderView, ): void =
 
   fcQHeaderView_resetDefaultSectionSize(self.h)
 
-proc minimumSectionSize*(self: QHeaderView, ): cint =
+proc minimumSectionSize*(self: gen_qheaderview_types.QHeaderView, ): cint =
 
   fcQHeaderView_minimumSectionSize(self.h)
 
-proc setMinimumSectionSize*(self: QHeaderView, size: cint): void =
+proc setMinimumSectionSize*(self: gen_qheaderview_types.QHeaderView, size: cint): void =
 
   fcQHeaderView_setMinimumSectionSize(self.h, size)
 
-proc maximumSectionSize*(self: QHeaderView, ): cint =
+proc maximumSectionSize*(self: gen_qheaderview_types.QHeaderView, ): cint =
 
   fcQHeaderView_maximumSectionSize(self.h)
 
-proc setMaximumSectionSize*(self: QHeaderView, size: cint): void =
+proc setMaximumSectionSize*(self: gen_qheaderview_types.QHeaderView, size: cint): void =
 
   fcQHeaderView_setMaximumSectionSize(self.h, size)
 
-proc defaultAlignment*(self: QHeaderView, ): gen_qnamespace.AlignmentFlag =
+proc defaultAlignment*(self: gen_qheaderview_types.QHeaderView, ): cint =
 
-  gen_qnamespace.AlignmentFlag(fcQHeaderView_defaultAlignment(self.h))
+  cint(fcQHeaderView_defaultAlignment(self.h))
 
-proc setDefaultAlignment*(self: QHeaderView, alignment: gen_qnamespace.AlignmentFlag): void =
+proc setDefaultAlignment*(self: gen_qheaderview_types.QHeaderView, alignment: cint): void =
 
   fcQHeaderView_setDefaultAlignment(self.h, cint(alignment))
 
-proc doItemsLayout*(self: QHeaderView, ): void =
+proc doItemsLayout*(self: gen_qheaderview_types.QHeaderView, ): void =
 
   fcQHeaderView_doItemsLayout(self.h)
 
-proc sectionsMoved*(self: QHeaderView, ): bool =
+proc sectionsMoved*(self: gen_qheaderview_types.QHeaderView, ): bool =
 
   fcQHeaderView_sectionsMoved(self.h)
 
-proc sectionsHidden*(self: QHeaderView, ): bool =
+proc sectionsHidden*(self: gen_qheaderview_types.QHeaderView, ): bool =
 
   fcQHeaderView_sectionsHidden(self.h)
 
-proc saveState*(self: QHeaderView, ): seq[byte] =
+proc saveState*(self: gen_qheaderview_types.QHeaderView, ): seq[byte] =
 
   var v_bytearray = fcQHeaderView_saveState(self.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc restoreState*(self: QHeaderView, state: seq[byte]): bool =
+proc restoreState*(self: gen_qheaderview_types.QHeaderView, state: seq[byte]): bool =
 
   fcQHeaderView_restoreState(self.h, struct_miqt_string(data: cast[cstring](if len(state) == 0: nil else: unsafeAddr state[0]), len: csize_t(len(state))))
 
-proc reset*(self: QHeaderView, ): void =
+proc reset*(self: gen_qheaderview_types.QHeaderView, ): void =
 
   fcQHeaderView_reset(self.h)
 
-proc setOffset*(self: QHeaderView, offset: cint): void =
+proc setOffset*(self: gen_qheaderview_types.QHeaderView, offset: cint): void =
 
   fcQHeaderView_setOffset(self.h, offset)
 
-proc setOffsetToSectionPosition*(self: QHeaderView, visualIndex: cint): void =
+proc setOffsetToSectionPosition*(self: gen_qheaderview_types.QHeaderView, visualIndex: cint): void =
 
   fcQHeaderView_setOffsetToSectionPosition(self.h, visualIndex)
 
-proc setOffsetToLastSection*(self: QHeaderView, ): void =
+proc setOffsetToLastSection*(self: gen_qheaderview_types.QHeaderView, ): void =
 
   fcQHeaderView_setOffsetToLastSection(self.h)
 
-proc headerDataChanged*(self: QHeaderView, orientation: gen_qnamespace.Orientation, logicalFirst: cint, logicalLast: cint): void =
+proc headerDataChanged*(self: gen_qheaderview_types.QHeaderView, orientation: cint, logicalFirst: cint, logicalLast: cint): void =
 
   fcQHeaderView_headerDataChanged(self.h, cint(orientation), logicalFirst, logicalLast)
 
-proc sectionMoved*(self: QHeaderView, logicalIndex: cint, oldVisualIndex: cint, newVisualIndex: cint): void =
+proc sectionMoved*(self: gen_qheaderview_types.QHeaderView, logicalIndex: cint, oldVisualIndex: cint, newVisualIndex: cint): void =
 
   fcQHeaderView_sectionMoved(self.h, logicalIndex, oldVisualIndex, newVisualIndex)
 
@@ -716,13 +712,13 @@ proc miqt_exec_callback_QHeaderView_sectionMoved(slot: int, logicalIndex: cint, 
 
   nimfunc[](slotval1, slotval2, slotval3)
 
-proc onsectionMoved*(self: QHeaderView, slot: proc(logicalIndex: cint, oldVisualIndex: cint, newVisualIndex: cint)) =
+proc onsectionMoved*(self: gen_qheaderview_types.QHeaderView, slot: proc(logicalIndex: cint, oldVisualIndex: cint, newVisualIndex: cint)) =
   type Cb = proc(logicalIndex: cint, oldVisualIndex: cint, newVisualIndex: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQHeaderView_connect_sectionMoved(self.h, cast[int](addr tmp[]))
-proc sectionResized*(self: QHeaderView, logicalIndex: cint, oldSize: cint, newSize: cint): void =
+proc sectionResized*(self: gen_qheaderview_types.QHeaderView, logicalIndex: cint, oldSize: cint, newSize: cint): void =
 
   fcQHeaderView_sectionResized(self.h, logicalIndex, oldSize, newSize)
 
@@ -738,13 +734,13 @@ proc miqt_exec_callback_QHeaderView_sectionResized(slot: int, logicalIndex: cint
 
   nimfunc[](slotval1, slotval2, slotval3)
 
-proc onsectionResized*(self: QHeaderView, slot: proc(logicalIndex: cint, oldSize: cint, newSize: cint)) =
+proc onsectionResized*(self: gen_qheaderview_types.QHeaderView, slot: proc(logicalIndex: cint, oldSize: cint, newSize: cint)) =
   type Cb = proc(logicalIndex: cint, oldSize: cint, newSize: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQHeaderView_connect_sectionResized(self.h, cast[int](addr tmp[]))
-proc sectionPressed*(self: QHeaderView, logicalIndex: cint): void =
+proc sectionPressed*(self: gen_qheaderview_types.QHeaderView, logicalIndex: cint): void =
 
   fcQHeaderView_sectionPressed(self.h, logicalIndex)
 
@@ -756,13 +752,13 @@ proc miqt_exec_callback_QHeaderView_sectionPressed(slot: int, logicalIndex: cint
 
   nimfunc[](slotval1)
 
-proc onsectionPressed*(self: QHeaderView, slot: proc(logicalIndex: cint)) =
+proc onsectionPressed*(self: gen_qheaderview_types.QHeaderView, slot: proc(logicalIndex: cint)) =
   type Cb = proc(logicalIndex: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQHeaderView_connect_sectionPressed(self.h, cast[int](addr tmp[]))
-proc sectionClicked*(self: QHeaderView, logicalIndex: cint): void =
+proc sectionClicked*(self: gen_qheaderview_types.QHeaderView, logicalIndex: cint): void =
 
   fcQHeaderView_sectionClicked(self.h, logicalIndex)
 
@@ -774,13 +770,13 @@ proc miqt_exec_callback_QHeaderView_sectionClicked(slot: int, logicalIndex: cint
 
   nimfunc[](slotval1)
 
-proc onsectionClicked*(self: QHeaderView, slot: proc(logicalIndex: cint)) =
+proc onsectionClicked*(self: gen_qheaderview_types.QHeaderView, slot: proc(logicalIndex: cint)) =
   type Cb = proc(logicalIndex: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQHeaderView_connect_sectionClicked(self.h, cast[int](addr tmp[]))
-proc sectionEntered*(self: QHeaderView, logicalIndex: cint): void =
+proc sectionEntered*(self: gen_qheaderview_types.QHeaderView, logicalIndex: cint): void =
 
   fcQHeaderView_sectionEntered(self.h, logicalIndex)
 
@@ -792,13 +788,13 @@ proc miqt_exec_callback_QHeaderView_sectionEntered(slot: int, logicalIndex: cint
 
   nimfunc[](slotval1)
 
-proc onsectionEntered*(self: QHeaderView, slot: proc(logicalIndex: cint)) =
+proc onsectionEntered*(self: gen_qheaderview_types.QHeaderView, slot: proc(logicalIndex: cint)) =
   type Cb = proc(logicalIndex: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQHeaderView_connect_sectionEntered(self.h, cast[int](addr tmp[]))
-proc sectionDoubleClicked*(self: QHeaderView, logicalIndex: cint): void =
+proc sectionDoubleClicked*(self: gen_qheaderview_types.QHeaderView, logicalIndex: cint): void =
 
   fcQHeaderView_sectionDoubleClicked(self.h, logicalIndex)
 
@@ -810,13 +806,13 @@ proc miqt_exec_callback_QHeaderView_sectionDoubleClicked(slot: int, logicalIndex
 
   nimfunc[](slotval1)
 
-proc onsectionDoubleClicked*(self: QHeaderView, slot: proc(logicalIndex: cint)) =
+proc onsectionDoubleClicked*(self: gen_qheaderview_types.QHeaderView, slot: proc(logicalIndex: cint)) =
   type Cb = proc(logicalIndex: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQHeaderView_connect_sectionDoubleClicked(self.h, cast[int](addr tmp[]))
-proc sectionCountChanged*(self: QHeaderView, oldCount: cint, newCount: cint): void =
+proc sectionCountChanged*(self: gen_qheaderview_types.QHeaderView, oldCount: cint, newCount: cint): void =
 
   fcQHeaderView_sectionCountChanged(self.h, oldCount, newCount)
 
@@ -830,13 +826,13 @@ proc miqt_exec_callback_QHeaderView_sectionCountChanged(slot: int, oldCount: cin
 
   nimfunc[](slotval1, slotval2)
 
-proc onsectionCountChanged*(self: QHeaderView, slot: proc(oldCount: cint, newCount: cint)) =
+proc onsectionCountChanged*(self: gen_qheaderview_types.QHeaderView, slot: proc(oldCount: cint, newCount: cint)) =
   type Cb = proc(oldCount: cint, newCount: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQHeaderView_connect_sectionCountChanged(self.h, cast[int](addr tmp[]))
-proc sectionHandleDoubleClicked*(self: QHeaderView, logicalIndex: cint): void =
+proc sectionHandleDoubleClicked*(self: gen_qheaderview_types.QHeaderView, logicalIndex: cint): void =
 
   fcQHeaderView_sectionHandleDoubleClicked(self.h, logicalIndex)
 
@@ -848,13 +844,13 @@ proc miqt_exec_callback_QHeaderView_sectionHandleDoubleClicked(slot: int, logica
 
   nimfunc[](slotval1)
 
-proc onsectionHandleDoubleClicked*(self: QHeaderView, slot: proc(logicalIndex: cint)) =
+proc onsectionHandleDoubleClicked*(self: gen_qheaderview_types.QHeaderView, slot: proc(logicalIndex: cint)) =
   type Cb = proc(logicalIndex: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQHeaderView_connect_sectionHandleDoubleClicked(self.h, cast[int](addr tmp[]))
-proc geometriesChanged*(self: QHeaderView, ): void =
+proc geometriesChanged*(self: gen_qheaderview_types.QHeaderView, ): void =
 
   fcQHeaderView_geometriesChanged(self.h)
 
@@ -864,33 +860,33 @@ proc miqt_exec_callback_QHeaderView_geometriesChanged(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc ongeometriesChanged*(self: QHeaderView, slot: proc()) =
+proc ongeometriesChanged*(self: gen_qheaderview_types.QHeaderView, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQHeaderView_connect_geometriesChanged(self.h, cast[int](addr tmp[]))
-proc sortIndicatorChanged*(self: QHeaderView, logicalIndex: cint, order: gen_qnamespace.SortOrder): void =
+proc sortIndicatorChanged*(self: gen_qheaderview_types.QHeaderView, logicalIndex: cint, order: cint): void =
 
   fcQHeaderView_sortIndicatorChanged(self.h, logicalIndex, cint(order))
 
 proc miqt_exec_callback_QHeaderView_sortIndicatorChanged(slot: int, logicalIndex: cint, order: cint) {.exportc.} =
-  type Cb = proc(logicalIndex: cint, order: gen_qnamespace.SortOrder)
+  type Cb = proc(logicalIndex: cint, order: cint)
   let nimfunc = cast[ptr Cb](cast[pointer](slot))
   let slotval1 = logicalIndex
 
-  let slotval2 = gen_qnamespace.SortOrder(order)
+  let slotval2 = cint(order)
 
 
   nimfunc[](slotval1, slotval2)
 
-proc onsortIndicatorChanged*(self: QHeaderView, slot: proc(logicalIndex: cint, order: gen_qnamespace.SortOrder)) =
-  type Cb = proc(logicalIndex: cint, order: gen_qnamespace.SortOrder)
+proc onsortIndicatorChanged*(self: gen_qheaderview_types.QHeaderView, slot: proc(logicalIndex: cint, order: cint)) =
+  type Cb = proc(logicalIndex: cint, order: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQHeaderView_connect_sortIndicatorChanged(self.h, cast[int](addr tmp[]))
-proc sortIndicatorClearableChanged*(self: QHeaderView, clearable: bool): void =
+proc sortIndicatorClearableChanged*(self: gen_qheaderview_types.QHeaderView, clearable: bool): void =
 
   fcQHeaderView_sortIndicatorClearableChanged(self.h, clearable)
 
@@ -902,423 +898,338 @@ proc miqt_exec_callback_QHeaderView_sortIndicatorClearableChanged(slot: int, cle
 
   nimfunc[](slotval1)
 
-proc onsortIndicatorClearableChanged*(self: QHeaderView, slot: proc(clearable: bool)) =
+proc onsortIndicatorClearableChanged*(self: gen_qheaderview_types.QHeaderView, slot: proc(clearable: bool)) =
   type Cb = proc(clearable: bool)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQHeaderView_connect_sortIndicatorClearableChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QHeaderView, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qheaderview_types.QHeaderView, s: cstring, c: cstring): string =
 
   let v_ms = fcQHeaderView_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QHeaderView, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qheaderview_types.QHeaderView, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQHeaderView_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QHeaderView, ): gen_qobjectdefs.QMetaObject =
-
+proc QHeaderViewmetaObject*(self: gen_qheaderview_types.QHeaderView, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQHeaderView_virtualbase_metaObject(self.h))
 
-type QHeaderViewmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QHeaderView, slot: proc(super: QHeaderViewmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QHeaderViewmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QHeaderViewmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_metaObject(self: ptr cQHeaderView, slot: int): pointer {.exportc: "miqt_exec_callback_QHeaderView_metaObject ".} =
-  type Cb = proc(super: QHeaderViewmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QHeaderView(h: self), )
+  var nimfunc = cast[ptr QHeaderViewmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QHeaderView, param1: cstring): pointer =
-
+proc QHeaderViewmetacast*(self: gen_qheaderview_types.QHeaderView, param1: cstring): pointer =
 
   fQHeaderView_virtualbase_metacast(self.h, param1)
 
-type QHeaderViewmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QHeaderView, slot: proc(super: QHeaderViewmetacastBase, param1: cstring): pointer) =
+type QHeaderViewmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QHeaderViewmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_metacast(self: ptr cQHeaderView, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QHeaderView_metacast ".} =
-  type Cb = proc(super: QHeaderViewmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QHeaderView(h: self), param1)
+  var nimfunc = cast[ptr QHeaderViewmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QHeaderView, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QHeaderViewmetacall*(self: gen_qheaderview_types.QHeaderView, param1: cint, param2: cint, param3: pointer): cint =
 
   fQHeaderView_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QHeaderViewmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QHeaderView, slot: proc(super: QHeaderViewmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QHeaderViewmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QHeaderViewmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_metacall(self: ptr cQHeaderView, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QHeaderView_metacall ".} =
-  type Cb = proc(super: QHeaderViewmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QHeaderView(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QHeaderViewmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_setModel(self: QHeaderView, model: gen_qabstractitemmodel.QAbstractItemModel): void =
-
+proc QHeaderViewsetModel*(self: gen_qheaderview_types.QHeaderView, model: gen_qabstractitemmodel.QAbstractItemModel): void =
 
   fQHeaderView_virtualbase_setModel(self.h, model.h)
 
-type QHeaderViewsetModelBase* = proc(model: gen_qabstractitemmodel.QAbstractItemModel): void
-proc onsetModel*(self: QHeaderView, slot: proc(super: QHeaderViewsetModelBase, model: gen_qabstractitemmodel.QAbstractItemModel): void) =
+type QHeaderViewsetModelProc* = proc(model: gen_qabstractitemmodel.QAbstractItemModel): void
+proc onsetModel*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewsetModelProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewsetModelBase, model: gen_qabstractitemmodel.QAbstractItemModel): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewsetModelProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_setModel(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_setModel(self: ptr cQHeaderView, slot: int, model: pointer): void {.exportc: "miqt_exec_callback_QHeaderView_setModel ".} =
-  type Cb = proc(super: QHeaderViewsetModelBase, model: gen_qabstractitemmodel.QAbstractItemModel): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(model: gen_qabstractitemmodel.QAbstractItemModel): auto =
-    callVirtualBase_setModel(QHeaderView(h: self), model)
+  var nimfunc = cast[ptr QHeaderViewsetModelProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QAbstractItemModel(h: model)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_sizeHint(self: QHeaderView, ): gen_qsize.QSize =
-
+  nimfunc[](slotval1)
+proc QHeaderViewsizeHint*(self: gen_qheaderview_types.QHeaderView, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQHeaderView_virtualbase_sizeHint(self.h))
 
-type QHeaderViewsizeHintBase* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: QHeaderView, slot: proc(super: QHeaderViewsizeHintBase): gen_qsize.QSize) =
+type QHeaderViewsizeHintProc* = proc(): gen_qsize.QSize
+proc onsizeHint*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewsizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewsizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QHeaderViewsizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_sizeHint(self: ptr cQHeaderView, slot: int): pointer {.exportc: "miqt_exec_callback_QHeaderView_sizeHint ".} =
-  type Cb = proc(super: QHeaderViewsizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sizeHint(QHeaderView(h: self), )
+  var nimfunc = cast[ptr QHeaderViewsizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_setVisible(self: QHeaderView, v: bool): void =
-
+proc QHeaderViewsetVisible*(self: gen_qheaderview_types.QHeaderView, v: bool): void =
 
   fQHeaderView_virtualbase_setVisible(self.h, v)
 
-type QHeaderViewsetVisibleBase* = proc(v: bool): void
-proc onsetVisible*(self: QHeaderView, slot: proc(super: QHeaderViewsetVisibleBase, v: bool): void) =
+type QHeaderViewsetVisibleProc* = proc(v: bool): void
+proc onsetVisible*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewsetVisibleProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewsetVisibleBase, v: bool): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewsetVisibleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_setVisible(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_setVisible(self: ptr cQHeaderView, slot: int, v: bool): void {.exportc: "miqt_exec_callback_QHeaderView_setVisible ".} =
-  type Cb = proc(super: QHeaderViewsetVisibleBase, v: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(v: bool): auto =
-    callVirtualBase_setVisible(QHeaderView(h: self), v)
+  var nimfunc = cast[ptr QHeaderViewsetVisibleProc](cast[pointer](slot))
   let slotval1 = v
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_doItemsLayout(self: QHeaderView, ): void =
-
+  nimfunc[](slotval1)
+proc QHeaderViewdoItemsLayout*(self: gen_qheaderview_types.QHeaderView, ): void =
 
   fQHeaderView_virtualbase_doItemsLayout(self.h)
 
-type QHeaderViewdoItemsLayoutBase* = proc(): void
-proc ondoItemsLayout*(self: QHeaderView, slot: proc(super: QHeaderViewdoItemsLayoutBase): void) =
+type QHeaderViewdoItemsLayoutProc* = proc(): void
+proc ondoItemsLayout*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewdoItemsLayoutProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewdoItemsLayoutBase): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewdoItemsLayoutProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_doItemsLayout(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_doItemsLayout(self: ptr cQHeaderView, slot: int): void {.exportc: "miqt_exec_callback_QHeaderView_doItemsLayout ".} =
-  type Cb = proc(super: QHeaderViewdoItemsLayoutBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_doItemsLayout(QHeaderView(h: self), )
+  var nimfunc = cast[ptr QHeaderViewdoItemsLayoutProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_reset(self: QHeaderView, ): void =
-
+  nimfunc[]()
+proc QHeaderViewreset*(self: gen_qheaderview_types.QHeaderView, ): void =
 
   fQHeaderView_virtualbase_reset(self.h)
 
-type QHeaderViewresetBase* = proc(): void
-proc onreset*(self: QHeaderView, slot: proc(super: QHeaderViewresetBase): void) =
+type QHeaderViewresetProc* = proc(): void
+proc onreset*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewresetProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewresetBase): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewresetProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_reset(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_reset(self: ptr cQHeaderView, slot: int): void {.exportc: "miqt_exec_callback_QHeaderView_reset ".} =
-  type Cb = proc(super: QHeaderViewresetBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_reset(QHeaderView(h: self), )
+  var nimfunc = cast[ptr QHeaderViewresetProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_currentChanged(self: QHeaderView, current: gen_qabstractitemmodel.QModelIndex, old: gen_qabstractitemmodel.QModelIndex): void =
-
+  nimfunc[]()
+proc QHeaderViewcurrentChanged*(self: gen_qheaderview_types.QHeaderView, current: gen_qabstractitemmodel.QModelIndex, old: gen_qabstractitemmodel.QModelIndex): void =
 
   fQHeaderView_virtualbase_currentChanged(self.h, current.h, old.h)
 
-type QHeaderViewcurrentChangedBase* = proc(current: gen_qabstractitemmodel.QModelIndex, old: gen_qabstractitemmodel.QModelIndex): void
-proc oncurrentChanged*(self: QHeaderView, slot: proc(super: QHeaderViewcurrentChangedBase, current: gen_qabstractitemmodel.QModelIndex, old: gen_qabstractitemmodel.QModelIndex): void) =
+type QHeaderViewcurrentChangedProc* = proc(current: gen_qabstractitemmodel.QModelIndex, old: gen_qabstractitemmodel.QModelIndex): void
+proc oncurrentChanged*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewcurrentChangedProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewcurrentChangedBase, current: gen_qabstractitemmodel.QModelIndex, old: gen_qabstractitemmodel.QModelIndex): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewcurrentChangedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_currentChanged(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_currentChanged(self: ptr cQHeaderView, slot: int, current: pointer, old: pointer): void {.exportc: "miqt_exec_callback_QHeaderView_currentChanged ".} =
-  type Cb = proc(super: QHeaderViewcurrentChangedBase, current: gen_qabstractitemmodel.QModelIndex, old: gen_qabstractitemmodel.QModelIndex): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(current: gen_qabstractitemmodel.QModelIndex, old: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_currentChanged(QHeaderView(h: self), current, old)
+  var nimfunc = cast[ptr QHeaderViewcurrentChangedProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: current)
 
   let slotval2 = gen_qabstractitemmodel.QModelIndex(h: old)
 
 
-  nimfunc[](superCall, slotval1, slotval2)
-proc callVirtualBase_event(self: QHeaderView, e: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[](slotval1, slotval2)
+proc QHeaderViewevent*(self: gen_qheaderview_types.QHeaderView, e: gen_qcoreevent.QEvent): bool =
 
   fQHeaderView_virtualbase_event(self.h, e.h)
 
-type QHeaderVieweventBase* = proc(e: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QHeaderView, slot: proc(super: QHeaderVieweventBase, e: gen_qcoreevent.QEvent): bool) =
+type QHeaderVieweventProc* = proc(e: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderVieweventProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderVieweventBase, e: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QHeaderVieweventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_event(self: ptr cQHeaderView, slot: int, e: pointer): bool {.exportc: "miqt_exec_callback_QHeaderView_event ".} =
-  type Cb = proc(super: QHeaderVieweventBase, e: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QHeaderView(h: self), e)
+  var nimfunc = cast[ptr QHeaderVieweventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: e)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_paintEvent(self: QHeaderView, e: gen_qevent.QPaintEvent): void =
-
+proc QHeaderViewpaintEvent*(self: gen_qheaderview_types.QHeaderView, e: gen_qevent.QPaintEvent): void =
 
   fQHeaderView_virtualbase_paintEvent(self.h, e.h)
 
-type QHeaderViewpaintEventBase* = proc(e: gen_qevent.QPaintEvent): void
-proc onpaintEvent*(self: QHeaderView, slot: proc(super: QHeaderViewpaintEventBase, e: gen_qevent.QPaintEvent): void) =
+type QHeaderViewpaintEventProc* = proc(e: gen_qevent.QPaintEvent): void
+proc onpaintEvent*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewpaintEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewpaintEventBase, e: gen_qevent.QPaintEvent): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewpaintEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_paintEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_paintEvent(self: ptr cQHeaderView, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QHeaderView_paintEvent ".} =
-  type Cb = proc(super: QHeaderViewpaintEventBase, e: gen_qevent.QPaintEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qevent.QPaintEvent): auto =
-    callVirtualBase_paintEvent(QHeaderView(h: self), e)
+  var nimfunc = cast[ptr QHeaderViewpaintEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QPaintEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mousePressEvent(self: QHeaderView, e: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QHeaderViewmousePressEvent*(self: gen_qheaderview_types.QHeaderView, e: gen_qevent.QMouseEvent): void =
 
   fQHeaderView_virtualbase_mousePressEvent(self.h, e.h)
 
-type QHeaderViewmousePressEventBase* = proc(e: gen_qevent.QMouseEvent): void
-proc onmousePressEvent*(self: QHeaderView, slot: proc(super: QHeaderViewmousePressEventBase, e: gen_qevent.QMouseEvent): void) =
+type QHeaderViewmousePressEventProc* = proc(e: gen_qevent.QMouseEvent): void
+proc onmousePressEvent*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewmousePressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewmousePressEventBase, e: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewmousePressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_mousePressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_mousePressEvent(self: ptr cQHeaderView, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QHeaderView_mousePressEvent ".} =
-  type Cb = proc(super: QHeaderViewmousePressEventBase, e: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mousePressEvent(QHeaderView(h: self), e)
+  var nimfunc = cast[ptr QHeaderViewmousePressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseMoveEvent(self: QHeaderView, e: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QHeaderViewmouseMoveEvent*(self: gen_qheaderview_types.QHeaderView, e: gen_qevent.QMouseEvent): void =
 
   fQHeaderView_virtualbase_mouseMoveEvent(self.h, e.h)
 
-type QHeaderViewmouseMoveEventBase* = proc(e: gen_qevent.QMouseEvent): void
-proc onmouseMoveEvent*(self: QHeaderView, slot: proc(super: QHeaderViewmouseMoveEventBase, e: gen_qevent.QMouseEvent): void) =
+type QHeaderViewmouseMoveEventProc* = proc(e: gen_qevent.QMouseEvent): void
+proc onmouseMoveEvent*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewmouseMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewmouseMoveEventBase, e: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewmouseMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_mouseMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_mouseMoveEvent(self: ptr cQHeaderView, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QHeaderView_mouseMoveEvent ".} =
-  type Cb = proc(super: QHeaderViewmouseMoveEventBase, e: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseMoveEvent(QHeaderView(h: self), e)
+  var nimfunc = cast[ptr QHeaderViewmouseMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseReleaseEvent(self: QHeaderView, e: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QHeaderViewmouseReleaseEvent*(self: gen_qheaderview_types.QHeaderView, e: gen_qevent.QMouseEvent): void =
 
   fQHeaderView_virtualbase_mouseReleaseEvent(self.h, e.h)
 
-type QHeaderViewmouseReleaseEventBase* = proc(e: gen_qevent.QMouseEvent): void
-proc onmouseReleaseEvent*(self: QHeaderView, slot: proc(super: QHeaderViewmouseReleaseEventBase, e: gen_qevent.QMouseEvent): void) =
+type QHeaderViewmouseReleaseEventProc* = proc(e: gen_qevent.QMouseEvent): void
+proc onmouseReleaseEvent*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewmouseReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewmouseReleaseEventBase, e: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewmouseReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_mouseReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_mouseReleaseEvent(self: ptr cQHeaderView, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QHeaderView_mouseReleaseEvent ".} =
-  type Cb = proc(super: QHeaderViewmouseReleaseEventBase, e: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseReleaseEvent(QHeaderView(h: self), e)
+  var nimfunc = cast[ptr QHeaderViewmouseReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseDoubleClickEvent(self: QHeaderView, e: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QHeaderViewmouseDoubleClickEvent*(self: gen_qheaderview_types.QHeaderView, e: gen_qevent.QMouseEvent): void =
 
   fQHeaderView_virtualbase_mouseDoubleClickEvent(self.h, e.h)
 
-type QHeaderViewmouseDoubleClickEventBase* = proc(e: gen_qevent.QMouseEvent): void
-proc onmouseDoubleClickEvent*(self: QHeaderView, slot: proc(super: QHeaderViewmouseDoubleClickEventBase, e: gen_qevent.QMouseEvent): void) =
+type QHeaderViewmouseDoubleClickEventProc* = proc(e: gen_qevent.QMouseEvent): void
+proc onmouseDoubleClickEvent*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewmouseDoubleClickEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewmouseDoubleClickEventBase, e: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewmouseDoubleClickEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_mouseDoubleClickEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_mouseDoubleClickEvent(self: ptr cQHeaderView, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QHeaderView_mouseDoubleClickEvent ".} =
-  type Cb = proc(super: QHeaderViewmouseDoubleClickEventBase, e: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseDoubleClickEvent(QHeaderView(h: self), e)
+  var nimfunc = cast[ptr QHeaderViewmouseDoubleClickEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_viewportEvent(self: QHeaderView, e: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[](slotval1)
+proc QHeaderViewviewportEvent*(self: gen_qheaderview_types.QHeaderView, e: gen_qcoreevent.QEvent): bool =
 
   fQHeaderView_virtualbase_viewportEvent(self.h, e.h)
 
-type QHeaderViewviewportEventBase* = proc(e: gen_qcoreevent.QEvent): bool
-proc onviewportEvent*(self: QHeaderView, slot: proc(super: QHeaderViewviewportEventBase, e: gen_qcoreevent.QEvent): bool) =
+type QHeaderViewviewportEventProc* = proc(e: gen_qcoreevent.QEvent): bool
+proc onviewportEvent*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewviewportEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewviewportEventBase, e: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QHeaderViewviewportEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_viewportEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_viewportEvent(self: ptr cQHeaderView, slot: int, e: pointer): bool {.exportc: "miqt_exec_callback_QHeaderView_viewportEvent ".} =
-  type Cb = proc(super: QHeaderViewviewportEventBase, e: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_viewportEvent(QHeaderView(h: self), e)
+  var nimfunc = cast[ptr QHeaderViewviewportEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: e)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_paintSection(self: QHeaderView, painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, logicalIndex: cint): void =
-
+proc QHeaderViewpaintSection*(self: gen_qheaderview_types.QHeaderView, painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, logicalIndex: cint): void =
 
   fQHeaderView_virtualbase_paintSection(self.h, painter.h, rect.h, logicalIndex)
 
-type QHeaderViewpaintSectionBase* = proc(painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, logicalIndex: cint): void
-proc onpaintSection*(self: QHeaderView, slot: proc(super: QHeaderViewpaintSectionBase, painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, logicalIndex: cint): void) =
+type QHeaderViewpaintSectionProc* = proc(painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, logicalIndex: cint): void
+proc onpaintSection*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewpaintSectionProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewpaintSectionBase, painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, logicalIndex: cint): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewpaintSectionProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_paintSection(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_paintSection(self: ptr cQHeaderView, slot: int, painter: pointer, rect: pointer, logicalIndex: cint): void {.exportc: "miqt_exec_callback_QHeaderView_paintSection ".} =
-  type Cb = proc(super: QHeaderViewpaintSectionBase, painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, logicalIndex: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, logicalIndex: cint): auto =
-    callVirtualBase_paintSection(QHeaderView(h: self), painter, rect, logicalIndex)
+  var nimfunc = cast[ptr QHeaderViewpaintSectionProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
   let slotval2 = gen_qrect.QRect(h: rect)
@@ -1326,147 +1237,117 @@ proc miqt_exec_callback_QHeaderView_paintSection(self: ptr cQHeaderView, slot: i
   let slotval3 = logicalIndex
 
 
-  nimfunc[](superCall, slotval1, slotval2, slotval3)
-proc callVirtualBase_sectionSizeFromContents(self: QHeaderView, logicalIndex: cint): gen_qsize.QSize =
-
+  nimfunc[](slotval1, slotval2, slotval3)
+proc QHeaderViewsectionSizeFromContents*(self: gen_qheaderview_types.QHeaderView, logicalIndex: cint): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQHeaderView_virtualbase_sectionSizeFromContents(self.h, logicalIndex))
 
-type QHeaderViewsectionSizeFromContentsBase* = proc(logicalIndex: cint): gen_qsize.QSize
-proc onsectionSizeFromContents*(self: QHeaderView, slot: proc(super: QHeaderViewsectionSizeFromContentsBase, logicalIndex: cint): gen_qsize.QSize) =
+type QHeaderViewsectionSizeFromContentsProc* = proc(logicalIndex: cint): gen_qsize.QSize
+proc onsectionSizeFromContents*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewsectionSizeFromContentsProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewsectionSizeFromContentsBase, logicalIndex: cint): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QHeaderViewsectionSizeFromContentsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_sectionSizeFromContents(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_sectionSizeFromContents(self: ptr cQHeaderView, slot: int, logicalIndex: cint): pointer {.exportc: "miqt_exec_callback_QHeaderView_sectionSizeFromContents ".} =
-  type Cb = proc(super: QHeaderViewsectionSizeFromContentsBase, logicalIndex: cint): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(logicalIndex: cint): auto =
-    callVirtualBase_sectionSizeFromContents(QHeaderView(h: self), logicalIndex)
+  var nimfunc = cast[ptr QHeaderViewsectionSizeFromContentsProc](cast[pointer](slot))
   let slotval1 = logicalIndex
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_horizontalOffset(self: QHeaderView, ): cint =
-
+proc QHeaderViewhorizontalOffset*(self: gen_qheaderview_types.QHeaderView, ): cint =
 
   fQHeaderView_virtualbase_horizontalOffset(self.h)
 
-type QHeaderViewhorizontalOffsetBase* = proc(): cint
-proc onhorizontalOffset*(self: QHeaderView, slot: proc(super: QHeaderViewhorizontalOffsetBase): cint) =
+type QHeaderViewhorizontalOffsetProc* = proc(): cint
+proc onhorizontalOffset*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewhorizontalOffsetProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewhorizontalOffsetBase): cint
-  var tmp = new Cb
+  var tmp = new QHeaderViewhorizontalOffsetProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_horizontalOffset(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_horizontalOffset(self: ptr cQHeaderView, slot: int): cint {.exportc: "miqt_exec_callback_QHeaderView_horizontalOffset ".} =
-  type Cb = proc(super: QHeaderViewhorizontalOffsetBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_horizontalOffset(QHeaderView(h: self), )
+  var nimfunc = cast[ptr QHeaderViewhorizontalOffsetProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_verticalOffset(self: QHeaderView, ): cint =
-
+proc QHeaderViewverticalOffset*(self: gen_qheaderview_types.QHeaderView, ): cint =
 
   fQHeaderView_virtualbase_verticalOffset(self.h)
 
-type QHeaderViewverticalOffsetBase* = proc(): cint
-proc onverticalOffset*(self: QHeaderView, slot: proc(super: QHeaderViewverticalOffsetBase): cint) =
+type QHeaderViewverticalOffsetProc* = proc(): cint
+proc onverticalOffset*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewverticalOffsetProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewverticalOffsetBase): cint
-  var tmp = new Cb
+  var tmp = new QHeaderViewverticalOffsetProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_verticalOffset(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_verticalOffset(self: ptr cQHeaderView, slot: int): cint {.exportc: "miqt_exec_callback_QHeaderView_verticalOffset ".} =
-  type Cb = proc(super: QHeaderViewverticalOffsetBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_verticalOffset(QHeaderView(h: self), )
+  var nimfunc = cast[ptr QHeaderViewverticalOffsetProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_updateGeometries(self: QHeaderView, ): void =
-
+proc QHeaderViewupdateGeometries*(self: gen_qheaderview_types.QHeaderView, ): void =
 
   fQHeaderView_virtualbase_updateGeometries(self.h)
 
-type QHeaderViewupdateGeometriesBase* = proc(): void
-proc onupdateGeometries*(self: QHeaderView, slot: proc(super: QHeaderViewupdateGeometriesBase): void) =
+type QHeaderViewupdateGeometriesProc* = proc(): void
+proc onupdateGeometries*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewupdateGeometriesProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewupdateGeometriesBase): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewupdateGeometriesProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_updateGeometries(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_updateGeometries(self: ptr cQHeaderView, slot: int): void {.exportc: "miqt_exec_callback_QHeaderView_updateGeometries ".} =
-  type Cb = proc(super: QHeaderViewupdateGeometriesBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_updateGeometries(QHeaderView(h: self), )
+  var nimfunc = cast[ptr QHeaderViewupdateGeometriesProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_scrollContentsBy(self: QHeaderView, dx: cint, dy: cint): void =
-
+  nimfunc[]()
+proc QHeaderViewscrollContentsBy*(self: gen_qheaderview_types.QHeaderView, dx: cint, dy: cint): void =
 
   fQHeaderView_virtualbase_scrollContentsBy(self.h, dx, dy)
 
-type QHeaderViewscrollContentsByBase* = proc(dx: cint, dy: cint): void
-proc onscrollContentsBy*(self: QHeaderView, slot: proc(super: QHeaderViewscrollContentsByBase, dx: cint, dy: cint): void) =
+type QHeaderViewscrollContentsByProc* = proc(dx: cint, dy: cint): void
+proc onscrollContentsBy*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewscrollContentsByProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewscrollContentsByBase, dx: cint, dy: cint): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewscrollContentsByProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_scrollContentsBy(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_scrollContentsBy(self: ptr cQHeaderView, slot: int, dx: cint, dy: cint): void {.exportc: "miqt_exec_callback_QHeaderView_scrollContentsBy ".} =
-  type Cb = proc(super: QHeaderViewscrollContentsByBase, dx: cint, dy: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(dx: cint, dy: cint): auto =
-    callVirtualBase_scrollContentsBy(QHeaderView(h: self), dx, dy)
+  var nimfunc = cast[ptr QHeaderViewscrollContentsByProc](cast[pointer](slot))
   let slotval1 = dx
 
   let slotval2 = dy
 
 
-  nimfunc[](superCall, slotval1, slotval2)
-proc callVirtualBase_dataChanged(self: QHeaderView, topLeft: gen_qabstractitemmodel.QModelIndex, bottomRight: gen_qabstractitemmodel.QModelIndex, roles: seq[cint]): void =
+  nimfunc[](slotval1, slotval2)
+proc QHeaderViewdataChanged*(self: gen_qheaderview_types.QHeaderView, topLeft: gen_qabstractitemmodel.QModelIndex, bottomRight: gen_qabstractitemmodel.QModelIndex, roles: seq[cint]): void =
 
   var roles_CArray = newSeq[cint](len(roles))
   for i in 0..<len(roles):
     roles_CArray[i] = roles[i]
 
-
   fQHeaderView_virtualbase_dataChanged(self.h, topLeft.h, bottomRight.h, struct_miqt_array(len: csize_t(len(roles)), data: if len(roles) == 0: nil else: addr(roles_CArray[0])))
 
-type QHeaderViewdataChangedBase* = proc(topLeft: gen_qabstractitemmodel.QModelIndex, bottomRight: gen_qabstractitemmodel.QModelIndex, roles: seq[cint]): void
-proc ondataChanged*(self: QHeaderView, slot: proc(super: QHeaderViewdataChangedBase, topLeft: gen_qabstractitemmodel.QModelIndex, bottomRight: gen_qabstractitemmodel.QModelIndex, roles: seq[cint]): void) =
+type QHeaderViewdataChangedProc* = proc(topLeft: gen_qabstractitemmodel.QModelIndex, bottomRight: gen_qabstractitemmodel.QModelIndex, roles: seq[cint]): void
+proc ondataChanged*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewdataChangedProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewdataChangedBase, topLeft: gen_qabstractitemmodel.QModelIndex, bottomRight: gen_qabstractitemmodel.QModelIndex, roles: seq[cint]): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewdataChangedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_dataChanged(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_dataChanged(self: ptr cQHeaderView, slot: int, topLeft: pointer, bottomRight: pointer, roles: struct_miqt_array): void {.exportc: "miqt_exec_callback_QHeaderView_dataChanged ".} =
-  type Cb = proc(super: QHeaderViewdataChangedBase, topLeft: gen_qabstractitemmodel.QModelIndex, bottomRight: gen_qabstractitemmodel.QModelIndex, roles: seq[cint]): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(topLeft: gen_qabstractitemmodel.QModelIndex, bottomRight: gen_qabstractitemmodel.QModelIndex, roles: seq[cint]): auto =
-    callVirtualBase_dataChanged(QHeaderView(h: self), topLeft, bottomRight, roles)
+  var nimfunc = cast[ptr QHeaderViewdataChangedProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: topLeft)
 
   let slotval2 = gen_qabstractitemmodel.QModelIndex(h: bottomRight)
@@ -1479,26 +1360,21 @@ proc miqt_exec_callback_QHeaderView_dataChanged(self: ptr cQHeaderView, slot: in
   let slotval3 = vrolesx_ret
 
 
-  nimfunc[](superCall, slotval1, slotval2, slotval3)
-proc callVirtualBase_rowsInserted(self: QHeaderView, parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void =
-
+  nimfunc[](slotval1, slotval2, slotval3)
+proc QHeaderViewrowsInserted*(self: gen_qheaderview_types.QHeaderView, parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void =
 
   fQHeaderView_virtualbase_rowsInserted(self.h, parent.h, start, endVal)
 
-type QHeaderViewrowsInsertedBase* = proc(parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void
-proc onrowsInserted*(self: QHeaderView, slot: proc(super: QHeaderViewrowsInsertedBase, parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void) =
+type QHeaderViewrowsInsertedProc* = proc(parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void
+proc onrowsInserted*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewrowsInsertedProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewrowsInsertedBase, parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewrowsInsertedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_rowsInserted(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_rowsInserted(self: ptr cQHeaderView, slot: int, parent: pointer, start: cint, endVal: cint): void {.exportc: "miqt_exec_callback_QHeaderView_rowsInserted ".} =
-  type Cb = proc(super: QHeaderViewrowsInsertedBase, parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): auto =
-    callVirtualBase_rowsInserted(QHeaderView(h: self), parent, start, endVal)
+  var nimfunc = cast[ptr QHeaderViewrowsInsertedProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: parent)
 
   let slotval2 = start
@@ -1506,444 +1382,354 @@ proc miqt_exec_callback_QHeaderView_rowsInserted(self: ptr cQHeaderView, slot: i
   let slotval3 = endVal
 
 
-  nimfunc[](superCall, slotval1, slotval2, slotval3)
-proc callVirtualBase_visualRect(self: QHeaderView, index: gen_qabstractitemmodel.QModelIndex): gen_qrect.QRect =
-
+  nimfunc[](slotval1, slotval2, slotval3)
+proc QHeaderViewvisualRect*(self: gen_qheaderview_types.QHeaderView, index: gen_qabstractitemmodel.QModelIndex): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fQHeaderView_virtualbase_visualRect(self.h, index.h))
 
-type QHeaderViewvisualRectBase* = proc(index: gen_qabstractitemmodel.QModelIndex): gen_qrect.QRect
-proc onvisualRect*(self: QHeaderView, slot: proc(super: QHeaderViewvisualRectBase, index: gen_qabstractitemmodel.QModelIndex): gen_qrect.QRect) =
+type QHeaderViewvisualRectProc* = proc(index: gen_qabstractitemmodel.QModelIndex): gen_qrect.QRect
+proc onvisualRect*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewvisualRectProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewvisualRectBase, index: gen_qabstractitemmodel.QModelIndex): gen_qrect.QRect
-  var tmp = new Cb
+  var tmp = new QHeaderViewvisualRectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_visualRect(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_visualRect(self: ptr cQHeaderView, slot: int, index: pointer): pointer {.exportc: "miqt_exec_callback_QHeaderView_visualRect ".} =
-  type Cb = proc(super: QHeaderViewvisualRectBase, index: gen_qabstractitemmodel.QModelIndex): gen_qrect.QRect
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(index: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_visualRect(QHeaderView(h: self), index)
+  var nimfunc = cast[ptr QHeaderViewvisualRectProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: index)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_scrollTo(self: QHeaderView, index: gen_qabstractitemmodel.QModelIndex, hint: gen_qabstractitemview.QAbstractItemViewScrollHint): void =
-
+proc QHeaderViewscrollTo*(self: gen_qheaderview_types.QHeaderView, index: gen_qabstractitemmodel.QModelIndex, hint: cint): void =
 
   fQHeaderView_virtualbase_scrollTo(self.h, index.h, cint(hint))
 
-type QHeaderViewscrollToBase* = proc(index: gen_qabstractitemmodel.QModelIndex, hint: gen_qabstractitemview.QAbstractItemViewScrollHint): void
-proc onscrollTo*(self: QHeaderView, slot: proc(super: QHeaderViewscrollToBase, index: gen_qabstractitemmodel.QModelIndex, hint: gen_qabstractitemview.QAbstractItemViewScrollHint): void) =
+type QHeaderViewscrollToProc* = proc(index: gen_qabstractitemmodel.QModelIndex, hint: cint): void
+proc onscrollTo*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewscrollToProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewscrollToBase, index: gen_qabstractitemmodel.QModelIndex, hint: gen_qabstractitemview.QAbstractItemViewScrollHint): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewscrollToProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_scrollTo(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_scrollTo(self: ptr cQHeaderView, slot: int, index: pointer, hint: cint): void {.exportc: "miqt_exec_callback_QHeaderView_scrollTo ".} =
-  type Cb = proc(super: QHeaderViewscrollToBase, index: gen_qabstractitemmodel.QModelIndex, hint: gen_qabstractitemview.QAbstractItemViewScrollHint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(index: gen_qabstractitemmodel.QModelIndex, hint: gen_qabstractitemview.QAbstractItemViewScrollHint): auto =
-    callVirtualBase_scrollTo(QHeaderView(h: self), index, hint)
+  var nimfunc = cast[ptr QHeaderViewscrollToProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: index)
 
-  let slotval2 = gen_qabstractitemview.QAbstractItemViewScrollHint(hint)
+  let slotval2 = cint(hint)
 
 
-  nimfunc[](superCall, slotval1, slotval2)
-proc callVirtualBase_indexAt(self: QHeaderView, p: gen_qpoint.QPoint): gen_qabstractitemmodel.QModelIndex =
-
+  nimfunc[](slotval1, slotval2)
+proc QHeaderViewindexAt*(self: gen_qheaderview_types.QHeaderView, p: gen_qpoint.QPoint): gen_qabstractitemmodel.QModelIndex =
 
   gen_qabstractitemmodel.QModelIndex(h: fQHeaderView_virtualbase_indexAt(self.h, p.h))
 
-type QHeaderViewindexAtBase* = proc(p: gen_qpoint.QPoint): gen_qabstractitemmodel.QModelIndex
-proc onindexAt*(self: QHeaderView, slot: proc(super: QHeaderViewindexAtBase, p: gen_qpoint.QPoint): gen_qabstractitemmodel.QModelIndex) =
+type QHeaderViewindexAtProc* = proc(p: gen_qpoint.QPoint): gen_qabstractitemmodel.QModelIndex
+proc onindexAt*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewindexAtProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewindexAtBase, p: gen_qpoint.QPoint): gen_qabstractitemmodel.QModelIndex
-  var tmp = new Cb
+  var tmp = new QHeaderViewindexAtProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_indexAt(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_indexAt(self: ptr cQHeaderView, slot: int, p: pointer): pointer {.exportc: "miqt_exec_callback_QHeaderView_indexAt ".} =
-  type Cb = proc(super: QHeaderViewindexAtBase, p: gen_qpoint.QPoint): gen_qabstractitemmodel.QModelIndex
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(p: gen_qpoint.QPoint): auto =
-    callVirtualBase_indexAt(QHeaderView(h: self), p)
+  var nimfunc = cast[ptr QHeaderViewindexAtProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: p)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_isIndexHidden(self: QHeaderView, index: gen_qabstractitemmodel.QModelIndex): bool =
-
+proc QHeaderViewisIndexHidden*(self: gen_qheaderview_types.QHeaderView, index: gen_qabstractitemmodel.QModelIndex): bool =
 
   fQHeaderView_virtualbase_isIndexHidden(self.h, index.h)
 
-type QHeaderViewisIndexHiddenBase* = proc(index: gen_qabstractitemmodel.QModelIndex): bool
-proc onisIndexHidden*(self: QHeaderView, slot: proc(super: QHeaderViewisIndexHiddenBase, index: gen_qabstractitemmodel.QModelIndex): bool) =
+type QHeaderViewisIndexHiddenProc* = proc(index: gen_qabstractitemmodel.QModelIndex): bool
+proc onisIndexHidden*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewisIndexHiddenProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewisIndexHiddenBase, index: gen_qabstractitemmodel.QModelIndex): bool
-  var tmp = new Cb
+  var tmp = new QHeaderViewisIndexHiddenProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_isIndexHidden(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_isIndexHidden(self: ptr cQHeaderView, slot: int, index: pointer): bool {.exportc: "miqt_exec_callback_QHeaderView_isIndexHidden ".} =
-  type Cb = proc(super: QHeaderViewisIndexHiddenBase, index: gen_qabstractitemmodel.QModelIndex): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(index: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_isIndexHidden(QHeaderView(h: self), index)
+  var nimfunc = cast[ptr QHeaderViewisIndexHiddenProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: index)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_moveCursor(self: QHeaderView, param1: gen_qabstractitemview.QAbstractItemViewCursorAction, param2: gen_qnamespace.KeyboardModifier): gen_qabstractitemmodel.QModelIndex =
-
+proc QHeaderViewmoveCursor*(self: gen_qheaderview_types.QHeaderView, param1: cint, param2: cint): gen_qabstractitemmodel.QModelIndex =
 
   gen_qabstractitemmodel.QModelIndex(h: fQHeaderView_virtualbase_moveCursor(self.h, cint(param1), cint(param2)))
 
-type QHeaderViewmoveCursorBase* = proc(param1: gen_qabstractitemview.QAbstractItemViewCursorAction, param2: gen_qnamespace.KeyboardModifier): gen_qabstractitemmodel.QModelIndex
-proc onmoveCursor*(self: QHeaderView, slot: proc(super: QHeaderViewmoveCursorBase, param1: gen_qabstractitemview.QAbstractItemViewCursorAction, param2: gen_qnamespace.KeyboardModifier): gen_qabstractitemmodel.QModelIndex) =
+type QHeaderViewmoveCursorProc* = proc(param1: cint, param2: cint): gen_qabstractitemmodel.QModelIndex
+proc onmoveCursor*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewmoveCursorProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewmoveCursorBase, param1: gen_qabstractitemview.QAbstractItemViewCursorAction, param2: gen_qnamespace.KeyboardModifier): gen_qabstractitemmodel.QModelIndex
-  var tmp = new Cb
+  var tmp = new QHeaderViewmoveCursorProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_moveCursor(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_moveCursor(self: ptr cQHeaderView, slot: int, param1: cint, param2: cint): pointer {.exportc: "miqt_exec_callback_QHeaderView_moveCursor ".} =
-  type Cb = proc(super: QHeaderViewmoveCursorBase, param1: gen_qabstractitemview.QAbstractItemViewCursorAction, param2: gen_qnamespace.KeyboardModifier): gen_qabstractitemmodel.QModelIndex
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qabstractitemview.QAbstractItemViewCursorAction, param2: gen_qnamespace.KeyboardModifier): auto =
-    callVirtualBase_moveCursor(QHeaderView(h: self), param1, param2)
-  let slotval1 = gen_qabstractitemview.QAbstractItemViewCursorAction(param1)
+  var nimfunc = cast[ptr QHeaderViewmoveCursorProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
-  let slotval2 = gen_qnamespace.KeyboardModifier(param2)
+  let slotval2 = cint(param2)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn.h
-proc callVirtualBase_setSelection(self: QHeaderView, rect: gen_qrect.QRect, flags: gen_qitemselectionmodel.QItemSelectionModelSelectionFlag): void =
-
+proc QHeaderViewsetSelection*(self: gen_qheaderview_types.QHeaderView, rect: gen_qrect.QRect, flags: cint): void =
 
   fQHeaderView_virtualbase_setSelection(self.h, rect.h, cint(flags))
 
-type QHeaderViewsetSelectionBase* = proc(rect: gen_qrect.QRect, flags: gen_qitemselectionmodel.QItemSelectionModelSelectionFlag): void
-proc onsetSelection*(self: QHeaderView, slot: proc(super: QHeaderViewsetSelectionBase, rect: gen_qrect.QRect, flags: gen_qitemselectionmodel.QItemSelectionModelSelectionFlag): void) =
+type QHeaderViewsetSelectionProc* = proc(rect: gen_qrect.QRect, flags: cint): void
+proc onsetSelection*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewsetSelectionProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewsetSelectionBase, rect: gen_qrect.QRect, flags: gen_qitemselectionmodel.QItemSelectionModelSelectionFlag): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewsetSelectionProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_setSelection(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_setSelection(self: ptr cQHeaderView, slot: int, rect: pointer, flags: cint): void {.exportc: "miqt_exec_callback_QHeaderView_setSelection ".} =
-  type Cb = proc(super: QHeaderViewsetSelectionBase, rect: gen_qrect.QRect, flags: gen_qitemselectionmodel.QItemSelectionModelSelectionFlag): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(rect: gen_qrect.QRect, flags: gen_qitemselectionmodel.QItemSelectionModelSelectionFlag): auto =
-    callVirtualBase_setSelection(QHeaderView(h: self), rect, flags)
+  var nimfunc = cast[ptr QHeaderViewsetSelectionProc](cast[pointer](slot))
   let slotval1 = gen_qrect.QRect(h: rect)
 
-  let slotval2 = gen_qitemselectionmodel.QItemSelectionModelSelectionFlag(flags)
+  let slotval2 = cint(flags)
 
 
-  nimfunc[](superCall, slotval1, slotval2)
-proc callVirtualBase_visualRegionForSelection(self: QHeaderView, selection: gen_qitemselectionmodel.QItemSelection): gen_qregion.QRegion =
-
+  nimfunc[](slotval1, slotval2)
+proc QHeaderViewvisualRegionForSelection*(self: gen_qheaderview_types.QHeaderView, selection: gen_qitemselectionmodel.QItemSelection): gen_qregion.QRegion =
 
   gen_qregion.QRegion(h: fQHeaderView_virtualbase_visualRegionForSelection(self.h, selection.h))
 
-type QHeaderViewvisualRegionForSelectionBase* = proc(selection: gen_qitemselectionmodel.QItemSelection): gen_qregion.QRegion
-proc onvisualRegionForSelection*(self: QHeaderView, slot: proc(super: QHeaderViewvisualRegionForSelectionBase, selection: gen_qitemselectionmodel.QItemSelection): gen_qregion.QRegion) =
+type QHeaderViewvisualRegionForSelectionProc* = proc(selection: gen_qitemselectionmodel.QItemSelection): gen_qregion.QRegion
+proc onvisualRegionForSelection*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewvisualRegionForSelectionProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewvisualRegionForSelectionBase, selection: gen_qitemselectionmodel.QItemSelection): gen_qregion.QRegion
-  var tmp = new Cb
+  var tmp = new QHeaderViewvisualRegionForSelectionProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_visualRegionForSelection(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_visualRegionForSelection(self: ptr cQHeaderView, slot: int, selection: pointer): pointer {.exportc: "miqt_exec_callback_QHeaderView_visualRegionForSelection ".} =
-  type Cb = proc(super: QHeaderViewvisualRegionForSelectionBase, selection: gen_qitemselectionmodel.QItemSelection): gen_qregion.QRegion
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(selection: gen_qitemselectionmodel.QItemSelection): auto =
-    callVirtualBase_visualRegionForSelection(QHeaderView(h: self), selection)
+  var nimfunc = cast[ptr QHeaderViewvisualRegionForSelectionProc](cast[pointer](slot))
   let slotval1 = gen_qitemselectionmodel.QItemSelection(h: selection)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_initStyleOptionForIndex(self: QHeaderView, option: gen_qstyleoption.QStyleOptionHeader, logicalIndex: cint): void =
-
+proc QHeaderViewinitStyleOptionForIndex*(self: gen_qheaderview_types.QHeaderView, option: gen_qstyleoption.QStyleOptionHeader, logicalIndex: cint): void =
 
   fQHeaderView_virtualbase_initStyleOptionForIndex(self.h, option.h, logicalIndex)
 
-type QHeaderViewinitStyleOptionForIndexBase* = proc(option: gen_qstyleoption.QStyleOptionHeader, logicalIndex: cint): void
-proc oninitStyleOptionForIndex*(self: QHeaderView, slot: proc(super: QHeaderViewinitStyleOptionForIndexBase, option: gen_qstyleoption.QStyleOptionHeader, logicalIndex: cint): void) =
+type QHeaderViewinitStyleOptionForIndexProc* = proc(option: gen_qstyleoption.QStyleOptionHeader, logicalIndex: cint): void
+proc oninitStyleOptionForIndex*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewinitStyleOptionForIndexProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewinitStyleOptionForIndexBase, option: gen_qstyleoption.QStyleOptionHeader, logicalIndex: cint): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewinitStyleOptionForIndexProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_initStyleOptionForIndex(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_initStyleOptionForIndex(self: ptr cQHeaderView, slot: int, option: pointer, logicalIndex: cint): void {.exportc: "miqt_exec_callback_QHeaderView_initStyleOptionForIndex ".} =
-  type Cb = proc(super: QHeaderViewinitStyleOptionForIndexBase, option: gen_qstyleoption.QStyleOptionHeader, logicalIndex: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(option: gen_qstyleoption.QStyleOptionHeader, logicalIndex: cint): auto =
-    callVirtualBase_initStyleOptionForIndex(QHeaderView(h: self), option, logicalIndex)
+  var nimfunc = cast[ptr QHeaderViewinitStyleOptionForIndexProc](cast[pointer](slot))
   let slotval1 = gen_qstyleoption.QStyleOptionHeader(h: option)
 
   let slotval2 = logicalIndex
 
 
-  nimfunc[](superCall, slotval1, slotval2)
-proc callVirtualBase_initStyleOption(self: QHeaderView, option: gen_qstyleoption.QStyleOptionHeader): void =
-
+  nimfunc[](slotval1, slotval2)
+proc QHeaderViewinitStyleOption*(self: gen_qheaderview_types.QHeaderView, option: gen_qstyleoption.QStyleOptionHeader): void =
 
   fQHeaderView_virtualbase_initStyleOption(self.h, option.h)
 
-type QHeaderViewinitStyleOptionBase* = proc(option: gen_qstyleoption.QStyleOptionHeader): void
-proc oninitStyleOption*(self: QHeaderView, slot: proc(super: QHeaderViewinitStyleOptionBase, option: gen_qstyleoption.QStyleOptionHeader): void) =
+type QHeaderViewinitStyleOptionProc* = proc(option: gen_qstyleoption.QStyleOptionHeader): void
+proc oninitStyleOption*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewinitStyleOptionProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewinitStyleOptionBase, option: gen_qstyleoption.QStyleOptionHeader): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewinitStyleOptionProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_initStyleOption(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_initStyleOption(self: ptr cQHeaderView, slot: int, option: pointer): void {.exportc: "miqt_exec_callback_QHeaderView_initStyleOption ".} =
-  type Cb = proc(super: QHeaderViewinitStyleOptionBase, option: gen_qstyleoption.QStyleOptionHeader): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(option: gen_qstyleoption.QStyleOptionHeader): auto =
-    callVirtualBase_initStyleOption(QHeaderView(h: self), option)
+  var nimfunc = cast[ptr QHeaderViewinitStyleOptionProc](cast[pointer](slot))
   let slotval1 = gen_qstyleoption.QStyleOptionHeader(h: option)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_setSelectionModel(self: QHeaderView, selectionModel: gen_qitemselectionmodel.QItemSelectionModel): void =
-
+  nimfunc[](slotval1)
+proc QHeaderViewsetSelectionModel*(self: gen_qheaderview_types.QHeaderView, selectionModel: gen_qitemselectionmodel.QItemSelectionModel): void =
 
   fQHeaderView_virtualbase_setSelectionModel(self.h, selectionModel.h)
 
-type QHeaderViewsetSelectionModelBase* = proc(selectionModel: gen_qitemselectionmodel.QItemSelectionModel): void
-proc onsetSelectionModel*(self: QHeaderView, slot: proc(super: QHeaderViewsetSelectionModelBase, selectionModel: gen_qitemselectionmodel.QItemSelectionModel): void) =
+type QHeaderViewsetSelectionModelProc* = proc(selectionModel: gen_qitemselectionmodel.QItemSelectionModel): void
+proc onsetSelectionModel*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewsetSelectionModelProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewsetSelectionModelBase, selectionModel: gen_qitemselectionmodel.QItemSelectionModel): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewsetSelectionModelProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_setSelectionModel(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_setSelectionModel(self: ptr cQHeaderView, slot: int, selectionModel: pointer): void {.exportc: "miqt_exec_callback_QHeaderView_setSelectionModel ".} =
-  type Cb = proc(super: QHeaderViewsetSelectionModelBase, selectionModel: gen_qitemselectionmodel.QItemSelectionModel): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(selectionModel: gen_qitemselectionmodel.QItemSelectionModel): auto =
-    callVirtualBase_setSelectionModel(QHeaderView(h: self), selectionModel)
+  var nimfunc = cast[ptr QHeaderViewsetSelectionModelProc](cast[pointer](slot))
   let slotval1 = gen_qitemselectionmodel.QItemSelectionModel(h: selectionModel)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyboardSearch(self: QHeaderView, search: string): void =
-
+  nimfunc[](slotval1)
+proc QHeaderViewkeyboardSearch*(self: gen_qheaderview_types.QHeaderView, search: string): void =
 
   fQHeaderView_virtualbase_keyboardSearch(self.h, struct_miqt_string(data: search, len: csize_t(len(search))))
 
-type QHeaderViewkeyboardSearchBase* = proc(search: string): void
-proc onkeyboardSearch*(self: QHeaderView, slot: proc(super: QHeaderViewkeyboardSearchBase, search: string): void) =
+type QHeaderViewkeyboardSearchProc* = proc(search: string): void
+proc onkeyboardSearch*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewkeyboardSearchProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewkeyboardSearchBase, search: string): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewkeyboardSearchProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_keyboardSearch(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_keyboardSearch(self: ptr cQHeaderView, slot: int, search: struct_miqt_string): void {.exportc: "miqt_exec_callback_QHeaderView_keyboardSearch ".} =
-  type Cb = proc(super: QHeaderViewkeyboardSearchBase, search: string): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(search: string): auto =
-    callVirtualBase_keyboardSearch(QHeaderView(h: self), search)
+  var nimfunc = cast[ptr QHeaderViewkeyboardSearchProc](cast[pointer](slot))
   let vsearch_ms = search
   let vsearchx_ret = string.fromBytes(toOpenArrayByte(vsearch_ms.data, 0, int(vsearch_ms.len)-1))
   c_free(vsearch_ms.data)
   let slotval1 = vsearchx_ret
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_sizeHintForRow(self: QHeaderView, row: cint): cint =
-
+  nimfunc[](slotval1)
+proc QHeaderViewsizeHintForRow*(self: gen_qheaderview_types.QHeaderView, row: cint): cint =
 
   fQHeaderView_virtualbase_sizeHintForRow(self.h, row)
 
-type QHeaderViewsizeHintForRowBase* = proc(row: cint): cint
-proc onsizeHintForRow*(self: QHeaderView, slot: proc(super: QHeaderViewsizeHintForRowBase, row: cint): cint) =
+type QHeaderViewsizeHintForRowProc* = proc(row: cint): cint
+proc onsizeHintForRow*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewsizeHintForRowProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewsizeHintForRowBase, row: cint): cint
-  var tmp = new Cb
+  var tmp = new QHeaderViewsizeHintForRowProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_sizeHintForRow(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_sizeHintForRow(self: ptr cQHeaderView, slot: int, row: cint): cint {.exportc: "miqt_exec_callback_QHeaderView_sizeHintForRow ".} =
-  type Cb = proc(super: QHeaderViewsizeHintForRowBase, row: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(row: cint): auto =
-    callVirtualBase_sizeHintForRow(QHeaderView(h: self), row)
+  var nimfunc = cast[ptr QHeaderViewsizeHintForRowProc](cast[pointer](slot))
   let slotval1 = row
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_sizeHintForColumn(self: QHeaderView, column: cint): cint =
-
+proc QHeaderViewsizeHintForColumn*(self: gen_qheaderview_types.QHeaderView, column: cint): cint =
 
   fQHeaderView_virtualbase_sizeHintForColumn(self.h, column)
 
-type QHeaderViewsizeHintForColumnBase* = proc(column: cint): cint
-proc onsizeHintForColumn*(self: QHeaderView, slot: proc(super: QHeaderViewsizeHintForColumnBase, column: cint): cint) =
+type QHeaderViewsizeHintForColumnProc* = proc(column: cint): cint
+proc onsizeHintForColumn*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewsizeHintForColumnProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewsizeHintForColumnBase, column: cint): cint
-  var tmp = new Cb
+  var tmp = new QHeaderViewsizeHintForColumnProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_sizeHintForColumn(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_sizeHintForColumn(self: ptr cQHeaderView, slot: int, column: cint): cint {.exportc: "miqt_exec_callback_QHeaderView_sizeHintForColumn ".} =
-  type Cb = proc(super: QHeaderViewsizeHintForColumnBase, column: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(column: cint): auto =
-    callVirtualBase_sizeHintForColumn(QHeaderView(h: self), column)
+  var nimfunc = cast[ptr QHeaderViewsizeHintForColumnProc](cast[pointer](slot))
   let slotval1 = column
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_itemDelegateForIndex(self: QHeaderView, index: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemdelegate.QAbstractItemDelegate =
-
+proc QHeaderViewitemDelegateForIndex*(self: gen_qheaderview_types.QHeaderView, index: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemdelegate.QAbstractItemDelegate =
 
   gen_qabstractitemdelegate.QAbstractItemDelegate(h: fQHeaderView_virtualbase_itemDelegateForIndex(self.h, index.h))
 
-type QHeaderViewitemDelegateForIndexBase* = proc(index: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemdelegate.QAbstractItemDelegate
-proc onitemDelegateForIndex*(self: QHeaderView, slot: proc(super: QHeaderViewitemDelegateForIndexBase, index: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemdelegate.QAbstractItemDelegate) =
+type QHeaderViewitemDelegateForIndexProc* = proc(index: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemdelegate.QAbstractItemDelegate
+proc onitemDelegateForIndex*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewitemDelegateForIndexProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewitemDelegateForIndexBase, index: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemdelegate.QAbstractItemDelegate
-  var tmp = new Cb
+  var tmp = new QHeaderViewitemDelegateForIndexProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_itemDelegateForIndex(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_itemDelegateForIndex(self: ptr cQHeaderView, slot: int, index: pointer): pointer {.exportc: "miqt_exec_callback_QHeaderView_itemDelegateForIndex ".} =
-  type Cb = proc(super: QHeaderViewitemDelegateForIndexBase, index: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemdelegate.QAbstractItemDelegate
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(index: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_itemDelegateForIndex(QHeaderView(h: self), index)
+  var nimfunc = cast[ptr QHeaderViewitemDelegateForIndexProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: index)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_inputMethodQuery(self: QHeaderView, query: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant =
-
+proc QHeaderViewinputMethodQuery*(self: gen_qheaderview_types.QHeaderView, query: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQHeaderView_virtualbase_inputMethodQuery(self.h, cint(query)))
 
-type QHeaderViewinputMethodQueryBase* = proc(query: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-proc oninputMethodQuery*(self: QHeaderView, slot: proc(super: QHeaderViewinputMethodQueryBase, query: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant) =
+type QHeaderViewinputMethodQueryProc* = proc(query: cint): gen_qvariant.QVariant
+proc oninputMethodQuery*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewinputMethodQueryProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewinputMethodQueryBase, query: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QHeaderViewinputMethodQueryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_inputMethodQuery(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_inputMethodQuery(self: ptr cQHeaderView, slot: int, query: cint): pointer {.exportc: "miqt_exec_callback_QHeaderView_inputMethodQuery ".} =
-  type Cb = proc(super: QHeaderViewinputMethodQueryBase, query: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(query: gen_qnamespace.InputMethodQuery): auto =
-    callVirtualBase_inputMethodQuery(QHeaderView(h: self), query)
-  let slotval1 = gen_qnamespace.InputMethodQuery(query)
+  var nimfunc = cast[ptr QHeaderViewinputMethodQueryProc](cast[pointer](slot))
+  let slotval1 = cint(query)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_setRootIndex(self: QHeaderView, index: gen_qabstractitemmodel.QModelIndex): void =
-
+proc QHeaderViewsetRootIndex*(self: gen_qheaderview_types.QHeaderView, index: gen_qabstractitemmodel.QModelIndex): void =
 
   fQHeaderView_virtualbase_setRootIndex(self.h, index.h)
 
-type QHeaderViewsetRootIndexBase* = proc(index: gen_qabstractitemmodel.QModelIndex): void
-proc onsetRootIndex*(self: QHeaderView, slot: proc(super: QHeaderViewsetRootIndexBase, index: gen_qabstractitemmodel.QModelIndex): void) =
+type QHeaderViewsetRootIndexProc* = proc(index: gen_qabstractitemmodel.QModelIndex): void
+proc onsetRootIndex*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewsetRootIndexProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewsetRootIndexBase, index: gen_qabstractitemmodel.QModelIndex): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewsetRootIndexProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_setRootIndex(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_setRootIndex(self: ptr cQHeaderView, slot: int, index: pointer): void {.exportc: "miqt_exec_callback_QHeaderView_setRootIndex ".} =
-  type Cb = proc(super: QHeaderViewsetRootIndexBase, index: gen_qabstractitemmodel.QModelIndex): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(index: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_setRootIndex(QHeaderView(h: self), index)
+  var nimfunc = cast[ptr QHeaderViewsetRootIndexProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: index)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_selectAll(self: QHeaderView, ): void =
-
+  nimfunc[](slotval1)
+proc QHeaderViewselectAll*(self: gen_qheaderview_types.QHeaderView, ): void =
 
   fQHeaderView_virtualbase_selectAll(self.h)
 
-type QHeaderViewselectAllBase* = proc(): void
-proc onselectAll*(self: QHeaderView, slot: proc(super: QHeaderViewselectAllBase): void) =
+type QHeaderViewselectAllProc* = proc(): void
+proc onselectAll*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewselectAllProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewselectAllBase): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewselectAllProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_selectAll(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_selectAll(self: ptr cQHeaderView, slot: int): void {.exportc: "miqt_exec_callback_QHeaderView_selectAll ".} =
-  type Cb = proc(super: QHeaderViewselectAllBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_selectAll(QHeaderView(h: self), )
+  var nimfunc = cast[ptr QHeaderViewselectAllProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_rowsAboutToBeRemoved(self: QHeaderView, parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void =
-
+  nimfunc[]()
+proc QHeaderViewrowsAboutToBeRemoved*(self: gen_qheaderview_types.QHeaderView, parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void =
 
   fQHeaderView_virtualbase_rowsAboutToBeRemoved(self.h, parent.h, start, endVal)
 
-type QHeaderViewrowsAboutToBeRemovedBase* = proc(parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void
-proc onrowsAboutToBeRemoved*(self: QHeaderView, slot: proc(super: QHeaderViewrowsAboutToBeRemovedBase, parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void) =
+type QHeaderViewrowsAboutToBeRemovedProc* = proc(parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void
+proc onrowsAboutToBeRemoved*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewrowsAboutToBeRemovedProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewrowsAboutToBeRemovedBase, parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewrowsAboutToBeRemovedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_rowsAboutToBeRemoved(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_rowsAboutToBeRemoved(self: ptr cQHeaderView, slot: int, parent: pointer, start: cint, endVal: cint): void {.exportc: "miqt_exec_callback_QHeaderView_rowsAboutToBeRemoved ".} =
-  type Cb = proc(super: QHeaderViewrowsAboutToBeRemovedBase, parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): auto =
-    callVirtualBase_rowsAboutToBeRemoved(QHeaderView(h: self), parent, start, endVal)
+  var nimfunc = cast[ptr QHeaderViewrowsAboutToBeRemovedProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: parent)
 
   let slotval2 = start
@@ -1951,239 +1737,188 @@ proc miqt_exec_callback_QHeaderView_rowsAboutToBeRemoved(self: ptr cQHeaderView,
   let slotval3 = endVal
 
 
-  nimfunc[](superCall, slotval1, slotval2, slotval3)
-proc callVirtualBase_selectionChanged(self: QHeaderView, selected: gen_qitemselectionmodel.QItemSelection, deselected: gen_qitemselectionmodel.QItemSelection): void =
-
+  nimfunc[](slotval1, slotval2, slotval3)
+proc QHeaderViewselectionChanged*(self: gen_qheaderview_types.QHeaderView, selected: gen_qitemselectionmodel.QItemSelection, deselected: gen_qitemselectionmodel.QItemSelection): void =
 
   fQHeaderView_virtualbase_selectionChanged(self.h, selected.h, deselected.h)
 
-type QHeaderViewselectionChangedBase* = proc(selected: gen_qitemselectionmodel.QItemSelection, deselected: gen_qitemselectionmodel.QItemSelection): void
-proc onselectionChanged*(self: QHeaderView, slot: proc(super: QHeaderViewselectionChangedBase, selected: gen_qitemselectionmodel.QItemSelection, deselected: gen_qitemselectionmodel.QItemSelection): void) =
+type QHeaderViewselectionChangedProc* = proc(selected: gen_qitemselectionmodel.QItemSelection, deselected: gen_qitemselectionmodel.QItemSelection): void
+proc onselectionChanged*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewselectionChangedProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewselectionChangedBase, selected: gen_qitemselectionmodel.QItemSelection, deselected: gen_qitemselectionmodel.QItemSelection): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewselectionChangedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_selectionChanged(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_selectionChanged(self: ptr cQHeaderView, slot: int, selected: pointer, deselected: pointer): void {.exportc: "miqt_exec_callback_QHeaderView_selectionChanged ".} =
-  type Cb = proc(super: QHeaderViewselectionChangedBase, selected: gen_qitemselectionmodel.QItemSelection, deselected: gen_qitemselectionmodel.QItemSelection): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(selected: gen_qitemselectionmodel.QItemSelection, deselected: gen_qitemselectionmodel.QItemSelection): auto =
-    callVirtualBase_selectionChanged(QHeaderView(h: self), selected, deselected)
+  var nimfunc = cast[ptr QHeaderViewselectionChangedProc](cast[pointer](slot))
   let slotval1 = gen_qitemselectionmodel.QItemSelection(h: selected)
 
   let slotval2 = gen_qitemselectionmodel.QItemSelection(h: deselected)
 
 
-  nimfunc[](superCall, slotval1, slotval2)
-proc callVirtualBase_updateEditorData(self: QHeaderView, ): void =
-
+  nimfunc[](slotval1, slotval2)
+proc QHeaderViewupdateEditorData*(self: gen_qheaderview_types.QHeaderView, ): void =
 
   fQHeaderView_virtualbase_updateEditorData(self.h)
 
-type QHeaderViewupdateEditorDataBase* = proc(): void
-proc onupdateEditorData*(self: QHeaderView, slot: proc(super: QHeaderViewupdateEditorDataBase): void) =
+type QHeaderViewupdateEditorDataProc* = proc(): void
+proc onupdateEditorData*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewupdateEditorDataProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewupdateEditorDataBase): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewupdateEditorDataProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_updateEditorData(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_updateEditorData(self: ptr cQHeaderView, slot: int): void {.exportc: "miqt_exec_callback_QHeaderView_updateEditorData ".} =
-  type Cb = proc(super: QHeaderViewupdateEditorDataBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_updateEditorData(QHeaderView(h: self), )
+  var nimfunc = cast[ptr QHeaderViewupdateEditorDataProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_updateEditorGeometries(self: QHeaderView, ): void =
-
+  nimfunc[]()
+proc QHeaderViewupdateEditorGeometries*(self: gen_qheaderview_types.QHeaderView, ): void =
 
   fQHeaderView_virtualbase_updateEditorGeometries(self.h)
 
-type QHeaderViewupdateEditorGeometriesBase* = proc(): void
-proc onupdateEditorGeometries*(self: QHeaderView, slot: proc(super: QHeaderViewupdateEditorGeometriesBase): void) =
+type QHeaderViewupdateEditorGeometriesProc* = proc(): void
+proc onupdateEditorGeometries*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewupdateEditorGeometriesProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewupdateEditorGeometriesBase): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewupdateEditorGeometriesProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_updateEditorGeometries(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_updateEditorGeometries(self: ptr cQHeaderView, slot: int): void {.exportc: "miqt_exec_callback_QHeaderView_updateEditorGeometries ".} =
-  type Cb = proc(super: QHeaderViewupdateEditorGeometriesBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_updateEditorGeometries(QHeaderView(h: self), )
+  var nimfunc = cast[ptr QHeaderViewupdateEditorGeometriesProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_verticalScrollbarAction(self: QHeaderView, action: cint): void =
-
+  nimfunc[]()
+proc QHeaderViewverticalScrollbarAction*(self: gen_qheaderview_types.QHeaderView, action: cint): void =
 
   fQHeaderView_virtualbase_verticalScrollbarAction(self.h, action)
 
-type QHeaderViewverticalScrollbarActionBase* = proc(action: cint): void
-proc onverticalScrollbarAction*(self: QHeaderView, slot: proc(super: QHeaderViewverticalScrollbarActionBase, action: cint): void) =
+type QHeaderViewverticalScrollbarActionProc* = proc(action: cint): void
+proc onverticalScrollbarAction*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewverticalScrollbarActionProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewverticalScrollbarActionBase, action: cint): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewverticalScrollbarActionProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_verticalScrollbarAction(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_verticalScrollbarAction(self: ptr cQHeaderView, slot: int, action: cint): void {.exportc: "miqt_exec_callback_QHeaderView_verticalScrollbarAction ".} =
-  type Cb = proc(super: QHeaderViewverticalScrollbarActionBase, action: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(action: cint): auto =
-    callVirtualBase_verticalScrollbarAction(QHeaderView(h: self), action)
+  var nimfunc = cast[ptr QHeaderViewverticalScrollbarActionProc](cast[pointer](slot))
   let slotval1 = action
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_horizontalScrollbarAction(self: QHeaderView, action: cint): void =
-
+  nimfunc[](slotval1)
+proc QHeaderViewhorizontalScrollbarAction*(self: gen_qheaderview_types.QHeaderView, action: cint): void =
 
   fQHeaderView_virtualbase_horizontalScrollbarAction(self.h, action)
 
-type QHeaderViewhorizontalScrollbarActionBase* = proc(action: cint): void
-proc onhorizontalScrollbarAction*(self: QHeaderView, slot: proc(super: QHeaderViewhorizontalScrollbarActionBase, action: cint): void) =
+type QHeaderViewhorizontalScrollbarActionProc* = proc(action: cint): void
+proc onhorizontalScrollbarAction*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewhorizontalScrollbarActionProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewhorizontalScrollbarActionBase, action: cint): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewhorizontalScrollbarActionProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_horizontalScrollbarAction(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_horizontalScrollbarAction(self: ptr cQHeaderView, slot: int, action: cint): void {.exportc: "miqt_exec_callback_QHeaderView_horizontalScrollbarAction ".} =
-  type Cb = proc(super: QHeaderViewhorizontalScrollbarActionBase, action: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(action: cint): auto =
-    callVirtualBase_horizontalScrollbarAction(QHeaderView(h: self), action)
+  var nimfunc = cast[ptr QHeaderViewhorizontalScrollbarActionProc](cast[pointer](slot))
   let slotval1 = action
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_verticalScrollbarValueChanged(self: QHeaderView, value: cint): void =
-
+  nimfunc[](slotval1)
+proc QHeaderViewverticalScrollbarValueChanged*(self: gen_qheaderview_types.QHeaderView, value: cint): void =
 
   fQHeaderView_virtualbase_verticalScrollbarValueChanged(self.h, value)
 
-type QHeaderViewverticalScrollbarValueChangedBase* = proc(value: cint): void
-proc onverticalScrollbarValueChanged*(self: QHeaderView, slot: proc(super: QHeaderViewverticalScrollbarValueChangedBase, value: cint): void) =
+type QHeaderViewverticalScrollbarValueChangedProc* = proc(value: cint): void
+proc onverticalScrollbarValueChanged*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewverticalScrollbarValueChangedProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewverticalScrollbarValueChangedBase, value: cint): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewverticalScrollbarValueChangedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_verticalScrollbarValueChanged(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_verticalScrollbarValueChanged(self: ptr cQHeaderView, slot: int, value: cint): void {.exportc: "miqt_exec_callback_QHeaderView_verticalScrollbarValueChanged ".} =
-  type Cb = proc(super: QHeaderViewverticalScrollbarValueChangedBase, value: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(value: cint): auto =
-    callVirtualBase_verticalScrollbarValueChanged(QHeaderView(h: self), value)
+  var nimfunc = cast[ptr QHeaderViewverticalScrollbarValueChangedProc](cast[pointer](slot))
   let slotval1 = value
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_horizontalScrollbarValueChanged(self: QHeaderView, value: cint): void =
-
+  nimfunc[](slotval1)
+proc QHeaderViewhorizontalScrollbarValueChanged*(self: gen_qheaderview_types.QHeaderView, value: cint): void =
 
   fQHeaderView_virtualbase_horizontalScrollbarValueChanged(self.h, value)
 
-type QHeaderViewhorizontalScrollbarValueChangedBase* = proc(value: cint): void
-proc onhorizontalScrollbarValueChanged*(self: QHeaderView, slot: proc(super: QHeaderViewhorizontalScrollbarValueChangedBase, value: cint): void) =
+type QHeaderViewhorizontalScrollbarValueChangedProc* = proc(value: cint): void
+proc onhorizontalScrollbarValueChanged*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewhorizontalScrollbarValueChangedProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewhorizontalScrollbarValueChangedBase, value: cint): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewhorizontalScrollbarValueChangedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_horizontalScrollbarValueChanged(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_horizontalScrollbarValueChanged(self: ptr cQHeaderView, slot: int, value: cint): void {.exportc: "miqt_exec_callback_QHeaderView_horizontalScrollbarValueChanged ".} =
-  type Cb = proc(super: QHeaderViewhorizontalScrollbarValueChangedBase, value: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(value: cint): auto =
-    callVirtualBase_horizontalScrollbarValueChanged(QHeaderView(h: self), value)
+  var nimfunc = cast[ptr QHeaderViewhorizontalScrollbarValueChangedProc](cast[pointer](slot))
   let slotval1 = value
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_closeEditor(self: QHeaderView, editor: gen_qwidget.QWidget, hint: gen_qabstractitemdelegate.QAbstractItemDelegateEndEditHint): void =
-
+  nimfunc[](slotval1)
+proc QHeaderViewcloseEditor*(self: gen_qheaderview_types.QHeaderView, editor: gen_qwidget.QWidget, hint: cint): void =
 
   fQHeaderView_virtualbase_closeEditor(self.h, editor.h, cint(hint))
 
-type QHeaderViewcloseEditorBase* = proc(editor: gen_qwidget.QWidget, hint: gen_qabstractitemdelegate.QAbstractItemDelegateEndEditHint): void
-proc oncloseEditor*(self: QHeaderView, slot: proc(super: QHeaderViewcloseEditorBase, editor: gen_qwidget.QWidget, hint: gen_qabstractitemdelegate.QAbstractItemDelegateEndEditHint): void) =
+type QHeaderViewcloseEditorProc* = proc(editor: gen_qwidget.QWidget, hint: cint): void
+proc oncloseEditor*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewcloseEditorProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewcloseEditorBase, editor: gen_qwidget.QWidget, hint: gen_qabstractitemdelegate.QAbstractItemDelegateEndEditHint): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewcloseEditorProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_closeEditor(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_closeEditor(self: ptr cQHeaderView, slot: int, editor: pointer, hint: cint): void {.exportc: "miqt_exec_callback_QHeaderView_closeEditor ".} =
-  type Cb = proc(super: QHeaderViewcloseEditorBase, editor: gen_qwidget.QWidget, hint: gen_qabstractitemdelegate.QAbstractItemDelegateEndEditHint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(editor: gen_qwidget.QWidget, hint: gen_qabstractitemdelegate.QAbstractItemDelegateEndEditHint): auto =
-    callVirtualBase_closeEditor(QHeaderView(h: self), editor, hint)
+  var nimfunc = cast[ptr QHeaderViewcloseEditorProc](cast[pointer](slot))
   let slotval1 = gen_qwidget.QWidget(h: editor)
 
-  let slotval2 = gen_qabstractitemdelegate.QAbstractItemDelegateEndEditHint(hint)
+  let slotval2 = cint(hint)
 
 
-  nimfunc[](superCall, slotval1, slotval2)
-proc callVirtualBase_commitData(self: QHeaderView, editor: gen_qwidget.QWidget): void =
-
+  nimfunc[](slotval1, slotval2)
+proc QHeaderViewcommitData*(self: gen_qheaderview_types.QHeaderView, editor: gen_qwidget.QWidget): void =
 
   fQHeaderView_virtualbase_commitData(self.h, editor.h)
 
-type QHeaderViewcommitDataBase* = proc(editor: gen_qwidget.QWidget): void
-proc oncommitData*(self: QHeaderView, slot: proc(super: QHeaderViewcommitDataBase, editor: gen_qwidget.QWidget): void) =
+type QHeaderViewcommitDataProc* = proc(editor: gen_qwidget.QWidget): void
+proc oncommitData*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewcommitDataProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewcommitDataBase, editor: gen_qwidget.QWidget): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewcommitDataProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_commitData(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_commitData(self: ptr cQHeaderView, slot: int, editor: pointer): void {.exportc: "miqt_exec_callback_QHeaderView_commitData ".} =
-  type Cb = proc(super: QHeaderViewcommitDataBase, editor: gen_qwidget.QWidget): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(editor: gen_qwidget.QWidget): auto =
-    callVirtualBase_commitData(QHeaderView(h: self), editor)
+  var nimfunc = cast[ptr QHeaderViewcommitDataProc](cast[pointer](slot))
   let slotval1 = gen_qwidget.QWidget(h: editor)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_editorDestroyed(self: QHeaderView, editor: gen_qobject.QObject): void =
-
+  nimfunc[](slotval1)
+proc QHeaderVieweditorDestroyed*(self: gen_qheaderview_types.QHeaderView, editor: gen_qobject.QObject): void =
 
   fQHeaderView_virtualbase_editorDestroyed(self.h, editor.h)
 
-type QHeaderVieweditorDestroyedBase* = proc(editor: gen_qobject.QObject): void
-proc oneditorDestroyed*(self: QHeaderView, slot: proc(super: QHeaderVieweditorDestroyedBase, editor: gen_qobject.QObject): void) =
+type QHeaderVieweditorDestroyedProc* = proc(editor: gen_qobject.QObject): void
+proc oneditorDestroyed*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderVieweditorDestroyedProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderVieweditorDestroyedBase, editor: gen_qobject.QObject): void
-  var tmp = new Cb
+  var tmp = new QHeaderVieweditorDestroyedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_editorDestroyed(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_editorDestroyed(self: ptr cQHeaderView, slot: int, editor: pointer): void {.exportc: "miqt_exec_callback_QHeaderView_editorDestroyed ".} =
-  type Cb = proc(super: QHeaderVieweditorDestroyedBase, editor: gen_qobject.QObject): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(editor: gen_qobject.QObject): auto =
-    callVirtualBase_editorDestroyed(QHeaderView(h: self), editor)
+  var nimfunc = cast[ptr QHeaderVieweditorDestroyedProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: editor)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_selectedIndexes(self: QHeaderView, ): seq[gen_qabstractitemmodel.QModelIndex] =
-
+  nimfunc[](slotval1)
+proc QHeaderViewselectedIndexes*(self: gen_qheaderview_types.QHeaderView, ): seq[gen_qabstractitemmodel.QModelIndex] =
 
   var v_ma = fQHeaderView_virtualbase_selectedIndexes(self.h)
   var vx_ret = newSeq[gen_qabstractitemmodel.QModelIndex](int(v_ma.len))
@@ -2192,870 +1927,686 @@ proc callVirtualBase_selectedIndexes(self: QHeaderView, ): seq[gen_qabstractitem
     vx_ret[i] = gen_qabstractitemmodel.QModelIndex(h: v_outCast[i])
   vx_ret
 
-type QHeaderViewselectedIndexesBase* = proc(): seq[gen_qabstractitemmodel.QModelIndex]
-proc onselectedIndexes*(self: QHeaderView, slot: proc(super: QHeaderViewselectedIndexesBase): seq[gen_qabstractitemmodel.QModelIndex]) =
+type QHeaderViewselectedIndexesProc* = proc(): seq[gen_qabstractitemmodel.QModelIndex]
+proc onselectedIndexes*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewselectedIndexesProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewselectedIndexesBase): seq[gen_qabstractitemmodel.QModelIndex]
-  var tmp = new Cb
+  var tmp = new QHeaderViewselectedIndexesProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_selectedIndexes(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_selectedIndexes(self: ptr cQHeaderView, slot: int): struct_miqt_array {.exportc: "miqt_exec_callback_QHeaderView_selectedIndexes ".} =
-  type Cb = proc(super: QHeaderViewselectedIndexesBase): seq[gen_qabstractitemmodel.QModelIndex]
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_selectedIndexes(QHeaderView(h: self), )
+  var nimfunc = cast[ptr QHeaderViewselectedIndexesProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
   var virtualReturn_CArray = newSeq[pointer](len(virtualReturn))
   for i in 0..<len(virtualReturn):
     virtualReturn_CArray[i] = virtualReturn[i].h
 
 
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
-proc callVirtualBase_edit2(self: QHeaderView, index: gen_qabstractitemmodel.QModelIndex, trigger: gen_qabstractitemview.QAbstractItemViewEditTrigger, event: gen_qcoreevent.QEvent): bool =
-
+proc QHeaderViewedit2*(self: gen_qheaderview_types.QHeaderView, index: gen_qabstractitemmodel.QModelIndex, trigger: cint, event: gen_qcoreevent.QEvent): bool =
 
   fQHeaderView_virtualbase_edit2(self.h, index.h, cint(trigger), event.h)
 
-type QHeaderViewedit2Base* = proc(index: gen_qabstractitemmodel.QModelIndex, trigger: gen_qabstractitemview.QAbstractItemViewEditTrigger, event: gen_qcoreevent.QEvent): bool
-proc onedit2*(self: QHeaderView, slot: proc(super: QHeaderViewedit2Base, index: gen_qabstractitemmodel.QModelIndex, trigger: gen_qabstractitemview.QAbstractItemViewEditTrigger, event: gen_qcoreevent.QEvent): bool) =
+type QHeaderViewedit2Proc* = proc(index: gen_qabstractitemmodel.QModelIndex, trigger: cint, event: gen_qcoreevent.QEvent): bool
+proc onedit2*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewedit2Proc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewedit2Base, index: gen_qabstractitemmodel.QModelIndex, trigger: gen_qabstractitemview.QAbstractItemViewEditTrigger, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QHeaderViewedit2Proc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_edit2(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_edit2(self: ptr cQHeaderView, slot: int, index: pointer, trigger: cint, event: pointer): bool {.exportc: "miqt_exec_callback_QHeaderView_edit2 ".} =
-  type Cb = proc(super: QHeaderViewedit2Base, index: gen_qabstractitemmodel.QModelIndex, trigger: gen_qabstractitemview.QAbstractItemViewEditTrigger, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(index: gen_qabstractitemmodel.QModelIndex, trigger: gen_qabstractitemview.QAbstractItemViewEditTrigger, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_edit2(QHeaderView(h: self), index, trigger, event)
+  var nimfunc = cast[ptr QHeaderViewedit2Proc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: index)
 
-  let slotval2 = gen_qabstractitemview.QAbstractItemViewEditTrigger(trigger)
+  let slotval2 = cint(trigger)
 
   let slotval3 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_selectionCommand(self: QHeaderView, index: gen_qabstractitemmodel.QModelIndex, event: gen_qcoreevent.QEvent): gen_qitemselectionmodel.QItemSelectionModelSelectionFlag =
+proc QHeaderViewselectionCommand*(self: gen_qheaderview_types.QHeaderView, index: gen_qabstractitemmodel.QModelIndex, event: gen_qcoreevent.QEvent): cint =
 
+  cint(fQHeaderView_virtualbase_selectionCommand(self.h, index.h, event.h))
 
-  gen_qitemselectionmodel.QItemSelectionModelSelectionFlag(fQHeaderView_virtualbase_selectionCommand(self.h, index.h, event.h))
-
-type QHeaderViewselectionCommandBase* = proc(index: gen_qabstractitemmodel.QModelIndex, event: gen_qcoreevent.QEvent): gen_qitemselectionmodel.QItemSelectionModelSelectionFlag
-proc onselectionCommand*(self: QHeaderView, slot: proc(super: QHeaderViewselectionCommandBase, index: gen_qabstractitemmodel.QModelIndex, event: gen_qcoreevent.QEvent): gen_qitemselectionmodel.QItemSelectionModelSelectionFlag) =
+type QHeaderViewselectionCommandProc* = proc(index: gen_qabstractitemmodel.QModelIndex, event: gen_qcoreevent.QEvent): cint
+proc onselectionCommand*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewselectionCommandProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewselectionCommandBase, index: gen_qabstractitemmodel.QModelIndex, event: gen_qcoreevent.QEvent): gen_qitemselectionmodel.QItemSelectionModelSelectionFlag
-  var tmp = new Cb
+  var tmp = new QHeaderViewselectionCommandProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_selectionCommand(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_selectionCommand(self: ptr cQHeaderView, slot: int, index: pointer, event: pointer): cint {.exportc: "miqt_exec_callback_QHeaderView_selectionCommand ".} =
-  type Cb = proc(super: QHeaderViewselectionCommandBase, index: gen_qabstractitemmodel.QModelIndex, event: gen_qcoreevent.QEvent): gen_qitemselectionmodel.QItemSelectionModelSelectionFlag
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(index: gen_qabstractitemmodel.QModelIndex, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_selectionCommand(QHeaderView(h: self), index, event)
+  var nimfunc = cast[ptr QHeaderViewselectionCommandProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: index)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   cint(virtualReturn)
-proc callVirtualBase_startDrag(self: QHeaderView, supportedActions: gen_qnamespace.DropAction): void =
-
+proc QHeaderViewstartDrag*(self: gen_qheaderview_types.QHeaderView, supportedActions: cint): void =
 
   fQHeaderView_virtualbase_startDrag(self.h, cint(supportedActions))
 
-type QHeaderViewstartDragBase* = proc(supportedActions: gen_qnamespace.DropAction): void
-proc onstartDrag*(self: QHeaderView, slot: proc(super: QHeaderViewstartDragBase, supportedActions: gen_qnamespace.DropAction): void) =
+type QHeaderViewstartDragProc* = proc(supportedActions: cint): void
+proc onstartDrag*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewstartDragProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewstartDragBase, supportedActions: gen_qnamespace.DropAction): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewstartDragProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_startDrag(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_startDrag(self: ptr cQHeaderView, slot: int, supportedActions: cint): void {.exportc: "miqt_exec_callback_QHeaderView_startDrag ".} =
-  type Cb = proc(super: QHeaderViewstartDragBase, supportedActions: gen_qnamespace.DropAction): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(supportedActions: gen_qnamespace.DropAction): auto =
-    callVirtualBase_startDrag(QHeaderView(h: self), supportedActions)
-  let slotval1 = gen_qnamespace.DropAction(supportedActions)
+  var nimfunc = cast[ptr QHeaderViewstartDragProc](cast[pointer](slot))
+  let slotval1 = cint(supportedActions)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_initViewItemOption(self: QHeaderView, option: gen_qstyleoption.QStyleOptionViewItem): void =
-
+  nimfunc[](slotval1)
+proc QHeaderViewinitViewItemOption*(self: gen_qheaderview_types.QHeaderView, option: gen_qstyleoption.QStyleOptionViewItem): void =
 
   fQHeaderView_virtualbase_initViewItemOption(self.h, option.h)
 
-type QHeaderViewinitViewItemOptionBase* = proc(option: gen_qstyleoption.QStyleOptionViewItem): void
-proc oninitViewItemOption*(self: QHeaderView, slot: proc(super: QHeaderViewinitViewItemOptionBase, option: gen_qstyleoption.QStyleOptionViewItem): void) =
+type QHeaderViewinitViewItemOptionProc* = proc(option: gen_qstyleoption.QStyleOptionViewItem): void
+proc oninitViewItemOption*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewinitViewItemOptionProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewinitViewItemOptionBase, option: gen_qstyleoption.QStyleOptionViewItem): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewinitViewItemOptionProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_initViewItemOption(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_initViewItemOption(self: ptr cQHeaderView, slot: int, option: pointer): void {.exportc: "miqt_exec_callback_QHeaderView_initViewItemOption ".} =
-  type Cb = proc(super: QHeaderViewinitViewItemOptionBase, option: gen_qstyleoption.QStyleOptionViewItem): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(option: gen_qstyleoption.QStyleOptionViewItem): auto =
-    callVirtualBase_initViewItemOption(QHeaderView(h: self), option)
+  var nimfunc = cast[ptr QHeaderViewinitViewItemOptionProc](cast[pointer](slot))
   let slotval1 = gen_qstyleoption.QStyleOptionViewItem(h: option)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusNextPrevChild(self: QHeaderView, next: bool): bool =
-
+  nimfunc[](slotval1)
+proc QHeaderViewfocusNextPrevChild*(self: gen_qheaderview_types.QHeaderView, next: bool): bool =
 
   fQHeaderView_virtualbase_focusNextPrevChild(self.h, next)
 
-type QHeaderViewfocusNextPrevChildBase* = proc(next: bool): bool
-proc onfocusNextPrevChild*(self: QHeaderView, slot: proc(super: QHeaderViewfocusNextPrevChildBase, next: bool): bool) =
+type QHeaderViewfocusNextPrevChildProc* = proc(next: bool): bool
+proc onfocusNextPrevChild*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewfocusNextPrevChildProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewfocusNextPrevChildBase, next: bool): bool
-  var tmp = new Cb
+  var tmp = new QHeaderViewfocusNextPrevChildProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_focusNextPrevChild(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_focusNextPrevChild(self: ptr cQHeaderView, slot: int, next: bool): bool {.exportc: "miqt_exec_callback_QHeaderView_focusNextPrevChild ".} =
-  type Cb = proc(super: QHeaderViewfocusNextPrevChildBase, next: bool): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(next: bool): auto =
-    callVirtualBase_focusNextPrevChild(QHeaderView(h: self), next)
+  var nimfunc = cast[ptr QHeaderViewfocusNextPrevChildProc](cast[pointer](slot))
   let slotval1 = next
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_dragEnterEvent(self: QHeaderView, event: gen_qevent.QDragEnterEvent): void =
-
+proc QHeaderViewdragEnterEvent*(self: gen_qheaderview_types.QHeaderView, event: gen_qevent.QDragEnterEvent): void =
 
   fQHeaderView_virtualbase_dragEnterEvent(self.h, event.h)
 
-type QHeaderViewdragEnterEventBase* = proc(event: gen_qevent.QDragEnterEvent): void
-proc ondragEnterEvent*(self: QHeaderView, slot: proc(super: QHeaderViewdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void) =
+type QHeaderViewdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
+proc ondragEnterEvent*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewdragEnterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewdragEnterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_dragEnterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_dragEnterEvent(self: ptr cQHeaderView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QHeaderView_dragEnterEvent ".} =
-  type Cb = proc(super: QHeaderViewdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragEnterEvent): auto =
-    callVirtualBase_dragEnterEvent(QHeaderView(h: self), event)
+  var nimfunc = cast[ptr QHeaderViewdragEnterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragMoveEvent(self: QHeaderView, event: gen_qevent.QDragMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QHeaderViewdragMoveEvent*(self: gen_qheaderview_types.QHeaderView, event: gen_qevent.QDragMoveEvent): void =
 
   fQHeaderView_virtualbase_dragMoveEvent(self.h, event.h)
 
-type QHeaderViewdragMoveEventBase* = proc(event: gen_qevent.QDragMoveEvent): void
-proc ondragMoveEvent*(self: QHeaderView, slot: proc(super: QHeaderViewdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void) =
+type QHeaderViewdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
+proc ondragMoveEvent*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewdragMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewdragMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_dragMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_dragMoveEvent(self: ptr cQHeaderView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QHeaderView_dragMoveEvent ".} =
-  type Cb = proc(super: QHeaderViewdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragMoveEvent): auto =
-    callVirtualBase_dragMoveEvent(QHeaderView(h: self), event)
+  var nimfunc = cast[ptr QHeaderViewdragMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragLeaveEvent(self: QHeaderView, event: gen_qevent.QDragLeaveEvent): void =
-
+  nimfunc[](slotval1)
+proc QHeaderViewdragLeaveEvent*(self: gen_qheaderview_types.QHeaderView, event: gen_qevent.QDragLeaveEvent): void =
 
   fQHeaderView_virtualbase_dragLeaveEvent(self.h, event.h)
 
-type QHeaderViewdragLeaveEventBase* = proc(event: gen_qevent.QDragLeaveEvent): void
-proc ondragLeaveEvent*(self: QHeaderView, slot: proc(super: QHeaderViewdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void) =
+type QHeaderViewdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
+proc ondragLeaveEvent*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewdragLeaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewdragLeaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_dragLeaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_dragLeaveEvent(self: ptr cQHeaderView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QHeaderView_dragLeaveEvent ".} =
-  type Cb = proc(super: QHeaderViewdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragLeaveEvent): auto =
-    callVirtualBase_dragLeaveEvent(QHeaderView(h: self), event)
+  var nimfunc = cast[ptr QHeaderViewdragLeaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragLeaveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dropEvent(self: QHeaderView, event: gen_qevent.QDropEvent): void =
-
+  nimfunc[](slotval1)
+proc QHeaderViewdropEvent*(self: gen_qheaderview_types.QHeaderView, event: gen_qevent.QDropEvent): void =
 
   fQHeaderView_virtualbase_dropEvent(self.h, event.h)
 
-type QHeaderViewdropEventBase* = proc(event: gen_qevent.QDropEvent): void
-proc ondropEvent*(self: QHeaderView, slot: proc(super: QHeaderViewdropEventBase, event: gen_qevent.QDropEvent): void) =
+type QHeaderViewdropEventProc* = proc(event: gen_qevent.QDropEvent): void
+proc ondropEvent*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewdropEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewdropEventBase, event: gen_qevent.QDropEvent): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewdropEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_dropEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_dropEvent(self: ptr cQHeaderView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QHeaderView_dropEvent ".} =
-  type Cb = proc(super: QHeaderViewdropEventBase, event: gen_qevent.QDropEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDropEvent): auto =
-    callVirtualBase_dropEvent(QHeaderView(h: self), event)
+  var nimfunc = cast[ptr QHeaderViewdropEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDropEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusInEvent(self: QHeaderView, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QHeaderViewfocusInEvent*(self: gen_qheaderview_types.QHeaderView, event: gen_qevent.QFocusEvent): void =
 
   fQHeaderView_virtualbase_focusInEvent(self.h, event.h)
 
-type QHeaderViewfocusInEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusInEvent*(self: QHeaderView, slot: proc(super: QHeaderViewfocusInEventBase, event: gen_qevent.QFocusEvent): void) =
+type QHeaderViewfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusInEvent*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewfocusInEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewfocusInEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_focusInEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_focusInEvent(self: ptr cQHeaderView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QHeaderView_focusInEvent ".} =
-  type Cb = proc(super: QHeaderViewfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusInEvent(QHeaderView(h: self), event)
+  var nimfunc = cast[ptr QHeaderViewfocusInEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusOutEvent(self: QHeaderView, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QHeaderViewfocusOutEvent*(self: gen_qheaderview_types.QHeaderView, event: gen_qevent.QFocusEvent): void =
 
   fQHeaderView_virtualbase_focusOutEvent(self.h, event.h)
 
-type QHeaderViewfocusOutEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusOutEvent*(self: QHeaderView, slot: proc(super: QHeaderViewfocusOutEventBase, event: gen_qevent.QFocusEvent): void) =
+type QHeaderViewfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusOutEvent*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewfocusOutEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewfocusOutEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_focusOutEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_focusOutEvent(self: ptr cQHeaderView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QHeaderView_focusOutEvent ".} =
-  type Cb = proc(super: QHeaderViewfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusOutEvent(QHeaderView(h: self), event)
+  var nimfunc = cast[ptr QHeaderViewfocusOutEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyPressEvent(self: QHeaderView, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QHeaderViewkeyPressEvent*(self: gen_qheaderview_types.QHeaderView, event: gen_qevent.QKeyEvent): void =
 
   fQHeaderView_virtualbase_keyPressEvent(self.h, event.h)
 
-type QHeaderViewkeyPressEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyPressEvent*(self: QHeaderView, slot: proc(super: QHeaderViewkeyPressEventBase, event: gen_qevent.QKeyEvent): void) =
+type QHeaderViewkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyPressEvent*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewkeyPressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewkeyPressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_keyPressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_keyPressEvent(self: ptr cQHeaderView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QHeaderView_keyPressEvent ".} =
-  type Cb = proc(super: QHeaderViewkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyPressEvent(QHeaderView(h: self), event)
+  var nimfunc = cast[ptr QHeaderViewkeyPressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_resizeEvent(self: QHeaderView, event: gen_qevent.QResizeEvent): void =
-
+  nimfunc[](slotval1)
+proc QHeaderViewresizeEvent*(self: gen_qheaderview_types.QHeaderView, event: gen_qevent.QResizeEvent): void =
 
   fQHeaderView_virtualbase_resizeEvent(self.h, event.h)
 
-type QHeaderViewresizeEventBase* = proc(event: gen_qevent.QResizeEvent): void
-proc onresizeEvent*(self: QHeaderView, slot: proc(super: QHeaderViewresizeEventBase, event: gen_qevent.QResizeEvent): void) =
+type QHeaderViewresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
+proc onresizeEvent*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewresizeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewresizeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_resizeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_resizeEvent(self: ptr cQHeaderView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QHeaderView_resizeEvent ".} =
-  type Cb = proc(super: QHeaderViewresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QResizeEvent): auto =
-    callVirtualBase_resizeEvent(QHeaderView(h: self), event)
+  var nimfunc = cast[ptr QHeaderViewresizeEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QResizeEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_timerEvent(self: QHeaderView, event: gen_qcoreevent.QTimerEvent): void =
-
+  nimfunc[](slotval1)
+proc QHeaderViewtimerEvent*(self: gen_qheaderview_types.QHeaderView, event: gen_qcoreevent.QTimerEvent): void =
 
   fQHeaderView_virtualbase_timerEvent(self.h, event.h)
 
-type QHeaderViewtimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QHeaderView, slot: proc(super: QHeaderViewtimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QHeaderViewtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewtimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewtimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewtimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_timerEvent(self: ptr cQHeaderView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QHeaderView_timerEvent ".} =
-  type Cb = proc(super: QHeaderViewtimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QHeaderView(h: self), event)
+  var nimfunc = cast[ptr QHeaderViewtimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_inputMethodEvent(self: QHeaderView, event: gen_qevent.QInputMethodEvent): void =
-
+  nimfunc[](slotval1)
+proc QHeaderViewinputMethodEvent*(self: gen_qheaderview_types.QHeaderView, event: gen_qevent.QInputMethodEvent): void =
 
   fQHeaderView_virtualbase_inputMethodEvent(self.h, event.h)
 
-type QHeaderViewinputMethodEventBase* = proc(event: gen_qevent.QInputMethodEvent): void
-proc oninputMethodEvent*(self: QHeaderView, slot: proc(super: QHeaderViewinputMethodEventBase, event: gen_qevent.QInputMethodEvent): void) =
+type QHeaderViewinputMethodEventProc* = proc(event: gen_qevent.QInputMethodEvent): void
+proc oninputMethodEvent*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewinputMethodEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewinputMethodEventBase, event: gen_qevent.QInputMethodEvent): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewinputMethodEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_inputMethodEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_inputMethodEvent(self: ptr cQHeaderView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QHeaderView_inputMethodEvent ".} =
-  type Cb = proc(super: QHeaderViewinputMethodEventBase, event: gen_qevent.QInputMethodEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QInputMethodEvent): auto =
-    callVirtualBase_inputMethodEvent(QHeaderView(h: self), event)
+  var nimfunc = cast[ptr QHeaderViewinputMethodEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QInputMethodEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_eventFilter(self: QHeaderView, objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[](slotval1)
+proc QHeaderVieweventFilter*(self: gen_qheaderview_types.QHeaderView, objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQHeaderView_virtualbase_eventFilter(self.h, objectVal.h, event.h)
 
-type QHeaderVieweventFilterBase* = proc(objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QHeaderView, slot: proc(super: QHeaderVieweventFilterBase, objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QHeaderVieweventFilterProc* = proc(objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderVieweventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderVieweventFilterBase, objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QHeaderVieweventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_eventFilter(self: ptr cQHeaderView, slot: int, objectVal: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QHeaderView_eventFilter ".} =
-  type Cb = proc(super: QHeaderVieweventFilterBase, objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QHeaderView(h: self), objectVal, event)
+  var nimfunc = cast[ptr QHeaderVieweventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: objectVal)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_viewportSizeHint(self: QHeaderView, ): gen_qsize.QSize =
-
+proc QHeaderViewviewportSizeHint*(self: gen_qheaderview_types.QHeaderView, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQHeaderView_virtualbase_viewportSizeHint(self.h))
 
-type QHeaderViewviewportSizeHintBase* = proc(): gen_qsize.QSize
-proc onviewportSizeHint*(self: QHeaderView, slot: proc(super: QHeaderViewviewportSizeHintBase): gen_qsize.QSize) =
+type QHeaderViewviewportSizeHintProc* = proc(): gen_qsize.QSize
+proc onviewportSizeHint*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewviewportSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewviewportSizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QHeaderViewviewportSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_viewportSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_viewportSizeHint(self: ptr cQHeaderView, slot: int): pointer {.exportc: "miqt_exec_callback_QHeaderView_viewportSizeHint ".} =
-  type Cb = proc(super: QHeaderViewviewportSizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_viewportSizeHint(QHeaderView(h: self), )
+  var nimfunc = cast[ptr QHeaderViewviewportSizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_minimumSizeHint(self: QHeaderView, ): gen_qsize.QSize =
-
+proc QHeaderViewminimumSizeHint*(self: gen_qheaderview_types.QHeaderView, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQHeaderView_virtualbase_minimumSizeHint(self.h))
 
-type QHeaderViewminimumSizeHintBase* = proc(): gen_qsize.QSize
-proc onminimumSizeHint*(self: QHeaderView, slot: proc(super: QHeaderViewminimumSizeHintBase): gen_qsize.QSize) =
+type QHeaderViewminimumSizeHintProc* = proc(): gen_qsize.QSize
+proc onminimumSizeHint*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewminimumSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewminimumSizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QHeaderViewminimumSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_minimumSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_minimumSizeHint(self: ptr cQHeaderView, slot: int): pointer {.exportc: "miqt_exec_callback_QHeaderView_minimumSizeHint ".} =
-  type Cb = proc(super: QHeaderViewminimumSizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_minimumSizeHint(QHeaderView(h: self), )
+  var nimfunc = cast[ptr QHeaderViewminimumSizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_setupViewport(self: QHeaderView, viewport: gen_qwidget.QWidget): void =
-
+proc QHeaderViewsetupViewport*(self: gen_qheaderview_types.QHeaderView, viewport: gen_qwidget.QWidget): void =
 
   fQHeaderView_virtualbase_setupViewport(self.h, viewport.h)
 
-type QHeaderViewsetupViewportBase* = proc(viewport: gen_qwidget.QWidget): void
-proc onsetupViewport*(self: QHeaderView, slot: proc(super: QHeaderViewsetupViewportBase, viewport: gen_qwidget.QWidget): void) =
+type QHeaderViewsetupViewportProc* = proc(viewport: gen_qwidget.QWidget): void
+proc onsetupViewport*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewsetupViewportProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewsetupViewportBase, viewport: gen_qwidget.QWidget): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewsetupViewportProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_setupViewport(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_setupViewport(self: ptr cQHeaderView, slot: int, viewport: pointer): void {.exportc: "miqt_exec_callback_QHeaderView_setupViewport ".} =
-  type Cb = proc(super: QHeaderViewsetupViewportBase, viewport: gen_qwidget.QWidget): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(viewport: gen_qwidget.QWidget): auto =
-    callVirtualBase_setupViewport(QHeaderView(h: self), viewport)
+  var nimfunc = cast[ptr QHeaderViewsetupViewportProc](cast[pointer](slot))
   let slotval1 = gen_qwidget.QWidget(h: viewport)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_wheelEvent(self: QHeaderView, param1: gen_qevent.QWheelEvent): void =
-
+  nimfunc[](slotval1)
+proc QHeaderViewwheelEvent*(self: gen_qheaderview_types.QHeaderView, param1: gen_qevent.QWheelEvent): void =
 
   fQHeaderView_virtualbase_wheelEvent(self.h, param1.h)
 
-type QHeaderViewwheelEventBase* = proc(param1: gen_qevent.QWheelEvent): void
-proc onwheelEvent*(self: QHeaderView, slot: proc(super: QHeaderViewwheelEventBase, param1: gen_qevent.QWheelEvent): void) =
+type QHeaderViewwheelEventProc* = proc(param1: gen_qevent.QWheelEvent): void
+proc onwheelEvent*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewwheelEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewwheelEventBase, param1: gen_qevent.QWheelEvent): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewwheelEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_wheelEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_wheelEvent(self: ptr cQHeaderView, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QHeaderView_wheelEvent ".} =
-  type Cb = proc(super: QHeaderViewwheelEventBase, param1: gen_qevent.QWheelEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QWheelEvent): auto =
-    callVirtualBase_wheelEvent(QHeaderView(h: self), param1)
+  var nimfunc = cast[ptr QHeaderViewwheelEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QWheelEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_contextMenuEvent(self: QHeaderView, param1: gen_qevent.QContextMenuEvent): void =
-
+  nimfunc[](slotval1)
+proc QHeaderViewcontextMenuEvent*(self: gen_qheaderview_types.QHeaderView, param1: gen_qevent.QContextMenuEvent): void =
 
   fQHeaderView_virtualbase_contextMenuEvent(self.h, param1.h)
 
-type QHeaderViewcontextMenuEventBase* = proc(param1: gen_qevent.QContextMenuEvent): void
-proc oncontextMenuEvent*(self: QHeaderView, slot: proc(super: QHeaderViewcontextMenuEventBase, param1: gen_qevent.QContextMenuEvent): void) =
+type QHeaderViewcontextMenuEventProc* = proc(param1: gen_qevent.QContextMenuEvent): void
+proc oncontextMenuEvent*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewcontextMenuEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewcontextMenuEventBase, param1: gen_qevent.QContextMenuEvent): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewcontextMenuEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_contextMenuEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_contextMenuEvent(self: ptr cQHeaderView, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QHeaderView_contextMenuEvent ".} =
-  type Cb = proc(super: QHeaderViewcontextMenuEventBase, param1: gen_qevent.QContextMenuEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QContextMenuEvent): auto =
-    callVirtualBase_contextMenuEvent(QHeaderView(h: self), param1)
+  var nimfunc = cast[ptr QHeaderViewcontextMenuEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QContextMenuEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_changeEvent(self: QHeaderView, param1: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QHeaderViewchangeEvent*(self: gen_qheaderview_types.QHeaderView, param1: gen_qcoreevent.QEvent): void =
 
   fQHeaderView_virtualbase_changeEvent(self.h, param1.h)
 
-type QHeaderViewchangeEventBase* = proc(param1: gen_qcoreevent.QEvent): void
-proc onchangeEvent*(self: QHeaderView, slot: proc(super: QHeaderViewchangeEventBase, param1: gen_qcoreevent.QEvent): void) =
+type QHeaderViewchangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
+proc onchangeEvent*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewchangeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewchangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewchangeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_changeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_changeEvent(self: ptr cQHeaderView, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QHeaderView_changeEvent ".} =
-  type Cb = proc(super: QHeaderViewchangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_changeEvent(QHeaderView(h: self), param1)
+  var nimfunc = cast[ptr QHeaderViewchangeEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_devType(self: QHeaderView, ): cint =
-
+  nimfunc[](slotval1)
+proc QHeaderViewdevType*(self: gen_qheaderview_types.QHeaderView, ): cint =
 
   fQHeaderView_virtualbase_devType(self.h)
 
-type QHeaderViewdevTypeBase* = proc(): cint
-proc ondevType*(self: QHeaderView, slot: proc(super: QHeaderViewdevTypeBase): cint) =
+type QHeaderViewdevTypeProc* = proc(): cint
+proc ondevType*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewdevTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewdevTypeBase): cint
-  var tmp = new Cb
+  var tmp = new QHeaderViewdevTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_devType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_devType(self: ptr cQHeaderView, slot: int): cint {.exportc: "miqt_exec_callback_QHeaderView_devType ".} =
-  type Cb = proc(super: QHeaderViewdevTypeBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_devType(QHeaderView(h: self), )
+  var nimfunc = cast[ptr QHeaderViewdevTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_heightForWidth(self: QHeaderView, param1: cint): cint =
-
+proc QHeaderViewheightForWidth*(self: gen_qheaderview_types.QHeaderView, param1: cint): cint =
 
   fQHeaderView_virtualbase_heightForWidth(self.h, param1)
 
-type QHeaderViewheightForWidthBase* = proc(param1: cint): cint
-proc onheightForWidth*(self: QHeaderView, slot: proc(super: QHeaderViewheightForWidthBase, param1: cint): cint) =
+type QHeaderViewheightForWidthProc* = proc(param1: cint): cint
+proc onheightForWidth*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewheightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewheightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QHeaderViewheightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_heightForWidth(self: ptr cQHeaderView, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QHeaderView_heightForWidth ".} =
-  type Cb = proc(super: QHeaderViewheightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_heightForWidth(QHeaderView(h: self), param1)
+  var nimfunc = cast[ptr QHeaderViewheightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_hasHeightForWidth(self: QHeaderView, ): bool =
-
+proc QHeaderViewhasHeightForWidth*(self: gen_qheaderview_types.QHeaderView, ): bool =
 
   fQHeaderView_virtualbase_hasHeightForWidth(self.h)
 
-type QHeaderViewhasHeightForWidthBase* = proc(): bool
-proc onhasHeightForWidth*(self: QHeaderView, slot: proc(super: QHeaderViewhasHeightForWidthBase): bool) =
+type QHeaderViewhasHeightForWidthProc* = proc(): bool
+proc onhasHeightForWidth*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewhasHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewhasHeightForWidthBase): bool
-  var tmp = new Cb
+  var tmp = new QHeaderViewhasHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_hasHeightForWidth(self: ptr cQHeaderView, slot: int): bool {.exportc: "miqt_exec_callback_QHeaderView_hasHeightForWidth ".} =
-  type Cb = proc(super: QHeaderViewhasHeightForWidthBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasHeightForWidth(QHeaderView(h: self), )
+  var nimfunc = cast[ptr QHeaderViewhasHeightForWidthProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_paintEngine(self: QHeaderView, ): gen_qpaintengine.QPaintEngine =
-
+proc QHeaderViewpaintEngine*(self: gen_qheaderview_types.QHeaderView, ): gen_qpaintengine.QPaintEngine =
 
   gen_qpaintengine.QPaintEngine(h: fQHeaderView_virtualbase_paintEngine(self.h))
 
-type QHeaderViewpaintEngineBase* = proc(): gen_qpaintengine.QPaintEngine
-proc onpaintEngine*(self: QHeaderView, slot: proc(super: QHeaderViewpaintEngineBase): gen_qpaintengine.QPaintEngine) =
+type QHeaderViewpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
+proc onpaintEngine*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewpaintEngineProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var tmp = new Cb
+  var tmp = new QHeaderViewpaintEngineProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_paintEngine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_paintEngine(self: ptr cQHeaderView, slot: int): pointer {.exportc: "miqt_exec_callback_QHeaderView_paintEngine ".} =
-  type Cb = proc(super: QHeaderViewpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_paintEngine(QHeaderView(h: self), )
+  var nimfunc = cast[ptr QHeaderViewpaintEngineProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_keyReleaseEvent(self: QHeaderView, event: gen_qevent.QKeyEvent): void =
-
+proc QHeaderViewkeyReleaseEvent*(self: gen_qheaderview_types.QHeaderView, event: gen_qevent.QKeyEvent): void =
 
   fQHeaderView_virtualbase_keyReleaseEvent(self.h, event.h)
 
-type QHeaderViewkeyReleaseEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyReleaseEvent*(self: QHeaderView, slot: proc(super: QHeaderViewkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void) =
+type QHeaderViewkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyReleaseEvent*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewkeyReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewkeyReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_keyReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_keyReleaseEvent(self: ptr cQHeaderView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QHeaderView_keyReleaseEvent ".} =
-  type Cb = proc(super: QHeaderViewkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyReleaseEvent(QHeaderView(h: self), event)
+  var nimfunc = cast[ptr QHeaderViewkeyReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_enterEvent(self: QHeaderView, event: gen_qevent.QEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QHeaderViewenterEvent*(self: gen_qheaderview_types.QHeaderView, event: gen_qevent.QEnterEvent): void =
 
   fQHeaderView_virtualbase_enterEvent(self.h, event.h)
 
-type QHeaderViewenterEventBase* = proc(event: gen_qevent.QEnterEvent): void
-proc onenterEvent*(self: QHeaderView, slot: proc(super: QHeaderViewenterEventBase, event: gen_qevent.QEnterEvent): void) =
+type QHeaderViewenterEventProc* = proc(event: gen_qevent.QEnterEvent): void
+proc onenterEvent*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewenterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewenterEventBase, event: gen_qevent.QEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewenterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_enterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_enterEvent(self: ptr cQHeaderView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QHeaderView_enterEvent ".} =
-  type Cb = proc(super: QHeaderViewenterEventBase, event: gen_qevent.QEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QEnterEvent): auto =
-    callVirtualBase_enterEvent(QHeaderView(h: self), event)
+  var nimfunc = cast[ptr QHeaderViewenterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_leaveEvent(self: QHeaderView, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QHeaderViewleaveEvent*(self: gen_qheaderview_types.QHeaderView, event: gen_qcoreevent.QEvent): void =
 
   fQHeaderView_virtualbase_leaveEvent(self.h, event.h)
 
-type QHeaderViewleaveEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onleaveEvent*(self: QHeaderView, slot: proc(super: QHeaderViewleaveEventBase, event: gen_qcoreevent.QEvent): void) =
+type QHeaderViewleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onleaveEvent*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewleaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewleaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_leaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_leaveEvent(self: ptr cQHeaderView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QHeaderView_leaveEvent ".} =
-  type Cb = proc(super: QHeaderViewleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_leaveEvent(QHeaderView(h: self), event)
+  var nimfunc = cast[ptr QHeaderViewleaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_moveEvent(self: QHeaderView, event: gen_qevent.QMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QHeaderViewmoveEvent*(self: gen_qheaderview_types.QHeaderView, event: gen_qevent.QMoveEvent): void =
 
   fQHeaderView_virtualbase_moveEvent(self.h, event.h)
 
-type QHeaderViewmoveEventBase* = proc(event: gen_qevent.QMoveEvent): void
-proc onmoveEvent*(self: QHeaderView, slot: proc(super: QHeaderViewmoveEventBase, event: gen_qevent.QMoveEvent): void) =
+type QHeaderViewmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
+proc onmoveEvent*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewmoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewmoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_moveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_moveEvent(self: ptr cQHeaderView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QHeaderView_moveEvent ".} =
-  type Cb = proc(super: QHeaderViewmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMoveEvent): auto =
-    callVirtualBase_moveEvent(QHeaderView(h: self), event)
+  var nimfunc = cast[ptr QHeaderViewmoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_closeEvent(self: QHeaderView, event: gen_qevent.QCloseEvent): void =
-
+  nimfunc[](slotval1)
+proc QHeaderViewcloseEvent*(self: gen_qheaderview_types.QHeaderView, event: gen_qevent.QCloseEvent): void =
 
   fQHeaderView_virtualbase_closeEvent(self.h, event.h)
 
-type QHeaderViewcloseEventBase* = proc(event: gen_qevent.QCloseEvent): void
-proc oncloseEvent*(self: QHeaderView, slot: proc(super: QHeaderViewcloseEventBase, event: gen_qevent.QCloseEvent): void) =
+type QHeaderViewcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
+proc oncloseEvent*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewcloseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewcloseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_closeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_closeEvent(self: ptr cQHeaderView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QHeaderView_closeEvent ".} =
-  type Cb = proc(super: QHeaderViewcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QCloseEvent): auto =
-    callVirtualBase_closeEvent(QHeaderView(h: self), event)
+  var nimfunc = cast[ptr QHeaderViewcloseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QCloseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_tabletEvent(self: QHeaderView, event: gen_qevent.QTabletEvent): void =
-
+  nimfunc[](slotval1)
+proc QHeaderViewtabletEvent*(self: gen_qheaderview_types.QHeaderView, event: gen_qevent.QTabletEvent): void =
 
   fQHeaderView_virtualbase_tabletEvent(self.h, event.h)
 
-type QHeaderViewtabletEventBase* = proc(event: gen_qevent.QTabletEvent): void
-proc ontabletEvent*(self: QHeaderView, slot: proc(super: QHeaderViewtabletEventBase, event: gen_qevent.QTabletEvent): void) =
+type QHeaderViewtabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
+proc ontabletEvent*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewtabletEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewtabletEventBase, event: gen_qevent.QTabletEvent): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewtabletEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_tabletEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_tabletEvent(self: ptr cQHeaderView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QHeaderView_tabletEvent ".} =
-  type Cb = proc(super: QHeaderViewtabletEventBase, event: gen_qevent.QTabletEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QTabletEvent): auto =
-    callVirtualBase_tabletEvent(QHeaderView(h: self), event)
+  var nimfunc = cast[ptr QHeaderViewtabletEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QTabletEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_actionEvent(self: QHeaderView, event: gen_qevent.QActionEvent): void =
-
+  nimfunc[](slotval1)
+proc QHeaderViewactionEvent*(self: gen_qheaderview_types.QHeaderView, event: gen_qevent.QActionEvent): void =
 
   fQHeaderView_virtualbase_actionEvent(self.h, event.h)
 
-type QHeaderViewactionEventBase* = proc(event: gen_qevent.QActionEvent): void
-proc onactionEvent*(self: QHeaderView, slot: proc(super: QHeaderViewactionEventBase, event: gen_qevent.QActionEvent): void) =
+type QHeaderViewactionEventProc* = proc(event: gen_qevent.QActionEvent): void
+proc onactionEvent*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewactionEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewactionEventBase, event: gen_qevent.QActionEvent): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewactionEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_actionEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_actionEvent(self: ptr cQHeaderView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QHeaderView_actionEvent ".} =
-  type Cb = proc(super: QHeaderViewactionEventBase, event: gen_qevent.QActionEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QActionEvent): auto =
-    callVirtualBase_actionEvent(QHeaderView(h: self), event)
+  var nimfunc = cast[ptr QHeaderViewactionEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QActionEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_showEvent(self: QHeaderView, event: gen_qevent.QShowEvent): void =
-
+  nimfunc[](slotval1)
+proc QHeaderViewshowEvent*(self: gen_qheaderview_types.QHeaderView, event: gen_qevent.QShowEvent): void =
 
   fQHeaderView_virtualbase_showEvent(self.h, event.h)
 
-type QHeaderViewshowEventBase* = proc(event: gen_qevent.QShowEvent): void
-proc onshowEvent*(self: QHeaderView, slot: proc(super: QHeaderViewshowEventBase, event: gen_qevent.QShowEvent): void) =
+type QHeaderViewshowEventProc* = proc(event: gen_qevent.QShowEvent): void
+proc onshowEvent*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewshowEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewshowEventBase, event: gen_qevent.QShowEvent): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewshowEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_showEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_showEvent(self: ptr cQHeaderView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QHeaderView_showEvent ".} =
-  type Cb = proc(super: QHeaderViewshowEventBase, event: gen_qevent.QShowEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QShowEvent): auto =
-    callVirtualBase_showEvent(QHeaderView(h: self), event)
+  var nimfunc = cast[ptr QHeaderViewshowEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QShowEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hideEvent(self: QHeaderView, event: gen_qevent.QHideEvent): void =
-
+  nimfunc[](slotval1)
+proc QHeaderViewhideEvent*(self: gen_qheaderview_types.QHeaderView, event: gen_qevent.QHideEvent): void =
 
   fQHeaderView_virtualbase_hideEvent(self.h, event.h)
 
-type QHeaderViewhideEventBase* = proc(event: gen_qevent.QHideEvent): void
-proc onhideEvent*(self: QHeaderView, slot: proc(super: QHeaderViewhideEventBase, event: gen_qevent.QHideEvent): void) =
+type QHeaderViewhideEventProc* = proc(event: gen_qevent.QHideEvent): void
+proc onhideEvent*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewhideEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewhideEventBase, event: gen_qevent.QHideEvent): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewhideEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_hideEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_hideEvent(self: ptr cQHeaderView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QHeaderView_hideEvent ".} =
-  type Cb = proc(super: QHeaderViewhideEventBase, event: gen_qevent.QHideEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QHideEvent): auto =
-    callVirtualBase_hideEvent(QHeaderView(h: self), event)
+  var nimfunc = cast[ptr QHeaderViewhideEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QHideEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_nativeEvent(self: QHeaderView, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
-
+  nimfunc[](slotval1)
+proc QHeaderViewnativeEvent*(self: gen_qheaderview_types.QHeaderView, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
 
   fQHeaderView_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
-type QHeaderViewnativeEventBase* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-proc onnativeEvent*(self: QHeaderView, slot: proc(super: QHeaderViewnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool) =
+type QHeaderViewnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
+proc onnativeEvent*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewnativeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-  var tmp = new Cb
+  var tmp = new QHeaderViewnativeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_nativeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_nativeEvent(self: ptr cQHeaderView, slot: int, eventType: struct_miqt_string, message: pointer, resultVal: ptr uint): bool {.exportc: "miqt_exec_callback_QHeaderView_nativeEvent ".} =
-  type Cb = proc(super: QHeaderViewnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(eventType: seq[byte], message: pointer, resultVal: ptr uint): auto =
-    callVirtualBase_nativeEvent(QHeaderView(h: self), eventType, message, resultVal)
+  var nimfunc = cast[ptr QHeaderViewnativeEventProc](cast[pointer](slot))
   var veventType_bytearray = eventType
   var veventTypex_ret = @(toOpenArrayByte(veventType_bytearray.data, 0, int(veventType_bytearray.len)-1))
   c_free(veventType_bytearray.data)
@@ -3066,198 +2617,158 @@ proc miqt_exec_callback_QHeaderView_nativeEvent(self: ptr cQHeaderView, slot: in
   let slotval3 = resultVal
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_metric(self: QHeaderView, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint =
-
+proc QHeaderViewmetric*(self: gen_qheaderview_types.QHeaderView, param1: cint): cint =
 
   fQHeaderView_virtualbase_metric(self.h, cint(param1))
 
-type QHeaderViewmetricBase* = proc(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-proc onmetric*(self: QHeaderView, slot: proc(super: QHeaderViewmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint) =
+type QHeaderViewmetricProc* = proc(param1: cint): cint
+proc onmetric*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewmetricProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var tmp = new Cb
+  var tmp = new QHeaderViewmetricProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_metric(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_metric(self: ptr cQHeaderView, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QHeaderView_metric ".} =
-  type Cb = proc(super: QHeaderViewmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): auto =
-    callVirtualBase_metric(QHeaderView(h: self), param1)
-  let slotval1 = gen_qpaintdevice.QPaintDevicePaintDeviceMetric(param1)
+  var nimfunc = cast[ptr QHeaderViewmetricProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_initPainter(self: QHeaderView, painter: gen_qpainter.QPainter): void =
-
+proc QHeaderViewinitPainter*(self: gen_qheaderview_types.QHeaderView, painter: gen_qpainter.QPainter): void =
 
   fQHeaderView_virtualbase_initPainter(self.h, painter.h)
 
-type QHeaderViewinitPainterBase* = proc(painter: gen_qpainter.QPainter): void
-proc oninitPainter*(self: QHeaderView, slot: proc(super: QHeaderViewinitPainterBase, painter: gen_qpainter.QPainter): void) =
+type QHeaderViewinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
+proc oninitPainter*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewinitPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewinitPainterBase, painter: gen_qpainter.QPainter): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewinitPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_initPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_initPainter(self: ptr cQHeaderView, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_QHeaderView_initPainter ".} =
-  type Cb = proc(super: QHeaderViewinitPainterBase, painter: gen_qpainter.QPainter): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter): auto =
-    callVirtualBase_initPainter(QHeaderView(h: self), painter)
+  var nimfunc = cast[ptr QHeaderViewinitPainterProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_redirected(self: QHeaderView, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
+  nimfunc[](slotval1)
+proc QHeaderViewredirected*(self: gen_qheaderview_types.QHeaderView, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
 
   gen_qpaintdevice.QPaintDevice(h: fQHeaderView_virtualbase_redirected(self.h, offset.h))
 
-type QHeaderViewredirectedBase* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-proc onredirected*(self: QHeaderView, slot: proc(super: QHeaderViewredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice) =
+type QHeaderViewredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
+proc onredirected*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewredirectedProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var tmp = new Cb
+  var tmp = new QHeaderViewredirectedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_redirected(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_redirected(self: ptr cQHeaderView, slot: int, offset: pointer): pointer {.exportc: "miqt_exec_callback_QHeaderView_redirected ".} =
-  type Cb = proc(super: QHeaderViewredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(offset: gen_qpoint.QPoint): auto =
-    callVirtualBase_redirected(QHeaderView(h: self), offset)
+  var nimfunc = cast[ptr QHeaderViewredirectedProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: offset)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_sharedPainter(self: QHeaderView, ): gen_qpainter.QPainter =
-
+proc QHeaderViewsharedPainter*(self: gen_qheaderview_types.QHeaderView, ): gen_qpainter.QPainter =
 
   gen_qpainter.QPainter(h: fQHeaderView_virtualbase_sharedPainter(self.h))
 
-type QHeaderViewsharedPainterBase* = proc(): gen_qpainter.QPainter
-proc onsharedPainter*(self: QHeaderView, slot: proc(super: QHeaderViewsharedPainterBase): gen_qpainter.QPainter) =
+type QHeaderViewsharedPainterProc* = proc(): gen_qpainter.QPainter
+proc onsharedPainter*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewsharedPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewsharedPainterBase): gen_qpainter.QPainter
-  var tmp = new Cb
+  var tmp = new QHeaderViewsharedPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_sharedPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_sharedPainter(self: ptr cQHeaderView, slot: int): pointer {.exportc: "miqt_exec_callback_QHeaderView_sharedPainter ".} =
-  type Cb = proc(super: QHeaderViewsharedPainterBase): gen_qpainter.QPainter
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sharedPainter(QHeaderView(h: self), )
+  var nimfunc = cast[ptr QHeaderViewsharedPainterProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_childEvent(self: QHeaderView, event: gen_qcoreevent.QChildEvent): void =
-
+proc QHeaderViewchildEvent*(self: gen_qheaderview_types.QHeaderView, event: gen_qcoreevent.QChildEvent): void =
 
   fQHeaderView_virtualbase_childEvent(self.h, event.h)
 
-type QHeaderViewchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QHeaderView, slot: proc(super: QHeaderViewchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QHeaderViewchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_childEvent(self: ptr cQHeaderView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QHeaderView_childEvent ".} =
-  type Cb = proc(super: QHeaderViewchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QHeaderView(h: self), event)
+  var nimfunc = cast[ptr QHeaderViewchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QHeaderView, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QHeaderViewcustomEvent*(self: gen_qheaderview_types.QHeaderView, event: gen_qcoreevent.QEvent): void =
 
   fQHeaderView_virtualbase_customEvent(self.h, event.h)
 
-type QHeaderViewcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QHeaderView, slot: proc(super: QHeaderViewcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QHeaderViewcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_customEvent(self: ptr cQHeaderView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QHeaderView_customEvent ".} =
-  type Cb = proc(super: QHeaderViewcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QHeaderView(h: self), event)
+  var nimfunc = cast[ptr QHeaderViewcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QHeaderView, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QHeaderViewconnectNotify*(self: gen_qheaderview_types.QHeaderView, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQHeaderView_virtualbase_connectNotify(self.h, signal.h)
 
-type QHeaderViewconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QHeaderView, slot: proc(super: QHeaderViewconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QHeaderViewconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_connectNotify(self: ptr cQHeaderView, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QHeaderView_connectNotify ".} =
-  type Cb = proc(super: QHeaderViewconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QHeaderView(h: self), signal)
+  var nimfunc = cast[ptr QHeaderViewconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QHeaderView, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QHeaderViewdisconnectNotify*(self: gen_qheaderview_types.QHeaderView, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQHeaderView_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QHeaderViewdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QHeaderView, slot: proc(super: QHeaderViewdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QHeaderViewdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qheaderview_types.QHeaderView, slot: QHeaderViewdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QHeaderViewdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QHeaderViewdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQHeaderView_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QHeaderView_disconnectNotify(self: ptr cQHeaderView, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QHeaderView_disconnectNotify ".} =
-  type Cb = proc(super: QHeaderViewdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QHeaderView(h: self), signal)
+  var nimfunc = cast[ptr QHeaderViewdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QHeaderView): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qheaderview_types.QHeaderView): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQHeaderView_staticMetaObject())
-proc delete*(self: QHeaderView) =
+proc delete*(self: gen_qheaderview_types.QHeaderView) =
   fcQHeaderView_delete(self.h)

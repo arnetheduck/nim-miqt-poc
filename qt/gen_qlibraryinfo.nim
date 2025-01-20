@@ -34,24 +34,22 @@ const cflags = gorge("pkg-config -cflags Qt5Widgets")
 {.compile("gen_qlibraryinfo.cpp", cflags).}
 
 
-type QLibraryInfoLibraryLocation* = cint
-const
-  QLibraryInfoPrefixPath* = 0
-  QLibraryInfoDocumentationPath* = 1
-  QLibraryInfoHeadersPath* = 2
-  QLibraryInfoLibrariesPath* = 3
-  QLibraryInfoLibraryExecutablesPath* = 4
-  QLibraryInfoBinariesPath* = 5
-  QLibraryInfoPluginsPath* = 6
-  QLibraryInfoImportsPath* = 7
-  QLibraryInfoQml2ImportsPath* = 8
-  QLibraryInfoArchDataPath* = 9
-  QLibraryInfoDataPath* = 10
-  QLibraryInfoTranslationsPath* = 11
-  QLibraryInfoExamplesPath* = 12
-  QLibraryInfoTestsPath* = 13
-  QLibraryInfoSettingsPath* = 100
-
+type QLibraryInfoLibraryLocationEnum* = distinct cint
+template PrefixPath*(_: type QLibraryInfoLibraryLocationEnum): untyped = 0
+template DocumentationPath*(_: type QLibraryInfoLibraryLocationEnum): untyped = 1
+template HeadersPath*(_: type QLibraryInfoLibraryLocationEnum): untyped = 2
+template LibrariesPath*(_: type QLibraryInfoLibraryLocationEnum): untyped = 3
+template LibraryExecutablesPath*(_: type QLibraryInfoLibraryLocationEnum): untyped = 4
+template BinariesPath*(_: type QLibraryInfoLibraryLocationEnum): untyped = 5
+template PluginsPath*(_: type QLibraryInfoLibraryLocationEnum): untyped = 6
+template ImportsPath*(_: type QLibraryInfoLibraryLocationEnum): untyped = 7
+template Qml2ImportsPath*(_: type QLibraryInfoLibraryLocationEnum): untyped = 8
+template ArchDataPath*(_: type QLibraryInfoLibraryLocationEnum): untyped = 9
+template DataPath*(_: type QLibraryInfoLibraryLocationEnum): untyped = 10
+template TranslationsPath*(_: type QLibraryInfoLibraryLocationEnum): untyped = 11
+template ExamplesPath*(_: type QLibraryInfoLibraryLocationEnum): untyped = 12
+template TestsPath*(_: type QLibraryInfoLibraryLocationEnum): untyped = 13
+template SettingsPath*(_: type QLibraryInfoLibraryLocationEnum): untyped = 100
 
 
 import gen_qlibraryinfo_types
@@ -77,46 +75,46 @@ proc fcQLibraryInfo_platformPluginArguments(platformName: struct_miqt_string): s
 proc fcQLibraryInfo_delete(self: pointer) {.importc: "QLibraryInfo_delete".}
 
 
-func init*(T: type QLibraryInfo, h: ptr cQLibraryInfo): QLibraryInfo =
+func init*(T: type gen_qlibraryinfo_types.QLibraryInfo, h: ptr cQLibraryInfo): gen_qlibraryinfo_types.QLibraryInfo =
   T(h: h)
-proc licensee*(_: type QLibraryInfo, ): string =
+proc licensee*(_: type gen_qlibraryinfo_types.QLibraryInfo, ): string =
 
   let v_ms = fcQLibraryInfo_licensee()
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc licensedProducts*(_: type QLibraryInfo, ): string =
+proc licensedProducts*(_: type gen_qlibraryinfo_types.QLibraryInfo, ): string =
 
   let v_ms = fcQLibraryInfo_licensedProducts()
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc buildDate*(_: type QLibraryInfo, ): gen_qdatetime.QDate =
+proc buildDate*(_: type gen_qlibraryinfo_types.QLibraryInfo, ): gen_qdatetime.QDate =
 
   gen_qdatetime.QDate(h: fcQLibraryInfo_buildDate())
 
-proc build*(_: type QLibraryInfo, ): cstring =
+proc build*(_: type gen_qlibraryinfo_types.QLibraryInfo, ): cstring =
 
   (fcQLibraryInfo_build())
 
-proc isDebugBuild*(_: type QLibraryInfo, ): bool =
+proc isDebugBuild*(_: type gen_qlibraryinfo_types.QLibraryInfo, ): bool =
 
   fcQLibraryInfo_isDebugBuild()
 
-proc version*(_: type QLibraryInfo, ): gen_qversionnumber.QVersionNumber =
+proc version*(_: type gen_qlibraryinfo_types.QLibraryInfo, ): gen_qversionnumber.QVersionNumber =
 
   gen_qversionnumber.QVersionNumber(h: fcQLibraryInfo_version())
 
-proc location*(_: type QLibraryInfo, param1: QLibraryInfoLibraryLocation): string =
+proc location*(_: type gen_qlibraryinfo_types.QLibraryInfo, param1: cint): string =
 
   let v_ms = fcQLibraryInfo_location(cint(param1))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc platformPluginArguments*(_: type QLibraryInfo, platformName: string): seq[string] =
+proc platformPluginArguments*(_: type gen_qlibraryinfo_types.QLibraryInfo, platformName: string): seq[string] =
 
   var v_ma = fcQLibraryInfo_platformPluginArguments(struct_miqt_string(data: platformName, len: csize_t(len(platformName))))
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -128,5 +126,5 @@ proc platformPluginArguments*(_: type QLibraryInfo, platformName: string): seq[s
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc delete*(self: QLibraryInfo) =
+proc delete*(self: gen_qlibraryinfo_types.QLibraryInfo) =
   fcQLibraryInfo_delete(self.h)

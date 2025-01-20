@@ -57,17 +57,17 @@ proc fcQsciCommandSet_readSettings2(self: pointer, qs: pointer, prefix: cstring)
 proc fcQsciCommandSet_writeSettings2(self: pointer, qs: pointer, prefix: cstring): bool {.importc: "QsciCommandSet_writeSettings2".}
 
 
-func init*(T: type QsciCommandSet, h: ptr cQsciCommandSet): QsciCommandSet =
+func init*(T: type gen_qscicommandset_types.QsciCommandSet, h: ptr cQsciCommandSet): gen_qscicommandset_types.QsciCommandSet =
   T(h: h)
-proc readSettings*(self: QsciCommandSet, qs: gen_qsettings.QSettings): bool =
+proc readSettings*(self: gen_qscicommandset_types.QsciCommandSet, qs: gen_qsettings.QSettings): bool =
 
   fcQsciCommandSet_readSettings(self.h, qs.h)
 
-proc writeSettings*(self: QsciCommandSet, qs: gen_qsettings.QSettings): bool =
+proc writeSettings*(self: gen_qscicommandset_types.QsciCommandSet, qs: gen_qsettings.QSettings): bool =
 
   fcQsciCommandSet_writeSettings(self.h, qs.h)
 
-proc commands*(self: QsciCommandSet, ): seq[gen_qscicommand.QsciCommand] =
+proc commands*(self: gen_qscicommandset_types.QsciCommandSet, ): seq[gen_qscicommand.QsciCommand] =
 
   var v_ma = fcQsciCommandSet_commands(self.h)
   var vx_ret = newSeq[gen_qscicommand.QsciCommand](int(v_ma.len))
@@ -76,27 +76,27 @@ proc commands*(self: QsciCommandSet, ): seq[gen_qscicommand.QsciCommand] =
     vx_ret[i] = gen_qscicommand.QsciCommand(h: v_outCast[i])
   vx_ret
 
-proc clearKeys*(self: QsciCommandSet, ): void =
+proc clearKeys*(self: gen_qscicommandset_types.QsciCommandSet, ): void =
 
   fcQsciCommandSet_clearKeys(self.h)
 
-proc clearAlternateKeys*(self: QsciCommandSet, ): void =
+proc clearAlternateKeys*(self: gen_qscicommandset_types.QsciCommandSet, ): void =
 
   fcQsciCommandSet_clearAlternateKeys(self.h)
 
-proc boundTo*(self: QsciCommandSet, key: cint): gen_qscicommand.QsciCommand =
+proc boundTo*(self: gen_qscicommandset_types.QsciCommandSet, key: cint): gen_qscicommand.QsciCommand =
 
   gen_qscicommand.QsciCommand(h: fcQsciCommandSet_boundTo(self.h, key))
 
-proc find*(self: QsciCommandSet, command: gen_qscicommand.QsciCommandCommand): gen_qscicommand.QsciCommand =
+proc find*(self: gen_qscicommandset_types.QsciCommandSet, command: cint): gen_qscicommand.QsciCommand =
 
   gen_qscicommand.QsciCommand(h: fcQsciCommandSet_find(self.h, cint(command)))
 
-proc readSettings2*(self: QsciCommandSet, qs: gen_qsettings.QSettings, prefix: cstring): bool =
+proc readSettings2*(self: gen_qscicommandset_types.QsciCommandSet, qs: gen_qsettings.QSettings, prefix: cstring): bool =
 
   fcQsciCommandSet_readSettings2(self.h, qs.h, prefix)
 
-proc writeSettings2*(self: QsciCommandSet, qs: gen_qsettings.QSettings, prefix: cstring): bool =
+proc writeSettings2*(self: gen_qscicommandset_types.QsciCommandSet, qs: gen_qsettings.QSettings, prefix: cstring): bool =
 
   fcQsciCommandSet_writeSettings2(self.h, qs.h, prefix)
 

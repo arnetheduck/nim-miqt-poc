@@ -34,10 +34,8 @@ const cflags = gorge("pkg-config -cflags Qt5Widgets")
 {.compile("gen_qobject.cpp", cflags).}
 
 
-type QObjectDataEnum* = cint
-const
-  QObjectDataCheckForParentChildLoopsWarnDepth* = 4096
-
+type QObjectDataEnumEnum* = distinct cint
+template CheckForParentChildLoopsWarnDepth*(_: type QObjectDataEnumEnum): untyped = 4096
 
 
 import gen_qobject_types
@@ -46,14 +44,12 @@ export gen_qobject_types
 import
   gen_qcoreevent,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobjectdefs,
   gen_qthread,
   gen_qvariant
 export
   gen_qcoreevent,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobjectdefs,
   gen_qthread,
   gen_qvariant
@@ -147,162 +143,162 @@ proc fcQSignalBlocker_unblock(self: pointer, ): void {.importc: "QSignalBlocker_
 proc fcQSignalBlocker_delete(self: pointer) {.importc: "QSignalBlocker_delete".}
 
 
-func init*(T: type QObjectData, h: ptr cQObjectData): QObjectData =
+func init*(T: type gen_qobject_types.QObjectData, h: ptr cQObjectData): gen_qobject_types.QObjectData =
   T(h: h)
-proc dynamicMetaObject*(self: QObjectData, ): gen_qobjectdefs.QMetaObject =
+proc dynamicMetaObject*(self: gen_qobject_types.QObjectData, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQObjectData_dynamicMetaObject(self.h))
 
-proc delete*(self: QObjectData) =
+proc delete*(self: gen_qobject_types.QObjectData) =
   fcQObjectData_delete(self.h)
 
-func init*(T: type QObject, h: ptr cQObject): QObject =
+func init*(T: type gen_qobject_types.QObject, h: ptr cQObject): gen_qobject_types.QObject =
   T(h: h)
-proc create*(T: type QObject, ): QObject =
+proc create*(T: type gen_qobject_types.QObject, ): gen_qobject_types.QObject =
 
-  QObject.init(fcQObject_new())
-proc create*(T: type QObject, parent: QObject): QObject =
+  gen_qobject_types.QObject.init(fcQObject_new())
+proc create*(T: type gen_qobject_types.QObject, parent: gen_qobject_types.QObject): gen_qobject_types.QObject =
 
-  QObject.init(fcQObject_new2(parent.h))
-proc metaObject*(self: QObject, ): gen_qobjectdefs.QMetaObject =
+  gen_qobject_types.QObject.init(fcQObject_new2(parent.h))
+proc metaObject*(self: gen_qobject_types.QObject, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQObject_metaObject(self.h))
 
-proc metacast*(self: QObject, param1: cstring): pointer =
+proc metacast*(self: gen_qobject_types.QObject, param1: cstring): pointer =
 
   fcQObject_metacast(self.h, param1)
 
-proc metacall*(self: QObject, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qobject_types.QObject, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQObject_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QObject, s: cstring): string =
+proc tr*(_: type gen_qobject_types.QObject, s: cstring): string =
 
   let v_ms = fcQObject_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QObject, s: cstring): string =
+proc trUtf8*(_: type gen_qobject_types.QObject, s: cstring): string =
 
   let v_ms = fcQObject_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc event*(self: QObject, event: gen_qcoreevent.QEvent): bool =
+proc event*(self: gen_qobject_types.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fcQObject_event(self.h, event.h)
 
-proc eventFilter*(self: QObject, watched: QObject, event: gen_qcoreevent.QEvent): bool =
+proc eventFilter*(self: gen_qobject_types.QObject, watched: gen_qobject_types.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fcQObject_eventFilter(self.h, watched.h, event.h)
 
-proc objectName*(self: QObject, ): string =
+proc objectName*(self: gen_qobject_types.QObject, ): string =
 
   let v_ms = fcQObject_objectName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setObjectName*(self: QObject, name: string): void =
+proc setObjectName*(self: gen_qobject_types.QObject, name: string): void =
 
   fcQObject_setObjectName(self.h, struct_miqt_string(data: name, len: csize_t(len(name))))
 
-proc isWidgetType*(self: QObject, ): bool =
+proc isWidgetType*(self: gen_qobject_types.QObject, ): bool =
 
   fcQObject_isWidgetType(self.h)
 
-proc isWindowType*(self: QObject, ): bool =
+proc isWindowType*(self: gen_qobject_types.QObject, ): bool =
 
   fcQObject_isWindowType(self.h)
 
-proc signalsBlocked*(self: QObject, ): bool =
+proc signalsBlocked*(self: gen_qobject_types.QObject, ): bool =
 
   fcQObject_signalsBlocked(self.h)
 
-proc blockSignals*(self: QObject, b: bool): bool =
+proc blockSignals*(self: gen_qobject_types.QObject, b: bool): bool =
 
   fcQObject_blockSignals(self.h, b)
 
-proc thread*(self: QObject, ): gen_qthread.QThread =
+proc thread*(self: gen_qobject_types.QObject, ): gen_qthread.QThread =
 
   gen_qthread.QThread(h: fcQObject_thread(self.h))
 
-proc moveToThread*(self: QObject, thread: gen_qthread.QThread): void =
+proc moveToThread*(self: gen_qobject_types.QObject, thread: gen_qthread.QThread): void =
 
   fcQObject_moveToThread(self.h, thread.h)
 
-proc startTimer*(self: QObject, interval: cint): cint =
+proc startTimer*(self: gen_qobject_types.QObject, interval: cint): cint =
 
   fcQObject_startTimer(self.h, interval)
 
-proc killTimer*(self: QObject, id: cint): void =
+proc killTimer*(self: gen_qobject_types.QObject, id: cint): void =
 
   fcQObject_killTimer(self.h, id)
 
-proc children*(self: QObject, ): seq[QObject] =
+proc children*(self: gen_qobject_types.QObject, ): seq[gen_qobject_types.QObject] =
 
   var v_ma = fcQObject_children(self.h)
-  var vx_ret = newSeq[QObject](int(v_ma.len))
+  var vx_ret = newSeq[gen_qobject_types.QObject](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
-    vx_ret[i] = QObject(h: v_outCast[i])
+    vx_ret[i] = gen_qobject_types.QObject(h: v_outCast[i])
   vx_ret
 
-proc setParent*(self: QObject, parent: QObject): void =
+proc setParent*(self: gen_qobject_types.QObject, parent: gen_qobject_types.QObject): void =
 
   fcQObject_setParent(self.h, parent.h)
 
-proc installEventFilter*(self: QObject, filterObj: QObject): void =
+proc installEventFilter*(self: gen_qobject_types.QObject, filterObj: gen_qobject_types.QObject): void =
 
   fcQObject_installEventFilter(self.h, filterObj.h)
 
-proc removeEventFilter*(self: QObject, obj: QObject): void =
+proc removeEventFilter*(self: gen_qobject_types.QObject, obj: gen_qobject_types.QObject): void =
 
   fcQObject_removeEventFilter(self.h, obj.h)
 
-proc connect*(_: type QObject, sender: QObject, signal: gen_qmetaobject.QMetaMethod, receiver: QObject, methodVal: gen_qmetaobject.QMetaMethod): gen_qobjectdefs.QMetaObjectConnection =
+proc connect*(_: type gen_qobject_types.QObject, sender: gen_qobject_types.QObject, signal: gen_qmetaobject.QMetaMethod, receiver: gen_qobject_types.QObject, methodVal: gen_qmetaobject.QMetaMethod): gen_qobjectdefs.QMetaObjectConnection =
 
   gen_qobjectdefs.QMetaObjectConnection(h: fcQObject_connect(sender.h, signal.h, receiver.h, methodVal.h))
 
-proc connect2*(self: QObject, sender: QObject, signal: cstring, member: cstring): gen_qobjectdefs.QMetaObjectConnection =
+proc connect2*(self: gen_qobject_types.QObject, sender: gen_qobject_types.QObject, signal: cstring, member: cstring): gen_qobjectdefs.QMetaObjectConnection =
 
   gen_qobjectdefs.QMetaObjectConnection(h: fcQObject_connect2(self.h, sender.h, signal, member))
 
-proc disconnect*(_: type QObject, sender: QObject, signal: gen_qmetaobject.QMetaMethod, receiver: QObject, member: gen_qmetaobject.QMetaMethod): bool =
+proc disconnect*(_: type gen_qobject_types.QObject, sender: gen_qobject_types.QObject, signal: gen_qmetaobject.QMetaMethod, receiver: gen_qobject_types.QObject, member: gen_qmetaobject.QMetaMethod): bool =
 
   fcQObject_disconnect(sender.h, signal.h, receiver.h, member.h)
 
-proc disconnectWithQMetaObjectConnection*(_: type QObject, param1: gen_qobjectdefs.QMetaObjectConnection): bool =
+proc disconnectWithQMetaObjectConnection*(_: type gen_qobject_types.QObject, param1: gen_qobjectdefs.QMetaObjectConnection): bool =
 
   fcQObject_disconnectWithQMetaObjectConnection(param1.h)
 
-proc dumpObjectTree*(self: QObject, ): void =
+proc dumpObjectTree*(self: gen_qobject_types.QObject, ): void =
 
   fcQObject_dumpObjectTree(self.h)
 
-proc dumpObjectInfo*(self: QObject, ): void =
+proc dumpObjectInfo*(self: gen_qobject_types.QObject, ): void =
 
   fcQObject_dumpObjectInfo(self.h)
 
-proc dumpObjectTree2*(self: QObject, ): void =
+proc dumpObjectTree2*(self: gen_qobject_types.QObject, ): void =
 
   fcQObject_dumpObjectTree2(self.h)
 
-proc dumpObjectInfo2*(self: QObject, ): void =
+proc dumpObjectInfo2*(self: gen_qobject_types.QObject, ): void =
 
   fcQObject_dumpObjectInfo2(self.h)
 
-proc setProperty*(self: QObject, name: cstring, value: gen_qvariant.QVariant): bool =
+proc setProperty*(self: gen_qobject_types.QObject, name: cstring, value: gen_qvariant.QVariant): bool =
 
   fcQObject_setProperty(self.h, name, value.h)
 
-proc property*(self: QObject, name: cstring): gen_qvariant.QVariant =
+proc property*(self: gen_qobject_types.QObject, name: cstring): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fcQObject_property(self.h, name))
 
-proc dynamicPropertyNames*(self: QObject, ): seq[seq[byte]] =
+proc dynamicPropertyNames*(self: gen_qobject_types.QObject, ): seq[seq[byte]] =
 
   var v_ma = fcQObject_dynamicPropertyNames(self.h)
   var vx_ret = newSeq[seq[byte]](int(v_ma.len))
@@ -314,19 +310,19 @@ proc dynamicPropertyNames*(self: QObject, ): seq[seq[byte]] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc registerUserData*(_: type QObject, ): cuint =
+proc registerUserData*(_: type gen_qobject_types.QObject, ): cuint =
 
   fcQObject_registerUserData()
 
-proc setUserData*(self: QObject, id: cuint, data: QObjectUserData): void =
+proc setUserData*(self: gen_qobject_types.QObject, id: cuint, data: gen_qobject_types.QObjectUserData): void =
 
   fcQObject_setUserData(self.h, id, data.h)
 
-proc userData*(self: QObject, id: cuint): QObjectUserData =
+proc userData*(self: gen_qobject_types.QObject, id: cuint): gen_qobject_types.QObjectUserData =
 
-  QObjectUserData(h: fcQObject_userData(self.h, id))
+  gen_qobject_types.QObjectUserData(h: fcQObject_userData(self.h, id))
 
-proc destroyed*(self: QObject, ): void =
+proc destroyed*(self: gen_qobject_types.QObject, ): void =
 
   fcQObject_destroyed(self.h)
 
@@ -336,354 +332,304 @@ proc miqt_exec_callback_QObject_destroyed(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc ondestroyed*(self: QObject, slot: proc()) =
+proc ondestroyed*(self: gen_qobject_types.QObject, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQObject_connect_destroyed(self.h, cast[int](addr tmp[]))
-proc parent*(self: QObject, ): QObject =
+proc parent*(self: gen_qobject_types.QObject, ): gen_qobject_types.QObject =
 
-  QObject(h: fcQObject_parent(self.h))
+  gen_qobject_types.QObject(h: fcQObject_parent(self.h))
 
-proc inherits*(self: QObject, classname: cstring): bool =
+proc inherits*(self: gen_qobject_types.QObject, classname: cstring): bool =
 
   fcQObject_inherits(self.h, classname)
 
-proc deleteLater*(self: QObject, ): void =
+proc deleteLater*(self: gen_qobject_types.QObject, ): void =
 
   fcQObject_deleteLater(self.h)
 
-proc tr2*(_: type QObject, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qobject_types.QObject, s: cstring, c: cstring): string =
 
   let v_ms = fcQObject_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QObject, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qobject_types.QObject, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQObject_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QObject, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qobject_types.QObject, s: cstring, c: cstring): string =
 
   let v_ms = fcQObject_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QObject, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qobject_types.QObject, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQObject_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc startTimer2*(self: QObject, interval: cint, timerType: gen_qnamespace.TimerType): cint =
+proc startTimer2*(self: gen_qobject_types.QObject, interval: cint, timerType: cint): cint =
 
   fcQObject_startTimer2(self.h, interval, cint(timerType))
 
-proc connect5*(_: type QObject, sender: QObject, signal: gen_qmetaobject.QMetaMethod, receiver: QObject, methodVal: gen_qmetaobject.QMetaMethod, typeVal: gen_qnamespace.ConnectionType): gen_qobjectdefs.QMetaObjectConnection =
+proc connect5*(_: type gen_qobject_types.QObject, sender: gen_qobject_types.QObject, signal: gen_qmetaobject.QMetaMethod, receiver: gen_qobject_types.QObject, methodVal: gen_qmetaobject.QMetaMethod, typeVal: cint): gen_qobjectdefs.QMetaObjectConnection =
 
   gen_qobjectdefs.QMetaObjectConnection(h: fcQObject_connect5(sender.h, signal.h, receiver.h, methodVal.h, cint(typeVal)))
 
-proc connect4*(self: QObject, sender: QObject, signal: cstring, member: cstring, typeVal: gen_qnamespace.ConnectionType): gen_qobjectdefs.QMetaObjectConnection =
+proc connect4*(self: gen_qobject_types.QObject, sender: gen_qobject_types.QObject, signal: cstring, member: cstring, typeVal: cint): gen_qobjectdefs.QMetaObjectConnection =
 
   gen_qobjectdefs.QMetaObjectConnection(h: fcQObject_connect4(self.h, sender.h, signal, member, cint(typeVal)))
 
-proc destroyed1*(self: QObject, param1: QObject): void =
+proc destroyed1*(self: gen_qobject_types.QObject, param1: gen_qobject_types.QObject): void =
 
   fcQObject_destroyed1(self.h, param1.h)
 
 proc miqt_exec_callback_QObject_destroyed1(slot: int, param1: pointer) {.exportc.} =
-  type Cb = proc(param1: QObject)
+  type Cb = proc(param1: gen_qobject_types.QObject)
   let nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = QObject(h: param1)
+  let slotval1 = gen_qobject_types.QObject(h: param1)
 
 
   nimfunc[](slotval1)
 
-proc ondestroyed1*(self: QObject, slot: proc(param1: QObject)) =
-  type Cb = proc(param1: QObject)
+proc ondestroyed1*(self: gen_qobject_types.QObject, slot: proc(param1: gen_qobject_types.QObject)) =
+  type Cb = proc(param1: gen_qobject_types.QObject)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQObject_connect_destroyed1(self.h, cast[int](addr tmp[]))
-proc callVirtualBase_metaObject(self: QObject, ): gen_qobjectdefs.QMetaObject =
-
+proc QObjectmetaObject*(self: gen_qobject_types.QObject, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQObject_virtualbase_metaObject(self.h))
 
-type QObjectmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QObject, slot: proc(super: QObjectmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QObjectmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qobject_types.QObject, slot: QObjectmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QObjectmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QObjectmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQObject_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QObject_metaObject(self: ptr cQObject, slot: int): pointer {.exportc: "miqt_exec_callback_QObject_metaObject ".} =
-  type Cb = proc(super: QObjectmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QObject(h: self), )
+  var nimfunc = cast[ptr QObjectmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QObject, param1: cstring): pointer =
-
+proc QObjectmetacast*(self: gen_qobject_types.QObject, param1: cstring): pointer =
 
   fQObject_virtualbase_metacast(self.h, param1)
 
-type QObjectmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QObject, slot: proc(super: QObjectmetacastBase, param1: cstring): pointer) =
+type QObjectmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qobject_types.QObject, slot: QObjectmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QObjectmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QObjectmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQObject_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QObject_metacast(self: ptr cQObject, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QObject_metacast ".} =
-  type Cb = proc(super: QObjectmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QObject(h: self), param1)
+  var nimfunc = cast[ptr QObjectmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QObject, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QObjectmetacall*(self: gen_qobject_types.QObject, param1: cint, param2: cint, param3: pointer): cint =
 
   fQObject_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QObjectmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QObject, slot: proc(super: QObjectmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QObjectmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qobject_types.QObject, slot: QObjectmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QObjectmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QObjectmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQObject_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QObject_metacall(self: ptr cQObject, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QObject_metacall ".} =
-  type Cb = proc(super: QObjectmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QObject(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QObjectmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_event(self: QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QObjectevent*(self: gen_qobject_types.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQObject_virtualbase_event(self.h, event.h)
 
-type QObjecteventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QObject, slot: proc(super: QObjecteventBase, event: gen_qcoreevent.QEvent): bool) =
+type QObjecteventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qobject_types.QObject, slot: QObjecteventProc) =
   # TODO check subclass
-  type Cb = proc(super: QObjecteventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QObjecteventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQObject_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QObject_event(self: ptr cQObject, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QObject_event ".} =
-  type Cb = proc(super: QObjecteventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QObject(h: self), event)
+  var nimfunc = cast[ptr QObjecteventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QObject, watched: QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QObjecteventFilter*(self: gen_qobject_types.QObject, watched: gen_qobject_types.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQObject_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QObjecteventFilterBase* = proc(watched: QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QObject, slot: proc(super: QObjecteventFilterBase, watched: QObject, event: gen_qcoreevent.QEvent): bool) =
+type QObjecteventFilterProc* = proc(watched: gen_qobject_types.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qobject_types.QObject, slot: QObjecteventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QObjecteventFilterBase, watched: QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QObjecteventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQObject_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QObject_eventFilter(self: ptr cQObject, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QObject_eventFilter ".} =
-  type Cb = proc(super: QObjecteventFilterBase, watched: QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QObject(h: self), watched, event)
-  let slotval1 = QObject(h: watched)
+  var nimfunc = cast[ptr QObjecteventFilterProc](cast[pointer](slot))
+  let slotval1 = gen_qobject_types.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QObject, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QObjecttimerEvent*(self: gen_qobject_types.QObject, event: gen_qcoreevent.QTimerEvent): void =
 
   fQObject_virtualbase_timerEvent(self.h, event.h)
 
-type QObjecttimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QObject, slot: proc(super: QObjecttimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QObjecttimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qobject_types.QObject, slot: QObjecttimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QObjecttimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QObjecttimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQObject_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QObject_timerEvent(self: ptr cQObject, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QObject_timerEvent ".} =
-  type Cb = proc(super: QObjecttimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QObject(h: self), event)
+  var nimfunc = cast[ptr QObjecttimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QObject, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QObjectchildEvent*(self: gen_qobject_types.QObject, event: gen_qcoreevent.QChildEvent): void =
 
   fQObject_virtualbase_childEvent(self.h, event.h)
 
-type QObjectchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QObject, slot: proc(super: QObjectchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QObjectchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qobject_types.QObject, slot: QObjectchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QObjectchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QObjectchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQObject_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QObject_childEvent(self: ptr cQObject, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QObject_childEvent ".} =
-  type Cb = proc(super: QObjectchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QObject(h: self), event)
+  var nimfunc = cast[ptr QObjectchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QObject, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QObjectcustomEvent*(self: gen_qobject_types.QObject, event: gen_qcoreevent.QEvent): void =
 
   fQObject_virtualbase_customEvent(self.h, event.h)
 
-type QObjectcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QObject, slot: proc(super: QObjectcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QObjectcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qobject_types.QObject, slot: QObjectcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QObjectcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QObjectcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQObject_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QObject_customEvent(self: ptr cQObject, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QObject_customEvent ".} =
-  type Cb = proc(super: QObjectcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QObject(h: self), event)
+  var nimfunc = cast[ptr QObjectcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QObject, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QObjectconnectNotify*(self: gen_qobject_types.QObject, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQObject_virtualbase_connectNotify(self.h, signal.h)
 
-type QObjectconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QObject, slot: proc(super: QObjectconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QObjectconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qobject_types.QObject, slot: QObjectconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QObjectconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QObjectconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQObject_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QObject_connectNotify(self: ptr cQObject, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QObject_connectNotify ".} =
-  type Cb = proc(super: QObjectconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QObject(h: self), signal)
+  var nimfunc = cast[ptr QObjectconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QObject, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QObjectdisconnectNotify*(self: gen_qobject_types.QObject, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQObject_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QObjectdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QObject, slot: proc(super: QObjectdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QObjectdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qobject_types.QObject, slot: QObjectdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QObjectdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QObjectdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQObject_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QObject_disconnectNotify(self: ptr cQObject, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QObject_disconnectNotify ".} =
-  type Cb = proc(super: QObjectdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QObject(h: self), signal)
+  var nimfunc = cast[ptr QObjectdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QObject): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qobject_types.QObject): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQObject_staticMetaObject())
-proc delete*(self: QObject) =
+proc delete*(self: gen_qobject_types.QObject) =
   fcQObject_delete(self.h)
 
-func init*(T: type QObjectUserData, h: ptr cQObjectUserData): QObjectUserData =
+func init*(T: type gen_qobject_types.QObjectUserData, h: ptr cQObjectUserData): gen_qobject_types.QObjectUserData =
   T(h: h)
-proc create*(T: type QObjectUserData, ): QObjectUserData =
+proc create*(T: type gen_qobject_types.QObjectUserData, ): gen_qobject_types.QObjectUserData =
 
-  QObjectUserData.init(fcQObjectUserData_new())
-proc delete*(self: QObjectUserData) =
+  gen_qobject_types.QObjectUserData.init(fcQObjectUserData_new())
+proc delete*(self: gen_qobject_types.QObjectUserData) =
   fcQObjectUserData_delete(self.h)
 
-func init*(T: type QSignalBlocker, h: ptr cQSignalBlocker): QSignalBlocker =
+func init*(T: type gen_qobject_types.QSignalBlocker, h: ptr cQSignalBlocker): gen_qobject_types.QSignalBlocker =
   T(h: h)
-proc create*(T: type QSignalBlocker, o: QObject): QSignalBlocker =
+proc create*(T: type gen_qobject_types.QSignalBlocker, o: gen_qobject_types.QObject): gen_qobject_types.QSignalBlocker =
 
-  QSignalBlocker.init(fcQSignalBlocker_new(o.h))
-proc create2*(T: type QSignalBlocker, o: QObject): QSignalBlocker =
+  gen_qobject_types.QSignalBlocker.init(fcQSignalBlocker_new(o.h))
+proc create2*(T: type gen_qobject_types.QSignalBlocker, o: gen_qobject_types.QObject): gen_qobject_types.QSignalBlocker =
 
-  QSignalBlocker.init(fcQSignalBlocker_new2(o.h))
-proc reblock*(self: QSignalBlocker, ): void =
+  gen_qobject_types.QSignalBlocker.init(fcQSignalBlocker_new2(o.h))
+proc reblock*(self: gen_qobject_types.QSignalBlocker, ): void =
 
   fcQSignalBlocker_reblock(self.h)
 
-proc unblock*(self: QSignalBlocker, ): void =
+proc unblock*(self: gen_qobject_types.QSignalBlocker, ): void =
 
   fcQSignalBlocker_unblock(self.h)
 
-proc delete*(self: QSignalBlocker) =
+proc delete*(self: gen_qobject_types.QSignalBlocker) =
   fcQSignalBlocker_delete(self.h)

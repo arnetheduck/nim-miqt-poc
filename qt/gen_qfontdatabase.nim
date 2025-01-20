@@ -34,54 +34,50 @@ const cflags = gorge("pkg-config -cflags Qt5Widgets")
 {.compile("gen_qfontdatabase.cpp", cflags).}
 
 
-type QFontDatabaseWritingSystem* = cint
-const
-  QFontDatabaseAny* = 0
-  QFontDatabaseLatin* = 1
-  QFontDatabaseGreek* = 2
-  QFontDatabaseCyrillic* = 3
-  QFontDatabaseArmenian* = 4
-  QFontDatabaseHebrew* = 5
-  QFontDatabaseArabic* = 6
-  QFontDatabaseSyriac* = 7
-  QFontDatabaseThaana* = 8
-  QFontDatabaseDevanagari* = 9
-  QFontDatabaseBengali* = 10
-  QFontDatabaseGurmukhi* = 11
-  QFontDatabaseGujarati* = 12
-  QFontDatabaseOriya* = 13
-  QFontDatabaseTamil* = 14
-  QFontDatabaseTelugu* = 15
-  QFontDatabaseKannada* = 16
-  QFontDatabaseMalayalam* = 17
-  QFontDatabaseSinhala* = 18
-  QFontDatabaseThai* = 19
-  QFontDatabaseLao* = 20
-  QFontDatabaseTibetan* = 21
-  QFontDatabaseMyanmar* = 22
-  QFontDatabaseGeorgian* = 23
-  QFontDatabaseKhmer* = 24
-  QFontDatabaseSimplifiedChinese* = 25
-  QFontDatabaseTraditionalChinese* = 26
-  QFontDatabaseJapanese* = 27
-  QFontDatabaseKorean* = 28
-  QFontDatabaseVietnamese* = 29
-  QFontDatabaseSymbol* = 30
-  QFontDatabaseOther* = 30
-  QFontDatabaseOgham* = 31
-  QFontDatabaseRunic* = 32
-  QFontDatabaseNko* = 33
-  QFontDatabaseWritingSystemsCount* = 34
+type QFontDatabaseWritingSystemEnum* = distinct cint
+template Any*(_: type QFontDatabaseWritingSystemEnum): untyped = 0
+template Latin*(_: type QFontDatabaseWritingSystemEnum): untyped = 1
+template Greek*(_: type QFontDatabaseWritingSystemEnum): untyped = 2
+template Cyrillic*(_: type QFontDatabaseWritingSystemEnum): untyped = 3
+template Armenian*(_: type QFontDatabaseWritingSystemEnum): untyped = 4
+template Hebrew*(_: type QFontDatabaseWritingSystemEnum): untyped = 5
+template Arabic*(_: type QFontDatabaseWritingSystemEnum): untyped = 6
+template Syriac*(_: type QFontDatabaseWritingSystemEnum): untyped = 7
+template Thaana*(_: type QFontDatabaseWritingSystemEnum): untyped = 8
+template Devanagari*(_: type QFontDatabaseWritingSystemEnum): untyped = 9
+template Bengali*(_: type QFontDatabaseWritingSystemEnum): untyped = 10
+template Gurmukhi*(_: type QFontDatabaseWritingSystemEnum): untyped = 11
+template Gujarati*(_: type QFontDatabaseWritingSystemEnum): untyped = 12
+template Oriya*(_: type QFontDatabaseWritingSystemEnum): untyped = 13
+template Tamil*(_: type QFontDatabaseWritingSystemEnum): untyped = 14
+template Telugu*(_: type QFontDatabaseWritingSystemEnum): untyped = 15
+template Kannada*(_: type QFontDatabaseWritingSystemEnum): untyped = 16
+template Malayalam*(_: type QFontDatabaseWritingSystemEnum): untyped = 17
+template Sinhala*(_: type QFontDatabaseWritingSystemEnum): untyped = 18
+template Thai*(_: type QFontDatabaseWritingSystemEnum): untyped = 19
+template Lao*(_: type QFontDatabaseWritingSystemEnum): untyped = 20
+template Tibetan*(_: type QFontDatabaseWritingSystemEnum): untyped = 21
+template Myanmar*(_: type QFontDatabaseWritingSystemEnum): untyped = 22
+template Georgian*(_: type QFontDatabaseWritingSystemEnum): untyped = 23
+template Khmer*(_: type QFontDatabaseWritingSystemEnum): untyped = 24
+template SimplifiedChinese*(_: type QFontDatabaseWritingSystemEnum): untyped = 25
+template TraditionalChinese*(_: type QFontDatabaseWritingSystemEnum): untyped = 26
+template Japanese*(_: type QFontDatabaseWritingSystemEnum): untyped = 27
+template Korean*(_: type QFontDatabaseWritingSystemEnum): untyped = 28
+template Vietnamese*(_: type QFontDatabaseWritingSystemEnum): untyped = 29
+template Symbol*(_: type QFontDatabaseWritingSystemEnum): untyped = 30
+template Other*(_: type QFontDatabaseWritingSystemEnum): untyped = 30
+template Ogham*(_: type QFontDatabaseWritingSystemEnum): untyped = 31
+template Runic*(_: type QFontDatabaseWritingSystemEnum): untyped = 32
+template Nko*(_: type QFontDatabaseWritingSystemEnum): untyped = 33
+template WritingSystemsCount*(_: type QFontDatabaseWritingSystemEnum): untyped = 34
 
 
-
-type QFontDatabaseSystemFont* = cint
-const
-  QFontDatabaseGeneralFont* = 0
-  QFontDatabaseFixedFont* = 1
-  QFontDatabaseTitleFont* = 2
-  QFontDatabaseSmallestReadableFont* = 3
-
+type QFontDatabaseSystemFontEnum* = distinct cint
+template GeneralFont*(_: type QFontDatabaseSystemFontEnum): untyped = 0
+template FixedFont*(_: type QFontDatabaseSystemFontEnum): untyped = 1
+template TitleFont*(_: type QFontDatabaseSystemFontEnum): untyped = 2
+template SmallestReadableFont*(_: type QFontDatabaseSystemFontEnum): untyped = 3
 
 
 import gen_qfontdatabase_types
@@ -137,12 +133,12 @@ proc fcQFontDatabase_staticMetaObject(): pointer {.importc: "QFontDatabase_stati
 proc fcQFontDatabase_delete(self: pointer) {.importc: "QFontDatabase_delete".}
 
 
-func init*(T: type QFontDatabase, h: ptr cQFontDatabase): QFontDatabase =
+func init*(T: type gen_qfontdatabase_types.QFontDatabase, h: ptr cQFontDatabase): gen_qfontdatabase_types.QFontDatabase =
   T(h: h)
-proc create*(T: type QFontDatabase, ): QFontDatabase =
+proc create*(T: type gen_qfontdatabase_types.QFontDatabase, ): gen_qfontdatabase_types.QFontDatabase =
 
-  QFontDatabase.init(fcQFontDatabase_new())
-proc standardSizes*(_: type QFontDatabase, ): seq[cint] =
+  gen_qfontdatabase_types.QFontDatabase.init(fcQFontDatabase_new())
+proc standardSizes*(_: type gen_qfontdatabase_types.QFontDatabase, ): seq[cint] =
 
   var v_ma = fcQFontDatabase_standardSizes()
   var vx_ret = newSeq[cint](int(v_ma.len))
@@ -151,25 +147,25 @@ proc standardSizes*(_: type QFontDatabase, ): seq[cint] =
     vx_ret[i] = v_outCast[i]
   vx_ret
 
-proc writingSystems*(self: QFontDatabase, ): seq[QFontDatabaseWritingSystem] =
+proc writingSystems*(self: gen_qfontdatabase_types.QFontDatabase, ): seq[cint] =
 
   var v_ma = fcQFontDatabase_writingSystems(self.h)
-  var vx_ret = newSeq[QFontDatabaseWritingSystem](int(v_ma.len))
+  var vx_ret = newSeq[cint](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[cint]](v_ma.data)
   for i in 0 ..< v_ma.len:
-    vx_ret[i] = QFontDatabaseWritingSystem(v_outCast[i])
+    vx_ret[i] = cint(v_outCast[i])
   vx_ret
 
-proc writingSystemsWithFamily*(self: QFontDatabase, family: string): seq[QFontDatabaseWritingSystem] =
+proc writingSystemsWithFamily*(self: gen_qfontdatabase_types.QFontDatabase, family: string): seq[cint] =
 
   var v_ma = fcQFontDatabase_writingSystemsWithFamily(self.h, struct_miqt_string(data: family, len: csize_t(len(family))))
-  var vx_ret = newSeq[QFontDatabaseWritingSystem](int(v_ma.len))
+  var vx_ret = newSeq[cint](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[cint]](v_ma.data)
   for i in 0 ..< v_ma.len:
-    vx_ret[i] = QFontDatabaseWritingSystem(v_outCast[i])
+    vx_ret[i] = cint(v_outCast[i])
   vx_ret
 
-proc families*(self: QFontDatabase, ): seq[string] =
+proc families*(self: gen_qfontdatabase_types.QFontDatabase, ): seq[string] =
 
   var v_ma = fcQFontDatabase_families(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -181,7 +177,7 @@ proc families*(self: QFontDatabase, ): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc styles*(self: QFontDatabase, family: string): seq[string] =
+proc styles*(self: gen_qfontdatabase_types.QFontDatabase, family: string): seq[string] =
 
   var v_ma = fcQFontDatabase_styles(self.h, struct_miqt_string(data: family, len: csize_t(len(family))))
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -193,7 +189,7 @@ proc styles*(self: QFontDatabase, family: string): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc pointSizes*(self: QFontDatabase, family: string): seq[cint] =
+proc pointSizes*(self: gen_qfontdatabase_types.QFontDatabase, family: string): seq[cint] =
 
   var v_ma = fcQFontDatabase_pointSizes(self.h, struct_miqt_string(data: family, len: csize_t(len(family))))
   var vx_ret = newSeq[cint](int(v_ma.len))
@@ -202,7 +198,7 @@ proc pointSizes*(self: QFontDatabase, family: string): seq[cint] =
     vx_ret[i] = v_outCast[i]
   vx_ret
 
-proc smoothSizes*(self: QFontDatabase, family: string, style: string): seq[cint] =
+proc smoothSizes*(self: gen_qfontdatabase_types.QFontDatabase, family: string, style: string): seq[cint] =
 
   var v_ma = fcQFontDatabase_smoothSizes(self.h, struct_miqt_string(data: family, len: csize_t(len(family))), struct_miqt_string(data: style, len: csize_t(len(style))))
   var vx_ret = newSeq[cint](int(v_ma.len))
@@ -211,83 +207,83 @@ proc smoothSizes*(self: QFontDatabase, family: string, style: string): seq[cint]
     vx_ret[i] = v_outCast[i]
   vx_ret
 
-proc styleString*(self: QFontDatabase, font: gen_qfont.QFont): string =
+proc styleString*(self: gen_qfontdatabase_types.QFontDatabase, font: gen_qfont.QFont): string =
 
   let v_ms = fcQFontDatabase_styleString(self.h, font.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc styleStringWithFontInfo*(self: QFontDatabase, fontInfo: gen_qfontinfo.QFontInfo): string =
+proc styleStringWithFontInfo*(self: gen_qfontdatabase_types.QFontDatabase, fontInfo: gen_qfontinfo.QFontInfo): string =
 
   let v_ms = fcQFontDatabase_styleStringWithFontInfo(self.h, fontInfo.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc font*(self: QFontDatabase, family: string, style: string, pointSize: cint): gen_qfont.QFont =
+proc font*(self: gen_qfontdatabase_types.QFontDatabase, family: string, style: string, pointSize: cint): gen_qfont.QFont =
 
   gen_qfont.QFont(h: fcQFontDatabase_font(self.h, struct_miqt_string(data: family, len: csize_t(len(family))), struct_miqt_string(data: style, len: csize_t(len(style))), pointSize))
 
-proc isBitmapScalable*(self: QFontDatabase, family: string): bool =
+proc isBitmapScalable*(self: gen_qfontdatabase_types.QFontDatabase, family: string): bool =
 
   fcQFontDatabase_isBitmapScalable(self.h, struct_miqt_string(data: family, len: csize_t(len(family))))
 
-proc isSmoothlyScalable*(self: QFontDatabase, family: string): bool =
+proc isSmoothlyScalable*(self: gen_qfontdatabase_types.QFontDatabase, family: string): bool =
 
   fcQFontDatabase_isSmoothlyScalable(self.h, struct_miqt_string(data: family, len: csize_t(len(family))))
 
-proc isScalable*(self: QFontDatabase, family: string): bool =
+proc isScalable*(self: gen_qfontdatabase_types.QFontDatabase, family: string): bool =
 
   fcQFontDatabase_isScalable(self.h, struct_miqt_string(data: family, len: csize_t(len(family))))
 
-proc isFixedPitch*(self: QFontDatabase, family: string): bool =
+proc isFixedPitch*(self: gen_qfontdatabase_types.QFontDatabase, family: string): bool =
 
   fcQFontDatabase_isFixedPitch(self.h, struct_miqt_string(data: family, len: csize_t(len(family))))
 
-proc italic*(self: QFontDatabase, family: string, style: string): bool =
+proc italic*(self: gen_qfontdatabase_types.QFontDatabase, family: string, style: string): bool =
 
   fcQFontDatabase_italic(self.h, struct_miqt_string(data: family, len: csize_t(len(family))), struct_miqt_string(data: style, len: csize_t(len(style))))
 
-proc bold*(self: QFontDatabase, family: string, style: string): bool =
+proc bold*(self: gen_qfontdatabase_types.QFontDatabase, family: string, style: string): bool =
 
   fcQFontDatabase_bold(self.h, struct_miqt_string(data: family, len: csize_t(len(family))), struct_miqt_string(data: style, len: csize_t(len(style))))
 
-proc weight*(self: QFontDatabase, family: string, style: string): cint =
+proc weight*(self: gen_qfontdatabase_types.QFontDatabase, family: string, style: string): cint =
 
   fcQFontDatabase_weight(self.h, struct_miqt_string(data: family, len: csize_t(len(family))), struct_miqt_string(data: style, len: csize_t(len(style))))
 
-proc hasFamily*(self: QFontDatabase, family: string): bool =
+proc hasFamily*(self: gen_qfontdatabase_types.QFontDatabase, family: string): bool =
 
   fcQFontDatabase_hasFamily(self.h, struct_miqt_string(data: family, len: csize_t(len(family))))
 
-proc isPrivateFamily*(self: QFontDatabase, family: string): bool =
+proc isPrivateFamily*(self: gen_qfontdatabase_types.QFontDatabase, family: string): bool =
 
   fcQFontDatabase_isPrivateFamily(self.h, struct_miqt_string(data: family, len: csize_t(len(family))))
 
-proc writingSystemName*(_: type QFontDatabase, writingSystem: QFontDatabaseWritingSystem): string =
+proc writingSystemName*(_: type gen_qfontdatabase_types.QFontDatabase, writingSystem: cint): string =
 
   let v_ms = fcQFontDatabase_writingSystemName(cint(writingSystem))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc writingSystemSample*(_: type QFontDatabase, writingSystem: QFontDatabaseWritingSystem): string =
+proc writingSystemSample*(_: type gen_qfontdatabase_types.QFontDatabase, writingSystem: cint): string =
 
   let v_ms = fcQFontDatabase_writingSystemSample(cint(writingSystem))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc addApplicationFont*(_: type QFontDatabase, fileName: string): cint =
+proc addApplicationFont*(_: type gen_qfontdatabase_types.QFontDatabase, fileName: string): cint =
 
   fcQFontDatabase_addApplicationFont(struct_miqt_string(data: fileName, len: csize_t(len(fileName))))
 
-proc addApplicationFontFromData*(_: type QFontDatabase, fontData: seq[byte]): cint =
+proc addApplicationFontFromData*(_: type gen_qfontdatabase_types.QFontDatabase, fontData: seq[byte]): cint =
 
   fcQFontDatabase_addApplicationFontFromData(struct_miqt_string(data: cast[cstring](if len(fontData) == 0: nil else: unsafeAddr fontData[0]), len: csize_t(len(fontData))))
 
-proc applicationFontFamilies*(_: type QFontDatabase, id: cint): seq[string] =
+proc applicationFontFamilies*(_: type gen_qfontdatabase_types.QFontDatabase, id: cint): seq[string] =
 
   var v_ma = fcQFontDatabase_applicationFontFamilies(id)
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -299,23 +295,23 @@ proc applicationFontFamilies*(_: type QFontDatabase, id: cint): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc removeApplicationFont*(_: type QFontDatabase, id: cint): bool =
+proc removeApplicationFont*(_: type gen_qfontdatabase_types.QFontDatabase, id: cint): bool =
 
   fcQFontDatabase_removeApplicationFont(id)
 
-proc removeAllApplicationFonts*(_: type QFontDatabase, ): bool =
+proc removeAllApplicationFonts*(_: type gen_qfontdatabase_types.QFontDatabase, ): bool =
 
   fcQFontDatabase_removeAllApplicationFonts()
 
-proc supportsThreadedFontRendering*(_: type QFontDatabase, ): bool =
+proc supportsThreadedFontRendering*(_: type gen_qfontdatabase_types.QFontDatabase, ): bool =
 
   fcQFontDatabase_supportsThreadedFontRendering()
 
-proc systemFont*(_: type QFontDatabase, typeVal: QFontDatabaseSystemFont): gen_qfont.QFont =
+proc systemFont*(_: type gen_qfontdatabase_types.QFontDatabase, typeVal: cint): gen_qfont.QFont =
 
   gen_qfont.QFont(h: fcQFontDatabase_systemFont(cint(typeVal)))
 
-proc families1*(self: QFontDatabase, writingSystem: QFontDatabaseWritingSystem): seq[string] =
+proc families1*(self: gen_qfontdatabase_types.QFontDatabase, writingSystem: cint): seq[string] =
 
   var v_ma = fcQFontDatabase_families1(self.h, cint(writingSystem))
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -327,7 +323,7 @@ proc families1*(self: QFontDatabase, writingSystem: QFontDatabaseWritingSystem):
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc pointSizes2*(self: QFontDatabase, family: string, style: string): seq[cint] =
+proc pointSizes2*(self: gen_qfontdatabase_types.QFontDatabase, family: string, style: string): seq[cint] =
 
   var v_ma = fcQFontDatabase_pointSizes2(self.h, struct_miqt_string(data: family, len: csize_t(len(family))), struct_miqt_string(data: style, len: csize_t(len(style))))
   var vx_ret = newSeq[cint](int(v_ma.len))
@@ -336,23 +332,23 @@ proc pointSizes2*(self: QFontDatabase, family: string, style: string): seq[cint]
     vx_ret[i] = v_outCast[i]
   vx_ret
 
-proc isBitmapScalable2*(self: QFontDatabase, family: string, style: string): bool =
+proc isBitmapScalable2*(self: gen_qfontdatabase_types.QFontDatabase, family: string, style: string): bool =
 
   fcQFontDatabase_isBitmapScalable2(self.h, struct_miqt_string(data: family, len: csize_t(len(family))), struct_miqt_string(data: style, len: csize_t(len(style))))
 
-proc isSmoothlyScalable2*(self: QFontDatabase, family: string, style: string): bool =
+proc isSmoothlyScalable2*(self: gen_qfontdatabase_types.QFontDatabase, family: string, style: string): bool =
 
   fcQFontDatabase_isSmoothlyScalable2(self.h, struct_miqt_string(data: family, len: csize_t(len(family))), struct_miqt_string(data: style, len: csize_t(len(style))))
 
-proc isScalable2*(self: QFontDatabase, family: string, style: string): bool =
+proc isScalable2*(self: gen_qfontdatabase_types.QFontDatabase, family: string, style: string): bool =
 
   fcQFontDatabase_isScalable2(self.h, struct_miqt_string(data: family, len: csize_t(len(family))), struct_miqt_string(data: style, len: csize_t(len(style))))
 
-proc isFixedPitch2*(self: QFontDatabase, family: string, style: string): bool =
+proc isFixedPitch2*(self: gen_qfontdatabase_types.QFontDatabase, family: string, style: string): bool =
 
   fcQFontDatabase_isFixedPitch2(self.h, struct_miqt_string(data: family, len: csize_t(len(family))), struct_miqt_string(data: style, len: csize_t(len(style))))
 
-proc staticMetaObject*(_: type QFontDatabase): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qfontdatabase_types.QFontDatabase): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQFontDatabase_staticMetaObject())
-proc delete*(self: QFontDatabase) =
+proc delete*(self: gen_qfontdatabase_types.QFontDatabase) =
   fcQFontDatabase_delete(self.h)

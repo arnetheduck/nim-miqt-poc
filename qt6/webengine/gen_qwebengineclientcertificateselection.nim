@@ -55,28 +55,28 @@ proc fcQWebEngineClientCertificateSelection_certificates(self: pointer, ): struc
 proc fcQWebEngineClientCertificateSelection_delete(self: pointer) {.importc: "QWebEngineClientCertificateSelection_delete".}
 
 
-func init*(T: type QWebEngineClientCertificateSelection, h: ptr cQWebEngineClientCertificateSelection): QWebEngineClientCertificateSelection =
+func init*(T: type gen_qwebengineclientcertificateselection_types.QWebEngineClientCertificateSelection, h: ptr cQWebEngineClientCertificateSelection): gen_qwebengineclientcertificateselection_types.QWebEngineClientCertificateSelection =
   T(h: h)
-proc create*(T: type QWebEngineClientCertificateSelection, param1: QWebEngineClientCertificateSelection): QWebEngineClientCertificateSelection =
+proc create*(T: type gen_qwebengineclientcertificateselection_types.QWebEngineClientCertificateSelection, param1: gen_qwebengineclientcertificateselection_types.QWebEngineClientCertificateSelection): gen_qwebengineclientcertificateselection_types.QWebEngineClientCertificateSelection =
 
-  QWebEngineClientCertificateSelection.init(fcQWebEngineClientCertificateSelection_new(param1.h))
-proc operatorAssign*(self: QWebEngineClientCertificateSelection, param1: QWebEngineClientCertificateSelection): void =
+  gen_qwebengineclientcertificateselection_types.QWebEngineClientCertificateSelection.init(fcQWebEngineClientCertificateSelection_new(param1.h))
+proc operatorAssign*(self: gen_qwebengineclientcertificateselection_types.QWebEngineClientCertificateSelection, param1: gen_qwebengineclientcertificateselection_types.QWebEngineClientCertificateSelection): void =
 
   fcQWebEngineClientCertificateSelection_operatorAssign(self.h, param1.h)
 
-proc host*(self: QWebEngineClientCertificateSelection, ): gen_qurl.QUrl =
+proc host*(self: gen_qwebengineclientcertificateselection_types.QWebEngineClientCertificateSelection, ): gen_qurl.QUrl =
 
   gen_qurl.QUrl(h: fcQWebEngineClientCertificateSelection_host(self.h))
 
-proc select*(self: QWebEngineClientCertificateSelection, certificate: gen_qsslcertificate.QSslCertificate): void =
+proc select*(self: gen_qwebengineclientcertificateselection_types.QWebEngineClientCertificateSelection, certificate: gen_qsslcertificate.QSslCertificate): void =
 
   fcQWebEngineClientCertificateSelection_select(self.h, certificate.h)
 
-proc selectNone*(self: QWebEngineClientCertificateSelection, ): void =
+proc selectNone*(self: gen_qwebengineclientcertificateselection_types.QWebEngineClientCertificateSelection, ): void =
 
   fcQWebEngineClientCertificateSelection_selectNone(self.h)
 
-proc certificates*(self: QWebEngineClientCertificateSelection, ): seq[gen_qsslcertificate.QSslCertificate] =
+proc certificates*(self: gen_qwebengineclientcertificateselection_types.QWebEngineClientCertificateSelection, ): seq[gen_qsslcertificate.QSslCertificate] =
 
   var v_ma = fcQWebEngineClientCertificateSelection_certificates(self.h)
   var vx_ret = newSeq[gen_qsslcertificate.QSslCertificate](int(v_ma.len))
@@ -85,5 +85,5 @@ proc certificates*(self: QWebEngineClientCertificateSelection, ): seq[gen_qsslce
     vx_ret[i] = gen_qsslcertificate.QSslCertificate(h: v_outCast[i])
   vx_ret
 
-proc delete*(self: QWebEngineClientCertificateSelection) =
+proc delete*(self: gen_qwebengineclientcertificateselection_types.QWebEngineClientCertificateSelection) =
   fcQWebEngineClientCertificateSelection_delete(self.h)

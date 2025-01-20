@@ -34,22 +34,18 @@ const cflags = gorge("pkg-config -cflags Qt5Script")
 {.compile("gen_qscriptcontext.cpp", cflags).}
 
 
-type QScriptContextExecutionState* = cint
-const
-  QScriptContextNormalState* = 0
-  QScriptContextExceptionState* = 1
+type QScriptContextExecutionStateEnum* = distinct cint
+template NormalState*(_: type QScriptContextExecutionStateEnum): untyped = 0
+template ExceptionState*(_: type QScriptContextExecutionStateEnum): untyped = 1
 
 
-
-type QScriptContextError* = cint
-const
-  QScriptContextUnknownError* = 0
-  QScriptContextReferenceError* = 1
-  QScriptContextSyntaxError* = 2
-  QScriptContextTypeError* = 3
-  QScriptContextRangeError* = 4
-  QScriptContextURIError* = 5
-
+type QScriptContextErrorEnum* = distinct cint
+template UnknownError*(_: type QScriptContextErrorEnum): untyped = 0
+template ReferenceError*(_: type QScriptContextErrorEnum): untyped = 1
+template SyntaxError*(_: type QScriptContextErrorEnum): untyped = 2
+template TypeError*(_: type QScriptContextErrorEnum): untyped = 3
+template RangeError*(_: type QScriptContextErrorEnum): untyped = 4
+template URIError*(_: type QScriptContextErrorEnum): untyped = 5
 
 
 import gen_qscriptcontext_types
@@ -89,37 +85,37 @@ proc fcQScriptContext_toString(self: pointer, ): struct_miqt_string {.importc: "
 proc fcQScriptContext_delete(self: pointer) {.importc: "QScriptContext_delete".}
 
 
-func init*(T: type QScriptContext, h: ptr cQScriptContext): QScriptContext =
+func init*(T: type gen_qscriptcontext_types.QScriptContext, h: ptr cQScriptContext): gen_qscriptcontext_types.QScriptContext =
   T(h: h)
-proc parentContext*(self: QScriptContext, ): QScriptContext =
+proc parentContext*(self: gen_qscriptcontext_types.QScriptContext, ): gen_qscriptcontext_types.QScriptContext =
 
-  QScriptContext(h: fcQScriptContext_parentContext(self.h))
+  gen_qscriptcontext_types.QScriptContext(h: fcQScriptContext_parentContext(self.h))
 
-proc engine*(self: QScriptContext, ): gen_qscriptengine.QScriptEngine =
+proc engine*(self: gen_qscriptcontext_types.QScriptContext, ): gen_qscriptengine.QScriptEngine =
 
   gen_qscriptengine.QScriptEngine(h: fcQScriptContext_engine(self.h))
 
-proc state*(self: QScriptContext, ): QScriptContextExecutionState =
+proc state*(self: gen_qscriptcontext_types.QScriptContext, ): cint =
 
-  QScriptContextExecutionState(fcQScriptContext_state(self.h))
+  cint(fcQScriptContext_state(self.h))
 
-proc callee*(self: QScriptContext, ): gen_qscriptvalue.QScriptValue =
+proc callee*(self: gen_qscriptcontext_types.QScriptContext, ): gen_qscriptvalue.QScriptValue =
 
   gen_qscriptvalue.QScriptValue(h: fcQScriptContext_callee(self.h))
 
-proc argumentCount*(self: QScriptContext, ): cint =
+proc argumentCount*(self: gen_qscriptcontext_types.QScriptContext, ): cint =
 
   fcQScriptContext_argumentCount(self.h)
 
-proc argument*(self: QScriptContext, index: cint): gen_qscriptvalue.QScriptValue =
+proc argument*(self: gen_qscriptcontext_types.QScriptContext, index: cint): gen_qscriptvalue.QScriptValue =
 
   gen_qscriptvalue.QScriptValue(h: fcQScriptContext_argument(self.h, index))
 
-proc argumentsObject*(self: QScriptContext, ): gen_qscriptvalue.QScriptValue =
+proc argumentsObject*(self: gen_qscriptcontext_types.QScriptContext, ): gen_qscriptvalue.QScriptValue =
 
   gen_qscriptvalue.QScriptValue(h: fcQScriptContext_argumentsObject(self.h))
 
-proc scopeChain*(self: QScriptContext, ): seq[gen_qscriptvalue.QScriptValue] =
+proc scopeChain*(self: gen_qscriptcontext_types.QScriptContext, ): seq[gen_qscriptvalue.QScriptValue] =
 
   var v_ma = fcQScriptContext_scopeChain(self.h)
   var vx_ret = newSeq[gen_qscriptvalue.QScriptValue](int(v_ma.len))
@@ -128,55 +124,55 @@ proc scopeChain*(self: QScriptContext, ): seq[gen_qscriptvalue.QScriptValue] =
     vx_ret[i] = gen_qscriptvalue.QScriptValue(h: v_outCast[i])
   vx_ret
 
-proc pushScope*(self: QScriptContext, objectVal: gen_qscriptvalue.QScriptValue): void =
+proc pushScope*(self: gen_qscriptcontext_types.QScriptContext, objectVal: gen_qscriptvalue.QScriptValue): void =
 
   fcQScriptContext_pushScope(self.h, objectVal.h)
 
-proc popScope*(self: QScriptContext, ): gen_qscriptvalue.QScriptValue =
+proc popScope*(self: gen_qscriptcontext_types.QScriptContext, ): gen_qscriptvalue.QScriptValue =
 
   gen_qscriptvalue.QScriptValue(h: fcQScriptContext_popScope(self.h))
 
-proc returnValue*(self: QScriptContext, ): gen_qscriptvalue.QScriptValue =
+proc returnValue*(self: gen_qscriptcontext_types.QScriptContext, ): gen_qscriptvalue.QScriptValue =
 
   gen_qscriptvalue.QScriptValue(h: fcQScriptContext_returnValue(self.h))
 
-proc setReturnValue*(self: QScriptContext, resultVal: gen_qscriptvalue.QScriptValue): void =
+proc setReturnValue*(self: gen_qscriptcontext_types.QScriptContext, resultVal: gen_qscriptvalue.QScriptValue): void =
 
   fcQScriptContext_setReturnValue(self.h, resultVal.h)
 
-proc activationObject*(self: QScriptContext, ): gen_qscriptvalue.QScriptValue =
+proc activationObject*(self: gen_qscriptcontext_types.QScriptContext, ): gen_qscriptvalue.QScriptValue =
 
   gen_qscriptvalue.QScriptValue(h: fcQScriptContext_activationObject(self.h))
 
-proc setActivationObject*(self: QScriptContext, activation: gen_qscriptvalue.QScriptValue): void =
+proc setActivationObject*(self: gen_qscriptcontext_types.QScriptContext, activation: gen_qscriptvalue.QScriptValue): void =
 
   fcQScriptContext_setActivationObject(self.h, activation.h)
 
-proc thisObject*(self: QScriptContext, ): gen_qscriptvalue.QScriptValue =
+proc thisObject*(self: gen_qscriptcontext_types.QScriptContext, ): gen_qscriptvalue.QScriptValue =
 
   gen_qscriptvalue.QScriptValue(h: fcQScriptContext_thisObject(self.h))
 
-proc setThisObject*(self: QScriptContext, thisObject: gen_qscriptvalue.QScriptValue): void =
+proc setThisObject*(self: gen_qscriptcontext_types.QScriptContext, thisObject: gen_qscriptvalue.QScriptValue): void =
 
   fcQScriptContext_setThisObject(self.h, thisObject.h)
 
-proc isCalledAsConstructor*(self: QScriptContext, ): bool =
+proc isCalledAsConstructor*(self: gen_qscriptcontext_types.QScriptContext, ): bool =
 
   fcQScriptContext_isCalledAsConstructor(self.h)
 
-proc throwValue*(self: QScriptContext, value: gen_qscriptvalue.QScriptValue): gen_qscriptvalue.QScriptValue =
+proc throwValue*(self: gen_qscriptcontext_types.QScriptContext, value: gen_qscriptvalue.QScriptValue): gen_qscriptvalue.QScriptValue =
 
   gen_qscriptvalue.QScriptValue(h: fcQScriptContext_throwValue(self.h, value.h))
 
-proc throwError*(self: QScriptContext, error: QScriptContextError, text: string): gen_qscriptvalue.QScriptValue =
+proc throwError*(self: gen_qscriptcontext_types.QScriptContext, error: cint, text: string): gen_qscriptvalue.QScriptValue =
 
   gen_qscriptvalue.QScriptValue(h: fcQScriptContext_throwError(self.h, cint(error), struct_miqt_string(data: text, len: csize_t(len(text)))))
 
-proc throwErrorWithText*(self: QScriptContext, text: string): gen_qscriptvalue.QScriptValue =
+proc throwErrorWithText*(self: gen_qscriptcontext_types.QScriptContext, text: string): gen_qscriptvalue.QScriptValue =
 
   gen_qscriptvalue.QScriptValue(h: fcQScriptContext_throwErrorWithText(self.h, struct_miqt_string(data: text, len: csize_t(len(text)))))
 
-proc backtrace*(self: QScriptContext, ): seq[string] =
+proc backtrace*(self: gen_qscriptcontext_types.QScriptContext, ): seq[string] =
 
   var v_ma = fcQScriptContext_backtrace(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -188,12 +184,12 @@ proc backtrace*(self: QScriptContext, ): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc toString*(self: QScriptContext, ): string =
+proc toString*(self: gen_qscriptcontext_types.QScriptContext, ): string =
 
   let v_ms = fcQScriptContext_toString(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc delete*(self: QScriptContext) =
+proc delete*(self: gen_qscriptcontext_types.QScriptContext) =
   fcQScriptContext_delete(self.h)

@@ -64,39 +64,39 @@ proc fcQSGTextureProvider_staticMetaObject(): pointer {.importc: "QSGTextureProv
 proc fcQSGTextureProvider_delete(self: pointer) {.importc: "QSGTextureProvider_delete".}
 
 
-func init*(T: type QSGTextureProvider, h: ptr cQSGTextureProvider): QSGTextureProvider =
+func init*(T: type gen_qsgtextureprovider_types.QSGTextureProvider, h: ptr cQSGTextureProvider): gen_qsgtextureprovider_types.QSGTextureProvider =
   T(h: h)
-proc metaObject*(self: QSGTextureProvider, ): gen_qobjectdefs.QMetaObject =
+proc metaObject*(self: gen_qsgtextureprovider_types.QSGTextureProvider, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQSGTextureProvider_metaObject(self.h))
 
-proc metacast*(self: QSGTextureProvider, param1: cstring): pointer =
+proc metacast*(self: gen_qsgtextureprovider_types.QSGTextureProvider, param1: cstring): pointer =
 
   fcQSGTextureProvider_metacast(self.h, param1)
 
-proc metacall*(self: QSGTextureProvider, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qsgtextureprovider_types.QSGTextureProvider, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQSGTextureProvider_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QSGTextureProvider, s: cstring): string =
+proc tr*(_: type gen_qsgtextureprovider_types.QSGTextureProvider, s: cstring): string =
 
   let v_ms = fcQSGTextureProvider_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QSGTextureProvider, s: cstring): string =
+proc trUtf8*(_: type gen_qsgtextureprovider_types.QSGTextureProvider, s: cstring): string =
 
   let v_ms = fcQSGTextureProvider_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc texture*(self: QSGTextureProvider, ): gen_qsgtexture.QSGTexture =
+proc texture*(self: gen_qsgtextureprovider_types.QSGTextureProvider, ): gen_qsgtexture.QSGTexture =
 
   gen_qsgtexture.QSGTexture(h: fcQSGTextureProvider_texture(self.h))
 
-proc textureChanged*(self: QSGTextureProvider, ): void =
+proc textureChanged*(self: gen_qsgtextureprovider_types.QSGTextureProvider, ): void =
 
   fcQSGTextureProvider_textureChanged(self.h)
 
@@ -106,41 +106,41 @@ proc miqt_exec_callback_QSGTextureProvider_textureChanged(slot: int) {.exportc.}
 
   nimfunc[]()
 
-proc ontextureChanged*(self: QSGTextureProvider, slot: proc()) =
+proc ontextureChanged*(self: gen_qsgtextureprovider_types.QSGTextureProvider, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQSGTextureProvider_connect_textureChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QSGTextureProvider, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qsgtextureprovider_types.QSGTextureProvider, s: cstring, c: cstring): string =
 
   let v_ms = fcQSGTextureProvider_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QSGTextureProvider, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qsgtextureprovider_types.QSGTextureProvider, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQSGTextureProvider_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QSGTextureProvider, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qsgtextureprovider_types.QSGTextureProvider, s: cstring, c: cstring): string =
 
   let v_ms = fcQSGTextureProvider_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QSGTextureProvider, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qsgtextureprovider_types.QSGTextureProvider, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQSGTextureProvider_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc staticMetaObject*(_: type QSGTextureProvider): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qsgtextureprovider_types.QSGTextureProvider): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQSGTextureProvider_staticMetaObject())
-proc delete*(self: QSGTextureProvider) =
+proc delete*(self: gen_qsgtextureprovider_types.QSGTextureProvider) =
   fcQSGTextureProvider_delete(self.h)

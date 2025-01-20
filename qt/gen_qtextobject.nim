@@ -41,7 +41,6 @@ import
   gen_qcoreevent,
   gen_qglyphrun,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qtextcursor,
@@ -53,7 +52,6 @@ export
   gen_qcoreevent,
   gen_qglyphrun,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qtextcursor,
@@ -228,595 +226,545 @@ proc fcQTextBlockiterator_operatorMinusMinusWithInt(self: pointer, param1: cint)
 proc fcQTextBlockiterator_delete(self: pointer) {.importc: "QTextBlock__iterator_delete".}
 
 
-func init*(T: type QTextObject, h: ptr cQTextObject): QTextObject =
+func init*(T: type gen_qtextobject_types.QTextObject, h: ptr cQTextObject): gen_qtextobject_types.QTextObject =
   T(h: h)
-proc metaObject*(self: QTextObject, ): gen_qobjectdefs.QMetaObject =
+proc metaObject*(self: gen_qtextobject_types.QTextObject, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQTextObject_metaObject(self.h))
 
-proc metacast*(self: QTextObject, param1: cstring): pointer =
+proc metacast*(self: gen_qtextobject_types.QTextObject, param1: cstring): pointer =
 
   fcQTextObject_metacast(self.h, param1)
 
-proc metacall*(self: QTextObject, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qtextobject_types.QTextObject, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQTextObject_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QTextObject, s: cstring): string =
+proc tr*(_: type gen_qtextobject_types.QTextObject, s: cstring): string =
 
   let v_ms = fcQTextObject_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QTextObject, s: cstring): string =
+proc trUtf8*(_: type gen_qtextobject_types.QTextObject, s: cstring): string =
 
   let v_ms = fcQTextObject_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc format*(self: QTextObject, ): gen_qtextformat.QTextFormat =
+proc format*(self: gen_qtextobject_types.QTextObject, ): gen_qtextformat.QTextFormat =
 
   gen_qtextformat.QTextFormat(h: fcQTextObject_format(self.h))
 
-proc formatIndex*(self: QTextObject, ): cint =
+proc formatIndex*(self: gen_qtextobject_types.QTextObject, ): cint =
 
   fcQTextObject_formatIndex(self.h)
 
-proc document*(self: QTextObject, ): gen_qtextdocument.QTextDocument =
+proc document*(self: gen_qtextobject_types.QTextObject, ): gen_qtextdocument.QTextDocument =
 
   gen_qtextdocument.QTextDocument(h: fcQTextObject_document(self.h))
 
-proc objectIndex*(self: QTextObject, ): cint =
+proc objectIndex*(self: gen_qtextobject_types.QTextObject, ): cint =
 
   fcQTextObject_objectIndex(self.h)
 
-proc tr2*(_: type QTextObject, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qtextobject_types.QTextObject, s: cstring, c: cstring): string =
 
   let v_ms = fcQTextObject_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QTextObject, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qtextobject_types.QTextObject, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQTextObject_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QTextObject, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qtextobject_types.QTextObject, s: cstring, c: cstring): string =
 
   let v_ms = fcQTextObject_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QTextObject, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qtextobject_types.QTextObject, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQTextObject_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc staticMetaObject*(_: type QTextObject): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qtextobject_types.QTextObject): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQTextObject_staticMetaObject())
 
-func init*(T: type QTextBlockGroup, h: ptr cQTextBlockGroup): QTextBlockGroup =
+func init*(T: type gen_qtextobject_types.QTextBlockGroup, h: ptr cQTextBlockGroup): gen_qtextobject_types.QTextBlockGroup =
   T(h: h)
-proc metaObject*(self: QTextBlockGroup, ): gen_qobjectdefs.QMetaObject =
+proc metaObject*(self: gen_qtextobject_types.QTextBlockGroup, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQTextBlockGroup_metaObject(self.h))
 
-proc metacast*(self: QTextBlockGroup, param1: cstring): pointer =
+proc metacast*(self: gen_qtextobject_types.QTextBlockGroup, param1: cstring): pointer =
 
   fcQTextBlockGroup_metacast(self.h, param1)
 
-proc metacall*(self: QTextBlockGroup, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qtextobject_types.QTextBlockGroup, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQTextBlockGroup_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QTextBlockGroup, s: cstring): string =
+proc tr*(_: type gen_qtextobject_types.QTextBlockGroup, s: cstring): string =
 
   let v_ms = fcQTextBlockGroup_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QTextBlockGroup, s: cstring): string =
+proc trUtf8*(_: type gen_qtextobject_types.QTextBlockGroup, s: cstring): string =
 
   let v_ms = fcQTextBlockGroup_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr2*(_: type QTextBlockGroup, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qtextobject_types.QTextBlockGroup, s: cstring, c: cstring): string =
 
   let v_ms = fcQTextBlockGroup_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QTextBlockGroup, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qtextobject_types.QTextBlockGroup, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQTextBlockGroup_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QTextBlockGroup, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qtextobject_types.QTextBlockGroup, s: cstring, c: cstring): string =
 
   let v_ms = fcQTextBlockGroup_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QTextBlockGroup, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qtextobject_types.QTextBlockGroup, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQTextBlockGroup_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc staticMetaObject*(_: type QTextBlockGroup): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qtextobject_types.QTextBlockGroup): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQTextBlockGroup_staticMetaObject())
 
-func init*(T: type QTextFrameLayoutData, h: ptr cQTextFrameLayoutData): QTextFrameLayoutData =
+func init*(T: type gen_qtextobject_types.QTextFrameLayoutData, h: ptr cQTextFrameLayoutData): gen_qtextobject_types.QTextFrameLayoutData =
   T(h: h)
-proc operatorAssign*(self: QTextFrameLayoutData, param1: QTextFrameLayoutData): void =
+proc operatorAssign*(self: gen_qtextobject_types.QTextFrameLayoutData, param1: gen_qtextobject_types.QTextFrameLayoutData): void =
 
   fcQTextFrameLayoutData_operatorAssign(self.h, param1.h)
 
-proc delete*(self: QTextFrameLayoutData) =
+proc delete*(self: gen_qtextobject_types.QTextFrameLayoutData) =
   fcQTextFrameLayoutData_delete(self.h)
 
-func init*(T: type QTextFrame, h: ptr cQTextFrame): QTextFrame =
+func init*(T: type gen_qtextobject_types.QTextFrame, h: ptr cQTextFrame): gen_qtextobject_types.QTextFrame =
   T(h: h)
-proc create*(T: type QTextFrame, doc: gen_qtextdocument.QTextDocument): QTextFrame =
+proc create*(T: type gen_qtextobject_types.QTextFrame, doc: gen_qtextdocument.QTextDocument): gen_qtextobject_types.QTextFrame =
 
-  QTextFrame.init(fcQTextFrame_new(doc.h))
-proc metaObject*(self: QTextFrame, ): gen_qobjectdefs.QMetaObject =
+  gen_qtextobject_types.QTextFrame.init(fcQTextFrame_new(doc.h))
+proc metaObject*(self: gen_qtextobject_types.QTextFrame, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQTextFrame_metaObject(self.h))
 
-proc metacast*(self: QTextFrame, param1: cstring): pointer =
+proc metacast*(self: gen_qtextobject_types.QTextFrame, param1: cstring): pointer =
 
   fcQTextFrame_metacast(self.h, param1)
 
-proc metacall*(self: QTextFrame, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qtextobject_types.QTextFrame, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQTextFrame_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QTextFrame, s: cstring): string =
+proc tr*(_: type gen_qtextobject_types.QTextFrame, s: cstring): string =
 
   let v_ms = fcQTextFrame_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QTextFrame, s: cstring): string =
+proc trUtf8*(_: type gen_qtextobject_types.QTextFrame, s: cstring): string =
 
   let v_ms = fcQTextFrame_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setFrameFormat*(self: QTextFrame, format: gen_qtextformat.QTextFrameFormat): void =
+proc setFrameFormat*(self: gen_qtextobject_types.QTextFrame, format: gen_qtextformat.QTextFrameFormat): void =
 
   fcQTextFrame_setFrameFormat(self.h, format.h)
 
-proc frameFormat*(self: QTextFrame, ): gen_qtextformat.QTextFrameFormat =
+proc frameFormat*(self: gen_qtextobject_types.QTextFrame, ): gen_qtextformat.QTextFrameFormat =
 
   gen_qtextformat.QTextFrameFormat(h: fcQTextFrame_frameFormat(self.h))
 
-proc firstCursorPosition*(self: QTextFrame, ): gen_qtextcursor.QTextCursor =
+proc firstCursorPosition*(self: gen_qtextobject_types.QTextFrame, ): gen_qtextcursor.QTextCursor =
 
   gen_qtextcursor.QTextCursor(h: fcQTextFrame_firstCursorPosition(self.h))
 
-proc lastCursorPosition*(self: QTextFrame, ): gen_qtextcursor.QTextCursor =
+proc lastCursorPosition*(self: gen_qtextobject_types.QTextFrame, ): gen_qtextcursor.QTextCursor =
 
   gen_qtextcursor.QTextCursor(h: fcQTextFrame_lastCursorPosition(self.h))
 
-proc firstPosition*(self: QTextFrame, ): cint =
+proc firstPosition*(self: gen_qtextobject_types.QTextFrame, ): cint =
 
   fcQTextFrame_firstPosition(self.h)
 
-proc lastPosition*(self: QTextFrame, ): cint =
+proc lastPosition*(self: gen_qtextobject_types.QTextFrame, ): cint =
 
   fcQTextFrame_lastPosition(self.h)
 
-proc layoutData*(self: QTextFrame, ): QTextFrameLayoutData =
+proc layoutData*(self: gen_qtextobject_types.QTextFrame, ): gen_qtextobject_types.QTextFrameLayoutData =
 
-  QTextFrameLayoutData(h: fcQTextFrame_layoutData(self.h))
+  gen_qtextobject_types.QTextFrameLayoutData(h: fcQTextFrame_layoutData(self.h))
 
-proc setLayoutData*(self: QTextFrame, data: QTextFrameLayoutData): void =
+proc setLayoutData*(self: gen_qtextobject_types.QTextFrame, data: gen_qtextobject_types.QTextFrameLayoutData): void =
 
   fcQTextFrame_setLayoutData(self.h, data.h)
 
-proc childFrames*(self: QTextFrame, ): seq[QTextFrame] =
+proc childFrames*(self: gen_qtextobject_types.QTextFrame, ): seq[gen_qtextobject_types.QTextFrame] =
 
   var v_ma = fcQTextFrame_childFrames(self.h)
-  var vx_ret = newSeq[QTextFrame](int(v_ma.len))
+  var vx_ret = newSeq[gen_qtextobject_types.QTextFrame](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
-    vx_ret[i] = QTextFrame(h: v_outCast[i])
+    vx_ret[i] = gen_qtextobject_types.QTextFrame(h: v_outCast[i])
   vx_ret
 
-proc parentFrame*(self: QTextFrame, ): QTextFrame =
+proc parentFrame*(self: gen_qtextobject_types.QTextFrame, ): gen_qtextobject_types.QTextFrame =
 
-  QTextFrame(h: fcQTextFrame_parentFrame(self.h))
+  gen_qtextobject_types.QTextFrame(h: fcQTextFrame_parentFrame(self.h))
 
-proc begin*(self: QTextFrame, ): QTextFrameiterator =
+proc begin*(self: gen_qtextobject_types.QTextFrame, ): gen_qtextobject_types.QTextFrameiterator =
 
-  QTextFrameiterator(h: fcQTextFrame_begin(self.h))
+  gen_qtextobject_types.QTextFrameiterator(h: fcQTextFrame_begin(self.h))
 
-proc endX*(self: QTextFrame, ): QTextFrameiterator =
+proc endX*(self: gen_qtextobject_types.QTextFrame, ): gen_qtextobject_types.QTextFrameiterator =
 
-  QTextFrameiterator(h: fcQTextFrame_endX(self.h))
+  gen_qtextobject_types.QTextFrameiterator(h: fcQTextFrame_endX(self.h))
 
-proc tr2*(_: type QTextFrame, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qtextobject_types.QTextFrame, s: cstring, c: cstring): string =
 
   let v_ms = fcQTextFrame_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QTextFrame, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qtextobject_types.QTextFrame, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQTextFrame_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QTextFrame, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qtextobject_types.QTextFrame, s: cstring, c: cstring): string =
 
   let v_ms = fcQTextFrame_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QTextFrame, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qtextobject_types.QTextFrame, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQTextFrame_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QTextFrame, ): gen_qobjectdefs.QMetaObject =
-
+proc QTextFramemetaObject*(self: gen_qtextobject_types.QTextFrame, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQTextFrame_virtualbase_metaObject(self.h))
 
-type QTextFramemetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QTextFrame, slot: proc(super: QTextFramemetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QTextFramemetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qtextobject_types.QTextFrame, slot: QTextFramemetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QTextFramemetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QTextFramemetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTextFrame_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTextFrame_metaObject(self: ptr cQTextFrame, slot: int): pointer {.exportc: "miqt_exec_callback_QTextFrame_metaObject ".} =
-  type Cb = proc(super: QTextFramemetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QTextFrame(h: self), )
+  var nimfunc = cast[ptr QTextFramemetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QTextFrame, param1: cstring): pointer =
-
+proc QTextFramemetacast*(self: gen_qtextobject_types.QTextFrame, param1: cstring): pointer =
 
   fQTextFrame_virtualbase_metacast(self.h, param1)
 
-type QTextFramemetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QTextFrame, slot: proc(super: QTextFramemetacastBase, param1: cstring): pointer) =
+type QTextFramemetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qtextobject_types.QTextFrame, slot: QTextFramemetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QTextFramemetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QTextFramemetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTextFrame_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTextFrame_metacast(self: ptr cQTextFrame, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QTextFrame_metacast ".} =
-  type Cb = proc(super: QTextFramemetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QTextFrame(h: self), param1)
+  var nimfunc = cast[ptr QTextFramemetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QTextFrame, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QTextFramemetacall*(self: gen_qtextobject_types.QTextFrame, param1: cint, param2: cint, param3: pointer): cint =
 
   fQTextFrame_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QTextFramemetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QTextFrame, slot: proc(super: QTextFramemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QTextFramemetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qtextobject_types.QTextFrame, slot: QTextFramemetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QTextFramemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QTextFramemetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTextFrame_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTextFrame_metacall(self: ptr cQTextFrame, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QTextFrame_metacall ".} =
-  type Cb = proc(super: QTextFramemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QTextFrame(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QTextFramemetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_event(self: QTextFrame, event: gen_qcoreevent.QEvent): bool =
-
+proc QTextFrameevent*(self: gen_qtextobject_types.QTextFrame, event: gen_qcoreevent.QEvent): bool =
 
   fQTextFrame_virtualbase_event(self.h, event.h)
 
-type QTextFrameeventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QTextFrame, slot: proc(super: QTextFrameeventBase, event: gen_qcoreevent.QEvent): bool) =
+type QTextFrameeventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qtextobject_types.QTextFrame, slot: QTextFrameeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTextFrameeventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QTextFrameeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTextFrame_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTextFrame_event(self: ptr cQTextFrame, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QTextFrame_event ".} =
-  type Cb = proc(super: QTextFrameeventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QTextFrame(h: self), event)
+  var nimfunc = cast[ptr QTextFrameeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QTextFrame, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QTextFrameeventFilter*(self: gen_qtextobject_types.QTextFrame, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQTextFrame_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QTextFrameeventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QTextFrame, slot: proc(super: QTextFrameeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QTextFrameeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qtextobject_types.QTextFrame, slot: QTextFrameeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QTextFrameeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QTextFrameeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTextFrame_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTextFrame_eventFilter(self: ptr cQTextFrame, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QTextFrame_eventFilter ".} =
-  type Cb = proc(super: QTextFrameeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QTextFrame(h: self), watched, event)
+  var nimfunc = cast[ptr QTextFrameeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QTextFrame, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QTextFrametimerEvent*(self: gen_qtextobject_types.QTextFrame, event: gen_qcoreevent.QTimerEvent): void =
 
   fQTextFrame_virtualbase_timerEvent(self.h, event.h)
 
-type QTextFrametimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QTextFrame, slot: proc(super: QTextFrametimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QTextFrametimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qtextobject_types.QTextFrame, slot: QTextFrametimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTextFrametimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QTextFrametimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTextFrame_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTextFrame_timerEvent(self: ptr cQTextFrame, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTextFrame_timerEvent ".} =
-  type Cb = proc(super: QTextFrametimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QTextFrame(h: self), event)
+  var nimfunc = cast[ptr QTextFrametimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QTextFrame, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QTextFramechildEvent*(self: gen_qtextobject_types.QTextFrame, event: gen_qcoreevent.QChildEvent): void =
 
   fQTextFrame_virtualbase_childEvent(self.h, event.h)
 
-type QTextFramechildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QTextFrame, slot: proc(super: QTextFramechildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QTextFramechildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qtextobject_types.QTextFrame, slot: QTextFramechildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTextFramechildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QTextFramechildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTextFrame_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTextFrame_childEvent(self: ptr cQTextFrame, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTextFrame_childEvent ".} =
-  type Cb = proc(super: QTextFramechildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QTextFrame(h: self), event)
+  var nimfunc = cast[ptr QTextFramechildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QTextFrame, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QTextFramecustomEvent*(self: gen_qtextobject_types.QTextFrame, event: gen_qcoreevent.QEvent): void =
 
   fQTextFrame_virtualbase_customEvent(self.h, event.h)
 
-type QTextFramecustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QTextFrame, slot: proc(super: QTextFramecustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QTextFramecustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qtextobject_types.QTextFrame, slot: QTextFramecustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTextFramecustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QTextFramecustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTextFrame_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTextFrame_customEvent(self: ptr cQTextFrame, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTextFrame_customEvent ".} =
-  type Cb = proc(super: QTextFramecustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QTextFrame(h: self), event)
+  var nimfunc = cast[ptr QTextFramecustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QTextFrame, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QTextFrameconnectNotify*(self: gen_qtextobject_types.QTextFrame, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQTextFrame_virtualbase_connectNotify(self.h, signal.h)
 
-type QTextFrameconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QTextFrame, slot: proc(super: QTextFrameconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QTextFrameconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qtextobject_types.QTextFrame, slot: QTextFrameconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QTextFrameconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QTextFrameconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTextFrame_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTextFrame_connectNotify(self: ptr cQTextFrame, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QTextFrame_connectNotify ".} =
-  type Cb = proc(super: QTextFrameconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QTextFrame(h: self), signal)
+  var nimfunc = cast[ptr QTextFrameconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QTextFrame, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QTextFramedisconnectNotify*(self: gen_qtextobject_types.QTextFrame, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQTextFrame_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QTextFramedisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QTextFrame, slot: proc(super: QTextFramedisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QTextFramedisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qtextobject_types.QTextFrame, slot: QTextFramedisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QTextFramedisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QTextFramedisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTextFrame_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTextFrame_disconnectNotify(self: ptr cQTextFrame, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QTextFrame_disconnectNotify ".} =
-  type Cb = proc(super: QTextFramedisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QTextFrame(h: self), signal)
+  var nimfunc = cast[ptr QTextFramedisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QTextFrame): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qtextobject_types.QTextFrame): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQTextFrame_staticMetaObject())
-proc delete*(self: QTextFrame) =
+proc delete*(self: gen_qtextobject_types.QTextFrame) =
   fcQTextFrame_delete(self.h)
 
-func init*(T: type QTextBlockUserData, h: ptr cQTextBlockUserData): QTextBlockUserData =
+func init*(T: type gen_qtextobject_types.QTextBlockUserData, h: ptr cQTextBlockUserData): gen_qtextobject_types.QTextBlockUserData =
   T(h: h)
-proc operatorAssign*(self: QTextBlockUserData, param1: QTextBlockUserData): void =
+proc operatorAssign*(self: gen_qtextobject_types.QTextBlockUserData, param1: gen_qtextobject_types.QTextBlockUserData): void =
 
   fcQTextBlockUserData_operatorAssign(self.h, param1.h)
 
-proc delete*(self: QTextBlockUserData) =
+proc delete*(self: gen_qtextobject_types.QTextBlockUserData) =
   fcQTextBlockUserData_delete(self.h)
 
-func init*(T: type QTextBlock, h: ptr cQTextBlock): QTextBlock =
+func init*(T: type gen_qtextobject_types.QTextBlock, h: ptr cQTextBlock): gen_qtextobject_types.QTextBlock =
   T(h: h)
-proc create*(T: type QTextBlock, ): QTextBlock =
+proc create*(T: type gen_qtextobject_types.QTextBlock, ): gen_qtextobject_types.QTextBlock =
 
-  QTextBlock.init(fcQTextBlock_new())
-proc create*(T: type QTextBlock, o: QTextBlock): QTextBlock =
+  gen_qtextobject_types.QTextBlock.init(fcQTextBlock_new())
+proc create*(T: type gen_qtextobject_types.QTextBlock, o: gen_qtextobject_types.QTextBlock): gen_qtextobject_types.QTextBlock =
 
-  QTextBlock.init(fcQTextBlock_new2(o.h))
-proc operatorAssign*(self: QTextBlock, o: QTextBlock): void =
+  gen_qtextobject_types.QTextBlock.init(fcQTextBlock_new2(o.h))
+proc operatorAssign*(self: gen_qtextobject_types.QTextBlock, o: gen_qtextobject_types.QTextBlock): void =
 
   fcQTextBlock_operatorAssign(self.h, o.h)
 
-proc isValid*(self: QTextBlock, ): bool =
+proc isValid*(self: gen_qtextobject_types.QTextBlock, ): bool =
 
   fcQTextBlock_isValid(self.h)
 
-proc operatorEqual*(self: QTextBlock, o: QTextBlock): bool =
+proc operatorEqual*(self: gen_qtextobject_types.QTextBlock, o: gen_qtextobject_types.QTextBlock): bool =
 
   fcQTextBlock_operatorEqual(self.h, o.h)
 
-proc operatorNotEqual*(self: QTextBlock, o: QTextBlock): bool =
+proc operatorNotEqual*(self: gen_qtextobject_types.QTextBlock, o: gen_qtextobject_types.QTextBlock): bool =
 
   fcQTextBlock_operatorNotEqual(self.h, o.h)
 
-proc operatorLesser*(self: QTextBlock, o: QTextBlock): bool =
+proc operatorLesser*(self: gen_qtextobject_types.QTextBlock, o: gen_qtextobject_types.QTextBlock): bool =
 
   fcQTextBlock_operatorLesser(self.h, o.h)
 
-proc position*(self: QTextBlock, ): cint =
+proc position*(self: gen_qtextobject_types.QTextBlock, ): cint =
 
   fcQTextBlock_position(self.h)
 
-proc length*(self: QTextBlock, ): cint =
+proc length*(self: gen_qtextobject_types.QTextBlock, ): cint =
 
   fcQTextBlock_length(self.h)
 
-proc contains*(self: QTextBlock, position: cint): bool =
+proc contains*(self: gen_qtextobject_types.QTextBlock, position: cint): bool =
 
   fcQTextBlock_contains(self.h, position)
 
-proc layout*(self: QTextBlock, ): gen_qtextlayout.QTextLayout =
+proc layout*(self: gen_qtextobject_types.QTextBlock, ): gen_qtextlayout.QTextLayout =
 
   gen_qtextlayout.QTextLayout(h: fcQTextBlock_layout(self.h))
 
-proc clearLayout*(self: QTextBlock, ): void =
+proc clearLayout*(self: gen_qtextobject_types.QTextBlock, ): void =
 
   fcQTextBlock_clearLayout(self.h)
 
-proc blockFormat*(self: QTextBlock, ): gen_qtextformat.QTextBlockFormat =
+proc blockFormat*(self: gen_qtextobject_types.QTextBlock, ): gen_qtextformat.QTextBlockFormat =
 
   gen_qtextformat.QTextBlockFormat(h: fcQTextBlock_blockFormat(self.h))
 
-proc blockFormatIndex*(self: QTextBlock, ): cint =
+proc blockFormatIndex*(self: gen_qtextobject_types.QTextBlock, ): cint =
 
   fcQTextBlock_blockFormatIndex(self.h)
 
-proc charFormat*(self: QTextBlock, ): gen_qtextformat.QTextCharFormat =
+proc charFormat*(self: gen_qtextobject_types.QTextBlock, ): gen_qtextformat.QTextCharFormat =
 
   gen_qtextformat.QTextCharFormat(h: fcQTextBlock_charFormat(self.h))
 
-proc charFormatIndex*(self: QTextBlock, ): cint =
+proc charFormatIndex*(self: gen_qtextobject_types.QTextBlock, ): cint =
 
   fcQTextBlock_charFormatIndex(self.h)
 
-proc textDirection*(self: QTextBlock, ): gen_qnamespace.LayoutDirection =
+proc textDirection*(self: gen_qtextobject_types.QTextBlock, ): cint =
 
-  gen_qnamespace.LayoutDirection(fcQTextBlock_textDirection(self.h))
+  cint(fcQTextBlock_textDirection(self.h))
 
-proc text*(self: QTextBlock, ): string =
+proc text*(self: gen_qtextobject_types.QTextBlock, ): string =
 
   let v_ms = fcQTextBlock_text(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc textFormats*(self: QTextBlock, ): seq[gen_qtextlayout.QTextLayoutFormatRange] =
+proc textFormats*(self: gen_qtextobject_types.QTextBlock, ): seq[gen_qtextlayout.QTextLayoutFormatRange] =
 
   var v_ma = fcQTextBlock_textFormats(self.h)
   var vx_ret = newSeq[gen_qtextlayout.QTextLayoutFormatRange](int(v_ma.len))
@@ -825,141 +773,141 @@ proc textFormats*(self: QTextBlock, ): seq[gen_qtextlayout.QTextLayoutFormatRang
     vx_ret[i] = gen_qtextlayout.QTextLayoutFormatRange(h: v_outCast[i])
   vx_ret
 
-proc document*(self: QTextBlock, ): gen_qtextdocument.QTextDocument =
+proc document*(self: gen_qtextobject_types.QTextBlock, ): gen_qtextdocument.QTextDocument =
 
   gen_qtextdocument.QTextDocument(h: fcQTextBlock_document(self.h))
 
-proc textList*(self: QTextBlock, ): gen_qtextlist.QTextList =
+proc textList*(self: gen_qtextobject_types.QTextBlock, ): gen_qtextlist.QTextList =
 
   gen_qtextlist.QTextList(h: fcQTextBlock_textList(self.h))
 
-proc userData*(self: QTextBlock, ): QTextBlockUserData =
+proc userData*(self: gen_qtextobject_types.QTextBlock, ): gen_qtextobject_types.QTextBlockUserData =
 
-  QTextBlockUserData(h: fcQTextBlock_userData(self.h))
+  gen_qtextobject_types.QTextBlockUserData(h: fcQTextBlock_userData(self.h))
 
-proc setUserData*(self: QTextBlock, data: QTextBlockUserData): void =
+proc setUserData*(self: gen_qtextobject_types.QTextBlock, data: gen_qtextobject_types.QTextBlockUserData): void =
 
   fcQTextBlock_setUserData(self.h, data.h)
 
-proc userState*(self: QTextBlock, ): cint =
+proc userState*(self: gen_qtextobject_types.QTextBlock, ): cint =
 
   fcQTextBlock_userState(self.h)
 
-proc setUserState*(self: QTextBlock, state: cint): void =
+proc setUserState*(self: gen_qtextobject_types.QTextBlock, state: cint): void =
 
   fcQTextBlock_setUserState(self.h, state)
 
-proc revision*(self: QTextBlock, ): cint =
+proc revision*(self: gen_qtextobject_types.QTextBlock, ): cint =
 
   fcQTextBlock_revision(self.h)
 
-proc setRevision*(self: QTextBlock, rev: cint): void =
+proc setRevision*(self: gen_qtextobject_types.QTextBlock, rev: cint): void =
 
   fcQTextBlock_setRevision(self.h, rev)
 
-proc isVisible*(self: QTextBlock, ): bool =
+proc isVisible*(self: gen_qtextobject_types.QTextBlock, ): bool =
 
   fcQTextBlock_isVisible(self.h)
 
-proc setVisible*(self: QTextBlock, visible: bool): void =
+proc setVisible*(self: gen_qtextobject_types.QTextBlock, visible: bool): void =
 
   fcQTextBlock_setVisible(self.h, visible)
 
-proc blockNumber*(self: QTextBlock, ): cint =
+proc blockNumber*(self: gen_qtextobject_types.QTextBlock, ): cint =
 
   fcQTextBlock_blockNumber(self.h)
 
-proc firstLineNumber*(self: QTextBlock, ): cint =
+proc firstLineNumber*(self: gen_qtextobject_types.QTextBlock, ): cint =
 
   fcQTextBlock_firstLineNumber(self.h)
 
-proc setLineCount*(self: QTextBlock, count: cint): void =
+proc setLineCount*(self: gen_qtextobject_types.QTextBlock, count: cint): void =
 
   fcQTextBlock_setLineCount(self.h, count)
 
-proc lineCount*(self: QTextBlock, ): cint =
+proc lineCount*(self: gen_qtextobject_types.QTextBlock, ): cint =
 
   fcQTextBlock_lineCount(self.h)
 
-proc begin*(self: QTextBlock, ): QTextBlockiterator =
+proc begin*(self: gen_qtextobject_types.QTextBlock, ): gen_qtextobject_types.QTextBlockiterator =
 
-  QTextBlockiterator(h: fcQTextBlock_begin(self.h))
+  gen_qtextobject_types.QTextBlockiterator(h: fcQTextBlock_begin(self.h))
 
-proc endX*(self: QTextBlock, ): QTextBlockiterator =
+proc endX*(self: gen_qtextobject_types.QTextBlock, ): gen_qtextobject_types.QTextBlockiterator =
 
-  QTextBlockiterator(h: fcQTextBlock_endX(self.h))
+  gen_qtextobject_types.QTextBlockiterator(h: fcQTextBlock_endX(self.h))
 
-proc next*(self: QTextBlock, ): QTextBlock =
+proc next*(self: gen_qtextobject_types.QTextBlock, ): gen_qtextobject_types.QTextBlock =
 
-  QTextBlock(h: fcQTextBlock_next(self.h))
+  gen_qtextobject_types.QTextBlock(h: fcQTextBlock_next(self.h))
 
-proc previous*(self: QTextBlock, ): QTextBlock =
+proc previous*(self: gen_qtextobject_types.QTextBlock, ): gen_qtextobject_types.QTextBlock =
 
-  QTextBlock(h: fcQTextBlock_previous(self.h))
+  gen_qtextobject_types.QTextBlock(h: fcQTextBlock_previous(self.h))
 
-proc fragmentIndex*(self: QTextBlock, ): cint =
+proc fragmentIndex*(self: gen_qtextobject_types.QTextBlock, ): cint =
 
   fcQTextBlock_fragmentIndex(self.h)
 
-proc delete*(self: QTextBlock) =
+proc delete*(self: gen_qtextobject_types.QTextBlock) =
   fcQTextBlock_delete(self.h)
 
-func init*(T: type QTextFragment, h: ptr cQTextFragment): QTextFragment =
+func init*(T: type gen_qtextobject_types.QTextFragment, h: ptr cQTextFragment): gen_qtextobject_types.QTextFragment =
   T(h: h)
-proc create*(T: type QTextFragment, ): QTextFragment =
+proc create*(T: type gen_qtextobject_types.QTextFragment, ): gen_qtextobject_types.QTextFragment =
 
-  QTextFragment.init(fcQTextFragment_new())
-proc create*(T: type QTextFragment, o: QTextFragment): QTextFragment =
+  gen_qtextobject_types.QTextFragment.init(fcQTextFragment_new())
+proc create*(T: type gen_qtextobject_types.QTextFragment, o: gen_qtextobject_types.QTextFragment): gen_qtextobject_types.QTextFragment =
 
-  QTextFragment.init(fcQTextFragment_new2(o.h))
-proc operatorAssign*(self: QTextFragment, o: QTextFragment): void =
+  gen_qtextobject_types.QTextFragment.init(fcQTextFragment_new2(o.h))
+proc operatorAssign*(self: gen_qtextobject_types.QTextFragment, o: gen_qtextobject_types.QTextFragment): void =
 
   fcQTextFragment_operatorAssign(self.h, o.h)
 
-proc isValid*(self: QTextFragment, ): bool =
+proc isValid*(self: gen_qtextobject_types.QTextFragment, ): bool =
 
   fcQTextFragment_isValid(self.h)
 
-proc operatorEqual*(self: QTextFragment, o: QTextFragment): bool =
+proc operatorEqual*(self: gen_qtextobject_types.QTextFragment, o: gen_qtextobject_types.QTextFragment): bool =
 
   fcQTextFragment_operatorEqual(self.h, o.h)
 
-proc operatorNotEqual*(self: QTextFragment, o: QTextFragment): bool =
+proc operatorNotEqual*(self: gen_qtextobject_types.QTextFragment, o: gen_qtextobject_types.QTextFragment): bool =
 
   fcQTextFragment_operatorNotEqual(self.h, o.h)
 
-proc operatorLesser*(self: QTextFragment, o: QTextFragment): bool =
+proc operatorLesser*(self: gen_qtextobject_types.QTextFragment, o: gen_qtextobject_types.QTextFragment): bool =
 
   fcQTextFragment_operatorLesser(self.h, o.h)
 
-proc position*(self: QTextFragment, ): cint =
+proc position*(self: gen_qtextobject_types.QTextFragment, ): cint =
 
   fcQTextFragment_position(self.h)
 
-proc length*(self: QTextFragment, ): cint =
+proc length*(self: gen_qtextobject_types.QTextFragment, ): cint =
 
   fcQTextFragment_length(self.h)
 
-proc contains*(self: QTextFragment, position: cint): bool =
+proc contains*(self: gen_qtextobject_types.QTextFragment, position: cint): bool =
 
   fcQTextFragment_contains(self.h, position)
 
-proc charFormat*(self: QTextFragment, ): gen_qtextformat.QTextCharFormat =
+proc charFormat*(self: gen_qtextobject_types.QTextFragment, ): gen_qtextformat.QTextCharFormat =
 
   gen_qtextformat.QTextCharFormat(h: fcQTextFragment_charFormat(self.h))
 
-proc charFormatIndex*(self: QTextFragment, ): cint =
+proc charFormatIndex*(self: gen_qtextobject_types.QTextFragment, ): cint =
 
   fcQTextFragment_charFormatIndex(self.h)
 
-proc text*(self: QTextFragment, ): string =
+proc text*(self: gen_qtextobject_types.QTextFragment, ): string =
 
   let v_ms = fcQTextFragment_text(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc glyphRuns*(self: QTextFragment, ): seq[gen_qglyphrun.QGlyphRun] =
+proc glyphRuns*(self: gen_qtextobject_types.QTextFragment, ): seq[gen_qglyphrun.QGlyphRun] =
 
   var v_ma = fcQTextFragment_glyphRuns(self.h)
   var vx_ret = newSeq[gen_qglyphrun.QGlyphRun](int(v_ma.len))
@@ -968,7 +916,7 @@ proc glyphRuns*(self: QTextFragment, ): seq[gen_qglyphrun.QGlyphRun] =
     vx_ret[i] = gen_qglyphrun.QGlyphRun(h: v_outCast[i])
   vx_ret
 
-proc glyphRuns1*(self: QTextFragment, fromVal: cint): seq[gen_qglyphrun.QGlyphRun] =
+proc glyphRuns1*(self: gen_qtextobject_types.QTextFragment, fromVal: cint): seq[gen_qglyphrun.QGlyphRun] =
 
   var v_ma = fcQTextFragment_glyphRuns1(self.h, fromVal)
   var vx_ret = newSeq[gen_qglyphrun.QGlyphRun](int(v_ma.len))
@@ -977,7 +925,7 @@ proc glyphRuns1*(self: QTextFragment, fromVal: cint): seq[gen_qglyphrun.QGlyphRu
     vx_ret[i] = gen_qglyphrun.QGlyphRun(h: v_outCast[i])
   vx_ret
 
-proc glyphRuns2*(self: QTextFragment, fromVal: cint, length: cint): seq[gen_qglyphrun.QGlyphRun] =
+proc glyphRuns2*(self: gen_qtextobject_types.QTextFragment, fromVal: cint, length: cint): seq[gen_qglyphrun.QGlyphRun] =
 
   var v_ma = fcQTextFragment_glyphRuns2(self.h, fromVal, length)
   var vx_ret = newSeq[gen_qglyphrun.QGlyphRun](int(v_ma.len))
@@ -986,107 +934,107 @@ proc glyphRuns2*(self: QTextFragment, fromVal: cint, length: cint): seq[gen_qgly
     vx_ret[i] = gen_qglyphrun.QGlyphRun(h: v_outCast[i])
   vx_ret
 
-proc delete*(self: QTextFragment) =
+proc delete*(self: gen_qtextobject_types.QTextFragment) =
   fcQTextFragment_delete(self.h)
 
-func init*(T: type QTextFrameiterator, h: ptr cQTextFrameiterator): QTextFrameiterator =
+func init*(T: type gen_qtextobject_types.QTextFrameiterator, h: ptr cQTextFrameiterator): gen_qtextobject_types.QTextFrameiterator =
   T(h: h)
-proc create*(T: type QTextFrameiterator, ): QTextFrameiterator =
+proc create*(T: type gen_qtextobject_types.QTextFrameiterator, ): gen_qtextobject_types.QTextFrameiterator =
 
-  QTextFrameiterator.init(fcQTextFrameiterator_new())
-proc create*(T: type QTextFrameiterator, o: QTextFrameiterator): QTextFrameiterator =
+  gen_qtextobject_types.QTextFrameiterator.init(fcQTextFrameiterator_new())
+proc create*(T: type gen_qtextobject_types.QTextFrameiterator, o: gen_qtextobject_types.QTextFrameiterator): gen_qtextobject_types.QTextFrameiterator =
 
-  QTextFrameiterator.init(fcQTextFrameiterator_new2(o.h))
-proc operatorAssign*(self: QTextFrameiterator, o: QTextFrameiterator): void =
+  gen_qtextobject_types.QTextFrameiterator.init(fcQTextFrameiterator_new2(o.h))
+proc operatorAssign*(self: gen_qtextobject_types.QTextFrameiterator, o: gen_qtextobject_types.QTextFrameiterator): void =
 
   fcQTextFrameiterator_operatorAssign(self.h, o.h)
 
-proc parentFrame*(self: QTextFrameiterator, ): QTextFrame =
+proc parentFrame*(self: gen_qtextobject_types.QTextFrameiterator, ): gen_qtextobject_types.QTextFrame =
 
-  QTextFrame(h: fcQTextFrameiterator_parentFrame(self.h))
+  gen_qtextobject_types.QTextFrame(h: fcQTextFrameiterator_parentFrame(self.h))
 
-proc currentFrame*(self: QTextFrameiterator, ): QTextFrame =
+proc currentFrame*(self: gen_qtextobject_types.QTextFrameiterator, ): gen_qtextobject_types.QTextFrame =
 
-  QTextFrame(h: fcQTextFrameiterator_currentFrame(self.h))
+  gen_qtextobject_types.QTextFrame(h: fcQTextFrameiterator_currentFrame(self.h))
 
-proc currentBlock*(self: QTextFrameiterator, ): QTextBlock =
+proc currentBlock*(self: gen_qtextobject_types.QTextFrameiterator, ): gen_qtextobject_types.QTextBlock =
 
-  QTextBlock(h: fcQTextFrameiterator_currentBlock(self.h))
+  gen_qtextobject_types.QTextBlock(h: fcQTextFrameiterator_currentBlock(self.h))
 
-proc atEnd*(self: QTextFrameiterator, ): bool =
+proc atEnd*(self: gen_qtextobject_types.QTextFrameiterator, ): bool =
 
   fcQTextFrameiterator_atEnd(self.h)
 
-proc operatorEqual*(self: QTextFrameiterator, o: QTextFrameiterator): bool =
+proc operatorEqual*(self: gen_qtextobject_types.QTextFrameiterator, o: gen_qtextobject_types.QTextFrameiterator): bool =
 
   fcQTextFrameiterator_operatorEqual(self.h, o.h)
 
-proc operatorNotEqual*(self: QTextFrameiterator, o: QTextFrameiterator): bool =
+proc operatorNotEqual*(self: gen_qtextobject_types.QTextFrameiterator, o: gen_qtextobject_types.QTextFrameiterator): bool =
 
   fcQTextFrameiterator_operatorNotEqual(self.h, o.h)
 
-proc operatorPlusPlus*(self: QTextFrameiterator, ): QTextFrameiterator =
+proc operatorPlusPlus*(self: gen_qtextobject_types.QTextFrameiterator, ): gen_qtextobject_types.QTextFrameiterator =
 
-  QTextFrameiterator(h: fcQTextFrameiterator_operatorPlusPlus(self.h))
+  gen_qtextobject_types.QTextFrameiterator(h: fcQTextFrameiterator_operatorPlusPlus(self.h))
 
-proc operatorPlusPlusWithInt*(self: QTextFrameiterator, param1: cint): QTextFrameiterator =
+proc operatorPlusPlusWithInt*(self: gen_qtextobject_types.QTextFrameiterator, param1: cint): gen_qtextobject_types.QTextFrameiterator =
 
-  QTextFrameiterator(h: fcQTextFrameiterator_operatorPlusPlusWithInt(self.h, param1))
+  gen_qtextobject_types.QTextFrameiterator(h: fcQTextFrameiterator_operatorPlusPlusWithInt(self.h, param1))
 
-proc operatorMinusMinus*(self: QTextFrameiterator, ): QTextFrameiterator =
+proc operatorMinusMinus*(self: gen_qtextobject_types.QTextFrameiterator, ): gen_qtextobject_types.QTextFrameiterator =
 
-  QTextFrameiterator(h: fcQTextFrameiterator_operatorMinusMinus(self.h))
+  gen_qtextobject_types.QTextFrameiterator(h: fcQTextFrameiterator_operatorMinusMinus(self.h))
 
-proc operatorMinusMinusWithInt*(self: QTextFrameiterator, param1: cint): QTextFrameiterator =
+proc operatorMinusMinusWithInt*(self: gen_qtextobject_types.QTextFrameiterator, param1: cint): gen_qtextobject_types.QTextFrameiterator =
 
-  QTextFrameiterator(h: fcQTextFrameiterator_operatorMinusMinusWithInt(self.h, param1))
+  gen_qtextobject_types.QTextFrameiterator(h: fcQTextFrameiterator_operatorMinusMinusWithInt(self.h, param1))
 
-proc delete*(self: QTextFrameiterator) =
+proc delete*(self: gen_qtextobject_types.QTextFrameiterator) =
   fcQTextFrameiterator_delete(self.h)
 
-func init*(T: type QTextBlockiterator, h: ptr cQTextBlockiterator): QTextBlockiterator =
+func init*(T: type gen_qtextobject_types.QTextBlockiterator, h: ptr cQTextBlockiterator): gen_qtextobject_types.QTextBlockiterator =
   T(h: h)
-proc create*(T: type QTextBlockiterator, ): QTextBlockiterator =
+proc create*(T: type gen_qtextobject_types.QTextBlockiterator, ): gen_qtextobject_types.QTextBlockiterator =
 
-  QTextBlockiterator.init(fcQTextBlockiterator_new())
-proc create*(T: type QTextBlockiterator, o: QTextBlockiterator): QTextBlockiterator =
+  gen_qtextobject_types.QTextBlockiterator.init(fcQTextBlockiterator_new())
+proc create*(T: type gen_qtextobject_types.QTextBlockiterator, o: gen_qtextobject_types.QTextBlockiterator): gen_qtextobject_types.QTextBlockiterator =
 
-  QTextBlockiterator.init(fcQTextBlockiterator_new2(o.h))
-proc operatorAssign*(self: QTextBlockiterator, o: QTextBlockiterator): void =
+  gen_qtextobject_types.QTextBlockiterator.init(fcQTextBlockiterator_new2(o.h))
+proc operatorAssign*(self: gen_qtextobject_types.QTextBlockiterator, o: gen_qtextobject_types.QTextBlockiterator): void =
 
   fcQTextBlockiterator_operatorAssign(self.h, o.h)
 
-proc fragment*(self: QTextBlockiterator, ): QTextFragment =
+proc fragment*(self: gen_qtextobject_types.QTextBlockiterator, ): gen_qtextobject_types.QTextFragment =
 
-  QTextFragment(h: fcQTextBlockiterator_fragment(self.h))
+  gen_qtextobject_types.QTextFragment(h: fcQTextBlockiterator_fragment(self.h))
 
-proc atEnd*(self: QTextBlockiterator, ): bool =
+proc atEnd*(self: gen_qtextobject_types.QTextBlockiterator, ): bool =
 
   fcQTextBlockiterator_atEnd(self.h)
 
-proc operatorEqual*(self: QTextBlockiterator, o: QTextBlockiterator): bool =
+proc operatorEqual*(self: gen_qtextobject_types.QTextBlockiterator, o: gen_qtextobject_types.QTextBlockiterator): bool =
 
   fcQTextBlockiterator_operatorEqual(self.h, o.h)
 
-proc operatorNotEqual*(self: QTextBlockiterator, o: QTextBlockiterator): bool =
+proc operatorNotEqual*(self: gen_qtextobject_types.QTextBlockiterator, o: gen_qtextobject_types.QTextBlockiterator): bool =
 
   fcQTextBlockiterator_operatorNotEqual(self.h, o.h)
 
-proc operatorPlusPlus*(self: QTextBlockiterator, ): QTextBlockiterator =
+proc operatorPlusPlus*(self: gen_qtextobject_types.QTextBlockiterator, ): gen_qtextobject_types.QTextBlockiterator =
 
-  QTextBlockiterator(h: fcQTextBlockiterator_operatorPlusPlus(self.h))
+  gen_qtextobject_types.QTextBlockiterator(h: fcQTextBlockiterator_operatorPlusPlus(self.h))
 
-proc operatorPlusPlusWithInt*(self: QTextBlockiterator, param1: cint): QTextBlockiterator =
+proc operatorPlusPlusWithInt*(self: gen_qtextobject_types.QTextBlockiterator, param1: cint): gen_qtextobject_types.QTextBlockiterator =
 
-  QTextBlockiterator(h: fcQTextBlockiterator_operatorPlusPlusWithInt(self.h, param1))
+  gen_qtextobject_types.QTextBlockiterator(h: fcQTextBlockiterator_operatorPlusPlusWithInt(self.h, param1))
 
-proc operatorMinusMinus*(self: QTextBlockiterator, ): QTextBlockiterator =
+proc operatorMinusMinus*(self: gen_qtextobject_types.QTextBlockiterator, ): gen_qtextobject_types.QTextBlockiterator =
 
-  QTextBlockiterator(h: fcQTextBlockiterator_operatorMinusMinus(self.h))
+  gen_qtextobject_types.QTextBlockiterator(h: fcQTextBlockiterator_operatorMinusMinus(self.h))
 
-proc operatorMinusMinusWithInt*(self: QTextBlockiterator, param1: cint): QTextBlockiterator =
+proc operatorMinusMinusWithInt*(self: gen_qtextobject_types.QTextBlockiterator, param1: cint): gen_qtextobject_types.QTextBlockiterator =
 
-  QTextBlockiterator(h: fcQTextBlockiterator_operatorMinusMinusWithInt(self.h, param1))
+  gen_qtextobject_types.QTextBlockiterator(h: fcQTextBlockiterator_operatorMinusMinusWithInt(self.h, param1))
 
-proc delete*(self: QTextBlockiterator) =
+proc delete*(self: gen_qtextobject_types.QTextBlockiterator) =
   fcQTextBlockiterator_delete(self.h)

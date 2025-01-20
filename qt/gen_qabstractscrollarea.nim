@@ -34,12 +34,10 @@ const cflags = gorge("pkg-config -cflags Qt5Widgets")
 {.compile("gen_qabstractscrollarea.cpp", cflags).}
 
 
-type QAbstractScrollAreaSizeAdjustPolicy* = cint
-const
-  QAbstractScrollAreaAdjustIgnored* = 0
-  QAbstractScrollAreaAdjustToContentsOnFirstShow* = 1
-  QAbstractScrollAreaAdjustToContents* = 2
-
+type QAbstractScrollAreaSizeAdjustPolicyEnum* = distinct cint
+template AdjustIgnored*(_: type QAbstractScrollAreaSizeAdjustPolicyEnum): untyped = 0
+template AdjustToContentsOnFirstShow*(_: type QAbstractScrollAreaSizeAdjustPolicyEnum): untyped = 1
+template AdjustToContents*(_: type QAbstractScrollAreaSizeAdjustPolicyEnum): untyped = 2
 
 
 import gen_qabstractscrollarea_types
@@ -50,7 +48,6 @@ import
   gen_qevent,
   gen_qframe,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -66,7 +63,6 @@ export
   gen_qevent,
   gen_qframe,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -223,85 +219,85 @@ proc fcQAbstractScrollArea_staticMetaObject(): pointer {.importc: "QAbstractScro
 proc fcQAbstractScrollArea_delete(self: pointer) {.importc: "QAbstractScrollArea_delete".}
 
 
-func init*(T: type QAbstractScrollArea, h: ptr cQAbstractScrollArea): QAbstractScrollArea =
+func init*(T: type gen_qabstractscrollarea_types.QAbstractScrollArea, h: ptr cQAbstractScrollArea): gen_qabstractscrollarea_types.QAbstractScrollArea =
   T(h: h)
-proc create*(T: type QAbstractScrollArea, parent: gen_qwidget.QWidget): QAbstractScrollArea =
+proc create*(T: type gen_qabstractscrollarea_types.QAbstractScrollArea, parent: gen_qwidget.QWidget): gen_qabstractscrollarea_types.QAbstractScrollArea =
 
-  QAbstractScrollArea.init(fcQAbstractScrollArea_new(parent.h))
-proc create*(T: type QAbstractScrollArea, ): QAbstractScrollArea =
+  gen_qabstractscrollarea_types.QAbstractScrollArea.init(fcQAbstractScrollArea_new(parent.h))
+proc create*(T: type gen_qabstractscrollarea_types.QAbstractScrollArea, ): gen_qabstractscrollarea_types.QAbstractScrollArea =
 
-  QAbstractScrollArea.init(fcQAbstractScrollArea_new2())
-proc metaObject*(self: QAbstractScrollArea, ): gen_qobjectdefs.QMetaObject =
+  gen_qabstractscrollarea_types.QAbstractScrollArea.init(fcQAbstractScrollArea_new2())
+proc metaObject*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQAbstractScrollArea_metaObject(self.h))
 
-proc metacast*(self: QAbstractScrollArea, param1: cstring): pointer =
+proc metacast*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, param1: cstring): pointer =
 
   fcQAbstractScrollArea_metacast(self.h, param1)
 
-proc metacall*(self: QAbstractScrollArea, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQAbstractScrollArea_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QAbstractScrollArea, s: cstring): string =
+proc tr*(_: type gen_qabstractscrollarea_types.QAbstractScrollArea, s: cstring): string =
 
   let v_ms = fcQAbstractScrollArea_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QAbstractScrollArea, s: cstring): string =
+proc trUtf8*(_: type gen_qabstractscrollarea_types.QAbstractScrollArea, s: cstring): string =
 
   let v_ms = fcQAbstractScrollArea_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc verticalScrollBarPolicy*(self: QAbstractScrollArea, ): gen_qnamespace.ScrollBarPolicy =
+proc verticalScrollBarPolicy*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, ): cint =
 
-  gen_qnamespace.ScrollBarPolicy(fcQAbstractScrollArea_verticalScrollBarPolicy(self.h))
+  cint(fcQAbstractScrollArea_verticalScrollBarPolicy(self.h))
 
-proc setVerticalScrollBarPolicy*(self: QAbstractScrollArea, verticalScrollBarPolicy: gen_qnamespace.ScrollBarPolicy): void =
+proc setVerticalScrollBarPolicy*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, verticalScrollBarPolicy: cint): void =
 
   fcQAbstractScrollArea_setVerticalScrollBarPolicy(self.h, cint(verticalScrollBarPolicy))
 
-proc verticalScrollBar*(self: QAbstractScrollArea, ): gen_qscrollbar.QScrollBar =
+proc verticalScrollBar*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, ): gen_qscrollbar.QScrollBar =
 
   gen_qscrollbar.QScrollBar(h: fcQAbstractScrollArea_verticalScrollBar(self.h))
 
-proc setVerticalScrollBar*(self: QAbstractScrollArea, scrollbar: gen_qscrollbar.QScrollBar): void =
+proc setVerticalScrollBar*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, scrollbar: gen_qscrollbar.QScrollBar): void =
 
   fcQAbstractScrollArea_setVerticalScrollBar(self.h, scrollbar.h)
 
-proc horizontalScrollBarPolicy*(self: QAbstractScrollArea, ): gen_qnamespace.ScrollBarPolicy =
+proc horizontalScrollBarPolicy*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, ): cint =
 
-  gen_qnamespace.ScrollBarPolicy(fcQAbstractScrollArea_horizontalScrollBarPolicy(self.h))
+  cint(fcQAbstractScrollArea_horizontalScrollBarPolicy(self.h))
 
-proc setHorizontalScrollBarPolicy*(self: QAbstractScrollArea, horizontalScrollBarPolicy: gen_qnamespace.ScrollBarPolicy): void =
+proc setHorizontalScrollBarPolicy*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, horizontalScrollBarPolicy: cint): void =
 
   fcQAbstractScrollArea_setHorizontalScrollBarPolicy(self.h, cint(horizontalScrollBarPolicy))
 
-proc horizontalScrollBar*(self: QAbstractScrollArea, ): gen_qscrollbar.QScrollBar =
+proc horizontalScrollBar*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, ): gen_qscrollbar.QScrollBar =
 
   gen_qscrollbar.QScrollBar(h: fcQAbstractScrollArea_horizontalScrollBar(self.h))
 
-proc setHorizontalScrollBar*(self: QAbstractScrollArea, scrollbar: gen_qscrollbar.QScrollBar): void =
+proc setHorizontalScrollBar*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, scrollbar: gen_qscrollbar.QScrollBar): void =
 
   fcQAbstractScrollArea_setHorizontalScrollBar(self.h, scrollbar.h)
 
-proc cornerWidget*(self: QAbstractScrollArea, ): gen_qwidget.QWidget =
+proc cornerWidget*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, ): gen_qwidget.QWidget =
 
   gen_qwidget.QWidget(h: fcQAbstractScrollArea_cornerWidget(self.h))
 
-proc setCornerWidget*(self: QAbstractScrollArea, widget: gen_qwidget.QWidget): void =
+proc setCornerWidget*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, widget: gen_qwidget.QWidget): void =
 
   fcQAbstractScrollArea_setCornerWidget(self.h, widget.h)
 
-proc addScrollBarWidget*(self: QAbstractScrollArea, widget: gen_qwidget.QWidget, alignment: gen_qnamespace.AlignmentFlag): void =
+proc addScrollBarWidget*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, widget: gen_qwidget.QWidget, alignment: cint): void =
 
   fcQAbstractScrollArea_addScrollBarWidget(self.h, widget.h, cint(alignment))
 
-proc scrollBarWidgets*(self: QAbstractScrollArea, alignment: gen_qnamespace.AlignmentFlag): seq[gen_qwidget.QWidget] =
+proc scrollBarWidgets*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, alignment: cint): seq[gen_qwidget.QWidget] =
 
   var v_ma = fcQAbstractScrollArea_scrollBarWidgets(self.h, cint(alignment))
   var vx_ret = newSeq[gen_qwidget.QWidget](int(v_ma.len))
@@ -310,1048 +306,838 @@ proc scrollBarWidgets*(self: QAbstractScrollArea, alignment: gen_qnamespace.Alig
     vx_ret[i] = gen_qwidget.QWidget(h: v_outCast[i])
   vx_ret
 
-proc viewport*(self: QAbstractScrollArea, ): gen_qwidget.QWidget =
+proc viewport*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, ): gen_qwidget.QWidget =
 
   gen_qwidget.QWidget(h: fcQAbstractScrollArea_viewport(self.h))
 
-proc setViewport*(self: QAbstractScrollArea, widget: gen_qwidget.QWidget): void =
+proc setViewport*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, widget: gen_qwidget.QWidget): void =
 
   fcQAbstractScrollArea_setViewport(self.h, widget.h)
 
-proc maximumViewportSize*(self: QAbstractScrollArea, ): gen_qsize.QSize =
+proc maximumViewportSize*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQAbstractScrollArea_maximumViewportSize(self.h))
 
-proc minimumSizeHint*(self: QAbstractScrollArea, ): gen_qsize.QSize =
+proc minimumSizeHint*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQAbstractScrollArea_minimumSizeHint(self.h))
 
-proc sizeHint*(self: QAbstractScrollArea, ): gen_qsize.QSize =
+proc sizeHint*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQAbstractScrollArea_sizeHint(self.h))
 
-proc setupViewport*(self: QAbstractScrollArea, viewport: gen_qwidget.QWidget): void =
+proc setupViewport*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, viewport: gen_qwidget.QWidget): void =
 
   fcQAbstractScrollArea_setupViewport(self.h, viewport.h)
 
-proc sizeAdjustPolicy*(self: QAbstractScrollArea, ): QAbstractScrollAreaSizeAdjustPolicy =
+proc sizeAdjustPolicy*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, ): cint =
 
-  QAbstractScrollAreaSizeAdjustPolicy(fcQAbstractScrollArea_sizeAdjustPolicy(self.h))
+  cint(fcQAbstractScrollArea_sizeAdjustPolicy(self.h))
 
-proc setSizeAdjustPolicy*(self: QAbstractScrollArea, policy: QAbstractScrollAreaSizeAdjustPolicy): void =
+proc setSizeAdjustPolicy*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, policy: cint): void =
 
   fcQAbstractScrollArea_setSizeAdjustPolicy(self.h, cint(policy))
 
-proc tr2*(_: type QAbstractScrollArea, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qabstractscrollarea_types.QAbstractScrollArea, s: cstring, c: cstring): string =
 
   let v_ms = fcQAbstractScrollArea_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QAbstractScrollArea, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qabstractscrollarea_types.QAbstractScrollArea, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQAbstractScrollArea_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QAbstractScrollArea, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qabstractscrollarea_types.QAbstractScrollArea, s: cstring, c: cstring): string =
 
   let v_ms = fcQAbstractScrollArea_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QAbstractScrollArea, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qabstractscrollarea_types.QAbstractScrollArea, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQAbstractScrollArea_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QAbstractScrollArea, ): gen_qobjectdefs.QMetaObject =
-
+proc QAbstractScrollAreametaObject*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQAbstractScrollArea_virtualbase_metaObject(self.h))
 
-type QAbstractScrollAreametaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QAbstractScrollArea, slot: proc(super: QAbstractScrollAreametaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QAbstractScrollAreametaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, slot: QAbstractScrollAreametaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractScrollAreametaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QAbstractScrollAreametaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractScrollArea_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractScrollArea_metaObject(self: ptr cQAbstractScrollArea, slot: int): pointer {.exportc: "miqt_exec_callback_QAbstractScrollArea_metaObject ".} =
-  type Cb = proc(super: QAbstractScrollAreametaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QAbstractScrollArea(h: self), )
+  var nimfunc = cast[ptr QAbstractScrollAreametaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QAbstractScrollArea, param1: cstring): pointer =
-
+proc QAbstractScrollAreametacast*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, param1: cstring): pointer =
 
   fQAbstractScrollArea_virtualbase_metacast(self.h, param1)
 
-type QAbstractScrollAreametacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QAbstractScrollArea, slot: proc(super: QAbstractScrollAreametacastBase, param1: cstring): pointer) =
+type QAbstractScrollAreametacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, slot: QAbstractScrollAreametacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractScrollAreametacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QAbstractScrollAreametacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractScrollArea_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractScrollArea_metacast(self: ptr cQAbstractScrollArea, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QAbstractScrollArea_metacast ".} =
-  type Cb = proc(super: QAbstractScrollAreametacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QAbstractScrollArea(h: self), param1)
+  var nimfunc = cast[ptr QAbstractScrollAreametacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QAbstractScrollArea, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QAbstractScrollAreametacall*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, param1: cint, param2: cint, param3: pointer): cint =
 
   fQAbstractScrollArea_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QAbstractScrollAreametacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QAbstractScrollArea, slot: proc(super: QAbstractScrollAreametacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QAbstractScrollAreametacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, slot: QAbstractScrollAreametacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractScrollAreametacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QAbstractScrollAreametacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractScrollArea_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractScrollArea_metacall(self: ptr cQAbstractScrollArea, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QAbstractScrollArea_metacall ".} =
-  type Cb = proc(super: QAbstractScrollAreametacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QAbstractScrollArea(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QAbstractScrollAreametacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_minimumSizeHint(self: QAbstractScrollArea, ): gen_qsize.QSize =
-
+proc QAbstractScrollAreaminimumSizeHint*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQAbstractScrollArea_virtualbase_minimumSizeHint(self.h))
 
-type QAbstractScrollAreaminimumSizeHintBase* = proc(): gen_qsize.QSize
-proc onminimumSizeHint*(self: QAbstractScrollArea, slot: proc(super: QAbstractScrollAreaminimumSizeHintBase): gen_qsize.QSize) =
+type QAbstractScrollAreaminimumSizeHintProc* = proc(): gen_qsize.QSize
+proc onminimumSizeHint*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, slot: QAbstractScrollAreaminimumSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractScrollAreaminimumSizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QAbstractScrollAreaminimumSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractScrollArea_override_virtual_minimumSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractScrollArea_minimumSizeHint(self: ptr cQAbstractScrollArea, slot: int): pointer {.exportc: "miqt_exec_callback_QAbstractScrollArea_minimumSizeHint ".} =
-  type Cb = proc(super: QAbstractScrollAreaminimumSizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_minimumSizeHint(QAbstractScrollArea(h: self), )
+  var nimfunc = cast[ptr QAbstractScrollAreaminimumSizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_sizeHint(self: QAbstractScrollArea, ): gen_qsize.QSize =
-
+proc QAbstractScrollAreasizeHint*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQAbstractScrollArea_virtualbase_sizeHint(self.h))
 
-type QAbstractScrollAreasizeHintBase* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: QAbstractScrollArea, slot: proc(super: QAbstractScrollAreasizeHintBase): gen_qsize.QSize) =
+type QAbstractScrollAreasizeHintProc* = proc(): gen_qsize.QSize
+proc onsizeHint*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, slot: QAbstractScrollAreasizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractScrollAreasizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QAbstractScrollAreasizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractScrollArea_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractScrollArea_sizeHint(self: ptr cQAbstractScrollArea, slot: int): pointer {.exportc: "miqt_exec_callback_QAbstractScrollArea_sizeHint ".} =
-  type Cb = proc(super: QAbstractScrollAreasizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sizeHint(QAbstractScrollArea(h: self), )
+  var nimfunc = cast[ptr QAbstractScrollAreasizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_setupViewport(self: QAbstractScrollArea, viewport: gen_qwidget.QWidget): void =
-
+proc QAbstractScrollAreasetupViewport*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, viewport: gen_qwidget.QWidget): void =
 
   fQAbstractScrollArea_virtualbase_setupViewport(self.h, viewport.h)
 
-type QAbstractScrollAreasetupViewportBase* = proc(viewport: gen_qwidget.QWidget): void
-proc onsetupViewport*(self: QAbstractScrollArea, slot: proc(super: QAbstractScrollAreasetupViewportBase, viewport: gen_qwidget.QWidget): void) =
+type QAbstractScrollAreasetupViewportProc* = proc(viewport: gen_qwidget.QWidget): void
+proc onsetupViewport*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, slot: QAbstractScrollAreasetupViewportProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractScrollAreasetupViewportBase, viewport: gen_qwidget.QWidget): void
-  var tmp = new Cb
+  var tmp = new QAbstractScrollAreasetupViewportProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractScrollArea_override_virtual_setupViewport(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractScrollArea_setupViewport(self: ptr cQAbstractScrollArea, slot: int, viewport: pointer): void {.exportc: "miqt_exec_callback_QAbstractScrollArea_setupViewport ".} =
-  type Cb = proc(super: QAbstractScrollAreasetupViewportBase, viewport: gen_qwidget.QWidget): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(viewport: gen_qwidget.QWidget): auto =
-    callVirtualBase_setupViewport(QAbstractScrollArea(h: self), viewport)
+  var nimfunc = cast[ptr QAbstractScrollAreasetupViewportProc](cast[pointer](slot))
   let slotval1 = gen_qwidget.QWidget(h: viewport)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_eventFilter(self: QAbstractScrollArea, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[](slotval1)
+proc QAbstractScrollAreaeventFilter*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool =
 
   fQAbstractScrollArea_virtualbase_eventFilter(self.h, param1.h, param2.h)
 
-type QAbstractScrollAreaeventFilterBase* = proc(param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QAbstractScrollArea, slot: proc(super: QAbstractScrollAreaeventFilterBase, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool) =
+type QAbstractScrollAreaeventFilterProc* = proc(param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, slot: QAbstractScrollAreaeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractScrollAreaeventFilterBase, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QAbstractScrollAreaeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractScrollArea_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractScrollArea_eventFilter(self: ptr cQAbstractScrollArea, slot: int, param1: pointer, param2: pointer): bool {.exportc: "miqt_exec_callback_QAbstractScrollArea_eventFilter ".} =
-  type Cb = proc(super: QAbstractScrollAreaeventFilterBase, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QAbstractScrollArea(h: self), param1, param2)
+  var nimfunc = cast[ptr QAbstractScrollAreaeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: param1)
 
   let slotval2 = gen_qcoreevent.QEvent(h: param2)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_event(self: QAbstractScrollArea, param1: gen_qcoreevent.QEvent): bool =
-
+proc QAbstractScrollAreaevent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, param1: gen_qcoreevent.QEvent): bool =
 
   fQAbstractScrollArea_virtualbase_event(self.h, param1.h)
 
-type QAbstractScrollAreaeventBase* = proc(param1: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QAbstractScrollArea, slot: proc(super: QAbstractScrollAreaeventBase, param1: gen_qcoreevent.QEvent): bool) =
+type QAbstractScrollAreaeventProc* = proc(param1: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, slot: QAbstractScrollAreaeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractScrollAreaeventBase, param1: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QAbstractScrollAreaeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractScrollArea_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractScrollArea_event(self: ptr cQAbstractScrollArea, slot: int, param1: pointer): bool {.exportc: "miqt_exec_callback_QAbstractScrollArea_event ".} =
-  type Cb = proc(super: QAbstractScrollAreaeventBase, param1: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QAbstractScrollArea(h: self), param1)
+  var nimfunc = cast[ptr QAbstractScrollAreaeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_viewportEvent(self: QAbstractScrollArea, param1: gen_qcoreevent.QEvent): bool =
-
+proc QAbstractScrollAreaviewportEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, param1: gen_qcoreevent.QEvent): bool =
 
   fQAbstractScrollArea_virtualbase_viewportEvent(self.h, param1.h)
 
-type QAbstractScrollAreaviewportEventBase* = proc(param1: gen_qcoreevent.QEvent): bool
-proc onviewportEvent*(self: QAbstractScrollArea, slot: proc(super: QAbstractScrollAreaviewportEventBase, param1: gen_qcoreevent.QEvent): bool) =
+type QAbstractScrollAreaviewportEventProc* = proc(param1: gen_qcoreevent.QEvent): bool
+proc onviewportEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, slot: QAbstractScrollAreaviewportEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractScrollAreaviewportEventBase, param1: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QAbstractScrollAreaviewportEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractScrollArea_override_virtual_viewportEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractScrollArea_viewportEvent(self: ptr cQAbstractScrollArea, slot: int, param1: pointer): bool {.exportc: "miqt_exec_callback_QAbstractScrollArea_viewportEvent ".} =
-  type Cb = proc(super: QAbstractScrollAreaviewportEventBase, param1: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_viewportEvent(QAbstractScrollArea(h: self), param1)
+  var nimfunc = cast[ptr QAbstractScrollAreaviewportEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_resizeEvent(self: QAbstractScrollArea, param1: gen_qevent.QResizeEvent): void =
-
+proc QAbstractScrollArearesizeEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, param1: gen_qevent.QResizeEvent): void =
 
   fQAbstractScrollArea_virtualbase_resizeEvent(self.h, param1.h)
 
-type QAbstractScrollArearesizeEventBase* = proc(param1: gen_qevent.QResizeEvent): void
-proc onresizeEvent*(self: QAbstractScrollArea, slot: proc(super: QAbstractScrollArearesizeEventBase, param1: gen_qevent.QResizeEvent): void) =
+type QAbstractScrollArearesizeEventProc* = proc(param1: gen_qevent.QResizeEvent): void
+proc onresizeEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, slot: QAbstractScrollArearesizeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractScrollArearesizeEventBase, param1: gen_qevent.QResizeEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractScrollArearesizeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractScrollArea_override_virtual_resizeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractScrollArea_resizeEvent(self: ptr cQAbstractScrollArea, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QAbstractScrollArea_resizeEvent ".} =
-  type Cb = proc(super: QAbstractScrollArearesizeEventBase, param1: gen_qevent.QResizeEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QResizeEvent): auto =
-    callVirtualBase_resizeEvent(QAbstractScrollArea(h: self), param1)
+  var nimfunc = cast[ptr QAbstractScrollArearesizeEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QResizeEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_paintEvent(self: QAbstractScrollArea, param1: gen_qevent.QPaintEvent): void =
-
+  nimfunc[](slotval1)
+proc QAbstractScrollAreapaintEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, param1: gen_qevent.QPaintEvent): void =
 
   fQAbstractScrollArea_virtualbase_paintEvent(self.h, param1.h)
 
-type QAbstractScrollAreapaintEventBase* = proc(param1: gen_qevent.QPaintEvent): void
-proc onpaintEvent*(self: QAbstractScrollArea, slot: proc(super: QAbstractScrollAreapaintEventBase, param1: gen_qevent.QPaintEvent): void) =
+type QAbstractScrollAreapaintEventProc* = proc(param1: gen_qevent.QPaintEvent): void
+proc onpaintEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, slot: QAbstractScrollAreapaintEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractScrollAreapaintEventBase, param1: gen_qevent.QPaintEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractScrollAreapaintEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractScrollArea_override_virtual_paintEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractScrollArea_paintEvent(self: ptr cQAbstractScrollArea, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QAbstractScrollArea_paintEvent ".} =
-  type Cb = proc(super: QAbstractScrollAreapaintEventBase, param1: gen_qevent.QPaintEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QPaintEvent): auto =
-    callVirtualBase_paintEvent(QAbstractScrollArea(h: self), param1)
+  var nimfunc = cast[ptr QAbstractScrollAreapaintEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QPaintEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mousePressEvent(self: QAbstractScrollArea, param1: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QAbstractScrollAreamousePressEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, param1: gen_qevent.QMouseEvent): void =
 
   fQAbstractScrollArea_virtualbase_mousePressEvent(self.h, param1.h)
 
-type QAbstractScrollAreamousePressEventBase* = proc(param1: gen_qevent.QMouseEvent): void
-proc onmousePressEvent*(self: QAbstractScrollArea, slot: proc(super: QAbstractScrollAreamousePressEventBase, param1: gen_qevent.QMouseEvent): void) =
+type QAbstractScrollAreamousePressEventProc* = proc(param1: gen_qevent.QMouseEvent): void
+proc onmousePressEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, slot: QAbstractScrollAreamousePressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractScrollAreamousePressEventBase, param1: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractScrollAreamousePressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractScrollArea_override_virtual_mousePressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractScrollArea_mousePressEvent(self: ptr cQAbstractScrollArea, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QAbstractScrollArea_mousePressEvent ".} =
-  type Cb = proc(super: QAbstractScrollAreamousePressEventBase, param1: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mousePressEvent(QAbstractScrollArea(h: self), param1)
+  var nimfunc = cast[ptr QAbstractScrollAreamousePressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseReleaseEvent(self: QAbstractScrollArea, param1: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QAbstractScrollAreamouseReleaseEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, param1: gen_qevent.QMouseEvent): void =
 
   fQAbstractScrollArea_virtualbase_mouseReleaseEvent(self.h, param1.h)
 
-type QAbstractScrollAreamouseReleaseEventBase* = proc(param1: gen_qevent.QMouseEvent): void
-proc onmouseReleaseEvent*(self: QAbstractScrollArea, slot: proc(super: QAbstractScrollAreamouseReleaseEventBase, param1: gen_qevent.QMouseEvent): void) =
+type QAbstractScrollAreamouseReleaseEventProc* = proc(param1: gen_qevent.QMouseEvent): void
+proc onmouseReleaseEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, slot: QAbstractScrollAreamouseReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractScrollAreamouseReleaseEventBase, param1: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractScrollAreamouseReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractScrollArea_override_virtual_mouseReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractScrollArea_mouseReleaseEvent(self: ptr cQAbstractScrollArea, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QAbstractScrollArea_mouseReleaseEvent ".} =
-  type Cb = proc(super: QAbstractScrollAreamouseReleaseEventBase, param1: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseReleaseEvent(QAbstractScrollArea(h: self), param1)
+  var nimfunc = cast[ptr QAbstractScrollAreamouseReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseDoubleClickEvent(self: QAbstractScrollArea, param1: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QAbstractScrollAreamouseDoubleClickEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, param1: gen_qevent.QMouseEvent): void =
 
   fQAbstractScrollArea_virtualbase_mouseDoubleClickEvent(self.h, param1.h)
 
-type QAbstractScrollAreamouseDoubleClickEventBase* = proc(param1: gen_qevent.QMouseEvent): void
-proc onmouseDoubleClickEvent*(self: QAbstractScrollArea, slot: proc(super: QAbstractScrollAreamouseDoubleClickEventBase, param1: gen_qevent.QMouseEvent): void) =
+type QAbstractScrollAreamouseDoubleClickEventProc* = proc(param1: gen_qevent.QMouseEvent): void
+proc onmouseDoubleClickEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, slot: QAbstractScrollAreamouseDoubleClickEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractScrollAreamouseDoubleClickEventBase, param1: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractScrollAreamouseDoubleClickEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractScrollArea_override_virtual_mouseDoubleClickEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractScrollArea_mouseDoubleClickEvent(self: ptr cQAbstractScrollArea, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QAbstractScrollArea_mouseDoubleClickEvent ".} =
-  type Cb = proc(super: QAbstractScrollAreamouseDoubleClickEventBase, param1: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseDoubleClickEvent(QAbstractScrollArea(h: self), param1)
+  var nimfunc = cast[ptr QAbstractScrollAreamouseDoubleClickEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseMoveEvent(self: QAbstractScrollArea, param1: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QAbstractScrollAreamouseMoveEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, param1: gen_qevent.QMouseEvent): void =
 
   fQAbstractScrollArea_virtualbase_mouseMoveEvent(self.h, param1.h)
 
-type QAbstractScrollAreamouseMoveEventBase* = proc(param1: gen_qevent.QMouseEvent): void
-proc onmouseMoveEvent*(self: QAbstractScrollArea, slot: proc(super: QAbstractScrollAreamouseMoveEventBase, param1: gen_qevent.QMouseEvent): void) =
+type QAbstractScrollAreamouseMoveEventProc* = proc(param1: gen_qevent.QMouseEvent): void
+proc onmouseMoveEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, slot: QAbstractScrollAreamouseMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractScrollAreamouseMoveEventBase, param1: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractScrollAreamouseMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractScrollArea_override_virtual_mouseMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractScrollArea_mouseMoveEvent(self: ptr cQAbstractScrollArea, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QAbstractScrollArea_mouseMoveEvent ".} =
-  type Cb = proc(super: QAbstractScrollAreamouseMoveEventBase, param1: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseMoveEvent(QAbstractScrollArea(h: self), param1)
+  var nimfunc = cast[ptr QAbstractScrollAreamouseMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_wheelEvent(self: QAbstractScrollArea, param1: gen_qevent.QWheelEvent): void =
-
+  nimfunc[](slotval1)
+proc QAbstractScrollAreawheelEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, param1: gen_qevent.QWheelEvent): void =
 
   fQAbstractScrollArea_virtualbase_wheelEvent(self.h, param1.h)
 
-type QAbstractScrollAreawheelEventBase* = proc(param1: gen_qevent.QWheelEvent): void
-proc onwheelEvent*(self: QAbstractScrollArea, slot: proc(super: QAbstractScrollAreawheelEventBase, param1: gen_qevent.QWheelEvent): void) =
+type QAbstractScrollAreawheelEventProc* = proc(param1: gen_qevent.QWheelEvent): void
+proc onwheelEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, slot: QAbstractScrollAreawheelEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractScrollAreawheelEventBase, param1: gen_qevent.QWheelEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractScrollAreawheelEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractScrollArea_override_virtual_wheelEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractScrollArea_wheelEvent(self: ptr cQAbstractScrollArea, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QAbstractScrollArea_wheelEvent ".} =
-  type Cb = proc(super: QAbstractScrollAreawheelEventBase, param1: gen_qevent.QWheelEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QWheelEvent): auto =
-    callVirtualBase_wheelEvent(QAbstractScrollArea(h: self), param1)
+  var nimfunc = cast[ptr QAbstractScrollAreawheelEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QWheelEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_contextMenuEvent(self: QAbstractScrollArea, param1: gen_qevent.QContextMenuEvent): void =
-
+  nimfunc[](slotval1)
+proc QAbstractScrollAreacontextMenuEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, param1: gen_qevent.QContextMenuEvent): void =
 
   fQAbstractScrollArea_virtualbase_contextMenuEvent(self.h, param1.h)
 
-type QAbstractScrollAreacontextMenuEventBase* = proc(param1: gen_qevent.QContextMenuEvent): void
-proc oncontextMenuEvent*(self: QAbstractScrollArea, slot: proc(super: QAbstractScrollAreacontextMenuEventBase, param1: gen_qevent.QContextMenuEvent): void) =
+type QAbstractScrollAreacontextMenuEventProc* = proc(param1: gen_qevent.QContextMenuEvent): void
+proc oncontextMenuEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, slot: QAbstractScrollAreacontextMenuEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractScrollAreacontextMenuEventBase, param1: gen_qevent.QContextMenuEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractScrollAreacontextMenuEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractScrollArea_override_virtual_contextMenuEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractScrollArea_contextMenuEvent(self: ptr cQAbstractScrollArea, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QAbstractScrollArea_contextMenuEvent ".} =
-  type Cb = proc(super: QAbstractScrollAreacontextMenuEventBase, param1: gen_qevent.QContextMenuEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QContextMenuEvent): auto =
-    callVirtualBase_contextMenuEvent(QAbstractScrollArea(h: self), param1)
+  var nimfunc = cast[ptr QAbstractScrollAreacontextMenuEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QContextMenuEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragEnterEvent(self: QAbstractScrollArea, param1: gen_qevent.QDragEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QAbstractScrollAreadragEnterEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, param1: gen_qevent.QDragEnterEvent): void =
 
   fQAbstractScrollArea_virtualbase_dragEnterEvent(self.h, param1.h)
 
-type QAbstractScrollAreadragEnterEventBase* = proc(param1: gen_qevent.QDragEnterEvent): void
-proc ondragEnterEvent*(self: QAbstractScrollArea, slot: proc(super: QAbstractScrollAreadragEnterEventBase, param1: gen_qevent.QDragEnterEvent): void) =
+type QAbstractScrollAreadragEnterEventProc* = proc(param1: gen_qevent.QDragEnterEvent): void
+proc ondragEnterEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, slot: QAbstractScrollAreadragEnterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractScrollAreadragEnterEventBase, param1: gen_qevent.QDragEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractScrollAreadragEnterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractScrollArea_override_virtual_dragEnterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractScrollArea_dragEnterEvent(self: ptr cQAbstractScrollArea, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QAbstractScrollArea_dragEnterEvent ".} =
-  type Cb = proc(super: QAbstractScrollAreadragEnterEventBase, param1: gen_qevent.QDragEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QDragEnterEvent): auto =
-    callVirtualBase_dragEnterEvent(QAbstractScrollArea(h: self), param1)
+  var nimfunc = cast[ptr QAbstractScrollAreadragEnterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragEnterEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragMoveEvent(self: QAbstractScrollArea, param1: gen_qevent.QDragMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QAbstractScrollAreadragMoveEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, param1: gen_qevent.QDragMoveEvent): void =
 
   fQAbstractScrollArea_virtualbase_dragMoveEvent(self.h, param1.h)
 
-type QAbstractScrollAreadragMoveEventBase* = proc(param1: gen_qevent.QDragMoveEvent): void
-proc ondragMoveEvent*(self: QAbstractScrollArea, slot: proc(super: QAbstractScrollAreadragMoveEventBase, param1: gen_qevent.QDragMoveEvent): void) =
+type QAbstractScrollAreadragMoveEventProc* = proc(param1: gen_qevent.QDragMoveEvent): void
+proc ondragMoveEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, slot: QAbstractScrollAreadragMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractScrollAreadragMoveEventBase, param1: gen_qevent.QDragMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractScrollAreadragMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractScrollArea_override_virtual_dragMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractScrollArea_dragMoveEvent(self: ptr cQAbstractScrollArea, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QAbstractScrollArea_dragMoveEvent ".} =
-  type Cb = proc(super: QAbstractScrollAreadragMoveEventBase, param1: gen_qevent.QDragMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QDragMoveEvent): auto =
-    callVirtualBase_dragMoveEvent(QAbstractScrollArea(h: self), param1)
+  var nimfunc = cast[ptr QAbstractScrollAreadragMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragMoveEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragLeaveEvent(self: QAbstractScrollArea, param1: gen_qevent.QDragLeaveEvent): void =
-
+  nimfunc[](slotval1)
+proc QAbstractScrollAreadragLeaveEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, param1: gen_qevent.QDragLeaveEvent): void =
 
   fQAbstractScrollArea_virtualbase_dragLeaveEvent(self.h, param1.h)
 
-type QAbstractScrollAreadragLeaveEventBase* = proc(param1: gen_qevent.QDragLeaveEvent): void
-proc ondragLeaveEvent*(self: QAbstractScrollArea, slot: proc(super: QAbstractScrollAreadragLeaveEventBase, param1: gen_qevent.QDragLeaveEvent): void) =
+type QAbstractScrollAreadragLeaveEventProc* = proc(param1: gen_qevent.QDragLeaveEvent): void
+proc ondragLeaveEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, slot: QAbstractScrollAreadragLeaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractScrollAreadragLeaveEventBase, param1: gen_qevent.QDragLeaveEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractScrollAreadragLeaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractScrollArea_override_virtual_dragLeaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractScrollArea_dragLeaveEvent(self: ptr cQAbstractScrollArea, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QAbstractScrollArea_dragLeaveEvent ".} =
-  type Cb = proc(super: QAbstractScrollAreadragLeaveEventBase, param1: gen_qevent.QDragLeaveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QDragLeaveEvent): auto =
-    callVirtualBase_dragLeaveEvent(QAbstractScrollArea(h: self), param1)
+  var nimfunc = cast[ptr QAbstractScrollAreadragLeaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragLeaveEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dropEvent(self: QAbstractScrollArea, param1: gen_qevent.QDropEvent): void =
-
+  nimfunc[](slotval1)
+proc QAbstractScrollAreadropEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, param1: gen_qevent.QDropEvent): void =
 
   fQAbstractScrollArea_virtualbase_dropEvent(self.h, param1.h)
 
-type QAbstractScrollAreadropEventBase* = proc(param1: gen_qevent.QDropEvent): void
-proc ondropEvent*(self: QAbstractScrollArea, slot: proc(super: QAbstractScrollAreadropEventBase, param1: gen_qevent.QDropEvent): void) =
+type QAbstractScrollAreadropEventProc* = proc(param1: gen_qevent.QDropEvent): void
+proc ondropEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, slot: QAbstractScrollAreadropEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractScrollAreadropEventBase, param1: gen_qevent.QDropEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractScrollAreadropEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractScrollArea_override_virtual_dropEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractScrollArea_dropEvent(self: ptr cQAbstractScrollArea, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QAbstractScrollArea_dropEvent ".} =
-  type Cb = proc(super: QAbstractScrollAreadropEventBase, param1: gen_qevent.QDropEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QDropEvent): auto =
-    callVirtualBase_dropEvent(QAbstractScrollArea(h: self), param1)
+  var nimfunc = cast[ptr QAbstractScrollAreadropEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDropEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyPressEvent(self: QAbstractScrollArea, param1: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QAbstractScrollAreakeyPressEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, param1: gen_qevent.QKeyEvent): void =
 
   fQAbstractScrollArea_virtualbase_keyPressEvent(self.h, param1.h)
 
-type QAbstractScrollAreakeyPressEventBase* = proc(param1: gen_qevent.QKeyEvent): void
-proc onkeyPressEvent*(self: QAbstractScrollArea, slot: proc(super: QAbstractScrollAreakeyPressEventBase, param1: gen_qevent.QKeyEvent): void) =
+type QAbstractScrollAreakeyPressEventProc* = proc(param1: gen_qevent.QKeyEvent): void
+proc onkeyPressEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, slot: QAbstractScrollAreakeyPressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractScrollAreakeyPressEventBase, param1: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractScrollAreakeyPressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractScrollArea_override_virtual_keyPressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractScrollArea_keyPressEvent(self: ptr cQAbstractScrollArea, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QAbstractScrollArea_keyPressEvent ".} =
-  type Cb = proc(super: QAbstractScrollAreakeyPressEventBase, param1: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyPressEvent(QAbstractScrollArea(h: self), param1)
+  var nimfunc = cast[ptr QAbstractScrollAreakeyPressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_scrollContentsBy(self: QAbstractScrollArea, dx: cint, dy: cint): void =
-
+  nimfunc[](slotval1)
+proc QAbstractScrollAreascrollContentsBy*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, dx: cint, dy: cint): void =
 
   fQAbstractScrollArea_virtualbase_scrollContentsBy(self.h, dx, dy)
 
-type QAbstractScrollAreascrollContentsByBase* = proc(dx: cint, dy: cint): void
-proc onscrollContentsBy*(self: QAbstractScrollArea, slot: proc(super: QAbstractScrollAreascrollContentsByBase, dx: cint, dy: cint): void) =
+type QAbstractScrollAreascrollContentsByProc* = proc(dx: cint, dy: cint): void
+proc onscrollContentsBy*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, slot: QAbstractScrollAreascrollContentsByProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractScrollAreascrollContentsByBase, dx: cint, dy: cint): void
-  var tmp = new Cb
+  var tmp = new QAbstractScrollAreascrollContentsByProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractScrollArea_override_virtual_scrollContentsBy(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractScrollArea_scrollContentsBy(self: ptr cQAbstractScrollArea, slot: int, dx: cint, dy: cint): void {.exportc: "miqt_exec_callback_QAbstractScrollArea_scrollContentsBy ".} =
-  type Cb = proc(super: QAbstractScrollAreascrollContentsByBase, dx: cint, dy: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(dx: cint, dy: cint): auto =
-    callVirtualBase_scrollContentsBy(QAbstractScrollArea(h: self), dx, dy)
+  var nimfunc = cast[ptr QAbstractScrollAreascrollContentsByProc](cast[pointer](slot))
   let slotval1 = dx
 
   let slotval2 = dy
 
 
-  nimfunc[](superCall, slotval1, slotval2)
-proc callVirtualBase_viewportSizeHint(self: QAbstractScrollArea, ): gen_qsize.QSize =
-
+  nimfunc[](slotval1, slotval2)
+proc QAbstractScrollAreaviewportSizeHint*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQAbstractScrollArea_virtualbase_viewportSizeHint(self.h))
 
-type QAbstractScrollAreaviewportSizeHintBase* = proc(): gen_qsize.QSize
-proc onviewportSizeHint*(self: QAbstractScrollArea, slot: proc(super: QAbstractScrollAreaviewportSizeHintBase): gen_qsize.QSize) =
+type QAbstractScrollAreaviewportSizeHintProc* = proc(): gen_qsize.QSize
+proc onviewportSizeHint*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, slot: QAbstractScrollAreaviewportSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractScrollAreaviewportSizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QAbstractScrollAreaviewportSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractScrollArea_override_virtual_viewportSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractScrollArea_viewportSizeHint(self: ptr cQAbstractScrollArea, slot: int): pointer {.exportc: "miqt_exec_callback_QAbstractScrollArea_viewportSizeHint ".} =
-  type Cb = proc(super: QAbstractScrollAreaviewportSizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_viewportSizeHint(QAbstractScrollArea(h: self), )
+  var nimfunc = cast[ptr QAbstractScrollAreaviewportSizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_changeEvent(self: QAbstractScrollArea, param1: gen_qcoreevent.QEvent): void =
-
+proc QAbstractScrollAreachangeEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, param1: gen_qcoreevent.QEvent): void =
 
   fQAbstractScrollArea_virtualbase_changeEvent(self.h, param1.h)
 
-type QAbstractScrollAreachangeEventBase* = proc(param1: gen_qcoreevent.QEvent): void
-proc onchangeEvent*(self: QAbstractScrollArea, slot: proc(super: QAbstractScrollAreachangeEventBase, param1: gen_qcoreevent.QEvent): void) =
+type QAbstractScrollAreachangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
+proc onchangeEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, slot: QAbstractScrollAreachangeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractScrollAreachangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractScrollAreachangeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractScrollArea_override_virtual_changeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractScrollArea_changeEvent(self: ptr cQAbstractScrollArea, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QAbstractScrollArea_changeEvent ".} =
-  type Cb = proc(super: QAbstractScrollAreachangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_changeEvent(QAbstractScrollArea(h: self), param1)
+  var nimfunc = cast[ptr QAbstractScrollAreachangeEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_devType(self: QAbstractScrollArea, ): cint =
-
+  nimfunc[](slotval1)
+proc QAbstractScrollAreadevType*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, ): cint =
 
   fQAbstractScrollArea_virtualbase_devType(self.h)
 
-type QAbstractScrollAreadevTypeBase* = proc(): cint
-proc ondevType*(self: QAbstractScrollArea, slot: proc(super: QAbstractScrollAreadevTypeBase): cint) =
+type QAbstractScrollAreadevTypeProc* = proc(): cint
+proc ondevType*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, slot: QAbstractScrollAreadevTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractScrollAreadevTypeBase): cint
-  var tmp = new Cb
+  var tmp = new QAbstractScrollAreadevTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractScrollArea_override_virtual_devType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractScrollArea_devType(self: ptr cQAbstractScrollArea, slot: int): cint {.exportc: "miqt_exec_callback_QAbstractScrollArea_devType ".} =
-  type Cb = proc(super: QAbstractScrollAreadevTypeBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_devType(QAbstractScrollArea(h: self), )
+  var nimfunc = cast[ptr QAbstractScrollAreadevTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setVisible(self: QAbstractScrollArea, visible: bool): void =
-
+proc QAbstractScrollAreasetVisible*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, visible: bool): void =
 
   fQAbstractScrollArea_virtualbase_setVisible(self.h, visible)
 
-type QAbstractScrollAreasetVisibleBase* = proc(visible: bool): void
-proc onsetVisible*(self: QAbstractScrollArea, slot: proc(super: QAbstractScrollAreasetVisibleBase, visible: bool): void) =
+type QAbstractScrollAreasetVisibleProc* = proc(visible: bool): void
+proc onsetVisible*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, slot: QAbstractScrollAreasetVisibleProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractScrollAreasetVisibleBase, visible: bool): void
-  var tmp = new Cb
+  var tmp = new QAbstractScrollAreasetVisibleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractScrollArea_override_virtual_setVisible(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractScrollArea_setVisible(self: ptr cQAbstractScrollArea, slot: int, visible: bool): void {.exportc: "miqt_exec_callback_QAbstractScrollArea_setVisible ".} =
-  type Cb = proc(super: QAbstractScrollAreasetVisibleBase, visible: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(visible: bool): auto =
-    callVirtualBase_setVisible(QAbstractScrollArea(h: self), visible)
+  var nimfunc = cast[ptr QAbstractScrollAreasetVisibleProc](cast[pointer](slot))
   let slotval1 = visible
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_heightForWidth(self: QAbstractScrollArea, param1: cint): cint =
-
+  nimfunc[](slotval1)
+proc QAbstractScrollAreaheightForWidth*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, param1: cint): cint =
 
   fQAbstractScrollArea_virtualbase_heightForWidth(self.h, param1)
 
-type QAbstractScrollAreaheightForWidthBase* = proc(param1: cint): cint
-proc onheightForWidth*(self: QAbstractScrollArea, slot: proc(super: QAbstractScrollAreaheightForWidthBase, param1: cint): cint) =
+type QAbstractScrollAreaheightForWidthProc* = proc(param1: cint): cint
+proc onheightForWidth*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, slot: QAbstractScrollAreaheightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractScrollAreaheightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QAbstractScrollAreaheightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractScrollArea_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractScrollArea_heightForWidth(self: ptr cQAbstractScrollArea, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QAbstractScrollArea_heightForWidth ".} =
-  type Cb = proc(super: QAbstractScrollAreaheightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_heightForWidth(QAbstractScrollArea(h: self), param1)
+  var nimfunc = cast[ptr QAbstractScrollAreaheightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_hasHeightForWidth(self: QAbstractScrollArea, ): bool =
-
+proc QAbstractScrollAreahasHeightForWidth*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, ): bool =
 
   fQAbstractScrollArea_virtualbase_hasHeightForWidth(self.h)
 
-type QAbstractScrollAreahasHeightForWidthBase* = proc(): bool
-proc onhasHeightForWidth*(self: QAbstractScrollArea, slot: proc(super: QAbstractScrollAreahasHeightForWidthBase): bool) =
+type QAbstractScrollAreahasHeightForWidthProc* = proc(): bool
+proc onhasHeightForWidth*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, slot: QAbstractScrollAreahasHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractScrollAreahasHeightForWidthBase): bool
-  var tmp = new Cb
+  var tmp = new QAbstractScrollAreahasHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractScrollArea_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractScrollArea_hasHeightForWidth(self: ptr cQAbstractScrollArea, slot: int): bool {.exportc: "miqt_exec_callback_QAbstractScrollArea_hasHeightForWidth ".} =
-  type Cb = proc(super: QAbstractScrollAreahasHeightForWidthBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasHeightForWidth(QAbstractScrollArea(h: self), )
+  var nimfunc = cast[ptr QAbstractScrollAreahasHeightForWidthProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_paintEngine(self: QAbstractScrollArea, ): gen_qpaintengine.QPaintEngine =
-
+proc QAbstractScrollAreapaintEngine*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, ): gen_qpaintengine.QPaintEngine =
 
   gen_qpaintengine.QPaintEngine(h: fQAbstractScrollArea_virtualbase_paintEngine(self.h))
 
-type QAbstractScrollAreapaintEngineBase* = proc(): gen_qpaintengine.QPaintEngine
-proc onpaintEngine*(self: QAbstractScrollArea, slot: proc(super: QAbstractScrollAreapaintEngineBase): gen_qpaintengine.QPaintEngine) =
+type QAbstractScrollAreapaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
+proc onpaintEngine*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, slot: QAbstractScrollAreapaintEngineProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractScrollAreapaintEngineBase): gen_qpaintengine.QPaintEngine
-  var tmp = new Cb
+  var tmp = new QAbstractScrollAreapaintEngineProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractScrollArea_override_virtual_paintEngine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractScrollArea_paintEngine(self: ptr cQAbstractScrollArea, slot: int): pointer {.exportc: "miqt_exec_callback_QAbstractScrollArea_paintEngine ".} =
-  type Cb = proc(super: QAbstractScrollAreapaintEngineBase): gen_qpaintengine.QPaintEngine
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_paintEngine(QAbstractScrollArea(h: self), )
+  var nimfunc = cast[ptr QAbstractScrollAreapaintEngineProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_keyReleaseEvent(self: QAbstractScrollArea, event: gen_qevent.QKeyEvent): void =
-
+proc QAbstractScrollAreakeyReleaseEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, event: gen_qevent.QKeyEvent): void =
 
   fQAbstractScrollArea_virtualbase_keyReleaseEvent(self.h, event.h)
 
-type QAbstractScrollAreakeyReleaseEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyReleaseEvent*(self: QAbstractScrollArea, slot: proc(super: QAbstractScrollAreakeyReleaseEventBase, event: gen_qevent.QKeyEvent): void) =
+type QAbstractScrollAreakeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyReleaseEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, slot: QAbstractScrollAreakeyReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractScrollAreakeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractScrollAreakeyReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractScrollArea_override_virtual_keyReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractScrollArea_keyReleaseEvent(self: ptr cQAbstractScrollArea, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAbstractScrollArea_keyReleaseEvent ".} =
-  type Cb = proc(super: QAbstractScrollAreakeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyReleaseEvent(QAbstractScrollArea(h: self), event)
+  var nimfunc = cast[ptr QAbstractScrollAreakeyReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusInEvent(self: QAbstractScrollArea, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QAbstractScrollAreafocusInEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, event: gen_qevent.QFocusEvent): void =
 
   fQAbstractScrollArea_virtualbase_focusInEvent(self.h, event.h)
 
-type QAbstractScrollAreafocusInEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusInEvent*(self: QAbstractScrollArea, slot: proc(super: QAbstractScrollAreafocusInEventBase, event: gen_qevent.QFocusEvent): void) =
+type QAbstractScrollAreafocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusInEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, slot: QAbstractScrollAreafocusInEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractScrollAreafocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractScrollAreafocusInEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractScrollArea_override_virtual_focusInEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractScrollArea_focusInEvent(self: ptr cQAbstractScrollArea, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAbstractScrollArea_focusInEvent ".} =
-  type Cb = proc(super: QAbstractScrollAreafocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusInEvent(QAbstractScrollArea(h: self), event)
+  var nimfunc = cast[ptr QAbstractScrollAreafocusInEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusOutEvent(self: QAbstractScrollArea, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QAbstractScrollAreafocusOutEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, event: gen_qevent.QFocusEvent): void =
 
   fQAbstractScrollArea_virtualbase_focusOutEvent(self.h, event.h)
 
-type QAbstractScrollAreafocusOutEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusOutEvent*(self: QAbstractScrollArea, slot: proc(super: QAbstractScrollAreafocusOutEventBase, event: gen_qevent.QFocusEvent): void) =
+type QAbstractScrollAreafocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusOutEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, slot: QAbstractScrollAreafocusOutEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractScrollAreafocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractScrollAreafocusOutEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractScrollArea_override_virtual_focusOutEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractScrollArea_focusOutEvent(self: ptr cQAbstractScrollArea, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAbstractScrollArea_focusOutEvent ".} =
-  type Cb = proc(super: QAbstractScrollAreafocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusOutEvent(QAbstractScrollArea(h: self), event)
+  var nimfunc = cast[ptr QAbstractScrollAreafocusOutEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_enterEvent(self: QAbstractScrollArea, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QAbstractScrollAreaenterEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, event: gen_qcoreevent.QEvent): void =
 
   fQAbstractScrollArea_virtualbase_enterEvent(self.h, event.h)
 
-type QAbstractScrollAreaenterEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onenterEvent*(self: QAbstractScrollArea, slot: proc(super: QAbstractScrollAreaenterEventBase, event: gen_qcoreevent.QEvent): void) =
+type QAbstractScrollAreaenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onenterEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, slot: QAbstractScrollAreaenterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractScrollAreaenterEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractScrollAreaenterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractScrollArea_override_virtual_enterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractScrollArea_enterEvent(self: ptr cQAbstractScrollArea, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAbstractScrollArea_enterEvent ".} =
-  type Cb = proc(super: QAbstractScrollAreaenterEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_enterEvent(QAbstractScrollArea(h: self), event)
+  var nimfunc = cast[ptr QAbstractScrollAreaenterEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_leaveEvent(self: QAbstractScrollArea, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QAbstractScrollArealeaveEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, event: gen_qcoreevent.QEvent): void =
 
   fQAbstractScrollArea_virtualbase_leaveEvent(self.h, event.h)
 
-type QAbstractScrollArealeaveEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onleaveEvent*(self: QAbstractScrollArea, slot: proc(super: QAbstractScrollArealeaveEventBase, event: gen_qcoreevent.QEvent): void) =
+type QAbstractScrollArealeaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onleaveEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, slot: QAbstractScrollArealeaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractScrollArealeaveEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractScrollArealeaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractScrollArea_override_virtual_leaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractScrollArea_leaveEvent(self: ptr cQAbstractScrollArea, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAbstractScrollArea_leaveEvent ".} =
-  type Cb = proc(super: QAbstractScrollArealeaveEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_leaveEvent(QAbstractScrollArea(h: self), event)
+  var nimfunc = cast[ptr QAbstractScrollArealeaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_moveEvent(self: QAbstractScrollArea, event: gen_qevent.QMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QAbstractScrollAreamoveEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, event: gen_qevent.QMoveEvent): void =
 
   fQAbstractScrollArea_virtualbase_moveEvent(self.h, event.h)
 
-type QAbstractScrollAreamoveEventBase* = proc(event: gen_qevent.QMoveEvent): void
-proc onmoveEvent*(self: QAbstractScrollArea, slot: proc(super: QAbstractScrollAreamoveEventBase, event: gen_qevent.QMoveEvent): void) =
+type QAbstractScrollAreamoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
+proc onmoveEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, slot: QAbstractScrollAreamoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractScrollAreamoveEventBase, event: gen_qevent.QMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractScrollAreamoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractScrollArea_override_virtual_moveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractScrollArea_moveEvent(self: ptr cQAbstractScrollArea, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAbstractScrollArea_moveEvent ".} =
-  type Cb = proc(super: QAbstractScrollAreamoveEventBase, event: gen_qevent.QMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMoveEvent): auto =
-    callVirtualBase_moveEvent(QAbstractScrollArea(h: self), event)
+  var nimfunc = cast[ptr QAbstractScrollAreamoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_closeEvent(self: QAbstractScrollArea, event: gen_qevent.QCloseEvent): void =
-
+  nimfunc[](slotval1)
+proc QAbstractScrollAreacloseEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, event: gen_qevent.QCloseEvent): void =
 
   fQAbstractScrollArea_virtualbase_closeEvent(self.h, event.h)
 
-type QAbstractScrollAreacloseEventBase* = proc(event: gen_qevent.QCloseEvent): void
-proc oncloseEvent*(self: QAbstractScrollArea, slot: proc(super: QAbstractScrollAreacloseEventBase, event: gen_qevent.QCloseEvent): void) =
+type QAbstractScrollAreacloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
+proc oncloseEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, slot: QAbstractScrollAreacloseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractScrollAreacloseEventBase, event: gen_qevent.QCloseEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractScrollAreacloseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractScrollArea_override_virtual_closeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractScrollArea_closeEvent(self: ptr cQAbstractScrollArea, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAbstractScrollArea_closeEvent ".} =
-  type Cb = proc(super: QAbstractScrollAreacloseEventBase, event: gen_qevent.QCloseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QCloseEvent): auto =
-    callVirtualBase_closeEvent(QAbstractScrollArea(h: self), event)
+  var nimfunc = cast[ptr QAbstractScrollAreacloseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QCloseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_tabletEvent(self: QAbstractScrollArea, event: gen_qevent.QTabletEvent): void =
-
+  nimfunc[](slotval1)
+proc QAbstractScrollAreatabletEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, event: gen_qevent.QTabletEvent): void =
 
   fQAbstractScrollArea_virtualbase_tabletEvent(self.h, event.h)
 
-type QAbstractScrollAreatabletEventBase* = proc(event: gen_qevent.QTabletEvent): void
-proc ontabletEvent*(self: QAbstractScrollArea, slot: proc(super: QAbstractScrollAreatabletEventBase, event: gen_qevent.QTabletEvent): void) =
+type QAbstractScrollAreatabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
+proc ontabletEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, slot: QAbstractScrollAreatabletEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractScrollAreatabletEventBase, event: gen_qevent.QTabletEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractScrollAreatabletEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractScrollArea_override_virtual_tabletEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractScrollArea_tabletEvent(self: ptr cQAbstractScrollArea, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAbstractScrollArea_tabletEvent ".} =
-  type Cb = proc(super: QAbstractScrollAreatabletEventBase, event: gen_qevent.QTabletEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QTabletEvent): auto =
-    callVirtualBase_tabletEvent(QAbstractScrollArea(h: self), event)
+  var nimfunc = cast[ptr QAbstractScrollAreatabletEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QTabletEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_actionEvent(self: QAbstractScrollArea, event: gen_qevent.QActionEvent): void =
-
+  nimfunc[](slotval1)
+proc QAbstractScrollAreaactionEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, event: gen_qevent.QActionEvent): void =
 
   fQAbstractScrollArea_virtualbase_actionEvent(self.h, event.h)
 
-type QAbstractScrollAreaactionEventBase* = proc(event: gen_qevent.QActionEvent): void
-proc onactionEvent*(self: QAbstractScrollArea, slot: proc(super: QAbstractScrollAreaactionEventBase, event: gen_qevent.QActionEvent): void) =
+type QAbstractScrollAreaactionEventProc* = proc(event: gen_qevent.QActionEvent): void
+proc onactionEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, slot: QAbstractScrollAreaactionEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractScrollAreaactionEventBase, event: gen_qevent.QActionEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractScrollAreaactionEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractScrollArea_override_virtual_actionEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractScrollArea_actionEvent(self: ptr cQAbstractScrollArea, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAbstractScrollArea_actionEvent ".} =
-  type Cb = proc(super: QAbstractScrollAreaactionEventBase, event: gen_qevent.QActionEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QActionEvent): auto =
-    callVirtualBase_actionEvent(QAbstractScrollArea(h: self), event)
+  var nimfunc = cast[ptr QAbstractScrollAreaactionEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QActionEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_showEvent(self: QAbstractScrollArea, event: gen_qevent.QShowEvent): void =
-
+  nimfunc[](slotval1)
+proc QAbstractScrollAreashowEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, event: gen_qevent.QShowEvent): void =
 
   fQAbstractScrollArea_virtualbase_showEvent(self.h, event.h)
 
-type QAbstractScrollAreashowEventBase* = proc(event: gen_qevent.QShowEvent): void
-proc onshowEvent*(self: QAbstractScrollArea, slot: proc(super: QAbstractScrollAreashowEventBase, event: gen_qevent.QShowEvent): void) =
+type QAbstractScrollAreashowEventProc* = proc(event: gen_qevent.QShowEvent): void
+proc onshowEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, slot: QAbstractScrollAreashowEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractScrollAreashowEventBase, event: gen_qevent.QShowEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractScrollAreashowEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractScrollArea_override_virtual_showEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractScrollArea_showEvent(self: ptr cQAbstractScrollArea, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAbstractScrollArea_showEvent ".} =
-  type Cb = proc(super: QAbstractScrollAreashowEventBase, event: gen_qevent.QShowEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QShowEvent): auto =
-    callVirtualBase_showEvent(QAbstractScrollArea(h: self), event)
+  var nimfunc = cast[ptr QAbstractScrollAreashowEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QShowEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hideEvent(self: QAbstractScrollArea, event: gen_qevent.QHideEvent): void =
-
+  nimfunc[](slotval1)
+proc QAbstractScrollAreahideEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, event: gen_qevent.QHideEvent): void =
 
   fQAbstractScrollArea_virtualbase_hideEvent(self.h, event.h)
 
-type QAbstractScrollAreahideEventBase* = proc(event: gen_qevent.QHideEvent): void
-proc onhideEvent*(self: QAbstractScrollArea, slot: proc(super: QAbstractScrollAreahideEventBase, event: gen_qevent.QHideEvent): void) =
+type QAbstractScrollAreahideEventProc* = proc(event: gen_qevent.QHideEvent): void
+proc onhideEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, slot: QAbstractScrollAreahideEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractScrollAreahideEventBase, event: gen_qevent.QHideEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractScrollAreahideEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractScrollArea_override_virtual_hideEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractScrollArea_hideEvent(self: ptr cQAbstractScrollArea, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAbstractScrollArea_hideEvent ".} =
-  type Cb = proc(super: QAbstractScrollAreahideEventBase, event: gen_qevent.QHideEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QHideEvent): auto =
-    callVirtualBase_hideEvent(QAbstractScrollArea(h: self), event)
+  var nimfunc = cast[ptr QAbstractScrollAreahideEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QHideEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_nativeEvent(self: QAbstractScrollArea, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
+  nimfunc[](slotval1)
+proc QAbstractScrollAreanativeEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
 
   fQAbstractScrollArea_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
-type QAbstractScrollAreanativeEventBase* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-proc onnativeEvent*(self: QAbstractScrollArea, slot: proc(super: QAbstractScrollAreanativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool) =
+type QAbstractScrollAreanativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
+proc onnativeEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, slot: QAbstractScrollAreanativeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractScrollAreanativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-  var tmp = new Cb
+  var tmp = new QAbstractScrollAreanativeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractScrollArea_override_virtual_nativeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractScrollArea_nativeEvent(self: ptr cQAbstractScrollArea, slot: int, eventType: struct_miqt_string, message: pointer, resultVal: ptr clong): bool {.exportc: "miqt_exec_callback_QAbstractScrollArea_nativeEvent ".} =
-  type Cb = proc(super: QAbstractScrollAreanativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(eventType: seq[byte], message: pointer, resultVal: ptr clong): auto =
-    callVirtualBase_nativeEvent(QAbstractScrollArea(h: self), eventType, message, resultVal)
+  var nimfunc = cast[ptr QAbstractScrollAreanativeEventProc](cast[pointer](slot))
   var veventType_bytearray = eventType
   var veventTypex_ret = @(toOpenArrayByte(veventType_bytearray.data, 0, int(veventType_bytearray.len)-1))
   c_free(veventType_bytearray.data)
@@ -1362,294 +1148,234 @@ proc miqt_exec_callback_QAbstractScrollArea_nativeEvent(self: ptr cQAbstractScro
   let slotval3 = resultVal
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_metric(self: QAbstractScrollArea, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint =
-
+proc QAbstractScrollAreametric*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, param1: cint): cint =
 
   fQAbstractScrollArea_virtualbase_metric(self.h, cint(param1))
 
-type QAbstractScrollAreametricBase* = proc(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-proc onmetric*(self: QAbstractScrollArea, slot: proc(super: QAbstractScrollAreametricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint) =
+type QAbstractScrollAreametricProc* = proc(param1: cint): cint
+proc onmetric*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, slot: QAbstractScrollAreametricProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractScrollAreametricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var tmp = new Cb
+  var tmp = new QAbstractScrollAreametricProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractScrollArea_override_virtual_metric(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractScrollArea_metric(self: ptr cQAbstractScrollArea, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QAbstractScrollArea_metric ".} =
-  type Cb = proc(super: QAbstractScrollAreametricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): auto =
-    callVirtualBase_metric(QAbstractScrollArea(h: self), param1)
-  let slotval1 = gen_qpaintdevice.QPaintDevicePaintDeviceMetric(param1)
+  var nimfunc = cast[ptr QAbstractScrollAreametricProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_initPainter(self: QAbstractScrollArea, painter: gen_qpainter.QPainter): void =
-
+proc QAbstractScrollAreainitPainter*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, painter: gen_qpainter.QPainter): void =
 
   fQAbstractScrollArea_virtualbase_initPainter(self.h, painter.h)
 
-type QAbstractScrollAreainitPainterBase* = proc(painter: gen_qpainter.QPainter): void
-proc oninitPainter*(self: QAbstractScrollArea, slot: proc(super: QAbstractScrollAreainitPainterBase, painter: gen_qpainter.QPainter): void) =
+type QAbstractScrollAreainitPainterProc* = proc(painter: gen_qpainter.QPainter): void
+proc oninitPainter*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, slot: QAbstractScrollAreainitPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractScrollAreainitPainterBase, painter: gen_qpainter.QPainter): void
-  var tmp = new Cb
+  var tmp = new QAbstractScrollAreainitPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractScrollArea_override_virtual_initPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractScrollArea_initPainter(self: ptr cQAbstractScrollArea, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_QAbstractScrollArea_initPainter ".} =
-  type Cb = proc(super: QAbstractScrollAreainitPainterBase, painter: gen_qpainter.QPainter): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter): auto =
-    callVirtualBase_initPainter(QAbstractScrollArea(h: self), painter)
+  var nimfunc = cast[ptr QAbstractScrollAreainitPainterProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_redirected(self: QAbstractScrollArea, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
+  nimfunc[](slotval1)
+proc QAbstractScrollArearedirected*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
 
   gen_qpaintdevice.QPaintDevice(h: fQAbstractScrollArea_virtualbase_redirected(self.h, offset.h))
 
-type QAbstractScrollArearedirectedBase* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-proc onredirected*(self: QAbstractScrollArea, slot: proc(super: QAbstractScrollArearedirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice) =
+type QAbstractScrollArearedirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
+proc onredirected*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, slot: QAbstractScrollArearedirectedProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractScrollArearedirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var tmp = new Cb
+  var tmp = new QAbstractScrollArearedirectedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractScrollArea_override_virtual_redirected(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractScrollArea_redirected(self: ptr cQAbstractScrollArea, slot: int, offset: pointer): pointer {.exportc: "miqt_exec_callback_QAbstractScrollArea_redirected ".} =
-  type Cb = proc(super: QAbstractScrollArearedirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(offset: gen_qpoint.QPoint): auto =
-    callVirtualBase_redirected(QAbstractScrollArea(h: self), offset)
+  var nimfunc = cast[ptr QAbstractScrollArearedirectedProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: offset)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_sharedPainter(self: QAbstractScrollArea, ): gen_qpainter.QPainter =
-
+proc QAbstractScrollAreasharedPainter*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, ): gen_qpainter.QPainter =
 
   gen_qpainter.QPainter(h: fQAbstractScrollArea_virtualbase_sharedPainter(self.h))
 
-type QAbstractScrollAreasharedPainterBase* = proc(): gen_qpainter.QPainter
-proc onsharedPainter*(self: QAbstractScrollArea, slot: proc(super: QAbstractScrollAreasharedPainterBase): gen_qpainter.QPainter) =
+type QAbstractScrollAreasharedPainterProc* = proc(): gen_qpainter.QPainter
+proc onsharedPainter*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, slot: QAbstractScrollAreasharedPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractScrollAreasharedPainterBase): gen_qpainter.QPainter
-  var tmp = new Cb
+  var tmp = new QAbstractScrollAreasharedPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractScrollArea_override_virtual_sharedPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractScrollArea_sharedPainter(self: ptr cQAbstractScrollArea, slot: int): pointer {.exportc: "miqt_exec_callback_QAbstractScrollArea_sharedPainter ".} =
-  type Cb = proc(super: QAbstractScrollAreasharedPainterBase): gen_qpainter.QPainter
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sharedPainter(QAbstractScrollArea(h: self), )
+  var nimfunc = cast[ptr QAbstractScrollAreasharedPainterProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_inputMethodEvent(self: QAbstractScrollArea, param1: gen_qevent.QInputMethodEvent): void =
-
+proc QAbstractScrollAreainputMethodEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, param1: gen_qevent.QInputMethodEvent): void =
 
   fQAbstractScrollArea_virtualbase_inputMethodEvent(self.h, param1.h)
 
-type QAbstractScrollAreainputMethodEventBase* = proc(param1: gen_qevent.QInputMethodEvent): void
-proc oninputMethodEvent*(self: QAbstractScrollArea, slot: proc(super: QAbstractScrollAreainputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void) =
+type QAbstractScrollAreainputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
+proc oninputMethodEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, slot: QAbstractScrollAreainputMethodEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractScrollAreainputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractScrollAreainputMethodEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractScrollArea_override_virtual_inputMethodEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractScrollArea_inputMethodEvent(self: ptr cQAbstractScrollArea, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QAbstractScrollArea_inputMethodEvent ".} =
-  type Cb = proc(super: QAbstractScrollAreainputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QInputMethodEvent): auto =
-    callVirtualBase_inputMethodEvent(QAbstractScrollArea(h: self), param1)
+  var nimfunc = cast[ptr QAbstractScrollAreainputMethodEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QInputMethodEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_inputMethodQuery(self: QAbstractScrollArea, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant =
-
+  nimfunc[](slotval1)
+proc QAbstractScrollAreainputMethodQuery*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, param1: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQAbstractScrollArea_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
-type QAbstractScrollAreainputMethodQueryBase* = proc(param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-proc oninputMethodQuery*(self: QAbstractScrollArea, slot: proc(super: QAbstractScrollAreainputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant) =
+type QAbstractScrollAreainputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
+proc oninputMethodQuery*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, slot: QAbstractScrollAreainputMethodQueryProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractScrollAreainputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QAbstractScrollAreainputMethodQueryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractScrollArea_override_virtual_inputMethodQuery(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractScrollArea_inputMethodQuery(self: ptr cQAbstractScrollArea, slot: int, param1: cint): pointer {.exportc: "miqt_exec_callback_QAbstractScrollArea_inputMethodQuery ".} =
-  type Cb = proc(super: QAbstractScrollAreainputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qnamespace.InputMethodQuery): auto =
-    callVirtualBase_inputMethodQuery(QAbstractScrollArea(h: self), param1)
-  let slotval1 = gen_qnamespace.InputMethodQuery(param1)
+  var nimfunc = cast[ptr QAbstractScrollAreainputMethodQueryProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_focusNextPrevChild(self: QAbstractScrollArea, next: bool): bool =
-
+proc QAbstractScrollAreafocusNextPrevChild*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, next: bool): bool =
 
   fQAbstractScrollArea_virtualbase_focusNextPrevChild(self.h, next)
 
-type QAbstractScrollAreafocusNextPrevChildBase* = proc(next: bool): bool
-proc onfocusNextPrevChild*(self: QAbstractScrollArea, slot: proc(super: QAbstractScrollAreafocusNextPrevChildBase, next: bool): bool) =
+type QAbstractScrollAreafocusNextPrevChildProc* = proc(next: bool): bool
+proc onfocusNextPrevChild*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, slot: QAbstractScrollAreafocusNextPrevChildProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractScrollAreafocusNextPrevChildBase, next: bool): bool
-  var tmp = new Cb
+  var tmp = new QAbstractScrollAreafocusNextPrevChildProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractScrollArea_override_virtual_focusNextPrevChild(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractScrollArea_focusNextPrevChild(self: ptr cQAbstractScrollArea, slot: int, next: bool): bool {.exportc: "miqt_exec_callback_QAbstractScrollArea_focusNextPrevChild ".} =
-  type Cb = proc(super: QAbstractScrollAreafocusNextPrevChildBase, next: bool): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(next: bool): auto =
-    callVirtualBase_focusNextPrevChild(QAbstractScrollArea(h: self), next)
+  var nimfunc = cast[ptr QAbstractScrollAreafocusNextPrevChildProc](cast[pointer](slot))
   let slotval1 = next
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QAbstractScrollArea, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QAbstractScrollAreatimerEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, event: gen_qcoreevent.QTimerEvent): void =
 
   fQAbstractScrollArea_virtualbase_timerEvent(self.h, event.h)
 
-type QAbstractScrollAreatimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QAbstractScrollArea, slot: proc(super: QAbstractScrollAreatimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QAbstractScrollAreatimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, slot: QAbstractScrollAreatimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractScrollAreatimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractScrollAreatimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractScrollArea_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractScrollArea_timerEvent(self: ptr cQAbstractScrollArea, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAbstractScrollArea_timerEvent ".} =
-  type Cb = proc(super: QAbstractScrollAreatimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QAbstractScrollArea(h: self), event)
+  var nimfunc = cast[ptr QAbstractScrollAreatimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QAbstractScrollArea, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QAbstractScrollAreachildEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, event: gen_qcoreevent.QChildEvent): void =
 
   fQAbstractScrollArea_virtualbase_childEvent(self.h, event.h)
 
-type QAbstractScrollAreachildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QAbstractScrollArea, slot: proc(super: QAbstractScrollAreachildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QAbstractScrollAreachildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, slot: QAbstractScrollAreachildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractScrollAreachildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractScrollAreachildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractScrollArea_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractScrollArea_childEvent(self: ptr cQAbstractScrollArea, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAbstractScrollArea_childEvent ".} =
-  type Cb = proc(super: QAbstractScrollAreachildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QAbstractScrollArea(h: self), event)
+  var nimfunc = cast[ptr QAbstractScrollAreachildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QAbstractScrollArea, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QAbstractScrollAreacustomEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, event: gen_qcoreevent.QEvent): void =
 
   fQAbstractScrollArea_virtualbase_customEvent(self.h, event.h)
 
-type QAbstractScrollAreacustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QAbstractScrollArea, slot: proc(super: QAbstractScrollAreacustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QAbstractScrollAreacustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, slot: QAbstractScrollAreacustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractScrollAreacustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QAbstractScrollAreacustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractScrollArea_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractScrollArea_customEvent(self: ptr cQAbstractScrollArea, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QAbstractScrollArea_customEvent ".} =
-  type Cb = proc(super: QAbstractScrollAreacustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QAbstractScrollArea(h: self), event)
+  var nimfunc = cast[ptr QAbstractScrollAreacustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QAbstractScrollArea, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QAbstractScrollAreaconnectNotify*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQAbstractScrollArea_virtualbase_connectNotify(self.h, signal.h)
 
-type QAbstractScrollAreaconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QAbstractScrollArea, slot: proc(super: QAbstractScrollAreaconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QAbstractScrollAreaconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, slot: QAbstractScrollAreaconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractScrollAreaconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QAbstractScrollAreaconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractScrollArea_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractScrollArea_connectNotify(self: ptr cQAbstractScrollArea, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QAbstractScrollArea_connectNotify ".} =
-  type Cb = proc(super: QAbstractScrollAreaconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QAbstractScrollArea(h: self), signal)
+  var nimfunc = cast[ptr QAbstractScrollAreaconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QAbstractScrollArea, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QAbstractScrollAreadisconnectNotify*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQAbstractScrollArea_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QAbstractScrollAreadisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QAbstractScrollArea, slot: proc(super: QAbstractScrollAreadisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QAbstractScrollAreadisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qabstractscrollarea_types.QAbstractScrollArea, slot: QAbstractScrollAreadisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QAbstractScrollAreadisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QAbstractScrollAreadisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQAbstractScrollArea_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QAbstractScrollArea_disconnectNotify(self: ptr cQAbstractScrollArea, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QAbstractScrollArea_disconnectNotify ".} =
-  type Cb = proc(super: QAbstractScrollAreadisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QAbstractScrollArea(h: self), signal)
+  var nimfunc = cast[ptr QAbstractScrollAreadisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QAbstractScrollArea): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qabstractscrollarea_types.QAbstractScrollArea): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQAbstractScrollArea_staticMetaObject())
-proc delete*(self: QAbstractScrollArea) =
+proc delete*(self: gen_qabstractscrollarea_types.QAbstractScrollArea) =
   fcQAbstractScrollArea_delete(self.h)

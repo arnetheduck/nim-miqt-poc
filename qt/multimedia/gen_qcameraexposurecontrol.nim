@@ -34,20 +34,18 @@ const cflags = gorge("pkg-config -cflags Qt5MultimediaWidgets")
 {.compile("gen_qcameraexposurecontrol.cpp", cflags).}
 
 
-type QCameraExposureControlExposureParameter* = cint
-const
-  QCameraExposureControlISO* = 0
-  QCameraExposureControlAperture* = 1
-  QCameraExposureControlShutterSpeed* = 2
-  QCameraExposureControlExposureCompensation* = 3
-  QCameraExposureControlFlashPower* = 4
-  QCameraExposureControlFlashCompensation* = 5
-  QCameraExposureControlTorchPower* = 6
-  QCameraExposureControlSpotMeteringPoint* = 7
-  QCameraExposureControlExposureMode* = 8
-  QCameraExposureControlMeteringMode* = 9
-  QCameraExposureControlExtendedExposureParameter* = 1000
-
+type QCameraExposureControlExposureParameterEnum* = distinct cint
+template ISO*(_: type QCameraExposureControlExposureParameterEnum): untyped = 0
+template Aperture*(_: type QCameraExposureControlExposureParameterEnum): untyped = 1
+template ShutterSpeed*(_: type QCameraExposureControlExposureParameterEnum): untyped = 2
+template ExposureCompensation*(_: type QCameraExposureControlExposureParameterEnum): untyped = 3
+template FlashPower*(_: type QCameraExposureControlExposureParameterEnum): untyped = 4
+template FlashCompensation*(_: type QCameraExposureControlExposureParameterEnum): untyped = 5
+template TorchPower*(_: type QCameraExposureControlExposureParameterEnum): untyped = 6
+template SpotMeteringPoint*(_: type QCameraExposureControlExposureParameterEnum): untyped = 7
+template ExposureMode*(_: type QCameraExposureControlExposureParameterEnum): untyped = 8
+template MeteringMode*(_: type QCameraExposureControlExposureParameterEnum): untyped = 9
+template ExtendedExposureParameter*(_: type QCameraExposureControlExposureParameterEnum): untyped = 1000
 
 
 import gen_qcameraexposurecontrol_types
@@ -87,51 +85,51 @@ proc fcQCameraExposureControl_staticMetaObject(): pointer {.importc: "QCameraExp
 proc fcQCameraExposureControl_delete(self: pointer) {.importc: "QCameraExposureControl_delete".}
 
 
-func init*(T: type QCameraExposureControl, h: ptr cQCameraExposureControl): QCameraExposureControl =
+func init*(T: type gen_qcameraexposurecontrol_types.QCameraExposureControl, h: ptr cQCameraExposureControl): gen_qcameraexposurecontrol_types.QCameraExposureControl =
   T(h: h)
-proc metaObject*(self: QCameraExposureControl, ): gen_qobjectdefs.QMetaObject =
+proc metaObject*(self: gen_qcameraexposurecontrol_types.QCameraExposureControl, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQCameraExposureControl_metaObject(self.h))
 
-proc metacast*(self: QCameraExposureControl, param1: cstring): pointer =
+proc metacast*(self: gen_qcameraexposurecontrol_types.QCameraExposureControl, param1: cstring): pointer =
 
   fcQCameraExposureControl_metacast(self.h, param1)
 
-proc metacall*(self: QCameraExposureControl, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qcameraexposurecontrol_types.QCameraExposureControl, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQCameraExposureControl_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QCameraExposureControl, s: cstring): string =
+proc tr*(_: type gen_qcameraexposurecontrol_types.QCameraExposureControl, s: cstring): string =
 
   let v_ms = fcQCameraExposureControl_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QCameraExposureControl, s: cstring): string =
+proc trUtf8*(_: type gen_qcameraexposurecontrol_types.QCameraExposureControl, s: cstring): string =
 
   let v_ms = fcQCameraExposureControl_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc isParameterSupported*(self: QCameraExposureControl, parameter: QCameraExposureControlExposureParameter): bool =
+proc isParameterSupported*(self: gen_qcameraexposurecontrol_types.QCameraExposureControl, parameter: cint): bool =
 
   fcQCameraExposureControl_isParameterSupported(self.h, cint(parameter))
 
-proc requestedValue*(self: QCameraExposureControl, parameter: QCameraExposureControlExposureParameter): gen_qvariant.QVariant =
+proc requestedValue*(self: gen_qcameraexposurecontrol_types.QCameraExposureControl, parameter: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fcQCameraExposureControl_requestedValue(self.h, cint(parameter)))
 
-proc actualValue*(self: QCameraExposureControl, parameter: QCameraExposureControlExposureParameter): gen_qvariant.QVariant =
+proc actualValue*(self: gen_qcameraexposurecontrol_types.QCameraExposureControl, parameter: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fcQCameraExposureControl_actualValue(self.h, cint(parameter)))
 
-proc setValue*(self: QCameraExposureControl, parameter: QCameraExposureControlExposureParameter, value: gen_qvariant.QVariant): bool =
+proc setValue*(self: gen_qcameraexposurecontrol_types.QCameraExposureControl, parameter: cint, value: gen_qvariant.QVariant): bool =
 
   fcQCameraExposureControl_setValue(self.h, cint(parameter), value.h)
 
-proc requestedValueChanged*(self: QCameraExposureControl, parameter: cint): void =
+proc requestedValueChanged*(self: gen_qcameraexposurecontrol_types.QCameraExposureControl, parameter: cint): void =
 
   fcQCameraExposureControl_requestedValueChanged(self.h, parameter)
 
@@ -143,13 +141,13 @@ proc miqt_exec_callback_QCameraExposureControl_requestedValueChanged(slot: int, 
 
   nimfunc[](slotval1)
 
-proc onrequestedValueChanged*(self: QCameraExposureControl, slot: proc(parameter: cint)) =
+proc onrequestedValueChanged*(self: gen_qcameraexposurecontrol_types.QCameraExposureControl, slot: proc(parameter: cint)) =
   type Cb = proc(parameter: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQCameraExposureControl_connect_requestedValueChanged(self.h, cast[int](addr tmp[]))
-proc actualValueChanged*(self: QCameraExposureControl, parameter: cint): void =
+proc actualValueChanged*(self: gen_qcameraexposurecontrol_types.QCameraExposureControl, parameter: cint): void =
 
   fcQCameraExposureControl_actualValueChanged(self.h, parameter)
 
@@ -161,13 +159,13 @@ proc miqt_exec_callback_QCameraExposureControl_actualValueChanged(slot: int, par
 
   nimfunc[](slotval1)
 
-proc onactualValueChanged*(self: QCameraExposureControl, slot: proc(parameter: cint)) =
+proc onactualValueChanged*(self: gen_qcameraexposurecontrol_types.QCameraExposureControl, slot: proc(parameter: cint)) =
   type Cb = proc(parameter: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQCameraExposureControl_connect_actualValueChanged(self.h, cast[int](addr tmp[]))
-proc parameterRangeChanged*(self: QCameraExposureControl, parameter: cint): void =
+proc parameterRangeChanged*(self: gen_qcameraexposurecontrol_types.QCameraExposureControl, parameter: cint): void =
 
   fcQCameraExposureControl_parameterRangeChanged(self.h, parameter)
 
@@ -179,41 +177,41 @@ proc miqt_exec_callback_QCameraExposureControl_parameterRangeChanged(slot: int, 
 
   nimfunc[](slotval1)
 
-proc onparameterRangeChanged*(self: QCameraExposureControl, slot: proc(parameter: cint)) =
+proc onparameterRangeChanged*(self: gen_qcameraexposurecontrol_types.QCameraExposureControl, slot: proc(parameter: cint)) =
   type Cb = proc(parameter: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQCameraExposureControl_connect_parameterRangeChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QCameraExposureControl, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qcameraexposurecontrol_types.QCameraExposureControl, s: cstring, c: cstring): string =
 
   let v_ms = fcQCameraExposureControl_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QCameraExposureControl, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qcameraexposurecontrol_types.QCameraExposureControl, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQCameraExposureControl_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QCameraExposureControl, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qcameraexposurecontrol_types.QCameraExposureControl, s: cstring, c: cstring): string =
 
   let v_ms = fcQCameraExposureControl_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QCameraExposureControl, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qcameraexposurecontrol_types.QCameraExposureControl, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQCameraExposureControl_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc staticMetaObject*(_: type QCameraExposureControl): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qcameraexposurecontrol_types.QCameraExposureControl): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQCameraExposureControl_staticMetaObject())
-proc delete*(self: QCameraExposureControl) =
+proc delete*(self: gen_qcameraexposurecontrol_types.QCameraExposureControl) =
   fcQCameraExposureControl_delete(self.h)

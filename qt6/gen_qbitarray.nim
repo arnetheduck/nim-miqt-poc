@@ -37,10 +37,6 @@ const cflags = gorge("pkg-config -cflags Qt6Widgets")
 import gen_qbitarray_types
 export gen_qbitarray_types
 
-import
-  TODO
-export
-  TODO
 
 type cQBitArray*{.exportc: "QBitArray", incompleteStruct.} = object
 type cQBitRef*{.exportc: "QBitRef", incompleteStruct.} = object
@@ -90,171 +86,171 @@ proc fcQBitRef_operatorAssignWithVal(self: pointer, val: bool): void {.importc: 
 proc fcQBitRef_delete(self: pointer) {.importc: "QBitRef_delete".}
 
 
-func init*(T: type QBitArray, h: ptr cQBitArray): QBitArray =
+func init*(T: type gen_qbitarray_types.QBitArray, h: ptr cQBitArray): gen_qbitarray_types.QBitArray =
   T(h: h)
-proc create*(T: type QBitArray, ): QBitArray =
+proc create*(T: type gen_qbitarray_types.QBitArray, ): gen_qbitarray_types.QBitArray =
 
-  QBitArray.init(fcQBitArray_new())
-proc create*(T: type QBitArray, size: int64): QBitArray =
+  gen_qbitarray_types.QBitArray.init(fcQBitArray_new())
+proc create*(T: type gen_qbitarray_types.QBitArray, size: int64): gen_qbitarray_types.QBitArray =
 
-  QBitArray.init(fcQBitArray_new2(size))
-proc create*(T: type QBitArray, other: QBitArray): QBitArray =
+  gen_qbitarray_types.QBitArray.init(fcQBitArray_new2(size))
+proc create*(T: type gen_qbitarray_types.QBitArray, other: gen_qbitarray_types.QBitArray): gen_qbitarray_types.QBitArray =
 
-  QBitArray.init(fcQBitArray_new3(other.h))
-proc create*(T: type QBitArray, size: int64, val: bool): QBitArray =
+  gen_qbitarray_types.QBitArray.init(fcQBitArray_new3(other.h))
+proc create*(T: type gen_qbitarray_types.QBitArray, size: int64, val: bool): gen_qbitarray_types.QBitArray =
 
-  QBitArray.init(fcQBitArray_new4(size, val))
-proc operatorAssign*(self: QBitArray, other: QBitArray): void =
+  gen_qbitarray_types.QBitArray.init(fcQBitArray_new4(size, val))
+proc operatorAssign*(self: gen_qbitarray_types.QBitArray, other: gen_qbitarray_types.QBitArray): void =
 
   fcQBitArray_operatorAssign(self.h, other.h)
 
-proc swap*(self: QBitArray, other: QBitArray): void =
+proc swap*(self: gen_qbitarray_types.QBitArray, other: gen_qbitarray_types.QBitArray): void =
 
   fcQBitArray_swap(self.h, other.h)
 
-proc size*(self: QBitArray, ): int64 =
+proc size*(self: gen_qbitarray_types.QBitArray, ): int64 =
 
   fcQBitArray_size(self.h)
 
-proc count*(self: QBitArray, ): int64 =
+proc count*(self: gen_qbitarray_types.QBitArray, ): int64 =
 
   fcQBitArray_count(self.h)
 
-proc countWithOn*(self: QBitArray, on: bool): int64 =
+proc countWithOn*(self: gen_qbitarray_types.QBitArray, on: bool): int64 =
 
   fcQBitArray_countWithOn(self.h, on)
 
-proc isEmpty*(self: QBitArray, ): bool =
+proc isEmpty*(self: gen_qbitarray_types.QBitArray, ): bool =
 
   fcQBitArray_isEmpty(self.h)
 
-proc isNull*(self: QBitArray, ): bool =
+proc isNull*(self: gen_qbitarray_types.QBitArray, ): bool =
 
   fcQBitArray_isNull(self.h)
 
-proc resize*(self: QBitArray, size: int64): void =
+proc resize*(self: gen_qbitarray_types.QBitArray, size: int64): void =
 
   fcQBitArray_resize(self.h, size)
 
-proc detach*(self: QBitArray, ): void =
+proc detach*(self: gen_qbitarray_types.QBitArray, ): void =
 
   fcQBitArray_detach(self.h)
 
-proc isDetached*(self: QBitArray, ): bool =
+proc isDetached*(self: gen_qbitarray_types.QBitArray, ): bool =
 
   fcQBitArray_isDetached(self.h)
 
-proc clear*(self: QBitArray, ): void =
+proc clear*(self: gen_qbitarray_types.QBitArray, ): void =
 
   fcQBitArray_clear(self.h)
 
-proc testBit*(self: QBitArray, i: int64): bool =
+proc testBit*(self: gen_qbitarray_types.QBitArray, i: int64): bool =
 
   fcQBitArray_testBit(self.h, i)
 
-proc setBit*(self: QBitArray, i: int64): void =
+proc setBit*(self: gen_qbitarray_types.QBitArray, i: int64): void =
 
   fcQBitArray_setBit(self.h, i)
 
-proc setBit2*(self: QBitArray, i: int64, val: bool): void =
+proc setBit2*(self: gen_qbitarray_types.QBitArray, i: int64, val: bool): void =
 
   fcQBitArray_setBit2(self.h, i, val)
 
-proc clearBit*(self: QBitArray, i: int64): void =
+proc clearBit*(self: gen_qbitarray_types.QBitArray, i: int64): void =
 
   fcQBitArray_clearBit(self.h, i)
 
-proc toggleBit*(self: QBitArray, i: int64): bool =
+proc toggleBit*(self: gen_qbitarray_types.QBitArray, i: int64): bool =
 
   fcQBitArray_toggleBit(self.h, i)
 
-proc at*(self: QBitArray, i: int64): bool =
+proc at*(self: gen_qbitarray_types.QBitArray, i: int64): bool =
 
   fcQBitArray_at(self.h, i)
 
-proc operatorSubscript*(self: QBitArray, i: int64): QBitRef =
+proc operatorSubscript*(self: gen_qbitarray_types.QBitArray, i: int64): gen_qbitarray_types.QBitRef =
 
-  QBitRef(h: fcQBitArray_operatorSubscript(self.h, i))
+  gen_qbitarray_types.QBitRef(h: fcQBitArray_operatorSubscript(self.h, i))
 
-proc operatorSubscriptWithQsizetype*(self: QBitArray, i: int64): bool =
+proc operatorSubscriptWithQsizetype*(self: gen_qbitarray_types.QBitArray, i: int64): bool =
 
   fcQBitArray_operatorSubscriptWithQsizetype(self.h, i)
 
-proc operatorBitwiseAndAssign*(self: QBitArray, param1: QBitArray): void =
+proc operatorBitwiseAndAssign*(self: gen_qbitarray_types.QBitArray, param1: gen_qbitarray_types.QBitArray): void =
 
   fcQBitArray_operatorBitwiseAndAssign(self.h, param1.h)
 
-proc operatorBitwiseOrAssign*(self: QBitArray, param1: QBitArray): void =
+proc operatorBitwiseOrAssign*(self: gen_qbitarray_types.QBitArray, param1: gen_qbitarray_types.QBitArray): void =
 
   fcQBitArray_operatorBitwiseOrAssign(self.h, param1.h)
 
-proc operatorBitwiseNotAssign*(self: QBitArray, param1: QBitArray): void =
+proc operatorBitwiseNotAssign*(self: gen_qbitarray_types.QBitArray, param1: gen_qbitarray_types.QBitArray): void =
 
   fcQBitArray_operatorBitwiseNotAssign(self.h, param1.h)
 
-proc operatorEqual*(self: QBitArray, other: QBitArray): bool =
+proc operatorEqual*(self: gen_qbitarray_types.QBitArray, other: gen_qbitarray_types.QBitArray): bool =
 
   fcQBitArray_operatorEqual(self.h, other.h)
 
-proc operatorNotEqual*(self: QBitArray, other: QBitArray): bool =
+proc operatorNotEqual*(self: gen_qbitarray_types.QBitArray, other: gen_qbitarray_types.QBitArray): bool =
 
   fcQBitArray_operatorNotEqual(self.h, other.h)
 
-proc fill*(self: QBitArray, val: bool): bool =
+proc fill*(self: gen_qbitarray_types.QBitArray, val: bool): bool =
 
   fcQBitArray_fill(self.h, val)
 
-proc fill2*(self: QBitArray, val: bool, first: int64, last: int64): void =
+proc fill2*(self: gen_qbitarray_types.QBitArray, val: bool, first: int64, last: int64): void =
 
   fcQBitArray_fill2(self.h, val, first, last)
 
-proc truncate*(self: QBitArray, pos: int64): void =
+proc truncate*(self: gen_qbitarray_types.QBitArray, pos: int64): void =
 
   fcQBitArray_truncate(self.h, pos)
 
-proc bits*(self: QBitArray, ): cstring =
+proc bits*(self: gen_qbitarray_types.QBitArray, ): cstring =
 
   (fcQBitArray_bits(self.h))
 
-proc fromBits*(_: type QBitArray, data: cstring, len: int64): QBitArray =
+proc fromBits*(_: type gen_qbitarray_types.QBitArray, data: cstring, len: int64): gen_qbitarray_types.QBitArray =
 
-  QBitArray(h: fcQBitArray_fromBits(data, len))
+  gen_qbitarray_types.QBitArray(h: fcQBitArray_fromBits(data, len))
 
-proc toUInt32*(self: QBitArray, endianness: TODO.QSysInfoEndian): cuint =
+proc toUInt32*(self: gen_qbitarray_types.QBitArray, endianness: cint): cuint =
 
   fcQBitArray_toUInt32(self.h, cint(endianness))
 
-proc fill22*(self: QBitArray, val: bool, size: int64): bool =
+proc fill22*(self: gen_qbitarray_types.QBitArray, val: bool, size: int64): bool =
 
   fcQBitArray_fill22(self.h, val, size)
 
-proc toUInt322*(self: QBitArray, endianness: TODO.QSysInfoEndian, ok: ptr bool): cuint =
+proc toUInt322*(self: gen_qbitarray_types.QBitArray, endianness: cint, ok: ptr bool): cuint =
 
   fcQBitArray_toUInt322(self.h, cint(endianness), ok)
 
-proc delete*(self: QBitArray) =
+proc delete*(self: gen_qbitarray_types.QBitArray) =
   fcQBitArray_delete(self.h)
 
-func init*(T: type QBitRef, h: ptr cQBitRef): QBitRef =
+func init*(T: type gen_qbitarray_types.QBitRef, h: ptr cQBitRef): gen_qbitarray_types.QBitRef =
   T(h: h)
-proc create*(T: type QBitRef, param1: QBitRef): QBitRef =
+proc create*(T: type gen_qbitarray_types.QBitRef, param1: gen_qbitarray_types.QBitRef): gen_qbitarray_types.QBitRef =
 
-  QBitRef.init(fcQBitRef_new(param1.h))
-proc ToBool*(self: QBitRef, ): bool =
+  gen_qbitarray_types.QBitRef.init(fcQBitRef_new(param1.h))
+proc ToBool*(self: gen_qbitarray_types.QBitRef, ): bool =
 
   fcQBitRef_ToBool(self.h)
 
-proc operatorNot*(self: QBitRef, ): bool =
+proc operatorNot*(self: gen_qbitarray_types.QBitRef, ): bool =
 
   fcQBitRef_operatorNot(self.h)
 
-proc operatorAssign*(self: QBitRef, val: QBitRef): void =
+proc operatorAssign*(self: gen_qbitarray_types.QBitRef, val: gen_qbitarray_types.QBitRef): void =
 
   fcQBitRef_operatorAssign(self.h, val.h)
 
-proc operatorAssignWithVal*(self: QBitRef, val: bool): void =
+proc operatorAssignWithVal*(self: gen_qbitarray_types.QBitRef, val: bool): void =
 
   fcQBitRef_operatorAssignWithVal(self.h, val)
 
-proc delete*(self: QBitRef) =
+proc delete*(self: gen_qbitarray_types.QBitRef) =
   fcQBitRef_delete(self.h)

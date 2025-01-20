@@ -72,55 +72,55 @@ proc fcQMediaGaplessPlaybackControl_staticMetaObject(): pointer {.importc: "QMed
 proc fcQMediaGaplessPlaybackControl_delete(self: pointer) {.importc: "QMediaGaplessPlaybackControl_delete".}
 
 
-func init*(T: type QMediaGaplessPlaybackControl, h: ptr cQMediaGaplessPlaybackControl): QMediaGaplessPlaybackControl =
+func init*(T: type gen_qmediagaplessplaybackcontrol_types.QMediaGaplessPlaybackControl, h: ptr cQMediaGaplessPlaybackControl): gen_qmediagaplessplaybackcontrol_types.QMediaGaplessPlaybackControl =
   T(h: h)
-proc metaObject*(self: QMediaGaplessPlaybackControl, ): gen_qobjectdefs.QMetaObject =
+proc metaObject*(self: gen_qmediagaplessplaybackcontrol_types.QMediaGaplessPlaybackControl, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQMediaGaplessPlaybackControl_metaObject(self.h))
 
-proc metacast*(self: QMediaGaplessPlaybackControl, param1: cstring): pointer =
+proc metacast*(self: gen_qmediagaplessplaybackcontrol_types.QMediaGaplessPlaybackControl, param1: cstring): pointer =
 
   fcQMediaGaplessPlaybackControl_metacast(self.h, param1)
 
-proc metacall*(self: QMediaGaplessPlaybackControl, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qmediagaplessplaybackcontrol_types.QMediaGaplessPlaybackControl, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQMediaGaplessPlaybackControl_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QMediaGaplessPlaybackControl, s: cstring): string =
+proc tr*(_: type gen_qmediagaplessplaybackcontrol_types.QMediaGaplessPlaybackControl, s: cstring): string =
 
   let v_ms = fcQMediaGaplessPlaybackControl_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QMediaGaplessPlaybackControl, s: cstring): string =
+proc trUtf8*(_: type gen_qmediagaplessplaybackcontrol_types.QMediaGaplessPlaybackControl, s: cstring): string =
 
   let v_ms = fcQMediaGaplessPlaybackControl_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc nextMedia*(self: QMediaGaplessPlaybackControl, ): gen_qmediacontent.QMediaContent =
+proc nextMedia*(self: gen_qmediagaplessplaybackcontrol_types.QMediaGaplessPlaybackControl, ): gen_qmediacontent.QMediaContent =
 
   gen_qmediacontent.QMediaContent(h: fcQMediaGaplessPlaybackControl_nextMedia(self.h))
 
-proc setNextMedia*(self: QMediaGaplessPlaybackControl, media: gen_qmediacontent.QMediaContent): void =
+proc setNextMedia*(self: gen_qmediagaplessplaybackcontrol_types.QMediaGaplessPlaybackControl, media: gen_qmediacontent.QMediaContent): void =
 
   fcQMediaGaplessPlaybackControl_setNextMedia(self.h, media.h)
 
-proc isCrossfadeSupported*(self: QMediaGaplessPlaybackControl, ): bool =
+proc isCrossfadeSupported*(self: gen_qmediagaplessplaybackcontrol_types.QMediaGaplessPlaybackControl, ): bool =
 
   fcQMediaGaplessPlaybackControl_isCrossfadeSupported(self.h)
 
-proc crossfadeTime*(self: QMediaGaplessPlaybackControl, ): float64 =
+proc crossfadeTime*(self: gen_qmediagaplessplaybackcontrol_types.QMediaGaplessPlaybackControl, ): float64 =
 
   fcQMediaGaplessPlaybackControl_crossfadeTime(self.h)
 
-proc setCrossfadeTime*(self: QMediaGaplessPlaybackControl, crossfadeTime: float64): void =
+proc setCrossfadeTime*(self: gen_qmediagaplessplaybackcontrol_types.QMediaGaplessPlaybackControl, crossfadeTime: float64): void =
 
   fcQMediaGaplessPlaybackControl_setCrossfadeTime(self.h, crossfadeTime)
 
-proc crossfadeTimeChanged*(self: QMediaGaplessPlaybackControl, crossfadeTime: float64): void =
+proc crossfadeTimeChanged*(self: gen_qmediagaplessplaybackcontrol_types.QMediaGaplessPlaybackControl, crossfadeTime: float64): void =
 
   fcQMediaGaplessPlaybackControl_crossfadeTimeChanged(self.h, crossfadeTime)
 
@@ -132,13 +132,13 @@ proc miqt_exec_callback_QMediaGaplessPlaybackControl_crossfadeTimeChanged(slot: 
 
   nimfunc[](slotval1)
 
-proc oncrossfadeTimeChanged*(self: QMediaGaplessPlaybackControl, slot: proc(crossfadeTime: float64)) =
+proc oncrossfadeTimeChanged*(self: gen_qmediagaplessplaybackcontrol_types.QMediaGaplessPlaybackControl, slot: proc(crossfadeTime: float64)) =
   type Cb = proc(crossfadeTime: float64)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQMediaGaplessPlaybackControl_connect_crossfadeTimeChanged(self.h, cast[int](addr tmp[]))
-proc nextMediaChanged*(self: QMediaGaplessPlaybackControl, media: gen_qmediacontent.QMediaContent): void =
+proc nextMediaChanged*(self: gen_qmediagaplessplaybackcontrol_types.QMediaGaplessPlaybackControl, media: gen_qmediacontent.QMediaContent): void =
 
   fcQMediaGaplessPlaybackControl_nextMediaChanged(self.h, media.h)
 
@@ -150,13 +150,13 @@ proc miqt_exec_callback_QMediaGaplessPlaybackControl_nextMediaChanged(slot: int,
 
   nimfunc[](slotval1)
 
-proc onnextMediaChanged*(self: QMediaGaplessPlaybackControl, slot: proc(media: gen_qmediacontent.QMediaContent)) =
+proc onnextMediaChanged*(self: gen_qmediagaplessplaybackcontrol_types.QMediaGaplessPlaybackControl, slot: proc(media: gen_qmediacontent.QMediaContent)) =
   type Cb = proc(media: gen_qmediacontent.QMediaContent)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQMediaGaplessPlaybackControl_connect_nextMediaChanged(self.h, cast[int](addr tmp[]))
-proc advancedToNextMedia*(self: QMediaGaplessPlaybackControl, ): void =
+proc advancedToNextMedia*(self: gen_qmediagaplessplaybackcontrol_types.QMediaGaplessPlaybackControl, ): void =
 
   fcQMediaGaplessPlaybackControl_advancedToNextMedia(self.h)
 
@@ -166,41 +166,41 @@ proc miqt_exec_callback_QMediaGaplessPlaybackControl_advancedToNextMedia(slot: i
 
   nimfunc[]()
 
-proc onadvancedToNextMedia*(self: QMediaGaplessPlaybackControl, slot: proc()) =
+proc onadvancedToNextMedia*(self: gen_qmediagaplessplaybackcontrol_types.QMediaGaplessPlaybackControl, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQMediaGaplessPlaybackControl_connect_advancedToNextMedia(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QMediaGaplessPlaybackControl, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qmediagaplessplaybackcontrol_types.QMediaGaplessPlaybackControl, s: cstring, c: cstring): string =
 
   let v_ms = fcQMediaGaplessPlaybackControl_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QMediaGaplessPlaybackControl, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qmediagaplessplaybackcontrol_types.QMediaGaplessPlaybackControl, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQMediaGaplessPlaybackControl_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QMediaGaplessPlaybackControl, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qmediagaplessplaybackcontrol_types.QMediaGaplessPlaybackControl, s: cstring, c: cstring): string =
 
   let v_ms = fcQMediaGaplessPlaybackControl_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QMediaGaplessPlaybackControl, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qmediagaplessplaybackcontrol_types.QMediaGaplessPlaybackControl, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQMediaGaplessPlaybackControl_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc staticMetaObject*(_: type QMediaGaplessPlaybackControl): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qmediagaplessplaybackcontrol_types.QMediaGaplessPlaybackControl): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQMediaGaplessPlaybackControl_staticMetaObject())
-proc delete*(self: QMediaGaplessPlaybackControl) =
+proc delete*(self: gen_qmediagaplessplaybackcontrol_types.QMediaGaplessPlaybackControl) =
   fcQMediaGaplessPlaybackControl_delete(self.h)

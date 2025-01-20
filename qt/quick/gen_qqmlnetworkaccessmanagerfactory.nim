@@ -51,15 +51,15 @@ proc fcQQmlNetworkAccessManagerFactory_operatorAssign(self: pointer, param1: poi
 proc fcQQmlNetworkAccessManagerFactory_delete(self: pointer) {.importc: "QQmlNetworkAccessManagerFactory_delete".}
 
 
-func init*(T: type QQmlNetworkAccessManagerFactory, h: ptr cQQmlNetworkAccessManagerFactory): QQmlNetworkAccessManagerFactory =
+func init*(T: type gen_qqmlnetworkaccessmanagerfactory_types.QQmlNetworkAccessManagerFactory, h: ptr cQQmlNetworkAccessManagerFactory): gen_qqmlnetworkaccessmanagerfactory_types.QQmlNetworkAccessManagerFactory =
   T(h: h)
-proc create*(self: QQmlNetworkAccessManagerFactory, parent: gen_qobject.QObject): gen_qnetworkaccessmanager.QNetworkAccessManager =
+proc create*(self: gen_qqmlnetworkaccessmanagerfactory_types.QQmlNetworkAccessManagerFactory, parent: gen_qobject.QObject): gen_qnetworkaccessmanager.QNetworkAccessManager =
 
   gen_qnetworkaccessmanager.QNetworkAccessManager(h: fcQQmlNetworkAccessManagerFactory_create(self.h, parent.h))
 
-proc operatorAssign*(self: QQmlNetworkAccessManagerFactory, param1: QQmlNetworkAccessManagerFactory): void =
+proc operatorAssign*(self: gen_qqmlnetworkaccessmanagerfactory_types.QQmlNetworkAccessManagerFactory, param1: gen_qqmlnetworkaccessmanagerfactory_types.QQmlNetworkAccessManagerFactory): void =
 
   fcQQmlNetworkAccessManagerFactory_operatorAssign(self.h, param1.h)
 
-proc delete*(self: QQmlNetworkAccessManagerFactory) =
+proc delete*(self: gen_qqmlnetworkaccessmanagerfactory_types.QQmlNetworkAccessManagerFactory) =
   fcQQmlNetworkAccessManagerFactory_delete(self.h)

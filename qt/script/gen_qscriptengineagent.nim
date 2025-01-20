@@ -34,10 +34,8 @@ const cflags = gorge("pkg-config -cflags Qt5Script")
 {.compile("gen_qscriptengineagent.cpp", cflags).}
 
 
-type QScriptEngineAgentExtension* = cint
-const
-  QScriptEngineAgentDebuggerInvocationRequest* = 0
-
+type QScriptEngineAgentExtensionEnum* = distinct cint
+template DebuggerInvocationRequest*(_: type QScriptEngineAgentExtensionEnum): untyped = 0
 
 
 import gen_qscriptengineagent_types
@@ -92,78 +90,73 @@ proc fcQScriptEngineAgent_override_virtual_extension(self: pointer, slot: int) {
 proc fcQScriptEngineAgent_delete(self: pointer) {.importc: "QScriptEngineAgent_delete".}
 
 
-func init*(T: type QScriptEngineAgent, h: ptr cQScriptEngineAgent): QScriptEngineAgent =
+func init*(T: type gen_qscriptengineagent_types.QScriptEngineAgent, h: ptr cQScriptEngineAgent): gen_qscriptengineagent_types.QScriptEngineAgent =
   T(h: h)
-proc create*(T: type QScriptEngineAgent, engine: gen_qscriptengine.QScriptEngine): QScriptEngineAgent =
+proc create*(T: type gen_qscriptengineagent_types.QScriptEngineAgent, engine: gen_qscriptengine.QScriptEngine): gen_qscriptengineagent_types.QScriptEngineAgent =
 
-  QScriptEngineAgent.init(fcQScriptEngineAgent_new(engine.h))
-proc scriptLoad*(self: QScriptEngineAgent, id: clonglong, program: string, fileName: string, baseLineNumber: cint): void =
+  gen_qscriptengineagent_types.QScriptEngineAgent.init(fcQScriptEngineAgent_new(engine.h))
+proc scriptLoad*(self: gen_qscriptengineagent_types.QScriptEngineAgent, id: clonglong, program: string, fileName: string, baseLineNumber: cint): void =
 
   fcQScriptEngineAgent_scriptLoad(self.h, id, struct_miqt_string(data: program, len: csize_t(len(program))), struct_miqt_string(data: fileName, len: csize_t(len(fileName))), baseLineNumber)
 
-proc scriptUnload*(self: QScriptEngineAgent, id: clonglong): void =
+proc scriptUnload*(self: gen_qscriptengineagent_types.QScriptEngineAgent, id: clonglong): void =
 
   fcQScriptEngineAgent_scriptUnload(self.h, id)
 
-proc contextPush*(self: QScriptEngineAgent, ): void =
+proc contextPush*(self: gen_qscriptengineagent_types.QScriptEngineAgent, ): void =
 
   fcQScriptEngineAgent_contextPush(self.h)
 
-proc contextPop*(self: QScriptEngineAgent, ): void =
+proc contextPop*(self: gen_qscriptengineagent_types.QScriptEngineAgent, ): void =
 
   fcQScriptEngineAgent_contextPop(self.h)
 
-proc functionEntry*(self: QScriptEngineAgent, scriptId: clonglong): void =
+proc functionEntry*(self: gen_qscriptengineagent_types.QScriptEngineAgent, scriptId: clonglong): void =
 
   fcQScriptEngineAgent_functionEntry(self.h, scriptId)
 
-proc functionExit*(self: QScriptEngineAgent, scriptId: clonglong, returnValue: gen_qscriptvalue.QScriptValue): void =
+proc functionExit*(self: gen_qscriptengineagent_types.QScriptEngineAgent, scriptId: clonglong, returnValue: gen_qscriptvalue.QScriptValue): void =
 
   fcQScriptEngineAgent_functionExit(self.h, scriptId, returnValue.h)
 
-proc positionChange*(self: QScriptEngineAgent, scriptId: clonglong, lineNumber: cint, columnNumber: cint): void =
+proc positionChange*(self: gen_qscriptengineagent_types.QScriptEngineAgent, scriptId: clonglong, lineNumber: cint, columnNumber: cint): void =
 
   fcQScriptEngineAgent_positionChange(self.h, scriptId, lineNumber, columnNumber)
 
-proc exceptionThrow*(self: QScriptEngineAgent, scriptId: clonglong, exception: gen_qscriptvalue.QScriptValue, hasHandler: bool): void =
+proc exceptionThrow*(self: gen_qscriptengineagent_types.QScriptEngineAgent, scriptId: clonglong, exception: gen_qscriptvalue.QScriptValue, hasHandler: bool): void =
 
   fcQScriptEngineAgent_exceptionThrow(self.h, scriptId, exception.h, hasHandler)
 
-proc exceptionCatch*(self: QScriptEngineAgent, scriptId: clonglong, exception: gen_qscriptvalue.QScriptValue): void =
+proc exceptionCatch*(self: gen_qscriptengineagent_types.QScriptEngineAgent, scriptId: clonglong, exception: gen_qscriptvalue.QScriptValue): void =
 
   fcQScriptEngineAgent_exceptionCatch(self.h, scriptId, exception.h)
 
-proc supportsExtension*(self: QScriptEngineAgent, extension: QScriptEngineAgentExtension): bool =
+proc supportsExtension*(self: gen_qscriptengineagent_types.QScriptEngineAgent, extension: cint): bool =
 
   fcQScriptEngineAgent_supportsExtension(self.h, cint(extension))
 
-proc extension*(self: QScriptEngineAgent, extension: QScriptEngineAgentExtension, argument: gen_qvariant.QVariant): gen_qvariant.QVariant =
+proc extension*(self: gen_qscriptengineagent_types.QScriptEngineAgent, extension: cint, argument: gen_qvariant.QVariant): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fcQScriptEngineAgent_extension(self.h, cint(extension), argument.h))
 
-proc engine*(self: QScriptEngineAgent, ): gen_qscriptengine.QScriptEngine =
+proc engine*(self: gen_qscriptengineagent_types.QScriptEngineAgent, ): gen_qscriptengine.QScriptEngine =
 
   gen_qscriptengine.QScriptEngine(h: fcQScriptEngineAgent_engine(self.h))
 
-proc callVirtualBase_scriptLoad(self: QScriptEngineAgent, id: clonglong, program: string, fileName: string, baseLineNumber: cint): void =
-
+proc QScriptEngineAgentscriptLoad*(self: gen_qscriptengineagent_types.QScriptEngineAgent, id: clonglong, program: string, fileName: string, baseLineNumber: cint): void =
 
   fQScriptEngineAgent_virtualbase_scriptLoad(self.h, id, struct_miqt_string(data: program, len: csize_t(len(program))), struct_miqt_string(data: fileName, len: csize_t(len(fileName))), baseLineNumber)
 
-type QScriptEngineAgentscriptLoadBase* = proc(id: clonglong, program: string, fileName: string, baseLineNumber: cint): void
-proc onscriptLoad*(self: QScriptEngineAgent, slot: proc(super: QScriptEngineAgentscriptLoadBase, id: clonglong, program: string, fileName: string, baseLineNumber: cint): void) =
+type QScriptEngineAgentscriptLoadProc* = proc(id: clonglong, program: string, fileName: string, baseLineNumber: cint): void
+proc onscriptLoad*(self: gen_qscriptengineagent_types.QScriptEngineAgent, slot: QScriptEngineAgentscriptLoadProc) =
   # TODO check subclass
-  type Cb = proc(super: QScriptEngineAgentscriptLoadBase, id: clonglong, program: string, fileName: string, baseLineNumber: cint): void
-  var tmp = new Cb
+  var tmp = new QScriptEngineAgentscriptLoadProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScriptEngineAgent_override_virtual_scriptLoad(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScriptEngineAgent_scriptLoad(self: ptr cQScriptEngineAgent, slot: int, id: clonglong, program: struct_miqt_string, fileName: struct_miqt_string, baseLineNumber: cint): void {.exportc: "miqt_exec_callback_QScriptEngineAgent_scriptLoad ".} =
-  type Cb = proc(super: QScriptEngineAgentscriptLoadBase, id: clonglong, program: string, fileName: string, baseLineNumber: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(id: clonglong, program: string, fileName: string, baseLineNumber: cint): auto =
-    callVirtualBase_scriptLoad(QScriptEngineAgent(h: self), id, program, fileName, baseLineNumber)
+  var nimfunc = cast[ptr QScriptEngineAgentscriptLoadProc](cast[pointer](slot))
   let slotval1 = id
 
   let vprogram_ms = program
@@ -179,139 +172,109 @@ proc miqt_exec_callback_QScriptEngineAgent_scriptLoad(self: ptr cQScriptEngineAg
   let slotval4 = baseLineNumber
 
 
-  nimfunc[](superCall, slotval1, slotval2, slotval3, slotval4)
-proc callVirtualBase_scriptUnload(self: QScriptEngineAgent, id: clonglong): void =
-
+  nimfunc[](slotval1, slotval2, slotval3, slotval4)
+proc QScriptEngineAgentscriptUnload*(self: gen_qscriptengineagent_types.QScriptEngineAgent, id: clonglong): void =
 
   fQScriptEngineAgent_virtualbase_scriptUnload(self.h, id)
 
-type QScriptEngineAgentscriptUnloadBase* = proc(id: clonglong): void
-proc onscriptUnload*(self: QScriptEngineAgent, slot: proc(super: QScriptEngineAgentscriptUnloadBase, id: clonglong): void) =
+type QScriptEngineAgentscriptUnloadProc* = proc(id: clonglong): void
+proc onscriptUnload*(self: gen_qscriptengineagent_types.QScriptEngineAgent, slot: QScriptEngineAgentscriptUnloadProc) =
   # TODO check subclass
-  type Cb = proc(super: QScriptEngineAgentscriptUnloadBase, id: clonglong): void
-  var tmp = new Cb
+  var tmp = new QScriptEngineAgentscriptUnloadProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScriptEngineAgent_override_virtual_scriptUnload(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScriptEngineAgent_scriptUnload(self: ptr cQScriptEngineAgent, slot: int, id: clonglong): void {.exportc: "miqt_exec_callback_QScriptEngineAgent_scriptUnload ".} =
-  type Cb = proc(super: QScriptEngineAgentscriptUnloadBase, id: clonglong): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(id: clonglong): auto =
-    callVirtualBase_scriptUnload(QScriptEngineAgent(h: self), id)
+  var nimfunc = cast[ptr QScriptEngineAgentscriptUnloadProc](cast[pointer](slot))
   let slotval1 = id
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_contextPush(self: QScriptEngineAgent, ): void =
-
+  nimfunc[](slotval1)
+proc QScriptEngineAgentcontextPush*(self: gen_qscriptengineagent_types.QScriptEngineAgent, ): void =
 
   fQScriptEngineAgent_virtualbase_contextPush(self.h)
 
-type QScriptEngineAgentcontextPushBase* = proc(): void
-proc oncontextPush*(self: QScriptEngineAgent, slot: proc(super: QScriptEngineAgentcontextPushBase): void) =
+type QScriptEngineAgentcontextPushProc* = proc(): void
+proc oncontextPush*(self: gen_qscriptengineagent_types.QScriptEngineAgent, slot: QScriptEngineAgentcontextPushProc) =
   # TODO check subclass
-  type Cb = proc(super: QScriptEngineAgentcontextPushBase): void
-  var tmp = new Cb
+  var tmp = new QScriptEngineAgentcontextPushProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScriptEngineAgent_override_virtual_contextPush(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScriptEngineAgent_contextPush(self: ptr cQScriptEngineAgent, slot: int): void {.exportc: "miqt_exec_callback_QScriptEngineAgent_contextPush ".} =
-  type Cb = proc(super: QScriptEngineAgentcontextPushBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_contextPush(QScriptEngineAgent(h: self), )
+  var nimfunc = cast[ptr QScriptEngineAgentcontextPushProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_contextPop(self: QScriptEngineAgent, ): void =
-
+  nimfunc[]()
+proc QScriptEngineAgentcontextPop*(self: gen_qscriptengineagent_types.QScriptEngineAgent, ): void =
 
   fQScriptEngineAgent_virtualbase_contextPop(self.h)
 
-type QScriptEngineAgentcontextPopBase* = proc(): void
-proc oncontextPop*(self: QScriptEngineAgent, slot: proc(super: QScriptEngineAgentcontextPopBase): void) =
+type QScriptEngineAgentcontextPopProc* = proc(): void
+proc oncontextPop*(self: gen_qscriptengineagent_types.QScriptEngineAgent, slot: QScriptEngineAgentcontextPopProc) =
   # TODO check subclass
-  type Cb = proc(super: QScriptEngineAgentcontextPopBase): void
-  var tmp = new Cb
+  var tmp = new QScriptEngineAgentcontextPopProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScriptEngineAgent_override_virtual_contextPop(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScriptEngineAgent_contextPop(self: ptr cQScriptEngineAgent, slot: int): void {.exportc: "miqt_exec_callback_QScriptEngineAgent_contextPop ".} =
-  type Cb = proc(super: QScriptEngineAgentcontextPopBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_contextPop(QScriptEngineAgent(h: self), )
+  var nimfunc = cast[ptr QScriptEngineAgentcontextPopProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_functionEntry(self: QScriptEngineAgent, scriptId: clonglong): void =
-
+  nimfunc[]()
+proc QScriptEngineAgentfunctionEntry*(self: gen_qscriptengineagent_types.QScriptEngineAgent, scriptId: clonglong): void =
 
   fQScriptEngineAgent_virtualbase_functionEntry(self.h, scriptId)
 
-type QScriptEngineAgentfunctionEntryBase* = proc(scriptId: clonglong): void
-proc onfunctionEntry*(self: QScriptEngineAgent, slot: proc(super: QScriptEngineAgentfunctionEntryBase, scriptId: clonglong): void) =
+type QScriptEngineAgentfunctionEntryProc* = proc(scriptId: clonglong): void
+proc onfunctionEntry*(self: gen_qscriptengineagent_types.QScriptEngineAgent, slot: QScriptEngineAgentfunctionEntryProc) =
   # TODO check subclass
-  type Cb = proc(super: QScriptEngineAgentfunctionEntryBase, scriptId: clonglong): void
-  var tmp = new Cb
+  var tmp = new QScriptEngineAgentfunctionEntryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScriptEngineAgent_override_virtual_functionEntry(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScriptEngineAgent_functionEntry(self: ptr cQScriptEngineAgent, slot: int, scriptId: clonglong): void {.exportc: "miqt_exec_callback_QScriptEngineAgent_functionEntry ".} =
-  type Cb = proc(super: QScriptEngineAgentfunctionEntryBase, scriptId: clonglong): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(scriptId: clonglong): auto =
-    callVirtualBase_functionEntry(QScriptEngineAgent(h: self), scriptId)
+  var nimfunc = cast[ptr QScriptEngineAgentfunctionEntryProc](cast[pointer](slot))
   let slotval1 = scriptId
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_functionExit(self: QScriptEngineAgent, scriptId: clonglong, returnValue: gen_qscriptvalue.QScriptValue): void =
-
+  nimfunc[](slotval1)
+proc QScriptEngineAgentfunctionExit*(self: gen_qscriptengineagent_types.QScriptEngineAgent, scriptId: clonglong, returnValue: gen_qscriptvalue.QScriptValue): void =
 
   fQScriptEngineAgent_virtualbase_functionExit(self.h, scriptId, returnValue.h)
 
-type QScriptEngineAgentfunctionExitBase* = proc(scriptId: clonglong, returnValue: gen_qscriptvalue.QScriptValue): void
-proc onfunctionExit*(self: QScriptEngineAgent, slot: proc(super: QScriptEngineAgentfunctionExitBase, scriptId: clonglong, returnValue: gen_qscriptvalue.QScriptValue): void) =
+type QScriptEngineAgentfunctionExitProc* = proc(scriptId: clonglong, returnValue: gen_qscriptvalue.QScriptValue): void
+proc onfunctionExit*(self: gen_qscriptengineagent_types.QScriptEngineAgent, slot: QScriptEngineAgentfunctionExitProc) =
   # TODO check subclass
-  type Cb = proc(super: QScriptEngineAgentfunctionExitBase, scriptId: clonglong, returnValue: gen_qscriptvalue.QScriptValue): void
-  var tmp = new Cb
+  var tmp = new QScriptEngineAgentfunctionExitProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScriptEngineAgent_override_virtual_functionExit(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScriptEngineAgent_functionExit(self: ptr cQScriptEngineAgent, slot: int, scriptId: clonglong, returnValue: pointer): void {.exportc: "miqt_exec_callback_QScriptEngineAgent_functionExit ".} =
-  type Cb = proc(super: QScriptEngineAgentfunctionExitBase, scriptId: clonglong, returnValue: gen_qscriptvalue.QScriptValue): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(scriptId: clonglong, returnValue: gen_qscriptvalue.QScriptValue): auto =
-    callVirtualBase_functionExit(QScriptEngineAgent(h: self), scriptId, returnValue)
+  var nimfunc = cast[ptr QScriptEngineAgentfunctionExitProc](cast[pointer](slot))
   let slotval1 = scriptId
 
   let slotval2 = gen_qscriptvalue.QScriptValue(h: returnValue)
 
 
-  nimfunc[](superCall, slotval1, slotval2)
-proc callVirtualBase_positionChange(self: QScriptEngineAgent, scriptId: clonglong, lineNumber: cint, columnNumber: cint): void =
-
+  nimfunc[](slotval1, slotval2)
+proc QScriptEngineAgentpositionChange*(self: gen_qscriptengineagent_types.QScriptEngineAgent, scriptId: clonglong, lineNumber: cint, columnNumber: cint): void =
 
   fQScriptEngineAgent_virtualbase_positionChange(self.h, scriptId, lineNumber, columnNumber)
 
-type QScriptEngineAgentpositionChangeBase* = proc(scriptId: clonglong, lineNumber: cint, columnNumber: cint): void
-proc onpositionChange*(self: QScriptEngineAgent, slot: proc(super: QScriptEngineAgentpositionChangeBase, scriptId: clonglong, lineNumber: cint, columnNumber: cint): void) =
+type QScriptEngineAgentpositionChangeProc* = proc(scriptId: clonglong, lineNumber: cint, columnNumber: cint): void
+proc onpositionChange*(self: gen_qscriptengineagent_types.QScriptEngineAgent, slot: QScriptEngineAgentpositionChangeProc) =
   # TODO check subclass
-  type Cb = proc(super: QScriptEngineAgentpositionChangeBase, scriptId: clonglong, lineNumber: cint, columnNumber: cint): void
-  var tmp = new Cb
+  var tmp = new QScriptEngineAgentpositionChangeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScriptEngineAgent_override_virtual_positionChange(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScriptEngineAgent_positionChange(self: ptr cQScriptEngineAgent, slot: int, scriptId: clonglong, lineNumber: cint, columnNumber: cint): void {.exportc: "miqt_exec_callback_QScriptEngineAgent_positionChange ".} =
-  type Cb = proc(super: QScriptEngineAgentpositionChangeBase, scriptId: clonglong, lineNumber: cint, columnNumber: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(scriptId: clonglong, lineNumber: cint, columnNumber: cint): auto =
-    callVirtualBase_positionChange(QScriptEngineAgent(h: self), scriptId, lineNumber, columnNumber)
+  var nimfunc = cast[ptr QScriptEngineAgentpositionChangeProc](cast[pointer](slot))
   let slotval1 = scriptId
 
   let slotval2 = lineNumber
@@ -319,26 +282,21 @@ proc miqt_exec_callback_QScriptEngineAgent_positionChange(self: ptr cQScriptEngi
   let slotval3 = columnNumber
 
 
-  nimfunc[](superCall, slotval1, slotval2, slotval3)
-proc callVirtualBase_exceptionThrow(self: QScriptEngineAgent, scriptId: clonglong, exception: gen_qscriptvalue.QScriptValue, hasHandler: bool): void =
-
+  nimfunc[](slotval1, slotval2, slotval3)
+proc QScriptEngineAgentexceptionThrow*(self: gen_qscriptengineagent_types.QScriptEngineAgent, scriptId: clonglong, exception: gen_qscriptvalue.QScriptValue, hasHandler: bool): void =
 
   fQScriptEngineAgent_virtualbase_exceptionThrow(self.h, scriptId, exception.h, hasHandler)
 
-type QScriptEngineAgentexceptionThrowBase* = proc(scriptId: clonglong, exception: gen_qscriptvalue.QScriptValue, hasHandler: bool): void
-proc onexceptionThrow*(self: QScriptEngineAgent, slot: proc(super: QScriptEngineAgentexceptionThrowBase, scriptId: clonglong, exception: gen_qscriptvalue.QScriptValue, hasHandler: bool): void) =
+type QScriptEngineAgentexceptionThrowProc* = proc(scriptId: clonglong, exception: gen_qscriptvalue.QScriptValue, hasHandler: bool): void
+proc onexceptionThrow*(self: gen_qscriptengineagent_types.QScriptEngineAgent, slot: QScriptEngineAgentexceptionThrowProc) =
   # TODO check subclass
-  type Cb = proc(super: QScriptEngineAgentexceptionThrowBase, scriptId: clonglong, exception: gen_qscriptvalue.QScriptValue, hasHandler: bool): void
-  var tmp = new Cb
+  var tmp = new QScriptEngineAgentexceptionThrowProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScriptEngineAgent_override_virtual_exceptionThrow(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScriptEngineAgent_exceptionThrow(self: ptr cQScriptEngineAgent, slot: int, scriptId: clonglong, exception: pointer, hasHandler: bool): void {.exportc: "miqt_exec_callback_QScriptEngineAgent_exceptionThrow ".} =
-  type Cb = proc(super: QScriptEngineAgentexceptionThrowBase, scriptId: clonglong, exception: gen_qscriptvalue.QScriptValue, hasHandler: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(scriptId: clonglong, exception: gen_qscriptvalue.QScriptValue, hasHandler: bool): auto =
-    callVirtualBase_exceptionThrow(QScriptEngineAgent(h: self), scriptId, exception, hasHandler)
+  var nimfunc = cast[ptr QScriptEngineAgentexceptionThrowProc](cast[pointer](slot))
   let slotval1 = scriptId
 
   let slotval2 = gen_qscriptvalue.QScriptValue(h: exception)
@@ -346,83 +304,68 @@ proc miqt_exec_callback_QScriptEngineAgent_exceptionThrow(self: ptr cQScriptEngi
   let slotval3 = hasHandler
 
 
-  nimfunc[](superCall, slotval1, slotval2, slotval3)
-proc callVirtualBase_exceptionCatch(self: QScriptEngineAgent, scriptId: clonglong, exception: gen_qscriptvalue.QScriptValue): void =
-
+  nimfunc[](slotval1, slotval2, slotval3)
+proc QScriptEngineAgentexceptionCatch*(self: gen_qscriptengineagent_types.QScriptEngineAgent, scriptId: clonglong, exception: gen_qscriptvalue.QScriptValue): void =
 
   fQScriptEngineAgent_virtualbase_exceptionCatch(self.h, scriptId, exception.h)
 
-type QScriptEngineAgentexceptionCatchBase* = proc(scriptId: clonglong, exception: gen_qscriptvalue.QScriptValue): void
-proc onexceptionCatch*(self: QScriptEngineAgent, slot: proc(super: QScriptEngineAgentexceptionCatchBase, scriptId: clonglong, exception: gen_qscriptvalue.QScriptValue): void) =
+type QScriptEngineAgentexceptionCatchProc* = proc(scriptId: clonglong, exception: gen_qscriptvalue.QScriptValue): void
+proc onexceptionCatch*(self: gen_qscriptengineagent_types.QScriptEngineAgent, slot: QScriptEngineAgentexceptionCatchProc) =
   # TODO check subclass
-  type Cb = proc(super: QScriptEngineAgentexceptionCatchBase, scriptId: clonglong, exception: gen_qscriptvalue.QScriptValue): void
-  var tmp = new Cb
+  var tmp = new QScriptEngineAgentexceptionCatchProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScriptEngineAgent_override_virtual_exceptionCatch(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScriptEngineAgent_exceptionCatch(self: ptr cQScriptEngineAgent, slot: int, scriptId: clonglong, exception: pointer): void {.exportc: "miqt_exec_callback_QScriptEngineAgent_exceptionCatch ".} =
-  type Cb = proc(super: QScriptEngineAgentexceptionCatchBase, scriptId: clonglong, exception: gen_qscriptvalue.QScriptValue): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(scriptId: clonglong, exception: gen_qscriptvalue.QScriptValue): auto =
-    callVirtualBase_exceptionCatch(QScriptEngineAgent(h: self), scriptId, exception)
+  var nimfunc = cast[ptr QScriptEngineAgentexceptionCatchProc](cast[pointer](slot))
   let slotval1 = scriptId
 
   let slotval2 = gen_qscriptvalue.QScriptValue(h: exception)
 
 
-  nimfunc[](superCall, slotval1, slotval2)
-proc callVirtualBase_supportsExtension(self: QScriptEngineAgent, extension: QScriptEngineAgentExtension): bool =
-
+  nimfunc[](slotval1, slotval2)
+proc QScriptEngineAgentsupportsExtension*(self: gen_qscriptengineagent_types.QScriptEngineAgent, extension: cint): bool =
 
   fQScriptEngineAgent_virtualbase_supportsExtension(self.h, cint(extension))
 
-type QScriptEngineAgentsupportsExtensionBase* = proc(extension: QScriptEngineAgentExtension): bool
-proc onsupportsExtension*(self: QScriptEngineAgent, slot: proc(super: QScriptEngineAgentsupportsExtensionBase, extension: QScriptEngineAgentExtension): bool) =
+type QScriptEngineAgentsupportsExtensionProc* = proc(extension: cint): bool
+proc onsupportsExtension*(self: gen_qscriptengineagent_types.QScriptEngineAgent, slot: QScriptEngineAgentsupportsExtensionProc) =
   # TODO check subclass
-  type Cb = proc(super: QScriptEngineAgentsupportsExtensionBase, extension: QScriptEngineAgentExtension): bool
-  var tmp = new Cb
+  var tmp = new QScriptEngineAgentsupportsExtensionProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScriptEngineAgent_override_virtual_supportsExtension(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScriptEngineAgent_supportsExtension(self: ptr cQScriptEngineAgent, slot: int, extension: cint): bool {.exportc: "miqt_exec_callback_QScriptEngineAgent_supportsExtension ".} =
-  type Cb = proc(super: QScriptEngineAgentsupportsExtensionBase, extension: QScriptEngineAgentExtension): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(extension: QScriptEngineAgentExtension): auto =
-    callVirtualBase_supportsExtension(QScriptEngineAgent(h: self), extension)
-  let slotval1 = QScriptEngineAgentExtension(extension)
+  var nimfunc = cast[ptr QScriptEngineAgentsupportsExtensionProc](cast[pointer](slot))
+  let slotval1 = cint(extension)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_extension(self: QScriptEngineAgent, extension: QScriptEngineAgentExtension, argument: gen_qvariant.QVariant): gen_qvariant.QVariant =
-
+proc QScriptEngineAgentextension*(self: gen_qscriptengineagent_types.QScriptEngineAgent, extension: cint, argument: gen_qvariant.QVariant): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQScriptEngineAgent_virtualbase_extension(self.h, cint(extension), argument.h))
 
-type QScriptEngineAgentextensionBase* = proc(extension: QScriptEngineAgentExtension, argument: gen_qvariant.QVariant): gen_qvariant.QVariant
-proc onextension*(self: QScriptEngineAgent, slot: proc(super: QScriptEngineAgentextensionBase, extension: QScriptEngineAgentExtension, argument: gen_qvariant.QVariant): gen_qvariant.QVariant) =
+type QScriptEngineAgentextensionProc* = proc(extension: cint, argument: gen_qvariant.QVariant): gen_qvariant.QVariant
+proc onextension*(self: gen_qscriptengineagent_types.QScriptEngineAgent, slot: QScriptEngineAgentextensionProc) =
   # TODO check subclass
-  type Cb = proc(super: QScriptEngineAgentextensionBase, extension: QScriptEngineAgentExtension, argument: gen_qvariant.QVariant): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QScriptEngineAgentextensionProc
   tmp[] = slot
   GC_ref(tmp)
   fcQScriptEngineAgent_override_virtual_extension(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QScriptEngineAgent_extension(self: ptr cQScriptEngineAgent, slot: int, extension: cint, argument: pointer): pointer {.exportc: "miqt_exec_callback_QScriptEngineAgent_extension ".} =
-  type Cb = proc(super: QScriptEngineAgentextensionBase, extension: QScriptEngineAgentExtension, argument: gen_qvariant.QVariant): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(extension: QScriptEngineAgentExtension, argument: gen_qvariant.QVariant): auto =
-    callVirtualBase_extension(QScriptEngineAgent(h: self), extension, argument)
-  let slotval1 = QScriptEngineAgentExtension(extension)
+  var nimfunc = cast[ptr QScriptEngineAgentextensionProc](cast[pointer](slot))
+  let slotval1 = cint(extension)
 
   let slotval2 = gen_qvariant.QVariant(h: argument)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn.h
-proc delete*(self: QScriptEngineAgent) =
+proc delete*(self: gen_qscriptengineagent_types.QScriptEngineAgent) =
   fcQScriptEngineAgent_delete(self.h)

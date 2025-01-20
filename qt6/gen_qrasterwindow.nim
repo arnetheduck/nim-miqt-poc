@@ -49,7 +49,6 @@ import
   gen_qpainter,
   gen_qpoint,
   gen_qsize,
-  gen_qsurface,
   gen_qsurfaceformat,
   gen_qwindow
 export
@@ -64,7 +63,6 @@ export
   gen_qpainter,
   gen_qpoint,
   gen_qsize,
-  gen_qsurface,
   gen_qsurfaceformat,
   gen_qwindow
 
@@ -160,747 +158,597 @@ proc fcQRasterWindow_staticMetaObject(): pointer {.importc: "QRasterWindow_stati
 proc fcQRasterWindow_delete(self: pointer) {.importc: "QRasterWindow_delete".}
 
 
-func init*(T: type QRasterWindow, h: ptr cQRasterWindow): QRasterWindow =
+func init*(T: type gen_qrasterwindow_types.QRasterWindow, h: ptr cQRasterWindow): gen_qrasterwindow_types.QRasterWindow =
   T(h: h)
-proc create*(T: type QRasterWindow, ): QRasterWindow =
+proc create*(T: type gen_qrasterwindow_types.QRasterWindow, ): gen_qrasterwindow_types.QRasterWindow =
 
-  QRasterWindow.init(fcQRasterWindow_new())
-proc create*(T: type QRasterWindow, parent: gen_qwindow.QWindow): QRasterWindow =
+  gen_qrasterwindow_types.QRasterWindow.init(fcQRasterWindow_new())
+proc create*(T: type gen_qrasterwindow_types.QRasterWindow, parent: gen_qwindow.QWindow): gen_qrasterwindow_types.QRasterWindow =
 
-  QRasterWindow.init(fcQRasterWindow_new2(parent.h))
-proc metaObject*(self: QRasterWindow, ): gen_qobjectdefs.QMetaObject =
+  gen_qrasterwindow_types.QRasterWindow.init(fcQRasterWindow_new2(parent.h))
+proc metaObject*(self: gen_qrasterwindow_types.QRasterWindow, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQRasterWindow_metaObject(self.h))
 
-proc metacast*(self: QRasterWindow, param1: cstring): pointer =
+proc metacast*(self: gen_qrasterwindow_types.QRasterWindow, param1: cstring): pointer =
 
   fcQRasterWindow_metacast(self.h, param1)
 
-proc metacall*(self: QRasterWindow, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qrasterwindow_types.QRasterWindow, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQRasterWindow_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QRasterWindow, s: cstring): string =
+proc tr*(_: type gen_qrasterwindow_types.QRasterWindow, s: cstring): string =
 
   let v_ms = fcQRasterWindow_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr2*(_: type QRasterWindow, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qrasterwindow_types.QRasterWindow, s: cstring, c: cstring): string =
 
   let v_ms = fcQRasterWindow_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QRasterWindow, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qrasterwindow_types.QRasterWindow, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQRasterWindow_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QRasterWindow, ): gen_qobjectdefs.QMetaObject =
-
+proc QRasterWindowmetaObject*(self: gen_qrasterwindow_types.QRasterWindow, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQRasterWindow_virtualbase_metaObject(self.h))
 
-type QRasterWindowmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QRasterWindow, slot: proc(super: QRasterWindowmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QRasterWindowmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qrasterwindow_types.QRasterWindow, slot: QRasterWindowmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QRasterWindowmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QRasterWindowmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRasterWindow_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRasterWindow_metaObject(self: ptr cQRasterWindow, slot: int): pointer {.exportc: "miqt_exec_callback_QRasterWindow_metaObject ".} =
-  type Cb = proc(super: QRasterWindowmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QRasterWindow(h: self), )
+  var nimfunc = cast[ptr QRasterWindowmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QRasterWindow, param1: cstring): pointer =
-
+proc QRasterWindowmetacast*(self: gen_qrasterwindow_types.QRasterWindow, param1: cstring): pointer =
 
   fQRasterWindow_virtualbase_metacast(self.h, param1)
 
-type QRasterWindowmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QRasterWindow, slot: proc(super: QRasterWindowmetacastBase, param1: cstring): pointer) =
+type QRasterWindowmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qrasterwindow_types.QRasterWindow, slot: QRasterWindowmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QRasterWindowmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QRasterWindowmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRasterWindow_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRasterWindow_metacast(self: ptr cQRasterWindow, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QRasterWindow_metacast ".} =
-  type Cb = proc(super: QRasterWindowmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QRasterWindow(h: self), param1)
+  var nimfunc = cast[ptr QRasterWindowmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QRasterWindow, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QRasterWindowmetacall*(self: gen_qrasterwindow_types.QRasterWindow, param1: cint, param2: cint, param3: pointer): cint =
 
   fQRasterWindow_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QRasterWindowmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QRasterWindow, slot: proc(super: QRasterWindowmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QRasterWindowmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qrasterwindow_types.QRasterWindow, slot: QRasterWindowmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QRasterWindowmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QRasterWindowmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRasterWindow_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRasterWindow_metacall(self: ptr cQRasterWindow, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QRasterWindow_metacall ".} =
-  type Cb = proc(super: QRasterWindowmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QRasterWindow(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QRasterWindowmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_metric(self: QRasterWindow, metric: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint =
-
+proc QRasterWindowmetric*(self: gen_qrasterwindow_types.QRasterWindow, metric: cint): cint =
 
   fQRasterWindow_virtualbase_metric(self.h, cint(metric))
 
-type QRasterWindowmetricBase* = proc(metric: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-proc onmetric*(self: QRasterWindow, slot: proc(super: QRasterWindowmetricBase, metric: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint) =
+type QRasterWindowmetricProc* = proc(metric: cint): cint
+proc onmetric*(self: gen_qrasterwindow_types.QRasterWindow, slot: QRasterWindowmetricProc) =
   # TODO check subclass
-  type Cb = proc(super: QRasterWindowmetricBase, metric: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var tmp = new Cb
+  var tmp = new QRasterWindowmetricProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRasterWindow_override_virtual_metric(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRasterWindow_metric(self: ptr cQRasterWindow, slot: int, metric: cint): cint {.exportc: "miqt_exec_callback_QRasterWindow_metric ".} =
-  type Cb = proc(super: QRasterWindowmetricBase, metric: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(metric: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): auto =
-    callVirtualBase_metric(QRasterWindow(h: self), metric)
-  let slotval1 = gen_qpaintdevice.QPaintDevicePaintDeviceMetric(metric)
+  var nimfunc = cast[ptr QRasterWindowmetricProc](cast[pointer](slot))
+  let slotval1 = cint(metric)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_redirected(self: QRasterWindow, param1: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
+proc QRasterWindowredirected*(self: gen_qrasterwindow_types.QRasterWindow, param1: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
 
   gen_qpaintdevice.QPaintDevice(h: fQRasterWindow_virtualbase_redirected(self.h, param1.h))
 
-type QRasterWindowredirectedBase* = proc(param1: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-proc onredirected*(self: QRasterWindow, slot: proc(super: QRasterWindowredirectedBase, param1: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice) =
+type QRasterWindowredirectedProc* = proc(param1: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
+proc onredirected*(self: gen_qrasterwindow_types.QRasterWindow, slot: QRasterWindowredirectedProc) =
   # TODO check subclass
-  type Cb = proc(super: QRasterWindowredirectedBase, param1: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var tmp = new Cb
+  var tmp = new QRasterWindowredirectedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRasterWindow_override_virtual_redirected(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRasterWindow_redirected(self: ptr cQRasterWindow, slot: int, param1: pointer): pointer {.exportc: "miqt_exec_callback_QRasterWindow_redirected ".} =
-  type Cb = proc(super: QRasterWindowredirectedBase, param1: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qpoint.QPoint): auto =
-    callVirtualBase_redirected(QRasterWindow(h: self), param1)
+  var nimfunc = cast[ptr QRasterWindowredirectedProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_exposeEvent(self: QRasterWindow, param1: gen_qevent.QExposeEvent): void =
-
+proc QRasterWindowexposeEvent*(self: gen_qrasterwindow_types.QRasterWindow, param1: gen_qevent.QExposeEvent): void =
 
   fQRasterWindow_virtualbase_exposeEvent(self.h, param1.h)
 
-type QRasterWindowexposeEventBase* = proc(param1: gen_qevent.QExposeEvent): void
-proc onexposeEvent*(self: QRasterWindow, slot: proc(super: QRasterWindowexposeEventBase, param1: gen_qevent.QExposeEvent): void) =
+type QRasterWindowexposeEventProc* = proc(param1: gen_qevent.QExposeEvent): void
+proc onexposeEvent*(self: gen_qrasterwindow_types.QRasterWindow, slot: QRasterWindowexposeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRasterWindowexposeEventBase, param1: gen_qevent.QExposeEvent): void
-  var tmp = new Cb
+  var tmp = new QRasterWindowexposeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRasterWindow_override_virtual_exposeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRasterWindow_exposeEvent(self: ptr cQRasterWindow, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QRasterWindow_exposeEvent ".} =
-  type Cb = proc(super: QRasterWindowexposeEventBase, param1: gen_qevent.QExposeEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QExposeEvent): auto =
-    callVirtualBase_exposeEvent(QRasterWindow(h: self), param1)
+  var nimfunc = cast[ptr QRasterWindowexposeEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QExposeEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_paintEvent(self: QRasterWindow, event: gen_qevent.QPaintEvent): void =
-
+  nimfunc[](slotval1)
+proc QRasterWindowpaintEvent*(self: gen_qrasterwindow_types.QRasterWindow, event: gen_qevent.QPaintEvent): void =
 
   fQRasterWindow_virtualbase_paintEvent(self.h, event.h)
 
-type QRasterWindowpaintEventBase* = proc(event: gen_qevent.QPaintEvent): void
-proc onpaintEvent*(self: QRasterWindow, slot: proc(super: QRasterWindowpaintEventBase, event: gen_qevent.QPaintEvent): void) =
+type QRasterWindowpaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
+proc onpaintEvent*(self: gen_qrasterwindow_types.QRasterWindow, slot: QRasterWindowpaintEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRasterWindowpaintEventBase, event: gen_qevent.QPaintEvent): void
-  var tmp = new Cb
+  var tmp = new QRasterWindowpaintEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRasterWindow_override_virtual_paintEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRasterWindow_paintEvent(self: ptr cQRasterWindow, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QRasterWindow_paintEvent ".} =
-  type Cb = proc(super: QRasterWindowpaintEventBase, event: gen_qevent.QPaintEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QPaintEvent): auto =
-    callVirtualBase_paintEvent(QRasterWindow(h: self), event)
+  var nimfunc = cast[ptr QRasterWindowpaintEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QPaintEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_event(self: QRasterWindow, event: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[](slotval1)
+proc QRasterWindowevent*(self: gen_qrasterwindow_types.QRasterWindow, event: gen_qcoreevent.QEvent): bool =
 
   fQRasterWindow_virtualbase_event(self.h, event.h)
 
-type QRasterWindoweventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QRasterWindow, slot: proc(super: QRasterWindoweventBase, event: gen_qcoreevent.QEvent): bool) =
+type QRasterWindoweventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qrasterwindow_types.QRasterWindow, slot: QRasterWindoweventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRasterWindoweventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QRasterWindoweventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRasterWindow_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRasterWindow_event(self: ptr cQRasterWindow, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QRasterWindow_event ".} =
-  type Cb = proc(super: QRasterWindoweventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QRasterWindow(h: self), event)
+  var nimfunc = cast[ptr QRasterWindoweventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_surfaceType(self: QRasterWindow, ): gen_qsurface.QSurfaceSurfaceType =
+proc QRasterWindowsurfaceType*(self: gen_qrasterwindow_types.QRasterWindow, ): cint =
 
+  cint(fQRasterWindow_virtualbase_surfaceType(self.h))
 
-  gen_qsurface.QSurfaceSurfaceType(fQRasterWindow_virtualbase_surfaceType(self.h))
-
-type QRasterWindowsurfaceTypeBase* = proc(): gen_qsurface.QSurfaceSurfaceType
-proc onsurfaceType*(self: QRasterWindow, slot: proc(super: QRasterWindowsurfaceTypeBase): gen_qsurface.QSurfaceSurfaceType) =
+type QRasterWindowsurfaceTypeProc* = proc(): cint
+proc onsurfaceType*(self: gen_qrasterwindow_types.QRasterWindow, slot: QRasterWindowsurfaceTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: QRasterWindowsurfaceTypeBase): gen_qsurface.QSurfaceSurfaceType
-  var tmp = new Cb
+  var tmp = new QRasterWindowsurfaceTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRasterWindow_override_virtual_surfaceType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRasterWindow_surfaceType(self: ptr cQRasterWindow, slot: int): cint {.exportc: "miqt_exec_callback_QRasterWindow_surfaceType ".} =
-  type Cb = proc(super: QRasterWindowsurfaceTypeBase): gen_qsurface.QSurfaceSurfaceType
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_surfaceType(QRasterWindow(h: self), )
+  var nimfunc = cast[ptr QRasterWindowsurfaceTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   cint(virtualReturn)
-proc callVirtualBase_format(self: QRasterWindow, ): gen_qsurfaceformat.QSurfaceFormat =
-
+proc QRasterWindowformat*(self: gen_qrasterwindow_types.QRasterWindow, ): gen_qsurfaceformat.QSurfaceFormat =
 
   gen_qsurfaceformat.QSurfaceFormat(h: fQRasterWindow_virtualbase_format(self.h))
 
-type QRasterWindowformatBase* = proc(): gen_qsurfaceformat.QSurfaceFormat
-proc onformat*(self: QRasterWindow, slot: proc(super: QRasterWindowformatBase): gen_qsurfaceformat.QSurfaceFormat) =
+type QRasterWindowformatProc* = proc(): gen_qsurfaceformat.QSurfaceFormat
+proc onformat*(self: gen_qrasterwindow_types.QRasterWindow, slot: QRasterWindowformatProc) =
   # TODO check subclass
-  type Cb = proc(super: QRasterWindowformatBase): gen_qsurfaceformat.QSurfaceFormat
-  var tmp = new Cb
+  var tmp = new QRasterWindowformatProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRasterWindow_override_virtual_format(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRasterWindow_format(self: ptr cQRasterWindow, slot: int): pointer {.exportc: "miqt_exec_callback_QRasterWindow_format ".} =
-  type Cb = proc(super: QRasterWindowformatBase): gen_qsurfaceformat.QSurfaceFormat
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_format(QRasterWindow(h: self), )
+  var nimfunc = cast[ptr QRasterWindowformatProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_size(self: QRasterWindow, ): gen_qsize.QSize =
-
+proc QRasterWindowsize*(self: gen_qrasterwindow_types.QRasterWindow, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQRasterWindow_virtualbase_size(self.h))
 
-type QRasterWindowsizeBase* = proc(): gen_qsize.QSize
-proc onsize*(self: QRasterWindow, slot: proc(super: QRasterWindowsizeBase): gen_qsize.QSize) =
+type QRasterWindowsizeProc* = proc(): gen_qsize.QSize
+proc onsize*(self: gen_qrasterwindow_types.QRasterWindow, slot: QRasterWindowsizeProc) =
   # TODO check subclass
-  type Cb = proc(super: QRasterWindowsizeBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QRasterWindowsizeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRasterWindow_override_virtual_size(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRasterWindow_size(self: ptr cQRasterWindow, slot: int): pointer {.exportc: "miqt_exec_callback_QRasterWindow_size ".} =
-  type Cb = proc(super: QRasterWindowsizeBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_size(QRasterWindow(h: self), )
+  var nimfunc = cast[ptr QRasterWindowsizeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_accessibleRoot(self: QRasterWindow, ): gen_qaccessible.QAccessibleInterface =
-
+proc QRasterWindowaccessibleRoot*(self: gen_qrasterwindow_types.QRasterWindow, ): gen_qaccessible.QAccessibleInterface =
 
   gen_qaccessible.QAccessibleInterface(h: fQRasterWindow_virtualbase_accessibleRoot(self.h))
 
-type QRasterWindowaccessibleRootBase* = proc(): gen_qaccessible.QAccessibleInterface
-proc onaccessibleRoot*(self: QRasterWindow, slot: proc(super: QRasterWindowaccessibleRootBase): gen_qaccessible.QAccessibleInterface) =
+type QRasterWindowaccessibleRootProc* = proc(): gen_qaccessible.QAccessibleInterface
+proc onaccessibleRoot*(self: gen_qrasterwindow_types.QRasterWindow, slot: QRasterWindowaccessibleRootProc) =
   # TODO check subclass
-  type Cb = proc(super: QRasterWindowaccessibleRootBase): gen_qaccessible.QAccessibleInterface
-  var tmp = new Cb
+  var tmp = new QRasterWindowaccessibleRootProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRasterWindow_override_virtual_accessibleRoot(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRasterWindow_accessibleRoot(self: ptr cQRasterWindow, slot: int): pointer {.exportc: "miqt_exec_callback_QRasterWindow_accessibleRoot ".} =
-  type Cb = proc(super: QRasterWindowaccessibleRootBase): gen_qaccessible.QAccessibleInterface
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_accessibleRoot(QRasterWindow(h: self), )
+  var nimfunc = cast[ptr QRasterWindowaccessibleRootProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_focusObject(self: QRasterWindow, ): gen_qobject.QObject =
-
+proc QRasterWindowfocusObject*(self: gen_qrasterwindow_types.QRasterWindow, ): gen_qobject.QObject =
 
   gen_qobject.QObject(h: fQRasterWindow_virtualbase_focusObject(self.h))
 
-type QRasterWindowfocusObjectBase* = proc(): gen_qobject.QObject
-proc onfocusObject*(self: QRasterWindow, slot: proc(super: QRasterWindowfocusObjectBase): gen_qobject.QObject) =
+type QRasterWindowfocusObjectProc* = proc(): gen_qobject.QObject
+proc onfocusObject*(self: gen_qrasterwindow_types.QRasterWindow, slot: QRasterWindowfocusObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QRasterWindowfocusObjectBase): gen_qobject.QObject
-  var tmp = new Cb
+  var tmp = new QRasterWindowfocusObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRasterWindow_override_virtual_focusObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRasterWindow_focusObject(self: ptr cQRasterWindow, slot: int): pointer {.exportc: "miqt_exec_callback_QRasterWindow_focusObject ".} =
-  type Cb = proc(super: QRasterWindowfocusObjectBase): gen_qobject.QObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_focusObject(QRasterWindow(h: self), )
+  var nimfunc = cast[ptr QRasterWindowfocusObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_resizeEvent(self: QRasterWindow, param1: gen_qevent.QResizeEvent): void =
-
+proc QRasterWindowresizeEvent*(self: gen_qrasterwindow_types.QRasterWindow, param1: gen_qevent.QResizeEvent): void =
 
   fQRasterWindow_virtualbase_resizeEvent(self.h, param1.h)
 
-type QRasterWindowresizeEventBase* = proc(param1: gen_qevent.QResizeEvent): void
-proc onresizeEvent*(self: QRasterWindow, slot: proc(super: QRasterWindowresizeEventBase, param1: gen_qevent.QResizeEvent): void) =
+type QRasterWindowresizeEventProc* = proc(param1: gen_qevent.QResizeEvent): void
+proc onresizeEvent*(self: gen_qrasterwindow_types.QRasterWindow, slot: QRasterWindowresizeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRasterWindowresizeEventBase, param1: gen_qevent.QResizeEvent): void
-  var tmp = new Cb
+  var tmp = new QRasterWindowresizeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRasterWindow_override_virtual_resizeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRasterWindow_resizeEvent(self: ptr cQRasterWindow, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QRasterWindow_resizeEvent ".} =
-  type Cb = proc(super: QRasterWindowresizeEventBase, param1: gen_qevent.QResizeEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QResizeEvent): auto =
-    callVirtualBase_resizeEvent(QRasterWindow(h: self), param1)
+  var nimfunc = cast[ptr QRasterWindowresizeEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QResizeEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_moveEvent(self: QRasterWindow, param1: gen_qevent.QMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QRasterWindowmoveEvent*(self: gen_qrasterwindow_types.QRasterWindow, param1: gen_qevent.QMoveEvent): void =
 
   fQRasterWindow_virtualbase_moveEvent(self.h, param1.h)
 
-type QRasterWindowmoveEventBase* = proc(param1: gen_qevent.QMoveEvent): void
-proc onmoveEvent*(self: QRasterWindow, slot: proc(super: QRasterWindowmoveEventBase, param1: gen_qevent.QMoveEvent): void) =
+type QRasterWindowmoveEventProc* = proc(param1: gen_qevent.QMoveEvent): void
+proc onmoveEvent*(self: gen_qrasterwindow_types.QRasterWindow, slot: QRasterWindowmoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRasterWindowmoveEventBase, param1: gen_qevent.QMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QRasterWindowmoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRasterWindow_override_virtual_moveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRasterWindow_moveEvent(self: ptr cQRasterWindow, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QRasterWindow_moveEvent ".} =
-  type Cb = proc(super: QRasterWindowmoveEventBase, param1: gen_qevent.QMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QMoveEvent): auto =
-    callVirtualBase_moveEvent(QRasterWindow(h: self), param1)
+  var nimfunc = cast[ptr QRasterWindowmoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMoveEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusInEvent(self: QRasterWindow, param1: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QRasterWindowfocusInEvent*(self: gen_qrasterwindow_types.QRasterWindow, param1: gen_qevent.QFocusEvent): void =
 
   fQRasterWindow_virtualbase_focusInEvent(self.h, param1.h)
 
-type QRasterWindowfocusInEventBase* = proc(param1: gen_qevent.QFocusEvent): void
-proc onfocusInEvent*(self: QRasterWindow, slot: proc(super: QRasterWindowfocusInEventBase, param1: gen_qevent.QFocusEvent): void) =
+type QRasterWindowfocusInEventProc* = proc(param1: gen_qevent.QFocusEvent): void
+proc onfocusInEvent*(self: gen_qrasterwindow_types.QRasterWindow, slot: QRasterWindowfocusInEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRasterWindowfocusInEventBase, param1: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QRasterWindowfocusInEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRasterWindow_override_virtual_focusInEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRasterWindow_focusInEvent(self: ptr cQRasterWindow, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QRasterWindow_focusInEvent ".} =
-  type Cb = proc(super: QRasterWindowfocusInEventBase, param1: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusInEvent(QRasterWindow(h: self), param1)
+  var nimfunc = cast[ptr QRasterWindowfocusInEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusOutEvent(self: QRasterWindow, param1: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QRasterWindowfocusOutEvent*(self: gen_qrasterwindow_types.QRasterWindow, param1: gen_qevent.QFocusEvent): void =
 
   fQRasterWindow_virtualbase_focusOutEvent(self.h, param1.h)
 
-type QRasterWindowfocusOutEventBase* = proc(param1: gen_qevent.QFocusEvent): void
-proc onfocusOutEvent*(self: QRasterWindow, slot: proc(super: QRasterWindowfocusOutEventBase, param1: gen_qevent.QFocusEvent): void) =
+type QRasterWindowfocusOutEventProc* = proc(param1: gen_qevent.QFocusEvent): void
+proc onfocusOutEvent*(self: gen_qrasterwindow_types.QRasterWindow, slot: QRasterWindowfocusOutEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRasterWindowfocusOutEventBase, param1: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QRasterWindowfocusOutEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRasterWindow_override_virtual_focusOutEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRasterWindow_focusOutEvent(self: ptr cQRasterWindow, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QRasterWindow_focusOutEvent ".} =
-  type Cb = proc(super: QRasterWindowfocusOutEventBase, param1: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusOutEvent(QRasterWindow(h: self), param1)
+  var nimfunc = cast[ptr QRasterWindowfocusOutEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_showEvent(self: QRasterWindow, param1: gen_qevent.QShowEvent): void =
-
+  nimfunc[](slotval1)
+proc QRasterWindowshowEvent*(self: gen_qrasterwindow_types.QRasterWindow, param1: gen_qevent.QShowEvent): void =
 
   fQRasterWindow_virtualbase_showEvent(self.h, param1.h)
 
-type QRasterWindowshowEventBase* = proc(param1: gen_qevent.QShowEvent): void
-proc onshowEvent*(self: QRasterWindow, slot: proc(super: QRasterWindowshowEventBase, param1: gen_qevent.QShowEvent): void) =
+type QRasterWindowshowEventProc* = proc(param1: gen_qevent.QShowEvent): void
+proc onshowEvent*(self: gen_qrasterwindow_types.QRasterWindow, slot: QRasterWindowshowEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRasterWindowshowEventBase, param1: gen_qevent.QShowEvent): void
-  var tmp = new Cb
+  var tmp = new QRasterWindowshowEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRasterWindow_override_virtual_showEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRasterWindow_showEvent(self: ptr cQRasterWindow, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QRasterWindow_showEvent ".} =
-  type Cb = proc(super: QRasterWindowshowEventBase, param1: gen_qevent.QShowEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QShowEvent): auto =
-    callVirtualBase_showEvent(QRasterWindow(h: self), param1)
+  var nimfunc = cast[ptr QRasterWindowshowEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QShowEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hideEvent(self: QRasterWindow, param1: gen_qevent.QHideEvent): void =
-
+  nimfunc[](slotval1)
+proc QRasterWindowhideEvent*(self: gen_qrasterwindow_types.QRasterWindow, param1: gen_qevent.QHideEvent): void =
 
   fQRasterWindow_virtualbase_hideEvent(self.h, param1.h)
 
-type QRasterWindowhideEventBase* = proc(param1: gen_qevent.QHideEvent): void
-proc onhideEvent*(self: QRasterWindow, slot: proc(super: QRasterWindowhideEventBase, param1: gen_qevent.QHideEvent): void) =
+type QRasterWindowhideEventProc* = proc(param1: gen_qevent.QHideEvent): void
+proc onhideEvent*(self: gen_qrasterwindow_types.QRasterWindow, slot: QRasterWindowhideEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRasterWindowhideEventBase, param1: gen_qevent.QHideEvent): void
-  var tmp = new Cb
+  var tmp = new QRasterWindowhideEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRasterWindow_override_virtual_hideEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRasterWindow_hideEvent(self: ptr cQRasterWindow, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QRasterWindow_hideEvent ".} =
-  type Cb = proc(super: QRasterWindowhideEventBase, param1: gen_qevent.QHideEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QHideEvent): auto =
-    callVirtualBase_hideEvent(QRasterWindow(h: self), param1)
+  var nimfunc = cast[ptr QRasterWindowhideEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QHideEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_closeEvent(self: QRasterWindow, param1: gen_qevent.QCloseEvent): void =
-
+  nimfunc[](slotval1)
+proc QRasterWindowcloseEvent*(self: gen_qrasterwindow_types.QRasterWindow, param1: gen_qevent.QCloseEvent): void =
 
   fQRasterWindow_virtualbase_closeEvent(self.h, param1.h)
 
-type QRasterWindowcloseEventBase* = proc(param1: gen_qevent.QCloseEvent): void
-proc oncloseEvent*(self: QRasterWindow, slot: proc(super: QRasterWindowcloseEventBase, param1: gen_qevent.QCloseEvent): void) =
+type QRasterWindowcloseEventProc* = proc(param1: gen_qevent.QCloseEvent): void
+proc oncloseEvent*(self: gen_qrasterwindow_types.QRasterWindow, slot: QRasterWindowcloseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRasterWindowcloseEventBase, param1: gen_qevent.QCloseEvent): void
-  var tmp = new Cb
+  var tmp = new QRasterWindowcloseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRasterWindow_override_virtual_closeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRasterWindow_closeEvent(self: ptr cQRasterWindow, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QRasterWindow_closeEvent ".} =
-  type Cb = proc(super: QRasterWindowcloseEventBase, param1: gen_qevent.QCloseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QCloseEvent): auto =
-    callVirtualBase_closeEvent(QRasterWindow(h: self), param1)
+  var nimfunc = cast[ptr QRasterWindowcloseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QCloseEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyPressEvent(self: QRasterWindow, param1: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QRasterWindowkeyPressEvent*(self: gen_qrasterwindow_types.QRasterWindow, param1: gen_qevent.QKeyEvent): void =
 
   fQRasterWindow_virtualbase_keyPressEvent(self.h, param1.h)
 
-type QRasterWindowkeyPressEventBase* = proc(param1: gen_qevent.QKeyEvent): void
-proc onkeyPressEvent*(self: QRasterWindow, slot: proc(super: QRasterWindowkeyPressEventBase, param1: gen_qevent.QKeyEvent): void) =
+type QRasterWindowkeyPressEventProc* = proc(param1: gen_qevent.QKeyEvent): void
+proc onkeyPressEvent*(self: gen_qrasterwindow_types.QRasterWindow, slot: QRasterWindowkeyPressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRasterWindowkeyPressEventBase, param1: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QRasterWindowkeyPressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRasterWindow_override_virtual_keyPressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRasterWindow_keyPressEvent(self: ptr cQRasterWindow, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QRasterWindow_keyPressEvent ".} =
-  type Cb = proc(super: QRasterWindowkeyPressEventBase, param1: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyPressEvent(QRasterWindow(h: self), param1)
+  var nimfunc = cast[ptr QRasterWindowkeyPressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyReleaseEvent(self: QRasterWindow, param1: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QRasterWindowkeyReleaseEvent*(self: gen_qrasterwindow_types.QRasterWindow, param1: gen_qevent.QKeyEvent): void =
 
   fQRasterWindow_virtualbase_keyReleaseEvent(self.h, param1.h)
 
-type QRasterWindowkeyReleaseEventBase* = proc(param1: gen_qevent.QKeyEvent): void
-proc onkeyReleaseEvent*(self: QRasterWindow, slot: proc(super: QRasterWindowkeyReleaseEventBase, param1: gen_qevent.QKeyEvent): void) =
+type QRasterWindowkeyReleaseEventProc* = proc(param1: gen_qevent.QKeyEvent): void
+proc onkeyReleaseEvent*(self: gen_qrasterwindow_types.QRasterWindow, slot: QRasterWindowkeyReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRasterWindowkeyReleaseEventBase, param1: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QRasterWindowkeyReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRasterWindow_override_virtual_keyReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRasterWindow_keyReleaseEvent(self: ptr cQRasterWindow, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QRasterWindow_keyReleaseEvent ".} =
-  type Cb = proc(super: QRasterWindowkeyReleaseEventBase, param1: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyReleaseEvent(QRasterWindow(h: self), param1)
+  var nimfunc = cast[ptr QRasterWindowkeyReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mousePressEvent(self: QRasterWindow, param1: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QRasterWindowmousePressEvent*(self: gen_qrasterwindow_types.QRasterWindow, param1: gen_qevent.QMouseEvent): void =
 
   fQRasterWindow_virtualbase_mousePressEvent(self.h, param1.h)
 
-type QRasterWindowmousePressEventBase* = proc(param1: gen_qevent.QMouseEvent): void
-proc onmousePressEvent*(self: QRasterWindow, slot: proc(super: QRasterWindowmousePressEventBase, param1: gen_qevent.QMouseEvent): void) =
+type QRasterWindowmousePressEventProc* = proc(param1: gen_qevent.QMouseEvent): void
+proc onmousePressEvent*(self: gen_qrasterwindow_types.QRasterWindow, slot: QRasterWindowmousePressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRasterWindowmousePressEventBase, param1: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QRasterWindowmousePressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRasterWindow_override_virtual_mousePressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRasterWindow_mousePressEvent(self: ptr cQRasterWindow, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QRasterWindow_mousePressEvent ".} =
-  type Cb = proc(super: QRasterWindowmousePressEventBase, param1: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mousePressEvent(QRasterWindow(h: self), param1)
+  var nimfunc = cast[ptr QRasterWindowmousePressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseReleaseEvent(self: QRasterWindow, param1: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QRasterWindowmouseReleaseEvent*(self: gen_qrasterwindow_types.QRasterWindow, param1: gen_qevent.QMouseEvent): void =
 
   fQRasterWindow_virtualbase_mouseReleaseEvent(self.h, param1.h)
 
-type QRasterWindowmouseReleaseEventBase* = proc(param1: gen_qevent.QMouseEvent): void
-proc onmouseReleaseEvent*(self: QRasterWindow, slot: proc(super: QRasterWindowmouseReleaseEventBase, param1: gen_qevent.QMouseEvent): void) =
+type QRasterWindowmouseReleaseEventProc* = proc(param1: gen_qevent.QMouseEvent): void
+proc onmouseReleaseEvent*(self: gen_qrasterwindow_types.QRasterWindow, slot: QRasterWindowmouseReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRasterWindowmouseReleaseEventBase, param1: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QRasterWindowmouseReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRasterWindow_override_virtual_mouseReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRasterWindow_mouseReleaseEvent(self: ptr cQRasterWindow, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QRasterWindow_mouseReleaseEvent ".} =
-  type Cb = proc(super: QRasterWindowmouseReleaseEventBase, param1: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseReleaseEvent(QRasterWindow(h: self), param1)
+  var nimfunc = cast[ptr QRasterWindowmouseReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseDoubleClickEvent(self: QRasterWindow, param1: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QRasterWindowmouseDoubleClickEvent*(self: gen_qrasterwindow_types.QRasterWindow, param1: gen_qevent.QMouseEvent): void =
 
   fQRasterWindow_virtualbase_mouseDoubleClickEvent(self.h, param1.h)
 
-type QRasterWindowmouseDoubleClickEventBase* = proc(param1: gen_qevent.QMouseEvent): void
-proc onmouseDoubleClickEvent*(self: QRasterWindow, slot: proc(super: QRasterWindowmouseDoubleClickEventBase, param1: gen_qevent.QMouseEvent): void) =
+type QRasterWindowmouseDoubleClickEventProc* = proc(param1: gen_qevent.QMouseEvent): void
+proc onmouseDoubleClickEvent*(self: gen_qrasterwindow_types.QRasterWindow, slot: QRasterWindowmouseDoubleClickEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRasterWindowmouseDoubleClickEventBase, param1: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QRasterWindowmouseDoubleClickEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRasterWindow_override_virtual_mouseDoubleClickEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRasterWindow_mouseDoubleClickEvent(self: ptr cQRasterWindow, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QRasterWindow_mouseDoubleClickEvent ".} =
-  type Cb = proc(super: QRasterWindowmouseDoubleClickEventBase, param1: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseDoubleClickEvent(QRasterWindow(h: self), param1)
+  var nimfunc = cast[ptr QRasterWindowmouseDoubleClickEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseMoveEvent(self: QRasterWindow, param1: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QRasterWindowmouseMoveEvent*(self: gen_qrasterwindow_types.QRasterWindow, param1: gen_qevent.QMouseEvent): void =
 
   fQRasterWindow_virtualbase_mouseMoveEvent(self.h, param1.h)
 
-type QRasterWindowmouseMoveEventBase* = proc(param1: gen_qevent.QMouseEvent): void
-proc onmouseMoveEvent*(self: QRasterWindow, slot: proc(super: QRasterWindowmouseMoveEventBase, param1: gen_qevent.QMouseEvent): void) =
+type QRasterWindowmouseMoveEventProc* = proc(param1: gen_qevent.QMouseEvent): void
+proc onmouseMoveEvent*(self: gen_qrasterwindow_types.QRasterWindow, slot: QRasterWindowmouseMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRasterWindowmouseMoveEventBase, param1: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QRasterWindowmouseMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRasterWindow_override_virtual_mouseMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRasterWindow_mouseMoveEvent(self: ptr cQRasterWindow, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QRasterWindow_mouseMoveEvent ".} =
-  type Cb = proc(super: QRasterWindowmouseMoveEventBase, param1: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseMoveEvent(QRasterWindow(h: self), param1)
+  var nimfunc = cast[ptr QRasterWindowmouseMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_wheelEvent(self: QRasterWindow, param1: gen_qevent.QWheelEvent): void =
-
+  nimfunc[](slotval1)
+proc QRasterWindowwheelEvent*(self: gen_qrasterwindow_types.QRasterWindow, param1: gen_qevent.QWheelEvent): void =
 
   fQRasterWindow_virtualbase_wheelEvent(self.h, param1.h)
 
-type QRasterWindowwheelEventBase* = proc(param1: gen_qevent.QWheelEvent): void
-proc onwheelEvent*(self: QRasterWindow, slot: proc(super: QRasterWindowwheelEventBase, param1: gen_qevent.QWheelEvent): void) =
+type QRasterWindowwheelEventProc* = proc(param1: gen_qevent.QWheelEvent): void
+proc onwheelEvent*(self: gen_qrasterwindow_types.QRasterWindow, slot: QRasterWindowwheelEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRasterWindowwheelEventBase, param1: gen_qevent.QWheelEvent): void
-  var tmp = new Cb
+  var tmp = new QRasterWindowwheelEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRasterWindow_override_virtual_wheelEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRasterWindow_wheelEvent(self: ptr cQRasterWindow, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QRasterWindow_wheelEvent ".} =
-  type Cb = proc(super: QRasterWindowwheelEventBase, param1: gen_qevent.QWheelEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QWheelEvent): auto =
-    callVirtualBase_wheelEvent(QRasterWindow(h: self), param1)
+  var nimfunc = cast[ptr QRasterWindowwheelEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QWheelEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_touchEvent(self: QRasterWindow, param1: gen_qevent.QTouchEvent): void =
-
+  nimfunc[](slotval1)
+proc QRasterWindowtouchEvent*(self: gen_qrasterwindow_types.QRasterWindow, param1: gen_qevent.QTouchEvent): void =
 
   fQRasterWindow_virtualbase_touchEvent(self.h, param1.h)
 
-type QRasterWindowtouchEventBase* = proc(param1: gen_qevent.QTouchEvent): void
-proc ontouchEvent*(self: QRasterWindow, slot: proc(super: QRasterWindowtouchEventBase, param1: gen_qevent.QTouchEvent): void) =
+type QRasterWindowtouchEventProc* = proc(param1: gen_qevent.QTouchEvent): void
+proc ontouchEvent*(self: gen_qrasterwindow_types.QRasterWindow, slot: QRasterWindowtouchEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRasterWindowtouchEventBase, param1: gen_qevent.QTouchEvent): void
-  var tmp = new Cb
+  var tmp = new QRasterWindowtouchEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRasterWindow_override_virtual_touchEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRasterWindow_touchEvent(self: ptr cQRasterWindow, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QRasterWindow_touchEvent ".} =
-  type Cb = proc(super: QRasterWindowtouchEventBase, param1: gen_qevent.QTouchEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QTouchEvent): auto =
-    callVirtualBase_touchEvent(QRasterWindow(h: self), param1)
+  var nimfunc = cast[ptr QRasterWindowtouchEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QTouchEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_tabletEvent(self: QRasterWindow, param1: gen_qevent.QTabletEvent): void =
-
+  nimfunc[](slotval1)
+proc QRasterWindowtabletEvent*(self: gen_qrasterwindow_types.QRasterWindow, param1: gen_qevent.QTabletEvent): void =
 
   fQRasterWindow_virtualbase_tabletEvent(self.h, param1.h)
 
-type QRasterWindowtabletEventBase* = proc(param1: gen_qevent.QTabletEvent): void
-proc ontabletEvent*(self: QRasterWindow, slot: proc(super: QRasterWindowtabletEventBase, param1: gen_qevent.QTabletEvent): void) =
+type QRasterWindowtabletEventProc* = proc(param1: gen_qevent.QTabletEvent): void
+proc ontabletEvent*(self: gen_qrasterwindow_types.QRasterWindow, slot: QRasterWindowtabletEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRasterWindowtabletEventBase, param1: gen_qevent.QTabletEvent): void
-  var tmp = new Cb
+  var tmp = new QRasterWindowtabletEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRasterWindow_override_virtual_tabletEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRasterWindow_tabletEvent(self: ptr cQRasterWindow, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QRasterWindow_tabletEvent ".} =
-  type Cb = proc(super: QRasterWindowtabletEventBase, param1: gen_qevent.QTabletEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QTabletEvent): auto =
-    callVirtualBase_tabletEvent(QRasterWindow(h: self), param1)
+  var nimfunc = cast[ptr QRasterWindowtabletEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QTabletEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_nativeEvent(self: QRasterWindow, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
-
+  nimfunc[](slotval1)
+proc QRasterWindownativeEvent*(self: gen_qrasterwindow_types.QRasterWindow, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
 
   fQRasterWindow_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
-type QRasterWindownativeEventBase* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-proc onnativeEvent*(self: QRasterWindow, slot: proc(super: QRasterWindownativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool) =
+type QRasterWindownativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
+proc onnativeEvent*(self: gen_qrasterwindow_types.QRasterWindow, slot: QRasterWindownativeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRasterWindownativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-  var tmp = new Cb
+  var tmp = new QRasterWindownativeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRasterWindow_override_virtual_nativeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRasterWindow_nativeEvent(self: ptr cQRasterWindow, slot: int, eventType: struct_miqt_string, message: pointer, resultVal: ptr uint): bool {.exportc: "miqt_exec_callback_QRasterWindow_nativeEvent ".} =
-  type Cb = proc(super: QRasterWindownativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(eventType: seq[byte], message: pointer, resultVal: ptr uint): auto =
-    callVirtualBase_nativeEvent(QRasterWindow(h: self), eventType, message, resultVal)
+  var nimfunc = cast[ptr QRasterWindownativeEventProc](cast[pointer](slot))
   var veventType_bytearray = eventType
   var veventTypex_ret = @(toOpenArrayByte(veventType_bytearray.data, 0, int(veventType_bytearray.len)-1))
   c_free(veventType_bytearray.data)
@@ -911,221 +759,176 @@ proc miqt_exec_callback_QRasterWindow_nativeEvent(self: ptr cQRasterWindow, slot
   let slotval3 = resultVal
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QRasterWindow, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QRasterWindoweventFilter*(self: gen_qrasterwindow_types.QRasterWindow, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQRasterWindow_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QRasterWindoweventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QRasterWindow, slot: proc(super: QRasterWindoweventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QRasterWindoweventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qrasterwindow_types.QRasterWindow, slot: QRasterWindoweventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QRasterWindoweventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QRasterWindoweventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRasterWindow_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRasterWindow_eventFilter(self: ptr cQRasterWindow, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QRasterWindow_eventFilter ".} =
-  type Cb = proc(super: QRasterWindoweventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QRasterWindow(h: self), watched, event)
+  var nimfunc = cast[ptr QRasterWindoweventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QRasterWindow, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QRasterWindowtimerEvent*(self: gen_qrasterwindow_types.QRasterWindow, event: gen_qcoreevent.QTimerEvent): void =
 
   fQRasterWindow_virtualbase_timerEvent(self.h, event.h)
 
-type QRasterWindowtimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QRasterWindow, slot: proc(super: QRasterWindowtimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QRasterWindowtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qrasterwindow_types.QRasterWindow, slot: QRasterWindowtimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRasterWindowtimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QRasterWindowtimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRasterWindow_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRasterWindow_timerEvent(self: ptr cQRasterWindow, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QRasterWindow_timerEvent ".} =
-  type Cb = proc(super: QRasterWindowtimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QRasterWindow(h: self), event)
+  var nimfunc = cast[ptr QRasterWindowtimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QRasterWindow, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QRasterWindowchildEvent*(self: gen_qrasterwindow_types.QRasterWindow, event: gen_qcoreevent.QChildEvent): void =
 
   fQRasterWindow_virtualbase_childEvent(self.h, event.h)
 
-type QRasterWindowchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QRasterWindow, slot: proc(super: QRasterWindowchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QRasterWindowchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qrasterwindow_types.QRasterWindow, slot: QRasterWindowchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRasterWindowchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QRasterWindowchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRasterWindow_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRasterWindow_childEvent(self: ptr cQRasterWindow, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QRasterWindow_childEvent ".} =
-  type Cb = proc(super: QRasterWindowchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QRasterWindow(h: self), event)
+  var nimfunc = cast[ptr QRasterWindowchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QRasterWindow, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QRasterWindowcustomEvent*(self: gen_qrasterwindow_types.QRasterWindow, event: gen_qcoreevent.QEvent): void =
 
   fQRasterWindow_virtualbase_customEvent(self.h, event.h)
 
-type QRasterWindowcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QRasterWindow, slot: proc(super: QRasterWindowcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QRasterWindowcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qrasterwindow_types.QRasterWindow, slot: QRasterWindowcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QRasterWindowcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QRasterWindowcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRasterWindow_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRasterWindow_customEvent(self: ptr cQRasterWindow, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QRasterWindow_customEvent ".} =
-  type Cb = proc(super: QRasterWindowcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QRasterWindow(h: self), event)
+  var nimfunc = cast[ptr QRasterWindowcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QRasterWindow, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QRasterWindowconnectNotify*(self: gen_qrasterwindow_types.QRasterWindow, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQRasterWindow_virtualbase_connectNotify(self.h, signal.h)
 
-type QRasterWindowconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QRasterWindow, slot: proc(super: QRasterWindowconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QRasterWindowconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qrasterwindow_types.QRasterWindow, slot: QRasterWindowconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QRasterWindowconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QRasterWindowconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRasterWindow_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRasterWindow_connectNotify(self: ptr cQRasterWindow, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QRasterWindow_connectNotify ".} =
-  type Cb = proc(super: QRasterWindowconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QRasterWindow(h: self), signal)
+  var nimfunc = cast[ptr QRasterWindowconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QRasterWindow, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QRasterWindowdisconnectNotify*(self: gen_qrasterwindow_types.QRasterWindow, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQRasterWindow_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QRasterWindowdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QRasterWindow, slot: proc(super: QRasterWindowdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QRasterWindowdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qrasterwindow_types.QRasterWindow, slot: QRasterWindowdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QRasterWindowdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QRasterWindowdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRasterWindow_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRasterWindow_disconnectNotify(self: ptr cQRasterWindow, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QRasterWindow_disconnectNotify ".} =
-  type Cb = proc(super: QRasterWindowdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QRasterWindow(h: self), signal)
+  var nimfunc = cast[ptr QRasterWindowdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_devType(self: QRasterWindow, ): cint =
-
+  nimfunc[](slotval1)
+proc QRasterWindowdevType*(self: gen_qrasterwindow_types.QRasterWindow, ): cint =
 
   fQRasterWindow_virtualbase_devType(self.h)
 
-type QRasterWindowdevTypeBase* = proc(): cint
-proc ondevType*(self: QRasterWindow, slot: proc(super: QRasterWindowdevTypeBase): cint) =
+type QRasterWindowdevTypeProc* = proc(): cint
+proc ondevType*(self: gen_qrasterwindow_types.QRasterWindow, slot: QRasterWindowdevTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: QRasterWindowdevTypeBase): cint
-  var tmp = new Cb
+  var tmp = new QRasterWindowdevTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRasterWindow_override_virtual_devType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRasterWindow_devType(self: ptr cQRasterWindow, slot: int): cint {.exportc: "miqt_exec_callback_QRasterWindow_devType ".} =
-  type Cb = proc(super: QRasterWindowdevTypeBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_devType(QRasterWindow(h: self), )
+  var nimfunc = cast[ptr QRasterWindowdevTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_initPainter(self: QRasterWindow, painter: gen_qpainter.QPainter): void =
-
+proc QRasterWindowinitPainter*(self: gen_qrasterwindow_types.QRasterWindow, painter: gen_qpainter.QPainter): void =
 
   fQRasterWindow_virtualbase_initPainter(self.h, painter.h)
 
-type QRasterWindowinitPainterBase* = proc(painter: gen_qpainter.QPainter): void
-proc oninitPainter*(self: QRasterWindow, slot: proc(super: QRasterWindowinitPainterBase, painter: gen_qpainter.QPainter): void) =
+type QRasterWindowinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
+proc oninitPainter*(self: gen_qrasterwindow_types.QRasterWindow, slot: QRasterWindowinitPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QRasterWindowinitPainterBase, painter: gen_qpainter.QPainter): void
-  var tmp = new Cb
+  var tmp = new QRasterWindowinitPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRasterWindow_override_virtual_initPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRasterWindow_initPainter(self: ptr cQRasterWindow, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_QRasterWindow_initPainter ".} =
-  type Cb = proc(super: QRasterWindowinitPainterBase, painter: gen_qpainter.QPainter): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter): auto =
-    callVirtualBase_initPainter(QRasterWindow(h: self), painter)
+  var nimfunc = cast[ptr QRasterWindowinitPainterProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_sharedPainter(self: QRasterWindow, ): gen_qpainter.QPainter =
-
+  nimfunc[](slotval1)
+proc QRasterWindowsharedPainter*(self: gen_qrasterwindow_types.QRasterWindow, ): gen_qpainter.QPainter =
 
   gen_qpainter.QPainter(h: fQRasterWindow_virtualbase_sharedPainter(self.h))
 
-type QRasterWindowsharedPainterBase* = proc(): gen_qpainter.QPainter
-proc onsharedPainter*(self: QRasterWindow, slot: proc(super: QRasterWindowsharedPainterBase): gen_qpainter.QPainter) =
+type QRasterWindowsharedPainterProc* = proc(): gen_qpainter.QPainter
+proc onsharedPainter*(self: gen_qrasterwindow_types.QRasterWindow, slot: QRasterWindowsharedPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QRasterWindowsharedPainterBase): gen_qpainter.QPainter
-  var tmp = new Cb
+  var tmp = new QRasterWindowsharedPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQRasterWindow_override_virtual_sharedPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QRasterWindow_sharedPainter(self: ptr cQRasterWindow, slot: int): pointer {.exportc: "miqt_exec_callback_QRasterWindow_sharedPainter ".} =
-  type Cb = proc(super: QRasterWindowsharedPainterBase): gen_qpainter.QPainter
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sharedPainter(QRasterWindow(h: self), )
+  var nimfunc = cast[ptr QRasterWindowsharedPainterProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc staticMetaObject*(_: type QRasterWindow): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qrasterwindow_types.QRasterWindow): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQRasterWindow_staticMetaObject())
-proc delete*(self: QRasterWindow) =
+proc delete*(self: gen_qrasterwindow_types.QRasterWindow) =
   fcQRasterWindow_delete(self.h)

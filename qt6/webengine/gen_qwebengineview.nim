@@ -44,7 +44,6 @@ import
   gen_qicon,
   gen_qmenu,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpagelayout,
@@ -71,7 +70,6 @@ export
   gen_qicon,
   gen_qmenu,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpagelayout,
@@ -271,168 +269,168 @@ proc fcQWebEngineView_staticMetaObject(): pointer {.importc: "QWebEngineView_sta
 proc fcQWebEngineView_delete(self: pointer) {.importc: "QWebEngineView_delete".}
 
 
-func init*(T: type QWebEngineView, h: ptr cQWebEngineView): QWebEngineView =
+func init*(T: type gen_qwebengineview_types.QWebEngineView, h: ptr cQWebEngineView): gen_qwebengineview_types.QWebEngineView =
   T(h: h)
-proc create*(T: type QWebEngineView, parent: gen_qwidget.QWidget): QWebEngineView =
+proc create*(T: type gen_qwebengineview_types.QWebEngineView, parent: gen_qwidget.QWidget): gen_qwebengineview_types.QWebEngineView =
 
-  QWebEngineView.init(fcQWebEngineView_new(parent.h))
-proc create*(T: type QWebEngineView, ): QWebEngineView =
+  gen_qwebengineview_types.QWebEngineView.init(fcQWebEngineView_new(parent.h))
+proc create*(T: type gen_qwebengineview_types.QWebEngineView, ): gen_qwebengineview_types.QWebEngineView =
 
-  QWebEngineView.init(fcQWebEngineView_new2())
-proc create2*(T: type QWebEngineView, profile: gen_qwebengineprofile.QWebEngineProfile): QWebEngineView =
+  gen_qwebengineview_types.QWebEngineView.init(fcQWebEngineView_new2())
+proc create2*(T: type gen_qwebengineview_types.QWebEngineView, profile: gen_qwebengineprofile.QWebEngineProfile): gen_qwebengineview_types.QWebEngineView =
 
-  QWebEngineView.init(fcQWebEngineView_new3(profile.h))
-proc create2*(T: type QWebEngineView, page: gen_qwebenginepage.QWebEnginePage): QWebEngineView =
+  gen_qwebengineview_types.QWebEngineView.init(fcQWebEngineView_new3(profile.h))
+proc create2*(T: type gen_qwebengineview_types.QWebEngineView, page: gen_qwebenginepage.QWebEnginePage): gen_qwebengineview_types.QWebEngineView =
 
-  QWebEngineView.init(fcQWebEngineView_new4(page.h))
-proc create*(T: type QWebEngineView, profile: gen_qwebengineprofile.QWebEngineProfile, parent: gen_qwidget.QWidget): QWebEngineView =
+  gen_qwebengineview_types.QWebEngineView.init(fcQWebEngineView_new4(page.h))
+proc create*(T: type gen_qwebengineview_types.QWebEngineView, profile: gen_qwebengineprofile.QWebEngineProfile, parent: gen_qwidget.QWidget): gen_qwebengineview_types.QWebEngineView =
 
-  QWebEngineView.init(fcQWebEngineView_new5(profile.h, parent.h))
-proc create2*(T: type QWebEngineView, page: gen_qwebenginepage.QWebEnginePage, parent: gen_qwidget.QWidget): QWebEngineView =
+  gen_qwebengineview_types.QWebEngineView.init(fcQWebEngineView_new5(profile.h, parent.h))
+proc create2*(T: type gen_qwebengineview_types.QWebEngineView, page: gen_qwebenginepage.QWebEnginePage, parent: gen_qwidget.QWidget): gen_qwebengineview_types.QWebEngineView =
 
-  QWebEngineView.init(fcQWebEngineView_new6(page.h, parent.h))
-proc metaObject*(self: QWebEngineView, ): gen_qobjectdefs.QMetaObject =
+  gen_qwebengineview_types.QWebEngineView.init(fcQWebEngineView_new6(page.h, parent.h))
+proc metaObject*(self: gen_qwebengineview_types.QWebEngineView, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQWebEngineView_metaObject(self.h))
 
-proc metacast*(self: QWebEngineView, param1: cstring): pointer =
+proc metacast*(self: gen_qwebengineview_types.QWebEngineView, param1: cstring): pointer =
 
   fcQWebEngineView_metacast(self.h, param1)
 
-proc metacall*(self: QWebEngineView, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qwebengineview_types.QWebEngineView, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQWebEngineView_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QWebEngineView, s: cstring): string =
+proc tr*(_: type gen_qwebengineview_types.QWebEngineView, s: cstring): string =
 
   let v_ms = fcQWebEngineView_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc forPage*(_: type QWebEngineView, page: gen_qwebenginepage.QWebEnginePage): QWebEngineView =
+proc forPage*(_: type gen_qwebengineview_types.QWebEngineView, page: gen_qwebenginepage.QWebEnginePage): gen_qwebengineview_types.QWebEngineView =
 
-  QWebEngineView(h: fcQWebEngineView_forPage(page.h))
+  gen_qwebengineview_types.QWebEngineView(h: fcQWebEngineView_forPage(page.h))
 
-proc page*(self: QWebEngineView, ): gen_qwebenginepage.QWebEnginePage =
+proc page*(self: gen_qwebengineview_types.QWebEngineView, ): gen_qwebenginepage.QWebEnginePage =
 
   gen_qwebenginepage.QWebEnginePage(h: fcQWebEngineView_page(self.h))
 
-proc setPage*(self: QWebEngineView, page: gen_qwebenginepage.QWebEnginePage): void =
+proc setPage*(self: gen_qwebengineview_types.QWebEngineView, page: gen_qwebenginepage.QWebEnginePage): void =
 
   fcQWebEngineView_setPage(self.h, page.h)
 
-proc load*(self: QWebEngineView, url: gen_qurl.QUrl): void =
+proc load*(self: gen_qwebengineview_types.QWebEngineView, url: gen_qurl.QUrl): void =
 
   fcQWebEngineView_load(self.h, url.h)
 
-proc loadWithRequest*(self: QWebEngineView, request: gen_qwebenginehttprequest.QWebEngineHttpRequest): void =
+proc loadWithRequest*(self: gen_qwebengineview_types.QWebEngineView, request: gen_qwebenginehttprequest.QWebEngineHttpRequest): void =
 
   fcQWebEngineView_loadWithRequest(self.h, request.h)
 
-proc setHtml*(self: QWebEngineView, html: string): void =
+proc setHtml*(self: gen_qwebengineview_types.QWebEngineView, html: string): void =
 
   fcQWebEngineView_setHtml(self.h, struct_miqt_string(data: html, len: csize_t(len(html))))
 
-proc setContent*(self: QWebEngineView, data: seq[byte]): void =
+proc setContent*(self: gen_qwebengineview_types.QWebEngineView, data: seq[byte]): void =
 
   fcQWebEngineView_setContent(self.h, struct_miqt_string(data: cast[cstring](if len(data) == 0: nil else: unsafeAddr data[0]), len: csize_t(len(data))))
 
-proc history*(self: QWebEngineView, ): gen_qwebenginehistory.QWebEngineHistory =
+proc history*(self: gen_qwebengineview_types.QWebEngineView, ): gen_qwebenginehistory.QWebEngineHistory =
 
   gen_qwebenginehistory.QWebEngineHistory(h: fcQWebEngineView_history(self.h))
 
-proc title*(self: QWebEngineView, ): string =
+proc title*(self: gen_qwebengineview_types.QWebEngineView, ): string =
 
   let v_ms = fcQWebEngineView_title(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setUrl*(self: QWebEngineView, url: gen_qurl.QUrl): void =
+proc setUrl*(self: gen_qwebengineview_types.QWebEngineView, url: gen_qurl.QUrl): void =
 
   fcQWebEngineView_setUrl(self.h, url.h)
 
-proc url*(self: QWebEngineView, ): gen_qurl.QUrl =
+proc url*(self: gen_qwebengineview_types.QWebEngineView, ): gen_qurl.QUrl =
 
   gen_qurl.QUrl(h: fcQWebEngineView_url(self.h))
 
-proc iconUrl*(self: QWebEngineView, ): gen_qurl.QUrl =
+proc iconUrl*(self: gen_qwebengineview_types.QWebEngineView, ): gen_qurl.QUrl =
 
   gen_qurl.QUrl(h: fcQWebEngineView_iconUrl(self.h))
 
-proc icon*(self: QWebEngineView, ): gen_qicon.QIcon =
+proc icon*(self: gen_qwebengineview_types.QWebEngineView, ): gen_qicon.QIcon =
 
   gen_qicon.QIcon(h: fcQWebEngineView_icon(self.h))
 
-proc hasSelection*(self: QWebEngineView, ): bool =
+proc hasSelection*(self: gen_qwebengineview_types.QWebEngineView, ): bool =
 
   fcQWebEngineView_hasSelection(self.h)
 
-proc selectedText*(self: QWebEngineView, ): string =
+proc selectedText*(self: gen_qwebengineview_types.QWebEngineView, ): string =
 
   let v_ms = fcQWebEngineView_selectedText(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc pageAction*(self: QWebEngineView, action: gen_qwebenginepage.QWebEnginePageWebAction): gen_qaction.QAction =
+proc pageAction*(self: gen_qwebengineview_types.QWebEngineView, action: cint): gen_qaction.QAction =
 
   gen_qaction.QAction(h: fcQWebEngineView_pageAction(self.h, cint(action)))
 
-proc triggerPageAction*(self: QWebEngineView, action: gen_qwebenginepage.QWebEnginePageWebAction): void =
+proc triggerPageAction*(self: gen_qwebengineview_types.QWebEngineView, action: cint): void =
 
   fcQWebEngineView_triggerPageAction(self.h, cint(action))
 
-proc zoomFactor*(self: QWebEngineView, ): float64 =
+proc zoomFactor*(self: gen_qwebengineview_types.QWebEngineView, ): float64 =
 
   fcQWebEngineView_zoomFactor(self.h)
 
-proc setZoomFactor*(self: QWebEngineView, factor: float64): void =
+proc setZoomFactor*(self: gen_qwebengineview_types.QWebEngineView, factor: float64): void =
 
   fcQWebEngineView_setZoomFactor(self.h, factor)
 
-proc sizeHint*(self: QWebEngineView, ): gen_qsize.QSize =
+proc sizeHint*(self: gen_qwebengineview_types.QWebEngineView, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQWebEngineView_sizeHint(self.h))
 
-proc settings*(self: QWebEngineView, ): gen_qwebenginesettings.QWebEngineSettings =
+proc settings*(self: gen_qwebengineview_types.QWebEngineView, ): gen_qwebenginesettings.QWebEngineSettings =
 
   gen_qwebenginesettings.QWebEngineSettings(h: fcQWebEngineView_settings(self.h))
 
-proc createStandardContextMenu*(self: QWebEngineView, ): gen_qmenu.QMenu =
+proc createStandardContextMenu*(self: gen_qwebengineview_types.QWebEngineView, ): gen_qmenu.QMenu =
 
   gen_qmenu.QMenu(h: fcQWebEngineView_createStandardContextMenu(self.h))
 
-proc lastContextMenuRequest*(self: QWebEngineView, ): gen_qwebenginecontextmenurequest.QWebEngineContextMenuRequest =
+proc lastContextMenuRequest*(self: gen_qwebengineview_types.QWebEngineView, ): gen_qwebenginecontextmenurequest.QWebEngineContextMenuRequest =
 
   gen_qwebenginecontextmenurequest.QWebEngineContextMenuRequest(h: fcQWebEngineView_lastContextMenuRequest(self.h))
 
-proc printToPdf*(self: QWebEngineView, filePath: string): void =
+proc printToPdf*(self: gen_qwebengineview_types.QWebEngineView, filePath: string): void =
 
   fcQWebEngineView_printToPdf(self.h, struct_miqt_string(data: filePath, len: csize_t(len(filePath))))
 
-proc print*(self: QWebEngineView, printer: gen_qprinter.QPrinter): void =
+proc print*(self: gen_qwebengineview_types.QWebEngineView, printer: gen_qprinter.QPrinter): void =
 
   fcQWebEngineView_print(self.h, printer.h)
 
-proc stop*(self: QWebEngineView, ): void =
+proc stop*(self: gen_qwebengineview_types.QWebEngineView, ): void =
 
   fcQWebEngineView_stop(self.h)
 
-proc back*(self: QWebEngineView, ): void =
+proc back*(self: gen_qwebengineview_types.QWebEngineView, ): void =
 
   fcQWebEngineView_back(self.h)
 
-proc forward*(self: QWebEngineView, ): void =
+proc forward*(self: gen_qwebengineview_types.QWebEngineView, ): void =
 
   fcQWebEngineView_forward(self.h)
 
-proc reload*(self: QWebEngineView, ): void =
+proc reload*(self: gen_qwebengineview_types.QWebEngineView, ): void =
 
   fcQWebEngineView_reload(self.h)
 
-proc loadStarted*(self: QWebEngineView, ): void =
+proc loadStarted*(self: gen_qwebengineview_types.QWebEngineView, ): void =
 
   fcQWebEngineView_loadStarted(self.h)
 
@@ -442,13 +440,13 @@ proc miqt_exec_callback_QWebEngineView_loadStarted(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onloadStarted*(self: QWebEngineView, slot: proc()) =
+proc onloadStarted*(self: gen_qwebengineview_types.QWebEngineView, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQWebEngineView_connect_loadStarted(self.h, cast[int](addr tmp[]))
-proc loadProgress*(self: QWebEngineView, progress: cint): void =
+proc loadProgress*(self: gen_qwebengineview_types.QWebEngineView, progress: cint): void =
 
   fcQWebEngineView_loadProgress(self.h, progress)
 
@@ -460,13 +458,13 @@ proc miqt_exec_callback_QWebEngineView_loadProgress(slot: int, progress: cint) {
 
   nimfunc[](slotval1)
 
-proc onloadProgress*(self: QWebEngineView, slot: proc(progress: cint)) =
+proc onloadProgress*(self: gen_qwebengineview_types.QWebEngineView, slot: proc(progress: cint)) =
   type Cb = proc(progress: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQWebEngineView_connect_loadProgress(self.h, cast[int](addr tmp[]))
-proc loadFinished*(self: QWebEngineView, param1: bool): void =
+proc loadFinished*(self: gen_qwebengineview_types.QWebEngineView, param1: bool): void =
 
   fcQWebEngineView_loadFinished(self.h, param1)
 
@@ -478,13 +476,13 @@ proc miqt_exec_callback_QWebEngineView_loadFinished(slot: int, param1: bool) {.e
 
   nimfunc[](slotval1)
 
-proc onloadFinished*(self: QWebEngineView, slot: proc(param1: bool)) =
+proc onloadFinished*(self: gen_qwebengineview_types.QWebEngineView, slot: proc(param1: bool)) =
   type Cb = proc(param1: bool)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQWebEngineView_connect_loadFinished(self.h, cast[int](addr tmp[]))
-proc titleChanged*(self: QWebEngineView, title: string): void =
+proc titleChanged*(self: gen_qwebengineview_types.QWebEngineView, title: string): void =
 
   fcQWebEngineView_titleChanged(self.h, struct_miqt_string(data: title, len: csize_t(len(title))))
 
@@ -499,13 +497,13 @@ proc miqt_exec_callback_QWebEngineView_titleChanged(slot: int, title: struct_miq
 
   nimfunc[](slotval1)
 
-proc ontitleChanged*(self: QWebEngineView, slot: proc(title: string)) =
+proc ontitleChanged*(self: gen_qwebengineview_types.QWebEngineView, slot: proc(title: string)) =
   type Cb = proc(title: string)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQWebEngineView_connect_titleChanged(self.h, cast[int](addr tmp[]))
-proc selectionChanged*(self: QWebEngineView, ): void =
+proc selectionChanged*(self: gen_qwebengineview_types.QWebEngineView, ): void =
 
   fcQWebEngineView_selectionChanged(self.h)
 
@@ -515,13 +513,13 @@ proc miqt_exec_callback_QWebEngineView_selectionChanged(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onselectionChanged*(self: QWebEngineView, slot: proc()) =
+proc onselectionChanged*(self: gen_qwebengineview_types.QWebEngineView, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQWebEngineView_connect_selectionChanged(self.h, cast[int](addr tmp[]))
-proc urlChanged*(self: QWebEngineView, param1: gen_qurl.QUrl): void =
+proc urlChanged*(self: gen_qwebengineview_types.QWebEngineView, param1: gen_qurl.QUrl): void =
 
   fcQWebEngineView_urlChanged(self.h, param1.h)
 
@@ -533,13 +531,13 @@ proc miqt_exec_callback_QWebEngineView_urlChanged(slot: int, param1: pointer) {.
 
   nimfunc[](slotval1)
 
-proc onurlChanged*(self: QWebEngineView, slot: proc(param1: gen_qurl.QUrl)) =
+proc onurlChanged*(self: gen_qwebengineview_types.QWebEngineView, slot: proc(param1: gen_qurl.QUrl)) =
   type Cb = proc(param1: gen_qurl.QUrl)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQWebEngineView_connect_urlChanged(self.h, cast[int](addr tmp[]))
-proc iconUrlChanged*(self: QWebEngineView, param1: gen_qurl.QUrl): void =
+proc iconUrlChanged*(self: gen_qwebengineview_types.QWebEngineView, param1: gen_qurl.QUrl): void =
 
   fcQWebEngineView_iconUrlChanged(self.h, param1.h)
 
@@ -551,13 +549,13 @@ proc miqt_exec_callback_QWebEngineView_iconUrlChanged(slot: int, param1: pointer
 
   nimfunc[](slotval1)
 
-proc oniconUrlChanged*(self: QWebEngineView, slot: proc(param1: gen_qurl.QUrl)) =
+proc oniconUrlChanged*(self: gen_qwebengineview_types.QWebEngineView, slot: proc(param1: gen_qurl.QUrl)) =
   type Cb = proc(param1: gen_qurl.QUrl)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQWebEngineView_connect_iconUrlChanged(self.h, cast[int](addr tmp[]))
-proc iconChanged*(self: QWebEngineView, param1: gen_qicon.QIcon): void =
+proc iconChanged*(self: gen_qwebengineview_types.QWebEngineView, param1: gen_qicon.QIcon): void =
 
   fcQWebEngineView_iconChanged(self.h, param1.h)
 
@@ -569,33 +567,33 @@ proc miqt_exec_callback_QWebEngineView_iconChanged(slot: int, param1: pointer) {
 
   nimfunc[](slotval1)
 
-proc oniconChanged*(self: QWebEngineView, slot: proc(param1: gen_qicon.QIcon)) =
+proc oniconChanged*(self: gen_qwebengineview_types.QWebEngineView, slot: proc(param1: gen_qicon.QIcon)) =
   type Cb = proc(param1: gen_qicon.QIcon)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQWebEngineView_connect_iconChanged(self.h, cast[int](addr tmp[]))
-proc renderProcessTerminated*(self: QWebEngineView, terminationStatus: gen_qwebenginepage.QWebEnginePageRenderProcessTerminationStatus, exitCode: cint): void =
+proc renderProcessTerminated*(self: gen_qwebengineview_types.QWebEngineView, terminationStatus: cint, exitCode: cint): void =
 
   fcQWebEngineView_renderProcessTerminated(self.h, cint(terminationStatus), exitCode)
 
 proc miqt_exec_callback_QWebEngineView_renderProcessTerminated(slot: int, terminationStatus: cint, exitCode: cint) {.exportc.} =
-  type Cb = proc(terminationStatus: gen_qwebenginepage.QWebEnginePageRenderProcessTerminationStatus, exitCode: cint)
+  type Cb = proc(terminationStatus: cint, exitCode: cint)
   let nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = gen_qwebenginepage.QWebEnginePageRenderProcessTerminationStatus(terminationStatus)
+  let slotval1 = cint(terminationStatus)
 
   let slotval2 = exitCode
 
 
   nimfunc[](slotval1, slotval2)
 
-proc onrenderProcessTerminated*(self: QWebEngineView, slot: proc(terminationStatus: gen_qwebenginepage.QWebEnginePageRenderProcessTerminationStatus, exitCode: cint)) =
-  type Cb = proc(terminationStatus: gen_qwebenginepage.QWebEnginePageRenderProcessTerminationStatus, exitCode: cint)
+proc onrenderProcessTerminated*(self: gen_qwebengineview_types.QWebEngineView, slot: proc(terminationStatus: cint, exitCode: cint)) =
+  type Cb = proc(terminationStatus: cint, exitCode: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQWebEngineView_connect_renderProcessTerminated(self.h, cast[int](addr tmp[]))
-proc pdfPrintingFinished*(self: QWebEngineView, filePath: string, success: bool): void =
+proc pdfPrintingFinished*(self: gen_qwebengineview_types.QWebEngineView, filePath: string, success: bool): void =
 
   fcQWebEngineView_pdfPrintingFinished(self.h, struct_miqt_string(data: filePath, len: csize_t(len(filePath))), success)
 
@@ -612,13 +610,13 @@ proc miqt_exec_callback_QWebEngineView_pdfPrintingFinished(slot: int, filePath: 
 
   nimfunc[](slotval1, slotval2)
 
-proc onpdfPrintingFinished*(self: QWebEngineView, slot: proc(filePath: string, success: bool)) =
+proc onpdfPrintingFinished*(self: gen_qwebengineview_types.QWebEngineView, slot: proc(filePath: string, success: bool)) =
   type Cb = proc(filePath: string, success: bool)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQWebEngineView_connect_pdfPrintingFinished(self.h, cast[int](addr tmp[]))
-proc printRequested*(self: QWebEngineView, ): void =
+proc printRequested*(self: gen_qwebengineview_types.QWebEngineView, ): void =
 
   fcQWebEngineView_printRequested(self.h)
 
@@ -628,13 +626,13 @@ proc miqt_exec_callback_QWebEngineView_printRequested(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onprintRequested*(self: QWebEngineView, slot: proc()) =
+proc onprintRequested*(self: gen_qwebengineview_types.QWebEngineView, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQWebEngineView_connect_printRequested(self.h, cast[int](addr tmp[]))
-proc printFinished*(self: QWebEngineView, success: bool): void =
+proc printFinished*(self: gen_qwebengineview_types.QWebEngineView, success: bool): void =
 
   fcQWebEngineView_printFinished(self.h, success)
 
@@ -646,911 +644,726 @@ proc miqt_exec_callback_QWebEngineView_printFinished(slot: int, success: bool) {
 
   nimfunc[](slotval1)
 
-proc onprintFinished*(self: QWebEngineView, slot: proc(success: bool)) =
+proc onprintFinished*(self: gen_qwebengineview_types.QWebEngineView, slot: proc(success: bool)) =
   type Cb = proc(success: bool)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQWebEngineView_connect_printFinished(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QWebEngineView, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qwebengineview_types.QWebEngineView, s: cstring, c: cstring): string =
 
   let v_ms = fcQWebEngineView_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QWebEngineView, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qwebengineview_types.QWebEngineView, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQWebEngineView_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setHtml2*(self: QWebEngineView, html: string, baseUrl: gen_qurl.QUrl): void =
+proc setHtml2*(self: gen_qwebengineview_types.QWebEngineView, html: string, baseUrl: gen_qurl.QUrl): void =
 
   fcQWebEngineView_setHtml2(self.h, struct_miqt_string(data: html, len: csize_t(len(html))), baseUrl.h)
 
-proc setContent2*(self: QWebEngineView, data: seq[byte], mimeType: string): void =
+proc setContent2*(self: gen_qwebengineview_types.QWebEngineView, data: seq[byte], mimeType: string): void =
 
   fcQWebEngineView_setContent2(self.h, struct_miqt_string(data: cast[cstring](if len(data) == 0: nil else: unsafeAddr data[0]), len: csize_t(len(data))), struct_miqt_string(data: mimeType, len: csize_t(len(mimeType))))
 
-proc setContent3*(self: QWebEngineView, data: seq[byte], mimeType: string, baseUrl: gen_qurl.QUrl): void =
+proc setContent3*(self: gen_qwebengineview_types.QWebEngineView, data: seq[byte], mimeType: string, baseUrl: gen_qurl.QUrl): void =
 
   fcQWebEngineView_setContent3(self.h, struct_miqt_string(data: cast[cstring](if len(data) == 0: nil else: unsafeAddr data[0]), len: csize_t(len(data))), struct_miqt_string(data: mimeType, len: csize_t(len(mimeType))), baseUrl.h)
 
-proc triggerPageAction2*(self: QWebEngineView, action: gen_qwebenginepage.QWebEnginePageWebAction, checked: bool): void =
+proc triggerPageAction2*(self: gen_qwebengineview_types.QWebEngineView, action: cint, checked: bool): void =
 
   fcQWebEngineView_triggerPageAction2(self.h, cint(action), checked)
 
-proc printToPdf2*(self: QWebEngineView, filePath: string, layout: gen_qpagelayout.QPageLayout): void =
+proc printToPdf2*(self: gen_qwebengineview_types.QWebEngineView, filePath: string, layout: gen_qpagelayout.QPageLayout): void =
 
   fcQWebEngineView_printToPdf2(self.h, struct_miqt_string(data: filePath, len: csize_t(len(filePath))), layout.h)
 
-proc printToPdf3*(self: QWebEngineView, filePath: string, layout: gen_qpagelayout.QPageLayout, ranges: gen_qpageranges.QPageRanges): void =
+proc printToPdf3*(self: gen_qwebengineview_types.QWebEngineView, filePath: string, layout: gen_qpagelayout.QPageLayout, ranges: gen_qpageranges.QPageRanges): void =
 
   fcQWebEngineView_printToPdf3(self.h, struct_miqt_string(data: filePath, len: csize_t(len(filePath))), layout.h, ranges.h)
 
-proc callVirtualBase_metaObject(self: QWebEngineView, ): gen_qobjectdefs.QMetaObject =
-
+proc QWebEngineViewmetaObject*(self: gen_qwebengineview_types.QWebEngineView, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQWebEngineView_virtualbase_metaObject(self.h))
 
-type QWebEngineViewmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QWebEngineView, slot: proc(super: QWebEngineViewmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QWebEngineViewmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineViewmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QWebEngineViewmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineView_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineView_metaObject(self: ptr cQWebEngineView, slot: int): pointer {.exportc: "miqt_exec_callback_QWebEngineView_metaObject ".} =
-  type Cb = proc(super: QWebEngineViewmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QWebEngineView(h: self), )
+  var nimfunc = cast[ptr QWebEngineViewmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QWebEngineView, param1: cstring): pointer =
-
+proc QWebEngineViewmetacast*(self: gen_qwebengineview_types.QWebEngineView, param1: cstring): pointer =
 
   fQWebEngineView_virtualbase_metacast(self.h, param1)
 
-type QWebEngineViewmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QWebEngineView, slot: proc(super: QWebEngineViewmetacastBase, param1: cstring): pointer) =
+type QWebEngineViewmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineViewmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QWebEngineViewmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineView_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineView_metacast(self: ptr cQWebEngineView, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QWebEngineView_metacast ".} =
-  type Cb = proc(super: QWebEngineViewmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QWebEngineView(h: self), param1)
+  var nimfunc = cast[ptr QWebEngineViewmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QWebEngineView, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QWebEngineViewmetacall*(self: gen_qwebengineview_types.QWebEngineView, param1: cint, param2: cint, param3: pointer): cint =
 
   fQWebEngineView_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QWebEngineViewmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QWebEngineView, slot: proc(super: QWebEngineViewmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QWebEngineViewmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineViewmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QWebEngineViewmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineView_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineView_metacall(self: ptr cQWebEngineView, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QWebEngineView_metacall ".} =
-  type Cb = proc(super: QWebEngineViewmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QWebEngineView(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QWebEngineViewmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_sizeHint(self: QWebEngineView, ): gen_qsize.QSize =
-
+proc QWebEngineViewsizeHint*(self: gen_qwebengineview_types.QWebEngineView, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQWebEngineView_virtualbase_sizeHint(self.h))
 
-type QWebEngineViewsizeHintBase* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: QWebEngineView, slot: proc(super: QWebEngineViewsizeHintBase): gen_qsize.QSize) =
+type QWebEngineViewsizeHintProc* = proc(): gen_qsize.QSize
+proc onsizeHint*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewsizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineViewsizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QWebEngineViewsizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineView_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineView_sizeHint(self: ptr cQWebEngineView, slot: int): pointer {.exportc: "miqt_exec_callback_QWebEngineView_sizeHint ".} =
-  type Cb = proc(super: QWebEngineViewsizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sizeHint(QWebEngineView(h: self), )
+  var nimfunc = cast[ptr QWebEngineViewsizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_createWindow(self: QWebEngineView, typeVal: gen_qwebenginepage.QWebEnginePageWebWindowType): QWebEngineView =
+proc QWebEngineViewcreateWindow*(self: gen_qwebengineview_types.QWebEngineView, typeVal: cint): gen_qwebengineview_types.QWebEngineView =
 
+  gen_qwebengineview_types.QWebEngineView(h: fQWebEngineView_virtualbase_createWindow(self.h, cint(typeVal)))
 
-  QWebEngineView(h: fQWebEngineView_virtualbase_createWindow(self.h, cint(typeVal)))
-
-type QWebEngineViewcreateWindowBase* = proc(typeVal: gen_qwebenginepage.QWebEnginePageWebWindowType): QWebEngineView
-proc oncreateWindow*(self: QWebEngineView, slot: proc(super: QWebEngineViewcreateWindowBase, typeVal: gen_qwebenginepage.QWebEnginePageWebWindowType): QWebEngineView) =
+type QWebEngineViewcreateWindowProc* = proc(typeVal: cint): gen_qwebengineview_types.QWebEngineView
+proc oncreateWindow*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewcreateWindowProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineViewcreateWindowBase, typeVal: gen_qwebenginepage.QWebEnginePageWebWindowType): QWebEngineView
-  var tmp = new Cb
+  var tmp = new QWebEngineViewcreateWindowProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineView_override_virtual_createWindow(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineView_createWindow(self: ptr cQWebEngineView, slot: int, typeVal: cint): pointer {.exportc: "miqt_exec_callback_QWebEngineView_createWindow ".} =
-  type Cb = proc(super: QWebEngineViewcreateWindowBase, typeVal: gen_qwebenginepage.QWebEnginePageWebWindowType): QWebEngineView
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(typeVal: gen_qwebenginepage.QWebEnginePageWebWindowType): auto =
-    callVirtualBase_createWindow(QWebEngineView(h: self), typeVal)
-  let slotval1 = gen_qwebenginepage.QWebEnginePageWebWindowType(typeVal)
+  var nimfunc = cast[ptr QWebEngineViewcreateWindowProc](cast[pointer](slot))
+  let slotval1 = cint(typeVal)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_contextMenuEvent(self: QWebEngineView, param1: gen_qevent.QContextMenuEvent): void =
-
+proc QWebEngineViewcontextMenuEvent*(self: gen_qwebengineview_types.QWebEngineView, param1: gen_qevent.QContextMenuEvent): void =
 
   fQWebEngineView_virtualbase_contextMenuEvent(self.h, param1.h)
 
-type QWebEngineViewcontextMenuEventBase* = proc(param1: gen_qevent.QContextMenuEvent): void
-proc oncontextMenuEvent*(self: QWebEngineView, slot: proc(super: QWebEngineViewcontextMenuEventBase, param1: gen_qevent.QContextMenuEvent): void) =
+type QWebEngineViewcontextMenuEventProc* = proc(param1: gen_qevent.QContextMenuEvent): void
+proc oncontextMenuEvent*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewcontextMenuEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineViewcontextMenuEventBase, param1: gen_qevent.QContextMenuEvent): void
-  var tmp = new Cb
+  var tmp = new QWebEngineViewcontextMenuEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineView_override_virtual_contextMenuEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineView_contextMenuEvent(self: ptr cQWebEngineView, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QWebEngineView_contextMenuEvent ".} =
-  type Cb = proc(super: QWebEngineViewcontextMenuEventBase, param1: gen_qevent.QContextMenuEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QContextMenuEvent): auto =
-    callVirtualBase_contextMenuEvent(QWebEngineView(h: self), param1)
+  var nimfunc = cast[ptr QWebEngineViewcontextMenuEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QContextMenuEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_event(self: QWebEngineView, param1: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[](slotval1)
+proc QWebEngineViewevent*(self: gen_qwebengineview_types.QWebEngineView, param1: gen_qcoreevent.QEvent): bool =
 
   fQWebEngineView_virtualbase_event(self.h, param1.h)
 
-type QWebEngineVieweventBase* = proc(param1: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QWebEngineView, slot: proc(super: QWebEngineVieweventBase, param1: gen_qcoreevent.QEvent): bool) =
+type QWebEngineVieweventProc* = proc(param1: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineVieweventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineVieweventBase, param1: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QWebEngineVieweventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineView_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineView_event(self: ptr cQWebEngineView, slot: int, param1: pointer): bool {.exportc: "miqt_exec_callback_QWebEngineView_event ".} =
-  type Cb = proc(super: QWebEngineVieweventBase, param1: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QWebEngineView(h: self), param1)
+  var nimfunc = cast[ptr QWebEngineVieweventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_showEvent(self: QWebEngineView, param1: gen_qevent.QShowEvent): void =
-
+proc QWebEngineViewshowEvent*(self: gen_qwebengineview_types.QWebEngineView, param1: gen_qevent.QShowEvent): void =
 
   fQWebEngineView_virtualbase_showEvent(self.h, param1.h)
 
-type QWebEngineViewshowEventBase* = proc(param1: gen_qevent.QShowEvent): void
-proc onshowEvent*(self: QWebEngineView, slot: proc(super: QWebEngineViewshowEventBase, param1: gen_qevent.QShowEvent): void) =
+type QWebEngineViewshowEventProc* = proc(param1: gen_qevent.QShowEvent): void
+proc onshowEvent*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewshowEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineViewshowEventBase, param1: gen_qevent.QShowEvent): void
-  var tmp = new Cb
+  var tmp = new QWebEngineViewshowEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineView_override_virtual_showEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineView_showEvent(self: ptr cQWebEngineView, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QWebEngineView_showEvent ".} =
-  type Cb = proc(super: QWebEngineViewshowEventBase, param1: gen_qevent.QShowEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QShowEvent): auto =
-    callVirtualBase_showEvent(QWebEngineView(h: self), param1)
+  var nimfunc = cast[ptr QWebEngineViewshowEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QShowEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hideEvent(self: QWebEngineView, param1: gen_qevent.QHideEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebEngineViewhideEvent*(self: gen_qwebengineview_types.QWebEngineView, param1: gen_qevent.QHideEvent): void =
 
   fQWebEngineView_virtualbase_hideEvent(self.h, param1.h)
 
-type QWebEngineViewhideEventBase* = proc(param1: gen_qevent.QHideEvent): void
-proc onhideEvent*(self: QWebEngineView, slot: proc(super: QWebEngineViewhideEventBase, param1: gen_qevent.QHideEvent): void) =
+type QWebEngineViewhideEventProc* = proc(param1: gen_qevent.QHideEvent): void
+proc onhideEvent*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewhideEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineViewhideEventBase, param1: gen_qevent.QHideEvent): void
-  var tmp = new Cb
+  var tmp = new QWebEngineViewhideEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineView_override_virtual_hideEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineView_hideEvent(self: ptr cQWebEngineView, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QWebEngineView_hideEvent ".} =
-  type Cb = proc(super: QWebEngineViewhideEventBase, param1: gen_qevent.QHideEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QHideEvent): auto =
-    callVirtualBase_hideEvent(QWebEngineView(h: self), param1)
+  var nimfunc = cast[ptr QWebEngineViewhideEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QHideEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_closeEvent(self: QWebEngineView, param1: gen_qevent.QCloseEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebEngineViewcloseEvent*(self: gen_qwebengineview_types.QWebEngineView, param1: gen_qevent.QCloseEvent): void =
 
   fQWebEngineView_virtualbase_closeEvent(self.h, param1.h)
 
-type QWebEngineViewcloseEventBase* = proc(param1: gen_qevent.QCloseEvent): void
-proc oncloseEvent*(self: QWebEngineView, slot: proc(super: QWebEngineViewcloseEventBase, param1: gen_qevent.QCloseEvent): void) =
+type QWebEngineViewcloseEventProc* = proc(param1: gen_qevent.QCloseEvent): void
+proc oncloseEvent*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewcloseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineViewcloseEventBase, param1: gen_qevent.QCloseEvent): void
-  var tmp = new Cb
+  var tmp = new QWebEngineViewcloseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineView_override_virtual_closeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineView_closeEvent(self: ptr cQWebEngineView, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QWebEngineView_closeEvent ".} =
-  type Cb = proc(super: QWebEngineViewcloseEventBase, param1: gen_qevent.QCloseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QCloseEvent): auto =
-    callVirtualBase_closeEvent(QWebEngineView(h: self), param1)
+  var nimfunc = cast[ptr QWebEngineViewcloseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QCloseEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragEnterEvent(self: QWebEngineView, e: gen_qevent.QDragEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebEngineViewdragEnterEvent*(self: gen_qwebengineview_types.QWebEngineView, e: gen_qevent.QDragEnterEvent): void =
 
   fQWebEngineView_virtualbase_dragEnterEvent(self.h, e.h)
 
-type QWebEngineViewdragEnterEventBase* = proc(e: gen_qevent.QDragEnterEvent): void
-proc ondragEnterEvent*(self: QWebEngineView, slot: proc(super: QWebEngineViewdragEnterEventBase, e: gen_qevent.QDragEnterEvent): void) =
+type QWebEngineViewdragEnterEventProc* = proc(e: gen_qevent.QDragEnterEvent): void
+proc ondragEnterEvent*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewdragEnterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineViewdragEnterEventBase, e: gen_qevent.QDragEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QWebEngineViewdragEnterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineView_override_virtual_dragEnterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineView_dragEnterEvent(self: ptr cQWebEngineView, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QWebEngineView_dragEnterEvent ".} =
-  type Cb = proc(super: QWebEngineViewdragEnterEventBase, e: gen_qevent.QDragEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qevent.QDragEnterEvent): auto =
-    callVirtualBase_dragEnterEvent(QWebEngineView(h: self), e)
+  var nimfunc = cast[ptr QWebEngineViewdragEnterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragEnterEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragLeaveEvent(self: QWebEngineView, e: gen_qevent.QDragLeaveEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebEngineViewdragLeaveEvent*(self: gen_qwebengineview_types.QWebEngineView, e: gen_qevent.QDragLeaveEvent): void =
 
   fQWebEngineView_virtualbase_dragLeaveEvent(self.h, e.h)
 
-type QWebEngineViewdragLeaveEventBase* = proc(e: gen_qevent.QDragLeaveEvent): void
-proc ondragLeaveEvent*(self: QWebEngineView, slot: proc(super: QWebEngineViewdragLeaveEventBase, e: gen_qevent.QDragLeaveEvent): void) =
+type QWebEngineViewdragLeaveEventProc* = proc(e: gen_qevent.QDragLeaveEvent): void
+proc ondragLeaveEvent*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewdragLeaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineViewdragLeaveEventBase, e: gen_qevent.QDragLeaveEvent): void
-  var tmp = new Cb
+  var tmp = new QWebEngineViewdragLeaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineView_override_virtual_dragLeaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineView_dragLeaveEvent(self: ptr cQWebEngineView, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QWebEngineView_dragLeaveEvent ".} =
-  type Cb = proc(super: QWebEngineViewdragLeaveEventBase, e: gen_qevent.QDragLeaveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qevent.QDragLeaveEvent): auto =
-    callVirtualBase_dragLeaveEvent(QWebEngineView(h: self), e)
+  var nimfunc = cast[ptr QWebEngineViewdragLeaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragLeaveEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragMoveEvent(self: QWebEngineView, e: gen_qevent.QDragMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebEngineViewdragMoveEvent*(self: gen_qwebengineview_types.QWebEngineView, e: gen_qevent.QDragMoveEvent): void =
 
   fQWebEngineView_virtualbase_dragMoveEvent(self.h, e.h)
 
-type QWebEngineViewdragMoveEventBase* = proc(e: gen_qevent.QDragMoveEvent): void
-proc ondragMoveEvent*(self: QWebEngineView, slot: proc(super: QWebEngineViewdragMoveEventBase, e: gen_qevent.QDragMoveEvent): void) =
+type QWebEngineViewdragMoveEventProc* = proc(e: gen_qevent.QDragMoveEvent): void
+proc ondragMoveEvent*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewdragMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineViewdragMoveEventBase, e: gen_qevent.QDragMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QWebEngineViewdragMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineView_override_virtual_dragMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineView_dragMoveEvent(self: ptr cQWebEngineView, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QWebEngineView_dragMoveEvent ".} =
-  type Cb = proc(super: QWebEngineViewdragMoveEventBase, e: gen_qevent.QDragMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qevent.QDragMoveEvent): auto =
-    callVirtualBase_dragMoveEvent(QWebEngineView(h: self), e)
+  var nimfunc = cast[ptr QWebEngineViewdragMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragMoveEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dropEvent(self: QWebEngineView, e: gen_qevent.QDropEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebEngineViewdropEvent*(self: gen_qwebengineview_types.QWebEngineView, e: gen_qevent.QDropEvent): void =
 
   fQWebEngineView_virtualbase_dropEvent(self.h, e.h)
 
-type QWebEngineViewdropEventBase* = proc(e: gen_qevent.QDropEvent): void
-proc ondropEvent*(self: QWebEngineView, slot: proc(super: QWebEngineViewdropEventBase, e: gen_qevent.QDropEvent): void) =
+type QWebEngineViewdropEventProc* = proc(e: gen_qevent.QDropEvent): void
+proc ondropEvent*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewdropEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineViewdropEventBase, e: gen_qevent.QDropEvent): void
-  var tmp = new Cb
+  var tmp = new QWebEngineViewdropEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineView_override_virtual_dropEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineView_dropEvent(self: ptr cQWebEngineView, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QWebEngineView_dropEvent ".} =
-  type Cb = proc(super: QWebEngineViewdropEventBase, e: gen_qevent.QDropEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qevent.QDropEvent): auto =
-    callVirtualBase_dropEvent(QWebEngineView(h: self), e)
+  var nimfunc = cast[ptr QWebEngineViewdropEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDropEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_devType(self: QWebEngineView, ): cint =
-
+  nimfunc[](slotval1)
+proc QWebEngineViewdevType*(self: gen_qwebengineview_types.QWebEngineView, ): cint =
 
   fQWebEngineView_virtualbase_devType(self.h)
 
-type QWebEngineViewdevTypeBase* = proc(): cint
-proc ondevType*(self: QWebEngineView, slot: proc(super: QWebEngineViewdevTypeBase): cint) =
+type QWebEngineViewdevTypeProc* = proc(): cint
+proc ondevType*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewdevTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineViewdevTypeBase): cint
-  var tmp = new Cb
+  var tmp = new QWebEngineViewdevTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineView_override_virtual_devType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineView_devType(self: ptr cQWebEngineView, slot: int): cint {.exportc: "miqt_exec_callback_QWebEngineView_devType ".} =
-  type Cb = proc(super: QWebEngineViewdevTypeBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_devType(QWebEngineView(h: self), )
+  var nimfunc = cast[ptr QWebEngineViewdevTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setVisible(self: QWebEngineView, visible: bool): void =
-
+proc QWebEngineViewsetVisible*(self: gen_qwebengineview_types.QWebEngineView, visible: bool): void =
 
   fQWebEngineView_virtualbase_setVisible(self.h, visible)
 
-type QWebEngineViewsetVisibleBase* = proc(visible: bool): void
-proc onsetVisible*(self: QWebEngineView, slot: proc(super: QWebEngineViewsetVisibleBase, visible: bool): void) =
+type QWebEngineViewsetVisibleProc* = proc(visible: bool): void
+proc onsetVisible*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewsetVisibleProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineViewsetVisibleBase, visible: bool): void
-  var tmp = new Cb
+  var tmp = new QWebEngineViewsetVisibleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineView_override_virtual_setVisible(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineView_setVisible(self: ptr cQWebEngineView, slot: int, visible: bool): void {.exportc: "miqt_exec_callback_QWebEngineView_setVisible ".} =
-  type Cb = proc(super: QWebEngineViewsetVisibleBase, visible: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(visible: bool): auto =
-    callVirtualBase_setVisible(QWebEngineView(h: self), visible)
+  var nimfunc = cast[ptr QWebEngineViewsetVisibleProc](cast[pointer](slot))
   let slotval1 = visible
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_minimumSizeHint(self: QWebEngineView, ): gen_qsize.QSize =
-
+  nimfunc[](slotval1)
+proc QWebEngineViewminimumSizeHint*(self: gen_qwebengineview_types.QWebEngineView, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQWebEngineView_virtualbase_minimumSizeHint(self.h))
 
-type QWebEngineViewminimumSizeHintBase* = proc(): gen_qsize.QSize
-proc onminimumSizeHint*(self: QWebEngineView, slot: proc(super: QWebEngineViewminimumSizeHintBase): gen_qsize.QSize) =
+type QWebEngineViewminimumSizeHintProc* = proc(): gen_qsize.QSize
+proc onminimumSizeHint*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewminimumSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineViewminimumSizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QWebEngineViewminimumSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineView_override_virtual_minimumSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineView_minimumSizeHint(self: ptr cQWebEngineView, slot: int): pointer {.exportc: "miqt_exec_callback_QWebEngineView_minimumSizeHint ".} =
-  type Cb = proc(super: QWebEngineViewminimumSizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_minimumSizeHint(QWebEngineView(h: self), )
+  var nimfunc = cast[ptr QWebEngineViewminimumSizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_heightForWidth(self: QWebEngineView, param1: cint): cint =
-
+proc QWebEngineViewheightForWidth*(self: gen_qwebengineview_types.QWebEngineView, param1: cint): cint =
 
   fQWebEngineView_virtualbase_heightForWidth(self.h, param1)
 
-type QWebEngineViewheightForWidthBase* = proc(param1: cint): cint
-proc onheightForWidth*(self: QWebEngineView, slot: proc(super: QWebEngineViewheightForWidthBase, param1: cint): cint) =
+type QWebEngineViewheightForWidthProc* = proc(param1: cint): cint
+proc onheightForWidth*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewheightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineViewheightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QWebEngineViewheightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineView_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineView_heightForWidth(self: ptr cQWebEngineView, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QWebEngineView_heightForWidth ".} =
-  type Cb = proc(super: QWebEngineViewheightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_heightForWidth(QWebEngineView(h: self), param1)
+  var nimfunc = cast[ptr QWebEngineViewheightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_hasHeightForWidth(self: QWebEngineView, ): bool =
-
+proc QWebEngineViewhasHeightForWidth*(self: gen_qwebengineview_types.QWebEngineView, ): bool =
 
   fQWebEngineView_virtualbase_hasHeightForWidth(self.h)
 
-type QWebEngineViewhasHeightForWidthBase* = proc(): bool
-proc onhasHeightForWidth*(self: QWebEngineView, slot: proc(super: QWebEngineViewhasHeightForWidthBase): bool) =
+type QWebEngineViewhasHeightForWidthProc* = proc(): bool
+proc onhasHeightForWidth*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewhasHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineViewhasHeightForWidthBase): bool
-  var tmp = new Cb
+  var tmp = new QWebEngineViewhasHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineView_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineView_hasHeightForWidth(self: ptr cQWebEngineView, slot: int): bool {.exportc: "miqt_exec_callback_QWebEngineView_hasHeightForWidth ".} =
-  type Cb = proc(super: QWebEngineViewhasHeightForWidthBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasHeightForWidth(QWebEngineView(h: self), )
+  var nimfunc = cast[ptr QWebEngineViewhasHeightForWidthProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_paintEngine(self: QWebEngineView, ): gen_qpaintengine.QPaintEngine =
-
+proc QWebEngineViewpaintEngine*(self: gen_qwebengineview_types.QWebEngineView, ): gen_qpaintengine.QPaintEngine =
 
   gen_qpaintengine.QPaintEngine(h: fQWebEngineView_virtualbase_paintEngine(self.h))
 
-type QWebEngineViewpaintEngineBase* = proc(): gen_qpaintengine.QPaintEngine
-proc onpaintEngine*(self: QWebEngineView, slot: proc(super: QWebEngineViewpaintEngineBase): gen_qpaintengine.QPaintEngine) =
+type QWebEngineViewpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
+proc onpaintEngine*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewpaintEngineProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineViewpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var tmp = new Cb
+  var tmp = new QWebEngineViewpaintEngineProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineView_override_virtual_paintEngine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineView_paintEngine(self: ptr cQWebEngineView, slot: int): pointer {.exportc: "miqt_exec_callback_QWebEngineView_paintEngine ".} =
-  type Cb = proc(super: QWebEngineViewpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_paintEngine(QWebEngineView(h: self), )
+  var nimfunc = cast[ptr QWebEngineViewpaintEngineProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_mousePressEvent(self: QWebEngineView, event: gen_qevent.QMouseEvent): void =
-
+proc QWebEngineViewmousePressEvent*(self: gen_qwebengineview_types.QWebEngineView, event: gen_qevent.QMouseEvent): void =
 
   fQWebEngineView_virtualbase_mousePressEvent(self.h, event.h)
 
-type QWebEngineViewmousePressEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmousePressEvent*(self: QWebEngineView, slot: proc(super: QWebEngineViewmousePressEventBase, event: gen_qevent.QMouseEvent): void) =
+type QWebEngineViewmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmousePressEvent*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewmousePressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineViewmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QWebEngineViewmousePressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineView_override_virtual_mousePressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineView_mousePressEvent(self: ptr cQWebEngineView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebEngineView_mousePressEvent ".} =
-  type Cb = proc(super: QWebEngineViewmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mousePressEvent(QWebEngineView(h: self), event)
+  var nimfunc = cast[ptr QWebEngineViewmousePressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseReleaseEvent(self: QWebEngineView, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebEngineViewmouseReleaseEvent*(self: gen_qwebengineview_types.QWebEngineView, event: gen_qevent.QMouseEvent): void =
 
   fQWebEngineView_virtualbase_mouseReleaseEvent(self.h, event.h)
 
-type QWebEngineViewmouseReleaseEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseReleaseEvent*(self: QWebEngineView, slot: proc(super: QWebEngineViewmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void) =
+type QWebEngineViewmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseReleaseEvent*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewmouseReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineViewmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QWebEngineViewmouseReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineView_override_virtual_mouseReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineView_mouseReleaseEvent(self: ptr cQWebEngineView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebEngineView_mouseReleaseEvent ".} =
-  type Cb = proc(super: QWebEngineViewmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseReleaseEvent(QWebEngineView(h: self), event)
+  var nimfunc = cast[ptr QWebEngineViewmouseReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseDoubleClickEvent(self: QWebEngineView, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebEngineViewmouseDoubleClickEvent*(self: gen_qwebengineview_types.QWebEngineView, event: gen_qevent.QMouseEvent): void =
 
   fQWebEngineView_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
-type QWebEngineViewmouseDoubleClickEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseDoubleClickEvent*(self: QWebEngineView, slot: proc(super: QWebEngineViewmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void) =
+type QWebEngineViewmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseDoubleClickEvent*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewmouseDoubleClickEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineViewmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QWebEngineViewmouseDoubleClickEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineView_override_virtual_mouseDoubleClickEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineView_mouseDoubleClickEvent(self: ptr cQWebEngineView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebEngineView_mouseDoubleClickEvent ".} =
-  type Cb = proc(super: QWebEngineViewmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseDoubleClickEvent(QWebEngineView(h: self), event)
+  var nimfunc = cast[ptr QWebEngineViewmouseDoubleClickEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseMoveEvent(self: QWebEngineView, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebEngineViewmouseMoveEvent*(self: gen_qwebengineview_types.QWebEngineView, event: gen_qevent.QMouseEvent): void =
 
   fQWebEngineView_virtualbase_mouseMoveEvent(self.h, event.h)
 
-type QWebEngineViewmouseMoveEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseMoveEvent*(self: QWebEngineView, slot: proc(super: QWebEngineViewmouseMoveEventBase, event: gen_qevent.QMouseEvent): void) =
+type QWebEngineViewmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseMoveEvent*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewmouseMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineViewmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QWebEngineViewmouseMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineView_override_virtual_mouseMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineView_mouseMoveEvent(self: ptr cQWebEngineView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebEngineView_mouseMoveEvent ".} =
-  type Cb = proc(super: QWebEngineViewmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseMoveEvent(QWebEngineView(h: self), event)
+  var nimfunc = cast[ptr QWebEngineViewmouseMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_wheelEvent(self: QWebEngineView, event: gen_qevent.QWheelEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebEngineViewwheelEvent*(self: gen_qwebengineview_types.QWebEngineView, event: gen_qevent.QWheelEvent): void =
 
   fQWebEngineView_virtualbase_wheelEvent(self.h, event.h)
 
-type QWebEngineViewwheelEventBase* = proc(event: gen_qevent.QWheelEvent): void
-proc onwheelEvent*(self: QWebEngineView, slot: proc(super: QWebEngineViewwheelEventBase, event: gen_qevent.QWheelEvent): void) =
+type QWebEngineViewwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
+proc onwheelEvent*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewwheelEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineViewwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var tmp = new Cb
+  var tmp = new QWebEngineViewwheelEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineView_override_virtual_wheelEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineView_wheelEvent(self: ptr cQWebEngineView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebEngineView_wheelEvent ".} =
-  type Cb = proc(super: QWebEngineViewwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QWheelEvent): auto =
-    callVirtualBase_wheelEvent(QWebEngineView(h: self), event)
+  var nimfunc = cast[ptr QWebEngineViewwheelEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QWheelEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyPressEvent(self: QWebEngineView, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebEngineViewkeyPressEvent*(self: gen_qwebengineview_types.QWebEngineView, event: gen_qevent.QKeyEvent): void =
 
   fQWebEngineView_virtualbase_keyPressEvent(self.h, event.h)
 
-type QWebEngineViewkeyPressEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyPressEvent*(self: QWebEngineView, slot: proc(super: QWebEngineViewkeyPressEventBase, event: gen_qevent.QKeyEvent): void) =
+type QWebEngineViewkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyPressEvent*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewkeyPressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineViewkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QWebEngineViewkeyPressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineView_override_virtual_keyPressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineView_keyPressEvent(self: ptr cQWebEngineView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebEngineView_keyPressEvent ".} =
-  type Cb = proc(super: QWebEngineViewkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyPressEvent(QWebEngineView(h: self), event)
+  var nimfunc = cast[ptr QWebEngineViewkeyPressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyReleaseEvent(self: QWebEngineView, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebEngineViewkeyReleaseEvent*(self: gen_qwebengineview_types.QWebEngineView, event: gen_qevent.QKeyEvent): void =
 
   fQWebEngineView_virtualbase_keyReleaseEvent(self.h, event.h)
 
-type QWebEngineViewkeyReleaseEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyReleaseEvent*(self: QWebEngineView, slot: proc(super: QWebEngineViewkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void) =
+type QWebEngineViewkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyReleaseEvent*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewkeyReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineViewkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QWebEngineViewkeyReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineView_override_virtual_keyReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineView_keyReleaseEvent(self: ptr cQWebEngineView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebEngineView_keyReleaseEvent ".} =
-  type Cb = proc(super: QWebEngineViewkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyReleaseEvent(QWebEngineView(h: self), event)
+  var nimfunc = cast[ptr QWebEngineViewkeyReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusInEvent(self: QWebEngineView, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebEngineViewfocusInEvent*(self: gen_qwebengineview_types.QWebEngineView, event: gen_qevent.QFocusEvent): void =
 
   fQWebEngineView_virtualbase_focusInEvent(self.h, event.h)
 
-type QWebEngineViewfocusInEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusInEvent*(self: QWebEngineView, slot: proc(super: QWebEngineViewfocusInEventBase, event: gen_qevent.QFocusEvent): void) =
+type QWebEngineViewfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusInEvent*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewfocusInEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineViewfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QWebEngineViewfocusInEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineView_override_virtual_focusInEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineView_focusInEvent(self: ptr cQWebEngineView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebEngineView_focusInEvent ".} =
-  type Cb = proc(super: QWebEngineViewfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusInEvent(QWebEngineView(h: self), event)
+  var nimfunc = cast[ptr QWebEngineViewfocusInEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusOutEvent(self: QWebEngineView, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebEngineViewfocusOutEvent*(self: gen_qwebengineview_types.QWebEngineView, event: gen_qevent.QFocusEvent): void =
 
   fQWebEngineView_virtualbase_focusOutEvent(self.h, event.h)
 
-type QWebEngineViewfocusOutEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusOutEvent*(self: QWebEngineView, slot: proc(super: QWebEngineViewfocusOutEventBase, event: gen_qevent.QFocusEvent): void) =
+type QWebEngineViewfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusOutEvent*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewfocusOutEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineViewfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QWebEngineViewfocusOutEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineView_override_virtual_focusOutEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineView_focusOutEvent(self: ptr cQWebEngineView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebEngineView_focusOutEvent ".} =
-  type Cb = proc(super: QWebEngineViewfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusOutEvent(QWebEngineView(h: self), event)
+  var nimfunc = cast[ptr QWebEngineViewfocusOutEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_enterEvent(self: QWebEngineView, event: gen_qevent.QEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebEngineViewenterEvent*(self: gen_qwebengineview_types.QWebEngineView, event: gen_qevent.QEnterEvent): void =
 
   fQWebEngineView_virtualbase_enterEvent(self.h, event.h)
 
-type QWebEngineViewenterEventBase* = proc(event: gen_qevent.QEnterEvent): void
-proc onenterEvent*(self: QWebEngineView, slot: proc(super: QWebEngineViewenterEventBase, event: gen_qevent.QEnterEvent): void) =
+type QWebEngineViewenterEventProc* = proc(event: gen_qevent.QEnterEvent): void
+proc onenterEvent*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewenterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineViewenterEventBase, event: gen_qevent.QEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QWebEngineViewenterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineView_override_virtual_enterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineView_enterEvent(self: ptr cQWebEngineView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebEngineView_enterEvent ".} =
-  type Cb = proc(super: QWebEngineViewenterEventBase, event: gen_qevent.QEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QEnterEvent): auto =
-    callVirtualBase_enterEvent(QWebEngineView(h: self), event)
+  var nimfunc = cast[ptr QWebEngineViewenterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_leaveEvent(self: QWebEngineView, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebEngineViewleaveEvent*(self: gen_qwebengineview_types.QWebEngineView, event: gen_qcoreevent.QEvent): void =
 
   fQWebEngineView_virtualbase_leaveEvent(self.h, event.h)
 
-type QWebEngineViewleaveEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onleaveEvent*(self: QWebEngineView, slot: proc(super: QWebEngineViewleaveEventBase, event: gen_qcoreevent.QEvent): void) =
+type QWebEngineViewleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onleaveEvent*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewleaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineViewleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QWebEngineViewleaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineView_override_virtual_leaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineView_leaveEvent(self: ptr cQWebEngineView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebEngineView_leaveEvent ".} =
-  type Cb = proc(super: QWebEngineViewleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_leaveEvent(QWebEngineView(h: self), event)
+  var nimfunc = cast[ptr QWebEngineViewleaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_paintEvent(self: QWebEngineView, event: gen_qevent.QPaintEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebEngineViewpaintEvent*(self: gen_qwebengineview_types.QWebEngineView, event: gen_qevent.QPaintEvent): void =
 
   fQWebEngineView_virtualbase_paintEvent(self.h, event.h)
 
-type QWebEngineViewpaintEventBase* = proc(event: gen_qevent.QPaintEvent): void
-proc onpaintEvent*(self: QWebEngineView, slot: proc(super: QWebEngineViewpaintEventBase, event: gen_qevent.QPaintEvent): void) =
+type QWebEngineViewpaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
+proc onpaintEvent*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewpaintEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineViewpaintEventBase, event: gen_qevent.QPaintEvent): void
-  var tmp = new Cb
+  var tmp = new QWebEngineViewpaintEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineView_override_virtual_paintEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineView_paintEvent(self: ptr cQWebEngineView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebEngineView_paintEvent ".} =
-  type Cb = proc(super: QWebEngineViewpaintEventBase, event: gen_qevent.QPaintEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QPaintEvent): auto =
-    callVirtualBase_paintEvent(QWebEngineView(h: self), event)
+  var nimfunc = cast[ptr QWebEngineViewpaintEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QPaintEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_moveEvent(self: QWebEngineView, event: gen_qevent.QMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebEngineViewmoveEvent*(self: gen_qwebengineview_types.QWebEngineView, event: gen_qevent.QMoveEvent): void =
 
   fQWebEngineView_virtualbase_moveEvent(self.h, event.h)
 
-type QWebEngineViewmoveEventBase* = proc(event: gen_qevent.QMoveEvent): void
-proc onmoveEvent*(self: QWebEngineView, slot: proc(super: QWebEngineViewmoveEventBase, event: gen_qevent.QMoveEvent): void) =
+type QWebEngineViewmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
+proc onmoveEvent*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewmoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineViewmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QWebEngineViewmoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineView_override_virtual_moveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineView_moveEvent(self: ptr cQWebEngineView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebEngineView_moveEvent ".} =
-  type Cb = proc(super: QWebEngineViewmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMoveEvent): auto =
-    callVirtualBase_moveEvent(QWebEngineView(h: self), event)
+  var nimfunc = cast[ptr QWebEngineViewmoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_resizeEvent(self: QWebEngineView, event: gen_qevent.QResizeEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebEngineViewresizeEvent*(self: gen_qwebengineview_types.QWebEngineView, event: gen_qevent.QResizeEvent): void =
 
   fQWebEngineView_virtualbase_resizeEvent(self.h, event.h)
 
-type QWebEngineViewresizeEventBase* = proc(event: gen_qevent.QResizeEvent): void
-proc onresizeEvent*(self: QWebEngineView, slot: proc(super: QWebEngineViewresizeEventBase, event: gen_qevent.QResizeEvent): void) =
+type QWebEngineViewresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
+proc onresizeEvent*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewresizeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineViewresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var tmp = new Cb
+  var tmp = new QWebEngineViewresizeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineView_override_virtual_resizeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineView_resizeEvent(self: ptr cQWebEngineView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebEngineView_resizeEvent ".} =
-  type Cb = proc(super: QWebEngineViewresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QResizeEvent): auto =
-    callVirtualBase_resizeEvent(QWebEngineView(h: self), event)
+  var nimfunc = cast[ptr QWebEngineViewresizeEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QResizeEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_tabletEvent(self: QWebEngineView, event: gen_qevent.QTabletEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebEngineViewtabletEvent*(self: gen_qwebengineview_types.QWebEngineView, event: gen_qevent.QTabletEvent): void =
 
   fQWebEngineView_virtualbase_tabletEvent(self.h, event.h)
 
-type QWebEngineViewtabletEventBase* = proc(event: gen_qevent.QTabletEvent): void
-proc ontabletEvent*(self: QWebEngineView, slot: proc(super: QWebEngineViewtabletEventBase, event: gen_qevent.QTabletEvent): void) =
+type QWebEngineViewtabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
+proc ontabletEvent*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewtabletEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineViewtabletEventBase, event: gen_qevent.QTabletEvent): void
-  var tmp = new Cb
+  var tmp = new QWebEngineViewtabletEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineView_override_virtual_tabletEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineView_tabletEvent(self: ptr cQWebEngineView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebEngineView_tabletEvent ".} =
-  type Cb = proc(super: QWebEngineViewtabletEventBase, event: gen_qevent.QTabletEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QTabletEvent): auto =
-    callVirtualBase_tabletEvent(QWebEngineView(h: self), event)
+  var nimfunc = cast[ptr QWebEngineViewtabletEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QTabletEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_actionEvent(self: QWebEngineView, event: gen_qevent.QActionEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebEngineViewactionEvent*(self: gen_qwebengineview_types.QWebEngineView, event: gen_qevent.QActionEvent): void =
 
   fQWebEngineView_virtualbase_actionEvent(self.h, event.h)
 
-type QWebEngineViewactionEventBase* = proc(event: gen_qevent.QActionEvent): void
-proc onactionEvent*(self: QWebEngineView, slot: proc(super: QWebEngineViewactionEventBase, event: gen_qevent.QActionEvent): void) =
+type QWebEngineViewactionEventProc* = proc(event: gen_qevent.QActionEvent): void
+proc onactionEvent*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewactionEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineViewactionEventBase, event: gen_qevent.QActionEvent): void
-  var tmp = new Cb
+  var tmp = new QWebEngineViewactionEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineView_override_virtual_actionEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineView_actionEvent(self: ptr cQWebEngineView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebEngineView_actionEvent ".} =
-  type Cb = proc(super: QWebEngineViewactionEventBase, event: gen_qevent.QActionEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QActionEvent): auto =
-    callVirtualBase_actionEvent(QWebEngineView(h: self), event)
+  var nimfunc = cast[ptr QWebEngineViewactionEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QActionEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_nativeEvent(self: QWebEngineView, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
-
+  nimfunc[](slotval1)
+proc QWebEngineViewnativeEvent*(self: gen_qwebengineview_types.QWebEngineView, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
 
   fQWebEngineView_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
-type QWebEngineViewnativeEventBase* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-proc onnativeEvent*(self: QWebEngineView, slot: proc(super: QWebEngineViewnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool) =
+type QWebEngineViewnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
+proc onnativeEvent*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewnativeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineViewnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-  var tmp = new Cb
+  var tmp = new QWebEngineViewnativeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineView_override_virtual_nativeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineView_nativeEvent(self: ptr cQWebEngineView, slot: int, eventType: struct_miqt_string, message: pointer, resultVal: ptr uint): bool {.exportc: "miqt_exec_callback_QWebEngineView_nativeEvent ".} =
-  type Cb = proc(super: QWebEngineViewnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(eventType: seq[byte], message: pointer, resultVal: ptr uint): auto =
-    callVirtualBase_nativeEvent(QWebEngineView(h: self), eventType, message, resultVal)
+  var nimfunc = cast[ptr QWebEngineViewnativeEventProc](cast[pointer](slot))
   var veventType_bytearray = eventType
   var veventTypex_ret = @(toOpenArrayByte(veventType_bytearray.data, 0, int(veventType_bytearray.len)-1))
   c_free(veventType_bytearray.data)
@@ -1561,344 +1374,274 @@ proc miqt_exec_callback_QWebEngineView_nativeEvent(self: ptr cQWebEngineView, sl
   let slotval3 = resultVal
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_changeEvent(self: QWebEngineView, param1: gen_qcoreevent.QEvent): void =
-
+proc QWebEngineViewchangeEvent*(self: gen_qwebengineview_types.QWebEngineView, param1: gen_qcoreevent.QEvent): void =
 
   fQWebEngineView_virtualbase_changeEvent(self.h, param1.h)
 
-type QWebEngineViewchangeEventBase* = proc(param1: gen_qcoreevent.QEvent): void
-proc onchangeEvent*(self: QWebEngineView, slot: proc(super: QWebEngineViewchangeEventBase, param1: gen_qcoreevent.QEvent): void) =
+type QWebEngineViewchangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
+proc onchangeEvent*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewchangeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineViewchangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QWebEngineViewchangeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineView_override_virtual_changeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineView_changeEvent(self: ptr cQWebEngineView, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QWebEngineView_changeEvent ".} =
-  type Cb = proc(super: QWebEngineViewchangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_changeEvent(QWebEngineView(h: self), param1)
+  var nimfunc = cast[ptr QWebEngineViewchangeEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_metric(self: QWebEngineView, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint =
-
+  nimfunc[](slotval1)
+proc QWebEngineViewmetric*(self: gen_qwebengineview_types.QWebEngineView, param1: cint): cint =
 
   fQWebEngineView_virtualbase_metric(self.h, cint(param1))
 
-type QWebEngineViewmetricBase* = proc(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-proc onmetric*(self: QWebEngineView, slot: proc(super: QWebEngineViewmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint) =
+type QWebEngineViewmetricProc* = proc(param1: cint): cint
+proc onmetric*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewmetricProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineViewmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var tmp = new Cb
+  var tmp = new QWebEngineViewmetricProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineView_override_virtual_metric(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineView_metric(self: ptr cQWebEngineView, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QWebEngineView_metric ".} =
-  type Cb = proc(super: QWebEngineViewmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): auto =
-    callVirtualBase_metric(QWebEngineView(h: self), param1)
-  let slotval1 = gen_qpaintdevice.QPaintDevicePaintDeviceMetric(param1)
+  var nimfunc = cast[ptr QWebEngineViewmetricProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_initPainter(self: QWebEngineView, painter: gen_qpainter.QPainter): void =
-
+proc QWebEngineViewinitPainter*(self: gen_qwebengineview_types.QWebEngineView, painter: gen_qpainter.QPainter): void =
 
   fQWebEngineView_virtualbase_initPainter(self.h, painter.h)
 
-type QWebEngineViewinitPainterBase* = proc(painter: gen_qpainter.QPainter): void
-proc oninitPainter*(self: QWebEngineView, slot: proc(super: QWebEngineViewinitPainterBase, painter: gen_qpainter.QPainter): void) =
+type QWebEngineViewinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
+proc oninitPainter*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewinitPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineViewinitPainterBase, painter: gen_qpainter.QPainter): void
-  var tmp = new Cb
+  var tmp = new QWebEngineViewinitPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineView_override_virtual_initPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineView_initPainter(self: ptr cQWebEngineView, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_QWebEngineView_initPainter ".} =
-  type Cb = proc(super: QWebEngineViewinitPainterBase, painter: gen_qpainter.QPainter): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter): auto =
-    callVirtualBase_initPainter(QWebEngineView(h: self), painter)
+  var nimfunc = cast[ptr QWebEngineViewinitPainterProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_redirected(self: QWebEngineView, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
+  nimfunc[](slotval1)
+proc QWebEngineViewredirected*(self: gen_qwebengineview_types.QWebEngineView, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
 
   gen_qpaintdevice.QPaintDevice(h: fQWebEngineView_virtualbase_redirected(self.h, offset.h))
 
-type QWebEngineViewredirectedBase* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-proc onredirected*(self: QWebEngineView, slot: proc(super: QWebEngineViewredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice) =
+type QWebEngineViewredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
+proc onredirected*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewredirectedProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineViewredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var tmp = new Cb
+  var tmp = new QWebEngineViewredirectedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineView_override_virtual_redirected(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineView_redirected(self: ptr cQWebEngineView, slot: int, offset: pointer): pointer {.exportc: "miqt_exec_callback_QWebEngineView_redirected ".} =
-  type Cb = proc(super: QWebEngineViewredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(offset: gen_qpoint.QPoint): auto =
-    callVirtualBase_redirected(QWebEngineView(h: self), offset)
+  var nimfunc = cast[ptr QWebEngineViewredirectedProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: offset)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_sharedPainter(self: QWebEngineView, ): gen_qpainter.QPainter =
-
+proc QWebEngineViewsharedPainter*(self: gen_qwebengineview_types.QWebEngineView, ): gen_qpainter.QPainter =
 
   gen_qpainter.QPainter(h: fQWebEngineView_virtualbase_sharedPainter(self.h))
 
-type QWebEngineViewsharedPainterBase* = proc(): gen_qpainter.QPainter
-proc onsharedPainter*(self: QWebEngineView, slot: proc(super: QWebEngineViewsharedPainterBase): gen_qpainter.QPainter) =
+type QWebEngineViewsharedPainterProc* = proc(): gen_qpainter.QPainter
+proc onsharedPainter*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewsharedPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineViewsharedPainterBase): gen_qpainter.QPainter
-  var tmp = new Cb
+  var tmp = new QWebEngineViewsharedPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineView_override_virtual_sharedPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineView_sharedPainter(self: ptr cQWebEngineView, slot: int): pointer {.exportc: "miqt_exec_callback_QWebEngineView_sharedPainter ".} =
-  type Cb = proc(super: QWebEngineViewsharedPainterBase): gen_qpainter.QPainter
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sharedPainter(QWebEngineView(h: self), )
+  var nimfunc = cast[ptr QWebEngineViewsharedPainterProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_inputMethodEvent(self: QWebEngineView, param1: gen_qevent.QInputMethodEvent): void =
-
+proc QWebEngineViewinputMethodEvent*(self: gen_qwebengineview_types.QWebEngineView, param1: gen_qevent.QInputMethodEvent): void =
 
   fQWebEngineView_virtualbase_inputMethodEvent(self.h, param1.h)
 
-type QWebEngineViewinputMethodEventBase* = proc(param1: gen_qevent.QInputMethodEvent): void
-proc oninputMethodEvent*(self: QWebEngineView, slot: proc(super: QWebEngineViewinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void) =
+type QWebEngineViewinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
+proc oninputMethodEvent*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewinputMethodEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineViewinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var tmp = new Cb
+  var tmp = new QWebEngineViewinputMethodEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineView_override_virtual_inputMethodEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineView_inputMethodEvent(self: ptr cQWebEngineView, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QWebEngineView_inputMethodEvent ".} =
-  type Cb = proc(super: QWebEngineViewinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QInputMethodEvent): auto =
-    callVirtualBase_inputMethodEvent(QWebEngineView(h: self), param1)
+  var nimfunc = cast[ptr QWebEngineViewinputMethodEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QInputMethodEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_inputMethodQuery(self: QWebEngineView, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant =
-
+  nimfunc[](slotval1)
+proc QWebEngineViewinputMethodQuery*(self: gen_qwebengineview_types.QWebEngineView, param1: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQWebEngineView_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
-type QWebEngineViewinputMethodQueryBase* = proc(param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-proc oninputMethodQuery*(self: QWebEngineView, slot: proc(super: QWebEngineViewinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant) =
+type QWebEngineViewinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
+proc oninputMethodQuery*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewinputMethodQueryProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineViewinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QWebEngineViewinputMethodQueryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineView_override_virtual_inputMethodQuery(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineView_inputMethodQuery(self: ptr cQWebEngineView, slot: int, param1: cint): pointer {.exportc: "miqt_exec_callback_QWebEngineView_inputMethodQuery ".} =
-  type Cb = proc(super: QWebEngineViewinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qnamespace.InputMethodQuery): auto =
-    callVirtualBase_inputMethodQuery(QWebEngineView(h: self), param1)
-  let slotval1 = gen_qnamespace.InputMethodQuery(param1)
+  var nimfunc = cast[ptr QWebEngineViewinputMethodQueryProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_focusNextPrevChild(self: QWebEngineView, next: bool): bool =
-
+proc QWebEngineViewfocusNextPrevChild*(self: gen_qwebengineview_types.QWebEngineView, next: bool): bool =
 
   fQWebEngineView_virtualbase_focusNextPrevChild(self.h, next)
 
-type QWebEngineViewfocusNextPrevChildBase* = proc(next: bool): bool
-proc onfocusNextPrevChild*(self: QWebEngineView, slot: proc(super: QWebEngineViewfocusNextPrevChildBase, next: bool): bool) =
+type QWebEngineViewfocusNextPrevChildProc* = proc(next: bool): bool
+proc onfocusNextPrevChild*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewfocusNextPrevChildProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineViewfocusNextPrevChildBase, next: bool): bool
-  var tmp = new Cb
+  var tmp = new QWebEngineViewfocusNextPrevChildProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineView_override_virtual_focusNextPrevChild(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineView_focusNextPrevChild(self: ptr cQWebEngineView, slot: int, next: bool): bool {.exportc: "miqt_exec_callback_QWebEngineView_focusNextPrevChild ".} =
-  type Cb = proc(super: QWebEngineViewfocusNextPrevChildBase, next: bool): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(next: bool): auto =
-    callVirtualBase_focusNextPrevChild(QWebEngineView(h: self), next)
+  var nimfunc = cast[ptr QWebEngineViewfocusNextPrevChildProc](cast[pointer](slot))
   let slotval1 = next
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QWebEngineView, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QWebEngineVieweventFilter*(self: gen_qwebengineview_types.QWebEngineView, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQWebEngineView_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QWebEngineVieweventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QWebEngineView, slot: proc(super: QWebEngineVieweventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QWebEngineVieweventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineVieweventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineVieweventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QWebEngineVieweventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineView_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineView_eventFilter(self: ptr cQWebEngineView, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QWebEngineView_eventFilter ".} =
-  type Cb = proc(super: QWebEngineVieweventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QWebEngineView(h: self), watched, event)
+  var nimfunc = cast[ptr QWebEngineVieweventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QWebEngineView, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QWebEngineViewtimerEvent*(self: gen_qwebengineview_types.QWebEngineView, event: gen_qcoreevent.QTimerEvent): void =
 
   fQWebEngineView_virtualbase_timerEvent(self.h, event.h)
 
-type QWebEngineViewtimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QWebEngineView, slot: proc(super: QWebEngineViewtimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QWebEngineViewtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewtimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineViewtimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QWebEngineViewtimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineView_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineView_timerEvent(self: ptr cQWebEngineView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebEngineView_timerEvent ".} =
-  type Cb = proc(super: QWebEngineViewtimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QWebEngineView(h: self), event)
+  var nimfunc = cast[ptr QWebEngineViewtimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QWebEngineView, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebEngineViewchildEvent*(self: gen_qwebengineview_types.QWebEngineView, event: gen_qcoreevent.QChildEvent): void =
 
   fQWebEngineView_virtualbase_childEvent(self.h, event.h)
 
-type QWebEngineViewchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QWebEngineView, slot: proc(super: QWebEngineViewchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QWebEngineViewchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineViewchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QWebEngineViewchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineView_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineView_childEvent(self: ptr cQWebEngineView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebEngineView_childEvent ".} =
-  type Cb = proc(super: QWebEngineViewchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QWebEngineView(h: self), event)
+  var nimfunc = cast[ptr QWebEngineViewchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QWebEngineView, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebEngineViewcustomEvent*(self: gen_qwebengineview_types.QWebEngineView, event: gen_qcoreevent.QEvent): void =
 
   fQWebEngineView_virtualbase_customEvent(self.h, event.h)
 
-type QWebEngineViewcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QWebEngineView, slot: proc(super: QWebEngineViewcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QWebEngineViewcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineViewcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QWebEngineViewcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineView_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineView_customEvent(self: ptr cQWebEngineView, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebEngineView_customEvent ".} =
-  type Cb = proc(super: QWebEngineViewcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QWebEngineView(h: self), event)
+  var nimfunc = cast[ptr QWebEngineViewcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QWebEngineView, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QWebEngineViewconnectNotify*(self: gen_qwebengineview_types.QWebEngineView, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQWebEngineView_virtualbase_connectNotify(self.h, signal.h)
 
-type QWebEngineViewconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QWebEngineView, slot: proc(super: QWebEngineViewconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QWebEngineViewconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineViewconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QWebEngineViewconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineView_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineView_connectNotify(self: ptr cQWebEngineView, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QWebEngineView_connectNotify ".} =
-  type Cb = proc(super: QWebEngineViewconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QWebEngineView(h: self), signal)
+  var nimfunc = cast[ptr QWebEngineViewconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QWebEngineView, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QWebEngineViewdisconnectNotify*(self: gen_qwebengineview_types.QWebEngineView, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQWebEngineView_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QWebEngineViewdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QWebEngineView, slot: proc(super: QWebEngineViewdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QWebEngineViewdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineViewdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QWebEngineViewdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineView_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineView_disconnectNotify(self: ptr cQWebEngineView, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QWebEngineView_disconnectNotify ".} =
-  type Cb = proc(super: QWebEngineViewdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QWebEngineView(h: self), signal)
+  var nimfunc = cast[ptr QWebEngineViewdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QWebEngineView): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qwebengineview_types.QWebEngineView): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQWebEngineView_staticMetaObject())
-proc delete*(self: QWebEngineView) =
+proc delete*(self: gen_qwebengineview_types.QWebEngineView) =
   fcQWebEngineView_delete(self.h)

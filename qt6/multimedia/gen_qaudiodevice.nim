@@ -34,12 +34,10 @@ const cflags = gorge("pkg-config -cflags Qt6MultimediaWidgets")
 {.compile("gen_qaudiodevice.cpp", cflags).}
 
 
-type QAudioDeviceMode* = cint
-const
-  QAudioDeviceNull* = 0
-  QAudioDeviceInput* = 1
-  QAudioDeviceOutput* = 2
-
+type QAudioDeviceModeEnum* = distinct cint
+template Null*(_: type QAudioDeviceModeEnum): untyped = 0
+template Input*(_: type QAudioDeviceModeEnum): untyped = 1
+template Output*(_: type QAudioDeviceModeEnum): untyped = 2
 
 
 import gen_qaudiodevice_types
@@ -77,94 +75,94 @@ proc fcQAudioDevice_staticMetaObject(): pointer {.importc: "QAudioDevice_staticM
 proc fcQAudioDevice_delete(self: pointer) {.importc: "QAudioDevice_delete".}
 
 
-func init*(T: type QAudioDevice, h: ptr cQAudioDevice): QAudioDevice =
+func init*(T: type gen_qaudiodevice_types.QAudioDevice, h: ptr cQAudioDevice): gen_qaudiodevice_types.QAudioDevice =
   T(h: h)
-proc create*(T: type QAudioDevice, ): QAudioDevice =
+proc create*(T: type gen_qaudiodevice_types.QAudioDevice, ): gen_qaudiodevice_types.QAudioDevice =
 
-  QAudioDevice.init(fcQAudioDevice_new())
-proc create*(T: type QAudioDevice, other: QAudioDevice): QAudioDevice =
+  gen_qaudiodevice_types.QAudioDevice.init(fcQAudioDevice_new())
+proc create*(T: type gen_qaudiodevice_types.QAudioDevice, other: gen_qaudiodevice_types.QAudioDevice): gen_qaudiodevice_types.QAudioDevice =
 
-  QAudioDevice.init(fcQAudioDevice_new2(other.h))
-proc swap*(self: QAudioDevice, other: QAudioDevice): void =
+  gen_qaudiodevice_types.QAudioDevice.init(fcQAudioDevice_new2(other.h))
+proc swap*(self: gen_qaudiodevice_types.QAudioDevice, other: gen_qaudiodevice_types.QAudioDevice): void =
 
   fcQAudioDevice_swap(self.h, other.h)
 
-proc operatorAssign*(self: QAudioDevice, other: QAudioDevice): void =
+proc operatorAssign*(self: gen_qaudiodevice_types.QAudioDevice, other: gen_qaudiodevice_types.QAudioDevice): void =
 
   fcQAudioDevice_operatorAssign(self.h, other.h)
 
-proc operatorEqual*(self: QAudioDevice, other: QAudioDevice): bool =
+proc operatorEqual*(self: gen_qaudiodevice_types.QAudioDevice, other: gen_qaudiodevice_types.QAudioDevice): bool =
 
   fcQAudioDevice_operatorEqual(self.h, other.h)
 
-proc operatorNotEqual*(self: QAudioDevice, other: QAudioDevice): bool =
+proc operatorNotEqual*(self: gen_qaudiodevice_types.QAudioDevice, other: gen_qaudiodevice_types.QAudioDevice): bool =
 
   fcQAudioDevice_operatorNotEqual(self.h, other.h)
 
-proc isNull*(self: QAudioDevice, ): bool =
+proc isNull*(self: gen_qaudiodevice_types.QAudioDevice, ): bool =
 
   fcQAudioDevice_isNull(self.h)
 
-proc id*(self: QAudioDevice, ): seq[byte] =
+proc id*(self: gen_qaudiodevice_types.QAudioDevice, ): seq[byte] =
 
   var v_bytearray = fcQAudioDevice_id(self.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc description*(self: QAudioDevice, ): string =
+proc description*(self: gen_qaudiodevice_types.QAudioDevice, ): string =
 
   let v_ms = fcQAudioDevice_description(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc isDefault*(self: QAudioDevice, ): bool =
+proc isDefault*(self: gen_qaudiodevice_types.QAudioDevice, ): bool =
 
   fcQAudioDevice_isDefault(self.h)
 
-proc mode*(self: QAudioDevice, ): QAudioDeviceMode =
+proc mode*(self: gen_qaudiodevice_types.QAudioDevice, ): cint =
 
-  QAudioDeviceMode(fcQAudioDevice_mode(self.h))
+  cint(fcQAudioDevice_mode(self.h))
 
-proc isFormatSupported*(self: QAudioDevice, format: gen_qaudioformat.QAudioFormat): bool =
+proc isFormatSupported*(self: gen_qaudiodevice_types.QAudioDevice, format: gen_qaudioformat.QAudioFormat): bool =
 
   fcQAudioDevice_isFormatSupported(self.h, format.h)
 
-proc preferredFormat*(self: QAudioDevice, ): gen_qaudioformat.QAudioFormat =
+proc preferredFormat*(self: gen_qaudiodevice_types.QAudioDevice, ): gen_qaudioformat.QAudioFormat =
 
   gen_qaudioformat.QAudioFormat(h: fcQAudioDevice_preferredFormat(self.h))
 
-proc minimumSampleRate*(self: QAudioDevice, ): cint =
+proc minimumSampleRate*(self: gen_qaudiodevice_types.QAudioDevice, ): cint =
 
   fcQAudioDevice_minimumSampleRate(self.h)
 
-proc maximumSampleRate*(self: QAudioDevice, ): cint =
+proc maximumSampleRate*(self: gen_qaudiodevice_types.QAudioDevice, ): cint =
 
   fcQAudioDevice_maximumSampleRate(self.h)
 
-proc minimumChannelCount*(self: QAudioDevice, ): cint =
+proc minimumChannelCount*(self: gen_qaudiodevice_types.QAudioDevice, ): cint =
 
   fcQAudioDevice_minimumChannelCount(self.h)
 
-proc maximumChannelCount*(self: QAudioDevice, ): cint =
+proc maximumChannelCount*(self: gen_qaudiodevice_types.QAudioDevice, ): cint =
 
   fcQAudioDevice_maximumChannelCount(self.h)
 
-proc supportedSampleFormats*(self: QAudioDevice, ): seq[gen_qaudioformat.QAudioFormatSampleFormat] =
+proc supportedSampleFormats*(self: gen_qaudiodevice_types.QAudioDevice, ): seq[cint] =
 
   var v_ma = fcQAudioDevice_supportedSampleFormats(self.h)
-  var vx_ret = newSeq[gen_qaudioformat.QAudioFormatSampleFormat](int(v_ma.len))
+  var vx_ret = newSeq[cint](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[cint]](v_ma.data)
   for i in 0 ..< v_ma.len:
-    vx_ret[i] = gen_qaudioformat.QAudioFormatSampleFormat(v_outCast[i])
+    vx_ret[i] = cint(v_outCast[i])
   vx_ret
 
-proc channelConfiguration*(self: QAudioDevice, ): gen_qaudioformat.QAudioFormatChannelConfig =
+proc channelConfiguration*(self: gen_qaudiodevice_types.QAudioDevice, ): cint =
 
-  gen_qaudioformat.QAudioFormatChannelConfig(fcQAudioDevice_channelConfiguration(self.h))
+  cint(fcQAudioDevice_channelConfiguration(self.h))
 
-proc staticMetaObject*(_: type QAudioDevice): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qaudiodevice_types.QAudioDevice): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQAudioDevice_staticMetaObject())
-proc delete*(self: QAudioDevice) =
+proc delete*(self: gen_qaudiodevice_types.QAudioDevice) =
   fcQAudioDevice_delete(self.h)

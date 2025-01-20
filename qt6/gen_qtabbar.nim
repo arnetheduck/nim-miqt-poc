@@ -34,32 +34,26 @@ const cflags = gorge("pkg-config -cflags Qt6Widgets")
 {.compile("gen_qtabbar.cpp", cflags).}
 
 
-type QTabBarShape* = cint
-const
-  QTabBarRoundedNorth* = 0
-  QTabBarRoundedSouth* = 1
-  QTabBarRoundedWest* = 2
-  QTabBarRoundedEast* = 3
-  QTabBarTriangularNorth* = 4
-  QTabBarTriangularSouth* = 5
-  QTabBarTriangularWest* = 6
-  QTabBarTriangularEast* = 7
+type QTabBarShapeEnum* = distinct cint
+template RoundedNorth*(_: type QTabBarShapeEnum): untyped = 0
+template RoundedSouth*(_: type QTabBarShapeEnum): untyped = 1
+template RoundedWest*(_: type QTabBarShapeEnum): untyped = 2
+template RoundedEast*(_: type QTabBarShapeEnum): untyped = 3
+template TriangularNorth*(_: type QTabBarShapeEnum): untyped = 4
+template TriangularSouth*(_: type QTabBarShapeEnum): untyped = 5
+template TriangularWest*(_: type QTabBarShapeEnum): untyped = 6
+template TriangularEast*(_: type QTabBarShapeEnum): untyped = 7
 
 
-
-type QTabBarButtonPosition* = cint
-const
-  QTabBarLeftSide* = 0
-  QTabBarRightSide* = 1
+type QTabBarButtonPositionEnum* = distinct cint
+template LeftSide*(_: type QTabBarButtonPositionEnum): untyped = 0
+template RightSide*(_: type QTabBarButtonPositionEnum): untyped = 1
 
 
-
-type QTabBarSelectionBehavior* = cint
-const
-  QTabBarSelectLeftTab* = 0
-  QTabBarSelectRightTab* = 1
-  QTabBarSelectPreviousTab* = 2
-
+type QTabBarSelectionBehaviorEnum* = distinct cint
+template SelectLeftTab*(_: type QTabBarSelectionBehaviorEnum): untyped = 0
+template SelectRightTab*(_: type QTabBarSelectionBehaviorEnum): untyped = 1
+template SelectPreviousTab*(_: type QTabBarSelectionBehaviorEnum): untyped = 2
 
 
 import gen_qtabbar_types
@@ -71,7 +65,6 @@ import
   gen_qevent,
   gen_qicon,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -89,7 +82,6 @@ export
   gen_qevent,
   gen_qicon,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -295,274 +287,274 @@ proc fcQTabBar_staticMetaObject(): pointer {.importc: "QTabBar_staticMetaObject"
 proc fcQTabBar_delete(self: pointer) {.importc: "QTabBar_delete".}
 
 
-func init*(T: type QTabBar, h: ptr cQTabBar): QTabBar =
+func init*(T: type gen_qtabbar_types.QTabBar, h: ptr cQTabBar): gen_qtabbar_types.QTabBar =
   T(h: h)
-proc create*(T: type QTabBar, parent: gen_qwidget.QWidget): QTabBar =
+proc create*(T: type gen_qtabbar_types.QTabBar, parent: gen_qwidget.QWidget): gen_qtabbar_types.QTabBar =
 
-  QTabBar.init(fcQTabBar_new(parent.h))
-proc create*(T: type QTabBar, ): QTabBar =
+  gen_qtabbar_types.QTabBar.init(fcQTabBar_new(parent.h))
+proc create*(T: type gen_qtabbar_types.QTabBar, ): gen_qtabbar_types.QTabBar =
 
-  QTabBar.init(fcQTabBar_new2())
-proc metaObject*(self: QTabBar, ): gen_qobjectdefs.QMetaObject =
+  gen_qtabbar_types.QTabBar.init(fcQTabBar_new2())
+proc metaObject*(self: gen_qtabbar_types.QTabBar, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQTabBar_metaObject(self.h))
 
-proc metacast*(self: QTabBar, param1: cstring): pointer =
+proc metacast*(self: gen_qtabbar_types.QTabBar, param1: cstring): pointer =
 
   fcQTabBar_metacast(self.h, param1)
 
-proc metacall*(self: QTabBar, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qtabbar_types.QTabBar, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQTabBar_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QTabBar, s: cstring): string =
+proc tr*(_: type gen_qtabbar_types.QTabBar, s: cstring): string =
 
   let v_ms = fcQTabBar_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc shape*(self: QTabBar, ): QTabBarShape =
+proc shape*(self: gen_qtabbar_types.QTabBar, ): cint =
 
-  QTabBarShape(fcQTabBar_shape(self.h))
+  cint(fcQTabBar_shape(self.h))
 
-proc setShape*(self: QTabBar, shape: QTabBarShape): void =
+proc setShape*(self: gen_qtabbar_types.QTabBar, shape: cint): void =
 
   fcQTabBar_setShape(self.h, cint(shape))
 
-proc addTab*(self: QTabBar, text: string): cint =
+proc addTab*(self: gen_qtabbar_types.QTabBar, text: string): cint =
 
   fcQTabBar_addTab(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
-proc addTab2*(self: QTabBar, icon: gen_qicon.QIcon, text: string): cint =
+proc addTab2*(self: gen_qtabbar_types.QTabBar, icon: gen_qicon.QIcon, text: string): cint =
 
   fcQTabBar_addTab2(self.h, icon.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
-proc insertTab*(self: QTabBar, index: cint, text: string): cint =
+proc insertTab*(self: gen_qtabbar_types.QTabBar, index: cint, text: string): cint =
 
   fcQTabBar_insertTab(self.h, index, struct_miqt_string(data: text, len: csize_t(len(text))))
 
-proc insertTab2*(self: QTabBar, index: cint, icon: gen_qicon.QIcon, text: string): cint =
+proc insertTab2*(self: gen_qtabbar_types.QTabBar, index: cint, icon: gen_qicon.QIcon, text: string): cint =
 
   fcQTabBar_insertTab2(self.h, index, icon.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
-proc removeTab*(self: QTabBar, index: cint): void =
+proc removeTab*(self: gen_qtabbar_types.QTabBar, index: cint): void =
 
   fcQTabBar_removeTab(self.h, index)
 
-proc moveTab*(self: QTabBar, fromVal: cint, to: cint): void =
+proc moveTab*(self: gen_qtabbar_types.QTabBar, fromVal: cint, to: cint): void =
 
   fcQTabBar_moveTab(self.h, fromVal, to)
 
-proc isTabEnabled*(self: QTabBar, index: cint): bool =
+proc isTabEnabled*(self: gen_qtabbar_types.QTabBar, index: cint): bool =
 
   fcQTabBar_isTabEnabled(self.h, index)
 
-proc setTabEnabled*(self: QTabBar, index: cint, enabled: bool): void =
+proc setTabEnabled*(self: gen_qtabbar_types.QTabBar, index: cint, enabled: bool): void =
 
   fcQTabBar_setTabEnabled(self.h, index, enabled)
 
-proc isTabVisible*(self: QTabBar, index: cint): bool =
+proc isTabVisible*(self: gen_qtabbar_types.QTabBar, index: cint): bool =
 
   fcQTabBar_isTabVisible(self.h, index)
 
-proc setTabVisible*(self: QTabBar, index: cint, visible: bool): void =
+proc setTabVisible*(self: gen_qtabbar_types.QTabBar, index: cint, visible: bool): void =
 
   fcQTabBar_setTabVisible(self.h, index, visible)
 
-proc tabText*(self: QTabBar, index: cint): string =
+proc tabText*(self: gen_qtabbar_types.QTabBar, index: cint): string =
 
   let v_ms = fcQTabBar_tabText(self.h, index)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setTabText*(self: QTabBar, index: cint, text: string): void =
+proc setTabText*(self: gen_qtabbar_types.QTabBar, index: cint, text: string): void =
 
   fcQTabBar_setTabText(self.h, index, struct_miqt_string(data: text, len: csize_t(len(text))))
 
-proc tabTextColor*(self: QTabBar, index: cint): gen_qcolor.QColor =
+proc tabTextColor*(self: gen_qtabbar_types.QTabBar, index: cint): gen_qcolor.QColor =
 
   gen_qcolor.QColor(h: fcQTabBar_tabTextColor(self.h, index))
 
-proc setTabTextColor*(self: QTabBar, index: cint, color: gen_qcolor.QColor): void =
+proc setTabTextColor*(self: gen_qtabbar_types.QTabBar, index: cint, color: gen_qcolor.QColor): void =
 
   fcQTabBar_setTabTextColor(self.h, index, color.h)
 
-proc tabIcon*(self: QTabBar, index: cint): gen_qicon.QIcon =
+proc tabIcon*(self: gen_qtabbar_types.QTabBar, index: cint): gen_qicon.QIcon =
 
   gen_qicon.QIcon(h: fcQTabBar_tabIcon(self.h, index))
 
-proc setTabIcon*(self: QTabBar, index: cint, icon: gen_qicon.QIcon): void =
+proc setTabIcon*(self: gen_qtabbar_types.QTabBar, index: cint, icon: gen_qicon.QIcon): void =
 
   fcQTabBar_setTabIcon(self.h, index, icon.h)
 
-proc elideMode*(self: QTabBar, ): gen_qnamespace.TextElideMode =
+proc elideMode*(self: gen_qtabbar_types.QTabBar, ): cint =
 
-  gen_qnamespace.TextElideMode(fcQTabBar_elideMode(self.h))
+  cint(fcQTabBar_elideMode(self.h))
 
-proc setElideMode*(self: QTabBar, mode: gen_qnamespace.TextElideMode): void =
+proc setElideMode*(self: gen_qtabbar_types.QTabBar, mode: cint): void =
 
   fcQTabBar_setElideMode(self.h, cint(mode))
 
-proc setTabToolTip*(self: QTabBar, index: cint, tip: string): void =
+proc setTabToolTip*(self: gen_qtabbar_types.QTabBar, index: cint, tip: string): void =
 
   fcQTabBar_setTabToolTip(self.h, index, struct_miqt_string(data: tip, len: csize_t(len(tip))))
 
-proc tabToolTip*(self: QTabBar, index: cint): string =
+proc tabToolTip*(self: gen_qtabbar_types.QTabBar, index: cint): string =
 
   let v_ms = fcQTabBar_tabToolTip(self.h, index)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setTabWhatsThis*(self: QTabBar, index: cint, text: string): void =
+proc setTabWhatsThis*(self: gen_qtabbar_types.QTabBar, index: cint, text: string): void =
 
   fcQTabBar_setTabWhatsThis(self.h, index, struct_miqt_string(data: text, len: csize_t(len(text))))
 
-proc tabWhatsThis*(self: QTabBar, index: cint): string =
+proc tabWhatsThis*(self: gen_qtabbar_types.QTabBar, index: cint): string =
 
   let v_ms = fcQTabBar_tabWhatsThis(self.h, index)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setTabData*(self: QTabBar, index: cint, data: gen_qvariant.QVariant): void =
+proc setTabData*(self: gen_qtabbar_types.QTabBar, index: cint, data: gen_qvariant.QVariant): void =
 
   fcQTabBar_setTabData(self.h, index, data.h)
 
-proc tabData*(self: QTabBar, index: cint): gen_qvariant.QVariant =
+proc tabData*(self: gen_qtabbar_types.QTabBar, index: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fcQTabBar_tabData(self.h, index))
 
-proc tabRect*(self: QTabBar, index: cint): gen_qrect.QRect =
+proc tabRect*(self: gen_qtabbar_types.QTabBar, index: cint): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fcQTabBar_tabRect(self.h, index))
 
-proc tabAt*(self: QTabBar, pos: gen_qpoint.QPoint): cint =
+proc tabAt*(self: gen_qtabbar_types.QTabBar, pos: gen_qpoint.QPoint): cint =
 
   fcQTabBar_tabAt(self.h, pos.h)
 
-proc currentIndex*(self: QTabBar, ): cint =
+proc currentIndex*(self: gen_qtabbar_types.QTabBar, ): cint =
 
   fcQTabBar_currentIndex(self.h)
 
-proc count*(self: QTabBar, ): cint =
+proc count*(self: gen_qtabbar_types.QTabBar, ): cint =
 
   fcQTabBar_count(self.h)
 
-proc sizeHint*(self: QTabBar, ): gen_qsize.QSize =
+proc sizeHint*(self: gen_qtabbar_types.QTabBar, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQTabBar_sizeHint(self.h))
 
-proc minimumSizeHint*(self: QTabBar, ): gen_qsize.QSize =
+proc minimumSizeHint*(self: gen_qtabbar_types.QTabBar, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQTabBar_minimumSizeHint(self.h))
 
-proc setDrawBase*(self: QTabBar, drawTheBase: bool): void =
+proc setDrawBase*(self: gen_qtabbar_types.QTabBar, drawTheBase: bool): void =
 
   fcQTabBar_setDrawBase(self.h, drawTheBase)
 
-proc drawBase*(self: QTabBar, ): bool =
+proc drawBase*(self: gen_qtabbar_types.QTabBar, ): bool =
 
   fcQTabBar_drawBase(self.h)
 
-proc iconSize*(self: QTabBar, ): gen_qsize.QSize =
+proc iconSize*(self: gen_qtabbar_types.QTabBar, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQTabBar_iconSize(self.h))
 
-proc setIconSize*(self: QTabBar, size: gen_qsize.QSize): void =
+proc setIconSize*(self: gen_qtabbar_types.QTabBar, size: gen_qsize.QSize): void =
 
   fcQTabBar_setIconSize(self.h, size.h)
 
-proc usesScrollButtons*(self: QTabBar, ): bool =
+proc usesScrollButtons*(self: gen_qtabbar_types.QTabBar, ): bool =
 
   fcQTabBar_usesScrollButtons(self.h)
 
-proc setUsesScrollButtons*(self: QTabBar, useButtons: bool): void =
+proc setUsesScrollButtons*(self: gen_qtabbar_types.QTabBar, useButtons: bool): void =
 
   fcQTabBar_setUsesScrollButtons(self.h, useButtons)
 
-proc tabsClosable*(self: QTabBar, ): bool =
+proc tabsClosable*(self: gen_qtabbar_types.QTabBar, ): bool =
 
   fcQTabBar_tabsClosable(self.h)
 
-proc setTabsClosable*(self: QTabBar, closable: bool): void =
+proc setTabsClosable*(self: gen_qtabbar_types.QTabBar, closable: bool): void =
 
   fcQTabBar_setTabsClosable(self.h, closable)
 
-proc setTabButton*(self: QTabBar, index: cint, position: QTabBarButtonPosition, widget: gen_qwidget.QWidget): void =
+proc setTabButton*(self: gen_qtabbar_types.QTabBar, index: cint, position: cint, widget: gen_qwidget.QWidget): void =
 
   fcQTabBar_setTabButton(self.h, index, cint(position), widget.h)
 
-proc tabButton*(self: QTabBar, index: cint, position: QTabBarButtonPosition): gen_qwidget.QWidget =
+proc tabButton*(self: gen_qtabbar_types.QTabBar, index: cint, position: cint): gen_qwidget.QWidget =
 
   gen_qwidget.QWidget(h: fcQTabBar_tabButton(self.h, index, cint(position)))
 
-proc selectionBehaviorOnRemove*(self: QTabBar, ): QTabBarSelectionBehavior =
+proc selectionBehaviorOnRemove*(self: gen_qtabbar_types.QTabBar, ): cint =
 
-  QTabBarSelectionBehavior(fcQTabBar_selectionBehaviorOnRemove(self.h))
+  cint(fcQTabBar_selectionBehaviorOnRemove(self.h))
 
-proc setSelectionBehaviorOnRemove*(self: QTabBar, behavior: QTabBarSelectionBehavior): void =
+proc setSelectionBehaviorOnRemove*(self: gen_qtabbar_types.QTabBar, behavior: cint): void =
 
   fcQTabBar_setSelectionBehaviorOnRemove(self.h, cint(behavior))
 
-proc expanding*(self: QTabBar, ): bool =
+proc expanding*(self: gen_qtabbar_types.QTabBar, ): bool =
 
   fcQTabBar_expanding(self.h)
 
-proc setExpanding*(self: QTabBar, enabled: bool): void =
+proc setExpanding*(self: gen_qtabbar_types.QTabBar, enabled: bool): void =
 
   fcQTabBar_setExpanding(self.h, enabled)
 
-proc isMovable*(self: QTabBar, ): bool =
+proc isMovable*(self: gen_qtabbar_types.QTabBar, ): bool =
 
   fcQTabBar_isMovable(self.h)
 
-proc setMovable*(self: QTabBar, movable: bool): void =
+proc setMovable*(self: gen_qtabbar_types.QTabBar, movable: bool): void =
 
   fcQTabBar_setMovable(self.h, movable)
 
-proc documentMode*(self: QTabBar, ): bool =
+proc documentMode*(self: gen_qtabbar_types.QTabBar, ): bool =
 
   fcQTabBar_documentMode(self.h)
 
-proc setDocumentMode*(self: QTabBar, set: bool): void =
+proc setDocumentMode*(self: gen_qtabbar_types.QTabBar, set: bool): void =
 
   fcQTabBar_setDocumentMode(self.h, set)
 
-proc autoHide*(self: QTabBar, ): bool =
+proc autoHide*(self: gen_qtabbar_types.QTabBar, ): bool =
 
   fcQTabBar_autoHide(self.h)
 
-proc setAutoHide*(self: QTabBar, hide: bool): void =
+proc setAutoHide*(self: gen_qtabbar_types.QTabBar, hide: bool): void =
 
   fcQTabBar_setAutoHide(self.h, hide)
 
-proc changeCurrentOnDrag*(self: QTabBar, ): bool =
+proc changeCurrentOnDrag*(self: gen_qtabbar_types.QTabBar, ): bool =
 
   fcQTabBar_changeCurrentOnDrag(self.h)
 
-proc setChangeCurrentOnDrag*(self: QTabBar, change: bool): void =
+proc setChangeCurrentOnDrag*(self: gen_qtabbar_types.QTabBar, change: bool): void =
 
   fcQTabBar_setChangeCurrentOnDrag(self.h, change)
 
-proc accessibleTabName*(self: QTabBar, index: cint): string =
+proc accessibleTabName*(self: gen_qtabbar_types.QTabBar, index: cint): string =
 
   let v_ms = fcQTabBar_accessibleTabName(self.h, index)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setAccessibleTabName*(self: QTabBar, index: cint, name: string): void =
+proc setAccessibleTabName*(self: gen_qtabbar_types.QTabBar, index: cint, name: string): void =
 
   fcQTabBar_setAccessibleTabName(self.h, index, struct_miqt_string(data: name, len: csize_t(len(name))))
 
-proc setCurrentIndex*(self: QTabBar, index: cint): void =
+proc setCurrentIndex*(self: gen_qtabbar_types.QTabBar, index: cint): void =
 
   fcQTabBar_setCurrentIndex(self.h, index)
 
-proc currentChanged*(self: QTabBar, index: cint): void =
+proc currentChanged*(self: gen_qtabbar_types.QTabBar, index: cint): void =
 
   fcQTabBar_currentChanged(self.h, index)
 
@@ -574,13 +566,13 @@ proc miqt_exec_callback_QTabBar_currentChanged(slot: int, index: cint) {.exportc
 
   nimfunc[](slotval1)
 
-proc oncurrentChanged*(self: QTabBar, slot: proc(index: cint)) =
+proc oncurrentChanged*(self: gen_qtabbar_types.QTabBar, slot: proc(index: cint)) =
   type Cb = proc(index: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQTabBar_connect_currentChanged(self.h, cast[int](addr tmp[]))
-proc tabCloseRequested*(self: QTabBar, index: cint): void =
+proc tabCloseRequested*(self: gen_qtabbar_types.QTabBar, index: cint): void =
 
   fcQTabBar_tabCloseRequested(self.h, index)
 
@@ -592,13 +584,13 @@ proc miqt_exec_callback_QTabBar_tabCloseRequested(slot: int, index: cint) {.expo
 
   nimfunc[](slotval1)
 
-proc ontabCloseRequested*(self: QTabBar, slot: proc(index: cint)) =
+proc ontabCloseRequested*(self: gen_qtabbar_types.QTabBar, slot: proc(index: cint)) =
   type Cb = proc(index: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQTabBar_connect_tabCloseRequested(self.h, cast[int](addr tmp[]))
-proc tabMoved*(self: QTabBar, fromVal: cint, to: cint): void =
+proc tabMoved*(self: gen_qtabbar_types.QTabBar, fromVal: cint, to: cint): void =
 
   fcQTabBar_tabMoved(self.h, fromVal, to)
 
@@ -612,13 +604,13 @@ proc miqt_exec_callback_QTabBar_tabMoved(slot: int, fromVal: cint, to: cint) {.e
 
   nimfunc[](slotval1, slotval2)
 
-proc ontabMoved*(self: QTabBar, slot: proc(fromVal: cint, to: cint)) =
+proc ontabMoved*(self: gen_qtabbar_types.QTabBar, slot: proc(fromVal: cint, to: cint)) =
   type Cb = proc(fromVal: cint, to: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQTabBar_connect_tabMoved(self.h, cast[int](addr tmp[]))
-proc tabBarClicked*(self: QTabBar, index: cint): void =
+proc tabBarClicked*(self: gen_qtabbar_types.QTabBar, index: cint): void =
 
   fcQTabBar_tabBarClicked(self.h, index)
 
@@ -630,13 +622,13 @@ proc miqt_exec_callback_QTabBar_tabBarClicked(slot: int, index: cint) {.exportc.
 
   nimfunc[](slotval1)
 
-proc ontabBarClicked*(self: QTabBar, slot: proc(index: cint)) =
+proc ontabBarClicked*(self: gen_qtabbar_types.QTabBar, slot: proc(index: cint)) =
   type Cb = proc(index: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQTabBar_connect_tabBarClicked(self.h, cast[int](addr tmp[]))
-proc tabBarDoubleClicked*(self: QTabBar, index: cint): void =
+proc tabBarDoubleClicked*(self: gen_qtabbar_types.QTabBar, index: cint): void =
 
   fcQTabBar_tabBarDoubleClicked(self.h, index)
 
@@ -648,1050 +640,830 @@ proc miqt_exec_callback_QTabBar_tabBarDoubleClicked(slot: int, index: cint) {.ex
 
   nimfunc[](slotval1)
 
-proc ontabBarDoubleClicked*(self: QTabBar, slot: proc(index: cint)) =
+proc ontabBarDoubleClicked*(self: gen_qtabbar_types.QTabBar, slot: proc(index: cint)) =
   type Cb = proc(index: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQTabBar_connect_tabBarDoubleClicked(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QTabBar, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qtabbar_types.QTabBar, s: cstring, c: cstring): string =
 
   let v_ms = fcQTabBar_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QTabBar, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qtabbar_types.QTabBar, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQTabBar_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QTabBar, ): gen_qobjectdefs.QMetaObject =
-
+proc QTabBarmetaObject*(self: gen_qtabbar_types.QTabBar, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQTabBar_virtualbase_metaObject(self.h))
 
-type QTabBarmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QTabBar, slot: proc(super: QTabBarmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QTabBarmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qtabbar_types.QTabBar, slot: QTabBarmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBarmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QTabBarmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_metaObject(self: ptr cQTabBar, slot: int): pointer {.exportc: "miqt_exec_callback_QTabBar_metaObject ".} =
-  type Cb = proc(super: QTabBarmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QTabBar(h: self), )
+  var nimfunc = cast[ptr QTabBarmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QTabBar, param1: cstring): pointer =
-
+proc QTabBarmetacast*(self: gen_qtabbar_types.QTabBar, param1: cstring): pointer =
 
   fQTabBar_virtualbase_metacast(self.h, param1)
 
-type QTabBarmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QTabBar, slot: proc(super: QTabBarmetacastBase, param1: cstring): pointer) =
+type QTabBarmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qtabbar_types.QTabBar, slot: QTabBarmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBarmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QTabBarmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_metacast(self: ptr cQTabBar, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QTabBar_metacast ".} =
-  type Cb = proc(super: QTabBarmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QTabBar(h: self), param1)
+  var nimfunc = cast[ptr QTabBarmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QTabBar, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QTabBarmetacall*(self: gen_qtabbar_types.QTabBar, param1: cint, param2: cint, param3: pointer): cint =
 
   fQTabBar_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QTabBarmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QTabBar, slot: proc(super: QTabBarmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QTabBarmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qtabbar_types.QTabBar, slot: QTabBarmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBarmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QTabBarmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_metacall(self: ptr cQTabBar, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QTabBar_metacall ".} =
-  type Cb = proc(super: QTabBarmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QTabBar(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QTabBarmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_sizeHint(self: QTabBar, ): gen_qsize.QSize =
-
+proc QTabBarsizeHint*(self: gen_qtabbar_types.QTabBar, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQTabBar_virtualbase_sizeHint(self.h))
 
-type QTabBarsizeHintBase* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: QTabBar, slot: proc(super: QTabBarsizeHintBase): gen_qsize.QSize) =
+type QTabBarsizeHintProc* = proc(): gen_qsize.QSize
+proc onsizeHint*(self: gen_qtabbar_types.QTabBar, slot: QTabBarsizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBarsizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QTabBarsizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_sizeHint(self: ptr cQTabBar, slot: int): pointer {.exportc: "miqt_exec_callback_QTabBar_sizeHint ".} =
-  type Cb = proc(super: QTabBarsizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sizeHint(QTabBar(h: self), )
+  var nimfunc = cast[ptr QTabBarsizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_minimumSizeHint(self: QTabBar, ): gen_qsize.QSize =
-
+proc QTabBarminimumSizeHint*(self: gen_qtabbar_types.QTabBar, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQTabBar_virtualbase_minimumSizeHint(self.h))
 
-type QTabBarminimumSizeHintBase* = proc(): gen_qsize.QSize
-proc onminimumSizeHint*(self: QTabBar, slot: proc(super: QTabBarminimumSizeHintBase): gen_qsize.QSize) =
+type QTabBarminimumSizeHintProc* = proc(): gen_qsize.QSize
+proc onminimumSizeHint*(self: gen_qtabbar_types.QTabBar, slot: QTabBarminimumSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBarminimumSizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QTabBarminimumSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_minimumSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_minimumSizeHint(self: ptr cQTabBar, slot: int): pointer {.exportc: "miqt_exec_callback_QTabBar_minimumSizeHint ".} =
-  type Cb = proc(super: QTabBarminimumSizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_minimumSizeHint(QTabBar(h: self), )
+  var nimfunc = cast[ptr QTabBarminimumSizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_tabSizeHint(self: QTabBar, index: cint): gen_qsize.QSize =
-
+proc QTabBartabSizeHint*(self: gen_qtabbar_types.QTabBar, index: cint): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQTabBar_virtualbase_tabSizeHint(self.h, index))
 
-type QTabBartabSizeHintBase* = proc(index: cint): gen_qsize.QSize
-proc ontabSizeHint*(self: QTabBar, slot: proc(super: QTabBartabSizeHintBase, index: cint): gen_qsize.QSize) =
+type QTabBartabSizeHintProc* = proc(index: cint): gen_qsize.QSize
+proc ontabSizeHint*(self: gen_qtabbar_types.QTabBar, slot: QTabBartabSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBartabSizeHintBase, index: cint): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QTabBartabSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_tabSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_tabSizeHint(self: ptr cQTabBar, slot: int, index: cint): pointer {.exportc: "miqt_exec_callback_QTabBar_tabSizeHint ".} =
-  type Cb = proc(super: QTabBartabSizeHintBase, index: cint): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(index: cint): auto =
-    callVirtualBase_tabSizeHint(QTabBar(h: self), index)
+  var nimfunc = cast[ptr QTabBartabSizeHintProc](cast[pointer](slot))
   let slotval1 = index
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_minimumTabSizeHint(self: QTabBar, index: cint): gen_qsize.QSize =
-
+proc QTabBarminimumTabSizeHint*(self: gen_qtabbar_types.QTabBar, index: cint): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQTabBar_virtualbase_minimumTabSizeHint(self.h, index))
 
-type QTabBarminimumTabSizeHintBase* = proc(index: cint): gen_qsize.QSize
-proc onminimumTabSizeHint*(self: QTabBar, slot: proc(super: QTabBarminimumTabSizeHintBase, index: cint): gen_qsize.QSize) =
+type QTabBarminimumTabSizeHintProc* = proc(index: cint): gen_qsize.QSize
+proc onminimumTabSizeHint*(self: gen_qtabbar_types.QTabBar, slot: QTabBarminimumTabSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBarminimumTabSizeHintBase, index: cint): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QTabBarminimumTabSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_minimumTabSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_minimumTabSizeHint(self: ptr cQTabBar, slot: int, index: cint): pointer {.exportc: "miqt_exec_callback_QTabBar_minimumTabSizeHint ".} =
-  type Cb = proc(super: QTabBarminimumTabSizeHintBase, index: cint): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(index: cint): auto =
-    callVirtualBase_minimumTabSizeHint(QTabBar(h: self), index)
+  var nimfunc = cast[ptr QTabBarminimumTabSizeHintProc](cast[pointer](slot))
   let slotval1 = index
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_tabInserted(self: QTabBar, index: cint): void =
-
+proc QTabBartabInserted*(self: gen_qtabbar_types.QTabBar, index: cint): void =
 
   fQTabBar_virtualbase_tabInserted(self.h, index)
 
-type QTabBartabInsertedBase* = proc(index: cint): void
-proc ontabInserted*(self: QTabBar, slot: proc(super: QTabBartabInsertedBase, index: cint): void) =
+type QTabBartabInsertedProc* = proc(index: cint): void
+proc ontabInserted*(self: gen_qtabbar_types.QTabBar, slot: QTabBartabInsertedProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBartabInsertedBase, index: cint): void
-  var tmp = new Cb
+  var tmp = new QTabBartabInsertedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_tabInserted(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_tabInserted(self: ptr cQTabBar, slot: int, index: cint): void {.exportc: "miqt_exec_callback_QTabBar_tabInserted ".} =
-  type Cb = proc(super: QTabBartabInsertedBase, index: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(index: cint): auto =
-    callVirtualBase_tabInserted(QTabBar(h: self), index)
+  var nimfunc = cast[ptr QTabBartabInsertedProc](cast[pointer](slot))
   let slotval1 = index
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_tabRemoved(self: QTabBar, index: cint): void =
-
+  nimfunc[](slotval1)
+proc QTabBartabRemoved*(self: gen_qtabbar_types.QTabBar, index: cint): void =
 
   fQTabBar_virtualbase_tabRemoved(self.h, index)
 
-type QTabBartabRemovedBase* = proc(index: cint): void
-proc ontabRemoved*(self: QTabBar, slot: proc(super: QTabBartabRemovedBase, index: cint): void) =
+type QTabBartabRemovedProc* = proc(index: cint): void
+proc ontabRemoved*(self: gen_qtabbar_types.QTabBar, slot: QTabBartabRemovedProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBartabRemovedBase, index: cint): void
-  var tmp = new Cb
+  var tmp = new QTabBartabRemovedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_tabRemoved(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_tabRemoved(self: ptr cQTabBar, slot: int, index: cint): void {.exportc: "miqt_exec_callback_QTabBar_tabRemoved ".} =
-  type Cb = proc(super: QTabBartabRemovedBase, index: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(index: cint): auto =
-    callVirtualBase_tabRemoved(QTabBar(h: self), index)
+  var nimfunc = cast[ptr QTabBartabRemovedProc](cast[pointer](slot))
   let slotval1 = index
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_tabLayoutChange(self: QTabBar, ): void =
-
+  nimfunc[](slotval1)
+proc QTabBartabLayoutChange*(self: gen_qtabbar_types.QTabBar, ): void =
 
   fQTabBar_virtualbase_tabLayoutChange(self.h)
 
-type QTabBartabLayoutChangeBase* = proc(): void
-proc ontabLayoutChange*(self: QTabBar, slot: proc(super: QTabBartabLayoutChangeBase): void) =
+type QTabBartabLayoutChangeProc* = proc(): void
+proc ontabLayoutChange*(self: gen_qtabbar_types.QTabBar, slot: QTabBartabLayoutChangeProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBartabLayoutChangeBase): void
-  var tmp = new Cb
+  var tmp = new QTabBartabLayoutChangeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_tabLayoutChange(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_tabLayoutChange(self: ptr cQTabBar, slot: int): void {.exportc: "miqt_exec_callback_QTabBar_tabLayoutChange ".} =
-  type Cb = proc(super: QTabBartabLayoutChangeBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_tabLayoutChange(QTabBar(h: self), )
+  var nimfunc = cast[ptr QTabBartabLayoutChangeProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_event(self: QTabBar, param1: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[]()
+proc QTabBarevent*(self: gen_qtabbar_types.QTabBar, param1: gen_qcoreevent.QEvent): bool =
 
   fQTabBar_virtualbase_event(self.h, param1.h)
 
-type QTabBareventBase* = proc(param1: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QTabBar, slot: proc(super: QTabBareventBase, param1: gen_qcoreevent.QEvent): bool) =
+type QTabBareventProc* = proc(param1: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qtabbar_types.QTabBar, slot: QTabBareventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBareventBase, param1: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QTabBareventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_event(self: ptr cQTabBar, slot: int, param1: pointer): bool {.exportc: "miqt_exec_callback_QTabBar_event ".} =
-  type Cb = proc(super: QTabBareventBase, param1: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QTabBar(h: self), param1)
+  var nimfunc = cast[ptr QTabBareventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_resizeEvent(self: QTabBar, param1: gen_qevent.QResizeEvent): void =
-
+proc QTabBarresizeEvent*(self: gen_qtabbar_types.QTabBar, param1: gen_qevent.QResizeEvent): void =
 
   fQTabBar_virtualbase_resizeEvent(self.h, param1.h)
 
-type QTabBarresizeEventBase* = proc(param1: gen_qevent.QResizeEvent): void
-proc onresizeEvent*(self: QTabBar, slot: proc(super: QTabBarresizeEventBase, param1: gen_qevent.QResizeEvent): void) =
+type QTabBarresizeEventProc* = proc(param1: gen_qevent.QResizeEvent): void
+proc onresizeEvent*(self: gen_qtabbar_types.QTabBar, slot: QTabBarresizeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBarresizeEventBase, param1: gen_qevent.QResizeEvent): void
-  var tmp = new Cb
+  var tmp = new QTabBarresizeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_resizeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_resizeEvent(self: ptr cQTabBar, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QTabBar_resizeEvent ".} =
-  type Cb = proc(super: QTabBarresizeEventBase, param1: gen_qevent.QResizeEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QResizeEvent): auto =
-    callVirtualBase_resizeEvent(QTabBar(h: self), param1)
+  var nimfunc = cast[ptr QTabBarresizeEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QResizeEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_showEvent(self: QTabBar, param1: gen_qevent.QShowEvent): void =
-
+  nimfunc[](slotval1)
+proc QTabBarshowEvent*(self: gen_qtabbar_types.QTabBar, param1: gen_qevent.QShowEvent): void =
 
   fQTabBar_virtualbase_showEvent(self.h, param1.h)
 
-type QTabBarshowEventBase* = proc(param1: gen_qevent.QShowEvent): void
-proc onshowEvent*(self: QTabBar, slot: proc(super: QTabBarshowEventBase, param1: gen_qevent.QShowEvent): void) =
+type QTabBarshowEventProc* = proc(param1: gen_qevent.QShowEvent): void
+proc onshowEvent*(self: gen_qtabbar_types.QTabBar, slot: QTabBarshowEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBarshowEventBase, param1: gen_qevent.QShowEvent): void
-  var tmp = new Cb
+  var tmp = new QTabBarshowEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_showEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_showEvent(self: ptr cQTabBar, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QTabBar_showEvent ".} =
-  type Cb = proc(super: QTabBarshowEventBase, param1: gen_qevent.QShowEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QShowEvent): auto =
-    callVirtualBase_showEvent(QTabBar(h: self), param1)
+  var nimfunc = cast[ptr QTabBarshowEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QShowEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hideEvent(self: QTabBar, param1: gen_qevent.QHideEvent): void =
-
+  nimfunc[](slotval1)
+proc QTabBarhideEvent*(self: gen_qtabbar_types.QTabBar, param1: gen_qevent.QHideEvent): void =
 
   fQTabBar_virtualbase_hideEvent(self.h, param1.h)
 
-type QTabBarhideEventBase* = proc(param1: gen_qevent.QHideEvent): void
-proc onhideEvent*(self: QTabBar, slot: proc(super: QTabBarhideEventBase, param1: gen_qevent.QHideEvent): void) =
+type QTabBarhideEventProc* = proc(param1: gen_qevent.QHideEvent): void
+proc onhideEvent*(self: gen_qtabbar_types.QTabBar, slot: QTabBarhideEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBarhideEventBase, param1: gen_qevent.QHideEvent): void
-  var tmp = new Cb
+  var tmp = new QTabBarhideEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_hideEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_hideEvent(self: ptr cQTabBar, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QTabBar_hideEvent ".} =
-  type Cb = proc(super: QTabBarhideEventBase, param1: gen_qevent.QHideEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QHideEvent): auto =
-    callVirtualBase_hideEvent(QTabBar(h: self), param1)
+  var nimfunc = cast[ptr QTabBarhideEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QHideEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_paintEvent(self: QTabBar, param1: gen_qevent.QPaintEvent): void =
-
+  nimfunc[](slotval1)
+proc QTabBarpaintEvent*(self: gen_qtabbar_types.QTabBar, param1: gen_qevent.QPaintEvent): void =
 
   fQTabBar_virtualbase_paintEvent(self.h, param1.h)
 
-type QTabBarpaintEventBase* = proc(param1: gen_qevent.QPaintEvent): void
-proc onpaintEvent*(self: QTabBar, slot: proc(super: QTabBarpaintEventBase, param1: gen_qevent.QPaintEvent): void) =
+type QTabBarpaintEventProc* = proc(param1: gen_qevent.QPaintEvent): void
+proc onpaintEvent*(self: gen_qtabbar_types.QTabBar, slot: QTabBarpaintEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBarpaintEventBase, param1: gen_qevent.QPaintEvent): void
-  var tmp = new Cb
+  var tmp = new QTabBarpaintEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_paintEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_paintEvent(self: ptr cQTabBar, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QTabBar_paintEvent ".} =
-  type Cb = proc(super: QTabBarpaintEventBase, param1: gen_qevent.QPaintEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QPaintEvent): auto =
-    callVirtualBase_paintEvent(QTabBar(h: self), param1)
+  var nimfunc = cast[ptr QTabBarpaintEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QPaintEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mousePressEvent(self: QTabBar, param1: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QTabBarmousePressEvent*(self: gen_qtabbar_types.QTabBar, param1: gen_qevent.QMouseEvent): void =
 
   fQTabBar_virtualbase_mousePressEvent(self.h, param1.h)
 
-type QTabBarmousePressEventBase* = proc(param1: gen_qevent.QMouseEvent): void
-proc onmousePressEvent*(self: QTabBar, slot: proc(super: QTabBarmousePressEventBase, param1: gen_qevent.QMouseEvent): void) =
+type QTabBarmousePressEventProc* = proc(param1: gen_qevent.QMouseEvent): void
+proc onmousePressEvent*(self: gen_qtabbar_types.QTabBar, slot: QTabBarmousePressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBarmousePressEventBase, param1: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QTabBarmousePressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_mousePressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_mousePressEvent(self: ptr cQTabBar, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QTabBar_mousePressEvent ".} =
-  type Cb = proc(super: QTabBarmousePressEventBase, param1: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mousePressEvent(QTabBar(h: self), param1)
+  var nimfunc = cast[ptr QTabBarmousePressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseMoveEvent(self: QTabBar, param1: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QTabBarmouseMoveEvent*(self: gen_qtabbar_types.QTabBar, param1: gen_qevent.QMouseEvent): void =
 
   fQTabBar_virtualbase_mouseMoveEvent(self.h, param1.h)
 
-type QTabBarmouseMoveEventBase* = proc(param1: gen_qevent.QMouseEvent): void
-proc onmouseMoveEvent*(self: QTabBar, slot: proc(super: QTabBarmouseMoveEventBase, param1: gen_qevent.QMouseEvent): void) =
+type QTabBarmouseMoveEventProc* = proc(param1: gen_qevent.QMouseEvent): void
+proc onmouseMoveEvent*(self: gen_qtabbar_types.QTabBar, slot: QTabBarmouseMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBarmouseMoveEventBase, param1: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QTabBarmouseMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_mouseMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_mouseMoveEvent(self: ptr cQTabBar, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QTabBar_mouseMoveEvent ".} =
-  type Cb = proc(super: QTabBarmouseMoveEventBase, param1: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseMoveEvent(QTabBar(h: self), param1)
+  var nimfunc = cast[ptr QTabBarmouseMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseReleaseEvent(self: QTabBar, param1: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QTabBarmouseReleaseEvent*(self: gen_qtabbar_types.QTabBar, param1: gen_qevent.QMouseEvent): void =
 
   fQTabBar_virtualbase_mouseReleaseEvent(self.h, param1.h)
 
-type QTabBarmouseReleaseEventBase* = proc(param1: gen_qevent.QMouseEvent): void
-proc onmouseReleaseEvent*(self: QTabBar, slot: proc(super: QTabBarmouseReleaseEventBase, param1: gen_qevent.QMouseEvent): void) =
+type QTabBarmouseReleaseEventProc* = proc(param1: gen_qevent.QMouseEvent): void
+proc onmouseReleaseEvent*(self: gen_qtabbar_types.QTabBar, slot: QTabBarmouseReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBarmouseReleaseEventBase, param1: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QTabBarmouseReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_mouseReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_mouseReleaseEvent(self: ptr cQTabBar, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QTabBar_mouseReleaseEvent ".} =
-  type Cb = proc(super: QTabBarmouseReleaseEventBase, param1: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseReleaseEvent(QTabBar(h: self), param1)
+  var nimfunc = cast[ptr QTabBarmouseReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseDoubleClickEvent(self: QTabBar, param1: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QTabBarmouseDoubleClickEvent*(self: gen_qtabbar_types.QTabBar, param1: gen_qevent.QMouseEvent): void =
 
   fQTabBar_virtualbase_mouseDoubleClickEvent(self.h, param1.h)
 
-type QTabBarmouseDoubleClickEventBase* = proc(param1: gen_qevent.QMouseEvent): void
-proc onmouseDoubleClickEvent*(self: QTabBar, slot: proc(super: QTabBarmouseDoubleClickEventBase, param1: gen_qevent.QMouseEvent): void) =
+type QTabBarmouseDoubleClickEventProc* = proc(param1: gen_qevent.QMouseEvent): void
+proc onmouseDoubleClickEvent*(self: gen_qtabbar_types.QTabBar, slot: QTabBarmouseDoubleClickEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBarmouseDoubleClickEventBase, param1: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QTabBarmouseDoubleClickEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_mouseDoubleClickEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_mouseDoubleClickEvent(self: ptr cQTabBar, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QTabBar_mouseDoubleClickEvent ".} =
-  type Cb = proc(super: QTabBarmouseDoubleClickEventBase, param1: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseDoubleClickEvent(QTabBar(h: self), param1)
+  var nimfunc = cast[ptr QTabBarmouseDoubleClickEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_wheelEvent(self: QTabBar, event: gen_qevent.QWheelEvent): void =
-
+  nimfunc[](slotval1)
+proc QTabBarwheelEvent*(self: gen_qtabbar_types.QTabBar, event: gen_qevent.QWheelEvent): void =
 
   fQTabBar_virtualbase_wheelEvent(self.h, event.h)
 
-type QTabBarwheelEventBase* = proc(event: gen_qevent.QWheelEvent): void
-proc onwheelEvent*(self: QTabBar, slot: proc(super: QTabBarwheelEventBase, event: gen_qevent.QWheelEvent): void) =
+type QTabBarwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
+proc onwheelEvent*(self: gen_qtabbar_types.QTabBar, slot: QTabBarwheelEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBarwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var tmp = new Cb
+  var tmp = new QTabBarwheelEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_wheelEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_wheelEvent(self: ptr cQTabBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTabBar_wheelEvent ".} =
-  type Cb = proc(super: QTabBarwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QWheelEvent): auto =
-    callVirtualBase_wheelEvent(QTabBar(h: self), event)
+  var nimfunc = cast[ptr QTabBarwheelEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QWheelEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyPressEvent(self: QTabBar, param1: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QTabBarkeyPressEvent*(self: gen_qtabbar_types.QTabBar, param1: gen_qevent.QKeyEvent): void =
 
   fQTabBar_virtualbase_keyPressEvent(self.h, param1.h)
 
-type QTabBarkeyPressEventBase* = proc(param1: gen_qevent.QKeyEvent): void
-proc onkeyPressEvent*(self: QTabBar, slot: proc(super: QTabBarkeyPressEventBase, param1: gen_qevent.QKeyEvent): void) =
+type QTabBarkeyPressEventProc* = proc(param1: gen_qevent.QKeyEvent): void
+proc onkeyPressEvent*(self: gen_qtabbar_types.QTabBar, slot: QTabBarkeyPressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBarkeyPressEventBase, param1: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QTabBarkeyPressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_keyPressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_keyPressEvent(self: ptr cQTabBar, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QTabBar_keyPressEvent ".} =
-  type Cb = proc(super: QTabBarkeyPressEventBase, param1: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyPressEvent(QTabBar(h: self), param1)
+  var nimfunc = cast[ptr QTabBarkeyPressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_changeEvent(self: QTabBar, param1: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QTabBarchangeEvent*(self: gen_qtabbar_types.QTabBar, param1: gen_qcoreevent.QEvent): void =
 
   fQTabBar_virtualbase_changeEvent(self.h, param1.h)
 
-type QTabBarchangeEventBase* = proc(param1: gen_qcoreevent.QEvent): void
-proc onchangeEvent*(self: QTabBar, slot: proc(super: QTabBarchangeEventBase, param1: gen_qcoreevent.QEvent): void) =
+type QTabBarchangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
+proc onchangeEvent*(self: gen_qtabbar_types.QTabBar, slot: QTabBarchangeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBarchangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QTabBarchangeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_changeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_changeEvent(self: ptr cQTabBar, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QTabBar_changeEvent ".} =
-  type Cb = proc(super: QTabBarchangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_changeEvent(QTabBar(h: self), param1)
+  var nimfunc = cast[ptr QTabBarchangeEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_timerEvent(self: QTabBar, event: gen_qcoreevent.QTimerEvent): void =
-
+  nimfunc[](slotval1)
+proc QTabBartimerEvent*(self: gen_qtabbar_types.QTabBar, event: gen_qcoreevent.QTimerEvent): void =
 
   fQTabBar_virtualbase_timerEvent(self.h, event.h)
 
-type QTabBartimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QTabBar, slot: proc(super: QTabBartimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QTabBartimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qtabbar_types.QTabBar, slot: QTabBartimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBartimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QTabBartimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_timerEvent(self: ptr cQTabBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTabBar_timerEvent ".} =
-  type Cb = proc(super: QTabBartimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QTabBar(h: self), event)
+  var nimfunc = cast[ptr QTabBartimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_initStyleOption(self: QTabBar, option: gen_qstyleoption.QStyleOptionTab, tabIndex: cint): void =
-
+  nimfunc[](slotval1)
+proc QTabBarinitStyleOption*(self: gen_qtabbar_types.QTabBar, option: gen_qstyleoption.QStyleOptionTab, tabIndex: cint): void =
 
   fQTabBar_virtualbase_initStyleOption(self.h, option.h, tabIndex)
 
-type QTabBarinitStyleOptionBase* = proc(option: gen_qstyleoption.QStyleOptionTab, tabIndex: cint): void
-proc oninitStyleOption*(self: QTabBar, slot: proc(super: QTabBarinitStyleOptionBase, option: gen_qstyleoption.QStyleOptionTab, tabIndex: cint): void) =
+type QTabBarinitStyleOptionProc* = proc(option: gen_qstyleoption.QStyleOptionTab, tabIndex: cint): void
+proc oninitStyleOption*(self: gen_qtabbar_types.QTabBar, slot: QTabBarinitStyleOptionProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBarinitStyleOptionBase, option: gen_qstyleoption.QStyleOptionTab, tabIndex: cint): void
-  var tmp = new Cb
+  var tmp = new QTabBarinitStyleOptionProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_initStyleOption(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_initStyleOption(self: ptr cQTabBar, slot: int, option: pointer, tabIndex: cint): void {.exportc: "miqt_exec_callback_QTabBar_initStyleOption ".} =
-  type Cb = proc(super: QTabBarinitStyleOptionBase, option: gen_qstyleoption.QStyleOptionTab, tabIndex: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(option: gen_qstyleoption.QStyleOptionTab, tabIndex: cint): auto =
-    callVirtualBase_initStyleOption(QTabBar(h: self), option, tabIndex)
+  var nimfunc = cast[ptr QTabBarinitStyleOptionProc](cast[pointer](slot))
   let slotval1 = gen_qstyleoption.QStyleOptionTab(h: option)
 
   let slotval2 = tabIndex
 
 
-  nimfunc[](superCall, slotval1, slotval2)
-proc callVirtualBase_devType(self: QTabBar, ): cint =
-
+  nimfunc[](slotval1, slotval2)
+proc QTabBardevType*(self: gen_qtabbar_types.QTabBar, ): cint =
 
   fQTabBar_virtualbase_devType(self.h)
 
-type QTabBardevTypeBase* = proc(): cint
-proc ondevType*(self: QTabBar, slot: proc(super: QTabBardevTypeBase): cint) =
+type QTabBardevTypeProc* = proc(): cint
+proc ondevType*(self: gen_qtabbar_types.QTabBar, slot: QTabBardevTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBardevTypeBase): cint
-  var tmp = new Cb
+  var tmp = new QTabBardevTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_devType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_devType(self: ptr cQTabBar, slot: int): cint {.exportc: "miqt_exec_callback_QTabBar_devType ".} =
-  type Cb = proc(super: QTabBardevTypeBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_devType(QTabBar(h: self), )
+  var nimfunc = cast[ptr QTabBardevTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setVisible(self: QTabBar, visible: bool): void =
-
+proc QTabBarsetVisible*(self: gen_qtabbar_types.QTabBar, visible: bool): void =
 
   fQTabBar_virtualbase_setVisible(self.h, visible)
 
-type QTabBarsetVisibleBase* = proc(visible: bool): void
-proc onsetVisible*(self: QTabBar, slot: proc(super: QTabBarsetVisibleBase, visible: bool): void) =
+type QTabBarsetVisibleProc* = proc(visible: bool): void
+proc onsetVisible*(self: gen_qtabbar_types.QTabBar, slot: QTabBarsetVisibleProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBarsetVisibleBase, visible: bool): void
-  var tmp = new Cb
+  var tmp = new QTabBarsetVisibleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_setVisible(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_setVisible(self: ptr cQTabBar, slot: int, visible: bool): void {.exportc: "miqt_exec_callback_QTabBar_setVisible ".} =
-  type Cb = proc(super: QTabBarsetVisibleBase, visible: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(visible: bool): auto =
-    callVirtualBase_setVisible(QTabBar(h: self), visible)
+  var nimfunc = cast[ptr QTabBarsetVisibleProc](cast[pointer](slot))
   let slotval1 = visible
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_heightForWidth(self: QTabBar, param1: cint): cint =
-
+  nimfunc[](slotval1)
+proc QTabBarheightForWidth*(self: gen_qtabbar_types.QTabBar, param1: cint): cint =
 
   fQTabBar_virtualbase_heightForWidth(self.h, param1)
 
-type QTabBarheightForWidthBase* = proc(param1: cint): cint
-proc onheightForWidth*(self: QTabBar, slot: proc(super: QTabBarheightForWidthBase, param1: cint): cint) =
+type QTabBarheightForWidthProc* = proc(param1: cint): cint
+proc onheightForWidth*(self: gen_qtabbar_types.QTabBar, slot: QTabBarheightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBarheightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QTabBarheightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_heightForWidth(self: ptr cQTabBar, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QTabBar_heightForWidth ".} =
-  type Cb = proc(super: QTabBarheightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_heightForWidth(QTabBar(h: self), param1)
+  var nimfunc = cast[ptr QTabBarheightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_hasHeightForWidth(self: QTabBar, ): bool =
-
+proc QTabBarhasHeightForWidth*(self: gen_qtabbar_types.QTabBar, ): bool =
 
   fQTabBar_virtualbase_hasHeightForWidth(self.h)
 
-type QTabBarhasHeightForWidthBase* = proc(): bool
-proc onhasHeightForWidth*(self: QTabBar, slot: proc(super: QTabBarhasHeightForWidthBase): bool) =
+type QTabBarhasHeightForWidthProc* = proc(): bool
+proc onhasHeightForWidth*(self: gen_qtabbar_types.QTabBar, slot: QTabBarhasHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBarhasHeightForWidthBase): bool
-  var tmp = new Cb
+  var tmp = new QTabBarhasHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_hasHeightForWidth(self: ptr cQTabBar, slot: int): bool {.exportc: "miqt_exec_callback_QTabBar_hasHeightForWidth ".} =
-  type Cb = proc(super: QTabBarhasHeightForWidthBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasHeightForWidth(QTabBar(h: self), )
+  var nimfunc = cast[ptr QTabBarhasHeightForWidthProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_paintEngine(self: QTabBar, ): gen_qpaintengine.QPaintEngine =
-
+proc QTabBarpaintEngine*(self: gen_qtabbar_types.QTabBar, ): gen_qpaintengine.QPaintEngine =
 
   gen_qpaintengine.QPaintEngine(h: fQTabBar_virtualbase_paintEngine(self.h))
 
-type QTabBarpaintEngineBase* = proc(): gen_qpaintengine.QPaintEngine
-proc onpaintEngine*(self: QTabBar, slot: proc(super: QTabBarpaintEngineBase): gen_qpaintengine.QPaintEngine) =
+type QTabBarpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
+proc onpaintEngine*(self: gen_qtabbar_types.QTabBar, slot: QTabBarpaintEngineProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBarpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var tmp = new Cb
+  var tmp = new QTabBarpaintEngineProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_paintEngine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_paintEngine(self: ptr cQTabBar, slot: int): pointer {.exportc: "miqt_exec_callback_QTabBar_paintEngine ".} =
-  type Cb = proc(super: QTabBarpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_paintEngine(QTabBar(h: self), )
+  var nimfunc = cast[ptr QTabBarpaintEngineProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_keyReleaseEvent(self: QTabBar, event: gen_qevent.QKeyEvent): void =
-
+proc QTabBarkeyReleaseEvent*(self: gen_qtabbar_types.QTabBar, event: gen_qevent.QKeyEvent): void =
 
   fQTabBar_virtualbase_keyReleaseEvent(self.h, event.h)
 
-type QTabBarkeyReleaseEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyReleaseEvent*(self: QTabBar, slot: proc(super: QTabBarkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void) =
+type QTabBarkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyReleaseEvent*(self: gen_qtabbar_types.QTabBar, slot: QTabBarkeyReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBarkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QTabBarkeyReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_keyReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_keyReleaseEvent(self: ptr cQTabBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTabBar_keyReleaseEvent ".} =
-  type Cb = proc(super: QTabBarkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyReleaseEvent(QTabBar(h: self), event)
+  var nimfunc = cast[ptr QTabBarkeyReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusInEvent(self: QTabBar, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QTabBarfocusInEvent*(self: gen_qtabbar_types.QTabBar, event: gen_qevent.QFocusEvent): void =
 
   fQTabBar_virtualbase_focusInEvent(self.h, event.h)
 
-type QTabBarfocusInEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusInEvent*(self: QTabBar, slot: proc(super: QTabBarfocusInEventBase, event: gen_qevent.QFocusEvent): void) =
+type QTabBarfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusInEvent*(self: gen_qtabbar_types.QTabBar, slot: QTabBarfocusInEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBarfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QTabBarfocusInEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_focusInEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_focusInEvent(self: ptr cQTabBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTabBar_focusInEvent ".} =
-  type Cb = proc(super: QTabBarfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusInEvent(QTabBar(h: self), event)
+  var nimfunc = cast[ptr QTabBarfocusInEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusOutEvent(self: QTabBar, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QTabBarfocusOutEvent*(self: gen_qtabbar_types.QTabBar, event: gen_qevent.QFocusEvent): void =
 
   fQTabBar_virtualbase_focusOutEvent(self.h, event.h)
 
-type QTabBarfocusOutEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusOutEvent*(self: QTabBar, slot: proc(super: QTabBarfocusOutEventBase, event: gen_qevent.QFocusEvent): void) =
+type QTabBarfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusOutEvent*(self: gen_qtabbar_types.QTabBar, slot: QTabBarfocusOutEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBarfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QTabBarfocusOutEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_focusOutEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_focusOutEvent(self: ptr cQTabBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTabBar_focusOutEvent ".} =
-  type Cb = proc(super: QTabBarfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusOutEvent(QTabBar(h: self), event)
+  var nimfunc = cast[ptr QTabBarfocusOutEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_enterEvent(self: QTabBar, event: gen_qevent.QEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QTabBarenterEvent*(self: gen_qtabbar_types.QTabBar, event: gen_qevent.QEnterEvent): void =
 
   fQTabBar_virtualbase_enterEvent(self.h, event.h)
 
-type QTabBarenterEventBase* = proc(event: gen_qevent.QEnterEvent): void
-proc onenterEvent*(self: QTabBar, slot: proc(super: QTabBarenterEventBase, event: gen_qevent.QEnterEvent): void) =
+type QTabBarenterEventProc* = proc(event: gen_qevent.QEnterEvent): void
+proc onenterEvent*(self: gen_qtabbar_types.QTabBar, slot: QTabBarenterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBarenterEventBase, event: gen_qevent.QEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QTabBarenterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_enterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_enterEvent(self: ptr cQTabBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTabBar_enterEvent ".} =
-  type Cb = proc(super: QTabBarenterEventBase, event: gen_qevent.QEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QEnterEvent): auto =
-    callVirtualBase_enterEvent(QTabBar(h: self), event)
+  var nimfunc = cast[ptr QTabBarenterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_leaveEvent(self: QTabBar, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QTabBarleaveEvent*(self: gen_qtabbar_types.QTabBar, event: gen_qcoreevent.QEvent): void =
 
   fQTabBar_virtualbase_leaveEvent(self.h, event.h)
 
-type QTabBarleaveEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onleaveEvent*(self: QTabBar, slot: proc(super: QTabBarleaveEventBase, event: gen_qcoreevent.QEvent): void) =
+type QTabBarleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onleaveEvent*(self: gen_qtabbar_types.QTabBar, slot: QTabBarleaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBarleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QTabBarleaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_leaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_leaveEvent(self: ptr cQTabBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTabBar_leaveEvent ".} =
-  type Cb = proc(super: QTabBarleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_leaveEvent(QTabBar(h: self), event)
+  var nimfunc = cast[ptr QTabBarleaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_moveEvent(self: QTabBar, event: gen_qevent.QMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QTabBarmoveEvent*(self: gen_qtabbar_types.QTabBar, event: gen_qevent.QMoveEvent): void =
 
   fQTabBar_virtualbase_moveEvent(self.h, event.h)
 
-type QTabBarmoveEventBase* = proc(event: gen_qevent.QMoveEvent): void
-proc onmoveEvent*(self: QTabBar, slot: proc(super: QTabBarmoveEventBase, event: gen_qevent.QMoveEvent): void) =
+type QTabBarmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
+proc onmoveEvent*(self: gen_qtabbar_types.QTabBar, slot: QTabBarmoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBarmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QTabBarmoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_moveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_moveEvent(self: ptr cQTabBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTabBar_moveEvent ".} =
-  type Cb = proc(super: QTabBarmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMoveEvent): auto =
-    callVirtualBase_moveEvent(QTabBar(h: self), event)
+  var nimfunc = cast[ptr QTabBarmoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_closeEvent(self: QTabBar, event: gen_qevent.QCloseEvent): void =
-
+  nimfunc[](slotval1)
+proc QTabBarcloseEvent*(self: gen_qtabbar_types.QTabBar, event: gen_qevent.QCloseEvent): void =
 
   fQTabBar_virtualbase_closeEvent(self.h, event.h)
 
-type QTabBarcloseEventBase* = proc(event: gen_qevent.QCloseEvent): void
-proc oncloseEvent*(self: QTabBar, slot: proc(super: QTabBarcloseEventBase, event: gen_qevent.QCloseEvent): void) =
+type QTabBarcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
+proc oncloseEvent*(self: gen_qtabbar_types.QTabBar, slot: QTabBarcloseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBarcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var tmp = new Cb
+  var tmp = new QTabBarcloseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_closeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_closeEvent(self: ptr cQTabBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTabBar_closeEvent ".} =
-  type Cb = proc(super: QTabBarcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QCloseEvent): auto =
-    callVirtualBase_closeEvent(QTabBar(h: self), event)
+  var nimfunc = cast[ptr QTabBarcloseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QCloseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_contextMenuEvent(self: QTabBar, event: gen_qevent.QContextMenuEvent): void =
-
+  nimfunc[](slotval1)
+proc QTabBarcontextMenuEvent*(self: gen_qtabbar_types.QTabBar, event: gen_qevent.QContextMenuEvent): void =
 
   fQTabBar_virtualbase_contextMenuEvent(self.h, event.h)
 
-type QTabBarcontextMenuEventBase* = proc(event: gen_qevent.QContextMenuEvent): void
-proc oncontextMenuEvent*(self: QTabBar, slot: proc(super: QTabBarcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void) =
+type QTabBarcontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
+proc oncontextMenuEvent*(self: gen_qtabbar_types.QTabBar, slot: QTabBarcontextMenuEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBarcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var tmp = new Cb
+  var tmp = new QTabBarcontextMenuEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_contextMenuEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_contextMenuEvent(self: ptr cQTabBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTabBar_contextMenuEvent ".} =
-  type Cb = proc(super: QTabBarcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QContextMenuEvent): auto =
-    callVirtualBase_contextMenuEvent(QTabBar(h: self), event)
+  var nimfunc = cast[ptr QTabBarcontextMenuEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QContextMenuEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_tabletEvent(self: QTabBar, event: gen_qevent.QTabletEvent): void =
-
+  nimfunc[](slotval1)
+proc QTabBartabletEvent*(self: gen_qtabbar_types.QTabBar, event: gen_qevent.QTabletEvent): void =
 
   fQTabBar_virtualbase_tabletEvent(self.h, event.h)
 
-type QTabBartabletEventBase* = proc(event: gen_qevent.QTabletEvent): void
-proc ontabletEvent*(self: QTabBar, slot: proc(super: QTabBartabletEventBase, event: gen_qevent.QTabletEvent): void) =
+type QTabBartabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
+proc ontabletEvent*(self: gen_qtabbar_types.QTabBar, slot: QTabBartabletEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBartabletEventBase, event: gen_qevent.QTabletEvent): void
-  var tmp = new Cb
+  var tmp = new QTabBartabletEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_tabletEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_tabletEvent(self: ptr cQTabBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTabBar_tabletEvent ".} =
-  type Cb = proc(super: QTabBartabletEventBase, event: gen_qevent.QTabletEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QTabletEvent): auto =
-    callVirtualBase_tabletEvent(QTabBar(h: self), event)
+  var nimfunc = cast[ptr QTabBartabletEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QTabletEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_actionEvent(self: QTabBar, event: gen_qevent.QActionEvent): void =
-
+  nimfunc[](slotval1)
+proc QTabBaractionEvent*(self: gen_qtabbar_types.QTabBar, event: gen_qevent.QActionEvent): void =
 
   fQTabBar_virtualbase_actionEvent(self.h, event.h)
 
-type QTabBaractionEventBase* = proc(event: gen_qevent.QActionEvent): void
-proc onactionEvent*(self: QTabBar, slot: proc(super: QTabBaractionEventBase, event: gen_qevent.QActionEvent): void) =
+type QTabBaractionEventProc* = proc(event: gen_qevent.QActionEvent): void
+proc onactionEvent*(self: gen_qtabbar_types.QTabBar, slot: QTabBaractionEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBaractionEventBase, event: gen_qevent.QActionEvent): void
-  var tmp = new Cb
+  var tmp = new QTabBaractionEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_actionEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_actionEvent(self: ptr cQTabBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTabBar_actionEvent ".} =
-  type Cb = proc(super: QTabBaractionEventBase, event: gen_qevent.QActionEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QActionEvent): auto =
-    callVirtualBase_actionEvent(QTabBar(h: self), event)
+  var nimfunc = cast[ptr QTabBaractionEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QActionEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragEnterEvent(self: QTabBar, event: gen_qevent.QDragEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QTabBardragEnterEvent*(self: gen_qtabbar_types.QTabBar, event: gen_qevent.QDragEnterEvent): void =
 
   fQTabBar_virtualbase_dragEnterEvent(self.h, event.h)
 
-type QTabBardragEnterEventBase* = proc(event: gen_qevent.QDragEnterEvent): void
-proc ondragEnterEvent*(self: QTabBar, slot: proc(super: QTabBardragEnterEventBase, event: gen_qevent.QDragEnterEvent): void) =
+type QTabBardragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
+proc ondragEnterEvent*(self: gen_qtabbar_types.QTabBar, slot: QTabBardragEnterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBardragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QTabBardragEnterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_dragEnterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_dragEnterEvent(self: ptr cQTabBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTabBar_dragEnterEvent ".} =
-  type Cb = proc(super: QTabBardragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragEnterEvent): auto =
-    callVirtualBase_dragEnterEvent(QTabBar(h: self), event)
+  var nimfunc = cast[ptr QTabBardragEnterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragMoveEvent(self: QTabBar, event: gen_qevent.QDragMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QTabBardragMoveEvent*(self: gen_qtabbar_types.QTabBar, event: gen_qevent.QDragMoveEvent): void =
 
   fQTabBar_virtualbase_dragMoveEvent(self.h, event.h)
 
-type QTabBardragMoveEventBase* = proc(event: gen_qevent.QDragMoveEvent): void
-proc ondragMoveEvent*(self: QTabBar, slot: proc(super: QTabBardragMoveEventBase, event: gen_qevent.QDragMoveEvent): void) =
+type QTabBardragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
+proc ondragMoveEvent*(self: gen_qtabbar_types.QTabBar, slot: QTabBardragMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBardragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QTabBardragMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_dragMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_dragMoveEvent(self: ptr cQTabBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTabBar_dragMoveEvent ".} =
-  type Cb = proc(super: QTabBardragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragMoveEvent): auto =
-    callVirtualBase_dragMoveEvent(QTabBar(h: self), event)
+  var nimfunc = cast[ptr QTabBardragMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragLeaveEvent(self: QTabBar, event: gen_qevent.QDragLeaveEvent): void =
-
+  nimfunc[](slotval1)
+proc QTabBardragLeaveEvent*(self: gen_qtabbar_types.QTabBar, event: gen_qevent.QDragLeaveEvent): void =
 
   fQTabBar_virtualbase_dragLeaveEvent(self.h, event.h)
 
-type QTabBardragLeaveEventBase* = proc(event: gen_qevent.QDragLeaveEvent): void
-proc ondragLeaveEvent*(self: QTabBar, slot: proc(super: QTabBardragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void) =
+type QTabBardragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
+proc ondragLeaveEvent*(self: gen_qtabbar_types.QTabBar, slot: QTabBardragLeaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBardragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var tmp = new Cb
+  var tmp = new QTabBardragLeaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_dragLeaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_dragLeaveEvent(self: ptr cQTabBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTabBar_dragLeaveEvent ".} =
-  type Cb = proc(super: QTabBardragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragLeaveEvent): auto =
-    callVirtualBase_dragLeaveEvent(QTabBar(h: self), event)
+  var nimfunc = cast[ptr QTabBardragLeaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragLeaveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dropEvent(self: QTabBar, event: gen_qevent.QDropEvent): void =
-
+  nimfunc[](slotval1)
+proc QTabBardropEvent*(self: gen_qtabbar_types.QTabBar, event: gen_qevent.QDropEvent): void =
 
   fQTabBar_virtualbase_dropEvent(self.h, event.h)
 
-type QTabBardropEventBase* = proc(event: gen_qevent.QDropEvent): void
-proc ondropEvent*(self: QTabBar, slot: proc(super: QTabBardropEventBase, event: gen_qevent.QDropEvent): void) =
+type QTabBardropEventProc* = proc(event: gen_qevent.QDropEvent): void
+proc ondropEvent*(self: gen_qtabbar_types.QTabBar, slot: QTabBardropEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBardropEventBase, event: gen_qevent.QDropEvent): void
-  var tmp = new Cb
+  var tmp = new QTabBardropEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_dropEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_dropEvent(self: ptr cQTabBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTabBar_dropEvent ".} =
-  type Cb = proc(super: QTabBardropEventBase, event: gen_qevent.QDropEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDropEvent): auto =
-    callVirtualBase_dropEvent(QTabBar(h: self), event)
+  var nimfunc = cast[ptr QTabBardropEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDropEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_nativeEvent(self: QTabBar, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
-
+  nimfunc[](slotval1)
+proc QTabBarnativeEvent*(self: gen_qtabbar_types.QTabBar, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
 
   fQTabBar_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
-type QTabBarnativeEventBase* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-proc onnativeEvent*(self: QTabBar, slot: proc(super: QTabBarnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool) =
+type QTabBarnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
+proc onnativeEvent*(self: gen_qtabbar_types.QTabBar, slot: QTabBarnativeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBarnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-  var tmp = new Cb
+  var tmp = new QTabBarnativeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_nativeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_nativeEvent(self: ptr cQTabBar, slot: int, eventType: struct_miqt_string, message: pointer, resultVal: ptr uint): bool {.exportc: "miqt_exec_callback_QTabBar_nativeEvent ".} =
-  type Cb = proc(super: QTabBarnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(eventType: seq[byte], message: pointer, resultVal: ptr uint): auto =
-    callVirtualBase_nativeEvent(QTabBar(h: self), eventType, message, resultVal)
+  var nimfunc = cast[ptr QTabBarnativeEventProc](cast[pointer](slot))
   var veventType_bytearray = eventType
   var veventTypex_ret = @(toOpenArrayByte(veventType_bytearray.data, 0, int(veventType_bytearray.len)-1))
   c_free(veventType_bytearray.data)
@@ -1702,298 +1474,238 @@ proc miqt_exec_callback_QTabBar_nativeEvent(self: ptr cQTabBar, slot: int, event
   let slotval3 = resultVal
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_metric(self: QTabBar, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint =
-
+proc QTabBarmetric*(self: gen_qtabbar_types.QTabBar, param1: cint): cint =
 
   fQTabBar_virtualbase_metric(self.h, cint(param1))
 
-type QTabBarmetricBase* = proc(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-proc onmetric*(self: QTabBar, slot: proc(super: QTabBarmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint) =
+type QTabBarmetricProc* = proc(param1: cint): cint
+proc onmetric*(self: gen_qtabbar_types.QTabBar, slot: QTabBarmetricProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBarmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var tmp = new Cb
+  var tmp = new QTabBarmetricProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_metric(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_metric(self: ptr cQTabBar, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QTabBar_metric ".} =
-  type Cb = proc(super: QTabBarmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): auto =
-    callVirtualBase_metric(QTabBar(h: self), param1)
-  let slotval1 = gen_qpaintdevice.QPaintDevicePaintDeviceMetric(param1)
+  var nimfunc = cast[ptr QTabBarmetricProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_initPainter(self: QTabBar, painter: gen_qpainter.QPainter): void =
-
+proc QTabBarinitPainter*(self: gen_qtabbar_types.QTabBar, painter: gen_qpainter.QPainter): void =
 
   fQTabBar_virtualbase_initPainter(self.h, painter.h)
 
-type QTabBarinitPainterBase* = proc(painter: gen_qpainter.QPainter): void
-proc oninitPainter*(self: QTabBar, slot: proc(super: QTabBarinitPainterBase, painter: gen_qpainter.QPainter): void) =
+type QTabBarinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
+proc oninitPainter*(self: gen_qtabbar_types.QTabBar, slot: QTabBarinitPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBarinitPainterBase, painter: gen_qpainter.QPainter): void
-  var tmp = new Cb
+  var tmp = new QTabBarinitPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_initPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_initPainter(self: ptr cQTabBar, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_QTabBar_initPainter ".} =
-  type Cb = proc(super: QTabBarinitPainterBase, painter: gen_qpainter.QPainter): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter): auto =
-    callVirtualBase_initPainter(QTabBar(h: self), painter)
+  var nimfunc = cast[ptr QTabBarinitPainterProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_redirected(self: QTabBar, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
+  nimfunc[](slotval1)
+proc QTabBarredirected*(self: gen_qtabbar_types.QTabBar, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
 
   gen_qpaintdevice.QPaintDevice(h: fQTabBar_virtualbase_redirected(self.h, offset.h))
 
-type QTabBarredirectedBase* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-proc onredirected*(self: QTabBar, slot: proc(super: QTabBarredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice) =
+type QTabBarredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
+proc onredirected*(self: gen_qtabbar_types.QTabBar, slot: QTabBarredirectedProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBarredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var tmp = new Cb
+  var tmp = new QTabBarredirectedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_redirected(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_redirected(self: ptr cQTabBar, slot: int, offset: pointer): pointer {.exportc: "miqt_exec_callback_QTabBar_redirected ".} =
-  type Cb = proc(super: QTabBarredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(offset: gen_qpoint.QPoint): auto =
-    callVirtualBase_redirected(QTabBar(h: self), offset)
+  var nimfunc = cast[ptr QTabBarredirectedProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: offset)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_sharedPainter(self: QTabBar, ): gen_qpainter.QPainter =
-
+proc QTabBarsharedPainter*(self: gen_qtabbar_types.QTabBar, ): gen_qpainter.QPainter =
 
   gen_qpainter.QPainter(h: fQTabBar_virtualbase_sharedPainter(self.h))
 
-type QTabBarsharedPainterBase* = proc(): gen_qpainter.QPainter
-proc onsharedPainter*(self: QTabBar, slot: proc(super: QTabBarsharedPainterBase): gen_qpainter.QPainter) =
+type QTabBarsharedPainterProc* = proc(): gen_qpainter.QPainter
+proc onsharedPainter*(self: gen_qtabbar_types.QTabBar, slot: QTabBarsharedPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBarsharedPainterBase): gen_qpainter.QPainter
-  var tmp = new Cb
+  var tmp = new QTabBarsharedPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_sharedPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_sharedPainter(self: ptr cQTabBar, slot: int): pointer {.exportc: "miqt_exec_callback_QTabBar_sharedPainter ".} =
-  type Cb = proc(super: QTabBarsharedPainterBase): gen_qpainter.QPainter
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sharedPainter(QTabBar(h: self), )
+  var nimfunc = cast[ptr QTabBarsharedPainterProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_inputMethodEvent(self: QTabBar, param1: gen_qevent.QInputMethodEvent): void =
-
+proc QTabBarinputMethodEvent*(self: gen_qtabbar_types.QTabBar, param1: gen_qevent.QInputMethodEvent): void =
 
   fQTabBar_virtualbase_inputMethodEvent(self.h, param1.h)
 
-type QTabBarinputMethodEventBase* = proc(param1: gen_qevent.QInputMethodEvent): void
-proc oninputMethodEvent*(self: QTabBar, slot: proc(super: QTabBarinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void) =
+type QTabBarinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
+proc oninputMethodEvent*(self: gen_qtabbar_types.QTabBar, slot: QTabBarinputMethodEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBarinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var tmp = new Cb
+  var tmp = new QTabBarinputMethodEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_inputMethodEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_inputMethodEvent(self: ptr cQTabBar, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QTabBar_inputMethodEvent ".} =
-  type Cb = proc(super: QTabBarinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QInputMethodEvent): auto =
-    callVirtualBase_inputMethodEvent(QTabBar(h: self), param1)
+  var nimfunc = cast[ptr QTabBarinputMethodEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QInputMethodEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_inputMethodQuery(self: QTabBar, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant =
-
+  nimfunc[](slotval1)
+proc QTabBarinputMethodQuery*(self: gen_qtabbar_types.QTabBar, param1: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQTabBar_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
-type QTabBarinputMethodQueryBase* = proc(param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-proc oninputMethodQuery*(self: QTabBar, slot: proc(super: QTabBarinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant) =
+type QTabBarinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
+proc oninputMethodQuery*(self: gen_qtabbar_types.QTabBar, slot: QTabBarinputMethodQueryProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBarinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QTabBarinputMethodQueryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_inputMethodQuery(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_inputMethodQuery(self: ptr cQTabBar, slot: int, param1: cint): pointer {.exportc: "miqt_exec_callback_QTabBar_inputMethodQuery ".} =
-  type Cb = proc(super: QTabBarinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qnamespace.InputMethodQuery): auto =
-    callVirtualBase_inputMethodQuery(QTabBar(h: self), param1)
-  let slotval1 = gen_qnamespace.InputMethodQuery(param1)
+  var nimfunc = cast[ptr QTabBarinputMethodQueryProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_focusNextPrevChild(self: QTabBar, next: bool): bool =
-
+proc QTabBarfocusNextPrevChild*(self: gen_qtabbar_types.QTabBar, next: bool): bool =
 
   fQTabBar_virtualbase_focusNextPrevChild(self.h, next)
 
-type QTabBarfocusNextPrevChildBase* = proc(next: bool): bool
-proc onfocusNextPrevChild*(self: QTabBar, slot: proc(super: QTabBarfocusNextPrevChildBase, next: bool): bool) =
+type QTabBarfocusNextPrevChildProc* = proc(next: bool): bool
+proc onfocusNextPrevChild*(self: gen_qtabbar_types.QTabBar, slot: QTabBarfocusNextPrevChildProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBarfocusNextPrevChildBase, next: bool): bool
-  var tmp = new Cb
+  var tmp = new QTabBarfocusNextPrevChildProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_focusNextPrevChild(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_focusNextPrevChild(self: ptr cQTabBar, slot: int, next: bool): bool {.exportc: "miqt_exec_callback_QTabBar_focusNextPrevChild ".} =
-  type Cb = proc(super: QTabBarfocusNextPrevChildBase, next: bool): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(next: bool): auto =
-    callVirtualBase_focusNextPrevChild(QTabBar(h: self), next)
+  var nimfunc = cast[ptr QTabBarfocusNextPrevChildProc](cast[pointer](slot))
   let slotval1 = next
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QTabBar, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QTabBareventFilter*(self: gen_qtabbar_types.QTabBar, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQTabBar_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QTabBareventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QTabBar, slot: proc(super: QTabBareventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QTabBareventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qtabbar_types.QTabBar, slot: QTabBareventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBareventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QTabBareventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_eventFilter(self: ptr cQTabBar, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QTabBar_eventFilter ".} =
-  type Cb = proc(super: QTabBareventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QTabBar(h: self), watched, event)
+  var nimfunc = cast[ptr QTabBareventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_childEvent(self: QTabBar, event: gen_qcoreevent.QChildEvent): void =
-
+proc QTabBarchildEvent*(self: gen_qtabbar_types.QTabBar, event: gen_qcoreevent.QChildEvent): void =
 
   fQTabBar_virtualbase_childEvent(self.h, event.h)
 
-type QTabBarchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QTabBar, slot: proc(super: QTabBarchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QTabBarchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qtabbar_types.QTabBar, slot: QTabBarchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBarchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QTabBarchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_childEvent(self: ptr cQTabBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTabBar_childEvent ".} =
-  type Cb = proc(super: QTabBarchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QTabBar(h: self), event)
+  var nimfunc = cast[ptr QTabBarchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QTabBar, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QTabBarcustomEvent*(self: gen_qtabbar_types.QTabBar, event: gen_qcoreevent.QEvent): void =
 
   fQTabBar_virtualbase_customEvent(self.h, event.h)
 
-type QTabBarcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QTabBar, slot: proc(super: QTabBarcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QTabBarcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qtabbar_types.QTabBar, slot: QTabBarcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBarcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QTabBarcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_customEvent(self: ptr cQTabBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTabBar_customEvent ".} =
-  type Cb = proc(super: QTabBarcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QTabBar(h: self), event)
+  var nimfunc = cast[ptr QTabBarcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QTabBar, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QTabBarconnectNotify*(self: gen_qtabbar_types.QTabBar, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQTabBar_virtualbase_connectNotify(self.h, signal.h)
 
-type QTabBarconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QTabBar, slot: proc(super: QTabBarconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QTabBarconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qtabbar_types.QTabBar, slot: QTabBarconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBarconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QTabBarconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_connectNotify(self: ptr cQTabBar, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QTabBar_connectNotify ".} =
-  type Cb = proc(super: QTabBarconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QTabBar(h: self), signal)
+  var nimfunc = cast[ptr QTabBarconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QTabBar, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QTabBardisconnectNotify*(self: gen_qtabbar_types.QTabBar, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQTabBar_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QTabBardisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QTabBar, slot: proc(super: QTabBardisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QTabBardisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qtabbar_types.QTabBar, slot: QTabBardisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QTabBardisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QTabBardisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTabBar_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTabBar_disconnectNotify(self: ptr cQTabBar, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QTabBar_disconnectNotify ".} =
-  type Cb = proc(super: QTabBardisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QTabBar(h: self), signal)
+  var nimfunc = cast[ptr QTabBardisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QTabBar): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qtabbar_types.QTabBar): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQTabBar_staticMetaObject())
-proc delete*(self: QTabBar) =
+proc delete*(self: gen_qtabbar_types.QTabBar) =
   fcQTabBar_delete(self.h)

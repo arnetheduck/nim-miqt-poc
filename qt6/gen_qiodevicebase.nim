@@ -34,19 +34,17 @@ const cflags = gorge("pkg-config -cflags Qt6Widgets")
 {.compile("gen_qiodevicebase.cpp", cflags).}
 
 
-type QIODeviceBaseOpenModeFlag* = cint
-const
-  QIODeviceBaseNotOpen* = 0
-  QIODeviceBaseReadOnly* = 1
-  QIODeviceBaseWriteOnly* = 2
-  QIODeviceBaseReadWrite* = 3
-  QIODeviceBaseAppend* = 4
-  QIODeviceBaseTruncate* = 8
-  QIODeviceBaseText* = 16
-  QIODeviceBaseUnbuffered* = 32
-  QIODeviceBaseNewOnly* = 64
-  QIODeviceBaseExistingOnly* = 128
-
+type QIODeviceBaseOpenModeFlagEnum* = distinct cint
+template NotOpen*(_: type QIODeviceBaseOpenModeFlagEnum): untyped = 0
+template ReadOnly*(_: type QIODeviceBaseOpenModeFlagEnum): untyped = 1
+template WriteOnly*(_: type QIODeviceBaseOpenModeFlagEnum): untyped = 2
+template ReadWrite*(_: type QIODeviceBaseOpenModeFlagEnum): untyped = 3
+template Append*(_: type QIODeviceBaseOpenModeFlagEnum): untyped = 4
+template Truncate*(_: type QIODeviceBaseOpenModeFlagEnum): untyped = 8
+template Text*(_: type QIODeviceBaseOpenModeFlagEnum): untyped = 16
+template Unbuffered*(_: type QIODeviceBaseOpenModeFlagEnum): untyped = 32
+template NewOnly*(_: type QIODeviceBaseOpenModeFlagEnum): untyped = 64
+template ExistingOnly*(_: type QIODeviceBaseOpenModeFlagEnum): untyped = 128
 
 
 import gen_qiodevicebase_types
@@ -57,5 +55,5 @@ type cQIODeviceBase*{.exportc: "QIODeviceBase", incompleteStruct.} = object
 
 
 
-func init*(T: type QIODeviceBase, h: ptr cQIODeviceBase): QIODeviceBase =
+func init*(T: type gen_qiodevicebase_types.QIODeviceBase, h: ptr cQIODeviceBase): gen_qiodevicebase_types.QIODeviceBase =
   T(h: h)

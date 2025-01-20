@@ -34,32 +34,24 @@ const cflags = gorge("pkg-config -cflags Qt5Widgets")
 {.compile("gen_qregexp.cpp", cflags).}
 
 
-type QRegExpPatternSyntax* = cint
-const
-  QRegExpRegExp* = 0
-  QRegExpWildcard* = 1
-  QRegExpFixedString* = 2
-  QRegExpRegExp2* = 3
-  QRegExpWildcardUnix* = 4
-  QRegExpW3CXmlSchema11* = 5
+type QRegExpPatternSyntaxEnum* = distinct cint
+template RegExp*(_: type QRegExpPatternSyntaxEnum): untyped = 0
+template Wildcard*(_: type QRegExpPatternSyntaxEnum): untyped = 1
+template FixedString*(_: type QRegExpPatternSyntaxEnum): untyped = 2
+template RegExp2*(_: type QRegExpPatternSyntaxEnum): untyped = 3
+template WildcardUnix*(_: type QRegExpPatternSyntaxEnum): untyped = 4
+template W3CXmlSchema11*(_: type QRegExpPatternSyntaxEnum): untyped = 5
 
 
-
-type QRegExpCaretMode* = cint
-const
-  QRegExpCaretAtZero* = 0
-  QRegExpCaretAtOffset* = 1
-  QRegExpCaretWontMatch* = 2
-
+type QRegExpCaretModeEnum* = distinct cint
+template CaretAtZero*(_: type QRegExpCaretModeEnum): untyped = 0
+template CaretAtOffset*(_: type QRegExpCaretModeEnum): untyped = 1
+template CaretWontMatch*(_: type QRegExpCaretModeEnum): untyped = 2
 
 
 import gen_qregexp_types
 export gen_qregexp_types
 
-import
-  gen_qnamespace
-export
-  gen_qnamespace
 
 type cQRegExp*{.exportc: "QRegExp", incompleteStruct.} = object
 
@@ -107,103 +99,103 @@ proc fcQRegExp_pos1WithNth(self: pointer, nth: cint): cint {.importc: "QRegExp_p
 proc fcQRegExp_delete(self: pointer) {.importc: "QRegExp_delete".}
 
 
-func init*(T: type QRegExp, h: ptr cQRegExp): QRegExp =
+func init*(T: type gen_qregexp_types.QRegExp, h: ptr cQRegExp): gen_qregexp_types.QRegExp =
   T(h: h)
-proc create*(T: type QRegExp, ): QRegExp =
+proc create*(T: type gen_qregexp_types.QRegExp, ): gen_qregexp_types.QRegExp =
 
-  QRegExp.init(fcQRegExp_new())
-proc create*(T: type QRegExp, pattern: string): QRegExp =
+  gen_qregexp_types.QRegExp.init(fcQRegExp_new())
+proc create*(T: type gen_qregexp_types.QRegExp, pattern: string): gen_qregexp_types.QRegExp =
 
-  QRegExp.init(fcQRegExp_new2(struct_miqt_string(data: pattern, len: csize_t(len(pattern)))))
-proc create*(T: type QRegExp, rx: QRegExp): QRegExp =
+  gen_qregexp_types.QRegExp.init(fcQRegExp_new2(struct_miqt_string(data: pattern, len: csize_t(len(pattern)))))
+proc create*(T: type gen_qregexp_types.QRegExp, rx: gen_qregexp_types.QRegExp): gen_qregexp_types.QRegExp =
 
-  QRegExp.init(fcQRegExp_new3(rx.h))
-proc create*(T: type QRegExp, pattern: string, cs: gen_qnamespace.CaseSensitivity): QRegExp =
+  gen_qregexp_types.QRegExp.init(fcQRegExp_new3(rx.h))
+proc create*(T: type gen_qregexp_types.QRegExp, pattern: string, cs: cint): gen_qregexp_types.QRegExp =
 
-  QRegExp.init(fcQRegExp_new4(struct_miqt_string(data: pattern, len: csize_t(len(pattern))), cint(cs)))
-proc create*(T: type QRegExp, pattern: string, cs: gen_qnamespace.CaseSensitivity, syntax: QRegExpPatternSyntax): QRegExp =
+  gen_qregexp_types.QRegExp.init(fcQRegExp_new4(struct_miqt_string(data: pattern, len: csize_t(len(pattern))), cint(cs)))
+proc create*(T: type gen_qregexp_types.QRegExp, pattern: string, cs: cint, syntax: cint): gen_qregexp_types.QRegExp =
 
-  QRegExp.init(fcQRegExp_new5(struct_miqt_string(data: pattern, len: csize_t(len(pattern))), cint(cs), cint(syntax)))
-proc operatorAssign*(self: QRegExp, rx: QRegExp): void =
+  gen_qregexp_types.QRegExp.init(fcQRegExp_new5(struct_miqt_string(data: pattern, len: csize_t(len(pattern))), cint(cs), cint(syntax)))
+proc operatorAssign*(self: gen_qregexp_types.QRegExp, rx: gen_qregexp_types.QRegExp): void =
 
   fcQRegExp_operatorAssign(self.h, rx.h)
 
-proc swap*(self: QRegExp, other: QRegExp): void =
+proc swap*(self: gen_qregexp_types.QRegExp, other: gen_qregexp_types.QRegExp): void =
 
   fcQRegExp_swap(self.h, other.h)
 
-proc operatorEqual*(self: QRegExp, rx: QRegExp): bool =
+proc operatorEqual*(self: gen_qregexp_types.QRegExp, rx: gen_qregexp_types.QRegExp): bool =
 
   fcQRegExp_operatorEqual(self.h, rx.h)
 
-proc operatorNotEqual*(self: QRegExp, rx: QRegExp): bool =
+proc operatorNotEqual*(self: gen_qregexp_types.QRegExp, rx: gen_qregexp_types.QRegExp): bool =
 
   fcQRegExp_operatorNotEqual(self.h, rx.h)
 
-proc isEmpty*(self: QRegExp, ): bool =
+proc isEmpty*(self: gen_qregexp_types.QRegExp, ): bool =
 
   fcQRegExp_isEmpty(self.h)
 
-proc isValid*(self: QRegExp, ): bool =
+proc isValid*(self: gen_qregexp_types.QRegExp, ): bool =
 
   fcQRegExp_isValid(self.h)
 
-proc pattern*(self: QRegExp, ): string =
+proc pattern*(self: gen_qregexp_types.QRegExp, ): string =
 
   let v_ms = fcQRegExp_pattern(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setPattern*(self: QRegExp, pattern: string): void =
+proc setPattern*(self: gen_qregexp_types.QRegExp, pattern: string): void =
 
   fcQRegExp_setPattern(self.h, struct_miqt_string(data: pattern, len: csize_t(len(pattern))))
 
-proc caseSensitivity*(self: QRegExp, ): gen_qnamespace.CaseSensitivity =
+proc caseSensitivity*(self: gen_qregexp_types.QRegExp, ): cint =
 
-  gen_qnamespace.CaseSensitivity(fcQRegExp_caseSensitivity(self.h))
+  cint(fcQRegExp_caseSensitivity(self.h))
 
-proc setCaseSensitivity*(self: QRegExp, cs: gen_qnamespace.CaseSensitivity): void =
+proc setCaseSensitivity*(self: gen_qregexp_types.QRegExp, cs: cint): void =
 
   fcQRegExp_setCaseSensitivity(self.h, cint(cs))
 
-proc patternSyntax*(self: QRegExp, ): QRegExpPatternSyntax =
+proc patternSyntax*(self: gen_qregexp_types.QRegExp, ): cint =
 
-  QRegExpPatternSyntax(fcQRegExp_patternSyntax(self.h))
+  cint(fcQRegExp_patternSyntax(self.h))
 
-proc setPatternSyntax*(self: QRegExp, syntax: QRegExpPatternSyntax): void =
+proc setPatternSyntax*(self: gen_qregexp_types.QRegExp, syntax: cint): void =
 
   fcQRegExp_setPatternSyntax(self.h, cint(syntax))
 
-proc isMinimal*(self: QRegExp, ): bool =
+proc isMinimal*(self: gen_qregexp_types.QRegExp, ): bool =
 
   fcQRegExp_isMinimal(self.h)
 
-proc setMinimal*(self: QRegExp, minimal: bool): void =
+proc setMinimal*(self: gen_qregexp_types.QRegExp, minimal: bool): void =
 
   fcQRegExp_setMinimal(self.h, minimal)
 
-proc exactMatch*(self: QRegExp, str: string): bool =
+proc exactMatch*(self: gen_qregexp_types.QRegExp, str: string): bool =
 
   fcQRegExp_exactMatch(self.h, struct_miqt_string(data: str, len: csize_t(len(str))))
 
-proc indexIn*(self: QRegExp, str: string): cint =
+proc indexIn*(self: gen_qregexp_types.QRegExp, str: string): cint =
 
   fcQRegExp_indexIn(self.h, struct_miqt_string(data: str, len: csize_t(len(str))))
 
-proc lastIndexIn*(self: QRegExp, str: string): cint =
+proc lastIndexIn*(self: gen_qregexp_types.QRegExp, str: string): cint =
 
   fcQRegExp_lastIndexIn(self.h, struct_miqt_string(data: str, len: csize_t(len(str))))
 
-proc matchedLength*(self: QRegExp, ): cint =
+proc matchedLength*(self: gen_qregexp_types.QRegExp, ): cint =
 
   fcQRegExp_matchedLength(self.h)
 
-proc captureCount*(self: QRegExp, ): cint =
+proc captureCount*(self: gen_qregexp_types.QRegExp, ): cint =
 
   fcQRegExp_captureCount(self.h)
 
-proc capturedTexts*(self: QRegExp, ): seq[string] =
+proc capturedTexts*(self: gen_qregexp_types.QRegExp, ): seq[string] =
 
   var v_ma = fcQRegExp_capturedTexts(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -215,7 +207,7 @@ proc capturedTexts*(self: QRegExp, ): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc capturedTexts2*(self: QRegExp, ): seq[string] =
+proc capturedTexts2*(self: gen_qregexp_types.QRegExp, ): seq[string] =
 
   var v_ma = fcQRegExp_capturedTexts2(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -227,86 +219,86 @@ proc capturedTexts2*(self: QRegExp, ): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc cap*(self: QRegExp, ): string =
+proc cap*(self: gen_qregexp_types.QRegExp, ): string =
 
   let v_ms = fcQRegExp_cap(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc cap2*(self: QRegExp, ): string =
+proc cap2*(self: gen_qregexp_types.QRegExp, ): string =
 
   let v_ms = fcQRegExp_cap2(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc pos*(self: QRegExp, ): cint =
+proc pos*(self: gen_qregexp_types.QRegExp, ): cint =
 
   fcQRegExp_pos(self.h)
 
-proc pos2*(self: QRegExp, ): cint =
+proc pos2*(self: gen_qregexp_types.QRegExp, ): cint =
 
   fcQRegExp_pos2(self.h)
 
-proc errorString*(self: QRegExp, ): string =
+proc errorString*(self: gen_qregexp_types.QRegExp, ): string =
 
   let v_ms = fcQRegExp_errorString(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc errorString2*(self: QRegExp, ): string =
+proc errorString2*(self: gen_qregexp_types.QRegExp, ): string =
 
   let v_ms = fcQRegExp_errorString2(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc escape*(_: type QRegExp, str: string): string =
+proc escape*(_: type gen_qregexp_types.QRegExp, str: string): string =
 
   let v_ms = fcQRegExp_escape(struct_miqt_string(data: str, len: csize_t(len(str))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc indexIn2*(self: QRegExp, str: string, offset: cint): cint =
+proc indexIn2*(self: gen_qregexp_types.QRegExp, str: string, offset: cint): cint =
 
   fcQRegExp_indexIn2(self.h, struct_miqt_string(data: str, len: csize_t(len(str))), offset)
 
-proc indexIn3*(self: QRegExp, str: string, offset: cint, caretMode: QRegExpCaretMode): cint =
+proc indexIn3*(self: gen_qregexp_types.QRegExp, str: string, offset: cint, caretMode: cint): cint =
 
   fcQRegExp_indexIn3(self.h, struct_miqt_string(data: str, len: csize_t(len(str))), offset, cint(caretMode))
 
-proc lastIndexIn2*(self: QRegExp, str: string, offset: cint): cint =
+proc lastIndexIn2*(self: gen_qregexp_types.QRegExp, str: string, offset: cint): cint =
 
   fcQRegExp_lastIndexIn2(self.h, struct_miqt_string(data: str, len: csize_t(len(str))), offset)
 
-proc lastIndexIn3*(self: QRegExp, str: string, offset: cint, caretMode: QRegExpCaretMode): cint =
+proc lastIndexIn3*(self: gen_qregexp_types.QRegExp, str: string, offset: cint, caretMode: cint): cint =
 
   fcQRegExp_lastIndexIn3(self.h, struct_miqt_string(data: str, len: csize_t(len(str))), offset, cint(caretMode))
 
-proc cap1*(self: QRegExp, nth: cint): string =
+proc cap1*(self: gen_qregexp_types.QRegExp, nth: cint): string =
 
   let v_ms = fcQRegExp_cap1(self.h, nth)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc cap1WithNth*(self: QRegExp, nth: cint): string =
+proc cap1WithNth*(self: gen_qregexp_types.QRegExp, nth: cint): string =
 
   let v_ms = fcQRegExp_cap1WithNth(self.h, nth)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc pos1*(self: QRegExp, nth: cint): cint =
+proc pos1*(self: gen_qregexp_types.QRegExp, nth: cint): cint =
 
   fcQRegExp_pos1(self.h, nth)
 
-proc pos1WithNth*(self: QRegExp, nth: cint): cint =
+proc pos1WithNth*(self: gen_qregexp_types.QRegExp, nth: cint): cint =
 
   fcQRegExp_pos1WithNth(self.h, nth)
 
-proc delete*(self: QRegExp) =
+proc delete*(self: gen_qregexp_types.QRegExp) =
   fcQRegExp_delete(self.h)

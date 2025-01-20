@@ -34,28 +34,26 @@ const cflags = gorge("pkg-config -cflags Qt5Widgets")
 {.compile("gen_qcryptographichash.cpp", cflags).}
 
 
-type QCryptographicHashAlgorithm* = cint
-const
-  QCryptographicHashMd4* = 0
-  QCryptographicHashMd5* = 1
-  QCryptographicHashSha1* = 2
-  QCryptographicHashSha224* = 3
-  QCryptographicHashSha256* = 4
-  QCryptographicHashSha384* = 5
-  QCryptographicHashSha512* = 6
-  QCryptographicHashKeccak_224* = 7
-  QCryptographicHashKeccak_256* = 8
-  QCryptographicHashKeccak_384* = 9
-  QCryptographicHashKeccak_512* = 10
-  QCryptographicHashRealSha3_224* = 11
-  QCryptographicHashRealSha3_256* = 12
-  QCryptographicHashRealSha3_384* = 13
-  QCryptographicHashRealSha3_512* = 14
-  QCryptographicHashSha3_224* = 11
-  QCryptographicHashSha3_256* = 12
-  QCryptographicHashSha3_384* = 13
-  QCryptographicHashSha3_512* = 14
-
+type QCryptographicHashAlgorithmEnum* = distinct cint
+template Md4*(_: type QCryptographicHashAlgorithmEnum): untyped = 0
+template Md5*(_: type QCryptographicHashAlgorithmEnum): untyped = 1
+template Sha1*(_: type QCryptographicHashAlgorithmEnum): untyped = 2
+template Sha224*(_: type QCryptographicHashAlgorithmEnum): untyped = 3
+template Sha256*(_: type QCryptographicHashAlgorithmEnum): untyped = 4
+template Sha384*(_: type QCryptographicHashAlgorithmEnum): untyped = 5
+template Sha512*(_: type QCryptographicHashAlgorithmEnum): untyped = 6
+template Keccak_224*(_: type QCryptographicHashAlgorithmEnum): untyped = 7
+template Keccak_256*(_: type QCryptographicHashAlgorithmEnum): untyped = 8
+template Keccak_384*(_: type QCryptographicHashAlgorithmEnum): untyped = 9
+template Keccak_512*(_: type QCryptographicHashAlgorithmEnum): untyped = 10
+template RealSha3_224*(_: type QCryptographicHashAlgorithmEnum): untyped = 11
+template RealSha3_256*(_: type QCryptographicHashAlgorithmEnum): untyped = 12
+template RealSha3_384*(_: type QCryptographicHashAlgorithmEnum): untyped = 13
+template RealSha3_512*(_: type QCryptographicHashAlgorithmEnum): untyped = 14
+template Sha3_224*(_: type QCryptographicHashAlgorithmEnum): untyped = 11
+template Sha3_256*(_: type QCryptographicHashAlgorithmEnum): untyped = 12
+template Sha3_384*(_: type QCryptographicHashAlgorithmEnum): untyped = 13
+template Sha3_512*(_: type QCryptographicHashAlgorithmEnum): untyped = 14
 
 
 import gen_qcryptographichash_types
@@ -82,46 +80,46 @@ proc fcQCryptographicHash_staticMetaObject(): pointer {.importc: "QCryptographic
 proc fcQCryptographicHash_delete(self: pointer) {.importc: "QCryptographicHash_delete".}
 
 
-func init*(T: type QCryptographicHash, h: ptr cQCryptographicHash): QCryptographicHash =
+func init*(T: type gen_qcryptographichash_types.QCryptographicHash, h: ptr cQCryptographicHash): gen_qcryptographichash_types.QCryptographicHash =
   T(h: h)
-proc create*(T: type QCryptographicHash, methodVal: QCryptographicHashAlgorithm): QCryptographicHash =
+proc create*(T: type gen_qcryptographichash_types.QCryptographicHash, methodVal: cint): gen_qcryptographichash_types.QCryptographicHash =
 
-  QCryptographicHash.init(fcQCryptographicHash_new(cint(methodVal)))
-proc reset*(self: QCryptographicHash, ): void =
+  gen_qcryptographichash_types.QCryptographicHash.init(fcQCryptographicHash_new(cint(methodVal)))
+proc reset*(self: gen_qcryptographichash_types.QCryptographicHash, ): void =
 
   fcQCryptographicHash_reset(self.h)
 
-proc addData*(self: QCryptographicHash, data: cstring, length: cint): void =
+proc addData*(self: gen_qcryptographichash_types.QCryptographicHash, data: cstring, length: cint): void =
 
   fcQCryptographicHash_addData(self.h, data, length)
 
-proc addDataWithData*(self: QCryptographicHash, data: seq[byte]): void =
+proc addDataWithData*(self: gen_qcryptographichash_types.QCryptographicHash, data: seq[byte]): void =
 
   fcQCryptographicHash_addDataWithData(self.h, struct_miqt_string(data: cast[cstring](if len(data) == 0: nil else: unsafeAddr data[0]), len: csize_t(len(data))))
 
-proc addDataWithDevice*(self: QCryptographicHash, device: gen_qiodevice.QIODevice): bool =
+proc addDataWithDevice*(self: gen_qcryptographichash_types.QCryptographicHash, device: gen_qiodevice.QIODevice): bool =
 
   fcQCryptographicHash_addDataWithDevice(self.h, device.h)
 
-proc resultX*(self: QCryptographicHash, ): seq[byte] =
+proc resultX*(self: gen_qcryptographichash_types.QCryptographicHash, ): seq[byte] =
 
   var v_bytearray = fcQCryptographicHash_resultX(self.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc hash*(_: type QCryptographicHash, data: seq[byte], methodVal: QCryptographicHashAlgorithm): seq[byte] =
+proc hash*(_: type gen_qcryptographichash_types.QCryptographicHash, data: seq[byte], methodVal: cint): seq[byte] =
 
   var v_bytearray = fcQCryptographicHash_hash(struct_miqt_string(data: cast[cstring](if len(data) == 0: nil else: unsafeAddr data[0]), len: csize_t(len(data))), cint(methodVal))
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc hashLength*(_: type QCryptographicHash, methodVal: QCryptographicHashAlgorithm): cint =
+proc hashLength*(_: type gen_qcryptographichash_types.QCryptographicHash, methodVal: cint): cint =
 
   fcQCryptographicHash_hashLength(cint(methodVal))
 
-proc staticMetaObject*(_: type QCryptographicHash): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qcryptographichash_types.QCryptographicHash): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQCryptographicHash_staticMetaObject())
-proc delete*(self: QCryptographicHash) =
+proc delete*(self: gen_qcryptographichash_types.QCryptographicHash) =
   fcQCryptographicHash_delete(self.h)

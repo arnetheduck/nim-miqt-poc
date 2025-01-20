@@ -63,111 +63,101 @@ proc fcQItemEditorFactory_override_virtual_valuePropertyName(self: pointer, slot
 proc fcQItemEditorFactory_delete(self: pointer) {.importc: "QItemEditorFactory_delete".}
 
 
-func init*(T: type QItemEditorCreatorBase, h: ptr cQItemEditorCreatorBase): QItemEditorCreatorBase =
+func init*(T: type gen_qitemeditorfactory_types.QItemEditorCreatorBase, h: ptr cQItemEditorCreatorBase): gen_qitemeditorfactory_types.QItemEditorCreatorBase =
   T(h: h)
-proc createWidget*(self: QItemEditorCreatorBase, parent: gen_qwidget.QWidget): gen_qwidget.QWidget =
+proc createWidget*(self: gen_qitemeditorfactory_types.QItemEditorCreatorBase, parent: gen_qwidget.QWidget): gen_qwidget.QWidget =
 
   gen_qwidget.QWidget(h: fcQItemEditorCreatorBase_createWidget(self.h, parent.h))
 
-proc valuePropertyName*(self: QItemEditorCreatorBase, ): seq[byte] =
+proc valuePropertyName*(self: gen_qitemeditorfactory_types.QItemEditorCreatorBase, ): seq[byte] =
 
   var v_bytearray = fcQItemEditorCreatorBase_valuePropertyName(self.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc operatorAssign*(self: QItemEditorCreatorBase, param1: QItemEditorCreatorBase): void =
+proc operatorAssign*(self: gen_qitemeditorfactory_types.QItemEditorCreatorBase, param1: gen_qitemeditorfactory_types.QItemEditorCreatorBase): void =
 
   fcQItemEditorCreatorBase_operatorAssign(self.h, param1.h)
 
-proc delete*(self: QItemEditorCreatorBase) =
+proc delete*(self: gen_qitemeditorfactory_types.QItemEditorCreatorBase) =
   fcQItemEditorCreatorBase_delete(self.h)
 
-func init*(T: type QItemEditorFactory, h: ptr cQItemEditorFactory): QItemEditorFactory =
+func init*(T: type gen_qitemeditorfactory_types.QItemEditorFactory, h: ptr cQItemEditorFactory): gen_qitemeditorfactory_types.QItemEditorFactory =
   T(h: h)
-proc create*(T: type QItemEditorFactory, ): QItemEditorFactory =
+proc create*(T: type gen_qitemeditorfactory_types.QItemEditorFactory, ): gen_qitemeditorfactory_types.QItemEditorFactory =
 
-  QItemEditorFactory.init(fcQItemEditorFactory_new())
-proc create*(T: type QItemEditorFactory, param1: QItemEditorFactory): QItemEditorFactory =
+  gen_qitemeditorfactory_types.QItemEditorFactory.init(fcQItemEditorFactory_new())
+proc create*(T: type gen_qitemeditorfactory_types.QItemEditorFactory, param1: gen_qitemeditorfactory_types.QItemEditorFactory): gen_qitemeditorfactory_types.QItemEditorFactory =
 
-  QItemEditorFactory.init(fcQItemEditorFactory_new2(param1.h))
-proc createEditor*(self: QItemEditorFactory, userType: cint, parent: gen_qwidget.QWidget): gen_qwidget.QWidget =
+  gen_qitemeditorfactory_types.QItemEditorFactory.init(fcQItemEditorFactory_new2(param1.h))
+proc createEditor*(self: gen_qitemeditorfactory_types.QItemEditorFactory, userType: cint, parent: gen_qwidget.QWidget): gen_qwidget.QWidget =
 
   gen_qwidget.QWidget(h: fcQItemEditorFactory_createEditor(self.h, userType, parent.h))
 
-proc valuePropertyName*(self: QItemEditorFactory, userType: cint): seq[byte] =
+proc valuePropertyName*(self: gen_qitemeditorfactory_types.QItemEditorFactory, userType: cint): seq[byte] =
 
   var v_bytearray = fcQItemEditorFactory_valuePropertyName(self.h, userType)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc registerEditor*(self: QItemEditorFactory, userType: cint, creator: QItemEditorCreatorBase): void =
+proc registerEditor*(self: gen_qitemeditorfactory_types.QItemEditorFactory, userType: cint, creator: gen_qitemeditorfactory_types.QItemEditorCreatorBase): void =
 
   fcQItemEditorFactory_registerEditor(self.h, userType, creator.h)
 
-proc defaultFactory*(_: type QItemEditorFactory, ): QItemEditorFactory =
+proc defaultFactory*(_: type gen_qitemeditorfactory_types.QItemEditorFactory, ): gen_qitemeditorfactory_types.QItemEditorFactory =
 
-  QItemEditorFactory(h: fcQItemEditorFactory_defaultFactory())
+  gen_qitemeditorfactory_types.QItemEditorFactory(h: fcQItemEditorFactory_defaultFactory())
 
-proc setDefaultFactory*(_: type QItemEditorFactory, factory: QItemEditorFactory): void =
+proc setDefaultFactory*(_: type gen_qitemeditorfactory_types.QItemEditorFactory, factory: gen_qitemeditorfactory_types.QItemEditorFactory): void =
 
   fcQItemEditorFactory_setDefaultFactory(factory.h)
 
-proc callVirtualBase_createEditor(self: QItemEditorFactory, userType: cint, parent: gen_qwidget.QWidget): gen_qwidget.QWidget =
-
+proc QItemEditorFactorycreateEditor*(self: gen_qitemeditorfactory_types.QItemEditorFactory, userType: cint, parent: gen_qwidget.QWidget): gen_qwidget.QWidget =
 
   gen_qwidget.QWidget(h: fQItemEditorFactory_virtualbase_createEditor(self.h, userType, parent.h))
 
-type QItemEditorFactorycreateEditorBase* = proc(userType: cint, parent: gen_qwidget.QWidget): gen_qwidget.QWidget
-proc oncreateEditor*(self: QItemEditorFactory, slot: proc(super: QItemEditorFactorycreateEditorBase, userType: cint, parent: gen_qwidget.QWidget): gen_qwidget.QWidget) =
+type QItemEditorFactorycreateEditorProc* = proc(userType: cint, parent: gen_qwidget.QWidget): gen_qwidget.QWidget
+proc oncreateEditor*(self: gen_qitemeditorfactory_types.QItemEditorFactory, slot: QItemEditorFactorycreateEditorProc) =
   # TODO check subclass
-  type Cb = proc(super: QItemEditorFactorycreateEditorBase, userType: cint, parent: gen_qwidget.QWidget): gen_qwidget.QWidget
-  var tmp = new Cb
+  var tmp = new QItemEditorFactorycreateEditorProc
   tmp[] = slot
   GC_ref(tmp)
   fcQItemEditorFactory_override_virtual_createEditor(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QItemEditorFactory_createEditor(self: ptr cQItemEditorFactory, slot: int, userType: cint, parent: pointer): pointer {.exportc: "miqt_exec_callback_QItemEditorFactory_createEditor ".} =
-  type Cb = proc(super: QItemEditorFactorycreateEditorBase, userType: cint, parent: gen_qwidget.QWidget): gen_qwidget.QWidget
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(userType: cint, parent: gen_qwidget.QWidget): auto =
-    callVirtualBase_createEditor(QItemEditorFactory(h: self), userType, parent)
+  var nimfunc = cast[ptr QItemEditorFactorycreateEditorProc](cast[pointer](slot))
   let slotval1 = userType
 
   let slotval2 = gen_qwidget.QWidget(h: parent)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn.h
-proc callVirtualBase_valuePropertyName(self: QItemEditorFactory, userType: cint): seq[byte] =
-
+proc QItemEditorFactoryvaluePropertyName*(self: gen_qitemeditorfactory_types.QItemEditorFactory, userType: cint): seq[byte] =
 
   var v_bytearray = fQItemEditorFactory_virtualbase_valuePropertyName(self.h, userType)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-type QItemEditorFactoryvaluePropertyNameBase* = proc(userType: cint): seq[byte]
-proc onvaluePropertyName*(self: QItemEditorFactory, slot: proc(super: QItemEditorFactoryvaluePropertyNameBase, userType: cint): seq[byte]) =
+type QItemEditorFactoryvaluePropertyNameProc* = proc(userType: cint): seq[byte]
+proc onvaluePropertyName*(self: gen_qitemeditorfactory_types.QItemEditorFactory, slot: QItemEditorFactoryvaluePropertyNameProc) =
   # TODO check subclass
-  type Cb = proc(super: QItemEditorFactoryvaluePropertyNameBase, userType: cint): seq[byte]
-  var tmp = new Cb
+  var tmp = new QItemEditorFactoryvaluePropertyNameProc
   tmp[] = slot
   GC_ref(tmp)
   fcQItemEditorFactory_override_virtual_valuePropertyName(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QItemEditorFactory_valuePropertyName(self: ptr cQItemEditorFactory, slot: int, userType: cint): struct_miqt_string {.exportc: "miqt_exec_callback_QItemEditorFactory_valuePropertyName ".} =
-  type Cb = proc(super: QItemEditorFactoryvaluePropertyNameBase, userType: cint): seq[byte]
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(userType: cint): auto =
-    callVirtualBase_valuePropertyName(QItemEditorFactory(h: self), userType)
+  var nimfunc = cast[ptr QItemEditorFactoryvaluePropertyNameProc](cast[pointer](slot))
   let slotval1 = userType
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   struct_miqt_string(data: cast[cstring](if len(virtualReturn) == 0: nil else: unsafeAddr virtualReturn[0]), len: csize_t(len(virtualReturn)))
-proc delete*(self: QItemEditorFactory) =
+proc delete*(self: gen_qitemeditorfactory_types.QItemEditorFactory) =
   fcQItemEditorFactory_delete(self.h)

@@ -85,305 +85,255 @@ proc fcQObjectCleanupHandler_staticMetaObject(): pointer {.importc: "QObjectClea
 proc fcQObjectCleanupHandler_delete(self: pointer) {.importc: "QObjectCleanupHandler_delete".}
 
 
-func init*(T: type QObjectCleanupHandler, h: ptr cQObjectCleanupHandler): QObjectCleanupHandler =
+func init*(T: type gen_qobjectcleanuphandler_types.QObjectCleanupHandler, h: ptr cQObjectCleanupHandler): gen_qobjectcleanuphandler_types.QObjectCleanupHandler =
   T(h: h)
-proc create*(T: type QObjectCleanupHandler, ): QObjectCleanupHandler =
+proc create*(T: type gen_qobjectcleanuphandler_types.QObjectCleanupHandler, ): gen_qobjectcleanuphandler_types.QObjectCleanupHandler =
 
-  QObjectCleanupHandler.init(fcQObjectCleanupHandler_new())
-proc metaObject*(self: QObjectCleanupHandler, ): gen_qobjectdefs.QMetaObject =
+  gen_qobjectcleanuphandler_types.QObjectCleanupHandler.init(fcQObjectCleanupHandler_new())
+proc metaObject*(self: gen_qobjectcleanuphandler_types.QObjectCleanupHandler, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQObjectCleanupHandler_metaObject(self.h))
 
-proc metacast*(self: QObjectCleanupHandler, param1: cstring): pointer =
+proc metacast*(self: gen_qobjectcleanuphandler_types.QObjectCleanupHandler, param1: cstring): pointer =
 
   fcQObjectCleanupHandler_metacast(self.h, param1)
 
-proc metacall*(self: QObjectCleanupHandler, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qobjectcleanuphandler_types.QObjectCleanupHandler, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQObjectCleanupHandler_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QObjectCleanupHandler, s: cstring): string =
+proc tr*(_: type gen_qobjectcleanuphandler_types.QObjectCleanupHandler, s: cstring): string =
 
   let v_ms = fcQObjectCleanupHandler_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc add*(self: QObjectCleanupHandler, objectVal: gen_qobject.QObject): gen_qobject.QObject =
+proc add*(self: gen_qobjectcleanuphandler_types.QObjectCleanupHandler, objectVal: gen_qobject.QObject): gen_qobject.QObject =
 
   gen_qobject.QObject(h: fcQObjectCleanupHandler_add(self.h, objectVal.h))
 
-proc remove*(self: QObjectCleanupHandler, objectVal: gen_qobject.QObject): void =
+proc remove*(self: gen_qobjectcleanuphandler_types.QObjectCleanupHandler, objectVal: gen_qobject.QObject): void =
 
   fcQObjectCleanupHandler_remove(self.h, objectVal.h)
 
-proc isEmpty*(self: QObjectCleanupHandler, ): bool =
+proc isEmpty*(self: gen_qobjectcleanuphandler_types.QObjectCleanupHandler, ): bool =
 
   fcQObjectCleanupHandler_isEmpty(self.h)
 
-proc clear*(self: QObjectCleanupHandler, ): void =
+proc clear*(self: gen_qobjectcleanuphandler_types.QObjectCleanupHandler, ): void =
 
   fcQObjectCleanupHandler_clear(self.h)
 
-proc tr2*(_: type QObjectCleanupHandler, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qobjectcleanuphandler_types.QObjectCleanupHandler, s: cstring, c: cstring): string =
 
   let v_ms = fcQObjectCleanupHandler_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QObjectCleanupHandler, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qobjectcleanuphandler_types.QObjectCleanupHandler, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQObjectCleanupHandler_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QObjectCleanupHandler, ): gen_qobjectdefs.QMetaObject =
-
+proc QObjectCleanupHandlermetaObject*(self: gen_qobjectcleanuphandler_types.QObjectCleanupHandler, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQObjectCleanupHandler_virtualbase_metaObject(self.h))
 
-type QObjectCleanupHandlermetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QObjectCleanupHandler, slot: proc(super: QObjectCleanupHandlermetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QObjectCleanupHandlermetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qobjectcleanuphandler_types.QObjectCleanupHandler, slot: QObjectCleanupHandlermetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QObjectCleanupHandlermetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QObjectCleanupHandlermetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQObjectCleanupHandler_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QObjectCleanupHandler_metaObject(self: ptr cQObjectCleanupHandler, slot: int): pointer {.exportc: "miqt_exec_callback_QObjectCleanupHandler_metaObject ".} =
-  type Cb = proc(super: QObjectCleanupHandlermetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QObjectCleanupHandler(h: self), )
+  var nimfunc = cast[ptr QObjectCleanupHandlermetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QObjectCleanupHandler, param1: cstring): pointer =
-
+proc QObjectCleanupHandlermetacast*(self: gen_qobjectcleanuphandler_types.QObjectCleanupHandler, param1: cstring): pointer =
 
   fQObjectCleanupHandler_virtualbase_metacast(self.h, param1)
 
-type QObjectCleanupHandlermetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QObjectCleanupHandler, slot: proc(super: QObjectCleanupHandlermetacastBase, param1: cstring): pointer) =
+type QObjectCleanupHandlermetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qobjectcleanuphandler_types.QObjectCleanupHandler, slot: QObjectCleanupHandlermetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QObjectCleanupHandlermetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QObjectCleanupHandlermetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQObjectCleanupHandler_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QObjectCleanupHandler_metacast(self: ptr cQObjectCleanupHandler, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QObjectCleanupHandler_metacast ".} =
-  type Cb = proc(super: QObjectCleanupHandlermetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QObjectCleanupHandler(h: self), param1)
+  var nimfunc = cast[ptr QObjectCleanupHandlermetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QObjectCleanupHandler, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QObjectCleanupHandlermetacall*(self: gen_qobjectcleanuphandler_types.QObjectCleanupHandler, param1: cint, param2: cint, param3: pointer): cint =
 
   fQObjectCleanupHandler_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QObjectCleanupHandlermetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QObjectCleanupHandler, slot: proc(super: QObjectCleanupHandlermetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QObjectCleanupHandlermetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qobjectcleanuphandler_types.QObjectCleanupHandler, slot: QObjectCleanupHandlermetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QObjectCleanupHandlermetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QObjectCleanupHandlermetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQObjectCleanupHandler_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QObjectCleanupHandler_metacall(self: ptr cQObjectCleanupHandler, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QObjectCleanupHandler_metacall ".} =
-  type Cb = proc(super: QObjectCleanupHandlermetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QObjectCleanupHandler(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QObjectCleanupHandlermetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_event(self: QObjectCleanupHandler, event: gen_qcoreevent.QEvent): bool =
-
+proc QObjectCleanupHandlerevent*(self: gen_qobjectcleanuphandler_types.QObjectCleanupHandler, event: gen_qcoreevent.QEvent): bool =
 
   fQObjectCleanupHandler_virtualbase_event(self.h, event.h)
 
-type QObjectCleanupHandlereventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QObjectCleanupHandler, slot: proc(super: QObjectCleanupHandlereventBase, event: gen_qcoreevent.QEvent): bool) =
+type QObjectCleanupHandlereventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qobjectcleanuphandler_types.QObjectCleanupHandler, slot: QObjectCleanupHandlereventProc) =
   # TODO check subclass
-  type Cb = proc(super: QObjectCleanupHandlereventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QObjectCleanupHandlereventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQObjectCleanupHandler_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QObjectCleanupHandler_event(self: ptr cQObjectCleanupHandler, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QObjectCleanupHandler_event ".} =
-  type Cb = proc(super: QObjectCleanupHandlereventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QObjectCleanupHandler(h: self), event)
+  var nimfunc = cast[ptr QObjectCleanupHandlereventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QObjectCleanupHandler, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QObjectCleanupHandlereventFilter*(self: gen_qobjectcleanuphandler_types.QObjectCleanupHandler, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQObjectCleanupHandler_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QObjectCleanupHandlereventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QObjectCleanupHandler, slot: proc(super: QObjectCleanupHandlereventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QObjectCleanupHandlereventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qobjectcleanuphandler_types.QObjectCleanupHandler, slot: QObjectCleanupHandlereventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QObjectCleanupHandlereventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QObjectCleanupHandlereventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQObjectCleanupHandler_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QObjectCleanupHandler_eventFilter(self: ptr cQObjectCleanupHandler, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QObjectCleanupHandler_eventFilter ".} =
-  type Cb = proc(super: QObjectCleanupHandlereventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QObjectCleanupHandler(h: self), watched, event)
+  var nimfunc = cast[ptr QObjectCleanupHandlereventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QObjectCleanupHandler, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QObjectCleanupHandlertimerEvent*(self: gen_qobjectcleanuphandler_types.QObjectCleanupHandler, event: gen_qcoreevent.QTimerEvent): void =
 
   fQObjectCleanupHandler_virtualbase_timerEvent(self.h, event.h)
 
-type QObjectCleanupHandlertimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QObjectCleanupHandler, slot: proc(super: QObjectCleanupHandlertimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QObjectCleanupHandlertimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qobjectcleanuphandler_types.QObjectCleanupHandler, slot: QObjectCleanupHandlertimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QObjectCleanupHandlertimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QObjectCleanupHandlertimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQObjectCleanupHandler_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QObjectCleanupHandler_timerEvent(self: ptr cQObjectCleanupHandler, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QObjectCleanupHandler_timerEvent ".} =
-  type Cb = proc(super: QObjectCleanupHandlertimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QObjectCleanupHandler(h: self), event)
+  var nimfunc = cast[ptr QObjectCleanupHandlertimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QObjectCleanupHandler, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QObjectCleanupHandlerchildEvent*(self: gen_qobjectcleanuphandler_types.QObjectCleanupHandler, event: gen_qcoreevent.QChildEvent): void =
 
   fQObjectCleanupHandler_virtualbase_childEvent(self.h, event.h)
 
-type QObjectCleanupHandlerchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QObjectCleanupHandler, slot: proc(super: QObjectCleanupHandlerchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QObjectCleanupHandlerchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qobjectcleanuphandler_types.QObjectCleanupHandler, slot: QObjectCleanupHandlerchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QObjectCleanupHandlerchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QObjectCleanupHandlerchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQObjectCleanupHandler_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QObjectCleanupHandler_childEvent(self: ptr cQObjectCleanupHandler, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QObjectCleanupHandler_childEvent ".} =
-  type Cb = proc(super: QObjectCleanupHandlerchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QObjectCleanupHandler(h: self), event)
+  var nimfunc = cast[ptr QObjectCleanupHandlerchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QObjectCleanupHandler, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QObjectCleanupHandlercustomEvent*(self: gen_qobjectcleanuphandler_types.QObjectCleanupHandler, event: gen_qcoreevent.QEvent): void =
 
   fQObjectCleanupHandler_virtualbase_customEvent(self.h, event.h)
 
-type QObjectCleanupHandlercustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QObjectCleanupHandler, slot: proc(super: QObjectCleanupHandlercustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QObjectCleanupHandlercustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qobjectcleanuphandler_types.QObjectCleanupHandler, slot: QObjectCleanupHandlercustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QObjectCleanupHandlercustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QObjectCleanupHandlercustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQObjectCleanupHandler_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QObjectCleanupHandler_customEvent(self: ptr cQObjectCleanupHandler, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QObjectCleanupHandler_customEvent ".} =
-  type Cb = proc(super: QObjectCleanupHandlercustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QObjectCleanupHandler(h: self), event)
+  var nimfunc = cast[ptr QObjectCleanupHandlercustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QObjectCleanupHandler, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QObjectCleanupHandlerconnectNotify*(self: gen_qobjectcleanuphandler_types.QObjectCleanupHandler, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQObjectCleanupHandler_virtualbase_connectNotify(self.h, signal.h)
 
-type QObjectCleanupHandlerconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QObjectCleanupHandler, slot: proc(super: QObjectCleanupHandlerconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QObjectCleanupHandlerconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qobjectcleanuphandler_types.QObjectCleanupHandler, slot: QObjectCleanupHandlerconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QObjectCleanupHandlerconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QObjectCleanupHandlerconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQObjectCleanupHandler_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QObjectCleanupHandler_connectNotify(self: ptr cQObjectCleanupHandler, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QObjectCleanupHandler_connectNotify ".} =
-  type Cb = proc(super: QObjectCleanupHandlerconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QObjectCleanupHandler(h: self), signal)
+  var nimfunc = cast[ptr QObjectCleanupHandlerconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QObjectCleanupHandler, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QObjectCleanupHandlerdisconnectNotify*(self: gen_qobjectcleanuphandler_types.QObjectCleanupHandler, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQObjectCleanupHandler_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QObjectCleanupHandlerdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QObjectCleanupHandler, slot: proc(super: QObjectCleanupHandlerdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QObjectCleanupHandlerdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qobjectcleanuphandler_types.QObjectCleanupHandler, slot: QObjectCleanupHandlerdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QObjectCleanupHandlerdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QObjectCleanupHandlerdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQObjectCleanupHandler_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QObjectCleanupHandler_disconnectNotify(self: ptr cQObjectCleanupHandler, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QObjectCleanupHandler_disconnectNotify ".} =
-  type Cb = proc(super: QObjectCleanupHandlerdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QObjectCleanupHandler(h: self), signal)
+  var nimfunc = cast[ptr QObjectCleanupHandlerdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QObjectCleanupHandler): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qobjectcleanuphandler_types.QObjectCleanupHandler): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQObjectCleanupHandler_staticMetaObject())
-proc delete*(self: QObjectCleanupHandler) =
+proc delete*(self: gen_qobjectcleanuphandler_types.QObjectCleanupHandler) =
   fcQObjectCleanupHandler_delete(self.h)

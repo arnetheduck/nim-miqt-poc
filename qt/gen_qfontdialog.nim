@@ -34,15 +34,13 @@ const cflags = gorge("pkg-config -cflags Qt5Widgets")
 {.compile("gen_qfontdialog.cpp", cflags).}
 
 
-type QFontDialogFontDialogOption* = cint
-const
-  QFontDialogNoButtons* = 1
-  QFontDialogDontUseNativeDialog* = 2
-  QFontDialogScalableFonts* = 4
-  QFontDialogNonScalableFonts* = 8
-  QFontDialogMonospacedFonts* = 16
-  QFontDialogProportionalFonts* = 32
-
+type QFontDialogFontDialogOptionEnum* = distinct cint
+template NoButtons*(_: type QFontDialogFontDialogOptionEnum): untyped = 1
+template DontUseNativeDialog*(_: type QFontDialogFontDialogOptionEnum): untyped = 2
+template ScalableFonts*(_: type QFontDialogFontDialogOptionEnum): untyped = 4
+template NonScalableFonts*(_: type QFontDialogFontDialogOptionEnum): untyped = 8
+template MonospacedFonts*(_: type QFontDialogFontDialogOptionEnum): untyped = 16
+template ProportionalFonts*(_: type QFontDialogFontDialogOptionEnum): untyped = 32
 
 
 import gen_qfontdialog_types
@@ -54,7 +52,6 @@ import
   gen_qevent,
   gen_qfont,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -70,7 +67,6 @@ export
   gen_qevent,
   gen_qfont,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -229,87 +225,87 @@ proc fcQFontDialog_staticMetaObject(): pointer {.importc: "QFontDialog_staticMet
 proc fcQFontDialog_delete(self: pointer) {.importc: "QFontDialog_delete".}
 
 
-func init*(T: type QFontDialog, h: ptr cQFontDialog): QFontDialog =
+func init*(T: type gen_qfontdialog_types.QFontDialog, h: ptr cQFontDialog): gen_qfontdialog_types.QFontDialog =
   T(h: h)
-proc create*(T: type QFontDialog, parent: gen_qwidget.QWidget): QFontDialog =
+proc create*(T: type gen_qfontdialog_types.QFontDialog, parent: gen_qwidget.QWidget): gen_qfontdialog_types.QFontDialog =
 
-  QFontDialog.init(fcQFontDialog_new(parent.h))
-proc create*(T: type QFontDialog, ): QFontDialog =
+  gen_qfontdialog_types.QFontDialog.init(fcQFontDialog_new(parent.h))
+proc create*(T: type gen_qfontdialog_types.QFontDialog, ): gen_qfontdialog_types.QFontDialog =
 
-  QFontDialog.init(fcQFontDialog_new2())
-proc create2*(T: type QFontDialog, initial: gen_qfont.QFont): QFontDialog =
+  gen_qfontdialog_types.QFontDialog.init(fcQFontDialog_new2())
+proc create2*(T: type gen_qfontdialog_types.QFontDialog, initial: gen_qfont.QFont): gen_qfontdialog_types.QFontDialog =
 
-  QFontDialog.init(fcQFontDialog_new3(initial.h))
-proc create*(T: type QFontDialog, initial: gen_qfont.QFont, parent: gen_qwidget.QWidget): QFontDialog =
+  gen_qfontdialog_types.QFontDialog.init(fcQFontDialog_new3(initial.h))
+proc create*(T: type gen_qfontdialog_types.QFontDialog, initial: gen_qfont.QFont, parent: gen_qwidget.QWidget): gen_qfontdialog_types.QFontDialog =
 
-  QFontDialog.init(fcQFontDialog_new4(initial.h, parent.h))
-proc metaObject*(self: QFontDialog, ): gen_qobjectdefs.QMetaObject =
+  gen_qfontdialog_types.QFontDialog.init(fcQFontDialog_new4(initial.h, parent.h))
+proc metaObject*(self: gen_qfontdialog_types.QFontDialog, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQFontDialog_metaObject(self.h))
 
-proc metacast*(self: QFontDialog, param1: cstring): pointer =
+proc metacast*(self: gen_qfontdialog_types.QFontDialog, param1: cstring): pointer =
 
   fcQFontDialog_metacast(self.h, param1)
 
-proc metacall*(self: QFontDialog, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qfontdialog_types.QFontDialog, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQFontDialog_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QFontDialog, s: cstring): string =
+proc tr*(_: type gen_qfontdialog_types.QFontDialog, s: cstring): string =
 
   let v_ms = fcQFontDialog_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QFontDialog, s: cstring): string =
+proc trUtf8*(_: type gen_qfontdialog_types.QFontDialog, s: cstring): string =
 
   let v_ms = fcQFontDialog_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setCurrentFont*(self: QFontDialog, font: gen_qfont.QFont): void =
+proc setCurrentFont*(self: gen_qfontdialog_types.QFontDialog, font: gen_qfont.QFont): void =
 
   fcQFontDialog_setCurrentFont(self.h, font.h)
 
-proc currentFont*(self: QFontDialog, ): gen_qfont.QFont =
+proc currentFont*(self: gen_qfontdialog_types.QFontDialog, ): gen_qfont.QFont =
 
   gen_qfont.QFont(h: fcQFontDialog_currentFont(self.h))
 
-proc selectedFont*(self: QFontDialog, ): gen_qfont.QFont =
+proc selectedFont*(self: gen_qfontdialog_types.QFontDialog, ): gen_qfont.QFont =
 
   gen_qfont.QFont(h: fcQFontDialog_selectedFont(self.h))
 
-proc setOption*(self: QFontDialog, option: QFontDialogFontDialogOption): void =
+proc setOption*(self: gen_qfontdialog_types.QFontDialog, option: cint): void =
 
   fcQFontDialog_setOption(self.h, cint(option))
 
-proc testOption*(self: QFontDialog, option: QFontDialogFontDialogOption): bool =
+proc testOption*(self: gen_qfontdialog_types.QFontDialog, option: cint): bool =
 
   fcQFontDialog_testOption(self.h, cint(option))
 
-proc setOptions*(self: QFontDialog, options: QFontDialogFontDialogOption): void =
+proc setOptions*(self: gen_qfontdialog_types.QFontDialog, options: cint): void =
 
   fcQFontDialog_setOptions(self.h, cint(options))
 
-proc options*(self: QFontDialog, ): QFontDialogFontDialogOption =
+proc options*(self: gen_qfontdialog_types.QFontDialog, ): cint =
 
-  QFontDialogFontDialogOption(fcQFontDialog_options(self.h))
+  cint(fcQFontDialog_options(self.h))
 
-proc setVisible*(self: QFontDialog, visible: bool): void =
+proc setVisible*(self: gen_qfontdialog_types.QFontDialog, visible: bool): void =
 
   fcQFontDialog_setVisible(self.h, visible)
 
-proc getFont*(_: type QFontDialog, ok: ptr bool): gen_qfont.QFont =
+proc getFont*(_: type gen_qfontdialog_types.QFontDialog, ok: ptr bool): gen_qfont.QFont =
 
   gen_qfont.QFont(h: fcQFontDialog_getFont(ok))
 
-proc getFont2*(_: type QFontDialog, ok: ptr bool, initial: gen_qfont.QFont): gen_qfont.QFont =
+proc getFont2*(_: type gen_qfontdialog_types.QFontDialog, ok: ptr bool, initial: gen_qfont.QFont): gen_qfont.QFont =
 
   gen_qfont.QFont(h: fcQFontDialog_getFont2(ok, initial.h))
 
-proc currentFontChanged*(self: QFontDialog, font: gen_qfont.QFont): void =
+proc currentFontChanged*(self: gen_qfontdialog_types.QFontDialog, font: gen_qfont.QFont): void =
 
   fcQFontDialog_currentFontChanged(self.h, font.h)
 
@@ -321,13 +317,13 @@ proc miqt_exec_callback_QFontDialog_currentFontChanged(slot: int, font: pointer)
 
   nimfunc[](slotval1)
 
-proc oncurrentFontChanged*(self: QFontDialog, slot: proc(font: gen_qfont.QFont)) =
+proc oncurrentFontChanged*(self: gen_qfontdialog_types.QFontDialog, slot: proc(font: gen_qfont.QFont)) =
   type Cb = proc(font: gen_qfont.QFont)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQFontDialog_connect_currentFontChanged(self.h, cast[int](addr tmp[]))
-proc fontSelected*(self: QFontDialog, font: gen_qfont.QFont): void =
+proc fontSelected*(self: gen_qfontdialog_types.QFontDialog, font: gen_qfont.QFont): void =
 
   fcQFontDialog_fontSelected(self.h, font.h)
 
@@ -339,1055 +335,840 @@ proc miqt_exec_callback_QFontDialog_fontSelected(slot: int, font: pointer) {.exp
 
   nimfunc[](slotval1)
 
-proc onfontSelected*(self: QFontDialog, slot: proc(font: gen_qfont.QFont)) =
+proc onfontSelected*(self: gen_qfontdialog_types.QFontDialog, slot: proc(font: gen_qfont.QFont)) =
   type Cb = proc(font: gen_qfont.QFont)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQFontDialog_connect_fontSelected(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QFontDialog, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qfontdialog_types.QFontDialog, s: cstring, c: cstring): string =
 
   let v_ms = fcQFontDialog_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QFontDialog, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qfontdialog_types.QFontDialog, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQFontDialog_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QFontDialog, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qfontdialog_types.QFontDialog, s: cstring, c: cstring): string =
 
   let v_ms = fcQFontDialog_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QFontDialog, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qfontdialog_types.QFontDialog, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQFontDialog_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setOption2*(self: QFontDialog, option: QFontDialogFontDialogOption, on: bool): void =
+proc setOption2*(self: gen_qfontdialog_types.QFontDialog, option: cint, on: bool): void =
 
   fcQFontDialog_setOption2(self.h, cint(option), on)
 
-proc getFont22*(_: type QFontDialog, ok: ptr bool, parent: gen_qwidget.QWidget): gen_qfont.QFont =
+proc getFont22*(_: type gen_qfontdialog_types.QFontDialog, ok: ptr bool, parent: gen_qwidget.QWidget): gen_qfont.QFont =
 
   gen_qfont.QFont(h: fcQFontDialog_getFont22(ok, parent.h))
 
-proc getFont3*(_: type QFontDialog, ok: ptr bool, initial: gen_qfont.QFont, parent: gen_qwidget.QWidget): gen_qfont.QFont =
+proc getFont3*(_: type gen_qfontdialog_types.QFontDialog, ok: ptr bool, initial: gen_qfont.QFont, parent: gen_qwidget.QWidget): gen_qfont.QFont =
 
   gen_qfont.QFont(h: fcQFontDialog_getFont3(ok, initial.h, parent.h))
 
-proc getFont4*(_: type QFontDialog, ok: ptr bool, initial: gen_qfont.QFont, parent: gen_qwidget.QWidget, title: string): gen_qfont.QFont =
+proc getFont4*(_: type gen_qfontdialog_types.QFontDialog, ok: ptr bool, initial: gen_qfont.QFont, parent: gen_qwidget.QWidget, title: string): gen_qfont.QFont =
 
   gen_qfont.QFont(h: fcQFontDialog_getFont4(ok, initial.h, parent.h, struct_miqt_string(data: title, len: csize_t(len(title)))))
 
-proc getFont5*(_: type QFontDialog, ok: ptr bool, initial: gen_qfont.QFont, parent: gen_qwidget.QWidget, title: string, options: QFontDialogFontDialogOption): gen_qfont.QFont =
+proc getFont5*(_: type gen_qfontdialog_types.QFontDialog, ok: ptr bool, initial: gen_qfont.QFont, parent: gen_qwidget.QWidget, title: string, options: cint): gen_qfont.QFont =
 
   gen_qfont.QFont(h: fcQFontDialog_getFont5(ok, initial.h, parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), cint(options)))
 
-proc callVirtualBase_metaObject(self: QFontDialog, ): gen_qobjectdefs.QMetaObject =
-
+proc QFontDialogmetaObject*(self: gen_qfontdialog_types.QFontDialog, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQFontDialog_virtualbase_metaObject(self.h))
 
-type QFontDialogmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QFontDialog, slot: proc(super: QFontDialogmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QFontDialogmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialogmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontDialogmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QFontDialogmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontDialog_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontDialog_metaObject(self: ptr cQFontDialog, slot: int): pointer {.exportc: "miqt_exec_callback_QFontDialog_metaObject ".} =
-  type Cb = proc(super: QFontDialogmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QFontDialog(h: self), )
+  var nimfunc = cast[ptr QFontDialogmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QFontDialog, param1: cstring): pointer =
-
+proc QFontDialogmetacast*(self: gen_qfontdialog_types.QFontDialog, param1: cstring): pointer =
 
   fQFontDialog_virtualbase_metacast(self.h, param1)
 
-type QFontDialogmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QFontDialog, slot: proc(super: QFontDialogmetacastBase, param1: cstring): pointer) =
+type QFontDialogmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialogmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontDialogmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QFontDialogmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontDialog_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontDialog_metacast(self: ptr cQFontDialog, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QFontDialog_metacast ".} =
-  type Cb = proc(super: QFontDialogmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QFontDialog(h: self), param1)
+  var nimfunc = cast[ptr QFontDialogmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QFontDialog, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QFontDialogmetacall*(self: gen_qfontdialog_types.QFontDialog, param1: cint, param2: cint, param3: pointer): cint =
 
   fQFontDialog_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QFontDialogmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QFontDialog, slot: proc(super: QFontDialogmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QFontDialogmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialogmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontDialogmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QFontDialogmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontDialog_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontDialog_metacall(self: ptr cQFontDialog, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QFontDialog_metacall ".} =
-  type Cb = proc(super: QFontDialogmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QFontDialog(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QFontDialogmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_setVisible(self: QFontDialog, visible: bool): void =
-
+proc QFontDialogsetVisible*(self: gen_qfontdialog_types.QFontDialog, visible: bool): void =
 
   fQFontDialog_virtualbase_setVisible(self.h, visible)
 
-type QFontDialogsetVisibleBase* = proc(visible: bool): void
-proc onsetVisible*(self: QFontDialog, slot: proc(super: QFontDialogsetVisibleBase, visible: bool): void) =
+type QFontDialogsetVisibleProc* = proc(visible: bool): void
+proc onsetVisible*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialogsetVisibleProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontDialogsetVisibleBase, visible: bool): void
-  var tmp = new Cb
+  var tmp = new QFontDialogsetVisibleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontDialog_override_virtual_setVisible(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontDialog_setVisible(self: ptr cQFontDialog, slot: int, visible: bool): void {.exportc: "miqt_exec_callback_QFontDialog_setVisible ".} =
-  type Cb = proc(super: QFontDialogsetVisibleBase, visible: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(visible: bool): auto =
-    callVirtualBase_setVisible(QFontDialog(h: self), visible)
+  var nimfunc = cast[ptr QFontDialogsetVisibleProc](cast[pointer](slot))
   let slotval1 = visible
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_changeEvent(self: QFontDialog, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QFontDialogchangeEvent*(self: gen_qfontdialog_types.QFontDialog, event: gen_qcoreevent.QEvent): void =
 
   fQFontDialog_virtualbase_changeEvent(self.h, event.h)
 
-type QFontDialogchangeEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onchangeEvent*(self: QFontDialog, slot: proc(super: QFontDialogchangeEventBase, event: gen_qcoreevent.QEvent): void) =
+type QFontDialogchangeEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onchangeEvent*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialogchangeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontDialogchangeEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QFontDialogchangeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontDialog_override_virtual_changeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontDialog_changeEvent(self: ptr cQFontDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFontDialog_changeEvent ".} =
-  type Cb = proc(super: QFontDialogchangeEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_changeEvent(QFontDialog(h: self), event)
+  var nimfunc = cast[ptr QFontDialogchangeEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_done(self: QFontDialog, resultVal: cint): void =
-
+  nimfunc[](slotval1)
+proc QFontDialogdone*(self: gen_qfontdialog_types.QFontDialog, resultVal: cint): void =
 
   fQFontDialog_virtualbase_done(self.h, resultVal)
 
-type QFontDialogdoneBase* = proc(resultVal: cint): void
-proc ondone*(self: QFontDialog, slot: proc(super: QFontDialogdoneBase, resultVal: cint): void) =
+type QFontDialogdoneProc* = proc(resultVal: cint): void
+proc ondone*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialogdoneProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontDialogdoneBase, resultVal: cint): void
-  var tmp = new Cb
+  var tmp = new QFontDialogdoneProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontDialog_override_virtual_done(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontDialog_done(self: ptr cQFontDialog, slot: int, resultVal: cint): void {.exportc: "miqt_exec_callback_QFontDialog_done ".} =
-  type Cb = proc(super: QFontDialogdoneBase, resultVal: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(resultVal: cint): auto =
-    callVirtualBase_done(QFontDialog(h: self), resultVal)
+  var nimfunc = cast[ptr QFontDialogdoneProc](cast[pointer](slot))
   let slotval1 = resultVal
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_eventFilter(self: QFontDialog, objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[](slotval1)
+proc QFontDialogeventFilter*(self: gen_qfontdialog_types.QFontDialog, objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQFontDialog_virtualbase_eventFilter(self.h, objectVal.h, event.h)
 
-type QFontDialogeventFilterBase* = proc(objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QFontDialog, slot: proc(super: QFontDialogeventFilterBase, objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QFontDialogeventFilterProc* = proc(objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialogeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontDialogeventFilterBase, objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QFontDialogeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontDialog_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontDialog_eventFilter(self: ptr cQFontDialog, slot: int, objectVal: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QFontDialog_eventFilter ".} =
-  type Cb = proc(super: QFontDialogeventFilterBase, objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QFontDialog(h: self), objectVal, event)
+  var nimfunc = cast[ptr QFontDialogeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: objectVal)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_sizeHint(self: QFontDialog, ): gen_qsize.QSize =
-
+proc QFontDialogsizeHint*(self: gen_qfontdialog_types.QFontDialog, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQFontDialog_virtualbase_sizeHint(self.h))
 
-type QFontDialogsizeHintBase* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: QFontDialog, slot: proc(super: QFontDialogsizeHintBase): gen_qsize.QSize) =
+type QFontDialogsizeHintProc* = proc(): gen_qsize.QSize
+proc onsizeHint*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialogsizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontDialogsizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QFontDialogsizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontDialog_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontDialog_sizeHint(self: ptr cQFontDialog, slot: int): pointer {.exportc: "miqt_exec_callback_QFontDialog_sizeHint ".} =
-  type Cb = proc(super: QFontDialogsizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sizeHint(QFontDialog(h: self), )
+  var nimfunc = cast[ptr QFontDialogsizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_minimumSizeHint(self: QFontDialog, ): gen_qsize.QSize =
-
+proc QFontDialogminimumSizeHint*(self: gen_qfontdialog_types.QFontDialog, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQFontDialog_virtualbase_minimumSizeHint(self.h))
 
-type QFontDialogminimumSizeHintBase* = proc(): gen_qsize.QSize
-proc onminimumSizeHint*(self: QFontDialog, slot: proc(super: QFontDialogminimumSizeHintBase): gen_qsize.QSize) =
+type QFontDialogminimumSizeHintProc* = proc(): gen_qsize.QSize
+proc onminimumSizeHint*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialogminimumSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontDialogminimumSizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QFontDialogminimumSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontDialog_override_virtual_minimumSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontDialog_minimumSizeHint(self: ptr cQFontDialog, slot: int): pointer {.exportc: "miqt_exec_callback_QFontDialog_minimumSizeHint ".} =
-  type Cb = proc(super: QFontDialogminimumSizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_minimumSizeHint(QFontDialog(h: self), )
+  var nimfunc = cast[ptr QFontDialogminimumSizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_open(self: QFontDialog, ): void =
-
+proc QFontDialogopen*(self: gen_qfontdialog_types.QFontDialog, ): void =
 
   fQFontDialog_virtualbase_open(self.h)
 
-type QFontDialogopenBase* = proc(): void
-proc onopen*(self: QFontDialog, slot: proc(super: QFontDialogopenBase): void) =
+type QFontDialogopenProc* = proc(): void
+proc onopen*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialogopenProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontDialogopenBase): void
-  var tmp = new Cb
+  var tmp = new QFontDialogopenProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontDialog_override_virtual_open(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontDialog_open(self: ptr cQFontDialog, slot: int): void {.exportc: "miqt_exec_callback_QFontDialog_open ".} =
-  type Cb = proc(super: QFontDialogopenBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_open(QFontDialog(h: self), )
+  var nimfunc = cast[ptr QFontDialogopenProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_exec(self: QFontDialog, ): cint =
-
+  nimfunc[]()
+proc QFontDialogexec*(self: gen_qfontdialog_types.QFontDialog, ): cint =
 
   fQFontDialog_virtualbase_exec(self.h)
 
-type QFontDialogexecBase* = proc(): cint
-proc onexec*(self: QFontDialog, slot: proc(super: QFontDialogexecBase): cint) =
+type QFontDialogexecProc* = proc(): cint
+proc onexec*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialogexecProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontDialogexecBase): cint
-  var tmp = new Cb
+  var tmp = new QFontDialogexecProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontDialog_override_virtual_exec(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontDialog_exec(self: ptr cQFontDialog, slot: int): cint {.exportc: "miqt_exec_callback_QFontDialog_exec ".} =
-  type Cb = proc(super: QFontDialogexecBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_exec(QFontDialog(h: self), )
+  var nimfunc = cast[ptr QFontDialogexecProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_accept(self: QFontDialog, ): void =
-
+proc QFontDialogaccept*(self: gen_qfontdialog_types.QFontDialog, ): void =
 
   fQFontDialog_virtualbase_accept(self.h)
 
-type QFontDialogacceptBase* = proc(): void
-proc onaccept*(self: QFontDialog, slot: proc(super: QFontDialogacceptBase): void) =
+type QFontDialogacceptProc* = proc(): void
+proc onaccept*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialogacceptProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontDialogacceptBase): void
-  var tmp = new Cb
+  var tmp = new QFontDialogacceptProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontDialog_override_virtual_accept(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontDialog_accept(self: ptr cQFontDialog, slot: int): void {.exportc: "miqt_exec_callback_QFontDialog_accept ".} =
-  type Cb = proc(super: QFontDialogacceptBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_accept(QFontDialog(h: self), )
+  var nimfunc = cast[ptr QFontDialogacceptProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_reject(self: QFontDialog, ): void =
-
+  nimfunc[]()
+proc QFontDialogreject*(self: gen_qfontdialog_types.QFontDialog, ): void =
 
   fQFontDialog_virtualbase_reject(self.h)
 
-type QFontDialogrejectBase* = proc(): void
-proc onreject*(self: QFontDialog, slot: proc(super: QFontDialogrejectBase): void) =
+type QFontDialogrejectProc* = proc(): void
+proc onreject*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialogrejectProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontDialogrejectBase): void
-  var tmp = new Cb
+  var tmp = new QFontDialogrejectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontDialog_override_virtual_reject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontDialog_reject(self: ptr cQFontDialog, slot: int): void {.exportc: "miqt_exec_callback_QFontDialog_reject ".} =
-  type Cb = proc(super: QFontDialogrejectBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_reject(QFontDialog(h: self), )
+  var nimfunc = cast[ptr QFontDialogrejectProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_keyPressEvent(self: QFontDialog, param1: gen_qevent.QKeyEvent): void =
-
+  nimfunc[]()
+proc QFontDialogkeyPressEvent*(self: gen_qfontdialog_types.QFontDialog, param1: gen_qevent.QKeyEvent): void =
 
   fQFontDialog_virtualbase_keyPressEvent(self.h, param1.h)
 
-type QFontDialogkeyPressEventBase* = proc(param1: gen_qevent.QKeyEvent): void
-proc onkeyPressEvent*(self: QFontDialog, slot: proc(super: QFontDialogkeyPressEventBase, param1: gen_qevent.QKeyEvent): void) =
+type QFontDialogkeyPressEventProc* = proc(param1: gen_qevent.QKeyEvent): void
+proc onkeyPressEvent*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialogkeyPressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontDialogkeyPressEventBase, param1: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QFontDialogkeyPressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontDialog_override_virtual_keyPressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontDialog_keyPressEvent(self: ptr cQFontDialog, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QFontDialog_keyPressEvent ".} =
-  type Cb = proc(super: QFontDialogkeyPressEventBase, param1: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyPressEvent(QFontDialog(h: self), param1)
+  var nimfunc = cast[ptr QFontDialogkeyPressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_closeEvent(self: QFontDialog, param1: gen_qevent.QCloseEvent): void =
-
+  nimfunc[](slotval1)
+proc QFontDialogcloseEvent*(self: gen_qfontdialog_types.QFontDialog, param1: gen_qevent.QCloseEvent): void =
 
   fQFontDialog_virtualbase_closeEvent(self.h, param1.h)
 
-type QFontDialogcloseEventBase* = proc(param1: gen_qevent.QCloseEvent): void
-proc oncloseEvent*(self: QFontDialog, slot: proc(super: QFontDialogcloseEventBase, param1: gen_qevent.QCloseEvent): void) =
+type QFontDialogcloseEventProc* = proc(param1: gen_qevent.QCloseEvent): void
+proc oncloseEvent*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialogcloseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontDialogcloseEventBase, param1: gen_qevent.QCloseEvent): void
-  var tmp = new Cb
+  var tmp = new QFontDialogcloseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontDialog_override_virtual_closeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontDialog_closeEvent(self: ptr cQFontDialog, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QFontDialog_closeEvent ".} =
-  type Cb = proc(super: QFontDialogcloseEventBase, param1: gen_qevent.QCloseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QCloseEvent): auto =
-    callVirtualBase_closeEvent(QFontDialog(h: self), param1)
+  var nimfunc = cast[ptr QFontDialogcloseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QCloseEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_showEvent(self: QFontDialog, param1: gen_qevent.QShowEvent): void =
-
+  nimfunc[](slotval1)
+proc QFontDialogshowEvent*(self: gen_qfontdialog_types.QFontDialog, param1: gen_qevent.QShowEvent): void =
 
   fQFontDialog_virtualbase_showEvent(self.h, param1.h)
 
-type QFontDialogshowEventBase* = proc(param1: gen_qevent.QShowEvent): void
-proc onshowEvent*(self: QFontDialog, slot: proc(super: QFontDialogshowEventBase, param1: gen_qevent.QShowEvent): void) =
+type QFontDialogshowEventProc* = proc(param1: gen_qevent.QShowEvent): void
+proc onshowEvent*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialogshowEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontDialogshowEventBase, param1: gen_qevent.QShowEvent): void
-  var tmp = new Cb
+  var tmp = new QFontDialogshowEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontDialog_override_virtual_showEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontDialog_showEvent(self: ptr cQFontDialog, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QFontDialog_showEvent ".} =
-  type Cb = proc(super: QFontDialogshowEventBase, param1: gen_qevent.QShowEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QShowEvent): auto =
-    callVirtualBase_showEvent(QFontDialog(h: self), param1)
+  var nimfunc = cast[ptr QFontDialogshowEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QShowEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_resizeEvent(self: QFontDialog, param1: gen_qevent.QResizeEvent): void =
-
+  nimfunc[](slotval1)
+proc QFontDialogresizeEvent*(self: gen_qfontdialog_types.QFontDialog, param1: gen_qevent.QResizeEvent): void =
 
   fQFontDialog_virtualbase_resizeEvent(self.h, param1.h)
 
-type QFontDialogresizeEventBase* = proc(param1: gen_qevent.QResizeEvent): void
-proc onresizeEvent*(self: QFontDialog, slot: proc(super: QFontDialogresizeEventBase, param1: gen_qevent.QResizeEvent): void) =
+type QFontDialogresizeEventProc* = proc(param1: gen_qevent.QResizeEvent): void
+proc onresizeEvent*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialogresizeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontDialogresizeEventBase, param1: gen_qevent.QResizeEvent): void
-  var tmp = new Cb
+  var tmp = new QFontDialogresizeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontDialog_override_virtual_resizeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontDialog_resizeEvent(self: ptr cQFontDialog, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QFontDialog_resizeEvent ".} =
-  type Cb = proc(super: QFontDialogresizeEventBase, param1: gen_qevent.QResizeEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QResizeEvent): auto =
-    callVirtualBase_resizeEvent(QFontDialog(h: self), param1)
+  var nimfunc = cast[ptr QFontDialogresizeEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QResizeEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_contextMenuEvent(self: QFontDialog, param1: gen_qevent.QContextMenuEvent): void =
-
+  nimfunc[](slotval1)
+proc QFontDialogcontextMenuEvent*(self: gen_qfontdialog_types.QFontDialog, param1: gen_qevent.QContextMenuEvent): void =
 
   fQFontDialog_virtualbase_contextMenuEvent(self.h, param1.h)
 
-type QFontDialogcontextMenuEventBase* = proc(param1: gen_qevent.QContextMenuEvent): void
-proc oncontextMenuEvent*(self: QFontDialog, slot: proc(super: QFontDialogcontextMenuEventBase, param1: gen_qevent.QContextMenuEvent): void) =
+type QFontDialogcontextMenuEventProc* = proc(param1: gen_qevent.QContextMenuEvent): void
+proc oncontextMenuEvent*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialogcontextMenuEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontDialogcontextMenuEventBase, param1: gen_qevent.QContextMenuEvent): void
-  var tmp = new Cb
+  var tmp = new QFontDialogcontextMenuEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontDialog_override_virtual_contextMenuEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontDialog_contextMenuEvent(self: ptr cQFontDialog, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QFontDialog_contextMenuEvent ".} =
-  type Cb = proc(super: QFontDialogcontextMenuEventBase, param1: gen_qevent.QContextMenuEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QContextMenuEvent): auto =
-    callVirtualBase_contextMenuEvent(QFontDialog(h: self), param1)
+  var nimfunc = cast[ptr QFontDialogcontextMenuEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QContextMenuEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_devType(self: QFontDialog, ): cint =
-
+  nimfunc[](slotval1)
+proc QFontDialogdevType*(self: gen_qfontdialog_types.QFontDialog, ): cint =
 
   fQFontDialog_virtualbase_devType(self.h)
 
-type QFontDialogdevTypeBase* = proc(): cint
-proc ondevType*(self: QFontDialog, slot: proc(super: QFontDialogdevTypeBase): cint) =
+type QFontDialogdevTypeProc* = proc(): cint
+proc ondevType*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialogdevTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontDialogdevTypeBase): cint
-  var tmp = new Cb
+  var tmp = new QFontDialogdevTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontDialog_override_virtual_devType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontDialog_devType(self: ptr cQFontDialog, slot: int): cint {.exportc: "miqt_exec_callback_QFontDialog_devType ".} =
-  type Cb = proc(super: QFontDialogdevTypeBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_devType(QFontDialog(h: self), )
+  var nimfunc = cast[ptr QFontDialogdevTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_heightForWidth(self: QFontDialog, param1: cint): cint =
-
+proc QFontDialogheightForWidth*(self: gen_qfontdialog_types.QFontDialog, param1: cint): cint =
 
   fQFontDialog_virtualbase_heightForWidth(self.h, param1)
 
-type QFontDialogheightForWidthBase* = proc(param1: cint): cint
-proc onheightForWidth*(self: QFontDialog, slot: proc(super: QFontDialogheightForWidthBase, param1: cint): cint) =
+type QFontDialogheightForWidthProc* = proc(param1: cint): cint
+proc onheightForWidth*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialogheightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontDialogheightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QFontDialogheightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontDialog_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontDialog_heightForWidth(self: ptr cQFontDialog, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QFontDialog_heightForWidth ".} =
-  type Cb = proc(super: QFontDialogheightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_heightForWidth(QFontDialog(h: self), param1)
+  var nimfunc = cast[ptr QFontDialogheightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_hasHeightForWidth(self: QFontDialog, ): bool =
-
+proc QFontDialoghasHeightForWidth*(self: gen_qfontdialog_types.QFontDialog, ): bool =
 
   fQFontDialog_virtualbase_hasHeightForWidth(self.h)
 
-type QFontDialoghasHeightForWidthBase* = proc(): bool
-proc onhasHeightForWidth*(self: QFontDialog, slot: proc(super: QFontDialoghasHeightForWidthBase): bool) =
+type QFontDialoghasHeightForWidthProc* = proc(): bool
+proc onhasHeightForWidth*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialoghasHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontDialoghasHeightForWidthBase): bool
-  var tmp = new Cb
+  var tmp = new QFontDialoghasHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontDialog_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontDialog_hasHeightForWidth(self: ptr cQFontDialog, slot: int): bool {.exportc: "miqt_exec_callback_QFontDialog_hasHeightForWidth ".} =
-  type Cb = proc(super: QFontDialoghasHeightForWidthBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasHeightForWidth(QFontDialog(h: self), )
+  var nimfunc = cast[ptr QFontDialoghasHeightForWidthProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_paintEngine(self: QFontDialog, ): gen_qpaintengine.QPaintEngine =
-
+proc QFontDialogpaintEngine*(self: gen_qfontdialog_types.QFontDialog, ): gen_qpaintengine.QPaintEngine =
 
   gen_qpaintengine.QPaintEngine(h: fQFontDialog_virtualbase_paintEngine(self.h))
 
-type QFontDialogpaintEngineBase* = proc(): gen_qpaintengine.QPaintEngine
-proc onpaintEngine*(self: QFontDialog, slot: proc(super: QFontDialogpaintEngineBase): gen_qpaintengine.QPaintEngine) =
+type QFontDialogpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
+proc onpaintEngine*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialogpaintEngineProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontDialogpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var tmp = new Cb
+  var tmp = new QFontDialogpaintEngineProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontDialog_override_virtual_paintEngine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontDialog_paintEngine(self: ptr cQFontDialog, slot: int): pointer {.exportc: "miqt_exec_callback_QFontDialog_paintEngine ".} =
-  type Cb = proc(super: QFontDialogpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_paintEngine(QFontDialog(h: self), )
+  var nimfunc = cast[ptr QFontDialogpaintEngineProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_event(self: QFontDialog, event: gen_qcoreevent.QEvent): bool =
-
+proc QFontDialogevent*(self: gen_qfontdialog_types.QFontDialog, event: gen_qcoreevent.QEvent): bool =
 
   fQFontDialog_virtualbase_event(self.h, event.h)
 
-type QFontDialogeventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QFontDialog, slot: proc(super: QFontDialogeventBase, event: gen_qcoreevent.QEvent): bool) =
+type QFontDialogeventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialogeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontDialogeventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QFontDialogeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontDialog_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontDialog_event(self: ptr cQFontDialog, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QFontDialog_event ".} =
-  type Cb = proc(super: QFontDialogeventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QFontDialog(h: self), event)
+  var nimfunc = cast[ptr QFontDialogeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_mousePressEvent(self: QFontDialog, event: gen_qevent.QMouseEvent): void =
-
+proc QFontDialogmousePressEvent*(self: gen_qfontdialog_types.QFontDialog, event: gen_qevent.QMouseEvent): void =
 
   fQFontDialog_virtualbase_mousePressEvent(self.h, event.h)
 
-type QFontDialogmousePressEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmousePressEvent*(self: QFontDialog, slot: proc(super: QFontDialogmousePressEventBase, event: gen_qevent.QMouseEvent): void) =
+type QFontDialogmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmousePressEvent*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialogmousePressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontDialogmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QFontDialogmousePressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontDialog_override_virtual_mousePressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontDialog_mousePressEvent(self: ptr cQFontDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFontDialog_mousePressEvent ".} =
-  type Cb = proc(super: QFontDialogmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mousePressEvent(QFontDialog(h: self), event)
+  var nimfunc = cast[ptr QFontDialogmousePressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseReleaseEvent(self: QFontDialog, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QFontDialogmouseReleaseEvent*(self: gen_qfontdialog_types.QFontDialog, event: gen_qevent.QMouseEvent): void =
 
   fQFontDialog_virtualbase_mouseReleaseEvent(self.h, event.h)
 
-type QFontDialogmouseReleaseEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseReleaseEvent*(self: QFontDialog, slot: proc(super: QFontDialogmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void) =
+type QFontDialogmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseReleaseEvent*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialogmouseReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontDialogmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QFontDialogmouseReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontDialog_override_virtual_mouseReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontDialog_mouseReleaseEvent(self: ptr cQFontDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFontDialog_mouseReleaseEvent ".} =
-  type Cb = proc(super: QFontDialogmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseReleaseEvent(QFontDialog(h: self), event)
+  var nimfunc = cast[ptr QFontDialogmouseReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseDoubleClickEvent(self: QFontDialog, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QFontDialogmouseDoubleClickEvent*(self: gen_qfontdialog_types.QFontDialog, event: gen_qevent.QMouseEvent): void =
 
   fQFontDialog_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
-type QFontDialogmouseDoubleClickEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseDoubleClickEvent*(self: QFontDialog, slot: proc(super: QFontDialogmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void) =
+type QFontDialogmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseDoubleClickEvent*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialogmouseDoubleClickEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontDialogmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QFontDialogmouseDoubleClickEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontDialog_override_virtual_mouseDoubleClickEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontDialog_mouseDoubleClickEvent(self: ptr cQFontDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFontDialog_mouseDoubleClickEvent ".} =
-  type Cb = proc(super: QFontDialogmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseDoubleClickEvent(QFontDialog(h: self), event)
+  var nimfunc = cast[ptr QFontDialogmouseDoubleClickEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseMoveEvent(self: QFontDialog, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QFontDialogmouseMoveEvent*(self: gen_qfontdialog_types.QFontDialog, event: gen_qevent.QMouseEvent): void =
 
   fQFontDialog_virtualbase_mouseMoveEvent(self.h, event.h)
 
-type QFontDialogmouseMoveEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseMoveEvent*(self: QFontDialog, slot: proc(super: QFontDialogmouseMoveEventBase, event: gen_qevent.QMouseEvent): void) =
+type QFontDialogmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseMoveEvent*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialogmouseMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontDialogmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QFontDialogmouseMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontDialog_override_virtual_mouseMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontDialog_mouseMoveEvent(self: ptr cQFontDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFontDialog_mouseMoveEvent ".} =
-  type Cb = proc(super: QFontDialogmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseMoveEvent(QFontDialog(h: self), event)
+  var nimfunc = cast[ptr QFontDialogmouseMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_wheelEvent(self: QFontDialog, event: gen_qevent.QWheelEvent): void =
-
+  nimfunc[](slotval1)
+proc QFontDialogwheelEvent*(self: gen_qfontdialog_types.QFontDialog, event: gen_qevent.QWheelEvent): void =
 
   fQFontDialog_virtualbase_wheelEvent(self.h, event.h)
 
-type QFontDialogwheelEventBase* = proc(event: gen_qevent.QWheelEvent): void
-proc onwheelEvent*(self: QFontDialog, slot: proc(super: QFontDialogwheelEventBase, event: gen_qevent.QWheelEvent): void) =
+type QFontDialogwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
+proc onwheelEvent*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialogwheelEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontDialogwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var tmp = new Cb
+  var tmp = new QFontDialogwheelEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontDialog_override_virtual_wheelEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontDialog_wheelEvent(self: ptr cQFontDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFontDialog_wheelEvent ".} =
-  type Cb = proc(super: QFontDialogwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QWheelEvent): auto =
-    callVirtualBase_wheelEvent(QFontDialog(h: self), event)
+  var nimfunc = cast[ptr QFontDialogwheelEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QWheelEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyReleaseEvent(self: QFontDialog, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QFontDialogkeyReleaseEvent*(self: gen_qfontdialog_types.QFontDialog, event: gen_qevent.QKeyEvent): void =
 
   fQFontDialog_virtualbase_keyReleaseEvent(self.h, event.h)
 
-type QFontDialogkeyReleaseEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyReleaseEvent*(self: QFontDialog, slot: proc(super: QFontDialogkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void) =
+type QFontDialogkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyReleaseEvent*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialogkeyReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontDialogkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QFontDialogkeyReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontDialog_override_virtual_keyReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontDialog_keyReleaseEvent(self: ptr cQFontDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFontDialog_keyReleaseEvent ".} =
-  type Cb = proc(super: QFontDialogkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyReleaseEvent(QFontDialog(h: self), event)
+  var nimfunc = cast[ptr QFontDialogkeyReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusInEvent(self: QFontDialog, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QFontDialogfocusInEvent*(self: gen_qfontdialog_types.QFontDialog, event: gen_qevent.QFocusEvent): void =
 
   fQFontDialog_virtualbase_focusInEvent(self.h, event.h)
 
-type QFontDialogfocusInEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusInEvent*(self: QFontDialog, slot: proc(super: QFontDialogfocusInEventBase, event: gen_qevent.QFocusEvent): void) =
+type QFontDialogfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusInEvent*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialogfocusInEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontDialogfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QFontDialogfocusInEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontDialog_override_virtual_focusInEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontDialog_focusInEvent(self: ptr cQFontDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFontDialog_focusInEvent ".} =
-  type Cb = proc(super: QFontDialogfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusInEvent(QFontDialog(h: self), event)
+  var nimfunc = cast[ptr QFontDialogfocusInEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusOutEvent(self: QFontDialog, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QFontDialogfocusOutEvent*(self: gen_qfontdialog_types.QFontDialog, event: gen_qevent.QFocusEvent): void =
 
   fQFontDialog_virtualbase_focusOutEvent(self.h, event.h)
 
-type QFontDialogfocusOutEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusOutEvent*(self: QFontDialog, slot: proc(super: QFontDialogfocusOutEventBase, event: gen_qevent.QFocusEvent): void) =
+type QFontDialogfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusOutEvent*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialogfocusOutEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontDialogfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QFontDialogfocusOutEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontDialog_override_virtual_focusOutEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontDialog_focusOutEvent(self: ptr cQFontDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFontDialog_focusOutEvent ".} =
-  type Cb = proc(super: QFontDialogfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusOutEvent(QFontDialog(h: self), event)
+  var nimfunc = cast[ptr QFontDialogfocusOutEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_enterEvent(self: QFontDialog, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QFontDialogenterEvent*(self: gen_qfontdialog_types.QFontDialog, event: gen_qcoreevent.QEvent): void =
 
   fQFontDialog_virtualbase_enterEvent(self.h, event.h)
 
-type QFontDialogenterEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onenterEvent*(self: QFontDialog, slot: proc(super: QFontDialogenterEventBase, event: gen_qcoreevent.QEvent): void) =
+type QFontDialogenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onenterEvent*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialogenterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontDialogenterEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QFontDialogenterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontDialog_override_virtual_enterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontDialog_enterEvent(self: ptr cQFontDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFontDialog_enterEvent ".} =
-  type Cb = proc(super: QFontDialogenterEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_enterEvent(QFontDialog(h: self), event)
+  var nimfunc = cast[ptr QFontDialogenterEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_leaveEvent(self: QFontDialog, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QFontDialogleaveEvent*(self: gen_qfontdialog_types.QFontDialog, event: gen_qcoreevent.QEvent): void =
 
   fQFontDialog_virtualbase_leaveEvent(self.h, event.h)
 
-type QFontDialogleaveEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onleaveEvent*(self: QFontDialog, slot: proc(super: QFontDialogleaveEventBase, event: gen_qcoreevent.QEvent): void) =
+type QFontDialogleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onleaveEvent*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialogleaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontDialogleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QFontDialogleaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontDialog_override_virtual_leaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontDialog_leaveEvent(self: ptr cQFontDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFontDialog_leaveEvent ".} =
-  type Cb = proc(super: QFontDialogleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_leaveEvent(QFontDialog(h: self), event)
+  var nimfunc = cast[ptr QFontDialogleaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_paintEvent(self: QFontDialog, event: gen_qevent.QPaintEvent): void =
-
+  nimfunc[](slotval1)
+proc QFontDialogpaintEvent*(self: gen_qfontdialog_types.QFontDialog, event: gen_qevent.QPaintEvent): void =
 
   fQFontDialog_virtualbase_paintEvent(self.h, event.h)
 
-type QFontDialogpaintEventBase* = proc(event: gen_qevent.QPaintEvent): void
-proc onpaintEvent*(self: QFontDialog, slot: proc(super: QFontDialogpaintEventBase, event: gen_qevent.QPaintEvent): void) =
+type QFontDialogpaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
+proc onpaintEvent*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialogpaintEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontDialogpaintEventBase, event: gen_qevent.QPaintEvent): void
-  var tmp = new Cb
+  var tmp = new QFontDialogpaintEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontDialog_override_virtual_paintEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontDialog_paintEvent(self: ptr cQFontDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFontDialog_paintEvent ".} =
-  type Cb = proc(super: QFontDialogpaintEventBase, event: gen_qevent.QPaintEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QPaintEvent): auto =
-    callVirtualBase_paintEvent(QFontDialog(h: self), event)
+  var nimfunc = cast[ptr QFontDialogpaintEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QPaintEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_moveEvent(self: QFontDialog, event: gen_qevent.QMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QFontDialogmoveEvent*(self: gen_qfontdialog_types.QFontDialog, event: gen_qevent.QMoveEvent): void =
 
   fQFontDialog_virtualbase_moveEvent(self.h, event.h)
 
-type QFontDialogmoveEventBase* = proc(event: gen_qevent.QMoveEvent): void
-proc onmoveEvent*(self: QFontDialog, slot: proc(super: QFontDialogmoveEventBase, event: gen_qevent.QMoveEvent): void) =
+type QFontDialogmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
+proc onmoveEvent*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialogmoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontDialogmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QFontDialogmoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontDialog_override_virtual_moveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontDialog_moveEvent(self: ptr cQFontDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFontDialog_moveEvent ".} =
-  type Cb = proc(super: QFontDialogmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMoveEvent): auto =
-    callVirtualBase_moveEvent(QFontDialog(h: self), event)
+  var nimfunc = cast[ptr QFontDialogmoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_tabletEvent(self: QFontDialog, event: gen_qevent.QTabletEvent): void =
-
+  nimfunc[](slotval1)
+proc QFontDialogtabletEvent*(self: gen_qfontdialog_types.QFontDialog, event: gen_qevent.QTabletEvent): void =
 
   fQFontDialog_virtualbase_tabletEvent(self.h, event.h)
 
-type QFontDialogtabletEventBase* = proc(event: gen_qevent.QTabletEvent): void
-proc ontabletEvent*(self: QFontDialog, slot: proc(super: QFontDialogtabletEventBase, event: gen_qevent.QTabletEvent): void) =
+type QFontDialogtabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
+proc ontabletEvent*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialogtabletEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontDialogtabletEventBase, event: gen_qevent.QTabletEvent): void
-  var tmp = new Cb
+  var tmp = new QFontDialogtabletEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontDialog_override_virtual_tabletEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontDialog_tabletEvent(self: ptr cQFontDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFontDialog_tabletEvent ".} =
-  type Cb = proc(super: QFontDialogtabletEventBase, event: gen_qevent.QTabletEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QTabletEvent): auto =
-    callVirtualBase_tabletEvent(QFontDialog(h: self), event)
+  var nimfunc = cast[ptr QFontDialogtabletEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QTabletEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_actionEvent(self: QFontDialog, event: gen_qevent.QActionEvent): void =
-
+  nimfunc[](slotval1)
+proc QFontDialogactionEvent*(self: gen_qfontdialog_types.QFontDialog, event: gen_qevent.QActionEvent): void =
 
   fQFontDialog_virtualbase_actionEvent(self.h, event.h)
 
-type QFontDialogactionEventBase* = proc(event: gen_qevent.QActionEvent): void
-proc onactionEvent*(self: QFontDialog, slot: proc(super: QFontDialogactionEventBase, event: gen_qevent.QActionEvent): void) =
+type QFontDialogactionEventProc* = proc(event: gen_qevent.QActionEvent): void
+proc onactionEvent*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialogactionEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontDialogactionEventBase, event: gen_qevent.QActionEvent): void
-  var tmp = new Cb
+  var tmp = new QFontDialogactionEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontDialog_override_virtual_actionEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontDialog_actionEvent(self: ptr cQFontDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFontDialog_actionEvent ".} =
-  type Cb = proc(super: QFontDialogactionEventBase, event: gen_qevent.QActionEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QActionEvent): auto =
-    callVirtualBase_actionEvent(QFontDialog(h: self), event)
+  var nimfunc = cast[ptr QFontDialogactionEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QActionEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragEnterEvent(self: QFontDialog, event: gen_qevent.QDragEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QFontDialogdragEnterEvent*(self: gen_qfontdialog_types.QFontDialog, event: gen_qevent.QDragEnterEvent): void =
 
   fQFontDialog_virtualbase_dragEnterEvent(self.h, event.h)
 
-type QFontDialogdragEnterEventBase* = proc(event: gen_qevent.QDragEnterEvent): void
-proc ondragEnterEvent*(self: QFontDialog, slot: proc(super: QFontDialogdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void) =
+type QFontDialogdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
+proc ondragEnterEvent*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialogdragEnterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontDialogdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QFontDialogdragEnterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontDialog_override_virtual_dragEnterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontDialog_dragEnterEvent(self: ptr cQFontDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFontDialog_dragEnterEvent ".} =
-  type Cb = proc(super: QFontDialogdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragEnterEvent): auto =
-    callVirtualBase_dragEnterEvent(QFontDialog(h: self), event)
+  var nimfunc = cast[ptr QFontDialogdragEnterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragMoveEvent(self: QFontDialog, event: gen_qevent.QDragMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QFontDialogdragMoveEvent*(self: gen_qfontdialog_types.QFontDialog, event: gen_qevent.QDragMoveEvent): void =
 
   fQFontDialog_virtualbase_dragMoveEvent(self.h, event.h)
 
-type QFontDialogdragMoveEventBase* = proc(event: gen_qevent.QDragMoveEvent): void
-proc ondragMoveEvent*(self: QFontDialog, slot: proc(super: QFontDialogdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void) =
+type QFontDialogdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
+proc ondragMoveEvent*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialogdragMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontDialogdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QFontDialogdragMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontDialog_override_virtual_dragMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontDialog_dragMoveEvent(self: ptr cQFontDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFontDialog_dragMoveEvent ".} =
-  type Cb = proc(super: QFontDialogdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragMoveEvent): auto =
-    callVirtualBase_dragMoveEvent(QFontDialog(h: self), event)
+  var nimfunc = cast[ptr QFontDialogdragMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragLeaveEvent(self: QFontDialog, event: gen_qevent.QDragLeaveEvent): void =
-
+  nimfunc[](slotval1)
+proc QFontDialogdragLeaveEvent*(self: gen_qfontdialog_types.QFontDialog, event: gen_qevent.QDragLeaveEvent): void =
 
   fQFontDialog_virtualbase_dragLeaveEvent(self.h, event.h)
 
-type QFontDialogdragLeaveEventBase* = proc(event: gen_qevent.QDragLeaveEvent): void
-proc ondragLeaveEvent*(self: QFontDialog, slot: proc(super: QFontDialogdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void) =
+type QFontDialogdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
+proc ondragLeaveEvent*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialogdragLeaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontDialogdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var tmp = new Cb
+  var tmp = new QFontDialogdragLeaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontDialog_override_virtual_dragLeaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontDialog_dragLeaveEvent(self: ptr cQFontDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFontDialog_dragLeaveEvent ".} =
-  type Cb = proc(super: QFontDialogdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragLeaveEvent): auto =
-    callVirtualBase_dragLeaveEvent(QFontDialog(h: self), event)
+  var nimfunc = cast[ptr QFontDialogdragLeaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragLeaveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dropEvent(self: QFontDialog, event: gen_qevent.QDropEvent): void =
-
+  nimfunc[](slotval1)
+proc QFontDialogdropEvent*(self: gen_qfontdialog_types.QFontDialog, event: gen_qevent.QDropEvent): void =
 
   fQFontDialog_virtualbase_dropEvent(self.h, event.h)
 
-type QFontDialogdropEventBase* = proc(event: gen_qevent.QDropEvent): void
-proc ondropEvent*(self: QFontDialog, slot: proc(super: QFontDialogdropEventBase, event: gen_qevent.QDropEvent): void) =
+type QFontDialogdropEventProc* = proc(event: gen_qevent.QDropEvent): void
+proc ondropEvent*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialogdropEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontDialogdropEventBase, event: gen_qevent.QDropEvent): void
-  var tmp = new Cb
+  var tmp = new QFontDialogdropEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontDialog_override_virtual_dropEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontDialog_dropEvent(self: ptr cQFontDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFontDialog_dropEvent ".} =
-  type Cb = proc(super: QFontDialogdropEventBase, event: gen_qevent.QDropEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDropEvent): auto =
-    callVirtualBase_dropEvent(QFontDialog(h: self), event)
+  var nimfunc = cast[ptr QFontDialogdropEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDropEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hideEvent(self: QFontDialog, event: gen_qevent.QHideEvent): void =
-
+  nimfunc[](slotval1)
+proc QFontDialoghideEvent*(self: gen_qfontdialog_types.QFontDialog, event: gen_qevent.QHideEvent): void =
 
   fQFontDialog_virtualbase_hideEvent(self.h, event.h)
 
-type QFontDialoghideEventBase* = proc(event: gen_qevent.QHideEvent): void
-proc onhideEvent*(self: QFontDialog, slot: proc(super: QFontDialoghideEventBase, event: gen_qevent.QHideEvent): void) =
+type QFontDialoghideEventProc* = proc(event: gen_qevent.QHideEvent): void
+proc onhideEvent*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialoghideEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontDialoghideEventBase, event: gen_qevent.QHideEvent): void
-  var tmp = new Cb
+  var tmp = new QFontDialoghideEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontDialog_override_virtual_hideEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontDialog_hideEvent(self: ptr cQFontDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFontDialog_hideEvent ".} =
-  type Cb = proc(super: QFontDialoghideEventBase, event: gen_qevent.QHideEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QHideEvent): auto =
-    callVirtualBase_hideEvent(QFontDialog(h: self), event)
+  var nimfunc = cast[ptr QFontDialoghideEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QHideEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_nativeEvent(self: QFontDialog, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
+  nimfunc[](slotval1)
+proc QFontDialognativeEvent*(self: gen_qfontdialog_types.QFontDialog, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
 
   fQFontDialog_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
-type QFontDialognativeEventBase* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-proc onnativeEvent*(self: QFontDialog, slot: proc(super: QFontDialognativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool) =
+type QFontDialognativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
+proc onnativeEvent*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialognativeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontDialognativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-  var tmp = new Cb
+  var tmp = new QFontDialognativeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontDialog_override_virtual_nativeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontDialog_nativeEvent(self: ptr cQFontDialog, slot: int, eventType: struct_miqt_string, message: pointer, resultVal: ptr clong): bool {.exportc: "miqt_exec_callback_QFontDialog_nativeEvent ".} =
-  type Cb = proc(super: QFontDialognativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(eventType: seq[byte], message: pointer, resultVal: ptr clong): auto =
-    callVirtualBase_nativeEvent(QFontDialog(h: self), eventType, message, resultVal)
+  var nimfunc = cast[ptr QFontDialognativeEventProc](cast[pointer](slot))
   var veventType_bytearray = eventType
   var veventTypex_ret = @(toOpenArrayByte(veventType_bytearray.data, 0, int(veventType_bytearray.len)-1))
   c_free(veventType_bytearray.data)
@@ -1398,294 +1179,234 @@ proc miqt_exec_callback_QFontDialog_nativeEvent(self: ptr cQFontDialog, slot: in
   let slotval3 = resultVal
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_metric(self: QFontDialog, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint =
-
+proc QFontDialogmetric*(self: gen_qfontdialog_types.QFontDialog, param1: cint): cint =
 
   fQFontDialog_virtualbase_metric(self.h, cint(param1))
 
-type QFontDialogmetricBase* = proc(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-proc onmetric*(self: QFontDialog, slot: proc(super: QFontDialogmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint) =
+type QFontDialogmetricProc* = proc(param1: cint): cint
+proc onmetric*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialogmetricProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontDialogmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var tmp = new Cb
+  var tmp = new QFontDialogmetricProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontDialog_override_virtual_metric(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontDialog_metric(self: ptr cQFontDialog, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QFontDialog_metric ".} =
-  type Cb = proc(super: QFontDialogmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): auto =
-    callVirtualBase_metric(QFontDialog(h: self), param1)
-  let slotval1 = gen_qpaintdevice.QPaintDevicePaintDeviceMetric(param1)
+  var nimfunc = cast[ptr QFontDialogmetricProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_initPainter(self: QFontDialog, painter: gen_qpainter.QPainter): void =
-
+proc QFontDialoginitPainter*(self: gen_qfontdialog_types.QFontDialog, painter: gen_qpainter.QPainter): void =
 
   fQFontDialog_virtualbase_initPainter(self.h, painter.h)
 
-type QFontDialoginitPainterBase* = proc(painter: gen_qpainter.QPainter): void
-proc oninitPainter*(self: QFontDialog, slot: proc(super: QFontDialoginitPainterBase, painter: gen_qpainter.QPainter): void) =
+type QFontDialoginitPainterProc* = proc(painter: gen_qpainter.QPainter): void
+proc oninitPainter*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialoginitPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontDialoginitPainterBase, painter: gen_qpainter.QPainter): void
-  var tmp = new Cb
+  var tmp = new QFontDialoginitPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontDialog_override_virtual_initPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontDialog_initPainter(self: ptr cQFontDialog, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_QFontDialog_initPainter ".} =
-  type Cb = proc(super: QFontDialoginitPainterBase, painter: gen_qpainter.QPainter): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter): auto =
-    callVirtualBase_initPainter(QFontDialog(h: self), painter)
+  var nimfunc = cast[ptr QFontDialoginitPainterProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_redirected(self: QFontDialog, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
+  nimfunc[](slotval1)
+proc QFontDialogredirected*(self: gen_qfontdialog_types.QFontDialog, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
 
   gen_qpaintdevice.QPaintDevice(h: fQFontDialog_virtualbase_redirected(self.h, offset.h))
 
-type QFontDialogredirectedBase* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-proc onredirected*(self: QFontDialog, slot: proc(super: QFontDialogredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice) =
+type QFontDialogredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
+proc onredirected*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialogredirectedProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontDialogredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var tmp = new Cb
+  var tmp = new QFontDialogredirectedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontDialog_override_virtual_redirected(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontDialog_redirected(self: ptr cQFontDialog, slot: int, offset: pointer): pointer {.exportc: "miqt_exec_callback_QFontDialog_redirected ".} =
-  type Cb = proc(super: QFontDialogredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(offset: gen_qpoint.QPoint): auto =
-    callVirtualBase_redirected(QFontDialog(h: self), offset)
+  var nimfunc = cast[ptr QFontDialogredirectedProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: offset)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_sharedPainter(self: QFontDialog, ): gen_qpainter.QPainter =
-
+proc QFontDialogsharedPainter*(self: gen_qfontdialog_types.QFontDialog, ): gen_qpainter.QPainter =
 
   gen_qpainter.QPainter(h: fQFontDialog_virtualbase_sharedPainter(self.h))
 
-type QFontDialogsharedPainterBase* = proc(): gen_qpainter.QPainter
-proc onsharedPainter*(self: QFontDialog, slot: proc(super: QFontDialogsharedPainterBase): gen_qpainter.QPainter) =
+type QFontDialogsharedPainterProc* = proc(): gen_qpainter.QPainter
+proc onsharedPainter*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialogsharedPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontDialogsharedPainterBase): gen_qpainter.QPainter
-  var tmp = new Cb
+  var tmp = new QFontDialogsharedPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontDialog_override_virtual_sharedPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontDialog_sharedPainter(self: ptr cQFontDialog, slot: int): pointer {.exportc: "miqt_exec_callback_QFontDialog_sharedPainter ".} =
-  type Cb = proc(super: QFontDialogsharedPainterBase): gen_qpainter.QPainter
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sharedPainter(QFontDialog(h: self), )
+  var nimfunc = cast[ptr QFontDialogsharedPainterProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_inputMethodEvent(self: QFontDialog, param1: gen_qevent.QInputMethodEvent): void =
-
+proc QFontDialoginputMethodEvent*(self: gen_qfontdialog_types.QFontDialog, param1: gen_qevent.QInputMethodEvent): void =
 
   fQFontDialog_virtualbase_inputMethodEvent(self.h, param1.h)
 
-type QFontDialoginputMethodEventBase* = proc(param1: gen_qevent.QInputMethodEvent): void
-proc oninputMethodEvent*(self: QFontDialog, slot: proc(super: QFontDialoginputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void) =
+type QFontDialoginputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
+proc oninputMethodEvent*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialoginputMethodEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontDialoginputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var tmp = new Cb
+  var tmp = new QFontDialoginputMethodEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontDialog_override_virtual_inputMethodEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontDialog_inputMethodEvent(self: ptr cQFontDialog, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QFontDialog_inputMethodEvent ".} =
-  type Cb = proc(super: QFontDialoginputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QInputMethodEvent): auto =
-    callVirtualBase_inputMethodEvent(QFontDialog(h: self), param1)
+  var nimfunc = cast[ptr QFontDialoginputMethodEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QInputMethodEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_inputMethodQuery(self: QFontDialog, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant =
-
+  nimfunc[](slotval1)
+proc QFontDialoginputMethodQuery*(self: gen_qfontdialog_types.QFontDialog, param1: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQFontDialog_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
-type QFontDialoginputMethodQueryBase* = proc(param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-proc oninputMethodQuery*(self: QFontDialog, slot: proc(super: QFontDialoginputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant) =
+type QFontDialoginputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
+proc oninputMethodQuery*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialoginputMethodQueryProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontDialoginputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QFontDialoginputMethodQueryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontDialog_override_virtual_inputMethodQuery(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontDialog_inputMethodQuery(self: ptr cQFontDialog, slot: int, param1: cint): pointer {.exportc: "miqt_exec_callback_QFontDialog_inputMethodQuery ".} =
-  type Cb = proc(super: QFontDialoginputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qnamespace.InputMethodQuery): auto =
-    callVirtualBase_inputMethodQuery(QFontDialog(h: self), param1)
-  let slotval1 = gen_qnamespace.InputMethodQuery(param1)
+  var nimfunc = cast[ptr QFontDialoginputMethodQueryProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_focusNextPrevChild(self: QFontDialog, next: bool): bool =
-
+proc QFontDialogfocusNextPrevChild*(self: gen_qfontdialog_types.QFontDialog, next: bool): bool =
 
   fQFontDialog_virtualbase_focusNextPrevChild(self.h, next)
 
-type QFontDialogfocusNextPrevChildBase* = proc(next: bool): bool
-proc onfocusNextPrevChild*(self: QFontDialog, slot: proc(super: QFontDialogfocusNextPrevChildBase, next: bool): bool) =
+type QFontDialogfocusNextPrevChildProc* = proc(next: bool): bool
+proc onfocusNextPrevChild*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialogfocusNextPrevChildProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontDialogfocusNextPrevChildBase, next: bool): bool
-  var tmp = new Cb
+  var tmp = new QFontDialogfocusNextPrevChildProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontDialog_override_virtual_focusNextPrevChild(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontDialog_focusNextPrevChild(self: ptr cQFontDialog, slot: int, next: bool): bool {.exportc: "miqt_exec_callback_QFontDialog_focusNextPrevChild ".} =
-  type Cb = proc(super: QFontDialogfocusNextPrevChildBase, next: bool): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(next: bool): auto =
-    callVirtualBase_focusNextPrevChild(QFontDialog(h: self), next)
+  var nimfunc = cast[ptr QFontDialogfocusNextPrevChildProc](cast[pointer](slot))
   let slotval1 = next
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QFontDialog, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QFontDialogtimerEvent*(self: gen_qfontdialog_types.QFontDialog, event: gen_qcoreevent.QTimerEvent): void =
 
   fQFontDialog_virtualbase_timerEvent(self.h, event.h)
 
-type QFontDialogtimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QFontDialog, slot: proc(super: QFontDialogtimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QFontDialogtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialogtimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontDialogtimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QFontDialogtimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontDialog_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontDialog_timerEvent(self: ptr cQFontDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFontDialog_timerEvent ".} =
-  type Cb = proc(super: QFontDialogtimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QFontDialog(h: self), event)
+  var nimfunc = cast[ptr QFontDialogtimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QFontDialog, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QFontDialogchildEvent*(self: gen_qfontdialog_types.QFontDialog, event: gen_qcoreevent.QChildEvent): void =
 
   fQFontDialog_virtualbase_childEvent(self.h, event.h)
 
-type QFontDialogchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QFontDialog, slot: proc(super: QFontDialogchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QFontDialogchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialogchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontDialogchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QFontDialogchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontDialog_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontDialog_childEvent(self: ptr cQFontDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFontDialog_childEvent ".} =
-  type Cb = proc(super: QFontDialogchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QFontDialog(h: self), event)
+  var nimfunc = cast[ptr QFontDialogchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QFontDialog, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QFontDialogcustomEvent*(self: gen_qfontdialog_types.QFontDialog, event: gen_qcoreevent.QEvent): void =
 
   fQFontDialog_virtualbase_customEvent(self.h, event.h)
 
-type QFontDialogcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QFontDialog, slot: proc(super: QFontDialogcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QFontDialogcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialogcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontDialogcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QFontDialogcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontDialog_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontDialog_customEvent(self: ptr cQFontDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFontDialog_customEvent ".} =
-  type Cb = proc(super: QFontDialogcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QFontDialog(h: self), event)
+  var nimfunc = cast[ptr QFontDialogcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QFontDialog, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QFontDialogconnectNotify*(self: gen_qfontdialog_types.QFontDialog, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQFontDialog_virtualbase_connectNotify(self.h, signal.h)
 
-type QFontDialogconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QFontDialog, slot: proc(super: QFontDialogconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QFontDialogconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialogconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontDialogconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QFontDialogconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontDialog_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontDialog_connectNotify(self: ptr cQFontDialog, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QFontDialog_connectNotify ".} =
-  type Cb = proc(super: QFontDialogconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QFontDialog(h: self), signal)
+  var nimfunc = cast[ptr QFontDialogconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QFontDialog, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QFontDialogdisconnectNotify*(self: gen_qfontdialog_types.QFontDialog, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQFontDialog_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QFontDialogdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QFontDialog, slot: proc(super: QFontDialogdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QFontDialogdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qfontdialog_types.QFontDialog, slot: QFontDialogdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QFontDialogdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QFontDialogdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFontDialog_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFontDialog_disconnectNotify(self: ptr cQFontDialog, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QFontDialog_disconnectNotify ".} =
-  type Cb = proc(super: QFontDialogdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QFontDialog(h: self), signal)
+  var nimfunc = cast[ptr QFontDialogdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QFontDialog): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qfontdialog_types.QFontDialog): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQFontDialog_staticMetaObject())
-proc delete*(self: QFontDialog) =
+proc delete*(self: gen_qfontdialog_types.QFontDialog) =
   fcQFontDialog_delete(self.h)

@@ -287,7 +287,7 @@ func (this *QShortcut) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QShortcut_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QShortcut) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QShortcut) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QShortcut_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -314,7 +314,7 @@ func (this *QShortcut) callVirtualBase_Metacast(param1 string) unsafe.Pointer {
 	return (unsafe.Pointer)(C.QShortcut_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QShortcut) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QShortcut) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QShortcut_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

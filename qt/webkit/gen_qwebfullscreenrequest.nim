@@ -56,33 +56,33 @@ proc fcQWebFullScreenRequest_element(self: pointer, ): pointer {.importc: "QWebF
 proc fcQWebFullScreenRequest_delete(self: pointer) {.importc: "QWebFullScreenRequest_delete".}
 
 
-func init*(T: type QWebFullScreenRequest, h: ptr cQWebFullScreenRequest): QWebFullScreenRequest =
+func init*(T: type gen_qwebfullscreenrequest_types.QWebFullScreenRequest, h: ptr cQWebFullScreenRequest): gen_qwebfullscreenrequest_types.QWebFullScreenRequest =
   T(h: h)
-proc create*(T: type QWebFullScreenRequest, ): QWebFullScreenRequest =
+proc create*(T: type gen_qwebfullscreenrequest_types.QWebFullScreenRequest, ): gen_qwebfullscreenrequest_types.QWebFullScreenRequest =
 
-  QWebFullScreenRequest.init(fcQWebFullScreenRequest_new())
-proc create*(T: type QWebFullScreenRequest, param1: QWebFullScreenRequest): QWebFullScreenRequest =
+  gen_qwebfullscreenrequest_types.QWebFullScreenRequest.init(fcQWebFullScreenRequest_new())
+proc create*(T: type gen_qwebfullscreenrequest_types.QWebFullScreenRequest, param1: gen_qwebfullscreenrequest_types.QWebFullScreenRequest): gen_qwebfullscreenrequest_types.QWebFullScreenRequest =
 
-  QWebFullScreenRequest.init(fcQWebFullScreenRequest_new2(param1.h))
-proc accept*(self: QWebFullScreenRequest, ): void =
+  gen_qwebfullscreenrequest_types.QWebFullScreenRequest.init(fcQWebFullScreenRequest_new2(param1.h))
+proc accept*(self: gen_qwebfullscreenrequest_types.QWebFullScreenRequest, ): void =
 
   fcQWebFullScreenRequest_accept(self.h)
 
-proc reject*(self: QWebFullScreenRequest, ): void =
+proc reject*(self: gen_qwebfullscreenrequest_types.QWebFullScreenRequest, ): void =
 
   fcQWebFullScreenRequest_reject(self.h)
 
-proc toggleOn*(self: QWebFullScreenRequest, ): bool =
+proc toggleOn*(self: gen_qwebfullscreenrequest_types.QWebFullScreenRequest, ): bool =
 
   fcQWebFullScreenRequest_toggleOn(self.h)
 
-proc origin*(self: QWebFullScreenRequest, ): gen_qurl.QUrl =
+proc origin*(self: gen_qwebfullscreenrequest_types.QWebFullScreenRequest, ): gen_qurl.QUrl =
 
   gen_qurl.QUrl(h: fcQWebFullScreenRequest_origin(self.h))
 
-proc element*(self: QWebFullScreenRequest, ): gen_qwebelement.QWebElement =
+proc element*(self: gen_qwebfullscreenrequest_types.QWebFullScreenRequest, ): gen_qwebelement.QWebElement =
 
   gen_qwebelement.QWebElement(h: fcQWebFullScreenRequest_element(self.h))
 
-proc delete*(self: QWebFullScreenRequest) =
+proc delete*(self: gen_qwebfullscreenrequest_types.QWebFullScreenRequest) =
   fcQWebFullScreenRequest_delete(self.h)

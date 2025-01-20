@@ -34,13 +34,11 @@ const cflags = gorge("pkg-config -cflags Qt5Widgets")
 {.compile("gen_qiconengine.cpp", cflags).}
 
 
-type QIconEngineIconEngineHook* = cint
-const
-  QIconEngineAvailableSizesHook* = 1
-  QIconEngineIconNameHook* = 2
-  QIconEngineIsNullHook* = 3
-  QIconEngineScaledPixmapHook* = 4
-
+type QIconEngineIconEngineHookEnum* = distinct cint
+template AvailableSizesHook*(_: type QIconEngineIconEngineHookEnum): untyped = 1
+template IconNameHook*(_: type QIconEngineIconEngineHookEnum): untyped = 2
+template IsNullHook*(_: type QIconEngineIconEngineHookEnum): untyped = 3
+template ScaledPixmapHook*(_: type QIconEngineIconEngineHookEnum): untyped = 4
 
 
 import gen_qiconengine_types
@@ -48,14 +46,12 @@ export gen_qiconengine_types
 
 import
   gen_qdatastream,
-  gen_qicon,
   gen_qpainter,
   gen_qpixmap,
   gen_qrect,
   gen_qsize
 export
   gen_qdatastream,
-  gen_qicon,
   gen_qpainter,
   gen_qpixmap,
   gen_qrect,
@@ -112,54 +108,54 @@ proc fcQIconEngineScaledPixmapArgument_operatorAssign(self: pointer, param1: poi
 proc fcQIconEngineScaledPixmapArgument_delete(self: pointer) {.importc: "QIconEngine__ScaledPixmapArgument_delete".}
 
 
-func init*(T: type QIconEngine, h: ptr cQIconEngine): QIconEngine =
+func init*(T: type gen_qiconengine_types.QIconEngine, h: ptr cQIconEngine): gen_qiconengine_types.QIconEngine =
   T(h: h)
-proc create*(T: type QIconEngine, ): QIconEngine =
+proc create*(T: type gen_qiconengine_types.QIconEngine, ): gen_qiconengine_types.QIconEngine =
 
-  QIconEngine.init(fcQIconEngine_new())
-proc create*(T: type QIconEngine, other: QIconEngine): QIconEngine =
+  gen_qiconengine_types.QIconEngine.init(fcQIconEngine_new())
+proc create*(T: type gen_qiconengine_types.QIconEngine, other: gen_qiconengine_types.QIconEngine): gen_qiconengine_types.QIconEngine =
 
-  QIconEngine.init(fcQIconEngine_new2(other.h))
-proc paint*(self: QIconEngine, painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, mode: gen_qicon.QIconMode, state: gen_qicon.QIconState): void =
+  gen_qiconengine_types.QIconEngine.init(fcQIconEngine_new2(other.h))
+proc paint*(self: gen_qiconengine_types.QIconEngine, painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, mode: cint, state: cint): void =
 
   fcQIconEngine_paint(self.h, painter.h, rect.h, cint(mode), cint(state))
 
-proc actualSize*(self: QIconEngine, size: gen_qsize.QSize, mode: gen_qicon.QIconMode, state: gen_qicon.QIconState): gen_qsize.QSize =
+proc actualSize*(self: gen_qiconengine_types.QIconEngine, size: gen_qsize.QSize, mode: cint, state: cint): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQIconEngine_actualSize(self.h, size.h, cint(mode), cint(state)))
 
-proc pixmap*(self: QIconEngine, size: gen_qsize.QSize, mode: gen_qicon.QIconMode, state: gen_qicon.QIconState): gen_qpixmap.QPixmap =
+proc pixmap*(self: gen_qiconengine_types.QIconEngine, size: gen_qsize.QSize, mode: cint, state: cint): gen_qpixmap.QPixmap =
 
   gen_qpixmap.QPixmap(h: fcQIconEngine_pixmap(self.h, size.h, cint(mode), cint(state)))
 
-proc addPixmap*(self: QIconEngine, pixmap: gen_qpixmap.QPixmap, mode: gen_qicon.QIconMode, state: gen_qicon.QIconState): void =
+proc addPixmap*(self: gen_qiconengine_types.QIconEngine, pixmap: gen_qpixmap.QPixmap, mode: cint, state: cint): void =
 
   fcQIconEngine_addPixmap(self.h, pixmap.h, cint(mode), cint(state))
 
-proc addFile*(self: QIconEngine, fileName: string, size: gen_qsize.QSize, mode: gen_qicon.QIconMode, state: gen_qicon.QIconState): void =
+proc addFile*(self: gen_qiconengine_types.QIconEngine, fileName: string, size: gen_qsize.QSize, mode: cint, state: cint): void =
 
   fcQIconEngine_addFile(self.h, struct_miqt_string(data: fileName, len: csize_t(len(fileName))), size.h, cint(mode), cint(state))
 
-proc key*(self: QIconEngine, ): string =
+proc key*(self: gen_qiconengine_types.QIconEngine, ): string =
 
   let v_ms = fcQIconEngine_key(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc clone*(self: QIconEngine, ): QIconEngine =
+proc clone*(self: gen_qiconengine_types.QIconEngine, ): gen_qiconengine_types.QIconEngine =
 
-  QIconEngine(h: fcQIconEngine_clone(self.h))
+  gen_qiconengine_types.QIconEngine(h: fcQIconEngine_clone(self.h))
 
-proc read*(self: QIconEngine, inVal: gen_qdatastream.QDataStream): bool =
+proc read*(self: gen_qiconengine_types.QIconEngine, inVal: gen_qdatastream.QDataStream): bool =
 
   fcQIconEngine_read(self.h, inVal.h)
 
-proc write*(self: QIconEngine, outVal: gen_qdatastream.QDataStream): bool =
+proc write*(self: gen_qiconengine_types.QIconEngine, outVal: gen_qdatastream.QDataStream): bool =
 
   fcQIconEngine_write(self.h, outVal.h)
 
-proc availableSizes*(self: QIconEngine, mode: gen_qicon.QIconMode, state: gen_qicon.QIconState): seq[gen_qsize.QSize] =
+proc availableSizes*(self: gen_qiconengine_types.QIconEngine, mode: cint, state: cint): seq[gen_qsize.QSize] =
 
   var v_ma = fcQIconEngine_availableSizes(self.h, cint(mode), cint(state))
   var vx_ret = newSeq[gen_qsize.QSize](int(v_ma.len))
@@ -168,151 +164,129 @@ proc availableSizes*(self: QIconEngine, mode: gen_qicon.QIconMode, state: gen_qi
     vx_ret[i] = gen_qsize.QSize(h: v_outCast[i])
   vx_ret
 
-proc iconName*(self: QIconEngine, ): string =
+proc iconName*(self: gen_qiconengine_types.QIconEngine, ): string =
 
   let v_ms = fcQIconEngine_iconName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc isNull*(self: QIconEngine, ): bool =
+proc isNull*(self: gen_qiconengine_types.QIconEngine, ): bool =
 
   fcQIconEngine_isNull(self.h)
 
-proc scaledPixmap*(self: QIconEngine, size: gen_qsize.QSize, mode: gen_qicon.QIconMode, state: gen_qicon.QIconState, scale: float64): gen_qpixmap.QPixmap =
+proc scaledPixmap*(self: gen_qiconengine_types.QIconEngine, size: gen_qsize.QSize, mode: cint, state: cint, scale: float64): gen_qpixmap.QPixmap =
 
   gen_qpixmap.QPixmap(h: fcQIconEngine_scaledPixmap(self.h, size.h, cint(mode), cint(state), scale))
 
-proc virtualHook*(self: QIconEngine, id: cint, data: pointer): void =
+proc virtualHook*(self: gen_qiconengine_types.QIconEngine, id: cint, data: pointer): void =
 
   fcQIconEngine_virtualHook(self.h, id, data)
 
-type QIconEnginepaintBase* = proc(painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, mode: gen_qicon.QIconMode, state: gen_qicon.QIconState): void
-proc onpaint*(self: QIconEngine, slot: proc(painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, mode: gen_qicon.QIconMode, state: gen_qicon.QIconState): void) =
+type QIconEnginepaintProc* = proc(painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, mode: cint, state: cint): void
+proc onpaint*(self: gen_qiconengine_types.QIconEngine, slot: QIconEnginepaintProc) =
   # TODO check subclass
-  type Cb = proc(painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, mode: gen_qicon.QIconMode, state: gen_qicon.QIconState): void
-  var tmp = new Cb
+  var tmp = new QIconEnginepaintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIconEngine_override_virtual_paint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIconEngine_paint(self: ptr cQIconEngine, slot: int, painter: pointer, rect: pointer, mode: cint, state: cint): void {.exportc: "miqt_exec_callback_QIconEngine_paint ".} =
-  type Cb = proc(painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, mode: gen_qicon.QIconMode, state: gen_qicon.QIconState): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QIconEnginepaintProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
   let slotval2 = gen_qrect.QRect(h: rect)
 
-  let slotval3 = gen_qicon.QIconMode(mode)
+  let slotval3 = cint(mode)
 
-  let slotval4 = gen_qicon.QIconState(state)
+  let slotval4 = cint(state)
 
 
   nimfunc[](slotval1, slotval2, slotval3, slotval4)
-proc callVirtualBase_actualSize(self: QIconEngine, size: gen_qsize.QSize, mode: gen_qicon.QIconMode, state: gen_qicon.QIconState): gen_qsize.QSize =
-
+proc QIconEngineactualSize*(self: gen_qiconengine_types.QIconEngine, size: gen_qsize.QSize, mode: cint, state: cint): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQIconEngine_virtualbase_actualSize(self.h, size.h, cint(mode), cint(state)))
 
-type QIconEngineactualSizeBase* = proc(size: gen_qsize.QSize, mode: gen_qicon.QIconMode, state: gen_qicon.QIconState): gen_qsize.QSize
-proc onactualSize*(self: QIconEngine, slot: proc(super: QIconEngineactualSizeBase, size: gen_qsize.QSize, mode: gen_qicon.QIconMode, state: gen_qicon.QIconState): gen_qsize.QSize) =
+type QIconEngineactualSizeProc* = proc(size: gen_qsize.QSize, mode: cint, state: cint): gen_qsize.QSize
+proc onactualSize*(self: gen_qiconengine_types.QIconEngine, slot: QIconEngineactualSizeProc) =
   # TODO check subclass
-  type Cb = proc(super: QIconEngineactualSizeBase, size: gen_qsize.QSize, mode: gen_qicon.QIconMode, state: gen_qicon.QIconState): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QIconEngineactualSizeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIconEngine_override_virtual_actualSize(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIconEngine_actualSize(self: ptr cQIconEngine, slot: int, size: pointer, mode: cint, state: cint): pointer {.exportc: "miqt_exec_callback_QIconEngine_actualSize ".} =
-  type Cb = proc(super: QIconEngineactualSizeBase, size: gen_qsize.QSize, mode: gen_qicon.QIconMode, state: gen_qicon.QIconState): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(size: gen_qsize.QSize, mode: gen_qicon.QIconMode, state: gen_qicon.QIconState): auto =
-    callVirtualBase_actualSize(QIconEngine(h: self), size, mode, state)
+  var nimfunc = cast[ptr QIconEngineactualSizeProc](cast[pointer](slot))
   let slotval1 = gen_qsize.QSize(h: size)
 
-  let slotval2 = gen_qicon.QIconMode(mode)
+  let slotval2 = cint(mode)
 
-  let slotval3 = gen_qicon.QIconState(state)
+  let slotval3 = cint(state)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn.h
-proc callVirtualBase_pixmap(self: QIconEngine, size: gen_qsize.QSize, mode: gen_qicon.QIconMode, state: gen_qicon.QIconState): gen_qpixmap.QPixmap =
-
+proc QIconEnginepixmap*(self: gen_qiconengine_types.QIconEngine, size: gen_qsize.QSize, mode: cint, state: cint): gen_qpixmap.QPixmap =
 
   gen_qpixmap.QPixmap(h: fQIconEngine_virtualbase_pixmap(self.h, size.h, cint(mode), cint(state)))
 
-type QIconEnginepixmapBase* = proc(size: gen_qsize.QSize, mode: gen_qicon.QIconMode, state: gen_qicon.QIconState): gen_qpixmap.QPixmap
-proc onpixmap*(self: QIconEngine, slot: proc(super: QIconEnginepixmapBase, size: gen_qsize.QSize, mode: gen_qicon.QIconMode, state: gen_qicon.QIconState): gen_qpixmap.QPixmap) =
+type QIconEnginepixmapProc* = proc(size: gen_qsize.QSize, mode: cint, state: cint): gen_qpixmap.QPixmap
+proc onpixmap*(self: gen_qiconengine_types.QIconEngine, slot: QIconEnginepixmapProc) =
   # TODO check subclass
-  type Cb = proc(super: QIconEnginepixmapBase, size: gen_qsize.QSize, mode: gen_qicon.QIconMode, state: gen_qicon.QIconState): gen_qpixmap.QPixmap
-  var tmp = new Cb
+  var tmp = new QIconEnginepixmapProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIconEngine_override_virtual_pixmap(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIconEngine_pixmap(self: ptr cQIconEngine, slot: int, size: pointer, mode: cint, state: cint): pointer {.exportc: "miqt_exec_callback_QIconEngine_pixmap ".} =
-  type Cb = proc(super: QIconEnginepixmapBase, size: gen_qsize.QSize, mode: gen_qicon.QIconMode, state: gen_qicon.QIconState): gen_qpixmap.QPixmap
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(size: gen_qsize.QSize, mode: gen_qicon.QIconMode, state: gen_qicon.QIconState): auto =
-    callVirtualBase_pixmap(QIconEngine(h: self), size, mode, state)
+  var nimfunc = cast[ptr QIconEnginepixmapProc](cast[pointer](slot))
   let slotval1 = gen_qsize.QSize(h: size)
 
-  let slotval2 = gen_qicon.QIconMode(mode)
+  let slotval2 = cint(mode)
 
-  let slotval3 = gen_qicon.QIconState(state)
+  let slotval3 = cint(state)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn.h
-proc callVirtualBase_addPixmap(self: QIconEngine, pixmap: gen_qpixmap.QPixmap, mode: gen_qicon.QIconMode, state: gen_qicon.QIconState): void =
-
+proc QIconEngineaddPixmap*(self: gen_qiconengine_types.QIconEngine, pixmap: gen_qpixmap.QPixmap, mode: cint, state: cint): void =
 
   fQIconEngine_virtualbase_addPixmap(self.h, pixmap.h, cint(mode), cint(state))
 
-type QIconEngineaddPixmapBase* = proc(pixmap: gen_qpixmap.QPixmap, mode: gen_qicon.QIconMode, state: gen_qicon.QIconState): void
-proc onaddPixmap*(self: QIconEngine, slot: proc(super: QIconEngineaddPixmapBase, pixmap: gen_qpixmap.QPixmap, mode: gen_qicon.QIconMode, state: gen_qicon.QIconState): void) =
+type QIconEngineaddPixmapProc* = proc(pixmap: gen_qpixmap.QPixmap, mode: cint, state: cint): void
+proc onaddPixmap*(self: gen_qiconengine_types.QIconEngine, slot: QIconEngineaddPixmapProc) =
   # TODO check subclass
-  type Cb = proc(super: QIconEngineaddPixmapBase, pixmap: gen_qpixmap.QPixmap, mode: gen_qicon.QIconMode, state: gen_qicon.QIconState): void
-  var tmp = new Cb
+  var tmp = new QIconEngineaddPixmapProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIconEngine_override_virtual_addPixmap(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIconEngine_addPixmap(self: ptr cQIconEngine, slot: int, pixmap: pointer, mode: cint, state: cint): void {.exportc: "miqt_exec_callback_QIconEngine_addPixmap ".} =
-  type Cb = proc(super: QIconEngineaddPixmapBase, pixmap: gen_qpixmap.QPixmap, mode: gen_qicon.QIconMode, state: gen_qicon.QIconState): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(pixmap: gen_qpixmap.QPixmap, mode: gen_qicon.QIconMode, state: gen_qicon.QIconState): auto =
-    callVirtualBase_addPixmap(QIconEngine(h: self), pixmap, mode, state)
+  var nimfunc = cast[ptr QIconEngineaddPixmapProc](cast[pointer](slot))
   let slotval1 = gen_qpixmap.QPixmap(h: pixmap)
 
-  let slotval2 = gen_qicon.QIconMode(mode)
+  let slotval2 = cint(mode)
 
-  let slotval3 = gen_qicon.QIconState(state)
+  let slotval3 = cint(state)
 
 
-  nimfunc[](superCall, slotval1, slotval2, slotval3)
-proc callVirtualBase_addFile(self: QIconEngine, fileName: string, size: gen_qsize.QSize, mode: gen_qicon.QIconMode, state: gen_qicon.QIconState): void =
-
+  nimfunc[](slotval1, slotval2, slotval3)
+proc QIconEngineaddFile*(self: gen_qiconengine_types.QIconEngine, fileName: string, size: gen_qsize.QSize, mode: cint, state: cint): void =
 
   fQIconEngine_virtualbase_addFile(self.h, struct_miqt_string(data: fileName, len: csize_t(len(fileName))), size.h, cint(mode), cint(state))
 
-type QIconEngineaddFileBase* = proc(fileName: string, size: gen_qsize.QSize, mode: gen_qicon.QIconMode, state: gen_qicon.QIconState): void
-proc onaddFile*(self: QIconEngine, slot: proc(super: QIconEngineaddFileBase, fileName: string, size: gen_qsize.QSize, mode: gen_qicon.QIconMode, state: gen_qicon.QIconState): void) =
+type QIconEngineaddFileProc* = proc(fileName: string, size: gen_qsize.QSize, mode: cint, state: cint): void
+proc onaddFile*(self: gen_qiconengine_types.QIconEngine, slot: QIconEngineaddFileProc) =
   # TODO check subclass
-  type Cb = proc(super: QIconEngineaddFileBase, fileName: string, size: gen_qsize.QSize, mode: gen_qicon.QIconMode, state: gen_qicon.QIconState): void
-  var tmp = new Cb
+  var tmp = new QIconEngineaddFileProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIconEngine_override_virtual_addFile(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIconEngine_addFile(self: ptr cQIconEngine, slot: int, fileName: struct_miqt_string, size: pointer, mode: cint, state: cint): void {.exportc: "miqt_exec_callback_QIconEngine_addFile ".} =
-  type Cb = proc(super: QIconEngineaddFileBase, fileName: string, size: gen_qsize.QSize, mode: gen_qicon.QIconMode, state: gen_qicon.QIconState): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(fileName: string, size: gen_qsize.QSize, mode: gen_qicon.QIconMode, state: gen_qicon.QIconState): auto =
-    callVirtualBase_addFile(QIconEngine(h: self), fileName, size, mode, state)
+  var nimfunc = cast[ptr QIconEngineaddFileProc](cast[pointer](slot))
   let vfileName_ms = fileName
   let vfileNamex_ret = string.fromBytes(toOpenArrayByte(vfileName_ms.data, 0, int(vfileName_ms.len)-1))
   c_free(vfileName_ms.data)
@@ -320,106 +294,88 @@ proc miqt_exec_callback_QIconEngine_addFile(self: ptr cQIconEngine, slot: int, f
 
   let slotval2 = gen_qsize.QSize(h: size)
 
-  let slotval3 = gen_qicon.QIconMode(mode)
+  let slotval3 = cint(mode)
 
-  let slotval4 = gen_qicon.QIconState(state)
+  let slotval4 = cint(state)
 
 
-  nimfunc[](superCall, slotval1, slotval2, slotval3, slotval4)
-proc callVirtualBase_key(self: QIconEngine, ): string =
-
+  nimfunc[](slotval1, slotval2, slotval3, slotval4)
+proc QIconEnginekey*(self: gen_qiconengine_types.QIconEngine, ): string =
 
   let v_ms = fQIconEngine_virtualbase_key(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-type QIconEnginekeyBase* = proc(): string
-proc onkey*(self: QIconEngine, slot: proc(super: QIconEnginekeyBase): string) =
+type QIconEnginekeyProc* = proc(): string
+proc onkey*(self: gen_qiconengine_types.QIconEngine, slot: QIconEnginekeyProc) =
   # TODO check subclass
-  type Cb = proc(super: QIconEnginekeyBase): string
-  var tmp = new Cb
+  var tmp = new QIconEnginekeyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIconEngine_override_virtual_key(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIconEngine_key(self: ptr cQIconEngine, slot: int): struct_miqt_string {.exportc: "miqt_exec_callback_QIconEngine_key ".} =
-  type Cb = proc(super: QIconEnginekeyBase): string
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_key(QIconEngine(h: self), )
+  var nimfunc = cast[ptr QIconEnginekeyProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
-type QIconEnginecloneBase* = proc(): QIconEngine
-proc onclone*(self: QIconEngine, slot: proc(): QIconEngine) =
+type QIconEnginecloneProc* = proc(): gen_qiconengine_types.QIconEngine
+proc onclone*(self: gen_qiconengine_types.QIconEngine, slot: QIconEnginecloneProc) =
   # TODO check subclass
-  type Cb = proc(): QIconEngine
-  var tmp = new Cb
+  var tmp = new QIconEnginecloneProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIconEngine_override_virtual_clone(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIconEngine_clone(self: ptr cQIconEngine, slot: int): pointer {.exportc: "miqt_exec_callback_QIconEngine_clone ".} =
-  type Cb = proc(): QIconEngine
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QIconEnginecloneProc](cast[pointer](slot))
 
   let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_read(self: QIconEngine, inVal: gen_qdatastream.QDataStream): bool =
-
+proc QIconEngineread*(self: gen_qiconengine_types.QIconEngine, inVal: gen_qdatastream.QDataStream): bool =
 
   fQIconEngine_virtualbase_read(self.h, inVal.h)
 
-type QIconEnginereadBase* = proc(inVal: gen_qdatastream.QDataStream): bool
-proc onread*(self: QIconEngine, slot: proc(super: QIconEnginereadBase, inVal: gen_qdatastream.QDataStream): bool) =
+type QIconEnginereadProc* = proc(inVal: gen_qdatastream.QDataStream): bool
+proc onread*(self: gen_qiconengine_types.QIconEngine, slot: QIconEnginereadProc) =
   # TODO check subclass
-  type Cb = proc(super: QIconEnginereadBase, inVal: gen_qdatastream.QDataStream): bool
-  var tmp = new Cb
+  var tmp = new QIconEnginereadProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIconEngine_override_virtual_read(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIconEngine_read(self: ptr cQIconEngine, slot: int, inVal: pointer): bool {.exportc: "miqt_exec_callback_QIconEngine_read ".} =
-  type Cb = proc(super: QIconEnginereadBase, inVal: gen_qdatastream.QDataStream): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(inVal: gen_qdatastream.QDataStream): auto =
-    callVirtualBase_read(QIconEngine(h: self), inVal)
+  var nimfunc = cast[ptr QIconEnginereadProc](cast[pointer](slot))
   let slotval1 = gen_qdatastream.QDataStream(h: inVal)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_write(self: QIconEngine, outVal: gen_qdatastream.QDataStream): bool =
-
+proc QIconEnginewrite*(self: gen_qiconengine_types.QIconEngine, outVal: gen_qdatastream.QDataStream): bool =
 
   fQIconEngine_virtualbase_write(self.h, outVal.h)
 
-type QIconEnginewriteBase* = proc(outVal: gen_qdatastream.QDataStream): bool
-proc onwrite*(self: QIconEngine, slot: proc(super: QIconEnginewriteBase, outVal: gen_qdatastream.QDataStream): bool) =
+type QIconEnginewriteProc* = proc(outVal: gen_qdatastream.QDataStream): bool
+proc onwrite*(self: gen_qiconengine_types.QIconEngine, slot: QIconEnginewriteProc) =
   # TODO check subclass
-  type Cb = proc(super: QIconEnginewriteBase, outVal: gen_qdatastream.QDataStream): bool
-  var tmp = new Cb
+  var tmp = new QIconEnginewriteProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIconEngine_override_virtual_write(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIconEngine_write(self: ptr cQIconEngine, slot: int, outVal: pointer): bool {.exportc: "miqt_exec_callback_QIconEngine_write ".} =
-  type Cb = proc(super: QIconEnginewriteBase, outVal: gen_qdatastream.QDataStream): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(outVal: gen_qdatastream.QDataStream): auto =
-    callVirtualBase_write(QIconEngine(h: self), outVal)
+  var nimfunc = cast[ptr QIconEnginewriteProc](cast[pointer](slot))
   let slotval1 = gen_qdatastream.QDataStream(h: outVal)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_availableSizes(self: QIconEngine, mode: gen_qicon.QIconMode, state: gen_qicon.QIconState): seq[gen_qsize.QSize] =
-
+proc QIconEngineavailableSizes*(self: gen_qiconengine_types.QIconEngine, mode: cint, state: cint): seq[gen_qsize.QSize] =
 
   var v_ma = fQIconEngine_virtualbase_availableSizes(self.h, cint(mode), cint(state))
   var vx_ret = newSeq[gen_qsize.QSize](int(v_ma.len))
@@ -428,106 +384,92 @@ proc callVirtualBase_availableSizes(self: QIconEngine, mode: gen_qicon.QIconMode
     vx_ret[i] = gen_qsize.QSize(h: v_outCast[i])
   vx_ret
 
-type QIconEngineavailableSizesBase* = proc(mode: gen_qicon.QIconMode, state: gen_qicon.QIconState): seq[gen_qsize.QSize]
-proc onavailableSizes*(self: QIconEngine, slot: proc(super: QIconEngineavailableSizesBase, mode: gen_qicon.QIconMode, state: gen_qicon.QIconState): seq[gen_qsize.QSize]) =
+type QIconEngineavailableSizesProc* = proc(mode: cint, state: cint): seq[gen_qsize.QSize]
+proc onavailableSizes*(self: gen_qiconengine_types.QIconEngine, slot: QIconEngineavailableSizesProc) =
   # TODO check subclass
-  type Cb = proc(super: QIconEngineavailableSizesBase, mode: gen_qicon.QIconMode, state: gen_qicon.QIconState): seq[gen_qsize.QSize]
-  var tmp = new Cb
+  var tmp = new QIconEngineavailableSizesProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIconEngine_override_virtual_availableSizes(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIconEngine_availableSizes(self: ptr cQIconEngine, slot: int, mode: cint, state: cint): struct_miqt_array {.exportc: "miqt_exec_callback_QIconEngine_availableSizes ".} =
-  type Cb = proc(super: QIconEngineavailableSizesBase, mode: gen_qicon.QIconMode, state: gen_qicon.QIconState): seq[gen_qsize.QSize]
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(mode: gen_qicon.QIconMode, state: gen_qicon.QIconState): auto =
-    callVirtualBase_availableSizes(QIconEngine(h: self), mode, state)
-  let slotval1 = gen_qicon.QIconMode(mode)
+  var nimfunc = cast[ptr QIconEngineavailableSizesProc](cast[pointer](slot))
+  let slotval1 = cint(mode)
 
-  let slotval2 = gen_qicon.QIconState(state)
+  let slotval2 = cint(state)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
   var virtualReturn_CArray = newSeq[pointer](len(virtualReturn))
   for i in 0..<len(virtualReturn):
     virtualReturn_CArray[i] = virtualReturn[i].h
 
 
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
-proc callVirtualBase_iconName(self: QIconEngine, ): string =
-
+proc QIconEngineiconName*(self: gen_qiconengine_types.QIconEngine, ): string =
 
   let v_ms = fQIconEngine_virtualbase_iconName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-type QIconEngineiconNameBase* = proc(): string
-proc oniconName*(self: QIconEngine, slot: proc(super: QIconEngineiconNameBase): string) =
+type QIconEngineiconNameProc* = proc(): string
+proc oniconName*(self: gen_qiconengine_types.QIconEngine, slot: QIconEngineiconNameProc) =
   # TODO check subclass
-  type Cb = proc(super: QIconEngineiconNameBase): string
-  var tmp = new Cb
+  var tmp = new QIconEngineiconNameProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIconEngine_override_virtual_iconName(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIconEngine_iconName(self: ptr cQIconEngine, slot: int): struct_miqt_string {.exportc: "miqt_exec_callback_QIconEngine_iconName ".} =
-  type Cb = proc(super: QIconEngineiconNameBase): string
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_iconName(QIconEngine(h: self), )
+  var nimfunc = cast[ptr QIconEngineiconNameProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
-proc callVirtualBase_virtualHook(self: QIconEngine, id: cint, data: pointer): void =
-
+proc QIconEnginevirtualHook*(self: gen_qiconengine_types.QIconEngine, id: cint, data: pointer): void =
 
   fQIconEngine_virtualbase_virtualHook(self.h, id, data)
 
-type QIconEnginevirtualHookBase* = proc(id: cint, data: pointer): void
-proc onvirtualHook*(self: QIconEngine, slot: proc(super: QIconEnginevirtualHookBase, id: cint, data: pointer): void) =
+type QIconEnginevirtualHookProc* = proc(id: cint, data: pointer): void
+proc onvirtualHook*(self: gen_qiconengine_types.QIconEngine, slot: QIconEnginevirtualHookProc) =
   # TODO check subclass
-  type Cb = proc(super: QIconEnginevirtualHookBase, id: cint, data: pointer): void
-  var tmp = new Cb
+  var tmp = new QIconEnginevirtualHookProc
   tmp[] = slot
   GC_ref(tmp)
   fcQIconEngine_override_virtual_virtualHook(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QIconEngine_virtualHook(self: ptr cQIconEngine, slot: int, id: cint, data: pointer): void {.exportc: "miqt_exec_callback_QIconEngine_virtualHook ".} =
-  type Cb = proc(super: QIconEnginevirtualHookBase, id: cint, data: pointer): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(id: cint, data: pointer): auto =
-    callVirtualBase_virtualHook(QIconEngine(h: self), id, data)
+  var nimfunc = cast[ptr QIconEnginevirtualHookProc](cast[pointer](slot))
   let slotval1 = id
 
   let slotval2 = data
 
 
-  nimfunc[](superCall, slotval1, slotval2)
-proc delete*(self: QIconEngine) =
+  nimfunc[](slotval1, slotval2)
+proc delete*(self: gen_qiconengine_types.QIconEngine) =
   fcQIconEngine_delete(self.h)
 
-func init*(T: type QIconEngineAvailableSizesArgument, h: ptr cQIconEngineAvailableSizesArgument): QIconEngineAvailableSizesArgument =
+func init*(T: type gen_qiconengine_types.QIconEngineAvailableSizesArgument, h: ptr cQIconEngineAvailableSizesArgument): gen_qiconengine_types.QIconEngineAvailableSizesArgument =
   T(h: h)
-proc create*(T: type QIconEngineAvailableSizesArgument, param1: QIconEngineAvailableSizesArgument): QIconEngineAvailableSizesArgument =
+proc create*(T: type gen_qiconengine_types.QIconEngineAvailableSizesArgument, param1: gen_qiconengine_types.QIconEngineAvailableSizesArgument): gen_qiconengine_types.QIconEngineAvailableSizesArgument =
 
-  QIconEngineAvailableSizesArgument.init(fcQIconEngineAvailableSizesArgument_new(param1.h))
-proc operatorAssign*(self: QIconEngineAvailableSizesArgument, param1: QIconEngineAvailableSizesArgument): void =
+  gen_qiconengine_types.QIconEngineAvailableSizesArgument.init(fcQIconEngineAvailableSizesArgument_new(param1.h))
+proc operatorAssign*(self: gen_qiconengine_types.QIconEngineAvailableSizesArgument, param1: gen_qiconengine_types.QIconEngineAvailableSizesArgument): void =
 
   fcQIconEngineAvailableSizesArgument_operatorAssign(self.h, param1.h)
 
-proc delete*(self: QIconEngineAvailableSizesArgument) =
+proc delete*(self: gen_qiconengine_types.QIconEngineAvailableSizesArgument) =
   fcQIconEngineAvailableSizesArgument_delete(self.h)
 
-func init*(T: type QIconEngineScaledPixmapArgument, h: ptr cQIconEngineScaledPixmapArgument): QIconEngineScaledPixmapArgument =
+func init*(T: type gen_qiconengine_types.QIconEngineScaledPixmapArgument, h: ptr cQIconEngineScaledPixmapArgument): gen_qiconengine_types.QIconEngineScaledPixmapArgument =
   T(h: h)
-proc create*(T: type QIconEngineScaledPixmapArgument, param1: QIconEngineScaledPixmapArgument): QIconEngineScaledPixmapArgument =
+proc create*(T: type gen_qiconengine_types.QIconEngineScaledPixmapArgument, param1: gen_qiconengine_types.QIconEngineScaledPixmapArgument): gen_qiconengine_types.QIconEngineScaledPixmapArgument =
 
-  QIconEngineScaledPixmapArgument.init(fcQIconEngineScaledPixmapArgument_new(param1.h))
-proc operatorAssign*(self: QIconEngineScaledPixmapArgument, param1: QIconEngineScaledPixmapArgument): void =
+  gen_qiconengine_types.QIconEngineScaledPixmapArgument.init(fcQIconEngineScaledPixmapArgument_new(param1.h))
+proc operatorAssign*(self: gen_qiconengine_types.QIconEngineScaledPixmapArgument, param1: gen_qiconengine_types.QIconEngineScaledPixmapArgument): void =
 
   fcQIconEngineScaledPixmapArgument_operatorAssign(self.h, param1.h)
 
-proc delete*(self: QIconEngineScaledPixmapArgument) =
+proc delete*(self: gen_qiconengine_types.QIconEngineScaledPixmapArgument) =
   fcQIconEngineScaledPixmapArgument_delete(self.h)

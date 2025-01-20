@@ -34,23 +34,19 @@ const cflags = gorge("pkg-config -cflags Qt6WebEngineWidgets")
 {.compile("gen_qwebenginenavigationrequest.cpp", cflags).}
 
 
-type QWebEngineNavigationRequestNavigationType* = cint
-const
-  QWebEngineNavigationRequestLinkClickedNavigation* = 0
-  QWebEngineNavigationRequestTypedNavigation* = 1
-  QWebEngineNavigationRequestFormSubmittedNavigation* = 2
-  QWebEngineNavigationRequestBackForwardNavigation* = 3
-  QWebEngineNavigationRequestReloadNavigation* = 4
-  QWebEngineNavigationRequestOtherNavigation* = 5
-  QWebEngineNavigationRequestRedirectNavigation* = 6
+type QWebEngineNavigationRequestNavigationTypeEnum* = distinct cint
+template LinkClickedNavigation*(_: type QWebEngineNavigationRequestNavigationTypeEnum): untyped = 0
+template TypedNavigation*(_: type QWebEngineNavigationRequestNavigationTypeEnum): untyped = 1
+template FormSubmittedNavigation*(_: type QWebEngineNavigationRequestNavigationTypeEnum): untyped = 2
+template BackForwardNavigation*(_: type QWebEngineNavigationRequestNavigationTypeEnum): untyped = 3
+template ReloadNavigation*(_: type QWebEngineNavigationRequestNavigationTypeEnum): untyped = 4
+template OtherNavigation*(_: type QWebEngineNavigationRequestNavigationTypeEnum): untyped = 5
+template RedirectNavigation*(_: type QWebEngineNavigationRequestNavigationTypeEnum): untyped = 6
 
 
-
-type QWebEngineNavigationRequestNavigationRequestAction* = cint
-const
-  QWebEngineNavigationRequestAcceptRequest* = 0
-  QWebEngineNavigationRequestIgnoreRequest* = 255
-
+type QWebEngineNavigationRequestNavigationRequestActionEnum* = distinct cint
+template AcceptRequest*(_: type QWebEngineNavigationRequestNavigationRequestActionEnum): untyped = 0
+template IgnoreRequest*(_: type QWebEngineNavigationRequestNavigationRequestActionEnum): untyped = 255
 
 
 import gen_qwebenginenavigationrequest_types
@@ -84,48 +80,48 @@ proc fcQWebEngineNavigationRequest_staticMetaObject(): pointer {.importc: "QWebE
 proc fcQWebEngineNavigationRequest_delete(self: pointer) {.importc: "QWebEngineNavigationRequest_delete".}
 
 
-func init*(T: type QWebEngineNavigationRequest, h: ptr cQWebEngineNavigationRequest): QWebEngineNavigationRequest =
+func init*(T: type gen_qwebenginenavigationrequest_types.QWebEngineNavigationRequest, h: ptr cQWebEngineNavigationRequest): gen_qwebenginenavigationrequest_types.QWebEngineNavigationRequest =
   T(h: h)
-proc metaObject*(self: QWebEngineNavigationRequest, ): gen_qobjectdefs.QMetaObject =
+proc metaObject*(self: gen_qwebenginenavigationrequest_types.QWebEngineNavigationRequest, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQWebEngineNavigationRequest_metaObject(self.h))
 
-proc metacast*(self: QWebEngineNavigationRequest, param1: cstring): pointer =
+proc metacast*(self: gen_qwebenginenavigationrequest_types.QWebEngineNavigationRequest, param1: cstring): pointer =
 
   fcQWebEngineNavigationRequest_metacast(self.h, param1)
 
-proc metacall*(self: QWebEngineNavigationRequest, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qwebenginenavigationrequest_types.QWebEngineNavigationRequest, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQWebEngineNavigationRequest_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QWebEngineNavigationRequest, s: cstring): string =
+proc tr*(_: type gen_qwebenginenavigationrequest_types.QWebEngineNavigationRequest, s: cstring): string =
 
   let v_ms = fcQWebEngineNavigationRequest_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc url*(self: QWebEngineNavigationRequest, ): gen_qurl.QUrl =
+proc url*(self: gen_qwebenginenavigationrequest_types.QWebEngineNavigationRequest, ): gen_qurl.QUrl =
 
   gen_qurl.QUrl(h: fcQWebEngineNavigationRequest_url(self.h))
 
-proc isMainFrame*(self: QWebEngineNavigationRequest, ): bool =
+proc isMainFrame*(self: gen_qwebenginenavigationrequest_types.QWebEngineNavigationRequest, ): bool =
 
   fcQWebEngineNavigationRequest_isMainFrame(self.h)
 
-proc navigationType*(self: QWebEngineNavigationRequest, ): QWebEngineNavigationRequestNavigationType =
+proc navigationType*(self: gen_qwebenginenavigationrequest_types.QWebEngineNavigationRequest, ): cint =
 
-  QWebEngineNavigationRequestNavigationType(fcQWebEngineNavigationRequest_navigationType(self.h))
+  cint(fcQWebEngineNavigationRequest_navigationType(self.h))
 
-proc accept*(self: QWebEngineNavigationRequest, ): void =
+proc accept*(self: gen_qwebenginenavigationrequest_types.QWebEngineNavigationRequest, ): void =
 
   fcQWebEngineNavigationRequest_accept(self.h)
 
-proc reject*(self: QWebEngineNavigationRequest, ): void =
+proc reject*(self: gen_qwebenginenavigationrequest_types.QWebEngineNavigationRequest, ): void =
 
   fcQWebEngineNavigationRequest_reject(self.h)
 
-proc actionChanged*(self: QWebEngineNavigationRequest, ): void =
+proc actionChanged*(self: gen_qwebenginenavigationrequest_types.QWebEngineNavigationRequest, ): void =
 
   fcQWebEngineNavigationRequest_actionChanged(self.h)
 
@@ -135,27 +131,27 @@ proc miqt_exec_callback_QWebEngineNavigationRequest_actionChanged(slot: int) {.e
 
   nimfunc[]()
 
-proc onactionChanged*(self: QWebEngineNavigationRequest, slot: proc()) =
+proc onactionChanged*(self: gen_qwebenginenavigationrequest_types.QWebEngineNavigationRequest, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQWebEngineNavigationRequest_connect_actionChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QWebEngineNavigationRequest, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qwebenginenavigationrequest_types.QWebEngineNavigationRequest, s: cstring, c: cstring): string =
 
   let v_ms = fcQWebEngineNavigationRequest_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QWebEngineNavigationRequest, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qwebenginenavigationrequest_types.QWebEngineNavigationRequest, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQWebEngineNavigationRequest_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc staticMetaObject*(_: type QWebEngineNavigationRequest): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qwebenginenavigationrequest_types.QWebEngineNavigationRequest): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQWebEngineNavigationRequest_staticMetaObject())
-proc delete*(self: QWebEngineNavigationRequest) =
+proc delete*(self: gen_qwebenginenavigationrequest_types.QWebEngineNavigationRequest) =
   fcQWebEngineNavigationRequest_delete(self.h)

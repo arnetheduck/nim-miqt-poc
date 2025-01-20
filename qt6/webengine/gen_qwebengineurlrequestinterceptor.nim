@@ -86,312 +86,260 @@ proc fcQWebEngineUrlRequestInterceptor_staticMetaObject(): pointer {.importc: "Q
 proc fcQWebEngineUrlRequestInterceptor_delete(self: pointer) {.importc: "QWebEngineUrlRequestInterceptor_delete".}
 
 
-func init*(T: type QWebEngineUrlRequestInterceptor, h: ptr cQWebEngineUrlRequestInterceptor): QWebEngineUrlRequestInterceptor =
+func init*(T: type gen_qwebengineurlrequestinterceptor_types.QWebEngineUrlRequestInterceptor, h: ptr cQWebEngineUrlRequestInterceptor): gen_qwebengineurlrequestinterceptor_types.QWebEngineUrlRequestInterceptor =
   T(h: h)
-proc create*(T: type QWebEngineUrlRequestInterceptor, ): QWebEngineUrlRequestInterceptor =
+proc create*(T: type gen_qwebengineurlrequestinterceptor_types.QWebEngineUrlRequestInterceptor, ): gen_qwebengineurlrequestinterceptor_types.QWebEngineUrlRequestInterceptor =
 
-  QWebEngineUrlRequestInterceptor.init(fcQWebEngineUrlRequestInterceptor_new())
-proc create*(T: type QWebEngineUrlRequestInterceptor, p: gen_qobject.QObject): QWebEngineUrlRequestInterceptor =
+  gen_qwebengineurlrequestinterceptor_types.QWebEngineUrlRequestInterceptor.init(fcQWebEngineUrlRequestInterceptor_new())
+proc create*(T: type gen_qwebengineurlrequestinterceptor_types.QWebEngineUrlRequestInterceptor, p: gen_qobject.QObject): gen_qwebengineurlrequestinterceptor_types.QWebEngineUrlRequestInterceptor =
 
-  QWebEngineUrlRequestInterceptor.init(fcQWebEngineUrlRequestInterceptor_new2(p.h))
-proc metaObject*(self: QWebEngineUrlRequestInterceptor, ): gen_qobjectdefs.QMetaObject =
+  gen_qwebengineurlrequestinterceptor_types.QWebEngineUrlRequestInterceptor.init(fcQWebEngineUrlRequestInterceptor_new2(p.h))
+proc metaObject*(self: gen_qwebengineurlrequestinterceptor_types.QWebEngineUrlRequestInterceptor, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQWebEngineUrlRequestInterceptor_metaObject(self.h))
 
-proc metacast*(self: QWebEngineUrlRequestInterceptor, param1: cstring): pointer =
+proc metacast*(self: gen_qwebengineurlrequestinterceptor_types.QWebEngineUrlRequestInterceptor, param1: cstring): pointer =
 
   fcQWebEngineUrlRequestInterceptor_metacast(self.h, param1)
 
-proc metacall*(self: QWebEngineUrlRequestInterceptor, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qwebengineurlrequestinterceptor_types.QWebEngineUrlRequestInterceptor, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQWebEngineUrlRequestInterceptor_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QWebEngineUrlRequestInterceptor, s: cstring): string =
+proc tr*(_: type gen_qwebengineurlrequestinterceptor_types.QWebEngineUrlRequestInterceptor, s: cstring): string =
 
   let v_ms = fcQWebEngineUrlRequestInterceptor_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc interceptRequest*(self: QWebEngineUrlRequestInterceptor, info: gen_qwebengineurlrequestinfo.QWebEngineUrlRequestInfo): void =
+proc interceptRequest*(self: gen_qwebengineurlrequestinterceptor_types.QWebEngineUrlRequestInterceptor, info: gen_qwebengineurlrequestinfo.QWebEngineUrlRequestInfo): void =
 
   fcQWebEngineUrlRequestInterceptor_interceptRequest(self.h, info.h)
 
-proc tr2*(_: type QWebEngineUrlRequestInterceptor, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qwebengineurlrequestinterceptor_types.QWebEngineUrlRequestInterceptor, s: cstring, c: cstring): string =
 
   let v_ms = fcQWebEngineUrlRequestInterceptor_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QWebEngineUrlRequestInterceptor, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qwebengineurlrequestinterceptor_types.QWebEngineUrlRequestInterceptor, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQWebEngineUrlRequestInterceptor_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QWebEngineUrlRequestInterceptor, ): gen_qobjectdefs.QMetaObject =
-
+proc QWebEngineUrlRequestInterceptormetaObject*(self: gen_qwebengineurlrequestinterceptor_types.QWebEngineUrlRequestInterceptor, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQWebEngineUrlRequestInterceptor_virtualbase_metaObject(self.h))
 
-type QWebEngineUrlRequestInterceptormetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QWebEngineUrlRequestInterceptor, slot: proc(super: QWebEngineUrlRequestInterceptormetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QWebEngineUrlRequestInterceptormetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qwebengineurlrequestinterceptor_types.QWebEngineUrlRequestInterceptor, slot: QWebEngineUrlRequestInterceptormetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineUrlRequestInterceptormetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QWebEngineUrlRequestInterceptormetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineUrlRequestInterceptor_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineUrlRequestInterceptor_metaObject(self: ptr cQWebEngineUrlRequestInterceptor, slot: int): pointer {.exportc: "miqt_exec_callback_QWebEngineUrlRequestInterceptor_metaObject ".} =
-  type Cb = proc(super: QWebEngineUrlRequestInterceptormetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QWebEngineUrlRequestInterceptor(h: self), )
+  var nimfunc = cast[ptr QWebEngineUrlRequestInterceptormetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QWebEngineUrlRequestInterceptor, param1: cstring): pointer =
-
+proc QWebEngineUrlRequestInterceptormetacast*(self: gen_qwebengineurlrequestinterceptor_types.QWebEngineUrlRequestInterceptor, param1: cstring): pointer =
 
   fQWebEngineUrlRequestInterceptor_virtualbase_metacast(self.h, param1)
 
-type QWebEngineUrlRequestInterceptormetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QWebEngineUrlRequestInterceptor, slot: proc(super: QWebEngineUrlRequestInterceptormetacastBase, param1: cstring): pointer) =
+type QWebEngineUrlRequestInterceptormetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qwebengineurlrequestinterceptor_types.QWebEngineUrlRequestInterceptor, slot: QWebEngineUrlRequestInterceptormetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineUrlRequestInterceptormetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QWebEngineUrlRequestInterceptormetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineUrlRequestInterceptor_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineUrlRequestInterceptor_metacast(self: ptr cQWebEngineUrlRequestInterceptor, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QWebEngineUrlRequestInterceptor_metacast ".} =
-  type Cb = proc(super: QWebEngineUrlRequestInterceptormetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QWebEngineUrlRequestInterceptor(h: self), param1)
+  var nimfunc = cast[ptr QWebEngineUrlRequestInterceptormetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QWebEngineUrlRequestInterceptor, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QWebEngineUrlRequestInterceptormetacall*(self: gen_qwebengineurlrequestinterceptor_types.QWebEngineUrlRequestInterceptor, param1: cint, param2: cint, param3: pointer): cint =
 
   fQWebEngineUrlRequestInterceptor_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QWebEngineUrlRequestInterceptormetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QWebEngineUrlRequestInterceptor, slot: proc(super: QWebEngineUrlRequestInterceptormetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QWebEngineUrlRequestInterceptormetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qwebengineurlrequestinterceptor_types.QWebEngineUrlRequestInterceptor, slot: QWebEngineUrlRequestInterceptormetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineUrlRequestInterceptormetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QWebEngineUrlRequestInterceptormetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineUrlRequestInterceptor_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineUrlRequestInterceptor_metacall(self: ptr cQWebEngineUrlRequestInterceptor, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QWebEngineUrlRequestInterceptor_metacall ".} =
-  type Cb = proc(super: QWebEngineUrlRequestInterceptormetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QWebEngineUrlRequestInterceptor(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QWebEngineUrlRequestInterceptormetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-type QWebEngineUrlRequestInterceptorinterceptRequestBase* = proc(info: gen_qwebengineurlrequestinfo.QWebEngineUrlRequestInfo): void
-proc oninterceptRequest*(self: QWebEngineUrlRequestInterceptor, slot: proc(info: gen_qwebengineurlrequestinfo.QWebEngineUrlRequestInfo): void) =
+type QWebEngineUrlRequestInterceptorinterceptRequestProc* = proc(info: gen_qwebengineurlrequestinfo.QWebEngineUrlRequestInfo): void
+proc oninterceptRequest*(self: gen_qwebengineurlrequestinterceptor_types.QWebEngineUrlRequestInterceptor, slot: QWebEngineUrlRequestInterceptorinterceptRequestProc) =
   # TODO check subclass
-  type Cb = proc(info: gen_qwebengineurlrequestinfo.QWebEngineUrlRequestInfo): void
-  var tmp = new Cb
+  var tmp = new QWebEngineUrlRequestInterceptorinterceptRequestProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineUrlRequestInterceptor_override_virtual_interceptRequest(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineUrlRequestInterceptor_interceptRequest(self: ptr cQWebEngineUrlRequestInterceptor, slot: int, info: pointer): void {.exportc: "miqt_exec_callback_QWebEngineUrlRequestInterceptor_interceptRequest ".} =
-  type Cb = proc(info: gen_qwebengineurlrequestinfo.QWebEngineUrlRequestInfo): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QWebEngineUrlRequestInterceptorinterceptRequestProc](cast[pointer](slot))
   let slotval1 = gen_qwebengineurlrequestinfo.QWebEngineUrlRequestInfo(h: info)
 
 
   nimfunc[](slotval1)
-proc callVirtualBase_event(self: QWebEngineUrlRequestInterceptor, event: gen_qcoreevent.QEvent): bool =
-
+proc QWebEngineUrlRequestInterceptorevent*(self: gen_qwebengineurlrequestinterceptor_types.QWebEngineUrlRequestInterceptor, event: gen_qcoreevent.QEvent): bool =
 
   fQWebEngineUrlRequestInterceptor_virtualbase_event(self.h, event.h)
 
-type QWebEngineUrlRequestInterceptoreventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QWebEngineUrlRequestInterceptor, slot: proc(super: QWebEngineUrlRequestInterceptoreventBase, event: gen_qcoreevent.QEvent): bool) =
+type QWebEngineUrlRequestInterceptoreventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qwebengineurlrequestinterceptor_types.QWebEngineUrlRequestInterceptor, slot: QWebEngineUrlRequestInterceptoreventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineUrlRequestInterceptoreventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QWebEngineUrlRequestInterceptoreventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineUrlRequestInterceptor_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineUrlRequestInterceptor_event(self: ptr cQWebEngineUrlRequestInterceptor, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QWebEngineUrlRequestInterceptor_event ".} =
-  type Cb = proc(super: QWebEngineUrlRequestInterceptoreventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QWebEngineUrlRequestInterceptor(h: self), event)
+  var nimfunc = cast[ptr QWebEngineUrlRequestInterceptoreventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QWebEngineUrlRequestInterceptor, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QWebEngineUrlRequestInterceptoreventFilter*(self: gen_qwebengineurlrequestinterceptor_types.QWebEngineUrlRequestInterceptor, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQWebEngineUrlRequestInterceptor_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QWebEngineUrlRequestInterceptoreventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QWebEngineUrlRequestInterceptor, slot: proc(super: QWebEngineUrlRequestInterceptoreventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QWebEngineUrlRequestInterceptoreventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qwebengineurlrequestinterceptor_types.QWebEngineUrlRequestInterceptor, slot: QWebEngineUrlRequestInterceptoreventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineUrlRequestInterceptoreventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QWebEngineUrlRequestInterceptoreventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineUrlRequestInterceptor_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineUrlRequestInterceptor_eventFilter(self: ptr cQWebEngineUrlRequestInterceptor, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QWebEngineUrlRequestInterceptor_eventFilter ".} =
-  type Cb = proc(super: QWebEngineUrlRequestInterceptoreventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QWebEngineUrlRequestInterceptor(h: self), watched, event)
+  var nimfunc = cast[ptr QWebEngineUrlRequestInterceptoreventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QWebEngineUrlRequestInterceptor, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QWebEngineUrlRequestInterceptortimerEvent*(self: gen_qwebengineurlrequestinterceptor_types.QWebEngineUrlRequestInterceptor, event: gen_qcoreevent.QTimerEvent): void =
 
   fQWebEngineUrlRequestInterceptor_virtualbase_timerEvent(self.h, event.h)
 
-type QWebEngineUrlRequestInterceptortimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QWebEngineUrlRequestInterceptor, slot: proc(super: QWebEngineUrlRequestInterceptortimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QWebEngineUrlRequestInterceptortimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qwebengineurlrequestinterceptor_types.QWebEngineUrlRequestInterceptor, slot: QWebEngineUrlRequestInterceptortimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineUrlRequestInterceptortimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QWebEngineUrlRequestInterceptortimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineUrlRequestInterceptor_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineUrlRequestInterceptor_timerEvent(self: ptr cQWebEngineUrlRequestInterceptor, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebEngineUrlRequestInterceptor_timerEvent ".} =
-  type Cb = proc(super: QWebEngineUrlRequestInterceptortimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QWebEngineUrlRequestInterceptor(h: self), event)
+  var nimfunc = cast[ptr QWebEngineUrlRequestInterceptortimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QWebEngineUrlRequestInterceptor, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebEngineUrlRequestInterceptorchildEvent*(self: gen_qwebengineurlrequestinterceptor_types.QWebEngineUrlRequestInterceptor, event: gen_qcoreevent.QChildEvent): void =
 
   fQWebEngineUrlRequestInterceptor_virtualbase_childEvent(self.h, event.h)
 
-type QWebEngineUrlRequestInterceptorchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QWebEngineUrlRequestInterceptor, slot: proc(super: QWebEngineUrlRequestInterceptorchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QWebEngineUrlRequestInterceptorchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qwebengineurlrequestinterceptor_types.QWebEngineUrlRequestInterceptor, slot: QWebEngineUrlRequestInterceptorchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineUrlRequestInterceptorchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QWebEngineUrlRequestInterceptorchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineUrlRequestInterceptor_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineUrlRequestInterceptor_childEvent(self: ptr cQWebEngineUrlRequestInterceptor, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebEngineUrlRequestInterceptor_childEvent ".} =
-  type Cb = proc(super: QWebEngineUrlRequestInterceptorchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QWebEngineUrlRequestInterceptor(h: self), event)
+  var nimfunc = cast[ptr QWebEngineUrlRequestInterceptorchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QWebEngineUrlRequestInterceptor, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebEngineUrlRequestInterceptorcustomEvent*(self: gen_qwebengineurlrequestinterceptor_types.QWebEngineUrlRequestInterceptor, event: gen_qcoreevent.QEvent): void =
 
   fQWebEngineUrlRequestInterceptor_virtualbase_customEvent(self.h, event.h)
 
-type QWebEngineUrlRequestInterceptorcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QWebEngineUrlRequestInterceptor, slot: proc(super: QWebEngineUrlRequestInterceptorcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QWebEngineUrlRequestInterceptorcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qwebengineurlrequestinterceptor_types.QWebEngineUrlRequestInterceptor, slot: QWebEngineUrlRequestInterceptorcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineUrlRequestInterceptorcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QWebEngineUrlRequestInterceptorcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineUrlRequestInterceptor_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineUrlRequestInterceptor_customEvent(self: ptr cQWebEngineUrlRequestInterceptor, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebEngineUrlRequestInterceptor_customEvent ".} =
-  type Cb = proc(super: QWebEngineUrlRequestInterceptorcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QWebEngineUrlRequestInterceptor(h: self), event)
+  var nimfunc = cast[ptr QWebEngineUrlRequestInterceptorcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QWebEngineUrlRequestInterceptor, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QWebEngineUrlRequestInterceptorconnectNotify*(self: gen_qwebengineurlrequestinterceptor_types.QWebEngineUrlRequestInterceptor, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQWebEngineUrlRequestInterceptor_virtualbase_connectNotify(self.h, signal.h)
 
-type QWebEngineUrlRequestInterceptorconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QWebEngineUrlRequestInterceptor, slot: proc(super: QWebEngineUrlRequestInterceptorconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QWebEngineUrlRequestInterceptorconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qwebengineurlrequestinterceptor_types.QWebEngineUrlRequestInterceptor, slot: QWebEngineUrlRequestInterceptorconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineUrlRequestInterceptorconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QWebEngineUrlRequestInterceptorconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineUrlRequestInterceptor_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineUrlRequestInterceptor_connectNotify(self: ptr cQWebEngineUrlRequestInterceptor, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QWebEngineUrlRequestInterceptor_connectNotify ".} =
-  type Cb = proc(super: QWebEngineUrlRequestInterceptorconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QWebEngineUrlRequestInterceptor(h: self), signal)
+  var nimfunc = cast[ptr QWebEngineUrlRequestInterceptorconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QWebEngineUrlRequestInterceptor, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QWebEngineUrlRequestInterceptordisconnectNotify*(self: gen_qwebengineurlrequestinterceptor_types.QWebEngineUrlRequestInterceptor, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQWebEngineUrlRequestInterceptor_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QWebEngineUrlRequestInterceptordisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QWebEngineUrlRequestInterceptor, slot: proc(super: QWebEngineUrlRequestInterceptordisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QWebEngineUrlRequestInterceptordisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qwebengineurlrequestinterceptor_types.QWebEngineUrlRequestInterceptor, slot: QWebEngineUrlRequestInterceptordisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebEngineUrlRequestInterceptordisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QWebEngineUrlRequestInterceptordisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebEngineUrlRequestInterceptor_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebEngineUrlRequestInterceptor_disconnectNotify(self: ptr cQWebEngineUrlRequestInterceptor, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QWebEngineUrlRequestInterceptor_disconnectNotify ".} =
-  type Cb = proc(super: QWebEngineUrlRequestInterceptordisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QWebEngineUrlRequestInterceptor(h: self), signal)
+  var nimfunc = cast[ptr QWebEngineUrlRequestInterceptordisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QWebEngineUrlRequestInterceptor): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qwebengineurlrequestinterceptor_types.QWebEngineUrlRequestInterceptor): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQWebEngineUrlRequestInterceptor_staticMetaObject())
-proc delete*(self: QWebEngineUrlRequestInterceptor) =
+proc delete*(self: gen_qwebengineurlrequestinterceptor_types.QWebEngineUrlRequestInterceptor) =
   fcQWebEngineUrlRequestInterceptor_delete(self.h)

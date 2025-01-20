@@ -41,7 +41,6 @@ import
   gen_qcoreevent,
   gen_qmatrix4x4,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qvector3d
@@ -49,7 +48,6 @@ export
   gen_qcoreevent,
   gen_qmatrix4x4,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qvector3d
@@ -198,408 +196,356 @@ proc fcQGraphicsRotation_staticMetaObject(): pointer {.importc: "QGraphicsRotati
 proc fcQGraphicsRotation_delete(self: pointer) {.importc: "QGraphicsRotation_delete".}
 
 
-func init*(T: type QGraphicsTransform, h: ptr cQGraphicsTransform): QGraphicsTransform =
+func init*(T: type gen_qgraphicstransform_types.QGraphicsTransform, h: ptr cQGraphicsTransform): gen_qgraphicstransform_types.QGraphicsTransform =
   T(h: h)
-proc create*(T: type QGraphicsTransform, ): QGraphicsTransform =
+proc create*(T: type gen_qgraphicstransform_types.QGraphicsTransform, ): gen_qgraphicstransform_types.QGraphicsTransform =
 
-  QGraphicsTransform.init(fcQGraphicsTransform_new())
-proc create*(T: type QGraphicsTransform, parent: gen_qobject.QObject): QGraphicsTransform =
+  gen_qgraphicstransform_types.QGraphicsTransform.init(fcQGraphicsTransform_new())
+proc create*(T: type gen_qgraphicstransform_types.QGraphicsTransform, parent: gen_qobject.QObject): gen_qgraphicstransform_types.QGraphicsTransform =
 
-  QGraphicsTransform.init(fcQGraphicsTransform_new2(parent.h))
-proc metaObject*(self: QGraphicsTransform, ): gen_qobjectdefs.QMetaObject =
+  gen_qgraphicstransform_types.QGraphicsTransform.init(fcQGraphicsTransform_new2(parent.h))
+proc metaObject*(self: gen_qgraphicstransform_types.QGraphicsTransform, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQGraphicsTransform_metaObject(self.h))
 
-proc metacast*(self: QGraphicsTransform, param1: cstring): pointer =
+proc metacast*(self: gen_qgraphicstransform_types.QGraphicsTransform, param1: cstring): pointer =
 
   fcQGraphicsTransform_metacast(self.h, param1)
 
-proc metacall*(self: QGraphicsTransform, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qgraphicstransform_types.QGraphicsTransform, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQGraphicsTransform_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QGraphicsTransform, s: cstring): string =
+proc tr*(_: type gen_qgraphicstransform_types.QGraphicsTransform, s: cstring): string =
 
   let v_ms = fcQGraphicsTransform_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QGraphicsTransform, s: cstring): string =
+proc trUtf8*(_: type gen_qgraphicstransform_types.QGraphicsTransform, s: cstring): string =
 
   let v_ms = fcQGraphicsTransform_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc applyTo*(self: QGraphicsTransform, matrix: gen_qmatrix4x4.QMatrix4x4): void =
+proc applyTo*(self: gen_qgraphicstransform_types.QGraphicsTransform, matrix: gen_qmatrix4x4.QMatrix4x4): void =
 
   fcQGraphicsTransform_applyTo(self.h, matrix.h)
 
-proc tr2*(_: type QGraphicsTransform, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qgraphicstransform_types.QGraphicsTransform, s: cstring, c: cstring): string =
 
   let v_ms = fcQGraphicsTransform_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QGraphicsTransform, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qgraphicstransform_types.QGraphicsTransform, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQGraphicsTransform_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QGraphicsTransform, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qgraphicstransform_types.QGraphicsTransform, s: cstring, c: cstring): string =
 
   let v_ms = fcQGraphicsTransform_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QGraphicsTransform, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qgraphicstransform_types.QGraphicsTransform, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQGraphicsTransform_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QGraphicsTransform, ): gen_qobjectdefs.QMetaObject =
-
+proc QGraphicsTransformmetaObject*(self: gen_qgraphicstransform_types.QGraphicsTransform, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQGraphicsTransform_virtualbase_metaObject(self.h))
 
-type QGraphicsTransformmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QGraphicsTransform, slot: proc(super: QGraphicsTransformmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QGraphicsTransformmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qgraphicstransform_types.QGraphicsTransform, slot: QGraphicsTransformmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsTransformmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QGraphicsTransformmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsTransform_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsTransform_metaObject(self: ptr cQGraphicsTransform, slot: int): pointer {.exportc: "miqt_exec_callback_QGraphicsTransform_metaObject ".} =
-  type Cb = proc(super: QGraphicsTransformmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QGraphicsTransform(h: self), )
+  var nimfunc = cast[ptr QGraphicsTransformmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QGraphicsTransform, param1: cstring): pointer =
-
+proc QGraphicsTransformmetacast*(self: gen_qgraphicstransform_types.QGraphicsTransform, param1: cstring): pointer =
 
   fQGraphicsTransform_virtualbase_metacast(self.h, param1)
 
-type QGraphicsTransformmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QGraphicsTransform, slot: proc(super: QGraphicsTransformmetacastBase, param1: cstring): pointer) =
+type QGraphicsTransformmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qgraphicstransform_types.QGraphicsTransform, slot: QGraphicsTransformmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsTransformmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QGraphicsTransformmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsTransform_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsTransform_metacast(self: ptr cQGraphicsTransform, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QGraphicsTransform_metacast ".} =
-  type Cb = proc(super: QGraphicsTransformmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QGraphicsTransform(h: self), param1)
+  var nimfunc = cast[ptr QGraphicsTransformmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QGraphicsTransform, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QGraphicsTransformmetacall*(self: gen_qgraphicstransform_types.QGraphicsTransform, param1: cint, param2: cint, param3: pointer): cint =
 
   fQGraphicsTransform_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QGraphicsTransformmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QGraphicsTransform, slot: proc(super: QGraphicsTransformmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QGraphicsTransformmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qgraphicstransform_types.QGraphicsTransform, slot: QGraphicsTransformmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsTransformmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QGraphicsTransformmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsTransform_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsTransform_metacall(self: ptr cQGraphicsTransform, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QGraphicsTransform_metacall ".} =
-  type Cb = proc(super: QGraphicsTransformmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QGraphicsTransform(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QGraphicsTransformmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-type QGraphicsTransformapplyToBase* = proc(matrix: gen_qmatrix4x4.QMatrix4x4): void
-proc onapplyTo*(self: QGraphicsTransform, slot: proc(matrix: gen_qmatrix4x4.QMatrix4x4): void) =
+type QGraphicsTransformapplyToProc* = proc(matrix: gen_qmatrix4x4.QMatrix4x4): void
+proc onapplyTo*(self: gen_qgraphicstransform_types.QGraphicsTransform, slot: QGraphicsTransformapplyToProc) =
   # TODO check subclass
-  type Cb = proc(matrix: gen_qmatrix4x4.QMatrix4x4): void
-  var tmp = new Cb
+  var tmp = new QGraphicsTransformapplyToProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsTransform_override_virtual_applyTo(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsTransform_applyTo(self: ptr cQGraphicsTransform, slot: int, matrix: pointer): void {.exportc: "miqt_exec_callback_QGraphicsTransform_applyTo ".} =
-  type Cb = proc(matrix: gen_qmatrix4x4.QMatrix4x4): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QGraphicsTransformapplyToProc](cast[pointer](slot))
   let slotval1 = gen_qmatrix4x4.QMatrix4x4(h: matrix)
 
 
   nimfunc[](slotval1)
-proc callVirtualBase_event(self: QGraphicsTransform, event: gen_qcoreevent.QEvent): bool =
-
+proc QGraphicsTransformevent*(self: gen_qgraphicstransform_types.QGraphicsTransform, event: gen_qcoreevent.QEvent): bool =
 
   fQGraphicsTransform_virtualbase_event(self.h, event.h)
 
-type QGraphicsTransformeventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QGraphicsTransform, slot: proc(super: QGraphicsTransformeventBase, event: gen_qcoreevent.QEvent): bool) =
+type QGraphicsTransformeventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qgraphicstransform_types.QGraphicsTransform, slot: QGraphicsTransformeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsTransformeventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QGraphicsTransformeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsTransform_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsTransform_event(self: ptr cQGraphicsTransform, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QGraphicsTransform_event ".} =
-  type Cb = proc(super: QGraphicsTransformeventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QGraphicsTransform(h: self), event)
+  var nimfunc = cast[ptr QGraphicsTransformeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QGraphicsTransform, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QGraphicsTransformeventFilter*(self: gen_qgraphicstransform_types.QGraphicsTransform, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQGraphicsTransform_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QGraphicsTransformeventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QGraphicsTransform, slot: proc(super: QGraphicsTransformeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QGraphicsTransformeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qgraphicstransform_types.QGraphicsTransform, slot: QGraphicsTransformeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsTransformeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QGraphicsTransformeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsTransform_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsTransform_eventFilter(self: ptr cQGraphicsTransform, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QGraphicsTransform_eventFilter ".} =
-  type Cb = proc(super: QGraphicsTransformeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QGraphicsTransform(h: self), watched, event)
+  var nimfunc = cast[ptr QGraphicsTransformeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QGraphicsTransform, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QGraphicsTransformtimerEvent*(self: gen_qgraphicstransform_types.QGraphicsTransform, event: gen_qcoreevent.QTimerEvent): void =
 
   fQGraphicsTransform_virtualbase_timerEvent(self.h, event.h)
 
-type QGraphicsTransformtimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QGraphicsTransform, slot: proc(super: QGraphicsTransformtimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QGraphicsTransformtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qgraphicstransform_types.QGraphicsTransform, slot: QGraphicsTransformtimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsTransformtimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QGraphicsTransformtimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsTransform_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsTransform_timerEvent(self: ptr cQGraphicsTransform, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGraphicsTransform_timerEvent ".} =
-  type Cb = proc(super: QGraphicsTransformtimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QGraphicsTransform(h: self), event)
+  var nimfunc = cast[ptr QGraphicsTransformtimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QGraphicsTransform, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QGraphicsTransformchildEvent*(self: gen_qgraphicstransform_types.QGraphicsTransform, event: gen_qcoreevent.QChildEvent): void =
 
   fQGraphicsTransform_virtualbase_childEvent(self.h, event.h)
 
-type QGraphicsTransformchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QGraphicsTransform, slot: proc(super: QGraphicsTransformchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QGraphicsTransformchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qgraphicstransform_types.QGraphicsTransform, slot: QGraphicsTransformchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsTransformchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QGraphicsTransformchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsTransform_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsTransform_childEvent(self: ptr cQGraphicsTransform, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGraphicsTransform_childEvent ".} =
-  type Cb = proc(super: QGraphicsTransformchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QGraphicsTransform(h: self), event)
+  var nimfunc = cast[ptr QGraphicsTransformchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QGraphicsTransform, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QGraphicsTransformcustomEvent*(self: gen_qgraphicstransform_types.QGraphicsTransform, event: gen_qcoreevent.QEvent): void =
 
   fQGraphicsTransform_virtualbase_customEvent(self.h, event.h)
 
-type QGraphicsTransformcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QGraphicsTransform, slot: proc(super: QGraphicsTransformcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QGraphicsTransformcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qgraphicstransform_types.QGraphicsTransform, slot: QGraphicsTransformcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsTransformcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QGraphicsTransformcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsTransform_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsTransform_customEvent(self: ptr cQGraphicsTransform, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGraphicsTransform_customEvent ".} =
-  type Cb = proc(super: QGraphicsTransformcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QGraphicsTransform(h: self), event)
+  var nimfunc = cast[ptr QGraphicsTransformcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QGraphicsTransform, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QGraphicsTransformconnectNotify*(self: gen_qgraphicstransform_types.QGraphicsTransform, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQGraphicsTransform_virtualbase_connectNotify(self.h, signal.h)
 
-type QGraphicsTransformconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QGraphicsTransform, slot: proc(super: QGraphicsTransformconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QGraphicsTransformconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qgraphicstransform_types.QGraphicsTransform, slot: QGraphicsTransformconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsTransformconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QGraphicsTransformconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsTransform_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsTransform_connectNotify(self: ptr cQGraphicsTransform, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QGraphicsTransform_connectNotify ".} =
-  type Cb = proc(super: QGraphicsTransformconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QGraphicsTransform(h: self), signal)
+  var nimfunc = cast[ptr QGraphicsTransformconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QGraphicsTransform, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QGraphicsTransformdisconnectNotify*(self: gen_qgraphicstransform_types.QGraphicsTransform, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQGraphicsTransform_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QGraphicsTransformdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QGraphicsTransform, slot: proc(super: QGraphicsTransformdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QGraphicsTransformdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qgraphicstransform_types.QGraphicsTransform, slot: QGraphicsTransformdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsTransformdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QGraphicsTransformdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsTransform_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsTransform_disconnectNotify(self: ptr cQGraphicsTransform, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QGraphicsTransform_disconnectNotify ".} =
-  type Cb = proc(super: QGraphicsTransformdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QGraphicsTransform(h: self), signal)
+  var nimfunc = cast[ptr QGraphicsTransformdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QGraphicsTransform): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qgraphicstransform_types.QGraphicsTransform): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQGraphicsTransform_staticMetaObject())
-proc delete*(self: QGraphicsTransform) =
+proc delete*(self: gen_qgraphicstransform_types.QGraphicsTransform) =
   fcQGraphicsTransform_delete(self.h)
 
-func init*(T: type QGraphicsScale, h: ptr cQGraphicsScale): QGraphicsScale =
+func init*(T: type gen_qgraphicstransform_types.QGraphicsScale, h: ptr cQGraphicsScale): gen_qgraphicstransform_types.QGraphicsScale =
   T(h: h)
-proc create*(T: type QGraphicsScale, ): QGraphicsScale =
+proc create*(T: type gen_qgraphicstransform_types.QGraphicsScale, ): gen_qgraphicstransform_types.QGraphicsScale =
 
-  QGraphicsScale.init(fcQGraphicsScale_new())
-proc create*(T: type QGraphicsScale, parent: gen_qobject.QObject): QGraphicsScale =
+  gen_qgraphicstransform_types.QGraphicsScale.init(fcQGraphicsScale_new())
+proc create*(T: type gen_qgraphicstransform_types.QGraphicsScale, parent: gen_qobject.QObject): gen_qgraphicstransform_types.QGraphicsScale =
 
-  QGraphicsScale.init(fcQGraphicsScale_new2(parent.h))
-proc metaObject*(self: QGraphicsScale, ): gen_qobjectdefs.QMetaObject =
+  gen_qgraphicstransform_types.QGraphicsScale.init(fcQGraphicsScale_new2(parent.h))
+proc metaObject*(self: gen_qgraphicstransform_types.QGraphicsScale, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQGraphicsScale_metaObject(self.h))
 
-proc metacast*(self: QGraphicsScale, param1: cstring): pointer =
+proc metacast*(self: gen_qgraphicstransform_types.QGraphicsScale, param1: cstring): pointer =
 
   fcQGraphicsScale_metacast(self.h, param1)
 
-proc metacall*(self: QGraphicsScale, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qgraphicstransform_types.QGraphicsScale, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQGraphicsScale_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QGraphicsScale, s: cstring): string =
+proc tr*(_: type gen_qgraphicstransform_types.QGraphicsScale, s: cstring): string =
 
   let v_ms = fcQGraphicsScale_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QGraphicsScale, s: cstring): string =
+proc trUtf8*(_: type gen_qgraphicstransform_types.QGraphicsScale, s: cstring): string =
 
   let v_ms = fcQGraphicsScale_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc origin*(self: QGraphicsScale, ): gen_qvector3d.QVector3D =
+proc origin*(self: gen_qgraphicstransform_types.QGraphicsScale, ): gen_qvector3d.QVector3D =
 
   gen_qvector3d.QVector3D(h: fcQGraphicsScale_origin(self.h))
 
-proc setOrigin*(self: QGraphicsScale, point: gen_qvector3d.QVector3D): void =
+proc setOrigin*(self: gen_qgraphicstransform_types.QGraphicsScale, point: gen_qvector3d.QVector3D): void =
 
   fcQGraphicsScale_setOrigin(self.h, point.h)
 
-proc xScale*(self: QGraphicsScale, ): float64 =
+proc xScale*(self: gen_qgraphicstransform_types.QGraphicsScale, ): float64 =
 
   fcQGraphicsScale_xScale(self.h)
 
-proc setXScale*(self: QGraphicsScale, xScale: float64): void =
+proc setXScale*(self: gen_qgraphicstransform_types.QGraphicsScale, xScale: float64): void =
 
   fcQGraphicsScale_setXScale(self.h, xScale)
 
-proc yScale*(self: QGraphicsScale, ): float64 =
+proc yScale*(self: gen_qgraphicstransform_types.QGraphicsScale, ): float64 =
 
   fcQGraphicsScale_yScale(self.h)
 
-proc setYScale*(self: QGraphicsScale, yScale: float64): void =
+proc setYScale*(self: gen_qgraphicstransform_types.QGraphicsScale, yScale: float64): void =
 
   fcQGraphicsScale_setYScale(self.h, yScale)
 
-proc zScale*(self: QGraphicsScale, ): float64 =
+proc zScale*(self: gen_qgraphicstransform_types.QGraphicsScale, ): float64 =
 
   fcQGraphicsScale_zScale(self.h)
 
-proc setZScale*(self: QGraphicsScale, zScale: float64): void =
+proc setZScale*(self: gen_qgraphicstransform_types.QGraphicsScale, zScale: float64): void =
 
   fcQGraphicsScale_setZScale(self.h, zScale)
 
-proc applyTo*(self: QGraphicsScale, matrix: gen_qmatrix4x4.QMatrix4x4): void =
+proc applyTo*(self: gen_qgraphicstransform_types.QGraphicsScale, matrix: gen_qmatrix4x4.QMatrix4x4): void =
 
   fcQGraphicsScale_applyTo(self.h, matrix.h)
 
-proc originChanged*(self: QGraphicsScale, ): void =
+proc originChanged*(self: gen_qgraphicstransform_types.QGraphicsScale, ): void =
 
   fcQGraphicsScale_originChanged(self.h)
 
@@ -609,13 +555,13 @@ proc miqt_exec_callback_QGraphicsScale_originChanged(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onoriginChanged*(self: QGraphicsScale, slot: proc()) =
+proc onoriginChanged*(self: gen_qgraphicstransform_types.QGraphicsScale, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQGraphicsScale_connect_originChanged(self.h, cast[int](addr tmp[]))
-proc xScaleChanged*(self: QGraphicsScale, ): void =
+proc xScaleChanged*(self: gen_qgraphicstransform_types.QGraphicsScale, ): void =
 
   fcQGraphicsScale_xScaleChanged(self.h)
 
@@ -625,13 +571,13 @@ proc miqt_exec_callback_QGraphicsScale_xScaleChanged(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onxScaleChanged*(self: QGraphicsScale, slot: proc()) =
+proc onxScaleChanged*(self: gen_qgraphicstransform_types.QGraphicsScale, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQGraphicsScale_connect_xScaleChanged(self.h, cast[int](addr tmp[]))
-proc yScaleChanged*(self: QGraphicsScale, ): void =
+proc yScaleChanged*(self: gen_qgraphicstransform_types.QGraphicsScale, ): void =
 
   fcQGraphicsScale_yScaleChanged(self.h)
 
@@ -641,13 +587,13 @@ proc miqt_exec_callback_QGraphicsScale_yScaleChanged(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onyScaleChanged*(self: QGraphicsScale, slot: proc()) =
+proc onyScaleChanged*(self: gen_qgraphicstransform_types.QGraphicsScale, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQGraphicsScale_connect_yScaleChanged(self.h, cast[int](addr tmp[]))
-proc zScaleChanged*(self: QGraphicsScale, ): void =
+proc zScaleChanged*(self: gen_qgraphicstransform_types.QGraphicsScale, ): void =
 
   fcQGraphicsScale_zScaleChanged(self.h)
 
@@ -657,13 +603,13 @@ proc miqt_exec_callback_QGraphicsScale_zScaleChanged(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onzScaleChanged*(self: QGraphicsScale, slot: proc()) =
+proc onzScaleChanged*(self: gen_qgraphicstransform_types.QGraphicsScale, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQGraphicsScale_connect_zScaleChanged(self.h, cast[int](addr tmp[]))
-proc scaleChanged*(self: QGraphicsScale, ): void =
+proc scaleChanged*(self: gen_qgraphicstransform_types.QGraphicsScale, ): void =
 
   fcQGraphicsScale_scaleChanged(self.h)
 
@@ -673,379 +619,324 @@ proc miqt_exec_callback_QGraphicsScale_scaleChanged(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onscaleChanged*(self: QGraphicsScale, slot: proc()) =
+proc onscaleChanged*(self: gen_qgraphicstransform_types.QGraphicsScale, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQGraphicsScale_connect_scaleChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QGraphicsScale, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qgraphicstransform_types.QGraphicsScale, s: cstring, c: cstring): string =
 
   let v_ms = fcQGraphicsScale_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QGraphicsScale, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qgraphicstransform_types.QGraphicsScale, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQGraphicsScale_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QGraphicsScale, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qgraphicstransform_types.QGraphicsScale, s: cstring, c: cstring): string =
 
   let v_ms = fcQGraphicsScale_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QGraphicsScale, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qgraphicstransform_types.QGraphicsScale, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQGraphicsScale_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QGraphicsScale, ): gen_qobjectdefs.QMetaObject =
-
+proc QGraphicsScalemetaObject*(self: gen_qgraphicstransform_types.QGraphicsScale, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQGraphicsScale_virtualbase_metaObject(self.h))
 
-type QGraphicsScalemetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QGraphicsScale, slot: proc(super: QGraphicsScalemetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QGraphicsScalemetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qgraphicstransform_types.QGraphicsScale, slot: QGraphicsScalemetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsScalemetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QGraphicsScalemetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsScale_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsScale_metaObject(self: ptr cQGraphicsScale, slot: int): pointer {.exportc: "miqt_exec_callback_QGraphicsScale_metaObject ".} =
-  type Cb = proc(super: QGraphicsScalemetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QGraphicsScale(h: self), )
+  var nimfunc = cast[ptr QGraphicsScalemetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QGraphicsScale, param1: cstring): pointer =
-
+proc QGraphicsScalemetacast*(self: gen_qgraphicstransform_types.QGraphicsScale, param1: cstring): pointer =
 
   fQGraphicsScale_virtualbase_metacast(self.h, param1)
 
-type QGraphicsScalemetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QGraphicsScale, slot: proc(super: QGraphicsScalemetacastBase, param1: cstring): pointer) =
+type QGraphicsScalemetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qgraphicstransform_types.QGraphicsScale, slot: QGraphicsScalemetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsScalemetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QGraphicsScalemetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsScale_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsScale_metacast(self: ptr cQGraphicsScale, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QGraphicsScale_metacast ".} =
-  type Cb = proc(super: QGraphicsScalemetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QGraphicsScale(h: self), param1)
+  var nimfunc = cast[ptr QGraphicsScalemetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QGraphicsScale, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QGraphicsScalemetacall*(self: gen_qgraphicstransform_types.QGraphicsScale, param1: cint, param2: cint, param3: pointer): cint =
 
   fQGraphicsScale_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QGraphicsScalemetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QGraphicsScale, slot: proc(super: QGraphicsScalemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QGraphicsScalemetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qgraphicstransform_types.QGraphicsScale, slot: QGraphicsScalemetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsScalemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QGraphicsScalemetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsScale_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsScale_metacall(self: ptr cQGraphicsScale, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QGraphicsScale_metacall ".} =
-  type Cb = proc(super: QGraphicsScalemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QGraphicsScale(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QGraphicsScalemetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_applyTo(self: QGraphicsScale, matrix: gen_qmatrix4x4.QMatrix4x4): void =
-
+proc QGraphicsScaleapplyTo*(self: gen_qgraphicstransform_types.QGraphicsScale, matrix: gen_qmatrix4x4.QMatrix4x4): void =
 
   fQGraphicsScale_virtualbase_applyTo(self.h, matrix.h)
 
-type QGraphicsScaleapplyToBase* = proc(matrix: gen_qmatrix4x4.QMatrix4x4): void
-proc onapplyTo*(self: QGraphicsScale, slot: proc(super: QGraphicsScaleapplyToBase, matrix: gen_qmatrix4x4.QMatrix4x4): void) =
+type QGraphicsScaleapplyToProc* = proc(matrix: gen_qmatrix4x4.QMatrix4x4): void
+proc onapplyTo*(self: gen_qgraphicstransform_types.QGraphicsScale, slot: QGraphicsScaleapplyToProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsScaleapplyToBase, matrix: gen_qmatrix4x4.QMatrix4x4): void
-  var tmp = new Cb
+  var tmp = new QGraphicsScaleapplyToProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsScale_override_virtual_applyTo(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsScale_applyTo(self: ptr cQGraphicsScale, slot: int, matrix: pointer): void {.exportc: "miqt_exec_callback_QGraphicsScale_applyTo ".} =
-  type Cb = proc(super: QGraphicsScaleapplyToBase, matrix: gen_qmatrix4x4.QMatrix4x4): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(matrix: gen_qmatrix4x4.QMatrix4x4): auto =
-    callVirtualBase_applyTo(QGraphicsScale(h: self), matrix)
+  var nimfunc = cast[ptr QGraphicsScaleapplyToProc](cast[pointer](slot))
   let slotval1 = gen_qmatrix4x4.QMatrix4x4(h: matrix)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_event(self: QGraphicsScale, event: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[](slotval1)
+proc QGraphicsScaleevent*(self: gen_qgraphicstransform_types.QGraphicsScale, event: gen_qcoreevent.QEvent): bool =
 
   fQGraphicsScale_virtualbase_event(self.h, event.h)
 
-type QGraphicsScaleeventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QGraphicsScale, slot: proc(super: QGraphicsScaleeventBase, event: gen_qcoreevent.QEvent): bool) =
+type QGraphicsScaleeventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qgraphicstransform_types.QGraphicsScale, slot: QGraphicsScaleeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsScaleeventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QGraphicsScaleeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsScale_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsScale_event(self: ptr cQGraphicsScale, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QGraphicsScale_event ".} =
-  type Cb = proc(super: QGraphicsScaleeventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QGraphicsScale(h: self), event)
+  var nimfunc = cast[ptr QGraphicsScaleeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QGraphicsScale, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QGraphicsScaleeventFilter*(self: gen_qgraphicstransform_types.QGraphicsScale, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQGraphicsScale_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QGraphicsScaleeventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QGraphicsScale, slot: proc(super: QGraphicsScaleeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QGraphicsScaleeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qgraphicstransform_types.QGraphicsScale, slot: QGraphicsScaleeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsScaleeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QGraphicsScaleeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsScale_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsScale_eventFilter(self: ptr cQGraphicsScale, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QGraphicsScale_eventFilter ".} =
-  type Cb = proc(super: QGraphicsScaleeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QGraphicsScale(h: self), watched, event)
+  var nimfunc = cast[ptr QGraphicsScaleeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QGraphicsScale, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QGraphicsScaletimerEvent*(self: gen_qgraphicstransform_types.QGraphicsScale, event: gen_qcoreevent.QTimerEvent): void =
 
   fQGraphicsScale_virtualbase_timerEvent(self.h, event.h)
 
-type QGraphicsScaletimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QGraphicsScale, slot: proc(super: QGraphicsScaletimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QGraphicsScaletimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qgraphicstransform_types.QGraphicsScale, slot: QGraphicsScaletimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsScaletimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QGraphicsScaletimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsScale_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsScale_timerEvent(self: ptr cQGraphicsScale, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGraphicsScale_timerEvent ".} =
-  type Cb = proc(super: QGraphicsScaletimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QGraphicsScale(h: self), event)
+  var nimfunc = cast[ptr QGraphicsScaletimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QGraphicsScale, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QGraphicsScalechildEvent*(self: gen_qgraphicstransform_types.QGraphicsScale, event: gen_qcoreevent.QChildEvent): void =
 
   fQGraphicsScale_virtualbase_childEvent(self.h, event.h)
 
-type QGraphicsScalechildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QGraphicsScale, slot: proc(super: QGraphicsScalechildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QGraphicsScalechildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qgraphicstransform_types.QGraphicsScale, slot: QGraphicsScalechildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsScalechildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QGraphicsScalechildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsScale_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsScale_childEvent(self: ptr cQGraphicsScale, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGraphicsScale_childEvent ".} =
-  type Cb = proc(super: QGraphicsScalechildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QGraphicsScale(h: self), event)
+  var nimfunc = cast[ptr QGraphicsScalechildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QGraphicsScale, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QGraphicsScalecustomEvent*(self: gen_qgraphicstransform_types.QGraphicsScale, event: gen_qcoreevent.QEvent): void =
 
   fQGraphicsScale_virtualbase_customEvent(self.h, event.h)
 
-type QGraphicsScalecustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QGraphicsScale, slot: proc(super: QGraphicsScalecustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QGraphicsScalecustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qgraphicstransform_types.QGraphicsScale, slot: QGraphicsScalecustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsScalecustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QGraphicsScalecustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsScale_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsScale_customEvent(self: ptr cQGraphicsScale, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGraphicsScale_customEvent ".} =
-  type Cb = proc(super: QGraphicsScalecustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QGraphicsScale(h: self), event)
+  var nimfunc = cast[ptr QGraphicsScalecustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QGraphicsScale, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QGraphicsScaleconnectNotify*(self: gen_qgraphicstransform_types.QGraphicsScale, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQGraphicsScale_virtualbase_connectNotify(self.h, signal.h)
 
-type QGraphicsScaleconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QGraphicsScale, slot: proc(super: QGraphicsScaleconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QGraphicsScaleconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qgraphicstransform_types.QGraphicsScale, slot: QGraphicsScaleconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsScaleconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QGraphicsScaleconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsScale_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsScale_connectNotify(self: ptr cQGraphicsScale, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QGraphicsScale_connectNotify ".} =
-  type Cb = proc(super: QGraphicsScaleconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QGraphicsScale(h: self), signal)
+  var nimfunc = cast[ptr QGraphicsScaleconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QGraphicsScale, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QGraphicsScaledisconnectNotify*(self: gen_qgraphicstransform_types.QGraphicsScale, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQGraphicsScale_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QGraphicsScaledisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QGraphicsScale, slot: proc(super: QGraphicsScaledisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QGraphicsScaledisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qgraphicstransform_types.QGraphicsScale, slot: QGraphicsScaledisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsScaledisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QGraphicsScaledisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsScale_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsScale_disconnectNotify(self: ptr cQGraphicsScale, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QGraphicsScale_disconnectNotify ".} =
-  type Cb = proc(super: QGraphicsScaledisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QGraphicsScale(h: self), signal)
+  var nimfunc = cast[ptr QGraphicsScaledisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QGraphicsScale): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qgraphicstransform_types.QGraphicsScale): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQGraphicsScale_staticMetaObject())
-proc delete*(self: QGraphicsScale) =
+proc delete*(self: gen_qgraphicstransform_types.QGraphicsScale) =
   fcQGraphicsScale_delete(self.h)
 
-func init*(T: type QGraphicsRotation, h: ptr cQGraphicsRotation): QGraphicsRotation =
+func init*(T: type gen_qgraphicstransform_types.QGraphicsRotation, h: ptr cQGraphicsRotation): gen_qgraphicstransform_types.QGraphicsRotation =
   T(h: h)
-proc create*(T: type QGraphicsRotation, ): QGraphicsRotation =
+proc create*(T: type gen_qgraphicstransform_types.QGraphicsRotation, ): gen_qgraphicstransform_types.QGraphicsRotation =
 
-  QGraphicsRotation.init(fcQGraphicsRotation_new())
-proc create*(T: type QGraphicsRotation, parent: gen_qobject.QObject): QGraphicsRotation =
+  gen_qgraphicstransform_types.QGraphicsRotation.init(fcQGraphicsRotation_new())
+proc create*(T: type gen_qgraphicstransform_types.QGraphicsRotation, parent: gen_qobject.QObject): gen_qgraphicstransform_types.QGraphicsRotation =
 
-  QGraphicsRotation.init(fcQGraphicsRotation_new2(parent.h))
-proc metaObject*(self: QGraphicsRotation, ): gen_qobjectdefs.QMetaObject =
+  gen_qgraphicstransform_types.QGraphicsRotation.init(fcQGraphicsRotation_new2(parent.h))
+proc metaObject*(self: gen_qgraphicstransform_types.QGraphicsRotation, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQGraphicsRotation_metaObject(self.h))
 
-proc metacast*(self: QGraphicsRotation, param1: cstring): pointer =
+proc metacast*(self: gen_qgraphicstransform_types.QGraphicsRotation, param1: cstring): pointer =
 
   fcQGraphicsRotation_metacast(self.h, param1)
 
-proc metacall*(self: QGraphicsRotation, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qgraphicstransform_types.QGraphicsRotation, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQGraphicsRotation_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QGraphicsRotation, s: cstring): string =
+proc tr*(_: type gen_qgraphicstransform_types.QGraphicsRotation, s: cstring): string =
 
   let v_ms = fcQGraphicsRotation_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QGraphicsRotation, s: cstring): string =
+proc trUtf8*(_: type gen_qgraphicstransform_types.QGraphicsRotation, s: cstring): string =
 
   let v_ms = fcQGraphicsRotation_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc origin*(self: QGraphicsRotation, ): gen_qvector3d.QVector3D =
+proc origin*(self: gen_qgraphicstransform_types.QGraphicsRotation, ): gen_qvector3d.QVector3D =
 
   gen_qvector3d.QVector3D(h: fcQGraphicsRotation_origin(self.h))
 
-proc setOrigin*(self: QGraphicsRotation, point: gen_qvector3d.QVector3D): void =
+proc setOrigin*(self: gen_qgraphicstransform_types.QGraphicsRotation, point: gen_qvector3d.QVector3D): void =
 
   fcQGraphicsRotation_setOrigin(self.h, point.h)
 
-proc angle*(self: QGraphicsRotation, ): float64 =
+proc angle*(self: gen_qgraphicstransform_types.QGraphicsRotation, ): float64 =
 
   fcQGraphicsRotation_angle(self.h)
 
-proc setAngle*(self: QGraphicsRotation, angle: float64): void =
+proc setAngle*(self: gen_qgraphicstransform_types.QGraphicsRotation, angle: float64): void =
 
   fcQGraphicsRotation_setAngle(self.h, angle)
 
-proc axis*(self: QGraphicsRotation, ): gen_qvector3d.QVector3D =
+proc axis*(self: gen_qgraphicstransform_types.QGraphicsRotation, ): gen_qvector3d.QVector3D =
 
   gen_qvector3d.QVector3D(h: fcQGraphicsRotation_axis(self.h))
 
-proc setAxis*(self: QGraphicsRotation, axis: gen_qvector3d.QVector3D): void =
+proc setAxis*(self: gen_qgraphicstransform_types.QGraphicsRotation, axis: gen_qvector3d.QVector3D): void =
 
   fcQGraphicsRotation_setAxis(self.h, axis.h)
 
-proc setAxisWithAxis*(self: QGraphicsRotation, axis: gen_qnamespace.Axis): void =
+proc setAxisWithAxis*(self: gen_qgraphicstransform_types.QGraphicsRotation, axis: cint): void =
 
   fcQGraphicsRotation_setAxisWithAxis(self.h, cint(axis))
 
-proc applyTo*(self: QGraphicsRotation, matrix: gen_qmatrix4x4.QMatrix4x4): void =
+proc applyTo*(self: gen_qgraphicstransform_types.QGraphicsRotation, matrix: gen_qmatrix4x4.QMatrix4x4): void =
 
   fcQGraphicsRotation_applyTo(self.h, matrix.h)
 
-proc originChanged*(self: QGraphicsRotation, ): void =
+proc originChanged*(self: gen_qgraphicstransform_types.QGraphicsRotation, ): void =
 
   fcQGraphicsRotation_originChanged(self.h)
 
@@ -1055,13 +946,13 @@ proc miqt_exec_callback_QGraphicsRotation_originChanged(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onoriginChanged*(self: QGraphicsRotation, slot: proc()) =
+proc onoriginChanged*(self: gen_qgraphicstransform_types.QGraphicsRotation, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQGraphicsRotation_connect_originChanged(self.h, cast[int](addr tmp[]))
-proc angleChanged*(self: QGraphicsRotation, ): void =
+proc angleChanged*(self: gen_qgraphicstransform_types.QGraphicsRotation, ): void =
 
   fcQGraphicsRotation_angleChanged(self.h)
 
@@ -1071,13 +962,13 @@ proc miqt_exec_callback_QGraphicsRotation_angleChanged(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onangleChanged*(self: QGraphicsRotation, slot: proc()) =
+proc onangleChanged*(self: gen_qgraphicstransform_types.QGraphicsRotation, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQGraphicsRotation_connect_angleChanged(self.h, cast[int](addr tmp[]))
-proc axisChanged*(self: QGraphicsRotation, ): void =
+proc axisChanged*(self: gen_qgraphicstransform_types.QGraphicsRotation, ): void =
 
   fcQGraphicsRotation_axisChanged(self.h)
 
@@ -1087,308 +978,253 @@ proc miqt_exec_callback_QGraphicsRotation_axisChanged(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onaxisChanged*(self: QGraphicsRotation, slot: proc()) =
+proc onaxisChanged*(self: gen_qgraphicstransform_types.QGraphicsRotation, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQGraphicsRotation_connect_axisChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QGraphicsRotation, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qgraphicstransform_types.QGraphicsRotation, s: cstring, c: cstring): string =
 
   let v_ms = fcQGraphicsRotation_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QGraphicsRotation, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qgraphicstransform_types.QGraphicsRotation, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQGraphicsRotation_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QGraphicsRotation, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qgraphicstransform_types.QGraphicsRotation, s: cstring, c: cstring): string =
 
   let v_ms = fcQGraphicsRotation_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QGraphicsRotation, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qgraphicstransform_types.QGraphicsRotation, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQGraphicsRotation_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QGraphicsRotation, ): gen_qobjectdefs.QMetaObject =
-
+proc QGraphicsRotationmetaObject*(self: gen_qgraphicstransform_types.QGraphicsRotation, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQGraphicsRotation_virtualbase_metaObject(self.h))
 
-type QGraphicsRotationmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QGraphicsRotation, slot: proc(super: QGraphicsRotationmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QGraphicsRotationmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qgraphicstransform_types.QGraphicsRotation, slot: QGraphicsRotationmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsRotationmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QGraphicsRotationmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsRotation_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsRotation_metaObject(self: ptr cQGraphicsRotation, slot: int): pointer {.exportc: "miqt_exec_callback_QGraphicsRotation_metaObject ".} =
-  type Cb = proc(super: QGraphicsRotationmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QGraphicsRotation(h: self), )
+  var nimfunc = cast[ptr QGraphicsRotationmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QGraphicsRotation, param1: cstring): pointer =
-
+proc QGraphicsRotationmetacast*(self: gen_qgraphicstransform_types.QGraphicsRotation, param1: cstring): pointer =
 
   fQGraphicsRotation_virtualbase_metacast(self.h, param1)
 
-type QGraphicsRotationmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QGraphicsRotation, slot: proc(super: QGraphicsRotationmetacastBase, param1: cstring): pointer) =
+type QGraphicsRotationmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qgraphicstransform_types.QGraphicsRotation, slot: QGraphicsRotationmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsRotationmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QGraphicsRotationmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsRotation_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsRotation_metacast(self: ptr cQGraphicsRotation, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QGraphicsRotation_metacast ".} =
-  type Cb = proc(super: QGraphicsRotationmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QGraphicsRotation(h: self), param1)
+  var nimfunc = cast[ptr QGraphicsRotationmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QGraphicsRotation, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QGraphicsRotationmetacall*(self: gen_qgraphicstransform_types.QGraphicsRotation, param1: cint, param2: cint, param3: pointer): cint =
 
   fQGraphicsRotation_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QGraphicsRotationmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QGraphicsRotation, slot: proc(super: QGraphicsRotationmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QGraphicsRotationmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qgraphicstransform_types.QGraphicsRotation, slot: QGraphicsRotationmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsRotationmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QGraphicsRotationmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsRotation_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsRotation_metacall(self: ptr cQGraphicsRotation, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QGraphicsRotation_metacall ".} =
-  type Cb = proc(super: QGraphicsRotationmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QGraphicsRotation(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QGraphicsRotationmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_applyTo(self: QGraphicsRotation, matrix: gen_qmatrix4x4.QMatrix4x4): void =
-
+proc QGraphicsRotationapplyTo*(self: gen_qgraphicstransform_types.QGraphicsRotation, matrix: gen_qmatrix4x4.QMatrix4x4): void =
 
   fQGraphicsRotation_virtualbase_applyTo(self.h, matrix.h)
 
-type QGraphicsRotationapplyToBase* = proc(matrix: gen_qmatrix4x4.QMatrix4x4): void
-proc onapplyTo*(self: QGraphicsRotation, slot: proc(super: QGraphicsRotationapplyToBase, matrix: gen_qmatrix4x4.QMatrix4x4): void) =
+type QGraphicsRotationapplyToProc* = proc(matrix: gen_qmatrix4x4.QMatrix4x4): void
+proc onapplyTo*(self: gen_qgraphicstransform_types.QGraphicsRotation, slot: QGraphicsRotationapplyToProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsRotationapplyToBase, matrix: gen_qmatrix4x4.QMatrix4x4): void
-  var tmp = new Cb
+  var tmp = new QGraphicsRotationapplyToProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsRotation_override_virtual_applyTo(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsRotation_applyTo(self: ptr cQGraphicsRotation, slot: int, matrix: pointer): void {.exportc: "miqt_exec_callback_QGraphicsRotation_applyTo ".} =
-  type Cb = proc(super: QGraphicsRotationapplyToBase, matrix: gen_qmatrix4x4.QMatrix4x4): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(matrix: gen_qmatrix4x4.QMatrix4x4): auto =
-    callVirtualBase_applyTo(QGraphicsRotation(h: self), matrix)
+  var nimfunc = cast[ptr QGraphicsRotationapplyToProc](cast[pointer](slot))
   let slotval1 = gen_qmatrix4x4.QMatrix4x4(h: matrix)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_event(self: QGraphicsRotation, event: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[](slotval1)
+proc QGraphicsRotationevent*(self: gen_qgraphicstransform_types.QGraphicsRotation, event: gen_qcoreevent.QEvent): bool =
 
   fQGraphicsRotation_virtualbase_event(self.h, event.h)
 
-type QGraphicsRotationeventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QGraphicsRotation, slot: proc(super: QGraphicsRotationeventBase, event: gen_qcoreevent.QEvent): bool) =
+type QGraphicsRotationeventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qgraphicstransform_types.QGraphicsRotation, slot: QGraphicsRotationeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsRotationeventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QGraphicsRotationeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsRotation_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsRotation_event(self: ptr cQGraphicsRotation, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QGraphicsRotation_event ".} =
-  type Cb = proc(super: QGraphicsRotationeventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QGraphicsRotation(h: self), event)
+  var nimfunc = cast[ptr QGraphicsRotationeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QGraphicsRotation, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QGraphicsRotationeventFilter*(self: gen_qgraphicstransform_types.QGraphicsRotation, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQGraphicsRotation_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QGraphicsRotationeventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QGraphicsRotation, slot: proc(super: QGraphicsRotationeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QGraphicsRotationeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qgraphicstransform_types.QGraphicsRotation, slot: QGraphicsRotationeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsRotationeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QGraphicsRotationeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsRotation_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsRotation_eventFilter(self: ptr cQGraphicsRotation, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QGraphicsRotation_eventFilter ".} =
-  type Cb = proc(super: QGraphicsRotationeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QGraphicsRotation(h: self), watched, event)
+  var nimfunc = cast[ptr QGraphicsRotationeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QGraphicsRotation, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QGraphicsRotationtimerEvent*(self: gen_qgraphicstransform_types.QGraphicsRotation, event: gen_qcoreevent.QTimerEvent): void =
 
   fQGraphicsRotation_virtualbase_timerEvent(self.h, event.h)
 
-type QGraphicsRotationtimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QGraphicsRotation, slot: proc(super: QGraphicsRotationtimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QGraphicsRotationtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qgraphicstransform_types.QGraphicsRotation, slot: QGraphicsRotationtimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsRotationtimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QGraphicsRotationtimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsRotation_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsRotation_timerEvent(self: ptr cQGraphicsRotation, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGraphicsRotation_timerEvent ".} =
-  type Cb = proc(super: QGraphicsRotationtimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QGraphicsRotation(h: self), event)
+  var nimfunc = cast[ptr QGraphicsRotationtimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QGraphicsRotation, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QGraphicsRotationchildEvent*(self: gen_qgraphicstransform_types.QGraphicsRotation, event: gen_qcoreevent.QChildEvent): void =
 
   fQGraphicsRotation_virtualbase_childEvent(self.h, event.h)
 
-type QGraphicsRotationchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QGraphicsRotation, slot: proc(super: QGraphicsRotationchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QGraphicsRotationchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qgraphicstransform_types.QGraphicsRotation, slot: QGraphicsRotationchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsRotationchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QGraphicsRotationchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsRotation_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsRotation_childEvent(self: ptr cQGraphicsRotation, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGraphicsRotation_childEvent ".} =
-  type Cb = proc(super: QGraphicsRotationchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QGraphicsRotation(h: self), event)
+  var nimfunc = cast[ptr QGraphicsRotationchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QGraphicsRotation, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QGraphicsRotationcustomEvent*(self: gen_qgraphicstransform_types.QGraphicsRotation, event: gen_qcoreevent.QEvent): void =
 
   fQGraphicsRotation_virtualbase_customEvent(self.h, event.h)
 
-type QGraphicsRotationcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QGraphicsRotation, slot: proc(super: QGraphicsRotationcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QGraphicsRotationcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qgraphicstransform_types.QGraphicsRotation, slot: QGraphicsRotationcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsRotationcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QGraphicsRotationcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsRotation_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsRotation_customEvent(self: ptr cQGraphicsRotation, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QGraphicsRotation_customEvent ".} =
-  type Cb = proc(super: QGraphicsRotationcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QGraphicsRotation(h: self), event)
+  var nimfunc = cast[ptr QGraphicsRotationcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QGraphicsRotation, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QGraphicsRotationconnectNotify*(self: gen_qgraphicstransform_types.QGraphicsRotation, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQGraphicsRotation_virtualbase_connectNotify(self.h, signal.h)
 
-type QGraphicsRotationconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QGraphicsRotation, slot: proc(super: QGraphicsRotationconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QGraphicsRotationconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qgraphicstransform_types.QGraphicsRotation, slot: QGraphicsRotationconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsRotationconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QGraphicsRotationconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsRotation_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsRotation_connectNotify(self: ptr cQGraphicsRotation, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QGraphicsRotation_connectNotify ".} =
-  type Cb = proc(super: QGraphicsRotationconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QGraphicsRotation(h: self), signal)
+  var nimfunc = cast[ptr QGraphicsRotationconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QGraphicsRotation, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QGraphicsRotationdisconnectNotify*(self: gen_qgraphicstransform_types.QGraphicsRotation, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQGraphicsRotation_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QGraphicsRotationdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QGraphicsRotation, slot: proc(super: QGraphicsRotationdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QGraphicsRotationdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qgraphicstransform_types.QGraphicsRotation, slot: QGraphicsRotationdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsRotationdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QGraphicsRotationdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsRotation_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsRotation_disconnectNotify(self: ptr cQGraphicsRotation, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QGraphicsRotation_disconnectNotify ".} =
-  type Cb = proc(super: QGraphicsRotationdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QGraphicsRotation(h: self), signal)
+  var nimfunc = cast[ptr QGraphicsRotationdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QGraphicsRotation): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qgraphicstransform_types.QGraphicsRotation): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQGraphicsRotation_staticMetaObject())
-proc delete*(self: QGraphicsRotation) =
+proc delete*(self: gen_qgraphicstransform_types.QGraphicsRotation) =
   fcQGraphicsRotation_delete(self.h)

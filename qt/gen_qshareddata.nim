@@ -45,13 +45,13 @@ proc fcQSharedData_new2(param1: pointer): ptr cQSharedData {.importc: "QSharedDa
 proc fcQSharedData_delete(self: pointer) {.importc: "QSharedData_delete".}
 
 
-func init*(T: type QSharedData, h: ptr cQSharedData): QSharedData =
+func init*(T: type gen_qshareddata_types.QSharedData, h: ptr cQSharedData): gen_qshareddata_types.QSharedData =
   T(h: h)
-proc create*(T: type QSharedData, ): QSharedData =
+proc create*(T: type gen_qshareddata_types.QSharedData, ): gen_qshareddata_types.QSharedData =
 
-  QSharedData.init(fcQSharedData_new())
-proc create*(T: type QSharedData, param1: QSharedData): QSharedData =
+  gen_qshareddata_types.QSharedData.init(fcQSharedData_new())
+proc create*(T: type gen_qshareddata_types.QSharedData, param1: gen_qshareddata_types.QSharedData): gen_qshareddata_types.QSharedData =
 
-  QSharedData.init(fcQSharedData_new2(param1.h))
-proc delete*(self: QSharedData) =
+  gen_qshareddata_types.QSharedData.init(fcQSharedData_new2(param1.h))
+proc delete*(self: gen_qshareddata_types.QSharedData) =
   fcQSharedData_delete(self.h)

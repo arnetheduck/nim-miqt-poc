@@ -34,49 +34,39 @@ const cflags = gorge("pkg-config -cflags Qt6Widgets")
 {.compile("gen_qfiledialog.cpp", cflags).}
 
 
-type QFileDialogViewMode* = cint
-const
-  QFileDialogDetail* = 0
-  QFileDialogList* = 1
+type QFileDialogViewModeEnum* = distinct cint
+template Detail*(_: type QFileDialogViewModeEnum): untyped = 0
+template List*(_: type QFileDialogViewModeEnum): untyped = 1
 
 
-
-type QFileDialogFileMode* = cint
-const
-  QFileDialogAnyFile* = 0
-  QFileDialogExistingFile* = 1
-  QFileDialogDirectory* = 2
-  QFileDialogExistingFiles* = 3
+type QFileDialogFileModeEnum* = distinct cint
+template AnyFile*(_: type QFileDialogFileModeEnum): untyped = 0
+template ExistingFile*(_: type QFileDialogFileModeEnum): untyped = 1
+template Directory*(_: type QFileDialogFileModeEnum): untyped = 2
+template ExistingFiles*(_: type QFileDialogFileModeEnum): untyped = 3
 
 
-
-type QFileDialogAcceptMode* = cint
-const
-  QFileDialogAcceptOpen* = 0
-  QFileDialogAcceptSave* = 1
+type QFileDialogAcceptModeEnum* = distinct cint
+template AcceptOpen*(_: type QFileDialogAcceptModeEnum): untyped = 0
+template AcceptSave*(_: type QFileDialogAcceptModeEnum): untyped = 1
 
 
-
-type QFileDialogDialogLabel* = cint
-const
-  QFileDialogLookIn* = 0
-  QFileDialogFileName* = 1
-  QFileDialogFileType* = 2
-  QFileDialogAccept* = 3
-  QFileDialogReject* = 4
+type QFileDialogDialogLabelEnum* = distinct cint
+template LookIn*(_: type QFileDialogDialogLabelEnum): untyped = 0
+template FileName*(_: type QFileDialogDialogLabelEnum): untyped = 1
+template FileType*(_: type QFileDialogDialogLabelEnum): untyped = 2
+template Accept*(_: type QFileDialogDialogLabelEnum): untyped = 3
+template Reject*(_: type QFileDialogDialogLabelEnum): untyped = 4
 
 
-
-type QFileDialogOption* = cint
-const
-  QFileDialogShowDirsOnly* = 1
-  QFileDialogDontResolveSymlinks* = 2
-  QFileDialogDontConfirmOverwrite* = 4
-  QFileDialogDontUseNativeDialog* = 8
-  QFileDialogReadOnly* = 16
-  QFileDialogHideNameFilterDetails* = 32
-  QFileDialogDontUseCustomDirectoryIcons* = 64
-
+type QFileDialogOptionEnum* = distinct cint
+template ShowDirsOnly*(_: type QFileDialogOptionEnum): untyped = 1
+template DontResolveSymlinks*(_: type QFileDialogOptionEnum): untyped = 2
+template DontConfirmOverwrite*(_: type QFileDialogOptionEnum): untyped = 4
+template DontUseNativeDialog*(_: type QFileDialogOptionEnum): untyped = 8
+template ReadOnly*(_: type QFileDialogOptionEnum): untyped = 16
+template HideNameFilterDetails*(_: type QFileDialogOptionEnum): untyped = 32
+template DontUseCustomDirectoryIcons*(_: type QFileDialogOptionEnum): untyped = 64
 
 
 import gen_qfiledialog_types
@@ -91,7 +81,6 @@ import
   gen_qdir,
   gen_qevent,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -111,7 +100,6 @@ export
   gen_qdir,
   gen_qevent,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -361,70 +349,70 @@ proc fcQFileDialog_staticMetaObject(): pointer {.importc: "QFileDialog_staticMet
 proc fcQFileDialog_delete(self: pointer) {.importc: "QFileDialog_delete".}
 
 
-func init*(T: type QFileDialog, h: ptr cQFileDialog): QFileDialog =
+func init*(T: type gen_qfiledialog_types.QFileDialog, h: ptr cQFileDialog): gen_qfiledialog_types.QFileDialog =
   T(h: h)
-proc create*(T: type QFileDialog, parent: gen_qwidget.QWidget): QFileDialog =
+proc create*(T: type gen_qfiledialog_types.QFileDialog, parent: gen_qwidget.QWidget): gen_qfiledialog_types.QFileDialog =
 
-  QFileDialog.init(fcQFileDialog_new(parent.h))
-proc create*(T: type QFileDialog, parent: gen_qwidget.QWidget, f: gen_qnamespace.WindowType): QFileDialog =
+  gen_qfiledialog_types.QFileDialog.init(fcQFileDialog_new(parent.h))
+proc create*(T: type gen_qfiledialog_types.QFileDialog, parent: gen_qwidget.QWidget, f: cint): gen_qfiledialog_types.QFileDialog =
 
-  QFileDialog.init(fcQFileDialog_new2(parent.h, cint(f)))
-proc create*(T: type QFileDialog, ): QFileDialog =
+  gen_qfiledialog_types.QFileDialog.init(fcQFileDialog_new2(parent.h, cint(f)))
+proc create*(T: type gen_qfiledialog_types.QFileDialog, ): gen_qfiledialog_types.QFileDialog =
 
-  QFileDialog.init(fcQFileDialog_new3())
-proc create*(T: type QFileDialog, parent: gen_qwidget.QWidget, caption: string): QFileDialog =
+  gen_qfiledialog_types.QFileDialog.init(fcQFileDialog_new3())
+proc create*(T: type gen_qfiledialog_types.QFileDialog, parent: gen_qwidget.QWidget, caption: string): gen_qfiledialog_types.QFileDialog =
 
-  QFileDialog.init(fcQFileDialog_new4(parent.h, struct_miqt_string(data: caption, len: csize_t(len(caption)))))
-proc create*(T: type QFileDialog, parent: gen_qwidget.QWidget, caption: string, directory: string): QFileDialog =
+  gen_qfiledialog_types.QFileDialog.init(fcQFileDialog_new4(parent.h, struct_miqt_string(data: caption, len: csize_t(len(caption)))))
+proc create*(T: type gen_qfiledialog_types.QFileDialog, parent: gen_qwidget.QWidget, caption: string, directory: string): gen_qfiledialog_types.QFileDialog =
 
-  QFileDialog.init(fcQFileDialog_new5(parent.h, struct_miqt_string(data: caption, len: csize_t(len(caption))), struct_miqt_string(data: directory, len: csize_t(len(directory)))))
-proc create*(T: type QFileDialog, parent: gen_qwidget.QWidget, caption: string, directory: string, filter: string): QFileDialog =
+  gen_qfiledialog_types.QFileDialog.init(fcQFileDialog_new5(parent.h, struct_miqt_string(data: caption, len: csize_t(len(caption))), struct_miqt_string(data: directory, len: csize_t(len(directory)))))
+proc create*(T: type gen_qfiledialog_types.QFileDialog, parent: gen_qwidget.QWidget, caption: string, directory: string, filter: string): gen_qfiledialog_types.QFileDialog =
 
-  QFileDialog.init(fcQFileDialog_new6(parent.h, struct_miqt_string(data: caption, len: csize_t(len(caption))), struct_miqt_string(data: directory, len: csize_t(len(directory))), struct_miqt_string(data: filter, len: csize_t(len(filter)))))
-proc metaObject*(self: QFileDialog, ): gen_qobjectdefs.QMetaObject =
+  gen_qfiledialog_types.QFileDialog.init(fcQFileDialog_new6(parent.h, struct_miqt_string(data: caption, len: csize_t(len(caption))), struct_miqt_string(data: directory, len: csize_t(len(directory))), struct_miqt_string(data: filter, len: csize_t(len(filter)))))
+proc metaObject*(self: gen_qfiledialog_types.QFileDialog, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQFileDialog_metaObject(self.h))
 
-proc metacast*(self: QFileDialog, param1: cstring): pointer =
+proc metacast*(self: gen_qfiledialog_types.QFileDialog, param1: cstring): pointer =
 
   fcQFileDialog_metacast(self.h, param1)
 
-proc metacall*(self: QFileDialog, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qfiledialog_types.QFileDialog, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQFileDialog_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QFileDialog, s: cstring): string =
+proc tr*(_: type gen_qfiledialog_types.QFileDialog, s: cstring): string =
 
   let v_ms = fcQFileDialog_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setDirectory*(self: QFileDialog, directory: string): void =
+proc setDirectory*(self: gen_qfiledialog_types.QFileDialog, directory: string): void =
 
   fcQFileDialog_setDirectory(self.h, struct_miqt_string(data: directory, len: csize_t(len(directory))))
 
-proc setDirectoryWithDirectory*(self: QFileDialog, directory: gen_qdir.QDir): void =
+proc setDirectoryWithDirectory*(self: gen_qfiledialog_types.QFileDialog, directory: gen_qdir.QDir): void =
 
   fcQFileDialog_setDirectoryWithDirectory(self.h, directory.h)
 
-proc directory*(self: QFileDialog, ): gen_qdir.QDir =
+proc directory*(self: gen_qfiledialog_types.QFileDialog, ): gen_qdir.QDir =
 
   gen_qdir.QDir(h: fcQFileDialog_directory(self.h))
 
-proc setDirectoryUrl*(self: QFileDialog, directory: gen_qurl.QUrl): void =
+proc setDirectoryUrl*(self: gen_qfiledialog_types.QFileDialog, directory: gen_qurl.QUrl): void =
 
   fcQFileDialog_setDirectoryUrl(self.h, directory.h)
 
-proc directoryUrl*(self: QFileDialog, ): gen_qurl.QUrl =
+proc directoryUrl*(self: gen_qfiledialog_types.QFileDialog, ): gen_qurl.QUrl =
 
   gen_qurl.QUrl(h: fcQFileDialog_directoryUrl(self.h))
 
-proc selectFile*(self: QFileDialog, filename: string): void =
+proc selectFile*(self: gen_qfiledialog_types.QFileDialog, filename: string): void =
 
   fcQFileDialog_selectFile(self.h, struct_miqt_string(data: filename, len: csize_t(len(filename))))
 
-proc selectedFiles*(self: QFileDialog, ): seq[string] =
+proc selectedFiles*(self: gen_qfiledialog_types.QFileDialog, ): seq[string] =
 
   var v_ma = fcQFileDialog_selectedFiles(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -436,11 +424,11 @@ proc selectedFiles*(self: QFileDialog, ): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc selectUrl*(self: QFileDialog, url: gen_qurl.QUrl): void =
+proc selectUrl*(self: gen_qfiledialog_types.QFileDialog, url: gen_qurl.QUrl): void =
 
   fcQFileDialog_selectUrl(self.h, url.h)
 
-proc selectedUrls*(self: QFileDialog, ): seq[gen_qurl.QUrl] =
+proc selectedUrls*(self: gen_qfiledialog_types.QFileDialog, ): seq[gen_qurl.QUrl] =
 
   var v_ma = fcQFileDialog_selectedUrls(self.h)
   var vx_ret = newSeq[gen_qurl.QUrl](int(v_ma.len))
@@ -449,11 +437,11 @@ proc selectedUrls*(self: QFileDialog, ): seq[gen_qurl.QUrl] =
     vx_ret[i] = gen_qurl.QUrl(h: v_outCast[i])
   vx_ret
 
-proc setNameFilter*(self: QFileDialog, filter: string): void =
+proc setNameFilter*(self: gen_qfiledialog_types.QFileDialog, filter: string): void =
 
   fcQFileDialog_setNameFilter(self.h, struct_miqt_string(data: filter, len: csize_t(len(filter))))
 
-proc setNameFilters*(self: QFileDialog, filters: seq[string]): void =
+proc setNameFilters*(self: gen_qfiledialog_types.QFileDialog, filters: seq[string]): void =
 
   var filters_CArray = newSeq[struct_miqt_string](len(filters))
   for i in 0..<len(filters):
@@ -461,7 +449,7 @@ proc setNameFilters*(self: QFileDialog, filters: seq[string]): void =
 
   fcQFileDialog_setNameFilters(self.h, struct_miqt_array(len: csize_t(len(filters)), data: if len(filters) == 0: nil else: addr(filters_CArray[0])))
 
-proc nameFilters*(self: QFileDialog, ): seq[string] =
+proc nameFilters*(self: gen_qfiledialog_types.QFileDialog, ): seq[string] =
 
   var v_ma = fcQFileDialog_nameFilters(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -473,25 +461,25 @@ proc nameFilters*(self: QFileDialog, ): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc selectNameFilter*(self: QFileDialog, filter: string): void =
+proc selectNameFilter*(self: gen_qfiledialog_types.QFileDialog, filter: string): void =
 
   fcQFileDialog_selectNameFilter(self.h, struct_miqt_string(data: filter, len: csize_t(len(filter))))
 
-proc selectedMimeTypeFilter*(self: QFileDialog, ): string =
+proc selectedMimeTypeFilter*(self: gen_qfiledialog_types.QFileDialog, ): string =
 
   let v_ms = fcQFileDialog_selectedMimeTypeFilter(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc selectedNameFilter*(self: QFileDialog, ): string =
+proc selectedNameFilter*(self: gen_qfiledialog_types.QFileDialog, ): string =
 
   let v_ms = fcQFileDialog_selectedNameFilter(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setMimeTypeFilters*(self: QFileDialog, filters: seq[string]): void =
+proc setMimeTypeFilters*(self: gen_qfiledialog_types.QFileDialog, filters: seq[string]): void =
 
   var filters_CArray = newSeq[struct_miqt_string](len(filters))
   for i in 0..<len(filters):
@@ -499,7 +487,7 @@ proc setMimeTypeFilters*(self: QFileDialog, filters: seq[string]): void =
 
   fcQFileDialog_setMimeTypeFilters(self.h, struct_miqt_array(len: csize_t(len(filters)), data: if len(filters) == 0: nil else: addr(filters_CArray[0])))
 
-proc mimeTypeFilters*(self: QFileDialog, ): seq[string] =
+proc mimeTypeFilters*(self: gen_qfiledialog_types.QFileDialog, ): seq[string] =
 
   var v_ma = fcQFileDialog_mimeTypeFilters(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -511,43 +499,43 @@ proc mimeTypeFilters*(self: QFileDialog, ): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc selectMimeTypeFilter*(self: QFileDialog, filter: string): void =
+proc selectMimeTypeFilter*(self: gen_qfiledialog_types.QFileDialog, filter: string): void =
 
   fcQFileDialog_selectMimeTypeFilter(self.h, struct_miqt_string(data: filter, len: csize_t(len(filter))))
 
-proc filter*(self: QFileDialog, ): gen_qdir.QDirFilter =
+proc filter*(self: gen_qfiledialog_types.QFileDialog, ): cint =
 
-  gen_qdir.QDirFilter(fcQFileDialog_filter(self.h))
+  cint(fcQFileDialog_filter(self.h))
 
-proc setFilter*(self: QFileDialog, filters: gen_qdir.QDirFilter): void =
+proc setFilter*(self: gen_qfiledialog_types.QFileDialog, filters: cint): void =
 
   fcQFileDialog_setFilter(self.h, cint(filters))
 
-proc setViewMode*(self: QFileDialog, mode: QFileDialogViewMode): void =
+proc setViewMode*(self: gen_qfiledialog_types.QFileDialog, mode: cint): void =
 
   fcQFileDialog_setViewMode(self.h, cint(mode))
 
-proc viewMode*(self: QFileDialog, ): QFileDialogViewMode =
+proc viewMode*(self: gen_qfiledialog_types.QFileDialog, ): cint =
 
-  QFileDialogViewMode(fcQFileDialog_viewMode(self.h))
+  cint(fcQFileDialog_viewMode(self.h))
 
-proc setFileMode*(self: QFileDialog, mode: QFileDialogFileMode): void =
+proc setFileMode*(self: gen_qfiledialog_types.QFileDialog, mode: cint): void =
 
   fcQFileDialog_setFileMode(self.h, cint(mode))
 
-proc fileMode*(self: QFileDialog, ): QFileDialogFileMode =
+proc fileMode*(self: gen_qfiledialog_types.QFileDialog, ): cint =
 
-  QFileDialogFileMode(fcQFileDialog_fileMode(self.h))
+  cint(fcQFileDialog_fileMode(self.h))
 
-proc setAcceptMode*(self: QFileDialog, mode: QFileDialogAcceptMode): void =
+proc setAcceptMode*(self: gen_qfiledialog_types.QFileDialog, mode: cint): void =
 
   fcQFileDialog_setAcceptMode(self.h, cint(mode))
 
-proc acceptMode*(self: QFileDialog, ): QFileDialogAcceptMode =
+proc acceptMode*(self: gen_qfiledialog_types.QFileDialog, ): cint =
 
-  QFileDialogAcceptMode(fcQFileDialog_acceptMode(self.h))
+  cint(fcQFileDialog_acceptMode(self.h))
 
-proc setSidebarUrls*(self: QFileDialog, urls: seq[gen_qurl.QUrl]): void =
+proc setSidebarUrls*(self: gen_qfiledialog_types.QFileDialog, urls: seq[gen_qurl.QUrl]): void =
 
   var urls_CArray = newSeq[pointer](len(urls))
   for i in 0..<len(urls):
@@ -555,7 +543,7 @@ proc setSidebarUrls*(self: QFileDialog, urls: seq[gen_qurl.QUrl]): void =
 
   fcQFileDialog_setSidebarUrls(self.h, struct_miqt_array(len: csize_t(len(urls)), data: if len(urls) == 0: nil else: addr(urls_CArray[0])))
 
-proc sidebarUrls*(self: QFileDialog, ): seq[gen_qurl.QUrl] =
+proc sidebarUrls*(self: gen_qfiledialog_types.QFileDialog, ): seq[gen_qurl.QUrl] =
 
   var v_ma = fcQFileDialog_sidebarUrls(self.h)
   var vx_ret = newSeq[gen_qurl.QUrl](int(v_ma.len))
@@ -564,29 +552,29 @@ proc sidebarUrls*(self: QFileDialog, ): seq[gen_qurl.QUrl] =
     vx_ret[i] = gen_qurl.QUrl(h: v_outCast[i])
   vx_ret
 
-proc saveState*(self: QFileDialog, ): seq[byte] =
+proc saveState*(self: gen_qfiledialog_types.QFileDialog, ): seq[byte] =
 
   var v_bytearray = fcQFileDialog_saveState(self.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc restoreState*(self: QFileDialog, state: seq[byte]): bool =
+proc restoreState*(self: gen_qfiledialog_types.QFileDialog, state: seq[byte]): bool =
 
   fcQFileDialog_restoreState(self.h, struct_miqt_string(data: cast[cstring](if len(state) == 0: nil else: unsafeAddr state[0]), len: csize_t(len(state))))
 
-proc setDefaultSuffix*(self: QFileDialog, suffix: string): void =
+proc setDefaultSuffix*(self: gen_qfiledialog_types.QFileDialog, suffix: string): void =
 
   fcQFileDialog_setDefaultSuffix(self.h, struct_miqt_string(data: suffix, len: csize_t(len(suffix))))
 
-proc defaultSuffix*(self: QFileDialog, ): string =
+proc defaultSuffix*(self: gen_qfiledialog_types.QFileDialog, ): string =
 
   let v_ms = fcQFileDialog_defaultSuffix(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setHistory*(self: QFileDialog, paths: seq[string]): void =
+proc setHistory*(self: gen_qfiledialog_types.QFileDialog, paths: seq[string]): void =
 
   var paths_CArray = newSeq[struct_miqt_string](len(paths))
   for i in 0..<len(paths):
@@ -594,7 +582,7 @@ proc setHistory*(self: QFileDialog, paths: seq[string]): void =
 
   fcQFileDialog_setHistory(self.h, struct_miqt_array(len: csize_t(len(paths)), data: if len(paths) == 0: nil else: addr(paths_CArray[0])))
 
-proc history*(self: QFileDialog, ): seq[string] =
+proc history*(self: gen_qfiledialog_types.QFileDialog, ): seq[string] =
 
   var v_ma = fcQFileDialog_history(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -606,34 +594,34 @@ proc history*(self: QFileDialog, ): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc setItemDelegate*(self: QFileDialog, delegate: gen_qabstractitemdelegate.QAbstractItemDelegate): void =
+proc setItemDelegate*(self: gen_qfiledialog_types.QFileDialog, delegate: gen_qabstractitemdelegate.QAbstractItemDelegate): void =
 
   fcQFileDialog_setItemDelegate(self.h, delegate.h)
 
-proc itemDelegate*(self: QFileDialog, ): gen_qabstractitemdelegate.QAbstractItemDelegate =
+proc itemDelegate*(self: gen_qfiledialog_types.QFileDialog, ): gen_qabstractitemdelegate.QAbstractItemDelegate =
 
   gen_qabstractitemdelegate.QAbstractItemDelegate(h: fcQFileDialog_itemDelegate(self.h))
 
-proc setIconProvider*(self: QFileDialog, provider: gen_qabstractfileiconprovider.QAbstractFileIconProvider): void =
+proc setIconProvider*(self: gen_qfiledialog_types.QFileDialog, provider: gen_qabstractfileiconprovider.QAbstractFileIconProvider): void =
 
   fcQFileDialog_setIconProvider(self.h, provider.h)
 
-proc iconProvider*(self: QFileDialog, ): gen_qabstractfileiconprovider.QAbstractFileIconProvider =
+proc iconProvider*(self: gen_qfiledialog_types.QFileDialog, ): gen_qabstractfileiconprovider.QAbstractFileIconProvider =
 
   gen_qabstractfileiconprovider.QAbstractFileIconProvider(h: fcQFileDialog_iconProvider(self.h))
 
-proc setLabelText*(self: QFileDialog, label: QFileDialogDialogLabel, text: string): void =
+proc setLabelText*(self: gen_qfiledialog_types.QFileDialog, label: cint, text: string): void =
 
   fcQFileDialog_setLabelText(self.h, cint(label), struct_miqt_string(data: text, len: csize_t(len(text))))
 
-proc labelText*(self: QFileDialog, label: QFileDialogDialogLabel): string =
+proc labelText*(self: gen_qfiledialog_types.QFileDialog, label: cint): string =
 
   let v_ms = fcQFileDialog_labelText(self.h, cint(label))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setSupportedSchemes*(self: QFileDialog, schemes: seq[string]): void =
+proc setSupportedSchemes*(self: gen_qfiledialog_types.QFileDialog, schemes: seq[string]): void =
 
   var schemes_CArray = newSeq[struct_miqt_string](len(schemes))
   for i in 0..<len(schemes):
@@ -641,7 +629,7 @@ proc setSupportedSchemes*(self: QFileDialog, schemes: seq[string]): void =
 
   fcQFileDialog_setSupportedSchemes(self.h, struct_miqt_array(len: csize_t(len(schemes)), data: if len(schemes) == 0: nil else: addr(schemes_CArray[0])))
 
-proc supportedSchemes*(self: QFileDialog, ): seq[string] =
+proc supportedSchemes*(self: gen_qfiledialog_types.QFileDialog, ): seq[string] =
 
   var v_ma = fcQFileDialog_supportedSchemes(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -653,35 +641,35 @@ proc supportedSchemes*(self: QFileDialog, ): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc setProxyModel*(self: QFileDialog, model: gen_qabstractproxymodel.QAbstractProxyModel): void =
+proc setProxyModel*(self: gen_qfiledialog_types.QFileDialog, model: gen_qabstractproxymodel.QAbstractProxyModel): void =
 
   fcQFileDialog_setProxyModel(self.h, model.h)
 
-proc proxyModel*(self: QFileDialog, ): gen_qabstractproxymodel.QAbstractProxyModel =
+proc proxyModel*(self: gen_qfiledialog_types.QFileDialog, ): gen_qabstractproxymodel.QAbstractProxyModel =
 
   gen_qabstractproxymodel.QAbstractProxyModel(h: fcQFileDialog_proxyModel(self.h))
 
-proc setOption*(self: QFileDialog, option: QFileDialogOption): void =
+proc setOption*(self: gen_qfiledialog_types.QFileDialog, option: cint): void =
 
   fcQFileDialog_setOption(self.h, cint(option))
 
-proc testOption*(self: QFileDialog, option: QFileDialogOption): bool =
+proc testOption*(self: gen_qfiledialog_types.QFileDialog, option: cint): bool =
 
   fcQFileDialog_testOption(self.h, cint(option))
 
-proc setOptions*(self: QFileDialog, options: QFileDialogOption): void =
+proc setOptions*(self: gen_qfiledialog_types.QFileDialog, options: cint): void =
 
   fcQFileDialog_setOptions(self.h, cint(options))
 
-proc options*(self: QFileDialog, ): QFileDialogOption =
+proc options*(self: gen_qfiledialog_types.QFileDialog, ): cint =
 
-  QFileDialogOption(fcQFileDialog_options(self.h))
+  cint(fcQFileDialog_options(self.h))
 
-proc setVisible*(self: QFileDialog, visible: bool): void =
+proc setVisible*(self: gen_qfiledialog_types.QFileDialog, visible: bool): void =
 
   fcQFileDialog_setVisible(self.h, visible)
 
-proc fileSelected*(self: QFileDialog, file: string): void =
+proc fileSelected*(self: gen_qfiledialog_types.QFileDialog, file: string): void =
 
   fcQFileDialog_fileSelected(self.h, struct_miqt_string(data: file, len: csize_t(len(file))))
 
@@ -696,13 +684,13 @@ proc miqt_exec_callback_QFileDialog_fileSelected(slot: int, file: struct_miqt_st
 
   nimfunc[](slotval1)
 
-proc onfileSelected*(self: QFileDialog, slot: proc(file: string)) =
+proc onfileSelected*(self: gen_qfiledialog_types.QFileDialog, slot: proc(file: string)) =
   type Cb = proc(file: string)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQFileDialog_connect_fileSelected(self.h, cast[int](addr tmp[]))
-proc filesSelected*(self: QFileDialog, files: seq[string]): void =
+proc filesSelected*(self: gen_qfiledialog_types.QFileDialog, files: seq[string]): void =
 
   var files_CArray = newSeq[struct_miqt_string](len(files))
   for i in 0..<len(files):
@@ -726,13 +714,13 @@ proc miqt_exec_callback_QFileDialog_filesSelected(slot: int, files: struct_miqt_
 
   nimfunc[](slotval1)
 
-proc onfilesSelected*(self: QFileDialog, slot: proc(files: seq[string])) =
+proc onfilesSelected*(self: gen_qfiledialog_types.QFileDialog, slot: proc(files: seq[string])) =
   type Cb = proc(files: seq[string])
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQFileDialog_connect_filesSelected(self.h, cast[int](addr tmp[]))
-proc currentChanged*(self: QFileDialog, path: string): void =
+proc currentChanged*(self: gen_qfiledialog_types.QFileDialog, path: string): void =
 
   fcQFileDialog_currentChanged(self.h, struct_miqt_string(data: path, len: csize_t(len(path))))
 
@@ -747,13 +735,13 @@ proc miqt_exec_callback_QFileDialog_currentChanged(slot: int, path: struct_miqt_
 
   nimfunc[](slotval1)
 
-proc oncurrentChanged*(self: QFileDialog, slot: proc(path: string)) =
+proc oncurrentChanged*(self: gen_qfiledialog_types.QFileDialog, slot: proc(path: string)) =
   type Cb = proc(path: string)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQFileDialog_connect_currentChanged(self.h, cast[int](addr tmp[]))
-proc directoryEntered*(self: QFileDialog, directory: string): void =
+proc directoryEntered*(self: gen_qfiledialog_types.QFileDialog, directory: string): void =
 
   fcQFileDialog_directoryEntered(self.h, struct_miqt_string(data: directory, len: csize_t(len(directory))))
 
@@ -768,13 +756,13 @@ proc miqt_exec_callback_QFileDialog_directoryEntered(slot: int, directory: struc
 
   nimfunc[](slotval1)
 
-proc ondirectoryEntered*(self: QFileDialog, slot: proc(directory: string)) =
+proc ondirectoryEntered*(self: gen_qfiledialog_types.QFileDialog, slot: proc(directory: string)) =
   type Cb = proc(directory: string)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQFileDialog_connect_directoryEntered(self.h, cast[int](addr tmp[]))
-proc urlSelected*(self: QFileDialog, url: gen_qurl.QUrl): void =
+proc urlSelected*(self: gen_qfiledialog_types.QFileDialog, url: gen_qurl.QUrl): void =
 
   fcQFileDialog_urlSelected(self.h, url.h)
 
@@ -786,13 +774,13 @@ proc miqt_exec_callback_QFileDialog_urlSelected(slot: int, url: pointer) {.expor
 
   nimfunc[](slotval1)
 
-proc onurlSelected*(self: QFileDialog, slot: proc(url: gen_qurl.QUrl)) =
+proc onurlSelected*(self: gen_qfiledialog_types.QFileDialog, slot: proc(url: gen_qurl.QUrl)) =
   type Cb = proc(url: gen_qurl.QUrl)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQFileDialog_connect_urlSelected(self.h, cast[int](addr tmp[]))
-proc urlsSelected*(self: QFileDialog, urls: seq[gen_qurl.QUrl]): void =
+proc urlsSelected*(self: gen_qfiledialog_types.QFileDialog, urls: seq[gen_qurl.QUrl]): void =
 
   var urls_CArray = newSeq[pointer](len(urls))
   for i in 0..<len(urls):
@@ -813,13 +801,13 @@ proc miqt_exec_callback_QFileDialog_urlsSelected(slot: int, urls: struct_miqt_ar
 
   nimfunc[](slotval1)
 
-proc onurlsSelected*(self: QFileDialog, slot: proc(urls: seq[gen_qurl.QUrl])) =
+proc onurlsSelected*(self: gen_qfiledialog_types.QFileDialog, slot: proc(urls: seq[gen_qurl.QUrl])) =
   type Cb = proc(urls: seq[gen_qurl.QUrl])
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQFileDialog_connect_urlsSelected(self.h, cast[int](addr tmp[]))
-proc currentUrlChanged*(self: QFileDialog, url: gen_qurl.QUrl): void =
+proc currentUrlChanged*(self: gen_qfiledialog_types.QFileDialog, url: gen_qurl.QUrl): void =
 
   fcQFileDialog_currentUrlChanged(self.h, url.h)
 
@@ -831,13 +819,13 @@ proc miqt_exec_callback_QFileDialog_currentUrlChanged(slot: int, url: pointer) {
 
   nimfunc[](slotval1)
 
-proc oncurrentUrlChanged*(self: QFileDialog, slot: proc(url: gen_qurl.QUrl)) =
+proc oncurrentUrlChanged*(self: gen_qfiledialog_types.QFileDialog, slot: proc(url: gen_qurl.QUrl)) =
   type Cb = proc(url: gen_qurl.QUrl)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQFileDialog_connect_currentUrlChanged(self.h, cast[int](addr tmp[]))
-proc directoryUrlEntered*(self: QFileDialog, directory: gen_qurl.QUrl): void =
+proc directoryUrlEntered*(self: gen_qfiledialog_types.QFileDialog, directory: gen_qurl.QUrl): void =
 
   fcQFileDialog_directoryUrlEntered(self.h, directory.h)
 
@@ -849,13 +837,13 @@ proc miqt_exec_callback_QFileDialog_directoryUrlEntered(slot: int, directory: po
 
   nimfunc[](slotval1)
 
-proc ondirectoryUrlEntered*(self: QFileDialog, slot: proc(directory: gen_qurl.QUrl)) =
+proc ondirectoryUrlEntered*(self: gen_qfiledialog_types.QFileDialog, slot: proc(directory: gen_qurl.QUrl)) =
   type Cb = proc(directory: gen_qurl.QUrl)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQFileDialog_connect_directoryUrlEntered(self.h, cast[int](addr tmp[]))
-proc filterSelected*(self: QFileDialog, filter: string): void =
+proc filterSelected*(self: gen_qfiledialog_types.QFileDialog, filter: string): void =
 
   fcQFileDialog_filterSelected(self.h, struct_miqt_string(data: filter, len: csize_t(len(filter))))
 
@@ -870,46 +858,46 @@ proc miqt_exec_callback_QFileDialog_filterSelected(slot: int, filter: struct_miq
 
   nimfunc[](slotval1)
 
-proc onfilterSelected*(self: QFileDialog, slot: proc(filter: string)) =
+proc onfilterSelected*(self: gen_qfiledialog_types.QFileDialog, slot: proc(filter: string)) =
   type Cb = proc(filter: string)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQFileDialog_connect_filterSelected(self.h, cast[int](addr tmp[]))
-proc getOpenFileName*(_: type QFileDialog, ): string =
+proc getOpenFileName*(_: type gen_qfiledialog_types.QFileDialog, ): string =
 
   let v_ms = fcQFileDialog_getOpenFileName()
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc getOpenFileUrl*(_: type QFileDialog, ): gen_qurl.QUrl =
+proc getOpenFileUrl*(_: type gen_qfiledialog_types.QFileDialog, ): gen_qurl.QUrl =
 
   gen_qurl.QUrl(h: fcQFileDialog_getOpenFileUrl())
 
-proc getSaveFileName*(_: type QFileDialog, ): string =
+proc getSaveFileName*(_: type gen_qfiledialog_types.QFileDialog, ): string =
 
   let v_ms = fcQFileDialog_getSaveFileName()
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc getSaveFileUrl*(_: type QFileDialog, ): gen_qurl.QUrl =
+proc getSaveFileUrl*(_: type gen_qfiledialog_types.QFileDialog, ): gen_qurl.QUrl =
 
   gen_qurl.QUrl(h: fcQFileDialog_getSaveFileUrl())
 
-proc getExistingDirectory*(_: type QFileDialog, ): string =
+proc getExistingDirectory*(_: type gen_qfiledialog_types.QFileDialog, ): string =
 
   let v_ms = fcQFileDialog_getExistingDirectory()
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc getExistingDirectoryUrl*(_: type QFileDialog, ): gen_qurl.QUrl =
+proc getExistingDirectoryUrl*(_: type gen_qfiledialog_types.QFileDialog, ): gen_qurl.QUrl =
 
   gen_qurl.QUrl(h: fcQFileDialog_getExistingDirectoryUrl())
 
-proc getOpenFileNames*(_: type QFileDialog, ): seq[string] =
+proc getOpenFileNames*(_: type gen_qfiledialog_types.QFileDialog, ): seq[string] =
 
   var v_ma = fcQFileDialog_getOpenFileNames()
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -921,7 +909,7 @@ proc getOpenFileNames*(_: type QFileDialog, ): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc getOpenFileUrls*(_: type QFileDialog, ): seq[gen_qurl.QUrl] =
+proc getOpenFileUrls*(_: type gen_qfiledialog_types.QFileDialog, ): seq[gen_qurl.QUrl] =
 
   var v_ma = fcQFileDialog_getOpenFileUrls()
   var vx_ret = newSeq[gen_qurl.QUrl](int(v_ma.len))
@@ -930,161 +918,161 @@ proc getOpenFileUrls*(_: type QFileDialog, ): seq[gen_qurl.QUrl] =
     vx_ret[i] = gen_qurl.QUrl(h: v_outCast[i])
   vx_ret
 
-proc saveFileContent*(_: type QFileDialog, fileContent: seq[byte], fileNameHint: string): void =
+proc saveFileContent*(_: type gen_qfiledialog_types.QFileDialog, fileContent: seq[byte], fileNameHint: string): void =
 
   fcQFileDialog_saveFileContent(struct_miqt_string(data: cast[cstring](if len(fileContent) == 0: nil else: unsafeAddr fileContent[0]), len: csize_t(len(fileContent))), struct_miqt_string(data: fileNameHint, len: csize_t(len(fileNameHint))))
 
-proc tr2*(_: type QFileDialog, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qfiledialog_types.QFileDialog, s: cstring, c: cstring): string =
 
   let v_ms = fcQFileDialog_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QFileDialog, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qfiledialog_types.QFileDialog, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQFileDialog_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setOption2*(self: QFileDialog, option: QFileDialogOption, on: bool): void =
+proc setOption2*(self: gen_qfiledialog_types.QFileDialog, option: cint, on: bool): void =
 
   fcQFileDialog_setOption2(self.h, cint(option), on)
 
-proc getOpenFileName1*(_: type QFileDialog, parent: gen_qwidget.QWidget): string =
+proc getOpenFileName1*(_: type gen_qfiledialog_types.QFileDialog, parent: gen_qwidget.QWidget): string =
 
   let v_ms = fcQFileDialog_getOpenFileName1(parent.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc getOpenFileName2*(_: type QFileDialog, parent: gen_qwidget.QWidget, caption: string): string =
+proc getOpenFileName2*(_: type gen_qfiledialog_types.QFileDialog, parent: gen_qwidget.QWidget, caption: string): string =
 
   let v_ms = fcQFileDialog_getOpenFileName2(parent.h, struct_miqt_string(data: caption, len: csize_t(len(caption))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc getOpenFileName3*(_: type QFileDialog, parent: gen_qwidget.QWidget, caption: string, dir: string): string =
+proc getOpenFileName3*(_: type gen_qfiledialog_types.QFileDialog, parent: gen_qwidget.QWidget, caption: string, dir: string): string =
 
   let v_ms = fcQFileDialog_getOpenFileName3(parent.h, struct_miqt_string(data: caption, len: csize_t(len(caption))), struct_miqt_string(data: dir, len: csize_t(len(dir))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc getOpenFileName4*(_: type QFileDialog, parent: gen_qwidget.QWidget, caption: string, dir: string, filter: string): string =
+proc getOpenFileName4*(_: type gen_qfiledialog_types.QFileDialog, parent: gen_qwidget.QWidget, caption: string, dir: string, filter: string): string =
 
   let v_ms = fcQFileDialog_getOpenFileName4(parent.h, struct_miqt_string(data: caption, len: csize_t(len(caption))), struct_miqt_string(data: dir, len: csize_t(len(dir))), struct_miqt_string(data: filter, len: csize_t(len(filter))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc getOpenFileUrl1*(_: type QFileDialog, parent: gen_qwidget.QWidget): gen_qurl.QUrl =
+proc getOpenFileUrl1*(_: type gen_qfiledialog_types.QFileDialog, parent: gen_qwidget.QWidget): gen_qurl.QUrl =
 
   gen_qurl.QUrl(h: fcQFileDialog_getOpenFileUrl1(parent.h))
 
-proc getOpenFileUrl2*(_: type QFileDialog, parent: gen_qwidget.QWidget, caption: string): gen_qurl.QUrl =
+proc getOpenFileUrl2*(_: type gen_qfiledialog_types.QFileDialog, parent: gen_qwidget.QWidget, caption: string): gen_qurl.QUrl =
 
   gen_qurl.QUrl(h: fcQFileDialog_getOpenFileUrl2(parent.h, struct_miqt_string(data: caption, len: csize_t(len(caption)))))
 
-proc getOpenFileUrl3*(_: type QFileDialog, parent: gen_qwidget.QWidget, caption: string, dir: gen_qurl.QUrl): gen_qurl.QUrl =
+proc getOpenFileUrl3*(_: type gen_qfiledialog_types.QFileDialog, parent: gen_qwidget.QWidget, caption: string, dir: gen_qurl.QUrl): gen_qurl.QUrl =
 
   gen_qurl.QUrl(h: fcQFileDialog_getOpenFileUrl3(parent.h, struct_miqt_string(data: caption, len: csize_t(len(caption))), dir.h))
 
-proc getOpenFileUrl4*(_: type QFileDialog, parent: gen_qwidget.QWidget, caption: string, dir: gen_qurl.QUrl, filter: string): gen_qurl.QUrl =
+proc getOpenFileUrl4*(_: type gen_qfiledialog_types.QFileDialog, parent: gen_qwidget.QWidget, caption: string, dir: gen_qurl.QUrl, filter: string): gen_qurl.QUrl =
 
   gen_qurl.QUrl(h: fcQFileDialog_getOpenFileUrl4(parent.h, struct_miqt_string(data: caption, len: csize_t(len(caption))), dir.h, struct_miqt_string(data: filter, len: csize_t(len(filter)))))
 
-proc getSaveFileName1*(_: type QFileDialog, parent: gen_qwidget.QWidget): string =
+proc getSaveFileName1*(_: type gen_qfiledialog_types.QFileDialog, parent: gen_qwidget.QWidget): string =
 
   let v_ms = fcQFileDialog_getSaveFileName1(parent.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc getSaveFileName2*(_: type QFileDialog, parent: gen_qwidget.QWidget, caption: string): string =
+proc getSaveFileName2*(_: type gen_qfiledialog_types.QFileDialog, parent: gen_qwidget.QWidget, caption: string): string =
 
   let v_ms = fcQFileDialog_getSaveFileName2(parent.h, struct_miqt_string(data: caption, len: csize_t(len(caption))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc getSaveFileName3*(_: type QFileDialog, parent: gen_qwidget.QWidget, caption: string, dir: string): string =
+proc getSaveFileName3*(_: type gen_qfiledialog_types.QFileDialog, parent: gen_qwidget.QWidget, caption: string, dir: string): string =
 
   let v_ms = fcQFileDialog_getSaveFileName3(parent.h, struct_miqt_string(data: caption, len: csize_t(len(caption))), struct_miqt_string(data: dir, len: csize_t(len(dir))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc getSaveFileName4*(_: type QFileDialog, parent: gen_qwidget.QWidget, caption: string, dir: string, filter: string): string =
+proc getSaveFileName4*(_: type gen_qfiledialog_types.QFileDialog, parent: gen_qwidget.QWidget, caption: string, dir: string, filter: string): string =
 
   let v_ms = fcQFileDialog_getSaveFileName4(parent.h, struct_miqt_string(data: caption, len: csize_t(len(caption))), struct_miqt_string(data: dir, len: csize_t(len(dir))), struct_miqt_string(data: filter, len: csize_t(len(filter))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc getSaveFileUrl1*(_: type QFileDialog, parent: gen_qwidget.QWidget): gen_qurl.QUrl =
+proc getSaveFileUrl1*(_: type gen_qfiledialog_types.QFileDialog, parent: gen_qwidget.QWidget): gen_qurl.QUrl =
 
   gen_qurl.QUrl(h: fcQFileDialog_getSaveFileUrl1(parent.h))
 
-proc getSaveFileUrl2*(_: type QFileDialog, parent: gen_qwidget.QWidget, caption: string): gen_qurl.QUrl =
+proc getSaveFileUrl2*(_: type gen_qfiledialog_types.QFileDialog, parent: gen_qwidget.QWidget, caption: string): gen_qurl.QUrl =
 
   gen_qurl.QUrl(h: fcQFileDialog_getSaveFileUrl2(parent.h, struct_miqt_string(data: caption, len: csize_t(len(caption)))))
 
-proc getSaveFileUrl3*(_: type QFileDialog, parent: gen_qwidget.QWidget, caption: string, dir: gen_qurl.QUrl): gen_qurl.QUrl =
+proc getSaveFileUrl3*(_: type gen_qfiledialog_types.QFileDialog, parent: gen_qwidget.QWidget, caption: string, dir: gen_qurl.QUrl): gen_qurl.QUrl =
 
   gen_qurl.QUrl(h: fcQFileDialog_getSaveFileUrl3(parent.h, struct_miqt_string(data: caption, len: csize_t(len(caption))), dir.h))
 
-proc getSaveFileUrl4*(_: type QFileDialog, parent: gen_qwidget.QWidget, caption: string, dir: gen_qurl.QUrl, filter: string): gen_qurl.QUrl =
+proc getSaveFileUrl4*(_: type gen_qfiledialog_types.QFileDialog, parent: gen_qwidget.QWidget, caption: string, dir: gen_qurl.QUrl, filter: string): gen_qurl.QUrl =
 
   gen_qurl.QUrl(h: fcQFileDialog_getSaveFileUrl4(parent.h, struct_miqt_string(data: caption, len: csize_t(len(caption))), dir.h, struct_miqt_string(data: filter, len: csize_t(len(filter)))))
 
-proc getExistingDirectory1*(_: type QFileDialog, parent: gen_qwidget.QWidget): string =
+proc getExistingDirectory1*(_: type gen_qfiledialog_types.QFileDialog, parent: gen_qwidget.QWidget): string =
 
   let v_ms = fcQFileDialog_getExistingDirectory1(parent.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc getExistingDirectory2*(_: type QFileDialog, parent: gen_qwidget.QWidget, caption: string): string =
+proc getExistingDirectory2*(_: type gen_qfiledialog_types.QFileDialog, parent: gen_qwidget.QWidget, caption: string): string =
 
   let v_ms = fcQFileDialog_getExistingDirectory2(parent.h, struct_miqt_string(data: caption, len: csize_t(len(caption))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc getExistingDirectory3*(_: type QFileDialog, parent: gen_qwidget.QWidget, caption: string, dir: string): string =
+proc getExistingDirectory3*(_: type gen_qfiledialog_types.QFileDialog, parent: gen_qwidget.QWidget, caption: string, dir: string): string =
 
   let v_ms = fcQFileDialog_getExistingDirectory3(parent.h, struct_miqt_string(data: caption, len: csize_t(len(caption))), struct_miqt_string(data: dir, len: csize_t(len(dir))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc getExistingDirectory4*(_: type QFileDialog, parent: gen_qwidget.QWidget, caption: string, dir: string, options: QFileDialogOption): string =
+proc getExistingDirectory4*(_: type gen_qfiledialog_types.QFileDialog, parent: gen_qwidget.QWidget, caption: string, dir: string, options: cint): string =
 
   let v_ms = fcQFileDialog_getExistingDirectory4(parent.h, struct_miqt_string(data: caption, len: csize_t(len(caption))), struct_miqt_string(data: dir, len: csize_t(len(dir))), cint(options))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc getExistingDirectoryUrl1*(_: type QFileDialog, parent: gen_qwidget.QWidget): gen_qurl.QUrl =
+proc getExistingDirectoryUrl1*(_: type gen_qfiledialog_types.QFileDialog, parent: gen_qwidget.QWidget): gen_qurl.QUrl =
 
   gen_qurl.QUrl(h: fcQFileDialog_getExistingDirectoryUrl1(parent.h))
 
-proc getExistingDirectoryUrl2*(_: type QFileDialog, parent: gen_qwidget.QWidget, caption: string): gen_qurl.QUrl =
+proc getExistingDirectoryUrl2*(_: type gen_qfiledialog_types.QFileDialog, parent: gen_qwidget.QWidget, caption: string): gen_qurl.QUrl =
 
   gen_qurl.QUrl(h: fcQFileDialog_getExistingDirectoryUrl2(parent.h, struct_miqt_string(data: caption, len: csize_t(len(caption)))))
 
-proc getExistingDirectoryUrl3*(_: type QFileDialog, parent: gen_qwidget.QWidget, caption: string, dir: gen_qurl.QUrl): gen_qurl.QUrl =
+proc getExistingDirectoryUrl3*(_: type gen_qfiledialog_types.QFileDialog, parent: gen_qwidget.QWidget, caption: string, dir: gen_qurl.QUrl): gen_qurl.QUrl =
 
   gen_qurl.QUrl(h: fcQFileDialog_getExistingDirectoryUrl3(parent.h, struct_miqt_string(data: caption, len: csize_t(len(caption))), dir.h))
 
-proc getExistingDirectoryUrl4*(_: type QFileDialog, parent: gen_qwidget.QWidget, caption: string, dir: gen_qurl.QUrl, options: QFileDialogOption): gen_qurl.QUrl =
+proc getExistingDirectoryUrl4*(_: type gen_qfiledialog_types.QFileDialog, parent: gen_qwidget.QWidget, caption: string, dir: gen_qurl.QUrl, options: cint): gen_qurl.QUrl =
 
   gen_qurl.QUrl(h: fcQFileDialog_getExistingDirectoryUrl4(parent.h, struct_miqt_string(data: caption, len: csize_t(len(caption))), dir.h, cint(options)))
 
-proc getExistingDirectoryUrl5*(_: type QFileDialog, parent: gen_qwidget.QWidget, caption: string, dir: gen_qurl.QUrl, options: QFileDialogOption, supportedSchemes: seq[string]): gen_qurl.QUrl =
+proc getExistingDirectoryUrl5*(_: type gen_qfiledialog_types.QFileDialog, parent: gen_qwidget.QWidget, caption: string, dir: gen_qurl.QUrl, options: cint, supportedSchemes: seq[string]): gen_qurl.QUrl =
 
   var supportedSchemes_CArray = newSeq[struct_miqt_string](len(supportedSchemes))
   for i in 0..<len(supportedSchemes):
@@ -1092,7 +1080,7 @@ proc getExistingDirectoryUrl5*(_: type QFileDialog, parent: gen_qwidget.QWidget,
 
   gen_qurl.QUrl(h: fcQFileDialog_getExistingDirectoryUrl5(parent.h, struct_miqt_string(data: caption, len: csize_t(len(caption))), dir.h, cint(options), struct_miqt_array(len: csize_t(len(supportedSchemes)), data: if len(supportedSchemes) == 0: nil else: addr(supportedSchemes_CArray[0]))))
 
-proc getOpenFileNames1*(_: type QFileDialog, parent: gen_qwidget.QWidget): seq[string] =
+proc getOpenFileNames1*(_: type gen_qfiledialog_types.QFileDialog, parent: gen_qwidget.QWidget): seq[string] =
 
   var v_ma = fcQFileDialog_getOpenFileNames1(parent.h)
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -1104,7 +1092,7 @@ proc getOpenFileNames1*(_: type QFileDialog, parent: gen_qwidget.QWidget): seq[s
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc getOpenFileNames2*(_: type QFileDialog, parent: gen_qwidget.QWidget, caption: string): seq[string] =
+proc getOpenFileNames2*(_: type gen_qfiledialog_types.QFileDialog, parent: gen_qwidget.QWidget, caption: string): seq[string] =
 
   var v_ma = fcQFileDialog_getOpenFileNames2(parent.h, struct_miqt_string(data: caption, len: csize_t(len(caption))))
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -1116,7 +1104,7 @@ proc getOpenFileNames2*(_: type QFileDialog, parent: gen_qwidget.QWidget, captio
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc getOpenFileNames3*(_: type QFileDialog, parent: gen_qwidget.QWidget, caption: string, dir: string): seq[string] =
+proc getOpenFileNames3*(_: type gen_qfiledialog_types.QFileDialog, parent: gen_qwidget.QWidget, caption: string, dir: string): seq[string] =
 
   var v_ma = fcQFileDialog_getOpenFileNames3(parent.h, struct_miqt_string(data: caption, len: csize_t(len(caption))), struct_miqt_string(data: dir, len: csize_t(len(dir))))
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -1128,7 +1116,7 @@ proc getOpenFileNames3*(_: type QFileDialog, parent: gen_qwidget.QWidget, captio
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc getOpenFileNames4*(_: type QFileDialog, parent: gen_qwidget.QWidget, caption: string, dir: string, filter: string): seq[string] =
+proc getOpenFileNames4*(_: type gen_qfiledialog_types.QFileDialog, parent: gen_qwidget.QWidget, caption: string, dir: string, filter: string): seq[string] =
 
   var v_ma = fcQFileDialog_getOpenFileNames4(parent.h, struct_miqt_string(data: caption, len: csize_t(len(caption))), struct_miqt_string(data: dir, len: csize_t(len(dir))), struct_miqt_string(data: filter, len: csize_t(len(filter))))
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -1140,7 +1128,7 @@ proc getOpenFileNames4*(_: type QFileDialog, parent: gen_qwidget.QWidget, captio
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc getOpenFileUrls1*(_: type QFileDialog, parent: gen_qwidget.QWidget): seq[gen_qurl.QUrl] =
+proc getOpenFileUrls1*(_: type gen_qfiledialog_types.QFileDialog, parent: gen_qwidget.QWidget): seq[gen_qurl.QUrl] =
 
   var v_ma = fcQFileDialog_getOpenFileUrls1(parent.h)
   var vx_ret = newSeq[gen_qurl.QUrl](int(v_ma.len))
@@ -1149,7 +1137,7 @@ proc getOpenFileUrls1*(_: type QFileDialog, parent: gen_qwidget.QWidget): seq[ge
     vx_ret[i] = gen_qurl.QUrl(h: v_outCast[i])
   vx_ret
 
-proc getOpenFileUrls2*(_: type QFileDialog, parent: gen_qwidget.QWidget, caption: string): seq[gen_qurl.QUrl] =
+proc getOpenFileUrls2*(_: type gen_qfiledialog_types.QFileDialog, parent: gen_qwidget.QWidget, caption: string): seq[gen_qurl.QUrl] =
 
   var v_ma = fcQFileDialog_getOpenFileUrls2(parent.h, struct_miqt_string(data: caption, len: csize_t(len(caption))))
   var vx_ret = newSeq[gen_qurl.QUrl](int(v_ma.len))
@@ -1158,7 +1146,7 @@ proc getOpenFileUrls2*(_: type QFileDialog, parent: gen_qwidget.QWidget, caption
     vx_ret[i] = gen_qurl.QUrl(h: v_outCast[i])
   vx_ret
 
-proc getOpenFileUrls3*(_: type QFileDialog, parent: gen_qwidget.QWidget, caption: string, dir: gen_qurl.QUrl): seq[gen_qurl.QUrl] =
+proc getOpenFileUrls3*(_: type gen_qfiledialog_types.QFileDialog, parent: gen_qwidget.QWidget, caption: string, dir: gen_qurl.QUrl): seq[gen_qurl.QUrl] =
 
   var v_ma = fcQFileDialog_getOpenFileUrls3(parent.h, struct_miqt_string(data: caption, len: csize_t(len(caption))), dir.h)
   var vx_ret = newSeq[gen_qurl.QUrl](int(v_ma.len))
@@ -1167,7 +1155,7 @@ proc getOpenFileUrls3*(_: type QFileDialog, parent: gen_qwidget.QWidget, caption
     vx_ret[i] = gen_qurl.QUrl(h: v_outCast[i])
   vx_ret
 
-proc getOpenFileUrls4*(_: type QFileDialog, parent: gen_qwidget.QWidget, caption: string, dir: gen_qurl.QUrl, filter: string): seq[gen_qurl.QUrl] =
+proc getOpenFileUrls4*(_: type gen_qfiledialog_types.QFileDialog, parent: gen_qwidget.QWidget, caption: string, dir: gen_qurl.QUrl, filter: string): seq[gen_qurl.QUrl] =
 
   var v_ma = fcQFileDialog_getOpenFileUrls4(parent.h, struct_miqt_string(data: caption, len: csize_t(len(caption))), dir.h, struct_miqt_string(data: filter, len: csize_t(len(filter))))
   var vx_ret = newSeq[gen_qurl.QUrl](int(v_ma.len))
@@ -1176,1001 +1164,786 @@ proc getOpenFileUrls4*(_: type QFileDialog, parent: gen_qwidget.QWidget, caption
     vx_ret[i] = gen_qurl.QUrl(h: v_outCast[i])
   vx_ret
 
-proc callVirtualBase_metaObject(self: QFileDialog, ): gen_qobjectdefs.QMetaObject =
-
+proc QFileDialogmetaObject*(self: gen_qfiledialog_types.QFileDialog, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQFileDialog_virtualbase_metaObject(self.h))
 
-type QFileDialogmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QFileDialog, slot: proc(super: QFileDialogmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QFileDialogmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileDialogmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QFileDialogmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileDialog_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileDialog_metaObject(self: ptr cQFileDialog, slot: int): pointer {.exportc: "miqt_exec_callback_QFileDialog_metaObject ".} =
-  type Cb = proc(super: QFileDialogmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QFileDialog(h: self), )
+  var nimfunc = cast[ptr QFileDialogmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QFileDialog, param1: cstring): pointer =
-
+proc QFileDialogmetacast*(self: gen_qfiledialog_types.QFileDialog, param1: cstring): pointer =
 
   fQFileDialog_virtualbase_metacast(self.h, param1)
 
-type QFileDialogmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QFileDialog, slot: proc(super: QFileDialogmetacastBase, param1: cstring): pointer) =
+type QFileDialogmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileDialogmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QFileDialogmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileDialog_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileDialog_metacast(self: ptr cQFileDialog, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QFileDialog_metacast ".} =
-  type Cb = proc(super: QFileDialogmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QFileDialog(h: self), param1)
+  var nimfunc = cast[ptr QFileDialogmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QFileDialog, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QFileDialogmetacall*(self: gen_qfiledialog_types.QFileDialog, param1: cint, param2: cint, param3: pointer): cint =
 
   fQFileDialog_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QFileDialogmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QFileDialog, slot: proc(super: QFileDialogmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QFileDialogmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileDialogmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QFileDialogmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileDialog_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileDialog_metacall(self: ptr cQFileDialog, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QFileDialog_metacall ".} =
-  type Cb = proc(super: QFileDialogmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QFileDialog(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QFileDialogmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_setVisible(self: QFileDialog, visible: bool): void =
-
+proc QFileDialogsetVisible*(self: gen_qfiledialog_types.QFileDialog, visible: bool): void =
 
   fQFileDialog_virtualbase_setVisible(self.h, visible)
 
-type QFileDialogsetVisibleBase* = proc(visible: bool): void
-proc onsetVisible*(self: QFileDialog, slot: proc(super: QFileDialogsetVisibleBase, visible: bool): void) =
+type QFileDialogsetVisibleProc* = proc(visible: bool): void
+proc onsetVisible*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogsetVisibleProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileDialogsetVisibleBase, visible: bool): void
-  var tmp = new Cb
+  var tmp = new QFileDialogsetVisibleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileDialog_override_virtual_setVisible(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileDialog_setVisible(self: ptr cQFileDialog, slot: int, visible: bool): void {.exportc: "miqt_exec_callback_QFileDialog_setVisible ".} =
-  type Cb = proc(super: QFileDialogsetVisibleBase, visible: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(visible: bool): auto =
-    callVirtualBase_setVisible(QFileDialog(h: self), visible)
+  var nimfunc = cast[ptr QFileDialogsetVisibleProc](cast[pointer](slot))
   let slotval1 = visible
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_done(self: QFileDialog, resultVal: cint): void =
-
+  nimfunc[](slotval1)
+proc QFileDialogdone*(self: gen_qfiledialog_types.QFileDialog, resultVal: cint): void =
 
   fQFileDialog_virtualbase_done(self.h, resultVal)
 
-type QFileDialogdoneBase* = proc(resultVal: cint): void
-proc ondone*(self: QFileDialog, slot: proc(super: QFileDialogdoneBase, resultVal: cint): void) =
+type QFileDialogdoneProc* = proc(resultVal: cint): void
+proc ondone*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogdoneProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileDialogdoneBase, resultVal: cint): void
-  var tmp = new Cb
+  var tmp = new QFileDialogdoneProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileDialog_override_virtual_done(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileDialog_done(self: ptr cQFileDialog, slot: int, resultVal: cint): void {.exportc: "miqt_exec_callback_QFileDialog_done ".} =
-  type Cb = proc(super: QFileDialogdoneBase, resultVal: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(resultVal: cint): auto =
-    callVirtualBase_done(QFileDialog(h: self), resultVal)
+  var nimfunc = cast[ptr QFileDialogdoneProc](cast[pointer](slot))
   let slotval1 = resultVal
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_accept(self: QFileDialog, ): void =
-
+  nimfunc[](slotval1)
+proc QFileDialogaccept*(self: gen_qfiledialog_types.QFileDialog, ): void =
 
   fQFileDialog_virtualbase_accept(self.h)
 
-type QFileDialogacceptBase* = proc(): void
-proc onaccept*(self: QFileDialog, slot: proc(super: QFileDialogacceptBase): void) =
+type QFileDialogacceptProc* = proc(): void
+proc onaccept*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogacceptProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileDialogacceptBase): void
-  var tmp = new Cb
+  var tmp = new QFileDialogacceptProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileDialog_override_virtual_accept(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileDialog_accept(self: ptr cQFileDialog, slot: int): void {.exportc: "miqt_exec_callback_QFileDialog_accept ".} =
-  type Cb = proc(super: QFileDialogacceptBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_accept(QFileDialog(h: self), )
+  var nimfunc = cast[ptr QFileDialogacceptProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_changeEvent(self: QFileDialog, e: gen_qcoreevent.QEvent): void =
-
+  nimfunc[]()
+proc QFileDialogchangeEvent*(self: gen_qfiledialog_types.QFileDialog, e: gen_qcoreevent.QEvent): void =
 
   fQFileDialog_virtualbase_changeEvent(self.h, e.h)
 
-type QFileDialogchangeEventBase* = proc(e: gen_qcoreevent.QEvent): void
-proc onchangeEvent*(self: QFileDialog, slot: proc(super: QFileDialogchangeEventBase, e: gen_qcoreevent.QEvent): void) =
+type QFileDialogchangeEventProc* = proc(e: gen_qcoreevent.QEvent): void
+proc onchangeEvent*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogchangeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileDialogchangeEventBase, e: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QFileDialogchangeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileDialog_override_virtual_changeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileDialog_changeEvent(self: ptr cQFileDialog, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QFileDialog_changeEvent ".} =
-  type Cb = proc(super: QFileDialogchangeEventBase, e: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_changeEvent(QFileDialog(h: self), e)
+  var nimfunc = cast[ptr QFileDialogchangeEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_sizeHint(self: QFileDialog, ): gen_qsize.QSize =
-
+  nimfunc[](slotval1)
+proc QFileDialogsizeHint*(self: gen_qfiledialog_types.QFileDialog, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQFileDialog_virtualbase_sizeHint(self.h))
 
-type QFileDialogsizeHintBase* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: QFileDialog, slot: proc(super: QFileDialogsizeHintBase): gen_qsize.QSize) =
+type QFileDialogsizeHintProc* = proc(): gen_qsize.QSize
+proc onsizeHint*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogsizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileDialogsizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QFileDialogsizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileDialog_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileDialog_sizeHint(self: ptr cQFileDialog, slot: int): pointer {.exportc: "miqt_exec_callback_QFileDialog_sizeHint ".} =
-  type Cb = proc(super: QFileDialogsizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sizeHint(QFileDialog(h: self), )
+  var nimfunc = cast[ptr QFileDialogsizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_minimumSizeHint(self: QFileDialog, ): gen_qsize.QSize =
-
+proc QFileDialogminimumSizeHint*(self: gen_qfiledialog_types.QFileDialog, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQFileDialog_virtualbase_minimumSizeHint(self.h))
 
-type QFileDialogminimumSizeHintBase* = proc(): gen_qsize.QSize
-proc onminimumSizeHint*(self: QFileDialog, slot: proc(super: QFileDialogminimumSizeHintBase): gen_qsize.QSize) =
+type QFileDialogminimumSizeHintProc* = proc(): gen_qsize.QSize
+proc onminimumSizeHint*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogminimumSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileDialogminimumSizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QFileDialogminimumSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileDialog_override_virtual_minimumSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileDialog_minimumSizeHint(self: ptr cQFileDialog, slot: int): pointer {.exportc: "miqt_exec_callback_QFileDialog_minimumSizeHint ".} =
-  type Cb = proc(super: QFileDialogminimumSizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_minimumSizeHint(QFileDialog(h: self), )
+  var nimfunc = cast[ptr QFileDialogminimumSizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_open(self: QFileDialog, ): void =
-
+proc QFileDialogopen*(self: gen_qfiledialog_types.QFileDialog, ): void =
 
   fQFileDialog_virtualbase_open(self.h)
 
-type QFileDialogopenBase* = proc(): void
-proc onopen*(self: QFileDialog, slot: proc(super: QFileDialogopenBase): void) =
+type QFileDialogopenProc* = proc(): void
+proc onopen*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogopenProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileDialogopenBase): void
-  var tmp = new Cb
+  var tmp = new QFileDialogopenProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileDialog_override_virtual_open(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileDialog_open(self: ptr cQFileDialog, slot: int): void {.exportc: "miqt_exec_callback_QFileDialog_open ".} =
-  type Cb = proc(super: QFileDialogopenBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_open(QFileDialog(h: self), )
+  var nimfunc = cast[ptr QFileDialogopenProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_exec(self: QFileDialog, ): cint =
-
+  nimfunc[]()
+proc QFileDialogexec*(self: gen_qfiledialog_types.QFileDialog, ): cint =
 
   fQFileDialog_virtualbase_exec(self.h)
 
-type QFileDialogexecBase* = proc(): cint
-proc onexec*(self: QFileDialog, slot: proc(super: QFileDialogexecBase): cint) =
+type QFileDialogexecProc* = proc(): cint
+proc onexec*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogexecProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileDialogexecBase): cint
-  var tmp = new Cb
+  var tmp = new QFileDialogexecProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileDialog_override_virtual_exec(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileDialog_exec(self: ptr cQFileDialog, slot: int): cint {.exportc: "miqt_exec_callback_QFileDialog_exec ".} =
-  type Cb = proc(super: QFileDialogexecBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_exec(QFileDialog(h: self), )
+  var nimfunc = cast[ptr QFileDialogexecProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_reject(self: QFileDialog, ): void =
-
+proc QFileDialogreject*(self: gen_qfiledialog_types.QFileDialog, ): void =
 
   fQFileDialog_virtualbase_reject(self.h)
 
-type QFileDialogrejectBase* = proc(): void
-proc onreject*(self: QFileDialog, slot: proc(super: QFileDialogrejectBase): void) =
+type QFileDialogrejectProc* = proc(): void
+proc onreject*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogrejectProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileDialogrejectBase): void
-  var tmp = new Cb
+  var tmp = new QFileDialogrejectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileDialog_override_virtual_reject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileDialog_reject(self: ptr cQFileDialog, slot: int): void {.exportc: "miqt_exec_callback_QFileDialog_reject ".} =
-  type Cb = proc(super: QFileDialogrejectBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_reject(QFileDialog(h: self), )
+  var nimfunc = cast[ptr QFileDialogrejectProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_keyPressEvent(self: QFileDialog, param1: gen_qevent.QKeyEvent): void =
-
+  nimfunc[]()
+proc QFileDialogkeyPressEvent*(self: gen_qfiledialog_types.QFileDialog, param1: gen_qevent.QKeyEvent): void =
 
   fQFileDialog_virtualbase_keyPressEvent(self.h, param1.h)
 
-type QFileDialogkeyPressEventBase* = proc(param1: gen_qevent.QKeyEvent): void
-proc onkeyPressEvent*(self: QFileDialog, slot: proc(super: QFileDialogkeyPressEventBase, param1: gen_qevent.QKeyEvent): void) =
+type QFileDialogkeyPressEventProc* = proc(param1: gen_qevent.QKeyEvent): void
+proc onkeyPressEvent*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogkeyPressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileDialogkeyPressEventBase, param1: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QFileDialogkeyPressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileDialog_override_virtual_keyPressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileDialog_keyPressEvent(self: ptr cQFileDialog, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QFileDialog_keyPressEvent ".} =
-  type Cb = proc(super: QFileDialogkeyPressEventBase, param1: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyPressEvent(QFileDialog(h: self), param1)
+  var nimfunc = cast[ptr QFileDialogkeyPressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_closeEvent(self: QFileDialog, param1: gen_qevent.QCloseEvent): void =
-
+  nimfunc[](slotval1)
+proc QFileDialogcloseEvent*(self: gen_qfiledialog_types.QFileDialog, param1: gen_qevent.QCloseEvent): void =
 
   fQFileDialog_virtualbase_closeEvent(self.h, param1.h)
 
-type QFileDialogcloseEventBase* = proc(param1: gen_qevent.QCloseEvent): void
-proc oncloseEvent*(self: QFileDialog, slot: proc(super: QFileDialogcloseEventBase, param1: gen_qevent.QCloseEvent): void) =
+type QFileDialogcloseEventProc* = proc(param1: gen_qevent.QCloseEvent): void
+proc oncloseEvent*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogcloseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileDialogcloseEventBase, param1: gen_qevent.QCloseEvent): void
-  var tmp = new Cb
+  var tmp = new QFileDialogcloseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileDialog_override_virtual_closeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileDialog_closeEvent(self: ptr cQFileDialog, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QFileDialog_closeEvent ".} =
-  type Cb = proc(super: QFileDialogcloseEventBase, param1: gen_qevent.QCloseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QCloseEvent): auto =
-    callVirtualBase_closeEvent(QFileDialog(h: self), param1)
+  var nimfunc = cast[ptr QFileDialogcloseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QCloseEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_showEvent(self: QFileDialog, param1: gen_qevent.QShowEvent): void =
-
+  nimfunc[](slotval1)
+proc QFileDialogshowEvent*(self: gen_qfiledialog_types.QFileDialog, param1: gen_qevent.QShowEvent): void =
 
   fQFileDialog_virtualbase_showEvent(self.h, param1.h)
 
-type QFileDialogshowEventBase* = proc(param1: gen_qevent.QShowEvent): void
-proc onshowEvent*(self: QFileDialog, slot: proc(super: QFileDialogshowEventBase, param1: gen_qevent.QShowEvent): void) =
+type QFileDialogshowEventProc* = proc(param1: gen_qevent.QShowEvent): void
+proc onshowEvent*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogshowEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileDialogshowEventBase, param1: gen_qevent.QShowEvent): void
-  var tmp = new Cb
+  var tmp = new QFileDialogshowEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileDialog_override_virtual_showEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileDialog_showEvent(self: ptr cQFileDialog, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QFileDialog_showEvent ".} =
-  type Cb = proc(super: QFileDialogshowEventBase, param1: gen_qevent.QShowEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QShowEvent): auto =
-    callVirtualBase_showEvent(QFileDialog(h: self), param1)
+  var nimfunc = cast[ptr QFileDialogshowEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QShowEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_resizeEvent(self: QFileDialog, param1: gen_qevent.QResizeEvent): void =
-
+  nimfunc[](slotval1)
+proc QFileDialogresizeEvent*(self: gen_qfiledialog_types.QFileDialog, param1: gen_qevent.QResizeEvent): void =
 
   fQFileDialog_virtualbase_resizeEvent(self.h, param1.h)
 
-type QFileDialogresizeEventBase* = proc(param1: gen_qevent.QResizeEvent): void
-proc onresizeEvent*(self: QFileDialog, slot: proc(super: QFileDialogresizeEventBase, param1: gen_qevent.QResizeEvent): void) =
+type QFileDialogresizeEventProc* = proc(param1: gen_qevent.QResizeEvent): void
+proc onresizeEvent*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogresizeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileDialogresizeEventBase, param1: gen_qevent.QResizeEvent): void
-  var tmp = new Cb
+  var tmp = new QFileDialogresizeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileDialog_override_virtual_resizeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileDialog_resizeEvent(self: ptr cQFileDialog, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QFileDialog_resizeEvent ".} =
-  type Cb = proc(super: QFileDialogresizeEventBase, param1: gen_qevent.QResizeEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QResizeEvent): auto =
-    callVirtualBase_resizeEvent(QFileDialog(h: self), param1)
+  var nimfunc = cast[ptr QFileDialogresizeEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QResizeEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_contextMenuEvent(self: QFileDialog, param1: gen_qevent.QContextMenuEvent): void =
-
+  nimfunc[](slotval1)
+proc QFileDialogcontextMenuEvent*(self: gen_qfiledialog_types.QFileDialog, param1: gen_qevent.QContextMenuEvent): void =
 
   fQFileDialog_virtualbase_contextMenuEvent(self.h, param1.h)
 
-type QFileDialogcontextMenuEventBase* = proc(param1: gen_qevent.QContextMenuEvent): void
-proc oncontextMenuEvent*(self: QFileDialog, slot: proc(super: QFileDialogcontextMenuEventBase, param1: gen_qevent.QContextMenuEvent): void) =
+type QFileDialogcontextMenuEventProc* = proc(param1: gen_qevent.QContextMenuEvent): void
+proc oncontextMenuEvent*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogcontextMenuEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileDialogcontextMenuEventBase, param1: gen_qevent.QContextMenuEvent): void
-  var tmp = new Cb
+  var tmp = new QFileDialogcontextMenuEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileDialog_override_virtual_contextMenuEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileDialog_contextMenuEvent(self: ptr cQFileDialog, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QFileDialog_contextMenuEvent ".} =
-  type Cb = proc(super: QFileDialogcontextMenuEventBase, param1: gen_qevent.QContextMenuEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QContextMenuEvent): auto =
-    callVirtualBase_contextMenuEvent(QFileDialog(h: self), param1)
+  var nimfunc = cast[ptr QFileDialogcontextMenuEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QContextMenuEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_eventFilter(self: QFileDialog, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[](slotval1)
+proc QFileDialogeventFilter*(self: gen_qfiledialog_types.QFileDialog, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool =
 
   fQFileDialog_virtualbase_eventFilter(self.h, param1.h, param2.h)
 
-type QFileDialogeventFilterBase* = proc(param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QFileDialog, slot: proc(super: QFileDialogeventFilterBase, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool) =
+type QFileDialogeventFilterProc* = proc(param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileDialogeventFilterBase, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QFileDialogeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileDialog_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileDialog_eventFilter(self: ptr cQFileDialog, slot: int, param1: pointer, param2: pointer): bool {.exportc: "miqt_exec_callback_QFileDialog_eventFilter ".} =
-  type Cb = proc(super: QFileDialogeventFilterBase, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QFileDialog(h: self), param1, param2)
+  var nimfunc = cast[ptr QFileDialogeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: param1)
 
   let slotval2 = gen_qcoreevent.QEvent(h: param2)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_devType(self: QFileDialog, ): cint =
-
+proc QFileDialogdevType*(self: gen_qfiledialog_types.QFileDialog, ): cint =
 
   fQFileDialog_virtualbase_devType(self.h)
 
-type QFileDialogdevTypeBase* = proc(): cint
-proc ondevType*(self: QFileDialog, slot: proc(super: QFileDialogdevTypeBase): cint) =
+type QFileDialogdevTypeProc* = proc(): cint
+proc ondevType*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogdevTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileDialogdevTypeBase): cint
-  var tmp = new Cb
+  var tmp = new QFileDialogdevTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileDialog_override_virtual_devType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileDialog_devType(self: ptr cQFileDialog, slot: int): cint {.exportc: "miqt_exec_callback_QFileDialog_devType ".} =
-  type Cb = proc(super: QFileDialogdevTypeBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_devType(QFileDialog(h: self), )
+  var nimfunc = cast[ptr QFileDialogdevTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_heightForWidth(self: QFileDialog, param1: cint): cint =
-
+proc QFileDialogheightForWidth*(self: gen_qfiledialog_types.QFileDialog, param1: cint): cint =
 
   fQFileDialog_virtualbase_heightForWidth(self.h, param1)
 
-type QFileDialogheightForWidthBase* = proc(param1: cint): cint
-proc onheightForWidth*(self: QFileDialog, slot: proc(super: QFileDialogheightForWidthBase, param1: cint): cint) =
+type QFileDialogheightForWidthProc* = proc(param1: cint): cint
+proc onheightForWidth*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogheightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileDialogheightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QFileDialogheightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileDialog_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileDialog_heightForWidth(self: ptr cQFileDialog, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QFileDialog_heightForWidth ".} =
-  type Cb = proc(super: QFileDialogheightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_heightForWidth(QFileDialog(h: self), param1)
+  var nimfunc = cast[ptr QFileDialogheightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_hasHeightForWidth(self: QFileDialog, ): bool =
-
+proc QFileDialoghasHeightForWidth*(self: gen_qfiledialog_types.QFileDialog, ): bool =
 
   fQFileDialog_virtualbase_hasHeightForWidth(self.h)
 
-type QFileDialoghasHeightForWidthBase* = proc(): bool
-proc onhasHeightForWidth*(self: QFileDialog, slot: proc(super: QFileDialoghasHeightForWidthBase): bool) =
+type QFileDialoghasHeightForWidthProc* = proc(): bool
+proc onhasHeightForWidth*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialoghasHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileDialoghasHeightForWidthBase): bool
-  var tmp = new Cb
+  var tmp = new QFileDialoghasHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileDialog_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileDialog_hasHeightForWidth(self: ptr cQFileDialog, slot: int): bool {.exportc: "miqt_exec_callback_QFileDialog_hasHeightForWidth ".} =
-  type Cb = proc(super: QFileDialoghasHeightForWidthBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasHeightForWidth(QFileDialog(h: self), )
+  var nimfunc = cast[ptr QFileDialoghasHeightForWidthProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_paintEngine(self: QFileDialog, ): gen_qpaintengine.QPaintEngine =
-
+proc QFileDialogpaintEngine*(self: gen_qfiledialog_types.QFileDialog, ): gen_qpaintengine.QPaintEngine =
 
   gen_qpaintengine.QPaintEngine(h: fQFileDialog_virtualbase_paintEngine(self.h))
 
-type QFileDialogpaintEngineBase* = proc(): gen_qpaintengine.QPaintEngine
-proc onpaintEngine*(self: QFileDialog, slot: proc(super: QFileDialogpaintEngineBase): gen_qpaintengine.QPaintEngine) =
+type QFileDialogpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
+proc onpaintEngine*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogpaintEngineProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileDialogpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var tmp = new Cb
+  var tmp = new QFileDialogpaintEngineProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileDialog_override_virtual_paintEngine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileDialog_paintEngine(self: ptr cQFileDialog, slot: int): pointer {.exportc: "miqt_exec_callback_QFileDialog_paintEngine ".} =
-  type Cb = proc(super: QFileDialogpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_paintEngine(QFileDialog(h: self), )
+  var nimfunc = cast[ptr QFileDialogpaintEngineProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_event(self: QFileDialog, event: gen_qcoreevent.QEvent): bool =
-
+proc QFileDialogevent*(self: gen_qfiledialog_types.QFileDialog, event: gen_qcoreevent.QEvent): bool =
 
   fQFileDialog_virtualbase_event(self.h, event.h)
 
-type QFileDialogeventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QFileDialog, slot: proc(super: QFileDialogeventBase, event: gen_qcoreevent.QEvent): bool) =
+type QFileDialogeventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileDialogeventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QFileDialogeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileDialog_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileDialog_event(self: ptr cQFileDialog, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QFileDialog_event ".} =
-  type Cb = proc(super: QFileDialogeventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QFileDialog(h: self), event)
+  var nimfunc = cast[ptr QFileDialogeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_mousePressEvent(self: QFileDialog, event: gen_qevent.QMouseEvent): void =
-
+proc QFileDialogmousePressEvent*(self: gen_qfiledialog_types.QFileDialog, event: gen_qevent.QMouseEvent): void =
 
   fQFileDialog_virtualbase_mousePressEvent(self.h, event.h)
 
-type QFileDialogmousePressEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmousePressEvent*(self: QFileDialog, slot: proc(super: QFileDialogmousePressEventBase, event: gen_qevent.QMouseEvent): void) =
+type QFileDialogmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmousePressEvent*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogmousePressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileDialogmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QFileDialogmousePressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileDialog_override_virtual_mousePressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileDialog_mousePressEvent(self: ptr cQFileDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFileDialog_mousePressEvent ".} =
-  type Cb = proc(super: QFileDialogmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mousePressEvent(QFileDialog(h: self), event)
+  var nimfunc = cast[ptr QFileDialogmousePressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseReleaseEvent(self: QFileDialog, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QFileDialogmouseReleaseEvent*(self: gen_qfiledialog_types.QFileDialog, event: gen_qevent.QMouseEvent): void =
 
   fQFileDialog_virtualbase_mouseReleaseEvent(self.h, event.h)
 
-type QFileDialogmouseReleaseEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseReleaseEvent*(self: QFileDialog, slot: proc(super: QFileDialogmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void) =
+type QFileDialogmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseReleaseEvent*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogmouseReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileDialogmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QFileDialogmouseReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileDialog_override_virtual_mouseReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileDialog_mouseReleaseEvent(self: ptr cQFileDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFileDialog_mouseReleaseEvent ".} =
-  type Cb = proc(super: QFileDialogmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseReleaseEvent(QFileDialog(h: self), event)
+  var nimfunc = cast[ptr QFileDialogmouseReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseDoubleClickEvent(self: QFileDialog, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QFileDialogmouseDoubleClickEvent*(self: gen_qfiledialog_types.QFileDialog, event: gen_qevent.QMouseEvent): void =
 
   fQFileDialog_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
-type QFileDialogmouseDoubleClickEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseDoubleClickEvent*(self: QFileDialog, slot: proc(super: QFileDialogmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void) =
+type QFileDialogmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseDoubleClickEvent*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogmouseDoubleClickEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileDialogmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QFileDialogmouseDoubleClickEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileDialog_override_virtual_mouseDoubleClickEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileDialog_mouseDoubleClickEvent(self: ptr cQFileDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFileDialog_mouseDoubleClickEvent ".} =
-  type Cb = proc(super: QFileDialogmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseDoubleClickEvent(QFileDialog(h: self), event)
+  var nimfunc = cast[ptr QFileDialogmouseDoubleClickEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseMoveEvent(self: QFileDialog, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QFileDialogmouseMoveEvent*(self: gen_qfiledialog_types.QFileDialog, event: gen_qevent.QMouseEvent): void =
 
   fQFileDialog_virtualbase_mouseMoveEvent(self.h, event.h)
 
-type QFileDialogmouseMoveEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseMoveEvent*(self: QFileDialog, slot: proc(super: QFileDialogmouseMoveEventBase, event: gen_qevent.QMouseEvent): void) =
+type QFileDialogmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseMoveEvent*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogmouseMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileDialogmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QFileDialogmouseMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileDialog_override_virtual_mouseMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileDialog_mouseMoveEvent(self: ptr cQFileDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFileDialog_mouseMoveEvent ".} =
-  type Cb = proc(super: QFileDialogmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseMoveEvent(QFileDialog(h: self), event)
+  var nimfunc = cast[ptr QFileDialogmouseMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_wheelEvent(self: QFileDialog, event: gen_qevent.QWheelEvent): void =
-
+  nimfunc[](slotval1)
+proc QFileDialogwheelEvent*(self: gen_qfiledialog_types.QFileDialog, event: gen_qevent.QWheelEvent): void =
 
   fQFileDialog_virtualbase_wheelEvent(self.h, event.h)
 
-type QFileDialogwheelEventBase* = proc(event: gen_qevent.QWheelEvent): void
-proc onwheelEvent*(self: QFileDialog, slot: proc(super: QFileDialogwheelEventBase, event: gen_qevent.QWheelEvent): void) =
+type QFileDialogwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
+proc onwheelEvent*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogwheelEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileDialogwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var tmp = new Cb
+  var tmp = new QFileDialogwheelEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileDialog_override_virtual_wheelEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileDialog_wheelEvent(self: ptr cQFileDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFileDialog_wheelEvent ".} =
-  type Cb = proc(super: QFileDialogwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QWheelEvent): auto =
-    callVirtualBase_wheelEvent(QFileDialog(h: self), event)
+  var nimfunc = cast[ptr QFileDialogwheelEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QWheelEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyReleaseEvent(self: QFileDialog, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QFileDialogkeyReleaseEvent*(self: gen_qfiledialog_types.QFileDialog, event: gen_qevent.QKeyEvent): void =
 
   fQFileDialog_virtualbase_keyReleaseEvent(self.h, event.h)
 
-type QFileDialogkeyReleaseEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyReleaseEvent*(self: QFileDialog, slot: proc(super: QFileDialogkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void) =
+type QFileDialogkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyReleaseEvent*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogkeyReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileDialogkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QFileDialogkeyReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileDialog_override_virtual_keyReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileDialog_keyReleaseEvent(self: ptr cQFileDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFileDialog_keyReleaseEvent ".} =
-  type Cb = proc(super: QFileDialogkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyReleaseEvent(QFileDialog(h: self), event)
+  var nimfunc = cast[ptr QFileDialogkeyReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusInEvent(self: QFileDialog, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QFileDialogfocusInEvent*(self: gen_qfiledialog_types.QFileDialog, event: gen_qevent.QFocusEvent): void =
 
   fQFileDialog_virtualbase_focusInEvent(self.h, event.h)
 
-type QFileDialogfocusInEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusInEvent*(self: QFileDialog, slot: proc(super: QFileDialogfocusInEventBase, event: gen_qevent.QFocusEvent): void) =
+type QFileDialogfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusInEvent*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogfocusInEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileDialogfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QFileDialogfocusInEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileDialog_override_virtual_focusInEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileDialog_focusInEvent(self: ptr cQFileDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFileDialog_focusInEvent ".} =
-  type Cb = proc(super: QFileDialogfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusInEvent(QFileDialog(h: self), event)
+  var nimfunc = cast[ptr QFileDialogfocusInEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusOutEvent(self: QFileDialog, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QFileDialogfocusOutEvent*(self: gen_qfiledialog_types.QFileDialog, event: gen_qevent.QFocusEvent): void =
 
   fQFileDialog_virtualbase_focusOutEvent(self.h, event.h)
 
-type QFileDialogfocusOutEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusOutEvent*(self: QFileDialog, slot: proc(super: QFileDialogfocusOutEventBase, event: gen_qevent.QFocusEvent): void) =
+type QFileDialogfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusOutEvent*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogfocusOutEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileDialogfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QFileDialogfocusOutEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileDialog_override_virtual_focusOutEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileDialog_focusOutEvent(self: ptr cQFileDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFileDialog_focusOutEvent ".} =
-  type Cb = proc(super: QFileDialogfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusOutEvent(QFileDialog(h: self), event)
+  var nimfunc = cast[ptr QFileDialogfocusOutEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_enterEvent(self: QFileDialog, event: gen_qevent.QEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QFileDialogenterEvent*(self: gen_qfiledialog_types.QFileDialog, event: gen_qevent.QEnterEvent): void =
 
   fQFileDialog_virtualbase_enterEvent(self.h, event.h)
 
-type QFileDialogenterEventBase* = proc(event: gen_qevent.QEnterEvent): void
-proc onenterEvent*(self: QFileDialog, slot: proc(super: QFileDialogenterEventBase, event: gen_qevent.QEnterEvent): void) =
+type QFileDialogenterEventProc* = proc(event: gen_qevent.QEnterEvent): void
+proc onenterEvent*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogenterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileDialogenterEventBase, event: gen_qevent.QEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QFileDialogenterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileDialog_override_virtual_enterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileDialog_enterEvent(self: ptr cQFileDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFileDialog_enterEvent ".} =
-  type Cb = proc(super: QFileDialogenterEventBase, event: gen_qevent.QEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QEnterEvent): auto =
-    callVirtualBase_enterEvent(QFileDialog(h: self), event)
+  var nimfunc = cast[ptr QFileDialogenterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_leaveEvent(self: QFileDialog, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QFileDialogleaveEvent*(self: gen_qfiledialog_types.QFileDialog, event: gen_qcoreevent.QEvent): void =
 
   fQFileDialog_virtualbase_leaveEvent(self.h, event.h)
 
-type QFileDialogleaveEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onleaveEvent*(self: QFileDialog, slot: proc(super: QFileDialogleaveEventBase, event: gen_qcoreevent.QEvent): void) =
+type QFileDialogleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onleaveEvent*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogleaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileDialogleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QFileDialogleaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileDialog_override_virtual_leaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileDialog_leaveEvent(self: ptr cQFileDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFileDialog_leaveEvent ".} =
-  type Cb = proc(super: QFileDialogleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_leaveEvent(QFileDialog(h: self), event)
+  var nimfunc = cast[ptr QFileDialogleaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_paintEvent(self: QFileDialog, event: gen_qevent.QPaintEvent): void =
-
+  nimfunc[](slotval1)
+proc QFileDialogpaintEvent*(self: gen_qfiledialog_types.QFileDialog, event: gen_qevent.QPaintEvent): void =
 
   fQFileDialog_virtualbase_paintEvent(self.h, event.h)
 
-type QFileDialogpaintEventBase* = proc(event: gen_qevent.QPaintEvent): void
-proc onpaintEvent*(self: QFileDialog, slot: proc(super: QFileDialogpaintEventBase, event: gen_qevent.QPaintEvent): void) =
+type QFileDialogpaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
+proc onpaintEvent*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogpaintEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileDialogpaintEventBase, event: gen_qevent.QPaintEvent): void
-  var tmp = new Cb
+  var tmp = new QFileDialogpaintEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileDialog_override_virtual_paintEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileDialog_paintEvent(self: ptr cQFileDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFileDialog_paintEvent ".} =
-  type Cb = proc(super: QFileDialogpaintEventBase, event: gen_qevent.QPaintEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QPaintEvent): auto =
-    callVirtualBase_paintEvent(QFileDialog(h: self), event)
+  var nimfunc = cast[ptr QFileDialogpaintEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QPaintEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_moveEvent(self: QFileDialog, event: gen_qevent.QMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QFileDialogmoveEvent*(self: gen_qfiledialog_types.QFileDialog, event: gen_qevent.QMoveEvent): void =
 
   fQFileDialog_virtualbase_moveEvent(self.h, event.h)
 
-type QFileDialogmoveEventBase* = proc(event: gen_qevent.QMoveEvent): void
-proc onmoveEvent*(self: QFileDialog, slot: proc(super: QFileDialogmoveEventBase, event: gen_qevent.QMoveEvent): void) =
+type QFileDialogmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
+proc onmoveEvent*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogmoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileDialogmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QFileDialogmoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileDialog_override_virtual_moveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileDialog_moveEvent(self: ptr cQFileDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFileDialog_moveEvent ".} =
-  type Cb = proc(super: QFileDialogmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMoveEvent): auto =
-    callVirtualBase_moveEvent(QFileDialog(h: self), event)
+  var nimfunc = cast[ptr QFileDialogmoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_tabletEvent(self: QFileDialog, event: gen_qevent.QTabletEvent): void =
-
+  nimfunc[](slotval1)
+proc QFileDialogtabletEvent*(self: gen_qfiledialog_types.QFileDialog, event: gen_qevent.QTabletEvent): void =
 
   fQFileDialog_virtualbase_tabletEvent(self.h, event.h)
 
-type QFileDialogtabletEventBase* = proc(event: gen_qevent.QTabletEvent): void
-proc ontabletEvent*(self: QFileDialog, slot: proc(super: QFileDialogtabletEventBase, event: gen_qevent.QTabletEvent): void) =
+type QFileDialogtabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
+proc ontabletEvent*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogtabletEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileDialogtabletEventBase, event: gen_qevent.QTabletEvent): void
-  var tmp = new Cb
+  var tmp = new QFileDialogtabletEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileDialog_override_virtual_tabletEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileDialog_tabletEvent(self: ptr cQFileDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFileDialog_tabletEvent ".} =
-  type Cb = proc(super: QFileDialogtabletEventBase, event: gen_qevent.QTabletEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QTabletEvent): auto =
-    callVirtualBase_tabletEvent(QFileDialog(h: self), event)
+  var nimfunc = cast[ptr QFileDialogtabletEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QTabletEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_actionEvent(self: QFileDialog, event: gen_qevent.QActionEvent): void =
-
+  nimfunc[](slotval1)
+proc QFileDialogactionEvent*(self: gen_qfiledialog_types.QFileDialog, event: gen_qevent.QActionEvent): void =
 
   fQFileDialog_virtualbase_actionEvent(self.h, event.h)
 
-type QFileDialogactionEventBase* = proc(event: gen_qevent.QActionEvent): void
-proc onactionEvent*(self: QFileDialog, slot: proc(super: QFileDialogactionEventBase, event: gen_qevent.QActionEvent): void) =
+type QFileDialogactionEventProc* = proc(event: gen_qevent.QActionEvent): void
+proc onactionEvent*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogactionEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileDialogactionEventBase, event: gen_qevent.QActionEvent): void
-  var tmp = new Cb
+  var tmp = new QFileDialogactionEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileDialog_override_virtual_actionEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileDialog_actionEvent(self: ptr cQFileDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFileDialog_actionEvent ".} =
-  type Cb = proc(super: QFileDialogactionEventBase, event: gen_qevent.QActionEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QActionEvent): auto =
-    callVirtualBase_actionEvent(QFileDialog(h: self), event)
+  var nimfunc = cast[ptr QFileDialogactionEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QActionEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragEnterEvent(self: QFileDialog, event: gen_qevent.QDragEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QFileDialogdragEnterEvent*(self: gen_qfiledialog_types.QFileDialog, event: gen_qevent.QDragEnterEvent): void =
 
   fQFileDialog_virtualbase_dragEnterEvent(self.h, event.h)
 
-type QFileDialogdragEnterEventBase* = proc(event: gen_qevent.QDragEnterEvent): void
-proc ondragEnterEvent*(self: QFileDialog, slot: proc(super: QFileDialogdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void) =
+type QFileDialogdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
+proc ondragEnterEvent*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogdragEnterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileDialogdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QFileDialogdragEnterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileDialog_override_virtual_dragEnterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileDialog_dragEnterEvent(self: ptr cQFileDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFileDialog_dragEnterEvent ".} =
-  type Cb = proc(super: QFileDialogdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragEnterEvent): auto =
-    callVirtualBase_dragEnterEvent(QFileDialog(h: self), event)
+  var nimfunc = cast[ptr QFileDialogdragEnterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragMoveEvent(self: QFileDialog, event: gen_qevent.QDragMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QFileDialogdragMoveEvent*(self: gen_qfiledialog_types.QFileDialog, event: gen_qevent.QDragMoveEvent): void =
 
   fQFileDialog_virtualbase_dragMoveEvent(self.h, event.h)
 
-type QFileDialogdragMoveEventBase* = proc(event: gen_qevent.QDragMoveEvent): void
-proc ondragMoveEvent*(self: QFileDialog, slot: proc(super: QFileDialogdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void) =
+type QFileDialogdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
+proc ondragMoveEvent*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogdragMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileDialogdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QFileDialogdragMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileDialog_override_virtual_dragMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileDialog_dragMoveEvent(self: ptr cQFileDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFileDialog_dragMoveEvent ".} =
-  type Cb = proc(super: QFileDialogdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragMoveEvent): auto =
-    callVirtualBase_dragMoveEvent(QFileDialog(h: self), event)
+  var nimfunc = cast[ptr QFileDialogdragMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragLeaveEvent(self: QFileDialog, event: gen_qevent.QDragLeaveEvent): void =
-
+  nimfunc[](slotval1)
+proc QFileDialogdragLeaveEvent*(self: gen_qfiledialog_types.QFileDialog, event: gen_qevent.QDragLeaveEvent): void =
 
   fQFileDialog_virtualbase_dragLeaveEvent(self.h, event.h)
 
-type QFileDialogdragLeaveEventBase* = proc(event: gen_qevent.QDragLeaveEvent): void
-proc ondragLeaveEvent*(self: QFileDialog, slot: proc(super: QFileDialogdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void) =
+type QFileDialogdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
+proc ondragLeaveEvent*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogdragLeaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileDialogdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var tmp = new Cb
+  var tmp = new QFileDialogdragLeaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileDialog_override_virtual_dragLeaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileDialog_dragLeaveEvent(self: ptr cQFileDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFileDialog_dragLeaveEvent ".} =
-  type Cb = proc(super: QFileDialogdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragLeaveEvent): auto =
-    callVirtualBase_dragLeaveEvent(QFileDialog(h: self), event)
+  var nimfunc = cast[ptr QFileDialogdragLeaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragLeaveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dropEvent(self: QFileDialog, event: gen_qevent.QDropEvent): void =
-
+  nimfunc[](slotval1)
+proc QFileDialogdropEvent*(self: gen_qfiledialog_types.QFileDialog, event: gen_qevent.QDropEvent): void =
 
   fQFileDialog_virtualbase_dropEvent(self.h, event.h)
 
-type QFileDialogdropEventBase* = proc(event: gen_qevent.QDropEvent): void
-proc ondropEvent*(self: QFileDialog, slot: proc(super: QFileDialogdropEventBase, event: gen_qevent.QDropEvent): void) =
+type QFileDialogdropEventProc* = proc(event: gen_qevent.QDropEvent): void
+proc ondropEvent*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogdropEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileDialogdropEventBase, event: gen_qevent.QDropEvent): void
-  var tmp = new Cb
+  var tmp = new QFileDialogdropEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileDialog_override_virtual_dropEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileDialog_dropEvent(self: ptr cQFileDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFileDialog_dropEvent ".} =
-  type Cb = proc(super: QFileDialogdropEventBase, event: gen_qevent.QDropEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDropEvent): auto =
-    callVirtualBase_dropEvent(QFileDialog(h: self), event)
+  var nimfunc = cast[ptr QFileDialogdropEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDropEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hideEvent(self: QFileDialog, event: gen_qevent.QHideEvent): void =
-
+  nimfunc[](slotval1)
+proc QFileDialoghideEvent*(self: gen_qfiledialog_types.QFileDialog, event: gen_qevent.QHideEvent): void =
 
   fQFileDialog_virtualbase_hideEvent(self.h, event.h)
 
-type QFileDialoghideEventBase* = proc(event: gen_qevent.QHideEvent): void
-proc onhideEvent*(self: QFileDialog, slot: proc(super: QFileDialoghideEventBase, event: gen_qevent.QHideEvent): void) =
+type QFileDialoghideEventProc* = proc(event: gen_qevent.QHideEvent): void
+proc onhideEvent*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialoghideEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileDialoghideEventBase, event: gen_qevent.QHideEvent): void
-  var tmp = new Cb
+  var tmp = new QFileDialoghideEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileDialog_override_virtual_hideEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileDialog_hideEvent(self: ptr cQFileDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFileDialog_hideEvent ".} =
-  type Cb = proc(super: QFileDialoghideEventBase, event: gen_qevent.QHideEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QHideEvent): auto =
-    callVirtualBase_hideEvent(QFileDialog(h: self), event)
+  var nimfunc = cast[ptr QFileDialoghideEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QHideEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_nativeEvent(self: QFileDialog, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
-
+  nimfunc[](slotval1)
+proc QFileDialognativeEvent*(self: gen_qfiledialog_types.QFileDialog, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
 
   fQFileDialog_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
-type QFileDialognativeEventBase* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-proc onnativeEvent*(self: QFileDialog, slot: proc(super: QFileDialognativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool) =
+type QFileDialognativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
+proc onnativeEvent*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialognativeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileDialognativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-  var tmp = new Cb
+  var tmp = new QFileDialognativeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileDialog_override_virtual_nativeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileDialog_nativeEvent(self: ptr cQFileDialog, slot: int, eventType: struct_miqt_string, message: pointer, resultVal: ptr uint): bool {.exportc: "miqt_exec_callback_QFileDialog_nativeEvent ".} =
-  type Cb = proc(super: QFileDialognativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(eventType: seq[byte], message: pointer, resultVal: ptr uint): auto =
-    callVirtualBase_nativeEvent(QFileDialog(h: self), eventType, message, resultVal)
+  var nimfunc = cast[ptr QFileDialognativeEventProc](cast[pointer](slot))
   var veventType_bytearray = eventType
   var veventTypex_ret = @(toOpenArrayByte(veventType_bytearray.data, 0, int(veventType_bytearray.len)-1))
   c_free(veventType_bytearray.data)
@@ -2181,294 +1954,234 @@ proc miqt_exec_callback_QFileDialog_nativeEvent(self: ptr cQFileDialog, slot: in
   let slotval3 = resultVal
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_metric(self: QFileDialog, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint =
-
+proc QFileDialogmetric*(self: gen_qfiledialog_types.QFileDialog, param1: cint): cint =
 
   fQFileDialog_virtualbase_metric(self.h, cint(param1))
 
-type QFileDialogmetricBase* = proc(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-proc onmetric*(self: QFileDialog, slot: proc(super: QFileDialogmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint) =
+type QFileDialogmetricProc* = proc(param1: cint): cint
+proc onmetric*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogmetricProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileDialogmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var tmp = new Cb
+  var tmp = new QFileDialogmetricProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileDialog_override_virtual_metric(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileDialog_metric(self: ptr cQFileDialog, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QFileDialog_metric ".} =
-  type Cb = proc(super: QFileDialogmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): auto =
-    callVirtualBase_metric(QFileDialog(h: self), param1)
-  let slotval1 = gen_qpaintdevice.QPaintDevicePaintDeviceMetric(param1)
+  var nimfunc = cast[ptr QFileDialogmetricProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_initPainter(self: QFileDialog, painter: gen_qpainter.QPainter): void =
-
+proc QFileDialoginitPainter*(self: gen_qfiledialog_types.QFileDialog, painter: gen_qpainter.QPainter): void =
 
   fQFileDialog_virtualbase_initPainter(self.h, painter.h)
 
-type QFileDialoginitPainterBase* = proc(painter: gen_qpainter.QPainter): void
-proc oninitPainter*(self: QFileDialog, slot: proc(super: QFileDialoginitPainterBase, painter: gen_qpainter.QPainter): void) =
+type QFileDialoginitPainterProc* = proc(painter: gen_qpainter.QPainter): void
+proc oninitPainter*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialoginitPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileDialoginitPainterBase, painter: gen_qpainter.QPainter): void
-  var tmp = new Cb
+  var tmp = new QFileDialoginitPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileDialog_override_virtual_initPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileDialog_initPainter(self: ptr cQFileDialog, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_QFileDialog_initPainter ".} =
-  type Cb = proc(super: QFileDialoginitPainterBase, painter: gen_qpainter.QPainter): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter): auto =
-    callVirtualBase_initPainter(QFileDialog(h: self), painter)
+  var nimfunc = cast[ptr QFileDialoginitPainterProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_redirected(self: QFileDialog, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
+  nimfunc[](slotval1)
+proc QFileDialogredirected*(self: gen_qfiledialog_types.QFileDialog, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
 
   gen_qpaintdevice.QPaintDevice(h: fQFileDialog_virtualbase_redirected(self.h, offset.h))
 
-type QFileDialogredirectedBase* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-proc onredirected*(self: QFileDialog, slot: proc(super: QFileDialogredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice) =
+type QFileDialogredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
+proc onredirected*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogredirectedProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileDialogredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var tmp = new Cb
+  var tmp = new QFileDialogredirectedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileDialog_override_virtual_redirected(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileDialog_redirected(self: ptr cQFileDialog, slot: int, offset: pointer): pointer {.exportc: "miqt_exec_callback_QFileDialog_redirected ".} =
-  type Cb = proc(super: QFileDialogredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(offset: gen_qpoint.QPoint): auto =
-    callVirtualBase_redirected(QFileDialog(h: self), offset)
+  var nimfunc = cast[ptr QFileDialogredirectedProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: offset)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_sharedPainter(self: QFileDialog, ): gen_qpainter.QPainter =
-
+proc QFileDialogsharedPainter*(self: gen_qfiledialog_types.QFileDialog, ): gen_qpainter.QPainter =
 
   gen_qpainter.QPainter(h: fQFileDialog_virtualbase_sharedPainter(self.h))
 
-type QFileDialogsharedPainterBase* = proc(): gen_qpainter.QPainter
-proc onsharedPainter*(self: QFileDialog, slot: proc(super: QFileDialogsharedPainterBase): gen_qpainter.QPainter) =
+type QFileDialogsharedPainterProc* = proc(): gen_qpainter.QPainter
+proc onsharedPainter*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogsharedPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileDialogsharedPainterBase): gen_qpainter.QPainter
-  var tmp = new Cb
+  var tmp = new QFileDialogsharedPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileDialog_override_virtual_sharedPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileDialog_sharedPainter(self: ptr cQFileDialog, slot: int): pointer {.exportc: "miqt_exec_callback_QFileDialog_sharedPainter ".} =
-  type Cb = proc(super: QFileDialogsharedPainterBase): gen_qpainter.QPainter
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sharedPainter(QFileDialog(h: self), )
+  var nimfunc = cast[ptr QFileDialogsharedPainterProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_inputMethodEvent(self: QFileDialog, param1: gen_qevent.QInputMethodEvent): void =
-
+proc QFileDialoginputMethodEvent*(self: gen_qfiledialog_types.QFileDialog, param1: gen_qevent.QInputMethodEvent): void =
 
   fQFileDialog_virtualbase_inputMethodEvent(self.h, param1.h)
 
-type QFileDialoginputMethodEventBase* = proc(param1: gen_qevent.QInputMethodEvent): void
-proc oninputMethodEvent*(self: QFileDialog, slot: proc(super: QFileDialoginputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void) =
+type QFileDialoginputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
+proc oninputMethodEvent*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialoginputMethodEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileDialoginputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var tmp = new Cb
+  var tmp = new QFileDialoginputMethodEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileDialog_override_virtual_inputMethodEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileDialog_inputMethodEvent(self: ptr cQFileDialog, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QFileDialog_inputMethodEvent ".} =
-  type Cb = proc(super: QFileDialoginputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QInputMethodEvent): auto =
-    callVirtualBase_inputMethodEvent(QFileDialog(h: self), param1)
+  var nimfunc = cast[ptr QFileDialoginputMethodEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QInputMethodEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_inputMethodQuery(self: QFileDialog, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant =
-
+  nimfunc[](slotval1)
+proc QFileDialoginputMethodQuery*(self: gen_qfiledialog_types.QFileDialog, param1: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQFileDialog_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
-type QFileDialoginputMethodQueryBase* = proc(param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-proc oninputMethodQuery*(self: QFileDialog, slot: proc(super: QFileDialoginputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant) =
+type QFileDialoginputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
+proc oninputMethodQuery*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialoginputMethodQueryProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileDialoginputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QFileDialoginputMethodQueryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileDialog_override_virtual_inputMethodQuery(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileDialog_inputMethodQuery(self: ptr cQFileDialog, slot: int, param1: cint): pointer {.exportc: "miqt_exec_callback_QFileDialog_inputMethodQuery ".} =
-  type Cb = proc(super: QFileDialoginputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qnamespace.InputMethodQuery): auto =
-    callVirtualBase_inputMethodQuery(QFileDialog(h: self), param1)
-  let slotval1 = gen_qnamespace.InputMethodQuery(param1)
+  var nimfunc = cast[ptr QFileDialoginputMethodQueryProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_focusNextPrevChild(self: QFileDialog, next: bool): bool =
-
+proc QFileDialogfocusNextPrevChild*(self: gen_qfiledialog_types.QFileDialog, next: bool): bool =
 
   fQFileDialog_virtualbase_focusNextPrevChild(self.h, next)
 
-type QFileDialogfocusNextPrevChildBase* = proc(next: bool): bool
-proc onfocusNextPrevChild*(self: QFileDialog, slot: proc(super: QFileDialogfocusNextPrevChildBase, next: bool): bool) =
+type QFileDialogfocusNextPrevChildProc* = proc(next: bool): bool
+proc onfocusNextPrevChild*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogfocusNextPrevChildProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileDialogfocusNextPrevChildBase, next: bool): bool
-  var tmp = new Cb
+  var tmp = new QFileDialogfocusNextPrevChildProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileDialog_override_virtual_focusNextPrevChild(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileDialog_focusNextPrevChild(self: ptr cQFileDialog, slot: int, next: bool): bool {.exportc: "miqt_exec_callback_QFileDialog_focusNextPrevChild ".} =
-  type Cb = proc(super: QFileDialogfocusNextPrevChildBase, next: bool): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(next: bool): auto =
-    callVirtualBase_focusNextPrevChild(QFileDialog(h: self), next)
+  var nimfunc = cast[ptr QFileDialogfocusNextPrevChildProc](cast[pointer](slot))
   let slotval1 = next
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QFileDialog, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QFileDialogtimerEvent*(self: gen_qfiledialog_types.QFileDialog, event: gen_qcoreevent.QTimerEvent): void =
 
   fQFileDialog_virtualbase_timerEvent(self.h, event.h)
 
-type QFileDialogtimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QFileDialog, slot: proc(super: QFileDialogtimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QFileDialogtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogtimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileDialogtimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QFileDialogtimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileDialog_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileDialog_timerEvent(self: ptr cQFileDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFileDialog_timerEvent ".} =
-  type Cb = proc(super: QFileDialogtimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QFileDialog(h: self), event)
+  var nimfunc = cast[ptr QFileDialogtimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QFileDialog, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QFileDialogchildEvent*(self: gen_qfiledialog_types.QFileDialog, event: gen_qcoreevent.QChildEvent): void =
 
   fQFileDialog_virtualbase_childEvent(self.h, event.h)
 
-type QFileDialogchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QFileDialog, slot: proc(super: QFileDialogchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QFileDialogchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileDialogchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QFileDialogchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileDialog_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileDialog_childEvent(self: ptr cQFileDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFileDialog_childEvent ".} =
-  type Cb = proc(super: QFileDialogchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QFileDialog(h: self), event)
+  var nimfunc = cast[ptr QFileDialogchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QFileDialog, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QFileDialogcustomEvent*(self: gen_qfiledialog_types.QFileDialog, event: gen_qcoreevent.QEvent): void =
 
   fQFileDialog_virtualbase_customEvent(self.h, event.h)
 
-type QFileDialogcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QFileDialog, slot: proc(super: QFileDialogcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QFileDialogcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileDialogcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QFileDialogcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileDialog_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileDialog_customEvent(self: ptr cQFileDialog, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QFileDialog_customEvent ".} =
-  type Cb = proc(super: QFileDialogcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QFileDialog(h: self), event)
+  var nimfunc = cast[ptr QFileDialogcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QFileDialog, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QFileDialogconnectNotify*(self: gen_qfiledialog_types.QFileDialog, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQFileDialog_virtualbase_connectNotify(self.h, signal.h)
 
-type QFileDialogconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QFileDialog, slot: proc(super: QFileDialogconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QFileDialogconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileDialogconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QFileDialogconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileDialog_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileDialog_connectNotify(self: ptr cQFileDialog, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QFileDialog_connectNotify ".} =
-  type Cb = proc(super: QFileDialogconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QFileDialog(h: self), signal)
+  var nimfunc = cast[ptr QFileDialogconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QFileDialog, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QFileDialogdisconnectNotify*(self: gen_qfiledialog_types.QFileDialog, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQFileDialog_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QFileDialogdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QFileDialog, slot: proc(super: QFileDialogdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QFileDialogdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qfiledialog_types.QFileDialog, slot: QFileDialogdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QFileDialogdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QFileDialogdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQFileDialog_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QFileDialog_disconnectNotify(self: ptr cQFileDialog, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QFileDialog_disconnectNotify ".} =
-  type Cb = proc(super: QFileDialogdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QFileDialog(h: self), signal)
+  var nimfunc = cast[ptr QFileDialogdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QFileDialog): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qfiledialog_types.QFileDialog): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQFileDialog_staticMetaObject())
-proc delete*(self: QFileDialog) =
+proc delete*(self: gen_qfiledialog_types.QFileDialog) =
   fcQFileDialog_delete(self.h)

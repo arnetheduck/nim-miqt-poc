@@ -39,13 +39,11 @@ export gen_qgraphicslayoutitem_types
 
 import
   gen_qgraphicsitem,
-  gen_qnamespace,
   gen_qrect,
   gen_qsize,
   gen_qsizepolicy
 export
   gen_qgraphicsitem,
-  gen_qnamespace,
   gen_qrect,
   gen_qsize,
   gen_qsizepolicy
@@ -105,211 +103,201 @@ proc fcQGraphicsLayoutItem_override_virtual_sizeHint(self: pointer, slot: int) {
 proc fcQGraphicsLayoutItem_delete(self: pointer) {.importc: "QGraphicsLayoutItem_delete".}
 
 
-func init*(T: type QGraphicsLayoutItem, h: ptr cQGraphicsLayoutItem): QGraphicsLayoutItem =
+func init*(T: type gen_qgraphicslayoutitem_types.QGraphicsLayoutItem, h: ptr cQGraphicsLayoutItem): gen_qgraphicslayoutitem_types.QGraphicsLayoutItem =
   T(h: h)
-proc create*(T: type QGraphicsLayoutItem, ): QGraphicsLayoutItem =
+proc create*(T: type gen_qgraphicslayoutitem_types.QGraphicsLayoutItem, ): gen_qgraphicslayoutitem_types.QGraphicsLayoutItem =
 
-  QGraphicsLayoutItem.init(fcQGraphicsLayoutItem_new())
-proc create*(T: type QGraphicsLayoutItem, parent: QGraphicsLayoutItem): QGraphicsLayoutItem =
+  gen_qgraphicslayoutitem_types.QGraphicsLayoutItem.init(fcQGraphicsLayoutItem_new())
+proc create*(T: type gen_qgraphicslayoutitem_types.QGraphicsLayoutItem, parent: gen_qgraphicslayoutitem_types.QGraphicsLayoutItem): gen_qgraphicslayoutitem_types.QGraphicsLayoutItem =
 
-  QGraphicsLayoutItem.init(fcQGraphicsLayoutItem_new2(parent.h))
-proc create*(T: type QGraphicsLayoutItem, parent: QGraphicsLayoutItem, isLayout: bool): QGraphicsLayoutItem =
+  gen_qgraphicslayoutitem_types.QGraphicsLayoutItem.init(fcQGraphicsLayoutItem_new2(parent.h))
+proc create*(T: type gen_qgraphicslayoutitem_types.QGraphicsLayoutItem, parent: gen_qgraphicslayoutitem_types.QGraphicsLayoutItem, isLayout: bool): gen_qgraphicslayoutitem_types.QGraphicsLayoutItem =
 
-  QGraphicsLayoutItem.init(fcQGraphicsLayoutItem_new3(parent.h, isLayout))
-proc setSizePolicy*(self: QGraphicsLayoutItem, policy: gen_qsizepolicy.QSizePolicy): void =
+  gen_qgraphicslayoutitem_types.QGraphicsLayoutItem.init(fcQGraphicsLayoutItem_new3(parent.h, isLayout))
+proc setSizePolicy*(self: gen_qgraphicslayoutitem_types.QGraphicsLayoutItem, policy: gen_qsizepolicy.QSizePolicy): void =
 
   fcQGraphicsLayoutItem_setSizePolicy(self.h, policy.h)
 
-proc setSizePolicy2*(self: QGraphicsLayoutItem, hPolicy: gen_qsizepolicy.QSizePolicyPolicy, vPolicy: gen_qsizepolicy.QSizePolicyPolicy): void =
+proc setSizePolicy2*(self: gen_qgraphicslayoutitem_types.QGraphicsLayoutItem, hPolicy: cint, vPolicy: cint): void =
 
   fcQGraphicsLayoutItem_setSizePolicy2(self.h, cint(hPolicy), cint(vPolicy))
 
-proc sizePolicy*(self: QGraphicsLayoutItem, ): gen_qsizepolicy.QSizePolicy =
+proc sizePolicy*(self: gen_qgraphicslayoutitem_types.QGraphicsLayoutItem, ): gen_qsizepolicy.QSizePolicy =
 
   gen_qsizepolicy.QSizePolicy(h: fcQGraphicsLayoutItem_sizePolicy(self.h))
 
-proc setMinimumSize*(self: QGraphicsLayoutItem, size: gen_qsize.QSizeF): void =
+proc setMinimumSize*(self: gen_qgraphicslayoutitem_types.QGraphicsLayoutItem, size: gen_qsize.QSizeF): void =
 
   fcQGraphicsLayoutItem_setMinimumSize(self.h, size.h)
 
-proc setMinimumSize2*(self: QGraphicsLayoutItem, w: float64, h: float64): void =
+proc setMinimumSize2*(self: gen_qgraphicslayoutitem_types.QGraphicsLayoutItem, w: float64, h: float64): void =
 
   fcQGraphicsLayoutItem_setMinimumSize2(self.h, w, h)
 
-proc minimumSize*(self: QGraphicsLayoutItem, ): gen_qsize.QSizeF =
+proc minimumSize*(self: gen_qgraphicslayoutitem_types.QGraphicsLayoutItem, ): gen_qsize.QSizeF =
 
   gen_qsize.QSizeF(h: fcQGraphicsLayoutItem_minimumSize(self.h))
 
-proc setMinimumWidth*(self: QGraphicsLayoutItem, width: float64): void =
+proc setMinimumWidth*(self: gen_qgraphicslayoutitem_types.QGraphicsLayoutItem, width: float64): void =
 
   fcQGraphicsLayoutItem_setMinimumWidth(self.h, width)
 
-proc minimumWidth*(self: QGraphicsLayoutItem, ): float64 =
+proc minimumWidth*(self: gen_qgraphicslayoutitem_types.QGraphicsLayoutItem, ): float64 =
 
   fcQGraphicsLayoutItem_minimumWidth(self.h)
 
-proc setMinimumHeight*(self: QGraphicsLayoutItem, height: float64): void =
+proc setMinimumHeight*(self: gen_qgraphicslayoutitem_types.QGraphicsLayoutItem, height: float64): void =
 
   fcQGraphicsLayoutItem_setMinimumHeight(self.h, height)
 
-proc minimumHeight*(self: QGraphicsLayoutItem, ): float64 =
+proc minimumHeight*(self: gen_qgraphicslayoutitem_types.QGraphicsLayoutItem, ): float64 =
 
   fcQGraphicsLayoutItem_minimumHeight(self.h)
 
-proc setPreferredSize*(self: QGraphicsLayoutItem, size: gen_qsize.QSizeF): void =
+proc setPreferredSize*(self: gen_qgraphicslayoutitem_types.QGraphicsLayoutItem, size: gen_qsize.QSizeF): void =
 
   fcQGraphicsLayoutItem_setPreferredSize(self.h, size.h)
 
-proc setPreferredSize2*(self: QGraphicsLayoutItem, w: float64, h: float64): void =
+proc setPreferredSize2*(self: gen_qgraphicslayoutitem_types.QGraphicsLayoutItem, w: float64, h: float64): void =
 
   fcQGraphicsLayoutItem_setPreferredSize2(self.h, w, h)
 
-proc preferredSize*(self: QGraphicsLayoutItem, ): gen_qsize.QSizeF =
+proc preferredSize*(self: gen_qgraphicslayoutitem_types.QGraphicsLayoutItem, ): gen_qsize.QSizeF =
 
   gen_qsize.QSizeF(h: fcQGraphicsLayoutItem_preferredSize(self.h))
 
-proc setPreferredWidth*(self: QGraphicsLayoutItem, width: float64): void =
+proc setPreferredWidth*(self: gen_qgraphicslayoutitem_types.QGraphicsLayoutItem, width: float64): void =
 
   fcQGraphicsLayoutItem_setPreferredWidth(self.h, width)
 
-proc preferredWidth*(self: QGraphicsLayoutItem, ): float64 =
+proc preferredWidth*(self: gen_qgraphicslayoutitem_types.QGraphicsLayoutItem, ): float64 =
 
   fcQGraphicsLayoutItem_preferredWidth(self.h)
 
-proc setPreferredHeight*(self: QGraphicsLayoutItem, height: float64): void =
+proc setPreferredHeight*(self: gen_qgraphicslayoutitem_types.QGraphicsLayoutItem, height: float64): void =
 
   fcQGraphicsLayoutItem_setPreferredHeight(self.h, height)
 
-proc preferredHeight*(self: QGraphicsLayoutItem, ): float64 =
+proc preferredHeight*(self: gen_qgraphicslayoutitem_types.QGraphicsLayoutItem, ): float64 =
 
   fcQGraphicsLayoutItem_preferredHeight(self.h)
 
-proc setMaximumSize*(self: QGraphicsLayoutItem, size: gen_qsize.QSizeF): void =
+proc setMaximumSize*(self: gen_qgraphicslayoutitem_types.QGraphicsLayoutItem, size: gen_qsize.QSizeF): void =
 
   fcQGraphicsLayoutItem_setMaximumSize(self.h, size.h)
 
-proc setMaximumSize2*(self: QGraphicsLayoutItem, w: float64, h: float64): void =
+proc setMaximumSize2*(self: gen_qgraphicslayoutitem_types.QGraphicsLayoutItem, w: float64, h: float64): void =
 
   fcQGraphicsLayoutItem_setMaximumSize2(self.h, w, h)
 
-proc maximumSize*(self: QGraphicsLayoutItem, ): gen_qsize.QSizeF =
+proc maximumSize*(self: gen_qgraphicslayoutitem_types.QGraphicsLayoutItem, ): gen_qsize.QSizeF =
 
   gen_qsize.QSizeF(h: fcQGraphicsLayoutItem_maximumSize(self.h))
 
-proc setMaximumWidth*(self: QGraphicsLayoutItem, width: float64): void =
+proc setMaximumWidth*(self: gen_qgraphicslayoutitem_types.QGraphicsLayoutItem, width: float64): void =
 
   fcQGraphicsLayoutItem_setMaximumWidth(self.h, width)
 
-proc maximumWidth*(self: QGraphicsLayoutItem, ): float64 =
+proc maximumWidth*(self: gen_qgraphicslayoutitem_types.QGraphicsLayoutItem, ): float64 =
 
   fcQGraphicsLayoutItem_maximumWidth(self.h)
 
-proc setMaximumHeight*(self: QGraphicsLayoutItem, height: float64): void =
+proc setMaximumHeight*(self: gen_qgraphicslayoutitem_types.QGraphicsLayoutItem, height: float64): void =
 
   fcQGraphicsLayoutItem_setMaximumHeight(self.h, height)
 
-proc maximumHeight*(self: QGraphicsLayoutItem, ): float64 =
+proc maximumHeight*(self: gen_qgraphicslayoutitem_types.QGraphicsLayoutItem, ): float64 =
 
   fcQGraphicsLayoutItem_maximumHeight(self.h)
 
-proc setGeometry*(self: QGraphicsLayoutItem, rect: gen_qrect.QRectF): void =
+proc setGeometry*(self: gen_qgraphicslayoutitem_types.QGraphicsLayoutItem, rect: gen_qrect.QRectF): void =
 
   fcQGraphicsLayoutItem_setGeometry(self.h, rect.h)
 
-proc geometry*(self: QGraphicsLayoutItem, ): gen_qrect.QRectF =
+proc geometry*(self: gen_qgraphicslayoutitem_types.QGraphicsLayoutItem, ): gen_qrect.QRectF =
 
   gen_qrect.QRectF(h: fcQGraphicsLayoutItem_geometry(self.h))
 
-proc getContentsMargins*(self: QGraphicsLayoutItem, left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): void =
+proc getContentsMargins*(self: gen_qgraphicslayoutitem_types.QGraphicsLayoutItem, left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): void =
 
   fcQGraphicsLayoutItem_getContentsMargins(self.h, left, top, right, bottom)
 
-proc contentsRect*(self: QGraphicsLayoutItem, ): gen_qrect.QRectF =
+proc contentsRect*(self: gen_qgraphicslayoutitem_types.QGraphicsLayoutItem, ): gen_qrect.QRectF =
 
   gen_qrect.QRectF(h: fcQGraphicsLayoutItem_contentsRect(self.h))
 
-proc effectiveSizeHint*(self: QGraphicsLayoutItem, which: gen_qnamespace.SizeHint): gen_qsize.QSizeF =
+proc effectiveSizeHint*(self: gen_qgraphicslayoutitem_types.QGraphicsLayoutItem, which: cint): gen_qsize.QSizeF =
 
   gen_qsize.QSizeF(h: fcQGraphicsLayoutItem_effectiveSizeHint(self.h, cint(which)))
 
-proc updateGeometry*(self: QGraphicsLayoutItem, ): void =
+proc updateGeometry*(self: gen_qgraphicslayoutitem_types.QGraphicsLayoutItem, ): void =
 
   fcQGraphicsLayoutItem_updateGeometry(self.h)
 
-proc isEmpty*(self: QGraphicsLayoutItem, ): bool =
+proc isEmpty*(self: gen_qgraphicslayoutitem_types.QGraphicsLayoutItem, ): bool =
 
   fcQGraphicsLayoutItem_isEmpty(self.h)
 
-proc parentLayoutItem*(self: QGraphicsLayoutItem, ): QGraphicsLayoutItem =
+proc parentLayoutItem*(self: gen_qgraphicslayoutitem_types.QGraphicsLayoutItem, ): gen_qgraphicslayoutitem_types.QGraphicsLayoutItem =
 
-  QGraphicsLayoutItem(h: fcQGraphicsLayoutItem_parentLayoutItem(self.h))
+  gen_qgraphicslayoutitem_types.QGraphicsLayoutItem(h: fcQGraphicsLayoutItem_parentLayoutItem(self.h))
 
-proc setParentLayoutItem*(self: QGraphicsLayoutItem, parent: QGraphicsLayoutItem): void =
+proc setParentLayoutItem*(self: gen_qgraphicslayoutitem_types.QGraphicsLayoutItem, parent: gen_qgraphicslayoutitem_types.QGraphicsLayoutItem): void =
 
   fcQGraphicsLayoutItem_setParentLayoutItem(self.h, parent.h)
 
-proc isLayout*(self: QGraphicsLayoutItem, ): bool =
+proc isLayout*(self: gen_qgraphicslayoutitem_types.QGraphicsLayoutItem, ): bool =
 
   fcQGraphicsLayoutItem_isLayout(self.h)
 
-proc graphicsItem*(self: QGraphicsLayoutItem, ): gen_qgraphicsitem.QGraphicsItem =
+proc graphicsItem*(self: gen_qgraphicslayoutitem_types.QGraphicsLayoutItem, ): gen_qgraphicsitem.QGraphicsItem =
 
   gen_qgraphicsitem.QGraphicsItem(h: fcQGraphicsLayoutItem_graphicsItem(self.h))
 
-proc ownedByLayout*(self: QGraphicsLayoutItem, ): bool =
+proc ownedByLayout*(self: gen_qgraphicslayoutitem_types.QGraphicsLayoutItem, ): bool =
 
   fcQGraphicsLayoutItem_ownedByLayout(self.h)
 
-proc setSizePolicy3*(self: QGraphicsLayoutItem, hPolicy: gen_qsizepolicy.QSizePolicyPolicy, vPolicy: gen_qsizepolicy.QSizePolicyPolicy, controlType: gen_qsizepolicy.QSizePolicyControlType): void =
+proc setSizePolicy3*(self: gen_qgraphicslayoutitem_types.QGraphicsLayoutItem, hPolicy: cint, vPolicy: cint, controlType: cint): void =
 
   fcQGraphicsLayoutItem_setSizePolicy3(self.h, cint(hPolicy), cint(vPolicy), cint(controlType))
 
-proc effectiveSizeHint2*(self: QGraphicsLayoutItem, which: gen_qnamespace.SizeHint, constraint: gen_qsize.QSizeF): gen_qsize.QSizeF =
+proc effectiveSizeHint2*(self: gen_qgraphicslayoutitem_types.QGraphicsLayoutItem, which: cint, constraint: gen_qsize.QSizeF): gen_qsize.QSizeF =
 
   gen_qsize.QSizeF(h: fcQGraphicsLayoutItem_effectiveSizeHint2(self.h, cint(which), constraint.h))
 
-proc callVirtualBase_setGeometry(self: QGraphicsLayoutItem, rect: gen_qrect.QRectF): void =
-
+proc QGraphicsLayoutItemsetGeometry*(self: gen_qgraphicslayoutitem_types.QGraphicsLayoutItem, rect: gen_qrect.QRectF): void =
 
   fQGraphicsLayoutItem_virtualbase_setGeometry(self.h, rect.h)
 
-type QGraphicsLayoutItemsetGeometryBase* = proc(rect: gen_qrect.QRectF): void
-proc onsetGeometry*(self: QGraphicsLayoutItem, slot: proc(super: QGraphicsLayoutItemsetGeometryBase, rect: gen_qrect.QRectF): void) =
+type QGraphicsLayoutItemsetGeometryProc* = proc(rect: gen_qrect.QRectF): void
+proc onsetGeometry*(self: gen_qgraphicslayoutitem_types.QGraphicsLayoutItem, slot: QGraphicsLayoutItemsetGeometryProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsLayoutItemsetGeometryBase, rect: gen_qrect.QRectF): void
-  var tmp = new Cb
+  var tmp = new QGraphicsLayoutItemsetGeometryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsLayoutItem_override_virtual_setGeometry(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsLayoutItem_setGeometry(self: ptr cQGraphicsLayoutItem, slot: int, rect: pointer): void {.exportc: "miqt_exec_callback_QGraphicsLayoutItem_setGeometry ".} =
-  type Cb = proc(super: QGraphicsLayoutItemsetGeometryBase, rect: gen_qrect.QRectF): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(rect: gen_qrect.QRectF): auto =
-    callVirtualBase_setGeometry(QGraphicsLayoutItem(h: self), rect)
+  var nimfunc = cast[ptr QGraphicsLayoutItemsetGeometryProc](cast[pointer](slot))
   let slotval1 = gen_qrect.QRectF(h: rect)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_getContentsMargins(self: QGraphicsLayoutItem, left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): void =
-
+  nimfunc[](slotval1)
+proc QGraphicsLayoutItemgetContentsMargins*(self: gen_qgraphicslayoutitem_types.QGraphicsLayoutItem, left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): void =
 
   fQGraphicsLayoutItem_virtualbase_getContentsMargins(self.h, left, top, right, bottom)
 
-type QGraphicsLayoutItemgetContentsMarginsBase* = proc(left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): void
-proc ongetContentsMargins*(self: QGraphicsLayoutItem, slot: proc(super: QGraphicsLayoutItemgetContentsMarginsBase, left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): void) =
+type QGraphicsLayoutItemgetContentsMarginsProc* = proc(left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): void
+proc ongetContentsMargins*(self: gen_qgraphicslayoutitem_types.QGraphicsLayoutItem, slot: QGraphicsLayoutItemgetContentsMarginsProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsLayoutItemgetContentsMarginsBase, left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): void
-  var tmp = new Cb
+  var tmp = new QGraphicsLayoutItemgetContentsMarginsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsLayoutItem_override_virtual_getContentsMargins(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsLayoutItem_getContentsMargins(self: ptr cQGraphicsLayoutItem, slot: int, left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): void {.exportc: "miqt_exec_callback_QGraphicsLayoutItem_getContentsMargins ".} =
-  type Cb = proc(super: QGraphicsLayoutItemgetContentsMarginsBase, left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): auto =
-    callVirtualBase_getContentsMargins(QGraphicsLayoutItem(h: self), left, top, right, bottom)
+  var nimfunc = cast[ptr QGraphicsLayoutItemgetContentsMarginsProc](cast[pointer](slot))
   let slotval1 = left
 
   let slotval2 = top
@@ -319,64 +307,52 @@ proc miqt_exec_callback_QGraphicsLayoutItem_getContentsMargins(self: ptr cQGraph
   let slotval4 = bottom
 
 
-  nimfunc[](superCall, slotval1, slotval2, slotval3, slotval4)
-proc callVirtualBase_updateGeometry(self: QGraphicsLayoutItem, ): void =
-
+  nimfunc[](slotval1, slotval2, slotval3, slotval4)
+proc QGraphicsLayoutItemupdateGeometry*(self: gen_qgraphicslayoutitem_types.QGraphicsLayoutItem, ): void =
 
   fQGraphicsLayoutItem_virtualbase_updateGeometry(self.h)
 
-type QGraphicsLayoutItemupdateGeometryBase* = proc(): void
-proc onupdateGeometry*(self: QGraphicsLayoutItem, slot: proc(super: QGraphicsLayoutItemupdateGeometryBase): void) =
+type QGraphicsLayoutItemupdateGeometryProc* = proc(): void
+proc onupdateGeometry*(self: gen_qgraphicslayoutitem_types.QGraphicsLayoutItem, slot: QGraphicsLayoutItemupdateGeometryProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsLayoutItemupdateGeometryBase): void
-  var tmp = new Cb
+  var tmp = new QGraphicsLayoutItemupdateGeometryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsLayoutItem_override_virtual_updateGeometry(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsLayoutItem_updateGeometry(self: ptr cQGraphicsLayoutItem, slot: int): void {.exportc: "miqt_exec_callback_QGraphicsLayoutItem_updateGeometry ".} =
-  type Cb = proc(super: QGraphicsLayoutItemupdateGeometryBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_updateGeometry(QGraphicsLayoutItem(h: self), )
+  var nimfunc = cast[ptr QGraphicsLayoutItemupdateGeometryProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_isEmpty(self: QGraphicsLayoutItem, ): bool =
-
+  nimfunc[]()
+proc QGraphicsLayoutItemisEmpty*(self: gen_qgraphicslayoutitem_types.QGraphicsLayoutItem, ): bool =
 
   fQGraphicsLayoutItem_virtualbase_isEmpty(self.h)
 
-type QGraphicsLayoutItemisEmptyBase* = proc(): bool
-proc onisEmpty*(self: QGraphicsLayoutItem, slot: proc(super: QGraphicsLayoutItemisEmptyBase): bool) =
+type QGraphicsLayoutItemisEmptyProc* = proc(): bool
+proc onisEmpty*(self: gen_qgraphicslayoutitem_types.QGraphicsLayoutItem, slot: QGraphicsLayoutItemisEmptyProc) =
   # TODO check subclass
-  type Cb = proc(super: QGraphicsLayoutItemisEmptyBase): bool
-  var tmp = new Cb
+  var tmp = new QGraphicsLayoutItemisEmptyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsLayoutItem_override_virtual_isEmpty(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsLayoutItem_isEmpty(self: ptr cQGraphicsLayoutItem, slot: int): bool {.exportc: "miqt_exec_callback_QGraphicsLayoutItem_isEmpty ".} =
-  type Cb = proc(super: QGraphicsLayoutItemisEmptyBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_isEmpty(QGraphicsLayoutItem(h: self), )
+  var nimfunc = cast[ptr QGraphicsLayoutItemisEmptyProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-type QGraphicsLayoutItemsizeHintBase* = proc(which: gen_qnamespace.SizeHint, constraint: gen_qsize.QSizeF): gen_qsize.QSizeF
-proc onsizeHint*(self: QGraphicsLayoutItem, slot: proc(which: gen_qnamespace.SizeHint, constraint: gen_qsize.QSizeF): gen_qsize.QSizeF) =
+type QGraphicsLayoutItemsizeHintProc* = proc(which: cint, constraint: gen_qsize.QSizeF): gen_qsize.QSizeF
+proc onsizeHint*(self: gen_qgraphicslayoutitem_types.QGraphicsLayoutItem, slot: QGraphicsLayoutItemsizeHintProc) =
   # TODO check subclass
-  type Cb = proc(which: gen_qnamespace.SizeHint, constraint: gen_qsize.QSizeF): gen_qsize.QSizeF
-  var tmp = new Cb
+  var tmp = new QGraphicsLayoutItemsizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQGraphicsLayoutItem_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QGraphicsLayoutItem_sizeHint(self: ptr cQGraphicsLayoutItem, slot: int, which: cint, constraint: pointer): pointer {.exportc: "miqt_exec_callback_QGraphicsLayoutItem_sizeHint ".} =
-  type Cb = proc(which: gen_qnamespace.SizeHint, constraint: gen_qsize.QSizeF): gen_qsize.QSizeF
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = gen_qnamespace.SizeHint(which)
+  var nimfunc = cast[ptr QGraphicsLayoutItemsizeHintProc](cast[pointer](slot))
+  let slotval1 = cint(which)
 
   let slotval2 = gen_qsize.QSizeF(h: constraint)
 
@@ -384,5 +360,5 @@ proc miqt_exec_callback_QGraphicsLayoutItem_sizeHint(self: ptr cQGraphicsLayoutI
   let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn.h
-proc delete*(self: QGraphicsLayoutItem) =
+proc delete*(self: gen_qgraphicslayoutitem_types.QGraphicsLayoutItem) =
   fcQGraphicsLayoutItem_delete(self.h)

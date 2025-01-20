@@ -34,25 +34,19 @@ const cflags = gorge("pkg-config -cflags Qt6Widgets")
 {.compile("gen_qmdiarea.cpp", cflags).}
 
 
-type QMdiAreaAreaOption* = cint
-const
-  QMdiAreaDontMaximizeSubWindowOnActivation* = 1
+type QMdiAreaAreaOptionEnum* = distinct cint
+template DontMaximizeSubWindowOnActivation*(_: type QMdiAreaAreaOptionEnum): untyped = 1
 
 
-
-type QMdiAreaWindowOrder* = cint
-const
-  QMdiAreaCreationOrder* = 0
-  QMdiAreaStackingOrder* = 1
-  QMdiAreaActivationHistoryOrder* = 2
+type QMdiAreaWindowOrderEnum* = distinct cint
+template CreationOrder*(_: type QMdiAreaWindowOrderEnum): untyped = 0
+template StackingOrder*(_: type QMdiAreaWindowOrderEnum): untyped = 1
+template ActivationHistoryOrder*(_: type QMdiAreaWindowOrderEnum): untyped = 2
 
 
-
-type QMdiAreaViewMode* = cint
-const
-  QMdiAreaSubWindowView* = 0
-  QMdiAreaTabbedView* = 1
-
+type QMdiAreaViewModeEnum* = distinct cint
+template SubWindowView*(_: type QMdiAreaViewModeEnum): untyped = 0
+template TabbedView*(_: type QMdiAreaViewModeEnum): untyped = 1
 
 
 import gen_qmdiarea_types
@@ -65,7 +59,6 @@ import
   gen_qevent,
   gen_qmdisubwindow,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -74,7 +67,6 @@ import
   gen_qpoint,
   gen_qsize,
   gen_qstyleoption,
-  gen_qtabwidget,
   gen_qvariant,
   gen_qwidget
 export
@@ -84,7 +76,6 @@ export
   gen_qevent,
   gen_qmdisubwindow,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -93,7 +84,6 @@ export
   gen_qpoint,
   gen_qsize,
   gen_qstyleoption,
-  gen_qtabwidget,
   gen_qvariant,
   gen_qwidget
 
@@ -258,50 +248,50 @@ proc fcQMdiArea_staticMetaObject(): pointer {.importc: "QMdiArea_staticMetaObjec
 proc fcQMdiArea_delete(self: pointer) {.importc: "QMdiArea_delete".}
 
 
-func init*(T: type QMdiArea, h: ptr cQMdiArea): QMdiArea =
+func init*(T: type gen_qmdiarea_types.QMdiArea, h: ptr cQMdiArea): gen_qmdiarea_types.QMdiArea =
   T(h: h)
-proc create*(T: type QMdiArea, parent: gen_qwidget.QWidget): QMdiArea =
+proc create*(T: type gen_qmdiarea_types.QMdiArea, parent: gen_qwidget.QWidget): gen_qmdiarea_types.QMdiArea =
 
-  QMdiArea.init(fcQMdiArea_new(parent.h))
-proc create*(T: type QMdiArea, ): QMdiArea =
+  gen_qmdiarea_types.QMdiArea.init(fcQMdiArea_new(parent.h))
+proc create*(T: type gen_qmdiarea_types.QMdiArea, ): gen_qmdiarea_types.QMdiArea =
 
-  QMdiArea.init(fcQMdiArea_new2())
-proc metaObject*(self: QMdiArea, ): gen_qobjectdefs.QMetaObject =
+  gen_qmdiarea_types.QMdiArea.init(fcQMdiArea_new2())
+proc metaObject*(self: gen_qmdiarea_types.QMdiArea, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQMdiArea_metaObject(self.h))
 
-proc metacast*(self: QMdiArea, param1: cstring): pointer =
+proc metacast*(self: gen_qmdiarea_types.QMdiArea, param1: cstring): pointer =
 
   fcQMdiArea_metacast(self.h, param1)
 
-proc metacall*(self: QMdiArea, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qmdiarea_types.QMdiArea, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQMdiArea_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QMdiArea, s: cstring): string =
+proc tr*(_: type gen_qmdiarea_types.QMdiArea, s: cstring): string =
 
   let v_ms = fcQMdiArea_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc sizeHint*(self: QMdiArea, ): gen_qsize.QSize =
+proc sizeHint*(self: gen_qmdiarea_types.QMdiArea, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQMdiArea_sizeHint(self.h))
 
-proc minimumSizeHint*(self: QMdiArea, ): gen_qsize.QSize =
+proc minimumSizeHint*(self: gen_qmdiarea_types.QMdiArea, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQMdiArea_minimumSizeHint(self.h))
 
-proc currentSubWindow*(self: QMdiArea, ): gen_qmdisubwindow.QMdiSubWindow =
+proc currentSubWindow*(self: gen_qmdiarea_types.QMdiArea, ): gen_qmdisubwindow.QMdiSubWindow =
 
   gen_qmdisubwindow.QMdiSubWindow(h: fcQMdiArea_currentSubWindow(self.h))
 
-proc activeSubWindow*(self: QMdiArea, ): gen_qmdisubwindow.QMdiSubWindow =
+proc activeSubWindow*(self: gen_qmdiarea_types.QMdiArea, ): gen_qmdisubwindow.QMdiSubWindow =
 
   gen_qmdisubwindow.QMdiSubWindow(h: fcQMdiArea_activeSubWindow(self.h))
 
-proc subWindowList*(self: QMdiArea, ): seq[gen_qmdisubwindow.QMdiSubWindow] =
+proc subWindowList*(self: gen_qmdiarea_types.QMdiArea, ): seq[gen_qmdisubwindow.QMdiSubWindow] =
 
   var v_ma = fcQMdiArea_subWindowList(self.h)
   var vx_ret = newSeq[gen_qmdisubwindow.QMdiSubWindow](int(v_ma.len))
@@ -310,87 +300,87 @@ proc subWindowList*(self: QMdiArea, ): seq[gen_qmdisubwindow.QMdiSubWindow] =
     vx_ret[i] = gen_qmdisubwindow.QMdiSubWindow(h: v_outCast[i])
   vx_ret
 
-proc addSubWindow*(self: QMdiArea, widget: gen_qwidget.QWidget): gen_qmdisubwindow.QMdiSubWindow =
+proc addSubWindow*(self: gen_qmdiarea_types.QMdiArea, widget: gen_qwidget.QWidget): gen_qmdisubwindow.QMdiSubWindow =
 
   gen_qmdisubwindow.QMdiSubWindow(h: fcQMdiArea_addSubWindow(self.h, widget.h))
 
-proc removeSubWindow*(self: QMdiArea, widget: gen_qwidget.QWidget): void =
+proc removeSubWindow*(self: gen_qmdiarea_types.QMdiArea, widget: gen_qwidget.QWidget): void =
 
   fcQMdiArea_removeSubWindow(self.h, widget.h)
 
-proc background*(self: QMdiArea, ): gen_qbrush.QBrush =
+proc background*(self: gen_qmdiarea_types.QMdiArea, ): gen_qbrush.QBrush =
 
   gen_qbrush.QBrush(h: fcQMdiArea_background(self.h))
 
-proc setBackground*(self: QMdiArea, background: gen_qbrush.QBrush): void =
+proc setBackground*(self: gen_qmdiarea_types.QMdiArea, background: gen_qbrush.QBrush): void =
 
   fcQMdiArea_setBackground(self.h, background.h)
 
-proc activationOrder*(self: QMdiArea, ): QMdiAreaWindowOrder =
+proc activationOrder*(self: gen_qmdiarea_types.QMdiArea, ): cint =
 
-  QMdiAreaWindowOrder(fcQMdiArea_activationOrder(self.h))
+  cint(fcQMdiArea_activationOrder(self.h))
 
-proc setActivationOrder*(self: QMdiArea, order: QMdiAreaWindowOrder): void =
+proc setActivationOrder*(self: gen_qmdiarea_types.QMdiArea, order: cint): void =
 
   fcQMdiArea_setActivationOrder(self.h, cint(order))
 
-proc setOption*(self: QMdiArea, option: QMdiAreaAreaOption): void =
+proc setOption*(self: gen_qmdiarea_types.QMdiArea, option: cint): void =
 
   fcQMdiArea_setOption(self.h, cint(option))
 
-proc testOption*(self: QMdiArea, opton: QMdiAreaAreaOption): bool =
+proc testOption*(self: gen_qmdiarea_types.QMdiArea, opton: cint): bool =
 
   fcQMdiArea_testOption(self.h, cint(opton))
 
-proc setViewMode*(self: QMdiArea, mode: QMdiAreaViewMode): void =
+proc setViewMode*(self: gen_qmdiarea_types.QMdiArea, mode: cint): void =
 
   fcQMdiArea_setViewMode(self.h, cint(mode))
 
-proc viewMode*(self: QMdiArea, ): QMdiAreaViewMode =
+proc viewMode*(self: gen_qmdiarea_types.QMdiArea, ): cint =
 
-  QMdiAreaViewMode(fcQMdiArea_viewMode(self.h))
+  cint(fcQMdiArea_viewMode(self.h))
 
-proc documentMode*(self: QMdiArea, ): bool =
+proc documentMode*(self: gen_qmdiarea_types.QMdiArea, ): bool =
 
   fcQMdiArea_documentMode(self.h)
 
-proc setDocumentMode*(self: QMdiArea, enabled: bool): void =
+proc setDocumentMode*(self: gen_qmdiarea_types.QMdiArea, enabled: bool): void =
 
   fcQMdiArea_setDocumentMode(self.h, enabled)
 
-proc setTabsClosable*(self: QMdiArea, closable: bool): void =
+proc setTabsClosable*(self: gen_qmdiarea_types.QMdiArea, closable: bool): void =
 
   fcQMdiArea_setTabsClosable(self.h, closable)
 
-proc tabsClosable*(self: QMdiArea, ): bool =
+proc tabsClosable*(self: gen_qmdiarea_types.QMdiArea, ): bool =
 
   fcQMdiArea_tabsClosable(self.h)
 
-proc setTabsMovable*(self: QMdiArea, movable: bool): void =
+proc setTabsMovable*(self: gen_qmdiarea_types.QMdiArea, movable: bool): void =
 
   fcQMdiArea_setTabsMovable(self.h, movable)
 
-proc tabsMovable*(self: QMdiArea, ): bool =
+proc tabsMovable*(self: gen_qmdiarea_types.QMdiArea, ): bool =
 
   fcQMdiArea_tabsMovable(self.h)
 
-proc setTabShape*(self: QMdiArea, shape: gen_qtabwidget.QTabWidgetTabShape): void =
+proc setTabShape*(self: gen_qmdiarea_types.QMdiArea, shape: cint): void =
 
   fcQMdiArea_setTabShape(self.h, cint(shape))
 
-proc tabShape*(self: QMdiArea, ): gen_qtabwidget.QTabWidgetTabShape =
+proc tabShape*(self: gen_qmdiarea_types.QMdiArea, ): cint =
 
-  gen_qtabwidget.QTabWidgetTabShape(fcQMdiArea_tabShape(self.h))
+  cint(fcQMdiArea_tabShape(self.h))
 
-proc setTabPosition*(self: QMdiArea, position: gen_qtabwidget.QTabWidgetTabPosition): void =
+proc setTabPosition*(self: gen_qmdiarea_types.QMdiArea, position: cint): void =
 
   fcQMdiArea_setTabPosition(self.h, cint(position))
 
-proc tabPosition*(self: QMdiArea, ): gen_qtabwidget.QTabWidgetTabPosition =
+proc tabPosition*(self: gen_qmdiarea_types.QMdiArea, ): cint =
 
-  gen_qtabwidget.QTabWidgetTabPosition(fcQMdiArea_tabPosition(self.h))
+  cint(fcQMdiArea_tabPosition(self.h))
 
-proc subWindowActivated*(self: QMdiArea, param1: gen_qmdisubwindow.QMdiSubWindow): void =
+proc subWindowActivated*(self: gen_qmdiarea_types.QMdiArea, param1: gen_qmdisubwindow.QMdiSubWindow): void =
 
   fcQMdiArea_subWindowActivated(self.h, param1.h)
 
@@ -402,55 +392,55 @@ proc miqt_exec_callback_QMdiArea_subWindowActivated(slot: int, param1: pointer) 
 
   nimfunc[](slotval1)
 
-proc onsubWindowActivated*(self: QMdiArea, slot: proc(param1: gen_qmdisubwindow.QMdiSubWindow)) =
+proc onsubWindowActivated*(self: gen_qmdiarea_types.QMdiArea, slot: proc(param1: gen_qmdisubwindow.QMdiSubWindow)) =
   type Cb = proc(param1: gen_qmdisubwindow.QMdiSubWindow)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQMdiArea_connect_subWindowActivated(self.h, cast[int](addr tmp[]))
-proc setActiveSubWindow*(self: QMdiArea, window: gen_qmdisubwindow.QMdiSubWindow): void =
+proc setActiveSubWindow*(self: gen_qmdiarea_types.QMdiArea, window: gen_qmdisubwindow.QMdiSubWindow): void =
 
   fcQMdiArea_setActiveSubWindow(self.h, window.h)
 
-proc tileSubWindows*(self: QMdiArea, ): void =
+proc tileSubWindows*(self: gen_qmdiarea_types.QMdiArea, ): void =
 
   fcQMdiArea_tileSubWindows(self.h)
 
-proc cascadeSubWindows*(self: QMdiArea, ): void =
+proc cascadeSubWindows*(self: gen_qmdiarea_types.QMdiArea, ): void =
 
   fcQMdiArea_cascadeSubWindows(self.h)
 
-proc closeActiveSubWindow*(self: QMdiArea, ): void =
+proc closeActiveSubWindow*(self: gen_qmdiarea_types.QMdiArea, ): void =
 
   fcQMdiArea_closeActiveSubWindow(self.h)
 
-proc closeAllSubWindows*(self: QMdiArea, ): void =
+proc closeAllSubWindows*(self: gen_qmdiarea_types.QMdiArea, ): void =
 
   fcQMdiArea_closeAllSubWindows(self.h)
 
-proc activateNextSubWindow*(self: QMdiArea, ): void =
+proc activateNextSubWindow*(self: gen_qmdiarea_types.QMdiArea, ): void =
 
   fcQMdiArea_activateNextSubWindow(self.h)
 
-proc activatePreviousSubWindow*(self: QMdiArea, ): void =
+proc activatePreviousSubWindow*(self: gen_qmdiarea_types.QMdiArea, ): void =
 
   fcQMdiArea_activatePreviousSubWindow(self.h)
 
-proc tr2*(_: type QMdiArea, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qmdiarea_types.QMdiArea, s: cstring, c: cstring): string =
 
   let v_ms = fcQMdiArea_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QMdiArea, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qmdiarea_types.QMdiArea, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQMdiArea_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc subWindowList1*(self: QMdiArea, order: QMdiAreaWindowOrder): seq[gen_qmdisubwindow.QMdiSubWindow] =
+proc subWindowList1*(self: gen_qmdiarea_types.QMdiArea, order: cint): seq[gen_qmdisubwindow.QMdiSubWindow] =
 
   var v_ma = fcQMdiArea_subWindowList1(self.h, cint(order))
   var vx_ret = newSeq[gen_qmdisubwindow.QMdiSubWindow](int(v_ma.len))
@@ -459,1065 +449,840 @@ proc subWindowList1*(self: QMdiArea, order: QMdiAreaWindowOrder): seq[gen_qmdisu
     vx_ret[i] = gen_qmdisubwindow.QMdiSubWindow(h: v_outCast[i])
   vx_ret
 
-proc addSubWindow2*(self: QMdiArea, widget: gen_qwidget.QWidget, flags: gen_qnamespace.WindowType): gen_qmdisubwindow.QMdiSubWindow =
+proc addSubWindow2*(self: gen_qmdiarea_types.QMdiArea, widget: gen_qwidget.QWidget, flags: cint): gen_qmdisubwindow.QMdiSubWindow =
 
   gen_qmdisubwindow.QMdiSubWindow(h: fcQMdiArea_addSubWindow2(self.h, widget.h, cint(flags)))
 
-proc setOption2*(self: QMdiArea, option: QMdiAreaAreaOption, on: bool): void =
+proc setOption2*(self: gen_qmdiarea_types.QMdiArea, option: cint, on: bool): void =
 
   fcQMdiArea_setOption2(self.h, cint(option), on)
 
-proc callVirtualBase_metaObject(self: QMdiArea, ): gen_qobjectdefs.QMetaObject =
-
+proc QMdiAreametaObject*(self: gen_qmdiarea_types.QMdiArea, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQMdiArea_virtualbase_metaObject(self.h))
 
-type QMdiAreametaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QMdiArea, slot: proc(super: QMdiAreametaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QMdiAreametaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiAreametaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QMdiAreametaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QMdiAreametaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMdiArea_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMdiArea_metaObject(self: ptr cQMdiArea, slot: int): pointer {.exportc: "miqt_exec_callback_QMdiArea_metaObject ".} =
-  type Cb = proc(super: QMdiAreametaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QMdiArea(h: self), )
+  var nimfunc = cast[ptr QMdiAreametaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QMdiArea, param1: cstring): pointer =
-
+proc QMdiAreametacast*(self: gen_qmdiarea_types.QMdiArea, param1: cstring): pointer =
 
   fQMdiArea_virtualbase_metacast(self.h, param1)
 
-type QMdiAreametacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QMdiArea, slot: proc(super: QMdiAreametacastBase, param1: cstring): pointer) =
+type QMdiAreametacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiAreametacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QMdiAreametacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QMdiAreametacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMdiArea_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMdiArea_metacast(self: ptr cQMdiArea, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QMdiArea_metacast ".} =
-  type Cb = proc(super: QMdiAreametacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QMdiArea(h: self), param1)
+  var nimfunc = cast[ptr QMdiAreametacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QMdiArea, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QMdiAreametacall*(self: gen_qmdiarea_types.QMdiArea, param1: cint, param2: cint, param3: pointer): cint =
 
   fQMdiArea_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QMdiAreametacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QMdiArea, slot: proc(super: QMdiAreametacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QMdiAreametacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiAreametacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QMdiAreametacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QMdiAreametacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMdiArea_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMdiArea_metacall(self: ptr cQMdiArea, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QMdiArea_metacall ".} =
-  type Cb = proc(super: QMdiAreametacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QMdiArea(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QMdiAreametacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_sizeHint(self: QMdiArea, ): gen_qsize.QSize =
-
+proc QMdiAreasizeHint*(self: gen_qmdiarea_types.QMdiArea, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQMdiArea_virtualbase_sizeHint(self.h))
 
-type QMdiAreasizeHintBase* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: QMdiArea, slot: proc(super: QMdiAreasizeHintBase): gen_qsize.QSize) =
+type QMdiAreasizeHintProc* = proc(): gen_qsize.QSize
+proc onsizeHint*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiAreasizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QMdiAreasizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QMdiAreasizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMdiArea_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMdiArea_sizeHint(self: ptr cQMdiArea, slot: int): pointer {.exportc: "miqt_exec_callback_QMdiArea_sizeHint ".} =
-  type Cb = proc(super: QMdiAreasizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sizeHint(QMdiArea(h: self), )
+  var nimfunc = cast[ptr QMdiAreasizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_minimumSizeHint(self: QMdiArea, ): gen_qsize.QSize =
-
+proc QMdiAreaminimumSizeHint*(self: gen_qmdiarea_types.QMdiArea, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQMdiArea_virtualbase_minimumSizeHint(self.h))
 
-type QMdiAreaminimumSizeHintBase* = proc(): gen_qsize.QSize
-proc onminimumSizeHint*(self: QMdiArea, slot: proc(super: QMdiAreaminimumSizeHintBase): gen_qsize.QSize) =
+type QMdiAreaminimumSizeHintProc* = proc(): gen_qsize.QSize
+proc onminimumSizeHint*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiAreaminimumSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QMdiAreaminimumSizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QMdiAreaminimumSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMdiArea_override_virtual_minimumSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMdiArea_minimumSizeHint(self: ptr cQMdiArea, slot: int): pointer {.exportc: "miqt_exec_callback_QMdiArea_minimumSizeHint ".} =
-  type Cb = proc(super: QMdiAreaminimumSizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_minimumSizeHint(QMdiArea(h: self), )
+  var nimfunc = cast[ptr QMdiAreaminimumSizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_setupViewport(self: QMdiArea, viewport: gen_qwidget.QWidget): void =
-
+proc QMdiAreasetupViewport*(self: gen_qmdiarea_types.QMdiArea, viewport: gen_qwidget.QWidget): void =
 
   fQMdiArea_virtualbase_setupViewport(self.h, viewport.h)
 
-type QMdiAreasetupViewportBase* = proc(viewport: gen_qwidget.QWidget): void
-proc onsetupViewport*(self: QMdiArea, slot: proc(super: QMdiAreasetupViewportBase, viewport: gen_qwidget.QWidget): void) =
+type QMdiAreasetupViewportProc* = proc(viewport: gen_qwidget.QWidget): void
+proc onsetupViewport*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiAreasetupViewportProc) =
   # TODO check subclass
-  type Cb = proc(super: QMdiAreasetupViewportBase, viewport: gen_qwidget.QWidget): void
-  var tmp = new Cb
+  var tmp = new QMdiAreasetupViewportProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMdiArea_override_virtual_setupViewport(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMdiArea_setupViewport(self: ptr cQMdiArea, slot: int, viewport: pointer): void {.exportc: "miqt_exec_callback_QMdiArea_setupViewport ".} =
-  type Cb = proc(super: QMdiAreasetupViewportBase, viewport: gen_qwidget.QWidget): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(viewport: gen_qwidget.QWidget): auto =
-    callVirtualBase_setupViewport(QMdiArea(h: self), viewport)
+  var nimfunc = cast[ptr QMdiAreasetupViewportProc](cast[pointer](slot))
   let slotval1 = gen_qwidget.QWidget(h: viewport)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_event(self: QMdiArea, event: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[](slotval1)
+proc QMdiAreaevent*(self: gen_qmdiarea_types.QMdiArea, event: gen_qcoreevent.QEvent): bool =
 
   fQMdiArea_virtualbase_event(self.h, event.h)
 
-type QMdiAreaeventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QMdiArea, slot: proc(super: QMdiAreaeventBase, event: gen_qcoreevent.QEvent): bool) =
+type QMdiAreaeventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiAreaeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMdiAreaeventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QMdiAreaeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMdiArea_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMdiArea_event(self: ptr cQMdiArea, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QMdiArea_event ".} =
-  type Cb = proc(super: QMdiAreaeventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QMdiArea(h: self), event)
+  var nimfunc = cast[ptr QMdiAreaeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QMdiArea, objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QMdiAreaeventFilter*(self: gen_qmdiarea_types.QMdiArea, objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQMdiArea_virtualbase_eventFilter(self.h, objectVal.h, event.h)
 
-type QMdiAreaeventFilterBase* = proc(objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QMdiArea, slot: proc(super: QMdiAreaeventFilterBase, objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QMdiAreaeventFilterProc* = proc(objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiAreaeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QMdiAreaeventFilterBase, objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QMdiAreaeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMdiArea_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMdiArea_eventFilter(self: ptr cQMdiArea, slot: int, objectVal: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QMdiArea_eventFilter ".} =
-  type Cb = proc(super: QMdiAreaeventFilterBase, objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QMdiArea(h: self), objectVal, event)
+  var nimfunc = cast[ptr QMdiAreaeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: objectVal)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_paintEvent(self: QMdiArea, paintEvent: gen_qevent.QPaintEvent): void =
-
+proc QMdiAreapaintEvent*(self: gen_qmdiarea_types.QMdiArea, paintEvent: gen_qevent.QPaintEvent): void =
 
   fQMdiArea_virtualbase_paintEvent(self.h, paintEvent.h)
 
-type QMdiAreapaintEventBase* = proc(paintEvent: gen_qevent.QPaintEvent): void
-proc onpaintEvent*(self: QMdiArea, slot: proc(super: QMdiAreapaintEventBase, paintEvent: gen_qevent.QPaintEvent): void) =
+type QMdiAreapaintEventProc* = proc(paintEvent: gen_qevent.QPaintEvent): void
+proc onpaintEvent*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiAreapaintEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMdiAreapaintEventBase, paintEvent: gen_qevent.QPaintEvent): void
-  var tmp = new Cb
+  var tmp = new QMdiAreapaintEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMdiArea_override_virtual_paintEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMdiArea_paintEvent(self: ptr cQMdiArea, slot: int, paintEvent: pointer): void {.exportc: "miqt_exec_callback_QMdiArea_paintEvent ".} =
-  type Cb = proc(super: QMdiAreapaintEventBase, paintEvent: gen_qevent.QPaintEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(paintEvent: gen_qevent.QPaintEvent): auto =
-    callVirtualBase_paintEvent(QMdiArea(h: self), paintEvent)
+  var nimfunc = cast[ptr QMdiAreapaintEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QPaintEvent(h: paintEvent)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QMdiArea, childEvent: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QMdiAreachildEvent*(self: gen_qmdiarea_types.QMdiArea, childEvent: gen_qcoreevent.QChildEvent): void =
 
   fQMdiArea_virtualbase_childEvent(self.h, childEvent.h)
 
-type QMdiAreachildEventBase* = proc(childEvent: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QMdiArea, slot: proc(super: QMdiAreachildEventBase, childEvent: gen_qcoreevent.QChildEvent): void) =
+type QMdiAreachildEventProc* = proc(childEvent: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiAreachildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMdiAreachildEventBase, childEvent: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QMdiAreachildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMdiArea_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMdiArea_childEvent(self: ptr cQMdiArea, slot: int, childEvent: pointer): void {.exportc: "miqt_exec_callback_QMdiArea_childEvent ".} =
-  type Cb = proc(super: QMdiAreachildEventBase, childEvent: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(childEvent: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QMdiArea(h: self), childEvent)
+  var nimfunc = cast[ptr QMdiAreachildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: childEvent)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_resizeEvent(self: QMdiArea, resizeEvent: gen_qevent.QResizeEvent): void =
-
+  nimfunc[](slotval1)
+proc QMdiArearesizeEvent*(self: gen_qmdiarea_types.QMdiArea, resizeEvent: gen_qevent.QResizeEvent): void =
 
   fQMdiArea_virtualbase_resizeEvent(self.h, resizeEvent.h)
 
-type QMdiArearesizeEventBase* = proc(resizeEvent: gen_qevent.QResizeEvent): void
-proc onresizeEvent*(self: QMdiArea, slot: proc(super: QMdiArearesizeEventBase, resizeEvent: gen_qevent.QResizeEvent): void) =
+type QMdiArearesizeEventProc* = proc(resizeEvent: gen_qevent.QResizeEvent): void
+proc onresizeEvent*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiArearesizeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMdiArearesizeEventBase, resizeEvent: gen_qevent.QResizeEvent): void
-  var tmp = new Cb
+  var tmp = new QMdiArearesizeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMdiArea_override_virtual_resizeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMdiArea_resizeEvent(self: ptr cQMdiArea, slot: int, resizeEvent: pointer): void {.exportc: "miqt_exec_callback_QMdiArea_resizeEvent ".} =
-  type Cb = proc(super: QMdiArearesizeEventBase, resizeEvent: gen_qevent.QResizeEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(resizeEvent: gen_qevent.QResizeEvent): auto =
-    callVirtualBase_resizeEvent(QMdiArea(h: self), resizeEvent)
+  var nimfunc = cast[ptr QMdiArearesizeEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QResizeEvent(h: resizeEvent)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_timerEvent(self: QMdiArea, timerEvent: gen_qcoreevent.QTimerEvent): void =
-
+  nimfunc[](slotval1)
+proc QMdiAreatimerEvent*(self: gen_qmdiarea_types.QMdiArea, timerEvent: gen_qcoreevent.QTimerEvent): void =
 
   fQMdiArea_virtualbase_timerEvent(self.h, timerEvent.h)
 
-type QMdiAreatimerEventBase* = proc(timerEvent: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QMdiArea, slot: proc(super: QMdiAreatimerEventBase, timerEvent: gen_qcoreevent.QTimerEvent): void) =
+type QMdiAreatimerEventProc* = proc(timerEvent: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiAreatimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMdiAreatimerEventBase, timerEvent: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QMdiAreatimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMdiArea_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMdiArea_timerEvent(self: ptr cQMdiArea, slot: int, timerEvent: pointer): void {.exportc: "miqt_exec_callback_QMdiArea_timerEvent ".} =
-  type Cb = proc(super: QMdiAreatimerEventBase, timerEvent: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(timerEvent: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QMdiArea(h: self), timerEvent)
+  var nimfunc = cast[ptr QMdiAreatimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: timerEvent)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_showEvent(self: QMdiArea, showEvent: gen_qevent.QShowEvent): void =
-
+  nimfunc[](slotval1)
+proc QMdiAreashowEvent*(self: gen_qmdiarea_types.QMdiArea, showEvent: gen_qevent.QShowEvent): void =
 
   fQMdiArea_virtualbase_showEvent(self.h, showEvent.h)
 
-type QMdiAreashowEventBase* = proc(showEvent: gen_qevent.QShowEvent): void
-proc onshowEvent*(self: QMdiArea, slot: proc(super: QMdiAreashowEventBase, showEvent: gen_qevent.QShowEvent): void) =
+type QMdiAreashowEventProc* = proc(showEvent: gen_qevent.QShowEvent): void
+proc onshowEvent*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiAreashowEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMdiAreashowEventBase, showEvent: gen_qevent.QShowEvent): void
-  var tmp = new Cb
+  var tmp = new QMdiAreashowEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMdiArea_override_virtual_showEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMdiArea_showEvent(self: ptr cQMdiArea, slot: int, showEvent: pointer): void {.exportc: "miqt_exec_callback_QMdiArea_showEvent ".} =
-  type Cb = proc(super: QMdiAreashowEventBase, showEvent: gen_qevent.QShowEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(showEvent: gen_qevent.QShowEvent): auto =
-    callVirtualBase_showEvent(QMdiArea(h: self), showEvent)
+  var nimfunc = cast[ptr QMdiAreashowEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QShowEvent(h: showEvent)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_viewportEvent(self: QMdiArea, event: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[](slotval1)
+proc QMdiAreaviewportEvent*(self: gen_qmdiarea_types.QMdiArea, event: gen_qcoreevent.QEvent): bool =
 
   fQMdiArea_virtualbase_viewportEvent(self.h, event.h)
 
-type QMdiAreaviewportEventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onviewportEvent*(self: QMdiArea, slot: proc(super: QMdiAreaviewportEventBase, event: gen_qcoreevent.QEvent): bool) =
+type QMdiAreaviewportEventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onviewportEvent*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiAreaviewportEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMdiAreaviewportEventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QMdiAreaviewportEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMdiArea_override_virtual_viewportEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMdiArea_viewportEvent(self: ptr cQMdiArea, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QMdiArea_viewportEvent ".} =
-  type Cb = proc(super: QMdiAreaviewportEventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_viewportEvent(QMdiArea(h: self), event)
+  var nimfunc = cast[ptr QMdiAreaviewportEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_scrollContentsBy(self: QMdiArea, dx: cint, dy: cint): void =
-
+proc QMdiAreascrollContentsBy*(self: gen_qmdiarea_types.QMdiArea, dx: cint, dy: cint): void =
 
   fQMdiArea_virtualbase_scrollContentsBy(self.h, dx, dy)
 
-type QMdiAreascrollContentsByBase* = proc(dx: cint, dy: cint): void
-proc onscrollContentsBy*(self: QMdiArea, slot: proc(super: QMdiAreascrollContentsByBase, dx: cint, dy: cint): void) =
+type QMdiAreascrollContentsByProc* = proc(dx: cint, dy: cint): void
+proc onscrollContentsBy*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiAreascrollContentsByProc) =
   # TODO check subclass
-  type Cb = proc(super: QMdiAreascrollContentsByBase, dx: cint, dy: cint): void
-  var tmp = new Cb
+  var tmp = new QMdiAreascrollContentsByProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMdiArea_override_virtual_scrollContentsBy(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMdiArea_scrollContentsBy(self: ptr cQMdiArea, slot: int, dx: cint, dy: cint): void {.exportc: "miqt_exec_callback_QMdiArea_scrollContentsBy ".} =
-  type Cb = proc(super: QMdiAreascrollContentsByBase, dx: cint, dy: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(dx: cint, dy: cint): auto =
-    callVirtualBase_scrollContentsBy(QMdiArea(h: self), dx, dy)
+  var nimfunc = cast[ptr QMdiAreascrollContentsByProc](cast[pointer](slot))
   let slotval1 = dx
 
   let slotval2 = dy
 
 
-  nimfunc[](superCall, slotval1, slotval2)
-proc callVirtualBase_mousePressEvent(self: QMdiArea, param1: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1, slotval2)
+proc QMdiAreamousePressEvent*(self: gen_qmdiarea_types.QMdiArea, param1: gen_qevent.QMouseEvent): void =
 
   fQMdiArea_virtualbase_mousePressEvent(self.h, param1.h)
 
-type QMdiAreamousePressEventBase* = proc(param1: gen_qevent.QMouseEvent): void
-proc onmousePressEvent*(self: QMdiArea, slot: proc(super: QMdiAreamousePressEventBase, param1: gen_qevent.QMouseEvent): void) =
+type QMdiAreamousePressEventProc* = proc(param1: gen_qevent.QMouseEvent): void
+proc onmousePressEvent*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiAreamousePressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMdiAreamousePressEventBase, param1: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QMdiAreamousePressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMdiArea_override_virtual_mousePressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMdiArea_mousePressEvent(self: ptr cQMdiArea, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QMdiArea_mousePressEvent ".} =
-  type Cb = proc(super: QMdiAreamousePressEventBase, param1: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mousePressEvent(QMdiArea(h: self), param1)
+  var nimfunc = cast[ptr QMdiAreamousePressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseReleaseEvent(self: QMdiArea, param1: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QMdiAreamouseReleaseEvent*(self: gen_qmdiarea_types.QMdiArea, param1: gen_qevent.QMouseEvent): void =
 
   fQMdiArea_virtualbase_mouseReleaseEvent(self.h, param1.h)
 
-type QMdiAreamouseReleaseEventBase* = proc(param1: gen_qevent.QMouseEvent): void
-proc onmouseReleaseEvent*(self: QMdiArea, slot: proc(super: QMdiAreamouseReleaseEventBase, param1: gen_qevent.QMouseEvent): void) =
+type QMdiAreamouseReleaseEventProc* = proc(param1: gen_qevent.QMouseEvent): void
+proc onmouseReleaseEvent*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiAreamouseReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMdiAreamouseReleaseEventBase, param1: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QMdiAreamouseReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMdiArea_override_virtual_mouseReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMdiArea_mouseReleaseEvent(self: ptr cQMdiArea, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QMdiArea_mouseReleaseEvent ".} =
-  type Cb = proc(super: QMdiAreamouseReleaseEventBase, param1: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseReleaseEvent(QMdiArea(h: self), param1)
+  var nimfunc = cast[ptr QMdiAreamouseReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseDoubleClickEvent(self: QMdiArea, param1: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QMdiAreamouseDoubleClickEvent*(self: gen_qmdiarea_types.QMdiArea, param1: gen_qevent.QMouseEvent): void =
 
   fQMdiArea_virtualbase_mouseDoubleClickEvent(self.h, param1.h)
 
-type QMdiAreamouseDoubleClickEventBase* = proc(param1: gen_qevent.QMouseEvent): void
-proc onmouseDoubleClickEvent*(self: QMdiArea, slot: proc(super: QMdiAreamouseDoubleClickEventBase, param1: gen_qevent.QMouseEvent): void) =
+type QMdiAreamouseDoubleClickEventProc* = proc(param1: gen_qevent.QMouseEvent): void
+proc onmouseDoubleClickEvent*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiAreamouseDoubleClickEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMdiAreamouseDoubleClickEventBase, param1: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QMdiAreamouseDoubleClickEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMdiArea_override_virtual_mouseDoubleClickEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMdiArea_mouseDoubleClickEvent(self: ptr cQMdiArea, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QMdiArea_mouseDoubleClickEvent ".} =
-  type Cb = proc(super: QMdiAreamouseDoubleClickEventBase, param1: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseDoubleClickEvent(QMdiArea(h: self), param1)
+  var nimfunc = cast[ptr QMdiAreamouseDoubleClickEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseMoveEvent(self: QMdiArea, param1: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QMdiAreamouseMoveEvent*(self: gen_qmdiarea_types.QMdiArea, param1: gen_qevent.QMouseEvent): void =
 
   fQMdiArea_virtualbase_mouseMoveEvent(self.h, param1.h)
 
-type QMdiAreamouseMoveEventBase* = proc(param1: gen_qevent.QMouseEvent): void
-proc onmouseMoveEvent*(self: QMdiArea, slot: proc(super: QMdiAreamouseMoveEventBase, param1: gen_qevent.QMouseEvent): void) =
+type QMdiAreamouseMoveEventProc* = proc(param1: gen_qevent.QMouseEvent): void
+proc onmouseMoveEvent*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiAreamouseMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMdiAreamouseMoveEventBase, param1: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QMdiAreamouseMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMdiArea_override_virtual_mouseMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMdiArea_mouseMoveEvent(self: ptr cQMdiArea, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QMdiArea_mouseMoveEvent ".} =
-  type Cb = proc(super: QMdiAreamouseMoveEventBase, param1: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseMoveEvent(QMdiArea(h: self), param1)
+  var nimfunc = cast[ptr QMdiAreamouseMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_wheelEvent(self: QMdiArea, param1: gen_qevent.QWheelEvent): void =
-
+  nimfunc[](slotval1)
+proc QMdiAreawheelEvent*(self: gen_qmdiarea_types.QMdiArea, param1: gen_qevent.QWheelEvent): void =
 
   fQMdiArea_virtualbase_wheelEvent(self.h, param1.h)
 
-type QMdiAreawheelEventBase* = proc(param1: gen_qevent.QWheelEvent): void
-proc onwheelEvent*(self: QMdiArea, slot: proc(super: QMdiAreawheelEventBase, param1: gen_qevent.QWheelEvent): void) =
+type QMdiAreawheelEventProc* = proc(param1: gen_qevent.QWheelEvent): void
+proc onwheelEvent*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiAreawheelEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMdiAreawheelEventBase, param1: gen_qevent.QWheelEvent): void
-  var tmp = new Cb
+  var tmp = new QMdiAreawheelEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMdiArea_override_virtual_wheelEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMdiArea_wheelEvent(self: ptr cQMdiArea, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QMdiArea_wheelEvent ".} =
-  type Cb = proc(super: QMdiAreawheelEventBase, param1: gen_qevent.QWheelEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QWheelEvent): auto =
-    callVirtualBase_wheelEvent(QMdiArea(h: self), param1)
+  var nimfunc = cast[ptr QMdiAreawheelEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QWheelEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_contextMenuEvent(self: QMdiArea, param1: gen_qevent.QContextMenuEvent): void =
-
+  nimfunc[](slotval1)
+proc QMdiAreacontextMenuEvent*(self: gen_qmdiarea_types.QMdiArea, param1: gen_qevent.QContextMenuEvent): void =
 
   fQMdiArea_virtualbase_contextMenuEvent(self.h, param1.h)
 
-type QMdiAreacontextMenuEventBase* = proc(param1: gen_qevent.QContextMenuEvent): void
-proc oncontextMenuEvent*(self: QMdiArea, slot: proc(super: QMdiAreacontextMenuEventBase, param1: gen_qevent.QContextMenuEvent): void) =
+type QMdiAreacontextMenuEventProc* = proc(param1: gen_qevent.QContextMenuEvent): void
+proc oncontextMenuEvent*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiAreacontextMenuEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMdiAreacontextMenuEventBase, param1: gen_qevent.QContextMenuEvent): void
-  var tmp = new Cb
+  var tmp = new QMdiAreacontextMenuEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMdiArea_override_virtual_contextMenuEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMdiArea_contextMenuEvent(self: ptr cQMdiArea, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QMdiArea_contextMenuEvent ".} =
-  type Cb = proc(super: QMdiAreacontextMenuEventBase, param1: gen_qevent.QContextMenuEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QContextMenuEvent): auto =
-    callVirtualBase_contextMenuEvent(QMdiArea(h: self), param1)
+  var nimfunc = cast[ptr QMdiAreacontextMenuEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QContextMenuEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragEnterEvent(self: QMdiArea, param1: gen_qevent.QDragEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QMdiAreadragEnterEvent*(self: gen_qmdiarea_types.QMdiArea, param1: gen_qevent.QDragEnterEvent): void =
 
   fQMdiArea_virtualbase_dragEnterEvent(self.h, param1.h)
 
-type QMdiAreadragEnterEventBase* = proc(param1: gen_qevent.QDragEnterEvent): void
-proc ondragEnterEvent*(self: QMdiArea, slot: proc(super: QMdiAreadragEnterEventBase, param1: gen_qevent.QDragEnterEvent): void) =
+type QMdiAreadragEnterEventProc* = proc(param1: gen_qevent.QDragEnterEvent): void
+proc ondragEnterEvent*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiAreadragEnterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMdiAreadragEnterEventBase, param1: gen_qevent.QDragEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QMdiAreadragEnterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMdiArea_override_virtual_dragEnterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMdiArea_dragEnterEvent(self: ptr cQMdiArea, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QMdiArea_dragEnterEvent ".} =
-  type Cb = proc(super: QMdiAreadragEnterEventBase, param1: gen_qevent.QDragEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QDragEnterEvent): auto =
-    callVirtualBase_dragEnterEvent(QMdiArea(h: self), param1)
+  var nimfunc = cast[ptr QMdiAreadragEnterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragEnterEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragMoveEvent(self: QMdiArea, param1: gen_qevent.QDragMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QMdiAreadragMoveEvent*(self: gen_qmdiarea_types.QMdiArea, param1: gen_qevent.QDragMoveEvent): void =
 
   fQMdiArea_virtualbase_dragMoveEvent(self.h, param1.h)
 
-type QMdiAreadragMoveEventBase* = proc(param1: gen_qevent.QDragMoveEvent): void
-proc ondragMoveEvent*(self: QMdiArea, slot: proc(super: QMdiAreadragMoveEventBase, param1: gen_qevent.QDragMoveEvent): void) =
+type QMdiAreadragMoveEventProc* = proc(param1: gen_qevent.QDragMoveEvent): void
+proc ondragMoveEvent*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiAreadragMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMdiAreadragMoveEventBase, param1: gen_qevent.QDragMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QMdiAreadragMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMdiArea_override_virtual_dragMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMdiArea_dragMoveEvent(self: ptr cQMdiArea, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QMdiArea_dragMoveEvent ".} =
-  type Cb = proc(super: QMdiAreadragMoveEventBase, param1: gen_qevent.QDragMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QDragMoveEvent): auto =
-    callVirtualBase_dragMoveEvent(QMdiArea(h: self), param1)
+  var nimfunc = cast[ptr QMdiAreadragMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragMoveEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragLeaveEvent(self: QMdiArea, param1: gen_qevent.QDragLeaveEvent): void =
-
+  nimfunc[](slotval1)
+proc QMdiAreadragLeaveEvent*(self: gen_qmdiarea_types.QMdiArea, param1: gen_qevent.QDragLeaveEvent): void =
 
   fQMdiArea_virtualbase_dragLeaveEvent(self.h, param1.h)
 
-type QMdiAreadragLeaveEventBase* = proc(param1: gen_qevent.QDragLeaveEvent): void
-proc ondragLeaveEvent*(self: QMdiArea, slot: proc(super: QMdiAreadragLeaveEventBase, param1: gen_qevent.QDragLeaveEvent): void) =
+type QMdiAreadragLeaveEventProc* = proc(param1: gen_qevent.QDragLeaveEvent): void
+proc ondragLeaveEvent*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiAreadragLeaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMdiAreadragLeaveEventBase, param1: gen_qevent.QDragLeaveEvent): void
-  var tmp = new Cb
+  var tmp = new QMdiAreadragLeaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMdiArea_override_virtual_dragLeaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMdiArea_dragLeaveEvent(self: ptr cQMdiArea, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QMdiArea_dragLeaveEvent ".} =
-  type Cb = proc(super: QMdiAreadragLeaveEventBase, param1: gen_qevent.QDragLeaveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QDragLeaveEvent): auto =
-    callVirtualBase_dragLeaveEvent(QMdiArea(h: self), param1)
+  var nimfunc = cast[ptr QMdiAreadragLeaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragLeaveEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dropEvent(self: QMdiArea, param1: gen_qevent.QDropEvent): void =
-
+  nimfunc[](slotval1)
+proc QMdiAreadropEvent*(self: gen_qmdiarea_types.QMdiArea, param1: gen_qevent.QDropEvent): void =
 
   fQMdiArea_virtualbase_dropEvent(self.h, param1.h)
 
-type QMdiAreadropEventBase* = proc(param1: gen_qevent.QDropEvent): void
-proc ondropEvent*(self: QMdiArea, slot: proc(super: QMdiAreadropEventBase, param1: gen_qevent.QDropEvent): void) =
+type QMdiAreadropEventProc* = proc(param1: gen_qevent.QDropEvent): void
+proc ondropEvent*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiAreadropEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMdiAreadropEventBase, param1: gen_qevent.QDropEvent): void
-  var tmp = new Cb
+  var tmp = new QMdiAreadropEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMdiArea_override_virtual_dropEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMdiArea_dropEvent(self: ptr cQMdiArea, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QMdiArea_dropEvent ".} =
-  type Cb = proc(super: QMdiAreadropEventBase, param1: gen_qevent.QDropEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QDropEvent): auto =
-    callVirtualBase_dropEvent(QMdiArea(h: self), param1)
+  var nimfunc = cast[ptr QMdiAreadropEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDropEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyPressEvent(self: QMdiArea, param1: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QMdiAreakeyPressEvent*(self: gen_qmdiarea_types.QMdiArea, param1: gen_qevent.QKeyEvent): void =
 
   fQMdiArea_virtualbase_keyPressEvent(self.h, param1.h)
 
-type QMdiAreakeyPressEventBase* = proc(param1: gen_qevent.QKeyEvent): void
-proc onkeyPressEvent*(self: QMdiArea, slot: proc(super: QMdiAreakeyPressEventBase, param1: gen_qevent.QKeyEvent): void) =
+type QMdiAreakeyPressEventProc* = proc(param1: gen_qevent.QKeyEvent): void
+proc onkeyPressEvent*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiAreakeyPressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMdiAreakeyPressEventBase, param1: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QMdiAreakeyPressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMdiArea_override_virtual_keyPressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMdiArea_keyPressEvent(self: ptr cQMdiArea, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QMdiArea_keyPressEvent ".} =
-  type Cb = proc(super: QMdiAreakeyPressEventBase, param1: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyPressEvent(QMdiArea(h: self), param1)
+  var nimfunc = cast[ptr QMdiAreakeyPressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_viewportSizeHint(self: QMdiArea, ): gen_qsize.QSize =
-
+  nimfunc[](slotval1)
+proc QMdiAreaviewportSizeHint*(self: gen_qmdiarea_types.QMdiArea, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQMdiArea_virtualbase_viewportSizeHint(self.h))
 
-type QMdiAreaviewportSizeHintBase* = proc(): gen_qsize.QSize
-proc onviewportSizeHint*(self: QMdiArea, slot: proc(super: QMdiAreaviewportSizeHintBase): gen_qsize.QSize) =
+type QMdiAreaviewportSizeHintProc* = proc(): gen_qsize.QSize
+proc onviewportSizeHint*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiAreaviewportSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QMdiAreaviewportSizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QMdiAreaviewportSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMdiArea_override_virtual_viewportSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMdiArea_viewportSizeHint(self: ptr cQMdiArea, slot: int): pointer {.exportc: "miqt_exec_callback_QMdiArea_viewportSizeHint ".} =
-  type Cb = proc(super: QMdiAreaviewportSizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_viewportSizeHint(QMdiArea(h: self), )
+  var nimfunc = cast[ptr QMdiAreaviewportSizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_changeEvent(self: QMdiArea, param1: gen_qcoreevent.QEvent): void =
-
+proc QMdiAreachangeEvent*(self: gen_qmdiarea_types.QMdiArea, param1: gen_qcoreevent.QEvent): void =
 
   fQMdiArea_virtualbase_changeEvent(self.h, param1.h)
 
-type QMdiAreachangeEventBase* = proc(param1: gen_qcoreevent.QEvent): void
-proc onchangeEvent*(self: QMdiArea, slot: proc(super: QMdiAreachangeEventBase, param1: gen_qcoreevent.QEvent): void) =
+type QMdiAreachangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
+proc onchangeEvent*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiAreachangeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMdiAreachangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QMdiAreachangeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMdiArea_override_virtual_changeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMdiArea_changeEvent(self: ptr cQMdiArea, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QMdiArea_changeEvent ".} =
-  type Cb = proc(super: QMdiAreachangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_changeEvent(QMdiArea(h: self), param1)
+  var nimfunc = cast[ptr QMdiAreachangeEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_initStyleOption(self: QMdiArea, option: gen_qstyleoption.QStyleOptionFrame): void =
-
+  nimfunc[](slotval1)
+proc QMdiAreainitStyleOption*(self: gen_qmdiarea_types.QMdiArea, option: gen_qstyleoption.QStyleOptionFrame): void =
 
   fQMdiArea_virtualbase_initStyleOption(self.h, option.h)
 
-type QMdiAreainitStyleOptionBase* = proc(option: gen_qstyleoption.QStyleOptionFrame): void
-proc oninitStyleOption*(self: QMdiArea, slot: proc(super: QMdiAreainitStyleOptionBase, option: gen_qstyleoption.QStyleOptionFrame): void) =
+type QMdiAreainitStyleOptionProc* = proc(option: gen_qstyleoption.QStyleOptionFrame): void
+proc oninitStyleOption*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiAreainitStyleOptionProc) =
   # TODO check subclass
-  type Cb = proc(super: QMdiAreainitStyleOptionBase, option: gen_qstyleoption.QStyleOptionFrame): void
-  var tmp = new Cb
+  var tmp = new QMdiAreainitStyleOptionProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMdiArea_override_virtual_initStyleOption(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMdiArea_initStyleOption(self: ptr cQMdiArea, slot: int, option: pointer): void {.exportc: "miqt_exec_callback_QMdiArea_initStyleOption ".} =
-  type Cb = proc(super: QMdiAreainitStyleOptionBase, option: gen_qstyleoption.QStyleOptionFrame): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(option: gen_qstyleoption.QStyleOptionFrame): auto =
-    callVirtualBase_initStyleOption(QMdiArea(h: self), option)
+  var nimfunc = cast[ptr QMdiAreainitStyleOptionProc](cast[pointer](slot))
   let slotval1 = gen_qstyleoption.QStyleOptionFrame(h: option)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_devType(self: QMdiArea, ): cint =
-
+  nimfunc[](slotval1)
+proc QMdiAreadevType*(self: gen_qmdiarea_types.QMdiArea, ): cint =
 
   fQMdiArea_virtualbase_devType(self.h)
 
-type QMdiAreadevTypeBase* = proc(): cint
-proc ondevType*(self: QMdiArea, slot: proc(super: QMdiAreadevTypeBase): cint) =
+type QMdiAreadevTypeProc* = proc(): cint
+proc ondevType*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiAreadevTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: QMdiAreadevTypeBase): cint
-  var tmp = new Cb
+  var tmp = new QMdiAreadevTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMdiArea_override_virtual_devType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMdiArea_devType(self: ptr cQMdiArea, slot: int): cint {.exportc: "miqt_exec_callback_QMdiArea_devType ".} =
-  type Cb = proc(super: QMdiAreadevTypeBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_devType(QMdiArea(h: self), )
+  var nimfunc = cast[ptr QMdiAreadevTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setVisible(self: QMdiArea, visible: bool): void =
-
+proc QMdiAreasetVisible*(self: gen_qmdiarea_types.QMdiArea, visible: bool): void =
 
   fQMdiArea_virtualbase_setVisible(self.h, visible)
 
-type QMdiAreasetVisibleBase* = proc(visible: bool): void
-proc onsetVisible*(self: QMdiArea, slot: proc(super: QMdiAreasetVisibleBase, visible: bool): void) =
+type QMdiAreasetVisibleProc* = proc(visible: bool): void
+proc onsetVisible*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiAreasetVisibleProc) =
   # TODO check subclass
-  type Cb = proc(super: QMdiAreasetVisibleBase, visible: bool): void
-  var tmp = new Cb
+  var tmp = new QMdiAreasetVisibleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMdiArea_override_virtual_setVisible(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMdiArea_setVisible(self: ptr cQMdiArea, slot: int, visible: bool): void {.exportc: "miqt_exec_callback_QMdiArea_setVisible ".} =
-  type Cb = proc(super: QMdiAreasetVisibleBase, visible: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(visible: bool): auto =
-    callVirtualBase_setVisible(QMdiArea(h: self), visible)
+  var nimfunc = cast[ptr QMdiAreasetVisibleProc](cast[pointer](slot))
   let slotval1 = visible
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_heightForWidth(self: QMdiArea, param1: cint): cint =
-
+  nimfunc[](slotval1)
+proc QMdiAreaheightForWidth*(self: gen_qmdiarea_types.QMdiArea, param1: cint): cint =
 
   fQMdiArea_virtualbase_heightForWidth(self.h, param1)
 
-type QMdiAreaheightForWidthBase* = proc(param1: cint): cint
-proc onheightForWidth*(self: QMdiArea, slot: proc(super: QMdiAreaheightForWidthBase, param1: cint): cint) =
+type QMdiAreaheightForWidthProc* = proc(param1: cint): cint
+proc onheightForWidth*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiAreaheightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QMdiAreaheightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QMdiAreaheightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMdiArea_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMdiArea_heightForWidth(self: ptr cQMdiArea, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QMdiArea_heightForWidth ".} =
-  type Cb = proc(super: QMdiAreaheightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_heightForWidth(QMdiArea(h: self), param1)
+  var nimfunc = cast[ptr QMdiAreaheightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_hasHeightForWidth(self: QMdiArea, ): bool =
-
+proc QMdiAreahasHeightForWidth*(self: gen_qmdiarea_types.QMdiArea, ): bool =
 
   fQMdiArea_virtualbase_hasHeightForWidth(self.h)
 
-type QMdiAreahasHeightForWidthBase* = proc(): bool
-proc onhasHeightForWidth*(self: QMdiArea, slot: proc(super: QMdiAreahasHeightForWidthBase): bool) =
+type QMdiAreahasHeightForWidthProc* = proc(): bool
+proc onhasHeightForWidth*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiAreahasHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QMdiAreahasHeightForWidthBase): bool
-  var tmp = new Cb
+  var tmp = new QMdiAreahasHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMdiArea_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMdiArea_hasHeightForWidth(self: ptr cQMdiArea, slot: int): bool {.exportc: "miqt_exec_callback_QMdiArea_hasHeightForWidth ".} =
-  type Cb = proc(super: QMdiAreahasHeightForWidthBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasHeightForWidth(QMdiArea(h: self), )
+  var nimfunc = cast[ptr QMdiAreahasHeightForWidthProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_paintEngine(self: QMdiArea, ): gen_qpaintengine.QPaintEngine =
-
+proc QMdiAreapaintEngine*(self: gen_qmdiarea_types.QMdiArea, ): gen_qpaintengine.QPaintEngine =
 
   gen_qpaintengine.QPaintEngine(h: fQMdiArea_virtualbase_paintEngine(self.h))
 
-type QMdiAreapaintEngineBase* = proc(): gen_qpaintengine.QPaintEngine
-proc onpaintEngine*(self: QMdiArea, slot: proc(super: QMdiAreapaintEngineBase): gen_qpaintengine.QPaintEngine) =
+type QMdiAreapaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
+proc onpaintEngine*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiAreapaintEngineProc) =
   # TODO check subclass
-  type Cb = proc(super: QMdiAreapaintEngineBase): gen_qpaintengine.QPaintEngine
-  var tmp = new Cb
+  var tmp = new QMdiAreapaintEngineProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMdiArea_override_virtual_paintEngine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMdiArea_paintEngine(self: ptr cQMdiArea, slot: int): pointer {.exportc: "miqt_exec_callback_QMdiArea_paintEngine ".} =
-  type Cb = proc(super: QMdiAreapaintEngineBase): gen_qpaintengine.QPaintEngine
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_paintEngine(QMdiArea(h: self), )
+  var nimfunc = cast[ptr QMdiAreapaintEngineProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_keyReleaseEvent(self: QMdiArea, event: gen_qevent.QKeyEvent): void =
-
+proc QMdiAreakeyReleaseEvent*(self: gen_qmdiarea_types.QMdiArea, event: gen_qevent.QKeyEvent): void =
 
   fQMdiArea_virtualbase_keyReleaseEvent(self.h, event.h)
 
-type QMdiAreakeyReleaseEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyReleaseEvent*(self: QMdiArea, slot: proc(super: QMdiAreakeyReleaseEventBase, event: gen_qevent.QKeyEvent): void) =
+type QMdiAreakeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyReleaseEvent*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiAreakeyReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMdiAreakeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QMdiAreakeyReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMdiArea_override_virtual_keyReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMdiArea_keyReleaseEvent(self: ptr cQMdiArea, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMdiArea_keyReleaseEvent ".} =
-  type Cb = proc(super: QMdiAreakeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyReleaseEvent(QMdiArea(h: self), event)
+  var nimfunc = cast[ptr QMdiAreakeyReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusInEvent(self: QMdiArea, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QMdiAreafocusInEvent*(self: gen_qmdiarea_types.QMdiArea, event: gen_qevent.QFocusEvent): void =
 
   fQMdiArea_virtualbase_focusInEvent(self.h, event.h)
 
-type QMdiAreafocusInEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusInEvent*(self: QMdiArea, slot: proc(super: QMdiAreafocusInEventBase, event: gen_qevent.QFocusEvent): void) =
+type QMdiAreafocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusInEvent*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiAreafocusInEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMdiAreafocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QMdiAreafocusInEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMdiArea_override_virtual_focusInEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMdiArea_focusInEvent(self: ptr cQMdiArea, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMdiArea_focusInEvent ".} =
-  type Cb = proc(super: QMdiAreafocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusInEvent(QMdiArea(h: self), event)
+  var nimfunc = cast[ptr QMdiAreafocusInEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusOutEvent(self: QMdiArea, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QMdiAreafocusOutEvent*(self: gen_qmdiarea_types.QMdiArea, event: gen_qevent.QFocusEvent): void =
 
   fQMdiArea_virtualbase_focusOutEvent(self.h, event.h)
 
-type QMdiAreafocusOutEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusOutEvent*(self: QMdiArea, slot: proc(super: QMdiAreafocusOutEventBase, event: gen_qevent.QFocusEvent): void) =
+type QMdiAreafocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusOutEvent*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiAreafocusOutEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMdiAreafocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QMdiAreafocusOutEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMdiArea_override_virtual_focusOutEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMdiArea_focusOutEvent(self: ptr cQMdiArea, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMdiArea_focusOutEvent ".} =
-  type Cb = proc(super: QMdiAreafocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusOutEvent(QMdiArea(h: self), event)
+  var nimfunc = cast[ptr QMdiAreafocusOutEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_enterEvent(self: QMdiArea, event: gen_qevent.QEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QMdiAreaenterEvent*(self: gen_qmdiarea_types.QMdiArea, event: gen_qevent.QEnterEvent): void =
 
   fQMdiArea_virtualbase_enterEvent(self.h, event.h)
 
-type QMdiAreaenterEventBase* = proc(event: gen_qevent.QEnterEvent): void
-proc onenterEvent*(self: QMdiArea, slot: proc(super: QMdiAreaenterEventBase, event: gen_qevent.QEnterEvent): void) =
+type QMdiAreaenterEventProc* = proc(event: gen_qevent.QEnterEvent): void
+proc onenterEvent*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiAreaenterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMdiAreaenterEventBase, event: gen_qevent.QEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QMdiAreaenterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMdiArea_override_virtual_enterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMdiArea_enterEvent(self: ptr cQMdiArea, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMdiArea_enterEvent ".} =
-  type Cb = proc(super: QMdiAreaenterEventBase, event: gen_qevent.QEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QEnterEvent): auto =
-    callVirtualBase_enterEvent(QMdiArea(h: self), event)
+  var nimfunc = cast[ptr QMdiAreaenterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_leaveEvent(self: QMdiArea, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QMdiArealeaveEvent*(self: gen_qmdiarea_types.QMdiArea, event: gen_qcoreevent.QEvent): void =
 
   fQMdiArea_virtualbase_leaveEvent(self.h, event.h)
 
-type QMdiArealeaveEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onleaveEvent*(self: QMdiArea, slot: proc(super: QMdiArealeaveEventBase, event: gen_qcoreevent.QEvent): void) =
+type QMdiArealeaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onleaveEvent*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiArealeaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMdiArealeaveEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QMdiArealeaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMdiArea_override_virtual_leaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMdiArea_leaveEvent(self: ptr cQMdiArea, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMdiArea_leaveEvent ".} =
-  type Cb = proc(super: QMdiArealeaveEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_leaveEvent(QMdiArea(h: self), event)
+  var nimfunc = cast[ptr QMdiArealeaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_moveEvent(self: QMdiArea, event: gen_qevent.QMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QMdiAreamoveEvent*(self: gen_qmdiarea_types.QMdiArea, event: gen_qevent.QMoveEvent): void =
 
   fQMdiArea_virtualbase_moveEvent(self.h, event.h)
 
-type QMdiAreamoveEventBase* = proc(event: gen_qevent.QMoveEvent): void
-proc onmoveEvent*(self: QMdiArea, slot: proc(super: QMdiAreamoveEventBase, event: gen_qevent.QMoveEvent): void) =
+type QMdiAreamoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
+proc onmoveEvent*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiAreamoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMdiAreamoveEventBase, event: gen_qevent.QMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QMdiAreamoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMdiArea_override_virtual_moveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMdiArea_moveEvent(self: ptr cQMdiArea, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMdiArea_moveEvent ".} =
-  type Cb = proc(super: QMdiAreamoveEventBase, event: gen_qevent.QMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMoveEvent): auto =
-    callVirtualBase_moveEvent(QMdiArea(h: self), event)
+  var nimfunc = cast[ptr QMdiAreamoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_closeEvent(self: QMdiArea, event: gen_qevent.QCloseEvent): void =
-
+  nimfunc[](slotval1)
+proc QMdiAreacloseEvent*(self: gen_qmdiarea_types.QMdiArea, event: gen_qevent.QCloseEvent): void =
 
   fQMdiArea_virtualbase_closeEvent(self.h, event.h)
 
-type QMdiAreacloseEventBase* = proc(event: gen_qevent.QCloseEvent): void
-proc oncloseEvent*(self: QMdiArea, slot: proc(super: QMdiAreacloseEventBase, event: gen_qevent.QCloseEvent): void) =
+type QMdiAreacloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
+proc oncloseEvent*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiAreacloseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMdiAreacloseEventBase, event: gen_qevent.QCloseEvent): void
-  var tmp = new Cb
+  var tmp = new QMdiAreacloseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMdiArea_override_virtual_closeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMdiArea_closeEvent(self: ptr cQMdiArea, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMdiArea_closeEvent ".} =
-  type Cb = proc(super: QMdiAreacloseEventBase, event: gen_qevent.QCloseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QCloseEvent): auto =
-    callVirtualBase_closeEvent(QMdiArea(h: self), event)
+  var nimfunc = cast[ptr QMdiAreacloseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QCloseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_tabletEvent(self: QMdiArea, event: gen_qevent.QTabletEvent): void =
-
+  nimfunc[](slotval1)
+proc QMdiAreatabletEvent*(self: gen_qmdiarea_types.QMdiArea, event: gen_qevent.QTabletEvent): void =
 
   fQMdiArea_virtualbase_tabletEvent(self.h, event.h)
 
-type QMdiAreatabletEventBase* = proc(event: gen_qevent.QTabletEvent): void
-proc ontabletEvent*(self: QMdiArea, slot: proc(super: QMdiAreatabletEventBase, event: gen_qevent.QTabletEvent): void) =
+type QMdiAreatabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
+proc ontabletEvent*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiAreatabletEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMdiAreatabletEventBase, event: gen_qevent.QTabletEvent): void
-  var tmp = new Cb
+  var tmp = new QMdiAreatabletEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMdiArea_override_virtual_tabletEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMdiArea_tabletEvent(self: ptr cQMdiArea, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMdiArea_tabletEvent ".} =
-  type Cb = proc(super: QMdiAreatabletEventBase, event: gen_qevent.QTabletEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QTabletEvent): auto =
-    callVirtualBase_tabletEvent(QMdiArea(h: self), event)
+  var nimfunc = cast[ptr QMdiAreatabletEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QTabletEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_actionEvent(self: QMdiArea, event: gen_qevent.QActionEvent): void =
-
+  nimfunc[](slotval1)
+proc QMdiAreaactionEvent*(self: gen_qmdiarea_types.QMdiArea, event: gen_qevent.QActionEvent): void =
 
   fQMdiArea_virtualbase_actionEvent(self.h, event.h)
 
-type QMdiAreaactionEventBase* = proc(event: gen_qevent.QActionEvent): void
-proc onactionEvent*(self: QMdiArea, slot: proc(super: QMdiAreaactionEventBase, event: gen_qevent.QActionEvent): void) =
+type QMdiAreaactionEventProc* = proc(event: gen_qevent.QActionEvent): void
+proc onactionEvent*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiAreaactionEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMdiAreaactionEventBase, event: gen_qevent.QActionEvent): void
-  var tmp = new Cb
+  var tmp = new QMdiAreaactionEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMdiArea_override_virtual_actionEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMdiArea_actionEvent(self: ptr cQMdiArea, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMdiArea_actionEvent ".} =
-  type Cb = proc(super: QMdiAreaactionEventBase, event: gen_qevent.QActionEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QActionEvent): auto =
-    callVirtualBase_actionEvent(QMdiArea(h: self), event)
+  var nimfunc = cast[ptr QMdiAreaactionEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QActionEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hideEvent(self: QMdiArea, event: gen_qevent.QHideEvent): void =
-
+  nimfunc[](slotval1)
+proc QMdiAreahideEvent*(self: gen_qmdiarea_types.QMdiArea, event: gen_qevent.QHideEvent): void =
 
   fQMdiArea_virtualbase_hideEvent(self.h, event.h)
 
-type QMdiAreahideEventBase* = proc(event: gen_qevent.QHideEvent): void
-proc onhideEvent*(self: QMdiArea, slot: proc(super: QMdiAreahideEventBase, event: gen_qevent.QHideEvent): void) =
+type QMdiAreahideEventProc* = proc(event: gen_qevent.QHideEvent): void
+proc onhideEvent*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiAreahideEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMdiAreahideEventBase, event: gen_qevent.QHideEvent): void
-  var tmp = new Cb
+  var tmp = new QMdiAreahideEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMdiArea_override_virtual_hideEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMdiArea_hideEvent(self: ptr cQMdiArea, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMdiArea_hideEvent ".} =
-  type Cb = proc(super: QMdiAreahideEventBase, event: gen_qevent.QHideEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QHideEvent): auto =
-    callVirtualBase_hideEvent(QMdiArea(h: self), event)
+  var nimfunc = cast[ptr QMdiAreahideEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QHideEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_nativeEvent(self: QMdiArea, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
-
+  nimfunc[](slotval1)
+proc QMdiAreanativeEvent*(self: gen_qmdiarea_types.QMdiArea, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
 
   fQMdiArea_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
-type QMdiAreanativeEventBase* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-proc onnativeEvent*(self: QMdiArea, slot: proc(super: QMdiAreanativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool) =
+type QMdiAreanativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
+proc onnativeEvent*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiAreanativeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMdiAreanativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-  var tmp = new Cb
+  var tmp = new QMdiAreanativeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMdiArea_override_virtual_nativeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMdiArea_nativeEvent(self: ptr cQMdiArea, slot: int, eventType: struct_miqt_string, message: pointer, resultVal: ptr uint): bool {.exportc: "miqt_exec_callback_QMdiArea_nativeEvent ".} =
-  type Cb = proc(super: QMdiAreanativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(eventType: seq[byte], message: pointer, resultVal: ptr uint): auto =
-    callVirtualBase_nativeEvent(QMdiArea(h: self), eventType, message, resultVal)
+  var nimfunc = cast[ptr QMdiAreanativeEventProc](cast[pointer](slot))
   var veventType_bytearray = eventType
   var veventTypex_ret = @(toOpenArrayByte(veventType_bytearray.data, 0, int(veventType_bytearray.len)-1))
   c_free(veventType_bytearray.data)
@@ -1528,248 +1293,198 @@ proc miqt_exec_callback_QMdiArea_nativeEvent(self: ptr cQMdiArea, slot: int, eve
   let slotval3 = resultVal
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_metric(self: QMdiArea, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint =
-
+proc QMdiAreametric*(self: gen_qmdiarea_types.QMdiArea, param1: cint): cint =
 
   fQMdiArea_virtualbase_metric(self.h, cint(param1))
 
-type QMdiAreametricBase* = proc(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-proc onmetric*(self: QMdiArea, slot: proc(super: QMdiAreametricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint) =
+type QMdiAreametricProc* = proc(param1: cint): cint
+proc onmetric*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiAreametricProc) =
   # TODO check subclass
-  type Cb = proc(super: QMdiAreametricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var tmp = new Cb
+  var tmp = new QMdiAreametricProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMdiArea_override_virtual_metric(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMdiArea_metric(self: ptr cQMdiArea, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QMdiArea_metric ".} =
-  type Cb = proc(super: QMdiAreametricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): auto =
-    callVirtualBase_metric(QMdiArea(h: self), param1)
-  let slotval1 = gen_qpaintdevice.QPaintDevicePaintDeviceMetric(param1)
+  var nimfunc = cast[ptr QMdiAreametricProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_initPainter(self: QMdiArea, painter: gen_qpainter.QPainter): void =
-
+proc QMdiAreainitPainter*(self: gen_qmdiarea_types.QMdiArea, painter: gen_qpainter.QPainter): void =
 
   fQMdiArea_virtualbase_initPainter(self.h, painter.h)
 
-type QMdiAreainitPainterBase* = proc(painter: gen_qpainter.QPainter): void
-proc oninitPainter*(self: QMdiArea, slot: proc(super: QMdiAreainitPainterBase, painter: gen_qpainter.QPainter): void) =
+type QMdiAreainitPainterProc* = proc(painter: gen_qpainter.QPainter): void
+proc oninitPainter*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiAreainitPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QMdiAreainitPainterBase, painter: gen_qpainter.QPainter): void
-  var tmp = new Cb
+  var tmp = new QMdiAreainitPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMdiArea_override_virtual_initPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMdiArea_initPainter(self: ptr cQMdiArea, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_QMdiArea_initPainter ".} =
-  type Cb = proc(super: QMdiAreainitPainterBase, painter: gen_qpainter.QPainter): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter): auto =
-    callVirtualBase_initPainter(QMdiArea(h: self), painter)
+  var nimfunc = cast[ptr QMdiAreainitPainterProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_redirected(self: QMdiArea, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
+  nimfunc[](slotval1)
+proc QMdiArearedirected*(self: gen_qmdiarea_types.QMdiArea, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
 
   gen_qpaintdevice.QPaintDevice(h: fQMdiArea_virtualbase_redirected(self.h, offset.h))
 
-type QMdiArearedirectedBase* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-proc onredirected*(self: QMdiArea, slot: proc(super: QMdiArearedirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice) =
+type QMdiArearedirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
+proc onredirected*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiArearedirectedProc) =
   # TODO check subclass
-  type Cb = proc(super: QMdiArearedirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var tmp = new Cb
+  var tmp = new QMdiArearedirectedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMdiArea_override_virtual_redirected(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMdiArea_redirected(self: ptr cQMdiArea, slot: int, offset: pointer): pointer {.exportc: "miqt_exec_callback_QMdiArea_redirected ".} =
-  type Cb = proc(super: QMdiArearedirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(offset: gen_qpoint.QPoint): auto =
-    callVirtualBase_redirected(QMdiArea(h: self), offset)
+  var nimfunc = cast[ptr QMdiArearedirectedProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: offset)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_sharedPainter(self: QMdiArea, ): gen_qpainter.QPainter =
-
+proc QMdiAreasharedPainter*(self: gen_qmdiarea_types.QMdiArea, ): gen_qpainter.QPainter =
 
   gen_qpainter.QPainter(h: fQMdiArea_virtualbase_sharedPainter(self.h))
 
-type QMdiAreasharedPainterBase* = proc(): gen_qpainter.QPainter
-proc onsharedPainter*(self: QMdiArea, slot: proc(super: QMdiAreasharedPainterBase): gen_qpainter.QPainter) =
+type QMdiAreasharedPainterProc* = proc(): gen_qpainter.QPainter
+proc onsharedPainter*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiAreasharedPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QMdiAreasharedPainterBase): gen_qpainter.QPainter
-  var tmp = new Cb
+  var tmp = new QMdiAreasharedPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMdiArea_override_virtual_sharedPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMdiArea_sharedPainter(self: ptr cQMdiArea, slot: int): pointer {.exportc: "miqt_exec_callback_QMdiArea_sharedPainter ".} =
-  type Cb = proc(super: QMdiAreasharedPainterBase): gen_qpainter.QPainter
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sharedPainter(QMdiArea(h: self), )
+  var nimfunc = cast[ptr QMdiAreasharedPainterProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_inputMethodEvent(self: QMdiArea, param1: gen_qevent.QInputMethodEvent): void =
-
+proc QMdiAreainputMethodEvent*(self: gen_qmdiarea_types.QMdiArea, param1: gen_qevent.QInputMethodEvent): void =
 
   fQMdiArea_virtualbase_inputMethodEvent(self.h, param1.h)
 
-type QMdiAreainputMethodEventBase* = proc(param1: gen_qevent.QInputMethodEvent): void
-proc oninputMethodEvent*(self: QMdiArea, slot: proc(super: QMdiAreainputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void) =
+type QMdiAreainputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
+proc oninputMethodEvent*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiAreainputMethodEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMdiAreainputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var tmp = new Cb
+  var tmp = new QMdiAreainputMethodEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMdiArea_override_virtual_inputMethodEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMdiArea_inputMethodEvent(self: ptr cQMdiArea, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QMdiArea_inputMethodEvent ".} =
-  type Cb = proc(super: QMdiAreainputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QInputMethodEvent): auto =
-    callVirtualBase_inputMethodEvent(QMdiArea(h: self), param1)
+  var nimfunc = cast[ptr QMdiAreainputMethodEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QInputMethodEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_inputMethodQuery(self: QMdiArea, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant =
-
+  nimfunc[](slotval1)
+proc QMdiAreainputMethodQuery*(self: gen_qmdiarea_types.QMdiArea, param1: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQMdiArea_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
-type QMdiAreainputMethodQueryBase* = proc(param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-proc oninputMethodQuery*(self: QMdiArea, slot: proc(super: QMdiAreainputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant) =
+type QMdiAreainputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
+proc oninputMethodQuery*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiAreainputMethodQueryProc) =
   # TODO check subclass
-  type Cb = proc(super: QMdiAreainputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QMdiAreainputMethodQueryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMdiArea_override_virtual_inputMethodQuery(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMdiArea_inputMethodQuery(self: ptr cQMdiArea, slot: int, param1: cint): pointer {.exportc: "miqt_exec_callback_QMdiArea_inputMethodQuery ".} =
-  type Cb = proc(super: QMdiAreainputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qnamespace.InputMethodQuery): auto =
-    callVirtualBase_inputMethodQuery(QMdiArea(h: self), param1)
-  let slotval1 = gen_qnamespace.InputMethodQuery(param1)
+  var nimfunc = cast[ptr QMdiAreainputMethodQueryProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_focusNextPrevChild(self: QMdiArea, next: bool): bool =
-
+proc QMdiAreafocusNextPrevChild*(self: gen_qmdiarea_types.QMdiArea, next: bool): bool =
 
   fQMdiArea_virtualbase_focusNextPrevChild(self.h, next)
 
-type QMdiAreafocusNextPrevChildBase* = proc(next: bool): bool
-proc onfocusNextPrevChild*(self: QMdiArea, slot: proc(super: QMdiAreafocusNextPrevChildBase, next: bool): bool) =
+type QMdiAreafocusNextPrevChildProc* = proc(next: bool): bool
+proc onfocusNextPrevChild*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiAreafocusNextPrevChildProc) =
   # TODO check subclass
-  type Cb = proc(super: QMdiAreafocusNextPrevChildBase, next: bool): bool
-  var tmp = new Cb
+  var tmp = new QMdiAreafocusNextPrevChildProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMdiArea_override_virtual_focusNextPrevChild(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMdiArea_focusNextPrevChild(self: ptr cQMdiArea, slot: int, next: bool): bool {.exportc: "miqt_exec_callback_QMdiArea_focusNextPrevChild ".} =
-  type Cb = proc(super: QMdiAreafocusNextPrevChildBase, next: bool): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(next: bool): auto =
-    callVirtualBase_focusNextPrevChild(QMdiArea(h: self), next)
+  var nimfunc = cast[ptr QMdiAreafocusNextPrevChildProc](cast[pointer](slot))
   let slotval1 = next
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_customEvent(self: QMdiArea, event: gen_qcoreevent.QEvent): void =
-
+proc QMdiAreacustomEvent*(self: gen_qmdiarea_types.QMdiArea, event: gen_qcoreevent.QEvent): void =
 
   fQMdiArea_virtualbase_customEvent(self.h, event.h)
 
-type QMdiAreacustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QMdiArea, slot: proc(super: QMdiAreacustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QMdiAreacustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiAreacustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMdiAreacustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QMdiAreacustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMdiArea_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMdiArea_customEvent(self: ptr cQMdiArea, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMdiArea_customEvent ".} =
-  type Cb = proc(super: QMdiAreacustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QMdiArea(h: self), event)
+  var nimfunc = cast[ptr QMdiAreacustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QMdiArea, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QMdiAreaconnectNotify*(self: gen_qmdiarea_types.QMdiArea, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQMdiArea_virtualbase_connectNotify(self.h, signal.h)
 
-type QMdiAreaconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QMdiArea, slot: proc(super: QMdiAreaconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QMdiAreaconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiAreaconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QMdiAreaconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QMdiAreaconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMdiArea_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMdiArea_connectNotify(self: ptr cQMdiArea, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QMdiArea_connectNotify ".} =
-  type Cb = proc(super: QMdiAreaconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QMdiArea(h: self), signal)
+  var nimfunc = cast[ptr QMdiAreaconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QMdiArea, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QMdiAreadisconnectNotify*(self: gen_qmdiarea_types.QMdiArea, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQMdiArea_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QMdiAreadisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QMdiArea, slot: proc(super: QMdiAreadisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QMdiAreadisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiAreadisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QMdiAreadisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QMdiAreadisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMdiArea_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMdiArea_disconnectNotify(self: ptr cQMdiArea, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QMdiArea_disconnectNotify ".} =
-  type Cb = proc(super: QMdiAreadisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QMdiArea(h: self), signal)
+  var nimfunc = cast[ptr QMdiAreadisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QMdiArea): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qmdiarea_types.QMdiArea): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQMdiArea_staticMetaObject())
-proc delete*(self: QMdiArea) =
+proc delete*(self: gen_qmdiarea_types.QMdiArea) =
   fcQMdiArea_delete(self.h)

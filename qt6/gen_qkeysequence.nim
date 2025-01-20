@@ -34,95 +34,89 @@ const cflags = gorge("pkg-config -cflags Qt6Widgets")
 {.compile("gen_qkeysequence.cpp", cflags).}
 
 
-type QKeySequenceStandardKey* = cint
-const
-  QKeySequenceUnknownKey* = 0
-  QKeySequenceHelpContents* = 1
-  QKeySequenceWhatsThis* = 2
-  QKeySequenceOpen* = 3
-  QKeySequenceClose* = 4
-  QKeySequenceSave* = 5
-  QKeySequenceNew* = 6
-  QKeySequenceDelete* = 7
-  QKeySequenceCut* = 8
-  QKeySequenceCopy* = 9
-  QKeySequencePaste* = 10
-  QKeySequenceUndo* = 11
-  QKeySequenceRedo* = 12
-  QKeySequenceBack* = 13
-  QKeySequenceForward* = 14
-  QKeySequenceRefresh* = 15
-  QKeySequenceZoomIn* = 16
-  QKeySequenceZoomOut* = 17
-  QKeySequencePrint* = 18
-  QKeySequenceAddTab* = 19
-  QKeySequenceNextChild* = 20
-  QKeySequencePreviousChild* = 21
-  QKeySequenceFind* = 22
-  QKeySequenceFindNext* = 23
-  QKeySequenceFindPrevious* = 24
-  QKeySequenceReplace* = 25
-  QKeySequenceSelectAll* = 26
-  QKeySequenceBold* = 27
-  QKeySequenceItalic* = 28
-  QKeySequenceUnderline* = 29
-  QKeySequenceMoveToNextChar* = 30
-  QKeySequenceMoveToPreviousChar* = 31
-  QKeySequenceMoveToNextWord* = 32
-  QKeySequenceMoveToPreviousWord* = 33
-  QKeySequenceMoveToNextLine* = 34
-  QKeySequenceMoveToPreviousLine* = 35
-  QKeySequenceMoveToNextPage* = 36
-  QKeySequenceMoveToPreviousPage* = 37
-  QKeySequenceMoveToStartOfLine* = 38
-  QKeySequenceMoveToEndOfLine* = 39
-  QKeySequenceMoveToStartOfBlock* = 40
-  QKeySequenceMoveToEndOfBlock* = 41
-  QKeySequenceMoveToStartOfDocument* = 42
-  QKeySequenceMoveToEndOfDocument* = 43
-  QKeySequenceSelectNextChar* = 44
-  QKeySequenceSelectPreviousChar* = 45
-  QKeySequenceSelectNextWord* = 46
-  QKeySequenceSelectPreviousWord* = 47
-  QKeySequenceSelectNextLine* = 48
-  QKeySequenceSelectPreviousLine* = 49
-  QKeySequenceSelectNextPage* = 50
-  QKeySequenceSelectPreviousPage* = 51
-  QKeySequenceSelectStartOfLine* = 52
-  QKeySequenceSelectEndOfLine* = 53
-  QKeySequenceSelectStartOfBlock* = 54
-  QKeySequenceSelectEndOfBlock* = 55
-  QKeySequenceSelectStartOfDocument* = 56
-  QKeySequenceSelectEndOfDocument* = 57
-  QKeySequenceDeleteStartOfWord* = 58
-  QKeySequenceDeleteEndOfWord* = 59
-  QKeySequenceDeleteEndOfLine* = 60
-  QKeySequenceInsertParagraphSeparator* = 61
-  QKeySequenceInsertLineSeparator* = 62
-  QKeySequenceSaveAs* = 63
-  QKeySequencePreferences* = 64
-  QKeySequenceQuit* = 65
-  QKeySequenceFullScreen* = 66
-  QKeySequenceDeselect* = 67
-  QKeySequenceDeleteCompleteLine* = 68
-  QKeySequenceBackspace* = 69
-  QKeySequenceCancel* = 70
+type QKeySequenceStandardKeyEnum* = distinct cint
+template UnknownKey*(_: type QKeySequenceStandardKeyEnum): untyped = 0
+template HelpContents*(_: type QKeySequenceStandardKeyEnum): untyped = 1
+template WhatsThis*(_: type QKeySequenceStandardKeyEnum): untyped = 2
+template Open*(_: type QKeySequenceStandardKeyEnum): untyped = 3
+template Close*(_: type QKeySequenceStandardKeyEnum): untyped = 4
+template Save*(_: type QKeySequenceStandardKeyEnum): untyped = 5
+template New*(_: type QKeySequenceStandardKeyEnum): untyped = 6
+template Delete*(_: type QKeySequenceStandardKeyEnum): untyped = 7
+template Cut*(_: type QKeySequenceStandardKeyEnum): untyped = 8
+template Copy*(_: type QKeySequenceStandardKeyEnum): untyped = 9
+template Paste*(_: type QKeySequenceStandardKeyEnum): untyped = 10
+template Undo*(_: type QKeySequenceStandardKeyEnum): untyped = 11
+template Redo*(_: type QKeySequenceStandardKeyEnum): untyped = 12
+template Back*(_: type QKeySequenceStandardKeyEnum): untyped = 13
+template Forward*(_: type QKeySequenceStandardKeyEnum): untyped = 14
+template Refresh*(_: type QKeySequenceStandardKeyEnum): untyped = 15
+template ZoomIn*(_: type QKeySequenceStandardKeyEnum): untyped = 16
+template ZoomOut*(_: type QKeySequenceStandardKeyEnum): untyped = 17
+template Print*(_: type QKeySequenceStandardKeyEnum): untyped = 18
+template AddTab*(_: type QKeySequenceStandardKeyEnum): untyped = 19
+template NextChild*(_: type QKeySequenceStandardKeyEnum): untyped = 20
+template PreviousChild*(_: type QKeySequenceStandardKeyEnum): untyped = 21
+template Find*(_: type QKeySequenceStandardKeyEnum): untyped = 22
+template FindNext*(_: type QKeySequenceStandardKeyEnum): untyped = 23
+template FindPrevious*(_: type QKeySequenceStandardKeyEnum): untyped = 24
+template Replace*(_: type QKeySequenceStandardKeyEnum): untyped = 25
+template SelectAll*(_: type QKeySequenceStandardKeyEnum): untyped = 26
+template Bold*(_: type QKeySequenceStandardKeyEnum): untyped = 27
+template Italic*(_: type QKeySequenceStandardKeyEnum): untyped = 28
+template Underline*(_: type QKeySequenceStandardKeyEnum): untyped = 29
+template MoveToNextChar*(_: type QKeySequenceStandardKeyEnum): untyped = 30
+template MoveToPreviousChar*(_: type QKeySequenceStandardKeyEnum): untyped = 31
+template MoveToNextWord*(_: type QKeySequenceStandardKeyEnum): untyped = 32
+template MoveToPreviousWord*(_: type QKeySequenceStandardKeyEnum): untyped = 33
+template MoveToNextLine*(_: type QKeySequenceStandardKeyEnum): untyped = 34
+template MoveToPreviousLine*(_: type QKeySequenceStandardKeyEnum): untyped = 35
+template MoveToNextPage*(_: type QKeySequenceStandardKeyEnum): untyped = 36
+template MoveToPreviousPage*(_: type QKeySequenceStandardKeyEnum): untyped = 37
+template MoveToStartOfLine*(_: type QKeySequenceStandardKeyEnum): untyped = 38
+template MoveToEndOfLine*(_: type QKeySequenceStandardKeyEnum): untyped = 39
+template MoveToStartOfBlock*(_: type QKeySequenceStandardKeyEnum): untyped = 40
+template MoveToEndOfBlock*(_: type QKeySequenceStandardKeyEnum): untyped = 41
+template MoveToStartOfDocument*(_: type QKeySequenceStandardKeyEnum): untyped = 42
+template MoveToEndOfDocument*(_: type QKeySequenceStandardKeyEnum): untyped = 43
+template SelectNextChar*(_: type QKeySequenceStandardKeyEnum): untyped = 44
+template SelectPreviousChar*(_: type QKeySequenceStandardKeyEnum): untyped = 45
+template SelectNextWord*(_: type QKeySequenceStandardKeyEnum): untyped = 46
+template SelectPreviousWord*(_: type QKeySequenceStandardKeyEnum): untyped = 47
+template SelectNextLine*(_: type QKeySequenceStandardKeyEnum): untyped = 48
+template SelectPreviousLine*(_: type QKeySequenceStandardKeyEnum): untyped = 49
+template SelectNextPage*(_: type QKeySequenceStandardKeyEnum): untyped = 50
+template SelectPreviousPage*(_: type QKeySequenceStandardKeyEnum): untyped = 51
+template SelectStartOfLine*(_: type QKeySequenceStandardKeyEnum): untyped = 52
+template SelectEndOfLine*(_: type QKeySequenceStandardKeyEnum): untyped = 53
+template SelectStartOfBlock*(_: type QKeySequenceStandardKeyEnum): untyped = 54
+template SelectEndOfBlock*(_: type QKeySequenceStandardKeyEnum): untyped = 55
+template SelectStartOfDocument*(_: type QKeySequenceStandardKeyEnum): untyped = 56
+template SelectEndOfDocument*(_: type QKeySequenceStandardKeyEnum): untyped = 57
+template DeleteStartOfWord*(_: type QKeySequenceStandardKeyEnum): untyped = 58
+template DeleteEndOfWord*(_: type QKeySequenceStandardKeyEnum): untyped = 59
+template DeleteEndOfLine*(_: type QKeySequenceStandardKeyEnum): untyped = 60
+template InsertParagraphSeparator*(_: type QKeySequenceStandardKeyEnum): untyped = 61
+template InsertLineSeparator*(_: type QKeySequenceStandardKeyEnum): untyped = 62
+template SaveAs*(_: type QKeySequenceStandardKeyEnum): untyped = 63
+template Preferences*(_: type QKeySequenceStandardKeyEnum): untyped = 64
+template Quit*(_: type QKeySequenceStandardKeyEnum): untyped = 65
+template FullScreen*(_: type QKeySequenceStandardKeyEnum): untyped = 66
+template Deselect*(_: type QKeySequenceStandardKeyEnum): untyped = 67
+template DeleteCompleteLine*(_: type QKeySequenceStandardKeyEnum): untyped = 68
+template Backspace*(_: type QKeySequenceStandardKeyEnum): untyped = 69
+template Cancel*(_: type QKeySequenceStandardKeyEnum): untyped = 70
 
 
-
-type QKeySequenceSequenceFormat* = cint
-const
-  QKeySequenceNativeText* = 0
-  QKeySequencePortableText* = 1
+type QKeySequenceSequenceFormatEnum* = distinct cint
+template NativeText*(_: type QKeySequenceSequenceFormatEnum): untyped = 0
+template PortableText*(_: type QKeySequenceSequenceFormatEnum): untyped = 1
 
 
-
-type QKeySequenceSequenceMatch* = cint
-const
-  QKeySequenceNoMatch* = 0
-  QKeySequencePartialMatch* = 1
-  QKeySequenceExactMatch* = 2
-
+type QKeySequenceSequenceMatchEnum* = distinct cint
+template NoMatch*(_: type QKeySequenceSequenceMatchEnum): untyped = 0
+template PartialMatch*(_: type QKeySequenceSequenceMatchEnum): untyped = 1
+template ExactMatch*(_: type QKeySequenceSequenceMatchEnum): untyped = 2
 
 
 import gen_qkeysequence_types
@@ -180,76 +174,76 @@ proc fcQKeySequence_staticMetaObject(): pointer {.importc: "QKeySequence_staticM
 proc fcQKeySequence_delete(self: pointer) {.importc: "QKeySequence_delete".}
 
 
-func init*(T: type QKeySequence, h: ptr cQKeySequence): QKeySequence =
+func init*(T: type gen_qkeysequence_types.QKeySequence, h: ptr cQKeySequence): gen_qkeysequence_types.QKeySequence =
   T(h: h)
-proc create*(T: type QKeySequence, ): QKeySequence =
+proc create*(T: type gen_qkeysequence_types.QKeySequence, ): gen_qkeysequence_types.QKeySequence =
 
-  QKeySequence.init(fcQKeySequence_new())
-proc create*(T: type QKeySequence, key: string): QKeySequence =
+  gen_qkeysequence_types.QKeySequence.init(fcQKeySequence_new())
+proc create*(T: type gen_qkeysequence_types.QKeySequence, key: string): gen_qkeysequence_types.QKeySequence =
 
-  QKeySequence.init(fcQKeySequence_new2(struct_miqt_string(data: key, len: csize_t(len(key)))))
-proc create*(T: type QKeySequence, k1: cint): QKeySequence =
+  gen_qkeysequence_types.QKeySequence.init(fcQKeySequence_new2(struct_miqt_string(data: key, len: csize_t(len(key)))))
+proc create*(T: type gen_qkeysequence_types.QKeySequence, k1: cint): gen_qkeysequence_types.QKeySequence =
 
-  QKeySequence.init(fcQKeySequence_new3(k1))
-proc create*(T: type QKeySequence, k1: gen_qnamespace.QKeyCombination): QKeySequence =
+  gen_qkeysequence_types.QKeySequence.init(fcQKeySequence_new3(k1))
+proc create*(T: type gen_qkeysequence_types.QKeySequence, k1: gen_qnamespace.QKeyCombination): gen_qkeysequence_types.QKeySequence =
 
-  QKeySequence.init(fcQKeySequence_new4(k1.h))
-proc create2*(T: type QKeySequence, ks: QKeySequence): QKeySequence =
+  gen_qkeysequence_types.QKeySequence.init(fcQKeySequence_new4(k1.h))
+proc create2*(T: type gen_qkeysequence_types.QKeySequence, ks: gen_qkeysequence_types.QKeySequence): gen_qkeysequence_types.QKeySequence =
 
-  QKeySequence.init(fcQKeySequence_new5(ks.h))
-proc create2*(T: type QKeySequence, key: QKeySequenceStandardKey): QKeySequence =
+  gen_qkeysequence_types.QKeySequence.init(fcQKeySequence_new5(ks.h))
+proc create2*(T: type gen_qkeysequence_types.QKeySequence, key: cint): gen_qkeysequence_types.QKeySequence =
 
-  QKeySequence.init(fcQKeySequence_new6(cint(key)))
-proc create*(T: type QKeySequence, key: string, format: QKeySequenceSequenceFormat): QKeySequence =
+  gen_qkeysequence_types.QKeySequence.init(fcQKeySequence_new6(cint(key)))
+proc create*(T: type gen_qkeysequence_types.QKeySequence, key: string, format: cint): gen_qkeysequence_types.QKeySequence =
 
-  QKeySequence.init(fcQKeySequence_new7(struct_miqt_string(data: key, len: csize_t(len(key))), cint(format)))
-proc create*(T: type QKeySequence, k1: cint, k2: cint): QKeySequence =
+  gen_qkeysequence_types.QKeySequence.init(fcQKeySequence_new7(struct_miqt_string(data: key, len: csize_t(len(key))), cint(format)))
+proc create*(T: type gen_qkeysequence_types.QKeySequence, k1: cint, k2: cint): gen_qkeysequence_types.QKeySequence =
 
-  QKeySequence.init(fcQKeySequence_new8(k1, k2))
-proc create*(T: type QKeySequence, k1: cint, k2: cint, k3: cint): QKeySequence =
+  gen_qkeysequence_types.QKeySequence.init(fcQKeySequence_new8(k1, k2))
+proc create*(T: type gen_qkeysequence_types.QKeySequence, k1: cint, k2: cint, k3: cint): gen_qkeysequence_types.QKeySequence =
 
-  QKeySequence.init(fcQKeySequence_new9(k1, k2, k3))
-proc create*(T: type QKeySequence, k1: cint, k2: cint, k3: cint, k4: cint): QKeySequence =
+  gen_qkeysequence_types.QKeySequence.init(fcQKeySequence_new9(k1, k2, k3))
+proc create*(T: type gen_qkeysequence_types.QKeySequence, k1: cint, k2: cint, k3: cint, k4: cint): gen_qkeysequence_types.QKeySequence =
 
-  QKeySequence.init(fcQKeySequence_new10(k1, k2, k3, k4))
-proc create*(T: type QKeySequence, k1: gen_qnamespace.QKeyCombination, k2: gen_qnamespace.QKeyCombination): QKeySequence =
+  gen_qkeysequence_types.QKeySequence.init(fcQKeySequence_new10(k1, k2, k3, k4))
+proc create*(T: type gen_qkeysequence_types.QKeySequence, k1: gen_qnamespace.QKeyCombination, k2: gen_qnamespace.QKeyCombination): gen_qkeysequence_types.QKeySequence =
 
-  QKeySequence.init(fcQKeySequence_new11(k1.h, k2.h))
-proc create*(T: type QKeySequence, k1: gen_qnamespace.QKeyCombination, k2: gen_qnamespace.QKeyCombination, k3: gen_qnamespace.QKeyCombination): QKeySequence =
+  gen_qkeysequence_types.QKeySequence.init(fcQKeySequence_new11(k1.h, k2.h))
+proc create*(T: type gen_qkeysequence_types.QKeySequence, k1: gen_qnamespace.QKeyCombination, k2: gen_qnamespace.QKeyCombination, k3: gen_qnamespace.QKeyCombination): gen_qkeysequence_types.QKeySequence =
 
-  QKeySequence.init(fcQKeySequence_new12(k1.h, k2.h, k3.h))
-proc create*(T: type QKeySequence, k1: gen_qnamespace.QKeyCombination, k2: gen_qnamespace.QKeyCombination, k3: gen_qnamespace.QKeyCombination, k4: gen_qnamespace.QKeyCombination): QKeySequence =
+  gen_qkeysequence_types.QKeySequence.init(fcQKeySequence_new12(k1.h, k2.h, k3.h))
+proc create*(T: type gen_qkeysequence_types.QKeySequence, k1: gen_qnamespace.QKeyCombination, k2: gen_qnamespace.QKeyCombination, k3: gen_qnamespace.QKeyCombination, k4: gen_qnamespace.QKeyCombination): gen_qkeysequence_types.QKeySequence =
 
-  QKeySequence.init(fcQKeySequence_new13(k1.h, k2.h, k3.h, k4.h))
-proc count*(self: QKeySequence, ): cint =
+  gen_qkeysequence_types.QKeySequence.init(fcQKeySequence_new13(k1.h, k2.h, k3.h, k4.h))
+proc count*(self: gen_qkeysequence_types.QKeySequence, ): cint =
 
   fcQKeySequence_count(self.h)
 
-proc isEmpty*(self: QKeySequence, ): bool =
+proc isEmpty*(self: gen_qkeysequence_types.QKeySequence, ): bool =
 
   fcQKeySequence_isEmpty(self.h)
 
-proc toString*(self: QKeySequence, ): string =
+proc toString*(self: gen_qkeysequence_types.QKeySequence, ): string =
 
   let v_ms = fcQKeySequence_toString(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc fromString*(_: type QKeySequence, str: string): QKeySequence =
+proc fromString*(_: type gen_qkeysequence_types.QKeySequence, str: string): gen_qkeysequence_types.QKeySequence =
 
-  QKeySequence(h: fcQKeySequence_fromString(struct_miqt_string(data: str, len: csize_t(len(str)))))
+  gen_qkeysequence_types.QKeySequence(h: fcQKeySequence_fromString(struct_miqt_string(data: str, len: csize_t(len(str)))))
 
-proc listFromString*(_: type QKeySequence, str: string): seq[QKeySequence] =
+proc listFromString*(_: type gen_qkeysequence_types.QKeySequence, str: string): seq[gen_qkeysequence_types.QKeySequence] =
 
   var v_ma = fcQKeySequence_listFromString(struct_miqt_string(data: str, len: csize_t(len(str))))
-  var vx_ret = newSeq[QKeySequence](int(v_ma.len))
+  var vx_ret = newSeq[gen_qkeysequence_types.QKeySequence](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
-    vx_ret[i] = QKeySequence(h: v_outCast[i])
+    vx_ret[i] = gen_qkeysequence_types.QKeySequence(h: v_outCast[i])
   vx_ret
 
-proc listToString*(_: type QKeySequence, list: seq[QKeySequence]): string =
+proc listToString*(_: type gen_qkeysequence_types.QKeySequence, list: seq[gen_qkeysequence_types.QKeySequence]): string =
 
   var list_CArray = newSeq[pointer](len(list))
   for i in 0..<len(list):
@@ -260,88 +254,88 @@ proc listToString*(_: type QKeySequence, list: seq[QKeySequence]): string =
   c_free(v_ms.data)
   vx_ret
 
-proc matches*(self: QKeySequence, seq: QKeySequence): QKeySequenceSequenceMatch =
+proc matches*(self: gen_qkeysequence_types.QKeySequence, seq: gen_qkeysequence_types.QKeySequence): cint =
 
-  QKeySequenceSequenceMatch(fcQKeySequence_matches(self.h, seq.h))
+  cint(fcQKeySequence_matches(self.h, seq.h))
 
-proc mnemonic*(_: type QKeySequence, text: string): QKeySequence =
+proc mnemonic*(_: type gen_qkeysequence_types.QKeySequence, text: string): gen_qkeysequence_types.QKeySequence =
 
-  QKeySequence(h: fcQKeySequence_mnemonic(struct_miqt_string(data: text, len: csize_t(len(text)))))
+  gen_qkeysequence_types.QKeySequence(h: fcQKeySequence_mnemonic(struct_miqt_string(data: text, len: csize_t(len(text)))))
 
-proc keyBindings*(_: type QKeySequence, key: QKeySequenceStandardKey): seq[QKeySequence] =
+proc keyBindings*(_: type gen_qkeysequence_types.QKeySequence, key: cint): seq[gen_qkeysequence_types.QKeySequence] =
 
   var v_ma = fcQKeySequence_keyBindings(cint(key))
-  var vx_ret = newSeq[QKeySequence](int(v_ma.len))
+  var vx_ret = newSeq[gen_qkeysequence_types.QKeySequence](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
-    vx_ret[i] = QKeySequence(h: v_outCast[i])
+    vx_ret[i] = gen_qkeysequence_types.QKeySequence(h: v_outCast[i])
   vx_ret
 
-proc ToQVariant*(self: QKeySequence, ): gen_qvariant.QVariant =
+proc ToQVariant*(self: gen_qkeysequence_types.QKeySequence, ): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fcQKeySequence_ToQVariant(self.h))
 
-proc operatorSubscript*(self: QKeySequence, i: cuint): gen_qnamespace.QKeyCombination =
+proc operatorSubscript*(self: gen_qkeysequence_types.QKeySequence, i: cuint): gen_qnamespace.QKeyCombination =
 
   gen_qnamespace.QKeyCombination(h: fcQKeySequence_operatorSubscript(self.h, i))
 
-proc operatorAssign*(self: QKeySequence, other: QKeySequence): void =
+proc operatorAssign*(self: gen_qkeysequence_types.QKeySequence, other: gen_qkeysequence_types.QKeySequence): void =
 
   fcQKeySequence_operatorAssign(self.h, other.h)
 
-proc swap*(self: QKeySequence, other: QKeySequence): void =
+proc swap*(self: gen_qkeysequence_types.QKeySequence, other: gen_qkeysequence_types.QKeySequence): void =
 
   fcQKeySequence_swap(self.h, other.h)
 
-proc operatorEqual*(self: QKeySequence, other: QKeySequence): bool =
+proc operatorEqual*(self: gen_qkeysequence_types.QKeySequence, other: gen_qkeysequence_types.QKeySequence): bool =
 
   fcQKeySequence_operatorEqual(self.h, other.h)
 
-proc operatorNotEqual*(self: QKeySequence, other: QKeySequence): bool =
+proc operatorNotEqual*(self: gen_qkeysequence_types.QKeySequence, other: gen_qkeysequence_types.QKeySequence): bool =
 
   fcQKeySequence_operatorNotEqual(self.h, other.h)
 
-proc operatorLesser*(self: QKeySequence, ks: QKeySequence): bool =
+proc operatorLesser*(self: gen_qkeysequence_types.QKeySequence, ks: gen_qkeysequence_types.QKeySequence): bool =
 
   fcQKeySequence_operatorLesser(self.h, ks.h)
 
-proc operatorGreater*(self: QKeySequence, other: QKeySequence): bool =
+proc operatorGreater*(self: gen_qkeysequence_types.QKeySequence, other: gen_qkeysequence_types.QKeySequence): bool =
 
   fcQKeySequence_operatorGreater(self.h, other.h)
 
-proc operatorLesserOrEqual*(self: QKeySequence, other: QKeySequence): bool =
+proc operatorLesserOrEqual*(self: gen_qkeysequence_types.QKeySequence, other: gen_qkeysequence_types.QKeySequence): bool =
 
   fcQKeySequence_operatorLesserOrEqual(self.h, other.h)
 
-proc operatorGreaterOrEqual*(self: QKeySequence, other: QKeySequence): bool =
+proc operatorGreaterOrEqual*(self: gen_qkeysequence_types.QKeySequence, other: gen_qkeysequence_types.QKeySequence): bool =
 
   fcQKeySequence_operatorGreaterOrEqual(self.h, other.h)
 
-proc isDetached*(self: QKeySequence, ): bool =
+proc isDetached*(self: gen_qkeysequence_types.QKeySequence, ): bool =
 
   fcQKeySequence_isDetached(self.h)
 
-proc toString1*(self: QKeySequence, format: QKeySequenceSequenceFormat): string =
+proc toString1*(self: gen_qkeysequence_types.QKeySequence, format: cint): string =
 
   let v_ms = fcQKeySequence_toString1(self.h, cint(format))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc fromString2*(_: type QKeySequence, str: string, format: QKeySequenceSequenceFormat): QKeySequence =
+proc fromString2*(_: type gen_qkeysequence_types.QKeySequence, str: string, format: cint): gen_qkeysequence_types.QKeySequence =
 
-  QKeySequence(h: fcQKeySequence_fromString2(struct_miqt_string(data: str, len: csize_t(len(str))), cint(format)))
+  gen_qkeysequence_types.QKeySequence(h: fcQKeySequence_fromString2(struct_miqt_string(data: str, len: csize_t(len(str))), cint(format)))
 
-proc listFromString2*(_: type QKeySequence, str: string, format: QKeySequenceSequenceFormat): seq[QKeySequence] =
+proc listFromString2*(_: type gen_qkeysequence_types.QKeySequence, str: string, format: cint): seq[gen_qkeysequence_types.QKeySequence] =
 
   var v_ma = fcQKeySequence_listFromString2(struct_miqt_string(data: str, len: csize_t(len(str))), cint(format))
-  var vx_ret = newSeq[QKeySequence](int(v_ma.len))
+  var vx_ret = newSeq[gen_qkeysequence_types.QKeySequence](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
-    vx_ret[i] = QKeySequence(h: v_outCast[i])
+    vx_ret[i] = gen_qkeysequence_types.QKeySequence(h: v_outCast[i])
   vx_ret
 
-proc listToString2*(_: type QKeySequence, list: seq[QKeySequence], format: QKeySequenceSequenceFormat): string =
+proc listToString2*(_: type gen_qkeysequence_types.QKeySequence, list: seq[gen_qkeysequence_types.QKeySequence], format: cint): string =
 
   var list_CArray = newSeq[pointer](len(list))
   for i in 0..<len(list):
@@ -352,7 +346,7 @@ proc listToString2*(_: type QKeySequence, list: seq[QKeySequence], format: QKeyS
   c_free(v_ms.data)
   vx_ret
 
-proc staticMetaObject*(_: type QKeySequence): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qkeysequence_types.QKeySequence): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQKeySequence_staticMetaObject())
-proc delete*(self: QKeySequence) =
+proc delete*(self: gen_qkeysequence_types.QKeySequence) =
   fcQKeySequence_delete(self.h)

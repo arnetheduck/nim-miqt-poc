@@ -306,7 +306,7 @@ func (this *QSpinBox) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QSpinBox_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QSpinBox) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QSpinBox) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QSpinBox_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -333,7 +333,7 @@ func (this *QSpinBox) callVirtualBase_Metacast(param1 string) unsafe.Pointer {
 	return (unsafe.Pointer)(C.QSpinBox_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QSpinBox) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QSpinBox) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QSpinBox_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2191,7 +2191,7 @@ func (this *QDoubleSpinBox) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QDoubleSpinBox_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QDoubleSpinBox) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QDoubleSpinBox) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QDoubleSpinBox_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2218,7 +2218,7 @@ func (this *QDoubleSpinBox) callVirtualBase_Metacast(param1 string) unsafe.Point
 	return (unsafe.Pointer)(C.QDoubleSpinBox_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QDoubleSpinBox) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QDoubleSpinBox) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QDoubleSpinBox_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

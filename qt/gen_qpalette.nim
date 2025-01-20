@@ -34,45 +34,41 @@ const cflags = gorge("pkg-config -cflags Qt5Widgets")
 {.compile("gen_qpalette.cpp", cflags).}
 
 
-type QPaletteColorGroup* = cint
-const
-  QPaletteActive* = 0
-  QPaletteDisabled* = 1
-  QPaletteInactive* = 2
-  QPaletteNColorGroups* = 3
-  QPaletteCurrent* = 4
-  QPaletteAll* = 5
-  QPaletteNormal* = 0
+type QPaletteColorGroupEnum* = distinct cint
+template Active*(_: type QPaletteColorGroupEnum): untyped = 0
+template Disabled*(_: type QPaletteColorGroupEnum): untyped = 1
+template Inactive*(_: type QPaletteColorGroupEnum): untyped = 2
+template NColorGroups*(_: type QPaletteColorGroupEnum): untyped = 3
+template Current*(_: type QPaletteColorGroupEnum): untyped = 4
+template All*(_: type QPaletteColorGroupEnum): untyped = 5
+template Normal*(_: type QPaletteColorGroupEnum): untyped = 0
 
 
-
-type QPaletteColorRole* = cint
-const
-  QPaletteWindowText* = 0
-  QPaletteButton* = 1
-  QPaletteLight* = 2
-  QPaletteMidlight* = 3
-  QPaletteDark* = 4
-  QPaletteMid* = 5
-  QPaletteText* = 6
-  QPaletteBrightText* = 7
-  QPaletteButtonText* = 8
-  QPaletteBase* = 9
-  QPaletteWindow* = 10
-  QPaletteShadow* = 11
-  QPaletteHighlight* = 12
-  QPaletteHighlightedText* = 13
-  QPaletteLink* = 14
-  QPaletteLinkVisited* = 15
-  QPaletteAlternateBase* = 16
-  QPaletteNoRole* = 17
-  QPaletteToolTipBase* = 18
-  QPaletteToolTipText* = 19
-  QPalettePlaceholderText* = 20
-  QPaletteNColorRoles* = 21
-  QPaletteForeground* = 0
-  QPaletteBackground* = 10
-
+type QPaletteColorRoleEnum* = distinct cint
+template WindowText*(_: type QPaletteColorRoleEnum): untyped = 0
+template Button*(_: type QPaletteColorRoleEnum): untyped = 1
+template Light*(_: type QPaletteColorRoleEnum): untyped = 2
+template Midlight*(_: type QPaletteColorRoleEnum): untyped = 3
+template Dark*(_: type QPaletteColorRoleEnum): untyped = 4
+template Mid*(_: type QPaletteColorRoleEnum): untyped = 5
+template Text*(_: type QPaletteColorRoleEnum): untyped = 6
+template BrightText*(_: type QPaletteColorRoleEnum): untyped = 7
+template ButtonText*(_: type QPaletteColorRoleEnum): untyped = 8
+template Base*(_: type QPaletteColorRoleEnum): untyped = 9
+template Window*(_: type QPaletteColorRoleEnum): untyped = 10
+template Shadow*(_: type QPaletteColorRoleEnum): untyped = 11
+template Highlight*(_: type QPaletteColorRoleEnum): untyped = 12
+template HighlightedText*(_: type QPaletteColorRoleEnum): untyped = 13
+template Link*(_: type QPaletteColorRoleEnum): untyped = 14
+template LinkVisited*(_: type QPaletteColorRoleEnum): untyped = 15
+template AlternateBase*(_: type QPaletteColorRoleEnum): untyped = 16
+template NoRole*(_: type QPaletteColorRoleEnum): untyped = 17
+template ToolTipBase*(_: type QPaletteColorRoleEnum): untyped = 18
+template ToolTipText*(_: type QPaletteColorRoleEnum): untyped = 19
+template PlaceholderText*(_: type QPaletteColorRoleEnum): untyped = 20
+template NColorRoles*(_: type QPaletteColorRoleEnum): untyped = 21
+template Foreground*(_: type QPaletteColorRoleEnum): untyped = 0
+template Background*(_: type QPaletteColorRoleEnum): untyped = 10
 
 
 import gen_qpalette_types
@@ -81,13 +77,11 @@ export gen_qpalette_types
 import
   gen_qbrush,
   gen_qcolor,
-  gen_qnamespace,
   gen_qobjectdefs,
   gen_qvariant
 export
   gen_qbrush,
   gen_qcolor,
-  gen_qnamespace,
   gen_qobjectdefs,
   gen_qvariant
 
@@ -149,210 +143,210 @@ proc fcQPalette_staticMetaObject(): pointer {.importc: "QPalette_staticMetaObjec
 proc fcQPalette_delete(self: pointer) {.importc: "QPalette_delete".}
 
 
-func init*(T: type QPalette, h: ptr cQPalette): QPalette =
+func init*(T: type gen_qpalette_types.QPalette, h: ptr cQPalette): gen_qpalette_types.QPalette =
   T(h: h)
-proc create*(T: type QPalette, ): QPalette =
+proc create*(T: type gen_qpalette_types.QPalette, ): gen_qpalette_types.QPalette =
 
-  QPalette.init(fcQPalette_new())
-proc create*(T: type QPalette, button: gen_qcolor.QColor): QPalette =
+  gen_qpalette_types.QPalette.init(fcQPalette_new())
+proc create*(T: type gen_qpalette_types.QPalette, button: gen_qcolor.QColor): gen_qpalette_types.QPalette =
 
-  QPalette.init(fcQPalette_new2(button.h))
-proc create*(T: type QPalette, button: gen_qnamespace.GlobalColor): QPalette =
+  gen_qpalette_types.QPalette.init(fcQPalette_new2(button.h))
+proc create*(T: type gen_qpalette_types.QPalette, button: cint): gen_qpalette_types.QPalette =
 
-  QPalette.init(fcQPalette_new3(cint(button)))
-proc create*(T: type QPalette, button: gen_qcolor.QColor, window: gen_qcolor.QColor): QPalette =
+  gen_qpalette_types.QPalette.init(fcQPalette_new3(cint(button)))
+proc create*(T: type gen_qpalette_types.QPalette, button: gen_qcolor.QColor, window: gen_qcolor.QColor): gen_qpalette_types.QPalette =
 
-  QPalette.init(fcQPalette_new4(button.h, window.h))
-proc create*(T: type QPalette, windowText: gen_qbrush.QBrush, button: gen_qbrush.QBrush, light: gen_qbrush.QBrush, dark: gen_qbrush.QBrush, mid: gen_qbrush.QBrush, text: gen_qbrush.QBrush, bright_text: gen_qbrush.QBrush, base: gen_qbrush.QBrush, window: gen_qbrush.QBrush): QPalette =
+  gen_qpalette_types.QPalette.init(fcQPalette_new4(button.h, window.h))
+proc create*(T: type gen_qpalette_types.QPalette, windowText: gen_qbrush.QBrush, button: gen_qbrush.QBrush, light: gen_qbrush.QBrush, dark: gen_qbrush.QBrush, mid: gen_qbrush.QBrush, text: gen_qbrush.QBrush, bright_text: gen_qbrush.QBrush, base: gen_qbrush.QBrush, window: gen_qbrush.QBrush): gen_qpalette_types.QPalette =
 
-  QPalette.init(fcQPalette_new5(windowText.h, button.h, light.h, dark.h, mid.h, text.h, bright_text.h, base.h, window.h))
-proc create*(T: type QPalette, windowText: gen_qcolor.QColor, window: gen_qcolor.QColor, light: gen_qcolor.QColor, dark: gen_qcolor.QColor, mid: gen_qcolor.QColor, text: gen_qcolor.QColor, base: gen_qcolor.QColor): QPalette =
+  gen_qpalette_types.QPalette.init(fcQPalette_new5(windowText.h, button.h, light.h, dark.h, mid.h, text.h, bright_text.h, base.h, window.h))
+proc create*(T: type gen_qpalette_types.QPalette, windowText: gen_qcolor.QColor, window: gen_qcolor.QColor, light: gen_qcolor.QColor, dark: gen_qcolor.QColor, mid: gen_qcolor.QColor, text: gen_qcolor.QColor, base: gen_qcolor.QColor): gen_qpalette_types.QPalette =
 
-  QPalette.init(fcQPalette_new6(windowText.h, window.h, light.h, dark.h, mid.h, text.h, base.h))
-proc create2*(T: type QPalette, palette: QPalette): QPalette =
+  gen_qpalette_types.QPalette.init(fcQPalette_new6(windowText.h, window.h, light.h, dark.h, mid.h, text.h, base.h))
+proc create2*(T: type gen_qpalette_types.QPalette, palette: gen_qpalette_types.QPalette): gen_qpalette_types.QPalette =
 
-  QPalette.init(fcQPalette_new7(palette.h))
-proc operatorAssign*(self: QPalette, palette: QPalette): void =
+  gen_qpalette_types.QPalette.init(fcQPalette_new7(palette.h))
+proc operatorAssign*(self: gen_qpalette_types.QPalette, palette: gen_qpalette_types.QPalette): void =
 
   fcQPalette_operatorAssign(self.h, palette.h)
 
-proc swap*(self: QPalette, other: QPalette): void =
+proc swap*(self: gen_qpalette_types.QPalette, other: gen_qpalette_types.QPalette): void =
 
   fcQPalette_swap(self.h, other.h)
 
-proc ToQVariant*(self: QPalette, ): gen_qvariant.QVariant =
+proc ToQVariant*(self: gen_qpalette_types.QPalette, ): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fcQPalette_ToQVariant(self.h))
 
-proc currentColorGroup*(self: QPalette, ): QPaletteColorGroup =
+proc currentColorGroup*(self: gen_qpalette_types.QPalette, ): cint =
 
-  QPaletteColorGroup(fcQPalette_currentColorGroup(self.h))
+  cint(fcQPalette_currentColorGroup(self.h))
 
-proc setCurrentColorGroup*(self: QPalette, cg: QPaletteColorGroup): void =
+proc setCurrentColorGroup*(self: gen_qpalette_types.QPalette, cg: cint): void =
 
   fcQPalette_setCurrentColorGroup(self.h, cint(cg))
 
-proc color*(self: QPalette, cg: QPaletteColorGroup, cr: QPaletteColorRole): gen_qcolor.QColor =
+proc color*(self: gen_qpalette_types.QPalette, cg: cint, cr: cint): gen_qcolor.QColor =
 
   gen_qcolor.QColor(h: fcQPalette_color(self.h, cint(cg), cint(cr)))
 
-proc brush*(self: QPalette, cg: QPaletteColorGroup, cr: QPaletteColorRole): gen_qbrush.QBrush =
+proc brush*(self: gen_qpalette_types.QPalette, cg: cint, cr: cint): gen_qbrush.QBrush =
 
   gen_qbrush.QBrush(h: fcQPalette_brush(self.h, cint(cg), cint(cr)))
 
-proc setColor*(self: QPalette, cg: QPaletteColorGroup, cr: QPaletteColorRole, color: gen_qcolor.QColor): void =
+proc setColor*(self: gen_qpalette_types.QPalette, cg: cint, cr: cint, color: gen_qcolor.QColor): void =
 
   fcQPalette_setColor(self.h, cint(cg), cint(cr), color.h)
 
-proc setColor2*(self: QPalette, cr: QPaletteColorRole, color: gen_qcolor.QColor): void =
+proc setColor2*(self: gen_qpalette_types.QPalette, cr: cint, color: gen_qcolor.QColor): void =
 
   fcQPalette_setColor2(self.h, cint(cr), color.h)
 
-proc setBrush*(self: QPalette, cr: QPaletteColorRole, brush: gen_qbrush.QBrush): void =
+proc setBrush*(self: gen_qpalette_types.QPalette, cr: cint, brush: gen_qbrush.QBrush): void =
 
   fcQPalette_setBrush(self.h, cint(cr), brush.h)
 
-proc isBrushSet*(self: QPalette, cg: QPaletteColorGroup, cr: QPaletteColorRole): bool =
+proc isBrushSet*(self: gen_qpalette_types.QPalette, cg: cint, cr: cint): bool =
 
   fcQPalette_isBrushSet(self.h, cint(cg), cint(cr))
 
-proc setBrush2*(self: QPalette, cg: QPaletteColorGroup, cr: QPaletteColorRole, brush: gen_qbrush.QBrush): void =
+proc setBrush2*(self: gen_qpalette_types.QPalette, cg: cint, cr: cint, brush: gen_qbrush.QBrush): void =
 
   fcQPalette_setBrush2(self.h, cint(cg), cint(cr), brush.h)
 
-proc setColorGroup*(self: QPalette, cr: QPaletteColorGroup, windowText: gen_qbrush.QBrush, button: gen_qbrush.QBrush, light: gen_qbrush.QBrush, dark: gen_qbrush.QBrush, mid: gen_qbrush.QBrush, text: gen_qbrush.QBrush, bright_text: gen_qbrush.QBrush, base: gen_qbrush.QBrush, window: gen_qbrush.QBrush): void =
+proc setColorGroup*(self: gen_qpalette_types.QPalette, cr: cint, windowText: gen_qbrush.QBrush, button: gen_qbrush.QBrush, light: gen_qbrush.QBrush, dark: gen_qbrush.QBrush, mid: gen_qbrush.QBrush, text: gen_qbrush.QBrush, bright_text: gen_qbrush.QBrush, base: gen_qbrush.QBrush, window: gen_qbrush.QBrush): void =
 
   fcQPalette_setColorGroup(self.h, cint(cr), windowText.h, button.h, light.h, dark.h, mid.h, text.h, bright_text.h, base.h, window.h)
 
-proc isEqual*(self: QPalette, cr1: QPaletteColorGroup, cr2: QPaletteColorGroup): bool =
+proc isEqual*(self: gen_qpalette_types.QPalette, cr1: cint, cr2: cint): bool =
 
   fcQPalette_isEqual(self.h, cint(cr1), cint(cr2))
 
-proc colorWithCr*(self: QPalette, cr: QPaletteColorRole): gen_qcolor.QColor =
+proc colorWithCr*(self: gen_qpalette_types.QPalette, cr: cint): gen_qcolor.QColor =
 
   gen_qcolor.QColor(h: fcQPalette_colorWithCr(self.h, cint(cr)))
 
-proc brushWithCr*(self: QPalette, cr: QPaletteColorRole): gen_qbrush.QBrush =
+proc brushWithCr*(self: gen_qpalette_types.QPalette, cr: cint): gen_qbrush.QBrush =
 
   gen_qbrush.QBrush(h: fcQPalette_brushWithCr(self.h, cint(cr)))
 
-proc windowText*(self: QPalette, ): gen_qbrush.QBrush =
+proc windowText*(self: gen_qpalette_types.QPalette, ): gen_qbrush.QBrush =
 
   gen_qbrush.QBrush(h: fcQPalette_windowText(self.h))
 
-proc button*(self: QPalette, ): gen_qbrush.QBrush =
+proc button*(self: gen_qpalette_types.QPalette, ): gen_qbrush.QBrush =
 
   gen_qbrush.QBrush(h: fcQPalette_button(self.h))
 
-proc light*(self: QPalette, ): gen_qbrush.QBrush =
+proc light*(self: gen_qpalette_types.QPalette, ): gen_qbrush.QBrush =
 
   gen_qbrush.QBrush(h: fcQPalette_light(self.h))
 
-proc dark*(self: QPalette, ): gen_qbrush.QBrush =
+proc dark*(self: gen_qpalette_types.QPalette, ): gen_qbrush.QBrush =
 
   gen_qbrush.QBrush(h: fcQPalette_dark(self.h))
 
-proc mid*(self: QPalette, ): gen_qbrush.QBrush =
+proc mid*(self: gen_qpalette_types.QPalette, ): gen_qbrush.QBrush =
 
   gen_qbrush.QBrush(h: fcQPalette_mid(self.h))
 
-proc text*(self: QPalette, ): gen_qbrush.QBrush =
+proc text*(self: gen_qpalette_types.QPalette, ): gen_qbrush.QBrush =
 
   gen_qbrush.QBrush(h: fcQPalette_text(self.h))
 
-proc base*(self: QPalette, ): gen_qbrush.QBrush =
+proc base*(self: gen_qpalette_types.QPalette, ): gen_qbrush.QBrush =
 
   gen_qbrush.QBrush(h: fcQPalette_base(self.h))
 
-proc alternateBase*(self: QPalette, ): gen_qbrush.QBrush =
+proc alternateBase*(self: gen_qpalette_types.QPalette, ): gen_qbrush.QBrush =
 
   gen_qbrush.QBrush(h: fcQPalette_alternateBase(self.h))
 
-proc toolTipBase*(self: QPalette, ): gen_qbrush.QBrush =
+proc toolTipBase*(self: gen_qpalette_types.QPalette, ): gen_qbrush.QBrush =
 
   gen_qbrush.QBrush(h: fcQPalette_toolTipBase(self.h))
 
-proc toolTipText*(self: QPalette, ): gen_qbrush.QBrush =
+proc toolTipText*(self: gen_qpalette_types.QPalette, ): gen_qbrush.QBrush =
 
   gen_qbrush.QBrush(h: fcQPalette_toolTipText(self.h))
 
-proc window*(self: QPalette, ): gen_qbrush.QBrush =
+proc window*(self: gen_qpalette_types.QPalette, ): gen_qbrush.QBrush =
 
   gen_qbrush.QBrush(h: fcQPalette_window(self.h))
 
-proc midlight*(self: QPalette, ): gen_qbrush.QBrush =
+proc midlight*(self: gen_qpalette_types.QPalette, ): gen_qbrush.QBrush =
 
   gen_qbrush.QBrush(h: fcQPalette_midlight(self.h))
 
-proc brightText*(self: QPalette, ): gen_qbrush.QBrush =
+proc brightText*(self: gen_qpalette_types.QPalette, ): gen_qbrush.QBrush =
 
   gen_qbrush.QBrush(h: fcQPalette_brightText(self.h))
 
-proc buttonText*(self: QPalette, ): gen_qbrush.QBrush =
+proc buttonText*(self: gen_qpalette_types.QPalette, ): gen_qbrush.QBrush =
 
   gen_qbrush.QBrush(h: fcQPalette_buttonText(self.h))
 
-proc shadow*(self: QPalette, ): gen_qbrush.QBrush =
+proc shadow*(self: gen_qpalette_types.QPalette, ): gen_qbrush.QBrush =
 
   gen_qbrush.QBrush(h: fcQPalette_shadow(self.h))
 
-proc highlight*(self: QPalette, ): gen_qbrush.QBrush =
+proc highlight*(self: gen_qpalette_types.QPalette, ): gen_qbrush.QBrush =
 
   gen_qbrush.QBrush(h: fcQPalette_highlight(self.h))
 
-proc highlightedText*(self: QPalette, ): gen_qbrush.QBrush =
+proc highlightedText*(self: gen_qpalette_types.QPalette, ): gen_qbrush.QBrush =
 
   gen_qbrush.QBrush(h: fcQPalette_highlightedText(self.h))
 
-proc link*(self: QPalette, ): gen_qbrush.QBrush =
+proc link*(self: gen_qpalette_types.QPalette, ): gen_qbrush.QBrush =
 
   gen_qbrush.QBrush(h: fcQPalette_link(self.h))
 
-proc linkVisited*(self: QPalette, ): gen_qbrush.QBrush =
+proc linkVisited*(self: gen_qpalette_types.QPalette, ): gen_qbrush.QBrush =
 
   gen_qbrush.QBrush(h: fcQPalette_linkVisited(self.h))
 
-proc placeholderText*(self: QPalette, ): gen_qbrush.QBrush =
+proc placeholderText*(self: gen_qpalette_types.QPalette, ): gen_qbrush.QBrush =
 
   gen_qbrush.QBrush(h: fcQPalette_placeholderText(self.h))
 
-proc foreground*(self: QPalette, ): gen_qbrush.QBrush =
+proc foreground*(self: gen_qpalette_types.QPalette, ): gen_qbrush.QBrush =
 
   gen_qbrush.QBrush(h: fcQPalette_foreground(self.h))
 
-proc background*(self: QPalette, ): gen_qbrush.QBrush =
+proc background*(self: gen_qpalette_types.QPalette, ): gen_qbrush.QBrush =
 
   gen_qbrush.QBrush(h: fcQPalette_background(self.h))
 
-proc operatorEqual*(self: QPalette, p: QPalette): bool =
+proc operatorEqual*(self: gen_qpalette_types.QPalette, p: gen_qpalette_types.QPalette): bool =
 
   fcQPalette_operatorEqual(self.h, p.h)
 
-proc operatorNotEqual*(self: QPalette, p: QPalette): bool =
+proc operatorNotEqual*(self: gen_qpalette_types.QPalette, p: gen_qpalette_types.QPalette): bool =
 
   fcQPalette_operatorNotEqual(self.h, p.h)
 
-proc isCopyOf*(self: QPalette, p: QPalette): bool =
+proc isCopyOf*(self: gen_qpalette_types.QPalette, p: gen_qpalette_types.QPalette): bool =
 
   fcQPalette_isCopyOf(self.h, p.h)
 
-proc cacheKey*(self: QPalette, ): clonglong =
+proc cacheKey*(self: gen_qpalette_types.QPalette, ): clonglong =
 
   fcQPalette_cacheKey(self.h)
 
-proc resolve*(self: QPalette, param1: QPalette): QPalette =
+proc resolve*(self: gen_qpalette_types.QPalette, param1: gen_qpalette_types.QPalette): gen_qpalette_types.QPalette =
 
-  QPalette(h: fcQPalette_resolve(self.h, param1.h))
+  gen_qpalette_types.QPalette(h: fcQPalette_resolve(self.h, param1.h))
 
-proc resolve2*(self: QPalette, ): cuint =
+proc resolve2*(self: gen_qpalette_types.QPalette, ): cuint =
 
   fcQPalette_resolve2(self.h)
 
-proc resolveWithMask*(self: QPalette, mask: cuint): void =
+proc resolveWithMask*(self: gen_qpalette_types.QPalette, mask: cuint): void =
 
   fcQPalette_resolveWithMask(self.h, mask)
 
-proc staticMetaObject*(_: type QPalette): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qpalette_types.QPalette): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQPalette_staticMetaObject())
-proc delete*(self: QPalette) =
+proc delete*(self: gen_qpalette_types.QPalette) =
   fcQPalette_delete(self.h)

@@ -34,36 +34,32 @@ const cflags = gorge("pkg-config -cflags Qt5Widgets")
 {.compile("gen_qstandardpaths.cpp", cflags).}
 
 
-type QStandardPathsStandardLocation* = cint
-const
-  QStandardPathsDesktopLocation* = 0
-  QStandardPathsDocumentsLocation* = 1
-  QStandardPathsFontsLocation* = 2
-  QStandardPathsApplicationsLocation* = 3
-  QStandardPathsMusicLocation* = 4
-  QStandardPathsMoviesLocation* = 5
-  QStandardPathsPicturesLocation* = 6
-  QStandardPathsTempLocation* = 7
-  QStandardPathsHomeLocation* = 8
-  QStandardPathsDataLocation* = 9
-  QStandardPathsCacheLocation* = 10
-  QStandardPathsGenericDataLocation* = 11
-  QStandardPathsRuntimeLocation* = 12
-  QStandardPathsConfigLocation* = 13
-  QStandardPathsDownloadLocation* = 14
-  QStandardPathsGenericCacheLocation* = 15
-  QStandardPathsGenericConfigLocation* = 16
-  QStandardPathsAppDataLocation* = 17
-  QStandardPathsAppConfigLocation* = 18
-  QStandardPathsAppLocalDataLocation* = 9
+type QStandardPathsStandardLocationEnum* = distinct cint
+template DesktopLocation*(_: type QStandardPathsStandardLocationEnum): untyped = 0
+template DocumentsLocation*(_: type QStandardPathsStandardLocationEnum): untyped = 1
+template FontsLocation*(_: type QStandardPathsStandardLocationEnum): untyped = 2
+template ApplicationsLocation*(_: type QStandardPathsStandardLocationEnum): untyped = 3
+template MusicLocation*(_: type QStandardPathsStandardLocationEnum): untyped = 4
+template MoviesLocation*(_: type QStandardPathsStandardLocationEnum): untyped = 5
+template PicturesLocation*(_: type QStandardPathsStandardLocationEnum): untyped = 6
+template TempLocation*(_: type QStandardPathsStandardLocationEnum): untyped = 7
+template HomeLocation*(_: type QStandardPathsStandardLocationEnum): untyped = 8
+template DataLocation*(_: type QStandardPathsStandardLocationEnum): untyped = 9
+template CacheLocation*(_: type QStandardPathsStandardLocationEnum): untyped = 10
+template GenericDataLocation*(_: type QStandardPathsStandardLocationEnum): untyped = 11
+template RuntimeLocation*(_: type QStandardPathsStandardLocationEnum): untyped = 12
+template ConfigLocation*(_: type QStandardPathsStandardLocationEnum): untyped = 13
+template DownloadLocation*(_: type QStandardPathsStandardLocationEnum): untyped = 14
+template GenericCacheLocation*(_: type QStandardPathsStandardLocationEnum): untyped = 15
+template GenericConfigLocation*(_: type QStandardPathsStandardLocationEnum): untyped = 16
+template AppDataLocation*(_: type QStandardPathsStandardLocationEnum): untyped = 17
+template AppConfigLocation*(_: type QStandardPathsStandardLocationEnum): untyped = 18
+template AppLocalDataLocation*(_: type QStandardPathsStandardLocationEnum): untyped = 9
 
 
-
-type QStandardPathsLocateOption* = cint
-const
-  QStandardPathsLocateFile* = 0
-  QStandardPathsLocateDirectory* = 1
-
+type QStandardPathsLocateOptionEnum* = distinct cint
+template LocateFile*(_: type QStandardPathsLocateOptionEnum): untyped = 0
+template LocateDirectory*(_: type QStandardPathsLocateOptionEnum): untyped = 1
 
 
 import gen_qstandardpaths_types
@@ -91,16 +87,16 @@ proc fcQStandardPaths_findExecutable2(executableName: struct_miqt_string, paths:
 proc fcQStandardPaths_staticMetaObject(): pointer {.importc: "QStandardPaths_staticMetaObject".}
 
 
-func init*(T: type QStandardPaths, h: ptr cQStandardPaths): QStandardPaths =
+func init*(T: type gen_qstandardpaths_types.QStandardPaths, h: ptr cQStandardPaths): gen_qstandardpaths_types.QStandardPaths =
   T(h: h)
-proc writableLocation*(_: type QStandardPaths, typeVal: QStandardPathsStandardLocation): string =
+proc writableLocation*(_: type gen_qstandardpaths_types.QStandardPaths, typeVal: cint): string =
 
   let v_ms = fcQStandardPaths_writableLocation(cint(typeVal))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc standardLocations*(_: type QStandardPaths, typeVal: QStandardPathsStandardLocation): seq[string] =
+proc standardLocations*(_: type gen_qstandardpaths_types.QStandardPaths, typeVal: cint): seq[string] =
 
   var v_ma = fcQStandardPaths_standardLocations(cint(typeVal))
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -112,14 +108,14 @@ proc standardLocations*(_: type QStandardPaths, typeVal: QStandardPathsStandardL
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc locate*(_: type QStandardPaths, typeVal: QStandardPathsStandardLocation, fileName: string): string =
+proc locate*(_: type gen_qstandardpaths_types.QStandardPaths, typeVal: cint, fileName: string): string =
 
   let v_ms = fcQStandardPaths_locate(cint(typeVal), struct_miqt_string(data: fileName, len: csize_t(len(fileName))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc locateAll*(_: type QStandardPaths, typeVal: QStandardPathsStandardLocation, fileName: string): seq[string] =
+proc locateAll*(_: type gen_qstandardpaths_types.QStandardPaths, typeVal: cint, fileName: string): seq[string] =
 
   var v_ma = fcQStandardPaths_locateAll(cint(typeVal), struct_miqt_string(data: fileName, len: csize_t(len(fileName))))
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -131,40 +127,40 @@ proc locateAll*(_: type QStandardPaths, typeVal: QStandardPathsStandardLocation,
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc displayName*(_: type QStandardPaths, typeVal: QStandardPathsStandardLocation): string =
+proc displayName*(_: type gen_qstandardpaths_types.QStandardPaths, typeVal: cint): string =
 
   let v_ms = fcQStandardPaths_displayName(cint(typeVal))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc findExecutable*(_: type QStandardPaths, executableName: string): string =
+proc findExecutable*(_: type gen_qstandardpaths_types.QStandardPaths, executableName: string): string =
 
   let v_ms = fcQStandardPaths_findExecutable(struct_miqt_string(data: executableName, len: csize_t(len(executableName))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc enableTestMode*(_: type QStandardPaths, testMode: bool): void =
+proc enableTestMode*(_: type gen_qstandardpaths_types.QStandardPaths, testMode: bool): void =
 
   fcQStandardPaths_enableTestMode(testMode)
 
-proc setTestModeEnabled*(_: type QStandardPaths, testMode: bool): void =
+proc setTestModeEnabled*(_: type gen_qstandardpaths_types.QStandardPaths, testMode: bool): void =
 
   fcQStandardPaths_setTestModeEnabled(testMode)
 
-proc isTestModeEnabled*(_: type QStandardPaths, ): bool =
+proc isTestModeEnabled*(_: type gen_qstandardpaths_types.QStandardPaths, ): bool =
 
   fcQStandardPaths_isTestModeEnabled()
 
-proc locate3*(_: type QStandardPaths, typeVal: QStandardPathsStandardLocation, fileName: string, options: QStandardPathsLocateOption): string =
+proc locate3*(_: type gen_qstandardpaths_types.QStandardPaths, typeVal: cint, fileName: string, options: cint): string =
 
   let v_ms = fcQStandardPaths_locate3(cint(typeVal), struct_miqt_string(data: fileName, len: csize_t(len(fileName))), cint(options))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc locateAll3*(_: type QStandardPaths, typeVal: QStandardPathsStandardLocation, fileName: string, options: QStandardPathsLocateOption): seq[string] =
+proc locateAll3*(_: type gen_qstandardpaths_types.QStandardPaths, typeVal: cint, fileName: string, options: cint): seq[string] =
 
   var v_ma = fcQStandardPaths_locateAll3(cint(typeVal), struct_miqt_string(data: fileName, len: csize_t(len(fileName))), cint(options))
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -176,7 +172,7 @@ proc locateAll3*(_: type QStandardPaths, typeVal: QStandardPathsStandardLocation
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc findExecutable2*(_: type QStandardPaths, executableName: string, paths: seq[string]): string =
+proc findExecutable2*(_: type gen_qstandardpaths_types.QStandardPaths, executableName: string, paths: seq[string]): string =
 
   var paths_CArray = newSeq[struct_miqt_string](len(paths))
   for i in 0..<len(paths):
@@ -187,5 +183,5 @@ proc findExecutable2*(_: type QStandardPaths, executableName: string, paths: seq
   c_free(v_ms.data)
   vx_ret
 
-proc staticMetaObject*(_: type QStandardPaths): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qstandardpaths_types.QStandardPaths): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQStandardPaths_staticMetaObject())

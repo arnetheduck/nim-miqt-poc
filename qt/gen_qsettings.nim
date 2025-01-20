@@ -34,43 +34,37 @@ const cflags = gorge("pkg-config -cflags Qt5Widgets")
 {.compile("gen_qsettings.cpp", cflags).}
 
 
-type QSettingsStatus* = cint
-const
-  QSettingsNoError* = 0
-  QSettingsAccessError* = 1
-  QSettingsFormatError* = 2
+type QSettingsStatusEnum* = distinct cint
+template NoError*(_: type QSettingsStatusEnum): untyped = 0
+template AccessError*(_: type QSettingsStatusEnum): untyped = 1
+template FormatError*(_: type QSettingsStatusEnum): untyped = 2
 
 
-
-type QSettingsFormat* = cint
-const
-  QSettingsNativeFormat* = 0
-  QSettingsIniFormat* = 1
-  QSettingsInvalidFormat* = 16
-  QSettingsCustomFormat1* = 17
-  QSettingsCustomFormat2* = 18
-  QSettingsCustomFormat3* = 19
-  QSettingsCustomFormat4* = 20
-  QSettingsCustomFormat5* = 21
-  QSettingsCustomFormat6* = 22
-  QSettingsCustomFormat7* = 23
-  QSettingsCustomFormat8* = 24
-  QSettingsCustomFormat9* = 25
-  QSettingsCustomFormat10* = 26
-  QSettingsCustomFormat11* = 27
-  QSettingsCustomFormat12* = 28
-  QSettingsCustomFormat13* = 29
-  QSettingsCustomFormat14* = 30
-  QSettingsCustomFormat15* = 31
-  QSettingsCustomFormat16* = 32
+type QSettingsFormatEnum* = distinct cint
+template NativeFormat*(_: type QSettingsFormatEnum): untyped = 0
+template IniFormat*(_: type QSettingsFormatEnum): untyped = 1
+template InvalidFormat*(_: type QSettingsFormatEnum): untyped = 16
+template CustomFormat1*(_: type QSettingsFormatEnum): untyped = 17
+template CustomFormat2*(_: type QSettingsFormatEnum): untyped = 18
+template CustomFormat3*(_: type QSettingsFormatEnum): untyped = 19
+template CustomFormat4*(_: type QSettingsFormatEnum): untyped = 20
+template CustomFormat5*(_: type QSettingsFormatEnum): untyped = 21
+template CustomFormat6*(_: type QSettingsFormatEnum): untyped = 22
+template CustomFormat7*(_: type QSettingsFormatEnum): untyped = 23
+template CustomFormat8*(_: type QSettingsFormatEnum): untyped = 24
+template CustomFormat9*(_: type QSettingsFormatEnum): untyped = 25
+template CustomFormat10*(_: type QSettingsFormatEnum): untyped = 26
+template CustomFormat11*(_: type QSettingsFormatEnum): untyped = 27
+template CustomFormat12*(_: type QSettingsFormatEnum): untyped = 28
+template CustomFormat13*(_: type QSettingsFormatEnum): untyped = 29
+template CustomFormat14*(_: type QSettingsFormatEnum): untyped = 30
+template CustomFormat15*(_: type QSettingsFormatEnum): untyped = 31
+template CustomFormat16*(_: type QSettingsFormatEnum): untyped = 32
 
 
-
-type QSettingsScope* = cint
-const
-  QSettingsUserScope* = 0
-  QSettingsSystemScope* = 1
-
+type QSettingsScopeEnum* = distinct cint
+template UserScope*(_: type QSettingsScopeEnum): untyped = 0
+template SystemScope*(_: type QSettingsScopeEnum): untyped = 1
 
 
 import gen_qsettings_types
@@ -178,131 +172,131 @@ proc fcQSettings_staticMetaObject(): pointer {.importc: "QSettings_staticMetaObj
 proc fcQSettings_delete(self: pointer) {.importc: "QSettings_delete".}
 
 
-func init*(T: type QSettings, h: ptr cQSettings): QSettings =
+func init*(T: type gen_qsettings_types.QSettings, h: ptr cQSettings): gen_qsettings_types.QSettings =
   T(h: h)
-proc create*(T: type QSettings, organization: string): QSettings =
+proc create*(T: type gen_qsettings_types.QSettings, organization: string): gen_qsettings_types.QSettings =
 
-  QSettings.init(fcQSettings_new(struct_miqt_string(data: organization, len: csize_t(len(organization)))))
-proc create*(T: type QSettings, scope: QSettingsScope, organization: string): QSettings =
+  gen_qsettings_types.QSettings.init(fcQSettings_new(struct_miqt_string(data: organization, len: csize_t(len(organization)))))
+proc create*(T: type gen_qsettings_types.QSettings, scope: cint, organization: string): gen_qsettings_types.QSettings =
 
-  QSettings.init(fcQSettings_new2(cint(scope), struct_miqt_string(data: organization, len: csize_t(len(organization)))))
-proc create*(T: type QSettings, format: QSettingsFormat, scope: QSettingsScope, organization: string): QSettings =
+  gen_qsettings_types.QSettings.init(fcQSettings_new2(cint(scope), struct_miqt_string(data: organization, len: csize_t(len(organization)))))
+proc create*(T: type gen_qsettings_types.QSettings, format: cint, scope: cint, organization: string): gen_qsettings_types.QSettings =
 
-  QSettings.init(fcQSettings_new3(cint(format), cint(scope), struct_miqt_string(data: organization, len: csize_t(len(organization)))))
-proc create*(T: type QSettings, fileName: string, format: QSettingsFormat): QSettings =
+  gen_qsettings_types.QSettings.init(fcQSettings_new3(cint(format), cint(scope), struct_miqt_string(data: organization, len: csize_t(len(organization)))))
+proc create*(T: type gen_qsettings_types.QSettings, fileName: string, format: cint): gen_qsettings_types.QSettings =
 
-  QSettings.init(fcQSettings_new4(struct_miqt_string(data: fileName, len: csize_t(len(fileName))), cint(format)))
-proc create*(T: type QSettings, ): QSettings =
+  gen_qsettings_types.QSettings.init(fcQSettings_new4(struct_miqt_string(data: fileName, len: csize_t(len(fileName))), cint(format)))
+proc create*(T: type gen_qsettings_types.QSettings, ): gen_qsettings_types.QSettings =
 
-  QSettings.init(fcQSettings_new5())
-proc create*(T: type QSettings, scope: QSettingsScope): QSettings =
+  gen_qsettings_types.QSettings.init(fcQSettings_new5())
+proc create*(T: type gen_qsettings_types.QSettings, scope: cint): gen_qsettings_types.QSettings =
 
-  QSettings.init(fcQSettings_new6(cint(scope)))
-proc create*(T: type QSettings, organization: string, application: string): QSettings =
+  gen_qsettings_types.QSettings.init(fcQSettings_new6(cint(scope)))
+proc create*(T: type gen_qsettings_types.QSettings, organization: string, application: string): gen_qsettings_types.QSettings =
 
-  QSettings.init(fcQSettings_new7(struct_miqt_string(data: organization, len: csize_t(len(organization))), struct_miqt_string(data: application, len: csize_t(len(application)))))
-proc create*(T: type QSettings, organization: string, application: string, parent: gen_qobject.QObject): QSettings =
+  gen_qsettings_types.QSettings.init(fcQSettings_new7(struct_miqt_string(data: organization, len: csize_t(len(organization))), struct_miqt_string(data: application, len: csize_t(len(application)))))
+proc create*(T: type gen_qsettings_types.QSettings, organization: string, application: string, parent: gen_qobject.QObject): gen_qsettings_types.QSettings =
 
-  QSettings.init(fcQSettings_new8(struct_miqt_string(data: organization, len: csize_t(len(organization))), struct_miqt_string(data: application, len: csize_t(len(application))), parent.h))
-proc create*(T: type QSettings, scope: QSettingsScope, organization: string, application: string): QSettings =
+  gen_qsettings_types.QSettings.init(fcQSettings_new8(struct_miqt_string(data: organization, len: csize_t(len(organization))), struct_miqt_string(data: application, len: csize_t(len(application))), parent.h))
+proc create*(T: type gen_qsettings_types.QSettings, scope: cint, organization: string, application: string): gen_qsettings_types.QSettings =
 
-  QSettings.init(fcQSettings_new9(cint(scope), struct_miqt_string(data: organization, len: csize_t(len(organization))), struct_miqt_string(data: application, len: csize_t(len(application)))))
-proc create*(T: type QSettings, scope: QSettingsScope, organization: string, application: string, parent: gen_qobject.QObject): QSettings =
+  gen_qsettings_types.QSettings.init(fcQSettings_new9(cint(scope), struct_miqt_string(data: organization, len: csize_t(len(organization))), struct_miqt_string(data: application, len: csize_t(len(application)))))
+proc create*(T: type gen_qsettings_types.QSettings, scope: cint, organization: string, application: string, parent: gen_qobject.QObject): gen_qsettings_types.QSettings =
 
-  QSettings.init(fcQSettings_new10(cint(scope), struct_miqt_string(data: organization, len: csize_t(len(organization))), struct_miqt_string(data: application, len: csize_t(len(application))), parent.h))
-proc create*(T: type QSettings, format: QSettingsFormat, scope: QSettingsScope, organization: string, application: string): QSettings =
+  gen_qsettings_types.QSettings.init(fcQSettings_new10(cint(scope), struct_miqt_string(data: organization, len: csize_t(len(organization))), struct_miqt_string(data: application, len: csize_t(len(application))), parent.h))
+proc create*(T: type gen_qsettings_types.QSettings, format: cint, scope: cint, organization: string, application: string): gen_qsettings_types.QSettings =
 
-  QSettings.init(fcQSettings_new11(cint(format), cint(scope), struct_miqt_string(data: organization, len: csize_t(len(organization))), struct_miqt_string(data: application, len: csize_t(len(application)))))
-proc create*(T: type QSettings, format: QSettingsFormat, scope: QSettingsScope, organization: string, application: string, parent: gen_qobject.QObject): QSettings =
+  gen_qsettings_types.QSettings.init(fcQSettings_new11(cint(format), cint(scope), struct_miqt_string(data: organization, len: csize_t(len(organization))), struct_miqt_string(data: application, len: csize_t(len(application)))))
+proc create*(T: type gen_qsettings_types.QSettings, format: cint, scope: cint, organization: string, application: string, parent: gen_qobject.QObject): gen_qsettings_types.QSettings =
 
-  QSettings.init(fcQSettings_new12(cint(format), cint(scope), struct_miqt_string(data: organization, len: csize_t(len(organization))), struct_miqt_string(data: application, len: csize_t(len(application))), parent.h))
-proc create*(T: type QSettings, fileName: string, format: QSettingsFormat, parent: gen_qobject.QObject): QSettings =
+  gen_qsettings_types.QSettings.init(fcQSettings_new12(cint(format), cint(scope), struct_miqt_string(data: organization, len: csize_t(len(organization))), struct_miqt_string(data: application, len: csize_t(len(application))), parent.h))
+proc create*(T: type gen_qsettings_types.QSettings, fileName: string, format: cint, parent: gen_qobject.QObject): gen_qsettings_types.QSettings =
 
-  QSettings.init(fcQSettings_new13(struct_miqt_string(data: fileName, len: csize_t(len(fileName))), cint(format), parent.h))
-proc create*(T: type QSettings, parent: gen_qobject.QObject): QSettings =
+  gen_qsettings_types.QSettings.init(fcQSettings_new13(struct_miqt_string(data: fileName, len: csize_t(len(fileName))), cint(format), parent.h))
+proc create*(T: type gen_qsettings_types.QSettings, parent: gen_qobject.QObject): gen_qsettings_types.QSettings =
 
-  QSettings.init(fcQSettings_new14(parent.h))
-proc create*(T: type QSettings, scope: QSettingsScope, parent: gen_qobject.QObject): QSettings =
+  gen_qsettings_types.QSettings.init(fcQSettings_new14(parent.h))
+proc create*(T: type gen_qsettings_types.QSettings, scope: cint, parent: gen_qobject.QObject): gen_qsettings_types.QSettings =
 
-  QSettings.init(fcQSettings_new15(cint(scope), parent.h))
-proc metaObject*(self: QSettings, ): gen_qobjectdefs.QMetaObject =
+  gen_qsettings_types.QSettings.init(fcQSettings_new15(cint(scope), parent.h))
+proc metaObject*(self: gen_qsettings_types.QSettings, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQSettings_metaObject(self.h))
 
-proc metacast*(self: QSettings, param1: cstring): pointer =
+proc metacast*(self: gen_qsettings_types.QSettings, param1: cstring): pointer =
 
   fcQSettings_metacast(self.h, param1)
 
-proc metacall*(self: QSettings, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qsettings_types.QSettings, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQSettings_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QSettings, s: cstring): string =
+proc tr*(_: type gen_qsettings_types.QSettings, s: cstring): string =
 
   let v_ms = fcQSettings_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QSettings, s: cstring): string =
+proc trUtf8*(_: type gen_qsettings_types.QSettings, s: cstring): string =
 
   let v_ms = fcQSettings_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc clear*(self: QSettings, ): void =
+proc clear*(self: gen_qsettings_types.QSettings, ): void =
 
   fcQSettings_clear(self.h)
 
-proc sync*(self: QSettings, ): void =
+proc sync*(self: gen_qsettings_types.QSettings, ): void =
 
   fcQSettings_sync(self.h)
 
-proc status*(self: QSettings, ): QSettingsStatus =
+proc status*(self: gen_qsettings_types.QSettings, ): cint =
 
-  QSettingsStatus(fcQSettings_status(self.h))
+  cint(fcQSettings_status(self.h))
 
-proc isAtomicSyncRequired*(self: QSettings, ): bool =
+proc isAtomicSyncRequired*(self: gen_qsettings_types.QSettings, ): bool =
 
   fcQSettings_isAtomicSyncRequired(self.h)
 
-proc setAtomicSyncRequired*(self: QSettings, enable: bool): void =
+proc setAtomicSyncRequired*(self: gen_qsettings_types.QSettings, enable: bool): void =
 
   fcQSettings_setAtomicSyncRequired(self.h, enable)
 
-proc beginGroup*(self: QSettings, prefix: string): void =
+proc beginGroup*(self: gen_qsettings_types.QSettings, prefix: string): void =
 
   fcQSettings_beginGroup(self.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
-proc endGroup*(self: QSettings, ): void =
+proc endGroup*(self: gen_qsettings_types.QSettings, ): void =
 
   fcQSettings_endGroup(self.h)
 
-proc group*(self: QSettings, ): string =
+proc group*(self: gen_qsettings_types.QSettings, ): string =
 
   let v_ms = fcQSettings_group(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc beginReadArray*(self: QSettings, prefix: string): cint =
+proc beginReadArray*(self: gen_qsettings_types.QSettings, prefix: string): cint =
 
   fcQSettings_beginReadArray(self.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
-proc beginWriteArray*(self: QSettings, prefix: string): void =
+proc beginWriteArray*(self: gen_qsettings_types.QSettings, prefix: string): void =
 
   fcQSettings_beginWriteArray(self.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
-proc endArray*(self: QSettings, ): void =
+proc endArray*(self: gen_qsettings_types.QSettings, ): void =
 
   fcQSettings_endArray(self.h)
 
-proc setArrayIndex*(self: QSettings, i: cint): void =
+proc setArrayIndex*(self: gen_qsettings_types.QSettings, i: cint): void =
 
   fcQSettings_setArrayIndex(self.h, i)
 
-proc allKeys*(self: QSettings, ): seq[string] =
+proc allKeys*(self: gen_qsettings_types.QSettings, ): seq[string] =
 
   var v_ma = fcQSettings_allKeys(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -314,7 +308,7 @@ proc allKeys*(self: QSettings, ): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc childKeys*(self: QSettings, ): seq[string] =
+proc childKeys*(self: gen_qsettings_types.QSettings, ): seq[string] =
 
   var v_ma = fcQSettings_childKeys(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -326,7 +320,7 @@ proc childKeys*(self: QSettings, ): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc childGroups*(self: QSettings, ): seq[string] =
+proc childGroups*(self: gen_qsettings_types.QSettings, ): seq[string] =
 
   var v_ma = fcQSettings_childGroups(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -338,376 +332,326 @@ proc childGroups*(self: QSettings, ): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc isWritable*(self: QSettings, ): bool =
+proc isWritable*(self: gen_qsettings_types.QSettings, ): bool =
 
   fcQSettings_isWritable(self.h)
 
-proc setValue*(self: QSettings, key: string, value: gen_qvariant.QVariant): void =
+proc setValue*(self: gen_qsettings_types.QSettings, key: string, value: gen_qvariant.QVariant): void =
 
   fcQSettings_setValue(self.h, struct_miqt_string(data: key, len: csize_t(len(key))), value.h)
 
-proc value*(self: QSettings, key: string): gen_qvariant.QVariant =
+proc value*(self: gen_qsettings_types.QSettings, key: string): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fcQSettings_value(self.h, struct_miqt_string(data: key, len: csize_t(len(key)))))
 
-proc remove*(self: QSettings, key: string): void =
+proc remove*(self: gen_qsettings_types.QSettings, key: string): void =
 
   fcQSettings_remove(self.h, struct_miqt_string(data: key, len: csize_t(len(key))))
 
-proc contains*(self: QSettings, key: string): bool =
+proc contains*(self: gen_qsettings_types.QSettings, key: string): bool =
 
   fcQSettings_contains(self.h, struct_miqt_string(data: key, len: csize_t(len(key))))
 
-proc setFallbacksEnabled*(self: QSettings, b: bool): void =
+proc setFallbacksEnabled*(self: gen_qsettings_types.QSettings, b: bool): void =
 
   fcQSettings_setFallbacksEnabled(self.h, b)
 
-proc fallbacksEnabled*(self: QSettings, ): bool =
+proc fallbacksEnabled*(self: gen_qsettings_types.QSettings, ): bool =
 
   fcQSettings_fallbacksEnabled(self.h)
 
-proc fileName*(self: QSettings, ): string =
+proc fileName*(self: gen_qsettings_types.QSettings, ): string =
 
   let v_ms = fcQSettings_fileName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc format*(self: QSettings, ): QSettingsFormat =
+proc format*(self: gen_qsettings_types.QSettings, ): cint =
 
-  QSettingsFormat(fcQSettings_format(self.h))
+  cint(fcQSettings_format(self.h))
 
-proc scope*(self: QSettings, ): QSettingsScope =
+proc scope*(self: gen_qsettings_types.QSettings, ): cint =
 
-  QSettingsScope(fcQSettings_scope(self.h))
+  cint(fcQSettings_scope(self.h))
 
-proc organizationName*(self: QSettings, ): string =
+proc organizationName*(self: gen_qsettings_types.QSettings, ): string =
 
   let v_ms = fcQSettings_organizationName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc applicationName*(self: QSettings, ): string =
+proc applicationName*(self: gen_qsettings_types.QSettings, ): string =
 
   let v_ms = fcQSettings_applicationName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setIniCodec*(self: QSettings, codec: gen_qtextcodec.QTextCodec): void =
+proc setIniCodec*(self: gen_qsettings_types.QSettings, codec: gen_qtextcodec.QTextCodec): void =
 
   fcQSettings_setIniCodec(self.h, codec.h)
 
-proc setIniCodecWithCodecName*(self: QSettings, codecName: cstring): void =
+proc setIniCodecWithCodecName*(self: gen_qsettings_types.QSettings, codecName: cstring): void =
 
   fcQSettings_setIniCodecWithCodecName(self.h, codecName)
 
-proc iniCodec*(self: QSettings, ): gen_qtextcodec.QTextCodec =
+proc iniCodec*(self: gen_qsettings_types.QSettings, ): gen_qtextcodec.QTextCodec =
 
   gen_qtextcodec.QTextCodec(h: fcQSettings_iniCodec(self.h))
 
-proc setDefaultFormat*(_: type QSettings, format: QSettingsFormat): void =
+proc setDefaultFormat*(_: type gen_qsettings_types.QSettings, format: cint): void =
 
   fcQSettings_setDefaultFormat(cint(format))
 
-proc defaultFormat*(_: type QSettings, ): QSettingsFormat =
+proc defaultFormat*(_: type gen_qsettings_types.QSettings, ): cint =
 
-  QSettingsFormat(fcQSettings_defaultFormat())
+  cint(fcQSettings_defaultFormat())
 
-proc setSystemIniPath*(_: type QSettings, dir: string): void =
+proc setSystemIniPath*(_: type gen_qsettings_types.QSettings, dir: string): void =
 
   fcQSettings_setSystemIniPath(struct_miqt_string(data: dir, len: csize_t(len(dir))))
 
-proc setUserIniPath*(_: type QSettings, dir: string): void =
+proc setUserIniPath*(_: type gen_qsettings_types.QSettings, dir: string): void =
 
   fcQSettings_setUserIniPath(struct_miqt_string(data: dir, len: csize_t(len(dir))))
 
-proc setPath*(_: type QSettings, format: QSettingsFormat, scope: QSettingsScope, path: string): void =
+proc setPath*(_: type gen_qsettings_types.QSettings, format: cint, scope: cint, path: string): void =
 
   fcQSettings_setPath(cint(format), cint(scope), struct_miqt_string(data: path, len: csize_t(len(path))))
 
-proc tr2*(_: type QSettings, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qsettings_types.QSettings, s: cstring, c: cstring): string =
 
   let v_ms = fcQSettings_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QSettings, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qsettings_types.QSettings, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQSettings_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QSettings, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qsettings_types.QSettings, s: cstring, c: cstring): string =
 
   let v_ms = fcQSettings_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QSettings, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qsettings_types.QSettings, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQSettings_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc beginWriteArray2*(self: QSettings, prefix: string, size: cint): void =
+proc beginWriteArray2*(self: gen_qsettings_types.QSettings, prefix: string, size: cint): void =
 
   fcQSettings_beginWriteArray2(self.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))), size)
 
-proc value2*(self: QSettings, key: string, defaultValue: gen_qvariant.QVariant): gen_qvariant.QVariant =
+proc value2*(self: gen_qsettings_types.QSettings, key: string, defaultValue: gen_qvariant.QVariant): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fcQSettings_value2(self.h, struct_miqt_string(data: key, len: csize_t(len(key))), defaultValue.h))
 
-proc callVirtualBase_metaObject(self: QSettings, ): gen_qobjectdefs.QMetaObject =
-
+proc QSettingsmetaObject*(self: gen_qsettings_types.QSettings, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQSettings_virtualbase_metaObject(self.h))
 
-type QSettingsmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QSettings, slot: proc(super: QSettingsmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QSettingsmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qsettings_types.QSettings, slot: QSettingsmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QSettingsmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QSettingsmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSettings_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSettings_metaObject(self: ptr cQSettings, slot: int): pointer {.exportc: "miqt_exec_callback_QSettings_metaObject ".} =
-  type Cb = proc(super: QSettingsmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QSettings(h: self), )
+  var nimfunc = cast[ptr QSettingsmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QSettings, param1: cstring): pointer =
-
+proc QSettingsmetacast*(self: gen_qsettings_types.QSettings, param1: cstring): pointer =
 
   fQSettings_virtualbase_metacast(self.h, param1)
 
-type QSettingsmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QSettings, slot: proc(super: QSettingsmetacastBase, param1: cstring): pointer) =
+type QSettingsmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qsettings_types.QSettings, slot: QSettingsmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QSettingsmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QSettingsmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSettings_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSettings_metacast(self: ptr cQSettings, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QSettings_metacast ".} =
-  type Cb = proc(super: QSettingsmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QSettings(h: self), param1)
+  var nimfunc = cast[ptr QSettingsmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QSettings, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QSettingsmetacall*(self: gen_qsettings_types.QSettings, param1: cint, param2: cint, param3: pointer): cint =
 
   fQSettings_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QSettingsmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QSettings, slot: proc(super: QSettingsmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QSettingsmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qsettings_types.QSettings, slot: QSettingsmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QSettingsmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QSettingsmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSettings_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSettings_metacall(self: ptr cQSettings, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QSettings_metacall ".} =
-  type Cb = proc(super: QSettingsmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QSettings(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QSettingsmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_event(self: QSettings, event: gen_qcoreevent.QEvent): bool =
-
+proc QSettingsevent*(self: gen_qsettings_types.QSettings, event: gen_qcoreevent.QEvent): bool =
 
   fQSettings_virtualbase_event(self.h, event.h)
 
-type QSettingseventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QSettings, slot: proc(super: QSettingseventBase, event: gen_qcoreevent.QEvent): bool) =
+type QSettingseventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qsettings_types.QSettings, slot: QSettingseventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSettingseventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QSettingseventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSettings_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSettings_event(self: ptr cQSettings, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QSettings_event ".} =
-  type Cb = proc(super: QSettingseventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QSettings(h: self), event)
+  var nimfunc = cast[ptr QSettingseventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QSettings, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QSettingseventFilter*(self: gen_qsettings_types.QSettings, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQSettings_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QSettingseventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QSettings, slot: proc(super: QSettingseventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QSettingseventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qsettings_types.QSettings, slot: QSettingseventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QSettingseventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QSettingseventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSettings_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSettings_eventFilter(self: ptr cQSettings, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QSettings_eventFilter ".} =
-  type Cb = proc(super: QSettingseventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QSettings(h: self), watched, event)
+  var nimfunc = cast[ptr QSettingseventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QSettings, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QSettingstimerEvent*(self: gen_qsettings_types.QSettings, event: gen_qcoreevent.QTimerEvent): void =
 
   fQSettings_virtualbase_timerEvent(self.h, event.h)
 
-type QSettingstimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QSettings, slot: proc(super: QSettingstimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QSettingstimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qsettings_types.QSettings, slot: QSettingstimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSettingstimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QSettingstimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSettings_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSettings_timerEvent(self: ptr cQSettings, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSettings_timerEvent ".} =
-  type Cb = proc(super: QSettingstimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QSettings(h: self), event)
+  var nimfunc = cast[ptr QSettingstimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QSettings, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QSettingschildEvent*(self: gen_qsettings_types.QSettings, event: gen_qcoreevent.QChildEvent): void =
 
   fQSettings_virtualbase_childEvent(self.h, event.h)
 
-type QSettingschildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QSettings, slot: proc(super: QSettingschildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QSettingschildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qsettings_types.QSettings, slot: QSettingschildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSettingschildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QSettingschildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSettings_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSettings_childEvent(self: ptr cQSettings, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSettings_childEvent ".} =
-  type Cb = proc(super: QSettingschildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QSettings(h: self), event)
+  var nimfunc = cast[ptr QSettingschildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QSettings, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QSettingscustomEvent*(self: gen_qsettings_types.QSettings, event: gen_qcoreevent.QEvent): void =
 
   fQSettings_virtualbase_customEvent(self.h, event.h)
 
-type QSettingscustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QSettings, slot: proc(super: QSettingscustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QSettingscustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qsettings_types.QSettings, slot: QSettingscustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QSettingscustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QSettingscustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSettings_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSettings_customEvent(self: ptr cQSettings, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QSettings_customEvent ".} =
-  type Cb = proc(super: QSettingscustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QSettings(h: self), event)
+  var nimfunc = cast[ptr QSettingscustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QSettings, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QSettingsconnectNotify*(self: gen_qsettings_types.QSettings, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQSettings_virtualbase_connectNotify(self.h, signal.h)
 
-type QSettingsconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QSettings, slot: proc(super: QSettingsconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QSettingsconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qsettings_types.QSettings, slot: QSettingsconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QSettingsconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QSettingsconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSettings_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSettings_connectNotify(self: ptr cQSettings, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QSettings_connectNotify ".} =
-  type Cb = proc(super: QSettingsconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QSettings(h: self), signal)
+  var nimfunc = cast[ptr QSettingsconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QSettings, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QSettingsdisconnectNotify*(self: gen_qsettings_types.QSettings, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQSettings_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QSettingsdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QSettings, slot: proc(super: QSettingsdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QSettingsdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qsettings_types.QSettings, slot: QSettingsdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QSettingsdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QSettingsdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSettings_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSettings_disconnectNotify(self: ptr cQSettings, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QSettings_disconnectNotify ".} =
-  type Cb = proc(super: QSettingsdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QSettings(h: self), signal)
+  var nimfunc = cast[ptr QSettingsdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QSettings): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qsettings_types.QSettings): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQSettings_staticMetaObject())
-proc delete*(self: QSettings) =
+proc delete*(self: gen_qsettings_types.QSettings) =
   fcQSettings_delete(self.h)

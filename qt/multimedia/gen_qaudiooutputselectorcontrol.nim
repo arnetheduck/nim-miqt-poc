@@ -68,35 +68,35 @@ proc fcQAudioOutputSelectorControl_staticMetaObject(): pointer {.importc: "QAudi
 proc fcQAudioOutputSelectorControl_delete(self: pointer) {.importc: "QAudioOutputSelectorControl_delete".}
 
 
-func init*(T: type QAudioOutputSelectorControl, h: ptr cQAudioOutputSelectorControl): QAudioOutputSelectorControl =
+func init*(T: type gen_qaudiooutputselectorcontrol_types.QAudioOutputSelectorControl, h: ptr cQAudioOutputSelectorControl): gen_qaudiooutputselectorcontrol_types.QAudioOutputSelectorControl =
   T(h: h)
-proc metaObject*(self: QAudioOutputSelectorControl, ): gen_qobjectdefs.QMetaObject =
+proc metaObject*(self: gen_qaudiooutputselectorcontrol_types.QAudioOutputSelectorControl, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQAudioOutputSelectorControl_metaObject(self.h))
 
-proc metacast*(self: QAudioOutputSelectorControl, param1: cstring): pointer =
+proc metacast*(self: gen_qaudiooutputselectorcontrol_types.QAudioOutputSelectorControl, param1: cstring): pointer =
 
   fcQAudioOutputSelectorControl_metacast(self.h, param1)
 
-proc metacall*(self: QAudioOutputSelectorControl, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qaudiooutputselectorcontrol_types.QAudioOutputSelectorControl, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQAudioOutputSelectorControl_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QAudioOutputSelectorControl, s: cstring): string =
+proc tr*(_: type gen_qaudiooutputselectorcontrol_types.QAudioOutputSelectorControl, s: cstring): string =
 
   let v_ms = fcQAudioOutputSelectorControl_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QAudioOutputSelectorControl, s: cstring): string =
+proc trUtf8*(_: type gen_qaudiooutputselectorcontrol_types.QAudioOutputSelectorControl, s: cstring): string =
 
   let v_ms = fcQAudioOutputSelectorControl_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc availableOutputs*(self: QAudioOutputSelectorControl, ): seq[string] =
+proc availableOutputs*(self: gen_qaudiooutputselectorcontrol_types.QAudioOutputSelectorControl, ): seq[string] =
 
   var v_ma = fcQAudioOutputSelectorControl_availableOutputs(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -108,32 +108,32 @@ proc availableOutputs*(self: QAudioOutputSelectorControl, ): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc outputDescription*(self: QAudioOutputSelectorControl, name: string): string =
+proc outputDescription*(self: gen_qaudiooutputselectorcontrol_types.QAudioOutputSelectorControl, name: string): string =
 
   let v_ms = fcQAudioOutputSelectorControl_outputDescription(self.h, struct_miqt_string(data: name, len: csize_t(len(name))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc defaultOutput*(self: QAudioOutputSelectorControl, ): string =
+proc defaultOutput*(self: gen_qaudiooutputselectorcontrol_types.QAudioOutputSelectorControl, ): string =
 
   let v_ms = fcQAudioOutputSelectorControl_defaultOutput(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc activeOutput*(self: QAudioOutputSelectorControl, ): string =
+proc activeOutput*(self: gen_qaudiooutputselectorcontrol_types.QAudioOutputSelectorControl, ): string =
 
   let v_ms = fcQAudioOutputSelectorControl_activeOutput(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setActiveOutput*(self: QAudioOutputSelectorControl, name: string): void =
+proc setActiveOutput*(self: gen_qaudiooutputselectorcontrol_types.QAudioOutputSelectorControl, name: string): void =
 
   fcQAudioOutputSelectorControl_setActiveOutput(self.h, struct_miqt_string(data: name, len: csize_t(len(name))))
 
-proc activeOutputChanged*(self: QAudioOutputSelectorControl, name: string): void =
+proc activeOutputChanged*(self: gen_qaudiooutputselectorcontrol_types.QAudioOutputSelectorControl, name: string): void =
 
   fcQAudioOutputSelectorControl_activeOutputChanged(self.h, struct_miqt_string(data: name, len: csize_t(len(name))))
 
@@ -148,13 +148,13 @@ proc miqt_exec_callback_QAudioOutputSelectorControl_activeOutputChanged(slot: in
 
   nimfunc[](slotval1)
 
-proc onactiveOutputChanged*(self: QAudioOutputSelectorControl, slot: proc(name: string)) =
+proc onactiveOutputChanged*(self: gen_qaudiooutputselectorcontrol_types.QAudioOutputSelectorControl, slot: proc(name: string)) =
   type Cb = proc(name: string)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQAudioOutputSelectorControl_connect_activeOutputChanged(self.h, cast[int](addr tmp[]))
-proc availableOutputsChanged*(self: QAudioOutputSelectorControl, ): void =
+proc availableOutputsChanged*(self: gen_qaudiooutputselectorcontrol_types.QAudioOutputSelectorControl, ): void =
 
   fcQAudioOutputSelectorControl_availableOutputsChanged(self.h)
 
@@ -164,41 +164,41 @@ proc miqt_exec_callback_QAudioOutputSelectorControl_availableOutputsChanged(slot
 
   nimfunc[]()
 
-proc onavailableOutputsChanged*(self: QAudioOutputSelectorControl, slot: proc()) =
+proc onavailableOutputsChanged*(self: gen_qaudiooutputselectorcontrol_types.QAudioOutputSelectorControl, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQAudioOutputSelectorControl_connect_availableOutputsChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QAudioOutputSelectorControl, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qaudiooutputselectorcontrol_types.QAudioOutputSelectorControl, s: cstring, c: cstring): string =
 
   let v_ms = fcQAudioOutputSelectorControl_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QAudioOutputSelectorControl, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qaudiooutputselectorcontrol_types.QAudioOutputSelectorControl, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQAudioOutputSelectorControl_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QAudioOutputSelectorControl, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qaudiooutputselectorcontrol_types.QAudioOutputSelectorControl, s: cstring, c: cstring): string =
 
   let v_ms = fcQAudioOutputSelectorControl_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QAudioOutputSelectorControl, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qaudiooutputselectorcontrol_types.QAudioOutputSelectorControl, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQAudioOutputSelectorControl_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc staticMetaObject*(_: type QAudioOutputSelectorControl): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qaudiooutputselectorcontrol_types.QAudioOutputSelectorControl): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQAudioOutputSelectorControl_staticMetaObject())
-proc delete*(self: QAudioOutputSelectorControl) =
+proc delete*(self: gen_qaudiooutputselectorcontrol_types.QAudioOutputSelectorControl) =
   fcQAudioOutputSelectorControl_delete(self.h)

@@ -39,13 +39,11 @@ export gen_qvideowindowcontrol_types
 
 import
   gen_qmediacontrol,
-  gen_qnamespace,
   gen_qobjectdefs,
   gen_qrect,
   gen_qsize
 export
   gen_qmediacontrol,
-  gen_qnamespace,
   gen_qobjectdefs,
   gen_qrect,
   gen_qsize
@@ -95,107 +93,107 @@ proc fcQVideoWindowControl_staticMetaObject(): pointer {.importc: "QVideoWindowC
 proc fcQVideoWindowControl_delete(self: pointer) {.importc: "QVideoWindowControl_delete".}
 
 
-func init*(T: type QVideoWindowControl, h: ptr cQVideoWindowControl): QVideoWindowControl =
+func init*(T: type gen_qvideowindowcontrol_types.QVideoWindowControl, h: ptr cQVideoWindowControl): gen_qvideowindowcontrol_types.QVideoWindowControl =
   T(h: h)
-proc metaObject*(self: QVideoWindowControl, ): gen_qobjectdefs.QMetaObject =
+proc metaObject*(self: gen_qvideowindowcontrol_types.QVideoWindowControl, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQVideoWindowControl_metaObject(self.h))
 
-proc metacast*(self: QVideoWindowControl, param1: cstring): pointer =
+proc metacast*(self: gen_qvideowindowcontrol_types.QVideoWindowControl, param1: cstring): pointer =
 
   fcQVideoWindowControl_metacast(self.h, param1)
 
-proc metacall*(self: QVideoWindowControl, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qvideowindowcontrol_types.QVideoWindowControl, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQVideoWindowControl_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QVideoWindowControl, s: cstring): string =
+proc tr*(_: type gen_qvideowindowcontrol_types.QVideoWindowControl, s: cstring): string =
 
   let v_ms = fcQVideoWindowControl_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QVideoWindowControl, s: cstring): string =
+proc trUtf8*(_: type gen_qvideowindowcontrol_types.QVideoWindowControl, s: cstring): string =
 
   let v_ms = fcQVideoWindowControl_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc winId*(self: QVideoWindowControl, ): uint =
+proc winId*(self: gen_qvideowindowcontrol_types.QVideoWindowControl, ): uint =
 
   fcQVideoWindowControl_winId(self.h)
 
-proc setWinId*(self: QVideoWindowControl, id: uint): void =
+proc setWinId*(self: gen_qvideowindowcontrol_types.QVideoWindowControl, id: uint): void =
 
   fcQVideoWindowControl_setWinId(self.h, id)
 
-proc displayRect*(self: QVideoWindowControl, ): gen_qrect.QRect =
+proc displayRect*(self: gen_qvideowindowcontrol_types.QVideoWindowControl, ): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fcQVideoWindowControl_displayRect(self.h))
 
-proc setDisplayRect*(self: QVideoWindowControl, rect: gen_qrect.QRect): void =
+proc setDisplayRect*(self: gen_qvideowindowcontrol_types.QVideoWindowControl, rect: gen_qrect.QRect): void =
 
   fcQVideoWindowControl_setDisplayRect(self.h, rect.h)
 
-proc isFullScreen*(self: QVideoWindowControl, ): bool =
+proc isFullScreen*(self: gen_qvideowindowcontrol_types.QVideoWindowControl, ): bool =
 
   fcQVideoWindowControl_isFullScreen(self.h)
 
-proc setFullScreen*(self: QVideoWindowControl, fullScreen: bool): void =
+proc setFullScreen*(self: gen_qvideowindowcontrol_types.QVideoWindowControl, fullScreen: bool): void =
 
   fcQVideoWindowControl_setFullScreen(self.h, fullScreen)
 
-proc repaint*(self: QVideoWindowControl, ): void =
+proc repaint*(self: gen_qvideowindowcontrol_types.QVideoWindowControl, ): void =
 
   fcQVideoWindowControl_repaint(self.h)
 
-proc nativeSize*(self: QVideoWindowControl, ): gen_qsize.QSize =
+proc nativeSize*(self: gen_qvideowindowcontrol_types.QVideoWindowControl, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQVideoWindowControl_nativeSize(self.h))
 
-proc aspectRatioMode*(self: QVideoWindowControl, ): gen_qnamespace.AspectRatioMode =
+proc aspectRatioMode*(self: gen_qvideowindowcontrol_types.QVideoWindowControl, ): cint =
 
-  gen_qnamespace.AspectRatioMode(fcQVideoWindowControl_aspectRatioMode(self.h))
+  cint(fcQVideoWindowControl_aspectRatioMode(self.h))
 
-proc setAspectRatioMode*(self: QVideoWindowControl, mode: gen_qnamespace.AspectRatioMode): void =
+proc setAspectRatioMode*(self: gen_qvideowindowcontrol_types.QVideoWindowControl, mode: cint): void =
 
   fcQVideoWindowControl_setAspectRatioMode(self.h, cint(mode))
 
-proc brightness*(self: QVideoWindowControl, ): cint =
+proc brightness*(self: gen_qvideowindowcontrol_types.QVideoWindowControl, ): cint =
 
   fcQVideoWindowControl_brightness(self.h)
 
-proc setBrightness*(self: QVideoWindowControl, brightness: cint): void =
+proc setBrightness*(self: gen_qvideowindowcontrol_types.QVideoWindowControl, brightness: cint): void =
 
   fcQVideoWindowControl_setBrightness(self.h, brightness)
 
-proc contrast*(self: QVideoWindowControl, ): cint =
+proc contrast*(self: gen_qvideowindowcontrol_types.QVideoWindowControl, ): cint =
 
   fcQVideoWindowControl_contrast(self.h)
 
-proc setContrast*(self: QVideoWindowControl, contrast: cint): void =
+proc setContrast*(self: gen_qvideowindowcontrol_types.QVideoWindowControl, contrast: cint): void =
 
   fcQVideoWindowControl_setContrast(self.h, contrast)
 
-proc hue*(self: QVideoWindowControl, ): cint =
+proc hue*(self: gen_qvideowindowcontrol_types.QVideoWindowControl, ): cint =
 
   fcQVideoWindowControl_hue(self.h)
 
-proc setHue*(self: QVideoWindowControl, hue: cint): void =
+proc setHue*(self: gen_qvideowindowcontrol_types.QVideoWindowControl, hue: cint): void =
 
   fcQVideoWindowControl_setHue(self.h, hue)
 
-proc saturation*(self: QVideoWindowControl, ): cint =
+proc saturation*(self: gen_qvideowindowcontrol_types.QVideoWindowControl, ): cint =
 
   fcQVideoWindowControl_saturation(self.h)
 
-proc setSaturation*(self: QVideoWindowControl, saturation: cint): void =
+proc setSaturation*(self: gen_qvideowindowcontrol_types.QVideoWindowControl, saturation: cint): void =
 
   fcQVideoWindowControl_setSaturation(self.h, saturation)
 
-proc fullScreenChanged*(self: QVideoWindowControl, fullScreen: bool): void =
+proc fullScreenChanged*(self: gen_qvideowindowcontrol_types.QVideoWindowControl, fullScreen: bool): void =
 
   fcQVideoWindowControl_fullScreenChanged(self.h, fullScreen)
 
@@ -207,13 +205,13 @@ proc miqt_exec_callback_QVideoWindowControl_fullScreenChanged(slot: int, fullScr
 
   nimfunc[](slotval1)
 
-proc onfullScreenChanged*(self: QVideoWindowControl, slot: proc(fullScreen: bool)) =
+proc onfullScreenChanged*(self: gen_qvideowindowcontrol_types.QVideoWindowControl, slot: proc(fullScreen: bool)) =
   type Cb = proc(fullScreen: bool)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQVideoWindowControl_connect_fullScreenChanged(self.h, cast[int](addr tmp[]))
-proc brightnessChanged*(self: QVideoWindowControl, brightness: cint): void =
+proc brightnessChanged*(self: gen_qvideowindowcontrol_types.QVideoWindowControl, brightness: cint): void =
 
   fcQVideoWindowControl_brightnessChanged(self.h, brightness)
 
@@ -225,13 +223,13 @@ proc miqt_exec_callback_QVideoWindowControl_brightnessChanged(slot: int, brightn
 
   nimfunc[](slotval1)
 
-proc onbrightnessChanged*(self: QVideoWindowControl, slot: proc(brightness: cint)) =
+proc onbrightnessChanged*(self: gen_qvideowindowcontrol_types.QVideoWindowControl, slot: proc(brightness: cint)) =
   type Cb = proc(brightness: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQVideoWindowControl_connect_brightnessChanged(self.h, cast[int](addr tmp[]))
-proc contrastChanged*(self: QVideoWindowControl, contrast: cint): void =
+proc contrastChanged*(self: gen_qvideowindowcontrol_types.QVideoWindowControl, contrast: cint): void =
 
   fcQVideoWindowControl_contrastChanged(self.h, contrast)
 
@@ -243,13 +241,13 @@ proc miqt_exec_callback_QVideoWindowControl_contrastChanged(slot: int, contrast:
 
   nimfunc[](slotval1)
 
-proc oncontrastChanged*(self: QVideoWindowControl, slot: proc(contrast: cint)) =
+proc oncontrastChanged*(self: gen_qvideowindowcontrol_types.QVideoWindowControl, slot: proc(contrast: cint)) =
   type Cb = proc(contrast: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQVideoWindowControl_connect_contrastChanged(self.h, cast[int](addr tmp[]))
-proc hueChanged*(self: QVideoWindowControl, hue: cint): void =
+proc hueChanged*(self: gen_qvideowindowcontrol_types.QVideoWindowControl, hue: cint): void =
 
   fcQVideoWindowControl_hueChanged(self.h, hue)
 
@@ -261,13 +259,13 @@ proc miqt_exec_callback_QVideoWindowControl_hueChanged(slot: int, hue: cint) {.e
 
   nimfunc[](slotval1)
 
-proc onhueChanged*(self: QVideoWindowControl, slot: proc(hue: cint)) =
+proc onhueChanged*(self: gen_qvideowindowcontrol_types.QVideoWindowControl, slot: proc(hue: cint)) =
   type Cb = proc(hue: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQVideoWindowControl_connect_hueChanged(self.h, cast[int](addr tmp[]))
-proc saturationChanged*(self: QVideoWindowControl, saturation: cint): void =
+proc saturationChanged*(self: gen_qvideowindowcontrol_types.QVideoWindowControl, saturation: cint): void =
 
   fcQVideoWindowControl_saturationChanged(self.h, saturation)
 
@@ -279,13 +277,13 @@ proc miqt_exec_callback_QVideoWindowControl_saturationChanged(slot: int, saturat
 
   nimfunc[](slotval1)
 
-proc onsaturationChanged*(self: QVideoWindowControl, slot: proc(saturation: cint)) =
+proc onsaturationChanged*(self: gen_qvideowindowcontrol_types.QVideoWindowControl, slot: proc(saturation: cint)) =
   type Cb = proc(saturation: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQVideoWindowControl_connect_saturationChanged(self.h, cast[int](addr tmp[]))
-proc nativeSizeChanged*(self: QVideoWindowControl, ): void =
+proc nativeSizeChanged*(self: gen_qvideowindowcontrol_types.QVideoWindowControl, ): void =
 
   fcQVideoWindowControl_nativeSizeChanged(self.h)
 
@@ -295,41 +293,41 @@ proc miqt_exec_callback_QVideoWindowControl_nativeSizeChanged(slot: int) {.expor
 
   nimfunc[]()
 
-proc onnativeSizeChanged*(self: QVideoWindowControl, slot: proc()) =
+proc onnativeSizeChanged*(self: gen_qvideowindowcontrol_types.QVideoWindowControl, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQVideoWindowControl_connect_nativeSizeChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QVideoWindowControl, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qvideowindowcontrol_types.QVideoWindowControl, s: cstring, c: cstring): string =
 
   let v_ms = fcQVideoWindowControl_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QVideoWindowControl, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qvideowindowcontrol_types.QVideoWindowControl, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQVideoWindowControl_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QVideoWindowControl, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qvideowindowcontrol_types.QVideoWindowControl, s: cstring, c: cstring): string =
 
   let v_ms = fcQVideoWindowControl_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QVideoWindowControl, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qvideowindowcontrol_types.QVideoWindowControl, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQVideoWindowControl_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc staticMetaObject*(_: type QVideoWindowControl): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qvideowindowcontrol_types.QVideoWindowControl): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQVideoWindowControl_staticMetaObject())
-proc delete*(self: QVideoWindowControl) =
+proc delete*(self: gen_qvideowindowcontrol_types.QVideoWindowControl) =
   fcQVideoWindowControl_delete(self.h)

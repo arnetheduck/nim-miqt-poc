@@ -34,26 +34,22 @@ const cflags = gorge("pkg-config -cflags Qt5Quick")
 {.compile("gen_qqmlprivate.cpp", cflags).}
 
 
-type QQmlPrivateAutoParentResult* = cint
-const
-  QQmlPrivateParented* = 0
-  QQmlPrivateIncompatibleObject* = 1
-  QQmlPrivateIncompatibleParent* = 2
+type QQmlPrivateAutoParentResultEnum* = distinct cint
+template Parented*(_: type QQmlPrivateAutoParentResultEnum): untyped = 0
+template IncompatibleObject*(_: type QQmlPrivateAutoParentResultEnum): untyped = 1
+template IncompatibleParent*(_: type QQmlPrivateAutoParentResultEnum): untyped = 2
 
 
-
-type QQmlPrivateRegistrationType* = cint
-const
-  QQmlPrivateTypeRegistration* = 0
-  QQmlPrivateInterfaceRegistration* = 1
-  QQmlPrivateAutoParentRegistration* = 2
-  QQmlPrivateSingletonRegistration* = 3
-  QQmlPrivateCompositeRegistration* = 4
-  QQmlPrivateCompositeSingletonRegistration* = 5
-  QQmlPrivateQmlUnitCacheHookRegistration* = 6
-  QQmlPrivateTypeAndRevisionsRegistration* = 7
-  QQmlPrivateSingletonAndRevisionsRegistration* = 8
-
+type QQmlPrivateRegistrationTypeEnum* = distinct cint
+template TypeRegistration*(_: type QQmlPrivateRegistrationTypeEnum): untyped = 0
+template InterfaceRegistration*(_: type QQmlPrivateRegistrationTypeEnum): untyped = 1
+template AutoParentRegistration*(_: type QQmlPrivateRegistrationTypeEnum): untyped = 2
+template SingletonRegistration*(_: type QQmlPrivateRegistrationTypeEnum): untyped = 3
+template CompositeRegistration*(_: type QQmlPrivateRegistrationTypeEnum): untyped = 4
+template CompositeSingletonRegistration*(_: type QQmlPrivateRegistrationTypeEnum): untyped = 5
+template QmlUnitCacheHookRegistration*(_: type QQmlPrivateRegistrationTypeEnum): untyped = 6
+template TypeAndRevisionsRegistration*(_: type QQmlPrivateRegistrationTypeEnum): untyped = 7
+template SingletonAndRevisionsRegistration*(_: type QQmlPrivateRegistrationTypeEnum): untyped = 8
 
 
 import gen_qqmlprivate_types

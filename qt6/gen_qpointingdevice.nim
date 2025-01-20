@@ -34,28 +34,24 @@ const cflags = gorge("pkg-config -cflags Qt6Widgets")
 {.compile("gen_qpointingdevice.cpp", cflags).}
 
 
-type QPointingDevicePointerType* = cint
-const
-  QPointingDeviceUnknown* = 0
-  QPointingDeviceGeneric* = 1
-  QPointingDeviceFinger* = 2
-  QPointingDevicePen* = 4
-  QPointingDeviceEraser* = 8
-  QPointingDeviceCursor* = 16
-  QPointingDeviceAllPointerTypes* = 32767
+type QPointingDevicePointerTypeEnum* = distinct cint
+template Unknown*(_: type QPointingDevicePointerTypeEnum): untyped = 0
+template Generic*(_: type QPointingDevicePointerTypeEnum): untyped = 1
+template Finger*(_: type QPointingDevicePointerTypeEnum): untyped = 2
+template Pen*(_: type QPointingDevicePointerTypeEnum): untyped = 4
+template Eraser*(_: type QPointingDevicePointerTypeEnum): untyped = 8
+template Cursor*(_: type QPointingDevicePointerTypeEnum): untyped = 16
+template AllPointerTypes*(_: type QPointingDevicePointerTypeEnum): untyped = 32767
 
 
-
-type QPointingDeviceGrabTransition* = cint
-const
-  QPointingDeviceGrabPassive* = 1
-  QPointingDeviceUngrabPassive* = 2
-  QPointingDeviceCancelGrabPassive* = 3
-  QPointingDeviceOverrideGrabPassive* = 4
-  QPointingDeviceGrabExclusive* = 16
-  QPointingDeviceUngrabExclusive* = 32
-  QPointingDeviceCancelGrabExclusive* = 48
-
+type QPointingDeviceGrabTransitionEnum* = distinct cint
+template GrabPassive*(_: type QPointingDeviceGrabTransitionEnum): untyped = 1
+template UngrabPassive*(_: type QPointingDeviceGrabTransitionEnum): untyped = 2
+template CancelGrabPassive*(_: type QPointingDeviceGrabTransitionEnum): untyped = 3
+template OverrideGrabPassive*(_: type QPointingDeviceGrabTransitionEnum): untyped = 4
+template GrabExclusive*(_: type QPointingDeviceGrabTransitionEnum): untyped = 16
+template UngrabExclusive*(_: type QPointingDeviceGrabTransitionEnum): untyped = 32
+template CancelGrabExclusive*(_: type QPointingDeviceGrabTransitionEnum): untyped = 48
 
 
 import gen_qpointingdevice_types
@@ -136,116 +132,116 @@ proc fcQPointingDevice_staticMetaObject(): pointer {.importc: "QPointingDevice_s
 proc fcQPointingDevice_delete(self: pointer) {.importc: "QPointingDevice_delete".}
 
 
-func init*(T: type QPointingDeviceUniqueId, h: ptr cQPointingDeviceUniqueId): QPointingDeviceUniqueId =
+func init*(T: type gen_qpointingdevice_types.QPointingDeviceUniqueId, h: ptr cQPointingDeviceUniqueId): gen_qpointingdevice_types.QPointingDeviceUniqueId =
   T(h: h)
-proc create*(T: type QPointingDeviceUniqueId, ): QPointingDeviceUniqueId =
+proc create*(T: type gen_qpointingdevice_types.QPointingDeviceUniqueId, ): gen_qpointingdevice_types.QPointingDeviceUniqueId =
 
-  QPointingDeviceUniqueId.init(fcQPointingDeviceUniqueId_new())
-proc create*(T: type QPointingDeviceUniqueId, param1: QPointingDeviceUniqueId): QPointingDeviceUniqueId =
+  gen_qpointingdevice_types.QPointingDeviceUniqueId.init(fcQPointingDeviceUniqueId_new())
+proc create*(T: type gen_qpointingdevice_types.QPointingDeviceUniqueId, param1: gen_qpointingdevice_types.QPointingDeviceUniqueId): gen_qpointingdevice_types.QPointingDeviceUniqueId =
 
-  QPointingDeviceUniqueId.init(fcQPointingDeviceUniqueId_new2(param1.h))
-proc fromNumericId*(_: type QPointingDeviceUniqueId, id: clonglong): QPointingDeviceUniqueId =
+  gen_qpointingdevice_types.QPointingDeviceUniqueId.init(fcQPointingDeviceUniqueId_new2(param1.h))
+proc fromNumericId*(_: type gen_qpointingdevice_types.QPointingDeviceUniqueId, id: clonglong): gen_qpointingdevice_types.QPointingDeviceUniqueId =
 
-  QPointingDeviceUniqueId(h: fcQPointingDeviceUniqueId_fromNumericId(id))
+  gen_qpointingdevice_types.QPointingDeviceUniqueId(h: fcQPointingDeviceUniqueId_fromNumericId(id))
 
-proc isValid*(self: QPointingDeviceUniqueId, ): bool =
+proc isValid*(self: gen_qpointingdevice_types.QPointingDeviceUniqueId, ): bool =
 
   fcQPointingDeviceUniqueId_isValid(self.h)
 
-proc numericId*(self: QPointingDeviceUniqueId, ): clonglong =
+proc numericId*(self: gen_qpointingdevice_types.QPointingDeviceUniqueId, ): clonglong =
 
   fcQPointingDeviceUniqueId_numericId(self.h)
 
-proc staticMetaObject*(_: type QPointingDeviceUniqueId): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qpointingdevice_types.QPointingDeviceUniqueId): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQPointingDeviceUniqueId_staticMetaObject())
-proc delete*(self: QPointingDeviceUniqueId) =
+proc delete*(self: gen_qpointingdevice_types.QPointingDeviceUniqueId) =
   fcQPointingDeviceUniqueId_delete(self.h)
 
-func init*(T: type QPointingDevice, h: ptr cQPointingDevice): QPointingDevice =
+func init*(T: type gen_qpointingdevice_types.QPointingDevice, h: ptr cQPointingDevice): gen_qpointingdevice_types.QPointingDevice =
   T(h: h)
-proc create*(T: type QPointingDevice, ): QPointingDevice =
+proc create*(T: type gen_qpointingdevice_types.QPointingDevice, ): gen_qpointingdevice_types.QPointingDevice =
 
-  QPointingDevice.init(fcQPointingDevice_new())
-proc create*(T: type QPointingDevice, name: string, systemId: clonglong, devType: gen_qinputdevice.QInputDeviceDeviceType, pType: QPointingDevicePointerType, caps: gen_qinputdevice.QInputDeviceCapability, maxPoints: cint, buttonCount: cint): QPointingDevice =
+  gen_qpointingdevice_types.QPointingDevice.init(fcQPointingDevice_new())
+proc create*(T: type gen_qpointingdevice_types.QPointingDevice, name: string, systemId: clonglong, devType: cint, pType: cint, caps: cint, maxPoints: cint, buttonCount: cint): gen_qpointingdevice_types.QPointingDevice =
 
-  QPointingDevice.init(fcQPointingDevice_new2(struct_miqt_string(data: name, len: csize_t(len(name))), systemId, cint(devType), cint(pType), cint(caps), maxPoints, buttonCount))
-proc create*(T: type QPointingDevice, parent: gen_qobject.QObject): QPointingDevice =
+  gen_qpointingdevice_types.QPointingDevice.init(fcQPointingDevice_new2(struct_miqt_string(data: name, len: csize_t(len(name))), systemId, cint(devType), cint(pType), cint(caps), maxPoints, buttonCount))
+proc create*(T: type gen_qpointingdevice_types.QPointingDevice, parent: gen_qobject.QObject): gen_qpointingdevice_types.QPointingDevice =
 
-  QPointingDevice.init(fcQPointingDevice_new3(parent.h))
-proc create*(T: type QPointingDevice, name: string, systemId: clonglong, devType: gen_qinputdevice.QInputDeviceDeviceType, pType: QPointingDevicePointerType, caps: gen_qinputdevice.QInputDeviceCapability, maxPoints: cint, buttonCount: cint, seatName: string): QPointingDevice =
+  gen_qpointingdevice_types.QPointingDevice.init(fcQPointingDevice_new3(parent.h))
+proc create*(T: type gen_qpointingdevice_types.QPointingDevice, name: string, systemId: clonglong, devType: cint, pType: cint, caps: cint, maxPoints: cint, buttonCount: cint, seatName: string): gen_qpointingdevice_types.QPointingDevice =
 
-  QPointingDevice.init(fcQPointingDevice_new4(struct_miqt_string(data: name, len: csize_t(len(name))), systemId, cint(devType), cint(pType), cint(caps), maxPoints, buttonCount, struct_miqt_string(data: seatName, len: csize_t(len(seatName)))))
-proc create*(T: type QPointingDevice, name: string, systemId: clonglong, devType: gen_qinputdevice.QInputDeviceDeviceType, pType: QPointingDevicePointerType, caps: gen_qinputdevice.QInputDeviceCapability, maxPoints: cint, buttonCount: cint, seatName: string, uniqueId: QPointingDeviceUniqueId): QPointingDevice =
+  gen_qpointingdevice_types.QPointingDevice.init(fcQPointingDevice_new4(struct_miqt_string(data: name, len: csize_t(len(name))), systemId, cint(devType), cint(pType), cint(caps), maxPoints, buttonCount, struct_miqt_string(data: seatName, len: csize_t(len(seatName)))))
+proc create*(T: type gen_qpointingdevice_types.QPointingDevice, name: string, systemId: clonglong, devType: cint, pType: cint, caps: cint, maxPoints: cint, buttonCount: cint, seatName: string, uniqueId: gen_qpointingdevice_types.QPointingDeviceUniqueId): gen_qpointingdevice_types.QPointingDevice =
 
-  QPointingDevice.init(fcQPointingDevice_new5(struct_miqt_string(data: name, len: csize_t(len(name))), systemId, cint(devType), cint(pType), cint(caps), maxPoints, buttonCount, struct_miqt_string(data: seatName, len: csize_t(len(seatName))), uniqueId.h))
-proc create*(T: type QPointingDevice, name: string, systemId: clonglong, devType: gen_qinputdevice.QInputDeviceDeviceType, pType: QPointingDevicePointerType, caps: gen_qinputdevice.QInputDeviceCapability, maxPoints: cint, buttonCount: cint, seatName: string, uniqueId: QPointingDeviceUniqueId, parent: gen_qobject.QObject): QPointingDevice =
+  gen_qpointingdevice_types.QPointingDevice.init(fcQPointingDevice_new5(struct_miqt_string(data: name, len: csize_t(len(name))), systemId, cint(devType), cint(pType), cint(caps), maxPoints, buttonCount, struct_miqt_string(data: seatName, len: csize_t(len(seatName))), uniqueId.h))
+proc create*(T: type gen_qpointingdevice_types.QPointingDevice, name: string, systemId: clonglong, devType: cint, pType: cint, caps: cint, maxPoints: cint, buttonCount: cint, seatName: string, uniqueId: gen_qpointingdevice_types.QPointingDeviceUniqueId, parent: gen_qobject.QObject): gen_qpointingdevice_types.QPointingDevice =
 
-  QPointingDevice.init(fcQPointingDevice_new6(struct_miqt_string(data: name, len: csize_t(len(name))), systemId, cint(devType), cint(pType), cint(caps), maxPoints, buttonCount, struct_miqt_string(data: seatName, len: csize_t(len(seatName))), uniqueId.h, parent.h))
-proc metaObject*(self: QPointingDevice, ): gen_qobjectdefs.QMetaObject =
+  gen_qpointingdevice_types.QPointingDevice.init(fcQPointingDevice_new6(struct_miqt_string(data: name, len: csize_t(len(name))), systemId, cint(devType), cint(pType), cint(caps), maxPoints, buttonCount, struct_miqt_string(data: seatName, len: csize_t(len(seatName))), uniqueId.h, parent.h))
+proc metaObject*(self: gen_qpointingdevice_types.QPointingDevice, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQPointingDevice_metaObject(self.h))
 
-proc metacast*(self: QPointingDevice, param1: cstring): pointer =
+proc metacast*(self: gen_qpointingdevice_types.QPointingDevice, param1: cstring): pointer =
 
   fcQPointingDevice_metacast(self.h, param1)
 
-proc metacall*(self: QPointingDevice, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qpointingdevice_types.QPointingDevice, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQPointingDevice_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QPointingDevice, s: cstring): string =
+proc tr*(_: type gen_qpointingdevice_types.QPointingDevice, s: cstring): string =
 
   let v_ms = fcQPointingDevice_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setType*(self: QPointingDevice, devType: gen_qinputdevice.QInputDeviceDeviceType): void =
+proc setType*(self: gen_qpointingdevice_types.QPointingDevice, devType: cint): void =
 
   fcQPointingDevice_setType(self.h, cint(devType))
 
-proc setCapabilities*(self: QPointingDevice, caps: gen_qinputdevice.QInputDeviceCapability): void =
+proc setCapabilities*(self: gen_qpointingdevice_types.QPointingDevice, caps: cint): void =
 
   fcQPointingDevice_setCapabilities(self.h, cint(caps))
 
-proc setMaximumTouchPoints*(self: QPointingDevice, c: cint): void =
+proc setMaximumTouchPoints*(self: gen_qpointingdevice_types.QPointingDevice, c: cint): void =
 
   fcQPointingDevice_setMaximumTouchPoints(self.h, c)
 
-proc pointerType*(self: QPointingDevice, ): QPointingDevicePointerType =
+proc pointerType*(self: gen_qpointingdevice_types.QPointingDevice, ): cint =
 
-  QPointingDevicePointerType(fcQPointingDevice_pointerType(self.h))
+  cint(fcQPointingDevice_pointerType(self.h))
 
-proc maximumPoints*(self: QPointingDevice, ): cint =
+proc maximumPoints*(self: gen_qpointingdevice_types.QPointingDevice, ): cint =
 
   fcQPointingDevice_maximumPoints(self.h)
 
-proc buttonCount*(self: QPointingDevice, ): cint =
+proc buttonCount*(self: gen_qpointingdevice_types.QPointingDevice, ): cint =
 
   fcQPointingDevice_buttonCount(self.h)
 
-proc uniqueId*(self: QPointingDevice, ): QPointingDeviceUniqueId =
+proc uniqueId*(self: gen_qpointingdevice_types.QPointingDevice, ): gen_qpointingdevice_types.QPointingDeviceUniqueId =
 
-  QPointingDeviceUniqueId(h: fcQPointingDevice_uniqueId(self.h))
+  gen_qpointingdevice_types.QPointingDeviceUniqueId(h: fcQPointingDevice_uniqueId(self.h))
 
-proc primaryPointingDevice*(_: type QPointingDevice, ): QPointingDevice =
+proc primaryPointingDevice*(_: type gen_qpointingdevice_types.QPointingDevice, ): gen_qpointingdevice_types.QPointingDevice =
 
-  QPointingDevice(h: fcQPointingDevice_primaryPointingDevice())
+  gen_qpointingdevice_types.QPointingDevice(h: fcQPointingDevice_primaryPointingDevice())
 
-proc operatorEqual*(self: QPointingDevice, other: QPointingDevice): bool =
+proc operatorEqual*(self: gen_qpointingdevice_types.QPointingDevice, other: gen_qpointingdevice_types.QPointingDevice): bool =
 
   fcQPointingDevice_operatorEqual(self.h, other.h)
 
-proc grabChanged*(self: QPointingDevice, grabber: gen_qobject.QObject, transition: QPointingDeviceGrabTransition, event: gen_qevent.QPointerEvent, point: gen_qeventpoint.QEventPoint): void =
+proc grabChanged*(self: gen_qpointingdevice_types.QPointingDevice, grabber: gen_qobject.QObject, transition: cint, event: gen_qevent.QPointerEvent, point: gen_qeventpoint.QEventPoint): void =
 
   fcQPointingDevice_grabChanged(self.h, grabber.h, cint(transition), event.h, point.h)
 
 proc miqt_exec_callback_QPointingDevice_grabChanged(slot: int, grabber: pointer, transition: cint, event: pointer, point: pointer) {.exportc.} =
-  type Cb = proc(grabber: gen_qobject.QObject, transition: QPointingDeviceGrabTransition, event: gen_qevent.QPointerEvent, point: gen_qeventpoint.QEventPoint)
+  type Cb = proc(grabber: gen_qobject.QObject, transition: cint, event: gen_qevent.QPointerEvent, point: gen_qeventpoint.QEventPoint)
   let nimfunc = cast[ptr Cb](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: grabber)
 
-  let slotval2 = QPointingDeviceGrabTransition(transition)
+  let slotval2 = cint(transition)
 
   let slotval3 = gen_qevent.QPointerEvent(h: event)
 
@@ -254,275 +250,225 @@ proc miqt_exec_callback_QPointingDevice_grabChanged(slot: int, grabber: pointer,
 
   nimfunc[](slotval1, slotval2, slotval3, slotval4)
 
-proc ongrabChanged*(self: QPointingDevice, slot: proc(grabber: gen_qobject.QObject, transition: QPointingDeviceGrabTransition, event: gen_qevent.QPointerEvent, point: gen_qeventpoint.QEventPoint)) =
-  type Cb = proc(grabber: gen_qobject.QObject, transition: QPointingDeviceGrabTransition, event: gen_qevent.QPointerEvent, point: gen_qeventpoint.QEventPoint)
+proc ongrabChanged*(self: gen_qpointingdevice_types.QPointingDevice, slot: proc(grabber: gen_qobject.QObject, transition: cint, event: gen_qevent.QPointerEvent, point: gen_qeventpoint.QEventPoint)) =
+  type Cb = proc(grabber: gen_qobject.QObject, transition: cint, event: gen_qevent.QPointerEvent, point: gen_qeventpoint.QEventPoint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQPointingDevice_connect_grabChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QPointingDevice, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qpointingdevice_types.QPointingDevice, s: cstring, c: cstring): string =
 
   let v_ms = fcQPointingDevice_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QPointingDevice, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qpointingdevice_types.QPointingDevice, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQPointingDevice_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc primaryPointingDevice1*(_: type QPointingDevice, seatName: string): QPointingDevice =
+proc primaryPointingDevice1*(_: type gen_qpointingdevice_types.QPointingDevice, seatName: string): gen_qpointingdevice_types.QPointingDevice =
 
-  QPointingDevice(h: fcQPointingDevice_primaryPointingDevice1(struct_miqt_string(data: seatName, len: csize_t(len(seatName)))))
+  gen_qpointingdevice_types.QPointingDevice(h: fcQPointingDevice_primaryPointingDevice1(struct_miqt_string(data: seatName, len: csize_t(len(seatName)))))
 
-proc callVirtualBase_metaObject(self: QPointingDevice, ): gen_qobjectdefs.QMetaObject =
-
+proc QPointingDevicemetaObject*(self: gen_qpointingdevice_types.QPointingDevice, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQPointingDevice_virtualbase_metaObject(self.h))
 
-type QPointingDevicemetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QPointingDevice, slot: proc(super: QPointingDevicemetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QPointingDevicemetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qpointingdevice_types.QPointingDevice, slot: QPointingDevicemetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QPointingDevicemetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QPointingDevicemetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPointingDevice_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPointingDevice_metaObject(self: ptr cQPointingDevice, slot: int): pointer {.exportc: "miqt_exec_callback_QPointingDevice_metaObject ".} =
-  type Cb = proc(super: QPointingDevicemetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QPointingDevice(h: self), )
+  var nimfunc = cast[ptr QPointingDevicemetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QPointingDevice, param1: cstring): pointer =
-
+proc QPointingDevicemetacast*(self: gen_qpointingdevice_types.QPointingDevice, param1: cstring): pointer =
 
   fQPointingDevice_virtualbase_metacast(self.h, param1)
 
-type QPointingDevicemetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QPointingDevice, slot: proc(super: QPointingDevicemetacastBase, param1: cstring): pointer) =
+type QPointingDevicemetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qpointingdevice_types.QPointingDevice, slot: QPointingDevicemetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QPointingDevicemetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QPointingDevicemetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPointingDevice_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPointingDevice_metacast(self: ptr cQPointingDevice, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QPointingDevice_metacast ".} =
-  type Cb = proc(super: QPointingDevicemetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QPointingDevice(h: self), param1)
+  var nimfunc = cast[ptr QPointingDevicemetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QPointingDevice, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QPointingDevicemetacall*(self: gen_qpointingdevice_types.QPointingDevice, param1: cint, param2: cint, param3: pointer): cint =
 
   fQPointingDevice_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QPointingDevicemetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QPointingDevice, slot: proc(super: QPointingDevicemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QPointingDevicemetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qpointingdevice_types.QPointingDevice, slot: QPointingDevicemetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QPointingDevicemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QPointingDevicemetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPointingDevice_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPointingDevice_metacall(self: ptr cQPointingDevice, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QPointingDevice_metacall ".} =
-  type Cb = proc(super: QPointingDevicemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QPointingDevice(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QPointingDevicemetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_event(self: QPointingDevice, event: gen_qcoreevent.QEvent): bool =
-
+proc QPointingDeviceevent*(self: gen_qpointingdevice_types.QPointingDevice, event: gen_qcoreevent.QEvent): bool =
 
   fQPointingDevice_virtualbase_event(self.h, event.h)
 
-type QPointingDeviceeventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QPointingDevice, slot: proc(super: QPointingDeviceeventBase, event: gen_qcoreevent.QEvent): bool) =
+type QPointingDeviceeventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qpointingdevice_types.QPointingDevice, slot: QPointingDeviceeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPointingDeviceeventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QPointingDeviceeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPointingDevice_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPointingDevice_event(self: ptr cQPointingDevice, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QPointingDevice_event ".} =
-  type Cb = proc(super: QPointingDeviceeventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QPointingDevice(h: self), event)
+  var nimfunc = cast[ptr QPointingDeviceeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QPointingDevice, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QPointingDeviceeventFilter*(self: gen_qpointingdevice_types.QPointingDevice, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQPointingDevice_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QPointingDeviceeventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QPointingDevice, slot: proc(super: QPointingDeviceeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QPointingDeviceeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qpointingdevice_types.QPointingDevice, slot: QPointingDeviceeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QPointingDeviceeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QPointingDeviceeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPointingDevice_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPointingDevice_eventFilter(self: ptr cQPointingDevice, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QPointingDevice_eventFilter ".} =
-  type Cb = proc(super: QPointingDeviceeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QPointingDevice(h: self), watched, event)
+  var nimfunc = cast[ptr QPointingDeviceeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QPointingDevice, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QPointingDevicetimerEvent*(self: gen_qpointingdevice_types.QPointingDevice, event: gen_qcoreevent.QTimerEvent): void =
 
   fQPointingDevice_virtualbase_timerEvent(self.h, event.h)
 
-type QPointingDevicetimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QPointingDevice, slot: proc(super: QPointingDevicetimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QPointingDevicetimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qpointingdevice_types.QPointingDevice, slot: QPointingDevicetimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPointingDevicetimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QPointingDevicetimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPointingDevice_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPointingDevice_timerEvent(self: ptr cQPointingDevice, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPointingDevice_timerEvent ".} =
-  type Cb = proc(super: QPointingDevicetimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QPointingDevice(h: self), event)
+  var nimfunc = cast[ptr QPointingDevicetimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QPointingDevice, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QPointingDevicechildEvent*(self: gen_qpointingdevice_types.QPointingDevice, event: gen_qcoreevent.QChildEvent): void =
 
   fQPointingDevice_virtualbase_childEvent(self.h, event.h)
 
-type QPointingDevicechildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QPointingDevice, slot: proc(super: QPointingDevicechildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QPointingDevicechildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qpointingdevice_types.QPointingDevice, slot: QPointingDevicechildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPointingDevicechildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QPointingDevicechildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPointingDevice_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPointingDevice_childEvent(self: ptr cQPointingDevice, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPointingDevice_childEvent ".} =
-  type Cb = proc(super: QPointingDevicechildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QPointingDevice(h: self), event)
+  var nimfunc = cast[ptr QPointingDevicechildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QPointingDevice, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QPointingDevicecustomEvent*(self: gen_qpointingdevice_types.QPointingDevice, event: gen_qcoreevent.QEvent): void =
 
   fQPointingDevice_virtualbase_customEvent(self.h, event.h)
 
-type QPointingDevicecustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QPointingDevice, slot: proc(super: QPointingDevicecustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QPointingDevicecustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qpointingdevice_types.QPointingDevice, slot: QPointingDevicecustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPointingDevicecustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QPointingDevicecustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPointingDevice_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPointingDevice_customEvent(self: ptr cQPointingDevice, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPointingDevice_customEvent ".} =
-  type Cb = proc(super: QPointingDevicecustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QPointingDevice(h: self), event)
+  var nimfunc = cast[ptr QPointingDevicecustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QPointingDevice, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QPointingDeviceconnectNotify*(self: gen_qpointingdevice_types.QPointingDevice, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQPointingDevice_virtualbase_connectNotify(self.h, signal.h)
 
-type QPointingDeviceconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QPointingDevice, slot: proc(super: QPointingDeviceconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QPointingDeviceconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qpointingdevice_types.QPointingDevice, slot: QPointingDeviceconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QPointingDeviceconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QPointingDeviceconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPointingDevice_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPointingDevice_connectNotify(self: ptr cQPointingDevice, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QPointingDevice_connectNotify ".} =
-  type Cb = proc(super: QPointingDeviceconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QPointingDevice(h: self), signal)
+  var nimfunc = cast[ptr QPointingDeviceconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QPointingDevice, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QPointingDevicedisconnectNotify*(self: gen_qpointingdevice_types.QPointingDevice, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQPointingDevice_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QPointingDevicedisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QPointingDevice, slot: proc(super: QPointingDevicedisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QPointingDevicedisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qpointingdevice_types.QPointingDevice, slot: QPointingDevicedisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QPointingDevicedisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QPointingDevicedisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPointingDevice_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPointingDevice_disconnectNotify(self: ptr cQPointingDevice, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QPointingDevice_disconnectNotify ".} =
-  type Cb = proc(super: QPointingDevicedisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QPointingDevice(h: self), signal)
+  var nimfunc = cast[ptr QPointingDevicedisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QPointingDevice): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qpointingdevice_types.QPointingDevice): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQPointingDevice_staticMetaObject())
-proc delete*(self: QPointingDevice) =
+proc delete*(self: gen_qpointingdevice_types.QPointingDevice) =
   fcQPointingDevice_delete(self.h)

@@ -38,7 +38,6 @@ import gen_qpropertyanimation_types
 export gen_qpropertyanimation_types
 
 import
-  gen_qabstractanimation,
   gen_qcoreevent,
   gen_qmetaobject,
   gen_qobject,
@@ -46,7 +45,6 @@ import
   gen_qvariant,
   gen_qvariantanimation
 export
-  gen_qabstractanimation,
   gen_qcoreevent,
   gen_qmetaobject,
   gen_qobject,
@@ -109,308 +107,263 @@ proc fcQPropertyAnimation_staticMetaObject(): pointer {.importc: "QPropertyAnima
 proc fcQPropertyAnimation_delete(self: pointer) {.importc: "QPropertyAnimation_delete".}
 
 
-func init*(T: type QPropertyAnimation, h: ptr cQPropertyAnimation): QPropertyAnimation =
+func init*(T: type gen_qpropertyanimation_types.QPropertyAnimation, h: ptr cQPropertyAnimation): gen_qpropertyanimation_types.QPropertyAnimation =
   T(h: h)
-proc create*(T: type QPropertyAnimation, ): QPropertyAnimation =
+proc create*(T: type gen_qpropertyanimation_types.QPropertyAnimation, ): gen_qpropertyanimation_types.QPropertyAnimation =
 
-  QPropertyAnimation.init(fcQPropertyAnimation_new())
-proc create*(T: type QPropertyAnimation, target: gen_qobject.QObject, propertyName: seq[byte]): QPropertyAnimation =
+  gen_qpropertyanimation_types.QPropertyAnimation.init(fcQPropertyAnimation_new())
+proc create*(T: type gen_qpropertyanimation_types.QPropertyAnimation, target: gen_qobject.QObject, propertyName: seq[byte]): gen_qpropertyanimation_types.QPropertyAnimation =
 
-  QPropertyAnimation.init(fcQPropertyAnimation_new2(target.h, struct_miqt_string(data: cast[cstring](if len(propertyName) == 0: nil else: unsafeAddr propertyName[0]), len: csize_t(len(propertyName)))))
-proc create*(T: type QPropertyAnimation, parent: gen_qobject.QObject): QPropertyAnimation =
+  gen_qpropertyanimation_types.QPropertyAnimation.init(fcQPropertyAnimation_new2(target.h, struct_miqt_string(data: cast[cstring](if len(propertyName) == 0: nil else: unsafeAddr propertyName[0]), len: csize_t(len(propertyName)))))
+proc create*(T: type gen_qpropertyanimation_types.QPropertyAnimation, parent: gen_qobject.QObject): gen_qpropertyanimation_types.QPropertyAnimation =
 
-  QPropertyAnimation.init(fcQPropertyAnimation_new3(parent.h))
-proc create*(T: type QPropertyAnimation, target: gen_qobject.QObject, propertyName: seq[byte], parent: gen_qobject.QObject): QPropertyAnimation =
+  gen_qpropertyanimation_types.QPropertyAnimation.init(fcQPropertyAnimation_new3(parent.h))
+proc create*(T: type gen_qpropertyanimation_types.QPropertyAnimation, target: gen_qobject.QObject, propertyName: seq[byte], parent: gen_qobject.QObject): gen_qpropertyanimation_types.QPropertyAnimation =
 
-  QPropertyAnimation.init(fcQPropertyAnimation_new4(target.h, struct_miqt_string(data: cast[cstring](if len(propertyName) == 0: nil else: unsafeAddr propertyName[0]), len: csize_t(len(propertyName))), parent.h))
-proc metaObject*(self: QPropertyAnimation, ): gen_qobjectdefs.QMetaObject =
+  gen_qpropertyanimation_types.QPropertyAnimation.init(fcQPropertyAnimation_new4(target.h, struct_miqt_string(data: cast[cstring](if len(propertyName) == 0: nil else: unsafeAddr propertyName[0]), len: csize_t(len(propertyName))), parent.h))
+proc metaObject*(self: gen_qpropertyanimation_types.QPropertyAnimation, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQPropertyAnimation_metaObject(self.h))
 
-proc metacast*(self: QPropertyAnimation, param1: cstring): pointer =
+proc metacast*(self: gen_qpropertyanimation_types.QPropertyAnimation, param1: cstring): pointer =
 
   fcQPropertyAnimation_metacast(self.h, param1)
 
-proc metacall*(self: QPropertyAnimation, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qpropertyanimation_types.QPropertyAnimation, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQPropertyAnimation_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QPropertyAnimation, s: cstring): string =
+proc tr*(_: type gen_qpropertyanimation_types.QPropertyAnimation, s: cstring): string =
 
   let v_ms = fcQPropertyAnimation_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QPropertyAnimation, s: cstring): string =
+proc trUtf8*(_: type gen_qpropertyanimation_types.QPropertyAnimation, s: cstring): string =
 
   let v_ms = fcQPropertyAnimation_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc targetObject*(self: QPropertyAnimation, ): gen_qobject.QObject =
+proc targetObject*(self: gen_qpropertyanimation_types.QPropertyAnimation, ): gen_qobject.QObject =
 
   gen_qobject.QObject(h: fcQPropertyAnimation_targetObject(self.h))
 
-proc setTargetObject*(self: QPropertyAnimation, target: gen_qobject.QObject): void =
+proc setTargetObject*(self: gen_qpropertyanimation_types.QPropertyAnimation, target: gen_qobject.QObject): void =
 
   fcQPropertyAnimation_setTargetObject(self.h, target.h)
 
-proc propertyName*(self: QPropertyAnimation, ): seq[byte] =
+proc propertyName*(self: gen_qpropertyanimation_types.QPropertyAnimation, ): seq[byte] =
 
   var v_bytearray = fcQPropertyAnimation_propertyName(self.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc setPropertyName*(self: QPropertyAnimation, propertyName: seq[byte]): void =
+proc setPropertyName*(self: gen_qpropertyanimation_types.QPropertyAnimation, propertyName: seq[byte]): void =
 
   fcQPropertyAnimation_setPropertyName(self.h, struct_miqt_string(data: cast[cstring](if len(propertyName) == 0: nil else: unsafeAddr propertyName[0]), len: csize_t(len(propertyName))))
 
-proc tr2*(_: type QPropertyAnimation, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qpropertyanimation_types.QPropertyAnimation, s: cstring, c: cstring): string =
 
   let v_ms = fcQPropertyAnimation_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QPropertyAnimation, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qpropertyanimation_types.QPropertyAnimation, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQPropertyAnimation_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QPropertyAnimation, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qpropertyanimation_types.QPropertyAnimation, s: cstring, c: cstring): string =
 
   let v_ms = fcQPropertyAnimation_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QPropertyAnimation, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qpropertyanimation_types.QPropertyAnimation, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQPropertyAnimation_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QPropertyAnimation, ): gen_qobjectdefs.QMetaObject =
-
+proc QPropertyAnimationmetaObject*(self: gen_qpropertyanimation_types.QPropertyAnimation, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQPropertyAnimation_virtualbase_metaObject(self.h))
 
-type QPropertyAnimationmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QPropertyAnimation, slot: proc(super: QPropertyAnimationmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QPropertyAnimationmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qpropertyanimation_types.QPropertyAnimation, slot: QPropertyAnimationmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QPropertyAnimationmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QPropertyAnimationmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPropertyAnimation_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPropertyAnimation_metaObject(self: ptr cQPropertyAnimation, slot: int): pointer {.exportc: "miqt_exec_callback_QPropertyAnimation_metaObject ".} =
-  type Cb = proc(super: QPropertyAnimationmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QPropertyAnimation(h: self), )
+  var nimfunc = cast[ptr QPropertyAnimationmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QPropertyAnimation, param1: cstring): pointer =
-
+proc QPropertyAnimationmetacast*(self: gen_qpropertyanimation_types.QPropertyAnimation, param1: cstring): pointer =
 
   fQPropertyAnimation_virtualbase_metacast(self.h, param1)
 
-type QPropertyAnimationmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QPropertyAnimation, slot: proc(super: QPropertyAnimationmetacastBase, param1: cstring): pointer) =
+type QPropertyAnimationmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qpropertyanimation_types.QPropertyAnimation, slot: QPropertyAnimationmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QPropertyAnimationmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QPropertyAnimationmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPropertyAnimation_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPropertyAnimation_metacast(self: ptr cQPropertyAnimation, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QPropertyAnimation_metacast ".} =
-  type Cb = proc(super: QPropertyAnimationmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QPropertyAnimation(h: self), param1)
+  var nimfunc = cast[ptr QPropertyAnimationmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QPropertyAnimation, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QPropertyAnimationmetacall*(self: gen_qpropertyanimation_types.QPropertyAnimation, param1: cint, param2: cint, param3: pointer): cint =
 
   fQPropertyAnimation_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QPropertyAnimationmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QPropertyAnimation, slot: proc(super: QPropertyAnimationmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QPropertyAnimationmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qpropertyanimation_types.QPropertyAnimation, slot: QPropertyAnimationmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QPropertyAnimationmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QPropertyAnimationmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPropertyAnimation_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPropertyAnimation_metacall(self: ptr cQPropertyAnimation, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QPropertyAnimation_metacall ".} =
-  type Cb = proc(super: QPropertyAnimationmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QPropertyAnimation(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QPropertyAnimationmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_event(self: QPropertyAnimation, event: gen_qcoreevent.QEvent): bool =
-
+proc QPropertyAnimationevent*(self: gen_qpropertyanimation_types.QPropertyAnimation, event: gen_qcoreevent.QEvent): bool =
 
   fQPropertyAnimation_virtualbase_event(self.h, event.h)
 
-type QPropertyAnimationeventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QPropertyAnimation, slot: proc(super: QPropertyAnimationeventBase, event: gen_qcoreevent.QEvent): bool) =
+type QPropertyAnimationeventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qpropertyanimation_types.QPropertyAnimation, slot: QPropertyAnimationeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPropertyAnimationeventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QPropertyAnimationeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPropertyAnimation_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPropertyAnimation_event(self: ptr cQPropertyAnimation, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QPropertyAnimation_event ".} =
-  type Cb = proc(super: QPropertyAnimationeventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QPropertyAnimation(h: self), event)
+  var nimfunc = cast[ptr QPropertyAnimationeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_updateCurrentValue(self: QPropertyAnimation, value: gen_qvariant.QVariant): void =
-
+proc QPropertyAnimationupdateCurrentValue*(self: gen_qpropertyanimation_types.QPropertyAnimation, value: gen_qvariant.QVariant): void =
 
   fQPropertyAnimation_virtualbase_updateCurrentValue(self.h, value.h)
 
-type QPropertyAnimationupdateCurrentValueBase* = proc(value: gen_qvariant.QVariant): void
-proc onupdateCurrentValue*(self: QPropertyAnimation, slot: proc(super: QPropertyAnimationupdateCurrentValueBase, value: gen_qvariant.QVariant): void) =
+type QPropertyAnimationupdateCurrentValueProc* = proc(value: gen_qvariant.QVariant): void
+proc onupdateCurrentValue*(self: gen_qpropertyanimation_types.QPropertyAnimation, slot: QPropertyAnimationupdateCurrentValueProc) =
   # TODO check subclass
-  type Cb = proc(super: QPropertyAnimationupdateCurrentValueBase, value: gen_qvariant.QVariant): void
-  var tmp = new Cb
+  var tmp = new QPropertyAnimationupdateCurrentValueProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPropertyAnimation_override_virtual_updateCurrentValue(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPropertyAnimation_updateCurrentValue(self: ptr cQPropertyAnimation, slot: int, value: pointer): void {.exportc: "miqt_exec_callback_QPropertyAnimation_updateCurrentValue ".} =
-  type Cb = proc(super: QPropertyAnimationupdateCurrentValueBase, value: gen_qvariant.QVariant): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(value: gen_qvariant.QVariant): auto =
-    callVirtualBase_updateCurrentValue(QPropertyAnimation(h: self), value)
+  var nimfunc = cast[ptr QPropertyAnimationupdateCurrentValueProc](cast[pointer](slot))
   let slotval1 = gen_qvariant.QVariant(h: value)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_updateState(self: QPropertyAnimation, newState: gen_qabstractanimation.QAbstractAnimationState, oldState: gen_qabstractanimation.QAbstractAnimationState): void =
-
+  nimfunc[](slotval1)
+proc QPropertyAnimationupdateState*(self: gen_qpropertyanimation_types.QPropertyAnimation, newState: cint, oldState: cint): void =
 
   fQPropertyAnimation_virtualbase_updateState(self.h, cint(newState), cint(oldState))
 
-type QPropertyAnimationupdateStateBase* = proc(newState: gen_qabstractanimation.QAbstractAnimationState, oldState: gen_qabstractanimation.QAbstractAnimationState): void
-proc onupdateState*(self: QPropertyAnimation, slot: proc(super: QPropertyAnimationupdateStateBase, newState: gen_qabstractanimation.QAbstractAnimationState, oldState: gen_qabstractanimation.QAbstractAnimationState): void) =
+type QPropertyAnimationupdateStateProc* = proc(newState: cint, oldState: cint): void
+proc onupdateState*(self: gen_qpropertyanimation_types.QPropertyAnimation, slot: QPropertyAnimationupdateStateProc) =
   # TODO check subclass
-  type Cb = proc(super: QPropertyAnimationupdateStateBase, newState: gen_qabstractanimation.QAbstractAnimationState, oldState: gen_qabstractanimation.QAbstractAnimationState): void
-  var tmp = new Cb
+  var tmp = new QPropertyAnimationupdateStateProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPropertyAnimation_override_virtual_updateState(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPropertyAnimation_updateState(self: ptr cQPropertyAnimation, slot: int, newState: cint, oldState: cint): void {.exportc: "miqt_exec_callback_QPropertyAnimation_updateState ".} =
-  type Cb = proc(super: QPropertyAnimationupdateStateBase, newState: gen_qabstractanimation.QAbstractAnimationState, oldState: gen_qabstractanimation.QAbstractAnimationState): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(newState: gen_qabstractanimation.QAbstractAnimationState, oldState: gen_qabstractanimation.QAbstractAnimationState): auto =
-    callVirtualBase_updateState(QPropertyAnimation(h: self), newState, oldState)
-  let slotval1 = gen_qabstractanimation.QAbstractAnimationState(newState)
+  var nimfunc = cast[ptr QPropertyAnimationupdateStateProc](cast[pointer](slot))
+  let slotval1 = cint(newState)
 
-  let slotval2 = gen_qabstractanimation.QAbstractAnimationState(oldState)
+  let slotval2 = cint(oldState)
 
 
-  nimfunc[](superCall, slotval1, slotval2)
-proc callVirtualBase_duration(self: QPropertyAnimation, ): cint =
-
+  nimfunc[](slotval1, slotval2)
+proc QPropertyAnimationduration*(self: gen_qpropertyanimation_types.QPropertyAnimation, ): cint =
 
   fQPropertyAnimation_virtualbase_duration(self.h)
 
-type QPropertyAnimationdurationBase* = proc(): cint
-proc onduration*(self: QPropertyAnimation, slot: proc(super: QPropertyAnimationdurationBase): cint) =
+type QPropertyAnimationdurationProc* = proc(): cint
+proc onduration*(self: gen_qpropertyanimation_types.QPropertyAnimation, slot: QPropertyAnimationdurationProc) =
   # TODO check subclass
-  type Cb = proc(super: QPropertyAnimationdurationBase): cint
-  var tmp = new Cb
+  var tmp = new QPropertyAnimationdurationProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPropertyAnimation_override_virtual_duration(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPropertyAnimation_duration(self: ptr cQPropertyAnimation, slot: int): cint {.exportc: "miqt_exec_callback_QPropertyAnimation_duration ".} =
-  type Cb = proc(super: QPropertyAnimationdurationBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_duration(QPropertyAnimation(h: self), )
+  var nimfunc = cast[ptr QPropertyAnimationdurationProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_updateCurrentTime(self: QPropertyAnimation, param1: cint): void =
-
+proc QPropertyAnimationupdateCurrentTime*(self: gen_qpropertyanimation_types.QPropertyAnimation, param1: cint): void =
 
   fQPropertyAnimation_virtualbase_updateCurrentTime(self.h, param1)
 
-type QPropertyAnimationupdateCurrentTimeBase* = proc(param1: cint): void
-proc onupdateCurrentTime*(self: QPropertyAnimation, slot: proc(super: QPropertyAnimationupdateCurrentTimeBase, param1: cint): void) =
+type QPropertyAnimationupdateCurrentTimeProc* = proc(param1: cint): void
+proc onupdateCurrentTime*(self: gen_qpropertyanimation_types.QPropertyAnimation, slot: QPropertyAnimationupdateCurrentTimeProc) =
   # TODO check subclass
-  type Cb = proc(super: QPropertyAnimationupdateCurrentTimeBase, param1: cint): void
-  var tmp = new Cb
+  var tmp = new QPropertyAnimationupdateCurrentTimeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPropertyAnimation_override_virtual_updateCurrentTime(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPropertyAnimation_updateCurrentTime(self: ptr cQPropertyAnimation, slot: int, param1: cint): void {.exportc: "miqt_exec_callback_QPropertyAnimation_updateCurrentTime ".} =
-  type Cb = proc(super: QPropertyAnimationupdateCurrentTimeBase, param1: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_updateCurrentTime(QPropertyAnimation(h: self), param1)
+  var nimfunc = cast[ptr QPropertyAnimationupdateCurrentTimeProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_interpolated(self: QPropertyAnimation, fromVal: gen_qvariant.QVariant, to: gen_qvariant.QVariant, progress: float64): gen_qvariant.QVariant =
-
+  nimfunc[](slotval1)
+proc QPropertyAnimationinterpolated*(self: gen_qpropertyanimation_types.QPropertyAnimation, fromVal: gen_qvariant.QVariant, to: gen_qvariant.QVariant, progress: float64): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQPropertyAnimation_virtualbase_interpolated(self.h, fromVal.h, to.h, progress))
 
-type QPropertyAnimationinterpolatedBase* = proc(fromVal: gen_qvariant.QVariant, to: gen_qvariant.QVariant, progress: float64): gen_qvariant.QVariant
-proc oninterpolated*(self: QPropertyAnimation, slot: proc(super: QPropertyAnimationinterpolatedBase, fromVal: gen_qvariant.QVariant, to: gen_qvariant.QVariant, progress: float64): gen_qvariant.QVariant) =
+type QPropertyAnimationinterpolatedProc* = proc(fromVal: gen_qvariant.QVariant, to: gen_qvariant.QVariant, progress: float64): gen_qvariant.QVariant
+proc oninterpolated*(self: gen_qpropertyanimation_types.QPropertyAnimation, slot: QPropertyAnimationinterpolatedProc) =
   # TODO check subclass
-  type Cb = proc(super: QPropertyAnimationinterpolatedBase, fromVal: gen_qvariant.QVariant, to: gen_qvariant.QVariant, progress: float64): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QPropertyAnimationinterpolatedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPropertyAnimation_override_virtual_interpolated(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPropertyAnimation_interpolated(self: ptr cQPropertyAnimation, slot: int, fromVal: pointer, to: pointer, progress: float64): pointer {.exportc: "miqt_exec_callback_QPropertyAnimation_interpolated ".} =
-  type Cb = proc(super: QPropertyAnimationinterpolatedBase, fromVal: gen_qvariant.QVariant, to: gen_qvariant.QVariant, progress: float64): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(fromVal: gen_qvariant.QVariant, to: gen_qvariant.QVariant, progress: float64): auto =
-    callVirtualBase_interpolated(QPropertyAnimation(h: self), fromVal, to, progress)
+  var nimfunc = cast[ptr QPropertyAnimationinterpolatedProc](cast[pointer](slot))
   let slotval1 = gen_qvariant.QVariant(h: fromVal)
 
   let slotval2 = gen_qvariant.QVariant(h: to)
@@ -418,175 +371,140 @@ proc miqt_exec_callback_QPropertyAnimation_interpolated(self: ptr cQPropertyAnim
   let slotval3 = progress
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn.h
-proc callVirtualBase_updateDirection(self: QPropertyAnimation, direction: gen_qabstractanimation.QAbstractAnimationDirection): void =
-
+proc QPropertyAnimationupdateDirection*(self: gen_qpropertyanimation_types.QPropertyAnimation, direction: cint): void =
 
   fQPropertyAnimation_virtualbase_updateDirection(self.h, cint(direction))
 
-type QPropertyAnimationupdateDirectionBase* = proc(direction: gen_qabstractanimation.QAbstractAnimationDirection): void
-proc onupdateDirection*(self: QPropertyAnimation, slot: proc(super: QPropertyAnimationupdateDirectionBase, direction: gen_qabstractanimation.QAbstractAnimationDirection): void) =
+type QPropertyAnimationupdateDirectionProc* = proc(direction: cint): void
+proc onupdateDirection*(self: gen_qpropertyanimation_types.QPropertyAnimation, slot: QPropertyAnimationupdateDirectionProc) =
   # TODO check subclass
-  type Cb = proc(super: QPropertyAnimationupdateDirectionBase, direction: gen_qabstractanimation.QAbstractAnimationDirection): void
-  var tmp = new Cb
+  var tmp = new QPropertyAnimationupdateDirectionProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPropertyAnimation_override_virtual_updateDirection(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPropertyAnimation_updateDirection(self: ptr cQPropertyAnimation, slot: int, direction: cint): void {.exportc: "miqt_exec_callback_QPropertyAnimation_updateDirection ".} =
-  type Cb = proc(super: QPropertyAnimationupdateDirectionBase, direction: gen_qabstractanimation.QAbstractAnimationDirection): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(direction: gen_qabstractanimation.QAbstractAnimationDirection): auto =
-    callVirtualBase_updateDirection(QPropertyAnimation(h: self), direction)
-  let slotval1 = gen_qabstractanimation.QAbstractAnimationDirection(direction)
+  var nimfunc = cast[ptr QPropertyAnimationupdateDirectionProc](cast[pointer](slot))
+  let slotval1 = cint(direction)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_eventFilter(self: QPropertyAnimation, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[](slotval1)
+proc QPropertyAnimationeventFilter*(self: gen_qpropertyanimation_types.QPropertyAnimation, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQPropertyAnimation_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QPropertyAnimationeventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QPropertyAnimation, slot: proc(super: QPropertyAnimationeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QPropertyAnimationeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qpropertyanimation_types.QPropertyAnimation, slot: QPropertyAnimationeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QPropertyAnimationeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QPropertyAnimationeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPropertyAnimation_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPropertyAnimation_eventFilter(self: ptr cQPropertyAnimation, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QPropertyAnimation_eventFilter ".} =
-  type Cb = proc(super: QPropertyAnimationeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QPropertyAnimation(h: self), watched, event)
+  var nimfunc = cast[ptr QPropertyAnimationeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QPropertyAnimation, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QPropertyAnimationtimerEvent*(self: gen_qpropertyanimation_types.QPropertyAnimation, event: gen_qcoreevent.QTimerEvent): void =
 
   fQPropertyAnimation_virtualbase_timerEvent(self.h, event.h)
 
-type QPropertyAnimationtimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QPropertyAnimation, slot: proc(super: QPropertyAnimationtimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QPropertyAnimationtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qpropertyanimation_types.QPropertyAnimation, slot: QPropertyAnimationtimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPropertyAnimationtimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QPropertyAnimationtimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPropertyAnimation_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPropertyAnimation_timerEvent(self: ptr cQPropertyAnimation, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPropertyAnimation_timerEvent ".} =
-  type Cb = proc(super: QPropertyAnimationtimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QPropertyAnimation(h: self), event)
+  var nimfunc = cast[ptr QPropertyAnimationtimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QPropertyAnimation, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QPropertyAnimationchildEvent*(self: gen_qpropertyanimation_types.QPropertyAnimation, event: gen_qcoreevent.QChildEvent): void =
 
   fQPropertyAnimation_virtualbase_childEvent(self.h, event.h)
 
-type QPropertyAnimationchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QPropertyAnimation, slot: proc(super: QPropertyAnimationchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QPropertyAnimationchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qpropertyanimation_types.QPropertyAnimation, slot: QPropertyAnimationchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPropertyAnimationchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QPropertyAnimationchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPropertyAnimation_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPropertyAnimation_childEvent(self: ptr cQPropertyAnimation, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPropertyAnimation_childEvent ".} =
-  type Cb = proc(super: QPropertyAnimationchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QPropertyAnimation(h: self), event)
+  var nimfunc = cast[ptr QPropertyAnimationchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QPropertyAnimation, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QPropertyAnimationcustomEvent*(self: gen_qpropertyanimation_types.QPropertyAnimation, event: gen_qcoreevent.QEvent): void =
 
   fQPropertyAnimation_virtualbase_customEvent(self.h, event.h)
 
-type QPropertyAnimationcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QPropertyAnimation, slot: proc(super: QPropertyAnimationcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QPropertyAnimationcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qpropertyanimation_types.QPropertyAnimation, slot: QPropertyAnimationcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QPropertyAnimationcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QPropertyAnimationcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPropertyAnimation_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPropertyAnimation_customEvent(self: ptr cQPropertyAnimation, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QPropertyAnimation_customEvent ".} =
-  type Cb = proc(super: QPropertyAnimationcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QPropertyAnimation(h: self), event)
+  var nimfunc = cast[ptr QPropertyAnimationcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QPropertyAnimation, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QPropertyAnimationconnectNotify*(self: gen_qpropertyanimation_types.QPropertyAnimation, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQPropertyAnimation_virtualbase_connectNotify(self.h, signal.h)
 
-type QPropertyAnimationconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QPropertyAnimation, slot: proc(super: QPropertyAnimationconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QPropertyAnimationconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qpropertyanimation_types.QPropertyAnimation, slot: QPropertyAnimationconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QPropertyAnimationconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QPropertyAnimationconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPropertyAnimation_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPropertyAnimation_connectNotify(self: ptr cQPropertyAnimation, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QPropertyAnimation_connectNotify ".} =
-  type Cb = proc(super: QPropertyAnimationconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QPropertyAnimation(h: self), signal)
+  var nimfunc = cast[ptr QPropertyAnimationconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QPropertyAnimation, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QPropertyAnimationdisconnectNotify*(self: gen_qpropertyanimation_types.QPropertyAnimation, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQPropertyAnimation_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QPropertyAnimationdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QPropertyAnimation, slot: proc(super: QPropertyAnimationdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QPropertyAnimationdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qpropertyanimation_types.QPropertyAnimation, slot: QPropertyAnimationdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QPropertyAnimationdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QPropertyAnimationdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQPropertyAnimation_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QPropertyAnimation_disconnectNotify(self: ptr cQPropertyAnimation, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QPropertyAnimation_disconnectNotify ".} =
-  type Cb = proc(super: QPropertyAnimationdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QPropertyAnimation(h: self), signal)
+  var nimfunc = cast[ptr QPropertyAnimationdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QPropertyAnimation): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qpropertyanimation_types.QPropertyAnimation): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQPropertyAnimation_staticMetaObject())
-proc delete*(self: QPropertyAnimation) =
+proc delete*(self: gen_qpropertyanimation_types.QPropertyAnimation) =
   fcQPropertyAnimation_delete(self.h)

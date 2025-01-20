@@ -40,14 +40,12 @@ export gen_qfontmetrics_types
 import
   gen_qchar,
   gen_qfont,
-  gen_qnamespace,
   gen_qpaintdevice,
   gen_qrect,
   gen_qsize
 export
   gen_qchar,
   gen_qfont,
-  gen_qnamespace,
   gen_qpaintdevice,
   gen_qrect,
   gen_qsize
@@ -153,393 +151,393 @@ proc fcQFontMetricsF_elidedText4(self: pointer, text: struct_miqt_string, mode: 
 proc fcQFontMetricsF_delete(self: pointer) {.importc: "QFontMetricsF_delete".}
 
 
-func init*(T: type QFontMetrics, h: ptr cQFontMetrics): QFontMetrics =
+func init*(T: type gen_qfontmetrics_types.QFontMetrics, h: ptr cQFontMetrics): gen_qfontmetrics_types.QFontMetrics =
   T(h: h)
-proc create*(T: type QFontMetrics, param1: gen_qfont.QFont): QFontMetrics =
+proc create*(T: type gen_qfontmetrics_types.QFontMetrics, param1: gen_qfont.QFont): gen_qfontmetrics_types.QFontMetrics =
 
-  QFontMetrics.init(fcQFontMetrics_new(param1.h))
-proc create*(T: type QFontMetrics, font: gen_qfont.QFont, pd: gen_qpaintdevice.QPaintDevice): QFontMetrics =
+  gen_qfontmetrics_types.QFontMetrics.init(fcQFontMetrics_new(param1.h))
+proc create*(T: type gen_qfontmetrics_types.QFontMetrics, font: gen_qfont.QFont, pd: gen_qpaintdevice.QPaintDevice): gen_qfontmetrics_types.QFontMetrics =
 
-  QFontMetrics.init(fcQFontMetrics_new2(font.h, pd.h))
-proc create2*(T: type QFontMetrics, param1: QFontMetrics): QFontMetrics =
+  gen_qfontmetrics_types.QFontMetrics.init(fcQFontMetrics_new2(font.h, pd.h))
+proc create2*(T: type gen_qfontmetrics_types.QFontMetrics, param1: gen_qfontmetrics_types.QFontMetrics): gen_qfontmetrics_types.QFontMetrics =
 
-  QFontMetrics.init(fcQFontMetrics_new3(param1.h))
-proc operatorAssign*(self: QFontMetrics, param1: QFontMetrics): void =
+  gen_qfontmetrics_types.QFontMetrics.init(fcQFontMetrics_new3(param1.h))
+proc operatorAssign*(self: gen_qfontmetrics_types.QFontMetrics, param1: gen_qfontmetrics_types.QFontMetrics): void =
 
   fcQFontMetrics_operatorAssign(self.h, param1.h)
 
-proc swap*(self: QFontMetrics, other: QFontMetrics): void =
+proc swap*(self: gen_qfontmetrics_types.QFontMetrics, other: gen_qfontmetrics_types.QFontMetrics): void =
 
   fcQFontMetrics_swap(self.h, other.h)
 
-proc ascent*(self: QFontMetrics, ): cint =
+proc ascent*(self: gen_qfontmetrics_types.QFontMetrics, ): cint =
 
   fcQFontMetrics_ascent(self.h)
 
-proc capHeight*(self: QFontMetrics, ): cint =
+proc capHeight*(self: gen_qfontmetrics_types.QFontMetrics, ): cint =
 
   fcQFontMetrics_capHeight(self.h)
 
-proc descent*(self: QFontMetrics, ): cint =
+proc descent*(self: gen_qfontmetrics_types.QFontMetrics, ): cint =
 
   fcQFontMetrics_descent(self.h)
 
-proc height*(self: QFontMetrics, ): cint =
+proc height*(self: gen_qfontmetrics_types.QFontMetrics, ): cint =
 
   fcQFontMetrics_height(self.h)
 
-proc leading*(self: QFontMetrics, ): cint =
+proc leading*(self: gen_qfontmetrics_types.QFontMetrics, ): cint =
 
   fcQFontMetrics_leading(self.h)
 
-proc lineSpacing*(self: QFontMetrics, ): cint =
+proc lineSpacing*(self: gen_qfontmetrics_types.QFontMetrics, ): cint =
 
   fcQFontMetrics_lineSpacing(self.h)
 
-proc minLeftBearing*(self: QFontMetrics, ): cint =
+proc minLeftBearing*(self: gen_qfontmetrics_types.QFontMetrics, ): cint =
 
   fcQFontMetrics_minLeftBearing(self.h)
 
-proc minRightBearing*(self: QFontMetrics, ): cint =
+proc minRightBearing*(self: gen_qfontmetrics_types.QFontMetrics, ): cint =
 
   fcQFontMetrics_minRightBearing(self.h)
 
-proc maxWidth*(self: QFontMetrics, ): cint =
+proc maxWidth*(self: gen_qfontmetrics_types.QFontMetrics, ): cint =
 
   fcQFontMetrics_maxWidth(self.h)
 
-proc xHeight*(self: QFontMetrics, ): cint =
+proc xHeight*(self: gen_qfontmetrics_types.QFontMetrics, ): cint =
 
   fcQFontMetrics_xHeight(self.h)
 
-proc averageCharWidth*(self: QFontMetrics, ): cint =
+proc averageCharWidth*(self: gen_qfontmetrics_types.QFontMetrics, ): cint =
 
   fcQFontMetrics_averageCharWidth(self.h)
 
-proc inFont*(self: QFontMetrics, param1: gen_qchar.QChar): bool =
+proc inFont*(self: gen_qfontmetrics_types.QFontMetrics, param1: gen_qchar.QChar): bool =
 
   fcQFontMetrics_inFont(self.h, param1.h)
 
-proc inFontUcs4*(self: QFontMetrics, ucs4: cuint): bool =
+proc inFontUcs4*(self: gen_qfontmetrics_types.QFontMetrics, ucs4: cuint): bool =
 
   fcQFontMetrics_inFontUcs4(self.h, ucs4)
 
-proc leftBearing*(self: QFontMetrics, param1: gen_qchar.QChar): cint =
+proc leftBearing*(self: gen_qfontmetrics_types.QFontMetrics, param1: gen_qchar.QChar): cint =
 
   fcQFontMetrics_leftBearing(self.h, param1.h)
 
-proc rightBearing*(self: QFontMetrics, param1: gen_qchar.QChar): cint =
+proc rightBearing*(self: gen_qfontmetrics_types.QFontMetrics, param1: gen_qchar.QChar): cint =
 
   fcQFontMetrics_rightBearing(self.h, param1.h)
 
-proc width*(self: QFontMetrics, param1: string): cint =
+proc width*(self: gen_qfontmetrics_types.QFontMetrics, param1: string): cint =
 
   fcQFontMetrics_width(self.h, struct_miqt_string(data: param1, len: csize_t(len(param1))))
 
-proc width2*(self: QFontMetrics, param1: string, len: cint, flags: cint): cint =
+proc width2*(self: gen_qfontmetrics_types.QFontMetrics, param1: string, len: cint, flags: cint): cint =
 
   fcQFontMetrics_width2(self.h, struct_miqt_string(data: param1, len: csize_t(len(param1))), len, flags)
 
-proc widthWithQChar*(self: QFontMetrics, param1: gen_qchar.QChar): cint =
+proc widthWithQChar*(self: gen_qfontmetrics_types.QFontMetrics, param1: gen_qchar.QChar): cint =
 
   fcQFontMetrics_widthWithQChar(self.h, param1.h)
 
-proc horizontalAdvance*(self: QFontMetrics, param1: string): cint =
+proc horizontalAdvance*(self: gen_qfontmetrics_types.QFontMetrics, param1: string): cint =
 
   fcQFontMetrics_horizontalAdvance(self.h, struct_miqt_string(data: param1, len: csize_t(len(param1))))
 
-proc horizontalAdvanceWithQChar*(self: QFontMetrics, param1: gen_qchar.QChar): cint =
+proc horizontalAdvanceWithQChar*(self: gen_qfontmetrics_types.QFontMetrics, param1: gen_qchar.QChar): cint =
 
   fcQFontMetrics_horizontalAdvanceWithQChar(self.h, param1.h)
 
-proc charWidth*(self: QFontMetrics, str: string, pos: cint): cint =
+proc charWidth*(self: gen_qfontmetrics_types.QFontMetrics, str: string, pos: cint): cint =
 
   fcQFontMetrics_charWidth(self.h, struct_miqt_string(data: str, len: csize_t(len(str))), pos)
 
-proc boundingRect*(self: QFontMetrics, param1: gen_qchar.QChar): gen_qrect.QRect =
+proc boundingRect*(self: gen_qfontmetrics_types.QFontMetrics, param1: gen_qchar.QChar): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fcQFontMetrics_boundingRect(self.h, param1.h))
 
-proc boundingRectWithText*(self: QFontMetrics, text: string): gen_qrect.QRect =
+proc boundingRectWithText*(self: gen_qfontmetrics_types.QFontMetrics, text: string): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fcQFontMetrics_boundingRectWithText(self.h, struct_miqt_string(data: text, len: csize_t(len(text)))))
 
-proc boundingRect2*(self: QFontMetrics, r: gen_qrect.QRect, flags: cint, text: string): gen_qrect.QRect =
+proc boundingRect2*(self: gen_qfontmetrics_types.QFontMetrics, r: gen_qrect.QRect, flags: cint, text: string): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fcQFontMetrics_boundingRect2(self.h, r.h, flags, struct_miqt_string(data: text, len: csize_t(len(text)))))
 
-proc boundingRect3*(self: QFontMetrics, x: cint, y: cint, w: cint, h: cint, flags: cint, text: string): gen_qrect.QRect =
+proc boundingRect3*(self: gen_qfontmetrics_types.QFontMetrics, x: cint, y: cint, w: cint, h: cint, flags: cint, text: string): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fcQFontMetrics_boundingRect3(self.h, x, y, w, h, flags, struct_miqt_string(data: text, len: csize_t(len(text)))))
 
-proc size*(self: QFontMetrics, flags: cint, str: string): gen_qsize.QSize =
+proc size*(self: gen_qfontmetrics_types.QFontMetrics, flags: cint, str: string): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQFontMetrics_size(self.h, flags, struct_miqt_string(data: str, len: csize_t(len(str)))))
 
-proc tightBoundingRect*(self: QFontMetrics, text: string): gen_qrect.QRect =
+proc tightBoundingRect*(self: gen_qfontmetrics_types.QFontMetrics, text: string): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fcQFontMetrics_tightBoundingRect(self.h, struct_miqt_string(data: text, len: csize_t(len(text)))))
 
-proc elidedText*(self: QFontMetrics, text: string, mode: gen_qnamespace.TextElideMode, width: cint): string =
+proc elidedText*(self: gen_qfontmetrics_types.QFontMetrics, text: string, mode: cint, width: cint): string =
 
   let v_ms = fcQFontMetrics_elidedText(self.h, struct_miqt_string(data: text, len: csize_t(len(text))), cint(mode), width)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc underlinePos*(self: QFontMetrics, ): cint =
+proc underlinePos*(self: gen_qfontmetrics_types.QFontMetrics, ): cint =
 
   fcQFontMetrics_underlinePos(self.h)
 
-proc overlinePos*(self: QFontMetrics, ): cint =
+proc overlinePos*(self: gen_qfontmetrics_types.QFontMetrics, ): cint =
 
   fcQFontMetrics_overlinePos(self.h)
 
-proc strikeOutPos*(self: QFontMetrics, ): cint =
+proc strikeOutPos*(self: gen_qfontmetrics_types.QFontMetrics, ): cint =
 
   fcQFontMetrics_strikeOutPos(self.h)
 
-proc lineWidth*(self: QFontMetrics, ): cint =
+proc lineWidth*(self: gen_qfontmetrics_types.QFontMetrics, ): cint =
 
   fcQFontMetrics_lineWidth(self.h)
 
-proc fontDpi*(self: QFontMetrics, ): float64 =
+proc fontDpi*(self: gen_qfontmetrics_types.QFontMetrics, ): float64 =
 
   fcQFontMetrics_fontDpi(self.h)
 
-proc operatorEqual*(self: QFontMetrics, other: QFontMetrics): bool =
+proc operatorEqual*(self: gen_qfontmetrics_types.QFontMetrics, other: gen_qfontmetrics_types.QFontMetrics): bool =
 
   fcQFontMetrics_operatorEqual(self.h, other.h)
 
-proc operatorNotEqual*(self: QFontMetrics, other: QFontMetrics): bool =
+proc operatorNotEqual*(self: gen_qfontmetrics_types.QFontMetrics, other: gen_qfontmetrics_types.QFontMetrics): bool =
 
   fcQFontMetrics_operatorNotEqual(self.h, other.h)
 
-proc width22*(self: QFontMetrics, param1: string, len: cint): cint =
+proc width22*(self: gen_qfontmetrics_types.QFontMetrics, param1: string, len: cint): cint =
 
   fcQFontMetrics_width22(self.h, struct_miqt_string(data: param1, len: csize_t(len(param1))), len)
 
-proc horizontalAdvance2*(self: QFontMetrics, param1: string, len: cint): cint =
+proc horizontalAdvance2*(self: gen_qfontmetrics_types.QFontMetrics, param1: string, len: cint): cint =
 
   fcQFontMetrics_horizontalAdvance2(self.h, struct_miqt_string(data: param1, len: csize_t(len(param1))), len)
 
-proc boundingRect4*(self: QFontMetrics, r: gen_qrect.QRect, flags: cint, text: string, tabstops: cint): gen_qrect.QRect =
+proc boundingRect4*(self: gen_qfontmetrics_types.QFontMetrics, r: gen_qrect.QRect, flags: cint, text: string, tabstops: cint): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fcQFontMetrics_boundingRect4(self.h, r.h, flags, struct_miqt_string(data: text, len: csize_t(len(text))), tabstops))
 
-proc boundingRect5*(self: QFontMetrics, r: gen_qrect.QRect, flags: cint, text: string, tabstops: cint, tabarray: ptr cint): gen_qrect.QRect =
+proc boundingRect5*(self: gen_qfontmetrics_types.QFontMetrics, r: gen_qrect.QRect, flags: cint, text: string, tabstops: cint, tabarray: ptr cint): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fcQFontMetrics_boundingRect5(self.h, r.h, flags, struct_miqt_string(data: text, len: csize_t(len(text))), tabstops, tabarray))
 
-proc boundingRect7*(self: QFontMetrics, x: cint, y: cint, w: cint, h: cint, flags: cint, text: string, tabstops: cint): gen_qrect.QRect =
+proc boundingRect7*(self: gen_qfontmetrics_types.QFontMetrics, x: cint, y: cint, w: cint, h: cint, flags: cint, text: string, tabstops: cint): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fcQFontMetrics_boundingRect7(self.h, x, y, w, h, flags, struct_miqt_string(data: text, len: csize_t(len(text))), tabstops))
 
-proc boundingRect8*(self: QFontMetrics, x: cint, y: cint, w: cint, h: cint, flags: cint, text: string, tabstops: cint, tabarray: ptr cint): gen_qrect.QRect =
+proc boundingRect8*(self: gen_qfontmetrics_types.QFontMetrics, x: cint, y: cint, w: cint, h: cint, flags: cint, text: string, tabstops: cint, tabarray: ptr cint): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fcQFontMetrics_boundingRect8(self.h, x, y, w, h, flags, struct_miqt_string(data: text, len: csize_t(len(text))), tabstops, tabarray))
 
-proc size3*(self: QFontMetrics, flags: cint, str: string, tabstops: cint): gen_qsize.QSize =
+proc size3*(self: gen_qfontmetrics_types.QFontMetrics, flags: cint, str: string, tabstops: cint): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQFontMetrics_size3(self.h, flags, struct_miqt_string(data: str, len: csize_t(len(str))), tabstops))
 
-proc size4*(self: QFontMetrics, flags: cint, str: string, tabstops: cint, tabarray: ptr cint): gen_qsize.QSize =
+proc size4*(self: gen_qfontmetrics_types.QFontMetrics, flags: cint, str: string, tabstops: cint, tabarray: ptr cint): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQFontMetrics_size4(self.h, flags, struct_miqt_string(data: str, len: csize_t(len(str))), tabstops, tabarray))
 
-proc elidedText4*(self: QFontMetrics, text: string, mode: gen_qnamespace.TextElideMode, width: cint, flags: cint): string =
+proc elidedText4*(self: gen_qfontmetrics_types.QFontMetrics, text: string, mode: cint, width: cint, flags: cint): string =
 
   let v_ms = fcQFontMetrics_elidedText4(self.h, struct_miqt_string(data: text, len: csize_t(len(text))), cint(mode), width, flags)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc delete*(self: QFontMetrics) =
+proc delete*(self: gen_qfontmetrics_types.QFontMetrics) =
   fcQFontMetrics_delete(self.h)
 
-func init*(T: type QFontMetricsF, h: ptr cQFontMetricsF): QFontMetricsF =
+func init*(T: type gen_qfontmetrics_types.QFontMetricsF, h: ptr cQFontMetricsF): gen_qfontmetrics_types.QFontMetricsF =
   T(h: h)
-proc create*(T: type QFontMetricsF, font: gen_qfont.QFont): QFontMetricsF =
+proc create*(T: type gen_qfontmetrics_types.QFontMetricsF, font: gen_qfont.QFont): gen_qfontmetrics_types.QFontMetricsF =
 
-  QFontMetricsF.init(fcQFontMetricsF_new(font.h))
-proc create*(T: type QFontMetricsF, font: gen_qfont.QFont, pd: gen_qpaintdevice.QPaintDevice): QFontMetricsF =
+  gen_qfontmetrics_types.QFontMetricsF.init(fcQFontMetricsF_new(font.h))
+proc create*(T: type gen_qfontmetrics_types.QFontMetricsF, font: gen_qfont.QFont, pd: gen_qpaintdevice.QPaintDevice): gen_qfontmetrics_types.QFontMetricsF =
 
-  QFontMetricsF.init(fcQFontMetricsF_new2(font.h, pd.h))
-proc create2*(T: type QFontMetricsF, param1: QFontMetrics): QFontMetricsF =
+  gen_qfontmetrics_types.QFontMetricsF.init(fcQFontMetricsF_new2(font.h, pd.h))
+proc create2*(T: type gen_qfontmetrics_types.QFontMetricsF, param1: gen_qfontmetrics_types.QFontMetrics): gen_qfontmetrics_types.QFontMetricsF =
 
-  QFontMetricsF.init(fcQFontMetricsF_new3(param1.h))
-proc create2*(T: type QFontMetricsF, param1: QFontMetricsF): QFontMetricsF =
+  gen_qfontmetrics_types.QFontMetricsF.init(fcQFontMetricsF_new3(param1.h))
+proc create2*(T: type gen_qfontmetrics_types.QFontMetricsF, param1: gen_qfontmetrics_types.QFontMetricsF): gen_qfontmetrics_types.QFontMetricsF =
 
-  QFontMetricsF.init(fcQFontMetricsF_new4(param1.h))
-proc operatorAssign*(self: QFontMetricsF, param1: QFontMetricsF): void =
+  gen_qfontmetrics_types.QFontMetricsF.init(fcQFontMetricsF_new4(param1.h))
+proc operatorAssign*(self: gen_qfontmetrics_types.QFontMetricsF, param1: gen_qfontmetrics_types.QFontMetricsF): void =
 
   fcQFontMetricsF_operatorAssign(self.h, param1.h)
 
-proc operatorAssignWithQFontMetrics*(self: QFontMetricsF, param1: QFontMetrics): void =
+proc operatorAssignWithQFontMetrics*(self: gen_qfontmetrics_types.QFontMetricsF, param1: gen_qfontmetrics_types.QFontMetrics): void =
 
   fcQFontMetricsF_operatorAssignWithQFontMetrics(self.h, param1.h)
 
-proc swap*(self: QFontMetricsF, other: QFontMetricsF): void =
+proc swap*(self: gen_qfontmetrics_types.QFontMetricsF, other: gen_qfontmetrics_types.QFontMetricsF): void =
 
   fcQFontMetricsF_swap(self.h, other.h)
 
-proc ascent*(self: QFontMetricsF, ): float64 =
+proc ascent*(self: gen_qfontmetrics_types.QFontMetricsF, ): float64 =
 
   fcQFontMetricsF_ascent(self.h)
 
-proc capHeight*(self: QFontMetricsF, ): float64 =
+proc capHeight*(self: gen_qfontmetrics_types.QFontMetricsF, ): float64 =
 
   fcQFontMetricsF_capHeight(self.h)
 
-proc descent*(self: QFontMetricsF, ): float64 =
+proc descent*(self: gen_qfontmetrics_types.QFontMetricsF, ): float64 =
 
   fcQFontMetricsF_descent(self.h)
 
-proc height*(self: QFontMetricsF, ): float64 =
+proc height*(self: gen_qfontmetrics_types.QFontMetricsF, ): float64 =
 
   fcQFontMetricsF_height(self.h)
 
-proc leading*(self: QFontMetricsF, ): float64 =
+proc leading*(self: gen_qfontmetrics_types.QFontMetricsF, ): float64 =
 
   fcQFontMetricsF_leading(self.h)
 
-proc lineSpacing*(self: QFontMetricsF, ): float64 =
+proc lineSpacing*(self: gen_qfontmetrics_types.QFontMetricsF, ): float64 =
 
   fcQFontMetricsF_lineSpacing(self.h)
 
-proc minLeftBearing*(self: QFontMetricsF, ): float64 =
+proc minLeftBearing*(self: gen_qfontmetrics_types.QFontMetricsF, ): float64 =
 
   fcQFontMetricsF_minLeftBearing(self.h)
 
-proc minRightBearing*(self: QFontMetricsF, ): float64 =
+proc minRightBearing*(self: gen_qfontmetrics_types.QFontMetricsF, ): float64 =
 
   fcQFontMetricsF_minRightBearing(self.h)
 
-proc maxWidth*(self: QFontMetricsF, ): float64 =
+proc maxWidth*(self: gen_qfontmetrics_types.QFontMetricsF, ): float64 =
 
   fcQFontMetricsF_maxWidth(self.h)
 
-proc xHeight*(self: QFontMetricsF, ): float64 =
+proc xHeight*(self: gen_qfontmetrics_types.QFontMetricsF, ): float64 =
 
   fcQFontMetricsF_xHeight(self.h)
 
-proc averageCharWidth*(self: QFontMetricsF, ): float64 =
+proc averageCharWidth*(self: gen_qfontmetrics_types.QFontMetricsF, ): float64 =
 
   fcQFontMetricsF_averageCharWidth(self.h)
 
-proc inFont*(self: QFontMetricsF, param1: gen_qchar.QChar): bool =
+proc inFont*(self: gen_qfontmetrics_types.QFontMetricsF, param1: gen_qchar.QChar): bool =
 
   fcQFontMetricsF_inFont(self.h, param1.h)
 
-proc inFontUcs4*(self: QFontMetricsF, ucs4: cuint): bool =
+proc inFontUcs4*(self: gen_qfontmetrics_types.QFontMetricsF, ucs4: cuint): bool =
 
   fcQFontMetricsF_inFontUcs4(self.h, ucs4)
 
-proc leftBearing*(self: QFontMetricsF, param1: gen_qchar.QChar): float64 =
+proc leftBearing*(self: gen_qfontmetrics_types.QFontMetricsF, param1: gen_qchar.QChar): float64 =
 
   fcQFontMetricsF_leftBearing(self.h, param1.h)
 
-proc rightBearing*(self: QFontMetricsF, param1: gen_qchar.QChar): float64 =
+proc rightBearing*(self: gen_qfontmetrics_types.QFontMetricsF, param1: gen_qchar.QChar): float64 =
 
   fcQFontMetricsF_rightBearing(self.h, param1.h)
 
-proc width*(self: QFontMetricsF, string: string): float64 =
+proc width*(self: gen_qfontmetrics_types.QFontMetricsF, string: string): float64 =
 
   fcQFontMetricsF_width(self.h, struct_miqt_string(data: string, len: csize_t(len(string))))
 
-proc widthWithQChar*(self: QFontMetricsF, param1: gen_qchar.QChar): float64 =
+proc widthWithQChar*(self: gen_qfontmetrics_types.QFontMetricsF, param1: gen_qchar.QChar): float64 =
 
   fcQFontMetricsF_widthWithQChar(self.h, param1.h)
 
-proc horizontalAdvance*(self: QFontMetricsF, string: string): float64 =
+proc horizontalAdvance*(self: gen_qfontmetrics_types.QFontMetricsF, string: string): float64 =
 
   fcQFontMetricsF_horizontalAdvance(self.h, struct_miqt_string(data: string, len: csize_t(len(string))))
 
-proc horizontalAdvanceWithQChar*(self: QFontMetricsF, param1: gen_qchar.QChar): float64 =
+proc horizontalAdvanceWithQChar*(self: gen_qfontmetrics_types.QFontMetricsF, param1: gen_qchar.QChar): float64 =
 
   fcQFontMetricsF_horizontalAdvanceWithQChar(self.h, param1.h)
 
-proc boundingRect*(self: QFontMetricsF, string: string): gen_qrect.QRectF =
+proc boundingRect*(self: gen_qfontmetrics_types.QFontMetricsF, string: string): gen_qrect.QRectF =
 
   gen_qrect.QRectF(h: fcQFontMetricsF_boundingRect(self.h, struct_miqt_string(data: string, len: csize_t(len(string)))))
 
-proc boundingRectWithQChar*(self: QFontMetricsF, param1: gen_qchar.QChar): gen_qrect.QRectF =
+proc boundingRectWithQChar*(self: gen_qfontmetrics_types.QFontMetricsF, param1: gen_qchar.QChar): gen_qrect.QRectF =
 
   gen_qrect.QRectF(h: fcQFontMetricsF_boundingRectWithQChar(self.h, param1.h))
 
-proc boundingRect2*(self: QFontMetricsF, r: gen_qrect.QRectF, flags: cint, string: string): gen_qrect.QRectF =
+proc boundingRect2*(self: gen_qfontmetrics_types.QFontMetricsF, r: gen_qrect.QRectF, flags: cint, string: string): gen_qrect.QRectF =
 
   gen_qrect.QRectF(h: fcQFontMetricsF_boundingRect2(self.h, r.h, flags, struct_miqt_string(data: string, len: csize_t(len(string)))))
 
-proc size*(self: QFontMetricsF, flags: cint, str: string): gen_qsize.QSizeF =
+proc size*(self: gen_qfontmetrics_types.QFontMetricsF, flags: cint, str: string): gen_qsize.QSizeF =
 
   gen_qsize.QSizeF(h: fcQFontMetricsF_size(self.h, flags, struct_miqt_string(data: str, len: csize_t(len(str)))))
 
-proc tightBoundingRect*(self: QFontMetricsF, text: string): gen_qrect.QRectF =
+proc tightBoundingRect*(self: gen_qfontmetrics_types.QFontMetricsF, text: string): gen_qrect.QRectF =
 
   gen_qrect.QRectF(h: fcQFontMetricsF_tightBoundingRect(self.h, struct_miqt_string(data: text, len: csize_t(len(text)))))
 
-proc elidedText*(self: QFontMetricsF, text: string, mode: gen_qnamespace.TextElideMode, width: float64): string =
+proc elidedText*(self: gen_qfontmetrics_types.QFontMetricsF, text: string, mode: cint, width: float64): string =
 
   let v_ms = fcQFontMetricsF_elidedText(self.h, struct_miqt_string(data: text, len: csize_t(len(text))), cint(mode), width)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc underlinePos*(self: QFontMetricsF, ): float64 =
+proc underlinePos*(self: gen_qfontmetrics_types.QFontMetricsF, ): float64 =
 
   fcQFontMetricsF_underlinePos(self.h)
 
-proc overlinePos*(self: QFontMetricsF, ): float64 =
+proc overlinePos*(self: gen_qfontmetrics_types.QFontMetricsF, ): float64 =
 
   fcQFontMetricsF_overlinePos(self.h)
 
-proc strikeOutPos*(self: QFontMetricsF, ): float64 =
+proc strikeOutPos*(self: gen_qfontmetrics_types.QFontMetricsF, ): float64 =
 
   fcQFontMetricsF_strikeOutPos(self.h)
 
-proc lineWidth*(self: QFontMetricsF, ): float64 =
+proc lineWidth*(self: gen_qfontmetrics_types.QFontMetricsF, ): float64 =
 
   fcQFontMetricsF_lineWidth(self.h)
 
-proc fontDpi*(self: QFontMetricsF, ): float64 =
+proc fontDpi*(self: gen_qfontmetrics_types.QFontMetricsF, ): float64 =
 
   fcQFontMetricsF_fontDpi(self.h)
 
-proc operatorEqual*(self: QFontMetricsF, other: QFontMetricsF): bool =
+proc operatorEqual*(self: gen_qfontmetrics_types.QFontMetricsF, other: gen_qfontmetrics_types.QFontMetricsF): bool =
 
   fcQFontMetricsF_operatorEqual(self.h, other.h)
 
-proc operatorNotEqual*(self: QFontMetricsF, other: QFontMetricsF): bool =
+proc operatorNotEqual*(self: gen_qfontmetrics_types.QFontMetricsF, other: gen_qfontmetrics_types.QFontMetricsF): bool =
 
   fcQFontMetricsF_operatorNotEqual(self.h, other.h)
 
-proc horizontalAdvance2*(self: QFontMetricsF, string: string, length: cint): float64 =
+proc horizontalAdvance2*(self: gen_qfontmetrics_types.QFontMetricsF, string: string, length: cint): float64 =
 
   fcQFontMetricsF_horizontalAdvance2(self.h, struct_miqt_string(data: string, len: csize_t(len(string))), length)
 
-proc boundingRect4*(self: QFontMetricsF, r: gen_qrect.QRectF, flags: cint, string: string, tabstops: cint): gen_qrect.QRectF =
+proc boundingRect4*(self: gen_qfontmetrics_types.QFontMetricsF, r: gen_qrect.QRectF, flags: cint, string: string, tabstops: cint): gen_qrect.QRectF =
 
   gen_qrect.QRectF(h: fcQFontMetricsF_boundingRect4(self.h, r.h, flags, struct_miqt_string(data: string, len: csize_t(len(string))), tabstops))
 
-proc boundingRect5*(self: QFontMetricsF, r: gen_qrect.QRectF, flags: cint, string: string, tabstops: cint, tabarray: ptr cint): gen_qrect.QRectF =
+proc boundingRect5*(self: gen_qfontmetrics_types.QFontMetricsF, r: gen_qrect.QRectF, flags: cint, string: string, tabstops: cint, tabarray: ptr cint): gen_qrect.QRectF =
 
   gen_qrect.QRectF(h: fcQFontMetricsF_boundingRect5(self.h, r.h, flags, struct_miqt_string(data: string, len: csize_t(len(string))), tabstops, tabarray))
 
-proc size3*(self: QFontMetricsF, flags: cint, str: string, tabstops: cint): gen_qsize.QSizeF =
+proc size3*(self: gen_qfontmetrics_types.QFontMetricsF, flags: cint, str: string, tabstops: cint): gen_qsize.QSizeF =
 
   gen_qsize.QSizeF(h: fcQFontMetricsF_size3(self.h, flags, struct_miqt_string(data: str, len: csize_t(len(str))), tabstops))
 
-proc size4*(self: QFontMetricsF, flags: cint, str: string, tabstops: cint, tabarray: ptr cint): gen_qsize.QSizeF =
+proc size4*(self: gen_qfontmetrics_types.QFontMetricsF, flags: cint, str: string, tabstops: cint, tabarray: ptr cint): gen_qsize.QSizeF =
 
   gen_qsize.QSizeF(h: fcQFontMetricsF_size4(self.h, flags, struct_miqt_string(data: str, len: csize_t(len(str))), tabstops, tabarray))
 
-proc elidedText4*(self: QFontMetricsF, text: string, mode: gen_qnamespace.TextElideMode, width: float64, flags: cint): string =
+proc elidedText4*(self: gen_qfontmetrics_types.QFontMetricsF, text: string, mode: cint, width: float64, flags: cint): string =
 
   let v_ms = fcQFontMetricsF_elidedText4(self.h, struct_miqt_string(data: text, len: csize_t(len(text))), cint(mode), width, flags)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc delete*(self: QFontMetricsF) =
+proc delete*(self: gen_qfontmetrics_types.QFontMetricsF) =
   fcQFontMetricsF_delete(self.h)

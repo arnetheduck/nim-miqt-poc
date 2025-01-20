@@ -93,353 +93,293 @@ proc fcQWidgetAction_staticMetaObject(): pointer {.importc: "QWidgetAction_stati
 proc fcQWidgetAction_delete(self: pointer) {.importc: "QWidgetAction_delete".}
 
 
-func init*(T: type QWidgetAction, h: ptr cQWidgetAction): QWidgetAction =
+func init*(T: type gen_qwidgetaction_types.QWidgetAction, h: ptr cQWidgetAction): gen_qwidgetaction_types.QWidgetAction =
   T(h: h)
-proc create*(T: type QWidgetAction, parent: gen_qobject.QObject): QWidgetAction =
+proc create*(T: type gen_qwidgetaction_types.QWidgetAction, parent: gen_qobject.QObject): gen_qwidgetaction_types.QWidgetAction =
 
-  QWidgetAction.init(fcQWidgetAction_new(parent.h))
-proc metaObject*(self: QWidgetAction, ): gen_qobjectdefs.QMetaObject =
+  gen_qwidgetaction_types.QWidgetAction.init(fcQWidgetAction_new(parent.h))
+proc metaObject*(self: gen_qwidgetaction_types.QWidgetAction, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQWidgetAction_metaObject(self.h))
 
-proc metacast*(self: QWidgetAction, param1: cstring): pointer =
+proc metacast*(self: gen_qwidgetaction_types.QWidgetAction, param1: cstring): pointer =
 
   fcQWidgetAction_metacast(self.h, param1)
 
-proc metacall*(self: QWidgetAction, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qwidgetaction_types.QWidgetAction, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQWidgetAction_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QWidgetAction, s: cstring): string =
+proc tr*(_: type gen_qwidgetaction_types.QWidgetAction, s: cstring): string =
 
   let v_ms = fcQWidgetAction_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setDefaultWidget*(self: QWidgetAction, w: gen_qwidget.QWidget): void =
+proc setDefaultWidget*(self: gen_qwidgetaction_types.QWidgetAction, w: gen_qwidget.QWidget): void =
 
   fcQWidgetAction_setDefaultWidget(self.h, w.h)
 
-proc defaultWidget*(self: QWidgetAction, ): gen_qwidget.QWidget =
+proc defaultWidget*(self: gen_qwidgetaction_types.QWidgetAction, ): gen_qwidget.QWidget =
 
   gen_qwidget.QWidget(h: fcQWidgetAction_defaultWidget(self.h))
 
-proc requestWidget*(self: QWidgetAction, parent: gen_qwidget.QWidget): gen_qwidget.QWidget =
+proc requestWidget*(self: gen_qwidgetaction_types.QWidgetAction, parent: gen_qwidget.QWidget): gen_qwidget.QWidget =
 
   gen_qwidget.QWidget(h: fcQWidgetAction_requestWidget(self.h, parent.h))
 
-proc releaseWidget*(self: QWidgetAction, widget: gen_qwidget.QWidget): void =
+proc releaseWidget*(self: gen_qwidgetaction_types.QWidgetAction, widget: gen_qwidget.QWidget): void =
 
   fcQWidgetAction_releaseWidget(self.h, widget.h)
 
-proc tr2*(_: type QWidgetAction, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qwidgetaction_types.QWidgetAction, s: cstring, c: cstring): string =
 
   let v_ms = fcQWidgetAction_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QWidgetAction, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qwidgetaction_types.QWidgetAction, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQWidgetAction_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QWidgetAction, ): gen_qobjectdefs.QMetaObject =
-
+proc QWidgetActionmetaObject*(self: gen_qwidgetaction_types.QWidgetAction, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQWidgetAction_virtualbase_metaObject(self.h))
 
-type QWidgetActionmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QWidgetAction, slot: proc(super: QWidgetActionmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QWidgetActionmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qwidgetaction_types.QWidgetAction, slot: QWidgetActionmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QWidgetActionmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QWidgetActionmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWidgetAction_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWidgetAction_metaObject(self: ptr cQWidgetAction, slot: int): pointer {.exportc: "miqt_exec_callback_QWidgetAction_metaObject ".} =
-  type Cb = proc(super: QWidgetActionmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QWidgetAction(h: self), )
+  var nimfunc = cast[ptr QWidgetActionmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QWidgetAction, param1: cstring): pointer =
-
+proc QWidgetActionmetacast*(self: gen_qwidgetaction_types.QWidgetAction, param1: cstring): pointer =
 
   fQWidgetAction_virtualbase_metacast(self.h, param1)
 
-type QWidgetActionmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QWidgetAction, slot: proc(super: QWidgetActionmetacastBase, param1: cstring): pointer) =
+type QWidgetActionmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qwidgetaction_types.QWidgetAction, slot: QWidgetActionmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QWidgetActionmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QWidgetActionmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWidgetAction_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWidgetAction_metacast(self: ptr cQWidgetAction, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QWidgetAction_metacast ".} =
-  type Cb = proc(super: QWidgetActionmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QWidgetAction(h: self), param1)
+  var nimfunc = cast[ptr QWidgetActionmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QWidgetAction, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QWidgetActionmetacall*(self: gen_qwidgetaction_types.QWidgetAction, param1: cint, param2: cint, param3: pointer): cint =
 
   fQWidgetAction_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QWidgetActionmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QWidgetAction, slot: proc(super: QWidgetActionmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QWidgetActionmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qwidgetaction_types.QWidgetAction, slot: QWidgetActionmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QWidgetActionmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QWidgetActionmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWidgetAction_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWidgetAction_metacall(self: ptr cQWidgetAction, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QWidgetAction_metacall ".} =
-  type Cb = proc(super: QWidgetActionmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QWidgetAction(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QWidgetActionmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_event(self: QWidgetAction, param1: gen_qcoreevent.QEvent): bool =
-
+proc QWidgetActionevent*(self: gen_qwidgetaction_types.QWidgetAction, param1: gen_qcoreevent.QEvent): bool =
 
   fQWidgetAction_virtualbase_event(self.h, param1.h)
 
-type QWidgetActioneventBase* = proc(param1: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QWidgetAction, slot: proc(super: QWidgetActioneventBase, param1: gen_qcoreevent.QEvent): bool) =
+type QWidgetActioneventProc* = proc(param1: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qwidgetaction_types.QWidgetAction, slot: QWidgetActioneventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWidgetActioneventBase, param1: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QWidgetActioneventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWidgetAction_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWidgetAction_event(self: ptr cQWidgetAction, slot: int, param1: pointer): bool {.exportc: "miqt_exec_callback_QWidgetAction_event ".} =
-  type Cb = proc(super: QWidgetActioneventBase, param1: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QWidgetAction(h: self), param1)
+  var nimfunc = cast[ptr QWidgetActioneventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QWidgetAction, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool =
-
+proc QWidgetActioneventFilter*(self: gen_qwidgetaction_types.QWidgetAction, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool =
 
   fQWidgetAction_virtualbase_eventFilter(self.h, param1.h, param2.h)
 
-type QWidgetActioneventFilterBase* = proc(param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QWidgetAction, slot: proc(super: QWidgetActioneventFilterBase, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool) =
+type QWidgetActioneventFilterProc* = proc(param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qwidgetaction_types.QWidgetAction, slot: QWidgetActioneventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QWidgetActioneventFilterBase, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QWidgetActioneventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWidgetAction_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWidgetAction_eventFilter(self: ptr cQWidgetAction, slot: int, param1: pointer, param2: pointer): bool {.exportc: "miqt_exec_callback_QWidgetAction_eventFilter ".} =
-  type Cb = proc(super: QWidgetActioneventFilterBase, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QWidgetAction(h: self), param1, param2)
+  var nimfunc = cast[ptr QWidgetActioneventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: param1)
 
   let slotval2 = gen_qcoreevent.QEvent(h: param2)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_createWidget(self: QWidgetAction, parent: gen_qwidget.QWidget): gen_qwidget.QWidget =
-
+proc QWidgetActioncreateWidget*(self: gen_qwidgetaction_types.QWidgetAction, parent: gen_qwidget.QWidget): gen_qwidget.QWidget =
 
   gen_qwidget.QWidget(h: fQWidgetAction_virtualbase_createWidget(self.h, parent.h))
 
-type QWidgetActioncreateWidgetBase* = proc(parent: gen_qwidget.QWidget): gen_qwidget.QWidget
-proc oncreateWidget*(self: QWidgetAction, slot: proc(super: QWidgetActioncreateWidgetBase, parent: gen_qwidget.QWidget): gen_qwidget.QWidget) =
+type QWidgetActioncreateWidgetProc* = proc(parent: gen_qwidget.QWidget): gen_qwidget.QWidget
+proc oncreateWidget*(self: gen_qwidgetaction_types.QWidgetAction, slot: QWidgetActioncreateWidgetProc) =
   # TODO check subclass
-  type Cb = proc(super: QWidgetActioncreateWidgetBase, parent: gen_qwidget.QWidget): gen_qwidget.QWidget
-  var tmp = new Cb
+  var tmp = new QWidgetActioncreateWidgetProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWidgetAction_override_virtual_createWidget(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWidgetAction_createWidget(self: ptr cQWidgetAction, slot: int, parent: pointer): pointer {.exportc: "miqt_exec_callback_QWidgetAction_createWidget ".} =
-  type Cb = proc(super: QWidgetActioncreateWidgetBase, parent: gen_qwidget.QWidget): gen_qwidget.QWidget
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(parent: gen_qwidget.QWidget): auto =
-    callVirtualBase_createWidget(QWidgetAction(h: self), parent)
+  var nimfunc = cast[ptr QWidgetActioncreateWidgetProc](cast[pointer](slot))
   let slotval1 = gen_qwidget.QWidget(h: parent)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_deleteWidget(self: QWidgetAction, widget: gen_qwidget.QWidget): void =
-
+proc QWidgetActiondeleteWidget*(self: gen_qwidgetaction_types.QWidgetAction, widget: gen_qwidget.QWidget): void =
 
   fQWidgetAction_virtualbase_deleteWidget(self.h, widget.h)
 
-type QWidgetActiondeleteWidgetBase* = proc(widget: gen_qwidget.QWidget): void
-proc ondeleteWidget*(self: QWidgetAction, slot: proc(super: QWidgetActiondeleteWidgetBase, widget: gen_qwidget.QWidget): void) =
+type QWidgetActiondeleteWidgetProc* = proc(widget: gen_qwidget.QWidget): void
+proc ondeleteWidget*(self: gen_qwidgetaction_types.QWidgetAction, slot: QWidgetActiondeleteWidgetProc) =
   # TODO check subclass
-  type Cb = proc(super: QWidgetActiondeleteWidgetBase, widget: gen_qwidget.QWidget): void
-  var tmp = new Cb
+  var tmp = new QWidgetActiondeleteWidgetProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWidgetAction_override_virtual_deleteWidget(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWidgetAction_deleteWidget(self: ptr cQWidgetAction, slot: int, widget: pointer): void {.exportc: "miqt_exec_callback_QWidgetAction_deleteWidget ".} =
-  type Cb = proc(super: QWidgetActiondeleteWidgetBase, widget: gen_qwidget.QWidget): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(widget: gen_qwidget.QWidget): auto =
-    callVirtualBase_deleteWidget(QWidgetAction(h: self), widget)
+  var nimfunc = cast[ptr QWidgetActiondeleteWidgetProc](cast[pointer](slot))
   let slotval1 = gen_qwidget.QWidget(h: widget)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_timerEvent(self: QWidgetAction, event: gen_qcoreevent.QTimerEvent): void =
-
+  nimfunc[](slotval1)
+proc QWidgetActiontimerEvent*(self: gen_qwidgetaction_types.QWidgetAction, event: gen_qcoreevent.QTimerEvent): void =
 
   fQWidgetAction_virtualbase_timerEvent(self.h, event.h)
 
-type QWidgetActiontimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QWidgetAction, slot: proc(super: QWidgetActiontimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QWidgetActiontimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qwidgetaction_types.QWidgetAction, slot: QWidgetActiontimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWidgetActiontimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QWidgetActiontimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWidgetAction_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWidgetAction_timerEvent(self: ptr cQWidgetAction, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWidgetAction_timerEvent ".} =
-  type Cb = proc(super: QWidgetActiontimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QWidgetAction(h: self), event)
+  var nimfunc = cast[ptr QWidgetActiontimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QWidgetAction, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QWidgetActionchildEvent*(self: gen_qwidgetaction_types.QWidgetAction, event: gen_qcoreevent.QChildEvent): void =
 
   fQWidgetAction_virtualbase_childEvent(self.h, event.h)
 
-type QWidgetActionchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QWidgetAction, slot: proc(super: QWidgetActionchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QWidgetActionchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qwidgetaction_types.QWidgetAction, slot: QWidgetActionchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWidgetActionchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QWidgetActionchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWidgetAction_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWidgetAction_childEvent(self: ptr cQWidgetAction, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWidgetAction_childEvent ".} =
-  type Cb = proc(super: QWidgetActionchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QWidgetAction(h: self), event)
+  var nimfunc = cast[ptr QWidgetActionchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QWidgetAction, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QWidgetActioncustomEvent*(self: gen_qwidgetaction_types.QWidgetAction, event: gen_qcoreevent.QEvent): void =
 
   fQWidgetAction_virtualbase_customEvent(self.h, event.h)
 
-type QWidgetActioncustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QWidgetAction, slot: proc(super: QWidgetActioncustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QWidgetActioncustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qwidgetaction_types.QWidgetAction, slot: QWidgetActioncustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWidgetActioncustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QWidgetActioncustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWidgetAction_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWidgetAction_customEvent(self: ptr cQWidgetAction, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWidgetAction_customEvent ".} =
-  type Cb = proc(super: QWidgetActioncustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QWidgetAction(h: self), event)
+  var nimfunc = cast[ptr QWidgetActioncustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QWidgetAction, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QWidgetActionconnectNotify*(self: gen_qwidgetaction_types.QWidgetAction, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQWidgetAction_virtualbase_connectNotify(self.h, signal.h)
 
-type QWidgetActionconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QWidgetAction, slot: proc(super: QWidgetActionconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QWidgetActionconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qwidgetaction_types.QWidgetAction, slot: QWidgetActionconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QWidgetActionconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QWidgetActionconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWidgetAction_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWidgetAction_connectNotify(self: ptr cQWidgetAction, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QWidgetAction_connectNotify ".} =
-  type Cb = proc(super: QWidgetActionconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QWidgetAction(h: self), signal)
+  var nimfunc = cast[ptr QWidgetActionconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QWidgetAction, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QWidgetActiondisconnectNotify*(self: gen_qwidgetaction_types.QWidgetAction, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQWidgetAction_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QWidgetActiondisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QWidgetAction, slot: proc(super: QWidgetActiondisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QWidgetActiondisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qwidgetaction_types.QWidgetAction, slot: QWidgetActiondisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QWidgetActiondisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QWidgetActiondisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWidgetAction_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWidgetAction_disconnectNotify(self: ptr cQWidgetAction, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QWidgetAction_disconnectNotify ".} =
-  type Cb = proc(super: QWidgetActiondisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QWidgetAction(h: self), signal)
+  var nimfunc = cast[ptr QWidgetActiondisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QWidgetAction): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qwidgetaction_types.QWidgetAction): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQWidgetAction_staticMetaObject())
-proc delete*(self: QWidgetAction) =
+proc delete*(self: gen_qwidgetaction_types.QWidgetAction) =
   fcQWidgetAction_delete(self.h)

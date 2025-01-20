@@ -41,7 +41,6 @@ import
   gen_qcoreevent,
   gen_qevent,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -56,7 +55,6 @@ export
   gen_qcoreevent,
   gen_qevent,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -189,920 +187,740 @@ proc fcQWebInspector_staticMetaObject(): pointer {.importc: "QWebInspector_stati
 proc fcQWebInspector_delete(self: pointer) {.importc: "QWebInspector_delete".}
 
 
-func init*(T: type QWebInspector, h: ptr cQWebInspector): QWebInspector =
+func init*(T: type gen_qwebinspector_types.QWebInspector, h: ptr cQWebInspector): gen_qwebinspector_types.QWebInspector =
   T(h: h)
-proc create*(T: type QWebInspector, parent: gen_qwidget.QWidget): QWebInspector =
+proc create*(T: type gen_qwebinspector_types.QWebInspector, parent: gen_qwidget.QWidget): gen_qwebinspector_types.QWebInspector =
 
-  QWebInspector.init(fcQWebInspector_new(parent.h))
-proc create*(T: type QWebInspector, ): QWebInspector =
+  gen_qwebinspector_types.QWebInspector.init(fcQWebInspector_new(parent.h))
+proc create*(T: type gen_qwebinspector_types.QWebInspector, ): gen_qwebinspector_types.QWebInspector =
 
-  QWebInspector.init(fcQWebInspector_new2())
-proc metaObject*(self: QWebInspector, ): gen_qobjectdefs.QMetaObject =
+  gen_qwebinspector_types.QWebInspector.init(fcQWebInspector_new2())
+proc metaObject*(self: gen_qwebinspector_types.QWebInspector, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQWebInspector_metaObject(self.h))
 
-proc metacast*(self: QWebInspector, param1: cstring): pointer =
+proc metacast*(self: gen_qwebinspector_types.QWebInspector, param1: cstring): pointer =
 
   fcQWebInspector_metacast(self.h, param1)
 
-proc metacall*(self: QWebInspector, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qwebinspector_types.QWebInspector, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQWebInspector_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QWebInspector, s: cstring): string =
+proc tr*(_: type gen_qwebinspector_types.QWebInspector, s: cstring): string =
 
   let v_ms = fcQWebInspector_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QWebInspector, s: cstring): string =
+proc trUtf8*(_: type gen_qwebinspector_types.QWebInspector, s: cstring): string =
 
   let v_ms = fcQWebInspector_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setPage*(self: QWebInspector, page: gen_qwebpage.QWebPage): void =
+proc setPage*(self: gen_qwebinspector_types.QWebInspector, page: gen_qwebpage.QWebPage): void =
 
   fcQWebInspector_setPage(self.h, page.h)
 
-proc page*(self: QWebInspector, ): gen_qwebpage.QWebPage =
+proc page*(self: gen_qwebinspector_types.QWebInspector, ): gen_qwebpage.QWebPage =
 
   gen_qwebpage.QWebPage(h: fcQWebInspector_page(self.h))
 
-proc sizeHint*(self: QWebInspector, ): gen_qsize.QSize =
+proc sizeHint*(self: gen_qwebinspector_types.QWebInspector, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQWebInspector_sizeHint(self.h))
 
-proc event*(self: QWebInspector, param1: gen_qcoreevent.QEvent): bool =
+proc event*(self: gen_qwebinspector_types.QWebInspector, param1: gen_qcoreevent.QEvent): bool =
 
   fcQWebInspector_event(self.h, param1.h)
 
-proc tr2*(_: type QWebInspector, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qwebinspector_types.QWebInspector, s: cstring, c: cstring): string =
 
   let v_ms = fcQWebInspector_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QWebInspector, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qwebinspector_types.QWebInspector, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQWebInspector_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QWebInspector, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qwebinspector_types.QWebInspector, s: cstring, c: cstring): string =
 
   let v_ms = fcQWebInspector_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QWebInspector, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qwebinspector_types.QWebInspector, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQWebInspector_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QWebInspector, ): gen_qobjectdefs.QMetaObject =
-
+proc QWebInspectormetaObject*(self: gen_qwebinspector_types.QWebInspector, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQWebInspector_virtualbase_metaObject(self.h))
 
-type QWebInspectormetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QWebInspector, slot: proc(super: QWebInspectormetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QWebInspectormetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qwebinspector_types.QWebInspector, slot: QWebInspectormetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebInspectormetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QWebInspectormetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebInspector_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebInspector_metaObject(self: ptr cQWebInspector, slot: int): pointer {.exportc: "miqt_exec_callback_QWebInspector_metaObject ".} =
-  type Cb = proc(super: QWebInspectormetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QWebInspector(h: self), )
+  var nimfunc = cast[ptr QWebInspectormetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QWebInspector, param1: cstring): pointer =
-
+proc QWebInspectormetacast*(self: gen_qwebinspector_types.QWebInspector, param1: cstring): pointer =
 
   fQWebInspector_virtualbase_metacast(self.h, param1)
 
-type QWebInspectormetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QWebInspector, slot: proc(super: QWebInspectormetacastBase, param1: cstring): pointer) =
+type QWebInspectormetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qwebinspector_types.QWebInspector, slot: QWebInspectormetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebInspectormetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QWebInspectormetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebInspector_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebInspector_metacast(self: ptr cQWebInspector, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QWebInspector_metacast ".} =
-  type Cb = proc(super: QWebInspectormetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QWebInspector(h: self), param1)
+  var nimfunc = cast[ptr QWebInspectormetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QWebInspector, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QWebInspectormetacall*(self: gen_qwebinspector_types.QWebInspector, param1: cint, param2: cint, param3: pointer): cint =
 
   fQWebInspector_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QWebInspectormetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QWebInspector, slot: proc(super: QWebInspectormetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QWebInspectormetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qwebinspector_types.QWebInspector, slot: QWebInspectormetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebInspectormetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QWebInspectormetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebInspector_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebInspector_metacall(self: ptr cQWebInspector, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QWebInspector_metacall ".} =
-  type Cb = proc(super: QWebInspectormetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QWebInspector(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QWebInspectormetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_sizeHint(self: QWebInspector, ): gen_qsize.QSize =
-
+proc QWebInspectorsizeHint*(self: gen_qwebinspector_types.QWebInspector, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQWebInspector_virtualbase_sizeHint(self.h))
 
-type QWebInspectorsizeHintBase* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: QWebInspector, slot: proc(super: QWebInspectorsizeHintBase): gen_qsize.QSize) =
+type QWebInspectorsizeHintProc* = proc(): gen_qsize.QSize
+proc onsizeHint*(self: gen_qwebinspector_types.QWebInspector, slot: QWebInspectorsizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebInspectorsizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QWebInspectorsizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebInspector_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebInspector_sizeHint(self: ptr cQWebInspector, slot: int): pointer {.exportc: "miqt_exec_callback_QWebInspector_sizeHint ".} =
-  type Cb = proc(super: QWebInspectorsizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sizeHint(QWebInspector(h: self), )
+  var nimfunc = cast[ptr QWebInspectorsizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_event(self: QWebInspector, param1: gen_qcoreevent.QEvent): bool =
-
+proc QWebInspectorevent*(self: gen_qwebinspector_types.QWebInspector, param1: gen_qcoreevent.QEvent): bool =
 
   fQWebInspector_virtualbase_event(self.h, param1.h)
 
-type QWebInspectoreventBase* = proc(param1: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QWebInspector, slot: proc(super: QWebInspectoreventBase, param1: gen_qcoreevent.QEvent): bool) =
+type QWebInspectoreventProc* = proc(param1: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qwebinspector_types.QWebInspector, slot: QWebInspectoreventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebInspectoreventBase, param1: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QWebInspectoreventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebInspector_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebInspector_event(self: ptr cQWebInspector, slot: int, param1: pointer): bool {.exportc: "miqt_exec_callback_QWebInspector_event ".} =
-  type Cb = proc(super: QWebInspectoreventBase, param1: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QWebInspector(h: self), param1)
+  var nimfunc = cast[ptr QWebInspectoreventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_resizeEvent(self: QWebInspector, event: gen_qevent.QResizeEvent): void =
-
+proc QWebInspectorresizeEvent*(self: gen_qwebinspector_types.QWebInspector, event: gen_qevent.QResizeEvent): void =
 
   fQWebInspector_virtualbase_resizeEvent(self.h, event.h)
 
-type QWebInspectorresizeEventBase* = proc(event: gen_qevent.QResizeEvent): void
-proc onresizeEvent*(self: QWebInspector, slot: proc(super: QWebInspectorresizeEventBase, event: gen_qevent.QResizeEvent): void) =
+type QWebInspectorresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
+proc onresizeEvent*(self: gen_qwebinspector_types.QWebInspector, slot: QWebInspectorresizeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebInspectorresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var tmp = new Cb
+  var tmp = new QWebInspectorresizeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebInspector_override_virtual_resizeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebInspector_resizeEvent(self: ptr cQWebInspector, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebInspector_resizeEvent ".} =
-  type Cb = proc(super: QWebInspectorresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QResizeEvent): auto =
-    callVirtualBase_resizeEvent(QWebInspector(h: self), event)
+  var nimfunc = cast[ptr QWebInspectorresizeEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QResizeEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_showEvent(self: QWebInspector, event: gen_qevent.QShowEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebInspectorshowEvent*(self: gen_qwebinspector_types.QWebInspector, event: gen_qevent.QShowEvent): void =
 
   fQWebInspector_virtualbase_showEvent(self.h, event.h)
 
-type QWebInspectorshowEventBase* = proc(event: gen_qevent.QShowEvent): void
-proc onshowEvent*(self: QWebInspector, slot: proc(super: QWebInspectorshowEventBase, event: gen_qevent.QShowEvent): void) =
+type QWebInspectorshowEventProc* = proc(event: gen_qevent.QShowEvent): void
+proc onshowEvent*(self: gen_qwebinspector_types.QWebInspector, slot: QWebInspectorshowEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebInspectorshowEventBase, event: gen_qevent.QShowEvent): void
-  var tmp = new Cb
+  var tmp = new QWebInspectorshowEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebInspector_override_virtual_showEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebInspector_showEvent(self: ptr cQWebInspector, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebInspector_showEvent ".} =
-  type Cb = proc(super: QWebInspectorshowEventBase, event: gen_qevent.QShowEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QShowEvent): auto =
-    callVirtualBase_showEvent(QWebInspector(h: self), event)
+  var nimfunc = cast[ptr QWebInspectorshowEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QShowEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hideEvent(self: QWebInspector, event: gen_qevent.QHideEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebInspectorhideEvent*(self: gen_qwebinspector_types.QWebInspector, event: gen_qevent.QHideEvent): void =
 
   fQWebInspector_virtualbase_hideEvent(self.h, event.h)
 
-type QWebInspectorhideEventBase* = proc(event: gen_qevent.QHideEvent): void
-proc onhideEvent*(self: QWebInspector, slot: proc(super: QWebInspectorhideEventBase, event: gen_qevent.QHideEvent): void) =
+type QWebInspectorhideEventProc* = proc(event: gen_qevent.QHideEvent): void
+proc onhideEvent*(self: gen_qwebinspector_types.QWebInspector, slot: QWebInspectorhideEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebInspectorhideEventBase, event: gen_qevent.QHideEvent): void
-  var tmp = new Cb
+  var tmp = new QWebInspectorhideEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebInspector_override_virtual_hideEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebInspector_hideEvent(self: ptr cQWebInspector, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebInspector_hideEvent ".} =
-  type Cb = proc(super: QWebInspectorhideEventBase, event: gen_qevent.QHideEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QHideEvent): auto =
-    callVirtualBase_hideEvent(QWebInspector(h: self), event)
+  var nimfunc = cast[ptr QWebInspectorhideEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QHideEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_closeEvent(self: QWebInspector, event: gen_qevent.QCloseEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebInspectorcloseEvent*(self: gen_qwebinspector_types.QWebInspector, event: gen_qevent.QCloseEvent): void =
 
   fQWebInspector_virtualbase_closeEvent(self.h, event.h)
 
-type QWebInspectorcloseEventBase* = proc(event: gen_qevent.QCloseEvent): void
-proc oncloseEvent*(self: QWebInspector, slot: proc(super: QWebInspectorcloseEventBase, event: gen_qevent.QCloseEvent): void) =
+type QWebInspectorcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
+proc oncloseEvent*(self: gen_qwebinspector_types.QWebInspector, slot: QWebInspectorcloseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebInspectorcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var tmp = new Cb
+  var tmp = new QWebInspectorcloseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebInspector_override_virtual_closeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebInspector_closeEvent(self: ptr cQWebInspector, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebInspector_closeEvent ".} =
-  type Cb = proc(super: QWebInspectorcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QCloseEvent): auto =
-    callVirtualBase_closeEvent(QWebInspector(h: self), event)
+  var nimfunc = cast[ptr QWebInspectorcloseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QCloseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_devType(self: QWebInspector, ): cint =
-
+  nimfunc[](slotval1)
+proc QWebInspectordevType*(self: gen_qwebinspector_types.QWebInspector, ): cint =
 
   fQWebInspector_virtualbase_devType(self.h)
 
-type QWebInspectordevTypeBase* = proc(): cint
-proc ondevType*(self: QWebInspector, slot: proc(super: QWebInspectordevTypeBase): cint) =
+type QWebInspectordevTypeProc* = proc(): cint
+proc ondevType*(self: gen_qwebinspector_types.QWebInspector, slot: QWebInspectordevTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebInspectordevTypeBase): cint
-  var tmp = new Cb
+  var tmp = new QWebInspectordevTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebInspector_override_virtual_devType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebInspector_devType(self: ptr cQWebInspector, slot: int): cint {.exportc: "miqt_exec_callback_QWebInspector_devType ".} =
-  type Cb = proc(super: QWebInspectordevTypeBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_devType(QWebInspector(h: self), )
+  var nimfunc = cast[ptr QWebInspectordevTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setVisible(self: QWebInspector, visible: bool): void =
-
+proc QWebInspectorsetVisible*(self: gen_qwebinspector_types.QWebInspector, visible: bool): void =
 
   fQWebInspector_virtualbase_setVisible(self.h, visible)
 
-type QWebInspectorsetVisibleBase* = proc(visible: bool): void
-proc onsetVisible*(self: QWebInspector, slot: proc(super: QWebInspectorsetVisibleBase, visible: bool): void) =
+type QWebInspectorsetVisibleProc* = proc(visible: bool): void
+proc onsetVisible*(self: gen_qwebinspector_types.QWebInspector, slot: QWebInspectorsetVisibleProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebInspectorsetVisibleBase, visible: bool): void
-  var tmp = new Cb
+  var tmp = new QWebInspectorsetVisibleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebInspector_override_virtual_setVisible(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebInspector_setVisible(self: ptr cQWebInspector, slot: int, visible: bool): void {.exportc: "miqt_exec_callback_QWebInspector_setVisible ".} =
-  type Cb = proc(super: QWebInspectorsetVisibleBase, visible: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(visible: bool): auto =
-    callVirtualBase_setVisible(QWebInspector(h: self), visible)
+  var nimfunc = cast[ptr QWebInspectorsetVisibleProc](cast[pointer](slot))
   let slotval1 = visible
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_minimumSizeHint(self: QWebInspector, ): gen_qsize.QSize =
-
+  nimfunc[](slotval1)
+proc QWebInspectorminimumSizeHint*(self: gen_qwebinspector_types.QWebInspector, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQWebInspector_virtualbase_minimumSizeHint(self.h))
 
-type QWebInspectorminimumSizeHintBase* = proc(): gen_qsize.QSize
-proc onminimumSizeHint*(self: QWebInspector, slot: proc(super: QWebInspectorminimumSizeHintBase): gen_qsize.QSize) =
+type QWebInspectorminimumSizeHintProc* = proc(): gen_qsize.QSize
+proc onminimumSizeHint*(self: gen_qwebinspector_types.QWebInspector, slot: QWebInspectorminimumSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebInspectorminimumSizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QWebInspectorminimumSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebInspector_override_virtual_minimumSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebInspector_minimumSizeHint(self: ptr cQWebInspector, slot: int): pointer {.exportc: "miqt_exec_callback_QWebInspector_minimumSizeHint ".} =
-  type Cb = proc(super: QWebInspectorminimumSizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_minimumSizeHint(QWebInspector(h: self), )
+  var nimfunc = cast[ptr QWebInspectorminimumSizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_heightForWidth(self: QWebInspector, param1: cint): cint =
-
+proc QWebInspectorheightForWidth*(self: gen_qwebinspector_types.QWebInspector, param1: cint): cint =
 
   fQWebInspector_virtualbase_heightForWidth(self.h, param1)
 
-type QWebInspectorheightForWidthBase* = proc(param1: cint): cint
-proc onheightForWidth*(self: QWebInspector, slot: proc(super: QWebInspectorheightForWidthBase, param1: cint): cint) =
+type QWebInspectorheightForWidthProc* = proc(param1: cint): cint
+proc onheightForWidth*(self: gen_qwebinspector_types.QWebInspector, slot: QWebInspectorheightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebInspectorheightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QWebInspectorheightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebInspector_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebInspector_heightForWidth(self: ptr cQWebInspector, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QWebInspector_heightForWidth ".} =
-  type Cb = proc(super: QWebInspectorheightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_heightForWidth(QWebInspector(h: self), param1)
+  var nimfunc = cast[ptr QWebInspectorheightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_hasHeightForWidth(self: QWebInspector, ): bool =
-
+proc QWebInspectorhasHeightForWidth*(self: gen_qwebinspector_types.QWebInspector, ): bool =
 
   fQWebInspector_virtualbase_hasHeightForWidth(self.h)
 
-type QWebInspectorhasHeightForWidthBase* = proc(): bool
-proc onhasHeightForWidth*(self: QWebInspector, slot: proc(super: QWebInspectorhasHeightForWidthBase): bool) =
+type QWebInspectorhasHeightForWidthProc* = proc(): bool
+proc onhasHeightForWidth*(self: gen_qwebinspector_types.QWebInspector, slot: QWebInspectorhasHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebInspectorhasHeightForWidthBase): bool
-  var tmp = new Cb
+  var tmp = new QWebInspectorhasHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebInspector_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebInspector_hasHeightForWidth(self: ptr cQWebInspector, slot: int): bool {.exportc: "miqt_exec_callback_QWebInspector_hasHeightForWidth ".} =
-  type Cb = proc(super: QWebInspectorhasHeightForWidthBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasHeightForWidth(QWebInspector(h: self), )
+  var nimfunc = cast[ptr QWebInspectorhasHeightForWidthProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_paintEngine(self: QWebInspector, ): gen_qpaintengine.QPaintEngine =
-
+proc QWebInspectorpaintEngine*(self: gen_qwebinspector_types.QWebInspector, ): gen_qpaintengine.QPaintEngine =
 
   gen_qpaintengine.QPaintEngine(h: fQWebInspector_virtualbase_paintEngine(self.h))
 
-type QWebInspectorpaintEngineBase* = proc(): gen_qpaintengine.QPaintEngine
-proc onpaintEngine*(self: QWebInspector, slot: proc(super: QWebInspectorpaintEngineBase): gen_qpaintengine.QPaintEngine) =
+type QWebInspectorpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
+proc onpaintEngine*(self: gen_qwebinspector_types.QWebInspector, slot: QWebInspectorpaintEngineProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebInspectorpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var tmp = new Cb
+  var tmp = new QWebInspectorpaintEngineProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebInspector_override_virtual_paintEngine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebInspector_paintEngine(self: ptr cQWebInspector, slot: int): pointer {.exportc: "miqt_exec_callback_QWebInspector_paintEngine ".} =
-  type Cb = proc(super: QWebInspectorpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_paintEngine(QWebInspector(h: self), )
+  var nimfunc = cast[ptr QWebInspectorpaintEngineProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_mousePressEvent(self: QWebInspector, event: gen_qevent.QMouseEvent): void =
-
+proc QWebInspectormousePressEvent*(self: gen_qwebinspector_types.QWebInspector, event: gen_qevent.QMouseEvent): void =
 
   fQWebInspector_virtualbase_mousePressEvent(self.h, event.h)
 
-type QWebInspectormousePressEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmousePressEvent*(self: QWebInspector, slot: proc(super: QWebInspectormousePressEventBase, event: gen_qevent.QMouseEvent): void) =
+type QWebInspectormousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmousePressEvent*(self: gen_qwebinspector_types.QWebInspector, slot: QWebInspectormousePressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebInspectormousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QWebInspectormousePressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebInspector_override_virtual_mousePressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebInspector_mousePressEvent(self: ptr cQWebInspector, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebInspector_mousePressEvent ".} =
-  type Cb = proc(super: QWebInspectormousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mousePressEvent(QWebInspector(h: self), event)
+  var nimfunc = cast[ptr QWebInspectormousePressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseReleaseEvent(self: QWebInspector, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebInspectormouseReleaseEvent*(self: gen_qwebinspector_types.QWebInspector, event: gen_qevent.QMouseEvent): void =
 
   fQWebInspector_virtualbase_mouseReleaseEvent(self.h, event.h)
 
-type QWebInspectormouseReleaseEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseReleaseEvent*(self: QWebInspector, slot: proc(super: QWebInspectormouseReleaseEventBase, event: gen_qevent.QMouseEvent): void) =
+type QWebInspectormouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseReleaseEvent*(self: gen_qwebinspector_types.QWebInspector, slot: QWebInspectormouseReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebInspectormouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QWebInspectormouseReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebInspector_override_virtual_mouseReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebInspector_mouseReleaseEvent(self: ptr cQWebInspector, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebInspector_mouseReleaseEvent ".} =
-  type Cb = proc(super: QWebInspectormouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseReleaseEvent(QWebInspector(h: self), event)
+  var nimfunc = cast[ptr QWebInspectormouseReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseDoubleClickEvent(self: QWebInspector, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebInspectormouseDoubleClickEvent*(self: gen_qwebinspector_types.QWebInspector, event: gen_qevent.QMouseEvent): void =
 
   fQWebInspector_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
-type QWebInspectormouseDoubleClickEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseDoubleClickEvent*(self: QWebInspector, slot: proc(super: QWebInspectormouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void) =
+type QWebInspectormouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseDoubleClickEvent*(self: gen_qwebinspector_types.QWebInspector, slot: QWebInspectormouseDoubleClickEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebInspectormouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QWebInspectormouseDoubleClickEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebInspector_override_virtual_mouseDoubleClickEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebInspector_mouseDoubleClickEvent(self: ptr cQWebInspector, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebInspector_mouseDoubleClickEvent ".} =
-  type Cb = proc(super: QWebInspectormouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseDoubleClickEvent(QWebInspector(h: self), event)
+  var nimfunc = cast[ptr QWebInspectormouseDoubleClickEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseMoveEvent(self: QWebInspector, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebInspectormouseMoveEvent*(self: gen_qwebinspector_types.QWebInspector, event: gen_qevent.QMouseEvent): void =
 
   fQWebInspector_virtualbase_mouseMoveEvent(self.h, event.h)
 
-type QWebInspectormouseMoveEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseMoveEvent*(self: QWebInspector, slot: proc(super: QWebInspectormouseMoveEventBase, event: gen_qevent.QMouseEvent): void) =
+type QWebInspectormouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseMoveEvent*(self: gen_qwebinspector_types.QWebInspector, slot: QWebInspectormouseMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebInspectormouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QWebInspectormouseMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebInspector_override_virtual_mouseMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebInspector_mouseMoveEvent(self: ptr cQWebInspector, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebInspector_mouseMoveEvent ".} =
-  type Cb = proc(super: QWebInspectormouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseMoveEvent(QWebInspector(h: self), event)
+  var nimfunc = cast[ptr QWebInspectormouseMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_wheelEvent(self: QWebInspector, event: gen_qevent.QWheelEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebInspectorwheelEvent*(self: gen_qwebinspector_types.QWebInspector, event: gen_qevent.QWheelEvent): void =
 
   fQWebInspector_virtualbase_wheelEvent(self.h, event.h)
 
-type QWebInspectorwheelEventBase* = proc(event: gen_qevent.QWheelEvent): void
-proc onwheelEvent*(self: QWebInspector, slot: proc(super: QWebInspectorwheelEventBase, event: gen_qevent.QWheelEvent): void) =
+type QWebInspectorwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
+proc onwheelEvent*(self: gen_qwebinspector_types.QWebInspector, slot: QWebInspectorwheelEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebInspectorwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var tmp = new Cb
+  var tmp = new QWebInspectorwheelEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebInspector_override_virtual_wheelEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebInspector_wheelEvent(self: ptr cQWebInspector, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebInspector_wheelEvent ".} =
-  type Cb = proc(super: QWebInspectorwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QWheelEvent): auto =
-    callVirtualBase_wheelEvent(QWebInspector(h: self), event)
+  var nimfunc = cast[ptr QWebInspectorwheelEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QWheelEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyPressEvent(self: QWebInspector, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebInspectorkeyPressEvent*(self: gen_qwebinspector_types.QWebInspector, event: gen_qevent.QKeyEvent): void =
 
   fQWebInspector_virtualbase_keyPressEvent(self.h, event.h)
 
-type QWebInspectorkeyPressEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyPressEvent*(self: QWebInspector, slot: proc(super: QWebInspectorkeyPressEventBase, event: gen_qevent.QKeyEvent): void) =
+type QWebInspectorkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyPressEvent*(self: gen_qwebinspector_types.QWebInspector, slot: QWebInspectorkeyPressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebInspectorkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QWebInspectorkeyPressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebInspector_override_virtual_keyPressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebInspector_keyPressEvent(self: ptr cQWebInspector, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebInspector_keyPressEvent ".} =
-  type Cb = proc(super: QWebInspectorkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyPressEvent(QWebInspector(h: self), event)
+  var nimfunc = cast[ptr QWebInspectorkeyPressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyReleaseEvent(self: QWebInspector, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebInspectorkeyReleaseEvent*(self: gen_qwebinspector_types.QWebInspector, event: gen_qevent.QKeyEvent): void =
 
   fQWebInspector_virtualbase_keyReleaseEvent(self.h, event.h)
 
-type QWebInspectorkeyReleaseEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyReleaseEvent*(self: QWebInspector, slot: proc(super: QWebInspectorkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void) =
+type QWebInspectorkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyReleaseEvent*(self: gen_qwebinspector_types.QWebInspector, slot: QWebInspectorkeyReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebInspectorkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QWebInspectorkeyReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebInspector_override_virtual_keyReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebInspector_keyReleaseEvent(self: ptr cQWebInspector, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebInspector_keyReleaseEvent ".} =
-  type Cb = proc(super: QWebInspectorkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyReleaseEvent(QWebInspector(h: self), event)
+  var nimfunc = cast[ptr QWebInspectorkeyReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusInEvent(self: QWebInspector, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebInspectorfocusInEvent*(self: gen_qwebinspector_types.QWebInspector, event: gen_qevent.QFocusEvent): void =
 
   fQWebInspector_virtualbase_focusInEvent(self.h, event.h)
 
-type QWebInspectorfocusInEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusInEvent*(self: QWebInspector, slot: proc(super: QWebInspectorfocusInEventBase, event: gen_qevent.QFocusEvent): void) =
+type QWebInspectorfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusInEvent*(self: gen_qwebinspector_types.QWebInspector, slot: QWebInspectorfocusInEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebInspectorfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QWebInspectorfocusInEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebInspector_override_virtual_focusInEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebInspector_focusInEvent(self: ptr cQWebInspector, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebInspector_focusInEvent ".} =
-  type Cb = proc(super: QWebInspectorfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusInEvent(QWebInspector(h: self), event)
+  var nimfunc = cast[ptr QWebInspectorfocusInEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusOutEvent(self: QWebInspector, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebInspectorfocusOutEvent*(self: gen_qwebinspector_types.QWebInspector, event: gen_qevent.QFocusEvent): void =
 
   fQWebInspector_virtualbase_focusOutEvent(self.h, event.h)
 
-type QWebInspectorfocusOutEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusOutEvent*(self: QWebInspector, slot: proc(super: QWebInspectorfocusOutEventBase, event: gen_qevent.QFocusEvent): void) =
+type QWebInspectorfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusOutEvent*(self: gen_qwebinspector_types.QWebInspector, slot: QWebInspectorfocusOutEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebInspectorfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QWebInspectorfocusOutEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebInspector_override_virtual_focusOutEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebInspector_focusOutEvent(self: ptr cQWebInspector, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebInspector_focusOutEvent ".} =
-  type Cb = proc(super: QWebInspectorfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusOutEvent(QWebInspector(h: self), event)
+  var nimfunc = cast[ptr QWebInspectorfocusOutEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_enterEvent(self: QWebInspector, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebInspectorenterEvent*(self: gen_qwebinspector_types.QWebInspector, event: gen_qcoreevent.QEvent): void =
 
   fQWebInspector_virtualbase_enterEvent(self.h, event.h)
 
-type QWebInspectorenterEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onenterEvent*(self: QWebInspector, slot: proc(super: QWebInspectorenterEventBase, event: gen_qcoreevent.QEvent): void) =
+type QWebInspectorenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onenterEvent*(self: gen_qwebinspector_types.QWebInspector, slot: QWebInspectorenterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebInspectorenterEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QWebInspectorenterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebInspector_override_virtual_enterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebInspector_enterEvent(self: ptr cQWebInspector, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebInspector_enterEvent ".} =
-  type Cb = proc(super: QWebInspectorenterEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_enterEvent(QWebInspector(h: self), event)
+  var nimfunc = cast[ptr QWebInspectorenterEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_leaveEvent(self: QWebInspector, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebInspectorleaveEvent*(self: gen_qwebinspector_types.QWebInspector, event: gen_qcoreevent.QEvent): void =
 
   fQWebInspector_virtualbase_leaveEvent(self.h, event.h)
 
-type QWebInspectorleaveEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onleaveEvent*(self: QWebInspector, slot: proc(super: QWebInspectorleaveEventBase, event: gen_qcoreevent.QEvent): void) =
+type QWebInspectorleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onleaveEvent*(self: gen_qwebinspector_types.QWebInspector, slot: QWebInspectorleaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebInspectorleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QWebInspectorleaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebInspector_override_virtual_leaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebInspector_leaveEvent(self: ptr cQWebInspector, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebInspector_leaveEvent ".} =
-  type Cb = proc(super: QWebInspectorleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_leaveEvent(QWebInspector(h: self), event)
+  var nimfunc = cast[ptr QWebInspectorleaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_paintEvent(self: QWebInspector, event: gen_qevent.QPaintEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebInspectorpaintEvent*(self: gen_qwebinspector_types.QWebInspector, event: gen_qevent.QPaintEvent): void =
 
   fQWebInspector_virtualbase_paintEvent(self.h, event.h)
 
-type QWebInspectorpaintEventBase* = proc(event: gen_qevent.QPaintEvent): void
-proc onpaintEvent*(self: QWebInspector, slot: proc(super: QWebInspectorpaintEventBase, event: gen_qevent.QPaintEvent): void) =
+type QWebInspectorpaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
+proc onpaintEvent*(self: gen_qwebinspector_types.QWebInspector, slot: QWebInspectorpaintEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebInspectorpaintEventBase, event: gen_qevent.QPaintEvent): void
-  var tmp = new Cb
+  var tmp = new QWebInspectorpaintEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebInspector_override_virtual_paintEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebInspector_paintEvent(self: ptr cQWebInspector, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebInspector_paintEvent ".} =
-  type Cb = proc(super: QWebInspectorpaintEventBase, event: gen_qevent.QPaintEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QPaintEvent): auto =
-    callVirtualBase_paintEvent(QWebInspector(h: self), event)
+  var nimfunc = cast[ptr QWebInspectorpaintEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QPaintEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_moveEvent(self: QWebInspector, event: gen_qevent.QMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebInspectormoveEvent*(self: gen_qwebinspector_types.QWebInspector, event: gen_qevent.QMoveEvent): void =
 
   fQWebInspector_virtualbase_moveEvent(self.h, event.h)
 
-type QWebInspectormoveEventBase* = proc(event: gen_qevent.QMoveEvent): void
-proc onmoveEvent*(self: QWebInspector, slot: proc(super: QWebInspectormoveEventBase, event: gen_qevent.QMoveEvent): void) =
+type QWebInspectormoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
+proc onmoveEvent*(self: gen_qwebinspector_types.QWebInspector, slot: QWebInspectormoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebInspectormoveEventBase, event: gen_qevent.QMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QWebInspectormoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebInspector_override_virtual_moveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebInspector_moveEvent(self: ptr cQWebInspector, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebInspector_moveEvent ".} =
-  type Cb = proc(super: QWebInspectormoveEventBase, event: gen_qevent.QMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMoveEvent): auto =
-    callVirtualBase_moveEvent(QWebInspector(h: self), event)
+  var nimfunc = cast[ptr QWebInspectormoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_contextMenuEvent(self: QWebInspector, event: gen_qevent.QContextMenuEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebInspectorcontextMenuEvent*(self: gen_qwebinspector_types.QWebInspector, event: gen_qevent.QContextMenuEvent): void =
 
   fQWebInspector_virtualbase_contextMenuEvent(self.h, event.h)
 
-type QWebInspectorcontextMenuEventBase* = proc(event: gen_qevent.QContextMenuEvent): void
-proc oncontextMenuEvent*(self: QWebInspector, slot: proc(super: QWebInspectorcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void) =
+type QWebInspectorcontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
+proc oncontextMenuEvent*(self: gen_qwebinspector_types.QWebInspector, slot: QWebInspectorcontextMenuEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebInspectorcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var tmp = new Cb
+  var tmp = new QWebInspectorcontextMenuEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebInspector_override_virtual_contextMenuEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebInspector_contextMenuEvent(self: ptr cQWebInspector, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebInspector_contextMenuEvent ".} =
-  type Cb = proc(super: QWebInspectorcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QContextMenuEvent): auto =
-    callVirtualBase_contextMenuEvent(QWebInspector(h: self), event)
+  var nimfunc = cast[ptr QWebInspectorcontextMenuEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QContextMenuEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_tabletEvent(self: QWebInspector, event: gen_qevent.QTabletEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebInspectortabletEvent*(self: gen_qwebinspector_types.QWebInspector, event: gen_qevent.QTabletEvent): void =
 
   fQWebInspector_virtualbase_tabletEvent(self.h, event.h)
 
-type QWebInspectortabletEventBase* = proc(event: gen_qevent.QTabletEvent): void
-proc ontabletEvent*(self: QWebInspector, slot: proc(super: QWebInspectortabletEventBase, event: gen_qevent.QTabletEvent): void) =
+type QWebInspectortabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
+proc ontabletEvent*(self: gen_qwebinspector_types.QWebInspector, slot: QWebInspectortabletEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebInspectortabletEventBase, event: gen_qevent.QTabletEvent): void
-  var tmp = new Cb
+  var tmp = new QWebInspectortabletEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebInspector_override_virtual_tabletEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebInspector_tabletEvent(self: ptr cQWebInspector, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebInspector_tabletEvent ".} =
-  type Cb = proc(super: QWebInspectortabletEventBase, event: gen_qevent.QTabletEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QTabletEvent): auto =
-    callVirtualBase_tabletEvent(QWebInspector(h: self), event)
+  var nimfunc = cast[ptr QWebInspectortabletEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QTabletEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_actionEvent(self: QWebInspector, event: gen_qevent.QActionEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebInspectoractionEvent*(self: gen_qwebinspector_types.QWebInspector, event: gen_qevent.QActionEvent): void =
 
   fQWebInspector_virtualbase_actionEvent(self.h, event.h)
 
-type QWebInspectoractionEventBase* = proc(event: gen_qevent.QActionEvent): void
-proc onactionEvent*(self: QWebInspector, slot: proc(super: QWebInspectoractionEventBase, event: gen_qevent.QActionEvent): void) =
+type QWebInspectoractionEventProc* = proc(event: gen_qevent.QActionEvent): void
+proc onactionEvent*(self: gen_qwebinspector_types.QWebInspector, slot: QWebInspectoractionEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebInspectoractionEventBase, event: gen_qevent.QActionEvent): void
-  var tmp = new Cb
+  var tmp = new QWebInspectoractionEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebInspector_override_virtual_actionEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebInspector_actionEvent(self: ptr cQWebInspector, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebInspector_actionEvent ".} =
-  type Cb = proc(super: QWebInspectoractionEventBase, event: gen_qevent.QActionEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QActionEvent): auto =
-    callVirtualBase_actionEvent(QWebInspector(h: self), event)
+  var nimfunc = cast[ptr QWebInspectoractionEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QActionEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragEnterEvent(self: QWebInspector, event: gen_qevent.QDragEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebInspectordragEnterEvent*(self: gen_qwebinspector_types.QWebInspector, event: gen_qevent.QDragEnterEvent): void =
 
   fQWebInspector_virtualbase_dragEnterEvent(self.h, event.h)
 
-type QWebInspectordragEnterEventBase* = proc(event: gen_qevent.QDragEnterEvent): void
-proc ondragEnterEvent*(self: QWebInspector, slot: proc(super: QWebInspectordragEnterEventBase, event: gen_qevent.QDragEnterEvent): void) =
+type QWebInspectordragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
+proc ondragEnterEvent*(self: gen_qwebinspector_types.QWebInspector, slot: QWebInspectordragEnterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebInspectordragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QWebInspectordragEnterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebInspector_override_virtual_dragEnterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebInspector_dragEnterEvent(self: ptr cQWebInspector, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebInspector_dragEnterEvent ".} =
-  type Cb = proc(super: QWebInspectordragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragEnterEvent): auto =
-    callVirtualBase_dragEnterEvent(QWebInspector(h: self), event)
+  var nimfunc = cast[ptr QWebInspectordragEnterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragMoveEvent(self: QWebInspector, event: gen_qevent.QDragMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebInspectordragMoveEvent*(self: gen_qwebinspector_types.QWebInspector, event: gen_qevent.QDragMoveEvent): void =
 
   fQWebInspector_virtualbase_dragMoveEvent(self.h, event.h)
 
-type QWebInspectordragMoveEventBase* = proc(event: gen_qevent.QDragMoveEvent): void
-proc ondragMoveEvent*(self: QWebInspector, slot: proc(super: QWebInspectordragMoveEventBase, event: gen_qevent.QDragMoveEvent): void) =
+type QWebInspectordragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
+proc ondragMoveEvent*(self: gen_qwebinspector_types.QWebInspector, slot: QWebInspectordragMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebInspectordragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QWebInspectordragMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebInspector_override_virtual_dragMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebInspector_dragMoveEvent(self: ptr cQWebInspector, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebInspector_dragMoveEvent ".} =
-  type Cb = proc(super: QWebInspectordragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragMoveEvent): auto =
-    callVirtualBase_dragMoveEvent(QWebInspector(h: self), event)
+  var nimfunc = cast[ptr QWebInspectordragMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragLeaveEvent(self: QWebInspector, event: gen_qevent.QDragLeaveEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebInspectordragLeaveEvent*(self: gen_qwebinspector_types.QWebInspector, event: gen_qevent.QDragLeaveEvent): void =
 
   fQWebInspector_virtualbase_dragLeaveEvent(self.h, event.h)
 
-type QWebInspectordragLeaveEventBase* = proc(event: gen_qevent.QDragLeaveEvent): void
-proc ondragLeaveEvent*(self: QWebInspector, slot: proc(super: QWebInspectordragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void) =
+type QWebInspectordragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
+proc ondragLeaveEvent*(self: gen_qwebinspector_types.QWebInspector, slot: QWebInspectordragLeaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebInspectordragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var tmp = new Cb
+  var tmp = new QWebInspectordragLeaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebInspector_override_virtual_dragLeaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebInspector_dragLeaveEvent(self: ptr cQWebInspector, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebInspector_dragLeaveEvent ".} =
-  type Cb = proc(super: QWebInspectordragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragLeaveEvent): auto =
-    callVirtualBase_dragLeaveEvent(QWebInspector(h: self), event)
+  var nimfunc = cast[ptr QWebInspectordragLeaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragLeaveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dropEvent(self: QWebInspector, event: gen_qevent.QDropEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebInspectordropEvent*(self: gen_qwebinspector_types.QWebInspector, event: gen_qevent.QDropEvent): void =
 
   fQWebInspector_virtualbase_dropEvent(self.h, event.h)
 
-type QWebInspectordropEventBase* = proc(event: gen_qevent.QDropEvent): void
-proc ondropEvent*(self: QWebInspector, slot: proc(super: QWebInspectordropEventBase, event: gen_qevent.QDropEvent): void) =
+type QWebInspectordropEventProc* = proc(event: gen_qevent.QDropEvent): void
+proc ondropEvent*(self: gen_qwebinspector_types.QWebInspector, slot: QWebInspectordropEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebInspectordropEventBase, event: gen_qevent.QDropEvent): void
-  var tmp = new Cb
+  var tmp = new QWebInspectordropEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebInspector_override_virtual_dropEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebInspector_dropEvent(self: ptr cQWebInspector, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebInspector_dropEvent ".} =
-  type Cb = proc(super: QWebInspectordropEventBase, event: gen_qevent.QDropEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDropEvent): auto =
-    callVirtualBase_dropEvent(QWebInspector(h: self), event)
+  var nimfunc = cast[ptr QWebInspectordropEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDropEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_nativeEvent(self: QWebInspector, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
+  nimfunc[](slotval1)
+proc QWebInspectornativeEvent*(self: gen_qwebinspector_types.QWebInspector, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
 
   fQWebInspector_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
-type QWebInspectornativeEventBase* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-proc onnativeEvent*(self: QWebInspector, slot: proc(super: QWebInspectornativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool) =
+type QWebInspectornativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
+proc onnativeEvent*(self: gen_qwebinspector_types.QWebInspector, slot: QWebInspectornativeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebInspectornativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-  var tmp = new Cb
+  var tmp = new QWebInspectornativeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebInspector_override_virtual_nativeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebInspector_nativeEvent(self: ptr cQWebInspector, slot: int, eventType: struct_miqt_string, message: pointer, resultVal: ptr clong): bool {.exportc: "miqt_exec_callback_QWebInspector_nativeEvent ".} =
-  type Cb = proc(super: QWebInspectornativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(eventType: seq[byte], message: pointer, resultVal: ptr clong): auto =
-    callVirtualBase_nativeEvent(QWebInspector(h: self), eventType, message, resultVal)
+  var nimfunc = cast[ptr QWebInspectornativeEventProc](cast[pointer](slot))
   var veventType_bytearray = eventType
   var veventTypex_ret = @(toOpenArrayByte(veventType_bytearray.data, 0, int(veventType_bytearray.len)-1))
   c_free(veventType_bytearray.data)
@@ -1113,344 +931,274 @@ proc miqt_exec_callback_QWebInspector_nativeEvent(self: ptr cQWebInspector, slot
   let slotval3 = resultVal
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_changeEvent(self: QWebInspector, param1: gen_qcoreevent.QEvent): void =
-
+proc QWebInspectorchangeEvent*(self: gen_qwebinspector_types.QWebInspector, param1: gen_qcoreevent.QEvent): void =
 
   fQWebInspector_virtualbase_changeEvent(self.h, param1.h)
 
-type QWebInspectorchangeEventBase* = proc(param1: gen_qcoreevent.QEvent): void
-proc onchangeEvent*(self: QWebInspector, slot: proc(super: QWebInspectorchangeEventBase, param1: gen_qcoreevent.QEvent): void) =
+type QWebInspectorchangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
+proc onchangeEvent*(self: gen_qwebinspector_types.QWebInspector, slot: QWebInspectorchangeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebInspectorchangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QWebInspectorchangeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebInspector_override_virtual_changeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebInspector_changeEvent(self: ptr cQWebInspector, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QWebInspector_changeEvent ".} =
-  type Cb = proc(super: QWebInspectorchangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_changeEvent(QWebInspector(h: self), param1)
+  var nimfunc = cast[ptr QWebInspectorchangeEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_metric(self: QWebInspector, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint =
-
+  nimfunc[](slotval1)
+proc QWebInspectormetric*(self: gen_qwebinspector_types.QWebInspector, param1: cint): cint =
 
   fQWebInspector_virtualbase_metric(self.h, cint(param1))
 
-type QWebInspectormetricBase* = proc(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-proc onmetric*(self: QWebInspector, slot: proc(super: QWebInspectormetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint) =
+type QWebInspectormetricProc* = proc(param1: cint): cint
+proc onmetric*(self: gen_qwebinspector_types.QWebInspector, slot: QWebInspectormetricProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebInspectormetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var tmp = new Cb
+  var tmp = new QWebInspectormetricProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebInspector_override_virtual_metric(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebInspector_metric(self: ptr cQWebInspector, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QWebInspector_metric ".} =
-  type Cb = proc(super: QWebInspectormetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): auto =
-    callVirtualBase_metric(QWebInspector(h: self), param1)
-  let slotval1 = gen_qpaintdevice.QPaintDevicePaintDeviceMetric(param1)
+  var nimfunc = cast[ptr QWebInspectormetricProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_initPainter(self: QWebInspector, painter: gen_qpainter.QPainter): void =
-
+proc QWebInspectorinitPainter*(self: gen_qwebinspector_types.QWebInspector, painter: gen_qpainter.QPainter): void =
 
   fQWebInspector_virtualbase_initPainter(self.h, painter.h)
 
-type QWebInspectorinitPainterBase* = proc(painter: gen_qpainter.QPainter): void
-proc oninitPainter*(self: QWebInspector, slot: proc(super: QWebInspectorinitPainterBase, painter: gen_qpainter.QPainter): void) =
+type QWebInspectorinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
+proc oninitPainter*(self: gen_qwebinspector_types.QWebInspector, slot: QWebInspectorinitPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebInspectorinitPainterBase, painter: gen_qpainter.QPainter): void
-  var tmp = new Cb
+  var tmp = new QWebInspectorinitPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebInspector_override_virtual_initPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebInspector_initPainter(self: ptr cQWebInspector, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_QWebInspector_initPainter ".} =
-  type Cb = proc(super: QWebInspectorinitPainterBase, painter: gen_qpainter.QPainter): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter): auto =
-    callVirtualBase_initPainter(QWebInspector(h: self), painter)
+  var nimfunc = cast[ptr QWebInspectorinitPainterProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_redirected(self: QWebInspector, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
+  nimfunc[](slotval1)
+proc QWebInspectorredirected*(self: gen_qwebinspector_types.QWebInspector, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
 
   gen_qpaintdevice.QPaintDevice(h: fQWebInspector_virtualbase_redirected(self.h, offset.h))
 
-type QWebInspectorredirectedBase* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-proc onredirected*(self: QWebInspector, slot: proc(super: QWebInspectorredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice) =
+type QWebInspectorredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
+proc onredirected*(self: gen_qwebinspector_types.QWebInspector, slot: QWebInspectorredirectedProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebInspectorredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var tmp = new Cb
+  var tmp = new QWebInspectorredirectedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebInspector_override_virtual_redirected(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebInspector_redirected(self: ptr cQWebInspector, slot: int, offset: pointer): pointer {.exportc: "miqt_exec_callback_QWebInspector_redirected ".} =
-  type Cb = proc(super: QWebInspectorredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(offset: gen_qpoint.QPoint): auto =
-    callVirtualBase_redirected(QWebInspector(h: self), offset)
+  var nimfunc = cast[ptr QWebInspectorredirectedProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: offset)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_sharedPainter(self: QWebInspector, ): gen_qpainter.QPainter =
-
+proc QWebInspectorsharedPainter*(self: gen_qwebinspector_types.QWebInspector, ): gen_qpainter.QPainter =
 
   gen_qpainter.QPainter(h: fQWebInspector_virtualbase_sharedPainter(self.h))
 
-type QWebInspectorsharedPainterBase* = proc(): gen_qpainter.QPainter
-proc onsharedPainter*(self: QWebInspector, slot: proc(super: QWebInspectorsharedPainterBase): gen_qpainter.QPainter) =
+type QWebInspectorsharedPainterProc* = proc(): gen_qpainter.QPainter
+proc onsharedPainter*(self: gen_qwebinspector_types.QWebInspector, slot: QWebInspectorsharedPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebInspectorsharedPainterBase): gen_qpainter.QPainter
-  var tmp = new Cb
+  var tmp = new QWebInspectorsharedPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebInspector_override_virtual_sharedPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebInspector_sharedPainter(self: ptr cQWebInspector, slot: int): pointer {.exportc: "miqt_exec_callback_QWebInspector_sharedPainter ".} =
-  type Cb = proc(super: QWebInspectorsharedPainterBase): gen_qpainter.QPainter
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sharedPainter(QWebInspector(h: self), )
+  var nimfunc = cast[ptr QWebInspectorsharedPainterProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_inputMethodEvent(self: QWebInspector, param1: gen_qevent.QInputMethodEvent): void =
-
+proc QWebInspectorinputMethodEvent*(self: gen_qwebinspector_types.QWebInspector, param1: gen_qevent.QInputMethodEvent): void =
 
   fQWebInspector_virtualbase_inputMethodEvent(self.h, param1.h)
 
-type QWebInspectorinputMethodEventBase* = proc(param1: gen_qevent.QInputMethodEvent): void
-proc oninputMethodEvent*(self: QWebInspector, slot: proc(super: QWebInspectorinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void) =
+type QWebInspectorinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
+proc oninputMethodEvent*(self: gen_qwebinspector_types.QWebInspector, slot: QWebInspectorinputMethodEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebInspectorinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var tmp = new Cb
+  var tmp = new QWebInspectorinputMethodEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebInspector_override_virtual_inputMethodEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebInspector_inputMethodEvent(self: ptr cQWebInspector, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QWebInspector_inputMethodEvent ".} =
-  type Cb = proc(super: QWebInspectorinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QInputMethodEvent): auto =
-    callVirtualBase_inputMethodEvent(QWebInspector(h: self), param1)
+  var nimfunc = cast[ptr QWebInspectorinputMethodEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QInputMethodEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_inputMethodQuery(self: QWebInspector, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant =
-
+  nimfunc[](slotval1)
+proc QWebInspectorinputMethodQuery*(self: gen_qwebinspector_types.QWebInspector, param1: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQWebInspector_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
-type QWebInspectorinputMethodQueryBase* = proc(param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-proc oninputMethodQuery*(self: QWebInspector, slot: proc(super: QWebInspectorinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant) =
+type QWebInspectorinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
+proc oninputMethodQuery*(self: gen_qwebinspector_types.QWebInspector, slot: QWebInspectorinputMethodQueryProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebInspectorinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QWebInspectorinputMethodQueryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebInspector_override_virtual_inputMethodQuery(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebInspector_inputMethodQuery(self: ptr cQWebInspector, slot: int, param1: cint): pointer {.exportc: "miqt_exec_callback_QWebInspector_inputMethodQuery ".} =
-  type Cb = proc(super: QWebInspectorinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qnamespace.InputMethodQuery): auto =
-    callVirtualBase_inputMethodQuery(QWebInspector(h: self), param1)
-  let slotval1 = gen_qnamespace.InputMethodQuery(param1)
+  var nimfunc = cast[ptr QWebInspectorinputMethodQueryProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_focusNextPrevChild(self: QWebInspector, next: bool): bool =
-
+proc QWebInspectorfocusNextPrevChild*(self: gen_qwebinspector_types.QWebInspector, next: bool): bool =
 
   fQWebInspector_virtualbase_focusNextPrevChild(self.h, next)
 
-type QWebInspectorfocusNextPrevChildBase* = proc(next: bool): bool
-proc onfocusNextPrevChild*(self: QWebInspector, slot: proc(super: QWebInspectorfocusNextPrevChildBase, next: bool): bool) =
+type QWebInspectorfocusNextPrevChildProc* = proc(next: bool): bool
+proc onfocusNextPrevChild*(self: gen_qwebinspector_types.QWebInspector, slot: QWebInspectorfocusNextPrevChildProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebInspectorfocusNextPrevChildBase, next: bool): bool
-  var tmp = new Cb
+  var tmp = new QWebInspectorfocusNextPrevChildProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebInspector_override_virtual_focusNextPrevChild(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebInspector_focusNextPrevChild(self: ptr cQWebInspector, slot: int, next: bool): bool {.exportc: "miqt_exec_callback_QWebInspector_focusNextPrevChild ".} =
-  type Cb = proc(super: QWebInspectorfocusNextPrevChildBase, next: bool): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(next: bool): auto =
-    callVirtualBase_focusNextPrevChild(QWebInspector(h: self), next)
+  var nimfunc = cast[ptr QWebInspectorfocusNextPrevChildProc](cast[pointer](slot))
   let slotval1 = next
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QWebInspector, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QWebInspectoreventFilter*(self: gen_qwebinspector_types.QWebInspector, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQWebInspector_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QWebInspectoreventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QWebInspector, slot: proc(super: QWebInspectoreventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QWebInspectoreventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qwebinspector_types.QWebInspector, slot: QWebInspectoreventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebInspectoreventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QWebInspectoreventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebInspector_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebInspector_eventFilter(self: ptr cQWebInspector, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QWebInspector_eventFilter ".} =
-  type Cb = proc(super: QWebInspectoreventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QWebInspector(h: self), watched, event)
+  var nimfunc = cast[ptr QWebInspectoreventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QWebInspector, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QWebInspectortimerEvent*(self: gen_qwebinspector_types.QWebInspector, event: gen_qcoreevent.QTimerEvent): void =
 
   fQWebInspector_virtualbase_timerEvent(self.h, event.h)
 
-type QWebInspectortimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QWebInspector, slot: proc(super: QWebInspectortimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QWebInspectortimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qwebinspector_types.QWebInspector, slot: QWebInspectortimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebInspectortimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QWebInspectortimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebInspector_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebInspector_timerEvent(self: ptr cQWebInspector, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebInspector_timerEvent ".} =
-  type Cb = proc(super: QWebInspectortimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QWebInspector(h: self), event)
+  var nimfunc = cast[ptr QWebInspectortimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QWebInspector, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebInspectorchildEvent*(self: gen_qwebinspector_types.QWebInspector, event: gen_qcoreevent.QChildEvent): void =
 
   fQWebInspector_virtualbase_childEvent(self.h, event.h)
 
-type QWebInspectorchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QWebInspector, slot: proc(super: QWebInspectorchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QWebInspectorchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qwebinspector_types.QWebInspector, slot: QWebInspectorchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebInspectorchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QWebInspectorchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebInspector_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebInspector_childEvent(self: ptr cQWebInspector, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebInspector_childEvent ".} =
-  type Cb = proc(super: QWebInspectorchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QWebInspector(h: self), event)
+  var nimfunc = cast[ptr QWebInspectorchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QWebInspector, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebInspectorcustomEvent*(self: gen_qwebinspector_types.QWebInspector, event: gen_qcoreevent.QEvent): void =
 
   fQWebInspector_virtualbase_customEvent(self.h, event.h)
 
-type QWebInspectorcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QWebInspector, slot: proc(super: QWebInspectorcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QWebInspectorcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qwebinspector_types.QWebInspector, slot: QWebInspectorcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebInspectorcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QWebInspectorcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebInspector_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebInspector_customEvent(self: ptr cQWebInspector, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebInspector_customEvent ".} =
-  type Cb = proc(super: QWebInspectorcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QWebInspector(h: self), event)
+  var nimfunc = cast[ptr QWebInspectorcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QWebInspector, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QWebInspectorconnectNotify*(self: gen_qwebinspector_types.QWebInspector, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQWebInspector_virtualbase_connectNotify(self.h, signal.h)
 
-type QWebInspectorconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QWebInspector, slot: proc(super: QWebInspectorconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QWebInspectorconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qwebinspector_types.QWebInspector, slot: QWebInspectorconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebInspectorconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QWebInspectorconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebInspector_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebInspector_connectNotify(self: ptr cQWebInspector, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QWebInspector_connectNotify ".} =
-  type Cb = proc(super: QWebInspectorconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QWebInspector(h: self), signal)
+  var nimfunc = cast[ptr QWebInspectorconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QWebInspector, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QWebInspectordisconnectNotify*(self: gen_qwebinspector_types.QWebInspector, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQWebInspector_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QWebInspectordisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QWebInspector, slot: proc(super: QWebInspectordisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QWebInspectordisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qwebinspector_types.QWebInspector, slot: QWebInspectordisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebInspectordisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QWebInspectordisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebInspector_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebInspector_disconnectNotify(self: ptr cQWebInspector, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QWebInspector_disconnectNotify ".} =
-  type Cb = proc(super: QWebInspectordisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QWebInspector(h: self), signal)
+  var nimfunc = cast[ptr QWebInspectordisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QWebInspector): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qwebinspector_types.QWebInspector): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQWebInspector_staticMetaObject())
-proc delete*(self: QWebInspector) =
+proc delete*(self: gen_qwebinspector_types.QWebInspector) =
   fcQWebInspector_delete(self.h)

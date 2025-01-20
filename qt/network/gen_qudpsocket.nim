@@ -41,7 +41,6 @@ import
   gen_qabstractsocket,
   gen_qcoreevent,
   gen_qhostaddress,
-  gen_qiodevice,
   gen_qmetaobject,
   gen_qnetworkdatagram,
   gen_qnetworkinterface,
@@ -52,7 +51,6 @@ export
   gen_qabstractsocket,
   gen_qcoreevent,
   gen_qhostaddress,
-  gen_qiodevice,
   gen_qmetaobject,
   gen_qnetworkdatagram,
   gen_qnetworkinterface,
@@ -165,249 +163,224 @@ proc fcQUdpSocket_staticMetaObject(): pointer {.importc: "QUdpSocket_staticMetaO
 proc fcQUdpSocket_delete(self: pointer) {.importc: "QUdpSocket_delete".}
 
 
-func init*(T: type QUdpSocket, h: ptr cQUdpSocket): QUdpSocket =
+func init*(T: type gen_qudpsocket_types.QUdpSocket, h: ptr cQUdpSocket): gen_qudpsocket_types.QUdpSocket =
   T(h: h)
-proc create*(T: type QUdpSocket, ): QUdpSocket =
+proc create*(T: type gen_qudpsocket_types.QUdpSocket, ): gen_qudpsocket_types.QUdpSocket =
 
-  QUdpSocket.init(fcQUdpSocket_new())
-proc create*(T: type QUdpSocket, parent: gen_qobject.QObject): QUdpSocket =
+  gen_qudpsocket_types.QUdpSocket.init(fcQUdpSocket_new())
+proc create*(T: type gen_qudpsocket_types.QUdpSocket, parent: gen_qobject.QObject): gen_qudpsocket_types.QUdpSocket =
 
-  QUdpSocket.init(fcQUdpSocket_new2(parent.h))
-proc metaObject*(self: QUdpSocket, ): gen_qobjectdefs.QMetaObject =
+  gen_qudpsocket_types.QUdpSocket.init(fcQUdpSocket_new2(parent.h))
+proc metaObject*(self: gen_qudpsocket_types.QUdpSocket, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQUdpSocket_metaObject(self.h))
 
-proc metacast*(self: QUdpSocket, param1: cstring): pointer =
+proc metacast*(self: gen_qudpsocket_types.QUdpSocket, param1: cstring): pointer =
 
   fcQUdpSocket_metacast(self.h, param1)
 
-proc metacall*(self: QUdpSocket, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qudpsocket_types.QUdpSocket, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQUdpSocket_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QUdpSocket, s: cstring): string =
+proc tr*(_: type gen_qudpsocket_types.QUdpSocket, s: cstring): string =
 
   let v_ms = fcQUdpSocket_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QUdpSocket, s: cstring): string =
+proc trUtf8*(_: type gen_qudpsocket_types.QUdpSocket, s: cstring): string =
 
   let v_ms = fcQUdpSocket_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc joinMulticastGroup*(self: QUdpSocket, groupAddress: gen_qhostaddress.QHostAddress): bool =
+proc joinMulticastGroup*(self: gen_qudpsocket_types.QUdpSocket, groupAddress: gen_qhostaddress.QHostAddress): bool =
 
   fcQUdpSocket_joinMulticastGroup(self.h, groupAddress.h)
 
-proc joinMulticastGroup2*(self: QUdpSocket, groupAddress: gen_qhostaddress.QHostAddress, iface: gen_qnetworkinterface.QNetworkInterface): bool =
+proc joinMulticastGroup2*(self: gen_qudpsocket_types.QUdpSocket, groupAddress: gen_qhostaddress.QHostAddress, iface: gen_qnetworkinterface.QNetworkInterface): bool =
 
   fcQUdpSocket_joinMulticastGroup2(self.h, groupAddress.h, iface.h)
 
-proc leaveMulticastGroup*(self: QUdpSocket, groupAddress: gen_qhostaddress.QHostAddress): bool =
+proc leaveMulticastGroup*(self: gen_qudpsocket_types.QUdpSocket, groupAddress: gen_qhostaddress.QHostAddress): bool =
 
   fcQUdpSocket_leaveMulticastGroup(self.h, groupAddress.h)
 
-proc leaveMulticastGroup2*(self: QUdpSocket, groupAddress: gen_qhostaddress.QHostAddress, iface: gen_qnetworkinterface.QNetworkInterface): bool =
+proc leaveMulticastGroup2*(self: gen_qudpsocket_types.QUdpSocket, groupAddress: gen_qhostaddress.QHostAddress, iface: gen_qnetworkinterface.QNetworkInterface): bool =
 
   fcQUdpSocket_leaveMulticastGroup2(self.h, groupAddress.h, iface.h)
 
-proc multicastInterface*(self: QUdpSocket, ): gen_qnetworkinterface.QNetworkInterface =
+proc multicastInterface*(self: gen_qudpsocket_types.QUdpSocket, ): gen_qnetworkinterface.QNetworkInterface =
 
   gen_qnetworkinterface.QNetworkInterface(h: fcQUdpSocket_multicastInterface(self.h))
 
-proc setMulticastInterface*(self: QUdpSocket, iface: gen_qnetworkinterface.QNetworkInterface): void =
+proc setMulticastInterface*(self: gen_qudpsocket_types.QUdpSocket, iface: gen_qnetworkinterface.QNetworkInterface): void =
 
   fcQUdpSocket_setMulticastInterface(self.h, iface.h)
 
-proc hasPendingDatagrams*(self: QUdpSocket, ): bool =
+proc hasPendingDatagrams*(self: gen_qudpsocket_types.QUdpSocket, ): bool =
 
   fcQUdpSocket_hasPendingDatagrams(self.h)
 
-proc pendingDatagramSize*(self: QUdpSocket, ): clonglong =
+proc pendingDatagramSize*(self: gen_qudpsocket_types.QUdpSocket, ): clonglong =
 
   fcQUdpSocket_pendingDatagramSize(self.h)
 
-proc receiveDatagram*(self: QUdpSocket, ): gen_qnetworkdatagram.QNetworkDatagram =
+proc receiveDatagram*(self: gen_qudpsocket_types.QUdpSocket, ): gen_qnetworkdatagram.QNetworkDatagram =
 
   gen_qnetworkdatagram.QNetworkDatagram(h: fcQUdpSocket_receiveDatagram(self.h))
 
-proc readDatagram*(self: QUdpSocket, data: cstring, maxlen: clonglong): clonglong =
+proc readDatagram*(self: gen_qudpsocket_types.QUdpSocket, data: cstring, maxlen: clonglong): clonglong =
 
   fcQUdpSocket_readDatagram(self.h, data, maxlen)
 
-proc writeDatagram*(self: QUdpSocket, datagram: gen_qnetworkdatagram.QNetworkDatagram): clonglong =
+proc writeDatagram*(self: gen_qudpsocket_types.QUdpSocket, datagram: gen_qnetworkdatagram.QNetworkDatagram): clonglong =
 
   fcQUdpSocket_writeDatagram(self.h, datagram.h)
 
-proc writeDatagram2*(self: QUdpSocket, data: cstring, len: clonglong, host: gen_qhostaddress.QHostAddress, port: cushort): clonglong =
+proc writeDatagram2*(self: gen_qudpsocket_types.QUdpSocket, data: cstring, len: clonglong, host: gen_qhostaddress.QHostAddress, port: cushort): clonglong =
 
   fcQUdpSocket_writeDatagram2(self.h, data, len, host.h, port)
 
-proc writeDatagram3*(self: QUdpSocket, datagram: seq[byte], host: gen_qhostaddress.QHostAddress, port: cushort): clonglong =
+proc writeDatagram3*(self: gen_qudpsocket_types.QUdpSocket, datagram: seq[byte], host: gen_qhostaddress.QHostAddress, port: cushort): clonglong =
 
   fcQUdpSocket_writeDatagram3(self.h, struct_miqt_string(data: cast[cstring](if len(datagram) == 0: nil else: unsafeAddr datagram[0]), len: csize_t(len(datagram))), host.h, port)
 
-proc tr2*(_: type QUdpSocket, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qudpsocket_types.QUdpSocket, s: cstring, c: cstring): string =
 
   let v_ms = fcQUdpSocket_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QUdpSocket, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qudpsocket_types.QUdpSocket, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQUdpSocket_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QUdpSocket, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qudpsocket_types.QUdpSocket, s: cstring, c: cstring): string =
 
   let v_ms = fcQUdpSocket_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QUdpSocket, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qudpsocket_types.QUdpSocket, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQUdpSocket_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc receiveDatagram1*(self: QUdpSocket, maxSize: clonglong): gen_qnetworkdatagram.QNetworkDatagram =
+proc receiveDatagram1*(self: gen_qudpsocket_types.QUdpSocket, maxSize: clonglong): gen_qnetworkdatagram.QNetworkDatagram =
 
   gen_qnetworkdatagram.QNetworkDatagram(h: fcQUdpSocket_receiveDatagram1(self.h, maxSize))
 
-proc readDatagram3*(self: QUdpSocket, data: cstring, maxlen: clonglong, host: gen_qhostaddress.QHostAddress): clonglong =
+proc readDatagram3*(self: gen_qudpsocket_types.QUdpSocket, data: cstring, maxlen: clonglong, host: gen_qhostaddress.QHostAddress): clonglong =
 
   fcQUdpSocket_readDatagram3(self.h, data, maxlen, host.h)
 
-proc readDatagram4*(self: QUdpSocket, data: cstring, maxlen: clonglong, host: gen_qhostaddress.QHostAddress, port: ptr cushort): clonglong =
+proc readDatagram4*(self: gen_qudpsocket_types.QUdpSocket, data: cstring, maxlen: clonglong, host: gen_qhostaddress.QHostAddress, port: ptr cushort): clonglong =
 
   fcQUdpSocket_readDatagram4(self.h, data, maxlen, host.h, port)
 
-proc callVirtualBase_metaObject(self: QUdpSocket, ): gen_qobjectdefs.QMetaObject =
-
+proc QUdpSocketmetaObject*(self: gen_qudpsocket_types.QUdpSocket, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQUdpSocket_virtualbase_metaObject(self.h))
 
-type QUdpSocketmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QUdpSocket, slot: proc(super: QUdpSocketmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QUdpSocketmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qudpsocket_types.QUdpSocket, slot: QUdpSocketmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QUdpSocketmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QUdpSocketmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUdpSocket_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUdpSocket_metaObject(self: ptr cQUdpSocket, slot: int): pointer {.exportc: "miqt_exec_callback_QUdpSocket_metaObject ".} =
-  type Cb = proc(super: QUdpSocketmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QUdpSocket(h: self), )
+  var nimfunc = cast[ptr QUdpSocketmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QUdpSocket, param1: cstring): pointer =
-
+proc QUdpSocketmetacast*(self: gen_qudpsocket_types.QUdpSocket, param1: cstring): pointer =
 
   fQUdpSocket_virtualbase_metacast(self.h, param1)
 
-type QUdpSocketmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QUdpSocket, slot: proc(super: QUdpSocketmetacastBase, param1: cstring): pointer) =
+type QUdpSocketmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qudpsocket_types.QUdpSocket, slot: QUdpSocketmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QUdpSocketmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QUdpSocketmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUdpSocket_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUdpSocket_metacast(self: ptr cQUdpSocket, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QUdpSocket_metacast ".} =
-  type Cb = proc(super: QUdpSocketmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QUdpSocket(h: self), param1)
+  var nimfunc = cast[ptr QUdpSocketmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QUdpSocket, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QUdpSocketmetacall*(self: gen_qudpsocket_types.QUdpSocket, param1: cint, param2: cint, param3: pointer): cint =
 
   fQUdpSocket_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QUdpSocketmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QUdpSocket, slot: proc(super: QUdpSocketmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QUdpSocketmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qudpsocket_types.QUdpSocket, slot: QUdpSocketmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QUdpSocketmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QUdpSocketmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUdpSocket_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUdpSocket_metacall(self: ptr cQUdpSocket, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QUdpSocket_metacall ".} =
-  type Cb = proc(super: QUdpSocketmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QUdpSocket(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QUdpSocketmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_resume(self: QUdpSocket, ): void =
-
+proc QUdpSocketresume*(self: gen_qudpsocket_types.QUdpSocket, ): void =
 
   fQUdpSocket_virtualbase_resume(self.h)
 
-type QUdpSocketresumeBase* = proc(): void
-proc onresume*(self: QUdpSocket, slot: proc(super: QUdpSocketresumeBase): void) =
+type QUdpSocketresumeProc* = proc(): void
+proc onresume*(self: gen_qudpsocket_types.QUdpSocket, slot: QUdpSocketresumeProc) =
   # TODO check subclass
-  type Cb = proc(super: QUdpSocketresumeBase): void
-  var tmp = new Cb
+  var tmp = new QUdpSocketresumeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUdpSocket_override_virtual_resume(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUdpSocket_resume(self: ptr cQUdpSocket, slot: int): void {.exportc: "miqt_exec_callback_QUdpSocket_resume ".} =
-  type Cb = proc(super: QUdpSocketresumeBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_resume(QUdpSocket(h: self), )
+  var nimfunc = cast[ptr QUdpSocketresumeProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_connectToHost(self: QUdpSocket, hostName: string, port: cushort, mode: gen_qiodevice.QIODeviceOpenModeFlag, protocol: gen_qabstractsocket.QAbstractSocketNetworkLayerProtocol): void =
-
+  nimfunc[]()
+proc QUdpSocketconnectToHost*(self: gen_qudpsocket_types.QUdpSocket, hostName: string, port: cushort, mode: cint, protocol: cint): void =
 
   fQUdpSocket_virtualbase_connectToHost(self.h, struct_miqt_string(data: hostName, len: csize_t(len(hostName))), port, cint(mode), cint(protocol))
 
-type QUdpSocketconnectToHostBase* = proc(hostName: string, port: cushort, mode: gen_qiodevice.QIODeviceOpenModeFlag, protocol: gen_qabstractsocket.QAbstractSocketNetworkLayerProtocol): void
-proc onconnectToHost*(self: QUdpSocket, slot: proc(super: QUdpSocketconnectToHostBase, hostName: string, port: cushort, mode: gen_qiodevice.QIODeviceOpenModeFlag, protocol: gen_qabstractsocket.QAbstractSocketNetworkLayerProtocol): void) =
+type QUdpSocketconnectToHostProc* = proc(hostName: string, port: cushort, mode: cint, protocol: cint): void
+proc onconnectToHost*(self: gen_qudpsocket_types.QUdpSocket, slot: QUdpSocketconnectToHostProc) =
   # TODO check subclass
-  type Cb = proc(super: QUdpSocketconnectToHostBase, hostName: string, port: cushort, mode: gen_qiodevice.QIODeviceOpenModeFlag, protocol: gen_qabstractsocket.QAbstractSocketNetworkLayerProtocol): void
-  var tmp = new Cb
+  var tmp = new QUdpSocketconnectToHostProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUdpSocket_override_virtual_connectToHost(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUdpSocket_connectToHost(self: ptr cQUdpSocket, slot: int, hostName: struct_miqt_string, port: cushort, mode: cint, protocol: cint): void {.exportc: "miqt_exec_callback_QUdpSocket_connectToHost ".} =
-  type Cb = proc(super: QUdpSocketconnectToHostBase, hostName: string, port: cushort, mode: gen_qiodevice.QIODeviceOpenModeFlag, protocol: gen_qabstractsocket.QAbstractSocketNetworkLayerProtocol): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(hostName: string, port: cushort, mode: gen_qiodevice.QIODeviceOpenModeFlag, protocol: gen_qabstractsocket.QAbstractSocketNetworkLayerProtocol): auto =
-    callVirtualBase_connectToHost(QUdpSocket(h: self), hostName, port, mode, protocol)
+  var nimfunc = cast[ptr QUdpSocketconnectToHostProc](cast[pointer](slot))
   let vhostName_ms = hostName
   let vhostNamex_ret = string.fromBytes(toOpenArrayByte(vhostName_ms.data, 0, int(vhostName_ms.len)-1))
   c_free(vhostName_ms.data)
@@ -415,762 +388,607 @@ proc miqt_exec_callback_QUdpSocket_connectToHost(self: ptr cQUdpSocket, slot: in
 
   let slotval2 = port
 
-  let slotval3 = gen_qiodevice.QIODeviceOpenModeFlag(mode)
+  let slotval3 = cint(mode)
 
-  let slotval4 = gen_qabstractsocket.QAbstractSocketNetworkLayerProtocol(protocol)
+  let slotval4 = cint(protocol)
 
 
-  nimfunc[](superCall, slotval1, slotval2, slotval3, slotval4)
-proc callVirtualBase_disconnectFromHost(self: QUdpSocket, ): void =
-
+  nimfunc[](slotval1, slotval2, slotval3, slotval4)
+proc QUdpSocketdisconnectFromHost*(self: gen_qudpsocket_types.QUdpSocket, ): void =
 
   fQUdpSocket_virtualbase_disconnectFromHost(self.h)
 
-type QUdpSocketdisconnectFromHostBase* = proc(): void
-proc ondisconnectFromHost*(self: QUdpSocket, slot: proc(super: QUdpSocketdisconnectFromHostBase): void) =
+type QUdpSocketdisconnectFromHostProc* = proc(): void
+proc ondisconnectFromHost*(self: gen_qudpsocket_types.QUdpSocket, slot: QUdpSocketdisconnectFromHostProc) =
   # TODO check subclass
-  type Cb = proc(super: QUdpSocketdisconnectFromHostBase): void
-  var tmp = new Cb
+  var tmp = new QUdpSocketdisconnectFromHostProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUdpSocket_override_virtual_disconnectFromHost(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUdpSocket_disconnectFromHost(self: ptr cQUdpSocket, slot: int): void {.exportc: "miqt_exec_callback_QUdpSocket_disconnectFromHost ".} =
-  type Cb = proc(super: QUdpSocketdisconnectFromHostBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_disconnectFromHost(QUdpSocket(h: self), )
+  var nimfunc = cast[ptr QUdpSocketdisconnectFromHostProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_bytesAvailable(self: QUdpSocket, ): clonglong =
-
+  nimfunc[]()
+proc QUdpSocketbytesAvailable*(self: gen_qudpsocket_types.QUdpSocket, ): clonglong =
 
   fQUdpSocket_virtualbase_bytesAvailable(self.h)
 
-type QUdpSocketbytesAvailableBase* = proc(): clonglong
-proc onbytesAvailable*(self: QUdpSocket, slot: proc(super: QUdpSocketbytesAvailableBase): clonglong) =
+type QUdpSocketbytesAvailableProc* = proc(): clonglong
+proc onbytesAvailable*(self: gen_qudpsocket_types.QUdpSocket, slot: QUdpSocketbytesAvailableProc) =
   # TODO check subclass
-  type Cb = proc(super: QUdpSocketbytesAvailableBase): clonglong
-  var tmp = new Cb
+  var tmp = new QUdpSocketbytesAvailableProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUdpSocket_override_virtual_bytesAvailable(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUdpSocket_bytesAvailable(self: ptr cQUdpSocket, slot: int): clonglong {.exportc: "miqt_exec_callback_QUdpSocket_bytesAvailable ".} =
-  type Cb = proc(super: QUdpSocketbytesAvailableBase): clonglong
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_bytesAvailable(QUdpSocket(h: self), )
+  var nimfunc = cast[ptr QUdpSocketbytesAvailableProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_bytesToWrite(self: QUdpSocket, ): clonglong =
-
+proc QUdpSocketbytesToWrite*(self: gen_qudpsocket_types.QUdpSocket, ): clonglong =
 
   fQUdpSocket_virtualbase_bytesToWrite(self.h)
 
-type QUdpSocketbytesToWriteBase* = proc(): clonglong
-proc onbytesToWrite*(self: QUdpSocket, slot: proc(super: QUdpSocketbytesToWriteBase): clonglong) =
+type QUdpSocketbytesToWriteProc* = proc(): clonglong
+proc onbytesToWrite*(self: gen_qudpsocket_types.QUdpSocket, slot: QUdpSocketbytesToWriteProc) =
   # TODO check subclass
-  type Cb = proc(super: QUdpSocketbytesToWriteBase): clonglong
-  var tmp = new Cb
+  var tmp = new QUdpSocketbytesToWriteProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUdpSocket_override_virtual_bytesToWrite(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUdpSocket_bytesToWrite(self: ptr cQUdpSocket, slot: int): clonglong {.exportc: "miqt_exec_callback_QUdpSocket_bytesToWrite ".} =
-  type Cb = proc(super: QUdpSocketbytesToWriteBase): clonglong
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_bytesToWrite(QUdpSocket(h: self), )
+  var nimfunc = cast[ptr QUdpSocketbytesToWriteProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_canReadLine(self: QUdpSocket, ): bool =
-
+proc QUdpSocketcanReadLine*(self: gen_qudpsocket_types.QUdpSocket, ): bool =
 
   fQUdpSocket_virtualbase_canReadLine(self.h)
 
-type QUdpSocketcanReadLineBase* = proc(): bool
-proc oncanReadLine*(self: QUdpSocket, slot: proc(super: QUdpSocketcanReadLineBase): bool) =
+type QUdpSocketcanReadLineProc* = proc(): bool
+proc oncanReadLine*(self: gen_qudpsocket_types.QUdpSocket, slot: QUdpSocketcanReadLineProc) =
   # TODO check subclass
-  type Cb = proc(super: QUdpSocketcanReadLineBase): bool
-  var tmp = new Cb
+  var tmp = new QUdpSocketcanReadLineProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUdpSocket_override_virtual_canReadLine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUdpSocket_canReadLine(self: ptr cQUdpSocket, slot: int): bool {.exportc: "miqt_exec_callback_QUdpSocket_canReadLine ".} =
-  type Cb = proc(super: QUdpSocketcanReadLineBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_canReadLine(QUdpSocket(h: self), )
+  var nimfunc = cast[ptr QUdpSocketcanReadLineProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setReadBufferSize(self: QUdpSocket, size: clonglong): void =
-
+proc QUdpSocketsetReadBufferSize*(self: gen_qudpsocket_types.QUdpSocket, size: clonglong): void =
 
   fQUdpSocket_virtualbase_setReadBufferSize(self.h, size)
 
-type QUdpSocketsetReadBufferSizeBase* = proc(size: clonglong): void
-proc onsetReadBufferSize*(self: QUdpSocket, slot: proc(super: QUdpSocketsetReadBufferSizeBase, size: clonglong): void) =
+type QUdpSocketsetReadBufferSizeProc* = proc(size: clonglong): void
+proc onsetReadBufferSize*(self: gen_qudpsocket_types.QUdpSocket, slot: QUdpSocketsetReadBufferSizeProc) =
   # TODO check subclass
-  type Cb = proc(super: QUdpSocketsetReadBufferSizeBase, size: clonglong): void
-  var tmp = new Cb
+  var tmp = new QUdpSocketsetReadBufferSizeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUdpSocket_override_virtual_setReadBufferSize(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUdpSocket_setReadBufferSize(self: ptr cQUdpSocket, slot: int, size: clonglong): void {.exportc: "miqt_exec_callback_QUdpSocket_setReadBufferSize ".} =
-  type Cb = proc(super: QUdpSocketsetReadBufferSizeBase, size: clonglong): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(size: clonglong): auto =
-    callVirtualBase_setReadBufferSize(QUdpSocket(h: self), size)
+  var nimfunc = cast[ptr QUdpSocketsetReadBufferSizeProc](cast[pointer](slot))
   let slotval1 = size
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_socketDescriptor(self: QUdpSocket, ): uint =
-
+  nimfunc[](slotval1)
+proc QUdpSocketsocketDescriptor*(self: gen_qudpsocket_types.QUdpSocket, ): uint =
 
   fQUdpSocket_virtualbase_socketDescriptor(self.h)
 
-type QUdpSocketsocketDescriptorBase* = proc(): uint
-proc onsocketDescriptor*(self: QUdpSocket, slot: proc(super: QUdpSocketsocketDescriptorBase): uint) =
+type QUdpSocketsocketDescriptorProc* = proc(): uint
+proc onsocketDescriptor*(self: gen_qudpsocket_types.QUdpSocket, slot: QUdpSocketsocketDescriptorProc) =
   # TODO check subclass
-  type Cb = proc(super: QUdpSocketsocketDescriptorBase): uint
-  var tmp = new Cb
+  var tmp = new QUdpSocketsocketDescriptorProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUdpSocket_override_virtual_socketDescriptor(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUdpSocket_socketDescriptor(self: ptr cQUdpSocket, slot: int): uint {.exportc: "miqt_exec_callback_QUdpSocket_socketDescriptor ".} =
-  type Cb = proc(super: QUdpSocketsocketDescriptorBase): uint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_socketDescriptor(QUdpSocket(h: self), )
+  var nimfunc = cast[ptr QUdpSocketsocketDescriptorProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setSocketDescriptor(self: QUdpSocket, socketDescriptor: uint, state: gen_qabstractsocket.QAbstractSocketSocketState, openMode: gen_qiodevice.QIODeviceOpenModeFlag): bool =
-
+proc QUdpSocketsetSocketDescriptor*(self: gen_qudpsocket_types.QUdpSocket, socketDescriptor: uint, state: cint, openMode: cint): bool =
 
   fQUdpSocket_virtualbase_setSocketDescriptor(self.h, socketDescriptor, cint(state), cint(openMode))
 
-type QUdpSocketsetSocketDescriptorBase* = proc(socketDescriptor: uint, state: gen_qabstractsocket.QAbstractSocketSocketState, openMode: gen_qiodevice.QIODeviceOpenModeFlag): bool
-proc onsetSocketDescriptor*(self: QUdpSocket, slot: proc(super: QUdpSocketsetSocketDescriptorBase, socketDescriptor: uint, state: gen_qabstractsocket.QAbstractSocketSocketState, openMode: gen_qiodevice.QIODeviceOpenModeFlag): bool) =
+type QUdpSocketsetSocketDescriptorProc* = proc(socketDescriptor: uint, state: cint, openMode: cint): bool
+proc onsetSocketDescriptor*(self: gen_qudpsocket_types.QUdpSocket, slot: QUdpSocketsetSocketDescriptorProc) =
   # TODO check subclass
-  type Cb = proc(super: QUdpSocketsetSocketDescriptorBase, socketDescriptor: uint, state: gen_qabstractsocket.QAbstractSocketSocketState, openMode: gen_qiodevice.QIODeviceOpenModeFlag): bool
-  var tmp = new Cb
+  var tmp = new QUdpSocketsetSocketDescriptorProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUdpSocket_override_virtual_setSocketDescriptor(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUdpSocket_setSocketDescriptor(self: ptr cQUdpSocket, slot: int, socketDescriptor: uint, state: cint, openMode: cint): bool {.exportc: "miqt_exec_callback_QUdpSocket_setSocketDescriptor ".} =
-  type Cb = proc(super: QUdpSocketsetSocketDescriptorBase, socketDescriptor: uint, state: gen_qabstractsocket.QAbstractSocketSocketState, openMode: gen_qiodevice.QIODeviceOpenModeFlag): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(socketDescriptor: uint, state: gen_qabstractsocket.QAbstractSocketSocketState, openMode: gen_qiodevice.QIODeviceOpenModeFlag): auto =
-    callVirtualBase_setSocketDescriptor(QUdpSocket(h: self), socketDescriptor, state, openMode)
+  var nimfunc = cast[ptr QUdpSocketsetSocketDescriptorProc](cast[pointer](slot))
   let slotval1 = socketDescriptor
 
-  let slotval2 = gen_qabstractsocket.QAbstractSocketSocketState(state)
+  let slotval2 = cint(state)
 
-  let slotval3 = gen_qiodevice.QIODeviceOpenModeFlag(openMode)
+  let slotval3 = cint(openMode)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_setSocketOption(self: QUdpSocket, option: gen_qabstractsocket.QAbstractSocketSocketOption, value: gen_qvariant.QVariant): void =
-
+proc QUdpSocketsetSocketOption*(self: gen_qudpsocket_types.QUdpSocket, option: cint, value: gen_qvariant.QVariant): void =
 
   fQUdpSocket_virtualbase_setSocketOption(self.h, cint(option), value.h)
 
-type QUdpSocketsetSocketOptionBase* = proc(option: gen_qabstractsocket.QAbstractSocketSocketOption, value: gen_qvariant.QVariant): void
-proc onsetSocketOption*(self: QUdpSocket, slot: proc(super: QUdpSocketsetSocketOptionBase, option: gen_qabstractsocket.QAbstractSocketSocketOption, value: gen_qvariant.QVariant): void) =
+type QUdpSocketsetSocketOptionProc* = proc(option: cint, value: gen_qvariant.QVariant): void
+proc onsetSocketOption*(self: gen_qudpsocket_types.QUdpSocket, slot: QUdpSocketsetSocketOptionProc) =
   # TODO check subclass
-  type Cb = proc(super: QUdpSocketsetSocketOptionBase, option: gen_qabstractsocket.QAbstractSocketSocketOption, value: gen_qvariant.QVariant): void
-  var tmp = new Cb
+  var tmp = new QUdpSocketsetSocketOptionProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUdpSocket_override_virtual_setSocketOption(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUdpSocket_setSocketOption(self: ptr cQUdpSocket, slot: int, option: cint, value: pointer): void {.exportc: "miqt_exec_callback_QUdpSocket_setSocketOption ".} =
-  type Cb = proc(super: QUdpSocketsetSocketOptionBase, option: gen_qabstractsocket.QAbstractSocketSocketOption, value: gen_qvariant.QVariant): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(option: gen_qabstractsocket.QAbstractSocketSocketOption, value: gen_qvariant.QVariant): auto =
-    callVirtualBase_setSocketOption(QUdpSocket(h: self), option, value)
-  let slotval1 = gen_qabstractsocket.QAbstractSocketSocketOption(option)
+  var nimfunc = cast[ptr QUdpSocketsetSocketOptionProc](cast[pointer](slot))
+  let slotval1 = cint(option)
 
   let slotval2 = gen_qvariant.QVariant(h: value)
 
 
-  nimfunc[](superCall, slotval1, slotval2)
-proc callVirtualBase_socketOption(self: QUdpSocket, option: gen_qabstractsocket.QAbstractSocketSocketOption): gen_qvariant.QVariant =
-
+  nimfunc[](slotval1, slotval2)
+proc QUdpSocketsocketOption*(self: gen_qudpsocket_types.QUdpSocket, option: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQUdpSocket_virtualbase_socketOption(self.h, cint(option)))
 
-type QUdpSocketsocketOptionBase* = proc(option: gen_qabstractsocket.QAbstractSocketSocketOption): gen_qvariant.QVariant
-proc onsocketOption*(self: QUdpSocket, slot: proc(super: QUdpSocketsocketOptionBase, option: gen_qabstractsocket.QAbstractSocketSocketOption): gen_qvariant.QVariant) =
+type QUdpSocketsocketOptionProc* = proc(option: cint): gen_qvariant.QVariant
+proc onsocketOption*(self: gen_qudpsocket_types.QUdpSocket, slot: QUdpSocketsocketOptionProc) =
   # TODO check subclass
-  type Cb = proc(super: QUdpSocketsocketOptionBase, option: gen_qabstractsocket.QAbstractSocketSocketOption): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QUdpSocketsocketOptionProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUdpSocket_override_virtual_socketOption(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUdpSocket_socketOption(self: ptr cQUdpSocket, slot: int, option: cint): pointer {.exportc: "miqt_exec_callback_QUdpSocket_socketOption ".} =
-  type Cb = proc(super: QUdpSocketsocketOptionBase, option: gen_qabstractsocket.QAbstractSocketSocketOption): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(option: gen_qabstractsocket.QAbstractSocketSocketOption): auto =
-    callVirtualBase_socketOption(QUdpSocket(h: self), option)
-  let slotval1 = gen_qabstractsocket.QAbstractSocketSocketOption(option)
+  var nimfunc = cast[ptr QUdpSocketsocketOptionProc](cast[pointer](slot))
+  let slotval1 = cint(option)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_close(self: QUdpSocket, ): void =
-
+proc QUdpSocketclose*(self: gen_qudpsocket_types.QUdpSocket, ): void =
 
   fQUdpSocket_virtualbase_close(self.h)
 
-type QUdpSocketcloseBase* = proc(): void
-proc onclose*(self: QUdpSocket, slot: proc(super: QUdpSocketcloseBase): void) =
+type QUdpSocketcloseProc* = proc(): void
+proc onclose*(self: gen_qudpsocket_types.QUdpSocket, slot: QUdpSocketcloseProc) =
   # TODO check subclass
-  type Cb = proc(super: QUdpSocketcloseBase): void
-  var tmp = new Cb
+  var tmp = new QUdpSocketcloseProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUdpSocket_override_virtual_close(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUdpSocket_close(self: ptr cQUdpSocket, slot: int): void {.exportc: "miqt_exec_callback_QUdpSocket_close ".} =
-  type Cb = proc(super: QUdpSocketcloseBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_close(QUdpSocket(h: self), )
+  var nimfunc = cast[ptr QUdpSocketcloseProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_isSequential(self: QUdpSocket, ): bool =
-
+  nimfunc[]()
+proc QUdpSocketisSequential*(self: gen_qudpsocket_types.QUdpSocket, ): bool =
 
   fQUdpSocket_virtualbase_isSequential(self.h)
 
-type QUdpSocketisSequentialBase* = proc(): bool
-proc onisSequential*(self: QUdpSocket, slot: proc(super: QUdpSocketisSequentialBase): bool) =
+type QUdpSocketisSequentialProc* = proc(): bool
+proc onisSequential*(self: gen_qudpsocket_types.QUdpSocket, slot: QUdpSocketisSequentialProc) =
   # TODO check subclass
-  type Cb = proc(super: QUdpSocketisSequentialBase): bool
-  var tmp = new Cb
+  var tmp = new QUdpSocketisSequentialProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUdpSocket_override_virtual_isSequential(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUdpSocket_isSequential(self: ptr cQUdpSocket, slot: int): bool {.exportc: "miqt_exec_callback_QUdpSocket_isSequential ".} =
-  type Cb = proc(super: QUdpSocketisSequentialBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_isSequential(QUdpSocket(h: self), )
+  var nimfunc = cast[ptr QUdpSocketisSequentialProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_atEnd(self: QUdpSocket, ): bool =
-
+proc QUdpSocketatEnd*(self: gen_qudpsocket_types.QUdpSocket, ): bool =
 
   fQUdpSocket_virtualbase_atEnd(self.h)
 
-type QUdpSocketatEndBase* = proc(): bool
-proc onatEnd*(self: QUdpSocket, slot: proc(super: QUdpSocketatEndBase): bool) =
+type QUdpSocketatEndProc* = proc(): bool
+proc onatEnd*(self: gen_qudpsocket_types.QUdpSocket, slot: QUdpSocketatEndProc) =
   # TODO check subclass
-  type Cb = proc(super: QUdpSocketatEndBase): bool
-  var tmp = new Cb
+  var tmp = new QUdpSocketatEndProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUdpSocket_override_virtual_atEnd(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUdpSocket_atEnd(self: ptr cQUdpSocket, slot: int): bool {.exportc: "miqt_exec_callback_QUdpSocket_atEnd ".} =
-  type Cb = proc(super: QUdpSocketatEndBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_atEnd(QUdpSocket(h: self), )
+  var nimfunc = cast[ptr QUdpSocketatEndProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_waitForConnected(self: QUdpSocket, msecs: cint): bool =
-
+proc QUdpSocketwaitForConnected*(self: gen_qudpsocket_types.QUdpSocket, msecs: cint): bool =
 
   fQUdpSocket_virtualbase_waitForConnected(self.h, msecs)
 
-type QUdpSocketwaitForConnectedBase* = proc(msecs: cint): bool
-proc onwaitForConnected*(self: QUdpSocket, slot: proc(super: QUdpSocketwaitForConnectedBase, msecs: cint): bool) =
+type QUdpSocketwaitForConnectedProc* = proc(msecs: cint): bool
+proc onwaitForConnected*(self: gen_qudpsocket_types.QUdpSocket, slot: QUdpSocketwaitForConnectedProc) =
   # TODO check subclass
-  type Cb = proc(super: QUdpSocketwaitForConnectedBase, msecs: cint): bool
-  var tmp = new Cb
+  var tmp = new QUdpSocketwaitForConnectedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUdpSocket_override_virtual_waitForConnected(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUdpSocket_waitForConnected(self: ptr cQUdpSocket, slot: int, msecs: cint): bool {.exportc: "miqt_exec_callback_QUdpSocket_waitForConnected ".} =
-  type Cb = proc(super: QUdpSocketwaitForConnectedBase, msecs: cint): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(msecs: cint): auto =
-    callVirtualBase_waitForConnected(QUdpSocket(h: self), msecs)
+  var nimfunc = cast[ptr QUdpSocketwaitForConnectedProc](cast[pointer](slot))
   let slotval1 = msecs
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_waitForReadyRead(self: QUdpSocket, msecs: cint): bool =
-
+proc QUdpSocketwaitForReadyRead*(self: gen_qudpsocket_types.QUdpSocket, msecs: cint): bool =
 
   fQUdpSocket_virtualbase_waitForReadyRead(self.h, msecs)
 
-type QUdpSocketwaitForReadyReadBase* = proc(msecs: cint): bool
-proc onwaitForReadyRead*(self: QUdpSocket, slot: proc(super: QUdpSocketwaitForReadyReadBase, msecs: cint): bool) =
+type QUdpSocketwaitForReadyReadProc* = proc(msecs: cint): bool
+proc onwaitForReadyRead*(self: gen_qudpsocket_types.QUdpSocket, slot: QUdpSocketwaitForReadyReadProc) =
   # TODO check subclass
-  type Cb = proc(super: QUdpSocketwaitForReadyReadBase, msecs: cint): bool
-  var tmp = new Cb
+  var tmp = new QUdpSocketwaitForReadyReadProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUdpSocket_override_virtual_waitForReadyRead(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUdpSocket_waitForReadyRead(self: ptr cQUdpSocket, slot: int, msecs: cint): bool {.exportc: "miqt_exec_callback_QUdpSocket_waitForReadyRead ".} =
-  type Cb = proc(super: QUdpSocketwaitForReadyReadBase, msecs: cint): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(msecs: cint): auto =
-    callVirtualBase_waitForReadyRead(QUdpSocket(h: self), msecs)
+  var nimfunc = cast[ptr QUdpSocketwaitForReadyReadProc](cast[pointer](slot))
   let slotval1 = msecs
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_waitForBytesWritten(self: QUdpSocket, msecs: cint): bool =
-
+proc QUdpSocketwaitForBytesWritten*(self: gen_qudpsocket_types.QUdpSocket, msecs: cint): bool =
 
   fQUdpSocket_virtualbase_waitForBytesWritten(self.h, msecs)
 
-type QUdpSocketwaitForBytesWrittenBase* = proc(msecs: cint): bool
-proc onwaitForBytesWritten*(self: QUdpSocket, slot: proc(super: QUdpSocketwaitForBytesWrittenBase, msecs: cint): bool) =
+type QUdpSocketwaitForBytesWrittenProc* = proc(msecs: cint): bool
+proc onwaitForBytesWritten*(self: gen_qudpsocket_types.QUdpSocket, slot: QUdpSocketwaitForBytesWrittenProc) =
   # TODO check subclass
-  type Cb = proc(super: QUdpSocketwaitForBytesWrittenBase, msecs: cint): bool
-  var tmp = new Cb
+  var tmp = new QUdpSocketwaitForBytesWrittenProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUdpSocket_override_virtual_waitForBytesWritten(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUdpSocket_waitForBytesWritten(self: ptr cQUdpSocket, slot: int, msecs: cint): bool {.exportc: "miqt_exec_callback_QUdpSocket_waitForBytesWritten ".} =
-  type Cb = proc(super: QUdpSocketwaitForBytesWrittenBase, msecs: cint): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(msecs: cint): auto =
-    callVirtualBase_waitForBytesWritten(QUdpSocket(h: self), msecs)
+  var nimfunc = cast[ptr QUdpSocketwaitForBytesWrittenProc](cast[pointer](slot))
   let slotval1 = msecs
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_waitForDisconnected(self: QUdpSocket, msecs: cint): bool =
-
+proc QUdpSocketwaitForDisconnected*(self: gen_qudpsocket_types.QUdpSocket, msecs: cint): bool =
 
   fQUdpSocket_virtualbase_waitForDisconnected(self.h, msecs)
 
-type QUdpSocketwaitForDisconnectedBase* = proc(msecs: cint): bool
-proc onwaitForDisconnected*(self: QUdpSocket, slot: proc(super: QUdpSocketwaitForDisconnectedBase, msecs: cint): bool) =
+type QUdpSocketwaitForDisconnectedProc* = proc(msecs: cint): bool
+proc onwaitForDisconnected*(self: gen_qudpsocket_types.QUdpSocket, slot: QUdpSocketwaitForDisconnectedProc) =
   # TODO check subclass
-  type Cb = proc(super: QUdpSocketwaitForDisconnectedBase, msecs: cint): bool
-  var tmp = new Cb
+  var tmp = new QUdpSocketwaitForDisconnectedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUdpSocket_override_virtual_waitForDisconnected(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUdpSocket_waitForDisconnected(self: ptr cQUdpSocket, slot: int, msecs: cint): bool {.exportc: "miqt_exec_callback_QUdpSocket_waitForDisconnected ".} =
-  type Cb = proc(super: QUdpSocketwaitForDisconnectedBase, msecs: cint): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(msecs: cint): auto =
-    callVirtualBase_waitForDisconnected(QUdpSocket(h: self), msecs)
+  var nimfunc = cast[ptr QUdpSocketwaitForDisconnectedProc](cast[pointer](slot))
   let slotval1 = msecs
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_readData(self: QUdpSocket, data: cstring, maxlen: clonglong): clonglong =
-
+proc QUdpSocketreadData*(self: gen_qudpsocket_types.QUdpSocket, data: cstring, maxlen: clonglong): clonglong =
 
   fQUdpSocket_virtualbase_readData(self.h, data, maxlen)
 
-type QUdpSocketreadDataBase* = proc(data: cstring, maxlen: clonglong): clonglong
-proc onreadData*(self: QUdpSocket, slot: proc(super: QUdpSocketreadDataBase, data: cstring, maxlen: clonglong): clonglong) =
+type QUdpSocketreadDataProc* = proc(data: cstring, maxlen: clonglong): clonglong
+proc onreadData*(self: gen_qudpsocket_types.QUdpSocket, slot: QUdpSocketreadDataProc) =
   # TODO check subclass
-  type Cb = proc(super: QUdpSocketreadDataBase, data: cstring, maxlen: clonglong): clonglong
-  var tmp = new Cb
+  var tmp = new QUdpSocketreadDataProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUdpSocket_override_virtual_readData(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUdpSocket_readData(self: ptr cQUdpSocket, slot: int, data: cstring, maxlen: clonglong): clonglong {.exportc: "miqt_exec_callback_QUdpSocket_readData ".} =
-  type Cb = proc(super: QUdpSocketreadDataBase, data: cstring, maxlen: clonglong): clonglong
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(data: cstring, maxlen: clonglong): auto =
-    callVirtualBase_readData(QUdpSocket(h: self), data, maxlen)
+  var nimfunc = cast[ptr QUdpSocketreadDataProc](cast[pointer](slot))
   let slotval1 = (data)
 
   let slotval2 = maxlen
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_readLineData(self: QUdpSocket, data: cstring, maxlen: clonglong): clonglong =
-
+proc QUdpSocketreadLineData*(self: gen_qudpsocket_types.QUdpSocket, data: cstring, maxlen: clonglong): clonglong =
 
   fQUdpSocket_virtualbase_readLineData(self.h, data, maxlen)
 
-type QUdpSocketreadLineDataBase* = proc(data: cstring, maxlen: clonglong): clonglong
-proc onreadLineData*(self: QUdpSocket, slot: proc(super: QUdpSocketreadLineDataBase, data: cstring, maxlen: clonglong): clonglong) =
+type QUdpSocketreadLineDataProc* = proc(data: cstring, maxlen: clonglong): clonglong
+proc onreadLineData*(self: gen_qudpsocket_types.QUdpSocket, slot: QUdpSocketreadLineDataProc) =
   # TODO check subclass
-  type Cb = proc(super: QUdpSocketreadLineDataBase, data: cstring, maxlen: clonglong): clonglong
-  var tmp = new Cb
+  var tmp = new QUdpSocketreadLineDataProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUdpSocket_override_virtual_readLineData(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUdpSocket_readLineData(self: ptr cQUdpSocket, slot: int, data: cstring, maxlen: clonglong): clonglong {.exportc: "miqt_exec_callback_QUdpSocket_readLineData ".} =
-  type Cb = proc(super: QUdpSocketreadLineDataBase, data: cstring, maxlen: clonglong): clonglong
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(data: cstring, maxlen: clonglong): auto =
-    callVirtualBase_readLineData(QUdpSocket(h: self), data, maxlen)
+  var nimfunc = cast[ptr QUdpSocketreadLineDataProc](cast[pointer](slot))
   let slotval1 = (data)
 
   let slotval2 = maxlen
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_writeData(self: QUdpSocket, data: cstring, len: clonglong): clonglong =
-
+proc QUdpSocketwriteData*(self: gen_qudpsocket_types.QUdpSocket, data: cstring, len: clonglong): clonglong =
 
   fQUdpSocket_virtualbase_writeData(self.h, data, len)
 
-type QUdpSocketwriteDataBase* = proc(data: cstring, len: clonglong): clonglong
-proc onwriteData*(self: QUdpSocket, slot: proc(super: QUdpSocketwriteDataBase, data: cstring, len: clonglong): clonglong) =
+type QUdpSocketwriteDataProc* = proc(data: cstring, len: clonglong): clonglong
+proc onwriteData*(self: gen_qudpsocket_types.QUdpSocket, slot: QUdpSocketwriteDataProc) =
   # TODO check subclass
-  type Cb = proc(super: QUdpSocketwriteDataBase, data: cstring, len: clonglong): clonglong
-  var tmp = new Cb
+  var tmp = new QUdpSocketwriteDataProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUdpSocket_override_virtual_writeData(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUdpSocket_writeData(self: ptr cQUdpSocket, slot: int, data: cstring, len: clonglong): clonglong {.exportc: "miqt_exec_callback_QUdpSocket_writeData ".} =
-  type Cb = proc(super: QUdpSocketwriteDataBase, data: cstring, len: clonglong): clonglong
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(data: cstring, len: clonglong): auto =
-    callVirtualBase_writeData(QUdpSocket(h: self), data, len)
+  var nimfunc = cast[ptr QUdpSocketwriteDataProc](cast[pointer](slot))
   let slotval1 = (data)
 
   let slotval2 = len
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_open(self: QUdpSocket, mode: gen_qiodevice.QIODeviceOpenModeFlag): bool =
-
+proc QUdpSocketopen*(self: gen_qudpsocket_types.QUdpSocket, mode: cint): bool =
 
   fQUdpSocket_virtualbase_open(self.h, cint(mode))
 
-type QUdpSocketopenBase* = proc(mode: gen_qiodevice.QIODeviceOpenModeFlag): bool
-proc onopen*(self: QUdpSocket, slot: proc(super: QUdpSocketopenBase, mode: gen_qiodevice.QIODeviceOpenModeFlag): bool) =
+type QUdpSocketopenProc* = proc(mode: cint): bool
+proc onopen*(self: gen_qudpsocket_types.QUdpSocket, slot: QUdpSocketopenProc) =
   # TODO check subclass
-  type Cb = proc(super: QUdpSocketopenBase, mode: gen_qiodevice.QIODeviceOpenModeFlag): bool
-  var tmp = new Cb
+  var tmp = new QUdpSocketopenProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUdpSocket_override_virtual_open(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUdpSocket_open(self: ptr cQUdpSocket, slot: int, mode: cint): bool {.exportc: "miqt_exec_callback_QUdpSocket_open ".} =
-  type Cb = proc(super: QUdpSocketopenBase, mode: gen_qiodevice.QIODeviceOpenModeFlag): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(mode: gen_qiodevice.QIODeviceOpenModeFlag): auto =
-    callVirtualBase_open(QUdpSocket(h: self), mode)
-  let slotval1 = gen_qiodevice.QIODeviceOpenModeFlag(mode)
+  var nimfunc = cast[ptr QUdpSocketopenProc](cast[pointer](slot))
+  let slotval1 = cint(mode)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_pos(self: QUdpSocket, ): clonglong =
-
+proc QUdpSocketpos*(self: gen_qudpsocket_types.QUdpSocket, ): clonglong =
 
   fQUdpSocket_virtualbase_pos(self.h)
 
-type QUdpSocketposBase* = proc(): clonglong
-proc onpos*(self: QUdpSocket, slot: proc(super: QUdpSocketposBase): clonglong) =
+type QUdpSocketposProc* = proc(): clonglong
+proc onpos*(self: gen_qudpsocket_types.QUdpSocket, slot: QUdpSocketposProc) =
   # TODO check subclass
-  type Cb = proc(super: QUdpSocketposBase): clonglong
-  var tmp = new Cb
+  var tmp = new QUdpSocketposProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUdpSocket_override_virtual_pos(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUdpSocket_pos(self: ptr cQUdpSocket, slot: int): clonglong {.exportc: "miqt_exec_callback_QUdpSocket_pos ".} =
-  type Cb = proc(super: QUdpSocketposBase): clonglong
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_pos(QUdpSocket(h: self), )
+  var nimfunc = cast[ptr QUdpSocketposProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_size(self: QUdpSocket, ): clonglong =
-
+proc QUdpSocketsize*(self: gen_qudpsocket_types.QUdpSocket, ): clonglong =
 
   fQUdpSocket_virtualbase_size(self.h)
 
-type QUdpSocketsizeBase* = proc(): clonglong
-proc onsize*(self: QUdpSocket, slot: proc(super: QUdpSocketsizeBase): clonglong) =
+type QUdpSocketsizeProc* = proc(): clonglong
+proc onsize*(self: gen_qudpsocket_types.QUdpSocket, slot: QUdpSocketsizeProc) =
   # TODO check subclass
-  type Cb = proc(super: QUdpSocketsizeBase): clonglong
-  var tmp = new Cb
+  var tmp = new QUdpSocketsizeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUdpSocket_override_virtual_size(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUdpSocket_size(self: ptr cQUdpSocket, slot: int): clonglong {.exportc: "miqt_exec_callback_QUdpSocket_size ".} =
-  type Cb = proc(super: QUdpSocketsizeBase): clonglong
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_size(QUdpSocket(h: self), )
+  var nimfunc = cast[ptr QUdpSocketsizeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_seek(self: QUdpSocket, pos: clonglong): bool =
-
+proc QUdpSocketseek*(self: gen_qudpsocket_types.QUdpSocket, pos: clonglong): bool =
 
   fQUdpSocket_virtualbase_seek(self.h, pos)
 
-type QUdpSocketseekBase* = proc(pos: clonglong): bool
-proc onseek*(self: QUdpSocket, slot: proc(super: QUdpSocketseekBase, pos: clonglong): bool) =
+type QUdpSocketseekProc* = proc(pos: clonglong): bool
+proc onseek*(self: gen_qudpsocket_types.QUdpSocket, slot: QUdpSocketseekProc) =
   # TODO check subclass
-  type Cb = proc(super: QUdpSocketseekBase, pos: clonglong): bool
-  var tmp = new Cb
+  var tmp = new QUdpSocketseekProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUdpSocket_override_virtual_seek(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUdpSocket_seek(self: ptr cQUdpSocket, slot: int, pos: clonglong): bool {.exportc: "miqt_exec_callback_QUdpSocket_seek ".} =
-  type Cb = proc(super: QUdpSocketseekBase, pos: clonglong): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(pos: clonglong): auto =
-    callVirtualBase_seek(QUdpSocket(h: self), pos)
+  var nimfunc = cast[ptr QUdpSocketseekProc](cast[pointer](slot))
   let slotval1 = pos
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_reset(self: QUdpSocket, ): bool =
-
+proc QUdpSocketreset*(self: gen_qudpsocket_types.QUdpSocket, ): bool =
 
   fQUdpSocket_virtualbase_reset(self.h)
 
-type QUdpSocketresetBase* = proc(): bool
-proc onreset*(self: QUdpSocket, slot: proc(super: QUdpSocketresetBase): bool) =
+type QUdpSocketresetProc* = proc(): bool
+proc onreset*(self: gen_qudpsocket_types.QUdpSocket, slot: QUdpSocketresetProc) =
   # TODO check subclass
-  type Cb = proc(super: QUdpSocketresetBase): bool
-  var tmp = new Cb
+  var tmp = new QUdpSocketresetProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUdpSocket_override_virtual_reset(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUdpSocket_reset(self: ptr cQUdpSocket, slot: int): bool {.exportc: "miqt_exec_callback_QUdpSocket_reset ".} =
-  type Cb = proc(super: QUdpSocketresetBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_reset(QUdpSocket(h: self), )
+  var nimfunc = cast[ptr QUdpSocketresetProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_event(self: QUdpSocket, event: gen_qcoreevent.QEvent): bool =
-
+proc QUdpSocketevent*(self: gen_qudpsocket_types.QUdpSocket, event: gen_qcoreevent.QEvent): bool =
 
   fQUdpSocket_virtualbase_event(self.h, event.h)
 
-type QUdpSocketeventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QUdpSocket, slot: proc(super: QUdpSocketeventBase, event: gen_qcoreevent.QEvent): bool) =
+type QUdpSocketeventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qudpsocket_types.QUdpSocket, slot: QUdpSocketeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QUdpSocketeventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QUdpSocketeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUdpSocket_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUdpSocket_event(self: ptr cQUdpSocket, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QUdpSocket_event ".} =
-  type Cb = proc(super: QUdpSocketeventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QUdpSocket(h: self), event)
+  var nimfunc = cast[ptr QUdpSocketeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QUdpSocket, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QUdpSocketeventFilter*(self: gen_qudpsocket_types.QUdpSocket, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQUdpSocket_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QUdpSocketeventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QUdpSocket, slot: proc(super: QUdpSocketeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QUdpSocketeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qudpsocket_types.QUdpSocket, slot: QUdpSocketeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QUdpSocketeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QUdpSocketeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUdpSocket_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUdpSocket_eventFilter(self: ptr cQUdpSocket, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QUdpSocket_eventFilter ".} =
-  type Cb = proc(super: QUdpSocketeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QUdpSocket(h: self), watched, event)
+  var nimfunc = cast[ptr QUdpSocketeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QUdpSocket, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QUdpSockettimerEvent*(self: gen_qudpsocket_types.QUdpSocket, event: gen_qcoreevent.QTimerEvent): void =
 
   fQUdpSocket_virtualbase_timerEvent(self.h, event.h)
 
-type QUdpSockettimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QUdpSocket, slot: proc(super: QUdpSockettimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QUdpSockettimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qudpsocket_types.QUdpSocket, slot: QUdpSockettimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QUdpSockettimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QUdpSockettimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUdpSocket_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUdpSocket_timerEvent(self: ptr cQUdpSocket, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QUdpSocket_timerEvent ".} =
-  type Cb = proc(super: QUdpSockettimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QUdpSocket(h: self), event)
+  var nimfunc = cast[ptr QUdpSockettimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QUdpSocket, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QUdpSocketchildEvent*(self: gen_qudpsocket_types.QUdpSocket, event: gen_qcoreevent.QChildEvent): void =
 
   fQUdpSocket_virtualbase_childEvent(self.h, event.h)
 
-type QUdpSocketchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QUdpSocket, slot: proc(super: QUdpSocketchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QUdpSocketchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qudpsocket_types.QUdpSocket, slot: QUdpSocketchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QUdpSocketchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QUdpSocketchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUdpSocket_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUdpSocket_childEvent(self: ptr cQUdpSocket, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QUdpSocket_childEvent ".} =
-  type Cb = proc(super: QUdpSocketchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QUdpSocket(h: self), event)
+  var nimfunc = cast[ptr QUdpSocketchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QUdpSocket, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QUdpSocketcustomEvent*(self: gen_qudpsocket_types.QUdpSocket, event: gen_qcoreevent.QEvent): void =
 
   fQUdpSocket_virtualbase_customEvent(self.h, event.h)
 
-type QUdpSocketcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QUdpSocket, slot: proc(super: QUdpSocketcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QUdpSocketcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qudpsocket_types.QUdpSocket, slot: QUdpSocketcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QUdpSocketcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QUdpSocketcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUdpSocket_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUdpSocket_customEvent(self: ptr cQUdpSocket, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QUdpSocket_customEvent ".} =
-  type Cb = proc(super: QUdpSocketcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QUdpSocket(h: self), event)
+  var nimfunc = cast[ptr QUdpSocketcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QUdpSocket, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QUdpSocketconnectNotify*(self: gen_qudpsocket_types.QUdpSocket, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQUdpSocket_virtualbase_connectNotify(self.h, signal.h)
 
-type QUdpSocketconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QUdpSocket, slot: proc(super: QUdpSocketconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QUdpSocketconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qudpsocket_types.QUdpSocket, slot: QUdpSocketconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QUdpSocketconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QUdpSocketconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUdpSocket_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUdpSocket_connectNotify(self: ptr cQUdpSocket, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QUdpSocket_connectNotify ".} =
-  type Cb = proc(super: QUdpSocketconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QUdpSocket(h: self), signal)
+  var nimfunc = cast[ptr QUdpSocketconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QUdpSocket, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QUdpSocketdisconnectNotify*(self: gen_qudpsocket_types.QUdpSocket, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQUdpSocket_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QUdpSocketdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QUdpSocket, slot: proc(super: QUdpSocketdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QUdpSocketdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qudpsocket_types.QUdpSocket, slot: QUdpSocketdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QUdpSocketdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QUdpSocketdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQUdpSocket_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QUdpSocket_disconnectNotify(self: ptr cQUdpSocket, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QUdpSocket_disconnectNotify ".} =
-  type Cb = proc(super: QUdpSocketdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QUdpSocket(h: self), signal)
+  var nimfunc = cast[ptr QUdpSocketdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QUdpSocket): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qudpsocket_types.QUdpSocket): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQUdpSocket_staticMetaObject())
-proc delete*(self: QUdpSocket) =
+proc delete*(self: gen_qudpsocket_types.QUdpSocket) =
   fcQUdpSocket_delete(self.h)

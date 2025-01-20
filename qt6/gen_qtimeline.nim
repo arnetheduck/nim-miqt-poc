@@ -34,19 +34,15 @@ const cflags = gorge("pkg-config -cflags Qt6Widgets")
 {.compile("gen_qtimeline.cpp", cflags).}
 
 
-type QTimeLineState* = cint
-const
-  QTimeLineNotRunning* = 0
-  QTimeLinePaused* = 1
-  QTimeLineRunning* = 2
+type QTimeLineStateEnum* = distinct cint
+template NotRunning*(_: type QTimeLineStateEnum): untyped = 0
+template Paused*(_: type QTimeLineStateEnum): untyped = 1
+template Running*(_: type QTimeLineStateEnum): untyped = 2
 
 
-
-type QTimeLineDirection* = cint
-const
-  QTimeLineForward* = 0
-  QTimeLineBackward* = 1
-
+type QTimeLineDirectionEnum* = distinct cint
+template Forward*(_: type QTimeLineDirectionEnum): untyped = 0
+template Backward*(_: type QTimeLineDirectionEnum): untyped = 1
 
 
 import gen_qtimeline_types
@@ -129,428 +125,373 @@ proc fcQTimeLine_staticMetaObject(): pointer {.importc: "QTimeLine_staticMetaObj
 proc fcQTimeLine_delete(self: pointer) {.importc: "QTimeLine_delete".}
 
 
-func init*(T: type QTimeLine, h: ptr cQTimeLine): QTimeLine =
+func init*(T: type gen_qtimeline_types.QTimeLine, h: ptr cQTimeLine): gen_qtimeline_types.QTimeLine =
   T(h: h)
-proc create*(T: type QTimeLine, ): QTimeLine =
+proc create*(T: type gen_qtimeline_types.QTimeLine, ): gen_qtimeline_types.QTimeLine =
 
-  QTimeLine.init(fcQTimeLine_new())
-proc create*(T: type QTimeLine, duration: cint): QTimeLine =
+  gen_qtimeline_types.QTimeLine.init(fcQTimeLine_new())
+proc create*(T: type gen_qtimeline_types.QTimeLine, duration: cint): gen_qtimeline_types.QTimeLine =
 
-  QTimeLine.init(fcQTimeLine_new2(duration))
-proc create*(T: type QTimeLine, duration: cint, parent: gen_qobject.QObject): QTimeLine =
+  gen_qtimeline_types.QTimeLine.init(fcQTimeLine_new2(duration))
+proc create*(T: type gen_qtimeline_types.QTimeLine, duration: cint, parent: gen_qobject.QObject): gen_qtimeline_types.QTimeLine =
 
-  QTimeLine.init(fcQTimeLine_new3(duration, parent.h))
-proc metaObject*(self: QTimeLine, ): gen_qobjectdefs.QMetaObject =
+  gen_qtimeline_types.QTimeLine.init(fcQTimeLine_new3(duration, parent.h))
+proc metaObject*(self: gen_qtimeline_types.QTimeLine, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQTimeLine_metaObject(self.h))
 
-proc metacast*(self: QTimeLine, param1: cstring): pointer =
+proc metacast*(self: gen_qtimeline_types.QTimeLine, param1: cstring): pointer =
 
   fcQTimeLine_metacast(self.h, param1)
 
-proc metacall*(self: QTimeLine, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qtimeline_types.QTimeLine, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQTimeLine_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QTimeLine, s: cstring): string =
+proc tr*(_: type gen_qtimeline_types.QTimeLine, s: cstring): string =
 
   let v_ms = fcQTimeLine_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc state*(self: QTimeLine, ): QTimeLineState =
+proc state*(self: gen_qtimeline_types.QTimeLine, ): cint =
 
-  QTimeLineState(fcQTimeLine_state(self.h))
+  cint(fcQTimeLine_state(self.h))
 
-proc loopCount*(self: QTimeLine, ): cint =
+proc loopCount*(self: gen_qtimeline_types.QTimeLine, ): cint =
 
   fcQTimeLine_loopCount(self.h)
 
-proc setLoopCount*(self: QTimeLine, count: cint): void =
+proc setLoopCount*(self: gen_qtimeline_types.QTimeLine, count: cint): void =
 
   fcQTimeLine_setLoopCount(self.h, count)
 
-proc direction*(self: QTimeLine, ): QTimeLineDirection =
+proc direction*(self: gen_qtimeline_types.QTimeLine, ): cint =
 
-  QTimeLineDirection(fcQTimeLine_direction(self.h))
+  cint(fcQTimeLine_direction(self.h))
 
-proc setDirection*(self: QTimeLine, direction: QTimeLineDirection): void =
+proc setDirection*(self: gen_qtimeline_types.QTimeLine, direction: cint): void =
 
   fcQTimeLine_setDirection(self.h, cint(direction))
 
-proc duration*(self: QTimeLine, ): cint =
+proc duration*(self: gen_qtimeline_types.QTimeLine, ): cint =
 
   fcQTimeLine_duration(self.h)
 
-proc setDuration*(self: QTimeLine, duration: cint): void =
+proc setDuration*(self: gen_qtimeline_types.QTimeLine, duration: cint): void =
 
   fcQTimeLine_setDuration(self.h, duration)
 
-proc startFrame*(self: QTimeLine, ): cint =
+proc startFrame*(self: gen_qtimeline_types.QTimeLine, ): cint =
 
   fcQTimeLine_startFrame(self.h)
 
-proc setStartFrame*(self: QTimeLine, frame: cint): void =
+proc setStartFrame*(self: gen_qtimeline_types.QTimeLine, frame: cint): void =
 
   fcQTimeLine_setStartFrame(self.h, frame)
 
-proc endFrame*(self: QTimeLine, ): cint =
+proc endFrame*(self: gen_qtimeline_types.QTimeLine, ): cint =
 
   fcQTimeLine_endFrame(self.h)
 
-proc setEndFrame*(self: QTimeLine, frame: cint): void =
+proc setEndFrame*(self: gen_qtimeline_types.QTimeLine, frame: cint): void =
 
   fcQTimeLine_setEndFrame(self.h, frame)
 
-proc setFrameRange*(self: QTimeLine, startFrame: cint, endFrame: cint): void =
+proc setFrameRange*(self: gen_qtimeline_types.QTimeLine, startFrame: cint, endFrame: cint): void =
 
   fcQTimeLine_setFrameRange(self.h, startFrame, endFrame)
 
-proc updateInterval*(self: QTimeLine, ): cint =
+proc updateInterval*(self: gen_qtimeline_types.QTimeLine, ): cint =
 
   fcQTimeLine_updateInterval(self.h)
 
-proc setUpdateInterval*(self: QTimeLine, interval: cint): void =
+proc setUpdateInterval*(self: gen_qtimeline_types.QTimeLine, interval: cint): void =
 
   fcQTimeLine_setUpdateInterval(self.h, interval)
 
-proc easingCurve*(self: QTimeLine, ): gen_qeasingcurve.QEasingCurve =
+proc easingCurve*(self: gen_qtimeline_types.QTimeLine, ): gen_qeasingcurve.QEasingCurve =
 
   gen_qeasingcurve.QEasingCurve(h: fcQTimeLine_easingCurve(self.h))
 
-proc setEasingCurve*(self: QTimeLine, curve: gen_qeasingcurve.QEasingCurve): void =
+proc setEasingCurve*(self: gen_qtimeline_types.QTimeLine, curve: gen_qeasingcurve.QEasingCurve): void =
 
   fcQTimeLine_setEasingCurve(self.h, curve.h)
 
-proc currentTime*(self: QTimeLine, ): cint =
+proc currentTime*(self: gen_qtimeline_types.QTimeLine, ): cint =
 
   fcQTimeLine_currentTime(self.h)
 
-proc currentFrame*(self: QTimeLine, ): cint =
+proc currentFrame*(self: gen_qtimeline_types.QTimeLine, ): cint =
 
   fcQTimeLine_currentFrame(self.h)
 
-proc currentValue*(self: QTimeLine, ): float64 =
+proc currentValue*(self: gen_qtimeline_types.QTimeLine, ): float64 =
 
   fcQTimeLine_currentValue(self.h)
 
-proc frameForTime*(self: QTimeLine, msec: cint): cint =
+proc frameForTime*(self: gen_qtimeline_types.QTimeLine, msec: cint): cint =
 
   fcQTimeLine_frameForTime(self.h, msec)
 
-proc valueForTime*(self: QTimeLine, msec: cint): float64 =
+proc valueForTime*(self: gen_qtimeline_types.QTimeLine, msec: cint): float64 =
 
   fcQTimeLine_valueForTime(self.h, msec)
 
-proc start*(self: QTimeLine, ): void =
+proc start*(self: gen_qtimeline_types.QTimeLine, ): void =
 
   fcQTimeLine_start(self.h)
 
-proc resume*(self: QTimeLine, ): void =
+proc resume*(self: gen_qtimeline_types.QTimeLine, ): void =
 
   fcQTimeLine_resume(self.h)
 
-proc stop*(self: QTimeLine, ): void =
+proc stop*(self: gen_qtimeline_types.QTimeLine, ): void =
 
   fcQTimeLine_stop(self.h)
 
-proc setPaused*(self: QTimeLine, paused: bool): void =
+proc setPaused*(self: gen_qtimeline_types.QTimeLine, paused: bool): void =
 
   fcQTimeLine_setPaused(self.h, paused)
 
-proc setCurrentTime*(self: QTimeLine, msec: cint): void =
+proc setCurrentTime*(self: gen_qtimeline_types.QTimeLine, msec: cint): void =
 
   fcQTimeLine_setCurrentTime(self.h, msec)
 
-proc toggleDirection*(self: QTimeLine, ): void =
+proc toggleDirection*(self: gen_qtimeline_types.QTimeLine, ): void =
 
   fcQTimeLine_toggleDirection(self.h)
 
-proc tr2*(_: type QTimeLine, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qtimeline_types.QTimeLine, s: cstring, c: cstring): string =
 
   let v_ms = fcQTimeLine_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QTimeLine, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qtimeline_types.QTimeLine, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQTimeLine_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QTimeLine, ): gen_qobjectdefs.QMetaObject =
-
+proc QTimeLinemetaObject*(self: gen_qtimeline_types.QTimeLine, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQTimeLine_virtualbase_metaObject(self.h))
 
-type QTimeLinemetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QTimeLine, slot: proc(super: QTimeLinemetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QTimeLinemetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qtimeline_types.QTimeLine, slot: QTimeLinemetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeLinemetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QTimeLinemetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeLine_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeLine_metaObject(self: ptr cQTimeLine, slot: int): pointer {.exportc: "miqt_exec_callback_QTimeLine_metaObject ".} =
-  type Cb = proc(super: QTimeLinemetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QTimeLine(h: self), )
+  var nimfunc = cast[ptr QTimeLinemetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QTimeLine, param1: cstring): pointer =
-
+proc QTimeLinemetacast*(self: gen_qtimeline_types.QTimeLine, param1: cstring): pointer =
 
   fQTimeLine_virtualbase_metacast(self.h, param1)
 
-type QTimeLinemetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QTimeLine, slot: proc(super: QTimeLinemetacastBase, param1: cstring): pointer) =
+type QTimeLinemetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qtimeline_types.QTimeLine, slot: QTimeLinemetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeLinemetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QTimeLinemetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeLine_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeLine_metacast(self: ptr cQTimeLine, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QTimeLine_metacast ".} =
-  type Cb = proc(super: QTimeLinemetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QTimeLine(h: self), param1)
+  var nimfunc = cast[ptr QTimeLinemetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QTimeLine, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QTimeLinemetacall*(self: gen_qtimeline_types.QTimeLine, param1: cint, param2: cint, param3: pointer): cint =
 
   fQTimeLine_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QTimeLinemetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QTimeLine, slot: proc(super: QTimeLinemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QTimeLinemetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qtimeline_types.QTimeLine, slot: QTimeLinemetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeLinemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QTimeLinemetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeLine_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeLine_metacall(self: ptr cQTimeLine, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QTimeLine_metacall ".} =
-  type Cb = proc(super: QTimeLinemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QTimeLine(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QTimeLinemetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_valueForTime(self: QTimeLine, msec: cint): float64 =
-
+proc QTimeLinevalueForTime*(self: gen_qtimeline_types.QTimeLine, msec: cint): float64 =
 
   fQTimeLine_virtualbase_valueForTime(self.h, msec)
 
-type QTimeLinevalueForTimeBase* = proc(msec: cint): float64
-proc onvalueForTime*(self: QTimeLine, slot: proc(super: QTimeLinevalueForTimeBase, msec: cint): float64) =
+type QTimeLinevalueForTimeProc* = proc(msec: cint): float64
+proc onvalueForTime*(self: gen_qtimeline_types.QTimeLine, slot: QTimeLinevalueForTimeProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeLinevalueForTimeBase, msec: cint): float64
-  var tmp = new Cb
+  var tmp = new QTimeLinevalueForTimeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeLine_override_virtual_valueForTime(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeLine_valueForTime(self: ptr cQTimeLine, slot: int, msec: cint): float64 {.exportc: "miqt_exec_callback_QTimeLine_valueForTime ".} =
-  type Cb = proc(super: QTimeLinevalueForTimeBase, msec: cint): float64
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(msec: cint): auto =
-    callVirtualBase_valueForTime(QTimeLine(h: self), msec)
+  var nimfunc = cast[ptr QTimeLinevalueForTimeProc](cast[pointer](slot))
   let slotval1 = msec
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QTimeLine, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QTimeLinetimerEvent*(self: gen_qtimeline_types.QTimeLine, event: gen_qcoreevent.QTimerEvent): void =
 
   fQTimeLine_virtualbase_timerEvent(self.h, event.h)
 
-type QTimeLinetimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QTimeLine, slot: proc(super: QTimeLinetimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QTimeLinetimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qtimeline_types.QTimeLine, slot: QTimeLinetimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeLinetimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QTimeLinetimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeLine_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeLine_timerEvent(self: ptr cQTimeLine, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTimeLine_timerEvent ".} =
-  type Cb = proc(super: QTimeLinetimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QTimeLine(h: self), event)
+  var nimfunc = cast[ptr QTimeLinetimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_event(self: QTimeLine, event: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[](slotval1)
+proc QTimeLineevent*(self: gen_qtimeline_types.QTimeLine, event: gen_qcoreevent.QEvent): bool =
 
   fQTimeLine_virtualbase_event(self.h, event.h)
 
-type QTimeLineeventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QTimeLine, slot: proc(super: QTimeLineeventBase, event: gen_qcoreevent.QEvent): bool) =
+type QTimeLineeventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qtimeline_types.QTimeLine, slot: QTimeLineeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeLineeventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QTimeLineeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeLine_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeLine_event(self: ptr cQTimeLine, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QTimeLine_event ".} =
-  type Cb = proc(super: QTimeLineeventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QTimeLine(h: self), event)
+  var nimfunc = cast[ptr QTimeLineeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QTimeLine, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QTimeLineeventFilter*(self: gen_qtimeline_types.QTimeLine, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQTimeLine_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QTimeLineeventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QTimeLine, slot: proc(super: QTimeLineeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QTimeLineeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qtimeline_types.QTimeLine, slot: QTimeLineeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeLineeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QTimeLineeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeLine_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeLine_eventFilter(self: ptr cQTimeLine, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QTimeLine_eventFilter ".} =
-  type Cb = proc(super: QTimeLineeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QTimeLine(h: self), watched, event)
+  var nimfunc = cast[ptr QTimeLineeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_childEvent(self: QTimeLine, event: gen_qcoreevent.QChildEvent): void =
-
+proc QTimeLinechildEvent*(self: gen_qtimeline_types.QTimeLine, event: gen_qcoreevent.QChildEvent): void =
 
   fQTimeLine_virtualbase_childEvent(self.h, event.h)
 
-type QTimeLinechildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QTimeLine, slot: proc(super: QTimeLinechildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QTimeLinechildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qtimeline_types.QTimeLine, slot: QTimeLinechildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeLinechildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QTimeLinechildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeLine_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeLine_childEvent(self: ptr cQTimeLine, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTimeLine_childEvent ".} =
-  type Cb = proc(super: QTimeLinechildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QTimeLine(h: self), event)
+  var nimfunc = cast[ptr QTimeLinechildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QTimeLine, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QTimeLinecustomEvent*(self: gen_qtimeline_types.QTimeLine, event: gen_qcoreevent.QEvent): void =
 
   fQTimeLine_virtualbase_customEvent(self.h, event.h)
 
-type QTimeLinecustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QTimeLine, slot: proc(super: QTimeLinecustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QTimeLinecustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qtimeline_types.QTimeLine, slot: QTimeLinecustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeLinecustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QTimeLinecustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeLine_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeLine_customEvent(self: ptr cQTimeLine, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTimeLine_customEvent ".} =
-  type Cb = proc(super: QTimeLinecustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QTimeLine(h: self), event)
+  var nimfunc = cast[ptr QTimeLinecustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QTimeLine, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QTimeLineconnectNotify*(self: gen_qtimeline_types.QTimeLine, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQTimeLine_virtualbase_connectNotify(self.h, signal.h)
 
-type QTimeLineconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QTimeLine, slot: proc(super: QTimeLineconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QTimeLineconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qtimeline_types.QTimeLine, slot: QTimeLineconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeLineconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QTimeLineconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeLine_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeLine_connectNotify(self: ptr cQTimeLine, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QTimeLine_connectNotify ".} =
-  type Cb = proc(super: QTimeLineconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QTimeLine(h: self), signal)
+  var nimfunc = cast[ptr QTimeLineconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QTimeLine, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QTimeLinedisconnectNotify*(self: gen_qtimeline_types.QTimeLine, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQTimeLine_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QTimeLinedisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QTimeLine, slot: proc(super: QTimeLinedisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QTimeLinedisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qtimeline_types.QTimeLine, slot: QTimeLinedisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeLinedisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QTimeLinedisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeLine_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeLine_disconnectNotify(self: ptr cQTimeLine, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QTimeLine_disconnectNotify ".} =
-  type Cb = proc(super: QTimeLinedisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QTimeLine(h: self), signal)
+  var nimfunc = cast[ptr QTimeLinedisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QTimeLine): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qtimeline_types.QTimeLine): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQTimeLine_staticMetaObject())
-proc delete*(self: QTimeLine) =
+proc delete*(self: gen_qtimeline_types.QTimeLine) =
   fcQTimeLine_delete(self.h)

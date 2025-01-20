@@ -243,7 +243,7 @@ func (this *QIdentityProxyModel) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QIdentityProxyModel_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QIdentityProxyModel) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QIdentityProxyModel) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QIdentityProxyModel_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -270,7 +270,7 @@ func (this *QIdentityProxyModel) callVirtualBase_Metacast(param1 string) unsafe.
 	return (unsafe.Pointer)(C.QIdentityProxyModel_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QIdentityProxyModel) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QIdentityProxyModel) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QIdentityProxyModel_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

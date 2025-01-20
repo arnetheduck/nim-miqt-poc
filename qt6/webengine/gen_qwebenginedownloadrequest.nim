@@ -34,52 +34,46 @@ const cflags = gorge("pkg-config -cflags Qt6WebEngineWidgets")
 {.compile("gen_qwebenginedownloadrequest.cpp", cflags).}
 
 
-type QWebEngineDownloadRequestDownloadState* = cint
-const
-  QWebEngineDownloadRequestDownloadRequested* = 0
-  QWebEngineDownloadRequestDownloadInProgress* = 1
-  QWebEngineDownloadRequestDownloadCompleted* = 2
-  QWebEngineDownloadRequestDownloadCancelled* = 3
-  QWebEngineDownloadRequestDownloadInterrupted* = 4
+type QWebEngineDownloadRequestDownloadStateEnum* = distinct cint
+template DownloadRequested*(_: type QWebEngineDownloadRequestDownloadStateEnum): untyped = 0
+template DownloadInProgress*(_: type QWebEngineDownloadRequestDownloadStateEnum): untyped = 1
+template DownloadCompleted*(_: type QWebEngineDownloadRequestDownloadStateEnum): untyped = 2
+template DownloadCancelled*(_: type QWebEngineDownloadRequestDownloadStateEnum): untyped = 3
+template DownloadInterrupted*(_: type QWebEngineDownloadRequestDownloadStateEnum): untyped = 4
 
 
-
-type QWebEngineDownloadRequestSavePageFormat* = cint
-const
-  QWebEngineDownloadRequestUnknownSaveFormat* = -1
-  QWebEngineDownloadRequestSingleHtmlSaveFormat* = 0
-  QWebEngineDownloadRequestCompleteHtmlSaveFormat* = 1
-  QWebEngineDownloadRequestMimeHtmlSaveFormat* = 2
+type QWebEngineDownloadRequestSavePageFormatEnum* = distinct cint
+template UnknownSaveFormat*(_: type QWebEngineDownloadRequestSavePageFormatEnum): untyped = -1
+template SingleHtmlSaveFormat*(_: type QWebEngineDownloadRequestSavePageFormatEnum): untyped = 0
+template CompleteHtmlSaveFormat*(_: type QWebEngineDownloadRequestSavePageFormatEnum): untyped = 1
+template MimeHtmlSaveFormat*(_: type QWebEngineDownloadRequestSavePageFormatEnum): untyped = 2
 
 
-
-type QWebEngineDownloadRequestDownloadInterruptReason* = cint
-const
-  QWebEngineDownloadRequestNoReason* = 0
-  QWebEngineDownloadRequestFileFailed* = 1
-  QWebEngineDownloadRequestFileAccessDenied* = 2
-  QWebEngineDownloadRequestFileNoSpace* = 3
-  QWebEngineDownloadRequestFileNameTooLong* = 5
-  QWebEngineDownloadRequestFileTooLarge* = 6
-  QWebEngineDownloadRequestFileVirusInfected* = 7
-  QWebEngineDownloadRequestFileTransientError* = 10
-  QWebEngineDownloadRequestFileBlocked* = 11
-  QWebEngineDownloadRequestFileSecurityCheckFailed* = 12
-  QWebEngineDownloadRequestFileTooShort* = 13
-  QWebEngineDownloadRequestFileHashMismatch* = 14
-  QWebEngineDownloadRequestNetworkFailed* = 20
-  QWebEngineDownloadRequestNetworkTimeout* = 21
-  QWebEngineDownloadRequestNetworkDisconnected* = 22
-  QWebEngineDownloadRequestNetworkServerDown* = 23
-  QWebEngineDownloadRequestNetworkInvalidRequest* = 24
-  QWebEngineDownloadRequestServerFailed* = 30
-  QWebEngineDownloadRequestServerBadContent* = 33
-  QWebEngineDownloadRequestServerUnauthorized* = 34
-  QWebEngineDownloadRequestServerCertProblem* = 35
-  QWebEngineDownloadRequestServerForbidden* = 36
-  QWebEngineDownloadRequestServerUnreachable* = 37
-  QWebEngineDownloadRequestUserCanceled* = 40
-
+type QWebEngineDownloadRequestDownloadInterruptReasonEnum* = distinct cint
+template NoReason*(_: type QWebEngineDownloadRequestDownloadInterruptReasonEnum): untyped = 0
+template FileFailed*(_: type QWebEngineDownloadRequestDownloadInterruptReasonEnum): untyped = 1
+template FileAccessDenied*(_: type QWebEngineDownloadRequestDownloadInterruptReasonEnum): untyped = 2
+template FileNoSpace*(_: type QWebEngineDownloadRequestDownloadInterruptReasonEnum): untyped = 3
+template FileNameTooLong*(_: type QWebEngineDownloadRequestDownloadInterruptReasonEnum): untyped = 5
+template FileTooLarge*(_: type QWebEngineDownloadRequestDownloadInterruptReasonEnum): untyped = 6
+template FileVirusInfected*(_: type QWebEngineDownloadRequestDownloadInterruptReasonEnum): untyped = 7
+template FileTransientError*(_: type QWebEngineDownloadRequestDownloadInterruptReasonEnum): untyped = 10
+template FileBlocked*(_: type QWebEngineDownloadRequestDownloadInterruptReasonEnum): untyped = 11
+template FileSecurityCheckFailed*(_: type QWebEngineDownloadRequestDownloadInterruptReasonEnum): untyped = 12
+template FileTooShort*(_: type QWebEngineDownloadRequestDownloadInterruptReasonEnum): untyped = 13
+template FileHashMismatch*(_: type QWebEngineDownloadRequestDownloadInterruptReasonEnum): untyped = 14
+template NetworkFailed*(_: type QWebEngineDownloadRequestDownloadInterruptReasonEnum): untyped = 20
+template NetworkTimeout*(_: type QWebEngineDownloadRequestDownloadInterruptReasonEnum): untyped = 21
+template NetworkDisconnected*(_: type QWebEngineDownloadRequestDownloadInterruptReasonEnum): untyped = 22
+template NetworkServerDown*(_: type QWebEngineDownloadRequestDownloadInterruptReasonEnum): untyped = 23
+template NetworkInvalidRequest*(_: type QWebEngineDownloadRequestDownloadInterruptReasonEnum): untyped = 24
+template ServerFailed*(_: type QWebEngineDownloadRequestDownloadInterruptReasonEnum): untyped = 30
+template ServerBadContent*(_: type QWebEngineDownloadRequestDownloadInterruptReasonEnum): untyped = 33
+template ServerUnauthorized*(_: type QWebEngineDownloadRequestDownloadInterruptReasonEnum): untyped = 34
+template ServerCertProblem*(_: type QWebEngineDownloadRequestDownloadInterruptReasonEnum): untyped = 35
+template ServerForbidden*(_: type QWebEngineDownloadRequestDownloadInterruptReasonEnum): untyped = 36
+template ServerUnreachable*(_: type QWebEngineDownloadRequestDownloadInterruptReasonEnum): untyped = 37
+template UserCanceled*(_: type QWebEngineDownloadRequestDownloadInterruptReasonEnum): untyped = 40
 
 
 import gen_qwebenginedownloadrequest_types
@@ -149,153 +143,153 @@ proc fcQWebEngineDownloadRequest_staticMetaObject(): pointer {.importc: "QWebEng
 proc fcQWebEngineDownloadRequest_delete(self: pointer) {.importc: "QWebEngineDownloadRequest_delete".}
 
 
-func init*(T: type QWebEngineDownloadRequest, h: ptr cQWebEngineDownloadRequest): QWebEngineDownloadRequest =
+func init*(T: type gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, h: ptr cQWebEngineDownloadRequest): gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest =
   T(h: h)
-proc metaObject*(self: QWebEngineDownloadRequest, ): gen_qobjectdefs.QMetaObject =
+proc metaObject*(self: gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQWebEngineDownloadRequest_metaObject(self.h))
 
-proc metacast*(self: QWebEngineDownloadRequest, param1: cstring): pointer =
+proc metacast*(self: gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, param1: cstring): pointer =
 
   fcQWebEngineDownloadRequest_metacast(self.h, param1)
 
-proc metacall*(self: QWebEngineDownloadRequest, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQWebEngineDownloadRequest_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QWebEngineDownloadRequest, s: cstring): string =
+proc tr*(_: type gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, s: cstring): string =
 
   let v_ms = fcQWebEngineDownloadRequest_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc id*(self: QWebEngineDownloadRequest, ): cuint =
+proc id*(self: gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, ): cuint =
 
   fcQWebEngineDownloadRequest_id(self.h)
 
-proc state*(self: QWebEngineDownloadRequest, ): QWebEngineDownloadRequestDownloadState =
+proc state*(self: gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, ): cint =
 
-  QWebEngineDownloadRequestDownloadState(fcQWebEngineDownloadRequest_state(self.h))
+  cint(fcQWebEngineDownloadRequest_state(self.h))
 
-proc totalBytes*(self: QWebEngineDownloadRequest, ): clonglong =
+proc totalBytes*(self: gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, ): clonglong =
 
   fcQWebEngineDownloadRequest_totalBytes(self.h)
 
-proc receivedBytes*(self: QWebEngineDownloadRequest, ): clonglong =
+proc receivedBytes*(self: gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, ): clonglong =
 
   fcQWebEngineDownloadRequest_receivedBytes(self.h)
 
-proc url*(self: QWebEngineDownloadRequest, ): gen_qurl.QUrl =
+proc url*(self: gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, ): gen_qurl.QUrl =
 
   gen_qurl.QUrl(h: fcQWebEngineDownloadRequest_url(self.h))
 
-proc mimeType*(self: QWebEngineDownloadRequest, ): string =
+proc mimeType*(self: gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, ): string =
 
   let v_ms = fcQWebEngineDownloadRequest_mimeType(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc isFinished*(self: QWebEngineDownloadRequest, ): bool =
+proc isFinished*(self: gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, ): bool =
 
   fcQWebEngineDownloadRequest_isFinished(self.h)
 
-proc isPaused*(self: QWebEngineDownloadRequest, ): bool =
+proc isPaused*(self: gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, ): bool =
 
   fcQWebEngineDownloadRequest_isPaused(self.h)
 
-proc savePageFormat*(self: QWebEngineDownloadRequest, ): QWebEngineDownloadRequestSavePageFormat =
+proc savePageFormat*(self: gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, ): cint =
 
-  QWebEngineDownloadRequestSavePageFormat(fcQWebEngineDownloadRequest_savePageFormat(self.h))
+  cint(fcQWebEngineDownloadRequest_savePageFormat(self.h))
 
-proc setSavePageFormat*(self: QWebEngineDownloadRequest, format: QWebEngineDownloadRequestSavePageFormat): void =
+proc setSavePageFormat*(self: gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, format: cint): void =
 
   fcQWebEngineDownloadRequest_setSavePageFormat(self.h, cint(format))
 
-proc interruptReason*(self: QWebEngineDownloadRequest, ): QWebEngineDownloadRequestDownloadInterruptReason =
+proc interruptReason*(self: gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, ): cint =
 
-  QWebEngineDownloadRequestDownloadInterruptReason(fcQWebEngineDownloadRequest_interruptReason(self.h))
+  cint(fcQWebEngineDownloadRequest_interruptReason(self.h))
 
-proc interruptReasonString*(self: QWebEngineDownloadRequest, ): string =
+proc interruptReasonString*(self: gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, ): string =
 
   let v_ms = fcQWebEngineDownloadRequest_interruptReasonString(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc isSavePageDownload*(self: QWebEngineDownloadRequest, ): bool =
+proc isSavePageDownload*(self: gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, ): bool =
 
   fcQWebEngineDownloadRequest_isSavePageDownload(self.h)
 
-proc suggestedFileName*(self: QWebEngineDownloadRequest, ): string =
+proc suggestedFileName*(self: gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, ): string =
 
   let v_ms = fcQWebEngineDownloadRequest_suggestedFileName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc downloadDirectory*(self: QWebEngineDownloadRequest, ): string =
+proc downloadDirectory*(self: gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, ): string =
 
   let v_ms = fcQWebEngineDownloadRequest_downloadDirectory(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setDownloadDirectory*(self: QWebEngineDownloadRequest, directory: string): void =
+proc setDownloadDirectory*(self: gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, directory: string): void =
 
   fcQWebEngineDownloadRequest_setDownloadDirectory(self.h, struct_miqt_string(data: directory, len: csize_t(len(directory))))
 
-proc downloadFileName*(self: QWebEngineDownloadRequest, ): string =
+proc downloadFileName*(self: gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, ): string =
 
   let v_ms = fcQWebEngineDownloadRequest_downloadFileName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setDownloadFileName*(self: QWebEngineDownloadRequest, fileName: string): void =
+proc setDownloadFileName*(self: gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, fileName: string): void =
 
   fcQWebEngineDownloadRequest_setDownloadFileName(self.h, struct_miqt_string(data: fileName, len: csize_t(len(fileName))))
 
-proc page*(self: QWebEngineDownloadRequest, ): gen_qwebenginepage.QWebEnginePage =
+proc page*(self: gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, ): gen_qwebenginepage.QWebEnginePage =
 
   gen_qwebenginepage.QWebEnginePage(h: fcQWebEngineDownloadRequest_page(self.h))
 
-proc accept*(self: QWebEngineDownloadRequest, ): void =
+proc accept*(self: gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, ): void =
 
   fcQWebEngineDownloadRequest_accept(self.h)
 
-proc cancel*(self: QWebEngineDownloadRequest, ): void =
+proc cancel*(self: gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, ): void =
 
   fcQWebEngineDownloadRequest_cancel(self.h)
 
-proc pause*(self: QWebEngineDownloadRequest, ): void =
+proc pause*(self: gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, ): void =
 
   fcQWebEngineDownloadRequest_pause(self.h)
 
-proc resume*(self: QWebEngineDownloadRequest, ): void =
+proc resume*(self: gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, ): void =
 
   fcQWebEngineDownloadRequest_resume(self.h)
 
-proc stateChanged*(self: QWebEngineDownloadRequest, state: QWebEngineDownloadRequestDownloadState): void =
+proc stateChanged*(self: gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, state: cint): void =
 
   fcQWebEngineDownloadRequest_stateChanged(self.h, cint(state))
 
 proc miqt_exec_callback_QWebEngineDownloadRequest_stateChanged(slot: int, state: cint) {.exportc.} =
-  type Cb = proc(state: QWebEngineDownloadRequestDownloadState)
+  type Cb = proc(state: cint)
   let nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = QWebEngineDownloadRequestDownloadState(state)
+  let slotval1 = cint(state)
 
 
   nimfunc[](slotval1)
 
-proc onstateChanged*(self: QWebEngineDownloadRequest, slot: proc(state: QWebEngineDownloadRequestDownloadState)) =
-  type Cb = proc(state: QWebEngineDownloadRequestDownloadState)
+proc onstateChanged*(self: gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, slot: proc(state: cint)) =
+  type Cb = proc(state: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQWebEngineDownloadRequest_connect_stateChanged(self.h, cast[int](addr tmp[]))
-proc savePageFormatChanged*(self: QWebEngineDownloadRequest, ): void =
+proc savePageFormatChanged*(self: gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, ): void =
 
   fcQWebEngineDownloadRequest_savePageFormatChanged(self.h)
 
@@ -305,13 +299,13 @@ proc miqt_exec_callback_QWebEngineDownloadRequest_savePageFormatChanged(slot: in
 
   nimfunc[]()
 
-proc onsavePageFormatChanged*(self: QWebEngineDownloadRequest, slot: proc()) =
+proc onsavePageFormatChanged*(self: gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQWebEngineDownloadRequest_connect_savePageFormatChanged(self.h, cast[int](addr tmp[]))
-proc receivedBytesChanged*(self: QWebEngineDownloadRequest, ): void =
+proc receivedBytesChanged*(self: gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, ): void =
 
   fcQWebEngineDownloadRequest_receivedBytesChanged(self.h)
 
@@ -321,13 +315,13 @@ proc miqt_exec_callback_QWebEngineDownloadRequest_receivedBytesChanged(slot: int
 
   nimfunc[]()
 
-proc onreceivedBytesChanged*(self: QWebEngineDownloadRequest, slot: proc()) =
+proc onreceivedBytesChanged*(self: gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQWebEngineDownloadRequest_connect_receivedBytesChanged(self.h, cast[int](addr tmp[]))
-proc totalBytesChanged*(self: QWebEngineDownloadRequest, ): void =
+proc totalBytesChanged*(self: gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, ): void =
 
   fcQWebEngineDownloadRequest_totalBytesChanged(self.h)
 
@@ -337,13 +331,13 @@ proc miqt_exec_callback_QWebEngineDownloadRequest_totalBytesChanged(slot: int) {
 
   nimfunc[]()
 
-proc ontotalBytesChanged*(self: QWebEngineDownloadRequest, slot: proc()) =
+proc ontotalBytesChanged*(self: gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQWebEngineDownloadRequest_connect_totalBytesChanged(self.h, cast[int](addr tmp[]))
-proc interruptReasonChanged*(self: QWebEngineDownloadRequest, ): void =
+proc interruptReasonChanged*(self: gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, ): void =
 
   fcQWebEngineDownloadRequest_interruptReasonChanged(self.h)
 
@@ -353,13 +347,13 @@ proc miqt_exec_callback_QWebEngineDownloadRequest_interruptReasonChanged(slot: i
 
   nimfunc[]()
 
-proc oninterruptReasonChanged*(self: QWebEngineDownloadRequest, slot: proc()) =
+proc oninterruptReasonChanged*(self: gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQWebEngineDownloadRequest_connect_interruptReasonChanged(self.h, cast[int](addr tmp[]))
-proc isFinishedChanged*(self: QWebEngineDownloadRequest, ): void =
+proc isFinishedChanged*(self: gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, ): void =
 
   fcQWebEngineDownloadRequest_isFinishedChanged(self.h)
 
@@ -369,13 +363,13 @@ proc miqt_exec_callback_QWebEngineDownloadRequest_isFinishedChanged(slot: int) {
 
   nimfunc[]()
 
-proc onisFinishedChanged*(self: QWebEngineDownloadRequest, slot: proc()) =
+proc onisFinishedChanged*(self: gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQWebEngineDownloadRequest_connect_isFinishedChanged(self.h, cast[int](addr tmp[]))
-proc isPausedChanged*(self: QWebEngineDownloadRequest, ): void =
+proc isPausedChanged*(self: gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, ): void =
 
   fcQWebEngineDownloadRequest_isPausedChanged(self.h)
 
@@ -385,13 +379,13 @@ proc miqt_exec_callback_QWebEngineDownloadRequest_isPausedChanged(slot: int) {.e
 
   nimfunc[]()
 
-proc onisPausedChanged*(self: QWebEngineDownloadRequest, slot: proc()) =
+proc onisPausedChanged*(self: gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQWebEngineDownloadRequest_connect_isPausedChanged(self.h, cast[int](addr tmp[]))
-proc downloadDirectoryChanged*(self: QWebEngineDownloadRequest, ): void =
+proc downloadDirectoryChanged*(self: gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, ): void =
 
   fcQWebEngineDownloadRequest_downloadDirectoryChanged(self.h)
 
@@ -401,13 +395,13 @@ proc miqt_exec_callback_QWebEngineDownloadRequest_downloadDirectoryChanged(slot:
 
   nimfunc[]()
 
-proc ondownloadDirectoryChanged*(self: QWebEngineDownloadRequest, slot: proc()) =
+proc ondownloadDirectoryChanged*(self: gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQWebEngineDownloadRequest_connect_downloadDirectoryChanged(self.h, cast[int](addr tmp[]))
-proc downloadFileNameChanged*(self: QWebEngineDownloadRequest, ): void =
+proc downloadFileNameChanged*(self: gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, ): void =
 
   fcQWebEngineDownloadRequest_downloadFileNameChanged(self.h)
 
@@ -417,27 +411,27 @@ proc miqt_exec_callback_QWebEngineDownloadRequest_downloadFileNameChanged(slot: 
 
   nimfunc[]()
 
-proc ondownloadFileNameChanged*(self: QWebEngineDownloadRequest, slot: proc()) =
+proc ondownloadFileNameChanged*(self: gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQWebEngineDownloadRequest_connect_downloadFileNameChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QWebEngineDownloadRequest, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, s: cstring, c: cstring): string =
 
   let v_ms = fcQWebEngineDownloadRequest_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QWebEngineDownloadRequest, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQWebEngineDownloadRequest_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc staticMetaObject*(_: type QWebEngineDownloadRequest): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQWebEngineDownloadRequest_staticMetaObject())
-proc delete*(self: QWebEngineDownloadRequest) =
+proc delete*(self: gen_qwebenginedownloadrequest_types.QWebEngineDownloadRequest) =
   fcQWebEngineDownloadRequest_delete(self.h)

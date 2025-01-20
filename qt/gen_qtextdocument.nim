@@ -34,46 +34,36 @@ const cflags = gorge("pkg-config -cflags Qt5Widgets")
 {.compile("gen_qtextdocument.cpp", cflags).}
 
 
-type QTextDocumentMetaInformation* = cint
-const
-  QTextDocumentDocumentTitle* = 0
-  QTextDocumentDocumentUrl* = 1
+type QTextDocumentMetaInformationEnum* = distinct cint
+template DocumentTitle*(_: type QTextDocumentMetaInformationEnum): untyped = 0
+template DocumentUrl*(_: type QTextDocumentMetaInformationEnum): untyped = 1
 
 
-
-type QTextDocumentMarkdownFeature* = cint
-const
-  QTextDocumentMarkdownNoHTML* = 96
-  QTextDocumentMarkdownDialectCommonMark* = 0
-  QTextDocumentMarkdownDialectGitHub* = 3852
+type QTextDocumentMarkdownFeatureEnum* = distinct cint
+template MarkdownNoHTML*(_: type QTextDocumentMarkdownFeatureEnum): untyped = 96
+template MarkdownDialectCommonMark*(_: type QTextDocumentMarkdownFeatureEnum): untyped = 0
+template MarkdownDialectGitHub*(_: type QTextDocumentMarkdownFeatureEnum): untyped = 3852
 
 
-
-type QTextDocumentFindFlag* = cint
-const
-  QTextDocumentFindBackward* = 1
-  QTextDocumentFindCaseSensitively* = 2
-  QTextDocumentFindWholeWords* = 4
+type QTextDocumentFindFlagEnum* = distinct cint
+template FindBackward*(_: type QTextDocumentFindFlagEnum): untyped = 1
+template FindCaseSensitively*(_: type QTextDocumentFindFlagEnum): untyped = 2
+template FindWholeWords*(_: type QTextDocumentFindFlagEnum): untyped = 4
 
 
-
-type QTextDocumentResourceType* = cint
-const
-  QTextDocumentUnknownResource* = 0
-  QTextDocumentHtmlResource* = 1
-  QTextDocumentImageResource* = 2
-  QTextDocumentStyleSheetResource* = 3
-  QTextDocumentMarkdownResource* = 4
-  QTextDocumentUserResource* = 100
+type QTextDocumentResourceTypeEnum* = distinct cint
+template UnknownResource*(_: type QTextDocumentResourceTypeEnum): untyped = 0
+template HtmlResource*(_: type QTextDocumentResourceTypeEnum): untyped = 1
+template ImageResource*(_: type QTextDocumentResourceTypeEnum): untyped = 2
+template StyleSheetResource*(_: type QTextDocumentResourceTypeEnum): untyped = 3
+template MarkdownResource*(_: type QTextDocumentResourceTypeEnum): untyped = 4
+template UserResource*(_: type QTextDocumentResourceTypeEnum): untyped = 100
 
 
-
-type QTextDocumentStacks* = cint
-const
-  QTextDocumentUndoStack* = 1
-  QTextDocumentRedoStack* = 2
-  QTextDocumentUndoAndRedoStacks* = 3
-
+type QTextDocumentStacksEnum* = distinct cint
+template UndoStack*(_: type QTextDocumentStacksEnum): untyped = 1
+template RedoStack*(_: type QTextDocumentStacksEnum): untyped = 2
+template UndoAndRedoStacks*(_: type QTextDocumentStacksEnum): untyped = 3
 
 
 import gen_qtextdocument_types
@@ -85,7 +75,6 @@ import
   gen_qcoreevent,
   gen_qfont,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpagedpaintdevice,
@@ -106,7 +95,6 @@ export
   gen_qcoreevent,
   gen_qfont,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpagedpaintdevice,
@@ -290,271 +278,271 @@ proc fcQTextDocument_staticMetaObject(): pointer {.importc: "QTextDocument_stati
 proc fcQTextDocument_delete(self: pointer) {.importc: "QTextDocument_delete".}
 
 
-func init*(T: type QAbstractUndoItem, h: ptr cQAbstractUndoItem): QAbstractUndoItem =
+func init*(T: type gen_qtextdocument_types.QAbstractUndoItem, h: ptr cQAbstractUndoItem): gen_qtextdocument_types.QAbstractUndoItem =
   T(h: h)
-proc undo*(self: QAbstractUndoItem, ): void =
+proc undo*(self: gen_qtextdocument_types.QAbstractUndoItem, ): void =
 
   fcQAbstractUndoItem_undo(self.h)
 
-proc redo*(self: QAbstractUndoItem, ): void =
+proc redo*(self: gen_qtextdocument_types.QAbstractUndoItem, ): void =
 
   fcQAbstractUndoItem_redo(self.h)
 
-proc operatorAssign*(self: QAbstractUndoItem, param1: QAbstractUndoItem): void =
+proc operatorAssign*(self: gen_qtextdocument_types.QAbstractUndoItem, param1: gen_qtextdocument_types.QAbstractUndoItem): void =
 
   fcQAbstractUndoItem_operatorAssign(self.h, param1.h)
 
-proc delete*(self: QAbstractUndoItem) =
+proc delete*(self: gen_qtextdocument_types.QAbstractUndoItem) =
   fcQAbstractUndoItem_delete(self.h)
 
-func init*(T: type QTextDocument, h: ptr cQTextDocument): QTextDocument =
+func init*(T: type gen_qtextdocument_types.QTextDocument, h: ptr cQTextDocument): gen_qtextdocument_types.QTextDocument =
   T(h: h)
-proc create*(T: type QTextDocument, ): QTextDocument =
+proc create*(T: type gen_qtextdocument_types.QTextDocument, ): gen_qtextdocument_types.QTextDocument =
 
-  QTextDocument.init(fcQTextDocument_new())
-proc create*(T: type QTextDocument, text: string): QTextDocument =
+  gen_qtextdocument_types.QTextDocument.init(fcQTextDocument_new())
+proc create*(T: type gen_qtextdocument_types.QTextDocument, text: string): gen_qtextdocument_types.QTextDocument =
 
-  QTextDocument.init(fcQTextDocument_new2(struct_miqt_string(data: text, len: csize_t(len(text)))))
-proc create*(T: type QTextDocument, parent: gen_qobject.QObject): QTextDocument =
+  gen_qtextdocument_types.QTextDocument.init(fcQTextDocument_new2(struct_miqt_string(data: text, len: csize_t(len(text)))))
+proc create*(T: type gen_qtextdocument_types.QTextDocument, parent: gen_qobject.QObject): gen_qtextdocument_types.QTextDocument =
 
-  QTextDocument.init(fcQTextDocument_new3(parent.h))
-proc create*(T: type QTextDocument, text: string, parent: gen_qobject.QObject): QTextDocument =
+  gen_qtextdocument_types.QTextDocument.init(fcQTextDocument_new3(parent.h))
+proc create*(T: type gen_qtextdocument_types.QTextDocument, text: string, parent: gen_qobject.QObject): gen_qtextdocument_types.QTextDocument =
 
-  QTextDocument.init(fcQTextDocument_new4(struct_miqt_string(data: text, len: csize_t(len(text))), parent.h))
-proc metaObject*(self: QTextDocument, ): gen_qobjectdefs.QMetaObject =
+  gen_qtextdocument_types.QTextDocument.init(fcQTextDocument_new4(struct_miqt_string(data: text, len: csize_t(len(text))), parent.h))
+proc metaObject*(self: gen_qtextdocument_types.QTextDocument, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQTextDocument_metaObject(self.h))
 
-proc metacast*(self: QTextDocument, param1: cstring): pointer =
+proc metacast*(self: gen_qtextdocument_types.QTextDocument, param1: cstring): pointer =
 
   fcQTextDocument_metacast(self.h, param1)
 
-proc metacall*(self: QTextDocument, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qtextdocument_types.QTextDocument, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQTextDocument_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QTextDocument, s: cstring): string =
+proc tr*(_: type gen_qtextdocument_types.QTextDocument, s: cstring): string =
 
   let v_ms = fcQTextDocument_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QTextDocument, s: cstring): string =
+proc trUtf8*(_: type gen_qtextdocument_types.QTextDocument, s: cstring): string =
 
   let v_ms = fcQTextDocument_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc clone*(self: QTextDocument, ): QTextDocument =
+proc clone*(self: gen_qtextdocument_types.QTextDocument, ): gen_qtextdocument_types.QTextDocument =
 
-  QTextDocument(h: fcQTextDocument_clone(self.h))
+  gen_qtextdocument_types.QTextDocument(h: fcQTextDocument_clone(self.h))
 
-proc isEmpty*(self: QTextDocument, ): bool =
+proc isEmpty*(self: gen_qtextdocument_types.QTextDocument, ): bool =
 
   fcQTextDocument_isEmpty(self.h)
 
-proc clear*(self: QTextDocument, ): void =
+proc clear*(self: gen_qtextdocument_types.QTextDocument, ): void =
 
   fcQTextDocument_clear(self.h)
 
-proc setUndoRedoEnabled*(self: QTextDocument, enable: bool): void =
+proc setUndoRedoEnabled*(self: gen_qtextdocument_types.QTextDocument, enable: bool): void =
 
   fcQTextDocument_setUndoRedoEnabled(self.h, enable)
 
-proc isUndoRedoEnabled*(self: QTextDocument, ): bool =
+proc isUndoRedoEnabled*(self: gen_qtextdocument_types.QTextDocument, ): bool =
 
   fcQTextDocument_isUndoRedoEnabled(self.h)
 
-proc isUndoAvailable*(self: QTextDocument, ): bool =
+proc isUndoAvailable*(self: gen_qtextdocument_types.QTextDocument, ): bool =
 
   fcQTextDocument_isUndoAvailable(self.h)
 
-proc isRedoAvailable*(self: QTextDocument, ): bool =
+proc isRedoAvailable*(self: gen_qtextdocument_types.QTextDocument, ): bool =
 
   fcQTextDocument_isRedoAvailable(self.h)
 
-proc availableUndoSteps*(self: QTextDocument, ): cint =
+proc availableUndoSteps*(self: gen_qtextdocument_types.QTextDocument, ): cint =
 
   fcQTextDocument_availableUndoSteps(self.h)
 
-proc availableRedoSteps*(self: QTextDocument, ): cint =
+proc availableRedoSteps*(self: gen_qtextdocument_types.QTextDocument, ): cint =
 
   fcQTextDocument_availableRedoSteps(self.h)
 
-proc revision*(self: QTextDocument, ): cint =
+proc revision*(self: gen_qtextdocument_types.QTextDocument, ): cint =
 
   fcQTextDocument_revision(self.h)
 
-proc setDocumentLayout*(self: QTextDocument, layout: gen_qabstracttextdocumentlayout.QAbstractTextDocumentLayout): void =
+proc setDocumentLayout*(self: gen_qtextdocument_types.QTextDocument, layout: gen_qabstracttextdocumentlayout.QAbstractTextDocumentLayout): void =
 
   fcQTextDocument_setDocumentLayout(self.h, layout.h)
 
-proc documentLayout*(self: QTextDocument, ): gen_qabstracttextdocumentlayout.QAbstractTextDocumentLayout =
+proc documentLayout*(self: gen_qtextdocument_types.QTextDocument, ): gen_qabstracttextdocumentlayout.QAbstractTextDocumentLayout =
 
   gen_qabstracttextdocumentlayout.QAbstractTextDocumentLayout(h: fcQTextDocument_documentLayout(self.h))
 
-proc setMetaInformation*(self: QTextDocument, info: QTextDocumentMetaInformation, param2: string): void =
+proc setMetaInformation*(self: gen_qtextdocument_types.QTextDocument, info: cint, param2: string): void =
 
   fcQTextDocument_setMetaInformation(self.h, cint(info), struct_miqt_string(data: param2, len: csize_t(len(param2))))
 
-proc metaInformation*(self: QTextDocument, info: QTextDocumentMetaInformation): string =
+proc metaInformation*(self: gen_qtextdocument_types.QTextDocument, info: cint): string =
 
   let v_ms = fcQTextDocument_metaInformation(self.h, cint(info))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc toHtml*(self: QTextDocument, ): string =
+proc toHtml*(self: gen_qtextdocument_types.QTextDocument, ): string =
 
   let v_ms = fcQTextDocument_toHtml(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setHtml*(self: QTextDocument, html: string): void =
+proc setHtml*(self: gen_qtextdocument_types.QTextDocument, html: string): void =
 
   fcQTextDocument_setHtml(self.h, struct_miqt_string(data: html, len: csize_t(len(html))))
 
-proc toMarkdown*(self: QTextDocument, ): string =
+proc toMarkdown*(self: gen_qtextdocument_types.QTextDocument, ): string =
 
   let v_ms = fcQTextDocument_toMarkdown(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setMarkdown*(self: QTextDocument, markdown: string): void =
+proc setMarkdown*(self: gen_qtextdocument_types.QTextDocument, markdown: string): void =
 
   fcQTextDocument_setMarkdown(self.h, struct_miqt_string(data: markdown, len: csize_t(len(markdown))))
 
-proc toRawText*(self: QTextDocument, ): string =
+proc toRawText*(self: gen_qtextdocument_types.QTextDocument, ): string =
 
   let v_ms = fcQTextDocument_toRawText(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc toPlainText*(self: QTextDocument, ): string =
+proc toPlainText*(self: gen_qtextdocument_types.QTextDocument, ): string =
 
   let v_ms = fcQTextDocument_toPlainText(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setPlainText*(self: QTextDocument, text: string): void =
+proc setPlainText*(self: gen_qtextdocument_types.QTextDocument, text: string): void =
 
   fcQTextDocument_setPlainText(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
-proc characterAt*(self: QTextDocument, pos: cint): gen_qchar.QChar =
+proc characterAt*(self: gen_qtextdocument_types.QTextDocument, pos: cint): gen_qchar.QChar =
 
   gen_qchar.QChar(h: fcQTextDocument_characterAt(self.h, pos))
 
-proc find*(self: QTextDocument, subString: string): gen_qtextcursor.QTextCursor =
+proc find*(self: gen_qtextdocument_types.QTextDocument, subString: string): gen_qtextcursor.QTextCursor =
 
   gen_qtextcursor.QTextCursor(h: fcQTextDocument_find(self.h, struct_miqt_string(data: subString, len: csize_t(len(subString)))))
 
-proc find2*(self: QTextDocument, subString: string, cursor: gen_qtextcursor.QTextCursor): gen_qtextcursor.QTextCursor =
+proc find2*(self: gen_qtextdocument_types.QTextDocument, subString: string, cursor: gen_qtextcursor.QTextCursor): gen_qtextcursor.QTextCursor =
 
   gen_qtextcursor.QTextCursor(h: fcQTextDocument_find2(self.h, struct_miqt_string(data: subString, len: csize_t(len(subString))), cursor.h))
 
-proc findWithExpr*(self: QTextDocument, expr: gen_qregexp.QRegExp): gen_qtextcursor.QTextCursor =
+proc findWithExpr*(self: gen_qtextdocument_types.QTextDocument, expr: gen_qregexp.QRegExp): gen_qtextcursor.QTextCursor =
 
   gen_qtextcursor.QTextCursor(h: fcQTextDocument_findWithExpr(self.h, expr.h))
 
-proc find3*(self: QTextDocument, expr: gen_qregexp.QRegExp, cursor: gen_qtextcursor.QTextCursor): gen_qtextcursor.QTextCursor =
+proc find3*(self: gen_qtextdocument_types.QTextDocument, expr: gen_qregexp.QRegExp, cursor: gen_qtextcursor.QTextCursor): gen_qtextcursor.QTextCursor =
 
   gen_qtextcursor.QTextCursor(h: fcQTextDocument_find3(self.h, expr.h, cursor.h))
 
-proc find4*(self: QTextDocument, expr: gen_qregularexpression.QRegularExpression): gen_qtextcursor.QTextCursor =
+proc find4*(self: gen_qtextdocument_types.QTextDocument, expr: gen_qregularexpression.QRegularExpression): gen_qtextcursor.QTextCursor =
 
   gen_qtextcursor.QTextCursor(h: fcQTextDocument_find4(self.h, expr.h))
 
-proc find5*(self: QTextDocument, expr: gen_qregularexpression.QRegularExpression, cursor: gen_qtextcursor.QTextCursor): gen_qtextcursor.QTextCursor =
+proc find5*(self: gen_qtextdocument_types.QTextDocument, expr: gen_qregularexpression.QRegularExpression, cursor: gen_qtextcursor.QTextCursor): gen_qtextcursor.QTextCursor =
 
   gen_qtextcursor.QTextCursor(h: fcQTextDocument_find5(self.h, expr.h, cursor.h))
 
-proc frameAt*(self: QTextDocument, pos: cint): gen_qtextobject.QTextFrame =
+proc frameAt*(self: gen_qtextdocument_types.QTextDocument, pos: cint): gen_qtextobject.QTextFrame =
 
   gen_qtextobject.QTextFrame(h: fcQTextDocument_frameAt(self.h, pos))
 
-proc rootFrame*(self: QTextDocument, ): gen_qtextobject.QTextFrame =
+proc rootFrame*(self: gen_qtextdocument_types.QTextDocument, ): gen_qtextobject.QTextFrame =
 
   gen_qtextobject.QTextFrame(h: fcQTextDocument_rootFrame(self.h))
 
-proc objectX*(self: QTextDocument, objectIndex: cint): gen_qtextobject.QTextObject =
+proc objectX*(self: gen_qtextdocument_types.QTextDocument, objectIndex: cint): gen_qtextobject.QTextObject =
 
   gen_qtextobject.QTextObject(h: fcQTextDocument_objectX(self.h, objectIndex))
 
-proc objectForFormat*(self: QTextDocument, param1: gen_qtextformat.QTextFormat): gen_qtextobject.QTextObject =
+proc objectForFormat*(self: gen_qtextdocument_types.QTextDocument, param1: gen_qtextformat.QTextFormat): gen_qtextobject.QTextObject =
 
   gen_qtextobject.QTextObject(h: fcQTextDocument_objectForFormat(self.h, param1.h))
 
-proc findBlock*(self: QTextDocument, pos: cint): gen_qtextobject.QTextBlock =
+proc findBlock*(self: gen_qtextdocument_types.QTextDocument, pos: cint): gen_qtextobject.QTextBlock =
 
   gen_qtextobject.QTextBlock(h: fcQTextDocument_findBlock(self.h, pos))
 
-proc findBlockByNumber*(self: QTextDocument, blockNumber: cint): gen_qtextobject.QTextBlock =
+proc findBlockByNumber*(self: gen_qtextdocument_types.QTextDocument, blockNumber: cint): gen_qtextobject.QTextBlock =
 
   gen_qtextobject.QTextBlock(h: fcQTextDocument_findBlockByNumber(self.h, blockNumber))
 
-proc findBlockByLineNumber*(self: QTextDocument, blockNumber: cint): gen_qtextobject.QTextBlock =
+proc findBlockByLineNumber*(self: gen_qtextdocument_types.QTextDocument, blockNumber: cint): gen_qtextobject.QTextBlock =
 
   gen_qtextobject.QTextBlock(h: fcQTextDocument_findBlockByLineNumber(self.h, blockNumber))
 
-proc begin*(self: QTextDocument, ): gen_qtextobject.QTextBlock =
+proc begin*(self: gen_qtextdocument_types.QTextDocument, ): gen_qtextobject.QTextBlock =
 
   gen_qtextobject.QTextBlock(h: fcQTextDocument_begin(self.h))
 
-proc endX*(self: QTextDocument, ): gen_qtextobject.QTextBlock =
+proc endX*(self: gen_qtextdocument_types.QTextDocument, ): gen_qtextobject.QTextBlock =
 
   gen_qtextobject.QTextBlock(h: fcQTextDocument_endX(self.h))
 
-proc firstBlock*(self: QTextDocument, ): gen_qtextobject.QTextBlock =
+proc firstBlock*(self: gen_qtextdocument_types.QTextDocument, ): gen_qtextobject.QTextBlock =
 
   gen_qtextobject.QTextBlock(h: fcQTextDocument_firstBlock(self.h))
 
-proc lastBlock*(self: QTextDocument, ): gen_qtextobject.QTextBlock =
+proc lastBlock*(self: gen_qtextdocument_types.QTextDocument, ): gen_qtextobject.QTextBlock =
 
   gen_qtextobject.QTextBlock(h: fcQTextDocument_lastBlock(self.h))
 
-proc setPageSize*(self: QTextDocument, size: gen_qsize.QSizeF): void =
+proc setPageSize*(self: gen_qtextdocument_types.QTextDocument, size: gen_qsize.QSizeF): void =
 
   fcQTextDocument_setPageSize(self.h, size.h)
 
-proc pageSize*(self: QTextDocument, ): gen_qsize.QSizeF =
+proc pageSize*(self: gen_qtextdocument_types.QTextDocument, ): gen_qsize.QSizeF =
 
   gen_qsize.QSizeF(h: fcQTextDocument_pageSize(self.h))
 
-proc setDefaultFont*(self: QTextDocument, font: gen_qfont.QFont): void =
+proc setDefaultFont*(self: gen_qtextdocument_types.QTextDocument, font: gen_qfont.QFont): void =
 
   fcQTextDocument_setDefaultFont(self.h, font.h)
 
-proc defaultFont*(self: QTextDocument, ): gen_qfont.QFont =
+proc defaultFont*(self: gen_qtextdocument_types.QTextDocument, ): gen_qfont.QFont =
 
   gen_qfont.QFont(h: fcQTextDocument_defaultFont(self.h))
 
-proc pageCount*(self: QTextDocument, ): cint =
+proc pageCount*(self: gen_qtextdocument_types.QTextDocument, ): cint =
 
   fcQTextDocument_pageCount(self.h)
 
-proc isModified*(self: QTextDocument, ): bool =
+proc isModified*(self: gen_qtextdocument_types.QTextDocument, ): bool =
 
   fcQTextDocument_isModified(self.h)
 
-proc print*(self: QTextDocument, printer: gen_qpagedpaintdevice.QPagedPaintDevice): void =
+proc print*(self: gen_qtextdocument_types.QTextDocument, printer: gen_qpagedpaintdevice.QPagedPaintDevice): void =
 
   fcQTextDocument_print(self.h, printer.h)
 
-proc resource*(self: QTextDocument, typeVal: cint, name: gen_qurl.QUrl): gen_qvariant.QVariant =
+proc resource*(self: gen_qtextdocument_types.QTextDocument, typeVal: cint, name: gen_qurl.QUrl): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fcQTextDocument_resource(self.h, typeVal, name.h))
 
-proc addResource*(self: QTextDocument, typeVal: cint, name: gen_qurl.QUrl, resource: gen_qvariant.QVariant): void =
+proc addResource*(self: gen_qtextdocument_types.QTextDocument, typeVal: cint, name: gen_qurl.QUrl, resource: gen_qvariant.QVariant): void =
 
   fcQTextDocument_addResource(self.h, typeVal, name.h, resource.h)
 
-proc allFormats*(self: QTextDocument, ): seq[gen_qtextformat.QTextFormat] =
+proc allFormats*(self: gen_qtextdocument_types.QTextDocument, ): seq[gen_qtextformat.QTextFormat] =
 
   var v_ma = fcQTextDocument_allFormats(self.h)
   var vx_ret = newSeq[gen_qtextformat.QTextFormat](int(v_ma.len))
@@ -563,126 +551,126 @@ proc allFormats*(self: QTextDocument, ): seq[gen_qtextformat.QTextFormat] =
     vx_ret[i] = gen_qtextformat.QTextFormat(h: v_outCast[i])
   vx_ret
 
-proc markContentsDirty*(self: QTextDocument, fromVal: cint, length: cint): void =
+proc markContentsDirty*(self: gen_qtextdocument_types.QTextDocument, fromVal: cint, length: cint): void =
 
   fcQTextDocument_markContentsDirty(self.h, fromVal, length)
 
-proc setUseDesignMetrics*(self: QTextDocument, b: bool): void =
+proc setUseDesignMetrics*(self: gen_qtextdocument_types.QTextDocument, b: bool): void =
 
   fcQTextDocument_setUseDesignMetrics(self.h, b)
 
-proc useDesignMetrics*(self: QTextDocument, ): bool =
+proc useDesignMetrics*(self: gen_qtextdocument_types.QTextDocument, ): bool =
 
   fcQTextDocument_useDesignMetrics(self.h)
 
-proc drawContents*(self: QTextDocument, painter: gen_qpainter.QPainter): void =
+proc drawContents*(self: gen_qtextdocument_types.QTextDocument, painter: gen_qpainter.QPainter): void =
 
   fcQTextDocument_drawContents(self.h, painter.h)
 
-proc setTextWidth*(self: QTextDocument, width: float64): void =
+proc setTextWidth*(self: gen_qtextdocument_types.QTextDocument, width: float64): void =
 
   fcQTextDocument_setTextWidth(self.h, width)
 
-proc textWidth*(self: QTextDocument, ): float64 =
+proc textWidth*(self: gen_qtextdocument_types.QTextDocument, ): float64 =
 
   fcQTextDocument_textWidth(self.h)
 
-proc idealWidth*(self: QTextDocument, ): float64 =
+proc idealWidth*(self: gen_qtextdocument_types.QTextDocument, ): float64 =
 
   fcQTextDocument_idealWidth(self.h)
 
-proc indentWidth*(self: QTextDocument, ): float64 =
+proc indentWidth*(self: gen_qtextdocument_types.QTextDocument, ): float64 =
 
   fcQTextDocument_indentWidth(self.h)
 
-proc setIndentWidth*(self: QTextDocument, width: float64): void =
+proc setIndentWidth*(self: gen_qtextdocument_types.QTextDocument, width: float64): void =
 
   fcQTextDocument_setIndentWidth(self.h, width)
 
-proc documentMargin*(self: QTextDocument, ): float64 =
+proc documentMargin*(self: gen_qtextdocument_types.QTextDocument, ): float64 =
 
   fcQTextDocument_documentMargin(self.h)
 
-proc setDocumentMargin*(self: QTextDocument, margin: float64): void =
+proc setDocumentMargin*(self: gen_qtextdocument_types.QTextDocument, margin: float64): void =
 
   fcQTextDocument_setDocumentMargin(self.h, margin)
 
-proc adjustSize*(self: QTextDocument, ): void =
+proc adjustSize*(self: gen_qtextdocument_types.QTextDocument, ): void =
 
   fcQTextDocument_adjustSize(self.h)
 
-proc size*(self: QTextDocument, ): gen_qsize.QSizeF =
+proc size*(self: gen_qtextdocument_types.QTextDocument, ): gen_qsize.QSizeF =
 
   gen_qsize.QSizeF(h: fcQTextDocument_size(self.h))
 
-proc blockCount*(self: QTextDocument, ): cint =
+proc blockCount*(self: gen_qtextdocument_types.QTextDocument, ): cint =
 
   fcQTextDocument_blockCount(self.h)
 
-proc lineCount*(self: QTextDocument, ): cint =
+proc lineCount*(self: gen_qtextdocument_types.QTextDocument, ): cint =
 
   fcQTextDocument_lineCount(self.h)
 
-proc characterCount*(self: QTextDocument, ): cint =
+proc characterCount*(self: gen_qtextdocument_types.QTextDocument, ): cint =
 
   fcQTextDocument_characterCount(self.h)
 
-proc setDefaultStyleSheet*(self: QTextDocument, sheet: string): void =
+proc setDefaultStyleSheet*(self: gen_qtextdocument_types.QTextDocument, sheet: string): void =
 
   fcQTextDocument_setDefaultStyleSheet(self.h, struct_miqt_string(data: sheet, len: csize_t(len(sheet))))
 
-proc defaultStyleSheet*(self: QTextDocument, ): string =
+proc defaultStyleSheet*(self: gen_qtextdocument_types.QTextDocument, ): string =
 
   let v_ms = fcQTextDocument_defaultStyleSheet(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc undo*(self: QTextDocument, cursor: gen_qtextcursor.QTextCursor): void =
+proc undo*(self: gen_qtextdocument_types.QTextDocument, cursor: gen_qtextcursor.QTextCursor): void =
 
   fcQTextDocument_undo(self.h, cursor.h)
 
-proc redo*(self: QTextDocument, cursor: gen_qtextcursor.QTextCursor): void =
+proc redo*(self: gen_qtextdocument_types.QTextDocument, cursor: gen_qtextcursor.QTextCursor): void =
 
   fcQTextDocument_redo(self.h, cursor.h)
 
-proc clearUndoRedoStacks*(self: QTextDocument, ): void =
+proc clearUndoRedoStacks*(self: gen_qtextdocument_types.QTextDocument, ): void =
 
   fcQTextDocument_clearUndoRedoStacks(self.h)
 
-proc maximumBlockCount*(self: QTextDocument, ): cint =
+proc maximumBlockCount*(self: gen_qtextdocument_types.QTextDocument, ): cint =
 
   fcQTextDocument_maximumBlockCount(self.h)
 
-proc setMaximumBlockCount*(self: QTextDocument, maximum: cint): void =
+proc setMaximumBlockCount*(self: gen_qtextdocument_types.QTextDocument, maximum: cint): void =
 
   fcQTextDocument_setMaximumBlockCount(self.h, maximum)
 
-proc defaultTextOption*(self: QTextDocument, ): gen_qtextoption.QTextOption =
+proc defaultTextOption*(self: gen_qtextdocument_types.QTextDocument, ): gen_qtextoption.QTextOption =
 
   gen_qtextoption.QTextOption(h: fcQTextDocument_defaultTextOption(self.h))
 
-proc setDefaultTextOption*(self: QTextDocument, option: gen_qtextoption.QTextOption): void =
+proc setDefaultTextOption*(self: gen_qtextdocument_types.QTextDocument, option: gen_qtextoption.QTextOption): void =
 
   fcQTextDocument_setDefaultTextOption(self.h, option.h)
 
-proc baseUrl*(self: QTextDocument, ): gen_qurl.QUrl =
+proc baseUrl*(self: gen_qtextdocument_types.QTextDocument, ): gen_qurl.QUrl =
 
   gen_qurl.QUrl(h: fcQTextDocument_baseUrl(self.h))
 
-proc setBaseUrl*(self: QTextDocument, url: gen_qurl.QUrl): void =
+proc setBaseUrl*(self: gen_qtextdocument_types.QTextDocument, url: gen_qurl.QUrl): void =
 
   fcQTextDocument_setBaseUrl(self.h, url.h)
 
-proc defaultCursorMoveStyle*(self: QTextDocument, ): gen_qnamespace.CursorMoveStyle =
+proc defaultCursorMoveStyle*(self: gen_qtextdocument_types.QTextDocument, ): cint =
 
-  gen_qnamespace.CursorMoveStyle(fcQTextDocument_defaultCursorMoveStyle(self.h))
+  cint(fcQTextDocument_defaultCursorMoveStyle(self.h))
 
-proc setDefaultCursorMoveStyle*(self: QTextDocument, style: gen_qnamespace.CursorMoveStyle): void =
+proc setDefaultCursorMoveStyle*(self: gen_qtextdocument_types.QTextDocument, style: cint): void =
 
   fcQTextDocument_setDefaultCursorMoveStyle(self.h, cint(style))
 
-proc contentsChange*(self: QTextDocument, fromVal: cint, charsRemoved: cint, charsAdded: cint): void =
+proc contentsChange*(self: gen_qtextdocument_types.QTextDocument, fromVal: cint, charsRemoved: cint, charsAdded: cint): void =
 
   fcQTextDocument_contentsChange(self.h, fromVal, charsRemoved, charsAdded)
 
@@ -698,13 +686,13 @@ proc miqt_exec_callback_QTextDocument_contentsChange(slot: int, fromVal: cint, c
 
   nimfunc[](slotval1, slotval2, slotval3)
 
-proc oncontentsChange*(self: QTextDocument, slot: proc(fromVal: cint, charsRemoved: cint, charsAdded: cint)) =
+proc oncontentsChange*(self: gen_qtextdocument_types.QTextDocument, slot: proc(fromVal: cint, charsRemoved: cint, charsAdded: cint)) =
   type Cb = proc(fromVal: cint, charsRemoved: cint, charsAdded: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQTextDocument_connect_contentsChange(self.h, cast[int](addr tmp[]))
-proc contentsChanged*(self: QTextDocument, ): void =
+proc contentsChanged*(self: gen_qtextdocument_types.QTextDocument, ): void =
 
   fcQTextDocument_contentsChanged(self.h)
 
@@ -714,13 +702,13 @@ proc miqt_exec_callback_QTextDocument_contentsChanged(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc oncontentsChanged*(self: QTextDocument, slot: proc()) =
+proc oncontentsChanged*(self: gen_qtextdocument_types.QTextDocument, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQTextDocument_connect_contentsChanged(self.h, cast[int](addr tmp[]))
-proc undoAvailable*(self: QTextDocument, param1: bool): void =
+proc undoAvailable*(self: gen_qtextdocument_types.QTextDocument, param1: bool): void =
 
   fcQTextDocument_undoAvailable(self.h, param1)
 
@@ -732,13 +720,13 @@ proc miqt_exec_callback_QTextDocument_undoAvailable(slot: int, param1: bool) {.e
 
   nimfunc[](slotval1)
 
-proc onundoAvailable*(self: QTextDocument, slot: proc(param1: bool)) =
+proc onundoAvailable*(self: gen_qtextdocument_types.QTextDocument, slot: proc(param1: bool)) =
   type Cb = proc(param1: bool)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQTextDocument_connect_undoAvailable(self.h, cast[int](addr tmp[]))
-proc redoAvailable*(self: QTextDocument, param1: bool): void =
+proc redoAvailable*(self: gen_qtextdocument_types.QTextDocument, param1: bool): void =
 
   fcQTextDocument_redoAvailable(self.h, param1)
 
@@ -750,13 +738,13 @@ proc miqt_exec_callback_QTextDocument_redoAvailable(slot: int, param1: bool) {.e
 
   nimfunc[](slotval1)
 
-proc onredoAvailable*(self: QTextDocument, slot: proc(param1: bool)) =
+proc onredoAvailable*(self: gen_qtextdocument_types.QTextDocument, slot: proc(param1: bool)) =
   type Cb = proc(param1: bool)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQTextDocument_connect_redoAvailable(self.h, cast[int](addr tmp[]))
-proc undoCommandAdded*(self: QTextDocument, ): void =
+proc undoCommandAdded*(self: gen_qtextdocument_types.QTextDocument, ): void =
 
   fcQTextDocument_undoCommandAdded(self.h)
 
@@ -766,13 +754,13 @@ proc miqt_exec_callback_QTextDocument_undoCommandAdded(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onundoCommandAdded*(self: QTextDocument, slot: proc()) =
+proc onundoCommandAdded*(self: gen_qtextdocument_types.QTextDocument, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQTextDocument_connect_undoCommandAdded(self.h, cast[int](addr tmp[]))
-proc modificationChanged*(self: QTextDocument, m: bool): void =
+proc modificationChanged*(self: gen_qtextdocument_types.QTextDocument, m: bool): void =
 
   fcQTextDocument_modificationChanged(self.h, m)
 
@@ -784,13 +772,13 @@ proc miqt_exec_callback_QTextDocument_modificationChanged(slot: int, m: bool) {.
 
   nimfunc[](slotval1)
 
-proc onmodificationChanged*(self: QTextDocument, slot: proc(m: bool)) =
+proc onmodificationChanged*(self: gen_qtextdocument_types.QTextDocument, slot: proc(m: bool)) =
   type Cb = proc(m: bool)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQTextDocument_connect_modificationChanged(self.h, cast[int](addr tmp[]))
-proc cursorPositionChanged*(self: QTextDocument, cursor: gen_qtextcursor.QTextCursor): void =
+proc cursorPositionChanged*(self: gen_qtextdocument_types.QTextDocument, cursor: gen_qtextcursor.QTextCursor): void =
 
   fcQTextDocument_cursorPositionChanged(self.h, cursor.h)
 
@@ -802,13 +790,13 @@ proc miqt_exec_callback_QTextDocument_cursorPositionChanged(slot: int, cursor: p
 
   nimfunc[](slotval1)
 
-proc oncursorPositionChanged*(self: QTextDocument, slot: proc(cursor: gen_qtextcursor.QTextCursor)) =
+proc oncursorPositionChanged*(self: gen_qtextdocument_types.QTextDocument, slot: proc(cursor: gen_qtextcursor.QTextCursor)) =
   type Cb = proc(cursor: gen_qtextcursor.QTextCursor)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQTextDocument_connect_cursorPositionChanged(self.h, cast[int](addr tmp[]))
-proc blockCountChanged*(self: QTextDocument, newBlockCount: cint): void =
+proc blockCountChanged*(self: gen_qtextdocument_types.QTextDocument, newBlockCount: cint): void =
 
   fcQTextDocument_blockCountChanged(self.h, newBlockCount)
 
@@ -820,13 +808,13 @@ proc miqt_exec_callback_QTextDocument_blockCountChanged(slot: int, newBlockCount
 
   nimfunc[](slotval1)
 
-proc onblockCountChanged*(self: QTextDocument, slot: proc(newBlockCount: cint)) =
+proc onblockCountChanged*(self: gen_qtextdocument_types.QTextDocument, slot: proc(newBlockCount: cint)) =
   type Cb = proc(newBlockCount: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQTextDocument_connect_blockCountChanged(self.h, cast[int](addr tmp[]))
-proc baseUrlChanged*(self: QTextDocument, url: gen_qurl.QUrl): void =
+proc baseUrlChanged*(self: gen_qtextdocument_types.QTextDocument, url: gen_qurl.QUrl): void =
 
   fcQTextDocument_baseUrlChanged(self.h, url.h)
 
@@ -838,13 +826,13 @@ proc miqt_exec_callback_QTextDocument_baseUrlChanged(slot: int, url: pointer) {.
 
   nimfunc[](slotval1)
 
-proc onbaseUrlChanged*(self: QTextDocument, slot: proc(url: gen_qurl.QUrl)) =
+proc onbaseUrlChanged*(self: gen_qtextdocument_types.QTextDocument, slot: proc(url: gen_qurl.QUrl)) =
   type Cb = proc(url: gen_qurl.QUrl)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQTextDocument_connect_baseUrlChanged(self.h, cast[int](addr tmp[]))
-proc documentLayoutChanged*(self: QTextDocument, ): void =
+proc documentLayoutChanged*(self: gen_qtextdocument_types.QTextDocument, ): void =
 
   fcQTextDocument_documentLayoutChanged(self.h)
 
@@ -854,444 +842,379 @@ proc miqt_exec_callback_QTextDocument_documentLayoutChanged(slot: int) {.exportc
 
   nimfunc[]()
 
-proc ondocumentLayoutChanged*(self: QTextDocument, slot: proc()) =
+proc ondocumentLayoutChanged*(self: gen_qtextdocument_types.QTextDocument, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQTextDocument_connect_documentLayoutChanged(self.h, cast[int](addr tmp[]))
-proc undo2*(self: QTextDocument, ): void =
+proc undo2*(self: gen_qtextdocument_types.QTextDocument, ): void =
 
   fcQTextDocument_undo2(self.h)
 
-proc redo2*(self: QTextDocument, ): void =
+proc redo2*(self: gen_qtextdocument_types.QTextDocument, ): void =
 
   fcQTextDocument_redo2(self.h)
 
-proc appendUndoItem*(self: QTextDocument, param1: QAbstractUndoItem): void =
+proc appendUndoItem*(self: gen_qtextdocument_types.QTextDocument, param1: gen_qtextdocument_types.QAbstractUndoItem): void =
 
   fcQTextDocument_appendUndoItem(self.h, param1.h)
 
-proc setModified*(self: QTextDocument, ): void =
+proc setModified*(self: gen_qtextdocument_types.QTextDocument, ): void =
 
   fcQTextDocument_setModified(self.h)
 
-proc tr2*(_: type QTextDocument, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qtextdocument_types.QTextDocument, s: cstring, c: cstring): string =
 
   let v_ms = fcQTextDocument_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QTextDocument, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qtextdocument_types.QTextDocument, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQTextDocument_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QTextDocument, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qtextdocument_types.QTextDocument, s: cstring, c: cstring): string =
 
   let v_ms = fcQTextDocument_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QTextDocument, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qtextdocument_types.QTextDocument, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQTextDocument_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc clone1*(self: QTextDocument, parent: gen_qobject.QObject): QTextDocument =
+proc clone1*(self: gen_qtextdocument_types.QTextDocument, parent: gen_qobject.QObject): gen_qtextdocument_types.QTextDocument =
 
-  QTextDocument(h: fcQTextDocument_clone1(self.h, parent.h))
+  gen_qtextdocument_types.QTextDocument(h: fcQTextDocument_clone1(self.h, parent.h))
 
-proc toHtml1*(self: QTextDocument, encoding: seq[byte]): string =
+proc toHtml1*(self: gen_qtextdocument_types.QTextDocument, encoding: seq[byte]): string =
 
   let v_ms = fcQTextDocument_toHtml1(self.h, struct_miqt_string(data: cast[cstring](if len(encoding) == 0: nil else: unsafeAddr encoding[0]), len: csize_t(len(encoding))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc toMarkdown1*(self: QTextDocument, features: QTextDocumentMarkdownFeature): string =
+proc toMarkdown1*(self: gen_qtextdocument_types.QTextDocument, features: cint): string =
 
   let v_ms = fcQTextDocument_toMarkdown1(self.h, cint(features))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setMarkdown2*(self: QTextDocument, markdown: string, features: QTextDocumentMarkdownFeature): void =
+proc setMarkdown2*(self: gen_qtextdocument_types.QTextDocument, markdown: string, features: cint): void =
 
   fcQTextDocument_setMarkdown2(self.h, struct_miqt_string(data: markdown, len: csize_t(len(markdown))), cint(features))
 
-proc find22*(self: QTextDocument, subString: string, fromVal: cint): gen_qtextcursor.QTextCursor =
+proc find22*(self: gen_qtextdocument_types.QTextDocument, subString: string, fromVal: cint): gen_qtextcursor.QTextCursor =
 
   gen_qtextcursor.QTextCursor(h: fcQTextDocument_find22(self.h, struct_miqt_string(data: subString, len: csize_t(len(subString))), fromVal))
 
-proc find32*(self: QTextDocument, subString: string, fromVal: cint, options: QTextDocumentFindFlag): gen_qtextcursor.QTextCursor =
+proc find32*(self: gen_qtextdocument_types.QTextDocument, subString: string, fromVal: cint, options: cint): gen_qtextcursor.QTextCursor =
 
   gen_qtextcursor.QTextCursor(h: fcQTextDocument_find32(self.h, struct_miqt_string(data: subString, len: csize_t(len(subString))), fromVal, cint(options)))
 
-proc find33*(self: QTextDocument, subString: string, cursor: gen_qtextcursor.QTextCursor, options: QTextDocumentFindFlag): gen_qtextcursor.QTextCursor =
+proc find33*(self: gen_qtextdocument_types.QTextDocument, subString: string, cursor: gen_qtextcursor.QTextCursor, options: cint): gen_qtextcursor.QTextCursor =
 
   gen_qtextcursor.QTextCursor(h: fcQTextDocument_find33(self.h, struct_miqt_string(data: subString, len: csize_t(len(subString))), cursor.h, cint(options)))
 
-proc find23*(self: QTextDocument, expr: gen_qregexp.QRegExp, fromVal: cint): gen_qtextcursor.QTextCursor =
+proc find23*(self: gen_qtextdocument_types.QTextDocument, expr: gen_qregexp.QRegExp, fromVal: cint): gen_qtextcursor.QTextCursor =
 
   gen_qtextcursor.QTextCursor(h: fcQTextDocument_find23(self.h, expr.h, fromVal))
 
-proc find34*(self: QTextDocument, expr: gen_qregexp.QRegExp, fromVal: cint, options: QTextDocumentFindFlag): gen_qtextcursor.QTextCursor =
+proc find34*(self: gen_qtextdocument_types.QTextDocument, expr: gen_qregexp.QRegExp, fromVal: cint, options: cint): gen_qtextcursor.QTextCursor =
 
   gen_qtextcursor.QTextCursor(h: fcQTextDocument_find34(self.h, expr.h, fromVal, cint(options)))
 
-proc find35*(self: QTextDocument, expr: gen_qregexp.QRegExp, cursor: gen_qtextcursor.QTextCursor, options: QTextDocumentFindFlag): gen_qtextcursor.QTextCursor =
+proc find35*(self: gen_qtextdocument_types.QTextDocument, expr: gen_qregexp.QRegExp, cursor: gen_qtextcursor.QTextCursor, options: cint): gen_qtextcursor.QTextCursor =
 
   gen_qtextcursor.QTextCursor(h: fcQTextDocument_find35(self.h, expr.h, cursor.h, cint(options)))
 
-proc find24*(self: QTextDocument, expr: gen_qregularexpression.QRegularExpression, fromVal: cint): gen_qtextcursor.QTextCursor =
+proc find24*(self: gen_qtextdocument_types.QTextDocument, expr: gen_qregularexpression.QRegularExpression, fromVal: cint): gen_qtextcursor.QTextCursor =
 
   gen_qtextcursor.QTextCursor(h: fcQTextDocument_find24(self.h, expr.h, fromVal))
 
-proc find36*(self: QTextDocument, expr: gen_qregularexpression.QRegularExpression, fromVal: cint, options: QTextDocumentFindFlag): gen_qtextcursor.QTextCursor =
+proc find36*(self: gen_qtextdocument_types.QTextDocument, expr: gen_qregularexpression.QRegularExpression, fromVal: cint, options: cint): gen_qtextcursor.QTextCursor =
 
   gen_qtextcursor.QTextCursor(h: fcQTextDocument_find36(self.h, expr.h, fromVal, cint(options)))
 
-proc find37*(self: QTextDocument, expr: gen_qregularexpression.QRegularExpression, cursor: gen_qtextcursor.QTextCursor, options: QTextDocumentFindFlag): gen_qtextcursor.QTextCursor =
+proc find37*(self: gen_qtextdocument_types.QTextDocument, expr: gen_qregularexpression.QRegularExpression, cursor: gen_qtextcursor.QTextCursor, options: cint): gen_qtextcursor.QTextCursor =
 
   gen_qtextcursor.QTextCursor(h: fcQTextDocument_find37(self.h, expr.h, cursor.h, cint(options)))
 
-proc drawContents2*(self: QTextDocument, painter: gen_qpainter.QPainter, rect: gen_qrect.QRectF): void =
+proc drawContents2*(self: gen_qtextdocument_types.QTextDocument, painter: gen_qpainter.QPainter, rect: gen_qrect.QRectF): void =
 
   fcQTextDocument_drawContents2(self.h, painter.h, rect.h)
 
-proc clearUndoRedoStacks1*(self: QTextDocument, historyToClear: QTextDocumentStacks): void =
+proc clearUndoRedoStacks1*(self: gen_qtextdocument_types.QTextDocument, historyToClear: cint): void =
 
   fcQTextDocument_clearUndoRedoStacks1(self.h, cint(historyToClear))
 
-proc setModified1*(self: QTextDocument, m: bool): void =
+proc setModified1*(self: gen_qtextdocument_types.QTextDocument, m: bool): void =
 
   fcQTextDocument_setModified1(self.h, m)
 
-proc callVirtualBase_metaObject(self: QTextDocument, ): gen_qobjectdefs.QMetaObject =
-
+proc QTextDocumentmetaObject*(self: gen_qtextdocument_types.QTextDocument, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQTextDocument_virtualbase_metaObject(self.h))
 
-type QTextDocumentmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QTextDocument, slot: proc(super: QTextDocumentmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QTextDocumentmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qtextdocument_types.QTextDocument, slot: QTextDocumentmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QTextDocumentmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QTextDocumentmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTextDocument_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTextDocument_metaObject(self: ptr cQTextDocument, slot: int): pointer {.exportc: "miqt_exec_callback_QTextDocument_metaObject ".} =
-  type Cb = proc(super: QTextDocumentmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QTextDocument(h: self), )
+  var nimfunc = cast[ptr QTextDocumentmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QTextDocument, param1: cstring): pointer =
-
+proc QTextDocumentmetacast*(self: gen_qtextdocument_types.QTextDocument, param1: cstring): pointer =
 
   fQTextDocument_virtualbase_metacast(self.h, param1)
 
-type QTextDocumentmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QTextDocument, slot: proc(super: QTextDocumentmetacastBase, param1: cstring): pointer) =
+type QTextDocumentmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qtextdocument_types.QTextDocument, slot: QTextDocumentmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QTextDocumentmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QTextDocumentmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTextDocument_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTextDocument_metacast(self: ptr cQTextDocument, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QTextDocument_metacast ".} =
-  type Cb = proc(super: QTextDocumentmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QTextDocument(h: self), param1)
+  var nimfunc = cast[ptr QTextDocumentmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QTextDocument, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QTextDocumentmetacall*(self: gen_qtextdocument_types.QTextDocument, param1: cint, param2: cint, param3: pointer): cint =
 
   fQTextDocument_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QTextDocumentmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QTextDocument, slot: proc(super: QTextDocumentmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QTextDocumentmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qtextdocument_types.QTextDocument, slot: QTextDocumentmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QTextDocumentmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QTextDocumentmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTextDocument_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTextDocument_metacall(self: ptr cQTextDocument, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QTextDocument_metacall ".} =
-  type Cb = proc(super: QTextDocumentmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QTextDocument(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QTextDocumentmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_clear(self: QTextDocument, ): void =
-
+proc QTextDocumentclear*(self: gen_qtextdocument_types.QTextDocument, ): void =
 
   fQTextDocument_virtualbase_clear(self.h)
 
-type QTextDocumentclearBase* = proc(): void
-proc onclear*(self: QTextDocument, slot: proc(super: QTextDocumentclearBase): void) =
+type QTextDocumentclearProc* = proc(): void
+proc onclear*(self: gen_qtextdocument_types.QTextDocument, slot: QTextDocumentclearProc) =
   # TODO check subclass
-  type Cb = proc(super: QTextDocumentclearBase): void
-  var tmp = new Cb
+  var tmp = new QTextDocumentclearProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTextDocument_override_virtual_clear(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTextDocument_clear(self: ptr cQTextDocument, slot: int): void {.exportc: "miqt_exec_callback_QTextDocument_clear ".} =
-  type Cb = proc(super: QTextDocumentclearBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_clear(QTextDocument(h: self), )
+  var nimfunc = cast[ptr QTextDocumentclearProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_createObject(self: QTextDocument, f: gen_qtextformat.QTextFormat): gen_qtextobject.QTextObject =
-
+  nimfunc[]()
+proc QTextDocumentcreateObject*(self: gen_qtextdocument_types.QTextDocument, f: gen_qtextformat.QTextFormat): gen_qtextobject.QTextObject =
 
   gen_qtextobject.QTextObject(h: fQTextDocument_virtualbase_createObject(self.h, f.h))
 
-type QTextDocumentcreateObjectBase* = proc(f: gen_qtextformat.QTextFormat): gen_qtextobject.QTextObject
-proc oncreateObject*(self: QTextDocument, slot: proc(super: QTextDocumentcreateObjectBase, f: gen_qtextformat.QTextFormat): gen_qtextobject.QTextObject) =
+type QTextDocumentcreateObjectProc* = proc(f: gen_qtextformat.QTextFormat): gen_qtextobject.QTextObject
+proc oncreateObject*(self: gen_qtextdocument_types.QTextDocument, slot: QTextDocumentcreateObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QTextDocumentcreateObjectBase, f: gen_qtextformat.QTextFormat): gen_qtextobject.QTextObject
-  var tmp = new Cb
+  var tmp = new QTextDocumentcreateObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTextDocument_override_virtual_createObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTextDocument_createObject(self: ptr cQTextDocument, slot: int, f: pointer): pointer {.exportc: "miqt_exec_callback_QTextDocument_createObject ".} =
-  type Cb = proc(super: QTextDocumentcreateObjectBase, f: gen_qtextformat.QTextFormat): gen_qtextobject.QTextObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(f: gen_qtextformat.QTextFormat): auto =
-    callVirtualBase_createObject(QTextDocument(h: self), f)
+  var nimfunc = cast[ptr QTextDocumentcreateObjectProc](cast[pointer](slot))
   let slotval1 = gen_qtextformat.QTextFormat(h: f)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_loadResource(self: QTextDocument, typeVal: cint, name: gen_qurl.QUrl): gen_qvariant.QVariant =
-
+proc QTextDocumentloadResource*(self: gen_qtextdocument_types.QTextDocument, typeVal: cint, name: gen_qurl.QUrl): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQTextDocument_virtualbase_loadResource(self.h, typeVal, name.h))
 
-type QTextDocumentloadResourceBase* = proc(typeVal: cint, name: gen_qurl.QUrl): gen_qvariant.QVariant
-proc onloadResource*(self: QTextDocument, slot: proc(super: QTextDocumentloadResourceBase, typeVal: cint, name: gen_qurl.QUrl): gen_qvariant.QVariant) =
+type QTextDocumentloadResourceProc* = proc(typeVal: cint, name: gen_qurl.QUrl): gen_qvariant.QVariant
+proc onloadResource*(self: gen_qtextdocument_types.QTextDocument, slot: QTextDocumentloadResourceProc) =
   # TODO check subclass
-  type Cb = proc(super: QTextDocumentloadResourceBase, typeVal: cint, name: gen_qurl.QUrl): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QTextDocumentloadResourceProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTextDocument_override_virtual_loadResource(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTextDocument_loadResource(self: ptr cQTextDocument, slot: int, typeVal: cint, name: pointer): pointer {.exportc: "miqt_exec_callback_QTextDocument_loadResource ".} =
-  type Cb = proc(super: QTextDocumentloadResourceBase, typeVal: cint, name: gen_qurl.QUrl): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(typeVal: cint, name: gen_qurl.QUrl): auto =
-    callVirtualBase_loadResource(QTextDocument(h: self), typeVal, name)
+  var nimfunc = cast[ptr QTextDocumentloadResourceProc](cast[pointer](slot))
   let slotval1 = typeVal
 
   let slotval2 = gen_qurl.QUrl(h: name)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn.h
-proc callVirtualBase_event(self: QTextDocument, event: gen_qcoreevent.QEvent): bool =
-
+proc QTextDocumentevent*(self: gen_qtextdocument_types.QTextDocument, event: gen_qcoreevent.QEvent): bool =
 
   fQTextDocument_virtualbase_event(self.h, event.h)
 
-type QTextDocumenteventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QTextDocument, slot: proc(super: QTextDocumenteventBase, event: gen_qcoreevent.QEvent): bool) =
+type QTextDocumenteventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qtextdocument_types.QTextDocument, slot: QTextDocumenteventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTextDocumenteventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QTextDocumenteventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTextDocument_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTextDocument_event(self: ptr cQTextDocument, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QTextDocument_event ".} =
-  type Cb = proc(super: QTextDocumenteventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QTextDocument(h: self), event)
+  var nimfunc = cast[ptr QTextDocumenteventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QTextDocument, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QTextDocumenteventFilter*(self: gen_qtextdocument_types.QTextDocument, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQTextDocument_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QTextDocumenteventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QTextDocument, slot: proc(super: QTextDocumenteventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QTextDocumenteventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qtextdocument_types.QTextDocument, slot: QTextDocumenteventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QTextDocumenteventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QTextDocumenteventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTextDocument_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTextDocument_eventFilter(self: ptr cQTextDocument, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QTextDocument_eventFilter ".} =
-  type Cb = proc(super: QTextDocumenteventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QTextDocument(h: self), watched, event)
+  var nimfunc = cast[ptr QTextDocumenteventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QTextDocument, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QTextDocumenttimerEvent*(self: gen_qtextdocument_types.QTextDocument, event: gen_qcoreevent.QTimerEvent): void =
 
   fQTextDocument_virtualbase_timerEvent(self.h, event.h)
 
-type QTextDocumenttimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QTextDocument, slot: proc(super: QTextDocumenttimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QTextDocumenttimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qtextdocument_types.QTextDocument, slot: QTextDocumenttimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTextDocumenttimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QTextDocumenttimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTextDocument_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTextDocument_timerEvent(self: ptr cQTextDocument, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTextDocument_timerEvent ".} =
-  type Cb = proc(super: QTextDocumenttimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QTextDocument(h: self), event)
+  var nimfunc = cast[ptr QTextDocumenttimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QTextDocument, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QTextDocumentchildEvent*(self: gen_qtextdocument_types.QTextDocument, event: gen_qcoreevent.QChildEvent): void =
 
   fQTextDocument_virtualbase_childEvent(self.h, event.h)
 
-type QTextDocumentchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QTextDocument, slot: proc(super: QTextDocumentchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QTextDocumentchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qtextdocument_types.QTextDocument, slot: QTextDocumentchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTextDocumentchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QTextDocumentchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTextDocument_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTextDocument_childEvent(self: ptr cQTextDocument, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTextDocument_childEvent ".} =
-  type Cb = proc(super: QTextDocumentchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QTextDocument(h: self), event)
+  var nimfunc = cast[ptr QTextDocumentchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QTextDocument, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QTextDocumentcustomEvent*(self: gen_qtextdocument_types.QTextDocument, event: gen_qcoreevent.QEvent): void =
 
   fQTextDocument_virtualbase_customEvent(self.h, event.h)
 
-type QTextDocumentcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QTextDocument, slot: proc(super: QTextDocumentcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QTextDocumentcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qtextdocument_types.QTextDocument, slot: QTextDocumentcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTextDocumentcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QTextDocumentcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTextDocument_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTextDocument_customEvent(self: ptr cQTextDocument, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTextDocument_customEvent ".} =
-  type Cb = proc(super: QTextDocumentcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QTextDocument(h: self), event)
+  var nimfunc = cast[ptr QTextDocumentcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QTextDocument, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QTextDocumentconnectNotify*(self: gen_qtextdocument_types.QTextDocument, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQTextDocument_virtualbase_connectNotify(self.h, signal.h)
 
-type QTextDocumentconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QTextDocument, slot: proc(super: QTextDocumentconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QTextDocumentconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qtextdocument_types.QTextDocument, slot: QTextDocumentconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QTextDocumentconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QTextDocumentconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTextDocument_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTextDocument_connectNotify(self: ptr cQTextDocument, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QTextDocument_connectNotify ".} =
-  type Cb = proc(super: QTextDocumentconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QTextDocument(h: self), signal)
+  var nimfunc = cast[ptr QTextDocumentconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QTextDocument, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QTextDocumentdisconnectNotify*(self: gen_qtextdocument_types.QTextDocument, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQTextDocument_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QTextDocumentdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QTextDocument, slot: proc(super: QTextDocumentdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QTextDocumentdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qtextdocument_types.QTextDocument, slot: QTextDocumentdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QTextDocumentdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QTextDocumentdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTextDocument_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTextDocument_disconnectNotify(self: ptr cQTextDocument, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QTextDocument_disconnectNotify ".} =
-  type Cb = proc(super: QTextDocumentdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QTextDocument(h: self), signal)
+  var nimfunc = cast[ptr QTextDocumentdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QTextDocument): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qtextdocument_types.QTextDocument): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQTextDocument_staticMetaObject())
-proc delete*(self: QTextDocument) =
+proc delete*(self: gen_qtextdocument_types.QTextDocument) =
   fcQTextDocument_delete(self.h)

@@ -41,7 +41,6 @@ import
   gen_qcoreevent,
   gen_qevent,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -56,7 +55,6 @@ export
   gen_qcoreevent,
   gen_qevent,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -209,90 +207,90 @@ proc fcQDesktopWidget_staticMetaObject(): pointer {.importc: "QDesktopWidget_sta
 proc fcQDesktopWidget_delete(self: pointer) {.importc: "QDesktopWidget_delete".}
 
 
-func init*(T: type QDesktopWidget, h: ptr cQDesktopWidget): QDesktopWidget =
+func init*(T: type gen_qdesktopwidget_types.QDesktopWidget, h: ptr cQDesktopWidget): gen_qdesktopwidget_types.QDesktopWidget =
   T(h: h)
-proc create*(T: type QDesktopWidget, ): QDesktopWidget =
+proc create*(T: type gen_qdesktopwidget_types.QDesktopWidget, ): gen_qdesktopwidget_types.QDesktopWidget =
 
-  QDesktopWidget.init(fcQDesktopWidget_new())
-proc metaObject*(self: QDesktopWidget, ): gen_qobjectdefs.QMetaObject =
+  gen_qdesktopwidget_types.QDesktopWidget.init(fcQDesktopWidget_new())
+proc metaObject*(self: gen_qdesktopwidget_types.QDesktopWidget, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQDesktopWidget_metaObject(self.h))
 
-proc metacast*(self: QDesktopWidget, param1: cstring): pointer =
+proc metacast*(self: gen_qdesktopwidget_types.QDesktopWidget, param1: cstring): pointer =
 
   fcQDesktopWidget_metacast(self.h, param1)
 
-proc metacall*(self: QDesktopWidget, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qdesktopwidget_types.QDesktopWidget, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQDesktopWidget_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QDesktopWidget, s: cstring): string =
+proc tr*(_: type gen_qdesktopwidget_types.QDesktopWidget, s: cstring): string =
 
   let v_ms = fcQDesktopWidget_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QDesktopWidget, s: cstring): string =
+proc trUtf8*(_: type gen_qdesktopwidget_types.QDesktopWidget, s: cstring): string =
 
   let v_ms = fcQDesktopWidget_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc screenNumber*(self: QDesktopWidget, ): cint =
+proc screenNumber*(self: gen_qdesktopwidget_types.QDesktopWidget, ): cint =
 
   fcQDesktopWidget_screenNumber(self.h)
 
-proc screenGeometry*(self: QDesktopWidget, widget: gen_qwidget.QWidget): gen_qrect.QRect =
+proc screenGeometry*(self: gen_qdesktopwidget_types.QDesktopWidget, widget: gen_qwidget.QWidget): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fcQDesktopWidget_screenGeometry(self.h, widget.h))
 
-proc availableGeometry*(self: QDesktopWidget, widget: gen_qwidget.QWidget): gen_qrect.QRect =
+proc availableGeometry*(self: gen_qdesktopwidget_types.QDesktopWidget, widget: gen_qwidget.QWidget): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fcQDesktopWidget_availableGeometry(self.h, widget.h))
 
-proc isVirtualDesktop*(self: QDesktopWidget, ): bool =
+proc isVirtualDesktop*(self: gen_qdesktopwidget_types.QDesktopWidget, ): bool =
 
   fcQDesktopWidget_isVirtualDesktop(self.h)
 
-proc numScreens*(self: QDesktopWidget, ): cint =
+proc numScreens*(self: gen_qdesktopwidget_types.QDesktopWidget, ): cint =
 
   fcQDesktopWidget_numScreens(self.h)
 
-proc screenCount*(self: QDesktopWidget, ): cint =
+proc screenCount*(self: gen_qdesktopwidget_types.QDesktopWidget, ): cint =
 
   fcQDesktopWidget_screenCount(self.h)
 
-proc primaryScreen*(self: QDesktopWidget, ): cint =
+proc primaryScreen*(self: gen_qdesktopwidget_types.QDesktopWidget, ): cint =
 
   fcQDesktopWidget_primaryScreen(self.h)
 
-proc screenNumberWithQPoint*(self: QDesktopWidget, param1: gen_qpoint.QPoint): cint =
+proc screenNumberWithQPoint*(self: gen_qdesktopwidget_types.QDesktopWidget, param1: gen_qpoint.QPoint): cint =
 
   fcQDesktopWidget_screenNumberWithQPoint(self.h, param1.h)
 
-proc screen*(self: QDesktopWidget, ): gen_qwidget.QWidget =
+proc screen*(self: gen_qdesktopwidget_types.QDesktopWidget, ): gen_qwidget.QWidget =
 
   gen_qwidget.QWidget(h: fcQDesktopWidget_screen(self.h))
 
-proc screenGeometry2*(self: QDesktopWidget, ): gen_qrect.QRect =
+proc screenGeometry2*(self: gen_qdesktopwidget_types.QDesktopWidget, ): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fcQDesktopWidget_screenGeometry2(self.h))
 
-proc screenGeometryWithPoint*(self: QDesktopWidget, point: gen_qpoint.QPoint): gen_qrect.QRect =
+proc screenGeometryWithPoint*(self: gen_qdesktopwidget_types.QDesktopWidget, point: gen_qpoint.QPoint): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fcQDesktopWidget_screenGeometryWithPoint(self.h, point.h))
 
-proc availableGeometry2*(self: QDesktopWidget, ): gen_qrect.QRect =
+proc availableGeometry2*(self: gen_qdesktopwidget_types.QDesktopWidget, ): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fcQDesktopWidget_availableGeometry2(self.h))
 
-proc availableGeometryWithPoint*(self: QDesktopWidget, point: gen_qpoint.QPoint): gen_qrect.QRect =
+proc availableGeometryWithPoint*(self: gen_qdesktopwidget_types.QDesktopWidget, point: gen_qpoint.QPoint): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fcQDesktopWidget_availableGeometryWithPoint(self.h, point.h))
 
-proc resized*(self: QDesktopWidget, param1: cint): void =
+proc resized*(self: gen_qdesktopwidget_types.QDesktopWidget, param1: cint): void =
 
   fcQDesktopWidget_resized(self.h, param1)
 
@@ -304,13 +302,13 @@ proc miqt_exec_callback_QDesktopWidget_resized(slot: int, param1: cint) {.export
 
   nimfunc[](slotval1)
 
-proc onresized*(self: QDesktopWidget, slot: proc(param1: cint)) =
+proc onresized*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: proc(param1: cint)) =
   type Cb = proc(param1: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQDesktopWidget_connect_resized(self.h, cast[int](addr tmp[]))
-proc workAreaResized*(self: QDesktopWidget, param1: cint): void =
+proc workAreaResized*(self: gen_qdesktopwidget_types.QDesktopWidget, param1: cint): void =
 
   fcQDesktopWidget_workAreaResized(self.h, param1)
 
@@ -322,13 +320,13 @@ proc miqt_exec_callback_QDesktopWidget_workAreaResized(slot: int, param1: cint) 
 
   nimfunc[](slotval1)
 
-proc onworkAreaResized*(self: QDesktopWidget, slot: proc(param1: cint)) =
+proc onworkAreaResized*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: proc(param1: cint)) =
   type Cb = proc(param1: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQDesktopWidget_connect_workAreaResized(self.h, cast[int](addr tmp[]))
-proc screenCountChanged*(self: QDesktopWidget, param1: cint): void =
+proc screenCountChanged*(self: gen_qdesktopwidget_types.QDesktopWidget, param1: cint): void =
 
   fcQDesktopWidget_screenCountChanged(self.h, param1)
 
@@ -340,13 +338,13 @@ proc miqt_exec_callback_QDesktopWidget_screenCountChanged(slot: int, param1: cin
 
   nimfunc[](slotval1)
 
-proc onscreenCountChanged*(self: QDesktopWidget, slot: proc(param1: cint)) =
+proc onscreenCountChanged*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: proc(param1: cint)) =
   type Cb = proc(param1: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQDesktopWidget_connect_screenCountChanged(self.h, cast[int](addr tmp[]))
-proc primaryScreenChanged*(self: QDesktopWidget, ): void =
+proc primaryScreenChanged*(self: gen_qdesktopwidget_types.QDesktopWidget, ): void =
 
   fcQDesktopWidget_primaryScreenChanged(self.h)
 
@@ -356,892 +354,712 @@ proc miqt_exec_callback_QDesktopWidget_primaryScreenChanged(slot: int) {.exportc
 
   nimfunc[]()
 
-proc onprimaryScreenChanged*(self: QDesktopWidget, slot: proc()) =
+proc onprimaryScreenChanged*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQDesktopWidget_connect_primaryScreenChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QDesktopWidget, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qdesktopwidget_types.QDesktopWidget, s: cstring, c: cstring): string =
 
   let v_ms = fcQDesktopWidget_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QDesktopWidget, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qdesktopwidget_types.QDesktopWidget, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQDesktopWidget_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QDesktopWidget, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qdesktopwidget_types.QDesktopWidget, s: cstring, c: cstring): string =
 
   let v_ms = fcQDesktopWidget_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QDesktopWidget, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qdesktopwidget_types.QDesktopWidget, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQDesktopWidget_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc screenNumber1*(self: QDesktopWidget, widget: gen_qwidget.QWidget): cint =
+proc screenNumber1*(self: gen_qdesktopwidget_types.QDesktopWidget, widget: gen_qwidget.QWidget): cint =
 
   fcQDesktopWidget_screenNumber1(self.h, widget.h)
 
-proc screen1*(self: QDesktopWidget, screen: cint): gen_qwidget.QWidget =
+proc screen1*(self: gen_qdesktopwidget_types.QDesktopWidget, screen: cint): gen_qwidget.QWidget =
 
   gen_qwidget.QWidget(h: fcQDesktopWidget_screen1(self.h, screen))
 
-proc screenGeometry1*(self: QDesktopWidget, screen: cint): gen_qrect.QRect =
+proc screenGeometry1*(self: gen_qdesktopwidget_types.QDesktopWidget, screen: cint): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fcQDesktopWidget_screenGeometry1(self.h, screen))
 
-proc availableGeometry1*(self: QDesktopWidget, screen: cint): gen_qrect.QRect =
+proc availableGeometry1*(self: gen_qdesktopwidget_types.QDesktopWidget, screen: cint): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fcQDesktopWidget_availableGeometry1(self.h, screen))
 
-proc callVirtualBase_metaObject(self: QDesktopWidget, ): gen_qobjectdefs.QMetaObject =
-
+proc QDesktopWidgetmetaObject*(self: gen_qdesktopwidget_types.QDesktopWidget, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQDesktopWidget_virtualbase_metaObject(self.h))
 
-type QDesktopWidgetmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QDesktopWidget, slot: proc(super: QDesktopWidgetmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QDesktopWidgetmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: QDesktopWidgetmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QDesktopWidgetmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QDesktopWidgetmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDesktopWidget_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDesktopWidget_metaObject(self: ptr cQDesktopWidget, slot: int): pointer {.exportc: "miqt_exec_callback_QDesktopWidget_metaObject ".} =
-  type Cb = proc(super: QDesktopWidgetmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QDesktopWidget(h: self), )
+  var nimfunc = cast[ptr QDesktopWidgetmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QDesktopWidget, param1: cstring): pointer =
-
+proc QDesktopWidgetmetacast*(self: gen_qdesktopwidget_types.QDesktopWidget, param1: cstring): pointer =
 
   fQDesktopWidget_virtualbase_metacast(self.h, param1)
 
-type QDesktopWidgetmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QDesktopWidget, slot: proc(super: QDesktopWidgetmetacastBase, param1: cstring): pointer) =
+type QDesktopWidgetmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: QDesktopWidgetmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QDesktopWidgetmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QDesktopWidgetmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDesktopWidget_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDesktopWidget_metacast(self: ptr cQDesktopWidget, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QDesktopWidget_metacast ".} =
-  type Cb = proc(super: QDesktopWidgetmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QDesktopWidget(h: self), param1)
+  var nimfunc = cast[ptr QDesktopWidgetmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QDesktopWidget, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QDesktopWidgetmetacall*(self: gen_qdesktopwidget_types.QDesktopWidget, param1: cint, param2: cint, param3: pointer): cint =
 
   fQDesktopWidget_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QDesktopWidgetmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QDesktopWidget, slot: proc(super: QDesktopWidgetmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QDesktopWidgetmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: QDesktopWidgetmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QDesktopWidgetmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QDesktopWidgetmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDesktopWidget_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDesktopWidget_metacall(self: ptr cQDesktopWidget, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QDesktopWidget_metacall ".} =
-  type Cb = proc(super: QDesktopWidgetmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QDesktopWidget(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QDesktopWidgetmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_resizeEvent(self: QDesktopWidget, e: gen_qevent.QResizeEvent): void =
-
+proc QDesktopWidgetresizeEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, e: gen_qevent.QResizeEvent): void =
 
   fQDesktopWidget_virtualbase_resizeEvent(self.h, e.h)
 
-type QDesktopWidgetresizeEventBase* = proc(e: gen_qevent.QResizeEvent): void
-proc onresizeEvent*(self: QDesktopWidget, slot: proc(super: QDesktopWidgetresizeEventBase, e: gen_qevent.QResizeEvent): void) =
+type QDesktopWidgetresizeEventProc* = proc(e: gen_qevent.QResizeEvent): void
+proc onresizeEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: QDesktopWidgetresizeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDesktopWidgetresizeEventBase, e: gen_qevent.QResizeEvent): void
-  var tmp = new Cb
+  var tmp = new QDesktopWidgetresizeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDesktopWidget_override_virtual_resizeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDesktopWidget_resizeEvent(self: ptr cQDesktopWidget, slot: int, e: pointer): void {.exportc: "miqt_exec_callback_QDesktopWidget_resizeEvent ".} =
-  type Cb = proc(super: QDesktopWidgetresizeEventBase, e: gen_qevent.QResizeEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(e: gen_qevent.QResizeEvent): auto =
-    callVirtualBase_resizeEvent(QDesktopWidget(h: self), e)
+  var nimfunc = cast[ptr QDesktopWidgetresizeEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QResizeEvent(h: e)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_devType(self: QDesktopWidget, ): cint =
-
+  nimfunc[](slotval1)
+proc QDesktopWidgetdevType*(self: gen_qdesktopwidget_types.QDesktopWidget, ): cint =
 
   fQDesktopWidget_virtualbase_devType(self.h)
 
-type QDesktopWidgetdevTypeBase* = proc(): cint
-proc ondevType*(self: QDesktopWidget, slot: proc(super: QDesktopWidgetdevTypeBase): cint) =
+type QDesktopWidgetdevTypeProc* = proc(): cint
+proc ondevType*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: QDesktopWidgetdevTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: QDesktopWidgetdevTypeBase): cint
-  var tmp = new Cb
+  var tmp = new QDesktopWidgetdevTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDesktopWidget_override_virtual_devType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDesktopWidget_devType(self: ptr cQDesktopWidget, slot: int): cint {.exportc: "miqt_exec_callback_QDesktopWidget_devType ".} =
-  type Cb = proc(super: QDesktopWidgetdevTypeBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_devType(QDesktopWidget(h: self), )
+  var nimfunc = cast[ptr QDesktopWidgetdevTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setVisible(self: QDesktopWidget, visible: bool): void =
-
+proc QDesktopWidgetsetVisible*(self: gen_qdesktopwidget_types.QDesktopWidget, visible: bool): void =
 
   fQDesktopWidget_virtualbase_setVisible(self.h, visible)
 
-type QDesktopWidgetsetVisibleBase* = proc(visible: bool): void
-proc onsetVisible*(self: QDesktopWidget, slot: proc(super: QDesktopWidgetsetVisibleBase, visible: bool): void) =
+type QDesktopWidgetsetVisibleProc* = proc(visible: bool): void
+proc onsetVisible*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: QDesktopWidgetsetVisibleProc) =
   # TODO check subclass
-  type Cb = proc(super: QDesktopWidgetsetVisibleBase, visible: bool): void
-  var tmp = new Cb
+  var tmp = new QDesktopWidgetsetVisibleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDesktopWidget_override_virtual_setVisible(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDesktopWidget_setVisible(self: ptr cQDesktopWidget, slot: int, visible: bool): void {.exportc: "miqt_exec_callback_QDesktopWidget_setVisible ".} =
-  type Cb = proc(super: QDesktopWidgetsetVisibleBase, visible: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(visible: bool): auto =
-    callVirtualBase_setVisible(QDesktopWidget(h: self), visible)
+  var nimfunc = cast[ptr QDesktopWidgetsetVisibleProc](cast[pointer](slot))
   let slotval1 = visible
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_sizeHint(self: QDesktopWidget, ): gen_qsize.QSize =
-
+  nimfunc[](slotval1)
+proc QDesktopWidgetsizeHint*(self: gen_qdesktopwidget_types.QDesktopWidget, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQDesktopWidget_virtualbase_sizeHint(self.h))
 
-type QDesktopWidgetsizeHintBase* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: QDesktopWidget, slot: proc(super: QDesktopWidgetsizeHintBase): gen_qsize.QSize) =
+type QDesktopWidgetsizeHintProc* = proc(): gen_qsize.QSize
+proc onsizeHint*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: QDesktopWidgetsizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QDesktopWidgetsizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QDesktopWidgetsizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDesktopWidget_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDesktopWidget_sizeHint(self: ptr cQDesktopWidget, slot: int): pointer {.exportc: "miqt_exec_callback_QDesktopWidget_sizeHint ".} =
-  type Cb = proc(super: QDesktopWidgetsizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sizeHint(QDesktopWidget(h: self), )
+  var nimfunc = cast[ptr QDesktopWidgetsizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_minimumSizeHint(self: QDesktopWidget, ): gen_qsize.QSize =
-
+proc QDesktopWidgetminimumSizeHint*(self: gen_qdesktopwidget_types.QDesktopWidget, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQDesktopWidget_virtualbase_minimumSizeHint(self.h))
 
-type QDesktopWidgetminimumSizeHintBase* = proc(): gen_qsize.QSize
-proc onminimumSizeHint*(self: QDesktopWidget, slot: proc(super: QDesktopWidgetminimumSizeHintBase): gen_qsize.QSize) =
+type QDesktopWidgetminimumSizeHintProc* = proc(): gen_qsize.QSize
+proc onminimumSizeHint*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: QDesktopWidgetminimumSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QDesktopWidgetminimumSizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QDesktopWidgetminimumSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDesktopWidget_override_virtual_minimumSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDesktopWidget_minimumSizeHint(self: ptr cQDesktopWidget, slot: int): pointer {.exportc: "miqt_exec_callback_QDesktopWidget_minimumSizeHint ".} =
-  type Cb = proc(super: QDesktopWidgetminimumSizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_minimumSizeHint(QDesktopWidget(h: self), )
+  var nimfunc = cast[ptr QDesktopWidgetminimumSizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_heightForWidth(self: QDesktopWidget, param1: cint): cint =
-
+proc QDesktopWidgetheightForWidth*(self: gen_qdesktopwidget_types.QDesktopWidget, param1: cint): cint =
 
   fQDesktopWidget_virtualbase_heightForWidth(self.h, param1)
 
-type QDesktopWidgetheightForWidthBase* = proc(param1: cint): cint
-proc onheightForWidth*(self: QDesktopWidget, slot: proc(super: QDesktopWidgetheightForWidthBase, param1: cint): cint) =
+type QDesktopWidgetheightForWidthProc* = proc(param1: cint): cint
+proc onheightForWidth*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: QDesktopWidgetheightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QDesktopWidgetheightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QDesktopWidgetheightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDesktopWidget_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDesktopWidget_heightForWidth(self: ptr cQDesktopWidget, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QDesktopWidget_heightForWidth ".} =
-  type Cb = proc(super: QDesktopWidgetheightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_heightForWidth(QDesktopWidget(h: self), param1)
+  var nimfunc = cast[ptr QDesktopWidgetheightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_hasHeightForWidth(self: QDesktopWidget, ): bool =
-
+proc QDesktopWidgethasHeightForWidth*(self: gen_qdesktopwidget_types.QDesktopWidget, ): bool =
 
   fQDesktopWidget_virtualbase_hasHeightForWidth(self.h)
 
-type QDesktopWidgethasHeightForWidthBase* = proc(): bool
-proc onhasHeightForWidth*(self: QDesktopWidget, slot: proc(super: QDesktopWidgethasHeightForWidthBase): bool) =
+type QDesktopWidgethasHeightForWidthProc* = proc(): bool
+proc onhasHeightForWidth*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: QDesktopWidgethasHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QDesktopWidgethasHeightForWidthBase): bool
-  var tmp = new Cb
+  var tmp = new QDesktopWidgethasHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDesktopWidget_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDesktopWidget_hasHeightForWidth(self: ptr cQDesktopWidget, slot: int): bool {.exportc: "miqt_exec_callback_QDesktopWidget_hasHeightForWidth ".} =
-  type Cb = proc(super: QDesktopWidgethasHeightForWidthBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasHeightForWidth(QDesktopWidget(h: self), )
+  var nimfunc = cast[ptr QDesktopWidgethasHeightForWidthProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_paintEngine(self: QDesktopWidget, ): gen_qpaintengine.QPaintEngine =
-
+proc QDesktopWidgetpaintEngine*(self: gen_qdesktopwidget_types.QDesktopWidget, ): gen_qpaintengine.QPaintEngine =
 
   gen_qpaintengine.QPaintEngine(h: fQDesktopWidget_virtualbase_paintEngine(self.h))
 
-type QDesktopWidgetpaintEngineBase* = proc(): gen_qpaintengine.QPaintEngine
-proc onpaintEngine*(self: QDesktopWidget, slot: proc(super: QDesktopWidgetpaintEngineBase): gen_qpaintengine.QPaintEngine) =
+type QDesktopWidgetpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
+proc onpaintEngine*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: QDesktopWidgetpaintEngineProc) =
   # TODO check subclass
-  type Cb = proc(super: QDesktopWidgetpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var tmp = new Cb
+  var tmp = new QDesktopWidgetpaintEngineProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDesktopWidget_override_virtual_paintEngine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDesktopWidget_paintEngine(self: ptr cQDesktopWidget, slot: int): pointer {.exportc: "miqt_exec_callback_QDesktopWidget_paintEngine ".} =
-  type Cb = proc(super: QDesktopWidgetpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_paintEngine(QDesktopWidget(h: self), )
+  var nimfunc = cast[ptr QDesktopWidgetpaintEngineProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_event(self: QDesktopWidget, event: gen_qcoreevent.QEvent): bool =
-
+proc QDesktopWidgetevent*(self: gen_qdesktopwidget_types.QDesktopWidget, event: gen_qcoreevent.QEvent): bool =
 
   fQDesktopWidget_virtualbase_event(self.h, event.h)
 
-type QDesktopWidgeteventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QDesktopWidget, slot: proc(super: QDesktopWidgeteventBase, event: gen_qcoreevent.QEvent): bool) =
+type QDesktopWidgeteventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: QDesktopWidgeteventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDesktopWidgeteventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QDesktopWidgeteventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDesktopWidget_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDesktopWidget_event(self: ptr cQDesktopWidget, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QDesktopWidget_event ".} =
-  type Cb = proc(super: QDesktopWidgeteventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QDesktopWidget(h: self), event)
+  var nimfunc = cast[ptr QDesktopWidgeteventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_mousePressEvent(self: QDesktopWidget, event: gen_qevent.QMouseEvent): void =
-
+proc QDesktopWidgetmousePressEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, event: gen_qevent.QMouseEvent): void =
 
   fQDesktopWidget_virtualbase_mousePressEvent(self.h, event.h)
 
-type QDesktopWidgetmousePressEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmousePressEvent*(self: QDesktopWidget, slot: proc(super: QDesktopWidgetmousePressEventBase, event: gen_qevent.QMouseEvent): void) =
+type QDesktopWidgetmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmousePressEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: QDesktopWidgetmousePressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDesktopWidgetmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QDesktopWidgetmousePressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDesktopWidget_override_virtual_mousePressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDesktopWidget_mousePressEvent(self: ptr cQDesktopWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDesktopWidget_mousePressEvent ".} =
-  type Cb = proc(super: QDesktopWidgetmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mousePressEvent(QDesktopWidget(h: self), event)
+  var nimfunc = cast[ptr QDesktopWidgetmousePressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseReleaseEvent(self: QDesktopWidget, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QDesktopWidgetmouseReleaseEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, event: gen_qevent.QMouseEvent): void =
 
   fQDesktopWidget_virtualbase_mouseReleaseEvent(self.h, event.h)
 
-type QDesktopWidgetmouseReleaseEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseReleaseEvent*(self: QDesktopWidget, slot: proc(super: QDesktopWidgetmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void) =
+type QDesktopWidgetmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseReleaseEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: QDesktopWidgetmouseReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDesktopWidgetmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QDesktopWidgetmouseReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDesktopWidget_override_virtual_mouseReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDesktopWidget_mouseReleaseEvent(self: ptr cQDesktopWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDesktopWidget_mouseReleaseEvent ".} =
-  type Cb = proc(super: QDesktopWidgetmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseReleaseEvent(QDesktopWidget(h: self), event)
+  var nimfunc = cast[ptr QDesktopWidgetmouseReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseDoubleClickEvent(self: QDesktopWidget, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QDesktopWidgetmouseDoubleClickEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, event: gen_qevent.QMouseEvent): void =
 
   fQDesktopWidget_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
-type QDesktopWidgetmouseDoubleClickEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseDoubleClickEvent*(self: QDesktopWidget, slot: proc(super: QDesktopWidgetmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void) =
+type QDesktopWidgetmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseDoubleClickEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: QDesktopWidgetmouseDoubleClickEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDesktopWidgetmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QDesktopWidgetmouseDoubleClickEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDesktopWidget_override_virtual_mouseDoubleClickEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDesktopWidget_mouseDoubleClickEvent(self: ptr cQDesktopWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDesktopWidget_mouseDoubleClickEvent ".} =
-  type Cb = proc(super: QDesktopWidgetmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseDoubleClickEvent(QDesktopWidget(h: self), event)
+  var nimfunc = cast[ptr QDesktopWidgetmouseDoubleClickEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseMoveEvent(self: QDesktopWidget, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QDesktopWidgetmouseMoveEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, event: gen_qevent.QMouseEvent): void =
 
   fQDesktopWidget_virtualbase_mouseMoveEvent(self.h, event.h)
 
-type QDesktopWidgetmouseMoveEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseMoveEvent*(self: QDesktopWidget, slot: proc(super: QDesktopWidgetmouseMoveEventBase, event: gen_qevent.QMouseEvent): void) =
+type QDesktopWidgetmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseMoveEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: QDesktopWidgetmouseMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDesktopWidgetmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QDesktopWidgetmouseMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDesktopWidget_override_virtual_mouseMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDesktopWidget_mouseMoveEvent(self: ptr cQDesktopWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDesktopWidget_mouseMoveEvent ".} =
-  type Cb = proc(super: QDesktopWidgetmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseMoveEvent(QDesktopWidget(h: self), event)
+  var nimfunc = cast[ptr QDesktopWidgetmouseMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_wheelEvent(self: QDesktopWidget, event: gen_qevent.QWheelEvent): void =
-
+  nimfunc[](slotval1)
+proc QDesktopWidgetwheelEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, event: gen_qevent.QWheelEvent): void =
 
   fQDesktopWidget_virtualbase_wheelEvent(self.h, event.h)
 
-type QDesktopWidgetwheelEventBase* = proc(event: gen_qevent.QWheelEvent): void
-proc onwheelEvent*(self: QDesktopWidget, slot: proc(super: QDesktopWidgetwheelEventBase, event: gen_qevent.QWheelEvent): void) =
+type QDesktopWidgetwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
+proc onwheelEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: QDesktopWidgetwheelEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDesktopWidgetwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var tmp = new Cb
+  var tmp = new QDesktopWidgetwheelEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDesktopWidget_override_virtual_wheelEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDesktopWidget_wheelEvent(self: ptr cQDesktopWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDesktopWidget_wheelEvent ".} =
-  type Cb = proc(super: QDesktopWidgetwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QWheelEvent): auto =
-    callVirtualBase_wheelEvent(QDesktopWidget(h: self), event)
+  var nimfunc = cast[ptr QDesktopWidgetwheelEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QWheelEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyPressEvent(self: QDesktopWidget, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QDesktopWidgetkeyPressEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, event: gen_qevent.QKeyEvent): void =
 
   fQDesktopWidget_virtualbase_keyPressEvent(self.h, event.h)
 
-type QDesktopWidgetkeyPressEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyPressEvent*(self: QDesktopWidget, slot: proc(super: QDesktopWidgetkeyPressEventBase, event: gen_qevent.QKeyEvent): void) =
+type QDesktopWidgetkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyPressEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: QDesktopWidgetkeyPressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDesktopWidgetkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QDesktopWidgetkeyPressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDesktopWidget_override_virtual_keyPressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDesktopWidget_keyPressEvent(self: ptr cQDesktopWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDesktopWidget_keyPressEvent ".} =
-  type Cb = proc(super: QDesktopWidgetkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyPressEvent(QDesktopWidget(h: self), event)
+  var nimfunc = cast[ptr QDesktopWidgetkeyPressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyReleaseEvent(self: QDesktopWidget, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QDesktopWidgetkeyReleaseEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, event: gen_qevent.QKeyEvent): void =
 
   fQDesktopWidget_virtualbase_keyReleaseEvent(self.h, event.h)
 
-type QDesktopWidgetkeyReleaseEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyReleaseEvent*(self: QDesktopWidget, slot: proc(super: QDesktopWidgetkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void) =
+type QDesktopWidgetkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyReleaseEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: QDesktopWidgetkeyReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDesktopWidgetkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QDesktopWidgetkeyReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDesktopWidget_override_virtual_keyReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDesktopWidget_keyReleaseEvent(self: ptr cQDesktopWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDesktopWidget_keyReleaseEvent ".} =
-  type Cb = proc(super: QDesktopWidgetkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyReleaseEvent(QDesktopWidget(h: self), event)
+  var nimfunc = cast[ptr QDesktopWidgetkeyReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusInEvent(self: QDesktopWidget, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QDesktopWidgetfocusInEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, event: gen_qevent.QFocusEvent): void =
 
   fQDesktopWidget_virtualbase_focusInEvent(self.h, event.h)
 
-type QDesktopWidgetfocusInEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusInEvent*(self: QDesktopWidget, slot: proc(super: QDesktopWidgetfocusInEventBase, event: gen_qevent.QFocusEvent): void) =
+type QDesktopWidgetfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusInEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: QDesktopWidgetfocusInEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDesktopWidgetfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QDesktopWidgetfocusInEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDesktopWidget_override_virtual_focusInEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDesktopWidget_focusInEvent(self: ptr cQDesktopWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDesktopWidget_focusInEvent ".} =
-  type Cb = proc(super: QDesktopWidgetfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusInEvent(QDesktopWidget(h: self), event)
+  var nimfunc = cast[ptr QDesktopWidgetfocusInEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusOutEvent(self: QDesktopWidget, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QDesktopWidgetfocusOutEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, event: gen_qevent.QFocusEvent): void =
 
   fQDesktopWidget_virtualbase_focusOutEvent(self.h, event.h)
 
-type QDesktopWidgetfocusOutEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusOutEvent*(self: QDesktopWidget, slot: proc(super: QDesktopWidgetfocusOutEventBase, event: gen_qevent.QFocusEvent): void) =
+type QDesktopWidgetfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusOutEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: QDesktopWidgetfocusOutEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDesktopWidgetfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QDesktopWidgetfocusOutEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDesktopWidget_override_virtual_focusOutEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDesktopWidget_focusOutEvent(self: ptr cQDesktopWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDesktopWidget_focusOutEvent ".} =
-  type Cb = proc(super: QDesktopWidgetfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusOutEvent(QDesktopWidget(h: self), event)
+  var nimfunc = cast[ptr QDesktopWidgetfocusOutEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_enterEvent(self: QDesktopWidget, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QDesktopWidgetenterEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, event: gen_qcoreevent.QEvent): void =
 
   fQDesktopWidget_virtualbase_enterEvent(self.h, event.h)
 
-type QDesktopWidgetenterEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onenterEvent*(self: QDesktopWidget, slot: proc(super: QDesktopWidgetenterEventBase, event: gen_qcoreevent.QEvent): void) =
+type QDesktopWidgetenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onenterEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: QDesktopWidgetenterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDesktopWidgetenterEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QDesktopWidgetenterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDesktopWidget_override_virtual_enterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDesktopWidget_enterEvent(self: ptr cQDesktopWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDesktopWidget_enterEvent ".} =
-  type Cb = proc(super: QDesktopWidgetenterEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_enterEvent(QDesktopWidget(h: self), event)
+  var nimfunc = cast[ptr QDesktopWidgetenterEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_leaveEvent(self: QDesktopWidget, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QDesktopWidgetleaveEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, event: gen_qcoreevent.QEvent): void =
 
   fQDesktopWidget_virtualbase_leaveEvent(self.h, event.h)
 
-type QDesktopWidgetleaveEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onleaveEvent*(self: QDesktopWidget, slot: proc(super: QDesktopWidgetleaveEventBase, event: gen_qcoreevent.QEvent): void) =
+type QDesktopWidgetleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onleaveEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: QDesktopWidgetleaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDesktopWidgetleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QDesktopWidgetleaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDesktopWidget_override_virtual_leaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDesktopWidget_leaveEvent(self: ptr cQDesktopWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDesktopWidget_leaveEvent ".} =
-  type Cb = proc(super: QDesktopWidgetleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_leaveEvent(QDesktopWidget(h: self), event)
+  var nimfunc = cast[ptr QDesktopWidgetleaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_paintEvent(self: QDesktopWidget, event: gen_qevent.QPaintEvent): void =
-
+  nimfunc[](slotval1)
+proc QDesktopWidgetpaintEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, event: gen_qevent.QPaintEvent): void =
 
   fQDesktopWidget_virtualbase_paintEvent(self.h, event.h)
 
-type QDesktopWidgetpaintEventBase* = proc(event: gen_qevent.QPaintEvent): void
-proc onpaintEvent*(self: QDesktopWidget, slot: proc(super: QDesktopWidgetpaintEventBase, event: gen_qevent.QPaintEvent): void) =
+type QDesktopWidgetpaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
+proc onpaintEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: QDesktopWidgetpaintEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDesktopWidgetpaintEventBase, event: gen_qevent.QPaintEvent): void
-  var tmp = new Cb
+  var tmp = new QDesktopWidgetpaintEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDesktopWidget_override_virtual_paintEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDesktopWidget_paintEvent(self: ptr cQDesktopWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDesktopWidget_paintEvent ".} =
-  type Cb = proc(super: QDesktopWidgetpaintEventBase, event: gen_qevent.QPaintEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QPaintEvent): auto =
-    callVirtualBase_paintEvent(QDesktopWidget(h: self), event)
+  var nimfunc = cast[ptr QDesktopWidgetpaintEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QPaintEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_moveEvent(self: QDesktopWidget, event: gen_qevent.QMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QDesktopWidgetmoveEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, event: gen_qevent.QMoveEvent): void =
 
   fQDesktopWidget_virtualbase_moveEvent(self.h, event.h)
 
-type QDesktopWidgetmoveEventBase* = proc(event: gen_qevent.QMoveEvent): void
-proc onmoveEvent*(self: QDesktopWidget, slot: proc(super: QDesktopWidgetmoveEventBase, event: gen_qevent.QMoveEvent): void) =
+type QDesktopWidgetmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
+proc onmoveEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: QDesktopWidgetmoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDesktopWidgetmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QDesktopWidgetmoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDesktopWidget_override_virtual_moveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDesktopWidget_moveEvent(self: ptr cQDesktopWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDesktopWidget_moveEvent ".} =
-  type Cb = proc(super: QDesktopWidgetmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMoveEvent): auto =
-    callVirtualBase_moveEvent(QDesktopWidget(h: self), event)
+  var nimfunc = cast[ptr QDesktopWidgetmoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_closeEvent(self: QDesktopWidget, event: gen_qevent.QCloseEvent): void =
-
+  nimfunc[](slotval1)
+proc QDesktopWidgetcloseEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, event: gen_qevent.QCloseEvent): void =
 
   fQDesktopWidget_virtualbase_closeEvent(self.h, event.h)
 
-type QDesktopWidgetcloseEventBase* = proc(event: gen_qevent.QCloseEvent): void
-proc oncloseEvent*(self: QDesktopWidget, slot: proc(super: QDesktopWidgetcloseEventBase, event: gen_qevent.QCloseEvent): void) =
+type QDesktopWidgetcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
+proc oncloseEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: QDesktopWidgetcloseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDesktopWidgetcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var tmp = new Cb
+  var tmp = new QDesktopWidgetcloseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDesktopWidget_override_virtual_closeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDesktopWidget_closeEvent(self: ptr cQDesktopWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDesktopWidget_closeEvent ".} =
-  type Cb = proc(super: QDesktopWidgetcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QCloseEvent): auto =
-    callVirtualBase_closeEvent(QDesktopWidget(h: self), event)
+  var nimfunc = cast[ptr QDesktopWidgetcloseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QCloseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_contextMenuEvent(self: QDesktopWidget, event: gen_qevent.QContextMenuEvent): void =
-
+  nimfunc[](slotval1)
+proc QDesktopWidgetcontextMenuEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, event: gen_qevent.QContextMenuEvent): void =
 
   fQDesktopWidget_virtualbase_contextMenuEvent(self.h, event.h)
 
-type QDesktopWidgetcontextMenuEventBase* = proc(event: gen_qevent.QContextMenuEvent): void
-proc oncontextMenuEvent*(self: QDesktopWidget, slot: proc(super: QDesktopWidgetcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void) =
+type QDesktopWidgetcontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
+proc oncontextMenuEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: QDesktopWidgetcontextMenuEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDesktopWidgetcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var tmp = new Cb
+  var tmp = new QDesktopWidgetcontextMenuEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDesktopWidget_override_virtual_contextMenuEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDesktopWidget_contextMenuEvent(self: ptr cQDesktopWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDesktopWidget_contextMenuEvent ".} =
-  type Cb = proc(super: QDesktopWidgetcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QContextMenuEvent): auto =
-    callVirtualBase_contextMenuEvent(QDesktopWidget(h: self), event)
+  var nimfunc = cast[ptr QDesktopWidgetcontextMenuEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QContextMenuEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_tabletEvent(self: QDesktopWidget, event: gen_qevent.QTabletEvent): void =
-
+  nimfunc[](slotval1)
+proc QDesktopWidgettabletEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, event: gen_qevent.QTabletEvent): void =
 
   fQDesktopWidget_virtualbase_tabletEvent(self.h, event.h)
 
-type QDesktopWidgettabletEventBase* = proc(event: gen_qevent.QTabletEvent): void
-proc ontabletEvent*(self: QDesktopWidget, slot: proc(super: QDesktopWidgettabletEventBase, event: gen_qevent.QTabletEvent): void) =
+type QDesktopWidgettabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
+proc ontabletEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: QDesktopWidgettabletEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDesktopWidgettabletEventBase, event: gen_qevent.QTabletEvent): void
-  var tmp = new Cb
+  var tmp = new QDesktopWidgettabletEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDesktopWidget_override_virtual_tabletEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDesktopWidget_tabletEvent(self: ptr cQDesktopWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDesktopWidget_tabletEvent ".} =
-  type Cb = proc(super: QDesktopWidgettabletEventBase, event: gen_qevent.QTabletEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QTabletEvent): auto =
-    callVirtualBase_tabletEvent(QDesktopWidget(h: self), event)
+  var nimfunc = cast[ptr QDesktopWidgettabletEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QTabletEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_actionEvent(self: QDesktopWidget, event: gen_qevent.QActionEvent): void =
-
+  nimfunc[](slotval1)
+proc QDesktopWidgetactionEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, event: gen_qevent.QActionEvent): void =
 
   fQDesktopWidget_virtualbase_actionEvent(self.h, event.h)
 
-type QDesktopWidgetactionEventBase* = proc(event: gen_qevent.QActionEvent): void
-proc onactionEvent*(self: QDesktopWidget, slot: proc(super: QDesktopWidgetactionEventBase, event: gen_qevent.QActionEvent): void) =
+type QDesktopWidgetactionEventProc* = proc(event: gen_qevent.QActionEvent): void
+proc onactionEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: QDesktopWidgetactionEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDesktopWidgetactionEventBase, event: gen_qevent.QActionEvent): void
-  var tmp = new Cb
+  var tmp = new QDesktopWidgetactionEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDesktopWidget_override_virtual_actionEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDesktopWidget_actionEvent(self: ptr cQDesktopWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDesktopWidget_actionEvent ".} =
-  type Cb = proc(super: QDesktopWidgetactionEventBase, event: gen_qevent.QActionEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QActionEvent): auto =
-    callVirtualBase_actionEvent(QDesktopWidget(h: self), event)
+  var nimfunc = cast[ptr QDesktopWidgetactionEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QActionEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragEnterEvent(self: QDesktopWidget, event: gen_qevent.QDragEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QDesktopWidgetdragEnterEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, event: gen_qevent.QDragEnterEvent): void =
 
   fQDesktopWidget_virtualbase_dragEnterEvent(self.h, event.h)
 
-type QDesktopWidgetdragEnterEventBase* = proc(event: gen_qevent.QDragEnterEvent): void
-proc ondragEnterEvent*(self: QDesktopWidget, slot: proc(super: QDesktopWidgetdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void) =
+type QDesktopWidgetdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
+proc ondragEnterEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: QDesktopWidgetdragEnterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDesktopWidgetdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QDesktopWidgetdragEnterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDesktopWidget_override_virtual_dragEnterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDesktopWidget_dragEnterEvent(self: ptr cQDesktopWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDesktopWidget_dragEnterEvent ".} =
-  type Cb = proc(super: QDesktopWidgetdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragEnterEvent): auto =
-    callVirtualBase_dragEnterEvent(QDesktopWidget(h: self), event)
+  var nimfunc = cast[ptr QDesktopWidgetdragEnterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragMoveEvent(self: QDesktopWidget, event: gen_qevent.QDragMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QDesktopWidgetdragMoveEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, event: gen_qevent.QDragMoveEvent): void =
 
   fQDesktopWidget_virtualbase_dragMoveEvent(self.h, event.h)
 
-type QDesktopWidgetdragMoveEventBase* = proc(event: gen_qevent.QDragMoveEvent): void
-proc ondragMoveEvent*(self: QDesktopWidget, slot: proc(super: QDesktopWidgetdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void) =
+type QDesktopWidgetdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
+proc ondragMoveEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: QDesktopWidgetdragMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDesktopWidgetdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QDesktopWidgetdragMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDesktopWidget_override_virtual_dragMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDesktopWidget_dragMoveEvent(self: ptr cQDesktopWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDesktopWidget_dragMoveEvent ".} =
-  type Cb = proc(super: QDesktopWidgetdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragMoveEvent): auto =
-    callVirtualBase_dragMoveEvent(QDesktopWidget(h: self), event)
+  var nimfunc = cast[ptr QDesktopWidgetdragMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragLeaveEvent(self: QDesktopWidget, event: gen_qevent.QDragLeaveEvent): void =
-
+  nimfunc[](slotval1)
+proc QDesktopWidgetdragLeaveEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, event: gen_qevent.QDragLeaveEvent): void =
 
   fQDesktopWidget_virtualbase_dragLeaveEvent(self.h, event.h)
 
-type QDesktopWidgetdragLeaveEventBase* = proc(event: gen_qevent.QDragLeaveEvent): void
-proc ondragLeaveEvent*(self: QDesktopWidget, slot: proc(super: QDesktopWidgetdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void) =
+type QDesktopWidgetdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
+proc ondragLeaveEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: QDesktopWidgetdragLeaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDesktopWidgetdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var tmp = new Cb
+  var tmp = new QDesktopWidgetdragLeaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDesktopWidget_override_virtual_dragLeaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDesktopWidget_dragLeaveEvent(self: ptr cQDesktopWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDesktopWidget_dragLeaveEvent ".} =
-  type Cb = proc(super: QDesktopWidgetdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragLeaveEvent): auto =
-    callVirtualBase_dragLeaveEvent(QDesktopWidget(h: self), event)
+  var nimfunc = cast[ptr QDesktopWidgetdragLeaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragLeaveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dropEvent(self: QDesktopWidget, event: gen_qevent.QDropEvent): void =
-
+  nimfunc[](slotval1)
+proc QDesktopWidgetdropEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, event: gen_qevent.QDropEvent): void =
 
   fQDesktopWidget_virtualbase_dropEvent(self.h, event.h)
 
-type QDesktopWidgetdropEventBase* = proc(event: gen_qevent.QDropEvent): void
-proc ondropEvent*(self: QDesktopWidget, slot: proc(super: QDesktopWidgetdropEventBase, event: gen_qevent.QDropEvent): void) =
+type QDesktopWidgetdropEventProc* = proc(event: gen_qevent.QDropEvent): void
+proc ondropEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: QDesktopWidgetdropEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDesktopWidgetdropEventBase, event: gen_qevent.QDropEvent): void
-  var tmp = new Cb
+  var tmp = new QDesktopWidgetdropEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDesktopWidget_override_virtual_dropEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDesktopWidget_dropEvent(self: ptr cQDesktopWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDesktopWidget_dropEvent ".} =
-  type Cb = proc(super: QDesktopWidgetdropEventBase, event: gen_qevent.QDropEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDropEvent): auto =
-    callVirtualBase_dropEvent(QDesktopWidget(h: self), event)
+  var nimfunc = cast[ptr QDesktopWidgetdropEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDropEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_showEvent(self: QDesktopWidget, event: gen_qevent.QShowEvent): void =
-
+  nimfunc[](slotval1)
+proc QDesktopWidgetshowEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, event: gen_qevent.QShowEvent): void =
 
   fQDesktopWidget_virtualbase_showEvent(self.h, event.h)
 
-type QDesktopWidgetshowEventBase* = proc(event: gen_qevent.QShowEvent): void
-proc onshowEvent*(self: QDesktopWidget, slot: proc(super: QDesktopWidgetshowEventBase, event: gen_qevent.QShowEvent): void) =
+type QDesktopWidgetshowEventProc* = proc(event: gen_qevent.QShowEvent): void
+proc onshowEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: QDesktopWidgetshowEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDesktopWidgetshowEventBase, event: gen_qevent.QShowEvent): void
-  var tmp = new Cb
+  var tmp = new QDesktopWidgetshowEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDesktopWidget_override_virtual_showEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDesktopWidget_showEvent(self: ptr cQDesktopWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDesktopWidget_showEvent ".} =
-  type Cb = proc(super: QDesktopWidgetshowEventBase, event: gen_qevent.QShowEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QShowEvent): auto =
-    callVirtualBase_showEvent(QDesktopWidget(h: self), event)
+  var nimfunc = cast[ptr QDesktopWidgetshowEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QShowEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hideEvent(self: QDesktopWidget, event: gen_qevent.QHideEvent): void =
-
+  nimfunc[](slotval1)
+proc QDesktopWidgethideEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, event: gen_qevent.QHideEvent): void =
 
   fQDesktopWidget_virtualbase_hideEvent(self.h, event.h)
 
-type QDesktopWidgethideEventBase* = proc(event: gen_qevent.QHideEvent): void
-proc onhideEvent*(self: QDesktopWidget, slot: proc(super: QDesktopWidgethideEventBase, event: gen_qevent.QHideEvent): void) =
+type QDesktopWidgethideEventProc* = proc(event: gen_qevent.QHideEvent): void
+proc onhideEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: QDesktopWidgethideEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDesktopWidgethideEventBase, event: gen_qevent.QHideEvent): void
-  var tmp = new Cb
+  var tmp = new QDesktopWidgethideEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDesktopWidget_override_virtual_hideEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDesktopWidget_hideEvent(self: ptr cQDesktopWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDesktopWidget_hideEvent ".} =
-  type Cb = proc(super: QDesktopWidgethideEventBase, event: gen_qevent.QHideEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QHideEvent): auto =
-    callVirtualBase_hideEvent(QDesktopWidget(h: self), event)
+  var nimfunc = cast[ptr QDesktopWidgethideEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QHideEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_nativeEvent(self: QDesktopWidget, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
+  nimfunc[](slotval1)
+proc QDesktopWidgetnativeEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
 
   fQDesktopWidget_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
-type QDesktopWidgetnativeEventBase* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-proc onnativeEvent*(self: QDesktopWidget, slot: proc(super: QDesktopWidgetnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool) =
+type QDesktopWidgetnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
+proc onnativeEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: QDesktopWidgetnativeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDesktopWidgetnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-  var tmp = new Cb
+  var tmp = new QDesktopWidgetnativeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDesktopWidget_override_virtual_nativeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDesktopWidget_nativeEvent(self: ptr cQDesktopWidget, slot: int, eventType: struct_miqt_string, message: pointer, resultVal: ptr clong): bool {.exportc: "miqt_exec_callback_QDesktopWidget_nativeEvent ".} =
-  type Cb = proc(super: QDesktopWidgetnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(eventType: seq[byte], message: pointer, resultVal: ptr clong): auto =
-    callVirtualBase_nativeEvent(QDesktopWidget(h: self), eventType, message, resultVal)
+  var nimfunc = cast[ptr QDesktopWidgetnativeEventProc](cast[pointer](slot))
   var veventType_bytearray = eventType
   var veventTypex_ret = @(toOpenArrayByte(veventType_bytearray.data, 0, int(veventType_bytearray.len)-1))
   c_free(veventType_bytearray.data)
@@ -1252,344 +1070,274 @@ proc miqt_exec_callback_QDesktopWidget_nativeEvent(self: ptr cQDesktopWidget, sl
   let slotval3 = resultVal
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_changeEvent(self: QDesktopWidget, param1: gen_qcoreevent.QEvent): void =
-
+proc QDesktopWidgetchangeEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, param1: gen_qcoreevent.QEvent): void =
 
   fQDesktopWidget_virtualbase_changeEvent(self.h, param1.h)
 
-type QDesktopWidgetchangeEventBase* = proc(param1: gen_qcoreevent.QEvent): void
-proc onchangeEvent*(self: QDesktopWidget, slot: proc(super: QDesktopWidgetchangeEventBase, param1: gen_qcoreevent.QEvent): void) =
+type QDesktopWidgetchangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
+proc onchangeEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: QDesktopWidgetchangeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDesktopWidgetchangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QDesktopWidgetchangeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDesktopWidget_override_virtual_changeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDesktopWidget_changeEvent(self: ptr cQDesktopWidget, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QDesktopWidget_changeEvent ".} =
-  type Cb = proc(super: QDesktopWidgetchangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_changeEvent(QDesktopWidget(h: self), param1)
+  var nimfunc = cast[ptr QDesktopWidgetchangeEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_metric(self: QDesktopWidget, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint =
-
+  nimfunc[](slotval1)
+proc QDesktopWidgetmetric*(self: gen_qdesktopwidget_types.QDesktopWidget, param1: cint): cint =
 
   fQDesktopWidget_virtualbase_metric(self.h, cint(param1))
 
-type QDesktopWidgetmetricBase* = proc(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-proc onmetric*(self: QDesktopWidget, slot: proc(super: QDesktopWidgetmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint) =
+type QDesktopWidgetmetricProc* = proc(param1: cint): cint
+proc onmetric*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: QDesktopWidgetmetricProc) =
   # TODO check subclass
-  type Cb = proc(super: QDesktopWidgetmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var tmp = new Cb
+  var tmp = new QDesktopWidgetmetricProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDesktopWidget_override_virtual_metric(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDesktopWidget_metric(self: ptr cQDesktopWidget, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QDesktopWidget_metric ".} =
-  type Cb = proc(super: QDesktopWidgetmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): auto =
-    callVirtualBase_metric(QDesktopWidget(h: self), param1)
-  let slotval1 = gen_qpaintdevice.QPaintDevicePaintDeviceMetric(param1)
+  var nimfunc = cast[ptr QDesktopWidgetmetricProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_initPainter(self: QDesktopWidget, painter: gen_qpainter.QPainter): void =
-
+proc QDesktopWidgetinitPainter*(self: gen_qdesktopwidget_types.QDesktopWidget, painter: gen_qpainter.QPainter): void =
 
   fQDesktopWidget_virtualbase_initPainter(self.h, painter.h)
 
-type QDesktopWidgetinitPainterBase* = proc(painter: gen_qpainter.QPainter): void
-proc oninitPainter*(self: QDesktopWidget, slot: proc(super: QDesktopWidgetinitPainterBase, painter: gen_qpainter.QPainter): void) =
+type QDesktopWidgetinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
+proc oninitPainter*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: QDesktopWidgetinitPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QDesktopWidgetinitPainterBase, painter: gen_qpainter.QPainter): void
-  var tmp = new Cb
+  var tmp = new QDesktopWidgetinitPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDesktopWidget_override_virtual_initPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDesktopWidget_initPainter(self: ptr cQDesktopWidget, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_QDesktopWidget_initPainter ".} =
-  type Cb = proc(super: QDesktopWidgetinitPainterBase, painter: gen_qpainter.QPainter): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter): auto =
-    callVirtualBase_initPainter(QDesktopWidget(h: self), painter)
+  var nimfunc = cast[ptr QDesktopWidgetinitPainterProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_redirected(self: QDesktopWidget, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
+  nimfunc[](slotval1)
+proc QDesktopWidgetredirected*(self: gen_qdesktopwidget_types.QDesktopWidget, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
 
   gen_qpaintdevice.QPaintDevice(h: fQDesktopWidget_virtualbase_redirected(self.h, offset.h))
 
-type QDesktopWidgetredirectedBase* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-proc onredirected*(self: QDesktopWidget, slot: proc(super: QDesktopWidgetredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice) =
+type QDesktopWidgetredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
+proc onredirected*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: QDesktopWidgetredirectedProc) =
   # TODO check subclass
-  type Cb = proc(super: QDesktopWidgetredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var tmp = new Cb
+  var tmp = new QDesktopWidgetredirectedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDesktopWidget_override_virtual_redirected(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDesktopWidget_redirected(self: ptr cQDesktopWidget, slot: int, offset: pointer): pointer {.exportc: "miqt_exec_callback_QDesktopWidget_redirected ".} =
-  type Cb = proc(super: QDesktopWidgetredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(offset: gen_qpoint.QPoint): auto =
-    callVirtualBase_redirected(QDesktopWidget(h: self), offset)
+  var nimfunc = cast[ptr QDesktopWidgetredirectedProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: offset)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_sharedPainter(self: QDesktopWidget, ): gen_qpainter.QPainter =
-
+proc QDesktopWidgetsharedPainter*(self: gen_qdesktopwidget_types.QDesktopWidget, ): gen_qpainter.QPainter =
 
   gen_qpainter.QPainter(h: fQDesktopWidget_virtualbase_sharedPainter(self.h))
 
-type QDesktopWidgetsharedPainterBase* = proc(): gen_qpainter.QPainter
-proc onsharedPainter*(self: QDesktopWidget, slot: proc(super: QDesktopWidgetsharedPainterBase): gen_qpainter.QPainter) =
+type QDesktopWidgetsharedPainterProc* = proc(): gen_qpainter.QPainter
+proc onsharedPainter*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: QDesktopWidgetsharedPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QDesktopWidgetsharedPainterBase): gen_qpainter.QPainter
-  var tmp = new Cb
+  var tmp = new QDesktopWidgetsharedPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDesktopWidget_override_virtual_sharedPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDesktopWidget_sharedPainter(self: ptr cQDesktopWidget, slot: int): pointer {.exportc: "miqt_exec_callback_QDesktopWidget_sharedPainter ".} =
-  type Cb = proc(super: QDesktopWidgetsharedPainterBase): gen_qpainter.QPainter
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sharedPainter(QDesktopWidget(h: self), )
+  var nimfunc = cast[ptr QDesktopWidgetsharedPainterProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_inputMethodEvent(self: QDesktopWidget, param1: gen_qevent.QInputMethodEvent): void =
-
+proc QDesktopWidgetinputMethodEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, param1: gen_qevent.QInputMethodEvent): void =
 
   fQDesktopWidget_virtualbase_inputMethodEvent(self.h, param1.h)
 
-type QDesktopWidgetinputMethodEventBase* = proc(param1: gen_qevent.QInputMethodEvent): void
-proc oninputMethodEvent*(self: QDesktopWidget, slot: proc(super: QDesktopWidgetinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void) =
+type QDesktopWidgetinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
+proc oninputMethodEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: QDesktopWidgetinputMethodEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDesktopWidgetinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var tmp = new Cb
+  var tmp = new QDesktopWidgetinputMethodEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDesktopWidget_override_virtual_inputMethodEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDesktopWidget_inputMethodEvent(self: ptr cQDesktopWidget, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QDesktopWidget_inputMethodEvent ".} =
-  type Cb = proc(super: QDesktopWidgetinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QInputMethodEvent): auto =
-    callVirtualBase_inputMethodEvent(QDesktopWidget(h: self), param1)
+  var nimfunc = cast[ptr QDesktopWidgetinputMethodEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QInputMethodEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_inputMethodQuery(self: QDesktopWidget, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant =
-
+  nimfunc[](slotval1)
+proc QDesktopWidgetinputMethodQuery*(self: gen_qdesktopwidget_types.QDesktopWidget, param1: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQDesktopWidget_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
-type QDesktopWidgetinputMethodQueryBase* = proc(param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-proc oninputMethodQuery*(self: QDesktopWidget, slot: proc(super: QDesktopWidgetinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant) =
+type QDesktopWidgetinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
+proc oninputMethodQuery*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: QDesktopWidgetinputMethodQueryProc) =
   # TODO check subclass
-  type Cb = proc(super: QDesktopWidgetinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QDesktopWidgetinputMethodQueryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDesktopWidget_override_virtual_inputMethodQuery(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDesktopWidget_inputMethodQuery(self: ptr cQDesktopWidget, slot: int, param1: cint): pointer {.exportc: "miqt_exec_callback_QDesktopWidget_inputMethodQuery ".} =
-  type Cb = proc(super: QDesktopWidgetinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qnamespace.InputMethodQuery): auto =
-    callVirtualBase_inputMethodQuery(QDesktopWidget(h: self), param1)
-  let slotval1 = gen_qnamespace.InputMethodQuery(param1)
+  var nimfunc = cast[ptr QDesktopWidgetinputMethodQueryProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_focusNextPrevChild(self: QDesktopWidget, next: bool): bool =
-
+proc QDesktopWidgetfocusNextPrevChild*(self: gen_qdesktopwidget_types.QDesktopWidget, next: bool): bool =
 
   fQDesktopWidget_virtualbase_focusNextPrevChild(self.h, next)
 
-type QDesktopWidgetfocusNextPrevChildBase* = proc(next: bool): bool
-proc onfocusNextPrevChild*(self: QDesktopWidget, slot: proc(super: QDesktopWidgetfocusNextPrevChildBase, next: bool): bool) =
+type QDesktopWidgetfocusNextPrevChildProc* = proc(next: bool): bool
+proc onfocusNextPrevChild*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: QDesktopWidgetfocusNextPrevChildProc) =
   # TODO check subclass
-  type Cb = proc(super: QDesktopWidgetfocusNextPrevChildBase, next: bool): bool
-  var tmp = new Cb
+  var tmp = new QDesktopWidgetfocusNextPrevChildProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDesktopWidget_override_virtual_focusNextPrevChild(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDesktopWidget_focusNextPrevChild(self: ptr cQDesktopWidget, slot: int, next: bool): bool {.exportc: "miqt_exec_callback_QDesktopWidget_focusNextPrevChild ".} =
-  type Cb = proc(super: QDesktopWidgetfocusNextPrevChildBase, next: bool): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(next: bool): auto =
-    callVirtualBase_focusNextPrevChild(QDesktopWidget(h: self), next)
+  var nimfunc = cast[ptr QDesktopWidgetfocusNextPrevChildProc](cast[pointer](slot))
   let slotval1 = next
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QDesktopWidget, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QDesktopWidgeteventFilter*(self: gen_qdesktopwidget_types.QDesktopWidget, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQDesktopWidget_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QDesktopWidgeteventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QDesktopWidget, slot: proc(super: QDesktopWidgeteventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QDesktopWidgeteventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: QDesktopWidgeteventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QDesktopWidgeteventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QDesktopWidgeteventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDesktopWidget_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDesktopWidget_eventFilter(self: ptr cQDesktopWidget, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QDesktopWidget_eventFilter ".} =
-  type Cb = proc(super: QDesktopWidgeteventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QDesktopWidget(h: self), watched, event)
+  var nimfunc = cast[ptr QDesktopWidgeteventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QDesktopWidget, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QDesktopWidgettimerEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, event: gen_qcoreevent.QTimerEvent): void =
 
   fQDesktopWidget_virtualbase_timerEvent(self.h, event.h)
 
-type QDesktopWidgettimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QDesktopWidget, slot: proc(super: QDesktopWidgettimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QDesktopWidgettimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: QDesktopWidgettimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDesktopWidgettimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QDesktopWidgettimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDesktopWidget_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDesktopWidget_timerEvent(self: ptr cQDesktopWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDesktopWidget_timerEvent ".} =
-  type Cb = proc(super: QDesktopWidgettimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QDesktopWidget(h: self), event)
+  var nimfunc = cast[ptr QDesktopWidgettimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QDesktopWidget, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QDesktopWidgetchildEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, event: gen_qcoreevent.QChildEvent): void =
 
   fQDesktopWidget_virtualbase_childEvent(self.h, event.h)
 
-type QDesktopWidgetchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QDesktopWidget, slot: proc(super: QDesktopWidgetchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QDesktopWidgetchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: QDesktopWidgetchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDesktopWidgetchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QDesktopWidgetchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDesktopWidget_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDesktopWidget_childEvent(self: ptr cQDesktopWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDesktopWidget_childEvent ".} =
-  type Cb = proc(super: QDesktopWidgetchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QDesktopWidget(h: self), event)
+  var nimfunc = cast[ptr QDesktopWidgetchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QDesktopWidget, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QDesktopWidgetcustomEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, event: gen_qcoreevent.QEvent): void =
 
   fQDesktopWidget_virtualbase_customEvent(self.h, event.h)
 
-type QDesktopWidgetcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QDesktopWidget, slot: proc(super: QDesktopWidgetcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QDesktopWidgetcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: QDesktopWidgetcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDesktopWidgetcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QDesktopWidgetcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDesktopWidget_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDesktopWidget_customEvent(self: ptr cQDesktopWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDesktopWidget_customEvent ".} =
-  type Cb = proc(super: QDesktopWidgetcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QDesktopWidget(h: self), event)
+  var nimfunc = cast[ptr QDesktopWidgetcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QDesktopWidget, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QDesktopWidgetconnectNotify*(self: gen_qdesktopwidget_types.QDesktopWidget, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQDesktopWidget_virtualbase_connectNotify(self.h, signal.h)
 
-type QDesktopWidgetconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QDesktopWidget, slot: proc(super: QDesktopWidgetconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QDesktopWidgetconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: QDesktopWidgetconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QDesktopWidgetconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QDesktopWidgetconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDesktopWidget_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDesktopWidget_connectNotify(self: ptr cQDesktopWidget, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QDesktopWidget_connectNotify ".} =
-  type Cb = proc(super: QDesktopWidgetconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QDesktopWidget(h: self), signal)
+  var nimfunc = cast[ptr QDesktopWidgetconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QDesktopWidget, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QDesktopWidgetdisconnectNotify*(self: gen_qdesktopwidget_types.QDesktopWidget, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQDesktopWidget_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QDesktopWidgetdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QDesktopWidget, slot: proc(super: QDesktopWidgetdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QDesktopWidgetdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qdesktopwidget_types.QDesktopWidget, slot: QDesktopWidgetdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QDesktopWidgetdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QDesktopWidgetdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDesktopWidget_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDesktopWidget_disconnectNotify(self: ptr cQDesktopWidget, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QDesktopWidget_disconnectNotify ".} =
-  type Cb = proc(super: QDesktopWidgetdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QDesktopWidget(h: self), signal)
+  var nimfunc = cast[ptr QDesktopWidgetdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QDesktopWidget): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qdesktopwidget_types.QDesktopWidget): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQDesktopWidget_staticMetaObject())
-proc delete*(self: QDesktopWidget) =
+proc delete*(self: gen_qdesktopwidget_types.QDesktopWidget) =
   fcQDesktopWidget_delete(self.h)

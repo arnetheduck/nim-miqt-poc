@@ -34,19 +34,15 @@ const cflags = gorge("pkg-config -cflags Qt6Widgets")
 {.compile("gen_qcompare.cpp", cflags).}
 
 
-type QtPrivateOrdering* = cschar
-const
-  QtPrivateEqual* = 0
-  QtPrivateEquivalent* = 0
-  QtPrivateLess* = -1
-  QtPrivateGreater* = 1
+type QtPrivateOrderingEnum* = distinct cschar
+template Equal*(_: type QtPrivateOrderingEnum): untyped = 0
+template Equivalent*(_: type QtPrivateOrderingEnum): untyped = 0
+template Less*(_: type QtPrivateOrderingEnum): untyped = -1
+template Greater*(_: type QtPrivateOrderingEnum): untyped = 1
 
 
-
-type QtPrivateUncomparable* = cschar
-const
-  QtPrivateUnordered* = -127
-
+type QtPrivateUncomparableEnum* = distinct cschar
+template Unordered*(_: type QtPrivateUncomparableEnum): untyped = -127
 
 
 import gen_qcompare_types
@@ -59,10 +55,10 @@ proc fcQPartialOrdering_new(param1: pointer): ptr cQPartialOrdering {.importc: "
 proc fcQPartialOrdering_delete(self: pointer) {.importc: "QPartialOrdering_delete".}
 
 
-func init*(T: type QPartialOrdering, h: ptr cQPartialOrdering): QPartialOrdering =
+func init*(T: type gen_qcompare_types.QPartialOrdering, h: ptr cQPartialOrdering): gen_qcompare_types.QPartialOrdering =
   T(h: h)
-proc create*(T: type QPartialOrdering, param1: QPartialOrdering): QPartialOrdering =
+proc create*(T: type gen_qcompare_types.QPartialOrdering, param1: gen_qcompare_types.QPartialOrdering): gen_qcompare_types.QPartialOrdering =
 
-  QPartialOrdering.init(fcQPartialOrdering_new(param1.h))
-proc delete*(self: QPartialOrdering) =
+  gen_qcompare_types.QPartialOrdering.init(fcQPartialOrdering_new(param1.h))
+proc delete*(self: gen_qcompare_types.QPartialOrdering) =
   fcQPartialOrdering_delete(self.h)

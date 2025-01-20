@@ -315,7 +315,7 @@ func (this *QsciAPIs) callVirtualBase_MetaObject() *qt6.QMetaObject {
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QsciAPIs_virtualbase_metaObject(unsafe.Pointer(this.h))))
 
 }
-func (this *QsciAPIs) OnmetaObject(slot func(super func() *qt6.QMetaObject) *qt6.QMetaObject) {
+func (this *QsciAPIs) OnMetaObject(slot func(super func() *qt6.QMetaObject) *qt6.QMetaObject) {
 	ok := C.QsciAPIs_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -342,7 +342,7 @@ func (this *QsciAPIs) callVirtualBase_Metacast(param1 string) unsafe.Pointer {
 	return (unsafe.Pointer)(C.QsciAPIs_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QsciAPIs) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QsciAPIs) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QsciAPIs_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

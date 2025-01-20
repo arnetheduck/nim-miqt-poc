@@ -58,29 +58,29 @@ proc fcQWebEngineScriptCollection_toList(self: pointer, ): struct_miqt_array {.i
 proc fcQWebEngineScriptCollection_delete(self: pointer) {.importc: "QWebEngineScriptCollection_delete".}
 
 
-func init*(T: type QWebEngineScriptCollection, h: ptr cQWebEngineScriptCollection): QWebEngineScriptCollection =
+func init*(T: type gen_qwebenginescriptcollection_types.QWebEngineScriptCollection, h: ptr cQWebEngineScriptCollection): gen_qwebenginescriptcollection_types.QWebEngineScriptCollection =
   T(h: h)
-proc isEmpty*(self: QWebEngineScriptCollection, ): bool =
+proc isEmpty*(self: gen_qwebenginescriptcollection_types.QWebEngineScriptCollection, ): bool =
 
   fcQWebEngineScriptCollection_isEmpty(self.h)
 
-proc count*(self: QWebEngineScriptCollection, ): cint =
+proc count*(self: gen_qwebenginescriptcollection_types.QWebEngineScriptCollection, ): cint =
 
   fcQWebEngineScriptCollection_count(self.h)
 
-proc size*(self: QWebEngineScriptCollection, ): cint =
+proc size*(self: gen_qwebenginescriptcollection_types.QWebEngineScriptCollection, ): cint =
 
   fcQWebEngineScriptCollection_size(self.h)
 
-proc contains*(self: QWebEngineScriptCollection, value: gen_qwebenginescript.QWebEngineScript): bool =
+proc contains*(self: gen_qwebenginescriptcollection_types.QWebEngineScriptCollection, value: gen_qwebenginescript.QWebEngineScript): bool =
 
   fcQWebEngineScriptCollection_contains(self.h, value.h)
 
-proc findScript*(self: QWebEngineScriptCollection, name: string): gen_qwebenginescript.QWebEngineScript =
+proc findScript*(self: gen_qwebenginescriptcollection_types.QWebEngineScriptCollection, name: string): gen_qwebenginescript.QWebEngineScript =
 
   gen_qwebenginescript.QWebEngineScript(h: fcQWebEngineScriptCollection_findScript(self.h, struct_miqt_string(data: name, len: csize_t(len(name)))))
 
-proc findScripts*(self: QWebEngineScriptCollection, name: string): seq[gen_qwebenginescript.QWebEngineScript] =
+proc findScripts*(self: gen_qwebenginescriptcollection_types.QWebEngineScriptCollection, name: string): seq[gen_qwebenginescript.QWebEngineScript] =
 
   var v_ma = fcQWebEngineScriptCollection_findScripts(self.h, struct_miqt_string(data: name, len: csize_t(len(name))))
   var vx_ret = newSeq[gen_qwebenginescript.QWebEngineScript](int(v_ma.len))
@@ -89,11 +89,11 @@ proc findScripts*(self: QWebEngineScriptCollection, name: string): seq[gen_qwebe
     vx_ret[i] = gen_qwebenginescript.QWebEngineScript(h: v_outCast[i])
   vx_ret
 
-proc insert*(self: QWebEngineScriptCollection, param1: gen_qwebenginescript.QWebEngineScript): void =
+proc insert*(self: gen_qwebenginescriptcollection_types.QWebEngineScriptCollection, param1: gen_qwebenginescript.QWebEngineScript): void =
 
   fcQWebEngineScriptCollection_insert(self.h, param1.h)
 
-proc insertWithList*(self: QWebEngineScriptCollection, list: seq[gen_qwebenginescript.QWebEngineScript]): void =
+proc insertWithList*(self: gen_qwebenginescriptcollection_types.QWebEngineScriptCollection, list: seq[gen_qwebenginescript.QWebEngineScript]): void =
 
   var list_CArray = newSeq[pointer](len(list))
   for i in 0..<len(list):
@@ -101,15 +101,15 @@ proc insertWithList*(self: QWebEngineScriptCollection, list: seq[gen_qwebengines
 
   fcQWebEngineScriptCollection_insertWithList(self.h, struct_miqt_array(len: csize_t(len(list)), data: if len(list) == 0: nil else: addr(list_CArray[0])))
 
-proc remove*(self: QWebEngineScriptCollection, param1: gen_qwebenginescript.QWebEngineScript): bool =
+proc remove*(self: gen_qwebenginescriptcollection_types.QWebEngineScriptCollection, param1: gen_qwebenginescript.QWebEngineScript): bool =
 
   fcQWebEngineScriptCollection_remove(self.h, param1.h)
 
-proc clear*(self: QWebEngineScriptCollection, ): void =
+proc clear*(self: gen_qwebenginescriptcollection_types.QWebEngineScriptCollection, ): void =
 
   fcQWebEngineScriptCollection_clear(self.h)
 
-proc toList*(self: QWebEngineScriptCollection, ): seq[gen_qwebenginescript.QWebEngineScript] =
+proc toList*(self: gen_qwebenginescriptcollection_types.QWebEngineScriptCollection, ): seq[gen_qwebenginescript.QWebEngineScript] =
 
   var v_ma = fcQWebEngineScriptCollection_toList(self.h)
   var vx_ret = newSeq[gen_qwebenginescript.QWebEngineScript](int(v_ma.len))
@@ -118,5 +118,5 @@ proc toList*(self: QWebEngineScriptCollection, ): seq[gen_qwebenginescript.QWebE
     vx_ret[i] = gen_qwebenginescript.QWebEngineScript(h: v_outCast[i])
   vx_ret
 
-proc delete*(self: QWebEngineScriptCollection) =
+proc delete*(self: gen_qwebenginescriptcollection_types.QWebEngineScriptCollection) =
   fcQWebEngineScriptCollection_delete(self.h)

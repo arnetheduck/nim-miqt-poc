@@ -216,7 +216,7 @@ func (this *QDrag) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QDrag_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QDrag) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QDrag) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QDrag_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -243,7 +243,7 @@ func (this *QDrag) callVirtualBase_Metacast(param1 string) unsafe.Pointer {
 	return (unsafe.Pointer)(C.QDrag_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QDrag) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QDrag) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QDrag_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

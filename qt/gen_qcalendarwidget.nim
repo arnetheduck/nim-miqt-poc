@@ -34,27 +34,21 @@ const cflags = gorge("pkg-config -cflags Qt5Widgets")
 {.compile("gen_qcalendarwidget.cpp", cflags).}
 
 
-type QCalendarWidgetHorizontalHeaderFormat* = cint
-const
-  QCalendarWidgetNoHorizontalHeader* = 0
-  QCalendarWidgetSingleLetterDayNames* = 1
-  QCalendarWidgetShortDayNames* = 2
-  QCalendarWidgetLongDayNames* = 3
+type QCalendarWidgetHorizontalHeaderFormatEnum* = distinct cint
+template NoHorizontalHeader*(_: type QCalendarWidgetHorizontalHeaderFormatEnum): untyped = 0
+template SingleLetterDayNames*(_: type QCalendarWidgetHorizontalHeaderFormatEnum): untyped = 1
+template ShortDayNames*(_: type QCalendarWidgetHorizontalHeaderFormatEnum): untyped = 2
+template LongDayNames*(_: type QCalendarWidgetHorizontalHeaderFormatEnum): untyped = 3
 
 
-
-type QCalendarWidgetVerticalHeaderFormat* = cint
-const
-  QCalendarWidgetNoVerticalHeader* = 0
-  QCalendarWidgetISOWeekNumbers* = 1
+type QCalendarWidgetVerticalHeaderFormatEnum* = distinct cint
+template NoVerticalHeader*(_: type QCalendarWidgetVerticalHeaderFormatEnum): untyped = 0
+template ISOWeekNumbers*(_: type QCalendarWidgetVerticalHeaderFormatEnum): untyped = 1
 
 
-
-type QCalendarWidgetSelectionMode* = cint
-const
-  QCalendarWidgetNoSelection* = 0
-  QCalendarWidgetSingleSelection* = 1
-
+type QCalendarWidgetSelectionModeEnum* = distinct cint
+template NoSelection*(_: type QCalendarWidgetSelectionModeEnum): untyped = 0
+template SingleSelection*(_: type QCalendarWidgetSelectionModeEnum): untyped = 1
 
 
 import gen_qcalendarwidget_types
@@ -66,7 +60,6 @@ import
   gen_qdatetime,
   gen_qevent,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -85,7 +78,6 @@ export
   gen_qdatetime,
   gen_qevent,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -268,141 +260,141 @@ proc fcQCalendarWidget_staticMetaObject(): pointer {.importc: "QCalendarWidget_s
 proc fcQCalendarWidget_delete(self: pointer) {.importc: "QCalendarWidget_delete".}
 
 
-func init*(T: type QCalendarWidget, h: ptr cQCalendarWidget): QCalendarWidget =
+func init*(T: type gen_qcalendarwidget_types.QCalendarWidget, h: ptr cQCalendarWidget): gen_qcalendarwidget_types.QCalendarWidget =
   T(h: h)
-proc create*(T: type QCalendarWidget, parent: gen_qwidget.QWidget): QCalendarWidget =
+proc create*(T: type gen_qcalendarwidget_types.QCalendarWidget, parent: gen_qwidget.QWidget): gen_qcalendarwidget_types.QCalendarWidget =
 
-  QCalendarWidget.init(fcQCalendarWidget_new(parent.h))
-proc create*(T: type QCalendarWidget, ): QCalendarWidget =
+  gen_qcalendarwidget_types.QCalendarWidget.init(fcQCalendarWidget_new(parent.h))
+proc create*(T: type gen_qcalendarwidget_types.QCalendarWidget, ): gen_qcalendarwidget_types.QCalendarWidget =
 
-  QCalendarWidget.init(fcQCalendarWidget_new2())
-proc metaObject*(self: QCalendarWidget, ): gen_qobjectdefs.QMetaObject =
+  gen_qcalendarwidget_types.QCalendarWidget.init(fcQCalendarWidget_new2())
+proc metaObject*(self: gen_qcalendarwidget_types.QCalendarWidget, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQCalendarWidget_metaObject(self.h))
 
-proc metacast*(self: QCalendarWidget, param1: cstring): pointer =
+proc metacast*(self: gen_qcalendarwidget_types.QCalendarWidget, param1: cstring): pointer =
 
   fcQCalendarWidget_metacast(self.h, param1)
 
-proc metacall*(self: QCalendarWidget, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qcalendarwidget_types.QCalendarWidget, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQCalendarWidget_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QCalendarWidget, s: cstring): string =
+proc tr*(_: type gen_qcalendarwidget_types.QCalendarWidget, s: cstring): string =
 
   let v_ms = fcQCalendarWidget_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QCalendarWidget, s: cstring): string =
+proc trUtf8*(_: type gen_qcalendarwidget_types.QCalendarWidget, s: cstring): string =
 
   let v_ms = fcQCalendarWidget_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc sizeHint*(self: QCalendarWidget, ): gen_qsize.QSize =
+proc sizeHint*(self: gen_qcalendarwidget_types.QCalendarWidget, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQCalendarWidget_sizeHint(self.h))
 
-proc minimumSizeHint*(self: QCalendarWidget, ): gen_qsize.QSize =
+proc minimumSizeHint*(self: gen_qcalendarwidget_types.QCalendarWidget, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQCalendarWidget_minimumSizeHint(self.h))
 
-proc selectedDate*(self: QCalendarWidget, ): gen_qdatetime.QDate =
+proc selectedDate*(self: gen_qcalendarwidget_types.QCalendarWidget, ): gen_qdatetime.QDate =
 
   gen_qdatetime.QDate(h: fcQCalendarWidget_selectedDate(self.h))
 
-proc yearShown*(self: QCalendarWidget, ): cint =
+proc yearShown*(self: gen_qcalendarwidget_types.QCalendarWidget, ): cint =
 
   fcQCalendarWidget_yearShown(self.h)
 
-proc monthShown*(self: QCalendarWidget, ): cint =
+proc monthShown*(self: gen_qcalendarwidget_types.QCalendarWidget, ): cint =
 
   fcQCalendarWidget_monthShown(self.h)
 
-proc minimumDate*(self: QCalendarWidget, ): gen_qdatetime.QDate =
+proc minimumDate*(self: gen_qcalendarwidget_types.QCalendarWidget, ): gen_qdatetime.QDate =
 
   gen_qdatetime.QDate(h: fcQCalendarWidget_minimumDate(self.h))
 
-proc setMinimumDate*(self: QCalendarWidget, date: gen_qdatetime.QDate): void =
+proc setMinimumDate*(self: gen_qcalendarwidget_types.QCalendarWidget, date: gen_qdatetime.QDate): void =
 
   fcQCalendarWidget_setMinimumDate(self.h, date.h)
 
-proc maximumDate*(self: QCalendarWidget, ): gen_qdatetime.QDate =
+proc maximumDate*(self: gen_qcalendarwidget_types.QCalendarWidget, ): gen_qdatetime.QDate =
 
   gen_qdatetime.QDate(h: fcQCalendarWidget_maximumDate(self.h))
 
-proc setMaximumDate*(self: QCalendarWidget, date: gen_qdatetime.QDate): void =
+proc setMaximumDate*(self: gen_qcalendarwidget_types.QCalendarWidget, date: gen_qdatetime.QDate): void =
 
   fcQCalendarWidget_setMaximumDate(self.h, date.h)
 
-proc firstDayOfWeek*(self: QCalendarWidget, ): gen_qnamespace.DayOfWeek =
+proc firstDayOfWeek*(self: gen_qcalendarwidget_types.QCalendarWidget, ): cint =
 
-  gen_qnamespace.DayOfWeek(fcQCalendarWidget_firstDayOfWeek(self.h))
+  cint(fcQCalendarWidget_firstDayOfWeek(self.h))
 
-proc setFirstDayOfWeek*(self: QCalendarWidget, dayOfWeek: gen_qnamespace.DayOfWeek): void =
+proc setFirstDayOfWeek*(self: gen_qcalendarwidget_types.QCalendarWidget, dayOfWeek: cint): void =
 
   fcQCalendarWidget_setFirstDayOfWeek(self.h, cint(dayOfWeek))
 
-proc isNavigationBarVisible*(self: QCalendarWidget, ): bool =
+proc isNavigationBarVisible*(self: gen_qcalendarwidget_types.QCalendarWidget, ): bool =
 
   fcQCalendarWidget_isNavigationBarVisible(self.h)
 
-proc isGridVisible*(self: QCalendarWidget, ): bool =
+proc isGridVisible*(self: gen_qcalendarwidget_types.QCalendarWidget, ): bool =
 
   fcQCalendarWidget_isGridVisible(self.h)
 
-proc calendar*(self: QCalendarWidget, ): gen_qcalendar.QCalendar =
+proc calendar*(self: gen_qcalendarwidget_types.QCalendarWidget, ): gen_qcalendar.QCalendar =
 
   gen_qcalendar.QCalendar(h: fcQCalendarWidget_calendar(self.h))
 
-proc setCalendar*(self: QCalendarWidget, calendar: gen_qcalendar.QCalendar): void =
+proc setCalendar*(self: gen_qcalendarwidget_types.QCalendarWidget, calendar: gen_qcalendar.QCalendar): void =
 
   fcQCalendarWidget_setCalendar(self.h, calendar.h)
 
-proc selectionMode*(self: QCalendarWidget, ): QCalendarWidgetSelectionMode =
+proc selectionMode*(self: gen_qcalendarwidget_types.QCalendarWidget, ): cint =
 
-  QCalendarWidgetSelectionMode(fcQCalendarWidget_selectionMode(self.h))
+  cint(fcQCalendarWidget_selectionMode(self.h))
 
-proc setSelectionMode*(self: QCalendarWidget, mode: QCalendarWidgetSelectionMode): void =
+proc setSelectionMode*(self: gen_qcalendarwidget_types.QCalendarWidget, mode: cint): void =
 
   fcQCalendarWidget_setSelectionMode(self.h, cint(mode))
 
-proc horizontalHeaderFormat*(self: QCalendarWidget, ): QCalendarWidgetHorizontalHeaderFormat =
+proc horizontalHeaderFormat*(self: gen_qcalendarwidget_types.QCalendarWidget, ): cint =
 
-  QCalendarWidgetHorizontalHeaderFormat(fcQCalendarWidget_horizontalHeaderFormat(self.h))
+  cint(fcQCalendarWidget_horizontalHeaderFormat(self.h))
 
-proc setHorizontalHeaderFormat*(self: QCalendarWidget, format: QCalendarWidgetHorizontalHeaderFormat): void =
+proc setHorizontalHeaderFormat*(self: gen_qcalendarwidget_types.QCalendarWidget, format: cint): void =
 
   fcQCalendarWidget_setHorizontalHeaderFormat(self.h, cint(format))
 
-proc verticalHeaderFormat*(self: QCalendarWidget, ): QCalendarWidgetVerticalHeaderFormat =
+proc verticalHeaderFormat*(self: gen_qcalendarwidget_types.QCalendarWidget, ): cint =
 
-  QCalendarWidgetVerticalHeaderFormat(fcQCalendarWidget_verticalHeaderFormat(self.h))
+  cint(fcQCalendarWidget_verticalHeaderFormat(self.h))
 
-proc setVerticalHeaderFormat*(self: QCalendarWidget, format: QCalendarWidgetVerticalHeaderFormat): void =
+proc setVerticalHeaderFormat*(self: gen_qcalendarwidget_types.QCalendarWidget, format: cint): void =
 
   fcQCalendarWidget_setVerticalHeaderFormat(self.h, cint(format))
 
-proc headerTextFormat*(self: QCalendarWidget, ): gen_qtextformat.QTextCharFormat =
+proc headerTextFormat*(self: gen_qcalendarwidget_types.QCalendarWidget, ): gen_qtextformat.QTextCharFormat =
 
   gen_qtextformat.QTextCharFormat(h: fcQCalendarWidget_headerTextFormat(self.h))
 
-proc setHeaderTextFormat*(self: QCalendarWidget, format: gen_qtextformat.QTextCharFormat): void =
+proc setHeaderTextFormat*(self: gen_qcalendarwidget_types.QCalendarWidget, format: gen_qtextformat.QTextCharFormat): void =
 
   fcQCalendarWidget_setHeaderTextFormat(self.h, format.h)
 
-proc weekdayTextFormat*(self: QCalendarWidget, dayOfWeek: gen_qnamespace.DayOfWeek): gen_qtextformat.QTextCharFormat =
+proc weekdayTextFormat*(self: gen_qcalendarwidget_types.QCalendarWidget, dayOfWeek: cint): gen_qtextformat.QTextCharFormat =
 
   gen_qtextformat.QTextCharFormat(h: fcQCalendarWidget_weekdayTextFormat(self.h, cint(dayOfWeek)))
 
-proc setWeekdayTextFormat*(self: QCalendarWidget, dayOfWeek: gen_qnamespace.DayOfWeek, format: gen_qtextformat.QTextCharFormat): void =
+proc setWeekdayTextFormat*(self: gen_qcalendarwidget_types.QCalendarWidget, dayOfWeek: cint, format: gen_qtextformat.QTextCharFormat): void =
 
   fcQCalendarWidget_setWeekdayTextFormat(self.h, cint(dayOfWeek), format.h)
 
-proc dateTextFormat*(self: QCalendarWidget, ): Table[gen_qdatetime.QDate,gen_qtextformat.QTextCharFormat] =
+proc dateTextFormat*(self: gen_qcalendarwidget_types.QCalendarWidget, ): Table[gen_qdatetime.QDate,gen_qtextformat.QTextCharFormat] =
 
   var v_mm = fcQCalendarWidget_dateTextFormat(self.h)
   var vx_ret: Table[gen_qdatetime.QDate, gen_qtextformat.QTextCharFormat]
@@ -416,75 +408,75 @@ proc dateTextFormat*(self: QCalendarWidget, ): Table[gen_qdatetime.QDate,gen_qte
     vx_ret[v_entry_Key] = v_entry_Value
   vx_ret
 
-proc dateTextFormatWithDate*(self: QCalendarWidget, date: gen_qdatetime.QDate): gen_qtextformat.QTextCharFormat =
+proc dateTextFormatWithDate*(self: gen_qcalendarwidget_types.QCalendarWidget, date: gen_qdatetime.QDate): gen_qtextformat.QTextCharFormat =
 
   gen_qtextformat.QTextCharFormat(h: fcQCalendarWidget_dateTextFormatWithDate(self.h, date.h))
 
-proc setDateTextFormat*(self: QCalendarWidget, date: gen_qdatetime.QDate, format: gen_qtextformat.QTextCharFormat): void =
+proc setDateTextFormat*(self: gen_qcalendarwidget_types.QCalendarWidget, date: gen_qdatetime.QDate, format: gen_qtextformat.QTextCharFormat): void =
 
   fcQCalendarWidget_setDateTextFormat(self.h, date.h, format.h)
 
-proc isDateEditEnabled*(self: QCalendarWidget, ): bool =
+proc isDateEditEnabled*(self: gen_qcalendarwidget_types.QCalendarWidget, ): bool =
 
   fcQCalendarWidget_isDateEditEnabled(self.h)
 
-proc setDateEditEnabled*(self: QCalendarWidget, enable: bool): void =
+proc setDateEditEnabled*(self: gen_qcalendarwidget_types.QCalendarWidget, enable: bool): void =
 
   fcQCalendarWidget_setDateEditEnabled(self.h, enable)
 
-proc dateEditAcceptDelay*(self: QCalendarWidget, ): cint =
+proc dateEditAcceptDelay*(self: gen_qcalendarwidget_types.QCalendarWidget, ): cint =
 
   fcQCalendarWidget_dateEditAcceptDelay(self.h)
 
-proc setDateEditAcceptDelay*(self: QCalendarWidget, delay: cint): void =
+proc setDateEditAcceptDelay*(self: gen_qcalendarwidget_types.QCalendarWidget, delay: cint): void =
 
   fcQCalendarWidget_setDateEditAcceptDelay(self.h, delay)
 
-proc setSelectedDate*(self: QCalendarWidget, date: gen_qdatetime.QDate): void =
+proc setSelectedDate*(self: gen_qcalendarwidget_types.QCalendarWidget, date: gen_qdatetime.QDate): void =
 
   fcQCalendarWidget_setSelectedDate(self.h, date.h)
 
-proc setDateRange*(self: QCalendarWidget, min: gen_qdatetime.QDate, max: gen_qdatetime.QDate): void =
+proc setDateRange*(self: gen_qcalendarwidget_types.QCalendarWidget, min: gen_qdatetime.QDate, max: gen_qdatetime.QDate): void =
 
   fcQCalendarWidget_setDateRange(self.h, min.h, max.h)
 
-proc setCurrentPage*(self: QCalendarWidget, year: cint, month: cint): void =
+proc setCurrentPage*(self: gen_qcalendarwidget_types.QCalendarWidget, year: cint, month: cint): void =
 
   fcQCalendarWidget_setCurrentPage(self.h, year, month)
 
-proc setGridVisible*(self: QCalendarWidget, show: bool): void =
+proc setGridVisible*(self: gen_qcalendarwidget_types.QCalendarWidget, show: bool): void =
 
   fcQCalendarWidget_setGridVisible(self.h, show)
 
-proc setNavigationBarVisible*(self: QCalendarWidget, visible: bool): void =
+proc setNavigationBarVisible*(self: gen_qcalendarwidget_types.QCalendarWidget, visible: bool): void =
 
   fcQCalendarWidget_setNavigationBarVisible(self.h, visible)
 
-proc showNextMonth*(self: QCalendarWidget, ): void =
+proc showNextMonth*(self: gen_qcalendarwidget_types.QCalendarWidget, ): void =
 
   fcQCalendarWidget_showNextMonth(self.h)
 
-proc showPreviousMonth*(self: QCalendarWidget, ): void =
+proc showPreviousMonth*(self: gen_qcalendarwidget_types.QCalendarWidget, ): void =
 
   fcQCalendarWidget_showPreviousMonth(self.h)
 
-proc showNextYear*(self: QCalendarWidget, ): void =
+proc showNextYear*(self: gen_qcalendarwidget_types.QCalendarWidget, ): void =
 
   fcQCalendarWidget_showNextYear(self.h)
 
-proc showPreviousYear*(self: QCalendarWidget, ): void =
+proc showPreviousYear*(self: gen_qcalendarwidget_types.QCalendarWidget, ): void =
 
   fcQCalendarWidget_showPreviousYear(self.h)
 
-proc showSelectedDate*(self: QCalendarWidget, ): void =
+proc showSelectedDate*(self: gen_qcalendarwidget_types.QCalendarWidget, ): void =
 
   fcQCalendarWidget_showSelectedDate(self.h)
 
-proc showToday*(self: QCalendarWidget, ): void =
+proc showToday*(self: gen_qcalendarwidget_types.QCalendarWidget, ): void =
 
   fcQCalendarWidget_showToday(self.h)
 
-proc selectionChanged*(self: QCalendarWidget, ): void =
+proc selectionChanged*(self: gen_qcalendarwidget_types.QCalendarWidget, ): void =
 
   fcQCalendarWidget_selectionChanged(self.h)
 
@@ -494,13 +486,13 @@ proc miqt_exec_callback_QCalendarWidget_selectionChanged(slot: int) {.exportc.} 
 
   nimfunc[]()
 
-proc onselectionChanged*(self: QCalendarWidget, slot: proc()) =
+proc onselectionChanged*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQCalendarWidget_connect_selectionChanged(self.h, cast[int](addr tmp[]))
-proc clicked*(self: QCalendarWidget, date: gen_qdatetime.QDate): void =
+proc clicked*(self: gen_qcalendarwidget_types.QCalendarWidget, date: gen_qdatetime.QDate): void =
 
   fcQCalendarWidget_clicked(self.h, date.h)
 
@@ -512,13 +504,13 @@ proc miqt_exec_callback_QCalendarWidget_clicked(slot: int, date: pointer) {.expo
 
   nimfunc[](slotval1)
 
-proc onclicked*(self: QCalendarWidget, slot: proc(date: gen_qdatetime.QDate)) =
+proc onclicked*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: proc(date: gen_qdatetime.QDate)) =
   type Cb = proc(date: gen_qdatetime.QDate)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQCalendarWidget_connect_clicked(self.h, cast[int](addr tmp[]))
-proc activated*(self: QCalendarWidget, date: gen_qdatetime.QDate): void =
+proc activated*(self: gen_qcalendarwidget_types.QCalendarWidget, date: gen_qdatetime.QDate): void =
 
   fcQCalendarWidget_activated(self.h, date.h)
 
@@ -530,13 +522,13 @@ proc miqt_exec_callback_QCalendarWidget_activated(slot: int, date: pointer) {.ex
 
   nimfunc[](slotval1)
 
-proc onactivated*(self: QCalendarWidget, slot: proc(date: gen_qdatetime.QDate)) =
+proc onactivated*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: proc(date: gen_qdatetime.QDate)) =
   type Cb = proc(date: gen_qdatetime.QDate)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQCalendarWidget_connect_activated(self.h, cast[int](addr tmp[]))
-proc currentPageChanged*(self: QCalendarWidget, year: cint, month: cint): void =
+proc currentPageChanged*(self: gen_qcalendarwidget_types.QCalendarWidget, year: cint, month: cint): void =
 
   fcQCalendarWidget_currentPageChanged(self.h, year, month)
 
@@ -550,303 +542,248 @@ proc miqt_exec_callback_QCalendarWidget_currentPageChanged(slot: int, year: cint
 
   nimfunc[](slotval1, slotval2)
 
-proc oncurrentPageChanged*(self: QCalendarWidget, slot: proc(year: cint, month: cint)) =
+proc oncurrentPageChanged*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: proc(year: cint, month: cint)) =
   type Cb = proc(year: cint, month: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQCalendarWidget_connect_currentPageChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QCalendarWidget, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qcalendarwidget_types.QCalendarWidget, s: cstring, c: cstring): string =
 
   let v_ms = fcQCalendarWidget_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QCalendarWidget, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qcalendarwidget_types.QCalendarWidget, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQCalendarWidget_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QCalendarWidget, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qcalendarwidget_types.QCalendarWidget, s: cstring, c: cstring): string =
 
   let v_ms = fcQCalendarWidget_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QCalendarWidget, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qcalendarwidget_types.QCalendarWidget, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQCalendarWidget_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QCalendarWidget, ): gen_qobjectdefs.QMetaObject =
-
+proc QCalendarWidgetmetaObject*(self: gen_qcalendarwidget_types.QCalendarWidget, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQCalendarWidget_virtualbase_metaObject(self.h))
 
-type QCalendarWidgetmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QCalendarWidget, slot: proc(super: QCalendarWidgetmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QCalendarWidgetmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgetmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QCalendarWidgetmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QCalendarWidgetmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCalendarWidget_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCalendarWidget_metaObject(self: ptr cQCalendarWidget, slot: int): pointer {.exportc: "miqt_exec_callback_QCalendarWidget_metaObject ".} =
-  type Cb = proc(super: QCalendarWidgetmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QCalendarWidget(h: self), )
+  var nimfunc = cast[ptr QCalendarWidgetmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QCalendarWidget, param1: cstring): pointer =
-
+proc QCalendarWidgetmetacast*(self: gen_qcalendarwidget_types.QCalendarWidget, param1: cstring): pointer =
 
   fQCalendarWidget_virtualbase_metacast(self.h, param1)
 
-type QCalendarWidgetmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QCalendarWidget, slot: proc(super: QCalendarWidgetmetacastBase, param1: cstring): pointer) =
+type QCalendarWidgetmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgetmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QCalendarWidgetmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QCalendarWidgetmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCalendarWidget_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCalendarWidget_metacast(self: ptr cQCalendarWidget, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QCalendarWidget_metacast ".} =
-  type Cb = proc(super: QCalendarWidgetmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QCalendarWidget(h: self), param1)
+  var nimfunc = cast[ptr QCalendarWidgetmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QCalendarWidget, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QCalendarWidgetmetacall*(self: gen_qcalendarwidget_types.QCalendarWidget, param1: cint, param2: cint, param3: pointer): cint =
 
   fQCalendarWidget_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QCalendarWidgetmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QCalendarWidget, slot: proc(super: QCalendarWidgetmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QCalendarWidgetmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgetmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QCalendarWidgetmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QCalendarWidgetmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCalendarWidget_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCalendarWidget_metacall(self: ptr cQCalendarWidget, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QCalendarWidget_metacall ".} =
-  type Cb = proc(super: QCalendarWidgetmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QCalendarWidget(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QCalendarWidgetmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_sizeHint(self: QCalendarWidget, ): gen_qsize.QSize =
-
+proc QCalendarWidgetsizeHint*(self: gen_qcalendarwidget_types.QCalendarWidget, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQCalendarWidget_virtualbase_sizeHint(self.h))
 
-type QCalendarWidgetsizeHintBase* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: QCalendarWidget, slot: proc(super: QCalendarWidgetsizeHintBase): gen_qsize.QSize) =
+type QCalendarWidgetsizeHintProc* = proc(): gen_qsize.QSize
+proc onsizeHint*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgetsizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QCalendarWidgetsizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QCalendarWidgetsizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCalendarWidget_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCalendarWidget_sizeHint(self: ptr cQCalendarWidget, slot: int): pointer {.exportc: "miqt_exec_callback_QCalendarWidget_sizeHint ".} =
-  type Cb = proc(super: QCalendarWidgetsizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sizeHint(QCalendarWidget(h: self), )
+  var nimfunc = cast[ptr QCalendarWidgetsizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_minimumSizeHint(self: QCalendarWidget, ): gen_qsize.QSize =
-
+proc QCalendarWidgetminimumSizeHint*(self: gen_qcalendarwidget_types.QCalendarWidget, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQCalendarWidget_virtualbase_minimumSizeHint(self.h))
 
-type QCalendarWidgetminimumSizeHintBase* = proc(): gen_qsize.QSize
-proc onminimumSizeHint*(self: QCalendarWidget, slot: proc(super: QCalendarWidgetminimumSizeHintBase): gen_qsize.QSize) =
+type QCalendarWidgetminimumSizeHintProc* = proc(): gen_qsize.QSize
+proc onminimumSizeHint*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgetminimumSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QCalendarWidgetminimumSizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QCalendarWidgetminimumSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCalendarWidget_override_virtual_minimumSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCalendarWidget_minimumSizeHint(self: ptr cQCalendarWidget, slot: int): pointer {.exportc: "miqt_exec_callback_QCalendarWidget_minimumSizeHint ".} =
-  type Cb = proc(super: QCalendarWidgetminimumSizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_minimumSizeHint(QCalendarWidget(h: self), )
+  var nimfunc = cast[ptr QCalendarWidgetminimumSizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_event(self: QCalendarWidget, event: gen_qcoreevent.QEvent): bool =
-
+proc QCalendarWidgetevent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qcoreevent.QEvent): bool =
 
   fQCalendarWidget_virtualbase_event(self.h, event.h)
 
-type QCalendarWidgeteventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QCalendarWidget, slot: proc(super: QCalendarWidgeteventBase, event: gen_qcoreevent.QEvent): bool) =
+type QCalendarWidgeteventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgeteventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCalendarWidgeteventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QCalendarWidgeteventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCalendarWidget_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCalendarWidget_event(self: ptr cQCalendarWidget, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QCalendarWidget_event ".} =
-  type Cb = proc(super: QCalendarWidgeteventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QCalendarWidget(h: self), event)
+  var nimfunc = cast[ptr QCalendarWidgeteventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QCalendarWidget, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QCalendarWidgeteventFilter*(self: gen_qcalendarwidget_types.QCalendarWidget, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQCalendarWidget_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QCalendarWidgeteventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QCalendarWidget, slot: proc(super: QCalendarWidgeteventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QCalendarWidgeteventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgeteventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QCalendarWidgeteventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QCalendarWidgeteventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCalendarWidget_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCalendarWidget_eventFilter(self: ptr cQCalendarWidget, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QCalendarWidget_eventFilter ".} =
-  type Cb = proc(super: QCalendarWidgeteventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QCalendarWidget(h: self), watched, event)
+  var nimfunc = cast[ptr QCalendarWidgeteventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_mousePressEvent(self: QCalendarWidget, event: gen_qevent.QMouseEvent): void =
-
+proc QCalendarWidgetmousePressEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qevent.QMouseEvent): void =
 
   fQCalendarWidget_virtualbase_mousePressEvent(self.h, event.h)
 
-type QCalendarWidgetmousePressEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmousePressEvent*(self: QCalendarWidget, slot: proc(super: QCalendarWidgetmousePressEventBase, event: gen_qevent.QMouseEvent): void) =
+type QCalendarWidgetmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmousePressEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgetmousePressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCalendarWidgetmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QCalendarWidgetmousePressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCalendarWidget_override_virtual_mousePressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCalendarWidget_mousePressEvent(self: ptr cQCalendarWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QCalendarWidget_mousePressEvent ".} =
-  type Cb = proc(super: QCalendarWidgetmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mousePressEvent(QCalendarWidget(h: self), event)
+  var nimfunc = cast[ptr QCalendarWidgetmousePressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_resizeEvent(self: QCalendarWidget, event: gen_qevent.QResizeEvent): void =
-
+  nimfunc[](slotval1)
+proc QCalendarWidgetresizeEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qevent.QResizeEvent): void =
 
   fQCalendarWidget_virtualbase_resizeEvent(self.h, event.h)
 
-type QCalendarWidgetresizeEventBase* = proc(event: gen_qevent.QResizeEvent): void
-proc onresizeEvent*(self: QCalendarWidget, slot: proc(super: QCalendarWidgetresizeEventBase, event: gen_qevent.QResizeEvent): void) =
+type QCalendarWidgetresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
+proc onresizeEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgetresizeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCalendarWidgetresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var tmp = new Cb
+  var tmp = new QCalendarWidgetresizeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCalendarWidget_override_virtual_resizeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCalendarWidget_resizeEvent(self: ptr cQCalendarWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QCalendarWidget_resizeEvent ".} =
-  type Cb = proc(super: QCalendarWidgetresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QResizeEvent): auto =
-    callVirtualBase_resizeEvent(QCalendarWidget(h: self), event)
+  var nimfunc = cast[ptr QCalendarWidgetresizeEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QResizeEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyPressEvent(self: QCalendarWidget, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QCalendarWidgetkeyPressEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qevent.QKeyEvent): void =
 
   fQCalendarWidget_virtualbase_keyPressEvent(self.h, event.h)
 
-type QCalendarWidgetkeyPressEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyPressEvent*(self: QCalendarWidget, slot: proc(super: QCalendarWidgetkeyPressEventBase, event: gen_qevent.QKeyEvent): void) =
+type QCalendarWidgetkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyPressEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgetkeyPressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCalendarWidgetkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QCalendarWidgetkeyPressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCalendarWidget_override_virtual_keyPressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCalendarWidget_keyPressEvent(self: ptr cQCalendarWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QCalendarWidget_keyPressEvent ".} =
-  type Cb = proc(super: QCalendarWidgetkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyPressEvent(QCalendarWidget(h: self), event)
+  var nimfunc = cast[ptr QCalendarWidgetkeyPressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_paintCell(self: QCalendarWidget, painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, date: gen_qdatetime.QDate): void =
-
+  nimfunc[](slotval1)
+proc QCalendarWidgetpaintCell*(self: gen_qcalendarwidget_types.QCalendarWidget, painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, date: gen_qdatetime.QDate): void =
 
   fQCalendarWidget_virtualbase_paintCell(self.h, painter.h, rect.h, date.h)
 
-type QCalendarWidgetpaintCellBase* = proc(painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, date: gen_qdatetime.QDate): void
-proc onpaintCell*(self: QCalendarWidget, slot: proc(super: QCalendarWidgetpaintCellBase, painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, date: gen_qdatetime.QDate): void) =
+type QCalendarWidgetpaintCellProc* = proc(painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, date: gen_qdatetime.QDate): void
+proc onpaintCell*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgetpaintCellProc) =
   # TODO check subclass
-  type Cb = proc(super: QCalendarWidgetpaintCellBase, painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, date: gen_qdatetime.QDate): void
-  var tmp = new Cb
+  var tmp = new QCalendarWidgetpaintCellProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCalendarWidget_override_virtual_paintCell(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCalendarWidget_paintCell(self: ptr cQCalendarWidget, slot: int, painter: pointer, rect: pointer, date: pointer): void {.exportc: "miqt_exec_callback_QCalendarWidget_paintCell ".} =
-  type Cb = proc(super: QCalendarWidgetpaintCellBase, painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, date: gen_qdatetime.QDate): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, date: gen_qdatetime.QDate): auto =
-    callVirtualBase_paintCell(QCalendarWidget(h: self), painter, rect, date)
+  var nimfunc = cast[ptr QCalendarWidgetpaintCellProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
   let slotval2 = gen_qrect.QRect(h: rect)
@@ -854,626 +791,491 @@ proc miqt_exec_callback_QCalendarWidget_paintCell(self: ptr cQCalendarWidget, sl
   let slotval3 = gen_qdatetime.QDate(h: date)
 
 
-  nimfunc[](superCall, slotval1, slotval2, slotval3)
-proc callVirtualBase_devType(self: QCalendarWidget, ): cint =
-
+  nimfunc[](slotval1, slotval2, slotval3)
+proc QCalendarWidgetdevType*(self: gen_qcalendarwidget_types.QCalendarWidget, ): cint =
 
   fQCalendarWidget_virtualbase_devType(self.h)
 
-type QCalendarWidgetdevTypeBase* = proc(): cint
-proc ondevType*(self: QCalendarWidget, slot: proc(super: QCalendarWidgetdevTypeBase): cint) =
+type QCalendarWidgetdevTypeProc* = proc(): cint
+proc ondevType*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgetdevTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: QCalendarWidgetdevTypeBase): cint
-  var tmp = new Cb
+  var tmp = new QCalendarWidgetdevTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCalendarWidget_override_virtual_devType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCalendarWidget_devType(self: ptr cQCalendarWidget, slot: int): cint {.exportc: "miqt_exec_callback_QCalendarWidget_devType ".} =
-  type Cb = proc(super: QCalendarWidgetdevTypeBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_devType(QCalendarWidget(h: self), )
+  var nimfunc = cast[ptr QCalendarWidgetdevTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setVisible(self: QCalendarWidget, visible: bool): void =
-
+proc QCalendarWidgetsetVisible*(self: gen_qcalendarwidget_types.QCalendarWidget, visible: bool): void =
 
   fQCalendarWidget_virtualbase_setVisible(self.h, visible)
 
-type QCalendarWidgetsetVisibleBase* = proc(visible: bool): void
-proc onsetVisible*(self: QCalendarWidget, slot: proc(super: QCalendarWidgetsetVisibleBase, visible: bool): void) =
+type QCalendarWidgetsetVisibleProc* = proc(visible: bool): void
+proc onsetVisible*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgetsetVisibleProc) =
   # TODO check subclass
-  type Cb = proc(super: QCalendarWidgetsetVisibleBase, visible: bool): void
-  var tmp = new Cb
+  var tmp = new QCalendarWidgetsetVisibleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCalendarWidget_override_virtual_setVisible(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCalendarWidget_setVisible(self: ptr cQCalendarWidget, slot: int, visible: bool): void {.exportc: "miqt_exec_callback_QCalendarWidget_setVisible ".} =
-  type Cb = proc(super: QCalendarWidgetsetVisibleBase, visible: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(visible: bool): auto =
-    callVirtualBase_setVisible(QCalendarWidget(h: self), visible)
+  var nimfunc = cast[ptr QCalendarWidgetsetVisibleProc](cast[pointer](slot))
   let slotval1 = visible
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_heightForWidth(self: QCalendarWidget, param1: cint): cint =
-
+  nimfunc[](slotval1)
+proc QCalendarWidgetheightForWidth*(self: gen_qcalendarwidget_types.QCalendarWidget, param1: cint): cint =
 
   fQCalendarWidget_virtualbase_heightForWidth(self.h, param1)
 
-type QCalendarWidgetheightForWidthBase* = proc(param1: cint): cint
-proc onheightForWidth*(self: QCalendarWidget, slot: proc(super: QCalendarWidgetheightForWidthBase, param1: cint): cint) =
+type QCalendarWidgetheightForWidthProc* = proc(param1: cint): cint
+proc onheightForWidth*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgetheightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QCalendarWidgetheightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QCalendarWidgetheightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCalendarWidget_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCalendarWidget_heightForWidth(self: ptr cQCalendarWidget, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QCalendarWidget_heightForWidth ".} =
-  type Cb = proc(super: QCalendarWidgetheightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_heightForWidth(QCalendarWidget(h: self), param1)
+  var nimfunc = cast[ptr QCalendarWidgetheightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_hasHeightForWidth(self: QCalendarWidget, ): bool =
-
+proc QCalendarWidgethasHeightForWidth*(self: gen_qcalendarwidget_types.QCalendarWidget, ): bool =
 
   fQCalendarWidget_virtualbase_hasHeightForWidth(self.h)
 
-type QCalendarWidgethasHeightForWidthBase* = proc(): bool
-proc onhasHeightForWidth*(self: QCalendarWidget, slot: proc(super: QCalendarWidgethasHeightForWidthBase): bool) =
+type QCalendarWidgethasHeightForWidthProc* = proc(): bool
+proc onhasHeightForWidth*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgethasHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QCalendarWidgethasHeightForWidthBase): bool
-  var tmp = new Cb
+  var tmp = new QCalendarWidgethasHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCalendarWidget_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCalendarWidget_hasHeightForWidth(self: ptr cQCalendarWidget, slot: int): bool {.exportc: "miqt_exec_callback_QCalendarWidget_hasHeightForWidth ".} =
-  type Cb = proc(super: QCalendarWidgethasHeightForWidthBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasHeightForWidth(QCalendarWidget(h: self), )
+  var nimfunc = cast[ptr QCalendarWidgethasHeightForWidthProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_paintEngine(self: QCalendarWidget, ): gen_qpaintengine.QPaintEngine =
-
+proc QCalendarWidgetpaintEngine*(self: gen_qcalendarwidget_types.QCalendarWidget, ): gen_qpaintengine.QPaintEngine =
 
   gen_qpaintengine.QPaintEngine(h: fQCalendarWidget_virtualbase_paintEngine(self.h))
 
-type QCalendarWidgetpaintEngineBase* = proc(): gen_qpaintengine.QPaintEngine
-proc onpaintEngine*(self: QCalendarWidget, slot: proc(super: QCalendarWidgetpaintEngineBase): gen_qpaintengine.QPaintEngine) =
+type QCalendarWidgetpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
+proc onpaintEngine*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgetpaintEngineProc) =
   # TODO check subclass
-  type Cb = proc(super: QCalendarWidgetpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var tmp = new Cb
+  var tmp = new QCalendarWidgetpaintEngineProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCalendarWidget_override_virtual_paintEngine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCalendarWidget_paintEngine(self: ptr cQCalendarWidget, slot: int): pointer {.exportc: "miqt_exec_callback_QCalendarWidget_paintEngine ".} =
-  type Cb = proc(super: QCalendarWidgetpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_paintEngine(QCalendarWidget(h: self), )
+  var nimfunc = cast[ptr QCalendarWidgetpaintEngineProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_mouseReleaseEvent(self: QCalendarWidget, event: gen_qevent.QMouseEvent): void =
-
+proc QCalendarWidgetmouseReleaseEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qevent.QMouseEvent): void =
 
   fQCalendarWidget_virtualbase_mouseReleaseEvent(self.h, event.h)
 
-type QCalendarWidgetmouseReleaseEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseReleaseEvent*(self: QCalendarWidget, slot: proc(super: QCalendarWidgetmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void) =
+type QCalendarWidgetmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseReleaseEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgetmouseReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCalendarWidgetmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QCalendarWidgetmouseReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCalendarWidget_override_virtual_mouseReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCalendarWidget_mouseReleaseEvent(self: ptr cQCalendarWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QCalendarWidget_mouseReleaseEvent ".} =
-  type Cb = proc(super: QCalendarWidgetmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseReleaseEvent(QCalendarWidget(h: self), event)
+  var nimfunc = cast[ptr QCalendarWidgetmouseReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseDoubleClickEvent(self: QCalendarWidget, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QCalendarWidgetmouseDoubleClickEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qevent.QMouseEvent): void =
 
   fQCalendarWidget_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
-type QCalendarWidgetmouseDoubleClickEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseDoubleClickEvent*(self: QCalendarWidget, slot: proc(super: QCalendarWidgetmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void) =
+type QCalendarWidgetmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseDoubleClickEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgetmouseDoubleClickEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCalendarWidgetmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QCalendarWidgetmouseDoubleClickEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCalendarWidget_override_virtual_mouseDoubleClickEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCalendarWidget_mouseDoubleClickEvent(self: ptr cQCalendarWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QCalendarWidget_mouseDoubleClickEvent ".} =
-  type Cb = proc(super: QCalendarWidgetmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseDoubleClickEvent(QCalendarWidget(h: self), event)
+  var nimfunc = cast[ptr QCalendarWidgetmouseDoubleClickEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseMoveEvent(self: QCalendarWidget, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QCalendarWidgetmouseMoveEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qevent.QMouseEvent): void =
 
   fQCalendarWidget_virtualbase_mouseMoveEvent(self.h, event.h)
 
-type QCalendarWidgetmouseMoveEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseMoveEvent*(self: QCalendarWidget, slot: proc(super: QCalendarWidgetmouseMoveEventBase, event: gen_qevent.QMouseEvent): void) =
+type QCalendarWidgetmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseMoveEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgetmouseMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCalendarWidgetmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QCalendarWidgetmouseMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCalendarWidget_override_virtual_mouseMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCalendarWidget_mouseMoveEvent(self: ptr cQCalendarWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QCalendarWidget_mouseMoveEvent ".} =
-  type Cb = proc(super: QCalendarWidgetmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseMoveEvent(QCalendarWidget(h: self), event)
+  var nimfunc = cast[ptr QCalendarWidgetmouseMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_wheelEvent(self: QCalendarWidget, event: gen_qevent.QWheelEvent): void =
-
+  nimfunc[](slotval1)
+proc QCalendarWidgetwheelEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qevent.QWheelEvent): void =
 
   fQCalendarWidget_virtualbase_wheelEvent(self.h, event.h)
 
-type QCalendarWidgetwheelEventBase* = proc(event: gen_qevent.QWheelEvent): void
-proc onwheelEvent*(self: QCalendarWidget, slot: proc(super: QCalendarWidgetwheelEventBase, event: gen_qevent.QWheelEvent): void) =
+type QCalendarWidgetwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
+proc onwheelEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgetwheelEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCalendarWidgetwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var tmp = new Cb
+  var tmp = new QCalendarWidgetwheelEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCalendarWidget_override_virtual_wheelEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCalendarWidget_wheelEvent(self: ptr cQCalendarWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QCalendarWidget_wheelEvent ".} =
-  type Cb = proc(super: QCalendarWidgetwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QWheelEvent): auto =
-    callVirtualBase_wheelEvent(QCalendarWidget(h: self), event)
+  var nimfunc = cast[ptr QCalendarWidgetwheelEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QWheelEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyReleaseEvent(self: QCalendarWidget, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QCalendarWidgetkeyReleaseEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qevent.QKeyEvent): void =
 
   fQCalendarWidget_virtualbase_keyReleaseEvent(self.h, event.h)
 
-type QCalendarWidgetkeyReleaseEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyReleaseEvent*(self: QCalendarWidget, slot: proc(super: QCalendarWidgetkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void) =
+type QCalendarWidgetkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyReleaseEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgetkeyReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCalendarWidgetkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QCalendarWidgetkeyReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCalendarWidget_override_virtual_keyReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCalendarWidget_keyReleaseEvent(self: ptr cQCalendarWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QCalendarWidget_keyReleaseEvent ".} =
-  type Cb = proc(super: QCalendarWidgetkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyReleaseEvent(QCalendarWidget(h: self), event)
+  var nimfunc = cast[ptr QCalendarWidgetkeyReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusInEvent(self: QCalendarWidget, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QCalendarWidgetfocusInEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qevent.QFocusEvent): void =
 
   fQCalendarWidget_virtualbase_focusInEvent(self.h, event.h)
 
-type QCalendarWidgetfocusInEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusInEvent*(self: QCalendarWidget, slot: proc(super: QCalendarWidgetfocusInEventBase, event: gen_qevent.QFocusEvent): void) =
+type QCalendarWidgetfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusInEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgetfocusInEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCalendarWidgetfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QCalendarWidgetfocusInEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCalendarWidget_override_virtual_focusInEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCalendarWidget_focusInEvent(self: ptr cQCalendarWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QCalendarWidget_focusInEvent ".} =
-  type Cb = proc(super: QCalendarWidgetfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusInEvent(QCalendarWidget(h: self), event)
+  var nimfunc = cast[ptr QCalendarWidgetfocusInEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusOutEvent(self: QCalendarWidget, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QCalendarWidgetfocusOutEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qevent.QFocusEvent): void =
 
   fQCalendarWidget_virtualbase_focusOutEvent(self.h, event.h)
 
-type QCalendarWidgetfocusOutEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusOutEvent*(self: QCalendarWidget, slot: proc(super: QCalendarWidgetfocusOutEventBase, event: gen_qevent.QFocusEvent): void) =
+type QCalendarWidgetfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusOutEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgetfocusOutEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCalendarWidgetfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QCalendarWidgetfocusOutEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCalendarWidget_override_virtual_focusOutEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCalendarWidget_focusOutEvent(self: ptr cQCalendarWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QCalendarWidget_focusOutEvent ".} =
-  type Cb = proc(super: QCalendarWidgetfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusOutEvent(QCalendarWidget(h: self), event)
+  var nimfunc = cast[ptr QCalendarWidgetfocusOutEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_enterEvent(self: QCalendarWidget, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QCalendarWidgetenterEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qcoreevent.QEvent): void =
 
   fQCalendarWidget_virtualbase_enterEvent(self.h, event.h)
 
-type QCalendarWidgetenterEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onenterEvent*(self: QCalendarWidget, slot: proc(super: QCalendarWidgetenterEventBase, event: gen_qcoreevent.QEvent): void) =
+type QCalendarWidgetenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onenterEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgetenterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCalendarWidgetenterEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QCalendarWidgetenterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCalendarWidget_override_virtual_enterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCalendarWidget_enterEvent(self: ptr cQCalendarWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QCalendarWidget_enterEvent ".} =
-  type Cb = proc(super: QCalendarWidgetenterEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_enterEvent(QCalendarWidget(h: self), event)
+  var nimfunc = cast[ptr QCalendarWidgetenterEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_leaveEvent(self: QCalendarWidget, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QCalendarWidgetleaveEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qcoreevent.QEvent): void =
 
   fQCalendarWidget_virtualbase_leaveEvent(self.h, event.h)
 
-type QCalendarWidgetleaveEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onleaveEvent*(self: QCalendarWidget, slot: proc(super: QCalendarWidgetleaveEventBase, event: gen_qcoreevent.QEvent): void) =
+type QCalendarWidgetleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onleaveEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgetleaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCalendarWidgetleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QCalendarWidgetleaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCalendarWidget_override_virtual_leaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCalendarWidget_leaveEvent(self: ptr cQCalendarWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QCalendarWidget_leaveEvent ".} =
-  type Cb = proc(super: QCalendarWidgetleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_leaveEvent(QCalendarWidget(h: self), event)
+  var nimfunc = cast[ptr QCalendarWidgetleaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_paintEvent(self: QCalendarWidget, event: gen_qevent.QPaintEvent): void =
-
+  nimfunc[](slotval1)
+proc QCalendarWidgetpaintEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qevent.QPaintEvent): void =
 
   fQCalendarWidget_virtualbase_paintEvent(self.h, event.h)
 
-type QCalendarWidgetpaintEventBase* = proc(event: gen_qevent.QPaintEvent): void
-proc onpaintEvent*(self: QCalendarWidget, slot: proc(super: QCalendarWidgetpaintEventBase, event: gen_qevent.QPaintEvent): void) =
+type QCalendarWidgetpaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
+proc onpaintEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgetpaintEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCalendarWidgetpaintEventBase, event: gen_qevent.QPaintEvent): void
-  var tmp = new Cb
+  var tmp = new QCalendarWidgetpaintEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCalendarWidget_override_virtual_paintEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCalendarWidget_paintEvent(self: ptr cQCalendarWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QCalendarWidget_paintEvent ".} =
-  type Cb = proc(super: QCalendarWidgetpaintEventBase, event: gen_qevent.QPaintEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QPaintEvent): auto =
-    callVirtualBase_paintEvent(QCalendarWidget(h: self), event)
+  var nimfunc = cast[ptr QCalendarWidgetpaintEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QPaintEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_moveEvent(self: QCalendarWidget, event: gen_qevent.QMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QCalendarWidgetmoveEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qevent.QMoveEvent): void =
 
   fQCalendarWidget_virtualbase_moveEvent(self.h, event.h)
 
-type QCalendarWidgetmoveEventBase* = proc(event: gen_qevent.QMoveEvent): void
-proc onmoveEvent*(self: QCalendarWidget, slot: proc(super: QCalendarWidgetmoveEventBase, event: gen_qevent.QMoveEvent): void) =
+type QCalendarWidgetmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
+proc onmoveEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgetmoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCalendarWidgetmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QCalendarWidgetmoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCalendarWidget_override_virtual_moveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCalendarWidget_moveEvent(self: ptr cQCalendarWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QCalendarWidget_moveEvent ".} =
-  type Cb = proc(super: QCalendarWidgetmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMoveEvent): auto =
-    callVirtualBase_moveEvent(QCalendarWidget(h: self), event)
+  var nimfunc = cast[ptr QCalendarWidgetmoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_closeEvent(self: QCalendarWidget, event: gen_qevent.QCloseEvent): void =
-
+  nimfunc[](slotval1)
+proc QCalendarWidgetcloseEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qevent.QCloseEvent): void =
 
   fQCalendarWidget_virtualbase_closeEvent(self.h, event.h)
 
-type QCalendarWidgetcloseEventBase* = proc(event: gen_qevent.QCloseEvent): void
-proc oncloseEvent*(self: QCalendarWidget, slot: proc(super: QCalendarWidgetcloseEventBase, event: gen_qevent.QCloseEvent): void) =
+type QCalendarWidgetcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
+proc oncloseEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgetcloseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCalendarWidgetcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var tmp = new Cb
+  var tmp = new QCalendarWidgetcloseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCalendarWidget_override_virtual_closeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCalendarWidget_closeEvent(self: ptr cQCalendarWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QCalendarWidget_closeEvent ".} =
-  type Cb = proc(super: QCalendarWidgetcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QCloseEvent): auto =
-    callVirtualBase_closeEvent(QCalendarWidget(h: self), event)
+  var nimfunc = cast[ptr QCalendarWidgetcloseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QCloseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_contextMenuEvent(self: QCalendarWidget, event: gen_qevent.QContextMenuEvent): void =
-
+  nimfunc[](slotval1)
+proc QCalendarWidgetcontextMenuEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qevent.QContextMenuEvent): void =
 
   fQCalendarWidget_virtualbase_contextMenuEvent(self.h, event.h)
 
-type QCalendarWidgetcontextMenuEventBase* = proc(event: gen_qevent.QContextMenuEvent): void
-proc oncontextMenuEvent*(self: QCalendarWidget, slot: proc(super: QCalendarWidgetcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void) =
+type QCalendarWidgetcontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
+proc oncontextMenuEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgetcontextMenuEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCalendarWidgetcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var tmp = new Cb
+  var tmp = new QCalendarWidgetcontextMenuEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCalendarWidget_override_virtual_contextMenuEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCalendarWidget_contextMenuEvent(self: ptr cQCalendarWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QCalendarWidget_contextMenuEvent ".} =
-  type Cb = proc(super: QCalendarWidgetcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QContextMenuEvent): auto =
-    callVirtualBase_contextMenuEvent(QCalendarWidget(h: self), event)
+  var nimfunc = cast[ptr QCalendarWidgetcontextMenuEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QContextMenuEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_tabletEvent(self: QCalendarWidget, event: gen_qevent.QTabletEvent): void =
-
+  nimfunc[](slotval1)
+proc QCalendarWidgettabletEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qevent.QTabletEvent): void =
 
   fQCalendarWidget_virtualbase_tabletEvent(self.h, event.h)
 
-type QCalendarWidgettabletEventBase* = proc(event: gen_qevent.QTabletEvent): void
-proc ontabletEvent*(self: QCalendarWidget, slot: proc(super: QCalendarWidgettabletEventBase, event: gen_qevent.QTabletEvent): void) =
+type QCalendarWidgettabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
+proc ontabletEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgettabletEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCalendarWidgettabletEventBase, event: gen_qevent.QTabletEvent): void
-  var tmp = new Cb
+  var tmp = new QCalendarWidgettabletEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCalendarWidget_override_virtual_tabletEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCalendarWidget_tabletEvent(self: ptr cQCalendarWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QCalendarWidget_tabletEvent ".} =
-  type Cb = proc(super: QCalendarWidgettabletEventBase, event: gen_qevent.QTabletEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QTabletEvent): auto =
-    callVirtualBase_tabletEvent(QCalendarWidget(h: self), event)
+  var nimfunc = cast[ptr QCalendarWidgettabletEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QTabletEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_actionEvent(self: QCalendarWidget, event: gen_qevent.QActionEvent): void =
-
+  nimfunc[](slotval1)
+proc QCalendarWidgetactionEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qevent.QActionEvent): void =
 
   fQCalendarWidget_virtualbase_actionEvent(self.h, event.h)
 
-type QCalendarWidgetactionEventBase* = proc(event: gen_qevent.QActionEvent): void
-proc onactionEvent*(self: QCalendarWidget, slot: proc(super: QCalendarWidgetactionEventBase, event: gen_qevent.QActionEvent): void) =
+type QCalendarWidgetactionEventProc* = proc(event: gen_qevent.QActionEvent): void
+proc onactionEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgetactionEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCalendarWidgetactionEventBase, event: gen_qevent.QActionEvent): void
-  var tmp = new Cb
+  var tmp = new QCalendarWidgetactionEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCalendarWidget_override_virtual_actionEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCalendarWidget_actionEvent(self: ptr cQCalendarWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QCalendarWidget_actionEvent ".} =
-  type Cb = proc(super: QCalendarWidgetactionEventBase, event: gen_qevent.QActionEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QActionEvent): auto =
-    callVirtualBase_actionEvent(QCalendarWidget(h: self), event)
+  var nimfunc = cast[ptr QCalendarWidgetactionEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QActionEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragEnterEvent(self: QCalendarWidget, event: gen_qevent.QDragEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QCalendarWidgetdragEnterEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qevent.QDragEnterEvent): void =
 
   fQCalendarWidget_virtualbase_dragEnterEvent(self.h, event.h)
 
-type QCalendarWidgetdragEnterEventBase* = proc(event: gen_qevent.QDragEnterEvent): void
-proc ondragEnterEvent*(self: QCalendarWidget, slot: proc(super: QCalendarWidgetdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void) =
+type QCalendarWidgetdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
+proc ondragEnterEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgetdragEnterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCalendarWidgetdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QCalendarWidgetdragEnterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCalendarWidget_override_virtual_dragEnterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCalendarWidget_dragEnterEvent(self: ptr cQCalendarWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QCalendarWidget_dragEnterEvent ".} =
-  type Cb = proc(super: QCalendarWidgetdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragEnterEvent): auto =
-    callVirtualBase_dragEnterEvent(QCalendarWidget(h: self), event)
+  var nimfunc = cast[ptr QCalendarWidgetdragEnterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragMoveEvent(self: QCalendarWidget, event: gen_qevent.QDragMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QCalendarWidgetdragMoveEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qevent.QDragMoveEvent): void =
 
   fQCalendarWidget_virtualbase_dragMoveEvent(self.h, event.h)
 
-type QCalendarWidgetdragMoveEventBase* = proc(event: gen_qevent.QDragMoveEvent): void
-proc ondragMoveEvent*(self: QCalendarWidget, slot: proc(super: QCalendarWidgetdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void) =
+type QCalendarWidgetdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
+proc ondragMoveEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgetdragMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCalendarWidgetdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QCalendarWidgetdragMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCalendarWidget_override_virtual_dragMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCalendarWidget_dragMoveEvent(self: ptr cQCalendarWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QCalendarWidget_dragMoveEvent ".} =
-  type Cb = proc(super: QCalendarWidgetdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragMoveEvent): auto =
-    callVirtualBase_dragMoveEvent(QCalendarWidget(h: self), event)
+  var nimfunc = cast[ptr QCalendarWidgetdragMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragLeaveEvent(self: QCalendarWidget, event: gen_qevent.QDragLeaveEvent): void =
-
+  nimfunc[](slotval1)
+proc QCalendarWidgetdragLeaveEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qevent.QDragLeaveEvent): void =
 
   fQCalendarWidget_virtualbase_dragLeaveEvent(self.h, event.h)
 
-type QCalendarWidgetdragLeaveEventBase* = proc(event: gen_qevent.QDragLeaveEvent): void
-proc ondragLeaveEvent*(self: QCalendarWidget, slot: proc(super: QCalendarWidgetdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void) =
+type QCalendarWidgetdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
+proc ondragLeaveEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgetdragLeaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCalendarWidgetdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var tmp = new Cb
+  var tmp = new QCalendarWidgetdragLeaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCalendarWidget_override_virtual_dragLeaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCalendarWidget_dragLeaveEvent(self: ptr cQCalendarWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QCalendarWidget_dragLeaveEvent ".} =
-  type Cb = proc(super: QCalendarWidgetdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragLeaveEvent): auto =
-    callVirtualBase_dragLeaveEvent(QCalendarWidget(h: self), event)
+  var nimfunc = cast[ptr QCalendarWidgetdragLeaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragLeaveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dropEvent(self: QCalendarWidget, event: gen_qevent.QDropEvent): void =
-
+  nimfunc[](slotval1)
+proc QCalendarWidgetdropEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qevent.QDropEvent): void =
 
   fQCalendarWidget_virtualbase_dropEvent(self.h, event.h)
 
-type QCalendarWidgetdropEventBase* = proc(event: gen_qevent.QDropEvent): void
-proc ondropEvent*(self: QCalendarWidget, slot: proc(super: QCalendarWidgetdropEventBase, event: gen_qevent.QDropEvent): void) =
+type QCalendarWidgetdropEventProc* = proc(event: gen_qevent.QDropEvent): void
+proc ondropEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgetdropEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCalendarWidgetdropEventBase, event: gen_qevent.QDropEvent): void
-  var tmp = new Cb
+  var tmp = new QCalendarWidgetdropEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCalendarWidget_override_virtual_dropEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCalendarWidget_dropEvent(self: ptr cQCalendarWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QCalendarWidget_dropEvent ".} =
-  type Cb = proc(super: QCalendarWidgetdropEventBase, event: gen_qevent.QDropEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDropEvent): auto =
-    callVirtualBase_dropEvent(QCalendarWidget(h: self), event)
+  var nimfunc = cast[ptr QCalendarWidgetdropEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDropEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_showEvent(self: QCalendarWidget, event: gen_qevent.QShowEvent): void =
-
+  nimfunc[](slotval1)
+proc QCalendarWidgetshowEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qevent.QShowEvent): void =
 
   fQCalendarWidget_virtualbase_showEvent(self.h, event.h)
 
-type QCalendarWidgetshowEventBase* = proc(event: gen_qevent.QShowEvent): void
-proc onshowEvent*(self: QCalendarWidget, slot: proc(super: QCalendarWidgetshowEventBase, event: gen_qevent.QShowEvent): void) =
+type QCalendarWidgetshowEventProc* = proc(event: gen_qevent.QShowEvent): void
+proc onshowEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgetshowEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCalendarWidgetshowEventBase, event: gen_qevent.QShowEvent): void
-  var tmp = new Cb
+  var tmp = new QCalendarWidgetshowEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCalendarWidget_override_virtual_showEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCalendarWidget_showEvent(self: ptr cQCalendarWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QCalendarWidget_showEvent ".} =
-  type Cb = proc(super: QCalendarWidgetshowEventBase, event: gen_qevent.QShowEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QShowEvent): auto =
-    callVirtualBase_showEvent(QCalendarWidget(h: self), event)
+  var nimfunc = cast[ptr QCalendarWidgetshowEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QShowEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hideEvent(self: QCalendarWidget, event: gen_qevent.QHideEvent): void =
-
+  nimfunc[](slotval1)
+proc QCalendarWidgethideEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qevent.QHideEvent): void =
 
   fQCalendarWidget_virtualbase_hideEvent(self.h, event.h)
 
-type QCalendarWidgethideEventBase* = proc(event: gen_qevent.QHideEvent): void
-proc onhideEvent*(self: QCalendarWidget, slot: proc(super: QCalendarWidgethideEventBase, event: gen_qevent.QHideEvent): void) =
+type QCalendarWidgethideEventProc* = proc(event: gen_qevent.QHideEvent): void
+proc onhideEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgethideEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCalendarWidgethideEventBase, event: gen_qevent.QHideEvent): void
-  var tmp = new Cb
+  var tmp = new QCalendarWidgethideEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCalendarWidget_override_virtual_hideEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCalendarWidget_hideEvent(self: ptr cQCalendarWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QCalendarWidget_hideEvent ".} =
-  type Cb = proc(super: QCalendarWidgethideEventBase, event: gen_qevent.QHideEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QHideEvent): auto =
-    callVirtualBase_hideEvent(QCalendarWidget(h: self), event)
+  var nimfunc = cast[ptr QCalendarWidgethideEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QHideEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_nativeEvent(self: QCalendarWidget, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
+  nimfunc[](slotval1)
+proc QCalendarWidgetnativeEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
 
   fQCalendarWidget_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
-type QCalendarWidgetnativeEventBase* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-proc onnativeEvent*(self: QCalendarWidget, slot: proc(super: QCalendarWidgetnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool) =
+type QCalendarWidgetnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
+proc onnativeEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgetnativeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCalendarWidgetnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-  var tmp = new Cb
+  var tmp = new QCalendarWidgetnativeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCalendarWidget_override_virtual_nativeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCalendarWidget_nativeEvent(self: ptr cQCalendarWidget, slot: int, eventType: struct_miqt_string, message: pointer, resultVal: ptr clong): bool {.exportc: "miqt_exec_callback_QCalendarWidget_nativeEvent ".} =
-  type Cb = proc(super: QCalendarWidgetnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(eventType: seq[byte], message: pointer, resultVal: ptr clong): auto =
-    callVirtualBase_nativeEvent(QCalendarWidget(h: self), eventType, message, resultVal)
+  var nimfunc = cast[ptr QCalendarWidgetnativeEventProc](cast[pointer](slot))
   var veventType_bytearray = eventType
   var veventTypex_ret = @(toOpenArrayByte(veventType_bytearray.data, 0, int(veventType_bytearray.len)-1))
   c_free(veventType_bytearray.data)
@@ -1484,317 +1286,252 @@ proc miqt_exec_callback_QCalendarWidget_nativeEvent(self: ptr cQCalendarWidget, 
   let slotval3 = resultVal
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_changeEvent(self: QCalendarWidget, param1: gen_qcoreevent.QEvent): void =
-
+proc QCalendarWidgetchangeEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, param1: gen_qcoreevent.QEvent): void =
 
   fQCalendarWidget_virtualbase_changeEvent(self.h, param1.h)
 
-type QCalendarWidgetchangeEventBase* = proc(param1: gen_qcoreevent.QEvent): void
-proc onchangeEvent*(self: QCalendarWidget, slot: proc(super: QCalendarWidgetchangeEventBase, param1: gen_qcoreevent.QEvent): void) =
+type QCalendarWidgetchangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
+proc onchangeEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgetchangeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCalendarWidgetchangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QCalendarWidgetchangeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCalendarWidget_override_virtual_changeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCalendarWidget_changeEvent(self: ptr cQCalendarWidget, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QCalendarWidget_changeEvent ".} =
-  type Cb = proc(super: QCalendarWidgetchangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_changeEvent(QCalendarWidget(h: self), param1)
+  var nimfunc = cast[ptr QCalendarWidgetchangeEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_metric(self: QCalendarWidget, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint =
-
+  nimfunc[](slotval1)
+proc QCalendarWidgetmetric*(self: gen_qcalendarwidget_types.QCalendarWidget, param1: cint): cint =
 
   fQCalendarWidget_virtualbase_metric(self.h, cint(param1))
 
-type QCalendarWidgetmetricBase* = proc(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-proc onmetric*(self: QCalendarWidget, slot: proc(super: QCalendarWidgetmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint) =
+type QCalendarWidgetmetricProc* = proc(param1: cint): cint
+proc onmetric*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgetmetricProc) =
   # TODO check subclass
-  type Cb = proc(super: QCalendarWidgetmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var tmp = new Cb
+  var tmp = new QCalendarWidgetmetricProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCalendarWidget_override_virtual_metric(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCalendarWidget_metric(self: ptr cQCalendarWidget, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QCalendarWidget_metric ".} =
-  type Cb = proc(super: QCalendarWidgetmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): auto =
-    callVirtualBase_metric(QCalendarWidget(h: self), param1)
-  let slotval1 = gen_qpaintdevice.QPaintDevicePaintDeviceMetric(param1)
+  var nimfunc = cast[ptr QCalendarWidgetmetricProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_initPainter(self: QCalendarWidget, painter: gen_qpainter.QPainter): void =
-
+proc QCalendarWidgetinitPainter*(self: gen_qcalendarwidget_types.QCalendarWidget, painter: gen_qpainter.QPainter): void =
 
   fQCalendarWidget_virtualbase_initPainter(self.h, painter.h)
 
-type QCalendarWidgetinitPainterBase* = proc(painter: gen_qpainter.QPainter): void
-proc oninitPainter*(self: QCalendarWidget, slot: proc(super: QCalendarWidgetinitPainterBase, painter: gen_qpainter.QPainter): void) =
+type QCalendarWidgetinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
+proc oninitPainter*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgetinitPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QCalendarWidgetinitPainterBase, painter: gen_qpainter.QPainter): void
-  var tmp = new Cb
+  var tmp = new QCalendarWidgetinitPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCalendarWidget_override_virtual_initPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCalendarWidget_initPainter(self: ptr cQCalendarWidget, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_QCalendarWidget_initPainter ".} =
-  type Cb = proc(super: QCalendarWidgetinitPainterBase, painter: gen_qpainter.QPainter): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter): auto =
-    callVirtualBase_initPainter(QCalendarWidget(h: self), painter)
+  var nimfunc = cast[ptr QCalendarWidgetinitPainterProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_redirected(self: QCalendarWidget, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
+  nimfunc[](slotval1)
+proc QCalendarWidgetredirected*(self: gen_qcalendarwidget_types.QCalendarWidget, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
 
   gen_qpaintdevice.QPaintDevice(h: fQCalendarWidget_virtualbase_redirected(self.h, offset.h))
 
-type QCalendarWidgetredirectedBase* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-proc onredirected*(self: QCalendarWidget, slot: proc(super: QCalendarWidgetredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice) =
+type QCalendarWidgetredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
+proc onredirected*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgetredirectedProc) =
   # TODO check subclass
-  type Cb = proc(super: QCalendarWidgetredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var tmp = new Cb
+  var tmp = new QCalendarWidgetredirectedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCalendarWidget_override_virtual_redirected(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCalendarWidget_redirected(self: ptr cQCalendarWidget, slot: int, offset: pointer): pointer {.exportc: "miqt_exec_callback_QCalendarWidget_redirected ".} =
-  type Cb = proc(super: QCalendarWidgetredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(offset: gen_qpoint.QPoint): auto =
-    callVirtualBase_redirected(QCalendarWidget(h: self), offset)
+  var nimfunc = cast[ptr QCalendarWidgetredirectedProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: offset)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_sharedPainter(self: QCalendarWidget, ): gen_qpainter.QPainter =
-
+proc QCalendarWidgetsharedPainter*(self: gen_qcalendarwidget_types.QCalendarWidget, ): gen_qpainter.QPainter =
 
   gen_qpainter.QPainter(h: fQCalendarWidget_virtualbase_sharedPainter(self.h))
 
-type QCalendarWidgetsharedPainterBase* = proc(): gen_qpainter.QPainter
-proc onsharedPainter*(self: QCalendarWidget, slot: proc(super: QCalendarWidgetsharedPainterBase): gen_qpainter.QPainter) =
+type QCalendarWidgetsharedPainterProc* = proc(): gen_qpainter.QPainter
+proc onsharedPainter*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgetsharedPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QCalendarWidgetsharedPainterBase): gen_qpainter.QPainter
-  var tmp = new Cb
+  var tmp = new QCalendarWidgetsharedPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCalendarWidget_override_virtual_sharedPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCalendarWidget_sharedPainter(self: ptr cQCalendarWidget, slot: int): pointer {.exportc: "miqt_exec_callback_QCalendarWidget_sharedPainter ".} =
-  type Cb = proc(super: QCalendarWidgetsharedPainterBase): gen_qpainter.QPainter
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sharedPainter(QCalendarWidget(h: self), )
+  var nimfunc = cast[ptr QCalendarWidgetsharedPainterProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_inputMethodEvent(self: QCalendarWidget, param1: gen_qevent.QInputMethodEvent): void =
-
+proc QCalendarWidgetinputMethodEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, param1: gen_qevent.QInputMethodEvent): void =
 
   fQCalendarWidget_virtualbase_inputMethodEvent(self.h, param1.h)
 
-type QCalendarWidgetinputMethodEventBase* = proc(param1: gen_qevent.QInputMethodEvent): void
-proc oninputMethodEvent*(self: QCalendarWidget, slot: proc(super: QCalendarWidgetinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void) =
+type QCalendarWidgetinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
+proc oninputMethodEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgetinputMethodEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCalendarWidgetinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var tmp = new Cb
+  var tmp = new QCalendarWidgetinputMethodEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCalendarWidget_override_virtual_inputMethodEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCalendarWidget_inputMethodEvent(self: ptr cQCalendarWidget, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QCalendarWidget_inputMethodEvent ".} =
-  type Cb = proc(super: QCalendarWidgetinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QInputMethodEvent): auto =
-    callVirtualBase_inputMethodEvent(QCalendarWidget(h: self), param1)
+  var nimfunc = cast[ptr QCalendarWidgetinputMethodEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QInputMethodEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_inputMethodQuery(self: QCalendarWidget, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant =
-
+  nimfunc[](slotval1)
+proc QCalendarWidgetinputMethodQuery*(self: gen_qcalendarwidget_types.QCalendarWidget, param1: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQCalendarWidget_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
-type QCalendarWidgetinputMethodQueryBase* = proc(param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-proc oninputMethodQuery*(self: QCalendarWidget, slot: proc(super: QCalendarWidgetinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant) =
+type QCalendarWidgetinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
+proc oninputMethodQuery*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgetinputMethodQueryProc) =
   # TODO check subclass
-  type Cb = proc(super: QCalendarWidgetinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QCalendarWidgetinputMethodQueryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCalendarWidget_override_virtual_inputMethodQuery(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCalendarWidget_inputMethodQuery(self: ptr cQCalendarWidget, slot: int, param1: cint): pointer {.exportc: "miqt_exec_callback_QCalendarWidget_inputMethodQuery ".} =
-  type Cb = proc(super: QCalendarWidgetinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qnamespace.InputMethodQuery): auto =
-    callVirtualBase_inputMethodQuery(QCalendarWidget(h: self), param1)
-  let slotval1 = gen_qnamespace.InputMethodQuery(param1)
+  var nimfunc = cast[ptr QCalendarWidgetinputMethodQueryProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_focusNextPrevChild(self: QCalendarWidget, next: bool): bool =
-
+proc QCalendarWidgetfocusNextPrevChild*(self: gen_qcalendarwidget_types.QCalendarWidget, next: bool): bool =
 
   fQCalendarWidget_virtualbase_focusNextPrevChild(self.h, next)
 
-type QCalendarWidgetfocusNextPrevChildBase* = proc(next: bool): bool
-proc onfocusNextPrevChild*(self: QCalendarWidget, slot: proc(super: QCalendarWidgetfocusNextPrevChildBase, next: bool): bool) =
+type QCalendarWidgetfocusNextPrevChildProc* = proc(next: bool): bool
+proc onfocusNextPrevChild*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgetfocusNextPrevChildProc) =
   # TODO check subclass
-  type Cb = proc(super: QCalendarWidgetfocusNextPrevChildBase, next: bool): bool
-  var tmp = new Cb
+  var tmp = new QCalendarWidgetfocusNextPrevChildProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCalendarWidget_override_virtual_focusNextPrevChild(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCalendarWidget_focusNextPrevChild(self: ptr cQCalendarWidget, slot: int, next: bool): bool {.exportc: "miqt_exec_callback_QCalendarWidget_focusNextPrevChild ".} =
-  type Cb = proc(super: QCalendarWidgetfocusNextPrevChildBase, next: bool): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(next: bool): auto =
-    callVirtualBase_focusNextPrevChild(QCalendarWidget(h: self), next)
+  var nimfunc = cast[ptr QCalendarWidgetfocusNextPrevChildProc](cast[pointer](slot))
   let slotval1 = next
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QCalendarWidget, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QCalendarWidgettimerEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qcoreevent.QTimerEvent): void =
 
   fQCalendarWidget_virtualbase_timerEvent(self.h, event.h)
 
-type QCalendarWidgettimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QCalendarWidget, slot: proc(super: QCalendarWidgettimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QCalendarWidgettimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgettimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCalendarWidgettimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QCalendarWidgettimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCalendarWidget_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCalendarWidget_timerEvent(self: ptr cQCalendarWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QCalendarWidget_timerEvent ".} =
-  type Cb = proc(super: QCalendarWidgettimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QCalendarWidget(h: self), event)
+  var nimfunc = cast[ptr QCalendarWidgettimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QCalendarWidget, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QCalendarWidgetchildEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qcoreevent.QChildEvent): void =
 
   fQCalendarWidget_virtualbase_childEvent(self.h, event.h)
 
-type QCalendarWidgetchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QCalendarWidget, slot: proc(super: QCalendarWidgetchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QCalendarWidgetchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgetchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCalendarWidgetchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QCalendarWidgetchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCalendarWidget_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCalendarWidget_childEvent(self: ptr cQCalendarWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QCalendarWidget_childEvent ".} =
-  type Cb = proc(super: QCalendarWidgetchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QCalendarWidget(h: self), event)
+  var nimfunc = cast[ptr QCalendarWidgetchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QCalendarWidget, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QCalendarWidgetcustomEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qcoreevent.QEvent): void =
 
   fQCalendarWidget_virtualbase_customEvent(self.h, event.h)
 
-type QCalendarWidgetcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QCalendarWidget, slot: proc(super: QCalendarWidgetcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QCalendarWidgetcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgetcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QCalendarWidgetcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QCalendarWidgetcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCalendarWidget_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCalendarWidget_customEvent(self: ptr cQCalendarWidget, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QCalendarWidget_customEvent ".} =
-  type Cb = proc(super: QCalendarWidgetcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QCalendarWidget(h: self), event)
+  var nimfunc = cast[ptr QCalendarWidgetcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QCalendarWidget, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QCalendarWidgetconnectNotify*(self: gen_qcalendarwidget_types.QCalendarWidget, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQCalendarWidget_virtualbase_connectNotify(self.h, signal.h)
 
-type QCalendarWidgetconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QCalendarWidget, slot: proc(super: QCalendarWidgetconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QCalendarWidgetconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgetconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QCalendarWidgetconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QCalendarWidgetconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCalendarWidget_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCalendarWidget_connectNotify(self: ptr cQCalendarWidget, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QCalendarWidget_connectNotify ".} =
-  type Cb = proc(super: QCalendarWidgetconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QCalendarWidget(h: self), signal)
+  var nimfunc = cast[ptr QCalendarWidgetconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QCalendarWidget, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QCalendarWidgetdisconnectNotify*(self: gen_qcalendarwidget_types.QCalendarWidget, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQCalendarWidget_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QCalendarWidgetdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QCalendarWidget, slot: proc(super: QCalendarWidgetdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QCalendarWidgetdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgetdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QCalendarWidgetdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QCalendarWidgetdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQCalendarWidget_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QCalendarWidget_disconnectNotify(self: ptr cQCalendarWidget, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QCalendarWidget_disconnectNotify ".} =
-  type Cb = proc(super: QCalendarWidgetdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QCalendarWidget(h: self), signal)
+  var nimfunc = cast[ptr QCalendarWidgetdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QCalendarWidget): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qcalendarwidget_types.QCalendarWidget): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQCalendarWidget_staticMetaObject())
-proc delete*(self: QCalendarWidget) =
+proc delete*(self: gen_qcalendarwidget_types.QCalendarWidget) =
   fcQCalendarWidget_delete(self.h)

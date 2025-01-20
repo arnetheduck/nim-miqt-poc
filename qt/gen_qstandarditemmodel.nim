@@ -34,11 +34,9 @@ const cflags = gorge("pkg-config -cflags Qt5Widgets")
 {.compile("gen_qstandarditemmodel.cpp", cflags).}
 
 
-type QStandardItemItemType* = cint
-const
-  QStandardItemType* = 0
-  QStandardItemUserType* = 1000
-
+type QStandardItemItemTypeEnum* = distinct cint
+template Type*(_: type QStandardItemItemTypeEnum): untyped = 0
+template UserType*(_: type QStandardItemItemTypeEnum): untyped = 1000
 
 
 import gen_qstandarditemmodel_types
@@ -53,7 +51,6 @@ import
   gen_qicon,
   gen_qmetaobject,
   gen_qmimedata,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qsize,
@@ -68,7 +65,6 @@ export
   gen_qicon,
   gen_qmetaobject,
   gen_qmimedata,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qsize,
@@ -355,290 +351,290 @@ proc fcQStandardItemModel_staticMetaObject(): pointer {.importc: "QStandardItemM
 proc fcQStandardItemModel_delete(self: pointer) {.importc: "QStandardItemModel_delete".}
 
 
-func init*(T: type QStandardItem, h: ptr cQStandardItem): QStandardItem =
+func init*(T: type gen_qstandarditemmodel_types.QStandardItem, h: ptr cQStandardItem): gen_qstandarditemmodel_types.QStandardItem =
   T(h: h)
-proc create*(T: type QStandardItem, ): QStandardItem =
+proc create*(T: type gen_qstandarditemmodel_types.QStandardItem, ): gen_qstandarditemmodel_types.QStandardItem =
 
-  QStandardItem.init(fcQStandardItem_new())
-proc create*(T: type QStandardItem, text: string): QStandardItem =
+  gen_qstandarditemmodel_types.QStandardItem.init(fcQStandardItem_new())
+proc create*(T: type gen_qstandarditemmodel_types.QStandardItem, text: string): gen_qstandarditemmodel_types.QStandardItem =
 
-  QStandardItem.init(fcQStandardItem_new2(struct_miqt_string(data: text, len: csize_t(len(text)))))
-proc create*(T: type QStandardItem, icon: gen_qicon.QIcon, text: string): QStandardItem =
+  gen_qstandarditemmodel_types.QStandardItem.init(fcQStandardItem_new2(struct_miqt_string(data: text, len: csize_t(len(text)))))
+proc create*(T: type gen_qstandarditemmodel_types.QStandardItem, icon: gen_qicon.QIcon, text: string): gen_qstandarditemmodel_types.QStandardItem =
 
-  QStandardItem.init(fcQStandardItem_new3(icon.h, struct_miqt_string(data: text, len: csize_t(len(text)))))
-proc create*(T: type QStandardItem, rows: cint): QStandardItem =
+  gen_qstandarditemmodel_types.QStandardItem.init(fcQStandardItem_new3(icon.h, struct_miqt_string(data: text, len: csize_t(len(text)))))
+proc create*(T: type gen_qstandarditemmodel_types.QStandardItem, rows: cint): gen_qstandarditemmodel_types.QStandardItem =
 
-  QStandardItem.init(fcQStandardItem_new4(rows))
-proc create*(T: type QStandardItem, rows: cint, columns: cint): QStandardItem =
+  gen_qstandarditemmodel_types.QStandardItem.init(fcQStandardItem_new4(rows))
+proc create*(T: type gen_qstandarditemmodel_types.QStandardItem, rows: cint, columns: cint): gen_qstandarditemmodel_types.QStandardItem =
 
-  QStandardItem.init(fcQStandardItem_new5(rows, columns))
-proc data*(self: QStandardItem, role: cint): gen_qvariant.QVariant =
+  gen_qstandarditemmodel_types.QStandardItem.init(fcQStandardItem_new5(rows, columns))
+proc data*(self: gen_qstandarditemmodel_types.QStandardItem, role: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fcQStandardItem_data(self.h, role))
 
-proc setData*(self: QStandardItem, value: gen_qvariant.QVariant, role: cint): void =
+proc setData*(self: gen_qstandarditemmodel_types.QStandardItem, value: gen_qvariant.QVariant, role: cint): void =
 
   fcQStandardItem_setData(self.h, value.h, role)
 
-proc clearData*(self: QStandardItem, ): void =
+proc clearData*(self: gen_qstandarditemmodel_types.QStandardItem, ): void =
 
   fcQStandardItem_clearData(self.h)
 
-proc text*(self: QStandardItem, ): string =
+proc text*(self: gen_qstandarditemmodel_types.QStandardItem, ): string =
 
   let v_ms = fcQStandardItem_text(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setText*(self: QStandardItem, text: string): void =
+proc setText*(self: gen_qstandarditemmodel_types.QStandardItem, text: string): void =
 
   fcQStandardItem_setText(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
-proc icon*(self: QStandardItem, ): gen_qicon.QIcon =
+proc icon*(self: gen_qstandarditemmodel_types.QStandardItem, ): gen_qicon.QIcon =
 
   gen_qicon.QIcon(h: fcQStandardItem_icon(self.h))
 
-proc setIcon*(self: QStandardItem, icon: gen_qicon.QIcon): void =
+proc setIcon*(self: gen_qstandarditemmodel_types.QStandardItem, icon: gen_qicon.QIcon): void =
 
   fcQStandardItem_setIcon(self.h, icon.h)
 
-proc toolTip*(self: QStandardItem, ): string =
+proc toolTip*(self: gen_qstandarditemmodel_types.QStandardItem, ): string =
 
   let v_ms = fcQStandardItem_toolTip(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setToolTip*(self: QStandardItem, toolTip: string): void =
+proc setToolTip*(self: gen_qstandarditemmodel_types.QStandardItem, toolTip: string): void =
 
   fcQStandardItem_setToolTip(self.h, struct_miqt_string(data: toolTip, len: csize_t(len(toolTip))))
 
-proc statusTip*(self: QStandardItem, ): string =
+proc statusTip*(self: gen_qstandarditemmodel_types.QStandardItem, ): string =
 
   let v_ms = fcQStandardItem_statusTip(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setStatusTip*(self: QStandardItem, statusTip: string): void =
+proc setStatusTip*(self: gen_qstandarditemmodel_types.QStandardItem, statusTip: string): void =
 
   fcQStandardItem_setStatusTip(self.h, struct_miqt_string(data: statusTip, len: csize_t(len(statusTip))))
 
-proc whatsThis*(self: QStandardItem, ): string =
+proc whatsThis*(self: gen_qstandarditemmodel_types.QStandardItem, ): string =
 
   let v_ms = fcQStandardItem_whatsThis(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setWhatsThis*(self: QStandardItem, whatsThis: string): void =
+proc setWhatsThis*(self: gen_qstandarditemmodel_types.QStandardItem, whatsThis: string): void =
 
   fcQStandardItem_setWhatsThis(self.h, struct_miqt_string(data: whatsThis, len: csize_t(len(whatsThis))))
 
-proc sizeHint*(self: QStandardItem, ): gen_qsize.QSize =
+proc sizeHint*(self: gen_qstandarditemmodel_types.QStandardItem, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQStandardItem_sizeHint(self.h))
 
-proc setSizeHint*(self: QStandardItem, sizeHint: gen_qsize.QSize): void =
+proc setSizeHint*(self: gen_qstandarditemmodel_types.QStandardItem, sizeHint: gen_qsize.QSize): void =
 
   fcQStandardItem_setSizeHint(self.h, sizeHint.h)
 
-proc font*(self: QStandardItem, ): gen_qfont.QFont =
+proc font*(self: gen_qstandarditemmodel_types.QStandardItem, ): gen_qfont.QFont =
 
   gen_qfont.QFont(h: fcQStandardItem_font(self.h))
 
-proc setFont*(self: QStandardItem, font: gen_qfont.QFont): void =
+proc setFont*(self: gen_qstandarditemmodel_types.QStandardItem, font: gen_qfont.QFont): void =
 
   fcQStandardItem_setFont(self.h, font.h)
 
-proc textAlignment*(self: QStandardItem, ): gen_qnamespace.AlignmentFlag =
+proc textAlignment*(self: gen_qstandarditemmodel_types.QStandardItem, ): cint =
 
-  gen_qnamespace.AlignmentFlag(fcQStandardItem_textAlignment(self.h))
+  cint(fcQStandardItem_textAlignment(self.h))
 
-proc setTextAlignment*(self: QStandardItem, textAlignment: gen_qnamespace.AlignmentFlag): void =
+proc setTextAlignment*(self: gen_qstandarditemmodel_types.QStandardItem, textAlignment: cint): void =
 
   fcQStandardItem_setTextAlignment(self.h, cint(textAlignment))
 
-proc background*(self: QStandardItem, ): gen_qbrush.QBrush =
+proc background*(self: gen_qstandarditemmodel_types.QStandardItem, ): gen_qbrush.QBrush =
 
   gen_qbrush.QBrush(h: fcQStandardItem_background(self.h))
 
-proc setBackground*(self: QStandardItem, brush: gen_qbrush.QBrush): void =
+proc setBackground*(self: gen_qstandarditemmodel_types.QStandardItem, brush: gen_qbrush.QBrush): void =
 
   fcQStandardItem_setBackground(self.h, brush.h)
 
-proc foreground*(self: QStandardItem, ): gen_qbrush.QBrush =
+proc foreground*(self: gen_qstandarditemmodel_types.QStandardItem, ): gen_qbrush.QBrush =
 
   gen_qbrush.QBrush(h: fcQStandardItem_foreground(self.h))
 
-proc setForeground*(self: QStandardItem, brush: gen_qbrush.QBrush): void =
+proc setForeground*(self: gen_qstandarditemmodel_types.QStandardItem, brush: gen_qbrush.QBrush): void =
 
   fcQStandardItem_setForeground(self.h, brush.h)
 
-proc checkState*(self: QStandardItem, ): gen_qnamespace.CheckState =
+proc checkState*(self: gen_qstandarditemmodel_types.QStandardItem, ): cint =
 
-  gen_qnamespace.CheckState(fcQStandardItem_checkState(self.h))
+  cint(fcQStandardItem_checkState(self.h))
 
-proc setCheckState*(self: QStandardItem, checkState: gen_qnamespace.CheckState): void =
+proc setCheckState*(self: gen_qstandarditemmodel_types.QStandardItem, checkState: cint): void =
 
   fcQStandardItem_setCheckState(self.h, cint(checkState))
 
-proc accessibleText*(self: QStandardItem, ): string =
+proc accessibleText*(self: gen_qstandarditemmodel_types.QStandardItem, ): string =
 
   let v_ms = fcQStandardItem_accessibleText(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setAccessibleText*(self: QStandardItem, accessibleText: string): void =
+proc setAccessibleText*(self: gen_qstandarditemmodel_types.QStandardItem, accessibleText: string): void =
 
   fcQStandardItem_setAccessibleText(self.h, struct_miqt_string(data: accessibleText, len: csize_t(len(accessibleText))))
 
-proc accessibleDescription*(self: QStandardItem, ): string =
+proc accessibleDescription*(self: gen_qstandarditemmodel_types.QStandardItem, ): string =
 
   let v_ms = fcQStandardItem_accessibleDescription(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setAccessibleDescription*(self: QStandardItem, accessibleDescription: string): void =
+proc setAccessibleDescription*(self: gen_qstandarditemmodel_types.QStandardItem, accessibleDescription: string): void =
 
   fcQStandardItem_setAccessibleDescription(self.h, struct_miqt_string(data: accessibleDescription, len: csize_t(len(accessibleDescription))))
 
-proc flags*(self: QStandardItem, ): gen_qnamespace.ItemFlag =
+proc flags*(self: gen_qstandarditemmodel_types.QStandardItem, ): cint =
 
-  gen_qnamespace.ItemFlag(fcQStandardItem_flags(self.h))
+  cint(fcQStandardItem_flags(self.h))
 
-proc setFlags*(self: QStandardItem, flags: gen_qnamespace.ItemFlag): void =
+proc setFlags*(self: gen_qstandarditemmodel_types.QStandardItem, flags: cint): void =
 
   fcQStandardItem_setFlags(self.h, cint(flags))
 
-proc isEnabled*(self: QStandardItem, ): bool =
+proc isEnabled*(self: gen_qstandarditemmodel_types.QStandardItem, ): bool =
 
   fcQStandardItem_isEnabled(self.h)
 
-proc setEnabled*(self: QStandardItem, enabled: bool): void =
+proc setEnabled*(self: gen_qstandarditemmodel_types.QStandardItem, enabled: bool): void =
 
   fcQStandardItem_setEnabled(self.h, enabled)
 
-proc isEditable*(self: QStandardItem, ): bool =
+proc isEditable*(self: gen_qstandarditemmodel_types.QStandardItem, ): bool =
 
   fcQStandardItem_isEditable(self.h)
 
-proc setEditable*(self: QStandardItem, editable: bool): void =
+proc setEditable*(self: gen_qstandarditemmodel_types.QStandardItem, editable: bool): void =
 
   fcQStandardItem_setEditable(self.h, editable)
 
-proc isSelectable*(self: QStandardItem, ): bool =
+proc isSelectable*(self: gen_qstandarditemmodel_types.QStandardItem, ): bool =
 
   fcQStandardItem_isSelectable(self.h)
 
-proc setSelectable*(self: QStandardItem, selectable: bool): void =
+proc setSelectable*(self: gen_qstandarditemmodel_types.QStandardItem, selectable: bool): void =
 
   fcQStandardItem_setSelectable(self.h, selectable)
 
-proc isCheckable*(self: QStandardItem, ): bool =
+proc isCheckable*(self: gen_qstandarditemmodel_types.QStandardItem, ): bool =
 
   fcQStandardItem_isCheckable(self.h)
 
-proc setCheckable*(self: QStandardItem, checkable: bool): void =
+proc setCheckable*(self: gen_qstandarditemmodel_types.QStandardItem, checkable: bool): void =
 
   fcQStandardItem_setCheckable(self.h, checkable)
 
-proc isAutoTristate*(self: QStandardItem, ): bool =
+proc isAutoTristate*(self: gen_qstandarditemmodel_types.QStandardItem, ): bool =
 
   fcQStandardItem_isAutoTristate(self.h)
 
-proc setAutoTristate*(self: QStandardItem, tristate: bool): void =
+proc setAutoTristate*(self: gen_qstandarditemmodel_types.QStandardItem, tristate: bool): void =
 
   fcQStandardItem_setAutoTristate(self.h, tristate)
 
-proc isUserTristate*(self: QStandardItem, ): bool =
+proc isUserTristate*(self: gen_qstandarditemmodel_types.QStandardItem, ): bool =
 
   fcQStandardItem_isUserTristate(self.h)
 
-proc setUserTristate*(self: QStandardItem, tristate: bool): void =
+proc setUserTristate*(self: gen_qstandarditemmodel_types.QStandardItem, tristate: bool): void =
 
   fcQStandardItem_setUserTristate(self.h, tristate)
 
-proc isTristate*(self: QStandardItem, ): bool =
+proc isTristate*(self: gen_qstandarditemmodel_types.QStandardItem, ): bool =
 
   fcQStandardItem_isTristate(self.h)
 
-proc setTristate*(self: QStandardItem, tristate: bool): void =
+proc setTristate*(self: gen_qstandarditemmodel_types.QStandardItem, tristate: bool): void =
 
   fcQStandardItem_setTristate(self.h, tristate)
 
-proc isDragEnabled*(self: QStandardItem, ): bool =
+proc isDragEnabled*(self: gen_qstandarditemmodel_types.QStandardItem, ): bool =
 
   fcQStandardItem_isDragEnabled(self.h)
 
-proc setDragEnabled*(self: QStandardItem, dragEnabled: bool): void =
+proc setDragEnabled*(self: gen_qstandarditemmodel_types.QStandardItem, dragEnabled: bool): void =
 
   fcQStandardItem_setDragEnabled(self.h, dragEnabled)
 
-proc isDropEnabled*(self: QStandardItem, ): bool =
+proc isDropEnabled*(self: gen_qstandarditemmodel_types.QStandardItem, ): bool =
 
   fcQStandardItem_isDropEnabled(self.h)
 
-proc setDropEnabled*(self: QStandardItem, dropEnabled: bool): void =
+proc setDropEnabled*(self: gen_qstandarditemmodel_types.QStandardItem, dropEnabled: bool): void =
 
   fcQStandardItem_setDropEnabled(self.h, dropEnabled)
 
-proc parent*(self: QStandardItem, ): QStandardItem =
+proc parent*(self: gen_qstandarditemmodel_types.QStandardItem, ): gen_qstandarditemmodel_types.QStandardItem =
 
-  QStandardItem(h: fcQStandardItem_parent(self.h))
+  gen_qstandarditemmodel_types.QStandardItem(h: fcQStandardItem_parent(self.h))
 
-proc row*(self: QStandardItem, ): cint =
+proc row*(self: gen_qstandarditemmodel_types.QStandardItem, ): cint =
 
   fcQStandardItem_row(self.h)
 
-proc column*(self: QStandardItem, ): cint =
+proc column*(self: gen_qstandarditemmodel_types.QStandardItem, ): cint =
 
   fcQStandardItem_column(self.h)
 
-proc index*(self: QStandardItem, ): gen_qabstractitemmodel.QModelIndex =
+proc index*(self: gen_qstandarditemmodel_types.QStandardItem, ): gen_qabstractitemmodel.QModelIndex =
 
   gen_qabstractitemmodel.QModelIndex(h: fcQStandardItem_index(self.h))
 
-proc model*(self: QStandardItem, ): QStandardItemModel =
+proc model*(self: gen_qstandarditemmodel_types.QStandardItem, ): gen_qstandarditemmodel_types.QStandardItemModel =
 
-  QStandardItemModel(h: fcQStandardItem_model(self.h))
+  gen_qstandarditemmodel_types.QStandardItemModel(h: fcQStandardItem_model(self.h))
 
-proc rowCount*(self: QStandardItem, ): cint =
+proc rowCount*(self: gen_qstandarditemmodel_types.QStandardItem, ): cint =
 
   fcQStandardItem_rowCount(self.h)
 
-proc setRowCount*(self: QStandardItem, rows: cint): void =
+proc setRowCount*(self: gen_qstandarditemmodel_types.QStandardItem, rows: cint): void =
 
   fcQStandardItem_setRowCount(self.h, rows)
 
-proc columnCount*(self: QStandardItem, ): cint =
+proc columnCount*(self: gen_qstandarditemmodel_types.QStandardItem, ): cint =
 
   fcQStandardItem_columnCount(self.h)
 
-proc setColumnCount*(self: QStandardItem, columns: cint): void =
+proc setColumnCount*(self: gen_qstandarditemmodel_types.QStandardItem, columns: cint): void =
 
   fcQStandardItem_setColumnCount(self.h, columns)
 
-proc hasChildren*(self: QStandardItem, ): bool =
+proc hasChildren*(self: gen_qstandarditemmodel_types.QStandardItem, ): bool =
 
   fcQStandardItem_hasChildren(self.h)
 
-proc child*(self: QStandardItem, row: cint): QStandardItem =
+proc child*(self: gen_qstandarditemmodel_types.QStandardItem, row: cint): gen_qstandarditemmodel_types.QStandardItem =
 
-  QStandardItem(h: fcQStandardItem_child(self.h, row))
+  gen_qstandarditemmodel_types.QStandardItem(h: fcQStandardItem_child(self.h, row))
 
-proc setChild*(self: QStandardItem, row: cint, column: cint, item: QStandardItem): void =
+proc setChild*(self: gen_qstandarditemmodel_types.QStandardItem, row: cint, column: cint, item: gen_qstandarditemmodel_types.QStandardItem): void =
 
   fcQStandardItem_setChild(self.h, row, column, item.h)
 
-proc setChild2*(self: QStandardItem, row: cint, item: QStandardItem): void =
+proc setChild2*(self: gen_qstandarditemmodel_types.QStandardItem, row: cint, item: gen_qstandarditemmodel_types.QStandardItem): void =
 
   fcQStandardItem_setChild2(self.h, row, item.h)
 
-proc insertRow*(self: QStandardItem, row: cint, items: seq[QStandardItem]): void =
+proc insertRow*(self: gen_qstandarditemmodel_types.QStandardItem, row: cint, items: seq[gen_qstandarditemmodel_types.QStandardItem]): void =
 
   var items_CArray = newSeq[pointer](len(items))
   for i in 0..<len(items):
@@ -646,7 +642,7 @@ proc insertRow*(self: QStandardItem, row: cint, items: seq[QStandardItem]): void
 
   fcQStandardItem_insertRow(self.h, row, struct_miqt_array(len: csize_t(len(items)), data: if len(items) == 0: nil else: addr(items_CArray[0])))
 
-proc insertColumn*(self: QStandardItem, column: cint, items: seq[QStandardItem]): void =
+proc insertColumn*(self: gen_qstandarditemmodel_types.QStandardItem, column: cint, items: seq[gen_qstandarditemmodel_types.QStandardItem]): void =
 
   var items_CArray = newSeq[pointer](len(items))
   for i in 0..<len(items):
@@ -654,7 +650,7 @@ proc insertColumn*(self: QStandardItem, column: cint, items: seq[QStandardItem])
 
   fcQStandardItem_insertColumn(self.h, column, struct_miqt_array(len: csize_t(len(items)), data: if len(items) == 0: nil else: addr(items_CArray[0])))
 
-proc insertRows*(self: QStandardItem, row: cint, items: seq[QStandardItem]): void =
+proc insertRows*(self: gen_qstandarditemmodel_types.QStandardItem, row: cint, items: seq[gen_qstandarditemmodel_types.QStandardItem]): void =
 
   var items_CArray = newSeq[pointer](len(items))
   for i in 0..<len(items):
@@ -662,31 +658,31 @@ proc insertRows*(self: QStandardItem, row: cint, items: seq[QStandardItem]): voi
 
   fcQStandardItem_insertRows(self.h, row, struct_miqt_array(len: csize_t(len(items)), data: if len(items) == 0: nil else: addr(items_CArray[0])))
 
-proc insertRows2*(self: QStandardItem, row: cint, count: cint): void =
+proc insertRows2*(self: gen_qstandarditemmodel_types.QStandardItem, row: cint, count: cint): void =
 
   fcQStandardItem_insertRows2(self.h, row, count)
 
-proc insertColumns*(self: QStandardItem, column: cint, count: cint): void =
+proc insertColumns*(self: gen_qstandarditemmodel_types.QStandardItem, column: cint, count: cint): void =
 
   fcQStandardItem_insertColumns(self.h, column, count)
 
-proc removeRow*(self: QStandardItem, row: cint): void =
+proc removeRow*(self: gen_qstandarditemmodel_types.QStandardItem, row: cint): void =
 
   fcQStandardItem_removeRow(self.h, row)
 
-proc removeColumn*(self: QStandardItem, column: cint): void =
+proc removeColumn*(self: gen_qstandarditemmodel_types.QStandardItem, column: cint): void =
 
   fcQStandardItem_removeColumn(self.h, column)
 
-proc removeRows*(self: QStandardItem, row: cint, count: cint): void =
+proc removeRows*(self: gen_qstandarditemmodel_types.QStandardItem, row: cint, count: cint): void =
 
   fcQStandardItem_removeRows(self.h, row, count)
 
-proc removeColumns*(self: QStandardItem, column: cint, count: cint): void =
+proc removeColumns*(self: gen_qstandarditemmodel_types.QStandardItem, column: cint, count: cint): void =
 
   fcQStandardItem_removeColumns(self.h, column, count)
 
-proc appendRow*(self: QStandardItem, items: seq[QStandardItem]): void =
+proc appendRow*(self: gen_qstandarditemmodel_types.QStandardItem, items: seq[gen_qstandarditemmodel_types.QStandardItem]): void =
 
   var items_CArray = newSeq[pointer](len(items))
   for i in 0..<len(items):
@@ -694,7 +690,7 @@ proc appendRow*(self: QStandardItem, items: seq[QStandardItem]): void =
 
   fcQStandardItem_appendRow(self.h, struct_miqt_array(len: csize_t(len(items)), data: if len(items) == 0: nil else: addr(items_CArray[0])))
 
-proc appendRows*(self: QStandardItem, items: seq[QStandardItem]): void =
+proc appendRows*(self: gen_qstandarditemmodel_types.QStandardItem, items: seq[gen_qstandarditemmodel_types.QStandardItem]): void =
 
   var items_CArray = newSeq[pointer](len(items))
   for i in 0..<len(items):
@@ -702,7 +698,7 @@ proc appendRows*(self: QStandardItem, items: seq[QStandardItem]): void =
 
   fcQStandardItem_appendRows(self.h, struct_miqt_array(len: csize_t(len(items)), data: if len(items) == 0: nil else: addr(items_CArray[0])))
 
-proc appendColumn*(self: QStandardItem, items: seq[QStandardItem]): void =
+proc appendColumn*(self: gen_qstandarditemmodel_types.QStandardItem, items: seq[gen_qstandarditemmodel_types.QStandardItem]): void =
 
   var items_CArray = newSeq[pointer](len(items))
   for i in 0..<len(items):
@@ -710,283 +706,248 @@ proc appendColumn*(self: QStandardItem, items: seq[QStandardItem]): void =
 
   fcQStandardItem_appendColumn(self.h, struct_miqt_array(len: csize_t(len(items)), data: if len(items) == 0: nil else: addr(items_CArray[0])))
 
-proc insertRow2*(self: QStandardItem, row: cint, item: QStandardItem): void =
+proc insertRow2*(self: gen_qstandarditemmodel_types.QStandardItem, row: cint, item: gen_qstandarditemmodel_types.QStandardItem): void =
 
   fcQStandardItem_insertRow2(self.h, row, item.h)
 
-proc appendRowWithItem*(self: QStandardItem, item: QStandardItem): void =
+proc appendRowWithItem*(self: gen_qstandarditemmodel_types.QStandardItem, item: gen_qstandarditemmodel_types.QStandardItem): void =
 
   fcQStandardItem_appendRowWithItem(self.h, item.h)
 
-proc takeChild*(self: QStandardItem, row: cint): QStandardItem =
+proc takeChild*(self: gen_qstandarditemmodel_types.QStandardItem, row: cint): gen_qstandarditemmodel_types.QStandardItem =
 
-  QStandardItem(h: fcQStandardItem_takeChild(self.h, row))
+  gen_qstandarditemmodel_types.QStandardItem(h: fcQStandardItem_takeChild(self.h, row))
 
-proc takeRow*(self: QStandardItem, row: cint): seq[QStandardItem] =
+proc takeRow*(self: gen_qstandarditemmodel_types.QStandardItem, row: cint): seq[gen_qstandarditemmodel_types.QStandardItem] =
 
   var v_ma = fcQStandardItem_takeRow(self.h, row)
-  var vx_ret = newSeq[QStandardItem](int(v_ma.len))
+  var vx_ret = newSeq[gen_qstandarditemmodel_types.QStandardItem](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
-    vx_ret[i] = QStandardItem(h: v_outCast[i])
+    vx_ret[i] = gen_qstandarditemmodel_types.QStandardItem(h: v_outCast[i])
   vx_ret
 
-proc takeColumn*(self: QStandardItem, column: cint): seq[QStandardItem] =
+proc takeColumn*(self: gen_qstandarditemmodel_types.QStandardItem, column: cint): seq[gen_qstandarditemmodel_types.QStandardItem] =
 
   var v_ma = fcQStandardItem_takeColumn(self.h, column)
-  var vx_ret = newSeq[QStandardItem](int(v_ma.len))
+  var vx_ret = newSeq[gen_qstandarditemmodel_types.QStandardItem](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
-    vx_ret[i] = QStandardItem(h: v_outCast[i])
+    vx_ret[i] = gen_qstandarditemmodel_types.QStandardItem(h: v_outCast[i])
   vx_ret
 
-proc sortChildren*(self: QStandardItem, column: cint): void =
+proc sortChildren*(self: gen_qstandarditemmodel_types.QStandardItem, column: cint): void =
 
   fcQStandardItem_sortChildren(self.h, column)
 
-proc clone*(self: QStandardItem, ): QStandardItem =
+proc clone*(self: gen_qstandarditemmodel_types.QStandardItem, ): gen_qstandarditemmodel_types.QStandardItem =
 
-  QStandardItem(h: fcQStandardItem_clone(self.h))
+  gen_qstandarditemmodel_types.QStandardItem(h: fcQStandardItem_clone(self.h))
 
-proc typeX*(self: QStandardItem, ): cint =
+proc typeX*(self: gen_qstandarditemmodel_types.QStandardItem, ): cint =
 
   fcQStandardItem_typeX(self.h)
 
-proc read*(self: QStandardItem, inVal: gen_qdatastream.QDataStream): void =
+proc read*(self: gen_qstandarditemmodel_types.QStandardItem, inVal: gen_qdatastream.QDataStream): void =
 
   fcQStandardItem_read(self.h, inVal.h)
 
-proc write*(self: QStandardItem, outVal: gen_qdatastream.QDataStream): void =
+proc write*(self: gen_qstandarditemmodel_types.QStandardItem, outVal: gen_qdatastream.QDataStream): void =
 
   fcQStandardItem_write(self.h, outVal.h)
 
-proc operatorLesser*(self: QStandardItem, other: QStandardItem): bool =
+proc operatorLesser*(self: gen_qstandarditemmodel_types.QStandardItem, other: gen_qstandarditemmodel_types.QStandardItem): bool =
 
   fcQStandardItem_operatorLesser(self.h, other.h)
 
-proc child2*(self: QStandardItem, row: cint, column: cint): QStandardItem =
+proc child2*(self: gen_qstandarditemmodel_types.QStandardItem, row: cint, column: cint): gen_qstandarditemmodel_types.QStandardItem =
 
-  QStandardItem(h: fcQStandardItem_child2(self.h, row, column))
+  gen_qstandarditemmodel_types.QStandardItem(h: fcQStandardItem_child2(self.h, row, column))
 
-proc takeChild2*(self: QStandardItem, row: cint, column: cint): QStandardItem =
+proc takeChild2*(self: gen_qstandarditemmodel_types.QStandardItem, row: cint, column: cint): gen_qstandarditemmodel_types.QStandardItem =
 
-  QStandardItem(h: fcQStandardItem_takeChild2(self.h, row, column))
+  gen_qstandarditemmodel_types.QStandardItem(h: fcQStandardItem_takeChild2(self.h, row, column))
 
-proc sortChildren2*(self: QStandardItem, column: cint, order: gen_qnamespace.SortOrder): void =
+proc sortChildren2*(self: gen_qstandarditemmodel_types.QStandardItem, column: cint, order: cint): void =
 
   fcQStandardItem_sortChildren2(self.h, column, cint(order))
 
-proc callVirtualBase_data(self: QStandardItem, role: cint): gen_qvariant.QVariant =
-
+proc QStandardItemdata*(self: gen_qstandarditemmodel_types.QStandardItem, role: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQStandardItem_virtualbase_data(self.h, role))
 
-type QStandardItemdataBase* = proc(role: cint): gen_qvariant.QVariant
-proc ondata*(self: QStandardItem, slot: proc(super: QStandardItemdataBase, role: cint): gen_qvariant.QVariant) =
+type QStandardItemdataProc* = proc(role: cint): gen_qvariant.QVariant
+proc ondata*(self: gen_qstandarditemmodel_types.QStandardItem, slot: QStandardItemdataProc) =
   # TODO check subclass
-  type Cb = proc(super: QStandardItemdataBase, role: cint): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QStandardItemdataProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStandardItem_override_virtual_data(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStandardItem_data(self: ptr cQStandardItem, slot: int, role: cint): pointer {.exportc: "miqt_exec_callback_QStandardItem_data ".} =
-  type Cb = proc(super: QStandardItemdataBase, role: cint): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(role: cint): auto =
-    callVirtualBase_data(QStandardItem(h: self), role)
+  var nimfunc = cast[ptr QStandardItemdataProc](cast[pointer](slot))
   let slotval1 = role
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_setData(self: QStandardItem, value: gen_qvariant.QVariant, role: cint): void =
-
+proc QStandardItemsetData*(self: gen_qstandarditemmodel_types.QStandardItem, value: gen_qvariant.QVariant, role: cint): void =
 
   fQStandardItem_virtualbase_setData(self.h, value.h, role)
 
-type QStandardItemsetDataBase* = proc(value: gen_qvariant.QVariant, role: cint): void
-proc onsetData*(self: QStandardItem, slot: proc(super: QStandardItemsetDataBase, value: gen_qvariant.QVariant, role: cint): void) =
+type QStandardItemsetDataProc* = proc(value: gen_qvariant.QVariant, role: cint): void
+proc onsetData*(self: gen_qstandarditemmodel_types.QStandardItem, slot: QStandardItemsetDataProc) =
   # TODO check subclass
-  type Cb = proc(super: QStandardItemsetDataBase, value: gen_qvariant.QVariant, role: cint): void
-  var tmp = new Cb
+  var tmp = new QStandardItemsetDataProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStandardItem_override_virtual_setData(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStandardItem_setData(self: ptr cQStandardItem, slot: int, value: pointer, role: cint): void {.exportc: "miqt_exec_callback_QStandardItem_setData ".} =
-  type Cb = proc(super: QStandardItemsetDataBase, value: gen_qvariant.QVariant, role: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(value: gen_qvariant.QVariant, role: cint): auto =
-    callVirtualBase_setData(QStandardItem(h: self), value, role)
+  var nimfunc = cast[ptr QStandardItemsetDataProc](cast[pointer](slot))
   let slotval1 = gen_qvariant.QVariant(h: value)
 
   let slotval2 = role
 
 
-  nimfunc[](superCall, slotval1, slotval2)
-proc callVirtualBase_clone(self: QStandardItem, ): QStandardItem =
+  nimfunc[](slotval1, slotval2)
+proc QStandardItemclone*(self: gen_qstandarditemmodel_types.QStandardItem, ): gen_qstandarditemmodel_types.QStandardItem =
 
+  gen_qstandarditemmodel_types.QStandardItem(h: fQStandardItem_virtualbase_clone(self.h))
 
-  QStandardItem(h: fQStandardItem_virtualbase_clone(self.h))
-
-type QStandardItemcloneBase* = proc(): QStandardItem
-proc onclone*(self: QStandardItem, slot: proc(super: QStandardItemcloneBase): QStandardItem) =
+type QStandardItemcloneProc* = proc(): gen_qstandarditemmodel_types.QStandardItem
+proc onclone*(self: gen_qstandarditemmodel_types.QStandardItem, slot: QStandardItemcloneProc) =
   # TODO check subclass
-  type Cb = proc(super: QStandardItemcloneBase): QStandardItem
-  var tmp = new Cb
+  var tmp = new QStandardItemcloneProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStandardItem_override_virtual_clone(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStandardItem_clone(self: ptr cQStandardItem, slot: int): pointer {.exportc: "miqt_exec_callback_QStandardItem_clone ".} =
-  type Cb = proc(super: QStandardItemcloneBase): QStandardItem
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_clone(QStandardItem(h: self), )
+  var nimfunc = cast[ptr QStandardItemcloneProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_typeX(self: QStandardItem, ): cint =
-
+proc QStandardItemtypeX*(self: gen_qstandarditemmodel_types.QStandardItem, ): cint =
 
   fQStandardItem_virtualbase_type(self.h)
 
-type QStandardItemtypeXBase* = proc(): cint
-proc ontypeX*(self: QStandardItem, slot: proc(super: QStandardItemtypeXBase): cint) =
+type QStandardItemtypeXProc* = proc(): cint
+proc ontypeX*(self: gen_qstandarditemmodel_types.QStandardItem, slot: QStandardItemtypeXProc) =
   # TODO check subclass
-  type Cb = proc(super: QStandardItemtypeXBase): cint
-  var tmp = new Cb
+  var tmp = new QStandardItemtypeXProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStandardItem_override_virtual_typeX(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStandardItem_type(self: ptr cQStandardItem, slot: int): cint {.exportc: "miqt_exec_callback_QStandardItem_type ".} =
-  type Cb = proc(super: QStandardItemtypeXBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_typeX(QStandardItem(h: self), )
+  var nimfunc = cast[ptr QStandardItemtypeXProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_read(self: QStandardItem, inVal: gen_qdatastream.QDataStream): void =
-
+proc QStandardItemread*(self: gen_qstandarditemmodel_types.QStandardItem, inVal: gen_qdatastream.QDataStream): void =
 
   fQStandardItem_virtualbase_read(self.h, inVal.h)
 
-type QStandardItemreadBase* = proc(inVal: gen_qdatastream.QDataStream): void
-proc onread*(self: QStandardItem, slot: proc(super: QStandardItemreadBase, inVal: gen_qdatastream.QDataStream): void) =
+type QStandardItemreadProc* = proc(inVal: gen_qdatastream.QDataStream): void
+proc onread*(self: gen_qstandarditemmodel_types.QStandardItem, slot: QStandardItemreadProc) =
   # TODO check subclass
-  type Cb = proc(super: QStandardItemreadBase, inVal: gen_qdatastream.QDataStream): void
-  var tmp = new Cb
+  var tmp = new QStandardItemreadProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStandardItem_override_virtual_read(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStandardItem_read(self: ptr cQStandardItem, slot: int, inVal: pointer): void {.exportc: "miqt_exec_callback_QStandardItem_read ".} =
-  type Cb = proc(super: QStandardItemreadBase, inVal: gen_qdatastream.QDataStream): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(inVal: gen_qdatastream.QDataStream): auto =
-    callVirtualBase_read(QStandardItem(h: self), inVal)
+  var nimfunc = cast[ptr QStandardItemreadProc](cast[pointer](slot))
   let slotval1 = gen_qdatastream.QDataStream(h: inVal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_write(self: QStandardItem, outVal: gen_qdatastream.QDataStream): void =
-
+  nimfunc[](slotval1)
+proc QStandardItemwrite*(self: gen_qstandarditemmodel_types.QStandardItem, outVal: gen_qdatastream.QDataStream): void =
 
   fQStandardItem_virtualbase_write(self.h, outVal.h)
 
-type QStandardItemwriteBase* = proc(outVal: gen_qdatastream.QDataStream): void
-proc onwrite*(self: QStandardItem, slot: proc(super: QStandardItemwriteBase, outVal: gen_qdatastream.QDataStream): void) =
+type QStandardItemwriteProc* = proc(outVal: gen_qdatastream.QDataStream): void
+proc onwrite*(self: gen_qstandarditemmodel_types.QStandardItem, slot: QStandardItemwriteProc) =
   # TODO check subclass
-  type Cb = proc(super: QStandardItemwriteBase, outVal: gen_qdatastream.QDataStream): void
-  var tmp = new Cb
+  var tmp = new QStandardItemwriteProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStandardItem_override_virtual_write(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStandardItem_write(self: ptr cQStandardItem, slot: int, outVal: pointer): void {.exportc: "miqt_exec_callback_QStandardItem_write ".} =
-  type Cb = proc(super: QStandardItemwriteBase, outVal: gen_qdatastream.QDataStream): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(outVal: gen_qdatastream.QDataStream): auto =
-    callVirtualBase_write(QStandardItem(h: self), outVal)
+  var nimfunc = cast[ptr QStandardItemwriteProc](cast[pointer](slot))
   let slotval1 = gen_qdatastream.QDataStream(h: outVal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_operatorLesser(self: QStandardItem, other: QStandardItem): bool =
-
+  nimfunc[](slotval1)
+proc QStandardItemoperatorLesser*(self: gen_qstandarditemmodel_types.QStandardItem, other: gen_qstandarditemmodel_types.QStandardItem): bool =
 
   fQStandardItem_virtualbase_operatorLesser(self.h, other.h)
 
-type QStandardItemoperatorLesserBase* = proc(other: QStandardItem): bool
-proc onoperatorLesser*(self: QStandardItem, slot: proc(super: QStandardItemoperatorLesserBase, other: QStandardItem): bool) =
+type QStandardItemoperatorLesserProc* = proc(other: gen_qstandarditemmodel_types.QStandardItem): bool
+proc onoperatorLesser*(self: gen_qstandarditemmodel_types.QStandardItem, slot: QStandardItemoperatorLesserProc) =
   # TODO check subclass
-  type Cb = proc(super: QStandardItemoperatorLesserBase, other: QStandardItem): bool
-  var tmp = new Cb
+  var tmp = new QStandardItemoperatorLesserProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStandardItem_override_virtual_operatorLesser(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStandardItem_operatorLesser(self: ptr cQStandardItem, slot: int, other: pointer): bool {.exportc: "miqt_exec_callback_QStandardItem_operatorLesser ".} =
-  type Cb = proc(super: QStandardItemoperatorLesserBase, other: QStandardItem): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(other: QStandardItem): auto =
-    callVirtualBase_operatorLesser(QStandardItem(h: self), other)
-  let slotval1 = QStandardItem(h: other)
+  var nimfunc = cast[ptr QStandardItemoperatorLesserProc](cast[pointer](slot))
+  let slotval1 = gen_qstandarditemmodel_types.QStandardItem(h: other)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc delete*(self: QStandardItem) =
+proc delete*(self: gen_qstandarditemmodel_types.QStandardItem) =
   fcQStandardItem_delete(self.h)
 
-func init*(T: type QStandardItemModel, h: ptr cQStandardItemModel): QStandardItemModel =
+func init*(T: type gen_qstandarditemmodel_types.QStandardItemModel, h: ptr cQStandardItemModel): gen_qstandarditemmodel_types.QStandardItemModel =
   T(h: h)
-proc create*(T: type QStandardItemModel, ): QStandardItemModel =
+proc create*(T: type gen_qstandarditemmodel_types.QStandardItemModel, ): gen_qstandarditemmodel_types.QStandardItemModel =
 
-  QStandardItemModel.init(fcQStandardItemModel_new())
-proc create*(T: type QStandardItemModel, rows: cint, columns: cint): QStandardItemModel =
+  gen_qstandarditemmodel_types.QStandardItemModel.init(fcQStandardItemModel_new())
+proc create*(T: type gen_qstandarditemmodel_types.QStandardItemModel, rows: cint, columns: cint): gen_qstandarditemmodel_types.QStandardItemModel =
 
-  QStandardItemModel.init(fcQStandardItemModel_new2(rows, columns))
-proc create*(T: type QStandardItemModel, parent: gen_qobject.QObject): QStandardItemModel =
+  gen_qstandarditemmodel_types.QStandardItemModel.init(fcQStandardItemModel_new2(rows, columns))
+proc create*(T: type gen_qstandarditemmodel_types.QStandardItemModel, parent: gen_qobject.QObject): gen_qstandarditemmodel_types.QStandardItemModel =
 
-  QStandardItemModel.init(fcQStandardItemModel_new3(parent.h))
-proc create*(T: type QStandardItemModel, rows: cint, columns: cint, parent: gen_qobject.QObject): QStandardItemModel =
+  gen_qstandarditemmodel_types.QStandardItemModel.init(fcQStandardItemModel_new3(parent.h))
+proc create*(T: type gen_qstandarditemmodel_types.QStandardItemModel, rows: cint, columns: cint, parent: gen_qobject.QObject): gen_qstandarditemmodel_types.QStandardItemModel =
 
-  QStandardItemModel.init(fcQStandardItemModel_new4(rows, columns, parent.h))
-proc metaObject*(self: QStandardItemModel, ): gen_qobjectdefs.QMetaObject =
+  gen_qstandarditemmodel_types.QStandardItemModel.init(fcQStandardItemModel_new4(rows, columns, parent.h))
+proc metaObject*(self: gen_qstandarditemmodel_types.QStandardItemModel, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQStandardItemModel_metaObject(self.h))
 
-proc metacast*(self: QStandardItemModel, param1: cstring): pointer =
+proc metacast*(self: gen_qstandarditemmodel_types.QStandardItemModel, param1: cstring): pointer =
 
   fcQStandardItemModel_metacast(self.h, param1)
 
-proc metacall*(self: QStandardItemModel, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qstandarditemmodel_types.QStandardItemModel, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQStandardItemModel_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QStandardItemModel, s: cstring): string =
+proc tr*(_: type gen_qstandarditemmodel_types.QStandardItemModel, s: cstring): string =
 
   let v_ms = fcQStandardItemModel_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QStandardItemModel, s: cstring): string =
+proc trUtf8*(_: type gen_qstandarditemmodel_types.QStandardItemModel, s: cstring): string =
 
   let v_ms = fcQStandardItemModel_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setItemRoleNames*(self: QStandardItemModel, roleNames: Table[cint,seq[byte]]): void =
+proc setItemRoleNames*(self: gen_qstandarditemmodel_types.QStandardItemModel, roleNames: Table[cint,seq[byte]]): void =
 
   var roleNames_Keys_CArray = newSeq[cint](len(roleNames))
   var roleNames_Values_CArray = newSeq[struct_miqt_string](len(roleNames))
@@ -998,75 +959,75 @@ proc setItemRoleNames*(self: QStandardItemModel, roleNames: Table[cint,seq[byte]
 
   fcQStandardItemModel_setItemRoleNames(self.h, struct_miqt_map(len: csize_t(len(roleNames)),keys: if len(roleNames) == 0: nil else: addr(roleNames_Keys_CArray[0]), values: if len(roleNames) == 0: nil else: addr(roleNames_Values_CArray[0]),))
 
-proc index*(self: QStandardItemModel, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
+proc index*(self: gen_qstandarditemmodel_types.QStandardItemModel, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
 
   gen_qabstractitemmodel.QModelIndex(h: fcQStandardItemModel_index(self.h, row, column, parent.h))
 
-proc parent*(self: QStandardItemModel, child: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
+proc parent*(self: gen_qstandarditemmodel_types.QStandardItemModel, child: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
 
   gen_qabstractitemmodel.QModelIndex(h: fcQStandardItemModel_parent(self.h, child.h))
 
-proc rowCount*(self: QStandardItemModel, parent: gen_qabstractitemmodel.QModelIndex): cint =
+proc rowCount*(self: gen_qstandarditemmodel_types.QStandardItemModel, parent: gen_qabstractitemmodel.QModelIndex): cint =
 
   fcQStandardItemModel_rowCount(self.h, parent.h)
 
-proc columnCount*(self: QStandardItemModel, parent: gen_qabstractitemmodel.QModelIndex): cint =
+proc columnCount*(self: gen_qstandarditemmodel_types.QStandardItemModel, parent: gen_qabstractitemmodel.QModelIndex): cint =
 
   fcQStandardItemModel_columnCount(self.h, parent.h)
 
-proc hasChildren*(self: QStandardItemModel, parent: gen_qabstractitemmodel.QModelIndex): bool =
+proc hasChildren*(self: gen_qstandarditemmodel_types.QStandardItemModel, parent: gen_qabstractitemmodel.QModelIndex): bool =
 
   fcQStandardItemModel_hasChildren(self.h, parent.h)
 
-proc sibling*(self: QStandardItemModel, row: cint, column: cint, idx: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
+proc sibling*(self: gen_qstandarditemmodel_types.QStandardItemModel, row: cint, column: cint, idx: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
 
   gen_qabstractitemmodel.QModelIndex(h: fcQStandardItemModel_sibling(self.h, row, column, idx.h))
 
-proc data*(self: QStandardItemModel, index: gen_qabstractitemmodel.QModelIndex, role: cint): gen_qvariant.QVariant =
+proc data*(self: gen_qstandarditemmodel_types.QStandardItemModel, index: gen_qabstractitemmodel.QModelIndex, role: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fcQStandardItemModel_data(self.h, index.h, role))
 
-proc setData*(self: QStandardItemModel, index: gen_qabstractitemmodel.QModelIndex, value: gen_qvariant.QVariant, role: cint): bool =
+proc setData*(self: gen_qstandarditemmodel_types.QStandardItemModel, index: gen_qabstractitemmodel.QModelIndex, value: gen_qvariant.QVariant, role: cint): bool =
 
   fcQStandardItemModel_setData(self.h, index.h, value.h, role)
 
-proc clearItemData*(self: QStandardItemModel, index: gen_qabstractitemmodel.QModelIndex): bool =
+proc clearItemData*(self: gen_qstandarditemmodel_types.QStandardItemModel, index: gen_qabstractitemmodel.QModelIndex): bool =
 
   fcQStandardItemModel_clearItemData(self.h, index.h)
 
-proc headerData*(self: QStandardItemModel, section: cint, orientation: gen_qnamespace.Orientation, role: cint): gen_qvariant.QVariant =
+proc headerData*(self: gen_qstandarditemmodel_types.QStandardItemModel, section: cint, orientation: cint, role: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fcQStandardItemModel_headerData(self.h, section, cint(orientation), role))
 
-proc setHeaderData*(self: QStandardItemModel, section: cint, orientation: gen_qnamespace.Orientation, value: gen_qvariant.QVariant, role: cint): bool =
+proc setHeaderData*(self: gen_qstandarditemmodel_types.QStandardItemModel, section: cint, orientation: cint, value: gen_qvariant.QVariant, role: cint): bool =
 
   fcQStandardItemModel_setHeaderData(self.h, section, cint(orientation), value.h, role)
 
-proc insertRows*(self: QStandardItemModel, row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
+proc insertRows*(self: gen_qstandarditemmodel_types.QStandardItemModel, row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
 
   fcQStandardItemModel_insertRows(self.h, row, count, parent.h)
 
-proc insertColumns*(self: QStandardItemModel, column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
+proc insertColumns*(self: gen_qstandarditemmodel_types.QStandardItemModel, column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
 
   fcQStandardItemModel_insertColumns(self.h, column, count, parent.h)
 
-proc removeRows*(self: QStandardItemModel, row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
+proc removeRows*(self: gen_qstandarditemmodel_types.QStandardItemModel, row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
 
   fcQStandardItemModel_removeRows(self.h, row, count, parent.h)
 
-proc removeColumns*(self: QStandardItemModel, column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
+proc removeColumns*(self: gen_qstandarditemmodel_types.QStandardItemModel, column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
 
   fcQStandardItemModel_removeColumns(self.h, column, count, parent.h)
 
-proc flags*(self: QStandardItemModel, index: gen_qabstractitemmodel.QModelIndex): gen_qnamespace.ItemFlag =
+proc flags*(self: gen_qstandarditemmodel_types.QStandardItemModel, index: gen_qabstractitemmodel.QModelIndex): cint =
 
-  gen_qnamespace.ItemFlag(fcQStandardItemModel_flags(self.h, index.h))
+  cint(fcQStandardItemModel_flags(self.h, index.h))
 
-proc supportedDropActions*(self: QStandardItemModel, ): gen_qnamespace.DropAction =
+proc supportedDropActions*(self: gen_qstandarditemmodel_types.QStandardItemModel, ): cint =
 
-  gen_qnamespace.DropAction(fcQStandardItemModel_supportedDropActions(self.h))
+  cint(fcQStandardItemModel_supportedDropActions(self.h))
 
-proc itemData*(self: QStandardItemModel, index: gen_qabstractitemmodel.QModelIndex): Table[cint,gen_qvariant.QVariant] =
+proc itemData*(self: gen_qstandarditemmodel_types.QStandardItemModel, index: gen_qabstractitemmodel.QModelIndex): Table[cint,gen_qvariant.QVariant] =
 
   var v_mm = fcQStandardItemModel_itemData(self.h, index.h)
   var vx_ret: Table[cint, gen_qvariant.QVariant]
@@ -1080,7 +1041,7 @@ proc itemData*(self: QStandardItemModel, index: gen_qabstractitemmodel.QModelInd
     vx_ret[v_entry_Key] = v_entry_Value
   vx_ret
 
-proc setItemData*(self: QStandardItemModel, index: gen_qabstractitemmodel.QModelIndex, roles: Table[cint,gen_qvariant.QVariant]): bool =
+proc setItemData*(self: gen_qstandarditemmodel_types.QStandardItemModel, index: gen_qabstractitemmodel.QModelIndex, roles: Table[cint,gen_qvariant.QVariant]): bool =
 
   var roles_Keys_CArray = newSeq[cint](len(roles))
   var roles_Values_CArray = newSeq[pointer](len(roles))
@@ -1092,55 +1053,55 @@ proc setItemData*(self: QStandardItemModel, index: gen_qabstractitemmodel.QModel
 
   fcQStandardItemModel_setItemData(self.h, index.h, struct_miqt_map(len: csize_t(len(roles)),keys: if len(roles) == 0: nil else: addr(roles_Keys_CArray[0]), values: if len(roles) == 0: nil else: addr(roles_Values_CArray[0]),))
 
-proc clear*(self: QStandardItemModel, ): void =
+proc clear*(self: gen_qstandarditemmodel_types.QStandardItemModel, ): void =
 
   fcQStandardItemModel_clear(self.h)
 
-proc sort*(self: QStandardItemModel, column: cint, order: gen_qnamespace.SortOrder): void =
+proc sort*(self: gen_qstandarditemmodel_types.QStandardItemModel, column: cint, order: cint): void =
 
   fcQStandardItemModel_sort(self.h, column, cint(order))
 
-proc itemFromIndex*(self: QStandardItemModel, index: gen_qabstractitemmodel.QModelIndex): QStandardItem =
+proc itemFromIndex*(self: gen_qstandarditemmodel_types.QStandardItemModel, index: gen_qabstractitemmodel.QModelIndex): gen_qstandarditemmodel_types.QStandardItem =
 
-  QStandardItem(h: fcQStandardItemModel_itemFromIndex(self.h, index.h))
+  gen_qstandarditemmodel_types.QStandardItem(h: fcQStandardItemModel_itemFromIndex(self.h, index.h))
 
-proc indexFromItem*(self: QStandardItemModel, item: QStandardItem): gen_qabstractitemmodel.QModelIndex =
+proc indexFromItem*(self: gen_qstandarditemmodel_types.QStandardItemModel, item: gen_qstandarditemmodel_types.QStandardItem): gen_qabstractitemmodel.QModelIndex =
 
   gen_qabstractitemmodel.QModelIndex(h: fcQStandardItemModel_indexFromItem(self.h, item.h))
 
-proc item*(self: QStandardItemModel, row: cint): QStandardItem =
+proc item*(self: gen_qstandarditemmodel_types.QStandardItemModel, row: cint): gen_qstandarditemmodel_types.QStandardItem =
 
-  QStandardItem(h: fcQStandardItemModel_item(self.h, row))
+  gen_qstandarditemmodel_types.QStandardItem(h: fcQStandardItemModel_item(self.h, row))
 
-proc setItem*(self: QStandardItemModel, row: cint, column: cint, item: QStandardItem): void =
+proc setItem*(self: gen_qstandarditemmodel_types.QStandardItemModel, row: cint, column: cint, item: gen_qstandarditemmodel_types.QStandardItem): void =
 
   fcQStandardItemModel_setItem(self.h, row, column, item.h)
 
-proc setItem2*(self: QStandardItemModel, row: cint, item: QStandardItem): void =
+proc setItem2*(self: gen_qstandarditemmodel_types.QStandardItemModel, row: cint, item: gen_qstandarditemmodel_types.QStandardItem): void =
 
   fcQStandardItemModel_setItem2(self.h, row, item.h)
 
-proc invisibleRootItem*(self: QStandardItemModel, ): QStandardItem =
+proc invisibleRootItem*(self: gen_qstandarditemmodel_types.QStandardItemModel, ): gen_qstandarditemmodel_types.QStandardItem =
 
-  QStandardItem(h: fcQStandardItemModel_invisibleRootItem(self.h))
+  gen_qstandarditemmodel_types.QStandardItem(h: fcQStandardItemModel_invisibleRootItem(self.h))
 
-proc horizontalHeaderItem*(self: QStandardItemModel, column: cint): QStandardItem =
+proc horizontalHeaderItem*(self: gen_qstandarditemmodel_types.QStandardItemModel, column: cint): gen_qstandarditemmodel_types.QStandardItem =
 
-  QStandardItem(h: fcQStandardItemModel_horizontalHeaderItem(self.h, column))
+  gen_qstandarditemmodel_types.QStandardItem(h: fcQStandardItemModel_horizontalHeaderItem(self.h, column))
 
-proc setHorizontalHeaderItem*(self: QStandardItemModel, column: cint, item: QStandardItem): void =
+proc setHorizontalHeaderItem*(self: gen_qstandarditemmodel_types.QStandardItemModel, column: cint, item: gen_qstandarditemmodel_types.QStandardItem): void =
 
   fcQStandardItemModel_setHorizontalHeaderItem(self.h, column, item.h)
 
-proc verticalHeaderItem*(self: QStandardItemModel, row: cint): QStandardItem =
+proc verticalHeaderItem*(self: gen_qstandarditemmodel_types.QStandardItemModel, row: cint): gen_qstandarditemmodel_types.QStandardItem =
 
-  QStandardItem(h: fcQStandardItemModel_verticalHeaderItem(self.h, row))
+  gen_qstandarditemmodel_types.QStandardItem(h: fcQStandardItemModel_verticalHeaderItem(self.h, row))
 
-proc setVerticalHeaderItem*(self: QStandardItemModel, row: cint, item: QStandardItem): void =
+proc setVerticalHeaderItem*(self: gen_qstandarditemmodel_types.QStandardItemModel, row: cint, item: gen_qstandarditemmodel_types.QStandardItem): void =
 
   fcQStandardItemModel_setVerticalHeaderItem(self.h, row, item.h)
 
-proc setHorizontalHeaderLabels*(self: QStandardItemModel, labels: seq[string]): void =
+proc setHorizontalHeaderLabels*(self: gen_qstandarditemmodel_types.QStandardItemModel, labels: seq[string]): void =
 
   var labels_CArray = newSeq[struct_miqt_string](len(labels))
   for i in 0..<len(labels):
@@ -1148,7 +1109,7 @@ proc setHorizontalHeaderLabels*(self: QStandardItemModel, labels: seq[string]): 
 
   fcQStandardItemModel_setHorizontalHeaderLabels(self.h, struct_miqt_array(len: csize_t(len(labels)), data: if len(labels) == 0: nil else: addr(labels_CArray[0])))
 
-proc setVerticalHeaderLabels*(self: QStandardItemModel, labels: seq[string]): void =
+proc setVerticalHeaderLabels*(self: gen_qstandarditemmodel_types.QStandardItemModel, labels: seq[string]): void =
 
   var labels_CArray = newSeq[struct_miqt_string](len(labels))
   for i in 0..<len(labels):
@@ -1156,15 +1117,15 @@ proc setVerticalHeaderLabels*(self: QStandardItemModel, labels: seq[string]): vo
 
   fcQStandardItemModel_setVerticalHeaderLabels(self.h, struct_miqt_array(len: csize_t(len(labels)), data: if len(labels) == 0: nil else: addr(labels_CArray[0])))
 
-proc setRowCount*(self: QStandardItemModel, rows: cint): void =
+proc setRowCount*(self: gen_qstandarditemmodel_types.QStandardItemModel, rows: cint): void =
 
   fcQStandardItemModel_setRowCount(self.h, rows)
 
-proc setColumnCount*(self: QStandardItemModel, columns: cint): void =
+proc setColumnCount*(self: gen_qstandarditemmodel_types.QStandardItemModel, columns: cint): void =
 
   fcQStandardItemModel_setColumnCount(self.h, columns)
 
-proc appendRow*(self: QStandardItemModel, items: seq[QStandardItem]): void =
+proc appendRow*(self: gen_qstandarditemmodel_types.QStandardItemModel, items: seq[gen_qstandarditemmodel_types.QStandardItem]): void =
 
   var items_CArray = newSeq[pointer](len(items))
   for i in 0..<len(items):
@@ -1172,7 +1133,7 @@ proc appendRow*(self: QStandardItemModel, items: seq[QStandardItem]): void =
 
   fcQStandardItemModel_appendRow(self.h, struct_miqt_array(len: csize_t(len(items)), data: if len(items) == 0: nil else: addr(items_CArray[0])))
 
-proc appendColumn*(self: QStandardItemModel, items: seq[QStandardItem]): void =
+proc appendColumn*(self: gen_qstandarditemmodel_types.QStandardItemModel, items: seq[gen_qstandarditemmodel_types.QStandardItem]): void =
 
   var items_CArray = newSeq[pointer](len(items))
   for i in 0..<len(items):
@@ -1180,11 +1141,11 @@ proc appendColumn*(self: QStandardItemModel, items: seq[QStandardItem]): void =
 
   fcQStandardItemModel_appendColumn(self.h, struct_miqt_array(len: csize_t(len(items)), data: if len(items) == 0: nil else: addr(items_CArray[0])))
 
-proc appendRowWithItem*(self: QStandardItemModel, item: QStandardItem): void =
+proc appendRowWithItem*(self: gen_qstandarditemmodel_types.QStandardItemModel, item: gen_qstandarditemmodel_types.QStandardItem): void =
 
   fcQStandardItemModel_appendRowWithItem(self.h, item.h)
 
-proc insertRow*(self: QStandardItemModel, row: cint, items: seq[QStandardItem]): void =
+proc insertRow*(self: gen_qstandarditemmodel_types.QStandardItemModel, row: cint, items: seq[gen_qstandarditemmodel_types.QStandardItem]): void =
 
   var items_CArray = newSeq[pointer](len(items))
   for i in 0..<len(items):
@@ -1192,7 +1153,7 @@ proc insertRow*(self: QStandardItemModel, row: cint, items: seq[QStandardItem]):
 
   fcQStandardItemModel_insertRow(self.h, row, struct_miqt_array(len: csize_t(len(items)), data: if len(items) == 0: nil else: addr(items_CArray[0])))
 
-proc insertColumn*(self: QStandardItemModel, column: cint, items: seq[QStandardItem]): void =
+proc insertColumn*(self: gen_qstandarditemmodel_types.QStandardItemModel, column: cint, items: seq[gen_qstandarditemmodel_types.QStandardItem]): void =
 
   var items_CArray = newSeq[pointer](len(items))
   for i in 0..<len(items):
@@ -1200,74 +1161,74 @@ proc insertColumn*(self: QStandardItemModel, column: cint, items: seq[QStandardI
 
   fcQStandardItemModel_insertColumn(self.h, column, struct_miqt_array(len: csize_t(len(items)), data: if len(items) == 0: nil else: addr(items_CArray[0])))
 
-proc insertRow2*(self: QStandardItemModel, row: cint, item: QStandardItem): void =
+proc insertRow2*(self: gen_qstandarditemmodel_types.QStandardItemModel, row: cint, item: gen_qstandarditemmodel_types.QStandardItem): void =
 
   fcQStandardItemModel_insertRow2(self.h, row, item.h)
 
-proc insertRowWithRow*(self: QStandardItemModel, row: cint): bool =
+proc insertRowWithRow*(self: gen_qstandarditemmodel_types.QStandardItemModel, row: cint): bool =
 
   fcQStandardItemModel_insertRowWithRow(self.h, row)
 
-proc insertColumnWithColumn*(self: QStandardItemModel, column: cint): bool =
+proc insertColumnWithColumn*(self: gen_qstandarditemmodel_types.QStandardItemModel, column: cint): bool =
 
   fcQStandardItemModel_insertColumnWithColumn(self.h, column)
 
-proc takeItem*(self: QStandardItemModel, row: cint): QStandardItem =
+proc takeItem*(self: gen_qstandarditemmodel_types.QStandardItemModel, row: cint): gen_qstandarditemmodel_types.QStandardItem =
 
-  QStandardItem(h: fcQStandardItemModel_takeItem(self.h, row))
+  gen_qstandarditemmodel_types.QStandardItem(h: fcQStandardItemModel_takeItem(self.h, row))
 
-proc takeRow*(self: QStandardItemModel, row: cint): seq[QStandardItem] =
+proc takeRow*(self: gen_qstandarditemmodel_types.QStandardItemModel, row: cint): seq[gen_qstandarditemmodel_types.QStandardItem] =
 
   var v_ma = fcQStandardItemModel_takeRow(self.h, row)
-  var vx_ret = newSeq[QStandardItem](int(v_ma.len))
+  var vx_ret = newSeq[gen_qstandarditemmodel_types.QStandardItem](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
-    vx_ret[i] = QStandardItem(h: v_outCast[i])
+    vx_ret[i] = gen_qstandarditemmodel_types.QStandardItem(h: v_outCast[i])
   vx_ret
 
-proc takeColumn*(self: QStandardItemModel, column: cint): seq[QStandardItem] =
+proc takeColumn*(self: gen_qstandarditemmodel_types.QStandardItemModel, column: cint): seq[gen_qstandarditemmodel_types.QStandardItem] =
 
   var v_ma = fcQStandardItemModel_takeColumn(self.h, column)
-  var vx_ret = newSeq[QStandardItem](int(v_ma.len))
+  var vx_ret = newSeq[gen_qstandarditemmodel_types.QStandardItem](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
-    vx_ret[i] = QStandardItem(h: v_outCast[i])
+    vx_ret[i] = gen_qstandarditemmodel_types.QStandardItem(h: v_outCast[i])
   vx_ret
 
-proc takeHorizontalHeaderItem*(self: QStandardItemModel, column: cint): QStandardItem =
+proc takeHorizontalHeaderItem*(self: gen_qstandarditemmodel_types.QStandardItemModel, column: cint): gen_qstandarditemmodel_types.QStandardItem =
 
-  QStandardItem(h: fcQStandardItemModel_takeHorizontalHeaderItem(self.h, column))
+  gen_qstandarditemmodel_types.QStandardItem(h: fcQStandardItemModel_takeHorizontalHeaderItem(self.h, column))
 
-proc takeVerticalHeaderItem*(self: QStandardItemModel, row: cint): QStandardItem =
+proc takeVerticalHeaderItem*(self: gen_qstandarditemmodel_types.QStandardItemModel, row: cint): gen_qstandarditemmodel_types.QStandardItem =
 
-  QStandardItem(h: fcQStandardItemModel_takeVerticalHeaderItem(self.h, row))
+  gen_qstandarditemmodel_types.QStandardItem(h: fcQStandardItemModel_takeVerticalHeaderItem(self.h, row))
 
-proc itemPrototype*(self: QStandardItemModel, ): QStandardItem =
+proc itemPrototype*(self: gen_qstandarditemmodel_types.QStandardItemModel, ): gen_qstandarditemmodel_types.QStandardItem =
 
-  QStandardItem(h: fcQStandardItemModel_itemPrototype(self.h))
+  gen_qstandarditemmodel_types.QStandardItem(h: fcQStandardItemModel_itemPrototype(self.h))
 
-proc setItemPrototype*(self: QStandardItemModel, item: QStandardItem): void =
+proc setItemPrototype*(self: gen_qstandarditemmodel_types.QStandardItemModel, item: gen_qstandarditemmodel_types.QStandardItem): void =
 
   fcQStandardItemModel_setItemPrototype(self.h, item.h)
 
-proc findItems*(self: QStandardItemModel, text: string): seq[QStandardItem] =
+proc findItems*(self: gen_qstandarditemmodel_types.QStandardItemModel, text: string): seq[gen_qstandarditemmodel_types.QStandardItem] =
 
   var v_ma = fcQStandardItemModel_findItems(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
-  var vx_ret = newSeq[QStandardItem](int(v_ma.len))
+  var vx_ret = newSeq[gen_qstandarditemmodel_types.QStandardItem](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
-    vx_ret[i] = QStandardItem(h: v_outCast[i])
+    vx_ret[i] = gen_qstandarditemmodel_types.QStandardItem(h: v_outCast[i])
   vx_ret
 
-proc sortRole*(self: QStandardItemModel, ): cint =
+proc sortRole*(self: gen_qstandarditemmodel_types.QStandardItemModel, ): cint =
 
   fcQStandardItemModel_sortRole(self.h)
 
-proc setSortRole*(self: QStandardItemModel, role: cint): void =
+proc setSortRole*(self: gen_qstandarditemmodel_types.QStandardItemModel, role: cint): void =
 
   fcQStandardItemModel_setSortRole(self.h, role)
 
-proc mimeTypes*(self: QStandardItemModel, ): seq[string] =
+proc mimeTypes*(self: gen_qstandarditemmodel_types.QStandardItemModel, ): seq[string] =
 
   var v_ma = fcQStandardItemModel_mimeTypes(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -1279,7 +1240,7 @@ proc mimeTypes*(self: QStandardItemModel, ): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc mimeData*(self: QStandardItemModel, indexes: seq[gen_qabstractitemmodel.QModelIndex]): gen_qmimedata.QMimeData =
+proc mimeData*(self: gen_qstandarditemmodel_types.QStandardItemModel, indexes: seq[gen_qabstractitemmodel.QModelIndex]): gen_qmimedata.QMimeData =
 
   var indexes_CArray = newSeq[pointer](len(indexes))
   for i in 0..<len(indexes):
@@ -1287,186 +1248,166 @@ proc mimeData*(self: QStandardItemModel, indexes: seq[gen_qabstractitemmodel.QMo
 
   gen_qmimedata.QMimeData(h: fcQStandardItemModel_mimeData(self.h, struct_miqt_array(len: csize_t(len(indexes)), data: if len(indexes) == 0: nil else: addr(indexes_CArray[0]))))
 
-proc dropMimeData*(self: QStandardItemModel, data: gen_qmimedata.QMimeData, action: gen_qnamespace.DropAction, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
+proc dropMimeData*(self: gen_qstandarditemmodel_types.QStandardItemModel, data: gen_qmimedata.QMimeData, action: cint, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
 
   fcQStandardItemModel_dropMimeData(self.h, data.h, cint(action), row, column, parent.h)
 
-proc itemChanged*(self: QStandardItemModel, item: QStandardItem): void =
+proc itemChanged*(self: gen_qstandarditemmodel_types.QStandardItemModel, item: gen_qstandarditemmodel_types.QStandardItem): void =
 
   fcQStandardItemModel_itemChanged(self.h, item.h)
 
 proc miqt_exec_callback_QStandardItemModel_itemChanged(slot: int, item: pointer) {.exportc.} =
-  type Cb = proc(item: QStandardItem)
+  type Cb = proc(item: gen_qstandarditemmodel_types.QStandardItem)
   let nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = QStandardItem(h: item)
+  let slotval1 = gen_qstandarditemmodel_types.QStandardItem(h: item)
 
 
   nimfunc[](slotval1)
 
-proc onitemChanged*(self: QStandardItemModel, slot: proc(item: QStandardItem)) =
-  type Cb = proc(item: QStandardItem)
+proc onitemChanged*(self: gen_qstandarditemmodel_types.QStandardItemModel, slot: proc(item: gen_qstandarditemmodel_types.QStandardItem)) =
+  type Cb = proc(item: gen_qstandarditemmodel_types.QStandardItem)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQStandardItemModel_connect_itemChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QStandardItemModel, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qstandarditemmodel_types.QStandardItemModel, s: cstring, c: cstring): string =
 
   let v_ms = fcQStandardItemModel_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QStandardItemModel, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qstandarditemmodel_types.QStandardItemModel, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQStandardItemModel_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QStandardItemModel, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qstandarditemmodel_types.QStandardItemModel, s: cstring, c: cstring): string =
 
   let v_ms = fcQStandardItemModel_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QStandardItemModel, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qstandarditemmodel_types.QStandardItemModel, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQStandardItemModel_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc item2*(self: QStandardItemModel, row: cint, column: cint): QStandardItem =
+proc item2*(self: gen_qstandarditemmodel_types.QStandardItemModel, row: cint, column: cint): gen_qstandarditemmodel_types.QStandardItem =
 
-  QStandardItem(h: fcQStandardItemModel_item2(self.h, row, column))
+  gen_qstandarditemmodel_types.QStandardItem(h: fcQStandardItemModel_item2(self.h, row, column))
 
-proc insertRow22*(self: QStandardItemModel, row: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
+proc insertRow22*(self: gen_qstandarditemmodel_types.QStandardItemModel, row: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
 
   fcQStandardItemModel_insertRow22(self.h, row, parent.h)
 
-proc insertColumn2*(self: QStandardItemModel, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
+proc insertColumn2*(self: gen_qstandarditemmodel_types.QStandardItemModel, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
 
   fcQStandardItemModel_insertColumn2(self.h, column, parent.h)
 
-proc takeItem2*(self: QStandardItemModel, row: cint, column: cint): QStandardItem =
+proc takeItem2*(self: gen_qstandarditemmodel_types.QStandardItemModel, row: cint, column: cint): gen_qstandarditemmodel_types.QStandardItem =
 
-  QStandardItem(h: fcQStandardItemModel_takeItem2(self.h, row, column))
+  gen_qstandarditemmodel_types.QStandardItem(h: fcQStandardItemModel_takeItem2(self.h, row, column))
 
-proc findItems2*(self: QStandardItemModel, text: string, flags: gen_qnamespace.MatchFlag): seq[QStandardItem] =
+proc findItems2*(self: gen_qstandarditemmodel_types.QStandardItemModel, text: string, flags: cint): seq[gen_qstandarditemmodel_types.QStandardItem] =
 
   var v_ma = fcQStandardItemModel_findItems2(self.h, struct_miqt_string(data: text, len: csize_t(len(text))), cint(flags))
-  var vx_ret = newSeq[QStandardItem](int(v_ma.len))
+  var vx_ret = newSeq[gen_qstandarditemmodel_types.QStandardItem](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
-    vx_ret[i] = QStandardItem(h: v_outCast[i])
+    vx_ret[i] = gen_qstandarditemmodel_types.QStandardItem(h: v_outCast[i])
   vx_ret
 
-proc findItems3*(self: QStandardItemModel, text: string, flags: gen_qnamespace.MatchFlag, column: cint): seq[QStandardItem] =
+proc findItems3*(self: gen_qstandarditemmodel_types.QStandardItemModel, text: string, flags: cint, column: cint): seq[gen_qstandarditemmodel_types.QStandardItem] =
 
   var v_ma = fcQStandardItemModel_findItems3(self.h, struct_miqt_string(data: text, len: csize_t(len(text))), cint(flags), column)
-  var vx_ret = newSeq[QStandardItem](int(v_ma.len))
+  var vx_ret = newSeq[gen_qstandarditemmodel_types.QStandardItem](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
-    vx_ret[i] = QStandardItem(h: v_outCast[i])
+    vx_ret[i] = gen_qstandarditemmodel_types.QStandardItem(h: v_outCast[i])
   vx_ret
 
-proc callVirtualBase_metaObject(self: QStandardItemModel, ): gen_qobjectdefs.QMetaObject =
-
+proc QStandardItemModelmetaObject*(self: gen_qstandarditemmodel_types.QStandardItemModel, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQStandardItemModel_virtualbase_metaObject(self.h))
 
-type QStandardItemModelmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QStandardItemModel, slot: proc(super: QStandardItemModelmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QStandardItemModelmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qstandarditemmodel_types.QStandardItemModel, slot: QStandardItemModelmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QStandardItemModelmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QStandardItemModelmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStandardItemModel_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStandardItemModel_metaObject(self: ptr cQStandardItemModel, slot: int): pointer {.exportc: "miqt_exec_callback_QStandardItemModel_metaObject ".} =
-  type Cb = proc(super: QStandardItemModelmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QStandardItemModel(h: self), )
+  var nimfunc = cast[ptr QStandardItemModelmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QStandardItemModel, param1: cstring): pointer =
-
+proc QStandardItemModelmetacast*(self: gen_qstandarditemmodel_types.QStandardItemModel, param1: cstring): pointer =
 
   fQStandardItemModel_virtualbase_metacast(self.h, param1)
 
-type QStandardItemModelmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QStandardItemModel, slot: proc(super: QStandardItemModelmetacastBase, param1: cstring): pointer) =
+type QStandardItemModelmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qstandarditemmodel_types.QStandardItemModel, slot: QStandardItemModelmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QStandardItemModelmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QStandardItemModelmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStandardItemModel_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStandardItemModel_metacast(self: ptr cQStandardItemModel, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QStandardItemModel_metacast ".} =
-  type Cb = proc(super: QStandardItemModelmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QStandardItemModel(h: self), param1)
+  var nimfunc = cast[ptr QStandardItemModelmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QStandardItemModel, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QStandardItemModelmetacall*(self: gen_qstandarditemmodel_types.QStandardItemModel, param1: cint, param2: cint, param3: pointer): cint =
 
   fQStandardItemModel_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QStandardItemModelmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QStandardItemModel, slot: proc(super: QStandardItemModelmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QStandardItemModelmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qstandarditemmodel_types.QStandardItemModel, slot: QStandardItemModelmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QStandardItemModelmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QStandardItemModelmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStandardItemModel_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStandardItemModel_metacall(self: ptr cQStandardItemModel, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QStandardItemModel_metacall ".} =
-  type Cb = proc(super: QStandardItemModelmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QStandardItemModel(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QStandardItemModelmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_index(self: QStandardItemModel, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
-
+proc QStandardItemModelindex*(self: gen_qstandarditemmodel_types.QStandardItemModel, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
 
   gen_qabstractitemmodel.QModelIndex(h: fQStandardItemModel_virtualbase_index(self.h, row, column, parent.h))
 
-type QStandardItemModelindexBase* = proc(row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
-proc onindex*(self: QStandardItemModel, slot: proc(super: QStandardItemModelindexBase, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex) =
+type QStandardItemModelindexProc* = proc(row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
+proc onindex*(self: gen_qstandarditemmodel_types.QStandardItemModel, slot: QStandardItemModelindexProc) =
   # TODO check subclass
-  type Cb = proc(super: QStandardItemModelindexBase, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
-  var tmp = new Cb
+  var tmp = new QStandardItemModelindexProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStandardItemModel_override_virtual_index(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStandardItemModel_index(self: ptr cQStandardItemModel, slot: int, row: cint, column: cint, parent: pointer): pointer {.exportc: "miqt_exec_callback_QStandardItemModel_index ".} =
-  type Cb = proc(super: QStandardItemModelindexBase, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_index(QStandardItemModel(h: self), row, column, parent)
+  var nimfunc = cast[ptr QStandardItemModelindexProc](cast[pointer](slot))
   let slotval1 = row
 
   let slotval2 = column
@@ -1474,128 +1415,103 @@ proc miqt_exec_callback_QStandardItemModel_index(self: ptr cQStandardItemModel, 
   let slotval3 = gen_qabstractitemmodel.QModelIndex(h: parent)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn.h
-proc callVirtualBase_parent(self: QStandardItemModel, child: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
-
+proc QStandardItemModelparent*(self: gen_qstandarditemmodel_types.QStandardItemModel, child: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
 
   gen_qabstractitemmodel.QModelIndex(h: fQStandardItemModel_virtualbase_parent(self.h, child.h))
 
-type QStandardItemModelparentBase* = proc(child: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
-proc onparent*(self: QStandardItemModel, slot: proc(super: QStandardItemModelparentBase, child: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex) =
+type QStandardItemModelparentProc* = proc(child: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
+proc onparent*(self: gen_qstandarditemmodel_types.QStandardItemModel, slot: QStandardItemModelparentProc) =
   # TODO check subclass
-  type Cb = proc(super: QStandardItemModelparentBase, child: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
-  var tmp = new Cb
+  var tmp = new QStandardItemModelparentProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStandardItemModel_override_virtual_parent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStandardItemModel_parent(self: ptr cQStandardItemModel, slot: int, child: pointer): pointer {.exportc: "miqt_exec_callback_QStandardItemModel_parent ".} =
-  type Cb = proc(super: QStandardItemModelparentBase, child: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(child: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_parent(QStandardItemModel(h: self), child)
+  var nimfunc = cast[ptr QStandardItemModelparentProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: child)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_rowCount(self: QStandardItemModel, parent: gen_qabstractitemmodel.QModelIndex): cint =
-
+proc QStandardItemModelrowCount*(self: gen_qstandarditemmodel_types.QStandardItemModel, parent: gen_qabstractitemmodel.QModelIndex): cint =
 
   fQStandardItemModel_virtualbase_rowCount(self.h, parent.h)
 
-type QStandardItemModelrowCountBase* = proc(parent: gen_qabstractitemmodel.QModelIndex): cint
-proc onrowCount*(self: QStandardItemModel, slot: proc(super: QStandardItemModelrowCountBase, parent: gen_qabstractitemmodel.QModelIndex): cint) =
+type QStandardItemModelrowCountProc* = proc(parent: gen_qabstractitemmodel.QModelIndex): cint
+proc onrowCount*(self: gen_qstandarditemmodel_types.QStandardItemModel, slot: QStandardItemModelrowCountProc) =
   # TODO check subclass
-  type Cb = proc(super: QStandardItemModelrowCountBase, parent: gen_qabstractitemmodel.QModelIndex): cint
-  var tmp = new Cb
+  var tmp = new QStandardItemModelrowCountProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStandardItemModel_override_virtual_rowCount(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStandardItemModel_rowCount(self: ptr cQStandardItemModel, slot: int, parent: pointer): cint {.exportc: "miqt_exec_callback_QStandardItemModel_rowCount ".} =
-  type Cb = proc(super: QStandardItemModelrowCountBase, parent: gen_qabstractitemmodel.QModelIndex): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(parent: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_rowCount(QStandardItemModel(h: self), parent)
+  var nimfunc = cast[ptr QStandardItemModelrowCountProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: parent)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_columnCount(self: QStandardItemModel, parent: gen_qabstractitemmodel.QModelIndex): cint =
-
+proc QStandardItemModelcolumnCount*(self: gen_qstandarditemmodel_types.QStandardItemModel, parent: gen_qabstractitemmodel.QModelIndex): cint =
 
   fQStandardItemModel_virtualbase_columnCount(self.h, parent.h)
 
-type QStandardItemModelcolumnCountBase* = proc(parent: gen_qabstractitemmodel.QModelIndex): cint
-proc oncolumnCount*(self: QStandardItemModel, slot: proc(super: QStandardItemModelcolumnCountBase, parent: gen_qabstractitemmodel.QModelIndex): cint) =
+type QStandardItemModelcolumnCountProc* = proc(parent: gen_qabstractitemmodel.QModelIndex): cint
+proc oncolumnCount*(self: gen_qstandarditemmodel_types.QStandardItemModel, slot: QStandardItemModelcolumnCountProc) =
   # TODO check subclass
-  type Cb = proc(super: QStandardItemModelcolumnCountBase, parent: gen_qabstractitemmodel.QModelIndex): cint
-  var tmp = new Cb
+  var tmp = new QStandardItemModelcolumnCountProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStandardItemModel_override_virtual_columnCount(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStandardItemModel_columnCount(self: ptr cQStandardItemModel, slot: int, parent: pointer): cint {.exportc: "miqt_exec_callback_QStandardItemModel_columnCount ".} =
-  type Cb = proc(super: QStandardItemModelcolumnCountBase, parent: gen_qabstractitemmodel.QModelIndex): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(parent: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_columnCount(QStandardItemModel(h: self), parent)
+  var nimfunc = cast[ptr QStandardItemModelcolumnCountProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: parent)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_hasChildren(self: QStandardItemModel, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
+proc QStandardItemModelhasChildren*(self: gen_qstandarditemmodel_types.QStandardItemModel, parent: gen_qabstractitemmodel.QModelIndex): bool =
 
   fQStandardItemModel_virtualbase_hasChildren(self.h, parent.h)
 
-type QStandardItemModelhasChildrenBase* = proc(parent: gen_qabstractitemmodel.QModelIndex): bool
-proc onhasChildren*(self: QStandardItemModel, slot: proc(super: QStandardItemModelhasChildrenBase, parent: gen_qabstractitemmodel.QModelIndex): bool) =
+type QStandardItemModelhasChildrenProc* = proc(parent: gen_qabstractitemmodel.QModelIndex): bool
+proc onhasChildren*(self: gen_qstandarditemmodel_types.QStandardItemModel, slot: QStandardItemModelhasChildrenProc) =
   # TODO check subclass
-  type Cb = proc(super: QStandardItemModelhasChildrenBase, parent: gen_qabstractitemmodel.QModelIndex): bool
-  var tmp = new Cb
+  var tmp = new QStandardItemModelhasChildrenProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStandardItemModel_override_virtual_hasChildren(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStandardItemModel_hasChildren(self: ptr cQStandardItemModel, slot: int, parent: pointer): bool {.exportc: "miqt_exec_callback_QStandardItemModel_hasChildren ".} =
-  type Cb = proc(super: QStandardItemModelhasChildrenBase, parent: gen_qabstractitemmodel.QModelIndex): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(parent: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_hasChildren(QStandardItemModel(h: self), parent)
+  var nimfunc = cast[ptr QStandardItemModelhasChildrenProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: parent)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_sibling(self: QStandardItemModel, row: cint, column: cint, idx: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
-
+proc QStandardItemModelsibling*(self: gen_qstandarditemmodel_types.QStandardItemModel, row: cint, column: cint, idx: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
 
   gen_qabstractitemmodel.QModelIndex(h: fQStandardItemModel_virtualbase_sibling(self.h, row, column, idx.h))
 
-type QStandardItemModelsiblingBase* = proc(row: cint, column: cint, idx: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
-proc onsibling*(self: QStandardItemModel, slot: proc(super: QStandardItemModelsiblingBase, row: cint, column: cint, idx: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex) =
+type QStandardItemModelsiblingProc* = proc(row: cint, column: cint, idx: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
+proc onsibling*(self: gen_qstandarditemmodel_types.QStandardItemModel, slot: QStandardItemModelsiblingProc) =
   # TODO check subclass
-  type Cb = proc(super: QStandardItemModelsiblingBase, row: cint, column: cint, idx: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
-  var tmp = new Cb
+  var tmp = new QStandardItemModelsiblingProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStandardItemModel_override_virtual_sibling(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStandardItemModel_sibling(self: ptr cQStandardItemModel, slot: int, row: cint, column: cint, idx: pointer): pointer {.exportc: "miqt_exec_callback_QStandardItemModel_sibling ".} =
-  type Cb = proc(super: QStandardItemModelsiblingBase, row: cint, column: cint, idx: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(row: cint, column: cint, idx: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_sibling(QStandardItemModel(h: self), row, column, idx)
+  var nimfunc = cast[ptr QStandardItemModelsiblingProc](cast[pointer](slot))
   let slotval1 = row
 
   let slotval2 = column
@@ -1603,55 +1519,45 @@ proc miqt_exec_callback_QStandardItemModel_sibling(self: ptr cQStandardItemModel
   let slotval3 = gen_qabstractitemmodel.QModelIndex(h: idx)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn.h
-proc callVirtualBase_data(self: QStandardItemModel, index: gen_qabstractitemmodel.QModelIndex, role: cint): gen_qvariant.QVariant =
-
+proc QStandardItemModeldata*(self: gen_qstandarditemmodel_types.QStandardItemModel, index: gen_qabstractitemmodel.QModelIndex, role: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQStandardItemModel_virtualbase_data(self.h, index.h, role))
 
-type QStandardItemModeldataBase* = proc(index: gen_qabstractitemmodel.QModelIndex, role: cint): gen_qvariant.QVariant
-proc ondata*(self: QStandardItemModel, slot: proc(super: QStandardItemModeldataBase, index: gen_qabstractitemmodel.QModelIndex, role: cint): gen_qvariant.QVariant) =
+type QStandardItemModeldataProc* = proc(index: gen_qabstractitemmodel.QModelIndex, role: cint): gen_qvariant.QVariant
+proc ondata*(self: gen_qstandarditemmodel_types.QStandardItemModel, slot: QStandardItemModeldataProc) =
   # TODO check subclass
-  type Cb = proc(super: QStandardItemModeldataBase, index: gen_qabstractitemmodel.QModelIndex, role: cint): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QStandardItemModeldataProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStandardItemModel_override_virtual_data(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStandardItemModel_data(self: ptr cQStandardItemModel, slot: int, index: pointer, role: cint): pointer {.exportc: "miqt_exec_callback_QStandardItemModel_data ".} =
-  type Cb = proc(super: QStandardItemModeldataBase, index: gen_qabstractitemmodel.QModelIndex, role: cint): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(index: gen_qabstractitemmodel.QModelIndex, role: cint): auto =
-    callVirtualBase_data(QStandardItemModel(h: self), index, role)
+  var nimfunc = cast[ptr QStandardItemModeldataProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: index)
 
   let slotval2 = role
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn.h
-proc callVirtualBase_setData(self: QStandardItemModel, index: gen_qabstractitemmodel.QModelIndex, value: gen_qvariant.QVariant, role: cint): bool =
-
+proc QStandardItemModelsetData*(self: gen_qstandarditemmodel_types.QStandardItemModel, index: gen_qabstractitemmodel.QModelIndex, value: gen_qvariant.QVariant, role: cint): bool =
 
   fQStandardItemModel_virtualbase_setData(self.h, index.h, value.h, role)
 
-type QStandardItemModelsetDataBase* = proc(index: gen_qabstractitemmodel.QModelIndex, value: gen_qvariant.QVariant, role: cint): bool
-proc onsetData*(self: QStandardItemModel, slot: proc(super: QStandardItemModelsetDataBase, index: gen_qabstractitemmodel.QModelIndex, value: gen_qvariant.QVariant, role: cint): bool) =
+type QStandardItemModelsetDataProc* = proc(index: gen_qabstractitemmodel.QModelIndex, value: gen_qvariant.QVariant, role: cint): bool
+proc onsetData*(self: gen_qstandarditemmodel_types.QStandardItemModel, slot: QStandardItemModelsetDataProc) =
   # TODO check subclass
-  type Cb = proc(super: QStandardItemModelsetDataBase, index: gen_qabstractitemmodel.QModelIndex, value: gen_qvariant.QVariant, role: cint): bool
-  var tmp = new Cb
+  var tmp = new QStandardItemModelsetDataProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStandardItemModel_override_virtual_setData(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStandardItemModel_setData(self: ptr cQStandardItemModel, slot: int, index: pointer, value: pointer, role: cint): bool {.exportc: "miqt_exec_callback_QStandardItemModel_setData ".} =
-  type Cb = proc(super: QStandardItemModelsetDataBase, index: gen_qabstractitemmodel.QModelIndex, value: gen_qvariant.QVariant, role: cint): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(index: gen_qabstractitemmodel.QModelIndex, value: gen_qvariant.QVariant, role: cint): auto =
-    callVirtualBase_setData(QStandardItemModel(h: self), index, value, role)
+  var nimfunc = cast[ptr QStandardItemModelsetDataProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: index)
 
   let slotval2 = gen_qvariant.QVariant(h: value)
@@ -1659,88 +1565,73 @@ proc miqt_exec_callback_QStandardItemModel_setData(self: ptr cQStandardItemModel
   let slotval3 = role
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_headerData(self: QStandardItemModel, section: cint, orientation: gen_qnamespace.Orientation, role: cint): gen_qvariant.QVariant =
-
+proc QStandardItemModelheaderData*(self: gen_qstandarditemmodel_types.QStandardItemModel, section: cint, orientation: cint, role: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQStandardItemModel_virtualbase_headerData(self.h, section, cint(orientation), role))
 
-type QStandardItemModelheaderDataBase* = proc(section: cint, orientation: gen_qnamespace.Orientation, role: cint): gen_qvariant.QVariant
-proc onheaderData*(self: QStandardItemModel, slot: proc(super: QStandardItemModelheaderDataBase, section: cint, orientation: gen_qnamespace.Orientation, role: cint): gen_qvariant.QVariant) =
+type QStandardItemModelheaderDataProc* = proc(section: cint, orientation: cint, role: cint): gen_qvariant.QVariant
+proc onheaderData*(self: gen_qstandarditemmodel_types.QStandardItemModel, slot: QStandardItemModelheaderDataProc) =
   # TODO check subclass
-  type Cb = proc(super: QStandardItemModelheaderDataBase, section: cint, orientation: gen_qnamespace.Orientation, role: cint): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QStandardItemModelheaderDataProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStandardItemModel_override_virtual_headerData(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStandardItemModel_headerData(self: ptr cQStandardItemModel, slot: int, section: cint, orientation: cint, role: cint): pointer {.exportc: "miqt_exec_callback_QStandardItemModel_headerData ".} =
-  type Cb = proc(super: QStandardItemModelheaderDataBase, section: cint, orientation: gen_qnamespace.Orientation, role: cint): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(section: cint, orientation: gen_qnamespace.Orientation, role: cint): auto =
-    callVirtualBase_headerData(QStandardItemModel(h: self), section, orientation, role)
+  var nimfunc = cast[ptr QStandardItemModelheaderDataProc](cast[pointer](slot))
   let slotval1 = section
 
-  let slotval2 = gen_qnamespace.Orientation(orientation)
+  let slotval2 = cint(orientation)
 
   let slotval3 = role
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn.h
-proc callVirtualBase_setHeaderData(self: QStandardItemModel, section: cint, orientation: gen_qnamespace.Orientation, value: gen_qvariant.QVariant, role: cint): bool =
-
+proc QStandardItemModelsetHeaderData*(self: gen_qstandarditemmodel_types.QStandardItemModel, section: cint, orientation: cint, value: gen_qvariant.QVariant, role: cint): bool =
 
   fQStandardItemModel_virtualbase_setHeaderData(self.h, section, cint(orientation), value.h, role)
 
-type QStandardItemModelsetHeaderDataBase* = proc(section: cint, orientation: gen_qnamespace.Orientation, value: gen_qvariant.QVariant, role: cint): bool
-proc onsetHeaderData*(self: QStandardItemModel, slot: proc(super: QStandardItemModelsetHeaderDataBase, section: cint, orientation: gen_qnamespace.Orientation, value: gen_qvariant.QVariant, role: cint): bool) =
+type QStandardItemModelsetHeaderDataProc* = proc(section: cint, orientation: cint, value: gen_qvariant.QVariant, role: cint): bool
+proc onsetHeaderData*(self: gen_qstandarditemmodel_types.QStandardItemModel, slot: QStandardItemModelsetHeaderDataProc) =
   # TODO check subclass
-  type Cb = proc(super: QStandardItemModelsetHeaderDataBase, section: cint, orientation: gen_qnamespace.Orientation, value: gen_qvariant.QVariant, role: cint): bool
-  var tmp = new Cb
+  var tmp = new QStandardItemModelsetHeaderDataProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStandardItemModel_override_virtual_setHeaderData(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStandardItemModel_setHeaderData(self: ptr cQStandardItemModel, slot: int, section: cint, orientation: cint, value: pointer, role: cint): bool {.exportc: "miqt_exec_callback_QStandardItemModel_setHeaderData ".} =
-  type Cb = proc(super: QStandardItemModelsetHeaderDataBase, section: cint, orientation: gen_qnamespace.Orientation, value: gen_qvariant.QVariant, role: cint): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(section: cint, orientation: gen_qnamespace.Orientation, value: gen_qvariant.QVariant, role: cint): auto =
-    callVirtualBase_setHeaderData(QStandardItemModel(h: self), section, orientation, value, role)
+  var nimfunc = cast[ptr QStandardItemModelsetHeaderDataProc](cast[pointer](slot))
   let slotval1 = section
 
-  let slotval2 = gen_qnamespace.Orientation(orientation)
+  let slotval2 = cint(orientation)
 
   let slotval3 = gen_qvariant.QVariant(h: value)
 
   let slotval4 = role
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3, slotval4 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3, slotval4 )
 
   virtualReturn
-proc callVirtualBase_insertRows(self: QStandardItemModel, row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
+proc QStandardItemModelinsertRows*(self: gen_qstandarditemmodel_types.QStandardItemModel, row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
 
   fQStandardItemModel_virtualbase_insertRows(self.h, row, count, parent.h)
 
-type QStandardItemModelinsertRowsBase* = proc(row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
-proc oninsertRows*(self: QStandardItemModel, slot: proc(super: QStandardItemModelinsertRowsBase, row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool) =
+type QStandardItemModelinsertRowsProc* = proc(row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
+proc oninsertRows*(self: gen_qstandarditemmodel_types.QStandardItemModel, slot: QStandardItemModelinsertRowsProc) =
   # TODO check subclass
-  type Cb = proc(super: QStandardItemModelinsertRowsBase, row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
-  var tmp = new Cb
+  var tmp = new QStandardItemModelinsertRowsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStandardItemModel_override_virtual_insertRows(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStandardItemModel_insertRows(self: ptr cQStandardItemModel, slot: int, row: cint, count: cint, parent: pointer): bool {.exportc: "miqt_exec_callback_QStandardItemModel_insertRows ".} =
-  type Cb = proc(super: QStandardItemModelinsertRowsBase, row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_insertRows(QStandardItemModel(h: self), row, count, parent)
+  var nimfunc = cast[ptr QStandardItemModelinsertRowsProc](cast[pointer](slot))
   let slotval1 = row
 
   let slotval2 = count
@@ -1748,28 +1639,23 @@ proc miqt_exec_callback_QStandardItemModel_insertRows(self: ptr cQStandardItemMo
   let slotval3 = gen_qabstractitemmodel.QModelIndex(h: parent)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_insertColumns(self: QStandardItemModel, column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
+proc QStandardItemModelinsertColumns*(self: gen_qstandarditemmodel_types.QStandardItemModel, column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
 
   fQStandardItemModel_virtualbase_insertColumns(self.h, column, count, parent.h)
 
-type QStandardItemModelinsertColumnsBase* = proc(column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
-proc oninsertColumns*(self: QStandardItemModel, slot: proc(super: QStandardItemModelinsertColumnsBase, column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool) =
+type QStandardItemModelinsertColumnsProc* = proc(column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
+proc oninsertColumns*(self: gen_qstandarditemmodel_types.QStandardItemModel, slot: QStandardItemModelinsertColumnsProc) =
   # TODO check subclass
-  type Cb = proc(super: QStandardItemModelinsertColumnsBase, column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
-  var tmp = new Cb
+  var tmp = new QStandardItemModelinsertColumnsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStandardItemModel_override_virtual_insertColumns(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStandardItemModel_insertColumns(self: ptr cQStandardItemModel, slot: int, column: cint, count: cint, parent: pointer): bool {.exportc: "miqt_exec_callback_QStandardItemModel_insertColumns ".} =
-  type Cb = proc(super: QStandardItemModelinsertColumnsBase, column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_insertColumns(QStandardItemModel(h: self), column, count, parent)
+  var nimfunc = cast[ptr QStandardItemModelinsertColumnsProc](cast[pointer](slot))
   let slotval1 = column
 
   let slotval2 = count
@@ -1777,28 +1663,23 @@ proc miqt_exec_callback_QStandardItemModel_insertColumns(self: ptr cQStandardIte
   let slotval3 = gen_qabstractitemmodel.QModelIndex(h: parent)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_removeRows(self: QStandardItemModel, row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
+proc QStandardItemModelremoveRows*(self: gen_qstandarditemmodel_types.QStandardItemModel, row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
 
   fQStandardItemModel_virtualbase_removeRows(self.h, row, count, parent.h)
 
-type QStandardItemModelremoveRowsBase* = proc(row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
-proc onremoveRows*(self: QStandardItemModel, slot: proc(super: QStandardItemModelremoveRowsBase, row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool) =
+type QStandardItemModelremoveRowsProc* = proc(row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
+proc onremoveRows*(self: gen_qstandarditemmodel_types.QStandardItemModel, slot: QStandardItemModelremoveRowsProc) =
   # TODO check subclass
-  type Cb = proc(super: QStandardItemModelremoveRowsBase, row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
-  var tmp = new Cb
+  var tmp = new QStandardItemModelremoveRowsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStandardItemModel_override_virtual_removeRows(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStandardItemModel_removeRows(self: ptr cQStandardItemModel, slot: int, row: cint, count: cint, parent: pointer): bool {.exportc: "miqt_exec_callback_QStandardItemModel_removeRows ".} =
-  type Cb = proc(super: QStandardItemModelremoveRowsBase, row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_removeRows(QStandardItemModel(h: self), row, count, parent)
+  var nimfunc = cast[ptr QStandardItemModelremoveRowsProc](cast[pointer](slot))
   let slotval1 = row
 
   let slotval2 = count
@@ -1806,28 +1687,23 @@ proc miqt_exec_callback_QStandardItemModel_removeRows(self: ptr cQStandardItemMo
   let slotval3 = gen_qabstractitemmodel.QModelIndex(h: parent)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_removeColumns(self: QStandardItemModel, column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
+proc QStandardItemModelremoveColumns*(self: gen_qstandarditemmodel_types.QStandardItemModel, column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
 
   fQStandardItemModel_virtualbase_removeColumns(self.h, column, count, parent.h)
 
-type QStandardItemModelremoveColumnsBase* = proc(column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
-proc onremoveColumns*(self: QStandardItemModel, slot: proc(super: QStandardItemModelremoveColumnsBase, column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool) =
+type QStandardItemModelremoveColumnsProc* = proc(column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
+proc onremoveColumns*(self: gen_qstandarditemmodel_types.QStandardItemModel, slot: QStandardItemModelremoveColumnsProc) =
   # TODO check subclass
-  type Cb = proc(super: QStandardItemModelremoveColumnsBase, column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
-  var tmp = new Cb
+  var tmp = new QStandardItemModelremoveColumnsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStandardItemModel_override_virtual_removeColumns(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStandardItemModel_removeColumns(self: ptr cQStandardItemModel, slot: int, column: cint, count: cint, parent: pointer): bool {.exportc: "miqt_exec_callback_QStandardItemModel_removeColumns ".} =
-  type Cb = proc(super: QStandardItemModelremoveColumnsBase, column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_removeColumns(QStandardItemModel(h: self), column, count, parent)
+  var nimfunc = cast[ptr QStandardItemModelremoveColumnsProc](cast[pointer](slot))
   let slotval1 = column
 
   let slotval2 = count
@@ -1835,59 +1711,48 @@ proc miqt_exec_callback_QStandardItemModel_removeColumns(self: ptr cQStandardIte
   let slotval3 = gen_qabstractitemmodel.QModelIndex(h: parent)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_flags(self: QStandardItemModel, index: gen_qabstractitemmodel.QModelIndex): gen_qnamespace.ItemFlag =
+proc QStandardItemModelflags*(self: gen_qstandarditemmodel_types.QStandardItemModel, index: gen_qabstractitemmodel.QModelIndex): cint =
 
+  cint(fQStandardItemModel_virtualbase_flags(self.h, index.h))
 
-  gen_qnamespace.ItemFlag(fQStandardItemModel_virtualbase_flags(self.h, index.h))
-
-type QStandardItemModelflagsBase* = proc(index: gen_qabstractitemmodel.QModelIndex): gen_qnamespace.ItemFlag
-proc onflags*(self: QStandardItemModel, slot: proc(super: QStandardItemModelflagsBase, index: gen_qabstractitemmodel.QModelIndex): gen_qnamespace.ItemFlag) =
+type QStandardItemModelflagsProc* = proc(index: gen_qabstractitemmodel.QModelIndex): cint
+proc onflags*(self: gen_qstandarditemmodel_types.QStandardItemModel, slot: QStandardItemModelflagsProc) =
   # TODO check subclass
-  type Cb = proc(super: QStandardItemModelflagsBase, index: gen_qabstractitemmodel.QModelIndex): gen_qnamespace.ItemFlag
-  var tmp = new Cb
+  var tmp = new QStandardItemModelflagsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStandardItemModel_override_virtual_flags(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStandardItemModel_flags(self: ptr cQStandardItemModel, slot: int, index: pointer): cint {.exportc: "miqt_exec_callback_QStandardItemModel_flags ".} =
-  type Cb = proc(super: QStandardItemModelflagsBase, index: gen_qabstractitemmodel.QModelIndex): gen_qnamespace.ItemFlag
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(index: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_flags(QStandardItemModel(h: self), index)
+  var nimfunc = cast[ptr QStandardItemModelflagsProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: index)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   cint(virtualReturn)
-proc callVirtualBase_supportedDropActions(self: QStandardItemModel, ): gen_qnamespace.DropAction =
+proc QStandardItemModelsupportedDropActions*(self: gen_qstandarditemmodel_types.QStandardItemModel, ): cint =
 
+  cint(fQStandardItemModel_virtualbase_supportedDropActions(self.h))
 
-  gen_qnamespace.DropAction(fQStandardItemModel_virtualbase_supportedDropActions(self.h))
-
-type QStandardItemModelsupportedDropActionsBase* = proc(): gen_qnamespace.DropAction
-proc onsupportedDropActions*(self: QStandardItemModel, slot: proc(super: QStandardItemModelsupportedDropActionsBase): gen_qnamespace.DropAction) =
+type QStandardItemModelsupportedDropActionsProc* = proc(): cint
+proc onsupportedDropActions*(self: gen_qstandarditemmodel_types.QStandardItemModel, slot: QStandardItemModelsupportedDropActionsProc) =
   # TODO check subclass
-  type Cb = proc(super: QStandardItemModelsupportedDropActionsBase): gen_qnamespace.DropAction
-  var tmp = new Cb
+  var tmp = new QStandardItemModelsupportedDropActionsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStandardItemModel_override_virtual_supportedDropActions(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStandardItemModel_supportedDropActions(self: ptr cQStandardItemModel, slot: int): cint {.exportc: "miqt_exec_callback_QStandardItemModel_supportedDropActions ".} =
-  type Cb = proc(super: QStandardItemModelsupportedDropActionsBase): gen_qnamespace.DropAction
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_supportedDropActions(QStandardItemModel(h: self), )
+  var nimfunc = cast[ptr QStandardItemModelsupportedDropActionsProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   cint(virtualReturn)
-proc callVirtualBase_itemData(self: QStandardItemModel, index: gen_qabstractitemmodel.QModelIndex): Table[cint,gen_qvariant.QVariant] =
-
+proc QStandardItemModelitemData*(self: gen_qstandarditemmodel_types.QStandardItemModel, index: gen_qabstractitemmodel.QModelIndex): Table[cint,gen_qvariant.QVariant] =
 
   var v_mm = fQStandardItemModel_virtualbase_itemData(self.h, index.h)
   var vx_ret: Table[cint, gen_qvariant.QVariant]
@@ -1901,24 +1766,20 @@ proc callVirtualBase_itemData(self: QStandardItemModel, index: gen_qabstractitem
     vx_ret[v_entry_Key] = v_entry_Value
   vx_ret
 
-type QStandardItemModelitemDataBase* = proc(index: gen_qabstractitemmodel.QModelIndex): Table[cint,gen_qvariant.QVariant]
-proc onitemData*(self: QStandardItemModel, slot: proc(super: QStandardItemModelitemDataBase, index: gen_qabstractitemmodel.QModelIndex): Table[cint,gen_qvariant.QVariant]) =
+type QStandardItemModelitemDataProc* = proc(index: gen_qabstractitemmodel.QModelIndex): Table[cint,gen_qvariant.QVariant]
+proc onitemData*(self: gen_qstandarditemmodel_types.QStandardItemModel, slot: QStandardItemModelitemDataProc) =
   # TODO check subclass
-  type Cb = proc(super: QStandardItemModelitemDataBase, index: gen_qabstractitemmodel.QModelIndex): Table[cint,gen_qvariant.QVariant]
-  var tmp = new Cb
+  var tmp = new QStandardItemModelitemDataProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStandardItemModel_override_virtual_itemData(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStandardItemModel_itemData(self: ptr cQStandardItemModel, slot: int, index: pointer): struct_miqt_map {.exportc: "miqt_exec_callback_QStandardItemModel_itemData ".} =
-  type Cb = proc(super: QStandardItemModelitemDataBase, index: gen_qabstractitemmodel.QModelIndex): Table[cint,gen_qvariant.QVariant]
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(index: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_itemData(QStandardItemModel(h: self), index)
+  var nimfunc = cast[ptr QStandardItemModelitemDataProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: index)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
   var virtualReturn_Keys_CArray = newSeq[cint](len(virtualReturn))
   var virtualReturn_Values_CArray = newSeq[pointer](len(virtualReturn))
   var virtualReturn_ctr = 0
@@ -1929,7 +1790,7 @@ proc miqt_exec_callback_QStandardItemModel_itemData(self: ptr cQStandardItemMode
 
 
   struct_miqt_map(len: csize_t(len(virtualReturn)),keys: if len(virtualReturn) == 0: nil else: addr(virtualReturn_Keys_CArray[0]), values: if len(virtualReturn) == 0: nil else: addr(virtualReturn_Values_CArray[0]),)
-proc callVirtualBase_setItemData(self: QStandardItemModel, index: gen_qabstractitemmodel.QModelIndex, roles: Table[cint,gen_qvariant.QVariant]): bool =
+proc QStandardItemModelsetItemData*(self: gen_qstandarditemmodel_types.QStandardItemModel, index: gen_qabstractitemmodel.QModelIndex, roles: Table[cint,gen_qvariant.QVariant]): bool =
 
   var roles_Keys_CArray = newSeq[cint](len(roles))
   var roles_Values_CArray = newSeq[pointer](len(roles))
@@ -1939,23 +1800,18 @@ proc callVirtualBase_setItemData(self: QStandardItemModel, index: gen_qabstracti
     roles_Values_CArray[roles_ctr] = roles_v.h
     roles_ctr += 1
 
-
   fQStandardItemModel_virtualbase_setItemData(self.h, index.h, struct_miqt_map(len: csize_t(len(roles)),keys: if len(roles) == 0: nil else: addr(roles_Keys_CArray[0]), values: if len(roles) == 0: nil else: addr(roles_Values_CArray[0]),))
 
-type QStandardItemModelsetItemDataBase* = proc(index: gen_qabstractitemmodel.QModelIndex, roles: Table[cint,gen_qvariant.QVariant]): bool
-proc onsetItemData*(self: QStandardItemModel, slot: proc(super: QStandardItemModelsetItemDataBase, index: gen_qabstractitemmodel.QModelIndex, roles: Table[cint,gen_qvariant.QVariant]): bool) =
+type QStandardItemModelsetItemDataProc* = proc(index: gen_qabstractitemmodel.QModelIndex, roles: Table[cint,gen_qvariant.QVariant]): bool
+proc onsetItemData*(self: gen_qstandarditemmodel_types.QStandardItemModel, slot: QStandardItemModelsetItemDataProc) =
   # TODO check subclass
-  type Cb = proc(super: QStandardItemModelsetItemDataBase, index: gen_qabstractitemmodel.QModelIndex, roles: Table[cint,gen_qvariant.QVariant]): bool
-  var tmp = new Cb
+  var tmp = new QStandardItemModelsetItemDataProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStandardItemModel_override_virtual_setItemData(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStandardItemModel_setItemData(self: ptr cQStandardItemModel, slot: int, index: pointer, roles: struct_miqt_map): bool {.exportc: "miqt_exec_callback_QStandardItemModel_setItemData ".} =
-  type Cb = proc(super: QStandardItemModelsetItemDataBase, index: gen_qabstractitemmodel.QModelIndex, roles: Table[cint,gen_qvariant.QVariant]): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(index: gen_qabstractitemmodel.QModelIndex, roles: Table[cint,gen_qvariant.QVariant]): auto =
-    callVirtualBase_setItemData(QStandardItemModel(h: self), index, roles)
+  var nimfunc = cast[ptr QStandardItemModelsetItemDataProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: index)
 
   var vroles_mm = roles
@@ -1971,36 +1827,30 @@ proc miqt_exec_callback_QStandardItemModel_setItemData(self: ptr cQStandardItemM
   let slotval2 = vrolesx_ret
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_sort(self: QStandardItemModel, column: cint, order: gen_qnamespace.SortOrder): void =
-
+proc QStandardItemModelsort*(self: gen_qstandarditemmodel_types.QStandardItemModel, column: cint, order: cint): void =
 
   fQStandardItemModel_virtualbase_sort(self.h, column, cint(order))
 
-type QStandardItemModelsortBase* = proc(column: cint, order: gen_qnamespace.SortOrder): void
-proc onsort*(self: QStandardItemModel, slot: proc(super: QStandardItemModelsortBase, column: cint, order: gen_qnamespace.SortOrder): void) =
+type QStandardItemModelsortProc* = proc(column: cint, order: cint): void
+proc onsort*(self: gen_qstandarditemmodel_types.QStandardItemModel, slot: QStandardItemModelsortProc) =
   # TODO check subclass
-  type Cb = proc(super: QStandardItemModelsortBase, column: cint, order: gen_qnamespace.SortOrder): void
-  var tmp = new Cb
+  var tmp = new QStandardItemModelsortProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStandardItemModel_override_virtual_sort(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStandardItemModel_sort(self: ptr cQStandardItemModel, slot: int, column: cint, order: cint): void {.exportc: "miqt_exec_callback_QStandardItemModel_sort ".} =
-  type Cb = proc(super: QStandardItemModelsortBase, column: cint, order: gen_qnamespace.SortOrder): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(column: cint, order: gen_qnamespace.SortOrder): auto =
-    callVirtualBase_sort(QStandardItemModel(h: self), column, order)
+  var nimfunc = cast[ptr QStandardItemModelsortProc](cast[pointer](slot))
   let slotval1 = column
 
-  let slotval2 = gen_qnamespace.SortOrder(order)
+  let slotval2 = cint(order)
 
 
-  nimfunc[](superCall, slotval1, slotval2)
-proc callVirtualBase_mimeTypes(self: QStandardItemModel, ): seq[string] =
-
+  nimfunc[](slotval1, slotval2)
+proc QStandardItemModelmimeTypes*(self: gen_qstandarditemmodel_types.QStandardItemModel, ): seq[string] =
 
   var v_ma = fQStandardItemModel_virtualbase_mimeTypes(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -2012,51 +1862,42 @@ proc callVirtualBase_mimeTypes(self: QStandardItemModel, ): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-type QStandardItemModelmimeTypesBase* = proc(): seq[string]
-proc onmimeTypes*(self: QStandardItemModel, slot: proc(super: QStandardItemModelmimeTypesBase): seq[string]) =
+type QStandardItemModelmimeTypesProc* = proc(): seq[string]
+proc onmimeTypes*(self: gen_qstandarditemmodel_types.QStandardItemModel, slot: QStandardItemModelmimeTypesProc) =
   # TODO check subclass
-  type Cb = proc(super: QStandardItemModelmimeTypesBase): seq[string]
-  var tmp = new Cb
+  var tmp = new QStandardItemModelmimeTypesProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStandardItemModel_override_virtual_mimeTypes(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStandardItemModel_mimeTypes(self: ptr cQStandardItemModel, slot: int): struct_miqt_array {.exportc: "miqt_exec_callback_QStandardItemModel_mimeTypes ".} =
-  type Cb = proc(super: QStandardItemModelmimeTypesBase): seq[string]
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_mimeTypes(QStandardItemModel(h: self), )
+  var nimfunc = cast[ptr QStandardItemModelmimeTypesProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
   var virtualReturn_CArray = newSeq[struct_miqt_string](len(virtualReturn))
   for i in 0..<len(virtualReturn):
     virtualReturn_CArray[i] = struct_miqt_string(data: virtualReturn[i], len: csize_t(len(virtualReturn[i])))
 
 
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
-proc callVirtualBase_mimeData(self: QStandardItemModel, indexes: seq[gen_qabstractitemmodel.QModelIndex]): gen_qmimedata.QMimeData =
+proc QStandardItemModelmimeData*(self: gen_qstandarditemmodel_types.QStandardItemModel, indexes: seq[gen_qabstractitemmodel.QModelIndex]): gen_qmimedata.QMimeData =
 
   var indexes_CArray = newSeq[pointer](len(indexes))
   for i in 0..<len(indexes):
     indexes_CArray[i] = indexes[i].h
 
-
   gen_qmimedata.QMimeData(h: fQStandardItemModel_virtualbase_mimeData(self.h, struct_miqt_array(len: csize_t(len(indexes)), data: if len(indexes) == 0: nil else: addr(indexes_CArray[0]))))
 
-type QStandardItemModelmimeDataBase* = proc(indexes: seq[gen_qabstractitemmodel.QModelIndex]): gen_qmimedata.QMimeData
-proc onmimeData*(self: QStandardItemModel, slot: proc(super: QStandardItemModelmimeDataBase, indexes: seq[gen_qabstractitemmodel.QModelIndex]): gen_qmimedata.QMimeData) =
+type QStandardItemModelmimeDataProc* = proc(indexes: seq[gen_qabstractitemmodel.QModelIndex]): gen_qmimedata.QMimeData
+proc onmimeData*(self: gen_qstandarditemmodel_types.QStandardItemModel, slot: QStandardItemModelmimeDataProc) =
   # TODO check subclass
-  type Cb = proc(super: QStandardItemModelmimeDataBase, indexes: seq[gen_qabstractitemmodel.QModelIndex]): gen_qmimedata.QMimeData
-  var tmp = new Cb
+  var tmp = new QStandardItemModelmimeDataProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStandardItemModel_override_virtual_mimeData(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStandardItemModel_mimeData(self: ptr cQStandardItemModel, slot: int, indexes: struct_miqt_array): pointer {.exportc: "miqt_exec_callback_QStandardItemModel_mimeData ".} =
-  type Cb = proc(super: QStandardItemModelmimeDataBase, indexes: seq[gen_qabstractitemmodel.QModelIndex]): gen_qmimedata.QMimeData
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(indexes: seq[gen_qabstractitemmodel.QModelIndex]): auto =
-    callVirtualBase_mimeData(QStandardItemModel(h: self), indexes)
+  var nimfunc = cast[ptr QStandardItemModelmimeDataProc](cast[pointer](slot))
   var vindexes_ma = indexes
   var vindexesx_ret = newSeq[gen_qabstractitemmodel.QModelIndex](int(vindexes_ma.len))
   let vindexes_outCast = cast[ptr UncheckedArray[pointer]](vindexes_ma.data)
@@ -2065,31 +1906,26 @@ proc miqt_exec_callback_QStandardItemModel_mimeData(self: ptr cQStandardItemMode
   let slotval1 = vindexesx_ret
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_dropMimeData(self: QStandardItemModel, data: gen_qmimedata.QMimeData, action: gen_qnamespace.DropAction, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
+proc QStandardItemModeldropMimeData*(self: gen_qstandarditemmodel_types.QStandardItemModel, data: gen_qmimedata.QMimeData, action: cint, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
 
   fQStandardItemModel_virtualbase_dropMimeData(self.h, data.h, cint(action), row, column, parent.h)
 
-type QStandardItemModeldropMimeDataBase* = proc(data: gen_qmimedata.QMimeData, action: gen_qnamespace.DropAction, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
-proc ondropMimeData*(self: QStandardItemModel, slot: proc(super: QStandardItemModeldropMimeDataBase, data: gen_qmimedata.QMimeData, action: gen_qnamespace.DropAction, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool) =
+type QStandardItemModeldropMimeDataProc* = proc(data: gen_qmimedata.QMimeData, action: cint, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
+proc ondropMimeData*(self: gen_qstandarditemmodel_types.QStandardItemModel, slot: QStandardItemModeldropMimeDataProc) =
   # TODO check subclass
-  type Cb = proc(super: QStandardItemModeldropMimeDataBase, data: gen_qmimedata.QMimeData, action: gen_qnamespace.DropAction, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
-  var tmp = new Cb
+  var tmp = new QStandardItemModeldropMimeDataProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStandardItemModel_override_virtual_dropMimeData(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStandardItemModel_dropMimeData(self: ptr cQStandardItemModel, slot: int, data: pointer, action: cint, row: cint, column: cint, parent: pointer): bool {.exportc: "miqt_exec_callback_QStandardItemModel_dropMimeData ".} =
-  type Cb = proc(super: QStandardItemModeldropMimeDataBase, data: gen_qmimedata.QMimeData, action: gen_qnamespace.DropAction, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(data: gen_qmimedata.QMimeData, action: gen_qnamespace.DropAction, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_dropMimeData(QStandardItemModel(h: self), data, action, row, column, parent)
+  var nimfunc = cast[ptr QStandardItemModeldropMimeDataProc](cast[pointer](slot))
   let slotval1 = gen_qmimedata.QMimeData(h: data)
 
-  let slotval2 = gen_qnamespace.DropAction(action)
+  let slotval2 = cint(action)
 
   let slotval3 = row
 
@@ -2098,31 +1934,26 @@ proc miqt_exec_callback_QStandardItemModel_dropMimeData(self: ptr cQStandardItem
   let slotval5 = gen_qabstractitemmodel.QModelIndex(h: parent)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3, slotval4, slotval5 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3, slotval4, slotval5 )
 
   virtualReturn
-proc callVirtualBase_canDropMimeData(self: QStandardItemModel, data: gen_qmimedata.QMimeData, action: gen_qnamespace.DropAction, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
+proc QStandardItemModelcanDropMimeData*(self: gen_qstandarditemmodel_types.QStandardItemModel, data: gen_qmimedata.QMimeData, action: cint, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
 
   fQStandardItemModel_virtualbase_canDropMimeData(self.h, data.h, cint(action), row, column, parent.h)
 
-type QStandardItemModelcanDropMimeDataBase* = proc(data: gen_qmimedata.QMimeData, action: gen_qnamespace.DropAction, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
-proc oncanDropMimeData*(self: QStandardItemModel, slot: proc(super: QStandardItemModelcanDropMimeDataBase, data: gen_qmimedata.QMimeData, action: gen_qnamespace.DropAction, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool) =
+type QStandardItemModelcanDropMimeDataProc* = proc(data: gen_qmimedata.QMimeData, action: cint, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
+proc oncanDropMimeData*(self: gen_qstandarditemmodel_types.QStandardItemModel, slot: QStandardItemModelcanDropMimeDataProc) =
   # TODO check subclass
-  type Cb = proc(super: QStandardItemModelcanDropMimeDataBase, data: gen_qmimedata.QMimeData, action: gen_qnamespace.DropAction, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
-  var tmp = new Cb
+  var tmp = new QStandardItemModelcanDropMimeDataProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStandardItemModel_override_virtual_canDropMimeData(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStandardItemModel_canDropMimeData(self: ptr cQStandardItemModel, slot: int, data: pointer, action: cint, row: cint, column: cint, parent: pointer): bool {.exportc: "miqt_exec_callback_QStandardItemModel_canDropMimeData ".} =
-  type Cb = proc(super: QStandardItemModelcanDropMimeDataBase, data: gen_qmimedata.QMimeData, action: gen_qnamespace.DropAction, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(data: gen_qmimedata.QMimeData, action: gen_qnamespace.DropAction, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_canDropMimeData(QStandardItemModel(h: self), data, action, row, column, parent)
+  var nimfunc = cast[ptr QStandardItemModelcanDropMimeDataProc](cast[pointer](slot))
   let slotval1 = gen_qmimedata.QMimeData(h: data)
 
-  let slotval2 = gen_qnamespace.DropAction(action)
+  let slotval2 = cint(action)
 
   let slotval3 = row
 
@@ -2131,51 +1962,41 @@ proc miqt_exec_callback_QStandardItemModel_canDropMimeData(self: ptr cQStandardI
   let slotval5 = gen_qabstractitemmodel.QModelIndex(h: parent)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3, slotval4, slotval5 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3, slotval4, slotval5 )
 
   virtualReturn
-proc callVirtualBase_supportedDragActions(self: QStandardItemModel, ): gen_qnamespace.DropAction =
+proc QStandardItemModelsupportedDragActions*(self: gen_qstandarditemmodel_types.QStandardItemModel, ): cint =
 
+  cint(fQStandardItemModel_virtualbase_supportedDragActions(self.h))
 
-  gen_qnamespace.DropAction(fQStandardItemModel_virtualbase_supportedDragActions(self.h))
-
-type QStandardItemModelsupportedDragActionsBase* = proc(): gen_qnamespace.DropAction
-proc onsupportedDragActions*(self: QStandardItemModel, slot: proc(super: QStandardItemModelsupportedDragActionsBase): gen_qnamespace.DropAction) =
+type QStandardItemModelsupportedDragActionsProc* = proc(): cint
+proc onsupportedDragActions*(self: gen_qstandarditemmodel_types.QStandardItemModel, slot: QStandardItemModelsupportedDragActionsProc) =
   # TODO check subclass
-  type Cb = proc(super: QStandardItemModelsupportedDragActionsBase): gen_qnamespace.DropAction
-  var tmp = new Cb
+  var tmp = new QStandardItemModelsupportedDragActionsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStandardItemModel_override_virtual_supportedDragActions(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStandardItemModel_supportedDragActions(self: ptr cQStandardItemModel, slot: int): cint {.exportc: "miqt_exec_callback_QStandardItemModel_supportedDragActions ".} =
-  type Cb = proc(super: QStandardItemModelsupportedDragActionsBase): gen_qnamespace.DropAction
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_supportedDragActions(QStandardItemModel(h: self), )
+  var nimfunc = cast[ptr QStandardItemModelsupportedDragActionsProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   cint(virtualReturn)
-proc callVirtualBase_moveRows(self: QStandardItemModel, sourceParent: gen_qabstractitemmodel.QModelIndex, sourceRow: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool =
-
+proc QStandardItemModelmoveRows*(self: gen_qstandarditemmodel_types.QStandardItemModel, sourceParent: gen_qabstractitemmodel.QModelIndex, sourceRow: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool =
 
   fQStandardItemModel_virtualbase_moveRows(self.h, sourceParent.h, sourceRow, count, destinationParent.h, destinationChild)
 
-type QStandardItemModelmoveRowsBase* = proc(sourceParent: gen_qabstractitemmodel.QModelIndex, sourceRow: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool
-proc onmoveRows*(self: QStandardItemModel, slot: proc(super: QStandardItemModelmoveRowsBase, sourceParent: gen_qabstractitemmodel.QModelIndex, sourceRow: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool) =
+type QStandardItemModelmoveRowsProc* = proc(sourceParent: gen_qabstractitemmodel.QModelIndex, sourceRow: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool
+proc onmoveRows*(self: gen_qstandarditemmodel_types.QStandardItemModel, slot: QStandardItemModelmoveRowsProc) =
   # TODO check subclass
-  type Cb = proc(super: QStandardItemModelmoveRowsBase, sourceParent: gen_qabstractitemmodel.QModelIndex, sourceRow: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool
-  var tmp = new Cb
+  var tmp = new QStandardItemModelmoveRowsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStandardItemModel_override_virtual_moveRows(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStandardItemModel_moveRows(self: ptr cQStandardItemModel, slot: int, sourceParent: pointer, sourceRow: cint, count: cint, destinationParent: pointer, destinationChild: cint): bool {.exportc: "miqt_exec_callback_QStandardItemModel_moveRows ".} =
-  type Cb = proc(super: QStandardItemModelmoveRowsBase, sourceParent: gen_qabstractitemmodel.QModelIndex, sourceRow: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(sourceParent: gen_qabstractitemmodel.QModelIndex, sourceRow: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): auto =
-    callVirtualBase_moveRows(QStandardItemModel(h: self), sourceParent, sourceRow, count, destinationParent, destinationChild)
+  var nimfunc = cast[ptr QStandardItemModelmoveRowsProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: sourceParent)
 
   let slotval2 = sourceRow
@@ -2187,28 +2008,23 @@ proc miqt_exec_callback_QStandardItemModel_moveRows(self: ptr cQStandardItemMode
   let slotval5 = destinationChild
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3, slotval4, slotval5 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3, slotval4, slotval5 )
 
   virtualReturn
-proc callVirtualBase_moveColumns(self: QStandardItemModel, sourceParent: gen_qabstractitemmodel.QModelIndex, sourceColumn: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool =
-
+proc QStandardItemModelmoveColumns*(self: gen_qstandarditemmodel_types.QStandardItemModel, sourceParent: gen_qabstractitemmodel.QModelIndex, sourceColumn: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool =
 
   fQStandardItemModel_virtualbase_moveColumns(self.h, sourceParent.h, sourceColumn, count, destinationParent.h, destinationChild)
 
-type QStandardItemModelmoveColumnsBase* = proc(sourceParent: gen_qabstractitemmodel.QModelIndex, sourceColumn: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool
-proc onmoveColumns*(self: QStandardItemModel, slot: proc(super: QStandardItemModelmoveColumnsBase, sourceParent: gen_qabstractitemmodel.QModelIndex, sourceColumn: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool) =
+type QStandardItemModelmoveColumnsProc* = proc(sourceParent: gen_qabstractitemmodel.QModelIndex, sourceColumn: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool
+proc onmoveColumns*(self: gen_qstandarditemmodel_types.QStandardItemModel, slot: QStandardItemModelmoveColumnsProc) =
   # TODO check subclass
-  type Cb = proc(super: QStandardItemModelmoveColumnsBase, sourceParent: gen_qabstractitemmodel.QModelIndex, sourceColumn: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool
-  var tmp = new Cb
+  var tmp = new QStandardItemModelmoveColumnsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStandardItemModel_override_virtual_moveColumns(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStandardItemModel_moveColumns(self: ptr cQStandardItemModel, slot: int, sourceParent: pointer, sourceColumn: cint, count: cint, destinationParent: pointer, destinationChild: cint): bool {.exportc: "miqt_exec_callback_QStandardItemModel_moveColumns ".} =
-  type Cb = proc(super: QStandardItemModelmoveColumnsBase, sourceParent: gen_qabstractitemmodel.QModelIndex, sourceColumn: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(sourceParent: gen_qabstractitemmodel.QModelIndex, sourceColumn: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): auto =
-    callVirtualBase_moveColumns(QStandardItemModel(h: self), sourceParent, sourceColumn, count, destinationParent, destinationChild)
+  var nimfunc = cast[ptr QStandardItemModelmoveColumnsProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: sourceParent)
 
   let slotval2 = sourceColumn
@@ -2220,84 +2036,68 @@ proc miqt_exec_callback_QStandardItemModel_moveColumns(self: ptr cQStandardItemM
   let slotval5 = destinationChild
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3, slotval4, slotval5 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3, slotval4, slotval5 )
 
   virtualReturn
-proc callVirtualBase_fetchMore(self: QStandardItemModel, parent: gen_qabstractitemmodel.QModelIndex): void =
-
+proc QStandardItemModelfetchMore*(self: gen_qstandarditemmodel_types.QStandardItemModel, parent: gen_qabstractitemmodel.QModelIndex): void =
 
   fQStandardItemModel_virtualbase_fetchMore(self.h, parent.h)
 
-type QStandardItemModelfetchMoreBase* = proc(parent: gen_qabstractitemmodel.QModelIndex): void
-proc onfetchMore*(self: QStandardItemModel, slot: proc(super: QStandardItemModelfetchMoreBase, parent: gen_qabstractitemmodel.QModelIndex): void) =
+type QStandardItemModelfetchMoreProc* = proc(parent: gen_qabstractitemmodel.QModelIndex): void
+proc onfetchMore*(self: gen_qstandarditemmodel_types.QStandardItemModel, slot: QStandardItemModelfetchMoreProc) =
   # TODO check subclass
-  type Cb = proc(super: QStandardItemModelfetchMoreBase, parent: gen_qabstractitemmodel.QModelIndex): void
-  var tmp = new Cb
+  var tmp = new QStandardItemModelfetchMoreProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStandardItemModel_override_virtual_fetchMore(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStandardItemModel_fetchMore(self: ptr cQStandardItemModel, slot: int, parent: pointer): void {.exportc: "miqt_exec_callback_QStandardItemModel_fetchMore ".} =
-  type Cb = proc(super: QStandardItemModelfetchMoreBase, parent: gen_qabstractitemmodel.QModelIndex): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(parent: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_fetchMore(QStandardItemModel(h: self), parent)
+  var nimfunc = cast[ptr QStandardItemModelfetchMoreProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: parent)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_canFetchMore(self: QStandardItemModel, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
+  nimfunc[](slotval1)
+proc QStandardItemModelcanFetchMore*(self: gen_qstandarditemmodel_types.QStandardItemModel, parent: gen_qabstractitemmodel.QModelIndex): bool =
 
   fQStandardItemModel_virtualbase_canFetchMore(self.h, parent.h)
 
-type QStandardItemModelcanFetchMoreBase* = proc(parent: gen_qabstractitemmodel.QModelIndex): bool
-proc oncanFetchMore*(self: QStandardItemModel, slot: proc(super: QStandardItemModelcanFetchMoreBase, parent: gen_qabstractitemmodel.QModelIndex): bool) =
+type QStandardItemModelcanFetchMoreProc* = proc(parent: gen_qabstractitemmodel.QModelIndex): bool
+proc oncanFetchMore*(self: gen_qstandarditemmodel_types.QStandardItemModel, slot: QStandardItemModelcanFetchMoreProc) =
   # TODO check subclass
-  type Cb = proc(super: QStandardItemModelcanFetchMoreBase, parent: gen_qabstractitemmodel.QModelIndex): bool
-  var tmp = new Cb
+  var tmp = new QStandardItemModelcanFetchMoreProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStandardItemModel_override_virtual_canFetchMore(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStandardItemModel_canFetchMore(self: ptr cQStandardItemModel, slot: int, parent: pointer): bool {.exportc: "miqt_exec_callback_QStandardItemModel_canFetchMore ".} =
-  type Cb = proc(super: QStandardItemModelcanFetchMoreBase, parent: gen_qabstractitemmodel.QModelIndex): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(parent: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_canFetchMore(QStandardItemModel(h: self), parent)
+  var nimfunc = cast[ptr QStandardItemModelcanFetchMoreProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: parent)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_buddy(self: QStandardItemModel, index: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
-
+proc QStandardItemModelbuddy*(self: gen_qstandarditemmodel_types.QStandardItemModel, index: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
 
   gen_qabstractitemmodel.QModelIndex(h: fQStandardItemModel_virtualbase_buddy(self.h, index.h))
 
-type QStandardItemModelbuddyBase* = proc(index: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
-proc onbuddy*(self: QStandardItemModel, slot: proc(super: QStandardItemModelbuddyBase, index: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex) =
+type QStandardItemModelbuddyProc* = proc(index: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
+proc onbuddy*(self: gen_qstandarditemmodel_types.QStandardItemModel, slot: QStandardItemModelbuddyProc) =
   # TODO check subclass
-  type Cb = proc(super: QStandardItemModelbuddyBase, index: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
-  var tmp = new Cb
+  var tmp = new QStandardItemModelbuddyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStandardItemModel_override_virtual_buddy(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStandardItemModel_buddy(self: ptr cQStandardItemModel, slot: int, index: pointer): pointer {.exportc: "miqt_exec_callback_QStandardItemModel_buddy ".} =
-  type Cb = proc(super: QStandardItemModelbuddyBase, index: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(index: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_buddy(QStandardItemModel(h: self), index)
+  var nimfunc = cast[ptr QStandardItemModelbuddyProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: index)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_match(self: QStandardItemModel, start: gen_qabstractitemmodel.QModelIndex, role: cint, value: gen_qvariant.QVariant, hits: cint, flags: gen_qnamespace.MatchFlag): seq[gen_qabstractitemmodel.QModelIndex] =
-
+proc QStandardItemModelmatch*(self: gen_qstandarditemmodel_types.QStandardItemModel, start: gen_qabstractitemmodel.QModelIndex, role: cint, value: gen_qvariant.QVariant, hits: cint, flags: cint): seq[gen_qabstractitemmodel.QModelIndex] =
 
   var v_ma = fQStandardItemModel_virtualbase_match(self.h, start.h, role, value.h, hits, cint(flags))
   var vx_ret = newSeq[gen_qabstractitemmodel.QModelIndex](int(v_ma.len))
@@ -2306,20 +2106,16 @@ proc callVirtualBase_match(self: QStandardItemModel, start: gen_qabstractitemmod
     vx_ret[i] = gen_qabstractitemmodel.QModelIndex(h: v_outCast[i])
   vx_ret
 
-type QStandardItemModelmatchBase* = proc(start: gen_qabstractitemmodel.QModelIndex, role: cint, value: gen_qvariant.QVariant, hits: cint, flags: gen_qnamespace.MatchFlag): seq[gen_qabstractitemmodel.QModelIndex]
-proc onmatch*(self: QStandardItemModel, slot: proc(super: QStandardItemModelmatchBase, start: gen_qabstractitemmodel.QModelIndex, role: cint, value: gen_qvariant.QVariant, hits: cint, flags: gen_qnamespace.MatchFlag): seq[gen_qabstractitemmodel.QModelIndex]) =
+type QStandardItemModelmatchProc* = proc(start: gen_qabstractitemmodel.QModelIndex, role: cint, value: gen_qvariant.QVariant, hits: cint, flags: cint): seq[gen_qabstractitemmodel.QModelIndex]
+proc onmatch*(self: gen_qstandarditemmodel_types.QStandardItemModel, slot: QStandardItemModelmatchProc) =
   # TODO check subclass
-  type Cb = proc(super: QStandardItemModelmatchBase, start: gen_qabstractitemmodel.QModelIndex, role: cint, value: gen_qvariant.QVariant, hits: cint, flags: gen_qnamespace.MatchFlag): seq[gen_qabstractitemmodel.QModelIndex]
-  var tmp = new Cb
+  var tmp = new QStandardItemModelmatchProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStandardItemModel_override_virtual_match(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStandardItemModel_match(self: ptr cQStandardItemModel, slot: int, start: pointer, role: cint, value: pointer, hits: cint, flags: cint): struct_miqt_array {.exportc: "miqt_exec_callback_QStandardItemModel_match ".} =
-  type Cb = proc(super: QStandardItemModelmatchBase, start: gen_qabstractitemmodel.QModelIndex, role: cint, value: gen_qvariant.QVariant, hits: cint, flags: gen_qnamespace.MatchFlag): seq[gen_qabstractitemmodel.QModelIndex]
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(start: gen_qabstractitemmodel.QModelIndex, role: cint, value: gen_qvariant.QVariant, hits: cint, flags: gen_qnamespace.MatchFlag): auto =
-    callVirtualBase_match(QStandardItemModel(h: self), start, role, value, hits, flags)
+  var nimfunc = cast[ptr QStandardItemModelmatchProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: start)
 
   let slotval2 = role
@@ -2328,43 +2124,37 @@ proc miqt_exec_callback_QStandardItemModel_match(self: ptr cQStandardItemModel, 
 
   let slotval4 = hits
 
-  let slotval5 = gen_qnamespace.MatchFlag(flags)
+  let slotval5 = cint(flags)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3, slotval4, slotval5 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3, slotval4, slotval5 )
   var virtualReturn_CArray = newSeq[pointer](len(virtualReturn))
   for i in 0..<len(virtualReturn):
     virtualReturn_CArray[i] = virtualReturn[i].h
 
 
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
-proc callVirtualBase_span(self: QStandardItemModel, index: gen_qabstractitemmodel.QModelIndex): gen_qsize.QSize =
-
+proc QStandardItemModelspan*(self: gen_qstandarditemmodel_types.QStandardItemModel, index: gen_qabstractitemmodel.QModelIndex): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQStandardItemModel_virtualbase_span(self.h, index.h))
 
-type QStandardItemModelspanBase* = proc(index: gen_qabstractitemmodel.QModelIndex): gen_qsize.QSize
-proc onspan*(self: QStandardItemModel, slot: proc(super: QStandardItemModelspanBase, index: gen_qabstractitemmodel.QModelIndex): gen_qsize.QSize) =
+type QStandardItemModelspanProc* = proc(index: gen_qabstractitemmodel.QModelIndex): gen_qsize.QSize
+proc onspan*(self: gen_qstandarditemmodel_types.QStandardItemModel, slot: QStandardItemModelspanProc) =
   # TODO check subclass
-  type Cb = proc(super: QStandardItemModelspanBase, index: gen_qabstractitemmodel.QModelIndex): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QStandardItemModelspanProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStandardItemModel_override_virtual_span(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStandardItemModel_span(self: ptr cQStandardItemModel, slot: int, index: pointer): pointer {.exportc: "miqt_exec_callback_QStandardItemModel_span ".} =
-  type Cb = proc(super: QStandardItemModelspanBase, index: gen_qabstractitemmodel.QModelIndex): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(index: gen_qabstractitemmodel.QModelIndex): auto =
-    callVirtualBase_span(QStandardItemModel(h: self), index)
+  var nimfunc = cast[ptr QStandardItemModelspanProc](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: index)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_roleNames(self: QStandardItemModel, ): Table[cint,seq[byte]] =
-
+proc QStandardItemModelroleNames*(self: gen_qstandarditemmodel_types.QStandardItemModel, ): Table[cint,seq[byte]] =
 
   var v_mm = fQStandardItemModel_virtualbase_roleNames(self.h)
   var vx_ret: Table[cint, seq[byte]]
@@ -2381,22 +2171,18 @@ proc callVirtualBase_roleNames(self: QStandardItemModel, ): Table[cint,seq[byte]
     vx_ret[v_entry_Key] = v_entry_Value
   vx_ret
 
-type QStandardItemModelroleNamesBase* = proc(): Table[cint,seq[byte]]
-proc onroleNames*(self: QStandardItemModel, slot: proc(super: QStandardItemModelroleNamesBase): Table[cint,seq[byte]]) =
+type QStandardItemModelroleNamesProc* = proc(): Table[cint,seq[byte]]
+proc onroleNames*(self: gen_qstandarditemmodel_types.QStandardItemModel, slot: QStandardItemModelroleNamesProc) =
   # TODO check subclass
-  type Cb = proc(super: QStandardItemModelroleNamesBase): Table[cint,seq[byte]]
-  var tmp = new Cb
+  var tmp = new QStandardItemModelroleNamesProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStandardItemModel_override_virtual_roleNames(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStandardItemModel_roleNames(self: ptr cQStandardItemModel, slot: int): struct_miqt_map {.exportc: "miqt_exec_callback_QStandardItemModel_roleNames ".} =
-  type Cb = proc(super: QStandardItemModelroleNamesBase): Table[cint,seq[byte]]
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_roleNames(QStandardItemModel(h: self), )
+  var nimfunc = cast[ptr QStandardItemModelroleNamesProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
   var virtualReturn_Keys_CArray = newSeq[cint](len(virtualReturn))
   var virtualReturn_Values_CArray = newSeq[struct_miqt_string](len(virtualReturn))
   var virtualReturn_ctr = 0
@@ -2407,218 +2193,173 @@ proc miqt_exec_callback_QStandardItemModel_roleNames(self: ptr cQStandardItemMod
 
 
   struct_miqt_map(len: csize_t(len(virtualReturn)),keys: if len(virtualReturn) == 0: nil else: addr(virtualReturn_Keys_CArray[0]), values: if len(virtualReturn) == 0: nil else: addr(virtualReturn_Values_CArray[0]),)
-proc callVirtualBase_submit(self: QStandardItemModel, ): bool =
-
+proc QStandardItemModelsubmit*(self: gen_qstandarditemmodel_types.QStandardItemModel, ): bool =
 
   fQStandardItemModel_virtualbase_submit(self.h)
 
-type QStandardItemModelsubmitBase* = proc(): bool
-proc onsubmit*(self: QStandardItemModel, slot: proc(super: QStandardItemModelsubmitBase): bool) =
+type QStandardItemModelsubmitProc* = proc(): bool
+proc onsubmit*(self: gen_qstandarditemmodel_types.QStandardItemModel, slot: QStandardItemModelsubmitProc) =
   # TODO check subclass
-  type Cb = proc(super: QStandardItemModelsubmitBase): bool
-  var tmp = new Cb
+  var tmp = new QStandardItemModelsubmitProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStandardItemModel_override_virtual_submit(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStandardItemModel_submit(self: ptr cQStandardItemModel, slot: int): bool {.exportc: "miqt_exec_callback_QStandardItemModel_submit ".} =
-  type Cb = proc(super: QStandardItemModelsubmitBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_submit(QStandardItemModel(h: self), )
+  var nimfunc = cast[ptr QStandardItemModelsubmitProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_revert(self: QStandardItemModel, ): void =
-
+proc QStandardItemModelrevert*(self: gen_qstandarditemmodel_types.QStandardItemModel, ): void =
 
   fQStandardItemModel_virtualbase_revert(self.h)
 
-type QStandardItemModelrevertBase* = proc(): void
-proc onrevert*(self: QStandardItemModel, slot: proc(super: QStandardItemModelrevertBase): void) =
+type QStandardItemModelrevertProc* = proc(): void
+proc onrevert*(self: gen_qstandarditemmodel_types.QStandardItemModel, slot: QStandardItemModelrevertProc) =
   # TODO check subclass
-  type Cb = proc(super: QStandardItemModelrevertBase): void
-  var tmp = new Cb
+  var tmp = new QStandardItemModelrevertProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStandardItemModel_override_virtual_revert(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStandardItemModel_revert(self: ptr cQStandardItemModel, slot: int): void {.exportc: "miqt_exec_callback_QStandardItemModel_revert ".} =
-  type Cb = proc(super: QStandardItemModelrevertBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_revert(QStandardItemModel(h: self), )
+  var nimfunc = cast[ptr QStandardItemModelrevertProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_event(self: QStandardItemModel, event: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[]()
+proc QStandardItemModelevent*(self: gen_qstandarditemmodel_types.QStandardItemModel, event: gen_qcoreevent.QEvent): bool =
 
   fQStandardItemModel_virtualbase_event(self.h, event.h)
 
-type QStandardItemModeleventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QStandardItemModel, slot: proc(super: QStandardItemModeleventBase, event: gen_qcoreevent.QEvent): bool) =
+type QStandardItemModeleventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qstandarditemmodel_types.QStandardItemModel, slot: QStandardItemModeleventProc) =
   # TODO check subclass
-  type Cb = proc(super: QStandardItemModeleventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QStandardItemModeleventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStandardItemModel_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStandardItemModel_event(self: ptr cQStandardItemModel, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QStandardItemModel_event ".} =
-  type Cb = proc(super: QStandardItemModeleventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QStandardItemModel(h: self), event)
+  var nimfunc = cast[ptr QStandardItemModeleventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QStandardItemModel, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QStandardItemModeleventFilter*(self: gen_qstandarditemmodel_types.QStandardItemModel, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQStandardItemModel_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QStandardItemModeleventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QStandardItemModel, slot: proc(super: QStandardItemModeleventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QStandardItemModeleventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qstandarditemmodel_types.QStandardItemModel, slot: QStandardItemModeleventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QStandardItemModeleventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QStandardItemModeleventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStandardItemModel_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStandardItemModel_eventFilter(self: ptr cQStandardItemModel, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QStandardItemModel_eventFilter ".} =
-  type Cb = proc(super: QStandardItemModeleventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QStandardItemModel(h: self), watched, event)
+  var nimfunc = cast[ptr QStandardItemModeleventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QStandardItemModel, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QStandardItemModeltimerEvent*(self: gen_qstandarditemmodel_types.QStandardItemModel, event: gen_qcoreevent.QTimerEvent): void =
 
   fQStandardItemModel_virtualbase_timerEvent(self.h, event.h)
 
-type QStandardItemModeltimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QStandardItemModel, slot: proc(super: QStandardItemModeltimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QStandardItemModeltimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qstandarditemmodel_types.QStandardItemModel, slot: QStandardItemModeltimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QStandardItemModeltimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QStandardItemModeltimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStandardItemModel_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStandardItemModel_timerEvent(self: ptr cQStandardItemModel, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QStandardItemModel_timerEvent ".} =
-  type Cb = proc(super: QStandardItemModeltimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QStandardItemModel(h: self), event)
+  var nimfunc = cast[ptr QStandardItemModeltimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QStandardItemModel, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QStandardItemModelchildEvent*(self: gen_qstandarditemmodel_types.QStandardItemModel, event: gen_qcoreevent.QChildEvent): void =
 
   fQStandardItemModel_virtualbase_childEvent(self.h, event.h)
 
-type QStandardItemModelchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QStandardItemModel, slot: proc(super: QStandardItemModelchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QStandardItemModelchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qstandarditemmodel_types.QStandardItemModel, slot: QStandardItemModelchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QStandardItemModelchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QStandardItemModelchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStandardItemModel_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStandardItemModel_childEvent(self: ptr cQStandardItemModel, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QStandardItemModel_childEvent ".} =
-  type Cb = proc(super: QStandardItemModelchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QStandardItemModel(h: self), event)
+  var nimfunc = cast[ptr QStandardItemModelchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QStandardItemModel, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QStandardItemModelcustomEvent*(self: gen_qstandarditemmodel_types.QStandardItemModel, event: gen_qcoreevent.QEvent): void =
 
   fQStandardItemModel_virtualbase_customEvent(self.h, event.h)
 
-type QStandardItemModelcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QStandardItemModel, slot: proc(super: QStandardItemModelcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QStandardItemModelcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qstandarditemmodel_types.QStandardItemModel, slot: QStandardItemModelcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QStandardItemModelcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QStandardItemModelcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStandardItemModel_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStandardItemModel_customEvent(self: ptr cQStandardItemModel, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QStandardItemModel_customEvent ".} =
-  type Cb = proc(super: QStandardItemModelcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QStandardItemModel(h: self), event)
+  var nimfunc = cast[ptr QStandardItemModelcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QStandardItemModel, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QStandardItemModelconnectNotify*(self: gen_qstandarditemmodel_types.QStandardItemModel, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQStandardItemModel_virtualbase_connectNotify(self.h, signal.h)
 
-type QStandardItemModelconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QStandardItemModel, slot: proc(super: QStandardItemModelconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QStandardItemModelconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qstandarditemmodel_types.QStandardItemModel, slot: QStandardItemModelconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QStandardItemModelconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QStandardItemModelconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStandardItemModel_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStandardItemModel_connectNotify(self: ptr cQStandardItemModel, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QStandardItemModel_connectNotify ".} =
-  type Cb = proc(super: QStandardItemModelconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QStandardItemModel(h: self), signal)
+  var nimfunc = cast[ptr QStandardItemModelconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QStandardItemModel, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QStandardItemModeldisconnectNotify*(self: gen_qstandarditemmodel_types.QStandardItemModel, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQStandardItemModel_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QStandardItemModeldisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QStandardItemModel, slot: proc(super: QStandardItemModeldisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QStandardItemModeldisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qstandarditemmodel_types.QStandardItemModel, slot: QStandardItemModeldisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QStandardItemModeldisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QStandardItemModeldisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQStandardItemModel_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QStandardItemModel_disconnectNotify(self: ptr cQStandardItemModel, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QStandardItemModel_disconnectNotify ".} =
-  type Cb = proc(super: QStandardItemModeldisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QStandardItemModel(h: self), signal)
+  var nimfunc = cast[ptr QStandardItemModeldisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QStandardItemModel): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qstandarditemmodel_types.QStandardItemModel): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQStandardItemModel_staticMetaObject())
-proc delete*(self: QStandardItemModel) =
+proc delete*(self: gen_qstandarditemmodel_types.QStandardItemModel) =
   fcQStandardItemModel_delete(self.h)

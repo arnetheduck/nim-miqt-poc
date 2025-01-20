@@ -34,38 +34,32 @@ const cflags = gorge("pkg-config -cflags Qt6Widgets")
 {.compile("gen_qxmlstream.cpp", cflags).}
 
 
-type QXmlStreamReaderTokenType* = cint
-const
-  QXmlStreamReaderNoToken* = 0
-  QXmlStreamReaderInvalid* = 1
-  QXmlStreamReaderStartDocument* = 2
-  QXmlStreamReaderEndDocument* = 3
-  QXmlStreamReaderStartElement* = 4
-  QXmlStreamReaderEndElement* = 5
-  QXmlStreamReaderCharacters* = 6
-  QXmlStreamReaderComment* = 7
-  QXmlStreamReaderDTD* = 8
-  QXmlStreamReaderEntityReference* = 9
-  QXmlStreamReaderProcessingInstruction* = 10
+type QXmlStreamReaderTokenTypeEnum* = distinct cint
+template NoToken*(_: type QXmlStreamReaderTokenTypeEnum): untyped = 0
+template Invalid*(_: type QXmlStreamReaderTokenTypeEnum): untyped = 1
+template StartDocument*(_: type QXmlStreamReaderTokenTypeEnum): untyped = 2
+template EndDocument*(_: type QXmlStreamReaderTokenTypeEnum): untyped = 3
+template StartElement*(_: type QXmlStreamReaderTokenTypeEnum): untyped = 4
+template EndElement*(_: type QXmlStreamReaderTokenTypeEnum): untyped = 5
+template Characters*(_: type QXmlStreamReaderTokenTypeEnum): untyped = 6
+template Comment*(_: type QXmlStreamReaderTokenTypeEnum): untyped = 7
+template DTD*(_: type QXmlStreamReaderTokenTypeEnum): untyped = 8
+template EntityReference*(_: type QXmlStreamReaderTokenTypeEnum): untyped = 9
+template ProcessingInstruction*(_: type QXmlStreamReaderTokenTypeEnum): untyped = 10
 
 
-
-type QXmlStreamReaderReadElementTextBehaviour* = cint
-const
-  QXmlStreamReaderErrorOnUnexpectedElement* = 0
-  QXmlStreamReaderIncludeChildElements* = 1
-  QXmlStreamReaderSkipChildElements* = 2
+type QXmlStreamReaderReadElementTextBehaviourEnum* = distinct cint
+template ErrorOnUnexpectedElement*(_: type QXmlStreamReaderReadElementTextBehaviourEnum): untyped = 0
+template IncludeChildElements*(_: type QXmlStreamReaderReadElementTextBehaviourEnum): untyped = 1
+template SkipChildElements*(_: type QXmlStreamReaderReadElementTextBehaviourEnum): untyped = 2
 
 
-
-type QXmlStreamReaderError* = cint
-const
-  QXmlStreamReaderNoError* = 0
-  QXmlStreamReaderUnexpectedElementError* = 1
-  QXmlStreamReaderCustomError* = 2
-  QXmlStreamReaderNotWellFormedError* = 3
-  QXmlStreamReaderPrematureEndOfDocumentError* = 4
-
+type QXmlStreamReaderErrorEnum* = distinct cint
+template NoError*(_: type QXmlStreamReaderErrorEnum): untyped = 0
+template UnexpectedElementError*(_: type QXmlStreamReaderErrorEnum): untyped = 1
+template CustomError*(_: type QXmlStreamReaderErrorEnum): untyped = 2
+template NotWellFormedError*(_: type QXmlStreamReaderErrorEnum): untyped = 3
+template PrematureEndOfDocumentError*(_: type QXmlStreamReaderErrorEnum): untyped = 4
 
 
 import gen_qxmlstream_types
@@ -197,266 +191,266 @@ proc fcQXmlStreamWriter_writeProcessingInstruction2(self: pointer, target: struc
 proc fcQXmlStreamWriter_delete(self: pointer) {.importc: "QXmlStreamWriter_delete".}
 
 
-func init*(T: type QXmlStreamAttribute, h: ptr cQXmlStreamAttribute): QXmlStreamAttribute =
+func init*(T: type gen_qxmlstream_types.QXmlStreamAttribute, h: ptr cQXmlStreamAttribute): gen_qxmlstream_types.QXmlStreamAttribute =
   T(h: h)
-proc create*(T: type QXmlStreamAttribute, ): QXmlStreamAttribute =
+proc create*(T: type gen_qxmlstream_types.QXmlStreamAttribute, ): gen_qxmlstream_types.QXmlStreamAttribute =
 
-  QXmlStreamAttribute.init(fcQXmlStreamAttribute_new())
-proc create*(T: type QXmlStreamAttribute, qualifiedName: string, value: string): QXmlStreamAttribute =
+  gen_qxmlstream_types.QXmlStreamAttribute.init(fcQXmlStreamAttribute_new())
+proc create*(T: type gen_qxmlstream_types.QXmlStreamAttribute, qualifiedName: string, value: string): gen_qxmlstream_types.QXmlStreamAttribute =
 
-  QXmlStreamAttribute.init(fcQXmlStreamAttribute_new2(struct_miqt_string(data: qualifiedName, len: csize_t(len(qualifiedName))), struct_miqt_string(data: value, len: csize_t(len(value)))))
-proc create*(T: type QXmlStreamAttribute, namespaceUri: string, name: string, value: string): QXmlStreamAttribute =
+  gen_qxmlstream_types.QXmlStreamAttribute.init(fcQXmlStreamAttribute_new2(struct_miqt_string(data: qualifiedName, len: csize_t(len(qualifiedName))), struct_miqt_string(data: value, len: csize_t(len(value)))))
+proc create*(T: type gen_qxmlstream_types.QXmlStreamAttribute, namespaceUri: string, name: string, value: string): gen_qxmlstream_types.QXmlStreamAttribute =
 
-  QXmlStreamAttribute.init(fcQXmlStreamAttribute_new3(struct_miqt_string(data: namespaceUri, len: csize_t(len(namespaceUri))), struct_miqt_string(data: name, len: csize_t(len(name))), struct_miqt_string(data: value, len: csize_t(len(value)))))
-proc create*(T: type QXmlStreamAttribute, param1: QXmlStreamAttribute): QXmlStreamAttribute =
+  gen_qxmlstream_types.QXmlStreamAttribute.init(fcQXmlStreamAttribute_new3(struct_miqt_string(data: namespaceUri, len: csize_t(len(namespaceUri))), struct_miqt_string(data: name, len: csize_t(len(name))), struct_miqt_string(data: value, len: csize_t(len(value)))))
+proc create*(T: type gen_qxmlstream_types.QXmlStreamAttribute, param1: gen_qxmlstream_types.QXmlStreamAttribute): gen_qxmlstream_types.QXmlStreamAttribute =
 
-  QXmlStreamAttribute.init(fcQXmlStreamAttribute_new4(param1.h))
-proc isDefault*(self: QXmlStreamAttribute, ): bool =
+  gen_qxmlstream_types.QXmlStreamAttribute.init(fcQXmlStreamAttribute_new4(param1.h))
+proc isDefault*(self: gen_qxmlstream_types.QXmlStreamAttribute, ): bool =
 
   fcQXmlStreamAttribute_isDefault(self.h)
 
-proc operatorEqual*(self: QXmlStreamAttribute, other: QXmlStreamAttribute): bool =
+proc operatorEqual*(self: gen_qxmlstream_types.QXmlStreamAttribute, other: gen_qxmlstream_types.QXmlStreamAttribute): bool =
 
   fcQXmlStreamAttribute_operatorEqual(self.h, other.h)
 
-proc operatorNotEqual*(self: QXmlStreamAttribute, other: QXmlStreamAttribute): bool =
+proc operatorNotEqual*(self: gen_qxmlstream_types.QXmlStreamAttribute, other: gen_qxmlstream_types.QXmlStreamAttribute): bool =
 
   fcQXmlStreamAttribute_operatorNotEqual(self.h, other.h)
 
-proc operatorAssign*(self: QXmlStreamAttribute, param1: QXmlStreamAttribute): void =
+proc operatorAssign*(self: gen_qxmlstream_types.QXmlStreamAttribute, param1: gen_qxmlstream_types.QXmlStreamAttribute): void =
 
   fcQXmlStreamAttribute_operatorAssign(self.h, param1.h)
 
-proc delete*(self: QXmlStreamAttribute) =
+proc delete*(self: gen_qxmlstream_types.QXmlStreamAttribute) =
   fcQXmlStreamAttribute_delete(self.h)
 
-func init*(T: type QXmlStreamNamespaceDeclaration, h: ptr cQXmlStreamNamespaceDeclaration): QXmlStreamNamespaceDeclaration =
+func init*(T: type gen_qxmlstream_types.QXmlStreamNamespaceDeclaration, h: ptr cQXmlStreamNamespaceDeclaration): gen_qxmlstream_types.QXmlStreamNamespaceDeclaration =
   T(h: h)
-proc create*(T: type QXmlStreamNamespaceDeclaration, ): QXmlStreamNamespaceDeclaration =
+proc create*(T: type gen_qxmlstream_types.QXmlStreamNamespaceDeclaration, ): gen_qxmlstream_types.QXmlStreamNamespaceDeclaration =
 
-  QXmlStreamNamespaceDeclaration.init(fcQXmlStreamNamespaceDeclaration_new())
-proc create*(T: type QXmlStreamNamespaceDeclaration, prefix: string, namespaceUri: string): QXmlStreamNamespaceDeclaration =
+  gen_qxmlstream_types.QXmlStreamNamespaceDeclaration.init(fcQXmlStreamNamespaceDeclaration_new())
+proc create*(T: type gen_qxmlstream_types.QXmlStreamNamespaceDeclaration, prefix: string, namespaceUri: string): gen_qxmlstream_types.QXmlStreamNamespaceDeclaration =
 
-  QXmlStreamNamespaceDeclaration.init(fcQXmlStreamNamespaceDeclaration_new2(struct_miqt_string(data: prefix, len: csize_t(len(prefix))), struct_miqt_string(data: namespaceUri, len: csize_t(len(namespaceUri)))))
-proc operatorEqual*(self: QXmlStreamNamespaceDeclaration, other: QXmlStreamNamespaceDeclaration): bool =
+  gen_qxmlstream_types.QXmlStreamNamespaceDeclaration.init(fcQXmlStreamNamespaceDeclaration_new2(struct_miqt_string(data: prefix, len: csize_t(len(prefix))), struct_miqt_string(data: namespaceUri, len: csize_t(len(namespaceUri)))))
+proc operatorEqual*(self: gen_qxmlstream_types.QXmlStreamNamespaceDeclaration, other: gen_qxmlstream_types.QXmlStreamNamespaceDeclaration): bool =
 
   fcQXmlStreamNamespaceDeclaration_operatorEqual(self.h, other.h)
 
-proc operatorNotEqual*(self: QXmlStreamNamespaceDeclaration, other: QXmlStreamNamespaceDeclaration): bool =
+proc operatorNotEqual*(self: gen_qxmlstream_types.QXmlStreamNamespaceDeclaration, other: gen_qxmlstream_types.QXmlStreamNamespaceDeclaration): bool =
 
   fcQXmlStreamNamespaceDeclaration_operatorNotEqual(self.h, other.h)
 
-proc delete*(self: QXmlStreamNamespaceDeclaration) =
+proc delete*(self: gen_qxmlstream_types.QXmlStreamNamespaceDeclaration) =
   fcQXmlStreamNamespaceDeclaration_delete(self.h)
 
-func init*(T: type QXmlStreamNotationDeclaration, h: ptr cQXmlStreamNotationDeclaration): QXmlStreamNotationDeclaration =
+func init*(T: type gen_qxmlstream_types.QXmlStreamNotationDeclaration, h: ptr cQXmlStreamNotationDeclaration): gen_qxmlstream_types.QXmlStreamNotationDeclaration =
   T(h: h)
-proc create*(T: type QXmlStreamNotationDeclaration, ): QXmlStreamNotationDeclaration =
+proc create*(T: type gen_qxmlstream_types.QXmlStreamNotationDeclaration, ): gen_qxmlstream_types.QXmlStreamNotationDeclaration =
 
-  QXmlStreamNotationDeclaration.init(fcQXmlStreamNotationDeclaration_new())
-proc operatorEqual*(self: QXmlStreamNotationDeclaration, other: QXmlStreamNotationDeclaration): bool =
+  gen_qxmlstream_types.QXmlStreamNotationDeclaration.init(fcQXmlStreamNotationDeclaration_new())
+proc operatorEqual*(self: gen_qxmlstream_types.QXmlStreamNotationDeclaration, other: gen_qxmlstream_types.QXmlStreamNotationDeclaration): bool =
 
   fcQXmlStreamNotationDeclaration_operatorEqual(self.h, other.h)
 
-proc operatorNotEqual*(self: QXmlStreamNotationDeclaration, other: QXmlStreamNotationDeclaration): bool =
+proc operatorNotEqual*(self: gen_qxmlstream_types.QXmlStreamNotationDeclaration, other: gen_qxmlstream_types.QXmlStreamNotationDeclaration): bool =
 
   fcQXmlStreamNotationDeclaration_operatorNotEqual(self.h, other.h)
 
-proc delete*(self: QXmlStreamNotationDeclaration) =
+proc delete*(self: gen_qxmlstream_types.QXmlStreamNotationDeclaration) =
   fcQXmlStreamNotationDeclaration_delete(self.h)
 
-func init*(T: type QXmlStreamEntityDeclaration, h: ptr cQXmlStreamEntityDeclaration): QXmlStreamEntityDeclaration =
+func init*(T: type gen_qxmlstream_types.QXmlStreamEntityDeclaration, h: ptr cQXmlStreamEntityDeclaration): gen_qxmlstream_types.QXmlStreamEntityDeclaration =
   T(h: h)
-proc create*(T: type QXmlStreamEntityDeclaration, ): QXmlStreamEntityDeclaration =
+proc create*(T: type gen_qxmlstream_types.QXmlStreamEntityDeclaration, ): gen_qxmlstream_types.QXmlStreamEntityDeclaration =
 
-  QXmlStreamEntityDeclaration.init(fcQXmlStreamEntityDeclaration_new())
-proc operatorEqual*(self: QXmlStreamEntityDeclaration, other: QXmlStreamEntityDeclaration): bool =
+  gen_qxmlstream_types.QXmlStreamEntityDeclaration.init(fcQXmlStreamEntityDeclaration_new())
+proc operatorEqual*(self: gen_qxmlstream_types.QXmlStreamEntityDeclaration, other: gen_qxmlstream_types.QXmlStreamEntityDeclaration): bool =
 
   fcQXmlStreamEntityDeclaration_operatorEqual(self.h, other.h)
 
-proc operatorNotEqual*(self: QXmlStreamEntityDeclaration, other: QXmlStreamEntityDeclaration): bool =
+proc operatorNotEqual*(self: gen_qxmlstream_types.QXmlStreamEntityDeclaration, other: gen_qxmlstream_types.QXmlStreamEntityDeclaration): bool =
 
   fcQXmlStreamEntityDeclaration_operatorNotEqual(self.h, other.h)
 
-proc delete*(self: QXmlStreamEntityDeclaration) =
+proc delete*(self: gen_qxmlstream_types.QXmlStreamEntityDeclaration) =
   fcQXmlStreamEntityDeclaration_delete(self.h)
 
-func init*(T: type QXmlStreamEntityResolver, h: ptr cQXmlStreamEntityResolver): QXmlStreamEntityResolver =
+func init*(T: type gen_qxmlstream_types.QXmlStreamEntityResolver, h: ptr cQXmlStreamEntityResolver): gen_qxmlstream_types.QXmlStreamEntityResolver =
   T(h: h)
-proc resolveEntity*(self: QXmlStreamEntityResolver, publicId: string, systemId: string): string =
+proc resolveEntity*(self: gen_qxmlstream_types.QXmlStreamEntityResolver, publicId: string, systemId: string): string =
 
   let v_ms = fcQXmlStreamEntityResolver_resolveEntity(self.h, struct_miqt_string(data: publicId, len: csize_t(len(publicId))), struct_miqt_string(data: systemId, len: csize_t(len(systemId))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc resolveUndeclaredEntity*(self: QXmlStreamEntityResolver, name: string): string =
+proc resolveUndeclaredEntity*(self: gen_qxmlstream_types.QXmlStreamEntityResolver, name: string): string =
 
   let v_ms = fcQXmlStreamEntityResolver_resolveUndeclaredEntity(self.h, struct_miqt_string(data: name, len: csize_t(len(name))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc delete*(self: QXmlStreamEntityResolver) =
+proc delete*(self: gen_qxmlstream_types.QXmlStreamEntityResolver) =
   fcQXmlStreamEntityResolver_delete(self.h)
 
-func init*(T: type QXmlStreamReader, h: ptr cQXmlStreamReader): QXmlStreamReader =
+func init*(T: type gen_qxmlstream_types.QXmlStreamReader, h: ptr cQXmlStreamReader): gen_qxmlstream_types.QXmlStreamReader =
   T(h: h)
-proc create*(T: type QXmlStreamReader, ): QXmlStreamReader =
+proc create*(T: type gen_qxmlstream_types.QXmlStreamReader, ): gen_qxmlstream_types.QXmlStreamReader =
 
-  QXmlStreamReader.init(fcQXmlStreamReader_new())
-proc create*(T: type QXmlStreamReader, device: gen_qiodevice.QIODevice): QXmlStreamReader =
+  gen_qxmlstream_types.QXmlStreamReader.init(fcQXmlStreamReader_new())
+proc create*(T: type gen_qxmlstream_types.QXmlStreamReader, device: gen_qiodevice.QIODevice): gen_qxmlstream_types.QXmlStreamReader =
 
-  QXmlStreamReader.init(fcQXmlStreamReader_new2(device.h))
-proc create*(T: type QXmlStreamReader, data: seq[byte]): QXmlStreamReader =
+  gen_qxmlstream_types.QXmlStreamReader.init(fcQXmlStreamReader_new2(device.h))
+proc create*(T: type gen_qxmlstream_types.QXmlStreamReader, data: seq[byte]): gen_qxmlstream_types.QXmlStreamReader =
 
-  QXmlStreamReader.init(fcQXmlStreamReader_new3(struct_miqt_string(data: cast[cstring](if len(data) == 0: nil else: unsafeAddr data[0]), len: csize_t(len(data)))))
-proc create2*(T: type QXmlStreamReader, data: string): QXmlStreamReader =
+  gen_qxmlstream_types.QXmlStreamReader.init(fcQXmlStreamReader_new3(struct_miqt_string(data: cast[cstring](if len(data) == 0: nil else: unsafeAddr data[0]), len: csize_t(len(data)))))
+proc create2*(T: type gen_qxmlstream_types.QXmlStreamReader, data: string): gen_qxmlstream_types.QXmlStreamReader =
 
-  QXmlStreamReader.init(fcQXmlStreamReader_new4(struct_miqt_string(data: data, len: csize_t(len(data)))))
-proc create*(T: type QXmlStreamReader, data: cstring): QXmlStreamReader =
+  gen_qxmlstream_types.QXmlStreamReader.init(fcQXmlStreamReader_new4(struct_miqt_string(data: data, len: csize_t(len(data)))))
+proc create*(T: type gen_qxmlstream_types.QXmlStreamReader, data: cstring): gen_qxmlstream_types.QXmlStreamReader =
 
-  QXmlStreamReader.init(fcQXmlStreamReader_new5(data))
-proc setDevice*(self: QXmlStreamReader, device: gen_qiodevice.QIODevice): void =
+  gen_qxmlstream_types.QXmlStreamReader.init(fcQXmlStreamReader_new5(data))
+proc setDevice*(self: gen_qxmlstream_types.QXmlStreamReader, device: gen_qiodevice.QIODevice): void =
 
   fcQXmlStreamReader_setDevice(self.h, device.h)
 
-proc device*(self: QXmlStreamReader, ): gen_qiodevice.QIODevice =
+proc device*(self: gen_qxmlstream_types.QXmlStreamReader, ): gen_qiodevice.QIODevice =
 
   gen_qiodevice.QIODevice(h: fcQXmlStreamReader_device(self.h))
 
-proc addData*(self: QXmlStreamReader, data: seq[byte]): void =
+proc addData*(self: gen_qxmlstream_types.QXmlStreamReader, data: seq[byte]): void =
 
   fcQXmlStreamReader_addData(self.h, struct_miqt_string(data: cast[cstring](if len(data) == 0: nil else: unsafeAddr data[0]), len: csize_t(len(data))))
 
-proc addDataWithData*(self: QXmlStreamReader, data: string): void =
+proc addDataWithData*(self: gen_qxmlstream_types.QXmlStreamReader, data: string): void =
 
   fcQXmlStreamReader_addDataWithData(self.h, struct_miqt_string(data: data, len: csize_t(len(data))))
 
-proc addData2*(self: QXmlStreamReader, data: cstring): void =
+proc addData2*(self: gen_qxmlstream_types.QXmlStreamReader, data: cstring): void =
 
   fcQXmlStreamReader_addData2(self.h, data)
 
-proc clear*(self: QXmlStreamReader, ): void =
+proc clear*(self: gen_qxmlstream_types.QXmlStreamReader, ): void =
 
   fcQXmlStreamReader_clear(self.h)
 
-proc atEnd*(self: QXmlStreamReader, ): bool =
+proc atEnd*(self: gen_qxmlstream_types.QXmlStreamReader, ): bool =
 
   fcQXmlStreamReader_atEnd(self.h)
 
-proc readNext*(self: QXmlStreamReader, ): QXmlStreamReaderTokenType =
+proc readNext*(self: gen_qxmlstream_types.QXmlStreamReader, ): cint =
 
-  QXmlStreamReaderTokenType(fcQXmlStreamReader_readNext(self.h))
+  cint(fcQXmlStreamReader_readNext(self.h))
 
-proc readNextStartElement*(self: QXmlStreamReader, ): bool =
+proc readNextStartElement*(self: gen_qxmlstream_types.QXmlStreamReader, ): bool =
 
   fcQXmlStreamReader_readNextStartElement(self.h)
 
-proc skipCurrentElement*(self: QXmlStreamReader, ): void =
+proc skipCurrentElement*(self: gen_qxmlstream_types.QXmlStreamReader, ): void =
 
   fcQXmlStreamReader_skipCurrentElement(self.h)
 
-proc tokenType*(self: QXmlStreamReader, ): QXmlStreamReaderTokenType =
+proc tokenType*(self: gen_qxmlstream_types.QXmlStreamReader, ): cint =
 
-  QXmlStreamReaderTokenType(fcQXmlStreamReader_tokenType(self.h))
+  cint(fcQXmlStreamReader_tokenType(self.h))
 
-proc tokenString*(self: QXmlStreamReader, ): string =
+proc tokenString*(self: gen_qxmlstream_types.QXmlStreamReader, ): string =
 
   let v_ms = fcQXmlStreamReader_tokenString(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setNamespaceProcessing*(self: QXmlStreamReader, namespaceProcessing: bool): void =
+proc setNamespaceProcessing*(self: gen_qxmlstream_types.QXmlStreamReader, namespaceProcessing: bool): void =
 
   fcQXmlStreamReader_setNamespaceProcessing(self.h, namespaceProcessing)
 
-proc namespaceProcessing*(self: QXmlStreamReader, ): bool =
+proc namespaceProcessing*(self: gen_qxmlstream_types.QXmlStreamReader, ): bool =
 
   fcQXmlStreamReader_namespaceProcessing(self.h)
 
-proc isStartDocument*(self: QXmlStreamReader, ): bool =
+proc isStartDocument*(self: gen_qxmlstream_types.QXmlStreamReader, ): bool =
 
   fcQXmlStreamReader_isStartDocument(self.h)
 
-proc isEndDocument*(self: QXmlStreamReader, ): bool =
+proc isEndDocument*(self: gen_qxmlstream_types.QXmlStreamReader, ): bool =
 
   fcQXmlStreamReader_isEndDocument(self.h)
 
-proc isStartElement*(self: QXmlStreamReader, ): bool =
+proc isStartElement*(self: gen_qxmlstream_types.QXmlStreamReader, ): bool =
 
   fcQXmlStreamReader_isStartElement(self.h)
 
-proc isEndElement*(self: QXmlStreamReader, ): bool =
+proc isEndElement*(self: gen_qxmlstream_types.QXmlStreamReader, ): bool =
 
   fcQXmlStreamReader_isEndElement(self.h)
 
-proc isCharacters*(self: QXmlStreamReader, ): bool =
+proc isCharacters*(self: gen_qxmlstream_types.QXmlStreamReader, ): bool =
 
   fcQXmlStreamReader_isCharacters(self.h)
 
-proc isWhitespace*(self: QXmlStreamReader, ): bool =
+proc isWhitespace*(self: gen_qxmlstream_types.QXmlStreamReader, ): bool =
 
   fcQXmlStreamReader_isWhitespace(self.h)
 
-proc isCDATA*(self: QXmlStreamReader, ): bool =
+proc isCDATA*(self: gen_qxmlstream_types.QXmlStreamReader, ): bool =
 
   fcQXmlStreamReader_isCDATA(self.h)
 
-proc isComment*(self: QXmlStreamReader, ): bool =
+proc isComment*(self: gen_qxmlstream_types.QXmlStreamReader, ): bool =
 
   fcQXmlStreamReader_isComment(self.h)
 
-proc isDTD*(self: QXmlStreamReader, ): bool =
+proc isDTD*(self: gen_qxmlstream_types.QXmlStreamReader, ): bool =
 
   fcQXmlStreamReader_isDTD(self.h)
 
-proc isEntityReference*(self: QXmlStreamReader, ): bool =
+proc isEntityReference*(self: gen_qxmlstream_types.QXmlStreamReader, ): bool =
 
   fcQXmlStreamReader_isEntityReference(self.h)
 
-proc isProcessingInstruction*(self: QXmlStreamReader, ): bool =
+proc isProcessingInstruction*(self: gen_qxmlstream_types.QXmlStreamReader, ): bool =
 
   fcQXmlStreamReader_isProcessingInstruction(self.h)
 
-proc isStandaloneDocument*(self: QXmlStreamReader, ): bool =
+proc isStandaloneDocument*(self: gen_qxmlstream_types.QXmlStreamReader, ): bool =
 
   fcQXmlStreamReader_isStandaloneDocument(self.h)
 
-proc lineNumber*(self: QXmlStreamReader, ): clonglong =
+proc lineNumber*(self: gen_qxmlstream_types.QXmlStreamReader, ): clonglong =
 
   fcQXmlStreamReader_lineNumber(self.h)
 
-proc columnNumber*(self: QXmlStreamReader, ): clonglong =
+proc columnNumber*(self: gen_qxmlstream_types.QXmlStreamReader, ): clonglong =
 
   fcQXmlStreamReader_columnNumber(self.h)
 
-proc characterOffset*(self: QXmlStreamReader, ): clonglong =
+proc characterOffset*(self: gen_qxmlstream_types.QXmlStreamReader, ): clonglong =
 
   fcQXmlStreamReader_characterOffset(self.h)
 
-proc readElementText*(self: QXmlStreamReader, ): string =
+proc readElementText*(self: gen_qxmlstream_types.QXmlStreamReader, ): string =
 
   let v_ms = fcQXmlStreamReader_readElementText(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc namespaceDeclarations*(self: QXmlStreamReader, ): seq[QXmlStreamNamespaceDeclaration] =
+proc namespaceDeclarations*(self: gen_qxmlstream_types.QXmlStreamReader, ): seq[gen_qxmlstream_types.QXmlStreamNamespaceDeclaration] =
 
   var v_ma = fcQXmlStreamReader_namespaceDeclarations(self.h)
-  var vx_ret = newSeq[QXmlStreamNamespaceDeclaration](int(v_ma.len))
+  var vx_ret = newSeq[gen_qxmlstream_types.QXmlStreamNamespaceDeclaration](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
-    vx_ret[i] = QXmlStreamNamespaceDeclaration(h: v_outCast[i])
+    vx_ret[i] = gen_qxmlstream_types.QXmlStreamNamespaceDeclaration(h: v_outCast[i])
   vx_ret
 
-proc addExtraNamespaceDeclaration*(self: QXmlStreamReader, extraNamespaceDeclaraction: QXmlStreamNamespaceDeclaration): void =
+proc addExtraNamespaceDeclaration*(self: gen_qxmlstream_types.QXmlStreamReader, extraNamespaceDeclaraction: gen_qxmlstream_types.QXmlStreamNamespaceDeclaration): void =
 
   fcQXmlStreamReader_addExtraNamespaceDeclaration(self.h, extraNamespaceDeclaraction.h)
 
-proc addExtraNamespaceDeclarations*(self: QXmlStreamReader, extraNamespaceDeclaractions: seq[QXmlStreamNamespaceDeclaration]): void =
+proc addExtraNamespaceDeclarations*(self: gen_qxmlstream_types.QXmlStreamReader, extraNamespaceDeclaractions: seq[gen_qxmlstream_types.QXmlStreamNamespaceDeclaration]): void =
 
   var extraNamespaceDeclaractions_CArray = newSeq[pointer](len(extraNamespaceDeclaractions))
   for i in 0..<len(extraNamespaceDeclaractions):
@@ -464,208 +458,208 @@ proc addExtraNamespaceDeclarations*(self: QXmlStreamReader, extraNamespaceDeclar
 
   fcQXmlStreamReader_addExtraNamespaceDeclarations(self.h, struct_miqt_array(len: csize_t(len(extraNamespaceDeclaractions)), data: if len(extraNamespaceDeclaractions) == 0: nil else: addr(extraNamespaceDeclaractions_CArray[0])))
 
-proc notationDeclarations*(self: QXmlStreamReader, ): seq[QXmlStreamNotationDeclaration] =
+proc notationDeclarations*(self: gen_qxmlstream_types.QXmlStreamReader, ): seq[gen_qxmlstream_types.QXmlStreamNotationDeclaration] =
 
   var v_ma = fcQXmlStreamReader_notationDeclarations(self.h)
-  var vx_ret = newSeq[QXmlStreamNotationDeclaration](int(v_ma.len))
+  var vx_ret = newSeq[gen_qxmlstream_types.QXmlStreamNotationDeclaration](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
-    vx_ret[i] = QXmlStreamNotationDeclaration(h: v_outCast[i])
+    vx_ret[i] = gen_qxmlstream_types.QXmlStreamNotationDeclaration(h: v_outCast[i])
   vx_ret
 
-proc entityDeclarations*(self: QXmlStreamReader, ): seq[QXmlStreamEntityDeclaration] =
+proc entityDeclarations*(self: gen_qxmlstream_types.QXmlStreamReader, ): seq[gen_qxmlstream_types.QXmlStreamEntityDeclaration] =
 
   var v_ma = fcQXmlStreamReader_entityDeclarations(self.h)
-  var vx_ret = newSeq[QXmlStreamEntityDeclaration](int(v_ma.len))
+  var vx_ret = newSeq[gen_qxmlstream_types.QXmlStreamEntityDeclaration](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
   for i in 0 ..< v_ma.len:
-    vx_ret[i] = QXmlStreamEntityDeclaration(h: v_outCast[i])
+    vx_ret[i] = gen_qxmlstream_types.QXmlStreamEntityDeclaration(h: v_outCast[i])
   vx_ret
 
-proc entityExpansionLimit*(self: QXmlStreamReader, ): cint =
+proc entityExpansionLimit*(self: gen_qxmlstream_types.QXmlStreamReader, ): cint =
 
   fcQXmlStreamReader_entityExpansionLimit(self.h)
 
-proc setEntityExpansionLimit*(self: QXmlStreamReader, limit: cint): void =
+proc setEntityExpansionLimit*(self: gen_qxmlstream_types.QXmlStreamReader, limit: cint): void =
 
   fcQXmlStreamReader_setEntityExpansionLimit(self.h, limit)
 
-proc raiseError*(self: QXmlStreamReader, ): void =
+proc raiseError*(self: gen_qxmlstream_types.QXmlStreamReader, ): void =
 
   fcQXmlStreamReader_raiseError(self.h)
 
-proc errorString*(self: QXmlStreamReader, ): string =
+proc errorString*(self: gen_qxmlstream_types.QXmlStreamReader, ): string =
 
   let v_ms = fcQXmlStreamReader_errorString(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc error*(self: QXmlStreamReader, ): QXmlStreamReaderError =
+proc error*(self: gen_qxmlstream_types.QXmlStreamReader, ): cint =
 
-  QXmlStreamReaderError(fcQXmlStreamReader_error(self.h))
+  cint(fcQXmlStreamReader_error(self.h))
 
-proc hasError*(self: QXmlStreamReader, ): bool =
+proc hasError*(self: gen_qxmlstream_types.QXmlStreamReader, ): bool =
 
   fcQXmlStreamReader_hasError(self.h)
 
-proc setEntityResolver*(self: QXmlStreamReader, resolver: QXmlStreamEntityResolver): void =
+proc setEntityResolver*(self: gen_qxmlstream_types.QXmlStreamReader, resolver: gen_qxmlstream_types.QXmlStreamEntityResolver): void =
 
   fcQXmlStreamReader_setEntityResolver(self.h, resolver.h)
 
-proc entityResolver*(self: QXmlStreamReader, ): QXmlStreamEntityResolver =
+proc entityResolver*(self: gen_qxmlstream_types.QXmlStreamReader, ): gen_qxmlstream_types.QXmlStreamEntityResolver =
 
-  QXmlStreamEntityResolver(h: fcQXmlStreamReader_entityResolver(self.h))
+  gen_qxmlstream_types.QXmlStreamEntityResolver(h: fcQXmlStreamReader_entityResolver(self.h))
 
-proc readElementText1*(self: QXmlStreamReader, behaviour: QXmlStreamReaderReadElementTextBehaviour): string =
+proc readElementText1*(self: gen_qxmlstream_types.QXmlStreamReader, behaviour: cint): string =
 
   let v_ms = fcQXmlStreamReader_readElementText1(self.h, cint(behaviour))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc raiseError1*(self: QXmlStreamReader, message: string): void =
+proc raiseError1*(self: gen_qxmlstream_types.QXmlStreamReader, message: string): void =
 
   fcQXmlStreamReader_raiseError1(self.h, struct_miqt_string(data: message, len: csize_t(len(message))))
 
-proc delete*(self: QXmlStreamReader) =
+proc delete*(self: gen_qxmlstream_types.QXmlStreamReader) =
   fcQXmlStreamReader_delete(self.h)
 
-func init*(T: type QXmlStreamWriter, h: ptr cQXmlStreamWriter): QXmlStreamWriter =
+func init*(T: type gen_qxmlstream_types.QXmlStreamWriter, h: ptr cQXmlStreamWriter): gen_qxmlstream_types.QXmlStreamWriter =
   T(h: h)
-proc create*(T: type QXmlStreamWriter, ): QXmlStreamWriter =
+proc create*(T: type gen_qxmlstream_types.QXmlStreamWriter, ): gen_qxmlstream_types.QXmlStreamWriter =
 
-  QXmlStreamWriter.init(fcQXmlStreamWriter_new())
-proc create*(T: type QXmlStreamWriter, device: gen_qiodevice.QIODevice): QXmlStreamWriter =
+  gen_qxmlstream_types.QXmlStreamWriter.init(fcQXmlStreamWriter_new())
+proc create*(T: type gen_qxmlstream_types.QXmlStreamWriter, device: gen_qiodevice.QIODevice): gen_qxmlstream_types.QXmlStreamWriter =
 
-  QXmlStreamWriter.init(fcQXmlStreamWriter_new2(device.h))
-proc setDevice*(self: QXmlStreamWriter, device: gen_qiodevice.QIODevice): void =
+  gen_qxmlstream_types.QXmlStreamWriter.init(fcQXmlStreamWriter_new2(device.h))
+proc setDevice*(self: gen_qxmlstream_types.QXmlStreamWriter, device: gen_qiodevice.QIODevice): void =
 
   fcQXmlStreamWriter_setDevice(self.h, device.h)
 
-proc device*(self: QXmlStreamWriter, ): gen_qiodevice.QIODevice =
+proc device*(self: gen_qxmlstream_types.QXmlStreamWriter, ): gen_qiodevice.QIODevice =
 
   gen_qiodevice.QIODevice(h: fcQXmlStreamWriter_device(self.h))
 
-proc setAutoFormatting*(self: QXmlStreamWriter, autoFormatting: bool): void =
+proc setAutoFormatting*(self: gen_qxmlstream_types.QXmlStreamWriter, autoFormatting: bool): void =
 
   fcQXmlStreamWriter_setAutoFormatting(self.h, autoFormatting)
 
-proc autoFormatting*(self: QXmlStreamWriter, ): bool =
+proc autoFormatting*(self: gen_qxmlstream_types.QXmlStreamWriter, ): bool =
 
   fcQXmlStreamWriter_autoFormatting(self.h)
 
-proc setAutoFormattingIndent*(self: QXmlStreamWriter, spacesOrTabs: cint): void =
+proc setAutoFormattingIndent*(self: gen_qxmlstream_types.QXmlStreamWriter, spacesOrTabs: cint): void =
 
   fcQXmlStreamWriter_setAutoFormattingIndent(self.h, spacesOrTabs)
 
-proc autoFormattingIndent*(self: QXmlStreamWriter, ): cint =
+proc autoFormattingIndent*(self: gen_qxmlstream_types.QXmlStreamWriter, ): cint =
 
   fcQXmlStreamWriter_autoFormattingIndent(self.h)
 
-proc writeAttribute*(self: QXmlStreamWriter, qualifiedName: string, value: string): void =
+proc writeAttribute*(self: gen_qxmlstream_types.QXmlStreamWriter, qualifiedName: string, value: string): void =
 
   fcQXmlStreamWriter_writeAttribute(self.h, struct_miqt_string(data: qualifiedName, len: csize_t(len(qualifiedName))), struct_miqt_string(data: value, len: csize_t(len(value))))
 
-proc writeAttribute2*(self: QXmlStreamWriter, namespaceUri: string, name: string, value: string): void =
+proc writeAttribute2*(self: gen_qxmlstream_types.QXmlStreamWriter, namespaceUri: string, name: string, value: string): void =
 
   fcQXmlStreamWriter_writeAttribute2(self.h, struct_miqt_string(data: namespaceUri, len: csize_t(len(namespaceUri))), struct_miqt_string(data: name, len: csize_t(len(name))), struct_miqt_string(data: value, len: csize_t(len(value))))
 
-proc writeAttributeWithAttribute*(self: QXmlStreamWriter, attribute: QXmlStreamAttribute): void =
+proc writeAttributeWithAttribute*(self: gen_qxmlstream_types.QXmlStreamWriter, attribute: gen_qxmlstream_types.QXmlStreamAttribute): void =
 
   fcQXmlStreamWriter_writeAttributeWithAttribute(self.h, attribute.h)
 
-proc writeCDATA*(self: QXmlStreamWriter, text: string): void =
+proc writeCDATA*(self: gen_qxmlstream_types.QXmlStreamWriter, text: string): void =
 
   fcQXmlStreamWriter_writeCDATA(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
-proc writeCharacters*(self: QXmlStreamWriter, text: string): void =
+proc writeCharacters*(self: gen_qxmlstream_types.QXmlStreamWriter, text: string): void =
 
   fcQXmlStreamWriter_writeCharacters(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
-proc writeComment*(self: QXmlStreamWriter, text: string): void =
+proc writeComment*(self: gen_qxmlstream_types.QXmlStreamWriter, text: string): void =
 
   fcQXmlStreamWriter_writeComment(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
-proc writeDTD*(self: QXmlStreamWriter, dtd: string): void =
+proc writeDTD*(self: gen_qxmlstream_types.QXmlStreamWriter, dtd: string): void =
 
   fcQXmlStreamWriter_writeDTD(self.h, struct_miqt_string(data: dtd, len: csize_t(len(dtd))))
 
-proc writeEmptyElement*(self: QXmlStreamWriter, qualifiedName: string): void =
+proc writeEmptyElement*(self: gen_qxmlstream_types.QXmlStreamWriter, qualifiedName: string): void =
 
   fcQXmlStreamWriter_writeEmptyElement(self.h, struct_miqt_string(data: qualifiedName, len: csize_t(len(qualifiedName))))
 
-proc writeEmptyElement2*(self: QXmlStreamWriter, namespaceUri: string, name: string): void =
+proc writeEmptyElement2*(self: gen_qxmlstream_types.QXmlStreamWriter, namespaceUri: string, name: string): void =
 
   fcQXmlStreamWriter_writeEmptyElement2(self.h, struct_miqt_string(data: namespaceUri, len: csize_t(len(namespaceUri))), struct_miqt_string(data: name, len: csize_t(len(name))))
 
-proc writeTextElement*(self: QXmlStreamWriter, qualifiedName: string, text: string): void =
+proc writeTextElement*(self: gen_qxmlstream_types.QXmlStreamWriter, qualifiedName: string, text: string): void =
 
   fcQXmlStreamWriter_writeTextElement(self.h, struct_miqt_string(data: qualifiedName, len: csize_t(len(qualifiedName))), struct_miqt_string(data: text, len: csize_t(len(text))))
 
-proc writeTextElement2*(self: QXmlStreamWriter, namespaceUri: string, name: string, text: string): void =
+proc writeTextElement2*(self: gen_qxmlstream_types.QXmlStreamWriter, namespaceUri: string, name: string, text: string): void =
 
   fcQXmlStreamWriter_writeTextElement2(self.h, struct_miqt_string(data: namespaceUri, len: csize_t(len(namespaceUri))), struct_miqt_string(data: name, len: csize_t(len(name))), struct_miqt_string(data: text, len: csize_t(len(text))))
 
-proc writeEndDocument*(self: QXmlStreamWriter, ): void =
+proc writeEndDocument*(self: gen_qxmlstream_types.QXmlStreamWriter, ): void =
 
   fcQXmlStreamWriter_writeEndDocument(self.h)
 
-proc writeEndElement*(self: QXmlStreamWriter, ): void =
+proc writeEndElement*(self: gen_qxmlstream_types.QXmlStreamWriter, ): void =
 
   fcQXmlStreamWriter_writeEndElement(self.h)
 
-proc writeEntityReference*(self: QXmlStreamWriter, name: string): void =
+proc writeEntityReference*(self: gen_qxmlstream_types.QXmlStreamWriter, name: string): void =
 
   fcQXmlStreamWriter_writeEntityReference(self.h, struct_miqt_string(data: name, len: csize_t(len(name))))
 
-proc writeNamespace*(self: QXmlStreamWriter, namespaceUri: string): void =
+proc writeNamespace*(self: gen_qxmlstream_types.QXmlStreamWriter, namespaceUri: string): void =
 
   fcQXmlStreamWriter_writeNamespace(self.h, struct_miqt_string(data: namespaceUri, len: csize_t(len(namespaceUri))))
 
-proc writeDefaultNamespace*(self: QXmlStreamWriter, namespaceUri: string): void =
+proc writeDefaultNamespace*(self: gen_qxmlstream_types.QXmlStreamWriter, namespaceUri: string): void =
 
   fcQXmlStreamWriter_writeDefaultNamespace(self.h, struct_miqt_string(data: namespaceUri, len: csize_t(len(namespaceUri))))
 
-proc writeProcessingInstruction*(self: QXmlStreamWriter, target: string): void =
+proc writeProcessingInstruction*(self: gen_qxmlstream_types.QXmlStreamWriter, target: string): void =
 
   fcQXmlStreamWriter_writeProcessingInstruction(self.h, struct_miqt_string(data: target, len: csize_t(len(target))))
 
-proc writeStartDocument*(self: QXmlStreamWriter, ): void =
+proc writeStartDocument*(self: gen_qxmlstream_types.QXmlStreamWriter, ): void =
 
   fcQXmlStreamWriter_writeStartDocument(self.h)
 
-proc writeStartDocumentWithVersion*(self: QXmlStreamWriter, version: string): void =
+proc writeStartDocumentWithVersion*(self: gen_qxmlstream_types.QXmlStreamWriter, version: string): void =
 
   fcQXmlStreamWriter_writeStartDocumentWithVersion(self.h, struct_miqt_string(data: version, len: csize_t(len(version))))
 
-proc writeStartDocument2*(self: QXmlStreamWriter, version: string, standalone: bool): void =
+proc writeStartDocument2*(self: gen_qxmlstream_types.QXmlStreamWriter, version: string, standalone: bool): void =
 
   fcQXmlStreamWriter_writeStartDocument2(self.h, struct_miqt_string(data: version, len: csize_t(len(version))), standalone)
 
-proc writeStartElement*(self: QXmlStreamWriter, qualifiedName: string): void =
+proc writeStartElement*(self: gen_qxmlstream_types.QXmlStreamWriter, qualifiedName: string): void =
 
   fcQXmlStreamWriter_writeStartElement(self.h, struct_miqt_string(data: qualifiedName, len: csize_t(len(qualifiedName))))
 
-proc writeStartElement2*(self: QXmlStreamWriter, namespaceUri: string, name: string): void =
+proc writeStartElement2*(self: gen_qxmlstream_types.QXmlStreamWriter, namespaceUri: string, name: string): void =
 
   fcQXmlStreamWriter_writeStartElement2(self.h, struct_miqt_string(data: namespaceUri, len: csize_t(len(namespaceUri))), struct_miqt_string(data: name, len: csize_t(len(name))))
 
-proc writeCurrentToken*(self: QXmlStreamWriter, reader: QXmlStreamReader): void =
+proc writeCurrentToken*(self: gen_qxmlstream_types.QXmlStreamWriter, reader: gen_qxmlstream_types.QXmlStreamReader): void =
 
   fcQXmlStreamWriter_writeCurrentToken(self.h, reader.h)
 
-proc hasError*(self: QXmlStreamWriter, ): bool =
+proc hasError*(self: gen_qxmlstream_types.QXmlStreamWriter, ): bool =
 
   fcQXmlStreamWriter_hasError(self.h)
 
-proc writeNamespace2*(self: QXmlStreamWriter, namespaceUri: string, prefix: string): void =
+proc writeNamespace2*(self: gen_qxmlstream_types.QXmlStreamWriter, namespaceUri: string, prefix: string): void =
 
   fcQXmlStreamWriter_writeNamespace2(self.h, struct_miqt_string(data: namespaceUri, len: csize_t(len(namespaceUri))), struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
-proc writeProcessingInstruction2*(self: QXmlStreamWriter, target: string, data: string): void =
+proc writeProcessingInstruction2*(self: gen_qxmlstream_types.QXmlStreamWriter, target: string, data: string): void =
 
   fcQXmlStreamWriter_writeProcessingInstruction2(self.h, struct_miqt_string(data: target, len: csize_t(len(target))), struct_miqt_string(data: data, len: csize_t(len(data))))
 
-proc delete*(self: QXmlStreamWriter) =
+proc delete*(self: gen_qxmlstream_types.QXmlStreamWriter) =
   fcQXmlStreamWriter_delete(self.h)

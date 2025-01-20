@@ -984,7 +984,7 @@ func (this *QAbstractItemModel) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QAbstractItemModel_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QAbstractItemModel) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QAbstractItemModel) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QAbstractItemModel_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1011,7 +1011,7 @@ func (this *QAbstractItemModel) callVirtualBase_Metacast(param1 string) unsafe.P
 	return (unsafe.Pointer)(C.QAbstractItemModel_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QAbstractItemModel) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QAbstractItemModel) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QAbstractItemModel_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2546,7 +2546,7 @@ func (this *QAbstractTableModel) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QAbstractTableModel_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QAbstractTableModel) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QAbstractTableModel) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QAbstractTableModel_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2573,7 +2573,7 @@ func (this *QAbstractTableModel) callVirtualBase_Metacast(param1 string) unsafe.
 	return (unsafe.Pointer)(C.QAbstractTableModel_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QAbstractTableModel) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QAbstractTableModel) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QAbstractTableModel_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -4066,7 +4066,7 @@ func (this *QAbstractListModel) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QAbstractListModel_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QAbstractListModel) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QAbstractListModel) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QAbstractListModel_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -4093,7 +4093,7 @@ func (this *QAbstractListModel) callVirtualBase_Metacast(param1 string) unsafe.P
 	return (unsafe.Pointer)(C.QAbstractListModel_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QAbstractListModel) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QAbstractListModel) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QAbstractListModel_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

@@ -57,55 +57,55 @@ proc fcQWebDatabase_removeAllDatabases(): void {.importc: "QWebDatabase_removeAl
 proc fcQWebDatabase_delete(self: pointer) {.importc: "QWebDatabase_delete".}
 
 
-func init*(T: type QWebDatabase, h: ptr cQWebDatabase): QWebDatabase =
+func init*(T: type gen_qwebdatabase_types.QWebDatabase, h: ptr cQWebDatabase): gen_qwebdatabase_types.QWebDatabase =
   T(h: h)
-proc create*(T: type QWebDatabase, other: QWebDatabase): QWebDatabase =
+proc create*(T: type gen_qwebdatabase_types.QWebDatabase, other: gen_qwebdatabase_types.QWebDatabase): gen_qwebdatabase_types.QWebDatabase =
 
-  QWebDatabase.init(fcQWebDatabase_new(other.h))
-proc operatorAssign*(self: QWebDatabase, other: QWebDatabase): void =
+  gen_qwebdatabase_types.QWebDatabase.init(fcQWebDatabase_new(other.h))
+proc operatorAssign*(self: gen_qwebdatabase_types.QWebDatabase, other: gen_qwebdatabase_types.QWebDatabase): void =
 
   fcQWebDatabase_operatorAssign(self.h, other.h)
 
-proc name*(self: QWebDatabase, ): string =
+proc name*(self: gen_qwebdatabase_types.QWebDatabase, ): string =
 
   let v_ms = fcQWebDatabase_name(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc displayName*(self: QWebDatabase, ): string =
+proc displayName*(self: gen_qwebdatabase_types.QWebDatabase, ): string =
 
   let v_ms = fcQWebDatabase_displayName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc expectedSize*(self: QWebDatabase, ): clonglong =
+proc expectedSize*(self: gen_qwebdatabase_types.QWebDatabase, ): clonglong =
 
   fcQWebDatabase_expectedSize(self.h)
 
-proc size*(self: QWebDatabase, ): clonglong =
+proc size*(self: gen_qwebdatabase_types.QWebDatabase, ): clonglong =
 
   fcQWebDatabase_size(self.h)
 
-proc fileName*(self: QWebDatabase, ): string =
+proc fileName*(self: gen_qwebdatabase_types.QWebDatabase, ): string =
 
   let v_ms = fcQWebDatabase_fileName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc origin*(self: QWebDatabase, ): gen_qwebsecurityorigin.QWebSecurityOrigin =
+proc origin*(self: gen_qwebdatabase_types.QWebDatabase, ): gen_qwebsecurityorigin.QWebSecurityOrigin =
 
   gen_qwebsecurityorigin.QWebSecurityOrigin(h: fcQWebDatabase_origin(self.h))
 
-proc removeDatabase*(_: type QWebDatabase, param1: QWebDatabase): void =
+proc removeDatabase*(_: type gen_qwebdatabase_types.QWebDatabase, param1: gen_qwebdatabase_types.QWebDatabase): void =
 
   fcQWebDatabase_removeDatabase(param1.h)
 
-proc removeAllDatabases*(_: type QWebDatabase, ): void =
+proc removeAllDatabases*(_: type gen_qwebdatabase_types.QWebDatabase, ): void =
 
   fcQWebDatabase_removeAllDatabases()
 
-proc delete*(self: QWebDatabase) =
+proc delete*(self: gen_qwebdatabase_types.QWebDatabase) =
   fcQWebDatabase_delete(self.h)

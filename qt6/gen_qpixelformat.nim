@@ -34,77 +34,63 @@ const cflags = gorge("pkg-config -cflags Qt6Widgets")
 {.compile("gen_qpixelformat.cpp", cflags).}
 
 
-type QPixelFormatColorModel* = cint
-const
-  QPixelFormatRGB* = 0
-  QPixelFormatBGR* = 1
-  QPixelFormatIndexed* = 2
-  QPixelFormatGrayscale* = 3
-  QPixelFormatCMYK* = 4
-  QPixelFormatHSL* = 5
-  QPixelFormatHSV* = 6
-  QPixelFormatYUV* = 7
-  QPixelFormatAlpha* = 8
+type QPixelFormatColorModelEnum* = distinct cint
+template RGB*(_: type QPixelFormatColorModelEnum): untyped = 0
+template BGR*(_: type QPixelFormatColorModelEnum): untyped = 1
+template Indexed*(_: type QPixelFormatColorModelEnum): untyped = 2
+template Grayscale*(_: type QPixelFormatColorModelEnum): untyped = 3
+template CMYK*(_: type QPixelFormatColorModelEnum): untyped = 4
+template HSL*(_: type QPixelFormatColorModelEnum): untyped = 5
+template HSV*(_: type QPixelFormatColorModelEnum): untyped = 6
+template YUV*(_: type QPixelFormatColorModelEnum): untyped = 7
+template Alpha*(_: type QPixelFormatColorModelEnum): untyped = 8
 
 
-
-type QPixelFormatAlphaUsage* = cint
-const
-  QPixelFormatUsesAlpha* = 0
-  QPixelFormatIgnoresAlpha* = 1
+type QPixelFormatAlphaUsageEnum* = distinct cint
+template UsesAlpha*(_: type QPixelFormatAlphaUsageEnum): untyped = 0
+template IgnoresAlpha*(_: type QPixelFormatAlphaUsageEnum): untyped = 1
 
 
-
-type QPixelFormatAlphaPosition* = cint
-const
-  QPixelFormatAtBeginning* = 0
-  QPixelFormatAtEnd* = 1
+type QPixelFormatAlphaPositionEnum* = distinct cint
+template AtBeginning*(_: type QPixelFormatAlphaPositionEnum): untyped = 0
+template AtEnd*(_: type QPixelFormatAlphaPositionEnum): untyped = 1
 
 
-
-type QPixelFormatAlphaPremultiplied* = cint
-const
-  QPixelFormatNotPremultiplied* = 0
-  QPixelFormatPremultiplied* = 1
+type QPixelFormatAlphaPremultipliedEnum* = distinct cint
+template NotPremultiplied*(_: type QPixelFormatAlphaPremultipliedEnum): untyped = 0
+template Premultiplied*(_: type QPixelFormatAlphaPremultipliedEnum): untyped = 1
 
 
-
-type QPixelFormatTypeInterpretation* = cint
-const
-  QPixelFormatUnsignedInteger* = 0
-  QPixelFormatUnsignedShort* = 1
-  QPixelFormatUnsignedByte* = 2
-  QPixelFormatFloatingPoint* = 3
+type QPixelFormatTypeInterpretationEnum* = distinct cint
+template UnsignedInteger*(_: type QPixelFormatTypeInterpretationEnum): untyped = 0
+template UnsignedShort*(_: type QPixelFormatTypeInterpretationEnum): untyped = 1
+template UnsignedByte*(_: type QPixelFormatTypeInterpretationEnum): untyped = 2
+template FloatingPoint*(_: type QPixelFormatTypeInterpretationEnum): untyped = 3
 
 
-
-type QPixelFormatYUVLayout* = cint
-const
-  QPixelFormatYUV444* = 0
-  QPixelFormatYUV422* = 1
-  QPixelFormatYUV411* = 2
-  QPixelFormatYUV420P* = 3
-  QPixelFormatYUV420SP* = 4
-  QPixelFormatYV12* = 5
-  QPixelFormatUYVY* = 6
-  QPixelFormatYUYV* = 7
-  QPixelFormatNV12* = 8
-  QPixelFormatNV21* = 9
-  QPixelFormatIMC1* = 10
-  QPixelFormatIMC2* = 11
-  QPixelFormatIMC3* = 12
-  QPixelFormatIMC4* = 13
-  QPixelFormatY8* = 14
-  QPixelFormatY16* = 15
+type QPixelFormatYUVLayoutEnum* = distinct cint
+template YUV444*(_: type QPixelFormatYUVLayoutEnum): untyped = 0
+template YUV422*(_: type QPixelFormatYUVLayoutEnum): untyped = 1
+template YUV411*(_: type QPixelFormatYUVLayoutEnum): untyped = 2
+template YUV420P*(_: type QPixelFormatYUVLayoutEnum): untyped = 3
+template YUV420SP*(_: type QPixelFormatYUVLayoutEnum): untyped = 4
+template YV12*(_: type QPixelFormatYUVLayoutEnum): untyped = 5
+template UYVY*(_: type QPixelFormatYUVLayoutEnum): untyped = 6
+template YUYV*(_: type QPixelFormatYUVLayoutEnum): untyped = 7
+template NV12*(_: type QPixelFormatYUVLayoutEnum): untyped = 8
+template NV21*(_: type QPixelFormatYUVLayoutEnum): untyped = 9
+template IMC1*(_: type QPixelFormatYUVLayoutEnum): untyped = 10
+template IMC2*(_: type QPixelFormatYUVLayoutEnum): untyped = 11
+template IMC3*(_: type QPixelFormatYUVLayoutEnum): untyped = 12
+template IMC4*(_: type QPixelFormatYUVLayoutEnum): untyped = 13
+template Y8*(_: type QPixelFormatYUVLayoutEnum): untyped = 14
+template Y16*(_: type QPixelFormatYUVLayoutEnum): untyped = 15
 
 
-
-type QPixelFormatByteOrder* = cint
-const
-  QPixelFormatLittleEndian* = 0
-  QPixelFormatBigEndian* = 1
-  QPixelFormatCurrentSystemEndian* = 2
-
+type QPixelFormatByteOrderEnum* = distinct cint
+template LittleEndian*(_: type QPixelFormatByteOrderEnum): untyped = 0
+template BigEndian*(_: type QPixelFormatByteOrderEnum): untyped = 1
+template CurrentSystemEndian*(_: type QPixelFormatByteOrderEnum): untyped = 2
 
 
 import gen_qpixelformat_types
@@ -143,110 +129,110 @@ proc fcQPixelFormat_subEnum(self: pointer, ): uint8 {.importc: "QPixelFormat_sub
 proc fcQPixelFormat_delete(self: pointer) {.importc: "QPixelFormat_delete".}
 
 
-func init*(T: type QPixelFormat, h: ptr cQPixelFormat): QPixelFormat =
+func init*(T: type gen_qpixelformat_types.QPixelFormat, h: ptr cQPixelFormat): gen_qpixelformat_types.QPixelFormat =
   T(h: h)
-proc create*(T: type QPixelFormat, ): QPixelFormat =
+proc create*(T: type gen_qpixelformat_types.QPixelFormat, ): gen_qpixelformat_types.QPixelFormat =
 
-  QPixelFormat.init(fcQPixelFormat_new())
-proc create*(T: type QPixelFormat, colorModel: QPixelFormatColorModel, firstSize: uint8, secondSize: uint8, thirdSize: uint8, fourthSize: uint8, fifthSize: uint8, alphaSize: uint8, alphaUsage: QPixelFormatAlphaUsage, alphaPosition: QPixelFormatAlphaPosition, premultiplied: QPixelFormatAlphaPremultiplied, typeInterpretation: QPixelFormatTypeInterpretation): QPixelFormat =
+  gen_qpixelformat_types.QPixelFormat.init(fcQPixelFormat_new())
+proc create*(T: type gen_qpixelformat_types.QPixelFormat, colorModel: cint, firstSize: uint8, secondSize: uint8, thirdSize: uint8, fourthSize: uint8, fifthSize: uint8, alphaSize: uint8, alphaUsage: cint, alphaPosition: cint, premultiplied: cint, typeInterpretation: cint): gen_qpixelformat_types.QPixelFormat =
 
-  QPixelFormat.init(fcQPixelFormat_new2(cint(colorModel), firstSize, secondSize, thirdSize, fourthSize, fifthSize, alphaSize, cint(alphaUsage), cint(alphaPosition), cint(premultiplied), cint(typeInterpretation)))
-proc create*(T: type QPixelFormat, param1: QPixelFormat): QPixelFormat =
+  gen_qpixelformat_types.QPixelFormat.init(fcQPixelFormat_new2(cint(colorModel), firstSize, secondSize, thirdSize, fourthSize, fifthSize, alphaSize, cint(alphaUsage), cint(alphaPosition), cint(premultiplied), cint(typeInterpretation)))
+proc create*(T: type gen_qpixelformat_types.QPixelFormat, param1: gen_qpixelformat_types.QPixelFormat): gen_qpixelformat_types.QPixelFormat =
 
-  QPixelFormat.init(fcQPixelFormat_new3(param1.h))
-proc create*(T: type QPixelFormat, colorModel: QPixelFormatColorModel, firstSize: uint8, secondSize: uint8, thirdSize: uint8, fourthSize: uint8, fifthSize: uint8, alphaSize: uint8, alphaUsage: QPixelFormatAlphaUsage, alphaPosition: QPixelFormatAlphaPosition, premultiplied: QPixelFormatAlphaPremultiplied, typeInterpretation: QPixelFormatTypeInterpretation, byteOrder: QPixelFormatByteOrder): QPixelFormat =
+  gen_qpixelformat_types.QPixelFormat.init(fcQPixelFormat_new3(param1.h))
+proc create*(T: type gen_qpixelformat_types.QPixelFormat, colorModel: cint, firstSize: uint8, secondSize: uint8, thirdSize: uint8, fourthSize: uint8, fifthSize: uint8, alphaSize: uint8, alphaUsage: cint, alphaPosition: cint, premultiplied: cint, typeInterpretation: cint, byteOrder: cint): gen_qpixelformat_types.QPixelFormat =
 
-  QPixelFormat.init(fcQPixelFormat_new4(cint(colorModel), firstSize, secondSize, thirdSize, fourthSize, fifthSize, alphaSize, cint(alphaUsage), cint(alphaPosition), cint(premultiplied), cint(typeInterpretation), cint(byteOrder)))
-proc create*(T: type QPixelFormat, colorModel: QPixelFormatColorModel, firstSize: uint8, secondSize: uint8, thirdSize: uint8, fourthSize: uint8, fifthSize: uint8, alphaSize: uint8, alphaUsage: QPixelFormatAlphaUsage, alphaPosition: QPixelFormatAlphaPosition, premultiplied: QPixelFormatAlphaPremultiplied, typeInterpretation: QPixelFormatTypeInterpretation, byteOrder: QPixelFormatByteOrder, subEnum: uint8): QPixelFormat =
+  gen_qpixelformat_types.QPixelFormat.init(fcQPixelFormat_new4(cint(colorModel), firstSize, secondSize, thirdSize, fourthSize, fifthSize, alphaSize, cint(alphaUsage), cint(alphaPosition), cint(premultiplied), cint(typeInterpretation), cint(byteOrder)))
+proc create*(T: type gen_qpixelformat_types.QPixelFormat, colorModel: cint, firstSize: uint8, secondSize: uint8, thirdSize: uint8, fourthSize: uint8, fifthSize: uint8, alphaSize: uint8, alphaUsage: cint, alphaPosition: cint, premultiplied: cint, typeInterpretation: cint, byteOrder: cint, subEnum: uint8): gen_qpixelformat_types.QPixelFormat =
 
-  QPixelFormat.init(fcQPixelFormat_new5(cint(colorModel), firstSize, secondSize, thirdSize, fourthSize, fifthSize, alphaSize, cint(alphaUsage), cint(alphaPosition), cint(premultiplied), cint(typeInterpretation), cint(byteOrder), subEnum))
-proc colorModel*(self: QPixelFormat, ): QPixelFormatColorModel =
+  gen_qpixelformat_types.QPixelFormat.init(fcQPixelFormat_new5(cint(colorModel), firstSize, secondSize, thirdSize, fourthSize, fifthSize, alphaSize, cint(alphaUsage), cint(alphaPosition), cint(premultiplied), cint(typeInterpretation), cint(byteOrder), subEnum))
+proc colorModel*(self: gen_qpixelformat_types.QPixelFormat, ): cint =
 
-  QPixelFormatColorModel(fcQPixelFormat_colorModel(self.h))
+  cint(fcQPixelFormat_colorModel(self.h))
 
-proc channelCount*(self: QPixelFormat, ): uint8 =
+proc channelCount*(self: gen_qpixelformat_types.QPixelFormat, ): uint8 =
 
   fcQPixelFormat_channelCount(self.h)
 
-proc redSize*(self: QPixelFormat, ): uint8 =
+proc redSize*(self: gen_qpixelformat_types.QPixelFormat, ): uint8 =
 
   fcQPixelFormat_redSize(self.h)
 
-proc greenSize*(self: QPixelFormat, ): uint8 =
+proc greenSize*(self: gen_qpixelformat_types.QPixelFormat, ): uint8 =
 
   fcQPixelFormat_greenSize(self.h)
 
-proc blueSize*(self: QPixelFormat, ): uint8 =
+proc blueSize*(self: gen_qpixelformat_types.QPixelFormat, ): uint8 =
 
   fcQPixelFormat_blueSize(self.h)
 
-proc cyanSize*(self: QPixelFormat, ): uint8 =
+proc cyanSize*(self: gen_qpixelformat_types.QPixelFormat, ): uint8 =
 
   fcQPixelFormat_cyanSize(self.h)
 
-proc magentaSize*(self: QPixelFormat, ): uint8 =
+proc magentaSize*(self: gen_qpixelformat_types.QPixelFormat, ): uint8 =
 
   fcQPixelFormat_magentaSize(self.h)
 
-proc yellowSize*(self: QPixelFormat, ): uint8 =
+proc yellowSize*(self: gen_qpixelformat_types.QPixelFormat, ): uint8 =
 
   fcQPixelFormat_yellowSize(self.h)
 
-proc blackSize*(self: QPixelFormat, ): uint8 =
+proc blackSize*(self: gen_qpixelformat_types.QPixelFormat, ): uint8 =
 
   fcQPixelFormat_blackSize(self.h)
 
-proc hueSize*(self: QPixelFormat, ): uint8 =
+proc hueSize*(self: gen_qpixelformat_types.QPixelFormat, ): uint8 =
 
   fcQPixelFormat_hueSize(self.h)
 
-proc saturationSize*(self: QPixelFormat, ): uint8 =
+proc saturationSize*(self: gen_qpixelformat_types.QPixelFormat, ): uint8 =
 
   fcQPixelFormat_saturationSize(self.h)
 
-proc lightnessSize*(self: QPixelFormat, ): uint8 =
+proc lightnessSize*(self: gen_qpixelformat_types.QPixelFormat, ): uint8 =
 
   fcQPixelFormat_lightnessSize(self.h)
 
-proc brightnessSize*(self: QPixelFormat, ): uint8 =
+proc brightnessSize*(self: gen_qpixelformat_types.QPixelFormat, ): uint8 =
 
   fcQPixelFormat_brightnessSize(self.h)
 
-proc alphaSize*(self: QPixelFormat, ): uint8 =
+proc alphaSize*(self: gen_qpixelformat_types.QPixelFormat, ): uint8 =
 
   fcQPixelFormat_alphaSize(self.h)
 
-proc bitsPerPixel*(self: QPixelFormat, ): uint8 =
+proc bitsPerPixel*(self: gen_qpixelformat_types.QPixelFormat, ): uint8 =
 
   fcQPixelFormat_bitsPerPixel(self.h)
 
-proc alphaUsage*(self: QPixelFormat, ): QPixelFormatAlphaUsage =
+proc alphaUsage*(self: gen_qpixelformat_types.QPixelFormat, ): cint =
 
-  QPixelFormatAlphaUsage(fcQPixelFormat_alphaUsage(self.h))
+  cint(fcQPixelFormat_alphaUsage(self.h))
 
-proc alphaPosition*(self: QPixelFormat, ): QPixelFormatAlphaPosition =
+proc alphaPosition*(self: gen_qpixelformat_types.QPixelFormat, ): cint =
 
-  QPixelFormatAlphaPosition(fcQPixelFormat_alphaPosition(self.h))
+  cint(fcQPixelFormat_alphaPosition(self.h))
 
-proc premultiplied*(self: QPixelFormat, ): QPixelFormatAlphaPremultiplied =
+proc premultiplied*(self: gen_qpixelformat_types.QPixelFormat, ): cint =
 
-  QPixelFormatAlphaPremultiplied(fcQPixelFormat_premultiplied(self.h))
+  cint(fcQPixelFormat_premultiplied(self.h))
 
-proc typeInterpretation*(self: QPixelFormat, ): QPixelFormatTypeInterpretation =
+proc typeInterpretation*(self: gen_qpixelformat_types.QPixelFormat, ): cint =
 
-  QPixelFormatTypeInterpretation(fcQPixelFormat_typeInterpretation(self.h))
+  cint(fcQPixelFormat_typeInterpretation(self.h))
 
-proc byteOrder*(self: QPixelFormat, ): QPixelFormatByteOrder =
+proc byteOrder*(self: gen_qpixelformat_types.QPixelFormat, ): cint =
 
-  QPixelFormatByteOrder(fcQPixelFormat_byteOrder(self.h))
+  cint(fcQPixelFormat_byteOrder(self.h))
 
-proc yuvLayout*(self: QPixelFormat, ): QPixelFormatYUVLayout =
+proc yuvLayout*(self: gen_qpixelformat_types.QPixelFormat, ): cint =
 
-  QPixelFormatYUVLayout(fcQPixelFormat_yuvLayout(self.h))
+  cint(fcQPixelFormat_yuvLayout(self.h))
 
-proc subEnum*(self: QPixelFormat, ): uint8 =
+proc subEnum*(self: gen_qpixelformat_types.QPixelFormat, ): uint8 =
 
   fcQPixelFormat_subEnum(self.h)
 
-proc delete*(self: QPixelFormat) =
+proc delete*(self: gen_qpixelformat_types.QPixelFormat) =
   fcQPixelFormat_delete(self.h)

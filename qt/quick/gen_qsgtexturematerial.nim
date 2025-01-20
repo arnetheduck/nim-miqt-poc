@@ -79,154 +79,139 @@ proc fcQSGTextureMaterial_createShader(self: pointer, ): pointer {.importc: "QSG
 proc fcQSGTextureMaterial_delete(self: pointer) {.importc: "QSGTextureMaterial_delete".}
 
 
-func init*(T: type QSGOpaqueTextureMaterial, h: ptr cQSGOpaqueTextureMaterial): QSGOpaqueTextureMaterial =
+func init*(T: type gen_qsgtexturematerial_types.QSGOpaqueTextureMaterial, h: ptr cQSGOpaqueTextureMaterial): gen_qsgtexturematerial_types.QSGOpaqueTextureMaterial =
   T(h: h)
-proc create*(T: type QSGOpaqueTextureMaterial, ): QSGOpaqueTextureMaterial =
+proc create*(T: type gen_qsgtexturematerial_types.QSGOpaqueTextureMaterial, ): gen_qsgtexturematerial_types.QSGOpaqueTextureMaterial =
 
-  QSGOpaqueTextureMaterial.init(fcQSGOpaqueTextureMaterial_new())
-proc typeX*(self: QSGOpaqueTextureMaterial, ): gen_qsgmaterialtype.QSGMaterialType =
+  gen_qsgtexturematerial_types.QSGOpaqueTextureMaterial.init(fcQSGOpaqueTextureMaterial_new())
+proc typeX*(self: gen_qsgtexturematerial_types.QSGOpaqueTextureMaterial, ): gen_qsgmaterialtype.QSGMaterialType =
 
   gen_qsgmaterialtype.QSGMaterialType(h: fcQSGOpaqueTextureMaterial_typeX(self.h))
 
-proc createShader*(self: QSGOpaqueTextureMaterial, ): gen_qsgmaterialshader.QSGMaterialShader =
+proc createShader*(self: gen_qsgtexturematerial_types.QSGOpaqueTextureMaterial, ): gen_qsgmaterialshader.QSGMaterialShader =
 
   gen_qsgmaterialshader.QSGMaterialShader(h: fcQSGOpaqueTextureMaterial_createShader(self.h))
 
-proc compare*(self: QSGOpaqueTextureMaterial, other: gen_qsgmaterial.QSGMaterial): cint =
+proc compare*(self: gen_qsgtexturematerial_types.QSGOpaqueTextureMaterial, other: gen_qsgmaterial.QSGMaterial): cint =
 
   fcQSGOpaqueTextureMaterial_compare(self.h, other.h)
 
-proc setTexture*(self: QSGOpaqueTextureMaterial, texture: gen_qsgtexture.QSGTexture): void =
+proc setTexture*(self: gen_qsgtexturematerial_types.QSGOpaqueTextureMaterial, texture: gen_qsgtexture.QSGTexture): void =
 
   fcQSGOpaqueTextureMaterial_setTexture(self.h, texture.h)
 
-proc texture*(self: QSGOpaqueTextureMaterial, ): gen_qsgtexture.QSGTexture =
+proc texture*(self: gen_qsgtexturematerial_types.QSGOpaqueTextureMaterial, ): gen_qsgtexture.QSGTexture =
 
   gen_qsgtexture.QSGTexture(h: fcQSGOpaqueTextureMaterial_texture(self.h))
 
-proc setMipmapFiltering*(self: QSGOpaqueTextureMaterial, filteringType: gen_qsgtexture.QSGTextureFiltering): void =
+proc setMipmapFiltering*(self: gen_qsgtexturematerial_types.QSGOpaqueTextureMaterial, filteringType: cint): void =
 
   fcQSGOpaqueTextureMaterial_setMipmapFiltering(self.h, cint(filteringType))
 
-proc mipmapFiltering*(self: QSGOpaqueTextureMaterial, ): gen_qsgtexture.QSGTextureFiltering =
+proc mipmapFiltering*(self: gen_qsgtexturematerial_types.QSGOpaqueTextureMaterial, ): cint =
 
-  gen_qsgtexture.QSGTextureFiltering(fcQSGOpaqueTextureMaterial_mipmapFiltering(self.h))
+  cint(fcQSGOpaqueTextureMaterial_mipmapFiltering(self.h))
 
-proc setFiltering*(self: QSGOpaqueTextureMaterial, filteringType: gen_qsgtexture.QSGTextureFiltering): void =
+proc setFiltering*(self: gen_qsgtexturematerial_types.QSGOpaqueTextureMaterial, filteringType: cint): void =
 
   fcQSGOpaqueTextureMaterial_setFiltering(self.h, cint(filteringType))
 
-proc filtering*(self: QSGOpaqueTextureMaterial, ): gen_qsgtexture.QSGTextureFiltering =
+proc filtering*(self: gen_qsgtexturematerial_types.QSGOpaqueTextureMaterial, ): cint =
 
-  gen_qsgtexture.QSGTextureFiltering(fcQSGOpaqueTextureMaterial_filtering(self.h))
+  cint(fcQSGOpaqueTextureMaterial_filtering(self.h))
 
-proc setHorizontalWrapMode*(self: QSGOpaqueTextureMaterial, mode: gen_qsgtexture.QSGTextureWrapMode): void =
+proc setHorizontalWrapMode*(self: gen_qsgtexturematerial_types.QSGOpaqueTextureMaterial, mode: cint): void =
 
   fcQSGOpaqueTextureMaterial_setHorizontalWrapMode(self.h, cint(mode))
 
-proc horizontalWrapMode*(self: QSGOpaqueTextureMaterial, ): gen_qsgtexture.QSGTextureWrapMode =
+proc horizontalWrapMode*(self: gen_qsgtexturematerial_types.QSGOpaqueTextureMaterial, ): cint =
 
-  gen_qsgtexture.QSGTextureWrapMode(fcQSGOpaqueTextureMaterial_horizontalWrapMode(self.h))
+  cint(fcQSGOpaqueTextureMaterial_horizontalWrapMode(self.h))
 
-proc setVerticalWrapMode*(self: QSGOpaqueTextureMaterial, mode: gen_qsgtexture.QSGTextureWrapMode): void =
+proc setVerticalWrapMode*(self: gen_qsgtexturematerial_types.QSGOpaqueTextureMaterial, mode: cint): void =
 
   fcQSGOpaqueTextureMaterial_setVerticalWrapMode(self.h, cint(mode))
 
-proc verticalWrapMode*(self: QSGOpaqueTextureMaterial, ): gen_qsgtexture.QSGTextureWrapMode =
+proc verticalWrapMode*(self: gen_qsgtexturematerial_types.QSGOpaqueTextureMaterial, ): cint =
 
-  gen_qsgtexture.QSGTextureWrapMode(fcQSGOpaqueTextureMaterial_verticalWrapMode(self.h))
+  cint(fcQSGOpaqueTextureMaterial_verticalWrapMode(self.h))
 
-proc setAnisotropyLevel*(self: QSGOpaqueTextureMaterial, level: gen_qsgtexture.QSGTextureAnisotropyLevel): void =
+proc setAnisotropyLevel*(self: gen_qsgtexturematerial_types.QSGOpaqueTextureMaterial, level: cint): void =
 
   fcQSGOpaqueTextureMaterial_setAnisotropyLevel(self.h, cint(level))
 
-proc anisotropyLevel*(self: QSGOpaqueTextureMaterial, ): gen_qsgtexture.QSGTextureAnisotropyLevel =
+proc anisotropyLevel*(self: gen_qsgtexturematerial_types.QSGOpaqueTextureMaterial, ): cint =
 
-  gen_qsgtexture.QSGTextureAnisotropyLevel(fcQSGOpaqueTextureMaterial_anisotropyLevel(self.h))
+  cint(fcQSGOpaqueTextureMaterial_anisotropyLevel(self.h))
 
-proc callVirtualBase_typeX(self: QSGOpaqueTextureMaterial, ): gen_qsgmaterialtype.QSGMaterialType =
-
+proc QSGOpaqueTextureMaterialtypeX*(self: gen_qsgtexturematerial_types.QSGOpaqueTextureMaterial, ): gen_qsgmaterialtype.QSGMaterialType =
 
   gen_qsgmaterialtype.QSGMaterialType(h: fQSGOpaqueTextureMaterial_virtualbase_type(self.h))
 
-type QSGOpaqueTextureMaterialtypeXBase* = proc(): gen_qsgmaterialtype.QSGMaterialType
-proc ontypeX*(self: QSGOpaqueTextureMaterial, slot: proc(super: QSGOpaqueTextureMaterialtypeXBase): gen_qsgmaterialtype.QSGMaterialType) =
+type QSGOpaqueTextureMaterialtypeXProc* = proc(): gen_qsgmaterialtype.QSGMaterialType
+proc ontypeX*(self: gen_qsgtexturematerial_types.QSGOpaqueTextureMaterial, slot: QSGOpaqueTextureMaterialtypeXProc) =
   # TODO check subclass
-  type Cb = proc(super: QSGOpaqueTextureMaterialtypeXBase): gen_qsgmaterialtype.QSGMaterialType
-  var tmp = new Cb
+  var tmp = new QSGOpaqueTextureMaterialtypeXProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSGOpaqueTextureMaterial_override_virtual_typeX(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSGOpaqueTextureMaterial_type(self: ptr cQSGOpaqueTextureMaterial, slot: int): pointer {.exportc: "miqt_exec_callback_QSGOpaqueTextureMaterial_type ".} =
-  type Cb = proc(super: QSGOpaqueTextureMaterialtypeXBase): gen_qsgmaterialtype.QSGMaterialType
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_typeX(QSGOpaqueTextureMaterial(h: self), )
+  var nimfunc = cast[ptr QSGOpaqueTextureMaterialtypeXProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_createShader(self: QSGOpaqueTextureMaterial, ): gen_qsgmaterialshader.QSGMaterialShader =
-
+proc QSGOpaqueTextureMaterialcreateShader*(self: gen_qsgtexturematerial_types.QSGOpaqueTextureMaterial, ): gen_qsgmaterialshader.QSGMaterialShader =
 
   gen_qsgmaterialshader.QSGMaterialShader(h: fQSGOpaqueTextureMaterial_virtualbase_createShader(self.h))
 
-type QSGOpaqueTextureMaterialcreateShaderBase* = proc(): gen_qsgmaterialshader.QSGMaterialShader
-proc oncreateShader*(self: QSGOpaqueTextureMaterial, slot: proc(super: QSGOpaqueTextureMaterialcreateShaderBase): gen_qsgmaterialshader.QSGMaterialShader) =
+type QSGOpaqueTextureMaterialcreateShaderProc* = proc(): gen_qsgmaterialshader.QSGMaterialShader
+proc oncreateShader*(self: gen_qsgtexturematerial_types.QSGOpaqueTextureMaterial, slot: QSGOpaqueTextureMaterialcreateShaderProc) =
   # TODO check subclass
-  type Cb = proc(super: QSGOpaqueTextureMaterialcreateShaderBase): gen_qsgmaterialshader.QSGMaterialShader
-  var tmp = new Cb
+  var tmp = new QSGOpaqueTextureMaterialcreateShaderProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSGOpaqueTextureMaterial_override_virtual_createShader(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSGOpaqueTextureMaterial_createShader(self: ptr cQSGOpaqueTextureMaterial, slot: int): pointer {.exportc: "miqt_exec_callback_QSGOpaqueTextureMaterial_createShader ".} =
-  type Cb = proc(super: QSGOpaqueTextureMaterialcreateShaderBase): gen_qsgmaterialshader.QSGMaterialShader
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_createShader(QSGOpaqueTextureMaterial(h: self), )
+  var nimfunc = cast[ptr QSGOpaqueTextureMaterialcreateShaderProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_compare(self: QSGOpaqueTextureMaterial, other: gen_qsgmaterial.QSGMaterial): cint =
-
+proc QSGOpaqueTextureMaterialcompare*(self: gen_qsgtexturematerial_types.QSGOpaqueTextureMaterial, other: gen_qsgmaterial.QSGMaterial): cint =
 
   fQSGOpaqueTextureMaterial_virtualbase_compare(self.h, other.h)
 
-type QSGOpaqueTextureMaterialcompareBase* = proc(other: gen_qsgmaterial.QSGMaterial): cint
-proc oncompare*(self: QSGOpaqueTextureMaterial, slot: proc(super: QSGOpaqueTextureMaterialcompareBase, other: gen_qsgmaterial.QSGMaterial): cint) =
+type QSGOpaqueTextureMaterialcompareProc* = proc(other: gen_qsgmaterial.QSGMaterial): cint
+proc oncompare*(self: gen_qsgtexturematerial_types.QSGOpaqueTextureMaterial, slot: QSGOpaqueTextureMaterialcompareProc) =
   # TODO check subclass
-  type Cb = proc(super: QSGOpaqueTextureMaterialcompareBase, other: gen_qsgmaterial.QSGMaterial): cint
-  var tmp = new Cb
+  var tmp = new QSGOpaqueTextureMaterialcompareProc
   tmp[] = slot
   GC_ref(tmp)
   fcQSGOpaqueTextureMaterial_override_virtual_compare(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QSGOpaqueTextureMaterial_compare(self: ptr cQSGOpaqueTextureMaterial, slot: int, other: pointer): cint {.exportc: "miqt_exec_callback_QSGOpaqueTextureMaterial_compare ".} =
-  type Cb = proc(super: QSGOpaqueTextureMaterialcompareBase, other: gen_qsgmaterial.QSGMaterial): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(other: gen_qsgmaterial.QSGMaterial): auto =
-    callVirtualBase_compare(QSGOpaqueTextureMaterial(h: self), other)
+  var nimfunc = cast[ptr QSGOpaqueTextureMaterialcompareProc](cast[pointer](slot))
   let slotval1 = gen_qsgmaterial.QSGMaterial(h: other)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc delete*(self: QSGOpaqueTextureMaterial) =
+proc delete*(self: gen_qsgtexturematerial_types.QSGOpaqueTextureMaterial) =
   fcQSGOpaqueTextureMaterial_delete(self.h)
 
-func init*(T: type QSGTextureMaterial, h: ptr cQSGTextureMaterial): QSGTextureMaterial =
+func init*(T: type gen_qsgtexturematerial_types.QSGTextureMaterial, h: ptr cQSGTextureMaterial): gen_qsgtexturematerial_types.QSGTextureMaterial =
   T(h: h)
-proc typeX*(self: QSGTextureMaterial, ): gen_qsgmaterialtype.QSGMaterialType =
+proc typeX*(self: gen_qsgtexturematerial_types.QSGTextureMaterial, ): gen_qsgmaterialtype.QSGMaterialType =
 
   gen_qsgmaterialtype.QSGMaterialType(h: fcQSGTextureMaterial_typeX(self.h))
 
-proc createShader*(self: QSGTextureMaterial, ): gen_qsgmaterialshader.QSGMaterialShader =
+proc createShader*(self: gen_qsgtexturematerial_types.QSGTextureMaterial, ): gen_qsgmaterialshader.QSGMaterialShader =
 
   gen_qsgmaterialshader.QSGMaterialShader(h: fcQSGTextureMaterial_createShader(self.h))
 
-proc delete*(self: QSGTextureMaterial) =
+proc delete*(self: gen_qsgtexturematerial_types.QSGTextureMaterial) =
   fcQSGTextureMaterial_delete(self.h)

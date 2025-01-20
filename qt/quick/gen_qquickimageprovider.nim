@@ -185,454 +185,393 @@ proc fcQQuickAsyncImageProvider_override_virtual_requestTexture(self: pointer, s
 proc fcQQuickAsyncImageProvider_delete(self: pointer) {.importc: "QQuickAsyncImageProvider_delete".}
 
 
-func init*(T: type QQuickTextureFactory, h: ptr cQQuickTextureFactory): QQuickTextureFactory =
+func init*(T: type gen_qquickimageprovider_types.QQuickTextureFactory, h: ptr cQQuickTextureFactory): gen_qquickimageprovider_types.QQuickTextureFactory =
   T(h: h)
-proc create*(T: type QQuickTextureFactory, ): QQuickTextureFactory =
+proc create*(T: type gen_qquickimageprovider_types.QQuickTextureFactory, ): gen_qquickimageprovider_types.QQuickTextureFactory =
 
-  QQuickTextureFactory.init(fcQQuickTextureFactory_new())
-proc metaObject*(self: QQuickTextureFactory, ): gen_qobjectdefs.QMetaObject =
+  gen_qquickimageprovider_types.QQuickTextureFactory.init(fcQQuickTextureFactory_new())
+proc metaObject*(self: gen_qquickimageprovider_types.QQuickTextureFactory, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQQuickTextureFactory_metaObject(self.h))
 
-proc metacast*(self: QQuickTextureFactory, param1: cstring): pointer =
+proc metacast*(self: gen_qquickimageprovider_types.QQuickTextureFactory, param1: cstring): pointer =
 
   fcQQuickTextureFactory_metacast(self.h, param1)
 
-proc metacall*(self: QQuickTextureFactory, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qquickimageprovider_types.QQuickTextureFactory, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQQuickTextureFactory_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QQuickTextureFactory, s: cstring): string =
+proc tr*(_: type gen_qquickimageprovider_types.QQuickTextureFactory, s: cstring): string =
 
   let v_ms = fcQQuickTextureFactory_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QQuickTextureFactory, s: cstring): string =
+proc trUtf8*(_: type gen_qquickimageprovider_types.QQuickTextureFactory, s: cstring): string =
 
   let v_ms = fcQQuickTextureFactory_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc createTexture*(self: QQuickTextureFactory, window: gen_qquickwindow.QQuickWindow): gen_qsgtexture.QSGTexture =
+proc createTexture*(self: gen_qquickimageprovider_types.QQuickTextureFactory, window: gen_qquickwindow.QQuickWindow): gen_qsgtexture.QSGTexture =
 
   gen_qsgtexture.QSGTexture(h: fcQQuickTextureFactory_createTexture(self.h, window.h))
 
-proc textureSize*(self: QQuickTextureFactory, ): gen_qsize.QSize =
+proc textureSize*(self: gen_qquickimageprovider_types.QQuickTextureFactory, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQQuickTextureFactory_textureSize(self.h))
 
-proc textureByteCount*(self: QQuickTextureFactory, ): cint =
+proc textureByteCount*(self: gen_qquickimageprovider_types.QQuickTextureFactory, ): cint =
 
   fcQQuickTextureFactory_textureByteCount(self.h)
 
-proc image*(self: QQuickTextureFactory, ): gen_qimage.QImage =
+proc image*(self: gen_qquickimageprovider_types.QQuickTextureFactory, ): gen_qimage.QImage =
 
   gen_qimage.QImage(h: fcQQuickTextureFactory_image(self.h))
 
-proc textureFactoryForImage*(_: type QQuickTextureFactory, image: gen_qimage.QImage): QQuickTextureFactory =
+proc textureFactoryForImage*(_: type gen_qquickimageprovider_types.QQuickTextureFactory, image: gen_qimage.QImage): gen_qquickimageprovider_types.QQuickTextureFactory =
 
-  QQuickTextureFactory(h: fcQQuickTextureFactory_textureFactoryForImage(image.h))
+  gen_qquickimageprovider_types.QQuickTextureFactory(h: fcQQuickTextureFactory_textureFactoryForImage(image.h))
 
-proc tr2*(_: type QQuickTextureFactory, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qquickimageprovider_types.QQuickTextureFactory, s: cstring, c: cstring): string =
 
   let v_ms = fcQQuickTextureFactory_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QQuickTextureFactory, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qquickimageprovider_types.QQuickTextureFactory, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQQuickTextureFactory_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QQuickTextureFactory, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qquickimageprovider_types.QQuickTextureFactory, s: cstring, c: cstring): string =
 
   let v_ms = fcQQuickTextureFactory_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QQuickTextureFactory, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qquickimageprovider_types.QQuickTextureFactory, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQQuickTextureFactory_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QQuickTextureFactory, ): gen_qobjectdefs.QMetaObject =
-
+proc QQuickTextureFactorymetaObject*(self: gen_qquickimageprovider_types.QQuickTextureFactory, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQQuickTextureFactory_virtualbase_metaObject(self.h))
 
-type QQuickTextureFactorymetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QQuickTextureFactory, slot: proc(super: QQuickTextureFactorymetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QQuickTextureFactorymetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qquickimageprovider_types.QQuickTextureFactory, slot: QQuickTextureFactorymetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickTextureFactorymetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QQuickTextureFactorymetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickTextureFactory_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickTextureFactory_metaObject(self: ptr cQQuickTextureFactory, slot: int): pointer {.exportc: "miqt_exec_callback_QQuickTextureFactory_metaObject ".} =
-  type Cb = proc(super: QQuickTextureFactorymetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QQuickTextureFactory(h: self), )
+  var nimfunc = cast[ptr QQuickTextureFactorymetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QQuickTextureFactory, param1: cstring): pointer =
-
+proc QQuickTextureFactorymetacast*(self: gen_qquickimageprovider_types.QQuickTextureFactory, param1: cstring): pointer =
 
   fQQuickTextureFactory_virtualbase_metacast(self.h, param1)
 
-type QQuickTextureFactorymetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QQuickTextureFactory, slot: proc(super: QQuickTextureFactorymetacastBase, param1: cstring): pointer) =
+type QQuickTextureFactorymetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qquickimageprovider_types.QQuickTextureFactory, slot: QQuickTextureFactorymetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickTextureFactorymetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QQuickTextureFactorymetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickTextureFactory_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickTextureFactory_metacast(self: ptr cQQuickTextureFactory, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QQuickTextureFactory_metacast ".} =
-  type Cb = proc(super: QQuickTextureFactorymetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QQuickTextureFactory(h: self), param1)
+  var nimfunc = cast[ptr QQuickTextureFactorymetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QQuickTextureFactory, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QQuickTextureFactorymetacall*(self: gen_qquickimageprovider_types.QQuickTextureFactory, param1: cint, param2: cint, param3: pointer): cint =
 
   fQQuickTextureFactory_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QQuickTextureFactorymetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QQuickTextureFactory, slot: proc(super: QQuickTextureFactorymetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QQuickTextureFactorymetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qquickimageprovider_types.QQuickTextureFactory, slot: QQuickTextureFactorymetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickTextureFactorymetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QQuickTextureFactorymetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickTextureFactory_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickTextureFactory_metacall(self: ptr cQQuickTextureFactory, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QQuickTextureFactory_metacall ".} =
-  type Cb = proc(super: QQuickTextureFactorymetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QQuickTextureFactory(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QQuickTextureFactorymetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-type QQuickTextureFactorycreateTextureBase* = proc(window: gen_qquickwindow.QQuickWindow): gen_qsgtexture.QSGTexture
-proc oncreateTexture*(self: QQuickTextureFactory, slot: proc(window: gen_qquickwindow.QQuickWindow): gen_qsgtexture.QSGTexture) =
+type QQuickTextureFactorycreateTextureProc* = proc(window: gen_qquickwindow.QQuickWindow): gen_qsgtexture.QSGTexture
+proc oncreateTexture*(self: gen_qquickimageprovider_types.QQuickTextureFactory, slot: QQuickTextureFactorycreateTextureProc) =
   # TODO check subclass
-  type Cb = proc(window: gen_qquickwindow.QQuickWindow): gen_qsgtexture.QSGTexture
-  var tmp = new Cb
+  var tmp = new QQuickTextureFactorycreateTextureProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickTextureFactory_override_virtual_createTexture(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickTextureFactory_createTexture(self: ptr cQQuickTextureFactory, slot: int, window: pointer): pointer {.exportc: "miqt_exec_callback_QQuickTextureFactory_createTexture ".} =
-  type Cb = proc(window: gen_qquickwindow.QQuickWindow): gen_qsgtexture.QSGTexture
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QQuickTextureFactorycreateTextureProc](cast[pointer](slot))
   let slotval1 = gen_qquickwindow.QQuickWindow(h: window)
 
 
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-type QQuickTextureFactorytextureSizeBase* = proc(): gen_qsize.QSize
-proc ontextureSize*(self: QQuickTextureFactory, slot: proc(): gen_qsize.QSize) =
+type QQuickTextureFactorytextureSizeProc* = proc(): gen_qsize.QSize
+proc ontextureSize*(self: gen_qquickimageprovider_types.QQuickTextureFactory, slot: QQuickTextureFactorytextureSizeProc) =
   # TODO check subclass
-  type Cb = proc(): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QQuickTextureFactorytextureSizeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickTextureFactory_override_virtual_textureSize(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickTextureFactory_textureSize(self: ptr cQQuickTextureFactory, slot: int): pointer {.exportc: "miqt_exec_callback_QQuickTextureFactory_textureSize ".} =
-  type Cb = proc(): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QQuickTextureFactorytextureSizeProc](cast[pointer](slot))
 
   let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-type QQuickTextureFactorytextureByteCountBase* = proc(): cint
-proc ontextureByteCount*(self: QQuickTextureFactory, slot: proc(): cint) =
+type QQuickTextureFactorytextureByteCountProc* = proc(): cint
+proc ontextureByteCount*(self: gen_qquickimageprovider_types.QQuickTextureFactory, slot: QQuickTextureFactorytextureByteCountProc) =
   # TODO check subclass
-  type Cb = proc(): cint
-  var tmp = new Cb
+  var tmp = new QQuickTextureFactorytextureByteCountProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickTextureFactory_override_virtual_textureByteCount(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickTextureFactory_textureByteCount(self: ptr cQQuickTextureFactory, slot: int): cint {.exportc: "miqt_exec_callback_QQuickTextureFactory_textureByteCount ".} =
-  type Cb = proc(): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QQuickTextureFactorytextureByteCountProc](cast[pointer](slot))
 
   let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_image(self: QQuickTextureFactory, ): gen_qimage.QImage =
-
+proc QQuickTextureFactoryimage*(self: gen_qquickimageprovider_types.QQuickTextureFactory, ): gen_qimage.QImage =
 
   gen_qimage.QImage(h: fQQuickTextureFactory_virtualbase_image(self.h))
 
-type QQuickTextureFactoryimageBase* = proc(): gen_qimage.QImage
-proc onimage*(self: QQuickTextureFactory, slot: proc(super: QQuickTextureFactoryimageBase): gen_qimage.QImage) =
+type QQuickTextureFactoryimageProc* = proc(): gen_qimage.QImage
+proc onimage*(self: gen_qquickimageprovider_types.QQuickTextureFactory, slot: QQuickTextureFactoryimageProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickTextureFactoryimageBase): gen_qimage.QImage
-  var tmp = new Cb
+  var tmp = new QQuickTextureFactoryimageProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickTextureFactory_override_virtual_image(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickTextureFactory_image(self: ptr cQQuickTextureFactory, slot: int): pointer {.exportc: "miqt_exec_callback_QQuickTextureFactory_image ".} =
-  type Cb = proc(super: QQuickTextureFactoryimageBase): gen_qimage.QImage
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_image(QQuickTextureFactory(h: self), )
+  var nimfunc = cast[ptr QQuickTextureFactoryimageProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_event(self: QQuickTextureFactory, event: gen_qcoreevent.QEvent): bool =
-
+proc QQuickTextureFactoryevent*(self: gen_qquickimageprovider_types.QQuickTextureFactory, event: gen_qcoreevent.QEvent): bool =
 
   fQQuickTextureFactory_virtualbase_event(self.h, event.h)
 
-type QQuickTextureFactoryeventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QQuickTextureFactory, slot: proc(super: QQuickTextureFactoryeventBase, event: gen_qcoreevent.QEvent): bool) =
+type QQuickTextureFactoryeventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qquickimageprovider_types.QQuickTextureFactory, slot: QQuickTextureFactoryeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickTextureFactoryeventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QQuickTextureFactoryeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickTextureFactory_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickTextureFactory_event(self: ptr cQQuickTextureFactory, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QQuickTextureFactory_event ".} =
-  type Cb = proc(super: QQuickTextureFactoryeventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QQuickTextureFactory(h: self), event)
+  var nimfunc = cast[ptr QQuickTextureFactoryeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QQuickTextureFactory, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QQuickTextureFactoryeventFilter*(self: gen_qquickimageprovider_types.QQuickTextureFactory, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQQuickTextureFactory_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QQuickTextureFactoryeventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QQuickTextureFactory, slot: proc(super: QQuickTextureFactoryeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QQuickTextureFactoryeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qquickimageprovider_types.QQuickTextureFactory, slot: QQuickTextureFactoryeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickTextureFactoryeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QQuickTextureFactoryeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickTextureFactory_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickTextureFactory_eventFilter(self: ptr cQQuickTextureFactory, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QQuickTextureFactory_eventFilter ".} =
-  type Cb = proc(super: QQuickTextureFactoryeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QQuickTextureFactory(h: self), watched, event)
+  var nimfunc = cast[ptr QQuickTextureFactoryeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QQuickTextureFactory, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QQuickTextureFactorytimerEvent*(self: gen_qquickimageprovider_types.QQuickTextureFactory, event: gen_qcoreevent.QTimerEvent): void =
 
   fQQuickTextureFactory_virtualbase_timerEvent(self.h, event.h)
 
-type QQuickTextureFactorytimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QQuickTextureFactory, slot: proc(super: QQuickTextureFactorytimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QQuickTextureFactorytimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qquickimageprovider_types.QQuickTextureFactory, slot: QQuickTextureFactorytimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickTextureFactorytimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QQuickTextureFactorytimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickTextureFactory_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickTextureFactory_timerEvent(self: ptr cQQuickTextureFactory, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QQuickTextureFactory_timerEvent ".} =
-  type Cb = proc(super: QQuickTextureFactorytimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QQuickTextureFactory(h: self), event)
+  var nimfunc = cast[ptr QQuickTextureFactorytimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QQuickTextureFactory, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QQuickTextureFactorychildEvent*(self: gen_qquickimageprovider_types.QQuickTextureFactory, event: gen_qcoreevent.QChildEvent): void =
 
   fQQuickTextureFactory_virtualbase_childEvent(self.h, event.h)
 
-type QQuickTextureFactorychildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QQuickTextureFactory, slot: proc(super: QQuickTextureFactorychildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QQuickTextureFactorychildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qquickimageprovider_types.QQuickTextureFactory, slot: QQuickTextureFactorychildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickTextureFactorychildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QQuickTextureFactorychildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickTextureFactory_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickTextureFactory_childEvent(self: ptr cQQuickTextureFactory, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QQuickTextureFactory_childEvent ".} =
-  type Cb = proc(super: QQuickTextureFactorychildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QQuickTextureFactory(h: self), event)
+  var nimfunc = cast[ptr QQuickTextureFactorychildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QQuickTextureFactory, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QQuickTextureFactorycustomEvent*(self: gen_qquickimageprovider_types.QQuickTextureFactory, event: gen_qcoreevent.QEvent): void =
 
   fQQuickTextureFactory_virtualbase_customEvent(self.h, event.h)
 
-type QQuickTextureFactorycustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QQuickTextureFactory, slot: proc(super: QQuickTextureFactorycustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QQuickTextureFactorycustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qquickimageprovider_types.QQuickTextureFactory, slot: QQuickTextureFactorycustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickTextureFactorycustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QQuickTextureFactorycustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickTextureFactory_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickTextureFactory_customEvent(self: ptr cQQuickTextureFactory, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QQuickTextureFactory_customEvent ".} =
-  type Cb = proc(super: QQuickTextureFactorycustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QQuickTextureFactory(h: self), event)
+  var nimfunc = cast[ptr QQuickTextureFactorycustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QQuickTextureFactory, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QQuickTextureFactoryconnectNotify*(self: gen_qquickimageprovider_types.QQuickTextureFactory, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQQuickTextureFactory_virtualbase_connectNotify(self.h, signal.h)
 
-type QQuickTextureFactoryconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QQuickTextureFactory, slot: proc(super: QQuickTextureFactoryconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QQuickTextureFactoryconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qquickimageprovider_types.QQuickTextureFactory, slot: QQuickTextureFactoryconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickTextureFactoryconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QQuickTextureFactoryconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickTextureFactory_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickTextureFactory_connectNotify(self: ptr cQQuickTextureFactory, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QQuickTextureFactory_connectNotify ".} =
-  type Cb = proc(super: QQuickTextureFactoryconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QQuickTextureFactory(h: self), signal)
+  var nimfunc = cast[ptr QQuickTextureFactoryconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QQuickTextureFactory, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QQuickTextureFactorydisconnectNotify*(self: gen_qquickimageprovider_types.QQuickTextureFactory, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQQuickTextureFactory_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QQuickTextureFactorydisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QQuickTextureFactory, slot: proc(super: QQuickTextureFactorydisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QQuickTextureFactorydisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qquickimageprovider_types.QQuickTextureFactory, slot: QQuickTextureFactorydisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickTextureFactorydisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QQuickTextureFactorydisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickTextureFactory_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickTextureFactory_disconnectNotify(self: ptr cQQuickTextureFactory, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QQuickTextureFactory_disconnectNotify ".} =
-  type Cb = proc(super: QQuickTextureFactorydisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QQuickTextureFactory(h: self), signal)
+  var nimfunc = cast[ptr QQuickTextureFactorydisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QQuickTextureFactory): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qquickimageprovider_types.QQuickTextureFactory): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQQuickTextureFactory_staticMetaObject())
-proc delete*(self: QQuickTextureFactory) =
+proc delete*(self: gen_qquickimageprovider_types.QQuickTextureFactory) =
   fcQQuickTextureFactory_delete(self.h)
 
-func init*(T: type QQuickImageResponse, h: ptr cQQuickImageResponse): QQuickImageResponse =
+func init*(T: type gen_qquickimageprovider_types.QQuickImageResponse, h: ptr cQQuickImageResponse): gen_qquickimageprovider_types.QQuickImageResponse =
   T(h: h)
-proc create*(T: type QQuickImageResponse, ): QQuickImageResponse =
+proc create*(T: type gen_qquickimageprovider_types.QQuickImageResponse, ): gen_qquickimageprovider_types.QQuickImageResponse =
 
-  QQuickImageResponse.init(fcQQuickImageResponse_new())
-proc metaObject*(self: QQuickImageResponse, ): gen_qobjectdefs.QMetaObject =
+  gen_qquickimageprovider_types.QQuickImageResponse.init(fcQQuickImageResponse_new())
+proc metaObject*(self: gen_qquickimageprovider_types.QQuickImageResponse, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQQuickImageResponse_metaObject(self.h))
 
-proc metacast*(self: QQuickImageResponse, param1: cstring): pointer =
+proc metacast*(self: gen_qquickimageprovider_types.QQuickImageResponse, param1: cstring): pointer =
 
   fcQQuickImageResponse_metacast(self.h, param1)
 
-proc metacall*(self: QQuickImageResponse, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qquickimageprovider_types.QQuickImageResponse, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQQuickImageResponse_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QQuickImageResponse, s: cstring): string =
+proc tr*(_: type gen_qquickimageprovider_types.QQuickImageResponse, s: cstring): string =
 
   let v_ms = fcQQuickImageResponse_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QQuickImageResponse, s: cstring): string =
+proc trUtf8*(_: type gen_qquickimageprovider_types.QQuickImageResponse, s: cstring): string =
 
   let v_ms = fcQQuickImageResponse_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc textureFactory*(self: QQuickImageResponse, ): QQuickTextureFactory =
+proc textureFactory*(self: gen_qquickimageprovider_types.QQuickImageResponse, ): gen_qquickimageprovider_types.QQuickTextureFactory =
 
-  QQuickTextureFactory(h: fcQQuickImageResponse_textureFactory(self.h))
+  gen_qquickimageprovider_types.QQuickTextureFactory(h: fcQQuickImageResponse_textureFactory(self.h))
 
-proc errorString*(self: QQuickImageResponse, ): string =
+proc errorString*(self: gen_qquickimageprovider_types.QQuickImageResponse, ): string =
 
   let v_ms = fcQQuickImageResponse_errorString(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc cancel*(self: QQuickImageResponse, ): void =
+proc cancel*(self: gen_qquickimageprovider_types.QQuickImageResponse, ): void =
 
   fcQQuickImageResponse_cancel(self.h)
 
-proc finished*(self: QQuickImageResponse, ): void =
+proc finished*(self: gen_qquickimageprovider_types.QQuickImageResponse, ): void =
 
   fcQQuickImageResponse_finished(self.h)
 
@@ -642,448 +581,371 @@ proc miqt_exec_callback_QQuickImageResponse_finished(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onfinished*(self: QQuickImageResponse, slot: proc()) =
+proc onfinished*(self: gen_qquickimageprovider_types.QQuickImageResponse, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQQuickImageResponse_connect_finished(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QQuickImageResponse, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qquickimageprovider_types.QQuickImageResponse, s: cstring, c: cstring): string =
 
   let v_ms = fcQQuickImageResponse_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QQuickImageResponse, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qquickimageprovider_types.QQuickImageResponse, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQQuickImageResponse_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QQuickImageResponse, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qquickimageprovider_types.QQuickImageResponse, s: cstring, c: cstring): string =
 
   let v_ms = fcQQuickImageResponse_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QQuickImageResponse, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qquickimageprovider_types.QQuickImageResponse, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQQuickImageResponse_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QQuickImageResponse, ): gen_qobjectdefs.QMetaObject =
-
+proc QQuickImageResponsemetaObject*(self: gen_qquickimageprovider_types.QQuickImageResponse, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQQuickImageResponse_virtualbase_metaObject(self.h))
 
-type QQuickImageResponsemetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QQuickImageResponse, slot: proc(super: QQuickImageResponsemetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QQuickImageResponsemetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qquickimageprovider_types.QQuickImageResponse, slot: QQuickImageResponsemetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickImageResponsemetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QQuickImageResponsemetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickImageResponse_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickImageResponse_metaObject(self: ptr cQQuickImageResponse, slot: int): pointer {.exportc: "miqt_exec_callback_QQuickImageResponse_metaObject ".} =
-  type Cb = proc(super: QQuickImageResponsemetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QQuickImageResponse(h: self), )
+  var nimfunc = cast[ptr QQuickImageResponsemetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QQuickImageResponse, param1: cstring): pointer =
-
+proc QQuickImageResponsemetacast*(self: gen_qquickimageprovider_types.QQuickImageResponse, param1: cstring): pointer =
 
   fQQuickImageResponse_virtualbase_metacast(self.h, param1)
 
-type QQuickImageResponsemetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QQuickImageResponse, slot: proc(super: QQuickImageResponsemetacastBase, param1: cstring): pointer) =
+type QQuickImageResponsemetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qquickimageprovider_types.QQuickImageResponse, slot: QQuickImageResponsemetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickImageResponsemetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QQuickImageResponsemetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickImageResponse_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickImageResponse_metacast(self: ptr cQQuickImageResponse, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QQuickImageResponse_metacast ".} =
-  type Cb = proc(super: QQuickImageResponsemetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QQuickImageResponse(h: self), param1)
+  var nimfunc = cast[ptr QQuickImageResponsemetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QQuickImageResponse, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QQuickImageResponsemetacall*(self: gen_qquickimageprovider_types.QQuickImageResponse, param1: cint, param2: cint, param3: pointer): cint =
 
   fQQuickImageResponse_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QQuickImageResponsemetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QQuickImageResponse, slot: proc(super: QQuickImageResponsemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QQuickImageResponsemetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qquickimageprovider_types.QQuickImageResponse, slot: QQuickImageResponsemetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickImageResponsemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QQuickImageResponsemetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickImageResponse_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickImageResponse_metacall(self: ptr cQQuickImageResponse, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QQuickImageResponse_metacall ".} =
-  type Cb = proc(super: QQuickImageResponsemetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QQuickImageResponse(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QQuickImageResponsemetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-type QQuickImageResponsetextureFactoryBase* = proc(): QQuickTextureFactory
-proc ontextureFactory*(self: QQuickImageResponse, slot: proc(): QQuickTextureFactory) =
+type QQuickImageResponsetextureFactoryProc* = proc(): gen_qquickimageprovider_types.QQuickTextureFactory
+proc ontextureFactory*(self: gen_qquickimageprovider_types.QQuickImageResponse, slot: QQuickImageResponsetextureFactoryProc) =
   # TODO check subclass
-  type Cb = proc(): QQuickTextureFactory
-  var tmp = new Cb
+  var tmp = new QQuickImageResponsetextureFactoryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickImageResponse_override_virtual_textureFactory(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickImageResponse_textureFactory(self: ptr cQQuickImageResponse, slot: int): pointer {.exportc: "miqt_exec_callback_QQuickImageResponse_textureFactory ".} =
-  type Cb = proc(): QQuickTextureFactory
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QQuickImageResponsetextureFactoryProc](cast[pointer](slot))
 
   let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_errorString(self: QQuickImageResponse, ): string =
-
+proc QQuickImageResponseerrorString*(self: gen_qquickimageprovider_types.QQuickImageResponse, ): string =
 
   let v_ms = fQQuickImageResponse_virtualbase_errorString(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-type QQuickImageResponseerrorStringBase* = proc(): string
-proc onerrorString*(self: QQuickImageResponse, slot: proc(super: QQuickImageResponseerrorStringBase): string) =
+type QQuickImageResponseerrorStringProc* = proc(): string
+proc onerrorString*(self: gen_qquickimageprovider_types.QQuickImageResponse, slot: QQuickImageResponseerrorStringProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickImageResponseerrorStringBase): string
-  var tmp = new Cb
+  var tmp = new QQuickImageResponseerrorStringProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickImageResponse_override_virtual_errorString(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickImageResponse_errorString(self: ptr cQQuickImageResponse, slot: int): struct_miqt_string {.exportc: "miqt_exec_callback_QQuickImageResponse_errorString ".} =
-  type Cb = proc(super: QQuickImageResponseerrorStringBase): string
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_errorString(QQuickImageResponse(h: self), )
+  var nimfunc = cast[ptr QQuickImageResponseerrorStringProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
-proc callVirtualBase_cancel(self: QQuickImageResponse, ): void =
-
+proc QQuickImageResponsecancel*(self: gen_qquickimageprovider_types.QQuickImageResponse, ): void =
 
   fQQuickImageResponse_virtualbase_cancel(self.h)
 
-type QQuickImageResponsecancelBase* = proc(): void
-proc oncancel*(self: QQuickImageResponse, slot: proc(super: QQuickImageResponsecancelBase): void) =
+type QQuickImageResponsecancelProc* = proc(): void
+proc oncancel*(self: gen_qquickimageprovider_types.QQuickImageResponse, slot: QQuickImageResponsecancelProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickImageResponsecancelBase): void
-  var tmp = new Cb
+  var tmp = new QQuickImageResponsecancelProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickImageResponse_override_virtual_cancel(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickImageResponse_cancel(self: ptr cQQuickImageResponse, slot: int): void {.exportc: "miqt_exec_callback_QQuickImageResponse_cancel ".} =
-  type Cb = proc(super: QQuickImageResponsecancelBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_cancel(QQuickImageResponse(h: self), )
+  var nimfunc = cast[ptr QQuickImageResponsecancelProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_event(self: QQuickImageResponse, event: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[]()
+proc QQuickImageResponseevent*(self: gen_qquickimageprovider_types.QQuickImageResponse, event: gen_qcoreevent.QEvent): bool =
 
   fQQuickImageResponse_virtualbase_event(self.h, event.h)
 
-type QQuickImageResponseeventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QQuickImageResponse, slot: proc(super: QQuickImageResponseeventBase, event: gen_qcoreevent.QEvent): bool) =
+type QQuickImageResponseeventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qquickimageprovider_types.QQuickImageResponse, slot: QQuickImageResponseeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickImageResponseeventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QQuickImageResponseeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickImageResponse_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickImageResponse_event(self: ptr cQQuickImageResponse, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QQuickImageResponse_event ".} =
-  type Cb = proc(super: QQuickImageResponseeventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QQuickImageResponse(h: self), event)
+  var nimfunc = cast[ptr QQuickImageResponseeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QQuickImageResponse, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QQuickImageResponseeventFilter*(self: gen_qquickimageprovider_types.QQuickImageResponse, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQQuickImageResponse_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QQuickImageResponseeventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QQuickImageResponse, slot: proc(super: QQuickImageResponseeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QQuickImageResponseeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qquickimageprovider_types.QQuickImageResponse, slot: QQuickImageResponseeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickImageResponseeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QQuickImageResponseeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickImageResponse_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickImageResponse_eventFilter(self: ptr cQQuickImageResponse, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QQuickImageResponse_eventFilter ".} =
-  type Cb = proc(super: QQuickImageResponseeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QQuickImageResponse(h: self), watched, event)
+  var nimfunc = cast[ptr QQuickImageResponseeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QQuickImageResponse, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QQuickImageResponsetimerEvent*(self: gen_qquickimageprovider_types.QQuickImageResponse, event: gen_qcoreevent.QTimerEvent): void =
 
   fQQuickImageResponse_virtualbase_timerEvent(self.h, event.h)
 
-type QQuickImageResponsetimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QQuickImageResponse, slot: proc(super: QQuickImageResponsetimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QQuickImageResponsetimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qquickimageprovider_types.QQuickImageResponse, slot: QQuickImageResponsetimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickImageResponsetimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QQuickImageResponsetimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickImageResponse_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickImageResponse_timerEvent(self: ptr cQQuickImageResponse, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QQuickImageResponse_timerEvent ".} =
-  type Cb = proc(super: QQuickImageResponsetimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QQuickImageResponse(h: self), event)
+  var nimfunc = cast[ptr QQuickImageResponsetimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QQuickImageResponse, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QQuickImageResponsechildEvent*(self: gen_qquickimageprovider_types.QQuickImageResponse, event: gen_qcoreevent.QChildEvent): void =
 
   fQQuickImageResponse_virtualbase_childEvent(self.h, event.h)
 
-type QQuickImageResponsechildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QQuickImageResponse, slot: proc(super: QQuickImageResponsechildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QQuickImageResponsechildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qquickimageprovider_types.QQuickImageResponse, slot: QQuickImageResponsechildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickImageResponsechildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QQuickImageResponsechildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickImageResponse_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickImageResponse_childEvent(self: ptr cQQuickImageResponse, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QQuickImageResponse_childEvent ".} =
-  type Cb = proc(super: QQuickImageResponsechildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QQuickImageResponse(h: self), event)
+  var nimfunc = cast[ptr QQuickImageResponsechildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QQuickImageResponse, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QQuickImageResponsecustomEvent*(self: gen_qquickimageprovider_types.QQuickImageResponse, event: gen_qcoreevent.QEvent): void =
 
   fQQuickImageResponse_virtualbase_customEvent(self.h, event.h)
 
-type QQuickImageResponsecustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QQuickImageResponse, slot: proc(super: QQuickImageResponsecustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QQuickImageResponsecustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qquickimageprovider_types.QQuickImageResponse, slot: QQuickImageResponsecustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickImageResponsecustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QQuickImageResponsecustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickImageResponse_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickImageResponse_customEvent(self: ptr cQQuickImageResponse, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QQuickImageResponse_customEvent ".} =
-  type Cb = proc(super: QQuickImageResponsecustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QQuickImageResponse(h: self), event)
+  var nimfunc = cast[ptr QQuickImageResponsecustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QQuickImageResponse, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QQuickImageResponseconnectNotify*(self: gen_qquickimageprovider_types.QQuickImageResponse, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQQuickImageResponse_virtualbase_connectNotify(self.h, signal.h)
 
-type QQuickImageResponseconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QQuickImageResponse, slot: proc(super: QQuickImageResponseconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QQuickImageResponseconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qquickimageprovider_types.QQuickImageResponse, slot: QQuickImageResponseconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickImageResponseconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QQuickImageResponseconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickImageResponse_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickImageResponse_connectNotify(self: ptr cQQuickImageResponse, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QQuickImageResponse_connectNotify ".} =
-  type Cb = proc(super: QQuickImageResponseconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QQuickImageResponse(h: self), signal)
+  var nimfunc = cast[ptr QQuickImageResponseconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QQuickImageResponse, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QQuickImageResponsedisconnectNotify*(self: gen_qquickimageprovider_types.QQuickImageResponse, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQQuickImageResponse_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QQuickImageResponsedisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QQuickImageResponse, slot: proc(super: QQuickImageResponsedisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QQuickImageResponsedisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qquickimageprovider_types.QQuickImageResponse, slot: QQuickImageResponsedisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickImageResponsedisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QQuickImageResponsedisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickImageResponse_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickImageResponse_disconnectNotify(self: ptr cQQuickImageResponse, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QQuickImageResponse_disconnectNotify ".} =
-  type Cb = proc(super: QQuickImageResponsedisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QQuickImageResponse(h: self), signal)
+  var nimfunc = cast[ptr QQuickImageResponsedisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QQuickImageResponse): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qquickimageprovider_types.QQuickImageResponse): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQQuickImageResponse_staticMetaObject())
-proc delete*(self: QQuickImageResponse) =
+proc delete*(self: gen_qquickimageprovider_types.QQuickImageResponse) =
   fcQQuickImageResponse_delete(self.h)
 
-func init*(T: type QQuickImageProvider, h: ptr cQQuickImageProvider): QQuickImageProvider =
+func init*(T: type gen_qquickimageprovider_types.QQuickImageProvider, h: ptr cQQuickImageProvider): gen_qquickimageprovider_types.QQuickImageProvider =
   T(h: h)
-proc create*(T: type QQuickImageProvider, typeVal: gen_qqmlengine.QQmlImageProviderBaseImageType): QQuickImageProvider =
+proc create*(T: type gen_qquickimageprovider_types.QQuickImageProvider, typeVal: cint): gen_qquickimageprovider_types.QQuickImageProvider =
 
-  QQuickImageProvider.init(fcQQuickImageProvider_new(cint(typeVal)))
-proc create*(T: type QQuickImageProvider, param1: QQuickImageProvider): QQuickImageProvider =
+  gen_qquickimageprovider_types.QQuickImageProvider.init(fcQQuickImageProvider_new(cint(typeVal)))
+proc create*(T: type gen_qquickimageprovider_types.QQuickImageProvider, param1: gen_qquickimageprovider_types.QQuickImageProvider): gen_qquickimageprovider_types.QQuickImageProvider =
 
-  QQuickImageProvider.init(fcQQuickImageProvider_new2(param1.h))
-proc create*(T: type QQuickImageProvider, typeVal: gen_qqmlengine.QQmlImageProviderBaseImageType, flags: gen_qqmlengine.QQmlImageProviderBaseFlag): QQuickImageProvider =
+  gen_qquickimageprovider_types.QQuickImageProvider.init(fcQQuickImageProvider_new2(param1.h))
+proc create*(T: type gen_qquickimageprovider_types.QQuickImageProvider, typeVal: cint, flags: cint): gen_qquickimageprovider_types.QQuickImageProvider =
 
-  QQuickImageProvider.init(fcQQuickImageProvider_new3(cint(typeVal), cint(flags)))
-proc imageType*(self: QQuickImageProvider, ): gen_qqmlengine.QQmlImageProviderBaseImageType =
+  gen_qquickimageprovider_types.QQuickImageProvider.init(fcQQuickImageProvider_new3(cint(typeVal), cint(flags)))
+proc imageType*(self: gen_qquickimageprovider_types.QQuickImageProvider, ): cint =
 
-  gen_qqmlengine.QQmlImageProviderBaseImageType(fcQQuickImageProvider_imageType(self.h))
+  cint(fcQQuickImageProvider_imageType(self.h))
 
-proc flags*(self: QQuickImageProvider, ): gen_qqmlengine.QQmlImageProviderBaseFlag =
+proc flags*(self: gen_qquickimageprovider_types.QQuickImageProvider, ): cint =
 
-  gen_qqmlengine.QQmlImageProviderBaseFlag(fcQQuickImageProvider_flags(self.h))
+  cint(fcQQuickImageProvider_flags(self.h))
 
-proc requestImage*(self: QQuickImageProvider, id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): gen_qimage.QImage =
+proc requestImage*(self: gen_qquickimageprovider_types.QQuickImageProvider, id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): gen_qimage.QImage =
 
   gen_qimage.QImage(h: fcQQuickImageProvider_requestImage(self.h, struct_miqt_string(data: id, len: csize_t(len(id))), size.h, requestedSize.h))
 
-proc requestPixmap*(self: QQuickImageProvider, id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): gen_qpixmap.QPixmap =
+proc requestPixmap*(self: gen_qquickimageprovider_types.QQuickImageProvider, id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): gen_qpixmap.QPixmap =
 
   gen_qpixmap.QPixmap(h: fcQQuickImageProvider_requestPixmap(self.h, struct_miqt_string(data: id, len: csize_t(len(id))), size.h, requestedSize.h))
 
-proc requestTexture*(self: QQuickImageProvider, id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): QQuickTextureFactory =
+proc requestTexture*(self: gen_qquickimageprovider_types.QQuickImageProvider, id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): gen_qquickimageprovider_types.QQuickTextureFactory =
 
-  QQuickTextureFactory(h: fcQQuickImageProvider_requestTexture(self.h, struct_miqt_string(data: id, len: csize_t(len(id))), size.h, requestedSize.h))
+  gen_qquickimageprovider_types.QQuickTextureFactory(h: fcQQuickImageProvider_requestTexture(self.h, struct_miqt_string(data: id, len: csize_t(len(id))), size.h, requestedSize.h))
 
-proc callVirtualBase_imageType(self: QQuickImageProvider, ): gen_qqmlengine.QQmlImageProviderBaseImageType =
+proc QQuickImageProviderimageType*(self: gen_qquickimageprovider_types.QQuickImageProvider, ): cint =
 
+  cint(fQQuickImageProvider_virtualbase_imageType(self.h))
 
-  gen_qqmlengine.QQmlImageProviderBaseImageType(fQQuickImageProvider_virtualbase_imageType(self.h))
-
-type QQuickImageProviderimageTypeBase* = proc(): gen_qqmlengine.QQmlImageProviderBaseImageType
-proc onimageType*(self: QQuickImageProvider, slot: proc(super: QQuickImageProviderimageTypeBase): gen_qqmlengine.QQmlImageProviderBaseImageType) =
+type QQuickImageProviderimageTypeProc* = proc(): cint
+proc onimageType*(self: gen_qquickimageprovider_types.QQuickImageProvider, slot: QQuickImageProviderimageTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickImageProviderimageTypeBase): gen_qqmlengine.QQmlImageProviderBaseImageType
-  var tmp = new Cb
+  var tmp = new QQuickImageProviderimageTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickImageProvider_override_virtual_imageType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickImageProvider_imageType(self: ptr cQQuickImageProvider, slot: int): cint {.exportc: "miqt_exec_callback_QQuickImageProvider_imageType ".} =
-  type Cb = proc(super: QQuickImageProviderimageTypeBase): gen_qqmlengine.QQmlImageProviderBaseImageType
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_imageType(QQuickImageProvider(h: self), )
+  var nimfunc = cast[ptr QQuickImageProviderimageTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   cint(virtualReturn)
-proc callVirtualBase_flags(self: QQuickImageProvider, ): gen_qqmlengine.QQmlImageProviderBaseFlag =
+proc QQuickImageProviderflags*(self: gen_qquickimageprovider_types.QQuickImageProvider, ): cint =
 
+  cint(fQQuickImageProvider_virtualbase_flags(self.h))
 
-  gen_qqmlengine.QQmlImageProviderBaseFlag(fQQuickImageProvider_virtualbase_flags(self.h))
-
-type QQuickImageProviderflagsBase* = proc(): gen_qqmlengine.QQmlImageProviderBaseFlag
-proc onflags*(self: QQuickImageProvider, slot: proc(super: QQuickImageProviderflagsBase): gen_qqmlengine.QQmlImageProviderBaseFlag) =
+type QQuickImageProviderflagsProc* = proc(): cint
+proc onflags*(self: gen_qquickimageprovider_types.QQuickImageProvider, slot: QQuickImageProviderflagsProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickImageProviderflagsBase): gen_qqmlengine.QQmlImageProviderBaseFlag
-  var tmp = new Cb
+  var tmp = new QQuickImageProviderflagsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickImageProvider_override_virtual_flags(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickImageProvider_flags(self: ptr cQQuickImageProvider, slot: int): cint {.exportc: "miqt_exec_callback_QQuickImageProvider_flags ".} =
-  type Cb = proc(super: QQuickImageProviderflagsBase): gen_qqmlengine.QQmlImageProviderBaseFlag
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_flags(QQuickImageProvider(h: self), )
+  var nimfunc = cast[ptr QQuickImageProviderflagsProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   cint(virtualReturn)
-proc callVirtualBase_requestImage(self: QQuickImageProvider, id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): gen_qimage.QImage =
-
+proc QQuickImageProviderrequestImage*(self: gen_qquickimageprovider_types.QQuickImageProvider, id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): gen_qimage.QImage =
 
   gen_qimage.QImage(h: fQQuickImageProvider_virtualbase_requestImage(self.h, struct_miqt_string(data: id, len: csize_t(len(id))), size.h, requestedSize.h))
 
-type QQuickImageProviderrequestImageBase* = proc(id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): gen_qimage.QImage
-proc onrequestImage*(self: QQuickImageProvider, slot: proc(super: QQuickImageProviderrequestImageBase, id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): gen_qimage.QImage) =
+type QQuickImageProviderrequestImageProc* = proc(id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): gen_qimage.QImage
+proc onrequestImage*(self: gen_qquickimageprovider_types.QQuickImageProvider, slot: QQuickImageProviderrequestImageProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickImageProviderrequestImageBase, id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): gen_qimage.QImage
-  var tmp = new Cb
+  var tmp = new QQuickImageProviderrequestImageProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickImageProvider_override_virtual_requestImage(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickImageProvider_requestImage(self: ptr cQQuickImageProvider, slot: int, id: struct_miqt_string, size: pointer, requestedSize: pointer): pointer {.exportc: "miqt_exec_callback_QQuickImageProvider_requestImage ".} =
-  type Cb = proc(super: QQuickImageProviderrequestImageBase, id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): gen_qimage.QImage
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): auto =
-    callVirtualBase_requestImage(QQuickImageProvider(h: self), id, size, requestedSize)
+  var nimfunc = cast[ptr QQuickImageProviderrequestImageProc](cast[pointer](slot))
   let vid_ms = id
   let vidx_ret = string.fromBytes(toOpenArrayByte(vid_ms.data, 0, int(vid_ms.len)-1))
   c_free(vid_ms.data)
@@ -1094,28 +956,23 @@ proc miqt_exec_callback_QQuickImageProvider_requestImage(self: ptr cQQuickImageP
   let slotval3 = gen_qsize.QSize(h: requestedSize)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn.h
-proc callVirtualBase_requestPixmap(self: QQuickImageProvider, id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): gen_qpixmap.QPixmap =
-
+proc QQuickImageProviderrequestPixmap*(self: gen_qquickimageprovider_types.QQuickImageProvider, id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): gen_qpixmap.QPixmap =
 
   gen_qpixmap.QPixmap(h: fQQuickImageProvider_virtualbase_requestPixmap(self.h, struct_miqt_string(data: id, len: csize_t(len(id))), size.h, requestedSize.h))
 
-type QQuickImageProviderrequestPixmapBase* = proc(id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): gen_qpixmap.QPixmap
-proc onrequestPixmap*(self: QQuickImageProvider, slot: proc(super: QQuickImageProviderrequestPixmapBase, id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): gen_qpixmap.QPixmap) =
+type QQuickImageProviderrequestPixmapProc* = proc(id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): gen_qpixmap.QPixmap
+proc onrequestPixmap*(self: gen_qquickimageprovider_types.QQuickImageProvider, slot: QQuickImageProviderrequestPixmapProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickImageProviderrequestPixmapBase, id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): gen_qpixmap.QPixmap
-  var tmp = new Cb
+  var tmp = new QQuickImageProviderrequestPixmapProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickImageProvider_override_virtual_requestPixmap(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickImageProvider_requestPixmap(self: ptr cQQuickImageProvider, slot: int, id: struct_miqt_string, size: pointer, requestedSize: pointer): pointer {.exportc: "miqt_exec_callback_QQuickImageProvider_requestPixmap ".} =
-  type Cb = proc(super: QQuickImageProviderrequestPixmapBase, id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): gen_qpixmap.QPixmap
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): auto =
-    callVirtualBase_requestPixmap(QQuickImageProvider(h: self), id, size, requestedSize)
+  var nimfunc = cast[ptr QQuickImageProviderrequestPixmapProc](cast[pointer](slot))
   let vid_ms = id
   let vidx_ret = string.fromBytes(toOpenArrayByte(vid_ms.data, 0, int(vid_ms.len)-1))
   c_free(vid_ms.data)
@@ -1126,28 +983,23 @@ proc miqt_exec_callback_QQuickImageProvider_requestPixmap(self: ptr cQQuickImage
   let slotval3 = gen_qsize.QSize(h: requestedSize)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn.h
-proc callVirtualBase_requestTexture(self: QQuickImageProvider, id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): QQuickTextureFactory =
+proc QQuickImageProviderrequestTexture*(self: gen_qquickimageprovider_types.QQuickImageProvider, id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): gen_qquickimageprovider_types.QQuickTextureFactory =
 
+  gen_qquickimageprovider_types.QQuickTextureFactory(h: fQQuickImageProvider_virtualbase_requestTexture(self.h, struct_miqt_string(data: id, len: csize_t(len(id))), size.h, requestedSize.h))
 
-  QQuickTextureFactory(h: fQQuickImageProvider_virtualbase_requestTexture(self.h, struct_miqt_string(data: id, len: csize_t(len(id))), size.h, requestedSize.h))
-
-type QQuickImageProviderrequestTextureBase* = proc(id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): QQuickTextureFactory
-proc onrequestTexture*(self: QQuickImageProvider, slot: proc(super: QQuickImageProviderrequestTextureBase, id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): QQuickTextureFactory) =
+type QQuickImageProviderrequestTextureProc* = proc(id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): gen_qquickimageprovider_types.QQuickTextureFactory
+proc onrequestTexture*(self: gen_qquickimageprovider_types.QQuickImageProvider, slot: QQuickImageProviderrequestTextureProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickImageProviderrequestTextureBase, id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): QQuickTextureFactory
-  var tmp = new Cb
+  var tmp = new QQuickImageProviderrequestTextureProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickImageProvider_override_virtual_requestTexture(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickImageProvider_requestTexture(self: ptr cQQuickImageProvider, slot: int, id: struct_miqt_string, size: pointer, requestedSize: pointer): pointer {.exportc: "miqt_exec_callback_QQuickImageProvider_requestTexture ".} =
-  type Cb = proc(super: QQuickImageProviderrequestTextureBase, id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): QQuickTextureFactory
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): auto =
-    callVirtualBase_requestTexture(QQuickImageProvider(h: self), id, size, requestedSize)
+  var nimfunc = cast[ptr QQuickImageProviderrequestTextureProc](cast[pointer](slot))
   let vid_ms = id
   let vidx_ret = string.fromBytes(toOpenArrayByte(vid_ms.data, 0, int(vid_ms.len)-1))
   c_free(vid_ms.data)
@@ -1158,36 +1010,34 @@ proc miqt_exec_callback_QQuickImageProvider_requestTexture(self: ptr cQQuickImag
   let slotval3 = gen_qsize.QSize(h: requestedSize)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn.h
-proc delete*(self: QQuickImageProvider) =
+proc delete*(self: gen_qquickimageprovider_types.QQuickImageProvider) =
   fcQQuickImageProvider_delete(self.h)
 
-func init*(T: type QQuickAsyncImageProvider, h: ptr cQQuickAsyncImageProvider): QQuickAsyncImageProvider =
+func init*(T: type gen_qquickimageprovider_types.QQuickAsyncImageProvider, h: ptr cQQuickAsyncImageProvider): gen_qquickimageprovider_types.QQuickAsyncImageProvider =
   T(h: h)
-proc create*(T: type QQuickAsyncImageProvider, ): QQuickAsyncImageProvider =
+proc create*(T: type gen_qquickimageprovider_types.QQuickAsyncImageProvider, ): gen_qquickimageprovider_types.QQuickAsyncImageProvider =
 
-  QQuickAsyncImageProvider.init(fcQQuickAsyncImageProvider_new())
-proc create*(T: type QQuickAsyncImageProvider, param1: QQuickAsyncImageProvider): QQuickAsyncImageProvider =
+  gen_qquickimageprovider_types.QQuickAsyncImageProvider.init(fcQQuickAsyncImageProvider_new())
+proc create*(T: type gen_qquickimageprovider_types.QQuickAsyncImageProvider, param1: gen_qquickimageprovider_types.QQuickAsyncImageProvider): gen_qquickimageprovider_types.QQuickAsyncImageProvider =
 
-  QQuickAsyncImageProvider.init(fcQQuickAsyncImageProvider_new2(param1.h))
-proc requestImageResponse*(self: QQuickAsyncImageProvider, id: string, requestedSize: gen_qsize.QSize): QQuickImageResponse =
+  gen_qquickimageprovider_types.QQuickAsyncImageProvider.init(fcQQuickAsyncImageProvider_new2(param1.h))
+proc requestImageResponse*(self: gen_qquickimageprovider_types.QQuickAsyncImageProvider, id: string, requestedSize: gen_qsize.QSize): gen_qquickimageprovider_types.QQuickImageResponse =
 
-  QQuickImageResponse(h: fcQQuickAsyncImageProvider_requestImageResponse(self.h, struct_miqt_string(data: id, len: csize_t(len(id))), requestedSize.h))
+  gen_qquickimageprovider_types.QQuickImageResponse(h: fcQQuickAsyncImageProvider_requestImageResponse(self.h, struct_miqt_string(data: id, len: csize_t(len(id))), requestedSize.h))
 
-type QQuickAsyncImageProviderrequestImageResponseBase* = proc(id: string, requestedSize: gen_qsize.QSize): QQuickImageResponse
-proc onrequestImageResponse*(self: QQuickAsyncImageProvider, slot: proc(id: string, requestedSize: gen_qsize.QSize): QQuickImageResponse) =
+type QQuickAsyncImageProviderrequestImageResponseProc* = proc(id: string, requestedSize: gen_qsize.QSize): gen_qquickimageprovider_types.QQuickImageResponse
+proc onrequestImageResponse*(self: gen_qquickimageprovider_types.QQuickAsyncImageProvider, slot: QQuickAsyncImageProviderrequestImageResponseProc) =
   # TODO check subclass
-  type Cb = proc(id: string, requestedSize: gen_qsize.QSize): QQuickImageResponse
-  var tmp = new Cb
+  var tmp = new QQuickAsyncImageProviderrequestImageResponseProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickAsyncImageProvider_override_virtual_requestImageResponse(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickAsyncImageProvider_requestImageResponse(self: ptr cQQuickAsyncImageProvider, slot: int, id: struct_miqt_string, requestedSize: pointer): pointer {.exportc: "miqt_exec_callback_QQuickAsyncImageProvider_requestImageResponse ".} =
-  type Cb = proc(id: string, requestedSize: gen_qsize.QSize): QQuickImageResponse
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QQuickAsyncImageProviderrequestImageResponseProc](cast[pointer](slot))
   let vid_ms = id
   let vidx_ret = string.fromBytes(toOpenArrayByte(vid_ms.data, 0, int(vid_ms.len)-1))
   c_free(vid_ms.data)
@@ -1199,71 +1049,56 @@ proc miqt_exec_callback_QQuickAsyncImageProvider_requestImageResponse(self: ptr 
   let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn.h
-proc callVirtualBase_imageType(self: QQuickAsyncImageProvider, ): gen_qqmlengine.QQmlImageProviderBaseImageType =
+proc QQuickAsyncImageProviderimageType*(self: gen_qquickimageprovider_types.QQuickAsyncImageProvider, ): cint =
 
+  cint(fQQuickAsyncImageProvider_virtualbase_imageType(self.h))
 
-  gen_qqmlengine.QQmlImageProviderBaseImageType(fQQuickAsyncImageProvider_virtualbase_imageType(self.h))
-
-type QQuickAsyncImageProviderimageTypeBase* = proc(): gen_qqmlengine.QQmlImageProviderBaseImageType
-proc onimageType*(self: QQuickAsyncImageProvider, slot: proc(super: QQuickAsyncImageProviderimageTypeBase): gen_qqmlengine.QQmlImageProviderBaseImageType) =
+type QQuickAsyncImageProviderimageTypeProc* = proc(): cint
+proc onimageType*(self: gen_qquickimageprovider_types.QQuickAsyncImageProvider, slot: QQuickAsyncImageProviderimageTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickAsyncImageProviderimageTypeBase): gen_qqmlengine.QQmlImageProviderBaseImageType
-  var tmp = new Cb
+  var tmp = new QQuickAsyncImageProviderimageTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickAsyncImageProvider_override_virtual_imageType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickAsyncImageProvider_imageType(self: ptr cQQuickAsyncImageProvider, slot: int): cint {.exportc: "miqt_exec_callback_QQuickAsyncImageProvider_imageType ".} =
-  type Cb = proc(super: QQuickAsyncImageProviderimageTypeBase): gen_qqmlengine.QQmlImageProviderBaseImageType
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_imageType(QQuickAsyncImageProvider(h: self), )
+  var nimfunc = cast[ptr QQuickAsyncImageProviderimageTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   cint(virtualReturn)
-proc callVirtualBase_flags(self: QQuickAsyncImageProvider, ): gen_qqmlengine.QQmlImageProviderBaseFlag =
+proc QQuickAsyncImageProviderflags*(self: gen_qquickimageprovider_types.QQuickAsyncImageProvider, ): cint =
 
+  cint(fQQuickAsyncImageProvider_virtualbase_flags(self.h))
 
-  gen_qqmlengine.QQmlImageProviderBaseFlag(fQQuickAsyncImageProvider_virtualbase_flags(self.h))
-
-type QQuickAsyncImageProviderflagsBase* = proc(): gen_qqmlengine.QQmlImageProviderBaseFlag
-proc onflags*(self: QQuickAsyncImageProvider, slot: proc(super: QQuickAsyncImageProviderflagsBase): gen_qqmlengine.QQmlImageProviderBaseFlag) =
+type QQuickAsyncImageProviderflagsProc* = proc(): cint
+proc onflags*(self: gen_qquickimageprovider_types.QQuickAsyncImageProvider, slot: QQuickAsyncImageProviderflagsProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickAsyncImageProviderflagsBase): gen_qqmlengine.QQmlImageProviderBaseFlag
-  var tmp = new Cb
+  var tmp = new QQuickAsyncImageProviderflagsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickAsyncImageProvider_override_virtual_flags(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickAsyncImageProvider_flags(self: ptr cQQuickAsyncImageProvider, slot: int): cint {.exportc: "miqt_exec_callback_QQuickAsyncImageProvider_flags ".} =
-  type Cb = proc(super: QQuickAsyncImageProviderflagsBase): gen_qqmlengine.QQmlImageProviderBaseFlag
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_flags(QQuickAsyncImageProvider(h: self), )
+  var nimfunc = cast[ptr QQuickAsyncImageProviderflagsProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   cint(virtualReturn)
-proc callVirtualBase_requestImage(self: QQuickAsyncImageProvider, id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): gen_qimage.QImage =
-
+proc QQuickAsyncImageProviderrequestImage*(self: gen_qquickimageprovider_types.QQuickAsyncImageProvider, id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): gen_qimage.QImage =
 
   gen_qimage.QImage(h: fQQuickAsyncImageProvider_virtualbase_requestImage(self.h, struct_miqt_string(data: id, len: csize_t(len(id))), size.h, requestedSize.h))
 
-type QQuickAsyncImageProviderrequestImageBase* = proc(id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): gen_qimage.QImage
-proc onrequestImage*(self: QQuickAsyncImageProvider, slot: proc(super: QQuickAsyncImageProviderrequestImageBase, id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): gen_qimage.QImage) =
+type QQuickAsyncImageProviderrequestImageProc* = proc(id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): gen_qimage.QImage
+proc onrequestImage*(self: gen_qquickimageprovider_types.QQuickAsyncImageProvider, slot: QQuickAsyncImageProviderrequestImageProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickAsyncImageProviderrequestImageBase, id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): gen_qimage.QImage
-  var tmp = new Cb
+  var tmp = new QQuickAsyncImageProviderrequestImageProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickAsyncImageProvider_override_virtual_requestImage(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickAsyncImageProvider_requestImage(self: ptr cQQuickAsyncImageProvider, slot: int, id: struct_miqt_string, size: pointer, requestedSize: pointer): pointer {.exportc: "miqt_exec_callback_QQuickAsyncImageProvider_requestImage ".} =
-  type Cb = proc(super: QQuickAsyncImageProviderrequestImageBase, id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): gen_qimage.QImage
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): auto =
-    callVirtualBase_requestImage(QQuickAsyncImageProvider(h: self), id, size, requestedSize)
+  var nimfunc = cast[ptr QQuickAsyncImageProviderrequestImageProc](cast[pointer](slot))
   let vid_ms = id
   let vidx_ret = string.fromBytes(toOpenArrayByte(vid_ms.data, 0, int(vid_ms.len)-1))
   c_free(vid_ms.data)
@@ -1274,28 +1109,23 @@ proc miqt_exec_callback_QQuickAsyncImageProvider_requestImage(self: ptr cQQuickA
   let slotval3 = gen_qsize.QSize(h: requestedSize)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn.h
-proc callVirtualBase_requestPixmap(self: QQuickAsyncImageProvider, id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): gen_qpixmap.QPixmap =
-
+proc QQuickAsyncImageProviderrequestPixmap*(self: gen_qquickimageprovider_types.QQuickAsyncImageProvider, id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): gen_qpixmap.QPixmap =
 
   gen_qpixmap.QPixmap(h: fQQuickAsyncImageProvider_virtualbase_requestPixmap(self.h, struct_miqt_string(data: id, len: csize_t(len(id))), size.h, requestedSize.h))
 
-type QQuickAsyncImageProviderrequestPixmapBase* = proc(id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): gen_qpixmap.QPixmap
-proc onrequestPixmap*(self: QQuickAsyncImageProvider, slot: proc(super: QQuickAsyncImageProviderrequestPixmapBase, id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): gen_qpixmap.QPixmap) =
+type QQuickAsyncImageProviderrequestPixmapProc* = proc(id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): gen_qpixmap.QPixmap
+proc onrequestPixmap*(self: gen_qquickimageprovider_types.QQuickAsyncImageProvider, slot: QQuickAsyncImageProviderrequestPixmapProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickAsyncImageProviderrequestPixmapBase, id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): gen_qpixmap.QPixmap
-  var tmp = new Cb
+  var tmp = new QQuickAsyncImageProviderrequestPixmapProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickAsyncImageProvider_override_virtual_requestPixmap(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickAsyncImageProvider_requestPixmap(self: ptr cQQuickAsyncImageProvider, slot: int, id: struct_miqt_string, size: pointer, requestedSize: pointer): pointer {.exportc: "miqt_exec_callback_QQuickAsyncImageProvider_requestPixmap ".} =
-  type Cb = proc(super: QQuickAsyncImageProviderrequestPixmapBase, id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): gen_qpixmap.QPixmap
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): auto =
-    callVirtualBase_requestPixmap(QQuickAsyncImageProvider(h: self), id, size, requestedSize)
+  var nimfunc = cast[ptr QQuickAsyncImageProviderrequestPixmapProc](cast[pointer](slot))
   let vid_ms = id
   let vidx_ret = string.fromBytes(toOpenArrayByte(vid_ms.data, 0, int(vid_ms.len)-1))
   c_free(vid_ms.data)
@@ -1306,28 +1136,23 @@ proc miqt_exec_callback_QQuickAsyncImageProvider_requestPixmap(self: ptr cQQuick
   let slotval3 = gen_qsize.QSize(h: requestedSize)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn.h
-proc callVirtualBase_requestTexture(self: QQuickAsyncImageProvider, id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): QQuickTextureFactory =
+proc QQuickAsyncImageProviderrequestTexture*(self: gen_qquickimageprovider_types.QQuickAsyncImageProvider, id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): gen_qquickimageprovider_types.QQuickTextureFactory =
 
+  gen_qquickimageprovider_types.QQuickTextureFactory(h: fQQuickAsyncImageProvider_virtualbase_requestTexture(self.h, struct_miqt_string(data: id, len: csize_t(len(id))), size.h, requestedSize.h))
 
-  QQuickTextureFactory(h: fQQuickAsyncImageProvider_virtualbase_requestTexture(self.h, struct_miqt_string(data: id, len: csize_t(len(id))), size.h, requestedSize.h))
-
-type QQuickAsyncImageProviderrequestTextureBase* = proc(id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): QQuickTextureFactory
-proc onrequestTexture*(self: QQuickAsyncImageProvider, slot: proc(super: QQuickAsyncImageProviderrequestTextureBase, id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): QQuickTextureFactory) =
+type QQuickAsyncImageProviderrequestTextureProc* = proc(id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): gen_qquickimageprovider_types.QQuickTextureFactory
+proc onrequestTexture*(self: gen_qquickimageprovider_types.QQuickAsyncImageProvider, slot: QQuickAsyncImageProviderrequestTextureProc) =
   # TODO check subclass
-  type Cb = proc(super: QQuickAsyncImageProviderrequestTextureBase, id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): QQuickTextureFactory
-  var tmp = new Cb
+  var tmp = new QQuickAsyncImageProviderrequestTextureProc
   tmp[] = slot
   GC_ref(tmp)
   fcQQuickAsyncImageProvider_override_virtual_requestTexture(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QQuickAsyncImageProvider_requestTexture(self: ptr cQQuickAsyncImageProvider, slot: int, id: struct_miqt_string, size: pointer, requestedSize: pointer): pointer {.exportc: "miqt_exec_callback_QQuickAsyncImageProvider_requestTexture ".} =
-  type Cb = proc(super: QQuickAsyncImageProviderrequestTextureBase, id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): QQuickTextureFactory
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): auto =
-    callVirtualBase_requestTexture(QQuickAsyncImageProvider(h: self), id, size, requestedSize)
+  var nimfunc = cast[ptr QQuickAsyncImageProviderrequestTextureProc](cast[pointer](slot))
   let vid_ms = id
   let vidx_ret = string.fromBytes(toOpenArrayByte(vid_ms.data, 0, int(vid_ms.len)-1))
   c_free(vid_ms.data)
@@ -1338,8 +1163,8 @@ proc miqt_exec_callback_QQuickAsyncImageProvider_requestTexture(self: ptr cQQuic
   let slotval3 = gen_qsize.QSize(h: requestedSize)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn.h
-proc delete*(self: QQuickAsyncImageProvider) =
+proc delete*(self: gen_qquickimageprovider_types.QQuickAsyncImageProvider) =
   fcQQuickAsyncImageProvider_delete(self.h)

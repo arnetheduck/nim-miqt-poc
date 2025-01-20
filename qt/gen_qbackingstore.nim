@@ -69,62 +69,62 @@ proc fcQBackingStore_flush3(self: pointer, region: pointer, window: pointer, off
 proc fcQBackingStore_delete(self: pointer) {.importc: "QBackingStore_delete".}
 
 
-func init*(T: type QBackingStore, h: ptr cQBackingStore): QBackingStore =
+func init*(T: type gen_qbackingstore_types.QBackingStore, h: ptr cQBackingStore): gen_qbackingstore_types.QBackingStore =
   T(h: h)
-proc create*(T: type QBackingStore, window: gen_qwindow.QWindow): QBackingStore =
+proc create*(T: type gen_qbackingstore_types.QBackingStore, window: gen_qwindow.QWindow): gen_qbackingstore_types.QBackingStore =
 
-  QBackingStore.init(fcQBackingStore_new(window.h))
-proc window*(self: QBackingStore, ): gen_qwindow.QWindow =
+  gen_qbackingstore_types.QBackingStore.init(fcQBackingStore_new(window.h))
+proc window*(self: gen_qbackingstore_types.QBackingStore, ): gen_qwindow.QWindow =
 
   gen_qwindow.QWindow(h: fcQBackingStore_window(self.h))
 
-proc paintDevice*(self: QBackingStore, ): gen_qpaintdevice.QPaintDevice =
+proc paintDevice*(self: gen_qbackingstore_types.QBackingStore, ): gen_qpaintdevice.QPaintDevice =
 
   gen_qpaintdevice.QPaintDevice(h: fcQBackingStore_paintDevice(self.h))
 
-proc flush*(self: QBackingStore, region: gen_qregion.QRegion): void =
+proc flush*(self: gen_qbackingstore_types.QBackingStore, region: gen_qregion.QRegion): void =
 
   fcQBackingStore_flush(self.h, region.h)
 
-proc resize*(self: QBackingStore, size: gen_qsize.QSize): void =
+proc resize*(self: gen_qbackingstore_types.QBackingStore, size: gen_qsize.QSize): void =
 
   fcQBackingStore_resize(self.h, size.h)
 
-proc size*(self: QBackingStore, ): gen_qsize.QSize =
+proc size*(self: gen_qbackingstore_types.QBackingStore, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQBackingStore_size(self.h))
 
-proc scroll*(self: QBackingStore, area: gen_qregion.QRegion, dx: cint, dy: cint): bool =
+proc scroll*(self: gen_qbackingstore_types.QBackingStore, area: gen_qregion.QRegion, dx: cint, dy: cint): bool =
 
   fcQBackingStore_scroll(self.h, area.h, dx, dy)
 
-proc beginPaint*(self: QBackingStore, param1: gen_qregion.QRegion): void =
+proc beginPaint*(self: gen_qbackingstore_types.QBackingStore, param1: gen_qregion.QRegion): void =
 
   fcQBackingStore_beginPaint(self.h, param1.h)
 
-proc endPaint*(self: QBackingStore, ): void =
+proc endPaint*(self: gen_qbackingstore_types.QBackingStore, ): void =
 
   fcQBackingStore_endPaint(self.h)
 
-proc setStaticContents*(self: QBackingStore, region: gen_qregion.QRegion): void =
+proc setStaticContents*(self: gen_qbackingstore_types.QBackingStore, region: gen_qregion.QRegion): void =
 
   fcQBackingStore_setStaticContents(self.h, region.h)
 
-proc staticContents*(self: QBackingStore, ): gen_qregion.QRegion =
+proc staticContents*(self: gen_qbackingstore_types.QBackingStore, ): gen_qregion.QRegion =
 
   gen_qregion.QRegion(h: fcQBackingStore_staticContents(self.h))
 
-proc hasStaticContents*(self: QBackingStore, ): bool =
+proc hasStaticContents*(self: gen_qbackingstore_types.QBackingStore, ): bool =
 
   fcQBackingStore_hasStaticContents(self.h)
 
-proc flush2*(self: QBackingStore, region: gen_qregion.QRegion, window: gen_qwindow.QWindow): void =
+proc flush2*(self: gen_qbackingstore_types.QBackingStore, region: gen_qregion.QRegion, window: gen_qwindow.QWindow): void =
 
   fcQBackingStore_flush2(self.h, region.h, window.h)
 
-proc flush3*(self: QBackingStore, region: gen_qregion.QRegion, window: gen_qwindow.QWindow, offset: gen_qpoint.QPoint): void =
+proc flush3*(self: gen_qbackingstore_types.QBackingStore, region: gen_qregion.QRegion, window: gen_qwindow.QWindow, offset: gen_qpoint.QPoint): void =
 
   fcQBackingStore_flush3(self.h, region.h, window.h, offset.h)
 
-proc delete*(self: QBackingStore) =
+proc delete*(self: gen_qbackingstore_types.QBackingStore) =
   fcQBackingStore_delete(self.h)

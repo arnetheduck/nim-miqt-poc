@@ -43,7 +43,6 @@ import
   gen_qevent,
   gen_qicon,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -60,7 +59,6 @@ export
   gen_qevent,
   gen_qicon,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -233,151 +231,151 @@ proc fcQToolBar_staticMetaObject(): pointer {.importc: "QToolBar_staticMetaObjec
 proc fcQToolBar_delete(self: pointer) {.importc: "QToolBar_delete".}
 
 
-func init*(T: type QToolBar, h: ptr cQToolBar): QToolBar =
+func init*(T: type gen_qtoolbar_types.QToolBar, h: ptr cQToolBar): gen_qtoolbar_types.QToolBar =
   T(h: h)
-proc create*(T: type QToolBar, parent: gen_qwidget.QWidget): QToolBar =
+proc create*(T: type gen_qtoolbar_types.QToolBar, parent: gen_qwidget.QWidget): gen_qtoolbar_types.QToolBar =
 
-  QToolBar.init(fcQToolBar_new(parent.h))
-proc create*(T: type QToolBar, title: string): QToolBar =
+  gen_qtoolbar_types.QToolBar.init(fcQToolBar_new(parent.h))
+proc create*(T: type gen_qtoolbar_types.QToolBar, title: string): gen_qtoolbar_types.QToolBar =
 
-  QToolBar.init(fcQToolBar_new2(struct_miqt_string(data: title, len: csize_t(len(title)))))
-proc create*(T: type QToolBar, ): QToolBar =
+  gen_qtoolbar_types.QToolBar.init(fcQToolBar_new2(struct_miqt_string(data: title, len: csize_t(len(title)))))
+proc create*(T: type gen_qtoolbar_types.QToolBar, ): gen_qtoolbar_types.QToolBar =
 
-  QToolBar.init(fcQToolBar_new3())
-proc create*(T: type QToolBar, title: string, parent: gen_qwidget.QWidget): QToolBar =
+  gen_qtoolbar_types.QToolBar.init(fcQToolBar_new3())
+proc create*(T: type gen_qtoolbar_types.QToolBar, title: string, parent: gen_qwidget.QWidget): gen_qtoolbar_types.QToolBar =
 
-  QToolBar.init(fcQToolBar_new4(struct_miqt_string(data: title, len: csize_t(len(title))), parent.h))
-proc metaObject*(self: QToolBar, ): gen_qobjectdefs.QMetaObject =
+  gen_qtoolbar_types.QToolBar.init(fcQToolBar_new4(struct_miqt_string(data: title, len: csize_t(len(title))), parent.h))
+proc metaObject*(self: gen_qtoolbar_types.QToolBar, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQToolBar_metaObject(self.h))
 
-proc metacast*(self: QToolBar, param1: cstring): pointer =
+proc metacast*(self: gen_qtoolbar_types.QToolBar, param1: cstring): pointer =
 
   fcQToolBar_metacast(self.h, param1)
 
-proc metacall*(self: QToolBar, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qtoolbar_types.QToolBar, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQToolBar_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QToolBar, s: cstring): string =
+proc tr*(_: type gen_qtoolbar_types.QToolBar, s: cstring): string =
 
   let v_ms = fcQToolBar_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf8*(_: type QToolBar, s: cstring): string =
+proc trUtf8*(_: type gen_qtoolbar_types.QToolBar, s: cstring): string =
 
   let v_ms = fcQToolBar_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setMovable*(self: QToolBar, movable: bool): void =
+proc setMovable*(self: gen_qtoolbar_types.QToolBar, movable: bool): void =
 
   fcQToolBar_setMovable(self.h, movable)
 
-proc isMovable*(self: QToolBar, ): bool =
+proc isMovable*(self: gen_qtoolbar_types.QToolBar, ): bool =
 
   fcQToolBar_isMovable(self.h)
 
-proc setAllowedAreas*(self: QToolBar, areas: gen_qnamespace.ToolBarArea): void =
+proc setAllowedAreas*(self: gen_qtoolbar_types.QToolBar, areas: cint): void =
 
   fcQToolBar_setAllowedAreas(self.h, cint(areas))
 
-proc allowedAreas*(self: QToolBar, ): gen_qnamespace.ToolBarArea =
+proc allowedAreas*(self: gen_qtoolbar_types.QToolBar, ): cint =
 
-  gen_qnamespace.ToolBarArea(fcQToolBar_allowedAreas(self.h))
+  cint(fcQToolBar_allowedAreas(self.h))
 
-proc isAreaAllowed*(self: QToolBar, area: gen_qnamespace.ToolBarArea): bool =
+proc isAreaAllowed*(self: gen_qtoolbar_types.QToolBar, area: cint): bool =
 
   fcQToolBar_isAreaAllowed(self.h, cint(area))
 
-proc setOrientation*(self: QToolBar, orientation: gen_qnamespace.Orientation): void =
+proc setOrientation*(self: gen_qtoolbar_types.QToolBar, orientation: cint): void =
 
   fcQToolBar_setOrientation(self.h, cint(orientation))
 
-proc orientation*(self: QToolBar, ): gen_qnamespace.Orientation =
+proc orientation*(self: gen_qtoolbar_types.QToolBar, ): cint =
 
-  gen_qnamespace.Orientation(fcQToolBar_orientation(self.h))
+  cint(fcQToolBar_orientation(self.h))
 
-proc clear*(self: QToolBar, ): void =
+proc clear*(self: gen_qtoolbar_types.QToolBar, ): void =
 
   fcQToolBar_clear(self.h)
 
-proc addAction*(self: QToolBar, text: string): gen_qaction.QAction =
+proc addAction*(self: gen_qtoolbar_types.QToolBar, text: string): gen_qaction.QAction =
 
   gen_qaction.QAction(h: fcQToolBar_addAction(self.h, struct_miqt_string(data: text, len: csize_t(len(text)))))
 
-proc addAction2*(self: QToolBar, icon: gen_qicon.QIcon, text: string): gen_qaction.QAction =
+proc addAction2*(self: gen_qtoolbar_types.QToolBar, icon: gen_qicon.QIcon, text: string): gen_qaction.QAction =
 
   gen_qaction.QAction(h: fcQToolBar_addAction2(self.h, icon.h, struct_miqt_string(data: text, len: csize_t(len(text)))))
 
-proc addSeparator*(self: QToolBar, ): gen_qaction.QAction =
+proc addSeparator*(self: gen_qtoolbar_types.QToolBar, ): gen_qaction.QAction =
 
   gen_qaction.QAction(h: fcQToolBar_addSeparator(self.h))
 
-proc insertSeparator*(self: QToolBar, before: gen_qaction.QAction): gen_qaction.QAction =
+proc insertSeparator*(self: gen_qtoolbar_types.QToolBar, before: gen_qaction.QAction): gen_qaction.QAction =
 
   gen_qaction.QAction(h: fcQToolBar_insertSeparator(self.h, before.h))
 
-proc addWidget*(self: QToolBar, widget: gen_qwidget.QWidget): gen_qaction.QAction =
+proc addWidget*(self: gen_qtoolbar_types.QToolBar, widget: gen_qwidget.QWidget): gen_qaction.QAction =
 
   gen_qaction.QAction(h: fcQToolBar_addWidget(self.h, widget.h))
 
-proc insertWidget*(self: QToolBar, before: gen_qaction.QAction, widget: gen_qwidget.QWidget): gen_qaction.QAction =
+proc insertWidget*(self: gen_qtoolbar_types.QToolBar, before: gen_qaction.QAction, widget: gen_qwidget.QWidget): gen_qaction.QAction =
 
   gen_qaction.QAction(h: fcQToolBar_insertWidget(self.h, before.h, widget.h))
 
-proc actionGeometry*(self: QToolBar, action: gen_qaction.QAction): gen_qrect.QRect =
+proc actionGeometry*(self: gen_qtoolbar_types.QToolBar, action: gen_qaction.QAction): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fcQToolBar_actionGeometry(self.h, action.h))
 
-proc actionAt*(self: QToolBar, p: gen_qpoint.QPoint): gen_qaction.QAction =
+proc actionAt*(self: gen_qtoolbar_types.QToolBar, p: gen_qpoint.QPoint): gen_qaction.QAction =
 
   gen_qaction.QAction(h: fcQToolBar_actionAt(self.h, p.h))
 
-proc actionAt2*(self: QToolBar, x: cint, y: cint): gen_qaction.QAction =
+proc actionAt2*(self: gen_qtoolbar_types.QToolBar, x: cint, y: cint): gen_qaction.QAction =
 
   gen_qaction.QAction(h: fcQToolBar_actionAt2(self.h, x, y))
 
-proc toggleViewAction*(self: QToolBar, ): gen_qaction.QAction =
+proc toggleViewAction*(self: gen_qtoolbar_types.QToolBar, ): gen_qaction.QAction =
 
   gen_qaction.QAction(h: fcQToolBar_toggleViewAction(self.h))
 
-proc iconSize*(self: QToolBar, ): gen_qsize.QSize =
+proc iconSize*(self: gen_qtoolbar_types.QToolBar, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQToolBar_iconSize(self.h))
 
-proc toolButtonStyle*(self: QToolBar, ): gen_qnamespace.ToolButtonStyle =
+proc toolButtonStyle*(self: gen_qtoolbar_types.QToolBar, ): cint =
 
-  gen_qnamespace.ToolButtonStyle(fcQToolBar_toolButtonStyle(self.h))
+  cint(fcQToolBar_toolButtonStyle(self.h))
 
-proc widgetForAction*(self: QToolBar, action: gen_qaction.QAction): gen_qwidget.QWidget =
+proc widgetForAction*(self: gen_qtoolbar_types.QToolBar, action: gen_qaction.QAction): gen_qwidget.QWidget =
 
   gen_qwidget.QWidget(h: fcQToolBar_widgetForAction(self.h, action.h))
 
-proc isFloatable*(self: QToolBar, ): bool =
+proc isFloatable*(self: gen_qtoolbar_types.QToolBar, ): bool =
 
   fcQToolBar_isFloatable(self.h)
 
-proc setFloatable*(self: QToolBar, floatable: bool): void =
+proc setFloatable*(self: gen_qtoolbar_types.QToolBar, floatable: bool): void =
 
   fcQToolBar_setFloatable(self.h, floatable)
 
-proc isFloating*(self: QToolBar, ): bool =
+proc isFloating*(self: gen_qtoolbar_types.QToolBar, ): bool =
 
   fcQToolBar_isFloating(self.h)
 
-proc setIconSize*(self: QToolBar, iconSize: gen_qsize.QSize): void =
+proc setIconSize*(self: gen_qtoolbar_types.QToolBar, iconSize: gen_qsize.QSize): void =
 
   fcQToolBar_setIconSize(self.h, iconSize.h)
 
-proc setToolButtonStyle*(self: QToolBar, toolButtonStyle: gen_qnamespace.ToolButtonStyle): void =
+proc setToolButtonStyle*(self: gen_qtoolbar_types.QToolBar, toolButtonStyle: cint): void =
 
   fcQToolBar_setToolButtonStyle(self.h, cint(toolButtonStyle))
 
-proc actionTriggered*(self: QToolBar, action: gen_qaction.QAction): void =
+proc actionTriggered*(self: gen_qtoolbar_types.QToolBar, action: gen_qaction.QAction): void =
 
   fcQToolBar_actionTriggered(self.h, action.h)
 
@@ -389,13 +387,13 @@ proc miqt_exec_callback_QToolBar_actionTriggered(slot: int, action: pointer) {.e
 
   nimfunc[](slotval1)
 
-proc onactionTriggered*(self: QToolBar, slot: proc(action: gen_qaction.QAction)) =
+proc onactionTriggered*(self: gen_qtoolbar_types.QToolBar, slot: proc(action: gen_qaction.QAction)) =
   type Cb = proc(action: gen_qaction.QAction)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQToolBar_connect_actionTriggered(self.h, cast[int](addr tmp[]))
-proc movableChanged*(self: QToolBar, movable: bool): void =
+proc movableChanged*(self: gen_qtoolbar_types.QToolBar, movable: bool): void =
 
   fcQToolBar_movableChanged(self.h, movable)
 
@@ -407,49 +405,49 @@ proc miqt_exec_callback_QToolBar_movableChanged(slot: int, movable: bool) {.expo
 
   nimfunc[](slotval1)
 
-proc onmovableChanged*(self: QToolBar, slot: proc(movable: bool)) =
+proc onmovableChanged*(self: gen_qtoolbar_types.QToolBar, slot: proc(movable: bool)) =
   type Cb = proc(movable: bool)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQToolBar_connect_movableChanged(self.h, cast[int](addr tmp[]))
-proc allowedAreasChanged*(self: QToolBar, allowedAreas: gen_qnamespace.ToolBarArea): void =
+proc allowedAreasChanged*(self: gen_qtoolbar_types.QToolBar, allowedAreas: cint): void =
 
   fcQToolBar_allowedAreasChanged(self.h, cint(allowedAreas))
 
 proc miqt_exec_callback_QToolBar_allowedAreasChanged(slot: int, allowedAreas: cint) {.exportc.} =
-  type Cb = proc(allowedAreas: gen_qnamespace.ToolBarArea)
+  type Cb = proc(allowedAreas: cint)
   let nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = gen_qnamespace.ToolBarArea(allowedAreas)
+  let slotval1 = cint(allowedAreas)
 
 
   nimfunc[](slotval1)
 
-proc onallowedAreasChanged*(self: QToolBar, slot: proc(allowedAreas: gen_qnamespace.ToolBarArea)) =
-  type Cb = proc(allowedAreas: gen_qnamespace.ToolBarArea)
+proc onallowedAreasChanged*(self: gen_qtoolbar_types.QToolBar, slot: proc(allowedAreas: cint)) =
+  type Cb = proc(allowedAreas: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQToolBar_connect_allowedAreasChanged(self.h, cast[int](addr tmp[]))
-proc orientationChanged*(self: QToolBar, orientation: gen_qnamespace.Orientation): void =
+proc orientationChanged*(self: gen_qtoolbar_types.QToolBar, orientation: cint): void =
 
   fcQToolBar_orientationChanged(self.h, cint(orientation))
 
 proc miqt_exec_callback_QToolBar_orientationChanged(slot: int, orientation: cint) {.exportc.} =
-  type Cb = proc(orientation: gen_qnamespace.Orientation)
+  type Cb = proc(orientation: cint)
   let nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = gen_qnamespace.Orientation(orientation)
+  let slotval1 = cint(orientation)
 
 
   nimfunc[](slotval1)
 
-proc onorientationChanged*(self: QToolBar, slot: proc(orientation: gen_qnamespace.Orientation)) =
-  type Cb = proc(orientation: gen_qnamespace.Orientation)
+proc onorientationChanged*(self: gen_qtoolbar_types.QToolBar, slot: proc(orientation: cint)) =
+  type Cb = proc(orientation: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQToolBar_connect_orientationChanged(self.h, cast[int](addr tmp[]))
-proc iconSizeChanged*(self: QToolBar, iconSize: gen_qsize.QSize): void =
+proc iconSizeChanged*(self: gen_qtoolbar_types.QToolBar, iconSize: gen_qsize.QSize): void =
 
   fcQToolBar_iconSizeChanged(self.h, iconSize.h)
 
@@ -461,31 +459,31 @@ proc miqt_exec_callback_QToolBar_iconSizeChanged(slot: int, iconSize: pointer) {
 
   nimfunc[](slotval1)
 
-proc oniconSizeChanged*(self: QToolBar, slot: proc(iconSize: gen_qsize.QSize)) =
+proc oniconSizeChanged*(self: gen_qtoolbar_types.QToolBar, slot: proc(iconSize: gen_qsize.QSize)) =
   type Cb = proc(iconSize: gen_qsize.QSize)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQToolBar_connect_iconSizeChanged(self.h, cast[int](addr tmp[]))
-proc toolButtonStyleChanged*(self: QToolBar, toolButtonStyle: gen_qnamespace.ToolButtonStyle): void =
+proc toolButtonStyleChanged*(self: gen_qtoolbar_types.QToolBar, toolButtonStyle: cint): void =
 
   fcQToolBar_toolButtonStyleChanged(self.h, cint(toolButtonStyle))
 
 proc miqt_exec_callback_QToolBar_toolButtonStyleChanged(slot: int, toolButtonStyle: cint) {.exportc.} =
-  type Cb = proc(toolButtonStyle: gen_qnamespace.ToolButtonStyle)
+  type Cb = proc(toolButtonStyle: cint)
   let nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = gen_qnamespace.ToolButtonStyle(toolButtonStyle)
+  let slotval1 = cint(toolButtonStyle)
 
 
   nimfunc[](slotval1)
 
-proc ontoolButtonStyleChanged*(self: QToolBar, slot: proc(toolButtonStyle: gen_qnamespace.ToolButtonStyle)) =
-  type Cb = proc(toolButtonStyle: gen_qnamespace.ToolButtonStyle)
+proc ontoolButtonStyleChanged*(self: gen_qtoolbar_types.QToolBar, slot: proc(toolButtonStyle: cint)) =
+  type Cb = proc(toolButtonStyle: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQToolBar_connect_toolButtonStyleChanged(self.h, cast[int](addr tmp[]))
-proc topLevelChanged*(self: QToolBar, topLevel: bool): void =
+proc topLevelChanged*(self: gen_qtoolbar_types.QToolBar, topLevel: bool): void =
 
   fcQToolBar_topLevelChanged(self.h, topLevel)
 
@@ -497,13 +495,13 @@ proc miqt_exec_callback_QToolBar_topLevelChanged(slot: int, topLevel: bool) {.ex
 
   nimfunc[](slotval1)
 
-proc ontopLevelChanged*(self: QToolBar, slot: proc(topLevel: bool)) =
+proc ontopLevelChanged*(self: gen_qtoolbar_types.QToolBar, slot: proc(topLevel: bool)) =
   type Cb = proc(topLevel: bool)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQToolBar_connect_topLevelChanged(self.h, cast[int](addr tmp[]))
-proc visibilityChanged*(self: QToolBar, visible: bool): void =
+proc visibilityChanged*(self: gen_qtoolbar_types.QToolBar, visible: bool): void =
 
   fcQToolBar_visibilityChanged(self.h, visible)
 
@@ -515,899 +513,714 @@ proc miqt_exec_callback_QToolBar_visibilityChanged(slot: int, visible: bool) {.e
 
   nimfunc[](slotval1)
 
-proc onvisibilityChanged*(self: QToolBar, slot: proc(visible: bool)) =
+proc onvisibilityChanged*(self: gen_qtoolbar_types.QToolBar, slot: proc(visible: bool)) =
   type Cb = proc(visible: bool)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQToolBar_connect_visibilityChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QToolBar, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qtoolbar_types.QToolBar, s: cstring, c: cstring): string =
 
   let v_ms = fcQToolBar_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QToolBar, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qtoolbar_types.QToolBar, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQToolBar_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type QToolBar, s: cstring, c: cstring): string =
+proc trUtf82*(_: type gen_qtoolbar_types.QToolBar, s: cstring, c: cstring): string =
 
   let v_ms = fcQToolBar_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type QToolBar, s: cstring, c: cstring, n: cint): string =
+proc trUtf83*(_: type gen_qtoolbar_types.QToolBar, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQToolBar_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QToolBar, ): gen_qobjectdefs.QMetaObject =
-
+proc QToolBarmetaObject*(self: gen_qtoolbar_types.QToolBar, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQToolBar_virtualbase_metaObject(self.h))
 
-type QToolBarmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QToolBar, slot: proc(super: QToolBarmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QToolBarmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qtoolbar_types.QToolBar, slot: QToolBarmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QToolBarmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QToolBarmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQToolBar_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QToolBar_metaObject(self: ptr cQToolBar, slot: int): pointer {.exportc: "miqt_exec_callback_QToolBar_metaObject ".} =
-  type Cb = proc(super: QToolBarmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QToolBar(h: self), )
+  var nimfunc = cast[ptr QToolBarmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QToolBar, param1: cstring): pointer =
-
+proc QToolBarmetacast*(self: gen_qtoolbar_types.QToolBar, param1: cstring): pointer =
 
   fQToolBar_virtualbase_metacast(self.h, param1)
 
-type QToolBarmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QToolBar, slot: proc(super: QToolBarmetacastBase, param1: cstring): pointer) =
+type QToolBarmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qtoolbar_types.QToolBar, slot: QToolBarmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QToolBarmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QToolBarmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQToolBar_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QToolBar_metacast(self: ptr cQToolBar, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QToolBar_metacast ".} =
-  type Cb = proc(super: QToolBarmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QToolBar(h: self), param1)
+  var nimfunc = cast[ptr QToolBarmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QToolBar, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QToolBarmetacall*(self: gen_qtoolbar_types.QToolBar, param1: cint, param2: cint, param3: pointer): cint =
 
   fQToolBar_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QToolBarmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QToolBar, slot: proc(super: QToolBarmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QToolBarmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qtoolbar_types.QToolBar, slot: QToolBarmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QToolBarmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QToolBarmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQToolBar_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QToolBar_metacall(self: ptr cQToolBar, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QToolBar_metacall ".} =
-  type Cb = proc(super: QToolBarmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QToolBar(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QToolBarmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_actionEvent(self: QToolBar, event: gen_qevent.QActionEvent): void =
-
+proc QToolBaractionEvent*(self: gen_qtoolbar_types.QToolBar, event: gen_qevent.QActionEvent): void =
 
   fQToolBar_virtualbase_actionEvent(self.h, event.h)
 
-type QToolBaractionEventBase* = proc(event: gen_qevent.QActionEvent): void
-proc onactionEvent*(self: QToolBar, slot: proc(super: QToolBaractionEventBase, event: gen_qevent.QActionEvent): void) =
+type QToolBaractionEventProc* = proc(event: gen_qevent.QActionEvent): void
+proc onactionEvent*(self: gen_qtoolbar_types.QToolBar, slot: QToolBaractionEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QToolBaractionEventBase, event: gen_qevent.QActionEvent): void
-  var tmp = new Cb
+  var tmp = new QToolBaractionEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQToolBar_override_virtual_actionEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QToolBar_actionEvent(self: ptr cQToolBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QToolBar_actionEvent ".} =
-  type Cb = proc(super: QToolBaractionEventBase, event: gen_qevent.QActionEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QActionEvent): auto =
-    callVirtualBase_actionEvent(QToolBar(h: self), event)
+  var nimfunc = cast[ptr QToolBaractionEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QActionEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_changeEvent(self: QToolBar, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QToolBarchangeEvent*(self: gen_qtoolbar_types.QToolBar, event: gen_qcoreevent.QEvent): void =
 
   fQToolBar_virtualbase_changeEvent(self.h, event.h)
 
-type QToolBarchangeEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onchangeEvent*(self: QToolBar, slot: proc(super: QToolBarchangeEventBase, event: gen_qcoreevent.QEvent): void) =
+type QToolBarchangeEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onchangeEvent*(self: gen_qtoolbar_types.QToolBar, slot: QToolBarchangeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QToolBarchangeEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QToolBarchangeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQToolBar_override_virtual_changeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QToolBar_changeEvent(self: ptr cQToolBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QToolBar_changeEvent ".} =
-  type Cb = proc(super: QToolBarchangeEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_changeEvent(QToolBar(h: self), event)
+  var nimfunc = cast[ptr QToolBarchangeEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_paintEvent(self: QToolBar, event: gen_qevent.QPaintEvent): void =
-
+  nimfunc[](slotval1)
+proc QToolBarpaintEvent*(self: gen_qtoolbar_types.QToolBar, event: gen_qevent.QPaintEvent): void =
 
   fQToolBar_virtualbase_paintEvent(self.h, event.h)
 
-type QToolBarpaintEventBase* = proc(event: gen_qevent.QPaintEvent): void
-proc onpaintEvent*(self: QToolBar, slot: proc(super: QToolBarpaintEventBase, event: gen_qevent.QPaintEvent): void) =
+type QToolBarpaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
+proc onpaintEvent*(self: gen_qtoolbar_types.QToolBar, slot: QToolBarpaintEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QToolBarpaintEventBase, event: gen_qevent.QPaintEvent): void
-  var tmp = new Cb
+  var tmp = new QToolBarpaintEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQToolBar_override_virtual_paintEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QToolBar_paintEvent(self: ptr cQToolBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QToolBar_paintEvent ".} =
-  type Cb = proc(super: QToolBarpaintEventBase, event: gen_qevent.QPaintEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QPaintEvent): auto =
-    callVirtualBase_paintEvent(QToolBar(h: self), event)
+  var nimfunc = cast[ptr QToolBarpaintEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QPaintEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_event(self: QToolBar, event: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[](slotval1)
+proc QToolBarevent*(self: gen_qtoolbar_types.QToolBar, event: gen_qcoreevent.QEvent): bool =
 
   fQToolBar_virtualbase_event(self.h, event.h)
 
-type QToolBareventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QToolBar, slot: proc(super: QToolBareventBase, event: gen_qcoreevent.QEvent): bool) =
+type QToolBareventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qtoolbar_types.QToolBar, slot: QToolBareventProc) =
   # TODO check subclass
-  type Cb = proc(super: QToolBareventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QToolBareventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQToolBar_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QToolBar_event(self: ptr cQToolBar, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QToolBar_event ".} =
-  type Cb = proc(super: QToolBareventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QToolBar(h: self), event)
+  var nimfunc = cast[ptr QToolBareventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_devType(self: QToolBar, ): cint =
-
+proc QToolBardevType*(self: gen_qtoolbar_types.QToolBar, ): cint =
 
   fQToolBar_virtualbase_devType(self.h)
 
-type QToolBardevTypeBase* = proc(): cint
-proc ondevType*(self: QToolBar, slot: proc(super: QToolBardevTypeBase): cint) =
+type QToolBardevTypeProc* = proc(): cint
+proc ondevType*(self: gen_qtoolbar_types.QToolBar, slot: QToolBardevTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: QToolBardevTypeBase): cint
-  var tmp = new Cb
+  var tmp = new QToolBardevTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQToolBar_override_virtual_devType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QToolBar_devType(self: ptr cQToolBar, slot: int): cint {.exportc: "miqt_exec_callback_QToolBar_devType ".} =
-  type Cb = proc(super: QToolBardevTypeBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_devType(QToolBar(h: self), )
+  var nimfunc = cast[ptr QToolBardevTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setVisible(self: QToolBar, visible: bool): void =
-
+proc QToolBarsetVisible*(self: gen_qtoolbar_types.QToolBar, visible: bool): void =
 
   fQToolBar_virtualbase_setVisible(self.h, visible)
 
-type QToolBarsetVisibleBase* = proc(visible: bool): void
-proc onsetVisible*(self: QToolBar, slot: proc(super: QToolBarsetVisibleBase, visible: bool): void) =
+type QToolBarsetVisibleProc* = proc(visible: bool): void
+proc onsetVisible*(self: gen_qtoolbar_types.QToolBar, slot: QToolBarsetVisibleProc) =
   # TODO check subclass
-  type Cb = proc(super: QToolBarsetVisibleBase, visible: bool): void
-  var tmp = new Cb
+  var tmp = new QToolBarsetVisibleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQToolBar_override_virtual_setVisible(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QToolBar_setVisible(self: ptr cQToolBar, slot: int, visible: bool): void {.exportc: "miqt_exec_callback_QToolBar_setVisible ".} =
-  type Cb = proc(super: QToolBarsetVisibleBase, visible: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(visible: bool): auto =
-    callVirtualBase_setVisible(QToolBar(h: self), visible)
+  var nimfunc = cast[ptr QToolBarsetVisibleProc](cast[pointer](slot))
   let slotval1 = visible
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_sizeHint(self: QToolBar, ): gen_qsize.QSize =
-
+  nimfunc[](slotval1)
+proc QToolBarsizeHint*(self: gen_qtoolbar_types.QToolBar, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQToolBar_virtualbase_sizeHint(self.h))
 
-type QToolBarsizeHintBase* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: QToolBar, slot: proc(super: QToolBarsizeHintBase): gen_qsize.QSize) =
+type QToolBarsizeHintProc* = proc(): gen_qsize.QSize
+proc onsizeHint*(self: gen_qtoolbar_types.QToolBar, slot: QToolBarsizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QToolBarsizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QToolBarsizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQToolBar_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QToolBar_sizeHint(self: ptr cQToolBar, slot: int): pointer {.exportc: "miqt_exec_callback_QToolBar_sizeHint ".} =
-  type Cb = proc(super: QToolBarsizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sizeHint(QToolBar(h: self), )
+  var nimfunc = cast[ptr QToolBarsizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_minimumSizeHint(self: QToolBar, ): gen_qsize.QSize =
-
+proc QToolBarminimumSizeHint*(self: gen_qtoolbar_types.QToolBar, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQToolBar_virtualbase_minimumSizeHint(self.h))
 
-type QToolBarminimumSizeHintBase* = proc(): gen_qsize.QSize
-proc onminimumSizeHint*(self: QToolBar, slot: proc(super: QToolBarminimumSizeHintBase): gen_qsize.QSize) =
+type QToolBarminimumSizeHintProc* = proc(): gen_qsize.QSize
+proc onminimumSizeHint*(self: gen_qtoolbar_types.QToolBar, slot: QToolBarminimumSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QToolBarminimumSizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QToolBarminimumSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQToolBar_override_virtual_minimumSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QToolBar_minimumSizeHint(self: ptr cQToolBar, slot: int): pointer {.exportc: "miqt_exec_callback_QToolBar_minimumSizeHint ".} =
-  type Cb = proc(super: QToolBarminimumSizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_minimumSizeHint(QToolBar(h: self), )
+  var nimfunc = cast[ptr QToolBarminimumSizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_heightForWidth(self: QToolBar, param1: cint): cint =
-
+proc QToolBarheightForWidth*(self: gen_qtoolbar_types.QToolBar, param1: cint): cint =
 
   fQToolBar_virtualbase_heightForWidth(self.h, param1)
 
-type QToolBarheightForWidthBase* = proc(param1: cint): cint
-proc onheightForWidth*(self: QToolBar, slot: proc(super: QToolBarheightForWidthBase, param1: cint): cint) =
+type QToolBarheightForWidthProc* = proc(param1: cint): cint
+proc onheightForWidth*(self: gen_qtoolbar_types.QToolBar, slot: QToolBarheightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QToolBarheightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QToolBarheightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQToolBar_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QToolBar_heightForWidth(self: ptr cQToolBar, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QToolBar_heightForWidth ".} =
-  type Cb = proc(super: QToolBarheightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_heightForWidth(QToolBar(h: self), param1)
+  var nimfunc = cast[ptr QToolBarheightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_hasHeightForWidth(self: QToolBar, ): bool =
-
+proc QToolBarhasHeightForWidth*(self: gen_qtoolbar_types.QToolBar, ): bool =
 
   fQToolBar_virtualbase_hasHeightForWidth(self.h)
 
-type QToolBarhasHeightForWidthBase* = proc(): bool
-proc onhasHeightForWidth*(self: QToolBar, slot: proc(super: QToolBarhasHeightForWidthBase): bool) =
+type QToolBarhasHeightForWidthProc* = proc(): bool
+proc onhasHeightForWidth*(self: gen_qtoolbar_types.QToolBar, slot: QToolBarhasHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QToolBarhasHeightForWidthBase): bool
-  var tmp = new Cb
+  var tmp = new QToolBarhasHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQToolBar_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QToolBar_hasHeightForWidth(self: ptr cQToolBar, slot: int): bool {.exportc: "miqt_exec_callback_QToolBar_hasHeightForWidth ".} =
-  type Cb = proc(super: QToolBarhasHeightForWidthBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasHeightForWidth(QToolBar(h: self), )
+  var nimfunc = cast[ptr QToolBarhasHeightForWidthProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_paintEngine(self: QToolBar, ): gen_qpaintengine.QPaintEngine =
-
+proc QToolBarpaintEngine*(self: gen_qtoolbar_types.QToolBar, ): gen_qpaintengine.QPaintEngine =
 
   gen_qpaintengine.QPaintEngine(h: fQToolBar_virtualbase_paintEngine(self.h))
 
-type QToolBarpaintEngineBase* = proc(): gen_qpaintengine.QPaintEngine
-proc onpaintEngine*(self: QToolBar, slot: proc(super: QToolBarpaintEngineBase): gen_qpaintengine.QPaintEngine) =
+type QToolBarpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
+proc onpaintEngine*(self: gen_qtoolbar_types.QToolBar, slot: QToolBarpaintEngineProc) =
   # TODO check subclass
-  type Cb = proc(super: QToolBarpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var tmp = new Cb
+  var tmp = new QToolBarpaintEngineProc
   tmp[] = slot
   GC_ref(tmp)
   fcQToolBar_override_virtual_paintEngine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QToolBar_paintEngine(self: ptr cQToolBar, slot: int): pointer {.exportc: "miqt_exec_callback_QToolBar_paintEngine ".} =
-  type Cb = proc(super: QToolBarpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_paintEngine(QToolBar(h: self), )
+  var nimfunc = cast[ptr QToolBarpaintEngineProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_mousePressEvent(self: QToolBar, event: gen_qevent.QMouseEvent): void =
-
+proc QToolBarmousePressEvent*(self: gen_qtoolbar_types.QToolBar, event: gen_qevent.QMouseEvent): void =
 
   fQToolBar_virtualbase_mousePressEvent(self.h, event.h)
 
-type QToolBarmousePressEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmousePressEvent*(self: QToolBar, slot: proc(super: QToolBarmousePressEventBase, event: gen_qevent.QMouseEvent): void) =
+type QToolBarmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmousePressEvent*(self: gen_qtoolbar_types.QToolBar, slot: QToolBarmousePressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QToolBarmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QToolBarmousePressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQToolBar_override_virtual_mousePressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QToolBar_mousePressEvent(self: ptr cQToolBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QToolBar_mousePressEvent ".} =
-  type Cb = proc(super: QToolBarmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mousePressEvent(QToolBar(h: self), event)
+  var nimfunc = cast[ptr QToolBarmousePressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseReleaseEvent(self: QToolBar, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QToolBarmouseReleaseEvent*(self: gen_qtoolbar_types.QToolBar, event: gen_qevent.QMouseEvent): void =
 
   fQToolBar_virtualbase_mouseReleaseEvent(self.h, event.h)
 
-type QToolBarmouseReleaseEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseReleaseEvent*(self: QToolBar, slot: proc(super: QToolBarmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void) =
+type QToolBarmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseReleaseEvent*(self: gen_qtoolbar_types.QToolBar, slot: QToolBarmouseReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QToolBarmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QToolBarmouseReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQToolBar_override_virtual_mouseReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QToolBar_mouseReleaseEvent(self: ptr cQToolBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QToolBar_mouseReleaseEvent ".} =
-  type Cb = proc(super: QToolBarmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseReleaseEvent(QToolBar(h: self), event)
+  var nimfunc = cast[ptr QToolBarmouseReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseDoubleClickEvent(self: QToolBar, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QToolBarmouseDoubleClickEvent*(self: gen_qtoolbar_types.QToolBar, event: gen_qevent.QMouseEvent): void =
 
   fQToolBar_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
-type QToolBarmouseDoubleClickEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseDoubleClickEvent*(self: QToolBar, slot: proc(super: QToolBarmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void) =
+type QToolBarmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseDoubleClickEvent*(self: gen_qtoolbar_types.QToolBar, slot: QToolBarmouseDoubleClickEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QToolBarmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QToolBarmouseDoubleClickEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQToolBar_override_virtual_mouseDoubleClickEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QToolBar_mouseDoubleClickEvent(self: ptr cQToolBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QToolBar_mouseDoubleClickEvent ".} =
-  type Cb = proc(super: QToolBarmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseDoubleClickEvent(QToolBar(h: self), event)
+  var nimfunc = cast[ptr QToolBarmouseDoubleClickEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseMoveEvent(self: QToolBar, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QToolBarmouseMoveEvent*(self: gen_qtoolbar_types.QToolBar, event: gen_qevent.QMouseEvent): void =
 
   fQToolBar_virtualbase_mouseMoveEvent(self.h, event.h)
 
-type QToolBarmouseMoveEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseMoveEvent*(self: QToolBar, slot: proc(super: QToolBarmouseMoveEventBase, event: gen_qevent.QMouseEvent): void) =
+type QToolBarmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseMoveEvent*(self: gen_qtoolbar_types.QToolBar, slot: QToolBarmouseMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QToolBarmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QToolBarmouseMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQToolBar_override_virtual_mouseMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QToolBar_mouseMoveEvent(self: ptr cQToolBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QToolBar_mouseMoveEvent ".} =
-  type Cb = proc(super: QToolBarmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseMoveEvent(QToolBar(h: self), event)
+  var nimfunc = cast[ptr QToolBarmouseMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_wheelEvent(self: QToolBar, event: gen_qevent.QWheelEvent): void =
-
+  nimfunc[](slotval1)
+proc QToolBarwheelEvent*(self: gen_qtoolbar_types.QToolBar, event: gen_qevent.QWheelEvent): void =
 
   fQToolBar_virtualbase_wheelEvent(self.h, event.h)
 
-type QToolBarwheelEventBase* = proc(event: gen_qevent.QWheelEvent): void
-proc onwheelEvent*(self: QToolBar, slot: proc(super: QToolBarwheelEventBase, event: gen_qevent.QWheelEvent): void) =
+type QToolBarwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
+proc onwheelEvent*(self: gen_qtoolbar_types.QToolBar, slot: QToolBarwheelEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QToolBarwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var tmp = new Cb
+  var tmp = new QToolBarwheelEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQToolBar_override_virtual_wheelEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QToolBar_wheelEvent(self: ptr cQToolBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QToolBar_wheelEvent ".} =
-  type Cb = proc(super: QToolBarwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QWheelEvent): auto =
-    callVirtualBase_wheelEvent(QToolBar(h: self), event)
+  var nimfunc = cast[ptr QToolBarwheelEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QWheelEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyPressEvent(self: QToolBar, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QToolBarkeyPressEvent*(self: gen_qtoolbar_types.QToolBar, event: gen_qevent.QKeyEvent): void =
 
   fQToolBar_virtualbase_keyPressEvent(self.h, event.h)
 
-type QToolBarkeyPressEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyPressEvent*(self: QToolBar, slot: proc(super: QToolBarkeyPressEventBase, event: gen_qevent.QKeyEvent): void) =
+type QToolBarkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyPressEvent*(self: gen_qtoolbar_types.QToolBar, slot: QToolBarkeyPressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QToolBarkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QToolBarkeyPressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQToolBar_override_virtual_keyPressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QToolBar_keyPressEvent(self: ptr cQToolBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QToolBar_keyPressEvent ".} =
-  type Cb = proc(super: QToolBarkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyPressEvent(QToolBar(h: self), event)
+  var nimfunc = cast[ptr QToolBarkeyPressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyReleaseEvent(self: QToolBar, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QToolBarkeyReleaseEvent*(self: gen_qtoolbar_types.QToolBar, event: gen_qevent.QKeyEvent): void =
 
   fQToolBar_virtualbase_keyReleaseEvent(self.h, event.h)
 
-type QToolBarkeyReleaseEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyReleaseEvent*(self: QToolBar, slot: proc(super: QToolBarkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void) =
+type QToolBarkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyReleaseEvent*(self: gen_qtoolbar_types.QToolBar, slot: QToolBarkeyReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QToolBarkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QToolBarkeyReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQToolBar_override_virtual_keyReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QToolBar_keyReleaseEvent(self: ptr cQToolBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QToolBar_keyReleaseEvent ".} =
-  type Cb = proc(super: QToolBarkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyReleaseEvent(QToolBar(h: self), event)
+  var nimfunc = cast[ptr QToolBarkeyReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusInEvent(self: QToolBar, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QToolBarfocusInEvent*(self: gen_qtoolbar_types.QToolBar, event: gen_qevent.QFocusEvent): void =
 
   fQToolBar_virtualbase_focusInEvent(self.h, event.h)
 
-type QToolBarfocusInEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusInEvent*(self: QToolBar, slot: proc(super: QToolBarfocusInEventBase, event: gen_qevent.QFocusEvent): void) =
+type QToolBarfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusInEvent*(self: gen_qtoolbar_types.QToolBar, slot: QToolBarfocusInEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QToolBarfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QToolBarfocusInEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQToolBar_override_virtual_focusInEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QToolBar_focusInEvent(self: ptr cQToolBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QToolBar_focusInEvent ".} =
-  type Cb = proc(super: QToolBarfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusInEvent(QToolBar(h: self), event)
+  var nimfunc = cast[ptr QToolBarfocusInEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusOutEvent(self: QToolBar, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QToolBarfocusOutEvent*(self: gen_qtoolbar_types.QToolBar, event: gen_qevent.QFocusEvent): void =
 
   fQToolBar_virtualbase_focusOutEvent(self.h, event.h)
 
-type QToolBarfocusOutEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusOutEvent*(self: QToolBar, slot: proc(super: QToolBarfocusOutEventBase, event: gen_qevent.QFocusEvent): void) =
+type QToolBarfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusOutEvent*(self: gen_qtoolbar_types.QToolBar, slot: QToolBarfocusOutEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QToolBarfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QToolBarfocusOutEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQToolBar_override_virtual_focusOutEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QToolBar_focusOutEvent(self: ptr cQToolBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QToolBar_focusOutEvent ".} =
-  type Cb = proc(super: QToolBarfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusOutEvent(QToolBar(h: self), event)
+  var nimfunc = cast[ptr QToolBarfocusOutEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_enterEvent(self: QToolBar, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QToolBarenterEvent*(self: gen_qtoolbar_types.QToolBar, event: gen_qcoreevent.QEvent): void =
 
   fQToolBar_virtualbase_enterEvent(self.h, event.h)
 
-type QToolBarenterEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onenterEvent*(self: QToolBar, slot: proc(super: QToolBarenterEventBase, event: gen_qcoreevent.QEvent): void) =
+type QToolBarenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onenterEvent*(self: gen_qtoolbar_types.QToolBar, slot: QToolBarenterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QToolBarenterEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QToolBarenterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQToolBar_override_virtual_enterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QToolBar_enterEvent(self: ptr cQToolBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QToolBar_enterEvent ".} =
-  type Cb = proc(super: QToolBarenterEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_enterEvent(QToolBar(h: self), event)
+  var nimfunc = cast[ptr QToolBarenterEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_leaveEvent(self: QToolBar, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QToolBarleaveEvent*(self: gen_qtoolbar_types.QToolBar, event: gen_qcoreevent.QEvent): void =
 
   fQToolBar_virtualbase_leaveEvent(self.h, event.h)
 
-type QToolBarleaveEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onleaveEvent*(self: QToolBar, slot: proc(super: QToolBarleaveEventBase, event: gen_qcoreevent.QEvent): void) =
+type QToolBarleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onleaveEvent*(self: gen_qtoolbar_types.QToolBar, slot: QToolBarleaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QToolBarleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QToolBarleaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQToolBar_override_virtual_leaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QToolBar_leaveEvent(self: ptr cQToolBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QToolBar_leaveEvent ".} =
-  type Cb = proc(super: QToolBarleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_leaveEvent(QToolBar(h: self), event)
+  var nimfunc = cast[ptr QToolBarleaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_moveEvent(self: QToolBar, event: gen_qevent.QMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QToolBarmoveEvent*(self: gen_qtoolbar_types.QToolBar, event: gen_qevent.QMoveEvent): void =
 
   fQToolBar_virtualbase_moveEvent(self.h, event.h)
 
-type QToolBarmoveEventBase* = proc(event: gen_qevent.QMoveEvent): void
-proc onmoveEvent*(self: QToolBar, slot: proc(super: QToolBarmoveEventBase, event: gen_qevent.QMoveEvent): void) =
+type QToolBarmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
+proc onmoveEvent*(self: gen_qtoolbar_types.QToolBar, slot: QToolBarmoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QToolBarmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QToolBarmoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQToolBar_override_virtual_moveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QToolBar_moveEvent(self: ptr cQToolBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QToolBar_moveEvent ".} =
-  type Cb = proc(super: QToolBarmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMoveEvent): auto =
-    callVirtualBase_moveEvent(QToolBar(h: self), event)
+  var nimfunc = cast[ptr QToolBarmoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_resizeEvent(self: QToolBar, event: gen_qevent.QResizeEvent): void =
-
+  nimfunc[](slotval1)
+proc QToolBarresizeEvent*(self: gen_qtoolbar_types.QToolBar, event: gen_qevent.QResizeEvent): void =
 
   fQToolBar_virtualbase_resizeEvent(self.h, event.h)
 
-type QToolBarresizeEventBase* = proc(event: gen_qevent.QResizeEvent): void
-proc onresizeEvent*(self: QToolBar, slot: proc(super: QToolBarresizeEventBase, event: gen_qevent.QResizeEvent): void) =
+type QToolBarresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
+proc onresizeEvent*(self: gen_qtoolbar_types.QToolBar, slot: QToolBarresizeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QToolBarresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var tmp = new Cb
+  var tmp = new QToolBarresizeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQToolBar_override_virtual_resizeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QToolBar_resizeEvent(self: ptr cQToolBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QToolBar_resizeEvent ".} =
-  type Cb = proc(super: QToolBarresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QResizeEvent): auto =
-    callVirtualBase_resizeEvent(QToolBar(h: self), event)
+  var nimfunc = cast[ptr QToolBarresizeEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QResizeEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_closeEvent(self: QToolBar, event: gen_qevent.QCloseEvent): void =
-
+  nimfunc[](slotval1)
+proc QToolBarcloseEvent*(self: gen_qtoolbar_types.QToolBar, event: gen_qevent.QCloseEvent): void =
 
   fQToolBar_virtualbase_closeEvent(self.h, event.h)
 
-type QToolBarcloseEventBase* = proc(event: gen_qevent.QCloseEvent): void
-proc oncloseEvent*(self: QToolBar, slot: proc(super: QToolBarcloseEventBase, event: gen_qevent.QCloseEvent): void) =
+type QToolBarcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
+proc oncloseEvent*(self: gen_qtoolbar_types.QToolBar, slot: QToolBarcloseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QToolBarcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var tmp = new Cb
+  var tmp = new QToolBarcloseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQToolBar_override_virtual_closeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QToolBar_closeEvent(self: ptr cQToolBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QToolBar_closeEvent ".} =
-  type Cb = proc(super: QToolBarcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QCloseEvent): auto =
-    callVirtualBase_closeEvent(QToolBar(h: self), event)
+  var nimfunc = cast[ptr QToolBarcloseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QCloseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_contextMenuEvent(self: QToolBar, event: gen_qevent.QContextMenuEvent): void =
-
+  nimfunc[](slotval1)
+proc QToolBarcontextMenuEvent*(self: gen_qtoolbar_types.QToolBar, event: gen_qevent.QContextMenuEvent): void =
 
   fQToolBar_virtualbase_contextMenuEvent(self.h, event.h)
 
-type QToolBarcontextMenuEventBase* = proc(event: gen_qevent.QContextMenuEvent): void
-proc oncontextMenuEvent*(self: QToolBar, slot: proc(super: QToolBarcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void) =
+type QToolBarcontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
+proc oncontextMenuEvent*(self: gen_qtoolbar_types.QToolBar, slot: QToolBarcontextMenuEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QToolBarcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var tmp = new Cb
+  var tmp = new QToolBarcontextMenuEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQToolBar_override_virtual_contextMenuEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QToolBar_contextMenuEvent(self: ptr cQToolBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QToolBar_contextMenuEvent ".} =
-  type Cb = proc(super: QToolBarcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QContextMenuEvent): auto =
-    callVirtualBase_contextMenuEvent(QToolBar(h: self), event)
+  var nimfunc = cast[ptr QToolBarcontextMenuEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QContextMenuEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_tabletEvent(self: QToolBar, event: gen_qevent.QTabletEvent): void =
-
+  nimfunc[](slotval1)
+proc QToolBartabletEvent*(self: gen_qtoolbar_types.QToolBar, event: gen_qevent.QTabletEvent): void =
 
   fQToolBar_virtualbase_tabletEvent(self.h, event.h)
 
-type QToolBartabletEventBase* = proc(event: gen_qevent.QTabletEvent): void
-proc ontabletEvent*(self: QToolBar, slot: proc(super: QToolBartabletEventBase, event: gen_qevent.QTabletEvent): void) =
+type QToolBartabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
+proc ontabletEvent*(self: gen_qtoolbar_types.QToolBar, slot: QToolBartabletEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QToolBartabletEventBase, event: gen_qevent.QTabletEvent): void
-  var tmp = new Cb
+  var tmp = new QToolBartabletEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQToolBar_override_virtual_tabletEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QToolBar_tabletEvent(self: ptr cQToolBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QToolBar_tabletEvent ".} =
-  type Cb = proc(super: QToolBartabletEventBase, event: gen_qevent.QTabletEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QTabletEvent): auto =
-    callVirtualBase_tabletEvent(QToolBar(h: self), event)
+  var nimfunc = cast[ptr QToolBartabletEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QTabletEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragEnterEvent(self: QToolBar, event: gen_qevent.QDragEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QToolBardragEnterEvent*(self: gen_qtoolbar_types.QToolBar, event: gen_qevent.QDragEnterEvent): void =
 
   fQToolBar_virtualbase_dragEnterEvent(self.h, event.h)
 
-type QToolBardragEnterEventBase* = proc(event: gen_qevent.QDragEnterEvent): void
-proc ondragEnterEvent*(self: QToolBar, slot: proc(super: QToolBardragEnterEventBase, event: gen_qevent.QDragEnterEvent): void) =
+type QToolBardragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
+proc ondragEnterEvent*(self: gen_qtoolbar_types.QToolBar, slot: QToolBardragEnterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QToolBardragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QToolBardragEnterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQToolBar_override_virtual_dragEnterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QToolBar_dragEnterEvent(self: ptr cQToolBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QToolBar_dragEnterEvent ".} =
-  type Cb = proc(super: QToolBardragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragEnterEvent): auto =
-    callVirtualBase_dragEnterEvent(QToolBar(h: self), event)
+  var nimfunc = cast[ptr QToolBardragEnterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragMoveEvent(self: QToolBar, event: gen_qevent.QDragMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QToolBardragMoveEvent*(self: gen_qtoolbar_types.QToolBar, event: gen_qevent.QDragMoveEvent): void =
 
   fQToolBar_virtualbase_dragMoveEvent(self.h, event.h)
 
-type QToolBardragMoveEventBase* = proc(event: gen_qevent.QDragMoveEvent): void
-proc ondragMoveEvent*(self: QToolBar, slot: proc(super: QToolBardragMoveEventBase, event: gen_qevent.QDragMoveEvent): void) =
+type QToolBardragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
+proc ondragMoveEvent*(self: gen_qtoolbar_types.QToolBar, slot: QToolBardragMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QToolBardragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QToolBardragMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQToolBar_override_virtual_dragMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QToolBar_dragMoveEvent(self: ptr cQToolBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QToolBar_dragMoveEvent ".} =
-  type Cb = proc(super: QToolBardragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragMoveEvent): auto =
-    callVirtualBase_dragMoveEvent(QToolBar(h: self), event)
+  var nimfunc = cast[ptr QToolBardragMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragLeaveEvent(self: QToolBar, event: gen_qevent.QDragLeaveEvent): void =
-
+  nimfunc[](slotval1)
+proc QToolBardragLeaveEvent*(self: gen_qtoolbar_types.QToolBar, event: gen_qevent.QDragLeaveEvent): void =
 
   fQToolBar_virtualbase_dragLeaveEvent(self.h, event.h)
 
-type QToolBardragLeaveEventBase* = proc(event: gen_qevent.QDragLeaveEvent): void
-proc ondragLeaveEvent*(self: QToolBar, slot: proc(super: QToolBardragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void) =
+type QToolBardragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
+proc ondragLeaveEvent*(self: gen_qtoolbar_types.QToolBar, slot: QToolBardragLeaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QToolBardragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var tmp = new Cb
+  var tmp = new QToolBardragLeaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQToolBar_override_virtual_dragLeaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QToolBar_dragLeaveEvent(self: ptr cQToolBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QToolBar_dragLeaveEvent ".} =
-  type Cb = proc(super: QToolBardragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragLeaveEvent): auto =
-    callVirtualBase_dragLeaveEvent(QToolBar(h: self), event)
+  var nimfunc = cast[ptr QToolBardragLeaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragLeaveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dropEvent(self: QToolBar, event: gen_qevent.QDropEvent): void =
-
+  nimfunc[](slotval1)
+proc QToolBardropEvent*(self: gen_qtoolbar_types.QToolBar, event: gen_qevent.QDropEvent): void =
 
   fQToolBar_virtualbase_dropEvent(self.h, event.h)
 
-type QToolBardropEventBase* = proc(event: gen_qevent.QDropEvent): void
-proc ondropEvent*(self: QToolBar, slot: proc(super: QToolBardropEventBase, event: gen_qevent.QDropEvent): void) =
+type QToolBardropEventProc* = proc(event: gen_qevent.QDropEvent): void
+proc ondropEvent*(self: gen_qtoolbar_types.QToolBar, slot: QToolBardropEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QToolBardropEventBase, event: gen_qevent.QDropEvent): void
-  var tmp = new Cb
+  var tmp = new QToolBardropEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQToolBar_override_virtual_dropEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QToolBar_dropEvent(self: ptr cQToolBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QToolBar_dropEvent ".} =
-  type Cb = proc(super: QToolBardropEventBase, event: gen_qevent.QDropEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDropEvent): auto =
-    callVirtualBase_dropEvent(QToolBar(h: self), event)
+  var nimfunc = cast[ptr QToolBardropEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDropEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_showEvent(self: QToolBar, event: gen_qevent.QShowEvent): void =
-
+  nimfunc[](slotval1)
+proc QToolBarshowEvent*(self: gen_qtoolbar_types.QToolBar, event: gen_qevent.QShowEvent): void =
 
   fQToolBar_virtualbase_showEvent(self.h, event.h)
 
-type QToolBarshowEventBase* = proc(event: gen_qevent.QShowEvent): void
-proc onshowEvent*(self: QToolBar, slot: proc(super: QToolBarshowEventBase, event: gen_qevent.QShowEvent): void) =
+type QToolBarshowEventProc* = proc(event: gen_qevent.QShowEvent): void
+proc onshowEvent*(self: gen_qtoolbar_types.QToolBar, slot: QToolBarshowEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QToolBarshowEventBase, event: gen_qevent.QShowEvent): void
-  var tmp = new Cb
+  var tmp = new QToolBarshowEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQToolBar_override_virtual_showEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QToolBar_showEvent(self: ptr cQToolBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QToolBar_showEvent ".} =
-  type Cb = proc(super: QToolBarshowEventBase, event: gen_qevent.QShowEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QShowEvent): auto =
-    callVirtualBase_showEvent(QToolBar(h: self), event)
+  var nimfunc = cast[ptr QToolBarshowEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QShowEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hideEvent(self: QToolBar, event: gen_qevent.QHideEvent): void =
-
+  nimfunc[](slotval1)
+proc QToolBarhideEvent*(self: gen_qtoolbar_types.QToolBar, event: gen_qevent.QHideEvent): void =
 
   fQToolBar_virtualbase_hideEvent(self.h, event.h)
 
-type QToolBarhideEventBase* = proc(event: gen_qevent.QHideEvent): void
-proc onhideEvent*(self: QToolBar, slot: proc(super: QToolBarhideEventBase, event: gen_qevent.QHideEvent): void) =
+type QToolBarhideEventProc* = proc(event: gen_qevent.QHideEvent): void
+proc onhideEvent*(self: gen_qtoolbar_types.QToolBar, slot: QToolBarhideEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QToolBarhideEventBase, event: gen_qevent.QHideEvent): void
-  var tmp = new Cb
+  var tmp = new QToolBarhideEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQToolBar_override_virtual_hideEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QToolBar_hideEvent(self: ptr cQToolBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QToolBar_hideEvent ".} =
-  type Cb = proc(super: QToolBarhideEventBase, event: gen_qevent.QHideEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QHideEvent): auto =
-    callVirtualBase_hideEvent(QToolBar(h: self), event)
+  var nimfunc = cast[ptr QToolBarhideEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QHideEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_nativeEvent(self: QToolBar, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
+  nimfunc[](slotval1)
+proc QToolBarnativeEvent*(self: gen_qtoolbar_types.QToolBar, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
 
   fQToolBar_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
-type QToolBarnativeEventBase* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-proc onnativeEvent*(self: QToolBar, slot: proc(super: QToolBarnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool) =
+type QToolBarnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
+proc onnativeEvent*(self: gen_qtoolbar_types.QToolBar, slot: QToolBarnativeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QToolBarnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-  var tmp = new Cb
+  var tmp = new QToolBarnativeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQToolBar_override_virtual_nativeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QToolBar_nativeEvent(self: ptr cQToolBar, slot: int, eventType: struct_miqt_string, message: pointer, resultVal: ptr clong): bool {.exportc: "miqt_exec_callback_QToolBar_nativeEvent ".} =
-  type Cb = proc(super: QToolBarnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(eventType: seq[byte], message: pointer, resultVal: ptr clong): auto =
-    callVirtualBase_nativeEvent(QToolBar(h: self), eventType, message, resultVal)
+  var nimfunc = cast[ptr QToolBarnativeEventProc](cast[pointer](slot))
   var veventType_bytearray = eventType
   var veventTypex_ret = @(toOpenArrayByte(veventType_bytearray.data, 0, int(veventType_bytearray.len)-1))
   c_free(veventType_bytearray.data)
@@ -1418,321 +1231,256 @@ proc miqt_exec_callback_QToolBar_nativeEvent(self: ptr cQToolBar, slot: int, eve
   let slotval3 = resultVal
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_metric(self: QToolBar, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint =
-
+proc QToolBarmetric*(self: gen_qtoolbar_types.QToolBar, param1: cint): cint =
 
   fQToolBar_virtualbase_metric(self.h, cint(param1))
 
-type QToolBarmetricBase* = proc(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-proc onmetric*(self: QToolBar, slot: proc(super: QToolBarmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint) =
+type QToolBarmetricProc* = proc(param1: cint): cint
+proc onmetric*(self: gen_qtoolbar_types.QToolBar, slot: QToolBarmetricProc) =
   # TODO check subclass
-  type Cb = proc(super: QToolBarmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var tmp = new Cb
+  var tmp = new QToolBarmetricProc
   tmp[] = slot
   GC_ref(tmp)
   fcQToolBar_override_virtual_metric(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QToolBar_metric(self: ptr cQToolBar, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QToolBar_metric ".} =
-  type Cb = proc(super: QToolBarmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): auto =
-    callVirtualBase_metric(QToolBar(h: self), param1)
-  let slotval1 = gen_qpaintdevice.QPaintDevicePaintDeviceMetric(param1)
+  var nimfunc = cast[ptr QToolBarmetricProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_initPainter(self: QToolBar, painter: gen_qpainter.QPainter): void =
-
+proc QToolBarinitPainter*(self: gen_qtoolbar_types.QToolBar, painter: gen_qpainter.QPainter): void =
 
   fQToolBar_virtualbase_initPainter(self.h, painter.h)
 
-type QToolBarinitPainterBase* = proc(painter: gen_qpainter.QPainter): void
-proc oninitPainter*(self: QToolBar, slot: proc(super: QToolBarinitPainterBase, painter: gen_qpainter.QPainter): void) =
+type QToolBarinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
+proc oninitPainter*(self: gen_qtoolbar_types.QToolBar, slot: QToolBarinitPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QToolBarinitPainterBase, painter: gen_qpainter.QPainter): void
-  var tmp = new Cb
+  var tmp = new QToolBarinitPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQToolBar_override_virtual_initPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QToolBar_initPainter(self: ptr cQToolBar, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_QToolBar_initPainter ".} =
-  type Cb = proc(super: QToolBarinitPainterBase, painter: gen_qpainter.QPainter): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter): auto =
-    callVirtualBase_initPainter(QToolBar(h: self), painter)
+  var nimfunc = cast[ptr QToolBarinitPainterProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_redirected(self: QToolBar, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
+  nimfunc[](slotval1)
+proc QToolBarredirected*(self: gen_qtoolbar_types.QToolBar, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
 
   gen_qpaintdevice.QPaintDevice(h: fQToolBar_virtualbase_redirected(self.h, offset.h))
 
-type QToolBarredirectedBase* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-proc onredirected*(self: QToolBar, slot: proc(super: QToolBarredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice) =
+type QToolBarredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
+proc onredirected*(self: gen_qtoolbar_types.QToolBar, slot: QToolBarredirectedProc) =
   # TODO check subclass
-  type Cb = proc(super: QToolBarredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var tmp = new Cb
+  var tmp = new QToolBarredirectedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQToolBar_override_virtual_redirected(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QToolBar_redirected(self: ptr cQToolBar, slot: int, offset: pointer): pointer {.exportc: "miqt_exec_callback_QToolBar_redirected ".} =
-  type Cb = proc(super: QToolBarredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(offset: gen_qpoint.QPoint): auto =
-    callVirtualBase_redirected(QToolBar(h: self), offset)
+  var nimfunc = cast[ptr QToolBarredirectedProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: offset)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_sharedPainter(self: QToolBar, ): gen_qpainter.QPainter =
-
+proc QToolBarsharedPainter*(self: gen_qtoolbar_types.QToolBar, ): gen_qpainter.QPainter =
 
   gen_qpainter.QPainter(h: fQToolBar_virtualbase_sharedPainter(self.h))
 
-type QToolBarsharedPainterBase* = proc(): gen_qpainter.QPainter
-proc onsharedPainter*(self: QToolBar, slot: proc(super: QToolBarsharedPainterBase): gen_qpainter.QPainter) =
+type QToolBarsharedPainterProc* = proc(): gen_qpainter.QPainter
+proc onsharedPainter*(self: gen_qtoolbar_types.QToolBar, slot: QToolBarsharedPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QToolBarsharedPainterBase): gen_qpainter.QPainter
-  var tmp = new Cb
+  var tmp = new QToolBarsharedPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQToolBar_override_virtual_sharedPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QToolBar_sharedPainter(self: ptr cQToolBar, slot: int): pointer {.exportc: "miqt_exec_callback_QToolBar_sharedPainter ".} =
-  type Cb = proc(super: QToolBarsharedPainterBase): gen_qpainter.QPainter
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sharedPainter(QToolBar(h: self), )
+  var nimfunc = cast[ptr QToolBarsharedPainterProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_inputMethodEvent(self: QToolBar, param1: gen_qevent.QInputMethodEvent): void =
-
+proc QToolBarinputMethodEvent*(self: gen_qtoolbar_types.QToolBar, param1: gen_qevent.QInputMethodEvent): void =
 
   fQToolBar_virtualbase_inputMethodEvent(self.h, param1.h)
 
-type QToolBarinputMethodEventBase* = proc(param1: gen_qevent.QInputMethodEvent): void
-proc oninputMethodEvent*(self: QToolBar, slot: proc(super: QToolBarinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void) =
+type QToolBarinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
+proc oninputMethodEvent*(self: gen_qtoolbar_types.QToolBar, slot: QToolBarinputMethodEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QToolBarinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var tmp = new Cb
+  var tmp = new QToolBarinputMethodEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQToolBar_override_virtual_inputMethodEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QToolBar_inputMethodEvent(self: ptr cQToolBar, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QToolBar_inputMethodEvent ".} =
-  type Cb = proc(super: QToolBarinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QInputMethodEvent): auto =
-    callVirtualBase_inputMethodEvent(QToolBar(h: self), param1)
+  var nimfunc = cast[ptr QToolBarinputMethodEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QInputMethodEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_inputMethodQuery(self: QToolBar, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant =
-
+  nimfunc[](slotval1)
+proc QToolBarinputMethodQuery*(self: gen_qtoolbar_types.QToolBar, param1: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQToolBar_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
-type QToolBarinputMethodQueryBase* = proc(param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-proc oninputMethodQuery*(self: QToolBar, slot: proc(super: QToolBarinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant) =
+type QToolBarinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
+proc oninputMethodQuery*(self: gen_qtoolbar_types.QToolBar, slot: QToolBarinputMethodQueryProc) =
   # TODO check subclass
-  type Cb = proc(super: QToolBarinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QToolBarinputMethodQueryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQToolBar_override_virtual_inputMethodQuery(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QToolBar_inputMethodQuery(self: ptr cQToolBar, slot: int, param1: cint): pointer {.exportc: "miqt_exec_callback_QToolBar_inputMethodQuery ".} =
-  type Cb = proc(super: QToolBarinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qnamespace.InputMethodQuery): auto =
-    callVirtualBase_inputMethodQuery(QToolBar(h: self), param1)
-  let slotval1 = gen_qnamespace.InputMethodQuery(param1)
+  var nimfunc = cast[ptr QToolBarinputMethodQueryProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_focusNextPrevChild(self: QToolBar, next: bool): bool =
-
+proc QToolBarfocusNextPrevChild*(self: gen_qtoolbar_types.QToolBar, next: bool): bool =
 
   fQToolBar_virtualbase_focusNextPrevChild(self.h, next)
 
-type QToolBarfocusNextPrevChildBase* = proc(next: bool): bool
-proc onfocusNextPrevChild*(self: QToolBar, slot: proc(super: QToolBarfocusNextPrevChildBase, next: bool): bool) =
+type QToolBarfocusNextPrevChildProc* = proc(next: bool): bool
+proc onfocusNextPrevChild*(self: gen_qtoolbar_types.QToolBar, slot: QToolBarfocusNextPrevChildProc) =
   # TODO check subclass
-  type Cb = proc(super: QToolBarfocusNextPrevChildBase, next: bool): bool
-  var tmp = new Cb
+  var tmp = new QToolBarfocusNextPrevChildProc
   tmp[] = slot
   GC_ref(tmp)
   fcQToolBar_override_virtual_focusNextPrevChild(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QToolBar_focusNextPrevChild(self: ptr cQToolBar, slot: int, next: bool): bool {.exportc: "miqt_exec_callback_QToolBar_focusNextPrevChild ".} =
-  type Cb = proc(super: QToolBarfocusNextPrevChildBase, next: bool): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(next: bool): auto =
-    callVirtualBase_focusNextPrevChild(QToolBar(h: self), next)
+  var nimfunc = cast[ptr QToolBarfocusNextPrevChildProc](cast[pointer](slot))
   let slotval1 = next
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QToolBar, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QToolBareventFilter*(self: gen_qtoolbar_types.QToolBar, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQToolBar_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QToolBareventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QToolBar, slot: proc(super: QToolBareventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QToolBareventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qtoolbar_types.QToolBar, slot: QToolBareventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QToolBareventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QToolBareventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQToolBar_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QToolBar_eventFilter(self: ptr cQToolBar, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QToolBar_eventFilter ".} =
-  type Cb = proc(super: QToolBareventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QToolBar(h: self), watched, event)
+  var nimfunc = cast[ptr QToolBareventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QToolBar, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QToolBartimerEvent*(self: gen_qtoolbar_types.QToolBar, event: gen_qcoreevent.QTimerEvent): void =
 
   fQToolBar_virtualbase_timerEvent(self.h, event.h)
 
-type QToolBartimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QToolBar, slot: proc(super: QToolBartimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QToolBartimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qtoolbar_types.QToolBar, slot: QToolBartimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QToolBartimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QToolBartimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQToolBar_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QToolBar_timerEvent(self: ptr cQToolBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QToolBar_timerEvent ".} =
-  type Cb = proc(super: QToolBartimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QToolBar(h: self), event)
+  var nimfunc = cast[ptr QToolBartimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QToolBar, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QToolBarchildEvent*(self: gen_qtoolbar_types.QToolBar, event: gen_qcoreevent.QChildEvent): void =
 
   fQToolBar_virtualbase_childEvent(self.h, event.h)
 
-type QToolBarchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QToolBar, slot: proc(super: QToolBarchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QToolBarchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qtoolbar_types.QToolBar, slot: QToolBarchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QToolBarchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QToolBarchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQToolBar_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QToolBar_childEvent(self: ptr cQToolBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QToolBar_childEvent ".} =
-  type Cb = proc(super: QToolBarchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QToolBar(h: self), event)
+  var nimfunc = cast[ptr QToolBarchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QToolBar, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QToolBarcustomEvent*(self: gen_qtoolbar_types.QToolBar, event: gen_qcoreevent.QEvent): void =
 
   fQToolBar_virtualbase_customEvent(self.h, event.h)
 
-type QToolBarcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QToolBar, slot: proc(super: QToolBarcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QToolBarcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qtoolbar_types.QToolBar, slot: QToolBarcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QToolBarcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QToolBarcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQToolBar_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QToolBar_customEvent(self: ptr cQToolBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QToolBar_customEvent ".} =
-  type Cb = proc(super: QToolBarcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QToolBar(h: self), event)
+  var nimfunc = cast[ptr QToolBarcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QToolBar, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QToolBarconnectNotify*(self: gen_qtoolbar_types.QToolBar, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQToolBar_virtualbase_connectNotify(self.h, signal.h)
 
-type QToolBarconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QToolBar, slot: proc(super: QToolBarconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QToolBarconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qtoolbar_types.QToolBar, slot: QToolBarconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QToolBarconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QToolBarconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQToolBar_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QToolBar_connectNotify(self: ptr cQToolBar, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QToolBar_connectNotify ".} =
-  type Cb = proc(super: QToolBarconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QToolBar(h: self), signal)
+  var nimfunc = cast[ptr QToolBarconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QToolBar, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QToolBardisconnectNotify*(self: gen_qtoolbar_types.QToolBar, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQToolBar_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QToolBardisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QToolBar, slot: proc(super: QToolBardisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QToolBardisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qtoolbar_types.QToolBar, slot: QToolBardisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QToolBardisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QToolBardisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQToolBar_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QToolBar_disconnectNotify(self: ptr cQToolBar, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QToolBar_disconnectNotify ".} =
-  type Cb = proc(super: QToolBardisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QToolBar(h: self), signal)
+  var nimfunc = cast[ptr QToolBardisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QToolBar): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qtoolbar_types.QToolBar): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQToolBar_staticMetaObject())
-proc delete*(self: QToolBar) =
+proc delete*(self: gen_qtoolbar_types.QToolBar) =
   fcQToolBar_delete(self.h)

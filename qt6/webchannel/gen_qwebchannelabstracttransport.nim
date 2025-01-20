@@ -88,332 +88,280 @@ proc fcQWebChannelAbstractTransport_staticMetaObject(): pointer {.importc: "QWeb
 proc fcQWebChannelAbstractTransport_delete(self: pointer) {.importc: "QWebChannelAbstractTransport_delete".}
 
 
-func init*(T: type QWebChannelAbstractTransport, h: ptr cQWebChannelAbstractTransport): QWebChannelAbstractTransport =
+func init*(T: type gen_qwebchannelabstracttransport_types.QWebChannelAbstractTransport, h: ptr cQWebChannelAbstractTransport): gen_qwebchannelabstracttransport_types.QWebChannelAbstractTransport =
   T(h: h)
-proc create*(T: type QWebChannelAbstractTransport, ): QWebChannelAbstractTransport =
+proc create*(T: type gen_qwebchannelabstracttransport_types.QWebChannelAbstractTransport, ): gen_qwebchannelabstracttransport_types.QWebChannelAbstractTransport =
 
-  QWebChannelAbstractTransport.init(fcQWebChannelAbstractTransport_new())
-proc create*(T: type QWebChannelAbstractTransport, parent: gen_qobject.QObject): QWebChannelAbstractTransport =
+  gen_qwebchannelabstracttransport_types.QWebChannelAbstractTransport.init(fcQWebChannelAbstractTransport_new())
+proc create*(T: type gen_qwebchannelabstracttransport_types.QWebChannelAbstractTransport, parent: gen_qobject.QObject): gen_qwebchannelabstracttransport_types.QWebChannelAbstractTransport =
 
-  QWebChannelAbstractTransport.init(fcQWebChannelAbstractTransport_new2(parent.h))
-proc metaObject*(self: QWebChannelAbstractTransport, ): gen_qobjectdefs.QMetaObject =
+  gen_qwebchannelabstracttransport_types.QWebChannelAbstractTransport.init(fcQWebChannelAbstractTransport_new2(parent.h))
+proc metaObject*(self: gen_qwebchannelabstracttransport_types.QWebChannelAbstractTransport, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQWebChannelAbstractTransport_metaObject(self.h))
 
-proc metacast*(self: QWebChannelAbstractTransport, param1: cstring): pointer =
+proc metacast*(self: gen_qwebchannelabstracttransport_types.QWebChannelAbstractTransport, param1: cstring): pointer =
 
   fcQWebChannelAbstractTransport_metacast(self.h, param1)
 
-proc metacall*(self: QWebChannelAbstractTransport, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qwebchannelabstracttransport_types.QWebChannelAbstractTransport, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQWebChannelAbstractTransport_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QWebChannelAbstractTransport, s: cstring): string =
+proc tr*(_: type gen_qwebchannelabstracttransport_types.QWebChannelAbstractTransport, s: cstring): string =
 
   let v_ms = fcQWebChannelAbstractTransport_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc sendMessage*(self: QWebChannelAbstractTransport, message: gen_qjsonobject.QJsonObject): void =
+proc sendMessage*(self: gen_qwebchannelabstracttransport_types.QWebChannelAbstractTransport, message: gen_qjsonobject.QJsonObject): void =
 
   fcQWebChannelAbstractTransport_sendMessage(self.h, message.h)
 
-proc messageReceived*(self: QWebChannelAbstractTransport, message: gen_qjsonobject.QJsonObject, transport: QWebChannelAbstractTransport): void =
+proc messageReceived*(self: gen_qwebchannelabstracttransport_types.QWebChannelAbstractTransport, message: gen_qjsonobject.QJsonObject, transport: gen_qwebchannelabstracttransport_types.QWebChannelAbstractTransport): void =
 
   fcQWebChannelAbstractTransport_messageReceived(self.h, message.h, transport.h)
 
 proc miqt_exec_callback_QWebChannelAbstractTransport_messageReceived(slot: int, message: pointer, transport: pointer) {.exportc.} =
-  type Cb = proc(message: gen_qjsonobject.QJsonObject, transport: QWebChannelAbstractTransport)
+  type Cb = proc(message: gen_qjsonobject.QJsonObject, transport: gen_qwebchannelabstracttransport_types.QWebChannelAbstractTransport)
   let nimfunc = cast[ptr Cb](cast[pointer](slot))
   let slotval1 = gen_qjsonobject.QJsonObject(h: message)
 
-  let slotval2 = QWebChannelAbstractTransport(h: transport)
+  let slotval2 = gen_qwebchannelabstracttransport_types.QWebChannelAbstractTransport(h: transport)
 
 
   nimfunc[](slotval1, slotval2)
 
-proc onmessageReceived*(self: QWebChannelAbstractTransport, slot: proc(message: gen_qjsonobject.QJsonObject, transport: QWebChannelAbstractTransport)) =
-  type Cb = proc(message: gen_qjsonobject.QJsonObject, transport: QWebChannelAbstractTransport)
+proc onmessageReceived*(self: gen_qwebchannelabstracttransport_types.QWebChannelAbstractTransport, slot: proc(message: gen_qjsonobject.QJsonObject, transport: gen_qwebchannelabstracttransport_types.QWebChannelAbstractTransport)) =
+  type Cb = proc(message: gen_qjsonobject.QJsonObject, transport: gen_qwebchannelabstracttransport_types.QWebChannelAbstractTransport)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQWebChannelAbstractTransport_connect_messageReceived(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QWebChannelAbstractTransport, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qwebchannelabstracttransport_types.QWebChannelAbstractTransport, s: cstring, c: cstring): string =
 
   let v_ms = fcQWebChannelAbstractTransport_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QWebChannelAbstractTransport, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qwebchannelabstracttransport_types.QWebChannelAbstractTransport, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQWebChannelAbstractTransport_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QWebChannelAbstractTransport, ): gen_qobjectdefs.QMetaObject =
-
+proc QWebChannelAbstractTransportmetaObject*(self: gen_qwebchannelabstracttransport_types.QWebChannelAbstractTransport, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQWebChannelAbstractTransport_virtualbase_metaObject(self.h))
 
-type QWebChannelAbstractTransportmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QWebChannelAbstractTransport, slot: proc(super: QWebChannelAbstractTransportmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QWebChannelAbstractTransportmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qwebchannelabstracttransport_types.QWebChannelAbstractTransport, slot: QWebChannelAbstractTransportmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebChannelAbstractTransportmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QWebChannelAbstractTransportmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebChannelAbstractTransport_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebChannelAbstractTransport_metaObject(self: ptr cQWebChannelAbstractTransport, slot: int): pointer {.exportc: "miqt_exec_callback_QWebChannelAbstractTransport_metaObject ".} =
-  type Cb = proc(super: QWebChannelAbstractTransportmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QWebChannelAbstractTransport(h: self), )
+  var nimfunc = cast[ptr QWebChannelAbstractTransportmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QWebChannelAbstractTransport, param1: cstring): pointer =
-
+proc QWebChannelAbstractTransportmetacast*(self: gen_qwebchannelabstracttransport_types.QWebChannelAbstractTransport, param1: cstring): pointer =
 
   fQWebChannelAbstractTransport_virtualbase_metacast(self.h, param1)
 
-type QWebChannelAbstractTransportmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QWebChannelAbstractTransport, slot: proc(super: QWebChannelAbstractTransportmetacastBase, param1: cstring): pointer) =
+type QWebChannelAbstractTransportmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qwebchannelabstracttransport_types.QWebChannelAbstractTransport, slot: QWebChannelAbstractTransportmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebChannelAbstractTransportmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QWebChannelAbstractTransportmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebChannelAbstractTransport_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebChannelAbstractTransport_metacast(self: ptr cQWebChannelAbstractTransport, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QWebChannelAbstractTransport_metacast ".} =
-  type Cb = proc(super: QWebChannelAbstractTransportmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QWebChannelAbstractTransport(h: self), param1)
+  var nimfunc = cast[ptr QWebChannelAbstractTransportmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QWebChannelAbstractTransport, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QWebChannelAbstractTransportmetacall*(self: gen_qwebchannelabstracttransport_types.QWebChannelAbstractTransport, param1: cint, param2: cint, param3: pointer): cint =
 
   fQWebChannelAbstractTransport_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QWebChannelAbstractTransportmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QWebChannelAbstractTransport, slot: proc(super: QWebChannelAbstractTransportmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QWebChannelAbstractTransportmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qwebchannelabstracttransport_types.QWebChannelAbstractTransport, slot: QWebChannelAbstractTransportmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebChannelAbstractTransportmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QWebChannelAbstractTransportmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebChannelAbstractTransport_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebChannelAbstractTransport_metacall(self: ptr cQWebChannelAbstractTransport, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QWebChannelAbstractTransport_metacall ".} =
-  type Cb = proc(super: QWebChannelAbstractTransportmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QWebChannelAbstractTransport(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QWebChannelAbstractTransportmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-type QWebChannelAbstractTransportsendMessageBase* = proc(message: gen_qjsonobject.QJsonObject): void
-proc onsendMessage*(self: QWebChannelAbstractTransport, slot: proc(message: gen_qjsonobject.QJsonObject): void) =
+type QWebChannelAbstractTransportsendMessageProc* = proc(message: gen_qjsonobject.QJsonObject): void
+proc onsendMessage*(self: gen_qwebchannelabstracttransport_types.QWebChannelAbstractTransport, slot: QWebChannelAbstractTransportsendMessageProc) =
   # TODO check subclass
-  type Cb = proc(message: gen_qjsonobject.QJsonObject): void
-  var tmp = new Cb
+  var tmp = new QWebChannelAbstractTransportsendMessageProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebChannelAbstractTransport_override_virtual_sendMessage(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebChannelAbstractTransport_sendMessage(self: ptr cQWebChannelAbstractTransport, slot: int, message: pointer): void {.exportc: "miqt_exec_callback_QWebChannelAbstractTransport_sendMessage ".} =
-  type Cb = proc(message: gen_qjsonobject.QJsonObject): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  var nimfunc = cast[ptr QWebChannelAbstractTransportsendMessageProc](cast[pointer](slot))
   let slotval1 = gen_qjsonobject.QJsonObject(h: message)
 
 
   nimfunc[](slotval1)
-proc callVirtualBase_event(self: QWebChannelAbstractTransport, event: gen_qcoreevent.QEvent): bool =
-
+proc QWebChannelAbstractTransportevent*(self: gen_qwebchannelabstracttransport_types.QWebChannelAbstractTransport, event: gen_qcoreevent.QEvent): bool =
 
   fQWebChannelAbstractTransport_virtualbase_event(self.h, event.h)
 
-type QWebChannelAbstractTransporteventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QWebChannelAbstractTransport, slot: proc(super: QWebChannelAbstractTransporteventBase, event: gen_qcoreevent.QEvent): bool) =
+type QWebChannelAbstractTransporteventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qwebchannelabstracttransport_types.QWebChannelAbstractTransport, slot: QWebChannelAbstractTransporteventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebChannelAbstractTransporteventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QWebChannelAbstractTransporteventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebChannelAbstractTransport_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebChannelAbstractTransport_event(self: ptr cQWebChannelAbstractTransport, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QWebChannelAbstractTransport_event ".} =
-  type Cb = proc(super: QWebChannelAbstractTransporteventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QWebChannelAbstractTransport(h: self), event)
+  var nimfunc = cast[ptr QWebChannelAbstractTransporteventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QWebChannelAbstractTransport, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QWebChannelAbstractTransporteventFilter*(self: gen_qwebchannelabstracttransport_types.QWebChannelAbstractTransport, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQWebChannelAbstractTransport_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QWebChannelAbstractTransporteventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QWebChannelAbstractTransport, slot: proc(super: QWebChannelAbstractTransporteventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QWebChannelAbstractTransporteventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qwebchannelabstracttransport_types.QWebChannelAbstractTransport, slot: QWebChannelAbstractTransporteventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebChannelAbstractTransporteventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QWebChannelAbstractTransporteventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebChannelAbstractTransport_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebChannelAbstractTransport_eventFilter(self: ptr cQWebChannelAbstractTransport, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QWebChannelAbstractTransport_eventFilter ".} =
-  type Cb = proc(super: QWebChannelAbstractTransporteventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QWebChannelAbstractTransport(h: self), watched, event)
+  var nimfunc = cast[ptr QWebChannelAbstractTransporteventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QWebChannelAbstractTransport, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QWebChannelAbstractTransporttimerEvent*(self: gen_qwebchannelabstracttransport_types.QWebChannelAbstractTransport, event: gen_qcoreevent.QTimerEvent): void =
 
   fQWebChannelAbstractTransport_virtualbase_timerEvent(self.h, event.h)
 
-type QWebChannelAbstractTransporttimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QWebChannelAbstractTransport, slot: proc(super: QWebChannelAbstractTransporttimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QWebChannelAbstractTransporttimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qwebchannelabstracttransport_types.QWebChannelAbstractTransport, slot: QWebChannelAbstractTransporttimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebChannelAbstractTransporttimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QWebChannelAbstractTransporttimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebChannelAbstractTransport_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebChannelAbstractTransport_timerEvent(self: ptr cQWebChannelAbstractTransport, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebChannelAbstractTransport_timerEvent ".} =
-  type Cb = proc(super: QWebChannelAbstractTransporttimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QWebChannelAbstractTransport(h: self), event)
+  var nimfunc = cast[ptr QWebChannelAbstractTransporttimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QWebChannelAbstractTransport, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebChannelAbstractTransportchildEvent*(self: gen_qwebchannelabstracttransport_types.QWebChannelAbstractTransport, event: gen_qcoreevent.QChildEvent): void =
 
   fQWebChannelAbstractTransport_virtualbase_childEvent(self.h, event.h)
 
-type QWebChannelAbstractTransportchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QWebChannelAbstractTransport, slot: proc(super: QWebChannelAbstractTransportchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QWebChannelAbstractTransportchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qwebchannelabstracttransport_types.QWebChannelAbstractTransport, slot: QWebChannelAbstractTransportchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebChannelAbstractTransportchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QWebChannelAbstractTransportchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebChannelAbstractTransport_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebChannelAbstractTransport_childEvent(self: ptr cQWebChannelAbstractTransport, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebChannelAbstractTransport_childEvent ".} =
-  type Cb = proc(super: QWebChannelAbstractTransportchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QWebChannelAbstractTransport(h: self), event)
+  var nimfunc = cast[ptr QWebChannelAbstractTransportchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QWebChannelAbstractTransport, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QWebChannelAbstractTransportcustomEvent*(self: gen_qwebchannelabstracttransport_types.QWebChannelAbstractTransport, event: gen_qcoreevent.QEvent): void =
 
   fQWebChannelAbstractTransport_virtualbase_customEvent(self.h, event.h)
 
-type QWebChannelAbstractTransportcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QWebChannelAbstractTransport, slot: proc(super: QWebChannelAbstractTransportcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QWebChannelAbstractTransportcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qwebchannelabstracttransport_types.QWebChannelAbstractTransport, slot: QWebChannelAbstractTransportcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebChannelAbstractTransportcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QWebChannelAbstractTransportcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebChannelAbstractTransport_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebChannelAbstractTransport_customEvent(self: ptr cQWebChannelAbstractTransport, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QWebChannelAbstractTransport_customEvent ".} =
-  type Cb = proc(super: QWebChannelAbstractTransportcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QWebChannelAbstractTransport(h: self), event)
+  var nimfunc = cast[ptr QWebChannelAbstractTransportcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QWebChannelAbstractTransport, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QWebChannelAbstractTransportconnectNotify*(self: gen_qwebchannelabstracttransport_types.QWebChannelAbstractTransport, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQWebChannelAbstractTransport_virtualbase_connectNotify(self.h, signal.h)
 
-type QWebChannelAbstractTransportconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QWebChannelAbstractTransport, slot: proc(super: QWebChannelAbstractTransportconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QWebChannelAbstractTransportconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qwebchannelabstracttransport_types.QWebChannelAbstractTransport, slot: QWebChannelAbstractTransportconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebChannelAbstractTransportconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QWebChannelAbstractTransportconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebChannelAbstractTransport_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebChannelAbstractTransport_connectNotify(self: ptr cQWebChannelAbstractTransport, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QWebChannelAbstractTransport_connectNotify ".} =
-  type Cb = proc(super: QWebChannelAbstractTransportconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QWebChannelAbstractTransport(h: self), signal)
+  var nimfunc = cast[ptr QWebChannelAbstractTransportconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QWebChannelAbstractTransport, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QWebChannelAbstractTransportdisconnectNotify*(self: gen_qwebchannelabstracttransport_types.QWebChannelAbstractTransport, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQWebChannelAbstractTransport_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QWebChannelAbstractTransportdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QWebChannelAbstractTransport, slot: proc(super: QWebChannelAbstractTransportdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QWebChannelAbstractTransportdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qwebchannelabstracttransport_types.QWebChannelAbstractTransport, slot: QWebChannelAbstractTransportdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QWebChannelAbstractTransportdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QWebChannelAbstractTransportdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQWebChannelAbstractTransport_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QWebChannelAbstractTransport_disconnectNotify(self: ptr cQWebChannelAbstractTransport, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QWebChannelAbstractTransport_disconnectNotify ".} =
-  type Cb = proc(super: QWebChannelAbstractTransportdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QWebChannelAbstractTransport(h: self), signal)
+  var nimfunc = cast[ptr QWebChannelAbstractTransportdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QWebChannelAbstractTransport): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qwebchannelabstracttransport_types.QWebChannelAbstractTransport): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQWebChannelAbstractTransport_staticMetaObject())
-proc delete*(self: QWebChannelAbstractTransport) =
+proc delete*(self: gen_qwebchannelabstracttransport_types.QWebChannelAbstractTransport) =
   fcQWebChannelAbstractTransport_delete(self.h)

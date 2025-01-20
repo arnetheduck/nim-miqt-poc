@@ -34,13 +34,11 @@ const cflags = gorge("pkg-config -cflags Qt5Widgets")
 {.compile("gen_qpainterpath.cpp", cflags).}
 
 
-type QPainterPathElementType* = cint
-const
-  QPainterPathMoveToElement* = 0
-  QPainterPathLineToElement* = 1
-  QPainterPathCurveToElement* = 2
-  QPainterPathCurveToDataElement* = 3
-
+type QPainterPathElementTypeEnum* = distinct cint
+template MoveToElement*(_: type QPainterPathElementTypeEnum): untyped = 0
+template LineToElement*(_: type QPainterPathElementTypeEnum): untyped = 1
+template CurveToElement*(_: type QPainterPathElementTypeEnum): untyped = 2
+template CurveToDataElement*(_: type QPainterPathElementTypeEnum): untyped = 3
 
 
 import gen_qpainterpath_types
@@ -48,14 +46,12 @@ export gen_qpainterpath_types
 
 import
   gen_qfont,
-  gen_qnamespace,
   gen_qpen,
   gen_qpoint,
   gen_qrect,
   gen_qregion
 export
   gen_qfont,
-  gen_qnamespace,
   gen_qpen,
   gen_qpoint,
   gen_qrect,
@@ -172,373 +168,373 @@ proc fcQPainterPathElement_operatorNotEqual(self: pointer, e: pointer): bool {.i
 proc fcQPainterPathElement_delete(self: pointer) {.importc: "QPainterPath__Element_delete".}
 
 
-func init*(T: type QPainterPath, h: ptr cQPainterPath): QPainterPath =
+func init*(T: type gen_qpainterpath_types.QPainterPath, h: ptr cQPainterPath): gen_qpainterpath_types.QPainterPath =
   T(h: h)
-proc create*(T: type QPainterPath, ): QPainterPath =
+proc create*(T: type gen_qpainterpath_types.QPainterPath, ): gen_qpainterpath_types.QPainterPath =
 
-  QPainterPath.init(fcQPainterPath_new())
-proc create*(T: type QPainterPath, startPoint: gen_qpoint.QPointF): QPainterPath =
+  gen_qpainterpath_types.QPainterPath.init(fcQPainterPath_new())
+proc create*(T: type gen_qpainterpath_types.QPainterPath, startPoint: gen_qpoint.QPointF): gen_qpainterpath_types.QPainterPath =
 
-  QPainterPath.init(fcQPainterPath_new2(startPoint.h))
-proc create2*(T: type QPainterPath, other: QPainterPath): QPainterPath =
+  gen_qpainterpath_types.QPainterPath.init(fcQPainterPath_new2(startPoint.h))
+proc create2*(T: type gen_qpainterpath_types.QPainterPath, other: gen_qpainterpath_types.QPainterPath): gen_qpainterpath_types.QPainterPath =
 
-  QPainterPath.init(fcQPainterPath_new3(other.h))
-proc operatorAssign*(self: QPainterPath, other: QPainterPath): void =
+  gen_qpainterpath_types.QPainterPath.init(fcQPainterPath_new3(other.h))
+proc operatorAssign*(self: gen_qpainterpath_types.QPainterPath, other: gen_qpainterpath_types.QPainterPath): void =
 
   fcQPainterPath_operatorAssign(self.h, other.h)
 
-proc swap*(self: QPainterPath, other: QPainterPath): void =
+proc swap*(self: gen_qpainterpath_types.QPainterPath, other: gen_qpainterpath_types.QPainterPath): void =
 
   fcQPainterPath_swap(self.h, other.h)
 
-proc clear*(self: QPainterPath, ): void =
+proc clear*(self: gen_qpainterpath_types.QPainterPath, ): void =
 
   fcQPainterPath_clear(self.h)
 
-proc reserve*(self: QPainterPath, size: cint): void =
+proc reserve*(self: gen_qpainterpath_types.QPainterPath, size: cint): void =
 
   fcQPainterPath_reserve(self.h, size)
 
-proc capacity*(self: QPainterPath, ): cint =
+proc capacity*(self: gen_qpainterpath_types.QPainterPath, ): cint =
 
   fcQPainterPath_capacity(self.h)
 
-proc closeSubpath*(self: QPainterPath, ): void =
+proc closeSubpath*(self: gen_qpainterpath_types.QPainterPath, ): void =
 
   fcQPainterPath_closeSubpath(self.h)
 
-proc moveTo*(self: QPainterPath, p: gen_qpoint.QPointF): void =
+proc moveTo*(self: gen_qpainterpath_types.QPainterPath, p: gen_qpoint.QPointF): void =
 
   fcQPainterPath_moveTo(self.h, p.h)
 
-proc moveTo2*(self: QPainterPath, x: float64, y: float64): void =
+proc moveTo2*(self: gen_qpainterpath_types.QPainterPath, x: float64, y: float64): void =
 
   fcQPainterPath_moveTo2(self.h, x, y)
 
-proc lineTo*(self: QPainterPath, p: gen_qpoint.QPointF): void =
+proc lineTo*(self: gen_qpainterpath_types.QPainterPath, p: gen_qpoint.QPointF): void =
 
   fcQPainterPath_lineTo(self.h, p.h)
 
-proc lineTo2*(self: QPainterPath, x: float64, y: float64): void =
+proc lineTo2*(self: gen_qpainterpath_types.QPainterPath, x: float64, y: float64): void =
 
   fcQPainterPath_lineTo2(self.h, x, y)
 
-proc arcMoveTo*(self: QPainterPath, rect: gen_qrect.QRectF, angle: float64): void =
+proc arcMoveTo*(self: gen_qpainterpath_types.QPainterPath, rect: gen_qrect.QRectF, angle: float64): void =
 
   fcQPainterPath_arcMoveTo(self.h, rect.h, angle)
 
-proc arcMoveTo2*(self: QPainterPath, x: float64, y: float64, w: float64, h: float64, angle: float64): void =
+proc arcMoveTo2*(self: gen_qpainterpath_types.QPainterPath, x: float64, y: float64, w: float64, h: float64, angle: float64): void =
 
   fcQPainterPath_arcMoveTo2(self.h, x, y, w, h, angle)
 
-proc arcTo*(self: QPainterPath, rect: gen_qrect.QRectF, startAngle: float64, arcLength: float64): void =
+proc arcTo*(self: gen_qpainterpath_types.QPainterPath, rect: gen_qrect.QRectF, startAngle: float64, arcLength: float64): void =
 
   fcQPainterPath_arcTo(self.h, rect.h, startAngle, arcLength)
 
-proc arcTo2*(self: QPainterPath, x: float64, y: float64, w: float64, h: float64, startAngle: float64, arcLength: float64): void =
+proc arcTo2*(self: gen_qpainterpath_types.QPainterPath, x: float64, y: float64, w: float64, h: float64, startAngle: float64, arcLength: float64): void =
 
   fcQPainterPath_arcTo2(self.h, x, y, w, h, startAngle, arcLength)
 
-proc cubicTo*(self: QPainterPath, ctrlPt1: gen_qpoint.QPointF, ctrlPt2: gen_qpoint.QPointF, endPt: gen_qpoint.QPointF): void =
+proc cubicTo*(self: gen_qpainterpath_types.QPainterPath, ctrlPt1: gen_qpoint.QPointF, ctrlPt2: gen_qpoint.QPointF, endPt: gen_qpoint.QPointF): void =
 
   fcQPainterPath_cubicTo(self.h, ctrlPt1.h, ctrlPt2.h, endPt.h)
 
-proc cubicTo2*(self: QPainterPath, ctrlPt1x: float64, ctrlPt1y: float64, ctrlPt2x: float64, ctrlPt2y: float64, endPtx: float64, endPty: float64): void =
+proc cubicTo2*(self: gen_qpainterpath_types.QPainterPath, ctrlPt1x: float64, ctrlPt1y: float64, ctrlPt2x: float64, ctrlPt2y: float64, endPtx: float64, endPty: float64): void =
 
   fcQPainterPath_cubicTo2(self.h, ctrlPt1x, ctrlPt1y, ctrlPt2x, ctrlPt2y, endPtx, endPty)
 
-proc quadTo*(self: QPainterPath, ctrlPt: gen_qpoint.QPointF, endPt: gen_qpoint.QPointF): void =
+proc quadTo*(self: gen_qpainterpath_types.QPainterPath, ctrlPt: gen_qpoint.QPointF, endPt: gen_qpoint.QPointF): void =
 
   fcQPainterPath_quadTo(self.h, ctrlPt.h, endPt.h)
 
-proc quadTo2*(self: QPainterPath, ctrlPtx: float64, ctrlPty: float64, endPtx: float64, endPty: float64): void =
+proc quadTo2*(self: gen_qpainterpath_types.QPainterPath, ctrlPtx: float64, ctrlPty: float64, endPtx: float64, endPty: float64): void =
 
   fcQPainterPath_quadTo2(self.h, ctrlPtx, ctrlPty, endPtx, endPty)
 
-proc currentPosition*(self: QPainterPath, ): gen_qpoint.QPointF =
+proc currentPosition*(self: gen_qpainterpath_types.QPainterPath, ): gen_qpoint.QPointF =
 
   gen_qpoint.QPointF(h: fcQPainterPath_currentPosition(self.h))
 
-proc addRect*(self: QPainterPath, rect: gen_qrect.QRectF): void =
+proc addRect*(self: gen_qpainterpath_types.QPainterPath, rect: gen_qrect.QRectF): void =
 
   fcQPainterPath_addRect(self.h, rect.h)
 
-proc addRect2*(self: QPainterPath, x: float64, y: float64, w: float64, h: float64): void =
+proc addRect2*(self: gen_qpainterpath_types.QPainterPath, x: float64, y: float64, w: float64, h: float64): void =
 
   fcQPainterPath_addRect2(self.h, x, y, w, h)
 
-proc addEllipse*(self: QPainterPath, rect: gen_qrect.QRectF): void =
+proc addEllipse*(self: gen_qpainterpath_types.QPainterPath, rect: gen_qrect.QRectF): void =
 
   fcQPainterPath_addEllipse(self.h, rect.h)
 
-proc addEllipse2*(self: QPainterPath, x: float64, y: float64, w: float64, h: float64): void =
+proc addEllipse2*(self: gen_qpainterpath_types.QPainterPath, x: float64, y: float64, w: float64, h: float64): void =
 
   fcQPainterPath_addEllipse2(self.h, x, y, w, h)
 
-proc addEllipse3*(self: QPainterPath, center: gen_qpoint.QPointF, rx: float64, ry: float64): void =
+proc addEllipse3*(self: gen_qpainterpath_types.QPainterPath, center: gen_qpoint.QPointF, rx: float64, ry: float64): void =
 
   fcQPainterPath_addEllipse3(self.h, center.h, rx, ry)
 
-proc addText*(self: QPainterPath, point: gen_qpoint.QPointF, f: gen_qfont.QFont, text: string): void =
+proc addText*(self: gen_qpainterpath_types.QPainterPath, point: gen_qpoint.QPointF, f: gen_qfont.QFont, text: string): void =
 
   fcQPainterPath_addText(self.h, point.h, f.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
-proc addText2*(self: QPainterPath, x: float64, y: float64, f: gen_qfont.QFont, text: string): void =
+proc addText2*(self: gen_qpainterpath_types.QPainterPath, x: float64, y: float64, f: gen_qfont.QFont, text: string): void =
 
   fcQPainterPath_addText2(self.h, x, y, f.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
-proc addPath*(self: QPainterPath, path: QPainterPath): void =
+proc addPath*(self: gen_qpainterpath_types.QPainterPath, path: gen_qpainterpath_types.QPainterPath): void =
 
   fcQPainterPath_addPath(self.h, path.h)
 
-proc addRegion*(self: QPainterPath, region: gen_qregion.QRegion): void =
+proc addRegion*(self: gen_qpainterpath_types.QPainterPath, region: gen_qregion.QRegion): void =
 
   fcQPainterPath_addRegion(self.h, region.h)
 
-proc addRoundedRect*(self: QPainterPath, rect: gen_qrect.QRectF, xRadius: float64, yRadius: float64): void =
+proc addRoundedRect*(self: gen_qpainterpath_types.QPainterPath, rect: gen_qrect.QRectF, xRadius: float64, yRadius: float64): void =
 
   fcQPainterPath_addRoundedRect(self.h, rect.h, xRadius, yRadius)
 
-proc addRoundedRect2*(self: QPainterPath, x: float64, y: float64, w: float64, h: float64, xRadius: float64, yRadius: float64): void =
+proc addRoundedRect2*(self: gen_qpainterpath_types.QPainterPath, x: float64, y: float64, w: float64, h: float64, xRadius: float64, yRadius: float64): void =
 
   fcQPainterPath_addRoundedRect2(self.h, x, y, w, h, xRadius, yRadius)
 
-proc addRoundRect*(self: QPainterPath, rect: gen_qrect.QRectF, xRnd: cint, yRnd: cint): void =
+proc addRoundRect*(self: gen_qpainterpath_types.QPainterPath, rect: gen_qrect.QRectF, xRnd: cint, yRnd: cint): void =
 
   fcQPainterPath_addRoundRect(self.h, rect.h, xRnd, yRnd)
 
-proc addRoundRect2*(self: QPainterPath, x: float64, y: float64, w: float64, h: float64, xRnd: cint, yRnd: cint): void =
+proc addRoundRect2*(self: gen_qpainterpath_types.QPainterPath, x: float64, y: float64, w: float64, h: float64, xRnd: cint, yRnd: cint): void =
 
   fcQPainterPath_addRoundRect2(self.h, x, y, w, h, xRnd, yRnd)
 
-proc addRoundRect3*(self: QPainterPath, rect: gen_qrect.QRectF, roundness: cint): void =
+proc addRoundRect3*(self: gen_qpainterpath_types.QPainterPath, rect: gen_qrect.QRectF, roundness: cint): void =
 
   fcQPainterPath_addRoundRect3(self.h, rect.h, roundness)
 
-proc addRoundRect4*(self: QPainterPath, x: float64, y: float64, w: float64, h: float64, roundness: cint): void =
+proc addRoundRect4*(self: gen_qpainterpath_types.QPainterPath, x: float64, y: float64, w: float64, h: float64, roundness: cint): void =
 
   fcQPainterPath_addRoundRect4(self.h, x, y, w, h, roundness)
 
-proc connectPath*(self: QPainterPath, path: QPainterPath): void =
+proc connectPath*(self: gen_qpainterpath_types.QPainterPath, path: gen_qpainterpath_types.QPainterPath): void =
 
   fcQPainterPath_connectPath(self.h, path.h)
 
-proc contains*(self: QPainterPath, pt: gen_qpoint.QPointF): bool =
+proc contains*(self: gen_qpainterpath_types.QPainterPath, pt: gen_qpoint.QPointF): bool =
 
   fcQPainterPath_contains(self.h, pt.h)
 
-proc containsWithRect*(self: QPainterPath, rect: gen_qrect.QRectF): bool =
+proc containsWithRect*(self: gen_qpainterpath_types.QPainterPath, rect: gen_qrect.QRectF): bool =
 
   fcQPainterPath_containsWithRect(self.h, rect.h)
 
-proc intersects*(self: QPainterPath, rect: gen_qrect.QRectF): bool =
+proc intersects*(self: gen_qpainterpath_types.QPainterPath, rect: gen_qrect.QRectF): bool =
 
   fcQPainterPath_intersects(self.h, rect.h)
 
-proc translate*(self: QPainterPath, dx: float64, dy: float64): void =
+proc translate*(self: gen_qpainterpath_types.QPainterPath, dx: float64, dy: float64): void =
 
   fcQPainterPath_translate(self.h, dx, dy)
 
-proc translateWithOffset*(self: QPainterPath, offset: gen_qpoint.QPointF): void =
+proc translateWithOffset*(self: gen_qpainterpath_types.QPainterPath, offset: gen_qpoint.QPointF): void =
 
   fcQPainterPath_translateWithOffset(self.h, offset.h)
 
-proc translated*(self: QPainterPath, dx: float64, dy: float64): QPainterPath =
+proc translated*(self: gen_qpainterpath_types.QPainterPath, dx: float64, dy: float64): gen_qpainterpath_types.QPainterPath =
 
-  QPainterPath(h: fcQPainterPath_translated(self.h, dx, dy))
+  gen_qpainterpath_types.QPainterPath(h: fcQPainterPath_translated(self.h, dx, dy))
 
-proc translatedWithOffset*(self: QPainterPath, offset: gen_qpoint.QPointF): QPainterPath =
+proc translatedWithOffset*(self: gen_qpainterpath_types.QPainterPath, offset: gen_qpoint.QPointF): gen_qpainterpath_types.QPainterPath =
 
-  QPainterPath(h: fcQPainterPath_translatedWithOffset(self.h, offset.h))
+  gen_qpainterpath_types.QPainterPath(h: fcQPainterPath_translatedWithOffset(self.h, offset.h))
 
-proc boundingRect*(self: QPainterPath, ): gen_qrect.QRectF =
+proc boundingRect*(self: gen_qpainterpath_types.QPainterPath, ): gen_qrect.QRectF =
 
   gen_qrect.QRectF(h: fcQPainterPath_boundingRect(self.h))
 
-proc controlPointRect*(self: QPainterPath, ): gen_qrect.QRectF =
+proc controlPointRect*(self: gen_qpainterpath_types.QPainterPath, ): gen_qrect.QRectF =
 
   gen_qrect.QRectF(h: fcQPainterPath_controlPointRect(self.h))
 
-proc fillRule*(self: QPainterPath, ): gen_qnamespace.FillRule =
+proc fillRule*(self: gen_qpainterpath_types.QPainterPath, ): cint =
 
-  gen_qnamespace.FillRule(fcQPainterPath_fillRule(self.h))
+  cint(fcQPainterPath_fillRule(self.h))
 
-proc setFillRule*(self: QPainterPath, fillRule: gen_qnamespace.FillRule): void =
+proc setFillRule*(self: gen_qpainterpath_types.QPainterPath, fillRule: cint): void =
 
   fcQPainterPath_setFillRule(self.h, cint(fillRule))
 
-proc isEmpty*(self: QPainterPath, ): bool =
+proc isEmpty*(self: gen_qpainterpath_types.QPainterPath, ): bool =
 
   fcQPainterPath_isEmpty(self.h)
 
-proc toReversed*(self: QPainterPath, ): QPainterPath =
+proc toReversed*(self: gen_qpainterpath_types.QPainterPath, ): gen_qpainterpath_types.QPainterPath =
 
-  QPainterPath(h: fcQPainterPath_toReversed(self.h))
+  gen_qpainterpath_types.QPainterPath(h: fcQPainterPath_toReversed(self.h))
 
-proc elementCount*(self: QPainterPath, ): cint =
+proc elementCount*(self: gen_qpainterpath_types.QPainterPath, ): cint =
 
   fcQPainterPath_elementCount(self.h)
 
-proc elementAt*(self: QPainterPath, i: cint): QPainterPathElement =
+proc elementAt*(self: gen_qpainterpath_types.QPainterPath, i: cint): gen_qpainterpath_types.QPainterPathElement =
 
-  QPainterPathElement(h: fcQPainterPath_elementAt(self.h, i))
+  gen_qpainterpath_types.QPainterPathElement(h: fcQPainterPath_elementAt(self.h, i))
 
-proc setElementPositionAt*(self: QPainterPath, i: cint, x: float64, y: float64): void =
+proc setElementPositionAt*(self: gen_qpainterpath_types.QPainterPath, i: cint, x: float64, y: float64): void =
 
   fcQPainterPath_setElementPositionAt(self.h, i, x, y)
 
-proc length*(self: QPainterPath, ): float64 =
+proc length*(self: gen_qpainterpath_types.QPainterPath, ): float64 =
 
   fcQPainterPath_length(self.h)
 
-proc percentAtLength*(self: QPainterPath, t: float64): float64 =
+proc percentAtLength*(self: gen_qpainterpath_types.QPainterPath, t: float64): float64 =
 
   fcQPainterPath_percentAtLength(self.h, t)
 
-proc pointAtPercent*(self: QPainterPath, t: float64): gen_qpoint.QPointF =
+proc pointAtPercent*(self: gen_qpainterpath_types.QPainterPath, t: float64): gen_qpoint.QPointF =
 
   gen_qpoint.QPointF(h: fcQPainterPath_pointAtPercent(self.h, t))
 
-proc angleAtPercent*(self: QPainterPath, t: float64): float64 =
+proc angleAtPercent*(self: gen_qpainterpath_types.QPainterPath, t: float64): float64 =
 
   fcQPainterPath_angleAtPercent(self.h, t)
 
-proc slopeAtPercent*(self: QPainterPath, t: float64): float64 =
+proc slopeAtPercent*(self: gen_qpainterpath_types.QPainterPath, t: float64): float64 =
 
   fcQPainterPath_slopeAtPercent(self.h, t)
 
-proc intersectsWithQPainterPath*(self: QPainterPath, p: QPainterPath): bool =
+proc intersectsWithQPainterPath*(self: gen_qpainterpath_types.QPainterPath, p: gen_qpainterpath_types.QPainterPath): bool =
 
   fcQPainterPath_intersectsWithQPainterPath(self.h, p.h)
 
-proc containsWithQPainterPath*(self: QPainterPath, p: QPainterPath): bool =
+proc containsWithQPainterPath*(self: gen_qpainterpath_types.QPainterPath, p: gen_qpainterpath_types.QPainterPath): bool =
 
   fcQPainterPath_containsWithQPainterPath(self.h, p.h)
 
-proc united*(self: QPainterPath, r: QPainterPath): QPainterPath =
+proc united*(self: gen_qpainterpath_types.QPainterPath, r: gen_qpainterpath_types.QPainterPath): gen_qpainterpath_types.QPainterPath =
 
-  QPainterPath(h: fcQPainterPath_united(self.h, r.h))
+  gen_qpainterpath_types.QPainterPath(h: fcQPainterPath_united(self.h, r.h))
 
-proc intersected*(self: QPainterPath, r: QPainterPath): QPainterPath =
+proc intersected*(self: gen_qpainterpath_types.QPainterPath, r: gen_qpainterpath_types.QPainterPath): gen_qpainterpath_types.QPainterPath =
 
-  QPainterPath(h: fcQPainterPath_intersected(self.h, r.h))
+  gen_qpainterpath_types.QPainterPath(h: fcQPainterPath_intersected(self.h, r.h))
 
-proc subtracted*(self: QPainterPath, r: QPainterPath): QPainterPath =
+proc subtracted*(self: gen_qpainterpath_types.QPainterPath, r: gen_qpainterpath_types.QPainterPath): gen_qpainterpath_types.QPainterPath =
 
-  QPainterPath(h: fcQPainterPath_subtracted(self.h, r.h))
+  gen_qpainterpath_types.QPainterPath(h: fcQPainterPath_subtracted(self.h, r.h))
 
-proc subtractedInverted*(self: QPainterPath, r: QPainterPath): QPainterPath =
+proc subtractedInverted*(self: gen_qpainterpath_types.QPainterPath, r: gen_qpainterpath_types.QPainterPath): gen_qpainterpath_types.QPainterPath =
 
-  QPainterPath(h: fcQPainterPath_subtractedInverted(self.h, r.h))
+  gen_qpainterpath_types.QPainterPath(h: fcQPainterPath_subtractedInverted(self.h, r.h))
 
-proc simplified*(self: QPainterPath, ): QPainterPath =
+proc simplified*(self: gen_qpainterpath_types.QPainterPath, ): gen_qpainterpath_types.QPainterPath =
 
-  QPainterPath(h: fcQPainterPath_simplified(self.h))
+  gen_qpainterpath_types.QPainterPath(h: fcQPainterPath_simplified(self.h))
 
-proc operatorEqual*(self: QPainterPath, other: QPainterPath): bool =
+proc operatorEqual*(self: gen_qpainterpath_types.QPainterPath, other: gen_qpainterpath_types.QPainterPath): bool =
 
   fcQPainterPath_operatorEqual(self.h, other.h)
 
-proc operatorNotEqual*(self: QPainterPath, other: QPainterPath): bool =
+proc operatorNotEqual*(self: gen_qpainterpath_types.QPainterPath, other: gen_qpainterpath_types.QPainterPath): bool =
 
   fcQPainterPath_operatorNotEqual(self.h, other.h)
 
-proc operatorBitwiseAnd*(self: QPainterPath, other: QPainterPath): QPainterPath =
+proc operatorBitwiseAnd*(self: gen_qpainterpath_types.QPainterPath, other: gen_qpainterpath_types.QPainterPath): gen_qpainterpath_types.QPainterPath =
 
-  QPainterPath(h: fcQPainterPath_operatorBitwiseAnd(self.h, other.h))
+  gen_qpainterpath_types.QPainterPath(h: fcQPainterPath_operatorBitwiseAnd(self.h, other.h))
 
-proc operatorBitwiseOr*(self: QPainterPath, other: QPainterPath): QPainterPath =
+proc operatorBitwiseOr*(self: gen_qpainterpath_types.QPainterPath, other: gen_qpainterpath_types.QPainterPath): gen_qpainterpath_types.QPainterPath =
 
-  QPainterPath(h: fcQPainterPath_operatorBitwiseOr(self.h, other.h))
+  gen_qpainterpath_types.QPainterPath(h: fcQPainterPath_operatorBitwiseOr(self.h, other.h))
 
-proc operatorPlus*(self: QPainterPath, other: QPainterPath): QPainterPath =
+proc operatorPlus*(self: gen_qpainterpath_types.QPainterPath, other: gen_qpainterpath_types.QPainterPath): gen_qpainterpath_types.QPainterPath =
 
-  QPainterPath(h: fcQPainterPath_operatorPlus(self.h, other.h))
+  gen_qpainterpath_types.QPainterPath(h: fcQPainterPath_operatorPlus(self.h, other.h))
 
-proc operatorMinus*(self: QPainterPath, other: QPainterPath): QPainterPath =
+proc operatorMinus*(self: gen_qpainterpath_types.QPainterPath, other: gen_qpainterpath_types.QPainterPath): gen_qpainterpath_types.QPainterPath =
 
-  QPainterPath(h: fcQPainterPath_operatorMinus(self.h, other.h))
+  gen_qpainterpath_types.QPainterPath(h: fcQPainterPath_operatorMinus(self.h, other.h))
 
-proc operatorBitwiseAndAssign*(self: QPainterPath, other: QPainterPath): void =
+proc operatorBitwiseAndAssign*(self: gen_qpainterpath_types.QPainterPath, other: gen_qpainterpath_types.QPainterPath): void =
 
   fcQPainterPath_operatorBitwiseAndAssign(self.h, other.h)
 
-proc operatorBitwiseOrAssign*(self: QPainterPath, other: QPainterPath): void =
+proc operatorBitwiseOrAssign*(self: gen_qpainterpath_types.QPainterPath, other: gen_qpainterpath_types.QPainterPath): void =
 
   fcQPainterPath_operatorBitwiseOrAssign(self.h, other.h)
 
-proc operatorPlusAssign*(self: QPainterPath, other: QPainterPath): QPainterPath =
+proc operatorPlusAssign*(self: gen_qpainterpath_types.QPainterPath, other: gen_qpainterpath_types.QPainterPath): gen_qpainterpath_types.QPainterPath =
 
-  QPainterPath(h: fcQPainterPath_operatorPlusAssign(self.h, other.h))
+  gen_qpainterpath_types.QPainterPath(h: fcQPainterPath_operatorPlusAssign(self.h, other.h))
 
-proc operatorMinusAssign*(self: QPainterPath, other: QPainterPath): QPainterPath =
+proc operatorMinusAssign*(self: gen_qpainterpath_types.QPainterPath, other: gen_qpainterpath_types.QPainterPath): gen_qpainterpath_types.QPainterPath =
 
-  QPainterPath(h: fcQPainterPath_operatorMinusAssign(self.h, other.h))
+  gen_qpainterpath_types.QPainterPath(h: fcQPainterPath_operatorMinusAssign(self.h, other.h))
 
-proc addRoundedRect4*(self: QPainterPath, rect: gen_qrect.QRectF, xRadius: float64, yRadius: float64, mode: gen_qnamespace.SizeMode): void =
+proc addRoundedRect4*(self: gen_qpainterpath_types.QPainterPath, rect: gen_qrect.QRectF, xRadius: float64, yRadius: float64, mode: cint): void =
 
   fcQPainterPath_addRoundedRect4(self.h, rect.h, xRadius, yRadius, cint(mode))
 
-proc addRoundedRect7*(self: QPainterPath, x: float64, y: float64, w: float64, h: float64, xRadius: float64, yRadius: float64, mode: gen_qnamespace.SizeMode): void =
+proc addRoundedRect7*(self: gen_qpainterpath_types.QPainterPath, x: float64, y: float64, w: float64, h: float64, xRadius: float64, yRadius: float64, mode: cint): void =
 
   fcQPainterPath_addRoundedRect7(self.h, x, y, w, h, xRadius, yRadius, cint(mode))
 
-proc delete*(self: QPainterPath) =
+proc delete*(self: gen_qpainterpath_types.QPainterPath) =
   fcQPainterPath_delete(self.h)
 
-func init*(T: type QPainterPathStroker, h: ptr cQPainterPathStroker): QPainterPathStroker =
+func init*(T: type gen_qpainterpath_types.QPainterPathStroker, h: ptr cQPainterPathStroker): gen_qpainterpath_types.QPainterPathStroker =
   T(h: h)
-proc create*(T: type QPainterPathStroker, ): QPainterPathStroker =
+proc create*(T: type gen_qpainterpath_types.QPainterPathStroker, ): gen_qpainterpath_types.QPainterPathStroker =
 
-  QPainterPathStroker.init(fcQPainterPathStroker_new())
-proc create*(T: type QPainterPathStroker, pen: gen_qpen.QPen): QPainterPathStroker =
+  gen_qpainterpath_types.QPainterPathStroker.init(fcQPainterPathStroker_new())
+proc create*(T: type gen_qpainterpath_types.QPainterPathStroker, pen: gen_qpen.QPen): gen_qpainterpath_types.QPainterPathStroker =
 
-  QPainterPathStroker.init(fcQPainterPathStroker_new2(pen.h))
-proc setWidth*(self: QPainterPathStroker, width: float64): void =
+  gen_qpainterpath_types.QPainterPathStroker.init(fcQPainterPathStroker_new2(pen.h))
+proc setWidth*(self: gen_qpainterpath_types.QPainterPathStroker, width: float64): void =
 
   fcQPainterPathStroker_setWidth(self.h, width)
 
-proc width*(self: QPainterPathStroker, ): float64 =
+proc width*(self: gen_qpainterpath_types.QPainterPathStroker, ): float64 =
 
   fcQPainterPathStroker_width(self.h)
 
-proc setCapStyle*(self: QPainterPathStroker, style: gen_qnamespace.PenCapStyle): void =
+proc setCapStyle*(self: gen_qpainterpath_types.QPainterPathStroker, style: cint): void =
 
   fcQPainterPathStroker_setCapStyle(self.h, cint(style))
 
-proc capStyle*(self: QPainterPathStroker, ): gen_qnamespace.PenCapStyle =
+proc capStyle*(self: gen_qpainterpath_types.QPainterPathStroker, ): cint =
 
-  gen_qnamespace.PenCapStyle(fcQPainterPathStroker_capStyle(self.h))
+  cint(fcQPainterPathStroker_capStyle(self.h))
 
-proc setJoinStyle*(self: QPainterPathStroker, style: gen_qnamespace.PenJoinStyle): void =
+proc setJoinStyle*(self: gen_qpainterpath_types.QPainterPathStroker, style: cint): void =
 
   fcQPainterPathStroker_setJoinStyle(self.h, cint(style))
 
-proc joinStyle*(self: QPainterPathStroker, ): gen_qnamespace.PenJoinStyle =
+proc joinStyle*(self: gen_qpainterpath_types.QPainterPathStroker, ): cint =
 
-  gen_qnamespace.PenJoinStyle(fcQPainterPathStroker_joinStyle(self.h))
+  cint(fcQPainterPathStroker_joinStyle(self.h))
 
-proc setMiterLimit*(self: QPainterPathStroker, length: float64): void =
+proc setMiterLimit*(self: gen_qpainterpath_types.QPainterPathStroker, length: float64): void =
 
   fcQPainterPathStroker_setMiterLimit(self.h, length)
 
-proc miterLimit*(self: QPainterPathStroker, ): float64 =
+proc miterLimit*(self: gen_qpainterpath_types.QPainterPathStroker, ): float64 =
 
   fcQPainterPathStroker_miterLimit(self.h)
 
-proc setCurveThreshold*(self: QPainterPathStroker, threshold: float64): void =
+proc setCurveThreshold*(self: gen_qpainterpath_types.QPainterPathStroker, threshold: float64): void =
 
   fcQPainterPathStroker_setCurveThreshold(self.h, threshold)
 
-proc curveThreshold*(self: QPainterPathStroker, ): float64 =
+proc curveThreshold*(self: gen_qpainterpath_types.QPainterPathStroker, ): float64 =
 
   fcQPainterPathStroker_curveThreshold(self.h)
 
-proc setDashPattern*(self: QPainterPathStroker, dashPattern: gen_qnamespace.PenStyle): void =
+proc setDashPattern*(self: gen_qpainterpath_types.QPainterPathStroker, dashPattern: cint): void =
 
   fcQPainterPathStroker_setDashPattern(self.h, cint(dashPattern))
 
-proc setDashPatternWithDashPattern*(self: QPainterPathStroker, dashPattern: seq[float64]): void =
+proc setDashPatternWithDashPattern*(self: gen_qpainterpath_types.QPainterPathStroker, dashPattern: seq[float64]): void =
 
   var dashPattern_CArray = newSeq[float64](len(dashPattern))
   for i in 0..<len(dashPattern):
@@ -546,7 +542,7 @@ proc setDashPatternWithDashPattern*(self: QPainterPathStroker, dashPattern: seq[
 
   fcQPainterPathStroker_setDashPatternWithDashPattern(self.h, struct_miqt_array(len: csize_t(len(dashPattern)), data: if len(dashPattern) == 0: nil else: addr(dashPattern_CArray[0])))
 
-proc dashPattern*(self: QPainterPathStroker, ): seq[float64] =
+proc dashPattern*(self: gen_qpainterpath_types.QPainterPathStroker, ): seq[float64] =
 
   var v_ma = fcQPainterPathStroker_dashPattern(self.h)
   var vx_ret = newSeq[float64](int(v_ma.len))
@@ -555,46 +551,46 @@ proc dashPattern*(self: QPainterPathStroker, ): seq[float64] =
     vx_ret[i] = v_outCast[i]
   vx_ret
 
-proc setDashOffset*(self: QPainterPathStroker, offset: float64): void =
+proc setDashOffset*(self: gen_qpainterpath_types.QPainterPathStroker, offset: float64): void =
 
   fcQPainterPathStroker_setDashOffset(self.h, offset)
 
-proc dashOffset*(self: QPainterPathStroker, ): float64 =
+proc dashOffset*(self: gen_qpainterpath_types.QPainterPathStroker, ): float64 =
 
   fcQPainterPathStroker_dashOffset(self.h)
 
-proc createStroke*(self: QPainterPathStroker, path: QPainterPath): QPainterPath =
+proc createStroke*(self: gen_qpainterpath_types.QPainterPathStroker, path: gen_qpainterpath_types.QPainterPath): gen_qpainterpath_types.QPainterPath =
 
-  QPainterPath(h: fcQPainterPathStroker_createStroke(self.h, path.h))
+  gen_qpainterpath_types.QPainterPath(h: fcQPainterPathStroker_createStroke(self.h, path.h))
 
-proc delete*(self: QPainterPathStroker) =
+proc delete*(self: gen_qpainterpath_types.QPainterPathStroker) =
   fcQPainterPathStroker_delete(self.h)
 
-func init*(T: type QPainterPathElement, h: ptr cQPainterPathElement): QPainterPathElement =
+func init*(T: type gen_qpainterpath_types.QPainterPathElement, h: ptr cQPainterPathElement): gen_qpainterpath_types.QPainterPathElement =
   T(h: h)
-proc isMoveTo*(self: QPainterPathElement, ): bool =
+proc isMoveTo*(self: gen_qpainterpath_types.QPainterPathElement, ): bool =
 
   fcQPainterPathElement_isMoveTo(self.h)
 
-proc isLineTo*(self: QPainterPathElement, ): bool =
+proc isLineTo*(self: gen_qpainterpath_types.QPainterPathElement, ): bool =
 
   fcQPainterPathElement_isLineTo(self.h)
 
-proc isCurveTo*(self: QPainterPathElement, ): bool =
+proc isCurveTo*(self: gen_qpainterpath_types.QPainterPathElement, ): bool =
 
   fcQPainterPathElement_isCurveTo(self.h)
 
-proc ToQPointF*(self: QPainterPathElement, ): gen_qpoint.QPointF =
+proc ToQPointF*(self: gen_qpainterpath_types.QPainterPathElement, ): gen_qpoint.QPointF =
 
   gen_qpoint.QPointF(h: fcQPainterPathElement_ToQPointF(self.h))
 
-proc operatorEqual*(self: QPainterPathElement, e: QPainterPathElement): bool =
+proc operatorEqual*(self: gen_qpainterpath_types.QPainterPathElement, e: gen_qpainterpath_types.QPainterPathElement): bool =
 
   fcQPainterPathElement_operatorEqual(self.h, e.h)
 
-proc operatorNotEqual*(self: QPainterPathElement, e: QPainterPathElement): bool =
+proc operatorNotEqual*(self: gen_qpainterpath_types.QPainterPathElement, e: gen_qpainterpath_types.QPainterPathElement): bool =
 
   fcQPainterPathElement_operatorNotEqual(self.h, e.h)
 
-proc delete*(self: QPainterPathElement) =
+proc delete*(self: gen_qpainterpath_types.QPainterPathElement) =
   fcQPainterPathElement_delete(self.h)

@@ -555,7 +555,7 @@ func (this *QSortFilterProxyModel) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QSortFilterProxyModel_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QSortFilterProxyModel) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QSortFilterProxyModel) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QSortFilterProxyModel_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -582,7 +582,7 @@ func (this *QSortFilterProxyModel) callVirtualBase_Metacast(param1 string) unsaf
 	return (unsafe.Pointer)(C.QSortFilterProxyModel_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QSortFilterProxyModel) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QSortFilterProxyModel) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QSortFilterProxyModel_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

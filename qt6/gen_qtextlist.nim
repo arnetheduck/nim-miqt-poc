@@ -102,397 +102,332 @@ proc fcQTextList_staticMetaObject(): pointer {.importc: "QTextList_staticMetaObj
 proc fcQTextList_delete(self: pointer) {.importc: "QTextList_delete".}
 
 
-func init*(T: type QTextList, h: ptr cQTextList): QTextList =
+func init*(T: type gen_qtextlist_types.QTextList, h: ptr cQTextList): gen_qtextlist_types.QTextList =
   T(h: h)
-proc create*(T: type QTextList, doc: gen_qtextdocument.QTextDocument): QTextList =
+proc create*(T: type gen_qtextlist_types.QTextList, doc: gen_qtextdocument.QTextDocument): gen_qtextlist_types.QTextList =
 
-  QTextList.init(fcQTextList_new(doc.h))
-proc metaObject*(self: QTextList, ): gen_qobjectdefs.QMetaObject =
+  gen_qtextlist_types.QTextList.init(fcQTextList_new(doc.h))
+proc metaObject*(self: gen_qtextlist_types.QTextList, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQTextList_metaObject(self.h))
 
-proc metacast*(self: QTextList, param1: cstring): pointer =
+proc metacast*(self: gen_qtextlist_types.QTextList, param1: cstring): pointer =
 
   fcQTextList_metacast(self.h, param1)
 
-proc metacall*(self: QTextList, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qtextlist_types.QTextList, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQTextList_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QTextList, s: cstring): string =
+proc tr*(_: type gen_qtextlist_types.QTextList, s: cstring): string =
 
   let v_ms = fcQTextList_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc count*(self: QTextList, ): cint =
+proc count*(self: gen_qtextlist_types.QTextList, ): cint =
 
   fcQTextList_count(self.h)
 
-proc item*(self: QTextList, i: cint): gen_qtextobject.QTextBlock =
+proc item*(self: gen_qtextlist_types.QTextList, i: cint): gen_qtextobject.QTextBlock =
 
   gen_qtextobject.QTextBlock(h: fcQTextList_item(self.h, i))
 
-proc itemNumber*(self: QTextList, param1: gen_qtextobject.QTextBlock): cint =
+proc itemNumber*(self: gen_qtextlist_types.QTextList, param1: gen_qtextobject.QTextBlock): cint =
 
   fcQTextList_itemNumber(self.h, param1.h)
 
-proc itemText*(self: QTextList, param1: gen_qtextobject.QTextBlock): string =
+proc itemText*(self: gen_qtextlist_types.QTextList, param1: gen_qtextobject.QTextBlock): string =
 
   let v_ms = fcQTextList_itemText(self.h, param1.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc removeItem*(self: QTextList, i: cint): void =
+proc removeItem*(self: gen_qtextlist_types.QTextList, i: cint): void =
 
   fcQTextList_removeItem(self.h, i)
 
-proc remove*(self: QTextList, param1: gen_qtextobject.QTextBlock): void =
+proc remove*(self: gen_qtextlist_types.QTextList, param1: gen_qtextobject.QTextBlock): void =
 
   fcQTextList_remove(self.h, param1.h)
 
-proc add*(self: QTextList, blockVal: gen_qtextobject.QTextBlock): void =
+proc add*(self: gen_qtextlist_types.QTextList, blockVal: gen_qtextobject.QTextBlock): void =
 
   fcQTextList_add(self.h, blockVal.h)
 
-proc setFormat*(self: QTextList, format: gen_qtextformat.QTextListFormat): void =
+proc setFormat*(self: gen_qtextlist_types.QTextList, format: gen_qtextformat.QTextListFormat): void =
 
   fcQTextList_setFormat(self.h, format.h)
 
-proc format*(self: QTextList, ): gen_qtextformat.QTextListFormat =
+proc format*(self: gen_qtextlist_types.QTextList, ): gen_qtextformat.QTextListFormat =
 
   gen_qtextformat.QTextListFormat(h: fcQTextList_format(self.h))
 
-proc tr2*(_: type QTextList, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qtextlist_types.QTextList, s: cstring, c: cstring): string =
 
   let v_ms = fcQTextList_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QTextList, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qtextlist_types.QTextList, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQTextList_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QTextList, ): gen_qobjectdefs.QMetaObject =
-
+proc QTextListmetaObject*(self: gen_qtextlist_types.QTextList, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQTextList_virtualbase_metaObject(self.h))
 
-type QTextListmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QTextList, slot: proc(super: QTextListmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QTextListmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qtextlist_types.QTextList, slot: QTextListmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QTextListmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QTextListmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTextList_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTextList_metaObject(self: ptr cQTextList, slot: int): pointer {.exportc: "miqt_exec_callback_QTextList_metaObject ".} =
-  type Cb = proc(super: QTextListmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QTextList(h: self), )
+  var nimfunc = cast[ptr QTextListmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QTextList, param1: cstring): pointer =
-
+proc QTextListmetacast*(self: gen_qtextlist_types.QTextList, param1: cstring): pointer =
 
   fQTextList_virtualbase_metacast(self.h, param1)
 
-type QTextListmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QTextList, slot: proc(super: QTextListmetacastBase, param1: cstring): pointer) =
+type QTextListmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qtextlist_types.QTextList, slot: QTextListmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QTextListmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QTextListmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTextList_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTextList_metacast(self: ptr cQTextList, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QTextList_metacast ".} =
-  type Cb = proc(super: QTextListmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QTextList(h: self), param1)
+  var nimfunc = cast[ptr QTextListmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QTextList, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QTextListmetacall*(self: gen_qtextlist_types.QTextList, param1: cint, param2: cint, param3: pointer): cint =
 
   fQTextList_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QTextListmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QTextList, slot: proc(super: QTextListmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QTextListmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qtextlist_types.QTextList, slot: QTextListmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QTextListmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QTextListmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTextList_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTextList_metacall(self: ptr cQTextList, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QTextList_metacall ".} =
-  type Cb = proc(super: QTextListmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QTextList(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QTextListmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_blockInserted(self: QTextList, blockVal: gen_qtextobject.QTextBlock): void =
-
+proc QTextListblockInserted*(self: gen_qtextlist_types.QTextList, blockVal: gen_qtextobject.QTextBlock): void =
 
   fQTextList_virtualbase_blockInserted(self.h, blockVal.h)
 
-type QTextListblockInsertedBase* = proc(blockVal: gen_qtextobject.QTextBlock): void
-proc onblockInserted*(self: QTextList, slot: proc(super: QTextListblockInsertedBase, blockVal: gen_qtextobject.QTextBlock): void) =
+type QTextListblockInsertedProc* = proc(blockVal: gen_qtextobject.QTextBlock): void
+proc onblockInserted*(self: gen_qtextlist_types.QTextList, slot: QTextListblockInsertedProc) =
   # TODO check subclass
-  type Cb = proc(super: QTextListblockInsertedBase, blockVal: gen_qtextobject.QTextBlock): void
-  var tmp = new Cb
+  var tmp = new QTextListblockInsertedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTextList_override_virtual_blockInserted(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTextList_blockInserted(self: ptr cQTextList, slot: int, blockVal: pointer): void {.exportc: "miqt_exec_callback_QTextList_blockInserted ".} =
-  type Cb = proc(super: QTextListblockInsertedBase, blockVal: gen_qtextobject.QTextBlock): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(blockVal: gen_qtextobject.QTextBlock): auto =
-    callVirtualBase_blockInserted(QTextList(h: self), blockVal)
+  var nimfunc = cast[ptr QTextListblockInsertedProc](cast[pointer](slot))
   let slotval1 = gen_qtextobject.QTextBlock(h: blockVal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_blockRemoved(self: QTextList, blockVal: gen_qtextobject.QTextBlock): void =
-
+  nimfunc[](slotval1)
+proc QTextListblockRemoved*(self: gen_qtextlist_types.QTextList, blockVal: gen_qtextobject.QTextBlock): void =
 
   fQTextList_virtualbase_blockRemoved(self.h, blockVal.h)
 
-type QTextListblockRemovedBase* = proc(blockVal: gen_qtextobject.QTextBlock): void
-proc onblockRemoved*(self: QTextList, slot: proc(super: QTextListblockRemovedBase, blockVal: gen_qtextobject.QTextBlock): void) =
+type QTextListblockRemovedProc* = proc(blockVal: gen_qtextobject.QTextBlock): void
+proc onblockRemoved*(self: gen_qtextlist_types.QTextList, slot: QTextListblockRemovedProc) =
   # TODO check subclass
-  type Cb = proc(super: QTextListblockRemovedBase, blockVal: gen_qtextobject.QTextBlock): void
-  var tmp = new Cb
+  var tmp = new QTextListblockRemovedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTextList_override_virtual_blockRemoved(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTextList_blockRemoved(self: ptr cQTextList, slot: int, blockVal: pointer): void {.exportc: "miqt_exec_callback_QTextList_blockRemoved ".} =
-  type Cb = proc(super: QTextListblockRemovedBase, blockVal: gen_qtextobject.QTextBlock): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(blockVal: gen_qtextobject.QTextBlock): auto =
-    callVirtualBase_blockRemoved(QTextList(h: self), blockVal)
+  var nimfunc = cast[ptr QTextListblockRemovedProc](cast[pointer](slot))
   let slotval1 = gen_qtextobject.QTextBlock(h: blockVal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_blockFormatChanged(self: QTextList, blockVal: gen_qtextobject.QTextBlock): void =
-
+  nimfunc[](slotval1)
+proc QTextListblockFormatChanged*(self: gen_qtextlist_types.QTextList, blockVal: gen_qtextobject.QTextBlock): void =
 
   fQTextList_virtualbase_blockFormatChanged(self.h, blockVal.h)
 
-type QTextListblockFormatChangedBase* = proc(blockVal: gen_qtextobject.QTextBlock): void
-proc onblockFormatChanged*(self: QTextList, slot: proc(super: QTextListblockFormatChangedBase, blockVal: gen_qtextobject.QTextBlock): void) =
+type QTextListblockFormatChangedProc* = proc(blockVal: gen_qtextobject.QTextBlock): void
+proc onblockFormatChanged*(self: gen_qtextlist_types.QTextList, slot: QTextListblockFormatChangedProc) =
   # TODO check subclass
-  type Cb = proc(super: QTextListblockFormatChangedBase, blockVal: gen_qtextobject.QTextBlock): void
-  var tmp = new Cb
+  var tmp = new QTextListblockFormatChangedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTextList_override_virtual_blockFormatChanged(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTextList_blockFormatChanged(self: ptr cQTextList, slot: int, blockVal: pointer): void {.exportc: "miqt_exec_callback_QTextList_blockFormatChanged ".} =
-  type Cb = proc(super: QTextListblockFormatChangedBase, blockVal: gen_qtextobject.QTextBlock): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(blockVal: gen_qtextobject.QTextBlock): auto =
-    callVirtualBase_blockFormatChanged(QTextList(h: self), blockVal)
+  var nimfunc = cast[ptr QTextListblockFormatChangedProc](cast[pointer](slot))
   let slotval1 = gen_qtextobject.QTextBlock(h: blockVal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_event(self: QTextList, event: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[](slotval1)
+proc QTextListevent*(self: gen_qtextlist_types.QTextList, event: gen_qcoreevent.QEvent): bool =
 
   fQTextList_virtualbase_event(self.h, event.h)
 
-type QTextListeventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QTextList, slot: proc(super: QTextListeventBase, event: gen_qcoreevent.QEvent): bool) =
+type QTextListeventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qtextlist_types.QTextList, slot: QTextListeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTextListeventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QTextListeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTextList_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTextList_event(self: ptr cQTextList, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QTextList_event ".} =
-  type Cb = proc(super: QTextListeventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QTextList(h: self), event)
+  var nimfunc = cast[ptr QTextListeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QTextList, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QTextListeventFilter*(self: gen_qtextlist_types.QTextList, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQTextList_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QTextListeventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QTextList, slot: proc(super: QTextListeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QTextListeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qtextlist_types.QTextList, slot: QTextListeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QTextListeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QTextListeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTextList_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTextList_eventFilter(self: ptr cQTextList, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QTextList_eventFilter ".} =
-  type Cb = proc(super: QTextListeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QTextList(h: self), watched, event)
+  var nimfunc = cast[ptr QTextListeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QTextList, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QTextListtimerEvent*(self: gen_qtextlist_types.QTextList, event: gen_qcoreevent.QTimerEvent): void =
 
   fQTextList_virtualbase_timerEvent(self.h, event.h)
 
-type QTextListtimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QTextList, slot: proc(super: QTextListtimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QTextListtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qtextlist_types.QTextList, slot: QTextListtimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTextListtimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QTextListtimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTextList_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTextList_timerEvent(self: ptr cQTextList, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTextList_timerEvent ".} =
-  type Cb = proc(super: QTextListtimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QTextList(h: self), event)
+  var nimfunc = cast[ptr QTextListtimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QTextList, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QTextListchildEvent*(self: gen_qtextlist_types.QTextList, event: gen_qcoreevent.QChildEvent): void =
 
   fQTextList_virtualbase_childEvent(self.h, event.h)
 
-type QTextListchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QTextList, slot: proc(super: QTextListchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QTextListchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qtextlist_types.QTextList, slot: QTextListchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTextListchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QTextListchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTextList_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTextList_childEvent(self: ptr cQTextList, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTextList_childEvent ".} =
-  type Cb = proc(super: QTextListchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QTextList(h: self), event)
+  var nimfunc = cast[ptr QTextListchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QTextList, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QTextListcustomEvent*(self: gen_qtextlist_types.QTextList, event: gen_qcoreevent.QEvent): void =
 
   fQTextList_virtualbase_customEvent(self.h, event.h)
 
-type QTextListcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QTextList, slot: proc(super: QTextListcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QTextListcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qtextlist_types.QTextList, slot: QTextListcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTextListcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QTextListcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTextList_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTextList_customEvent(self: ptr cQTextList, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTextList_customEvent ".} =
-  type Cb = proc(super: QTextListcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QTextList(h: self), event)
+  var nimfunc = cast[ptr QTextListcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QTextList, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QTextListconnectNotify*(self: gen_qtextlist_types.QTextList, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQTextList_virtualbase_connectNotify(self.h, signal.h)
 
-type QTextListconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QTextList, slot: proc(super: QTextListconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QTextListconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qtextlist_types.QTextList, slot: QTextListconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QTextListconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QTextListconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTextList_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTextList_connectNotify(self: ptr cQTextList, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QTextList_connectNotify ".} =
-  type Cb = proc(super: QTextListconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QTextList(h: self), signal)
+  var nimfunc = cast[ptr QTextListconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QTextList, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QTextListdisconnectNotify*(self: gen_qtextlist_types.QTextList, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQTextList_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QTextListdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QTextList, slot: proc(super: QTextListdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QTextListdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qtextlist_types.QTextList, slot: QTextListdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QTextListdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QTextListdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTextList_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTextList_disconnectNotify(self: ptr cQTextList, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QTextList_disconnectNotify ".} =
-  type Cb = proc(super: QTextListdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QTextList(h: self), signal)
+  var nimfunc = cast[ptr QTextListdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QTextList): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qtextlist_types.QTextList): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQTextList_staticMetaObject())
-proc delete*(self: QTextList) =
+proc delete*(self: gen_qtextlist_types.QTextList) =
   fcQTextList_delete(self.h)

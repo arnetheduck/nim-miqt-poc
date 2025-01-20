@@ -38,7 +38,6 @@ import gen_qtcpserver_types
 export gen_qtcpserver_types
 
 import
-  gen_qabstractsocket,
   gen_qcoreevent,
   gen_qhostaddress,
   gen_qmetaobject,
@@ -47,7 +46,6 @@ import
   gen_qobjectdefs,
   gen_qtcpsocket
 export
-  gen_qabstractsocket,
   gen_qcoreevent,
   gen_qhostaddress,
   gen_qmetaobject,
@@ -124,117 +122,117 @@ proc fcQTcpServer_staticMetaObject(): pointer {.importc: "QTcpServer_staticMetaO
 proc fcQTcpServer_delete(self: pointer) {.importc: "QTcpServer_delete".}
 
 
-func init*(T: type QTcpServer, h: ptr cQTcpServer): QTcpServer =
+func init*(T: type gen_qtcpserver_types.QTcpServer, h: ptr cQTcpServer): gen_qtcpserver_types.QTcpServer =
   T(h: h)
-proc create*(T: type QTcpServer, ): QTcpServer =
+proc create*(T: type gen_qtcpserver_types.QTcpServer, ): gen_qtcpserver_types.QTcpServer =
 
-  QTcpServer.init(fcQTcpServer_new())
-proc create*(T: type QTcpServer, parent: gen_qobject.QObject): QTcpServer =
+  gen_qtcpserver_types.QTcpServer.init(fcQTcpServer_new())
+proc create*(T: type gen_qtcpserver_types.QTcpServer, parent: gen_qobject.QObject): gen_qtcpserver_types.QTcpServer =
 
-  QTcpServer.init(fcQTcpServer_new2(parent.h))
-proc metaObject*(self: QTcpServer, ): gen_qobjectdefs.QMetaObject =
+  gen_qtcpserver_types.QTcpServer.init(fcQTcpServer_new2(parent.h))
+proc metaObject*(self: gen_qtcpserver_types.QTcpServer, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQTcpServer_metaObject(self.h))
 
-proc metacast*(self: QTcpServer, param1: cstring): pointer =
+proc metacast*(self: gen_qtcpserver_types.QTcpServer, param1: cstring): pointer =
 
   fcQTcpServer_metacast(self.h, param1)
 
-proc metacall*(self: QTcpServer, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qtcpserver_types.QTcpServer, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQTcpServer_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QTcpServer, s: cstring): string =
+proc tr*(_: type gen_qtcpserver_types.QTcpServer, s: cstring): string =
 
   let v_ms = fcQTcpServer_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc listen*(self: QTcpServer, ): bool =
+proc listen*(self: gen_qtcpserver_types.QTcpServer, ): bool =
 
   fcQTcpServer_listen(self.h)
 
-proc close*(self: QTcpServer, ): void =
+proc close*(self: gen_qtcpserver_types.QTcpServer, ): void =
 
   fcQTcpServer_close(self.h)
 
-proc isListening*(self: QTcpServer, ): bool =
+proc isListening*(self: gen_qtcpserver_types.QTcpServer, ): bool =
 
   fcQTcpServer_isListening(self.h)
 
-proc setMaxPendingConnections*(self: QTcpServer, numConnections: cint): void =
+proc setMaxPendingConnections*(self: gen_qtcpserver_types.QTcpServer, numConnections: cint): void =
 
   fcQTcpServer_setMaxPendingConnections(self.h, numConnections)
 
-proc maxPendingConnections*(self: QTcpServer, ): cint =
+proc maxPendingConnections*(self: gen_qtcpserver_types.QTcpServer, ): cint =
 
   fcQTcpServer_maxPendingConnections(self.h)
 
-proc setListenBacklogSize*(self: QTcpServer, size: cint): void =
+proc setListenBacklogSize*(self: gen_qtcpserver_types.QTcpServer, size: cint): void =
 
   fcQTcpServer_setListenBacklogSize(self.h, size)
 
-proc listenBacklogSize*(self: QTcpServer, ): cint =
+proc listenBacklogSize*(self: gen_qtcpserver_types.QTcpServer, ): cint =
 
   fcQTcpServer_listenBacklogSize(self.h)
 
-proc serverPort*(self: QTcpServer, ): cushort =
+proc serverPort*(self: gen_qtcpserver_types.QTcpServer, ): cushort =
 
   fcQTcpServer_serverPort(self.h)
 
-proc serverAddress*(self: QTcpServer, ): gen_qhostaddress.QHostAddress =
+proc serverAddress*(self: gen_qtcpserver_types.QTcpServer, ): gen_qhostaddress.QHostAddress =
 
   gen_qhostaddress.QHostAddress(h: fcQTcpServer_serverAddress(self.h))
 
-proc socketDescriptor*(self: QTcpServer, ): uint =
+proc socketDescriptor*(self: gen_qtcpserver_types.QTcpServer, ): uint =
 
   fcQTcpServer_socketDescriptor(self.h)
 
-proc setSocketDescriptor*(self: QTcpServer, socketDescriptor: uint): bool =
+proc setSocketDescriptor*(self: gen_qtcpserver_types.QTcpServer, socketDescriptor: uint): bool =
 
   fcQTcpServer_setSocketDescriptor(self.h, socketDescriptor)
 
-proc waitForNewConnection*(self: QTcpServer, ): bool =
+proc waitForNewConnection*(self: gen_qtcpserver_types.QTcpServer, ): bool =
 
   fcQTcpServer_waitForNewConnection(self.h)
 
-proc hasPendingConnections*(self: QTcpServer, ): bool =
+proc hasPendingConnections*(self: gen_qtcpserver_types.QTcpServer, ): bool =
 
   fcQTcpServer_hasPendingConnections(self.h)
 
-proc nextPendingConnection*(self: QTcpServer, ): gen_qtcpsocket.QTcpSocket =
+proc nextPendingConnection*(self: gen_qtcpserver_types.QTcpServer, ): gen_qtcpsocket.QTcpSocket =
 
   gen_qtcpsocket.QTcpSocket(h: fcQTcpServer_nextPendingConnection(self.h))
 
-proc serverError*(self: QTcpServer, ): gen_qabstractsocket.QAbstractSocketSocketError =
+proc serverError*(self: gen_qtcpserver_types.QTcpServer, ): cint =
 
-  gen_qabstractsocket.QAbstractSocketSocketError(fcQTcpServer_serverError(self.h))
+  cint(fcQTcpServer_serverError(self.h))
 
-proc errorString*(self: QTcpServer, ): string =
+proc errorString*(self: gen_qtcpserver_types.QTcpServer, ): string =
 
   let v_ms = fcQTcpServer_errorString(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc pauseAccepting*(self: QTcpServer, ): void =
+proc pauseAccepting*(self: gen_qtcpserver_types.QTcpServer, ): void =
 
   fcQTcpServer_pauseAccepting(self.h)
 
-proc resumeAccepting*(self: QTcpServer, ): void =
+proc resumeAccepting*(self: gen_qtcpserver_types.QTcpServer, ): void =
 
   fcQTcpServer_resumeAccepting(self.h)
 
-proc setProxy*(self: QTcpServer, networkProxy: gen_qnetworkproxy.QNetworkProxy): void =
+proc setProxy*(self: gen_qtcpserver_types.QTcpServer, networkProxy: gen_qnetworkproxy.QNetworkProxy): void =
 
   fcQTcpServer_setProxy(self.h, networkProxy.h)
 
-proc proxy*(self: QTcpServer, ): gen_qnetworkproxy.QNetworkProxy =
+proc proxy*(self: gen_qtcpserver_types.QTcpServer, ): gen_qnetworkproxy.QNetworkProxy =
 
   gen_qnetworkproxy.QNetworkProxy(h: fcQTcpServer_proxy(self.h))
 
-proc newConnection*(self: QTcpServer, ): void =
+proc newConnection*(self: gen_qtcpserver_types.QTcpServer, ): void =
 
   fcQTcpServer_newConnection(self.h)
 
@@ -244,374 +242,309 @@ proc miqt_exec_callback_QTcpServer_newConnection(slot: int) {.exportc.} =
 
   nimfunc[]()
 
-proc onnewConnection*(self: QTcpServer, slot: proc()) =
+proc onnewConnection*(self: gen_qtcpserver_types.QTcpServer, slot: proc()) =
   type Cb = proc()
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQTcpServer_connect_newConnection(self.h, cast[int](addr tmp[]))
-proc acceptError*(self: QTcpServer, socketError: gen_qabstractsocket.QAbstractSocketSocketError): void =
+proc acceptError*(self: gen_qtcpserver_types.QTcpServer, socketError: cint): void =
 
   fcQTcpServer_acceptError(self.h, cint(socketError))
 
 proc miqt_exec_callback_QTcpServer_acceptError(slot: int, socketError: cint) {.exportc.} =
-  type Cb = proc(socketError: gen_qabstractsocket.QAbstractSocketSocketError)
+  type Cb = proc(socketError: cint)
   let nimfunc = cast[ptr Cb](cast[pointer](slot))
-  let slotval1 = gen_qabstractsocket.QAbstractSocketSocketError(socketError)
+  let slotval1 = cint(socketError)
 
 
   nimfunc[](slotval1)
 
-proc onacceptError*(self: QTcpServer, slot: proc(socketError: gen_qabstractsocket.QAbstractSocketSocketError)) =
-  type Cb = proc(socketError: gen_qabstractsocket.QAbstractSocketSocketError)
+proc onacceptError*(self: gen_qtcpserver_types.QTcpServer, slot: proc(socketError: cint)) =
+  type Cb = proc(socketError: cint)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQTcpServer_connect_acceptError(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QTcpServer, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qtcpserver_types.QTcpServer, s: cstring, c: cstring): string =
 
   let v_ms = fcQTcpServer_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QTcpServer, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qtcpserver_types.QTcpServer, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQTcpServer_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc listen1*(self: QTcpServer, address: gen_qhostaddress.QHostAddress): bool =
+proc listen1*(self: gen_qtcpserver_types.QTcpServer, address: gen_qhostaddress.QHostAddress): bool =
 
   fcQTcpServer_listen1(self.h, address.h)
 
-proc listen2*(self: QTcpServer, address: gen_qhostaddress.QHostAddress, port: cushort): bool =
+proc listen2*(self: gen_qtcpserver_types.QTcpServer, address: gen_qhostaddress.QHostAddress, port: cushort): bool =
 
   fcQTcpServer_listen2(self.h, address.h, port)
 
-proc waitForNewConnection1*(self: QTcpServer, msec: cint): bool =
+proc waitForNewConnection1*(self: gen_qtcpserver_types.QTcpServer, msec: cint): bool =
 
   fcQTcpServer_waitForNewConnection1(self.h, msec)
 
-proc waitForNewConnection2*(self: QTcpServer, msec: cint, timedOut: ptr bool): bool =
+proc waitForNewConnection2*(self: gen_qtcpserver_types.QTcpServer, msec: cint, timedOut: ptr bool): bool =
 
   fcQTcpServer_waitForNewConnection2(self.h, msec, timedOut)
 
-proc callVirtualBase_metaObject(self: QTcpServer, ): gen_qobjectdefs.QMetaObject =
-
+proc QTcpServermetaObject*(self: gen_qtcpserver_types.QTcpServer, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQTcpServer_virtualbase_metaObject(self.h))
 
-type QTcpServermetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QTcpServer, slot: proc(super: QTcpServermetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QTcpServermetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qtcpserver_types.QTcpServer, slot: QTcpServermetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QTcpServermetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QTcpServermetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTcpServer_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTcpServer_metaObject(self: ptr cQTcpServer, slot: int): pointer {.exportc: "miqt_exec_callback_QTcpServer_metaObject ".} =
-  type Cb = proc(super: QTcpServermetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QTcpServer(h: self), )
+  var nimfunc = cast[ptr QTcpServermetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QTcpServer, param1: cstring): pointer =
-
+proc QTcpServermetacast*(self: gen_qtcpserver_types.QTcpServer, param1: cstring): pointer =
 
   fQTcpServer_virtualbase_metacast(self.h, param1)
 
-type QTcpServermetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QTcpServer, slot: proc(super: QTcpServermetacastBase, param1: cstring): pointer) =
+type QTcpServermetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qtcpserver_types.QTcpServer, slot: QTcpServermetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QTcpServermetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QTcpServermetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTcpServer_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTcpServer_metacast(self: ptr cQTcpServer, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QTcpServer_metacast ".} =
-  type Cb = proc(super: QTcpServermetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QTcpServer(h: self), param1)
+  var nimfunc = cast[ptr QTcpServermetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QTcpServer, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QTcpServermetacall*(self: gen_qtcpserver_types.QTcpServer, param1: cint, param2: cint, param3: pointer): cint =
 
   fQTcpServer_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QTcpServermetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QTcpServer, slot: proc(super: QTcpServermetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QTcpServermetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qtcpserver_types.QTcpServer, slot: QTcpServermetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QTcpServermetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QTcpServermetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTcpServer_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTcpServer_metacall(self: ptr cQTcpServer, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QTcpServer_metacall ".} =
-  type Cb = proc(super: QTcpServermetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QTcpServer(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QTcpServermetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_hasPendingConnections(self: QTcpServer, ): bool =
-
+proc QTcpServerhasPendingConnections*(self: gen_qtcpserver_types.QTcpServer, ): bool =
 
   fQTcpServer_virtualbase_hasPendingConnections(self.h)
 
-type QTcpServerhasPendingConnectionsBase* = proc(): bool
-proc onhasPendingConnections*(self: QTcpServer, slot: proc(super: QTcpServerhasPendingConnectionsBase): bool) =
+type QTcpServerhasPendingConnectionsProc* = proc(): bool
+proc onhasPendingConnections*(self: gen_qtcpserver_types.QTcpServer, slot: QTcpServerhasPendingConnectionsProc) =
   # TODO check subclass
-  type Cb = proc(super: QTcpServerhasPendingConnectionsBase): bool
-  var tmp = new Cb
+  var tmp = new QTcpServerhasPendingConnectionsProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTcpServer_override_virtual_hasPendingConnections(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTcpServer_hasPendingConnections(self: ptr cQTcpServer, slot: int): bool {.exportc: "miqt_exec_callback_QTcpServer_hasPendingConnections ".} =
-  type Cb = proc(super: QTcpServerhasPendingConnectionsBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasPendingConnections(QTcpServer(h: self), )
+  var nimfunc = cast[ptr QTcpServerhasPendingConnectionsProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_nextPendingConnection(self: QTcpServer, ): gen_qtcpsocket.QTcpSocket =
-
+proc QTcpServernextPendingConnection*(self: gen_qtcpserver_types.QTcpServer, ): gen_qtcpsocket.QTcpSocket =
 
   gen_qtcpsocket.QTcpSocket(h: fQTcpServer_virtualbase_nextPendingConnection(self.h))
 
-type QTcpServernextPendingConnectionBase* = proc(): gen_qtcpsocket.QTcpSocket
-proc onnextPendingConnection*(self: QTcpServer, slot: proc(super: QTcpServernextPendingConnectionBase): gen_qtcpsocket.QTcpSocket) =
+type QTcpServernextPendingConnectionProc* = proc(): gen_qtcpsocket.QTcpSocket
+proc onnextPendingConnection*(self: gen_qtcpserver_types.QTcpServer, slot: QTcpServernextPendingConnectionProc) =
   # TODO check subclass
-  type Cb = proc(super: QTcpServernextPendingConnectionBase): gen_qtcpsocket.QTcpSocket
-  var tmp = new Cb
+  var tmp = new QTcpServernextPendingConnectionProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTcpServer_override_virtual_nextPendingConnection(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTcpServer_nextPendingConnection(self: ptr cQTcpServer, slot: int): pointer {.exportc: "miqt_exec_callback_QTcpServer_nextPendingConnection ".} =
-  type Cb = proc(super: QTcpServernextPendingConnectionBase): gen_qtcpsocket.QTcpSocket
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_nextPendingConnection(QTcpServer(h: self), )
+  var nimfunc = cast[ptr QTcpServernextPendingConnectionProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_incomingConnection(self: QTcpServer, handle: uint): void =
-
+proc QTcpServerincomingConnection*(self: gen_qtcpserver_types.QTcpServer, handle: uint): void =
 
   fQTcpServer_virtualbase_incomingConnection(self.h, handle)
 
-type QTcpServerincomingConnectionBase* = proc(handle: uint): void
-proc onincomingConnection*(self: QTcpServer, slot: proc(super: QTcpServerincomingConnectionBase, handle: uint): void) =
+type QTcpServerincomingConnectionProc* = proc(handle: uint): void
+proc onincomingConnection*(self: gen_qtcpserver_types.QTcpServer, slot: QTcpServerincomingConnectionProc) =
   # TODO check subclass
-  type Cb = proc(super: QTcpServerincomingConnectionBase, handle: uint): void
-  var tmp = new Cb
+  var tmp = new QTcpServerincomingConnectionProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTcpServer_override_virtual_incomingConnection(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTcpServer_incomingConnection(self: ptr cQTcpServer, slot: int, handle: uint): void {.exportc: "miqt_exec_callback_QTcpServer_incomingConnection ".} =
-  type Cb = proc(super: QTcpServerincomingConnectionBase, handle: uint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(handle: uint): auto =
-    callVirtualBase_incomingConnection(QTcpServer(h: self), handle)
+  var nimfunc = cast[ptr QTcpServerincomingConnectionProc](cast[pointer](slot))
   let slotval1 = handle
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_event(self: QTcpServer, event: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[](slotval1)
+proc QTcpServerevent*(self: gen_qtcpserver_types.QTcpServer, event: gen_qcoreevent.QEvent): bool =
 
   fQTcpServer_virtualbase_event(self.h, event.h)
 
-type QTcpServereventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QTcpServer, slot: proc(super: QTcpServereventBase, event: gen_qcoreevent.QEvent): bool) =
+type QTcpServereventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qtcpserver_types.QTcpServer, slot: QTcpServereventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTcpServereventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QTcpServereventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTcpServer_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTcpServer_event(self: ptr cQTcpServer, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QTcpServer_event ".} =
-  type Cb = proc(super: QTcpServereventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QTcpServer(h: self), event)
+  var nimfunc = cast[ptr QTcpServereventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_eventFilter(self: QTcpServer, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+proc QTcpServereventFilter*(self: gen_qtcpserver_types.QTcpServer, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQTcpServer_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QTcpServereventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QTcpServer, slot: proc(super: QTcpServereventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QTcpServereventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qtcpserver_types.QTcpServer, slot: QTcpServereventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QTcpServereventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QTcpServereventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTcpServer_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTcpServer_eventFilter(self: ptr cQTcpServer, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QTcpServer_eventFilter ".} =
-  type Cb = proc(super: QTcpServereventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QTcpServer(h: self), watched, event)
+  var nimfunc = cast[ptr QTcpServereventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_timerEvent(self: QTcpServer, event: gen_qcoreevent.QTimerEvent): void =
-
+proc QTcpServertimerEvent*(self: gen_qtcpserver_types.QTcpServer, event: gen_qcoreevent.QTimerEvent): void =
 
   fQTcpServer_virtualbase_timerEvent(self.h, event.h)
 
-type QTcpServertimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QTcpServer, slot: proc(super: QTcpServertimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QTcpServertimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qtcpserver_types.QTcpServer, slot: QTcpServertimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTcpServertimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QTcpServertimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTcpServer_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTcpServer_timerEvent(self: ptr cQTcpServer, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTcpServer_timerEvent ".} =
-  type Cb = proc(super: QTcpServertimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QTcpServer(h: self), event)
+  var nimfunc = cast[ptr QTcpServertimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_childEvent(self: QTcpServer, event: gen_qcoreevent.QChildEvent): void =
-
+  nimfunc[](slotval1)
+proc QTcpServerchildEvent*(self: gen_qtcpserver_types.QTcpServer, event: gen_qcoreevent.QChildEvent): void =
 
   fQTcpServer_virtualbase_childEvent(self.h, event.h)
 
-type QTcpServerchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QTcpServer, slot: proc(super: QTcpServerchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QTcpServerchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qtcpserver_types.QTcpServer, slot: QTcpServerchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTcpServerchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QTcpServerchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTcpServer_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTcpServer_childEvent(self: ptr cQTcpServer, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTcpServer_childEvent ".} =
-  type Cb = proc(super: QTcpServerchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QTcpServer(h: self), event)
+  var nimfunc = cast[ptr QTcpServerchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QTcpServer, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QTcpServercustomEvent*(self: gen_qtcpserver_types.QTcpServer, event: gen_qcoreevent.QEvent): void =
 
   fQTcpServer_virtualbase_customEvent(self.h, event.h)
 
-type QTcpServercustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QTcpServer, slot: proc(super: QTcpServercustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QTcpServercustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qtcpserver_types.QTcpServer, slot: QTcpServercustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTcpServercustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QTcpServercustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTcpServer_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTcpServer_customEvent(self: ptr cQTcpServer, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTcpServer_customEvent ".} =
-  type Cb = proc(super: QTcpServercustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QTcpServer(h: self), event)
+  var nimfunc = cast[ptr QTcpServercustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QTcpServer, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QTcpServerconnectNotify*(self: gen_qtcpserver_types.QTcpServer, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQTcpServer_virtualbase_connectNotify(self.h, signal.h)
 
-type QTcpServerconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QTcpServer, slot: proc(super: QTcpServerconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QTcpServerconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qtcpserver_types.QTcpServer, slot: QTcpServerconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QTcpServerconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QTcpServerconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTcpServer_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTcpServer_connectNotify(self: ptr cQTcpServer, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QTcpServer_connectNotify ".} =
-  type Cb = proc(super: QTcpServerconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QTcpServer(h: self), signal)
+  var nimfunc = cast[ptr QTcpServerconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QTcpServer, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QTcpServerdisconnectNotify*(self: gen_qtcpserver_types.QTcpServer, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQTcpServer_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QTcpServerdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QTcpServer, slot: proc(super: QTcpServerdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QTcpServerdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qtcpserver_types.QTcpServer, slot: QTcpServerdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QTcpServerdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QTcpServerdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTcpServer_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTcpServer_disconnectNotify(self: ptr cQTcpServer, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QTcpServer_disconnectNotify ".} =
-  type Cb = proc(super: QTcpServerdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QTcpServer(h: self), signal)
+  var nimfunc = cast[ptr QTcpServerdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QTcpServer): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qtcpserver_types.QTcpServer): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQTcpServer_staticMetaObject())
-proc delete*(self: QTcpServer) =
+proc delete*(self: gen_qtcpserver_types.QTcpServer) =
   fcQTcpServer_delete(self.h)

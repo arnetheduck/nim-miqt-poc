@@ -34,15 +34,13 @@ const cflags = gorge("pkg-config -cflags Qt6WebEngineWidgets")
 {.compile("gen_qwebengineurlrequestjob.cpp", cflags).}
 
 
-type QWebEngineUrlRequestJobError* = cint
-const
-  QWebEngineUrlRequestJobNoError* = 0
-  QWebEngineUrlRequestJobUrlNotFound* = 1
-  QWebEngineUrlRequestJobUrlInvalid* = 2
-  QWebEngineUrlRequestJobRequestAborted* = 3
-  QWebEngineUrlRequestJobRequestDenied* = 4
-  QWebEngineUrlRequestJobRequestFailed* = 5
-
+type QWebEngineUrlRequestJobErrorEnum* = distinct cint
+template NoError*(_: type QWebEngineUrlRequestJobErrorEnum): untyped = 0
+template UrlNotFound*(_: type QWebEngineUrlRequestJobErrorEnum): untyped = 1
+template UrlInvalid*(_: type QWebEngineUrlRequestJobErrorEnum): untyped = 2
+template RequestAborted*(_: type QWebEngineUrlRequestJobErrorEnum): untyped = 3
+template RequestDenied*(_: type QWebEngineUrlRequestJobErrorEnum): untyped = 4
+template RequestFailed*(_: type QWebEngineUrlRequestJobErrorEnum): untyped = 5
 
 
 import gen_qwebengineurlrequestjob_types
@@ -77,69 +75,69 @@ proc fcQWebEngineUrlRequestJob_staticMetaObject(): pointer {.importc: "QWebEngin
 proc fcQWebEngineUrlRequestJob_delete(self: pointer) {.importc: "QWebEngineUrlRequestJob_delete".}
 
 
-func init*(T: type QWebEngineUrlRequestJob, h: ptr cQWebEngineUrlRequestJob): QWebEngineUrlRequestJob =
+func init*(T: type gen_qwebengineurlrequestjob_types.QWebEngineUrlRequestJob, h: ptr cQWebEngineUrlRequestJob): gen_qwebengineurlrequestjob_types.QWebEngineUrlRequestJob =
   T(h: h)
-proc metaObject*(self: QWebEngineUrlRequestJob, ): gen_qobjectdefs.QMetaObject =
+proc metaObject*(self: gen_qwebengineurlrequestjob_types.QWebEngineUrlRequestJob, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQWebEngineUrlRequestJob_metaObject(self.h))
 
-proc metacast*(self: QWebEngineUrlRequestJob, param1: cstring): pointer =
+proc metacast*(self: gen_qwebengineurlrequestjob_types.QWebEngineUrlRequestJob, param1: cstring): pointer =
 
   fcQWebEngineUrlRequestJob_metacast(self.h, param1)
 
-proc metacall*(self: QWebEngineUrlRequestJob, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qwebengineurlrequestjob_types.QWebEngineUrlRequestJob, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQWebEngineUrlRequestJob_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QWebEngineUrlRequestJob, s: cstring): string =
+proc tr*(_: type gen_qwebengineurlrequestjob_types.QWebEngineUrlRequestJob, s: cstring): string =
 
   let v_ms = fcQWebEngineUrlRequestJob_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc requestUrl*(self: QWebEngineUrlRequestJob, ): gen_qurl.QUrl =
+proc requestUrl*(self: gen_qwebengineurlrequestjob_types.QWebEngineUrlRequestJob, ): gen_qurl.QUrl =
 
   gen_qurl.QUrl(h: fcQWebEngineUrlRequestJob_requestUrl(self.h))
 
-proc requestMethod*(self: QWebEngineUrlRequestJob, ): seq[byte] =
+proc requestMethod*(self: gen_qwebengineurlrequestjob_types.QWebEngineUrlRequestJob, ): seq[byte] =
 
   var v_bytearray = fcQWebEngineUrlRequestJob_requestMethod(self.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc initiator*(self: QWebEngineUrlRequestJob, ): gen_qurl.QUrl =
+proc initiator*(self: gen_qwebengineurlrequestjob_types.QWebEngineUrlRequestJob, ): gen_qurl.QUrl =
 
   gen_qurl.QUrl(h: fcQWebEngineUrlRequestJob_initiator(self.h))
 
-proc reply*(self: QWebEngineUrlRequestJob, contentType: seq[byte], device: gen_qiodevice.QIODevice): void =
+proc reply*(self: gen_qwebengineurlrequestjob_types.QWebEngineUrlRequestJob, contentType: seq[byte], device: gen_qiodevice.QIODevice): void =
 
   fcQWebEngineUrlRequestJob_reply(self.h, struct_miqt_string(data: cast[cstring](if len(contentType) == 0: nil else: unsafeAddr contentType[0]), len: csize_t(len(contentType))), device.h)
 
-proc fail*(self: QWebEngineUrlRequestJob, error: QWebEngineUrlRequestJobError): void =
+proc fail*(self: gen_qwebengineurlrequestjob_types.QWebEngineUrlRequestJob, error: cint): void =
 
   fcQWebEngineUrlRequestJob_fail(self.h, cint(error))
 
-proc redirect*(self: QWebEngineUrlRequestJob, url: gen_qurl.QUrl): void =
+proc redirect*(self: gen_qwebengineurlrequestjob_types.QWebEngineUrlRequestJob, url: gen_qurl.QUrl): void =
 
   fcQWebEngineUrlRequestJob_redirect(self.h, url.h)
 
-proc tr2*(_: type QWebEngineUrlRequestJob, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qwebengineurlrequestjob_types.QWebEngineUrlRequestJob, s: cstring, c: cstring): string =
 
   let v_ms = fcQWebEngineUrlRequestJob_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QWebEngineUrlRequestJob, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qwebengineurlrequestjob_types.QWebEngineUrlRequestJob, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQWebEngineUrlRequestJob_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc staticMetaObject*(_: type QWebEngineUrlRequestJob): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qwebengineurlrequestjob_types.QWebEngineUrlRequestJob): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQWebEngineUrlRequestJob_staticMetaObject())
-proc delete*(self: QWebEngineUrlRequestJob) =
+proc delete*(self: gen_qwebengineurlrequestjob_types.QWebEngineUrlRequestJob) =
   fcQWebEngineUrlRequestJob_delete(self.h)

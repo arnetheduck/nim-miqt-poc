@@ -34,20 +34,18 @@ const cflags = gorge("pkg-config -cflags Qt6Widgets")
 {.compile("gen_qdatetimeedit.cpp", cflags).}
 
 
-type QDateTimeEditSection* = cint
-const
-  QDateTimeEditNoSection* = 0
-  QDateTimeEditAmPmSection* = 1
-  QDateTimeEditMSecSection* = 2
-  QDateTimeEditSecondSection* = 4
-  QDateTimeEditMinuteSection* = 8
-  QDateTimeEditHourSection* = 16
-  QDateTimeEditDaySection* = 256
-  QDateTimeEditMonthSection* = 512
-  QDateTimeEditYearSection* = 1024
-  QDateTimeEditTimeSections_Mask* = 31
-  QDateTimeEditDateSections_Mask* = 1792
-
+type QDateTimeEditSectionEnum* = distinct cint
+template NoSection*(_: type QDateTimeEditSectionEnum): untyped = 0
+template AmPmSection*(_: type QDateTimeEditSectionEnum): untyped = 1
+template MSecSection*(_: type QDateTimeEditSectionEnum): untyped = 2
+template SecondSection*(_: type QDateTimeEditSectionEnum): untyped = 4
+template MinuteSection*(_: type QDateTimeEditSectionEnum): untyped = 8
+template HourSection*(_: type QDateTimeEditSectionEnum): untyped = 16
+template DaySection*(_: type QDateTimeEditSectionEnum): untyped = 256
+template MonthSection*(_: type QDateTimeEditSectionEnum): untyped = 512
+template YearSection*(_: type QDateTimeEditSectionEnum): untyped = 1024
+template TimeSections_Mask*(_: type QDateTimeEditSectionEnum): untyped = 31
+template DateSections_Mask*(_: type QDateTimeEditSectionEnum): untyped = 1792
 
 
 import gen_qdatetimeedit_types
@@ -61,7 +59,6 @@ import
   gen_qdatetime,
   gen_qevent,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -70,7 +67,6 @@ import
   gen_qpoint,
   gen_qsize,
   gen_qstyleoption,
-  gen_qvalidator,
   gen_qvariant,
   gen_qwidget
 export
@@ -81,7 +77,6 @@ export
   gen_qdatetime,
   gen_qevent,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -90,7 +85,6 @@ export
   gen_qpoint,
   gen_qsize,
   gen_qstyleoption,
-  gen_qvalidator,
   gen_qvariant,
   gen_qwidget
 
@@ -548,246 +542,246 @@ proc fcQDateEdit_staticMetaObject(): pointer {.importc: "QDateEdit_staticMetaObj
 proc fcQDateEdit_delete(self: pointer) {.importc: "QDateEdit_delete".}
 
 
-func init*(T: type QDateTimeEdit, h: ptr cQDateTimeEdit): QDateTimeEdit =
+func init*(T: type gen_qdatetimeedit_types.QDateTimeEdit, h: ptr cQDateTimeEdit): gen_qdatetimeedit_types.QDateTimeEdit =
   T(h: h)
-proc create*(T: type QDateTimeEdit, parent: gen_qwidget.QWidget): QDateTimeEdit =
+proc create*(T: type gen_qdatetimeedit_types.QDateTimeEdit, parent: gen_qwidget.QWidget): gen_qdatetimeedit_types.QDateTimeEdit =
 
-  QDateTimeEdit.init(fcQDateTimeEdit_new(parent.h))
-proc create*(T: type QDateTimeEdit, ): QDateTimeEdit =
+  gen_qdatetimeedit_types.QDateTimeEdit.init(fcQDateTimeEdit_new(parent.h))
+proc create*(T: type gen_qdatetimeedit_types.QDateTimeEdit, ): gen_qdatetimeedit_types.QDateTimeEdit =
 
-  QDateTimeEdit.init(fcQDateTimeEdit_new2())
-proc create2*(T: type QDateTimeEdit, dt: gen_qdatetime.QDateTime): QDateTimeEdit =
+  gen_qdatetimeedit_types.QDateTimeEdit.init(fcQDateTimeEdit_new2())
+proc create2*(T: type gen_qdatetimeedit_types.QDateTimeEdit, dt: gen_qdatetime.QDateTime): gen_qdatetimeedit_types.QDateTimeEdit =
 
-  QDateTimeEdit.init(fcQDateTimeEdit_new3(dt.h))
-proc create2*(T: type QDateTimeEdit, d: gen_qdatetime.QDate): QDateTimeEdit =
+  gen_qdatetimeedit_types.QDateTimeEdit.init(fcQDateTimeEdit_new3(dt.h))
+proc create2*(T: type gen_qdatetimeedit_types.QDateTimeEdit, d: gen_qdatetime.QDate): gen_qdatetimeedit_types.QDateTimeEdit =
 
-  QDateTimeEdit.init(fcQDateTimeEdit_new4(d.h))
-proc create2*(T: type QDateTimeEdit, t: gen_qdatetime.QTime): QDateTimeEdit =
+  gen_qdatetimeedit_types.QDateTimeEdit.init(fcQDateTimeEdit_new4(d.h))
+proc create2*(T: type gen_qdatetimeedit_types.QDateTimeEdit, t: gen_qdatetime.QTime): gen_qdatetimeedit_types.QDateTimeEdit =
 
-  QDateTimeEdit.init(fcQDateTimeEdit_new5(t.h))
-proc create*(T: type QDateTimeEdit, dt: gen_qdatetime.QDateTime, parent: gen_qwidget.QWidget): QDateTimeEdit =
+  gen_qdatetimeedit_types.QDateTimeEdit.init(fcQDateTimeEdit_new5(t.h))
+proc create*(T: type gen_qdatetimeedit_types.QDateTimeEdit, dt: gen_qdatetime.QDateTime, parent: gen_qwidget.QWidget): gen_qdatetimeedit_types.QDateTimeEdit =
 
-  QDateTimeEdit.init(fcQDateTimeEdit_new6(dt.h, parent.h))
-proc create2*(T: type QDateTimeEdit, d: gen_qdatetime.QDate, parent: gen_qwidget.QWidget): QDateTimeEdit =
+  gen_qdatetimeedit_types.QDateTimeEdit.init(fcQDateTimeEdit_new6(dt.h, parent.h))
+proc create2*(T: type gen_qdatetimeedit_types.QDateTimeEdit, d: gen_qdatetime.QDate, parent: gen_qwidget.QWidget): gen_qdatetimeedit_types.QDateTimeEdit =
 
-  QDateTimeEdit.init(fcQDateTimeEdit_new7(d.h, parent.h))
-proc create2*(T: type QDateTimeEdit, t: gen_qdatetime.QTime, parent: gen_qwidget.QWidget): QDateTimeEdit =
+  gen_qdatetimeedit_types.QDateTimeEdit.init(fcQDateTimeEdit_new7(d.h, parent.h))
+proc create2*(T: type gen_qdatetimeedit_types.QDateTimeEdit, t: gen_qdatetime.QTime, parent: gen_qwidget.QWidget): gen_qdatetimeedit_types.QDateTimeEdit =
 
-  QDateTimeEdit.init(fcQDateTimeEdit_new8(t.h, parent.h))
-proc metaObject*(self: QDateTimeEdit, ): gen_qobjectdefs.QMetaObject =
+  gen_qdatetimeedit_types.QDateTimeEdit.init(fcQDateTimeEdit_new8(t.h, parent.h))
+proc metaObject*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQDateTimeEdit_metaObject(self.h))
 
-proc metacast*(self: QDateTimeEdit, param1: cstring): pointer =
+proc metacast*(self: gen_qdatetimeedit_types.QDateTimeEdit, param1: cstring): pointer =
 
   fcQDateTimeEdit_metacast(self.h, param1)
 
-proc metacall*(self: QDateTimeEdit, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qdatetimeedit_types.QDateTimeEdit, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQDateTimeEdit_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QDateTimeEdit, s: cstring): string =
+proc tr*(_: type gen_qdatetimeedit_types.QDateTimeEdit, s: cstring): string =
 
   let v_ms = fcQDateTimeEdit_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc dateTime*(self: QDateTimeEdit, ): gen_qdatetime.QDateTime =
+proc dateTime*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): gen_qdatetime.QDateTime =
 
   gen_qdatetime.QDateTime(h: fcQDateTimeEdit_dateTime(self.h))
 
-proc date*(self: QDateTimeEdit, ): gen_qdatetime.QDate =
+proc date*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): gen_qdatetime.QDate =
 
   gen_qdatetime.QDate(h: fcQDateTimeEdit_date(self.h))
 
-proc time*(self: QDateTimeEdit, ): gen_qdatetime.QTime =
+proc time*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): gen_qdatetime.QTime =
 
   gen_qdatetime.QTime(h: fcQDateTimeEdit_time(self.h))
 
-proc calendar*(self: QDateTimeEdit, ): gen_qcalendar.QCalendar =
+proc calendar*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): gen_qcalendar.QCalendar =
 
   gen_qcalendar.QCalendar(h: fcQDateTimeEdit_calendar(self.h))
 
-proc setCalendar*(self: QDateTimeEdit, calendar: gen_qcalendar.QCalendar): void =
+proc setCalendar*(self: gen_qdatetimeedit_types.QDateTimeEdit, calendar: gen_qcalendar.QCalendar): void =
 
   fcQDateTimeEdit_setCalendar(self.h, calendar.h)
 
-proc minimumDateTime*(self: QDateTimeEdit, ): gen_qdatetime.QDateTime =
+proc minimumDateTime*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): gen_qdatetime.QDateTime =
 
   gen_qdatetime.QDateTime(h: fcQDateTimeEdit_minimumDateTime(self.h))
 
-proc clearMinimumDateTime*(self: QDateTimeEdit, ): void =
+proc clearMinimumDateTime*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): void =
 
   fcQDateTimeEdit_clearMinimumDateTime(self.h)
 
-proc setMinimumDateTime*(self: QDateTimeEdit, dt: gen_qdatetime.QDateTime): void =
+proc setMinimumDateTime*(self: gen_qdatetimeedit_types.QDateTimeEdit, dt: gen_qdatetime.QDateTime): void =
 
   fcQDateTimeEdit_setMinimumDateTime(self.h, dt.h)
 
-proc maximumDateTime*(self: QDateTimeEdit, ): gen_qdatetime.QDateTime =
+proc maximumDateTime*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): gen_qdatetime.QDateTime =
 
   gen_qdatetime.QDateTime(h: fcQDateTimeEdit_maximumDateTime(self.h))
 
-proc clearMaximumDateTime*(self: QDateTimeEdit, ): void =
+proc clearMaximumDateTime*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): void =
 
   fcQDateTimeEdit_clearMaximumDateTime(self.h)
 
-proc setMaximumDateTime*(self: QDateTimeEdit, dt: gen_qdatetime.QDateTime): void =
+proc setMaximumDateTime*(self: gen_qdatetimeedit_types.QDateTimeEdit, dt: gen_qdatetime.QDateTime): void =
 
   fcQDateTimeEdit_setMaximumDateTime(self.h, dt.h)
 
-proc setDateTimeRange*(self: QDateTimeEdit, min: gen_qdatetime.QDateTime, max: gen_qdatetime.QDateTime): void =
+proc setDateTimeRange*(self: gen_qdatetimeedit_types.QDateTimeEdit, min: gen_qdatetime.QDateTime, max: gen_qdatetime.QDateTime): void =
 
   fcQDateTimeEdit_setDateTimeRange(self.h, min.h, max.h)
 
-proc minimumDate*(self: QDateTimeEdit, ): gen_qdatetime.QDate =
+proc minimumDate*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): gen_qdatetime.QDate =
 
   gen_qdatetime.QDate(h: fcQDateTimeEdit_minimumDate(self.h))
 
-proc setMinimumDate*(self: QDateTimeEdit, min: gen_qdatetime.QDate): void =
+proc setMinimumDate*(self: gen_qdatetimeedit_types.QDateTimeEdit, min: gen_qdatetime.QDate): void =
 
   fcQDateTimeEdit_setMinimumDate(self.h, min.h)
 
-proc clearMinimumDate*(self: QDateTimeEdit, ): void =
+proc clearMinimumDate*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): void =
 
   fcQDateTimeEdit_clearMinimumDate(self.h)
 
-proc maximumDate*(self: QDateTimeEdit, ): gen_qdatetime.QDate =
+proc maximumDate*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): gen_qdatetime.QDate =
 
   gen_qdatetime.QDate(h: fcQDateTimeEdit_maximumDate(self.h))
 
-proc setMaximumDate*(self: QDateTimeEdit, max: gen_qdatetime.QDate): void =
+proc setMaximumDate*(self: gen_qdatetimeedit_types.QDateTimeEdit, max: gen_qdatetime.QDate): void =
 
   fcQDateTimeEdit_setMaximumDate(self.h, max.h)
 
-proc clearMaximumDate*(self: QDateTimeEdit, ): void =
+proc clearMaximumDate*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): void =
 
   fcQDateTimeEdit_clearMaximumDate(self.h)
 
-proc setDateRange*(self: QDateTimeEdit, min: gen_qdatetime.QDate, max: gen_qdatetime.QDate): void =
+proc setDateRange*(self: gen_qdatetimeedit_types.QDateTimeEdit, min: gen_qdatetime.QDate, max: gen_qdatetime.QDate): void =
 
   fcQDateTimeEdit_setDateRange(self.h, min.h, max.h)
 
-proc minimumTime*(self: QDateTimeEdit, ): gen_qdatetime.QTime =
+proc minimumTime*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): gen_qdatetime.QTime =
 
   gen_qdatetime.QTime(h: fcQDateTimeEdit_minimumTime(self.h))
 
-proc setMinimumTime*(self: QDateTimeEdit, min: gen_qdatetime.QTime): void =
+proc setMinimumTime*(self: gen_qdatetimeedit_types.QDateTimeEdit, min: gen_qdatetime.QTime): void =
 
   fcQDateTimeEdit_setMinimumTime(self.h, min.h)
 
-proc clearMinimumTime*(self: QDateTimeEdit, ): void =
+proc clearMinimumTime*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): void =
 
   fcQDateTimeEdit_clearMinimumTime(self.h)
 
-proc maximumTime*(self: QDateTimeEdit, ): gen_qdatetime.QTime =
+proc maximumTime*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): gen_qdatetime.QTime =
 
   gen_qdatetime.QTime(h: fcQDateTimeEdit_maximumTime(self.h))
 
-proc setMaximumTime*(self: QDateTimeEdit, max: gen_qdatetime.QTime): void =
+proc setMaximumTime*(self: gen_qdatetimeedit_types.QDateTimeEdit, max: gen_qdatetime.QTime): void =
 
   fcQDateTimeEdit_setMaximumTime(self.h, max.h)
 
-proc clearMaximumTime*(self: QDateTimeEdit, ): void =
+proc clearMaximumTime*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): void =
 
   fcQDateTimeEdit_clearMaximumTime(self.h)
 
-proc setTimeRange*(self: QDateTimeEdit, min: gen_qdatetime.QTime, max: gen_qdatetime.QTime): void =
+proc setTimeRange*(self: gen_qdatetimeedit_types.QDateTimeEdit, min: gen_qdatetime.QTime, max: gen_qdatetime.QTime): void =
 
   fcQDateTimeEdit_setTimeRange(self.h, min.h, max.h)
 
-proc displayedSections*(self: QDateTimeEdit, ): QDateTimeEditSection =
+proc displayedSections*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): cint =
 
-  QDateTimeEditSection(fcQDateTimeEdit_displayedSections(self.h))
+  cint(fcQDateTimeEdit_displayedSections(self.h))
 
-proc currentSection*(self: QDateTimeEdit, ): QDateTimeEditSection =
+proc currentSection*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): cint =
 
-  QDateTimeEditSection(fcQDateTimeEdit_currentSection(self.h))
+  cint(fcQDateTimeEdit_currentSection(self.h))
 
-proc sectionAt*(self: QDateTimeEdit, index: cint): QDateTimeEditSection =
+proc sectionAt*(self: gen_qdatetimeedit_types.QDateTimeEdit, index: cint): cint =
 
-  QDateTimeEditSection(fcQDateTimeEdit_sectionAt(self.h, index))
+  cint(fcQDateTimeEdit_sectionAt(self.h, index))
 
-proc setCurrentSection*(self: QDateTimeEdit, section: QDateTimeEditSection): void =
+proc setCurrentSection*(self: gen_qdatetimeedit_types.QDateTimeEdit, section: cint): void =
 
   fcQDateTimeEdit_setCurrentSection(self.h, cint(section))
 
-proc currentSectionIndex*(self: QDateTimeEdit, ): cint =
+proc currentSectionIndex*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): cint =
 
   fcQDateTimeEdit_currentSectionIndex(self.h)
 
-proc setCurrentSectionIndex*(self: QDateTimeEdit, index: cint): void =
+proc setCurrentSectionIndex*(self: gen_qdatetimeedit_types.QDateTimeEdit, index: cint): void =
 
   fcQDateTimeEdit_setCurrentSectionIndex(self.h, index)
 
-proc calendarWidget*(self: QDateTimeEdit, ): gen_qcalendarwidget.QCalendarWidget =
+proc calendarWidget*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): gen_qcalendarwidget.QCalendarWidget =
 
   gen_qcalendarwidget.QCalendarWidget(h: fcQDateTimeEdit_calendarWidget(self.h))
 
-proc setCalendarWidget*(self: QDateTimeEdit, calendarWidget: gen_qcalendarwidget.QCalendarWidget): void =
+proc setCalendarWidget*(self: gen_qdatetimeedit_types.QDateTimeEdit, calendarWidget: gen_qcalendarwidget.QCalendarWidget): void =
 
   fcQDateTimeEdit_setCalendarWidget(self.h, calendarWidget.h)
 
-proc sectionCount*(self: QDateTimeEdit, ): cint =
+proc sectionCount*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): cint =
 
   fcQDateTimeEdit_sectionCount(self.h)
 
-proc setSelectedSection*(self: QDateTimeEdit, section: QDateTimeEditSection): void =
+proc setSelectedSection*(self: gen_qdatetimeedit_types.QDateTimeEdit, section: cint): void =
 
   fcQDateTimeEdit_setSelectedSection(self.h, cint(section))
 
-proc sectionText*(self: QDateTimeEdit, section: QDateTimeEditSection): string =
+proc sectionText*(self: gen_qdatetimeedit_types.QDateTimeEdit, section: cint): string =
 
   let v_ms = fcQDateTimeEdit_sectionText(self.h, cint(section))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc displayFormat*(self: QDateTimeEdit, ): string =
+proc displayFormat*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): string =
 
   let v_ms = fcQDateTimeEdit_displayFormat(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setDisplayFormat*(self: QDateTimeEdit, format: string): void =
+proc setDisplayFormat*(self: gen_qdatetimeedit_types.QDateTimeEdit, format: string): void =
 
   fcQDateTimeEdit_setDisplayFormat(self.h, struct_miqt_string(data: format, len: csize_t(len(format))))
 
-proc calendarPopup*(self: QDateTimeEdit, ): bool =
+proc calendarPopup*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): bool =
 
   fcQDateTimeEdit_calendarPopup(self.h)
 
-proc setCalendarPopup*(self: QDateTimeEdit, enable: bool): void =
+proc setCalendarPopup*(self: gen_qdatetimeedit_types.QDateTimeEdit, enable: bool): void =
 
   fcQDateTimeEdit_setCalendarPopup(self.h, enable)
 
-proc timeSpec*(self: QDateTimeEdit, ): gen_qnamespace.TimeSpec =
+proc timeSpec*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): cint =
 
-  gen_qnamespace.TimeSpec(fcQDateTimeEdit_timeSpec(self.h))
+  cint(fcQDateTimeEdit_timeSpec(self.h))
 
-proc setTimeSpec*(self: QDateTimeEdit, spec: gen_qnamespace.TimeSpec): void =
+proc setTimeSpec*(self: gen_qdatetimeedit_types.QDateTimeEdit, spec: cint): void =
 
   fcQDateTimeEdit_setTimeSpec(self.h, cint(spec))
 
-proc sizeHint*(self: QDateTimeEdit, ): gen_qsize.QSize =
+proc sizeHint*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQDateTimeEdit_sizeHint(self.h))
 
-proc clear*(self: QDateTimeEdit, ): void =
+proc clear*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): void =
 
   fcQDateTimeEdit_clear(self.h)
 
-proc stepBy*(self: QDateTimeEdit, steps: cint): void =
+proc stepBy*(self: gen_qdatetimeedit_types.QDateTimeEdit, steps: cint): void =
 
   fcQDateTimeEdit_stepBy(self.h, steps)
 
-proc event*(self: QDateTimeEdit, event: gen_qcoreevent.QEvent): bool =
+proc event*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qcoreevent.QEvent): bool =
 
   fcQDateTimeEdit_event(self.h, event.h)
 
-proc dateTimeChanged*(self: QDateTimeEdit, dateTime: gen_qdatetime.QDateTime): void =
+proc dateTimeChanged*(self: gen_qdatetimeedit_types.QDateTimeEdit, dateTime: gen_qdatetime.QDateTime): void =
 
   fcQDateTimeEdit_dateTimeChanged(self.h, dateTime.h)
 
@@ -799,13 +793,13 @@ proc miqt_exec_callback_QDateTimeEdit_dateTimeChanged(slot: int, dateTime: point
 
   nimfunc[](slotval1)
 
-proc ondateTimeChanged*(self: QDateTimeEdit, slot: proc(dateTime: gen_qdatetime.QDateTime)) =
+proc ondateTimeChanged*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: proc(dateTime: gen_qdatetime.QDateTime)) =
   type Cb = proc(dateTime: gen_qdatetime.QDateTime)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQDateTimeEdit_connect_dateTimeChanged(self.h, cast[int](addr tmp[]))
-proc timeChanged*(self: QDateTimeEdit, time: gen_qdatetime.QTime): void =
+proc timeChanged*(self: gen_qdatetimeedit_types.QDateTimeEdit, time: gen_qdatetime.QTime): void =
 
   fcQDateTimeEdit_timeChanged(self.h, time.h)
 
@@ -817,13 +811,13 @@ proc miqt_exec_callback_QDateTimeEdit_timeChanged(slot: int, time: pointer) {.ex
 
   nimfunc[](slotval1)
 
-proc ontimeChanged*(self: QDateTimeEdit, slot: proc(time: gen_qdatetime.QTime)) =
+proc ontimeChanged*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: proc(time: gen_qdatetime.QTime)) =
   type Cb = proc(time: gen_qdatetime.QTime)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQDateTimeEdit_connect_timeChanged(self.h, cast[int](addr tmp[]))
-proc dateChanged*(self: QDateTimeEdit, date: gen_qdatetime.QDate): void =
+proc dateChanged*(self: gen_qdatetimeedit_types.QDateTimeEdit, date: gen_qdatetime.QDate): void =
 
   fcQDateTimeEdit_dateChanged(self.h, date.h)
 
@@ -835,320 +829,260 @@ proc miqt_exec_callback_QDateTimeEdit_dateChanged(slot: int, date: pointer) {.ex
 
   nimfunc[](slotval1)
 
-proc ondateChanged*(self: QDateTimeEdit, slot: proc(date: gen_qdatetime.QDate)) =
+proc ondateChanged*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: proc(date: gen_qdatetime.QDate)) =
   type Cb = proc(date: gen_qdatetime.QDate)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQDateTimeEdit_connect_dateChanged(self.h, cast[int](addr tmp[]))
-proc setDateTime*(self: QDateTimeEdit, dateTime: gen_qdatetime.QDateTime): void =
+proc setDateTime*(self: gen_qdatetimeedit_types.QDateTimeEdit, dateTime: gen_qdatetime.QDateTime): void =
 
   fcQDateTimeEdit_setDateTime(self.h, dateTime.h)
 
-proc setDate*(self: QDateTimeEdit, date: gen_qdatetime.QDate): void =
+proc setDate*(self: gen_qdatetimeedit_types.QDateTimeEdit, date: gen_qdatetime.QDate): void =
 
   fcQDateTimeEdit_setDate(self.h, date.h)
 
-proc setTime*(self: QDateTimeEdit, time: gen_qdatetime.QTime): void =
+proc setTime*(self: gen_qdatetimeedit_types.QDateTimeEdit, time: gen_qdatetime.QTime): void =
 
   fcQDateTimeEdit_setTime(self.h, time.h)
 
-proc tr2*(_: type QDateTimeEdit, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qdatetimeedit_types.QDateTimeEdit, s: cstring, c: cstring): string =
 
   let v_ms = fcQDateTimeEdit_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QDateTimeEdit, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qdatetimeedit_types.QDateTimeEdit, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQDateTimeEdit_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QDateTimeEdit, ): gen_qobjectdefs.QMetaObject =
-
+proc QDateTimeEditmetaObject*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQDateTimeEdit_virtualbase_metaObject(self.h))
 
-type QDateTimeEditmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QDateTimeEdit, slot: proc(super: QDateTimeEditmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QDateTimeEditmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEditmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QDateTimeEditmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_metaObject(self: ptr cQDateTimeEdit, slot: int): pointer {.exportc: "miqt_exec_callback_QDateTimeEdit_metaObject ".} =
-  type Cb = proc(super: QDateTimeEditmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QDateTimeEdit(h: self), )
+  var nimfunc = cast[ptr QDateTimeEditmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QDateTimeEdit, param1: cstring): pointer =
-
+proc QDateTimeEditmetacast*(self: gen_qdatetimeedit_types.QDateTimeEdit, param1: cstring): pointer =
 
   fQDateTimeEdit_virtualbase_metacast(self.h, param1)
 
-type QDateTimeEditmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QDateTimeEdit, slot: proc(super: QDateTimeEditmetacastBase, param1: cstring): pointer) =
+type QDateTimeEditmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEditmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QDateTimeEditmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_metacast(self: ptr cQDateTimeEdit, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QDateTimeEdit_metacast ".} =
-  type Cb = proc(super: QDateTimeEditmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QDateTimeEdit(h: self), param1)
+  var nimfunc = cast[ptr QDateTimeEditmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QDateTimeEdit, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QDateTimeEditmetacall*(self: gen_qdatetimeedit_types.QDateTimeEdit, param1: cint, param2: cint, param3: pointer): cint =
 
   fQDateTimeEdit_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QDateTimeEditmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QDateTimeEdit, slot: proc(super: QDateTimeEditmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QDateTimeEditmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEditmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QDateTimeEditmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_metacall(self: ptr cQDateTimeEdit, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QDateTimeEdit_metacall ".} =
-  type Cb = proc(super: QDateTimeEditmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QDateTimeEdit(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QDateTimeEditmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_sizeHint(self: QDateTimeEdit, ): gen_qsize.QSize =
-
+proc QDateTimeEditsizeHint*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQDateTimeEdit_virtualbase_sizeHint(self.h))
 
-type QDateTimeEditsizeHintBase* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: QDateTimeEdit, slot: proc(super: QDateTimeEditsizeHintBase): gen_qsize.QSize) =
+type QDateTimeEditsizeHintProc* = proc(): gen_qsize.QSize
+proc onsizeHint*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditsizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEditsizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QDateTimeEditsizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_sizeHint(self: ptr cQDateTimeEdit, slot: int): pointer {.exportc: "miqt_exec_callback_QDateTimeEdit_sizeHint ".} =
-  type Cb = proc(super: QDateTimeEditsizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sizeHint(QDateTimeEdit(h: self), )
+  var nimfunc = cast[ptr QDateTimeEditsizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_clear(self: QDateTimeEdit, ): void =
-
+proc QDateTimeEditclear*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): void =
 
   fQDateTimeEdit_virtualbase_clear(self.h)
 
-type QDateTimeEditclearBase* = proc(): void
-proc onclear*(self: QDateTimeEdit, slot: proc(super: QDateTimeEditclearBase): void) =
+type QDateTimeEditclearProc* = proc(): void
+proc onclear*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditclearProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEditclearBase): void
-  var tmp = new Cb
+  var tmp = new QDateTimeEditclearProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_clear(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_clear(self: ptr cQDateTimeEdit, slot: int): void {.exportc: "miqt_exec_callback_QDateTimeEdit_clear ".} =
-  type Cb = proc(super: QDateTimeEditclearBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_clear(QDateTimeEdit(h: self), )
+  var nimfunc = cast[ptr QDateTimeEditclearProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_stepBy(self: QDateTimeEdit, steps: cint): void =
-
+  nimfunc[]()
+proc QDateTimeEditstepBy*(self: gen_qdatetimeedit_types.QDateTimeEdit, steps: cint): void =
 
   fQDateTimeEdit_virtualbase_stepBy(self.h, steps)
 
-type QDateTimeEditstepByBase* = proc(steps: cint): void
-proc onstepBy*(self: QDateTimeEdit, slot: proc(super: QDateTimeEditstepByBase, steps: cint): void) =
+type QDateTimeEditstepByProc* = proc(steps: cint): void
+proc onstepBy*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditstepByProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEditstepByBase, steps: cint): void
-  var tmp = new Cb
+  var tmp = new QDateTimeEditstepByProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_stepBy(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_stepBy(self: ptr cQDateTimeEdit, slot: int, steps: cint): void {.exportc: "miqt_exec_callback_QDateTimeEdit_stepBy ".} =
-  type Cb = proc(super: QDateTimeEditstepByBase, steps: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(steps: cint): auto =
-    callVirtualBase_stepBy(QDateTimeEdit(h: self), steps)
+  var nimfunc = cast[ptr QDateTimeEditstepByProc](cast[pointer](slot))
   let slotval1 = steps
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_event(self: QDateTimeEdit, event: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[](slotval1)
+proc QDateTimeEditevent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qcoreevent.QEvent): bool =
 
   fQDateTimeEdit_virtualbase_event(self.h, event.h)
 
-type QDateTimeEditeventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QDateTimeEdit, slot: proc(super: QDateTimeEditeventBase, event: gen_qcoreevent.QEvent): bool) =
+type QDateTimeEditeventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEditeventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QDateTimeEditeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_event(self: ptr cQDateTimeEdit, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QDateTimeEdit_event ".} =
-  type Cb = proc(super: QDateTimeEditeventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QDateTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QDateTimeEditeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_keyPressEvent(self: QDateTimeEdit, event: gen_qevent.QKeyEvent): void =
-
+proc QDateTimeEditkeyPressEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qevent.QKeyEvent): void =
 
   fQDateTimeEdit_virtualbase_keyPressEvent(self.h, event.h)
 
-type QDateTimeEditkeyPressEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyPressEvent*(self: QDateTimeEdit, slot: proc(super: QDateTimeEditkeyPressEventBase, event: gen_qevent.QKeyEvent): void) =
+type QDateTimeEditkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyPressEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditkeyPressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEditkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QDateTimeEditkeyPressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_keyPressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_keyPressEvent(self: ptr cQDateTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateTimeEdit_keyPressEvent ".} =
-  type Cb = proc(super: QDateTimeEditkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyPressEvent(QDateTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QDateTimeEditkeyPressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_wheelEvent(self: QDateTimeEdit, event: gen_qevent.QWheelEvent): void =
-
+  nimfunc[](slotval1)
+proc QDateTimeEditwheelEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qevent.QWheelEvent): void =
 
   fQDateTimeEdit_virtualbase_wheelEvent(self.h, event.h)
 
-type QDateTimeEditwheelEventBase* = proc(event: gen_qevent.QWheelEvent): void
-proc onwheelEvent*(self: QDateTimeEdit, slot: proc(super: QDateTimeEditwheelEventBase, event: gen_qevent.QWheelEvent): void) =
+type QDateTimeEditwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
+proc onwheelEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditwheelEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEditwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var tmp = new Cb
+  var tmp = new QDateTimeEditwheelEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_wheelEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_wheelEvent(self: ptr cQDateTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateTimeEdit_wheelEvent ".} =
-  type Cb = proc(super: QDateTimeEditwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QWheelEvent): auto =
-    callVirtualBase_wheelEvent(QDateTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QDateTimeEditwheelEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QWheelEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusInEvent(self: QDateTimeEdit, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QDateTimeEditfocusInEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qevent.QFocusEvent): void =
 
   fQDateTimeEdit_virtualbase_focusInEvent(self.h, event.h)
 
-type QDateTimeEditfocusInEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusInEvent*(self: QDateTimeEdit, slot: proc(super: QDateTimeEditfocusInEventBase, event: gen_qevent.QFocusEvent): void) =
+type QDateTimeEditfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusInEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditfocusInEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEditfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QDateTimeEditfocusInEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_focusInEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_focusInEvent(self: ptr cQDateTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateTimeEdit_focusInEvent ".} =
-  type Cb = proc(super: QDateTimeEditfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusInEvent(QDateTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QDateTimeEditfocusInEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusNextPrevChild(self: QDateTimeEdit, next: bool): bool =
-
+  nimfunc[](slotval1)
+proc QDateTimeEditfocusNextPrevChild*(self: gen_qdatetimeedit_types.QDateTimeEdit, next: bool): bool =
 
   fQDateTimeEdit_virtualbase_focusNextPrevChild(self.h, next)
 
-type QDateTimeEditfocusNextPrevChildBase* = proc(next: bool): bool
-proc onfocusNextPrevChild*(self: QDateTimeEdit, slot: proc(super: QDateTimeEditfocusNextPrevChildBase, next: bool): bool) =
+type QDateTimeEditfocusNextPrevChildProc* = proc(next: bool): bool
+proc onfocusNextPrevChild*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditfocusNextPrevChildProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEditfocusNextPrevChildBase, next: bool): bool
-  var tmp = new Cb
+  var tmp = new QDateTimeEditfocusNextPrevChildProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_focusNextPrevChild(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_focusNextPrevChild(self: ptr cQDateTimeEdit, slot: int, next: bool): bool {.exportc: "miqt_exec_callback_QDateTimeEdit_focusNextPrevChild ".} =
-  type Cb = proc(super: QDateTimeEditfocusNextPrevChildBase, next: bool): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(next: bool): auto =
-    callVirtualBase_focusNextPrevChild(QDateTimeEdit(h: self), next)
+  var nimfunc = cast[ptr QDateTimeEditfocusNextPrevChildProc](cast[pointer](slot))
   let slotval1 = next
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_validate(self: QDateTimeEdit, input: string, pos: ptr cint): gen_qvalidator.QValidatorState =
+proc QDateTimeEditvalidate*(self: gen_qdatetimeedit_types.QDateTimeEdit, input: string, pos: ptr cint): cint =
 
+  cint(fQDateTimeEdit_virtualbase_validate(self.h, struct_miqt_string(data: input, len: csize_t(len(input))), pos))
 
-  gen_qvalidator.QValidatorState(fQDateTimeEdit_virtualbase_validate(self.h, struct_miqt_string(data: input, len: csize_t(len(input))), pos))
-
-type QDateTimeEditvalidateBase* = proc(input: string, pos: ptr cint): gen_qvalidator.QValidatorState
-proc onvalidate*(self: QDateTimeEdit, slot: proc(super: QDateTimeEditvalidateBase, input: string, pos: ptr cint): gen_qvalidator.QValidatorState) =
+type QDateTimeEditvalidateProc* = proc(input: string, pos: ptr cint): cint
+proc onvalidate*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditvalidateProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEditvalidateBase, input: string, pos: ptr cint): gen_qvalidator.QValidatorState
-  var tmp = new Cb
+  var tmp = new QDateTimeEditvalidateProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_validate(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_validate(self: ptr cQDateTimeEdit, slot: int, input: struct_miqt_string, pos: ptr cint): cint {.exportc: "miqt_exec_callback_QDateTimeEdit_validate ".} =
-  type Cb = proc(super: QDateTimeEditvalidateBase, input: string, pos: ptr cint): gen_qvalidator.QValidatorState
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(input: string, pos: ptr cint): auto =
-    callVirtualBase_validate(QDateTimeEdit(h: self), input, pos)
+  var nimfunc = cast[ptr QDateTimeEditvalidateProc](cast[pointer](slot))
   let vinput_ms = input
   let vinputx_ret = string.fromBytes(toOpenArrayByte(vinput_ms.data, 0, int(vinput_ms.len)-1))
   c_free(vinput_ms.data)
@@ -1157,850 +1091,670 @@ proc miqt_exec_callback_QDateTimeEdit_validate(self: ptr cQDateTimeEdit, slot: i
   let slotval2 = pos
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   cint(virtualReturn)
-proc callVirtualBase_fixup(self: QDateTimeEdit, input: string): void =
-
+proc QDateTimeEditfixup*(self: gen_qdatetimeedit_types.QDateTimeEdit, input: string): void =
 
   fQDateTimeEdit_virtualbase_fixup(self.h, struct_miqt_string(data: input, len: csize_t(len(input))))
 
-type QDateTimeEditfixupBase* = proc(input: string): void
-proc onfixup*(self: QDateTimeEdit, slot: proc(super: QDateTimeEditfixupBase, input: string): void) =
+type QDateTimeEditfixupProc* = proc(input: string): void
+proc onfixup*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditfixupProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEditfixupBase, input: string): void
-  var tmp = new Cb
+  var tmp = new QDateTimeEditfixupProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_fixup(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_fixup(self: ptr cQDateTimeEdit, slot: int, input: struct_miqt_string): void {.exportc: "miqt_exec_callback_QDateTimeEdit_fixup ".} =
-  type Cb = proc(super: QDateTimeEditfixupBase, input: string): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(input: string): auto =
-    callVirtualBase_fixup(QDateTimeEdit(h: self), input)
+  var nimfunc = cast[ptr QDateTimeEditfixupProc](cast[pointer](slot))
   let vinput_ms = input
   let vinputx_ret = string.fromBytes(toOpenArrayByte(vinput_ms.data, 0, int(vinput_ms.len)-1))
   c_free(vinput_ms.data)
   let slotval1 = vinputx_ret
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dateTimeFromText(self: QDateTimeEdit, text: string): gen_qdatetime.QDateTime =
-
+  nimfunc[](slotval1)
+proc QDateTimeEditdateTimeFromText*(self: gen_qdatetimeedit_types.QDateTimeEdit, text: string): gen_qdatetime.QDateTime =
 
   gen_qdatetime.QDateTime(h: fQDateTimeEdit_virtualbase_dateTimeFromText(self.h, struct_miqt_string(data: text, len: csize_t(len(text)))))
 
-type QDateTimeEditdateTimeFromTextBase* = proc(text: string): gen_qdatetime.QDateTime
-proc ondateTimeFromText*(self: QDateTimeEdit, slot: proc(super: QDateTimeEditdateTimeFromTextBase, text: string): gen_qdatetime.QDateTime) =
+type QDateTimeEditdateTimeFromTextProc* = proc(text: string): gen_qdatetime.QDateTime
+proc ondateTimeFromText*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditdateTimeFromTextProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEditdateTimeFromTextBase, text: string): gen_qdatetime.QDateTime
-  var tmp = new Cb
+  var tmp = new QDateTimeEditdateTimeFromTextProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_dateTimeFromText(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_dateTimeFromText(self: ptr cQDateTimeEdit, slot: int, text: struct_miqt_string): pointer {.exportc: "miqt_exec_callback_QDateTimeEdit_dateTimeFromText ".} =
-  type Cb = proc(super: QDateTimeEditdateTimeFromTextBase, text: string): gen_qdatetime.QDateTime
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(text: string): auto =
-    callVirtualBase_dateTimeFromText(QDateTimeEdit(h: self), text)
+  var nimfunc = cast[ptr QDateTimeEditdateTimeFromTextProc](cast[pointer](slot))
   let vtext_ms = text
   let vtextx_ret = string.fromBytes(toOpenArrayByte(vtext_ms.data, 0, int(vtext_ms.len)-1))
   c_free(vtext_ms.data)
   let slotval1 = vtextx_ret
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_textFromDateTime(self: QDateTimeEdit, dt: gen_qdatetime.QDateTime): string =
-
+proc QDateTimeEdittextFromDateTime*(self: gen_qdatetimeedit_types.QDateTimeEdit, dt: gen_qdatetime.QDateTime): string =
 
   let v_ms = fQDateTimeEdit_virtualbase_textFromDateTime(self.h, dt.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-type QDateTimeEdittextFromDateTimeBase* = proc(dt: gen_qdatetime.QDateTime): string
-proc ontextFromDateTime*(self: QDateTimeEdit, slot: proc(super: QDateTimeEdittextFromDateTimeBase, dt: gen_qdatetime.QDateTime): string) =
+type QDateTimeEdittextFromDateTimeProc* = proc(dt: gen_qdatetime.QDateTime): string
+proc ontextFromDateTime*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEdittextFromDateTimeProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEdittextFromDateTimeBase, dt: gen_qdatetime.QDateTime): string
-  var tmp = new Cb
+  var tmp = new QDateTimeEdittextFromDateTimeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_textFromDateTime(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_textFromDateTime(self: ptr cQDateTimeEdit, slot: int, dt: pointer): struct_miqt_string {.exportc: "miqt_exec_callback_QDateTimeEdit_textFromDateTime ".} =
-  type Cb = proc(super: QDateTimeEdittextFromDateTimeBase, dt: gen_qdatetime.QDateTime): string
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(dt: gen_qdatetime.QDateTime): auto =
-    callVirtualBase_textFromDateTime(QDateTimeEdit(h: self), dt)
+  var nimfunc = cast[ptr QDateTimeEdittextFromDateTimeProc](cast[pointer](slot))
   let slotval1 = gen_qdatetime.QDateTime(h: dt)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
-proc callVirtualBase_stepEnabled(self: QDateTimeEdit, ): gen_qabstractspinbox.QAbstractSpinBoxStepEnabledFlag =
+proc QDateTimeEditstepEnabled*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): cint =
 
+  cint(fQDateTimeEdit_virtualbase_stepEnabled(self.h))
 
-  gen_qabstractspinbox.QAbstractSpinBoxStepEnabledFlag(fQDateTimeEdit_virtualbase_stepEnabled(self.h))
-
-type QDateTimeEditstepEnabledBase* = proc(): gen_qabstractspinbox.QAbstractSpinBoxStepEnabledFlag
-proc onstepEnabled*(self: QDateTimeEdit, slot: proc(super: QDateTimeEditstepEnabledBase): gen_qabstractspinbox.QAbstractSpinBoxStepEnabledFlag) =
+type QDateTimeEditstepEnabledProc* = proc(): cint
+proc onstepEnabled*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditstepEnabledProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEditstepEnabledBase): gen_qabstractspinbox.QAbstractSpinBoxStepEnabledFlag
-  var tmp = new Cb
+  var tmp = new QDateTimeEditstepEnabledProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_stepEnabled(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_stepEnabled(self: ptr cQDateTimeEdit, slot: int): cint {.exportc: "miqt_exec_callback_QDateTimeEdit_stepEnabled ".} =
-  type Cb = proc(super: QDateTimeEditstepEnabledBase): gen_qabstractspinbox.QAbstractSpinBoxStepEnabledFlag
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_stepEnabled(QDateTimeEdit(h: self), )
+  var nimfunc = cast[ptr QDateTimeEditstepEnabledProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   cint(virtualReturn)
-proc callVirtualBase_mousePressEvent(self: QDateTimeEdit, event: gen_qevent.QMouseEvent): void =
-
+proc QDateTimeEditmousePressEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qevent.QMouseEvent): void =
 
   fQDateTimeEdit_virtualbase_mousePressEvent(self.h, event.h)
 
-type QDateTimeEditmousePressEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmousePressEvent*(self: QDateTimeEdit, slot: proc(super: QDateTimeEditmousePressEventBase, event: gen_qevent.QMouseEvent): void) =
+type QDateTimeEditmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmousePressEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditmousePressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEditmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QDateTimeEditmousePressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_mousePressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_mousePressEvent(self: ptr cQDateTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateTimeEdit_mousePressEvent ".} =
-  type Cb = proc(super: QDateTimeEditmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mousePressEvent(QDateTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QDateTimeEditmousePressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_paintEvent(self: QDateTimeEdit, event: gen_qevent.QPaintEvent): void =
-
+  nimfunc[](slotval1)
+proc QDateTimeEditpaintEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qevent.QPaintEvent): void =
 
   fQDateTimeEdit_virtualbase_paintEvent(self.h, event.h)
 
-type QDateTimeEditpaintEventBase* = proc(event: gen_qevent.QPaintEvent): void
-proc onpaintEvent*(self: QDateTimeEdit, slot: proc(super: QDateTimeEditpaintEventBase, event: gen_qevent.QPaintEvent): void) =
+type QDateTimeEditpaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
+proc onpaintEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditpaintEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEditpaintEventBase, event: gen_qevent.QPaintEvent): void
-  var tmp = new Cb
+  var tmp = new QDateTimeEditpaintEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_paintEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_paintEvent(self: ptr cQDateTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateTimeEdit_paintEvent ".} =
-  type Cb = proc(super: QDateTimeEditpaintEventBase, event: gen_qevent.QPaintEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QPaintEvent): auto =
-    callVirtualBase_paintEvent(QDateTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QDateTimeEditpaintEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QPaintEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_initStyleOption(self: QDateTimeEdit, option: gen_qstyleoption.QStyleOptionSpinBox): void =
-
+  nimfunc[](slotval1)
+proc QDateTimeEditinitStyleOption*(self: gen_qdatetimeedit_types.QDateTimeEdit, option: gen_qstyleoption.QStyleOptionSpinBox): void =
 
   fQDateTimeEdit_virtualbase_initStyleOption(self.h, option.h)
 
-type QDateTimeEditinitStyleOptionBase* = proc(option: gen_qstyleoption.QStyleOptionSpinBox): void
-proc oninitStyleOption*(self: QDateTimeEdit, slot: proc(super: QDateTimeEditinitStyleOptionBase, option: gen_qstyleoption.QStyleOptionSpinBox): void) =
+type QDateTimeEditinitStyleOptionProc* = proc(option: gen_qstyleoption.QStyleOptionSpinBox): void
+proc oninitStyleOption*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditinitStyleOptionProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEditinitStyleOptionBase, option: gen_qstyleoption.QStyleOptionSpinBox): void
-  var tmp = new Cb
+  var tmp = new QDateTimeEditinitStyleOptionProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_initStyleOption(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_initStyleOption(self: ptr cQDateTimeEdit, slot: int, option: pointer): void {.exportc: "miqt_exec_callback_QDateTimeEdit_initStyleOption ".} =
-  type Cb = proc(super: QDateTimeEditinitStyleOptionBase, option: gen_qstyleoption.QStyleOptionSpinBox): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(option: gen_qstyleoption.QStyleOptionSpinBox): auto =
-    callVirtualBase_initStyleOption(QDateTimeEdit(h: self), option)
+  var nimfunc = cast[ptr QDateTimeEditinitStyleOptionProc](cast[pointer](slot))
   let slotval1 = gen_qstyleoption.QStyleOptionSpinBox(h: option)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_minimumSizeHint(self: QDateTimeEdit, ): gen_qsize.QSize =
-
+  nimfunc[](slotval1)
+proc QDateTimeEditminimumSizeHint*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQDateTimeEdit_virtualbase_minimumSizeHint(self.h))
 
-type QDateTimeEditminimumSizeHintBase* = proc(): gen_qsize.QSize
-proc onminimumSizeHint*(self: QDateTimeEdit, slot: proc(super: QDateTimeEditminimumSizeHintBase): gen_qsize.QSize) =
+type QDateTimeEditminimumSizeHintProc* = proc(): gen_qsize.QSize
+proc onminimumSizeHint*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditminimumSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEditminimumSizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QDateTimeEditminimumSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_minimumSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_minimumSizeHint(self: ptr cQDateTimeEdit, slot: int): pointer {.exportc: "miqt_exec_callback_QDateTimeEdit_minimumSizeHint ".} =
-  type Cb = proc(super: QDateTimeEditminimumSizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_minimumSizeHint(QDateTimeEdit(h: self), )
+  var nimfunc = cast[ptr QDateTimeEditminimumSizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_inputMethodQuery(self: QDateTimeEdit, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant =
-
+proc QDateTimeEditinputMethodQuery*(self: gen_qdatetimeedit_types.QDateTimeEdit, param1: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQDateTimeEdit_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
-type QDateTimeEditinputMethodQueryBase* = proc(param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-proc oninputMethodQuery*(self: QDateTimeEdit, slot: proc(super: QDateTimeEditinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant) =
+type QDateTimeEditinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
+proc oninputMethodQuery*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditinputMethodQueryProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEditinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QDateTimeEditinputMethodQueryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_inputMethodQuery(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_inputMethodQuery(self: ptr cQDateTimeEdit, slot: int, param1: cint): pointer {.exportc: "miqt_exec_callback_QDateTimeEdit_inputMethodQuery ".} =
-  type Cb = proc(super: QDateTimeEditinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qnamespace.InputMethodQuery): auto =
-    callVirtualBase_inputMethodQuery(QDateTimeEdit(h: self), param1)
-  let slotval1 = gen_qnamespace.InputMethodQuery(param1)
+  var nimfunc = cast[ptr QDateTimeEditinputMethodQueryProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_resizeEvent(self: QDateTimeEdit, event: gen_qevent.QResizeEvent): void =
-
+proc QDateTimeEditresizeEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qevent.QResizeEvent): void =
 
   fQDateTimeEdit_virtualbase_resizeEvent(self.h, event.h)
 
-type QDateTimeEditresizeEventBase* = proc(event: gen_qevent.QResizeEvent): void
-proc onresizeEvent*(self: QDateTimeEdit, slot: proc(super: QDateTimeEditresizeEventBase, event: gen_qevent.QResizeEvent): void) =
+type QDateTimeEditresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
+proc onresizeEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditresizeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEditresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var tmp = new Cb
+  var tmp = new QDateTimeEditresizeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_resizeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_resizeEvent(self: ptr cQDateTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateTimeEdit_resizeEvent ".} =
-  type Cb = proc(super: QDateTimeEditresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QResizeEvent): auto =
-    callVirtualBase_resizeEvent(QDateTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QDateTimeEditresizeEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QResizeEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyReleaseEvent(self: QDateTimeEdit, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QDateTimeEditkeyReleaseEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qevent.QKeyEvent): void =
 
   fQDateTimeEdit_virtualbase_keyReleaseEvent(self.h, event.h)
 
-type QDateTimeEditkeyReleaseEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyReleaseEvent*(self: QDateTimeEdit, slot: proc(super: QDateTimeEditkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void) =
+type QDateTimeEditkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyReleaseEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditkeyReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEditkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QDateTimeEditkeyReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_keyReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_keyReleaseEvent(self: ptr cQDateTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateTimeEdit_keyReleaseEvent ".} =
-  type Cb = proc(super: QDateTimeEditkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyReleaseEvent(QDateTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QDateTimeEditkeyReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusOutEvent(self: QDateTimeEdit, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QDateTimeEditfocusOutEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qevent.QFocusEvent): void =
 
   fQDateTimeEdit_virtualbase_focusOutEvent(self.h, event.h)
 
-type QDateTimeEditfocusOutEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusOutEvent*(self: QDateTimeEdit, slot: proc(super: QDateTimeEditfocusOutEventBase, event: gen_qevent.QFocusEvent): void) =
+type QDateTimeEditfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusOutEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditfocusOutEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEditfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QDateTimeEditfocusOutEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_focusOutEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_focusOutEvent(self: ptr cQDateTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateTimeEdit_focusOutEvent ".} =
-  type Cb = proc(super: QDateTimeEditfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusOutEvent(QDateTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QDateTimeEditfocusOutEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_contextMenuEvent(self: QDateTimeEdit, event: gen_qevent.QContextMenuEvent): void =
-
+  nimfunc[](slotval1)
+proc QDateTimeEditcontextMenuEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qevent.QContextMenuEvent): void =
 
   fQDateTimeEdit_virtualbase_contextMenuEvent(self.h, event.h)
 
-type QDateTimeEditcontextMenuEventBase* = proc(event: gen_qevent.QContextMenuEvent): void
-proc oncontextMenuEvent*(self: QDateTimeEdit, slot: proc(super: QDateTimeEditcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void) =
+type QDateTimeEditcontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
+proc oncontextMenuEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditcontextMenuEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEditcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var tmp = new Cb
+  var tmp = new QDateTimeEditcontextMenuEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_contextMenuEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_contextMenuEvent(self: ptr cQDateTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateTimeEdit_contextMenuEvent ".} =
-  type Cb = proc(super: QDateTimeEditcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QContextMenuEvent): auto =
-    callVirtualBase_contextMenuEvent(QDateTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QDateTimeEditcontextMenuEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QContextMenuEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_changeEvent(self: QDateTimeEdit, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QDateTimeEditchangeEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qcoreevent.QEvent): void =
 
   fQDateTimeEdit_virtualbase_changeEvent(self.h, event.h)
 
-type QDateTimeEditchangeEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onchangeEvent*(self: QDateTimeEdit, slot: proc(super: QDateTimeEditchangeEventBase, event: gen_qcoreevent.QEvent): void) =
+type QDateTimeEditchangeEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onchangeEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditchangeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEditchangeEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QDateTimeEditchangeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_changeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_changeEvent(self: ptr cQDateTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateTimeEdit_changeEvent ".} =
-  type Cb = proc(super: QDateTimeEditchangeEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_changeEvent(QDateTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QDateTimeEditchangeEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_closeEvent(self: QDateTimeEdit, event: gen_qevent.QCloseEvent): void =
-
+  nimfunc[](slotval1)
+proc QDateTimeEditcloseEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qevent.QCloseEvent): void =
 
   fQDateTimeEdit_virtualbase_closeEvent(self.h, event.h)
 
-type QDateTimeEditcloseEventBase* = proc(event: gen_qevent.QCloseEvent): void
-proc oncloseEvent*(self: QDateTimeEdit, slot: proc(super: QDateTimeEditcloseEventBase, event: gen_qevent.QCloseEvent): void) =
+type QDateTimeEditcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
+proc oncloseEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditcloseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEditcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var tmp = new Cb
+  var tmp = new QDateTimeEditcloseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_closeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_closeEvent(self: ptr cQDateTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateTimeEdit_closeEvent ".} =
-  type Cb = proc(super: QDateTimeEditcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QCloseEvent): auto =
-    callVirtualBase_closeEvent(QDateTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QDateTimeEditcloseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QCloseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hideEvent(self: QDateTimeEdit, event: gen_qevent.QHideEvent): void =
-
+  nimfunc[](slotval1)
+proc QDateTimeEdithideEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qevent.QHideEvent): void =
 
   fQDateTimeEdit_virtualbase_hideEvent(self.h, event.h)
 
-type QDateTimeEdithideEventBase* = proc(event: gen_qevent.QHideEvent): void
-proc onhideEvent*(self: QDateTimeEdit, slot: proc(super: QDateTimeEdithideEventBase, event: gen_qevent.QHideEvent): void) =
+type QDateTimeEdithideEventProc* = proc(event: gen_qevent.QHideEvent): void
+proc onhideEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEdithideEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEdithideEventBase, event: gen_qevent.QHideEvent): void
-  var tmp = new Cb
+  var tmp = new QDateTimeEdithideEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_hideEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_hideEvent(self: ptr cQDateTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateTimeEdit_hideEvent ".} =
-  type Cb = proc(super: QDateTimeEdithideEventBase, event: gen_qevent.QHideEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QHideEvent): auto =
-    callVirtualBase_hideEvent(QDateTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QDateTimeEdithideEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QHideEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseReleaseEvent(self: QDateTimeEdit, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QDateTimeEditmouseReleaseEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qevent.QMouseEvent): void =
 
   fQDateTimeEdit_virtualbase_mouseReleaseEvent(self.h, event.h)
 
-type QDateTimeEditmouseReleaseEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseReleaseEvent*(self: QDateTimeEdit, slot: proc(super: QDateTimeEditmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void) =
+type QDateTimeEditmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseReleaseEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditmouseReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEditmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QDateTimeEditmouseReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_mouseReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_mouseReleaseEvent(self: ptr cQDateTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateTimeEdit_mouseReleaseEvent ".} =
-  type Cb = proc(super: QDateTimeEditmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseReleaseEvent(QDateTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QDateTimeEditmouseReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseMoveEvent(self: QDateTimeEdit, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QDateTimeEditmouseMoveEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qevent.QMouseEvent): void =
 
   fQDateTimeEdit_virtualbase_mouseMoveEvent(self.h, event.h)
 
-type QDateTimeEditmouseMoveEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseMoveEvent*(self: QDateTimeEdit, slot: proc(super: QDateTimeEditmouseMoveEventBase, event: gen_qevent.QMouseEvent): void) =
+type QDateTimeEditmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseMoveEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditmouseMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEditmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QDateTimeEditmouseMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_mouseMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_mouseMoveEvent(self: ptr cQDateTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateTimeEdit_mouseMoveEvent ".} =
-  type Cb = proc(super: QDateTimeEditmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseMoveEvent(QDateTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QDateTimeEditmouseMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_timerEvent(self: QDateTimeEdit, event: gen_qcoreevent.QTimerEvent): void =
-
+  nimfunc[](slotval1)
+proc QDateTimeEdittimerEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qcoreevent.QTimerEvent): void =
 
   fQDateTimeEdit_virtualbase_timerEvent(self.h, event.h)
 
-type QDateTimeEdittimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QDateTimeEdit, slot: proc(super: QDateTimeEdittimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QDateTimeEdittimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEdittimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEdittimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QDateTimeEdittimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_timerEvent(self: ptr cQDateTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateTimeEdit_timerEvent ".} =
-  type Cb = proc(super: QDateTimeEdittimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QDateTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QDateTimeEdittimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_showEvent(self: QDateTimeEdit, event: gen_qevent.QShowEvent): void =
-
+  nimfunc[](slotval1)
+proc QDateTimeEditshowEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qevent.QShowEvent): void =
 
   fQDateTimeEdit_virtualbase_showEvent(self.h, event.h)
 
-type QDateTimeEditshowEventBase* = proc(event: gen_qevent.QShowEvent): void
-proc onshowEvent*(self: QDateTimeEdit, slot: proc(super: QDateTimeEditshowEventBase, event: gen_qevent.QShowEvent): void) =
+type QDateTimeEditshowEventProc* = proc(event: gen_qevent.QShowEvent): void
+proc onshowEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditshowEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEditshowEventBase, event: gen_qevent.QShowEvent): void
-  var tmp = new Cb
+  var tmp = new QDateTimeEditshowEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_showEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_showEvent(self: ptr cQDateTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateTimeEdit_showEvent ".} =
-  type Cb = proc(super: QDateTimeEditshowEventBase, event: gen_qevent.QShowEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QShowEvent): auto =
-    callVirtualBase_showEvent(QDateTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QDateTimeEditshowEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QShowEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_devType(self: QDateTimeEdit, ): cint =
-
+  nimfunc[](slotval1)
+proc QDateTimeEditdevType*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): cint =
 
   fQDateTimeEdit_virtualbase_devType(self.h)
 
-type QDateTimeEditdevTypeBase* = proc(): cint
-proc ondevType*(self: QDateTimeEdit, slot: proc(super: QDateTimeEditdevTypeBase): cint) =
+type QDateTimeEditdevTypeProc* = proc(): cint
+proc ondevType*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditdevTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEditdevTypeBase): cint
-  var tmp = new Cb
+  var tmp = new QDateTimeEditdevTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_devType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_devType(self: ptr cQDateTimeEdit, slot: int): cint {.exportc: "miqt_exec_callback_QDateTimeEdit_devType ".} =
-  type Cb = proc(super: QDateTimeEditdevTypeBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_devType(QDateTimeEdit(h: self), )
+  var nimfunc = cast[ptr QDateTimeEditdevTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setVisible(self: QDateTimeEdit, visible: bool): void =
-
+proc QDateTimeEditsetVisible*(self: gen_qdatetimeedit_types.QDateTimeEdit, visible: bool): void =
 
   fQDateTimeEdit_virtualbase_setVisible(self.h, visible)
 
-type QDateTimeEditsetVisibleBase* = proc(visible: bool): void
-proc onsetVisible*(self: QDateTimeEdit, slot: proc(super: QDateTimeEditsetVisibleBase, visible: bool): void) =
+type QDateTimeEditsetVisibleProc* = proc(visible: bool): void
+proc onsetVisible*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditsetVisibleProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEditsetVisibleBase, visible: bool): void
-  var tmp = new Cb
+  var tmp = new QDateTimeEditsetVisibleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_setVisible(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_setVisible(self: ptr cQDateTimeEdit, slot: int, visible: bool): void {.exportc: "miqt_exec_callback_QDateTimeEdit_setVisible ".} =
-  type Cb = proc(super: QDateTimeEditsetVisibleBase, visible: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(visible: bool): auto =
-    callVirtualBase_setVisible(QDateTimeEdit(h: self), visible)
+  var nimfunc = cast[ptr QDateTimeEditsetVisibleProc](cast[pointer](slot))
   let slotval1 = visible
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_heightForWidth(self: QDateTimeEdit, param1: cint): cint =
-
+  nimfunc[](slotval1)
+proc QDateTimeEditheightForWidth*(self: gen_qdatetimeedit_types.QDateTimeEdit, param1: cint): cint =
 
   fQDateTimeEdit_virtualbase_heightForWidth(self.h, param1)
 
-type QDateTimeEditheightForWidthBase* = proc(param1: cint): cint
-proc onheightForWidth*(self: QDateTimeEdit, slot: proc(super: QDateTimeEditheightForWidthBase, param1: cint): cint) =
+type QDateTimeEditheightForWidthProc* = proc(param1: cint): cint
+proc onheightForWidth*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditheightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEditheightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QDateTimeEditheightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_heightForWidth(self: ptr cQDateTimeEdit, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QDateTimeEdit_heightForWidth ".} =
-  type Cb = proc(super: QDateTimeEditheightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_heightForWidth(QDateTimeEdit(h: self), param1)
+  var nimfunc = cast[ptr QDateTimeEditheightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_hasHeightForWidth(self: QDateTimeEdit, ): bool =
-
+proc QDateTimeEdithasHeightForWidth*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): bool =
 
   fQDateTimeEdit_virtualbase_hasHeightForWidth(self.h)
 
-type QDateTimeEdithasHeightForWidthBase* = proc(): bool
-proc onhasHeightForWidth*(self: QDateTimeEdit, slot: proc(super: QDateTimeEdithasHeightForWidthBase): bool) =
+type QDateTimeEdithasHeightForWidthProc* = proc(): bool
+proc onhasHeightForWidth*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEdithasHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEdithasHeightForWidthBase): bool
-  var tmp = new Cb
+  var tmp = new QDateTimeEdithasHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_hasHeightForWidth(self: ptr cQDateTimeEdit, slot: int): bool {.exportc: "miqt_exec_callback_QDateTimeEdit_hasHeightForWidth ".} =
-  type Cb = proc(super: QDateTimeEdithasHeightForWidthBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasHeightForWidth(QDateTimeEdit(h: self), )
+  var nimfunc = cast[ptr QDateTimeEdithasHeightForWidthProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_paintEngine(self: QDateTimeEdit, ): gen_qpaintengine.QPaintEngine =
-
+proc QDateTimeEditpaintEngine*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): gen_qpaintengine.QPaintEngine =
 
   gen_qpaintengine.QPaintEngine(h: fQDateTimeEdit_virtualbase_paintEngine(self.h))
 
-type QDateTimeEditpaintEngineBase* = proc(): gen_qpaintengine.QPaintEngine
-proc onpaintEngine*(self: QDateTimeEdit, slot: proc(super: QDateTimeEditpaintEngineBase): gen_qpaintengine.QPaintEngine) =
+type QDateTimeEditpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
+proc onpaintEngine*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditpaintEngineProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEditpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var tmp = new Cb
+  var tmp = new QDateTimeEditpaintEngineProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_paintEngine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_paintEngine(self: ptr cQDateTimeEdit, slot: int): pointer {.exportc: "miqt_exec_callback_QDateTimeEdit_paintEngine ".} =
-  type Cb = proc(super: QDateTimeEditpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_paintEngine(QDateTimeEdit(h: self), )
+  var nimfunc = cast[ptr QDateTimeEditpaintEngineProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_mouseDoubleClickEvent(self: QDateTimeEdit, event: gen_qevent.QMouseEvent): void =
-
+proc QDateTimeEditmouseDoubleClickEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qevent.QMouseEvent): void =
 
   fQDateTimeEdit_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
-type QDateTimeEditmouseDoubleClickEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseDoubleClickEvent*(self: QDateTimeEdit, slot: proc(super: QDateTimeEditmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void) =
+type QDateTimeEditmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseDoubleClickEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditmouseDoubleClickEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEditmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QDateTimeEditmouseDoubleClickEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_mouseDoubleClickEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_mouseDoubleClickEvent(self: ptr cQDateTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateTimeEdit_mouseDoubleClickEvent ".} =
-  type Cb = proc(super: QDateTimeEditmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseDoubleClickEvent(QDateTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QDateTimeEditmouseDoubleClickEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_enterEvent(self: QDateTimeEdit, event: gen_qevent.QEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QDateTimeEditenterEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qevent.QEnterEvent): void =
 
   fQDateTimeEdit_virtualbase_enterEvent(self.h, event.h)
 
-type QDateTimeEditenterEventBase* = proc(event: gen_qevent.QEnterEvent): void
-proc onenterEvent*(self: QDateTimeEdit, slot: proc(super: QDateTimeEditenterEventBase, event: gen_qevent.QEnterEvent): void) =
+type QDateTimeEditenterEventProc* = proc(event: gen_qevent.QEnterEvent): void
+proc onenterEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditenterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEditenterEventBase, event: gen_qevent.QEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QDateTimeEditenterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_enterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_enterEvent(self: ptr cQDateTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateTimeEdit_enterEvent ".} =
-  type Cb = proc(super: QDateTimeEditenterEventBase, event: gen_qevent.QEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QEnterEvent): auto =
-    callVirtualBase_enterEvent(QDateTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QDateTimeEditenterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_leaveEvent(self: QDateTimeEdit, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QDateTimeEditleaveEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qcoreevent.QEvent): void =
 
   fQDateTimeEdit_virtualbase_leaveEvent(self.h, event.h)
 
-type QDateTimeEditleaveEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onleaveEvent*(self: QDateTimeEdit, slot: proc(super: QDateTimeEditleaveEventBase, event: gen_qcoreevent.QEvent): void) =
+type QDateTimeEditleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onleaveEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditleaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEditleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QDateTimeEditleaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_leaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_leaveEvent(self: ptr cQDateTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateTimeEdit_leaveEvent ".} =
-  type Cb = proc(super: QDateTimeEditleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_leaveEvent(QDateTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QDateTimeEditleaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_moveEvent(self: QDateTimeEdit, event: gen_qevent.QMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QDateTimeEditmoveEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qevent.QMoveEvent): void =
 
   fQDateTimeEdit_virtualbase_moveEvent(self.h, event.h)
 
-type QDateTimeEditmoveEventBase* = proc(event: gen_qevent.QMoveEvent): void
-proc onmoveEvent*(self: QDateTimeEdit, slot: proc(super: QDateTimeEditmoveEventBase, event: gen_qevent.QMoveEvent): void) =
+type QDateTimeEditmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
+proc onmoveEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditmoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEditmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QDateTimeEditmoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_moveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_moveEvent(self: ptr cQDateTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateTimeEdit_moveEvent ".} =
-  type Cb = proc(super: QDateTimeEditmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMoveEvent): auto =
-    callVirtualBase_moveEvent(QDateTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QDateTimeEditmoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_tabletEvent(self: QDateTimeEdit, event: gen_qevent.QTabletEvent): void =
-
+  nimfunc[](slotval1)
+proc QDateTimeEdittabletEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qevent.QTabletEvent): void =
 
   fQDateTimeEdit_virtualbase_tabletEvent(self.h, event.h)
 
-type QDateTimeEdittabletEventBase* = proc(event: gen_qevent.QTabletEvent): void
-proc ontabletEvent*(self: QDateTimeEdit, slot: proc(super: QDateTimeEdittabletEventBase, event: gen_qevent.QTabletEvent): void) =
+type QDateTimeEdittabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
+proc ontabletEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEdittabletEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEdittabletEventBase, event: gen_qevent.QTabletEvent): void
-  var tmp = new Cb
+  var tmp = new QDateTimeEdittabletEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_tabletEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_tabletEvent(self: ptr cQDateTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateTimeEdit_tabletEvent ".} =
-  type Cb = proc(super: QDateTimeEdittabletEventBase, event: gen_qevent.QTabletEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QTabletEvent): auto =
-    callVirtualBase_tabletEvent(QDateTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QDateTimeEdittabletEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QTabletEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_actionEvent(self: QDateTimeEdit, event: gen_qevent.QActionEvent): void =
-
+  nimfunc[](slotval1)
+proc QDateTimeEditactionEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qevent.QActionEvent): void =
 
   fQDateTimeEdit_virtualbase_actionEvent(self.h, event.h)
 
-type QDateTimeEditactionEventBase* = proc(event: gen_qevent.QActionEvent): void
-proc onactionEvent*(self: QDateTimeEdit, slot: proc(super: QDateTimeEditactionEventBase, event: gen_qevent.QActionEvent): void) =
+type QDateTimeEditactionEventProc* = proc(event: gen_qevent.QActionEvent): void
+proc onactionEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditactionEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEditactionEventBase, event: gen_qevent.QActionEvent): void
-  var tmp = new Cb
+  var tmp = new QDateTimeEditactionEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_actionEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_actionEvent(self: ptr cQDateTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateTimeEdit_actionEvent ".} =
-  type Cb = proc(super: QDateTimeEditactionEventBase, event: gen_qevent.QActionEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QActionEvent): auto =
-    callVirtualBase_actionEvent(QDateTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QDateTimeEditactionEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QActionEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragEnterEvent(self: QDateTimeEdit, event: gen_qevent.QDragEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QDateTimeEditdragEnterEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qevent.QDragEnterEvent): void =
 
   fQDateTimeEdit_virtualbase_dragEnterEvent(self.h, event.h)
 
-type QDateTimeEditdragEnterEventBase* = proc(event: gen_qevent.QDragEnterEvent): void
-proc ondragEnterEvent*(self: QDateTimeEdit, slot: proc(super: QDateTimeEditdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void) =
+type QDateTimeEditdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
+proc ondragEnterEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditdragEnterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEditdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QDateTimeEditdragEnterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_dragEnterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_dragEnterEvent(self: ptr cQDateTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateTimeEdit_dragEnterEvent ".} =
-  type Cb = proc(super: QDateTimeEditdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragEnterEvent): auto =
-    callVirtualBase_dragEnterEvent(QDateTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QDateTimeEditdragEnterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragMoveEvent(self: QDateTimeEdit, event: gen_qevent.QDragMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QDateTimeEditdragMoveEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qevent.QDragMoveEvent): void =
 
   fQDateTimeEdit_virtualbase_dragMoveEvent(self.h, event.h)
 
-type QDateTimeEditdragMoveEventBase* = proc(event: gen_qevent.QDragMoveEvent): void
-proc ondragMoveEvent*(self: QDateTimeEdit, slot: proc(super: QDateTimeEditdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void) =
+type QDateTimeEditdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
+proc ondragMoveEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditdragMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEditdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QDateTimeEditdragMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_dragMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_dragMoveEvent(self: ptr cQDateTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateTimeEdit_dragMoveEvent ".} =
-  type Cb = proc(super: QDateTimeEditdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragMoveEvent): auto =
-    callVirtualBase_dragMoveEvent(QDateTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QDateTimeEditdragMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragLeaveEvent(self: QDateTimeEdit, event: gen_qevent.QDragLeaveEvent): void =
-
+  nimfunc[](slotval1)
+proc QDateTimeEditdragLeaveEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qevent.QDragLeaveEvent): void =
 
   fQDateTimeEdit_virtualbase_dragLeaveEvent(self.h, event.h)
 
-type QDateTimeEditdragLeaveEventBase* = proc(event: gen_qevent.QDragLeaveEvent): void
-proc ondragLeaveEvent*(self: QDateTimeEdit, slot: proc(super: QDateTimeEditdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void) =
+type QDateTimeEditdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
+proc ondragLeaveEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditdragLeaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEditdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var tmp = new Cb
+  var tmp = new QDateTimeEditdragLeaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_dragLeaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_dragLeaveEvent(self: ptr cQDateTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateTimeEdit_dragLeaveEvent ".} =
-  type Cb = proc(super: QDateTimeEditdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragLeaveEvent): auto =
-    callVirtualBase_dragLeaveEvent(QDateTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QDateTimeEditdragLeaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragLeaveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dropEvent(self: QDateTimeEdit, event: gen_qevent.QDropEvent): void =
-
+  nimfunc[](slotval1)
+proc QDateTimeEditdropEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qevent.QDropEvent): void =
 
   fQDateTimeEdit_virtualbase_dropEvent(self.h, event.h)
 
-type QDateTimeEditdropEventBase* = proc(event: gen_qevent.QDropEvent): void
-proc ondropEvent*(self: QDateTimeEdit, slot: proc(super: QDateTimeEditdropEventBase, event: gen_qevent.QDropEvent): void) =
+type QDateTimeEditdropEventProc* = proc(event: gen_qevent.QDropEvent): void
+proc ondropEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditdropEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEditdropEventBase, event: gen_qevent.QDropEvent): void
-  var tmp = new Cb
+  var tmp = new QDateTimeEditdropEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_dropEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_dropEvent(self: ptr cQDateTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateTimeEdit_dropEvent ".} =
-  type Cb = proc(super: QDateTimeEditdropEventBase, event: gen_qevent.QDropEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDropEvent): auto =
-    callVirtualBase_dropEvent(QDateTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QDateTimeEditdropEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDropEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_nativeEvent(self: QDateTimeEdit, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
-
+  nimfunc[](slotval1)
+proc QDateTimeEditnativeEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
 
   fQDateTimeEdit_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
-type QDateTimeEditnativeEventBase* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-proc onnativeEvent*(self: QDateTimeEdit, slot: proc(super: QDateTimeEditnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool) =
+type QDateTimeEditnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
+proc onnativeEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditnativeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEditnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-  var tmp = new Cb
+  var tmp = new QDateTimeEditnativeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_nativeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_nativeEvent(self: ptr cQDateTimeEdit, slot: int, eventType: struct_miqt_string, message: pointer, resultVal: ptr uint): bool {.exportc: "miqt_exec_callback_QDateTimeEdit_nativeEvent ".} =
-  type Cb = proc(super: QDateTimeEditnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(eventType: seq[byte], message: pointer, resultVal: ptr uint): auto =
-    callVirtualBase_nativeEvent(QDateTimeEdit(h: self), eventType, message, resultVal)
+  var nimfunc = cast[ptr QDateTimeEditnativeEventProc](cast[pointer](slot))
   var veventType_bytearray = eventType
   var veventTypex_ret = @(toOpenArrayByte(veventType_bytearray.data, 0, int(veventType_bytearray.len)-1))
   c_free(veventType_bytearray.data)
@@ -2011,286 +1765,236 @@ proc miqt_exec_callback_QDateTimeEdit_nativeEvent(self: ptr cQDateTimeEdit, slot
   let slotval3 = resultVal
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_metric(self: QDateTimeEdit, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint =
-
+proc QDateTimeEditmetric*(self: gen_qdatetimeedit_types.QDateTimeEdit, param1: cint): cint =
 
   fQDateTimeEdit_virtualbase_metric(self.h, cint(param1))
 
-type QDateTimeEditmetricBase* = proc(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-proc onmetric*(self: QDateTimeEdit, slot: proc(super: QDateTimeEditmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint) =
+type QDateTimeEditmetricProc* = proc(param1: cint): cint
+proc onmetric*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditmetricProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEditmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var tmp = new Cb
+  var tmp = new QDateTimeEditmetricProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_metric(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_metric(self: ptr cQDateTimeEdit, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QDateTimeEdit_metric ".} =
-  type Cb = proc(super: QDateTimeEditmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): auto =
-    callVirtualBase_metric(QDateTimeEdit(h: self), param1)
-  let slotval1 = gen_qpaintdevice.QPaintDevicePaintDeviceMetric(param1)
+  var nimfunc = cast[ptr QDateTimeEditmetricProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_initPainter(self: QDateTimeEdit, painter: gen_qpainter.QPainter): void =
-
+proc QDateTimeEditinitPainter*(self: gen_qdatetimeedit_types.QDateTimeEdit, painter: gen_qpainter.QPainter): void =
 
   fQDateTimeEdit_virtualbase_initPainter(self.h, painter.h)
 
-type QDateTimeEditinitPainterBase* = proc(painter: gen_qpainter.QPainter): void
-proc oninitPainter*(self: QDateTimeEdit, slot: proc(super: QDateTimeEditinitPainterBase, painter: gen_qpainter.QPainter): void) =
+type QDateTimeEditinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
+proc oninitPainter*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditinitPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEditinitPainterBase, painter: gen_qpainter.QPainter): void
-  var tmp = new Cb
+  var tmp = new QDateTimeEditinitPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_initPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_initPainter(self: ptr cQDateTimeEdit, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_QDateTimeEdit_initPainter ".} =
-  type Cb = proc(super: QDateTimeEditinitPainterBase, painter: gen_qpainter.QPainter): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter): auto =
-    callVirtualBase_initPainter(QDateTimeEdit(h: self), painter)
+  var nimfunc = cast[ptr QDateTimeEditinitPainterProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_redirected(self: QDateTimeEdit, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
+  nimfunc[](slotval1)
+proc QDateTimeEditredirected*(self: gen_qdatetimeedit_types.QDateTimeEdit, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
 
   gen_qpaintdevice.QPaintDevice(h: fQDateTimeEdit_virtualbase_redirected(self.h, offset.h))
 
-type QDateTimeEditredirectedBase* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-proc onredirected*(self: QDateTimeEdit, slot: proc(super: QDateTimeEditredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice) =
+type QDateTimeEditredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
+proc onredirected*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditredirectedProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEditredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var tmp = new Cb
+  var tmp = new QDateTimeEditredirectedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_redirected(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_redirected(self: ptr cQDateTimeEdit, slot: int, offset: pointer): pointer {.exportc: "miqt_exec_callback_QDateTimeEdit_redirected ".} =
-  type Cb = proc(super: QDateTimeEditredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(offset: gen_qpoint.QPoint): auto =
-    callVirtualBase_redirected(QDateTimeEdit(h: self), offset)
+  var nimfunc = cast[ptr QDateTimeEditredirectedProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: offset)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_sharedPainter(self: QDateTimeEdit, ): gen_qpainter.QPainter =
-
+proc QDateTimeEditsharedPainter*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): gen_qpainter.QPainter =
 
   gen_qpainter.QPainter(h: fQDateTimeEdit_virtualbase_sharedPainter(self.h))
 
-type QDateTimeEditsharedPainterBase* = proc(): gen_qpainter.QPainter
-proc onsharedPainter*(self: QDateTimeEdit, slot: proc(super: QDateTimeEditsharedPainterBase): gen_qpainter.QPainter) =
+type QDateTimeEditsharedPainterProc* = proc(): gen_qpainter.QPainter
+proc onsharedPainter*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditsharedPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEditsharedPainterBase): gen_qpainter.QPainter
-  var tmp = new Cb
+  var tmp = new QDateTimeEditsharedPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_sharedPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_sharedPainter(self: ptr cQDateTimeEdit, slot: int): pointer {.exportc: "miqt_exec_callback_QDateTimeEdit_sharedPainter ".} =
-  type Cb = proc(super: QDateTimeEditsharedPainterBase): gen_qpainter.QPainter
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sharedPainter(QDateTimeEdit(h: self), )
+  var nimfunc = cast[ptr QDateTimeEditsharedPainterProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_inputMethodEvent(self: QDateTimeEdit, param1: gen_qevent.QInputMethodEvent): void =
-
+proc QDateTimeEditinputMethodEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, param1: gen_qevent.QInputMethodEvent): void =
 
   fQDateTimeEdit_virtualbase_inputMethodEvent(self.h, param1.h)
 
-type QDateTimeEditinputMethodEventBase* = proc(param1: gen_qevent.QInputMethodEvent): void
-proc oninputMethodEvent*(self: QDateTimeEdit, slot: proc(super: QDateTimeEditinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void) =
+type QDateTimeEditinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
+proc oninputMethodEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditinputMethodEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEditinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var tmp = new Cb
+  var tmp = new QDateTimeEditinputMethodEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_inputMethodEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_inputMethodEvent(self: ptr cQDateTimeEdit, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QDateTimeEdit_inputMethodEvent ".} =
-  type Cb = proc(super: QDateTimeEditinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QInputMethodEvent): auto =
-    callVirtualBase_inputMethodEvent(QDateTimeEdit(h: self), param1)
+  var nimfunc = cast[ptr QDateTimeEditinputMethodEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QInputMethodEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_eventFilter(self: QDateTimeEdit, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[](slotval1)
+proc QDateTimeEditeventFilter*(self: gen_qdatetimeedit_types.QDateTimeEdit, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQDateTimeEdit_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QDateTimeEditeventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QDateTimeEdit, slot: proc(super: QDateTimeEditeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QDateTimeEditeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEditeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QDateTimeEditeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_eventFilter(self: ptr cQDateTimeEdit, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QDateTimeEdit_eventFilter ".} =
-  type Cb = proc(super: QDateTimeEditeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QDateTimeEdit(h: self), watched, event)
+  var nimfunc = cast[ptr QDateTimeEditeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_childEvent(self: QDateTimeEdit, event: gen_qcoreevent.QChildEvent): void =
-
+proc QDateTimeEditchildEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qcoreevent.QChildEvent): void =
 
   fQDateTimeEdit_virtualbase_childEvent(self.h, event.h)
 
-type QDateTimeEditchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QDateTimeEdit, slot: proc(super: QDateTimeEditchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QDateTimeEditchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEditchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QDateTimeEditchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_childEvent(self: ptr cQDateTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateTimeEdit_childEvent ".} =
-  type Cb = proc(super: QDateTimeEditchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QDateTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QDateTimeEditchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QDateTimeEdit, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QDateTimeEditcustomEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qcoreevent.QEvent): void =
 
   fQDateTimeEdit_virtualbase_customEvent(self.h, event.h)
 
-type QDateTimeEditcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QDateTimeEdit, slot: proc(super: QDateTimeEditcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QDateTimeEditcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEditcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QDateTimeEditcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_customEvent(self: ptr cQDateTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateTimeEdit_customEvent ".} =
-  type Cb = proc(super: QDateTimeEditcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QDateTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QDateTimeEditcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QDateTimeEdit, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QDateTimeEditconnectNotify*(self: gen_qdatetimeedit_types.QDateTimeEdit, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQDateTimeEdit_virtualbase_connectNotify(self.h, signal.h)
 
-type QDateTimeEditconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QDateTimeEdit, slot: proc(super: QDateTimeEditconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QDateTimeEditconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEditconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QDateTimeEditconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_connectNotify(self: ptr cQDateTimeEdit, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QDateTimeEdit_connectNotify ".} =
-  type Cb = proc(super: QDateTimeEditconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QDateTimeEdit(h: self), signal)
+  var nimfunc = cast[ptr QDateTimeEditconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QDateTimeEdit, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QDateTimeEditdisconnectNotify*(self: gen_qdatetimeedit_types.QDateTimeEdit, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQDateTimeEdit_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QDateTimeEditdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QDateTimeEdit, slot: proc(super: QDateTimeEditdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QDateTimeEditdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateTimeEditdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QDateTimeEditdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateTimeEdit_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateTimeEdit_disconnectNotify(self: ptr cQDateTimeEdit, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QDateTimeEdit_disconnectNotify ".} =
-  type Cb = proc(super: QDateTimeEditdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QDateTimeEdit(h: self), signal)
+  var nimfunc = cast[ptr QDateTimeEditdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QDateTimeEdit): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qdatetimeedit_types.QDateTimeEdit): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQDateTimeEdit_staticMetaObject())
-proc delete*(self: QDateTimeEdit) =
+proc delete*(self: gen_qdatetimeedit_types.QDateTimeEdit) =
   fcQDateTimeEdit_delete(self.h)
 
-func init*(T: type QTimeEdit, h: ptr cQTimeEdit): QTimeEdit =
+func init*(T: type gen_qdatetimeedit_types.QTimeEdit, h: ptr cQTimeEdit): gen_qdatetimeedit_types.QTimeEdit =
   T(h: h)
-proc create*(T: type QTimeEdit, parent: gen_qwidget.QWidget): QTimeEdit =
+proc create*(T: type gen_qdatetimeedit_types.QTimeEdit, parent: gen_qwidget.QWidget): gen_qdatetimeedit_types.QTimeEdit =
 
-  QTimeEdit.init(fcQTimeEdit_new(parent.h))
-proc create*(T: type QTimeEdit, ): QTimeEdit =
+  gen_qdatetimeedit_types.QTimeEdit.init(fcQTimeEdit_new(parent.h))
+proc create*(T: type gen_qdatetimeedit_types.QTimeEdit, ): gen_qdatetimeedit_types.QTimeEdit =
 
-  QTimeEdit.init(fcQTimeEdit_new2())
-proc create2*(T: type QTimeEdit, time: gen_qdatetime.QTime): QTimeEdit =
+  gen_qdatetimeedit_types.QTimeEdit.init(fcQTimeEdit_new2())
+proc create2*(T: type gen_qdatetimeedit_types.QTimeEdit, time: gen_qdatetime.QTime): gen_qdatetimeedit_types.QTimeEdit =
 
-  QTimeEdit.init(fcQTimeEdit_new3(time.h))
-proc create*(T: type QTimeEdit, time: gen_qdatetime.QTime, parent: gen_qwidget.QWidget): QTimeEdit =
+  gen_qdatetimeedit_types.QTimeEdit.init(fcQTimeEdit_new3(time.h))
+proc create*(T: type gen_qdatetimeedit_types.QTimeEdit, time: gen_qdatetime.QTime, parent: gen_qwidget.QWidget): gen_qdatetimeedit_types.QTimeEdit =
 
-  QTimeEdit.init(fcQTimeEdit_new4(time.h, parent.h))
-proc metaObject*(self: QTimeEdit, ): gen_qobjectdefs.QMetaObject =
+  gen_qdatetimeedit_types.QTimeEdit.init(fcQTimeEdit_new4(time.h, parent.h))
+proc metaObject*(self: gen_qdatetimeedit_types.QTimeEdit, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQTimeEdit_metaObject(self.h))
 
-proc metacast*(self: QTimeEdit, param1: cstring): pointer =
+proc metacast*(self: gen_qdatetimeedit_types.QTimeEdit, param1: cstring): pointer =
 
   fcQTimeEdit_metacast(self.h, param1)
 
-proc metacall*(self: QTimeEdit, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qdatetimeedit_types.QTimeEdit, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQTimeEdit_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QTimeEdit, s: cstring): string =
+proc tr*(_: type gen_qdatetimeedit_types.QTimeEdit, s: cstring): string =
 
   let v_ms = fcQTimeEdit_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc userTimeChanged*(self: QTimeEdit, time: gen_qdatetime.QTime): void =
+proc userTimeChanged*(self: gen_qdatetimeedit_types.QTimeEdit, time: gen_qdatetime.QTime): void =
 
   fcQTimeEdit_userTimeChanged(self.h, time.h)
 
@@ -2302,308 +2006,248 @@ proc miqt_exec_callback_QTimeEdit_userTimeChanged(slot: int, time: pointer) {.ex
 
   nimfunc[](slotval1)
 
-proc onuserTimeChanged*(self: QTimeEdit, slot: proc(time: gen_qdatetime.QTime)) =
+proc onuserTimeChanged*(self: gen_qdatetimeedit_types.QTimeEdit, slot: proc(time: gen_qdatetime.QTime)) =
   type Cb = proc(time: gen_qdatetime.QTime)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQTimeEdit_connect_userTimeChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QTimeEdit, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qdatetimeedit_types.QTimeEdit, s: cstring, c: cstring): string =
 
   let v_ms = fcQTimeEdit_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QTimeEdit, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qdatetimeedit_types.QTimeEdit, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQTimeEdit_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QTimeEdit, ): gen_qobjectdefs.QMetaObject =
-
+proc QTimeEditmetaObject*(self: gen_qdatetimeedit_types.QTimeEdit, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQTimeEdit_virtualbase_metaObject(self.h))
 
-type QTimeEditmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QTimeEdit, slot: proc(super: QTimeEditmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QTimeEditmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEditmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEditmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QTimeEditmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_metaObject(self: ptr cQTimeEdit, slot: int): pointer {.exportc: "miqt_exec_callback_QTimeEdit_metaObject ".} =
-  type Cb = proc(super: QTimeEditmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QTimeEdit(h: self), )
+  var nimfunc = cast[ptr QTimeEditmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QTimeEdit, param1: cstring): pointer =
-
+proc QTimeEditmetacast*(self: gen_qdatetimeedit_types.QTimeEdit, param1: cstring): pointer =
 
   fQTimeEdit_virtualbase_metacast(self.h, param1)
 
-type QTimeEditmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QTimeEdit, slot: proc(super: QTimeEditmetacastBase, param1: cstring): pointer) =
+type QTimeEditmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEditmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEditmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QTimeEditmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_metacast(self: ptr cQTimeEdit, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QTimeEdit_metacast ".} =
-  type Cb = proc(super: QTimeEditmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QTimeEdit(h: self), param1)
+  var nimfunc = cast[ptr QTimeEditmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QTimeEdit, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QTimeEditmetacall*(self: gen_qdatetimeedit_types.QTimeEdit, param1: cint, param2: cint, param3: pointer): cint =
 
   fQTimeEdit_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QTimeEditmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QTimeEdit, slot: proc(super: QTimeEditmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QTimeEditmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEditmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEditmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QTimeEditmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_metacall(self: ptr cQTimeEdit, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QTimeEdit_metacall ".} =
-  type Cb = proc(super: QTimeEditmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QTimeEdit(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QTimeEditmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_sizeHint(self: QTimeEdit, ): gen_qsize.QSize =
-
+proc QTimeEditsizeHint*(self: gen_qdatetimeedit_types.QTimeEdit, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQTimeEdit_virtualbase_sizeHint(self.h))
 
-type QTimeEditsizeHintBase* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: QTimeEdit, slot: proc(super: QTimeEditsizeHintBase): gen_qsize.QSize) =
+type QTimeEditsizeHintProc* = proc(): gen_qsize.QSize
+proc onsizeHint*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEditsizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEditsizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QTimeEditsizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_sizeHint(self: ptr cQTimeEdit, slot: int): pointer {.exportc: "miqt_exec_callback_QTimeEdit_sizeHint ".} =
-  type Cb = proc(super: QTimeEditsizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sizeHint(QTimeEdit(h: self), )
+  var nimfunc = cast[ptr QTimeEditsizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_clear(self: QTimeEdit, ): void =
-
+proc QTimeEditclear*(self: gen_qdatetimeedit_types.QTimeEdit, ): void =
 
   fQTimeEdit_virtualbase_clear(self.h)
 
-type QTimeEditclearBase* = proc(): void
-proc onclear*(self: QTimeEdit, slot: proc(super: QTimeEditclearBase): void) =
+type QTimeEditclearProc* = proc(): void
+proc onclear*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEditclearProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEditclearBase): void
-  var tmp = new Cb
+  var tmp = new QTimeEditclearProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_clear(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_clear(self: ptr cQTimeEdit, slot: int): void {.exportc: "miqt_exec_callback_QTimeEdit_clear ".} =
-  type Cb = proc(super: QTimeEditclearBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_clear(QTimeEdit(h: self), )
+  var nimfunc = cast[ptr QTimeEditclearProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_stepBy(self: QTimeEdit, steps: cint): void =
-
+  nimfunc[]()
+proc QTimeEditstepBy*(self: gen_qdatetimeedit_types.QTimeEdit, steps: cint): void =
 
   fQTimeEdit_virtualbase_stepBy(self.h, steps)
 
-type QTimeEditstepByBase* = proc(steps: cint): void
-proc onstepBy*(self: QTimeEdit, slot: proc(super: QTimeEditstepByBase, steps: cint): void) =
+type QTimeEditstepByProc* = proc(steps: cint): void
+proc onstepBy*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEditstepByProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEditstepByBase, steps: cint): void
-  var tmp = new Cb
+  var tmp = new QTimeEditstepByProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_stepBy(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_stepBy(self: ptr cQTimeEdit, slot: int, steps: cint): void {.exportc: "miqt_exec_callback_QTimeEdit_stepBy ".} =
-  type Cb = proc(super: QTimeEditstepByBase, steps: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(steps: cint): auto =
-    callVirtualBase_stepBy(QTimeEdit(h: self), steps)
+  var nimfunc = cast[ptr QTimeEditstepByProc](cast[pointer](slot))
   let slotval1 = steps
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_event(self: QTimeEdit, event: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[](slotval1)
+proc QTimeEditevent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qcoreevent.QEvent): bool =
 
   fQTimeEdit_virtualbase_event(self.h, event.h)
 
-type QTimeEditeventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QTimeEdit, slot: proc(super: QTimeEditeventBase, event: gen_qcoreevent.QEvent): bool) =
+type QTimeEditeventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEditeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEditeventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QTimeEditeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_event(self: ptr cQTimeEdit, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QTimeEdit_event ".} =
-  type Cb = proc(super: QTimeEditeventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QTimeEditeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_keyPressEvent(self: QTimeEdit, event: gen_qevent.QKeyEvent): void =
-
+proc QTimeEditkeyPressEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qevent.QKeyEvent): void =
 
   fQTimeEdit_virtualbase_keyPressEvent(self.h, event.h)
 
-type QTimeEditkeyPressEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyPressEvent*(self: QTimeEdit, slot: proc(super: QTimeEditkeyPressEventBase, event: gen_qevent.QKeyEvent): void) =
+type QTimeEditkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyPressEvent*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEditkeyPressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEditkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QTimeEditkeyPressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_keyPressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_keyPressEvent(self: ptr cQTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTimeEdit_keyPressEvent ".} =
-  type Cb = proc(super: QTimeEditkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyPressEvent(QTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QTimeEditkeyPressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_wheelEvent(self: QTimeEdit, event: gen_qevent.QWheelEvent): void =
-
+  nimfunc[](slotval1)
+proc QTimeEditwheelEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qevent.QWheelEvent): void =
 
   fQTimeEdit_virtualbase_wheelEvent(self.h, event.h)
 
-type QTimeEditwheelEventBase* = proc(event: gen_qevent.QWheelEvent): void
-proc onwheelEvent*(self: QTimeEdit, slot: proc(super: QTimeEditwheelEventBase, event: gen_qevent.QWheelEvent): void) =
+type QTimeEditwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
+proc onwheelEvent*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEditwheelEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEditwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var tmp = new Cb
+  var tmp = new QTimeEditwheelEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_wheelEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_wheelEvent(self: ptr cQTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTimeEdit_wheelEvent ".} =
-  type Cb = proc(super: QTimeEditwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QWheelEvent): auto =
-    callVirtualBase_wheelEvent(QTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QTimeEditwheelEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QWheelEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusInEvent(self: QTimeEdit, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QTimeEditfocusInEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qevent.QFocusEvent): void =
 
   fQTimeEdit_virtualbase_focusInEvent(self.h, event.h)
 
-type QTimeEditfocusInEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusInEvent*(self: QTimeEdit, slot: proc(super: QTimeEditfocusInEventBase, event: gen_qevent.QFocusEvent): void) =
+type QTimeEditfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusInEvent*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEditfocusInEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEditfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QTimeEditfocusInEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_focusInEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_focusInEvent(self: ptr cQTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTimeEdit_focusInEvent ".} =
-  type Cb = proc(super: QTimeEditfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusInEvent(QTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QTimeEditfocusInEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusNextPrevChild(self: QTimeEdit, next: bool): bool =
-
+  nimfunc[](slotval1)
+proc QTimeEditfocusNextPrevChild*(self: gen_qdatetimeedit_types.QTimeEdit, next: bool): bool =
 
   fQTimeEdit_virtualbase_focusNextPrevChild(self.h, next)
 
-type QTimeEditfocusNextPrevChildBase* = proc(next: bool): bool
-proc onfocusNextPrevChild*(self: QTimeEdit, slot: proc(super: QTimeEditfocusNextPrevChildBase, next: bool): bool) =
+type QTimeEditfocusNextPrevChildProc* = proc(next: bool): bool
+proc onfocusNextPrevChild*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEditfocusNextPrevChildProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEditfocusNextPrevChildBase, next: bool): bool
-  var tmp = new Cb
+  var tmp = new QTimeEditfocusNextPrevChildProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_focusNextPrevChild(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_focusNextPrevChild(self: ptr cQTimeEdit, slot: int, next: bool): bool {.exportc: "miqt_exec_callback_QTimeEdit_focusNextPrevChild ".} =
-  type Cb = proc(super: QTimeEditfocusNextPrevChildBase, next: bool): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(next: bool): auto =
-    callVirtualBase_focusNextPrevChild(QTimeEdit(h: self), next)
+  var nimfunc = cast[ptr QTimeEditfocusNextPrevChildProc](cast[pointer](slot))
   let slotval1 = next
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_validate(self: QTimeEdit, input: string, pos: ptr cint): gen_qvalidator.QValidatorState =
+proc QTimeEditvalidate*(self: gen_qdatetimeedit_types.QTimeEdit, input: string, pos: ptr cint): cint =
 
+  cint(fQTimeEdit_virtualbase_validate(self.h, struct_miqt_string(data: input, len: csize_t(len(input))), pos))
 
-  gen_qvalidator.QValidatorState(fQTimeEdit_virtualbase_validate(self.h, struct_miqt_string(data: input, len: csize_t(len(input))), pos))
-
-type QTimeEditvalidateBase* = proc(input: string, pos: ptr cint): gen_qvalidator.QValidatorState
-proc onvalidate*(self: QTimeEdit, slot: proc(super: QTimeEditvalidateBase, input: string, pos: ptr cint): gen_qvalidator.QValidatorState) =
+type QTimeEditvalidateProc* = proc(input: string, pos: ptr cint): cint
+proc onvalidate*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEditvalidateProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEditvalidateBase, input: string, pos: ptr cint): gen_qvalidator.QValidatorState
-  var tmp = new Cb
+  var tmp = new QTimeEditvalidateProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_validate(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_validate(self: ptr cQTimeEdit, slot: int, input: struct_miqt_string, pos: ptr cint): cint {.exportc: "miqt_exec_callback_QTimeEdit_validate ".} =
-  type Cb = proc(super: QTimeEditvalidateBase, input: string, pos: ptr cint): gen_qvalidator.QValidatorState
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(input: string, pos: ptr cint): auto =
-    callVirtualBase_validate(QTimeEdit(h: self), input, pos)
+  var nimfunc = cast[ptr QTimeEditvalidateProc](cast[pointer](slot))
   let vinput_ms = input
   let vinputx_ret = string.fromBytes(toOpenArrayByte(vinput_ms.data, 0, int(vinput_ms.len)-1))
   c_free(vinput_ms.data)
@@ -2612,850 +2256,670 @@ proc miqt_exec_callback_QTimeEdit_validate(self: ptr cQTimeEdit, slot: int, inpu
   let slotval2 = pos
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   cint(virtualReturn)
-proc callVirtualBase_fixup(self: QTimeEdit, input: string): void =
-
+proc QTimeEditfixup*(self: gen_qdatetimeedit_types.QTimeEdit, input: string): void =
 
   fQTimeEdit_virtualbase_fixup(self.h, struct_miqt_string(data: input, len: csize_t(len(input))))
 
-type QTimeEditfixupBase* = proc(input: string): void
-proc onfixup*(self: QTimeEdit, slot: proc(super: QTimeEditfixupBase, input: string): void) =
+type QTimeEditfixupProc* = proc(input: string): void
+proc onfixup*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEditfixupProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEditfixupBase, input: string): void
-  var tmp = new Cb
+  var tmp = new QTimeEditfixupProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_fixup(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_fixup(self: ptr cQTimeEdit, slot: int, input: struct_miqt_string): void {.exportc: "miqt_exec_callback_QTimeEdit_fixup ".} =
-  type Cb = proc(super: QTimeEditfixupBase, input: string): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(input: string): auto =
-    callVirtualBase_fixup(QTimeEdit(h: self), input)
+  var nimfunc = cast[ptr QTimeEditfixupProc](cast[pointer](slot))
   let vinput_ms = input
   let vinputx_ret = string.fromBytes(toOpenArrayByte(vinput_ms.data, 0, int(vinput_ms.len)-1))
   c_free(vinput_ms.data)
   let slotval1 = vinputx_ret
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dateTimeFromText(self: QTimeEdit, text: string): gen_qdatetime.QDateTime =
-
+  nimfunc[](slotval1)
+proc QTimeEditdateTimeFromText*(self: gen_qdatetimeedit_types.QTimeEdit, text: string): gen_qdatetime.QDateTime =
 
   gen_qdatetime.QDateTime(h: fQTimeEdit_virtualbase_dateTimeFromText(self.h, struct_miqt_string(data: text, len: csize_t(len(text)))))
 
-type QTimeEditdateTimeFromTextBase* = proc(text: string): gen_qdatetime.QDateTime
-proc ondateTimeFromText*(self: QTimeEdit, slot: proc(super: QTimeEditdateTimeFromTextBase, text: string): gen_qdatetime.QDateTime) =
+type QTimeEditdateTimeFromTextProc* = proc(text: string): gen_qdatetime.QDateTime
+proc ondateTimeFromText*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEditdateTimeFromTextProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEditdateTimeFromTextBase, text: string): gen_qdatetime.QDateTime
-  var tmp = new Cb
+  var tmp = new QTimeEditdateTimeFromTextProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_dateTimeFromText(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_dateTimeFromText(self: ptr cQTimeEdit, slot: int, text: struct_miqt_string): pointer {.exportc: "miqt_exec_callback_QTimeEdit_dateTimeFromText ".} =
-  type Cb = proc(super: QTimeEditdateTimeFromTextBase, text: string): gen_qdatetime.QDateTime
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(text: string): auto =
-    callVirtualBase_dateTimeFromText(QTimeEdit(h: self), text)
+  var nimfunc = cast[ptr QTimeEditdateTimeFromTextProc](cast[pointer](slot))
   let vtext_ms = text
   let vtextx_ret = string.fromBytes(toOpenArrayByte(vtext_ms.data, 0, int(vtext_ms.len)-1))
   c_free(vtext_ms.data)
   let slotval1 = vtextx_ret
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_textFromDateTime(self: QTimeEdit, dt: gen_qdatetime.QDateTime): string =
-
+proc QTimeEdittextFromDateTime*(self: gen_qdatetimeedit_types.QTimeEdit, dt: gen_qdatetime.QDateTime): string =
 
   let v_ms = fQTimeEdit_virtualbase_textFromDateTime(self.h, dt.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-type QTimeEdittextFromDateTimeBase* = proc(dt: gen_qdatetime.QDateTime): string
-proc ontextFromDateTime*(self: QTimeEdit, slot: proc(super: QTimeEdittextFromDateTimeBase, dt: gen_qdatetime.QDateTime): string) =
+type QTimeEdittextFromDateTimeProc* = proc(dt: gen_qdatetime.QDateTime): string
+proc ontextFromDateTime*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEdittextFromDateTimeProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEdittextFromDateTimeBase, dt: gen_qdatetime.QDateTime): string
-  var tmp = new Cb
+  var tmp = new QTimeEdittextFromDateTimeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_textFromDateTime(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_textFromDateTime(self: ptr cQTimeEdit, slot: int, dt: pointer): struct_miqt_string {.exportc: "miqt_exec_callback_QTimeEdit_textFromDateTime ".} =
-  type Cb = proc(super: QTimeEdittextFromDateTimeBase, dt: gen_qdatetime.QDateTime): string
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(dt: gen_qdatetime.QDateTime): auto =
-    callVirtualBase_textFromDateTime(QTimeEdit(h: self), dt)
+  var nimfunc = cast[ptr QTimeEdittextFromDateTimeProc](cast[pointer](slot))
   let slotval1 = gen_qdatetime.QDateTime(h: dt)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
-proc callVirtualBase_stepEnabled(self: QTimeEdit, ): gen_qabstractspinbox.QAbstractSpinBoxStepEnabledFlag =
+proc QTimeEditstepEnabled*(self: gen_qdatetimeedit_types.QTimeEdit, ): cint =
 
+  cint(fQTimeEdit_virtualbase_stepEnabled(self.h))
 
-  gen_qabstractspinbox.QAbstractSpinBoxStepEnabledFlag(fQTimeEdit_virtualbase_stepEnabled(self.h))
-
-type QTimeEditstepEnabledBase* = proc(): gen_qabstractspinbox.QAbstractSpinBoxStepEnabledFlag
-proc onstepEnabled*(self: QTimeEdit, slot: proc(super: QTimeEditstepEnabledBase): gen_qabstractspinbox.QAbstractSpinBoxStepEnabledFlag) =
+type QTimeEditstepEnabledProc* = proc(): cint
+proc onstepEnabled*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEditstepEnabledProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEditstepEnabledBase): gen_qabstractspinbox.QAbstractSpinBoxStepEnabledFlag
-  var tmp = new Cb
+  var tmp = new QTimeEditstepEnabledProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_stepEnabled(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_stepEnabled(self: ptr cQTimeEdit, slot: int): cint {.exportc: "miqt_exec_callback_QTimeEdit_stepEnabled ".} =
-  type Cb = proc(super: QTimeEditstepEnabledBase): gen_qabstractspinbox.QAbstractSpinBoxStepEnabledFlag
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_stepEnabled(QTimeEdit(h: self), )
+  var nimfunc = cast[ptr QTimeEditstepEnabledProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   cint(virtualReturn)
-proc callVirtualBase_mousePressEvent(self: QTimeEdit, event: gen_qevent.QMouseEvent): void =
-
+proc QTimeEditmousePressEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qevent.QMouseEvent): void =
 
   fQTimeEdit_virtualbase_mousePressEvent(self.h, event.h)
 
-type QTimeEditmousePressEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmousePressEvent*(self: QTimeEdit, slot: proc(super: QTimeEditmousePressEventBase, event: gen_qevent.QMouseEvent): void) =
+type QTimeEditmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmousePressEvent*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEditmousePressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEditmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QTimeEditmousePressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_mousePressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_mousePressEvent(self: ptr cQTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTimeEdit_mousePressEvent ".} =
-  type Cb = proc(super: QTimeEditmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mousePressEvent(QTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QTimeEditmousePressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_paintEvent(self: QTimeEdit, event: gen_qevent.QPaintEvent): void =
-
+  nimfunc[](slotval1)
+proc QTimeEditpaintEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qevent.QPaintEvent): void =
 
   fQTimeEdit_virtualbase_paintEvent(self.h, event.h)
 
-type QTimeEditpaintEventBase* = proc(event: gen_qevent.QPaintEvent): void
-proc onpaintEvent*(self: QTimeEdit, slot: proc(super: QTimeEditpaintEventBase, event: gen_qevent.QPaintEvent): void) =
+type QTimeEditpaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
+proc onpaintEvent*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEditpaintEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEditpaintEventBase, event: gen_qevent.QPaintEvent): void
-  var tmp = new Cb
+  var tmp = new QTimeEditpaintEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_paintEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_paintEvent(self: ptr cQTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTimeEdit_paintEvent ".} =
-  type Cb = proc(super: QTimeEditpaintEventBase, event: gen_qevent.QPaintEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QPaintEvent): auto =
-    callVirtualBase_paintEvent(QTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QTimeEditpaintEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QPaintEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_initStyleOption(self: QTimeEdit, option: gen_qstyleoption.QStyleOptionSpinBox): void =
-
+  nimfunc[](slotval1)
+proc QTimeEditinitStyleOption*(self: gen_qdatetimeedit_types.QTimeEdit, option: gen_qstyleoption.QStyleOptionSpinBox): void =
 
   fQTimeEdit_virtualbase_initStyleOption(self.h, option.h)
 
-type QTimeEditinitStyleOptionBase* = proc(option: gen_qstyleoption.QStyleOptionSpinBox): void
-proc oninitStyleOption*(self: QTimeEdit, slot: proc(super: QTimeEditinitStyleOptionBase, option: gen_qstyleoption.QStyleOptionSpinBox): void) =
+type QTimeEditinitStyleOptionProc* = proc(option: gen_qstyleoption.QStyleOptionSpinBox): void
+proc oninitStyleOption*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEditinitStyleOptionProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEditinitStyleOptionBase, option: gen_qstyleoption.QStyleOptionSpinBox): void
-  var tmp = new Cb
+  var tmp = new QTimeEditinitStyleOptionProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_initStyleOption(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_initStyleOption(self: ptr cQTimeEdit, slot: int, option: pointer): void {.exportc: "miqt_exec_callback_QTimeEdit_initStyleOption ".} =
-  type Cb = proc(super: QTimeEditinitStyleOptionBase, option: gen_qstyleoption.QStyleOptionSpinBox): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(option: gen_qstyleoption.QStyleOptionSpinBox): auto =
-    callVirtualBase_initStyleOption(QTimeEdit(h: self), option)
+  var nimfunc = cast[ptr QTimeEditinitStyleOptionProc](cast[pointer](slot))
   let slotval1 = gen_qstyleoption.QStyleOptionSpinBox(h: option)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_minimumSizeHint(self: QTimeEdit, ): gen_qsize.QSize =
-
+  nimfunc[](slotval1)
+proc QTimeEditminimumSizeHint*(self: gen_qdatetimeedit_types.QTimeEdit, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQTimeEdit_virtualbase_minimumSizeHint(self.h))
 
-type QTimeEditminimumSizeHintBase* = proc(): gen_qsize.QSize
-proc onminimumSizeHint*(self: QTimeEdit, slot: proc(super: QTimeEditminimumSizeHintBase): gen_qsize.QSize) =
+type QTimeEditminimumSizeHintProc* = proc(): gen_qsize.QSize
+proc onminimumSizeHint*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEditminimumSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEditminimumSizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QTimeEditminimumSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_minimumSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_minimumSizeHint(self: ptr cQTimeEdit, slot: int): pointer {.exportc: "miqt_exec_callback_QTimeEdit_minimumSizeHint ".} =
-  type Cb = proc(super: QTimeEditminimumSizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_minimumSizeHint(QTimeEdit(h: self), )
+  var nimfunc = cast[ptr QTimeEditminimumSizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_inputMethodQuery(self: QTimeEdit, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant =
-
+proc QTimeEditinputMethodQuery*(self: gen_qdatetimeedit_types.QTimeEdit, param1: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQTimeEdit_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
-type QTimeEditinputMethodQueryBase* = proc(param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-proc oninputMethodQuery*(self: QTimeEdit, slot: proc(super: QTimeEditinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant) =
+type QTimeEditinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
+proc oninputMethodQuery*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEditinputMethodQueryProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEditinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QTimeEditinputMethodQueryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_inputMethodQuery(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_inputMethodQuery(self: ptr cQTimeEdit, slot: int, param1: cint): pointer {.exportc: "miqt_exec_callback_QTimeEdit_inputMethodQuery ".} =
-  type Cb = proc(super: QTimeEditinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qnamespace.InputMethodQuery): auto =
-    callVirtualBase_inputMethodQuery(QTimeEdit(h: self), param1)
-  let slotval1 = gen_qnamespace.InputMethodQuery(param1)
+  var nimfunc = cast[ptr QTimeEditinputMethodQueryProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_resizeEvent(self: QTimeEdit, event: gen_qevent.QResizeEvent): void =
-
+proc QTimeEditresizeEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qevent.QResizeEvent): void =
 
   fQTimeEdit_virtualbase_resizeEvent(self.h, event.h)
 
-type QTimeEditresizeEventBase* = proc(event: gen_qevent.QResizeEvent): void
-proc onresizeEvent*(self: QTimeEdit, slot: proc(super: QTimeEditresizeEventBase, event: gen_qevent.QResizeEvent): void) =
+type QTimeEditresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
+proc onresizeEvent*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEditresizeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEditresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var tmp = new Cb
+  var tmp = new QTimeEditresizeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_resizeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_resizeEvent(self: ptr cQTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTimeEdit_resizeEvent ".} =
-  type Cb = proc(super: QTimeEditresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QResizeEvent): auto =
-    callVirtualBase_resizeEvent(QTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QTimeEditresizeEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QResizeEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyReleaseEvent(self: QTimeEdit, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QTimeEditkeyReleaseEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qevent.QKeyEvent): void =
 
   fQTimeEdit_virtualbase_keyReleaseEvent(self.h, event.h)
 
-type QTimeEditkeyReleaseEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyReleaseEvent*(self: QTimeEdit, slot: proc(super: QTimeEditkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void) =
+type QTimeEditkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyReleaseEvent*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEditkeyReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEditkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QTimeEditkeyReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_keyReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_keyReleaseEvent(self: ptr cQTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTimeEdit_keyReleaseEvent ".} =
-  type Cb = proc(super: QTimeEditkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyReleaseEvent(QTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QTimeEditkeyReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusOutEvent(self: QTimeEdit, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QTimeEditfocusOutEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qevent.QFocusEvent): void =
 
   fQTimeEdit_virtualbase_focusOutEvent(self.h, event.h)
 
-type QTimeEditfocusOutEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusOutEvent*(self: QTimeEdit, slot: proc(super: QTimeEditfocusOutEventBase, event: gen_qevent.QFocusEvent): void) =
+type QTimeEditfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusOutEvent*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEditfocusOutEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEditfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QTimeEditfocusOutEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_focusOutEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_focusOutEvent(self: ptr cQTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTimeEdit_focusOutEvent ".} =
-  type Cb = proc(super: QTimeEditfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusOutEvent(QTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QTimeEditfocusOutEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_contextMenuEvent(self: QTimeEdit, event: gen_qevent.QContextMenuEvent): void =
-
+  nimfunc[](slotval1)
+proc QTimeEditcontextMenuEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qevent.QContextMenuEvent): void =
 
   fQTimeEdit_virtualbase_contextMenuEvent(self.h, event.h)
 
-type QTimeEditcontextMenuEventBase* = proc(event: gen_qevent.QContextMenuEvent): void
-proc oncontextMenuEvent*(self: QTimeEdit, slot: proc(super: QTimeEditcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void) =
+type QTimeEditcontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
+proc oncontextMenuEvent*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEditcontextMenuEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEditcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var tmp = new Cb
+  var tmp = new QTimeEditcontextMenuEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_contextMenuEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_contextMenuEvent(self: ptr cQTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTimeEdit_contextMenuEvent ".} =
-  type Cb = proc(super: QTimeEditcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QContextMenuEvent): auto =
-    callVirtualBase_contextMenuEvent(QTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QTimeEditcontextMenuEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QContextMenuEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_changeEvent(self: QTimeEdit, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QTimeEditchangeEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qcoreevent.QEvent): void =
 
   fQTimeEdit_virtualbase_changeEvent(self.h, event.h)
 
-type QTimeEditchangeEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onchangeEvent*(self: QTimeEdit, slot: proc(super: QTimeEditchangeEventBase, event: gen_qcoreevent.QEvent): void) =
+type QTimeEditchangeEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onchangeEvent*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEditchangeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEditchangeEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QTimeEditchangeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_changeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_changeEvent(self: ptr cQTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTimeEdit_changeEvent ".} =
-  type Cb = proc(super: QTimeEditchangeEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_changeEvent(QTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QTimeEditchangeEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_closeEvent(self: QTimeEdit, event: gen_qevent.QCloseEvent): void =
-
+  nimfunc[](slotval1)
+proc QTimeEditcloseEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qevent.QCloseEvent): void =
 
   fQTimeEdit_virtualbase_closeEvent(self.h, event.h)
 
-type QTimeEditcloseEventBase* = proc(event: gen_qevent.QCloseEvent): void
-proc oncloseEvent*(self: QTimeEdit, slot: proc(super: QTimeEditcloseEventBase, event: gen_qevent.QCloseEvent): void) =
+type QTimeEditcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
+proc oncloseEvent*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEditcloseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEditcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var tmp = new Cb
+  var tmp = new QTimeEditcloseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_closeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_closeEvent(self: ptr cQTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTimeEdit_closeEvent ".} =
-  type Cb = proc(super: QTimeEditcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QCloseEvent): auto =
-    callVirtualBase_closeEvent(QTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QTimeEditcloseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QCloseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hideEvent(self: QTimeEdit, event: gen_qevent.QHideEvent): void =
-
+  nimfunc[](slotval1)
+proc QTimeEdithideEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qevent.QHideEvent): void =
 
   fQTimeEdit_virtualbase_hideEvent(self.h, event.h)
 
-type QTimeEdithideEventBase* = proc(event: gen_qevent.QHideEvent): void
-proc onhideEvent*(self: QTimeEdit, slot: proc(super: QTimeEdithideEventBase, event: gen_qevent.QHideEvent): void) =
+type QTimeEdithideEventProc* = proc(event: gen_qevent.QHideEvent): void
+proc onhideEvent*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEdithideEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEdithideEventBase, event: gen_qevent.QHideEvent): void
-  var tmp = new Cb
+  var tmp = new QTimeEdithideEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_hideEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_hideEvent(self: ptr cQTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTimeEdit_hideEvent ".} =
-  type Cb = proc(super: QTimeEdithideEventBase, event: gen_qevent.QHideEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QHideEvent): auto =
-    callVirtualBase_hideEvent(QTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QTimeEdithideEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QHideEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseReleaseEvent(self: QTimeEdit, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QTimeEditmouseReleaseEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qevent.QMouseEvent): void =
 
   fQTimeEdit_virtualbase_mouseReleaseEvent(self.h, event.h)
 
-type QTimeEditmouseReleaseEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseReleaseEvent*(self: QTimeEdit, slot: proc(super: QTimeEditmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void) =
+type QTimeEditmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseReleaseEvent*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEditmouseReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEditmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QTimeEditmouseReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_mouseReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_mouseReleaseEvent(self: ptr cQTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTimeEdit_mouseReleaseEvent ".} =
-  type Cb = proc(super: QTimeEditmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseReleaseEvent(QTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QTimeEditmouseReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseMoveEvent(self: QTimeEdit, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QTimeEditmouseMoveEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qevent.QMouseEvent): void =
 
   fQTimeEdit_virtualbase_mouseMoveEvent(self.h, event.h)
 
-type QTimeEditmouseMoveEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseMoveEvent*(self: QTimeEdit, slot: proc(super: QTimeEditmouseMoveEventBase, event: gen_qevent.QMouseEvent): void) =
+type QTimeEditmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseMoveEvent*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEditmouseMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEditmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QTimeEditmouseMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_mouseMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_mouseMoveEvent(self: ptr cQTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTimeEdit_mouseMoveEvent ".} =
-  type Cb = proc(super: QTimeEditmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseMoveEvent(QTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QTimeEditmouseMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_timerEvent(self: QTimeEdit, event: gen_qcoreevent.QTimerEvent): void =
-
+  nimfunc[](slotval1)
+proc QTimeEdittimerEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qcoreevent.QTimerEvent): void =
 
   fQTimeEdit_virtualbase_timerEvent(self.h, event.h)
 
-type QTimeEdittimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QTimeEdit, slot: proc(super: QTimeEdittimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QTimeEdittimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEdittimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEdittimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QTimeEdittimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_timerEvent(self: ptr cQTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTimeEdit_timerEvent ".} =
-  type Cb = proc(super: QTimeEdittimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QTimeEdittimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_showEvent(self: QTimeEdit, event: gen_qevent.QShowEvent): void =
-
+  nimfunc[](slotval1)
+proc QTimeEditshowEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qevent.QShowEvent): void =
 
   fQTimeEdit_virtualbase_showEvent(self.h, event.h)
 
-type QTimeEditshowEventBase* = proc(event: gen_qevent.QShowEvent): void
-proc onshowEvent*(self: QTimeEdit, slot: proc(super: QTimeEditshowEventBase, event: gen_qevent.QShowEvent): void) =
+type QTimeEditshowEventProc* = proc(event: gen_qevent.QShowEvent): void
+proc onshowEvent*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEditshowEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEditshowEventBase, event: gen_qevent.QShowEvent): void
-  var tmp = new Cb
+  var tmp = new QTimeEditshowEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_showEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_showEvent(self: ptr cQTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTimeEdit_showEvent ".} =
-  type Cb = proc(super: QTimeEditshowEventBase, event: gen_qevent.QShowEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QShowEvent): auto =
-    callVirtualBase_showEvent(QTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QTimeEditshowEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QShowEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_devType(self: QTimeEdit, ): cint =
-
+  nimfunc[](slotval1)
+proc QTimeEditdevType*(self: gen_qdatetimeedit_types.QTimeEdit, ): cint =
 
   fQTimeEdit_virtualbase_devType(self.h)
 
-type QTimeEditdevTypeBase* = proc(): cint
-proc ondevType*(self: QTimeEdit, slot: proc(super: QTimeEditdevTypeBase): cint) =
+type QTimeEditdevTypeProc* = proc(): cint
+proc ondevType*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEditdevTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEditdevTypeBase): cint
-  var tmp = new Cb
+  var tmp = new QTimeEditdevTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_devType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_devType(self: ptr cQTimeEdit, slot: int): cint {.exportc: "miqt_exec_callback_QTimeEdit_devType ".} =
-  type Cb = proc(super: QTimeEditdevTypeBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_devType(QTimeEdit(h: self), )
+  var nimfunc = cast[ptr QTimeEditdevTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setVisible(self: QTimeEdit, visible: bool): void =
-
+proc QTimeEditsetVisible*(self: gen_qdatetimeedit_types.QTimeEdit, visible: bool): void =
 
   fQTimeEdit_virtualbase_setVisible(self.h, visible)
 
-type QTimeEditsetVisibleBase* = proc(visible: bool): void
-proc onsetVisible*(self: QTimeEdit, slot: proc(super: QTimeEditsetVisibleBase, visible: bool): void) =
+type QTimeEditsetVisibleProc* = proc(visible: bool): void
+proc onsetVisible*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEditsetVisibleProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEditsetVisibleBase, visible: bool): void
-  var tmp = new Cb
+  var tmp = new QTimeEditsetVisibleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_setVisible(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_setVisible(self: ptr cQTimeEdit, slot: int, visible: bool): void {.exportc: "miqt_exec_callback_QTimeEdit_setVisible ".} =
-  type Cb = proc(super: QTimeEditsetVisibleBase, visible: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(visible: bool): auto =
-    callVirtualBase_setVisible(QTimeEdit(h: self), visible)
+  var nimfunc = cast[ptr QTimeEditsetVisibleProc](cast[pointer](slot))
   let slotval1 = visible
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_heightForWidth(self: QTimeEdit, param1: cint): cint =
-
+  nimfunc[](slotval1)
+proc QTimeEditheightForWidth*(self: gen_qdatetimeedit_types.QTimeEdit, param1: cint): cint =
 
   fQTimeEdit_virtualbase_heightForWidth(self.h, param1)
 
-type QTimeEditheightForWidthBase* = proc(param1: cint): cint
-proc onheightForWidth*(self: QTimeEdit, slot: proc(super: QTimeEditheightForWidthBase, param1: cint): cint) =
+type QTimeEditheightForWidthProc* = proc(param1: cint): cint
+proc onheightForWidth*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEditheightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEditheightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QTimeEditheightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_heightForWidth(self: ptr cQTimeEdit, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QTimeEdit_heightForWidth ".} =
-  type Cb = proc(super: QTimeEditheightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_heightForWidth(QTimeEdit(h: self), param1)
+  var nimfunc = cast[ptr QTimeEditheightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_hasHeightForWidth(self: QTimeEdit, ): bool =
-
+proc QTimeEdithasHeightForWidth*(self: gen_qdatetimeedit_types.QTimeEdit, ): bool =
 
   fQTimeEdit_virtualbase_hasHeightForWidth(self.h)
 
-type QTimeEdithasHeightForWidthBase* = proc(): bool
-proc onhasHeightForWidth*(self: QTimeEdit, slot: proc(super: QTimeEdithasHeightForWidthBase): bool) =
+type QTimeEdithasHeightForWidthProc* = proc(): bool
+proc onhasHeightForWidth*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEdithasHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEdithasHeightForWidthBase): bool
-  var tmp = new Cb
+  var tmp = new QTimeEdithasHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_hasHeightForWidth(self: ptr cQTimeEdit, slot: int): bool {.exportc: "miqt_exec_callback_QTimeEdit_hasHeightForWidth ".} =
-  type Cb = proc(super: QTimeEdithasHeightForWidthBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasHeightForWidth(QTimeEdit(h: self), )
+  var nimfunc = cast[ptr QTimeEdithasHeightForWidthProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_paintEngine(self: QTimeEdit, ): gen_qpaintengine.QPaintEngine =
-
+proc QTimeEditpaintEngine*(self: gen_qdatetimeedit_types.QTimeEdit, ): gen_qpaintengine.QPaintEngine =
 
   gen_qpaintengine.QPaintEngine(h: fQTimeEdit_virtualbase_paintEngine(self.h))
 
-type QTimeEditpaintEngineBase* = proc(): gen_qpaintengine.QPaintEngine
-proc onpaintEngine*(self: QTimeEdit, slot: proc(super: QTimeEditpaintEngineBase): gen_qpaintengine.QPaintEngine) =
+type QTimeEditpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
+proc onpaintEngine*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEditpaintEngineProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEditpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var tmp = new Cb
+  var tmp = new QTimeEditpaintEngineProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_paintEngine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_paintEngine(self: ptr cQTimeEdit, slot: int): pointer {.exportc: "miqt_exec_callback_QTimeEdit_paintEngine ".} =
-  type Cb = proc(super: QTimeEditpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_paintEngine(QTimeEdit(h: self), )
+  var nimfunc = cast[ptr QTimeEditpaintEngineProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_mouseDoubleClickEvent(self: QTimeEdit, event: gen_qevent.QMouseEvent): void =
-
+proc QTimeEditmouseDoubleClickEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qevent.QMouseEvent): void =
 
   fQTimeEdit_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
-type QTimeEditmouseDoubleClickEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseDoubleClickEvent*(self: QTimeEdit, slot: proc(super: QTimeEditmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void) =
+type QTimeEditmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseDoubleClickEvent*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEditmouseDoubleClickEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEditmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QTimeEditmouseDoubleClickEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_mouseDoubleClickEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_mouseDoubleClickEvent(self: ptr cQTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTimeEdit_mouseDoubleClickEvent ".} =
-  type Cb = proc(super: QTimeEditmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseDoubleClickEvent(QTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QTimeEditmouseDoubleClickEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_enterEvent(self: QTimeEdit, event: gen_qevent.QEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QTimeEditenterEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qevent.QEnterEvent): void =
 
   fQTimeEdit_virtualbase_enterEvent(self.h, event.h)
 
-type QTimeEditenterEventBase* = proc(event: gen_qevent.QEnterEvent): void
-proc onenterEvent*(self: QTimeEdit, slot: proc(super: QTimeEditenterEventBase, event: gen_qevent.QEnterEvent): void) =
+type QTimeEditenterEventProc* = proc(event: gen_qevent.QEnterEvent): void
+proc onenterEvent*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEditenterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEditenterEventBase, event: gen_qevent.QEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QTimeEditenterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_enterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_enterEvent(self: ptr cQTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTimeEdit_enterEvent ".} =
-  type Cb = proc(super: QTimeEditenterEventBase, event: gen_qevent.QEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QEnterEvent): auto =
-    callVirtualBase_enterEvent(QTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QTimeEditenterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_leaveEvent(self: QTimeEdit, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QTimeEditleaveEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qcoreevent.QEvent): void =
 
   fQTimeEdit_virtualbase_leaveEvent(self.h, event.h)
 
-type QTimeEditleaveEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onleaveEvent*(self: QTimeEdit, slot: proc(super: QTimeEditleaveEventBase, event: gen_qcoreevent.QEvent): void) =
+type QTimeEditleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onleaveEvent*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEditleaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEditleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QTimeEditleaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_leaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_leaveEvent(self: ptr cQTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTimeEdit_leaveEvent ".} =
-  type Cb = proc(super: QTimeEditleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_leaveEvent(QTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QTimeEditleaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_moveEvent(self: QTimeEdit, event: gen_qevent.QMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QTimeEditmoveEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qevent.QMoveEvent): void =
 
   fQTimeEdit_virtualbase_moveEvent(self.h, event.h)
 
-type QTimeEditmoveEventBase* = proc(event: gen_qevent.QMoveEvent): void
-proc onmoveEvent*(self: QTimeEdit, slot: proc(super: QTimeEditmoveEventBase, event: gen_qevent.QMoveEvent): void) =
+type QTimeEditmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
+proc onmoveEvent*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEditmoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEditmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QTimeEditmoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_moveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_moveEvent(self: ptr cQTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTimeEdit_moveEvent ".} =
-  type Cb = proc(super: QTimeEditmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMoveEvent): auto =
-    callVirtualBase_moveEvent(QTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QTimeEditmoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_tabletEvent(self: QTimeEdit, event: gen_qevent.QTabletEvent): void =
-
+  nimfunc[](slotval1)
+proc QTimeEdittabletEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qevent.QTabletEvent): void =
 
   fQTimeEdit_virtualbase_tabletEvent(self.h, event.h)
 
-type QTimeEdittabletEventBase* = proc(event: gen_qevent.QTabletEvent): void
-proc ontabletEvent*(self: QTimeEdit, slot: proc(super: QTimeEdittabletEventBase, event: gen_qevent.QTabletEvent): void) =
+type QTimeEdittabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
+proc ontabletEvent*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEdittabletEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEdittabletEventBase, event: gen_qevent.QTabletEvent): void
-  var tmp = new Cb
+  var tmp = new QTimeEdittabletEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_tabletEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_tabletEvent(self: ptr cQTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTimeEdit_tabletEvent ".} =
-  type Cb = proc(super: QTimeEdittabletEventBase, event: gen_qevent.QTabletEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QTabletEvent): auto =
-    callVirtualBase_tabletEvent(QTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QTimeEdittabletEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QTabletEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_actionEvent(self: QTimeEdit, event: gen_qevent.QActionEvent): void =
-
+  nimfunc[](slotval1)
+proc QTimeEditactionEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qevent.QActionEvent): void =
 
   fQTimeEdit_virtualbase_actionEvent(self.h, event.h)
 
-type QTimeEditactionEventBase* = proc(event: gen_qevent.QActionEvent): void
-proc onactionEvent*(self: QTimeEdit, slot: proc(super: QTimeEditactionEventBase, event: gen_qevent.QActionEvent): void) =
+type QTimeEditactionEventProc* = proc(event: gen_qevent.QActionEvent): void
+proc onactionEvent*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEditactionEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEditactionEventBase, event: gen_qevent.QActionEvent): void
-  var tmp = new Cb
+  var tmp = new QTimeEditactionEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_actionEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_actionEvent(self: ptr cQTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTimeEdit_actionEvent ".} =
-  type Cb = proc(super: QTimeEditactionEventBase, event: gen_qevent.QActionEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QActionEvent): auto =
-    callVirtualBase_actionEvent(QTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QTimeEditactionEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QActionEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragEnterEvent(self: QTimeEdit, event: gen_qevent.QDragEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QTimeEditdragEnterEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qevent.QDragEnterEvent): void =
 
   fQTimeEdit_virtualbase_dragEnterEvent(self.h, event.h)
 
-type QTimeEditdragEnterEventBase* = proc(event: gen_qevent.QDragEnterEvent): void
-proc ondragEnterEvent*(self: QTimeEdit, slot: proc(super: QTimeEditdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void) =
+type QTimeEditdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
+proc ondragEnterEvent*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEditdragEnterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEditdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QTimeEditdragEnterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_dragEnterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_dragEnterEvent(self: ptr cQTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTimeEdit_dragEnterEvent ".} =
-  type Cb = proc(super: QTimeEditdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragEnterEvent): auto =
-    callVirtualBase_dragEnterEvent(QTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QTimeEditdragEnterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragMoveEvent(self: QTimeEdit, event: gen_qevent.QDragMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QTimeEditdragMoveEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qevent.QDragMoveEvent): void =
 
   fQTimeEdit_virtualbase_dragMoveEvent(self.h, event.h)
 
-type QTimeEditdragMoveEventBase* = proc(event: gen_qevent.QDragMoveEvent): void
-proc ondragMoveEvent*(self: QTimeEdit, slot: proc(super: QTimeEditdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void) =
+type QTimeEditdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
+proc ondragMoveEvent*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEditdragMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEditdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QTimeEditdragMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_dragMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_dragMoveEvent(self: ptr cQTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTimeEdit_dragMoveEvent ".} =
-  type Cb = proc(super: QTimeEditdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragMoveEvent): auto =
-    callVirtualBase_dragMoveEvent(QTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QTimeEditdragMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragLeaveEvent(self: QTimeEdit, event: gen_qevent.QDragLeaveEvent): void =
-
+  nimfunc[](slotval1)
+proc QTimeEditdragLeaveEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qevent.QDragLeaveEvent): void =
 
   fQTimeEdit_virtualbase_dragLeaveEvent(self.h, event.h)
 
-type QTimeEditdragLeaveEventBase* = proc(event: gen_qevent.QDragLeaveEvent): void
-proc ondragLeaveEvent*(self: QTimeEdit, slot: proc(super: QTimeEditdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void) =
+type QTimeEditdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
+proc ondragLeaveEvent*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEditdragLeaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEditdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var tmp = new Cb
+  var tmp = new QTimeEditdragLeaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_dragLeaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_dragLeaveEvent(self: ptr cQTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTimeEdit_dragLeaveEvent ".} =
-  type Cb = proc(super: QTimeEditdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragLeaveEvent): auto =
-    callVirtualBase_dragLeaveEvent(QTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QTimeEditdragLeaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragLeaveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dropEvent(self: QTimeEdit, event: gen_qevent.QDropEvent): void =
-
+  nimfunc[](slotval1)
+proc QTimeEditdropEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qevent.QDropEvent): void =
 
   fQTimeEdit_virtualbase_dropEvent(self.h, event.h)
 
-type QTimeEditdropEventBase* = proc(event: gen_qevent.QDropEvent): void
-proc ondropEvent*(self: QTimeEdit, slot: proc(super: QTimeEditdropEventBase, event: gen_qevent.QDropEvent): void) =
+type QTimeEditdropEventProc* = proc(event: gen_qevent.QDropEvent): void
+proc ondropEvent*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEditdropEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEditdropEventBase, event: gen_qevent.QDropEvent): void
-  var tmp = new Cb
+  var tmp = new QTimeEditdropEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_dropEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_dropEvent(self: ptr cQTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTimeEdit_dropEvent ".} =
-  type Cb = proc(super: QTimeEditdropEventBase, event: gen_qevent.QDropEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDropEvent): auto =
-    callVirtualBase_dropEvent(QTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QTimeEditdropEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDropEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_nativeEvent(self: QTimeEdit, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
-
+  nimfunc[](slotval1)
+proc QTimeEditnativeEvent*(self: gen_qdatetimeedit_types.QTimeEdit, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
 
   fQTimeEdit_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
-type QTimeEditnativeEventBase* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-proc onnativeEvent*(self: QTimeEdit, slot: proc(super: QTimeEditnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool) =
+type QTimeEditnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
+proc onnativeEvent*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEditnativeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEditnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-  var tmp = new Cb
+  var tmp = new QTimeEditnativeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_nativeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_nativeEvent(self: ptr cQTimeEdit, slot: int, eventType: struct_miqt_string, message: pointer, resultVal: ptr uint): bool {.exportc: "miqt_exec_callback_QTimeEdit_nativeEvent ".} =
-  type Cb = proc(super: QTimeEditnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(eventType: seq[byte], message: pointer, resultVal: ptr uint): auto =
-    callVirtualBase_nativeEvent(QTimeEdit(h: self), eventType, message, resultVal)
+  var nimfunc = cast[ptr QTimeEditnativeEventProc](cast[pointer](slot))
   var veventType_bytearray = eventType
   var veventTypex_ret = @(toOpenArrayByte(veventType_bytearray.data, 0, int(veventType_bytearray.len)-1))
   c_free(veventType_bytearray.data)
@@ -3466,286 +2930,236 @@ proc miqt_exec_callback_QTimeEdit_nativeEvent(self: ptr cQTimeEdit, slot: int, e
   let slotval3 = resultVal
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_metric(self: QTimeEdit, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint =
-
+proc QTimeEditmetric*(self: gen_qdatetimeedit_types.QTimeEdit, param1: cint): cint =
 
   fQTimeEdit_virtualbase_metric(self.h, cint(param1))
 
-type QTimeEditmetricBase* = proc(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-proc onmetric*(self: QTimeEdit, slot: proc(super: QTimeEditmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint) =
+type QTimeEditmetricProc* = proc(param1: cint): cint
+proc onmetric*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEditmetricProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEditmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var tmp = new Cb
+  var tmp = new QTimeEditmetricProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_metric(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_metric(self: ptr cQTimeEdit, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QTimeEdit_metric ".} =
-  type Cb = proc(super: QTimeEditmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): auto =
-    callVirtualBase_metric(QTimeEdit(h: self), param1)
-  let slotval1 = gen_qpaintdevice.QPaintDevicePaintDeviceMetric(param1)
+  var nimfunc = cast[ptr QTimeEditmetricProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_initPainter(self: QTimeEdit, painter: gen_qpainter.QPainter): void =
-
+proc QTimeEditinitPainter*(self: gen_qdatetimeedit_types.QTimeEdit, painter: gen_qpainter.QPainter): void =
 
   fQTimeEdit_virtualbase_initPainter(self.h, painter.h)
 
-type QTimeEditinitPainterBase* = proc(painter: gen_qpainter.QPainter): void
-proc oninitPainter*(self: QTimeEdit, slot: proc(super: QTimeEditinitPainterBase, painter: gen_qpainter.QPainter): void) =
+type QTimeEditinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
+proc oninitPainter*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEditinitPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEditinitPainterBase, painter: gen_qpainter.QPainter): void
-  var tmp = new Cb
+  var tmp = new QTimeEditinitPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_initPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_initPainter(self: ptr cQTimeEdit, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_QTimeEdit_initPainter ".} =
-  type Cb = proc(super: QTimeEditinitPainterBase, painter: gen_qpainter.QPainter): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter): auto =
-    callVirtualBase_initPainter(QTimeEdit(h: self), painter)
+  var nimfunc = cast[ptr QTimeEditinitPainterProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_redirected(self: QTimeEdit, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
+  nimfunc[](slotval1)
+proc QTimeEditredirected*(self: gen_qdatetimeedit_types.QTimeEdit, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
 
   gen_qpaintdevice.QPaintDevice(h: fQTimeEdit_virtualbase_redirected(self.h, offset.h))
 
-type QTimeEditredirectedBase* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-proc onredirected*(self: QTimeEdit, slot: proc(super: QTimeEditredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice) =
+type QTimeEditredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
+proc onredirected*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEditredirectedProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEditredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var tmp = new Cb
+  var tmp = new QTimeEditredirectedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_redirected(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_redirected(self: ptr cQTimeEdit, slot: int, offset: pointer): pointer {.exportc: "miqt_exec_callback_QTimeEdit_redirected ".} =
-  type Cb = proc(super: QTimeEditredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(offset: gen_qpoint.QPoint): auto =
-    callVirtualBase_redirected(QTimeEdit(h: self), offset)
+  var nimfunc = cast[ptr QTimeEditredirectedProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: offset)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_sharedPainter(self: QTimeEdit, ): gen_qpainter.QPainter =
-
+proc QTimeEditsharedPainter*(self: gen_qdatetimeedit_types.QTimeEdit, ): gen_qpainter.QPainter =
 
   gen_qpainter.QPainter(h: fQTimeEdit_virtualbase_sharedPainter(self.h))
 
-type QTimeEditsharedPainterBase* = proc(): gen_qpainter.QPainter
-proc onsharedPainter*(self: QTimeEdit, slot: proc(super: QTimeEditsharedPainterBase): gen_qpainter.QPainter) =
+type QTimeEditsharedPainterProc* = proc(): gen_qpainter.QPainter
+proc onsharedPainter*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEditsharedPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEditsharedPainterBase): gen_qpainter.QPainter
-  var tmp = new Cb
+  var tmp = new QTimeEditsharedPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_sharedPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_sharedPainter(self: ptr cQTimeEdit, slot: int): pointer {.exportc: "miqt_exec_callback_QTimeEdit_sharedPainter ".} =
-  type Cb = proc(super: QTimeEditsharedPainterBase): gen_qpainter.QPainter
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sharedPainter(QTimeEdit(h: self), )
+  var nimfunc = cast[ptr QTimeEditsharedPainterProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_inputMethodEvent(self: QTimeEdit, param1: gen_qevent.QInputMethodEvent): void =
-
+proc QTimeEditinputMethodEvent*(self: gen_qdatetimeedit_types.QTimeEdit, param1: gen_qevent.QInputMethodEvent): void =
 
   fQTimeEdit_virtualbase_inputMethodEvent(self.h, param1.h)
 
-type QTimeEditinputMethodEventBase* = proc(param1: gen_qevent.QInputMethodEvent): void
-proc oninputMethodEvent*(self: QTimeEdit, slot: proc(super: QTimeEditinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void) =
+type QTimeEditinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
+proc oninputMethodEvent*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEditinputMethodEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEditinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var tmp = new Cb
+  var tmp = new QTimeEditinputMethodEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_inputMethodEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_inputMethodEvent(self: ptr cQTimeEdit, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QTimeEdit_inputMethodEvent ".} =
-  type Cb = proc(super: QTimeEditinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QInputMethodEvent): auto =
-    callVirtualBase_inputMethodEvent(QTimeEdit(h: self), param1)
+  var nimfunc = cast[ptr QTimeEditinputMethodEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QInputMethodEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_eventFilter(self: QTimeEdit, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[](slotval1)
+proc QTimeEditeventFilter*(self: gen_qdatetimeedit_types.QTimeEdit, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQTimeEdit_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QTimeEditeventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QTimeEdit, slot: proc(super: QTimeEditeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QTimeEditeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEditeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEditeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QTimeEditeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_eventFilter(self: ptr cQTimeEdit, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QTimeEdit_eventFilter ".} =
-  type Cb = proc(super: QTimeEditeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QTimeEdit(h: self), watched, event)
+  var nimfunc = cast[ptr QTimeEditeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_childEvent(self: QTimeEdit, event: gen_qcoreevent.QChildEvent): void =
-
+proc QTimeEditchildEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qcoreevent.QChildEvent): void =
 
   fQTimeEdit_virtualbase_childEvent(self.h, event.h)
 
-type QTimeEditchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QTimeEdit, slot: proc(super: QTimeEditchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QTimeEditchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEditchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEditchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QTimeEditchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_childEvent(self: ptr cQTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTimeEdit_childEvent ".} =
-  type Cb = proc(super: QTimeEditchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QTimeEditchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QTimeEdit, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QTimeEditcustomEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qcoreevent.QEvent): void =
 
   fQTimeEdit_virtualbase_customEvent(self.h, event.h)
 
-type QTimeEditcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QTimeEdit, slot: proc(super: QTimeEditcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QTimeEditcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEditcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEditcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QTimeEditcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_customEvent(self: ptr cQTimeEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QTimeEdit_customEvent ".} =
-  type Cb = proc(super: QTimeEditcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QTimeEdit(h: self), event)
+  var nimfunc = cast[ptr QTimeEditcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QTimeEdit, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QTimeEditconnectNotify*(self: gen_qdatetimeedit_types.QTimeEdit, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQTimeEdit_virtualbase_connectNotify(self.h, signal.h)
 
-type QTimeEditconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QTimeEdit, slot: proc(super: QTimeEditconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QTimeEditconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEditconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEditconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QTimeEditconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_connectNotify(self: ptr cQTimeEdit, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QTimeEdit_connectNotify ".} =
-  type Cb = proc(super: QTimeEditconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QTimeEdit(h: self), signal)
+  var nimfunc = cast[ptr QTimeEditconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QTimeEdit, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QTimeEditdisconnectNotify*(self: gen_qdatetimeedit_types.QTimeEdit, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQTimeEdit_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QTimeEditdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QTimeEdit, slot: proc(super: QTimeEditdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QTimeEditdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEditdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QTimeEditdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QTimeEditdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQTimeEdit_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QTimeEdit_disconnectNotify(self: ptr cQTimeEdit, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QTimeEdit_disconnectNotify ".} =
-  type Cb = proc(super: QTimeEditdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QTimeEdit(h: self), signal)
+  var nimfunc = cast[ptr QTimeEditdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QTimeEdit): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qdatetimeedit_types.QTimeEdit): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQTimeEdit_staticMetaObject())
-proc delete*(self: QTimeEdit) =
+proc delete*(self: gen_qdatetimeedit_types.QTimeEdit) =
   fcQTimeEdit_delete(self.h)
 
-func init*(T: type QDateEdit, h: ptr cQDateEdit): QDateEdit =
+func init*(T: type gen_qdatetimeedit_types.QDateEdit, h: ptr cQDateEdit): gen_qdatetimeedit_types.QDateEdit =
   T(h: h)
-proc create*(T: type QDateEdit, parent: gen_qwidget.QWidget): QDateEdit =
+proc create*(T: type gen_qdatetimeedit_types.QDateEdit, parent: gen_qwidget.QWidget): gen_qdatetimeedit_types.QDateEdit =
 
-  QDateEdit.init(fcQDateEdit_new(parent.h))
-proc create*(T: type QDateEdit, ): QDateEdit =
+  gen_qdatetimeedit_types.QDateEdit.init(fcQDateEdit_new(parent.h))
+proc create*(T: type gen_qdatetimeedit_types.QDateEdit, ): gen_qdatetimeedit_types.QDateEdit =
 
-  QDateEdit.init(fcQDateEdit_new2())
-proc create2*(T: type QDateEdit, date: gen_qdatetime.QDate): QDateEdit =
+  gen_qdatetimeedit_types.QDateEdit.init(fcQDateEdit_new2())
+proc create2*(T: type gen_qdatetimeedit_types.QDateEdit, date: gen_qdatetime.QDate): gen_qdatetimeedit_types.QDateEdit =
 
-  QDateEdit.init(fcQDateEdit_new3(date.h))
-proc create*(T: type QDateEdit, date: gen_qdatetime.QDate, parent: gen_qwidget.QWidget): QDateEdit =
+  gen_qdatetimeedit_types.QDateEdit.init(fcQDateEdit_new3(date.h))
+proc create*(T: type gen_qdatetimeedit_types.QDateEdit, date: gen_qdatetime.QDate, parent: gen_qwidget.QWidget): gen_qdatetimeedit_types.QDateEdit =
 
-  QDateEdit.init(fcQDateEdit_new4(date.h, parent.h))
-proc metaObject*(self: QDateEdit, ): gen_qobjectdefs.QMetaObject =
+  gen_qdatetimeedit_types.QDateEdit.init(fcQDateEdit_new4(date.h, parent.h))
+proc metaObject*(self: gen_qdatetimeedit_types.QDateEdit, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQDateEdit_metaObject(self.h))
 
-proc metacast*(self: QDateEdit, param1: cstring): pointer =
+proc metacast*(self: gen_qdatetimeedit_types.QDateEdit, param1: cstring): pointer =
 
   fcQDateEdit_metacast(self.h, param1)
 
-proc metacall*(self: QDateEdit, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qdatetimeedit_types.QDateEdit, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQDateEdit_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QDateEdit, s: cstring): string =
+proc tr*(_: type gen_qdatetimeedit_types.QDateEdit, s: cstring): string =
 
   let v_ms = fcQDateEdit_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc userDateChanged*(self: QDateEdit, date: gen_qdatetime.QDate): void =
+proc userDateChanged*(self: gen_qdatetimeedit_types.QDateEdit, date: gen_qdatetime.QDate): void =
 
   fcQDateEdit_userDateChanged(self.h, date.h)
 
@@ -3757,308 +3171,248 @@ proc miqt_exec_callback_QDateEdit_userDateChanged(slot: int, date: pointer) {.ex
 
   nimfunc[](slotval1)
 
-proc onuserDateChanged*(self: QDateEdit, slot: proc(date: gen_qdatetime.QDate)) =
+proc onuserDateChanged*(self: gen_qdatetimeedit_types.QDateEdit, slot: proc(date: gen_qdatetime.QDate)) =
   type Cb = proc(date: gen_qdatetime.QDate)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQDateEdit_connect_userDateChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QDateEdit, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qdatetimeedit_types.QDateEdit, s: cstring, c: cstring): string =
 
   let v_ms = fcQDateEdit_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QDateEdit, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qdatetimeedit_types.QDateEdit, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQDateEdit_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc callVirtualBase_metaObject(self: QDateEdit, ): gen_qobjectdefs.QMetaObject =
-
+proc QDateEditmetaObject*(self: gen_qdatetimeedit_types.QDateEdit, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQDateEdit_virtualbase_metaObject(self.h))
 
-type QDateEditmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QDateEdit, slot: proc(super: QDateEditmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QDateEditmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEditmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEditmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QDateEditmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_metaObject(self: ptr cQDateEdit, slot: int): pointer {.exportc: "miqt_exec_callback_QDateEdit_metaObject ".} =
-  type Cb = proc(super: QDateEditmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QDateEdit(h: self), )
+  var nimfunc = cast[ptr QDateEditmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QDateEdit, param1: cstring): pointer =
-
+proc QDateEditmetacast*(self: gen_qdatetimeedit_types.QDateEdit, param1: cstring): pointer =
 
   fQDateEdit_virtualbase_metacast(self.h, param1)
 
-type QDateEditmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QDateEdit, slot: proc(super: QDateEditmetacastBase, param1: cstring): pointer) =
+type QDateEditmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEditmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEditmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QDateEditmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_metacast(self: ptr cQDateEdit, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QDateEdit_metacast ".} =
-  type Cb = proc(super: QDateEditmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QDateEdit(h: self), param1)
+  var nimfunc = cast[ptr QDateEditmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QDateEdit, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QDateEditmetacall*(self: gen_qdatetimeedit_types.QDateEdit, param1: cint, param2: cint, param3: pointer): cint =
 
   fQDateEdit_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QDateEditmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QDateEdit, slot: proc(super: QDateEditmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QDateEditmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEditmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEditmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QDateEditmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_metacall(self: ptr cQDateEdit, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QDateEdit_metacall ".} =
-  type Cb = proc(super: QDateEditmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QDateEdit(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QDateEditmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_sizeHint(self: QDateEdit, ): gen_qsize.QSize =
-
+proc QDateEditsizeHint*(self: gen_qdatetimeedit_types.QDateEdit, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQDateEdit_virtualbase_sizeHint(self.h))
 
-type QDateEditsizeHintBase* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: QDateEdit, slot: proc(super: QDateEditsizeHintBase): gen_qsize.QSize) =
+type QDateEditsizeHintProc* = proc(): gen_qsize.QSize
+proc onsizeHint*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEditsizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEditsizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QDateEditsizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_sizeHint(self: ptr cQDateEdit, slot: int): pointer {.exportc: "miqt_exec_callback_QDateEdit_sizeHint ".} =
-  type Cb = proc(super: QDateEditsizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sizeHint(QDateEdit(h: self), )
+  var nimfunc = cast[ptr QDateEditsizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_clear(self: QDateEdit, ): void =
-
+proc QDateEditclear*(self: gen_qdatetimeedit_types.QDateEdit, ): void =
 
   fQDateEdit_virtualbase_clear(self.h)
 
-type QDateEditclearBase* = proc(): void
-proc onclear*(self: QDateEdit, slot: proc(super: QDateEditclearBase): void) =
+type QDateEditclearProc* = proc(): void
+proc onclear*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEditclearProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEditclearBase): void
-  var tmp = new Cb
+  var tmp = new QDateEditclearProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_clear(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_clear(self: ptr cQDateEdit, slot: int): void {.exportc: "miqt_exec_callback_QDateEdit_clear ".} =
-  type Cb = proc(super: QDateEditclearBase): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_clear(QDateEdit(h: self), )
+  var nimfunc = cast[ptr QDateEditclearProc](cast[pointer](slot))
 
-  nimfunc[](superCall)
-proc callVirtualBase_stepBy(self: QDateEdit, steps: cint): void =
-
+  nimfunc[]()
+proc QDateEditstepBy*(self: gen_qdatetimeedit_types.QDateEdit, steps: cint): void =
 
   fQDateEdit_virtualbase_stepBy(self.h, steps)
 
-type QDateEditstepByBase* = proc(steps: cint): void
-proc onstepBy*(self: QDateEdit, slot: proc(super: QDateEditstepByBase, steps: cint): void) =
+type QDateEditstepByProc* = proc(steps: cint): void
+proc onstepBy*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEditstepByProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEditstepByBase, steps: cint): void
-  var tmp = new Cb
+  var tmp = new QDateEditstepByProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_stepBy(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_stepBy(self: ptr cQDateEdit, slot: int, steps: cint): void {.exportc: "miqt_exec_callback_QDateEdit_stepBy ".} =
-  type Cb = proc(super: QDateEditstepByBase, steps: cint): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(steps: cint): auto =
-    callVirtualBase_stepBy(QDateEdit(h: self), steps)
+  var nimfunc = cast[ptr QDateEditstepByProc](cast[pointer](slot))
   let slotval1 = steps
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_event(self: QDateEdit, event: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[](slotval1)
+proc QDateEditevent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qcoreevent.QEvent): bool =
 
   fQDateEdit_virtualbase_event(self.h, event.h)
 
-type QDateEditeventBase* = proc(event: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QDateEdit, slot: proc(super: QDateEditeventBase, event: gen_qcoreevent.QEvent): bool) =
+type QDateEditeventProc* = proc(event: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEditeventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEditeventBase, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QDateEditeventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_event(self: ptr cQDateEdit, slot: int, event: pointer): bool {.exportc: "miqt_exec_callback_QDateEdit_event ".} =
-  type Cb = proc(super: QDateEditeventBase, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QDateEdit(h: self), event)
+  var nimfunc = cast[ptr QDateEditeventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_keyPressEvent(self: QDateEdit, event: gen_qevent.QKeyEvent): void =
-
+proc QDateEditkeyPressEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qevent.QKeyEvent): void =
 
   fQDateEdit_virtualbase_keyPressEvent(self.h, event.h)
 
-type QDateEditkeyPressEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyPressEvent*(self: QDateEdit, slot: proc(super: QDateEditkeyPressEventBase, event: gen_qevent.QKeyEvent): void) =
+type QDateEditkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyPressEvent*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEditkeyPressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEditkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QDateEditkeyPressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_keyPressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_keyPressEvent(self: ptr cQDateEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateEdit_keyPressEvent ".} =
-  type Cb = proc(super: QDateEditkeyPressEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyPressEvent(QDateEdit(h: self), event)
+  var nimfunc = cast[ptr QDateEditkeyPressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_wheelEvent(self: QDateEdit, event: gen_qevent.QWheelEvent): void =
-
+  nimfunc[](slotval1)
+proc QDateEditwheelEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qevent.QWheelEvent): void =
 
   fQDateEdit_virtualbase_wheelEvent(self.h, event.h)
 
-type QDateEditwheelEventBase* = proc(event: gen_qevent.QWheelEvent): void
-proc onwheelEvent*(self: QDateEdit, slot: proc(super: QDateEditwheelEventBase, event: gen_qevent.QWheelEvent): void) =
+type QDateEditwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
+proc onwheelEvent*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEditwheelEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEditwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var tmp = new Cb
+  var tmp = new QDateEditwheelEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_wheelEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_wheelEvent(self: ptr cQDateEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateEdit_wheelEvent ".} =
-  type Cb = proc(super: QDateEditwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QWheelEvent): auto =
-    callVirtualBase_wheelEvent(QDateEdit(h: self), event)
+  var nimfunc = cast[ptr QDateEditwheelEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QWheelEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusInEvent(self: QDateEdit, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QDateEditfocusInEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qevent.QFocusEvent): void =
 
   fQDateEdit_virtualbase_focusInEvent(self.h, event.h)
 
-type QDateEditfocusInEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusInEvent*(self: QDateEdit, slot: proc(super: QDateEditfocusInEventBase, event: gen_qevent.QFocusEvent): void) =
+type QDateEditfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusInEvent*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEditfocusInEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEditfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QDateEditfocusInEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_focusInEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_focusInEvent(self: ptr cQDateEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateEdit_focusInEvent ".} =
-  type Cb = proc(super: QDateEditfocusInEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusInEvent(QDateEdit(h: self), event)
+  var nimfunc = cast[ptr QDateEditfocusInEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusNextPrevChild(self: QDateEdit, next: bool): bool =
-
+  nimfunc[](slotval1)
+proc QDateEditfocusNextPrevChild*(self: gen_qdatetimeedit_types.QDateEdit, next: bool): bool =
 
   fQDateEdit_virtualbase_focusNextPrevChild(self.h, next)
 
-type QDateEditfocusNextPrevChildBase* = proc(next: bool): bool
-proc onfocusNextPrevChild*(self: QDateEdit, slot: proc(super: QDateEditfocusNextPrevChildBase, next: bool): bool) =
+type QDateEditfocusNextPrevChildProc* = proc(next: bool): bool
+proc onfocusNextPrevChild*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEditfocusNextPrevChildProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEditfocusNextPrevChildBase, next: bool): bool
-  var tmp = new Cb
+  var tmp = new QDateEditfocusNextPrevChildProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_focusNextPrevChild(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_focusNextPrevChild(self: ptr cQDateEdit, slot: int, next: bool): bool {.exportc: "miqt_exec_callback_QDateEdit_focusNextPrevChild ".} =
-  type Cb = proc(super: QDateEditfocusNextPrevChildBase, next: bool): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(next: bool): auto =
-    callVirtualBase_focusNextPrevChild(QDateEdit(h: self), next)
+  var nimfunc = cast[ptr QDateEditfocusNextPrevChildProc](cast[pointer](slot))
   let slotval1 = next
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_validate(self: QDateEdit, input: string, pos: ptr cint): gen_qvalidator.QValidatorState =
+proc QDateEditvalidate*(self: gen_qdatetimeedit_types.QDateEdit, input: string, pos: ptr cint): cint =
 
+  cint(fQDateEdit_virtualbase_validate(self.h, struct_miqt_string(data: input, len: csize_t(len(input))), pos))
 
-  gen_qvalidator.QValidatorState(fQDateEdit_virtualbase_validate(self.h, struct_miqt_string(data: input, len: csize_t(len(input))), pos))
-
-type QDateEditvalidateBase* = proc(input: string, pos: ptr cint): gen_qvalidator.QValidatorState
-proc onvalidate*(self: QDateEdit, slot: proc(super: QDateEditvalidateBase, input: string, pos: ptr cint): gen_qvalidator.QValidatorState) =
+type QDateEditvalidateProc* = proc(input: string, pos: ptr cint): cint
+proc onvalidate*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEditvalidateProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEditvalidateBase, input: string, pos: ptr cint): gen_qvalidator.QValidatorState
-  var tmp = new Cb
+  var tmp = new QDateEditvalidateProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_validate(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_validate(self: ptr cQDateEdit, slot: int, input: struct_miqt_string, pos: ptr cint): cint {.exportc: "miqt_exec_callback_QDateEdit_validate ".} =
-  type Cb = proc(super: QDateEditvalidateBase, input: string, pos: ptr cint): gen_qvalidator.QValidatorState
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(input: string, pos: ptr cint): auto =
-    callVirtualBase_validate(QDateEdit(h: self), input, pos)
+  var nimfunc = cast[ptr QDateEditvalidateProc](cast[pointer](slot))
   let vinput_ms = input
   let vinputx_ret = string.fromBytes(toOpenArrayByte(vinput_ms.data, 0, int(vinput_ms.len)-1))
   c_free(vinput_ms.data)
@@ -4067,850 +3421,670 @@ proc miqt_exec_callback_QDateEdit_validate(self: ptr cQDateEdit, slot: int, inpu
   let slotval2 = pos
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   cint(virtualReturn)
-proc callVirtualBase_fixup(self: QDateEdit, input: string): void =
-
+proc QDateEditfixup*(self: gen_qdatetimeedit_types.QDateEdit, input: string): void =
 
   fQDateEdit_virtualbase_fixup(self.h, struct_miqt_string(data: input, len: csize_t(len(input))))
 
-type QDateEditfixupBase* = proc(input: string): void
-proc onfixup*(self: QDateEdit, slot: proc(super: QDateEditfixupBase, input: string): void) =
+type QDateEditfixupProc* = proc(input: string): void
+proc onfixup*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEditfixupProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEditfixupBase, input: string): void
-  var tmp = new Cb
+  var tmp = new QDateEditfixupProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_fixup(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_fixup(self: ptr cQDateEdit, slot: int, input: struct_miqt_string): void {.exportc: "miqt_exec_callback_QDateEdit_fixup ".} =
-  type Cb = proc(super: QDateEditfixupBase, input: string): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(input: string): auto =
-    callVirtualBase_fixup(QDateEdit(h: self), input)
+  var nimfunc = cast[ptr QDateEditfixupProc](cast[pointer](slot))
   let vinput_ms = input
   let vinputx_ret = string.fromBytes(toOpenArrayByte(vinput_ms.data, 0, int(vinput_ms.len)-1))
   c_free(vinput_ms.data)
   let slotval1 = vinputx_ret
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dateTimeFromText(self: QDateEdit, text: string): gen_qdatetime.QDateTime =
-
+  nimfunc[](slotval1)
+proc QDateEditdateTimeFromText*(self: gen_qdatetimeedit_types.QDateEdit, text: string): gen_qdatetime.QDateTime =
 
   gen_qdatetime.QDateTime(h: fQDateEdit_virtualbase_dateTimeFromText(self.h, struct_miqt_string(data: text, len: csize_t(len(text)))))
 
-type QDateEditdateTimeFromTextBase* = proc(text: string): gen_qdatetime.QDateTime
-proc ondateTimeFromText*(self: QDateEdit, slot: proc(super: QDateEditdateTimeFromTextBase, text: string): gen_qdatetime.QDateTime) =
+type QDateEditdateTimeFromTextProc* = proc(text: string): gen_qdatetime.QDateTime
+proc ondateTimeFromText*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEditdateTimeFromTextProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEditdateTimeFromTextBase, text: string): gen_qdatetime.QDateTime
-  var tmp = new Cb
+  var tmp = new QDateEditdateTimeFromTextProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_dateTimeFromText(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_dateTimeFromText(self: ptr cQDateEdit, slot: int, text: struct_miqt_string): pointer {.exportc: "miqt_exec_callback_QDateEdit_dateTimeFromText ".} =
-  type Cb = proc(super: QDateEditdateTimeFromTextBase, text: string): gen_qdatetime.QDateTime
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(text: string): auto =
-    callVirtualBase_dateTimeFromText(QDateEdit(h: self), text)
+  var nimfunc = cast[ptr QDateEditdateTimeFromTextProc](cast[pointer](slot))
   let vtext_ms = text
   let vtextx_ret = string.fromBytes(toOpenArrayByte(vtext_ms.data, 0, int(vtext_ms.len)-1))
   c_free(vtext_ms.data)
   let slotval1 = vtextx_ret
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_textFromDateTime(self: QDateEdit, dt: gen_qdatetime.QDateTime): string =
-
+proc QDateEdittextFromDateTime*(self: gen_qdatetimeedit_types.QDateEdit, dt: gen_qdatetime.QDateTime): string =
 
   let v_ms = fQDateEdit_virtualbase_textFromDateTime(self.h, dt.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-type QDateEdittextFromDateTimeBase* = proc(dt: gen_qdatetime.QDateTime): string
-proc ontextFromDateTime*(self: QDateEdit, slot: proc(super: QDateEdittextFromDateTimeBase, dt: gen_qdatetime.QDateTime): string) =
+type QDateEdittextFromDateTimeProc* = proc(dt: gen_qdatetime.QDateTime): string
+proc ontextFromDateTime*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEdittextFromDateTimeProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEdittextFromDateTimeBase, dt: gen_qdatetime.QDateTime): string
-  var tmp = new Cb
+  var tmp = new QDateEdittextFromDateTimeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_textFromDateTime(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_textFromDateTime(self: ptr cQDateEdit, slot: int, dt: pointer): struct_miqt_string {.exportc: "miqt_exec_callback_QDateEdit_textFromDateTime ".} =
-  type Cb = proc(super: QDateEdittextFromDateTimeBase, dt: gen_qdatetime.QDateTime): string
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(dt: gen_qdatetime.QDateTime): auto =
-    callVirtualBase_textFromDateTime(QDateEdit(h: self), dt)
+  var nimfunc = cast[ptr QDateEdittextFromDateTimeProc](cast[pointer](slot))
   let slotval1 = gen_qdatetime.QDateTime(h: dt)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
-proc callVirtualBase_stepEnabled(self: QDateEdit, ): gen_qabstractspinbox.QAbstractSpinBoxStepEnabledFlag =
+proc QDateEditstepEnabled*(self: gen_qdatetimeedit_types.QDateEdit, ): cint =
 
+  cint(fQDateEdit_virtualbase_stepEnabled(self.h))
 
-  gen_qabstractspinbox.QAbstractSpinBoxStepEnabledFlag(fQDateEdit_virtualbase_stepEnabled(self.h))
-
-type QDateEditstepEnabledBase* = proc(): gen_qabstractspinbox.QAbstractSpinBoxStepEnabledFlag
-proc onstepEnabled*(self: QDateEdit, slot: proc(super: QDateEditstepEnabledBase): gen_qabstractspinbox.QAbstractSpinBoxStepEnabledFlag) =
+type QDateEditstepEnabledProc* = proc(): cint
+proc onstepEnabled*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEditstepEnabledProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEditstepEnabledBase): gen_qabstractspinbox.QAbstractSpinBoxStepEnabledFlag
-  var tmp = new Cb
+  var tmp = new QDateEditstepEnabledProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_stepEnabled(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_stepEnabled(self: ptr cQDateEdit, slot: int): cint {.exportc: "miqt_exec_callback_QDateEdit_stepEnabled ".} =
-  type Cb = proc(super: QDateEditstepEnabledBase): gen_qabstractspinbox.QAbstractSpinBoxStepEnabledFlag
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_stepEnabled(QDateEdit(h: self), )
+  var nimfunc = cast[ptr QDateEditstepEnabledProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   cint(virtualReturn)
-proc callVirtualBase_mousePressEvent(self: QDateEdit, event: gen_qevent.QMouseEvent): void =
-
+proc QDateEditmousePressEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qevent.QMouseEvent): void =
 
   fQDateEdit_virtualbase_mousePressEvent(self.h, event.h)
 
-type QDateEditmousePressEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmousePressEvent*(self: QDateEdit, slot: proc(super: QDateEditmousePressEventBase, event: gen_qevent.QMouseEvent): void) =
+type QDateEditmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmousePressEvent*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEditmousePressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEditmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QDateEditmousePressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_mousePressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_mousePressEvent(self: ptr cQDateEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateEdit_mousePressEvent ".} =
-  type Cb = proc(super: QDateEditmousePressEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mousePressEvent(QDateEdit(h: self), event)
+  var nimfunc = cast[ptr QDateEditmousePressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_paintEvent(self: QDateEdit, event: gen_qevent.QPaintEvent): void =
-
+  nimfunc[](slotval1)
+proc QDateEditpaintEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qevent.QPaintEvent): void =
 
   fQDateEdit_virtualbase_paintEvent(self.h, event.h)
 
-type QDateEditpaintEventBase* = proc(event: gen_qevent.QPaintEvent): void
-proc onpaintEvent*(self: QDateEdit, slot: proc(super: QDateEditpaintEventBase, event: gen_qevent.QPaintEvent): void) =
+type QDateEditpaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
+proc onpaintEvent*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEditpaintEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEditpaintEventBase, event: gen_qevent.QPaintEvent): void
-  var tmp = new Cb
+  var tmp = new QDateEditpaintEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_paintEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_paintEvent(self: ptr cQDateEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateEdit_paintEvent ".} =
-  type Cb = proc(super: QDateEditpaintEventBase, event: gen_qevent.QPaintEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QPaintEvent): auto =
-    callVirtualBase_paintEvent(QDateEdit(h: self), event)
+  var nimfunc = cast[ptr QDateEditpaintEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QPaintEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_initStyleOption(self: QDateEdit, option: gen_qstyleoption.QStyleOptionSpinBox): void =
-
+  nimfunc[](slotval1)
+proc QDateEditinitStyleOption*(self: gen_qdatetimeedit_types.QDateEdit, option: gen_qstyleoption.QStyleOptionSpinBox): void =
 
   fQDateEdit_virtualbase_initStyleOption(self.h, option.h)
 
-type QDateEditinitStyleOptionBase* = proc(option: gen_qstyleoption.QStyleOptionSpinBox): void
-proc oninitStyleOption*(self: QDateEdit, slot: proc(super: QDateEditinitStyleOptionBase, option: gen_qstyleoption.QStyleOptionSpinBox): void) =
+type QDateEditinitStyleOptionProc* = proc(option: gen_qstyleoption.QStyleOptionSpinBox): void
+proc oninitStyleOption*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEditinitStyleOptionProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEditinitStyleOptionBase, option: gen_qstyleoption.QStyleOptionSpinBox): void
-  var tmp = new Cb
+  var tmp = new QDateEditinitStyleOptionProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_initStyleOption(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_initStyleOption(self: ptr cQDateEdit, slot: int, option: pointer): void {.exportc: "miqt_exec_callback_QDateEdit_initStyleOption ".} =
-  type Cb = proc(super: QDateEditinitStyleOptionBase, option: gen_qstyleoption.QStyleOptionSpinBox): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(option: gen_qstyleoption.QStyleOptionSpinBox): auto =
-    callVirtualBase_initStyleOption(QDateEdit(h: self), option)
+  var nimfunc = cast[ptr QDateEditinitStyleOptionProc](cast[pointer](slot))
   let slotval1 = gen_qstyleoption.QStyleOptionSpinBox(h: option)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_minimumSizeHint(self: QDateEdit, ): gen_qsize.QSize =
-
+  nimfunc[](slotval1)
+proc QDateEditminimumSizeHint*(self: gen_qdatetimeedit_types.QDateEdit, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQDateEdit_virtualbase_minimumSizeHint(self.h))
 
-type QDateEditminimumSizeHintBase* = proc(): gen_qsize.QSize
-proc onminimumSizeHint*(self: QDateEdit, slot: proc(super: QDateEditminimumSizeHintBase): gen_qsize.QSize) =
+type QDateEditminimumSizeHintProc* = proc(): gen_qsize.QSize
+proc onminimumSizeHint*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEditminimumSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEditminimumSizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QDateEditminimumSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_minimumSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_minimumSizeHint(self: ptr cQDateEdit, slot: int): pointer {.exportc: "miqt_exec_callback_QDateEdit_minimumSizeHint ".} =
-  type Cb = proc(super: QDateEditminimumSizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_minimumSizeHint(QDateEdit(h: self), )
+  var nimfunc = cast[ptr QDateEditminimumSizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_inputMethodQuery(self: QDateEdit, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant =
-
+proc QDateEditinputMethodQuery*(self: gen_qdatetimeedit_types.QDateEdit, param1: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQDateEdit_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
-type QDateEditinputMethodQueryBase* = proc(param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-proc oninputMethodQuery*(self: QDateEdit, slot: proc(super: QDateEditinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant) =
+type QDateEditinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
+proc oninputMethodQuery*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEditinputMethodQueryProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEditinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QDateEditinputMethodQueryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_inputMethodQuery(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_inputMethodQuery(self: ptr cQDateEdit, slot: int, param1: cint): pointer {.exportc: "miqt_exec_callback_QDateEdit_inputMethodQuery ".} =
-  type Cb = proc(super: QDateEditinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qnamespace.InputMethodQuery): auto =
-    callVirtualBase_inputMethodQuery(QDateEdit(h: self), param1)
-  let slotval1 = gen_qnamespace.InputMethodQuery(param1)
+  var nimfunc = cast[ptr QDateEditinputMethodQueryProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_resizeEvent(self: QDateEdit, event: gen_qevent.QResizeEvent): void =
-
+proc QDateEditresizeEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qevent.QResizeEvent): void =
 
   fQDateEdit_virtualbase_resizeEvent(self.h, event.h)
 
-type QDateEditresizeEventBase* = proc(event: gen_qevent.QResizeEvent): void
-proc onresizeEvent*(self: QDateEdit, slot: proc(super: QDateEditresizeEventBase, event: gen_qevent.QResizeEvent): void) =
+type QDateEditresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
+proc onresizeEvent*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEditresizeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEditresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var tmp = new Cb
+  var tmp = new QDateEditresizeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_resizeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_resizeEvent(self: ptr cQDateEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateEdit_resizeEvent ".} =
-  type Cb = proc(super: QDateEditresizeEventBase, event: gen_qevent.QResizeEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QResizeEvent): auto =
-    callVirtualBase_resizeEvent(QDateEdit(h: self), event)
+  var nimfunc = cast[ptr QDateEditresizeEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QResizeEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyReleaseEvent(self: QDateEdit, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QDateEditkeyReleaseEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qevent.QKeyEvent): void =
 
   fQDateEdit_virtualbase_keyReleaseEvent(self.h, event.h)
 
-type QDateEditkeyReleaseEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyReleaseEvent*(self: QDateEdit, slot: proc(super: QDateEditkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void) =
+type QDateEditkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyReleaseEvent*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEditkeyReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEditkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QDateEditkeyReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_keyReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_keyReleaseEvent(self: ptr cQDateEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateEdit_keyReleaseEvent ".} =
-  type Cb = proc(super: QDateEditkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyReleaseEvent(QDateEdit(h: self), event)
+  var nimfunc = cast[ptr QDateEditkeyReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusOutEvent(self: QDateEdit, event: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QDateEditfocusOutEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qevent.QFocusEvent): void =
 
   fQDateEdit_virtualbase_focusOutEvent(self.h, event.h)
 
-type QDateEditfocusOutEventBase* = proc(event: gen_qevent.QFocusEvent): void
-proc onfocusOutEvent*(self: QDateEdit, slot: proc(super: QDateEditfocusOutEventBase, event: gen_qevent.QFocusEvent): void) =
+type QDateEditfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
+proc onfocusOutEvent*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEditfocusOutEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEditfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QDateEditfocusOutEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_focusOutEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_focusOutEvent(self: ptr cQDateEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateEdit_focusOutEvent ".} =
-  type Cb = proc(super: QDateEditfocusOutEventBase, event: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusOutEvent(QDateEdit(h: self), event)
+  var nimfunc = cast[ptr QDateEditfocusOutEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_contextMenuEvent(self: QDateEdit, event: gen_qevent.QContextMenuEvent): void =
-
+  nimfunc[](slotval1)
+proc QDateEditcontextMenuEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qevent.QContextMenuEvent): void =
 
   fQDateEdit_virtualbase_contextMenuEvent(self.h, event.h)
 
-type QDateEditcontextMenuEventBase* = proc(event: gen_qevent.QContextMenuEvent): void
-proc oncontextMenuEvent*(self: QDateEdit, slot: proc(super: QDateEditcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void) =
+type QDateEditcontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
+proc oncontextMenuEvent*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEditcontextMenuEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEditcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var tmp = new Cb
+  var tmp = new QDateEditcontextMenuEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_contextMenuEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_contextMenuEvent(self: ptr cQDateEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateEdit_contextMenuEvent ".} =
-  type Cb = proc(super: QDateEditcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QContextMenuEvent): auto =
-    callVirtualBase_contextMenuEvent(QDateEdit(h: self), event)
+  var nimfunc = cast[ptr QDateEditcontextMenuEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QContextMenuEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_changeEvent(self: QDateEdit, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QDateEditchangeEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qcoreevent.QEvent): void =
 
   fQDateEdit_virtualbase_changeEvent(self.h, event.h)
 
-type QDateEditchangeEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onchangeEvent*(self: QDateEdit, slot: proc(super: QDateEditchangeEventBase, event: gen_qcoreevent.QEvent): void) =
+type QDateEditchangeEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onchangeEvent*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEditchangeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEditchangeEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QDateEditchangeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_changeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_changeEvent(self: ptr cQDateEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateEdit_changeEvent ".} =
-  type Cb = proc(super: QDateEditchangeEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_changeEvent(QDateEdit(h: self), event)
+  var nimfunc = cast[ptr QDateEditchangeEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_closeEvent(self: QDateEdit, event: gen_qevent.QCloseEvent): void =
-
+  nimfunc[](slotval1)
+proc QDateEditcloseEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qevent.QCloseEvent): void =
 
   fQDateEdit_virtualbase_closeEvent(self.h, event.h)
 
-type QDateEditcloseEventBase* = proc(event: gen_qevent.QCloseEvent): void
-proc oncloseEvent*(self: QDateEdit, slot: proc(super: QDateEditcloseEventBase, event: gen_qevent.QCloseEvent): void) =
+type QDateEditcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
+proc oncloseEvent*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEditcloseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEditcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var tmp = new Cb
+  var tmp = new QDateEditcloseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_closeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_closeEvent(self: ptr cQDateEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateEdit_closeEvent ".} =
-  type Cb = proc(super: QDateEditcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QCloseEvent): auto =
-    callVirtualBase_closeEvent(QDateEdit(h: self), event)
+  var nimfunc = cast[ptr QDateEditcloseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QCloseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hideEvent(self: QDateEdit, event: gen_qevent.QHideEvent): void =
-
+  nimfunc[](slotval1)
+proc QDateEdithideEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qevent.QHideEvent): void =
 
   fQDateEdit_virtualbase_hideEvent(self.h, event.h)
 
-type QDateEdithideEventBase* = proc(event: gen_qevent.QHideEvent): void
-proc onhideEvent*(self: QDateEdit, slot: proc(super: QDateEdithideEventBase, event: gen_qevent.QHideEvent): void) =
+type QDateEdithideEventProc* = proc(event: gen_qevent.QHideEvent): void
+proc onhideEvent*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEdithideEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEdithideEventBase, event: gen_qevent.QHideEvent): void
-  var tmp = new Cb
+  var tmp = new QDateEdithideEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_hideEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_hideEvent(self: ptr cQDateEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateEdit_hideEvent ".} =
-  type Cb = proc(super: QDateEdithideEventBase, event: gen_qevent.QHideEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QHideEvent): auto =
-    callVirtualBase_hideEvent(QDateEdit(h: self), event)
+  var nimfunc = cast[ptr QDateEdithideEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QHideEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseReleaseEvent(self: QDateEdit, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QDateEditmouseReleaseEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qevent.QMouseEvent): void =
 
   fQDateEdit_virtualbase_mouseReleaseEvent(self.h, event.h)
 
-type QDateEditmouseReleaseEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseReleaseEvent*(self: QDateEdit, slot: proc(super: QDateEditmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void) =
+type QDateEditmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseReleaseEvent*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEditmouseReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEditmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QDateEditmouseReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_mouseReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_mouseReleaseEvent(self: ptr cQDateEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateEdit_mouseReleaseEvent ".} =
-  type Cb = proc(super: QDateEditmouseReleaseEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseReleaseEvent(QDateEdit(h: self), event)
+  var nimfunc = cast[ptr QDateEditmouseReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseMoveEvent(self: QDateEdit, event: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QDateEditmouseMoveEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qevent.QMouseEvent): void =
 
   fQDateEdit_virtualbase_mouseMoveEvent(self.h, event.h)
 
-type QDateEditmouseMoveEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseMoveEvent*(self: QDateEdit, slot: proc(super: QDateEditmouseMoveEventBase, event: gen_qevent.QMouseEvent): void) =
+type QDateEditmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseMoveEvent*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEditmouseMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEditmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QDateEditmouseMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_mouseMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_mouseMoveEvent(self: ptr cQDateEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateEdit_mouseMoveEvent ".} =
-  type Cb = proc(super: QDateEditmouseMoveEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseMoveEvent(QDateEdit(h: self), event)
+  var nimfunc = cast[ptr QDateEditmouseMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_timerEvent(self: QDateEdit, event: gen_qcoreevent.QTimerEvent): void =
-
+  nimfunc[](slotval1)
+proc QDateEdittimerEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qcoreevent.QTimerEvent): void =
 
   fQDateEdit_virtualbase_timerEvent(self.h, event.h)
 
-type QDateEdittimerEventBase* = proc(event: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QDateEdit, slot: proc(super: QDateEdittimerEventBase, event: gen_qcoreevent.QTimerEvent): void) =
+type QDateEdittimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEdittimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEdittimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QDateEdittimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_timerEvent(self: ptr cQDateEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateEdit_timerEvent ".} =
-  type Cb = proc(super: QDateEdittimerEventBase, event: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QDateEdit(h: self), event)
+  var nimfunc = cast[ptr QDateEdittimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_showEvent(self: QDateEdit, event: gen_qevent.QShowEvent): void =
-
+  nimfunc[](slotval1)
+proc QDateEditshowEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qevent.QShowEvent): void =
 
   fQDateEdit_virtualbase_showEvent(self.h, event.h)
 
-type QDateEditshowEventBase* = proc(event: gen_qevent.QShowEvent): void
-proc onshowEvent*(self: QDateEdit, slot: proc(super: QDateEditshowEventBase, event: gen_qevent.QShowEvent): void) =
+type QDateEditshowEventProc* = proc(event: gen_qevent.QShowEvent): void
+proc onshowEvent*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEditshowEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEditshowEventBase, event: gen_qevent.QShowEvent): void
-  var tmp = new Cb
+  var tmp = new QDateEditshowEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_showEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_showEvent(self: ptr cQDateEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateEdit_showEvent ".} =
-  type Cb = proc(super: QDateEditshowEventBase, event: gen_qevent.QShowEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QShowEvent): auto =
-    callVirtualBase_showEvent(QDateEdit(h: self), event)
+  var nimfunc = cast[ptr QDateEditshowEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QShowEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_devType(self: QDateEdit, ): cint =
-
+  nimfunc[](slotval1)
+proc QDateEditdevType*(self: gen_qdatetimeedit_types.QDateEdit, ): cint =
 
   fQDateEdit_virtualbase_devType(self.h)
 
-type QDateEditdevTypeBase* = proc(): cint
-proc ondevType*(self: QDateEdit, slot: proc(super: QDateEditdevTypeBase): cint) =
+type QDateEditdevTypeProc* = proc(): cint
+proc ondevType*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEditdevTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEditdevTypeBase): cint
-  var tmp = new Cb
+  var tmp = new QDateEditdevTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_devType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_devType(self: ptr cQDateEdit, slot: int): cint {.exportc: "miqt_exec_callback_QDateEdit_devType ".} =
-  type Cb = proc(super: QDateEditdevTypeBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_devType(QDateEdit(h: self), )
+  var nimfunc = cast[ptr QDateEditdevTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_setVisible(self: QDateEdit, visible: bool): void =
-
+proc QDateEditsetVisible*(self: gen_qdatetimeedit_types.QDateEdit, visible: bool): void =
 
   fQDateEdit_virtualbase_setVisible(self.h, visible)
 
-type QDateEditsetVisibleBase* = proc(visible: bool): void
-proc onsetVisible*(self: QDateEdit, slot: proc(super: QDateEditsetVisibleBase, visible: bool): void) =
+type QDateEditsetVisibleProc* = proc(visible: bool): void
+proc onsetVisible*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEditsetVisibleProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEditsetVisibleBase, visible: bool): void
-  var tmp = new Cb
+  var tmp = new QDateEditsetVisibleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_setVisible(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_setVisible(self: ptr cQDateEdit, slot: int, visible: bool): void {.exportc: "miqt_exec_callback_QDateEdit_setVisible ".} =
-  type Cb = proc(super: QDateEditsetVisibleBase, visible: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(visible: bool): auto =
-    callVirtualBase_setVisible(QDateEdit(h: self), visible)
+  var nimfunc = cast[ptr QDateEditsetVisibleProc](cast[pointer](slot))
   let slotval1 = visible
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_heightForWidth(self: QDateEdit, param1: cint): cint =
-
+  nimfunc[](slotval1)
+proc QDateEditheightForWidth*(self: gen_qdatetimeedit_types.QDateEdit, param1: cint): cint =
 
   fQDateEdit_virtualbase_heightForWidth(self.h, param1)
 
-type QDateEditheightForWidthBase* = proc(param1: cint): cint
-proc onheightForWidth*(self: QDateEdit, slot: proc(super: QDateEditheightForWidthBase, param1: cint): cint) =
+type QDateEditheightForWidthProc* = proc(param1: cint): cint
+proc onheightForWidth*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEditheightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEditheightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QDateEditheightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_heightForWidth(self: ptr cQDateEdit, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QDateEdit_heightForWidth ".} =
-  type Cb = proc(super: QDateEditheightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_heightForWidth(QDateEdit(h: self), param1)
+  var nimfunc = cast[ptr QDateEditheightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_hasHeightForWidth(self: QDateEdit, ): bool =
-
+proc QDateEdithasHeightForWidth*(self: gen_qdatetimeedit_types.QDateEdit, ): bool =
 
   fQDateEdit_virtualbase_hasHeightForWidth(self.h)
 
-type QDateEdithasHeightForWidthBase* = proc(): bool
-proc onhasHeightForWidth*(self: QDateEdit, slot: proc(super: QDateEdithasHeightForWidthBase): bool) =
+type QDateEdithasHeightForWidthProc* = proc(): bool
+proc onhasHeightForWidth*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEdithasHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEdithasHeightForWidthBase): bool
-  var tmp = new Cb
+  var tmp = new QDateEdithasHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_hasHeightForWidth(self: ptr cQDateEdit, slot: int): bool {.exportc: "miqt_exec_callback_QDateEdit_hasHeightForWidth ".} =
-  type Cb = proc(super: QDateEdithasHeightForWidthBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasHeightForWidth(QDateEdit(h: self), )
+  var nimfunc = cast[ptr QDateEdithasHeightForWidthProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_paintEngine(self: QDateEdit, ): gen_qpaintengine.QPaintEngine =
-
+proc QDateEditpaintEngine*(self: gen_qdatetimeedit_types.QDateEdit, ): gen_qpaintengine.QPaintEngine =
 
   gen_qpaintengine.QPaintEngine(h: fQDateEdit_virtualbase_paintEngine(self.h))
 
-type QDateEditpaintEngineBase* = proc(): gen_qpaintengine.QPaintEngine
-proc onpaintEngine*(self: QDateEdit, slot: proc(super: QDateEditpaintEngineBase): gen_qpaintengine.QPaintEngine) =
+type QDateEditpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
+proc onpaintEngine*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEditpaintEngineProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEditpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var tmp = new Cb
+  var tmp = new QDateEditpaintEngineProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_paintEngine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_paintEngine(self: ptr cQDateEdit, slot: int): pointer {.exportc: "miqt_exec_callback_QDateEdit_paintEngine ".} =
-  type Cb = proc(super: QDateEditpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_paintEngine(QDateEdit(h: self), )
+  var nimfunc = cast[ptr QDateEditpaintEngineProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_mouseDoubleClickEvent(self: QDateEdit, event: gen_qevent.QMouseEvent): void =
-
+proc QDateEditmouseDoubleClickEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qevent.QMouseEvent): void =
 
   fQDateEdit_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
-type QDateEditmouseDoubleClickEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseDoubleClickEvent*(self: QDateEdit, slot: proc(super: QDateEditmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void) =
+type QDateEditmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseDoubleClickEvent*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEditmouseDoubleClickEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEditmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QDateEditmouseDoubleClickEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_mouseDoubleClickEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_mouseDoubleClickEvent(self: ptr cQDateEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateEdit_mouseDoubleClickEvent ".} =
-  type Cb = proc(super: QDateEditmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseDoubleClickEvent(QDateEdit(h: self), event)
+  var nimfunc = cast[ptr QDateEditmouseDoubleClickEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_enterEvent(self: QDateEdit, event: gen_qevent.QEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QDateEditenterEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qevent.QEnterEvent): void =
 
   fQDateEdit_virtualbase_enterEvent(self.h, event.h)
 
-type QDateEditenterEventBase* = proc(event: gen_qevent.QEnterEvent): void
-proc onenterEvent*(self: QDateEdit, slot: proc(super: QDateEditenterEventBase, event: gen_qevent.QEnterEvent): void) =
+type QDateEditenterEventProc* = proc(event: gen_qevent.QEnterEvent): void
+proc onenterEvent*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEditenterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEditenterEventBase, event: gen_qevent.QEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QDateEditenterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_enterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_enterEvent(self: ptr cQDateEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateEdit_enterEvent ".} =
-  type Cb = proc(super: QDateEditenterEventBase, event: gen_qevent.QEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QEnterEvent): auto =
-    callVirtualBase_enterEvent(QDateEdit(h: self), event)
+  var nimfunc = cast[ptr QDateEditenterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_leaveEvent(self: QDateEdit, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QDateEditleaveEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qcoreevent.QEvent): void =
 
   fQDateEdit_virtualbase_leaveEvent(self.h, event.h)
 
-type QDateEditleaveEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc onleaveEvent*(self: QDateEdit, slot: proc(super: QDateEditleaveEventBase, event: gen_qcoreevent.QEvent): void) =
+type QDateEditleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc onleaveEvent*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEditleaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEditleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QDateEditleaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_leaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_leaveEvent(self: ptr cQDateEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateEdit_leaveEvent ".} =
-  type Cb = proc(super: QDateEditleaveEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_leaveEvent(QDateEdit(h: self), event)
+  var nimfunc = cast[ptr QDateEditleaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_moveEvent(self: QDateEdit, event: gen_qevent.QMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QDateEditmoveEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qevent.QMoveEvent): void =
 
   fQDateEdit_virtualbase_moveEvent(self.h, event.h)
 
-type QDateEditmoveEventBase* = proc(event: gen_qevent.QMoveEvent): void
-proc onmoveEvent*(self: QDateEdit, slot: proc(super: QDateEditmoveEventBase, event: gen_qevent.QMoveEvent): void) =
+type QDateEditmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
+proc onmoveEvent*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEditmoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEditmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QDateEditmoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_moveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_moveEvent(self: ptr cQDateEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateEdit_moveEvent ".} =
-  type Cb = proc(super: QDateEditmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMoveEvent): auto =
-    callVirtualBase_moveEvent(QDateEdit(h: self), event)
+  var nimfunc = cast[ptr QDateEditmoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_tabletEvent(self: QDateEdit, event: gen_qevent.QTabletEvent): void =
-
+  nimfunc[](slotval1)
+proc QDateEdittabletEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qevent.QTabletEvent): void =
 
   fQDateEdit_virtualbase_tabletEvent(self.h, event.h)
 
-type QDateEdittabletEventBase* = proc(event: gen_qevent.QTabletEvent): void
-proc ontabletEvent*(self: QDateEdit, slot: proc(super: QDateEdittabletEventBase, event: gen_qevent.QTabletEvent): void) =
+type QDateEdittabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
+proc ontabletEvent*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEdittabletEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEdittabletEventBase, event: gen_qevent.QTabletEvent): void
-  var tmp = new Cb
+  var tmp = new QDateEdittabletEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_tabletEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_tabletEvent(self: ptr cQDateEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateEdit_tabletEvent ".} =
-  type Cb = proc(super: QDateEdittabletEventBase, event: gen_qevent.QTabletEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QTabletEvent): auto =
-    callVirtualBase_tabletEvent(QDateEdit(h: self), event)
+  var nimfunc = cast[ptr QDateEdittabletEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QTabletEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_actionEvent(self: QDateEdit, event: gen_qevent.QActionEvent): void =
-
+  nimfunc[](slotval1)
+proc QDateEditactionEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qevent.QActionEvent): void =
 
   fQDateEdit_virtualbase_actionEvent(self.h, event.h)
 
-type QDateEditactionEventBase* = proc(event: gen_qevent.QActionEvent): void
-proc onactionEvent*(self: QDateEdit, slot: proc(super: QDateEditactionEventBase, event: gen_qevent.QActionEvent): void) =
+type QDateEditactionEventProc* = proc(event: gen_qevent.QActionEvent): void
+proc onactionEvent*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEditactionEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEditactionEventBase, event: gen_qevent.QActionEvent): void
-  var tmp = new Cb
+  var tmp = new QDateEditactionEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_actionEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_actionEvent(self: ptr cQDateEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateEdit_actionEvent ".} =
-  type Cb = proc(super: QDateEditactionEventBase, event: gen_qevent.QActionEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QActionEvent): auto =
-    callVirtualBase_actionEvent(QDateEdit(h: self), event)
+  var nimfunc = cast[ptr QDateEditactionEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QActionEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragEnterEvent(self: QDateEdit, event: gen_qevent.QDragEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QDateEditdragEnterEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qevent.QDragEnterEvent): void =
 
   fQDateEdit_virtualbase_dragEnterEvent(self.h, event.h)
 
-type QDateEditdragEnterEventBase* = proc(event: gen_qevent.QDragEnterEvent): void
-proc ondragEnterEvent*(self: QDateEdit, slot: proc(super: QDateEditdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void) =
+type QDateEditdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
+proc ondragEnterEvent*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEditdragEnterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEditdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QDateEditdragEnterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_dragEnterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_dragEnterEvent(self: ptr cQDateEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateEdit_dragEnterEvent ".} =
-  type Cb = proc(super: QDateEditdragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragEnterEvent): auto =
-    callVirtualBase_dragEnterEvent(QDateEdit(h: self), event)
+  var nimfunc = cast[ptr QDateEditdragEnterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragMoveEvent(self: QDateEdit, event: gen_qevent.QDragMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QDateEditdragMoveEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qevent.QDragMoveEvent): void =
 
   fQDateEdit_virtualbase_dragMoveEvent(self.h, event.h)
 
-type QDateEditdragMoveEventBase* = proc(event: gen_qevent.QDragMoveEvent): void
-proc ondragMoveEvent*(self: QDateEdit, slot: proc(super: QDateEditdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void) =
+type QDateEditdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
+proc ondragMoveEvent*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEditdragMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEditdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QDateEditdragMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_dragMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_dragMoveEvent(self: ptr cQDateEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateEdit_dragMoveEvent ".} =
-  type Cb = proc(super: QDateEditdragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragMoveEvent): auto =
-    callVirtualBase_dragMoveEvent(QDateEdit(h: self), event)
+  var nimfunc = cast[ptr QDateEditdragMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragLeaveEvent(self: QDateEdit, event: gen_qevent.QDragLeaveEvent): void =
-
+  nimfunc[](slotval1)
+proc QDateEditdragLeaveEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qevent.QDragLeaveEvent): void =
 
   fQDateEdit_virtualbase_dragLeaveEvent(self.h, event.h)
 
-type QDateEditdragLeaveEventBase* = proc(event: gen_qevent.QDragLeaveEvent): void
-proc ondragLeaveEvent*(self: QDateEdit, slot: proc(super: QDateEditdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void) =
+type QDateEditdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
+proc ondragLeaveEvent*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEditdragLeaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEditdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var tmp = new Cb
+  var tmp = new QDateEditdragLeaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_dragLeaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_dragLeaveEvent(self: ptr cQDateEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateEdit_dragLeaveEvent ".} =
-  type Cb = proc(super: QDateEditdragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragLeaveEvent): auto =
-    callVirtualBase_dragLeaveEvent(QDateEdit(h: self), event)
+  var nimfunc = cast[ptr QDateEditdragLeaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragLeaveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dropEvent(self: QDateEdit, event: gen_qevent.QDropEvent): void =
-
+  nimfunc[](slotval1)
+proc QDateEditdropEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qevent.QDropEvent): void =
 
   fQDateEdit_virtualbase_dropEvent(self.h, event.h)
 
-type QDateEditdropEventBase* = proc(event: gen_qevent.QDropEvent): void
-proc ondropEvent*(self: QDateEdit, slot: proc(super: QDateEditdropEventBase, event: gen_qevent.QDropEvent): void) =
+type QDateEditdropEventProc* = proc(event: gen_qevent.QDropEvent): void
+proc ondropEvent*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEditdropEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEditdropEventBase, event: gen_qevent.QDropEvent): void
-  var tmp = new Cb
+  var tmp = new QDateEditdropEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_dropEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_dropEvent(self: ptr cQDateEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateEdit_dropEvent ".} =
-  type Cb = proc(super: QDateEditdropEventBase, event: gen_qevent.QDropEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDropEvent): auto =
-    callVirtualBase_dropEvent(QDateEdit(h: self), event)
+  var nimfunc = cast[ptr QDateEditdropEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDropEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_nativeEvent(self: QDateEdit, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
-
+  nimfunc[](slotval1)
+proc QDateEditnativeEvent*(self: gen_qdatetimeedit_types.QDateEdit, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
 
   fQDateEdit_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
-type QDateEditnativeEventBase* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-proc onnativeEvent*(self: QDateEdit, slot: proc(super: QDateEditnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool) =
+type QDateEditnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
+proc onnativeEvent*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEditnativeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEditnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-  var tmp = new Cb
+  var tmp = new QDateEditnativeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_nativeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_nativeEvent(self: ptr cQDateEdit, slot: int, eventType: struct_miqt_string, message: pointer, resultVal: ptr uint): bool {.exportc: "miqt_exec_callback_QDateEdit_nativeEvent ".} =
-  type Cb = proc(super: QDateEditnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(eventType: seq[byte], message: pointer, resultVal: ptr uint): auto =
-    callVirtualBase_nativeEvent(QDateEdit(h: self), eventType, message, resultVal)
+  var nimfunc = cast[ptr QDateEditnativeEventProc](cast[pointer](slot))
   var veventType_bytearray = eventType
   var veventTypex_ret = @(toOpenArrayByte(veventType_bytearray.data, 0, int(veventType_bytearray.len)-1))
   c_free(veventType_bytearray.data)
@@ -4921,248 +4095,198 @@ proc miqt_exec_callback_QDateEdit_nativeEvent(self: ptr cQDateEdit, slot: int, e
   let slotval3 = resultVal
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_metric(self: QDateEdit, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint =
-
+proc QDateEditmetric*(self: gen_qdatetimeedit_types.QDateEdit, param1: cint): cint =
 
   fQDateEdit_virtualbase_metric(self.h, cint(param1))
 
-type QDateEditmetricBase* = proc(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-proc onmetric*(self: QDateEdit, slot: proc(super: QDateEditmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint) =
+type QDateEditmetricProc* = proc(param1: cint): cint
+proc onmetric*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEditmetricProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEditmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var tmp = new Cb
+  var tmp = new QDateEditmetricProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_metric(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_metric(self: ptr cQDateEdit, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QDateEdit_metric ".} =
-  type Cb = proc(super: QDateEditmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): auto =
-    callVirtualBase_metric(QDateEdit(h: self), param1)
-  let slotval1 = gen_qpaintdevice.QPaintDevicePaintDeviceMetric(param1)
+  var nimfunc = cast[ptr QDateEditmetricProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_initPainter(self: QDateEdit, painter: gen_qpainter.QPainter): void =
-
+proc QDateEditinitPainter*(self: gen_qdatetimeedit_types.QDateEdit, painter: gen_qpainter.QPainter): void =
 
   fQDateEdit_virtualbase_initPainter(self.h, painter.h)
 
-type QDateEditinitPainterBase* = proc(painter: gen_qpainter.QPainter): void
-proc oninitPainter*(self: QDateEdit, slot: proc(super: QDateEditinitPainterBase, painter: gen_qpainter.QPainter): void) =
+type QDateEditinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
+proc oninitPainter*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEditinitPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEditinitPainterBase, painter: gen_qpainter.QPainter): void
-  var tmp = new Cb
+  var tmp = new QDateEditinitPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_initPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_initPainter(self: ptr cQDateEdit, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_QDateEdit_initPainter ".} =
-  type Cb = proc(super: QDateEditinitPainterBase, painter: gen_qpainter.QPainter): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter): auto =
-    callVirtualBase_initPainter(QDateEdit(h: self), painter)
+  var nimfunc = cast[ptr QDateEditinitPainterProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_redirected(self: QDateEdit, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
+  nimfunc[](slotval1)
+proc QDateEditredirected*(self: gen_qdatetimeedit_types.QDateEdit, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
 
   gen_qpaintdevice.QPaintDevice(h: fQDateEdit_virtualbase_redirected(self.h, offset.h))
 
-type QDateEditredirectedBase* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-proc onredirected*(self: QDateEdit, slot: proc(super: QDateEditredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice) =
+type QDateEditredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
+proc onredirected*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEditredirectedProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEditredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var tmp = new Cb
+  var tmp = new QDateEditredirectedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_redirected(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_redirected(self: ptr cQDateEdit, slot: int, offset: pointer): pointer {.exportc: "miqt_exec_callback_QDateEdit_redirected ".} =
-  type Cb = proc(super: QDateEditredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(offset: gen_qpoint.QPoint): auto =
-    callVirtualBase_redirected(QDateEdit(h: self), offset)
+  var nimfunc = cast[ptr QDateEditredirectedProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: offset)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_sharedPainter(self: QDateEdit, ): gen_qpainter.QPainter =
-
+proc QDateEditsharedPainter*(self: gen_qdatetimeedit_types.QDateEdit, ): gen_qpainter.QPainter =
 
   gen_qpainter.QPainter(h: fQDateEdit_virtualbase_sharedPainter(self.h))
 
-type QDateEditsharedPainterBase* = proc(): gen_qpainter.QPainter
-proc onsharedPainter*(self: QDateEdit, slot: proc(super: QDateEditsharedPainterBase): gen_qpainter.QPainter) =
+type QDateEditsharedPainterProc* = proc(): gen_qpainter.QPainter
+proc onsharedPainter*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEditsharedPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEditsharedPainterBase): gen_qpainter.QPainter
-  var tmp = new Cb
+  var tmp = new QDateEditsharedPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_sharedPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_sharedPainter(self: ptr cQDateEdit, slot: int): pointer {.exportc: "miqt_exec_callback_QDateEdit_sharedPainter ".} =
-  type Cb = proc(super: QDateEditsharedPainterBase): gen_qpainter.QPainter
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sharedPainter(QDateEdit(h: self), )
+  var nimfunc = cast[ptr QDateEditsharedPainterProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_inputMethodEvent(self: QDateEdit, param1: gen_qevent.QInputMethodEvent): void =
-
+proc QDateEditinputMethodEvent*(self: gen_qdatetimeedit_types.QDateEdit, param1: gen_qevent.QInputMethodEvent): void =
 
   fQDateEdit_virtualbase_inputMethodEvent(self.h, param1.h)
 
-type QDateEditinputMethodEventBase* = proc(param1: gen_qevent.QInputMethodEvent): void
-proc oninputMethodEvent*(self: QDateEdit, slot: proc(super: QDateEditinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void) =
+type QDateEditinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
+proc oninputMethodEvent*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEditinputMethodEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEditinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var tmp = new Cb
+  var tmp = new QDateEditinputMethodEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_inputMethodEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_inputMethodEvent(self: ptr cQDateEdit, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QDateEdit_inputMethodEvent ".} =
-  type Cb = proc(super: QDateEditinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QInputMethodEvent): auto =
-    callVirtualBase_inputMethodEvent(QDateEdit(h: self), param1)
+  var nimfunc = cast[ptr QDateEditinputMethodEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QInputMethodEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_eventFilter(self: QDateEdit, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[](slotval1)
+proc QDateEditeventFilter*(self: gen_qdatetimeedit_types.QDateEdit, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
 
   fQDateEdit_virtualbase_eventFilter(self.h, watched.h, event.h)
 
-type QDateEditeventFilterBase* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QDateEdit, slot: proc(super: QDateEditeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool) =
+type QDateEditeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEditeventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEditeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QDateEditeventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_eventFilter(self: ptr cQDateEdit, slot: int, watched: pointer, event: pointer): bool {.exportc: "miqt_exec_callback_QDateEdit_eventFilter ".} =
-  type Cb = proc(super: QDateEditeventFilterBase, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QDateEdit(h: self), watched, event)
+  var nimfunc = cast[ptr QDateEditeventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: watched)
 
   let slotval2 = gen_qcoreevent.QEvent(h: event)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_childEvent(self: QDateEdit, event: gen_qcoreevent.QChildEvent): void =
-
+proc QDateEditchildEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qcoreevent.QChildEvent): void =
 
   fQDateEdit_virtualbase_childEvent(self.h, event.h)
 
-type QDateEditchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QDateEdit, slot: proc(super: QDateEditchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QDateEditchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEditchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEditchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QDateEditchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_childEvent(self: ptr cQDateEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateEdit_childEvent ".} =
-  type Cb = proc(super: QDateEditchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QDateEdit(h: self), event)
+  var nimfunc = cast[ptr QDateEditchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QDateEdit, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QDateEditcustomEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qcoreevent.QEvent): void =
 
   fQDateEdit_virtualbase_customEvent(self.h, event.h)
 
-type QDateEditcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QDateEdit, slot: proc(super: QDateEditcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QDateEditcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEditcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEditcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QDateEditcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_customEvent(self: ptr cQDateEdit, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QDateEdit_customEvent ".} =
-  type Cb = proc(super: QDateEditcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QDateEdit(h: self), event)
+  var nimfunc = cast[ptr QDateEditcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QDateEdit, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QDateEditconnectNotify*(self: gen_qdatetimeedit_types.QDateEdit, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQDateEdit_virtualbase_connectNotify(self.h, signal.h)
 
-type QDateEditconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QDateEdit, slot: proc(super: QDateEditconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QDateEditconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEditconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEditconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QDateEditconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_connectNotify(self: ptr cQDateEdit, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QDateEdit_connectNotify ".} =
-  type Cb = proc(super: QDateEditconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QDateEdit(h: self), signal)
+  var nimfunc = cast[ptr QDateEditconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QDateEdit, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QDateEditdisconnectNotify*(self: gen_qdatetimeedit_types.QDateEdit, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQDateEdit_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QDateEditdisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QDateEdit, slot: proc(super: QDateEditdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QDateEditdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEditdisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QDateEditdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QDateEditdisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQDateEdit_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QDateEdit_disconnectNotify(self: ptr cQDateEdit, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QDateEdit_disconnectNotify ".} =
-  type Cb = proc(super: QDateEditdisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QDateEdit(h: self), signal)
+  var nimfunc = cast[ptr QDateEditdisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QDateEdit): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qdatetimeedit_types.QDateEdit): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQDateEdit_staticMetaObject())
-proc delete*(self: QDateEdit) =
+proc delete*(self: gen_qdatetimeedit_types.QDateEdit) =
   fcQDateEdit_delete(self.h)

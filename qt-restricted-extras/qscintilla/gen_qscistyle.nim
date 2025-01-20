@@ -34,12 +34,10 @@ const cflags = gorge("pkg-config -cflags Qt5PrintSupport")
 {.compile("gen_qscistyle.cpp", cflags).}
 
 
-type QsciStyleTextCase* = cint
-const
-  QsciStyleOriginalCase* = 0
-  QsciStyleUpperCase* = 1
-  QsciStyleLowerCase* = 2
-
+type QsciStyleTextCaseEnum* = distinct cint
+template OriginalCase*(_: type QsciStyleTextCaseEnum): untyped = 0
+template UpperCase*(_: type QsciStyleTextCaseEnum): untyped = 1
+template LowerCase*(_: type QsciStyleTextCaseEnum): untyped = 2
 
 
 import gen_qscistyle_types
@@ -86,113 +84,113 @@ proc fcQsciStyle_refresh(self: pointer, ): void {.importc: "QsciStyle_refresh".}
 proc fcQsciStyle_delete(self: pointer) {.importc: "QsciStyle_delete".}
 
 
-func init*(T: type QsciStyle, h: ptr cQsciStyle): QsciStyle =
+func init*(T: type gen_qscistyle_types.QsciStyle, h: ptr cQsciStyle): gen_qscistyle_types.QsciStyle =
   T(h: h)
-proc create*(T: type QsciStyle, ): QsciStyle =
+proc create*(T: type gen_qscistyle_types.QsciStyle, ): gen_qscistyle_types.QsciStyle =
 
-  QsciStyle.init(fcQsciStyle_new())
-proc create*(T: type QsciStyle, style: cint, description: string, color: gen_qcolor.QColor, paper: gen_qcolor.QColor, font: gen_qfont.QFont): QsciStyle =
+  gen_qscistyle_types.QsciStyle.init(fcQsciStyle_new())
+proc create*(T: type gen_qscistyle_types.QsciStyle, style: cint, description: string, color: gen_qcolor.QColor, paper: gen_qcolor.QColor, font: gen_qfont.QFont): gen_qscistyle_types.QsciStyle =
 
-  QsciStyle.init(fcQsciStyle_new2(style, struct_miqt_string(data: description, len: csize_t(len(description))), color.h, paper.h, font.h))
-proc create*(T: type QsciStyle, param1: QsciStyle): QsciStyle =
+  gen_qscistyle_types.QsciStyle.init(fcQsciStyle_new2(style, struct_miqt_string(data: description, len: csize_t(len(description))), color.h, paper.h, font.h))
+proc create*(T: type gen_qscistyle_types.QsciStyle, param1: gen_qscistyle_types.QsciStyle): gen_qscistyle_types.QsciStyle =
 
-  QsciStyle.init(fcQsciStyle_new3(param1.h))
-proc create*(T: type QsciStyle, style: cint): QsciStyle =
+  gen_qscistyle_types.QsciStyle.init(fcQsciStyle_new3(param1.h))
+proc create*(T: type gen_qscistyle_types.QsciStyle, style: cint): gen_qscistyle_types.QsciStyle =
 
-  QsciStyle.init(fcQsciStyle_new4(style))
-proc create*(T: type QsciStyle, style: cint, description: string, color: gen_qcolor.QColor, paper: gen_qcolor.QColor, font: gen_qfont.QFont, eolFill: bool): QsciStyle =
+  gen_qscistyle_types.QsciStyle.init(fcQsciStyle_new4(style))
+proc create*(T: type gen_qscistyle_types.QsciStyle, style: cint, description: string, color: gen_qcolor.QColor, paper: gen_qcolor.QColor, font: gen_qfont.QFont, eolFill: bool): gen_qscistyle_types.QsciStyle =
 
-  QsciStyle.init(fcQsciStyle_new5(style, struct_miqt_string(data: description, len: csize_t(len(description))), color.h, paper.h, font.h, eolFill))
-proc apply*(self: QsciStyle, sci: gen_qsciscintillabase.QsciScintillaBase): void =
+  gen_qscistyle_types.QsciStyle.init(fcQsciStyle_new5(style, struct_miqt_string(data: description, len: csize_t(len(description))), color.h, paper.h, font.h, eolFill))
+proc apply*(self: gen_qscistyle_types.QsciStyle, sci: gen_qsciscintillabase.QsciScintillaBase): void =
 
   fcQsciStyle_apply(self.h, sci.h)
 
-proc setStyle*(self: QsciStyle, style: cint): void =
+proc setStyle*(self: gen_qscistyle_types.QsciStyle, style: cint): void =
 
   fcQsciStyle_setStyle(self.h, style)
 
-proc style*(self: QsciStyle, ): cint =
+proc style*(self: gen_qscistyle_types.QsciStyle, ): cint =
 
   fcQsciStyle_style(self.h)
 
-proc setDescription*(self: QsciStyle, description: string): void =
+proc setDescription*(self: gen_qscistyle_types.QsciStyle, description: string): void =
 
   fcQsciStyle_setDescription(self.h, struct_miqt_string(data: description, len: csize_t(len(description))))
 
-proc description*(self: QsciStyle, ): string =
+proc description*(self: gen_qscistyle_types.QsciStyle, ): string =
 
   let v_ms = fcQsciStyle_description(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setColor*(self: QsciStyle, color: gen_qcolor.QColor): void =
+proc setColor*(self: gen_qscistyle_types.QsciStyle, color: gen_qcolor.QColor): void =
 
   fcQsciStyle_setColor(self.h, color.h)
 
-proc color*(self: QsciStyle, ): gen_qcolor.QColor =
+proc color*(self: gen_qscistyle_types.QsciStyle, ): gen_qcolor.QColor =
 
   gen_qcolor.QColor(h: fcQsciStyle_color(self.h))
 
-proc setPaper*(self: QsciStyle, paper: gen_qcolor.QColor): void =
+proc setPaper*(self: gen_qscistyle_types.QsciStyle, paper: gen_qcolor.QColor): void =
 
   fcQsciStyle_setPaper(self.h, paper.h)
 
-proc paper*(self: QsciStyle, ): gen_qcolor.QColor =
+proc paper*(self: gen_qscistyle_types.QsciStyle, ): gen_qcolor.QColor =
 
   gen_qcolor.QColor(h: fcQsciStyle_paper(self.h))
 
-proc setFont*(self: QsciStyle, font: gen_qfont.QFont): void =
+proc setFont*(self: gen_qscistyle_types.QsciStyle, font: gen_qfont.QFont): void =
 
   fcQsciStyle_setFont(self.h, font.h)
 
-proc font*(self: QsciStyle, ): gen_qfont.QFont =
+proc font*(self: gen_qscistyle_types.QsciStyle, ): gen_qfont.QFont =
 
   gen_qfont.QFont(h: fcQsciStyle_font(self.h))
 
-proc setEolFill*(self: QsciStyle, fill: bool): void =
+proc setEolFill*(self: gen_qscistyle_types.QsciStyle, fill: bool): void =
 
   fcQsciStyle_setEolFill(self.h, fill)
 
-proc eolFill*(self: QsciStyle, ): bool =
+proc eolFill*(self: gen_qscistyle_types.QsciStyle, ): bool =
 
   fcQsciStyle_eolFill(self.h)
 
-proc setTextCase*(self: QsciStyle, text_case: QsciStyleTextCase): void =
+proc setTextCase*(self: gen_qscistyle_types.QsciStyle, text_case: cint): void =
 
   fcQsciStyle_setTextCase(self.h, cint(text_case))
 
-proc textCase*(self: QsciStyle, ): QsciStyleTextCase =
+proc textCase*(self: gen_qscistyle_types.QsciStyle, ): cint =
 
-  QsciStyleTextCase(fcQsciStyle_textCase(self.h))
+  cint(fcQsciStyle_textCase(self.h))
 
-proc setVisible*(self: QsciStyle, visible: bool): void =
+proc setVisible*(self: gen_qscistyle_types.QsciStyle, visible: bool): void =
 
   fcQsciStyle_setVisible(self.h, visible)
 
-proc visible*(self: QsciStyle, ): bool =
+proc visible*(self: gen_qscistyle_types.QsciStyle, ): bool =
 
   fcQsciStyle_visible(self.h)
 
-proc setChangeable*(self: QsciStyle, changeable: bool): void =
+proc setChangeable*(self: gen_qscistyle_types.QsciStyle, changeable: bool): void =
 
   fcQsciStyle_setChangeable(self.h, changeable)
 
-proc changeable*(self: QsciStyle, ): bool =
+proc changeable*(self: gen_qscistyle_types.QsciStyle, ): bool =
 
   fcQsciStyle_changeable(self.h)
 
-proc setHotspot*(self: QsciStyle, hotspot: bool): void =
+proc setHotspot*(self: gen_qscistyle_types.QsciStyle, hotspot: bool): void =
 
   fcQsciStyle_setHotspot(self.h, hotspot)
 
-proc hotspot*(self: QsciStyle, ): bool =
+proc hotspot*(self: gen_qscistyle_types.QsciStyle, ): bool =
 
   fcQsciStyle_hotspot(self.h)
 
-proc refresh*(self: QsciStyle, ): void =
+proc refresh*(self: gen_qscistyle_types.QsciStyle, ): void =
 
   fcQsciStyle_refresh(self.h)
 
-proc delete*(self: QsciStyle) =
+proc delete*(self: gen_qscistyle_types.QsciStyle) =
   fcQsciStyle_delete(self.h)

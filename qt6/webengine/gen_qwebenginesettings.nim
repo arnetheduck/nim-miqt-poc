@@ -34,71 +34,63 @@ const cflags = gorge("pkg-config -cflags Qt6WebEngineWidgets")
 {.compile("gen_qwebenginesettings.cpp", cflags).}
 
 
-type QWebEngineSettingsFontFamily* = cint
-const
-  QWebEngineSettingsStandardFont* = 0
-  QWebEngineSettingsFixedFont* = 1
-  QWebEngineSettingsSerifFont* = 2
-  QWebEngineSettingsSansSerifFont* = 3
-  QWebEngineSettingsCursiveFont* = 4
-  QWebEngineSettingsFantasyFont* = 5
-  QWebEngineSettingsPictographFont* = 6
+type QWebEngineSettingsFontFamilyEnum* = distinct cint
+template StandardFont*(_: type QWebEngineSettingsFontFamilyEnum): untyped = 0
+template FixedFont*(_: type QWebEngineSettingsFontFamilyEnum): untyped = 1
+template SerifFont*(_: type QWebEngineSettingsFontFamilyEnum): untyped = 2
+template SansSerifFont*(_: type QWebEngineSettingsFontFamilyEnum): untyped = 3
+template CursiveFont*(_: type QWebEngineSettingsFontFamilyEnum): untyped = 4
+template FantasyFont*(_: type QWebEngineSettingsFontFamilyEnum): untyped = 5
+template PictographFont*(_: type QWebEngineSettingsFontFamilyEnum): untyped = 6
 
 
-
-type QWebEngineSettingsWebAttribute* = cint
-const
-  QWebEngineSettingsAutoLoadImages* = 0
-  QWebEngineSettingsJavascriptEnabled* = 1
-  QWebEngineSettingsJavascriptCanOpenWindows* = 2
-  QWebEngineSettingsJavascriptCanAccessClipboard* = 3
-  QWebEngineSettingsLinksIncludedInFocusChain* = 4
-  QWebEngineSettingsLocalStorageEnabled* = 5
-  QWebEngineSettingsLocalContentCanAccessRemoteUrls* = 6
-  QWebEngineSettingsXSSAuditingEnabled* = 7
-  QWebEngineSettingsSpatialNavigationEnabled* = 8
-  QWebEngineSettingsLocalContentCanAccessFileUrls* = 9
-  QWebEngineSettingsHyperlinkAuditingEnabled* = 10
-  QWebEngineSettingsScrollAnimatorEnabled* = 11
-  QWebEngineSettingsErrorPageEnabled* = 12
-  QWebEngineSettingsPluginsEnabled* = 13
-  QWebEngineSettingsFullScreenSupportEnabled* = 14
-  QWebEngineSettingsScreenCaptureEnabled* = 15
-  QWebEngineSettingsWebGLEnabled* = 16
-  QWebEngineSettingsAccelerated2dCanvasEnabled* = 17
-  QWebEngineSettingsAutoLoadIconsForPage* = 18
-  QWebEngineSettingsTouchIconsEnabled* = 19
-  QWebEngineSettingsFocusOnNavigationEnabled* = 20
-  QWebEngineSettingsPrintElementBackgrounds* = 21
-  QWebEngineSettingsAllowRunningInsecureContent* = 22
-  QWebEngineSettingsAllowGeolocationOnInsecureOrigins* = 23
-  QWebEngineSettingsAllowWindowActivationFromJavaScript* = 24
-  QWebEngineSettingsShowScrollBars* = 25
-  QWebEngineSettingsPlaybackRequiresUserGesture* = 26
-  QWebEngineSettingsWebRTCPublicInterfacesOnly* = 27
-  QWebEngineSettingsJavascriptCanPaste* = 28
-  QWebEngineSettingsDnsPrefetchEnabled* = 29
-  QWebEngineSettingsPdfViewerEnabled* = 30
-  QWebEngineSettingsNavigateOnDropEnabled* = 31
+type QWebEngineSettingsWebAttributeEnum* = distinct cint
+template AutoLoadImages*(_: type QWebEngineSettingsWebAttributeEnum): untyped = 0
+template JavascriptEnabled*(_: type QWebEngineSettingsWebAttributeEnum): untyped = 1
+template JavascriptCanOpenWindows*(_: type QWebEngineSettingsWebAttributeEnum): untyped = 2
+template JavascriptCanAccessClipboard*(_: type QWebEngineSettingsWebAttributeEnum): untyped = 3
+template LinksIncludedInFocusChain*(_: type QWebEngineSettingsWebAttributeEnum): untyped = 4
+template LocalStorageEnabled*(_: type QWebEngineSettingsWebAttributeEnum): untyped = 5
+template LocalContentCanAccessRemoteUrls*(_: type QWebEngineSettingsWebAttributeEnum): untyped = 6
+template XSSAuditingEnabled*(_: type QWebEngineSettingsWebAttributeEnum): untyped = 7
+template SpatialNavigationEnabled*(_: type QWebEngineSettingsWebAttributeEnum): untyped = 8
+template LocalContentCanAccessFileUrls*(_: type QWebEngineSettingsWebAttributeEnum): untyped = 9
+template HyperlinkAuditingEnabled*(_: type QWebEngineSettingsWebAttributeEnum): untyped = 10
+template ScrollAnimatorEnabled*(_: type QWebEngineSettingsWebAttributeEnum): untyped = 11
+template ErrorPageEnabled*(_: type QWebEngineSettingsWebAttributeEnum): untyped = 12
+template PluginsEnabled*(_: type QWebEngineSettingsWebAttributeEnum): untyped = 13
+template FullScreenSupportEnabled*(_: type QWebEngineSettingsWebAttributeEnum): untyped = 14
+template ScreenCaptureEnabled*(_: type QWebEngineSettingsWebAttributeEnum): untyped = 15
+template WebGLEnabled*(_: type QWebEngineSettingsWebAttributeEnum): untyped = 16
+template Accelerated2dCanvasEnabled*(_: type QWebEngineSettingsWebAttributeEnum): untyped = 17
+template AutoLoadIconsForPage*(_: type QWebEngineSettingsWebAttributeEnum): untyped = 18
+template TouchIconsEnabled*(_: type QWebEngineSettingsWebAttributeEnum): untyped = 19
+template FocusOnNavigationEnabled*(_: type QWebEngineSettingsWebAttributeEnum): untyped = 20
+template PrintElementBackgrounds*(_: type QWebEngineSettingsWebAttributeEnum): untyped = 21
+template AllowRunningInsecureContent*(_: type QWebEngineSettingsWebAttributeEnum): untyped = 22
+template AllowGeolocationOnInsecureOrigins*(_: type QWebEngineSettingsWebAttributeEnum): untyped = 23
+template AllowWindowActivationFromJavaScript*(_: type QWebEngineSettingsWebAttributeEnum): untyped = 24
+template ShowScrollBars*(_: type QWebEngineSettingsWebAttributeEnum): untyped = 25
+template PlaybackRequiresUserGesture*(_: type QWebEngineSettingsWebAttributeEnum): untyped = 26
+template WebRTCPublicInterfacesOnly*(_: type QWebEngineSettingsWebAttributeEnum): untyped = 27
+template JavascriptCanPaste*(_: type QWebEngineSettingsWebAttributeEnum): untyped = 28
+template DnsPrefetchEnabled*(_: type QWebEngineSettingsWebAttributeEnum): untyped = 29
+template PdfViewerEnabled*(_: type QWebEngineSettingsWebAttributeEnum): untyped = 30
+template NavigateOnDropEnabled*(_: type QWebEngineSettingsWebAttributeEnum): untyped = 31
 
 
-
-type QWebEngineSettingsFontSize* = cint
-const
-  QWebEngineSettingsMinimumFontSize* = 0
-  QWebEngineSettingsMinimumLogicalFontSize* = 1
-  QWebEngineSettingsDefaultFontSize* = 2
-  QWebEngineSettingsDefaultFixedFontSize* = 3
+type QWebEngineSettingsFontSizeEnum* = distinct cint
+template MinimumFontSize*(_: type QWebEngineSettingsFontSizeEnum): untyped = 0
+template MinimumLogicalFontSize*(_: type QWebEngineSettingsFontSizeEnum): untyped = 1
+template DefaultFontSize*(_: type QWebEngineSettingsFontSizeEnum): untyped = 2
+template DefaultFixedFontSize*(_: type QWebEngineSettingsFontSizeEnum): untyped = 3
 
 
-
-type QWebEngineSettingsUnknownUrlSchemePolicy* = cint
-const
-  QWebEngineSettingsInheritedUnknownUrlSchemePolicy* = 0
-  QWebEngineSettingsDisallowUnknownUrlSchemes* = 1
-  QWebEngineSettingsAllowUnknownUrlSchemesFromUserInteraction* = 2
-  QWebEngineSettingsAllowAllUnknownUrlSchemes* = 3
-
+type QWebEngineSettingsUnknownUrlSchemePolicyEnum* = distinct cint
+template InheritedUnknownUrlSchemePolicy*(_: type QWebEngineSettingsUnknownUrlSchemePolicyEnum): untyped = 0
+template DisallowUnknownUrlSchemes*(_: type QWebEngineSettingsUnknownUrlSchemePolicyEnum): untyped = 1
+template AllowUnknownUrlSchemesFromUserInteraction*(_: type QWebEngineSettingsUnknownUrlSchemePolicyEnum): untyped = 2
+template AllowAllUnknownUrlSchemes*(_: type QWebEngineSettingsUnknownUrlSchemePolicyEnum): untyped = 3
 
 
 import gen_qwebenginesettings_types
@@ -124,69 +116,69 @@ proc fcQWebEngineSettings_resetUnknownUrlSchemePolicy(self: pointer, ): void {.i
 proc fcQWebEngineSettings_delete(self: pointer) {.importc: "QWebEngineSettings_delete".}
 
 
-func init*(T: type QWebEngineSettings, h: ptr cQWebEngineSettings): QWebEngineSettings =
+func init*(T: type gen_qwebenginesettings_types.QWebEngineSettings, h: ptr cQWebEngineSettings): gen_qwebenginesettings_types.QWebEngineSettings =
   T(h: h)
-proc setFontFamily*(self: QWebEngineSettings, which: QWebEngineSettingsFontFamily, family: string): void =
+proc setFontFamily*(self: gen_qwebenginesettings_types.QWebEngineSettings, which: cint, family: string): void =
 
   fcQWebEngineSettings_setFontFamily(self.h, cint(which), struct_miqt_string(data: family, len: csize_t(len(family))))
 
-proc fontFamily*(self: QWebEngineSettings, which: QWebEngineSettingsFontFamily): string =
+proc fontFamily*(self: gen_qwebenginesettings_types.QWebEngineSettings, which: cint): string =
 
   let v_ms = fcQWebEngineSettings_fontFamily(self.h, cint(which))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc resetFontFamily*(self: QWebEngineSettings, which: QWebEngineSettingsFontFamily): void =
+proc resetFontFamily*(self: gen_qwebenginesettings_types.QWebEngineSettings, which: cint): void =
 
   fcQWebEngineSettings_resetFontFamily(self.h, cint(which))
 
-proc setFontSize*(self: QWebEngineSettings, typeVal: QWebEngineSettingsFontSize, size: cint): void =
+proc setFontSize*(self: gen_qwebenginesettings_types.QWebEngineSettings, typeVal: cint, size: cint): void =
 
   fcQWebEngineSettings_setFontSize(self.h, cint(typeVal), size)
 
-proc fontSize*(self: QWebEngineSettings, typeVal: QWebEngineSettingsFontSize): cint =
+proc fontSize*(self: gen_qwebenginesettings_types.QWebEngineSettings, typeVal: cint): cint =
 
   fcQWebEngineSettings_fontSize(self.h, cint(typeVal))
 
-proc resetFontSize*(self: QWebEngineSettings, typeVal: QWebEngineSettingsFontSize): void =
+proc resetFontSize*(self: gen_qwebenginesettings_types.QWebEngineSettings, typeVal: cint): void =
 
   fcQWebEngineSettings_resetFontSize(self.h, cint(typeVal))
 
-proc setAttribute*(self: QWebEngineSettings, attr: QWebEngineSettingsWebAttribute, on: bool): void =
+proc setAttribute*(self: gen_qwebenginesettings_types.QWebEngineSettings, attr: cint, on: bool): void =
 
   fcQWebEngineSettings_setAttribute(self.h, cint(attr), on)
 
-proc testAttribute*(self: QWebEngineSettings, attr: QWebEngineSettingsWebAttribute): bool =
+proc testAttribute*(self: gen_qwebenginesettings_types.QWebEngineSettings, attr: cint): bool =
 
   fcQWebEngineSettings_testAttribute(self.h, cint(attr))
 
-proc resetAttribute*(self: QWebEngineSettings, attr: QWebEngineSettingsWebAttribute): void =
+proc resetAttribute*(self: gen_qwebenginesettings_types.QWebEngineSettings, attr: cint): void =
 
   fcQWebEngineSettings_resetAttribute(self.h, cint(attr))
 
-proc setDefaultTextEncoding*(self: QWebEngineSettings, encoding: string): void =
+proc setDefaultTextEncoding*(self: gen_qwebenginesettings_types.QWebEngineSettings, encoding: string): void =
 
   fcQWebEngineSettings_setDefaultTextEncoding(self.h, struct_miqt_string(data: encoding, len: csize_t(len(encoding))))
 
-proc defaultTextEncoding*(self: QWebEngineSettings, ): string =
+proc defaultTextEncoding*(self: gen_qwebenginesettings_types.QWebEngineSettings, ): string =
 
   let v_ms = fcQWebEngineSettings_defaultTextEncoding(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc unknownUrlSchemePolicy*(self: QWebEngineSettings, ): QWebEngineSettingsUnknownUrlSchemePolicy =
+proc unknownUrlSchemePolicy*(self: gen_qwebenginesettings_types.QWebEngineSettings, ): cint =
 
-  QWebEngineSettingsUnknownUrlSchemePolicy(fcQWebEngineSettings_unknownUrlSchemePolicy(self.h))
+  cint(fcQWebEngineSettings_unknownUrlSchemePolicy(self.h))
 
-proc setUnknownUrlSchemePolicy*(self: QWebEngineSettings, policy: QWebEngineSettingsUnknownUrlSchemePolicy): void =
+proc setUnknownUrlSchemePolicy*(self: gen_qwebenginesettings_types.QWebEngineSettings, policy: cint): void =
 
   fcQWebEngineSettings_setUnknownUrlSchemePolicy(self.h, cint(policy))
 
-proc resetUnknownUrlSchemePolicy*(self: QWebEngineSettings, ): void =
+proc resetUnknownUrlSchemePolicy*(self: gen_qwebenginesettings_types.QWebEngineSettings, ): void =
 
   fcQWebEngineSettings_resetUnknownUrlSchemePolicy(self.h)
 
-proc delete*(self: QWebEngineSettings) =
+proc delete*(self: gen_qwebenginesettings_types.QWebEngineSettings) =
   fcQWebEngineSettings_delete(self.h)

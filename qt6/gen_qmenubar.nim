@@ -44,7 +44,6 @@ import
   gen_qicon,
   gen_qmenu,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -63,7 +62,6 @@ export
   gen_qicon,
   gen_qmenu,
   gen_qmetaobject,
-  gen_qnamespace,
   gen_qobject,
   gen_qobjectdefs,
   gen_qpaintdevice,
@@ -219,118 +217,118 @@ proc fcQMenuBar_staticMetaObject(): pointer {.importc: "QMenuBar_staticMetaObjec
 proc fcQMenuBar_delete(self: pointer) {.importc: "QMenuBar_delete".}
 
 
-func init*(T: type QMenuBar, h: ptr cQMenuBar): QMenuBar =
+func init*(T: type gen_qmenubar_types.QMenuBar, h: ptr cQMenuBar): gen_qmenubar_types.QMenuBar =
   T(h: h)
-proc create*(T: type QMenuBar, parent: gen_qwidget.QWidget): QMenuBar =
+proc create*(T: type gen_qmenubar_types.QMenuBar, parent: gen_qwidget.QWidget): gen_qmenubar_types.QMenuBar =
 
-  QMenuBar.init(fcQMenuBar_new(parent.h))
-proc create*(T: type QMenuBar, ): QMenuBar =
+  gen_qmenubar_types.QMenuBar.init(fcQMenuBar_new(parent.h))
+proc create*(T: type gen_qmenubar_types.QMenuBar, ): gen_qmenubar_types.QMenuBar =
 
-  QMenuBar.init(fcQMenuBar_new2())
-proc metaObject*(self: QMenuBar, ): gen_qobjectdefs.QMetaObject =
+  gen_qmenubar_types.QMenuBar.init(fcQMenuBar_new2())
+proc metaObject*(self: gen_qmenubar_types.QMenuBar, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fcQMenuBar_metaObject(self.h))
 
-proc metacast*(self: QMenuBar, param1: cstring): pointer =
+proc metacast*(self: gen_qmenubar_types.QMenuBar, param1: cstring): pointer =
 
   fcQMenuBar_metacast(self.h, param1)
 
-proc metacall*(self: QMenuBar, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
+proc metacall*(self: gen_qmenubar_types.QMenuBar, param1: cint, param2: cint, param3: pointer): cint =
 
   fcQMenuBar_metacall(self.h, cint(param1), param2, param3)
 
-proc tr*(_: type QMenuBar, s: cstring): string =
+proc tr*(_: type gen_qmenubar_types.QMenuBar, s: cstring): string =
 
   let v_ms = fcQMenuBar_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc addMenu*(self: QMenuBar, menu: gen_qmenu.QMenu): gen_qaction.QAction =
+proc addMenu*(self: gen_qmenubar_types.QMenuBar, menu: gen_qmenu.QMenu): gen_qaction.QAction =
 
   gen_qaction.QAction(h: fcQMenuBar_addMenu(self.h, menu.h))
 
-proc addMenuWithTitle*(self: QMenuBar, title: string): gen_qmenu.QMenu =
+proc addMenuWithTitle*(self: gen_qmenubar_types.QMenuBar, title: string): gen_qmenu.QMenu =
 
   gen_qmenu.QMenu(h: fcQMenuBar_addMenuWithTitle(self.h, struct_miqt_string(data: title, len: csize_t(len(title)))))
 
-proc addMenu2*(self: QMenuBar, icon: gen_qicon.QIcon, title: string): gen_qmenu.QMenu =
+proc addMenu2*(self: gen_qmenubar_types.QMenuBar, icon: gen_qicon.QIcon, title: string): gen_qmenu.QMenu =
 
   gen_qmenu.QMenu(h: fcQMenuBar_addMenu2(self.h, icon.h, struct_miqt_string(data: title, len: csize_t(len(title)))))
 
-proc addSeparator*(self: QMenuBar, ): gen_qaction.QAction =
+proc addSeparator*(self: gen_qmenubar_types.QMenuBar, ): gen_qaction.QAction =
 
   gen_qaction.QAction(h: fcQMenuBar_addSeparator(self.h))
 
-proc insertSeparator*(self: QMenuBar, before: gen_qaction.QAction): gen_qaction.QAction =
+proc insertSeparator*(self: gen_qmenubar_types.QMenuBar, before: gen_qaction.QAction): gen_qaction.QAction =
 
   gen_qaction.QAction(h: fcQMenuBar_insertSeparator(self.h, before.h))
 
-proc insertMenu*(self: QMenuBar, before: gen_qaction.QAction, menu: gen_qmenu.QMenu): gen_qaction.QAction =
+proc insertMenu*(self: gen_qmenubar_types.QMenuBar, before: gen_qaction.QAction, menu: gen_qmenu.QMenu): gen_qaction.QAction =
 
   gen_qaction.QAction(h: fcQMenuBar_insertMenu(self.h, before.h, menu.h))
 
-proc clear*(self: QMenuBar, ): void =
+proc clear*(self: gen_qmenubar_types.QMenuBar, ): void =
 
   fcQMenuBar_clear(self.h)
 
-proc activeAction*(self: QMenuBar, ): gen_qaction.QAction =
+proc activeAction*(self: gen_qmenubar_types.QMenuBar, ): gen_qaction.QAction =
 
   gen_qaction.QAction(h: fcQMenuBar_activeAction(self.h))
 
-proc setActiveAction*(self: QMenuBar, action: gen_qaction.QAction): void =
+proc setActiveAction*(self: gen_qmenubar_types.QMenuBar, action: gen_qaction.QAction): void =
 
   fcQMenuBar_setActiveAction(self.h, action.h)
 
-proc setDefaultUp*(self: QMenuBar, defaultUp: bool): void =
+proc setDefaultUp*(self: gen_qmenubar_types.QMenuBar, defaultUp: bool): void =
 
   fcQMenuBar_setDefaultUp(self.h, defaultUp)
 
-proc isDefaultUp*(self: QMenuBar, ): bool =
+proc isDefaultUp*(self: gen_qmenubar_types.QMenuBar, ): bool =
 
   fcQMenuBar_isDefaultUp(self.h)
 
-proc sizeHint*(self: QMenuBar, ): gen_qsize.QSize =
+proc sizeHint*(self: gen_qmenubar_types.QMenuBar, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQMenuBar_sizeHint(self.h))
 
-proc minimumSizeHint*(self: QMenuBar, ): gen_qsize.QSize =
+proc minimumSizeHint*(self: gen_qmenubar_types.QMenuBar, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQMenuBar_minimumSizeHint(self.h))
 
-proc heightForWidth*(self: QMenuBar, param1: cint): cint =
+proc heightForWidth*(self: gen_qmenubar_types.QMenuBar, param1: cint): cint =
 
   fcQMenuBar_heightForWidth(self.h, param1)
 
-proc actionGeometry*(self: QMenuBar, param1: gen_qaction.QAction): gen_qrect.QRect =
+proc actionGeometry*(self: gen_qmenubar_types.QMenuBar, param1: gen_qaction.QAction): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fcQMenuBar_actionGeometry(self.h, param1.h))
 
-proc actionAt*(self: QMenuBar, param1: gen_qpoint.QPoint): gen_qaction.QAction =
+proc actionAt*(self: gen_qmenubar_types.QMenuBar, param1: gen_qpoint.QPoint): gen_qaction.QAction =
 
   gen_qaction.QAction(h: fcQMenuBar_actionAt(self.h, param1.h))
 
-proc setCornerWidget*(self: QMenuBar, w: gen_qwidget.QWidget): void =
+proc setCornerWidget*(self: gen_qmenubar_types.QMenuBar, w: gen_qwidget.QWidget): void =
 
   fcQMenuBar_setCornerWidget(self.h, w.h)
 
-proc cornerWidget*(self: QMenuBar, ): gen_qwidget.QWidget =
+proc cornerWidget*(self: gen_qmenubar_types.QMenuBar, ): gen_qwidget.QWidget =
 
   gen_qwidget.QWidget(h: fcQMenuBar_cornerWidget(self.h))
 
-proc isNativeMenuBar*(self: QMenuBar, ): bool =
+proc isNativeMenuBar*(self: gen_qmenubar_types.QMenuBar, ): bool =
 
   fcQMenuBar_isNativeMenuBar(self.h)
 
-proc setNativeMenuBar*(self: QMenuBar, nativeMenuBar: bool): void =
+proc setNativeMenuBar*(self: gen_qmenubar_types.QMenuBar, nativeMenuBar: bool): void =
 
   fcQMenuBar_setNativeMenuBar(self.h, nativeMenuBar)
 
-proc setVisible*(self: QMenuBar, visible: bool): void =
+proc setVisible*(self: gen_qmenubar_types.QMenuBar, visible: bool): void =
 
   fcQMenuBar_setVisible(self.h, visible)
 
-proc triggered*(self: QMenuBar, action: gen_qaction.QAction): void =
+proc triggered*(self: gen_qmenubar_types.QMenuBar, action: gen_qaction.QAction): void =
 
   fcQMenuBar_triggered(self.h, action.h)
 
@@ -342,13 +340,13 @@ proc miqt_exec_callback_QMenuBar_triggered(slot: int, action: pointer) {.exportc
 
   nimfunc[](slotval1)
 
-proc ontriggered*(self: QMenuBar, slot: proc(action: gen_qaction.QAction)) =
+proc ontriggered*(self: gen_qmenubar_types.QMenuBar, slot: proc(action: gen_qaction.QAction)) =
   type Cb = proc(action: gen_qaction.QAction)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQMenuBar_connect_triggered(self.h, cast[int](addr tmp[]))
-proc hovered*(self: QMenuBar, action: gen_qaction.QAction): void =
+proc hovered*(self: gen_qmenubar_types.QMenuBar, action: gen_qaction.QAction): void =
 
   fcQMenuBar_hovered(self.h, action.h)
 
@@ -360,968 +358,768 @@ proc miqt_exec_callback_QMenuBar_hovered(slot: int, action: pointer) {.exportc.}
 
   nimfunc[](slotval1)
 
-proc onhovered*(self: QMenuBar, slot: proc(action: gen_qaction.QAction)) =
+proc onhovered*(self: gen_qmenubar_types.QMenuBar, slot: proc(action: gen_qaction.QAction)) =
   type Cb = proc(action: gen_qaction.QAction)
   var tmp = new Cb
   tmp[] = slot
   GC_ref(tmp)
   fQMenuBar_connect_hovered(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type QMenuBar, s: cstring, c: cstring): string =
+proc tr2*(_: type gen_qmenubar_types.QMenuBar, s: cstring, c: cstring): string =
 
   let v_ms = fcQMenuBar_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type QMenuBar, s: cstring, c: cstring, n: cint): string =
+proc tr3*(_: type gen_qmenubar_types.QMenuBar, s: cstring, c: cstring, n: cint): string =
 
   let v_ms = fcQMenuBar_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setCornerWidget2*(self: QMenuBar, w: gen_qwidget.QWidget, corner: gen_qnamespace.Corner): void =
+proc setCornerWidget2*(self: gen_qmenubar_types.QMenuBar, w: gen_qwidget.QWidget, corner: cint): void =
 
   fcQMenuBar_setCornerWidget2(self.h, w.h, cint(corner))
 
-proc cornerWidget1*(self: QMenuBar, corner: gen_qnamespace.Corner): gen_qwidget.QWidget =
+proc cornerWidget1*(self: gen_qmenubar_types.QMenuBar, corner: cint): gen_qwidget.QWidget =
 
   gen_qwidget.QWidget(h: fcQMenuBar_cornerWidget1(self.h, cint(corner)))
 
-proc callVirtualBase_metaObject(self: QMenuBar, ): gen_qobjectdefs.QMetaObject =
-
+proc QMenuBarmetaObject*(self: gen_qmenubar_types.QMenuBar, ): gen_qobjectdefs.QMetaObject =
 
   gen_qobjectdefs.QMetaObject(h: fQMenuBar_virtualbase_metaObject(self.h))
 
-type QMenuBarmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
-proc onmetaObject*(self: QMenuBar, slot: proc(super: QMenuBarmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+type QMenuBarmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: gen_qmenubar_types.QMenuBar, slot: QMenuBarmetaObjectProc) =
   # TODO check subclass
-  type Cb = proc(super: QMenuBarmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var tmp = new Cb
+  var tmp = new QMenuBarmetaObjectProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMenuBar_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMenuBar_metaObject(self: ptr cQMenuBar, slot: int): pointer {.exportc: "miqt_exec_callback_QMenuBar_metaObject ".} =
-  type Cb = proc(super: QMenuBarmetaObjectBase): gen_qobjectdefs.QMetaObject
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_metaObject(QMenuBar(h: self), )
+  var nimfunc = cast[ptr QMenuBarmetaObjectProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_metacast(self: QMenuBar, param1: cstring): pointer =
-
+proc QMenuBarmetacast*(self: gen_qmenubar_types.QMenuBar, param1: cstring): pointer =
 
   fQMenuBar_virtualbase_metacast(self.h, param1)
 
-type QMenuBarmetacastBase* = proc(param1: cstring): pointer
-proc onmetacast*(self: QMenuBar, slot: proc(super: QMenuBarmetacastBase, param1: cstring): pointer) =
+type QMenuBarmetacastProc* = proc(param1: cstring): pointer
+proc onmetacast*(self: gen_qmenubar_types.QMenuBar, slot: QMenuBarmetacastProc) =
   # TODO check subclass
-  type Cb = proc(super: QMenuBarmetacastBase, param1: cstring): pointer
-  var tmp = new Cb
+  var tmp = new QMenuBarmetacastProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMenuBar_override_virtual_metacast(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMenuBar_metacast(self: ptr cQMenuBar, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QMenuBar_metacast ".} =
-  type Cb = proc(super: QMenuBarmetacastBase, param1: cstring): pointer
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cstring): auto =
-    callVirtualBase_metacast(QMenuBar(h: self), param1)
+  var nimfunc = cast[ptr QMenuBarmetacastProc](cast[pointer](slot))
   let slotval1 = (param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_metacall(self: QMenuBar, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
-
+proc QMenuBarmetacall*(self: gen_qmenubar_types.QMenuBar, param1: cint, param2: cint, param3: pointer): cint =
 
   fQMenuBar_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
-type QMenuBarmetacallBase* = proc(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-proc onmetacall*(self: QMenuBar, slot: proc(super: QMenuBarmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint) =
+type QMenuBarmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
+proc onmetacall*(self: gen_qmenubar_types.QMenuBar, slot: QMenuBarmetacallProc) =
   # TODO check subclass
-  type Cb = proc(super: QMenuBarmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var tmp = new Cb
+  var tmp = new QMenuBarmetacallProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMenuBar_override_virtual_metacall(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMenuBar_metacall(self: ptr cQMenuBar, slot: int, param1: cint, param2: cint, param3: pointer): cint {.exportc: "miqt_exec_callback_QMenuBar_metacall ".} =
-  type Cb = proc(super: QMenuBarmetacallBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): auto =
-    callVirtualBase_metacall(QMenuBar(h: self), param1, param2, param3)
-  let slotval1 = gen_qobjectdefs.QMetaObjectCall(param1)
+  var nimfunc = cast[ptr QMenuBarmetacallProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
   let slotval2 = param2
 
   let slotval3 = param3
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_sizeHint(self: QMenuBar, ): gen_qsize.QSize =
-
+proc QMenuBarsizeHint*(self: gen_qmenubar_types.QMenuBar, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQMenuBar_virtualbase_sizeHint(self.h))
 
-type QMenuBarsizeHintBase* = proc(): gen_qsize.QSize
-proc onsizeHint*(self: QMenuBar, slot: proc(super: QMenuBarsizeHintBase): gen_qsize.QSize) =
+type QMenuBarsizeHintProc* = proc(): gen_qsize.QSize
+proc onsizeHint*(self: gen_qmenubar_types.QMenuBar, slot: QMenuBarsizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QMenuBarsizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QMenuBarsizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMenuBar_override_virtual_sizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMenuBar_sizeHint(self: ptr cQMenuBar, slot: int): pointer {.exportc: "miqt_exec_callback_QMenuBar_sizeHint ".} =
-  type Cb = proc(super: QMenuBarsizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sizeHint(QMenuBar(h: self), )
+  var nimfunc = cast[ptr QMenuBarsizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_minimumSizeHint(self: QMenuBar, ): gen_qsize.QSize =
-
+proc QMenuBarminimumSizeHint*(self: gen_qmenubar_types.QMenuBar, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fQMenuBar_virtualbase_minimumSizeHint(self.h))
 
-type QMenuBarminimumSizeHintBase* = proc(): gen_qsize.QSize
-proc onminimumSizeHint*(self: QMenuBar, slot: proc(super: QMenuBarminimumSizeHintBase): gen_qsize.QSize) =
+type QMenuBarminimumSizeHintProc* = proc(): gen_qsize.QSize
+proc onminimumSizeHint*(self: gen_qmenubar_types.QMenuBar, slot: QMenuBarminimumSizeHintProc) =
   # TODO check subclass
-  type Cb = proc(super: QMenuBarminimumSizeHintBase): gen_qsize.QSize
-  var tmp = new Cb
+  var tmp = new QMenuBarminimumSizeHintProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMenuBar_override_virtual_minimumSizeHint(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMenuBar_minimumSizeHint(self: ptr cQMenuBar, slot: int): pointer {.exportc: "miqt_exec_callback_QMenuBar_minimumSizeHint ".} =
-  type Cb = proc(super: QMenuBarminimumSizeHintBase): gen_qsize.QSize
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_minimumSizeHint(QMenuBar(h: self), )
+  var nimfunc = cast[ptr QMenuBarminimumSizeHintProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_heightForWidth(self: QMenuBar, param1: cint): cint =
-
+proc QMenuBarheightForWidth*(self: gen_qmenubar_types.QMenuBar, param1: cint): cint =
 
   fQMenuBar_virtualbase_heightForWidth(self.h, param1)
 
-type QMenuBarheightForWidthBase* = proc(param1: cint): cint
-proc onheightForWidth*(self: QMenuBar, slot: proc(super: QMenuBarheightForWidthBase, param1: cint): cint) =
+type QMenuBarheightForWidthProc* = proc(param1: cint): cint
+proc onheightForWidth*(self: gen_qmenubar_types.QMenuBar, slot: QMenuBarheightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QMenuBarheightForWidthBase, param1: cint): cint
-  var tmp = new Cb
+  var tmp = new QMenuBarheightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMenuBar_override_virtual_heightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMenuBar_heightForWidth(self: ptr cQMenuBar, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QMenuBar_heightForWidth ".} =
-  type Cb = proc(super: QMenuBarheightForWidthBase, param1: cint): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: cint): auto =
-    callVirtualBase_heightForWidth(QMenuBar(h: self), param1)
+  var nimfunc = cast[ptr QMenuBarheightForWidthProc](cast[pointer](slot))
   let slotval1 = param1
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_setVisible(self: QMenuBar, visible: bool): void =
-
+proc QMenuBarsetVisible*(self: gen_qmenubar_types.QMenuBar, visible: bool): void =
 
   fQMenuBar_virtualbase_setVisible(self.h, visible)
 
-type QMenuBarsetVisibleBase* = proc(visible: bool): void
-proc onsetVisible*(self: QMenuBar, slot: proc(super: QMenuBarsetVisibleBase, visible: bool): void) =
+type QMenuBarsetVisibleProc* = proc(visible: bool): void
+proc onsetVisible*(self: gen_qmenubar_types.QMenuBar, slot: QMenuBarsetVisibleProc) =
   # TODO check subclass
-  type Cb = proc(super: QMenuBarsetVisibleBase, visible: bool): void
-  var tmp = new Cb
+  var tmp = new QMenuBarsetVisibleProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMenuBar_override_virtual_setVisible(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMenuBar_setVisible(self: ptr cQMenuBar, slot: int, visible: bool): void {.exportc: "miqt_exec_callback_QMenuBar_setVisible ".} =
-  type Cb = proc(super: QMenuBarsetVisibleBase, visible: bool): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(visible: bool): auto =
-    callVirtualBase_setVisible(QMenuBar(h: self), visible)
+  var nimfunc = cast[ptr QMenuBarsetVisibleProc](cast[pointer](slot))
   let slotval1 = visible
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_changeEvent(self: QMenuBar, param1: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QMenuBarchangeEvent*(self: gen_qmenubar_types.QMenuBar, param1: gen_qcoreevent.QEvent): void =
 
   fQMenuBar_virtualbase_changeEvent(self.h, param1.h)
 
-type QMenuBarchangeEventBase* = proc(param1: gen_qcoreevent.QEvent): void
-proc onchangeEvent*(self: QMenuBar, slot: proc(super: QMenuBarchangeEventBase, param1: gen_qcoreevent.QEvent): void) =
+type QMenuBarchangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
+proc onchangeEvent*(self: gen_qmenubar_types.QMenuBar, slot: QMenuBarchangeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMenuBarchangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QMenuBarchangeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMenuBar_override_virtual_changeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMenuBar_changeEvent(self: ptr cQMenuBar, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QMenuBar_changeEvent ".} =
-  type Cb = proc(super: QMenuBarchangeEventBase, param1: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_changeEvent(QMenuBar(h: self), param1)
+  var nimfunc = cast[ptr QMenuBarchangeEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyPressEvent(self: QMenuBar, param1: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QMenuBarkeyPressEvent*(self: gen_qmenubar_types.QMenuBar, param1: gen_qevent.QKeyEvent): void =
 
   fQMenuBar_virtualbase_keyPressEvent(self.h, param1.h)
 
-type QMenuBarkeyPressEventBase* = proc(param1: gen_qevent.QKeyEvent): void
-proc onkeyPressEvent*(self: QMenuBar, slot: proc(super: QMenuBarkeyPressEventBase, param1: gen_qevent.QKeyEvent): void) =
+type QMenuBarkeyPressEventProc* = proc(param1: gen_qevent.QKeyEvent): void
+proc onkeyPressEvent*(self: gen_qmenubar_types.QMenuBar, slot: QMenuBarkeyPressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMenuBarkeyPressEventBase, param1: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QMenuBarkeyPressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMenuBar_override_virtual_keyPressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMenuBar_keyPressEvent(self: ptr cQMenuBar, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QMenuBar_keyPressEvent ".} =
-  type Cb = proc(super: QMenuBarkeyPressEventBase, param1: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyPressEvent(QMenuBar(h: self), param1)
+  var nimfunc = cast[ptr QMenuBarkeyPressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseReleaseEvent(self: QMenuBar, param1: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QMenuBarmouseReleaseEvent*(self: gen_qmenubar_types.QMenuBar, param1: gen_qevent.QMouseEvent): void =
 
   fQMenuBar_virtualbase_mouseReleaseEvent(self.h, param1.h)
 
-type QMenuBarmouseReleaseEventBase* = proc(param1: gen_qevent.QMouseEvent): void
-proc onmouseReleaseEvent*(self: QMenuBar, slot: proc(super: QMenuBarmouseReleaseEventBase, param1: gen_qevent.QMouseEvent): void) =
+type QMenuBarmouseReleaseEventProc* = proc(param1: gen_qevent.QMouseEvent): void
+proc onmouseReleaseEvent*(self: gen_qmenubar_types.QMenuBar, slot: QMenuBarmouseReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMenuBarmouseReleaseEventBase, param1: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QMenuBarmouseReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMenuBar_override_virtual_mouseReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMenuBar_mouseReleaseEvent(self: ptr cQMenuBar, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QMenuBar_mouseReleaseEvent ".} =
-  type Cb = proc(super: QMenuBarmouseReleaseEventBase, param1: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseReleaseEvent(QMenuBar(h: self), param1)
+  var nimfunc = cast[ptr QMenuBarmouseReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mousePressEvent(self: QMenuBar, param1: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QMenuBarmousePressEvent*(self: gen_qmenubar_types.QMenuBar, param1: gen_qevent.QMouseEvent): void =
 
   fQMenuBar_virtualbase_mousePressEvent(self.h, param1.h)
 
-type QMenuBarmousePressEventBase* = proc(param1: gen_qevent.QMouseEvent): void
-proc onmousePressEvent*(self: QMenuBar, slot: proc(super: QMenuBarmousePressEventBase, param1: gen_qevent.QMouseEvent): void) =
+type QMenuBarmousePressEventProc* = proc(param1: gen_qevent.QMouseEvent): void
+proc onmousePressEvent*(self: gen_qmenubar_types.QMenuBar, slot: QMenuBarmousePressEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMenuBarmousePressEventBase, param1: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QMenuBarmousePressEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMenuBar_override_virtual_mousePressEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMenuBar_mousePressEvent(self: ptr cQMenuBar, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QMenuBar_mousePressEvent ".} =
-  type Cb = proc(super: QMenuBarmousePressEventBase, param1: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mousePressEvent(QMenuBar(h: self), param1)
+  var nimfunc = cast[ptr QMenuBarmousePressEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_mouseMoveEvent(self: QMenuBar, param1: gen_qevent.QMouseEvent): void =
-
+  nimfunc[](slotval1)
+proc QMenuBarmouseMoveEvent*(self: gen_qmenubar_types.QMenuBar, param1: gen_qevent.QMouseEvent): void =
 
   fQMenuBar_virtualbase_mouseMoveEvent(self.h, param1.h)
 
-type QMenuBarmouseMoveEventBase* = proc(param1: gen_qevent.QMouseEvent): void
-proc onmouseMoveEvent*(self: QMenuBar, slot: proc(super: QMenuBarmouseMoveEventBase, param1: gen_qevent.QMouseEvent): void) =
+type QMenuBarmouseMoveEventProc* = proc(param1: gen_qevent.QMouseEvent): void
+proc onmouseMoveEvent*(self: gen_qmenubar_types.QMenuBar, slot: QMenuBarmouseMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMenuBarmouseMoveEventBase, param1: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QMenuBarmouseMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMenuBar_override_virtual_mouseMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMenuBar_mouseMoveEvent(self: ptr cQMenuBar, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QMenuBar_mouseMoveEvent ".} =
-  type Cb = proc(super: QMenuBarmouseMoveEventBase, param1: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseMoveEvent(QMenuBar(h: self), param1)
+  var nimfunc = cast[ptr QMenuBarmouseMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_leaveEvent(self: QMenuBar, param1: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QMenuBarleaveEvent*(self: gen_qmenubar_types.QMenuBar, param1: gen_qcoreevent.QEvent): void =
 
   fQMenuBar_virtualbase_leaveEvent(self.h, param1.h)
 
-type QMenuBarleaveEventBase* = proc(param1: gen_qcoreevent.QEvent): void
-proc onleaveEvent*(self: QMenuBar, slot: proc(super: QMenuBarleaveEventBase, param1: gen_qcoreevent.QEvent): void) =
+type QMenuBarleaveEventProc* = proc(param1: gen_qcoreevent.QEvent): void
+proc onleaveEvent*(self: gen_qmenubar_types.QMenuBar, slot: QMenuBarleaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMenuBarleaveEventBase, param1: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QMenuBarleaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMenuBar_override_virtual_leaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMenuBar_leaveEvent(self: ptr cQMenuBar, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QMenuBar_leaveEvent ".} =
-  type Cb = proc(super: QMenuBarleaveEventBase, param1: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_leaveEvent(QMenuBar(h: self), param1)
+  var nimfunc = cast[ptr QMenuBarleaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_paintEvent(self: QMenuBar, param1: gen_qevent.QPaintEvent): void =
-
+  nimfunc[](slotval1)
+proc QMenuBarpaintEvent*(self: gen_qmenubar_types.QMenuBar, param1: gen_qevent.QPaintEvent): void =
 
   fQMenuBar_virtualbase_paintEvent(self.h, param1.h)
 
-type QMenuBarpaintEventBase* = proc(param1: gen_qevent.QPaintEvent): void
-proc onpaintEvent*(self: QMenuBar, slot: proc(super: QMenuBarpaintEventBase, param1: gen_qevent.QPaintEvent): void) =
+type QMenuBarpaintEventProc* = proc(param1: gen_qevent.QPaintEvent): void
+proc onpaintEvent*(self: gen_qmenubar_types.QMenuBar, slot: QMenuBarpaintEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMenuBarpaintEventBase, param1: gen_qevent.QPaintEvent): void
-  var tmp = new Cb
+  var tmp = new QMenuBarpaintEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMenuBar_override_virtual_paintEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMenuBar_paintEvent(self: ptr cQMenuBar, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QMenuBar_paintEvent ".} =
-  type Cb = proc(super: QMenuBarpaintEventBase, param1: gen_qevent.QPaintEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QPaintEvent): auto =
-    callVirtualBase_paintEvent(QMenuBar(h: self), param1)
+  var nimfunc = cast[ptr QMenuBarpaintEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QPaintEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_resizeEvent(self: QMenuBar, param1: gen_qevent.QResizeEvent): void =
-
+  nimfunc[](slotval1)
+proc QMenuBarresizeEvent*(self: gen_qmenubar_types.QMenuBar, param1: gen_qevent.QResizeEvent): void =
 
   fQMenuBar_virtualbase_resizeEvent(self.h, param1.h)
 
-type QMenuBarresizeEventBase* = proc(param1: gen_qevent.QResizeEvent): void
-proc onresizeEvent*(self: QMenuBar, slot: proc(super: QMenuBarresizeEventBase, param1: gen_qevent.QResizeEvent): void) =
+type QMenuBarresizeEventProc* = proc(param1: gen_qevent.QResizeEvent): void
+proc onresizeEvent*(self: gen_qmenubar_types.QMenuBar, slot: QMenuBarresizeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMenuBarresizeEventBase, param1: gen_qevent.QResizeEvent): void
-  var tmp = new Cb
+  var tmp = new QMenuBarresizeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMenuBar_override_virtual_resizeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMenuBar_resizeEvent(self: ptr cQMenuBar, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QMenuBar_resizeEvent ".} =
-  type Cb = proc(super: QMenuBarresizeEventBase, param1: gen_qevent.QResizeEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QResizeEvent): auto =
-    callVirtualBase_resizeEvent(QMenuBar(h: self), param1)
+  var nimfunc = cast[ptr QMenuBarresizeEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QResizeEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_actionEvent(self: QMenuBar, param1: gen_qevent.QActionEvent): void =
-
+  nimfunc[](slotval1)
+proc QMenuBaractionEvent*(self: gen_qmenubar_types.QMenuBar, param1: gen_qevent.QActionEvent): void =
 
   fQMenuBar_virtualbase_actionEvent(self.h, param1.h)
 
-type QMenuBaractionEventBase* = proc(param1: gen_qevent.QActionEvent): void
-proc onactionEvent*(self: QMenuBar, slot: proc(super: QMenuBaractionEventBase, param1: gen_qevent.QActionEvent): void) =
+type QMenuBaractionEventProc* = proc(param1: gen_qevent.QActionEvent): void
+proc onactionEvent*(self: gen_qmenubar_types.QMenuBar, slot: QMenuBaractionEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMenuBaractionEventBase, param1: gen_qevent.QActionEvent): void
-  var tmp = new Cb
+  var tmp = new QMenuBaractionEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMenuBar_override_virtual_actionEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMenuBar_actionEvent(self: ptr cQMenuBar, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QMenuBar_actionEvent ".} =
-  type Cb = proc(super: QMenuBaractionEventBase, param1: gen_qevent.QActionEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QActionEvent): auto =
-    callVirtualBase_actionEvent(QMenuBar(h: self), param1)
+  var nimfunc = cast[ptr QMenuBaractionEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QActionEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusOutEvent(self: QMenuBar, param1: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QMenuBarfocusOutEvent*(self: gen_qmenubar_types.QMenuBar, param1: gen_qevent.QFocusEvent): void =
 
   fQMenuBar_virtualbase_focusOutEvent(self.h, param1.h)
 
-type QMenuBarfocusOutEventBase* = proc(param1: gen_qevent.QFocusEvent): void
-proc onfocusOutEvent*(self: QMenuBar, slot: proc(super: QMenuBarfocusOutEventBase, param1: gen_qevent.QFocusEvent): void) =
+type QMenuBarfocusOutEventProc* = proc(param1: gen_qevent.QFocusEvent): void
+proc onfocusOutEvent*(self: gen_qmenubar_types.QMenuBar, slot: QMenuBarfocusOutEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMenuBarfocusOutEventBase, param1: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QMenuBarfocusOutEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMenuBar_override_virtual_focusOutEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMenuBar_focusOutEvent(self: ptr cQMenuBar, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QMenuBar_focusOutEvent ".} =
-  type Cb = proc(super: QMenuBarfocusOutEventBase, param1: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusOutEvent(QMenuBar(h: self), param1)
+  var nimfunc = cast[ptr QMenuBarfocusOutEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_focusInEvent(self: QMenuBar, param1: gen_qevent.QFocusEvent): void =
-
+  nimfunc[](slotval1)
+proc QMenuBarfocusInEvent*(self: gen_qmenubar_types.QMenuBar, param1: gen_qevent.QFocusEvent): void =
 
   fQMenuBar_virtualbase_focusInEvent(self.h, param1.h)
 
-type QMenuBarfocusInEventBase* = proc(param1: gen_qevent.QFocusEvent): void
-proc onfocusInEvent*(self: QMenuBar, slot: proc(super: QMenuBarfocusInEventBase, param1: gen_qevent.QFocusEvent): void) =
+type QMenuBarfocusInEventProc* = proc(param1: gen_qevent.QFocusEvent): void
+proc onfocusInEvent*(self: gen_qmenubar_types.QMenuBar, slot: QMenuBarfocusInEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMenuBarfocusInEventBase, param1: gen_qevent.QFocusEvent): void
-  var tmp = new Cb
+  var tmp = new QMenuBarfocusInEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMenuBar_override_virtual_focusInEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMenuBar_focusInEvent(self: ptr cQMenuBar, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QMenuBar_focusInEvent ".} =
-  type Cb = proc(super: QMenuBarfocusInEventBase, param1: gen_qevent.QFocusEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QFocusEvent): auto =
-    callVirtualBase_focusInEvent(QMenuBar(h: self), param1)
+  var nimfunc = cast[ptr QMenuBarfocusInEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QFocusEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_timerEvent(self: QMenuBar, param1: gen_qcoreevent.QTimerEvent): void =
-
+  nimfunc[](slotval1)
+proc QMenuBartimerEvent*(self: gen_qmenubar_types.QMenuBar, param1: gen_qcoreevent.QTimerEvent): void =
 
   fQMenuBar_virtualbase_timerEvent(self.h, param1.h)
 
-type QMenuBartimerEventBase* = proc(param1: gen_qcoreevent.QTimerEvent): void
-proc ontimerEvent*(self: QMenuBar, slot: proc(super: QMenuBartimerEventBase, param1: gen_qcoreevent.QTimerEvent): void) =
+type QMenuBartimerEventProc* = proc(param1: gen_qcoreevent.QTimerEvent): void
+proc ontimerEvent*(self: gen_qmenubar_types.QMenuBar, slot: QMenuBartimerEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMenuBartimerEventBase, param1: gen_qcoreevent.QTimerEvent): void
-  var tmp = new Cb
+  var tmp = new QMenuBartimerEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMenuBar_override_virtual_timerEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMenuBar_timerEvent(self: ptr cQMenuBar, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QMenuBar_timerEvent ".} =
-  type Cb = proc(super: QMenuBartimerEventBase, param1: gen_qcoreevent.QTimerEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qcoreevent.QTimerEvent): auto =
-    callVirtualBase_timerEvent(QMenuBar(h: self), param1)
+  var nimfunc = cast[ptr QMenuBartimerEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QTimerEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_eventFilter(self: QMenuBar, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool =
-
+  nimfunc[](slotval1)
+proc QMenuBareventFilter*(self: gen_qmenubar_types.QMenuBar, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool =
 
   fQMenuBar_virtualbase_eventFilter(self.h, param1.h, param2.h)
 
-type QMenuBareventFilterBase* = proc(param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
-proc oneventFilter*(self: QMenuBar, slot: proc(super: QMenuBareventFilterBase, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool) =
+type QMenuBareventFilterProc* = proc(param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
+proc oneventFilter*(self: gen_qmenubar_types.QMenuBar, slot: QMenuBareventFilterProc) =
   # TODO check subclass
-  type Cb = proc(super: QMenuBareventFilterBase, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QMenuBareventFilterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMenuBar_override_virtual_eventFilter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMenuBar_eventFilter(self: ptr cQMenuBar, slot: int, param1: pointer, param2: pointer): bool {.exportc: "miqt_exec_callback_QMenuBar_eventFilter ".} =
-  type Cb = proc(super: QMenuBareventFilterBase, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_eventFilter(QMenuBar(h: self), param1, param2)
+  var nimfunc = cast[ptr QMenuBareventFilterProc](cast[pointer](slot))
   let slotval1 = gen_qobject.QObject(h: param1)
 
   let slotval2 = gen_qcoreevent.QEvent(h: param2)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2 )
+  let virtualReturn = nimfunc[](slotval1, slotval2 )
 
   virtualReturn
-proc callVirtualBase_event(self: QMenuBar, param1: gen_qcoreevent.QEvent): bool =
-
+proc QMenuBarevent*(self: gen_qmenubar_types.QMenuBar, param1: gen_qcoreevent.QEvent): bool =
 
   fQMenuBar_virtualbase_event(self.h, param1.h)
 
-type QMenuBareventBase* = proc(param1: gen_qcoreevent.QEvent): bool
-proc onevent*(self: QMenuBar, slot: proc(super: QMenuBareventBase, param1: gen_qcoreevent.QEvent): bool) =
+type QMenuBareventProc* = proc(param1: gen_qcoreevent.QEvent): bool
+proc onevent*(self: gen_qmenubar_types.QMenuBar, slot: QMenuBareventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMenuBareventBase, param1: gen_qcoreevent.QEvent): bool
-  var tmp = new Cb
+  var tmp = new QMenuBareventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMenuBar_override_virtual_event(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMenuBar_event(self: ptr cQMenuBar, slot: int, param1: pointer): bool {.exportc: "miqt_exec_callback_QMenuBar_event ".} =
-  type Cb = proc(super: QMenuBareventBase, param1: gen_qcoreevent.QEvent): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_event(QMenuBar(h: self), param1)
+  var nimfunc = cast[ptr QMenuBareventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_initStyleOption(self: QMenuBar, option: gen_qstyleoption.QStyleOptionMenuItem, action: gen_qaction.QAction): void =
-
+proc QMenuBarinitStyleOption*(self: gen_qmenubar_types.QMenuBar, option: gen_qstyleoption.QStyleOptionMenuItem, action: gen_qaction.QAction): void =
 
   fQMenuBar_virtualbase_initStyleOption(self.h, option.h, action.h)
 
-type QMenuBarinitStyleOptionBase* = proc(option: gen_qstyleoption.QStyleOptionMenuItem, action: gen_qaction.QAction): void
-proc oninitStyleOption*(self: QMenuBar, slot: proc(super: QMenuBarinitStyleOptionBase, option: gen_qstyleoption.QStyleOptionMenuItem, action: gen_qaction.QAction): void) =
+type QMenuBarinitStyleOptionProc* = proc(option: gen_qstyleoption.QStyleOptionMenuItem, action: gen_qaction.QAction): void
+proc oninitStyleOption*(self: gen_qmenubar_types.QMenuBar, slot: QMenuBarinitStyleOptionProc) =
   # TODO check subclass
-  type Cb = proc(super: QMenuBarinitStyleOptionBase, option: gen_qstyleoption.QStyleOptionMenuItem, action: gen_qaction.QAction): void
-  var tmp = new Cb
+  var tmp = new QMenuBarinitStyleOptionProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMenuBar_override_virtual_initStyleOption(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMenuBar_initStyleOption(self: ptr cQMenuBar, slot: int, option: pointer, action: pointer): void {.exportc: "miqt_exec_callback_QMenuBar_initStyleOption ".} =
-  type Cb = proc(super: QMenuBarinitStyleOptionBase, option: gen_qstyleoption.QStyleOptionMenuItem, action: gen_qaction.QAction): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(option: gen_qstyleoption.QStyleOptionMenuItem, action: gen_qaction.QAction): auto =
-    callVirtualBase_initStyleOption(QMenuBar(h: self), option, action)
+  var nimfunc = cast[ptr QMenuBarinitStyleOptionProc](cast[pointer](slot))
   let slotval1 = gen_qstyleoption.QStyleOptionMenuItem(h: option)
 
   let slotval2 = gen_qaction.QAction(h: action)
 
 
-  nimfunc[](superCall, slotval1, slotval2)
-proc callVirtualBase_devType(self: QMenuBar, ): cint =
-
+  nimfunc[](slotval1, slotval2)
+proc QMenuBardevType*(self: gen_qmenubar_types.QMenuBar, ): cint =
 
   fQMenuBar_virtualbase_devType(self.h)
 
-type QMenuBardevTypeBase* = proc(): cint
-proc ondevType*(self: QMenuBar, slot: proc(super: QMenuBardevTypeBase): cint) =
+type QMenuBardevTypeProc* = proc(): cint
+proc ondevType*(self: gen_qmenubar_types.QMenuBar, slot: QMenuBardevTypeProc) =
   # TODO check subclass
-  type Cb = proc(super: QMenuBardevTypeBase): cint
-  var tmp = new Cb
+  var tmp = new QMenuBardevTypeProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMenuBar_override_virtual_devType(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMenuBar_devType(self: ptr cQMenuBar, slot: int): cint {.exportc: "miqt_exec_callback_QMenuBar_devType ".} =
-  type Cb = proc(super: QMenuBardevTypeBase): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_devType(QMenuBar(h: self), )
+  var nimfunc = cast[ptr QMenuBardevTypeProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_hasHeightForWidth(self: QMenuBar, ): bool =
-
+proc QMenuBarhasHeightForWidth*(self: gen_qmenubar_types.QMenuBar, ): bool =
 
   fQMenuBar_virtualbase_hasHeightForWidth(self.h)
 
-type QMenuBarhasHeightForWidthBase* = proc(): bool
-proc onhasHeightForWidth*(self: QMenuBar, slot: proc(super: QMenuBarhasHeightForWidthBase): bool) =
+type QMenuBarhasHeightForWidthProc* = proc(): bool
+proc onhasHeightForWidth*(self: gen_qmenubar_types.QMenuBar, slot: QMenuBarhasHeightForWidthProc) =
   # TODO check subclass
-  type Cb = proc(super: QMenuBarhasHeightForWidthBase): bool
-  var tmp = new Cb
+  var tmp = new QMenuBarhasHeightForWidthProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMenuBar_override_virtual_hasHeightForWidth(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMenuBar_hasHeightForWidth(self: ptr cQMenuBar, slot: int): bool {.exportc: "miqt_exec_callback_QMenuBar_hasHeightForWidth ".} =
-  type Cb = proc(super: QMenuBarhasHeightForWidthBase): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_hasHeightForWidth(QMenuBar(h: self), )
+  var nimfunc = cast[ptr QMenuBarhasHeightForWidthProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn
-proc callVirtualBase_paintEngine(self: QMenuBar, ): gen_qpaintengine.QPaintEngine =
-
+proc QMenuBarpaintEngine*(self: gen_qmenubar_types.QMenuBar, ): gen_qpaintengine.QPaintEngine =
 
   gen_qpaintengine.QPaintEngine(h: fQMenuBar_virtualbase_paintEngine(self.h))
 
-type QMenuBarpaintEngineBase* = proc(): gen_qpaintengine.QPaintEngine
-proc onpaintEngine*(self: QMenuBar, slot: proc(super: QMenuBarpaintEngineBase): gen_qpaintengine.QPaintEngine) =
+type QMenuBarpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
+proc onpaintEngine*(self: gen_qmenubar_types.QMenuBar, slot: QMenuBarpaintEngineProc) =
   # TODO check subclass
-  type Cb = proc(super: QMenuBarpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var tmp = new Cb
+  var tmp = new QMenuBarpaintEngineProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMenuBar_override_virtual_paintEngine(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMenuBar_paintEngine(self: ptr cQMenuBar, slot: int): pointer {.exportc: "miqt_exec_callback_QMenuBar_paintEngine ".} =
-  type Cb = proc(super: QMenuBarpaintEngineBase): gen_qpaintengine.QPaintEngine
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_paintEngine(QMenuBar(h: self), )
+  var nimfunc = cast[ptr QMenuBarpaintEngineProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_mouseDoubleClickEvent(self: QMenuBar, event: gen_qevent.QMouseEvent): void =
-
+proc QMenuBarmouseDoubleClickEvent*(self: gen_qmenubar_types.QMenuBar, event: gen_qevent.QMouseEvent): void =
 
   fQMenuBar_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
-type QMenuBarmouseDoubleClickEventBase* = proc(event: gen_qevent.QMouseEvent): void
-proc onmouseDoubleClickEvent*(self: QMenuBar, slot: proc(super: QMenuBarmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void) =
+type QMenuBarmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
+proc onmouseDoubleClickEvent*(self: gen_qmenubar_types.QMenuBar, slot: QMenuBarmouseDoubleClickEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMenuBarmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var tmp = new Cb
+  var tmp = new QMenuBarmouseDoubleClickEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMenuBar_override_virtual_mouseDoubleClickEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMenuBar_mouseDoubleClickEvent(self: ptr cQMenuBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMenuBar_mouseDoubleClickEvent ".} =
-  type Cb = proc(super: QMenuBarmouseDoubleClickEventBase, event: gen_qevent.QMouseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMouseEvent): auto =
-    callVirtualBase_mouseDoubleClickEvent(QMenuBar(h: self), event)
+  var nimfunc = cast[ptr QMenuBarmouseDoubleClickEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMouseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_wheelEvent(self: QMenuBar, event: gen_qevent.QWheelEvent): void =
-
+  nimfunc[](slotval1)
+proc QMenuBarwheelEvent*(self: gen_qmenubar_types.QMenuBar, event: gen_qevent.QWheelEvent): void =
 
   fQMenuBar_virtualbase_wheelEvent(self.h, event.h)
 
-type QMenuBarwheelEventBase* = proc(event: gen_qevent.QWheelEvent): void
-proc onwheelEvent*(self: QMenuBar, slot: proc(super: QMenuBarwheelEventBase, event: gen_qevent.QWheelEvent): void) =
+type QMenuBarwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
+proc onwheelEvent*(self: gen_qmenubar_types.QMenuBar, slot: QMenuBarwheelEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMenuBarwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var tmp = new Cb
+  var tmp = new QMenuBarwheelEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMenuBar_override_virtual_wheelEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMenuBar_wheelEvent(self: ptr cQMenuBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMenuBar_wheelEvent ".} =
-  type Cb = proc(super: QMenuBarwheelEventBase, event: gen_qevent.QWheelEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QWheelEvent): auto =
-    callVirtualBase_wheelEvent(QMenuBar(h: self), event)
+  var nimfunc = cast[ptr QMenuBarwheelEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QWheelEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_keyReleaseEvent(self: QMenuBar, event: gen_qevent.QKeyEvent): void =
-
+  nimfunc[](slotval1)
+proc QMenuBarkeyReleaseEvent*(self: gen_qmenubar_types.QMenuBar, event: gen_qevent.QKeyEvent): void =
 
   fQMenuBar_virtualbase_keyReleaseEvent(self.h, event.h)
 
-type QMenuBarkeyReleaseEventBase* = proc(event: gen_qevent.QKeyEvent): void
-proc onkeyReleaseEvent*(self: QMenuBar, slot: proc(super: QMenuBarkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void) =
+type QMenuBarkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
+proc onkeyReleaseEvent*(self: gen_qmenubar_types.QMenuBar, slot: QMenuBarkeyReleaseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMenuBarkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var tmp = new Cb
+  var tmp = new QMenuBarkeyReleaseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMenuBar_override_virtual_keyReleaseEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMenuBar_keyReleaseEvent(self: ptr cQMenuBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMenuBar_keyReleaseEvent ".} =
-  type Cb = proc(super: QMenuBarkeyReleaseEventBase, event: gen_qevent.QKeyEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QKeyEvent): auto =
-    callVirtualBase_keyReleaseEvent(QMenuBar(h: self), event)
+  var nimfunc = cast[ptr QMenuBarkeyReleaseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QKeyEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_enterEvent(self: QMenuBar, event: gen_qevent.QEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QMenuBarenterEvent*(self: gen_qmenubar_types.QMenuBar, event: gen_qevent.QEnterEvent): void =
 
   fQMenuBar_virtualbase_enterEvent(self.h, event.h)
 
-type QMenuBarenterEventBase* = proc(event: gen_qevent.QEnterEvent): void
-proc onenterEvent*(self: QMenuBar, slot: proc(super: QMenuBarenterEventBase, event: gen_qevent.QEnterEvent): void) =
+type QMenuBarenterEventProc* = proc(event: gen_qevent.QEnterEvent): void
+proc onenterEvent*(self: gen_qmenubar_types.QMenuBar, slot: QMenuBarenterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMenuBarenterEventBase, event: gen_qevent.QEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QMenuBarenterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMenuBar_override_virtual_enterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMenuBar_enterEvent(self: ptr cQMenuBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMenuBar_enterEvent ".} =
-  type Cb = proc(super: QMenuBarenterEventBase, event: gen_qevent.QEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QEnterEvent): auto =
-    callVirtualBase_enterEvent(QMenuBar(h: self), event)
+  var nimfunc = cast[ptr QMenuBarenterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_moveEvent(self: QMenuBar, event: gen_qevent.QMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QMenuBarmoveEvent*(self: gen_qmenubar_types.QMenuBar, event: gen_qevent.QMoveEvent): void =
 
   fQMenuBar_virtualbase_moveEvent(self.h, event.h)
 
-type QMenuBarmoveEventBase* = proc(event: gen_qevent.QMoveEvent): void
-proc onmoveEvent*(self: QMenuBar, slot: proc(super: QMenuBarmoveEventBase, event: gen_qevent.QMoveEvent): void) =
+type QMenuBarmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
+proc onmoveEvent*(self: gen_qmenubar_types.QMenuBar, slot: QMenuBarmoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMenuBarmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QMenuBarmoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMenuBar_override_virtual_moveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMenuBar_moveEvent(self: ptr cQMenuBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMenuBar_moveEvent ".} =
-  type Cb = proc(super: QMenuBarmoveEventBase, event: gen_qevent.QMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QMoveEvent): auto =
-    callVirtualBase_moveEvent(QMenuBar(h: self), event)
+  var nimfunc = cast[ptr QMenuBarmoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_closeEvent(self: QMenuBar, event: gen_qevent.QCloseEvent): void =
-
+  nimfunc[](slotval1)
+proc QMenuBarcloseEvent*(self: gen_qmenubar_types.QMenuBar, event: gen_qevent.QCloseEvent): void =
 
   fQMenuBar_virtualbase_closeEvent(self.h, event.h)
 
-type QMenuBarcloseEventBase* = proc(event: gen_qevent.QCloseEvent): void
-proc oncloseEvent*(self: QMenuBar, slot: proc(super: QMenuBarcloseEventBase, event: gen_qevent.QCloseEvent): void) =
+type QMenuBarcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
+proc oncloseEvent*(self: gen_qmenubar_types.QMenuBar, slot: QMenuBarcloseEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMenuBarcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var tmp = new Cb
+  var tmp = new QMenuBarcloseEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMenuBar_override_virtual_closeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMenuBar_closeEvent(self: ptr cQMenuBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMenuBar_closeEvent ".} =
-  type Cb = proc(super: QMenuBarcloseEventBase, event: gen_qevent.QCloseEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QCloseEvent): auto =
-    callVirtualBase_closeEvent(QMenuBar(h: self), event)
+  var nimfunc = cast[ptr QMenuBarcloseEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QCloseEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_contextMenuEvent(self: QMenuBar, event: gen_qevent.QContextMenuEvent): void =
-
+  nimfunc[](slotval1)
+proc QMenuBarcontextMenuEvent*(self: gen_qmenubar_types.QMenuBar, event: gen_qevent.QContextMenuEvent): void =
 
   fQMenuBar_virtualbase_contextMenuEvent(self.h, event.h)
 
-type QMenuBarcontextMenuEventBase* = proc(event: gen_qevent.QContextMenuEvent): void
-proc oncontextMenuEvent*(self: QMenuBar, slot: proc(super: QMenuBarcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void) =
+type QMenuBarcontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
+proc oncontextMenuEvent*(self: gen_qmenubar_types.QMenuBar, slot: QMenuBarcontextMenuEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMenuBarcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var tmp = new Cb
+  var tmp = new QMenuBarcontextMenuEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMenuBar_override_virtual_contextMenuEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMenuBar_contextMenuEvent(self: ptr cQMenuBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMenuBar_contextMenuEvent ".} =
-  type Cb = proc(super: QMenuBarcontextMenuEventBase, event: gen_qevent.QContextMenuEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QContextMenuEvent): auto =
-    callVirtualBase_contextMenuEvent(QMenuBar(h: self), event)
+  var nimfunc = cast[ptr QMenuBarcontextMenuEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QContextMenuEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_tabletEvent(self: QMenuBar, event: gen_qevent.QTabletEvent): void =
-
+  nimfunc[](slotval1)
+proc QMenuBartabletEvent*(self: gen_qmenubar_types.QMenuBar, event: gen_qevent.QTabletEvent): void =
 
   fQMenuBar_virtualbase_tabletEvent(self.h, event.h)
 
-type QMenuBartabletEventBase* = proc(event: gen_qevent.QTabletEvent): void
-proc ontabletEvent*(self: QMenuBar, slot: proc(super: QMenuBartabletEventBase, event: gen_qevent.QTabletEvent): void) =
+type QMenuBartabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
+proc ontabletEvent*(self: gen_qmenubar_types.QMenuBar, slot: QMenuBartabletEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMenuBartabletEventBase, event: gen_qevent.QTabletEvent): void
-  var tmp = new Cb
+  var tmp = new QMenuBartabletEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMenuBar_override_virtual_tabletEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMenuBar_tabletEvent(self: ptr cQMenuBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMenuBar_tabletEvent ".} =
-  type Cb = proc(super: QMenuBartabletEventBase, event: gen_qevent.QTabletEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QTabletEvent): auto =
-    callVirtualBase_tabletEvent(QMenuBar(h: self), event)
+  var nimfunc = cast[ptr QMenuBartabletEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QTabletEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragEnterEvent(self: QMenuBar, event: gen_qevent.QDragEnterEvent): void =
-
+  nimfunc[](slotval1)
+proc QMenuBardragEnterEvent*(self: gen_qmenubar_types.QMenuBar, event: gen_qevent.QDragEnterEvent): void =
 
   fQMenuBar_virtualbase_dragEnterEvent(self.h, event.h)
 
-type QMenuBardragEnterEventBase* = proc(event: gen_qevent.QDragEnterEvent): void
-proc ondragEnterEvent*(self: QMenuBar, slot: proc(super: QMenuBardragEnterEventBase, event: gen_qevent.QDragEnterEvent): void) =
+type QMenuBardragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
+proc ondragEnterEvent*(self: gen_qmenubar_types.QMenuBar, slot: QMenuBardragEnterEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMenuBardragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var tmp = new Cb
+  var tmp = new QMenuBardragEnterEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMenuBar_override_virtual_dragEnterEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMenuBar_dragEnterEvent(self: ptr cQMenuBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMenuBar_dragEnterEvent ".} =
-  type Cb = proc(super: QMenuBardragEnterEventBase, event: gen_qevent.QDragEnterEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragEnterEvent): auto =
-    callVirtualBase_dragEnterEvent(QMenuBar(h: self), event)
+  var nimfunc = cast[ptr QMenuBardragEnterEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragEnterEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragMoveEvent(self: QMenuBar, event: gen_qevent.QDragMoveEvent): void =
-
+  nimfunc[](slotval1)
+proc QMenuBardragMoveEvent*(self: gen_qmenubar_types.QMenuBar, event: gen_qevent.QDragMoveEvent): void =
 
   fQMenuBar_virtualbase_dragMoveEvent(self.h, event.h)
 
-type QMenuBardragMoveEventBase* = proc(event: gen_qevent.QDragMoveEvent): void
-proc ondragMoveEvent*(self: QMenuBar, slot: proc(super: QMenuBardragMoveEventBase, event: gen_qevent.QDragMoveEvent): void) =
+type QMenuBardragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
+proc ondragMoveEvent*(self: gen_qmenubar_types.QMenuBar, slot: QMenuBardragMoveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMenuBardragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var tmp = new Cb
+  var tmp = new QMenuBardragMoveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMenuBar_override_virtual_dragMoveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMenuBar_dragMoveEvent(self: ptr cQMenuBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMenuBar_dragMoveEvent ".} =
-  type Cb = proc(super: QMenuBardragMoveEventBase, event: gen_qevent.QDragMoveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragMoveEvent): auto =
-    callVirtualBase_dragMoveEvent(QMenuBar(h: self), event)
+  var nimfunc = cast[ptr QMenuBardragMoveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragMoveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dragLeaveEvent(self: QMenuBar, event: gen_qevent.QDragLeaveEvent): void =
-
+  nimfunc[](slotval1)
+proc QMenuBardragLeaveEvent*(self: gen_qmenubar_types.QMenuBar, event: gen_qevent.QDragLeaveEvent): void =
 
   fQMenuBar_virtualbase_dragLeaveEvent(self.h, event.h)
 
-type QMenuBardragLeaveEventBase* = proc(event: gen_qevent.QDragLeaveEvent): void
-proc ondragLeaveEvent*(self: QMenuBar, slot: proc(super: QMenuBardragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void) =
+type QMenuBardragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
+proc ondragLeaveEvent*(self: gen_qmenubar_types.QMenuBar, slot: QMenuBardragLeaveEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMenuBardragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var tmp = new Cb
+  var tmp = new QMenuBardragLeaveEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMenuBar_override_virtual_dragLeaveEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMenuBar_dragLeaveEvent(self: ptr cQMenuBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMenuBar_dragLeaveEvent ".} =
-  type Cb = proc(super: QMenuBardragLeaveEventBase, event: gen_qevent.QDragLeaveEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDragLeaveEvent): auto =
-    callVirtualBase_dragLeaveEvent(QMenuBar(h: self), event)
+  var nimfunc = cast[ptr QMenuBardragLeaveEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDragLeaveEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_dropEvent(self: QMenuBar, event: gen_qevent.QDropEvent): void =
-
+  nimfunc[](slotval1)
+proc QMenuBardropEvent*(self: gen_qmenubar_types.QMenuBar, event: gen_qevent.QDropEvent): void =
 
   fQMenuBar_virtualbase_dropEvent(self.h, event.h)
 
-type QMenuBardropEventBase* = proc(event: gen_qevent.QDropEvent): void
-proc ondropEvent*(self: QMenuBar, slot: proc(super: QMenuBardropEventBase, event: gen_qevent.QDropEvent): void) =
+type QMenuBardropEventProc* = proc(event: gen_qevent.QDropEvent): void
+proc ondropEvent*(self: gen_qmenubar_types.QMenuBar, slot: QMenuBardropEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMenuBardropEventBase, event: gen_qevent.QDropEvent): void
-  var tmp = new Cb
+  var tmp = new QMenuBardropEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMenuBar_override_virtual_dropEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMenuBar_dropEvent(self: ptr cQMenuBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMenuBar_dropEvent ".} =
-  type Cb = proc(super: QMenuBardropEventBase, event: gen_qevent.QDropEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QDropEvent): auto =
-    callVirtualBase_dropEvent(QMenuBar(h: self), event)
+  var nimfunc = cast[ptr QMenuBardropEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QDropEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_showEvent(self: QMenuBar, event: gen_qevent.QShowEvent): void =
-
+  nimfunc[](slotval1)
+proc QMenuBarshowEvent*(self: gen_qmenubar_types.QMenuBar, event: gen_qevent.QShowEvent): void =
 
   fQMenuBar_virtualbase_showEvent(self.h, event.h)
 
-type QMenuBarshowEventBase* = proc(event: gen_qevent.QShowEvent): void
-proc onshowEvent*(self: QMenuBar, slot: proc(super: QMenuBarshowEventBase, event: gen_qevent.QShowEvent): void) =
+type QMenuBarshowEventProc* = proc(event: gen_qevent.QShowEvent): void
+proc onshowEvent*(self: gen_qmenubar_types.QMenuBar, slot: QMenuBarshowEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMenuBarshowEventBase, event: gen_qevent.QShowEvent): void
-  var tmp = new Cb
+  var tmp = new QMenuBarshowEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMenuBar_override_virtual_showEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMenuBar_showEvent(self: ptr cQMenuBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMenuBar_showEvent ".} =
-  type Cb = proc(super: QMenuBarshowEventBase, event: gen_qevent.QShowEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QShowEvent): auto =
-    callVirtualBase_showEvent(QMenuBar(h: self), event)
+  var nimfunc = cast[ptr QMenuBarshowEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QShowEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_hideEvent(self: QMenuBar, event: gen_qevent.QHideEvent): void =
-
+  nimfunc[](slotval1)
+proc QMenuBarhideEvent*(self: gen_qmenubar_types.QMenuBar, event: gen_qevent.QHideEvent): void =
 
   fQMenuBar_virtualbase_hideEvent(self.h, event.h)
 
-type QMenuBarhideEventBase* = proc(event: gen_qevent.QHideEvent): void
-proc onhideEvent*(self: QMenuBar, slot: proc(super: QMenuBarhideEventBase, event: gen_qevent.QHideEvent): void) =
+type QMenuBarhideEventProc* = proc(event: gen_qevent.QHideEvent): void
+proc onhideEvent*(self: gen_qmenubar_types.QMenuBar, slot: QMenuBarhideEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMenuBarhideEventBase, event: gen_qevent.QHideEvent): void
-  var tmp = new Cb
+  var tmp = new QMenuBarhideEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMenuBar_override_virtual_hideEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMenuBar_hideEvent(self: ptr cQMenuBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMenuBar_hideEvent ".} =
-  type Cb = proc(super: QMenuBarhideEventBase, event: gen_qevent.QHideEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qevent.QHideEvent): auto =
-    callVirtualBase_hideEvent(QMenuBar(h: self), event)
+  var nimfunc = cast[ptr QMenuBarhideEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QHideEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_nativeEvent(self: QMenuBar, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
-
+  nimfunc[](slotval1)
+proc QMenuBarnativeEvent*(self: gen_qmenubar_types.QMenuBar, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
 
   fQMenuBar_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
-type QMenuBarnativeEventBase* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-proc onnativeEvent*(self: QMenuBar, slot: proc(super: QMenuBarnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool) =
+type QMenuBarnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
+proc onnativeEvent*(self: gen_qmenubar_types.QMenuBar, slot: QMenuBarnativeEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMenuBarnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-  var tmp = new Cb
+  var tmp = new QMenuBarnativeEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMenuBar_override_virtual_nativeEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMenuBar_nativeEvent(self: ptr cQMenuBar, slot: int, eventType: struct_miqt_string, message: pointer, resultVal: ptr uint): bool {.exportc: "miqt_exec_callback_QMenuBar_nativeEvent ".} =
-  type Cb = proc(super: QMenuBarnativeEventBase, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(eventType: seq[byte], message: pointer, resultVal: ptr uint): auto =
-    callVirtualBase_nativeEvent(QMenuBar(h: self), eventType, message, resultVal)
+  var nimfunc = cast[ptr QMenuBarnativeEventProc](cast[pointer](slot))
   var veventType_bytearray = eventType
   var veventTypex_ret = @(toOpenArrayByte(veventType_bytearray.data, 0, int(veventType_bytearray.len)-1))
   c_free(veventType_bytearray.data)
@@ -1332,271 +1130,216 @@ proc miqt_exec_callback_QMenuBar_nativeEvent(self: ptr cQMenuBar, slot: int, eve
   let slotval3 = resultVal
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1, slotval2, slotval3 )
+  let virtualReturn = nimfunc[](slotval1, slotval2, slotval3 )
 
   virtualReturn
-proc callVirtualBase_metric(self: QMenuBar, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint =
-
+proc QMenuBarmetric*(self: gen_qmenubar_types.QMenuBar, param1: cint): cint =
 
   fQMenuBar_virtualbase_metric(self.h, cint(param1))
 
-type QMenuBarmetricBase* = proc(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-proc onmetric*(self: QMenuBar, slot: proc(super: QMenuBarmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint) =
+type QMenuBarmetricProc* = proc(param1: cint): cint
+proc onmetric*(self: gen_qmenubar_types.QMenuBar, slot: QMenuBarmetricProc) =
   # TODO check subclass
-  type Cb = proc(super: QMenuBarmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var tmp = new Cb
+  var tmp = new QMenuBarmetricProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMenuBar_override_virtual_metric(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMenuBar_metric(self: ptr cQMenuBar, slot: int, param1: cint): cint {.exportc: "miqt_exec_callback_QMenuBar_metric ".} =
-  type Cb = proc(super: QMenuBarmetricBase, param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): cint
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qpaintdevice.QPaintDevicePaintDeviceMetric): auto =
-    callVirtualBase_metric(QMenuBar(h: self), param1)
-  let slotval1 = gen_qpaintdevice.QPaintDevicePaintDeviceMetric(param1)
+  var nimfunc = cast[ptr QMenuBarmetricProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_initPainter(self: QMenuBar, painter: gen_qpainter.QPainter): void =
-
+proc QMenuBarinitPainter*(self: gen_qmenubar_types.QMenuBar, painter: gen_qpainter.QPainter): void =
 
   fQMenuBar_virtualbase_initPainter(self.h, painter.h)
 
-type QMenuBarinitPainterBase* = proc(painter: gen_qpainter.QPainter): void
-proc oninitPainter*(self: QMenuBar, slot: proc(super: QMenuBarinitPainterBase, painter: gen_qpainter.QPainter): void) =
+type QMenuBarinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
+proc oninitPainter*(self: gen_qmenubar_types.QMenuBar, slot: QMenuBarinitPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QMenuBarinitPainterBase, painter: gen_qpainter.QPainter): void
-  var tmp = new Cb
+  var tmp = new QMenuBarinitPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMenuBar_override_virtual_initPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMenuBar_initPainter(self: ptr cQMenuBar, slot: int, painter: pointer): void {.exportc: "miqt_exec_callback_QMenuBar_initPainter ".} =
-  type Cb = proc(super: QMenuBarinitPainterBase, painter: gen_qpainter.QPainter): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(painter: gen_qpainter.QPainter): auto =
-    callVirtualBase_initPainter(QMenuBar(h: self), painter)
+  var nimfunc = cast[ptr QMenuBarinitPainterProc](cast[pointer](slot))
   let slotval1 = gen_qpainter.QPainter(h: painter)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_redirected(self: QMenuBar, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
+  nimfunc[](slotval1)
+proc QMenuBarredirected*(self: gen_qmenubar_types.QMenuBar, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
 
   gen_qpaintdevice.QPaintDevice(h: fQMenuBar_virtualbase_redirected(self.h, offset.h))
 
-type QMenuBarredirectedBase* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-proc onredirected*(self: QMenuBar, slot: proc(super: QMenuBarredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice) =
+type QMenuBarredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
+proc onredirected*(self: gen_qmenubar_types.QMenuBar, slot: QMenuBarredirectedProc) =
   # TODO check subclass
-  type Cb = proc(super: QMenuBarredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var tmp = new Cb
+  var tmp = new QMenuBarredirectedProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMenuBar_override_virtual_redirected(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMenuBar_redirected(self: ptr cQMenuBar, slot: int, offset: pointer): pointer {.exportc: "miqt_exec_callback_QMenuBar_redirected ".} =
-  type Cb = proc(super: QMenuBarredirectedBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(offset: gen_qpoint.QPoint): auto =
-    callVirtualBase_redirected(QMenuBar(h: self), offset)
+  var nimfunc = cast[ptr QMenuBarredirectedProc](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: offset)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_sharedPainter(self: QMenuBar, ): gen_qpainter.QPainter =
-
+proc QMenuBarsharedPainter*(self: gen_qmenubar_types.QMenuBar, ): gen_qpainter.QPainter =
 
   gen_qpainter.QPainter(h: fQMenuBar_virtualbase_sharedPainter(self.h))
 
-type QMenuBarsharedPainterBase* = proc(): gen_qpainter.QPainter
-proc onsharedPainter*(self: QMenuBar, slot: proc(super: QMenuBarsharedPainterBase): gen_qpainter.QPainter) =
+type QMenuBarsharedPainterProc* = proc(): gen_qpainter.QPainter
+proc onsharedPainter*(self: gen_qmenubar_types.QMenuBar, slot: QMenuBarsharedPainterProc) =
   # TODO check subclass
-  type Cb = proc(super: QMenuBarsharedPainterBase): gen_qpainter.QPainter
-  var tmp = new Cb
+  var tmp = new QMenuBarsharedPainterProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMenuBar_override_virtual_sharedPainter(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMenuBar_sharedPainter(self: ptr cQMenuBar, slot: int): pointer {.exportc: "miqt_exec_callback_QMenuBar_sharedPainter ".} =
-  type Cb = proc(super: QMenuBarsharedPainterBase): gen_qpainter.QPainter
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(): auto =
-    callVirtualBase_sharedPainter(QMenuBar(h: self), )
+  var nimfunc = cast[ptr QMenuBarsharedPainterProc](cast[pointer](slot))
 
-  let virtualReturn = nimfunc[](superCall )
+  let virtualReturn = nimfunc[]( )
 
   virtualReturn.h
-proc callVirtualBase_inputMethodEvent(self: QMenuBar, param1: gen_qevent.QInputMethodEvent): void =
-
+proc QMenuBarinputMethodEvent*(self: gen_qmenubar_types.QMenuBar, param1: gen_qevent.QInputMethodEvent): void =
 
   fQMenuBar_virtualbase_inputMethodEvent(self.h, param1.h)
 
-type QMenuBarinputMethodEventBase* = proc(param1: gen_qevent.QInputMethodEvent): void
-proc oninputMethodEvent*(self: QMenuBar, slot: proc(super: QMenuBarinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void) =
+type QMenuBarinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
+proc oninputMethodEvent*(self: gen_qmenubar_types.QMenuBar, slot: QMenuBarinputMethodEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMenuBarinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var tmp = new Cb
+  var tmp = new QMenuBarinputMethodEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMenuBar_override_virtual_inputMethodEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMenuBar_inputMethodEvent(self: ptr cQMenuBar, slot: int, param1: pointer): void {.exportc: "miqt_exec_callback_QMenuBar_inputMethodEvent ".} =
-  type Cb = proc(super: QMenuBarinputMethodEventBase, param1: gen_qevent.QInputMethodEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qevent.QInputMethodEvent): auto =
-    callVirtualBase_inputMethodEvent(QMenuBar(h: self), param1)
+  var nimfunc = cast[ptr QMenuBarinputMethodEventProc](cast[pointer](slot))
   let slotval1 = gen_qevent.QInputMethodEvent(h: param1)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_inputMethodQuery(self: QMenuBar, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant =
-
+  nimfunc[](slotval1)
+proc QMenuBarinputMethodQuery*(self: gen_qmenubar_types.QMenuBar, param1: cint): gen_qvariant.QVariant =
 
   gen_qvariant.QVariant(h: fQMenuBar_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
-type QMenuBarinputMethodQueryBase* = proc(param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-proc oninputMethodQuery*(self: QMenuBar, slot: proc(super: QMenuBarinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant) =
+type QMenuBarinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
+proc oninputMethodQuery*(self: gen_qmenubar_types.QMenuBar, slot: QMenuBarinputMethodQueryProc) =
   # TODO check subclass
-  type Cb = proc(super: QMenuBarinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var tmp = new Cb
+  var tmp = new QMenuBarinputMethodQueryProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMenuBar_override_virtual_inputMethodQuery(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMenuBar_inputMethodQuery(self: ptr cQMenuBar, slot: int, param1: cint): pointer {.exportc: "miqt_exec_callback_QMenuBar_inputMethodQuery ".} =
-  type Cb = proc(super: QMenuBarinputMethodQueryBase, param1: gen_qnamespace.InputMethodQuery): gen_qvariant.QVariant
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(param1: gen_qnamespace.InputMethodQuery): auto =
-    callVirtualBase_inputMethodQuery(QMenuBar(h: self), param1)
-  let slotval1 = gen_qnamespace.InputMethodQuery(param1)
+  var nimfunc = cast[ptr QMenuBarinputMethodQueryProc](cast[pointer](slot))
+  let slotval1 = cint(param1)
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc callVirtualBase_focusNextPrevChild(self: QMenuBar, next: bool): bool =
-
+proc QMenuBarfocusNextPrevChild*(self: gen_qmenubar_types.QMenuBar, next: bool): bool =
 
   fQMenuBar_virtualbase_focusNextPrevChild(self.h, next)
 
-type QMenuBarfocusNextPrevChildBase* = proc(next: bool): bool
-proc onfocusNextPrevChild*(self: QMenuBar, slot: proc(super: QMenuBarfocusNextPrevChildBase, next: bool): bool) =
+type QMenuBarfocusNextPrevChildProc* = proc(next: bool): bool
+proc onfocusNextPrevChild*(self: gen_qmenubar_types.QMenuBar, slot: QMenuBarfocusNextPrevChildProc) =
   # TODO check subclass
-  type Cb = proc(super: QMenuBarfocusNextPrevChildBase, next: bool): bool
-  var tmp = new Cb
+  var tmp = new QMenuBarfocusNextPrevChildProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMenuBar_override_virtual_focusNextPrevChild(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMenuBar_focusNextPrevChild(self: ptr cQMenuBar, slot: int, next: bool): bool {.exportc: "miqt_exec_callback_QMenuBar_focusNextPrevChild ".} =
-  type Cb = proc(super: QMenuBarfocusNextPrevChildBase, next: bool): bool
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(next: bool): auto =
-    callVirtualBase_focusNextPrevChild(QMenuBar(h: self), next)
+  var nimfunc = cast[ptr QMenuBarfocusNextPrevChildProc](cast[pointer](slot))
   let slotval1 = next
 
 
-  let virtualReturn = nimfunc[](superCall, slotval1 )
+  let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc callVirtualBase_childEvent(self: QMenuBar, event: gen_qcoreevent.QChildEvent): void =
-
+proc QMenuBarchildEvent*(self: gen_qmenubar_types.QMenuBar, event: gen_qcoreevent.QChildEvent): void =
 
   fQMenuBar_virtualbase_childEvent(self.h, event.h)
 
-type QMenuBarchildEventBase* = proc(event: gen_qcoreevent.QChildEvent): void
-proc onchildEvent*(self: QMenuBar, slot: proc(super: QMenuBarchildEventBase, event: gen_qcoreevent.QChildEvent): void) =
+type QMenuBarchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
+proc onchildEvent*(self: gen_qmenubar_types.QMenuBar, slot: QMenuBarchildEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMenuBarchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var tmp = new Cb
+  var tmp = new QMenuBarchildEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMenuBar_override_virtual_childEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMenuBar_childEvent(self: ptr cQMenuBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMenuBar_childEvent ".} =
-  type Cb = proc(super: QMenuBarchildEventBase, event: gen_qcoreevent.QChildEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QChildEvent): auto =
-    callVirtualBase_childEvent(QMenuBar(h: self), event)
+  var nimfunc = cast[ptr QMenuBarchildEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QChildEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_customEvent(self: QMenuBar, event: gen_qcoreevent.QEvent): void =
-
+  nimfunc[](slotval1)
+proc QMenuBarcustomEvent*(self: gen_qmenubar_types.QMenuBar, event: gen_qcoreevent.QEvent): void =
 
   fQMenuBar_virtualbase_customEvent(self.h, event.h)
 
-type QMenuBarcustomEventBase* = proc(event: gen_qcoreevent.QEvent): void
-proc oncustomEvent*(self: QMenuBar, slot: proc(super: QMenuBarcustomEventBase, event: gen_qcoreevent.QEvent): void) =
+type QMenuBarcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
+proc oncustomEvent*(self: gen_qmenubar_types.QMenuBar, slot: QMenuBarcustomEventProc) =
   # TODO check subclass
-  type Cb = proc(super: QMenuBarcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var tmp = new Cb
+  var tmp = new QMenuBarcustomEventProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMenuBar_override_virtual_customEvent(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMenuBar_customEvent(self: ptr cQMenuBar, slot: int, event: pointer): void {.exportc: "miqt_exec_callback_QMenuBar_customEvent ".} =
-  type Cb = proc(super: QMenuBarcustomEventBase, event: gen_qcoreevent.QEvent): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(event: gen_qcoreevent.QEvent): auto =
-    callVirtualBase_customEvent(QMenuBar(h: self), event)
+  var nimfunc = cast[ptr QMenuBarcustomEventProc](cast[pointer](slot))
   let slotval1 = gen_qcoreevent.QEvent(h: event)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_connectNotify(self: QMenuBar, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QMenuBarconnectNotify*(self: gen_qmenubar_types.QMenuBar, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQMenuBar_virtualbase_connectNotify(self.h, signal.h)
 
-type QMenuBarconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc onconnectNotify*(self: QMenuBar, slot: proc(super: QMenuBarconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QMenuBarconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc onconnectNotify*(self: gen_qmenubar_types.QMenuBar, slot: QMenuBarconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QMenuBarconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QMenuBarconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMenuBar_override_virtual_connectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMenuBar_connectNotify(self: ptr cQMenuBar, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QMenuBar_connectNotify ".} =
-  type Cb = proc(super: QMenuBarconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_connectNotify(QMenuBar(h: self), signal)
+  var nimfunc = cast[ptr QMenuBarconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc callVirtualBase_disconnectNotify(self: QMenuBar, signal: gen_qmetaobject.QMetaMethod): void =
-
+  nimfunc[](slotval1)
+proc QMenuBardisconnectNotify*(self: gen_qmenubar_types.QMenuBar, signal: gen_qmetaobject.QMetaMethod): void =
 
   fQMenuBar_virtualbase_disconnectNotify(self.h, signal.h)
 
-type QMenuBardisconnectNotifyBase* = proc(signal: gen_qmetaobject.QMetaMethod): void
-proc ondisconnectNotify*(self: QMenuBar, slot: proc(super: QMenuBardisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void) =
+type QMenuBardisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
+proc ondisconnectNotify*(self: gen_qmenubar_types.QMenuBar, slot: QMenuBardisconnectNotifyProc) =
   # TODO check subclass
-  type Cb = proc(super: QMenuBardisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var tmp = new Cb
+  var tmp = new QMenuBardisconnectNotifyProc
   tmp[] = slot
   GC_ref(tmp)
   fcQMenuBar_override_virtual_disconnectNotify(self.h, cast[int](addr tmp[]))
 
 proc miqt_exec_callback_QMenuBar_disconnectNotify(self: ptr cQMenuBar, slot: int, signal: pointer): void {.exportc: "miqt_exec_callback_QMenuBar_disconnectNotify ".} =
-  type Cb = proc(super: QMenuBardisconnectNotifyBase, signal: gen_qmetaobject.QMetaMethod): void
-  var nimfunc = cast[ptr Cb](cast[pointer](slot))
-  proc superCall(signal: gen_qmetaobject.QMetaMethod): auto =
-    callVirtualBase_disconnectNotify(QMenuBar(h: self), signal)
+  var nimfunc = cast[ptr QMenuBardisconnectNotifyProc](cast[pointer](slot))
   let slotval1 = gen_qmetaobject.QMetaMethod(h: signal)
 
 
-  nimfunc[](superCall, slotval1)
-proc staticMetaObject*(_: type QMenuBar): gen_qobjectdefs.QMetaObject =
+  nimfunc[](slotval1)
+proc staticMetaObject*(_: type gen_qmenubar_types.QMenuBar): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQMenuBar_staticMetaObject())
-proc delete*(self: QMenuBar) =
+proc delete*(self: gen_qmenubar_types.QMenuBar) =
   fcQMenuBar_delete(self.h)

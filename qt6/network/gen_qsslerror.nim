@@ -34,47 +34,45 @@ const cflags = gorge("pkg-config -cflags Qt6Network")
 {.compile("gen_qsslerror.cpp", cflags).}
 
 
-type QSslErrorSslError* = cint
-const
-  QSslErrorNoError* = 0
-  QSslErrorUnableToGetIssuerCertificate* = 1
-  QSslErrorUnableToDecryptCertificateSignature* = 2
-  QSslErrorUnableToDecodeIssuerPublicKey* = 3
-  QSslErrorCertificateSignatureFailed* = 4
-  QSslErrorCertificateNotYetValid* = 5
-  QSslErrorCertificateExpired* = 6
-  QSslErrorInvalidNotBeforeField* = 7
-  QSslErrorInvalidNotAfterField* = 8
-  QSslErrorSelfSignedCertificate* = 9
-  QSslErrorSelfSignedCertificateInChain* = 10
-  QSslErrorUnableToGetLocalIssuerCertificate* = 11
-  QSslErrorUnableToVerifyFirstCertificate* = 12
-  QSslErrorCertificateRevoked* = 13
-  QSslErrorInvalidCaCertificate* = 14
-  QSslErrorPathLengthExceeded* = 15
-  QSslErrorInvalidPurpose* = 16
-  QSslErrorCertificateUntrusted* = 17
-  QSslErrorCertificateRejected* = 18
-  QSslErrorSubjectIssuerMismatch* = 19
-  QSslErrorAuthorityIssuerSerialNumberMismatch* = 20
-  QSslErrorNoPeerCertificate* = 21
-  QSslErrorHostNameMismatch* = 22
-  QSslErrorNoSslSupport* = 23
-  QSslErrorCertificateBlacklisted* = 24
-  QSslErrorCertificateStatusUnknown* = 25
-  QSslErrorOcspNoResponseFound* = 26
-  QSslErrorOcspMalformedRequest* = 27
-  QSslErrorOcspMalformedResponse* = 28
-  QSslErrorOcspInternalError* = 29
-  QSslErrorOcspTryLater* = 30
-  QSslErrorOcspSigRequred* = 31
-  QSslErrorOcspUnauthorized* = 32
-  QSslErrorOcspResponseCannotBeTrusted* = 33
-  QSslErrorOcspResponseCertIdUnknown* = 34
-  QSslErrorOcspResponseExpired* = 35
-  QSslErrorOcspStatusUnknown* = 36
-  QSslErrorUnspecifiedError* = -1
-
+type QSslErrorSslErrorEnum* = distinct cint
+template NoError*(_: type QSslErrorSslErrorEnum): untyped = 0
+template UnableToGetIssuerCertificate*(_: type QSslErrorSslErrorEnum): untyped = 1
+template UnableToDecryptCertificateSignature*(_: type QSslErrorSslErrorEnum): untyped = 2
+template UnableToDecodeIssuerPublicKey*(_: type QSslErrorSslErrorEnum): untyped = 3
+template CertificateSignatureFailed*(_: type QSslErrorSslErrorEnum): untyped = 4
+template CertificateNotYetValid*(_: type QSslErrorSslErrorEnum): untyped = 5
+template CertificateExpired*(_: type QSslErrorSslErrorEnum): untyped = 6
+template InvalidNotBeforeField*(_: type QSslErrorSslErrorEnum): untyped = 7
+template InvalidNotAfterField*(_: type QSslErrorSslErrorEnum): untyped = 8
+template SelfSignedCertificate*(_: type QSslErrorSslErrorEnum): untyped = 9
+template SelfSignedCertificateInChain*(_: type QSslErrorSslErrorEnum): untyped = 10
+template UnableToGetLocalIssuerCertificate*(_: type QSslErrorSslErrorEnum): untyped = 11
+template UnableToVerifyFirstCertificate*(_: type QSslErrorSslErrorEnum): untyped = 12
+template CertificateRevoked*(_: type QSslErrorSslErrorEnum): untyped = 13
+template InvalidCaCertificate*(_: type QSslErrorSslErrorEnum): untyped = 14
+template PathLengthExceeded*(_: type QSslErrorSslErrorEnum): untyped = 15
+template InvalidPurpose*(_: type QSslErrorSslErrorEnum): untyped = 16
+template CertificateUntrusted*(_: type QSslErrorSslErrorEnum): untyped = 17
+template CertificateRejected*(_: type QSslErrorSslErrorEnum): untyped = 18
+template SubjectIssuerMismatch*(_: type QSslErrorSslErrorEnum): untyped = 19
+template AuthorityIssuerSerialNumberMismatch*(_: type QSslErrorSslErrorEnum): untyped = 20
+template NoPeerCertificate*(_: type QSslErrorSslErrorEnum): untyped = 21
+template HostNameMismatch*(_: type QSslErrorSslErrorEnum): untyped = 22
+template NoSslSupport*(_: type QSslErrorSslErrorEnum): untyped = 23
+template CertificateBlacklisted*(_: type QSslErrorSslErrorEnum): untyped = 24
+template CertificateStatusUnknown*(_: type QSslErrorSslErrorEnum): untyped = 25
+template OcspNoResponseFound*(_: type QSslErrorSslErrorEnum): untyped = 26
+template OcspMalformedRequest*(_: type QSslErrorSslErrorEnum): untyped = 27
+template OcspMalformedResponse*(_: type QSslErrorSslErrorEnum): untyped = 28
+template OcspInternalError*(_: type QSslErrorSslErrorEnum): untyped = 29
+template OcspTryLater*(_: type QSslErrorSslErrorEnum): untyped = 30
+template OcspSigRequred*(_: type QSslErrorSslErrorEnum): untyped = 31
+template OcspUnauthorized*(_: type QSslErrorSslErrorEnum): untyped = 32
+template OcspResponseCannotBeTrusted*(_: type QSslErrorSslErrorEnum): untyped = 33
+template OcspResponseCertIdUnknown*(_: type QSslErrorSslErrorEnum): untyped = 34
+template OcspResponseExpired*(_: type QSslErrorSslErrorEnum): untyped = 35
+template OcspStatusUnknown*(_: type QSslErrorSslErrorEnum): untyped = 36
+template UnspecifiedError*(_: type QSslErrorSslErrorEnum): untyped = -1
 
 
 import gen_qsslerror_types
@@ -104,52 +102,52 @@ proc fcQSslError_staticMetaObject(): pointer {.importc: "QSslError_staticMetaObj
 proc fcQSslError_delete(self: pointer) {.importc: "QSslError_delete".}
 
 
-func init*(T: type QSslError, h: ptr cQSslError): QSslError =
+func init*(T: type gen_qsslerror_types.QSslError, h: ptr cQSslError): gen_qsslerror_types.QSslError =
   T(h: h)
-proc create*(T: type QSslError, ): QSslError =
+proc create*(T: type gen_qsslerror_types.QSslError, ): gen_qsslerror_types.QSslError =
 
-  QSslError.init(fcQSslError_new())
-proc create*(T: type QSslError, error: QSslErrorSslError): QSslError =
+  gen_qsslerror_types.QSslError.init(fcQSslError_new())
+proc create*(T: type gen_qsslerror_types.QSslError, error: cint): gen_qsslerror_types.QSslError =
 
-  QSslError.init(fcQSslError_new2(cint(error)))
-proc create*(T: type QSslError, error: QSslErrorSslError, certificate: gen_qsslcertificate.QSslCertificate): QSslError =
+  gen_qsslerror_types.QSslError.init(fcQSslError_new2(cint(error)))
+proc create*(T: type gen_qsslerror_types.QSslError, error: cint, certificate: gen_qsslcertificate.QSslCertificate): gen_qsslerror_types.QSslError =
 
-  QSslError.init(fcQSslError_new3(cint(error), certificate.h))
-proc create*(T: type QSslError, other: QSslError): QSslError =
+  gen_qsslerror_types.QSslError.init(fcQSslError_new3(cint(error), certificate.h))
+proc create*(T: type gen_qsslerror_types.QSslError, other: gen_qsslerror_types.QSslError): gen_qsslerror_types.QSslError =
 
-  QSslError.init(fcQSslError_new4(other.h))
-proc swap*(self: QSslError, other: QSslError): void =
+  gen_qsslerror_types.QSslError.init(fcQSslError_new4(other.h))
+proc swap*(self: gen_qsslerror_types.QSslError, other: gen_qsslerror_types.QSslError): void =
 
   fcQSslError_swap(self.h, other.h)
 
-proc operatorAssign*(self: QSslError, other: QSslError): void =
+proc operatorAssign*(self: gen_qsslerror_types.QSslError, other: gen_qsslerror_types.QSslError): void =
 
   fcQSslError_operatorAssign(self.h, other.h)
 
-proc operatorEqual*(self: QSslError, other: QSslError): bool =
+proc operatorEqual*(self: gen_qsslerror_types.QSslError, other: gen_qsslerror_types.QSslError): bool =
 
   fcQSslError_operatorEqual(self.h, other.h)
 
-proc operatorNotEqual*(self: QSslError, other: QSslError): bool =
+proc operatorNotEqual*(self: gen_qsslerror_types.QSslError, other: gen_qsslerror_types.QSslError): bool =
 
   fcQSslError_operatorNotEqual(self.h, other.h)
 
-proc error*(self: QSslError, ): QSslErrorSslError =
+proc error*(self: gen_qsslerror_types.QSslError, ): cint =
 
-  QSslErrorSslError(fcQSslError_error(self.h))
+  cint(fcQSslError_error(self.h))
 
-proc errorString*(self: QSslError, ): string =
+proc errorString*(self: gen_qsslerror_types.QSslError, ): string =
 
   let v_ms = fcQSslError_errorString(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc certificate*(self: QSslError, ): gen_qsslcertificate.QSslCertificate =
+proc certificate*(self: gen_qsslerror_types.QSslError, ): gen_qsslcertificate.QSslCertificate =
 
   gen_qsslcertificate.QSslCertificate(h: fcQSslError_certificate(self.h))
 
-proc staticMetaObject*(_: type QSslError): gen_qobjectdefs.QMetaObject =
+proc staticMetaObject*(_: type gen_qsslerror_types.QSslError): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQSslError_staticMetaObject())
-proc delete*(self: QSslError) =
+proc delete*(self: gen_qsslerror_types.QSslError) =
   fcQSslError_delete(self.h)

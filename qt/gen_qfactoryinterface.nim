@@ -44,9 +44,9 @@ proc fcQFactoryInterface_keys(self: pointer, ): struct_miqt_array {.importc: "QF
 proc fcQFactoryInterface_delete(self: pointer) {.importc: "QFactoryInterface_delete".}
 
 
-func init*(T: type QFactoryInterface, h: ptr cQFactoryInterface): QFactoryInterface =
+func init*(T: type gen_qfactoryinterface_types.QFactoryInterface, h: ptr cQFactoryInterface): gen_qfactoryinterface_types.QFactoryInterface =
   T(h: h)
-proc keys*(self: QFactoryInterface, ): seq[string] =
+proc keys*(self: gen_qfactoryinterface_types.QFactoryInterface, ): seq[string] =
 
   var v_ma = fcQFactoryInterface_keys(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
@@ -58,5 +58,5 @@ proc keys*(self: QFactoryInterface, ): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc delete*(self: QFactoryInterface) =
+proc delete*(self: gen_qfactoryinterface_types.QFactoryInterface) =
   fcQFactoryInterface_delete(self.h)

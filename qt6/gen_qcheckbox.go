@@ -184,7 +184,7 @@ func (this *QCheckBox) callVirtualBase_MetaObject() *QMetaObject {
 	return newQMetaObject(C.QCheckBox_virtualbase_metaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QCheckBox) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+func (this *QCheckBox) OnMetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
 	ok := C.QCheckBox_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -211,7 +211,7 @@ func (this *QCheckBox) callVirtualBase_Metacast(param1 string) unsafe.Pointer {
 	return (unsafe.Pointer)(C.QCheckBox_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
 
 }
-func (this *QCheckBox) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+func (this *QCheckBox) OnMetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
 	ok := C.QCheckBox_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

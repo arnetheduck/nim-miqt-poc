@@ -34,35 +34,27 @@ const cflags = gorge("pkg-config -cflags Qt6MultimediaWidgets")
 {.compile("gen_qvideoframe.cpp", cflags).}
 
 
-type QVideoFrameHandleType* = cint
-const
-  QVideoFrameNoHandle* = 0
-  QVideoFrameRhiTextureHandle* = 1
+type QVideoFrameHandleTypeEnum* = distinct cint
+template NoHandle*(_: type QVideoFrameHandleTypeEnum): untyped = 0
+template RhiTextureHandle*(_: type QVideoFrameHandleTypeEnum): untyped = 1
 
 
-
-type QVideoFrameMapMode* = cint
-const
-  QVideoFrameNotMapped* = 0
-  QVideoFrameReadOnly* = 1
-  QVideoFrameWriteOnly* = 2
-  QVideoFrameReadWrite* = 3
+type QVideoFrameMapModeEnum* = distinct cint
+template NotMapped*(_: type QVideoFrameMapModeEnum): untyped = 0
+template ReadOnly*(_: type QVideoFrameMapModeEnum): untyped = 1
+template WriteOnly*(_: type QVideoFrameMapModeEnum): untyped = 2
+template ReadWrite*(_: type QVideoFrameMapModeEnum): untyped = 3
 
 
-
-type QVideoFrameRotationAngle* = cint
-const
-  QVideoFrameRotation0* = 0
-  QVideoFrameRotation90* = 90
-  QVideoFrameRotation180* = 180
-  QVideoFrameRotation270* = 270
+type QVideoFrameRotationAngleEnum* = distinct cint
+template Rotation0*(_: type QVideoFrameRotationAngleEnum): untyped = 0
+template Rotation90*(_: type QVideoFrameRotationAngleEnum): untyped = 90
+template Rotation180*(_: type QVideoFrameRotationAngleEnum): untyped = 180
+template Rotation270*(_: type QVideoFrameRotationAngleEnum): untyped = 270
 
 
-
-type QVideoFramePaintOptionsPaintFlag* = cint
-const
-  QVideoFramePaintOptionsDontDrawSubtitles* = 1
-
+type QVideoFramePaintOptionsPaintFlagEnum* = distinct cint
+template DontDrawSubtitles*(_: type QVideoFramePaintOptionsPaintFlagEnum): untyped = 1
 
 
 import gen_qvideoframe_types
@@ -125,160 +117,160 @@ proc fcQVideoFrame_delete(self: pointer) {.importc: "QVideoFrame_delete".}
 proc fcQVideoFramePaintOptions_delete(self: pointer) {.importc: "QVideoFrame__PaintOptions_delete".}
 
 
-func init*(T: type QVideoFrame, h: ptr cQVideoFrame): QVideoFrame =
+func init*(T: type gen_qvideoframe_types.QVideoFrame, h: ptr cQVideoFrame): gen_qvideoframe_types.QVideoFrame =
   T(h: h)
-proc create*(T: type QVideoFrame, ): QVideoFrame =
+proc create*(T: type gen_qvideoframe_types.QVideoFrame, ): gen_qvideoframe_types.QVideoFrame =
 
-  QVideoFrame.init(fcQVideoFrame_new())
-proc create*(T: type QVideoFrame, format: gen_qvideoframeformat.QVideoFrameFormat): QVideoFrame =
+  gen_qvideoframe_types.QVideoFrame.init(fcQVideoFrame_new())
+proc create*(T: type gen_qvideoframe_types.QVideoFrame, format: gen_qvideoframeformat.QVideoFrameFormat): gen_qvideoframe_types.QVideoFrame =
 
-  QVideoFrame.init(fcQVideoFrame_new2(format.h))
-proc create2*(T: type QVideoFrame, other: QVideoFrame): QVideoFrame =
+  gen_qvideoframe_types.QVideoFrame.init(fcQVideoFrame_new2(format.h))
+proc create2*(T: type gen_qvideoframe_types.QVideoFrame, other: gen_qvideoframe_types.QVideoFrame): gen_qvideoframe_types.QVideoFrame =
 
-  QVideoFrame.init(fcQVideoFrame_new3(other.h))
-proc swap*(self: QVideoFrame, other: QVideoFrame): void =
+  gen_qvideoframe_types.QVideoFrame.init(fcQVideoFrame_new3(other.h))
+proc swap*(self: gen_qvideoframe_types.QVideoFrame, other: gen_qvideoframe_types.QVideoFrame): void =
 
   fcQVideoFrame_swap(self.h, other.h)
 
-proc operatorAssign*(self: QVideoFrame, other: QVideoFrame): void =
+proc operatorAssign*(self: gen_qvideoframe_types.QVideoFrame, other: gen_qvideoframe_types.QVideoFrame): void =
 
   fcQVideoFrame_operatorAssign(self.h, other.h)
 
-proc operatorEqual*(self: QVideoFrame, other: QVideoFrame): bool =
+proc operatorEqual*(self: gen_qvideoframe_types.QVideoFrame, other: gen_qvideoframe_types.QVideoFrame): bool =
 
   fcQVideoFrame_operatorEqual(self.h, other.h)
 
-proc operatorNotEqual*(self: QVideoFrame, other: QVideoFrame): bool =
+proc operatorNotEqual*(self: gen_qvideoframe_types.QVideoFrame, other: gen_qvideoframe_types.QVideoFrame): bool =
 
   fcQVideoFrame_operatorNotEqual(self.h, other.h)
 
-proc isValid*(self: QVideoFrame, ): bool =
+proc isValid*(self: gen_qvideoframe_types.QVideoFrame, ): bool =
 
   fcQVideoFrame_isValid(self.h)
 
-proc pixelFormat*(self: QVideoFrame, ): gen_qvideoframeformat.QVideoFrameFormatPixelFormat =
+proc pixelFormat*(self: gen_qvideoframe_types.QVideoFrame, ): cint =
 
-  gen_qvideoframeformat.QVideoFrameFormatPixelFormat(fcQVideoFrame_pixelFormat(self.h))
+  cint(fcQVideoFrame_pixelFormat(self.h))
 
-proc surfaceFormat*(self: QVideoFrame, ): gen_qvideoframeformat.QVideoFrameFormat =
+proc surfaceFormat*(self: gen_qvideoframe_types.QVideoFrame, ): gen_qvideoframeformat.QVideoFrameFormat =
 
   gen_qvideoframeformat.QVideoFrameFormat(h: fcQVideoFrame_surfaceFormat(self.h))
 
-proc handleType*(self: QVideoFrame, ): QVideoFrameHandleType =
+proc handleType*(self: gen_qvideoframe_types.QVideoFrame, ): cint =
 
-  QVideoFrameHandleType(fcQVideoFrame_handleType(self.h))
+  cint(fcQVideoFrame_handleType(self.h))
 
-proc size*(self: QVideoFrame, ): gen_qsize.QSize =
+proc size*(self: gen_qvideoframe_types.QVideoFrame, ): gen_qsize.QSize =
 
   gen_qsize.QSize(h: fcQVideoFrame_size(self.h))
 
-proc width*(self: QVideoFrame, ): cint =
+proc width*(self: gen_qvideoframe_types.QVideoFrame, ): cint =
 
   fcQVideoFrame_width(self.h)
 
-proc height*(self: QVideoFrame, ): cint =
+proc height*(self: gen_qvideoframe_types.QVideoFrame, ): cint =
 
   fcQVideoFrame_height(self.h)
 
-proc isMapped*(self: QVideoFrame, ): bool =
+proc isMapped*(self: gen_qvideoframe_types.QVideoFrame, ): bool =
 
   fcQVideoFrame_isMapped(self.h)
 
-proc isReadable*(self: QVideoFrame, ): bool =
+proc isReadable*(self: gen_qvideoframe_types.QVideoFrame, ): bool =
 
   fcQVideoFrame_isReadable(self.h)
 
-proc isWritable*(self: QVideoFrame, ): bool =
+proc isWritable*(self: gen_qvideoframe_types.QVideoFrame, ): bool =
 
   fcQVideoFrame_isWritable(self.h)
 
-proc mapMode*(self: QVideoFrame, ): QVideoFrameMapMode =
+proc mapMode*(self: gen_qvideoframe_types.QVideoFrame, ): cint =
 
-  QVideoFrameMapMode(fcQVideoFrame_mapMode(self.h))
+  cint(fcQVideoFrame_mapMode(self.h))
 
-proc map*(self: QVideoFrame, mode: QVideoFrameMapMode): bool =
+proc map*(self: gen_qvideoframe_types.QVideoFrame, mode: cint): bool =
 
   fcQVideoFrame_map(self.h, cint(mode))
 
-proc unmap*(self: QVideoFrame, ): void =
+proc unmap*(self: gen_qvideoframe_types.QVideoFrame, ): void =
 
   fcQVideoFrame_unmap(self.h)
 
-proc bytesPerLine*(self: QVideoFrame, plane: cint): cint =
+proc bytesPerLine*(self: gen_qvideoframe_types.QVideoFrame, plane: cint): cint =
 
   fcQVideoFrame_bytesPerLine(self.h, plane)
 
-proc bits*(self: QVideoFrame, plane: cint): ptr uint8 =
+proc bits*(self: gen_qvideoframe_types.QVideoFrame, plane: cint): ptr uint8 =
 
   fcQVideoFrame_bits(self.h, plane)
 
-proc bitsWithPlane*(self: QVideoFrame, plane: cint): ptr uint8 =
+proc bitsWithPlane*(self: gen_qvideoframe_types.QVideoFrame, plane: cint): ptr uint8 =
 
   fcQVideoFrame_bitsWithPlane(self.h, plane)
 
-proc mappedBytes*(self: QVideoFrame, plane: cint): cint =
+proc mappedBytes*(self: gen_qvideoframe_types.QVideoFrame, plane: cint): cint =
 
   fcQVideoFrame_mappedBytes(self.h, plane)
 
-proc planeCount*(self: QVideoFrame, ): cint =
+proc planeCount*(self: gen_qvideoframe_types.QVideoFrame, ): cint =
 
   fcQVideoFrame_planeCount(self.h)
 
-proc startTime*(self: QVideoFrame, ): clonglong =
+proc startTime*(self: gen_qvideoframe_types.QVideoFrame, ): clonglong =
 
   fcQVideoFrame_startTime(self.h)
 
-proc setStartTime*(self: QVideoFrame, time: clonglong): void =
+proc setStartTime*(self: gen_qvideoframe_types.QVideoFrame, time: clonglong): void =
 
   fcQVideoFrame_setStartTime(self.h, time)
 
-proc endTime*(self: QVideoFrame, ): clonglong =
+proc endTime*(self: gen_qvideoframe_types.QVideoFrame, ): clonglong =
 
   fcQVideoFrame_endTime(self.h)
 
-proc setEndTime*(self: QVideoFrame, time: clonglong): void =
+proc setEndTime*(self: gen_qvideoframe_types.QVideoFrame, time: clonglong): void =
 
   fcQVideoFrame_setEndTime(self.h, time)
 
-proc setRotationAngle*(self: QVideoFrame, rotationAngle: QVideoFrameRotationAngle): void =
+proc setRotationAngle*(self: gen_qvideoframe_types.QVideoFrame, rotationAngle: cint): void =
 
   fcQVideoFrame_setRotationAngle(self.h, cint(rotationAngle))
 
-proc rotationAngle*(self: QVideoFrame, ): QVideoFrameRotationAngle =
+proc rotationAngle*(self: gen_qvideoframe_types.QVideoFrame, ): cint =
 
-  QVideoFrameRotationAngle(fcQVideoFrame_rotationAngle(self.h))
+  cint(fcQVideoFrame_rotationAngle(self.h))
 
-proc setMirrored*(self: QVideoFrame, mirrored: bool): void =
+proc setMirrored*(self: gen_qvideoframe_types.QVideoFrame, mirrored: bool): void =
 
   fcQVideoFrame_setMirrored(self.h, mirrored)
 
-proc mirrored*(self: QVideoFrame, ): bool =
+proc mirrored*(self: gen_qvideoframe_types.QVideoFrame, ): bool =
 
   fcQVideoFrame_mirrored(self.h)
 
-proc toImage*(self: QVideoFrame, ): gen_qimage.QImage =
+proc toImage*(self: gen_qvideoframe_types.QVideoFrame, ): gen_qimage.QImage =
 
   gen_qimage.QImage(h: fcQVideoFrame_toImage(self.h))
 
-proc subtitleText*(self: QVideoFrame, ): string =
+proc subtitleText*(self: gen_qvideoframe_types.QVideoFrame, ): string =
 
   let v_ms = fcQVideoFrame_subtitleText(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setSubtitleText*(self: QVideoFrame, text: string): void =
+proc setSubtitleText*(self: gen_qvideoframe_types.QVideoFrame, text: string): void =
 
   fcQVideoFrame_setSubtitleText(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
-proc paint*(self: QVideoFrame, painter: gen_qpainter.QPainter, rect: gen_qrect.QRectF, options: QVideoFramePaintOptions): void =
+proc paint*(self: gen_qvideoframe_types.QVideoFrame, painter: gen_qpainter.QPainter, rect: gen_qrect.QRectF, options: gen_qvideoframe_types.QVideoFramePaintOptions): void =
 
   fcQVideoFrame_paint(self.h, painter.h, rect.h, options.h)
 
-proc delete*(self: QVideoFrame) =
+proc delete*(self: gen_qvideoframe_types.QVideoFrame) =
   fcQVideoFrame_delete(self.h)
 
-func init*(T: type QVideoFramePaintOptions, h: ptr cQVideoFramePaintOptions): QVideoFramePaintOptions =
+func init*(T: type gen_qvideoframe_types.QVideoFramePaintOptions, h: ptr cQVideoFramePaintOptions): gen_qvideoframe_types.QVideoFramePaintOptions =
   T(h: h)
-proc delete*(self: QVideoFramePaintOptions) =
+proc delete*(self: gen_qvideoframe_types.QVideoFramePaintOptions) =
   fcQVideoFramePaintOptions_delete(self.h)
